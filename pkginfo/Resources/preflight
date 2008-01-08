@@ -1,0 +1,7 @@
+#!/bin/sh
+PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
+
+# unload before install
+startup="/Applications/KeyRemap4MacBook/scripts/startup.sh"
+[ -f "$startup" ] && "$startup" stop
+exit 0
