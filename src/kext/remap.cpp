@@ -452,15 +452,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     // 789      123
     // 456  to  456
     // 123      789
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_1, KeyCode::KEY_7);
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_2, KeyCode::KEY_8);
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_3, KeyCode::KEY_9);
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_4, KeyCode::KEY_4);
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_5, KeyCode::KEY_5);
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_6, KeyCode::KEY_6);
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_7, KeyCode::KEY_1);
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_8, KeyCode::KEY_2);
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_9, KeyCode::KEY_3);
+    RemapUtil::keyToKey(params, KeyCode::KEYPAD_1, KeyCode::KEYPAD_7);
+    RemapUtil::keyToKey(params, KeyCode::KEYPAD_2, KeyCode::KEYPAD_8);
+    RemapUtil::keyToKey(params, KeyCode::KEYPAD_3, KeyCode::KEYPAD_9);
+
+    RemapUtil::keyToKey(params, KeyCode::KEYPAD_7, KeyCode::KEYPAD_1);
+    RemapUtil::keyToKey(params, KeyCode::KEYPAD_8, KeyCode::KEYPAD_2);
+    RemapUtil::keyToKey(params, KeyCode::KEYPAD_9, KeyCode::KEYPAD_3);
   }
 
   void
