@@ -98,6 +98,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_optionr2enter(const RemapParams &params)
+  {
+    if (! config.remap_optionr2enter) return;
+
+    RemapUtil::modifierToKey(params, ModifierFlag::OPTION_R, RemapUtil::getEnterKeyCode(params));
+  }
+
+  void
   remap_shift2fn(const RemapParams &params)
   {
     if (! config.remap_shift2fn) return;
@@ -833,6 +841,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_enter2semicolon(params);
   remap_optionr2space(params);
   remap_optionr2semicolon(params);
+  remap_optionr2enter(params);
   remap_backquote2command(params);
   remap_escape2tilde(params);
   remap_escape2return(params);
