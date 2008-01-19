@@ -9,4 +9,7 @@ clean:
 	$(MAKE) -C src/kext clean
 	sudo rm -rf pkgroot
 	sudo rm -rf *.pkg
-	sudo rm -rf *.pkg.tar.gz
+	sudo rm -rf *.tar.gz
+
+source:
+	./make-source.sh
