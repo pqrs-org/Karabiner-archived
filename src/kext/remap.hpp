@@ -13,6 +13,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     unsigned int *origCharCode;
     unsigned int *origCharSet;
     unsigned int *keyboardType;
+    // Note: the repeat key code is dropped in the core code.
     AbsoluteTime *ts;
     bool *ex_dropKey;
     unsigned int ex_origKey;
