@@ -171,10 +171,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapUtil::keyToModifier(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag) {
     if (params.ex_origKey != fromKeyCode) return;
-    if (*(params.repeat)) {
-      *(params.ex_dropKey) = true;
-      return;
-    }
 
     FlagStatus *toStatus = allFlagStatus.getFlagStatus(toFlag);
     if (toStatus == NULL) return;
@@ -215,10 +211,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   AllFlagStatus::initialize(const RemapParams &params)
   {
-    if (! *(params.repeat)) {
-      if (*(params.eventType) == KeyEvent::DOWN) ++numHeldDownKeys;
-      if (*(params.eventType) == KeyEvent::UP) --numHeldDownKeys;
-    }
+    if (*(params.eventType) == KeyEvent::DOWN) ++numHeldDownKeys;
+    if (*(params.eventType) == KeyEvent::UP) --numHeldDownKeys;
 
 #if 0
     if (config.debug) {
@@ -348,7 +342,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (item.isEnable() && item.getType() == type) {
         action(target, item.getEventType(), item.getFlags(), item.getKey(), item.getCharCode(),
                *(params.charSet), *(params.origCharCode), *(params.origCharSet),
-               *(params.keyboardType), *(params.repeat), *(params.ts));
+               *(params.keyboardType), false, *(params.ts));
       }
     }
   }

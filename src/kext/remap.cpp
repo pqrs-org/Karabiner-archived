@@ -293,27 +293,23 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     static bool useSpaceAsShift = false;
 
-    if (*(params.key) != KeyCode::SPACE && *(params.eventType) == KeyEvent::DOWN && *(params.repeat) == false) {
+    if (*(params.key) != KeyCode::SPACE && *(params.eventType) == KeyEvent::DOWN) {
       useSpaceAsShift = true;
     }
 
     if (*(params.key) == KeyCode::SPACE) {
       // Space => ShiftL (if type SpaceKey only, works as SpaceKey)
-      if (*(params.repeat) == true) {
-        *(params.ex_dropKey) = true;
-      } else {
-        unsigned int origEventType = *(params.eventType);
-        RemapUtil::keyToModifier(params, KeyCode::SPACE, ModifierFlag::SHIFT_L);
+      unsigned int origEventType = *(params.eventType);
+      RemapUtil::keyToModifier(params, KeyCode::SPACE, ModifierFlag::SHIFT_L);
 
-        if (origEventType == KeyEvent::DOWN) {
-          useSpaceAsShift = false;
+      if (origEventType == KeyEvent::DOWN) {
+        useSpaceAsShift = false;
 
-        } else if (origEventType == KeyEvent::UP) {
-          if (useSpaceAsShift == false) {
-            unsigned int flags = allFlagStatus.makeFlags(params);
-            listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, flags, KeyCode::SPACE, CharCode::SPACE);
-            listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, flags, KeyCode::SPACE, CharCode::SPACE);
-          }
+      } else if (origEventType == KeyEvent::UP) {
+        if (useSpaceAsShift == false) {
+          unsigned int flags = allFlagStatus.makeFlags(params);
+          listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, flags, KeyCode::SPACE, CharCode::SPACE);
+          listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, flags, KeyCode::SPACE, CharCode::SPACE);
         }
       }
     } else if (config.option_space2shift_shift2space) {
@@ -416,8 +412,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (params.ex_origKey != KeyCode::ESCAPE) return;
 
     RemapUtil::keyToKey(params, KeyCode::ESCAPE, KeyCode::KEYPAD_5);
-
-    if (*(params.repeat) == true) return;
 
     if (*(params.eventType) == KeyEvent::DOWN) {
       allFlagStatus.controlL.increase();

@@ -13,7 +13,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     unsigned int *origCharCode;
     unsigned int *origCharSet;
     unsigned int *keyboardType;
-    bool *repeat;
     AbsoluteTime *ts;
     bool *ex_dropKey;
     unsigned int ex_origKey;
