@@ -24,6 +24,23 @@ private:
   struct HookedKeyboard {
     IOHIKeyboard *kbd;
     KeyboardEventAction origEventAction;
+
+    // for keyrepeat
+    IOTimerEventSource *timer;
+    struct RepeatInfo {
+      unsigned int flags;
+      unsigned int key;
+      unsigned int charCode;
+      unsigned int charSet;
+      unsigned int origCharCode;
+      unsigned int origCharSet;
+      unsigned int keyboardType;
+      AbsoluteTime ts;
+      OSObject *target;
+    } repeat;
+
+    void initialize(IOHIKeyboard *_kbd, IOWorkLoop *workLoop);
+    void terminate(IOWorkLoop *workLoop);
   };
   static HookedKeyboard hookedKeyboard[MAXNUM_KEYBOARD];
   static HookedKeyboard *new_hookedKeyboard(void);
@@ -32,8 +49,7 @@ private:
   static bool notifier_hookKeyboard(org_pqrs_driver_KeyRemap4MacBook *self, void *ref, IOService *newService);
   static bool notifier_unhookKeyboard(org_pqrs_driver_KeyRemap4MacBook *self, void *ref, IOService *newService);
 
-  static bool replaceKeyboardEvent(IOHIKeyboard *kbd);
-  static bool restoreKeyboardEvent(IOHIKeyboard *kbd);
+  static bool replaceKeyboardEvent(org_pqrs_driver_KeyRemap4MacBook *self, IOHIKeyboard *kbd);
 
   IONotifier *keyboardNotifier;
   IONotifier *terminatedNotifier;
@@ -52,6 +68,10 @@ private:
                                     AbsoluteTime ts,
                                     OSObject *sender,
                                     void *refcon);
+
+  static void doKeyRepeat(OSObject *owner, IOTimerEventSource *sender);
+
+  IOWorkLoop *workLoop;
 };
 
 #endif

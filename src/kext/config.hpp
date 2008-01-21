@@ -4,6 +4,11 @@
 namespace org_pqrs_KeyRemap4MacBook {
   class Config {
   public:
+    Config() {
+      repeat_initial = 500;
+      repeat_speed = 30;
+    }
+
     int remap_spaces_special;
     int remap_homeposition_functionkey;
     int remap_deleteshift2tilde;
@@ -78,6 +83,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     int remap_jis_kana2return;
     int remap_jis_kanashift2eisuu;
     int remap_jis_unify_kana_eisuu;
+
+    int repeat_initial;
+    int repeat_speed;
 
     int debug;
   };
