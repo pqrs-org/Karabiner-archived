@@ -318,6 +318,12 @@ namespace org_pqrs_KeyRemap4MacBook {
         // use Shift_L as SpaceKey
         RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_L, KeyCode::SPACE);
       }
+    } else if (config.option_space2shift_shiftR2space) {
+      if (params.ex_origKey == KeyCode::SHIFT_R) {
+        useSpaceAsShift = true;
+        // use Shift_R as SpaceKey
+        RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_R, KeyCode::SPACE);
+      }
     }
   }
 

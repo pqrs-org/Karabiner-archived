@@ -49,6 +49,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     int remap_drop_funcshift;
     int option_homeposition_functionkey_add_cmd;
     int option_space2shift_shift2space;
+    int option_space2shift_shiftR2space;
     int remap_tab2expose;
     int remap_keypad2spaces;
     int option_keypad2spaces_modifier_command;
