@@ -61,24 +61,39 @@ namespace org_pqrs_KeyRemap4MacBook {
     int remap_shiftR2space;
 
     // ----------------------------------------
-    int remap_deleteshift2tilde;
+    int remap_shiftdelete2tilde;
     int remap_hhkmode;
 
     // ----------------------------------------
-    int remap_qwerty2colemak;
+    int remap_emacsmode;
+    int option_emacsmode_controlD;
+    int option_emacsmode_controlH;
+    int option_emacsmode_controlI;
+    int option_emacsmode_controlM;
+    int option_emacsmode_controlPNBF;
+    int option_emacsmode_controlV;
+    int option_emacsmode_controlLeftbracket;
+    int option_emacsmode_optionBF;
+    int option_emacsmode_optionD;
+    int option_emacsmode_ex_controlW;
+    int option_emacsmode_ex_controlQ;
+    int option_emacsmode_ex_control12;
+
+    // ----------------------------------------
+    int remap_space2shift;
 
     // ----------------------------------------
     int remap_drop_funcshift;
     int remap_spaces_special;
-    int remap_tab2expose;
     int remap_keypad2spaces;
     int option_keypad2spaces_modifier_command;
     int option_keypad2spaces_modifier_control;
     int option_keypad2spaces_modifier_option;
     int option_keypad2spaces_modifier_shift;
+    int remap_tab2expose;
 
-
-    int remap_space2shift;
+    // ----------------------------------------
+    int remap_qwerty2colemak;
 
     // ----------------------------------------
     int remap_jis_eisuu2commandL;
@@ -98,21 +113,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     int remap_jis_unify_kana_eisuu;
 
 
-
-
-    int remap_emacsmode;
-    int option_emacsmode_controlD;
-    int option_emacsmode_controlH;
-    int option_emacsmode_controlI;
-    int option_emacsmode_controlM;
-    int option_emacsmode_controlPNBF;
-    int option_emacsmode_controlV;
-    int option_emacsmode_controlLeftbracket;
-    int option_emacsmode_optionBF;
-    int option_emacsmode_optionD;
-    int option_emacsmode_ex_controlW;
-    int option_emacsmode_ex_controlQ;
-    int option_emacsmode_ex_control12;
 
     int debug;
   };
