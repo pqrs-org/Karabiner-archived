@@ -151,24 +151,26 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::modifierToModifier(params, ModifierFlag::FN, ModifierFlag::SHIFT_L);
   }
 
-  // ----------------------------------------------------------------------
-  // Modifiers -> Modifiers
+  // ----------------------------------------
   void
-  remap_commandl2control(const RemapParams &params)
+  remap_commandL2controlL(const RemapParams &params)
   {
-    if (! config.remap_commandl2control) return;
+    if (! config.remap_commandL2controlL) return;
 
     RemapUtil::modifierToModifier(params, ModifierFlag::COMMAND_L, ModifierFlag::CONTROL_L);
   }
 
   void
-  remap_commandl2option(const RemapParams &params)
+  remap_commandL2optionL(const RemapParams &params)
   {
-    if (! config.remap_commandl2option) return;
+    if (! config.remap_commandL2optionL) return;
 
     RemapUtil::modifierToModifier(params, ModifierFlag::COMMAND_L, ModifierFlag::OPTION_L);
   }
 
+
+
+  // Modifiers -> Modifiers
   void
   remap_shiftl2control(const RemapParams &params)
   {
@@ -791,9 +793,10 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_fn2optionL(params);
   remap_fn2shiftL(params);
 
-  // change 'modifiers -> modifiers'
-  remap_commandl2control(params);
-  remap_commandl2option(params);
+  remap_commandL2controlL(params);
+  remap_commandL2optionL(params);
+
+
   remap_shiftl2control(params);
   remap_controll2command(params);
   remap_option2command(params);

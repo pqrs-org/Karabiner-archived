@@ -84,6 +84,13 @@ namespace org_pqrs_KeyRemap4MacBook {
               &(config.remap_fn2shiftL), 0, &sysctlFunc, "I", "");
 
   // ----------------------------------------
+  SYSCTL_PROC(_keyremap4macbook_remap, OID_AUTO, commandL2controlL, CTLTYPE_INT|CTLFLAG_RW,
+              &(config.remap_commandL2controlL), 0, &sysctlFunc, "I", "");
+
+  SYSCTL_PROC(_keyremap4macbook_remap, OID_AUTO, commandL2optionL, CTLTYPE_INT|CTLFLAG_RW,
+              &(config.remap_commandL2optionL), 0, &sysctlFunc, "I", "");
+
+  // ----------------------------------------
   SYSCTL_PROC(_keyremap4macbook_remap, OID_AUTO, spaces_special, CTLTYPE_INT|CTLFLAG_RW,
               &(config.remap_spaces_special),
               0, &sysctlFunc, "I",
@@ -168,16 +175,6 @@ namespace org_pqrs_KeyRemap4MacBook {
               &(config.remap_semicolon2return),
               0, &sysctlFunc, "I",
               "Use 'semicolon' as 'return'");
-
-  SYSCTL_PROC(_keyremap4macbook_remap, OID_AUTO, commandl2control, CTLTYPE_INT|CTLFLAG_RW,
-              &(config.remap_commandl2control),
-              0, &sysctlFunc, "I",
-              "Use 'Command_L as Control_L'");
-
-  SYSCTL_PROC(_keyremap4macbook_remap, OID_AUTO, commandl2option, CTLTYPE_INT|CTLFLAG_RW,
-              &(config.remap_commandl2option),
-              0, &sysctlFunc, "I",
-              "Use 'Command_L as Option_L'");
 
   SYSCTL_PROC(_keyremap4macbook_remap, OID_AUTO, shiftl2control, CTLTYPE_INT|CTLFLAG_RW,
               &(config.remap_shiftl2control),
@@ -411,8 +408,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_fn2optionL);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_fn2shiftL);
 
-    sysctl_register_oid(&sysctl__keyremap4macbook_remap_commandl2control);
-    sysctl_register_oid(&sysctl__keyremap4macbook_remap_commandl2option);
+    sysctl_register_oid(&sysctl__keyremap4macbook_remap_commandL2controlL);
+    sysctl_register_oid(&sysctl__keyremap4macbook_remap_commandL2optionL);
+
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_shiftl2control);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_controll2command);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_option2command);
@@ -499,8 +497,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_fn2optionL);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_fn2shiftL);
 
-    sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_commandl2control);
-    sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_commandl2option);
+    sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_commandL2controlL);
+    sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_commandL2optionL);
+
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_shiftl2control);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_controll2command);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_option2command);
