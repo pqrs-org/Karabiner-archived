@@ -314,6 +314,66 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
+  void
+  remap_deleteshift2tilde(const RemapParams &params)
+  {
+    if (! config.remap_deleteshift2tilde) return;
+
+    if (allFlagStatus.shiftL.isHeldDown() || allFlagStatus.shiftR.isHeldDown()) {
+      RemapUtil::keyToKey(params, KeyCode::DELETE, KeyCode::BACKQUOTE);
+    }
+  }
+
+  void
+  remap_hhkmode(const RemapParams &params)
+  {
+    if (! config.remap_hhkmode) return;
+
+    if (! allFlagStatus.fn.isHeldDown()) return;
+
+    allFlagStatus.keypad = false;
+
+    // [ => up
+    if (params.ex_origKey == KeyCode::BRACKET_LEFT) {
+      *(params.key) = KeyCode::CURSOR_UP;
+      allFlagStatus.cursor = true;
+      allFlagStatus.fn.temporary_decrease();
+    }
+    // ; => left
+    if (params.ex_origKey == KeyCode::SEMICOLON || params.ex_origKey == KeyCode::KEYPAD_MINUS) {
+      *(params.key) = KeyCode::CURSOR_LEFT;
+      allFlagStatus.cursor = true;
+      allFlagStatus.fn.temporary_decrease();
+    }
+    // ' => right
+    if (params.ex_origKey == KeyCode::QUOTE) {
+      *(params.key) = KeyCode::CURSOR_RIGHT;
+      allFlagStatus.cursor = true;
+      allFlagStatus.fn.temporary_decrease();
+    }
+    // / => down
+    if (params.ex_origKey == KeyCode::SLASH || params.ex_origKey == KeyCode::KEYPAD_PLUS) {
+      *(params.key) = KeyCode::CURSOR_DOWN;
+      allFlagStatus.cursor = true;
+      allFlagStatus.fn.temporary_decrease();
+    }
+    // L => PageUp
+    if (params.ex_origKey == KeyCode::L || params.ex_origKey == KeyCode::KEYPAD_3) {
+      *(params.key) = KeyCode::PAGEUP;
+    }
+    // . => PageDown
+    if (params.ex_origKey == KeyCode::DOT || params.ex_origKey == KeyCode::KEYPAD_DOT) {
+      *(params.key) = KeyCode::PAGEDOWN;
+    }
+    // K => HOME
+    if (params.ex_origKey == KeyCode::K || params.ex_origKey == KeyCode::KEYPAD_2) {
+      *(params.key) = KeyCode::HOME;
+    }
+    // , => End
+    if (params.ex_origKey == KeyCode::COMMA) {
+      *(params.key) = KeyCode::END;
+    }
+  }
 
 
 
@@ -352,17 +412,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     allFlagStatus.controlL.temporary_increase();
     allFlagStatus.optionL.temporary_increase();
     allFlagStatus.shiftL.temporary_increase();
-  }
-
-  void
-  remap_deleteshift2tilde(const RemapParams &params)
-  {
-    if (! config.remap_deleteshift2tilde) return;
-
-    // DELETE + Shift => ~ (== ` + Shift)
-    if (allFlagStatus.shiftL.isHeldDown() || allFlagStatus.shiftR.isHeldDown()) {
-      RemapUtil::keyToKey(params, KeyCode::DELETE, KeyCode::BACKQUOTE);
-    }
   }
 
   void
@@ -484,57 +533,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::keyToKey(params, KeyCode::KEYPAD_7, KeyCode::KEYPAD_1);
     RemapUtil::keyToKey(params, KeyCode::KEYPAD_8, KeyCode::KEYPAD_2);
     RemapUtil::keyToKey(params, KeyCode::KEYPAD_9, KeyCode::KEYPAD_3);
-  }
-
-  void
-  remap_hhkmode(const RemapParams &params)
-  {
-    if (! config.remap_hhkmode) return;
-
-    if (! allFlagStatus.fn.isHeldDown()) return;
-
-    allFlagStatus.keypad = false;
-
-    // [ => up
-    if (params.ex_origKey == KeyCode::BRACKET_LEFT) {
-      *(params.key) = KeyCode::CURSOR_UP;
-      allFlagStatus.cursor = true;
-      allFlagStatus.fn.temporary_decrease();
-    }
-    // ; => left
-    if (params.ex_origKey == KeyCode::SEMICOLON || params.ex_origKey == KeyCode::KEYPAD_MINUS) {
-      *(params.key) = KeyCode::CURSOR_LEFT;
-      allFlagStatus.cursor = true;
-      allFlagStatus.fn.temporary_decrease();
-    }
-    // ' => right
-    if (params.ex_origKey == KeyCode::QUOTE) {
-      *(params.key) = KeyCode::CURSOR_RIGHT;
-      allFlagStatus.cursor = true;
-      allFlagStatus.fn.temporary_decrease();
-    }
-    // / => down
-    if (params.ex_origKey == KeyCode::SLASH || params.ex_origKey == KeyCode::KEYPAD_PLUS) {
-      *(params.key) = KeyCode::CURSOR_DOWN;
-      allFlagStatus.cursor = true;
-      allFlagStatus.fn.temporary_decrease();
-    }
-    // L => PageUp
-    if (params.ex_origKey == KeyCode::L || params.ex_origKey == KeyCode::KEYPAD_3) {
-      *(params.key) = KeyCode::PAGEUP;
-    }
-    // . => PageDown
-    if (params.ex_origKey == KeyCode::DOT || params.ex_origKey == KeyCode::KEYPAD_DOT) {
-      *(params.key) = KeyCode::PAGEDOWN;
-    }
-    // K => HOME
-    if (params.ex_origKey == KeyCode::K || params.ex_origKey == KeyCode::KEYPAD_2) {
-      *(params.key) = KeyCode::HOME;
-    }
-    // , => End
-    if (params.ex_origKey == KeyCode::COMMA) {
-      *(params.key) = KeyCode::END;
-    }
   }
 
   void
@@ -844,16 +842,19 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_shiftR2escape(params);
   remap_shiftR2space(params);
 
+  // ----------------------------------------
+  remap_deleteshift2tilde(params);
+  remap_hhkmode(params);
+
+  // ----------------------------------------
 
 
   remap_spaces_special(params);
-  remap_deleteshift2tilde(params);
   remap_qwerty2colemak(params);
 
   remap_drop_funcshift(params);
   remap_tab2expose(params);
   remap_keypad2spaces(params);
-  remap_hhkmode(params);
   remap_emacsmode(params);
 
   // ------------------------------------------------------------
