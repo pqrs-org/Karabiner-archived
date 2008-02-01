@@ -126,6 +126,13 @@ namespace org_pqrs_KeyRemap4MacBook {
               &(config.remap_optionR2space), 0, &sysctlFunc, "I", "");
 
   // ----------------------------------------
+  SYSCTL_PROC(_keyremap4macbook_remap, OID_AUTO, return2optionL, CTLTYPE_INT|CTLFLAG_RW,
+              &(config.remap_return2optionL), 0, &sysctlFunc, "I", "");
+
+  SYSCTL_PROC(_keyremap4macbook_remap, OID_AUTO, return2semicolon, CTLTYPE_INT|CTLFLAG_RW,
+              &(config.remap_return2semicolon), 0, &sysctlFunc, "I", "");
+
+  // ----------------------------------------
   SYSCTL_PROC(_keyremap4macbook_remap, OID_AUTO, shiftL2controlL, CTLTYPE_INT|CTLFLAG_RW,
               &(config.remap_shiftL2controlL), 0, &sysctlFunc, "I", "");
 
@@ -163,16 +170,6 @@ namespace org_pqrs_KeyRemap4MacBook {
               &(config.remap_qwerty2colemak),
               0, &sysctlFunc, "I",
               "Turn QWERTY layout to Colemak layout");
-
-  SYSCTL_PROC(_keyremap4macbook_remap, OID_AUTO, return2option, CTLTYPE_INT|CTLFLAG_RW,
-              &(config.remap_return2option),
-              0, &sysctlFunc, "I",
-              "Remap 'Return Key' as 'Command Key'");
-
-  SYSCTL_PROC(_keyremap4macbook_remap, OID_AUTO, return2semicolon, CTLTYPE_INT|CTLFLAG_RW,
-              &(config.remap_return2semicolon),
-              0, &sysctlFunc, "I",
-              "Remap 'Return Key' as 'Semicolon Key'");
 
   SYSCTL_PROC(_keyremap4macbook_remap, OID_AUTO, semicolon2return, CTLTYPE_INT|CTLFLAG_RW,
               &(config.remap_semicolon2return),
@@ -391,6 +388,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_optionR2semicolon);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_optionR2space);
 
+    sysctl_register_oid(&sysctl__keyremap4macbook_remap_return2optionL);
+    sysctl_register_oid(&sysctl__keyremap4macbook_remap_return2semicolon);
+
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_shiftL2controlL);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_shiftL2space);
 
@@ -405,8 +405,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_spaces_special);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_deleteshift2tilde);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_qwerty2colemak);
-    sysctl_register_oid(&sysctl__keyremap4macbook_remap_return2option);
-    sysctl_register_oid(&sysctl__keyremap4macbook_remap_return2semicolon);
 
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_semicolon2return);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_drop_funcshift);
@@ -495,6 +493,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_optionR2semicolon);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_optionR2space);
 
+    sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_return2optionL);
+    sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_return2semicolon);
+
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_shiftL2controlL);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_shiftL2space);
 
@@ -509,8 +510,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_spaces_special);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_deleteshift2tilde);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_qwerty2colemak);
-    sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_return2option);
-    sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_return2semicolon);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_semicolon2return);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_drop_funcshift);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_tab2expose);
