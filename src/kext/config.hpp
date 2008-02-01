@@ -10,7 +10,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     int remap_spaces_special;
-    int remap_homeposition_functionkey;
     int remap_deleteshift2tilde;
     int remap_qwerty2colemak;
     int remap_return2option;
@@ -47,7 +46,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     int remap_shiftl2control;
     int remap_controll2command;
     int remap_drop_funcshift;
-    int option_homeposition_functionkey_add_cmd;
     int option_space2shift_shift2space;
     int option_space2shift_shiftR2space;
     int remap_tab2expose;
