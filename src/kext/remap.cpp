@@ -106,7 +106,50 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::modifierToKey(params, ModifierFlag::OPTION_R, RemapUtil::getEnterKeyCode(params));
   }
 
+  // ----------------------------------------
+  void
+  remap_fn2commandL(const RemapParams &params)
+  {
+    if (! config.remap_fn2commandL) return;
 
+    if (RemapUtil::isModifierOn(params, ModifierFlag::FN)) {
+      RemapUtil::fnToNormal(params);
+    }
+    RemapUtil::modifierToModifier(params, ModifierFlag::FN, ModifierFlag::COMMAND_L);
+  }
+
+  void
+  remap_fn2controlL(const RemapParams &params)
+  {
+    if (! config.remap_fn2controlL) return;
+
+    if (RemapUtil::isModifierOn(params, ModifierFlag::FN)) {
+      RemapUtil::fnToNormal(params);
+    }
+    RemapUtil::modifierToModifier(params, ModifierFlag::FN, ModifierFlag::CONTROL_L);
+  }
+
+  void
+  remap_fn2optionL(const RemapParams &params)
+  {
+    if (! config.remap_fn2optionL) return;
+
+    if (RemapUtil::isModifierOn(params, ModifierFlag::FN)) {
+      RemapUtil::fnToNormal(params);
+    }
+    RemapUtil::modifierToModifier(params, ModifierFlag::FN, ModifierFlag::OPTION_L);
+  }
+
+  void
+  remap_fn2shiftL(const RemapParams &params)
+  {
+    if (! config.remap_fn2shiftL) return;
+
+    if (RemapUtil::isModifierOn(params, ModifierFlag::FN)) {
+      RemapUtil::fnToNormal(params);
+    }
+    RemapUtil::modifierToModifier(params, ModifierFlag::FN, ModifierFlag::SHIFT_L);
+  }
 
   // ----------------------------------------------------------------------
   // Modifiers -> Modifiers
@@ -165,50 +208,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     RemapUtil::modifierToModifier(params, ModifierFlag::SHIFT_R, ModifierFlag::FN);
     RemapUtil::toFN(params);
-  }
-
-  void
-  remap_fn2command(const RemapParams &params)
-  {
-    if (! config.remap_fn2command) return;
-
-    if (RemapUtil::isModifierOn(params, ModifierFlag::FN)) {
-      RemapUtil::fnToNormal(params);
-    }
-    RemapUtil::modifierToModifier(params, ModifierFlag::FN, ModifierFlag::COMMAND_L);
-  }
-
-  void
-  remap_fn2control(const RemapParams &params)
-  {
-    if (! config.remap_fn2control) return;
-
-    if (RemapUtil::isModifierOn(params, ModifierFlag::FN)) {
-      RemapUtil::fnToNormal(params);
-    }
-    RemapUtil::modifierToModifier(params, ModifierFlag::FN, ModifierFlag::CONTROL_L);
-  }
-
-  void
-  remap_fn2option(const RemapParams &params)
-  {
-    if (! config.remap_fn2option) return;
-
-    if (RemapUtil::isModifierOn(params, ModifierFlag::FN)) {
-      RemapUtil::fnToNormal(params);
-    }
-    RemapUtil::modifierToModifier(params, ModifierFlag::FN, ModifierFlag::OPTION_L);
-  }
-
-  void
-  remap_fn2shift(const RemapParams &params)
-  {
-    if (! config.remap_fn2shift) return;
-
-    if (RemapUtil::isModifierOn(params, ModifierFlag::FN)) {
-      RemapUtil::fnToNormal(params);
-    }
-    RemapUtil::modifierToModifier(params, ModifierFlag::FN, ModifierFlag::SHIFT_L);
   }
 
   // ----------------------------------------------------------------------
@@ -787,6 +786,11 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_optionR2semicolon(params);
   remap_optionR2enter(params);
 
+  remap_fn2commandL(params);
+  remap_fn2controlL(params);
+  remap_fn2optionL(params);
+  remap_fn2shiftL(params);
+
   // change 'modifiers -> modifiers'
   remap_commandl2control(params);
   remap_commandl2option(params);
@@ -795,10 +799,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_option2command(params);
   remap_option2shift(params);
   remap_shift2fn(params);
-  remap_fn2command(params);
-  remap_fn2control(params);
-  remap_fn2option(params);
-  remap_fn2shift(params);
   // change 'keys -> modifiers' or 'keys -> keys'
   remap_spaces_special(params);
   remap_deleteshift2tilde(params);
