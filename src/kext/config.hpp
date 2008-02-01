@@ -5,10 +5,15 @@ namespace org_pqrs_KeyRemap4MacBook {
   class Config {
   public:
     Config() {
-      repeat_initial = 500;
-      repeat_speed = 30;
+      repeat_initial_wait = 500;
+      repeat_wait = 30;
     }
 
+    // ----------------------------------------
+    int repeat_initial_wait;
+    int repeat_wait;
+
+    // ----------------------------------------
     int remap_backquote2commandL;
     int remap_backquote2escape;
 
@@ -53,6 +58,23 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     int remap_space2shift;
 
+    // ----------------------------------------
+    int remap_jis_eisuu2commandL;
+    int remap_jis_eisuu2controlL;
+    int remap_jis_eisuu2optionL;
+    int remap_jis_eisuu2shiftL;
+    int remap_jis_eisuu2tab;
+
+    int remap_jis_kana2commandL;
+    int remap_jis_kana2controlL;
+    int remap_jis_kana2optionL;
+    int remap_jis_kana2shiftL;
+    int remap_jis_kana2return;
+
+
+    int remap_jis_kanashift2eisuu;
+    int remap_jis_unify_kana_eisuu;
+
 
 
     int remap_spaces_special;
@@ -84,23 +106,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     int option_emacsmode_ex_controlW;
     int option_emacsmode_ex_controlQ;
     int option_emacsmode_ex_control12;
-
-    // for JIS keyboard
-    int remap_jis_eisuu2control;
-    int remap_jis_eisuu2command;
-    int remap_jis_eisuu2option;
-    int remap_jis_eisuu2shift;
-    int remap_jis_eisuu2tab;
-    int remap_jis_kana2control;
-    int remap_jis_kana2command;
-    int remap_jis_kana2option;
-    int remap_jis_kana2shift;
-    int remap_jis_kana2return;
-    int remap_jis_kanashift2eisuu;
-    int remap_jis_unify_kana_eisuu;
-
-    int repeat_initial;
-    int repeat_speed;
 
     int debug;
   };
