@@ -315,9 +315,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
-  remap_deleteshift2tilde(const RemapParams &params)
+  remap_shiftdelete2tilde(const RemapParams &params)
   {
-    if (! config.remap_deleteshift2tilde) return;
+    if (! config.remap_shiftdelete2tilde) return;
 
     if (allFlagStatus.shiftL.isHeldDown() || allFlagStatus.shiftR.isHeldDown()) {
       RemapUtil::keyToKey(params, KeyCode::DELETE, KeyCode::BACKQUOTE);
@@ -375,166 +375,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
-
-
-
-  // ----------------------------------------------------------------------
-  // Keys -> Modifiers, Keys -> Keys
-  void
-  remap_spaces_special(const RemapParams &params)
-  {
-    if (! config.remap_spaces_special) return;
-
-    if (allFlagStatus.makeFlags(params) != ModifierFlag::COMMAND_R) return;
-
-    if (*(params.key) == KeyCode::A) {
-      *(params.key) = KeyCode::KEY_1;
-    } else if (*(params.key) == KeyCode::S) {
-      *(params.key) = KeyCode::KEY_2;
-    } else if (*(params.key) == KeyCode::D) {
-      *(params.key) = KeyCode::KEY_3;
-    } else if (*(params.key) == KeyCode::F) {
-      *(params.key) = KeyCode::KEY_4;
-    } else if (*(params.key) == KeyCode::G) {
-      *(params.key) = KeyCode::KEY_5;
-    } else if (*(params.key) == KeyCode::H) {
-      *(params.key) = KeyCode::KEY_6;
-    } else if (*(params.key) == KeyCode::J) {
-      *(params.key) = KeyCode::KEY_7;
-    } else if (*(params.key) == KeyCode::K) {
-      *(params.key) = KeyCode::KEY_8;
-    } else if (*(params.key) == KeyCode::L) {
-      *(params.key) = KeyCode::KEY_9;
-    } else {
-      return;
-    }
-
-    allFlagStatus.controlL.temporary_increase();
-    allFlagStatus.optionL.temporary_increase();
-    allFlagStatus.shiftL.temporary_increase();
-  }
-
-  void
-  remap_qwerty2colemak(const RemapParams &params)
-  {
-    if (! config.remap_qwerty2colemak) return;
-
-    // see http://colemak.com/
-    RemapUtil::keyToKey(params, KeyCode::E, KeyCode::F);
-    RemapUtil::keyToKey(params, KeyCode::R, KeyCode::P);
-    RemapUtil::keyToKey(params, KeyCode::T, KeyCode::G);
-    RemapUtil::keyToKey(params, KeyCode::Y, KeyCode::J);
-    RemapUtil::keyToKey(params, KeyCode::U, KeyCode::L);
-    RemapUtil::keyToKey(params, KeyCode::I, KeyCode::U);
-    RemapUtil::keyToKey(params, KeyCode::O, KeyCode::Y);
-    RemapUtil::keyToKey(params, KeyCode::P, KeyCode::SEMICOLON);
-    RemapUtil::keyToKey(params, KeyCode::S, KeyCode::R);
-    RemapUtil::keyToKey(params, KeyCode::D, KeyCode::S);
-    RemapUtil::keyToKey(params, KeyCode::F, KeyCode::T);
-    RemapUtil::keyToKey(params, KeyCode::G, KeyCode::D);
-    RemapUtil::keyToKey(params, KeyCode::J, KeyCode::N);
-    RemapUtil::keyToKey(params, KeyCode::K, KeyCode::E);
-    RemapUtil::keyToKey(params, KeyCode::L, KeyCode::I);
-    RemapUtil::keyToKey(params, KeyCode::SEMICOLON, KeyCode::O);
-    RemapUtil::keyToKey(params, KeyCode::N, KeyCode::K);
-  }
-
-  void
-  remap_space2shift(const RemapParams &params)
-  {
-    if (! config.remap_space2shift) return;
-
-    static bool useSpaceAsShift = false;
-
-    if (params.ex_origKey != KeyCode::SPACE && *(params.eventType) == KeyEvent::DOWN) {
-      useSpaceAsShift = true;
-    }
-
-    if (params.ex_origKey == KeyCode::SPACE) {
-      // Space => ShiftL (if type SpaceKey only, works as SpaceKey)
-      unsigned int origEventType = *(params.eventType);
-      RemapUtil::keyToModifier(params, KeyCode::SPACE, ModifierFlag::SHIFT_L);
-
-      if (origEventType == KeyEvent::DOWN) {
-        useSpaceAsShift = false;
-
-      } else if (origEventType == KeyEvent::UP) {
-        if (useSpaceAsShift == false) {
-          unsigned int flags = allFlagStatus.makeFlags(params);
-          listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, flags, KeyCode::SPACE, CharCode::SPACE);
-          listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, flags, KeyCode::SPACE, CharCode::SPACE);
-        }
-      }
-    }
-  }
-
-  void
-  remap_drop_funcshift(const RemapParams &params)
-  {
-    if (! config.remap_drop_funcshift) return;
-
-    if (allFlagStatus.shiftL.isHeldDown() || allFlagStatus.shiftR.isHeldDown()) {
-      if (*(params.key) == KeyCode::F1 ||
-          *(params.key) == KeyCode::F2 ||
-          *(params.key) == KeyCode::F3 ||
-          *(params.key) == KeyCode::F4 ||
-          *(params.key) == KeyCode::F5 ||
-          *(params.key) == KeyCode::F6 ||
-          *(params.key) == KeyCode::F7 ||
-          *(params.key) == KeyCode::F8 ||
-          *(params.key) == KeyCode::F9 ||
-          *(params.key) == KeyCode::F10 ||
-          *(params.key) == KeyCode::F11 ||
-          *(params.key) == KeyCode::F12) {
-        *(params.ex_dropKey) = true;
-      }
-    }
-  }
-
-  void
-  remap_tab2expose(const RemapParams &params)
-  {
-    if (! config.remap_tab2expose) return;
-
-    // Tab => F9 (if no Modifier)
-    if (allFlagStatus.makeFlags(params) != 0) return;
-    RemapUtil::keyToKey(params, KeyCode::TAB, KeyCode::F9);
-  }
-
-  void
-  remap_keypad2spaces(const RemapParams &params)
-  {
-    if (! config.remap_keypad2spaces) return;
-
-    if (config.option_keypad2spaces_modifier_command) {
-      if (! allFlagStatus.commandL.isHeldDown() &&
-          ! allFlagStatus.commandR.isHeldDown()) return;
-    }
-    if (config.option_keypad2spaces_modifier_control) {
-      if (! allFlagStatus.controlL.isHeldDown() &&
-          ! allFlagStatus.controlR.isHeldDown()) return;
-    }
-    if (config.option_keypad2spaces_modifier_option) {
-      if (! allFlagStatus.optionL.isHeldDown() &&
-          ! allFlagStatus.optionR.isHeldDown()) return;
-    }
-    if (config.option_keypad2spaces_modifier_shift) {
-      if (! allFlagStatus.shiftL.isHeldDown() &&
-          ! allFlagStatus.shiftR.isHeldDown()) return;
-    }
-
-    // 789      123
-    // 456  to  456
-    // 123      789
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_1, KeyCode::KEYPAD_7);
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_2, KeyCode::KEYPAD_8);
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_3, KeyCode::KEYPAD_9);
-
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_7, KeyCode::KEYPAD_1);
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_8, KeyCode::KEYPAD_2);
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_9, KeyCode::KEYPAD_3);
-  }
-
+  // ----------------------------------------
   void
   remap_emacsmode(const RemapParams &params)
   {
@@ -658,6 +499,164 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     modifierCanceling_control.restore(params);
     modifierCanceling_option.restore(params);
+  }
+
+  // ----------------------------------------
+  void
+  remap_space2shift(const RemapParams &params)
+  {
+    if (! config.remap_space2shift) return;
+
+    static bool useSpaceAsShift = false;
+
+    if (params.ex_origKey != KeyCode::SPACE && *(params.eventType) == KeyEvent::DOWN) {
+      useSpaceAsShift = true;
+    }
+
+    if (params.ex_origKey == KeyCode::SPACE) {
+      // Space => ShiftL (if type SpaceKey only, works as SpaceKey)
+      unsigned int origEventType = *(params.eventType);
+      RemapUtil::keyToModifier(params, KeyCode::SPACE, ModifierFlag::SHIFT_L);
+
+      if (origEventType == KeyEvent::DOWN) {
+        useSpaceAsShift = false;
+
+      } else if (origEventType == KeyEvent::UP) {
+        if (useSpaceAsShift == false) {
+          unsigned int flags = allFlagStatus.makeFlags(params);
+          listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, flags, KeyCode::SPACE, CharCode::SPACE);
+          listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, flags, KeyCode::SPACE, CharCode::SPACE);
+        }
+      }
+    }
+  }
+
+  // ----------------------------------------
+  void
+  remap_drop_funcshift(const RemapParams &params)
+  {
+    if (! config.remap_drop_funcshift) return;
+
+    if (allFlagStatus.shiftL.isHeldDown() || allFlagStatus.shiftR.isHeldDown()) {
+      if (*(params.key) == KeyCode::F1 ||
+          *(params.key) == KeyCode::F2 ||
+          *(params.key) == KeyCode::F3 ||
+          *(params.key) == KeyCode::F4 ||
+          *(params.key) == KeyCode::F5 ||
+          *(params.key) == KeyCode::F6 ||
+          *(params.key) == KeyCode::F7 ||
+          *(params.key) == KeyCode::F8 ||
+          *(params.key) == KeyCode::F9 ||
+          *(params.key) == KeyCode::F10 ||
+          *(params.key) == KeyCode::F11 ||
+          *(params.key) == KeyCode::F12) {
+        *(params.ex_dropKey) = true;
+      }
+    }
+  }
+
+  void
+  remap_spaces_special(const RemapParams &params)
+  {
+    if (! config.remap_spaces_special) return;
+
+    if (allFlagStatus.makeFlags(params) != ModifierFlag::COMMAND_R) return;
+
+    if (*(params.key) == KeyCode::A) {
+      *(params.key) = KeyCode::KEY_1;
+    } else if (*(params.key) == KeyCode::S) {
+      *(params.key) = KeyCode::KEY_2;
+    } else if (*(params.key) == KeyCode::D) {
+      *(params.key) = KeyCode::KEY_3;
+    } else if (*(params.key) == KeyCode::F) {
+      *(params.key) = KeyCode::KEY_4;
+    } else if (*(params.key) == KeyCode::G) {
+      *(params.key) = KeyCode::KEY_5;
+    } else if (*(params.key) == KeyCode::H) {
+      *(params.key) = KeyCode::KEY_6;
+    } else if (*(params.key) == KeyCode::J) {
+      *(params.key) = KeyCode::KEY_7;
+    } else if (*(params.key) == KeyCode::K) {
+      *(params.key) = KeyCode::KEY_8;
+    } else if (*(params.key) == KeyCode::L) {
+      *(params.key) = KeyCode::KEY_9;
+    } else {
+      return;
+    }
+
+    allFlagStatus.controlL.temporary_increase();
+    allFlagStatus.optionL.temporary_increase();
+    allFlagStatus.shiftL.temporary_increase();
+  }
+
+  void
+  remap_keypad2spaces(const RemapParams &params)
+  {
+    if (! config.remap_keypad2spaces) return;
+
+    if (config.option_keypad2spaces_modifier_command) {
+      if (! allFlagStatus.commandL.isHeldDown() &&
+          ! allFlagStatus.commandR.isHeldDown()) return;
+    }
+    if (config.option_keypad2spaces_modifier_control) {
+      if (! allFlagStatus.controlL.isHeldDown() &&
+          ! allFlagStatus.controlR.isHeldDown()) return;
+    }
+    if (config.option_keypad2spaces_modifier_option) {
+      if (! allFlagStatus.optionL.isHeldDown() &&
+          ! allFlagStatus.optionR.isHeldDown()) return;
+    }
+    if (config.option_keypad2spaces_modifier_shift) {
+      if (! allFlagStatus.shiftL.isHeldDown() &&
+          ! allFlagStatus.shiftR.isHeldDown()) return;
+    }
+
+    // 789      123
+    // 456  to  456
+    // 123      789
+    RemapUtil::keyToKey(params, KeyCode::KEYPAD_1, KeyCode::KEYPAD_7);
+    RemapUtil::keyToKey(params, KeyCode::KEYPAD_2, KeyCode::KEYPAD_8);
+    RemapUtil::keyToKey(params, KeyCode::KEYPAD_3, KeyCode::KEYPAD_9);
+
+    RemapUtil::keyToKey(params, KeyCode::KEYPAD_7, KeyCode::KEYPAD_1);
+    RemapUtil::keyToKey(params, KeyCode::KEYPAD_8, KeyCode::KEYPAD_2);
+    RemapUtil::keyToKey(params, KeyCode::KEYPAD_9, KeyCode::KEYPAD_3);
+  }
+
+  void
+  remap_tab2expose(const RemapParams &params)
+  {
+    if (! config.remap_tab2expose) return;
+
+    // Tab => F9 (if no Modifier)
+    if (allFlagStatus.makeFlags(params) != 0) return;
+    RemapUtil::keyToKey(params, KeyCode::TAB, KeyCode::F9);
+  }
+
+  // ----------------------------------------
+  void
+  remap_qwerty2colemak(const RemapParams &params)
+  {
+    if (! config.remap_qwerty2colemak) return;
+
+    // see http://colemak.com/
+    RemapUtil::keyToKey(params, KeyCode::E, KeyCode::F);
+    RemapUtil::keyToKey(params, KeyCode::R, KeyCode::P);
+    RemapUtil::keyToKey(params, KeyCode::T, KeyCode::G);
+    RemapUtil::keyToKey(params, KeyCode::Y, KeyCode::J);
+    RemapUtil::keyToKey(params, KeyCode::U, KeyCode::L);
+    RemapUtil::keyToKey(params, KeyCode::I, KeyCode::U);
+    RemapUtil::keyToKey(params, KeyCode::O, KeyCode::Y);
+    RemapUtil::keyToKey(params, KeyCode::P, KeyCode::SEMICOLON);
+    RemapUtil::keyToKey(params, KeyCode::S, KeyCode::R);
+    RemapUtil::keyToKey(params, KeyCode::D, KeyCode::S);
+    RemapUtil::keyToKey(params, KeyCode::F, KeyCode::T);
+    RemapUtil::keyToKey(params, KeyCode::G, KeyCode::D);
+    RemapUtil::keyToKey(params, KeyCode::J, KeyCode::N);
+    RemapUtil::keyToKey(params, KeyCode::K, KeyCode::E);
+    RemapUtil::keyToKey(params, KeyCode::L, KeyCode::I);
+    RemapUtil::keyToKey(params, KeyCode::SEMICOLON, KeyCode::O);
+    RemapUtil::keyToKey(params, KeyCode::N, KeyCode::K);
   }
 
   // ----------------------------------------
@@ -843,19 +842,17 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_shiftR2space(params);
 
   // ----------------------------------------
-  remap_deleteshift2tilde(params);
+  remap_shiftdelete2tilde(params);
   remap_hhkmode(params);
 
   // ----------------------------------------
-
-
-  remap_spaces_special(params);
-  remap_qwerty2colemak(params);
-
   remap_drop_funcshift(params);
-  remap_tab2expose(params);
+  remap_spaces_special(params);
   remap_keypad2spaces(params);
-  remap_emacsmode(params);
+  remap_tab2expose(params);
+
+  // ----------------------------------------
+  remap_qwerty2colemak(params);
 
   // ------------------------------------------------------------
   // jis
@@ -873,6 +870,11 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   remap_jis_kanashift2eisuu(params);
   remap_jis_unify_kana_eisuu(params);
+
+  // ------------------------------------------------------------
+  // *** Note: we need to call remap_emacsmode as possible late. ***
+  // *** If qwerty2colemak is enable, Control+H... works with Colemak Keyboard Layout. ***
+  remap_emacsmode(params);
 
   // ------------------------------------------------------------
   // *** Note: we need to call remap_space2shift as possible late. ***
