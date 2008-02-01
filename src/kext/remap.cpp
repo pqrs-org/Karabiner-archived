@@ -84,6 +84,31 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
+  remap_escape2backquote(const RemapParams &params)
+  {
+    if (! config.remap_escape2backquote) return;
+
+    RemapUtil::keyToKey(params, KeyCode::ESCAPE, KeyCode::BACKQUOTE);
+  }
+
+  void
+  remap_escape2rightclick(const RemapParams &params)
+  {
+    if (! config.remap_escape2rightclick) return;
+
+    if (params.ex_origKey != KeyCode::ESCAPE) return;
+
+    RemapUtil::keyToKey(params, KeyCode::ESCAPE, KeyCode::KEYPAD_5);
+
+    if (*(params.eventType) == KeyEvent::DOWN) {
+      allFlagStatus.controlL.increase();
+    } else if (*(params.eventType) == KeyEvent::UP) {
+      allFlagStatus.controlL.decrease();
+    }
+  }
+
+  // ----------------------------------------
+  void
   remap_fn2commandL(const RemapParams &params)
   {
     if (! config.remap_fn2commandL) return;
@@ -378,39 +403,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     RemapUtil::modifierToKey(params, ModifierFlag::COMMAND_L, KeyCode::BACKQUOTE);
     RemapUtil::keyToModifier(params, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L);
-  }
-
-  void
-  remap_escape2tilde(const RemapParams &params)
-  {
-    if (! config.remap_escape2tilde) return;
-
-    RemapUtil::keyToKey(params, KeyCode::ESCAPE, KeyCode::BACKQUOTE);
-    RemapUtil::keyToKey(params, KeyCode::BACKQUOTE, KeyCode::ESCAPE);
-  }
-
-  void
-  remap_escape2return(const RemapParams &params)
-  {
-    if (! config.remap_escape2return) return;
-
-    RemapUtil::keyToKey(params, KeyCode::ESCAPE, KeyCode::RETURN);
-  }
-
-  void
-  remap_escape2rightclick(const RemapParams &params)
-  {
-    if (! config.remap_escape2rightclick) return;
-
-    if (params.ex_origKey != KeyCode::ESCAPE) return;
-
-    RemapUtil::keyToKey(params, KeyCode::ESCAPE, KeyCode::KEYPAD_5);
-
-    if (*(params.eventType) == KeyEvent::DOWN) {
-      allFlagStatus.controlL.increase();
-    } else if (*(params.eventType) == KeyEvent::UP) {
-      allFlagStatus.controlL.decrease();
-    }
   }
 
   void
@@ -808,6 +800,9 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_enter2space(params);
   remap_enter2semicolon(params);
 
+  remap_escape2backquote(params);
+  remap_escape2rightclick(params);
+
   remap_fn2commandL(params);
   remap_fn2controlL(params);
   remap_fn2optionL(params);
@@ -841,9 +836,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_space2shift(params);
 
   remap_backquote2command(params);
-  remap_escape2tilde(params);
-  remap_escape2return(params);
-  remap_escape2rightclick(params);
   remap_semicolon2return(params);
   remap_drop_funcshift(params);
   remap_tab2expose(params);

@@ -21,6 +21,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     int remap_enter2space;
     int remap_enter2semicolon;
 
+    int remap_escape2backquote;
+    int remap_escape2rightclick;
+
     int remap_fn2commandL;
     int remap_fn2controlL;
     int remap_fn2optionL;
@@ -51,10 +54,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     int remap_return2option;
     int remap_return2semicolon;
     int remap_space2shift;
-    int remap_escape2tilde;
-    int remap_escape2return;
-    int remap_escape2rightclick;
+
     int remap_backquote2command;
+
     int remap_semicolon2return;
 
     int remap_drop_funcshift;
