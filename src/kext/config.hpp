@@ -51,19 +51,19 @@ namespace org_pqrs_KeyRemap4MacBook {
     int remap_optionR2space;
 
 
+    int remap_space2shift;
+
+
 
     int remap_spaces_special;
     int remap_deleteshift2tilde;
     int remap_qwerty2colemak;
     int remap_return2option;
     int remap_return2semicolon;
-    int remap_space2shift;
 
     int remap_semicolon2return;
 
     int remap_drop_funcshift;
-    int option_space2shift_shift2space;
-    int option_space2shift_shiftR2space;
     int remap_tab2expose;
     int remap_keypad2spaces;
     int option_keypad2spaces_modifier_command;
