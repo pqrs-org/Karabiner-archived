@@ -61,7 +61,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     int remap_shiftR2space;
 
     // ----------------------------------------
-    int remap_shiftdelete2tilde;
+    int remap_shiftDelete2tilde;
     int remap_hhkmode;
 
     // ----------------------------------------
@@ -108,12 +108,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     int remap_jis_kana2shiftL;
     int remap_jis_kana2return;
 
+    int remap_jis_shiftKana2eisuu;
+    int remap_jis_unify_eisuu_to_kana;
+    int remap_jis_unify_kana_eisuu_to_commandL;
 
-    int remap_jis_kanashift2eisuu;
-    int remap_jis_unify_kana_eisuu;
-
-
-
+    // ----------------------------------------
     int debug;
   };
   extern Config config;
