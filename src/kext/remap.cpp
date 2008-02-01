@@ -195,38 +195,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  remap_homeposition_functionkey(const RemapParams &params)
-  {
-    if (! config.remap_homeposition_functionkey) return;
-
-    if (allFlagStatus.makeFlags(params) != ModifierFlag::COMMAND_R) return;
-
-    if (*(params.key) == KeyCode::A) {
-      *(params.key) = KeyCode::F1;
-    } else if (*(params.key) == KeyCode::S) {
-      *(params.key) = KeyCode::F2;
-    } else if (*(params.key) == KeyCode::D) {
-      *(params.key) = KeyCode::F3;
-    } else if (*(params.key) == KeyCode::F) {
-      *(params.key) = KeyCode::F4;
-    } else if (*(params.key) == KeyCode::G) {
-      *(params.key) = KeyCode::F5;
-    } else if (*(params.key) == KeyCode::H) {
-      *(params.key) = KeyCode::F6;
-    } else if (*(params.key) == KeyCode::J) {
-      *(params.key) = KeyCode::F7;
-    } else if (*(params.key) == KeyCode::K) {
-      *(params.key) = KeyCode::F8;
-    } else if (*(params.key) == KeyCode::L) {
-      *(params.key) = KeyCode::F9;
-    }
-
-    if (! config.option_homeposition_functionkey_add_cmd) {
-      allFlagStatus.commandR.temporary_decrease();
-    }
-  }
-
-  void
   remap_deleteshift2tilde(const RemapParams &params)
   {
     if (! config.remap_deleteshift2tilde) return;
@@ -825,7 +793,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_fn2shift(params);
   // change 'keys -> modifiers' or 'keys -> keys'
   remap_spaces_special(params);
-  remap_homeposition_functionkey(params);
   remap_deleteshift2tilde(params);
   remap_qwerty2colemak(params);
   remap_return2option(params);

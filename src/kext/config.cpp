@@ -37,16 +37,6 @@ namespace org_pqrs_KeyRemap4MacBook {
               0, &sysctlFunc, "I",
               "Remap Cmd+A..Cmd+L as 'Cmd+Control+Shift+Option+1 .. Cmd+Control+Shift+Option+9'");
 
-  SYSCTL_PROC(_keyremap4macbook_remap, OID_AUTO, homeposition_functionkey, CTLTYPE_INT|CTLFLAG_RW,
-              &(config.remap_homeposition_functionkey),
-              0, &sysctlFunc, "I",
-              "Remap Cmd+A..Cmd+L as 'F1..F9'");
-
-  SYSCTL_PROC(_keyremap4macbook_option, OID_AUTO, homeposition_functionkey_add_cmd, CTLTYPE_INT|CTLFLAG_RW,
-              &(config.option_homeposition_functionkey_add_cmd),
-              0, &sysctlFunc, "I",
-              "Remap Cmd+A..Cmd+L as 'Cmd+F1..Cmd+F9' (use with homeposition_functionkey) ");
-
   SYSCTL_PROC(_keyremap4macbook_remap, OID_AUTO, deleteshift2tilde, CTLTYPE_INT|CTLFLAG_RW,
               &(config.remap_deleteshift2tilde),
               0, &sysctlFunc, "I",
@@ -451,8 +441,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_fn2option);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_fn2shift);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_spaces_special);
-    sysctl_register_oid(&sysctl__keyremap4macbook_remap_homeposition_functionkey);
-    sysctl_register_oid(&sysctl__keyremap4macbook_option_homeposition_functionkey_add_cmd);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_deleteshift2tilde);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_qwerty2colemak);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_return2option);
@@ -538,8 +526,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_fn2option);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_fn2shift);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_spaces_special);
-    sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_homeposition_functionkey);
-    sysctl_unregister_oid(&sysctl__keyremap4macbook_option_homeposition_functionkey_add_cmd);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_deleteshift2tilde);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_qwerty2colemak);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_return2option);
