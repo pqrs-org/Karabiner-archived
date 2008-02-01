@@ -296,25 +296,25 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  remap_enter2command(const RemapParams &params)
+  remap_enter2commandL(const RemapParams &params)
   {
-    if (! config.remap_enter2command) return;
+    if (! config.remap_enter2commandL) return;
 
     RemapUtil::keyToModifier(params, RemapUtil::getEnterKeyCode(params), ModifierFlag::COMMAND_L);
   }
 
   void
-  remap_enter2control(const RemapParams &params)
+  remap_enter2controlL(const RemapParams &params)
   {
-    if (! config.remap_enter2control) return;
+    if (! config.remap_enter2controlL) return;
 
     RemapUtil::keyToModifier(params, RemapUtil::getEnterKeyCode(params), ModifierFlag::CONTROL_L);
   }
 
   void
-  remap_enter2option(const RemapParams &params)
+  remap_enter2optionL(const RemapParams &params)
   {
-    if (! config.remap_enter2option) return;
+    if (! config.remap_enter2optionL) return;
 
     RemapUtil::keyToModifier(params, RemapUtil::getEnterKeyCode(params), ModifierFlag::OPTION_L);
   }
@@ -326,14 +326,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     RemapUtil::keyToModifier(params, RemapUtil::getEnterKeyCode(params), ModifierFlag::FN);
     RemapUtil::toFN(params);
-  }
-
-  void
-  remap_enter2return(const RemapParams &params)
-  {
-    if (! config.remap_enter2return) return;
-
-    RemapUtil::keyToKey(params, RemapUtil::getEnterKeyCode(params), KeyCode::RETURN);
   }
 
   void
@@ -776,6 +768,14 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   allFlagStatus.initialize(params);
 
+  // ------------------------------------------------------------
+  remap_enter2commandL(params);
+  remap_enter2controlL(params);
+  remap_enter2optionL(params);
+  remap_enter2fn(params);
+  remap_enter2space(params);
+  remap_enter2semicolon(params);
+
   // change 'modifiers -> modifiers'
   remap_commandl2control(params);
   remap_commandl2option(params);
@@ -799,13 +799,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_return2semicolon(params);
   remap_shift2escape(params);
   remap_space2shift(params);
-  remap_enter2command(params);
-  remap_enter2control(params);
-  remap_enter2option(params);
-  remap_enter2fn(params);
-  remap_enter2return(params);
-  remap_enter2space(params);
-  remap_enter2semicolon(params);
+
   remap_optionr2space(params);
   remap_optionr2semicolon(params);
   remap_optionr2enter(params);
