@@ -8,6 +8,23 @@
 namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------
   void
+  remap_backquote2commandL(const RemapParams &params)
+  {
+    if (! config.remap_backquote2commandL) return;
+
+    RemapUtil::keyToModifier(params, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L);
+  }
+
+  void
+  remap_backquote2escape(const RemapParams &params)
+  {
+    if (! config.remap_backquote2escape) return;
+
+    RemapUtil::keyToKey(params, KeyCode::BACKQUOTE, KeyCode::ESCAPE);
+  }
+
+  // ----------------------------------------
+  void
   remap_commandL2controlL(const RemapParams &params)
   {
     if (! config.remap_commandL2controlL) return;
@@ -21,6 +38,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_commandL2optionL) return;
 
     RemapUtil::modifierToModifier(params, ModifierFlag::COMMAND_L, ModifierFlag::OPTION_L);
+  }
+
+  void
+  remap_commandL2backquote(const RemapParams &params)
+  {
+    if (! config.remap_commandL2backquote) return;
+
+    RemapUtil::modifierToKey(params, ModifierFlag::COMMAND_L, KeyCode::BACKQUOTE);
   }
 
   // ----------------------------------------
@@ -50,14 +75,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  remap_enter2optionL(const RemapParams &params)
-  {
-    if (! config.remap_enter2optionL) return;
-
-    RemapUtil::keyToModifier(params, RemapUtil::getEnterKeyCode(params), ModifierFlag::OPTION_L);
-  }
-
-  void
   remap_enter2fn(const RemapParams &params)
   {
     if (! config.remap_enter2fn) return;
@@ -67,11 +84,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  remap_enter2space(const RemapParams &params)
+  remap_enter2optionL(const RemapParams &params)
   {
-    if (! config.remap_enter2space) return;
+    if (! config.remap_enter2optionL) return;
 
-    RemapUtil::keyToKey(params, RemapUtil::getEnterKeyCode(params), KeyCode::SPACE);
+    RemapUtil::keyToModifier(params, RemapUtil::getEnterKeyCode(params), ModifierFlag::OPTION_L);
   }
 
   void
@@ -80,6 +97,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_enter2semicolon) return;
 
     RemapUtil::keyToKey(params, RemapUtil::getEnterKeyCode(params), KeyCode::SEMICOLON);
+  }
+
+  void
+  remap_enter2space(const RemapParams &params)
+  {
+    if (! config.remap_enter2space) return;
+
+    RemapUtil::keyToKey(params, RemapUtil::getEnterKeyCode(params), KeyCode::SPACE);
   }
 
   // ----------------------------------------
@@ -196,11 +221,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  remap_optionR2space(const RemapParams &params)
+  remap_optionR2enter(const RemapParams &params)
   {
-    if (! config.remap_optionR2space) return;
+    if (! config.remap_optionR2enter) return;
 
-    RemapUtil::modifierToKey(params, ModifierFlag::OPTION_R, KeyCode::SPACE);
+    RemapUtil::modifierToKey(params, ModifierFlag::OPTION_R, RemapUtil::getEnterKeyCode(params));
   }
 
   void
@@ -212,11 +237,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  remap_optionR2enter(const RemapParams &params)
+  remap_optionR2space(const RemapParams &params)
   {
-    if (! config.remap_optionR2enter) return;
+    if (! config.remap_optionR2space) return;
 
-    RemapUtil::modifierToKey(params, ModifierFlag::OPTION_R, RemapUtil::getEnterKeyCode(params));
+    RemapUtil::modifierToKey(params, ModifierFlag::OPTION_R, KeyCode::SPACE);
   }
 
   // ----------------------------------------
@@ -238,20 +263,20 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
-  remap_shiftR2escape(const RemapParams &params)
-  {
-    if (! config.remap_shiftR2escape) return;
-
-    RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_R, KeyCode::ESCAPE);
-  }
-
-  void
   remap_shiftR2fn(const RemapParams &params)
   {
     if (! config.remap_shiftR2fn) return;
 
     RemapUtil::modifierToModifier(params, ModifierFlag::SHIFT_R, ModifierFlag::FN);
     RemapUtil::toFN(params);
+  }
+
+  void
+  remap_shiftR2escape(const RemapParams &params)
+  {
+    if (! config.remap_shiftR2escape) return;
+
+    RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_R, KeyCode::ESCAPE);
   }
 
   void
@@ -394,15 +419,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_R, KeyCode::SPACE);
       }
     }
-  }
-
-  void
-  remap_backquote2command(const RemapParams &params)
-  {
-    if (! config.remap_backquote2command) return;
-
-    RemapUtil::modifierToKey(params, ModifierFlag::COMMAND_L, KeyCode::BACKQUOTE);
-    RemapUtil::keyToModifier(params, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L);
   }
 
   void
@@ -788,17 +804,21 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   allFlagStatus.initialize(params);
 
   // ------------------------------------------------------------
+  remap_backquote2commandL(params);
+  remap_backquote2escape(params);
+
   remap_controlL2commandL(params);
 
   remap_commandL2controlL(params);
   remap_commandL2optionL(params);
+  remap_commandL2backquote(params);
 
   remap_enter2commandL(params);
   remap_enter2controlL(params);
-  remap_enter2optionL(params);
   remap_enter2fn(params);
-  remap_enter2space(params);
+  remap_enter2optionL(params);
   remap_enter2semicolon(params);
+  remap_enter2space(params);
 
   remap_escape2backquote(params);
   remap_escape2rightclick(params);
@@ -814,9 +834,9 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_optionR2commandL(params);
   remap_optionR2controlL(params);
   remap_optionR2fn(params);
-  remap_optionR2space(params);
-  remap_optionR2semicolon(params);
   remap_optionR2enter(params);
+  remap_optionR2semicolon(params);
+  remap_optionR2space(params);
 
   remap_shiftL2controlL(params);
   remap_shiftL2space(params);
@@ -835,7 +855,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_return2semicolon(params);
   remap_space2shift(params);
 
-  remap_backquote2command(params);
   remap_semicolon2return(params);
   remap_drop_funcshift(params);
   remap_tab2expose(params);
