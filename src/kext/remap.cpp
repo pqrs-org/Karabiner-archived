@@ -315,9 +315,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
-  remap_shiftdelete2tilde(const RemapParams &params)
+  remap_shiftDelete2tilde(const RemapParams &params)
   {
-    if (! config.remap_shiftdelete2tilde) return;
+    if (! config.remap_shiftDelete2tilde) return;
 
     if (allFlagStatus.shiftL.isHeldDown() || allFlagStatus.shiftR.isHeldDown()) {
       RemapUtil::keyToKey(params, KeyCode::DELETE, KeyCode::BACKQUOTE);
@@ -743,9 +743,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
-  remap_jis_kanashift2eisuu(const RemapParams &params)
+  remap_jis_shiftKana2eisuu(const RemapParams &params)
   {
-    if (! config.remap_jis_kanashift2eisuu) return;
+    if (! config.remap_jis_shiftKana2eisuu) return;
 
     if (params.ex_origKey != KeyCode::JIS_KANA) return;
 
@@ -761,9 +761,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  remap_jis_unify_kana_eisuu(const RemapParams &params)
+  remap_jis_unify_eisuu_to_kana(const RemapParams &params)
   {
-    if (! config.remap_jis_unify_kana_eisuu) return;
+    if (! config.remap_jis_unify_eisuu_to_kana) return;
 
     if (params.ex_origKey != KeyCode::JIS_KANA) return;
 
@@ -773,6 +773,25 @@ namespace org_pqrs_KeyRemap4MacBook {
       // do nothing
     } else {
       RemapUtil::keyToKey(params, KeyCode::JIS_KANA, KeyCode::JIS_EISUU);
+    }
+    if (*(params.eventType) == KeyEvent::UP) {
+      isKana = ! isKana;
+    }
+  }
+
+  void
+  remap_jis_unify_kana_eisuu_to_commandL(const RemapParams &params)
+  {
+    if (! config.remap_jis_unify_kana_eisuu_to_commandL) return;
+
+    if (params.ex_origKey != KeyCode::COMMAND_L) return;
+
+    static bool isKana = true;
+
+    if (isKana) {
+      RemapUtil::modifierToKey(params, ModifierFlag::COMMAND_L, KeyCode::JIS_EISUU);
+    } else {
+      RemapUtil::modifierToKey(params, ModifierFlag::COMMAND_L, KeyCode::JIS_KANA);
     }
     if (*(params.eventType) == KeyEvent::UP) {
       isKana = ! isKana;
@@ -842,7 +861,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_shiftR2space(params);
 
   // ----------------------------------------
-  remap_shiftdelete2tilde(params);
+  remap_shiftDelete2tilde(params);
   remap_hhkmode(params);
 
   // ----------------------------------------
@@ -868,8 +887,9 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_jis_kana2shiftL(params);
   remap_jis_kana2return(params);
 
-  remap_jis_kanashift2eisuu(params);
-  remap_jis_unify_kana_eisuu(params);
+  remap_jis_shiftKana2eisuu(params);
+  remap_jis_unify_eisuu_to_kana(params);
+  remap_jis_unify_kana_eisuu_to_commandL(params);
 
   // ------------------------------------------------------------
   // *** Note: we need to call remap_emacsmode as possible late. ***
