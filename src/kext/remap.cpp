@@ -387,11 +387,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     static bool useSpaceAsShift = false;
 
-    if (*(params.key) != KeyCode::SPACE && *(params.eventType) == KeyEvent::DOWN) {
+    if (params.ex_origKey != KeyCode::SPACE && *(params.eventType) == KeyEvent::DOWN) {
       useSpaceAsShift = true;
     }
 
-    if (*(params.key) == KeyCode::SPACE) {
+    if (params.ex_origKey == KeyCode::SPACE) {
       // Space => ShiftL (if type SpaceKey only, works as SpaceKey)
       unsigned int origEventType = *(params.eventType);
       RemapUtil::keyToModifier(params, KeyCode::SPACE, ModifierFlag::SHIFT_L);
@@ -405,18 +405,6 @@ namespace org_pqrs_KeyRemap4MacBook {
           listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, flags, KeyCode::SPACE, CharCode::SPACE);
           listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, flags, KeyCode::SPACE, CharCode::SPACE);
         }
-      }
-    } else if (config.option_space2shift_shift2space) {
-      if (params.ex_origKey == KeyCode::SHIFT_L) {
-        useSpaceAsShift = true;
-        // use Shift_L as SpaceKey
-        RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_L, KeyCode::SPACE);
-      }
-    } else if (config.option_space2shift_shiftR2space) {
-      if (params.ex_origKey == KeyCode::SHIFT_R) {
-        useSpaceAsShift = true;
-        // use Shift_R as SpaceKey
-        RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_R, KeyCode::SPACE);
       }
     }
   }
@@ -853,7 +841,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_qwerty2colemak(params);
   remap_return2option(params);
   remap_return2semicolon(params);
-  remap_space2shift(params);
 
   remap_semicolon2return(params);
   remap_drop_funcshift(params);
@@ -873,6 +860,10 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_jis_kana2return(params);
   remap_jis_kanashift2eisuu(params);
   remap_jis_unify_kana_eisuu(params);
+
+  // *** Note: we need to call remap_space2shift as possible late. ***
+  // *** If remap_shiftL2space is enable, remap_space2shift fire Shift+Space when Shift_L + Space Key are pressed. ***
+  remap_space2shift(params);
 
   *(params.flags) = allFlagStatus.makeFlags(params);
 
