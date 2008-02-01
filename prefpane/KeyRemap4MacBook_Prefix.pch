@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'KeyRemap4MacBook' target in the 'KeyRemap4MacBook' project.
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <AppKit/AppKit.h>
+#endif

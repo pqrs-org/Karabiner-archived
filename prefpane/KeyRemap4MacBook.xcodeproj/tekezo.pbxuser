@@ -1,0 +1,297 @@
+// !$*UTF8*$!
+{
+	089C1669FE841209C02AAC07 /* Project object */ = {
+		activeArchitecture = i386;
+		activeBuildConfigurationName = Release;
+		activeTarget = 8D202CE80486D31800D8A456 /* KeyRemap4MacBook */;
+		addToTargets = (
+			8D202CE80486D31800D8A456 /* KeyRemap4MacBook */,
+		);
+		codeSenseManager = 34908A7F0D4CC2DA004AE69D /* Code sense */;
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					241,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					201,
+					60,
+					20,
+					48.16259765625,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 223582288;
+			PBXWorkspaceStateSaveDate = 223582288;
+		};
+		perUserProjectItems = {
+			341B26F10D5385DB00CB7EAC = 341B26F10D5385DB00CB7EAC /* PBXBookmark */;
+			341B27170D53983600CB7EAC = 341B27170D53983600CB7EAC /* PBXTextBookmark */;
+			34E342630D53985300734BD8 /* PBXTextBookmark */ = 34E342630D53985300734BD8 /* PBXTextBookmark */;
+			34E342670D5399B600734BD8 /* PBXTextBookmark */ = 34E342670D5399B600734BD8 /* PBXTextBookmark */;
+			34E3426A0D539A6F00734BD8 /* PBXTextBookmark */ = 34E3426A0D539A6F00734BD8 /* PBXTextBookmark */;
+			34E3426C0D539D3100734BD8 /* PBXTextBookmark */ = 34E3426C0D539D3100734BD8 /* PBXTextBookmark */;
+			34E3426F0D539E0900734BD8 /* PBXTextBookmark */ = 34E3426F0D539E0900734BD8 /* PBXTextBookmark */;
+			34E342710D539E1500734BD8 /* PBXTextBookmark */ = 34E342710D539E1500734BD8 /* PBXTextBookmark */;
+			34E342790D539E8000734BD8 /* PBXTextBookmark */ = 34E342790D539E8000734BD8 /* PBXTextBookmark */;
+			34E3427A0D539E8000734BD8 /* PBXTextBookmark */ = 34E3427A0D539E8000734BD8 /* PBXTextBookmark */;
+			34E3427B0D539E8000734BD8 /* PBXTextBookmark */ = 34E3427B0D539E8000734BD8 /* PBXTextBookmark */;
+			34E3427C0D539E8000734BD8 /* PBXTextBookmark */ = 34E3427C0D539E8000734BD8 /* PBXTextBookmark */;
+			34E3427D0D539E8000734BD8 /* PBXTextBookmark */ = 34E3427D0D539E8000734BD8 /* PBXTextBookmark */;
+			34E3427E0D539E8000734BD8 /* PBXTextBookmark */ = 34E3427E0D539E8000734BD8 /* PBXTextBookmark */;
+			34E342800D539E8200734BD8 /* PBXTextBookmark */ = 34E342800D539E8200734BD8 /* PBXTextBookmark */;
+			34E342820D539EBE00734BD8 /* PBXTextBookmark */ = 34E342820D539EBE00734BD8 /* PBXTextBookmark */;
+			34E342840D539ECC00734BD8 /* PBXTextBookmark */ = 34E342840D539ECC00734BD8 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 34908A7E0D4CC2DA004AE69D /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	341B26F10D5385DB00CB7EAC /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = F506C03D013D9D7901CA16C8 /* KeyRemap4MacBookPref.m */;
+	};
+	341B26F20D53961A00CB7EAC /* SysctlWrapper.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {439, 476}}";
+			sepNavSelRange = "{700, 0}";
+			sepNavVisRange = "{0, 327}";
+		};
+	};
+	341B26F30D53961A00CB7EAC /* SysctlWrapper.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {494, 210}}";
+			sepNavSelRange = "{350, 0}";
+			sepNavVisRange = "{0, 350}";
+			sepNavWindowFrame = "{{15, 169}, {1238, 854}}";
+		};
+	};
+	341B27170D53983600CB7EAC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F506C03D013D9D7901CA16C8 /* KeyRemap4MacBookPref.m */;
+		name = "KeyRemap4MacBookPref.m: 14";
+		rLen = 15;
+		rLoc = 249;
+		rType = 0;
+		vrLen = 275;
+		vrLoc = 0;
+	};
+	34908A7E0D4CC2DA004AE69D /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	34908A7F0D4CC2DA004AE69D /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	34E342630D53985300734BD8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F506C03D013D9D7901CA16C8 /* KeyRemap4MacBookPref.m */;
+		name = "KeyRemap4MacBookPref.m: 14";
+		rLen = 15;
+		rLoc = 249;
+		rType = 0;
+		vrLen = 275;
+		vrLoc = 0;
+	};
+	34E342670D5399B600734BD8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F506C03D013D9D7901CA16C8 /* KeyRemap4MacBookPref.m */;
+		name = "KeyRemap4MacBookPref.m: 28";
+		rLen = 0;
+		rLoc = 481;
+		rType = 0;
+		vrLen = 481;
+		vrLoc = 0;
+	};
+	34E342680D5399BF00734BD8 /* sysctl.xml */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1179, 5964}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1383}";
+			sepNavWindowFrame = "{{15, 169}, {1238, 854}}";
+		};
+	};
+	34E3426A0D539A6F00734BD8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F506C03D013D9D7901CA16C8 /* KeyRemap4MacBookPref.m */;
+		name = "KeyRemap4MacBookPref.m: 29";
+		rLen = 0;
+		rLoc = 574;
+		rType = 0;
+		vrLen = 574;
+		vrLoc = 0;
+	};
+	34E3426C0D539D3100734BD8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F506C03D013D9D7901CA16C8 /* KeyRemap4MacBookPref.m */;
+		name = "KeyRemap4MacBookPref.m: 102";
+		rLen = 0;
+		rLoc = 2632;
+		rType = 0;
+		vrLen = 1279;
+		vrLoc = 0;
+	};
+	34E3426F0D539E0900734BD8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F506C03D013D9D7901CA16C8 /* KeyRemap4MacBookPref.m */;
+		name = "KeyRemap4MacBookPref.m: 104";
+		rLen = 0;
+		rLoc = 2698;
+		rType = 0;
+		vrLen = 968;
+		vrLoc = 0;
+	};
+	34E342710D539E1500734BD8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F506C03D013D9D7901CA16C8 /* KeyRemap4MacBookPref.m */;
+		name = "KeyRemap4MacBookPref.m: 104";
+		rLen = 0;
+		rLoc = 2694;
+		rType = 0;
+		vrLen = 1047;
+		vrLoc = 0;
+	};
+	34E342790D539E8000734BD8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F506C03C013D9D7901CA16C8 /* KeyRemap4MacBookPref.h */;
+		name = "KeyRemap4MacBookPref.h: 18";
+		rLen = 0;
+		rLoc = 352;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 0;
+	};
+	34E3427A0D539E8000734BD8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "warning: 'SysctlWrapper' may not respond to '+alloc'";
+		fRef = F506C03D013D9D7901CA16C8 /* KeyRemap4MacBookPref.m */;
+		rLen = 1;
+		rLoc = 23;
+		rType = 1;
+	};
+	34E3427B0D539E8000734BD8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F506C03C013D9D7901CA16C8 /* KeyRemap4MacBookPref.h */;
+		name = "KeyRemap4MacBookPref.h: 10";
+		rLen = 31;
+		rLoc = 255;
+		rType = 0;
+		vrLen = 318;
+		vrLoc = 0;
+	};
+	34E3427C0D539E8000734BD8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F506C03D013D9D7901CA16C8 /* KeyRemap4MacBookPref.m */;
+		name = "KeyRemap4MacBookPref.m: 17";
+		rLen = 81;
+		rLoc = 343;
+		rType = 0;
+		vrLen = 282;
+		vrLoc = 239;
+	};
+	34E3427D0D539E8000734BD8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F506C03C013D9D7901CA16C8 /* KeyRemap4MacBookPref.h */;
+		name = "KeyRemap4MacBookPref.h: 18";
+		rLen = 0;
+		rLoc = 352;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 0;
+	};
+	34E3427E0D539E8000734BD8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F506C03D013D9D7901CA16C8 /* KeyRemap4MacBookPref.m */;
+		name = "KeyRemap4MacBookPref.m: 24";
+		rLen = 0;
+		rLoc = 615;
+		rType = 0;
+		vrLen = 261;
+		vrLoc = 420;
+	};
+	34E342800D539E8200734BD8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F506C03D013D9D7901CA16C8 /* KeyRemap4MacBookPref.m */;
+		name = "KeyRemap4MacBookPref.m: 104";
+		rLen = 0;
+		rLoc = 2694;
+		rType = 0;
+		vrLen = 1047;
+		vrLoc = 0;
+	};
+	34E342820D539EBE00734BD8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F506C03D013D9D7901CA16C8 /* KeyRemap4MacBookPref.m */;
+		name = "KeyRemap4MacBookPref.m: 105";
+		rLen = 0;
+		rLoc = 2709;
+		rType = 0;
+		vrLen = 1103;
+		vrLoc = 0;
+	};
+	34E342840D539ECC00734BD8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F506C03D013D9D7901CA16C8 /* KeyRemap4MacBookPref.m */;
+		name = "KeyRemap4MacBookPref.m: 105";
+		rLen = 0;
+		rLoc = 2709;
+		rType = 0;
+		vrLen = 1103;
+		vrLoc = 0;
+	};
+	8D202CE80486D31800D8A456 /* KeyRemap4MacBook */ = {
+		activeExec = 0;
+	};
+	F506C03C013D9D7901CA16C8 /* KeyRemap4MacBookPref.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1179, 726}}";
+			sepNavSelRange = "{413, 0}";
+			sepNavVisRange = "{0, 449}";
+			sepNavWindowFrame = "{{38, 148}, {1238, 854}}";
+		};
+	};
+	F506C03D013D9D7901CA16C8 /* KeyRemap4MacBookPref.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {827, 1876}}";
+			sepNavSelRange = "{3366, 0}";
+			sepNavVisRange = "{1812, 411}";
+			sepNavWindowFrame = "{{15, 169}, {1238, 854}}";
+		};
+	};
+}
