@@ -51,6 +51,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     int remap_return2optionL;
     int remap_return2semicolon;
 
+    int remap_semicolon2return;
+
     int remap_shiftL2controlL;
     int remap_shiftL2space;
 
@@ -59,6 +61,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     int remap_shiftR2space;
 
     // ----------------------------------------
+    int remap_deleteshift2tilde;
+    int remap_hhkmode;
+
+    int remap_qwerty2colemak;
+
     int remap_space2shift;
 
     // ----------------------------------------
@@ -81,10 +88,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
 
     int remap_spaces_special;
-    int remap_deleteshift2tilde;
-    int remap_qwerty2colemak;
-
-    int remap_semicolon2return;
 
     int remap_drop_funcshift;
     int remap_tab2expose;
@@ -93,7 +96,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     int option_keypad2spaces_modifier_control;
     int option_keypad2spaces_modifier_option;
     int option_keypad2spaces_modifier_shift;
-    int remap_hhkmode;
     int remap_emacsmode;
     int option_emacsmode_controlD;
     int option_emacsmode_controlH;
