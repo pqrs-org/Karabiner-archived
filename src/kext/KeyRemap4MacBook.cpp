@@ -268,7 +268,7 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardEventCallBack(OSObject *target,
         (p->repeat).ts = ts;
         (p->repeat).target = target;
 
-        int initial = org_pqrs_KeyRemap4MacBook::config.repeat_initial;
+        int initial = org_pqrs_KeyRemap4MacBook::config.repeat_initial_wait;
         const int MINVAL = 200;
         if (initial < MINVAL) initial = MINVAL;
         p->timer->setTimeoutMS(initial);
@@ -288,7 +288,7 @@ org_pqrs_driver_KeyRemap4MacBook::doKeyRepeat(OSObject *owner, IOTimerEventSourc
   p->origEventAction(r->target, org_pqrs_KeyRemap4MacBook::KeyEvent::DOWN, r->flags, r->key, r->charCode,
                      r->charSet, r->origCharCode, r->origCharSet, r->keyboardType, true, r->ts);
 
-  int speed = org_pqrs_KeyRemap4MacBook::config.repeat_speed;
+  int speed = org_pqrs_KeyRemap4MacBook::config.repeat_wait;
   const int MINVAL = 5;
   if (speed < MINVAL) speed = MINVAL;
   sender->setTimeoutMS(speed);

@@ -660,34 +660,35 @@ namespace org_pqrs_KeyRemap4MacBook {
     modifierCanceling_option.restore(params);
   }
 
+  // ----------------------------------------
   void
-  remap_jis_eisuu2control(const RemapParams &params)
+  remap_jis_eisuu2commandL(const RemapParams &params)
   {
-    if (! config.remap_jis_eisuu2control) return;
-
-    RemapUtil::keyToModifier(params, KeyCode::JIS_EISUU, ModifierFlag::CONTROL_L);
-  }
-
-  void
-  remap_jis_eisuu2command(const RemapParams &params)
-  {
-    if (! config.remap_jis_eisuu2command) return;
+    if (! config.remap_jis_eisuu2commandL) return;
 
     RemapUtil::keyToModifier(params, KeyCode::JIS_EISUU, ModifierFlag::COMMAND_L);
   }
 
   void
-  remap_jis_eisuu2option(const RemapParams &params)
+  remap_jis_eisuu2controlL(const RemapParams &params)
   {
-    if (! config.remap_jis_eisuu2option) return;
+    if (! config.remap_jis_eisuu2controlL) return;
+
+    RemapUtil::keyToModifier(params, KeyCode::JIS_EISUU, ModifierFlag::CONTROL_L);
+  }
+
+  void
+  remap_jis_eisuu2optionL(const RemapParams &params)
+  {
+    if (! config.remap_jis_eisuu2optionL) return;
 
     RemapUtil::keyToModifier(params, KeyCode::JIS_EISUU, ModifierFlag::OPTION_L);
   }
 
   void
-  remap_jis_eisuu2shift(const RemapParams &params)
+  remap_jis_eisuu2shiftL(const RemapParams &params)
   {
-    if (! config.remap_jis_eisuu2shift) return;
+    if (! config.remap_jis_eisuu2shiftL) return;
 
     RemapUtil::keyToModifier(params, KeyCode::JIS_EISUU, ModifierFlag::SHIFT_L);
   }
@@ -700,34 +701,35 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::keyToKey(params, KeyCode::JIS_EISUU, KeyCode::TAB);
   }
 
+  // ----------------------------------------
   void
-  remap_jis_kana2control(const RemapParams &params)
+  remap_jis_kana2commandL(const RemapParams &params)
   {
-    if (! config.remap_jis_kana2control) return;
-
-    RemapUtil::keyToModifier(params, KeyCode::JIS_KANA, ModifierFlag::CONTROL_L);
-  }
-
-  void
-  remap_jis_kana2command(const RemapParams &params)
-  {
-    if (! config.remap_jis_kana2command) return;
+    if (! config.remap_jis_kana2commandL) return;
 
     RemapUtil::keyToModifier(params, KeyCode::JIS_KANA, ModifierFlag::COMMAND_L);
   }
 
   void
-  remap_jis_kana2option(const RemapParams &params)
+  remap_jis_kana2controlL(const RemapParams &params)
   {
-    if (! config.remap_jis_kana2option) return;
+    if (! config.remap_jis_kana2controlL) return;
+
+    RemapUtil::keyToModifier(params, KeyCode::JIS_KANA, ModifierFlag::CONTROL_L);
+  }
+
+  void
+  remap_jis_kana2optionL(const RemapParams &params)
+  {
+    if (! config.remap_jis_kana2optionL) return;
 
     RemapUtil::keyToModifier(params, KeyCode::JIS_KANA, ModifierFlag::OPTION_L);
   }
 
   void
-  remap_jis_kana2shift(const RemapParams &params)
+  remap_jis_kana2shiftL(const RemapParams &params)
   {
-    if (! config.remap_jis_kana2shift) return;
+    if (! config.remap_jis_kana2shiftL) return;
 
     RemapUtil::keyToModifier(params, KeyCode::JIS_KANA, ModifierFlag::SHIFT_L);
   }
@@ -740,6 +742,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::keyToKey(params, KeyCode::JIS_KANA, KeyCode::RETURN);
   }
 
+  // ----------------------------------------
   void
   remap_jis_kanashift2eisuu(const RemapParams &params)
   {
@@ -792,6 +795,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   allFlagStatus.initialize(params);
 
   // ------------------------------------------------------------
+  // normal remapping
   remap_backquote2commandL(params);
   remap_backquote2escape(params);
 
@@ -835,7 +839,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
 
 
-  // change 'keys -> modifiers' or 'keys -> keys'
   remap_spaces_special(params);
   remap_deleteshift2tilde(params);
   remap_qwerty2colemak(params);
@@ -848,23 +851,30 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_keypad2spaces(params);
   remap_hhkmode(params);
   remap_emacsmode(params);
-  remap_jis_eisuu2control(params);
-  remap_jis_eisuu2command(params);
-  remap_jis_eisuu2option(params);
-  remap_jis_eisuu2shift(params);
+
+  // ------------------------------------------------------------
+  // jis
+  remap_jis_eisuu2commandL(params);
+  remap_jis_eisuu2controlL(params);
+  remap_jis_eisuu2optionL(params);
+  remap_jis_eisuu2shiftL(params);
   remap_jis_eisuu2tab(params);
-  remap_jis_kana2control(params);
-  remap_jis_kana2command(params);
-  remap_jis_kana2option(params);
-  remap_jis_kana2shift(params);
+
+  remap_jis_kana2commandL(params);
+  remap_jis_kana2controlL(params);
+  remap_jis_kana2optionL(params);
+  remap_jis_kana2shiftL(params);
   remap_jis_kana2return(params);
+
   remap_jis_kanashift2eisuu(params);
   remap_jis_unify_kana_eisuu(params);
 
+  // ------------------------------------------------------------
   // *** Note: we need to call remap_space2shift as possible late. ***
   // *** If remap_shiftL2space is enable, remap_space2shift fire Shift+Space when Shift_L + Space Key are pressed. ***
   remap_space2shift(params);
 
+  // ------------------------------------------------------------
   *(params.flags) = allFlagStatus.makeFlags(params);
 
   if (config.debug) {
