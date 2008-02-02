@@ -270,6 +270,7 @@
 								<string>08FB77AFFE84173DC02AAC07</string>
 								<string>32DBCFA10370C40200C91783</string>
 								<string>089C167CFE841241C02AAC07</string>
+								<string>089C1671FE841209C02AAC07</string>
 								<string>1C37FBAC04509CD000000102</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
@@ -299,7 +300,7 @@
 							<real>186</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>803 367 688 397 0 0 1680 1028 </string>
+						<string>141 412 688 397 0 0 1680 1028 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -336,7 +337,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {480, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>803 367 688 397 0 0 1680 1028 </string>
+								<string>141 412 688 397 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -358,7 +359,7 @@
 								<key>Frame</key>
 								<string>{{0, 5}, {480, 351}}</string>
 								<key>RubberWindowFrame</key>
-								<string>803 367 688 397 0 0 1680 1028 </string>
+								<string>141 412 688 397 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -382,9 +383,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>344390B20D544D0F00822A08</string>
+				<string>3404EA7A0D545DC8004A64AD</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>344390B30D544D0F00822A08</string>
+				<string>3404EA7B0D545DC8004A64AD</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -518,11 +519,10 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>34F968700D4CD23C0027C847</string>
 		<string>/Users/tekezo/project/KeyRemap4MacBook/prefpane/KeyRemap4MacBook.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>803 367 688 397 0 0 1680 1028 </string>
+	<string>141 412 688 397 0 0 1680 1028 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -538,14 +538,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>KeyRemap4MacBookPref.m</string>
+								<string>AdminAction.h</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -562,6 +560,8 @@
 							<string>260pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -601,7 +601,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>34F968700D4CD23C0027C847</string>
-				<string>344390CE0D54580300822A08</string>
+				<string>349FDB830D545C0A00EED33C</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

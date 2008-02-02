@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		341B26F40D53961A00CB7EAC /* SysctlWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 341B26F20D53961A00CB7EAC /* SysctlWrapper.m */; };
 		341B26F50D53961A00CB7EAC /* SysctlWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 341B26F30D53961A00CB7EAC /* SysctlWrapper.h */; };
+		349FDBBF0D545C2200EED33C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 349FDBBE0D545C2200EED33C /* Security.framework */; };
 		34F697830D543B1100920FBE /* AdminAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F697810D543B1100920FBE /* AdminAction.m */; };
 		34F697840D543B1100920FBE /* AdminAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 34F697820D543B1100920FBE /* AdminAction.h */; };
-		34F697930D543BAA00920FBE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F697920D543BAA00920FBE /* Security.framework */; };
 		8D202CEA0486D31800D8A456 /* KeyRemap4MacBook_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32DBCFA20370C41700C91783 /* KeyRemap4MacBook_Prefix.pch */; };
 		8D202CEB0486D31800D8A456 /* KeyRemap4MacBookPref.h in Headers */ = {isa = PBXBuildFile; fileRef = F506C03C013D9D7901CA16C8 /* KeyRemap4MacBookPref.h */; };
 		8D202CED0486D31800D8A456 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
@@ -30,9 +30,9 @@
 		32DBCFA20370C41700C91783 /* KeyRemap4MacBook_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyRemap4MacBook_Prefix.pch; sourceTree = "<group>"; };
 		341B26F20D53961A00CB7EAC /* SysctlWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysctlWrapper.m; sourceTree = "<group>"; };
 		341B26F30D53961A00CB7EAC /* SysctlWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysctlWrapper.h; sourceTree = "<group>"; };
+		349FDBBE0D545C2200EED33C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		34F697810D543B1100920FBE /* AdminAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminAction.m; sourceTree = "<group>"; };
 		34F697820D543B1100920FBE /* AdminAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminAction.h; sourceTree = "<group>"; };
-		34F697920D543BAA00920FBE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		8D202CF70486D31800D8A456 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D202CF80486D31800D8A456 /* KeyRemap4MacBook.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyRemap4MacBook.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
 		F506C035013D953901CA16C8 /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = /System/Library/Frameworks/PreferencePanes.framework; sourceTree = "<absolute>"; };
@@ -49,7 +49,7 @@
 			files = (
 				8D202CF30486D31800D8A456 /* Cocoa.framework in Frameworks */,
 				8D202CF40486D31800D8A456 /* PreferencePanes.framework in Frameworks */,
-				34F697930D543BAA00920FBE /* Security.framework in Frameworks */,
+				349FDBBF0D545C2200EED33C /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,7 +71,7 @@
 		089C1671FE841209C02AAC07 /* Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				34F697920D543BAA00920FBE /* Security.framework */,
+				349FDBBE0D545C2200EED33C /* Security.framework */,
 				1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */,
 				1058C7AEFEA557BF11CA2CBB /* Other Frameworks */,
 			);
@@ -284,7 +284,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
 			};
 			name = Debug;
 		};
@@ -298,7 +298,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
 			};
 			name = Release;
 		};
