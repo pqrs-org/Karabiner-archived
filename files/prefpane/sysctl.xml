@@ -1,0 +1,419 @@
+<?xml version="1.0"?>
+<root>
+  <list>
+    <item>
+      <name>Remap Backquote(`) Key</name>
+      <list>
+        <item>
+          <name>Backquote(`) to Command_L</name>
+          <sysctl>keyremap4macbook.remap.backquote2commandL</sysctl>
+        </item>
+        <item>
+          <name>Backquote(`) to Escape</name>
+          <sysctl>keyremap4macbook.remap.backquote2escape</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
+      <name>Remap Command_L Key</name>
+      <list>
+        <item>
+          <name>Command_L to Control_L</name>
+          <sysctl>keyremap4macbook.remap.commandL2controlL</sysctl>
+        </item>
+        <item>
+          <name>Command_L to Option_L</name>
+          <sysctl>keyremap4macbook.remap.commandL2optionL</sysctl>
+        </item>
+        <item>
+          <name>Command_L to Backquote(`)</name>
+          <sysctl>keyremap4macbook.remap.commandL2backquote</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
+      <name>Remap Control_L Key</name>
+      <list>
+        <item>
+          <name>Control_L to Command_L</name>
+          <sysctl>keyremap4macbook.remap.controlL2commandL</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
+      <name>Remap Enter Key</name>
+      <list>
+        <item>
+          <name>Enter to Command_L</name>
+          <sysctl>keyremap4macbook.remap.enter2commandL</sysctl>
+        </item>
+        <item>
+          <name>Enter to Control_L</name>
+          <sysctl>keyremap4macbook.remap.enter2controlL</sysctl>
+        </item>
+        <item>
+          <name>Enter to Option_L</name>
+          <sysctl>keyremap4macbook.remap.enter2optionL</sysctl>
+        </item>
+        <item>
+          <name>Enter to FN</name>
+          <sysctl>keyremap4macbook.remap.enter2fn</sysctl>
+        </item>
+        <item>
+          <name>Enter to Space</name>
+          <sysctl>keyremap4macbook.remap.enter2space</sysctl>
+        </item>
+        <item>
+          <name>Enter to Semicolon</name>
+          <sysctl>keyremap4macbook.remap.enter2semicolon</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
+      <name>Remap Escape Key</name>
+      <list>
+        <item>
+          <name>Enter to Backquote(`)</name>
+          <sysctl>keyremap4macbook.remap.escape2backquote</sysctl>
+        </item>
+        <item>
+          <name>Enter to RightClick(KEYPAD_5) *** use with Mouse Keys ***</name>
+          <sysctl>keyremap4macbook.remap.escape2rightclick</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
+      <name>Remap FN Key</name>
+      <list>
+        <item>
+          <name>FN to Command_L</name>
+          <sysctl>keyremap4macbook.remap.fn2commandL</sysctl>
+        </item>
+        <item>
+          <name>FN to Control_L</name>
+          <sysctl>keyremap4macbook.remap.fn2controlL</sysctl>
+        </item>
+        <item>
+          <name>FN to Option_L</name>
+          <sysctl>keyremap4macbook.remap.fn2optionL</sysctl>
+        </item>
+        <item>
+          <name>FN to Shift_L</name>
+          <sysctl>keyremap4macbook.remap.fn2shiftL</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
+      <name>Remap Option_L Key</name>
+      <list>
+        <item>
+          <name>Option_L to Command_L</name>
+          <sysctl>keyremap4macbook.remap.optionL2commandL</sysctl>
+        </item>
+        <item>
+          <name>Option_L to Shift_L</name>
+          <sysctl>keyremap4macbook.remap.optionL2shiftL</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
+      <name>Remap Option_R Key</name>
+      <list>
+        <item>
+          <name>Option_R to Command_L</name>
+          <sysctl>keyremap4macbook.remap.optionR2commandL</sysctl>
+        </item>
+        <item>
+          <name>Option_R to Control_L</name>
+          <sysctl>keyremap4macbook.remap.optionR2controlL</sysctl>
+        </item>
+        <item>
+          <name>Option_R to FN</name>
+          <sysctl>keyremap4macbook.remap.optionR2fn</sysctl>
+        </item>
+        <item>
+          <name>Option_R to Space</name>
+          <sysctl>keyremap4macbook.remap.optionR2space</sysctl>
+        </item>
+        <item>
+          <name>Option_R to Semicolon</name>
+          <sysctl>keyremap4macbook.remap.optionR2semicolon</sysctl>
+        </item>
+        <item>
+          <name>Option_R to Enter</name>
+          <sysctl>keyremap4macbook.remap.optionR2enter</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
+      <name>Remap Return Key</name>
+      <list>
+        <item>
+          <name>Return to Option_L</name>
+          <sysctl>keyremap4macbook.remap.return2optionL</sysctl>
+        </item>
+        <item>
+          <name>Return to Semicolon</name>
+          <sysctl>keyremap4macbook.remap.return2semicolon</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
+      <name>Remap Semicolon Key</name>
+      <list>
+        <item>
+          <name>Semicolon to Return</name>
+          <sysctl>keyremap4macbook.remap.semicolon2return</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
+      <name>Remap Shift_L Key</name>
+      <list>
+        <item>
+          <name>Shift_L to Control_L</name>
+          <sysctl>keyremap4macbook.remap.shiftL2controlL</sysctl>
+        </item>
+        <item>
+          <name>Shift_L to Space</name>
+          <sysctl>keyremap4macbook.remap.shiftL2space</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
+      <name>Remap Shift_R Key</name>
+      <list>
+        <item>
+          <name>Shift_R to Escape</name>
+          <sysctl>keyremap4macbook.remap.shiftR2escape</sysctl>
+        </item>
+        <item>
+          <name>Shift_R to FN</name>
+          <sysctl>keyremap4macbook.remap.shiftR2fn</sysctl>
+        </item>
+        <item>
+          <name>Shift_R to Space</name>
+          <sysctl>keyremap4macbook.remap.shiftR2space</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
+      <name>Misc Remapping</name>
+      <list>
+        <item>
+          <name>Shift+Delete to Tilde(~)</name>
+          <sysctl>keyremap4macbook.remap.shiftDelete2tilde</sysctl>
+        </item>
+        <item>
+          <name>Enable HHK compatible Arrow Key Mode</name>
+          <sysctl>keyremap4macbook.remap.hhkmode</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
+      <name>Emacs Mode</name>
+      <list>
+        <item>
+          <name>Enable Emacs Mode</name>
+          <sysctl>keyremap4macbook.remap.emacsmode</sysctl>
+          <list>
+            <item>
+              <name>Control+D to Forward Delete</name>
+              <sysctl>keyremap4macbook.option.emacsmode_controlD</sysctl>
+            </item>
+            <item>
+              <name>Control+H to Delete</name>
+              <sysctl>keyremap4macbook.option.emacsmode_controlH</sysctl>
+            </item>
+            <item>
+              <name>Control+I to Tab</name>
+              <sysctl>keyremap4macbook.option.emacsmode_controlI</sysctl>
+            </item>
+            <item>
+              <name>Control+[ to Escape</name>
+              <sysctl>keyremap4macbook.option.emacsmode_controlLeftbracket</sysctl>
+            </item>
+            <item>
+              <name>Control+M to Return</name>
+              <sysctl>keyremap4macbook.option.emacsmode_controlM</sysctl>
+            </item>
+            <item>
+              <name>Control+PNBF to Arrow</name>
+              <sysctl>keyremap4macbook.option.emacsmode_controlPNBF</sysctl>
+            </item>
+            <item>
+              <name>Control+V to PageDown / Option+V to PageUp</name>
+              <sysctl>keyremap4macbook.option.emacsmode_controlV</sysctl>
+            </item>
+            <item>
+              <name>Option+BF to Option+Arrow</name>
+              <sysctl>keyremap4macbook.option.emacsmode_optionBF</sysctl>
+            </item>
+            <item>
+              <name>Option+D to Option+Forward Delete</name>
+              <sysctl>keyremap4macbook.option.emacsmode_optionD</sysctl>
+            </item>
+            <item>
+              <name>[ex] Control+1 to Home / Control+2 to End</name>
+              <sysctl>keyremap4macbook.option.emacsmode_ex_control12</sysctl>
+            </item>
+            <item>
+              <name>[ex] Control+Q to PageUp</name>
+              <sysctl>keyremap4macbook.option.emacsmode_ex_controlQ</sysctl>
+            </item>
+            <item>
+              <name>[ex] Control+W to Option+Delete</name>
+              <sysctl>keyremap4macbook.option.emacsmode_ex_controlW</sysctl>
+            </item>
+          </list>
+        </item>
+      </list>
+    </item>
+
+    <item>
+      <name>SandS (Space and Shift)</name>
+      <list>
+        <item>
+          <name>Enable SandS</name>
+          <sysctl>keyremap4macbook.remap.space2shift</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
+      <name>Remapping for Mac OS X Features</name>
+      <list>
+        <item>
+          <name>Drop Shift+[F1...F12] (Disable Show-Expose)</name>
+          <sysctl>keyremap4macbook.remap.drop_funcshift</sysctl>
+        </item>
+        <item>
+          <name>Use Command_R+[A...L] for Spaces (Command+Control+Option+Shift+[1...9])</name>
+          <sysctl>keyremap4macbook.remap.spaces_special</sysctl>
+        </item>
+        <item>
+          <name>Remap KeyPad numbers for Spaces(3x3)</name>
+          <sysctl>keyremap4macbook.remap.keypad2spaces</sysctl>
+          <list>
+            <item>
+              <name>Check if your Spaces setting is Control+[1...9]</name>
+              <sysctl>keyremap4macbook.option.keypad2spaces_modifier_control</sysctl>
+            </item>
+            <item>
+              <name>Check if your Spaces setting is Command+[1...9]</name>
+              <sysctl>keyremap4macbook.option.keypad2spaces_modifier_command</sysctl>
+            </item>
+            <item>
+              <name>Check if your Spaces setting is Option+[1...9]</name>
+              <sysctl>keyremap4macbook.option.keypad2spaces_modifier_option</sysctl>
+            </item>
+            <item>
+              <name>Check if your Spaces setting is Shift+[1...9]</name>
+              <sysctl>keyremap4macbook.option.keypad2spaces_modifier_shift</sysctl>
+            </item>
+          </list>
+        </item>
+        <item>
+          <name>Use Tab for Expose(F9)</name>
+          <sysctl>keyremap4macbook.remap.tab2expose</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
+      <name>Change Keyboard Layout</name>
+      <list>
+        <item>
+          <name>Use Colemak Keyboard Layout</name>
+          <sysctl>keyremap4macbook.remap.qwerty2colemak</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
+      <name>For Japanese</name>
+      <list>
+        <item>
+          <name>Remap EISUU Key</name>
+          <list>
+            <item>
+              <name>EISUU to Command_L</name>
+              <sysctl>keyremap4macbook.remap.jis_eisuu2commandL</sysctl>
+            </item>
+            <item>
+              <name>EISUU to Control_L</name>
+              <sysctl>keyremap4macbook.remap.jis_eisuu2controlL</sysctl>
+            </item>
+            <item>
+              <name>EISUU to Option_L</name>
+              <sysctl>keyremap4macbook.remap.jis_eisuu2optionL</sysctl>
+            </item>
+            <item>
+              <name>EISUU to Shift_L</name>
+              <sysctl>keyremap4macbook.remap.jis_eisuu2shiftL</sysctl>
+            </item>
+            <item>
+              <name>EISUU to Tab</name>
+              <sysctl>keyremap4macbook.remap.jis_eisuu2tab</sysctl>
+            </item>
+          </list>
+        </item>
+        <item>
+          <name>Remap KANA Key</name>
+          <list>
+            <item>
+              <name>KANA to Command_L</name>
+              <sysctl>keyremap4macbook.remap.jis_kana2commandL</sysctl>
+            </item>
+            <item>
+              <name>KANA to Control_L</name>
+              <sysctl>keyremap4macbook.remap.jis_kana2controlL</sysctl>
+            </item>
+            <item>
+              <name>KANA to Option_L</name>
+              <sysctl>keyremap4macbook.remap.jis_kana2optionL</sysctl>
+            </item>
+            <item>
+              <name>KANA to Shift_L</name>
+              <sysctl>keyremap4macbook.remap.jis_kana2shiftL</sysctl>
+            </item>
+            <item>
+              <name>KANA to Return</name>
+              <sysctl>keyremap4macbook.remap.jis_kana2return</sysctl>
+            </item>
+          </list>
+        </item>
+        <item>
+          <name>Other</name>
+          <list>
+            <item>
+              <name>Shift+KANA to EISUU</name>
+              <sysctl>keyremap4macbook.remap.jis_shiftKana2eisuu</sysctl>
+            </item>
+            <item>
+              <name>Use KANA as KANA/EISUU (toggle)</name>
+              <sysctl>keyremap4macbook.remap.jis_unify_eisuu_to_kana</sysctl>
+            </item>
+            <item>
+              <name>Use Command_L as KANA/EISUU (toggle)</name>
+              <sysctl>keyremap4macbook.remap.jis_unify_kana_eisuu_to_commandL</sysctl>
+            </item>
+          </list>
+        </item>
+      </list>
+    </item>
+  </list>
+</root>

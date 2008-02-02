@@ -31,6 +31,6 @@ for key in `sysctl keyremap4macbook 2>&1 | grep -oE '^keyremap4macbook.(remap|op
 done
 
 chmod 755 "$tmpfile"
-mv "$tmpfile" "$outfile"
+mv -f "$tmpfile" "$outfile"
 
 exit 0
