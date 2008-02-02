@@ -31,6 +31,7 @@
 {
   _XMLDocument = nil;
   _sysctlWrapper = [[SysctlWrapper alloc] init];
+  _adminAction = [[AdminAction alloc] init];
 
   [self loadXML];
   if (! _XMLDocument) return;
@@ -115,27 +116,26 @@
   return nil;
 }
 
-#if 0
 - (void)outlineView:(NSOutlineView *)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
 {
-  NSXMLNode *name = [self getNode:item xpath:@"name"];
-
   NSXMLNode *sysctl = [self getNode:item xpath:@"sysctl"];
   if (sysctl) {
     NSString *name = [sysctl stringValue];
     NSNumber *value = [_sysctlWrapper getInt:name];
     NSNumber *new = [[[NSNumber alloc] initWithBool:![value boolValue]] autorelease];
-    //[self setSysctl:[sysctl stringValue] value:new];
+    [_adminAction setSysctlInt:name value:new];
   }
 }
-#endif
 
 // ----------------------------------------------------------------------
 - (IBAction)setKeyRepeat_initialWait:(id)sender {
+  NSNumber *new = [[[NSNumber alloc] initWithInt:[[sender stringValue] intValue]] autorelease];
+  [_adminAction setSysctlInt:@"keyremap4macbook.repeat.initial_wait" value:new];
 }
 
 - (IBAction)setKeyRepeat_wait:(id)sender {
+  NSNumber *new = [[[NSNumber alloc] initWithInt:[[sender stringValue] intValue]] autorelease];
+  [_adminAction setSysctlInt:@"keyremap4macbook.repeat.wait" value:new];
 }
-
 
 @end
