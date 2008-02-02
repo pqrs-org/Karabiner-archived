@@ -12,10 +12,11 @@ if [ -f "$targetfile" ]; then
         rm -rf "/Library/StartupItems/KeyRemap4MacBook/"
     fi
 fi
+# uninstall obsolute files
+rm -f "/Library/LaunchDaemons/org.pqrs.KeyRemap4MacBook.autosave.plist"
+rm -f "/Applications/KeyRemap4MacBook/scripts/autosave.sh"
 
 startup="/Applications/KeyRemap4MacBook/scripts/startup.sh"
 [ -f "$startup" ] && "$startup" quickstart
-
-launchctl load /Library/LaunchDaemons/org.pqrs.KeyRemap4MacBook.autosave.plist
 
 exit 0

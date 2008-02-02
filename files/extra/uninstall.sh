@@ -18,6 +18,7 @@ basedir="/Applications/KeyRemap4MacBook"
 "$basedir/scripts/unload.sh"
 rm -f "/Library/LaunchDaemons/org.pqrs.KeyRemap4MacBook.load.plist"
 rm -f "/Library/LaunchDaemons/org.pqrs.KeyRemap4MacBook.autosave.plist"
+rm -rf "/Library/PreferencePanes/KeyRemap4MacBook.prefPane"
 rm -rf "$basedir"
 
 exit 0
