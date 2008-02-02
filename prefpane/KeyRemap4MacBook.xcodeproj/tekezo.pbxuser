@@ -81,6 +81,14 @@
 	8D202CE80486D31800D8A456 /* KeyRemap4MacBook */ = {
 		activeExec = 0;
 	};
+	8D202CF70486D31800D8A456 /* Info.plist */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1179, 726}}";
+			sepNavSelRange = "{971, 0}";
+			sepNavVisRange = "{0, 1073}";
+			sepNavWindowFrame = "{{15, 169}, {1238, 854}}";
+		};
+	};
 	F506C03C013D9D7901CA16C8 /* KeyRemap4MacBookPref.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1179, 726}}";

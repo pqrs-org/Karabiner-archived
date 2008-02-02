@@ -1,3 +1,5 @@
+// -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
+
 #import "KeyRemap4MacBookPref.h"
 
 @implementation KeyRemap4MacBookPref
@@ -65,6 +67,7 @@
   [self loadKeyRepeat];
   [_outlineView reloadData];
 }
+
 
 // ----------------------------------------------------------------------
 // for NSOutlineView
