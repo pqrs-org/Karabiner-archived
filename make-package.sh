@@ -19,8 +19,9 @@ sudo mkdir -p pkgroot
 basedir="/Applications/KeyRemap4MacBook"
 sudo mkdir -p "pkgroot/$basedir"
 sudo cp -R src/kext/build/Release/KeyRemap4MacBook.kext "pkgroot/$basedir"
-sudo cp -R files/scripts "pkgroot/$basedir"
 sudo cp -R files/extra "pkgroot/$basedir"
+sudo cp -R files/prefpane "pkgroot/$basedir"
+sudo cp -R files/scripts "pkgroot/$basedir"
 sudo mkdir -p "pkgroot/Library"
 sudo cp -R files/LaunchDaemons pkgroot/Library
 sudo mkdir -p "pkgroot/Library/PreferencePanes"
