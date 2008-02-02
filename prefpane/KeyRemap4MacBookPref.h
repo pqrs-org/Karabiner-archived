@@ -2,12 +2,13 @@
 
 #import <PreferencePanes/PreferencePanes.h>
 #import "SysctlWrapper.h"
+#import "AdminAction.h"
 
 @interface KeyRemap4MacBookPref : NSPreferencePane
 {
   NSXMLDocument *_XMLDocument;
-  AuthorizationRef _authorizationRef;
   SysctlWrapper *_sysctlWrapper;
+  AdminAction *_adminAction;
 
   IBOutlet id _outlineView;
   IBOutlet id _versionText;
