@@ -53,8 +53,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 223621840;
-			PBXWorkspaceStateSaveDate = 223621840;
+			PBXPerProjectTemplateStateSaveDate = 223625544;
+			PBXWorkspaceStateSaveDate = 223625544;
 		};
 		sourceControlManager = 34908A7E0D4CC2DA004AE69D /* Source Control */;
 		userBuildSettings = {
@@ -86,12 +86,11 @@
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
 	};
-	34E342680D5399BF00734BD8 /* sysctl.xml */ = {
+	34F697810D543B1100920FBE /* AdminAction.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1179, 5964}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 1383}";
-			sepNavWindowFrame = "{{15, 169}, {1238, 854}}";
+			sepNavIntBoundsRect = "{{0, 0}, {827, 1162}}";
+			sepNavSelRange = "{2105, 0}";
+			sepNavVisRange = "{1683, 422}";
 		};
 	};
 	8D202CE80486D31800D8A456 /* KeyRemap4MacBook */ = {

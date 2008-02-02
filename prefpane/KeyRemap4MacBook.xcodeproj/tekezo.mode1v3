@@ -276,7 +276,6 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>8</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -383,9 +382,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>34F6977D0D5432D100920FBE</string>
+				<string>34DEA5D70D5441500058127C</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>34F6977E0D5432D100920FBE</string>
+				<string>34DEA5D80D5441500058127C</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -543,7 +542,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>KeyRemap4MacBookPref.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -560,6 +559,8 @@
 							<string>260pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -599,7 +600,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>34F968700D4CD23C0027C847</string>
-				<string>34B351420D53C6250040B14D</string>
+				<string>34F6979D0D54413200920FBE</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -610,7 +611,7 @@
 			<key>WindowToolGUID</key>
 			<string>34F968700D4CD23C0027C847</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
