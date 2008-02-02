@@ -297,11 +297,11 @@
       <name>Remapping for Mac OS X Features</name>
       <list>
         <item>
-          <name>Drop Shift+F1 ... Shift+F12</name>
+          <name>Drop Shift+[F1...F12] (Disable Show-Expose)</name>
           <sysctl>keyremap4macbook.remap.drop_funcshift</sysctl>
         </item>
         <item>
-          <name>Use Command_R+A .. Command_R+L for Spaces</name>
+          <name>Use Command_R+[A...L] for Spaces (Command+Control+Option+Shift+[1...9])</name>
           <sysctl>keyremap4macbook.remap.spaces_special</sysctl>
         </item>
         <item>
@@ -309,19 +309,19 @@
           <sysctl>keyremap4macbook.remap.keypad2spaces</sysctl>
           <list>
             <item>
-              <name>Check if your Spaces setting is Control+1..9</name>
+              <name>Check if your Spaces setting is Control+[1...9]</name>
               <sysctl>keyremap4macbook.option.keypad2spaces_modifier_control</sysctl>
             </item>
             <item>
-              <name>Check if your Spaces setting is Command+1..9</name>
+              <name>Check if your Spaces setting is Command+[1...9]</name>
               <sysctl>keyremap4macbook.option.keypad2spaces_modifier_command</sysctl>
             </item>
             <item>
-              <name>Check if your Spaces setting is Option+1..9</name>
+              <name>Check if your Spaces setting is Option+[1...9]</name>
               <sysctl>keyremap4macbook.option.keypad2spaces_modifier_option</sysctl>
             </item>
             <item>
-              <name>Check if your Spaces setting is Shift+1..9</name>
+              <name>Check if your Spaces setting is Shift+[1...9]</name>
               <sysctl>keyremap4macbook.option.keypad2spaces_modifier_shift</sysctl>
             </item>
           </list>
