@@ -64,19 +64,22 @@
   return TRUE;
 }
 
+- (BOOL) saveSetting
+{
+  char command[] = "sh -c /Applications/KeyRemap4MacBook/scripts/save.sh";
+  return [self execCommand:command];
+}
+
 - (BOOL) setSysctlInt:(NSString *)name value:(NSNumber *)value
 {
   char command[512];
   snprintf(command, sizeof(command), "/usr/sbin/sysctl -w '%s=%d'",
            [name cStringUsingEncoding:NSUTF8StringEncoding],
            [value intValue]);
-  return [self execCommand:command];
-}
+  if (! [self execCommand:command]) return FALSE;
 
-- (BOOL) saveSetting
-{
-  char command[] = "/Applications/KeyRemap4MacBook/scripts/save.sh";
-  return [self execCommand:command];
+  if (! [self saveSetting]) return FALSE;
+  return TRUE;
 }
 
 @end

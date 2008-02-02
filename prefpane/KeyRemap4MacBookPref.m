@@ -4,7 +4,7 @@
 
 - (void) loadXML
 {
-  NSString *path = @"/Library/PreferencePanes/KeyRemap4MacBook.prefPane/Contents/Resources/sysctl.xml";
+  NSString *path = @"/Applications/KeyRemap4MacBook/prefpane/sysctl.xml";
   NSURL *url = [NSURL fileURLWithPath:path];
   _XMLDocument = [[NSXMLDocument alloc] initWithContentsOfURL:url options:0 error:NULL];
 }

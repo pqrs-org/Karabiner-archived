@@ -8,6 +8,5 @@
 }
 
 - (BOOL) setSysctlInt:(NSString *)name value:(NSNumber *)value;
-- (BOOL) saveSetting;
 
 @end

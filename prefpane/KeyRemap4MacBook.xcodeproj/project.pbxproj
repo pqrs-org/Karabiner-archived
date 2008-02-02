@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		341B26F40D53961A00CB7EAC /* SysctlWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 341B26F20D53961A00CB7EAC /* SysctlWrapper.m */; };
 		341B26F50D53961A00CB7EAC /* SysctlWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 341B26F30D53961A00CB7EAC /* SysctlWrapper.h */; };
-		34E342690D5399BF00734BD8 /* sysctl.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34E342680D5399BF00734BD8 /* sysctl.xml */; };
 		34F697830D543B1100920FBE /* AdminAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F697810D543B1100920FBE /* AdminAction.m */; };
 		34F697840D543B1100920FBE /* AdminAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 34F697820D543B1100920FBE /* AdminAction.h */; };
 		34F697930D543BAA00920FBE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F697920D543BAA00920FBE /* Security.framework */; };
@@ -31,7 +30,6 @@
 		32DBCFA20370C41700C91783 /* KeyRemap4MacBook_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyRemap4MacBook_Prefix.pch; sourceTree = "<group>"; };
 		341B26F20D53961A00CB7EAC /* SysctlWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysctlWrapper.m; sourceTree = "<group>"; };
 		341B26F30D53961A00CB7EAC /* SysctlWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysctlWrapper.h; sourceTree = "<group>"; };
-		34E342680D5399BF00734BD8 /* sysctl.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sysctl.xml; sourceTree = "<group>"; };
 		34F697810D543B1100920FBE /* AdminAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminAction.m; sourceTree = "<group>"; };
 		34F697820D543B1100920FBE /* AdminAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminAction.h; sourceTree = "<group>"; };
 		34F697920D543BAA00920FBE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
@@ -83,7 +81,6 @@
 		089C167CFE841241C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				34E342680D5399BF00734BD8 /* sysctl.xml */,
 				8D202CF70486D31800D8A456 /* Info.plist */,
 				089C167DFE841241C02AAC07 /* InfoPlist.strings */,
 				F506C040013D9D8001CA16C8 /* KeyRemap4MacBookPref.tiff */,
@@ -201,7 +198,6 @@
 				8D202CED0486D31800D8A456 /* InfoPlist.strings in Resources */,
 				8D202CEE0486D31800D8A456 /* KeyRemap4MacBookPref.tiff in Resources */,
 				8D202CEF0486D31800D8A456 /* KeyRemap4MacBookPref.nib in Resources */,
-				34E342690D5399BF00734BD8 /* sysctl.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
