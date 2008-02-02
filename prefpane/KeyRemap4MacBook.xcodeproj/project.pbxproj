@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		341B26F40D53961A00CB7EAC /* SysctlWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 341B26F20D53961A00CB7EAC /* SysctlWrapper.m */; };
-		341B26F50D53961A00CB7EAC /* SysctlWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 341B26F30D53961A00CB7EAC /* SysctlWrapper.h */; };
 		349FDBBF0D545C2200EED33C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 349FDBBE0D545C2200EED33C /* Security.framework */; };
-		34F697830D543B1100920FBE /* AdminAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F697810D543B1100920FBE /* AdminAction.m */; };
-		34F697840D543B1100920FBE /* AdminAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 34F697820D543B1100920FBE /* AdminAction.h */; };
+		34E409D90D54C4C1008441E7 /* AdminAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 34E409D50D54C4C1008441E7 /* AdminAction.h */; };
+		34E409DA0D54C4C1008441E7 /* AdminAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E409D60D54C4C1008441E7 /* AdminAction.m */; };
+		34E409DB0D54C4C1008441E7 /* SysctlWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 34E409D70D54C4C1008441E7 /* SysctlWrapper.h */; };
+		34E409DC0D54C4C1008441E7 /* SysctlWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E409D80D54C4C1008441E7 /* SysctlWrapper.m */; };
 		8D202CEA0486D31800D8A456 /* KeyRemap4MacBook_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32DBCFA20370C41700C91783 /* KeyRemap4MacBook_Prefix.pch */; };
 		8D202CEB0486D31800D8A456 /* KeyRemap4MacBookPref.h in Headers */ = {isa = PBXBuildFile; fileRef = F506C03C013D9D7901CA16C8 /* KeyRemap4MacBookPref.h */; };
 		8D202CED0486D31800D8A456 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
@@ -28,11 +28,11 @@
 		089C167FFE841241C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		32DBCFA20370C41700C91783 /* KeyRemap4MacBook_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyRemap4MacBook_Prefix.pch; sourceTree = "<group>"; };
-		341B26F20D53961A00CB7EAC /* SysctlWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysctlWrapper.m; sourceTree = "<group>"; };
-		341B26F30D53961A00CB7EAC /* SysctlWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysctlWrapper.h; sourceTree = "<group>"; };
 		349FDBBE0D545C2200EED33C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
-		34F697810D543B1100920FBE /* AdminAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminAction.m; sourceTree = "<group>"; };
-		34F697820D543B1100920FBE /* AdminAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminAction.h; sourceTree = "<group>"; };
+		34E409D50D54C4C1008441E7 /* AdminAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdminAction.h; path = sharecode/AdminAction.h; sourceTree = "<group>"; };
+		34E409D60D54C4C1008441E7 /* AdminAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AdminAction.m; path = sharecode/AdminAction.m; sourceTree = "<group>"; };
+		34E409D70D54C4C1008441E7 /* SysctlWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SysctlWrapper.h; path = sharecode/SysctlWrapper.h; sourceTree = "<group>"; };
+		34E409D80D54C4C1008441E7 /* SysctlWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SysctlWrapper.m; path = sharecode/SysctlWrapper.m; sourceTree = "<group>"; };
 		8D202CF70486D31800D8A456 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D202CF80486D31800D8A456 /* KeyRemap4MacBook.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyRemap4MacBook.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
 		F506C035013D953901CA16C8 /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = /System/Library/Frameworks/PreferencePanes.framework; sourceTree = "<absolute>"; };
@@ -92,11 +92,11 @@
 		08FB77AFFE84173DC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				34F697810D543B1100920FBE /* AdminAction.m */,
-				34F697820D543B1100920FBE /* AdminAction.h */,
+				34E409D50D54C4C1008441E7 /* AdminAction.h */,
+				34E409D60D54C4C1008441E7 /* AdminAction.m */,
+				34E409D70D54C4C1008441E7 /* SysctlWrapper.h */,
+				34E409D80D54C4C1008441E7 /* SysctlWrapper.m */,
 				F506C03C013D9D7901CA16C8 /* KeyRemap4MacBookPref.h */,
-				341B26F20D53961A00CB7EAC /* SysctlWrapper.m */,
-				341B26F30D53961A00CB7EAC /* SysctlWrapper.h */,
 				F506C03D013D9D7901CA16C8 /* KeyRemap4MacBookPref.m */,
 			);
 			name = Classes;
@@ -145,8 +145,8 @@
 			files = (
 				8D202CEA0486D31800D8A456 /* KeyRemap4MacBook_Prefix.pch in Headers */,
 				8D202CEB0486D31800D8A456 /* KeyRemap4MacBookPref.h in Headers */,
-				341B26F50D53961A00CB7EAC /* SysctlWrapper.h in Headers */,
-				34F697840D543B1100920FBE /* AdminAction.h in Headers */,
+				34E409D90D54C4C1008441E7 /* AdminAction.h in Headers */,
+				34E409DB0D54C4C1008441E7 /* SysctlWrapper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,8 +219,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D202CF10486D31800D8A456 /* KeyRemap4MacBookPref.m in Sources */,
-				341B26F40D53961A00CB7EAC /* SysctlWrapper.m in Sources */,
-				34F697830D543B1100920FBE /* AdminAction.m in Sources */,
+				34E409DA0D54C4C1008441E7 /* AdminAction.m in Sources */,
+				34E409DC0D54C4C1008441E7 /* SysctlWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -53,26 +53,11 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 223637685;
-			PBXWorkspaceStateSaveDate = 223637685;
+			PBXPerProjectTemplateStateSaveDate = 223659313;
+			PBXWorkspaceStateSaveDate = 223659313;
 		};
 		sourceControlManager = 34908A7E0D4CC2DA004AE69D /* Source Control */;
 		userBuildSettings = {
-		};
-	};
-	341B26F20D53961A00CB7EAC /* SysctlWrapper.m */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {439, 476}}";
-			sepNavSelRange = "{700, 0}";
-			sepNavVisRange = "{0, 327}";
-		};
-	};
-	341B26F30D53961A00CB7EAC /* SysctlWrapper.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {494, 210}}";
-			sepNavSelRange = "{350, 0}";
-			sepNavVisRange = "{0, 350}";
-			sepNavWindowFrame = "{{15, 169}, {1238, 854}}";
 		};
 	};
 	34908A7E0D4CC2DA004AE69D /* Source Control */ = {
@@ -86,18 +71,11 @@
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
 	};
-	34F697810D543B1100920FBE /* AdminAction.m */ = {
+	34E409D60D54C4C1008441E7 /* AdminAction.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {827, 1414}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 392}";
-		};
-	};
-	34F697820D543B1100920FBE /* AdminAction.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {827, 228}}";
-			sepNavSelRange = "{123, 38}";
-			sepNavVisRange = "{0, 234}";
+			sepNavIntBoundsRect = "{{0, 0}, {827, 952}}";
+			sepNavSelRange = "{1683, 5}";
+			sepNavVisRange = "{1160, 528}";
 		};
 	};
 	8D202CE80486D31800D8A456 /* KeyRemap4MacBook */ = {
