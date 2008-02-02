@@ -93,8 +93,35 @@
   return [a objectAtIndex:0];
 }
 
+- (BOOL) checkAnyChildrenChecked:(NSXMLNode *)node
+{
+  NSArray *a = [node nodesForXPath:@".//sysctl" error:NULL];
+  if (a == nil) return FALSE;
+  if ([a count] == 0) return FALSE;
+
+  NSEnumerator *enumerator = [a objectEnumerator];
+  NSXMLNode *n;
+  while (n = [enumerator nextObject]) {
+    NSNumber *value = [_sysctlWrapper getInt:[n stringValue]];
+    if ([value boolValue]) return TRUE;
+  }
+
+  return FALSE;
+}
+
 - (id)outlineView:(NSOutlineView*)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
 {
+  // ----------------------------------------
+  // autoexpand
+  if ([_outlineView isExpandable:item]) {
+    if (! [_outlineView isItemExpanded:item]) {
+      if ([self checkAnyChildrenChecked:item]) {
+        [_outlineView expandItem:item];
+      }
+    }
+  }
+
+  // ----------------------------------------
   NSButtonCell *cell = [tableColumn dataCell];
   if (! cell) return nil;
 
