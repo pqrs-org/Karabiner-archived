@@ -9,6 +9,6 @@
   AuthorizationRef _authorizationRef;
 }
 
-- (BOOL) setSysctlInt:(NSString *)name value:(NSNumber *)value;
+- (BOOL) execCommand:(char *)command;
 
 @end
