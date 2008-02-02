@@ -1,5 +1,5 @@
 syntax: regexp
 .*\.pkg/
-.*\.pkg.tar.gz
+.*\.gz
 pkgroot/
 .*/build/
