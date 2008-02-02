@@ -60,6 +60,14 @@
 		userBuildSettings = {
 		};
 	};
+	089C167EFE841241C02AAC07 /* English */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1179, 726}}";
+			sepNavSelRange = "{117, 0}";
+			sepNavVisRange = "{0, 119}";
+			sepNavWindowFrame = "{{38, 148}, {1238, 854}}";
+		};
+	};
 	34908A7E0D4CC2DA004AE69D /* Source Control */ = {
 		isa = PBXSourceControlManager;
 		fallbackIsa = XCSourceControlManager;
