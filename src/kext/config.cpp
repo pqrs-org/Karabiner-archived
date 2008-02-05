@@ -150,6 +150,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, hhkmode, CTLTYPE_INT|CTLFLAG_RW,
              &(config.remap_hhkmode), 0, "");
 
+  SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, keypadnumlock, CTLTYPE_INT|CTLFLAG_RW,
+             &(config.remap_keypadnumlock), 0, "");
+
   // ----------------------------------------------------------------------
   SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, emacsmode, CTLTYPE_INT|CTLFLAG_RW,
              &(config.remap_emacsmode), 0, "");
@@ -348,6 +351,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ----------------------------------------
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_shiftDelete2tilde);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_hhkmode);
+    sysctl_register_oid(&sysctl__keyremap4macbook_remap_keypadnumlock);
 
     // ----------------------------------------
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_emacsmode);
@@ -472,6 +476,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ----------------------------------------
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_shiftDelete2tilde);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_hhkmode);
+    sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_keypadnumlock);
 
     // ----------------------------------------
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_emacsmode);

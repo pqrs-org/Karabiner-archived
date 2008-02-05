@@ -61,6 +61,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       KEYPAD_SLASH = 75,
       KEYPAD_MINUS = 78,
       KEYPAD_EQUAL = 81,
+      KEYPAD_COMMA = 95,
       KEYPAD_0 = 82,
       KEYPAD_1 = 83,
       KEYPAD_2 = 84,
@@ -127,6 +128,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       F10 = 109,
       F11 = 103,
       F12 = 111,
+
+      HELP = 114,
 
       FORWARD_DELETE = 117,
 
