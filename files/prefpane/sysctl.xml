@@ -220,6 +220,10 @@
           <name>Enable HHK compatible Arrow Key Mode</name>
           <sysctl>keyremap4macbook.remap.hhkmode</sysctl>
         </item>
+        <item>
+          <name>Use KeyPad as Arrow (PC Style NumLock)</name>
+          <sysctl>keyremap4macbook.remap.keypadnumlock</sysctl>
+        </item>
       </list>
     </item>
 

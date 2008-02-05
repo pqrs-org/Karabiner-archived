@@ -63,6 +63,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ----------------------------------------
     int remap_shiftDelete2tilde;
     int remap_hhkmode;
+    int remap_keypadnumlock;
 
     // ----------------------------------------
     int remap_emacsmode;

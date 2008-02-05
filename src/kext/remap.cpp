@@ -375,6 +375,46 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
+  void
+  remap_keypadnumlock(const RemapParams &params)
+  {
+    if (! config.remap_keypadnumlock) return;
+
+    if (params.ex_origKey == KeyCode::KEYPAD_0 ||
+        params.ex_origKey == KeyCode::KEYPAD_5 ||
+        params.ex_origKey == KeyCode::KEYPAD_COMMA) {
+      *(params.ex_dropKey) = true;
+    }
+
+    if (params.ex_origKey == KeyCode::KEYPAD_2 ||
+        params.ex_origKey == KeyCode::KEYPAD_4 ||
+        params.ex_origKey == KeyCode::KEYPAD_6 ||
+        params.ex_origKey == KeyCode::KEYPAD_8) {
+      allFlagStatus.keypad = false;
+      allFlagStatus.cursor = true;
+      RemapUtil::keyToKey(params, KeyCode::KEYPAD_2, KeyCode::CURSOR_DOWN);
+      RemapUtil::keyToKey(params, KeyCode::KEYPAD_4, KeyCode::CURSOR_LEFT);
+      RemapUtil::keyToKey(params, KeyCode::KEYPAD_6, KeyCode::CURSOR_RIGHT);
+      RemapUtil::keyToKey(params, KeyCode::KEYPAD_8, KeyCode::CURSOR_UP);
+    }
+
+    if (params.ex_origKey == KeyCode::KEYPAD_1 ||
+        params.ex_origKey == KeyCode::KEYPAD_3 ||
+        params.ex_origKey == KeyCode::KEYPAD_7 ||
+        params.ex_origKey == KeyCode::KEYPAD_9) {
+      allFlagStatus.keypad = false;
+      RemapUtil::keyToKey(params, KeyCode::KEYPAD_1, KeyCode::END);
+      RemapUtil::keyToKey(params, KeyCode::KEYPAD_3, KeyCode::PAGEDOWN);
+      RemapUtil::keyToKey(params, KeyCode::KEYPAD_7, KeyCode::HOME);
+      RemapUtil::keyToKey(params, KeyCode::KEYPAD_9, KeyCode::PAGEUP);
+    }
+
+    if (params.ex_origKey == KeyCode::KEYPAD_DOT) {
+      allFlagStatus.keypad = false;
+      RemapUtil::keyToKey(params, KeyCode::KEYPAD_DOT, KeyCode::FORWARD_DELETE);
+    }
+  }
+
   // ----------------------------------------
   void
   remap_emacsmode(const RemapParams &params)
@@ -896,6 +936,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   // ----------------------------------------
   remap_shiftDelete2tilde(params);
   remap_hhkmode(params);
+  remap_keypadnumlock(params);
 
   // ----------------------------------------
   remap_drop_funcshift(params);
