@@ -81,7 +81,7 @@
           <sysctl>keyremap4macbook.remap.escape2backquote</sysctl>
         </item>
         <item>
-          <name>Escape to RightClick(KEYPAD_5) *** use with Mouse Keys ***</name>
+          <name>Escape to RightClick(Control+KEYPAD_5) *** Use with Mouse Keys ***</name>
           <sysctl>keyremap4macbook.remap.escape2rightclick</sysctl>
         </item>
       </list>
