@@ -400,6 +400,22 @@
           <name>Other</name>
           <list>
             <item>
+              <name>Command_R to EISUU</name>
+              <sysctl>keyremap4macbook.remap.jis_commandR2eisuu</sysctl>
+            </item>
+            <item>
+              <name>Command_R to KANA</name>
+              <sysctl>keyremap4macbook.remap.jis_commandR2kana</sysctl>
+            </item>
+            <item>
+              <name>Option_R to EISUU</name>
+              <sysctl>keyremap4macbook.remap.jis_optionR2eisuu</sysctl>
+            </item>
+            <item>
+              <name>Option_R to KANA</name>
+              <sysctl>keyremap4macbook.remap.jis_optionR2kana</sysctl>
+            </item>
+            <item>
               <name>Shift+KANA to EISUU</name>
               <sysctl>keyremap4macbook.remap.jis_shiftKana2eisuu</sysctl>
             </item>

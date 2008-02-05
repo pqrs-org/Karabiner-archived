@@ -108,6 +108,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     int remap_jis_kana2shiftL;
     int remap_jis_kana2return;
 
+    int remap_jis_commandR2eisuu;
+    int remap_jis_commandR2kana;
+    int remap_jis_optionR2eisuu;
+    int remap_jis_optionR2kana;
+
     int remap_jis_shiftKana2eisuu;
     int remap_jis_unify_eisuu_to_kana;
     int remap_jis_unify_kana_eisuu_to_commandL;
