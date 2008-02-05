@@ -225,7 +225,7 @@
           <sysctl>keyremap4macbook.remap.keypadnumlock</sysctl>
         </item>
         <item>
-          <name>Use PC Style Home/End (Command+Arrow)</name>
+          <name>Use PC Style Home/End (behave like Command+Arrow)</name>
           <sysctl>keyremap4macbook.remap.pclikehomeend</sysctl>
         </item>
       </list>
