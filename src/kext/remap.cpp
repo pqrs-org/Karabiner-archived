@@ -415,6 +415,28 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
+  void
+  remap_pclikehomeend(const RemapParams &params)
+  {
+    if (! config.remap_pclikehomeend) return;
+
+    bool replaced = false;
+
+    if (*(params.key) == KeyCode::HOME) {
+      *(params.key) = KeyCode::CURSOR_LEFT;
+      replaced = true;
+    }
+    if (*(params.key) == KeyCode::END) {
+      *(params.key) = KeyCode::CURSOR_RIGHT;
+      replaced = true;
+    }
+
+    if (replaced) {
+      allFlagStatus.commandL.temporary_increase();
+      allFlagStatus.cursor = true;
+    }
+  }
+
   // ----------------------------------------
   void
   remap_emacsmode(const RemapParams &params)
@@ -979,6 +1001,11 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   // *** Note: we need to call remap_space2shift as possible late. ***
   // *** If remap_shiftL2space is enable, remap_space2shift fire Shift+Space when Shift_L + Space Key are pressed. ***
   remap_space2shift(params);
+
+  // ------------------------------------------------------------
+  // *** Note: we need to call remap_pclikehomeend as possible late. ***
+  // *** If remap_emacsmode is enable, C-1 & C-2 replaced as HOME, END. ***
+  remap_pclikehomeend(params);
 
   // ------------------------------------------------------------
   *(params.flags) = allFlagStatus.makeFlags(params);
