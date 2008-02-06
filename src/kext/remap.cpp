@@ -92,6 +92,42 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_enter2commandLcontrolL(const RemapParams &params)
+  {
+    if (! config.remap_enter2commandLcontrolL) return;
+
+    if (params.ex_origKey == RemapUtil::getEnterKeyCode(params)) {
+      if (*(params.eventType) == KeyEvent::DOWN) {
+        allFlagStatus.commandL.increase();
+        allFlagStatus.controlL.increase();
+      } else if (*(params.eventType) == KeyEvent::UP) {
+        allFlagStatus.commandL.decrease();
+        allFlagStatus.controlL.decrease();
+      }
+      *(params.key) = KeyCode::COMMAND_L;
+      *(params.eventType) = KeyEvent::MODIFY;
+    }
+  }
+
+  void
+  remap_enter2commandLshiftL(const RemapParams &params)
+  {
+    if (! config.remap_enter2commandLshiftL) return;
+
+    if (params.ex_origKey == RemapUtil::getEnterKeyCode(params)) {
+      if (*(params.eventType) == KeyEvent::DOWN) {
+        allFlagStatus.commandL.increase();
+        allFlagStatus.shiftL.increase();
+      } else if (*(params.eventType) == KeyEvent::UP) {
+        allFlagStatus.commandL.decrease();
+        allFlagStatus.shiftL.decrease();
+      }
+      *(params.key) = KeyCode::COMMAND_L;
+      *(params.eventType) = KeyEvent::MODIFY;
+    }
+  }
+
+  void
   remap_enter2semicolon(const RemapParams &params)
   {
     if (! config.remap_enter2semicolon) return;
@@ -289,12 +325,36 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
+  remap_shiftR2commandL(const RemapParams &params)
+  {
+    if (! config.remap_shiftR2commandL) return;
+
+    RemapUtil::modifierToModifier(params, ModifierFlag::SHIFT_R, ModifierFlag::COMMAND_L);
+  }
+
+  void
+  remap_shiftR2controlL(const RemapParams &params)
+  {
+    if (! config.remap_shiftR2controlL) return;
+
+    RemapUtil::modifierToModifier(params, ModifierFlag::SHIFT_R, ModifierFlag::CONTROL_L);
+  }
+
+  void
   remap_shiftR2fn(const RemapParams &params)
   {
     if (! config.remap_shiftR2fn) return;
 
     RemapUtil::modifierToModifier(params, ModifierFlag::SHIFT_R, ModifierFlag::FN);
     RemapUtil::toFN(params);
+  }
+
+  void
+  remap_shiftR2optionL(const RemapParams &params)
+  {
+    if (! config.remap_shiftR2optionL) return;
+
+    RemapUtil::modifierToModifier(params, ModifierFlag::SHIFT_R, ModifierFlag::OPTION_L);
   }
 
   void
@@ -875,6 +935,25 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_jis_unify_kana_to_eisuu(const RemapParams &params)
+  {
+    if (! config.remap_jis_unify_kana_to_eisuu) return;
+
+    if (params.ex_origKey != KeyCode::JIS_EISUU) return;
+
+    static bool isKana = true;
+
+    if (isKana) {
+      RemapUtil::keyToKey(params, KeyCode::JIS_EISUU, KeyCode::JIS_KANA);
+    } else {
+      // do nothing
+    }
+    if (*(params.eventType) == KeyEvent::UP) {
+      isKana = ! isKana;
+    }
+  }
+
+  void
   remap_jis_unify_kana_eisuu_to_commandL(const RemapParams &params)
   {
     if (! config.remap_jis_unify_kana_eisuu_to_commandL) return;
@@ -922,6 +1001,8 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_enter2controlL(params);
   remap_enter2fn(params);
   remap_enter2optionL(params);
+  remap_enter2commandLcontrolL(params);
+  remap_enter2commandLshiftL(params);
   remap_enter2semicolon(params);
   remap_enter2space(params);
 
@@ -951,7 +1032,10 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_shiftL2controlL(params);
   remap_shiftL2space(params);
 
+  remap_shiftR2commandL(params);
+  remap_shiftR2controlL(params);
   remap_shiftR2fn(params);
+  remap_shiftR2optionL(params);
   remap_shiftR2escape(params);
   remap_shiftR2space(params);
 
@@ -990,6 +1074,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   remap_jis_shiftKana2eisuu(params);
   remap_jis_unify_eisuu_to_kana(params);
+  remap_jis_unify_kana_to_eisuu(params);
   remap_jis_unify_kana_eisuu_to_commandL(params);
 
   // ------------------------------------------------------------

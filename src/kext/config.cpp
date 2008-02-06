@@ -63,6 +63,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, enter2optionL, CTLTYPE_INT|CTLFLAG_RW,
              &(config.remap_enter2optionL), 0, "");
 
+  SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, enter2commandLcontrolL, CTLTYPE_INT|CTLFLAG_RW,
+             &(config.remap_enter2commandLcontrolL), 0, "");
+
+  SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, enter2commandLshiftL, CTLTYPE_INT|CTLFLAG_RW,
+             &(config.remap_enter2commandLshiftL), 0, "");
+
   SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, enter2semicolon, CTLTYPE_INT|CTLFLAG_RW,
              &(config.remap_enter2semicolon), 0, "");
 
@@ -134,8 +140,17 @@ namespace org_pqrs_KeyRemap4MacBook {
              &(config.remap_shiftL2space), 0, "");
 
   // ----------------------------------------
+  SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, shiftR2commandL, CTLTYPE_INT|CTLFLAG_RW,
+             &(config.remap_shiftR2commandL), 0, "");
+
+  SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, shiftR2controlL, CTLTYPE_INT|CTLFLAG_RW,
+             &(config.remap_shiftR2controlL), 0, "");
+
   SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, shiftR2fn, CTLTYPE_INT|CTLFLAG_RW,
              &(config.remap_shiftR2fn), 0, "");
+
+  SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, shiftR2optionL, CTLTYPE_INT|CTLFLAG_RW,
+             &(config.remap_shiftR2optionL), 0, "");
 
   SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, shiftR2escape, CTLTYPE_INT|CTLFLAG_RW,
              &(config.remap_shiftR2escape), 0, "");
@@ -281,6 +296,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, jis_unify_eisuu_to_kana, CTLTYPE_INT|CTLFLAG_RW,
              &(config.remap_jis_unify_eisuu_to_kana), 0, "");
 
+  SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, jis_unify_kana_to_eisuu, CTLTYPE_INT|CTLFLAG_RW,
+             &(config.remap_jis_unify_kana_to_eisuu), 0, "");
+
   SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, jis_unify_kana_eisuu_to_commandL, CTLTYPE_INT|CTLFLAG_RW,
              &(config.remap_jis_unify_kana_eisuu_to_commandL), 0, "");
 
@@ -318,6 +336,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_enter2controlL);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_enter2fn);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_enter2optionL);
+    sysctl_register_oid(&sysctl__keyremap4macbook_remap_enter2commandLcontrolL);
+    sysctl_register_oid(&sysctl__keyremap4macbook_remap_enter2commandLshiftL);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_enter2semicolon);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_enter2space);
 
@@ -347,7 +367,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_shiftL2controlL);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_shiftL2space);
 
+    sysctl_register_oid(&sysctl__keyremap4macbook_remap_shiftR2commandL);
+    sysctl_register_oid(&sysctl__keyremap4macbook_remap_shiftR2controlL);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_shiftR2fn);
+    sysctl_register_oid(&sysctl__keyremap4macbook_remap_shiftR2optionL);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_shiftR2escape);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_shiftR2space);
 
@@ -411,6 +434,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ----------------------------------------
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_jis_shiftKana2eisuu);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_jis_unify_eisuu_to_kana);
+    sysctl_register_oid(&sysctl__keyremap4macbook_remap_jis_unify_kana_to_eisuu);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_jis_unify_kana_eisuu_to_commandL);
 
     // ----------------------------------------
@@ -444,6 +468,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_enter2controlL);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_enter2fn);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_enter2optionL);
+    sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_enter2commandLcontrolL);
+    sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_enter2commandLshiftL);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_enter2semicolon);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_enter2space);
 
@@ -473,7 +499,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_shiftL2controlL);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_shiftL2space);
 
+    sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_shiftR2commandL);
+    sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_shiftR2controlL);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_shiftR2fn);
+    sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_shiftR2optionL);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_shiftR2escape);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_shiftR2space);
 
@@ -537,6 +566,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ----------------------------------------
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_jis_shiftKana2eisuu);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_jis_unify_eisuu_to_kana);
+    sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_jis_unify_kana_to_eisuu);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_jis_unify_kana_eisuu_to_commandL);
 
     // ----------------------------------------
