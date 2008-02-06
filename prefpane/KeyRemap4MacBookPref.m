@@ -171,6 +171,11 @@
   return nil;
 }
 
+- (BOOL)outlineView:(NSOutlineView *)outlineView shouldCollapseItem:(id)item
+{
+  return ! [self checkAnyChildrenChecked:item];
+}
+
 - (void)outlineView:(NSOutlineView *)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
 {
   NSXMLNode *sysctl = [self getNode:item xpath:@"sysctl"];
