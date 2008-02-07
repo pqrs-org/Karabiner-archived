@@ -2,15 +2,6 @@
 <root>
   <list>
     <item>
-      <name>Remap Application Key</name>
-      <list>
-        <item>
-          <name>Application to F11</name>
-          <sysctl>keyremap4macbook.remap.application2f11</sysctl>
-        </item>
-      </list>
-    </item>
-    <item>
       <name>Remap Backquote(`) Key</name>
       <list>
         <item>
@@ -404,6 +395,16 @@
         <item>
           <name>Use Colemak Keyboard Layout</name>
           <sysctl>keyremap4macbook.remap.qwerty2colemak</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
+      <name>For PC Keyboard User</name>
+      <list>
+        <item>
+          <name>Application Key to F11</name>
+          <sysctl>keyremap4macbook.remap.pc_application2f11</sysctl>
         </item>
       </list>
     </item>

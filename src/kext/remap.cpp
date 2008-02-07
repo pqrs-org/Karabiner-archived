@@ -8,15 +8,6 @@
 namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------
   void
-  remap_application2f11(const RemapParams &params)
-  {
-    if (! config.remap_application2f11) return;
-
-    RemapUtil::keyToKey(params, KeyCode::APPLICATION, KeyCode::F11);
-  }
-
-  // ----------------------------------------
-  void
   remap_backquote2commandL(const RemapParams &params)
   {
     if (! config.remap_backquote2commandL) return;
@@ -825,6 +816,15 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
+  remap_pc_application2f11(const RemapParams &params)
+  {
+    if (! config.remap_pc_application2f11) return;
+
+    RemapUtil::keyToKey(params, KeyCode::PC_APPLICATION, KeyCode::F11);
+  }
+
+  // ----------------------------------------
+  void
   remap_jis_eisuu2commandL(const RemapParams &params)
   {
     if (! config.remap_jis_eisuu2commandL) return;
@@ -1030,8 +1030,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   // ------------------------------------------------------------
   // normal remapping
-  remap_application2f11(params);
-
   remap_backquote2commandL(params);
   remap_backquote2escape(params);
 
@@ -1102,6 +1100,9 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   // ----------------------------------------
   remap_qwerty2colemak(params);
 
+  // ----------------------------------------
+  remap_pc_application2f11(params);
+
   // ------------------------------------------------------------
   // jis
   remap_jis_eisuu2commandL(params);
@@ -1127,7 +1128,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_jis_unify_kana_eisuu_to_commandL(params);
 
   // ------------------------------------------------------------
-  // *** Note: we need to call remap_drop_funcshift after tab2f9, application2f11, ... ***
+  // *** Note: we need to call remap_drop_funcshift after tab2f9, pc_application2f11, ... ***
   remap_drop_funcshift(params);
 
   // ------------------------------------------------------------
