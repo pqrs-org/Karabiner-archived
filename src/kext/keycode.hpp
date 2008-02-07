@@ -129,6 +129,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       F11 = 103,
       F12 = 111,
 
+      APPLICATION = 110,
       HELP = 114,
 
       FORWARD_DELETE = 117,

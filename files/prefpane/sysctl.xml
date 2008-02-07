@@ -2,6 +2,15 @@
 <root>
   <list>
     <item>
+      <name>Remap Application Key</name>
+      <list>
+        <item>
+          <name>Application to F11</name>
+          <sysctl>keyremap4macbook.remap.application2f11</sysctl>
+        </item>
+      </list>
+    </item>
+    <item>
       <name>Remap Backquote(`) Key</name>
       <list>
         <item>
@@ -27,8 +36,30 @@
           <sysctl>keyremap4macbook.remap.commandL2optionL</sysctl>
         </item>
         <item>
+          <name>Command_L to Shift_L</name>
+          <sysctl>keyremap4macbook.remap.commandL2shiftL</sysctl>
+        </item>
+        <item>
           <name>Command_L to Backquote(`)</name>
           <sysctl>keyremap4macbook.remap.commandL2backquote</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
+      <name>Remap Command_R Key</name>
+      <list>
+        <item>
+          <name>Command_R to Control_L</name>
+          <sysctl>keyremap4macbook.remap.commandR2controlL</sysctl>
+        </item>
+        <item>
+          <name>Command_R to Option_L</name>
+          <sysctl>keyremap4macbook.remap.commandR2optionL</sysctl>
+        </item>
+        <item>
+          <name>Command_R to Shift_L</name>
+          <sysctl>keyremap4macbook.remap.commandR2shiftL</sysctl>
         </item>
       </list>
     </item>
@@ -230,6 +261,16 @@
     </item>
 
     <item>
+      <name>Remap Tab Key</name>
+      <list>
+        <item>
+          <name>Tab to F9</name>
+          <sysctl>keyremap4macbook.remap.tab2f9</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>Misc Remapping</name>
       <list>
         <item>
@@ -353,10 +394,6 @@
               <sysctl>keyremap4macbook.option.keypad2spaces_modifier_shift</sysctl>
             </item>
           </list>
-        </item>
-        <item>
-          <name>Use Tab for Expose(F9)</name>
-          <sysctl>keyremap4macbook.remap.tab2expose</sysctl>
         </item>
       </list>
     </item>

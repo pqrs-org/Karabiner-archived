@@ -14,12 +14,19 @@ namespace org_pqrs_KeyRemap4MacBook {
     int repeat_wait;
 
     // ----------------------------------------
+    int remap_application2f11;
+
     int remap_backquote2commandL;
     int remap_backquote2escape;
 
     int remap_commandL2controlL;
     int remap_commandL2optionL;
+    int remap_commandL2shiftL;
     int remap_commandL2backquote;
+
+    int remap_commandR2controlL;
+    int remap_commandR2optionL;
+    int remap_commandR2shiftL;
 
     int remap_controlL2commandL;
 
@@ -65,6 +72,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     int remap_shiftR2escape;
     int remap_shiftR2space;
 
+    int remap_tab2f9;
+
     // ----------------------------------------
     int remap_shiftDelete2tilde;
     int remap_hhkmode;
@@ -97,7 +106,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     int option_keypad2spaces_modifier_control;
     int option_keypad2spaces_modifier_option;
     int option_keypad2spaces_modifier_shift;
-    int remap_tab2expose;
 
     // ----------------------------------------
     int remap_qwerty2colemak;
