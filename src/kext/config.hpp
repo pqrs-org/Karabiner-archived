@@ -14,8 +14,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     int repeat_wait;
 
     // ----------------------------------------
-    int remap_application2f11;
-
     int remap_backquote2commandL;
     int remap_backquote2escape;
 
@@ -109,6 +107,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ----------------------------------------
     int remap_qwerty2colemak;
+
+    // ----------------------------------------
+    int remap_pc_application2f11;
 
     // ----------------------------------------
     int remap_jis_eisuu2commandL;

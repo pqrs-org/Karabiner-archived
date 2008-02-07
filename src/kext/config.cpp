@@ -30,10 +30,6 @@ namespace org_pqrs_KeyRemap4MacBook {
              &(config.repeat_wait), 0, "");
 
   // ----------------------------------------
-  SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, application2f11, CTLTYPE_INT|CTLFLAG_RW,
-             &(config.remap_application2f11), 0, "");
-
-  // ----------------------------------------
   SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, backquote2commandL, CTLTYPE_INT|CTLFLAG_RW,
              &(config.remap_backquote2commandL), 0, "");
 
@@ -263,6 +259,10 @@ namespace org_pqrs_KeyRemap4MacBook {
              &(config.remap_qwerty2colemak), 0, "");
 
   // ----------------------------------------
+  SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, pc_application2f11, CTLTYPE_INT|CTLFLAG_RW,
+             &(config.remap_pc_application2f11), 0, "");
+
+  // ----------------------------------------
   SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, jis_eisuu2commandL, CTLTYPE_INT|CTLFLAG_RW,
              &(config.remap_jis_eisuu2commandL), 0, "");
 
@@ -341,8 +341,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_register_oid(&sysctl__keyremap4macbook_repeat_wait);
 
     // ----------------------------------------
-    sysctl_register_oid(&sysctl__keyremap4macbook_remap_application2f11);
-
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_backquote2commandL);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_backquote2escape);
 
@@ -438,6 +436,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_qwerty2colemak);
 
     // ----------------------------------------
+    sysctl_register_oid(&sysctl__keyremap4macbook_remap_pc_application2f11);
+
+    // ----------------------------------------
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_jis_eisuu2commandL);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_jis_eisuu2controlL);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_jis_eisuu2optionL);
@@ -481,8 +482,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_unregister_oid(&sysctl__keyremap4macbook_repeat_wait);
 
     // ----------------------------------------
-    sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_application2f11);
-
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_backquote2commandL);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_backquote2escape);
 
@@ -576,6 +575,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ----------------------------------------
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_qwerty2colemak);
+
+    // ----------------------------------------
+    sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_pc_application2f11);
 
     // ----------------------------------------
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_jis_eisuu2commandL);
