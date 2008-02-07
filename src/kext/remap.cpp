@@ -71,7 +71,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_commandR2controlL) return;
 
-    RemapUtil::modifierToModifier(params, ModifierFlag::COMMAND_L, ModifierFlag::CONTROL_L);
+    RemapUtil::modifierToModifier(params, ModifierFlag::COMMAND_R, ModifierFlag::CONTROL_L);
   }
 
   void
@@ -79,7 +79,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_commandR2optionL) return;
 
-    RemapUtil::modifierToModifier(params, ModifierFlag::COMMAND_L, ModifierFlag::OPTION_L);
+    RemapUtil::modifierToModifier(params, ModifierFlag::COMMAND_R, ModifierFlag::OPTION_L);
   }
 
   void
@@ -87,7 +87,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_commandR2shiftL) return;
 
-    RemapUtil::modifierToModifier(params, ModifierFlag::COMMAND_L, ModifierFlag::SHIFT_L);
+    RemapUtil::modifierToModifier(params, ModifierFlag::COMMAND_R, ModifierFlag::SHIFT_L);
   }
 
 
