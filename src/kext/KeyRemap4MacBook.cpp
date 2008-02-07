@@ -272,7 +272,8 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardEventCallBack(OSObject *target,
         const int MINVAL = 200;
         if (initial < MINVAL) initial = MINVAL;
         p->timer->setTimeoutMS(initial);
-      } else {
+
+      } else if ((p->repeat).key == key) {
         p->timer->cancelTimeout();
       }
     }
