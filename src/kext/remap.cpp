@@ -8,6 +8,15 @@
 namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------
   void
+  remap_application2f11(const RemapParams &params)
+  {
+    if (! config.remap_application2f11) return;
+
+    RemapUtil::keyToKey(params, KeyCode::APPLICATION, KeyCode::F11);
+  }
+
+  // ----------------------------------------
+  void
   remap_backquote2commandL(const RemapParams &params)
   {
     if (! config.remap_backquote2commandL) return;
@@ -41,12 +50,46 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_commandL2shiftL(const RemapParams &params)
+  {
+    if (! config.remap_commandL2shiftL) return;
+
+    RemapUtil::modifierToModifier(params, ModifierFlag::COMMAND_L, ModifierFlag::SHIFT_L);
+  }
+
+  void
   remap_commandL2backquote(const RemapParams &params)
   {
     if (! config.remap_commandL2backquote) return;
 
     RemapUtil::modifierToKey(params, ModifierFlag::COMMAND_L, KeyCode::BACKQUOTE);
   }
+
+  // ----------------------------------------
+  void
+  remap_commandR2controlL(const RemapParams &params)
+  {
+    if (! config.remap_commandR2controlL) return;
+
+    RemapUtil::modifierToModifier(params, ModifierFlag::COMMAND_L, ModifierFlag::CONTROL_L);
+  }
+
+  void
+  remap_commandR2optionL(const RemapParams &params)
+  {
+    if (! config.remap_commandR2optionL) return;
+
+    RemapUtil::modifierToModifier(params, ModifierFlag::COMMAND_L, ModifierFlag::OPTION_L);
+  }
+
+  void
+  remap_commandR2shiftL(const RemapParams &params)
+  {
+    if (! config.remap_commandR2shiftL) return;
+
+    RemapUtil::modifierToModifier(params, ModifierFlag::COMMAND_L, ModifierFlag::SHIFT_L);
+  }
+
 
   // ----------------------------------------
   void
@@ -371,6 +414,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_shiftR2space) return;
 
     RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_R, KeyCode::SPACE);
+  }
+
+  // ----------------------------------------
+  void
+  remap_tab2f9(const RemapParams &params)
+  {
+    if (! config.remap_tab2f9) return;
+
+    RemapUtil::keyToKey(params, KeyCode::TAB, KeyCode::F9);
   }
 
   // ----------------------------------------
@@ -745,16 +797,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::keyToKey(params, KeyCode::KEYPAD_9, KeyCode::KEYPAD_3);
   }
 
-  void
-  remap_tab2expose(const RemapParams &params)
-  {
-    if (! config.remap_tab2expose) return;
-
-    // Tab => F9 (if no Modifier)
-    if (allFlagStatus.makeFlags(params) != 0) return;
-    RemapUtil::keyToKey(params, KeyCode::TAB, KeyCode::F9);
-  }
-
   // ----------------------------------------
   void
   remap_qwerty2colemak(const RemapParams &params)
@@ -988,6 +1030,8 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   // ------------------------------------------------------------
   // normal remapping
+  remap_application2f11(params);
+
   remap_backquote2commandL(params);
   remap_backquote2escape(params);
 
@@ -995,7 +1039,12 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   remap_commandL2controlL(params);
   remap_commandL2optionL(params);
+  remap_commandL2shiftL(params);
   remap_commandL2backquote(params);
+
+  remap_commandR2controlL(params);
+  remap_commandR2optionL(params);
+  remap_commandR2shiftL(params);
 
   remap_enter2commandL(params);
   remap_enter2controlL(params);
@@ -1039,16 +1088,16 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_shiftR2escape(params);
   remap_shiftR2space(params);
 
+  remap_tab2f9(params);
+
   // ----------------------------------------
   remap_shiftDelete2tilde(params);
   remap_hhkmode(params);
   remap_keypadnumlock(params);
 
   // ----------------------------------------
-  remap_drop_funcshift(params);
   remap_spaces_special(params);
   remap_keypad2spaces(params);
-  remap_tab2expose(params);
 
   // ----------------------------------------
   remap_qwerty2colemak(params);
@@ -1076,6 +1125,10 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_jis_unify_eisuu_to_kana(params);
   remap_jis_unify_kana_to_eisuu(params);
   remap_jis_unify_kana_eisuu_to_commandL(params);
+
+  // ------------------------------------------------------------
+  // *** Note: we need to call remap_drop_funcshift after tab2f9, application2f11, ... ***
+  remap_drop_funcshift(params);
 
   // ------------------------------------------------------------
   // *** Note: we need to call remap_emacsmode as possible late. ***
