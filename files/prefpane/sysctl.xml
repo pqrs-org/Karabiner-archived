@@ -505,6 +505,10 @@
               <name>Use Command_L as KANA/EISUU (toggle)</name>
               <sysctl>keyremap4macbook.remap.jis_unify_kana_eisuu_to_commandL</sysctl>
             </item>
+            <item>
+              <name>Use Option_R as KANA/EISUU (toggle)</name>
+              <sysctl>keyremap4macbook.remap.jis_unify_kana_eisuu_to_optionR</sysctl>
+            </item>
           </list>
         </item>
       </list>

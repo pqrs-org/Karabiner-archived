@@ -213,6 +213,41 @@ namespace org_pqrs_KeyRemap4MacBook {
     *(params.key) = toKeyCode;
   }
 
+  // --------------------
+  void
+  RemapUtil::jis_toggle_eisuu_kana(const RemapParams &params, KeyCode::KeyCode fromKeyCode) {
+    if (params.ex_origKey != fromKeyCode) return;
+
+    static bool isKana = true;
+
+    if (isKana) {
+      RemapUtil::keyToKey(params, fromKeyCode, KeyCode::JIS_KANA);
+    } else {
+      RemapUtil::keyToKey(params, fromKeyCode, KeyCode::JIS_EISUU);
+    }
+    if (*(params.eventType) == KeyEvent::UP) {
+      isKana = ! isKana;
+    }
+  }
+
+  void
+  RemapUtil::jis_toggle_eisuu_kana(const RemapParams &params, ModifierFlag::ModifierFlag fromModifier) {
+    KeyCode::KeyCode fromKeyCode = getModifierKeyCode(fromModifier);
+
+    if (params.ex_origKey != fromKeyCode) return;
+
+    static bool isKana = true;
+
+    if (isKana) {
+      RemapUtil::modifierToKey(params, fromModifier, KeyCode::JIS_KANA);
+    } else {
+      RemapUtil::modifierToKey(params, fromModifier, KeyCode::JIS_EISUU);
+    }
+    if (*(params.eventType) == KeyEvent::UP) {
+      isKana = ! isKana;
+    }
+  }
+
   // ----------------------------------------------------------------------
   void
   FlagStatus::initialize(const RemapParams &params)
