@@ -130,17 +130,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_enter2commandLcontrolL) return;
 
-    if (params.ex_origKey == RemapUtil::getEnterKeyCode(params)) {
-      if (*(params.eventType) == KeyEvent::DOWN) {
-        allFlagStatus.commandL.increase();
-        allFlagStatus.controlL.increase();
-      } else if (*(params.eventType) == KeyEvent::UP) {
-        allFlagStatus.commandL.decrease();
-        allFlagStatus.controlL.decrease();
-      }
-      *(params.key) = KeyCode::COMMAND_L;
-      *(params.eventType) = KeyEvent::MODIFY;
-    }
+    RemapUtil::keyToModifier(params, RemapUtil::getEnterKeyCode(params), ModifierFlag::COMMAND_L, ModifierFlag::CONTROL_L);
   }
 
   void
@@ -148,17 +138,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_enter2commandLshiftL) return;
 
-    if (params.ex_origKey == RemapUtil::getEnterKeyCode(params)) {
-      if (*(params.eventType) == KeyEvent::DOWN) {
-        allFlagStatus.commandL.increase();
-        allFlagStatus.shiftL.increase();
-      } else if (*(params.eventType) == KeyEvent::UP) {
-        allFlagStatus.commandL.decrease();
-        allFlagStatus.shiftL.decrease();
-      }
-      *(params.key) = KeyCode::COMMAND_L;
-      *(params.eventType) = KeyEvent::MODIFY;
-    }
+    RemapUtil::keyToModifier(params, RemapUtil::getEnterKeyCode(params), ModifierFlag::COMMAND_L, ModifierFlag::SHIFT_L);
   }
 
   void
