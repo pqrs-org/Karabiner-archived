@@ -130,7 +130,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   RemapUtil::modifierToModifier(const RemapParams &params, ModifierFlag::ModifierFlag fromFlag, ModifierFlag::ModifierFlag toFlag)
   {
     KeyCode::KeyCode fromKeyCode = getModifierKeyCode(fromFlag);
-    if (params.ex_origKey != fromKeyCode) return;
+    if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) return;
 
     FlagStatus *fromStatus = allFlagStatus.getFlagStatus(fromFlag);
     if (fromStatus == NULL) return;
@@ -152,7 +152,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapUtil::modifierToKey(const RemapParams &params, ModifierFlag::ModifierFlag fromFlag, KeyCode::KeyCode toKeyCode) {
     KeyCode::KeyCode fromKeyCode = getModifierKeyCode(fromFlag);
-    if (params.ex_origKey != fromKeyCode) return;
+    if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) return;
 
     FlagStatus *fromStatus = allFlagStatus.getFlagStatus(fromFlag);
     if (fromStatus == NULL) return;
@@ -170,7 +170,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   void
   RemapUtil::keyToModifier(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag) {
-    if (params.ex_origKey != fromKeyCode) return;
+    if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) return;
 
     FlagStatus *toStatus = allFlagStatus.getFlagStatus(toFlag);
     if (toStatus == NULL) return;
@@ -188,7 +188,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   void
   RemapUtil::keyToModifier(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag1, ModifierFlag::ModifierFlag toFlag2) {
-    if (params.ex_origKey != fromKeyCode) return;
+    if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) return;
 
     FlagStatus *toStatus1 = allFlagStatus.getFlagStatus(toFlag1);
     FlagStatus *toStatus2 = allFlagStatus.getFlagStatus(toFlag2);
@@ -209,14 +209,14 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   void
   RemapUtil::keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode) {
-    if (params.ex_origKey != fromKeyCode) return;
+    if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) return;
     *(params.key) = toKeyCode;
   }
 
   // --------------------
   void
   RemapUtil::jis_toggle_eisuu_kana(const RemapParams &params, KeyCode::KeyCode fromKeyCode) {
-    if (params.ex_origKey != fromKeyCode) return;
+    if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) return;
 
     static bool isKana = true;
 
@@ -234,7 +234,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   RemapUtil::jis_toggle_eisuu_kana(const RemapParams &params, ModifierFlag::ModifierFlag fromModifier) {
     KeyCode::KeyCode fromKeyCode = getModifierKeyCode(fromModifier);
 
-    if (params.ex_origKey != fromKeyCode) return;
+    if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) return;
 
     static bool isKana = true;
 
