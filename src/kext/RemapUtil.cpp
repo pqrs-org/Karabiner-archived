@@ -187,6 +187,27 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  RemapUtil::keyToModifier(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag1, ModifierFlag::ModifierFlag toFlag2) {
+    if (params.ex_origKey != fromKeyCode) return;
+
+    FlagStatus *toStatus1 = allFlagStatus.getFlagStatus(toFlag1);
+    FlagStatus *toStatus2 = allFlagStatus.getFlagStatus(toFlag2);
+    if (toStatus1 == NULL || toStatus2 == NULL) return;
+
+    if (*(params.eventType) == KeyEvent::DOWN) {
+      toStatus1->increase();
+      toStatus2->increase();
+    } else if (*(params.eventType) == KeyEvent::UP) {
+      toStatus1->decrease();
+      toStatus2->decrease();
+    }
+
+    KeyCode::KeyCode toKeyCode = getModifierKeyCode(toFlag1);
+    *(params.key) = toKeyCode;
+    *(params.eventType) = KeyEvent::MODIFY;
+  }
+
+  void
   RemapUtil::keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode) {
     if (params.ex_origKey != fromKeyCode) return;
     *(params.key) = toKeyCode;
