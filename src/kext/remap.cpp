@@ -942,18 +942,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_jis_unify_eisuu_to_kana) return;
 
-    if (params.ex_origKey != KeyCode::JIS_KANA) return;
-
-    static bool isKana = true;
-
-    if (isKana) {
-      // do nothing
-    } else {
-      RemapUtil::keyToKey(params, KeyCode::JIS_KANA, KeyCode::JIS_EISUU);
-    }
-    if (*(params.eventType) == KeyEvent::UP) {
-      isKana = ! isKana;
-    }
+    RemapUtil::jis_toggle_eisuu_kana(params, KeyCode::JIS_KANA);
   }
 
   void
@@ -961,18 +950,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_jis_unify_kana_to_eisuu) return;
 
-    if (params.ex_origKey != KeyCode::JIS_EISUU) return;
-
-    static bool isKana = true;
-
-    if (isKana) {
-      RemapUtil::keyToKey(params, KeyCode::JIS_EISUU, KeyCode::JIS_KANA);
-    } else {
-      // do nothing
-    }
-    if (*(params.eventType) == KeyEvent::UP) {
-      isKana = ! isKana;
-    }
+    RemapUtil::jis_toggle_eisuu_kana(params, KeyCode::JIS_EISUU);
   }
 
   void
@@ -980,18 +958,15 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_jis_unify_kana_eisuu_to_commandL) return;
 
-    if (params.ex_origKey != KeyCode::COMMAND_L) return;
+    RemapUtil::jis_toggle_eisuu_kana(params, ModifierFlag::COMMAND_L);
+  }
 
-    static bool isKana = true;
+  void
+  remap_jis_unify_kana_eisuu_to_optionR(const RemapParams &params)
+  {
+    if (! config.remap_jis_unify_kana_eisuu_to_optionR) return;
 
-    if (isKana) {
-      RemapUtil::modifierToKey(params, ModifierFlag::COMMAND_L, KeyCode::JIS_EISUU);
-    } else {
-      RemapUtil::modifierToKey(params, ModifierFlag::COMMAND_L, KeyCode::JIS_KANA);
-    }
-    if (*(params.eventType) == KeyEvent::UP) {
-      isKana = ! isKana;
-    }
+    RemapUtil::jis_toggle_eisuu_kana(params, ModifierFlag::OPTION_R);
   }
 }
 
@@ -1106,6 +1081,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_jis_unify_eisuu_to_kana(params);
   remap_jis_unify_kana_to_eisuu(params);
   remap_jis_unify_kana_eisuu_to_commandL(params);
+  remap_jis_unify_kana_eisuu_to_optionR(params);
 
   // ------------------------------------------------------------
   // *** Note: we need to call remap_drop_funcshift after tab2f9, pc_application2f11, ... ***

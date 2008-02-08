@@ -133,6 +133,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     int remap_jis_unify_eisuu_to_kana;
     int remap_jis_unify_kana_to_eisuu;
     int remap_jis_unify_kana_eisuu_to_commandL;
+    int remap_jis_unify_kana_eisuu_to_optionR;
 
     // ----------------------------------------
     int debug;
