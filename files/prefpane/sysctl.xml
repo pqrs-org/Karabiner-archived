@@ -303,7 +303,7 @@
               <sysctl>keyremap4macbook.option.emacsmode_controlM</sysctl>
             </item>
             <item>
-              <name>Control+PNBF to Arrow</name>
+              <name>Control+PNBF to Up/Down/Left/Right</name>
               <sysctl>keyremap4macbook.option.emacsmode_controlPNBF</sysctl>
             </item>
             <item>
@@ -311,7 +311,11 @@
               <sysctl>keyremap4macbook.option.emacsmode_controlV</sysctl>
             </item>
             <item>
-              <name>Option+BF to Option+Arrow</name>
+              <name>Control+AE to Command+Left/Right</name>
+              <sysctl>keyremap4macbook.option.emacsmode_controlAE</sysctl>
+            </item>
+            <item>
+              <name>Option+BF to Option+Left/Right</name>
               <sysctl>keyremap4macbook.option.emacsmode_optionBF</sysctl>
             </item>
             <item>
@@ -403,7 +407,7 @@
           <sysctl>keyremap4macbook.remap.keypadnumlock</sysctl>
         </item>
         <item>
-          <name>Use PC Style Home/End (behave like Command+Arrow)</name>
+          <name>Use PC Style Home/End (behave like Command+Left/Right)</name>
           <sysctl>keyremap4macbook.remap.pclikehomeend</sysctl>
         </item>
       </list>

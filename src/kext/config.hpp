@@ -87,6 +87,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     int option_emacsmode_controlPNBF;
     int option_emacsmode_controlV;
     int option_emacsmode_controlLeftbracket;
+    int option_emacsmode_controlAE;
     int option_emacsmode_optionBF;
     int option_emacsmode_optionD;
     int option_emacsmode_ex_controlW;
