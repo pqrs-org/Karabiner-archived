@@ -213,6 +213,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   SYSCTL_INT(_keyremap4macbook_option, OID_AUTO, emacsmode_controlLeftbracket, CTLTYPE_INT|CTLFLAG_RW,
              &(config.option_emacsmode_controlLeftbracket), 0, "");
 
+  SYSCTL_INT(_keyremap4macbook_option, OID_AUTO, emacsmode_controlAE, CTLTYPE_INT|CTLFLAG_RW,
+             &(config.option_emacsmode_controlAE), 0, "");
+
   SYSCTL_INT(_keyremap4macbook_option, OID_AUTO, emacsmode_optionBF, CTLTYPE_INT|CTLFLAG_RW,
              &(config.option_emacsmode_optionBF), 0, "");
 
@@ -417,6 +420,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_register_oid(&sysctl__keyremap4macbook_option_emacsmode_controlPNBF);
     sysctl_register_oid(&sysctl__keyremap4macbook_option_emacsmode_controlV);
     sysctl_register_oid(&sysctl__keyremap4macbook_option_emacsmode_controlLeftbracket);
+    sysctl_register_oid(&sysctl__keyremap4macbook_option_emacsmode_controlAE);
     sysctl_register_oid(&sysctl__keyremap4macbook_option_emacsmode_optionBF);
     sysctl_register_oid(&sysctl__keyremap4macbook_option_emacsmode_optionD);
     sysctl_register_oid(&sysctl__keyremap4macbook_option_emacsmode_ex_controlQ);
@@ -559,6 +563,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_unregister_oid(&sysctl__keyremap4macbook_option_emacsmode_controlPNBF);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_option_emacsmode_controlV);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_option_emacsmode_controlLeftbracket);
+    sysctl_unregister_oid(&sysctl__keyremap4macbook_option_emacsmode_controlAE);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_option_emacsmode_optionBF);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_option_emacsmode_optionD);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_option_emacsmode_ex_controlQ);

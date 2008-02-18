@@ -583,6 +583,20 @@ namespace org_pqrs_KeyRemap4MacBook {
         *(params.key) = KeyCode::PAGEDOWN;
         cancel_control = true;
       }
+      // Control+A -> Command+LEFT
+      if (config.option_emacsmode_controlAE && *(params.key) == KeyCode::A) {
+        *(params.key) = KeyCode::CURSOR_LEFT;
+        allFlagStatus.cursor = true;
+        allFlagStatus.commandL.temporary_increase();
+        cancel_control = true;
+      }
+      // Control+A -> Command+RIGHT
+      if (config.option_emacsmode_controlAE && *(params.key) == KeyCode::E) {
+        *(params.key) = KeyCode::CURSOR_RIGHT;
+        allFlagStatus.cursor = true;
+        allFlagStatus.commandL.temporary_increase();
+        cancel_control = true;
+      }
       // Control+Q -> PAGEUP
       if (config.option_emacsmode_ex_controlQ && *(params.key) == KeyCode::Q) {
         *(params.key) = KeyCode::PAGEUP;
