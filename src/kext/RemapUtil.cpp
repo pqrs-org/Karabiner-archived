@@ -34,6 +34,23 @@ namespace org_pqrs_KeyRemap4MacBook {
     return KeyCode::NONE;
   }
 
+  ModifierFlag::ModifierFlag
+  RemapUtil::getKeyCodeModifier(unsigned int keycode) {
+    if (keycode == KeyCode::CAPSLOCK) return ModifierFlag::CAPSLOCK;
+    if (keycode == KeyCode::SHIFT_L) return ModifierFlag::SHIFT_L;
+    if (keycode == KeyCode::SHIFT_R) return ModifierFlag::SHIFT_R;
+    if (keycode == KeyCode::CONTROL_L) return ModifierFlag::CONTROL_L;
+    if (keycode == KeyCode::CONTROL_R) return ModifierFlag::CONTROL_R;
+    if (keycode == KeyCode::OPTION_L) return ModifierFlag::OPTION_L;
+    if (keycode == KeyCode::OPTION_R) return ModifierFlag::OPTION_R;
+    if (keycode == KeyCode::COMMAND_L) return ModifierFlag::COMMAND_L;
+    if (keycode == KeyCode::COMMAND_R) return ModifierFlag::COMMAND_R;
+    if (keycode == KeyCode::FN) return ModifierFlag::FN;
+
+    IOLog("KeyRemap4MacBook::getKeyCodeModifier invalid args\n");
+    return ModifierFlag::NONE;
+  }
+
   void
   RemapUtil::fnToNormal(const RemapParams &params)
   {

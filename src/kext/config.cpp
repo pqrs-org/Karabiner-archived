@@ -326,6 +326,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, jis_unify_kana_eisuu_to_optionR, CTLTYPE_INT|CTLFLAG_RW,
              &(config.remap_jis_unify_kana_eisuu_to_optionR), 0, "");
 
+  SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, jis_command_twice_to_kana_twice, CTLTYPE_INT|CTLFLAG_RW,
+             &(config.remap_jis_command_twice_to_kana_twice), 0, "");
+
   // ----------------------------------------
   SYSCTL_INT(_keyremap4macbook, OID_AUTO, debug, CTLTYPE_INT|CTLFLAG_RW,
              &(config.debug), 0, "");
@@ -471,6 +474,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_jis_unify_kana_to_eisuu);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_jis_unify_kana_eisuu_to_commandL);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_jis_unify_kana_eisuu_to_optionR);
+    sysctl_register_oid(&sysctl__keyremap4macbook_remap_jis_command_twice_to_kana_twice);
 
     // ----------------------------------------
     sysctl_register_oid(&sysctl__keyremap4macbook_debug);
@@ -614,6 +618,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_jis_unify_kana_to_eisuu);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_jis_unify_kana_eisuu_to_commandL);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_jis_unify_kana_eisuu_to_optionR);
+    sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_jis_command_twice_to_kana_twice);
 
     // ----------------------------------------
     sysctl_unregister_oid(&sysctl__keyremap4macbook_debug);
