@@ -505,6 +505,10 @@
               <name>Use Option_R as KANA/EISUU (toggle)</name>
               <sysctl>keyremap4macbook.remap.jis_unify_kana_eisuu_to_optionR</sysctl>
             </item>
+            <item>
+              <name>Command twice to KANA twice (for Kotoeri Users)</name>
+              <sysctl>keyremap4macbook.remap.jis_command_twice_to_kana_twice</sysctl>
+            </item>
           </list>
         </item>
       </list>
