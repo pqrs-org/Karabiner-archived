@@ -9,6 +9,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapUtil {
     bool isModifierOn(const RemapParams &params, ModifierFlag::ModifierFlag flag);
     KeyCode::KeyCode getModifierKeyCode(ModifierFlag::ModifierFlag flag);
+    ModifierFlag::ModifierFlag getKeyCodeModifier(unsigned int keycode);
     void fnToNormal(const RemapParams &params);
     void toFN(const RemapParams &params);
 

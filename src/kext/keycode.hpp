@@ -12,6 +12,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   namespace ModifierFlag {
     enum ModifierFlag {
+      NONE = 0,
+
       CAPSLOCK =   0x10000,
 
       SHIFT_L =    0x20002,

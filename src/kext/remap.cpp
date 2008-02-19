@@ -982,6 +982,53 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     RemapUtil::jis_toggle_eisuu_kana(params, ModifierFlag::OPTION_R);
   }
+
+  void
+  remap_jis_command_twice_to_kana_twice(const RemapParams &params)
+  {
+    if (! config.remap_jis_command_twice_to_kana_twice) return;
+
+    static bool lastkeyIsCommand = false;
+    static bool firedKana = false;
+
+    if (*(params.key) != KeyCode::COMMAND_L && *(params.key) != KeyCode::COMMAND_R) {
+      lastkeyIsCommand = false;
+      return;
+    }
+
+    ModifierFlag::ModifierFlag modifier = RemapUtil::getKeyCodeModifier(*(params.key));
+    FlagStatus *status = allFlagStatus.getFlagStatus(modifier);
+    if (! status) return;
+
+    KeyCode::KeyCode newkeycode = KeyCode::JIS_KANA;
+
+    // the case of KeyUp
+    if (! status.isHeldDown()) {
+      if (firedKana) {
+        firedKana = false;
+        RemapUtil::modifierToKey(params, modifier, newkeycode);
+      }
+      return;
+
+    } else {
+      // KeyDown
+      if (! lastkeyIsCommand) {
+        lastkeyIsCommand = true;
+        return;
+
+      } else {
+        // fire kana twice
+        lastkeyIsCommand = false;
+        firedKana = true;
+
+        RemapUtil::modifierToKey(params, modifier, newkeycode);
+
+        unsigned int flags = allFlagStatus.makeFlags(params);
+        listFireExtraKey.add(FireExtraKey::TYPE_BEFORE, KeyEvent::DOWN, flags, newkeycode, 0);
+        listFireExtraKey.add(FireExtraKey::TYPE_BEFORE, KeyEvent::UP, flags, newkeycode, 0);
+      }
+    }
+  }
 }
 
 // ----------------------------------------------------------------------
@@ -1096,6 +1143,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_jis_unify_kana_to_eisuu(params);
   remap_jis_unify_kana_eisuu_to_commandL(params);
   remap_jis_unify_kana_eisuu_to_optionR(params);
+  remap_jis_command_twice_to_kana_twice(params);
 
   // ------------------------------------------------------------
   // *** Note: we need to call remap_drop_funcshift after tab2f9, pc_application2f11, ... ***
