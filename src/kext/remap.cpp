@@ -1003,10 +1003,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     KeyCode::KeyCode newkeycode = KeyCode::JIS_KANA;
 
     // the case of KeyUp
-    if (! status.isHeldDown()) {
+    if (! status->isHeldDown()) {
       if (firedKana) {
         firedKana = false;
-        RemapUtil::modifierToKey(params, modifier, newkeycode);
+
+        status->increase();
+        *(params.eventType) = KeyEvent::UP;
+        *(params.key) = newkeycode;
       }
       return;
 
@@ -1021,7 +1024,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         lastkeyIsCommand = false;
         firedKana = true;
 
-        RemapUtil::modifierToKey(params, modifier, newkeycode);
+        status->decrease();
+        *(params.eventType) = KeyEvent::DOWN;
+        *(params.key) = newkeycode;
 
         unsigned int flags = allFlagStatus.makeFlags(params);
         listFireExtraKey.add(FireExtraKey::TYPE_BEFORE, KeyEvent::DOWN, flags, newkeycode, 0);
