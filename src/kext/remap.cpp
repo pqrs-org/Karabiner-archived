@@ -851,6 +851,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_jis_eisuu2escape(const RemapParams &params)
+  {
+    if (! config.remap_jis_eisuu2escape) return;
+
+    RemapUtil::keyToKey(params, KeyCode::JIS_EISUU, KeyCode::ESCAPE);
+  }
+
+  void
   remap_jis_eisuu2tab(const RemapParams &params)
   {
     if (! config.remap_jis_eisuu2tab) return;
@@ -1130,6 +1138,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_jis_eisuu2controlL(params);
   remap_jis_eisuu2optionL(params);
   remap_jis_eisuu2shiftL(params);
+  remap_jis_eisuu2escape(params);
   remap_jis_eisuu2tab(params);
 
   remap_jis_kana2commandL(params);
