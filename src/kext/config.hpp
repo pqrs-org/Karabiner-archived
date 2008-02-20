@@ -117,6 +117,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     int remap_jis_eisuu2controlL;
     int remap_jis_eisuu2optionL;
     int remap_jis_eisuu2shiftL;
+    int remap_jis_eisuu2escape;
     int remap_jis_eisuu2tab;
 
     int remap_jis_kana2commandL;

@@ -436,6 +436,10 @@
               <sysctl>keyremap4macbook.remap.jis_eisuu2shiftL</sysctl>
             </item>
             <item>
+              <name>EISUU to Escape</name>
+              <sysctl>keyremap4macbook.remap.jis_eisuu2escape</sysctl>
+            </item>
+            <item>
               <name>EISUU to Tab</name>
               <sysctl>keyremap4macbook.remap.jis_eisuu2tab</sysctl>
             </item>
