@@ -37,6 +37,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace KeyCode {
     enum KeyCode {
       RETURN = 36,
+      ENTER_POWERBOOK_G4 = 36,
       BACKSLASH = 42,
       TAB = 48,
       SPACE = 49,
@@ -171,6 +172,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace KeyboardType {
     enum KeyboardType {
       MACBOOK = 37,
+      POWERBOOK_G4 = 202,
       POWERBOOK = 207,
     };
   }
