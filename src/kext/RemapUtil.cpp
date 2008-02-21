@@ -140,6 +140,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (*(params.keyboardType) == KeyboardType::POWERBOOK) {
       return KeyCode::ENTER_POWERBOOK;
     }
+    if (*(params.keyboardType) == KeyboardType::POWERBOOK_G4) {
+      return KeyCode::ENTER_POWERBOOK_G4;
+    }
     return KeyCode::ENTER;
   }
 
