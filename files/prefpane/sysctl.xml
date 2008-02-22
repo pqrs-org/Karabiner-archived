@@ -85,6 +85,10 @@
           <sysctl>keyremap4macbook.remap.enter2optionL</sysctl>
         </item>
         <item>
+          <name>Enter to Option_L (+ Non-modifier Enter to Command+Space)</name>
+          <sysctl>keyremap4macbook.remap.enter2optionL_commandSpace</sysctl>
+        </item>
+        <item>
           <name>Enter to Command_L+Control_L</name>
           <sysctl>keyremap4macbook.remap.enter2commandLcontrolL</sysctl>
         </item>
