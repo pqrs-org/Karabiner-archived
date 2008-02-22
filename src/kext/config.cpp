@@ -76,6 +76,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, enter2optionL, CTLTYPE_INT|CTLFLAG_RW,
              &(config.remap_enter2optionL), 0, "");
 
+  SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, enter2optionL_commandSpace, CTLTYPE_INT|CTLFLAG_RW,
+             &(config.remap_enter2optionL_commandSpace), 0, "");
+
   SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, enter2commandLcontrolL, CTLTYPE_INT|CTLFLAG_RW,
              &(config.remap_enter2commandLcontrolL), 0, "");
 
@@ -371,6 +374,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_enter2controlL);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_enter2fn);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_enter2optionL);
+    sysctl_register_oid(&sysctl__keyremap4macbook_remap_enter2optionL_commandSpace);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_enter2commandLcontrolL);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_enter2commandLshiftL);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap_enter2semicolon);
@@ -516,6 +520,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_enter2controlL);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_enter2fn);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_enter2optionL);
+    sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_enter2optionL_commandSpace);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_enter2commandLcontrolL);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_enter2commandLshiftL);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_enter2semicolon);
