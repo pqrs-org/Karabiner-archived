@@ -32,6 +32,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     int remap_enter2controlL;
     int remap_enter2fn;
     int remap_enter2optionL;
+    int remap_enter2optionL_commandSpace;
     int remap_enter2commandLcontrolL;
     int remap_enter2commandLshiftL;
     int remap_enter2semicolon;

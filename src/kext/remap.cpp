@@ -126,6 +126,37 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_enter2optionL_commandSpace(const RemapParams &params)
+  {
+    if (! config.remap_enter2optionL_commandSpace) return;
+
+    static bool useEnterAsOption = false;
+
+    KeyCode::KeyCode enterKeyCode = RemapUtil::getEnterKeyCode(params);
+    if (params.ex_origKey != enterKeyCode && *(params.eventType) == KeyEvent::DOWN) {
+      useEnterAsOption = true;
+    }
+
+    if (params.ex_origKey == enterKeyCode) {
+      // Enter => OptionL (if type EnterKey only, works as Command+Space)
+      unsigned int origEventType = *(params.eventType);
+      RemapUtil::keyToModifier(params, enterKeyCode, ModifierFlag::OPTION_L);
+
+      if (origEventType == KeyEvent::DOWN) {
+        useEnterAsOption = false;
+
+      } else if (origEventType == KeyEvent::UP) {
+        if (useEnterAsOption == false) {
+          listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, ModifierFlag::COMMAND_L, KeyCode::COMMAND_L, CharCode::COMMAND_L);
+          listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN,   ModifierFlag::COMMAND_L, KeyCode::SPACE,     CharCode::SPACE);
+          listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP,     ModifierFlag::COMMAND_L, KeyCode::SPACE,     CharCode::SPACE);
+          listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, 0,                       KeyCode::COMMAND_L, CharCode::COMMAND_L);
+        }
+      }
+    }
+  }
+
+  void
   remap_enter2commandLcontrolL(const RemapParams &params)
   {
     if (! config.remap_enter2commandLcontrolL) return;
@@ -1169,9 +1200,10 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_emacsmode(params);
 
   // ------------------------------------------------------------
-  // *** Note: we need to call remap_space2shift as possible late. ***
-  // *** If remap_shiftL2space is enable, remap_space2shift fire Shift+Space when Shift_L + Space Key are pressed. ***
+  // *** Note: we need to call remap_space2shift, remap_enter2optionL_commandSpace (has SandS like behavior) as possible late. ***
+  // *** If any keyToModifier or modifierToKey remappings are enabled, miss-cancelling are occured.
   remap_space2shift(params);
+  remap_enter2optionL_commandSpace(params);
 
   // ------------------------------------------------------------
   // *** Note: we need to call remap_pclikehomeend as possible late. ***

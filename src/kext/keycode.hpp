@@ -155,6 +155,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   namespace CharCode {
     enum {
+      COMMAND_L = 0,
       CONTROL_L = 0,
       FN = 0,
       TAB = 9,
