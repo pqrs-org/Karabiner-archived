@@ -166,6 +166,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       CURSOR_UP = 173,
       CURSOR_RIGHT = 174,
       CURSOR_DOWN = 175,
+
+      JIS_KANA = 0,
+      JIS_EISUU = 0,
     };
   }
 

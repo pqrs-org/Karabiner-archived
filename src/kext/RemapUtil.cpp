@@ -456,17 +456,18 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
-  // --------------------
+  // ----------------------------------------------------------------------
   void
-  KeyOverlayedModifier::remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc firefunc)
+  KeyOverlayedModifier::remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, void (*firefunc)(const RemapParams &params))
   {
-    if (*(params.eventType) == KeyEvent::DOWN || *(params.eventType) == KeyEvent::MODIFY) {
-      useAsModifier = true;
+    if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) {
+      if (*(params.eventType) == KeyEvent::DOWN || *(params.eventType) == KeyEvent::MODIFY) {
+        useAsModifier = true;
+      }
+      return;
     }
 
     // ----------------------------------------
-    if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) return;
-
     bool isKeyDown = false;
 
     if (*(params.eventType) == KeyEvent::MODIFY) {
@@ -497,5 +498,33 @@ namespace org_pqrs_KeyRemap4MacBook {
         firefunc(params);
       }
     }
+  }
+
+  // --------------------
+  void
+  FireFunc::firefunc_commandSpace(const RemapParams &params) {
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, ModifierFlag::COMMAND_L, KeyCode::COMMAND_L, CharCode::COMMAND_L);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN,   ModifierFlag::COMMAND_L, KeyCode::SPACE,     CharCode::SPACE);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP,     ModifierFlag::COMMAND_L, KeyCode::SPACE,     CharCode::SPACE);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, 0,                       KeyCode::COMMAND_L, CharCode::COMMAND_L);
+  }
+
+  void
+  FireFunc::firefunc_space(const RemapParams &params) {
+    unsigned int flags = allFlagStatus.makeFlags(params);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, flags, KeyCode::SPACE, CharCode::SPACE);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, flags, KeyCode::SPACE, CharCode::SPACE);
+  }
+
+  void
+  FireFunc::firefunc_jis_kana(const RemapParams &params) {
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, 0, KeyCode::JIS_KANA, CharCode::JIS_KANA);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, 0, KeyCode::JIS_KANA, CharCode::JIS_KANA);
+  }
+
+  void
+  FireFunc::firefunc_jis_eisuu(const RemapParams &params) {
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, 0, KeyCode::JIS_EISUU, CharCode::JIS_EISUU);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, 0, KeyCode::JIS_EISUU, CharCode::JIS_EISUU);
   }
 }
