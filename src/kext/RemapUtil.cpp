@@ -458,7 +458,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   void
-  KeyOverlayedModifier::remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, void (*firefunc)(const RemapParams &params))
+  KeyOverlayedModifier::remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, void (*firefunc)(const RemapParams &params), bool strict)
   {
     if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) {
       if (*(params.eventType) == KeyEvent::DOWN || *(params.eventType) == KeyEvent::MODIFY) {
@@ -495,7 +495,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       useAsModifier = false;
     } else {
       if (useAsModifier == false) {
-        firefunc(params);
+        if (! strict || allFlagStatus.makeFlags(params) == 0) {
+          firefunc(params);
+        }
       }
     }
   }
