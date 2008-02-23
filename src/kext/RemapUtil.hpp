@@ -159,12 +159,18 @@ namespace org_pqrs_KeyRemap4MacBook {
   // for SandS like behavior remappings (remap_space2shift, remap_enter2optionL_commandSpace, ...)
   class KeyOverlayedModifier {
   public:
-    typedef void (* FireFunc)(const RemapParams &params);
-    void remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc firefunc);
+    void remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, void (*firefunc)(const RemapParams &params));
 
   private:
     bool useAsModifier;
   };
+
+  namespace FireFunc {
+    void firefunc_commandSpace(const RemapParams &params);
+    void firefunc_space(const RemapParams &params);
+    void firefunc_jis_kana(const RemapParams &params);
+    void firefunc_jis_eisuu(const RemapParams &params);
+  }
 }
 
 #endif

@@ -7,22 +7,6 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------
-  // for KeyOverlayedModifier
-  void
-  firefunc_commandSpace(const RemapParams &params) {
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, ModifierFlag::COMMAND_L, KeyCode::COMMAND_L, CharCode::COMMAND_L);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN,   ModifierFlag::COMMAND_L, KeyCode::SPACE,     CharCode::SPACE);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP,     ModifierFlag::COMMAND_L, KeyCode::SPACE,     CharCode::SPACE);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, 0,                       KeyCode::COMMAND_L, CharCode::COMMAND_L);
-  }
-  void
-  firefunc_space(const RemapParams &params) {
-    unsigned int flags = allFlagStatus.makeFlags(params);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, flags, KeyCode::SPACE, CharCode::SPACE);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, flags, KeyCode::SPACE, CharCode::SPACE);
-  }
-
-  // ----------------------------------------
   void
   remap_backquote2commandL(const RemapParams &params)
   {
@@ -141,7 +125,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::keyToModifier(params, RemapUtil::getEnterKeyCode(params), ModifierFlag::OPTION_L);
   }
 
-  // --------------------
   void
   remap_enter2optionL_commandSpace(const RemapParams &params)
   {
@@ -151,10 +134,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     KeyCode::KeyCode fromKeyCode = RemapUtil::getEnterKeyCode(params);
     ModifierFlag::ModifierFlag toFlag = ModifierFlag::OPTION_L;
-    kom.remap(params, fromKeyCode, toFlag, firefunc_commandSpace);
+    kom.remap(params, fromKeyCode, toFlag, FireFunc::firefunc_commandSpace);
   }
 
-  // --------------------
   void
   remap_enter2commandLcontrolL(const RemapParams &params)
   {
@@ -700,7 +682,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     KeyCode::KeyCode fromKeyCode = KeyCode::SPACE;
     ModifierFlag::ModifierFlag toFlag = ModifierFlag::SHIFT_L;
-    kom.remap(params, fromKeyCode, toFlag, firefunc_space);
+    kom.remap(params, fromKeyCode, toFlag, FireFunc::firefunc_space);
   }
 
   // ----------------------------------------
@@ -1055,6 +1037,30 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
   }
+
+  void
+  remap_jis_commandR2commandR_kana(const RemapParams &params)
+  {
+    if (! config.remap_jis_commandR2commandR_kana) return;
+
+    static KeyOverlayedModifier kom;
+
+    KeyCode::KeyCode fromKeyCode = KeyCode::COMMAND_R;
+    ModifierFlag::ModifierFlag toFlag = ModifierFlag::COMMAND_R;
+    kom.remap(params, fromKeyCode, toFlag, FireFunc::firefunc_jis_kana);
+  }
+
+  void
+  remap_jis_commandL2controlL_eisuu(const RemapParams &params)
+  {
+    if (! config.remap_jis_commandL2controlL_eisuu) return;
+
+    static KeyOverlayedModifier kom;
+
+    KeyCode::KeyCode fromKeyCode = KeyCode::COMMAND_L;
+    ModifierFlag::ModifierFlag toFlag = ModifierFlag::CONTROL_L;
+    kom.remap(params, fromKeyCode, toFlag, FireFunc::firefunc_jis_eisuu);
+  }
 }
 
 // ----------------------------------------------------------------------
@@ -1184,8 +1190,10 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   // ------------------------------------------------------------
   // *** Note: we need to call remap_space2shift, remap_enter2optionL_commandSpace (has SandS like behavior) as possible late. ***
   // *** If any keyToModifier or modifierToKey remappings are enabled, miss-cancelling are occured.
-  remap_space2shift(params);
   remap_enter2optionL_commandSpace(params);
+  remap_space2shift(params);
+  remap_jis_commandR2commandR_kana(params);
+  remap_jis_commandL2controlL_eisuu(params);
 
   // ------------------------------------------------------------
   // *** Note: we need to call remap_pclikehomeend as possible late. ***
