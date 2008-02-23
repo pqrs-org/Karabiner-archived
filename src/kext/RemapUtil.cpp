@@ -460,7 +460,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   KeyOverlayedModifier::remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc firefunc)
   {
-    if (*(params.eventType) == KeyEvent::DOWN) {
+    if (*(params.eventType) == KeyEvent::DOWN || *(params.eventType) == KeyEvent::MODIFY) {
       useAsModifier = true;
     }
 
