@@ -1189,7 +1189,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   // ------------------------------------------------------------
   // *** Note: we need to call remap_space2shift, remap_enter2optionL_commandSpace (has SandS like behavior) as possible late. ***
-  // *** If any keyToModifier or modifierToKey remappings are enabled, miss-cancelling are occured.
+  // *** If any keyToModifier or modifierToKey remappings are enabled, miss-cancelling are occured. ***
   remap_enter2optionL_commandSpace(params);
   remap_space2shift(params);
   remap_jis_commandR2commandR_kana(params);
