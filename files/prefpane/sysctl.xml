@@ -475,6 +475,19 @@
           </list>
         </item>
         <item>
+          <name>Overlay a Key on a Modifier</name>
+          <list>
+            <item>
+              <name>Command_R to Command_R (+ Non-modifier Command_R to KANA)</name>
+              <sysctl>keyremap4macbook.remap.jis_commandR2commandR_kana</sysctl>
+            </item>
+            <item>
+              <name>Command_L to Control_L (+ Non-modifier Command_L to EISUU)</name>
+              <sysctl>keyremap4macbook.remap.jis_commandL2controlL_eisuu</sysctl>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Other</name>
           <list>
             <item>
