@@ -6,7 +6,7 @@
 #include "KeyRemap4MacBook.hpp"
 #include "config.hpp"
 #include "remap.hpp"
-#include "remapUtil.hpp"
+#include "RemapUtil.hpp"
 
 org_pqrs_driver_KeyRemap4MacBook::HookedKeyboard org_pqrs_driver_KeyRemap4MacBook::hookedKeyboard[MAXNUM_KEYBOARD];
 
