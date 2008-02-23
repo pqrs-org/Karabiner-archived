@@ -4,7 +4,7 @@
 #include <IOKit/IOTimerEventSource.h>
 #include "base.hpp"
 #include "KeyRemap4MacBook.hpp"
-#include "config.hpp"
+#include "Config.hpp"
 #include "remap.hpp"
 #include "RemapUtil.hpp"
 

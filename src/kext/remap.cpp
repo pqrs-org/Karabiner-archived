@@ -2,7 +2,7 @@
 
 #include "remap.hpp"
 #include "RemapUtil.hpp"
-#include "config.hpp"
+#include "Config.hpp"
 #include "keycode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
