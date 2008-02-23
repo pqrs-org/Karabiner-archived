@@ -131,7 +131,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     static KeyOverlayedModifier kom;
     KeyCode::KeyCode fromKeyCode = RemapUtil::getEnterKeyCode(params);
-    kom.remap(params, fromKeyCode, ModifierFlag::OPTION_L, FireFunc::firefunc_commandSpace, true);
+    kom.remap(params, fromKeyCode, ModifierFlag::OPTION_L, FireFunc::firefunc_commandSpace);
   }
 
   void
@@ -335,7 +335,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_space2controlL_space) return;
 
     static KeyOverlayedModifier kom;
-    kom.remap(params, KeyCode::SPACE, ModifierFlag::CONTROL_L, FireFunc::firefunc_space, false);
+    kom.remap(params, KeyCode::SPACE, ModifierFlag::CONTROL_L, FireFunc::firefunc_space);
   }
 
   void
@@ -352,7 +352,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_space2shiftL_space) return;
 
     static KeyOverlayedModifier kom;
-    kom.remap(params, KeyCode::SPACE, ModifierFlag::SHIFT_L, FireFunc::firefunc_space, false);
+    kom.remap(params, KeyCode::SPACE, ModifierFlag::SHIFT_L, FireFunc::firefunc_space);
   }
 
   // ----------------------------------------
@@ -1063,7 +1063,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_jis_commandR2commandR_kana) return;
 
     static KeyOverlayedModifier kom;
-    kom.remap(params, KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, FireFunc::firefunc_jis_kana, true);
+    kom.remap(params, KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, FireFunc::firefunc_jis_kana);
   }
 
   void
@@ -1072,7 +1072,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_jis_commandL2controlL_eisuu) return;
 
     static KeyOverlayedModifier kom;
-    kom.remap(params, KeyCode::COMMAND_L, ModifierFlag::CONTROL_L, FireFunc::firefunc_jis_eisuu, true);
+    kom.remap(params, KeyCode::COMMAND_L, ModifierFlag::CONTROL_L, FireFunc::firefunc_jis_eisuu);
   }
 }
 
