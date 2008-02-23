@@ -7,6 +7,22 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------
+  // for KeyOverlayedModifier
+  void
+  firefunc_commandSpace(const RemapParams &params) {
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, ModifierFlag::COMMAND_L, KeyCode::COMMAND_L, CharCode::COMMAND_L);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN,   ModifierFlag::COMMAND_L, KeyCode::SPACE,     CharCode::SPACE);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP,     ModifierFlag::COMMAND_L, KeyCode::SPACE,     CharCode::SPACE);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, 0,                       KeyCode::COMMAND_L, CharCode::COMMAND_L);
+  }
+  void
+  firefunc_space(const RemapParams &params) {
+    unsigned int flags = allFlagStatus.makeFlags(params);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, flags, KeyCode::SPACE, CharCode::SPACE);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, flags, KeyCode::SPACE, CharCode::SPACE);
+  }
+
+  // ----------------------------------------
   void
   remap_backquote2commandL(const RemapParams &params)
   {
@@ -125,37 +141,20 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::keyToModifier(params, RemapUtil::getEnterKeyCode(params), ModifierFlag::OPTION_L);
   }
 
+  // --------------------
   void
   remap_enter2optionL_commandSpace(const RemapParams &params)
   {
     if (! config.remap_enter2optionL_commandSpace) return;
 
-    static bool useEnterAsOption = false;
+    static KeyOverlayedModifier kom;
 
-    KeyCode::KeyCode enterKeyCode = RemapUtil::getEnterKeyCode(params);
-    if (params.ex_origKey != enterKeyCode && *(params.eventType) == KeyEvent::DOWN) {
-      useEnterAsOption = true;
-    }
-
-    if (params.ex_origKey == enterKeyCode) {
-      // Enter => OptionL (if type EnterKey only, works as Command+Space)
-      unsigned int origEventType = *(params.eventType);
-      RemapUtil::keyToModifier(params, enterKeyCode, ModifierFlag::OPTION_L);
-
-      if (origEventType == KeyEvent::DOWN) {
-        useEnterAsOption = false;
-
-      } else if (origEventType == KeyEvent::UP) {
-        if (useEnterAsOption == false) {
-          listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, ModifierFlag::COMMAND_L, KeyCode::COMMAND_L, CharCode::COMMAND_L);
-          listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN,   ModifierFlag::COMMAND_L, KeyCode::SPACE,     CharCode::SPACE);
-          listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP,     ModifierFlag::COMMAND_L, KeyCode::SPACE,     CharCode::SPACE);
-          listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, 0,                       KeyCode::COMMAND_L, CharCode::COMMAND_L);
-        }
-      }
-    }
+    KeyCode::KeyCode fromKeyCode = RemapUtil::getEnterKeyCode(params);
+    ModifierFlag::ModifierFlag toFlag = ModifierFlag::OPTION_L;
+    kom.remap(params, fromKeyCode, toFlag, firefunc_commandSpace);
   }
 
+  // --------------------
   void
   remap_enter2commandLcontrolL(const RemapParams &params)
   {
@@ -697,28 +696,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_space2shift) return;
 
-    static bool useSpaceAsShift = false;
+    static KeyOverlayedModifier kom;
 
-    if (params.ex_origKey != KeyCode::SPACE && *(params.eventType) == KeyEvent::DOWN) {
-      useSpaceAsShift = true;
-    }
-
-    if (params.ex_origKey == KeyCode::SPACE) {
-      // Space => ShiftL (if type SpaceKey only, works as SpaceKey)
-      unsigned int origEventType = *(params.eventType);
-      RemapUtil::keyToModifier(params, KeyCode::SPACE, ModifierFlag::SHIFT_L);
-
-      if (origEventType == KeyEvent::DOWN) {
-        useSpaceAsShift = false;
-
-      } else if (origEventType == KeyEvent::UP) {
-        if (useSpaceAsShift == false) {
-          unsigned int flags = allFlagStatus.makeFlags(params);
-          listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, flags, KeyCode::SPACE, CharCode::SPACE);
-          listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, flags, KeyCode::SPACE, CharCode::SPACE);
-        }
-      }
-    }
+    KeyCode::KeyCode fromKeyCode = KeyCode::SPACE;
+    ModifierFlag::ModifierFlag toFlag = ModifierFlag::SHIFT_L;
+    kom.remap(params, fromKeyCode, toFlag, firefunc_space);
   }
 
   // ----------------------------------------

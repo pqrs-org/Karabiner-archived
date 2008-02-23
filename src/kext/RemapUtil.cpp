@@ -455,4 +455,47 @@ namespace org_pqrs_KeyRemap4MacBook {
       listFireExtraKey.add(FireExtraKey::TYPE_BEFORE, KeyEvent::MODIFY, flags, keycode, 0);
     }
   }
+
+  // --------------------
+  void
+  KeyOverlayedModifier::remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc firefunc)
+  {
+    if (*(params.eventType) == KeyEvent::DOWN) {
+      useAsModifier = true;
+    }
+
+    // ----------------------------------------
+    if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) return;
+
+    bool isKeyDown = false;
+
+    if (*(params.eventType) == KeyEvent::MODIFY) {
+      // remap Modifier to Modifier
+
+      ModifierFlag::ModifierFlag fromFlag = RemapUtil::getKeyCodeModifier(fromKeyCode);
+      FlagStatus *status = allFlagStatus.getFlagStatus(fromFlag);
+      if (status == NULL) return;
+
+      if (status->isHeldDown()) {
+        isKeyDown = true;
+      }
+      RemapUtil::modifierToModifier(params, fromFlag, toFlag);
+
+    } else {
+      // remap Key to Modifier
+
+      if (*(params.eventType) == KeyEvent::DOWN) {
+        isKeyDown = true;
+      }
+      RemapUtil::keyToModifier(params, fromKeyCode, toFlag);
+    }
+
+    if (isKeyDown) {
+      useAsModifier = false;
+    } else {
+      if (useAsModifier == false) {
+        firefunc(params);
+      }
+    }
+  }
 }

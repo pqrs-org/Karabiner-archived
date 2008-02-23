@@ -20,6 +20,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void keyToModifier(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag);
     void keyToModifier(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag1, ModifierFlag::ModifierFlag toFlag2);
     void keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode);
+
     void jis_toggle_eisuu_kana(const RemapParams &params, KeyCode::KeyCode fromKeyCode);
     void jis_toggle_eisuu_kana(const RemapParams &params, ModifierFlag::ModifierFlag fromModifier);
   }
@@ -153,6 +154,17 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
   extern ModifierCanceling modifierCanceling_control;
   extern ModifierCanceling modifierCanceling_option;
+
+  // ----------------------------------------------------------------------
+  // for SandS like behavior remappings (remap_space2shift, remap_enter2optionL_commandSpace, ...)
+  class KeyOverlayedModifier {
+  public:
+    typedef void (* FireFunc)(const RemapParams &params);
+    void remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc firefunc);
+
+  private:
+    bool useAsModifier;
+  };
 }
 
 #endif
