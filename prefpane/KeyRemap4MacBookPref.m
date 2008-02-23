@@ -123,15 +123,20 @@
 
 - (BOOL) checkAnyChildrenChecked:(NSXMLNode *)node
 {
-  NSArray *a = [node nodesForXPath:@".//sysctl" error:NULL];
+  NSArray *a = [node nodesForXPath:@"list/item" error:NULL];
   if (a == nil) return FALSE;
   if ([a count] == 0) return FALSE;
 
   NSEnumerator *enumerator = [a objectEnumerator];
   NSXMLNode *n;
   while (n = [enumerator nextObject]) {
-    NSNumber *value = [_sysctlWrapper getInt:[n stringValue]];
-    if ([value boolValue]) return TRUE;
+    if ([self checkAnyChildrenChecked:n]) return TRUE;
+
+    NSXMLNode *sysctl = [self getNode:n xpath:@"sysctl"];
+    if (sysctl) {
+      NSNumber *value = [_sysctlWrapper getInt:[sysctl stringValue]];
+      if ([value boolValue]) return TRUE;
+    }
   }
 
   return FALSE;
