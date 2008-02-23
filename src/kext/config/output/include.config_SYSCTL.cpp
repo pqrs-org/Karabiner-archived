@@ -42,7 +42,10 @@ SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, shiftR2escape, CTLTYPE_INT|CTLFLAG
 SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, shiftR2fn, CTLTYPE_INT|CTLFLAG_RW, &(config.remap_shiftR2fn), 0, "");
 SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, shiftR2optionL, CTLTYPE_INT|CTLFLAG_RW, &(config.remap_shiftR2optionL), 0, "");
 SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, shiftR2space, CTLTYPE_INT|CTLFLAG_RW, &(config.remap_shiftR2space), 0, "");
-SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, space2shift, CTLTYPE_INT|CTLFLAG_RW, &(config.remap_space2shift), 0, "");
+SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, space2controlL, CTLTYPE_INT|CTLFLAG_RW, &(config.remap_space2controlL), 0, "");
+SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, space2controlL_space, CTLTYPE_INT|CTLFLAG_RW, &(config.remap_space2controlL_space), 0, "");
+SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, space2shiftL, CTLTYPE_INT|CTLFLAG_RW, &(config.remap_space2shiftL), 0, "");
+SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, space2shiftL_space, CTLTYPE_INT|CTLFLAG_RW, &(config.remap_space2shiftL_space), 0, "");
 SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, tab2f9, CTLTYPE_INT|CTLFLAG_RW, &(config.remap_tab2f9), 0, "");
 SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, shiftDelete2tilde, CTLTYPE_INT|CTLFLAG_RW, &(config.remap_shiftDelete2tilde), 0, "");
 SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, hhkmode, CTLTYPE_INT|CTLFLAG_RW, &(config.remap_hhkmode), 0, "");
