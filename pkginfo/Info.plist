@@ -9,7 +9,7 @@
     <string>org.pqrs.driver.KeyRemap4MacBook</string>
 
     <key>CFBundleShortVersionString</key>
-    <string>3.1.7</string>
+    <string>3.1.8</string>
 
     <key>IFPkgFlagAllowBackRev</key>
     <false/>
