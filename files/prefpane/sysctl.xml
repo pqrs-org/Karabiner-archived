@@ -205,8 +205,20 @@
       <name>Remap Space Key</name>
       <list>
         <item>
+          <name>Space to Control_L</name>
+          <sysctl>keyremap4macbook.remap.space2controlL</sysctl>
+        </item>
+        <item>
+          <name>Space to Control_L (+ When you type Space only, fire Space).</name>
+          <sysctl>keyremap4macbook.remap.space2controlL_space</sysctl>
+        </item>
+        <item>
+          <name>Space to Shift_L</name>
+          <sysctl>keyremap4macbook.remap.space2shiftL</sysctl>
+        </item>
+        <item>
           <name>Space to Shift_L [Known as SandS] (+ When you type Space only, fire Space).</name>
-          <sysctl>keyremap4macbook.remap.space2shift</sysctl>
+          <sysctl>keyremap4macbook.remap.space2shiftL_space</sysctl>
         </item>
       </list>
     </item>

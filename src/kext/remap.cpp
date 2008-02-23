@@ -81,7 +81,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::modifierToModifier(params, ModifierFlag::COMMAND_R, ModifierFlag::SHIFT_L);
   }
 
-
   // ----------------------------------------
   void
   remap_controlL2commandL(const RemapParams &params)
@@ -319,6 +318,41 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_return2semicolon) return;
 
     RemapUtil::keyToKey(params, KeyCode::RETURN, KeyCode::SEMICOLON);
+  }
+
+  // ----------------------------------------
+  void
+  remap_space2controlL(const RemapParams &params)
+  {
+    if (! config.remap_space2controlL) return;
+
+    RemapUtil::keyToModifier(params, KeyCode::SPACE, ModifierFlag::CONTROL_L);
+  }
+
+  void
+  remap_space2controlL_space(const RemapParams &params)
+  {
+    if (! config.remap_space2controlL_space) return;
+
+    static KeyOverlayedModifier kom;
+    kom.remap(params, KeyCode::SPACE, ModifierFlag::CONTROL_L, FireFunc::firefunc_space);
+  }
+
+  void
+  remap_space2shiftL(const RemapParams &params)
+  {
+    if (! config.remap_space2shiftL) return;
+
+    RemapUtil::keyToModifier(params, KeyCode::SPACE, ModifierFlag::SHIFT_L);
+  }
+
+  void
+  remap_space2shiftL_space(const RemapParams &params)
+  {
+    if (! config.remap_space2shiftL_space) return;
+
+    static KeyOverlayedModifier kom;
+    kom.remap(params, KeyCode::SPACE, ModifierFlag::SHIFT_L, FireFunc::firefunc_space);
   }
 
   // ----------------------------------------
@@ -668,16 +702,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     modifierCanceling_control.restore(params);
     modifierCanceling_option.restore(params);
-  }
-
-  // ----------------------------------------
-  void
-  remap_space2shift(const RemapParams &params)
-  {
-    if (! config.remap_space2shift) return;
-
-    static KeyOverlayedModifier kom;
-    kom.remap(params, KeyCode::SPACE, ModifierFlag::SHIFT_L, FireFunc::firefunc_space);
   }
 
   // ----------------------------------------
@@ -1111,6 +1135,9 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_return2optionL(params);
   remap_return2semicolon(params);
 
+  remap_space2controlL(params);
+  remap_space2shiftL(params);
+
   remap_semicolon2return(params);
 
   remap_shiftL2controlL(params);
@@ -1180,7 +1207,8 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   // *** Note: we need to call remap_space2shift, remap_enter2optionL_commandSpace (has SandS like behavior) as possible late. ***
   // *** If any keyToModifier or modifierToKey remappings are enabled, miss-cancelling are occured. ***
   remap_enter2optionL_commandSpace(params);
-  remap_space2shift(params);
+  remap_space2controlL_space(params);
+  remap_space2shiftL_space(params);
   remap_jis_commandR2commandR_kana(params);
   remap_jis_commandL2controlL_eisuu(params);
 

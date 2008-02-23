@@ -43,7 +43,10 @@ shiftR2escape
 shiftR2fn
 shiftR2optionL
 shiftR2space
-space2shift
+space2controlL
+space2controlL_space
+space2shiftL
+space2shiftL_space
 tab2f9
 # extra
 shiftDelete2tilde
