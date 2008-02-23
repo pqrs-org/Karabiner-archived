@@ -159,7 +159,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   // for SandS like behavior remappings (remap_space2shift, remap_enter2optionL_commandSpace, ...)
   class KeyOverlayedModifier {
   public:
-    void remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, void (*firefunc)(const RemapParams &params));
+    // if strict == true, firefunc will be executed only if no other modifiers pressed.
+    void remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, void (*firefunc)(const RemapParams &params), bool strict);
 
   private:
     bool useAsModifier;
