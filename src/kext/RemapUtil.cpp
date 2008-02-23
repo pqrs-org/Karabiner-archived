@@ -2,7 +2,7 @@
 
 #include "RemapUtil.hpp"
 #include "keycode.hpp"
-#include "config.hpp"
+#include "Config.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   AllFlagStatus allFlagStatus;

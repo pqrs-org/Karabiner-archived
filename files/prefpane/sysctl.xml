@@ -85,7 +85,7 @@
           <sysctl>keyremap4macbook.remap.enter2optionL</sysctl>
         </item>
         <item>
-          <name>Enter to Option_L (+ Non-modifier Enter to Command+Space)</name>
+          <name>Enter to Option_L (+ When you type Enter only, fire Command+Space)</name>
           <sysctl>keyremap4macbook.remap.enter2optionL_commandSpace</sysctl>
         </item>
         <item>
@@ -197,6 +197,16 @@
         <item>
           <name>Return to Semicolon</name>
           <sysctl>keyremap4macbook.remap.return2semicolon</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
+      <name>Remap Space Key</name>
+      <list>
+        <item>
+          <name>Space to Shift_L [Known as SandS] (+ When you type Space only, fire Space).</name>
+          <sysctl>keyremap4macbook.remap.space2shift</sysctl>
         </item>
       </list>
     </item>
@@ -344,16 +354,6 @@
     </item>
 
     <item>
-      <name>SandS (Space and Shift)</name>
-      <list>
-        <item>
-          <name>Enable SandS</name>
-          <sysctl>keyremap4macbook.remap.space2shift</sysctl>
-        </item>
-      </list>
-    </item>
-
-    <item>
       <name>Remapping for Mac OS X Features</name>
       <list>
         <item>
@@ -478,11 +478,11 @@
           <name>Overlay a Key on a Modifier</name>
           <list>
             <item>
-              <name>Command_R to Command_R (+ Non-modifier Command_R to KANA)</name>
+              <name>Command_R to Command_R (+ When you type Command_R only, fire KANA)</name>
               <sysctl>keyremap4macbook.remap.jis_commandR2commandR_kana</sysctl>
             </item>
             <item>
-              <name>Command_L to Control_L (+ Non-modifier Command_L to EISUU)</name>
+              <name>Command_L to Control_L (+ When you type Command_L only, fire EISUU)</name>
               <sysctl>keyremap4macbook.remap.jis_commandL2controlL_eisuu</sysctl>
             </item>
           </list>
