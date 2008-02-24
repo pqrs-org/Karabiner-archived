@@ -573,19 +573,19 @@ namespace org_pqrs_KeyRemap4MacBook {
   DoublePressModifier::remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc::FireFunc firefunc)
   {
     if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) {
-      isSinglePress = false;
+      pressCount = 0;
       return;
     }
 
     // ----------------------------------------
     bool isKeyDown = remapToModifier(params, fromKeyCode, toFlag);
 
-    if (isKeyDown) return;
-
-    if (! isSinglePress) {
-      isSinglePress = true;
+    if (isKeyDown) {
+      ++pressCount;
     } else {
-      firefunc(params);
+      if (pressCount >= 2) {
+        firefunc(params);
+      }
     }
   }
 }
