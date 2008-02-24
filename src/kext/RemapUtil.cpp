@@ -458,50 +458,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   void
-  KeyOverlayedModifier::remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, void (*firefunc)(const RemapParams &params))
-  {
-    if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) {
-      if (*(params.eventType) == KeyEvent::DOWN || *(params.eventType) == KeyEvent::MODIFY) {
-        useAsModifier = true;
-      }
-      return;
-    }
-
-    // ----------------------------------------
-    bool isKeyDown = false;
-
-    if (*(params.eventType) == KeyEvent::MODIFY) {
-      // remap Modifier to Modifier
-
-      ModifierFlag::ModifierFlag fromFlag = RemapUtil::getKeyCodeModifier(fromKeyCode);
-      FlagStatus *status = allFlagStatus.getFlagStatus(fromFlag);
-      if (status == NULL) return;
-
-      if (status->isHeldDown()) {
-        isKeyDown = true;
-      }
-      RemapUtil::modifierToModifier(params, fromFlag, toFlag);
-
-    } else {
-      // remap Key to Modifier
-
-      if (*(params.eventType) == KeyEvent::DOWN) {
-        isKeyDown = true;
-      }
-      RemapUtil::keyToModifier(params, fromKeyCode, toFlag);
-    }
-
-    if (isKeyDown) {
-      useAsModifier = false;
-    } else {
-      if (useAsModifier == false) {
-        firefunc(params);
-      }
-    }
-  }
-
-  // --------------------
-  void
   FireFunc::firefunc_commandSpace(const RemapParams &params) {
     // fire only if no-modifiers
     if (allFlagStatus.makeFlags(params) != 0) return;
@@ -529,11 +485,107 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  FireFunc::firefunc_jis_kana_x2(const RemapParams &params) {
+    // fire only if no-modifiers
+    if (allFlagStatus.makeFlags(params) != 0) return;
+
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, 0, KeyCode::JIS_KANA, CharCode::JIS_KANA);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, 0, KeyCode::JIS_KANA, CharCode::JIS_KANA);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, 0, KeyCode::JIS_KANA, CharCode::JIS_KANA);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, 0, KeyCode::JIS_KANA, CharCode::JIS_KANA);
+  }
+
+  void
   FireFunc::firefunc_jis_eisuu(const RemapParams &params) {
     // fire only if no-modifiers
     if (allFlagStatus.makeFlags(params) != 0) return;
 
     listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, 0, KeyCode::JIS_EISUU, CharCode::JIS_EISUU);
     listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, 0, KeyCode::JIS_EISUU, CharCode::JIS_EISUU);
+  }
+
+  void
+  FireFunc::firefunc_jis_eisuu_x2(const RemapParams &params) {
+    // fire only if no-modifiers
+    if (allFlagStatus.makeFlags(params) != 0) return;
+
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, 0, KeyCode::JIS_EISUU, CharCode::JIS_EISUU);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, 0, KeyCode::JIS_EISUU, CharCode::JIS_EISUU);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, 0, KeyCode::JIS_EISUU, CharCode::JIS_EISUU);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, 0, KeyCode::JIS_EISUU, CharCode::JIS_EISUU);
+  }
+
+  // ----------------------------------------
+  namespace {
+    bool
+    remapToModifier(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag)
+    {
+      bool isKeyDown = false;
+
+      if (*(params.eventType) == KeyEvent::MODIFY) {
+        // remap Modifier to Modifier
+
+        ModifierFlag::ModifierFlag fromFlag = RemapUtil::getKeyCodeModifier(fromKeyCode);
+        FlagStatus *status = allFlagStatus.getFlagStatus(fromFlag);
+        if (status == NULL) return false;
+
+        if (status->isHeldDown()) {
+          isKeyDown = true;
+        }
+        RemapUtil::modifierToModifier(params, fromFlag, toFlag);
+
+      } else {
+        // remap Key to Modifier
+
+        if (*(params.eventType) == KeyEvent::DOWN) {
+          isKeyDown = true;
+        }
+        RemapUtil::keyToModifier(params, fromKeyCode, toFlag);
+      }
+
+      return isKeyDown;
+    }
+  }
+
+  void
+  KeyOverlayedModifier::remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc::FireFunc firefunc)
+  {
+    if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) {
+      if (*(params.eventType) == KeyEvent::DOWN || *(params.eventType) == KeyEvent::MODIFY) {
+        useAsModifier = true;
+      }
+      return;
+    }
+
+    // ----------------------------------------
+    bool isKeyDown = remapToModifier(params, fromKeyCode, toFlag);
+
+    if (isKeyDown) {
+      useAsModifier = false;
+    } else {
+      if (useAsModifier == false) {
+        firefunc(params);
+      }
+    }
+  }
+
+  void
+  DoublePressModifier::remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc::FireFunc firefunc)
+  {
+    if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) {
+      isSinglePress = false;
+      return;
+    }
+
+    // ----------------------------------------
+    bool isKeyDown = remapToModifier(params, fromKeyCode, toFlag);
+
+    if (isKeyDown) return;
+
+    if (! isSinglePress) {
+      isSinglePress = true;
+    } else {
+      firefunc(params);
+    }
   }
 }
