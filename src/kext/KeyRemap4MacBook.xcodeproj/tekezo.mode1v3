@@ -270,7 +270,6 @@
 								<string>247142CAFF3F8F9811CA285C</string>
 								<string>089C167CFE841241C02AAC07</string>
 								<string>19C28FB6FE9D52B211CA2CBB</string>
-								<string>1C37FBAC04509CD000000102</string>
 								<string>1C37FAAC04509CD000000102</string>
 								<string>1C08E77C0454961000C914BD</string>
 								<string>1C37FABC05509CD000000102</string>
@@ -278,8 +277,6 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>16</integer>
-									<integer>10</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -384,9 +381,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>34FB835B0CE5DBF100BD6A24</string>
+				<string>3438B58D0D7107C500FCBAA6</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>34FB835C0CE5DBF100BD6A24</string>
+				<string>3438B58E0D7107C500FCBAA6</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
