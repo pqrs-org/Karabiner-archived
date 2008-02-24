@@ -183,7 +183,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc::FireFunc firefunc);
 
   private:
-    bool isSinglePress;
+    int pressCount;
   };
 }
 
