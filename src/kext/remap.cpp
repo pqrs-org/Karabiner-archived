@@ -1006,58 +1006,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  remap_jis_command_twice_to_kana_twice(const RemapParams &params)
-  {
-    if (! config.remap_jis_command_twice_to_kana_twice) return;
-
-    static bool lastkeyIsCommand = false;
-    static bool firedKana = false;
-
-    if (*(params.key) != KeyCode::COMMAND_L && *(params.key) != KeyCode::COMMAND_R) {
-      lastkeyIsCommand = false;
-      return;
-    }
-
-    ModifierFlag::ModifierFlag modifier = RemapUtil::getKeyCodeModifier(*(params.key));
-    FlagStatus *status = allFlagStatus.getFlagStatus(modifier);
-    if (! status) return;
-
-    KeyCode::KeyCode newkeycode = KeyCode::JIS_KANA;
-
-    // the case of KeyUp
-    if (! status->isHeldDown()) {
-      if (firedKana) {
-        firedKana = false;
-
-        status->increase();
-        *(params.eventType) = KeyEvent::UP;
-        *(params.key) = newkeycode;
-      }
-      return;
-
-    } else {
-      // KeyDown
-      if (! lastkeyIsCommand) {
-        lastkeyIsCommand = true;
-        return;
-
-      } else {
-        // fire kana twice
-        lastkeyIsCommand = false;
-        firedKana = true;
-
-        status->decrease();
-        *(params.eventType) = KeyEvent::DOWN;
-        *(params.key) = newkeycode;
-
-        unsigned int flags = allFlagStatus.makeFlags(params);
-        listFireExtraKey.add(FireExtraKey::TYPE_BEFORE, KeyEvent::DOWN, flags, newkeycode, 0);
-        listFireExtraKey.add(FireExtraKey::TYPE_BEFORE, KeyEvent::UP, flags, newkeycode, 0);
-      }
-    }
-  }
-
-  void
   remap_jis_commandR2commandR_kana(const RemapParams &params)
   {
     if (! config.remap_jis_commandR2commandR_kana) return;
@@ -1067,12 +1015,57 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_jis_commandL2commandL_eisuu(const RemapParams &params)
+  {
+    if (! config.remap_jis_commandL2commandL_eisuu) return;
+
+    static KeyOverlayedModifier kom;
+    kom.remap(params, KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, FireFunc::firefunc_jis_eisuu);
+  }
+
+  void
   remap_jis_commandL2controlL_eisuu(const RemapParams &params)
   {
     if (! config.remap_jis_commandL2controlL_eisuu) return;
 
     static KeyOverlayedModifier kom;
     kom.remap(params, KeyCode::COMMAND_L, ModifierFlag::CONTROL_L, FireFunc::firefunc_jis_eisuu);
+  }
+
+  void
+  remap_jis_commandR_x2_to_kana(const RemapParams &params)
+  {
+    if (! config.remap_jis_commandR_x2_to_kana) return;
+
+    static DoublePressModifier dpm;
+    dpm.remap(params, KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, FireFunc::firefunc_jis_kana);
+  }
+
+  void
+  remap_jis_commandR_x2_to_kana_x2(const RemapParams &params)
+  {
+    if (! config.remap_jis_commandR_x2_to_kana_x2) return;
+
+    static DoublePressModifier dpm;
+    dpm.remap(params, KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, FireFunc::firefunc_jis_kana_x2);
+  }
+
+  void
+  remap_jis_commandL_x2_to_eisuu(const RemapParams &params)
+  {
+    if (! config.remap_jis_commandL_x2_to_eisuu) return;
+
+    static DoublePressModifier dpm;
+    dpm.remap(params, KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, FireFunc::firefunc_jis_eisuu);
+  }
+
+  void
+  remap_jis_commandL_x2_to_eisuu_x2(const RemapParams &params)
+  {
+    if (! config.remap_jis_commandL_x2_to_eisuu_x2) return;
+
+    static DoublePressModifier dpm;
+    dpm.remap(params, KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, FireFunc::firefunc_jis_eisuu_x2);
   }
 }
 
@@ -1192,7 +1185,10 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_jis_unify_kana_to_eisuu(params);
   remap_jis_unify_kana_eisuu_to_commandL(params);
   remap_jis_unify_kana_eisuu_to_optionR(params);
-  remap_jis_command_twice_to_kana_twice(params);
+  remap_jis_commandR_x2_to_kana(params);
+  remap_jis_commandR_x2_to_kana_x2(params);
+  remap_jis_commandL_x2_to_eisuu(params);
+  remap_jis_commandL_x2_to_eisuu_x2(params);
 
   // ------------------------------------------------------------
   // *** Note: we need to call remap_drop_funcshift after tab2f9, pc_application2f11, ... ***
@@ -1210,6 +1206,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_space2controlL_space(params);
   remap_space2shiftL_space(params);
   remap_jis_commandR2commandR_kana(params);
+  remap_jis_commandL2commandL_eisuu(params);
   remap_jis_commandL2controlL_eisuu(params);
 
   // ------------------------------------------------------------

@@ -156,21 +156,35 @@ namespace org_pqrs_KeyRemap4MacBook {
   extern ModifierCanceling modifierCanceling_option;
 
   // ----------------------------------------------------------------------
+  namespace FireFunc {
+    typedef void (*FireFunc)(const RemapParams &params);
+    void firefunc_commandSpace(const RemapParams &params);
+    void firefunc_space(const RemapParams &params);
+    void firefunc_jis_kana(const RemapParams &params);
+    void firefunc_jis_kana_x2(const RemapParams &params);
+    void firefunc_jis_eisuu(const RemapParams &params);
+    void firefunc_jis_eisuu_x2(const RemapParams &params);
+  }
+
+  // ----------------------------------------
   // for SandS like behavior remappings (remap_space2shift, remap_enter2optionL_commandSpace, ...)
   class KeyOverlayedModifier {
   public:
-    void remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, void (*firefunc)(const RemapParams &params));
+    void remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc::FireFunc firefunc);
 
   private:
     bool useAsModifier;
   };
 
-  namespace FireFunc {
-    void firefunc_commandSpace(const RemapParams &params);
-    void firefunc_space(const RemapParams &params);
-    void firefunc_jis_kana(const RemapParams &params);
-    void firefunc_jis_eisuu(const RemapParams &params);
-  }
+  // ----------------------------------------
+  // A modifier has DoublePressed key action.
+  class DoublePressModifier {
+  public:
+    void remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc::FireFunc firefunc);
+
+  private:
+    bool isSinglePress;
+  };
 }
 
 #endif

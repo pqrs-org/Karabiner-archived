@@ -6,3 +6,4 @@ pkgroot/
 .*\.xcodeproj/.*\.mode1
 .*\.xcodeproj/.*\.mode1v3
 .*\.xcodeproj/.*\.pbxuser
+src/kext/config/output

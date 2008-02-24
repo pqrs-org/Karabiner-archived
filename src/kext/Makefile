@@ -6,6 +6,7 @@ all:
 	xcodebuild -alltargets -configuration $(CONFIGURATION) build
 
 clean:
+	$(MAKE) -C config clean
 	xcodebuild -alltargets -configuration $(CONFIGURATION) clean
 	rm -rf build
 	rm -f *.xcodeproj/*.mode1
