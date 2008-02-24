@@ -270,12 +270,19 @@
 					ppc,
 					i386,
 				);
+				GCC_OPTIMIZATION_LEVEL = 2;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_SHADOW = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				OTHER_CFLAGS = "-no-cpp-precomp";
-				OTHER_CPLUSPLUSFLAGS = "-no-cpp-precomp";
+				OTHER_CFLAGS = (
+					"-no-cpp-precomp",
+					"-Winline",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-no-cpp-precomp",
+					"-Winline",
+				);
 				PREBINDING = NO;
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
 				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
