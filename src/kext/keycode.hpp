@@ -130,6 +130,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       F10 = 109,
       F11 = 103,
       F12 = 111,
+      F16 = 106,
 
       PC_APPLICATION = 110,
       HELP = 114,
