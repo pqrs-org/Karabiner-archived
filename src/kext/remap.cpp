@@ -25,6 +25,15 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
+  remap_clear2tab(const RemapParams &params)
+  {
+    if (! config.remap_clear2tab) return;
+
+    RemapUtil::keyToKey(params, KeyCode::KEYPAD_CLEAR, KeyCode::TAB);
+  }
+
+  // ----------------------------------------
+  void
   remap_commandL2controlL(const RemapParams &params)
   {
     if (! config.remap_commandL2controlL) return;
@@ -234,6 +243,15 @@ namespace org_pqrs_KeyRemap4MacBook {
       RemapUtil::fnToNormal(params);
     }
     RemapUtil::modifierToModifier(params, ModifierFlag::FN, ModifierFlag::SHIFT_L);
+  }
+
+  // ----------------------------------------
+  void
+  remap_f16_to_tab(const RemapParams &params)
+  {
+    if (! config.remap_f16_to_tab) return;
+
+    RemapUtil::keyToKey(params, KeyCode::F16, KeyCode::TAB);
   }
 
   // ----------------------------------------
@@ -1087,6 +1105,8 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_backquote2commandL(params);
   remap_backquote2escape(params);
 
+  remap_clear2tab(params);
+
   remap_controlL2commandL(params);
 
   remap_commandL2controlL(params);
@@ -1114,6 +1134,8 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_fn2controlL(params);
   remap_fn2optionL(params);
   remap_fn2shiftL(params);
+
+  remap_f16_to_tab(params);
 
   remap_optionL2commandL(params);
   remap_optionL2shiftL(params);

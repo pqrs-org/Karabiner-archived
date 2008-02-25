@@ -16,6 +16,16 @@
     </item>
 
     <item>
+      <name>Remap Clear Key (in KeyPad)</name>
+      <list>
+        <item>
+          <name>Clear to Tab</name>
+          <sysctl>keyremap4macbook.remap.clear2tab</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>Remap Command_L Key</name>
       <list>
         <item>
@@ -139,6 +149,16 @@
         <item>
           <name>FN to Shift_L</name>
           <sysctl>keyremap4macbook.remap.fn2shiftL</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
+      <name>Remap F16 Key</name>
+      <list>
+        <item>
+          <name>F16 to Tab</name>
+          <sysctl>keyremap4macbook.remap.f16_to_tab</sysctl>
         </item>
       </list>
     </item>
