@@ -443,17 +443,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (! isSendKeyRelease) return;
 
-    // already released, ignore isSendKeyRelease;
-    if (! flagStatus->isHeldDown()) {
-      isSendKeyRelease = false;
-      return;
-    }
-
-    if (*(params.eventType) == KeyEvent::DOWN) {
-      isSendKeyRelease = false;
-      unsigned int flags = allFlagStatus.makeFlags(params);
-      listFireExtraKey.add(FireExtraKey::TYPE_BEFORE, KeyEvent::MODIFY, flags, keycode, 0);
-    }
+    isSendKeyRelease = false;
+    unsigned int flags = allFlagStatus.makeFlags(params);
+    listFireExtraKey.add(FireExtraKey::TYPE_BEFORE, KeyEvent::MODIFY, flags, keycode, 0);
   }
 
   // ----------------------------------------------------------------------
