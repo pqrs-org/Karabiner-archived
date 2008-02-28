@@ -1,0 +1,5 @@
+#!/bin/sh
+
+[ -d /Library/StartupItems/DoubleCommand ] && exit 127
+
+exit 0
