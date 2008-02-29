@@ -435,8 +435,17 @@
       <name>For PC Users</name>
       <list>
         <item>
-          <name>Application Key to F11</name>
-          <sysctl>keyremap4macbook.remap.pc_application2f11</sysctl>
+          <name>Remap PC Application Key</name>
+          <list>
+            <item>
+              <name>Application Key to F9</name>
+              <sysctl>keyremap4macbook.remap.pc_application2f9</sysctl>
+            </item>
+            <item>
+              <name>Application Key to F11</name>
+              <sysctl>keyremap4macbook.remap.pc_application2f11</sysctl>
+            </item>
+          </list>
         </item>
         <item>
           <name>Use KeyPad as Arrow (PC Style NumLock)</name>

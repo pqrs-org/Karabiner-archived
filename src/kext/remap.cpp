@@ -842,6 +842,14 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
+  remap_pc_application2f9(const RemapParams &params)
+  {
+    if (! config.remap_pc_application2f9) return;
+
+    RemapUtil::keyToKey(params, KeyCode::PC_APPLICATION, KeyCode::F9);
+  }
+
+  void
   remap_pc_application2f11(const RemapParams &params)
   {
     if (! config.remap_pc_application2f11) return;
@@ -1180,6 +1188,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_qwerty2colemak(params);
 
   // ----------------------------------------
+  remap_pc_application2f9(params);
   remap_pc_application2f11(params);
 
   // ------------------------------------------------------------
