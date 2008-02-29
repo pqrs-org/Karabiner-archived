@@ -301,8 +301,8 @@
       <name>Remap Tab Key</name>
       <list>
         <item>
-          <name>Tab to F9</name>
-          <sysctl>keyremap4macbook.remap.tab2f9</sysctl>
+          <name>Tab to Expose All</name>
+          <sysctl>keyremap4macbook.remap.tab2exposeALL</sysctl>
         </item>
       </list>
     </item>
@@ -438,12 +438,12 @@
           <name>Remap PC Application Key</name>
           <list>
             <item>
-              <name>Application Key to F9</name>
-              <sysctl>keyremap4macbook.remap.pc_application2f9</sysctl>
+              <name>Application Key to Expose All</name>
+              <sysctl>keyremap4macbook.remap.pc_application2exposeALL</sysctl>
             </item>
             <item>
-              <name>Application Key to Control_L+F9</name>
-              <sysctl>keyremap4macbook.remap.pc_application2controlLf9</sysctl>
+              <name>Application Key to F9</name>
+              <sysctl>keyremap4macbook.remap.pc_application2f9</sysctl>
             </item>
             <item>
               <name>Application Key to F11</name>

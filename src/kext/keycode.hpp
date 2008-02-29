@@ -147,6 +147,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       END = 119,
       HOME = 115,
 
+      EXPOSE_ALL = 160,
+
       JIS_EISUU = 102,
       JIS_KANA = 104,
 

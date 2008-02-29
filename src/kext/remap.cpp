@@ -451,11 +451,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
-  remap_tab2f9(const RemapParams &params)
+  remap_tab2exposeALL(const RemapParams &params)
   {
-    if (! config.remap_tab2f9) return;
+    if (! config.remap_tab2exposeALL) return;
 
-    RemapUtil::keyToKey(params, KeyCode::TAB, KeyCode::F9);
+    RemapUtil::keyToKey(params, KeyCode::TAB, KeyCode::EXPOSE_ALL);
   }
 
   // ----------------------------------------
@@ -850,14 +850,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  remap_pc_application2controlLf9(const RemapParams &params)
+  remap_pc_application2exposeALL(const RemapParams &params)
   {
-    if (! config.remap_pc_application2controlLf9) return;
+    if (! config.remap_pc_application2exposeALL) return;
 
-    if (params.ex_origKey == KeyCode::PC_APPLICATION) {
-      allFlagStatus.controlL.temporary_increase();
-      RemapUtil::keyToKey(params, KeyCode::PC_APPLICATION, KeyCode::F9);
-    }
+    RemapUtil::keyToKey(params, KeyCode::PC_APPLICATION, KeyCode::EXPOSE_ALL);
   }
 
   void
@@ -1184,7 +1181,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_shiftR2escape(params);
   remap_shiftR2space(params);
 
-  remap_tab2f9(params);
+  remap_tab2exposeALL(params);
 
   // ----------------------------------------
   remap_shiftDelete2tilde(params);
@@ -1199,8 +1196,8 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_qwerty2colemak(params);
 
   // ----------------------------------------
+  remap_pc_application2exposeALL(params);
   remap_pc_application2f9(params);
-  remap_pc_application2controlLf9(params);
   remap_pc_application2f11(params);
 
   // ------------------------------------------------------------
