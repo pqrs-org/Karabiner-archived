@@ -442,6 +442,10 @@
               <sysctl>keyremap4macbook.remap.pc_application2f9</sysctl>
             </item>
             <item>
+              <name>Application Key to Control_L+F9</name>
+              <sysctl>keyremap4macbook.remap.pc_application2controlLf9</sysctl>
+            </item>
+            <item>
               <name>Application Key to F11</name>
               <sysctl>keyremap4macbook.remap.pc_application2f11</sysctl>
             </item>
