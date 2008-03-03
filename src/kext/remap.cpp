@@ -160,6 +160,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_enter2controlLoptionL(const RemapParams &params)
+  {
+    if (! config.remap_enter2controlLoptionL) return;
+
+    RemapUtil::keyToModifier(params, RemapUtil::getEnterKeyCode(params), ModifierFlag::CONTROL_L, ModifierFlag::OPTION_L);
+  }
+
+  void
   remap_enter2semicolon(const RemapParams &params)
   {
     if (! config.remap_enter2semicolon) return;
@@ -384,11 +392,44 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
+  remap_shiftL2commandL(const RemapParams &params)
+  {
+    if (! config.remap_shiftL2commandL) return;
+
+    RemapUtil::modifierToModifier(params, ModifierFlag::SHIFT_L, ModifierFlag::COMMAND_L);
+  }
+
+  void
   remap_shiftL2controlL(const RemapParams &params)
   {
     if (! config.remap_shiftL2controlL) return;
 
     RemapUtil::modifierToModifier(params, ModifierFlag::SHIFT_L, ModifierFlag::CONTROL_L);
+  }
+
+  void
+  remap_shiftL2fn(const RemapParams &params)
+  {
+    if (! config.remap_shiftL2fn) return;
+
+    RemapUtil::modifierToModifier(params, ModifierFlag::SHIFT_L, ModifierFlag::FN);
+    RemapUtil::toFN(params);
+  }
+
+  void
+  remap_shiftL2optionL(const RemapParams &params)
+  {
+    if (! config.remap_shiftL2optionL) return;
+
+    RemapUtil::modifierToModifier(params, ModifierFlag::SHIFT_L, ModifierFlag::OPTION_L);
+  }
+
+  void
+  remap_shiftL2escape(const RemapParams &params)
+  {
+    if (! config.remap_shiftL2escape) return;
+
+    RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_L, KeyCode::ESCAPE);
   }
 
   void
@@ -671,14 +712,12 @@ namespace org_pqrs_KeyRemap4MacBook {
         cancel_control = true;
       }
       // Control+1 -> HOME
-      // use ex_origKey for spaces_special
-      if (config.option_emacsmode_ex_control12 && params.ex_origKey == KeyCode::KEY_1) {
+      if (config.option_emacsmode_ex_control12 && *(params.key) == KeyCode::KEY_1) {
         *(params.key) = KeyCode::HOME;
         cancel_control = true;
       }
       // Control+2 -> END
-      // use ex_origKey for spaces_special
-      if (config.option_emacsmode_ex_control12 && params.ex_origKey == KeyCode::KEY_2) {
+      if (config.option_emacsmode_ex_control12 && *(params.key) == KeyCode::KEY_2) {
         *(params.key) = KeyCode::END;
         cancel_control = true;
       }
@@ -740,7 +779,8 @@ namespace org_pqrs_KeyRemap4MacBook {
           *(params.key) == KeyCode::F9 ||
           *(params.key) == KeyCode::F10 ||
           *(params.key) == KeyCode::F11 ||
-          *(params.key) == KeyCode::F12) {
+          *(params.key) == KeyCode::F12 ||
+          *(params.key) == KeyCode::EXPOSE_ALL) {
         *(params.ex_dropKey) = true;
       }
     }
@@ -753,31 +793,57 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (allFlagStatus.makeFlags(params) != ModifierFlag::COMMAND_R) return;
 
-    if (*(params.key) == KeyCode::A) {
-      *(params.key) = KeyCode::KEY_1;
-    } else if (*(params.key) == KeyCode::S) {
-      *(params.key) = KeyCode::KEY_2;
-    } else if (*(params.key) == KeyCode::D) {
-      *(params.key) = KeyCode::KEY_3;
-    } else if (*(params.key) == KeyCode::F) {
-      *(params.key) = KeyCode::KEY_4;
-    } else if (*(params.key) == KeyCode::G) {
-      *(params.key) = KeyCode::KEY_5;
-    } else if (*(params.key) == KeyCode::H) {
-      *(params.key) = KeyCode::KEY_6;
-    } else if (*(params.key) == KeyCode::J) {
-      *(params.key) = KeyCode::KEY_7;
-    } else if (*(params.key) == KeyCode::K) {
-      *(params.key) = KeyCode::KEY_8;
-    } else if (*(params.key) == KeyCode::L) {
-      *(params.key) = KeyCode::KEY_9;
-    } else {
-      return;
+    if (RemapUtil::al2number(params)) {
+      allFlagStatus.controlL.temporary_increase();
+      allFlagStatus.optionL.temporary_increase();
+      allFlagStatus.shiftL.temporary_increase();
     }
+  }
 
-    allFlagStatus.controlL.temporary_increase();
-    allFlagStatus.optionL.temporary_increase();
-    allFlagStatus.shiftL.temporary_increase();
+  void
+  remap_spaces_special_fn(const RemapParams &params)
+  {
+    if (! config.remap_spaces_special_fn) return;
+
+    if (allFlagStatus.makeFlags(params) != ModifierFlag::FN &&
+        allFlagStatus.makeFlags(params) != (ModifierFlag::FN | ModifierFlag::KEYPAD)) return;
+
+    RemapUtil::keyToKey(params, KeyCode::KEYPAD_CLEAR, KeyCode::KEY_6);
+    RemapUtil::keyToKey(params, KeyCode::KEYPAD_7, KeyCode::KEY_7);
+    RemapUtil::keyToKey(params, KeyCode::KEYPAD_8, KeyCode::KEY_8);
+    RemapUtil::keyToKey(params, KeyCode::KEYPAD_9, KeyCode::KEY_9);
+
+    if (*(params.key) == KeyCode::KEY_1 ||
+        *(params.key) == KeyCode::KEY_2 ||
+        *(params.key) == KeyCode::KEY_3 ||
+        *(params.key) == KeyCode::KEY_4 ||
+        *(params.key) == KeyCode::KEY_5 ||
+        *(params.key) == KeyCode::KEY_6 ||
+        *(params.key) == KeyCode::KEY_7 ||
+        *(params.key) == KeyCode::KEY_8 ||
+        *(params.key) == KeyCode::KEY_9) {
+      allFlagStatus.commandL.temporary_increase();
+      allFlagStatus.controlL.temporary_increase();
+      allFlagStatus.optionL.temporary_increase();
+      allFlagStatus.shiftL.temporary_increase();
+      allFlagStatus.fn.temporary_decrease();
+      allFlagStatus.keypad = false;
+    }
+  }
+
+  void
+  remap_spaces_special_keypad(const RemapParams &params)
+  {
+    if (! config.remap_spaces_special_keypad) return;
+
+    if (RemapUtil::keypad2spaces(params)) {
+      allFlagStatus.commandL.temporary_increase();
+      allFlagStatus.controlL.temporary_increase();
+      allFlagStatus.optionL.temporary_increase();
+      allFlagStatus.shiftL.temporary_increase();
+      allFlagStatus.fn.temporary_decrease();
+      allFlagStatus.keypad = false;
+    }
   }
 
   void
@@ -802,16 +868,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           ! allFlagStatus.shiftR.isHeldDown()) return;
     }
 
-    // 789      123
-    // 456  to  456
-    // 123      789
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_1, KeyCode::KEYPAD_7);
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_2, KeyCode::KEYPAD_8);
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_3, KeyCode::KEYPAD_9);
-
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_7, KeyCode::KEYPAD_1);
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_8, KeyCode::KEYPAD_2);
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_9, KeyCode::KEYPAD_3);
+    RemapUtil::keypad2spaces(params);
   }
 
   // ----------------------------------------
@@ -1140,6 +1197,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_enter2optionL(params);
   remap_enter2commandLcontrolL(params);
   remap_enter2commandLshiftL(params);
+  remap_enter2controlLoptionL(params);
   remap_enter2semicolon(params);
   remap_enter2space(params);
 
@@ -1171,7 +1229,11 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   remap_semicolon2return(params);
 
+  remap_shiftL2commandL(params);
   remap_shiftL2controlL(params);
+  remap_shiftL2fn(params);
+  remap_shiftL2optionL(params);
+  remap_shiftL2escape(params);
   remap_shiftL2space(params);
 
   remap_shiftR2commandL(params);
@@ -1187,10 +1249,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_shiftDelete2tilde(params);
   remap_hhkmode(params);
   remap_keypadnumlock(params);
-
-  // ----------------------------------------
-  remap_spaces_special(params);
-  remap_keypad2spaces(params);
 
   // ----------------------------------------
   remap_qwerty2colemak(params);
@@ -1236,8 +1294,16 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   // ------------------------------------------------------------
   // *** Note: we need to call remap_emacsmode as possible late. ***
-  // *** If qwerty2colemak is enable, Control+H... works with Colemak Keyboard Layout. ***
+  // *** If qwerty2colemak is enabled, Control+H... works with Colemak Keyboard Layout. ***
   remap_emacsmode(params);
+
+  // ----------------------------------------
+  // *** Note: we need to call remap_spaces_* after emacsmode. ***
+  // *** If spaces_special is enabled, emacsmode_ex_control12 make wrong remappings, . ***
+  remap_spaces_special(params);
+  remap_spaces_special_fn(params);
+  remap_spaces_special_keypad(params);
+  remap_keypad2spaces(params);
 
   // ------------------------------------------------------------
   // *** Note: we need to call remap_space2shift, remap_enter2optionL_commandSpace (has SandS like behavior) as possible late. ***
