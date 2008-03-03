@@ -232,6 +232,51 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // --------------------
+  bool
+  RemapUtil::al2number(const RemapParams &params) {
+    unsigned int origKey = *(params.key);
+    keyToKey(params, KeyCode::A, KeyCode::KEY_1);
+    keyToKey(params, KeyCode::S, KeyCode::KEY_2);
+    keyToKey(params, KeyCode::D, KeyCode::KEY_3);
+    keyToKey(params, KeyCode::F, KeyCode::KEY_4);
+    keyToKey(params, KeyCode::G, KeyCode::KEY_5);
+    keyToKey(params, KeyCode::H, KeyCode::KEY_6);
+    keyToKey(params, KeyCode::J, KeyCode::KEY_7);
+    keyToKey(params, KeyCode::K, KeyCode::KEY_8);
+    keyToKey(params, KeyCode::L, KeyCode::KEY_9);
+
+    return *(params.key) != origKey;
+  }
+
+  bool
+  RemapUtil::keypad2spaces(const RemapParams &params) {
+    // 789      123
+    // 456  to  456
+    // 123      789
+    RemapUtil::keyToKey(params, KeyCode::KEYPAD_1, KeyCode::KEYPAD_7);
+    RemapUtil::keyToKey(params, KeyCode::KEYPAD_2, KeyCode::KEYPAD_8);
+    RemapUtil::keyToKey(params, KeyCode::KEYPAD_3, KeyCode::KEYPAD_9);
+
+    RemapUtil::keyToKey(params, KeyCode::KEYPAD_7, KeyCode::KEYPAD_1);
+    RemapUtil::keyToKey(params, KeyCode::KEYPAD_8, KeyCode::KEYPAD_2);
+    RemapUtil::keyToKey(params, KeyCode::KEYPAD_9, KeyCode::KEYPAD_3);
+
+    if (*(params.key) == KeyCode::KEYPAD_1 ||
+        *(params.key) == KeyCode::KEYPAD_2 ||
+        *(params.key) == KeyCode::KEYPAD_3 ||
+        *(params.key) == KeyCode::KEYPAD_4 ||
+        *(params.key) == KeyCode::KEYPAD_5 ||
+        *(params.key) == KeyCode::KEYPAD_6 ||
+        *(params.key) == KeyCode::KEYPAD_7 ||
+        *(params.key) == KeyCode::KEYPAD_8 ||
+        *(params.key) == KeyCode::KEYPAD_9) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  // --------------------
   void
   RemapUtil::jis_toggle_eisuu_kana(const RemapParams &params, KeyCode::KeyCode fromKeyCode) {
     if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) return;

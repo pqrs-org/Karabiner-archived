@@ -21,6 +21,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     void keyToModifier(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag1, ModifierFlag::ModifierFlag toFlag2);
     void keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode);
 
+    // A..L to 1..9
+    bool al2number(const RemapParams &params);
+    bool keypad2spaces(const RemapParams &params);
+
     void jis_toggle_eisuu_kana(const RemapParams &params, KeyCode::KeyCode fromKeyCode);
     void jis_toggle_eisuu_kana(const RemapParams &params, ModifierFlag::ModifierFlag fromModifier);
   }

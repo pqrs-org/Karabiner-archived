@@ -107,6 +107,10 @@
           <sysctl>keyremap4macbook.remap.enter2commandLshiftL</sysctl>
         </item>
         <item>
+          <name>Enter to Control_L+Option_R</name>
+          <sysctl>keyremap4macbook.remap.enter2controlLoptionL</sysctl>
+        </item>
+        <item>
           <name>Enter to Space</name>
           <sysctl>keyremap4macbook.remap.enter2space</sysctl>
         </item>
@@ -235,8 +239,24 @@
       <name>Remap Shift_L Key</name>
       <list>
         <item>
+          <name>Shift_L to Command_L</name>
+          <sysctl>keyremap4macbook.remap.shiftL2commandL</sysctl>
+        </item>
+        <item>
           <name>Shift_L to Control_L</name>
           <sysctl>keyremap4macbook.remap.shiftL2controlL</sysctl>
+        </item>
+        <item>
+          <name>Shift_L to FN</name>
+          <sysctl>keyremap4macbook.remap.shiftL2fn</sysctl>
+        </item>
+        <item>
+          <name>Shift_L to Option_L</name>
+          <sysctl>keyremap4macbook.remap.shiftL2optionL</sysctl>
+        </item>
+        <item>
+          <name>Shift_L to Escape</name>
+          <sysctl>keyremap4macbook.remap.shiftL2escape</sysctl>
         </item>
         <item>
           <name>Shift_L to Space</name>
@@ -393,28 +413,41 @@
           <sysctl>keyremap4macbook.remap.drop_funcshift</sysctl>
         </item>
         <item>
-          <name>Use Command_R+[A...L] for Spaces (Command+Control+Option+Shift+[1...9])</name>
-          <sysctl>keyremap4macbook.remap.spaces_special</sysctl>
-        </item>
-        <item>
-          <name>Remap KeyPad numbers for Spaces(3x3)</name>
-          <sysctl>keyremap4macbook.remap.keypad2spaces</sysctl>
+          <name>Remapping for Spaces</name>
           <list>
             <item>
-              <name>Check if your Spaces setting is Control+[1...9]</name>
-              <sysctl>keyremap4macbook.option.keypad2spaces_modifier_control</sysctl>
+              <name>Use Command_R+[A...L] for Spaces (Command+Control+Option+Shift+[1...9])</name>
+              <sysctl>keyremap4macbook.remap.spaces_special</sysctl>
             </item>
             <item>
-              <name>Check if your Spaces setting is Command+[1...9]</name>
-              <sysctl>keyremap4macbook.option.keypad2spaces_modifier_command</sysctl>
+              <name>Use FN+[1...9] for Spaces (Command+Control+Option+Shift+[1...9])</name>
+              <sysctl>keyremap4macbook.remap.spaces_special_fn</sysctl>
             </item>
             <item>
-              <name>Check if your Spaces setting is Option+[1...9]</name>
-              <sysctl>keyremap4macbook.option.keypad2spaces_modifier_option</sysctl>
+              <name>Use KeyPad number for Spaces (Command+Control+Option+Shift+[1...9])</name>
+              <sysctl>keyremap4macbook.remap.spaces_special_keypad</sysctl>
             </item>
             <item>
-              <name>Check if your Spaces setting is Shift+[1...9]</name>
-              <sysctl>keyremap4macbook.option.keypad2spaces_modifier_shift</sysctl>
+              <name>Remap KeyPad numbers for Spaces(3x3)</name>
+              <sysctl>keyremap4macbook.remap.keypad2spaces</sysctl>
+              <list>
+                <item>
+                  <name>Check if your Spaces setting is Control+[1...9]</name>
+                  <sysctl>keyremap4macbook.option.keypad2spaces_modifier_control</sysctl>
+                </item>
+                <item>
+                  <name>Check if your Spaces setting is Command+[1...9]</name>
+                  <sysctl>keyremap4macbook.option.keypad2spaces_modifier_command</sysctl>
+                </item>
+                <item>
+                  <name>Check if your Spaces setting is Option+[1...9]</name>
+                  <sysctl>keyremap4macbook.option.keypad2spaces_modifier_option</sysctl>
+                </item>
+                <item>
+                  <name>Check if your Spaces setting is Shift+[1...9]</name>
+                  <sysctl>keyremap4macbook.option.keypad2spaces_modifier_shift</sysctl>
+                </item>
+              </list>
             </item>
           </list>
         </item>
