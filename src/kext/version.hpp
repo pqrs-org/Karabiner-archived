@@ -1,1 +1,1 @@
-char * const config_version = "3.2.4";
+char * const config_version = "3.2.5";
