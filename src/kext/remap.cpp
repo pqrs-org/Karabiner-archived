@@ -23,6 +23,17 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::keyToKey(params, KeyCode::BACKQUOTE, KeyCode::ESCAPE);
   }
 
+  void
+  remap_backquote2escape_shift2tilde(const RemapParams &params)
+  {
+    if (! config.remap_backquote2escape_shift2tilde) return;
+
+    unsigned int flags = allFlagStatus.makeFlags(params);
+    if (flags != ModifierFlag::SHIFT_L && flags != ModifierFlag::SHIFT_R) {
+      RemapUtil::keyToKey(params, KeyCode::BACKQUOTE, KeyCode::ESCAPE);
+    }
+  }
+
   // ----------------------------------------
   void
   remap_clear2tab(const RemapParams &params)
@@ -1180,6 +1191,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   // normal remapping
   remap_backquote2commandL(params);
   remap_backquote2escape(params);
+  remap_backquote2escape_shift2tilde(params);
 
   remap_clear2tab(params);
 

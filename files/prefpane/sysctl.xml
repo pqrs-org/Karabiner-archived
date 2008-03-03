@@ -12,6 +12,10 @@
           <name>Backquote(`) to Escape</name>
           <sysctl>keyremap4macbook.remap.backquote2escape</sysctl>
         </item>
+        <item>
+          <name>Backquote(`) to Escape (+ Shift+Backquote to Tilde)</name>
+          <sysctl>keyremap4macbook.remap.backquote2escape_shift2tilde</sysctl>
+        </item>
       </list>
     </item>
 
@@ -71,6 +75,16 @@
         <item>
           <name>Control_L to Command_L</name>
           <sysctl>keyremap4macbook.remap.controlL2commandL</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
+      <name>Remap Delete Key</name>
+      <list>
+        <item>
+          <name>Shift+Delete to Tilde(~)</name>
+          <sysctl>keyremap4macbook.remap.shiftDelete2tilde</sysctl>
         </item>
       </list>
     </item>
@@ -330,10 +344,6 @@
     <item>
       <name>Misc Remapping</name>
       <list>
-        <item>
-          <name>Shift+Delete to Tilde(~)</name>
-          <sysctl>keyremap4macbook.remap.shiftDelete2tilde</sysctl>
-        </item>
         <item>
           <name>Enable HHK compatible Arrow Key Mode</name>
           <sysctl>keyremap4macbook.remap.hhkmode</sysctl>
