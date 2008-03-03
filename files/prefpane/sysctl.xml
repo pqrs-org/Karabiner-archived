@@ -2,6 +2,20 @@
 <root>
   <list>
     <item>
+      <name>General</name>
+      <list>
+        <item>
+          <name>Don't Remap the Internal Keyboard</name>
+          <sysctl>keyremap4macbook.general.dont_remap_internal</sysctl>
+        </item>
+        <item>
+          <name>Don't Remap the External Keyboard</name>
+          <sysctl>keyremap4macbook.general.dont_remap_external</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>Remap Backquote(`) Key</name>
       <list>
         <item>

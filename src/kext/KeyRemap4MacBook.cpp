@@ -245,7 +245,19 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardEventCallBack(OSObject *target,
         &origCharCode, &origCharSet, &keyboardType, &ts,
         &ex_dropKey, key,
       };
-      org_pqrs_KeyRemap4MacBook::remap_core(params);
+
+      bool skip = false;
+      if (org_pqrs_KeyRemap4MacBook::config.general_dont_remap_internal &&
+          org_pqrs_KeyRemap4MacBook::RemapUtil::isInternalKeyboard(keyboardType)) {
+        skip = true;
+      }
+      if (org_pqrs_KeyRemap4MacBook::config.general_dont_remap_external &&
+          ! org_pqrs_KeyRemap4MacBook::RemapUtil::isInternalKeyboard(keyboardType)) {
+        skip = true;
+      }
+      if (! skip) {
+        org_pqrs_KeyRemap4MacBook::remap_core(params);
+      }
 
       // ignore KeyEvent if ex_dropKey is set in "remap_*".
       if (ex_dropKey) return;

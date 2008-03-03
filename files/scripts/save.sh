@@ -23,7 +23,7 @@ done
 
 EOF
 
-for key in `sysctl keyremap4macbook 2>&1 | grep -oE '^keyremap4macbook.(remap|option|repeat).[^:]+'`; do
+for key in `sysctl keyremap4macbook 2>&1 | grep -oE '^keyremap4macbook.(general|remap|option|repeat).[^:]+'`; do
     value=`sysctl -n $key`
     if [ "$value" != "0" ]; then
         echo "sysctl -w $key=$value" >> "$tmpfile"
