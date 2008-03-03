@@ -144,6 +144,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     return KeyCode::ENTER;
   }
 
+  bool
+  RemapUtil::isInternalKeyboard(unsigned int keyboardType) {
+    if (keyboardType == KeyboardType::MACBOOK) return true;
+    if (keyboardType == KeyboardType::POWERBOOK) return true;
+    if (keyboardType == KeyboardType::POWERBOOK_G4) return true;
+    return false;
+  }
+
   void
   RemapUtil::modifierToModifier(const RemapParams &params, ModifierFlag::ModifierFlag fromFlag, ModifierFlag::ModifierFlag toFlag)
   {
