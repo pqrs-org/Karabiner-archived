@@ -836,6 +836,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_spaces_special_keypad) return;
 
+    if (allFlagStatus.makeFlags(params) != ModifierFlag::KEYPAD &&
+        allFlagStatus.makeFlags(params) != (ModifierFlag::FN | ModifierFlag::KEYPAD)) return;
+
     if (RemapUtil::keypad2spaces(params)) {
       allFlagStatus.commandL.temporary_increase();
       allFlagStatus.controlL.temporary_increase();
