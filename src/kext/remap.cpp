@@ -36,6 +36,15 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
+  remap_backslash2delete(const RemapParams &params)
+  {
+    if (! config.remap_backslash2delete) return;
+
+    RemapUtil::keyToKey(params, KeyCode::BACKSLASH, KeyCode::DELETE);
+  }
+
+  // ----------------------------------------
+  void
   remap_clear2tab(const RemapParams &params)
   {
     if (! config.remap_clear2tab) return;
@@ -108,6 +117,25 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_controlL2commandL) return;
 
     RemapUtil::modifierToModifier(params, ModifierFlag::CONTROL_L, ModifierFlag::COMMAND_L);
+  }
+
+  // ----------------------------------------
+  void
+  remap_delete2backslash(const RemapParams &params)
+  {
+    if (! config.remap_delete2backslash) return;
+
+    RemapUtil::keyToKey(params, KeyCode::DELETE, KeyCode::BACKSLASH);
+  }
+
+  void
+  remap_shiftDelete2tilde(const RemapParams &params)
+  {
+    if (! config.remap_shiftDelete2tilde) return;
+
+    if (allFlagStatus.shiftL.isHeldDown() || allFlagStatus.shiftR.isHeldDown()) {
+      RemapUtil::keyToKey(params, KeyCode::DELETE, KeyCode::BACKQUOTE);
+    }
   }
 
   // ----------------------------------------
@@ -511,16 +539,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
-  void
-  remap_shiftDelete2tilde(const RemapParams &params)
-  {
-    if (! config.remap_shiftDelete2tilde) return;
-
-    if (allFlagStatus.shiftL.isHeldDown() || allFlagStatus.shiftR.isHeldDown()) {
-      RemapUtil::keyToKey(params, KeyCode::DELETE, KeyCode::BACKQUOTE);
-    }
-  }
-
   void
   remap_hhkmode(const RemapParams &params)
   {
@@ -1193,6 +1211,8 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_backquote2escape(params);
   remap_backquote2escape_shift2tilde(params);
 
+  remap_backslash2delete(params);
+
   remap_clear2tab(params);
 
   remap_controlL2commandL(params);
@@ -1205,6 +1225,9 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_commandR2controlL(params);
   remap_commandR2optionL(params);
   remap_commandR2shiftL(params);
+
+  remap_delete2backslash(params);
+  remap_shiftDelete2tilde(params);
 
   remap_enter2commandL(params);
   remap_enter2controlL(params);
@@ -1261,7 +1284,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_tab2exposeALL(params);
 
   // ----------------------------------------
-  remap_shiftDelete2tilde(params);
   remap_hhkmode(params);
   remap_keypadnumlock(params);
 
