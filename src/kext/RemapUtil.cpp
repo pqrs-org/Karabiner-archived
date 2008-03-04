@@ -156,6 +156,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   RemapUtil::isInternalKeyboard(unsigned int keyboardType) {
     if (keyboardType == KeyboardType::MACBOOK) return true;
+    if (keyboardType == KeyboardType::MACBOOK_COREDUO) return true;
     if (keyboardType == KeyboardType::POWERBOOK) return true;
     if (keyboardType == KeyboardType::POWERBOOK_G4) return true;
     return false;
