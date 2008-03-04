@@ -95,6 +95,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       KEY_4 = 21,
       KEY_6 = 22,
       KEY_5 = 23,
+      EQUAL = 24,
       KEY_9 = 25,
       KEY_7 = 26,
       MINUS = 27,

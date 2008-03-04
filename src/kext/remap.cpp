@@ -589,6 +589,44 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (params.ex_origKey == KeyCode::COMMA) {
       *(params.key) = KeyCode::END;
     }
+
+    // 1..90-= => F1..F12
+    if (params.ex_origKey == KeyCode::KEY_1) {
+      *(params.key) = KeyCode::F1;
+    }
+    if (params.ex_origKey == KeyCode::KEY_2) {
+      *(params.key) = KeyCode::F2;
+    }
+    if (params.ex_origKey == KeyCode::KEY_3) {
+      *(params.key) = KeyCode::F3;
+    }
+    if (params.ex_origKey == KeyCode::KEY_4) {
+      *(params.key) = KeyCode::F4;
+    }
+    if (params.ex_origKey == KeyCode::KEY_5) {
+      *(params.key) = KeyCode::F5;
+    }
+    if (params.ex_origKey == KeyCode::KEY_6 || params.ex_origKey == KeyCode::KEYPAD_CLEAR) {
+      *(params.key) = KeyCode::F6;
+    }
+    if (params.ex_origKey == KeyCode::KEY_7 || params.ex_origKey == KeyCode::KEYPAD_7) {
+      *(params.key) = KeyCode::F7;
+    }
+    if (params.ex_origKey == KeyCode::KEY_8 || params.ex_origKey == KeyCode::KEYPAD_8) {
+      *(params.key) = KeyCode::F8;
+    }
+    if (params.ex_origKey == KeyCode::KEY_9 || params.ex_origKey == KeyCode::KEYPAD_9) {
+      *(params.key) = KeyCode::F9;
+    }
+    if (params.ex_origKey == KeyCode::KEY_0 || params.ex_origKey == KeyCode::KEYPAD_SLASH) {
+      *(params.key) = KeyCode::F10;
+    }
+    if (params.ex_origKey == KeyCode::MINUS || params.ex_origKey == KeyCode::KEYPAD_EQUAL) {
+      *(params.key) = KeyCode::F11;
+    }
+    if (params.ex_origKey == KeyCode::EQUAL) {
+      *(params.key) = KeyCode::F12;
+    }
   }
 
   void
@@ -1285,16 +1323,17 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_tab2exposeALL(params);
 
   // ----------------------------------------
-  remap_hhkmode(params);
-  remap_keypadnumlock(params);
-
-  // ----------------------------------------
   remap_qwerty2colemak(params);
 
   // ----------------------------------------
   remap_pc_application2exposeALL(params);
   remap_pc_application2f9(params);
   remap_pc_application2f11(params);
+
+  remap_keypadnumlock(params);
+
+  // ----------------------------------------
+  remap_hhkmode(params);
 
   // ------------------------------------------------------------
   // jis
