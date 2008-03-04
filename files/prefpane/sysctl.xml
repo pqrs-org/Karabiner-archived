@@ -34,6 +34,16 @@
     </item>
 
     <item>
+      <name>Remap Backslash(\) Key</name>
+      <list>
+        <item>
+          <name>Backslash(\) to Delete</name>
+          <sysctl>keyremap4macbook.remap.backslash2delete</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>Remap Clear Key (in KeyPad)</name>
       <list>
         <item>
@@ -96,6 +106,10 @@
     <item>
       <name>Remap Delete Key</name>
       <list>
+        <item>
+          <name>Delete to Backslash(\)</name>
+          <sysctl>keyremap4macbook.remap.delete2backslash</sysctl>
+        </item>
         <item>
           <name>Shift+Delete to Tilde(~)</name>
           <sysctl>keyremap4macbook.remap.shiftDelete2tilde</sysctl>
