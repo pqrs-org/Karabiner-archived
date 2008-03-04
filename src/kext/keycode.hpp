@@ -179,8 +179,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace KeyboardType {
     enum KeyboardType {
       MACBOOK = 37,
+      MACBOOK_COREDUO = 38,
       POWERBOOK_G4 = 202,
       POWERBOOK = 207,
+
+      APPLE_USB_KEYBOARD = 36,
+      PC_USB_KEYBOARD = 42,
+      Logitech_DI_NOVO_KEYBOARD = 41,
     };
   }
 }
