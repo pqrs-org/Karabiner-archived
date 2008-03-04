@@ -134,6 +134,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     allFlagStatus.cursor = false;
   }
 
+  void
+  RemapUtil::toDelete(const RemapParams &params) {
+    if (! allFlagStatus.fn.isHeldDown()) return;
+
+    if (*(params.key) == KeyCode::DELETE) {
+      *(params.key) = KeyCode::FORWARD_DELETE;
+    }
+  }
+
   KeyCode::KeyCode
   RemapUtil::getEnterKeyCode(const RemapParams &params)
   {
