@@ -370,16 +370,6 @@
     </item>
 
     <item>
-      <name>Misc Remapping</name>
-      <list>
-        <item>
-          <name>Enable HHK compatible Arrow Key Mode</name>
-          <sysctl>keyremap4macbook.remap.hhkmode</sysctl>
-        </item>
-      </list>
-    </item>
-
-    <item>
       <name>Emacs Mode</name>
       <list>
         <item>
@@ -529,6 +519,16 @@
         <item>
           <name>Use PC Style Home/End (behave like Command+Left/Right)</name>
           <sysctl>keyremap4macbook.remap.pclikehomeend</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
+      <name>for HHK (Happy Hacking Keyboard) Users</name>
+      <list>
+        <item>
+          <name>Enable HHK compatible Arrow Key Mode</name>
+          <sysctl>keyremap4macbook.remap.hhkmode</sysctl>
         </item>
       </list>
     </item>
