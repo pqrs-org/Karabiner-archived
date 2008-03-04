@@ -41,6 +41,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_backslash2delete) return;
 
     RemapUtil::keyToKey(params, KeyCode::BACKSLASH, KeyCode::DELETE);
+    RemapUtil::toDelete(params);
   }
 
   // ----------------------------------------

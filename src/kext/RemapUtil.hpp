@@ -12,6 +12,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     ModifierFlag::ModifierFlag getKeyCodeModifier(unsigned int keycode);
     void fnToNormal(const RemapParams &params);
     void toFN(const RemapParams &params);
+    void toDelete(const RemapParams &params);
 
     KeyCode::KeyCode getEnterKeyCode(const RemapParams &params);
     bool isInternalKeyboard(unsigned int keyboardType);
