@@ -120,6 +120,31 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::modifierToModifier(params, ModifierFlag::CONTROL_L, ModifierFlag::COMMAND_L);
   }
 
+  void
+  remap_controlL2fn(const RemapParams &params)
+  {
+    if (! config.remap_controlL2fn) return;
+
+    RemapUtil::modifierToModifier(params, ModifierFlag::CONTROL_L, ModifierFlag::FN);
+    RemapUtil::toFN(params);
+  }
+
+  void
+  remap_controlL2optionL(const RemapParams &params)
+  {
+    if (! config.remap_controlL2optionL) return;
+
+    RemapUtil::modifierToModifier(params, ModifierFlag::CONTROL_L, ModifierFlag::OPTION_L);
+  }
+
+  void
+  remap_controlL2shiftL(const RemapParams &params)
+  {
+    if (! config.remap_controlL2shiftL) return;
+
+    RemapUtil::modifierToModifier(params, ModifierFlag::CONTROL_L, ModifierFlag::SHIFT_L);
+  }
+
   // ----------------------------------------
   void
   remap_delete2backslash(const RemapParams &params)
@@ -1262,6 +1287,9 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_clear2tab(params);
 
   remap_controlL2commandL(params);
+  remap_controlL2fn(params);
+  remap_controlL2optionL(params);
+  remap_controlL2shiftL(params);
 
   remap_commandL2controlL(params);
   remap_commandL2optionL(params);
