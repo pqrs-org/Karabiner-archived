@@ -100,6 +100,18 @@
           <name>Control_L to Command_L</name>
           <sysctl>keyremap4macbook.remap.controlL2commandL</sysctl>
         </item>
+        <item>
+          <name>Control_L to FN</name>
+          <sysctl>keyremap4macbook.remap.controlL2fn</sysctl>
+        </item>
+        <item>
+          <name>Control_L to Option_L</name>
+          <sysctl>keyremap4macbook.remap.controlL2optionL</sysctl>
+        </item>
+        <item>
+          <name>Control_L to Shift_L</name>
+          <sysctl>keyremap4macbook.remap.controlL2shiftL</sysctl>
+        </item>
       </list>
     </item>
 
