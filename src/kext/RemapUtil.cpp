@@ -524,6 +524,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  FireFunc::firefunc_escape(const RemapParams &params) {
+    unsigned int flags = allFlagStatus.makeFlags(params);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, flags, KeyCode::ESCAPE, CharCode::ESCAPE);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, flags, KeyCode::ESCAPE, CharCode::ESCAPE);
+  }
+
+  void
   FireFunc::firefunc_space(const RemapParams &params) {
     unsigned int flags = allFlagStatus.makeFlags(params);
     listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, flags, KeyCode::SPACE, CharCode::SPACE);

@@ -261,6 +261,10 @@
           <sysctl>keyremap4macbook.remap.return2optionL</sysctl>
         </item>
         <item>
+          <name>Return to Option_L (+ When you type Space only, fire Escape).</name>
+          <sysctl>keyremap4macbook.remap.return2optionL_escape</sysctl>
+        </item>
+        <item>
           <name>Return to Semicolon</name>
           <sysctl>keyremap4macbook.remap.return2semicolon</sysctl>
         </item>
