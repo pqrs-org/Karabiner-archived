@@ -165,6 +165,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       TAB = 9,
       RETURN = 13,
       DELETE = 127,
+      ESCAPE = 27,
       SPACE = 32,
       CURSOR_LEFT = 172,
       CURSOR_UP = 173,

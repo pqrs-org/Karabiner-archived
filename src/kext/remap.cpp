@@ -379,6 +379,15 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_return2optionL_escape(const RemapParams &params)
+  {
+    if (! config.remap_return2optionL_escape) return;
+
+    static KeyOverlayedModifier kom;
+    kom.remap(params, KeyCode::RETURN, ModifierFlag::OPTION_L, FireFunc::firefunc_escape);
+  }
+
+  void
   remap_return2semicolon(const RemapParams &params)
   {
     if (! config.remap_return2semicolon) return;
@@ -1297,6 +1306,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_optionR2space(params);
 
   remap_return2optionL(params);
+  remap_return2optionL_escape(params);
   remap_return2semicolon(params);
 
   remap_space2controlL(params);
