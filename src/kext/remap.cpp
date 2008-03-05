@@ -695,8 +695,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   remap_emacsmode(const RemapParams &params)
   {
-    if (! config.remap_emacsmode) return;
-
     if (allFlagStatus.controlL.isHeldDown()) {
       bool cancel_control = false;
 
