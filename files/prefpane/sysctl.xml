@@ -123,6 +123,10 @@
           <sysctl>keyremap4macbook.remap.delete2backslash</sysctl>
         </item>
         <item>
+          <name>Delete to F13 (+ Shift+Delete to Tilde(~))</name>
+          <sysctl>keyremap4macbook.remap.delete2f13_shift2tilde</sysctl>
+        </item>
+        <item>
           <name>Shift+Delete to Tilde(~)</name>
           <sysctl>keyremap4macbook.remap.shiftDelete2tilde</sysctl>
         </item>
