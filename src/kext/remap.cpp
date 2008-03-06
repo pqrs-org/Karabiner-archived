@@ -333,6 +333,22 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
+  remap_f1_to_f14(const RemapParams &params)
+  {
+    if (! config.remap_f1_to_f14) return;
+
+    RemapUtil::keyToKey(params, KeyCode::F1, KeyCode::F14);
+  }
+
+  void
+  remap_f2_to_f15(const RemapParams &params)
+  {
+    if (! config.remap_f2_to_f15) return;
+
+    RemapUtil::keyToKey(params, KeyCode::F2, KeyCode::F15);
+  }
+
+  void
   remap_f16_to_tab(const RemapParams &params)
   {
     if (! config.remap_f16_to_tab) return;
@@ -1335,6 +1351,8 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_fn2optionL(params);
   remap_fn2shiftL(params);
 
+  remap_f1_to_f14(params);
+  remap_f2_to_f15(params);
   remap_f16_to_tab(params);
 
   remap_optionL2commandL(params);

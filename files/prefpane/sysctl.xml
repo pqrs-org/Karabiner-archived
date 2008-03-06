@@ -216,8 +216,16 @@
     </item>
 
     <item>
-      <name>Remap F16 Key</name>
+      <name>Remap F1..F16 Key</name>
       <list>
+        <item>
+          <name>F1 to F14 (= Brightness Down)</name>
+          <sysctl>keyremap4macbook.remap.f1_to_f14</sysctl>
+        </item>
+        <item>
+          <name>F2 to F15 (= Brightness Up)</name>
+          <sysctl>keyremap4macbook.remap.f2_to_f15</sysctl>
+        </item>
         <item>
           <name>F16 to Tab</name>
           <sysctl>keyremap4macbook.remap.f16_to_tab</sysctl>
