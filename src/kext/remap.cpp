@@ -155,6 +155,19 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_delete2f13_shift2tilde(const RemapParams &params)
+  {
+    if (! config.remap_delete2f13_shift2tilde) return;
+
+    unsigned int flags = allFlagStatus.makeFlags(params);
+    if (flags != ModifierFlag::SHIFT_L && flags != ModifierFlag::SHIFT_R) {
+      RemapUtil::keyToKey(params, KeyCode::DELETE, KeyCode::F13);
+    } else {
+      RemapUtil::keyToKey(params, KeyCode::DELETE, KeyCode::BACKQUOTE);
+    }
+  }
+
+  void
   remap_shiftDelete2tilde(const RemapParams &params)
   {
     if (! config.remap_shiftDelete2tilde) return;
@@ -1301,6 +1314,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_commandR2shiftL(params);
 
   remap_delete2backslash(params);
+  remap_delete2f13_shift2tilde(params);
   remap_shiftDelete2tilde(params);
 
   remap_enter2commandL(params);
