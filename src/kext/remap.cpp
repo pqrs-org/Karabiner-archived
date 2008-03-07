@@ -314,21 +314,16 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_fn2controlL_commandR2fn) return;
 
-    static ModifierCanceling mc_control;
-
     if (RemapUtil::isModifierOn(params, ModifierFlag::FN)) {
       if (allFlagStatus.commandR.isHeldDown()) {
         allFlagStatus.commandR.temporary_decrease();
-        mc_control.keyRelease(params, ModifierFlag::CONTROL_L);
-        return;
-
+        allFlagStatus.controlL.temporary_decrease();
       } else {
         RemapUtil::fnToNormal(params);
-        RemapUtil::modifierToModifier(params, ModifierFlag::FN, ModifierFlag::CONTROL_L);
       }
     }
 
-    mc_control.restore(params, ModifierFlag::CONTROL_L);
+    RemapUtil::modifierToModifier(params, ModifierFlag::FN, ModifierFlag::CONTROL_L);
   }
 
   void
