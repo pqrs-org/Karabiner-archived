@@ -169,12 +169,16 @@
           <sysctl>keyremap4macbook.remap.enter2controlLoptionL</sysctl>
         </item>
         <item>
-          <name>Enter to Space</name>
-          <sysctl>keyremap4macbook.remap.enter2space</sysctl>
+          <name>Enter to Forward Delete</name>
+          <sysctl>keyremap4macbook.remap.enter2forwarddelete</sysctl>
         </item>
         <item>
           <name>Enter to Semicolon</name>
           <sysctl>keyremap4macbook.remap.enter2semicolon</sysctl>
+        </item>
+        <item>
+          <name>Enter to Space</name>
+          <sysctl>keyremap4macbook.remap.enter2space</sysctl>
         </item>
       </list>
     </item>
@@ -267,16 +271,20 @@
           <sysctl>keyremap4macbook.remap.optionR2fn</sysctl>
         </item>
         <item>
-          <name>Option_R to Space</name>
-          <sysctl>keyremap4macbook.remap.optionR2space</sysctl>
+          <name>Option_R to Enter</name>
+          <sysctl>keyremap4macbook.remap.optionR2enter</sysctl>
+        </item>
+        <item>
+          <name>Enter to Forward Delete</name>
+          <sysctl>keyremap4macbook.remap.optionR2forwarddelete</sysctl>
         </item>
         <item>
           <name>Option_R to Semicolon</name>
           <sysctl>keyremap4macbook.remap.optionR2semicolon</sysctl>
         </item>
         <item>
-          <name>Option_R to Enter</name>
-          <sysctl>keyremap4macbook.remap.optionR2enter</sysctl>
+          <name>Option_R to Space</name>
+          <sysctl>keyremap4macbook.remap.optionR2space</sysctl>
         </item>
       </list>
     </item>

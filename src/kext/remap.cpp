@@ -246,6 +246,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_enter2forwarddelete(const RemapParams &params)
+  {
+    if (! config.remap_enter2forwarddelete) return;
+
+    RemapUtil::keyToKey(params, RemapUtil::getEnterKeyCode(params), KeyCode::FORWARD_DELETE);
+  }
+
+  void
   remap_enter2semicolon(const RemapParams &params)
   {
     if (! config.remap_enter2semicolon) return;
@@ -422,6 +430,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_optionR2enter) return;
 
     RemapUtil::modifierToKey(params, ModifierFlag::OPTION_R, RemapUtil::getEnterKeyCode(params));
+  }
+
+  void
+  remap_optionR2forwarddelete(const RemapParams &params)
+  {
+    if (! config.remap_optionR2forwarddelete) return;
+
+    RemapUtil::modifierToKey(params, ModifierFlag::OPTION_R, KeyCode::FORWARD_DELETE);
   }
 
   void
@@ -1378,6 +1394,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_enter2commandLcontrolL(params);
   remap_enter2commandLshiftL(params);
   remap_enter2controlLoptionL(params);
+  remap_enter2forwarddelete(params);
   remap_enter2semicolon(params);
   remap_enter2space(params);
 
@@ -1401,6 +1418,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_optionR2controlL(params);
   remap_optionR2fn(params);
   remap_optionR2enter(params);
+  remap_optionR2forwarddelete(params);
   remap_optionR2semicolon(params);
   remap_optionR2space(params);
 
