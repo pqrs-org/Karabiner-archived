@@ -46,6 +46,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     unsigned int getFlag(void) const { return flag; }
     unsigned int makeFlag(void) const { return (isHeldDown()) ? flag : 0; }
 
+    KeyCode::KeyCode getKeyCode(void) const { return key; }
+
   private:
     const ModifierFlag::ModifierFlag flag;
     const KeyCode::KeyCode key;
@@ -143,23 +145,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   // for emacsmode
   class ModifierCanceling {
   public:
-    ModifierCanceling(ModifierFlag::ModifierFlag _modifierFlag) : modifierFlag(_modifierFlag) {
-      keycode = RemapUtil::getModifierKeyCode(_modifierFlag);
-      flagStatus = allFlagStatus.getFlagStatus(_modifierFlag);
-      isSendKeyRelease = false;
-    }
-    void keyRelease(const RemapParams &params);
-    void restore(const RemapParams &params);
+    void keyRelease(const RemapParams &params, ModifierFlag::ModifierFlag modifierFlag);
+    void restore(const RemapParams &params, ModifierFlag::ModifierFlag modifierFlag);
 
   private:
-    const ModifierFlag::ModifierFlag modifierFlag;
-    KeyCode::KeyCode keycode;
-    FlagStatus *flagStatus;
-
     bool isSendKeyRelease;
   };
-  extern ModifierCanceling modifierCanceling_control;
-  extern ModifierCanceling modifierCanceling_option;
 
   // ----------------------------------------------------------------------
   namespace FireFunc {

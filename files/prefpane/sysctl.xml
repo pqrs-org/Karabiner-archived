@@ -205,6 +205,10 @@
           <sysctl>keyremap4macbook.remap.fn2controlL</sysctl>
         </item>
         <item>
+          <name>FN to Control_L (+ Command_R+FN to FN)</name>
+          <sysctl>keyremap4macbook.remap.fn2controlL_commandR2fn</sysctl>
+        </item>
+        <item>
           <name>FN to Option_L</name>
           <sysctl>keyremap4macbook.remap.fn2optionL</sysctl>
         </item>

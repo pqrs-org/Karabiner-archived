@@ -310,6 +310,28 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_fn2controlL_commandR2fn(const RemapParams &params)
+  {
+    if (! config.remap_fn2controlL_commandR2fn) return;
+
+    static ModifierCanceling mc_control;
+
+    if (RemapUtil::isModifierOn(params, ModifierFlag::FN)) {
+      if (allFlagStatus.commandR.isHeldDown()) {
+        allFlagStatus.commandR.temporary_decrease();
+        mc_control.keyRelease(params, ModifierFlag::CONTROL_L);
+        return;
+
+      } else {
+        RemapUtil::fnToNormal(params);
+        RemapUtil::modifierToModifier(params, ModifierFlag::FN, ModifierFlag::CONTROL_L);
+      }
+    }
+
+    mc_control.restore(params, ModifierFlag::CONTROL_L);
+  }
+
+  void
   remap_fn2optionL(const RemapParams &params)
   {
     if (! config.remap_fn2optionL) return;
@@ -758,6 +780,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   remap_emacsmode(const RemapParams &params)
   {
+    static ModifierCanceling mc_control;
+    static ModifierCanceling mc_option;
+
     if (allFlagStatus.controlL.isHeldDown()) {
       bool cancel_control = false;
 
@@ -852,7 +877,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       if (cancel_control) {
-        modifierCanceling_control.keyRelease(params);
+        mc_control.keyRelease(params, ModifierFlag::CONTROL_L);
         return;
       }
     }
@@ -881,13 +906,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       if (cancel_option) {
-        modifierCanceling_option.keyRelease(params);
+        mc_option.keyRelease(params, ModifierFlag::OPTION_L);
         return;
       }
     }
 
-    modifierCanceling_control.restore(params);
-    modifierCanceling_option.restore(params);
+    mc_control.restore(params, ModifierFlag::CONTROL_L);
+    mc_option.restore(params, ModifierFlag::OPTION_L);
   }
 
   // ----------------------------------------
@@ -1348,6 +1373,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   remap_fn2commandL(params);
   remap_fn2controlL(params);
+  remap_fn2controlL_commandR2fn(params);
   remap_fn2optionL(params);
   remap_fn2shiftL(params);
 
