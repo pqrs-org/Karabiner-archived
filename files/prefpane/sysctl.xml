@@ -574,6 +574,10 @@
               <sysctl>keyremap4macbook.remap.jis_eisuu2controlL</sysctl>
             </item>
             <item>
+              <name>EISUU to FN</name>
+              <sysctl>keyremap4macbook.remap.jis_eisuu2fn</sysctl>
+            </item>
+            <item>
               <name>EISUU to Option_L</name>
               <sysctl>keyremap4macbook.remap.jis_eisuu2optionL</sysctl>
             </item>
@@ -601,6 +605,10 @@
             <item>
               <name>KANA to Control_L</name>
               <sysctl>keyremap4macbook.remap.jis_kana2controlL</sysctl>
+            </item>
+            <item>
+              <name>KANA to FN</name>
+              <sysctl>keyremap4macbook.remap.jis_kana2fn</sysctl>
             </item>
             <item>
               <name>KANA to Option_L</name>
