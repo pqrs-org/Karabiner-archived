@@ -7,8 +7,6 @@
 namespace org_pqrs_KeyRemap4MacBook {
   AllFlagStatus allFlagStatus;
   ListFireExtraKey listFireExtraKey;
-  ModifierCanceling modifierCanceling_control(ModifierFlag::CONTROL_L);
-  ModifierCanceling modifierCanceling_option(ModifierFlag::OPTION_L);
 
   bool
   RemapUtil::isModifierOn(const RemapParams &params, ModifierFlag::ModifierFlag flag)
@@ -486,29 +484,33 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   void
-  ModifierCanceling::keyRelease(const RemapParams &params)
+  ModifierCanceling::keyRelease(const RemapParams &params, ModifierFlag::ModifierFlag modifierFlag)
   {
+    FlagStatus *flagStatus = allFlagStatus.getFlagStatus(modifierFlag);
     if (flagStatus == NULL) return;
 
     flagStatus->temporary_decrease();
 
     if (isSendKeyRelease) return;
-    unsigned int flags = allFlagStatus.makeFlags(params);
 
-    listFireExtraKey.add(FireExtraKey::TYPE_BEFORE, KeyEvent::MODIFY, flags, keycode, 0);
+    unsigned int flags = allFlagStatus.makeFlags(params);
+    listFireExtraKey.add(FireExtraKey::TYPE_BEFORE, KeyEvent::MODIFY, flags, flagStatus->getKeyCode(), 0);
+
     isSendKeyRelease = true;
   }
 
   void
-  ModifierCanceling::restore(const RemapParams &params)
+  ModifierCanceling::restore(const RemapParams &params, ModifierFlag::ModifierFlag modifierFlag)
   {
+    FlagStatus *flagStatus = allFlagStatus.getFlagStatus(modifierFlag);
     if (flagStatus == NULL) return;
 
     if (! isSendKeyRelease) return;
 
     isSendKeyRelease = false;
+
     unsigned int flags = allFlagStatus.makeFlags(params);
-    listFireExtraKey.add(FireExtraKey::TYPE_BEFORE, KeyEvent::MODIFY, flags, keycode, 0);
+    listFireExtraKey.add(FireExtraKey::TYPE_BEFORE, KeyEvent::MODIFY, flags, flagStatus->getKeyCode(), 0);
   }
 
   // ----------------------------------------------------------------------
