@@ -1092,6 +1092,15 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_jis_eisuu2fn(const RemapParams &params)
+  {
+    if (! config.remap_jis_eisuu2fn) return;
+
+    RemapUtil::keyToModifier(params, KeyCode::JIS_EISUU, ModifierFlag::FN);
+    RemapUtil::toFN(params);
+  }
+
+  void
   remap_jis_eisuu2optionL(const RemapParams &params)
   {
     if (! config.remap_jis_eisuu2optionL) return;
@@ -1138,6 +1147,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_jis_kana2controlL) return;
 
     RemapUtil::keyToModifier(params, KeyCode::JIS_KANA, ModifierFlag::CONTROL_L);
+  }
+
+  void
+  remap_jis_kana2fn(const RemapParams &params)
+  {
+    if (! config.remap_jis_kana2fn) return;
+
+    RemapUtil::keyToModifier(params, KeyCode::JIS_KANA, ModifierFlag::FN);
+    RemapUtil::toFN(params);
   }
 
   void
@@ -1428,6 +1446,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   // jis
   remap_jis_eisuu2commandL(params);
   remap_jis_eisuu2controlL(params);
+  remap_jis_eisuu2fn(params);
   remap_jis_eisuu2optionL(params);
   remap_jis_eisuu2shiftL(params);
   remap_jis_eisuu2escape(params);
@@ -1435,6 +1454,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   remap_jis_kana2commandL(params);
   remap_jis_kana2controlL(params);
+  remap_jis_kana2fn(params);
   remap_jis_kana2optionL(params);
   remap_jis_kana2shiftL(params);
   remap_jis_kana2return(params);
