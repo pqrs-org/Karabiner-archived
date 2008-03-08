@@ -27,8 +27,8 @@
           <sysctl>keyremap4macbook.remap.backquote2escape</sysctl>
         </item>
         <item>
-          <name>Backquote(`) to Escape (+ Shift+Backquote to Tilde)</name>
-          <sysctl>keyremap4macbook.remap.backquote2escape_shift2tilde</sysctl>
+          <name>Backquote(`) to Escape if no modifiers pressed</name>
+          <sysctl>keyremap4macbook.remap.backquote2escape_withoutmodifiers</sysctl>
         </item>
       </list>
     </item>
