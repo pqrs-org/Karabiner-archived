@@ -24,12 +24,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  remap_backquote2escape_shift2tilde(const RemapParams &params)
+  remap_backquote2escape_withoutmodifiers(const RemapParams &params)
   {
-    if (! config.remap_backquote2escape_shift2tilde) return;
+    if (! config.remap_backquote2escape_withoutmodifiers) return;
 
     unsigned int flags = allFlagStatus.makeFlags(params);
-    if (flags != ModifierFlag::SHIFT_L && flags != ModifierFlag::SHIFT_R) {
+    if (flags == 0) {
       RemapUtil::keyToKey(params, KeyCode::BACKQUOTE, KeyCode::ESCAPE);
     }
   }
@@ -1363,7 +1363,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   // normal remapping
   remap_backquote2commandL(params);
   remap_backquote2escape(params);
-  remap_backquote2escape_shift2tilde(params);
+  remap_backquote2escape_withoutmodifiers(params);
 
   remap_backslash2delete(params);
 
