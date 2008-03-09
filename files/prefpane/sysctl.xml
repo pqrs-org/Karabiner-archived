@@ -275,7 +275,7 @@
           <sysctl>keyremap4macbook.remap.optionR2enter</sysctl>
         </item>
         <item>
-          <name>Enter to Forward Delete</name>
+          <name>Option_R to Forward Delete</name>
           <sysctl>keyremap4macbook.remap.optionR2forwarddelete</sysctl>
         </item>
         <item>
