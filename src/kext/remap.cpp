@@ -195,6 +195,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_enter2controlR(const RemapParams &params)
+  {
+    if (! config.remap_enter2controlR) return;
+
+    RemapUtil::keyToModifier(params, RemapUtil::getEnterKeyCode(params), ModifierFlag::CONTROL_R);
+  }
+
+  void
   remap_enter2fn(const RemapParams &params)
   {
     if (! config.remap_enter2fn) return;
@@ -413,6 +421,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_optionR2controlL) return;
 
     RemapUtil::modifierToModifier(params, ModifierFlag::OPTION_R, ModifierFlag::CONTROL_L);
+  }
+
+  void
+  remap_optionR2controlR(const RemapParams &params)
+  {
+    if (! config.remap_optionR2controlR) return;
+
+    RemapUtil::modifierToModifier(params, ModifierFlag::OPTION_R, ModifierFlag::CONTROL_R);
   }
 
   void
@@ -1389,6 +1405,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   remap_enter2commandL(params);
   remap_enter2controlL(params);
+  remap_enter2controlR(params);
   remap_enter2fn(params);
   remap_enter2optionL(params);
   remap_enter2commandLcontrolL(params);
@@ -1416,6 +1433,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   remap_optionR2commandL(params);
   remap_optionR2controlL(params);
+  remap_optionR2controlR(params);
   remap_optionR2fn(params);
   remap_optionR2enter(params);
   remap_optionR2forwarddelete(params);

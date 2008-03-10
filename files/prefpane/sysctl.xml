@@ -145,6 +145,10 @@
           <sysctl>keyremap4macbook.remap.enter2controlL</sysctl>
         </item>
         <item>
+          <name>Enter to Control_R</name>
+          <sysctl>keyremap4macbook.remap.enter2controlR</sysctl>
+        </item>
+        <item>
           <name>Enter to FN</name>
           <sysctl>keyremap4macbook.remap.enter2fn</sysctl>
         </item>
@@ -265,6 +269,10 @@
         <item>
           <name>Option_R to Control_L</name>
           <sysctl>keyremap4macbook.remap.optionR2controlL</sysctl>
+        </item>
+        <item>
+          <name>Option_R to Control_R</name>
+          <sysctl>keyremap4macbook.remap.optionR2controlR</sysctl>
         </item>
         <item>
           <name>Option_R to FN</name>
