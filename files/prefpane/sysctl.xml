@@ -90,6 +90,10 @@
           <name>Command_R to Shift_L</name>
           <sysctl>keyremap4macbook.remap.commandR2shiftL</sysctl>
         </item>
+        <item>
+          <name>Command_R to Enter</name>
+          <sysctl>keyremap4macbook.remap.commandR2enter</sysctl>
+        </item>
       </list>
     </item>
 
