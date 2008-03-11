@@ -111,6 +111,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::modifierToModifier(params, ModifierFlag::COMMAND_R, ModifierFlag::SHIFT_L);
   }
 
+  void
+  remap_commandR2enter(const RemapParams &params)
+  {
+    if (! config.remap_commandR2enter) return;
+
+    RemapUtil::modifierToKey(params, ModifierFlag::COMMAND_R, RemapUtil::getEnterKeyCode(params));
+  }
+
   // ----------------------------------------
   void
   remap_controlL2commandL(const RemapParams &params)
@@ -1398,6 +1406,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_commandR2controlL(params);
   remap_commandR2optionL(params);
   remap_commandR2shiftL(params);
+  remap_commandR2enter(params);
 
   remap_delete2backslash(params);
   remap_delete2f13_shift2tilde(params);
