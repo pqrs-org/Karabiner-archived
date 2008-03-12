@@ -96,6 +96,15 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_commandR2fn(const RemapParams &params)
+  {
+    if (! config.remap_commandR2fn) return;
+
+    RemapUtil::modifierToModifier(params, ModifierFlag::COMMAND_R, ModifierFlag::FN);
+    RemapUtil::toFN(params);
+  }
+
+  void
   remap_commandR2optionL(const RemapParams &params)
   {
     if (! config.remap_commandR2optionL) return;
@@ -370,6 +379,17 @@ namespace org_pqrs_KeyRemap4MacBook {
       RemapUtil::fnToNormal(params);
     }
     RemapUtil::modifierToModifier(params, ModifierFlag::FN, ModifierFlag::SHIFT_L);
+  }
+
+  void
+  remap_fn2enter(const RemapParams &params)
+  {
+    if (! config.remap_fn2enter) return;
+
+    if (RemapUtil::isModifierOn(params, ModifierFlag::FN)) {
+      RemapUtil::fnToNormal(params);
+    }
+    RemapUtil::modifierToKey(params, ModifierFlag::FN, RemapUtil::getEnterKeyCode(params));
   }
 
   // ----------------------------------------
@@ -1091,6 +1111,14 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
+  remap_pc_application2optionL(const RemapParams &params)
+  {
+    if (! config.remap_pc_application2optionL) return;
+
+    RemapUtil::keyToModifier(params, KeyCode::PC_APPLICATION, ModifierFlag::OPTION_L);
+  }
+
+  void
   remap_pc_application2f9(const RemapParams &params)
   {
     if (! config.remap_pc_application2f9) return;
@@ -1404,6 +1432,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_commandL2backquote(params);
 
   remap_commandR2controlL(params);
+  remap_commandR2fn(params);
   remap_commandR2optionL(params);
   remap_commandR2shiftL(params);
   remap_commandR2enter(params);
@@ -1432,6 +1461,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_fn2controlL_commandR2fn(params);
   remap_fn2optionL(params);
   remap_fn2shiftL(params);
+  remap_fn2enter(params);
 
   remap_f1_to_f14(params);
   remap_f2_to_f15(params);
@@ -1478,6 +1508,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_qwerty2colemak(params);
 
   // ----------------------------------------
+  remap_pc_application2optionL(params);
   remap_pc_application2exposeALL(params);
   remap_pc_application2f9(params);
   remap_pc_application2f11(params);
