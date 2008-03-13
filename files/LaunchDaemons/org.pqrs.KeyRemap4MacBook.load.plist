@@ -6,7 +6,7 @@
     <string>org.pqrs.KeyRemap4MacBook.load</string>
     <key>ProgramArguments</key>
     <array>
-      <string>/Applications/KeyRemap4MacBook/scripts/startup.sh</string>
+      <string>/Library/org.pqrs/KeyRemap4MacBook/scripts/startup.sh</string>
       <string>start</string>
     </array>
     <key>RunAtLoad</key>

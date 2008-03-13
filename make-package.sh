@@ -16,13 +16,12 @@ echo "Copy Files"
 sudo rm -rf pkgroot
 sudo mkdir -p pkgroot
 
-basedir="/Applications/KeyRemap4MacBook"
+basedir="/Library/org.pqrs/KeyRemap4MacBook"
 sudo mkdir -p "pkgroot/$basedir"
 sudo cp -R src/kext/build/Release/KeyRemap4MacBook.kext "pkgroot/$basedir"
 sudo cp -R files/extra "pkgroot/$basedir"
 sudo cp -R files/prefpane "pkgroot/$basedir"
 sudo cp -R files/scripts "pkgroot/$basedir"
-sudo mkdir -p "pkgroot/Library"
 sudo cp -R files/LaunchDaemons pkgroot/Library
 sudo mkdir -p "pkgroot/Library/PreferencePanes"
 sudo cp -R "prefpane/build/Release/KeyRemap4MacBook.prefPane" "pkgroot/Library/PreferencePanes"
@@ -32,8 +31,6 @@ sudo find pkgroot -type f -print0 | xargs -0 sudo chmod 644
 sudo find pkgroot -name '*.sh' -print0 | xargs -0 sudo chmod 755
 sudo chown -R root:wheel pkgroot
 
-sudo chmod 775 pkgroot/Applications
-sudo chown root:admin pkgroot/Applications
 sudo chmod 1775 pkgroot/Library
 sudo chown root:admin pkgroot/Library
 

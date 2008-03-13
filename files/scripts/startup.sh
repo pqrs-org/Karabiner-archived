@@ -1,7 +1,7 @@
 #!/bin/sh
 PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 
-basedir="/Applications/KeyRemap4MacBook"
+basedir="/Library/org.pqrs/KeyRemap4MacBook"
 
 argument="$1"
 [ -z "$argument" ] && argument=start

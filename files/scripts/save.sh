@@ -2,7 +2,7 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 
 tmpfile=`mktemp /tmp/KeyRemap4MacBook.XXXXXX` || exit 1
-basedir="/Applications/KeyRemap4MacBook"
+basedir="/Library/org.pqrs/KeyRemap4MacBook"
 outfile="$basedir/scripts/sysctl.sh"
 
 cat > "$tmpfile" <<EOF
