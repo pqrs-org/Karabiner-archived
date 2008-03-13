@@ -7,7 +7,7 @@
 // ----------------------------------------------------------------------
 - (void) loadXML
 {
-  NSString *path = @"/Applications/KeyRemap4MacBook/prefpane/sysctl.xml";
+  NSString *path = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/sysctl.xml";
   NSURL *url = [NSURL fileURLWithPath:path];
   _XMLDocument = [[NSXMLDocument alloc] initWithContentsOfURL:url options:0 error:NULL];
 }
@@ -34,7 +34,7 @@
 // ----------------------------------------------------------------------
 - (void) saveSetting
 {
-  char command[] = "/Applications/KeyRemap4MacBook/scripts/save.sh";
+  char command[] = "/Library/org.pqrs/KeyRemap4MacBook/scripts/save.sh";
   [_adminAction execCommand:command];
 }
 

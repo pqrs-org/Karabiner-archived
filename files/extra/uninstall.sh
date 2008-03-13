@@ -13,12 +13,22 @@ fi
 
 # ----------------------------------------
 # uninstall
+# version 2.0 - 3.x
 basedir="/Applications/KeyRemap4MacBook"
+if [ -d $basedir ]; then
+    "$basedir/scripts/unload.sh"
+    rm -rf "$basedir"
+fi
 
-"$basedir/scripts/unload.sh"
+# version 3.x - current
+basedir="/Library/org.pqrs/KeyRemap4MacBook"
+if [ -d $basedir ]; then
+    "$basedir/scripts/unload.sh"
+    rm -rf "$basedir"
+fi
+
 rm -f "/Library/LaunchDaemons/org.pqrs.KeyRemap4MacBook.load.plist"
 rm -f "/Library/LaunchDaemons/org.pqrs.KeyRemap4MacBook.autosave.plist"
 rm -rf "/Library/PreferencePanes/KeyRemap4MacBook.prefPane"
-rm -rf "$basedir"
 
 exit 0
