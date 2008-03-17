@@ -23,6 +23,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     void keyToModifier(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag1, ModifierFlag::ModifierFlag toFlag2);
     void keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode);
 
+    void modifierToPointingButton(const RemapParams &params, ModifierFlag::ModifierFlag fromFlag, PointingButton::PointingButton toButton);
+    void keyToPointingButton(const RemapParams &params, KeyCode::KeyCode fromKeyCode, PointingButton::PointingButton toButton);
+
     // A..L to 1..9
     bool al2number(const RemapParams &params);
     bool keypad2spaces(const RemapParams &params);
@@ -133,7 +136,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
     void reset(void);
     void add(FireExtraKey::Type type, unsigned int eventType, unsigned int flags, unsigned int key, unsigned int charCode);
-    void fire(FireExtraKey::Type type, KeyboardEventAction action, OSObject *target, const RemapParams &params);
+    void fire(FireExtraKey::Type type, KeyboardEventCallback callback, OSObject *target, OSObject *sender, void *refcon, const RemapParams &params);
 
   private:
     FireExtraKey list[FIREEXTRAKEY_MAXNUM];
@@ -183,6 +186,26 @@ namespace org_pqrs_KeyRemap4MacBook {
   private:
     int pressCount;
   };
+
+  // ----------------------------------------------------------------------
+  class FirePointingClick {
+  public:
+    void set(PointingButton::PointingButton _button) {
+      enable = true;
+      button = _button;
+    }
+    void unset(void) {
+      enable = false;
+    }
+    bool isEnable(void) const { return enable; }
+    unsigned int getButton(void) const { return button; }
+
+  private:
+    bool enable;
+    PointingButton::PointingButton button;
+  };
+
+  extern FirePointingClick firePointingClick;
 }
 
 #endif
