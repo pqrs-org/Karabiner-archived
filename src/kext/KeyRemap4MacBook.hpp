@@ -18,12 +18,13 @@ public:
 private:
   enum {
     MAXNUM_KEYBOARD = 4,
+    MAXNUM_POINTING = 4,
   };
 
   // ------------------------------------------------------------
   struct HookedKeyboard {
     IOHIKeyboard *kbd;
-    KeyboardEventAction origEventAction;
+    KeyboardEventCallback origEventCallback;
 
     // for keyrepeat
     IOTimerEventSource *timer;
@@ -37,6 +38,8 @@ private:
       unsigned int keyboardType;
       AbsoluteTime ts;
       OSObject *target;
+      OSObject *sender;
+      void *refcon;
     } repeat;
 
     void initialize(IOHIKeyboard *_kbd, IOWorkLoop *workLoop);
@@ -46,13 +49,35 @@ private:
   static HookedKeyboard *new_hookedKeyboard(void);
   static HookedKeyboard *search_hookedKeyboard(const IOHIKeyboard *kbd);
 
-  static bool notifier_hookKeyboard(org_pqrs_driver_KeyRemap4MacBook *self, void *ref, IOService *newService);
-  static bool notifier_unhookKeyboard(org_pqrs_driver_KeyRemap4MacBook *self, void *ref, IOService *newService);
+  // --------------------
+  struct HookedPointing {
+    IOHIPointing *pointing;
+    RelativePointerEventCallback origRelativePointerEventCallback;
+    OSObject *relativePointerEventTarget;
+
+    void initialize(IOHIPointing *_pointing);
+    void terminate(void);
+  };
+  static HookedPointing hookedPointing[MAXNUM_POINTING];
+  static HookedPointing *new_hookedPointing(void);
+  static HookedPointing *search_hookedPointing(const IOHIPointing *pointing);
+  static HookedPointing *get_1stHookedPointing(void);
+
+  // ------------------------------------------------------------
+  static bool notifierfunc_hookKeyboard(org_pqrs_driver_KeyRemap4MacBook *self, void *ref, IOService *newService);
+  static bool notifierfunc_unhookKeyboard(org_pqrs_driver_KeyRemap4MacBook *self, void *ref, IOService *newService);
+
+  static bool notifierfunc_hookPointing(org_pqrs_driver_KeyRemap4MacBook *self, void *ref, IOService *newService);
+  static bool notifierfunc_unhookPointing(org_pqrs_driver_KeyRemap4MacBook *self, void *ref, IOService *newService);
 
   static bool replaceKeyboardEvent(org_pqrs_driver_KeyRemap4MacBook *self, IOHIKeyboard *kbd);
+  static bool replacePointingEvent(org_pqrs_driver_KeyRemap4MacBook *self, IOHIPointing *pointing);
 
-  IONotifier *keyboardNotifier;
-  IONotifier *terminatedNotifier;
+  IONotifier *notifier_hookKeyboard;
+  IONotifier *notifier_unhookKeyboard;
+
+  IONotifier *notifier_hookPointing;
+  IONotifier *notifier_unhookPointing;
 
   // ------------------------------------------------------------
   static void keyboardEventCallBack(OSObject *target,
@@ -72,6 +97,17 @@ private:
   static void doKeyRepeat(OSObject *owner, IOTimerEventSource *sender);
 
   IOWorkLoop *workLoop;
+
+  // --------------------
+  static void relativePointerEventCallBack(OSObject *target,
+                                           int buttons,
+                                           int dx,
+                                           int dy,
+                                           AbsoluteTime ts,
+                                           OSObject *sender,
+                                           void *refcon);
+
+  static void doClick(int buttons, AbsoluteTime ts);
 };
 
 #endif

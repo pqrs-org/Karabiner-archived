@@ -192,6 +192,15 @@ namespace org_pqrs_KeyRemap4MacBook {
       Logitech_DI_NOVO_KEYBOARD = 41,
     };
   }
+
+  namespace PointingButton {
+    enum PointingButton {
+      NONE = 0,
+      LEFT = 4,
+      MIDDLE = 2,
+      RIGHT = 1,
+    };
+  }
 }
 
 #endif

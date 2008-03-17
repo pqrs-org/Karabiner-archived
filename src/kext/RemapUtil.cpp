@@ -7,6 +7,7 @@
 namespace org_pqrs_KeyRemap4MacBook {
   AllFlagStatus allFlagStatus;
   ListFireExtraKey listFireExtraKey;
+  FirePointingClick firePointingClick;
 
   bool
   RemapUtil::isModifierOn(const RemapParams &params, ModifierFlag::ModifierFlag flag)
@@ -247,6 +248,38 @@ namespace org_pqrs_KeyRemap4MacBook {
     *(params.key) = toKeyCode;
   }
 
+  // ----------
+  void
+  RemapUtil::modifierToPointingButton(const RemapParams &params, ModifierFlag::ModifierFlag fromFlag, PointingButton::PointingButton toButton) {
+    KeyCode::KeyCode fromKeyCode = getModifierKeyCode(fromFlag);
+    if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) return;
+
+    FlagStatus *fromStatus = allFlagStatus.getFlagStatus(fromFlag);
+    if (fromStatus == NULL) return;
+
+    if (isModifierOn(params, fromFlag)) {
+      fromStatus->decrease();
+      firePointingClick.set(toButton);
+    } else {
+      fromStatus->increase();
+      firePointingClick.set(PointingButton::NONE);
+    }
+
+    *(params.ex_dropKey) = true;
+  }
+
+  void
+  RemapUtil::keyToPointingButton(const RemapParams &params, KeyCode::KeyCode fromKeyCode, PointingButton::PointingButton toButton) {
+    if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) return;
+
+    *(params.ex_dropKey) = true;
+    if (*(params.eventType) == KeyEvent::DOWN) {
+      firePointingClick.set(toButton);
+    } else if (*(params.eventType) == KeyEvent::UP) {
+      firePointingClick.set(PointingButton::NONE);
+    }
+  }
+
   // --------------------
   bool
   RemapUtil::al2number(const RemapParams &params) {
@@ -469,15 +502,15 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  ListFireExtraKey::fire(FireExtraKey::Type type, KeyboardEventAction action, OSObject *target, const RemapParams &params)
+  ListFireExtraKey::fire(FireExtraKey::Type type, KeyboardEventCallback callback, OSObject *target, OSObject *sender, void *refcon, const RemapParams &params)
   {
     for (int i = 0; i < FIREEXTRAKEY_MAXNUM; ++i) {
       FireExtraKey &item = list[i];
 
       if (item.isEnable() && item.getType() == type) {
-        action(target, item.getEventType(), item.getFlags(), item.getKey(), item.getCharCode(),
-               *(params.charSet), *(params.origCharCode), *(params.origCharSet),
-               *(params.keyboardType), false, *(params.ts));
+        callback(target, item.getEventType(), item.getFlags(), item.getKey(), item.getCharCode(),
+                 *(params.charSet), *(params.origCharCode), *(params.origCharSet),
+                 *(params.keyboardType), false, *(params.ts), sender, refcon);
       }
     }
   }

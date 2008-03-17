@@ -128,6 +128,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::modifierToKey(params, ModifierFlag::COMMAND_R, RemapUtil::getEnterKeyCode(params));
   }
 
+  void
+  remap_commandR2middleclick(const RemapParams &params)
+  {
+    if (! config.remap_commandR2middleclick) return;
+
+    RemapUtil::modifierToPointingButton(params, ModifierFlag::COMMAND_R, PointingButton::MIDDLE);
+  }
+
   // ----------------------------------------
   void
   remap_controlL2commandL(const RemapParams &params)
@@ -308,15 +316,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_escape2rightclick) return;
 
-    if (params.ex_origKey != KeyCode::ESCAPE) return;
-
-    RemapUtil::keyToKey(params, KeyCode::ESCAPE, KeyCode::KEYPAD_5);
-
-    if (*(params.eventType) == KeyEvent::DOWN) {
-      allFlagStatus.controlL.increase();
-    } else if (*(params.eventType) == KeyEvent::UP) {
-      allFlagStatus.controlL.decrease();
-    }
+    RemapUtil::keyToPointingButton(params, KeyCode::ESCAPE, PointingButton::RIGHT);
   }
 
   // ----------------------------------------
@@ -1250,6 +1250,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::keyToKey(params, KeyCode::JIS_KANA, KeyCode::RETURN);
   }
 
+  void
+  remap_jis_kana2middleclick(const RemapParams &params)
+  {
+    if (! config.remap_jis_kana2middleclick) return;
+
+    RemapUtil::keyToPointingButton(params, KeyCode::JIS_KANA, PointingButton::MIDDLE);
+  }
+
   // ----------------------------------------
   void
   remap_jis_commandR2eisuu(const RemapParams &params)
@@ -1436,6 +1444,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_commandR2optionL(params);
   remap_commandR2shiftL(params);
   remap_commandR2enter(params);
+  remap_commandR2middleclick(params);
 
   remap_delete2backslash(params);
   remap_delete2f13_shift2tilde(params);
@@ -1534,6 +1543,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_jis_kana2optionL(params);
   remap_jis_kana2shiftL(params);
   remap_jis_kana2return(params);
+  remap_jis_kana2middleclick(params);
 
   remap_jis_commandR2eisuu(params);
   remap_jis_commandR2kana(params);
