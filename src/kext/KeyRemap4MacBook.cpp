@@ -475,7 +475,6 @@ org_pqrs_driver_KeyRemap4MacBook::relativePointerEventCallBack(OSObject *target,
 void
 org_pqrs_driver_KeyRemap4MacBook::doClick(int buttons, AbsoluteTime ts)
 {
-  printf("doClick\n");
   HookedPointing *p = get_1stHookedPointing();
   if (p) {
     p->origRelativePointerEventCallback(p->relativePointerEventTarget, buttons, 0, 0, ts, p->pointing, 0);
