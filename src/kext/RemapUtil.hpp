@@ -229,6 +229,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   class FirePointingScroll {
   public:
     void set(short int _deltaAxis1, short int _deltaAxis2, short int _deltaAxis3) {
+      enable = true;
       deltaAxis1 = _deltaAxis1;
       deltaAxis2 = _deltaAxis2;
       deltaAxis3 = _deltaAxis3;

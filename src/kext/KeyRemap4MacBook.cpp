@@ -477,22 +477,19 @@ org_pqrs_driver_KeyRemap4MacBook::relativePointerEventCallBack(OSObject *target,
         printf("relativePointerEventCallBack: buttons: %d, dx: %d, dy: %d, ts: 0x%x\n", buttons, dx, dy, ts);
       }
 
-      bool dropEvent = false;
-      if (org_pqrs_KeyRemap4MacBook::allFlagStatus.fn.isHeldDown()) {
-        int deltaAxis1 = (-dy * org_pqrs_KeyRemap4MacBook::config.pointing_relative2scroll_ratio) / 1000;
-        int deltaAxis2 = (-dx * org_pqrs_KeyRemap4MacBook::config.pointing_relative2scroll_ratio) / 1000;
+      bool ex_dropEvent = false;
+      org_pqrs_KeyRemap4MacBook::RemapPointingParams_relative params = {
+        &buttons, &dx, &dy, &ts, &ex_dropEvent,
+      };
 
-        org_pqrs_KeyRemap4MacBook::firePointingScroll.set(deltaAxis1, deltaAxis2, 0);
-        doScroll(ts);
-        dropEvent = true;
-      }
+      org_pqrs_KeyRemap4MacBook::remap_pointing_relative_core(params);
 
-      if (buttons != org_pqrs_KeyRemap4MacBook::PointingButton::NONE) {
-        org_pqrs_KeyRemap4MacBook::clickWatcher.click();
-      }
-
-      if (! dropEvent) {
+      if (! ex_dropEvent) {
         p->origRelativePointerEventCallback(target, buttons, dx, dy, ts, sender, refcon);
+      }
+      if (org_pqrs_KeyRemap4MacBook::firePointingScroll.isEnable()) {
+        doScroll(ts);
+        org_pqrs_KeyRemap4MacBook::firePointingScroll.unset();
       }
     }
   }
@@ -549,9 +546,9 @@ org_pqrs_driver_KeyRemap4MacBook::doScroll(AbsoluteTime ts)
     short int deltaAxis1 = org_pqrs_KeyRemap4MacBook::firePointingScroll.getDeltaAxis1();
     short int deltaAxis2 = org_pqrs_KeyRemap4MacBook::firePointingScroll.getDeltaAxis2();
     short int deltaAxis3 = org_pqrs_KeyRemap4MacBook::firePointingScroll.getDeltaAxis3();
-    IOFixed fixedDelta1 = deltaAxis1 << 16;
-    IOFixed fixedDelta2 = deltaAxis2 << 16;
-    IOFixed fixedDelta3 = deltaAxis3 << 16;
+    IOFixed fixedDelta1 = deltaAxis1 << 10;
+    IOFixed fixedDelta2 = deltaAxis2 << 10;
+    IOFixed fixedDelta3 = deltaAxis3 << 10;
     p->origScrollWheelEventCallback(p->scrollWheelEventTarget,
                                     deltaAxis1, deltaAxis2, deltaAxis3,
                                     fixedDelta1, fixedDelta2, fixedDelta3,
