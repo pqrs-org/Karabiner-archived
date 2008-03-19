@@ -473,22 +473,15 @@ org_pqrs_driver_KeyRemap4MacBook::relativePointerEventCallBack(OSObject *target,
   if (pointing) {
     HookedPointing *p = search_hookedPointing(pointing);
     if (p) {
-#if 0
-      printf("relativePointerEventCallBack: buttons: %d, dx: %d, dy: %d\n", buttons, dx, dy);
-#endif
+      if (org_pqrs_KeyRemap4MacBook::config.debug_pointing) {
+        printf("relativePointerEventCallBack: buttons: %d, dx: %d, dy: %d, ts: 0x%x\n", buttons, dx, dy, ts);
+      }
+
       bool dropEvent = false;
       if (org_pqrs_KeyRemap4MacBook::allFlagStatus.fn.isHeldDown()) {
-#if 0
-        short int deltaAxis1 = 0;
-        short int deltaAxis2 = 0;
-        if (dy > 2) deltaAxis1 = -1;
-        if (dy < -2) deltaAxis1 = 1;
-        if (dx > 2) deltaAxis2 = -1;
-        if (dx < -2) deltaAxis2 = 1;
-#else
-        short int deltaAxis1 = -dy;
-        short int deltaAxis2 = -dx;
-#endif
+        int deltaAxis1 = (-dy * org_pqrs_KeyRemap4MacBook::config.pointing_relative2scroll_ratio) / 1000;
+        int deltaAxis2 = (-dx * org_pqrs_KeyRemap4MacBook::config.pointing_relative2scroll_ratio) / 1000;
+
         org_pqrs_KeyRemap4MacBook::firePointingScroll.set(deltaAxis1, deltaAxis2, 0);
         doScroll(ts);
         dropEvent = true;
@@ -535,13 +528,14 @@ org_pqrs_driver_KeyRemap4MacBook::scrollWheelEventCallback(OSObject *target,
   if (pointing) {
     HookedPointing *p = search_hookedPointing(pointing);
     if (p) {
-#if 0
-      printf("scrollWheelEventCallback: d[%d %d %d] f[%d %d %d] p[%d %d %d] %d\n",
-             deltaAxis1, deltaAxis2, deltaAxis3,
-             fixedDelta1, fixedDelta2, fixedDelta3,
-             pointDelta1, pointDelta2, pointDelta3,
-             options);
-#endif
+      if (org_pqrs_KeyRemap4MacBook::config.debug_pointing) {
+        printf("scrollWheelEventCallback: d[%d %d %d] f[%d %d %d] p[%d %d %d] %d\n",
+               deltaAxis1, deltaAxis2, deltaAxis3,
+               fixedDelta1, fixedDelta2, fixedDelta3,
+               pointDelta1, pointDelta2, pointDelta3,
+               options);
+      }
+
       p->origScrollWheelEventCallback(target, deltaAxis1, deltaAxis2, deltaAxis3, fixedDelta1, fixedDelta2, fixedDelta3, pointDelta1, pointDelta2, pointDelta3, options, ts, sender, refcon);
     }
   }
