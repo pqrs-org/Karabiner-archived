@@ -478,12 +478,17 @@ org_pqrs_driver_KeyRemap4MacBook::relativePointerEventCallBack(OSObject *target,
 #endif
       bool dropEvent = false;
       if (org_pqrs_KeyRemap4MacBook::allFlagStatus.fn.isHeldDown()) {
+#if 0
         short int deltaAxis1 = 0;
         short int deltaAxis2 = 0;
         if (dy > 2) deltaAxis1 = -1;
         if (dy < -2) deltaAxis1 = 1;
         if (dx > 2) deltaAxis2 = -1;
         if (dx < -2) deltaAxis2 = 1;
+#else
+        short int deltaAxis1 = -dy;
+        short int deltaAxis2 = -dx;
+#endif
         org_pqrs_KeyRemap4MacBook::firePointingScroll.set(deltaAxis1, deltaAxis2, 0);
         doScroll(ts);
         dropEvent = true;
