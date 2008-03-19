@@ -175,6 +175,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   private:
     bool useAsModifier;
+    bool isClick;
   };
 
   // ----------------------------------------
@@ -186,6 +187,23 @@ namespace org_pqrs_KeyRemap4MacBook {
   private:
     int pressCount;
   };
+
+  // ----------------------------------------------------------------------
+  class ClickWatcher {
+  public:
+    enum {
+      CLICKWATCHER_MAXNUM = 8,
+    };
+    void reset(void);
+    void click(void);
+
+    void set(bool *b);
+    void unset(bool *b);
+
+  private:
+    bool *watchlist[CLICKWATCHER_MAXNUM];
+  };
+  extern ClickWatcher clickWatcher;
 
   // ----------------------------------------------------------------------
   class FirePointingClick {

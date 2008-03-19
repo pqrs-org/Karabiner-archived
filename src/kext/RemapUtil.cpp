@@ -8,6 +8,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   AllFlagStatus allFlagStatus;
   ListFireExtraKey listFireExtraKey;
   FirePointingClick firePointingClick;
+  ClickWatcher clickWatcher;
 
   bool
   RemapUtil::isModifierOn(const RemapParams &params, ModifierFlag::ModifierFlag flag)
@@ -659,10 +660,12 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (isKeyDown) {
       useAsModifier = false;
+      clickWatcher.set(&isClick);
     } else {
-      if (useAsModifier == false) {
+      if (useAsModifier == false && isClick == false) {
         firefunc(params);
       }
+      clickWatcher.unset(&isClick);
     }
   }
 
@@ -682,6 +685,50 @@ namespace org_pqrs_KeyRemap4MacBook {
     } else {
       if (pressCount >= 2) {
         firefunc(params);
+      }
+    }
+  }
+
+  // ----------------------------------------
+  void
+  ClickWatcher::reset(void)
+  {
+    for (int i = 0; i < CLICKWATCHER_MAXNUM; ++i) {
+      watchlist[i] = NULL;
+    }
+  }
+
+  void
+  ClickWatcher::click(void)
+  {
+    for (int i = 0; i < CLICKWATCHER_MAXNUM; ++i) {
+      if (watchlist[i]) {
+        *(watchlist[i]) = true;
+      }
+    }
+  }
+
+  void
+  ClickWatcher::set(bool *b)
+  {
+    if (b == NULL) return;
+
+    *b = false;
+    for (int i = 0; i < CLICKWATCHER_MAXNUM; ++i) {
+      if (watchlist[i] == NULL) {
+        watchlist[i] = b;
+      }
+    }
+  }
+
+  void
+  ClickWatcher::unset(bool *b)
+  {
+    if (b == NULL) return;
+
+    for (int i = 0; i < CLICKWATCHER_MAXNUM; ++i) {
+      if (watchlist[i] == b) {
+        watchlist[i] = NULL;
       }
     }
   }
