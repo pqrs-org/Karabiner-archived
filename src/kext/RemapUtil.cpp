@@ -8,6 +8,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   AllFlagStatus allFlagStatus;
   ListFireExtraKey listFireExtraKey;
   FirePointingClick firePointingClick;
+  FirePointingScroll firePointingScroll;
   ClickWatcher clickWatcher;
 
   bool
