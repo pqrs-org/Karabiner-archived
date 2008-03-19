@@ -224,6 +224,32 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
 
   extern FirePointingClick firePointingClick;
+
+  // --------------------
+  class FirePointingScroll {
+  public:
+    void set(short int _deltaAxis1, short int _deltaAxis2, short int _deltaAxis3) {
+      deltaAxis1 = _deltaAxis1;
+      deltaAxis2 = _deltaAxis2;
+      deltaAxis3 = _deltaAxis3;
+    }
+    void unset(void) {
+      enable = false;
+    }
+    bool isEnable(void) const { return enable; }
+    short int getDeltaAxis1(void) const { return deltaAxis1; }
+    short int getDeltaAxis2(void) const { return deltaAxis2; }
+    short int getDeltaAxis3(void) const { return deltaAxis3; }
+
+  private:
+    bool enable;
+    short int deltaAxis1;
+    short int deltaAxis2;
+    short int deltaAxis3;
+  };
+
+  extern FirePointingScroll firePointingScroll;
+
 }
 
 #endif

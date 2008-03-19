@@ -182,6 +182,10 @@ org_pqrs_driver_KeyRemap4MacBook::HookedPointing::initialize(IOHIPointing *_poin
   origRelativePointerEventCallback = reinterpret_cast<RelativePointerEventCallback>(_pointing->_relativePointerEventAction);
   relativePointerEventTarget = _pointing->_relativePointerEventTarget;
   pointing->_relativePointerEventAction = reinterpret_cast<RelativePointerEventAction>(org_pqrs_driver_KeyRemap4MacBook::relativePointerEventCallBack);
+
+  origScrollWheelEventCallback = reinterpret_cast<ScrollWheelEventCallback>(_pointing->_scrollWheelEventAction);
+  scrollWheelEventTarget = _pointing->_scrollWheelEventTarget;
+  pointing->_scrollWheelEventAction = reinterpret_cast<ScrollWheelEventAction>(org_pqrs_driver_KeyRemap4MacBook::scrollWheelEventCallback);
 }
 
 void
@@ -189,6 +193,7 @@ org_pqrs_driver_KeyRemap4MacBook::HookedPointing::terminate(void)
 {
   if (pointing) {
     pointing->_relativePointerEventAction = reinterpret_cast<RelativePointerEventAction>(origRelativePointerEventCallback);
+    pointing->_scrollWheelEventAction = reinterpret_cast<ScrollWheelEventAction>(origScrollWheelEventCallback);
     pointing = NULL;
   }
 }
@@ -468,11 +473,29 @@ org_pqrs_driver_KeyRemap4MacBook::relativePointerEventCallBack(OSObject *target,
   if (pointing) {
     HookedPointing *p = search_hookedPointing(pointing);
     if (p) {
+#if 0
+      printf("relativePointerEventCallBack: buttons: %d, dx: %d, dy: %d\n", buttons, dx, dy);
+#endif
+      bool dropEvent = false;
+      if (org_pqrs_KeyRemap4MacBook::allFlagStatus.fn.isHeldDown()) {
+        short int deltaAxis1 = 0;
+        short int deltaAxis2 = 0;
+        if (dy > 2) deltaAxis1 = -1;
+        if (dy < -2) deltaAxis1 = 1;
+        if (dx > 2) deltaAxis2 = -1;
+        if (dx < -2) deltaAxis2 = 1;
+        org_pqrs_KeyRemap4MacBook::firePointingScroll.set(deltaAxis1, deltaAxis2, 0);
+        doScroll(ts);
+        dropEvent = true;
+      }
+
       if (buttons != org_pqrs_KeyRemap4MacBook::PointingButton::NONE) {
         org_pqrs_KeyRemap4MacBook::clickWatcher.click();
       }
 
-      p->origRelativePointerEventCallback(target, buttons, dx, dy, ts, sender, refcon);
+      if (! dropEvent) {
+        p->origRelativePointerEventCallback(target, buttons, dx, dy, ts, sender, refcon);
+      }
     }
   }
 }
@@ -483,5 +506,57 @@ org_pqrs_driver_KeyRemap4MacBook::doClick(int buttons, AbsoluteTime ts)
   HookedPointing *p = get_1stHookedPointing();
   if (p) {
     p->origRelativePointerEventCallback(p->relativePointerEventTarget, buttons, 0, 0, ts, p->pointing, 0);
+  }
+}
+
+// ----------
+void
+org_pqrs_driver_KeyRemap4MacBook::scrollWheelEventCallback(OSObject *target,
+                                                           short int deltaAxis1,
+                                                           short int deltaAxis2,
+                                                           short int deltaAxis3,
+                                                           IOFixed fixedDelta1,
+                                                           IOFixed fixedDelta2,
+                                                           IOFixed fixedDelta3,
+                                                           SInt32 pointDelta1,
+                                                           SInt32 pointDelta2,
+                                                           SInt32 pointDelta3,
+                                                           SInt32 options,
+                                                           AbsoluteTime ts,
+                                                           OSObject *sender,
+                                                           void *refcon)
+{
+  IOHIPointing *pointing = OSDynamicCast(IOHIPointing, sender);
+  if (pointing) {
+    HookedPointing *p = search_hookedPointing(pointing);
+    if (p) {
+#if 0
+      printf("scrollWheelEventCallback: d[%d %d %d] f[%d %d %d] p[%d %d %d] %d\n",
+             deltaAxis1, deltaAxis2, deltaAxis3,
+             fixedDelta1, fixedDelta2, fixedDelta3,
+             pointDelta1, pointDelta2, pointDelta3,
+             options);
+#endif
+      p->origScrollWheelEventCallback(target, deltaAxis1, deltaAxis2, deltaAxis3, fixedDelta1, fixedDelta2, fixedDelta3, pointDelta1, pointDelta2, pointDelta3, options, ts, sender, refcon);
+    }
+  }
+}
+
+void
+org_pqrs_driver_KeyRemap4MacBook::doScroll(AbsoluteTime ts)
+{
+  HookedPointing *p = get_1stHookedPointing();
+  if (p) {
+    short int deltaAxis1 = org_pqrs_KeyRemap4MacBook::firePointingScroll.getDeltaAxis1();
+    short int deltaAxis2 = org_pqrs_KeyRemap4MacBook::firePointingScroll.getDeltaAxis2();
+    short int deltaAxis3 = org_pqrs_KeyRemap4MacBook::firePointingScroll.getDeltaAxis3();
+    IOFixed fixedDelta1 = deltaAxis1 << 16;
+    IOFixed fixedDelta2 = deltaAxis2 << 16;
+    IOFixed fixedDelta3 = deltaAxis3 << 16;
+    p->origScrollWheelEventCallback(p->scrollWheelEventTarget,
+                                    deltaAxis1, deltaAxis2, deltaAxis3,
+                                    fixedDelta1, fixedDelta2, fixedDelta3,
+                                    deltaAxis1, deltaAxis2, deltaAxis3,
+                                    0, ts, p->pointing, 0);
   }
 }

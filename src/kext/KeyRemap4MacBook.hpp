@@ -53,7 +53,10 @@ private:
   struct HookedPointing {
     IOHIPointing *pointing;
     RelativePointerEventCallback origRelativePointerEventCallback;
+    ScrollWheelEventCallback origScrollWheelEventCallback;
+    // save EventTarget for keyToPointing.
     OSObject *relativePointerEventTarget;
+    OSObject *scrollWheelEventTarget;
 
     void initialize(IOHIPointing *_pointing);
     void terminate(void);
@@ -108,6 +111,24 @@ private:
                                            void *refcon);
 
   static void doClick(int buttons, AbsoluteTime ts);
+
+  // ----------
+  static void scrollWheelEventCallback(OSObject *target,
+                                       short int deltaAxis1,
+                                       short int deltaAxis2,
+                                       short int deltaAxis3,
+                                       IOFixed fixedDelta1,
+                                       IOFixed fixedDelta2,
+                                       IOFixed fixedDelta3,
+                                       SInt32 pointDelta1,
+                                       SInt32 pointDelta2,
+                                       SInt32 pointDelta3,
+                                       SInt32 options,
+                                       AbsoluteTime ts,
+                                       OSObject *sender,
+                                       void *refcon);
+
+  static void org_pqrs_driver_KeyRemap4MacBook::doScroll(AbsoluteTime ts);
 };
 
 #endif
