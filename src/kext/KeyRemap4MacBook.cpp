@@ -36,6 +36,7 @@ org_pqrs_driver_KeyRemap4MacBook::init(OSDictionary *dict)
   for (int i = 0; i < MAXNUM_POINTING; ++i) {
     hookedPointing[i].pointing = NULL;
   }
+  org_pqrs_KeyRemap4MacBook::clickWatcher.reset();
 
   return res;
 }
@@ -467,6 +468,10 @@ org_pqrs_driver_KeyRemap4MacBook::relativePointerEventCallBack(OSObject *target,
   if (pointing) {
     HookedPointing *p = search_hookedPointing(pointing);
     if (p) {
+      if (buttons != org_pqrs_KeyRemap4MacBook::PointingButton::NONE) {
+        org_pqrs_KeyRemap4MacBook::clickWatcher.click();
+      }
+
       p->origRelativePointerEventCallback(target, buttons, dx, dy, ts, sender, refcon);
     }
   }
