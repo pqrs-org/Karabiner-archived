@@ -19,6 +19,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     unsigned int ex_origKey;
   };
   void remap_core(const RemapParams &params);
+
+  struct RemapPointingParams_relative {
+    int *buttons;
+    int *dx;
+    int *dy;
+    AbsoluteTime *ts;
+    bool *ex_dropEvent;
+  };
+  void remap_pointing_relative_core(const RemapPointingParams_relative &params);
 }
 
 #endif

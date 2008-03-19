@@ -16,6 +16,16 @@
     </item>
 
     <item>
+      <name>Remap Pointing Device</name>
+      <list>
+        <item>
+          <name>FN + CursorMove to Scroll</name>
+          <sysctl>keyremap4macbook.remap.pointing_relative_fn_to_scroll</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>Remap Backquote(`) Key</name>
       <list>
         <item>
