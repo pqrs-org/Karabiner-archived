@@ -363,26 +363,24 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // --------------------
-  class IntervalChecker {
-  public:
-    void begin(void) {
-      clock_get_system_microtime(&secs, &microsecs);
-    }
+  void
+  IntervalChecker::begin(void)
+  {
+    clock_get_system_microtime(&secs, &microsecs);
+  }
 
-    bool checkThreshold(uint32_t millisec) {
-      uint32_t s;
-      uint32_t m;
-      clock_get_system_microtime(&s, &m);
+  bool
+  IntervalChecker::checkThreshold(uint32_t millisec)
+  {
+    uint32_t s;
+    uint32_t m;
+    clock_get_system_microtime(&s, &m);
 
-      uint32_t interval = (s - secs) * 1000 + (m - microsecs) / 1000;
-      return interval >= millisec;
-    }
+    uint32_t interval = (s - secs) * 1000 + (m - microsecs) / 1000;
+    return interval >= millisec;
+  }
 
-  private:
-    uint32_t secs;
-    uint32_t microsecs;
-  };
-
+  // --------------------
   void
   RemapUtil::pointingRelativeToScroll(const RemapPointingParams_relative &params)
   {

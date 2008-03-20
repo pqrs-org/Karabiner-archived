@@ -209,6 +209,17 @@ namespace org_pqrs_KeyRemap4MacBook {
   extern ClickWatcher clickWatcher;
 
   // --------------------
+  class IntervalChecker {
+  public:
+    void begin(void);
+    bool checkThreshold(uint32_t millisec);
+
+  private:
+    uint32_t secs;
+    uint32_t microsecs;
+  };
+
+  // --------------------
   class FirePointingClick {
   public:
     void set(PointingButton::PointingButton _button) {
