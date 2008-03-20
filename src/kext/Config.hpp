@@ -7,14 +7,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     Config() {
       repeat_initial_wait = 500;
       repeat_wait = 30;
-      pointing_relative2scroll_ratio = 100;
+      pointing_relative2scroll_threshold = 16;
     }
 
     // ----------------------------------------
     int repeat_initial_wait;
     int repeat_wait;
 
-    int pointing_relative2scroll_ratio;
+    int pointing_relative2scroll_threshold;
 
 #include "config/output/include.config.hpp"
 

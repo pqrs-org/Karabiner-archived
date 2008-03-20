@@ -1405,6 +1405,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     dpm.remap(params, KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, FireFunc::firefunc_jis_eisuu_x2);
   }
 
+  // ------------------------------------------------------------
   void
   remap_pointing_relative_fn_to_scroll(const RemapPointingParams_relative &params)
   {
@@ -1412,6 +1413,33 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (! allFlagStatus.fn.isHeldDown()) return;
 
+    RemapUtil::pointingRelativeToScroll(params);
+  }
+
+  void
+  remap_pointing_relative_rightclick_to_scroll(const RemapPointingParams_relative &params)
+  {
+    if (! config.remap_pointing_relative_rightclick_to_scroll) return;
+
+    static bool rightClicked = false;
+    static bool doScroll = false;
+
+    if ((*(params.buttons) & PointingButton::RIGHT) == 0) {
+      if (rightClicked && ! doScroll) {
+        *(params.ex_dropEvent) = true;
+        listFirePointingClick.add(PointingButton::RIGHT);
+        listFirePointingClick.add(PointingButton::NONE);
+      }
+      rightClicked = false;
+      doScroll = false;
+      return;
+    }
+
+    *(params.ex_dropEvent) = true;
+    rightClicked = true;
+    if (*(params.dx) == 0 && *(params.dy) == 0) return;
+
+    doScroll = true;
     RemapUtil::pointingRelativeToScroll(params);
   }
 }
@@ -1624,4 +1652,5 @@ org_pqrs_KeyRemap4MacBook::remap_pointing_relative_core(const RemapPointingParam
   }
 
   remap_pointing_relative_fn_to_scroll(params);
+  remap_pointing_relative_rightclick_to_scroll(params);
 }

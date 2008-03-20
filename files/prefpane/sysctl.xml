@@ -19,6 +19,10 @@
       <name>Remap Pointing Device</name>
       <list>
         <item>
+          <name>RightClick + CursorMove to Scroll</name>
+          <sysctl>keyremap4macbook.remap.pointing_relative_rightclick_to_scroll</sysctl>
+        </item>
+        <item>
           <name>FN + CursorMove to Scroll</name>
           <sysctl>keyremap4macbook.remap.pointing_relative_fn_to_scroll</sysctl>
         </item>

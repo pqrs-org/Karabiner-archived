@@ -32,7 +32,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   SYSCTL_INT(_keyremap4macbook_repeat, OID_AUTO, initial_wait, CTLTYPE_INT|CTLFLAG_RW, &(config.repeat_initial_wait), 0, "");
   SYSCTL_INT(_keyremap4macbook_repeat, OID_AUTO, wait, CTLTYPE_INT|CTLFLAG_RW, &(config.repeat_wait), 0, "");
 
-  SYSCTL_INT(_keyremap4macbook_pointing, OID_AUTO, relative2scroll_ratio, CTLTYPE_INT|CTLFLAG_RW, &(config.pointing_relative2scroll_ratio), 0, "");
+  SYSCTL_INT(_keyremap4macbook_pointing, OID_AUTO, relative2scroll_threshold, CTLTYPE_INT|CTLFLAG_RW, &(config.pointing_relative2scroll_threshold), 0, "");
 
     // ----------------------------------------
 #include "config/output/include.config_SYSCTL.cpp"
@@ -58,7 +58,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_register_oid(&sysctl__keyremap4macbook_repeat_initial_wait);
     sysctl_register_oid(&sysctl__keyremap4macbook_repeat_wait);
 
-    sysctl_register_oid(&sysctl__keyremap4macbook_pointing_relative2scroll_ratio);
+    sysctl_register_oid(&sysctl__keyremap4macbook_pointing_relative2scroll_threshold);
 
     // ----------------------------------------
 #include "config/output/include.config_register.cpp"
@@ -83,7 +83,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_unregister_oid(&sysctl__keyremap4macbook_repeat_initial_wait);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_repeat_wait);
 
-    sysctl_unregister_oid(&sysctl__keyremap4macbook_pointing_relative2scroll_ratio);
+    sysctl_unregister_oid(&sysctl__keyremap4macbook_pointing_relative2scroll_threshold);
 
     // ----------------------------------------
 #include "config/output/include.config_unregister.cpp"
