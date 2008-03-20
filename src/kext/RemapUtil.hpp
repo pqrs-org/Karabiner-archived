@@ -208,22 +208,39 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
   extern ClickWatcher clickWatcher;
 
-  // ----------------------------------------------------------------------
+  // --------------------
   class FirePointingClick {
   public:
     void set(PointingButton::PointingButton _button) {
       enable = true;
       button = _button;
     }
-    void fire(IOHIPointing *pointing, AbsoluteTime ts);
+    void unset(void) {
+      enable = false;
+    }
     bool isEnable(void) const { return enable; }
+    PointingButton::PointingButton getButton(void) const { return button; }
 
   private:
     bool enable;
     PointingButton::PointingButton button;
   };
 
-  extern FirePointingClick firePointingClick;
+  class ListFirePointingClick {
+  public:
+    enum {
+      FIREPOINTINGCLICK_MAXNUM = 4,
+    };
+    void reset(void);
+    bool isEmpty(void);
+    void add(PointingButton::PointingButton button);
+    void fire(RelativePointerEventCallback callback, OSObject *target, OSObject *sender, AbsoluteTime ts);
+
+  private:
+    FirePointingClick list[FIREPOINTINGCLICK_MAXNUM];
+  };
+
+  extern ListFirePointingClick listFirePointingClick;
 
   // --------------------
   class FirePointingScroll {

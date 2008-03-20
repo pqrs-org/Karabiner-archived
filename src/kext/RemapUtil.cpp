@@ -7,7 +7,7 @@
 namespace org_pqrs_KeyRemap4MacBook {
   AllFlagStatus allFlagStatus;
   ListFireExtraKey listFireExtraKey;
-  FirePointingClick firePointingClick;
+  ListFirePointingClick listFirePointingClick;
   FirePointingScroll firePointingScroll;
   ClickWatcher clickWatcher;
 
@@ -261,10 +261,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (isModifierOn(params, fromFlag)) {
       fromStatus->decrease();
-      firePointingClick.set(toButton);
+      listFirePointingClick.add(toButton);
     } else {
       fromStatus->increase();
-      firePointingClick.set(PointingButton::NONE);
+      listFirePointingClick.add(PointingButton::NONE);
     }
 
     *(params.ex_dropKey) = true;
@@ -276,9 +276,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     *(params.ex_dropKey) = true;
     if (*(params.eventType) == KeyEvent::DOWN) {
-      firePointingClick.set(toButton);
+      listFirePointingClick.add(toButton);
     } else if (*(params.eventType) == KeyEvent::UP) {
-      firePointingClick.set(PointingButton::NONE);
+      listFirePointingClick.add(PointingButton::NONE);
     }
   }
 
@@ -363,33 +363,48 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // --------------------
+  class IntervalChecker {
+  public:
+    void begin(void) {
+      clock_get_system_microtime(&secs, &microsecs);
+    }
+
+    bool checkThreshold(uint32_t millisec) {
+      uint32_t s;
+      uint32_t m;
+      clock_get_system_microtime(&s, &m);
+
+      uint32_t interval = (s - secs) * 1000 + (m - microsecs) / 1000;
+      return interval >= millisec;
+    }
+
+  private:
+    uint32_t secs;
+    uint32_t microsecs;
+  };
+
   void
   RemapUtil::pointingRelativeToScroll(const RemapPointingParams_relative &params)
   {
-    int ratio = config.pointing_relative2scroll_ratio;
-    if (ratio < 0) ratio = 0;
-
     *(params.ex_dropEvent) = true;
-    int deltaAxis1 = (- *(params.dy) * ratio) / 1024;
-    if (deltaAxis1 == 0 && *(params.dy) != 0) {
-      if (*(params.dy) > 0) {
-        deltaAxis1 = -1;
-      } else {
-        deltaAxis1 = 1;
-      }
-    }
-    int deltaAxis2 = (- *(params.dx) * ratio) / 1024;
-    if (deltaAxis2 == 0 && *(params.dx) != 0) {
-      if (*(params.dx) > 0) {
-        deltaAxis2 = -1;
-      } else {
-        deltaAxis2 = 1;
-      }
+
+    static IntervalChecker ic;
+    if (! ic.checkThreshold(config.pointing_relative2scroll_threshold)) return;
+    ic.begin();
+
+    int deltaAxis1 = 0;
+    if (*(params.dy) > 0) {
+      deltaAxis1 = -1;
+    } else if (*(params.dy) < 0) {
+      deltaAxis1 = 1;
     }
 
-#if 0
-    printf("deltaAxis1: %d, deltaAxis2: %d\n", deltaAxis1, deltaAxis2);
-#endif
+    int deltaAxis2 = 0;
+    if (*(params.dx) > 0) {
+      deltaAxis2 = -1;
+    } else if (*(params.dx) < 0) {
+      deltaAxis2 = 1;
+    }
 
     firePointingScroll.set(deltaAxis1, deltaAxis2, 0);
   }
@@ -768,13 +783,46 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
-  FirePointingClick::fire(IOHIPointing *pointing, AbsoluteTime ts)
+  ListFirePointingClick::reset(void)
   {
-    if (! enable) return;
-    enable = false;
-    pointing->dispatchRelativePointerEvent(0, 0, button, ts);
+    for (int i = 0; i < FIREPOINTINGCLICK_MAXNUM; ++i) {
+      list[i].unset();
+    }
   }
 
+  bool
+  ListFirePointingClick::isEmpty(void)
+  {
+    for (int i = 0; i < FIREPOINTINGCLICK_MAXNUM; ++i) {
+      if (list[i].isEnable()) return false;
+    }
+    return true;
+  }
+
+  void
+  ListFirePointingClick::add(PointingButton::PointingButton button)
+  {
+    for (int i = 0; i < FIREPOINTINGCLICK_MAXNUM; ++i) {
+      if (! list[i].isEnable()) {
+        list[i].set(button);
+        break;
+      }
+    }
+  }
+
+  void
+  ListFirePointingClick::fire(RelativePointerEventCallback callback, OSObject *target, OSObject *sender, AbsoluteTime ts)
+  {
+    for (int i = 0; i < FIREPOINTINGCLICK_MAXNUM; ++i) {
+      FirePointingClick &item = list[i];
+
+      if (item.isEnable()) {
+        callback(target, item.getButton(), 0, 0, ts, sender, 0);
+      }
+    }
+  }
+
+  // --------------------
   void
   FirePointingScroll::fire(IOHIPointing *pointing, AbsoluteTime ts)
   {
