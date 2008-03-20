@@ -1421,26 +1421,27 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_pointing_relative_rightclick_to_scroll) return;
 
+    static IntervalChecker ic;
     static bool rightClicked = false;
-    static bool doScroll = false;
 
     if ((*(params.buttons) & PointingButton::RIGHT) == 0) {
-      if (rightClicked && ! doScroll) {
-        *(params.ex_dropEvent) = true;
-        listFirePointingClick.add(PointingButton::RIGHT);
-        listFirePointingClick.add(PointingButton::NONE);
+      if (rightClicked) {
+        rightClicked = false;
+        if (! ic.checkThreshold(config.pointing_rightclick_threshold)) {
+          *(params.ex_dropEvent) = true;
+          listFirePointingClick.add(PointingButton::RIGHT);
+          listFirePointingClick.add(PointingButton::NONE);
+        }
       }
-      rightClicked = false;
-      doScroll = false;
-      return;
+    } else {
+      if (! rightClicked) {
+        rightClicked = true;
+        ic.begin();
+      }
+
+      *(params.ex_dropEvent) = true;
+      RemapUtil::pointingRelativeToScroll(params);
     }
-
-    *(params.ex_dropEvent) = true;
-    rightClicked = true;
-    if (*(params.dx) == 0 && *(params.dy) == 0) return;
-
-    doScroll = true;
-    RemapUtil::pointingRelativeToScroll(params);
   }
 }
 
