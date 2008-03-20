@@ -362,6 +362,38 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
+  // --------------------
+  void
+  RemapUtil::pointingRelativeToScroll(const RemapPointingParams_relative &params)
+  {
+    int ratio = config.pointing_relative2scroll_ratio;
+    if (ratio < 0) ratio = 0;
+
+    *(params.ex_dropEvent) = true;
+    int deltaAxis1 = (- *(params.dy) * ratio) / 1024;
+    if (deltaAxis1 == 0 && *(params.dy) != 0) {
+      if (*(params.dy) > 0) {
+        deltaAxis1 = -1;
+      } else {
+        deltaAxis1 = 1;
+      }
+    }
+    int deltaAxis2 = (- *(params.dx) * ratio) / 1024;
+    if (deltaAxis2 == 0 && *(params.dx) != 0) {
+      if (*(params.dx) > 0) {
+        deltaAxis2 = -1;
+      } else {
+        deltaAxis2 = 1;
+      }
+    }
+
+#if 0
+    printf("deltaAxis1: %d, deltaAxis2: %d\n", deltaAxis1, deltaAxis2);
+#endif
+
+    firePointingScroll.set(deltaAxis1, deltaAxis2, 0);
+  }
+
   // ----------------------------------------------------------------------
   void
   FlagStatus::initialize(const RemapParams &params)
@@ -732,5 +764,22 @@ namespace org_pqrs_KeyRemap4MacBook {
         watchlist[i] = NULL;
       }
     }
+  }
+
+  // ----------------------------------------
+  void
+  FirePointingClick::fire(IOHIPointing *pointing, AbsoluteTime ts)
+  {
+    if (! enable) return;
+    enable = false;
+    pointing->dispatchRelativePointerEvent(0, 0, button, ts);
+  }
+
+  void
+  FirePointingScroll::fire(IOHIPointing *pointing, AbsoluteTime ts)
+  {
+    if (! enable) return;
+    enable = false;
+    pointing->dispatchScrollWheelEvent(deltaAxis1, deltaAxis2, deltaAxis3, ts);
   }
 }

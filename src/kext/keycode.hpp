@@ -195,10 +195,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   namespace PointingButton {
     enum PointingButton {
+      // !! this is magic numbers !! (see IOHIPointing::dispatchRelativePointerEvent)
       NONE = 0,
-      LEFT = 4,
-      MIDDLE = 2,
-      RIGHT = 1,
+      LEFT = 1,
+      RIGHT = 2,
+      MIDDLE = 4,
     };
   }
 }

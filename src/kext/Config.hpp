@@ -7,7 +7,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     Config() {
       repeat_initial_wait = 500;
       repeat_wait = 30;
-      pointing_relative2scroll_ratio = 750;
+      pointing_relative2scroll_ratio = 100;
     }
 
     // ----------------------------------------
