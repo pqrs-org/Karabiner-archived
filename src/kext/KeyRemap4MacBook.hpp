@@ -54,9 +54,6 @@ private:
     IOHIPointing *pointing;
     RelativePointerEventCallback origRelativePointerEventCallback;
     ScrollWheelEventCallback origScrollWheelEventCallback;
-    // save EventTarget for keyToPointing.
-    OSObject *relativePointerEventTarget;
-    OSObject *scrollWheelEventTarget;
 
     void initialize(IOHIPointing *_pointing);
     void terminate(void);
@@ -110,9 +107,6 @@ private:
                                            OSObject *sender,
                                            void *refcon);
 
-  static void doClick(int buttons, AbsoluteTime ts);
-
-  // ----------
   static void scrollWheelEventCallback(OSObject *target,
                                        short int deltaAxis1,
                                        short int deltaAxis2,
@@ -127,8 +121,6 @@ private:
                                        AbsoluteTime ts,
                                        OSObject *sender,
                                        void *refcon);
-
-  static void org_pqrs_driver_KeyRemap4MacBook::doScroll(AbsoluteTime ts);
 };
 
 #endif

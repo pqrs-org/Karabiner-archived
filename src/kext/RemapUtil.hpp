@@ -32,6 +32,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     void jis_toggle_eisuu_kana(const RemapParams &params, KeyCode::KeyCode fromKeyCode);
     void jis_toggle_eisuu_kana(const RemapParams &params, ModifierFlag::ModifierFlag fromModifier);
+
+    // ----------------------------------------
+    void pointingRelativeToScroll(const RemapPointingParams_relative &params);
   }
 
   class FlagStatus {
@@ -212,11 +215,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       enable = true;
       button = _button;
     }
-    void unset(void) {
-      enable = false;
-    }
+    void fire(IOHIPointing *pointing, AbsoluteTime ts);
     bool isEnable(void) const { return enable; }
-    unsigned int getButton(void) const { return button; }
 
   private:
     bool enable;
@@ -234,13 +234,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       deltaAxis2 = _deltaAxis2;
       deltaAxis3 = _deltaAxis3;
     }
-    void unset(void) {
-      enable = false;
-    }
+    void fire(IOHIPointing *pointing, AbsoluteTime ts);
     bool isEnable(void) const { return enable; }
-    short int getDeltaAxis1(void) const { return deltaAxis1; }
-    short int getDeltaAxis2(void) const { return deltaAxis2; }
-    short int getDeltaAxis3(void) const { return deltaAxis3; }
 
   private:
     bool enable;
@@ -250,7 +245,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
 
   extern FirePointingScroll firePointingScroll;
-
 }
 
 #endif

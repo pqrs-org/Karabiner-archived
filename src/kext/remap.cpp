@@ -1412,28 +1412,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (! allFlagStatus.fn.isHeldDown()) return;
 
-    int ratio = config.pointing_relative2scroll_ratio;
-    if (ratio < 0) ratio = 0;
-
-    *(params.ex_dropEvent) = true;
-    int deltaAxis1 = (- *(params.dy) * ratio) / 1024;
-    if (deltaAxis1 == 0 && *(params.dy) != 0) {
-      if (*(params.dy) > 0) {
-        deltaAxis1 = -1;
-      } else {
-        deltaAxis1 = 1;
-      }
-    }
-    int deltaAxis2 = (- *(params.dx) * ratio) / 1024;
-    if (deltaAxis2 == 0 && *(params.dx) != 0) {
-      if (*(params.dx) > 0) {
-        deltaAxis2 = -1;
-      } else {
-        deltaAxis2 = 1;
-      }
-    }
-
-    firePointingScroll.set(deltaAxis1, deltaAxis2, 0);
+    RemapUtil::pointingRelativeToScroll(params);
   }
 }
 
