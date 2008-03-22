@@ -2,24 +2,23 @@
 
 #import "AdminAction.h"
 
+static AuthorizationRef authorizationRef = nil;
+
 @implementation AdminAction
 
-- (id) init
++ (BOOL) initialize
 {
-  [super init];
-
-  _authorizationRef = nil;
-
-  AuthorizationFlags flags = kAuthorizationFlagDefaults;
-  OSStatus status = AuthorizationCreate(NULL, kAuthorizationEmptyEnvironment, flags, &_authorizationRef);
-  if (status != errAuthorizationSuccess) return nil;
-
-  return self;
+  if (authorizationRef == nil) {
+    AuthorizationFlags flags = kAuthorizationFlagDefaults;
+    OSStatus status = AuthorizationCreate(NULL, kAuthorizationEmptyEnvironment, flags, &authorizationRef);
+    if (status != errAuthorizationSuccess) return FALSE;
+  }
+  return TRUE;
 }
 
-- (BOOL) getPrivilege
++ (BOOL) getPrivilege
 {
-  if (! _authorizationRef) return FALSE;
+  if (! [AdminAction initialize]) return FALSE;
 
   AuthorizationItem item;
 
@@ -34,22 +33,22 @@
   rights.items = &item;
 
   AuthorizationFlags flags = kAuthorizationFlagInteractionAllowed | kAuthorizationFlagExtendRights;
-  OSStatus status = AuthorizationCopyRights(_authorizationRef, &rights, kAuthorizationEmptyEnvironment, flags, NULL);
+  OSStatus status = AuthorizationCopyRights(authorizationRef, &rights, kAuthorizationEmptyEnvironment, flags, NULL);
   if (status != errAuthorizationSuccess) return FALSE;
 
   return TRUE;
 }
 
-- (BOOL) execCommand:(char *)command
++ (BOOL) execCommand:(char *)command
 {
-  if (! [self getPrivilege]) return FALSE;
+  if (! [AdminAction getPrivilege]) return FALSE;
 
   char *const args[] = {
     "-c",
     command,
     NULL,
   };
-  OSStatus status = AuthorizationExecuteWithPrivileges(_authorizationRef,
+  OSStatus status = AuthorizationExecuteWithPrivileges(authorizationRef,
                                                        "/bin/sh",
                                                        kAuthorizationFlagDefaults,
                                                        args,

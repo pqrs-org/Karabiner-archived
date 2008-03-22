@@ -7,7 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3412EA110D94225F0007906B /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 3412EA0F0D94225F0007906B /* Common.h */; };
+		3412EA120D94225F0007906B /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 3412EA100D94225F0007906B /* Common.m */; };
 		349FDBBF0D545C2200EED33C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 349FDBBE0D545C2200EED33C /* Security.framework */; };
+		34CBFDDB0D94CEC00087D9DB /* OutlineView_checkbox.h in Headers */ = {isa = PBXBuildFile; fileRef = 34CBFDD50D94CEC00087D9DB /* OutlineView_checkbox.h */; };
+		34CBFDDC0D94CEC00087D9DB /* OutlineView_checkbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CBFDD60D94CEC00087D9DB /* OutlineView_checkbox.m */; };
+		34CBFDDD0D94CEC00087D9DB /* OutlineView_number.h in Headers */ = {isa = PBXBuildFile; fileRef = 34CBFDD70D94CEC00087D9DB /* OutlineView_number.h */; };
+		34CBFDDE0D94CEC00087D9DB /* OutlineView_number.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CBFDD80D94CEC00087D9DB /* OutlineView_number.m */; };
+		34CBFDDF0D94CEC00087D9DB /* XMLTreeWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 34CBFDD90D94CEC00087D9DB /* XMLTreeWrapper.h */; };
+		34CBFDE00D94CEC00087D9DB /* XMLTreeWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CBFDDA0D94CEC00087D9DB /* XMLTreeWrapper.m */; };
 		34E409D90D54C4C1008441E7 /* AdminAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 34E409D50D54C4C1008441E7 /* AdminAction.h */; };
 		34E409DA0D54C4C1008441E7 /* AdminAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E409D60D54C4C1008441E7 /* AdminAction.m */; };
 		34E409DB0D54C4C1008441E7 /* SysctlWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 34E409D70D54C4C1008441E7 /* SysctlWrapper.h */; };
@@ -28,7 +36,15 @@
 		089C167FFE841241C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		32DBCFA20370C41700C91783 /* KeyRemap4MacBook_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyRemap4MacBook_Prefix.pch; sourceTree = "<group>"; };
+		3412EA0F0D94225F0007906B /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		3412EA100D94225F0007906B /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
 		349FDBBE0D545C2200EED33C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
+		34CBFDD50D94CEC00087D9DB /* OutlineView_checkbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutlineView_checkbox.h; sourceTree = "<group>"; };
+		34CBFDD60D94CEC00087D9DB /* OutlineView_checkbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutlineView_checkbox.m; sourceTree = "<group>"; };
+		34CBFDD70D94CEC00087D9DB /* OutlineView_number.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutlineView_number.h; sourceTree = "<group>"; };
+		34CBFDD80D94CEC00087D9DB /* OutlineView_number.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutlineView_number.m; sourceTree = "<group>"; };
+		34CBFDD90D94CEC00087D9DB /* XMLTreeWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLTreeWrapper.h; sourceTree = "<group>"; };
+		34CBFDDA0D94CEC00087D9DB /* XMLTreeWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLTreeWrapper.m; sourceTree = "<group>"; };
 		34E409D50D54C4C1008441E7 /* AdminAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdminAction.h; path = sharecode/AdminAction.h; sourceTree = "<group>"; };
 		34E409D60D54C4C1008441E7 /* AdminAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AdminAction.m; path = sharecode/AdminAction.m; sourceTree = "<group>"; };
 		34E409D70D54C4C1008441E7 /* SysctlWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SysctlWrapper.h; path = sharecode/SysctlWrapper.h; sourceTree = "<group>"; };
@@ -92,6 +108,14 @@
 		08FB77AFFE84173DC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				34CBFDD50D94CEC00087D9DB /* OutlineView_checkbox.h */,
+				34CBFDD60D94CEC00087D9DB /* OutlineView_checkbox.m */,
+				34CBFDD70D94CEC00087D9DB /* OutlineView_number.h */,
+				34CBFDD80D94CEC00087D9DB /* OutlineView_number.m */,
+				34CBFDD90D94CEC00087D9DB /* XMLTreeWrapper.h */,
+				34CBFDDA0D94CEC00087D9DB /* XMLTreeWrapper.m */,
+				3412EA0F0D94225F0007906B /* Common.h */,
+				3412EA100D94225F0007906B /* Common.m */,
 				34E409D50D54C4C1008441E7 /* AdminAction.h */,
 				34E409D60D54C4C1008441E7 /* AdminAction.m */,
 				34E409D70D54C4C1008441E7 /* SysctlWrapper.h */,
@@ -147,6 +171,10 @@
 				8D202CEB0486D31800D8A456 /* KeyRemap4MacBookPref.h in Headers */,
 				34E409D90D54C4C1008441E7 /* AdminAction.h in Headers */,
 				34E409DB0D54C4C1008441E7 /* SysctlWrapper.h in Headers */,
+				3412EA110D94225F0007906B /* Common.h in Headers */,
+				34CBFDDB0D94CEC00087D9DB /* OutlineView_checkbox.h in Headers */,
+				34CBFDDD0D94CEC00087D9DB /* OutlineView_number.h in Headers */,
+				34CBFDDF0D94CEC00087D9DB /* XMLTreeWrapper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +249,10 @@
 				8D202CF10486D31800D8A456 /* KeyRemap4MacBookPref.m in Sources */,
 				34E409DA0D54C4C1008441E7 /* AdminAction.m in Sources */,
 				34E409DC0D54C4C1008441E7 /* SysctlWrapper.m in Sources */,
+				3412EA120D94225F0007906B /* Common.m in Sources */,
+				34CBFDDC0D94CEC00087D9DB /* OutlineView_checkbox.m in Sources */,
+				34CBFDDE0D94CEC00087D9DB /* OutlineView_number.m in Sources */,
+				34CBFDE00D94CEC00087D9DB /* XMLTreeWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -4,7 +4,7 @@
 
 @implementation SysctlWrapper
 
-- (NSString *) getString:(NSString *)name
++ (NSString *) getString:(NSString *)name
 {
   const char *cstr = [name UTF8String];
 
@@ -17,7 +17,7 @@
   return [[[NSString alloc] initWithUTF8String:buf] autorelease];
 }
 
-- (NSNumber *) getInt:(NSString *)name
++ (NSNumber *) getInt:(NSString *)name
 {
   const char *cstr = [name UTF8String];
 

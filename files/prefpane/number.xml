@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<root>
+  <list>
+    <item>
+      <name>Key Repeat</name>
+      <list>
+        <item>
+          <name>Initial Wait [default 500 ms]</name>
+          <sysctl>keyremap4macbook.repeat.initial_wait</sysctl>
+        </item>
+        <item>
+          <name>Wait [default 30 ms]</name>
+          <sysctl>keyremap4macbook.repeat.wait</sysctl>
+        </item>
+      </list>
+    </item>
+    <item>
+      <name>Pointing Device (Mouse) Remapping</name>
+      <list>
+        <item>
+          <name>CursorMove to ScrollWheel Threshold [default 16 ms]</name>
+          <sysctl>keyremap4macbook.pointing.relative2scroll_threshold</sysctl>
+        </item>
+        <item>
+          <name>RightClick Threshold [default 300 ms]</name>
+          <sysctl>keyremap4macbook.pointing.relative2scroll_threshold</sysctl>
+        </item>
+      </list>
+    </item>
+  </list>
+</root>

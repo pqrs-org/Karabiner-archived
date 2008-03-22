@@ -8,7 +8,7 @@
 // SysctlWrapper provides only the get methods.
 // Because of the Authorization APIs, we use /usr/sbin/sysctl to set the value.
 
-- (NSString *) getString:(NSString *)name;
-- (NSNumber *) getInt:(NSString *)name;
++ (NSString *) getString:(NSString *)name;
++ (NSNumber *) getInt:(NSString *)name;
 
 @end
