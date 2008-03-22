@@ -8,7 +8,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       repeat_initial_wait = 500;
       repeat_wait = 30;
       pointing_relative2scroll_threshold = 16;
-      pointing_rightclick_threshold = 300;
     }
 
     // ----------------------------------------
@@ -16,8 +15,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     int repeat_wait;
 
     int pointing_relative2scroll_threshold;
-    // for remap_pointing_relative_rightclick_to_scroll
-    int pointing_rightclick_threshold;
 
 #include "config/output/include.config.hpp"
 

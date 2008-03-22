@@ -6,6 +6,19 @@
 	<array>
 		<dict>
 			<key>CLASS</key>
+			<string>OutlineView_checkbox</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>OUTLETS</key>
+			<dict>
+				<key>_outlineView</key>
+				<string>id</string>
+			</dict>
+			<key>SUPERCLASS</key>
+			<string>NSObject</string>
+		</dict>
+		<dict>
+			<key>CLASS</key>
 			<string>FirstResponder</string>
 			<key>LANGUAGE</key>
 			<string>ObjC</string>
@@ -13,25 +26,12 @@
 			<string>NSObject</string>
 		</dict>
 		<dict>
-			<key>ACTIONS</key>
-			<dict>
-				<key>setKeyRepeat_initialWait</key>
-				<string>id</string>
-				<key>setKeyRepeat_wait</key>
-				<string>id</string>
-			</dict>
 			<key>CLASS</key>
 			<string>KeyRemap4MacBookPref</string>
 			<key>LANGUAGE</key>
 			<string>ObjC</string>
 			<key>OUTLETS</key>
 			<dict>
-				<key>_keyrepeat_initialWait</key>
-				<string>id</string>
-				<key>_keyrepeat_wait</key>
-				<string>id</string>
-				<key>_outlineView</key>
-				<string>id</string>
 				<key>_versionText</key>
 				<string>id</string>
 			</dict>
@@ -52,6 +52,19 @@
 				<key>_lastKeyView</key>
 				<string>id</string>
 				<key>_window</key>
+				<string>id</string>
+			</dict>
+			<key>SUPERCLASS</key>
+			<string>NSObject</string>
+		</dict>
+		<dict>
+			<key>CLASS</key>
+			<string>OutlineView_number</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>OUTLETS</key>
+			<dict>
+				<key>_outlineView</key>
 				<string>id</string>
 			</dict>
 			<key>SUPERCLASS</key>

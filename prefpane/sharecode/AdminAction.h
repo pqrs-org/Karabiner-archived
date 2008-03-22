@@ -5,10 +5,7 @@
 #import <Security/AuthorizationTags.h>
 
 @interface AdminAction : NSObject
-{
-  AuthorizationRef _authorizationRef;
-}
 
-- (BOOL) execCommand:(char *)command;
++ (BOOL) execCommand:(char *)command;
 
 @end
