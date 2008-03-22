@@ -136,6 +136,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::modifierToPointingButton(params, ModifierFlag::COMMAND_R, PointingButton::MIDDLE);
   }
 
+  void
+  remap_commandR2rightclick(const RemapParams &params)
+  {
+    if (! config.remap_commandR2rightclick) return;
+
+    RemapUtil::modifierToPointingButton(params, ModifierFlag::COMMAND_R, PointingButton::RIGHT);
+  }
+
   // ----------------------------------------
   void
   remap_controlL2commandL(const RemapParams &params)
@@ -1475,6 +1483,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_commandR2shiftL(params);
   remap_commandR2enter(params);
   remap_commandR2middleclick(params);
+  remap_commandR2rightclick(params);
 
   remap_delete2backslash(params);
   remap_delete2f13_shift2tilde(params);

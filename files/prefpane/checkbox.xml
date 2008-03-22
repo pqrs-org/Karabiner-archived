@@ -116,6 +116,10 @@
           <name>Command_R to MiddleClick</name>
           <sysctl>keyremap4macbook.remap.commandR2middleclick</sysctl>
         </item>
+        <item>
+          <name>Command_R to RightClick</name>
+          <sysctl>keyremap4macbook.remap.commandR2rightclick</sysctl>
+        </item>
       </list>
     </item>
 
