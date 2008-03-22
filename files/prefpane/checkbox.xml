@@ -23,7 +23,7 @@
           <sysctl>keyremap4macbook.remap.pointing_relative_rightclick_to_scroll</sysctl>
         </item>
         <item>
-          <name>FN+CursorMove to Scroll</name>
+          <name>FN+CursorMove to ScrollWheel</name>
           <sysctl>keyremap4macbook.remap.pointing_relative_fn_to_scroll</sysctl>
         </item>
       </list>
