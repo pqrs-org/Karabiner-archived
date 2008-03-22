@@ -12,7 +12,7 @@
   if (self) {
     _xmlTreeWrapper = [[XMLTreeWrapper alloc] init];
     if (_xmlTreeWrapper == nil) return nil;
-    if (! [_xmlTreeWrapper load:@"/Users/tekezo/src/objc/prefpane/number.xml"]) return nil;
+    if (! [_xmlTreeWrapper load:@"/Library/org.pqrs/KeyRemap4MacBook/prefpane/number.xml"]) return nil;
   }
   return self;
 }

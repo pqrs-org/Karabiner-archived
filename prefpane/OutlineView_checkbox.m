@@ -12,7 +12,7 @@
   if (self) {
     _xmlTreeWrapper = [[XMLTreeWrapper alloc] init];
     if (_xmlTreeWrapper == nil) return nil;
-    if (! [_xmlTreeWrapper load:@"/Users/tekezo/src/objc/prefpane/checkbox.xml"]) return nil;
+    if (! [_xmlTreeWrapper load:@"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml"]) return nil;
     [_outlineView reloadData];
   }
   return self;
