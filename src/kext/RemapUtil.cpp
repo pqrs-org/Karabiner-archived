@@ -386,23 +386,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     *(params.ex_dropEvent) = true;
 
-    static IntervalChecker ic;
-    if (! ic.checkThreshold(config.pointing_relative2scroll_threshold)) return;
-    ic.begin();
-
-    int deltaAxis1 = 0;
-    if (*(params.dy) > 0) {
-      deltaAxis1 = -1;
-    } else if (*(params.dy) < 0) {
-      deltaAxis1 = 1;
-    }
-
-    int deltaAxis2 = 0;
-    if (*(params.dx) > 0) {
-      deltaAxis2 = -1;
-    } else if (*(params.dx) < 0) {
-      deltaAxis2 = 1;
-    }
+    int deltaAxis1 = - *(params.dy);
+    int deltaAxis2 = - *(params.dx);
 
     firePointingScroll.set(deltaAxis1, deltaAxis2, 0);
   }
@@ -551,6 +536,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListFireExtraKey::fire(FireExtraKey::Type type, KeyboardEventCallback callback, OSObject *target, OSObject *sender, void *refcon, const RemapParams &params)
   {
+    if (callback == NULL) return;
+
     for (int i = 0; i < FIREEXTRAKEY_MAXNUM; ++i) {
       FireExtraKey &item = list[i];
 
@@ -811,6 +798,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListFirePointingClick::fire(RelativePointerEventCallback callback, OSObject *target, OSObject *sender, AbsoluteTime ts)
   {
+    if (callback == NULL) return;
+
     for (int i = 0; i < FIREPOINTINGCLICK_MAXNUM; ++i) {
       FirePointingClick &item = list[i];
 
@@ -822,10 +811,21 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // --------------------
   void
-  FirePointingScroll::fire(IOHIPointing *pointing, AbsoluteTime ts)
+  FirePointingScroll::fire(ScrollWheelEventCallback callback, OSObject *target, IOHIPointing *pointing, AbsoluteTime ts)
   {
     if (! enable) return;
     enable = false;
-    pointing->dispatchScrollWheelEvent(deltaAxis1, deltaAxis2, deltaAxis3, ts);
+
+    if (callback == NULL) return;
+
+    IOFixed fixedDelta1 = config.pointing_relative2scroll_ratio * deltaAxis1;
+    IOFixed fixedDelta2 = config.pointing_relative2scroll_ratio * deltaAxis2;
+    IOFixed fixedDelta3 = config.pointing_relative2scroll_ratio * deltaAxis3;
+
+    callback(target,
+             deltaAxis1, deltaAxis2, deltaAxis3,
+             fixedDelta1, fixedDelta2, fixedDelta3,
+             deltaAxis1, deltaAxis2, deltaAxis3,
+             0, ts, pointing, 0);
   }
 }

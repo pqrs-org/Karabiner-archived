@@ -262,7 +262,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       deltaAxis2 = _deltaAxis2;
       deltaAxis3 = _deltaAxis3;
     }
-    void fire(IOHIPointing *pointing, AbsoluteTime ts);
+    void fire(ScrollWheelEventCallback callback, OSObject *target, IOHIPointing *pointing, AbsoluteTime ts);
     bool isEnable(void) const { return enable; }
 
   private:
