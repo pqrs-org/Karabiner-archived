@@ -53,8 +53,10 @@ private:
   struct HookedPointing {
     IOHIPointing *pointing;
     RelativePointerEventCallback origRelativePointerEventCallback;
+    ScrollWheelEventCallback origScrollWheelEventCallback;
     // save EventTarget for keyToPointing.
     OSObject *relativePointerEventTarget;
+    OSObject *scrollWheelEventTarget;
 
     void initialize(IOHIPointing *_pointing);
     void terminate(void);
@@ -107,6 +109,21 @@ private:
                                            AbsoluteTime ts,
                                            OSObject *sender,
                                            void *refcon);
+
+  static void scrollWheelEventCallback(OSObject * target,
+                                       short      deltaAxis1,
+                                       short      deltaAxis2,
+                                       short      deltaAxis3,
+                                       IOFixed    fixedDelta1,
+                                       IOFixed    fixedDelta2,
+                                       IOFixed    fixedDelta3,
+                                       SInt32     pointDelta1,
+                                       SInt32     pointDelta2,
+                                       SInt32     pointDelta3,
+                                       SInt32     options,
+                                       AbsoluteTime ts,
+                                       OSObject * sender,
+                                       void *     refcon);
 };
 
 #endif

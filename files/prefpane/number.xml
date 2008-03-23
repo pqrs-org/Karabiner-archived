@@ -14,10 +14,10 @@
       <baseunit>ms</baseunit>
     </item>
     <item>
-      <name>[Pointing Device] CursorMove to ScrollWheel Threshold</name>
-      <sysctl>keyremap4macbook.pointing.relative2scroll_threshold</sysctl>
-      <default>16</default>
-      <baseunit>ms</baseunit>
+      <name>[Pointing Device] CursorMove to ScrollWheel Ratio</name>
+      <sysctl>keyremap4macbook.pointing.relative2scroll_ratio</sysctl>
+      <default>6000</default>
+      <baseunit></baseunit>
     </item>
   </list>
 </root>
