@@ -575,6 +575,10 @@
           <name>Remap PC Application Key</name>
           <list>
             <item>
+              <name>Application Key to FN</name>
+              <sysctl>keyremap4macbook.remap.pc_application2fn</sysctl>
+            </item>
+            <item>
               <name>Application Key to Option_L</name>
               <sysctl>keyremap4macbook.remap.pc_application2optionL</sysctl>
             </item>
