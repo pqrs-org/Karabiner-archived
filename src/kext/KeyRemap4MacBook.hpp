@@ -21,6 +21,9 @@ private:
     MAXNUM_POINTING = 4,
   };
 
+  IOWorkLoop *workLoop;
+  IOTimerEventSource *refreshTimer;
+
   // ------------------------------------------------------------
   struct HookedKeyboard {
     IOHIKeyboard *kbd;
@@ -43,11 +46,15 @@ private:
     } repeat;
 
     void initialize(IOHIKeyboard *_kbd, IOWorkLoop *workLoop);
+    void refresh(void);
     void terminate(IOWorkLoop *workLoop);
   };
   static HookedKeyboard hookedKeyboard[MAXNUM_KEYBOARD];
   static HookedKeyboard *new_hookedKeyboard(void);
   static HookedKeyboard *search_hookedKeyboard(const IOHIKeyboard *kbd);
+  static KeyboardEventCallback getKeyboardEventCallback(IOHIKeyboard *kbd) {
+    return reinterpret_cast<KeyboardEventCallback>(kbd->_keyboardEventAction);
+  }
 
   // --------------------
   struct HookedPointing {
@@ -59,12 +66,22 @@ private:
     OSObject *scrollWheelEventTarget;
 
     void initialize(IOHIPointing *_pointing);
+    void refresh(void);
     void terminate(void);
   };
   static HookedPointing hookedPointing[MAXNUM_POINTING];
   static HookedPointing *new_hookedPointing(void);
   static HookedPointing *search_hookedPointing(const IOHIPointing *pointing);
   static HookedPointing *get_1stHookedPointing(void);
+  static RelativePointerEventCallback getRelativePointerEventCallback(IOHIPointing *pointing) {
+    return reinterpret_cast<RelativePointerEventCallback>(pointing->_relativePointerEventAction);
+  }
+  static ScrollWheelEventCallback getScrollWheelEventCallback(IOHIPointing *pointing) {
+    return reinterpret_cast<ScrollWheelEventCallback>(pointing->_scrollWheelEventAction);
+  }
+
+  // ------------------------------------------------------------
+  static void refreshHookedDevice(OSObject *owner, IOTimerEventSource *sender);
 
   // ------------------------------------------------------------
   static bool notifierfunc_hookKeyboard(org_pqrs_driver_KeyRemap4MacBook *self, void *ref, IOService *newService);
@@ -98,8 +115,6 @@ private:
                                     void *refcon);
 
   static void doKeyRepeat(OSObject *owner, IOTimerEventSource *sender);
-
-  IOWorkLoop *workLoop;
 
   // --------------------
   static void relativePointerEventCallBack(OSObject *target,
