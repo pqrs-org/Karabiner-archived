@@ -408,11 +408,11 @@ org_pqrs_driver_KeyRemap4MacBook::replacePointingEvent(org_pqrs_driver_KeyRemap4
   const char *name = pointing->getName();
   IOLog("KeyRemap4MacBook::replacePointingEvent name = %s\n", name);
 
-  // IOHIDPointing == External USB Mouse, AppleUSBGrIIITrackpad == MacBook Pro, AppleADBButtons == PowerBook,
+  // IOHIDPointing == External USB Mouse, AppleUSBGrIIITrackpad == MacBook Pro, AppleADBMouseType4 == PowerBook, com_kensington_mouseworks_iokit_VirtualMouse == Kensington
   if (strcmp(name, "IOHIDPointing") == 0 ||
       strcmp(name, "AppleUSBGrIIITrackpad") == 0 ||
-      strcmp(name, "AppleADBButtons") == 0 ||
-      strcmp(name, "AppleADBMouseType4") == 0) {
+      strcmp(name, "AppleADBMouseType4") == 0 ||
+      strcmp(name, "com_kensington_mouseworks_iokit_VirtualMouse") == 0) {
     HookedPointing *p = new_hookedPointing();
     if (p) {
       IOLog("KeyRemap4MacBook::replacePointingEvent 0x%x (%x)\n", pointing);
