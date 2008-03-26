@@ -16,7 +16,7 @@
     <item>
       <name>[Pointing Device] CursorMove to ScrollWheel Rate</name>
       <sysctl>keyremap4macbook.pointing.relative2scroll_rate</sysctl>
-      <default>200</default>
+      <default>150</default>
       <baseunit>/ 1000</baseunit>
     </item>
   </list>
