@@ -401,13 +401,34 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     *(params.ex_dropEvent) = true;
 
-    int deltaAxis1 = (- *(params.dy) * config.pointing_relative2scroll_rate) / 1000;
-    int deltaAxis2 = (- *(params.dx) * config.pointing_relative2scroll_rate) / 1000;
+    int delta1 = - *(params.dy);
+    int delta2 = - *(params.dx);
 
-    if (config.option_pointing_disable_vertical_scroll) deltaAxis1 = 0;
-    if (config.option_pointing_disable_horizontal_scroll) deltaAxis2 = 0;
+    if (config.option_pointing_disable_vertical_scroll) delta1 = 0;
+    if (config.option_pointing_disable_horizontal_scroll) delta2 = 0;
 
-    firePointingScroll.set(deltaAxis1, deltaAxis2, 0);
+    // ----------------------------------------
+    int deltaAxis1 = (delta1 * config.pointing_relative2scroll_rate) / 1000;
+    if (deltaAxis1 == 0) {
+      if (*(params.dy) < 0) deltaAxis1 = 1;
+      if (*(params.dy) > 0) deltaAxis1 = -1;
+    }
+    int deltaAxis2 = (delta2 * config.pointing_relative2scroll_rate) / 1000;
+    if (deltaAxis2 == 0) {
+      if (*(params.dx) < 0) deltaAxis2 = 1;
+      if (*(params.dx) > 0) deltaAxis2 = -1;
+    }
+
+    // ----------------------------------------
+    IOFixed fixedDelta1 = (delta1 * POINTING_FIXED_SCALE * config.pointing_relative2scroll_rate) / 1000;
+    IOFixed fixedDelta2 = (delta2 * POINTING_FIXED_SCALE * config.pointing_relative2scroll_rate) / 1000;
+
+    SInt32 pointDelta1 = (delta1 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1000;
+    SInt32 pointDelta2 = (delta2 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1000;
+
+    firePointingScroll.set(deltaAxis1, deltaAxis2, 0,
+                           fixedDelta1, fixedDelta2, 0,
+                           pointDelta1, pointDelta2, 0);
   }
 
   // ----------------------------------------------------------------------
@@ -845,13 +866,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     enable = false;
 
     if (callback == NULL) return;
-
-    IOFixed fixedDelta1 = deltaAxis1 * FIXED_SCALE;
-    IOFixed fixedDelta2 = deltaAxis2 * FIXED_SCALE;
-    IOFixed fixedDelta3 = deltaAxis3 * FIXED_SCALE;
-    SInt32 pointDelta1 = deltaAxis1 * POINT_SCALE;
-    SInt32 pointDelta2 = deltaAxis2 * POINT_SCALE;
-    SInt32 pointDelta3 = deltaAxis3 * POINT_SCALE;
 
     callback(target,
              deltaAxis1, deltaAxis2, deltaAxis3,
