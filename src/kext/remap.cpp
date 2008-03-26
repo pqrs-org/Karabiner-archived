@@ -1658,6 +1658,16 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 void
 org_pqrs_KeyRemap4MacBook::remap_pointing_relative_core(const RemapPointingParams_relative &params)
 {
+  if (pointingButtonStatus.helddown_left) {
+    *(params.buttons) |= PointingButton::LEFT;
+  }
+  if (pointingButtonStatus.helddown_right) {
+    *(params.buttons) |= PointingButton::RIGHT;
+  }
+  if (pointingButtonStatus.helddown_middle) {
+    *(params.buttons) |= PointingButton::MIDDLE;
+  }
+
   if (*(params.buttons) != PointingButton::NONE) {
     clickWatcher.click();
   }

@@ -10,6 +10,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   ListFirePointingClick listFirePointingClick;
   FirePointingScroll firePointingScroll;
   ClickWatcher clickWatcher;
+  PointingButtonStatus pointingButtonStatus;
 
   bool
   RemapUtil::isModifierOn(const RemapParams &params, ModifierFlag::ModifierFlag flag)
@@ -262,9 +263,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (isModifierOn(params, fromFlag)) {
       fromStatus->decrease();
       listFirePointingClick.add(toButton);
+
+      bool *status = pointingButtonStatus.getButtonStatus(toButton);
+      if (status) *status = true;
+
     } else {
       fromStatus->increase();
       listFirePointingClick.add(PointingButton::NONE);
+
+      bool *status = pointingButtonStatus.getButtonStatus(toButton);
+      if (status) *status = false;
     }
 
     *(params.ex_dropKey) = true;
@@ -277,8 +285,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     *(params.ex_dropKey) = true;
     if (*(params.eventType) == KeyEvent::DOWN) {
       listFirePointingClick.add(toButton);
+
+      bool *status = pointingButtonStatus.getButtonStatus(toButton);
+      if (status) *status = true;
+
     } else if (*(params.eventType) == KeyEvent::UP) {
       listFirePointingClick.add(PointingButton::NONE);
+
+      bool *status = pointingButtonStatus.getButtonStatus(toButton);
+      if (status) *status = false;
     }
   }
 
@@ -767,6 +782,16 @@ namespace org_pqrs_KeyRemap4MacBook {
         watchlist[i] = NULL;
       }
     }
+  }
+
+  // ----------------------------------------
+  bool *
+  PointingButtonStatus::getButtonStatus(PointingButton::PointingButton button)
+  {
+    if (button == PointingButton::LEFT) return &helddown_left;
+    if (button == PointingButton::RIGHT) return &helddown_right;
+    if (button == PointingButton::MIDDLE) return &helddown_middle;
+    return NULL;
   }
 
   // ----------------------------------------
