@@ -267,6 +267,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   // --------------------
   class FirePointingScroll {
   public:
+    enum {
+      // see IOHIPointing.cpp in darwin.
+      FIXED_SCALE = 65536, // (== << 16)
+      POINT_SCALE = 10, // (== SCROLL_WHEEL_TO_PIXEL_SCALE >> 16)
+    };
     void set(short int _deltaAxis1, short int _deltaAxis2, short int _deltaAxis3) {
       enable = true;
       deltaAxis1 = _deltaAxis1;
