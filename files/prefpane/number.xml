@@ -14,22 +14,10 @@
       <baseunit>ms</baseunit>
     </item>
     <item>
-      <name>[Pointing Device] CursorMove to ScrollWheel Ratio</name>
-      <sysctl>keyremap4macbook.pointing.relative2scroll_ratio</sysctl>
+      <name>[Pointing Device] CursorMove to ScrollWheel Rate</name>
+      <sysctl>keyremap4macbook.pointing.relative2scroll_rate</sysctl>
       <default>750</default>
-      <baseunit>/1000</baseunit>
-    </item>
-    <item>
-      <name>[Pointing Device] CursorMove to ScrollWheel Fixed Coefficient</name>
-      <sysctl>keyremap4macbook.pointing.relative2scroll_fixed_coefficient</sysctl>
-      <default>6554</default>
-      <baseunit></baseunit>
-    </item>
-    <item>
-      <name>[Pointing Device] CursorMove to ScrollWheel Pointing Coefficient</name>
-      <sysctl>keyremap4macbook.pointing.relative2scroll_point_coefficient</sysctl>
-      <default>10</default>
-      <baseunit></baseunit>
+      <baseunit>/ 1000</baseunit>
     </item>
   </list>
 </root>
