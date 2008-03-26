@@ -401,6 +401,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     *(params.ex_dropEvent) = true;
 
+    // ----------------------------------------
     int delta1 = - *(params.dy);
     int delta2 = - *(params.dx);
 
@@ -408,15 +409,33 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (config.option_pointing_disable_horizontal_scroll) delta2 = 0;
 
     // ----------------------------------------
+    // ignore minuscule move
+    int abs1 = delta1 > 0 ? delta1 : -delta1;
+    int abs2 = delta2 > 0 ? delta2 : -delta2;
+    int SCALE = 100;
+
+    if (abs1 > abs2) {
+      // case y > x (ignore x if x is very small)
+      if (abs2) {
+        if ((abs1 * SCALE / abs2) > (10 * SCALE / 5)) delta2 = 0;
+      }
+    }
+    if (abs1 < abs2) {
+      if (abs1) {
+        if ((abs2 * SCALE / abs1) > (10 * SCALE / 5)) delta1 = 0;
+      }
+    }
+
+    if (delta1 == 0 && delta2 == 0) return;
+
+    // ----------------------------------------
     int deltaAxis1 = (delta1 * config.pointing_relative2scroll_rate) / 1000;
-    if (deltaAxis1 == 0) {
-      if (*(params.dy) < 0) deltaAxis1 = 1;
-      if (*(params.dy) > 0) deltaAxis1 = -1;
+    if (deltaAxis1 == 0 && delta1 != 0) {
+      deltaAxis1 = delta1 > 0 ? 1 : -1;
     }
     int deltaAxis2 = (delta2 * config.pointing_relative2scroll_rate) / 1000;
-    if (deltaAxis2 == 0) {
-      if (*(params.dx) < 0) deltaAxis2 = 1;
-      if (*(params.dx) > 0) deltaAxis2 = -1;
+    if (deltaAxis2 == 0 && delta2 != 0) {
+      deltaAxis2 = delta2 > 0 ? 1 : -1;
     }
 
     // ----------------------------------------
@@ -872,5 +891,12 @@ namespace org_pqrs_KeyRemap4MacBook {
              fixedDelta1, fixedDelta2, fixedDelta3,
              pointDelta1, pointDelta2, pointDelta3,
              0, ts, pointing, 0);
+
+    if (config.debug_pointing) {
+      printf("sending scrollWheelEventCallback: deltaAxis(%d, %d, %d), fixedDelta(%d, %d, %d), pointDelta(%d,%d,%d)\n",
+             deltaAxis1, deltaAxis2, deltaAxis3,
+             fixedDelta1, fixedDelta2, fixedDelta3,
+             pointDelta1, pointDelta2, pointDelta3);
+    }
   }
 }
