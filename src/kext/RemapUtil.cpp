@@ -401,8 +401,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     *(params.ex_dropEvent) = true;
 
-    int deltaAxis1 = - *(params.dy);
-    int deltaAxis2 = - *(params.dx);
+    int deltaAxis1 = (- *(params.dy) * config.pointing_relative2scroll_ratio) / 1000;
+    int deltaAxis2 = (- *(params.dx) * config.pointing_relative2scroll_ratio) / 1000;
 
     if (config.option_pointing_disable_vertical_scroll) deltaAxis1 = 0;
     if (config.option_pointing_disable_horizontal_scroll) deltaAxis2 = 0;
@@ -846,14 +846,17 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (callback == NULL) return;
 
-    IOFixed fixedDelta1 = config.pointing_relative2scroll_ratio * deltaAxis1;
-    IOFixed fixedDelta2 = config.pointing_relative2scroll_ratio * deltaAxis2;
-    IOFixed fixedDelta3 = config.pointing_relative2scroll_ratio * deltaAxis3;
+    IOFixed fixedDelta1 = deltaAxis1 * config.pointing_relative2scroll_fixed_coefficient;
+    IOFixed fixedDelta2 = deltaAxis2 * config.pointing_relative2scroll_fixed_coefficient;
+    IOFixed fixedDelta3 = deltaAxis3 * config.pointing_relative2scroll_fixed_coefficient;
+    SInt32 pointDelta1 = deltaAxis1 * config.pointing_relative2scroll_point_coefficient;
+    SInt32 pointDelta2 = deltaAxis2 * config.pointing_relative2scroll_point_coefficient;
+    SInt32 pointDelta3 = deltaAxis3 * config.pointing_relative2scroll_point_coefficient;
 
     callback(target,
              deltaAxis1, deltaAxis2, deltaAxis3,
              fixedDelta1, fixedDelta2, fixedDelta3,
-             deltaAxis1, deltaAxis2, deltaAxis3,
+             pointDelta1, pointDelta2, pointDelta3,
              0, ts, pointing, 0);
   }
 }
