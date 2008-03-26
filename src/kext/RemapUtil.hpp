@@ -7,6 +7,12 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapUtil {
+    enum {
+      // see IOHIPointing.cpp in darwin.
+      POINTING_FIXED_SCALE = 65536, // (== << 16)
+      POINTING_POINT_SCALE = 10, // (== SCROLL_WHEEL_TO_PIXEL_SCALE >> 16)
+    };
+
     bool isModifierOn(const RemapParams &params, ModifierFlag::ModifierFlag flag);
     KeyCode::KeyCode getModifierKeyCode(ModifierFlag::ModifierFlag flag);
     ModifierFlag::ModifierFlag getKeyCodeModifier(unsigned int keycode);
@@ -267,16 +273,17 @@ namespace org_pqrs_KeyRemap4MacBook {
   // --------------------
   class FirePointingScroll {
   public:
-    enum {
-      // see IOHIPointing.cpp in darwin.
-      FIXED_SCALE = 65536, // (== << 16)
-      POINT_SCALE = 10, // (== SCROLL_WHEEL_TO_PIXEL_SCALE >> 16)
-    };
-    void set(short int _deltaAxis1, short int _deltaAxis2, short int _deltaAxis3) {
+    void set(short int _deltaAxis1, short int _deltaAxis2, short int _deltaAxis3, IOFixed _fixedDelta1, IOFixed _fixedDelta2, IOFixed _fixedDelta3, SInt32 _pointDelta1, SInt32 _pointDelta2, SInt32 _pointDelta3) {
       enable = true;
       deltaAxis1 = _deltaAxis1;
       deltaAxis2 = _deltaAxis2;
       deltaAxis3 = _deltaAxis3;
+      fixedDelta1 = _fixedDelta1;
+      fixedDelta2 = _fixedDelta2;
+      fixedDelta3 = _fixedDelta3;
+      pointDelta1 = _pointDelta1;
+      pointDelta2 = _pointDelta2;
+      pointDelta3 = _pointDelta3;
     }
     void fire(ScrollWheelEventCallback callback, OSObject *target, IOHIPointing *pointing, AbsoluteTime ts);
     bool isEnable(void) const { return enable; }
@@ -286,6 +293,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     short int deltaAxis1;
     short int deltaAxis2;
     short int deltaAxis3;
+    IOFixed fixedDelta1;
+    IOFixed fixedDelta2;
+    IOFixed fixedDelta3;
+    SInt32 pointDelta1;
+    SInt32 pointDelta2;
+    SInt32 pointDelta3;
   };
 
   extern FirePointingScroll firePointingScroll;
