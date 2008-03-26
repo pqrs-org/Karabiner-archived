@@ -26,6 +26,17 @@
           <name>FN+CursorMove to ScrollWheel</name>
           <sysctl>keyremap4macbook.remap.pointing_relative_fn_to_scroll</sysctl>
         </item>
+        <name>CursorMove to ScrollWheel Option</name>
+        <list>
+          <item>
+            <name>Disable Horizontal ScrollWheel</name>
+            <sysctl>keyremap4macbook.option.pointing_disable_horizontal_scroll</sysctl>
+          </item>
+          <item>
+            <name>Disable Vertical ScrollWheel</name>
+            <sysctl>keyremap4macbook.option.pointing_disable_vertical_scroll</sysctl>
+          </item>
+        </list>
       </list>
     </item>
 
