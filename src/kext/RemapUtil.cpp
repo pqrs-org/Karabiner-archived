@@ -389,6 +389,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     int deltaAxis1 = - *(params.dy);
     int deltaAxis2 = - *(params.dx);
 
+    if (config.option_pointing_disable_vertical_scroll) deltaAxis1 = 0;
+    if (config.option_pointing_disable_horizontal_scroll) deltaAxis2 = 0;
+
     firePointingScroll.set(deltaAxis1, deltaAxis2, 0);
   }
 
