@@ -554,7 +554,7 @@ org_pqrs_driver_KeyRemap4MacBook::relativePointerEventCallBack(OSObject *target,
       org_pqrs_KeyRemap4MacBook::listFirePointingClick.reset();
 
       if (org_pqrs_KeyRemap4MacBook::config.debug_pointing) {
-        printf("relativePointerEventCallBack: buttons: %d, dx: %d, dy: %d, ts: 0x%x\n", buttons, dx, dy, ts);
+        printf("caught relativePointerEventCallBack: buttons: %d, dx: %d, dy: %d, ts: 0x%x\n", buttons, dx, dy, ts);
       }
 
       bool ex_dropEvent = false;
@@ -567,6 +567,9 @@ org_pqrs_driver_KeyRemap4MacBook::relativePointerEventCallBack(OSObject *target,
 
       if (! ex_dropEvent) {
         if (reCallback) {
+          if (org_pqrs_KeyRemap4MacBook::config.debug_pointing) {
+            printf("sending relativePointerEventCallBack: buttons: %d, dx: %d, dy: %d, ts: 0x%x\n", buttons, dx, dy, ts);
+          }
           reCallback(target, buttons, dx, dy, ts, sender, refcon);
         }
       }
