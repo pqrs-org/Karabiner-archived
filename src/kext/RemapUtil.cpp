@@ -260,6 +260,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     FlagStatus *fromStatus = allFlagStatus.getFlagStatus(fromFlag);
     if (fromStatus == NULL) return;
 
+    *(params.ex_dropKey) = true;
+
     if (isModifierOn(params, fromFlag)) {
       fromStatus->decrease();
       listFirePointingClick.add(toButton);
@@ -274,8 +276,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool *status = pointingButtonStatus.getButtonStatus(toButton);
       if (status) *status = false;
     }
-
-    *(params.ex_dropKey) = true;
   }
 
   void
@@ -283,6 +283,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) return;
 
     *(params.ex_dropKey) = true;
+
     if (*(params.eventType) == KeyEvent::DOWN) {
       listFirePointingClick.add(toButton);
 
@@ -872,6 +873,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       FirePointingClick &item = list[i];
 
       if (item.isEnable()) {
+        if (config.debug_pointing) {
+          printf("sending relativePointerEventCallBack: buttons: %d, ts: 0x%x\n", item.getButton(), ts);
+        }
         callback(target, item.getButton(), 0, 0, ts, sender, 0);
       }
     }
