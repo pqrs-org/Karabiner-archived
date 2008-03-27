@@ -1217,6 +1217,22 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::keyToKey(params, KeyCode::JIS_EISUU, KeyCode::TAB);
   }
 
+  void
+  remap_jis_eisuu2middleclick(const RemapParams &params)
+  {
+    if (! config.remap_jis_eisuu2middleclick) return;
+
+    RemapUtil::keyToPointingButton(params, KeyCode::JIS_EISUU, PointingButton::MIDDLE);
+  }
+
+  void
+  remap_jis_eisuu2rightclick(const RemapParams &params)
+  {
+    if (! config.remap_jis_eisuu2rightclick) return;
+
+    RemapUtil::keyToPointingButton(params, KeyCode::JIS_EISUU, PointingButton::RIGHT);
+  }
+
   // ----------------------------------------
   void
   remap_jis_kana2commandL(const RemapParams &params)
@@ -1273,6 +1289,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_jis_kana2middleclick) return;
 
     RemapUtil::keyToPointingButton(params, KeyCode::JIS_KANA, PointingButton::MIDDLE);
+  }
+
+  void
+  remap_jis_kana2rightclick(const RemapParams &params)
+  {
+    if (! config.remap_jis_kana2rightclick) return;
+
+    RemapUtil::keyToPointingButton(params, KeyCode::JIS_KANA, PointingButton::RIGHT);
   }
 
   // ----------------------------------------
@@ -1585,6 +1609,8 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_jis_eisuu2shiftL(params);
   remap_jis_eisuu2escape(params);
   remap_jis_eisuu2tab(params);
+  remap_jis_eisuu2middleclick(params);
+  remap_jis_eisuu2rightclick(params);
 
   remap_jis_kana2commandL(params);
   remap_jis_kana2controlL(params);
@@ -1593,6 +1619,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_jis_kana2shiftL(params);
   remap_jis_kana2return(params);
   remap_jis_kana2middleclick(params);
+  remap_jis_kana2rightclick(params);
 
   remap_jis_commandR2eisuu(params);
   remap_jis_commandR2kana(params);
