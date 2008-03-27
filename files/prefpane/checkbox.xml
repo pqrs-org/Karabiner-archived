@@ -664,6 +664,14 @@
               <name>EISUU to Tab</name>
               <sysctl>keyremap4macbook.remap.jis_eisuu2tab</sysctl>
             </item>
+            <item>
+              <name>EISUU to MiddleClick</name>
+              <sysctl>keyremap4macbook.remap.jis_eisuu2middleclick</sysctl>
+            </item>
+            <item>
+              <name>EISUU to RightClick</name>
+              <sysctl>keyremap4macbook.remap.jis_eisuu2rightclick</sysctl>
+            </item>
           </list>
         </item>
         <item>
@@ -696,6 +704,10 @@
             <item>
               <name>KANA to MiddleClick</name>
               <sysctl>keyremap4macbook.remap.jis_kana2middleclick</sysctl>
+            </item>
+            <item>
+              <name>KANA to RightClick</name>
+              <sysctl>keyremap4macbook.remap.jis_kana2rightclick</sysctl>
             </item>
           </list>
         </item>
