@@ -2,9 +2,9 @@
 
 require 'cgi'
 
-
 file = "%s/../files/prefpane/checkbox.xml" % File.dirname($0)
 open(file) do |f|
+  total = 0
   while l = f.gets
     if /<list>/ =~ l then
       print "<ul>"
@@ -21,6 +21,10 @@ open(file) do |f|
     if /<name>(.+)<\/name>/ =~ l then
       print CGI.escapeHTML($1)
     end
+    if /<sysctl>/ =~ l then
+      total += 1
+    end
   end
-  print "\n"
+  print "\n\n"
+  print "total: #{total}\n"
 end
