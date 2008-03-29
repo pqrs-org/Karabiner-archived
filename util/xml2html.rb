@@ -2,7 +2,8 @@
 
 require 'cgi'
 
-file = "%s/../files/prefpane/sysctl.xml" % File.dirname($0)
+
+file = "%s/../files/prefpane/checkbox.xml" % File.dirname($0)
 open(file) do |f|
   while l = f.gets
     if /<list>/ =~ l then
@@ -23,5 +24,3 @@ open(file) do |f|
   end
   print "\n"
 end
-
-
