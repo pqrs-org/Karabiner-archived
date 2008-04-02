@@ -153,6 +153,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       EXPOSE_ALL = 160,
 
+      JIS_YEN = 93,
+      JIS_UNDERSCORE = 94,
       JIS_EISUU = 102,
       JIS_KANA = 104,
 
@@ -187,9 +189,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       POWERBOOK_G4 = 202,
       POWERBOOK = 207,
 
-      APPLE_USB_KEYBOARD = 36,
-      PC_USB_KEYBOARD = 42,
       Logitech_DI_NOVO_KEYBOARD = 41,
+      JIS_APPLE_USB_KEYBOARD = 36,
+      JIS_PC_USB_KEYBOARD = 42,
     };
   }
 

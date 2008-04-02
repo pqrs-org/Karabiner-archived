@@ -712,6 +712,15 @@
           </list>
         </item>
         <item>
+          <name>Remap Underscore(Ro) Key</name>
+          <list>
+            <item>
+              <name>Underscore(Ro) to Backslash(\)</name>
+              <sysctl>keyremap4macbook.remap.jis_underscore2backslash</sysctl>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Overlay a Key on a Modifier</name>
           <list>
             <item>

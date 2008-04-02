@@ -1301,6 +1301,21 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
+  remap_jis_underscore2backslash(const RemapParams &params)
+  {
+    if (! config.remap_jis_underscore2backslash) return;
+
+    if (params.ex_origKey != KeyCode::JIS_UNDERSCORE) return;
+
+    if (! (allFlagStatus.shiftL.isHeldDown() || allFlagStatus.shiftR.isHeldDown())) {
+      // hack to fire "the true backslash (not yen)" on JIS Keyboard.
+      *(params.keyboardType) = KeyboardType::MACBOOK;
+      RemapUtil::keyToKey(params, KeyCode::JIS_UNDERSCORE, KeyCode::BACKSLASH);
+    }
+  }
+
+  // ----------------------------------------
+  void
   remap_jis_commandR2eisuu(const RemapParams &params)
   {
     if (! config.remap_jis_commandR2eisuu) return;
@@ -1620,6 +1635,8 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_jis_kana2return(params);
   remap_jis_kana2middleclick(params);
   remap_jis_kana2rightclick(params);
+
+  remap_jis_underscore2backslash(params);
 
   remap_jis_commandR2eisuu(params);
   remap_jis_commandR2kana(params);
