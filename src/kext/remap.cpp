@@ -368,6 +368,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_fn2fn(const RemapParams &params)
+  {
+    if (! config.remap_fn2fn) return;
+
+    RemapUtil::toFN(params);
+  }
+
+  void
   remap_fn2optionL(const RemapParams &params)
   {
     if (! config.remap_fn2optionL) return;
@@ -1555,6 +1563,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_fn2commandL(params);
   remap_fn2controlL(params);
   remap_fn2controlL_commandR2fn(params);
+  remap_fn2fn(params);
   remap_fn2optionL(params);
   remap_fn2shiftL(params);
   remap_fn2enter(params);

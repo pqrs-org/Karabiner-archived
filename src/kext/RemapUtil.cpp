@@ -117,17 +117,51 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! allFlagStatus.fn.isHeldDown()) return;
 
     // change cursor & return key behavior
-    if (*(params.key) == KeyCode::CURSOR_UP) {
+    if (params.ex_origKey == KeyCode::M) {
+      *(params.key) = KeyCode::KEYPAD_0;
+    } else if (params.ex_origKey == KeyCode::J) {
+      *(params.key) = KeyCode::KEYPAD_1;
+    } else if (params.ex_origKey == KeyCode::K) {
+      *(params.key) = KeyCode::KEYPAD_2;
+    } else if (params.ex_origKey == KeyCode::L) {
+      *(params.key) = KeyCode::KEYPAD_3;
+    } else if (params.ex_origKey == KeyCode::U) {
+      *(params.key) = KeyCode::KEYPAD_4;
+    } else if (params.ex_origKey == KeyCode::I) {
+      *(params.key) = KeyCode::KEYPAD_5;
+    } else if (params.ex_origKey == KeyCode::O) {
+      *(params.key) = KeyCode::KEYPAD_6;
+    } else if (params.ex_origKey == KeyCode::KEY_7) {
+      *(params.key) = KeyCode::KEYPAD_7;
+    } else if (params.ex_origKey == KeyCode::KEY_8) {
+      *(params.key) = KeyCode::KEYPAD_8;
+    } else if (params.ex_origKey == KeyCode::KEY_9) {
+      *(params.key) = KeyCode::KEYPAD_9;
+    } else if (params.ex_origKey == KeyCode::KEY_6) {
+      *(params.key) = KeyCode::KEYPAD_CLEAR;
+    } else if (params.ex_origKey == KeyCode::SLASH) {
+      *(params.key) = KeyCode::KEYPAD_PLUS;
+    } else if (params.ex_origKey == KeyCode::SEMICOLON) {
+      *(params.key) = KeyCode::KEYPAD_MINUS;
+    } else if (params.ex_origKey == KeyCode::P) {
+      *(params.key) = KeyCode::KEYPAD_MULTIPLY;
+    } else if (params.ex_origKey == KeyCode::KEY_0) {
+      *(params.key) = KeyCode::KEYPAD_SLASH;
+    } else if (params.ex_origKey == KeyCode::MINUS) {
+      *(params.key) = KeyCode::KEYPAD_EQUAL;
+    } else if (params.ex_origKey == KeyCode::DOT) {
+      *(params.key) = KeyCode::KEYPAD_DOT;
+    } else if (params.ex_origKey == KeyCode::CURSOR_UP) {
       *(params.key) = KeyCode::PAGEUP;
-    } else if (*(params.key) == KeyCode::CURSOR_DOWN) {
+    } else if (params.ex_origKey == KeyCode::CURSOR_DOWN) {
       *(params.key) = KeyCode::PAGEDOWN;
-    } else if (*(params.key) == KeyCode::CURSOR_LEFT) {
+    } else if (params.ex_origKey == KeyCode::CURSOR_LEFT) {
       *(params.key) = KeyCode::HOME;
-    } else if (*(params.key) == KeyCode::CURSOR_RIGHT) {
+    } else if (params.ex_origKey == KeyCode::CURSOR_RIGHT) {
       *(params.key) = KeyCode::END;
-    } else if (*(params.key) == KeyCode::RETURN) {
+    } else if (params.ex_origKey == KeyCode::RETURN) {
       *(params.key) = getEnterKeyCode(params);
-    } else if (*(params.key) == KeyCode::DELETE) {
+    } else if (params.ex_origKey == KeyCode::DELETE) {
       *(params.key) = KeyCode::FORWARD_DELETE;
     } else {
       return;
