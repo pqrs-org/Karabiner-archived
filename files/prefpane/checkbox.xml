@@ -472,55 +472,55 @@
       <name>Emacs Mode</name>
       <list>
         <item>
-          <name>Control+D to Forward Delete</name>
+          <name>Control_L+D to Forward Delete</name>
           <sysctl>keyremap4macbook.option.emacsmode_controlD</sysctl>
         </item>
         <item>
-          <name>Control+H to Delete</name>
+          <name>Control_L+H to Delete</name>
           <sysctl>keyremap4macbook.option.emacsmode_controlH</sysctl>
         </item>
         <item>
-          <name>Control+I to Tab</name>
+          <name>Control_L+I to Tab</name>
           <sysctl>keyremap4macbook.option.emacsmode_controlI</sysctl>
         </item>
         <item>
-          <name>Control+[ to Escape</name>
+          <name>Control_L+[ to Escape</name>
           <sysctl>keyremap4macbook.option.emacsmode_controlLeftbracket</sysctl>
         </item>
         <item>
-          <name>Control+M to Return</name>
+          <name>Control_L+M to Return</name>
           <sysctl>keyremap4macbook.option.emacsmode_controlM</sysctl>
         </item>
         <item>
-          <name>Control+PNBF to Up/Down/Left/Right</name>
+          <name>Control_L+PNBF to Up/Down/Left/Right</name>
           <sysctl>keyremap4macbook.option.emacsmode_controlPNBF</sysctl>
         </item>
         <item>
-          <name>Control+V to PageDown / Option+V to PageUp</name>
+          <name>Control_L+V to PageDown / Option+V to PageUp</name>
           <sysctl>keyremap4macbook.option.emacsmode_controlV</sysctl>
         </item>
         <item>
-          <name>Control+AE to Command+Left/Right</name>
+          <name>Control_L+AE to Command+Left/Right</name>
           <sysctl>keyremap4macbook.option.emacsmode_controlAE</sysctl>
         </item>
         <item>
-          <name>Option+BF to Option+Left/Right</name>
+          <name>Option_L+BF to Option+Left/Right</name>
           <sysctl>keyremap4macbook.option.emacsmode_optionBF</sysctl>
         </item>
         <item>
-          <name>Option+D to Option+Forward Delete</name>
+          <name>Option_L+D to Option+Forward Delete</name>
           <sysctl>keyremap4macbook.option.emacsmode_optionD</sysctl>
         </item>
         <item>
-          <name>[ex] Control+1 to Home / Control+2 to End</name>
+          <name>[ex] Control_L+1 to Home / Control+2 to End</name>
           <sysctl>keyremap4macbook.option.emacsmode_ex_control12</sysctl>
         </item>
         <item>
-          <name>[ex] Control+Q to PageUp</name>
+          <name>[ex] Control_L+Q to PageUp</name>
           <sysctl>keyremap4macbook.option.emacsmode_ex_controlQ</sysctl>
         </item>
         <item>
-          <name>[ex] Control+W to Option+Delete</name>
+          <name>[ex] Control_L+W to Option+Delete</name>
           <sysctl>keyremap4macbook.option.emacsmode_ex_controlW</sysctl>
         </item>
       </list>
