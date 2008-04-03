@@ -500,6 +500,10 @@
           <sysctl>keyremap4macbook.option.emacsmode_controlV</sysctl>
         </item>
         <item>
+          <name>Control_L+Y to Command+V</name>
+          <sysctl>keyremap4macbook.option.emacsmode_controlY</sysctl>
+        </item>
+        <item>
           <name>Control_L+AE to Command+Left/Right</name>
           <sysctl>keyremap4macbook.option.emacsmode_controlAE</sysctl>
         </item>

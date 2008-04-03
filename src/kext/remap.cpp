@@ -911,6 +911,12 @@ namespace org_pqrs_KeyRemap4MacBook {
         *(params.key) = KeyCode::PAGEDOWN;
         cancel_control = true;
       }
+      // Control+Y -> Command+V
+      if (config.option_emacsmode_controlY && *(params.key) == KeyCode::Y) {
+        *(params.key) = KeyCode::V;
+        allFlagStatus.commandL.temporary_increase();
+        cancel_control = true;
+      }
       // Control+A -> Command+LEFT
       if (config.option_emacsmode_controlAE && *(params.key) == KeyCode::A) {
         *(params.key) = KeyCode::CURSOR_LEFT;
