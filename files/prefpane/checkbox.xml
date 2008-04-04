@@ -227,6 +227,10 @@
           <name>Enter to Space</name>
           <sysctl>keyremap4macbook.remap.enter2space</sysctl>
         </item>
+        <item>
+          <name>Enter to Up-Arrow</name>
+          <sysctl>keyremap4macbook.remap.enter2uparrow</sysctl>
+        </item>
       </list>
     </item>
 
@@ -432,6 +436,10 @@
         <item>
           <name>Shift_R to Space</name>
           <sysctl>keyremap4macbook.remap.shiftR2space</sysctl>
+        </item>
+        <item>
+          <name>Shift_R to Up-Arrow</name>
+          <sysctl>keyremap4macbook.remap.shiftR2uparrow</sysctl>
         </item>
       </list>
     </item>
