@@ -452,6 +452,14 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardEventCallBack(OSObject *target,
       }
 
       // ------------------------------------------------------------
+      if (org_pqrs_KeyRemap4MacBook::config.general_capslock_led_hack) {
+        int led = p->kbd->getLEDStatus();
+        if (led == 0) {
+          p->kbd->setAlphaLockFeedback(true);
+        }
+      }
+
+      // ------------------------------------------------------------
       org_pqrs_KeyRemap4MacBook::listFireExtraKey.reset();
       org_pqrs_KeyRemap4MacBook::listFirePointingClick.reset();
 
