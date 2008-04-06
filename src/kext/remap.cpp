@@ -1155,6 +1155,22 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
+  remap_pc_application2commandL(const RemapParams &params)
+  {
+    if (! config.remap_pc_application2commandL) return;
+
+    RemapUtil::keyToModifier(params, KeyCode::PC_APPLICATION, ModifierFlag::COMMAND_L);
+  }
+
+  void
+  remap_pc_application2controlL(const RemapParams &params)
+  {
+    if (! config.remap_pc_application2controlL) return;
+
+    RemapUtil::keyToModifier(params, KeyCode::PC_APPLICATION, ModifierFlag::CONTROL_L);
+  }
+
+  void
   remap_pc_application2fn(const RemapParams &params)
   {
     if (! config.remap_pc_application2fn) return;
@@ -1169,6 +1185,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_pc_application2optionL) return;
 
     RemapUtil::keyToModifier(params, KeyCode::PC_APPLICATION, ModifierFlag::OPTION_L);
+  }
+
+  void
+  remap_pc_application2shiftL(const RemapParams &params)
+  {
+    if (! config.remap_pc_application2shiftL) return;
+
+    RemapUtil::keyToModifier(params, KeyCode::PC_APPLICATION, ModifierFlag::SHIFT_L);
   }
 
   void
@@ -1643,8 +1667,11 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_qwerty2colemak(params);
 
   // ----------------------------------------
+  remap_pc_application2commandL(params);
+  remap_pc_application2controlL(params);
   remap_pc_application2fn(params);
   remap_pc_application2optionL(params);
+  remap_pc_application2shiftL(params);
   remap_pc_application2exposeALL(params);
   remap_pc_application2f9(params);
   remap_pc_application2f11(params);

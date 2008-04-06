@@ -604,12 +604,24 @@
           <name>Remap PC Application Key</name>
           <list>
             <item>
+              <name>Application Key to Command_L</name>
+              <sysctl>keyremap4macbook.remap.pc_application2commandL</sysctl>
+            </item>
+            <item>
+              <name>Application Key to Control_L</name>
+              <sysctl>keyremap4macbook.remap.pc_application2controlL</sysctl>
+            </item>
+            <item>
               <name>Application Key to FN</name>
               <sysctl>keyremap4macbook.remap.pc_application2fn</sysctl>
             </item>
             <item>
               <name>Application Key to Option_L</name>
               <sysctl>keyremap4macbook.remap.pc_application2optionL</sysctl>
+            </item>
+            <item>
+              <name>Application Key to Shift_L</name>
+              <sysctl>keyremap4macbook.remap.pc_application2shiftL</sysctl>
             </item>
             <item>
               <name>Application Key to Expose All</name>
