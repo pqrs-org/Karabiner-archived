@@ -12,6 +12,10 @@
           <name>Don't Remap the External Keyboard</name>
           <sysctl>keyremap4macbook.general.dont_remap_external</sysctl>
         </item>
+        <item>
+          <name>Enable CapsLock LED Hack (To prevent the Apple keyboard's CapsLock delay)</name>
+          <sysctl>keyremap4macbook.general.capslock_led_hack</sysctl>
+        </item>
       </list>
     </item>
 
