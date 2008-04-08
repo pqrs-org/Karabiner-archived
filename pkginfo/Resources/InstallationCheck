@@ -1,5 +1,6 @@
 #!/bin/sh
 
+[ -d /Library/StartupItems/SetKeyboardLED ] && exit 126
 [ -d /Library/StartupItems/DoubleCommand ] && exit 127
 
 exit 0
