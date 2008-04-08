@@ -7,5 +7,6 @@
 #include <IOKit/hidsystem/IOHIKeyboard.h>
 #include <IOKit/hidsystem/IOHIPointing.h>
 #undef protected
+#undef private
 
 #endif
