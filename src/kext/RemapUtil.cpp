@@ -195,6 +195,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (keyboardType == KeyboardType::MACBOOK_COREDUO) return true;
     if (keyboardType == KeyboardType::POWERBOOK) return true;
     if (keyboardType == KeyboardType::POWERBOOK_G4) return true;
+    if (keyboardType == KeyboardType::JIS_MACBOOK) return true;
     return false;
   }
 
