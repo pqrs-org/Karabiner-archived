@@ -145,7 +145,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
     void reset(void);
     void add(FireExtraKey::Type type, unsigned int eventType, unsigned int flags, unsigned int key, unsigned int charCode);
-    void fire(FireExtraKey::Type type, KeyboardEventCallback callback, OSObject *target, OSObject *sender, void *refcon, const RemapParams &params);
+    void fire(FireExtraKey::Type type, KeyboardEventCallback callback,
+              OSObject *target,
+              unsigned int charSet, unsigned int origCharCode, unsigned int origCharSet, unsigned int keyboardType, AbsoluteTime ts,
+              OSObject *sender, void *refcon);
 
   private:
     FireExtraKey list[FIREEXTRAKEY_MAXNUM];
