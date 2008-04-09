@@ -9,6 +9,7 @@
 #include "RemapUtil.hpp"
 
 org_pqrs_driver_KeyRemap4MacBook::HookedKeyboard org_pqrs_driver_KeyRemap4MacBook::hookedKeyboard[MAXNUM_KEYBOARD];
+org_pqrs_driver_KeyRemap4MacBook::HookedConsumer org_pqrs_driver_KeyRemap4MacBook::hookedConsumer[MAXNUM_CONSUMER];
 org_pqrs_driver_KeyRemap4MacBook::HookedPointing org_pqrs_driver_KeyRemap4MacBook::hookedPointing[MAXNUM_POINTING];
 
 // ----------------------------------------------------------------------
@@ -32,6 +33,9 @@ org_pqrs_driver_KeyRemap4MacBook::init(OSDictionary *dict)
   for (int i = 0; i < MAXNUM_KEYBOARD; ++i) {
     hookedKeyboard[i].kbd = NULL;
     hookedKeyboard[i].timer = NULL;
+  }
+  for (int i = 0; i < MAXNUM_CONSUMER; ++i) {
+    hookedConsumer[i].kbd = NULL;
   }
   for (int i = 0; i < MAXNUM_POINTING; ++i) {
     hookedPointing[i].pointing = NULL;
@@ -147,6 +151,9 @@ org_pqrs_driver_KeyRemap4MacBook::stop(IOService *provider)
   for (int i = 0; i < MAXNUM_KEYBOARD; ++i) {
     hookedKeyboard[i].terminate(workLoop);
   }
+  for (int i = 0; i < MAXNUM_CONSUMER; ++i) {
+    hookedConsumer[i].terminate();
+  }
   for (int i = 0; i < MAXNUM_POINTING; ++i) {
     hookedPointing[i].terminate();
   }
@@ -182,6 +189,9 @@ org_pqrs_driver_KeyRemap4MacBook::HookedKeyboard::refresh(void)
   if (oldCallback != newCallback) {
     origEventCallback = oldCallback;
     kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(newCallback);
+
+    origEventTarget = kbd->_keyboardEventTarget;
+
     IOLog("KeyRemap4MacBook::HookedKeyboard::refresh KeyboardEventAction\n");
   }
 }
@@ -202,6 +212,40 @@ org_pqrs_driver_KeyRemap4MacBook::HookedKeyboard::terminate(IOWorkLoop *workLoop
     }
     timer->release();
     timer = NULL;
+  }
+}
+
+// --------------------
+void
+org_pqrs_driver_KeyRemap4MacBook::HookedConsumer::initialize(IOHIKeyboard *_kbd)
+{
+  kbd = _kbd;
+  refresh();
+}
+
+void
+org_pqrs_driver_KeyRemap4MacBook::HookedConsumer::refresh(void)
+{
+  if (kbd == NULL) return;
+
+  KeyboardSpecialEventCallback oldCallback = getKeyboardSpecialEventCallback(kbd);
+  KeyboardSpecialEventCallback newCallback = org_pqrs_driver_KeyRemap4MacBook::keyboardSpecialEventCallBack;
+  if (oldCallback != newCallback) {
+    origSpecialEventCallback = oldCallback;
+    kbd->_keyboardSpecialEventAction = reinterpret_cast<KeyboardSpecialEventAction>(newCallback);
+
+    IOLog("KeyRemap4MacBook::HookedConsumer::refresh KeyboardSpecialEventAction\n");
+  }
+}
+
+void
+org_pqrs_driver_KeyRemap4MacBook::HookedConsumer::terminate(void)
+{
+  if (kbd) {
+    if (getKeyboardSpecialEventCallback(kbd) == org_pqrs_driver_KeyRemap4MacBook::keyboardSpecialEventCallBack) {
+      kbd->_keyboardSpecialEventAction = reinterpret_cast<KeyboardSpecialEventAction>(origSpecialEventCallback);
+    }
+    kbd = NULL;
   }
 }
 
@@ -272,6 +316,32 @@ org_pqrs_driver_KeyRemap4MacBook::search_hookedKeyboard(const IOHIKeyboard *kbd)
   for (int i = 0; i < MAXNUM_KEYBOARD; ++i) {
     if (hookedKeyboard[i].kbd == kbd) {
       return hookedKeyboard + i;
+    }
+  }
+  return NULL;
+}
+
+// --------------------
+org_pqrs_driver_KeyRemap4MacBook::HookedConsumer *
+org_pqrs_driver_KeyRemap4MacBook::new_hookedConsumer(void)
+{
+  for (int i = 0; i < MAXNUM_CONSUMER; ++i) {
+    if (hookedConsumer[i].kbd == NULL) {
+      return hookedConsumer + i;
+    }
+  }
+  return NULL;
+}
+
+org_pqrs_driver_KeyRemap4MacBook::HookedConsumer *
+org_pqrs_driver_KeyRemap4MacBook::search_hookedConsumer(const IOHIKeyboard *kbd)
+{
+  if (kbd == NULL) {
+    return NULL;
+  }
+  for (int i = 0; i < MAXNUM_CONSUMER; ++i) {
+    if (hookedConsumer[i].kbd == kbd) {
+      return hookedConsumer + i;
     }
   }
   return NULL;
@@ -393,6 +463,14 @@ org_pqrs_driver_KeyRemap4MacBook::replaceKeyboardEvent(org_pqrs_driver_KeyRemap4
       IOLog("KeyRemap4MacBook::replaceKeyboardEvent 0x%x (%x)\n", kbd, kbd->_keyboardEventAction);
       p->initialize(kbd, self->workLoop);
     }
+
+  } else if (strcmp(name, "IOHIDConsumer") == 0) {
+    HookedConsumer *p = new_hookedConsumer();
+    if (p) {
+      IOLog("KeyRemap4MacBook::replaceKeyboardEvent(Consumer) 0x%x (%x)\n", kbd, kbd->_keyboardEventAction);
+      p->initialize(kbd);
+    }
+
   } else {
     IOLog("KeyRemap4MacBook::replaceKeyboardEvent ignore device [%s]\n", name);
   }
@@ -543,6 +621,33 @@ org_pqrs_driver_KeyRemap4MacBook::doKeyRepeat(OSObject *owner, IOTimerEventSourc
   const int MINVAL = 5;
   if (speed < MINVAL) speed = MINVAL;
   sender->setTimeoutMS(speed);
+}
+
+// --------------------
+void
+org_pqrs_driver_KeyRemap4MacBook::keyboardSpecialEventCallBack(OSObject *target,
+                                                               unsigned int eventType,
+                                                               unsigned int flags,
+                                                               unsigned int key,
+                                                               unsigned int flavor,
+                                                               UInt64 guid,
+                                                               bool repeat,
+                                                               AbsoluteTime ts,
+                                                               OSObject *sender,
+                                                               void *refcon)
+{
+  IOHIKeyboard *kbd = OSDynamicCast(IOHIKeyboard, sender);
+  if (kbd) {
+    HookedConsumer *p = search_hookedConsumer(kbd);
+    if (p) {
+      if (p->origSpecialEventCallback) {
+        if (org_pqrs_KeyRemap4MacBook::config.debug) {
+          printf("caught keyboardSpecialEventCallBack: eventType %d, flags 0x%x, key %d, flavor %d\n", eventType, flags, key, flavor);
+        }
+        p->origSpecialEventCallback(target, eventType, flags, key, flavor, guid, repeat, ts, sender, refcon);
+      }
+    }
+  }
 }
 
 // --------------------
