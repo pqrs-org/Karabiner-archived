@@ -18,6 +18,7 @@ public:
 private:
   enum {
     MAXNUM_KEYBOARD = 4,
+    MAXNUM_CONSUMER = 4,
     MAXNUM_POINTING = 4,
   };
 
@@ -28,6 +29,8 @@ private:
   struct HookedKeyboard {
     IOHIKeyboard *kbd;
     KeyboardEventCallback origEventCallback;
+    // save EventTarget for consumerToKey
+    OSObject *origEventTarget;
 
     // for keyrepeat
     IOTimerEventSource *timer;
@@ -54,6 +57,23 @@ private:
   static HookedKeyboard *search_hookedKeyboard(const IOHIKeyboard *kbd);
   static KeyboardEventCallback getKeyboardEventCallback(IOHIKeyboard *kbd) {
     return reinterpret_cast<KeyboardEventCallback>(kbd->_keyboardEventAction);
+  }
+
+  // --------------------
+  // for eject key
+  struct HookedConsumer {
+    IOHIKeyboard *kbd;
+    KeyboardSpecialEventCallback origSpecialEventCallback;
+
+    void initialize(IOHIKeyboard *_kbd);
+    void refresh(void);
+    void terminate(void);
+  };
+  static HookedConsumer hookedConsumer[MAXNUM_CONSUMER];
+  static HookedConsumer *new_hookedConsumer(void);
+  static HookedConsumer *search_hookedConsumer(const IOHIKeyboard *kbd);
+  static KeyboardSpecialEventCallback getKeyboardSpecialEventCallback(IOHIKeyboard *kbd) {
+    return reinterpret_cast<KeyboardSpecialEventCallback>(kbd->_keyboardSpecialEventAction);
   }
 
   // --------------------
@@ -115,6 +135,18 @@ private:
                                     void *refcon);
 
   static void doKeyRepeat(OSObject *owner, IOTimerEventSource *sender);
+
+  // --------------------
+  static void keyboardSpecialEventCallBack(OSObject *target,
+                                           unsigned int eventType,
+                                           unsigned int flags,
+                                           unsigned int key,
+                                           unsigned int flavor,
+                                           UInt64 guid,
+                                           bool repeat,
+                                           AbsoluteTime ts,
+                                           OSObject *sender,
+                                           void *refcon);
 
   // --------------------
   static void relativePointerEventCallBack(OSObject *target,
