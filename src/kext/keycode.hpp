@@ -198,6 +198,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
   }
 
+  namespace ConsumerKeyCode {
+    enum ConsumerKeyCode {
+      EJECT = 14,
+    };
+  }
+
   namespace PointingButton {
     enum PointingButton {
       NONE = 0,

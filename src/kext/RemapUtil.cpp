@@ -628,7 +628,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  ListFireExtraKey::fire(FireExtraKey::Type type, KeyboardEventCallback callback, OSObject *target, OSObject *sender, void *refcon, const RemapParams &params)
+  ListFireExtraKey::fire(FireExtraKey::Type type, KeyboardEventCallback callback,
+                         OSObject *target,
+                         unsigned int charSet, unsigned int origCharCode, unsigned int origCharSet, unsigned int keyboardType, AbsoluteTime ts,
+                         OSObject *sender, void *refcon)
   {
     if (callback == NULL) return;
 
@@ -637,8 +640,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       if (item.isEnable() && item.getType() == type) {
         callback(target, item.getEventType(), item.getFlags(), item.getKey(), item.getCharCode(),
-                 *(params.charSet), *(params.origCharCode), *(params.origCharSet),
-                 *(params.keyboardType), false, *(params.ts), sender, refcon);
+                 charSet, origCharCode, origCharSet,
+                 keyboardType, false, ts, sender, refcon);
       }
     }
   }

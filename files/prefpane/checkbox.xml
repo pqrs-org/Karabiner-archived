@@ -181,6 +181,16 @@
     </item>
 
     <item>
+      <name>Remap Eject Key</name>
+      <list>
+        <item>
+          <name>Eject to Forward Delete</name>
+          <sysctl>keyremap4macbook.remap.eject2forwarddelete</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>Remap Enter Key</name>
       <list>
         <item>

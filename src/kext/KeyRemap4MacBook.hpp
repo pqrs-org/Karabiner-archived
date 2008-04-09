@@ -51,10 +51,16 @@ private:
     void initialize(IOHIKeyboard *_kbd, IOWorkLoop *workLoop);
     void refresh(void);
     void terminate(IOWorkLoop *workLoop);
+    void setRepeatInfo(unsigned int eventType,
+                       unsigned int flags, unsigned int key,
+                       unsigned int charCode, unsigned int charSet, unsigned int origCharCode, unsigned int origCharSet,
+                       unsigned int keyboardType, AbsoluteTime ts,
+                       OSObject *target, void *refcon);
   };
   static HookedKeyboard hookedKeyboard[MAXNUM_KEYBOARD];
   static HookedKeyboard *new_hookedKeyboard(void);
   static HookedKeyboard *search_hookedKeyboard(const IOHIKeyboard *kbd);
+  static HookedKeyboard *get_1stHookedKeyboard(void);
   static KeyboardEventCallback getKeyboardEventCallback(IOHIKeyboard *kbd) {
     return reinterpret_cast<KeyboardEventCallback>(kbd->_keyboardEventAction);
   }

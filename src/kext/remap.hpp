@@ -20,6 +20,20 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
   void remap_core(const RemapParams &params);
 
+  // --------------------
+  struct RemapConsumerParams {
+    unsigned int *eventType;
+    unsigned int *flags;
+    unsigned int *key;
+    unsigned int *flavor;
+    AbsoluteTime *ts;
+    bool *ex_dropKey;
+    bool *ex_remapKey;
+    unsigned int *ex_remapKeyCode;
+  };
+  void remap_consumer(const RemapConsumerParams &params);
+
+  // --------------------
   struct RemapPointingParams_relative {
     int *buttons;
     int *dx;
