@@ -1724,7 +1724,9 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   // ------------------------------------------------------------
   // jis
   remap_jis_eisuu2commandL(params);
+  remap_jis_eisuu2commandL_eisuu(params);
   remap_jis_eisuu2controlL(params);
+  remap_jis_eisuu2controlL_eisuu(params);
   remap_jis_eisuu2fn(params);
   remap_jis_eisuu2optionL(params);
   remap_jis_eisuu2shiftL(params);
@@ -1734,6 +1736,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_jis_eisuu2rightclick(params);
 
   remap_jis_kana2commandL(params);
+  remap_jis_kana2commandR_kana(params);
   remap_jis_kana2controlL(params);
   remap_jis_kana2fn(params);
   remap_jis_kana2optionL(params);
