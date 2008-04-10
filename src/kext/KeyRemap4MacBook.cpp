@@ -137,6 +137,7 @@ org_pqrs_driver_KeyRemap4MacBook::stop(IOService *provider)
   }
 
   if (refreshTimer) {
+    refreshTimer->cancelTimeout();
     if (workLoop) {
       workLoop->removeEventSource(refreshTimer);
     }
@@ -206,6 +207,7 @@ org_pqrs_driver_KeyRemap4MacBook::HookedKeyboard::terminate(IOWorkLoop *workLoop
     kbd = NULL;
   }
   if (timer) {
+    timer->cancelTimeout();
     if (workLoop) {
       workLoop->removeEventSource(timer);
     }
