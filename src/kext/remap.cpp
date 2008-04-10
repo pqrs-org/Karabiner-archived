@@ -1229,11 +1229,29 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_jis_eisuu2commandL_eisuu(const RemapParams &params)
+  {
+    if (! config.remap_jis_eisuu2commandL_eisuu) return;
+
+    static KeyOverlayedModifier kom;
+    kom.remap(params, KeyCode::JIS_EISUU, ModifierFlag::COMMAND_L, FireFunc::firefunc_jis_eisuu);
+  }
+
+  void
   remap_jis_eisuu2controlL(const RemapParams &params)
   {
     if (! config.remap_jis_eisuu2controlL) return;
 
     RemapUtil::keyToModifier(params, KeyCode::JIS_EISUU, ModifierFlag::CONTROL_L);
+  }
+
+  void
+  remap_jis_eisuu2controlL_eisuu(const RemapParams &params)
+  {
+    if (! config.remap_jis_eisuu2controlL_eisuu) return;
+
+    static KeyOverlayedModifier kom;
+    kom.remap(params, KeyCode::JIS_EISUU, ModifierFlag::CONTROL_L, FireFunc::firefunc_jis_eisuu);
   }
 
   void
@@ -1300,6 +1318,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_jis_kana2commandL) return;
 
     RemapUtil::keyToModifier(params, KeyCode::JIS_KANA, ModifierFlag::COMMAND_L);
+  }
+
+  void
+  remap_jis_kana2commandR_kana(const RemapParams &params)
+  {
+    if (! config.remap_jis_kana2commandR_kana) return;
+
+    static KeyOverlayedModifier kom;
+    kom.remap(params, KeyCode::JIS_KANA, ModifierFlag::COMMAND_R, FireFunc::firefunc_jis_kana);
   }
 
   void

@@ -374,7 +374,7 @@
           <sysctl>keyremap4macbook.remap.return2optionL</sysctl>
         </item>
         <item>
-          <name>Return to Option_L (+ When you type Space only, fire Escape).</name>
+          <name>Return to Option_L (+ When you type Return only, fire Escape).</name>
           <sysctl>keyremap4macbook.remap.return2optionL_escape</sysctl>
         </item>
         <item>
@@ -676,6 +676,73 @@
       <name>For Japanese</name>
       <list>
         <item>
+          <name>Remap Command_L Key</name>
+          <list>
+            <item>
+              <name>Command_L to Command_L (+ When you type Command_L only, fire EISUU)</name>
+              <sysctl>keyremap4macbook.remap.jis_commandL2commandL_eisuu</sysctl>
+            </item>
+            <item>
+              <name>Command_L to Control_L (+ When you type Command_L only, fire EISUU)</name>
+              <sysctl>keyremap4macbook.remap.jis_commandL2controlL_eisuu</sysctl>
+            </item>
+            <item>
+              <name>Command_L x2 to EISUU</name>
+              <sysctl>keyremap4macbook.remap.jis_commandL_x2_to_eisuu</sysctl>
+            </item>
+            <item>
+              <name>Command_L x2 to EISUU x2 (for Kotoeri Users)</name>
+              <sysctl>keyremap4macbook.remap.jis_commandL_x2_to_eisuu_x2</sysctl>
+            </item>
+            <item>
+              <name>Use Command_L as KANA/EISUU (toggle)</name>
+              <sysctl>keyremap4macbook.remap.jis_unify_kana_eisuu_to_commandL</sysctl>
+            </item>
+          </list>
+        </item>
+        <item>
+          <name>Remap Command_R Key</name>
+          <list>
+            <item>
+              <name>Command_R to EISUU</name>
+              <sysctl>keyremap4macbook.remap.jis_commandR2eisuu</sysctl>
+            </item>
+            <item>
+              <name>Command_R to KANA</name>
+              <sysctl>keyremap4macbook.remap.jis_commandR2kana</sysctl>
+            </item>
+            <item>
+              <name>Command_R to Command_R (+ When you type Command_R only, fire KANA)</name>
+              <sysctl>keyremap4macbook.remap.jis_commandR2commandR_kana</sysctl>
+            </item>
+            <item>
+              <name>Command_R x2 to KANA</name>
+              <sysctl>keyremap4macbook.remap.jis_commandR_x2_to_kana</sysctl>
+            </item>
+            <item>
+              <name>Command_R x2 to KANA x2 (for Kotoeri Users)</name>
+              <sysctl>keyremap4macbook.remap.jis_commandR_x2_to_kana_x2</sysctl>
+            </item>
+          </list>
+        </item>
+        <item>
+          <name>Remap Option_R Key</name>
+          <list>
+            <item>
+              <name>Option_R to EISUU</name>
+              <sysctl>keyremap4macbook.remap.jis_optionR2eisuu</sysctl>
+            </item>
+            <item>
+              <name>Option_R to KANA</name>
+              <sysctl>keyremap4macbook.remap.jis_optionR2kana</sysctl>
+            </item>
+            <item>
+              <name>Use Option_R as KANA/EISUU (toggle)</name>
+              <sysctl>keyremap4macbook.remap.jis_unify_kana_eisuu_to_optionR</sysctl>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Remap EISUU Key</name>
           <list>
             <item>
@@ -683,8 +750,16 @@
               <sysctl>keyremap4macbook.remap.jis_eisuu2commandL</sysctl>
             </item>
             <item>
+              <name>EISUU to Command_L  (+ When you type EISUU only, fire EISUU)</name>
+              <sysctl>keyremap4macbook.remap.jis_eisuu2commandL_eisuu</sysctl>
+            </item>
+            <item>
               <name>EISUU to Control_L</name>
               <sysctl>keyremap4macbook.remap.jis_eisuu2controlL</sysctl>
+            </item>
+            <item>
+              <name>EISUU to Control_L  (+ When you type EISUU only, fire EISUU)</name>
+              <sysctl>keyremap4macbook.remap.jis_eisuu2controlL_eisuu</sysctl>
             </item>
             <item>
               <name>EISUU to FN</name>
@@ -714,6 +789,10 @@
               <name>EISUU to RightClick</name>
               <sysctl>keyremap4macbook.remap.jis_eisuu2rightclick</sysctl>
             </item>
+            <item>
+              <name>Use EISUU as KANA/EISUU (toggle)</name>
+              <sysctl>keyremap4macbook.remap.jis_unify_kana_to_eisuu</sysctl>
+            </item>
           </list>
         </item>
         <item>
@@ -722,6 +801,10 @@
             <item>
               <name>KANA to Command_L</name>
               <sysctl>keyremap4macbook.remap.jis_kana2commandL</sysctl>
+            </item>
+            <item>
+              <name>KANA to Command_R (+ When you type KANA only, fire KANA)</name>
+              <sysctl>keyremap4macbook.remap.jis_kana2commandR_kana</sysctl>
             </item>
             <item>
               <name>KANA to Control_L</name>
@@ -751,69 +834,6 @@
               <name>KANA to RightClick</name>
               <sysctl>keyremap4macbook.remap.jis_kana2rightclick</sysctl>
             </item>
-          </list>
-        </item>
-        <item>
-          <name>Remap Underscore(Ro) Key</name>
-          <list>
-            <item>
-              <name>Underscore(Ro) to Backslash(\)</name>
-              <sysctl>keyremap4macbook.remap.jis_underscore2backslash</sysctl>
-            </item>
-          </list>
-        </item>
-        <item>
-          <name>Overlay a Key on a Modifier</name>
-          <list>
-            <item>
-              <name>Command_R to Command_R (+ When you type Command_R only, fire KANA)</name>
-              <sysctl>keyremap4macbook.remap.jis_commandR2commandR_kana</sysctl>
-            </item>
-            <item>
-              <name>Command_L to Command_L (+ When you type Command_L only, fire EISUU)</name>
-              <sysctl>keyremap4macbook.remap.jis_commandL2commandL_eisuu</sysctl>
-            </item>
-            <item>
-              <name>Command_L to Control_L (+ When you type Command_L only, fire EISUU)</name>
-              <sysctl>keyremap4macbook.remap.jis_commandL2controlL_eisuu</sysctl>
-            </item>
-            <item>
-              <name>Command_R x2 to KANA</name>
-              <sysctl>keyremap4macbook.remap.jis_commandR_x2_to_kana</sysctl>
-            </item>
-            <item>
-              <name>Command_R x2 to KANA x2 (for Kotoeri Users)</name>
-              <sysctl>keyremap4macbook.remap.jis_commandR_x2_to_kana_x2</sysctl>
-            </item>
-            <item>
-              <name>Command_L x2 to EISUU</name>
-              <sysctl>keyremap4macbook.remap.jis_commandL_x2_to_eisuu</sysctl>
-            </item>
-            <item>
-              <name>Command_L x2 to EISUU x2 (for Kotoeri Users)</name>
-              <sysctl>keyremap4macbook.remap.jis_commandL_x2_to_eisuu_x2</sysctl>
-            </item>
-          </list>
-        </item>
-        <item>
-          <name>Other</name>
-          <list>
-            <item>
-              <name>Command_R to EISUU</name>
-              <sysctl>keyremap4macbook.remap.jis_commandR2eisuu</sysctl>
-            </item>
-            <item>
-              <name>Command_R to KANA</name>
-              <sysctl>keyremap4macbook.remap.jis_commandR2kana</sysctl>
-            </item>
-            <item>
-              <name>Option_R to EISUU</name>
-              <sysctl>keyremap4macbook.remap.jis_optionR2eisuu</sysctl>
-            </item>
-            <item>
-              <name>Option_R to KANA</name>
-              <sysctl>keyremap4macbook.remap.jis_optionR2kana</sysctl>
-            </item>
             <item>
               <name>Shift+KANA to EISUU</name>
               <sysctl>keyremap4macbook.remap.jis_shiftKana2eisuu</sysctl>
@@ -822,17 +842,14 @@
               <name>Use KANA as KANA/EISUU (toggle)</name>
               <sysctl>keyremap4macbook.remap.jis_unify_eisuu_to_kana</sysctl>
             </item>
+          </list>
+        </item>
+        <item>
+          <name>Remap Underscore(Ro) Key</name>
+          <list>
             <item>
-              <name>Use EISUU as KANA/EISUU (toggle)</name>
-              <sysctl>keyremap4macbook.remap.jis_unify_kana_to_eisuu</sysctl>
-            </item>
-            <item>
-              <name>Use Command_L as KANA/EISUU (toggle)</name>
-              <sysctl>keyremap4macbook.remap.jis_unify_kana_eisuu_to_commandL</sysctl>
-            </item>
-            <item>
-              <name>Use Option_R as KANA/EISUU (toggle)</name>
-              <sysctl>keyremap4macbook.remap.jis_unify_kana_eisuu_to_optionR</sysctl>
+              <name>Underscore(Ro) to Backslash(\)</name>
+              <sysctl>keyremap4macbook.remap.jis_underscore2backslash</sysctl>
             </item>
           </list>
         </item>
