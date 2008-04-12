@@ -1561,6 +1561,18 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
+  void
+  remap_eject2pagedown(const RemapConsumerParams &params)
+  {
+    if (! config.remap_eject2pagedown) return;
+
+    if (*(params.key) == ConsumerKeyCode::EJECT) {
+      *(params.ex_dropKey) = true;
+      *(params.ex_remapKey) = true;
+      *(params.ex_remapKeyCode) = KeyCode::PAGEDOWN;
+    }
+  }
+
   // ------------------------------------------------------------
   void
   remap_pointing_relative_fn_to_scroll(const RemapPointingParams_relative &params)
@@ -1811,6 +1823,7 @@ void
 org_pqrs_KeyRemap4MacBook::remap_consumer(const RemapConsumerParams &params)
 {
   remap_eject2forwarddelete(params);
+  remap_eject2pagedown(params);
 }
 
 void
