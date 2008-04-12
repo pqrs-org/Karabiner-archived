@@ -187,6 +187,10 @@
           <name>Eject to Forward Delete</name>
           <sysctl>keyremap4macbook.remap.eject2forwarddelete</sysctl>
         </item>
+        <item>
+          <name>Eject to PageDown</name>
+          <sysctl>keyremap4macbook.remap.eject2pagedown</sysctl>
+        </item>
       </list>
     </item>
 
