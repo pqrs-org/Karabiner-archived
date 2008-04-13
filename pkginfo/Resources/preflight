@@ -8,4 +8,6 @@ startup="/Applications/KeyRemap4MacBook/scripts/startup.sh"
 startup="/Library/org.pqrs/KeyRemap4MacBook/scripts/startup.sh"
 [ -f "$startup" ] && "$startup" stop
 
+launchctl unload org.pqrs.KeyRemap4MacBook.server
+
 exit 0

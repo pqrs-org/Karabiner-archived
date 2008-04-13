@@ -25,4 +25,6 @@ rm -rf "/Applications/KeyRemap4MacBook"
 startup="/Library/org.pqrs/KeyRemap4MacBook/scripts/startup.sh"
 [ -f "$startup" ] && "$startup" quickstart
 
+launchctl load org.pqrs.KeyRemap4MacBook.server
+
 exit 0
