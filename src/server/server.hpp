@@ -29,7 +29,7 @@ namespace KeyRemap4MacBook_server {
     static void *handleRequestThread(void *arg);
     bool enqueueRequest(int sock);
 
-    KeyRemap4MacBook_server::Bridge::ReplyType KeyRemap4MacBook_server::Server::do_ActiveApplicationInfo(KeyRemap4MacBook_server::Bridge::ActiveApplicationInfo::Reply *reply);
+    KeyRemap4MacBook_bridge::Error do_ActiveApplicationInfo(KeyRemap4MacBook_bridge::ActiveApplicationInfo::Reply *reply);
 
     std::queue<int> queueRequestSocket;
     KeyRemap4MacBook_server::Thread::Mutex requestsMutex;

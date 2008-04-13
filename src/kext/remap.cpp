@@ -876,6 +876,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     static ModifierCanceling mc_control;
     static ModifierCanceling mc_option;
 
+    if ((params.activeApplicationInfo)->is_emacs) return;
+    if ((params.activeApplicationInfo)->is_terminal) return;
+
     if (allFlagStatus.controlL.isHeldDown()) {
       bool cancel_control = false;
 

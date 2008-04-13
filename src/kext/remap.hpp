@@ -18,7 +18,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     AbsoluteTime *ts;
     bool *ex_dropKey;
     unsigned int ex_origKey;
-    KeyRemap4MacBook_server::Bridge::ActiveApplicationInfo::Reply *activeApplicationInfo;
+    KeyRemap4MacBook_bridge::ActiveApplicationInfo::Reply *activeApplicationInfo;
   };
   void remap_core(const RemapParams &params);
 

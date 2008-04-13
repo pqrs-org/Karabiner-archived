@@ -61,10 +61,10 @@ KeyRemap4MacBook_server::Server::dispatchOperator(int sock)
   if (read(sock, &operation, sizeof(operation)) < 0) goto error;
 
   switch (operation) {
-    case KeyRemap4MacBook_server::Bridge::REQUEST_TYPE_ACTIVE_APPLICATION_INFO:
+    case KeyRemap4MacBook_bridge::REQUEST_ACTIVE_APPLICATION_INFO:
     {
-      KeyRemap4MacBook_server::Bridge::ActiveApplicationInfo::Reply reply;
-      KeyRemap4MacBook_server::Bridge::ReplyType error = do_ActiveApplicationInfo(&reply);
+      KeyRemap4MacBook_bridge::ActiveApplicationInfo::Reply reply;
+      KeyRemap4MacBook_bridge::Error error = do_ActiveApplicationInfo(&reply);
       sendReply(sock, &reply, sizeof(reply), error);
       break;
     }
@@ -75,7 +75,7 @@ KeyRemap4MacBook_server::Server::dispatchOperator(int sock)
   return;
 
 error:
-  sendReply(sock, NULL, 0, KeyRemap4MacBook_server::Bridge::REPLYTYPE_ERROR);
+  sendReply(sock, NULL, 0, KeyRemap4MacBook_bridge::ERROR);
 }
 
 void *
@@ -168,7 +168,7 @@ KeyRemap4MacBook_server::Server::makeSocket(void)
   memset(&listenSocketAddr, 0, sizeof(listenSocketAddr));
   listenSocketAddr.sun_len = sizeof(listenSocketAddr);
   listenSocketAddr.sun_family = AF_LOCAL;
-  snprintf(listenSocketAddr.sun_path, sizeof(listenSocketAddr.sun_path), KeyRemap4MacBook_server::Bridge::socketPath);
+  snprintf(listenSocketAddr.sun_path, sizeof(listenSocketAddr.sun_path), KeyRemap4MacBook_bridge::socketPath);
 
   if (bind(listenSocket, reinterpret_cast<struct sockaddr *>(&listenSocketAddr), sizeof(listenSocketAddr)) < 0) return false;
 
@@ -178,15 +178,15 @@ KeyRemap4MacBook_server::Server::makeSocket(void)
 void
 KeyRemap4MacBook_server::Server::deleteSocket(void)
 {
-  unlink(KeyRemap4MacBook_server::Bridge::socketPath);
+  unlink(KeyRemap4MacBook_bridge::socketPath);
 }
 
 
 // --------------------------------------------------
-KeyRemap4MacBook_server::Bridge::ReplyType
-KeyRemap4MacBook_server::Server::do_ActiveApplicationInfo(KeyRemap4MacBook_server::Bridge::ActiveApplicationInfo::Reply *reply)
+KeyRemap4MacBook_bridge::Error
+KeyRemap4MacBook_server::Server::do_ActiveApplicationInfo(KeyRemap4MacBook_bridge::ActiveApplicationInfo::Reply *reply)
 {
-  if (! reply) return KeyRemap4MacBook_server::Bridge::REPLYTYPE_ERROR;
+  if (! reply) return KeyRemap4MacBook_bridge::ERROR;
 
   char applicationName[128];
   getActiveApplicationName(applicationName, sizeof(applicationName));
@@ -207,5 +207,5 @@ KeyRemap4MacBook_server::Server::do_ActiveApplicationInfo(KeyRemap4MacBook_serve
     reply->is_virtualmachine = true;
   }
 
-  return KeyRemap4MacBook_server::Bridge::REPLYTYPE_SUCCESS;
+  return KeyRemap4MacBook_bridge::SUCCESS;
 }

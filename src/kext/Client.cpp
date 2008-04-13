@@ -24,7 +24,7 @@ namespace {
 
     // ----------------------------------------
     struct timeval tv;
-    tv.tv_sec = KeyRemap4MacBook_client::Bridge::BRIDGE_TIMEOUT;
+    tv.tv_sec = KeyRemap4MacBook_client::TIMEOUT;
     tv.tv_usec = 0;
 
     error = sock_setsockopt(*socket, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(struct timeval));
@@ -44,7 +44,7 @@ namespace {
     memset(&addr, 0, sizeof(addr));
     addr.sun_len = sizeof(addr);
     addr.sun_family = AF_LOCAL;
-    strncpy(addr.sun_path, KeyRemap4MacBook_server::Bridge::socketPath, sizeof(addr.sun_path) - 1);
+    strncpy(addr.sun_path, KeyRemap4MacBook_bridge::socketPath, sizeof(addr.sun_path) - 1);
 
     int error = sock_connect(socket, reinterpret_cast<const sockaddr *>(&addr), 0);
     if (error && error != EINPROGRESS) {
@@ -64,7 +64,7 @@ namespace {
 }
 
 int
-KeyRemap4MacBook_client::Bridge::sendmsg(KeyRemap4MacBook_server::Bridge::RequestType type, void *request, size_t requestsize, void *reply, size_t replysize)
+KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::RequestType type, void *request, size_t requestsize, void *reply, size_t replysize)
 {
   socket_t socket;
   if (! makeSocket(&socket)) {
