@@ -931,7 +931,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         cancel_control = true;
       }
       // Control+V -> PAGEDOWN
-      if (config.option_emacsmode_controlV && *(params.key) == KeyCode::V) {
+      if (config.option_emacsmode_controlV && *(params.key) == KeyCode::V && ! ignore) {
         *(params.key) = KeyCode::PAGEDOWN;
         cancel_control = true;
       }
@@ -955,23 +955,23 @@ namespace org_pqrs_KeyRemap4MacBook {
         allFlagStatus.commandL.temporary_increase();
         cancel_control = true;
       }
-      // Control+Q -> PAGEUP
+      // Control+Q -> PAGEUP (force remap in Emacs)
       if (config.option_emacsmode_ex_controlQ && *(params.key) == KeyCode::Q) {
         *(params.key) = KeyCode::PAGEUP;
         cancel_control = true;
       }
-      // Control+W -> Option+DELETE
+      // Control+W -> Option+DELETE (force remap in Emacs)
       if (config.option_emacsmode_ex_controlW && *(params.key) == KeyCode::W) {
         *(params.key) = KeyCode::DELETE;
         allFlagStatus.optionL.temporary_increase();
         cancel_control = true;
       }
-      // Control+1 -> HOME
+      // Control+1 -> HOME (force remap in Emacs)
       if (config.option_emacsmode_ex_control12 && *(params.key) == KeyCode::KEY_1) {
         *(params.key) = KeyCode::HOME;
         cancel_control = true;
       }
-      // Control+2 -> END
+      // Control+2 -> END (force remap in Emacs)
       if (config.option_emacsmode_ex_control12 && *(params.key) == KeyCode::KEY_2) {
         *(params.key) = KeyCode::END;
         cancel_control = true;
@@ -987,7 +987,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool cancel_option = false;
 
       // Option+V -> PAGEUP
-      if (config.option_emacsmode_controlV && *(params.key) == KeyCode::V) {
+      if (config.option_emacsmode_controlV && *(params.key) == KeyCode::V && ! ignore) {
         *(params.key) = KeyCode::PAGEUP;
         cancel_option = true;
       }
