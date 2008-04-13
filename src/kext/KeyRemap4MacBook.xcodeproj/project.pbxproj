@@ -10,6 +10,9 @@
 		32D94FC80562CBF700B6AF17 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
 		32D94FCA0562CBF700B6AF17 /* KeyRemap4MacBook.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A224C3FFF42367911CA2CB7 /* KeyRemap4MacBook.cpp */; settings = {ATTRIBUTES = (); }; };
 		3452BE030AD6BCAF009D9E15 /* KeyRemap4MacBook.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3452BE010AD6BCAF009D9E15 /* KeyRemap4MacBook.hpp */; };
+		345B06AD0DB21A88000023FD /* Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345B06AB0DB21A88000023FD /* Client.cpp */; };
+		345B06AE0DB21A88000023FD /* Client.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345B06AC0DB21A88000023FD /* Client.hpp */; };
+		345B06B80DB21ABF000023FD /* bridge.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345B06B70DB21ABF000023FD /* bridge.hpp */; };
 		348ED8340CE467FD00E179EC /* remap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 348ED8330CE467FD00E179EC /* remap.cpp */; };
 		348ED8360CE4680F00E179EC /* remap.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 348ED8350CE4680F00E179EC /* remap.hpp */; };
 		348ED8380CE4681700E179EC /* keycode.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 348ED8370CE4681700E179EC /* keycode.hpp */; };
@@ -27,6 +30,9 @@
 		32D94FCF0562CBF700B6AF17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Info.plist; sourceTree = "<group>"; };
 		32D94FD00562CBF700B6AF17 /* KeyRemap4MacBook.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyRemap4MacBook.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		3452BE010AD6BCAF009D9E15 /* KeyRemap4MacBook.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = KeyRemap4MacBook.hpp; sourceTree = "<group>"; };
+		345B06AB0DB21A88000023FD /* Client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Client.cpp; sourceTree = "<group>"; };
+		345B06AC0DB21A88000023FD /* Client.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Client.hpp; sourceTree = "<group>"; };
+		345B06B70DB21ABF000023FD /* bridge.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = bridge.hpp; path = ../bridge/bridge.hpp; sourceTree = SOURCE_ROOT; };
 		348ED8330CE467FD00E179EC /* remap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = remap.cpp; sourceTree = "<group>"; };
 		348ED8350CE4680F00E179EC /* remap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = remap.hpp; sourceTree = "<group>"; };
 		348ED8370CE4681700E179EC /* keycode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = keycode.hpp; sourceTree = "<group>"; };
@@ -73,13 +79,6 @@
 		19C28FB6FE9D52B211CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				34FB835E0CE5DBFF00BD6A24 /* base.hpp */,
-				348ED8480CE47D9D00E179EC /* RemapUtil.hpp */,
-				348ED8390CE4682000E179EC /* version.hpp */,
-				348ED8370CE4681700E179EC /* keycode.hpp */,
-				348ED8350CE4680F00E179EC /* remap.hpp */,
-				34C7A9AF0CE4605B00C98397 /* Config.hpp */,
-				3452BE010AD6BCAF009D9E15 /* KeyRemap4MacBook.hpp */,
 				32D94FD00562CBF700B6AF17 /* KeyRemap4MacBook.kext */,
 			);
 			name = Products;
@@ -88,6 +87,16 @@
 		247142CAFF3F8F9811CA285C /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				345B06B70DB21ABF000023FD /* bridge.hpp */,
+				348ED8350CE4680F00E179EC /* remap.hpp */,
+				348ED8480CE47D9D00E179EC /* RemapUtil.hpp */,
+				348ED8390CE4682000E179EC /* version.hpp */,
+				34FB835E0CE5DBFF00BD6A24 /* base.hpp */,
+				34C7A9AF0CE4605B00C98397 /* Config.hpp */,
+				348ED8370CE4681700E179EC /* keycode.hpp */,
+				3452BE010AD6BCAF009D9E15 /* KeyRemap4MacBook.hpp */,
+				345B06AB0DB21A88000023FD /* Client.cpp */,
+				345B06AC0DB21A88000023FD /* Client.hpp */,
 				348ED8460CE47D9400E179EC /* RemapUtil.cpp */,
 				348ED8330CE467FD00E179EC /* remap.cpp */,
 				34C7A9A10CE45EA400C98397 /* Config.cpp */,
@@ -110,6 +119,8 @@
 				348ED83A0CE4682000E179EC /* version.hpp in Headers */,
 				348ED8490CE47D9D00E179EC /* RemapUtil.hpp in Headers */,
 				34FB835F0CE5DBFF00BD6A24 /* base.hpp in Headers */,
+				345B06AE0DB21A88000023FD /* Client.hpp in Headers */,
+				345B06B80DB21ABF000023FD /* bridge.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +194,7 @@
 				34C7A9A20CE45EA400C98397 /* Config.cpp in Sources */,
 				348ED8340CE467FD00E179EC /* remap.cpp in Sources */,
 				348ED8470CE47D9400E179EC /* RemapUtil.cpp in Sources */,
+				345B06AD0DB21A88000023FD /* Client.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
