@@ -882,27 +882,27 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool cancel_control = false;
 
       // Control+D -> FORWARD_DELETE
-      if (config.option_emacsmode_controlD && *(params.key) == KeyCode::D) {
+      if (config.option_emacsmode_controlD && *(params.key) == KeyCode::D && ! ignore) {
         *(params.key) = KeyCode::FORWARD_DELETE;
         cancel_control = true;
       }
       // Control+H -> DELETE
-      if (config.option_emacsmode_controlH && *(params.key) == KeyCode::H) {
+      if (config.option_emacsmode_controlH && *(params.key) == KeyCode::H && ! ignore) {
         *(params.key) = KeyCode::DELETE;
         cancel_control = true;
       }
       // Control+I -> TAB
-      if (config.option_emacsmode_controlI && *(params.key) == KeyCode::I) {
+      if (config.option_emacsmode_controlI && *(params.key) == KeyCode::I && ! ignore) {
         *(params.key) = KeyCode::TAB;
         cancel_control = true;
       }
       // Control+M -> RETURN
-      if (config.option_emacsmode_controlM && *(params.key) == KeyCode::M) {
+      if (config.option_emacsmode_controlM && *(params.key) == KeyCode::M && ! ignore) {
         *(params.key) = KeyCode::RETURN;
         cancel_control = true;
       }
       // Control+[ -> ESCAPE
-      if (config.option_emacsmode_controlLeftbracket && *(params.key) == KeyCode::BRACKET_LEFT) {
+      if (config.option_emacsmode_controlLeftbracket && *(params.key) == KeyCode::BRACKET_LEFT && ! ignore) {
         *(params.key) = KeyCode::ESCAPE;
         cancel_control = true;
       }
@@ -992,17 +992,17 @@ namespace org_pqrs_KeyRemap4MacBook {
         cancel_option = true;
       }
       // Option+B -> Option+LEFT
-      if (config.option_emacsmode_optionBF && *(params.key) == KeyCode::B) {
+      if (config.option_emacsmode_optionBF && *(params.key) == KeyCode::B && ! ignore) {
         *(params.key) = KeyCode::CURSOR_LEFT;
         allFlagStatus.cursor = true;
       }
       // Option+F -> Option+RIGHT
-      if (config.option_emacsmode_optionBF && *(params.key) == KeyCode::F) {
+      if (config.option_emacsmode_optionBF && *(params.key) == KeyCode::F && ! ignore) {
         *(params.key) = KeyCode::CURSOR_RIGHT;
         allFlagStatus.cursor = true;
       }
       // Option+D -> Option+FORWARD_DELETE
-      if (config.option_emacsmode_optionD && *(params.key) == KeyCode::D) {
+      if (config.option_emacsmode_optionD && *(params.key) == KeyCode::D && ! ignore) {
         *(params.key) = KeyCode::FORWARD_DELETE;
       }
 
