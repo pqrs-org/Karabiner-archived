@@ -9,4 +9,4 @@ clean:
 	rm -rf build
 
 run:
-	./build/Release/KeyRemap4MacBook-server.app/Contents/MacOS/KeyRemap4MacBook-server
+	sudo ./build/Release/KeyRemap4MacBook_server
