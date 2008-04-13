@@ -596,7 +596,7 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardEventCallBack(OSObject *target,
       org_pqrs_KeyRemap4MacBook::listFirePointingClick.reset();
 
       bool ex_dropKey = false;
-      KeyRemap4MacBook_server::Bridge::ActiveApplicationInfo::Reply activeApplicationInfo;
+      KeyRemap4MacBook_bridge::ActiveApplicationInfo::Reply activeApplicationInfo;
       org_pqrs_KeyRemap4MacBook::RemapParams params = {
         &eventType, &flags, &key, &charCode, &charSet,
         &origCharCode, &origCharSet, &keyboardType, &ts,
@@ -614,7 +614,10 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardEventCallBack(OSObject *target,
         skip = true;
       }
       if (! skip) {
-        KeyRemap4MacBook_client::Bridge::sendmsg(KeyRemap4MacBook_server::Bridge::REQUEST_TYPE_ACTIVE_APPLICATION_INFO, NULL, 0, &activeApplicationInfo, sizeof(activeApplicationInfo));
+        int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_ACTIVE_APPLICATION_INFO, NULL, 0, &activeApplicationInfo, sizeof(activeApplicationInfo));
+        if (error) {
+          activeApplicationInfo.reset();
+        }
         org_pqrs_KeyRemap4MacBook::remap_core(params);
       }
 
