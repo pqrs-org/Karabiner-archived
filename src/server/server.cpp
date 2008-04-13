@@ -198,10 +198,12 @@ KeyRemap4MacBook_server::Server::do_ActiveApplicationInfo(KeyRemap4MacBook_bridg
   if (strcmp(applicationName, "org.gnu.Emacs") == 0) {
     reply->is_emacs = true;
   }
-  if (strcmp(applicationName, "com.apple.Terminal") == 0) {
+  if (strcmp(applicationName, "com.apple.Terminal") == 0 ||
+      strcmp(applicationName, "iTerm") == 0) {
     reply->is_terminal = true;
   }
-  if (strcmp(applicationName, "com.vmware.fusion") == 0) {
+  if (strcmp(applicationName, "com.vmware.fusion") == 0 ||
+      strcmp(applicationName, "com.parallels.desktop") == 0) {
     reply->is_virtualmachine = true;
   }
 
