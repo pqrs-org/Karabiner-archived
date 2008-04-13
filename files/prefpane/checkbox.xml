@@ -606,6 +606,16 @@
     </item>
 
     <item>
+      <name>Remapping for Applications</name>
+      <list>
+        <item>
+          <name>Remap Command+Space to Option+Backquote(`) at VMware Fusion, Parallels Desktop</name>
+          <sysctl>keyremap4macbook.remap.app_vm_commandspace2optionbackquote</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>Change Keyboard Layout</name>
       <list>
         <item>

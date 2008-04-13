@@ -1131,6 +1131,40 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
+  remap_app_vm_commandspace2optionbackquote(const RemapParams &params)
+  {
+    static ModifierCanceling mc_commandL;
+    static ModifierCanceling mc_commandR;
+
+    if (! config.remap_app_vm_commandspace2optionbackquote) return;
+    if (! (params.activeApplicationInfo)->is_virtualmachine) return;
+
+    if ((allFlagStatus.commandL.isHeldDown()) || (allFlagStatus.commandR.isHeldDown())) {
+      bool cancel_command = false;
+
+      if (*(params.key) == KeyCode::SPACE) {
+        // hack keyboardType to fire backquote on any keyboards.
+        *(params.keyboardType) = KeyboardType::MACBOOK;
+        *(params.key) = KeyCode::BACKQUOTE;
+        allFlagStatus.optionL.temporary_increase();
+        cancel_command = true;
+      }
+      if (cancel_command) {
+        if (allFlagStatus.commandL.isHeldDown()) {
+          mc_commandL.keyRelease(params, ModifierFlag::COMMAND_L);
+        }
+        if (allFlagStatus.commandR.isHeldDown()) {
+          mc_commandR.keyRelease(params, ModifierFlag::COMMAND_R);
+        }
+        return;
+      }
+    }
+    mc_commandL.restore(params, ModifierFlag::COMMAND_L);
+    mc_commandR.restore(params, ModifierFlag::COMMAND_R);
+  }
+
+  // ----------------------------------------
+  void
   remap_qwerty2colemak(const RemapParams &params)
   {
     if (! config.remap_qwerty2colemak) return;
@@ -1736,6 +1770,9 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_tab2exposeALL(params);
 
   // ----------------------------------------
+  remap_app_vm_commandspace2optionbackquote(params);
+
+  // ----------------------------------------
   remap_qwerty2colemak(params);
 
   // ----------------------------------------
@@ -1755,10 +1792,21 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   // ------------------------------------------------------------
   // jis
+  remap_jis_commandL_x2_to_eisuu(params);
+  remap_jis_commandL_x2_to_eisuu_x2(params);
+  remap_jis_unify_kana_eisuu_to_commandL(params);
+
+  remap_jis_commandR2eisuu(params);
+  remap_jis_commandR2kana(params);
+  remap_jis_commandR_x2_to_kana(params);
+  remap_jis_commandR_x2_to_kana_x2(params);
+
+  remap_jis_optionR2eisuu(params);
+  remap_jis_optionR2kana(params);
+  remap_jis_unify_kana_eisuu_to_optionR(params);
+
   remap_jis_eisuu2commandL(params);
-  remap_jis_eisuu2commandL_eisuu(params);
   remap_jis_eisuu2controlL(params);
-  remap_jis_eisuu2controlL_eisuu(params);
   remap_jis_eisuu2fn(params);
   remap_jis_eisuu2optionL(params);
   remap_jis_eisuu2shiftL(params);
@@ -1766,9 +1814,9 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_jis_eisuu2tab(params);
   remap_jis_eisuu2middleclick(params);
   remap_jis_eisuu2rightclick(params);
+  remap_jis_unify_kana_to_eisuu(params);
 
   remap_jis_kana2commandL(params);
-  remap_jis_kana2commandR_kana(params);
   remap_jis_kana2controlL(params);
   remap_jis_kana2fn(params);
   remap_jis_kana2optionL(params);
@@ -1776,23 +1824,10 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_jis_kana2return(params);
   remap_jis_kana2middleclick(params);
   remap_jis_kana2rightclick(params);
-
-  remap_jis_underscore2backslash(params);
-
-  remap_jis_commandR2eisuu(params);
-  remap_jis_commandR2kana(params);
-  remap_jis_optionR2eisuu(params);
-  remap_jis_optionR2kana(params);
-
   remap_jis_shiftKana2eisuu(params);
   remap_jis_unify_eisuu_to_kana(params);
-  remap_jis_unify_kana_to_eisuu(params);
-  remap_jis_unify_kana_eisuu_to_commandL(params);
-  remap_jis_unify_kana_eisuu_to_optionR(params);
-  remap_jis_commandR_x2_to_kana(params);
-  remap_jis_commandR_x2_to_kana_x2(params);
-  remap_jis_commandL_x2_to_eisuu(params);
-  remap_jis_commandL_x2_to_eisuu_x2(params);
+
+  remap_jis_underscore2backslash(params);
 
   // ------------------------------------------------------------
   // *** Note: we need to call remap_drop_funcshift after tab2f9, pc_application2f11, ... ***
@@ -1820,6 +1855,9 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_jis_commandR2commandR_kana(params);
   remap_jis_commandL2commandL_eisuu(params);
   remap_jis_commandL2controlL_eisuu(params);
+  remap_jis_eisuu2commandL_eisuu(params);
+  remap_jis_eisuu2controlL_eisuu(params);
+  remap_jis_kana2commandR_kana(params);
 
   // ------------------------------------------------------------
   // *** Note: we need to call remap_pclikehomeend as possible late. ***
