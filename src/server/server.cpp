@@ -1,4 +1,3 @@
-#include <sys/dirent.h>
 #include <sys/select.h>
 #include <sys/socket.h>
 #include <sys/types.h>
@@ -195,6 +194,8 @@ KeyRemap4MacBook_server::Server::do_ActiveApplicationInfo(KeyRemap4MacBook_serve
   reply->is_emacs = false;
   reply->is_terminal = false;
   reply->is_virtualmachine = false;
+
+  printf("%s\n", applicationName);
 
   if (strcmp(applicationName, "org.gnu.Emacs") == 0) {
     reply->is_emacs = true;
