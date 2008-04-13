@@ -679,6 +679,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   void
+  FireFunc::firefunc_nop(const RemapParams &params) {
+  }
+
+  void
   FireFunc::firefunc_commandSpace(const RemapParams &params) {
     // fire only if no-modifiers
     if (allFlagStatus.makeFlags(params) != 0) return;
