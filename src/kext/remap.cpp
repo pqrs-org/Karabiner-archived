@@ -686,9 +686,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_shiftR2shiftR_backslash) return;
 
-    // hack to fire "the true backslash (not yen)" on JIS Keyboard.
-    *(params.keyboardType) = KeyboardType::MACBOOK;
-
     static KeyOverlayedModifier kom;
     kom.remap(params, KeyCode::SHIFT_R, ModifierFlag::SHIFT_R, FireFunc::firefunc_backslash);
   }
