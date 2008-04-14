@@ -27,6 +27,8 @@ if [ -d $basedir ]; then
     rm -rf "$basedir"
 fi
 
+launchctl unload /Library/LaunchDaemons/org.pqrs.KeyRemap4MacBook.server.plist
+
 rm -f "/Library/LaunchDaemons/org.pqrs.KeyRemap4MacBook.load.plist"
 rm -f "/Library/LaunchDaemons/org.pqrs.KeyRemap4MacBook.autosave.plist"
 rm -f "/Library/LaunchDaemons/org.pqrs.KeyRemap4MacBook.server.plist"
