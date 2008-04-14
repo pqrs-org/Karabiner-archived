@@ -557,19 +557,19 @@
           <name>Behavior in Emacs, Terminal</name>
           <list>
             <item>
-              <name>Force remap C-i</name>
+              <name>Force remap C-i to Tab</name>
               <sysctl>keyremap4macbook.option.emacsmode_force_controlI</sysctl>
             </item>
             <item>
-              <name>Force remap C-m</name>
+              <name>Force remap C-m to Return</name>
               <sysctl>keyremap4macbook.option.emacsmode_force_controlM</sysctl>
             </item>
             <item>
-              <name>Force remap C-[</name>
+              <name>Force remap C-[ to Escape</name>
               <sysctl>keyremap4macbook.option.emacsmode_force_controlLeftbracket</sysctl>
             </item>
             <item>
-              <name>Force remap C-pnbf</name>
+              <name>Force remap C-pnbf to Up/Down/Left/Right</name>
               <sysctl>keyremap4macbook.option.emacsmode_force_controlPNBF</sysctl>
             </item>
           </list>
