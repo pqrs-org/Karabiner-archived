@@ -29,6 +29,7 @@ fi
 
 rm -f "/Library/LaunchDaemons/org.pqrs.KeyRemap4MacBook.load.plist"
 rm -f "/Library/LaunchDaemons/org.pqrs.KeyRemap4MacBook.autosave.plist"
+rm -f "/Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.server.plist"
 rm -rf "/Library/PreferencePanes/KeyRemap4MacBook.prefPane"
 
 exit 0
