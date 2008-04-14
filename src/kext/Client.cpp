@@ -126,5 +126,6 @@ KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::RequestType type, void
   }
 
   releaseSocket(socket);
-  return error;
+  if (error) error;
+  return result;
 }
