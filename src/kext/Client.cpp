@@ -30,23 +30,25 @@ namespace {
     tv.tv_usec = 0;
 
     error = sock_setsockopt(*socket, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(struct timeval));
-    if (error) {
-      releaseSocket(*socket);
-      printf("KeyRemap4MacBook_client sock_setsockopt failed(%d)\n", error);
-      return false;
-    }
+    if (error) goto error;
+
+    error = sock_setsockopt(*socket, SOL_SOCKET, SO_SNDTIMEO, &tv, sizeof(struct timeval));
+    if (error) goto error;
 
     return true;
+
+  error:
+    releaseSocket(*socket);
+    printf("KeyRemap4MacBook_client makeSocket failed(%d)\n", error);
+    return false;
   }
 
   bool
   connectSocket(socket_t socket)
   {
     int error = sock_connect(socket, reinterpret_cast<const sockaddr *>(&sockaddr_), 0);
-    if (error && error != EINPROGRESS) {
-      if (error != ENOENT) {
-        printf("KeyRemap4MacBook_client sock_connect failed(%d)\n", error);
-      }
+    if (error) {
+      printf("KeyRemap4MacBook_client sock_connect failed(%d)\n", error);
       return false;
     }
     error = sock_nointerrupt(socket, TRUE);
@@ -121,11 +123,18 @@ KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::RequestType type, void
   for (;;) {
     error = sock_receive(socket, &msg, MSG_WAITALL, &iolen);
     if (error == EWOULDBLOCK) continue;
+    if (error) {
+      printf("KeyRemap4MacBook_client::sendmsg sock_receive failed(%d)\n", error);
+    }
 
     break;
   }
 
   releaseSocket(socket);
   if (error) error;
+
+  if (result) {
+    printf("KeyRemap4MacBook_client::sendmsg error result (%d)\n", result);
+  }
   return result;
 }
