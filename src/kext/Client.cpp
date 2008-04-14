@@ -6,6 +6,8 @@ extern "C" {
 #include "Client.hpp"
 
 namespace {
+  struct sockaddr_un sockaddr_;
+
   void
   releaseSocket(socket_t socket)
   {
@@ -40,13 +42,7 @@ namespace {
   bool
   connectSocket(socket_t socket)
   {
-    struct sockaddr_un addr;
-    memset(&addr, 0, sizeof(addr));
-    addr.sun_len = sizeof(addr);
-    addr.sun_family = AF_LOCAL;
-    strncpy(addr.sun_path, KeyRemap4MacBook_bridge::socketPath, sizeof(addr.sun_path) - 1);
-
-    int error = sock_connect(socket, reinterpret_cast<const sockaddr *>(&addr), 0);
+    int error = sock_connect(socket, reinterpret_cast<const sockaddr *>(&sockaddr_), 0);
     if (error && error != EINPROGRESS) {
       if (error != ENOENT) {
         printf("KeyRemap4MacBook_client sock_connect failed(%d)\n", error);
@@ -61,6 +57,15 @@ namespace {
 
     return true;
   }
+}
+
+void
+KeyRemap4MacBook_client::initialize(void)
+{
+  memset(&sockaddr_, 0, sizeof(sockaddr_));
+  sockaddr_.sun_len = sizeof(sockaddr_);
+  sockaddr_.sun_family = AF_LOCAL;
+  strncpy(sockaddr_.sun_path, KeyRemap4MacBook_bridge::socketPath, sizeof(sockaddr_.sun_path) - 8);
 }
 
 int
