@@ -20,6 +20,7 @@ fi
 
 # uninstall obsolute files
 rm -f "/Library/LaunchDaemons/org.pqrs.KeyRemap4MacBook.autosave.plist"
+rm -f "/Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.server.plist"
 rm -rf "/Applications/KeyRemap4MacBook"
 
 startup="/Library/org.pqrs/KeyRemap4MacBook/scripts/startup.sh"
