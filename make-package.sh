@@ -23,7 +23,6 @@ sudo cp -R files/extra "pkgroot/$basedir"
 sudo cp -R files/prefpane "pkgroot/$basedir"
 sudo cp -R files/scripts "pkgroot/$basedir"
 sudo cp -R files/LaunchDaemons pkgroot/Library
-sudo cp -R files/LaunchAgents pkgroot/Library
 sudo mkdir -p "pkgroot/$basedir/server"
 sudo cp src/server/build/Release/KeyRemap4MacBook_server "pkgroot/$basedir/server"
 
