@@ -556,20 +556,22 @@
         <item>
           <name>Behavior in Emacs, Terminal</name>
           <list>
-            <name>Force remap C-i</name>
-            <sysctl>keyremap4macbook.option.emacsmode_force_controlI</sysctl>
-          </list>
-          <list>
-            <name>Force remap C-m</name>
-            <sysctl>keyremap4macbook.option.emacsmode_force_controlM</sysctl>
-          </list>
-          <list>
-            <name>Force remap C-[</name>
-            <sysctl>keyremap4macbook.option.emacsmode_force_controlLeftbracket</sysctl>
-          </list>
-          <list>
-            <name>Force remap C-pnbf</name>
-            <sysctl>keyremap4macbook.option.emacsmode_force_controlPNBF</sysctl>
+            <item>
+              <name>Force remap C-i</name>
+              <sysctl>keyremap4macbook.option.emacsmode_force_controlI</sysctl>
+            </item>
+            <item>
+              <name>Force remap C-m</name>
+              <sysctl>keyremap4macbook.option.emacsmode_force_controlM</sysctl>
+            </item>
+            <item>
+              <name>Force remap C-[</name>
+              <sysctl>keyremap4macbook.option.emacsmode_force_controlLeftbracket</sysctl>
+            </item>
+            <item>
+              <name>Force remap C-pnbf</name>
+              <sysctl>keyremap4macbook.option.emacsmode_force_controlPNBF</sysctl>
+            </item>
           </list>
         </item>
       </list>
