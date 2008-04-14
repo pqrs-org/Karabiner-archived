@@ -172,6 +172,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       DELETE = 127,
       ESCAPE = 27,
       SPACE = 32,
+      BACKSLASH = 92,
       CURSOR_LEFT = 172,
       CURSOR_UP = 173,
       CURSOR_RIGHT = 174,

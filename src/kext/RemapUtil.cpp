@@ -683,6 +683,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  FireFunc::firefunc_backslash(const RemapParams &params) {
+    unsigned int flags = allFlagStatus.makeFlags(params);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, flags, KeyCode::BACKSLASH, CharCode::BACKSLASH);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, flags, KeyCode::BACKSLASH, CharCode::BACKSLASH);
+  }
+
+  void
   FireFunc::firefunc_commandSpace(const RemapParams &params) {
     // fire only if no-modifiers
     if (allFlagStatus.makeFlags(params) != 0) return;

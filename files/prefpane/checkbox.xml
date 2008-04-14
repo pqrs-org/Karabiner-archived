@@ -448,6 +448,10 @@
           <sysctl>keyremap4macbook.remap.shiftR2optionL</sysctl>
         </item>
         <item>
+          <name>Shift_R to Shift_R (+ When you type Shift_R only, fire Backslash).</name>
+          <sysctl>keyremap4macbook.remap.shiftR2shiftR_backslash</sysctl>
+        </item>
+        <item>
           <name>Shift_R to Escape</name>
           <sysctl>keyremap4macbook.remap.shiftR2escape</sysctl>
         </item>
