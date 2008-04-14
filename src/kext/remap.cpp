@@ -892,43 +892,57 @@ namespace org_pqrs_KeyRemap4MacBook {
         cancel_control = true;
       }
       // Control+I -> TAB
-      if (config.option_emacsmode_controlI && *(params.key) == KeyCode::I && ! ignore) {
-        *(params.key) = KeyCode::TAB;
-        cancel_control = true;
+      if (config.option_emacsmode_controlI && *(params.key) == KeyCode::I) {
+        if (! ignore || config.option_emacsmode_force_controlI) {
+          *(params.key) = KeyCode::TAB;
+          cancel_control = true;
+        }
       }
       // Control+M -> RETURN
-      if (config.option_emacsmode_controlM && *(params.key) == KeyCode::M && ! ignore) {
-        *(params.key) = KeyCode::RETURN;
-        cancel_control = true;
+      if (config.option_emacsmode_controlM && *(params.key) == KeyCode::M) {
+        if (! ignore || config.option_emacsmode_force_controlM) {
+          *(params.key) = KeyCode::RETURN;
+          cancel_control = true;
+        }
       }
       // Control+[ -> ESCAPE
-      if (config.option_emacsmode_controlLeftbracket && *(params.key) == KeyCode::BRACKET_LEFT && ! ignore) {
-        *(params.key) = KeyCode::ESCAPE;
-        cancel_control = true;
+      if (config.option_emacsmode_controlLeftbracket && *(params.key) == KeyCode::BRACKET_LEFT) {
+        if (! ignore || config.option_emacsmode_force_controlLeftbracket) {
+          *(params.key) = KeyCode::ESCAPE;
+          cancel_control = true;
+        }
       }
       // Control+P -> UP
-      if (config.option_emacsmode_controlPNBF && *(params.key) == KeyCode::P && ! ignore) {
-        *(params.key) = KeyCode::CURSOR_UP;
-        allFlagStatus.cursor = true;
-        cancel_control = true;
+      if (config.option_emacsmode_controlPNBF && *(params.key) == KeyCode::P) {
+        if (! ignore || config.option_emacsmode_force_controlPNBF) {
+          *(params.key) = KeyCode::CURSOR_UP;
+          allFlagStatus.cursor = true;
+          cancel_control = true;
+        }
       }
       // Control+N -> DOWN
-      if (config.option_emacsmode_controlPNBF && *(params.key) == KeyCode::N && ! ignore) {
-        *(params.key) = KeyCode::CURSOR_DOWN;
-        allFlagStatus.cursor = true;
-        cancel_control = true;
+      if (config.option_emacsmode_controlPNBF && *(params.key) == KeyCode::N) {
+        if (! ignore || config.option_emacsmode_force_controlPNBF) {
+          *(params.key) = KeyCode::CURSOR_DOWN;
+          allFlagStatus.cursor = true;
+          cancel_control = true;
+        }
       }
       // Control+B -> LEFT
-      if (config.option_emacsmode_controlPNBF && *(params.key) == KeyCode::B && ! ignore) {
-        *(params.key) = KeyCode::CURSOR_LEFT;
-        allFlagStatus.cursor = true;
-        cancel_control = true;
+      if (config.option_emacsmode_controlPNBF && *(params.key) == KeyCode::B) {
+        if (! ignore || config.option_emacsmode_force_controlPNBF) {
+          *(params.key) = KeyCode::CURSOR_LEFT;
+          allFlagStatus.cursor = true;
+          cancel_control = true;
+        }
       }
       // Control+F -> RIGHT
-      if (config.option_emacsmode_controlPNBF && *(params.key) == KeyCode::F && ! ignore) {
-        *(params.key) = KeyCode::CURSOR_RIGHT;
-        allFlagStatus.cursor = true;
-        cancel_control = true;
+      if (config.option_emacsmode_controlPNBF && *(params.key) == KeyCode::F) {
+        if (! ignore || config.option_emacsmode_force_controlPNBF) {
+          *(params.key) = KeyCode::CURSOR_RIGHT;
+          allFlagStatus.cursor = true;
+          cancel_control = true;
+        }
       }
       // Control+V -> PAGEDOWN
       if (config.option_emacsmode_controlV && *(params.key) == KeyCode::V && ! ignore) {
