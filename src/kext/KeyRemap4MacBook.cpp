@@ -43,6 +43,8 @@ org_pqrs_driver_KeyRemap4MacBook::init(OSDictionary *dict)
   }
   org_pqrs_KeyRemap4MacBook::clickWatcher.reset();
 
+  KeyRemap4MacBook_client::initialize();
+
   return res;
 }
 
