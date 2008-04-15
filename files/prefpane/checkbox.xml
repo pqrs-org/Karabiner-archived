@@ -638,8 +638,13 @@
       <name>Remapping for Applications</name>
       <list>
         <item>
-          <name>Remap Command+Space to Option+Backquote(`) at VMware, Parallels</name>
-          <sysctl>keyremap4macbook.remap.app_vm_commandspace2optionbackquote</sysctl>
+          <name>Enable at only VMware Fusion, Parallels Desktop</name>
+          <list>
+            <item>
+              <name>Remap Command+Space to Option+Backquote(`)</name>
+              <sysctl>keyremap4macbook.remap.app_vm_commandspace2optionbackquote</sysctl>
+            </item>
+          </list>
         </item>
       </list>
     </item>
