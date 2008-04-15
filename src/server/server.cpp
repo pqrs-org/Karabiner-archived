@@ -8,7 +8,7 @@
 #include "getActiveApplicationName.h"
 #include "server.hpp"
 
-void
+bool
 KeyRemap4MacBook_server::Server::initialize(void)
 {
   // --------------------
@@ -22,7 +22,7 @@ KeyRemap4MacBook_server::Server::initialize(void)
   }
 
   // --------------------
-  makeSocket();
+  return makeSocket();
 }
 
 void
@@ -122,7 +122,7 @@ KeyRemap4MacBook_server::Server::enqueueRequest(int sock)
 void
 KeyRemap4MacBook_server::Server::doLoop(void)
 {
-  initialize();
+  if (! initialize()) return;
 
   listen(listenSocket, 128);
 

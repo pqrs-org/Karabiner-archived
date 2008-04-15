@@ -18,7 +18,7 @@ namespace KeyRemap4MacBook_server {
     void doLoop(void);
 
   private:
-    void initialize(void);
+    bool initialize(void);
     void terminate(void);
 
     bool makeSocket(void);
