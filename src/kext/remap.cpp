@@ -885,7 +885,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     static ModifierCanceling mc_control;
     static ModifierCanceling mc_option;
 
-    bool ignore = ((params.activeApplicationInfo)->is_emacs) || ((params.activeApplicationInfo)->is_terminal);
+    bool ignore = ((params.activeApplicationInfo)->is_emacs) ||
+      ((params.activeApplicationInfo)->is_terminal) ||
+      ((params.activeApplicationInfo)->is_virtualmachine);
 
     if (allFlagStatus.controlL.isHeldDown()) {
       bool cancel_control = false;
@@ -896,9 +898,11 @@ namespace org_pqrs_KeyRemap4MacBook {
         cancel_control = true;
       }
       // Control+H -> DELETE
-      if (config.option_emacsmode_controlH && *(params.key) == KeyCode::H && ! ignore) {
-        *(params.key) = KeyCode::DELETE;
-        cancel_control = true;
+      if (config.option_emacsmode_controlH && *(params.key) == KeyCode::H) {
+        if (! ignore || config.option_emacsmode_force_controlH) {
+          *(params.key) = KeyCode::DELETE;
+          cancel_control = true;
+        }
       }
       // Control+I -> TAB
       if (config.option_emacsmode_controlI && *(params.key) == KeyCode::I) {

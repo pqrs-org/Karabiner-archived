@@ -558,8 +558,12 @@
           <sysctl>keyremap4macbook.option.emacsmode_ex_controlW</sysctl>
         </item>
         <item>
-          <name>Behavior in Emacs, Terminal</name>
+          <name>Behavior in Emacs, Terminal, VMware</name>
           <list>
+            <item>
+              <name>Force remap C-h to Delete</name>
+              <sysctl>keyremap4macbook.option.emacsmode_force_controlH</sysctl>
+            </item>
             <item>
               <name>Force remap C-i to Tab</name>
               <sysctl>keyremap4macbook.option.emacsmode_force_controlI</sysctl>
@@ -634,7 +638,7 @@
       <name>Remapping for Applications</name>
       <list>
         <item>
-          <name>Remap Command+Space to Option+Backquote(`) at VMware Fusion, Parallels Desktop</name>
+          <name>Remap Command+Space to Option+Backquote(`) at VMware, Parallels</name>
           <sysctl>keyremap4macbook.remap.app_vm_commandspace2optionbackquote</sysctl>
         </item>
       </list>
