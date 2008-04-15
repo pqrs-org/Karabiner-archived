@@ -147,7 +147,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void add(FireExtraKey::Type type, unsigned int eventType, unsigned int flags, unsigned int key, unsigned int charCode);
     void fire(FireExtraKey::Type type, KeyboardEventCallback callback,
               OSObject *target,
-              unsigned int charSet, unsigned int origCharCode, unsigned int origCharSet, unsigned int keyboardType, AbsoluteTime ts,
+              unsigned int charSet, unsigned int origCharCode, unsigned int origCharSet, AbsoluteTime ts,
               OSObject *sender, void *refcon);
 
   private:

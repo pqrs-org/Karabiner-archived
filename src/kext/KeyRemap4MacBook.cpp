@@ -635,12 +635,12 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardEventCallBack(OSObject *target,
       if (ex_dropKey) return;
 
       if (p->origEventCallback) {
-        org_pqrs_KeyRemap4MacBook::listFireExtraKey.fire(org_pqrs_KeyRemap4MacBook::FireExtraKey::TYPE_BEFORE, p->origEventCallback, target, charSet, origCharCode, origCharSet, keyboardType, ts, sender, refcon);
+        org_pqrs_KeyRemap4MacBook::listFireExtraKey.fire(org_pqrs_KeyRemap4MacBook::FireExtraKey::TYPE_BEFORE, p->origEventCallback, target, charSet, origCharCode, origCharSet, ts, sender, refcon);
 
         p->origEventCallback(target, eventType, flags, key, charCode,
                              charSet, origCharCode, origCharSet, keyboardType, repeat, ts, sender, refcon);
 
-        org_pqrs_KeyRemap4MacBook::listFireExtraKey.fire(org_pqrs_KeyRemap4MacBook::FireExtraKey::TYPE_AFTER, p->origEventCallback, target, charSet, origCharCode, origCharSet, keyboardType, ts, sender, refcon);
+        org_pqrs_KeyRemap4MacBook::listFireExtraKey.fire(org_pqrs_KeyRemap4MacBook::FireExtraKey::TYPE_AFTER, p->origEventCallback, target, charSet, origCharCode, origCharSet, ts, sender, refcon);
       }
 
       p->setRepeatInfo(eventType, flags, key, charCode, charSet, origCharCode, origCharSet, keyboardType, ts, target, refcon);
@@ -705,7 +705,7 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardSpecialEventCallBack(OSObject *target,
         unsigned origCharSet = 0;
         unsigned int keyboardType = org_pqrs_KeyRemap4MacBook::KeyboardType::MACBOOK;
 
-        org_pqrs_KeyRemap4MacBook::listFireExtraKey.fire(org_pqrs_KeyRemap4MacBook::FireExtraKey::TYPE_BEFORE, hk->origEventCallback, hk->origEventTarget, charSet, origCharCode, origCharSet, keyboardType, ts, sender, NULL);
+        org_pqrs_KeyRemap4MacBook::listFireExtraKey.fire(org_pqrs_KeyRemap4MacBook::FireExtraKey::TYPE_BEFORE, hk->origEventCallback, hk->origEventTarget, charSet, origCharCode, origCharSet, ts, sender, NULL);
 
         if (ex_remapKey) {
           if (hk->origEventCallback) {
@@ -714,7 +714,7 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardSpecialEventCallBack(OSObject *target,
           hk->setRepeatInfo(eventType, flags, ex_remapKeyCode, charCode, charSet, origCharCode, origCharSet, keyboardType, ts, hk->origEventTarget, NULL);
         }
 
-        org_pqrs_KeyRemap4MacBook::listFireExtraKey.fire(org_pqrs_KeyRemap4MacBook::FireExtraKey::TYPE_AFTER, hk->origEventCallback, hk->origEventTarget, charSet, origCharCode, origCharSet, keyboardType, ts, sender, NULL);
+        org_pqrs_KeyRemap4MacBook::listFireExtraKey.fire(org_pqrs_KeyRemap4MacBook::FireExtraKey::TYPE_AFTER, hk->origEventCallback, hk->origEventTarget, charSet, origCharCode, origCharSet, ts, sender, NULL);
 
         if (! ex_dropKey) {
           p->origSpecialEventCallback(target, eventType, flags, key, flavor, guid, repeat, ts, sender, refcon);
