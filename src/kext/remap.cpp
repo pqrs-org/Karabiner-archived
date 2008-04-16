@@ -861,6 +861,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_pclikehomeend) return;
 
+    if ((params.activeApplicationInfo)->is_virtualmachine) return;
+
     bool replaced = false;
 
     if (*(params.key) == KeyCode::HOME) {
