@@ -166,6 +166,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     enum {
       COMMAND_L = 0,
       CONTROL_L = 0,
+      OPTION_L = 0,
       FN = 0,
       TAB = 9,
       RETURN = 13,
@@ -173,6 +174,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       ESCAPE = 27,
       SPACE = 32,
       BACKSLASH = 92,
+      BACKQUOTE = 96,
       CURSOR_LEFT = 172,
       CURSOR_UP = 173,
       CURSOR_RIGHT = 174,
