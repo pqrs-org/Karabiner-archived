@@ -561,6 +561,23 @@
           <name>Behavior in Emacs, Terminal, X11, VMware, Parallels</name>
           <list>
             <item>
+              <name>Force remap C-d to Forward Delete</name>
+              <list>
+                <item>
+                  <name>In Emacs, Terminal</name>
+                  <sysctl>keyremap4macbook.option.emacsmode_force_controlD_term</sysctl>
+                </item>
+                <item>
+                  <name>In X11</name>
+                  <sysctl>keyremap4macbook.option.emacsmode_force_controlD_x11</sysctl>
+                </item>
+                <item>
+                  <name>In VMware Fusion, Parallels Desktop</name>
+                  <sysctl>keyremap4macbook.option.emacsmode_force_controlD_vm</sysctl>
+                </item>
+              </list>
+            </item>
+            <item>
               <name>Force remap C-h to Delete</name>
               <list>
                 <item>
