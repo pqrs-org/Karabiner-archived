@@ -895,9 +895,16 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool cancel_control = false;
 
       // Control+D -> FORWARD_DELETE
-      if (config.option_emacsmode_controlD && *(params.key) == KeyCode::D && ! ignore) {
-        *(params.key) = KeyCode::FORWARD_DELETE;
-        cancel_control = true;
+      if (config.option_emacsmode_controlD && *(params.key) == KeyCode::D) {
+        bool doremap = ! ignore;
+        if (is_terminal && config.option_emacsmode_force_controlD_term) doremap = true;
+        if (is_x11 && config.option_emacsmode_force_controlD_x11) doremap = true;
+        if (is_virtualmachine && config.option_emacsmode_force_controlD_vm) doremap = true;
+
+        if (doremap) {
+          *(params.key) = KeyCode::FORWARD_DELETE;
+          cancel_control = true;
+        }
       }
       // Control+H -> DELETE
       if (config.option_emacsmode_controlH && *(params.key) == KeyCode::H) {
