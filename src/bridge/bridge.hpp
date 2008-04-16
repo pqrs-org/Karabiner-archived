@@ -23,11 +23,13 @@ namespace KeyRemap4MacBook_bridge {
       bool is_emacs; // Carbon Emacs, ...
       bool is_terminal; // Terminal.app, iTerm.app, ...
       bool is_virtualmachine; // VMware, Parallels, ...
+      bool is_x11; // X11, ...
 
       void reset(void) {
         is_emacs = false;
         is_terminal = false;
         is_virtualmachine = false;
+        is_x11 = false;
       }
     };
   }

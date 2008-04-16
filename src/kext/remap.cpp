@@ -885,11 +885,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     static ModifierCanceling mc_control;
     static ModifierCanceling mc_option;
 
-    bool ignore = ((params.activeApplicationInfo)->is_emacs) ||
-      ((params.activeApplicationInfo)->is_terminal) ||
-      ((params.activeApplicationInfo)->is_virtualmachine);
     bool is_terminal = ((params.activeApplicationInfo)->is_emacs || (params.activeApplicationInfo)->is_terminal);
     bool is_virtualmachine = ((params.activeApplicationInfo)->is_virtualmachine);
+    bool is_x11 = ((params.activeApplicationInfo)->is_x11);
+
+    bool ignore = is_terminal || is_virtualmachine || is_x11;
 
     if (allFlagStatus.controlL.isHeldDown()) {
       bool cancel_control = false;
@@ -903,6 +903,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (config.option_emacsmode_controlH && *(params.key) == KeyCode::H) {
         bool doremap = ! ignore;
         if (is_terminal && config.option_emacsmode_force_controlH_term) doremap = true;
+        if (is_x11 && config.option_emacsmode_force_controlH_x11) doremap = true;
         if (is_virtualmachine && config.option_emacsmode_force_controlH_vm) doremap = true;
 
         if (doremap) {
@@ -914,6 +915,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (config.option_emacsmode_controlI && *(params.key) == KeyCode::I) {
         bool doremap = ! ignore;
         if (is_terminal && config.option_emacsmode_force_controlI_term) doremap = true;
+        if (is_x11 && config.option_emacsmode_force_controlI_x11) doremap = true;
         if (is_virtualmachine && config.option_emacsmode_force_controlI_vm) doremap = true;
 
         if (doremap) {
@@ -925,6 +927,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (config.option_emacsmode_controlM && *(params.key) == KeyCode::M) {
         bool doremap = ! ignore;
         if (is_terminal && config.option_emacsmode_force_controlM_term) doremap = true;
+        if (is_x11 && config.option_emacsmode_force_controlM_x11) doremap = true;
         if (is_virtualmachine && config.option_emacsmode_force_controlM_vm) doremap = true;
 
         if (doremap) {
@@ -936,6 +939,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (config.option_emacsmode_controlLeftbracket && *(params.key) == KeyCode::BRACKET_LEFT) {
         bool doremap = ! ignore;
         if (is_terminal && config.option_emacsmode_force_controlLeftbracket_term) doremap = true;
+        if (is_x11 && config.option_emacsmode_force_controlLeftbracket_x11) doremap = true;
         if (is_virtualmachine && config.option_emacsmode_force_controlLeftbracket_vm) doremap = true;
 
         if (doremap) {
@@ -947,6 +951,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (config.option_emacsmode_controlPNBF) {
         bool doremap = ! ignore;
         if (is_terminal && config.option_emacsmode_force_controlPNBF_term) doremap = true;
+        if (is_x11 && config.option_emacsmode_force_controlPNBF_x11) doremap = true;
         if (is_virtualmachine && config.option_emacsmode_force_controlPNBF_vm) doremap = true;
 
         if (doremap) {

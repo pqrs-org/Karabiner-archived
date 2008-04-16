@@ -207,6 +207,9 @@ KeyRemap4MacBook_server::Server::do_ActiveApplicationInfo(KeyRemap4MacBook_bridg
       strcmp(applicationName, "com.parallels.desktop") == 0) {
     reply->is_virtualmachine = true;
   }
+  if (strcmp(applicationName, "org.x.X11") == 0) {
+    reply->is_x11 = true;
+  }
 
   return KeyRemap4MacBook_bridge::SUCCESS;
 }
