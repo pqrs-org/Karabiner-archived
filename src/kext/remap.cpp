@@ -995,19 +995,33 @@ namespace org_pqrs_KeyRemap4MacBook {
         allFlagStatus.commandL.temporary_increase();
         cancel_control = true;
       }
-      // Control+A -> Command+LEFT
-      if (config.option_emacsmode_controlAE && *(params.key) == KeyCode::A && ! ignore) {
-        *(params.key) = KeyCode::CURSOR_LEFT;
-        allFlagStatus.cursor = true;
-        allFlagStatus.commandL.temporary_increase();
-        cancel_control = true;
+      // Control+AE -> Command+LEFT/Right
+      if (config.option_emacsmode_controlAE) {
+        if (! ignore) {
+          if (*(params.key) == KeyCode::A) {
+            *(params.key) = KeyCode::CURSOR_LEFT;
+            allFlagStatus.cursor = true;
+            allFlagStatus.commandL.temporary_increase();
+            cancel_control = true;
+          }
+          if (*(params.key) == KeyCode::E) {
+            *(params.key) = KeyCode::CURSOR_RIGHT;
+            allFlagStatus.cursor = true;
+            allFlagStatus.commandL.temporary_increase();
+            cancel_control = true;
+          }
+        }
       }
-      // Control+E -> Command+RIGHT
-      if (config.option_emacsmode_controlAE && *(params.key) == KeyCode::E && ! ignore) {
-        *(params.key) = KeyCode::CURSOR_RIGHT;
-        allFlagStatus.cursor = true;
-        allFlagStatus.commandL.temporary_increase();
-        cancel_control = true;
+      // Control+AE -> HOME/END (in VirtualMachine)
+      if (is_virtualmachine && config.option_emacsmode_controlAE_vm) {
+        if (*(params.key) == KeyCode::A) {
+          *(params.key) = KeyCode::HOME;
+          cancel_control = true;
+        }
+        if (*(params.key) == KeyCode::E) {
+          *(params.key) = KeyCode::END;
+          cancel_control = true;
+        }
       }
       // Control+Q -> PAGEUP
       if (config.option_emacsmode_ex_controlQ && *(params.key) == KeyCode::Q && ! ignore) {
