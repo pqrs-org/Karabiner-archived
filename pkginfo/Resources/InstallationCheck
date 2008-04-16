@@ -1,6 +1,9 @@
 #!/bin/sh
+PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 
 [ -d /Library/StartupItems/SetKeyboardLED ] && exit 126
+
 [ -d /Library/StartupItems/DoubleCommand ] && exit 127
+kextstat | grep -q com.baltaks.driver.DoubleCommand && exit 127
 
 exit 0
