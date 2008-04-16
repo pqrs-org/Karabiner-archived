@@ -1009,24 +1009,24 @@ namespace org_pqrs_KeyRemap4MacBook {
         allFlagStatus.commandL.temporary_increase();
         cancel_control = true;
       }
-      // Control+Q -> PAGEUP (force remap in Emacs)
-      if (config.option_emacsmode_ex_controlQ && *(params.key) == KeyCode::Q) {
+      // Control+Q -> PAGEUP
+      if (config.option_emacsmode_ex_controlQ && *(params.key) == KeyCode::Q && ! ignore) {
         *(params.key) = KeyCode::PAGEUP;
         cancel_control = true;
       }
-      // Control+W -> Option+DELETE (force remap in Emacs)
-      if (config.option_emacsmode_ex_controlW && *(params.key) == KeyCode::W) {
+      // Control+W -> Option+DELETE
+      if (config.option_emacsmode_ex_controlW && *(params.key) == KeyCode::W && ! ignore) {
         *(params.key) = KeyCode::DELETE;
         allFlagStatus.optionL.temporary_increase();
         cancel_control = true;
       }
-      // Control+1 -> HOME (force remap in Emacs)
-      if (config.option_emacsmode_ex_control12 && *(params.key) == KeyCode::KEY_1) {
+      // Control+1 -> HOME
+      if (config.option_emacsmode_ex_control12 && *(params.key) == KeyCode::KEY_1 && ! ignore) {
         *(params.key) = KeyCode::HOME;
         cancel_control = true;
       }
-      // Control+2 -> END (force remap in Emacs)
-      if (config.option_emacsmode_ex_control12 && *(params.key) == KeyCode::KEY_2) {
+      // Control+2 -> END
+      if (config.option_emacsmode_ex_control12 && *(params.key) == KeyCode::KEY_2 && ! ignore) {
         *(params.key) = KeyCode::END;
         cancel_control = true;
       }
