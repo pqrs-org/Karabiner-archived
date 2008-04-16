@@ -558,27 +558,72 @@
           <sysctl>keyremap4macbook.option.emacsmode_ex_controlW</sysctl>
         </item>
         <item>
-          <name>Behavior in Emacs, Terminal, VMware</name>
+          <name>Behavior in Emacs, Terminal, VMware, Parallels</name>
           <list>
             <item>
               <name>Force remap C-h to Delete</name>
-              <sysctl>keyremap4macbook.option.emacsmode_force_controlH</sysctl>
+              <list>
+                <item>
+                  <name>In Emacs, Terminal</name>
+                  <sysctl>keyremap4macbook.option.emacsmode_force_controlH_term</sysctl>
+                </item>
+                <item>
+                  <name>In VMware Fusion, Parallels Desktop</name>
+                  <sysctl>keyremap4macbook.option.emacsmode_force_controlH_vm</sysctl>
+                </item>
+              </list>
             </item>
             <item>
               <name>Force remap C-i to Tab</name>
-              <sysctl>keyremap4macbook.option.emacsmode_force_controlI</sysctl>
+              <list>
+                <item>
+                  <name>In Emacs, Terminal</name>
+                  <sysctl>keyremap4macbook.option.emacsmode_force_controlI_term</sysctl>
+                </item>
+                <item>
+                  <name>In VMware Fusion, Parallels Desktop</name>
+                  <sysctl>keyremap4macbook.option.emacsmode_force_controlI_vm</sysctl>
+                </item>
+              </list>
             </item>
             <item>
               <name>Force remap C-m to Return</name>
-              <sysctl>keyremap4macbook.option.emacsmode_force_controlM</sysctl>
+              <list>
+                <item>
+                  <name>In Emacs, Terminal</name>
+                  <sysctl>keyremap4macbook.option.emacsmode_force_controlM_term</sysctl>
+                </item>
+                <item>
+                  <name>In VMware Fusion, Parallels Desktop</name>
+                  <sysctl>keyremap4macbook.option.emacsmode_force_controlM_vm</sysctl>
+                </item>
+              </list>
             </item>
             <item>
               <name>Force remap C-[ to Escape</name>
-              <sysctl>keyremap4macbook.option.emacsmode_force_controlLeftbracket</sysctl>
+              <list>
+                <item>
+                  <name>In Emacs, Terminal</name>
+                  <sysctl>keyremap4macbook.option.emacsmode_force_controlLeftbracket_term</sysctl>
+                </item>
+                <item>
+                  <name>In VMware Fusion, Parallels Desktop</name>
+                  <sysctl>keyremap4macbook.option.emacsmode_force_controlLeftbracket_vm</sysctl>
+                </item>
+              </list>
             </item>
             <item>
               <name>Force remap C-pnbf to Up/Down/Left/Right</name>
-              <sysctl>keyremap4macbook.option.emacsmode_force_controlPNBF</sysctl>
+              <list>
+                <item>
+                  <name>In Emacs, Terminal</name>
+                  <sysctl>keyremap4macbook.option.emacsmode_force_controlPNBF_term</sysctl>
+                </item>
+                <item>
+                  <name>In VMware Fusion, Parallels Desktop</name>
+                  <sysctl>keyremap4macbook.option.emacsmode_force_controlPNBF_vm</sysctl>
+                </item>
+              </list>
             </item>
           </list>
         </item>
