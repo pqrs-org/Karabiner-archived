@@ -792,7 +792,16 @@
         </item>
         <item>
           <name>Use KeyPad as Arrow (PC Style NumLock)</name>
-          <sysctl>keyremap4macbook.remap.keypadnumlock</sysctl>
+          <list>
+            <item>
+              <name>Enable KeyPad as Arrow</name>
+              <sysctl>keyremap4macbook.remap.keypadnumlock</sysctl>
+            </item>
+            <item>
+              <name>Use Clear Key to toggle "KeyPad as Arrow"</name>
+              <sysctl>keyremap4macbook.option.keypadnumlock_togglekey_clear</sysctl>
+            </item>
+          </list>
         </item>
         <item>
           <name>Use PC Style Home/End (behave like Command+Left/Right)</name>
