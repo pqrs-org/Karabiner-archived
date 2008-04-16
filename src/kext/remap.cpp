@@ -888,6 +888,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool ignore = ((params.activeApplicationInfo)->is_emacs) ||
       ((params.activeApplicationInfo)->is_terminal) ||
       ((params.activeApplicationInfo)->is_virtualmachine);
+    bool is_terminal = ((params.activeApplicationInfo)->is_emacs || (params.activeApplicationInfo)->is_terminal);
+    bool is_virtualmachine = ((params.activeApplicationInfo)->is_virtualmachine);
 
     if (allFlagStatus.controlL.isHeldDown()) {
       bool cancel_control = false;
@@ -899,62 +901,75 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
       // Control+H -> DELETE
       if (config.option_emacsmode_controlH && *(params.key) == KeyCode::H) {
-        if (! ignore || config.option_emacsmode_force_controlH) {
+        bool doremap = ! ignore;
+        if (is_terminal && config.option_emacsmode_force_controlH_term) doremap = true;
+        if (is_virtualmachine && config.option_emacsmode_force_controlH_vm) doremap = true;
+
+        if (doremap) {
           *(params.key) = KeyCode::DELETE;
           cancel_control = true;
         }
       }
       // Control+I -> TAB
       if (config.option_emacsmode_controlI && *(params.key) == KeyCode::I) {
-        if (! ignore || config.option_emacsmode_force_controlI) {
+        bool doremap = ! ignore;
+        if (is_terminal && config.option_emacsmode_force_controlI_term) doremap = true;
+        if (is_virtualmachine && config.option_emacsmode_force_controlI_vm) doremap = true;
+
+        if (doremap) {
           *(params.key) = KeyCode::TAB;
           cancel_control = true;
         }
       }
       // Control+M -> RETURN
       if (config.option_emacsmode_controlM && *(params.key) == KeyCode::M) {
-        if (! ignore || config.option_emacsmode_force_controlM) {
+        bool doremap = ! ignore;
+        if (is_terminal && config.option_emacsmode_force_controlM_term) doremap = true;
+        if (is_virtualmachine && config.option_emacsmode_force_controlM_vm) doremap = true;
+
+        if (doremap) {
           *(params.key) = KeyCode::RETURN;
           cancel_control = true;
         }
       }
       // Control+[ -> ESCAPE
       if (config.option_emacsmode_controlLeftbracket && *(params.key) == KeyCode::BRACKET_LEFT) {
-        if (! ignore || config.option_emacsmode_force_controlLeftbracket) {
+        bool doremap = ! ignore;
+        if (is_terminal && config.option_emacsmode_force_controlLeftbracket_term) doremap = true;
+        if (is_virtualmachine && config.option_emacsmode_force_controlLeftbracket_vm) doremap = true;
+
+        if (doremap) {
           *(params.key) = KeyCode::ESCAPE;
           cancel_control = true;
         }
       }
-      // Control+P -> UP
-      if (config.option_emacsmode_controlPNBF && *(params.key) == KeyCode::P) {
-        if (! ignore || config.option_emacsmode_force_controlPNBF) {
-          *(params.key) = KeyCode::CURSOR_UP;
-          allFlagStatus.cursor = true;
-          cancel_control = true;
-        }
-      }
-      // Control+N -> DOWN
-      if (config.option_emacsmode_controlPNBF && *(params.key) == KeyCode::N) {
-        if (! ignore || config.option_emacsmode_force_controlPNBF) {
-          *(params.key) = KeyCode::CURSOR_DOWN;
-          allFlagStatus.cursor = true;
-          cancel_control = true;
-        }
-      }
-      // Control+B -> LEFT
-      if (config.option_emacsmode_controlPNBF && *(params.key) == KeyCode::B) {
-        if (! ignore || config.option_emacsmode_force_controlPNBF) {
-          *(params.key) = KeyCode::CURSOR_LEFT;
-          allFlagStatus.cursor = true;
-          cancel_control = true;
-        }
-      }
-      // Control+F -> RIGHT
-      if (config.option_emacsmode_controlPNBF && *(params.key) == KeyCode::F) {
-        if (! ignore || config.option_emacsmode_force_controlPNBF) {
-          *(params.key) = KeyCode::CURSOR_RIGHT;
-          allFlagStatus.cursor = true;
-          cancel_control = true;
+      // Control+PNBF -> UP/Down/Left/Right
+      if (config.option_emacsmode_controlPNBF) {
+        bool doremap = ! ignore;
+        if (is_terminal && config.option_emacsmode_force_controlPNBF_term) doremap = true;
+        if (is_virtualmachine && config.option_emacsmode_force_controlPNBF_vm) doremap = true;
+
+        if (doremap) {
+          if (*(params.key) == KeyCode::P) {
+            *(params.key) = KeyCode::CURSOR_UP;
+            allFlagStatus.cursor = true;
+            cancel_control = true;
+          }
+          if (*(params.key) == KeyCode::N) {
+            *(params.key) = KeyCode::CURSOR_DOWN;
+            allFlagStatus.cursor = true;
+            cancel_control = true;
+          }
+          if (*(params.key) == KeyCode::B) {
+            *(params.key) = KeyCode::CURSOR_LEFT;
+            allFlagStatus.cursor = true;
+            cancel_control = true;
+          }
+          if (*(params.key) == KeyCode::F) {
+            *(params.key) = KeyCode::CURSOR_RIGHT;
+            allFlagStatus.cursor = true;
+            cancel_control = true;
+          }
         }
       }
       // Control+V -> PAGEDOWN
