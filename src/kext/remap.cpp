@@ -857,6 +857,22 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_keypadnumlock_togglekey_clear(const RemapParams &params)
+  {
+    if (! config.option_keypadnumlock_togglekey_clear) return;
+
+    static bool keypadnumlock = true;
+    if (params.ex_origKey == KeyCode::KEYPAD_CLEAR) {
+      if (*(params.eventType) == KeyEvent::DOWN) {
+        config.remap_keypadnumlock = keypadnumlock;
+        keypadnumlock = ! keypadnumlock;
+
+        *(params.ex_dropKey) = true;
+      }
+    }
+  }
+
+  void
   remap_pclikehomeend(const RemapParams &params)
   {
     if (! config.remap_pclikehomeend) return;
@@ -1733,7 +1749,7 @@ void
 org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 {
   if (config.debug) {
-    printf("caught  hid event type %d flags 0x%x key %d ",  *(params.eventType), *(params.flags), *(params.key));
+    printf("caught hid event type %d flags 0x%x key %d ",  *(params.eventType), *(params.flags), *(params.key));
     printf("charCode %d charSet %d ", *(params.charCode), *(params.charSet));
     printf("origCharCode %d origCharSet %d kbdType %d\n",
            *(params.origCharCode), *(params.origCharSet), *(params.keyboardType));
@@ -1857,6 +1873,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_pc_application2f11(params);
 
   remap_keypadnumlock(params);
+  remap_keypadnumlock_togglekey_clear(params);
 
   // ----------------------------------------
   remap_hhkmode(params);
