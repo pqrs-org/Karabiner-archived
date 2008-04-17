@@ -189,6 +189,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     enum KeyboardType {
       MACBOOK = 37,
       MACBOOK_COREDUO = 38,
+      POWERBOOK_G4_TI = 201,
       POWERBOOK_G4 = 202,
       POWERBOOK = 207,
 
