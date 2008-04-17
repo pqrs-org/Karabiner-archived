@@ -4,6 +4,4 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 startup="/Library/org.pqrs/KeyRemap4MacBook/scripts/startup.sh"
 [ -f "$startup" ] && "$startup" quickstart
 
-launchctl load /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.server.plist
-
 exit 0
