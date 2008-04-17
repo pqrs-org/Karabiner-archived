@@ -3,13 +3,13 @@
 <plist version="1.0">
   <dict>
     <key>CFBundleGetInfoString</key>
-    <string>KeyRemap4MacBook-4.0.33</string>
+    <string>KeyRemap4MacBook-4.0.34</string>
 
     <key>CFBundleIdentifier</key>
     <string>org.pqrs.driver.KeyRemap4MacBook</string>
 
     <key>CFBundleShortVersionString</key>
-    <string>4.0.33</string>
+    <string>4.0.34</string>
 
     <key>IFPkgFlagAllowBackRev</key>
     <false/>
