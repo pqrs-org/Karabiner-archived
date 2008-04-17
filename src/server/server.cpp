@@ -195,9 +195,7 @@ KeyRemap4MacBook_server::Server::do_ActiveApplicationInfo(KeyRemap4MacBook_bridg
   char applicationName[128];
   getActiveApplicationName(applicationName, sizeof(applicationName));
 
-  reply->is_emacs = false;
-  reply->is_terminal = false;
-  reply->is_virtualmachine = false;
+  reply->reset();
 
   if (strcmp(applicationName, "org.gnu.Emacs") == 0 ||
       strcmp(applicationName, "org.gnu.AquamacsEmacs") == 0) {
