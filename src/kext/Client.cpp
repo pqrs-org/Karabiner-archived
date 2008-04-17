@@ -20,7 +20,9 @@ namespace {
   {
     int error = sock_socket(PF_LOCAL, SOCK_STREAM, 0, NULL, NULL, socket);
     if (error) {
+#ifdef DEBUG
       printf("KeyRemap4MacBook_client sock_socket failed(%d)\n", error);
+#endif
       return false;
     }
 
@@ -39,7 +41,9 @@ namespace {
 
   error:
     releaseSocket(*socket);
+#ifdef DEBUG
     printf("KeyRemap4MacBook_client makeSocket failed(%d)\n", error);
+#endif
     return false;
   }
 
@@ -48,12 +52,16 @@ namespace {
   {
     int error = sock_connect(socket, reinterpret_cast<const sockaddr *>(&sockaddr_), 0);
     if (error) {
+#ifdef DEBUG
       printf("KeyRemap4MacBook_client sock_connect failed(%d)\n", error);
+#endif
       return false;
     }
     error = sock_nointerrupt(socket, TRUE);
     if (error) {
+#ifdef DEBUG
       printf("KeyRemap4MacBook_client sock_nointerrupt(%d)\n", error);
+#endif
       return false;
     }
 
@@ -104,7 +112,9 @@ KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::RequestType type, void
 
   int error = sock_send(socket, &msg, 0, &iolen);
   if (error) {
+#ifdef DEBUG
     printf("KeyRemap4MacBook_client::sendmsg sock_send failed(%d)\n", error);
+#endif
     releaseSocket(socket);
     return error;
   }
@@ -123,9 +133,11 @@ KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::RequestType type, void
   for (;;) {
     error = sock_receive(socket, &msg, MSG_WAITALL, &iolen);
     if (error == EWOULDBLOCK) continue;
+#ifdef DEBUG
     if (error) {
       printf("KeyRemap4MacBook_client::sendmsg sock_receive failed(%d)\n", error);
     }
+#endif
 
     break;
   }
@@ -133,8 +145,10 @@ KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::RequestType type, void
   releaseSocket(socket);
   if (error) error;
 
+#ifdef DEBUG
   if (result) {
     printf("KeyRemap4MacBook_client::sendmsg error result (%d)\n", result);
   }
+#endif
   return result;
 }
