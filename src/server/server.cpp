@@ -4,6 +4,7 @@
 #include <sys/uio.h>
 #include <sys/un.h>
 #include <stdio.h>
+#include <unistd.h>
 
 #include "getActiveApplicationName.h"
 #include "server.hpp"
@@ -123,6 +124,9 @@ void
 KeyRemap4MacBook_server::Server::doLoop(void)
 {
   if (! initialize()) return;
+
+  // no more root privilege
+  seteuid(getuid());
 
   listen(listenSocket, 128);
 
