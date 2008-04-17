@@ -222,6 +222,14 @@
           <sysctl>keyremap4macbook.remap.enter2optionL_commandSpace</sysctl>
         </item>
         <item>
+          <name>Enter to Option_R</name>
+          <sysctl>keyremap4macbook.remap.enter2optionR</sysctl>
+        </item>
+        <item>
+          <name>Enter to Option_R (+ When you type Enter only, fire Command+Space)</name>
+          <sysctl>keyremap4macbook.remap.enter2optionR_commandSpace</sysctl>
+        </item>
+        <item>
           <name>Enter to Command_L+Control_L</name>
           <sysctl>keyremap4macbook.remap.enter2commandLcontrolL</sysctl>
         </item>
