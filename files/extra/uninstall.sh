@@ -2,36 +2,29 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 
 # ----------------------------------------
-# uninstall oldstyle-files
-targetfile="/Library/StartupItems/KeyRemap4MacBook/KeyRemap4MacBook.kext/Contents/Info.plist"
-if [ -f "$targetfile" ]; then
-    if grep -q org.pqrs "$targetfile"; then
-        /Library/StartupItems/KeyRemap4MacBook/KeyRemap4MacBook stop
-        rm -rf "/Library/StartupItems/KeyRemap4MacBook/"
-    fi
-fi
+# unload
+startup="/Library/StartupItems/KeyRemap4MacBook/KeyRemap4MacBook"
+[ -f "$startup" ] && "$startup" stop
+
+startup="/Applications/KeyRemap4MacBook/scripts/startup.sh"
+[ -f "$startup" ] && "$startup" stop
+
+startup="/Library/org.pqrs/KeyRemap4MacBook/scripts/startup.sh"
+[ -f "$startup" ] && "$startup" stop
+
+for f in /Library/LaunchDaemons/org.pqrs.KeyRemap4MacBook.* /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.*; do
+    [ -f $f ] && launchctl unload $f
+done
 
 # ----------------------------------------
-# uninstall
-# version 2.0 - 3.x
-basedir="/Applications/KeyRemap4MacBook"
-if [ -d $basedir ]; then
-    "$basedir/scripts/unload.sh"
-    rm -rf "$basedir"
-fi
+# uninstall files
+rm -rf /Library/StartupItems/KeyRemap4MacBook
+rm -rf /Applications/KeyRemap4MacBook
+rm -rf /Library/org.pqrs/KeyRemap4MacBook
 
-# version 3.x - current
-basedir="/Library/org.pqrs/KeyRemap4MacBook"
-if [ -d $basedir ]; then
-    "$basedir/scripts/unload.sh"
-    rm -rf "$basedir"
-fi
+rm -rf /Library/PreferencePanes/KeyRemap4MacBook.prefPane
 
-launchctl unload /Library/LaunchDaemons/org.pqrs.KeyRemap4MacBook.server.plist
-
-rm -f "/Library/LaunchDaemons/org.pqrs.KeyRemap4MacBook.load.plist"
-rm -f "/Library/LaunchDaemons/org.pqrs.KeyRemap4MacBook.autosave.plist"
-rm -f "/Library/LaunchDaemons/org.pqrs.KeyRemap4MacBook.server.plist"
-rm -rf "/Library/PreferencePanes/KeyRemap4MacBook.prefPane"
+rm -ff /Library/LaunchDaemons/org.pqrs.KeyRemap4MacBook.*
+rm -ff /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.*
 
 exit 0

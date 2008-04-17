@@ -23,6 +23,7 @@ sudo cp -R files/extra "pkgroot/$basedir"
 sudo cp -R files/prefpane "pkgroot/$basedir"
 sudo cp -R files/scripts "pkgroot/$basedir"
 sudo cp -R files/LaunchDaemons pkgroot/Library
+sudo cp -R files/LaunchAgents pkgroot/Library
 sudo mkdir -p "pkgroot/$basedir/server"
 sudo cp src/server/build/Release/KeyRemap4MacBook_server "pkgroot/$basedir/server"
 
@@ -32,7 +33,7 @@ sudo cp -R "prefpane/build/Release/KeyRemap4MacBook.prefPane" "pkgroot/Library/P
 sudo find pkgroot -type d -print0 | xargs -0 sudo chmod 755
 sudo find pkgroot -type f -print0 | xargs -0 sudo chmod 644
 sudo find pkgroot -name '*.sh' -print0 | xargs -0 sudo chmod 755
-sudo chmod 755 pkgroot/$basedir/server/KeyRemap4MacBook_server
+sudo chmod 4755 pkgroot/$basedir/server/KeyRemap4MacBook_server
 sudo chown -R root:wheel pkgroot
 
 sudo chmod 1775 pkgroot/Library
