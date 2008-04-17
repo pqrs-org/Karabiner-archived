@@ -352,6 +352,10 @@
           <sysctl>keyremap4macbook.remap.optionR2fn</sysctl>
         </item>
         <item>
+          <name>Option_R to Option_R (+ When you type Enter only, fire Command+Space)</name>
+          <sysctl>keyremap4macbook.remap.optionR2optionR_commandSpace</sysctl>
+        </item>
+        <item>
           <name>Option_R to Enter</name>
           <sysctl>keyremap4macbook.remap.optionR2enter</sysctl>
         </item>

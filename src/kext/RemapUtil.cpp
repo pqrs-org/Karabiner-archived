@@ -183,7 +183,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   RemapUtil::getEnterKeyCode(const RemapParams &params)
   {
     if (*(params.keyboardType) == KeyboardType::POWERBOOK ||
-        *(params.keyboardType) == KeyboardType::POWERBOOK_G4) {
+        *(params.keyboardType) == KeyboardType::POWERBOOK_G4 ||
+        *(params.keyboardType) == KeyboardType::POWERBOOK_G4_TI) {
       return KeyCode::ENTER_POWERBOOK;
     }
     return KeyCode::ENTER;
@@ -195,6 +196,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (keyboardType == KeyboardType::MACBOOK_COREDUO) return true;
     if (keyboardType == KeyboardType::POWERBOOK) return true;
     if (keyboardType == KeyboardType::POWERBOOK_G4) return true;
+    if (keyboardType == KeyboardType::POWERBOOK_G4_TI) return true;
     if (keyboardType == KeyboardType::JIS_MACBOOK) return true;
     return false;
   }
