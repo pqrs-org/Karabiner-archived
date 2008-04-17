@@ -24,7 +24,12 @@ rm -rf /Library/org.pqrs/KeyRemap4MacBook
 
 rm -rf /Library/PreferencePanes/KeyRemap4MacBook.prefPane
 
-rm -ff /Library/LaunchDaemons/org.pqrs.KeyRemap4MacBook.*
-rm -ff /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.*
+rm -f /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.*
+rm -f /Library/LaunchDaemons/org.pqrs.KeyRemap4MacBook.*
+
+# ----------------------------------------
+# kill processes
+killall KeyRemap4MacBook_server
+
 
 exit 0
