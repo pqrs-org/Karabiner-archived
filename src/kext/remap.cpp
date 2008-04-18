@@ -88,6 +88,14 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
+  remap_commandR2commandR_enter(const RemapParams &params)
+  {
+    if (! config.remap_commandR2commandR_enter) return;
+    static KeyOverlayedModifier kom;
+    kom.remap(params, KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, FireFunc::firefunc_enter);
+  }
+
+  void
   remap_commandR2controlL(const RemapParams &params)
   {
     if (! config.remap_commandR2controlL) return;
@@ -1804,6 +1812,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_commandL2shiftL(params);
   remap_commandL2backquote(params);
 
+  remap_commandR2commandR_enter(params);
   remap_commandR2controlL(params);
   remap_commandR2fn(params);
   remap_commandR2optionL(params);
