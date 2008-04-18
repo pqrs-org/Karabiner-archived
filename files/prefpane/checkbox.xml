@@ -199,8 +199,16 @@
           <name>Retain Eject Key</name>
           <list>
             <item>
-              <name>Shift+Eject to Eject</name>
-              <sysctl>keyremap4macbook.option.shiftEject2eject</sysctl>
+              <name>Command_L+Eject to Command_L+Eject</name>
+              <sysctl>keyremap4macbook.option.retain_eject_commandL</sysctl>
+            </item>
+            <item>
+              <name>Shift_L+Eject to Eject</name>
+              <sysctl>keyremap4macbook.option.retain_eject_shiftL</sysctl>
+            </item>
+            <item>
+              <name>Shift_R+Eject to Eject</name>
+              <sysctl>keyremap4macbook.option.retain_eject_shiftR</sysctl>
             </item>
           </list>
         </item>

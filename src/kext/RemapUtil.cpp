@@ -335,6 +335,27 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
+  void
+  RemapUtil::ejectToKey(const RemapConsumerParams &params, KeyCode::KeyCode toKeyCode) {
+    if (*(params.key) == ConsumerKeyCode::EJECT) {
+      if (config.option_retain_eject_commandL && allFlagStatus.commandL.isHeldDown()) {
+        return;
+      }
+      if (config.option_retain_eject_shiftL && allFlagStatus.shiftL.isHeldDown()) {
+        *(params.flags) = 0;
+        return;
+      }
+      if (config.option_retain_eject_shiftR && allFlagStatus.shiftR.isHeldDown()) {
+        *(params.flags) = 0;
+        return;
+      }
+
+      *(params.ex_dropKey) = true;
+      *(params.ex_remapKey) = true;
+      *(params.ex_remapKeyCode) = toKeyCode;
+    }
+  }
+
   // --------------------
   bool
   RemapUtil::al2number(const RemapParams &params) {

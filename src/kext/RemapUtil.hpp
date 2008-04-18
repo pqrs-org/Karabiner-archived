@@ -32,6 +32,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     void modifierToPointingButton(const RemapParams &params, ModifierFlag::ModifierFlag fromFlag, PointingButton::PointingButton toButton);
     void keyToPointingButton(const RemapParams &params, KeyCode::KeyCode fromKeyCode, PointingButton::PointingButton toButton);
 
+    void ejectToKey(const RemapConsumerParams &params, KeyCode::KeyCode toKeyCode);
+
     // A..L to 1..9
     bool al2number(const RemapParams &params);
     bool keypad2spaces(const RemapParams &params);
