@@ -170,6 +170,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       FN = 0,
       TAB = 9,
       RETURN = 13,
+      ENTER = 13,
       DELETE = 127,
       ESCAPE = 27,
       SPACE = 32,
