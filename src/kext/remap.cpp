@@ -447,6 +447,15 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
+  remap_forwarddelete2delete(const RemapParams &params)
+  {
+    if (! config.remap_forwarddelete2delete) return;
+
+    RemapUtil::keyToKey(params, KeyCode::FORWARD_DELETE, KeyCode::DELETE);
+  }
+
+  // ----------------------------------------
+  void
   remap_f1_to_f14(const RemapParams &params)
   {
     if (! config.remap_f1_to_f14) return;
@@ -1284,6 +1293,17 @@ namespace org_pqrs_KeyRemap4MacBook {
     mc_commandR.restore(params, ModifierFlag::COMMAND_R);
   }
 
+  void
+  remap_app_finder_return2commandO(const RemapParams &params)
+  {
+    if (! config.remap_app_finder_return2commandO) return;
+
+    if (*(params.key) == KeyCode::RETURN) {
+      *(params.key) = KeyCode::O;
+      allFlagStatus.commandL.temporary_increase();
+    }
+  }
+
   // ----------------------------------------
   void
   remap_qwerty2colemak(const RemapParams &params)
@@ -1842,6 +1862,8 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_fn2shiftL(params);
   remap_fn2enter(params);
 
+  remap_forwarddelete2delete(params);
+
   remap_f1_to_f14(params);
   remap_f2_to_f15(params);
   remap_f16_to_tab(params);
@@ -1888,6 +1910,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   // ----------------------------------------
   remap_app_vm_commandspace2optionbackquote(params);
+  remap_app_finder_return2commandO(params);
 
   // ----------------------------------------
   remap_qwerty2colemak(params);

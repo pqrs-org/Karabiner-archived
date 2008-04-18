@@ -330,6 +330,16 @@
     </item>
 
     <item>
+      <name>Remap Forward Delete Key</name>
+      <list>
+        <item>
+          <name>Forward Delete to Delete</name>
+          <sysctl>keyremap4macbook.remap.forwarddelete2delete</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>Remap F1..F16 Key</name>
       <list>
         <item>
@@ -767,6 +777,15 @@
             <item>
               <name>Remap Command+Space to Option+Backquote(`)</name>
               <sysctl>keyremap4macbook.remap.app_vm_commandspace2optionbackquote</sysctl>
+            </item>
+          </list>
+        </item>
+        <item>
+          <name>Enable at only Finder</name>
+          <list>
+            <item>
+              <name>Remap Return to Command+O</name>
+              <sysctl>keyremap4macbook.remap.app_finder_return2commandO</sysctl>
             </item>
           </list>
         </item>
