@@ -195,6 +195,15 @@
           <name>Eject to PageDown</name>
           <sysctl>keyremap4macbook.remap.eject2pagedown</sysctl>
         </item>
+        <item>
+          <name>Retain Eject Key</name>
+          <list>
+            <item>
+              <name>Shift+Eject to Eject</name>
+              <sysctl>keyremap4macbook.option.shiftEject2eject</sysctl>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
 

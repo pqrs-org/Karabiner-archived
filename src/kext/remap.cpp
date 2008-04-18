@@ -1730,6 +1730,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_eject2forwarddelete) return;
 
     if (*(params.key) == ConsumerKeyCode::EJECT) {
+      bool isShiftOn = (allFlagStatus.shiftL.isHeldDown() || allFlagStatus.shiftR.isHeldDown());
+      if (config.option_shiftEject2eject && isShiftOn) return;
+
       *(params.ex_dropKey) = true;
       *(params.ex_remapKey) = true;
       *(params.ex_remapKeyCode) = KeyCode::FORWARD_DELETE;
@@ -1742,6 +1745,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_eject2pagedown) return;
 
     if (*(params.key) == ConsumerKeyCode::EJECT) {
+      bool isShiftOn = (allFlagStatus.shiftL.isHeldDown() || allFlagStatus.shiftR.isHeldDown());
+      if (config.option_shiftEject2eject && isShiftOn) return;
+
       *(params.ex_dropKey) = true;
       *(params.ex_remapKey) = true;
       *(params.ex_remapKeyCode) = KeyCode::PAGEDOWN;
