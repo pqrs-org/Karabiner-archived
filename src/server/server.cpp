@@ -210,8 +210,12 @@ KeyRemap4MacBook_server::Server::do_ActiveApplicationInfo(KeyRemap4MacBook_bridg
       strcmp(applicationName, "com.microsoft.rdc") == 0) {
     reply->is_virtualmachine = true;
   }
-  if (strcmp(applicationName, "org.x.X11") == 0) {
+  if (strcmp(applicationName, "org.x.X11") == 0 ||
+      strcmp(applicationName, "com.apple.x11") == 0) {
     reply->is_x11 = true;
+  }
+  if (strcmp(applicationName, "com.apple.finder") == 0) {
+    reply->is_finder = true;
   }
 
   return KeyRemap4MacBook_bridge::SUCCESS;
