@@ -1,9 +1,11 @@
 syntax: regexp
 .*\.pkg/
 .*\.gz
+.*\.o
 pkgroot/
 .*/build/
 .*\.xcodeproj/.*\.mode1
 .*\.xcodeproj/.*\.mode1v3
 .*\.xcodeproj/.*\.pbxuser
 src/kext/config/output
+util/getActiveApplication/getname
