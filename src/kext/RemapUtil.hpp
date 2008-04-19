@@ -174,6 +174,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     typedef void (*FireFunc)(const RemapParams &params);
     void firefunc_nop(const RemapParams &params);
     void firefunc_backslash(const RemapParams &params);
+    void firefunc_commandO(const RemapParams &params);
     void firefunc_commandSpace(const RemapParams &params);
     void firefunc_enter(const RemapParams &params);
     void firefunc_escape(const RemapParams &params);

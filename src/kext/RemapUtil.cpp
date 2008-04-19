@@ -713,6 +713,17 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  FireFunc::firefunc_commandO(const RemapParams &params) {
+    // fire only if no-modifiers
+    if (allFlagStatus.makeFlags(params) != 0) return;
+
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, ModifierFlag::COMMAND_L, KeyCode::COMMAND_L, CharCode::COMMAND_L);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN,   ModifierFlag::COMMAND_L, KeyCode::O,         CharCode::O);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP,     ModifierFlag::COMMAND_L, KeyCode::O,         CharCode::O);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, 0,                       KeyCode::COMMAND_L, CharCode::COMMAND_L);
+  }
+
+  void
   FireFunc::firefunc_commandSpace(const RemapParams &params) {
     // fire only if no-modifiers
     if (allFlagStatus.makeFlags(params) != 0) return;

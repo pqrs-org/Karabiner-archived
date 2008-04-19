@@ -1309,8 +1309,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! (params.activeApplicationInfo)->is_finder) return;
 
     if (*(params.key) == KeyCode::RETURN) {
-      *(params.key) = KeyCode::O;
-      allFlagStatus.commandL.temporary_increase();
+      if (*(params.eventType) == KeyEvent::DOWN) {
+        FireFunc::firefunc_commandO(params);
+      }
+      *(params.ex_dropKey) = true;
     }
   }
 
