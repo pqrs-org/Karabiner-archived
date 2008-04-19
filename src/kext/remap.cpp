@@ -196,6 +196,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_delete2forwarddelete(const RemapParams &params)
+  {
+    if (! config.remap_delete2forwarddelete) return;
+
+    RemapUtil::keyToKey(params, KeyCode::DELETE, KeyCode::FORWARD_DELETE);
+  }
+
+  void
   remap_delete2f13_shift2tilde(const RemapParams &params)
   {
     if (! config.remap_delete2f13_shift2tilde) return;
@@ -1836,6 +1844,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_commandR2rightclick(params);
 
   remap_delete2backslash(params);
+  remap_delete2forwarddelete(params);
   remap_delete2f13_shift2tilde(params);
   remap_shiftDelete2tilde(params);
 
