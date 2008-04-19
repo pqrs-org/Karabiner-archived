@@ -174,6 +174,10 @@
           <sysctl>keyremap4macbook.remap.delete2backslash</sysctl>
         </item>
         <item>
+          <name>Delete to Forward Delete</name>
+          <sysctl>keyremap4macbook.remap.delete2forwarddelete</sysctl>
+        </item>
+        <item>
           <name>Delete to F13 (+ Shift+Delete to Tilde(~))</name>
           <sysctl>keyremap4macbook.remap.delete2f13_shift2tilde</sysctl>
         </item>
