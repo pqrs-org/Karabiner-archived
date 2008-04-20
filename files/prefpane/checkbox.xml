@@ -613,6 +613,10 @@
           <sysctl>keyremap4macbook.option.emacsmode_ex_controlW</sysctl>
         </item>
         <item>
+          <name>[ex] Control+AE to Home/End</name>
+          <sysctl>keyremap4macbook.option.emacsmode_ex_controlAE</sysctl>
+        </item>
+        <item>
           <name>Behavior in Emacs, Terminal, X11, VMware, Parallels, RDC</name>
           <list>
             <item>

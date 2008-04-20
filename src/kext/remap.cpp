@@ -1109,15 +1109,31 @@ namespace org_pqrs_KeyRemap4MacBook {
         allFlagStatus.optionL.temporary_increase();
         cancel_control = true;
       }
-      // Control+1 -> HOME
-      if (config.option_emacsmode_ex_control12 && *(params.key) == KeyCode::KEY_1 && ! ignore) {
-        *(params.key) = KeyCode::HOME;
-        cancel_control = true;
+      // Control+12 -> HOME/END
+      if (config.option_emacsmode_ex_control12) {
+        if (! ignore) {
+          if (*(params.key) == KeyCode::KEY_1) {
+            *(params.key) = KeyCode::HOME;
+            cancel_control = true;
+          }
+          if (*(params.key) == KeyCode::KEY_2) {
+            *(params.key) = KeyCode::END;
+            cancel_control = true;
+          }
+        }
       }
-      // Control+2 -> END
-      if (config.option_emacsmode_ex_control12 && *(params.key) == KeyCode::KEY_2 && ! ignore) {
-        *(params.key) = KeyCode::END;
-        cancel_control = true;
+      // Control+AE -> HOME/END
+      if (config.option_emacsmode_ex_controlAE) {
+        if (! ignore) {
+          if (*(params.key) == KeyCode::A) {
+            *(params.key) = KeyCode::HOME;
+            cancel_control = true;
+          }
+          if (*(params.key) == KeyCode::E) {
+            *(params.key) = KeyCode::END;
+            cancel_control = true;
+          }
+        }
       }
 
       if (cancel_control) {
