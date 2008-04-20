@@ -952,8 +952,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   remap_emacsmode(const RemapParams &params)
   {
-    static ModifierCanceling mc_control;
-    static ModifierCanceling mc_option;
+    static ModifierCanceling mc_commandL;
+    static ModifierCanceling mc_commandR;
+    static ModifierCanceling mc_controlL;
+    static ModifierCanceling mc_controlR;
+    static ModifierCanceling mc_optionL;
+    static ModifierCanceling mc_optionR;
 
     bool is_terminal = ((params.activeApplicationInfo)->is_emacs || (params.activeApplicationInfo)->is_terminal);
     bool is_virtualmachine = ((params.activeApplicationInfo)->is_virtualmachine);
@@ -961,7 +965,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     bool ignore = is_terminal || is_virtualmachine || is_x11;
 
-    if (allFlagStatus.controlL.isHeldDown()) {
+    if (allFlagStatus.controlL.isHeldDown() || allFlagStatus.controlR.isHeldDown()) {
       bool cancel_control = false;
 
       // Control+D -> FORWARD_DELETE
@@ -1116,16 +1120,20 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       if (cancel_control) {
-        mc_control.keyRelease(params, ModifierFlag::CONTROL_L);
+        if (allFlagStatus.controlL.isHeldDown()) {
+          mc_controlL.keyRelease(params, ModifierFlag::CONTROL_L);
+        } else {
+          mc_controlR.keyRelease(params, ModifierFlag::CONTROL_R);
+        }
         return;
       }
     }
 
-    if (allFlagStatus.optionL.isHeldDown()) {
+    if (allFlagStatus.optionL.isHeldDown() || allFlagStatus.optionR.isHeldDown()) {
       bool cancel_option = false;
 
       // Option+V -> PAGEUP
-      if (config.option_emacsmode_controlV && *(params.key) == KeyCode::V && ! ignore) {
+      if (config.option_emacsmode_optionV && *(params.key) == KeyCode::V && ! ignore) {
         *(params.key) = KeyCode::PAGEUP;
         cancel_option = true;
       }
@@ -1145,13 +1153,40 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       if (cancel_option) {
-        mc_option.keyRelease(params, ModifierFlag::OPTION_L);
+        if (allFlagStatus.optionL.isHeldDown()) {
+          mc_optionL.keyRelease(params, ModifierFlag::OPTION_L);
+        } else {
+          mc_optionR.keyRelease(params, ModifierFlag::OPTION_R);
+        }
         return;
       }
     }
 
-    mc_control.restore(params, ModifierFlag::CONTROL_L);
-    mc_option.restore(params, ModifierFlag::OPTION_L);
+    if (allFlagStatus.commandL.isHeldDown() || allFlagStatus.commandR.isHeldDown()) {
+      bool cancel_command = false;
+
+      // Command+V -> PageUp
+      if (config.option_emacsmode_commandV && *(params.key) == KeyCode::V && ! ignore) {
+        *(params.key) = KeyCode::PAGEUP;
+        cancel_command = true;
+      }
+
+      if (cancel_command) {
+        if (allFlagStatus.commandL.isHeldDown()) {
+          mc_commandL.keyRelease(params, ModifierFlag::COMMAND_L);
+        } else {
+          mc_commandR.keyRelease(params, ModifierFlag::COMMAND_R);
+        }
+        return;
+      }
+    }
+
+    mc_commandL.restore(params, ModifierFlag::COMMAND_L);
+    mc_commandR.restore(params, ModifierFlag::COMMAND_R);
+    mc_controlL.restore(params, ModifierFlag::CONTROL_L);
+    mc_controlR.restore(params, ModifierFlag::CONTROL_R);
+    mc_optionL.restore(params, ModifierFlag::OPTION_L);
+    mc_optionR.restore(params, ModifierFlag::OPTION_R);
   }
 
   // ----------------------------------------
