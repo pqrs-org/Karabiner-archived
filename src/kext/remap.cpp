@@ -1064,6 +1064,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         cancel_control = true;
       }
       // Control+Y -> Command+V
+      // *** Note: You need to handle option_emacsmode_controlY after option_emacsmode_controlV ***
       if (config.option_emacsmode_controlY && *(params.key) == KeyCode::Y && ! ignore) {
         *(params.key) = KeyCode::V;
         allFlagStatus.commandL.temporary_increase();
