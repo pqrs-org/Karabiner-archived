@@ -2,9 +2,9 @@ all:
 	./make-package.sh
 
 build:
+	$(MAKE) -C pkginfo
 	$(MAKE) -C src/kext
 	$(MAKE) -C src/server
-	$(MAKE) -C pkginfo
 	$(MAKE) -C prefpane
 
 clean:
