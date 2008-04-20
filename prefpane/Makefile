@@ -2,6 +2,7 @@
 CONFIGURATION = Release
 
 all:
+	./setversion.sh
 	xcodebuild -alltargets -configuration $(CONFIGURATION) build
 
 clean:
