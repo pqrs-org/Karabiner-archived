@@ -442,6 +442,10 @@
           <name>Semicolon to Return</name>
           <sysctl>keyremap4macbook.remap.semicolon2return</sysctl>
         </item>
+        <item>
+          <name>Swap Semicolon and Colon</name>
+          <sysctl>keyremap4macbook.remap.swapcolons</sysctl>
+        </item>
       </list>
     </item>
 
