@@ -532,6 +532,10 @@
           <name>Space to Shift_L (+ When you type Space only, send Space).</name>
           <sysctl>keyremap4macbook.remap.space2shiftL_space</sysctl>
         </item>
+        <item>
+          <name>Space to Return</name>
+          <sysctl>keyremap4macbook.remap.space2return</sysctl>
+        </item>
       </list>
     </item>
 
