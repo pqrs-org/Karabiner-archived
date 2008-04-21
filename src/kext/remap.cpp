@@ -640,6 +640,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     kom.remap(params, KeyCode::SPACE, ModifierFlag::SHIFT_L, FireFunc::firefunc_space);
   }
 
+  void
+  remap_space2return(const RemapParams &params)
+  {
+    if (! config.remap_space2return) return;
+
+    RemapUtil::keyToKey(params, KeyCode::SPACE, KeyCode::RETURN);
+  }
+
   // ----------------------------------------
   void
   remap_semicolon2return(const RemapParams &params)
@@ -1952,6 +1960,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   remap_space2controlL(params);
   remap_space2shiftL(params);
+  remap_space2return(params);
 
   remap_semicolon2return(params);
 
