@@ -1661,6 +1661,19 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
+  remap_jis_yen2backslash(const RemapParams &params)
+  {
+    if (! config.remap_jis_yen2backslash) return;
+
+    if (params.ex_origKey == KeyCode::JIS_YEN) {
+      // hack to fire "the true backslash (not yen)" on JIS Keyboard.
+      *(params.keyboardType) = KeyboardType::MACBOOK;
+      RemapUtil::keyToKey(params, KeyCode::JIS_YEN, KeyCode::BACKSLASH);
+    }
+  }
+
+  // ----------------------------------------
+  void
   remap_jis_commandR2eisuu(const RemapParams &params)
   {
     if (! config.remap_jis_commandR2eisuu) return;
@@ -2043,6 +2056,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_jis_unify_eisuu_to_kana(params);
 
   remap_jis_underscore2backslash(params);
+  remap_jis_yen2backslash(params);
 
   // ------------------------------------------------------------
   // *** Note: we need to call remap_drop_funcshift after tab2f9, pc_application2f11, ... ***
