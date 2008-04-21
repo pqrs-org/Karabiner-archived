@@ -1073,6 +1073,15 @@
             </item>
           </list>
         </item>
+        <item>
+          <name>Remap Yen(\) Key</name>
+          <list>
+            <item>
+              <name>JIS Yen(\) to Backslash(\)</name>
+              <sysctl>keyremap4macbook.remap.jis_yen2backslash</sysctl>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
   </list>
