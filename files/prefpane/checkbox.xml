@@ -796,7 +796,7 @@
       <name>Remapping for Applications</name>
       <list>
         <item>
-          <name>Enable at only VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
+          <name>Enable at only VMware Fusion, Parallels Desktop</name>
           <list>
             <item>
               <name>Remap Command+Space to Option+Backquote(`)</name>

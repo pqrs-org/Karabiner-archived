@@ -955,7 +955,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_pclikehomeend) return;
 
-    if ((params.activeApplicationInfo)->is_virtualmachine) return;
+    if ((params.activeApplicationInfo)->is_virtualmachine ||
+        (params.activeApplicationInfo)->is_remotedesktopconnection) return;
 
     bool replaced = false;
 
@@ -986,7 +987,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static ModifierCanceling mc_optionR;
 
     bool is_terminal = ((params.activeApplicationInfo)->is_emacs || (params.activeApplicationInfo)->is_terminal);
-    bool is_virtualmachine = ((params.activeApplicationInfo)->is_virtualmachine);
+    bool is_virtualmachine = ((params.activeApplicationInfo)->is_virtualmachine || (params.activeApplicationInfo)->is_remotedesktopconnection);
     bool is_x11 = ((params.activeApplicationInfo)->is_x11);
 
     bool ignore = is_terminal || is_virtualmachine || is_x11;
@@ -1353,6 +1354,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     static ModifierCanceling mc_commandR;
 
     if (! config.remap_app_vm_commandspace2optionbackquote) return;
+
+    //  "Remote Desktop Connection" has the self remapping feature.
+    // Our targets are VMware, Parallels only.
     if (! (params.activeApplicationInfo)->is_virtualmachine) return;
 
     if ((allFlagStatus.commandL.isHeldDown()) || (allFlagStatus.commandR.isHeldDown())) {
