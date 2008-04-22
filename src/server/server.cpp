@@ -206,9 +206,11 @@ KeyRemap4MacBook_server::Server::do_ActiveApplicationInfo(KeyRemap4MacBook_bridg
     reply->is_terminal = true;
   }
   if (strcmp(applicationName, "com.vmware.fusion") == 0 ||
-      strcmp(applicationName, "com.parallels.desktop") == 0 ||
-      strcmp(applicationName, "com.microsoft.rdc") == 0) {
+      strcmp(applicationName, "com.parallels.desktop") == 0) {
     reply->is_virtualmachine = true;
+  }
+  if (strcmp(applicationName, "com.microsoft.rdc") == 0) {
+    reply->is_remotedesktopconnection = true;
   }
   if (strcmp(applicationName, "org.x.X11") == 0 ||
       strcmp(applicationName, "com.apple.x11") == 0) {

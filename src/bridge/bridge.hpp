@@ -23,6 +23,7 @@ namespace KeyRemap4MacBook_bridge {
       bool is_emacs; // Carbon Emacs, ...
       bool is_terminal; // Terminal.app, iTerm.app, ...
       bool is_virtualmachine; // VMware, Parallels, ...
+      bool is_remotedesktopconnection; // Microsoft Remote Desktop Connection
       bool is_x11; // X11, ...
       bool is_finder;
 
@@ -30,6 +31,7 @@ namespace KeyRemap4MacBook_bridge {
         is_emacs = false;
         is_terminal = false;
         is_virtualmachine = false;
+        is_remotedesktopconnection = false;
         is_x11 = false;
         is_finder = false;
       }
