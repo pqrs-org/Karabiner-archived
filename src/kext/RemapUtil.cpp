@@ -795,6 +795,17 @@ namespace org_pqrs_KeyRemap4MacBook {
     listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, 0, KeyCode::JIS_EISUU, CharCode::JIS_EISUU);
   }
 
+  void
+  FireFunc::firefunc_jis_toggle_eisuu_kana(const RemapParams &params) {
+    static bool isKana = true;
+    if (isKana) {
+      firefunc_jis_kana(params);
+    } else {
+      firefunc_jis_eisuu(params);
+    }
+    isKana = ! isKana;
+  }
+
   // ----------------------------------------
   namespace {
     bool

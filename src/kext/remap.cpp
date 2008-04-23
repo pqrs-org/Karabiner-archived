@@ -1771,6 +1771,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_jis_unify_kana_eisuu_to_commandR(const RemapParams &params)
+  {
+    if (! config.remap_jis_unify_kana_eisuu_to_commandR) return;
+
+    RemapUtil::jis_toggle_eisuu_kana(params, ModifierFlag::COMMAND_R);
+  }
+
+  void
   remap_jis_unify_kana_eisuu_to_optionR(const RemapParams &params)
   {
     if (! config.remap_jis_unify_kana_eisuu_to_optionR) return;
@@ -1791,11 +1799,35 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_jis_commandR2commandR_toggle_kana_eisuu(const RemapParams &params)
+  {
+    if (! config.remap_jis_commandR2commandR_toggle_kana_eisuu) return;
+
+    FireFunc::FireFunc func = FireFunc::firefunc_jis_toggle_eisuu_kana;
+    if ((params.activeApplicationInfo)->is_virtualmachine) func = FireFunc::firefunc_nop;
+
+    static KeyOverlayedModifier kom;
+    kom.remap(params, KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, func);
+  }
+
+  void
   remap_jis_commandL2commandL_eisuu(const RemapParams &params)
   {
     if (! config.remap_jis_commandL2commandL_eisuu) return;
 
     FireFunc::FireFunc func = FireFunc::firefunc_jis_eisuu;
+    if ((params.activeApplicationInfo)->is_virtualmachine) func = FireFunc::firefunc_nop;
+
+    static KeyOverlayedModifier kom;
+    kom.remap(params, KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, func);
+  }
+
+  void
+  remap_jis_commandL2commandL_toggle_kana_eisuu(const RemapParams &params)
+  {
+    if (! config.remap_jis_commandL2commandL_toggle_kana_eisuu) return;
+
+    FireFunc::FireFunc func = FireFunc::firefunc_jis_toggle_eisuu_kana;
     if ((params.activeApplicationInfo)->is_virtualmachine) func = FireFunc::firefunc_nop;
 
     static KeyOverlayedModifier kom;
@@ -2051,6 +2083,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_jis_commandR2kana(params);
   remap_jis_commandR_x2_to_kana(params);
   remap_jis_commandR_x2_to_kana_x2(params);
+  remap_jis_unify_kana_eisuu_to_commandR(params);
 
   remap_jis_optionR2eisuu(params);
   remap_jis_optionR2kana(params);
@@ -2106,7 +2139,9 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_space2controlL_space(params);
   remap_space2shiftL_space(params);
   remap_jis_commandR2commandR_kana(params);
+  remap_jis_commandR2commandR_toggle_kana_eisuu(params);
   remap_jis_commandL2commandL_eisuu(params);
+  remap_jis_commandL2commandL_toggle_kana_eisuu(params);
   remap_jis_commandL2controlL_eisuu(params);
   remap_jis_eisuu2commandL_eisuu(params);
   remap_jis_eisuu2controlL_eisuu(params);
