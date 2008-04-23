@@ -183,6 +183,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void firefunc_jis_kana_x2(const RemapParams &params);
     void firefunc_jis_eisuu(const RemapParams &params);
     void firefunc_jis_eisuu_x2(const RemapParams &params);
+    void firefunc_jis_toggle_eisuu_kana(const RemapParams &params);
   }
 
   // ----------------------------------------
