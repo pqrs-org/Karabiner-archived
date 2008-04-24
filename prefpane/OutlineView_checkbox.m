@@ -74,7 +74,12 @@
   NSXMLNode *title = [_xmlTreeWrapper getNode:item xpath:@"name"];
   if (! title) return nil;
 
-  [cell setTitle:[title stringValue]];
+  NSXMLNode *appendix = [_xmlTreeWrapper getNode:item xpath:@"appendix"];
+  if (appendix) {
+    [cell setTitle:[NSString stringWithFormat:@"%@\n  %@", [title stringValue], [appendix stringValue]]];
+  } else {
+    [cell setTitle:[title stringValue]];
+  }
 
   NSXMLNode *sysctl = [_xmlTreeWrapper getNode:item xpath:@"sysctl"];
   if (! sysctl) {
@@ -92,6 +97,16 @@
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldCollapseItem:(id)item
 {
   return ! [self checkAnyChildrenChecked:item];
+}
+
+- (float)outlineView:(NSOutlineView *)outlineView heightOfRowByItem:(id)item
+{
+  NSXMLNode *appendix = [_xmlTreeWrapper getNode:item xpath:@"appendix"];
+  if (appendix) {
+    return [outlineView rowHeight] * 2;
+  } else {
+    return [outlineView rowHeight];
+  }
 }
 
 - (void)outlineView:(NSOutlineView *)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item

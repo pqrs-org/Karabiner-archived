@@ -13,7 +13,8 @@
           <sysctl>keyremap4macbook.general.dont_remap_external</sysctl>
         </item>
         <item>
-          <name>Enable CapsLock LED Hack (To prevent the Apple keyboard's CapsLock delay)</name>
+          <name>Enable CapsLock LED Hack</name>
+          <appendix>(To prevent the Apple keyboard's CapsLock delay)</appendix>
           <sysctl>keyremap4macbook.general.capslock_led_hack</sysctl>
         </item>
       </list>
@@ -110,7 +111,8 @@
       <name>Remap Command_R Key</name>
       <list>
         <item>
-          <name>Command_R to Command_R (+ When you type Command_R only, send Enter)</name>
+          <name>Command_R to Command_R</name>
+          <appendix>(+ When you type Command_R only, send Enter)</appendix>
           <sysctl>keyremap4macbook.remap.commandR2commandR_enter</sysctl>
         </item>
         <item>
@@ -178,7 +180,8 @@
           <sysctl>keyremap4macbook.remap.delete2forwarddelete</sysctl>
         </item>
         <item>
-          <name>Delete to F13 (+ Shift+Delete to Tilde(~))</name>
+          <name>Delete to F13</name>
+          <appendix>(+ Shift+Delete to Tilde(~))</appendix>
           <sysctl>keyremap4macbook.remap.delete2f13_shift2tilde</sysctl>
         </item>
         <item>
@@ -243,7 +246,8 @@
           <sysctl>keyremap4macbook.remap.enter2optionL</sysctl>
         </item>
         <item>
-          <name>Enter to Option_L (+ When you type Enter only, send Command+Space)</name>
+          <name>Enter to Option_L</name>
+          <appendix>(+ When you type Enter only, send Command+Space)</appendix>
           <sysctl>keyremap4macbook.remap.enter2optionL_commandSpace</sysctl>
         </item>
         <item>
@@ -251,7 +255,8 @@
           <sysctl>keyremap4macbook.remap.enter2optionR</sysctl>
         </item>
         <item>
-          <name>Enter to Option_R (+ When you type Enter only, send Command+Space)</name>
+          <name>Enter to Option_R</name>
+          <appendix>(+ When you type Enter only, send Command+Space)</appendix>
           <sysctl>keyremap4macbook.remap.enter2optionR_commandSpace</sysctl>
         </item>
         <item>
@@ -311,7 +316,8 @@
           <sysctl>keyremap4macbook.remap.fn2controlL</sysctl>
         </item>
         <item>
-          <name>FN to Control_L (+ Command_R+FN to FN)</name>
+          <name>FN to Control_L</name>
+          <appendix>(+ Command_R+FN to FN)</appendix>
           <sysctl>keyremap4macbook.remap.fn2controlL_commandR2fn</sysctl>
         </item>
         <item>
@@ -395,7 +401,8 @@
           <sysctl>keyremap4macbook.remap.optionR2fn</sysctl>
         </item>
         <item>
-          <name>Option_R to Option_R (+ When you type Option_R only, send Command+Space)</name>
+          <name>Option_R to Option_R</name>
+          <appendix>(+ When you type Option_R only, send Command+Space)</appendix>
           <sysctl>keyremap4macbook.remap.optionR2optionR_commandSpace</sysctl>
         </item>
         <item>
@@ -425,7 +432,8 @@
           <sysctl>keyremap4macbook.remap.return2optionL</sysctl>
         </item>
         <item>
-          <name>Return to Option_L (+ When you type Return only, send Escape).</name>
+          <name>Return to Option_L</name>
+          <appendix>(+ When you type Return only, send Escape)</appendix>
           <sysctl>keyremap4macbook.remap.return2optionL_escape</sysctl>
         </item>
         <item>
@@ -499,7 +507,8 @@
           <sysctl>keyremap4macbook.remap.shiftR2optionL</sysctl>
         </item>
         <item>
-          <name>Shift_R to Shift_R (+ When you type Shift_R only, send Backslash).</name>
+          <name>Shift_R to Shift_R</name>
+          <appendix>(+ When you type Shift_R only, send Backslash)</appendix>
           <sysctl>keyremap4macbook.remap.shiftR2shiftR_backslash</sysctl>
         </item>
         <item>
@@ -525,7 +534,8 @@
           <sysctl>keyremap4macbook.remap.space2controlL</sysctl>
         </item>
         <item>
-          <name>Space to Control_L (+ When you type Space only, send Space).</name>
+          <name>Space to Control_L</name>
+          <appendix>(+ When you type Space only, send Space)</appendix>
           <sysctl>keyremap4macbook.remap.space2controlL_space</sysctl>
         </item>
         <item>
@@ -533,7 +543,8 @@
           <sysctl>keyremap4macbook.remap.space2shiftL</sysctl>
         </item>
         <item>
-          <name>Space to Shift_L (+ When you type Space only, send Space).</name>
+          <name>Space to Shift_L</name>
+          <appendix>(+ When you type Space only, send Space)</appendix>
           <sysctl>keyremap4macbook.remap.space2shiftL_space</sysctl>
         </item>
         <item>
@@ -754,15 +765,18 @@
           <name>Remapping for Spaces</name>
           <list>
             <item>
-              <name>Use Command_R+[A...L] for Spaces (Command+Control+Option+Shift+[1...9])</name>
+              <name>Use Command_R+[A...L] for Spaces</name>
+              <appendix>(Command+Control+Option+Shift+[1...9])</appendix>
               <sysctl>keyremap4macbook.remap.spaces_special</sysctl>
             </item>
             <item>
-              <name>Use FN+[1...9] for Spaces (Command+Control+Option+Shift+[1...9])</name>
+              <name>Use FN+[1...9] for Spaces</name>
+              <appendix>(Command+Control+Option+Shift+[1...9])</appendix>
               <sysctl>keyremap4macbook.remap.spaces_special_fn</sysctl>
             </item>
             <item>
-              <name>Use KeyPad number for Spaces (Command+Control+Option+Shift+[1...9])</name>
+              <name>Use KeyPad number for Spaces</name>
+              <appendix>(Command+Control+Option+Shift+[1...9])</appendix>
               <sysctl>keyremap4macbook.remap.spaces_special_keypad</sysctl>
             </item>
             <item>
@@ -880,7 +894,8 @@
           </list>
         </item>
         <item>
-          <name>Use PC Style Home/End (behave like Command+Left/Right)</name>
+          <name>Use PC Style Home/End</name>
+          <appendix>(behave like Command+Left/Right)</appendix>
           <sysctl>keyremap4macbook.remap.pclikehomeend</sysctl>
         </item>
       </list>
@@ -903,15 +918,18 @@
           <name>Remap Command_L Key</name>
           <list>
             <item>
-              <name>Command_L to Command_L (+ When you type Command_L only, send EISUU)</name>
+              <name>Command_L to Command_L</name>
+              <appendix>(+ When you type Command_L only, send EISUU)</appendix>
               <sysctl>keyremap4macbook.remap.jis_commandL2commandL_eisuu</sysctl>
             </item>
             <item>
-              <name>Command_L to Command_L (+ When you type Command_L only, send KANA/EISUU (toggle))</name>
+              <name>Command_L to Command_L</name>
+              <appendix>(+ When you type Command_L only, send KANA/EISUU (toggle))</appendix>
               <sysctl>keyremap4macbook.remap.jis_commandL2commandL_toggle_kana_eisuu</sysctl>
             </item>
             <item>
-              <name>Command_L to Control_L (+ When you type Command_L only, send EISUU)</name>
+              <name>Command_L to Control_L</name>
+              <appendix>(+ When you type Command_L only, send EISUU)</appendix>
               <sysctl>keyremap4macbook.remap.jis_commandL2controlL_eisuu</sysctl>
             </item>
             <item>
@@ -940,11 +958,13 @@
               <sysctl>keyremap4macbook.remap.jis_commandR2kana</sysctl>
             </item>
             <item>
-              <name>Command_R to Command_R (+ When you type Command_R only, send KANA)</name>
+              <name>Command_R to Command_R</name>
+              <appendix>(+ When you type Command_R only, send KANA)</appendix>
               <sysctl>keyremap4macbook.remap.jis_commandR2commandR_kana</sysctl>
             </item>
             <item>
-              <name>Command_R to Command_R (+ When you type Command_R only, send KANA/EISUU (toggle))</name>
+              <name>Command_R to Command_R</name>
+              <appendix>(+ When you type Command_R only, send KANA/EISUU (toggle))</appendix>
               <sysctl>keyremap4macbook.remap.jis_commandR2commandR_toggle_kana_eisuu</sysctl>
             </item>
             <item>
@@ -986,7 +1006,8 @@
               <sysctl>keyremap4macbook.remap.jis_eisuu2commandL</sysctl>
             </item>
             <item>
-              <name>EISUU to Command_L  (+ When you type EISUU only, send EISUU)</name>
+              <name>EISUU to Command_L</name>
+              <appendix>(+ When you type EISUU only, send EISUU)</appendix>
               <sysctl>keyremap4macbook.remap.jis_eisuu2commandL_eisuu</sysctl>
             </item>
             <item>
@@ -994,7 +1015,8 @@
               <sysctl>keyremap4macbook.remap.jis_eisuu2controlL</sysctl>
             </item>
             <item>
-              <name>EISUU to Control_L  (+ When you type EISUU only, send EISUU)</name>
+              <name>EISUU to Control_L</name>
+              <appendix>(+ When you type EISUU only, send EISUU)</appendix>
               <sysctl>keyremap4macbook.remap.jis_eisuu2controlL_eisuu</sysctl>
             </item>
             <item>
@@ -1039,7 +1061,8 @@
               <sysctl>keyremap4macbook.remap.jis_kana2commandL</sysctl>
             </item>
             <item>
-              <name>KANA to Command_R (+ When you type KANA only, send KANA)</name>
+              <name>KANA to Command_R</name>
+              <appendix>(+ When you type KANA only, send KANA)</appendix>
               <sysctl>keyremap4macbook.remap.jis_kana2commandR_kana</sysctl>
             </item>
             <item>
