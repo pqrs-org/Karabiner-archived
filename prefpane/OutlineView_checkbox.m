@@ -94,23 +94,6 @@
   return nil;
 }
 
-- (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item
-{
-  static NSColor* color_white = nil;
-  static NSColor* color_grey = nil;
-  if (! color_white) {
-    color_white = [NSColor whiteColor];
-    color_grey = [[NSColor colorWithCalibratedWhite:0.95 alpha:1.0] retain];
-  }
-
-  NSInteger row = [outlineView rowForItem:item];
-  if (row % 2 == 0) {
-    [cell setBackgroundColor:color_grey];
-  } else {
-    [cell setBackgroundColor:color_white];
-  }
-}
-
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldCollapseItem:(id)item
 {
   return ! [self checkAnyChildrenChecked:item];
