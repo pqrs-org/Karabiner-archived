@@ -12,17 +12,17 @@ case "$argument" in
     start)
         echo "Starting KeyRemap4MacBook"
         sleep 10 # wait for avoid kext loading collision.
-        "$basedir/scripts/load.sh"
+        $basedir/scripts/load.sh
         ;;
 
     quickstart)
         echo "Starting KeyRemap4MacBook"
-        "$basedir/scripts/load.sh"
+        $basedir/scripts/load.sh
         ;;
 
     stop)
         echo "Stopping KeyRemap4MacBook"
-        "$basedir/scripts/unload.sh"
+        $basedir/scripts/unload.sh
         ;;
 
     *)

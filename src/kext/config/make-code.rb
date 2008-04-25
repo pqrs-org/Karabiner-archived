@@ -4,7 +4,7 @@ lastName = nil;
 while l = $stdin.gets
   l.strip!
 
-  if /<sysctl>keyremap4macbook\.(.+?)\.(.+)<\/sysctl>/ =~ l then
+  if /<sysctl>(.+?)\.(.+)<\/sysctl>/ =~ l then
     type = $1
     entry = $2
 

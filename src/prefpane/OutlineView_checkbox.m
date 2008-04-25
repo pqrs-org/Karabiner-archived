@@ -47,7 +47,8 @@
 
     NSXMLNode *sysctl = [_xmlTreeWrapper getNode:n xpath:@"sysctl"];
     if (sysctl) {
-      NSNumber *value = [SysctlWrapper getInt:[sysctl stringValue]];
+      NSString *entry = [NSString stringWithFormat:@"keyremap4macbook.%@", [sysctl stringValue]];
+      NSNumber *value = [SysctlWrapper getInt:entry];
       if ([value boolValue]) return TRUE;
     }
   }
@@ -88,7 +89,8 @@
 
   } else {
     [cell setImagePosition:NSImageLeft];
-    return [SysctlWrapper getInt:[sysctl stringValue]];
+    NSString *entry = [NSString stringWithFormat:@"keyremap4macbook.%@", [sysctl stringValue]];
+    return [SysctlWrapper getInt:entry];
   }
 
   return nil;
@@ -114,7 +116,9 @@
   NSXMLNode *sysctl = [_xmlTreeWrapper getNode:item xpath:@"sysctl"];
   if (sysctl) {
     NSString *name = [sysctl stringValue];
-    NSNumber *value = [SysctlWrapper getInt:name];
+    NSString *entry = [NSString stringWithFormat:@"keyremap4macbook.%@", name];
+
+    NSNumber *value = [SysctlWrapper getInt:entry];
     NSNumber *new = [[[NSNumber alloc] initWithBool:![value boolValue]] autorelease];
     [Common setSysctlInt:name value:new];
   }

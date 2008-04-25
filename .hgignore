@@ -9,3 +9,4 @@ pkgroot/
 .*\.xcodeproj/.*\.pbxuser
 src/kext/config/output
 util/getActiveApplication/getname
+files/scripts/sysctl_reset.sh

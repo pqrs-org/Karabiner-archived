@@ -30,6 +30,7 @@ sudo cp src/server/build/Release/KeyRemap4MacBook_server "pkgroot/$basedir/serve
 
 sudo mkdir -p "pkgroot/$basedir/bin"
 sudo cp src/sysctl_set/build/Release/KeyRemap4MacBook_sysctl_set "pkgroot/$basedir/bin"
+sudo cp src/sysctl_save/build/Release/KeyRemap4MacBook_sysctl_save "pkgroot/$basedir/bin"
 
 sudo mkdir -p "pkgroot/Library/PreferencePanes"
 sudo cp -R "src/prefpane/build/Release/KeyRemap4MacBook.prefPane" "pkgroot/Library/PreferencePanes"
@@ -39,6 +40,7 @@ sudo find pkgroot -type f -print0 | xargs -0 sudo chmod 644
 sudo find pkgroot -name '*.sh' -print0 | xargs -0 sudo chmod 755
 sudo chmod 4755 pkgroot/$basedir/server/KeyRemap4MacBook_server
 sudo chmod 4755 pkgroot/$basedir/bin/KeyRemap4MacBook_sysctl_set
+sudo chmod 755 pkgroot/$basedir/bin/KeyRemap4MacBook_sysctl_save
 sudo chown -R root:wheel pkgroot
 
 sudo chmod 1775 pkgroot/Library

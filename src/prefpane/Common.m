@@ -2,31 +2,24 @@
 
 #import "Common.h"
 #import "SysctlWrapper.h"
-#import "AdminAction.h"
 
 @implementation Common
 
-// ----------------------------------------------------------------------
-+ (void) saveSetting
-{
-  [self initialize];
-
-  char command[] = "/Library/org.pqrs/KeyRemap4MacBook/scripts/save.sh";
-  [AdminAction execCommand:command];
-}
-
 + (void) setSysctlInt:(NSString *)name value:(NSNumber *)value
 {
-  NSNumber *old = [SysctlWrapper getInt:name];
+  NSString *entry = [NSString stringWithFormat:@"keyremap4macbook.%@", name];
+
+  NSNumber *old = [SysctlWrapper getInt:entry];
+  if (old == nil) return;
   if ([value isEqualToNumber:old]) return;
 
-  char command[512];
-  snprintf(command, sizeof(command), "/usr/sbin/sysctl -w '%s=%d'",
-           [name cStringUsingEncoding:NSUTF8StringEncoding],
-           [value intValue]);
-  if (! [AdminAction execCommand:command]) return;
+  NSArray *args_set = [NSArray arrayWithObjects:name, [value stringValue], nil];
+  NSTask *task_set = [NSTask launchedTaskWithLaunchPath:@"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set" arguments:args_set];
+  [task_set waitUntilExit];
 
-  [self saveSetting];
+  NSArray *args_save = [NSArray arrayWithObjects:nil];
+  NSTask *task_save = [NSTask launchedTaskWithLaunchPath:@"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_save" arguments:args_save];
+  [task_save waitUntilExit];
 }
 
 @end
