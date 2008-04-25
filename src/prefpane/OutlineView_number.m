@@ -49,7 +49,8 @@
     NSXMLNode *sysctl = [_xmlTreeWrapper getNode:item xpath:@"sysctl"];
     if (! sysctl) return nil;
 
-    return [SysctlWrapper getInt:[sysctl stringValue]];
+    NSString *entry = [NSString stringWithFormat:@"keyremap4macbook.%@", [sysctl stringValue]];
+    return [SysctlWrapper getInt:entry];
   }
 
   return nil;

@@ -16,8 +16,6 @@
 		34CBFDDC0D94CEC00087D9DB /* OutlineView_checkbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CBFDD60D94CEC00087D9DB /* OutlineView_checkbox.m */; };
 		34CBFDDD0D94CEC00087D9DB /* OutlineView_number.h in Headers */ = {isa = PBXBuildFile; fileRef = 34CBFDD70D94CEC00087D9DB /* OutlineView_number.h */; };
 		34CBFDDE0D94CEC00087D9DB /* OutlineView_number.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CBFDD80D94CEC00087D9DB /* OutlineView_number.m */; };
-		34E409D90D54C4C1008441E7 /* AdminAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 34E409D50D54C4C1008441E7 /* AdminAction.h */; };
-		34E409DA0D54C4C1008441E7 /* AdminAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E409D60D54C4C1008441E7 /* AdminAction.m */; };
 		34E409DB0D54C4C1008441E7 /* SysctlWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 34E409D70D54C4C1008441E7 /* SysctlWrapper.h */; };
 		34E409DC0D54C4C1008441E7 /* SysctlWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E409D80D54C4C1008441E7 /* SysctlWrapper.m */; };
 		8D202CEA0486D31800D8A456 /* KeyRemap4MacBook_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32DBCFA20370C41700C91783 /* KeyRemap4MacBook_Prefix.pch */; };
@@ -45,8 +43,6 @@
 		34CBFDD60D94CEC00087D9DB /* OutlineView_checkbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutlineView_checkbox.m; sourceTree = "<group>"; };
 		34CBFDD70D94CEC00087D9DB /* OutlineView_number.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutlineView_number.h; sourceTree = "<group>"; };
 		34CBFDD80D94CEC00087D9DB /* OutlineView_number.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutlineView_number.m; sourceTree = "<group>"; };
-		34E409D50D54C4C1008441E7 /* AdminAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdminAction.h; path = sharecode/AdminAction.h; sourceTree = "<group>"; };
-		34E409D60D54C4C1008441E7 /* AdminAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AdminAction.m; path = sharecode/AdminAction.m; sourceTree = "<group>"; };
 		34E409D70D54C4C1008441E7 /* SysctlWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SysctlWrapper.h; path = sharecode/SysctlWrapper.h; sourceTree = "<group>"; };
 		34E409D80D54C4C1008441E7 /* SysctlWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SysctlWrapper.m; path = sharecode/SysctlWrapper.m; sourceTree = "<group>"; };
 		8D202CF70486D31800D8A456 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -116,8 +112,6 @@
 				34CBFDD80D94CEC00087D9DB /* OutlineView_number.m */,
 				3412EA0F0D94225F0007906B /* Common.h */,
 				3412EA100D94225F0007906B /* Common.m */,
-				34E409D50D54C4C1008441E7 /* AdminAction.h */,
-				34E409D60D54C4C1008441E7 /* AdminAction.m */,
 				34E409D70D54C4C1008441E7 /* SysctlWrapper.h */,
 				34E409D80D54C4C1008441E7 /* SysctlWrapper.m */,
 				F506C03C013D9D7901CA16C8 /* KeyRemap4MacBookPref.h */,
@@ -169,7 +163,6 @@
 			files = (
 				8D202CEA0486D31800D8A456 /* KeyRemap4MacBook_Prefix.pch in Headers */,
 				8D202CEB0486D31800D8A456 /* KeyRemap4MacBookPref.h in Headers */,
-				34E409D90D54C4C1008441E7 /* AdminAction.h in Headers */,
 				34E409DB0D54C4C1008441E7 /* SysctlWrapper.h in Headers */,
 				3412EA110D94225F0007906B /* Common.h in Headers */,
 				34CBFDDB0D94CEC00087D9DB /* OutlineView_checkbox.h in Headers */,
@@ -247,7 +240,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D202CF10486D31800D8A456 /* KeyRemap4MacBookPref.m in Sources */,
-				34E409DA0D54C4C1008441E7 /* AdminAction.m in Sources */,
 				34E409DC0D54C4C1008441E7 /* SysctlWrapper.m in Sources */,
 				3412EA120D94225F0007906B /* Common.m in Sources */,
 				34CBFDDC0D94CEC00087D9DB /* OutlineView_checkbox.m in Sources */,

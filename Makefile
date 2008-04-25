@@ -7,6 +7,7 @@ build:
 	$(MAKE) -C src/server
 	$(MAKE) -C src/prefpane
 	$(MAKE) -C src/sysctl_set
+	./util/make-reset.rb files/prefpane/*.xml > files/scripts/sysctl_reset.sh
 
 clean:
 	$(MAKE) -C src/kext clean
