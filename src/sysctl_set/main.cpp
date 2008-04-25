@@ -2,12 +2,37 @@
 #include <sys/sysctl.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <pwd.h>
+
+#include <CoreFoundation/CoreFoundation.h>
+#include <SystemConfiguration/SystemConfiguration.h>
+
+namespace {
+  bool
+  verifyUser(void)
+  {
+    uid_t consoleUID;
+    CFStringRef result = SCDynamicStoreCopyConsoleUser(NULL, &consoleUID, NULL);
+    if (! result) return false;
+    CFRelease(result);
+
+    return (getuid() == consoleUID);
+  }
+}
+
 
 int
 main(int argc, char **argv)
 {
   if (argc != 3) {
     fprintf(stderr, "Usage: %s key value\n", argv[0]);
+    return 1;
+  }
+
+  if (! verifyUser()) {
+    fprintf(stderr, "Permission denied\n");
+    return 1;
   }
 
   char name[512];

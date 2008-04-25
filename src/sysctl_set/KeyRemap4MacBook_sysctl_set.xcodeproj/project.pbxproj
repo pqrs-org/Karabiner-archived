@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34E178380DC257FF00E89A0D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E178370DC257FF00E89A0D /* SystemConfiguration.framework */; };
+		34E1783C0DC2585E00E89A0D /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E1783B0DC2585E00E89A0D /* CoreFoundation.framework */; };
 		8DD76F650486A84900D96B5E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
 /* End PBXBuildFile section */
 
@@ -24,6 +26,8 @@
 
 /* Begin PBXFileReference section */
 		08FB7796FE84155DC02AAC07 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		34E178370DC257FF00E89A0D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = /System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<absolute>"; };
+		34E1783B0DC2585E00E89A0D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
 		8DD76F6C0486A84900D96B5E /* KeyRemap4MacBook_sysctl_set */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = KeyRemap4MacBook_sysctl_set; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -32,6 +36,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34E178380DC257FF00E89A0D /* SystemConfiguration.framework in Frameworks */,
+				34E1783C0DC2585E00E89A0D /* CoreFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +47,7 @@
 		08FB7794FE84155DC02AAC07 /* KeyRemap4MacBook_sysctlutil */ = {
 			isa = PBXGroup;
 			children = (
+				34FDACE40DC24AF9007F739E /* Framework */,
 				08FB7795FE84155DC02AAC07 /* Source */,
 				C6859E8C029090F304C91782 /* Documentation */,
 				1AB674ADFE9D54B511CA2CBB /* Products */,
@@ -62,6 +69,15 @@
 				8DD76F6C0486A84900D96B5E /* KeyRemap4MacBook_sysctl_set */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		34FDACE40DC24AF9007F739E /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				34E1783B0DC2585E00E89A0D /* CoreFoundation.framework */,
+				34E178370DC257FF00E89A0D /* SystemConfiguration.framework */,
+			);
+			name = Framework;
 			sourceTree = "<group>";
 		};
 		C6859E8C029090F304C91782 /* Documentation */ = {
