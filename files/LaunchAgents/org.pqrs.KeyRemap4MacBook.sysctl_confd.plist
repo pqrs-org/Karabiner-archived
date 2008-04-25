@@ -6,7 +6,7 @@
     <string>org.pqrs.KeyRemap4MacBook.sysctl_confd</string>
     <key>ProgramArguments</key>
     <array>
-      <string>/Library/org.pqrs/KeyRemap4MacBook/bin/sysctl_confd</string>
+      <string>/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_confd</string>
     </array>
     <key>OnDemand</key>
     <false/>
