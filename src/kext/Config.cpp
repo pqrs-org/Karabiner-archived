@@ -6,6 +6,7 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   Config config;
+  int initialized = 0;
 
   // ----------------------------------------------------------------------
   // SYSCTL staff
@@ -35,6 +36,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   SYSCTL_INT(_keyremap4macbook, OID_AUTO, debug_pointing, CTLTYPE_INT|CTLFLAG_RW, &(config.debug_pointing), 0, "");
 
   SYSCTL_STRING(_keyremap4macbook, OID_AUTO, version, CTLFLAG_RD, config_version, 0, "");
+  SYSCTL_INT(_keyremap4macbook, OID_AUTO, initialized, CTLTYPE_INT|CTLFLAG_RW, &(initialized), 0, "");
 
   // ----------------------------------------------------------------------
   void
@@ -54,6 +56,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_register_oid(&sysctl__keyremap4macbook_debug);
     sysctl_register_oid(&sysctl__keyremap4macbook_debug_pointing);
     sysctl_register_oid(&sysctl__keyremap4macbook_version);
+    sysctl_register_oid(&sysctl__keyremap4macbook_initialized);
   }
 
   void
@@ -73,5 +76,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_unregister_oid(&sysctl__keyremap4macbook_debug);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_debug_pointing);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_version);
+    sysctl_unregister_oid(&sysctl__keyremap4macbook_initialized);
   }
 }

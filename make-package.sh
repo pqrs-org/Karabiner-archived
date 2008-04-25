@@ -29,6 +29,7 @@ sudo mkdir -p "pkgroot/$basedir/server"
 sudo cp src/server/build/Release/KeyRemap4MacBook_server "pkgroot/$basedir/server"
 
 sudo mkdir -p "pkgroot/$basedir/bin"
+sudo cp src/sysctl_confd/build/Release/KeyRemap4MacBook_sysctl_confd "pkgroot/$basedir/bin"
 sudo cp src/sysctl_set/build/Release/KeyRemap4MacBook_sysctl_set "pkgroot/$basedir/bin"
 sudo cp src/sysctl_save/build/Release/KeyRemap4MacBook_sysctl_save "pkgroot/$basedir/bin"
 
@@ -39,6 +40,7 @@ sudo find pkgroot -type d -print0 | xargs -0 sudo chmod 755
 sudo find pkgroot -type f -print0 | xargs -0 sudo chmod 644
 sudo find pkgroot -name '*.sh' -print0 | xargs -0 sudo chmod 755
 sudo chmod 4755 pkgroot/$basedir/server/KeyRemap4MacBook_server
+sudo chmod 755 pkgroot/$basedir/bin/KeyRemap4MacBook_sysctl_confd
 sudo chmod 4755 pkgroot/$basedir/bin/KeyRemap4MacBook_sysctl_set
 sudo chmod 755 pkgroot/$basedir/bin/KeyRemap4MacBook_sysctl_save
 sudo chown -R root:wheel pkgroot

@@ -3,12 +3,12 @@
 <plist version="1.0">
   <dict>
     <key>Label</key>
-    <string>org.pqrs.KeyRemap4MacBook.sysctl_load</string>
+    <string>org.pqrs.KeyRemap4MacBook.sysctl_confd</string>
     <key>ProgramArguments</key>
     <array>
-      <string>/Library/org.pqrs/KeyRemap4MacBook/scripts/sysctl_load.sh</string>
+      <string>/Library/org.pqrs/KeyRemap4MacBook/bin/sysctl_confd</string>
     </array>
-    <key>RunAtLoad</key>
-    <true/>
+    <key>OnDemand</key>
+    <false/>
   </dict>
 </plist>
