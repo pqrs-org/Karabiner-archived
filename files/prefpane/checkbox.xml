@@ -368,13 +368,15 @@
     <item>
       <name>Remap KeyPad Key</name>
       <list>
-        <name>Remap Clear Key</name>
-        <list>
-          <item>
-            <name>Clear to Tab</name>
-            <sysctl>remap.clear2tab</sysctl>
-          </item>
-        </list>
+        <item>
+          <name>Remap Clear Key</name>
+          <list>
+            <item>
+              <name>Clear to Tab</name>
+              <sysctl>remap.clear2tab</sysctl>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
 
