@@ -17,8 +17,8 @@
   NSTask *task_set = [NSTask launchedTaskWithLaunchPath:@"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set" arguments:args_set];
   [task_set waitUntilExit];
 
-  NSArray *args_save = [NSArray arrayWithObjects:nil];
-  NSTask *task_save = [NSTask launchedTaskWithLaunchPath:@"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_save" arguments:args_save];
+  NSArray *args_save = [NSArray arrayWithObjects:@"save", nil];
+  NSTask *task_save = [NSTask launchedTaskWithLaunchPath:@"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_ctl" arguments:args_save];
   [task_save waitUntilExit];
 }
 

@@ -26,7 +26,7 @@
 /* Begin PBXFileReference section */
 		08FB7796FE84155DC02AAC07 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		343AB0860DC1C9E600101796 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
-		8DD76F6C0486A84900D96B5E /* KeyRemap4MacBook_sysctl_save */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = KeyRemap4MacBook_sysctl_save; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DD76F6C0486A84900D96B5E /* KeyRemap4MacBook_sysctl_ctl */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = KeyRemap4MacBook_sysctl_ctl; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +63,7 @@
 		1AB674ADFE9D54B511CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8DD76F6C0486A84900D96B5E /* KeyRemap4MacBook_sysctl_save */,
+				8DD76F6C0486A84900D96B5E /* KeyRemap4MacBook_sysctl_ctl */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -86,9 +86,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8DD76F620486A84900D96B5E /* KeyRemap4MacBook_sysctl_save */ = {
+		8DD76F620486A84900D96B5E /* KeyRemap4MacBook_sysctl_ctl */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "KeyRemap4MacBook_sysctl_save" */;
+			buildConfigurationList = 1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "KeyRemap4MacBook_sysctl_ctl" */;
 			buildPhases = (
 				8DD76F640486A84900D96B5E /* Sources */,
 				8DD76F660486A84900D96B5E /* Frameworks */,
@@ -98,10 +98,10 @@
 			);
 			dependencies = (
 			);
-			name = KeyRemap4MacBook_sysctl_save;
+			name = KeyRemap4MacBook_sysctl_ctl;
 			productInstallPath = "$(HOME)/bin";
 			productName = KeyRemap4MacBook_sysctlutil;
-			productReference = 8DD76F6C0486A84900D96B5E /* KeyRemap4MacBook_sysctl_save */;
+			productReference = 8DD76F6C0486A84900D96B5E /* KeyRemap4MacBook_sysctl_ctl */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -109,14 +109,14 @@
 /* Begin PBXProject section */
 		08FB7793FE84155DC02AAC07 /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "KeyRemap4MacBook_sysctl_save" */;
+			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "KeyRemap4MacBook_sysctl_ctl" */;
 			compatibilityVersion = "Xcode 2.4";
 			hasScannedForEncodings = 1;
 			mainGroup = 08FB7794FE84155DC02AAC07 /* KeyRemap4MacBook_sysctlutil */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8DD76F620486A84900D96B5E /* KeyRemap4MacBook_sysctl_save */,
+				8DD76F620486A84900D96B5E /* KeyRemap4MacBook_sysctl_ctl */,
 			);
 		};
 /* End PBXProject section */
@@ -146,7 +146,7 @@
 					"_GLIBCXX_DEBUG_PEDANTIC=1",
 				);
 				INSTALL_PATH = /usr/local/bin;
-				PRODUCT_NAME = KeyRemap4MacBook_sysctl_save;
+				PRODUCT_NAME = KeyRemap4MacBook_sysctl_ctl;
 				ZERO_LINK = YES;
 			};
 			name = Debug;
@@ -157,7 +157,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_MODEL_TUNING = G5;
 				INSTALL_PATH = /usr/local/bin;
-				PRODUCT_NAME = KeyRemap4MacBook_sysctl_save;
+				PRODUCT_NAME = KeyRemap4MacBook_sysctl_ctl;
 			};
 			name = Release;
 		};
@@ -190,7 +190,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "KeyRemap4MacBook_sysctl_save" */ = {
+		1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "KeyRemap4MacBook_sysctl_ctl" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DEB923208733DC60010E9CD /* Debug */,
@@ -199,7 +199,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "KeyRemap4MacBook_sysctl_save" */ = {
+		1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "KeyRemap4MacBook_sysctl_ctl" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DEB923608733DC60010E9CD /* Debug */,
