@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-print "#!/bin/sh\n\n"
-
 entry = nil
 value = 0
 while l = gets
@@ -9,7 +7,7 @@ while l = gets
     newentry = $1
 
     unless entry.nil? then
-      print "/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set #{entry} #{value}\n"
+      print "#{entry} #{value}\n"
     end
     entry = newentry
     value = 0
@@ -20,5 +18,5 @@ while l = gets
 end
 
 unless entry.nil? then
-  print "/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set #{entry} #{value}\n"
+  print "#{entry} #{value}\n"
 end
