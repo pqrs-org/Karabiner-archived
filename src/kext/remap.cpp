@@ -137,6 +137,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_commandR2home(const RemapParams &params)
+  {
+    if (! config.remap_commandR2home) return;
+
+    RemapUtil::modifierToKey(params, ModifierFlag::COMMAND_R, KeyCode::HOME);
+  }
+
+  void
   remap_commandR2middleclick(const RemapParams &params)
   {
     if (! config.remap_commandR2middleclick) return;
@@ -1969,6 +1977,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_commandR2optionL(params);
   remap_commandR2shiftL(params);
   remap_commandR2enter(params);
+  remap_commandR2home(params);
   remap_commandR2middleclick(params);
   remap_commandR2rightclick(params);
 
