@@ -414,6 +414,10 @@
           <sysctl>remap.optionR2optionR_commandSpace</sysctl>
         </item>
         <item>
+          <name>Option_R to End</name>
+          <sysctl>remap.optionR2end</sysctl>
+        </item>
+        <item>
           <name>Option_R to Enter</name>
           <sysctl>remap.optionR2enter</sysctl>
         </item>
