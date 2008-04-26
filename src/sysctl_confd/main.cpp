@@ -5,10 +5,10 @@
 #include <signal.h>
 
 namespace {
-  int exitLoop = false;
-
   void sigfunc(int param) {
-    exitLoop = true;
+    system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set initialized 0");
+    system("/Library/org.pqrs/KeyRemap4MacBook/scripts/sysctl_reset.sh");
+    exit(0);
   }
 }
 
@@ -18,7 +18,7 @@ main()
   signal(SIGHUP, sigfunc);
   signal(SIGTERM, sigfunc);
 
-  while (! exitLoop) {
+  for (;;) {
     const char *name = "keyremap4macbook.initialized";
 
     int value;
@@ -39,7 +39,5 @@ main()
     sleep(3);
   }
 
-  system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set initialized 0");
-  system("/Library/org.pqrs/KeyRemap4MacBook/scripts/sysctl_reset.sh");
   return 0;
 }
