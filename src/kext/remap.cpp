@@ -564,6 +564,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_optionR2end(const RemapParams &params)
+  {
+    if (! config.remap_optionR2end) return;
+
+    RemapUtil::modifierToKey(params, ModifierFlag::OPTION_R, KeyCode::END);
+  }
+
+  void
   remap_optionR2enter(const RemapParams &params)
   {
     if (! config.remap_optionR2enter) return;
@@ -2034,6 +2042,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_optionR2controlR(params);
   remap_optionR2fn(params);
   remap_optionR2optionR_commandSpace(params);
+  remap_optionR2end(params);
   remap_optionR2enter(params);
   remap_optionR2forwarddelete(params);
   remap_optionR2semicolon(params);
