@@ -276,6 +276,10 @@
           <sysctl>remap.enter2controlLoptionL</sysctl>
         </item>
         <item>
+          <name>Enter to End</name>
+          <sysctl>remap.enter2end</sysctl>
+        </item>
+        <item>
           <name>Enter to Forward Delete</name>
           <sysctl>remap.enter2forwarddelete</sysctl>
         </item>
