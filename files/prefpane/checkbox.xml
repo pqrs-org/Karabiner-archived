@@ -136,6 +136,10 @@
           <sysctl>remap.commandR2enter</sysctl>
         </item>
         <item>
+          <name>Command_R to Home</name>
+          <sysctl>remap.commandR2home</sysctl>
+        </item>
+        <item>
           <name>Command_R to MiddleClick</name>
           <sysctl>remap.commandR2middleclick</sysctl>
         </item>
