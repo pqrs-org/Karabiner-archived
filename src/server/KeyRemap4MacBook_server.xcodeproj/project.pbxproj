@@ -10,6 +10,7 @@
 		345B068D0DB1FF29000023FD /* getActiveApplicationName.m in Sources */ = {isa = PBXBuildFile; fileRef = 345B06890DB1FF29000023FD /* getActiveApplicationName.m */; };
 		345B068E0DB1FF29000023FD /* server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345B068A0DB1FF29000023FD /* server.cpp */; };
 		345B06960DB2063C000023FD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345B06950DB2063C000023FD /* Cocoa.framework */; };
+		3480838D0DC3008000D3D707 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3480838C0DC3008000D3D707 /* SystemConfiguration.framework */; };
 		8DD76F650486A84900D96B5E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		345B068C0DB1FF29000023FD /* thread.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = thread.hpp; sourceTree = "<group>"; };
 		345B068F0DB1FF3A000023FD /* bridge.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = bridge.hpp; path = ../bridge/bridge.hpp; sourceTree = SOURCE_ROOT; };
 		345B06950DB2063C000023FD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		3480838C0DC3008000D3D707 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = /System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<absolute>"; };
 		8DD76F6C0486A84900D96B5E /* KeyRemap4MacBook_server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = KeyRemap4MacBook_server; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -43,6 +45,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				345B06960DB2063C000023FD /* Cocoa.framework in Frameworks */,
+				3480838D0DC3008000D3D707 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,7 +55,7 @@
 		08FB7794FE84155DC02AAC07 /* KeyRemap4MacBook_server */ = {
 			isa = PBXGroup;
 			children = (
-				345B06950DB2063C000023FD /* Cocoa.framework */,
+				3480838B0DC3006B00D3D707 /* Framework */,
 				08FB7795FE84155DC02AAC07 /* Source */,
 				C6859E8C029090F304C91782 /* Documentation */,
 				1AB674ADFE9D54B511CA2CBB /* Products */,
@@ -80,6 +83,15 @@
 				8DD76F6C0486A84900D96B5E /* KeyRemap4MacBook_server */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		3480838B0DC3006B00D3D707 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				3480838C0DC3008000D3D707 /* SystemConfiguration.framework */,
+				345B06950DB2063C000023FD /* Cocoa.framework */,
+			);
+			name = Framework;
 			sourceTree = "<group>";
 		};
 		C6859E8C029090F304C91782 /* Documentation */ = {
