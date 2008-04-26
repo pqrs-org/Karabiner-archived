@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <map>
 
 #include <CoreFoundation/CoreFoundation.h>
 
@@ -15,6 +16,7 @@ namespace {
   // ============================================================
   // SAVE & LOAD
   CFMutableDictionaryRef dict_sysctl = NULL;
+  std::map<std::string, int> map_reset;
 
   void
   save(const char *name)
@@ -30,7 +32,14 @@ namespace {
 
     CFStringRef key = CFStringCreateWithCString(NULL, name, kCFStringEncodingUTF8);
     CFNumberRef val = CFNumberCreate(NULL, kCFNumberIntType, &value);
-    CFDictionarySetValue(dict_sysctl, key, val);
+
+    typeof(map_reset.end()) it = map_reset.find(name);
+    if (it == map_reset.end()) return;
+    CFNumberRef defaultval = CFNumberCreate(NULL, kCFNumberIntType, &(it->second));
+
+    if (CFNumberCompare(val, defaultval, NULL) != 0) {
+      CFDictionarySetValue(dict_sysctl, key, val);
+    }
   }
 
   void
@@ -77,8 +86,33 @@ namespace {
   }
 
   bool
+  makeMapReset(void)
+  {
+    std::ifstream ifs("/Library/org.pqrs/KeyRemap4MacBook/share/reset");
+    if (! ifs) return false;
+
+    while (! ifs.eof()) {
+      char line[512];
+
+      ifs.getline(line, sizeof(line));
+
+      char *p = strchr(line, ' ');
+      if (! p) continue;
+      *p = '\0';
+
+      int value = atoi(p + 1);
+
+      map_reset[line] = value;
+    }
+
+    return true;
+  }
+
+  bool
   saveToFile(const char **targetFiles, CFStringRef identify)
   {
+    if (! makeMapReset()) return false;
+
     dict_sysctl = CFDictionaryCreateMutable(NULL, 0, NULL, NULL);
     if (! dict_sysctl) return false;
 
