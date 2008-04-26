@@ -76,16 +76,6 @@
     </item>
 
     <item>
-      <name>Remap Clear Key (in KeyPad)</name>
-      <list>
-        <item>
-          <name>Clear to Tab</name>
-          <sysctl>remap.clear2tab</sysctl>
-        </item>
-      </list>
-    </item>
-
-    <item>
       <name>Remap Command_L Key</name>
       <list>
         <item>
@@ -373,6 +363,19 @@
           <sysctl>remap.f16_to_tab</sysctl>
         </item>
       </list>
+    </item>
+
+    <item>
+      <name>Remap KeyPad Key</name>
+      <list>
+        <name>Remap Clear Key</name>
+        <list>
+          <item>
+            <name>Clear to Tab</name>
+            <sysctl>remap.clear2tab</sysctl>
+          </item>
+        </list>
+      </item>
     </item>
 
     <item>
