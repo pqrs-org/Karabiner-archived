@@ -17,11 +17,11 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>4.0.54</string>
+	<string>4.99.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>4.0.54</string>
+	<string>4.99.1</string>
 	<key>NSMainNibFile</key>
 	<string>KeyRemap4MacBookPref</string>
 	<key>NSPrefPaneIconFile</key>
