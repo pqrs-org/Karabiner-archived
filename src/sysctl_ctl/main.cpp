@@ -192,6 +192,15 @@ namespace {
     return reinterpret_cast<CFStringRef>(CFDictionaryGetValue(dict, CFSTR("identify")));
   }
 
+  CFStringRef
+  getConfigName(int index)
+  {
+    CFDictionaryRef dict = getConfigDictionary(index);
+    if (! dict) return NULL;
+
+    return reinterpret_cast<CFStringRef>(CFDictionaryGetValue(dict, CFSTR("name")));
+  }
+
   bool
   appendConfig(void)
   {
@@ -232,7 +241,6 @@ namespace {
     return true;
   }
 
-
   bool
   renameConfig(int index, const char *newname)
   {
@@ -250,6 +258,15 @@ namespace {
 
     setConfigList(newlist);
     return true;
+  }
+
+  int
+  getConfigCount(void)
+  {
+    CFArrayRef list = getConfigList();
+    if (! list) return 0;
+
+    return CFArrayGetCount(list);
   }
 
   // ----------------------------------------
@@ -283,7 +300,7 @@ int
 main(int argc, char **argv)
 {
   if (argc == 1) {
-    fprintf(stderr, "Usage: %s (save|load|add|delete|name|select) [params]\n", argv[0]);
+    fprintf(stderr, "Usage: %s (save|load|add|delete|rename|getname|select|count) [params]\n", argv[0]);
     return 1;
   }
 
@@ -308,14 +325,30 @@ main(int argc, char **argv)
     int index = atoi(argv[2]);
     isSuccess = removeConfig(index);
 
-  } else if (strcmp(argv[1], "name") == 0) {
-    // sysctl_ctl name "index" "newname"
+  } else if (strcmp(argv[1], "rename") == 0) {
+    // sysctl_ctl rename "index" "newname"
     if (argc < 4) {
-      fprintf(stderr, "Usage: %s name index newname\n", argv[0]);
+      fprintf(stderr, "Usage: %s rename index newname\n", argv[0]);
       goto finish;
     }
     int index = atoi(argv[2]);
     isSuccess = renameConfig(index, argv[3]);
+
+  } else if (strcmp(argv[1], "count") == 0) {
+    printf("%d\n", getConfigCount());
+    return 0;
+
+  } else if (strcmp(argv[1], "getname") == 0) {
+    if (argc < 3) {
+      fprintf(stderr, "Usage: %s getname index\n", argv[0]);
+      goto finish;
+    }
+    int index = atoi(argv[2]);
+    CFStringRef name = getConfigName(index);
+    if (name) {
+      printf("%s\n", CFStringGetCStringPtr(name, kCFStringEncodingUTF8));
+    }
+    return 0;
 
   } else if ((strcmp(argv[1], "save") == 0) || (strcmp(argv[1], "load") == 0)) {
     int value = getSelectedIndex();
