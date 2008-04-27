@@ -29,6 +29,9 @@ sudo cp -R files/LaunchAgents pkgroot/Library
 sudo mkdir -p "pkgroot/$basedir/server"
 sudo cp src/server/build/Release/KeyRemap4MacBook_server "pkgroot/$basedir/server"
 
+sudo mkdir -p "pkgroot/$basedir/app"
+sudo cp -R "src/statusbar/build/Release/KeyRemap4MacBook_statusbar.app" "pkgroot/$basedir/app"
+
 sudo mkdir -p "pkgroot/$basedir/bin"
 sudo cp src/sysctl_confd/build/Release/KeyRemap4MacBook_sysctl_confd "pkgroot/$basedir/bin"
 sudo cp src/sysctl_ctl/build/Release/KeyRemap4MacBook_sysctl_ctl "pkgroot/$basedir/bin"
@@ -46,6 +49,7 @@ sudo chmod 4755 pkgroot/$basedir/bin/KeyRemap4MacBook_sysctl_set
 sudo chmod 4755 pkgroot/$basedir/server/KeyRemap4MacBook_server
 sudo chmod 755 pkgroot/$basedir/bin/KeyRemap4MacBook_sysctl_confd
 sudo chmod 755 pkgroot/$basedir/bin/KeyRemap4MacBook_sysctl_ctl
+sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook_statusbar.app/Contents/MacOS/KeyRemap4MacBook_statusbar
 sudo chown -R root:wheel pkgroot
 
 sudo chmod 1775 pkgroot/Library
