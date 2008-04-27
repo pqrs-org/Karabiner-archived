@@ -40,6 +40,12 @@ NSMutableDictionary *cache_name = nil;
   return cache_count;
 }
 
++ (int) isStatusbarEnable
+{
+  NSString *result = [ConfigList getExecResult:[NSArray arrayWithObjects:@"statusbar", nil]];
+  return [result intValue];
+}
+
 + (int) getSelectedIndex
 {
   NSString *result = [ConfigList getExecResult:[NSArray arrayWithObjects:@"current", nil]];

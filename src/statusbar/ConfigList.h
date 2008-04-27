@@ -4,6 +4,7 @@
 @interface ConfigList : NSObject
 
 + (void) refresh;
++ (int) isStatusbarEnable;
 + (int) getSelectedIndex;
 + (int) getSize;
 + (NSString *) getName:(int)index;
