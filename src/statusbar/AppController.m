@@ -43,20 +43,18 @@
 - (void) applicationDidFinishLaunching:(NSNotification *)notification
 {
   if (! [ConfigList isStatusbarEnable]) {
-    [[NSApplication sharedApplication] terminate:self];
+    NSStatusBar *statusBar = [NSStatusBar systemStatusBar];
+
+    _statusItem = [statusBar statusItemWithLength:24];
+    [_statusItem retain];
+
+    [_statusItem setTitle:@""];
+    [_statusItem setImage:[NSImage imageNamed:@"icon.statusbar.0"]];
+    [_statusItem setAlternateImage:[NSImage imageNamed:@"icon.statusbar.1"]];
+    [_statusItem setHighlightMode:YES];
+
+    [_statusItem setMenu:_statusMenu];
   }
-
-  NSStatusBar *statusBar = [NSStatusBar systemStatusBar];
-
-  _statusItem = [statusBar statusItemWithLength:24];
-  [_statusItem retain];
-
-  [_statusItem setTitle:@""];
-  [_statusItem setImage:[NSImage imageNamed:@"icon.statusbar.0"]];
-  [_statusItem setAlternateImage:[NSImage imageNamed:@"icon.statusbar.1"]];
-  [_statusItem setHighlightMode:YES];
-
-  [_statusItem setMenu:_statusMenu];
 }
 
 - (IBAction) openPreferencePane:(id)sender
