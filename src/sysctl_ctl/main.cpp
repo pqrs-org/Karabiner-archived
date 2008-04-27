@@ -293,6 +293,27 @@ namespace {
     }
     return value;
   }
+
+  // ----------------------------------------
+  bool
+  setStatusbarEnable(int enable)
+  {
+    CFNumberRef val = CFNumberCreate(NULL, kCFNumberIntType, &enable);
+    CFPreferencesSetAppValue(CFSTR("isStatusbarEnable"), val, applicationID);
+    return true;
+  }
+
+  int
+  isStatusbarEnable(void)
+  {
+    Boolean isOK;
+    CFIndex value = CFPreferencesGetAppIntegerValue(CFSTR("isStatusbarEnable"), applicationID, &isOK);
+    if (! isOK) {
+      value = 1;
+      setStatusbarEnable(value);
+    }
+    return value;
+  }
 }
 
 
@@ -300,7 +321,7 @@ int
 main(int argc, char **argv)
 {
   if (argc == 1) {
-    fprintf(stderr, "Usage: %s (save|load|add|delete|rename|getname|select|count|current) [params]\n", argv[0]);
+    fprintf(stderr, "Usage: %s (save|load|add|delete|rename|getname|select|count|current|statusbar|toggle_statusbar) [params]\n", argv[0]);
     return 1;
   }
 
@@ -341,6 +362,14 @@ main(int argc, char **argv)
   } else if (strcmp(argv[1], "current") == 0) {
     printf("%d\n", getSelectedIndex());
     return 0;
+
+  } else if (strcmp(argv[1], "statusbar") == 0) {
+    printf("%d\n", isStatusbarEnable());
+    return 0;
+
+  } else if (strcmp(argv[1], "toggle_statusbar") == 0) {
+    int value = isStatusbarEnable();
+    isSuccess = setStatusbarEnable(! value);
 
   } else if (strcmp(argv[1], "getname") == 0) {
     if (argc < 3) {
