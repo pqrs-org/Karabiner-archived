@@ -26,12 +26,19 @@
 			<string>NSObject</string>
 		</dict>
 		<dict>
+			<key>ACTIONS</key>
+			<dict>
+				<key>toggleStatusBar</key>
+				<string>id</string>
+			</dict>
 			<key>CLASS</key>
 			<string>KeyRemap4MacBookPref</string>
 			<key>LANGUAGE</key>
 			<string>ObjC</string>
 			<key>OUTLETS</key>
 			<dict>
+				<key>_checkbox_statusbar</key>
+				<string>id</string>
 				<key>_versionText</key>
 				<string>id</string>
 			</dict>

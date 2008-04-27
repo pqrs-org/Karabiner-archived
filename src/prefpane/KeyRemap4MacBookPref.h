@@ -7,8 +7,10 @@
 @interface KeyRemap4MacBookPref : NSPreferencePane
 {
   IBOutlet id _versionText;
+  IBOutlet id _checkbox_statusbar;
 }
 
+- (IBAction) toggleStatusBar:(id)sender;
 - (void) mainViewDidLoad;
 
 @end
