@@ -6,6 +6,7 @@ build:
 	$(MAKE) -C src/kext
 	$(MAKE) -C src/server
 	$(MAKE) -C src/prefpane
+	$(MAKE) -C src/statusbar
 	$(MAKE) -C src/sysctl_confd
 	$(MAKE) -C src/sysctl_ctl
 	$(MAKE) -C src/sysctl_reset
@@ -17,6 +18,7 @@ clean:
 	$(MAKE) -C src/kext clean
 	$(MAKE) -C src/server clean
 	$(MAKE) -C src/prefpane clean
+	$(MAKE) -C src/statusbar clean
 	$(MAKE) -C src/sysctl_confd clean
 	$(MAKE) -C src/sysctl_ctl clean
 	$(MAKE) -C src/sysctl_reset clean
