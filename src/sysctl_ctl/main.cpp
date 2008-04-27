@@ -300,7 +300,7 @@ int
 main(int argc, char **argv)
 {
   if (argc == 1) {
-    fprintf(stderr, "Usage: %s (save|load|add|delete|rename|getname|select|count) [params]\n", argv[0]);
+    fprintf(stderr, "Usage: %s (save|load|add|delete|rename|getname|select|count|current) [params]\n", argv[0]);
     return 1;
   }
 
@@ -336,6 +336,10 @@ main(int argc, char **argv)
 
   } else if (strcmp(argv[1], "count") == 0) {
     printf("%d\n", getConfigCount());
+    return 0;
+
+  } else if (strcmp(argv[1], "current") == 0) {
+    printf("%d\n", getSelectedIndex());
     return 0;
 
   } else if (strcmp(argv[1], "getname") == 0) {
