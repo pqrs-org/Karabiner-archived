@@ -61,7 +61,7 @@ main(int argc, char **argv)
     set(line, atoi(p + 1));
   }
 
-  if (argc == 2 && strcmp(argv[1]) == "terminate") {
+  if (argc == 2 && strcmp(argv[1], "terminate") == 0) {
     set("initialized", 0);
   }
 
