@@ -377,6 +377,15 @@
             </item>
           </list>
         </item>
+        <item>
+          <name>Remap Comma(,) Key</name>
+          <list>
+            <item>
+              <name>Comma to Shift+Comma</name>
+              <sysctl>remap.keypadcomma2shiftComma</sysctl>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
 
@@ -577,6 +586,10 @@
         <item>
           <name>Tab to Expose All</name>
           <sysctl>remap.tab2exposeALL</sysctl>
+        </item>
+        <item>
+          <name>Command+Tab to Option+Tab</name>
+          <sysctl>remap.commandTab2optionTab</sysctl>
         </item>
       </list>
     </item>

@@ -46,15 +46,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
-  remap_clear2tab(const RemapParams &params)
-  {
-    if (! config.remap_clear2tab) return;
-
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_CLEAR, KeyCode::TAB);
-  }
-
-  // ----------------------------------------
-  void
   remap_commandL2controlL(const RemapParams &params)
   {
     if (! config.remap_commandL2controlL) return;
@@ -505,6 +496,25 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
+  remap_clear2tab(const RemapParams &params)
+  {
+    if (! config.remap_clear2tab) return;
+
+    RemapUtil::keyToKey(params, KeyCode::KEYPAD_CLEAR, KeyCode::TAB);
+  }
+
+  void
+  remap_keypadcomma2shiftComma(const RemapParams &params)
+  {
+    if (! config.remap_keypadcomma2shiftComma) return;
+
+    if (params.ex_origKey != KeyCode::KEYPAD_COMMA) return;
+
+    allFlagStatus.shiftL.temporary_increase();
+  }
+
+  // ----------------------------------------
+  void
   remap_optionL2commandL(const RemapParams &params)
   {
     if (! config.remap_optionL2commandL) return;
@@ -826,6 +836,24 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_tab2exposeALL) return;
 
     RemapUtil::keyToKey(params, KeyCode::TAB, KeyCode::EXPOSE_ALL);
+  }
+
+  void
+  remap_commandTab2optionTab(const RemapParams &params)
+  {
+    if (! config.remap_commandTab2optionTab) return;
+
+    if (params.ex_origKey != KeyCode::TAB) return;
+
+    if (allFlagStatus.commandL.isHeldDown() || allFlagStatus.commandR.isHeldDown()) {
+      allFlagStatus.optionL.temporary_increase();
+
+      if (allFlagStatus.commandL.isHeldDown()) {
+        allFlagStatus.commandL.temporary_decrease();
+      } else {
+        allFlagStatus.commandR.temporary_decrease();
+      }
+    }
   }
 
   // ----------------------------------------
@@ -1975,8 +2003,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   remap_backslash2delete(params);
 
-  remap_clear2tab(params);
-
   remap_controlL2commandL(params);
   remap_controlL2fn(params);
   remap_controlL2optionL(params);
@@ -2034,6 +2060,9 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_f2_to_f15(params);
   remap_f16_to_tab(params);
 
+  remap_clear2tab(params);
+  remap_keypadcomma2shiftComma(params);
+
   remap_optionL2commandL(params);
   remap_optionL2shiftL(params);
 
@@ -2076,6 +2105,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_shiftR2uparrow(params);
 
   remap_tab2exposeALL(params);
+  remap_commandTab2optionTab(params);
 
   // ----------------------------------------
   remap_app_vm_commandspace2optionbackquote(params);
