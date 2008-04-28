@@ -7,6 +7,7 @@
 namespace {
   void sigfunc(int param) {
     system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_reset");
+    system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set initialized 0");
     exit(0);
   }
 }

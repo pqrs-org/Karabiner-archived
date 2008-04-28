@@ -61,6 +61,5 @@ main()
     set(line, atoi(p + 1));
   }
 
-  set("initialized", 0);
   return 0;
 }
