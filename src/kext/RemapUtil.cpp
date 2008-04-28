@@ -806,6 +806,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     isKana = ! isKana;
   }
 
+  void
+  FireFunc::firefunc_jis_eisuu_escape(const RemapParams &params) {
+    unsigned int flags = allFlagStatus.makeFlags(params);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, 0, KeyCode::JIS_EISUU, CharCode::JIS_EISUU);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, 0, KeyCode::JIS_EISUU, CharCode::JIS_EISUU);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, flags, KeyCode::ESCAPE, CharCode::ESCAPE);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, flags, KeyCode::ESCAPE, CharCode::ESCAPE);
+  }
+
   // ----------------------------------------
   namespace {
     bool

@@ -1934,6 +1934,21 @@ namespace org_pqrs_KeyRemap4MacBook {
     dpm.remap(params, KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, FireFunc::firefunc_jis_eisuu_x2);
   }
 
+  void
+  remap_jis_app_term_eisuu2eisuu_escape(const RemapParams &params)
+  {
+    if (! config.remap_jis_app_term_eisuu2eisuu_escap) return;
+
+    if (! (params.activeApplicationInfo)->is_terminal && ! (params.activeApplicationInfo)->is_x11) return;
+
+    if (params.ex_origKey == KeyCode::JIS_EISUU) {
+      if (*(params.eventType) == KeyEvent::DOWN) {
+        FireFunc::firefunc_jis_eisuu_escape(params);
+      }
+      *(params.ex_dropKey) = true;
+    }
+  }
+
   // ------------------------------------------------------------
   void
   remap_eject2forwarddelete(const RemapConsumerParams &params)
@@ -2170,6 +2185,8 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   remap_jis_underscore2backslash(params);
   remap_jis_yen2backslash(params);
+
+  remap_jis_app_term_eisuu2eisuu_escape(params);
 
   // ------------------------------------------------------------
   // *** Note: we need to call remap_drop_funcshift after tab2f9, pc_application2f11, ... ***
