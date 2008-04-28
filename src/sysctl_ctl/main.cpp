@@ -397,7 +397,6 @@ main(int argc, char **argv)
     }
     if (strcmp(argv[1], "load") == 0) {
       system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_reset");
-      system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set initialized 1");
       isSuccess = loadFromFile(targetFiles, identify);
     }
   }
