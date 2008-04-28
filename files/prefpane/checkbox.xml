@@ -1151,6 +1151,20 @@
             </item>
           </list>
         </item>
+        <item>
+          <name>Remapping for Applications</name>
+          <list>
+            <item>
+              <name>Enable at only Terminal, X11</name>
+              <list>
+                <item>
+                  <name>Remap EISUU to EISUU &amp; Escape</name>
+                  <sysctl>remap.jis_app_term_eisuu2eisuu_escape</sysctl>
+                </item>
+              </list>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
   </list>
