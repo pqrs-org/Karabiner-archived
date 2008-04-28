@@ -9,7 +9,7 @@
   [ConfigList select:idx];
 }
 
-- (void) menuWillOpen:(NSMenu *)menu
+- (void) menuNeedsUpdate:(NSMenu *)menu
 {
   // --------------------
   // clear
