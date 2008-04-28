@@ -39,7 +39,7 @@ namespace {
 
 
 int
-main()
+main(int argc, char **argv)
 {
   if (! verifyUser()) {
     fprintf(stderr, "Permission denied\n");
@@ -59,6 +59,10 @@ main()
     *p = '\0';
 
     set(line, atoi(p + 1));
+  }
+
+  if (argc == 2 && strcmp(argv[1]) == "terminate") {
+    set("initialized", 0);
   }
 
   return 0;
