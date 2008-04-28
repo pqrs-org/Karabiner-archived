@@ -20,6 +20,8 @@ startup="/Library/org.pqrs/KeyRemap4MacBook/scripts/startup.sh"
 # uninstall
 rm -rf /Library/StartupItems/KeyRemap4MacBook
 rm -rf /Applications/KeyRemap4MacBook
+rm -rf /Library/org.pqrs/KeyRemap4MacBook
+
 rm -f /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.*
 rm -f /Library/LaunchDaemons/org.pqrs.KeyRemap4MacBook.*
 

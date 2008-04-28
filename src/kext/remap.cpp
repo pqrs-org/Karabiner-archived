@@ -1937,7 +1937,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   remap_jis_app_term_eisuu2eisuu_escape(const RemapParams &params)
   {
-    if (! config.remap_jis_app_term_eisuu2eisuu_escap) return;
+    if (! config.remap_jis_app_term_eisuu2eisuu_escape) return;
 
     if (! (params.activeApplicationInfo)->is_terminal && ! (params.activeApplicationInfo)->is_x11) return;
 
