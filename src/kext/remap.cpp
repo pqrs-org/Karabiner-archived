@@ -1939,7 +1939,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_jis_app_vi_eisuu2eisuu_escape) return;
 
-    if (! (params.activeApplicationInfo)->is_terminal && ! (params.activeApplicationInfo)->is_x11) return;
+    if (! (params.activeApplicationInfo)->is_vi) return;
 
     if (params.ex_origKey == KeyCode::JIS_EISUU) {
       if (*(params.eventType) == KeyEvent::DOWN) {
