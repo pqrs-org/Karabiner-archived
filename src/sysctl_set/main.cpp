@@ -45,6 +45,7 @@ main(int argc, char **argv)
 
   if (error) {
     perror("sysctl");
+    return 1;
   }
 
   fprintf(stderr, "%s -> %d\n", name, value);
