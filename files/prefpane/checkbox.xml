@@ -1155,11 +1155,11 @@
           <name>Remapping for Applications</name>
           <list>
             <item>
-              <name>Enable at only Terminal, X11</name>
+              <name>Enable at only Vim</name>
               <list>
                 <item>
                   <name>Remap EISUU to EISUU &amp; Escape</name>
-                  <sysctl>remap.jis_app_term_eisuu2eisuu_escape</sysctl>
+                  <sysctl>remap.jis_app_vi_eisuu2eisuu_escape</sysctl>
                 </item>
               </list>
             </item>
