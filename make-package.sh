@@ -23,6 +23,8 @@ sudo cp -R files/extra "pkgroot/$basedir"
 sudo cp -R files/prefpane "pkgroot/$basedir"
 sudo cp -R files/scripts "pkgroot/$basedir"
 sudo cp -R files/share "pkgroot/$basedir"
+
+sudo mkdir -p "pkgroot/Library"
 sudo cp -R files/LaunchDaemons pkgroot/Library
 sudo cp -R files/LaunchAgents pkgroot/Library
 
