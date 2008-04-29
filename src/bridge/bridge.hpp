@@ -21,6 +21,7 @@ namespace KeyRemap4MacBook_bridge {
 
     struct Reply {
       bool is_emacs; // Carbon Emacs, ...
+      bool is_vi; // Vim, ...
       bool is_terminal; // Terminal.app, iTerm.app, ...
       bool is_virtualmachine; // VMware, Parallels, ...
       bool is_remotedesktopconnection; // Microsoft Remote Desktop Connection
@@ -29,6 +30,7 @@ namespace KeyRemap4MacBook_bridge {
 
       void reset(void) {
         is_emacs = false;
+        is_vi = false;
         is_terminal = false;
         is_virtualmachine = false;
         is_remotedesktopconnection = false;

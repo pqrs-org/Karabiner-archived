@@ -201,6 +201,10 @@ KeyRemap4MacBook_server::Server::do_ActiveApplicationInfo(KeyRemap4MacBook_bridg
       strcmp(applicationName, "org.gnu.AquamacsEmacs") == 0) {
     reply->is_emacs = true;
   }
+  const char *org_vim = "org.vim.";
+  if (strncmp(applicationName, org_vim, strlen(org_vim)) == 0) {
+    reply->is_vi = true;
+  }
   if (strcmp(applicationName, "com.apple.Terminal") == 0 ||
       strcmp(applicationName, "iTerm") == 0) {
     reply->is_terminal = true;
