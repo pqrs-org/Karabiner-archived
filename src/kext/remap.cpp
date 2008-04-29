@@ -44,6 +44,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::toDelete(params);
   }
 
+  void
+  remap_backslash2enter(const RemapParams &params)
+  {
+    if (! config.remap_backslash2enter) return;
+
+    RemapUtil::keyToKey(params, KeyCode::BACKSLASH, RemapUtil::getEnterKeyCode(params));
+  }
+
   // ----------------------------------------
   void
   remap_commandL2controlL(const RemapParams &params)
@@ -467,6 +475,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_forwarddelete2delete) return;
 
     RemapUtil::keyToKey(params, KeyCode::FORWARD_DELETE, KeyCode::DELETE);
+    RemapUtil::toDelete(params);
   }
 
   // ----------------------------------------
@@ -2017,6 +2026,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_backquote2escape_withoutmodifiers(params);
 
   remap_backslash2delete(params);
+  remap_backslash2enter(params);
 
   remap_controlL2commandL(params);
   remap_controlL2fn(params);

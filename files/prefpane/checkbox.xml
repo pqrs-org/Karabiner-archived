@@ -72,6 +72,10 @@
           <name>Backslash(\) to Delete</name>
           <sysctl>remap.backslash2delete</sysctl>
         </item>
+        <item>
+          <name>Backslash(\) to Enter</name>
+          <sysctl>remap.backslash2enter</sysctl>
+        </item>
       </list>
     </item>
 
