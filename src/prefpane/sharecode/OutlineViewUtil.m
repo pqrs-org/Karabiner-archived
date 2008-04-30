@@ -2,7 +2,7 @@
 
 #import "OutlineViewUtil.h"
 
-@implementation org_pqrs_OutlineViewUtil
+@implementation BUNDLEPREFIX_OutlineViewUtil
 
 + (void) intelligentExpand:(NSOutlineView *)outlineView delegater:(id)delegater
 {

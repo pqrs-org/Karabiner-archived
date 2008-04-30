@@ -1,16 +1,14 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
-#import "Common.h"
-#import "SysctlWrapper.h"
-#import "defs.h"
+#import "sharecode.h"
 
-@implementation org_pqrs_Common
+@implementation BUNDLEPREFIX_Common
 
 + (void) setSysctlInt:(NSString *)base name:(NSString *)name value:(NSNumber *)value sysctl_set:(NSString *)sysctl_set sysctl_ctl:(NSString *)sysctl_ctl
 {
   NSString *entry = [NSString stringWithFormat:@"%@.%@", base, name];
 
-  NSNumber *old = [SysctlWrapper getInt:entry];
+  NSNumber *old = [BUNDLEPREFIX_SysctlWrapper getInt:entry];
   if (old == nil) return;
   if ([value isEqualToNumber:old]) return;
 
