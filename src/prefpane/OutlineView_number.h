@@ -2,11 +2,9 @@
 #import <Cocoa/Cocoa.h>
 #import "XMLTreeWrapper.h"
 
-@interface OutlineView_number : NSObject
+@interface org_pqrs_OutlineView_number : NSObject
 {
-  XMLTreeWrapper *_xmlTreeWrapper;
-
-  IBOutlet id _outlineView;
+  IBOutlet id _outlineView_number;
 }
 
 @end

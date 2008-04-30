@@ -2,7 +2,7 @@
 
 #import "XMLTreeWrapper.h"
 
-@implementation XMLTreeWrapper
+@implementation org_pqrs_XMLTreeWrapper
 
 - (id) init
 {

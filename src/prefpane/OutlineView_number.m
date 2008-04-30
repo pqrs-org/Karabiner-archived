@@ -3,8 +3,13 @@
 #import "OutlineView_number.h"
 #import "SysctlWrapper.h"
 #import "Common.h"
+#import "defs.h"
 
-@implementation OutlineView_number
+@implementation org_pqrs_OutlineView_number
+
+static XMLTreeWrapper *_xmlTreeWrapper;
+static NSString *sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set";
+static NSString *sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_ctl";
 
 - (id)init
 {
@@ -67,7 +72,7 @@
   if (sysctl) {
     NSString *name = [sysctl stringValue];
     NSNumber *new = [[[NSNumber alloc] initWithInt:[object intValue]] autorelease];
-    [Common setSysctlInt:name value:new];
+    [Common setSysctlInt:@"keyremap4macbook" name:name value:new sysctl_set:sysctl_set sysctl_ctl:sysctl_ctl];
   }
 }
 

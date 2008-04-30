@@ -2,7 +2,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface XMLTreeWrapper : NSObject
+@interface org_pqrs_XMLTreeWrapper : NSObject
 {
   NSXMLDocument *_XMLDocument;
 }
