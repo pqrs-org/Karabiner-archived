@@ -3,7 +3,7 @@
 #import "KeyRemap4MacBookPref.h"
 #import "sharecode.h"
 
-@implementation org_pqrs_KeyRemap4MacBook_KeyRemap4MacBookPref
+@implementation KeyRemap4MacBookPref
 
 // ----------------------------------------------------------------------
 - (void) drawVersion

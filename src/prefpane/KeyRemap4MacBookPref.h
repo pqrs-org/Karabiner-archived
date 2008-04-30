@@ -2,7 +2,7 @@
 
 #import <PreferencePanes/PreferencePanes.h>
 
-@interface org_pqrs_KeyRemap4MacBook_KeyRemap4MacBookPref : NSPreferencePane
+@interface KeyRemap4MacBookPref : NSPreferencePane
 {
   IBOutlet id _versionText;
   IBOutlet id _checkbox_statusbar;
