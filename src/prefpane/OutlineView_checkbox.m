@@ -4,10 +4,13 @@
 #import "SysctlWrapper.h"
 #import "Common.h"
 #import "OutlineViewUtil.h"
+#import "defs.h"
 
-@implementation OutlineView_checkbox
+@implementation org_pqrs_OutlineView_checkbox
 
 static XMLTreeWrapper *_xmlTreeWrapper;
+static NSString *sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set";
+static NSString *sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_ctl";
 
 - (id)init
 {
@@ -22,7 +25,7 @@ static XMLTreeWrapper *_xmlTreeWrapper;
 
 - (IBAction) intelligentExpand:(id)sender
 {
-  [OutlineViewUtil intelligentExpand:_outlineView_checkbox];
+  [OutlineViewUtil intelligentExpand:_outlineView_checkbox delegater:self];
 }
 
 // ------------------------------------------------------------
@@ -116,7 +119,7 @@ static XMLTreeWrapper *_xmlTreeWrapper;
 
     NSNumber *value = [SysctlWrapper getInt:entry];
     NSNumber *new = [[[NSNumber alloc] initWithBool:![value boolValue]] autorelease];
-    [Common setSysctlInt:name value:new];
+    [Common setSysctlInt:@"keyremap4macbook" name:name value:new sysctl_set:sysctl_set sysctl_ctl:sysctl_ctl];
   }
 }
 

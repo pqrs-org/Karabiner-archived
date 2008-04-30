@@ -1,11 +1,10 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
-#import <Cocoa/Cocoa.h>
 #import "OutlineViewUtil.h"
 
-@implementation OutlineViewUtil
+@implementation org_pqrs_OutlineViewUtil
 
-+ (void) intelligentExpand:(NSOutlineView *)outlineView
++ (void) intelligentExpand:(NSOutlineView *)outlineView delegater:(id)delegater
 {
   for (;;) {
     bool nochange = true;
@@ -15,7 +14,7 @@
       id item = [outlineView itemAtRow:i];
       if (! [outlineView isExpandable:item]) continue;
 
-      if ([self outlineView:outlineView shouldCollapseItem:item]) {
+      if ([delegater outlineView:outlineView shouldCollapseItem:item]) {
         // collapse item
         if (! [outlineView isItemExpanded:item]) continue;
 

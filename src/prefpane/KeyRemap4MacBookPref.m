@@ -2,8 +2,9 @@
 
 #import "KeyRemap4MacBookPref.h"
 #import "SysctlWrapper.h"
+#import "defs.h"
 
-@implementation KeyRemap4MacBookPref
+@implementation org_pqrs_KeyRemap4MacBookPref
 
 // ----------------------------------------------------------------------
 - (void) drawVersion

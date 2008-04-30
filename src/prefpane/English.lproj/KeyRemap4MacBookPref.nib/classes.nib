@@ -5,18 +5,13 @@
 	<key>IBClasses</key>
 	<array>
 		<dict>
-			<key>ACTIONS</key>
-			<dict>
-				<key>intelligentExpand</key>
-				<string>id</string>
-			</dict>
 			<key>CLASS</key>
-			<string>OutlineView_checkbox</string>
+			<string>org_pqrs_OutlineView_number</string>
 			<key>LANGUAGE</key>
 			<string>ObjC</string>
 			<key>OUTLETS</key>
 			<dict>
-				<key>_outlineView</key>
+				<key>_outlineView_number</key>
 				<string>id</string>
 			</dict>
 			<key>SUPERCLASS</key>
@@ -33,22 +28,20 @@
 		<dict>
 			<key>ACTIONS</key>
 			<dict>
-				<key>toggleStatusBar</key>
+				<key>intelligentExpand</key>
 				<string>id</string>
 			</dict>
 			<key>CLASS</key>
-			<string>KeyRemap4MacBookPref</string>
+			<string>org_pqrs_OutlineView_checkbox</string>
 			<key>LANGUAGE</key>
 			<string>ObjC</string>
 			<key>OUTLETS</key>
 			<dict>
-				<key>_checkbox_statusbar</key>
-				<string>id</string>
-				<key>_versionText</key>
+				<key>_outlineView_checkbox</key>
 				<string>id</string>
 			</dict>
 			<key>SUPERCLASS</key>
-			<string>NSPreferencePane</string>
+			<string>NSObject</string>
 		</dict>
 		<dict>
 			<key>CLASS</key>
@@ -70,17 +63,24 @@
 			<string>NSObject</string>
 		</dict>
 		<dict>
+			<key>ACTIONS</key>
+			<dict>
+				<key>toggleStatusBar</key>
+				<string>id</string>
+			</dict>
 			<key>CLASS</key>
-			<string>OutlineView_number</string>
+			<string>org_pqrs_KeyRemap4MacBookPref</string>
 			<key>LANGUAGE</key>
 			<string>ObjC</string>
 			<key>OUTLETS</key>
 			<dict>
-				<key>_outlineView</key>
+				<key>_checkbox_statusbar</key>
+				<string>id</string>
+				<key>_versionText</key>
 				<string>id</string>
 			</dict>
 			<key>SUPERCLASS</key>
-			<string>NSObject</string>
+			<string>NSPreferencePane</string>
 		</dict>
 	</array>
 	<key>IBVersion</key>

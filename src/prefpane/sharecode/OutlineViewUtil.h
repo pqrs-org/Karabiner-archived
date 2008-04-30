@@ -2,8 +2,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface OutlineViewUtil : NSObject
+@interface org_pqrs_OutlineViewUtil : NSObject
 
-+ (void) intelligentExpand:(NSOutlineView *)outlineview;
++ (void) intelligentExpand:(NSOutlineView *)outlineview delegater:(id)delegater;
 
 @end

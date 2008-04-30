@@ -2,7 +2,7 @@
 #import <Cocoa/Cocoa.h>
 #import "XMLTreeWrapper.h"
 
-@interface OutlineView_checkbox : NSObject
+@interface org_pqrs_OutlineView_checkbox : NSObject
 {
   IBOutlet id _outlineView_checkbox;
 }

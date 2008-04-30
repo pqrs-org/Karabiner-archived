@@ -4,7 +4,7 @@
 #import "OutlineView_checkbox.h"
 #import "OutlineView_number.h"
 
-@interface KeyRemap4MacBookPref : NSPreferencePane
+@interface org_pqrs_KeyRemap4MacBookPref : NSPreferencePane
 {
   IBOutlet id _versionText;
   IBOutlet id _checkbox_statusbar;
