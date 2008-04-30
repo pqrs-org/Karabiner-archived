@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3412EA110D94225F0007906B /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 3412EA0F0D94225F0007906B /* Common.h */; };
 		3412EA120D94225F0007906B /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 3412EA100D94225F0007906B /* Common.m */; };
+		346842E30DC87D910094A095 /* OutlineViewUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 346842E10DC87D910094A095 /* OutlineViewUtil.h */; };
+		346842E40DC87D910094A095 /* OutlineViewUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 346842E20DC87D910094A095 /* OutlineViewUtil.m */; };
 		349FDBBF0D545C2200EED33C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 349FDBBE0D545C2200EED33C /* Security.framework */; };
 		34A482980D94ECD7002CF803 /* XMLTreeWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A482960D94ECD7002CF803 /* XMLTreeWrapper.h */; };
 		34A482990D94ECD7002CF803 /* XMLTreeWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A482970D94ECD7002CF803 /* XMLTreeWrapper.m */; };
@@ -36,6 +38,8 @@
 		32DBCFA20370C41700C91783 /* KeyRemap4MacBook_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyRemap4MacBook_Prefix.pch; sourceTree = "<group>"; };
 		3412EA0F0D94225F0007906B /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		3412EA100D94225F0007906B /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
+		346842E10DC87D910094A095 /* OutlineViewUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OutlineViewUtil.h; path = sharecode/OutlineViewUtil.h; sourceTree = "<group>"; };
+		346842E20DC87D910094A095 /* OutlineViewUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OutlineViewUtil.m; path = sharecode/OutlineViewUtil.m; sourceTree = "<group>"; };
 		349FDBBE0D545C2200EED33C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		34A482960D94ECD7002CF803 /* XMLTreeWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLTreeWrapper.h; path = sharecode/XMLTreeWrapper.h; sourceTree = "<group>"; };
 		34A482970D94ECD7002CF803 /* XMLTreeWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLTreeWrapper.m; path = sharecode/XMLTreeWrapper.m; sourceTree = "<group>"; };
@@ -104,6 +108,8 @@
 		08FB77AFFE84173DC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				346842E10DC87D910094A095 /* OutlineViewUtil.h */,
+				346842E20DC87D910094A095 /* OutlineViewUtil.m */,
 				34A482960D94ECD7002CF803 /* XMLTreeWrapper.h */,
 				34A482970D94ECD7002CF803 /* XMLTreeWrapper.m */,
 				34CBFDD50D94CEC00087D9DB /* OutlineView_checkbox.h */,
@@ -168,6 +174,7 @@
 				34CBFDDB0D94CEC00087D9DB /* OutlineView_checkbox.h in Headers */,
 				34CBFDDD0D94CEC00087D9DB /* OutlineView_number.h in Headers */,
 				34A482980D94ECD7002CF803 /* XMLTreeWrapper.h in Headers */,
+				346842E30DC87D910094A095 /* OutlineViewUtil.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +252,7 @@
 				34CBFDDC0D94CEC00087D9DB /* OutlineView_checkbox.m in Sources */,
 				34CBFDDE0D94CEC00087D9DB /* OutlineView_number.m in Sources */,
 				34A482990D94ECD7002CF803 /* XMLTreeWrapper.m in Sources */,
+				346842E40DC87D910094A095 /* OutlineViewUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
