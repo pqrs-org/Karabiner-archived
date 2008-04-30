@@ -1,13 +1,11 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
 #import "OutlineView_number.h"
-#import "SysctlWrapper.h"
-#import "Common.h"
-#import "defs.h"
+#import "sharecode.h"
 
-@implementation org_pqrs_OutlineView_number
+@implementation org_pqrs_KeyRemap4MacBook_OutlineView_number
 
-static XMLTreeWrapper *_xmlTreeWrapper;
+static BUNDLEPREFIX_XMLTreeWrapper *_xmlTreeWrapper;
 static NSString *sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set";
 static NSString *sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_ctl";
 
@@ -15,7 +13,7 @@ static NSString *sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
 {
   self = [super init];
   if (self) {
-    _xmlTreeWrapper = [[XMLTreeWrapper alloc] init];
+    _xmlTreeWrapper = [[BUNDLEPREFIX_XMLTreeWrapper alloc] init];
     if (_xmlTreeWrapper == nil) return nil;
     if (! [_xmlTreeWrapper load:@"/Library/org.pqrs/KeyRemap4MacBook/prefpane/number.xml"]) return nil;
   }
@@ -55,7 +53,7 @@ static NSString *sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
     if (! sysctl) return nil;
 
     NSString *entry = [NSString stringWithFormat:@"keyremap4macbook.%@", [sysctl stringValue]];
-    return [SysctlWrapper getInt:entry];
+    return [BUNDLEPREFIX_SysctlWrapper getInt:entry];
   }
 
   return nil;
@@ -72,7 +70,7 @@ static NSString *sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
   if (sysctl) {
     NSString *name = [sysctl stringValue];
     NSNumber *new = [[[NSNumber alloc] initWithInt:[object intValue]] autorelease];
-    [Common setSysctlInt:@"keyremap4macbook" name:name value:new sysctl_set:sysctl_set sysctl_ctl:sysctl_ctl];
+    [BUNDLEPREFIX_Common setSysctlInt:@"keyremap4macbook" name:name value:new sysctl_set:sysctl_set sysctl_ctl:sysctl_ctl];
   }
 }
 

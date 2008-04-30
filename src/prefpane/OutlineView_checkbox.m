@@ -1,14 +1,11 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
 #import "OutlineView_checkbox.h"
-#import "SysctlWrapper.h"
-#import "Common.h"
-#import "OutlineViewUtil.h"
-#import "defs.h"
+#import "sharecode.h"
 
-@implementation org_pqrs_OutlineView_checkbox
+@implementation org_pqrs_KeyRemap4MacBook_OutlineView_checkbox
 
-static XMLTreeWrapper *_xmlTreeWrapper;
+static BUNDLEPREFIX_XMLTreeWrapper *_xmlTreeWrapper;
 static NSString *sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set";
 static NSString *sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_ctl";
 
@@ -17,7 +14,7 @@ static NSString *sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
   self = [super init];
   if (! self) return self;
 
-  _xmlTreeWrapper = [[XMLTreeWrapper alloc] init];
+  _xmlTreeWrapper = [[BUNDLEPREFIX_XMLTreeWrapper alloc] init];
   if (_xmlTreeWrapper == nil) return nil;
   if (! [_xmlTreeWrapper load:@"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml"]) return nil;
   return self;
@@ -25,7 +22,7 @@ static NSString *sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
 
 - (IBAction) intelligentExpand:(id)sender
 {
-  [OutlineViewUtil intelligentExpand:_outlineView_checkbox delegater:self];
+  [BUNDLEPREFIX_OutlineViewUtil intelligentExpand:_outlineView_checkbox delegater:self];
 }
 
 // ------------------------------------------------------------
@@ -58,7 +55,7 @@ static NSString *sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
     NSXMLNode *sysctl = [_xmlTreeWrapper getNode:n xpath:@"sysctl"];
     if (sysctl) {
       NSString *entry = [NSString stringWithFormat:@"keyremap4macbook.%@", [sysctl stringValue]];
-      NSNumber *value = [SysctlWrapper getInt:entry];
+      NSNumber *value = [BUNDLEPREFIX_SysctlWrapper getInt:entry];
       if ([value boolValue]) return TRUE;
     }
   }
@@ -89,7 +86,7 @@ static NSString *sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
   } else {
     [cell setImagePosition:NSImageLeft];
     NSString *entry = [NSString stringWithFormat:@"keyremap4macbook.%@", [sysctl stringValue]];
-    return [SysctlWrapper getInt:entry];
+    return [BUNDLEPREFIX_SysctlWrapper getInt:entry];
   }
 
   return nil;
@@ -117,9 +114,9 @@ static NSString *sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
     NSString *name = [sysctl stringValue];
     NSString *entry = [NSString stringWithFormat:@"keyremap4macbook.%@", name];
 
-    NSNumber *value = [SysctlWrapper getInt:entry];
+    NSNumber *value = [BUNDLEPREFIX_SysctlWrapper getInt:entry];
     NSNumber *new = [[[NSNumber alloc] initWithBool:![value boolValue]] autorelease];
-    [Common setSysctlInt:@"keyremap4macbook" name:name value:new sysctl_set:sysctl_set sysctl_ctl:sysctl_ctl];
+    [BUNDLEPREFIX_Common setSysctlInt:@"keyremap4macbook" name:name value:new sysctl_set:sysctl_set sysctl_ctl:sysctl_ctl];
   }
 }
 

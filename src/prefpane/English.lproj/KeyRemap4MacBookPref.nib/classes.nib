@@ -5,8 +5,46 @@
 	<key>IBClasses</key>
 	<array>
 		<dict>
+			<key>ACTIONS</key>
+			<dict>
+				<key>intelligentExpand</key>
+				<string>id</string>
+			</dict>
 			<key>CLASS</key>
-			<string>org_pqrs_OutlineView_number</string>
+			<string>org_pqrs_KeyRemap4MacBook_OutlineView_checkbox</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>OUTLETS</key>
+			<dict>
+				<key>_outlineView_checkbox</key>
+				<string>id</string>
+			</dict>
+			<key>SUPERCLASS</key>
+			<string>NSObject</string>
+		</dict>
+		<dict>
+			<key>ACTIONS</key>
+			<dict>
+				<key>toggleStatusBar</key>
+				<string>id</string>
+			</dict>
+			<key>CLASS</key>
+			<string>org_pqrs_KeyRemap4MacBook_KeyRemap4MacBookPref</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>OUTLETS</key>
+			<dict>
+				<key>_checkbox_statusbar</key>
+				<string>id</string>
+				<key>_versionText</key>
+				<string>id</string>
+			</dict>
+			<key>SUPERCLASS</key>
+			<string>NSPreferencePane</string>
+		</dict>
+		<dict>
+			<key>CLASS</key>
+			<string>org_pqrs_KeyRemap4MacBook_OutlineView_number</string>
 			<key>LANGUAGE</key>
 			<string>ObjC</string>
 			<key>OUTLETS</key>
@@ -22,24 +60,6 @@
 			<string>FirstResponder</string>
 			<key>LANGUAGE</key>
 			<string>ObjC</string>
-			<key>SUPERCLASS</key>
-			<string>NSObject</string>
-		</dict>
-		<dict>
-			<key>ACTIONS</key>
-			<dict>
-				<key>intelligentExpand</key>
-				<string>id</string>
-			</dict>
-			<key>CLASS</key>
-			<string>org_pqrs_OutlineView_checkbox</string>
-			<key>LANGUAGE</key>
-			<string>ObjC</string>
-			<key>OUTLETS</key>
-			<dict>
-				<key>_outlineView_checkbox</key>
-				<string>id</string>
-			</dict>
 			<key>SUPERCLASS</key>
 			<string>NSObject</string>
 		</dict>
@@ -61,26 +81,6 @@
 			</dict>
 			<key>SUPERCLASS</key>
 			<string>NSObject</string>
-		</dict>
-		<dict>
-			<key>ACTIONS</key>
-			<dict>
-				<key>toggleStatusBar</key>
-				<string>id</string>
-			</dict>
-			<key>CLASS</key>
-			<string>org_pqrs_KeyRemap4MacBookPref</string>
-			<key>LANGUAGE</key>
-			<string>ObjC</string>
-			<key>OUTLETS</key>
-			<dict>
-				<key>_checkbox_statusbar</key>
-				<string>id</string>
-				<key>_versionText</key>
-				<string>id</string>
-			</dict>
-			<key>SUPERCLASS</key>
-			<string>NSPreferencePane</string>
 		</dict>
 	</array>
 	<key>IBVersion</key>

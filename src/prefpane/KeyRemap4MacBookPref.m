@@ -1,15 +1,14 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
 #import "KeyRemap4MacBookPref.h"
-#import "SysctlWrapper.h"
-#import "defs.h"
+#import "sharecode.h"
 
-@implementation org_pqrs_KeyRemap4MacBookPref
+@implementation org_pqrs_KeyRemap4MacBook_KeyRemap4MacBookPref
 
 // ----------------------------------------------------------------------
 - (void) drawVersion
 {
-  NSString *version = [SysctlWrapper getString:@"keyremap4macbook.version"];
+  NSString *version = [BUNDLEPREFIX_SysctlWrapper getString:@"keyremap4macbook.version"];
   if (! version) {
     version = @"-.-.-";
   }
