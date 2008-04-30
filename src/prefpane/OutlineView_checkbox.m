@@ -6,16 +6,49 @@
 
 @implementation OutlineView_checkbox
 
+static XMLTreeWrapper *_xmlTreeWrapper;
+
 - (id)init
 {
   self = [super init];
-  if (self) {
-    _xmlTreeWrapper = [[XMLTreeWrapper alloc] init];
-    if (_xmlTreeWrapper == nil) return nil;
-    if (! [_xmlTreeWrapper load:@"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml"]) return nil;
-    [_outlineView reloadData];
-  }
+  if (! self) return self;
+
+  _xmlTreeWrapper = [[XMLTreeWrapper alloc] init];
+  if (_xmlTreeWrapper == nil) return nil;
+  if (! [_xmlTreeWrapper load:@"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml"]) return nil;
   return self;
+}
+
+- (IBAction) intelligentExpand:(id)sender
+{
+  for (;;) {
+    bool nochange = true;
+
+    int i = 0;
+    for (i = 0; i < [_outlineView numberOfRows]; ++i) {
+      id item = [_outlineView itemAtRow:i];
+      if (! [_outlineView isExpandable:item]) continue;
+
+      if ([self outlineView:_outlineView shouldCollapseItem:item]) {
+        // collapse item
+        if (! [_outlineView isItemExpanded:item]) continue;
+
+        [_outlineView collapseItem:item];
+        nochange = false;
+        break;
+
+      } else {
+        // expand item
+        if ([_outlineView isItemExpanded:item]) continue;
+
+        [_outlineView expandItem:item];
+        nochange = false;
+        break;
+      }
+    }
+
+    if (nochange) break;
+  }
 }
 
 // ------------------------------------------------------------
@@ -58,17 +91,6 @@
 
 - (id)outlineView:(NSOutlineView*)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
 {
-  // ----------------------------------------
-  // autoexpand
-  if ([outlineView isExpandable:item]) {
-    if (! [outlineView isItemExpanded:item]) {
-      if ([self checkAnyChildrenChecked:item]) {
-        [outlineView expandItem:item];
-      }
-    }
-  }
-
-  // ----------------------------------------
   NSButtonCell *cell = [tableColumn dataCell];
   if (! cell) return nil;
 
