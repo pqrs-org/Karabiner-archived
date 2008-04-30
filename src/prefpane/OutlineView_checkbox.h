@@ -4,7 +4,7 @@
 
 @interface OutlineView_checkbox : NSObject
 {
-  IBOutlet id _outlineView;
+  IBOutlet id _outlineView_checkbox;
 }
 
 - (IBAction) intelligentExpand:(id)sender;

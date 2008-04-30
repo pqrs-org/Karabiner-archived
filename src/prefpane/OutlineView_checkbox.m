@@ -3,6 +3,7 @@
 #import "OutlineView_checkbox.h"
 #import "SysctlWrapper.h"
 #import "Common.h"
+#import "OutlineViewUtil.h"
 
 @implementation OutlineView_checkbox
 
@@ -21,34 +22,7 @@ static XMLTreeWrapper *_xmlTreeWrapper;
 
 - (IBAction) intelligentExpand:(id)sender
 {
-  for (;;) {
-    bool nochange = true;
-
-    int i = 0;
-    for (i = 0; i < [_outlineView numberOfRows]; ++i) {
-      id item = [_outlineView itemAtRow:i];
-      if (! [_outlineView isExpandable:item]) continue;
-
-      if ([self outlineView:_outlineView shouldCollapseItem:item]) {
-        // collapse item
-        if (! [_outlineView isItemExpanded:item]) continue;
-
-        [_outlineView collapseItem:item];
-        nochange = false;
-        break;
-
-      } else {
-        // expand item
-        if ([_outlineView isItemExpanded:item]) continue;
-
-        [_outlineView expandItem:item];
-        nochange = false;
-        break;
-      }
-    }
-
-    if (nochange) break;
-  }
+  [OutlineViewUtil intelligentExpand:_outlineView_checkbox];
 }
 
 // ------------------------------------------------------------
