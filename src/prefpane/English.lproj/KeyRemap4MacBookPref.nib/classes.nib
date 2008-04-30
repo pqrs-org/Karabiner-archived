@@ -5,6 +5,11 @@
 	<key>IBClasses</key>
 	<array>
 		<dict>
+			<key>ACTIONS</key>
+			<dict>
+				<key>intelligentExpand</key>
+				<string>id</string>
+			</dict>
 			<key>CLASS</key>
 			<string>OutlineView_checkbox</string>
 			<key>LANGUAGE</key>

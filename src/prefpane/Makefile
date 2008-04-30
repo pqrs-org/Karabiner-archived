@@ -12,4 +12,4 @@ clean:
 	rm -f *.xcodeproj/*.pbxuser
 
 install:
-	sudo rsync -a build/Release/KeyRemap4MacBook.prefPane /Library/PreferencePanes/
+	rsync -a build/Release/KeyRemap4MacBook.prefPane $(HOME)/Library/PreferencePanes/
