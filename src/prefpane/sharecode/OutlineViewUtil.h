@@ -4,6 +4,7 @@
 
 @interface BUNDLEPREFIX_OutlineViewUtil : NSObject
 
-+ (void) intelligentExpand:(NSOutlineView *)outlineview delegater:(id)delegater;
++ (void) expandALL:(NSOutlineView *)outlineview;
++ (void) collapseALL:(NSOutlineView *)outlineview delegater:(id)delegater;
 
 @end
