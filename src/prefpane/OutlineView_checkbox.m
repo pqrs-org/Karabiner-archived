@@ -20,9 +20,14 @@ static NSString *sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
   return self;
 }
 
-- (IBAction) intelligentExpand:(id)sender
+- (IBAction) expandALL:(id)sender
 {
-  [BUNDLEPREFIX_OutlineViewUtil intelligentExpand:_outlineView_checkbox delegater:self];
+  [BUNDLEPREFIX_OutlineViewUtil expandALL:_outlineView_checkbox];
+}
+
+- (IBAction) collapseALL:(id)sender
+{
+  [BUNDLEPREFIX_OutlineViewUtil collapseALL:_outlineView_checkbox delegater:self];
 }
 
 // ------------------------------------------------------------

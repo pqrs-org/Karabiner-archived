@@ -4,7 +4,7 @@
 
 @implementation BUNDLEPREFIX_OutlineViewUtil
 
-+ (void) intelligentExpand:(NSOutlineView *)outlineView delegater:(id)delegater
++ (void) expandALL:(NSOutlineView *)outlineView
 {
   for (;;) {
     bool nochange = true;
@@ -13,23 +13,33 @@
     for (i = 0; i < [outlineView numberOfRows]; ++i) {
       id item = [outlineView itemAtRow:i];
       if (! [outlineView isExpandable:item]) continue;
+      if ([outlineView isItemExpanded:item]) continue;
 
-      if ([delegater outlineView:outlineView shouldCollapseItem:item]) {
-        // collapse item
-        if (! [outlineView isItemExpanded:item]) continue;
+      [outlineView expandItem:item expandChildren:TRUE];
+      nochange = false;
+      break;
+    }
 
-        [outlineView collapseItem:item];
-        nochange = false;
-        break;
+    if (nochange) break;
+  }
+}
 
-      } else {
-        // expand item
-        if ([outlineView isItemExpanded:item]) continue;
++ (void) collapseALL:(NSOutlineView *)outlineView delegater:(id)delegater
+{
+  for (;;) {
+    bool nochange = true;
 
-        [outlineView expandItem:item];
-        nochange = false;
-        break;
-      }
+    int i = 0;
+    for (i = 0; i < [outlineView numberOfRows]; ++i) {
+      id item = [outlineView itemAtRow:i];
+      if (! [outlineView isExpandable:item]) continue;
+      if (! [delegater outlineView:outlineView shouldCollapseItem:item]) continue;
+
+      if (! [outlineView isItemExpanded:item]) continue;
+
+      [outlineView collapseItem:item];
+      nochange = false;
+      break;
     }
 
     if (nochange) break;

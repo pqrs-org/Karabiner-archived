@@ -6,6 +6,7 @@
   IBOutlet id _outlineView_checkbox;
 }
 
-- (IBAction) intelligentExpand:(id)sender;
+- (IBAction) expandALL:(id)sender;
+- (IBAction) collapseALL:(id)sender;
 
 @end
