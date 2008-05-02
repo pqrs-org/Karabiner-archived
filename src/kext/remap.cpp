@@ -812,6 +812,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_shiftR2enter(const RemapParams &params)
+  {
+    if (! config.remap_shiftR2enter) return;
+
+    RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_R, RemapUtil::getEnterKeyCode(params));
+  }
+
+  void
   remap_shiftR2escape(const RemapParams &params)
   {
     if (! config.remap_shiftR2escape) return;
@@ -2125,6 +2133,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_shiftR2fn(params);
   remap_shiftR2optionL(params);
   remap_shiftR2shiftR_backslash(params);
+  remap_shiftR2enter(params);
   remap_shiftR2escape(params);
   remap_shiftR2space(params);
   remap_shiftR2uparrow(params);

@@ -542,6 +542,10 @@
           <sysctl>remap.shiftR2shiftR_backslash</sysctl>
         </item>
         <item>
+          <name>Shift_R to Enter</name>
+          <sysctl>remap.shiftR2enter</sysctl>
+        </item>
+        <item>
           <name>Shift_R to Escape</name>
           <sysctl>remap.shiftR2escape</sysctl>
         </item>
