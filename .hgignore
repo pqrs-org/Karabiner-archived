@@ -7,6 +7,6 @@ pkgroot/
 .*\.xcodeproj/.*\.mode1
 .*\.xcodeproj/.*\.mode1v3
 .*\.xcodeproj/.*\.pbxuser
-src/kext/config/output
+src/core/kext/config/output
 util/getActiveApplication/getname
 files/share/reset

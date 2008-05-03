@@ -1275,6 +1275,31 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (config.option_emacsmode_optionD && *(params.key) == KeyCode::D && ! ignore) {
         *(params.key) = KeyCode::FORWARD_DELETE;
       }
+      // Option+< -> Home
+      if (config.option_emacsmode_optionLtGt) {
+        if (! ignore) {
+          if (allFlagStatus.shiftL.isHeldDown() || allFlagStatus.shiftR.isHeldDown()) {
+            bool isremap = false;
+            if (*(params.key) == KeyCode::COMMA) {
+              *(params.key) = KeyCode::HOME;
+              cancel_option = true;
+              isremap = true;
+            }
+            if (*(params.key) == KeyCode::DOT) {
+              *(params.key) = KeyCode::END;
+              cancel_option = true;
+              isremap = true;
+            }
+            if (isremap) {
+              if (allFlagStatus.shiftL.isHeldDown()) {
+                allFlagStatus.shiftL.temporary_decrease();
+              } else {
+                allFlagStatus.shiftR.temporary_decrease();
+              }
+            }
+          }
+        }
+      }
 
       if (cancel_option) {
         if (allFlagStatus.optionL.isHeldDown()) {

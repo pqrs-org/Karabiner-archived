@@ -668,6 +668,10 @@
           <sysctl>option.emacsmode_optionD</sysctl>
         </item>
         <item>
+          <name>Option+&lt; to Home / Option+&gt; to End</name>
+          <sysctl>option.emacsmode_optionLtGt</sysctl>
+        </item>
+        <item>
           <name>[ex] Control+1 to Home / Control+2 to End</name>
           <sysctl>option.emacsmode_ex_control12</sysctl>
         </item>
