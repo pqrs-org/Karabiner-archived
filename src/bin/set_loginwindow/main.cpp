@@ -8,10 +8,8 @@ namespace {
   CFStringRef applicationID = CFSTR("loginwindow");
 
   Boolean
-  set(CFStringRef app)
+  isExist(CFStringRef app, CFArrayRef list)
   {
-    CFArrayRef list = reinterpret_cast<CFArrayRef>(CFPreferencesCopyAppValue(identify, applicationID));
-
     // check already registered.
     for (int i = 0; i < CFArrayGetCount(list); ++i) {
       CFDictionaryRef dict = reinterpret_cast<CFDictionaryRef>(CFArrayGetValueAtIndex(list, i));
@@ -19,9 +17,19 @@ namespace {
       if (CFEqual(path, app)) return TRUE;
     }
 
+    return FALSE;
+  }
+
+  Boolean
+  do_set(CFStringRef app)
+  {
+    CFArrayRef list = reinterpret_cast<CFArrayRef>(CFPreferencesCopyAppValue(identify, applicationID));
+
+    if (isExist(app, list)) return TRUE;
+
     CFMutableArrayRef newlist = CFArrayCreateMutableCopy(NULL, 0, list);
     CFMutableDictionaryRef newdict = CFDictionaryCreateMutable(NULL, 0, NULL, NULL);
-    CFDictionarySetValue(newdict, CFSTR("Hide"), kCFBooleanFalse);
+    CFDictionarySetValue(newdict, CFSTR("Hide"), kCFBooleanTrue);
     CFDictionarySetValue(newdict, CFSTR("Path"), app);
     CFArrayAppendValue(newlist, newdict);
 
@@ -30,7 +38,7 @@ namespace {
   }
 
   Boolean
-  unset(CFStringRef app)
+  do_unset(CFStringRef app)
   {
     CFArrayRef list = reinterpret_cast<CFArrayRef>(CFPreferencesCopyAppValue(identify, applicationID));
     CFMutableArrayRef newlist = CFArrayCreateMutableCopy(NULL, 0, list);
@@ -53,10 +61,17 @@ namespace {
     return CFPreferencesAppSynchronize(applicationID);
   }
 
+  Boolean
+  do_exist(CFStringRef app)
+  {
+    CFArrayRef list = reinterpret_cast<CFArrayRef>(CFPreferencesCopyAppValue(identify, applicationID));
+    return isExist(app, list);
+  }
+
   void
   usage(char *arg0)
   {
-    fprintf(stderr, "Usage: %s (set|unset) application.app\n", arg0);
+    fprintf(stderr, "Usage: %s (set|unset|exist) application.app\n", arg0);
     exit(1);
   }
 }
@@ -70,20 +85,24 @@ main(int argc, char **argv)
 
   CFStringRef app = CFStringCreateWithCString(NULL, argv[2], kCFStringEncodingUTF8);
 
+  Boolean isSuccess = false;
   if (strcmp(argv[1], "set") == 0) {
-    if (set(app)) {
-      fprintf(stderr, "[DONE]");
-    } else {
-      fprintf(stderr, "[ERROR]");
-    }
+    isSuccess = do_set(app);
   } else if (strcmp(argv[1], "unset") == 0) {
-    if (unset(app)) {
-      fprintf(stderr, "[DONE]");
-    } else {
-      fprintf(stderr, "[ERROR]");
-    }
+    isSuccess = do_unset(app);
+  } else if (strcmp(argv[1], "exist") == 0) {
+    isSuccess = do_exist(app);
+    printf("%d\n", isSuccess);
+    return 0;
+
   } else {
     usage(argv[0]);
+  }
+
+  if (isSuccess) {
+    fprintf(stderr, "[DONE] %s %s\n", argv[1], argv[2]);
+  } else {
+    fprintf(stderr, "[ERROR] %s %s\n", argv[1], argv[2]);
   }
 
   return 0;

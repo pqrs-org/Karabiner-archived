@@ -4,9 +4,4 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 startup="/Library/org.pqrs/KeyRemap4MacBook/scripts/startup.sh"
 [ -f "$startup" ] && "$startup" quickstart
 
-# register loginwindow
-set_loginwindow="/Library/org.pqrs/KeyRemap4MacBook/sbin/set_loginwindow"
-[ -f "$set_loginwindow" ] "$set_loginwindow" set /Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook_statusbar.app
-
-
 exit 0
