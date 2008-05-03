@@ -5,6 +5,8 @@
 
 @implementation KeyRemap4MacBookPref
 
+static NSString *sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_ctl";
+
 // ----------------------------------------------------------------------
 - (void) drawVersion
 {
@@ -16,12 +18,12 @@
 }
 
 // ----------------------------------------------------------------------
-- (NSString *) getExecResult:(NSArray *)args
+- (NSString *) getExecResult:(NSString *)path args:(NSArray *)args
 {
   NSTask *task = [[NSTask alloc] init];
   NSPipe *pipe = [NSPipe pipe];
   [task setStandardOutput:pipe];
-  [task setLaunchPath:@"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_ctl"];
+  [task setLaunchPath:path];
   [task setArguments:args];
   [task launch];
   [task waitUntilExit];
@@ -33,7 +35,7 @@
 
 - (void) setStatusBarState
 {
-  NSString *result = [self getExecResult:[NSArray arrayWithObjects:@"statusbar", nil]];
+  NSString *result = [self getExecResult:sysctl_ctl args:[NSArray arrayWithObjects:@"statusbar", nil]];
   if (! result) return;
 
   if ([result intValue] == 1) {
@@ -56,9 +58,22 @@
 
 - (IBAction) toggleStatusBar:(id)sender
 {
-  [self getExecResult:[NSArray arrayWithObjects:@"toggle_statusbar", nil]];
+  [self getExecResult:sysctl_ctl args:[NSArray arrayWithObjects:@"toggle_statusbar", nil]];
   [self setStatusBarState];
   [self startStatusBar];
+}
+
+// ----------------------------------------------------------------------
+- (void) registerLoginWindow
+{
+  NSString *set_loginwindow = @"/Library/org.pqrs/KeyRemap4MacBook/bin/set_loginwindow";
+  NSString *result = [self getExecResult:set_loginwindow args:[NSArray arrayWithObjects:@"exist", nil]];
+  if ([result intValue] == 0) {
+    NSString *app = @"/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook_launchd.app";
+    [[NSWorkspace sharedWorkspace] launchApplication:app];
+
+    [self getExecResult:set_loginwindow args:[NSArray arrayWithObjects:@"set", app, nil]];
+  }
 }
 
 // ----------------------------------------------------------------------
@@ -66,6 +81,7 @@
 {
   [self drawVersion];
   [self setStatusBarState];
+  [self registerLoginWindow];
 }
 
 @end
