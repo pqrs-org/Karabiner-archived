@@ -5,7 +5,7 @@ version=$(cat version)
 packagemaker=/Developer/Applications/Utilities/PackageMaker.app/Contents/MacOS/PackageMaker
 pkgName="KeyRemap4MacBook-${version}.pkg"
 
-echo "char * const config_version = \"$version\";" > src/kext/version.hpp
+echo "char * const config_version = \"$version\";" > src/core/kext/version.hpp
 
 make clean build || exit $?
 
@@ -18,30 +18,33 @@ sudo mkdir -p pkgroot
 
 basedir="/Library/org.pqrs/KeyRemap4MacBook"
 sudo mkdir -p "pkgroot/$basedir/tmp"
-sudo cp -R src/kext/build/Release/KeyRemap4MacBook.kext "pkgroot/$basedir"
-sudo cp -R files/extra "pkgroot/$basedir"
+sudo cp -R src/core/kext/build/Release/KeyRemap4MacBook.kext "pkgroot/$basedir"
 sudo cp -R files/prefpane "pkgroot/$basedir"
 sudo cp -R files/scripts "pkgroot/$basedir"
 sudo cp -R files/share "pkgroot/$basedir"
+
+sudo mkdir -p "pkgroot/$basedir/extra"
+sudo cp -R pkginfo/Resources/preflight "pkgroot/$basedir/extra/uninstall.sh"
 
 sudo mkdir -p "pkgroot/Library"
 sudo cp -R files/LaunchDaemons pkgroot/Library
 sudo cp -R files/LaunchAgents pkgroot/Library
 
 sudo mkdir -p "pkgroot/$basedir/server"
-sudo cp src/server/build/Release/KeyRemap4MacBook_server "pkgroot/$basedir/server"
+sudo cp src/util/server/build/Release/KeyRemap4MacBook_server "pkgroot/$basedir/server"
 
 sudo mkdir -p "pkgroot/$basedir/app"
-sudo cp -R "src/statusbar/build/Release/KeyRemap4MacBook_statusbar.app" "pkgroot/$basedir/app"
+sudo cp -R "src/util/statusbar/build/Release/KeyRemap4MacBook_statusbar.app" "pkgroot/$basedir/app"
+sudo cp -R "src/util/launchd/build/Release/KeyRemap4MacBook_launchd.app" "pkgroot/$basedir/app"
 
 sudo mkdir -p "pkgroot/$basedir/bin"
-sudo cp src/sysctl_confd/build/Release/KeyRemap4MacBook_sysctl_confd "pkgroot/$basedir/bin"
-sudo cp src/sysctl_ctl/build/Release/KeyRemap4MacBook_sysctl_ctl "pkgroot/$basedir/bin"
-sudo cp src/sysctl_reset/build/Release/KeyRemap4MacBook_sysctl_reset "pkgroot/$basedir/bin"
-sudo cp src/sysctl_set/build/Release/KeyRemap4MacBook_sysctl_set "pkgroot/$basedir/bin"
+sudo cp src/bin/sysctl_confd/build/Release/KeyRemap4MacBook_sysctl_confd "pkgroot/$basedir/bin"
+sudo cp src/bin/sysctl_ctl/build/Release/KeyRemap4MacBook_sysctl_ctl "pkgroot/$basedir/bin"
+sudo cp src/bin/sysctl_reset/build/Release/KeyRemap4MacBook_sysctl_reset "pkgroot/$basedir/bin"
+sudo cp src/bin/sysctl_set/build/Release/KeyRemap4MacBook_sysctl_set "pkgroot/$basedir/bin"
 
 sudo mkdir -p "pkgroot/Library/PreferencePanes"
-sudo cp -R "src/prefpane/build/Release/KeyRemap4MacBook.prefPane" "pkgroot/Library/PreferencePanes"
+sudo cp -R "src/util/prefpane/build/Release/KeyRemap4MacBook.prefPane" "pkgroot/Library/PreferencePanes"
 
 sudo find pkgroot -type d -print0 | xargs -0 sudo chmod 755
 sudo find pkgroot -type f -print0 | xargs -0 sudo chmod 644
@@ -52,6 +55,7 @@ sudo chmod 4755 pkgroot/$basedir/server/KeyRemap4MacBook_server
 sudo chmod 755 pkgroot/$basedir/bin/KeyRemap4MacBook_sysctl_confd
 sudo chmod 755 pkgroot/$basedir/bin/KeyRemap4MacBook_sysctl_ctl
 sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook_statusbar.app/Contents/MacOS/KeyRemap4MacBook_statusbar
+sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook_launchd.app/Contents/MacOS/KeyRemap4MacBook_launchd
 sudo chown -R root:wheel pkgroot
 
 sudo chmod 1775 pkgroot/Library
