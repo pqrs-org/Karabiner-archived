@@ -36,6 +36,17 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
+  remap_leftarrow2controlL(const RemapParams &params)
+  {
+    if (! config.remap_leftarrow2controlL) return;
+
+    if (params.ex_origKey == KeyCode::CURSOR_LEFT) {
+      RemapUtil::keyToModifier(params, KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L);
+      allFlagStatus.cursor = false;
+    }
+  }
+
+  void
   remap_backslash2delete(const RemapParams &params)
   {
     if (! config.remap_backslash2delete) return;
@@ -2029,6 +2040,8 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   // ------------------------------------------------------------
   // normal remapping
+  remap_leftarrow2controlL(params);
+
   remap_backquote2commandL(params);
   remap_backquote2escape(params);
   remap_backquote2escape_withoutmodifiers(params);
