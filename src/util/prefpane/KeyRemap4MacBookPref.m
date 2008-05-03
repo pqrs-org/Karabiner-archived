@@ -67,7 +67,7 @@ static NSString *sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
 - (void) registerLoginWindow
 {
   NSString *set_loginwindow = @"/Library/org.pqrs/KeyRemap4MacBook/bin/set_loginwindow";
-  NSString *result = [self getExecResult:set_loginwindow args:[NSArray arrayWithObjects:@"exist", nil]];
+  NSString *result = [self getExecResult:set_loginwindow args:[NSArray arrayWithObjects:@"exist", app, nil]];
   if ([result intValue] == 0) {
     NSString *app = @"/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook_launchd.app";
     [[NSWorkspace sharedWorkspace] launchApplication:app];
