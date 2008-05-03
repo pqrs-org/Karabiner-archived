@@ -42,7 +42,10 @@
 
 - (void) applicationDidFinishLaunching:(NSNotification *)notification
 {
-  if ([ConfigList isStatusbarEnable]) {
+  if (! [ConfigList isStatusbarEnable]) {
+    [NSApp terminate:self];
+
+  } else {
     NSStatusBar *statusBar = [NSStatusBar systemStatusBar];
 
     _statusItem = [statusBar statusItemWithLength:24];

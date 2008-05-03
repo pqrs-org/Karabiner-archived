@@ -43,27 +43,22 @@
   }
 }
 
-- (void) stopStatusBar
+- (void) startStatusBar
 {
-  NSString *label = @"org.pqrs.KeyRemap4MacBook.statusbar";
-  NSString *launchctl = @"/bin/launchctl";
-  {
-    NSArray *args = [NSArray arrayWithObjects:@"stop", label, nil];
-    NSTask *task = [NSTask launchedTaskWithLaunchPath:launchctl arguments:args];
-    [task waitUntilExit];
-  }
-  {
-    NSArray *args = [NSArray arrayWithObjects:@"start", label, nil];
-    NSTask *task = [NSTask launchedTaskWithLaunchPath:launchctl arguments:args];
-    [task waitUntilExit];
-  }
+  NSString *killall = @"/usr/bin/killall";
+  NSArray *args = [NSArray arrayWithObjects:@"KeyRemap4MacBook_statusbar", nil];
+  NSTask *task_killall = [NSTask launchedTaskWithLaunchPath:killall arguments:args];
+  [task_killall waitUntilExit];
+
+  NSString *app = @"/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook_statusbar.app";
+  [[NSWorkspace sharedWorkspace] launchApplication:app];
 }
 
 - (IBAction) toggleStatusBar:(id)sender
 {
   [self getExecResult:[NSArray arrayWithObjects:@"toggle_statusbar", nil]];
   [self setStatusBarState];
-  [self stopStatusBar];
+  [self startStatusBar];
 }
 
 // ----------------------------------------------------------------------

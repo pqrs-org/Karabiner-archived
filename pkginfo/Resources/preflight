@@ -16,6 +16,10 @@ startup="/Applications/KeyRemap4MacBook/scripts/startup.sh"
 startup="/Library/org.pqrs/KeyRemap4MacBook/scripts/startup.sh"
 [ -f "$startup" ] && "$startup" stop
 
+# unregister loginwindow
+set_loginwindow="/Library/org.pqrs/KeyRemap4MacBook/sbin/set_loginwindow"
+[ -f "$set_loginwindow" ] "$set_loginwindow" unset /Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook_statusbar.app
+
 # ----------------------------------------
 # uninstall
 rm -rf /Library/StartupItems/KeyRemap4MacBook

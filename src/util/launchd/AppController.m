@@ -18,8 +18,8 @@ NSTask *task_statusbar = nil;
   NSString *server = @"/Library/org.pqrs/KeyRemap4MacBook/server/KeyRemap4MacBook_server";
   task_server = [NSTask launchedTaskWithLaunchPath:server arguments:args];
 
-  NSString *statusbar = @"/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook_statusbar.app/Contents/MacOS/KeyRemap4MacBook_statusbar";
-  task_statusbar = [NSTask launchedTaskWithLaunchPath:statusbar arguments:args];
+  NSString *statusbar = @"/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook_statusbar.app";
+  [[NSWorkspace sharedWorkspace] launchApplication:statusbar];
 }
 
 - (void) applicationWillTerminate:(NSNotification *)aNotification
@@ -31,9 +31,6 @@ NSTask *task_statusbar = nil;
   }
   if (task_server) {
     [task_server terminate];
-  }
-  if (task_statusbar) {
-    [task_statusbar terminate];
   }
 }
 
