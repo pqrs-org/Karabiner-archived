@@ -48,6 +48,16 @@
     </item>
 
     <item>
+      <name>Remap Arrow(Up/Down/Left/Right) Key</name>
+      <list>
+        <item>
+          <name>Left-Arrow to Control_L</name>
+          <sysctl>remap.leftarrow2controlL</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>Remap Backquote(`) Key</name>
       <list>
         <item>
