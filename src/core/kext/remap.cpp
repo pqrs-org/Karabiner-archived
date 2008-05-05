@@ -639,6 +639,22 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::modifierToKey(params, ModifierFlag::OPTION_R, KeyCode::SPACE);
   }
 
+  void
+  remap_optionR2allF1(const RemapParams &params)
+  {
+    if (! config.remap_optionR2allF1) return;
+
+    if (! RemapUtil::isKey(params, KeyCode::OPTION_R)) return;
+
+    KeyEvent::KeyEvent eventType = KeyEvent::DOWN;
+    if (! allFlagStatus.optionR.isHeldDown()) {
+      eventType = KeyEvent::UP;
+    }
+
+    RemapUtil::fireKeyWithAllModifiers(params, eventType, KeyCode::F1, CharCode::F1);
+    *(params.ex_dropKey) = true;
+  }
+
   // ----------------------------------------
   void
   remap_return2optionL(const RemapParams &params)
@@ -2324,6 +2340,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_optionR2forwarddelete(params);
   remap_optionR2semicolon(params);
   remap_optionR2space(params);
+  remap_optionR2allF1(params);
 
   remap_return2optionL(params);
   remap_return2optionL_escape(params);
