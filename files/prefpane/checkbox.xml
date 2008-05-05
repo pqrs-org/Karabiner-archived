@@ -815,6 +815,28 @@
     </item>
 
     <item>
+      <name>Vi Mode</name>
+      <list>
+        <item>
+          <name>Command_R+hjkl to Left/Down/Up/Right</name>
+          <sysctl>option.vimode_hjkl</sysctl>
+        </item>
+        <item>
+          <name>Command_R+g/G to Home/End</name>
+          <sysctl>option.vimode_gG</sysctl>
+        </item>
+        <item>
+          <name>Command_R+bw to Option+Left/Right</name>
+          <sysctl>option.vimode_bw</sysctl>
+        </item>
+        <item>
+          <name>Command_R+0$ to Command+Left/Right</name>
+          <sysctl>option.vimode_0dollar</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>Remapping for Mac OS X Features</name>
       <list>
         <item>
@@ -828,6 +850,11 @@
               <name>Use Command_R+[A...L] for Spaces</name>
               <appendix>(Command+Control+Option+Shift+[1...9])</appendix>
               <sysctl>remap.spaces_special</sysctl>
+            </item>
+            <item>
+              <name>Use Command_R+[123QWEASD] for Spaces</name>
+              <appendix>(Command+Control+Option+Shift+[1...9])</appendix>
+              <sysctl>remap.spaces_special_123qweasd</sysctl>
             </item>
             <item>
               <name>Use FN+[1...9] for Spaces</name>
