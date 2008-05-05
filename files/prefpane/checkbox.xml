@@ -609,6 +609,10 @@
           <name>Command+Tab to Option+Tab</name>
           <sysctl>remap.commandTab2optionTab</sysctl>
         </item>
+        <item>
+          <name>Option+Tab to F5</name>
+          <sysctl>remap.optionTab2f5</sysctl>
+        </item>
       </list>
     </item>
 
