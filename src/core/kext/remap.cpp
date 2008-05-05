@@ -1391,11 +1391,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     if (keyCode != KeyCode::NONE) {
-      if (*(params.eventType) == KeyEvent::DOWN) {
-        RemapUtil::fireKeyWithAllModifiers_down(params, keyCode, charCode);
-      } else if (*(params.eventType) == KeyEvent::UP) {
-        RemapUtil::fireKeyWithAllModifiers_up(params, keyCode, charCode);
-      }
+      RemapUtil::fireKeyWithAllModifiers(params, *(params.eventType), keyCode, charCode);
       *(params.ex_dropKey) = true;
     }
   }
