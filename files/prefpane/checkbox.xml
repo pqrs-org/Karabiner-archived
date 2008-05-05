@@ -830,8 +830,8 @@
           <sysctl>option.vimode_gG</sysctl>
         </item>
         <item>
-          <name>Command_R+bw to Option+Left/Right</name>
-          <sysctl>option.vimode_bw</sysctl>
+          <name>Command_R+bf to PageUp/PageDown</name>
+          <sysctl>option.vimode_bf</sysctl>
         </item>
         <item>
           <name>Command_R+0$ to Command+Left/Right</name>
