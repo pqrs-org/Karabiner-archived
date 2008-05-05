@@ -205,7 +205,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   RemapUtil::modifierToModifier(const RemapParams &params, ModifierFlag::ModifierFlag fromFlag, ModifierFlag::ModifierFlag toFlag)
   {
     KeyCode::KeyCode fromKeyCode = getModifierKeyCode(fromFlag);
-    if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) return false;
+    if (! RemapUtil::isKey(params, fromKeyCode)) return false;
 
     FlagStatus *fromStatus = allFlagStatus.getFlagStatus(fromFlag);
     if (fromStatus == NULL) return false;
@@ -229,7 +229,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   RemapUtil::modifierToKey(const RemapParams &params, ModifierFlag::ModifierFlag fromFlag, KeyCode::KeyCode toKeyCode) {
     KeyCode::KeyCode fromKeyCode = getModifierKeyCode(fromFlag);
-    if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) return false;
+    if (! RemapUtil::isKey(params, fromKeyCode)) return false;
 
     FlagStatus *fromStatus = allFlagStatus.getFlagStatus(fromFlag);
     if (fromStatus == NULL) return false;
@@ -249,7 +249,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   bool
   RemapUtil::keyToModifier(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag) {
-    if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) return false;
+    if (! RemapUtil::isKey(params, fromKeyCode)) return false;
 
     FlagStatus *toStatus = allFlagStatus.getFlagStatus(toFlag);
     if (toStatus == NULL) return false;
@@ -269,7 +269,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   bool
   RemapUtil::keyToModifier(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag1, ModifierFlag::ModifierFlag toFlag2) {
-    if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) return false;
+    if (! RemapUtil::isKey(params, fromKeyCode)) return false;
 
     FlagStatus *toStatus1 = allFlagStatus.getFlagStatus(toFlag1);
     FlagStatus *toStatus2 = allFlagStatus.getFlagStatus(toFlag2);
@@ -292,7 +292,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   bool
   RemapUtil::keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode) {
-    if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) return false;
+    if (! RemapUtil::isKey(params, fromKeyCode)) return false;
     *(params.key) = toKeyCode;
     return true;
   }
@@ -301,7 +301,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapUtil::modifierToPointingButton(const RemapParams &params, ModifierFlag::ModifierFlag fromFlag, PointingButton::PointingButton toButton) {
     KeyCode::KeyCode fromKeyCode = getModifierKeyCode(fromFlag);
-    if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) return;
+    if (! RemapUtil::isKey(params, fromKeyCode)) return;
 
     FlagStatus *fromStatus = allFlagStatus.getFlagStatus(fromFlag);
     if (fromStatus == NULL) return;
@@ -326,7 +326,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   void
   RemapUtil::keyToPointingButton(const RemapParams &params, KeyCode::KeyCode fromKeyCode, PointingButton::PointingButton toButton) {
-    if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) return;
+    if (! RemapUtil::isKey(params, fromKeyCode)) return;
 
     *(params.ex_dropKey) = true;
 
@@ -367,7 +367,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // --------------------
   void
-  RemapUtil::fireKeyWithAllModifiers(const RemapParams &params, KeyCode::KeyCode keyCode, CharCode::CharCode charCode)
+  RemapUtil::fireKeyWithAllModifiers_down(const RemapParams &params, KeyCode::KeyCode keyCode, CharCode::CharCode charCode)
   {
     unsigned int flags = 0;
     // ----------------------------------------
@@ -391,6 +391,19 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ----------------------------------------
     flags = allFlagStatus.makeFlags(params);
     listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, flags, keyCode, charCode);
+  }
+
+  void
+  RemapUtil::fireKeyWithAllModifiers_up(const RemapParams &params, KeyCode::KeyCode keyCode, CharCode::CharCode charCode)
+  {
+    unsigned int flags = 0;
+
+    allFlagStatus.commandL.temporary_increase();
+    allFlagStatus.controlL.temporary_increase();
+    allFlagStatus.optionL.temporary_increase();
+    allFlagStatus.shiftL.temporary_increase();
+
+    flags = allFlagStatus.makeFlags(params);
     listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, flags, keyCode, charCode);
 
     // ----------------------------------------
@@ -443,7 +456,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // --------------------
   void
   RemapUtil::jis_toggle_eisuu_kana(const RemapParams &params, KeyCode::KeyCode fromKeyCode) {
-    if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) return;
+    if (! RemapUtil::isKey(params, fromKeyCode)) return;
 
     static bool isKana = true;
 
@@ -461,7 +474,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   RemapUtil::jis_toggle_eisuu_kana(const RemapParams &params, ModifierFlag::ModifierFlag fromModifier) {
     KeyCode::KeyCode fromKeyCode = getModifierKeyCode(fromModifier);
 
-    if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) return;
+    if (! RemapUtil::isKey(params, fromKeyCode)) return;
 
     static bool isKana = true;
 
@@ -881,7 +894,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   KeyOverlayedModifier::remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc::FireFunc firefunc)
   {
-    if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) {
+    if (! RemapUtil::isKey(params, fromKeyCode)) {
       if (*(params.eventType) == KeyEvent::DOWN || *(params.eventType) == KeyEvent::MODIFY) {
         useAsModifier = true;
       }
@@ -905,7 +918,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   DoublePressModifier::remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc::FireFunc firefunc)
   {
-    if (params.ex_origKey != fromKeyCode || *(params.key) != fromKeyCode) {
+    if (! RemapUtil::isKey(params, fromKeyCode)) {
       pressCount = 0;
       return;
     }
