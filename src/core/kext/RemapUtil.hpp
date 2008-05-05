@@ -114,17 +114,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       TYPE_AFTER,
     };
     void set(FireExtraKey::Type _type, unsigned int _eventType, unsigned int _flags, unsigned int _key, unsigned int _charCode) {
-      enable = true;
       type = _type;
       eventType = _eventType;
       flags = _flags;
       key = _key;
       charCode = _charCode;
     }
-    void unset(void) {
-      enable = false;
-    }
-    bool isEnable(void) const { return enable; }
     unsigned int getType(void) const { return type; }
     unsigned int getEventType(void) const { return eventType; }
     unsigned int getFlags(void) const { return flags; }
@@ -132,7 +127,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     unsigned int getCharCode(void) const { return charCode; }
 
   private:
-    bool enable;
     Type type;
     unsigned int eventType;
     unsigned int flags;
@@ -143,9 +137,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   class ListFireExtraKey {
   public:
     enum {
-      FIREEXTRAKEY_MAXNUM = 4,
+      FIREEXTRAKEY_MAXNUM = 32,
     };
-    void reset(void);
+    void reset(void) { size = 0; }
+    bool isEmpty(void) { return size == 0; }
     void add(FireExtraKey::Type type, unsigned int eventType, unsigned int flags, unsigned int key, unsigned int charCode);
     void fire(FireExtraKey::Type type, KeyboardEventCallback callback,
               OSObject *target,
@@ -154,6 +149,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   private:
     FireExtraKey list[FIREEXTRAKEY_MAXNUM];
+    int size;
   };
 
   extern ListFireExtraKey listFireExtraKey;
@@ -251,17 +247,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   class FirePointingClick {
   public:
     void set(PointingButton::PointingButton _button) {
-      enable = true;
       button = _button;
     }
-    void unset(void) {
-      enable = false;
-    }
-    bool isEnable(void) const { return enable; }
     PointingButton::PointingButton getButton(void) const { return button; }
 
   private:
-    bool enable;
     PointingButton::PointingButton button;
   };
 
@@ -270,13 +260,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     enum {
       FIREPOINTINGCLICK_MAXNUM = 4,
     };
-    void reset(void);
-    bool isEmpty(void);
+    void reset(void) { size = 0; }
+    bool isEmpty(void) { return size == 0; }
     void add(PointingButton::PointingButton button);
     void fire(RelativePointerEventCallback callback, OSObject *target, OSObject *sender, AbsoluteTime ts);
 
   private:
     FirePointingClick list[FIREPOINTINGCLICK_MAXNUM];
+    int size;
   };
 
   extern ListFirePointingClick listFirePointingClick;
