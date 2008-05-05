@@ -1374,6 +1374,95 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
+  remap_vimode(const RemapParams &params)
+  {
+    static ModifierCanceling mc_commandR;
+
+    if (allFlagStatus.commandR.isHeldDown()) {
+      bool cancel_command = false;
+
+      // Command_R+hjkl -> Up/Down/Left/Right
+      if (config.option_vimode_hjkl) {
+        if (*(params.key) == KeyCode::H) {
+          *(params.key) = KeyCode::CURSOR_LEFT;
+          allFlagStatus.cursor = true;
+          cancel_command = true;
+        }
+        if (*(params.key) == KeyCode::J) {
+          *(params.key) = KeyCode::CURSOR_DOWN;
+          allFlagStatus.cursor = true;
+          cancel_command = true;
+        }
+        if (*(params.key) == KeyCode::K) {
+          *(params.key) = KeyCode::CURSOR_UP;
+          allFlagStatus.cursor = true;
+          cancel_command = true;
+        }
+        if (*(params.key) == KeyCode::L) {
+          *(params.key) = KeyCode::CURSOR_RIGHT;
+          allFlagStatus.cursor = true;
+          cancel_command = true;
+        }
+      }
+
+      // Command_R+gG -> Home/End
+      if (config.option_vimode_gG) {
+        if (*(params.key) == KeyCode::G) {
+          if (allFlagStatus.shiftL.isHeldDown() || allFlagStatus.shiftR.isHeldDown()) {
+            *(params.key) = KeyCode::END;
+          } else {
+            *(params.key) = KeyCode::HOME;
+          }
+          cancel_command = true;
+        }
+      }
+
+      // Command_R+bw -> Option+Left/Right
+      if (config.option_vimode_bw) {
+        if (*(params.key) == KeyCode::B) {
+          *(params.key) = KeyCode::CURSOR_LEFT;
+          allFlagStatus.cursor = true;
+          allFlagStatus.optionL.temporary_increase();
+          cancel_command = true;
+        }
+        if (*(params.key) == KeyCode::W) {
+          *(params.key) = KeyCode::CURSOR_RIGHT;
+          allFlagStatus.cursor = true;
+          allFlagStatus.optionL.temporary_increase();
+          cancel_command = true;
+        }
+      }
+
+      // Command_R+0$ -> Command+Left/Right
+      if (config.option_vimode_0dollar) {
+        if (*(params.key) == KeyCode::KEY_0) {
+          *(params.key) = KeyCode::CURSOR_LEFT;
+          allFlagStatus.cursor = true;
+        }
+        if (*(params.key) == KeyCode::KEY_4) {
+          if (allFlagStatus.shiftL.isHeldDown() || allFlagStatus.shiftR.isHeldDown()) {
+            *(params.key) = KeyCode::CURSOR_RIGHT;
+            allFlagStatus.cursor = true;
+            if (allFlagStatus.shiftL.isHeldDown()) {
+              allFlagStatus.shiftL.temporary_decrease();
+            }
+            if (allFlagStatus.shiftR.isHeldDown()) {
+              allFlagStatus.shiftR.temporary_decrease();
+            }
+          }
+        }
+      }
+
+      if (cancel_command) {
+        mc_commandR.keyRelease(params, ModifierFlag::COMMAND_R);
+        return;
+      }
+    }
+    mc_commandR.restore(params, ModifierFlag::COMMAND_R);
+  }
+
+  // ----------------------------------------
+  void
   remap_drop_funcshift(const RemapParams &params)
   {
     if (! config.remap_drop_funcshift) return;
@@ -1424,6 +1513,42 @@ namespace org_pqrs_KeyRemap4MacBook {
     } else if (RemapUtil::isKey(params, KeyCode::K)) {
       keyCode = KeyCode::KEY_8; charCode = CharCode::KEY_8;
     } else if (RemapUtil::isKey(params, KeyCode::L)) {
+      keyCode = KeyCode::KEY_9; charCode = CharCode::KEY_9;
+    }
+
+    if (keyCode != KeyCode::NONE) {
+      RemapUtil::fireKeyWithAllModifiers(params, *(params.eventType), keyCode, charCode);
+      *(params.ex_dropKey) = true;
+    }
+  }
+
+  void
+  remap_spaces_special_123qweasd(const RemapParams &params)
+  {
+    if (! config.remap_spaces_special_123qweasd) return;
+
+    if (allFlagStatus.makeFlags(params) != ModifierFlag::COMMAND_R) return;
+
+    KeyCode::KeyCode keyCode = KeyCode::NONE;
+    CharCode::CharCode charCode = CharCode::NONE;
+
+    if (RemapUtil::isKey(params, KeyCode::KEY_1)) {
+      keyCode = KeyCode::KEY_1; charCode = CharCode::KEY_1;
+    } else if (RemapUtil::isKey(params, KeyCode::KEY_2)) {
+      keyCode = KeyCode::KEY_2; charCode = CharCode::KEY_2;
+    } else if (RemapUtil::isKey(params, KeyCode::KEY_3)) {
+      keyCode = KeyCode::KEY_3; charCode = CharCode::KEY_3;
+    } else if (RemapUtil::isKey(params, KeyCode::Q)) {
+      keyCode = KeyCode::KEY_4; charCode = CharCode::KEY_4;
+    } else if (RemapUtil::isKey(params, KeyCode::W)) {
+      keyCode = KeyCode::KEY_5; charCode = CharCode::KEY_5;
+    } else if (RemapUtil::isKey(params, KeyCode::E)) {
+      keyCode = KeyCode::KEY_6; charCode = CharCode::KEY_6;
+    } else if (RemapUtil::isKey(params, KeyCode::A)) {
+      keyCode = KeyCode::KEY_7; charCode = CharCode::KEY_7;
+    } else if (RemapUtil::isKey(params, KeyCode::S)) {
+      keyCode = KeyCode::KEY_8; charCode = CharCode::KEY_8;
+    } else if (RemapUtil::isKey(params, KeyCode::D)) {
       keyCode = KeyCode::KEY_9; charCode = CharCode::KEY_9;
     }
 
@@ -2306,11 +2431,13 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   // *** Note: we need to call remap_emacsmode as possible late. ***
   // *** If qwerty2colemak is enabled, Control+H... works with Colemak Keyboard Layout. ***
   remap_emacsmode(params);
+  remap_vimode(params);
 
   // ----------------------------------------
   // *** Note: we need to call remap_spaces_* after emacsmode. ***
   // *** If spaces_special is enabled, emacsmode_ex_control12 make wrong remappings, . ***
   remap_spaces_special(params);
+  remap_spaces_special_123qweasd(params);
   remap_spaces_special_fn(params);
   remap_spaces_special_keypad(params);
   remap_keypad2spaces(params);
