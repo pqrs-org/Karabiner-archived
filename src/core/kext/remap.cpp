@@ -881,6 +881,35 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
+  void
+  remap_optionTab2f5(const RemapParams &params)
+  {
+    if (! config.remap_optionTab2f5) return;
+
+    static ModifierCanceling mc_optionL;
+    static ModifierCanceling mc_optionR;
+
+    if ((allFlagStatus.optionL.isHeldDown()) || (allFlagStatus.optionL.isHeldDown())) {
+      bool cancel_option = false;
+
+      if (RemapUtil::keyToKey(params, KeyCode::TAB, KeyCode::F5)) {
+        cancel_option = true;
+      }
+      if (cancel_option) {
+        if (allFlagStatus.optionL.isHeldDown()) {
+          mc_optionL.keyRelease(params, ModifierFlag::OPTION_L);
+        }
+        if (allFlagStatus.optionR.isHeldDown()) {
+          mc_optionR.keyRelease(params, ModifierFlag::OPTION_R);
+        }
+        return;
+      }
+    }
+
+    mc_optionL.restore(params, ModifierFlag::OPTION_L);
+    mc_optionR.restore(params, ModifierFlag::OPTION_R);
+  }
+
   // ----------------------------------------
   void
   remap_hhkmode(const RemapParams &params)
@@ -2192,6 +2221,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   remap_tab2exposeALL(params);
   remap_commandTab2optionTab(params);
+  remap_optionTab2f5(params);
 
   // ----------------------------------------
   remap_app_vm_commandspace2optionbackquote(params);
