@@ -1418,12 +1418,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         *(params.key) == KeyCode::KEY_7 ||
         *(params.key) == KeyCode::KEY_8 ||
         *(params.key) == KeyCode::KEY_9) {
-      allFlagStatus.commandL.temporary_increase();
-      allFlagStatus.controlL.temporary_increase();
-      allFlagStatus.optionL.temporary_increase();
-      allFlagStatus.shiftL.temporary_increase();
       allFlagStatus.fn.temporary_decrease();
       allFlagStatus.keypad = false;
+      RemapUtil::fireKeyWithAllModifiers(params, *(params.eventType), *(params.key), *(params.charCode));
     }
   }
 
