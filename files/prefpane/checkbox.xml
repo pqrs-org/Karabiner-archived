@@ -465,6 +465,10 @@
           <name>Option_R to Space</name>
           <sysctl>remap.optionR2space</sysctl>
         </item>
+        <item>
+          <name>Option_R to Command+Control+Option+Shift+F1</name>
+          <sysctl>remap.optionR2allF1</sysctl>
+        </item>
       </list>
     </item>
 

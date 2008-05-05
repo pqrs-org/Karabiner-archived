@@ -195,6 +195,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       KEY_8 = 56,
       KEY_9 = 57,
 
+      F1 = 32,
+
       JIS_KANA = 0,
       JIS_EISUU = 0,
 
