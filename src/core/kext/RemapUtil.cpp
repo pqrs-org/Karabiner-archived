@@ -192,6 +192,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (keyboardType == KeyboardType::POWERBOOK_G4) return true;
     if (keyboardType == KeyboardType::POWERBOOK_G4_TI) return true;
     if (keyboardType == KeyboardType::JIS_MACBOOK) return true;
+    if (keyboardType == KeyboardType::JIS_MACBOOK_2008) return true;
     return false;
   }
 
