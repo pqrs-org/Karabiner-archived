@@ -163,10 +163,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   namespace CharCode {
-    enum {
+    enum CharCode {
       COMMAND_L = 0,
       CONTROL_L = 0,
       OPTION_L = 0,
+      SHIFT_L = 0,
       FN = 0,
       TAB = 9,
       RETURN = 13,
@@ -183,8 +184,21 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       O = 111,
 
+      KEY_0 = 48,
+      KEY_1 = 49,
+      KEY_2 = 50,
+      KEY_3 = 51,
+      KEY_4 = 52,
+      KEY_5 = 53,
+      KEY_6 = 54,
+      KEY_7 = 55,
+      KEY_8 = 56,
+      KEY_9 = 57,
+
       JIS_KANA = 0,
       JIS_EISUU = 0,
+
+      NONE = 255,
     };
   }
 
