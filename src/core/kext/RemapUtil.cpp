@@ -366,20 +366,50 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // --------------------
-  bool
-  RemapUtil::al2number(const RemapParams &params) {
-    unsigned int origKey = *(params.key);
-    keyToKey(params, KeyCode::A, KeyCode::KEY_1);
-    keyToKey(params, KeyCode::S, KeyCode::KEY_2);
-    keyToKey(params, KeyCode::D, KeyCode::KEY_3);
-    keyToKey(params, KeyCode::F, KeyCode::KEY_4);
-    keyToKey(params, KeyCode::G, KeyCode::KEY_5);
-    keyToKey(params, KeyCode::H, KeyCode::KEY_6);
-    keyToKey(params, KeyCode::J, KeyCode::KEY_7);
-    keyToKey(params, KeyCode::K, KeyCode::KEY_8);
-    keyToKey(params, KeyCode::L, KeyCode::KEY_9);
+  void
+  RemapUtil::fireKeyWithAllModifiers(const RemapParams &params, KeyCode::KeyCode keyCode, CharCode::CharCode charCode)
+  {
+    unsigned int flags = 0;
+    // ----------------------------------------
+    // COMMAND_L
+    allFlagStatus.commandL.temporary_increase();
+    flags = allFlagStatus.makeFlags(params);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::COMMAND_L, CharCode::COMMAND_L);
+    // CONTROL_L
+    allFlagStatus.controlL.temporary_increase();
+    flags = allFlagStatus.makeFlags(params);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::CONTROL_L, CharCode::CONTROL_L);
+    // OPTION_L
+    allFlagStatus.optionL.temporary_increase();
+    flags = allFlagStatus.makeFlags(params);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::OPTION_L, CharCode::OPTION_L);
+    // SHIFT_L
+    allFlagStatus.shiftL.temporary_increase();
+    flags = allFlagStatus.makeFlags(params);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::SHIFT_L, CharCode::SHIFT_L);
 
-    return *(params.key) != origKey;
+    // ----------------------------------------
+    flags = allFlagStatus.makeFlags(params);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, flags, keyCode, charCode);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, flags, keyCode, charCode);
+
+    // ----------------------------------------
+    // COMMAND_L
+    allFlagStatus.commandL.temporary_decrease();
+    flags = allFlagStatus.makeFlags(params);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::COMMAND_L, CharCode::COMMAND_L);
+    // CONTROL_L
+    allFlagStatus.controlL.temporary_decrease();
+    flags = allFlagStatus.makeFlags(params);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::CONTROL_L, CharCode::CONTROL_L);
+    // OPTION_L
+    allFlagStatus.optionL.temporary_decrease();
+    flags = allFlagStatus.makeFlags(params);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::OPTION_L, CharCode::OPTION_L);
+    // SHIFT_L
+    allFlagStatus.shiftL.temporary_decrease();
+    flags = allFlagStatus.makeFlags(params);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::SHIFT_L, CharCode::SHIFT_L);
   }
 
   bool
@@ -643,7 +673,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListFireExtraKey::add(FireExtraKey::Type type, unsigned int eventType, unsigned int flags, unsigned int key, unsigned int charCode)
   {
-    if (size >= FIREEXTRAKEY_MAXNUM) return;
+    if (size >= FIREEXTRAKEY_MAXNUM) {
+      printf("ListFireExtraKey::add overflow\n");
+      return;
+    }
     list[size].set(type, eventType, flags, key, charCode);
     ++size;
   }

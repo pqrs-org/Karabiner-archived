@@ -1367,10 +1367,32 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (allFlagStatus.makeFlags(params) != ModifierFlag::COMMAND_R) return;
 
-    if (RemapUtil::al2number(params)) {
-      allFlagStatus.controlL.temporary_increase();
-      allFlagStatus.optionL.temporary_increase();
-      allFlagStatus.shiftL.temporary_increase();
+    KeyCode::KeyCode keyCode = KeyCode::NONE;
+    CharCode::CharCode charCode = CharCode::NONE;
+
+    if (params.ex_origKey == KeyCode::A) {
+      keyCode = KeyCode::KEY_1; charCode = CharCode::KEY_1;
+    } else if (params.ex_origKey == KeyCode::S) {
+      keyCode = KeyCode::KEY_2; charCode = CharCode::KEY_2;
+    } else if (params.ex_origKey == KeyCode::D) {
+      keyCode = KeyCode::KEY_3; charCode = CharCode::KEY_3;
+    } else if (params.ex_origKey == KeyCode::F) {
+      keyCode = KeyCode::KEY_4; charCode = CharCode::KEY_4;
+    } else if (params.ex_origKey == KeyCode::G) {
+      keyCode = KeyCode::KEY_5; charCode = CharCode::KEY_5;
+    } else if (params.ex_origKey == KeyCode::H) {
+      keyCode = KeyCode::KEY_6; charCode = CharCode::KEY_6;
+    } else if (params.ex_origKey == KeyCode::J) {
+      keyCode = KeyCode::KEY_7; charCode = CharCode::KEY_7;
+    } else if (params.ex_origKey == KeyCode::K) {
+      keyCode = KeyCode::KEY_8; charCode = CharCode::KEY_8;
+    } else if (params.ex_origKey == KeyCode::L) {
+      keyCode = KeyCode::KEY_9; charCode = CharCode::KEY_9;
+    }
+
+    if (keyCode != KeyCode::NONE) {
+      RemapUtil::fireKeyWithAllModifiers(params, keyCode, charCode);
+      *(params.ex_dropKey) = true;
     }
   }
 

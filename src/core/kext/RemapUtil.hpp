@@ -34,8 +34,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     void ejectToKey(const RemapConsumerParams &params, KeyCode::KeyCode toKeyCode);
 
-    // A..L to 1..9
-    bool al2number(const RemapParams &params);
+    void fireKeyWithAllModifiers(const RemapParams &params, KeyCode::KeyCode keyCode, CharCode::CharCode charCode);
     bool keypad2spaces(const RemapParams &params);
 
     void jis_toggle_eisuu_kana(const RemapParams &params, KeyCode::KeyCode fromKeyCode);
