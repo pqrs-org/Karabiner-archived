@@ -40,8 +40,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_leftarrow2controlL) return;
 
-    if (params.ex_origKey == KeyCode::CURSOR_LEFT) {
-      RemapUtil::keyToModifier(params, KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L);
+    if (RemapUtil::keyToModifier(params, KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L)) {
       allFlagStatus.cursor = false;
     }
   }
@@ -375,10 +374,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_enter2uparrow) return;
 
-    if (params.ex_origKey != RemapUtil::getEnterKeyCode(params)) return;
-
-    allFlagStatus.cursor = true;
-    RemapUtil::keyToKey(params, RemapUtil::getEnterKeyCode(params), KeyCode::CURSOR_UP);
+    if (RemapUtil::keyToKey(params, RemapUtil::getEnterKeyCode(params), KeyCode::CURSOR_UP)) {
+      allFlagStatus.cursor = true;
+    }
   }
 
   // ----------------------------------------
@@ -851,10 +849,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_shiftR2uparrow) return;
 
-    if (params.ex_origKey != KeyCode::SHIFT_R) return;
-
-    allFlagStatus.cursor = true;
-    RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_R, KeyCode::CURSOR_UP);
+    if (RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_R, KeyCode::CURSOR_UP)) {
+      allFlagStatus.cursor = true;
+    }
   }
 
   // ----------------------------------------
