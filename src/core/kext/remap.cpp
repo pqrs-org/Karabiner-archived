@@ -1433,12 +1433,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         allFlagStatus.makeFlags(params) != (ModifierFlag::FN | ModifierFlag::KEYPAD)) return;
 
     if (RemapUtil::keypad2spaces(params)) {
-      allFlagStatus.commandL.temporary_increase();
-      allFlagStatus.controlL.temporary_increase();
-      allFlagStatus.optionL.temporary_increase();
-      allFlagStatus.shiftL.temporary_increase();
       allFlagStatus.fn.temporary_decrease();
       allFlagStatus.keypad = false;
+
+      RemapUtil::fireKeyWithAllModifiers(params, *(params.eventType), *(params.key), *(params.charCode));
     }
   }
 
