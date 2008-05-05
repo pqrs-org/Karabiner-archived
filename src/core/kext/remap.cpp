@@ -1426,9 +1426,13 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (*(params.key) == KeyCode::G) {
           if (allFlagStatus.shiftL.isHeldDown() || allFlagStatus.shiftR.isHeldDown()) {
             *(params.key) = KeyCode::END;
+            if (allFlagStatus.shiftL.isHeldDown()) allFlagStatus.shiftL.temporary_decrease();
+            if (allFlagStatus.shiftR.isHeldDown()) allFlagStatus.shiftR.temporary_decrease();
+
           } else {
             *(params.key) = KeyCode::HOME;
           }
+
           cancel_command = true;
         }
       }
@@ -1459,12 +1463,8 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (allFlagStatus.shiftL.isHeldDown() || allFlagStatus.shiftR.isHeldDown()) {
             *(params.key) = KeyCode::CURSOR_RIGHT;
             allFlagStatus.cursor = true;
-            if (allFlagStatus.shiftL.isHeldDown()) {
-              allFlagStatus.shiftL.temporary_decrease();
-            }
-            if (allFlagStatus.shiftR.isHeldDown()) {
-              allFlagStatus.shiftR.temporary_decrease();
-            }
+            if (allFlagStatus.shiftL.isHeldDown()) allFlagStatus.shiftL.temporary_decrease();
+            if (allFlagStatus.shiftR.isHeldDown()) allFlagStatus.shiftR.temporary_decrease();
           }
         }
       }
