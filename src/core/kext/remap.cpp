@@ -1437,18 +1437,14 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
       }
 
-      // Command_R+bw -> Option+Left/Right
-      if (config.option_vimode_bw) {
+      // Command_R+bf -> PageUp/PageDown
+      if (config.option_vimode_bf) {
         if (*(params.key) == KeyCode::B) {
-          *(params.key) = KeyCode::CURSOR_LEFT;
-          allFlagStatus.cursor = true;
-          allFlagStatus.optionL.temporary_increase();
+          *(params.key) = KeyCode::PAGEUP;
           cancel_command = true;
         }
-        if (*(params.key) == KeyCode::W) {
-          *(params.key) = KeyCode::CURSOR_RIGHT;
-          allFlagStatus.cursor = true;
-          allFlagStatus.optionL.temporary_increase();
+        if (*(params.key) == KeyCode::F) {
+          *(params.key) = KeyCode::PAGEDOWN;
           cancel_command = true;
         }
       }
