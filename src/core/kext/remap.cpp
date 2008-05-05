@@ -203,6 +203,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::modifierToModifier(params, ModifierFlag::CONTROL_L, ModifierFlag::SHIFT_L);
   }
 
+  void
+  remap_controlL2escape(const RemapParams &params)
+  {
+    if (! config.remap_controlL2escape) return;
+
+    RemapUtil::modifierToKey(params, ModifierFlag::CONTROL_L, KeyCode::ESCAPE);
+  }
+
   // ----------------------------------------
   void
   remap_delete2backslash(const RemapParams &params)
@@ -2121,6 +2129,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_controlL2fn(params);
   remap_controlL2optionL(params);
   remap_controlL2shiftL(params);
+  remap_controlL2escape(params);
 
   remap_commandL2controlL(params);
   remap_commandL2optionL(params);

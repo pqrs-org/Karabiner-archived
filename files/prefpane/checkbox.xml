@@ -173,6 +173,10 @@
           <name>Control_L to Shift_L</name>
           <sysctl>remap.controlL2shiftL</sysctl>
         </item>
+        <item>
+          <name>Control_L to Escape</name>
+          <sysctl>remap.controlL2escape</sysctl>
+        </item>
       </list>
     </item>
 
