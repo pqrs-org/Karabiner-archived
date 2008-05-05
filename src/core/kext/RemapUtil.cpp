@@ -12,12 +12,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   ClickWatcher clickWatcher;
   PointingButtonStatus pointingButtonStatus;
 
-  bool
-  RemapUtil::isModifierOn(const RemapParams &params, ModifierFlag::ModifierFlag flag)
-  {
-    return ((*(params.flags) & flag) == flag);
-  }
-
   KeyCode::KeyCode
   RemapUtil::getModifierKeyCode(ModifierFlag::ModifierFlag flag)
   {
@@ -367,62 +361,59 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // --------------------
   void
-  RemapUtil::fireKeyWithAllModifiers_down(const RemapParams &params, KeyCode::KeyCode keyCode, CharCode::CharCode charCode)
+  RemapUtil::fireKeyWithAllModifiers(const RemapParams &params, unsigned int eventType, unsigned int keyCode, unsigned int charCode)
   {
     unsigned int flags = 0;
-    // ----------------------------------------
-    // COMMAND_L
-    allFlagStatus.commandL.temporary_increase();
-    flags = allFlagStatus.makeFlags(params);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::COMMAND_L, CharCode::COMMAND_L);
-    // CONTROL_L
-    allFlagStatus.controlL.temporary_increase();
-    flags = allFlagStatus.makeFlags(params);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::CONTROL_L, CharCode::CONTROL_L);
-    // OPTION_L
-    allFlagStatus.optionL.temporary_increase();
-    flags = allFlagStatus.makeFlags(params);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::OPTION_L, CharCode::OPTION_L);
-    // SHIFT_L
-    allFlagStatus.shiftL.temporary_increase();
-    flags = allFlagStatus.makeFlags(params);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::SHIFT_L, CharCode::SHIFT_L);
+    if (eventType == KeyEvent::DOWN) {
+      // ----------------------------------------
+      // COMMAND_L
+      allFlagStatus.commandL.temporary_increase();
+      flags = allFlagStatus.makeFlags(params);
+      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::COMMAND_L, CharCode::COMMAND_L);
+      // CONTROL_L
+      allFlagStatus.controlL.temporary_increase();
+      flags = allFlagStatus.makeFlags(params);
+      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::CONTROL_L, CharCode::CONTROL_L);
+      // OPTION_L
+      allFlagStatus.optionL.temporary_increase();
+      flags = allFlagStatus.makeFlags(params);
+      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::OPTION_L, CharCode::OPTION_L);
+      // SHIFT_L
+      allFlagStatus.shiftL.temporary_increase();
+      flags = allFlagStatus.makeFlags(params);
+      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::SHIFT_L, CharCode::SHIFT_L);
 
-    // ----------------------------------------
-    flags = allFlagStatus.makeFlags(params);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, flags, keyCode, charCode);
-  }
+      // ----------------------------------------
+      flags = allFlagStatus.makeFlags(params);
+      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, flags, keyCode, charCode);
 
-  void
-  RemapUtil::fireKeyWithAllModifiers_up(const RemapParams &params, KeyCode::KeyCode keyCode, CharCode::CharCode charCode)
-  {
-    unsigned int flags = 0;
+    } else if (eventType == KeyEvent::UP) {
+      allFlagStatus.commandL.temporary_increase();
+      allFlagStatus.controlL.temporary_increase();
+      allFlagStatus.optionL.temporary_increase();
+      allFlagStatus.shiftL.temporary_increase();
 
-    allFlagStatus.commandL.temporary_increase();
-    allFlagStatus.controlL.temporary_increase();
-    allFlagStatus.optionL.temporary_increase();
-    allFlagStatus.shiftL.temporary_increase();
+      flags = allFlagStatus.makeFlags(params);
+      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, flags, keyCode, charCode);
 
-    flags = allFlagStatus.makeFlags(params);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, flags, keyCode, charCode);
-
-    // ----------------------------------------
-    // COMMAND_L
-    allFlagStatus.commandL.temporary_decrease();
-    flags = allFlagStatus.makeFlags(params);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::COMMAND_L, CharCode::COMMAND_L);
-    // CONTROL_L
-    allFlagStatus.controlL.temporary_decrease();
-    flags = allFlagStatus.makeFlags(params);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::CONTROL_L, CharCode::CONTROL_L);
-    // OPTION_L
-    allFlagStatus.optionL.temporary_decrease();
-    flags = allFlagStatus.makeFlags(params);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::OPTION_L, CharCode::OPTION_L);
-    // SHIFT_L
-    allFlagStatus.shiftL.temporary_decrease();
-    flags = allFlagStatus.makeFlags(params);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::SHIFT_L, CharCode::SHIFT_L);
+      // ----------------------------------------
+      // COMMAND_L
+      allFlagStatus.commandL.temporary_decrease();
+      flags = allFlagStatus.makeFlags(params);
+      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::COMMAND_L, CharCode::COMMAND_L);
+      // CONTROL_L
+      allFlagStatus.controlL.temporary_decrease();
+      flags = allFlagStatus.makeFlags(params);
+      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::CONTROL_L, CharCode::CONTROL_L);
+      // OPTION_L
+      allFlagStatus.optionL.temporary_decrease();
+      flags = allFlagStatus.makeFlags(params);
+      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::OPTION_L, CharCode::OPTION_L);
+      // SHIFT_L
+      allFlagStatus.shiftL.temporary_decrease();
+      flags = allFlagStatus.makeFlags(params);
+      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::SHIFT_L, CharCode::SHIFT_L);
+    }
   }
 
   bool

@@ -16,8 +16,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     inline bool isKey(const RemapParams &params, KeyCode::KeyCode keyCode) {
       return params.ex_origKey == keyCode && *(params.key) == keyCode;
     }
+    inline bool isModifierOn(const RemapParams &params, ModifierFlag::ModifierFlag flag) {
+      return ((*(params.flags) & flag) == flag);
+    }
 
-    bool isModifierOn(const RemapParams &params, ModifierFlag::ModifierFlag flag);
     KeyCode::KeyCode getModifierKeyCode(ModifierFlag::ModifierFlag flag);
     ModifierFlag::ModifierFlag getKeyCodeModifier(unsigned int keycode);
     void fnToNormal(const RemapParams &params);
@@ -38,8 +40,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     void ejectToKey(const RemapConsumerParams &params, KeyCode::KeyCode toKeyCode);
 
-    void fireKeyWithAllModifiers_down(const RemapParams &params, KeyCode::KeyCode keyCode, CharCode::CharCode charCode);
-    void fireKeyWithAllModifiers_up(const RemapParams &params, KeyCode::KeyCode keyCode, CharCode::CharCode charCode);
+    void fireKeyWithAllModifiers(const RemapParams &params, unsigned int eventType, unsigned int keyCode, unsigned int charCode);
     bool keypad2spaces(const RemapParams &params);
 
     void jis_toggle_eisuu_kana(const RemapParams &params, KeyCode::KeyCode fromKeyCode);
