@@ -632,22 +632,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   void
-  ListFireExtraKey::reset(void)
-  {
-    for (int i = 0; i < FIREEXTRAKEY_MAXNUM; ++i) {
-      list[i].unset();
-    }
-  }
-
-  void
   ListFireExtraKey::add(FireExtraKey::Type type, unsigned int eventType, unsigned int flags, unsigned int key, unsigned int charCode)
   {
-    for (int i = 0; i < FIREEXTRAKEY_MAXNUM; ++i) {
-      if (! list[i].isEnable()) {
-        list[i].set(type, eventType, flags, key, charCode);
-        break;
-      }
-    }
+    if (size >= FIREEXTRAKEY_MAXNUM) return;
+    list[size].set(type, eventType, flags, key, charCode);
+    ++size;
   }
 
   void
@@ -658,10 +647,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (callback == NULL) return;
 
-    for (int i = 0; i < FIREEXTRAKEY_MAXNUM; ++i) {
+    for (int i = 0; i < size; ++i) {
       FireExtraKey &item = list[i];
 
-      if (item.isEnable() && item.getType() == type) {
+      if (item.getType() == type) {
         callback(target, item.getEventType(), item.getFlags(), item.getKey(), item.getCharCode(),
                  charSet, origCharCode, origCharSet,
                  KeyboardType::MACBOOK, false, ts, sender, refcon);
@@ -947,31 +936,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
-  ListFirePointingClick::reset(void)
-  {
-    for (int i = 0; i < FIREPOINTINGCLICK_MAXNUM; ++i) {
-      list[i].unset();
-    }
-  }
-
-  bool
-  ListFirePointingClick::isEmpty(void)
-  {
-    for (int i = 0; i < FIREPOINTINGCLICK_MAXNUM; ++i) {
-      if (list[i].isEnable()) return false;
-    }
-    return true;
-  }
-
-  void
   ListFirePointingClick::add(PointingButton::PointingButton button)
   {
-    for (int i = 0; i < FIREPOINTINGCLICK_MAXNUM; ++i) {
-      if (! list[i].isEnable()) {
-        list[i].set(button);
-        break;
-      }
-    }
+    if (size >= FIREPOINTINGCLICK_MAXNUM) return;
+    list[size].set(button);
+    ++size;
   }
 
   void
@@ -979,15 +948,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (callback == NULL) return;
 
-    for (int i = 0; i < FIREPOINTINGCLICK_MAXNUM; ++i) {
+    for (int i = 0; i < size; ++i) {
       FirePointingClick &item = list[i];
 
-      if (item.isEnable()) {
-        if (config.debug_pointing) {
-          printf("sending relativePointerEventCallBack: buttons: %d, ts: 0x%x\n", item.getButton(), ts);
-        }
-        callback(target, item.getButton(), 0, 0, ts, sender, 0);
+      if (config.debug_pointing) {
+        printf("sending relativePointerEventCallBack: buttons: %d, ts: 0x%x\n", item.getButton(), ts);
       }
+      callback(target, item.getButton(), 0, 0, ts, sender, 0);
     }
   }
 
