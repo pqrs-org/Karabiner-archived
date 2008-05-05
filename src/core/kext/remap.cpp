@@ -1370,28 +1370,32 @@ namespace org_pqrs_KeyRemap4MacBook {
     KeyCode::KeyCode keyCode = KeyCode::NONE;
     CharCode::CharCode charCode = CharCode::NONE;
 
-    if (params.ex_origKey == KeyCode::A) {
+    if (RemapUtil::isKey(params, KeyCode::A)) {
       keyCode = KeyCode::KEY_1; charCode = CharCode::KEY_1;
-    } else if (params.ex_origKey == KeyCode::S) {
+    } else if (RemapUtil::isKey(params, KeyCode::S)) {
       keyCode = KeyCode::KEY_2; charCode = CharCode::KEY_2;
-    } else if (params.ex_origKey == KeyCode::D) {
+    } else if (RemapUtil::isKey(params, KeyCode::D)) {
       keyCode = KeyCode::KEY_3; charCode = CharCode::KEY_3;
-    } else if (params.ex_origKey == KeyCode::F) {
+    } else if (RemapUtil::isKey(params, KeyCode::F)) {
       keyCode = KeyCode::KEY_4; charCode = CharCode::KEY_4;
-    } else if (params.ex_origKey == KeyCode::G) {
+    } else if (RemapUtil::isKey(params, KeyCode::G)) {
       keyCode = KeyCode::KEY_5; charCode = CharCode::KEY_5;
-    } else if (params.ex_origKey == KeyCode::H) {
+    } else if (RemapUtil::isKey(params, KeyCode::H)) {
       keyCode = KeyCode::KEY_6; charCode = CharCode::KEY_6;
-    } else if (params.ex_origKey == KeyCode::J) {
+    } else if (RemapUtil::isKey(params, KeyCode::J)) {
       keyCode = KeyCode::KEY_7; charCode = CharCode::KEY_7;
-    } else if (params.ex_origKey == KeyCode::K) {
+    } else if (RemapUtil::isKey(params, KeyCode::K)) {
       keyCode = KeyCode::KEY_8; charCode = CharCode::KEY_8;
-    } else if (params.ex_origKey == KeyCode::L) {
+    } else if (RemapUtil::isKey(params, KeyCode::L)) {
       keyCode = KeyCode::KEY_9; charCode = CharCode::KEY_9;
     }
 
     if (keyCode != KeyCode::NONE) {
-      RemapUtil::fireKeyWithAllModifiers(params, keyCode, charCode);
+      if (*(params.eventType) == KeyEvent::DOWN) {
+        RemapUtil::fireKeyWithAllModifiers_down(params, keyCode, charCode);
+      } else if (*(params.eventType) == KeyEvent::UP) {
+        RemapUtil::fireKeyWithAllModifiers_up(params, keyCode, charCode);
+      }
       *(params.ex_dropKey) = true;
     }
   }
