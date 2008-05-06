@@ -218,8 +218,8 @@
           <name>Retain Eject Key</name>
           <list>
             <item>
-              <name>Command_L+Eject to Command_L+Eject</name>
-              <sysctl>option.retain_eject_commandL</sysctl>
+              <name>Control_L+Eject to Control_L+Eject</name>
+              <sysctl>option.retain_eject_controlL</sysctl>
             </item>
             <item>
               <name>Shift_L+Eject to Eject</name>
