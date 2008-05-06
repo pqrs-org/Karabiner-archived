@@ -21,4 +21,19 @@
   [task_save waitUntilExit];
 }
 
++ (NSString *) getExecResult:(NSString *)path args:(NSArray *)args
+{
+  NSTask *task = [[NSTask alloc] init];
+  NSPipe *pipe = [NSPipe pipe];
+  [task setStandardOutput:pipe];
+  [task setLaunchPath:path];
+  [task setArguments:args];
+  [task launch];
+  [task waitUntilExit];
+
+  NSData *data = [[pipe fileHandleForReading] readDataToEndOfFile];
+  NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+  return result;
+}
+
 @end
