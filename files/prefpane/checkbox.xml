@@ -618,8 +618,16 @@
           <sysctl>remap.commandTab2optionTab</sysctl>
         </item>
         <item>
+          <name>Command+Tab to F5</name>
+          <sysctl>remap.commandTab2f5</sysctl>
+        </item>
+        <item>
           <name>Option+Tab to F5</name>
           <sysctl>remap.optionTab2f5</sysctl>
+        </item>
+        <item>
+          <name>Option+Tab to Command+Tab</name>
+          <sysctl>remap.optionTab2commandTab</sysctl>
         </item>
       </list>
     </item>
