@@ -1,1 +1,1 @@
-../../src/server/getActiveApplicationName.m
+../../src/core/server/getActiveApplicationName.m

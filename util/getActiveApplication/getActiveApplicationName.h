@@ -1,1 +1,1 @@
-../../src/server/getActiveApplicationName.h
+../../src/core/server/getActiveApplicationName.h
