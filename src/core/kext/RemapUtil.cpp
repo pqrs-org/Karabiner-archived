@@ -342,7 +342,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapUtil::ejectToKey(const RemapConsumerParams &params, KeyCode::KeyCode toKeyCode) {
     if (*(params.key) == ConsumerKeyCode::EJECT) {
-      if (config.option_retain_eject_commandL && allFlagStatus.commandL.isHeldDown()) {
+      if (config.option_retain_eject_controlL && allFlagStatus.controlL.isHeldDown()) {
+        *(params.flags) = ModifierFlag::CONTROL_L;
         return;
       }
       if (config.option_retain_eject_shiftL && allFlagStatus.shiftL.isHeldDown()) {
