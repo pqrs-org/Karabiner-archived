@@ -314,6 +314,23 @@ namespace {
     }
     return value;
   }
+
+  void
+  stripString(char *buf, size_t buflen)
+  {
+    char *p = buf;
+    for (;;) {
+      if (! isspace(*p)) break;
+      ++p;
+    }
+    char *q = p;
+    for (;;) {
+      if (*q == '\0' || *q == '\r' || *q == '\n') break;
+      ++q;
+    }
+    *q = '\0';
+    snprintf(buf, buflen, p);
+  }
 }
 
 
@@ -353,7 +370,13 @@ main(int argc, char **argv)
       goto finish;
     }
     int index = atoi(argv[2]);
-    isSuccess = renameConfig(index, argv[3]);
+    char buf[512];
+    snprintf(buf, sizeof(buf), "%s", argv[3]);
+    stripString(buf, sizeof(buf));
+    if (buf[0] == '\0') {
+      snprintf(buf, sizeof(buf), "(null)");
+    }
+    isSuccess = renameConfig(index, buf);
 
   } else if (strcmp(argv[1], "count") == 0) {
     printf("%d\n", getConfigCount());
@@ -379,7 +402,13 @@ main(int argc, char **argv)
     int index = atoi(argv[2]);
     CFStringRef name = getConfigName(index);
     if (name) {
-      printf("%s\n", CFStringGetCStringPtr(name, kCFStringEncodingUTF8));
+      char buf[512];
+      if (CFStringGetCString(name, buf, sizeof(buf), kCFStringEncodingUTF8)) {
+        stripString(buf, sizeof(buf));
+        printf("%s\n", buf);
+      } else {
+        printf("(null)\n", buf);
+      }
     }
     return 0;
 
