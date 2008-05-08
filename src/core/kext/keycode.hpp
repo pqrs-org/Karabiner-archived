@@ -213,9 +213,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       POWERBOOK = 207,
 
       Logitech_DI_NOVO_KEYBOARD = 41,
+      REALFORCE91UBK = 42,
 
-      JIS_MACBOOK_2008 = 42,
       JIS_MACBOOK = 43,
+      JIS_MACBOOK_2008 = 45,
       JIS_APPLE_USB_KEYBOARD = 36,
       JIS_PC_USB_KEYBOARD = 42,
       JIS_HAPPY_HACKING_KEYBOARD = 40,
