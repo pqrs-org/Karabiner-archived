@@ -117,7 +117,9 @@ private:
   static bool notifierfunc_unhookPointing(org_pqrs_driver_KeyRemap4MacBook *self, void *ref, IOService *newService);
 
   static bool replaceKeyboardEvent(org_pqrs_driver_KeyRemap4MacBook *self, IOHIKeyboard *kbd);
+  static bool restoreKeyboardEvent(org_pqrs_driver_KeyRemap4MacBook *self, IOHIKeyboard *kbd);
   static bool replacePointingEvent(org_pqrs_driver_KeyRemap4MacBook *self, IOHIPointing *pointing);
+  static bool restorePointingEvent(org_pqrs_driver_KeyRemap4MacBook *self, IOHIPointing *pointing);
 
   IONotifier *notifier_hookKeyboard;
   IONotifier *notifier_unhookKeyboard;
