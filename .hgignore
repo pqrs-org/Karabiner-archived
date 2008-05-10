@@ -15,3 +15,4 @@ src/core/kext/Info.plist
 src/util/launchd/Info.plist
 src/util/prefpane/Info.plist
 src/util/statusbar/Info.plist
+src/core/kext/version.hpp
