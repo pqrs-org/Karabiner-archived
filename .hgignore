@@ -10,3 +10,8 @@ pkgroot/
 src/core/kext/config/output
 util/getActiveApplication/getname
 files/share/reset
+pkginfo/Info.plist
+src/core/kext/Info.plist
+src/util/launchd/Info.plist
+src/util/prefpane/Info.plist
+src/util/statusbar/Info.plist
