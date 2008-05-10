@@ -5,8 +5,6 @@ version=$(cat version)
 packagemaker=/Developer/Applications/Utilities/PackageMaker.app/Contents/MacOS/PackageMaker
 pkgName="KeyRemap4MacBook-${version}.pkg"
 
-echo "char * const config_version = \"$version\";" > src/core/kext/version.hpp
-
 make clean build || exit $?
 
 # --------------------------------------------------
