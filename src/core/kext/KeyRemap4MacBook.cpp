@@ -447,6 +447,9 @@ org_pqrs_driver_KeyRemap4MacBook::refreshHookedDevice(OSObject *owner, IOTimerEv
   for (int i = 0; i < MAXNUM_KEYBOARD; ++i) {
     hookedKeyboard[i].refresh();
   }
+  for (int i = 0; i < MAXNUM_CONSUMER; ++i) {
+    hookedConsumer[i].refresh();
+  }
   for (int i = 0; i < MAXNUM_POINTING; ++i) {
     hookedPointing[i].refresh();
   }
@@ -473,11 +476,7 @@ org_pqrs_driver_KeyRemap4MacBook::notifierfunc_unhookKeyboard(org_pqrs_driver_Ke
   IOLog("KeyRemap4MacBook::notifierfunc_unhookKeyboard\n");
 
   IOHIKeyboard *kbd = OSDynamicCast(IOHIKeyboard, newService);
-  HookedKeyboard *p = search_hookedKeyboard(kbd);
-  if (! p) return false;
-
-  p->terminate(self->workLoop);
-  return true;
+  return restoreKeyboardEvent(self, kbd);
 }
 
 bool
@@ -495,11 +494,7 @@ org_pqrs_driver_KeyRemap4MacBook::notifierfunc_unhookPointing(org_pqrs_driver_Ke
   IOLog("KeyRemap4MacBook::notifierfunc_unhookPointing\n");
 
   IOHIPointing *pointing = OSDynamicCast(IOHIPointing, newService);
-  HookedPointing *p = search_hookedPointing(pointing);
-  if (! p) return false;
-
-  p->terminate();
-  return true;
+  return restorePointingEvent(self, pointing);
 }
 
 // --------------------------------------------------
@@ -535,6 +530,20 @@ org_pqrs_driver_KeyRemap4MacBook::replaceKeyboardEvent(org_pqrs_driver_KeyRemap4
 }
 
 bool
+org_pqrs_driver_KeyRemap4MacBook::restoreKeyboardEvent(org_pqrs_driver_KeyRemap4MacBook *self, IOHIKeyboard *kbd)
+{
+  if (! kbd) return false;
+
+  HookedKeyboard *pk = search_hookedKeyboard(kbd);
+  if (pk) pk->terminate(self->workLoop);
+
+  HookedConsumer *pc = search_hookedConsumer(kbd);
+  if (pc) pc->terminate();
+
+  return true;
+}
+
+bool
 org_pqrs_driver_KeyRemap4MacBook::replacePointingEvent(org_pqrs_driver_KeyRemap4MacBook *self, IOHIPointing *pointing)
 {
   if (! pointing) return false;
@@ -554,6 +563,17 @@ org_pqrs_driver_KeyRemap4MacBook::replacePointingEvent(org_pqrs_driver_KeyRemap4
   } else {
     IOLog("KeyRemap4MacBook::replacePointingEvent ignore device [%s]\n", name);
   }
+
+  return true;
+}
+
+bool
+org_pqrs_driver_KeyRemap4MacBook::restorePointingEvent(org_pqrs_driver_KeyRemap4MacBook *self, IOHIPointing *pointing)
+{
+  if (! pointing) return false;
+
+  HookedPointing *p = search_hookedPointing(pointing);
+  if (p) p->terminate();
 
   return true;
 }
