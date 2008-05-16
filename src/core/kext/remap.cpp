@@ -530,6 +530,15 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
+  remap_help2f13(const RemapParams &params)
+  {
+    if (! config.remap_help2f13) return;
+
+    RemapUtil::keyToKey(params, KeyCode::HELP, KeyCode::F13);
+  }
+
+  // ----------------------------------------
+  void
   remap_clear2tab(const RemapParams &params)
   {
     if (! config.remap_clear2tab) return;
@@ -2401,6 +2410,8 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_f1_to_f14(params);
   remap_f2_to_f15(params);
   remap_f16_to_tab(params);
+
+  remap_help2f13(params);
 
   remap_clear2tab(params);
   remap_keypadcomma2shiftComma(params);
