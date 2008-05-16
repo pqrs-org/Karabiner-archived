@@ -389,6 +389,16 @@
     </item>
 
     <item>
+      <name>Remap Help Key</name>
+      <list>
+        <item>
+          <name>Remap Help to F13</name>
+          <sysctl>remap.help2f13</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>Remap KeyPad Key</name>
       <list>
         <item>
