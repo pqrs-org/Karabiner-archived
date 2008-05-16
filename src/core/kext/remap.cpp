@@ -97,6 +97,14 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
+  remap_commandR2commandR_commandSpace(const RemapParams &params)
+  {
+    if (! config.remap_commandR2commandR_commandSpace) return;
+    static KeyOverlayedModifier kom;
+    kom.remap(params, KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, FireFunc::firefunc_commandSpace);
+  }
+
+  void
   remap_commandR2commandR_enter(const RemapParams &params)
   {
     if (! config.remap_commandR2commandR_enter) return;
@@ -2317,7 +2325,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_commandL2shiftL(params);
   remap_commandL2backquote(params);
 
-  remap_commandR2commandR_enter(params);
   remap_commandR2controlL(params);
   remap_commandR2fn(params);
   remap_commandR2optionL(params);
@@ -2504,6 +2511,8 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   // ------------------------------------------------------------
   // *** Note: we need to call remap_space2shift, remap_enter2optionL_commandSpace (has SandS like behavior) as possible late. ***
   // *** If any keyToModifier or modifierToKey remappings are enabled, miss-cancelling are occured. ***
+  remap_commandR2commandR_commandSpace(params);
+  remap_commandR2commandR_enter(params);
   remap_enter2optionL_commandSpace(params);
   remap_enter2optionR_commandSpace(params);
   remap_space2controlL_space(params);
