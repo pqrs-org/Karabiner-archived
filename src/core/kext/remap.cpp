@@ -2263,6 +2263,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
+  void
+  remap_jis_jansi(const RemapParams &params)
+  {
+    if (! config.remap_jis_jansi) return;
+
+    *(params.keyboardType) = KeyboardType::MACBOOK;
+    RemapUtil::keyToKey(params, KeyCode::JIS_YEN, KeyCode::BACKQUOTE);
+    RemapUtil::keyToKey(params, KeyCode::JIS_UNDERSCORE, KeyCode::BACKQUOTE);
+  }
+
   // ------------------------------------------------------------
   void
   remap_eject2forwarddelete(const RemapConsumerParams &params)
@@ -2511,6 +2521,8 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_jis_yen2backslash(params);
 
   remap_jis_app_vi_eisuu2eisuu_escape(params);
+
+  remap_jis_jansi(params);
 
   // ------------------------------------------------------------
   // *** Note: we need to call remap_drop_funcshift after tab2f9, pc_application2f11, ... ***
