@@ -1103,6 +1103,15 @@
           </list>
         </item>
         <item>
+          <name>Remap Space Key</name>
+          <list>
+            <item>
+              <name>Shift+Space to KANA/EISUU (toggle)</name>
+              <sysctl>remap.jis_shiftSpace2toggle_kana_eisuu</sysctl>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Remap EISUU Key</name>
           <list>
             <item>

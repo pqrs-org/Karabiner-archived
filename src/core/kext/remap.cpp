@@ -2156,6 +2156,27 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_jis_shiftSpace2toggle_kana_eisuu(const RemapParams &params)
+  {
+    if (! config.remap_jis_shiftSpace2toggle_kana_eisuu) return;
+
+    if (! RemapUtil::isKey(params, KeyCode::SPACE)) return;
+
+    if (allFlagStatus.shiftL.isHeldDown() || allFlagStatus.shiftR.isHeldDown()) {
+      if (allFlagStatus.shiftL.isHeldDown()) {
+        allFlagStatus.shiftL.temporary_decrease();
+      } else {
+        allFlagStatus.shiftR.temporary_decrease();
+      }
+
+      if (*(params.eventType) == KeyEvent::DOWN) {
+        FireFunc::firefunc_jis_toggle_eisuu_kana(params);
+      }
+      *(params.ex_dropKey) = true;
+    }
+  }
+
+  void
   remap_jis_commandL2commandL_eisuu(const RemapParams &params)
   {
     if (! config.remap_jis_commandL2commandL_eisuu) return;
@@ -2461,6 +2482,8 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_jis_optionR2eisuu(params);
   remap_jis_optionR2kana(params);
   remap_jis_unify_kana_eisuu_to_optionR(params);
+
+  remap_jis_shiftSpace2toggle_kana_eisuu(params);
 
   remap_jis_eisuu2commandL(params);
   remap_jis_eisuu2controlL(params);
