@@ -116,6 +116,11 @@
       <list>
         <item>
           <name>Command_R to Command_R</name>
+          <appendix>(+ When you type Command_R only, send Command+Space)</appendix>
+          <sysctl>remap.commandR2commandR_commandSpace</sysctl>
+        </item>
+        <item>
+          <name>Command_R to Command_R</name>
           <appendix>(+ When you type Command_R only, send Enter)</appendix>
           <sysctl>remap.commandR2commandR_enter</sysctl>
         </item>
