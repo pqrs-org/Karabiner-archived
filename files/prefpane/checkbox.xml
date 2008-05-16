@@ -1248,6 +1248,15 @@
             </item>
           </list>
         </item>
+        <item>
+          <name>Change Keyboard Layout</name>
+          <list>
+            <item>
+              <name>Use Japanese Keyboard as ASCII Keyboard</name>
+              <sysctl>remap.jis_jansi</sysctl>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
   </list>
