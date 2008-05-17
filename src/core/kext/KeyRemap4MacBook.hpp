@@ -22,8 +22,22 @@ private:
     MAXNUM_POINTING = 4,
   };
 
+  class TimerWrapper {
+  public:
+    TimerWrapper(void) { workLoop = NULL; timer = NULL; }
+    void initialize(IOWorkLoop *_workLoop, OSObject *owner, IOTimerEventSource::Action func);
+    void terminate(void);
+
+    void setTimeoutMS(int interval) { if (timer) timer->setTimeoutMS(interval); }
+    void cancelTimeout(void) { if (timer) timer->cancelTimeout(); }
+
+  private:
+    IOWorkLoop *workLoop;
+    IOTimerEventSource *timer;
+  };
+
   IOWorkLoop *workLoop;
-  IOTimerEventSource *refreshTimer;
+  TimerWrapper timer_refresh;
 
   // ------------------------------------------------------------
   struct HookedKeyboard {
@@ -33,7 +47,7 @@ private:
     OSObject *origEventTarget;
 
     // for keyrepeat
-    IOTimerEventSource *timer;
+    TimerWrapper timer_repeat;
     struct RepeatInfo {
       unsigned int flags;
       unsigned int key;
@@ -47,6 +61,8 @@ private:
       OSObject *sender;
       void *refcon;
     } repeat;
+
+    TimerWrapper timer_extraRepeat;
 
     void initialize(IOHIKeyboard *_kbd, IOWorkLoop *workLoop);
     void refresh(void);
@@ -146,6 +162,7 @@ private:
                                     void *refcon);
 
   static void doKeyRepeat(OSObject *owner, IOTimerEventSource *sender);
+  static void doExtraKeyRepeat(OSObject *owner, IOTimerEventSource *sender);
 
   // --------------------
   static void keyboardSpecialEventCallBack(OSObject *target,
