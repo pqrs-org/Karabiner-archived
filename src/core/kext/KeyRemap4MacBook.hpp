@@ -70,6 +70,8 @@ private:
   struct HookedConsumer {
     IOHIKeyboard *kbd;
     KeyboardSpecialEventCallback origSpecialEventCallback;
+    // save SpecialEventTarget for keyToConsumer
+    OSObject *origSpecialEventTarget;
 
     void initialize(IOHIKeyboard *_kbd);
     void refresh(void);
@@ -78,6 +80,7 @@ private:
   static HookedConsumer hookedConsumer[MAXNUM_CONSUMER];
   static HookedConsumer *new_hookedConsumer(void);
   static HookedConsumer *search_hookedConsumer(const IOHIKeyboard *kbd);
+  static HookedConsumer *get_1stHookedConsumer(void);
   static KeyboardSpecialEventCallback getKeyboardSpecialEventCallback(IOHIKeyboard *kbd) {
     return reinterpret_cast<KeyboardSpecialEventCallback>(kbd->_keyboardSpecialEventAction);
   }

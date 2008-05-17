@@ -374,12 +374,12 @@
       <name>Remap F1..F16 Key</name>
       <list>
         <item>
-          <name>F1 to F14 (= Brightness Down)</name>
-          <sysctl>remap.f1_to_f14</sysctl>
+          <name>F1 to Brightness Down</name>
+          <sysctl>remap.f1_to_brightnessdown</sysctl>
         </item>
         <item>
-          <name>F2 to F15 (= Brightness Up)</name>
-          <sysctl>remap.f2_to_f15</sysctl>
+          <name>F2 to Brightness Up</name>
+          <sysctl>remap.f2_to_brightnessup</sysctl>
         </item>
         <item>
           <name>F16 to Tab</name>

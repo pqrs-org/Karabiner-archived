@@ -279,6 +279,8 @@ org_pqrs_driver_KeyRemap4MacBook::HookedConsumer::refresh(void)
     origSpecialEventCallback = oldCallback;
     kbd->_keyboardSpecialEventAction = reinterpret_cast<KeyboardSpecialEventAction>(newCallback);
 
+    origSpecialEventTarget = kbd->_keyboardSpecialEventTarget;
+
     IOLog("KeyRemap4MacBook::HookedConsumer::refresh KeyboardSpecialEventAction\n");
   }
 }
@@ -397,6 +399,17 @@ org_pqrs_driver_KeyRemap4MacBook::search_hookedConsumer(const IOHIKeyboard *kbd)
   }
   for (int i = 0; i < MAXNUM_CONSUMER; ++i) {
     if (hookedConsumer[i].kbd == kbd) {
+      return hookedConsumer + i;
+    }
+  }
+  return NULL;
+}
+
+org_pqrs_driver_KeyRemap4MacBook::HookedConsumer *
+org_pqrs_driver_KeyRemap4MacBook::get_1stHookedConsumer(void)
+{
+  for (int i = 0; i < MAXNUM_CONSUMER; ++i) {
+    if (hookedConsumer[i].kbd) {
       return hookedConsumer + i;
     }
   }
@@ -615,6 +628,7 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardEventCallBack(OSObject *target,
 
       // ------------------------------------------------------------
       org_pqrs_KeyRemap4MacBook::listFireExtraKey.reset();
+      org_pqrs_KeyRemap4MacBook::listFireConsumerKey.reset();
       org_pqrs_KeyRemap4MacBook::listFirePointingClick.reset();
 
       bool ex_dropKey = false;
@@ -648,6 +662,14 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardEventCallBack(OSObject *target,
         HookedPointing *hp = get_1stHookedPointing();
         if (hp) {
           org_pqrs_KeyRemap4MacBook::listFirePointingClick.fire(hp->origRelativePointerEventCallback, hp->relativePointerEventTarget, hp->pointing, ts);
+        }
+      }
+
+      // consumer emulation
+      if (! org_pqrs_KeyRemap4MacBook::listFireConsumerKey.isEmpty()) {
+        HookedConsumer *hc = get_1stHookedConsumer();
+        if (hc) {
+          org_pqrs_KeyRemap4MacBook::listFireConsumerKey.fire(hc->origSpecialEventCallback, hc->origSpecialEventTarget, ts, sender, refcon);
         }
       }
 
@@ -704,7 +726,7 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardSpecialEventCallBack(OSObject *target,
     if (p) {
       if (p->origSpecialEventCallback) {
         if (org_pqrs_KeyRemap4MacBook::config.debug) {
-          printf("caught keyboardSpecialEventCallBack: eventType %d, flags 0x%x, key %d, flavor %d\n", eventType, flags, key, flavor);
+          printf("caught keyboardSpecialEventCallBack: eventType %d, flags 0x%x, key %d, flavor %d, guid %d\n", eventType, flags, key, flavor, guid);
         }
 
         org_pqrs_KeyRemap4MacBook::listFireExtraKey.reset();
