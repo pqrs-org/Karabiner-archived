@@ -110,6 +110,33 @@ namespace org_pqrs_KeyRemap4MacBook {
     void reset(void);
 
     FlagStatus *getFlagStatus(ModifierFlag::ModifierFlag flag);
+
+    bool isHeldDown_command(void) { return commandL.isHeldDown() || commandR.isHeldDown(); }
+    bool isHeldDown_control(void) { return controlL.isHeldDown() || controlR.isHeldDown(); }
+    bool isHeldDown_option(void) { return optionL.isHeldDown() || optionR.isHeldDown(); }
+    bool isHeldDown_shift(void) { return shiftL.isHeldDown() || shiftR.isHeldDown(); }
+
+    void temporaryDecrease_command(void) {
+      if (commandL.isHeldDown()) {
+        commandL.temporary_decrease();
+      } else {
+        commandR.temporary_decrease();
+      }
+    }
+    void temporaryDecrease_option(void) {
+      if (optionL.isHeldDown()) {
+        optionL.temporary_decrease();
+      } else {
+        optionR.temporary_decrease();
+      }
+    }
+    void temporaryDecrease_shift(void) {
+      if (shiftR.isHeldDown()) {
+        shiftL.temporary_decrease();
+      } else {
+        shiftR.temporary_decrease();
+      }
+    }
   };
   extern AllFlagStatus allFlagStatus;
 
