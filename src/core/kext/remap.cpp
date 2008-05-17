@@ -521,6 +521,30 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_f3_to_volumemute(const RemapParams &params)
+  {
+    if (! config.remap_f3_to_volumemute) return;
+
+    RemapUtil::keyToConsumer(params, KeyCode::F3, ConsumerKeyCode::VOLUME_MUTE);
+  }
+
+  void
+  remap_f4_to_volumedown(const RemapParams &params)
+  {
+    if (! config.remap_f4_to_volumedown) return;
+
+    RemapUtil::keyToConsumer(params, KeyCode::F4, ConsumerKeyCode::VOLUME_DOWN);
+  }
+
+  void
+  remap_f5_to_volumeup(const RemapParams &params)
+  {
+    if (! config.remap_f5_to_volumeup) return;
+
+    RemapUtil::keyToConsumer(params, KeyCode::F5, ConsumerKeyCode::VOLUME_UP);
+  }
+
+  void
   remap_f16_to_tab(const RemapParams &params)
   {
     if (! config.remap_f16_to_tab) return;
@@ -2409,6 +2433,9 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   remap_f1_to_brightnessdown(params);
   remap_f2_to_brightnessup(params);
+  remap_f3_to_volumemute(params);
+  remap_f4_to_volumedown(params);
+  remap_f5_to_volumeup(params);
   remap_f16_to_tab(params);
 
   remap_help2f13(params);

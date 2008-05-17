@@ -382,6 +382,18 @@
           <sysctl>remap.f2_to_brightnessup</sysctl>
         </item>
         <item>
+          <name>F3 to Volume Mute</name>
+          <sysctl>remap.f3_to_volumemute</sysctl>
+        </item>
+        <item>
+          <name>F4 to Volume Down</name>
+          <sysctl>remap.f4_to_volumedown</sysctl>
+        </item>
+        <item>
+          <name>F5 to Volume Up</name>
+          <sysctl>remap.f5_to_volumeup</sysctl>
+        </item>
+        <item>
           <name>F16 to Tab</name>
           <sysctl>remap.f16_to_tab</sysctl>
         </item>
