@@ -225,6 +225,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   namespace ConsumerKeyCode {
     enum ConsumerKeyCode {
+      VOLUME_UP = 0,
+      VOLUME_DOWN = 1,
+      VOLUME_MUTE = 7,
+      BRIGHTNESS_UP = 2,
+      BRIGHTNESS_DOWN = 3,
       EJECT = 14,
     };
   }

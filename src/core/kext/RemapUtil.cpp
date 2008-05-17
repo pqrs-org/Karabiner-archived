@@ -7,6 +7,7 @@
 namespace org_pqrs_KeyRemap4MacBook {
   AllFlagStatus allFlagStatus;
   ListFireExtraKey listFireExtraKey;
+  ListFireConsumerKey listFireConsumerKey;
   ListFirePointingClick listFirePointingClick;
   FirePointingScroll firePointingScroll;
   ClickWatcher clickWatcher;
@@ -337,6 +338,14 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool *status = pointingButtonStatus.getButtonStatus(toButton);
       if (status) *status = false;
     }
+  }
+
+  bool
+  RemapUtil::keyToConsumer(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ConsumerKeyCode::ConsumerKeyCode toKeyCode) {
+    if (! RemapUtil::isKey(params, fromKeyCode)) return false;
+    listFireConsumerKey.add(*(params.eventType), 0, toKeyCode);
+    *(params.ex_dropKey) = true;
+    return true;
   }
 
   void
@@ -677,17 +686,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   void
-  ListFireExtraKey::add(FireExtraKey::Type type, unsigned int eventType, unsigned int flags, unsigned int key, unsigned int charCode)
-  {
-    if (size >= FIREEXTRAKEY_MAXNUM) {
-      printf("ListFireExtraKey::add overflow\n");
-      return;
-    }
-    list[size].set(type, eventType, flags, key, charCode);
-    ++size;
-  }
-
-  void
   ListFireExtraKey::fire(FireExtraKey::Type type, KeyboardEventCallback callback,
                          OSObject *target,
                          unsigned int charSet, unsigned int origCharCode, unsigned int origCharSet, AbsoluteTime ts,
@@ -703,6 +701,19 @@ namespace org_pqrs_KeyRemap4MacBook {
                  charSet, origCharCode, origCharSet,
                  KeyboardType::MACBOOK, false, ts, sender, refcon);
       }
+    }
+  }
+
+  void
+  ListFireConsumerKey::fire(KeyboardSpecialEventCallback callback, OSObject *target, AbsoluteTime ts, OSObject *sender, void *refcon)
+  {
+    if (callback == NULL) return;
+
+    for (int i = 0; i < size; ++i) {
+      FireConsumerKey &item = list[i];
+      unsigned int flavor = item.getKey();
+      unsigned int guid = -1;
+      callback(target, item.getEventType(), item.getFlags(), item.getKey(), flavor, guid, false, ts, sender, refcon);
     }
   }
 

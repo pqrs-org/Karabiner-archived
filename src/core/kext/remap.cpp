@@ -505,19 +505,19 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
-  remap_f1_to_f14(const RemapParams &params)
+  remap_f1_to_brightnessdown(const RemapParams &params)
   {
-    if (! config.remap_f1_to_f14) return;
+    if (! config.remap_f1_to_brightnessdown) return;
 
-    RemapUtil::keyToKey(params, KeyCode::F1, KeyCode::F14);
+    RemapUtil::keyToConsumer(params, KeyCode::F1, ConsumerKeyCode::BRIGHTNESS_DOWN);
   }
 
   void
-  remap_f2_to_f15(const RemapParams &params)
+  remap_f2_to_brightnessup(const RemapParams &params)
   {
-    if (! config.remap_f2_to_f15) return;
+    if (! config.remap_f2_to_brightnessup) return;
 
-    RemapUtil::keyToKey(params, KeyCode::F2, KeyCode::F15);
+    RemapUtil::keyToConsumer(params, KeyCode::F2, ConsumerKeyCode::BRIGHTNESS_UP);
   }
 
   void
@@ -2407,8 +2407,8 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   remap_forwarddelete2delete(params);
 
-  remap_f1_to_f14(params);
-  remap_f2_to_f15(params);
+  remap_f1_to_brightnessdown(params);
+  remap_f2_to_brightnessup(params);
   remap_f16_to_tab(params);
 
   remap_help2f13(params);
