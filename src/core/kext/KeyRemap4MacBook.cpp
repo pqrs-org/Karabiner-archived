@@ -13,6 +13,22 @@ org_pqrs_driver_KeyRemap4MacBook::HookedKeyboard org_pqrs_driver_KeyRemap4MacBoo
 org_pqrs_driver_KeyRemap4MacBook::HookedConsumer org_pqrs_driver_KeyRemap4MacBook::hookedConsumer[MAXNUM_CONSUMER];
 org_pqrs_driver_KeyRemap4MacBook::HookedPointing org_pqrs_driver_KeyRemap4MacBook::hookedPointing[MAXNUM_POINTING];
 
+namespace {
+  int getconfig_repeat_initial_wait(void) {
+    const int MINVAL = 200;
+    int value = org_pqrs_KeyRemap4MacBook::config.repeat_initial_wait;
+    if (value < MINVAL) return MINVAL;
+    return value;
+  }
+
+  int getconfig_repeat_wait(void) {
+    const int MINVAL = 5;
+    int value = org_pqrs_KeyRemap4MacBook::config.repeat_wait;
+    if (value < MINVAL) return MINVAL;
+    return value;
+  }
+}
+
 // ----------------------------------------------------------------------
 // http://developer.apple.com/documentation/DeviceDrivers/Conceptual/WritingDeviceDriver/CPluPlusRuntime/chapter_2_section_3.html
 
@@ -248,10 +264,7 @@ org_pqrs_driver_KeyRemap4MacBook::HookedKeyboard::setRepeatInfo(unsigned int eve
     repeat.sender = kbd;
     repeat.refcon = refcon;
 
-    int initial = org_pqrs_KeyRemap4MacBook::config.repeat_initial_wait;
-    const int MINVAL = 200;
-    if (initial < MINVAL) initial = MINVAL;
-    timer_repeat.setTimeoutMS(initial);
+    timer_repeat.setTimeoutMS(getconfig_repeat_initial_wait());
 
     if (org_pqrs_KeyRemap4MacBook::config.debug) {
       printf("KeyRemap4MacBook::setRepeatInfo set\n");
@@ -707,15 +720,20 @@ org_pqrs_driver_KeyRemap4MacBook::doKeyRepeat(OSObject *owner, IOTimerEventSourc
                          r->charSet, r->origCharCode, r->origCharSet, r->keyboardType, true, r->ts, r->sender, r->refcon);
   }
 
-  int speed = org_pqrs_KeyRemap4MacBook::config.repeat_wait;
-  const int MINVAL = 5;
-  if (speed < MINVAL) speed = MINVAL;
-  sender->setTimeoutMS(speed);
+  sender->setTimeoutMS(getconfig_repeat_wait());
 }
 
 void
 org_pqrs_driver_KeyRemap4MacBook::doExtraKeyRepeat(OSObject *owner, IOTimerEventSource *sender)
 {
+  HookedKeyboard *p = reinterpret_cast<HookedKeyboard *>(owner);
+  HookedKeyboard::ExtraRepeatInfo *r = &(p->extraRepeat);
+
+  if (p->origEventCallback) {
+    r->func(p->origEventCallback, r->flags);
+  }
+
+  sender->setTimeoutMS(getconfig_repeat_wait());
 }
 
 // --------------------

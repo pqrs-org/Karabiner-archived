@@ -63,6 +63,10 @@ private:
     } repeat;
 
     TimerWrapper timer_extraRepeat;
+    struct ExtraRepeatInfo {
+      unsigned int flags;
+      void (*func)(KeyboardEventCallback callback, unsigned int flags);
+    } extraRepeat;
 
     void initialize(IOHIKeyboard *_kbd, IOWorkLoop *workLoop);
     void refresh(void);
