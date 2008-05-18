@@ -998,7 +998,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     } else {
       if (useAsModifier == false && isClick == false) {
-        firefunc(params);
+        if (extraRepeatFunc == NULL || params.ex_extraRepeatCounter == 0) {
+          firefunc(params);
+        }
       }
       clickWatcher.unset(&isClick);
     }

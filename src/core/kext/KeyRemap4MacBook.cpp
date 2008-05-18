@@ -297,6 +297,7 @@ org_pqrs_driver_KeyRemap4MacBook::HookedKeyboard::setExtraRepeatInfo(org_pqrs_Ke
     extraRepeat.sender = kbd;
     extraRepeat.refcon = refcon;
     extraRepeat.func = func;
+    extraRepeat.counter = 0;
     timer_extraRepeat.setTimeoutMS(getconfig_keyoverlaidmodifier_initial_wait());
 
   } else {
@@ -690,6 +691,7 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardEventCallBack(OSObject *target,
         &activeApplicationInfo,
         &ex_extraRepeatFunc,
         &ex_extraRepeatFlags,
+        (p->extraRepeat).counter,
       };
 
       bool skip = false;
@@ -770,6 +772,7 @@ org_pqrs_driver_KeyRemap4MacBook::doExtraKeyRepeat(OSObject *owner, IOTimerEvent
   if (p->origEventCallback) {
     r->func(p->origEventCallback, r->target, r->flags, r->ts, r->sender, r->refcon);
   }
+  ++(r->counter);
 
   sender->setTimeoutMS(getconfig_repeat_wait());
 }

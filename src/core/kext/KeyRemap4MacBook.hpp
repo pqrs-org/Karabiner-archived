@@ -70,6 +70,7 @@ private:
       OSObject *sender;
       void *refcon;
       org_pqrs_KeyRemap4MacBook::ExtraRepeatFunc::ExtraRepeatFunc func;
+      unsigned int counter;
     } extraRepeat;
 
     void initialize(IOHIKeyboard *_kbd, IOWorkLoop *workLoop);

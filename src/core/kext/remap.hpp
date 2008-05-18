@@ -21,6 +21,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     KeyRemap4MacBook_bridge::ActiveApplicationInfo::Reply *activeApplicationInfo;
     ExtraRepeatFunc::ExtraRepeatFunc *ex_extraRepeatFunc;
     unsigned int *ex_extraRepeatFlags;
+    unsigned int ex_extraRepeatCounter;
   };
   void remap_core(const RemapParams &params);
 
