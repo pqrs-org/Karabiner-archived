@@ -23,7 +23,7 @@
 
 // ----------------------------------------------------------------------
 // for NSOutlineView
-- (id) normalizeItem:(id) item
+- (id) normalizeItem:(id)item
 {
   if (! _XMLDocument) return nil;
 
@@ -33,7 +33,7 @@
   return item;
 }
 
-- (int) numberOfChildren:(id) item
+- (int) numberOfChildren:(id)item
 {
   item = [self normalizeItem:item];
   if (! item) return 0;

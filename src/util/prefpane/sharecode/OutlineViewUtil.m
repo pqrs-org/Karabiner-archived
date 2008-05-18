@@ -37,7 +37,7 @@
 
       if (! [outlineView isItemExpanded:item]) continue;
 
-      [outlineView collapseItem:item];
+      [outlineView collapseItem:item collapseChildren:TRUE];
       nochange = false;
       break;
     }

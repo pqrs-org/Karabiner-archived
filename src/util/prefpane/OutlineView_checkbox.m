@@ -8,6 +8,7 @@
 static BUNDLEPREFIX_XMLTreeWrapper *_xmlTreeWrapper;
 static NSString *sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set";
 static NSString *sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_ctl";
+static BOOL showEnabledOnly = FALSE;
 
 - (id)init
 {
@@ -28,6 +29,14 @@ static NSString *sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
 - (IBAction) collapseALL:(id)sender
 {
   [BUNDLEPREFIX_OutlineViewUtil collapseALL:_outlineView_checkbox delegater:self];
+}
+
+- (IBAction) showEnabled:(id)sender
+{
+  showEnabledOnly = TRUE;
+  [BUNDLEPREFIX_OutlineViewUtil expandALL:_outlineView_checkbox];
+  [BUNDLEPREFIX_OutlineViewUtil collapseALL:_outlineView_checkbox delegater:self];
+  showEnabledOnly = FALSE;
 }
 
 // ------------------------------------------------------------
@@ -99,7 +108,11 @@ static NSString *sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldCollapseItem:(id)item
 {
-  return ! [self checkAnyChildrenChecked:item];
+  if (showEnabledOnly) {
+    return ! [self checkAnyChildrenChecked:item];
+  } else {
+    return TRUE;
+  }
 }
 
 - (float)outlineView:(NSOutlineView *)outlineView heightOfRowByItem:(id)item
