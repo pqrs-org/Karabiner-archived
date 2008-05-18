@@ -81,6 +81,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       F = 3,
       H = 4,
       G = 5,
+      X = 7,
       V = 9,
       B = 11,
       Q = 12,
@@ -183,6 +184,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       CURSOR_DOWN = 175,
 
       O = 111,
+      X = 120,
 
       KEY_0 = 48,
       KEY_1 = 49,

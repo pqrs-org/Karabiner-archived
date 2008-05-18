@@ -712,6 +712,10 @@
           <sysctl>option.emacsmode_controlAE</sysctl>
         </item>
         <item>
+          <name>Control+K to Shift+Right,Command+Shift+Right,Command+X</name>
+          <sysctl>option.emacsmode_controlK</sysctl>
+        </item>
+        <item>
           <name>Option+BF to Option+Left/Right</name>
           <sysctl>option.emacsmode_optionBF</sysctl>
         </item>
