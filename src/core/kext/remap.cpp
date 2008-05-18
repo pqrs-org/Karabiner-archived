@@ -517,6 +517,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_f1_to_brightnessdown) return;
 
+    bool is_virtualmachine = ((params.activeApplicationInfo)->is_virtualmachine || (params.activeApplicationInfo)->is_remotedesktopconnection);
+    if (is_virtualmachine && ! config.option_f1_f5_force_vm) return;
+
     RemapUtil::keyToConsumer(params, KeyCode::F1, ConsumerKeyCode::BRIGHTNESS_DOWN);
   }
 
@@ -524,6 +527,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   remap_f2_to_brightnessup(const RemapParams &params)
   {
     if (! config.remap_f2_to_brightnessup) return;
+
+    bool is_virtualmachine = ((params.activeApplicationInfo)->is_virtualmachine || (params.activeApplicationInfo)->is_remotedesktopconnection);
+    if (is_virtualmachine && ! config.option_f1_f5_force_vm) return;
 
     RemapUtil::keyToConsumer(params, KeyCode::F2, ConsumerKeyCode::BRIGHTNESS_UP);
   }
@@ -533,6 +539,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_f3_to_volumemute) return;
 
+    bool is_virtualmachine = ((params.activeApplicationInfo)->is_virtualmachine || (params.activeApplicationInfo)->is_remotedesktopconnection);
+    if (is_virtualmachine && ! config.option_f1_f5_force_vm) return;
+
     RemapUtil::keyToConsumer(params, KeyCode::F3, ConsumerKeyCode::VOLUME_MUTE);
   }
 
@@ -541,6 +550,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_f4_to_volumedown) return;
 
+    bool is_virtualmachine = ((params.activeApplicationInfo)->is_virtualmachine || (params.activeApplicationInfo)->is_remotedesktopconnection);
+    if (is_virtualmachine && ! config.option_f1_f5_force_vm) return;
+
     RemapUtil::keyToConsumer(params, KeyCode::F4, ConsumerKeyCode::VOLUME_DOWN);
   }
 
@@ -548,6 +560,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   remap_f5_to_volumeup(const RemapParams &params)
   {
     if (! config.remap_f5_to_volumeup) return;
+
+    bool is_virtualmachine = ((params.activeApplicationInfo)->is_virtualmachine || (params.activeApplicationInfo)->is_remotedesktopconnection);
+    if (is_virtualmachine && ! config.option_f1_f5_force_vm) return;
 
     RemapUtil::keyToConsumer(params, KeyCode::F5, ConsumerKeyCode::VOLUME_UP);
   }
