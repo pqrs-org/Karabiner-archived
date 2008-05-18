@@ -113,6 +113,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_commandR2commandR_enter_keyrepeat(const RemapParams &params)
+  {
+    if (! config.remap_commandR2commandR_enter_keyrepeat) return;
+    static KeyOverlaidModifier kom;
+    kom.remap(params, KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, FireFunc::firefunc_enter, ExtraRepeatFunc::extraRepeatFunc_enter);
+  }
+
+  void
   remap_commandR2controlL(const RemapParams &params)
   {
     if (! config.remap_commandR2controlL) return;
@@ -2582,6 +2590,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   // *** If any keyToModifier or modifierToKey remappings are enabled, miss-cancelling are occured. ***
   remap_commandR2commandR_commandSpace(params);
   remap_commandR2commandR_enter(params);
+  remap_commandR2commandR_enter_keyrepeat(params);
   remap_enter2optionL_commandSpace(params);
   remap_enter2optionR_commandSpace(params);
   remap_space2controlL_space(params);

@@ -125,6 +125,11 @@
           <sysctl>remap.commandR2commandR_enter</sysctl>
         </item>
         <item>
+          <name>Command_R to Command_R</name>
+          <appendix>(+ When you type Command_R only, send Enter) + [KeyRepeat]</appendix>
+          <sysctl>remap.commandR2commandR_enter_keyrepeat</sysctl>
+        </item>
+        <item>
           <name>Command_R to Control_L</name>
           <sysctl>remap.commandR2controlL</sysctl>
         </item>
