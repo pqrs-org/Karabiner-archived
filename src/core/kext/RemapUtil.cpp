@@ -896,6 +896,18 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // --------------------
   void
+  ExtraRepeatFunc::extraRepeatFunc_enter(KeyboardEventCallback callback, OSObject *target, unsigned int flags, AbsoluteTime ts, OSObject *sender, void *refcon)
+  {
+    if (callback == NULL) return;
+
+    unsigned int charSet = 0;
+    unsigned origCharCode = 0;
+    unsigned origCharSet = 0;
+    callback(target, KeyEvent::DOWN, flags, KeyCode::ENTER, CharCode::ENTER, charSet, origCharCode, origCharSet, KeyboardType::MACBOOK, false, ts, sender, refcon);
+    callback(target, KeyEvent::UP,   flags, KeyCode::ENTER, CharCode::ENTER, charSet, origCharCode, origCharSet, KeyboardType::MACBOOK, false, ts, sender, refcon);
+  }
+
+  void
   ExtraRepeatFunc::extraRepeatFunc_space(KeyboardEventCallback callback, OSObject *target, unsigned int flags, AbsoluteTime ts, OSObject *sender, void *refcon)
   {
     if (callback == NULL) return;
