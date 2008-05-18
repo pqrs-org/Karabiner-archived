@@ -855,6 +855,14 @@ org_pqrs_driver_KeyRemap4MacBook::relativePointerEventCallBack(OSObject *target,
         printf("caught relativePointerEventCallBack: buttons: %d, dx: %d, dy: %d, ts: 0x%x\n", buttons, dx, dy, ts);
       }
 
+      // cancel KeyRepeat when Button Click
+      if (buttons) {
+        for (int i = 0; i < MAXNUM_KEYBOARD; ++i) {
+          hookedKeyboard[i].timer_repeat.cancelTimeout();
+          hookedKeyboard[i].timer_extraRepeat.cancelTimeout();
+        }
+      }
+
       bool ex_dropEvent = false;
       org_pqrs_KeyRemap4MacBook::RemapPointingParams_relative params = {
         &buttons, &dx, &dy, &ts, &ex_dropEvent,
