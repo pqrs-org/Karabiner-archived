@@ -14,6 +14,12 @@
       <baseunit>ms</baseunit>
     </item>
     <item>
+      <name>[Key Overlaid Modifier's Key Repeat] Initial Wait</name>
+      <sysctl>repeat.keyoverlaidmodifier_initial_wait</sysctl>
+      <default>500</default>
+      <baseunit>ms</baseunit>
+    </item>
+    <item>
       <name>[Pointing Device] CursorMove to ScrollWheel Rate</name>
       <sysctl>pointing.relative2scroll_rate</sysctl>
       <default>150</default>

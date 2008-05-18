@@ -19,6 +19,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool *ex_dropKey;
     unsigned int ex_origKey;
     KeyRemap4MacBook_bridge::ActiveApplicationInfo::Reply *activeApplicationInfo;
+    ExtraRepeatFunc::ExtraRepeatFunc *ex_extraRepeatFunc;
+    unsigned int *ex_extraRepeatFlags;
   };
   void remap_core(const RemapParams &params);
 

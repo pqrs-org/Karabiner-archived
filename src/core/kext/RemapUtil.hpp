@@ -110,6 +110,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void reset(void);
 
     FlagStatus *getFlagStatus(ModifierFlag::ModifierFlag flag);
+    FlagStatus *getFlagStatus(KeyCode::KeyCode keyCode);
 
     bool isHeldDown_command(void) { return commandL.isHeldDown() || commandR.isHeldDown(); }
     bool isHeldDown_control(void) { return controlL.isHeldDown() || controlR.isHeldDown(); }
@@ -131,7 +132,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
     void temporaryDecrease_shift(void) {
-      if (shiftR.isHeldDown()) {
+      if (shiftL.isHeldDown()) {
         shiftL.temporary_decrease();
       } else {
         shiftR.temporary_decrease();
@@ -260,11 +261,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     void firefunc_jis_eisuu_escape(const RemapParams &params);
   }
 
+  namespace ExtraRepeatFunc {
+    void extraRepeatFunc_space(KeyboardEventCallback callback, OSObject *target, unsigned int flags, AbsoluteTime ts, OSObject *sender, void *refcon);
+    void extraRepeatFunc_emacsmode_controlK(KeyboardEventCallback callback, OSObject *target, unsigned int flags, AbsoluteTime ts, OSObject *sender, void *refcon);
+  }
+
   // ----------------------------------------
   // for SandS like behavior remappings (remap_space2shift, remap_enter2optionL_commandSpace, ...)
-  class KeyOverlayedModifier {
+  class KeyOverlaidModifier {
   public:
-    void remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc::FireFunc firefunc);
+    void remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc::FireFunc firefunc, ExtraRepeatFunc::ExtraRepeatFunc extraRepeatFunc = NULL);
 
   private:
     bool useAsModifier;

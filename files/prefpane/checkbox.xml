@@ -627,6 +627,11 @@
           <sysctl>remap.space2shiftL_space</sysctl>
         </item>
         <item>
+          <name>Space to Shift_L</name>
+          <appendix>(+ When you type Space only, send Space) + [KeyRepeat]</appendix>
+          <sysctl>remap.space2shiftL_space_keyrepeat</sysctl>
+        </item>
+        <item>
           <name>Space to Return</name>
           <sysctl>remap.space2return</sysctl>
         </item>

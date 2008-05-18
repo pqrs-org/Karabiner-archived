@@ -65,7 +65,11 @@ private:
     TimerWrapper timer_extraRepeat;
     struct ExtraRepeatInfo {
       unsigned int flags;
-      void (*func)(KeyboardEventCallback callback, unsigned int flags);
+      AbsoluteTime ts;
+      OSObject *target;
+      OSObject *sender;
+      void *refcon;
+      org_pqrs_KeyRemap4MacBook::ExtraRepeatFunc::ExtraRepeatFunc func;
     } extraRepeat;
 
     void initialize(IOHIKeyboard *_kbd, IOWorkLoop *workLoop);
@@ -76,6 +80,7 @@ private:
                        unsigned int charCode, unsigned int charSet, unsigned int origCharCode, unsigned int origCharSet,
                        unsigned int keyboardType, AbsoluteTime ts,
                        OSObject *target, void *refcon);
+    void setExtraRepeatInfo(org_pqrs_KeyRemap4MacBook::ExtraRepeatFunc::ExtraRepeatFunc func, unsigned int flags, AbsoluteTime ts, OSObject *target, void *refcon);
   };
   static HookedKeyboard hookedKeyboard[MAXNUM_KEYBOARD];
   static HookedKeyboard *new_hookedKeyboard(void);
