@@ -741,6 +741,15 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_space2controlL_space_keyrepeat(const RemapParams &params)
+  {
+    if (! config.remap_space2controlL_space_keyrepeat) return;
+
+    static KeyOverlaidModifier kom;
+    kom.remap(params, KeyCode::SPACE, ModifierFlag::CONTROL_L, FireFunc::firefunc_space, ExtraRepeatFunc::extraRepeatFunc_space);
+  }
+
+  void
   remap_space2shiftL(const RemapParams &params)
   {
     if (! config.remap_space2shiftL) return;
@@ -2576,6 +2585,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_enter2optionL_commandSpace(params);
   remap_enter2optionR_commandSpace(params);
   remap_space2controlL_space(params);
+  remap_space2controlL_space_keyrepeat(params);
   remap_space2shiftL_space(params);
   remap_space2shiftL_space_keyrepeat(params);
   remap_jis_commandR2commandR_kana(params);

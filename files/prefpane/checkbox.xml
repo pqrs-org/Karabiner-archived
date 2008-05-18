@@ -618,6 +618,11 @@
           <sysctl>remap.space2controlL_space</sysctl>
         </item>
         <item>
+          <name>Space to Control_L</name>
+          <appendix>(+ When you type Space only, send Space) + [KeyRepeat]</appendix>
+          <sysctl>remap.space2controlL_space_keyrepeat</sysctl>
+        </item>
+        <item>
           <name>Space to Shift_L</name>
           <sysctl>remap.space2shiftL</sysctl>
         </item>
