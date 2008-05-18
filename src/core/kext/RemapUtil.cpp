@@ -684,6 +684,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     return NULL;
   }
 
+  FlagStatus *
+  AllFlagStatus::getFlagStatus(KeyCode::KeyCode keyCode) {
+    ModifierFlag::ModifierFlag fromFlag = RemapUtil::getKeyCodeModifier(keyCode);
+    return allFlagStatus.getFlagStatus(fromFlag);
+  }
+
   // ----------------------------------------------------------------------
   void
   ListFireExtraKey::fire(FireExtraKey::Type type, KeyboardEventCallback callback,
@@ -863,6 +869,25 @@ namespace org_pqrs_KeyRemap4MacBook {
     listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, flags, KeyCode::ESCAPE, CharCode::ESCAPE);
   }
 
+  // --------------------
+  void
+  ExtraRepeatFunc::extraRepeatFunc_space(KeyboardEventCallback callback, OSObject *target, unsigned int flags, AbsoluteTime ts, OSObject *sender, void *refcon)
+  {
+    if (callback == NULL) return;
+
+    unsigned int charSet = 0;
+    unsigned origCharCode = 0;
+    unsigned origCharSet = 0;
+    callback(target, KeyEvent::DOWN, flags, KeyCode::SPACE, CharCode::SPACE, charSet, origCharCode, origCharSet, KeyboardType::MACBOOK, false, ts, sender, refcon);
+    callback(target, KeyEvent::UP,   flags, KeyCode::SPACE, CharCode::SPACE, charSet, origCharCode, origCharSet, KeyboardType::MACBOOK, false, ts, sender, refcon);
+  }
+
+  void
+  ExtraRepeatFunc::extraRepeatFunc_emacsmode_controlK(KeyboardEventCallback callback, OSObject *target, unsigned int flags, AbsoluteTime ts, OSObject *sender, void *refcon)
+  {
+    if (callback == NULL) return;
+  }
+
   // ----------------------------------------
   namespace {
     bool
@@ -896,7 +921,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  KeyOverlayedModifier::remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc::FireFunc firefunc)
+  KeyOverlaidModifier::remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc::FireFunc firefunc, ExtraRepeatFunc::ExtraRepeatFunc extraRepeatFunc)
   {
     if (! RemapUtil::isKey(params, fromKeyCode)) {
       if (*(params.eventType) == KeyEvent::DOWN || *(params.eventType) == KeyEvent::MODIFY) {
@@ -911,6 +936,19 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (isKeyDown) {
       useAsModifier = false;
       clickWatcher.set(&isClick);
+
+      if (extraRepeatFunc) {
+        FlagStatus *status = allFlagStatus.getFlagStatus(toFlag);
+        if (status) {
+          status->temporary_decrease();
+
+          *(params.ex_extraRepeatFunc) = extraRepeatFunc;
+          *(params.ex_extraRepeatFlags) = allFlagStatus.makeFlags(params);
+
+          status->temporary_increase();
+        }
+      }
+
     } else {
       if (useAsModifier == false && isClick == false) {
         firefunc(params);

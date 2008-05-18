@@ -9,4 +9,10 @@
 #undef protected
 #undef private
 
+namespace org_pqrs_KeyRemap4MacBook {
+  namespace ExtraRepeatFunc {
+    typedef void (*ExtraRepeatFunc)(KeyboardEventCallback callback, OSObject *target, unsigned int flags, AbsoluteTime ts, OSObject *sender, void *refcon);
+  }
+}
+
 #endif

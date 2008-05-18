@@ -27,6 +27,13 @@ namespace {
     if (value < MINVAL) return MINVAL;
     return value;
   }
+
+  int getconfig_keyoverlaidmodifier_initial_wait(void) {
+    const int MINVAL = 200;
+    int value = org_pqrs_KeyRemap4MacBook::config.repeat_keyoverlaidmodifier_initial_wait;
+    if (value < MINVAL) return MINVAL;
+    return value;
+  }
 }
 
 // ----------------------------------------------------------------------
@@ -49,6 +56,7 @@ org_pqrs_driver_KeyRemap4MacBook::init(OSDictionary *dict)
 
   for (int i = 0; i < MAXNUM_KEYBOARD; ++i) {
     hookedKeyboard[i].kbd = NULL;
+    hookedKeyboard[i].extraRepeat.func = NULL;
   }
   for (int i = 0; i < MAXNUM_CONSUMER; ++i) {
     hookedConsumer[i].kbd = NULL;
@@ -278,6 +286,25 @@ org_pqrs_driver_KeyRemap4MacBook::HookedKeyboard::setRepeatInfo(unsigned int eve
     }
   }
 }
+
+void
+org_pqrs_driver_KeyRemap4MacBook::HookedKeyboard::setExtraRepeatInfo(org_pqrs_KeyRemap4MacBook::ExtraRepeatFunc::ExtraRepeatFunc func, unsigned int flags, AbsoluteTime ts, OSObject *target, void *refcon)
+{
+  if (func) {
+    extraRepeat.flags = flags;
+    extraRepeat.ts = ts;
+    extraRepeat.target = target;
+    extraRepeat.sender = kbd;
+    extraRepeat.refcon = refcon;
+    extraRepeat.func = func;
+    timer_extraRepeat.setTimeoutMS(getconfig_keyoverlaidmodifier_initial_wait());
+
+  } else {
+    timer_extraRepeat.cancelTimeout();
+    extraRepeat.func = NULL;
+  }
+}
+
 
 // --------------------
 void
@@ -634,6 +661,7 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardEventCallBack(OSObject *target,
       // Because the key repeat generates it by oneself, I throw it away.
       if (repeat) {
         (p->repeat).ts = ts;
+        (p->extraRepeat).ts = ts;
         return;
       }
 
@@ -652,11 +680,16 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardEventCallBack(OSObject *target,
 
       bool ex_dropKey = false;
       KeyRemap4MacBook_bridge::ActiveApplicationInfo::Reply activeApplicationInfo;
+      unsigned int ex_extraRepeatFlags = 0;
+      org_pqrs_KeyRemap4MacBook::ExtraRepeatFunc::ExtraRepeatFunc ex_extraRepeatFunc = NULL;
+
       org_pqrs_KeyRemap4MacBook::RemapParams params = {
         &eventType, &flags, &key, &charCode, &charSet,
         &origCharCode, &origCharSet, &keyboardType, &ts,
         &ex_dropKey, key,
         &activeApplicationInfo,
+        &ex_extraRepeatFunc,
+        &ex_extraRepeatFlags,
       };
 
       bool skip = false;
@@ -702,6 +735,9 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardEventCallBack(OSObject *target,
 
         org_pqrs_KeyRemap4MacBook::listFireExtraKey.fire(org_pqrs_KeyRemap4MacBook::FireExtraKey::TYPE_AFTER, p->origEventCallback, target, charSet, origCharCode, origCharSet, ts, sender, refcon);
       }
+
+      p->setExtraRepeatInfo(ex_extraRepeatFunc, ex_extraRepeatFlags, ts, target, refcon);
+
       if (ex_dropKey) return;
 
       p->setRepeatInfo(eventType, flags, key, charCode, charSet, origCharCode, origCharSet, keyboardType, ts, target, refcon);
@@ -729,8 +765,10 @@ org_pqrs_driver_KeyRemap4MacBook::doExtraKeyRepeat(OSObject *owner, IOTimerEvent
   HookedKeyboard *p = reinterpret_cast<HookedKeyboard *>(owner);
   HookedKeyboard::ExtraRepeatInfo *r = &(p->extraRepeat);
 
+  if (! r->func) return;
+
   if (p->origEventCallback) {
-    r->func(p->origEventCallback, r->flags);
+    r->func(p->origEventCallback, r->target, r->flags, r->ts, r->sender, r->refcon);
   }
 
   sender->setTimeoutMS(getconfig_repeat_wait());
