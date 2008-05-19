@@ -26,7 +26,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     void toFN(const RemapParams &params);
     void toDelete(const RemapParams &params);
 
-    KeyCode::KeyCode getEnterKeyCode(const RemapParams &params);
+    KeyCode::KeyCode getEnterKeyCode(unsigned int keyboardType);
+    inline KeyCode::KeyCode getEnterKeyCode(const RemapParams &params) { return getEnterKeyCode(*(params.keyboardType)); }
+    CharCode::CharCode getEnterCharCode(KeyCode::KeyCode keyCode);
     bool isInternalKeyboard(unsigned int keyboardType);
 
     bool modifierToModifier(const RemapParams &params, ModifierFlag::ModifierFlag fromFlag, ModifierFlag::ModifierFlag toFlag);
@@ -183,8 +185,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
     void fire(FireExtraKey::Type type, KeyboardEventCallback callback,
               OSObject *target,
-              unsigned int charSet, unsigned int origCharCode, unsigned int origCharSet, AbsoluteTime ts,
-              OSObject *sender, void *refcon);
+              unsigned int charSet, unsigned int origCharCode, unsigned int origCharSet, unsigned int keyboardType,
+              AbsoluteTime ts, OSObject *sender, void *refcon);
 
   private:
     FireExtraKey list[FIREEXTRAKEY_MAXNUM];
@@ -263,9 +265,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   namespace ExtraRepeatFunc {
-    void extraRepeatFunc_enter(KeyboardEventCallback callback, OSObject *target, unsigned int flags, AbsoluteTime ts, OSObject *sender, void *refcon);
-    void extraRepeatFunc_space(KeyboardEventCallback callback, OSObject *target, unsigned int flags, AbsoluteTime ts, OSObject *sender, void *refcon);
-    void extraRepeatFunc_emacsmode_controlK(KeyboardEventCallback callback, OSObject *target, unsigned int flags, AbsoluteTime ts, OSObject *sender, void *refcon);
+    void extraRepeatFunc_enter(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon);
+    void extraRepeatFunc_space(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon);
+    void extraRepeatFunc_emacsmode_controlK(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon);
   }
 
   // ----------------------------------------
