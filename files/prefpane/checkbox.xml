@@ -985,6 +985,15 @@
             </item>
           </list>
         </item>
+        <item>
+          <name>Enable at only Terminal</name>
+          <list>
+            <item>
+              <name>Remap Command_L to Option_L</name>
+              <sysctl>remap.app_term_commandL2optionL</sysctl>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
 

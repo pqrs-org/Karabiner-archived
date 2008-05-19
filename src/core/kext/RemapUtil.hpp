@@ -16,8 +16,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     inline bool isKey(const RemapParams &params, KeyCode::KeyCode keyCode) {
       return params.ex_origKey == keyCode && *(params.key) == keyCode;
     }
+    inline bool isModifierOn(unsigned int flags, ModifierFlag::ModifierFlag f) {
+      return ((flags & f) == f);
+    }
     inline bool isModifierOn(const RemapParams &params, ModifierFlag::ModifierFlag flag) {
-      return ((*(params.flags) & flag) == flag);
+      return isModifierOn(*(params.flags), flag);
     }
 
     KeyCode::KeyCode getModifierKeyCode(ModifierFlag::ModifierFlag flag);

@@ -1811,6 +1811,26 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
+  void
+  remap_app_term_commandL2optionL(const RemapParams &params)
+  {
+    if (! config.remap_app_term_commandL2optionL) return;
+
+    if (! (params.activeApplicationInfo)->is_terminal) return;
+
+    if (*(params.key) == KeyCode::COMMAND_L) {
+      unsigned int flags = allFlagStatus.makeFlags(params);
+      if (RemapUtil::isModifierOn(flags, ModifierFlag::COMMAND_L)) {
+        allFlagStatus.optionL.increase();
+        allFlagStatus.commandL.decrease();
+      } else {
+        allFlagStatus.optionL.decrease();
+        allFlagStatus.commandL.increase();
+      }
+      *(params.key) = KeyCode::OPTION_L;
+    }
+  }
+
   // ----------------------------------------
   void
   remap_qwerty2colemak(const RemapParams &params)
@@ -2629,6 +2649,12 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   // *** Note: we need to call remap_pclikehomeend as possible late. ***
   // *** If remap_emacsmode is enable, C-1 & C-2 replaced as HOME, END. ***
   remap_pclikehomeend(params);
+
+  // ------------------------------------------------------------
+  // *** Note: we need to call remap_app_term_commandL2optionL as possible late. ***
+  // *** If any *2commandL remappings is enable, remap_app_term_commandL2optionL needs to handle it ***
+  remap_app_term_commandL2optionL(params);
+
 
   // ------------------------------------------------------------
   *(params.flags) = allFlagStatus.makeFlags(params);
