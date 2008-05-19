@@ -1372,8 +1372,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (config.option_emacsmode_controlK && *(params.key) == KeyCode::K && ! ignore) {
         if (*(params.eventType) == KeyEvent::DOWN) {
           FireFunc::firefunc_emacsmode_controlK(params);
-          *(params.ex_extraRepeatFunc) = ExtraRepeatFunc::extraRepeatFunc_emacsmode_controlK;
-          *(params.ex_extraRepeatFlags) = 0;
         }
         *(params.ex_dropKey) = true;
         cancel_control = true;
