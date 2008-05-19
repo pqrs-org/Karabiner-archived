@@ -821,17 +821,34 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   void
   FireFunc::firefunc_emacsmode_controlK(const RemapParams &params) {
-    // Shift+Right
+    // Command+Shift+Right
     unsigned int flags = ModifierFlag::SHIFT_L;
     listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::SHIFT_L,      CharCode::SHIFT_L);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN,   flags, KeyCode::CURSOR_RIGHT, CharCode::CURSOR_RIGHT);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP,     flags, KeyCode::CURSOR_RIGHT, CharCode::CURSOR_RIGHT);
-
-    // Command+Shift+Right
     flags |= ModifierFlag::COMMAND_L;
     listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::COMMAND_L,    CharCode::COMMAND_L);
     listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN,   flags, KeyCode::CURSOR_RIGHT, CharCode::CURSOR_RIGHT);
     listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP,     flags, KeyCode::CURSOR_RIGHT, CharCode::CURSOR_RIGHT);
+
+    // Command+X
+    flags = ModifierFlag::COMMAND_L;
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::SHIFT_L, CharCode::SHIFT_L);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN,   flags, KeyCode::X,       CharCode::X);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP,     flags, KeyCode::X,       CharCode::X);
+
+    // release Command
+    flags = 0;
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::COMMAND_L,    CharCode::COMMAND_L);
+  }
+
+  void
+  FireFunc::firefunc_emacsmode_ex_controlU(const RemapParams &params) {
+    // Command+Shift+Left
+    unsigned int flags = ModifierFlag::SHIFT_L;
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::SHIFT_L,     CharCode::SHIFT_L);
+    flags |= ModifierFlag::COMMAND_L;
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::COMMAND_L,   CharCode::COMMAND_L);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN,   flags, KeyCode::CURSOR_LEFT, CharCode::CURSOR_LEFT);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP,     flags, KeyCode::CURSOR_LEFT, CharCode::CURSOR_LEFT);
 
     // Command+X
     flags = ModifierFlag::COMMAND_L;

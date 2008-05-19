@@ -1368,7 +1368,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           cancel_control = true;
         }
       }
-      // Control+K -> Shift+Right,Command+Shift+Right,Command+X
+      // Control+K -> Command+Shift+Right,Command+X
       if (config.option_emacsmode_controlK && *(params.key) == KeyCode::K && ! ignore) {
         if (*(params.eventType) == KeyEvent::DOWN) {
           FireFunc::firefunc_emacsmode_controlK(params);
@@ -1378,7 +1378,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         *(params.ex_dropKey) = true;
         cancel_control = true;
       }
-
       // Control+Q -> PAGEUP
       if (config.option_emacsmode_ex_controlQ && *(params.key) == KeyCode::Q && ! ignore) {
         *(params.key) = KeyCode::PAGEUP;
@@ -1388,6 +1387,14 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (config.option_emacsmode_ex_controlW && *(params.key) == KeyCode::W && ! ignore) {
         *(params.key) = KeyCode::DELETE;
         allFlagStatus.optionL.temporary_increase();
+        cancel_control = true;
+      }
+      // Control+U -> Command+Shift+Left,Command+X
+      if (config.option_emacsmode_ex_controlU && *(params.key) == KeyCode::U && ! ignore) {
+        if (*(params.eventType) == KeyEvent::DOWN) {
+          FireFunc::firefunc_emacsmode_ex_controlU(params);
+        }
+        *(params.ex_dropKey) = true;
         cancel_control = true;
       }
       // Control+12 -> HOME/END
