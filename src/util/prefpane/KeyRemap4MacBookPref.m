@@ -67,7 +67,7 @@ static NSString *uninstall = @"/Library/org.pqrs/KeyRemap4MacBook/bin/uninstall"
 - (IBAction) uninstall:(id)sender
 {
   [BUNDLEPREFIX_Common getExecResult:uninstall args:[NSArray arrayWithObjects:@"force", nil]];
-  NSRunAlertPanel(@"Uninstall", @"KeyRemap4MacBook is uninstalled. Close PreferencePanes", @"OK", nil, nil);
+  NSRunAlertPanel(@"Uninstall", @"KeyRemap4MacBook is uninstalled.\nClose PreferencePanes", @"OK", nil, nil);
 }
 
 // ----------------------------------------------------------------------
