@@ -6,6 +6,7 @@
 @implementation KeyRemap4MacBookPref
 
 static NSString *sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_ctl";
+static NSString *uninstall = @"/Library/org.pqrs/KeyRemap4MacBook/bin/uninstall";
 
 // ----------------------------------------------------------------------
 - (void) drawVersion
@@ -60,6 +61,13 @@ static NSString *sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
 
     [BUNDLEPREFIX_Common getExecResult:set_loginwindow args:[NSArray arrayWithObjects:@"set", app, nil]];
   }
+}
+
+// ----------------------------------------------------------------------
+- (IBAction) uninstall:(id)sender
+{
+  [BUNDLEPREFIX_Common getExecResult:uninstall args:[NSArray arrayWithObjects:@"force", nil]];
+  NSRunAlertPanel(@"Uninstall", @"KeyRemap4MacBook is uninstalled. Close PreferencePanes", @"OK", nil, nil);
 }
 
 // ----------------------------------------------------------------------
