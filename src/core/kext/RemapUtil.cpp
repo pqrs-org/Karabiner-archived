@@ -175,14 +175,22 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   KeyCode::KeyCode
-  RemapUtil::getEnterKeyCode(const RemapParams &params)
+  RemapUtil::getEnterKeyCode(unsigned int keyboardType)
   {
-    if (*(params.keyboardType) == KeyboardType::POWERBOOK ||
-        *(params.keyboardType) == KeyboardType::POWERBOOK_G4 ||
-        *(params.keyboardType) == KeyboardType::POWERBOOK_G4_TI) {
+    if (keyboardType == KeyboardType::POWERBOOK ||
+        keyboardType == KeyboardType::POWERBOOK_G4 ||
+        keyboardType == KeyboardType::POWERBOOK_G4_TI) {
       return KeyCode::ENTER_POWERBOOK;
     }
     return KeyCode::ENTER;
+  }
+
+  CharCode::CharCode
+  RemapUtil::getEnterCharCode(KeyCode::KeyCode keyCode)
+  {
+    if (keyCode == KeyCode::ENTER_POWERBOOK) return CharCode::ENTER_POWERBOOK;
+    if (keyCode == KeyCode::ENTER) return CharCode::ENTER;
+    return CharCode::NONE;
   }
 
   bool
@@ -694,8 +702,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListFireExtraKey::fire(FireExtraKey::Type type, KeyboardEventCallback callback,
                          OSObject *target,
-                         unsigned int charSet, unsigned int origCharCode, unsigned int origCharSet, AbsoluteTime ts,
-                         OSObject *sender, void *refcon)
+                         unsigned int charSet, unsigned int origCharCode, unsigned int origCharSet, unsigned int keyboardType,
+                         AbsoluteTime ts, OSObject *sender, void *refcon)
   {
     if (callback == NULL) return;
 
@@ -705,7 +713,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (item.getType() == type) {
         callback(target, item.getEventType(), item.getFlags(), item.getKey(), item.getCharCode(),
                  charSet, origCharCode, origCharSet,
-                 KeyboardType::MACBOOK, false, ts, sender, refcon);
+                 keyboardType, false, ts, sender, refcon);
       }
     }
   }
@@ -791,22 +799,24 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   FireFunc::firefunc_enter(const RemapParams &params) {
     unsigned int flags = allFlagStatus.makeFlags(params);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, flags, KeyCode::ENTER, CharCode::ENTER);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, flags, KeyCode::ENTER, CharCode::ENTER);
+    KeyCode::KeyCode keyCode = RemapUtil::getEnterKeyCode(params);
+    CharCode::CharCode charCode = RemapUtil::getEnterCharCode(keyCode);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, flags, keyCode, charCode);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP,   flags, keyCode, charCode);
   }
 
   void
   FireFunc::firefunc_escape(const RemapParams &params) {
     unsigned int flags = allFlagStatus.makeFlags(params);
     listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, flags, KeyCode::ESCAPE, CharCode::ESCAPE);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, flags, KeyCode::ESCAPE, CharCode::ESCAPE);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP,   flags, KeyCode::ESCAPE, CharCode::ESCAPE);
   }
 
   void
   FireFunc::firefunc_space(const RemapParams &params) {
     unsigned int flags = allFlagStatus.makeFlags(params);
     listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, flags, KeyCode::SPACE, CharCode::SPACE);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, flags, KeyCode::SPACE, CharCode::SPACE);
+    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP,   flags, KeyCode::SPACE, CharCode::SPACE);
   }
 
   void
@@ -896,31 +906,31 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // --------------------
   void
-  ExtraRepeatFunc::extraRepeatFunc_enter(KeyboardEventCallback callback, OSObject *target, unsigned int flags, AbsoluteTime ts, OSObject *sender, void *refcon)
+  ExtraRepeatFunc::extraRepeatFunc_enter(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon)
   {
     if (callback == NULL) return;
 
     unsigned int charSet = 0;
     unsigned origCharCode = 0;
     unsigned origCharSet = 0;
-    callback(target, KeyEvent::DOWN, flags, KeyCode::ENTER, CharCode::ENTER, charSet, origCharCode, origCharSet, KeyboardType::MACBOOK, false, ts, sender, refcon);
-    callback(target, KeyEvent::UP,   flags, KeyCode::ENTER, CharCode::ENTER, charSet, origCharCode, origCharSet, KeyboardType::MACBOOK, false, ts, sender, refcon);
+    callback(target, KeyEvent::DOWN, flags, KeyCode::ENTER, CharCode::ENTER, charSet, origCharCode, origCharSet, keyboardType, false, ts, sender, refcon);
+    callback(target, KeyEvent::UP,   flags, KeyCode::ENTER, CharCode::ENTER, charSet, origCharCode, origCharSet, keyboardType, false, ts, sender, refcon);
   }
 
   void
-  ExtraRepeatFunc::extraRepeatFunc_space(KeyboardEventCallback callback, OSObject *target, unsigned int flags, AbsoluteTime ts, OSObject *sender, void *refcon)
+  ExtraRepeatFunc::extraRepeatFunc_space(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon)
   {
     if (callback == NULL) return;
 
     unsigned int charSet = 0;
     unsigned origCharCode = 0;
     unsigned origCharSet = 0;
-    callback(target, KeyEvent::DOWN, flags, KeyCode::SPACE, CharCode::SPACE, charSet, origCharCode, origCharSet, KeyboardType::MACBOOK, false, ts, sender, refcon);
-    callback(target, KeyEvent::UP,   flags, KeyCode::SPACE, CharCode::SPACE, charSet, origCharCode, origCharSet, KeyboardType::MACBOOK, false, ts, sender, refcon);
+    callback(target, KeyEvent::DOWN, flags, KeyCode::SPACE, CharCode::SPACE, charSet, origCharCode, origCharSet, keyboardType, false, ts, sender, refcon);
+    callback(target, KeyEvent::UP,   flags, KeyCode::SPACE, CharCode::SPACE, charSet, origCharCode, origCharSet, keyboardType, false, ts, sender, refcon);
   }
 
   void
-  ExtraRepeatFunc::extraRepeatFunc_emacsmode_controlK(KeyboardEventCallback callback, OSObject *target, unsigned int flags, AbsoluteTime ts, OSObject *sender, void *refcon)
+  ExtraRepeatFunc::extraRepeatFunc_emacsmode_controlK(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon)
   {
     if (callback == NULL) return;
 
@@ -931,8 +941,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     listFireExtraKey.reset();
     RemapParams params;
     FireFunc::firefunc_emacsmode_controlK(params);
-    listFireExtraKey.fire(FireExtraKey::TYPE_BEFORE, callback, target, charSet, origCharCode, origCharSet, ts, sender, refcon);
-    listFireExtraKey.fire(FireExtraKey::TYPE_AFTER,  callback, target, charSet, origCharCode, origCharSet, ts, sender, refcon);
+    listFireExtraKey.fire(FireExtraKey::TYPE_BEFORE, callback, target, charSet, origCharCode, origCharSet, keyboardType, ts, sender, refcon);
+    listFireExtraKey.fire(FireExtraKey::TYPE_AFTER,  callback, target, charSet, origCharCode, origCharSet, keyboardType, ts, sender, refcon);
   }
 
   // ----------------------------------------
