@@ -598,9 +598,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_keypadcomma2shiftComma) return;
 
-    if (params.ex_origKey != KeyCode::KEYPAD_COMMA) return;
-
-    allFlagStatus.shiftL.temporary_increase();
+    RemapUtil::keyToKeyWithModifier(params, KeyCode::KEYPAD_COMMA, KeyCode::KEYPAD_COMMA, ModifierFlag::SHIFT_L);
   }
 
   // ----------------------------------------
@@ -825,7 +823,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (allFlagStatus.isHeldDown_shift()) {
       allFlagStatus.temporaryDecrease_shift();
     } else {
-      allFlagStatus.shiftL.temporary_increase();
+      RemapUtil::keyToKeyWithModifier(params, KeyCode::SEMICOLON, KeyCode::SEMICOLON, ModifierFlag::SHIFT_L);
     }
   }
 
@@ -974,7 +972,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (allFlagStatus.isHeldDown_command()) {
       allFlagStatus.temporaryDecrease_command();
-      allFlagStatus.optionL.temporary_increase();
+      RemapUtil::keyToKeyWithModifier(params, KeyCode::TAB, KeyCode::TAB, ModifierFlag::OPTION_L);
     }
   }
 
@@ -1043,7 +1041,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (allFlagStatus.isHeldDown_option()) {
       allFlagStatus.temporaryDecrease_option();
-      allFlagStatus.commandL.temporary_increase();
+      RemapUtil::keyToKeyWithModifier(params, KeyCode::TAB, KeyCode::TAB, ModifierFlag::COMMAND_L);
     }
   }
 
@@ -1201,19 +1199,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     if ((params.activeApplicationInfo)->is_virtualmachine ||
         (params.activeApplicationInfo)->is_remotedesktopconnection) return;
 
-    bool replaced = false;
-
-    if (*(params.key) == KeyCode::HOME) {
-      *(params.key) = KeyCode::CURSOR_LEFT;
-      replaced = true;
-    }
-    if (*(params.key) == KeyCode::END) {
-      *(params.key) = KeyCode::CURSOR_RIGHT;
-      replaced = true;
-    }
-
-    if (replaced) {
-      allFlagStatus.commandL.temporary_increase();
+    if (RemapUtil::keyToKeyWithModifier(params, KeyCode::HOME, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L) ||
+        RemapUtil::keyToKeyWithModifier(params, KeyCode::END, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L)) {
       allFlagStatus.cursor = true;
     }
   }
@@ -2119,12 +2106,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_jis_underscore2backslash) return;
 
-    if (params.ex_origKey != KeyCode::JIS_UNDERSCORE) return;
-
-    if (! allFlagStatus.isHeldDown_shift()) {
-      allFlagStatus.optionL.temporary_increase();
-      RemapUtil::keyToKey(params, KeyCode::JIS_UNDERSCORE, KeyCode::JIS_YEN);
-    }
+    RemapUtil::keyToKeyWithModifier(params, KeyCode::JIS_UNDERSCORE, KeyCode::JIS_YEN, ModifierFlag::OPTION_L);
   }
 
   // ----------------------------------------
@@ -2133,9 +2115,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_jis_yen2backslash) return;
 
-    if (params.ex_origKey == KeyCode::JIS_YEN) {
-      allFlagStatus.optionL.temporary_increase();
-    }
+    RemapUtil::keyToKeyWithModifier(params, KeyCode::JIS_YEN, KeyCode::JIS_YEN, ModifierFlag::OPTION_L);
   }
 
   // ----------------------------------------
