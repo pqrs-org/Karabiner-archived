@@ -1187,6 +1187,11 @@
               <sysctl>remap.jis_eisuu2commandL_eisuu</sysctl>
             </item>
             <item>
+              <name>EISUU to Command_L. In Terminal, EISUU to OptionL</name>
+              <appendix>(+ When you type EISUU only, send EISUU)</appendix>
+              <sysctl>remap.jis_eisuu2commandL_eisuu_eisuu2optionL_term</sysctl>
+            </item>
+            <item>
               <name>EISUU to Control_L</name>
               <sysctl>remap.jis_eisuu2controlL</sysctl>
             </item>
