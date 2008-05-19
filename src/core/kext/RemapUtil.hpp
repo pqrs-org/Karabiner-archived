@@ -256,6 +256,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void firefunc_escape(const RemapParams &params);
     void firefunc_space(const RemapParams &params);
     void firefunc_emacsmode_controlK(const RemapParams &params);
+    void firefunc_emacsmode_ex_controlU(const RemapParams &params);
     void firefunc_jis_kana(const RemapParams &params);
     void firefunc_jis_kana_x2(const RemapParams &params);
     void firefunc_jis_eisuu(const RemapParams &params);

@@ -731,7 +731,7 @@
           <sysctl>option.emacsmode_controlAE</sysctl>
         </item>
         <item>
-          <name>Control+K to Shift+Right,Command+Shift+Right,Command+X</name>
+          <name>Control+K to Command+Shift+Right,Command+X</name>
           <sysctl>option.emacsmode_controlK</sysctl>
         </item>
         <item>
@@ -757,6 +757,10 @@
         <item>
           <name>[ex] Control+W to Option+Delete</name>
           <sysctl>option.emacsmode_ex_controlW</sysctl>
+        </item>
+        <item>
+          <name>[ex] Control+U to Command+Shift+Left,Command+X</name>
+          <sysctl>option.emacsmode_ex_controlU</sysctl>
         </item>
         <item>
           <name>[ex] Control+AE to Home/End</name>
