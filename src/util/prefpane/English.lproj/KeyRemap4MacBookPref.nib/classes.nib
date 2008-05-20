@@ -50,9 +50,9 @@
 		<dict>
 			<key>ACTIONS</key>
 			<dict>
-				<key>toggleStatusBar</key>
+				<key>launchUninstaller</key>
 				<string>id</string>
-				<key>uninstall</key>
+				<key>toggleStatusBar</key>
 				<string>id</string>
 			</dict>
 			<key>CLASS</key>

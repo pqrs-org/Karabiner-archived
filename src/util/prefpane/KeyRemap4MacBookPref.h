@@ -9,7 +9,7 @@
 }
 
 - (IBAction) toggleStatusBar:(id)sender;
-- (IBAction) uninstall:(id)sender;
+- (IBAction) launchUninstaller:(id)sender;
 - (void) mainViewDidLoad;
 
 @end

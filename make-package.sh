@@ -23,6 +23,7 @@ sudo cp -R files/share "pkgroot/$basedir"
 
 sudo mkdir -p "pkgroot/$basedir/extra"
 sudo cp -R pkginfo/Resources/preflight "pkgroot/$basedir/extra/uninstall.sh"
+sudo cp -R files/extra/launchUninstaller.sh "pkgroot/$basedir/extra/"
 
 sudo mkdir -p "pkgroot/Library"
 sudo cp -R files/LaunchDaemons pkgroot/Library
@@ -33,6 +34,7 @@ sudo cp src/core/server/build/Release/KeyRemap4MacBook_server "pkgroot/$basedir/
 sudo mkdir -p "pkgroot/$basedir/app"
 sudo cp -R "src/util/statusbar/build/Release/KeyRemap4MacBook_statusbar.app" "pkgroot/$basedir/app"
 sudo cp -R "src/util/launchd/build/Release/KeyRemap4MacBook_launchd.app" "pkgroot/$basedir/app"
+sudo cp -R "src/util/uninstaller/build/Release/uninstaller.app" "pkgroot/$basedir/app"
 
 sudo mkdir -p "pkgroot/$basedir/bin"
 sudo cp src/bin/sysctl_confd/build/Release/KeyRemap4MacBook_sysctl_confd "pkgroot/$basedir/bin"
@@ -57,6 +59,7 @@ sudo chmod 755 pkgroot/$basedir/bin/KeyRemap4MacBook_sysctl_ctl
 sudo chmod 755 pkgroot/$basedir/bin/set_loginwindow
 sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook_statusbar.app/Contents/MacOS/KeyRemap4MacBook_statusbar
 sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook_launchd.app/Contents/MacOS/KeyRemap4MacBook_launchd
+sudo chmod 755 pkgroot/$basedir/app/uninstaller.app/Contents/MacOS/uninstaller
 sudo chown -R root:wheel pkgroot
 
 sudo chmod 1775 pkgroot/Library
