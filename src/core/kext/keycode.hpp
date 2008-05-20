@@ -152,6 +152,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       END = 119,
       HOME = 115,
 
+      BRIGHTNESS_UP = 144, // Apple USB Keyboard Aluminum
+      BRIGHTNESS_DOWN = 145, // Apple USB Keyboard Aluminum
+
       EXPOSE_ALL = 160,
 
       JIS_YEN = 93,
@@ -221,6 +224,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       JIS_MACBOOK = 43,
       JIS_MACBOOK_2008 = 45,
       JIS_APPLE_USB_KEYBOARD = 36,
+      JIS_APPLE_USB_KEYBOARD_ALUMINUM = 48,
       JIS_PC_USB_KEYBOARD = 42,
       JIS_HAPPY_HACKING_KEYBOARD = 40,
     };
