@@ -538,6 +538,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_f1_to_brightnessdown) return;
 
+    unsigned int flags = allFlagStatus.makeFlags(params);
+    if (flags != 0) return;
+
     bool is_virtualmachine = ((params.activeApplicationInfo)->is_virtualmachine || (params.activeApplicationInfo)->is_remotedesktopconnection);
     if (is_virtualmachine && ! config.option_f1_f5_force_vm) return;
 
@@ -548,6 +551,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   remap_f2_to_brightnessup(const RemapParams &params)
   {
     if (! config.remap_f2_to_brightnessup) return;
+
+    unsigned int flags = allFlagStatus.makeFlags(params);
+    if (flags != 0) return;
 
     bool is_virtualmachine = ((params.activeApplicationInfo)->is_virtualmachine || (params.activeApplicationInfo)->is_remotedesktopconnection);
     if (is_virtualmachine && ! config.option_f1_f5_force_vm) return;
@@ -560,6 +566,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_f3_to_volumemute) return;
 
+    unsigned int flags = allFlagStatus.makeFlags(params);
+    if (flags != 0) return;
+
     bool is_virtualmachine = ((params.activeApplicationInfo)->is_virtualmachine || (params.activeApplicationInfo)->is_remotedesktopconnection);
     if (is_virtualmachine && ! config.option_f1_f5_force_vm) return;
 
@@ -571,6 +580,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_f4_to_volumedown) return;
 
+    unsigned int flags = allFlagStatus.makeFlags(params);
+    if (flags != 0) return;
+
     bool is_virtualmachine = ((params.activeApplicationInfo)->is_virtualmachine || (params.activeApplicationInfo)->is_remotedesktopconnection);
     if (is_virtualmachine && ! config.option_f1_f5_force_vm) return;
 
@@ -581,6 +593,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   remap_f5_to_volumeup(const RemapParams &params)
   {
     if (! config.remap_f5_to_volumeup) return;
+
+    unsigned int flags = allFlagStatus.makeFlags(params);
+    if (flags != 0) return;
 
     bool is_virtualmachine = ((params.activeApplicationInfo)->is_virtualmachine || (params.activeApplicationInfo)->is_remotedesktopconnection);
     if (is_virtualmachine && ! config.option_f1_f5_force_vm) return;
