@@ -866,37 +866,40 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  FireFunc::firefunc_emacsmode_controlK(const RemapParams &params)
+  FireFunc::firefunc_emacsmode_controlK(const RemapParams &params, bool first)
   {
-    // Command+Shift+Right
-    unsigned int flags = ModifierFlag::SHIFT_L;
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::SHIFT_L,      CharCode::SHIFT_L);
-    flags |= ModifierFlag::COMMAND_L;
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::COMMAND_L,    CharCode::COMMAND_L);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN,   flags, KeyCode::CURSOR_RIGHT, CharCode::CURSOR_RIGHT);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP,     flags, KeyCode::CURSOR_RIGHT, CharCode::CURSOR_RIGHT);
+    static int counter = 0;
+    if (first) counter = 0;
 
-    // release Command
-    flags = ModifierFlag::SHIFT_L;
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::COMMAND_L,    CharCode::COMMAND_L);
+    if (counter % 2 == 0) {
+      // Command+Shift+Right
+      unsigned int flags = ModifierFlag::SHIFT_L;
+      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::SHIFT_L,      CharCode::SHIFT_L);
+      flags |= ModifierFlag::COMMAND_L;
+      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::COMMAND_L,    CharCode::COMMAND_L);
 
-    // Shift+Right
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN,   flags, KeyCode::CURSOR_RIGHT, CharCode::CURSOR_RIGHT);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP,     flags, KeyCode::CURSOR_RIGHT, CharCode::CURSOR_RIGHT);
+      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN,   flags, KeyCode::CURSOR_RIGHT, CharCode::CURSOR_RIGHT);
+      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP,     flags, KeyCode::CURSOR_RIGHT, CharCode::CURSOR_RIGHT);
 
-    // release Shift
-    flags = 0;
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::SHIFT_L,      CharCode::SHIFT_L);
+      // release Shift
+      flags = ModifierFlag::COMMAND_L;
+      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::SHIFT_L,      CharCode::SHIFT_L);
 
-    // Command+X
-    flags = ModifierFlag::COMMAND_L;
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::COMMAND_L,    CharCode::COMMAND_L);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN,   flags, KeyCode::X,            CharCode::X);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP,     flags, KeyCode::X,            CharCode::X);
+      // Command+X
+      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN,   flags, KeyCode::X,            CharCode::X);
+      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP,     flags, KeyCode::X,            CharCode::X);
 
-    // release Command
-    flags = 0;
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::COMMAND_L,    CharCode::COMMAND_L);
+      // release Command
+      flags = 0;
+      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::COMMAND_L,    CharCode::COMMAND_L);
+    } else {
+      // Forward Delete
+      unsigned int flags = 0;
+      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, flags, KeyCode::FORWARD_DELETE, CharCode::X);
+      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP,   flags, KeyCode::FORWARD_DELETE, CharCode::X);
+    }
+
+    ++counter;
   }
 
   void
