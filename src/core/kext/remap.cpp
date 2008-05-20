@@ -1356,14 +1356,22 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
       }
       // Control+K -> Command+Shift+Right,Command+X
-      if (config.option_emacsmode_controlK && *(params.key) == KeyCode::K && ! ignore) {
-        if (*(params.eventType) == KeyEvent::DOWN) {
-          FireFunc::firefunc_emacsmode_controlK(params);
-          *(params.ex_extraRepeatFunc) = ExtraRepeatFunc::extraRepeatFunc_emacsmode_controlK;
-          *(params.ex_extraRepeatFlags) = 0;
+      if (config.option_emacsmode_controlK && ! ignore) {
+        static bool firstcall = true;
+
+        if (*(params.key) != KeyCode::K) {
+          firstcall = true;
+
+        } else {
+          if (*(params.eventType) == KeyEvent::DOWN) {
+            FireFunc::firefunc_emacsmode_controlK(params, firstcall);
+            firstcall = false;
+            *(params.ex_extraRepeatFunc) = ExtraRepeatFunc::extraRepeatFunc_emacsmode_controlK;
+            *(params.ex_extraRepeatFlags) = 0;
+          }
+          *(params.ex_dropKey) = true;
+          cancel_control = true;
         }
-        *(params.ex_dropKey) = true;
-        cancel_control = true;
       }
       // Control+Q -> PAGEUP
       if (config.option_emacsmode_ex_controlQ && *(params.key) == KeyCode::Q && ! ignore) {
