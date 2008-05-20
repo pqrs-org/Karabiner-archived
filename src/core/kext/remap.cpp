@@ -2380,6 +2380,46 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::ejectToKey(params, KeyCode::PAGEDOWN);
   }
 
+  void
+  remap_brightnessdown2f1(const RemapConsumerParams &params)
+  {
+    if (! config.remap_brightnessdown2f1) return;
+
+    RemapUtil::consumerToKey(params, ConsumerKeyCode::BRIGHTNESS_DOWN, KeyCode::F1);
+  }
+
+  void
+  remap_brightnessup2f2(const RemapConsumerParams &params)
+  {
+    if (! config.remap_brightnessup2f2) return;
+
+    RemapUtil::consumerToKey(params, ConsumerKeyCode::BRIGHTNESS_UP, KeyCode::F2);
+  }
+
+  void
+  remap_volumemute2f3(const RemapConsumerParams &params)
+  {
+    if (! config.remap_volumemute2f3) return;
+
+    RemapUtil::consumerToKey(params, ConsumerKeyCode::VOLUME_MUTE, KeyCode::F3);
+  }
+
+  void
+  remap_volumedown2f4(const RemapConsumerParams &params)
+  {
+    if (! config.remap_volumedown2f4) return;
+
+    RemapUtil::consumerToKey(params, ConsumerKeyCode::VOLUME_DOWN, KeyCode::F4);
+  }
+
+  void
+  remap_volumeup2f5(const RemapConsumerParams &params)
+  {
+    if (! config.remap_volumeup2f5) return;
+
+    RemapUtil::consumerToKey(params, ConsumerKeyCode::VOLUME_UP, KeyCode::F5);
+  }
+
   // ------------------------------------------------------------
   void
   remap_pointing_relative_fn_to_scroll(const RemapPointingParams_relative &params)
@@ -2689,6 +2729,11 @@ org_pqrs_KeyRemap4MacBook::remap_consumer(const RemapConsumerParams &params)
 {
   remap_eject2forwarddelete(params);
   remap_eject2pagedown(params);
+  remap_brightnessdown2f1(params);
+  remap_brightnessup2f2(params);
+  remap_volumemute2f3(params);
+  remap_volumedown2f4(params);
+  remap_volumeup2f5(params);
 }
 
 void
