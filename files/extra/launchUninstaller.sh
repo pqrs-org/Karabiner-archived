@@ -1,5 +1,5 @@
 #!/bin/sh
 
-TMPDIR=`mktemp -d /tmp/uninstaller.XXXXXX` || exit 1
-rsync -a /Library/org.pqrs/KeyRemap4MacBook/app/uninstaller.app "$TMPDIR"
-open "$TMPDIR/uninstaller.app"
+TMPDIR=`/usr/bin/mktemp -d /tmp/uninstaller.XXXXXX` || exit 1
+/usr/bin/rsync -a /Library/org.pqrs/KeyRemap4MacBook/app/uninstaller.app "$TMPDIR"
+/usr/bin/open "$TMPDIR/uninstaller.app"
