@@ -513,6 +513,27 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
+  remap_brightnessdown2f1(const RemapParams &params)
+  {
+    if (! config.remap_brightnessdown2f1) return;
+
+    if (RemapUtil::keyToKey(params, KeyCode::BRIGHTNESS_DOWN, KeyCode::F1)) {
+      allFlagStatus.fn.temporary_decrease();
+    }
+  }
+
+  void
+  remap_brightnessup2f2(const RemapParams &params)
+  {
+    if (! config.remap_brightnessup2f2) return;
+
+    if (RemapUtil::keyToKey(params, KeyCode::BRIGHTNESS_UP, KeyCode::F2)) {
+      allFlagStatus.fn.temporary_decrease();
+    }
+  }
+
+  // ----------------------------------------
+  void
   remap_f1_to_brightnessdown(const RemapParams &params)
   {
     if (! config.remap_f1_to_brightnessdown) return;
@@ -2527,6 +2548,9 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_fn2enter(params);
 
   remap_forwarddelete2delete(params);
+
+  remap_brightnessdown2f1(params);
+  remap_brightnessup2f2(params);
 
   remap_f1_to_brightnessdown(params);
   remap_f2_to_brightnessup(params);
