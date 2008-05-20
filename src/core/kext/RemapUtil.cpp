@@ -390,6 +390,19 @@ namespace org_pqrs_KeyRemap4MacBook {
     return true;
   }
 
+  bool
+  RemapUtil::consumerToKey(const RemapConsumerParams &params, ConsumerKeyCode::ConsumerKeyCode fromKeyCode, KeyCode::KeyCode toKeyCode)
+  {
+    if (*(params.key) != fromKeyCode) return false;
+
+    // strip FN modifier
+    *(params.flags) = *(params.flags) & (~ModifierFlag::FN);
+    *(params.ex_dropKey) = true;
+    *(params.ex_remapKey) = true;
+    *(params.ex_remapKeyCode) = toKeyCode;
+    return true;
+  }
+
   void
   RemapUtil::ejectToKey(const RemapConsumerParams &params, KeyCode::KeyCode toKeyCode)
   {

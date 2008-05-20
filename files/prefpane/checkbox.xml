@@ -376,6 +376,32 @@
     </item>
 
     <item>
+      <name>Remap Functional Key (Brightness, Volume, ...)</name>
+      <list>
+        <item>
+          <name>Brightness Down to F1</name>
+          <sysctl>remap.brightnessdown2f1</sysctl>
+        </item>
+        <item>
+          <name>Brightness Up to F2</name>
+          <sysctl>remap.brightnessup2f2</sysctl>
+        </item>
+        <item>
+          <name>Volume Mute to F3</name>
+          <sysctl>remap.volumemute2f3</sysctl>
+        </item>
+        <item>
+          <name>Volume Down to F4</name>
+          <sysctl>remap.volumedown2f4</sysctl>
+        </item>
+        <item>
+          <name>Volume Up to F5</name>
+          <sysctl>remap.volumeup2f5</sysctl>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>Remap F1..F16 Key</name>
       <list>
         <item>

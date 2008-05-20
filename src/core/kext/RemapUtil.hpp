@@ -45,6 +45,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void keyToPointingButton(const RemapParams &params, KeyCode::KeyCode fromKeyCode, PointingButton::PointingButton toButton);
 
     bool keyToConsumer(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ConsumerKeyCode::ConsumerKeyCode toKeyCode);
+    bool consumerToKey(const RemapConsumerParams &params, ConsumerKeyCode::ConsumerKeyCode fromKeyCode, KeyCode::KeyCode toKeyCode);
 
     void ejectToKey(const RemapConsumerParams &params, KeyCode::KeyCode toKeyCode);
 
