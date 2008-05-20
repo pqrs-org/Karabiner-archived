@@ -17,6 +17,10 @@ startup="/Library/org.pqrs/KeyRemap4MacBook/scripts/startup.sh"
 [ -f "$startup" ] && "$startup" stop
 
 # ----------------------------------------
+# kill process
+/usr/bin/killall KeyRemap4MacBook_statusbar
+
+# ----------------------------------------
 # uninstall
 rm -rf /Library/StartupItems/KeyRemap4MacBook
 rm -rf /Applications/KeyRemap4MacBook
