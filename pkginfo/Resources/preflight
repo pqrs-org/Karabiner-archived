@@ -31,4 +31,6 @@ rm -rf /Library/PreferencePanes/KeyRemap4MacBook.prefPane
 rm -f /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.*
 rm -f /Library/LaunchDaemons/org.pqrs.KeyRemap4MacBook.*
 
+rm -rf /tmp/KeyRemap4MacBook_uninstaller.*
+
 exit 0
