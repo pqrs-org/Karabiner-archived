@@ -521,6 +521,15 @@ org_pqrs_driver_KeyRemap4MacBook::refreshHookedDevice(OSObject *owner, IOTimerEv
   }
 }
 
+void
+org_pqrs_driver_KeyRemap4MacBook::cancelAllKeyRepeat(void)
+{
+  for (int i = 0; i < MAXNUM_KEYBOARD; ++i) {
+    hookedKeyboard[i].timer_repeat.cancelTimeout();
+    hookedKeyboard[i].timer_extraRepeat.cancelTimeout();
+  }
+}
+
 // ----------------------------------------------------------------------
 bool
 org_pqrs_driver_KeyRemap4MacBook::notifierfunc_hookKeyboard(org_pqrs_driver_KeyRemap4MacBook *self, void *ref, IOService *newService)
@@ -863,12 +872,8 @@ org_pqrs_driver_KeyRemap4MacBook::relativePointerEventCallBack(OSObject *target,
     printf("caught relativePointerEventCallBack: buttons: %d, dx: %d, dy: %d, ts: 0x%x\n", buttons, dx, dy, ts);
   }
 
-  // cancel KeyRepeat when Button Click
   if (buttons) {
-    for (int i = 0; i < MAXNUM_KEYBOARD; ++i) {
-      hookedKeyboard[i].timer_repeat.cancelTimeout();
-      hookedKeyboard[i].timer_extraRepeat.cancelTimeout();
-    }
+    cancelAllKeyRepeat();
   }
 
   bool ex_dropEvent = false;
@@ -920,11 +925,7 @@ org_pqrs_driver_KeyRemap4MacBook::scrollWheelEventCallback(OSObject * target,
   if (! p) return;
 
   // ------------------------------------------------------------
-  // cancel KeyRepeat when scrollWheel
-  for (int i = 0; i < MAXNUM_KEYBOARD; ++i) {
-    hookedKeyboard[i].timer_repeat.cancelTimeout();
-    hookedKeyboard[i].timer_extraRepeat.cancelTimeout();
-  }
+  cancelAllKeyRepeat();
 
   if (org_pqrs_KeyRemap4MacBook::config.debug_pointing) {
     printf("scrollWheelEventCallback: deltaAxis(%d, %d, %d), fixedDelta(%d, %d, %d), pointDelta(%d,%d,%d), options: %d\n",

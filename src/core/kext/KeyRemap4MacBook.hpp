@@ -138,6 +138,7 @@ private:
 
   // ------------------------------------------------------------
   static void refreshHookedDevice(OSObject *owner, IOTimerEventSource *sender);
+  static void cancelAllKeyRepeat(void);
 
   // ------------------------------------------------------------
   static bool notifierfunc_hookKeyboard(org_pqrs_driver_KeyRemap4MacBook *self, void *ref, IOService *newService);
