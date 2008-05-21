@@ -21,6 +21,9 @@ open(file) do |f|
     if /<name>(.+)<\/name>/ =~ l then
       print CGI.escapeHTML($1)
     end
+    if /<appendix>(.+)<\/appendix>/ =~ l then
+      print "<br />", CGI.escapeHTML($1)
+    end
     if /<sysctl>/ =~ l then
       total += 1
     end
