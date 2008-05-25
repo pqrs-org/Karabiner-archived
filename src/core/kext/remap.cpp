@@ -854,12 +854,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_swapcolons) return;
 
-    if (params.ex_origKey != KeyCode::SEMICOLON || *(params.key) != KeyCode::SEMICOLON) return;
+    if (! RemapUtil::isKey(params, KeyCode::SEMICOLON)) return;
 
     if (allFlagStatus.isHeldDown_shift()) {
       allFlagStatus.temporaryDecrease_shift();
     } else {
-      RemapUtil::keyToKeyWithModifier(params, KeyCode::SEMICOLON, KeyCode::SEMICOLON, ModifierFlag::SHIFT_L);
+      allFlagStatus.shiftL.temporary_increase();
     }
   }
 
