@@ -913,6 +913,23 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_L, KeyCode::SPACE);
   }
 
+  void
+  remap_shiftLshiftR2space(const RemapParams &params)
+  {
+    if (! config.remap_shiftLshiftR2space) return;
+
+    if (RemapUtil::isKey(params, KeyCode::SHIFT_L)) {
+      if (allFlagStatus.shiftR.isHeldDown()) {
+        RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_L, KeyCode::SPACE);
+      }
+    } else if (RemapUtil::isKey(params, KeyCode::SHIFT_R)) {
+      if (allFlagStatus.shiftL.isHeldDown()) {
+        allFlagStatus.shiftL.temporary_decrease();
+        RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_R, KeyCode::SPACE);
+      }
+    }
+  }
+
   // ----------------------------------------
   void
   remap_shiftR2commandL(const RemapParams &params)
@@ -986,6 +1003,23 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_shiftR2space) return;
 
     RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_R, KeyCode::SPACE);
+  }
+
+  void
+  remap_shiftRshiftL2space(const RemapParams &params)
+  {
+    if (! config.remap_shiftRshiftL2space) return;
+
+    if (RemapUtil::isKey(params, KeyCode::SHIFT_L)) {
+      if (allFlagStatus.shiftR.isHeldDown()) {
+        allFlagStatus.shiftR.temporary_decrease();
+        RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_L, KeyCode::SPACE);
+      }
+    } else if (RemapUtil::isKey(params, KeyCode::SHIFT_R)) {
+      if (allFlagStatus.shiftL.isHeldDown()) {
+        RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_R, KeyCode::SPACE);
+      }
+    }
   }
 
   void
@@ -2619,6 +2653,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_shiftL2optionL(params);
   remap_shiftL2escape(params);
   remap_shiftL2space(params);
+  remap_shiftLshiftR2space(params);
 
   remap_shiftR2commandL(params);
   remap_shiftR2controlL(params);
@@ -2629,6 +2664,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_shiftR2escape(params);
   remap_shiftR2return(params);
   remap_shiftR2space(params);
+  remap_shiftRshiftL2space(params);
   remap_shiftR2uparrow(params);
 
   remap_tab2exposeALL(params);
