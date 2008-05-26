@@ -601,7 +601,7 @@
         </item>
         <item>
           <name>Shift_L+Shift_R to Space</name>
-          <appendix>(Shift_L&amp;Shift_R to Space, Shift_R&amp;Shift_L to Shift+Space)</appendix>
+          <appendix>(Shift_L+Shift_R to Space, Shift_R+Shift_L to Shift+Space)</appendix>
           <sysctl>remap.shiftLshiftR2space</sysctl>
         </item>
       </list>
@@ -649,7 +649,7 @@
         </item>
         <item>
           <name>Shift_R+Shift_L to Space</name>
-          <appendix>(Shift_R&amp;Shift_L to Space, Shift_L&amp;Shift_R to Shift+Space)</appendix>
+          <appendix>(Shift_R+Shift_L to Space, Shift_L+Shift_R to Shift+Space)</appendix>
           <sysctl>remap.shiftRshiftL2space</sysctl>
         </item>
         <item>
