@@ -600,9 +600,9 @@
           <sysctl>remap.shiftL2space</sysctl>
         </item>
         <item>
-          <name>Shift_L+Shift_R to Space</name>
-          <appendix>(Shift_L+Shift_R to Space, Shift_R+Shift_L to Shift+Space)</appendix>
-          <sysctl>remap.shiftLshiftR2space</sysctl>
+          <name>Shift_R+Shift_L to Space</name>
+          <appendix>(Shift_R+Shift_L to Space, Shift_L+Shift_R to Shift+Space)</appendix>
+          <sysctl>remap.shiftRshiftL2space</sysctl>
         </item>
       </list>
     </item>
@@ -648,9 +648,9 @@
           <sysctl>remap.shiftR2space</sysctl>
         </item>
         <item>
-          <name>Shift_R+Shift_L to Space</name>
-          <appendix>(Shift_R+Shift_L to Space, Shift_L+Shift_R to Shift+Space)</appendix>
-          <sysctl>remap.shiftRshiftL2space</sysctl>
+          <name>Shift_L+Shift_R to Space</name>
+          <appendix>(Shift_L+Shift_R to Space, Shift_R+Shift_L to Shift+Space)</appendix>
+          <sysctl>remap.shiftLshiftR2space</sysctl>
         </item>
         <item>
           <name>Shift_R to Up-Arrow</name>
