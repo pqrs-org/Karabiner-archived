@@ -635,6 +635,10 @@
           <sysctl>remap.shiftR2escape</sysctl>
         </item>
         <item>
+          <name>Shift_R to Return</name>
+          <sysctl>remap.shiftR2return</sysctl>
+        </item>
+        <item>
           <name>Shift_R to Space</name>
           <sysctl>remap.shiftR2space</sysctl>
         </item>
