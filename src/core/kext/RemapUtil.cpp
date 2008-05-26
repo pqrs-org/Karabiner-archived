@@ -114,38 +114,55 @@ namespace org_pqrs_KeyRemap4MacBook {
     // change cursor & return key behavior
     if (params.ex_origKey == KeyCode::M) {
       *(params.key) = KeyCode::KEYPAD_0;
+      allFlagStatus.keypad = true;
     } else if (params.ex_origKey == KeyCode::J) {
       *(params.key) = KeyCode::KEYPAD_1;
+      allFlagStatus.keypad = true;
     } else if (params.ex_origKey == KeyCode::K) {
       *(params.key) = KeyCode::KEYPAD_2;
+      allFlagStatus.keypad = true;
     } else if (params.ex_origKey == KeyCode::L) {
       *(params.key) = KeyCode::KEYPAD_3;
+      allFlagStatus.keypad = true;
     } else if (params.ex_origKey == KeyCode::U) {
       *(params.key) = KeyCode::KEYPAD_4;
+      allFlagStatus.keypad = true;
     } else if (params.ex_origKey == KeyCode::I) {
       *(params.key) = KeyCode::KEYPAD_5;
+      allFlagStatus.keypad = true;
     } else if (params.ex_origKey == KeyCode::O) {
       *(params.key) = KeyCode::KEYPAD_6;
+      allFlagStatus.keypad = true;
     } else if (params.ex_origKey == KeyCode::KEY_7) {
       *(params.key) = KeyCode::KEYPAD_7;
+      allFlagStatus.keypad = true;
     } else if (params.ex_origKey == KeyCode::KEY_8) {
       *(params.key) = KeyCode::KEYPAD_8;
+      allFlagStatus.keypad = true;
     } else if (params.ex_origKey == KeyCode::KEY_9) {
       *(params.key) = KeyCode::KEYPAD_9;
+      allFlagStatus.keypad = true;
     } else if (params.ex_origKey == KeyCode::KEY_6) {
       *(params.key) = KeyCode::KEYPAD_CLEAR;
+      allFlagStatus.keypad = true;
     } else if (params.ex_origKey == KeyCode::SLASH) {
       *(params.key) = KeyCode::KEYPAD_PLUS;
+      allFlagStatus.keypad = true;
     } else if (params.ex_origKey == KeyCode::SEMICOLON) {
       *(params.key) = KeyCode::KEYPAD_MINUS;
+      allFlagStatus.keypad = true;
     } else if (params.ex_origKey == KeyCode::P) {
       *(params.key) = KeyCode::KEYPAD_MULTIPLY;
+      allFlagStatus.keypad = true;
     } else if (params.ex_origKey == KeyCode::KEY_0) {
       *(params.key) = KeyCode::KEYPAD_SLASH;
+      allFlagStatus.keypad = true;
     } else if (params.ex_origKey == KeyCode::MINUS) {
       *(params.key) = KeyCode::KEYPAD_EQUAL;
+      allFlagStatus.keypad = true;
     } else if (params.ex_origKey == KeyCode::DOT) {
       *(params.key) = KeyCode::KEYPAD_DOT;
+      allFlagStatus.keypad = true;
     } else if (params.ex_origKey == KeyCode::CURSOR_UP) {
       *(params.key) = KeyCode::PAGEUP;
     } else if (params.ex_origKey == KeyCode::CURSOR_DOWN) {
