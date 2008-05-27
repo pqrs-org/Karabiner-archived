@@ -919,12 +919,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_shiftRshiftL2space) return;
 
     if (RemapUtil::isKey(params, KeyCode::SHIFT_L)) {
-      if (allFlagStatus.shiftR.isHeldDown()) {
+      if (RemapUtil::isModifierOn(params, ModifierFlag::SHIFT_R)) {
         allFlagStatus.shiftR.temporary_decrease();
         RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_L, KeyCode::SPACE);
       }
     } else if (RemapUtil::isKey(params, KeyCode::SHIFT_R)) {
-      if (allFlagStatus.shiftL.isHeldDown()) {
+      if (RemapUtil::isModifierOn(params, ModifierFlag::SHIFT_L)) {
         RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_R, KeyCode::SPACE);
       }
     }
@@ -1011,11 +1011,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_shiftLshiftR2space) return;
 
     if (RemapUtil::isKey(params, KeyCode::SHIFT_L)) {
-      if (allFlagStatus.shiftR.isHeldDown()) {
+      if (RemapUtil::isModifierOn(params, ModifierFlag::SHIFT_R)) {
         RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_L, KeyCode::SPACE);
       }
     } else if (RemapUtil::isKey(params, KeyCode::SHIFT_R)) {
-      if (allFlagStatus.shiftL.isHeldDown()) {
+      if (RemapUtil::isModifierOn(params, ModifierFlag::SHIFT_L)) {
         allFlagStatus.shiftL.temporary_decrease();
         RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_R, KeyCode::SPACE);
       }
