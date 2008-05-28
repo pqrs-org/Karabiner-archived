@@ -2140,6 +2140,18 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_jis_kana2controlL_kana(const RemapParams &params)
+  {
+    if (! config.remap_jis_kana2controlL_kana) return;
+
+    FireFunc::FireFunc func = FireFunc::firefunc_jis_kana;
+    if ((params.activeApplicationInfo)->is_virtualmachine) func = FireFunc::firefunc_nop;
+
+    static KeyOverlaidModifier kom;
+    kom.remap(params, KeyCode::JIS_KANA, ModifierFlag::CONTROL_L, func);
+  }
+
+  void
   remap_jis_kana2fn(const RemapParams &params)
   {
     if (! config.remap_jis_kana2fn) return;
@@ -2783,6 +2795,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_jis_eisuu2controlL_eisuu(params);
   remap_jis_eisuu2commandL_eisuu_eisuu2optionL_term(params);
   remap_jis_kana2commandR_kana(params);
+  remap_jis_kana2controlL_kana(params);
 
   // ------------------------------------------------------------
   // *** Note: we need to call remap_pclikehomeend as possible late. ***
