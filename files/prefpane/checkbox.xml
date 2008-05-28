@@ -482,6 +482,14 @@
           <sysctl>remap.optionL2commandL</sysctl>
         </item>
         <item>
+          <name>Option_L to Control_L</name>
+          <sysctl>remap.optionL2controlL</sysctl>
+        </item>
+        <item>
+          <name>Option_L to FN</name>
+          <sysctl>remap.optionL2fn</sysctl>
+        </item>
+        <item>
           <name>Option_L to Shift_L</name>
           <sysctl>remap.optionL2shiftL</sysctl>
         </item>
