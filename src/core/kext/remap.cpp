@@ -647,6 +647,23 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_optionL2controlL(const RemapParams &params)
+  {
+    if (! config.remap_optionL2controlL) return;
+
+    RemapUtil::modifierToModifier(params, ModifierFlag::OPTION_L, ModifierFlag::CONTROL_L);
+  }
+
+  void
+  remap_optionL2fn(const RemapParams &params)
+  {
+    if (! config.remap_optionL2fn) return;
+
+    RemapUtil::modifierToModifier(params, ModifierFlag::OPTION_L, ModifierFlag::FN);
+    RemapUtil::toFN(params);
+  }
+
+  void
   remap_optionL2shiftL(const RemapParams &params)
   {
     if (! config.remap_optionL2shiftL) return;
@@ -2634,6 +2651,8 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_keypadcomma2shiftComma(params);
 
   remap_optionL2commandL(params);
+  remap_optionL2controlL(params);
+  remap_optionL2fn(params);
   remap_optionL2shiftL(params);
 
   remap_optionR2commandL(params);
