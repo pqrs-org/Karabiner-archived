@@ -1291,6 +1291,11 @@
               <sysctl>remap.jis_kana2controlL</sysctl>
             </item>
             <item>
+              <name>KANA to Control_L</name>
+              <appendix>(+ When you type KANA only, send KANA)</appendix>
+              <sysctl>remap.jis_kana2controlL_kana</sysctl>
+            </item>
+            <item>
               <name>KANA to FN</name>
               <sysctl>remap.jis_kana2fn</sysctl>
             </item>
