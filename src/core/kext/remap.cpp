@@ -170,6 +170,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_commandR2pageup(const RemapParams &params)
+  {
+    if (! config.remap_commandR2pageup) return;
+
+    RemapUtil::modifierToKey(params, ModifierFlag::COMMAND_R, KeyCode::PAGEUP);
+  }
+
+  void
   remap_commandR2middleclick(const RemapParams &params)
   {
     if (! config.remap_commandR2middleclick) return;
@@ -736,6 +744,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_optionR2forwarddelete) return;
 
     RemapUtil::modifierToKey(params, ModifierFlag::OPTION_R, KeyCode::FORWARD_DELETE);
+  }
+
+  void
+  remap_optionR2pagedown(const RemapParams &params)
+  {
+    if (! config.remap_optionR2pagedown) return;
+
+    RemapUtil::modifierToKey(params, ModifierFlag::OPTION_R, KeyCode::PAGEDOWN);
   }
 
   void
@@ -2599,6 +2615,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_commandR2shiftL(params);
   remap_commandR2enter(params);
   remap_commandR2home(params);
+  remap_commandR2pageup(params);
   remap_commandR2middleclick(params);
   remap_commandR2rightclick(params);
 
@@ -2663,6 +2680,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_optionR2end(params);
   remap_optionR2enter(params);
   remap_optionR2forwarddelete(params);
+  remap_optionR2pagedown(params);
   remap_optionR2semicolon(params);
   remap_optionR2space(params);
   remap_optionR2allF1(params);
