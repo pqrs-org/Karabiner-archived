@@ -11,7 +11,7 @@
 				<string>id</string>
 				<key>expandALL</key>
 				<string>id</string>
-				<key>showEnabled</key>
+				<key>toggleShowEnabled</key>
 				<string>id</string>
 			</dict>
 			<key>CLASS</key>
