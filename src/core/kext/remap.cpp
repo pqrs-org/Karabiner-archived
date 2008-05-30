@@ -2161,6 +2161,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::keyToPointingButton(params, KeyCode::JIS_EISUU, PointingButton::RIGHT);
   }
 
+  void
+  remap_jis_kanaEisuu2escape(const RemapParams &params)
+  {
+    if (! config.remap_jis_kanaEisuu2escape) return;
+
+    static KeyOverlaidKeyCombination kokc;
+    kokc.remap(params, KeyCode::JIS_KANA, KeyCode::JIS_EISUU, FireFunc::firefunc_escape_noflags);
+  }
+
   // ----------------------------------------
   void
   remap_jis_kana2commandL(const RemapParams &params)
@@ -2249,6 +2258,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_jis_kana2rightclick) return;
 
     RemapUtil::keyToPointingButton(params, KeyCode::JIS_KANA, PointingButton::RIGHT);
+  }
+
+  void
+  remap_jis_eisuuKana2return(const RemapParams &params)
+  {
+    if (! config.remap_jis_eisuuKana2return) return;
+
+    static KeyOverlaidKeyCombination kokc;
+    kokc.remap(params, KeyCode::JIS_EISUU, KeyCode::JIS_KANA, FireFunc::firefunc_return_noflags);
   }
 
   // ----------------------------------------
@@ -2793,6 +2811,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_jis_eisuu2middleclick(params);
   remap_jis_eisuu2rightclick(params);
   remap_jis_unify_kana_to_eisuu(params);
+  remap_jis_kanaEisuu2escape(params);
 
   remap_jis_kana2commandL(params);
   remap_jis_kana2controlL(params);
@@ -2804,6 +2823,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_jis_kana2rightclick(params);
   remap_jis_shiftKana2eisuu(params);
   remap_jis_unify_eisuu_to_kana(params);
+  remap_jis_eisuuKana2return(params);
 
   remap_jis_underscore2backslash(params);
   remap_jis_yen2backslash(params);
