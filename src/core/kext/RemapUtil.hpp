@@ -29,6 +29,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     void toFN(const RemapParams &params);
     void toDelete(const RemapParams &params);
 
+    inline bool isKeyDown(const RemapParams &params, KeyCode::KeyCode keyCode) {
+      if (*(params.eventType) == KeyEvent::DOWN) {
+        return isKey(params, keyCode);
+      } else if (*(params.eventType) == KeyEvent::MODIFY) {
+        return isModifierOn(params, getKeyCodeModifier(keyCode));
+      } else {
+        return false;
+      }
+    }
+
     KeyCode::KeyCode getEnterKeyCode(unsigned int keyboardType);
     inline KeyCode::KeyCode getEnterKeyCode(const RemapParams &params) { return getEnterKeyCode(*(params.keyboardType)); }
     CharCode::CharCode getEnterCharCode(KeyCode::KeyCode keyCode);
@@ -259,6 +269,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     void firefunc_commandSpace(const RemapParams &params);
     void firefunc_enter(const RemapParams &params);
     void firefunc_escape(const RemapParams &params);
+    void firefunc_escape_noflags(const RemapParams &params);
+    void firefunc_return_noflags(const RemapParams &params);
     void firefunc_space(const RemapParams &params);
     void firefunc_emacsmode_controlK(const RemapParams &params, bool first = false);
     void firefunc_emacsmode_ex_controlU(const RemapParams &params);
@@ -284,6 +296,18 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   private:
     bool useAsModifier;
+    bool isClick;
+  };
+
+  // ----------------------------------------
+  // Command_R+Command_L to Escape, ...
+  class KeyOverlaidKeyCombination {
+  public:
+    void remap(const RemapParams &params, KeyCode::KeyCode keyCode1, KeyCode::KeyCode keyCode2, FireFunc::FireFunc firefunc);
+
+  private:
+    bool isKey1HeldDown;
+    bool isCallFireFunc;
     bool isClick;
   };
 
