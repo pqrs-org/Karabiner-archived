@@ -1298,6 +1298,11 @@
               <name>Use EISUU as KANA/EISUU (toggle)</name>
               <sysctl>remap.jis_unify_kana_to_eisuu</sysctl>
             </item>
+            <item>
+              <name>KANA+EISUU to Escape</name>
+              <appendix>(Note: Escape is sent when you release EISUU)</appendix>
+              <sysctl>remap.jis_kanaEisuu2escape</sysctl>
+            </item>
           </list>
         </item>
         <item>
@@ -1352,6 +1357,11 @@
             <item>
               <name>Use KANA as KANA/EISUU (toggle)</name>
               <sysctl>remap.jis_unify_eisuu_to_kana</sysctl>
+            </item>
+            <item>
+              <name>EISUU+KANA to Return</name>
+              <appendix>(Note: Return is sent when you release KANA)</appendix>
+              <sysctl>remap.jis_eisuuKana2return</sysctl>
             </item>
           </list>
         </item>
