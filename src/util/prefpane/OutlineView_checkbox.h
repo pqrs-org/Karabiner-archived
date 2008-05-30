@@ -8,6 +8,6 @@
 
 - (IBAction) expandALL:(id)sender;
 - (IBAction) collapseALL:(id)sender;
-- (IBAction) showEnabled:(id)sender;
+- (IBAction) toggleShowEnabled:(id)sender;
 
 @end

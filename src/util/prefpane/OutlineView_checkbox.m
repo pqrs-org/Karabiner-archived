@@ -23,36 +23,34 @@ static BOOL showEnabledOnly = FALSE;
 
 - (IBAction) expandALL:(id)sender
 {
+  [_outlineView_checkbox reloadData];
   [BUNDLEPREFIX_OutlineViewUtil expandALL:_outlineView_checkbox];
 }
 
 - (IBAction) collapseALL:(id)sender
 {
-  [BUNDLEPREFIX_OutlineViewUtil collapseALL:_outlineView_checkbox delegater:self];
+  [_outlineView_checkbox reloadData];
+  [BUNDLEPREFIX_OutlineViewUtil collapseALL:_outlineView_checkbox];
 }
 
-- (IBAction) showEnabled:(id)sender
+- (IBAction) toggleShowEnabled:(id)sender
 {
-  showEnabledOnly = TRUE;
-  [BUNDLEPREFIX_OutlineViewUtil expandALL:_outlineView_checkbox];
-  [BUNDLEPREFIX_OutlineViewUtil collapseALL:_outlineView_checkbox delegater:self];
-  showEnabledOnly = FALSE;
+  showEnabledOnly = ! showEnabledOnly;
+  [_outlineView_checkbox reloadData];
 }
 
 // ------------------------------------------------------------
-- (int) outlineView:(NSOutlineView*)outlineView numberOfChildrenOfItem:(id)item
+- (BOOL) checkNodeChecked:(NSXMLNode *)node
 {
-  return [_xmlTreeWrapper numberOfChildren:item];
-}
+  NSXMLNode *sysctl = [_xmlTreeWrapper getNode:node xpath:@"sysctl"];
 
-- (id) outlineView:(NSOutlineView*)outlineView child:(int)index ofItem:(id)item
-{
-  return [_xmlTreeWrapper getChild:item index:index];
-}
+  if (sysctl) {
+    NSString *entry = [NSString stringWithFormat:@"keyremap4macbook.%@", [sysctl stringValue]];
+    NSNumber *value = [BUNDLEPREFIX_SysctlWrapper getInt:entry];
+    if ([value boolValue]) return TRUE;
+  }
 
-- (BOOL) outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item
-{
-  return [_xmlTreeWrapper isItemExpandable:item];
+  return FALSE;
 }
 
 - (BOOL) checkAnyChildrenChecked:(NSXMLNode *)node
@@ -65,16 +63,53 @@ static BOOL showEnabledOnly = FALSE;
   NSXMLNode *n;
   while (n = [enumerator nextObject]) {
     if ([self checkAnyChildrenChecked:n]) return TRUE;
-
-    NSXMLNode *sysctl = [_xmlTreeWrapper getNode:n xpath:@"sysctl"];
-    if (sysctl) {
-      NSString *entry = [NSString stringWithFormat:@"keyremap4macbook.%@", [sysctl stringValue]];
-      NSNumber *value = [BUNDLEPREFIX_SysctlWrapper getInt:entry];
-      if ([value boolValue]) return TRUE;
-    }
+    if ([self checkNodeChecked:n]) return TRUE;
   }
 
   return FALSE;
+}
+
+- (int) outlineView:(NSOutlineView*)outlineView numberOfChildrenOfItem:(id)item
+{
+  if (! showEnabledOnly) {
+    return [_xmlTreeWrapper numberOfChildren:item];
+
+  } else {
+    int i = 0;
+    int size = [_xmlTreeWrapper numberOfChildren:item];
+    int num = 0;
+    for (i = 0; i < size; ++i) {
+      NSXMLNode *node = [_xmlTreeWrapper getChild:item index:i];
+      if ([self checkNodeChecked:node] || [self checkAnyChildrenChecked:node]) {
+        ++num;
+      }
+    }
+    return num;
+  }
+}
+
+- (id) outlineView:(NSOutlineView*)outlineView child:(int)index ofItem:(id)item
+{
+  if (! showEnabledOnly) {
+    return [_xmlTreeWrapper getChild:item index:index];
+
+  } else {
+    int i = 0;
+    int size = [_xmlTreeWrapper numberOfChildren:item];
+    for (i = 0; i < size; ++i) {
+      NSXMLNode *node = [_xmlTreeWrapper getChild:item index:i];
+      if ([self checkNodeChecked:node] || [self checkAnyChildrenChecked:node]) {
+        if (index <= 0) return node;
+        --index;
+      }
+    }
+    return nil;
+  }
+}
+
+- (BOOL) outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item
+{
+  return [_xmlTreeWrapper isItemExpandable:item];
 }
 
 - (id)outlineView:(NSOutlineView*)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
@@ -108,11 +143,7 @@ static BOOL showEnabledOnly = FALSE;
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldCollapseItem:(id)item
 {
-  if (showEnabledOnly) {
-    return ! [self checkAnyChildrenChecked:item];
-  } else {
-    return TRUE;
-  }
+  return TRUE;
 }
 
 - (float)outlineView:(NSOutlineView *)outlineView heightOfRowByItem:(id)item
@@ -135,6 +166,10 @@ static BOOL showEnabledOnly = FALSE;
     NSNumber *value = [BUNDLEPREFIX_SysctlWrapper getInt:entry];
     NSNumber *new = [[[NSNumber alloc] initWithBool:![value boolValue]] autorelease];
     [BUNDLEPREFIX_Common setSysctlInt:@"keyremap4macbook" name:name value:new sysctl_set:sysctl_set sysctl_ctl:sysctl_ctl];
+
+    if (showEnabledOnly) {
+      [_outlineView_checkbox reloadData];
+    }
   }
 }
 

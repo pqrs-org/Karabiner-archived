@@ -24,7 +24,7 @@
   }
 }
 
-+ (void) collapseALL:(NSOutlineView *)outlineView delegater:(id)delegater
++ (void) collapseALL:(NSOutlineView *)outlineView
 {
   for (;;) {
     bool nochange = true;
@@ -33,8 +33,6 @@
     for (i = 0; i < [outlineView numberOfRows]; ++i) {
       id item = [outlineView itemAtRow:i];
       if (! [outlineView isExpandable:item]) continue;
-      if (! [delegater outlineView:outlineView shouldCollapseItem:item]) continue;
-
       if (! [outlineView isItemExpanded:item]) continue;
 
       [outlineView collapseItem:item collapseChildren:TRUE];
