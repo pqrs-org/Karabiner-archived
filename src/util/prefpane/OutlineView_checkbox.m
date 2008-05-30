@@ -141,11 +141,6 @@ static BOOL showEnabledOnly = FALSE;
   return nil;
 }
 
-- (BOOL)outlineView:(NSOutlineView *)outlineView shouldCollapseItem:(id)item
-{
-  return TRUE;
-}
-
 - (float)outlineView:(NSOutlineView *)outlineView heightOfRowByItem:(id)item
 {
   NSXMLNode *appendix = [_xmlTreeWrapper getNode:item xpath:@"appendix"];
