@@ -108,6 +108,10 @@
           <name>Command_L to Backquote(`)</name>
           <sysctl>remap.commandL2backquote</sysctl>
         </item>
+        <item>
+          <name>Command_R+Command_L to Escape</name>
+          <sysctl>remap.commandRcommandL2escape</sysctl>
+        </item>
       </list>
     </item>
 
@@ -164,6 +168,10 @@
         <item>
           <name>Command_R to RightClick</name>
           <sysctl>remap.commandR2rightclick</sysctl>
+        </item>
+        <item>
+          <name>Command_L+Command_R to Return</name>
+          <sysctl>remap.commandLcommandR2return</sysctl>
         </item>
       </list>
     </item>

@@ -95,6 +95,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::modifierToKey(params, ModifierFlag::COMMAND_L, KeyCode::BACKQUOTE);
   }
 
+  void
+  remap_commandRcommandL2escape(const RemapParams &params)
+  {
+    if (! config.remap_commandRcommandL2escape) return;
+
+    static KeyOverlaidKeyCombination kokc;
+    kokc.remap(params, KeyCode::COMMAND_R, KeyCode::COMMAND_L, FireFunc::firefunc_escape_noflags);
+  }
+
   // ----------------------------------------
   void
   remap_commandR2commandR_commandSpace(const RemapParams &params)
@@ -191,6 +200,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_commandR2rightclick) return;
 
     RemapUtil::modifierToPointingButton(params, ModifierFlag::COMMAND_R, PointingButton::RIGHT);
+  }
+
+  void
+  remap_commandLcommandR2return(const RemapParams &params)
+  {
+    if (! config.remap_commandLcommandR2return) return;
+
+    static KeyOverlaidKeyCombination kokc;
+    kokc.remap(params, KeyCode::COMMAND_L, KeyCode::COMMAND_R, FireFunc::firefunc_return_noflags);
   }
 
   // ----------------------------------------
@@ -2608,6 +2626,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_commandL2optionL(params);
   remap_commandL2shiftL(params);
   remap_commandL2backquote(params);
+  remap_commandRcommandL2escape(params);
 
   remap_commandR2controlL(params);
   remap_commandR2fn(params);
@@ -2618,6 +2637,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_commandR2pageup(params);
   remap_commandR2middleclick(params);
   remap_commandR2rightclick(params);
+  remap_commandLcommandR2return(params);
 
   remap_delete2backslash(params);
   remap_delete2forwarddelete(params);
