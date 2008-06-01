@@ -388,6 +388,10 @@
           <name>FN to Enter</name>
           <sysctl>remap.fn2enter</sysctl>
         </item>
+        <item>
+          <name>FN to Tab</name>
+          <sysctl>remap.fn2tab</sysctl>
+        </item>
       </list>
     </item>
 
