@@ -173,6 +173,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       OPTION_L = 0,
       SHIFT_L = 0,
       FN = 0,
+      EXPOSE_ALL = 0,
       TAB = 9,
       RETURN = 13,
       ENTER = 13,

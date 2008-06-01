@@ -900,6 +900,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  FireFunc::firefunc_exposeAll(const RemapParams &params)
+  {
+    unsigned int flags = allFlagStatus.makeFlags(params);
+    _firefunc_key(KeyCode::EXPOSE_ALL, CharCode::EXPOSE_ALL, flags);
+  }
+
+  void
   FireFunc::firefunc_return_noflags(const RemapParams &params)
   {
     _firefunc_key(KeyCode::RETURN, CharCode::RETURN, 0);
