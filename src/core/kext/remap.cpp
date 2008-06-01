@@ -420,6 +420,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_enter2tab(const RemapParams &params)
+  {
+    if (! config.remap_enter2tab) return;
+
+    RemapUtil::keyToKey(params, RemapUtil::getEnterKeyCode(params), KeyCode::TAB);
+  }
+
+  void
   remap_enter2uparrow(const RemapParams &params)
   {
     if (! config.remap_enter2uparrow) return;
@@ -2675,6 +2683,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_enter2forwarddelete(params);
   remap_enter2semicolon(params);
   remap_enter2space(params);
+  remap_enter2tab(params);
   remap_enter2uparrow(params);
 
   remap_escape2backquote(params);

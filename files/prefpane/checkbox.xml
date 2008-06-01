@@ -324,6 +324,10 @@
           <sysctl>remap.enter2space</sysctl>
         </item>
         <item>
+          <name>Enter to Tab</name>
+          <sysctl>remap.enter2tab</sysctl>
+        </item>
+        <item>
           <name>Enter to Up-Arrow</name>
           <sysctl>remap.enter2uparrow</sysctl>
         </item>
