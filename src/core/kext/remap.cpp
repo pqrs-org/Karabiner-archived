@@ -533,6 +533,17 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_fn2delete(const RemapParams &params)
+  {
+    if (! config.remap_fn2delete) return;
+
+    if (RemapUtil::isModifierOn(params, ModifierFlag::FN)) {
+      RemapUtil::fnToNormal(params);
+    }
+    RemapUtil::modifierToKey(params, ModifierFlag::FN, KeyCode::DELETE);
+  }
+
+  void
   remap_fn2enter(const RemapParams &params)
   {
     if (! config.remap_fn2enter) return;
@@ -2704,6 +2715,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_fn2fn(params);
   remap_fn2optionL(params);
   remap_fn2shiftL(params);
+  remap_fn2delete(params);
   remap_fn2enter(params);
 
   remap_forwarddelete2delete(params);

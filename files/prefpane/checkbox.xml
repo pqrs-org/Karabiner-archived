@@ -381,6 +381,10 @@
           <sysctl>remap.fn2shiftL</sysctl>
         </item>
         <item>
+          <name>FN to Delete</name>
+          <sysctl>remap.fn2delete</sysctl>
+        </item>
+        <item>
           <name>FN to Enter</name>
           <sysctl>remap.fn2enter</sysctl>
         </item>
