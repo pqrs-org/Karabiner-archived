@@ -388,6 +388,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_enter2delete(const RemapParams &params)
+  {
+    if (! config.remap_enter2delete) return;
+
+    RemapUtil::keyToKey(params, RemapUtil::getEnterKeyCode(params), KeyCode::DELETE);
+  }
+
+  void
   remap_enter2end(const RemapParams &params)
   {
     if (! config.remap_enter2end) return;
@@ -2679,6 +2687,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_enter2commandLcontrolL(params);
   remap_enter2commandLshiftL(params);
   remap_enter2controlLoptionL(params);
+  remap_enter2delete(params);
   remap_enter2end(params);
   remap_enter2forwarddelete(params);
   remap_enter2semicolon(params);
