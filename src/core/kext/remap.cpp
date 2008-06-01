@@ -1123,6 +1123,15 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
+  remap_tab2commandL_exposeAll(const RemapParams &params)
+  {
+    if (! config.remap_tab2commandL_exposeAll) return;
+
+    static KeyOverlaidModifier kom;
+    kom.remap(params, KeyCode::TAB, ModifierFlag::COMMAND_L, FireFunc::firefunc_exposeAll);
+  }
+
+  void
   remap_tab2exposeALL(const RemapParams &params)
   {
     if (! config.remap_tab2exposeALL) return;
@@ -2905,6 +2914,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_space2controlL_space_keyrepeat(params);
   remap_space2shiftL_space(params);
   remap_space2shiftL_space_keyrepeat(params);
+  remap_tab2commandL_exposeAll(params);
   remap_jis_commandR2commandR_kana(params);
   remap_jis_commandR2commandR_toggle_kana_eisuu(params);
   remap_jis_commandL2commandL_eisuu(params);

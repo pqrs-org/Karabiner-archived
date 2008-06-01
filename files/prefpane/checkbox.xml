@@ -743,6 +743,11 @@
       <name>Remap Tab Key</name>
       <list>
         <item>
+          <name>Tab to Command_L</name>
+          <appendix>(+ When you type Tab only, send Expose All)</appendix>
+          <sysctl>remap.tab2commandL_exposeAll</sysctl>
+        </item>
+        <item>
           <name>Tab to Expose All</name>
           <sysctl>remap.tab2exposeALL</sysctl>
         </item>
