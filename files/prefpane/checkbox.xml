@@ -86,6 +86,10 @@
           <name>Backslash(\) to Enter</name>
           <sysctl>remap.backslash2enter</sysctl>
         </item>
+        <item>
+          <name>Backslash(\) to Forward Delete</name>
+          <sysctl>remap.backslash2forwarddelete</sysctl>
+        </item>
       </list>
     </item>
 
@@ -1106,6 +1110,10 @@
         <item>
           <name>Use Colemak Keyboard Layout</name>
           <sysctl>remap.qwerty2colemak</sysctl>
+        </item>
+        <item>
+          <name>Use QWERF Keyboard Layout</name>
+          <sysctl>remap.qwerty2qwerf</sysctl>
         </item>
       </list>
     </item>

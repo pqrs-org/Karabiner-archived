@@ -61,6 +61,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::keyToKey(params, KeyCode::BACKSLASH, RemapUtil::getEnterKeyCode(params));
   }
 
+  void
+  remap_backslash2forwarddelete(const RemapParams &params)
+  {
+    if (! config.remap_backslash2forwarddelete) return;
+
+    RemapUtil::keyToKey(params, KeyCode::BACKSLASH, KeyCode::FORWARD_DELETE);
+  }
+
   // ----------------------------------------
   void
   remap_commandL2controlL(const RemapParams &params)
@@ -2058,6 +2066,28 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::keyToKey(params, KeyCode::N, KeyCode::K);
   }
 
+  void
+  remap_qwerty2qwerf(const RemapParams &params)
+  {
+    if (! config.remap_qwerty2qwerf) return;
+
+    // Q W E R F J Y K L ;
+    // A S D T G H U I O P
+    // Z X C V B N M , . /
+    RemapUtil::keyToKey(params, KeyCode::T, KeyCode::F);
+    RemapUtil::keyToKey(params, KeyCode::Y, KeyCode::J);
+    RemapUtil::keyToKey(params, KeyCode::U, KeyCode::Y);
+    RemapUtil::keyToKey(params, KeyCode::I, KeyCode::K);
+    RemapUtil::keyToKey(params, KeyCode::O, KeyCode::L);
+    RemapUtil::keyToKey(params, KeyCode::P, KeyCode::SEMICOLON);
+
+    RemapUtil::keyToKey(params, KeyCode::F, KeyCode::T);
+    RemapUtil::keyToKey(params, KeyCode::J, KeyCode::U);
+    RemapUtil::keyToKey(params, KeyCode::K, KeyCode::I);
+    RemapUtil::keyToKey(params, KeyCode::L, KeyCode::O);
+    RemapUtil::keyToKey(params, KeyCode::SEMICOLON, KeyCode::P);
+  }
+
   // ----------------------------------------
   void
   remap_pc_application2commandL(const RemapParams &params)
@@ -2710,6 +2740,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   remap_backslash2delete(params);
   remap_backslash2enter(params);
+  remap_backslash2forwarddelete(params);
 
   remap_controlL2commandL(params);
   remap_controlL2fn(params);
@@ -2851,6 +2882,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   // ----------------------------------------
   remap_qwerty2colemak(params);
+  remap_qwerty2qwerf(params);
 
   // ----------------------------------------
   remap_pc_application2commandL(params);
