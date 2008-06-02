@@ -707,6 +707,10 @@
           <sysctl>remap.shiftLshiftR2space</sysctl>
         </item>
         <item>
+          <name>Shift_R to Tab</name>
+          <sysctl>remap.shiftR2tab</sysctl>
+        </item>
+        <item>
           <name>Shift_R to Up-Arrow</name>
           <sysctl>remap.shiftR2uparrow</sysctl>
         </item>
