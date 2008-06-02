@@ -268,6 +268,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     *(params.key) = toKeyCode;
 
+    if (toKeyCode == KeyCode::DELETE) {
+      toDelete(params);
+    }
+
     return true;
   }
 
@@ -321,6 +325,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! RemapUtil::isKey(params, fromKeyCode)) return false;
     *(params.key) = toKeyCode;
+
+    if (toKeyCode == KeyCode::DELETE) {
+      toDelete(params);
+    }
+
     return true;
   }
 

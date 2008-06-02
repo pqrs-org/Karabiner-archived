@@ -51,7 +51,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_backslash2delete) return;
 
     RemapUtil::keyToKey(params, KeyCode::BACKSLASH, KeyCode::DELETE);
-    RemapUtil::toDelete(params);
   }
 
   void
@@ -412,6 +411,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_enter2return(const RemapParams &params)
+  {
+    if (! config.remap_enter2return) return;
+
+    RemapUtil::keyToKey(params, RemapUtil::getEnterKeyCode(params), KeyCode::RETURN);
+  }
+
+  void
   remap_enter2semicolon(const RemapParams &params)
   {
     if (! config.remap_enter2semicolon) return;
@@ -572,7 +579,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_forwarddelete2delete) return;
 
     RemapUtil::keyToKey(params, KeyCode::FORWARD_DELETE, KeyCode::DELETE);
-    RemapUtil::toDelete(params);
   }
 
   // ----------------------------------------
@@ -685,6 +691,22 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
+  void
+  remap_clear2delete(const RemapParams &params)
+  {
+    if (! config.remap_clear2delete) return;
+
+    RemapUtil::keyToKey(params, KeyCode::KEYPAD_CLEAR, KeyCode::DELETE);
+  }
+
+  void
+  remap_clear2return(const RemapParams &params)
+  {
+    if (! config.remap_clear2return) return;
+
+    RemapUtil::keyToKey(params, KeyCode::KEYPAD_CLEAR, KeyCode::RETURN);
+  }
+
   void
   remap_clear2tab(const RemapParams &params)
   {
@@ -2721,6 +2743,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_enter2delete(params);
   remap_enter2end(params);
   remap_enter2forwarddelete(params);
+  remap_enter2return(params);
   remap_enter2semicolon(params);
   remap_enter2space(params);
   remap_enter2tab(params);
@@ -2753,6 +2776,8 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   remap_help2f13(params);
 
+  remap_clear2delete(params);
+  remap_clear2return(params);
   remap_clear2tab(params);
   remap_keypadcomma2shiftComma(params);
 

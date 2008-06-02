@@ -320,6 +320,10 @@
           <sysctl>remap.enter2forwarddelete</sysctl>
         </item>
         <item>
+          <name>Enter to Return</name>
+          <sysctl>remap.enter2return</sysctl>
+        </item>
+        <item>
           <name>Enter to Semicolon</name>
           <sysctl>remap.enter2semicolon</sysctl>
         </item>
@@ -486,6 +490,14 @@
         <item>
           <name>Remap Clear Key</name>
           <list>
+            <item>
+              <name>Clear to Delete</name>
+              <sysctl>remap.clear2delete</sysctl>
+            </item>
+            <item>
+              <name>Clear to Return</name>
+              <sysctl>remap.clear2return</sysctl>
+            </item>
             <item>
               <name>Clear to Tab</name>
               <sysctl>remap.clear2tab</sysctl>
