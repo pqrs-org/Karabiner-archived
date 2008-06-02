@@ -1134,6 +1134,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_shiftR2tab(const RemapParams &params)
+  {
+    if (! config.remap_shiftR2tab) return;
+
+    RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_R, KeyCode::TAB);
+  }
+
+  void
   remap_shiftR2uparrow(const RemapParams &params)
   {
     if (! config.remap_shiftR2uparrow) return;
@@ -2828,6 +2836,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_shiftR2return(params);
   remap_shiftR2space(params);
   remap_shiftRshiftL2space(params);
+  remap_shiftR2tab(params);
   remap_shiftR2uparrow(params);
 
   remap_tab2exposeALL(params);
