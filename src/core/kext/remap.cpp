@@ -1211,7 +1211,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static KeyWithModifierToKey kwmk_r;
 
     if (kwmk_l.remap(params, KeyCode::TAB, ModifierFlag::OPTION_L, KeyCode::F5)) return;
-    if (kwmk_l.remap(params, KeyCode::TAB, ModifierFlag::OPTION_R, KeyCode::F5)) return;
+    if (kwmk_r.remap(params, KeyCode::TAB, ModifierFlag::OPTION_R, KeyCode::F5)) return;
   }
 
   void
