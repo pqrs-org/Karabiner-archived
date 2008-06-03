@@ -2870,9 +2870,10 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   // ----------------------------------------
   remap_app_vm_commandspace2optionbackquote(params);
+  // *** Note: we need to call return2commandO before command_R_to_return, f2_to_return ***
+  remap_app_finder_return2commandO(params);
   remap_app_finder_command_R_to_return(params);
   remap_app_finder_f2_to_return(params);
-  remap_app_finder_return2commandO(params);
 
   // ----------------------------------------
   remap_qwerty2colemak(params);
