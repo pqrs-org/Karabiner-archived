@@ -62,6 +62,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void fireKeyWithAllModifiers(const RemapParams &params, unsigned int eventType, unsigned int keyCode, unsigned int charCode);
     bool keypad2spaces(const RemapParams &params);
 
+    bool jis_toggle_iskana(unsigned int eventType);
     void jis_toggle_eisuu_kana(const RemapParams &params, KeyCode::KeyCode fromKeyCode);
     void jis_toggle_eisuu_kana(const RemapParams &params, ModifierFlag::ModifierFlag fromModifier);
 
