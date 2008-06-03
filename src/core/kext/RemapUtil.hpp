@@ -313,6 +313,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool isClick;
   };
 
+  class KeyWithModifierToKey {
+  public:
+    bool remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag fromFlag, KeyCode::KeyCode toKeyCode);
+
+  private:
+    ModifierCanceling modifierCanceling;
+  };
+
   // ----------------------------------------
   // A modifier has DoublePressed key action.
   class DoublePressModifier {

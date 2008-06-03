@@ -1195,27 +1195,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_commandTab2f5) return;
 
-    static ModifierCanceling mc_commandL;
-    static ModifierCanceling mc_commandR;
+    static KeyWithModifierToKey kwmk_l;
+    static KeyWithModifierToKey kwmk_r;
 
-    if (allFlagStatus.isHeldDown_command()) {
-      bool cancel_command = false;
-
-      if (RemapUtil::keyToKey(params, KeyCode::TAB, KeyCode::F5)) {
-        cancel_command = true;
-      }
-      if (cancel_command) {
-        if (allFlagStatus.commandL.isHeldDown()) {
-          mc_commandL.keyRelease(params, ModifierFlag::COMMAND_L);
-        } else {
-          mc_commandR.keyRelease(params, ModifierFlag::COMMAND_R);
-        }
-        return;
-      }
-    }
-
-    mc_commandL.restore(params, ModifierFlag::COMMAND_L);
-    mc_commandR.restore(params, ModifierFlag::COMMAND_R);
+    if (kwmk_l.remap(params, KeyCode::TAB, ModifierFlag::COMMAND_L, KeyCode::F5)) return;
+    if (kwmk_r.remap(params, KeyCode::TAB, ModifierFlag::COMMAND_R, KeyCode::F5)) return;
   }
 
   void
@@ -1223,27 +1207,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_optionTab2f5) return;
 
-    static ModifierCanceling mc_optionL;
-    static ModifierCanceling mc_optionR;
+    static KeyWithModifierToKey kwmk_l;
+    static KeyWithModifierToKey kwmk_r;
 
-    if (allFlagStatus.isHeldDown_option()) {
-      bool cancel_option = false;
-
-      if (RemapUtil::keyToKey(params, KeyCode::TAB, KeyCode::F5)) {
-        cancel_option = true;
-      }
-      if (cancel_option) {
-        if (allFlagStatus.optionL.isHeldDown()) {
-          mc_optionL.keyRelease(params, ModifierFlag::OPTION_L);
-        } else {
-          mc_optionR.keyRelease(params, ModifierFlag::OPTION_R);
-        }
-        return;
-      }
-    }
-
-    mc_optionL.restore(params, ModifierFlag::OPTION_L);
-    mc_optionR.restore(params, ModifierFlag::OPTION_R);
+    if (kwmk_l.remap(params, KeyCode::TAB, ModifierFlag::OPTION_L, KeyCode::F5)) return;
+    if (kwmk_l.remap(params, KeyCode::TAB, ModifierFlag::OPTION_R, KeyCode::F5)) return;
   }
 
   void
@@ -2003,6 +1971,30 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
     mc_commandL.restore(params, ModifierFlag::COMMAND_L);
     mc_commandR.restore(params, ModifierFlag::COMMAND_R);
+  }
+
+  void
+  remap_app_finder_command_R_to_return(const RemapParams &params)
+  {
+    if (! config.remap_app_finder_command_R_to_return) return;
+
+    if (! (params.activeApplicationInfo)->is_finder) return;
+
+    static KeyWithModifierToKey kwmk_l;
+    static KeyWithModifierToKey kwmk_r;
+
+    if (kwmk_l.remap(params, KeyCode::R, ModifierFlag::COMMAND_L, KeyCode::RETURN)) return;
+    if (kwmk_r.remap(params, KeyCode::R, ModifierFlag::COMMAND_R, KeyCode::RETURN)) return;
+  }
+
+  void
+  remap_app_finder_f2_to_return(const RemapParams &params)
+  {
+    if (! config.remap_app_finder_f2_to_return) return;
+
+    if (! (params.activeApplicationInfo)->is_finder) return;
+
+    RemapUtil::keyToKey(params, KeyCode::F2, KeyCode::RETURN);
   }
 
   void
@@ -2878,6 +2870,8 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   // ----------------------------------------
   remap_app_vm_commandspace2optionbackquote(params);
+  remap_app_finder_command_R_to_return(params);
+  remap_app_finder_f2_to_return(params);
   remap_app_finder_return2commandO(params);
 
   // ----------------------------------------

@@ -1188,6 +1188,22 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
+  bool
+  KeyWithModifierToKey::remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag fromFlag, KeyCode::KeyCode toKeyCode)
+  {
+    FlagStatus *fromStatus = allFlagStatus.getFlagStatus(fromFlag);
+    if (fromStatus == NULL) return false;
+
+    if (fromStatus->isHeldDown()) {
+      if (RemapUtil::keyToKey(params, fromKeyCode, toKeyCode)) {
+        modifierCanceling.keyRelease(params, fromFlag);
+        return true;
+      }
+    }
+    modifierCanceling.restore(params, fromFlag);
+    return false;
+  }
+
   void
   DoublePressModifier::remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc::FireFunc firefunc)
   {
