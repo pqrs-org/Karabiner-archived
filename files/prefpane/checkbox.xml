@@ -1087,7 +1087,15 @@
           <name>Enable at only Finder</name>
           <list>
             <item>
-              <name>Remap Return to Command+O</name>
+              <name>Remap Command+R to Return (== Rename)</name>
+              <sysctl>remap.app_finder_command_R_to_return</sysctl>
+            </item>
+            <item>
+              <name>Remap F2 to Return (== Rename)</name>
+              <sysctl>remap.app_finder_f2_to_return</sysctl>
+            </item>
+            <item>
+              <name>Remap Return to Command+O (== Open)</name>
               <sysctl>remap.app_finder_return2commandO</sysctl>
             </item>
           </list>
