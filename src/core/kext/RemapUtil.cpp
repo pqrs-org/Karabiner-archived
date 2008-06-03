@@ -539,21 +539,23 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // --------------------
+  bool
+  RemapUtil::jis_toggle_iskana(unsigned int eventType)
+  {
+    static bool isKana = true;
+    if (eventType == KeyEvent::UP) {
+      isKana = ! isKana;
+    }
+    return isKana;
+  }
+
   void
   RemapUtil::jis_toggle_eisuu_kana(const RemapParams &params, KeyCode::KeyCode fromKeyCode)
   {
     if (! RemapUtil::isKey(params, fromKeyCode)) return;
 
-    static bool isKana = true;
-
-    if (isKana) {
-      RemapUtil::keyToKey(params, fromKeyCode, KeyCode::JIS_KANA);
-    } else {
-      RemapUtil::keyToKey(params, fromKeyCode, KeyCode::JIS_EISUU);
-    }
-    if (*(params.eventType) == KeyEvent::UP) {
-      isKana = ! isKana;
-    }
+    KeyCode::KeyCode toKeyCode = RemapUtil::jis_toggle_iskana(*(params.eventType)) ? KeyCode::JIS_KANA : KeyCode::JIS_EISUU;
+    RemapUtil::keyToKey(params, fromKeyCode, toKeyCode);
   }
 
   void
@@ -563,16 +565,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (! RemapUtil::isKey(params, fromKeyCode)) return;
 
-    static bool isKana = true;
-
-    if (isKana) {
-      RemapUtil::modifierToKey(params, fromModifier, KeyCode::JIS_KANA);
-    } else {
-      RemapUtil::modifierToKey(params, fromModifier, KeyCode::JIS_EISUU);
-    }
-    if (*(params.eventType) == KeyEvent::UP) {
-      isKana = ! isKana;
-    }
+    KeyCode::KeyCode toKeyCode = RemapUtil::jis_toggle_iskana(*(params.eventType)) ? KeyCode::JIS_KANA : KeyCode::JIS_EISUU;
+    RemapUtil::modifierToKey(params, fromModifier, toKeyCode);
   }
 
   // --------------------
@@ -1028,13 +1022,15 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   FireFunc::firefunc_jis_toggle_eisuu_kana(const RemapParams &params)
   {
-    static bool isKana = true;
-    if (isKana) {
-      firefunc_jis_kana(params);
+    // fire only if no-modifiers
+    if (allFlagStatus.makeFlags(params) != 0) return;
+
+    if (RemapUtil::jis_toggle_iskana(KeyEvent::DOWN)) {
+      _firefunc_key(KeyCode::JIS_KANA, CharCode::JIS_KANA, 0);
     } else {
-      firefunc_jis_eisuu(params);
+      _firefunc_key(KeyCode::JIS_EISUU, CharCode::JIS_EISUU, 0);
     }
-    isKana = ! isKana;
+    RemapUtil::jis_toggle_iskana(KeyEvent::UP);
   }
 
   void
