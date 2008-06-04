@@ -1165,18 +1165,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       return;
     }
 
-    bool isKeyDown = false;
-
-    if (*(params.eventType) == KeyEvent::DOWN) {
-      isKeyDown = true;
-    } else if (*(params.eventType) == KeyEvent::MODIFY) {
-      ModifierFlag::ModifierFlag fromFlag = RemapUtil::getKeyCodeModifier(keyCode2);
-      if (RemapUtil::isModifierOn(params, fromFlag)) {
-        isKeyDown = true;
-      }
-    }
-
-    if (isKeyDown) {
+    if (RemapUtil::isKeyDown(params, keyCode2)) {
       isCallFireFunc = true;
       clickWatcher.set(&isClick);
 
