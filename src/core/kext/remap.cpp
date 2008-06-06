@@ -1807,33 +1807,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (allFlagStatus.makeFlags(params) != ModifierFlag::COMMAND_R) return;
 
-    KeyCode::KeyCode keyCode = KeyCode::NONE;
-    CharCode::CharCode charCode = CharCode::NONE;
-
-    if (RemapUtil::isKey(params, KeyCode::A)) {
-      keyCode = KeyCode::KEY_1; charCode = CharCode::KEY_1;
-    } else if (RemapUtil::isKey(params, KeyCode::S)) {
-      keyCode = KeyCode::KEY_2; charCode = CharCode::KEY_2;
-    } else if (RemapUtil::isKey(params, KeyCode::D)) {
-      keyCode = KeyCode::KEY_3; charCode = CharCode::KEY_3;
-    } else if (RemapUtil::isKey(params, KeyCode::F)) {
-      keyCode = KeyCode::KEY_4; charCode = CharCode::KEY_4;
-    } else if (RemapUtil::isKey(params, KeyCode::G)) {
-      keyCode = KeyCode::KEY_5; charCode = CharCode::KEY_5;
-    } else if (RemapUtil::isKey(params, KeyCode::H)) {
-      keyCode = KeyCode::KEY_6; charCode = CharCode::KEY_6;
-    } else if (RemapUtil::isKey(params, KeyCode::J)) {
-      keyCode = KeyCode::KEY_7; charCode = CharCode::KEY_7;
-    } else if (RemapUtil::isKey(params, KeyCode::K)) {
-      keyCode = KeyCode::KEY_8; charCode = CharCode::KEY_8;
-    } else if (RemapUtil::isKey(params, KeyCode::L)) {
-      keyCode = KeyCode::KEY_9; charCode = CharCode::KEY_9;
-    }
-
-    if (keyCode != KeyCode::NONE) {
-      RemapUtil::fireKeyWithAllModifiers(params, *(params.eventType), keyCode, charCode);
-      *(params.ex_dropKey) = true;
-    }
+    RemapUtil::key2spaces(params,
+                          KeyCode::A, KeyCode::S, KeyCode::D, KeyCode::F, KeyCode::G,
+                          KeyCode::H, KeyCode::J, KeyCode::K, KeyCode::L, KeyCode::NONE);
   }
 
   void
@@ -1843,33 +1819,25 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (allFlagStatus.makeFlags(params) != ModifierFlag::COMMAND_R) return;
 
-    KeyCode::KeyCode keyCode = KeyCode::NONE;
-    CharCode::CharCode charCode = CharCode::NONE;
+    RemapUtil::key2spaces(params,
+                          KeyCode::KEY_1, KeyCode::KEY_2, KeyCode::KEY_3,
+                          KeyCode::Q, KeyCode::W, KeyCode::E,
+                          KeyCode::A, KeyCode::S, KeyCode::D,
+                          KeyCode::NONE);
+  }
 
-    if (RemapUtil::isKey(params, KeyCode::KEY_1)) {
-      keyCode = KeyCode::KEY_1; charCode = CharCode::KEY_1;
-    } else if (RemapUtil::isKey(params, KeyCode::KEY_2)) {
-      keyCode = KeyCode::KEY_2; charCode = CharCode::KEY_2;
-    } else if (RemapUtil::isKey(params, KeyCode::KEY_3)) {
-      keyCode = KeyCode::KEY_3; charCode = CharCode::KEY_3;
-    } else if (RemapUtil::isKey(params, KeyCode::Q)) {
-      keyCode = KeyCode::KEY_4; charCode = CharCode::KEY_4;
-    } else if (RemapUtil::isKey(params, KeyCode::W)) {
-      keyCode = KeyCode::KEY_5; charCode = CharCode::KEY_5;
-    } else if (RemapUtil::isKey(params, KeyCode::E)) {
-      keyCode = KeyCode::KEY_6; charCode = CharCode::KEY_6;
-    } else if (RemapUtil::isKey(params, KeyCode::A)) {
-      keyCode = KeyCode::KEY_7; charCode = CharCode::KEY_7;
-    } else if (RemapUtil::isKey(params, KeyCode::S)) {
-      keyCode = KeyCode::KEY_8; charCode = CharCode::KEY_8;
-    } else if (RemapUtil::isKey(params, KeyCode::D)) {
-      keyCode = KeyCode::KEY_9; charCode = CharCode::KEY_9;
-    }
+  void
+  remap_spaces_special_qweasdzxc(const RemapParams &params)
+  {
+    if (! config.remap_spaces_special_qweasdzxc) return;
 
-    if (keyCode != KeyCode::NONE) {
-      RemapUtil::fireKeyWithAllModifiers(params, *(params.eventType), keyCode, charCode);
-      *(params.ex_dropKey) = true;
-    }
+    if (allFlagStatus.makeFlags(params) != ModifierFlag::COMMAND_R) return;
+
+    RemapUtil::key2spaces(params,
+                          KeyCode::Q, KeyCode::W, KeyCode::E,
+                          KeyCode::A, KeyCode::S, KeyCode::D,
+                          KeyCode::Z, KeyCode::X, KeyCode::C,
+                          KeyCode::NONE);
   }
 
   void
@@ -2959,6 +2927,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   // *** If spaces_special is enabled, emacsmode_ex_control12 make wrong remappings, . ***
   remap_spaces_special(params);
   remap_spaces_special_123qweasd(params);
+  remap_spaces_special_qweasdzxc(params);
   remap_spaces_special_fn(params);
   remap_spaces_special_keypad(params);
   remap_keypad2spaces(params);

@@ -1035,6 +1035,11 @@
               <sysctl>remap.spaces_special_123qweasd</sysctl>
             </item>
             <item>
+              <name>Use Command_R+[QWEASDZXC] for Spaces</name>
+              <appendix>(Command+Control+Option+Shift+[1...9])</appendix>
+              <sysctl>remap.spaces_special_qweasdzxc</sysctl>
+            </item>
+            <item>
               <name>Use FN+[1...9] for Spaces</name>
               <appendix>(Command+Control+Option+Shift+[1...9])</appendix>
               <sysctl>remap.spaces_special_fn</sysctl>
