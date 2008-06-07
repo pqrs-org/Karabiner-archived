@@ -85,7 +85,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       return true;
     }
 
-    bool jis_toggle_iskana(unsigned int eventType);
     void jis_toggle_eisuu_kana(const RemapParams &params, KeyCode::KeyCode fromKeyCode);
     void jis_toggle_eisuu_kana(const RemapParams &params, ModifierFlag::ModifierFlag fromModifier);
 
@@ -305,12 +304,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     void firefunc_jis_eisuu_x2(const RemapParams &params);
     void firefunc_jis_toggle_eisuu_kana(const RemapParams &params);
     void firefunc_jis_eisuu_escape(const RemapParams &params);
+
+    void firefunc_jis_kana_DA(const RemapParams &params);
   }
 
   namespace ExtraRepeatFunc {
     void extraRepeatFunc_enter(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon);
     void extraRepeatFunc_space(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon);
     void extraRepeatFunc_emacsmode_controlK(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon);
+
+    void extraRepeatFunc_jis_kana_DA(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon);
   }
 
   // ----------------------------------------
@@ -454,6 +457,22 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
 
   extern FirePointingScroll firePointingScroll;
+
+  // --------------------
+  class JISKanaMode {
+  public:
+    void setKanaMode(bool _mode) { mode = _mode; }
+    void setKanaMode(const RemapParams &params) {
+      if (*(params.key) == KeyCode::JIS_EISUU) setKanaMode(false);
+      if (*(params.key) == KeyCode::JIS_KANA) setKanaMode(true);
+    }
+    void toggle(void) { mode = ! mode; }
+    bool iskana(void) const { return mode; }
+
+  private:
+    bool mode;
+  };
+  extern JISKanaMode jisKanaMode;
 }
 
 #endif

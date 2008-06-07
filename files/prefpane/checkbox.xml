@@ -1462,6 +1462,10 @@
               <name>Use Japanese Keyboard as ASCII Keyboard</name>
               <sysctl>remap.jis_jansi</sysctl>
             </item>
+            <item>
+              <name>Use KAWASHIMA Special Keyboard Layout</name>
+              <sysctl>remap.jis_layout_kawashima</sysctl>
+            </item>
           </list>
         </item>
       </list>

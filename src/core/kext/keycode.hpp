@@ -190,8 +190,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       CURSOR_RIGHT = 174,
       CURSOR_DOWN = 175,
 
+      BRACKET_LEFT = 91,
+
       C = 99,
       O = 111,
+      Q = 113,
       X = 120,
       Z = 122,
 
