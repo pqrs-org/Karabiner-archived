@@ -296,7 +296,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     void firefunc_exposeAll(const RemapParams &params);
     void firefunc_return_noflags(const RemapParams &params);
     void firefunc_space(const RemapParams &params);
-    void firefunc_emacsmode_controlK(const RemapParams &params, bool first = false);
+    void firefunc_emacsmode_controlK(const RemapParams &params, bool first);
+    void firefunc_emacsmode_controlK_2nd(const RemapParams &params);
     void firefunc_emacsmode_ex_controlU(const RemapParams &params);
     void firefunc_jis_kana(const RemapParams &params);
     void firefunc_jis_kana_x2(const RemapParams &params);
@@ -309,6 +310,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   namespace ExtraRepeatFunc {
+    void call_firefunc(FireFunc::FireFunc firefunc, KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon);
+
     void extraRepeatFunc_enter(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon);
     void extraRepeatFunc_space(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon);
     void extraRepeatFunc_emacsmode_controlK(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon);

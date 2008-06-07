@@ -958,6 +958,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  FireFunc::firefunc_emacsmode_controlK_2nd(const RemapParams &params)
+  {
+    firefunc_emacsmode_controlK(params, false);
+  }
+
+  void
   FireFunc::firefunc_emacsmode_ex_controlU(const RemapParams &params)
   {
     // Command+Shift+Left
@@ -1072,7 +1078,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  ExtraRepeatFunc::extraRepeatFunc_emacsmode_controlK(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon)
+  ExtraRepeatFunc::call_firefunc(FireFunc::FireFunc firefunc, KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon)
   {
     if (callback == NULL) return;
 
@@ -1082,23 +1088,21 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     listFireExtraKey.reset();
     RemapParams params;
-    FireFunc::firefunc_emacsmode_controlK(params);
+    firefunc(params);
     listFireExtraKey.fire(FireExtraKey::TYPE_BEFORE, callback, target, charSet, origCharCode, origCharSet, keyboardType, ts, sender, refcon);
     listFireExtraKey.fire(FireExtraKey::TYPE_AFTER,  callback, target, charSet, origCharCode, origCharSet, keyboardType, ts, sender, refcon);
   }
 
   void
+  ExtraRepeatFunc::extraRepeatFunc_emacsmode_controlK(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon)
+  {
+    call_firefunc(FireFunc::firefunc_emacsmode_controlK_2nd, callback, target, flags, keyboardType, ts, sender, refcon);
+  }
+
+  void
   ExtraRepeatFunc::extraRepeatFunc_jis_kana_DA(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon)
   {
-    unsigned int charSet = 0;
-    unsigned origCharCode = 0;
-    unsigned origCharSet = 0;
-
-    listFireExtraKey.reset();
-    RemapParams params;
-    FireFunc::firefunc_jis_kana_DA(params);
-    listFireExtraKey.fire(FireExtraKey::TYPE_BEFORE, callback, target, charSet, origCharCode, origCharSet, keyboardType, ts, sender, refcon);
-    listFireExtraKey.fire(FireExtraKey::TYPE_AFTER,  callback, target, charSet, origCharCode, origCharSet, keyboardType, ts, sender, refcon);
+    call_firefunc(FireFunc::firefunc_jis_kana_DA, callback, target, flags, keyboardType, ts, sender, refcon);
   }
 
   // ----------------------------------------
