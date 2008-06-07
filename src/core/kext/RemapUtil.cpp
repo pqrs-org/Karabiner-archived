@@ -12,6 +12,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   FirePointingScroll firePointingScroll;
   ClickWatcher clickWatcher;
   PointingButtonStatus pointingButtonStatus;
+  JISKanaMode jisKanaMode;
 
   KeyCode::KeyCode
   RemapUtil::getModifierKeyCode(ModifierFlag::ModifierFlag flag)
@@ -539,22 +540,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // --------------------
-  bool
-  RemapUtil::jis_toggle_iskana(unsigned int eventType)
-  {
-    static bool isKana = true;
-    if (eventType == KeyEvent::UP) {
-      isKana = ! isKana;
-    }
-    return isKana;
-  }
-
   void
   RemapUtil::jis_toggle_eisuu_kana(const RemapParams &params, KeyCode::KeyCode fromKeyCode)
   {
     if (! RemapUtil::isKey(params, fromKeyCode)) return;
 
-    KeyCode::KeyCode toKeyCode = RemapUtil::jis_toggle_iskana(*(params.eventType)) ? KeyCode::JIS_KANA : KeyCode::JIS_EISUU;
+    if (RemapUtil::isKeyDown(params, fromKeyCode)) jisKanaMode.toggle();
+
+    KeyCode::KeyCode toKeyCode = jisKanaMode.iskana() ? KeyCode::JIS_KANA : KeyCode::JIS_EISUU;
     RemapUtil::keyToKey(params, fromKeyCode, toKeyCode);
   }
 
@@ -565,7 +558,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (! RemapUtil::isKey(params, fromKeyCode)) return;
 
-    KeyCode::KeyCode toKeyCode = RemapUtil::jis_toggle_iskana(*(params.eventType)) ? KeyCode::JIS_KANA : KeyCode::JIS_EISUU;
+    if (RemapUtil::isKeyDown(params, fromKeyCode)) jisKanaMode.toggle();
+
+    KeyCode::KeyCode toKeyCode = jisKanaMode.iskana() ? KeyCode::JIS_KANA : KeyCode::JIS_EISUU;
     RemapUtil::modifierToKey(params, fromModifier, toKeyCode);
   }
 
@@ -786,6 +781,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         callback(target, item.getEventType(), item.getFlags(), item.getKey(), item.getCharCode(),
                  charSet, origCharCode, origCharSet,
                  keyboardType, false, ts, sender, refcon);
+
+        if (item.getKey() == KeyCode::JIS_EISUU) jisKanaMode.setKanaMode(false);
+        if (item.getKey() == KeyCode::JIS_KANA) jisKanaMode.setKanaMode(true);
       }
     }
   }
@@ -1025,12 +1023,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     // fire only if no-modifiers
     if (allFlagStatus.makeFlags(params) != 0) return;
 
-    if (RemapUtil::jis_toggle_iskana(KeyEvent::DOWN)) {
+    jisKanaMode.toggle();
+    if (jisKanaMode.iskana()) {
       _firefunc_key(KeyCode::JIS_KANA, CharCode::JIS_KANA, 0);
     } else {
       _firefunc_key(KeyCode::JIS_EISUU, CharCode::JIS_EISUU, 0);
     }
-    RemapUtil::jis_toggle_iskana(KeyEvent::UP);
   }
 
   void
@@ -1039,6 +1037,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     unsigned int flags = allFlagStatus.makeFlags(params);
     _firefunc_key(KeyCode::JIS_EISUU, CharCode::JIS_EISUU, 0);
     _firefunc_key(KeyCode::ESCAPE, CharCode::ESCAPE, flags);
+  }
+
+  void
+  FireFunc::firefunc_jis_kana_DA(const RemapParams &params)
+  {
+    _firefunc_key(KeyCode::Q, CharCode::Q, 0);
+    _firefunc_key(KeyCode::BRACKET_LEFT, CharCode::BRACKET_LEFT, 0);
   }
 
   // --------------------
@@ -1078,6 +1083,20 @@ namespace org_pqrs_KeyRemap4MacBook {
     listFireExtraKey.reset();
     RemapParams params;
     FireFunc::firefunc_emacsmode_controlK(params);
+    listFireExtraKey.fire(FireExtraKey::TYPE_BEFORE, callback, target, charSet, origCharCode, origCharSet, keyboardType, ts, sender, refcon);
+    listFireExtraKey.fire(FireExtraKey::TYPE_AFTER,  callback, target, charSet, origCharCode, origCharSet, keyboardType, ts, sender, refcon);
+  }
+
+  void
+  ExtraRepeatFunc::extraRepeatFunc_jis_kana_DA(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon)
+  {
+    unsigned int charSet = 0;
+    unsigned origCharCode = 0;
+    unsigned origCharSet = 0;
+
+    listFireExtraKey.reset();
+    RemapParams params;
+    FireFunc::firefunc_jis_kana_DA(params);
     listFireExtraKey.fire(FireExtraKey::TYPE_BEFORE, callback, target, charSet, origCharCode, origCharSet, keyboardType, ts, sender, refcon);
     listFireExtraKey.fire(FireExtraKey::TYPE_AFTER,  callback, target, charSet, origCharCode, origCharSet, keyboardType, ts, sender, refcon);
   }

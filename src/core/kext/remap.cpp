@@ -1362,15 +1362,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.option_keypadnumlock_togglekey_clear) return;
 
-    static bool keypadnumlock = true;
-    if (params.ex_origKey == KeyCode::KEYPAD_CLEAR) {
-      if (*(params.eventType) == KeyEvent::DOWN) {
-        config.remap_keypadnumlock = keypadnumlock;
-        keypadnumlock = ! keypadnumlock;
+    if (! RemapUtil::isKey(params, KeyCode::KEYPAD_CLEAR)) return;
 
-        *(params.ex_dropKey) = true;
-      }
+    if (RemapUtil::isKeyDown(params, KeyCode::KEYPAD_CLEAR)) {
+      config.remap_keypadnumlock = ! config.remap_keypadnumlock;
     }
+    *(params.ex_dropKey) = true;
   }
 
   void
@@ -2589,6 +2586,33 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::keyToKey(params, KeyCode::JIS_UNDERSCORE, KeyCode::BACKQUOTE);
   }
 
+  void
+  remap_jis_layout_kawashima(const RemapParams &params)
+  {
+    if (! config.remap_jis_layout_kawashima) return;
+
+    if (! jisKanaMode.iskana()) return;
+
+    if (RemapUtil::isKey(params, KeyCode::A)) {
+      if (allFlagStatus.shiftL.isHeldDown()) {
+        allFlagStatus.shiftL.temporary_decrease();
+        RemapUtil::keyToKey(params, KeyCode::A, KeyCode::KEY_1);
+
+      } else if (allFlagStatus.shiftR.isHeldDown()) {
+        allFlagStatus.shiftR.temporary_decrease();
+        if (RemapUtil::isKeyDown(params, KeyCode::A)) {
+          FireFunc::firefunc_jis_kana_DA(params);
+          *(params.ex_extraRepeatFunc) = ExtraRepeatFunc::extraRepeatFunc_jis_kana_DA;
+          *(params.ex_extraRepeatFlags) = 0;
+        }
+        *(params.ex_dropKey) = true;
+
+      } else {
+        RemapUtil::keyToKey(params, KeyCode::A, KeyCode::Q);
+      }
+    }
+  }
+
   // ------------------------------------------------------------
   void
   remap_eject2forwarddelete(const RemapConsumerParams &params)
@@ -2690,7 +2714,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   allFlagStatus.initialize(params);
 
-  // ------------------------------------------------------------
+  // ======================================================================
   // normal remapping
   remap_leftarrow2controlL(params);
 
@@ -2911,6 +2935,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_jis_app_vi_eisuu2eisuu_escape(params);
 
   remap_jis_jansi(params);
+  remap_jis_layout_kawashima(params);
 
   // ------------------------------------------------------------
   // *** Note: we need to call remap_drop_funcshift after tab2f9, pc_application2f11, ... ***
@@ -2970,13 +2995,17 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   // ------------------------------------------------------------
   *(params.flags) = allFlagStatus.makeFlags(params);
 
+  // ======================================================================
+  // post actions
+  if (*(params.ex_dropKey)) return;
+
+  jisKanaMode.setKanaMode(params);
+
   if (config.debug) {
-    if (! *(params.ex_dropKey)) {
-      printf("sending hid event type %d flags 0x%x key %d ", *(params.eventType), *(params.flags), *(params.key));
-      printf("charCode %d charSet %d ", *(params.charCode), *(params.charSet));
-      printf("origCharCode %d origCharSet %d kbdType %d\n",
-             *(params.origCharCode), *(params.origCharSet), *(params.keyboardType));
-    }
+    printf("sending hid event type %d flags 0x%x key %d ", *(params.eventType), *(params.flags), *(params.key));
+    printf("charCode %d charSet %d ", *(params.charCode), *(params.charSet));
+    printf("origCharCode %d origCharSet %d kbdType %d\n",
+           *(params.origCharCode), *(params.origCharSet), *(params.keyboardType));
   }
 }
 
