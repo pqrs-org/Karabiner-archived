@@ -1571,6 +1571,11 @@ namespace org_pqrs_KeyRemap4MacBook {
         *(params.ex_dropKey) = true;
         cancel_control = true;
       }
+      // Control+G -> Escape
+      if (config.option_emacsmode_ex_controlG && *(params.key) == KeyCode::G && ! ignore) {
+        *(params.key) = KeyCode::ESCAPE;
+        cancel_control = true;
+      }
       // Control+12 -> HOME/END
       if (config.option_emacsmode_ex_control12) {
         if (! ignore) {
