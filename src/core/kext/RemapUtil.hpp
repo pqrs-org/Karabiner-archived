@@ -51,6 +51,18 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode);
     bool keyToKeyWithModifier(const RemapParams &params, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode, ModifierFlag::ModifierFlag toFlag);
 
+    bool keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode,
+                  KeyCode::KeyCode toKeyCode1, CharCode::CharCode toCharCode1,
+                  KeyCode::KeyCode toKeyCode2, CharCode::CharCode toCharCode2);
+
+    bool keyToKey_dependingShift(const RemapParams &params, KeyCode::KeyCode fromKeyCode,
+                                 KeyCode::KeyCode toKeyCode_noflag1, CharCode::CharCode toCharCode_noflag1,
+                                 KeyCode::KeyCode toKeyCode_noflag2, CharCode::CharCode toCharCode_noflag2,
+                                 KeyCode::KeyCode toKeyCode_shiftL1, CharCode::CharCode toCharCode_shiftL1,
+                                 KeyCode::KeyCode toKeyCode_shiftL2, CharCode::CharCode toCharCode_shiftL2,
+                                 KeyCode::KeyCode toKeyCode_shiftR1, CharCode::CharCode toCharCode_shiftR1,
+                                 KeyCode::KeyCode toKeyCode_shiftR2, CharCode::CharCode toCharCode_shiftR2);
+
     void modifierToPointingButton(const RemapParams &params, ModifierFlag::ModifierFlag fromFlag, PointingButton::PointingButton toButton);
     void keyToPointingButton(const RemapParams &params, KeyCode::KeyCode fromKeyCode, PointingButton::PointingButton toButton);
 
@@ -226,6 +238,12 @@ namespace org_pqrs_KeyRemap4MacBook {
               unsigned int charSet, unsigned int origCharCode, unsigned int origCharSet, unsigned int keyboardType,
               AbsoluteTime ts, OSObject *sender, void *refcon);
 
+    // utility
+    void addKey(unsigned int flags, KeyCode::KeyCode key, CharCode::CharCode charCode) {
+      add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, flags, key, charCode);
+      add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, flags, key, charCode);
+    }
+
   private:
     FireExtraKey list[FIREEXTRAKEY_MAXNUM];
     int size;
@@ -305,8 +323,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void firefunc_jis_eisuu_x2(const RemapParams &params);
     void firefunc_jis_toggle_eisuu_kana(const RemapParams &params);
     void firefunc_jis_eisuu_escape(const RemapParams &params);
-
-    void firefunc_jis_kana_DA(const RemapParams &params);
   }
 
   namespace ExtraRepeatFunc {
