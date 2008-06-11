@@ -2593,24 +2593,21 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (! jisKanaMode.iskana()) return;
 
-    if (RemapUtil::isKey(params, KeyCode::A)) {
-      if (allFlagStatus.shiftL.isHeldDown()) {
-        allFlagStatus.shiftL.temporary_decrease();
-        RemapUtil::keyToKey(params, KeyCode::A, KeyCode::KEY_1);
+    // A -> TA ( Q )
+    // A+Shift_L -> NU ( 1 )
+    // A+Shift_R -> DA ( Q[ )
+    RemapUtil::keyToKey_dependingShift(params, KeyCode::A,
+                                       KeyCode::Q, CharCode::Q, KeyCode::NONE, CharCode::NONE,
+                                       KeyCode::KEY_1, CharCode::KEY_1, KeyCode::NONE, CharCode::NONE,
+                                       KeyCode::Q, CharCode::Q, KeyCode::BRACKET_LEFT, CharCode::BRACKET_LEFT);
 
-      } else if (allFlagStatus.shiftR.isHeldDown()) {
-        allFlagStatus.shiftR.temporary_decrease();
-        if (RemapUtil::isKeyDown(params, KeyCode::A)) {
-          FireFunc::firefunc_jis_kana_DA(params);
-          *(params.ex_extraRepeatFunc) = ExtraRepeatFunc::extraRepeatFunc_jis_kana_DA;
-          *(params.ex_extraRepeatFlags) = 0;
-        }
-        *(params.ex_dropKey) = true;
-
-      } else {
-        RemapUtil::keyToKey(params, KeyCode::A, KeyCode::Q);
-      }
-    }
+    // J -> I ( E )
+    // J+Shift_L -> DI ( A[ )
+    // J+Shift_R -> TI ( A )
+    RemapUtil::keyToKey_dependingShift(params, KeyCode::J,
+                                       KeyCode::E, CharCode::E, KeyCode::NONE, CharCode::NONE,
+                                       KeyCode::A, CharCode::A, KeyCode::BRACKET_LEFT, CharCode::BRACKET_LEFT,
+                                       KeyCode::A, CharCode::A, KeyCode::NONE, CharCode::NONE);
   }
 
   // ------------------------------------------------------------

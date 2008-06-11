@@ -192,7 +192,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       BRACKET_LEFT = 91,
 
+      A = 97,
       C = 99,
+      E = 101,
       O = 111,
       Q = 113,
       X = 120,
