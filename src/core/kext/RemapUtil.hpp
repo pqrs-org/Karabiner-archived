@@ -158,12 +158,14 @@ namespace org_pqrs_KeyRemap4MacBook {
       fn(ModifierFlag::FN)
     {}
     void initialize(const RemapParams &params);
+    unsigned int makeFlags(void);
     unsigned int makeFlags(const RemapParams &params);
     void reset(void);
 
     FlagStatus *getFlagStatus(ModifierFlag::ModifierFlag flag);
     FlagStatus *getFlagStatus(KeyCode::KeyCode keyCode);
 
+    // ----------------------------------------
     bool isHeldDown_command(void) { return commandL.isHeldDown() || commandR.isHeldDown(); }
     bool isHeldDown_control(void) { return controlL.isHeldDown() || controlR.isHeldDown(); }
     bool isHeldDown_option(void) { return optionL.isHeldDown() || optionR.isHeldDown(); }
@@ -190,6 +192,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         shiftR.temporary_decrease();
       }
     }
+
+    // ----------------------------------------
+    void temporary_flags_reset(void);
+    void temporary_flags_restore(void);
   };
   extern AllFlagStatus allFlagStatus;
 

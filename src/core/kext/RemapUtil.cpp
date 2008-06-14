@@ -762,6 +762,27 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   unsigned int
+  AllFlagStatus::makeFlags(void)
+  {
+    unsigned int flags = 0;
+    flags |= capslock.makeFlag();
+    flags |= shiftL.makeFlag();
+    flags |= shiftR.makeFlag();
+    flags |= controlL.makeFlag();
+    flags |= controlR.makeFlag();
+    flags |= optionL.makeFlag();
+    flags |= optionR.makeFlag();
+    flags |= commandL.makeFlag();
+    flags |= commandR.makeFlag();
+    flags |= fn.makeFlag();
+
+    if (cursor) flags |= ModifierFlag::CURSOR;
+    if (keypad) flags |= ModifierFlag::KEYPAD;
+
+    return flags;
+  }
+
+  unsigned int
   AllFlagStatus::makeFlags(const RemapParams &params)
   {
     if (numHeldDownKeys <= 0 && *(params.flags) == 0) {
@@ -809,6 +830,44 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     ModifierFlag::ModifierFlag fromFlag = RemapUtil::getKeyCodeModifier(keyCode);
     return allFlagStatus.getFlagStatus(fromFlag);
+  }
+
+  void
+  AllFlagStatus::temporary_flags_reset(void)
+  {
+    if (commandL.isHeldDown()) listFireExtraKey.addKey(0, KeyCode::COMMAND_L, CharCode::COMMAND_L);
+    if (commandR.isHeldDown()) listFireExtraKey.addKey(0, KeyCode::COMMAND_R, CharCode::COMMAND_R);
+
+    if (controlL.isHeldDown()) listFireExtraKey.addKey(0, KeyCode::CONTROL_L, CharCode::CONTROL_L);
+    if (controlR.isHeldDown()) listFireExtraKey.addKey(0, KeyCode::CONTROL_R, CharCode::CONTROL_R);
+
+    if (optionL.isHeldDown()) listFireExtraKey.addKey(0, KeyCode::OPTION_L, CharCode::OPTION_L);
+    if (optionR.isHeldDown()) listFireExtraKey.addKey(0, KeyCode::OPTION_R, CharCode::OPTION_R);
+
+    if (shiftL.isHeldDown()) listFireExtraKey.addKey(0, KeyCode::SHIFT_L, CharCode::SHIFT_L);
+    if (shiftR.isHeldDown()) listFireExtraKey.addKey(0, KeyCode::SHIFT_L, CharCode::SHIFT_L);
+
+    if (fn.isHeldDown()) listFireExtraKey.addKey(0, KeyCode::FN, CharCode::FN);
+  }
+
+  void
+  AllFlagStatus::temporary_flags_restore()
+  {
+    unsigned int flags = makeFlags();
+
+    if (commandL.isHeldDown()) listFireExtraKey.addKey(flags, KeyCode::COMMAND_L, CharCode::COMMAND_L);
+    if (commandR.isHeldDown()) listFireExtraKey.addKey(flags, KeyCode::COMMAND_R, CharCode::COMMAND_R);
+
+    if (controlL.isHeldDown()) listFireExtraKey.addKey(flags, KeyCode::CONTROL_L, CharCode::CONTROL_L);
+    if (controlR.isHeldDown()) listFireExtraKey.addKey(flags, KeyCode::CONTROL_R, CharCode::CONTROL_R);
+
+    if (optionL.isHeldDown()) listFireExtraKey.addKey(flags, KeyCode::OPTION_L, CharCode::OPTION_L);
+    if (optionR.isHeldDown()) listFireExtraKey.addKey(flags, KeyCode::OPTION_R, CharCode::OPTION_R);
+
+    if (shiftL.isHeldDown()) listFireExtraKey.addKey(flags, KeyCode::SHIFT_L, CharCode::SHIFT_L);
+    if (shiftR.isHeldDown()) listFireExtraKey.addKey(flags, KeyCode::SHIFT_L, CharCode::SHIFT_L);
+
+    if (fn.isHeldDown()) listFireExtraKey.addKey(flags, KeyCode::FN, CharCode::FN);
   }
 
   // ----------------------------------------------------------------------
@@ -934,7 +993,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   FireFunc::firefunc_escape_noflags(const RemapParams &params)
   {
+    allFlagStatus.temporary_flags_reset();
     listFireExtraKey.addKey(0, KeyCode::ESCAPE, CharCode::ESCAPE);
+    allFlagStatus.temporary_flags_restore();
   }
 
   void
@@ -947,7 +1008,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   FireFunc::firefunc_return_noflags(const RemapParams &params)
   {
+    allFlagStatus.temporary_flags_reset();
     listFireExtraKey.addKey(0, KeyCode::RETURN, CharCode::RETURN);
+    allFlagStatus.temporary_flags_restore();
   }
 
   void
