@@ -1248,21 +1248,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     FlagStatus *fromStatus2 = allFlagStatus.getFlagStatus(fromFlag2);
     if (fromStatus1 == NULL || fromStatus2 == NULL) return;
 
-    printf("do %x\n", *(params.ts));
-
     if (*(params.key) != keyCode2) {
-      printf("cancel %x\n", *(params.ts));
       isCallFireFunc = false;
       return;
     }
 
     if (fromStatus2->isHeldDown()) {
-      printf("down %x\n", *(params.ts));
       isCallFireFunc = true;
       clickWatcher.set(&isClick);
 
     } else {
-      printf("up %x\n", *(params.ts));
       if (fromStatus1->isHeldDown() && isCallFireFunc && isClick == false) {
         firefunc(params);
       }
