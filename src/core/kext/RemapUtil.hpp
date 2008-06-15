@@ -140,7 +140,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     FlagStatus commandL;
     FlagStatus commandR;
     FlagStatus fn;
-    bool cursor;
     bool keypad;
 
     int numHeldDownKeys;
@@ -158,7 +157,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       fn(ModifierFlag::FN)
     {}
     void initialize(const RemapParams &params);
-    unsigned int makeFlags(void);
+    unsigned int makeFlags(unsigned int keyCode);
     unsigned int makeFlags(const RemapParams &params);
     void reset(void);
 
@@ -195,7 +194,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ----------------------------------------
     void temporary_flags_reset(void);
-    void temporary_flags_restore(void);
+    void temporary_flags_restore(KeyCode::KeyCode keyCode);
   };
   extern AllFlagStatus allFlagStatus;
 
