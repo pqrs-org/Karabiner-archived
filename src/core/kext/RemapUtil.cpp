@@ -845,7 +845,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (optionR.isHeldDown()) listFireExtraKey.addKey(0, KeyCode::OPTION_R, CharCode::OPTION_R);
 
     if (shiftL.isHeldDown()) listFireExtraKey.addKey(0, KeyCode::SHIFT_L, CharCode::SHIFT_L);
-    if (shiftR.isHeldDown()) listFireExtraKey.addKey(0, KeyCode::SHIFT_L, CharCode::SHIFT_L);
+    if (shiftR.isHeldDown()) listFireExtraKey.addKey(0, KeyCode::SHIFT_R, CharCode::SHIFT_R);
 
     if (fn.isHeldDown()) listFireExtraKey.addKey(0, KeyCode::FN, CharCode::FN);
   }
@@ -865,7 +865,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (optionR.isHeldDown()) listFireExtraKey.addKey(flags, KeyCode::OPTION_R, CharCode::OPTION_R);
 
     if (shiftL.isHeldDown()) listFireExtraKey.addKey(flags, KeyCode::SHIFT_L, CharCode::SHIFT_L);
-    if (shiftR.isHeldDown()) listFireExtraKey.addKey(flags, KeyCode::SHIFT_L, CharCode::SHIFT_L);
+    if (shiftR.isHeldDown()) listFireExtraKey.addKey(flags, KeyCode::SHIFT_R, CharCode::SHIFT_R);
 
     if (fn.isHeldDown()) listFireExtraKey.addKey(flags, KeyCode::FN, CharCode::FN);
   }
@@ -993,9 +993,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   FireFunc::firefunc_escape_noflags(const RemapParams &params)
   {
-    allFlagStatus.temporary_flags_reset();
+    //allFlagStatus.temporary_flags_reset();
     listFireExtraKey.addKey(0, KeyCode::ESCAPE, CharCode::ESCAPE);
-    allFlagStatus.temporary_flags_restore();
+    //allFlagStatus.temporary_flags_restore();
   }
 
   void
@@ -1264,23 +1264,32 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  KeyOverlaidKeyCombination::remap(const RemapParams &params, KeyCode::KeyCode keyCode1, KeyCode::KeyCode keyCode2, FireFunc::FireFunc firefunc)
+  KeyOverlaidModifierCombination::remap(const RemapParams &params, ModifierFlag::ModifierFlag fromFlag1, ModifierFlag::ModifierFlag fromFlag2, FireFunc::FireFunc firefunc)
   {
-    if (RemapUtil::isKey(params, keyCode1)) {
-      isKey1HeldDown = RemapUtil::isKeyDown(params, keyCode1);
-    }
+    KeyCode::KeyCode keyCode1 = RemapUtil::getModifierKeyCode(fromFlag1);
+    KeyCode::KeyCode keyCode2 = RemapUtil::getModifierKeyCode(fromFlag2);
+    if (keyCode1 == KeyCode::NONE || keyCode2 == KeyCode::NONE) return;
 
-    if (! RemapUtil::isKey(params, keyCode2)) {
+    FlagStatus *fromStatus1 = allFlagStatus.getFlagStatus(fromFlag1);
+    FlagStatus *fromStatus2 = allFlagStatus.getFlagStatus(fromFlag2);
+    if (fromStatus1 == NULL || fromStatus2 == NULL) return;
+
+    printf("do %x\n", *(params.ts));
+
+    if (*(params.key) != keyCode2) {
+      printf("cancel %x\n", *(params.ts));
       isCallFireFunc = false;
       return;
     }
 
-    if (RemapUtil::isKeyDown(params, keyCode2)) {
+    if (fromStatus2->isHeldDown()) {
+      printf("down %x\n", *(params.ts));
       isCallFireFunc = true;
       clickWatcher.set(&isClick);
 
     } else {
-      if (isKey1HeldDown && isCallFireFunc && isClick == false) {
+      printf("up %x\n", *(params.ts));
+      if (fromStatus1->isHeldDown() && isCallFireFunc && isClick == false) {
         firefunc(params);
       }
       clickWatcher.unset(&isClick);

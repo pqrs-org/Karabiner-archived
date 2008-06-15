@@ -1,5 +1,17 @@
 #!/usr/bin/ruby
 
+# ----------------------------------------------------------------------
+def fileread(filename)
+  text = nil
+  open(filename) do |f|
+    text = f.read
+  end
+  text
+end
+
+template_KeyOverlaidModifierCombination = fileread('template/KeyOverlaidModifierCombination.cpp')
+
+# ----------------------------------------------------------------------
 lastName = nil;
 while l = $stdin.gets
   l.strip!
@@ -26,6 +38,27 @@ while l = $stdin.gets
     value = $1
     if ARGV[0] == 'default' then
       print "#{lastName} = #{value};\n"
+    end
+  end
+
+  if /<autogen>(.+)<\/autogen>/ =~ l then
+    value = $1
+    if /^(.+?):(.+)$/ =~ value then
+      type = $1
+      params = $2
+
+      case ARGV[0]
+      when 'remapcode_func'
+        case type
+        when 'KeyOverlaidModifierCombination'
+          print template_KeyOverlaidModifierCombination.gsub(/%%LASTNAME%%/, lastName).gsub(/%%PARAMS%%/, params)
+        end
+
+      when 'remapcode_call_komc'
+        if type == 'KeyOverlaidModifierCombination' then
+          print "#{lastName}(params);\n"
+        end
+      end
     end
   end
 end

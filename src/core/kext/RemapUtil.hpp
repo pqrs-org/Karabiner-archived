@@ -354,12 +354,12 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   // Command_R+Command_L to Escape, ...
-  class KeyOverlaidKeyCombination {
+  class KeyOverlaidModifierCombination {
   public:
-    void remap(const RemapParams &params, KeyCode::KeyCode keyCode1, KeyCode::KeyCode keyCode2, FireFunc::FireFunc firefunc);
+    void remap(const RemapParams &params, ModifierFlag::ModifierFlag fromFlag1, ModifierFlag::ModifierFlag fromFlag2, FireFunc::FireFunc firefunc);
 
   private:
-    bool isKey1HeldDown;
+    bool isModifier1HeldDown;
     bool isCallFireFunc;
     bool isClick;
   };
