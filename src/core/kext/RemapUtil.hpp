@@ -244,9 +244,13 @@ namespace org_pqrs_KeyRemap4MacBook {
               AbsoluteTime ts, OSObject *sender, void *refcon);
 
     // utility
-    void addKey(unsigned int flags, KeyCode::KeyCode key, CharCode::CharCode charCode) {
-      add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, flags, key, charCode);
-      add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, flags, key, charCode);
+    void addKey(unsigned int flags, KeyCode::KeyCode keyCode, CharCode::CharCode charCode) {
+      if (RemapUtil::getKeyCodeModifier(keyCode) != ModifierFlag::NONE) {
+        add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, keyCode, charCode);
+      } else {
+        add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, flags, keyCode, charCode);
+        add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, flags, keyCode, charCode);
+      }
     }
 
   private:
