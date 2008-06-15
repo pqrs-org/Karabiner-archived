@@ -28,7 +28,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (flag == ModifierFlag::COMMAND_R) return KeyCode::COMMAND_R;
     if (flag == ModifierFlag::FN) return KeyCode::FN;
 
-    IOLog("KeyRemap4MacBook::getModifierKeyCode invalid args\n");
+    //IOLog("KeyRemap4MacBook::getModifierKeyCode invalid args\n");
     return KeyCode::NONE;
   }
 
@@ -45,7 +45,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (keycode == KeyCode::COMMAND_R) return ModifierFlag::COMMAND_R;
     if (keycode == KeyCode::FN) return ModifierFlag::FN;
 
-    IOLog("KeyRemap4MacBook::getKeyCodeModifier invalid args\n");
+    //IOLog("KeyRemap4MacBook::getKeyCodeModifier invalid args\n");
     return ModifierFlag::NONE;
   }
 
