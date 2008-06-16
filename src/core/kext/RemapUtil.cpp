@@ -52,111 +52,60 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapUtil::fnToNormal(const RemapParams &params)
   {
-    if (params.ex_origKey == KeyCode::KEYPAD_0) {
-      *(params.key) = KeyCode::M;
-    } else if (params.ex_origKey == KeyCode::KEYPAD_1) {
-      *(params.key) = KeyCode::J;
-    } else if (params.ex_origKey == KeyCode::KEYPAD_2) {
-      *(params.key) = KeyCode::K;
-    } else if (params.ex_origKey == KeyCode::KEYPAD_3) {
-      *(params.key) = KeyCode::L;
-    } else if (params.ex_origKey == KeyCode::KEYPAD_4) {
-      *(params.key) = KeyCode::U;
-    } else if (params.ex_origKey == KeyCode::KEYPAD_5) {
-      *(params.key) = KeyCode::I;
-    } else if (params.ex_origKey == KeyCode::KEYPAD_6) {
-      *(params.key) = KeyCode::O;
-    } else if (params.ex_origKey == KeyCode::KEYPAD_7) {
-      *(params.key) = KeyCode::KEY_7;
-    } else if (params.ex_origKey == KeyCode::KEYPAD_8) {
-      *(params.key) = KeyCode::KEY_8;
-    } else if (params.ex_origKey == KeyCode::KEYPAD_9) {
-      *(params.key) = KeyCode::KEY_9;
-    } else if (params.ex_origKey == KeyCode::KEYPAD_CLEAR) {
-      *(params.key) = KeyCode::KEY_6;
-    } else if (params.ex_origKey == KeyCode::KEYPAD_PLUS) {
-      *(params.key) = KeyCode::SLASH;
-    } else if (params.ex_origKey == KeyCode::KEYPAD_MINUS) {
-      *(params.key) = KeyCode::SEMICOLON;
-    } else if (params.ex_origKey == KeyCode::KEYPAD_MULTIPLY) {
-      *(params.key) = KeyCode::P;
-    } else if (params.ex_origKey == KeyCode::KEYPAD_SLASH) {
-      *(params.key) = KeyCode::KEY_0;
-    } else if (params.ex_origKey == KeyCode::KEYPAD_EQUAL) {
-      *(params.key) = KeyCode::MINUS;
-    } else if (params.ex_origKey == KeyCode::KEYPAD_DOT) {
-      *(params.key) = KeyCode::DOT;
-    } else if (params.ex_origKey == KeyCode::PAGEUP) {
-      *(params.key) = KeyCode::CURSOR_UP;
-    } else if (params.ex_origKey == KeyCode::PAGEDOWN) {
-      *(params.key) = KeyCode::CURSOR_DOWN;
-    } else if (params.ex_origKey == KeyCode::HOME) {
-      *(params.key) = KeyCode::CURSOR_LEFT;
-    } else if (params.ex_origKey == KeyCode::END) {
-      *(params.key) = KeyCode::CURSOR_RIGHT;
-    } else if (params.ex_origKey == getEnterKeyCode(params)) {
-      *(params.key) = KeyCode::RETURN;
-    } else if (params.ex_origKey == KeyCode::FORWARD_DELETE) {
-      *(params.key) = KeyCode::DELETE;
-    } else {
-      return;
-    }
+    if (! RemapUtil::isModifierOn(params, ModifierFlag::FN)) return;
+
+    keyToKey(params, KeyCode::KEYPAD_0, KeyCode::M);
+    keyToKey(params, KeyCode::KEYPAD_1, KeyCode::J);
+    keyToKey(params, KeyCode::KEYPAD_2, KeyCode::K);
+    keyToKey(params, KeyCode::KEYPAD_3, KeyCode::L);
+    keyToKey(params, KeyCode::KEYPAD_4, KeyCode::U);
+    keyToKey(params, KeyCode::KEYPAD_5, KeyCode::I);
+    keyToKey(params, KeyCode::KEYPAD_6, KeyCode::O);
+    keyToKey(params, KeyCode::KEYPAD_7, KeyCode::KEY_7);
+    keyToKey(params, KeyCode::KEYPAD_8, KeyCode::KEY_8);
+    keyToKey(params, KeyCode::KEYPAD_9, KeyCode::KEY_9);
+    keyToKey(params, KeyCode::KEYPAD_CLEAR, KeyCode::KEY_6);
+    keyToKey(params, KeyCode::KEYPAD_PLUS, KeyCode::SLASH);
+    keyToKey(params, KeyCode::KEYPAD_MINUS, KeyCode::SEMICOLON);
+    keyToKey(params, KeyCode::KEYPAD_MULTIPLY, KeyCode::P);
+    keyToKey(params, KeyCode::KEYPAD_SLASH, KeyCode::KEY_0);
+    keyToKey(params, KeyCode::KEYPAD_EQUAL, KeyCode::MINUS);
+    keyToKey(params, KeyCode::KEYPAD_DOT, KeyCode::DOT);
+    keyToKey(params, KeyCode::PAGEUP, KeyCode::CURSOR_UP);
+    keyToKey(params, KeyCode::PAGEDOWN, KeyCode::CURSOR_DOWN);
+    keyToKey(params, KeyCode::HOME, KeyCode::CURSOR_LEFT);
+    keyToKey(params, KeyCode::END, KeyCode::CURSOR_RIGHT);
+    keyToKey(params, KeyCode::ENTER, KeyCode::RETURN);
+    keyToKey(params, KeyCode::FORWARD_DELETE, KeyCode::DELETE);
   }
 
   void
   RemapUtil::toFN(const RemapParams &params) {
     if (! allFlagStatus.fn.isHeldDown()) return;
 
-    // change cursor & return key behavior
-    if (params.ex_origKey == KeyCode::M) {
-      *(params.key) = KeyCode::KEYPAD_0;
-    } else if (params.ex_origKey == KeyCode::J) {
-      *(params.key) = KeyCode::KEYPAD_1;
-    } else if (params.ex_origKey == KeyCode::K) {
-      *(params.key) = KeyCode::KEYPAD_2;
-    } else if (params.ex_origKey == KeyCode::L) {
-      *(params.key) = KeyCode::KEYPAD_3;
-    } else if (params.ex_origKey == KeyCode::U) {
-      *(params.key) = KeyCode::KEYPAD_4;
-    } else if (params.ex_origKey == KeyCode::I) {
-      *(params.key) = KeyCode::KEYPAD_5;
-    } else if (params.ex_origKey == KeyCode::O) {
-      *(params.key) = KeyCode::KEYPAD_6;
-    } else if (params.ex_origKey == KeyCode::KEY_7) {
-      *(params.key) = KeyCode::KEYPAD_7;
-    } else if (params.ex_origKey == KeyCode::KEY_8) {
-      *(params.key) = KeyCode::KEYPAD_8;
-    } else if (params.ex_origKey == KeyCode::KEY_9) {
-      *(params.key) = KeyCode::KEYPAD_9;
-    } else if (params.ex_origKey == KeyCode::KEY_6) {
-      *(params.key) = KeyCode::KEYPAD_CLEAR;
-    } else if (params.ex_origKey == KeyCode::SLASH) {
-      *(params.key) = KeyCode::KEYPAD_PLUS;
-    } else if (params.ex_origKey == KeyCode::SEMICOLON) {
-      *(params.key) = KeyCode::KEYPAD_MINUS;
-    } else if (params.ex_origKey == KeyCode::P) {
-      *(params.key) = KeyCode::KEYPAD_MULTIPLY;
-    } else if (params.ex_origKey == KeyCode::KEY_0) {
-      *(params.key) = KeyCode::KEYPAD_SLASH;
-    } else if (params.ex_origKey == KeyCode::MINUS) {
-      *(params.key) = KeyCode::KEYPAD_EQUAL;
-    } else if (params.ex_origKey == KeyCode::DOT) {
-      *(params.key) = KeyCode::KEYPAD_DOT;
-    } else if (params.ex_origKey == KeyCode::CURSOR_UP) {
-      *(params.key) = KeyCode::PAGEUP;
-    } else if (params.ex_origKey == KeyCode::CURSOR_DOWN) {
-      *(params.key) = KeyCode::PAGEDOWN;
-    } else if (params.ex_origKey == KeyCode::CURSOR_LEFT) {
-      *(params.key) = KeyCode::HOME;
-    } else if (params.ex_origKey == KeyCode::CURSOR_RIGHT) {
-      *(params.key) = KeyCode::END;
-    } else if (params.ex_origKey == KeyCode::RETURN) {
-      *(params.key) = getEnterKeyCode(params);
-    } else if (params.ex_origKey == KeyCode::DELETE) {
-      *(params.key) = KeyCode::FORWARD_DELETE;
-    } else {
-      return;
-    }
+    keyToKey(params, KeyCode::M, KeyCode::KEYPAD_0);
+    keyToKey(params, KeyCode::J, KeyCode::KEYPAD_1);
+    keyToKey(params, KeyCode::K, KeyCode::KEYPAD_2);
+    keyToKey(params, KeyCode::L, KeyCode::KEYPAD_3);
+    keyToKey(params, KeyCode::U, KeyCode::KEYPAD_4);
+    keyToKey(params, KeyCode::I, KeyCode::KEYPAD_5);
+    keyToKey(params, KeyCode::O, KeyCode::KEYPAD_6);
+    keyToKey(params, KeyCode::KEY_7, KeyCode::KEYPAD_7);
+    keyToKey(params, KeyCode::KEY_8, KeyCode::KEYPAD_8);
+    keyToKey(params, KeyCode::KEY_9, KeyCode::KEYPAD_9);
+    keyToKey(params, KeyCode::KEY_6, KeyCode::KEYPAD_CLEAR);
+    keyToKey(params, KeyCode::SLASH, KeyCode::KEYPAD_PLUS);
+    keyToKey(params, KeyCode::SEMICOLON, KeyCode::KEYPAD_MINUS);
+    keyToKey(params, KeyCode::P, KeyCode::KEYPAD_MULTIPLY);
+    keyToKey(params, KeyCode::KEY_0, KeyCode::KEYPAD_SLASH);
+    keyToKey(params, KeyCode::MINUS, KeyCode::KEYPAD_EQUAL);
+    keyToKey(params, KeyCode::DOT, KeyCode::KEYPAD_DOT);
+    keyToKey(params, KeyCode::CURSOR_UP, KeyCode::PAGEUP);
+    keyToKey(params, KeyCode::CURSOR_DOWN, KeyCode::PAGEDOWN);
+    keyToKey(params, KeyCode::CURSOR_LEFT, KeyCode::HOME);
+    keyToKey(params, KeyCode::CURSOR_RIGHT, KeyCode::END);
+    keyToKey(params, KeyCode::RETURN, KeyCode::ENTER);
+    keyToKey(params, KeyCode::DELETE, KeyCode::FORWARD_DELETE);
   }
 
   void
@@ -229,9 +178,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   RemapUtil::keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode)
   {
     // ----------------------------------------
-    if (fromKeyCode == KeyCode::FN) {
-      if (RemapUtil::isModifierOn(params, ModifierFlag::FN)) RemapUtil::fnToNormal(params);
-    }
+    if (fromKeyCode == KeyCode::FN) fnToNormal(params);
+    if (toKeyCode == KeyCode::FN) toFN(params);
 
     if (fromKeyCode == KeyCode::ENTER) fromKeyCode = getEnterKeyCode(params);
     if (toKeyCode == KeyCode::ENTER) toKeyCode = getEnterKeyCode(params);
@@ -284,7 +232,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     *(params.key) = toKeyCode;
     if (toKeyCode == KeyCode::DELETE) toDelete(params);
-    if (toKeyCode == KeyCode::FN) toFN(params);
 
     return true;
   }
