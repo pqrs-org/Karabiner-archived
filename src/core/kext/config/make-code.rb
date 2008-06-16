@@ -41,38 +41,46 @@ while l = $stdin.gets
 
   if /<autogen>(.+)<\/autogen>/ =~ l then
     value = $1
+    type = nil
+    params = nil
     if /^--(.+?)-- (.+)$/ =~ value then
       type = $1
       params = $2
+    end
 
-      case ARGV[0]
-      when 'remapcode_func'
-        code = template[type]
-        if code.nil? then
-          $stdout.puts "[ERROR] There is no template for #{type}"
-        else
-          print code.gsub(/%%LASTNAME%%/, lastName).gsub(/%%PARAMS%%/, params)
-        end
+    if type.nil? then
+      $stderr.puts "[ERROR] type is nil for #{value}"
+    end
 
-      when 'remapcode_call'
-        if type == 'KeyToKey' || type == 'KeyToPointingButton' then
-          print "GeneratedCode::#{lastName}(params);\n"
-        end
+    case ARGV[0]
+    when 'remapcode_func'
+      code = template[type]
+      if code.nil? then
+        $stderr.puts "[ERROR] There is no template for #{type}"
+      else
+        print code.gsub(/%%LASTNAME%%/, lastName).gsub(/%%PARAMS%%/, params)
+      end
 
-      when 'remapcode_call_kom'
-        if type == 'KeyOverlaidModifier' then
-          print "GeneratedCode::#{lastName}(params);\n"
-        end
+    when 'remapcode_call'
+      if type != 'KeyOverlaidModifier' &&
+          type != 'KeyOverlaidModifierCombination' &&
+          type != 'ConsumerToKey' then
+        print "GeneratedCode::#{lastName}(params);\n"
+      end
 
-      when 'remapcode_call_komc'
-        if type == 'KeyOverlaidModifierCombination' then
-          print "GeneratedCode::#{lastName}(params);\n"
-        end
+    when 'remapcode_call_kom'
+      if type == 'KeyOverlaidModifier' then
+        print "GeneratedCode::#{lastName}(params);\n"
+      end
 
-      when 'remapcode_call_consumer'
-        if type == 'ConsumerToKey' then
-          print "GeneratedCode::#{lastName}(params);\n"
-        end
+    when 'remapcode_call_komc'
+      if type == 'KeyOverlaidModifierCombination' then
+        print "GeneratedCode::#{lastName}(params);\n"
+      end
+
+    when 'remapcode_call_consumer'
+      if type == 'ConsumerToKey' then
+        print "GeneratedCode::#{lastName}(params);\n"
       end
     end
   end
