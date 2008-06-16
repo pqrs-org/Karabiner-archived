@@ -1161,7 +1161,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_jis_layout_kawashima) return;
 
-    if (! jisKanaMode.iskana()) return;
+    if (jisKanaMode.getMode() != JISKanaMode::JISKANAMODE_HIRAGANA) return;
 
     // A -> TA ( Q )
     // A+Shift_L -> NU ( 1 )
@@ -1350,7 +1350,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   // post actions
   if (*(params.ex_dropKey)) return;
 
-  jisKanaMode.setKanaMode(params);
+  jisKanaMode.setMode(*(params.eventType), *(params.key), *(params.flags));
 
   if (config.debug) {
     printf("sending hid event type %d flags 0x%x key %d ", *(params.eventType), *(params.flags), *(params.key));

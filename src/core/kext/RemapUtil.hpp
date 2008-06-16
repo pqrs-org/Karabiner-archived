@@ -479,16 +479,20 @@ namespace org_pqrs_KeyRemap4MacBook {
   // --------------------
   class JISKanaMode {
   public:
-    void setKanaMode(bool _mode) { mode = _mode; }
-    void setKanaMode(const RemapParams &params) {
-      if (*(params.key) == KeyCode::JIS_EISUU) setKanaMode(false);
-      if (*(params.key) == KeyCode::JIS_KANA) setKanaMode(true);
-    }
-    void toggle(void) { mode = ! mode; }
-    bool iskana(void) const { return mode; }
+    enum Mode {
+      JISKANAMODE_ASCII,
+      JISKANAMODE_HIRAGANA,
+      JISKANAMODE_KATAKANA,
+    };
+
+    Mode getMode(void) const { return mode; }
+    void setMode(Mode _mode) { mode = _mode; }
+    void setMode(unsigned int eventType, unsigned int keyCode, unsigned int flags);
+    void toggle(void);
+    bool iskana(void) const { return mode != JISKANAMODE_ASCII; }
 
   private:
-    bool mode;
+    Mode mode;
   };
   extern JISKanaMode jisKanaMode;
 }
