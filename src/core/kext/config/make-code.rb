@@ -1,15 +1,13 @@
 #!/usr/bin/ruby
 
 # ----------------------------------------------------------------------
-def fileread(filename)
-  text = nil
+template = {}
+Dir.glob('template/*.cpp') do |filename|
+  key = File.basename(filename, '.cpp')
   open(filename) do |f|
-    text = f.read
+    template[key] = f.read
   end
-  text
 end
-
-template_KeyOverlaidModifierCombination = fileread('template/KeyOverlaidModifierCombination.cpp')
 
 # ----------------------------------------------------------------------
 lastName = nil;
@@ -43,19 +41,36 @@ while l = $stdin.gets
 
   if /<autogen>(.+)<\/autogen>/ =~ l then
     value = $1
-    if /^(.+?):(.+)$/ =~ value then
+    if /^--(.+?)-- (.+)$/ =~ value then
       type = $1
       params = $2
 
       case ARGV[0]
       when 'remapcode_func'
-        case type
-        when 'KeyOverlaidModifierCombination'
-          print template_KeyOverlaidModifierCombination.gsub(/%%LASTNAME%%/, lastName).gsub(/%%PARAMS%%/, params)
+        code = template[type]
+        if code.nil? then
+          $stdout.puts "[ERROR] There is no template for #{type}"
+        else
+          print code.gsub(/%%LASTNAME%%/, lastName).gsub(/%%PARAMS%%/, params)
+        end
+
+      when 'remapcode_call'
+        if type == 'KeyToKey' || type == 'KeyToPointingButton' then
+          print "#{lastName}(params);\n"
+        end
+
+      when 'remapcode_call_kom'
+        if type == 'KeyOverlaidModifier' then
+          print "#{lastName}(params);\n"
         end
 
       when 'remapcode_call_komc'
         if type == 'KeyOverlaidModifierCombination' then
+          print "#{lastName}(params);\n"
+        end
+
+      when 'remapcode_call_consumer'
+        if type == 'ConsumerToKey' then
           print "#{lastName}(params);\n"
         end
       end

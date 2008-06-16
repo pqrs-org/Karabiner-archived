@@ -8,7 +8,10 @@ all:
 	cat $(SYSCTL_FILE) | ruby ./make-code.rb cpp_register > output/include.config_register.cpp
 	cat $(SYSCTL_FILE) | ruby ./make-code.rb cpp_unregister > output/include.config_unregister.cpp
 	cat $(SYSCTL_FILE) | ruby ./make-code.rb remapcode_func > output/include.remapcode_func.cpp
+	cat $(SYSCTL_FILE) | ruby ./make-code.rb remapcode_call > output/include.remapcode_call.cpp
+	cat $(SYSCTL_FILE) | ruby ./make-code.rb remapcode_call_kom > output/include.remapcode_call_kom.cpp
 	cat $(SYSCTL_FILE) | ruby ./make-code.rb remapcode_call_komc > output/include.remapcode_call_komc.cpp
+	cat $(SYSCTL_FILE) | ruby ./make-code.rb remapcode_call_consumer > output/include.remapcode_call_consumer.cpp
 
 clean:
 	rm -f output/*

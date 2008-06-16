@@ -318,10 +318,63 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   RemapUtil::keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode)
   {
-    if (! RemapUtil::isKey(params, fromKeyCode)) return false;
-    *(params.key) = toKeyCode;
+    // ----------------------------------------
+    if (fromKeyCode == KeyCode::FN) {
+      if (RemapUtil::isModifierOn(params, ModifierFlag::FN)) RemapUtil::fnToNormal(params);
+    }
 
+    if (fromKeyCode == KeyCode::ENTER) fromKeyCode = getEnterKeyCode(params);
+    if (toKeyCode == KeyCode::ENTER) toKeyCode = getEnterKeyCode(params);
+
+    // ----------------------------------------
+    if (! RemapUtil::isKey(params, fromKeyCode)) return false;
+
+    ModifierFlag::ModifierFlag fromFlag = getKeyCodeModifier(fromKeyCode);
+    ModifierFlag::ModifierFlag toFlag = getKeyCodeModifier(toKeyCode);
+
+    FlagStatus *fromStatus = allFlagStatus.getFlagStatus(fromFlag);
+    FlagStatus *toStatus = allFlagStatus.getFlagStatus(toFlag);
+
+    if (fromStatus == NULL) {
+      if (toStatus == NULL) {
+        // key2key
+
+      } else {
+        // key2modifier
+        if (*(params.eventType) == KeyEvent::DOWN) {
+          toStatus->increase();
+        } else if (*(params.eventType) == KeyEvent::UP) {
+          toStatus->decrease();
+        }
+        *(params.eventType) = KeyEvent::MODIFY;
+      }
+
+    } else {
+      if (toStatus == NULL) {
+        // modifier2key
+        if (isModifierOn(params, fromFlag)) {
+          fromStatus->decrease();
+          *(params.eventType) = KeyEvent::DOWN;
+        } else {
+          fromStatus->increase();
+          *(params.eventType) = KeyEvent::UP;
+        }
+
+      } else {
+        // modifier2modifier
+        if (isModifierOn(params, fromFlag)) {
+          toStatus->increase();
+          fromStatus->decrease();
+        } else {
+          toStatus->decrease();
+          fromStatus->increase();
+        }
+      }
+    }
+
+    *(params.key) = toKeyCode;
     if (toKeyCode == KeyCode::DELETE) toDelete(params);
+    if (toKeyCode == KeyCode::FN) toFN(params);
 
     return true;
   }
@@ -432,15 +485,27 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! RemapUtil::isKey(params, fromKeyCode)) return;
 
+    ModifierFlag::ModifierFlag fromFlag = getKeyCodeModifier(fromKeyCode);
+    FlagStatus *fromStatus = allFlagStatus.getFlagStatus(fromFlag);
+
     *(params.ex_dropKey) = true;
 
-    if (*(params.eventType) == KeyEvent::DOWN) {
+    if (fromStatus) {
+      // clear flags
+      if (RemapUtil::isKeyDown(params, fromKeyCode)) {
+        fromStatus->decrease();
+      } else {
+        fromStatus->increase();
+      }
+    }
+
+    if (RemapUtil::isKeyDown(params, fromKeyCode)) {
       listFirePointingClick.add(toButton);
 
       bool *status = pointingButtonStatus.getButtonStatus(toButton);
       if (status) *status = true;
 
-    } else if (*(params.eventType) == KeyEvent::UP) {
+    } else {
       listFirePointingClick.add(PointingButton::NONE);
 
       bool *status = pointingButtonStatus.getButtonStatus(toButton);
@@ -473,24 +538,22 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapUtil::ejectToKey(const RemapConsumerParams &params, KeyCode::KeyCode toKeyCode)
   {
-    if (*(params.key) == ConsumerKeyCode::EJECT) {
-      if (config.option_retain_eject_controlL && allFlagStatus.controlL.isHeldDown()) {
-        *(params.flags) = ModifierFlag::CONTROL_L;
-        return;
-      }
-      if (config.option_retain_eject_shiftL && allFlagStatus.shiftL.isHeldDown()) {
-        *(params.flags) = 0;
-        return;
-      }
-      if (config.option_retain_eject_shiftR && allFlagStatus.shiftR.isHeldDown()) {
-        *(params.flags) = 0;
-        return;
-      }
+    if (*(params.key) != ConsumerKeyCode::EJECT) return;
 
-      *(params.ex_dropKey) = true;
-      *(params.ex_remapKey) = true;
-      *(params.ex_remapKeyCode) = toKeyCode;
+    if (config.option_retain_eject_controlL && allFlagStatus.controlL.isHeldDown()) {
+      *(params.flags) = ModifierFlag::CONTROL_L;
+      return;
     }
+    if (config.option_retain_eject_shiftL && allFlagStatus.shiftL.isHeldDown()) {
+      *(params.flags) = 0;
+      return;
+    }
+    if (config.option_retain_eject_shiftR && allFlagStatus.shiftR.isHeldDown()) {
+      *(params.flags) = 0;
+      return;
+    }
+
+    consumerToKey(params, ConsumerKeyCode::EJECT, toKeyCode);
   }
 
   // --------------------
