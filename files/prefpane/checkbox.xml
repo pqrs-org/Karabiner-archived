@@ -466,7 +466,6 @@
         <item>
           <name>FN to FN (with NumLock)</name>
           <sysctl>remap.fn2fn</sysctl>
-          <autogen>--KeyToKey-- KeyCode::FN, KeyCode::FN</autogen>
         </item>
         <item>
           <name>FN to Option_L</name>
