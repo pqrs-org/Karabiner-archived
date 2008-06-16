@@ -466,32 +466,32 @@
         <item>
           <name>FN to FN (with NumLock)</name>
           <sysctl>remap.fn2fn</sysctl>
-          <sysctl>--KeyToKey-- KeyCode::FN, KeyCode::FN</sysctl>
+          <autogen>--KeyToKey-- KeyCode::FN, KeyCode::FN</autogen>
         </item>
         <item>
           <name>FN to Option_L</name>
           <sysctl>remap.fn2optionL</sysctl>
-          <sysctl>--KeyToKey-- KeyCode::FN, KeyCode::OPTION_L</sysctl>
+          <autogen>--KeyToKey-- KeyCode::FN, KeyCode::OPTION_L</autogen>
         </item>
         <item>
           <name>FN to Shift_L</name>
           <sysctl>remap.fn2shiftL</sysctl>
-          <sysctl>--KeyToKey-- KeyCode::FN, KeyCode::SHIFT_L</sysctl>
+          <autogen>--KeyToKey-- KeyCode::FN, KeyCode::SHIFT_L</autogen>
         </item>
         <item>
           <name>FN to Delete</name>
           <sysctl>remap.fn2delete</sysctl>
-          <sysctl>--KeyToKey-- KeyCode::FN, KeyCode::DELETE</sysctl>
+          <autogen>--KeyToKey-- KeyCode::FN, KeyCode::DELETE</autogen>
         </item>
         <item>
           <name>FN to Enter</name>
           <sysctl>remap.fn2enter</sysctl>
-          <sysctl>--KeyToKey-- KeyCode::FN, KeyCode::ENTER</sysctl>
+          <autogen>--KeyToKey-- KeyCode::FN, KeyCode::ENTER</autogen>
         </item>
         <item>
           <name>FN to Tab</name>
           <sysctl>remap.fn2tab</sysctl>
-          <sysctl>--KeyToKey-- KeyCode::FN, KeyCode::TAB</sysctl>
+          <autogen>--KeyToKey-- KeyCode::FN, KeyCode::TAB</autogen>
         </item>
       </list>
     </item>
@@ -502,7 +502,7 @@
         <item>
           <name>Forward Delete to Delete</name>
           <sysctl>remap.forwarddelete2delete</sysctl>
-          <sysctl>--KeyToKey-- KeyCode::FORWARD_DELETE, KeyCode::DELETE</sysctl>
+          <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, KeyCode::DELETE</autogen>
         </item>
       </list>
     </item>
