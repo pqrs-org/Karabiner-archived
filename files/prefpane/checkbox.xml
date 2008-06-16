@@ -1293,34 +1293,42 @@
             <item>
               <name>Application Key to Command_L</name>
               <sysctl>remap.pc_application2commandL</sysctl>
+              <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::COMMAND_L</autogen>
             </item>
             <item>
               <name>Application Key to Control_L</name>
               <sysctl>remap.pc_application2controlL</sysctl>
+              <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::CONTROL_L</autogen>
             </item>
             <item>
               <name>Application Key to FN</name>
               <sysctl>remap.pc_application2fn</sysctl>
+              <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::FN</autogen>
             </item>
             <item>
               <name>Application Key to Option_L</name>
               <sysctl>remap.pc_application2optionL</sysctl>
+              <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::OPTION_L</autogen>
             </item>
             <item>
               <name>Application Key to Shift_L</name>
               <sysctl>remap.pc_application2shiftL</sysctl>
+              <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::SHIFT_L</autogen>
             </item>
             <item>
               <name>Application Key to Expose All</name>
               <sysctl>remap.pc_application2exposeALL</sysctl>
+              <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::EXPOSE_ALL</autogen>
             </item>
             <item>
               <name>Application Key to F9</name>
               <sysctl>remap.pc_application2f9</sysctl>
+              <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::F9</autogen>
             </item>
             <item>
               <name>Application Key to F11</name>
               <sysctl>remap.pc_application2f11</sysctl>
+              <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::F11</autogen>
             </item>
           </list>
         </item>
@@ -1365,16 +1373,19 @@
               <name>Command_L to Command_L</name>
               <appendix>(+ When you type Command_L only, send EISUU)</appendix>
               <sysctl>remap.jis_commandL2commandL_eisuu</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, FireFunc::firefunc_jis_eisuu</autogen>
             </item>
             <item>
               <name>Command_L to Command_L</name>
               <appendix>(+ When you type Command_L only, send KANA/EISUU (toggle))</appendix>
               <sysctl>remap.jis_commandL2commandL_toggle_kana_eisuu</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, FireFunc::firefunc_jis_toggle_eisuu_kana</autogen>
             </item>
             <item>
               <name>Command_L to Control_L</name>
               <appendix>(+ When you type Command_L only, send EISUU)</appendix>
               <sysctl>remap.jis_commandL2controlL_eisuu</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, ModifierFlag::CONTROL_L, FireFunc::firefunc_jis_eisuu</autogen>
             </item>
             <item>
               <name>Command_L x2 to EISUU</name>
@@ -1405,11 +1416,13 @@
               <name>Command_R to Command_R</name>
               <appendix>(+ When you type Command_R only, send KANA)</appendix>
               <sysctl>remap.jis_commandR2commandR_kana</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, FireFunc::firefunc_jis_kana</autogen>
             </item>
             <item>
               <name>Command_R to Command_R</name>
               <appendix>(+ When you type Command_R only, send KANA/EISUU (toggle))</appendix>
               <sysctl>remap.jis_commandR2commandR_toggle_kana_eisuu</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, FireFunc::firefunc_jis_toggle_eisuu_kana</autogen>
             </item>
             <item>
               <name>Command_R x2 to KANA</name>
@@ -1457,11 +1470,13 @@
             <item>
               <name>EISUU to Command_L</name>
               <sysctl>remap.jis_eisuu2commandL</sysctl>
+              <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::COMMAND_L</autogen>
             </item>
             <item>
               <name>EISUU to Command_L</name>
               <appendix>(+ When you type EISUU only, send EISUU)</appendix>
               <sysctl>remap.jis_eisuu2commandL_eisuu</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, ModifierFlag::COMMAND_L, FireFunc::firefunc_jis_eisuu</autogen>
             </item>
             <item>
               <name>EISUU to Command_L. In Terminal, EISUU to OptionL</name>
@@ -1471,39 +1486,48 @@
             <item>
               <name>EISUU to Control_L</name>
               <sysctl>remap.jis_eisuu2controlL</sysctl>
+              <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::CONTROL_L</autogen>
             </item>
             <item>
               <name>EISUU to Control_L</name>
               <appendix>(+ When you type EISUU only, send EISUU)</appendix>
               <sysctl>remap.jis_eisuu2controlL_eisuu</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, ModifierFlag::CONTROL_L, FireFunc::firefunc_jis_eisuu</autogen>
             </item>
             <item>
               <name>EISUU to FN</name>
               <sysctl>remap.jis_eisuu2fn</sysctl>
+              <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::FN</autogen>
             </item>
             <item>
               <name>EISUU to Option_L</name>
               <sysctl>remap.jis_eisuu2optionL</sysctl>
+              <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::OPTION_L</autogen>
             </item>
             <item>
               <name>EISUU to Shift_L</name>
               <sysctl>remap.jis_eisuu2shiftL</sysctl>
+              <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::SHIFT_L</autogen>
             </item>
             <item>
               <name>EISUU to Escape</name>
               <sysctl>remap.jis_eisuu2escape</sysctl>
+              <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::ESCAPE</autogen>
             </item>
             <item>
               <name>EISUU to Tab</name>
               <sysctl>remap.jis_eisuu2tab</sysctl>
+              <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::TAB</autogen>
             </item>
             <item>
               <name>EISUU to MiddleClick</name>
               <sysctl>remap.jis_eisuu2middleclick</sysctl>
+              <autogen>--KeyToPointingButton-- KeyCode::JIS_EISUU, PointingButton::MIDDLE</autogen>
             </item>
             <item>
               <name>EISUU to RightClick</name>
               <sysctl>remap.jis_eisuu2rightclick</sysctl>
+              <autogen>--KeyToPointingButton-- KeyCode::JIS_EISUU, PointingButton::RIGHT</autogen>
             </item>
             <item>
               <name>Use EISUU as KANA/EISUU (toggle)</name>
@@ -1517,44 +1541,54 @@
             <item>
               <name>KANA to Command_L</name>
               <sysctl>remap.jis_kana2commandL</sysctl>
+              <autogen>--KeyToKey-- KeyCode::JIS_KANA, KeyCode::COMMAND_L</autogen>
             </item>
             <item>
               <name>KANA to Command_R</name>
               <appendix>(+ When you type KANA only, send KANA)</appendix>
               <sysctl>remap.jis_kana2commandR_kana</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::JIS_KANA, ModifierFlag::COMMAND_R, FireFunc::firefunc_jis_kana</autogen>
             </item>
             <item>
               <name>KANA to Control_L</name>
               <sysctl>remap.jis_kana2controlL</sysctl>
+              <autogen>--KeyToKey-- KeyCode::JIS_KANA, KeyCode::CONTROL_L</autogen>
             </item>
             <item>
               <name>KANA to Control_L</name>
               <appendix>(+ When you type KANA only, send KANA)</appendix>
               <sysctl>remap.jis_kana2controlL_kana</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::JIS_KANA, ModifierFlag::CONTROL_L, FireFunc::firefunc_jis_kana</autogen>
             </item>
             <item>
               <name>KANA to FN</name>
               <sysctl>remap.jis_kana2fn</sysctl>
+              <autogen>--KeyToKey-- KeyCode::JIS_KANA, KeyCode::FN</autogen>
             </item>
             <item>
               <name>KANA to Option_L</name>
               <sysctl>remap.jis_kana2optionL</sysctl>
+              <autogen>--KeyToKey-- KeyCode::JIS_KANA, KeyCode::OPTION_L</autogen>
             </item>
             <item>
               <name>KANA to Shift_L</name>
               <sysctl>remap.jis_kana2shiftL</sysctl>
+              <autogen>--KeyToKey-- KeyCode::JIS_KANA, KeyCode::SHIFT_L</autogen>
             </item>
             <item>
               <name>KANA to Return</name>
               <sysctl>remap.jis_kana2return</sysctl>
+              <autogen>--KeyToKey-- KeyCode::JIS_KANA, KeyCode::RETURN</autogen>
             </item>
             <item>
               <name>KANA to MiddleClick</name>
               <sysctl>remap.jis_kana2middleclick</sysctl>
+              <autogen>--KeyToPointingButton-- KeyCode::JIS_KANA, PointingButton::MIDDLE</autogen>
             </item>
             <item>
               <name>KANA to RightClick</name>
               <sysctl>remap.jis_kana2rightclick</sysctl>
+              <autogen>--KeyToPointingButton-- KeyCode::JIS_KANA, PointingButton::RIGHT</autogen>
             </item>
             <item>
               <name>Shift+KANA to EISUU</name>
