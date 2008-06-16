@@ -53,6 +53,7 @@
         <item>
           <name>Left-Arrow to Control_L</name>
           <sysctl>remap.leftarrow2controlL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, KeyCode::CONTROL_L</autogen>
         </item>
       </list>
     </item>
@@ -63,10 +64,12 @@
         <item>
           <name>Backquote(`) to Command_L</name>
           <sysctl>remap.backquote2commandL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::COMMAND_L</autogen>
         </item>
         <item>
           <name>Backquote(`) to Escape</name>
           <sysctl>remap.backquote2escape</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::ESCAPE</autogen>
         </item>
         <item>
           <name>Backquote(`) to Escape if no modifiers pressed</name>
@@ -81,14 +84,17 @@
         <item>
           <name>Backslash(\) to Delete</name>
           <sysctl>remap.backslash2delete</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::DELETE</autogen>
         </item>
         <item>
           <name>Backslash(\) to Enter</name>
           <sysctl>remap.backslash2enter</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::ENTER</autogen>
         </item>
         <item>
           <name>Backslash(\) to Forward Delete</name>
           <sysctl>remap.backslash2forwarddelete</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::FORWARD_DELETE</autogen>
         </item>
       </list>
     </item>
@@ -99,36 +105,40 @@
         <item>
           <name>Command_L to Control_L</name>
           <sysctl>remap.commandL2controlL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
           <name>Command_L to Option_L</name>
           <sysctl>remap.commandL2optionL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
         </item>
         <item>
           <name>Command_L to Shift_L</name>
           <sysctl>remap.commandL2shiftL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::SHIFT_L</autogen>
         </item>
         <item>
           <name>Command_L to Backquote(`)</name>
           <sysctl>remap.commandL2backquote</sysctl>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::BACKQUOTE</autogen>
         </item>
         <item>
           <name>Command_R+Command_L to Escape</name>
           <appendix>(Note: Escape is sent when you release Command_L)</appendix>
           <sysctl>remap.commandRcommandL2escape</sysctl>
-          <autogen>KeyOverlaidModifierCombination: ModifierFlag::COMMAND_R, ModifierFlag::COMMAND_L, FireFunc::firefunc_escape_noflags</autogen>
+          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::COMMAND_R, ModifierFlag::COMMAND_L, FireFunc::firefunc_escape_noflags</autogen>
         </item>
         <item>
           <name>Control_L+Command_L to Escape</name>
           <appendix>(Note: Escape is sent when you release Command_L)</appendix>
           <sysctl>remap.controlLcommandL2escape</sysctl>
-          <autogen>KeyOverlaidModifierCombination: ModifierFlag::CONTROL_L, ModifierFlag::COMMAND_L, FireFunc::firefunc_escape_noflags</autogen>
+          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::CONTROL_L, ModifierFlag::COMMAND_L, FireFunc::firefunc_escape_noflags</autogen>
         </item>
         <item>
           <name>Shift_L+Command_L to Escape</name>
           <appendix>(Note: Escape is sent when you release Command_L)</appendix>
           <sysctl>remap.shiftLcommandL2escape</sysctl>
-          <autogen>KeyOverlaidModifierCombination: ModifierFlag::SHIFT_L, ModifierFlag::COMMAND_L, FireFunc::firefunc_escape_noflags</autogen>
+          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::SHIFT_L, ModifierFlag::COMMAND_L, FireFunc::firefunc_escape_noflags</autogen>
         </item>
       </list>
     </item>
@@ -140,70 +150,82 @@
           <name>Command_R to Command_R</name>
           <appendix>(+ When you type Command_R only, send Command+Space)</appendix>
           <sysctl>remap.commandR2commandR_commandSpace</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, FireFunc::firefunc_commandSpace</autogen>
         </item>
         <item>
           <name>Command_R to Command_R</name>
           <appendix>(+ When you type Command_R only, send Enter)</appendix>
           <sysctl>remap.commandR2commandR_enter</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, FireFunc::firefunc_enter</autogen>
         </item>
         <item>
           <name>Command_R to Command_R</name>
           <appendix>(+ When you type Command_R only, send Enter) + [KeyRepeat]</appendix>
           <sysctl>remap.commandR2commandR_enter_keyrepeat</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, FireFunc::firefunc_enter, ExtraRepeatFunc::extraRepeatFunc_enter</autogen>
         </item>
         <item>
           <name>Command_R to Control_L</name>
           <sysctl>remap.commandR2controlL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
           <name>Command_R to FN</name>
           <sysctl>remap.commandR2fn</sysctl>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::FN</autogen>
         </item>
         <item>
           <name>Command_R to Option_L</name>
           <sysctl>remap.commandR2optionL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::OPTION_L</autogen>
         </item>
         <item>
           <name>Command_R to Shift_L</name>
           <sysctl>remap.commandR2shiftL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::SHIFT_L</autogen>
         </item>
         <item>
           <name>Command_R to Enter</name>
           <sysctl>remap.commandR2enter</sysctl>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::ENTER</autogen>
         </item>
         <item>
           <name>Command_R to Home</name>
           <sysctl>remap.commandR2home</sysctl>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::HOME</autogen>
         </item>
         <item>
           <name>Command_R to PageUp</name>
           <sysctl>remap.commandR2pageup</sysctl>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::PAGEUP</autogen>
         </item>
         <item>
           <name>Command_R to MiddleClick</name>
           <sysctl>remap.commandR2middleclick</sysctl>
+          <autogen>--KeyToPointingButton-- KeyCode::COMMAND_R, PointingButton::MIDDLE</autogen>
         </item>
         <item>
           <name>Command_R to RightClick</name>
           <sysctl>remap.commandR2rightclick</sysctl>
+          <autogen>--KeyToPointingButton-- KeyCode::COMMAND_R, PointingButton::RIGHT</autogen>
         </item>
         <item>
           <name>Command_L+Command_R to Return</name>
           <appendix>(Note: Return is sent when you release Command_R)</appendix>
           <sysctl>remap.commandLcommandR2return</sysctl>
-          <autogen>KeyOverlaidModifierCombination: ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R, FireFunc::firefunc_return_noflags</autogen>
+          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R, FireFunc::firefunc_return_noflags</autogen>
         </item>
         <item>
           <name>Control_L+Command_R to Return</name>
           <appendix>(Note: Return is sent when you release Command_R)</appendix>
           <sysctl>remap.controlLcommandR2return</sysctl>
-          <autogen>KeyOverlaidModifierCombination: ModifierFlag::CONTROL_L, ModifierFlag::COMMAND_R, FireFunc::firefunc_return_noflags</autogen>
+          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::CONTROL_L, ModifierFlag::COMMAND_R, FireFunc::firefunc_return_noflags</autogen>
         </item>
         <item>
           <name>Shift_L+Command_R to Return</name>
           <appendix>(Note: Return is sent when you release Command_R)</appendix>
           <sysctl>remap.shiftLcommandR2return</sysctl>
-          <autogen>KeyOverlaidModifierCombination: ModifierFlag::SHIFT_L, ModifierFlag::COMMAND_R, FireFunc::firefunc_return_noflags</autogen>
+          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::SHIFT_L, ModifierFlag::COMMAND_R, FireFunc::firefunc_return_noflags</autogen>
         </item>
       </list>
     </item>
@@ -214,34 +236,39 @@
         <item>
           <name>Control_L to Command_L</name>
           <sysctl>remap.controlL2commandL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
         </item>
         <item>
           <name>Control_L to FN</name>
           <sysctl>remap.controlL2fn</sysctl>
+          <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::FN</autogen>
         </item>
         <item>
           <name>Control_L to Option_L</name>
           <sysctl>remap.controlL2optionL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::OPTION_L</autogen>
         </item>
         <item>
           <name>Control_L to Shift_L</name>
           <sysctl>remap.controlL2shiftL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::SHIFT_L</autogen>
         </item>
         <item>
           <name>Control_L to Escape</name>
           <sysctl>remap.controlL2escape</sysctl>
+          <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::ESCAPE</autogen>
         </item>
         <item>
           <name>Command_R+Control_L to Escape</name>
           <appendix>(Note: Escape is sent when you release Control_L)</appendix>
           <sysctl>remap.commandRcontrolL2escape</sysctl>
-          <autogen>KeyOverlaidModifierCombination: ModifierFlag::COMMAND_R, ModifierFlag::CONTROL_L, FireFunc::firefunc_escape_noflags</autogen>
+          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::COMMAND_R, ModifierFlag::CONTROL_L, FireFunc::firefunc_escape_noflags</autogen>
         </item>
         <item>
           <name>Shift_L+Control_L to Escape</name>
           <appendix>(Note: Escape is sent when you release Control_L)</appendix>
           <sysctl>remap.shiftLcontrolL2escape</sysctl>
-          <autogen>KeyOverlaidModifierCombination: ModifierFlag::SHIFT_L, ModifierFlag::CONTROL_L, FireFunc::firefunc_escape_noflags</autogen>
+          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::SHIFT_L, ModifierFlag::CONTROL_L, FireFunc::firefunc_escape_noflags</autogen>
         </item>
       </list>
     </item>
@@ -252,10 +279,12 @@
         <item>
           <name>Delete to Backslash(\)</name>
           <sysctl>remap.delete2backslash</sysctl>
+          <autogen>--KeyToKey-- KeyCode::DELETE, KeyCode::BACKSLASH</autogen>
         </item>
         <item>
           <name>Delete to Forward Delete</name>
           <sysctl>remap.delete2forwarddelete</sysctl>
+          <autogen>--KeyToKey-- KeyCode::DELETE, KeyCode::FORWARD_DELETE</autogen>
         </item>
         <item>
           <name>Delete to F13</name>
@@ -306,36 +335,44 @@
         <item>
           <name>Enter to Command_L</name>
           <sysctl>remap.enter2commandL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::COMMAND_L</autogen>
         </item>
         <item>
           <name>Enter to Control_L</name>
           <sysctl>remap.enter2controlL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
           <name>Enter to Control_R</name>
           <sysctl>remap.enter2controlR</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::CONTROL_R</autogen>
         </item>
         <item>
           <name>Enter to FN</name>
           <sysctl>remap.enter2fn</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::FN</autogen>
         </item>
         <item>
           <name>Enter to Option_L</name>
           <sysctl>remap.enter2optionL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::OPTION_L</autogen>
         </item>
         <item>
           <name>Enter to Option_L</name>
           <appendix>(+ When you type Enter only, send Command+Space)</appendix>
           <sysctl>remap.enter2optionL_commandSpace</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::ENTER, ModifierFlag::OPTION_L, FireFunc::firefunc_commandSpace</autogen>
         </item>
         <item>
           <name>Enter to Option_R</name>
           <sysctl>remap.enter2optionR</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::OPTION_R</autogen>
         </item>
         <item>
           <name>Enter to Option_R</name>
           <appendix>(+ When you type Enter only, send Command+Space)</appendix>
           <sysctl>remap.enter2optionR_commandSpace</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::ENTER, ModifierFlag::OPTION_R, FireFunc::firefunc_commandSpace</autogen>
         </item>
         <item>
           <name>Enter to Command_L+Control_L</name>
@@ -352,34 +389,42 @@
         <item>
           <name>Enter to Delete</name>
           <sysctl>remap.enter2delete</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::DELETE</autogen>
         </item>
         <item>
           <name>Enter to End</name>
           <sysctl>remap.enter2end</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::END</autogen>
         </item>
         <item>
           <name>Enter to Forward Delete</name>
           <sysctl>remap.enter2forwarddelete</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::FORWARD_DELETE</autogen>
         </item>
         <item>
           <name>Enter to Return</name>
           <sysctl>remap.enter2return</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::RETURN</autogen>
         </item>
         <item>
           <name>Enter to Semicolon</name>
           <sysctl>remap.enter2semicolon</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::SEMICOLON</autogen>
         </item>
         <item>
           <name>Enter to Space</name>
           <sysctl>remap.enter2space</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::SPACE</autogen>
         </item>
         <item>
           <name>Enter to Tab</name>
           <sysctl>remap.enter2tab</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>Enter to Up-Arrow</name>
           <sysctl>remap.enter2uparrow</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::CURSOR_UP</autogen>
         </item>
       </list>
     </item>
@@ -390,10 +435,12 @@
         <item>
           <name>Escape to Backquote(`)</name>
           <sysctl>remap.escape2backquote</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::BACKQUOTE</autogen>
         </item>
         <item>
           <name>Escape to RightClick</name>
           <sysctl>remap.escape2rightclick</sysctl>
+          <autogen>--KeyToPointingButton-- KeyCode::ESCAPE, PointingButton::RIGHT</autogen>
         </item>
       </list>
     </item>
@@ -404,10 +451,12 @@
         <item>
           <name>FN to Command_L</name>
           <sysctl>remap.fn2commandL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::FN, KeyCode::COMMAND_L</autogen>
         </item>
         <item>
           <name>FN to Control_L</name>
           <sysctl>remap.fn2controlL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::FN, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
           <name>FN to Control_L</name>
@@ -417,26 +466,32 @@
         <item>
           <name>FN to FN (with NumLock)</name>
           <sysctl>remap.fn2fn</sysctl>
+          <sysctl>--KeyToKey-- KeyCode::FN, KeyCode::FN</sysctl>
         </item>
         <item>
           <name>FN to Option_L</name>
           <sysctl>remap.fn2optionL</sysctl>
+          <sysctl>--KeyToKey-- KeyCode::FN, KeyCode::OPTION_L</sysctl>
         </item>
         <item>
           <name>FN to Shift_L</name>
           <sysctl>remap.fn2shiftL</sysctl>
+          <sysctl>--KeyToKey-- KeyCode::FN, KeyCode::SHIFT_L</sysctl>
         </item>
         <item>
           <name>FN to Delete</name>
           <sysctl>remap.fn2delete</sysctl>
+          <sysctl>--KeyToKey-- KeyCode::FN, KeyCode::DELETE</sysctl>
         </item>
         <item>
           <name>FN to Enter</name>
           <sysctl>remap.fn2enter</sysctl>
+          <sysctl>--KeyToKey-- KeyCode::FN, KeyCode::ENTER</sysctl>
         </item>
         <item>
           <name>FN to Tab</name>
           <sysctl>remap.fn2tab</sysctl>
+          <sysctl>--KeyToKey-- KeyCode::FN, KeyCode::TAB</sysctl>
         </item>
       </list>
     </item>
@@ -447,6 +502,7 @@
         <item>
           <name>Forward Delete to Delete</name>
           <sysctl>remap.forwarddelete2delete</sysctl>
+          <sysctl>--KeyToKey-- KeyCode::FORWARD_DELETE, KeyCode::DELETE</sysctl>
         </item>
       </list>
     </item>
@@ -457,22 +513,27 @@
         <item>
           <name>Brightness Down to F1</name>
           <sysctl>remap.brightnessdown2f1</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_DOWN, KeyCode::F1</autogen>
         </item>
         <item>
           <name>Brightness Up to F2</name>
           <sysctl>remap.brightnessup2f2</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_UP, KeyCode::F2</autogen>
         </item>
         <item>
           <name>Volume Mute to F3</name>
           <sysctl>remap.volumemute2f3</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, KeyCode::F3</autogen>
         </item>
         <item>
           <name>Volume Down to F4</name>
           <sysctl>remap.volumedown2f4</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, KeyCode::F4</autogen>
         </item>
         <item>
           <name>Volume Up to F5</name>
           <sysctl>remap.volumeup2f5</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, KeyCode::F5</autogen>
         </item>
       </list>
     </item>
@@ -512,6 +573,7 @@
         <item>
           <name>F16 to Tab</name>
           <sysctl>remap.f16_to_tab</sysctl>
+          <autogen>--KeyToKey-- KeyCode::F16, KeyCode::TAB</autogen>
         </item>
       </list>
     </item>
@@ -522,6 +584,7 @@
         <item>
           <name>Remap Help to F13</name>
           <sysctl>remap.help2f13</sysctl>
+          <autogen>--KeyToKey-- KeyCode::HELP, KeyCode::F13</autogen>
         </item>
       </list>
     </item>
@@ -535,14 +598,17 @@
             <item>
               <name>Clear to Delete</name>
               <sysctl>remap.clear2delete</sysctl>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_CLEAR, KeyCode::DELETE</autogen>
             </item>
             <item>
               <name>Clear to Return</name>
               <sysctl>remap.clear2return</sysctl>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_CLEAR, KeyCode::RETURN</autogen>
             </item>
             <item>
               <name>Clear to Tab</name>
               <sysctl>remap.clear2tab</sysctl>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_CLEAR, KeyCode::TAB</autogen>
             </item>
           </list>
         </item>
@@ -564,18 +630,22 @@
         <item>
           <name>Option_L to Command_L</name>
           <sysctl>remap.optionL2commandL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
         </item>
         <item>
           <name>Option_L to Control_L</name>
           <sysctl>remap.optionL2controlL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
           <name>Option_L to FN</name>
           <sysctl>remap.optionL2fn</sysctl>
+          <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::FN</autogen>
         </item>
         <item>
           <name>Option_L to Shift_L</name>
           <sysctl>remap.optionL2shiftL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::SHIFT_L</autogen>
         </item>
       </list>
     </item>
