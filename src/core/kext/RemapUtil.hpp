@@ -135,7 +135,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     FlagStatus commandL;
     FlagStatus commandR;
     FlagStatus fn;
-    bool keypad;
 
     int numHeldDownKeys;
 
