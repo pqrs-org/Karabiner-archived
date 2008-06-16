@@ -242,26 +242,25 @@ namespace org_pqrs_KeyRemap4MacBook {
     return true;
   }
 
-  bool
-  RemapUtil::keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode,
-                      KeyCode::KeyCode toKeyCode1, CharCode::CharCode toCharCode1,
-                      KeyCode::KeyCode toKeyCode2, CharCode::CharCode toCharCode2)
-  {
-    if (! RemapUtil::isKey(params, fromKeyCode)) return false;
+  namespace {
+    void
+    keyToKeyCombination(const RemapParams &params, KeyCode::KeyCode fromKeyCode,
+                        KeyCode::KeyCode toKeyCode1, CharCode::CharCode toCharCode1,
+                        KeyCode::KeyCode toKeyCode2, CharCode::CharCode toCharCode2)
+    {
+      if (! RemapUtil::isKeyDown(params, fromKeyCode)) return;
 
-    if (toKeyCode2 == KeyCode::NONE) {
-      RemapUtil::keyToKey(params, fromKeyCode, toKeyCode1);
-
-    } else {
-      if (RemapUtil::isKeyDown(params, fromKeyCode)) {
-        unsigned int flags = allFlagStatus.makeFlags(params);
-        listFireExtraKey.addKey(flags, toKeyCode1, toCharCode1);
+      unsigned int flags = allFlagStatus.makeFlags(params);
+      listFireExtraKey.addKey(flags, toKeyCode1, toCharCode1);
+      if (toKeyCode2 != KeyCode::NONE) {
         listFireExtraKey.addKey(flags, toKeyCode2, toCharCode2);
-        *(params.ex_dropKey) = true;
       }
-    }
+      *(params.ex_dropKey) = true;
 
-    return true;
+      ExtraRepeatFunc::register_keyCombination(toKeyCode1, toCharCode1, toKeyCode2, toCharCode2);
+      *(params.ex_extraRepeatFunc) = ExtraRepeatFunc::extraRepeatFunc_keyCombination;
+      *(params.ex_extraRepeatFlags) = flags;
+    }
   }
 
   bool
@@ -277,14 +276,14 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (allFlagStatus.shiftL.isHeldDown()) {
       allFlagStatus.shiftL.temporary_decrease();
-      RemapUtil::keyToKey(params, fromKeyCode, toKeyCode_shiftL1, toCharCode_shiftL1, toKeyCode_shiftL2, toCharCode_shiftL2);
+      keyToKeyCombination(params, fromKeyCode, toKeyCode_shiftL1, toCharCode_shiftL1, toKeyCode_shiftL2, toCharCode_shiftL2);
 
     } else if (allFlagStatus.shiftR.isHeldDown()) {
       allFlagStatus.shiftR.temporary_decrease();
-      RemapUtil::keyToKey(params, fromKeyCode, toKeyCode_shiftR1, toCharCode_shiftR1, toKeyCode_shiftR2, toCharCode_shiftR2);
+      keyToKeyCombination(params, fromKeyCode, toKeyCode_shiftR1, toCharCode_shiftR1, toKeyCode_shiftR2, toCharCode_shiftR2);
 
     } else {
-      RemapUtil::keyToKey(params, fromKeyCode, toKeyCode_noflag1, toCharCode_noflag1, toKeyCode_noflag2, toCharCode_noflag2);
+      keyToKeyCombination(params, fromKeyCode, toKeyCode_noflag1, toCharCode_noflag1, toKeyCode_noflag2, toCharCode_noflag2);
     }
 
     return true;
@@ -1030,6 +1029,43 @@ namespace org_pqrs_KeyRemap4MacBook {
   ExtraRepeatFunc::extraRepeatFunc_emacsmode_controlK(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon)
   {
     call_firefunc(FireFunc::firefunc_emacsmode_controlK_2nd, callback, target, flags, keyboardType, ts, sender, refcon);
+  }
+
+  namespace ExtraRepeatFunc {
+    struct {
+      KeyCode::KeyCode keyCode1;
+      KeyCode::KeyCode keyCode2;
+      CharCode::CharCode charCode1;
+      CharCode::CharCode charCode2;
+    } keyCombination;
+  }
+
+  void
+  ExtraRepeatFunc::register_keyCombination(KeyCode::KeyCode keyCode1, CharCode::CharCode charCode1, KeyCode::KeyCode keyCode2, CharCode::CharCode charCode2)
+  {
+    keyCombination.keyCode1 = keyCode1;
+    keyCombination.keyCode2 = keyCode2;
+    keyCombination.charCode1 = charCode1;
+    keyCombination.charCode2 = charCode2;
+  }
+
+  void
+  ExtraRepeatFunc::extraRepeatFunc_keyCombination(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon)
+  {
+    if (callback == NULL) return;
+
+    unsigned int charSet = 0;
+    unsigned origCharCode = 0;
+    unsigned origCharSet = 0;
+
+    if (keyCombination.keyCode1 != KeyCode::NONE) {
+      callback(target, KeyEvent::DOWN, flags, keyCombination.keyCode1, keyCombination.charCode1, charSet, origCharCode, origCharSet, keyboardType, false, ts, sender, refcon);
+      callback(target, KeyEvent::UP,   flags, keyCombination.keyCode1, keyCombination.charCode1, charSet, origCharCode, origCharSet, keyboardType, false, ts, sender, refcon);
+    }
+    if (keyCombination.keyCode2 != KeyCode::NONE) {
+      callback(target, KeyEvent::DOWN, flags, keyCombination.keyCode2, keyCombination.charCode2, charSet, origCharCode, origCharSet, keyboardType, false, ts, sender, refcon);
+      callback(target, KeyEvent::UP,   flags, keyCombination.keyCode2, keyCombination.charCode2, charSet, origCharCode, origCharSet, keyboardType, false, ts, sender, refcon);
+    }
   }
 
   // ----------------------------------------

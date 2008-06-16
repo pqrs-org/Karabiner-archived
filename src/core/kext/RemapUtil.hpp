@@ -47,10 +47,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode);
     bool keyToKeyWithModifier(const RemapParams &params, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode, ModifierFlag::ModifierFlag toFlag);
 
-    bool keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode,
-                  KeyCode::KeyCode toKeyCode1, CharCode::CharCode toCharCode1,
-                  KeyCode::KeyCode toKeyCode2, CharCode::CharCode toCharCode2);
-
     bool keyToKey_dependingShift(const RemapParams &params, KeyCode::KeyCode fromKeyCode,
                                  KeyCode::KeyCode toKeyCode_noflag1, CharCode::CharCode toCharCode_noflag1,
                                  KeyCode::KeyCode toKeyCode_noflag2, CharCode::CharCode toCharCode_noflag2,
@@ -334,7 +330,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     void extraRepeatFunc_space(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon);
     void extraRepeatFunc_emacsmode_controlK(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon);
 
-    void extraRepeatFunc_jis_kana_DA(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon);
+    void register_keyCombination(KeyCode::KeyCode keyCode1, CharCode::CharCode charCode1, KeyCode::KeyCode keyCode2, CharCode::CharCode charCode2);
+    void extraRepeatFunc_keyCombination(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon);
   }
 
   // ----------------------------------------
