@@ -79,6 +79,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (RemapUtil::isModifierOn(params, ModifierFlag::FN)) {
       if (allFlagStatus.commandR.isHeldDown()) {
         allFlagStatus.commandR.temporary_decrease();
+        allFlagStatus.controlL.temporary_decrease();
         return;
       }
     }

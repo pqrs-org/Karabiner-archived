@@ -17,4 +17,5 @@ clean:
 
 reload:
 	sudo ./scripts/unload.sh
+	sleep 1
 	sudo ./scripts/load.sh
