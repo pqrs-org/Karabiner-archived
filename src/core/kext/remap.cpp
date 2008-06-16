@@ -1091,92 +1091,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
-  remap_pc_application2commandL(const RemapParams &params)
-  {
-    if (! config.remap_pc_application2commandL) return;
-
-    RemapUtil::keyToModifier(params, KeyCode::PC_APPLICATION, ModifierFlag::COMMAND_L);
-  }
-
-  void
-  remap_pc_application2controlL(const RemapParams &params)
-  {
-    if (! config.remap_pc_application2controlL) return;
-
-    RemapUtil::keyToModifier(params, KeyCode::PC_APPLICATION, ModifierFlag::CONTROL_L);
-  }
-
-  void
-  remap_pc_application2fn(const RemapParams &params)
-  {
-    if (! config.remap_pc_application2fn) return;
-
-    RemapUtil::keyToModifier(params, KeyCode::PC_APPLICATION, ModifierFlag::FN);
-    RemapUtil::toFN(params);
-  }
-
-  void
-  remap_pc_application2optionL(const RemapParams &params)
-  {
-    if (! config.remap_pc_application2optionL) return;
-
-    RemapUtil::keyToModifier(params, KeyCode::PC_APPLICATION, ModifierFlag::OPTION_L);
-  }
-
-  void
-  remap_pc_application2shiftL(const RemapParams &params)
-  {
-    if (! config.remap_pc_application2shiftL) return;
-
-    RemapUtil::keyToModifier(params, KeyCode::PC_APPLICATION, ModifierFlag::SHIFT_L);
-  }
-
-  void
-  remap_pc_application2f9(const RemapParams &params)
-  {
-    if (! config.remap_pc_application2f9) return;
-
-    RemapUtil::keyToKey(params, KeyCode::PC_APPLICATION, KeyCode::F9);
-  }
-
-  void
-  remap_pc_application2exposeALL(const RemapParams &params)
-  {
-    if (! config.remap_pc_application2exposeALL) return;
-
-    RemapUtil::keyToKey(params, KeyCode::PC_APPLICATION, KeyCode::EXPOSE_ALL);
-  }
-
-  void
-  remap_pc_application2f11(const RemapParams &params)
-  {
-    if (! config.remap_pc_application2f11) return;
-
-    RemapUtil::keyToKey(params, KeyCode::PC_APPLICATION, KeyCode::F11);
-  }
-
-  // ----------------------------------------
-  void
-  remap_jis_eisuu2commandL(const RemapParams &params)
-  {
-    if (! config.remap_jis_eisuu2commandL) return;
-
-    RemapUtil::keyToModifier(params, KeyCode::JIS_EISUU, ModifierFlag::COMMAND_L);
-  }
-
-  void
-  remap_jis_eisuu2commandL_eisuu(const RemapParams &params)
-  {
-    if (! config.remap_jis_eisuu2commandL_eisuu) return;
-
-    FireFunc::FireFunc func = FireFunc::firefunc_jis_eisuu;
-    if ((params.activeApplicationInfo)->is_virtualmachine) func = FireFunc::firefunc_nop;
-
-    static KeyOverlaidModifier kom;
-    kom.remap(params, KeyCode::JIS_EISUU, ModifierFlag::COMMAND_L, func);
-  }
-
-  void
   remap_jis_eisuu2commandL_eisuu_eisuu2optionL_term(const RemapParams &params)
   {
     if (! config.remap_jis_eisuu2commandL_eisuu_eisuu2optionL_term) return;
@@ -1190,173 +1104,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     } else {
       kom.remap(params, KeyCode::JIS_EISUU, ModifierFlag::COMMAND_L, func);
     }
-  }
-
-  void
-  remap_jis_eisuu2controlL(const RemapParams &params)
-  {
-    if (! config.remap_jis_eisuu2controlL) return;
-
-    RemapUtil::keyToModifier(params, KeyCode::JIS_EISUU, ModifierFlag::CONTROL_L);
-  }
-
-  void
-  remap_jis_eisuu2controlL_eisuu(const RemapParams &params)
-  {
-    if (! config.remap_jis_eisuu2controlL_eisuu) return;
-
-    FireFunc::FireFunc func = FireFunc::firefunc_jis_eisuu;
-    if ((params.activeApplicationInfo)->is_virtualmachine) func = FireFunc::firefunc_nop;
-
-    static KeyOverlaidModifier kom;
-    kom.remap(params, KeyCode::JIS_EISUU, ModifierFlag::CONTROL_L, func);
-  }
-
-  void
-  remap_jis_eisuu2fn(const RemapParams &params)
-  {
-    if (! config.remap_jis_eisuu2fn) return;
-
-    RemapUtil::keyToModifier(params, KeyCode::JIS_EISUU, ModifierFlag::FN);
-    RemapUtil::toFN(params);
-  }
-
-  void
-  remap_jis_eisuu2optionL(const RemapParams &params)
-  {
-    if (! config.remap_jis_eisuu2optionL) return;
-
-    RemapUtil::keyToModifier(params, KeyCode::JIS_EISUU, ModifierFlag::OPTION_L);
-  }
-
-  void
-  remap_jis_eisuu2shiftL(const RemapParams &params)
-  {
-    if (! config.remap_jis_eisuu2shiftL) return;
-
-    RemapUtil::keyToModifier(params, KeyCode::JIS_EISUU, ModifierFlag::SHIFT_L);
-  }
-
-  void
-  remap_jis_eisuu2escape(const RemapParams &params)
-  {
-    if (! config.remap_jis_eisuu2escape) return;
-
-    RemapUtil::keyToKey(params, KeyCode::JIS_EISUU, KeyCode::ESCAPE);
-  }
-
-  void
-  remap_jis_eisuu2tab(const RemapParams &params)
-  {
-    if (! config.remap_jis_eisuu2tab) return;
-
-    RemapUtil::keyToKey(params, KeyCode::JIS_EISUU, KeyCode::TAB);
-  }
-
-  void
-  remap_jis_eisuu2middleclick(const RemapParams &params)
-  {
-    if (! config.remap_jis_eisuu2middleclick) return;
-
-    RemapUtil::keyToPointingButton(params, KeyCode::JIS_EISUU, PointingButton::MIDDLE);
-  }
-
-  void
-  remap_jis_eisuu2rightclick(const RemapParams &params)
-  {
-    if (! config.remap_jis_eisuu2rightclick) return;
-
-    RemapUtil::keyToPointingButton(params, KeyCode::JIS_EISUU, PointingButton::RIGHT);
-  }
-
-  // ----------------------------------------
-  void
-  remap_jis_kana2commandL(const RemapParams &params)
-  {
-    if (! config.remap_jis_kana2commandL) return;
-
-    RemapUtil::keyToModifier(params, KeyCode::JIS_KANA, ModifierFlag::COMMAND_L);
-  }
-
-  void
-  remap_jis_kana2commandR_kana(const RemapParams &params)
-  {
-    if (! config.remap_jis_kana2commandR_kana) return;
-
-    FireFunc::FireFunc func = FireFunc::firefunc_jis_kana;
-    if ((params.activeApplicationInfo)->is_virtualmachine) func = FireFunc::firefunc_nop;
-
-    static KeyOverlaidModifier kom;
-    kom.remap(params, KeyCode::JIS_KANA, ModifierFlag::COMMAND_R, func);
-  }
-
-  void
-  remap_jis_kana2controlL(const RemapParams &params)
-  {
-    if (! config.remap_jis_kana2controlL) return;
-
-    RemapUtil::keyToModifier(params, KeyCode::JIS_KANA, ModifierFlag::CONTROL_L);
-  }
-
-  void
-  remap_jis_kana2controlL_kana(const RemapParams &params)
-  {
-    if (! config.remap_jis_kana2controlL_kana) return;
-
-    FireFunc::FireFunc func = FireFunc::firefunc_jis_kana;
-    if ((params.activeApplicationInfo)->is_virtualmachine) func = FireFunc::firefunc_nop;
-
-    static KeyOverlaidModifier kom;
-    kom.remap(params, KeyCode::JIS_KANA, ModifierFlag::CONTROL_L, func);
-  }
-
-  void
-  remap_jis_kana2fn(const RemapParams &params)
-  {
-    if (! config.remap_jis_kana2fn) return;
-
-    RemapUtil::keyToModifier(params, KeyCode::JIS_KANA, ModifierFlag::FN);
-    RemapUtil::toFN(params);
-  }
-
-  void
-  remap_jis_kana2optionL(const RemapParams &params)
-  {
-    if (! config.remap_jis_kana2optionL) return;
-
-    RemapUtil::keyToModifier(params, KeyCode::JIS_KANA, ModifierFlag::OPTION_L);
-  }
-
-  void
-  remap_jis_kana2shiftL(const RemapParams &params)
-  {
-    if (! config.remap_jis_kana2shiftL) return;
-
-    RemapUtil::keyToModifier(params, KeyCode::JIS_KANA, ModifierFlag::SHIFT_L);
-  }
-
-  void
-  remap_jis_kana2return(const RemapParams &params)
-  {
-    if (! config.remap_jis_kana2return) return;
-
-    RemapUtil::keyToKey(params, KeyCode::JIS_KANA, KeyCode::RETURN);
-  }
-
-  void
-  remap_jis_kana2middleclick(const RemapParams &params)
-  {
-    if (! config.remap_jis_kana2middleclick) return;
-
-    RemapUtil::keyToPointingButton(params, KeyCode::JIS_KANA, PointingButton::MIDDLE);
-  }
-
-  void
-  remap_jis_kana2rightclick(const RemapParams &params)
-  {
-    if (! config.remap_jis_kana2rightclick) return;
-
-    RemapUtil::keyToPointingButton(params, KeyCode::JIS_KANA, PointingButton::RIGHT);
   }
 
   // ----------------------------------------
@@ -1513,42 +1260,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
       *(params.ex_dropKey) = true;
     }
-  }
-
-  void
-  remap_jis_commandL2commandL_eisuu(const RemapParams &params)
-  {
-    if (! config.remap_jis_commandL2commandL_eisuu) return;
-
-    FireFunc::FireFunc func = FireFunc::firefunc_jis_eisuu;
-    if ((params.activeApplicationInfo)->is_virtualmachine) func = FireFunc::firefunc_nop;
-
-    static KeyOverlaidModifier kom;
-    kom.remap(params, KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, func);
-  }
-
-  void
-  remap_jis_commandL2commandL_toggle_kana_eisuu(const RemapParams &params)
-  {
-    if (! config.remap_jis_commandL2commandL_toggle_kana_eisuu) return;
-
-    FireFunc::FireFunc func = FireFunc::firefunc_jis_toggle_eisuu_kana;
-    if ((params.activeApplicationInfo)->is_virtualmachine) func = FireFunc::firefunc_nop;
-
-    static KeyOverlaidModifier kom;
-    kom.remap(params, KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, func);
-  }
-
-  void
-  remap_jis_commandL2controlL_eisuu(const RemapParams &params)
-  {
-    if (! config.remap_jis_commandL2controlL_eisuu) return;
-
-    FireFunc::FireFunc func = FireFunc::firefunc_jis_eisuu;
-    if ((params.activeApplicationInfo)->is_virtualmachine) func = FireFunc::firefunc_nop;
-
-    static KeyOverlaidModifier kom;
-    kom.remap(params, KeyCode::COMMAND_L, ModifierFlag::CONTROL_L, func);
   }
 
   void
@@ -1744,15 +1455,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_qwerty2qwerf(params);
 
   // ----------------------------------------
-  remap_pc_application2commandL(params);
-  remap_pc_application2controlL(params);
-  remap_pc_application2fn(params);
-  remap_pc_application2optionL(params);
-  remap_pc_application2shiftL(params);
-  remap_pc_application2exposeALL(params);
-  remap_pc_application2f9(params);
-  remap_pc_application2f11(params);
-
   remap_keypadnumlock(params);
   remap_keypadnumlock_togglekey_clear(params);
 
@@ -1777,25 +1479,8 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   remap_jis_shiftSpace2toggle_kana_eisuu(params);
 
-  remap_jis_eisuu2commandL(params);
-  remap_jis_eisuu2controlL(params);
-  remap_jis_eisuu2fn(params);
-  remap_jis_eisuu2optionL(params);
-  remap_jis_eisuu2shiftL(params);
-  remap_jis_eisuu2escape(params);
-  remap_jis_eisuu2tab(params);
-  remap_jis_eisuu2middleclick(params);
-  remap_jis_eisuu2rightclick(params);
   remap_jis_unify_kana_to_eisuu(params);
 
-  remap_jis_kana2commandL(params);
-  remap_jis_kana2controlL(params);
-  remap_jis_kana2fn(params);
-  remap_jis_kana2optionL(params);
-  remap_jis_kana2shiftL(params);
-  remap_jis_kana2return(params);
-  remap_jis_kana2middleclick(params);
-  remap_jis_kana2rightclick(params);
   remap_jis_shiftKana2eisuu(params);
   remap_jis_unify_eisuu_to_kana(params);
 
@@ -1831,16 +1516,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   // *** Note: we need to call remap_space2shift, remap_enter2optionL_commandSpace (has SandS like behavior) as possible late. ***
   // *** If any keyToModifier or modifierToKey remappings are enabled, miss-cancelling are occured. ***
 #include "config/output/include.remapcode_call_kom.cpp"
-  remap_jis_commandR2commandR_kana(params);
-  remap_jis_commandR2commandR_toggle_kana_eisuu(params);
-  remap_jis_commandL2commandL_eisuu(params);
-  remap_jis_commandL2commandL_toggle_kana_eisuu(params);
-  remap_jis_commandL2controlL_eisuu(params);
-  remap_jis_eisuu2commandL_eisuu(params);
-  remap_jis_eisuu2controlL_eisuu(params);
   remap_jis_eisuu2commandL_eisuu_eisuu2optionL_term(params);
-  remap_jis_kana2commandR_kana(params);
-  remap_jis_kana2controlL_kana(params);
 
   // ------------------------------------------------------------
   // *** Note: we need to call remap_pclikehomeend as possible late. ***
