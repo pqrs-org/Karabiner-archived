@@ -56,22 +56,22 @@ while l = $stdin.gets
 
       when 'remapcode_call'
         if type == 'KeyToKey' || type == 'KeyToPointingButton' then
-          print "#{lastName}(params);\n"
+          print "GeneratedCode::#{lastName}(params);\n"
         end
 
       when 'remapcode_call_kom'
         if type == 'KeyOverlaidModifier' then
-          print "#{lastName}(params);\n"
+          print "GeneratedCode::#{lastName}(params);\n"
         end
 
       when 'remapcode_call_komc'
         if type == 'KeyOverlaidModifierCombination' then
-          print "#{lastName}(params);\n"
+          print "GeneratedCode::#{lastName}(params);\n"
         end
 
       when 'remapcode_call_consumer'
         if type == 'ConsumerToKey' then
-          print "#{lastName}(params);\n"
+          print "GeneratedCode::#{lastName}(params);\n"
         end
       end
     end
