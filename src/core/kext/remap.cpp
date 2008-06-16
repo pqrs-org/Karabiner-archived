@@ -6,7 +6,9 @@
 #include "keycode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
+  namespace GeneratedCode {
 #include "config/output/include.remapcode_func.cpp"
+  }
 
   // ----------------------------------------
   void
@@ -168,96 +170,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
-  remap_optionR2commandL(const RemapParams &params)
-  {
-    if (! config.remap_optionR2commandL) return;
-
-    RemapUtil::modifierToModifier(params, ModifierFlag::OPTION_R, ModifierFlag::COMMAND_L);
-  }
-
-  void
-  remap_optionR2controlL(const RemapParams &params)
-  {
-    if (! config.remap_optionR2controlL) return;
-
-    RemapUtil::modifierToModifier(params, ModifierFlag::OPTION_R, ModifierFlag::CONTROL_L);
-  }
-
-  void
-  remap_optionR2controlR(const RemapParams &params)
-  {
-    if (! config.remap_optionR2controlR) return;
-
-    RemapUtil::modifierToModifier(params, ModifierFlag::OPTION_R, ModifierFlag::CONTROL_R);
-  }
-
-  void
-  remap_optionR2fn(const RemapParams &params)
-  {
-    if (! config.remap_optionR2fn) return;
-
-    RemapUtil::modifierToModifier(params, ModifierFlag::OPTION_R, ModifierFlag::FN);
-    RemapUtil::toFN(params);
-  }
-
-  void
-  remap_optionR2optionR_commandSpace(const RemapParams &params)
-  {
-    if (! config.remap_optionR2optionR_commandSpace) return;
-
-    static KeyOverlaidModifier kom;
-    kom.remap(params, KeyCode::OPTION_R, ModifierFlag::OPTION_R, FireFunc::firefunc_commandSpace);
-  }
-
-  void
-  remap_optionR2end(const RemapParams &params)
-  {
-    if (! config.remap_optionR2end) return;
-
-    RemapUtil::modifierToKey(params, ModifierFlag::OPTION_R, KeyCode::END);
-  }
-
-  void
-  remap_optionR2enter(const RemapParams &params)
-  {
-    if (! config.remap_optionR2enter) return;
-
-    RemapUtil::modifierToKey(params, ModifierFlag::OPTION_R, RemapUtil::getEnterKeyCode(params));
-  }
-
-  void
-  remap_optionR2forwarddelete(const RemapParams &params)
-  {
-    if (! config.remap_optionR2forwarddelete) return;
-
-    RemapUtil::modifierToKey(params, ModifierFlag::OPTION_R, KeyCode::FORWARD_DELETE);
-  }
-
-  void
-  remap_optionR2pagedown(const RemapParams &params)
-  {
-    if (! config.remap_optionR2pagedown) return;
-
-    RemapUtil::modifierToKey(params, ModifierFlag::OPTION_R, KeyCode::PAGEDOWN);
-  }
-
-  void
-  remap_optionR2semicolon(const RemapParams &params)
-  {
-    if (! config.remap_optionR2semicolon) return;
-
-    RemapUtil::modifierToKey(params, ModifierFlag::OPTION_R, KeyCode::SEMICOLON);
-  }
-
-  void
-  remap_optionR2space(const RemapParams &params)
-  {
-    if (! config.remap_optionR2space) return;
-
-    RemapUtil::modifierToKey(params, ModifierFlag::OPTION_R, KeyCode::SPACE);
-  }
-
-  void
   remap_optionR2allF1(const RemapParams &params)
   {
     if (! config.remap_optionR2allF1) return;
@@ -275,101 +187,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
-  remap_return2optionL(const RemapParams &params)
-  {
-    if (! config.remap_return2optionL) return;
-
-    RemapUtil::keyToModifier(params, KeyCode::RETURN, ModifierFlag::OPTION_L);
-  }
-
-  void
-  remap_return2optionL_escape(const RemapParams &params)
-  {
-    if (! config.remap_return2optionL_escape) return;
-
-    static KeyOverlaidModifier kom;
-    kom.remap(params, KeyCode::RETURN, ModifierFlag::OPTION_L, FireFunc::firefunc_escape);
-  }
-
-  void
-  remap_return2semicolon(const RemapParams &params)
-  {
-    if (! config.remap_return2semicolon) return;
-
-    RemapUtil::keyToKey(params, KeyCode::RETURN, KeyCode::SEMICOLON);
-  }
-
-  // ----------------------------------------
-  void
-  remap_space2controlL(const RemapParams &params)
-  {
-    if (! config.remap_space2controlL) return;
-
-    RemapUtil::keyToModifier(params, KeyCode::SPACE, ModifierFlag::CONTROL_L);
-  }
-
-  void
-  remap_space2controlL_space(const RemapParams &params)
-  {
-    if (! config.remap_space2controlL_space) return;
-
-    static KeyOverlaidModifier kom;
-    kom.remap(params, KeyCode::SPACE, ModifierFlag::CONTROL_L, FireFunc::firefunc_space);
-  }
-
-  void
-  remap_space2controlL_space_keyrepeat(const RemapParams &params)
-  {
-    if (! config.remap_space2controlL_space_keyrepeat) return;
-
-    static KeyOverlaidModifier kom;
-    kom.remap(params, KeyCode::SPACE, ModifierFlag::CONTROL_L, FireFunc::firefunc_space, ExtraRepeatFunc::extraRepeatFunc_space);
-  }
-
-  void
-  remap_space2shiftL(const RemapParams &params)
-  {
-    if (! config.remap_space2shiftL) return;
-
-    RemapUtil::keyToModifier(params, KeyCode::SPACE, ModifierFlag::SHIFT_L);
-  }
-
-  void
-  remap_space2shiftL_space(const RemapParams &params)
-  {
-    if (! config.remap_space2shiftL_space) return;
-
-    static KeyOverlaidModifier kom;
-    kom.remap(params, KeyCode::SPACE, ModifierFlag::SHIFT_L, FireFunc::firefunc_space);
-  }
-
-  void
-  remap_space2shiftL_space_keyrepeat(const RemapParams &params)
-  {
-    if (! config.remap_space2shiftL_space_keyrepeat) return;
-
-    static KeyOverlaidModifier kom;
-    kom.remap(params, KeyCode::SPACE, ModifierFlag::SHIFT_L, FireFunc::firefunc_space, ExtraRepeatFunc::extraRepeatFunc_space);
-  }
-
-  void
-  remap_space2return(const RemapParams &params)
-  {
-    if (! config.remap_space2return) return;
-
-    RemapUtil::keyToKey(params, KeyCode::SPACE, KeyCode::RETURN);
-  }
-
-  // ----------------------------------------
-  void
-  remap_semicolon2return(const RemapParams &params)
-  {
-    if (! config.remap_semicolon2return) return;
-
-    RemapUtil::keyToKey(params, KeyCode::SEMICOLON, KeyCode::RETURN);
-  }
-
-  void
   remap_swapcolons(const RemapParams &params)
   {
     if (! config.remap_swapcolons) return;
@@ -384,55 +201,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
-  void
-  remap_shiftL2commandL(const RemapParams &params)
-  {
-    if (! config.remap_shiftL2commandL) return;
-
-    RemapUtil::modifierToModifier(params, ModifierFlag::SHIFT_L, ModifierFlag::COMMAND_L);
-  }
-
-  void
-  remap_shiftL2controlL(const RemapParams &params)
-  {
-    if (! config.remap_shiftL2controlL) return;
-
-    RemapUtil::modifierToModifier(params, ModifierFlag::SHIFT_L, ModifierFlag::CONTROL_L);
-  }
-
-  void
-  remap_shiftL2fn(const RemapParams &params)
-  {
-    if (! config.remap_shiftL2fn) return;
-
-    RemapUtil::modifierToModifier(params, ModifierFlag::SHIFT_L, ModifierFlag::FN);
-    RemapUtil::toFN(params);
-  }
-
-  void
-  remap_shiftL2optionL(const RemapParams &params)
-  {
-    if (! config.remap_shiftL2optionL) return;
-
-    RemapUtil::modifierToModifier(params, ModifierFlag::SHIFT_L, ModifierFlag::OPTION_L);
-  }
-
-  void
-  remap_shiftL2escape(const RemapParams &params)
-  {
-    if (! config.remap_shiftL2escape) return;
-
-    RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_L, KeyCode::ESCAPE);
-  }
-
-  void
-  remap_shiftL2space(const RemapParams &params)
-  {
-    if (! config.remap_shiftL2space) return;
-
-    RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_L, KeyCode::SPACE);
-  }
-
   void
   remap_shiftRshiftL2space(const RemapParams &params)
   {
@@ -452,80 +220,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
-  remap_shiftR2commandL(const RemapParams &params)
-  {
-    if (! config.remap_shiftR2commandL) return;
-
-    RemapUtil::modifierToModifier(params, ModifierFlag::SHIFT_R, ModifierFlag::COMMAND_L);
-  }
-
-  void
-  remap_shiftR2controlL(const RemapParams &params)
-  {
-    if (! config.remap_shiftR2controlL) return;
-
-    RemapUtil::modifierToModifier(params, ModifierFlag::SHIFT_R, ModifierFlag::CONTROL_L);
-  }
-
-  void
-  remap_shiftR2fn(const RemapParams &params)
-  {
-    if (! config.remap_shiftR2fn) return;
-
-    RemapUtil::modifierToModifier(params, ModifierFlag::SHIFT_R, ModifierFlag::FN);
-    RemapUtil::toFN(params);
-  }
-
-  void
-  remap_shiftR2optionL(const RemapParams &params)
-  {
-    if (! config.remap_shiftR2optionL) return;
-
-    RemapUtil::modifierToModifier(params, ModifierFlag::SHIFT_R, ModifierFlag::OPTION_L);
-  }
-
-  void
-  remap_shiftR2shiftR_backslash(const RemapParams &params)
-  {
-    if (! config.remap_shiftR2shiftR_backslash) return;
-
-    static KeyOverlaidModifier kom;
-    kom.remap(params, KeyCode::SHIFT_R, ModifierFlag::SHIFT_R, FireFunc::firefunc_backslash);
-  }
-
-  void
-  remap_shiftR2enter(const RemapParams &params)
-  {
-    if (! config.remap_shiftR2enter) return;
-
-    RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_R, RemapUtil::getEnterKeyCode(params));
-  }
-
-  void
-  remap_shiftR2escape(const RemapParams &params)
-  {
-    if (! config.remap_shiftR2escape) return;
-
-    RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_R, KeyCode::ESCAPE);
-  }
-
-  void
-  remap_shiftR2return(const RemapParams &params)
-  {
-    if (! config.remap_shiftR2return) return;
-
-    RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_R, KeyCode::RETURN);
-  }
-
-  void
-  remap_shiftR2space(const RemapParams &params)
-  {
-    if (! config.remap_shiftR2space) return;
-
-    RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_R, KeyCode::SPACE);
-  }
-
-  void
   remap_shiftLshiftR2space(const RemapParams &params)
   {
     if (! config.remap_shiftLshiftR2space) return;
@@ -542,40 +236,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
-  void
-  remap_shiftR2tab(const RemapParams &params)
-  {
-    if (! config.remap_shiftR2tab) return;
-
-    RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_R, KeyCode::TAB);
-  }
-
-  void
-  remap_shiftR2uparrow(const RemapParams &params)
-  {
-    if (! config.remap_shiftR2uparrow) return;
-
-    RemapUtil::modifierToKey(params, ModifierFlag::SHIFT_R, KeyCode::CURSOR_UP);
-  }
-
   // ----------------------------------------
-  void
-  remap_tab2commandL_exposeAll(const RemapParams &params)
-  {
-    if (! config.remap_tab2commandL_exposeAll) return;
-
-    static KeyOverlaidModifier kom;
-    kom.remap(params, KeyCode::TAB, ModifierFlag::COMMAND_L, FireFunc::firefunc_exposeAll);
-  }
-
-  void
-  remap_tab2exposeALL(const RemapParams &params)
-  {
-    if (! config.remap_tab2exposeALL) return;
-
-    RemapUtil::keyToKey(params, KeyCode::TAB, KeyCode::EXPOSE_ALL);
-  }
-
   void
   remap_commandTab2optionTab(const RemapParams &params)
   {
@@ -2059,52 +1720,13 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   remap_keypadcomma2shiftComma(params);
 
-  remap_optionR2commandL(params);
-  remap_optionR2controlL(params);
-  remap_optionR2controlR(params);
-  remap_optionR2fn(params);
-  remap_optionR2optionR_commandSpace(params);
-  remap_optionR2end(params);
-  remap_optionR2enter(params);
-  remap_optionR2forwarddelete(params);
-  remap_optionR2pagedown(params);
-  remap_optionR2semicolon(params);
-  remap_optionR2space(params);
   remap_optionR2allF1(params);
 
-  remap_return2optionL(params);
-  remap_return2optionL_escape(params);
-  remap_return2semicolon(params);
-
-  remap_space2controlL(params);
-  remap_space2shiftL(params);
-  remap_space2return(params);
-
-  remap_semicolon2return(params);
   remap_swapcolons(params);
 
-  remap_shiftL2commandL(params);
-  remap_shiftL2controlL(params);
-  remap_shiftL2fn(params);
-  remap_shiftL2optionL(params);
-  remap_shiftL2escape(params);
-  remap_shiftL2space(params);
   remap_shiftLshiftR2space(params);
-
-  remap_shiftR2commandL(params);
-  remap_shiftR2controlL(params);
-  remap_shiftR2fn(params);
-  remap_shiftR2optionL(params);
-  remap_shiftR2shiftR_backslash(params);
-  remap_shiftR2enter(params);
-  remap_shiftR2escape(params);
-  remap_shiftR2return(params);
-  remap_shiftR2space(params);
   remap_shiftRshiftL2space(params);
-  remap_shiftR2tab(params);
-  remap_shiftR2uparrow(params);
 
-  remap_tab2exposeALL(params);
   remap_commandTab2optionTab(params);
   remap_commandTab2f5(params);
   remap_optionTab2f5(params);
@@ -2209,13 +1831,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   // *** Note: we need to call remap_space2shift, remap_enter2optionL_commandSpace (has SandS like behavior) as possible late. ***
   // *** If any keyToModifier or modifierToKey remappings are enabled, miss-cancelling are occured. ***
 #include "config/output/include.remapcode_call_kom.cpp"
-  remap_enter2optionL_commandSpace(params);
-  remap_enter2optionR_commandSpace(params);
-  remap_space2controlL_space(params);
-  remap_space2controlL_space_keyrepeat(params);
-  remap_space2shiftL_space(params);
-  remap_space2shiftL_space_keyrepeat(params);
-  remap_tab2commandL_exposeAll(params);
   remap_jis_commandR2commandR_kana(params);
   remap_jis_commandR2commandR_toggle_kana_eisuu(params);
   remap_jis_commandL2commandL_eisuu(params);
