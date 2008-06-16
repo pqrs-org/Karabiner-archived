@@ -293,8 +293,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (! allFlagStatus.fn.isHeldDown()) return;
 
-    allFlagStatus.keypad = false;
-
     // [ => up
     if (params.ex_origKey == KeyCode::BRACKET_LEFT) {
       *(params.key) = KeyCode::CURSOR_UP;
@@ -386,7 +384,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         params.ex_origKey == KeyCode::KEYPAD_4 ||
         params.ex_origKey == KeyCode::KEYPAD_6 ||
         params.ex_origKey == KeyCode::KEYPAD_8) {
-      allFlagStatus.keypad = false;
       RemapUtil::keyToKey(params, KeyCode::KEYPAD_2, KeyCode::CURSOR_DOWN);
       RemapUtil::keyToKey(params, KeyCode::KEYPAD_4, KeyCode::CURSOR_LEFT);
       RemapUtil::keyToKey(params, KeyCode::KEYPAD_6, KeyCode::CURSOR_RIGHT);
@@ -397,7 +394,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         params.ex_origKey == KeyCode::KEYPAD_3 ||
         params.ex_origKey == KeyCode::KEYPAD_7 ||
         params.ex_origKey == KeyCode::KEYPAD_9) {
-      allFlagStatus.keypad = false;
       RemapUtil::keyToKey(params, KeyCode::KEYPAD_1, KeyCode::END);
       RemapUtil::keyToKey(params, KeyCode::KEYPAD_3, KeyCode::PAGEDOWN);
       RemapUtil::keyToKey(params, KeyCode::KEYPAD_7, KeyCode::HOME);
@@ -405,7 +401,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     if (params.ex_origKey == KeyCode::KEYPAD_DOT) {
-      allFlagStatus.keypad = false;
       RemapUtil::keyToKey(params, KeyCode::KEYPAD_DOT, KeyCode::FORWARD_DELETE);
     }
   }
@@ -902,7 +897,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         *(params.key) == KeyCode::KEY_8 ||
         *(params.key) == KeyCode::KEY_9) {
       allFlagStatus.fn.temporary_decrease();
-      allFlagStatus.keypad = false;
       RemapUtil::fireKeyWithAllModifiers(params, *(params.eventType), *(params.key), *(params.charCode));
     }
   }
@@ -917,7 +911,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (RemapUtil::keypad2spaces(params)) {
       allFlagStatus.fn.temporary_decrease();
-      allFlagStatus.keypad = false;
 
       RemapUtil::fireKeyWithAllModifiers(params, *(params.eventType), *(params.key), *(params.charCode));
     }
