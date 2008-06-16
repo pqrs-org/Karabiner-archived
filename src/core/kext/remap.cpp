@@ -87,6 +87,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::keyToKey(params, KeyCode::FN, KeyCode::CONTROL_L);
   }
 
+  void
+  remap_fn2fn(const RemapParams &params)
+  {
+    if (! config.remap_fn2fn) return;
+
+    RemapUtil::toFN(params);
+  }
+
   // ----------------------------------------
   void
   remap_f1_to_brightnessdown(const RemapParams &params)
@@ -1357,6 +1365,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_enter2controlLoptionL(params);
 
   remap_fn2controlL_commandR2fn(params);
+  remap_fn2fn(params);
 
   remap_f1_to_brightnessdown(params);
   remap_f2_to_brightnessup(params);
