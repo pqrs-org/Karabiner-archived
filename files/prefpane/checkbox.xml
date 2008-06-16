@@ -1407,10 +1407,12 @@
             <item>
               <name>Command_R to EISUU</name>
               <sysctl>remap.jis_commandR2eisuu</sysctl>
+              <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::JIS_EISUU</autogen>
             </item>
             <item>
               <name>Command_R to KANA</name>
               <sysctl>remap.jis_commandR2kana</sysctl>
+              <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::JIS_KANA</autogen>
             </item>
             <item>
               <name>Command_R to Command_R</name>
@@ -1444,10 +1446,12 @@
             <item>
               <name>Option_R to EISUU</name>
               <sysctl>remap.jis_optionR2eisuu</sysctl>
+              <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::JIS_EISUU</autogen>
             </item>
             <item>
               <name>Option_R to KANA</name>
               <sysctl>remap.jis_optionR2kana</sysctl>
+              <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::JIS_KANA</autogen>
             </item>
             <item>
               <name>Use Option_R as KANA/EISUU (toggle)</name>

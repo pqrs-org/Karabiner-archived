@@ -220,78 +220,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  RemapUtil::modifierToModifier(const RemapParams &params, ModifierFlag::ModifierFlag fromFlag, ModifierFlag::ModifierFlag toFlag)
-  {
-    KeyCode::KeyCode fromKeyCode = getModifierKeyCode(fromFlag);
-    if (! RemapUtil::isKey(params, fromKeyCode)) return false;
-
-    FlagStatus *fromStatus = allFlagStatus.getFlagStatus(fromFlag);
-    if (fromStatus == NULL) return false;
-    FlagStatus *toStatus = allFlagStatus.getFlagStatus(toFlag);
-    if (toStatus == NULL) return false;
-
-    if (isModifierOn(params, fromFlag)) {
-      toStatus->increase();
-      fromStatus->decrease();
-    } else {
-      toStatus->decrease();
-      fromStatus->increase();
-    }
-
-    KeyCode::KeyCode toKeyCode = getModifierKeyCode(toFlag);
-    *(params.key) = toKeyCode;
-
-    return true;
-  }
-
-  bool
-  RemapUtil::modifierToKey(const RemapParams &params, ModifierFlag::ModifierFlag fromFlag, KeyCode::KeyCode toKeyCode)
-  {
-    KeyCode::KeyCode fromKeyCode = getModifierKeyCode(fromFlag);
-    if (! RemapUtil::isKey(params, fromKeyCode)) return false;
-
-    FlagStatus *fromStatus = allFlagStatus.getFlagStatus(fromFlag);
-    if (fromStatus == NULL) return false;
-
-    if (isModifierOn(params, fromFlag)) {
-      fromStatus->decrease();
-      *(params.eventType) = KeyEvent::DOWN;
-    } else {
-      fromStatus->increase();
-      *(params.eventType) = KeyEvent::UP;
-    }
-
-    *(params.key) = toKeyCode;
-
-    if (toKeyCode == KeyCode::DELETE) {
-      toDelete(params);
-    }
-
-    return true;
-  }
-
-  bool
-  RemapUtil::keyToModifier(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag)
-  {
-    if (! RemapUtil::isKey(params, fromKeyCode)) return false;
-
-    FlagStatus *toStatus = allFlagStatus.getFlagStatus(toFlag);
-    if (toStatus == NULL) return false;
-
-    if (*(params.eventType) == KeyEvent::DOWN) {
-      toStatus->increase();
-    } else if (*(params.eventType) == KeyEvent::UP) {
-      toStatus->decrease();
-    }
-
-    KeyCode::KeyCode toKeyCode = getModifierKeyCode(toFlag);
-    *(params.key) = toKeyCode;
-    *(params.eventType) = KeyEvent::MODIFY;
-
-    return true;
-  }
-
-  bool
   RemapUtil::keyToModifier(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag1, ModifierFlag::ModifierFlag toFlag2)
   {
     if (! RemapUtil::isKey(params, fromKeyCode)) return false;
@@ -453,33 +381,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------
-  void
-  RemapUtil::modifierToPointingButton(const RemapParams &params, ModifierFlag::ModifierFlag fromFlag, PointingButton::PointingButton toButton)
-  {
-    KeyCode::KeyCode fromKeyCode = getModifierKeyCode(fromFlag);
-    if (! RemapUtil::isKey(params, fromKeyCode)) return;
-
-    FlagStatus *fromStatus = allFlagStatus.getFlagStatus(fromFlag);
-    if (fromStatus == NULL) return;
-
-    *(params.ex_dropKey) = true;
-
-    if (isModifierOn(params, fromFlag)) {
-      fromStatus->decrease();
-      listFirePointingClick.add(toButton);
-
-      bool *status = pointingButtonStatus.getButtonStatus(toButton);
-      if (status) *status = true;
-
-    } else {
-      fromStatus->increase();
-      listFirePointingClick.add(PointingButton::NONE);
-
-      bool *status = pointingButtonStatus.getButtonStatus(toButton);
-      if (status) *status = false;
-    }
-  }
-
   void
   RemapUtil::keyToPointingButton(const RemapParams &params, KeyCode::KeyCode fromKeyCode, PointingButton::PointingButton toButton)
   {
@@ -652,19 +553,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     KeyCode::KeyCode toKeyCode = jisKanaMode.iskana() ? KeyCode::JIS_KANA : KeyCode::JIS_EISUU;
     RemapUtil::keyToKey(params, fromKeyCode, toKeyCode);
-  }
-
-  void
-  RemapUtil::jis_toggle_eisuu_kana(const RemapParams &params, ModifierFlag::ModifierFlag fromModifier)
-  {
-    KeyCode::KeyCode fromKeyCode = getModifierKeyCode(fromModifier);
-
-    if (! RemapUtil::isKey(params, fromKeyCode)) return;
-
-    if (RemapUtil::isKeyDown(params, fromKeyCode)) jisKanaMode.toggle();
-
-    KeyCode::KeyCode toKeyCode = jisKanaMode.iskana() ? KeyCode::JIS_KANA : KeyCode::JIS_EISUU;
-    RemapUtil::modifierToKey(params, fromModifier, toKeyCode);
   }
 
   // --------------------
@@ -1235,6 +1123,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     remapToModifier(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag)
     {
       bool isKeyDown = false;
+      KeyCode::KeyCode toKeyCode = RemapUtil::getModifierKeyCode(toFlag);
 
       if (*(params.eventType) == KeyEvent::MODIFY) {
         // remap Modifier to Modifier
@@ -1246,7 +1135,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (status->isHeldDown()) {
           isKeyDown = true;
         }
-        RemapUtil::modifierToModifier(params, fromFlag, toFlag);
+        RemapUtil::keyToKey(params, fromKeyCode, toKeyCode);
 
       } else {
         // remap Key to Modifier
@@ -1254,7 +1143,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (*(params.eventType) == KeyEvent::DOWN) {
           isKeyDown = true;
         }
-        RemapUtil::keyToModifier(params, fromKeyCode, toFlag);
+        RemapUtil::keyToKey(params, fromKeyCode, toKeyCode);
       }
 
       return isKeyDown;

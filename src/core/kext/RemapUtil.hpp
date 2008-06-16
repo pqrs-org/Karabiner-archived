@@ -44,9 +44,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     CharCode::CharCode getEnterCharCode(KeyCode::KeyCode keyCode);
     bool isInternalKeyboard(unsigned int keyboardType);
 
-    bool modifierToModifier(const RemapParams &params, ModifierFlag::ModifierFlag fromFlag, ModifierFlag::ModifierFlag toFlag);
-    bool modifierToKey(const RemapParams &params, ModifierFlag::ModifierFlag fromFlag, KeyCode::KeyCode toKeyCode);
-    bool keyToModifier(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag);
     bool keyToModifier(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag1, ModifierFlag::ModifierFlag toFlag2);
     bool keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode);
     bool keyToKeyWithModifier(const RemapParams &params, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode, ModifierFlag::ModifierFlag toFlag);
@@ -63,7 +60,6 @@ namespace org_pqrs_KeyRemap4MacBook {
                                  KeyCode::KeyCode toKeyCode_shiftR1, CharCode::CharCode toCharCode_shiftR1,
                                  KeyCode::KeyCode toKeyCode_shiftR2, CharCode::CharCode toCharCode_shiftR2);
 
-    void modifierToPointingButton(const RemapParams &params, ModifierFlag::ModifierFlag fromFlag, PointingButton::PointingButton toButton);
     void keyToPointingButton(const RemapParams &params, KeyCode::KeyCode fromKeyCode, PointingButton::PointingButton toButton);
 
     bool keyToConsumer(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ConsumerKeyCode::ConsumerKeyCode toKeyCode);
@@ -98,7 +94,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void jis_toggle_eisuu_kana(const RemapParams &params, KeyCode::KeyCode fromKeyCode);
-    void jis_toggle_eisuu_kana(const RemapParams &params, ModifierFlag::ModifierFlag fromModifier);
 
     // ----------------------------------------
     void pointingRelativeToScroll(const RemapPointingParams_relative &params);
