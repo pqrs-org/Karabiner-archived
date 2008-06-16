@@ -726,8 +726,10 @@ namespace org_pqrs_KeyRemap4MacBook {
                  charSet, origCharCode, origCharSet,
                  keyboardType, false, ts, sender, refcon);
 
-        if (item.getKey() == KeyCode::JIS_EISUU) jisKanaMode.setKanaMode(false);
-        if (item.getKey() == KeyCode::JIS_KANA) jisKanaMode.setKanaMode(true);
+        if (item.getKey() == KeyCode::JIS_EISUU ||
+            item.getKey() == KeyCode::JIS_KANA) {
+          jisKanaMode.setMode(item.getEventType(), item.getKey(), item.getFlags());
+        }
       }
     }
   }
@@ -969,6 +971,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (allFlagStatus.makeFlags(params) != 0) return;
 
     jisKanaMode.toggle();
+
     if (jisKanaMode.iskana()) {
       listFireExtraKey.addKey(0, KeyCode::JIS_KANA, CharCode::JIS_KANA);
     } else {
@@ -1032,7 +1035,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   namespace ExtraRepeatFunc {
-    struct {
+    struct KeyCombination {
       KeyCode::KeyCode keyCode1;
       KeyCode::KeyCode keyCode2;
       CharCode::CharCode charCode1;
@@ -1302,6 +1305,38 @@ namespace org_pqrs_KeyRemap4MacBook {
              deltaAxis1, deltaAxis2, deltaAxis3,
              fixedDelta1, fixedDelta2, fixedDelta3,
              pointDelta1, pointDelta2, pointDelta3);
+    }
+  }
+
+  // ------------------------------------------------------------
+  void
+  JISKanaMode::setMode(unsigned int eventType, unsigned int keyCode, unsigned int flags)
+  {
+    if (eventType != KeyEvent::DOWN) return;
+
+    if (keyCode == KeyCode::JIS_EISUU) setMode(JISKANAMODE_ASCII);
+
+    if (keyCode == KeyCode::JIS_KANA) {
+      if (RemapUtil::isModifierOn(flags, ModifierFlag::SHIFT_L) ||
+          RemapUtil::isModifierOn(flags, ModifierFlag::SHIFT_R)) {
+        setMode(JISKANAMODE_KATAKANA);
+      } else {
+        setMode(JISKANAMODE_HIRAGANA);
+      }
+    }
+  }
+
+  void
+  JISKanaMode::toggle(void)
+  {
+    if (mode == JISKANAMODE_ASCII) {
+      if (allFlagStatus.isHeldDown_shift()) {
+        setMode(JISKANAMODE_KATAKANA);
+      } else {
+        setMode(JISKANAMODE_HIRAGANA);
+      }
+    } else {
+      setMode(JISKANAMODE_ASCII);
     }
   }
 }
