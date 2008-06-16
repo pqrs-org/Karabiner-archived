@@ -47,31 +47,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
-  remap_enter2commandLcontrolL(const RemapParams &params)
-  {
-    if (! config.remap_enter2commandLcontrolL) return;
-
-    RemapUtil::keyToModifier(params, RemapUtil::getEnterKeyCode(params), ModifierFlag::COMMAND_L, ModifierFlag::CONTROL_L);
-  }
-
-  void
-  remap_enter2commandLshiftL(const RemapParams &params)
-  {
-    if (! config.remap_enter2commandLshiftL) return;
-
-    RemapUtil::keyToModifier(params, RemapUtil::getEnterKeyCode(params), ModifierFlag::COMMAND_L, ModifierFlag::SHIFT_L);
-  }
-
-  void
-  remap_enter2controlLoptionL(const RemapParams &params)
-  {
-    if (! config.remap_enter2controlLoptionL) return;
-
-    RemapUtil::keyToModifier(params, RemapUtil::getEnterKeyCode(params), ModifierFlag::CONTROL_L, ModifierFlag::OPTION_L);
-  }
-
-  // ----------------------------------------
-  void
   remap_fn2controlL_commandR2fn(const RemapParams &params)
   {
     if (! config.remap_fn2controlL_commandR2fn) return;
@@ -164,15 +139,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (is_virtualmachine && ! config.option_f1_f5_force_vm) return;
 
     RemapUtil::keyToConsumer(params, KeyCode::F5, ConsumerKeyCode::VOLUME_UP);
-  }
-
-  // ----------------------------------------
-  void
-  remap_keypadcomma2shiftComma(const RemapParams &params)
-  {
-    if (! config.remap_keypadcomma2shiftComma) return;
-
-    RemapUtil::keyToKeyWithModifier(params, KeyCode::KEYPAD_COMMA, KeyCode::KEYPAD_COMMA, ModifierFlag::SHIFT_L);
   }
 
   // ----------------------------------------
@@ -1149,46 +1115,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  remap_jis_unify_eisuu_to_kana(const RemapParams &params)
-  {
-    if (! config.remap_jis_unify_eisuu_to_kana) return;
-
-    RemapUtil::jis_toggle_eisuu_kana(params, KeyCode::JIS_KANA);
-  }
-
-  void
-  remap_jis_unify_kana_to_eisuu(const RemapParams &params)
-  {
-    if (! config.remap_jis_unify_kana_to_eisuu) return;
-
-    RemapUtil::jis_toggle_eisuu_kana(params, KeyCode::JIS_EISUU);
-  }
-
-  void
-  remap_jis_unify_kana_eisuu_to_commandL(const RemapParams &params)
-  {
-    if (! config.remap_jis_unify_kana_eisuu_to_commandL) return;
-
-    RemapUtil::jis_toggle_eisuu_kana(params, KeyCode::COMMAND_L);
-  }
-
-  void
-  remap_jis_unify_kana_eisuu_to_commandR(const RemapParams &params)
-  {
-    if (! config.remap_jis_unify_kana_eisuu_to_commandR) return;
-
-    RemapUtil::jis_toggle_eisuu_kana(params, KeyCode::COMMAND_R);
-  }
-
-  void
-  remap_jis_unify_kana_eisuu_to_optionR(const RemapParams &params)
-  {
-    if (! config.remap_jis_unify_kana_eisuu_to_optionR) return;
-
-    RemapUtil::jis_toggle_eisuu_kana(params, KeyCode::OPTION_R);
-  }
-
-  void
   remap_jis_shiftSpace2toggle_kana_eisuu(const RemapParams &params)
   {
     if (! config.remap_jis_shiftSpace2toggle_kana_eisuu) return;
@@ -1203,42 +1129,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
       *(params.ex_dropKey) = true;
     }
-  }
-
-  void
-  remap_jis_commandR_x2_to_kana(const RemapParams &params)
-  {
-    if (! config.remap_jis_commandR_x2_to_kana) return;
-
-    static DoublePressModifier dpm;
-    dpm.remap(params, KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, FireFunc::firefunc_jis_kana);
-  }
-
-  void
-  remap_jis_commandR_x2_to_kana_x2(const RemapParams &params)
-  {
-    if (! config.remap_jis_commandR_x2_to_kana_x2) return;
-
-    static DoublePressModifier dpm;
-    dpm.remap(params, KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, FireFunc::firefunc_jis_kana_x2);
-  }
-
-  void
-  remap_jis_commandL_x2_to_eisuu(const RemapParams &params)
-  {
-    if (! config.remap_jis_commandL_x2_to_eisuu) return;
-
-    static DoublePressModifier dpm;
-    dpm.remap(params, KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, FireFunc::firefunc_jis_eisuu);
-  }
-
-  void
-  remap_jis_commandL_x2_to_eisuu_x2(const RemapParams &params)
-  {
-    if (! config.remap_jis_commandL_x2_to_eisuu_x2) return;
-
-    static DoublePressModifier dpm;
-    dpm.remap(params, KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, FireFunc::firefunc_jis_eisuu_x2);
   }
 
   void
@@ -1360,10 +1250,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_delete2f13_shift2tilde(params);
   remap_shiftDelete2tilde(params);
 
-  remap_enter2commandLcontrolL(params);
-  remap_enter2commandLshiftL(params);
-  remap_enter2controlLoptionL(params);
-
   remap_fn2controlL_commandR2fn(params);
   remap_fn2fn(params);
 
@@ -1372,8 +1258,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_f3_to_volumemute(params);
   remap_f4_to_volumedown(params);
   remap_f5_to_volumeup(params);
-
-  remap_keypadcomma2shiftComma(params);
 
   remap_optionR2allF1(params);
 
@@ -1407,18 +1291,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   // ------------------------------------------------------------
   // jis
-  remap_jis_commandL_x2_to_eisuu(params);
-  remap_jis_commandL_x2_to_eisuu_x2(params);
-
-  remap_jis_commandR_x2_to_kana(params);
-  remap_jis_commandR_x2_to_kana_x2(params);
-
-  remap_jis_unify_eisuu_to_kana(params);
-  remap_jis_unify_kana_to_eisuu(params);
-  remap_jis_unify_kana_eisuu_to_commandL(params);
-  remap_jis_unify_kana_eisuu_to_commandR(params);
-  remap_jis_unify_kana_eisuu_to_optionR(params);
-
   remap_jis_shiftSpace2toggle_kana_eisuu(params);
 
   remap_jis_shiftKana2eisuu(params);

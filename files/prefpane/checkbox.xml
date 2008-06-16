@@ -377,14 +377,17 @@
         <item>
           <name>Enter to Command_L+Control_L</name>
           <sysctl>remap.enter2commandLcontrolL</sysctl>
+          <autogen>--KeyToKeyWithModifier-- KeyCode::ENTER, KeyCode::COMMAND_L, ModifierFlag::CONTROL_L</autogen>
         </item>
         <item>
           <name>Enter to Command_L+Shift_L</name>
           <sysctl>remap.enter2commandLshiftL</sysctl>
+          <autogen>--KeyToKeyWithModifier-- KeyCode::ENTER, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L</autogen>
         </item>
         <item>
           <name>Enter to Control_L+Option_L</name>
           <sysctl>remap.enter2controlLoptionL</sysctl>
+          <autogen>--KeyToKeyWithModifier-- KeyCode::ENTER, KeyCode::CONTROL_L, ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
           <name>Enter to Delete</name>
@@ -617,6 +620,7 @@
             <item>
               <name>Comma to Shift+Comma</name>
               <sysctl>remap.keypadcomma2shiftComma</sysctl>
+              <autogen>--KeyToKeyWithModifier-- KeyCode::KEYPAD_COMMA, KeyCode::KEYPAD_COMMA, ModifierFlag::SHIFT_L</autogen>
             </item>
           </list>
         </item>
@@ -1389,14 +1393,17 @@
             <item>
               <name>Command_L x2 to EISUU</name>
               <sysctl>remap.jis_commandL_x2_to_eisuu</sysctl>
+              <autogen>--DoublePressModifier-- KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, FireFunc::firefunc_jis_eisuu</autogen>
             </item>
             <item>
               <name>Command_L x2 to EISUU x2 (for Kotoeri Users)</name>
               <sysctl>remap.jis_commandL_x2_to_eisuu_x2</sysctl>
+              <autogen>--DoublePressModifier-- KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, FireFunc::firefunc_jis_eisuu_x2</autogen>
             </item>
             <item>
               <name>Use Command_L as KANA/EISUU (toggle)</name>
               <sysctl>remap.jis_unify_kana_eisuu_to_commandL</sysctl>
+              <autogen>--JISToggleEisuuKana-- KeyCode::COMMAND_L</autogen>
             </item>
           </list>
         </item>
@@ -1428,14 +1435,17 @@
             <item>
               <name>Command_R x2 to KANA</name>
               <sysctl>remap.jis_commandR_x2_to_kana</sysctl>
+              <autogen>--DoublePressModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, FireFunc::firefunc_jis_kana</autogen>
             </item>
             <item>
               <name>Command_R x2 to KANA x2 (for Kotoeri Users)</name>
               <sysctl>remap.jis_commandR_x2_to_kana_x2</sysctl>
+              <autogen>--DoublePressModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, FireFunc::firefunc_jis_kana_x2</autogen>
             </item>
             <item>
               <name>Use Command_R as KANA/EISUU (toggle)</name>
               <sysctl>remap.jis_unify_kana_eisuu_to_commandR</sysctl>
+              <autogen>--JISToggleEisuuKana-- KeyCode::COMMAND_R</autogen>
             </item>
           </list>
         </item>
@@ -1455,6 +1465,7 @@
             <item>
               <name>Use Option_R as KANA/EISUU (toggle)</name>
               <sysctl>remap.jis_unify_kana_eisuu_to_optionR</sysctl>
+              <autogen>--JISToggleEisuuKana-- KeyCode::OPTION_R</autogen>
             </item>
           </list>
         </item>
@@ -1535,6 +1546,7 @@
             <item>
               <name>Use EISUU as KANA/EISUU (toggle)</name>
               <sysctl>remap.jis_unify_kana_to_eisuu</sysctl>
+              <autogen>--JISToggleEisuuKana-- KeyCode::JIS_EISUU</autogen>
             </item>
           </list>
         </item>
@@ -1600,6 +1612,7 @@
             <item>
               <name>Use KANA as KANA/EISUU (toggle)</name>
               <sysctl>remap.jis_unify_eisuu_to_kana</sysctl>
+              <autogen>--JISToggleEisuuKana-- KeyCode::JIS_KANA</autogen>
             </item>
           </list>
         </item>
