@@ -71,18 +71,26 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
+  namespace {
+    void
+    handle_f1_f5_to_consumer(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ConsumerKeyCode::ConsumerKeyCode toKeyCode)
+    {
+      unsigned int flags = allFlagStatus.makeFlags(params);
+      if (flags != 0) return;
+
+      bool is_virtualmachine = ((params.activeApplicationInfo)->is_virtualmachine || (params.activeApplicationInfo)->is_remotedesktopconnection);
+      if (is_virtualmachine && ! config.option_f1_f5_force_vm) return;
+
+      RemapUtil::keyToConsumer(params, fromKeyCode, toKeyCode);
+    }
+  }
+
   void
   remap_f1_to_brightnessdown(const RemapParams &params)
   {
     if (! config.remap_f1_to_brightnessdown) return;
 
-    unsigned int flags = allFlagStatus.makeFlags(params);
-    if (flags != 0) return;
-
-    bool is_virtualmachine = ((params.activeApplicationInfo)->is_virtualmachine || (params.activeApplicationInfo)->is_remotedesktopconnection);
-    if (is_virtualmachine && ! config.option_f1_f5_force_vm) return;
-
-    RemapUtil::keyToConsumer(params, KeyCode::F1, ConsumerKeyCode::BRIGHTNESS_DOWN);
+    handle_f1_f5_to_consumer(params, KeyCode::F1, ConsumerKeyCode::BRIGHTNESS_DOWN);
   }
 
   void
@@ -90,13 +98,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_f2_to_brightnessup) return;
 
-    unsigned int flags = allFlagStatus.makeFlags(params);
-    if (flags != 0) return;
-
-    bool is_virtualmachine = ((params.activeApplicationInfo)->is_virtualmachine || (params.activeApplicationInfo)->is_remotedesktopconnection);
-    if (is_virtualmachine && ! config.option_f1_f5_force_vm) return;
-
-    RemapUtil::keyToConsumer(params, KeyCode::F2, ConsumerKeyCode::BRIGHTNESS_UP);
+    handle_f1_f5_to_consumer(params, KeyCode::F2, ConsumerKeyCode::BRIGHTNESS_UP);
   }
 
   void
@@ -104,13 +106,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_f3_to_volumemute) return;
 
-    unsigned int flags = allFlagStatus.makeFlags(params);
-    if (flags != 0) return;
-
-    bool is_virtualmachine = ((params.activeApplicationInfo)->is_virtualmachine || (params.activeApplicationInfo)->is_remotedesktopconnection);
-    if (is_virtualmachine && ! config.option_f1_f5_force_vm) return;
-
-    RemapUtil::keyToConsumer(params, KeyCode::F3, ConsumerKeyCode::VOLUME_MUTE);
+    handle_f1_f5_to_consumer(params, KeyCode::F3, ConsumerKeyCode::VOLUME_MUTE);
   }
 
   void
@@ -118,13 +114,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_f4_to_volumedown) return;
 
-    unsigned int flags = allFlagStatus.makeFlags(params);
-    if (flags != 0) return;
-
-    bool is_virtualmachine = ((params.activeApplicationInfo)->is_virtualmachine || (params.activeApplicationInfo)->is_remotedesktopconnection);
-    if (is_virtualmachine && ! config.option_f1_f5_force_vm) return;
-
-    RemapUtil::keyToConsumer(params, KeyCode::F4, ConsumerKeyCode::VOLUME_DOWN);
+    handle_f1_f5_to_consumer(params, KeyCode::F4, ConsumerKeyCode::VOLUME_DOWN);
   }
 
   void
@@ -132,13 +122,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_f5_to_volumeup) return;
 
-    unsigned int flags = allFlagStatus.makeFlags(params);
-    if (flags != 0) return;
-
-    bool is_virtualmachine = ((params.activeApplicationInfo)->is_virtualmachine || (params.activeApplicationInfo)->is_remotedesktopconnection);
-    if (is_virtualmachine && ! config.option_f1_f5_force_vm) return;
-
-    RemapUtil::keyToConsumer(params, KeyCode::F5, ConsumerKeyCode::VOLUME_UP);
+    handle_f1_f5_to_consumer(params, KeyCode::F5, ConsumerKeyCode::VOLUME_UP);
   }
 
   // ----------------------------------------
