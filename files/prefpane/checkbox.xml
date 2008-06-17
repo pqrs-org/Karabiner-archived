@@ -516,11 +516,13 @@
           <name>Brightness Down to F1</name>
           <sysctl>remap.brightnessdown2f1</sysctl>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_DOWN, KeyCode::F1</autogen>
+          <autogen>--KeyToKey-- KeyCode::BRIGHTNESS_DOWN, KeyCode::F1</autogen>
         </item>
         <item>
           <name>Brightness Up to F2</name>
           <sysctl>remap.brightnessup2f2</sysctl>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_UP, KeyCode::F2</autogen>
+          <autogen>--KeyToKey-- KeyCode::BRIGHTNESS_UP, KeyCode::F2</autogen>
         </item>
         <item>
           <name>Volume Mute to F3</name>
