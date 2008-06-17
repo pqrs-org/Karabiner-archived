@@ -1365,6 +1365,10 @@
           <name>Enable HHK compatible Arrow Key Mode</name>
           <sysctl>remap.hhkmode</sysctl>
         </item>
+        <item>
+          <name>Enable FN+hjkl at HHK to Left/Down/Up/Right</name>
+          <sysctl>remap.hhkmode_vi_cursor</sysctl>
+        </item>
       </list>
     </item>
 

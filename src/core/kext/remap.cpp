@@ -345,6 +345,17 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_hhkmode_vi_cursor(const RemapParams &params)
+  {
+    if (! config.remap_hhkmode_vi_cursor) return;
+
+    RemapUtil::keyToKey(params, KeyCode::KEYPAD_MULTIPLY, KeyCode::CURSOR_LEFT);
+    RemapUtil::keyToKey(params, KeyCode::KEYPAD_SLASH, KeyCode::CURSOR_DOWN);
+    RemapUtil::keyToKey(params, KeyCode::HOME, KeyCode::CURSOR_UP);
+    RemapUtil::keyToKey(params, KeyCode::PAGEUP, KeyCode::CURSOR_RIGHT);
+  }
+
+  void
   remap_keypadnumlock(const RemapParams &params)
   {
     if (! config.remap_keypadnumlock) return;
@@ -1288,6 +1299,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   // ----------------------------------------
   remap_hhkmode(params);
+  remap_hhkmode_vi_cursor(params);
 
   // ------------------------------------------------------------
   // jis
