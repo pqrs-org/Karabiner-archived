@@ -277,6 +277,11 @@
       <name>Remap Delete Key</name>
       <list>
         <item>
+          <name>Delete to Backquote(`)</name>
+          <sysctl>remap.delete2backquote</sysctl>
+          <autogen>--KeyToKey-- KeyCode::DELETE, KeyCode::BACKQUOTE</autogen>
+        </item>
+        <item>
           <name>Delete to Backslash(\)</name>
           <sysctl>remap.delete2backslash</sysctl>
           <autogen>--KeyToKey-- KeyCode::DELETE, KeyCode::BACKSLASH</autogen>
