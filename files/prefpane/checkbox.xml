@@ -75,6 +75,11 @@
           <name>Backquote(`) to Escape if no modifiers pressed</name>
           <sysctl>remap.backquote2escape_withoutmodifiers</sysctl>
         </item>
+        <item>
+          <name>Backquote(`) to F8</name>
+          <sysctl>remap.backquote2f8</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::F8</autogen>
+        </item>
       </list>
     </item>
 
