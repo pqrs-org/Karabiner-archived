@@ -163,6 +163,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       JIS_UNDERSCORE = 94,
       JIS_EISUU = 102,
       JIS_KANA = 104,
+      JIS_BRACKET_LEFT = 30,
 
       NONE = 255,
     };
