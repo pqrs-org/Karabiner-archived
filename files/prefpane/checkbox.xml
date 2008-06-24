@@ -1651,6 +1651,37 @@
           </list>
         </item>
         <item>
+          <name>Emacs Mode</name>
+          <list>
+            <item>
+              <name>Control+[ to Escape at Japanese Keyboard</name>
+              <sysctl>option.jis_emacsmode_controlLeftbracket</sysctl>
+            </item>
+            <item>
+              <name>Behavior in Emacs, Terminal, X11, VMware, Parallels, RDC</name>
+              <list>
+                <item>
+                  <name>Force remap C-[ to Escape</name>
+                  <list>
+                    <item>
+                      <name>In Emacs, Terminal</name>
+                      <sysctl>option.jis_emacsmode_force_controlLeftbracket_term</sysctl>
+                    </item>
+                    <item>
+                      <name>In X11</name>
+                      <sysctl>option.jis_emacsmode_force_controlLeftbracket_x11</sysctl>
+                    </item>
+                    <item>
+                      <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
+                      <sysctl>option.jis_emacsmode_force_controlLeftbracket_vm</sysctl>
+                    </item>
+                  </list>
+                </item>
+              </list>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Remapping for Applications</name>
           <list>
             <item>

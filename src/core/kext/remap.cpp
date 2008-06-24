@@ -480,6 +480,18 @@ namespace org_pqrs_KeyRemap4MacBook {
           cancel_control = true;
         }
       }
+      // --JIS-- Control+[ -> ESCAPE
+      if (config.option_jis_emacsmode_controlLeftbracket && *(params.key) == KeyCode::JIS_BRACKET_LEFT) {
+        bool doremap = ! ignore;
+        if (is_terminal && config.option_jis_emacsmode_force_controlLeftbracket_term) doremap = true;
+        if (is_x11 && config.option_jis_emacsmode_force_controlLeftbracket_x11) doremap = true;
+        if (is_virtualmachine && config.option_jis_emacsmode_force_controlLeftbracket_vm) doremap = true;
+
+        if (doremap) {
+          *(params.key) = KeyCode::ESCAPE;
+          cancel_control = true;
+        }
+      }
       // Control+PNBF -> UP/Down/Left/Right
       if (config.option_emacsmode_controlPNBF) {
         bool doremap = ! ignore;
