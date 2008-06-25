@@ -34,6 +34,11 @@
           <autogen>--ButtonRelativeToScroll-- PointingButton::MIDDLE</autogen>
         </item>
         <item>
+          <name>MouseButton4+CursorMove to ScrollWheel</name>
+          <sysctl>remap.pointing_relative_mousebutton4_to_scroll</sysctl>
+          <autogen>--ButtonRelativeToScroll-- PointingButton::BUTTON4</autogen>
+        </item>
+        <item>
           <name>FN+CursorMove to ScrollWheel</name>
           <sysctl>remap.pointing_relative_fn_to_scroll</sysctl>
         </item>

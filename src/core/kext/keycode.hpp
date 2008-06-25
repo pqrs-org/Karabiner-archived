@@ -262,6 +262,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       LEFT = 4,
       RIGHT = 1,
       MIDDLE = 2,
+      BUTTON4 = 8,
     };
   }
 }
