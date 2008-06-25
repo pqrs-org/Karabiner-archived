@@ -1214,25 +1214,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     RemapUtil::pointingRelativeToScroll(params);
   }
-
-  void
-  remap_pointing_relative_rightclick_to_scroll(const RemapPointingParams_relative &params)
-  {
-    if (! config.remap_pointing_relative_rightclick_to_scroll) return;
-
-    static bool rightClicked = false;
-
-    if ((*(params.buttons) & PointingButton::RIGHT) == 0) {
-      if (rightClicked) {
-        rightClicked = false;
-        *(params.ex_dropEvent) = true;
-      }
-    } else {
-      rightClicked = true;
-      *(params.ex_dropEvent) = true;
-      RemapUtil::pointingRelativeToScroll(params);
-    }
-  }
 }
 
 // ----------------------------------------------------------------------
@@ -1394,5 +1375,5 @@ org_pqrs_KeyRemap4MacBook::remap_pointing_relative_core(const RemapPointingParam
   }
 
   remap_pointing_relative_fn_to_scroll(params);
-  remap_pointing_relative_rightclick_to_scroll(params);
+#include "config/output/include.remapcode_call_pointing_relative.cpp"
 }
