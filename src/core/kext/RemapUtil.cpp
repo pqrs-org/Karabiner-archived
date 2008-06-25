@@ -1310,6 +1310,22 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ------------------------------------------------------------
   void
+  ButtonRelativeToScroll::remap(const RemapPointingParams_relative &params, PointingButton::PointingButton button)
+  {
+    if ((*(params.buttons) & button) == 0) {
+      if (isButtonHeldDown) {
+        isButtonHeldDown = false;
+        *(params.ex_dropEvent) = true;
+      }
+    } else {
+      isButtonHeldDown = true;
+      *(params.ex_dropEvent) = true;
+      RemapUtil::pointingRelativeToScroll(params);
+    }
+  }
+
+  // ------------------------------------------------------------
+  void
   JISKanaMode::setMode(unsigned int eventType, unsigned int keyCode, unsigned int flags)
   {
     if (eventType != KeyEvent::DOWN) return;

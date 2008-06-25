@@ -64,7 +64,8 @@ while l = $stdin.gets
     when 'remapcode_call'
       if type != 'KeyOverlaidModifier' &&
           type != 'KeyOverlaidModifierCombination' &&
-          type != 'ConsumerToKey' then
+          type != 'ConsumerToKey' &&
+          type != 'ButtonRelativeToScroll' then
         print "GeneratedCode::#{lastName}(params);\n"
       end
 
@@ -80,6 +81,11 @@ while l = $stdin.gets
 
     when 'remapcode_call_consumer'
       if type == 'ConsumerToKey' then
+        print "GeneratedCode::#{lastName}(params);\n"
+      end
+
+    when 'remapcode_call_pointing_relative'
+      if type == 'ButtonRelativeToScroll' then
         print "GeneratedCode::#{lastName}(params);\n"
       end
     end

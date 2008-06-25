@@ -26,6 +26,12 @@
         <item>
           <name>RightClick+CursorMove to ScrollWheel</name>
           <sysctl>remap.pointing_relative_rightclick_to_scroll</sysctl>
+          <autogen>--ButtonRelativeToScroll-- PointingButton::RIGHT</autogen>
+        </item>
+        <item>
+          <name>MiddleClick+CursorMove to ScrollWheel</name>
+          <sysctl>remap.pointing_relative_middleclick_to_scroll</sysctl>
+          <autogen>--ButtonRelativeToScroll-- PointingButton::MIDDLE</autogen>
         </item>
         <item>
           <name>FN+CursorMove to ScrollWheel</name>

@@ -476,6 +476,15 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   extern FirePointingScroll firePointingScroll;
 
+  // ----------------------------------------
+  class ButtonRelativeToScroll {
+  public:
+    void remap(const RemapPointingParams_relative &params, PointingButton::PointingButton button);
+
+  private:
+    bool isButtonHeldDown;
+  };
+
   // --------------------
   class JISKanaMode {
   public:
