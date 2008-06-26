@@ -1721,5 +1721,30 @@
         </item>
       </list>
     </item>
+    <item>
+      <name>For Russian</name>
+      <list>
+        <item>
+          <name>Remap Backquote(`) Key</name>
+          <list>
+            <item>
+              <name>Backquote(`) to Paragraph(§)</name>
+              <sysctl>remap.russian_backquote2paragraph</sysctl>
+              <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::RUSSIAN_PARAGRAPH</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
+          <name>Remap Paragraph(§) Key</name>
+          <list>
+            <item>
+              <name>Paragraph(§) to Backquote(`)</name>
+              <sysctl>remap.russian_paragraph2backquote</sysctl>
+              <autogen>--KeyToKey-- KeyCode::RUSSIAN_PARAGRAPH, KeyCode::BACKQUOTE</autogen>
+            </item>
+          </list>
+        </item>
+      </list>
+    </item>
   </list>
 </root>
