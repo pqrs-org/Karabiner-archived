@@ -1204,7 +1204,7 @@
           <name>Remapping for Spaces</name>
           <list>
             <item>
-              <name>Use Command_R+[A...L] for Spaces</name>
+              <name>Use Command_R+[ASDFGHJKL] for Spaces</name>
               <appendix>(Command+Control+Option+Shift+[1...9])</appendix>
               <sysctl>remap.spaces_special</sysctl>
             </item>
