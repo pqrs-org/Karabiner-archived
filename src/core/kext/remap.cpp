@@ -921,6 +921,16 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
+  remap_app_vm_enter2controlL(const RemapParams &params)
+  {
+    if (! config.remap_app_vm_enter2controlL) return;
+
+    if (! (params.activeApplicationInfo)->is_virtualmachine) return;
+
+    RemapUtil::keyToKey(params, KeyCode::ENTER, KeyCode::CONTROL_L);
+  }
+
+  void
   remap_app_vm_commandspace2optionbackquote(const RemapParams &params)
   {
     static ModifierCanceling mc_commandL;
@@ -1262,6 +1272,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_optionTab2commandTab(params);
 
   // ----------------------------------------
+  remap_app_vm_enter2controlL(params);
   remap_app_vm_commandspace2optionbackquote(params);
   // *** Note: we need to call return2commandO before command_R_to_return, f2_to_return ***
   remap_app_finder_return2commandO(params);

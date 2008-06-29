@@ -1262,6 +1262,10 @@
           <name>Enable at only VMware Fusion, Parallels Desktop</name>
           <list>
             <item>
+              <name>Remap Enter to Control_L</name>
+              <sysctl>remap.app_vm_enter2controlL</sysctl>
+            </item>
+            <item>
               <name>Remap Command+Space to Option+Backquote(`)</name>
               <sysctl>remap.app_vm_commandspace2optionbackquote</sysctl>
             </item>
