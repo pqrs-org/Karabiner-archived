@@ -1126,6 +1126,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_jis_shiftSpace2toggle_kana_eisuu) return;
 
+    if (config.option_jis_shiftSpace2toggle_kana_eisuu_disable_emacs && (params.activeApplicationInfo)->is_emacs) return;
+
     if (! RemapUtil::isKey(params, KeyCode::SPACE)) return;
 
     if (allFlagStatus.isHeldDown_shift()) {
