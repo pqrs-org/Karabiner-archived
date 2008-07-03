@@ -47,6 +47,19 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
+  remap_enter2commandL_enter2controlL_vm(const RemapParams &params)
+  {
+    if (! config.remap_enter2commandL_enter2controlL_vm) return;
+
+    if ((params.activeApplicationInfo)->is_virtualmachine) {
+      RemapUtil::keyToKey(params, KeyCode::ENTER, KeyCode::CONTROL_L);
+    } else {
+      RemapUtil::keyToKey(params, KeyCode::ENTER, KeyCode::COMMAND_L);
+    }
+  }
+
+  // ----------------------------------------
+  void
   remap_fn2controlL_commandR2fn(const RemapParams &params)
   {
     if (! config.remap_fn2controlL_commandR2fn) return;
@@ -1249,6 +1262,8 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   remap_delete2f13_shift2tilde(params);
   remap_shiftDelete2tilde(params);
+
+  remap_enter2commandL_enter2controlL_vm(params);
 
   remap_fn2controlL_commandR2fn(params);
   remap_fn2fn(params);
