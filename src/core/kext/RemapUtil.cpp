@@ -1209,6 +1209,39 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
+  ModifierHoldingKeyToKey::remap(const RemapParams &params, ModifierFlag::ModifierFlag fromFlag, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode)
+  {
+    FlagStatus *fromStatus = allFlagStatus.getFlagStatus(fromFlag);
+    if (fromStatus == NULL) return;
+
+    KeyCode::KeyCode fromFlagKeyCode = fromStatus->getKeyCode();
+    if (*(params.key) == fromFlagKeyCode) {
+      doremap = false;
+      if (fromStatus->isHeldDown()) {
+        first = true;
+        ic.begin();
+        return;
+      }
+    }
+
+    if (first) {
+      first = false;
+      if (ic.checkThreshold(config.general_modifierholdingkeytokey_wait)) {
+        doremap = true;
+      } else {
+        doremap = false;
+      }
+    }
+
+    if (! RemapUtil::isKey(params, fromKeyCode)) return;
+    if (! doremap) return;
+
+    fromStatus->temporary_decrease();
+    RemapUtil::keyToKey(params, fromKeyCode, toKeyCode);
+  }
+
+  // ----------------------------------------
+  void
   ClickWatcher::reset(void)
   {
     for (int i = 0; i < CLICKWATCHER_MAXNUM; ++i) {

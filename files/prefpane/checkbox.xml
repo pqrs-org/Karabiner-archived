@@ -656,6 +656,37 @@
     </item>
 
     <item>
+      <name>Remap Num Key (1...0)</name>
+      <list>
+        <item>
+          <name>Shift_L(Holding)+1 to F1</name>
+          <sysctl>remap.holding_shiftL1_to_f1</sysctl>
+          <autogen>--ModifierHoldingKeyToKey-- ModifierFlag::SHIFT_L, KeyCode::KEY_1, KeyCode::F1</autogen>
+        </item>
+        <item>
+          <name>Shift_L(Holding)+2 to F2</name>
+          <sysctl>remap.holding_shiftL2_to_f2</sysctl>
+          <autogen>--ModifierHoldingKeyToKey-- ModifierFlag::SHIFT_L, KeyCode::KEY_2, KeyCode::F2</autogen>
+        </item>
+        <item>
+          <name>Shift_L(Holding)+3 to F3</name>
+          <sysctl>remap.holding_shiftL3_to_f3</sysctl>
+          <autogen>--ModifierHoldingKeyToKey-- ModifierFlag::SHIFT_L, KeyCode::KEY_3, KeyCode::F3</autogen>
+        </item>
+        <item>
+          <name>Shift_L(Holding)+4 to F4</name>
+          <sysctl>remap.holding_shiftL4_to_f4</sysctl>
+          <autogen>--ModifierHoldingKeyToKey-- ModifierFlag::SHIFT_L, KeyCode::KEY_4, KeyCode::F4</autogen>
+        </item>
+        <item>
+          <name>Shift_L(Holding)+5 to F5</name>
+          <sysctl>remap.holding_shiftL5_to_f5</sysctl>
+          <autogen>--ModifierHoldingKeyToKey-- ModifierFlag::SHIFT_L, KeyCode::KEY_5, KeyCode::F5</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>Remap Option_L Key</name>
       <list>
         <item>

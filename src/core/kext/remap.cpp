@@ -1357,6 +1357,9 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_app_term_commandL2optionL(params);
 
   // ------------------------------------------------------------
+#include "config/output/include.remapcode_call_mhkk.cpp"
+
+  // ------------------------------------------------------------
   // *** we need to handle KeyOverlaidModifierCombination at last. ***
 #include "config/output/include.remapcode_call_komc.cpp"
 

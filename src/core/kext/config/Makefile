@@ -11,6 +11,7 @@ all:
 	cat $(SYSCTL_FILE) | ruby ./make-code.rb remapcode_call > output/include.remapcode_call.cpp
 	cat $(SYSCTL_FILE) | ruby ./make-code.rb remapcode_call_kom > output/include.remapcode_call_kom.cpp
 	cat $(SYSCTL_FILE) | ruby ./make-code.rb remapcode_call_komc > output/include.remapcode_call_komc.cpp
+	cat $(SYSCTL_FILE) | ruby ./make-code.rb remapcode_call_mhkk > output/include.remapcode_call_mhkk.cpp
 	cat $(SYSCTL_FILE) | ruby ./make-code.rb remapcode_call_consumer > output/include.remapcode_call_consumer.cpp
 	cat $(SYSCTL_FILE) | ruby ./make-code.rb remapcode_call_pointing_relative > output/include.remapcode_call_pointing_relative.cpp
 
