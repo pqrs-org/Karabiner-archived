@@ -478,7 +478,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     uint32_t m;
     clock_get_system_microtime(&s, &m);
 
-    uint32_t interval = (s - secs) * 1000 + (m - microsecs) / 1000;
+    uint32_t interval = static_cast<int>(s - secs) * 1000 + static_cast<int>(m - microsecs) / 1000;
     return interval >= millisec;
   }
 
