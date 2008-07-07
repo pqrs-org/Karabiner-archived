@@ -20,6 +20,12 @@
       <baseunit>ms</baseunit>
     </item>
     <item>
+      <name>[Modifier Holding Key to Key] Holding Threshold</name>
+      <sysctl>general.modifierholdingkeytokey_wait</sysctl>
+      <default>1000</default>
+      <baseunit>ms</baseunit>
+    </item>
+    <item>
       <name>[Pointing Device] CursorMove to ScrollWheel Rate</name>
       <sysctl>pointing.relative2scroll_rate</sysctl>
       <default>150</default>

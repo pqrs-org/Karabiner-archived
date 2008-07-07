@@ -299,6 +299,17 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool isSendKeyRelease;
   };
 
+  // --------------------
+  class IntervalChecker {
+  public:
+    void begin(void);
+    bool checkThreshold(uint32_t millisec);
+
+  private:
+    uint32_t secs;
+    uint32_t microsecs;
+  };
+
   // ----------------------------------------------------------------------
   namespace FireFunc {
     typedef void (*FireFunc)(const RemapParams &params);
@@ -375,6 +386,19 @@ namespace org_pqrs_KeyRemap4MacBook {
     int pressCount;
   };
 
+  // ----------------------------------------
+  // Modifier Holding + Key -> Key
+  class ModifierHoldingKeyToKey {
+  public:
+    void remap(const RemapParams &params, ModifierFlag::ModifierFlag fromFlag, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode);
+
+  private:
+    IntervalChecker ic;
+    bool doremap;
+    bool first;
+  };
+
+
   // ----------------------------------------------------------------------
   class ClickWatcher {
   public:
@@ -391,17 +415,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool *watchlist[CLICKWATCHER_MAXNUM];
   };
   extern ClickWatcher clickWatcher;
-
-  // --------------------
-  class IntervalChecker {
-  public:
-    void begin(void);
-    bool checkThreshold(uint32_t millisec);
-
-  private:
-    uint32_t secs;
-    uint32_t microsecs;
-  };
 
   // --------------------
   class PointingButtonStatus {
