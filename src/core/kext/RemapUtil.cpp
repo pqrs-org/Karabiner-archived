@@ -1217,11 +1217,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     KeyCode::KeyCode fromFlagKeyCode = fromStatus->getKeyCode();
     if (*(params.key) == fromFlagKeyCode) {
       doremap = false;
-      if (fromStatus->isHeldDown()) {
-        first = true;
-        ic.begin();
-        return;
-      }
+      first = fromStatus->isHeldDown();
+      ic.begin();
+      return;
     }
 
     if (first) {
