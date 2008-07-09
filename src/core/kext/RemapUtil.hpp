@@ -354,6 +354,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   private:
     bool useAsModifier;
     bool isClick;
+    IntervalChecker ic;
   };
 
   // ----------------------------------------

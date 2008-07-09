@@ -1121,6 +1121,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (isKeyDown) {
       useAsModifier = false;
       clickWatcher.set(&isClick);
+      ic.begin();
 
       if (extraRepeatFunc) {
         FlagStatus *status = allFlagStatus.getFlagStatus(toFlag);
@@ -1137,7 +1138,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     } else {
       if (useAsModifier == false && isClick == false) {
         if (extraRepeatFunc == NULL || params.ex_extraRepeatCounter == 0) {
-          firefunc(params);
+          if (config.parameter_keyoverlaidmodifier_timeout <= 0 || ic.checkThreshold(config.parameter_keyoverlaidmodifier_timeout) == false) {
+            firefunc(params);
+          }
         }
       }
       clickWatcher.unset(&isClick);
@@ -1225,7 +1228,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (first) {
       first = false;
-      if (ic.checkThreshold(config.general_modifierholdingkeytokey_wait)) {
+      if (ic.checkThreshold(config.parameter_modifierholdingkeytokey_wait)) {
         doremap = true;
       } else {
         doremap = false;
