@@ -14,6 +14,12 @@
       <baseunit>ms</baseunit>
     </item>
     <item>
+      <name>[Key Overlaid Modifier] Timeout</name>
+      <sysctl>parameter.keyoverlaidmodifier_timeout</sysctl>
+      <default>1000</default>
+      <baseunit>ms</baseunit>
+    </item>
+    <item>
       <name>[Key Overlaid Modifier's Key Repeat] Initial Wait</name>
       <sysctl>repeat.keyoverlaidmodifier_initial_wait</sysctl>
       <default>500</default>
@@ -21,7 +27,7 @@
     </item>
     <item>
       <name>[Modifier Holding Key to Key] Holding Threshold</name>
-      <sysctl>general.modifierholdingkeytokey_wait</sysctl>
+      <sysctl>parameter.modifierholdingkeytokey_wait</sysctl>
       <default>1000</default>
       <baseunit>ms</baseunit>
     </item>

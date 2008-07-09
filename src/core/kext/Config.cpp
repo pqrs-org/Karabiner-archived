@@ -29,6 +29,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   SYSCTL_DECL(_keyremap4macbook_pointing);
   SYSCTL_NODE(_keyremap4macbook, OID_AUTO, pointing, CTLFLAG_RW, 0, "");
 
+  SYSCTL_DECL(_keyremap4macbook_parameter);
+  SYSCTL_NODE(_keyremap4macbook, OID_AUTO, parameter, CTLFLAG_RW, 0, "");
+
 #include "config/output/include.config_SYSCTL.cpp"
 
   // ----------------------------------------
@@ -48,6 +51,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_register_oid(&sysctl__keyremap4macbook_option);
     sysctl_register_oid(&sysctl__keyremap4macbook_repeat);
     sysctl_register_oid(&sysctl__keyremap4macbook_pointing);
+    sysctl_register_oid(&sysctl__keyremap4macbook_parameter);
 
     // ----------------------------------------
 #include "config/output/include.config_register.cpp"
@@ -68,6 +72,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_unregister_oid(&sysctl__keyremap4macbook_option);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_repeat);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_pointing);
+    sysctl_unregister_oid(&sysctl__keyremap4macbook_parameter);
 
     // ----------------------------------------
 #include "config/output/include.config_unregister.cpp"
