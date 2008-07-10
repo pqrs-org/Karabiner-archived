@@ -865,6 +865,12 @@
           <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L, FireFunc::firefunc_space</autogen>
         </item>
         <item>
+          <name>Shift_L to Shift_L</name>
+          <appendix>(+ When you type shiftL only, send Space) + [KeyRepeat]</appendix>
+          <sysctl>remap.shiftL2shiftL_space_keyrepeat</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L, FireFunc::firefunc_space, ExtraRepeatFunc::extraRepeatFunc_space</autogen>
+        </item>
+        <item>
           <name>Shift_L to Option_L</name>
           <sysctl>remap.shiftL2optionL</sysctl>
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::OPTION_L</autogen>
@@ -915,6 +921,12 @@
           <appendix>(+ When you type Shift_R only, send Backslash)</appendix>
           <sysctl>remap.shiftR2shiftR_backslash</sysctl>
           <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R, FireFunc::firefunc_backslash</autogen>
+        </item>
+        <item>
+          <name>Shift_R to Shift_R</name>
+          <appendix>(+ When you type shiftR only, send Space)</appendix>
+          <sysctl>remap.shiftR2shiftR_space</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R, FireFunc::firefunc_space</autogen>
         </item>
         <item>
           <name>Shift_R to Shift_R</name>
