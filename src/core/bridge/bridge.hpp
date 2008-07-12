@@ -15,28 +15,30 @@ namespace KeyRemap4MacBook_bridge {
   };
 
   namespace ActiveApplicationInfo {
+    enum ApplicationType {
+      UNKNOWN,
+      EMACS, // Carbon Emacs, Aquamacs, ...
+      VI, // Vim, ...
+      TERMINAL, // Terminal.app, iTerm.app, ...
+      VIRTUALMACHINE, // VMware, Parallels, ...
+      REMOTEDESKTOPCONNECTION, // Microsoft Remote Desktop Connection, Cord, ...
+      X11,
+      FINDER,
+      SAFARI,
+      FIREFOX,
+      ICHAT, // iChat
+      ADIUMX,
+      SKYPE,
+      MAIL, // Mail.app
+      EDITOR, // TextEdit
+    };
+
     // none
     struct Request {
     };
 
     struct Reply {
-      bool is_emacs; // Carbon Emacs, ...
-      bool is_vi; // Vim, ...
-      bool is_terminal; // Terminal.app, iTerm.app, ...
-      bool is_virtualmachine; // VMware, Parallels, ...
-      bool is_remotedesktopconnection; // Microsoft Remote Desktop Connection
-      bool is_x11; // X11, ...
-      bool is_finder;
-
-      void reset(void) {
-        is_emacs = false;
-        is_vi = false;
-        is_terminal = false;
-        is_virtualmachine = false;
-        is_remotedesktopconnection = false;
-        is_x11 = false;
-        is_finder = false;
-      }
+      ApplicationType type;
     };
   }
 }

@@ -1815,6 +1815,11 @@
               <name>Use KAWASHIMA Special Keyboard Layout</name>
               <sysctl>remap.jis_layout_kawashima</sysctl>
             </item>
+            <item>
+              <name>Use Windows Kana-Input Layout on ASCII Keyboard</name>
+              <sysctl>remap.jis_layout_windowskanainput</sysctl>
+            </item>
+          </list>
           </list>
         </item>
       </list>

@@ -692,7 +692,6 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardEventCallBack(OSObject *target,
   org_pqrs_KeyRemap4MacBook::listFirePointingClick.reset();
 
   bool ex_dropKey = false;
-  KeyRemap4MacBook_bridge::ActiveApplicationInfo::Reply activeApplicationInfo;
   unsigned int ex_extraRepeatFlags = 0;
   org_pqrs_KeyRemap4MacBook::ExtraRepeatFunc::ExtraRepeatFunc ex_extraRepeatFunc = NULL;
 
@@ -700,7 +699,7 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardEventCallBack(OSObject *target,
     &eventType, &flags, &key, &charCode, &charSet,
     &origCharCode, &origCharSet, &keyboardType, &ts,
     &ex_dropKey, key,
-    &activeApplicationInfo,
+    KeyRemap4MacBook_bridge::ActiveApplicationInfo::UNKNOWN,
     &ex_extraRepeatFunc,
     &ex_extraRepeatFlags,
     (p->extraRepeat).counter,
@@ -716,9 +715,10 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardEventCallBack(OSObject *target,
     skip = true;
   }
   if (! skip) {
+    KeyRemap4MacBook_bridge::ActiveApplicationInfo::Reply activeApplicationInfo;
     int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_ACTIVE_APPLICATION_INFO, NULL, 0, &activeApplicationInfo, sizeof(activeApplicationInfo));
-    if (error) {
-      activeApplicationInfo.reset();
+    if (error == 0) {
+      params.appType = activeApplicationInfo.type;
     }
     org_pqrs_KeyRemap4MacBook::remap_core(params);
   }

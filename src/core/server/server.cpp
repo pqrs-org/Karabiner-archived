@@ -195,34 +195,56 @@ KeyRemap4MacBook_server::Server::do_ActiveApplicationInfo(KeyRemap4MacBook_bridg
   char applicationName[128];
   getActiveApplicationName(applicationName, sizeof(applicationName));
 
-  reply->reset();
+  reply->type = KeyRemap4MacBook_bridge::ActiveApplicationInfo::UNKNOWN;
+
+  const char *org_vim = "org.vim.";
 
   if (strcmp(applicationName, "org.gnu.Emacs") == 0 ||
       strcmp(applicationName, "org.gnu.AquamacsEmacs") == 0) {
-    reply->is_emacs = true;
-  }
-  const char *org_vim = "org.vim.";
-  if (strncmp(applicationName, org_vim, strlen(org_vim)) == 0) {
-    reply->is_vi = true;
-  }
-  if (strcmp(applicationName, "com.apple.Terminal") == 0 ||
-      strcmp(applicationName, "iTerm") == 0) {
-    reply->is_terminal = true;
-  }
-  if (strcmp(applicationName, "com.vmware.fusion") == 0 ||
-      strcmp(applicationName, "com.parallels.desktop") == 0) {
-    reply->is_virtualmachine = true;
-  }
-  if (strcmp(applicationName, "com.microsoft.rdc") == 0 ||
-      strcmp(applicationName, "net.sf.cord") == 0) {
-    reply->is_remotedesktopconnection = true;
-  }
-  if (strcmp(applicationName, "org.x.X11") == 0 ||
-      strcmp(applicationName, "com.apple.x11") == 0) {
-    reply->is_x11 = true;
-  }
-  if (strcmp(applicationName, "com.apple.finder") == 0) {
-    reply->is_finder = true;
+    reply->type = KeyRemap4MacBook_bridge::ActiveApplicationInfo::EMACS;
+
+  } else if (strncmp(applicationName, org_vim, strlen(org_vim)) == 0) {
+    reply->type = KeyRemap4MacBook_bridge::ActiveApplicationInfo::VI;
+
+  } else if (strcmp(applicationName, "com.apple.Terminal") == 0 ||
+             strcmp(applicationName, "iTerm") == 0) {
+    reply->type = KeyRemap4MacBook_bridge::ActiveApplicationInfo::TERMINAL;
+
+  } else if (strcmp(applicationName, "com.vmware.fusion") == 0 ||
+             strcmp(applicationName, "com.parallels.desktop") == 0) {
+    reply->type = KeyRemap4MacBook_bridge::ActiveApplicationInfo::VIRTUALMACHINE;
+
+  } else if (strcmp(applicationName, "com.microsoft.rdc") == 0 ||
+             strcmp(applicationName, "net.sf.cord") == 0) {
+    reply->type = KeyRemap4MacBook_bridge::ActiveApplicationInfo::REMOTEDESKTOPCONNECTION;
+
+  } else if (strcmp(applicationName, "org.x.X11") == 0 ||
+             strcmp(applicationName, "com.apple.x11") == 0) {
+    reply->type = KeyRemap4MacBook_bridge::ActiveApplicationInfo::X11;
+
+  } else if (strcmp(applicationName, "com.apple.finder") == 0) {
+    reply->type = KeyRemap4MacBook_bridge::ActiveApplicationInfo::FINDER;
+
+  } else if (strcmp(applicationName, "com.apple.Safari") == 0) {
+    reply->type = KeyRemap4MacBook_bridge::ActiveApplicationInfo::SAFARI;
+
+  } else if (strcmp(applicationName, "org.mozilla.firefox") == 0) {
+    reply->type = KeyRemap4MacBook_bridge::ActiveApplicationInfo::FIREFOX;
+
+  } else if (strcmp(applicationName, "com.apple.iChat") == 0) {
+    reply->type = KeyRemap4MacBook_bridge::ActiveApplicationInfo::ICHAT;
+
+  } else if (strcmp(applicationName, "com.adiumX.adiumX") == 0) {
+    reply->type = KeyRemap4MacBook_bridge::ActiveApplicationInfo::ADIUMX;
+
+  } else if (strcmp(applicationName, "com.skype.skype") == 0) {
+    reply->type = KeyRemap4MacBook_bridge::ActiveApplicationInfo::SKYPE;
+
+  } else if (strcmp(applicationName, "com.apple.mail") == 0) {
+    reply->type = KeyRemap4MacBook_bridge::ActiveApplicationInfo::MAIL;
+
+  } else if (strcmp(applicationName, "com.apple.TextEdit") == 0) {
+    reply->type = KeyRemap4MacBook_bridge::ActiveApplicationInfo::EDITOR;
   }
 
   return KeyRemap4MacBook_bridge::SUCCESS;
