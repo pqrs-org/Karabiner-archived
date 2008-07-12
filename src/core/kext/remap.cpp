@@ -51,7 +51,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_enter2commandL_enter2controlL_vm) return;
 
-    if ((params.activeApplicationInfo)->is_virtualmachine) {
+    if (params.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::VIRTUALMACHINE) {
       RemapUtil::keyToKey(params, KeyCode::ENTER, KeyCode::CONTROL_L);
     } else {
       RemapUtil::keyToKey(params, KeyCode::ENTER, KeyCode::COMMAND_L);
@@ -91,7 +91,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       unsigned int flags = allFlagStatus.makeFlags(params);
       if (flags != 0) return;
 
-      bool is_virtualmachine = ((params.activeApplicationInfo)->is_virtualmachine || (params.activeApplicationInfo)->is_remotedesktopconnection);
+      bool is_virtualmachine = false;
+      if (params.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::VIRTUALMACHINE) is_virtualmachine = true;
+      if (params.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::REMOTEDESKTOPCONNECTION) is_virtualmachine = true;
+
       if (is_virtualmachine && ! config.option_f1_f5_force_vm) return;
 
       RemapUtil::keyToConsumer(params, fromKeyCode, toKeyCode);
@@ -406,8 +409,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_pclikehomeend) return;
 
-    if ((params.activeApplicationInfo)->is_virtualmachine ||
-        (params.activeApplicationInfo)->is_remotedesktopconnection) return;
+    if (params.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::VIRTUALMACHINE) return;
+    if (params.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::REMOTEDESKTOPCONNECTION) return;
 
     RemapUtil::keyToKeyWithModifier(params, KeyCode::HOME, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L);
     RemapUtil::keyToKeyWithModifier(params, KeyCode::END, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L);
@@ -424,9 +427,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     static ModifierCanceling mc_optionL;
     static ModifierCanceling mc_optionR;
 
-    bool is_terminal = ((params.activeApplicationInfo)->is_emacs || (params.activeApplicationInfo)->is_terminal);
-    bool is_virtualmachine = ((params.activeApplicationInfo)->is_virtualmachine || (params.activeApplicationInfo)->is_remotedesktopconnection);
-    bool is_x11 = ((params.activeApplicationInfo)->is_x11);
+    bool is_terminal = false;
+    if (params.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::EMACS) is_terminal = true;
+    if (params.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::TERMINAL) is_terminal = true;
+    bool is_virtualmachine = false;
+    if (params.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::VIRTUALMACHINE) is_virtualmachine = true;
+    if (params.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::REMOTEDESKTOPCONNECTION) is_virtualmachine = true;
+    bool is_x11 = (params.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::X11);
 
     bool ignore = is_terminal || is_virtualmachine || is_x11;
 
@@ -938,7 +945,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_app_vm_enter2controlL) return;
 
-    if (! (params.activeApplicationInfo)->is_virtualmachine) return;
+    if (params.appType != KeyRemap4MacBook_bridge::ActiveApplicationInfo::VIRTUALMACHINE) return;
 
     RemapUtil::keyToKey(params, KeyCode::ENTER, KeyCode::CONTROL_L);
   }
@@ -953,7 +960,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     //  "Remote Desktop Connection" has the self remapping feature.
     // Our targets are VMware, Parallels only.
-    if (! (params.activeApplicationInfo)->is_virtualmachine) return;
+    if (params.appType != KeyRemap4MacBook_bridge::ActiveApplicationInfo::VIRTUALMACHINE) return;
 
     if (allFlagStatus.isHeldDown_command()) {
       bool cancel_command = false;
@@ -983,7 +990,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_app_finder_command_R_to_return) return;
 
-    if (! (params.activeApplicationInfo)->is_finder) return;
+    if (params.appType != KeyRemap4MacBook_bridge::ActiveApplicationInfo::FINDER) return;
 
     static KeyWithModifierToKey kwmk_l;
     static KeyWithModifierToKey kwmk_r;
@@ -997,7 +1004,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_app_finder_f2_to_return) return;
 
-    if (! (params.activeApplicationInfo)->is_finder) return;
+    if (params.appType != KeyRemap4MacBook_bridge::ActiveApplicationInfo::FINDER) return;
 
     RemapUtil::keyToKey(params, KeyCode::F2, KeyCode::RETURN);
   }
@@ -1007,7 +1014,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_app_finder_return2commandO) return;
 
-    if (! (params.activeApplicationInfo)->is_finder) return;
+    if (params.appType != KeyRemap4MacBook_bridge::ActiveApplicationInfo::FINDER) return;
 
     if (*(params.key) == KeyCode::RETURN) {
       if (*(params.eventType) == KeyEvent::DOWN) {
@@ -1022,7 +1029,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_app_term_commandL2optionL) return;
 
-    if (! (params.activeApplicationInfo)->is_terminal) return;
+    if (params.appType != KeyRemap4MacBook_bridge::ActiveApplicationInfo::TERMINAL) return;
 
     if (*(params.key) == KeyCode::COMMAND_L) {
       unsigned int flags = allFlagStatus.makeFlags(params);
@@ -1092,10 +1099,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_jis_eisuu2commandL_eisuu_eisuu2optionL_term) return;
 
     FireFunc::FireFunc func = FireFunc::firefunc_jis_eisuu;
-    if ((params.activeApplicationInfo)->is_virtualmachine) func = FireFunc::firefunc_nop;
+    if (params.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::VIRTUALMACHINE) func = FireFunc::firefunc_nop;
 
     static KeyOverlaidModifier kom;
-    if ((params.activeApplicationInfo)->is_terminal) {
+    if (params.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::TERMINAL) {
       kom.remap(params, KeyCode::JIS_EISUU, ModifierFlag::OPTION_L, func);
     } else {
       kom.remap(params, KeyCode::JIS_EISUU, ModifierFlag::COMMAND_L, func);
@@ -1149,7 +1156,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_jis_shiftSpace2toggle_kana_eisuu) return;
 
-    if (config.option_jis_shiftSpace2toggle_kana_eisuu_disable_emacs && (params.activeApplicationInfo)->is_emacs) return;
+    if (config.option_jis_shiftSpace2toggle_kana_eisuu_disable_emacs && params.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::EMACS) return;
 
     if (! RemapUtil::isKey(params, KeyCode::SPACE)) return;
 
@@ -1168,7 +1175,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_jis_app_vi_eisuu2eisuu_escape) return;
 
-    if (! (params.activeApplicationInfo)->is_vi) return;
+    if (params.appType != KeyRemap4MacBook_bridge::ActiveApplicationInfo::VI) return;
 
     if (params.ex_origKey == KeyCode::JIS_EISUU) {
       if (*(params.eventType) == KeyEvent::DOWN) {
@@ -1210,6 +1217,27 @@ namespace org_pqrs_KeyRemap4MacBook {
                                        KeyCode::E, CharCode::E, KeyCode::NONE, CharCode::NONE,
                                        KeyCode::A, CharCode::A, KeyCode::BRACKET_LEFT, CharCode::BRACKET_LEFT,
                                        KeyCode::A, CharCode::A, KeyCode::NONE, CharCode::NONE);
+  }
+
+  void
+  remap_jis_layout_windowskanainput(const RemapParams &params)
+  {
+    if (! config.remap_jis_layout_windowskanainput) return;
+
+    if (jisKanaMode.getMode() == JISKanaMode::JISKANAMODE_ASCII) return;
+
+    unsigned int flags = allFlagStatus.makeFlags(params);
+
+    if (allFlagStatus.isHeldDown_shift()) {
+      RemapUtil::keyToKey(params, KeyCode::MINUS, KeyCode::BRACKET_RIGHT);
+      RemapUtil::keyToKey(params, KeyCode::BRACKET_RIGHT, KeyCode::BRACKET_LEFT);
+      RemapUtil::keyToKey(params, KeyCode::BRACKET_LEFT, KeyCode::EQUAL);
+      RemapUtil::keyToKey(params, KeyCode::EQUAL, KeyCode::MINUS);
+    } else {
+      RemapUtil::keyToKey(params, KeyCode::BRACKET_RIGHT, KeyCode::EQUAL);
+      RemapUtil::keyToKey(params, KeyCode::EQUAL, KeyCode::BACKSLASH);
+      RemapUtil::keyToKey(params, KeyCode::BACKSLASH, KeyCode::BRACKET_RIGHT);
+    }
   }
 
   // ------------------------------------------------------------
@@ -1319,6 +1347,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   remap_jis_jansi(params);
   remap_jis_layout_kawashima(params);
+  remap_jis_layout_windowskanainput(params);
 
   // ------------------------------------------------------------
   // *** Note: we need to call remap_drop_funcshift after tab2f9, pc_application2f11, ... ***

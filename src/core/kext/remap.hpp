@@ -18,7 +18,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     AbsoluteTime *ts;
     bool *ex_dropKey;
     unsigned int ex_origKey;
-    KeyRemap4MacBook_bridge::ActiveApplicationInfo::Reply *activeApplicationInfo;
+    KeyRemap4MacBook_bridge::ActiveApplicationInfo::ApplicationType appType;
     ExtraRepeatFunc::ExtraRepeatFunc *ex_extraRepeatFunc;
     unsigned int *ex_extraRepeatFlags;
     unsigned int ex_extraRepeatCounter;
