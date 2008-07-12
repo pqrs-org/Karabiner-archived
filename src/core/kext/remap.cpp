@@ -1226,8 +1226,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (jisKanaMode.getMode() == JISKanaMode::JISKANAMODE_ASCII) return;
 
-    unsigned int flags = allFlagStatus.makeFlags(params);
-
     if (allFlagStatus.isHeldDown_shift()) {
       RemapUtil::keyToKey(params, KeyCode::MINUS, KeyCode::BRACKET_RIGHT);
       RemapUtil::keyToKey(params, KeyCode::BRACKET_RIGHT, KeyCode::BRACKET_LEFT);
