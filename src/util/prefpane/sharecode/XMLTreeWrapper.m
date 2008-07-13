@@ -16,6 +16,8 @@
 {
   NSURL *url = [NSURL fileURLWithPath:path];
 
+  if (_XMLDocument) [_XMLDocument release];
+
   _XMLDocument = [[NSXMLDocument alloc] initWithContentsOfURL:url options:0 error:NULL];
   if (_XMLDocument == nil) return FALSE;
   return TRUE;
@@ -66,6 +68,11 @@
   if ([a count] == 0) return nil;
 
   return [a objectAtIndex:0];
+}
+
+- (NSXMLElement *) getRoot
+{
+  return [_XMLDocument rootElement];
 }
 
 @end

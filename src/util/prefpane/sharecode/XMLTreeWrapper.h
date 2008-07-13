@@ -14,5 +14,6 @@
 - (id) getChild:(id)item index:(int)index;
 - (BOOL) isItemExpandable:(id)item;
 - (NSXMLNode *) getNode:(NSXMLNode *)node xpath:(NSString *)xpath;
+- (NSXMLElement *) getRoot;
 
 @end
