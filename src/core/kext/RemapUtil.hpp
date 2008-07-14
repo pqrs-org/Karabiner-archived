@@ -64,7 +64,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     void fireKeyWithModifiers(const RemapParams &params, unsigned int flags, unsigned int eventType, unsigned int keyCode, unsigned int charCode);
     bool keypad2spaces(const RemapParams &params);
-    inline bool key2spaces(const RemapParams &params,
+    inline bool key2spaces(const RemapParams &params, unsigned int flags,
                            KeyCode::KeyCode key1, KeyCode::KeyCode key2, KeyCode::KeyCode key3,
                            KeyCode::KeyCode key4, KeyCode::KeyCode key5, KeyCode::KeyCode key6,
                            KeyCode::KeyCode key7, KeyCode::KeyCode key8, KeyCode::KeyCode key9,
@@ -91,9 +91,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (RemapUtil::isKey(params, key10)) { keyCode = KeyCode::KEY_0; charCode = CharCode::KEY_0; }
 
       if (keyCode != KeyCode::NONE) {
-        RemapUtil::fireKeyWithModifiers(params,
-                                        (ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L),
-                                        *(params.eventType), keyCode, charCode);
+        RemapUtil::fireKeyWithModifiers(params, flags, *(params.eventType), keyCode, charCode);
         *(params.ex_dropKey) = true;
         return true;
       }
@@ -107,9 +105,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (RemapUtil::isKey(params, key16)) { keyCode = KeyCode::KEY_6; charCode = CharCode::KEY_6; }
 
       if (keyCode != KeyCode::NONE) {
-        RemapUtil::fireKeyWithModifiers(params,
-                                        (ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L),
-                                        *(params.eventType), keyCode, charCode);
+        RemapUtil::fireKeyWithModifiers(params, flags | ModifierFlag::OPTION_L, *(params.eventType), keyCode, charCode);
         *(params.ex_dropKey) = true;
         return true;
       }
