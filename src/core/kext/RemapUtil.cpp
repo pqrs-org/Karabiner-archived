@@ -388,6 +388,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       ModifierFlag::ModifierFlag m = targetModifiers[i];
       if (RemapUtil::isModifierOn(flags, m)) {
         FlagStatus *status = allFlagStatus.getFlagStatus(m);
+        if (! status) continue;
+
         status->temporary_increase();
 
         if (eventType == KeyEvent::DOWN) {
@@ -409,6 +411,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         ModifierFlag::ModifierFlag m = targetModifiers[i];
         if (RemapUtil::isModifierOn(flags, m)) {
           FlagStatus *status = allFlagStatus.getFlagStatus(m);
+          if (! status) continue;
+
           status->temporary_decrease();
           tmpflags = allFlagStatus.makeFlags(params);
           listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, tmpflags, RemapUtil::getModifierKeyCode(m), 0);
