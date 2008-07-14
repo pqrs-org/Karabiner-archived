@@ -11,9 +11,7 @@
 				<string>id</string>
 				<key>expandALL</key>
 				<string>id</string>
-				<key>search</key>
-				<string>id</string>
-				<key>toggleShowEnabled</key>
+				<key>filter</key>
 				<string>id</string>
 			</dict>
 			<key>CLASS</key>
@@ -25,6 +23,8 @@
 				<key>_outlineView_checkbox</key>
 				<string>id</string>
 				<key>_searchText</key>
+				<string>id</string>
+				<key>_showEnabledOnly</key>
 				<string>id</string>
 			</dict>
 			<key>SUPERCLASS</key>

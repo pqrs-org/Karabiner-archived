@@ -34,7 +34,7 @@ static NSString *xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
 }
 
 // ------------------------------------------------------------
-- (BOOL) checkNodeChecked:(NSXMLNode *)node
+- (BOOL) filter_sysctl:(NSXMLNode *)node
 {
   NSXMLNode *sysctl = [_xmlTreeWrapper getNode:node xpath:@"sysctl"];
 
@@ -47,55 +47,7 @@ static NSString *xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
   return FALSE;
 }
 
-- (BOOL) checkAnyChildrenChecked:(NSXMLNode *)node
-{
-  NSArray *a = [node nodesForXPath:@"list/item" error:NULL];
-  if (a == nil) return FALSE;
-  if ([a count] == 0) return FALSE;
-
-  NSEnumerator *enumerator = [a objectEnumerator];
-  NSXMLNode *n;
-  while (n = [enumerator nextObject]) {
-    if ([self checkAnyChildrenChecked:n]) return TRUE;
-    if ([self checkNodeChecked:n]) return TRUE;
-  }
-
-  return FALSE;
-}
-
-- (void) showEnabledOnly:(NSXMLElement *)node
-{
-  NSArray *a = [node nodesForXPath:@"list/item" error:NULL];
-
-  NSEnumerator *enumerator = [a objectEnumerator];
-  NSXMLElement *n;
-  while (n = [enumerator nextObject]) {
-    if ([self checkNodeChecked:n] || [self checkAnyChildrenChecked:n]) {
-      [self showEnabledOnly:n];
-    } else {
-      [n detach];
-    }
-  }
-}
-
-- (IBAction) toggleShowEnabled:(id)sender
-{
-  [_xmlTreeWrapper load:xmlpath];
-
-  static BOOL showEnabledOnly = FALSE;
-  showEnabledOnly = ! showEnabledOnly;
-  if (! showEnabledOnly) {
-    [_outlineView_checkbox reloadData];
-    return;
-  }
-
-  [self showEnabledOnly:[_xmlTreeWrapper getRoot]];
-  [_outlineView_checkbox reloadData];
-  [BUNDLEPREFIX_OutlineViewUtil expandALL:_outlineView_checkbox];
-}
-
-// ----------------------------------------
-- (BOOL) checkNodeSearchHit:(NSXMLNode *)node search:(NSString *)search
+- (BOOL) filter_search:(NSXMLNode *)node search:(NSString *)search
 {
   NSXMLNode *text = [_xmlTreeWrapper getNode:node xpath:@"name"];
   if (text && [[[text stringValue] lowercaseString] rangeOfString:search].location != NSNotFound) return TRUE;
@@ -106,7 +58,7 @@ static NSString *xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
   return FALSE;
 }
 
-- (BOOL) checkAnyChildrenSearchHit:(NSXMLNode *)node search:(NSString *)search
+- (BOOL) filter_checkChildren:(NSXMLNode *)node sysctl:(BOOL)sysctl search:(NSString *)search
 {
   NSArray *a = [node nodesForXPath:@"list/item" error:NULL];
   if (a == nil) return FALSE;
@@ -115,45 +67,63 @@ static NSString *xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
   NSEnumerator *enumerator = [a objectEnumerator];
   NSXMLNode *n;
   while (n = [enumerator nextObject]) {
-    if ([self checkAnyChildrenSearchHit:n search:search]) return TRUE;
-    if ([self checkNodeSearchHit:n search:search]) return TRUE;
+    if ([self filter_checkChildren:n sysctl:sysctl search:search]) return TRUE;
+    if (sysctl != nil) {
+      if ([self filter_sysctl:n]) return TRUE;
+    }
+    if (search != nil) {
+      if ([self filter_search:n search:search]) return TRUE;
+    }
   }
 
   return FALSE;
 }
 
-
-- (IBAction) showSearchHitOnly:(NSXMLElement *)node search:(NSString *)search
+- (void) filter_core:(NSXMLElement *)node sysctl:(BOOL)sysctl search:(NSString *)search
 {
   NSArray *a = [node nodesForXPath:@"list/item" error:NULL];
 
   NSEnumerator *enumerator = [a objectEnumerator];
   NSXMLElement *n;
   while (n = [enumerator nextObject]) {
-    if ([self checkNodeSearchHit:n search:search] || [self checkAnyChildrenSearchHit:n search:search]) {
-      [self showSearchHitOnly:n search:search];
+    if ((sysctl && [self filter_sysctl:n]) ||
+        (search && [self filter_search:n search:search]) ||
+        [self filter_checkChildren:n sysctl:sysctl search:search]) {
+      [self filter_core:n sysctl:sysctl search:search];
+
     } else {
       [n detach];
     }
   }
 }
 
-- (IBAction) search:(id)sender
+- (IBAction) filter:(id)sender
 {
   [_xmlTreeWrapper load:xmlpath];
 
-  NSArray *a = [[_searchText stringValue] componentsSeparatedByString:@" "];
+  BOOL expand = FALSE;
 
-  NSEnumerator *enumerator = [a objectEnumerator];
-  NSString *str;
-  while (str = [enumerator nextObject]) {
-    str = [str lowercaseString];
-    if (! [str isEqual:@""]) {
-      [self showSearchHitOnly:[_xmlTreeWrapper getRoot] search:str];
-    }
+  if ([_showEnabledOnly state] == NSOnState) {
+    [self filter_core:[_xmlTreeWrapper getRoot] sysctl:TRUE search:nil];
+    expand = TRUE;
   }
+  if (! [[_searchText stringValue] isEqual:@""]) {
+    NSArray *a = [[_searchText stringValue] componentsSeparatedByString:@" "];
+    NSEnumerator *enumerator = [a objectEnumerator];
+    NSString *str;
+    while (str = [enumerator nextObject]) {
+      str = [str lowercaseString];
+      if (! [str isEqual:@""]) {
+        [self filter_core:[_xmlTreeWrapper getRoot] sysctl:nil search:str];
+      }
+    }
+    expand = TRUE;
+  }
+
   [_outlineView_checkbox reloadData];
-  [BUNDLEPREFIX_OutlineViewUtil expandALL:_outlineView_checkbox];
+  if (expand) {
+    [BUNDLEPREFIX_OutlineViewUtil expandALL:_outlineView_checkbox];
+  }
 }
 
 // ----------------------------------------------------------------------
