@@ -49,6 +49,9 @@ static NSString *xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
 
 - (BOOL) filter_search:(NSXMLNode *)node search:(NSString *)search
 {
+  NSXMLNode *sysctl = [_xmlTreeWrapper getNode:node xpath:@"sysctl"];
+  if (! sysctl) return FALSE;
+
   NSXMLNode *text = [_xmlTreeWrapper getNode:node xpath:@"name"];
   if (text && [[[text stringValue] lowercaseString] rangeOfString:search].location != NSNotFound) return TRUE;
 
