@@ -94,6 +94,69 @@ static NSString *xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
   [BUNDLEPREFIX_OutlineViewUtil expandALL:_outlineView_checkbox];
 }
 
+// ----------------------------------------
+- (BOOL) checkNodeSearchHit:(NSXMLNode *)node search:(NSString *)search
+{
+  NSXMLNode *text = [_xmlTreeWrapper getNode:node xpath:@"name"];
+  if (text && [[[text stringValue] lowercaseString] rangeOfString:search].location != NSNotFound) return TRUE;
+
+  text = [_xmlTreeWrapper getNode:node xpath:@"appendix"];
+  if (text && [[[text stringValue] lowercaseString] rangeOfString:search].location != NSNotFound) return TRUE;
+
+  return FALSE;
+}
+
+- (BOOL) checkAnyChildrenSearchHit:(NSXMLNode *)node search:(NSString *)search
+{
+  NSArray *a = [node nodesForXPath:@"list/item" error:NULL];
+  if (a == nil) return FALSE;
+  if ([a count] == 0) return FALSE;
+
+  NSEnumerator *enumerator = [a objectEnumerator];
+  NSXMLNode *n;
+  while (n = [enumerator nextObject]) {
+    if ([self checkAnyChildrenSearchHit:n search:search]) return TRUE;
+    if ([self checkNodeSearchHit:n search:search]) return TRUE;
+  }
+
+  return FALSE;
+}
+
+
+- (IBAction) showSearchHitOnly:(NSXMLElement *)node search:(NSString *)search
+{
+  NSArray *a = [node nodesForXPath:@"list/item" error:NULL];
+
+  NSEnumerator *enumerator = [a objectEnumerator];
+  NSXMLElement *n;
+  while (n = [enumerator nextObject]) {
+    if ([self checkNodeSearchHit:n search:search] || [self checkAnyChildrenSearchHit:n search:search]) {
+      [self showSearchHitOnly:n search:search];
+    } else {
+      [n detach];
+    }
+  }
+}
+
+- (IBAction) search:(id)sender
+{
+  [_xmlTreeWrapper load:xmlpath];
+
+  NSArray *a = [[_searchText stringValue] componentsSeparatedByString:@" "];
+
+  NSEnumerator *enumerator = [a objectEnumerator];
+  NSString *str;
+  while (str = [enumerator nextObject]) {
+    str = [str lowercaseString];
+    if (! [str isEqual:@""]) {
+      [self showSearchHitOnly:[_xmlTreeWrapper getRoot] search:str];
+    }
+  }
+  [_outlineView_checkbox reloadData];
+  [BUNDLEPREFIX_OutlineViewUtil expandALL:_outlineView_checkbox];
+}
+
+// ----------------------------------------------------------------------
 - (int) outlineView:(NSOutlineView*)outlineView numberOfChildrenOfItem:(id)item
 {
   return [_xmlTreeWrapper numberOfChildren:item];
