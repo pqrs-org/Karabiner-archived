@@ -864,7 +864,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (allFlagStatus.makeFlags(params) != ModifierFlag::COMMAND_R) return;
 
-    RemapUtil::key2spaces(params,
+    RemapUtil::key2spaces(params, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
                           KeyCode::A, KeyCode::S, KeyCode::D,
                           KeyCode::F, KeyCode::G, KeyCode::H,
                           KeyCode::J, KeyCode::K, KeyCode::L);
@@ -877,7 +877,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (allFlagStatus.makeFlags(params) != ModifierFlag::COMMAND_R) return;
 
-    RemapUtil::key2spaces(params,
+    RemapUtil::key2spaces(params, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
                           KeyCode::KEY_1, KeyCode::KEY_2, KeyCode::KEY_3,
                           KeyCode::Q, KeyCode::W, KeyCode::E,
                           KeyCode::A, KeyCode::S, KeyCode::D);
@@ -890,7 +890,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (allFlagStatus.makeFlags(params) != ModifierFlag::COMMAND_R) return;
 
-    RemapUtil::key2spaces(params,
+    RemapUtil::key2spaces(params, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L,
                           KeyCode::KEY_1, KeyCode::KEY_2, KeyCode::KEY_3, KeyCode::NONE,
                           KeyCode::Q, KeyCode::W, KeyCode::E, KeyCode::NONE,
                           KeyCode::A, KeyCode::S, KeyCode::D, KeyCode::NONE);
@@ -903,7 +903,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (allFlagStatus.makeFlags(params) != ModifierFlag::COMMAND_R) return;
 
-    RemapUtil::key2spaces(params,
+    RemapUtil::key2spaces(params, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
                           KeyCode::Q, KeyCode::W, KeyCode::E,
                           KeyCode::A, KeyCode::S, KeyCode::D,
                           KeyCode::Z, KeyCode::X, KeyCode::C);
@@ -916,7 +916,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (allFlagStatus.makeFlags(params) != ModifierFlag::FN) return;
 
-    RemapUtil::key2spaces(params,
+    RemapUtil::key2spaces(params, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L,
                           KeyCode::KEY_1, KeyCode::KEY_2, KeyCode::KEY_3, KeyCode::KEY_4,
                           KeyCode::Q, KeyCode::W, KeyCode::E, KeyCode::R,
                           KeyCode::A, KeyCode::S, KeyCode::D, KeyCode::F,
