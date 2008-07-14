@@ -356,6 +356,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_pc_pause2eject(const RemapParams &params)
+  {
+    if (! config.remap_pc_pause2eject) return;
+
+    RemapUtil::keyToConsumer(params, KeyCode::PC_PAUSE, ConsumerKeyCode::EJECT);
+  }
+
+  void
   remap_keypadnumlock(const RemapParams &params)
   {
     if (! config.remap_keypadnumlock) return;
@@ -1325,6 +1333,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_qwerty2qwerf(params);
 
   // ----------------------------------------
+  remap_pc_pause2eject(params);
   remap_keypadnumlock(params);
   remap_keypadnumlock_togglekey_clear(params);
 

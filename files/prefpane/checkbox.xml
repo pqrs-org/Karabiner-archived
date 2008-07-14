@@ -1448,6 +1448,55 @@
           </list>
         </item>
         <item>
+          <name>Remap PC Insert Key</name>
+          <list>
+            <item>
+              <name>Insert Key to Control_R</name>
+              <sysctl>remap.pc_insert2controlR</sysctl>
+              <autogen>--KeyToKey-- KeyCode::PC_INSERT, KeyCode::CONTROL_R</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
+          <name>Remap PC NumLock Key</name>
+          <list>
+            <item>
+              <name>NumLock Key to F11</name>
+              <sysctl>remap.pc_numlock2f11</sysctl>
+              <autogen>--KeyToKey-- KeyCode::PC_KEYPAD_NUMLOCK, KeyCode::F11</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
+          <name>Remap PC Pause Key</name>
+          <list>
+            <item>
+              <name>Pause Key to Eject</name>
+              <sysctl>remap.pc_pause2eject</sysctl>
+            </item>
+          </list>
+        </item>
+        <item>
+          <name>Remap PC PrintScreen Key</name>
+          <list>
+            <item>
+              <name>PrintScreen Key to F12</name>
+              <sysctl>remap.pc_printscreen2f12</sysctl>
+              <autogen>--KeyToKey-- KeyCode::PC_PRINTSCREEN, KeyCode::F12</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
+          <name>Remap PC ScrollLock Key</name>
+          <list>
+            <item>
+              <name>ScrollLock Key to F13</name>
+              <sysctl>remap.pc_scrolllock2f13</sysctl>
+              <autogen>--KeyToKey-- KeyCode::PC_SCROLLLOCK, KeyCode::F13</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Use KeyPad as Arrow (PC Style NumLock)</name>
           <list>
             <item>
