@@ -154,7 +154,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       eventType = KeyEvent::UP;
     }
 
-    RemapUtil::fireKeyWithAllModifiers(params, eventType, KeyCode::F1, CharCode::F1);
+    RemapUtil::fireKeyWithModifiers(params,
+                                    (ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L),
+                                    eventType, KeyCode::F1, CharCode::F1);
     *(params.ex_dropKey) = true;
   }
 
@@ -852,8 +854,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (allFlagStatus.makeFlags(params) != ModifierFlag::COMMAND_R) return;
 
     RemapUtil::key2spaces(params,
-                          KeyCode::A, KeyCode::S, KeyCode::D, KeyCode::F, KeyCode::G,
-                          KeyCode::H, KeyCode::J, KeyCode::K, KeyCode::L, KeyCode::NONE);
+                          KeyCode::A, KeyCode::S, KeyCode::D,
+                          KeyCode::F, KeyCode::G, KeyCode::H,
+                          KeyCode::J, KeyCode::K, KeyCode::L);
   }
 
   void
@@ -866,8 +869,20 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::key2spaces(params,
                           KeyCode::KEY_1, KeyCode::KEY_2, KeyCode::KEY_3,
                           KeyCode::Q, KeyCode::W, KeyCode::E,
-                          KeyCode::A, KeyCode::S, KeyCode::D,
-                          KeyCode::NONE);
+                          KeyCode::A, KeyCode::S, KeyCode::D);
+  }
+
+  void
+  remap_spaces_special_123qweasd_4x4(const RemapParams &params)
+  {
+    if (! config.remap_spaces_special_123qweasd_4x4) return;
+
+    if (allFlagStatus.makeFlags(params) != ModifierFlag::COMMAND_R) return;
+
+    RemapUtil::key2spaces(params,
+                          KeyCode::KEY_1, KeyCode::KEY_2, KeyCode::KEY_3, KeyCode::NONE,
+                          KeyCode::Q, KeyCode::W, KeyCode::E, KeyCode::NONE,
+                          KeyCode::A, KeyCode::S, KeyCode::D, KeyCode::NONE);
   }
 
   void
@@ -880,8 +895,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::key2spaces(params,
                           KeyCode::Q, KeyCode::W, KeyCode::E,
                           KeyCode::A, KeyCode::S, KeyCode::D,
-                          KeyCode::Z, KeyCode::X, KeyCode::C,
-                          KeyCode::NONE);
+                          KeyCode::Z, KeyCode::X, KeyCode::C);
   }
 
   void
@@ -907,7 +921,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         *(params.key) == KeyCode::KEY_8 ||
         *(params.key) == KeyCode::KEY_9) {
       allFlagStatus.fn.temporary_decrease();
-      RemapUtil::fireKeyWithAllModifiers(params, *(params.eventType), *(params.key), *(params.charCode));
+      RemapUtil::fireKeyWithModifiers(params,
+                                      (ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L),
+                                      *(params.eventType), *(params.key), *(params.charCode));
     }
   }
 
@@ -922,7 +938,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (RemapUtil::keypad2spaces(params)) {
       allFlagStatus.fn.temporary_decrease();
 
-      RemapUtil::fireKeyWithAllModifiers(params, *(params.eventType), *(params.key), *(params.charCode));
+      RemapUtil::fireKeyWithModifiers(params,
+                                      (ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L),
+                                      *(params.eventType), *(params.key), *(params.charCode));
     }
   }
 
@@ -1371,6 +1389,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   // *** If spaces_special is enabled, emacsmode_ex_control12 make wrong remappings, . ***
   remap_spaces_special(params);
   remap_spaces_special_123qweasd(params);
+  remap_spaces_special_123qweasd_4x4(params);
   remap_spaces_special_qweasdzxc(params);
   remap_spaces_special_fn(params);
   remap_spaces_special_keypad(params);

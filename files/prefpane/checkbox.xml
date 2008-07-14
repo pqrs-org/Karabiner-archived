@@ -462,6 +462,11 @@
       <name>Remap Escape Key</name>
       <list>
         <item>
+          <name>Escape to Command_L</name>
+          <sysctl>remap.escape2commandL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::COMMAND_L</autogen>
+        </item>
+        <item>
           <name>Escape to Backquote(`)</name>
           <sysctl>remap.escape2backquote</sysctl>
           <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::BACKQUOTE</autogen>
@@ -1289,28 +1294,33 @@
           <name>Remapping for Spaces</name>
           <list>
             <item>
-              <name>Use Command_R+[ASDFGHJKL] for Spaces</name>
-              <appendix>(Command+Control+Option+Shift+[1...9])</appendix>
+              <name>Use Command_R+[ASD FGH JKL] for Spaces</name>
+              <appendix>(Command+Control+Option+Shift+[123 456 789])</appendix>
               <sysctl>remap.spaces_special</sysctl>
             </item>
             <item>
-              <name>Use Command_R+[123QWEASD] for Spaces</name>
-              <appendix>(Command+Control+Option+Shift+[1...9])</appendix>
+              <name>Use Command_R+[123 QWE ASD] for Spaces (3x3)</name>
+              <appendix>(Command+Control+Option+Shift+[123 456 789])</appendix>
               <sysctl>remap.spaces_special_123qweasd</sysctl>
             </item>
             <item>
-              <name>Use Command_R+[QWEASDZXC] for Spaces</name>
-              <appendix>(Command+Control+Option+Shift+[1...9])</appendix>
+              <name>Use Command_R+[123 QWE ASD] for Spaces (4x4)</name>
+              <appendix>(Command+Control+Option+Shift+[123 567 90], Command+Option+[1])</appendix>
+              <sysctl>remap.spaces_special_123qweasd_4x4</sysctl>
+            </item>
+            <item>
+              <name>Use Command_R+[QWE ASD ZXC] for Spaces (3x3)</name>
+              <appendix>(Command+Control+Option+Shift+[123 456 789])</appendix>
               <sysctl>remap.spaces_special_qweasdzxc</sysctl>
             </item>
             <item>
-              <name>Use FN+[1...9] for Spaces</name>
-              <appendix>(Command+Control+Option+Shift+[1...9])</appendix>
+              <name>Use FN+[123456789] for Spaces</name>
+              <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
               <sysctl>remap.spaces_special_fn</sysctl>
             </item>
             <item>
               <name>Use KeyPad number for Spaces</name>
-              <appendix>(Command+Control+Option+Shift+[1...9])</appendix>
+              <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
               <sysctl>remap.spaces_special_keypad</sysctl>
             </item>
             <item>
@@ -1318,19 +1328,19 @@
               <sysctl>remap.keypad2spaces</sysctl>
               <list>
                 <item>
-                  <name>Check if your Spaces setting is Control+[1...9]</name>
+                  <name>Check if your Spaces setting is Control+[123456789]</name>
                   <sysctl>option.keypad2spaces_modifier_control</sysctl>
                 </item>
                 <item>
-                  <name>Check if your Spaces setting is Command+[1...9]</name>
+                  <name>Check if your Spaces setting is Command+[123456789]</name>
                   <sysctl>option.keypad2spaces_modifier_command</sysctl>
                 </item>
                 <item>
-                  <name>Check if your Spaces setting is Option+[1...9]</name>
+                  <name>Check if your Spaces setting is Option+[123456789]</name>
                   <sysctl>option.keypad2spaces_modifier_option</sysctl>
                 </item>
                 <item>
-                  <name>Check if your Spaces setting is Shift+[1...9]</name>
+                  <name>Check if your Spaces setting is Shift+[123456789]</name>
                   <sysctl>option.keypad2spaces_modifier_shift</sysctl>
                 </item>
               </list>
