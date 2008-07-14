@@ -5,11 +5,11 @@
 {
   IBOutlet id _outlineView_checkbox;
   IBOutlet id _searchText;
+  IBOutlet id _showEnabledOnly;
 }
 
 - (IBAction) expandALL:(id)sender;
 - (IBAction) collapseALL:(id)sender;
-- (IBAction) toggleShowEnabled:(id)sender;
-- (IBAction) search:(id)sender;
+- (IBAction) filter:(id)sender;
 
 @end
