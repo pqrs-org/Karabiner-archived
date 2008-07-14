@@ -49,9 +49,6 @@ static NSString *xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
 
 - (BOOL) filter_search:(NSXMLNode *)node search:(NSString *)search
 {
-  NSXMLNode *sysctl = [_xmlTreeWrapper getNode:node xpath:@"sysctl"];
-  if (! sysctl) return FALSE;
-
   NSXMLNode *text = [_xmlTreeWrapper getNode:node xpath:@"name"];
   if (text && [[[text stringValue] lowercaseString] rangeOfString:search].location != NSNotFound) return TRUE;
 
@@ -89,13 +86,19 @@ static NSString *xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
   NSEnumerator *enumerator = [a objectEnumerator];
   NSXMLElement *n;
   while (n = [enumerator nextObject]) {
-    if ((sysctl && [self filter_sysctl:n]) ||
-        (search && [self filter_search:n search:search]) ||
-        [self filter_checkChildren:n sysctl:sysctl search:search]) {
-      [self filter_core:n sysctl:sysctl search:search];
-
-    } else {
-      [n detach];
+    if (sysctl) {
+      if ([self filter_sysctl:n] || [self filter_checkChildren:n sysctl:sysctl search:search]) {
+        [self filter_core:n sysctl:sysctl search:search];
+      } else {
+        [n detach];
+      }
+    } else if (search) {
+      if ([self filter_search:n search:search]) continue;
+      if ([self filter_checkChildren:n sysctl:sysctl search:search]) {
+        [self filter_core:n sysctl:sysctl search:search];
+      } else {
+        [n detach];
+      }
     }
   }
 }
