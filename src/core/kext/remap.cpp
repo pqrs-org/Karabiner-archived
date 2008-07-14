@@ -213,6 +213,17 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
+  remap_tab2option_withControlL(const RemapParams &params)
+  {
+    if (! config.remap_tab2option_withControlL) return;
+
+    if (! allFlagStatus.controlL.isHeldDown()) return;
+
+    static KeyOverlaidModifier kom;
+    kom.remap(params, KeyCode::TAB, ModifierFlag::OPTION_L, FireFunc::firefunc_tab);
+  }
+
+  void
   remap_commandTab2optionTab(const RemapParams &params)
   {
     if (! config.remap_commandTab2optionTab) return;
@@ -1347,6 +1358,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_shiftLshiftR2space(params);
   remap_shiftRshiftL2space(params);
 
+  remap_tab2option_withControlL(params);
   remap_commandTab2optionTab(params);
   remap_commandTab2f5(params);
   remap_optionTab2f5(params);
