@@ -857,6 +857,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  FireFunc::firefunc_tab(const RemapParams &params)
+  {
+    unsigned int flags = allFlagStatus.makeFlags(params);
+    listFireExtraKey.addKey(flags, KeyCode::TAB, CharCode::TAB);
+  }
+
+  void
   FireFunc::firefunc_emacsmode_controlK(const RemapParams &params, bool first)
   {
     static int counter = 0;

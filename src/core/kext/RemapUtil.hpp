@@ -352,6 +352,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void firefunc_exposeAll(const RemapParams &params);
     void firefunc_return_noflags(const RemapParams &params);
     void firefunc_space(const RemapParams &params);
+    void firefunc_tab(const RemapParams &params);
     void firefunc_emacsmode_controlK(const RemapParams &params, bool first);
     void firefunc_emacsmode_controlK_2nd(const RemapParams &params);
     void firefunc_emacsmode_ex_controlU(const RemapParams &params);
