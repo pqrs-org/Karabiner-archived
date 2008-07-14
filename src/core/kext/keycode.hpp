@@ -139,7 +139,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       F15 = 113,
       F16 = 106,
 
+      PC_KEYPAD_NUMLOCK = 71,
       PC_APPLICATION = 110,
+      PC_PRINTSCREEN = 105,
+      PC_SCROLLLOCK = 107,
+      PC_PAUSE = 113,
+      PC_INSERT = 114,
       HELP = 114,
 
       FORWARD_DELETE = 117,
