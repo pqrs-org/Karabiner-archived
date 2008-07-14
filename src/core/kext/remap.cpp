@@ -899,6 +899,20 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  remap_spaces_special_1234qwerasdfzxcv(const RemapParams &params)
+  {
+    if (! config.remap_spaces_special_1234qwerasdfzxcv) return;
+
+    if (allFlagStatus.makeFlags(params) != ModifierFlag::FN) return;
+
+    RemapUtil::key2spaces(params,
+                          KeyCode::KEY_1, KeyCode::KEY_2, KeyCode::KEY_3, KeyCode::KEY_4,
+                          KeyCode::Q, KeyCode::W, KeyCode::E, KeyCode::R,
+                          KeyCode::A, KeyCode::S, KeyCode::D, KeyCode::F,
+                          KeyCode::Z, KeyCode::X, KeyCode::C, KeyCode::V);
+  }
+
+  void
   remap_spaces_special_fn(const RemapParams &params)
   {
     if (! config.remap_spaces_special_fn) return;
@@ -1390,6 +1404,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_spaces_special(params);
   remap_spaces_special_123qweasd(params);
   remap_spaces_special_123qweasd_4x4(params);
+  remap_spaces_special_1234qwerasdfzxcv(params);
   remap_spaces_special_qweasdzxc(params);
   remap_spaces_special_fn(params);
   remap_spaces_special_keypad(params);
