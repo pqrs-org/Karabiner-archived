@@ -1310,7 +1310,7 @@
             </item>
             <item>
               <name>Use Command_R+[123 QWE ASD] for Spaces (4x4)</name>
-              <appendix>(Command+Control+Shift+[123 567 90], Command+Control+Option+Shift[1])</appendix>
+              <appendix>(Cmd+Ctrl+Shift+[123 567 90], Cmd+Ctrl+Option+Shift[1])</appendix>
               <sysctl>remap.spaces_special_123qweasd_4x4</sysctl>
             </item>
             <item>
@@ -1325,7 +1325,7 @@
             </item>
             <item>
               <name>Use FN+[1234 QWER ASDF ZXCV] for Spaces (4x4)</name>
-              <appendix>(Command+Control+Shift+[1234 5678 90], Command+Control+Option+Shift[12 3456])</appendix>
+              <appendix>(Cmd+Ctrl+Shift+[1234 5678 90], Cmd+Ctrl+Option+Shift[12 3456])</appendix>
               <sysctl>remap.spaces_special_1234qwerasdfzxcv</sysctl>
             </item>
             <item>
