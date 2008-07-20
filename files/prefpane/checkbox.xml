@@ -1913,6 +1913,11 @@
               <sysctl>remap.russian_paragraph2backquote</sysctl>
               <autogen>--KeyToKey-- KeyCode::RUSSIAN_PARAGRAPH, KeyCode::BACKQUOTE</autogen>
             </item>
+            <item>
+              <name>Paragraph(§) to Escape</name>
+              <sysctl>remap.russian_paragraph2escape</sysctl>
+              <autogen>--KeyToKey-- KeyCode::RUSSIAN_PARAGRAPH, KeyCode::ESCAPE</autogen>
+            </item>
           </list>
         </item>
       </list>
