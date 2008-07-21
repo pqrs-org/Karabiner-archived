@@ -1,6 +1,6 @@
 #include <sys/types.h>
 #include <stdio.h>
-#import <Appkit/Appkit.h>
+#import <AppKit/AppKit.h>
 
 void
 getActiveApplicationName(char *buffer, size_t len)
