@@ -162,6 +162,30 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
+  remap_semicolon2return_controlsemicolon2semicolon(const RemapParams &params)
+  {
+    if (! config.remap_semicolon2return_controlsemicolon2semicolon) return;
+
+    static ModifierCanceling mc_controlL;
+    if (! allFlagStatus.isHeldDown_control() && ! allFlagStatus.isHeldDown_shift()) {
+      RemapUtil::keyToKey(params, KeyCode::SEMICOLON, KeyCode::RETURN);
+
+    } else {
+      bool cancel_control = false;
+      if (*(params.key) == KeyCode::SEMICOLON) {
+        *(params.key) = KeyCode::SEMICOLON;
+        cancel_control = true;
+      }
+
+      if (cancel_control) {
+        if (allFlagStatus.controlL.isHeldDown()) {
+          mc_controlL.keyRelease(params, ModifierFlag::CONTROL_L);
+        }
+      }
+    }
+  }
+
+  void
   remap_swapcolons(const RemapParams &params)
   {
     if (! config.remap_swapcolons) return;
@@ -1353,6 +1377,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   remap_optionR2allF1(params);
 
+  remap_semicolon2return_controlsemicolon2semicolon(params);
   remap_swapcolons(params);
 
   remap_shiftLshiftR2space(params);
