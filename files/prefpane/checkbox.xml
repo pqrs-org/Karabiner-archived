@@ -839,6 +839,11 @@
           <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::RETURN</autogen>
         </item>
         <item>
+          <name>Semicolon to Return</name>
+          <appendix>(+ Control+Semicolon to Semicolon)</appendix>
+          <sysctl>remap.semicolon2return_controlsemicolon2semicolon</sysctl>
+        </item>
+        <item>
           <name>Swap Semicolon and Colon</name>
           <sysctl>remap.swapcolons</sysctl>
         </item>
