@@ -50,8 +50,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
     bool keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags, KeyCode::KeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE);
 
-    bool keyToKeyWithModifier(const RemapParams &params, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode, ModifierFlag::ModifierFlag toFlag);
-
     bool keyToKey_dependingShift(const RemapParams &params, KeyCode::KeyCode fromKeyCode,
                                  KeyCode::KeyCode toKeyCode_noflag1, CharCode::CharCode toCharCode_noflag1,
                                  KeyCode::KeyCode toKeyCode_noflag2, CharCode::CharCode toCharCode_noflag2,

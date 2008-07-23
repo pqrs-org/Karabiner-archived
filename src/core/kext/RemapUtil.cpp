@@ -252,36 +252,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     return true;
   }
 
-  bool
-  RemapUtil::keyToKeyWithModifier(const RemapParams &params, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode, ModifierFlag::ModifierFlag toFlag)
-  {
-    if (fromKeyCode == KeyCode::ENTER) fromKeyCode = getEnterKeyCode(params);
-    if (toKeyCode == KeyCode::ENTER) toKeyCode = getEnterKeyCode(params);
-
-    // ----------------------------------------
-    if (! RemapUtil::isKey(params, fromKeyCode)) return false;
-
-    FlagStatus *toStatus = allFlagStatus.getFlagStatus(toFlag);
-    if (toStatus == NULL) return false;
-
-    unsigned int charCode = 0;
-    if (RemapUtil::isKeyDown(params, fromKeyCode)) {
-      toStatus->increase();
-      unsigned int flags = allFlagStatus.makeFlags(params);
-      listFireExtraKey.add(FireExtraKey::TYPE_BEFORE, KeyEvent::MODIFY, flags, toStatus->getKeyCode(), charCode);
-
-    } else {
-      toStatus->decrease();
-      unsigned int flags = allFlagStatus.makeFlags(params);
-      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, toStatus->getKeyCode(), charCode);
-
-      toStatus->temporary_increase();
-    }
-
-    keyToKey(params, fromKeyCode, toKeyCode);
-    return true;
-  }
-
   namespace {
     void
     keyToKeyCombination(const RemapParams &params, KeyCode::KeyCode fromKeyCode,

@@ -441,8 +441,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (params.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::VIRTUALMACHINE) return;
     if (params.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::REMOTEDESKTOPCONNECTION) return;
 
-    RemapUtil::keyToKeyWithModifier(params, KeyCode::HOME, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L);
-    RemapUtil::keyToKeyWithModifier(params, KeyCode::END, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L);
+    RemapUtil::keyToKey(params, KeyCode::HOME, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L);
+    RemapUtil::keyToKey(params, KeyCode::END, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L);
   }
 
   // ----------------------------------------
