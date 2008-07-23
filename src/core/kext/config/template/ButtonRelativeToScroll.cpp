@@ -1,4 +1,4 @@
-void
+inline void
 %%LASTNAME%%(const RemapPointingParams_relative &params)
 {
   if (! config.%%LASTNAME%%) return;
