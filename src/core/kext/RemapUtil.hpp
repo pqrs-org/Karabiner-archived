@@ -44,10 +44,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     CharCode::CharCode getEnterCharCode(KeyCode::KeyCode keyCode);
     bool isInternalKeyboard(unsigned int keyboardType);
 
-    bool keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode);
+    bool keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE);
     inline bool toKey(const RemapParams &params, KeyCode::KeyCode toKeyCode) {
       return keyToKey(params, static_cast<KeyCode::KeyCode>(params.ex_origKey), toKeyCode);
     }
+    bool keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags, KeyCode::KeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE);
+
     bool keyToKeyWithModifier(const RemapParams &params, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode, ModifierFlag::ModifierFlag toFlag);
 
     bool keyToKey_dependingShift(const RemapParams &params, KeyCode::KeyCode fromKeyCode,

@@ -12,8 +12,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   namespace ModifierFlag {
     enum ModifierFlag {
-      NONE = 0,
-
       CAPSLOCK =   0x10000,
 
       SHIFT_L =    0x20002,
@@ -31,6 +29,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       CURSOR =     0x200000,
       KEYPAD =     0x200000,
       FN =         0x800000,
+
+      NONE =      0x1000000,
     };
 
     const ModifierFlag::ModifierFlag list[] = {
