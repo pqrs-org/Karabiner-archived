@@ -454,7 +454,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool from = RemapUtil::isModifierOn(fromFlags, m);
       bool to = RemapUtil::isModifierOn(toFlags, m);
 
-      if (from == to) return;
+      if (from == to) continue;
 
       if (from) {
         modifierStatus[i] = false;
@@ -797,37 +797,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       unsigned int guid = -1;
       callback(target, item.getEventType(), item.getFlags(), item.getKey(), flavor, guid, false, ts, sender, refcon);
     }
-  }
-
-  // ----------------------------------------------------------------------
-  void
-  ModifierCanceling::keyRelease(const RemapParams &params, ModifierFlag::ModifierFlag modifierFlag)
-  {
-    FlagStatus *flagStatus = allFlagStatus.getFlagStatus(modifierFlag);
-    if (flagStatus == NULL) return;
-
-    flagStatus->temporary_decrease();
-
-    if (isSendKeyRelease) return;
-
-    unsigned int flags = allFlagStatus.makeFlags(params);
-    listFireExtraKey.add(FireExtraKey::TYPE_BEFORE, KeyEvent::MODIFY, flags, flagStatus->getKeyCode(), 0);
-
-    isSendKeyRelease = true;
-  }
-
-  void
-  ModifierCanceling::restore(const RemapParams &params, ModifierFlag::ModifierFlag modifierFlag)
-  {
-    FlagStatus *flagStatus = allFlagStatus.getFlagStatus(modifierFlag);
-    if (flagStatus == NULL) return;
-
-    if (! isSendKeyRelease) return;
-
-    isSendKeyRelease = false;
-
-    unsigned int flags = allFlagStatus.makeFlags(params);
-    listFireExtraKey.add(FireExtraKey::TYPE_BEFORE, KeyEvent::MODIFY, flags, flagStatus->getKeyCode(), 0);
   }
 
   // ----------------------------------------------------------------------
@@ -1241,11 +1210,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (fromStatus->isHeldDown()) {
       if (RemapUtil::keyToKey(params, fromKeyCode, toKeyCode)) {
-        modifierCanceling.keyRelease(params, fromFlag);
+        fromStatus->temporary_decrease();
         return true;
       }
     }
-    modifierCanceling.restore(params, fromFlag);
     return false;
   }
 

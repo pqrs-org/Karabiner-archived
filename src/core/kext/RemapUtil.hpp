@@ -188,6 +188,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool isHeldDown_option(void) { return optionL.isHeldDown() || optionR.isHeldDown(); }
     bool isHeldDown_shift(void) { return shiftL.isHeldDown() || shiftR.isHeldDown(); }
 
+    void temporaryDecrease_control(void) {
+      if (controlL.isHeldDown()) {
+        controlL.temporary_decrease();
+      } else {
+        controlR.temporary_decrease();
+      }
+    }
     void temporaryDecrease_command(void) {
       if (commandL.isHeldDown()) {
         commandL.temporary_decrease();
@@ -318,17 +325,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   extern ListFireConsumerKey listFireConsumerKey;
 
   // ----------------------------------------------------------------------
-  // for emacsmode
-  class ModifierCanceling {
-  public:
-    void keyRelease(const RemapParams &params, ModifierFlag::ModifierFlag modifierFlag);
-    void restore(const RemapParams &params, ModifierFlag::ModifierFlag modifierFlag);
-
-  private:
-    bool isSendKeyRelease;
-  };
-
-  // --------------------
   class IntervalChecker {
   public:
     void begin(void);
@@ -399,12 +395,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool isClick;
   };
 
+  // XXX: merge to KeyToKey
   class KeyWithModifierToKey {
   public:
     bool remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag fromFlag, KeyCode::KeyCode toKeyCode);
-
-  private:
-    ModifierCanceling modifierCanceling;
   };
 
   // ----------------------------------------
