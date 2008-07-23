@@ -409,17 +409,17 @@
         <item>
           <name>Enter to Command_L+Control_L</name>
           <sysctl>remap.enter2commandLcontrolL</sysctl>
-          <autogen>--KeyToKeyWithModifier-- KeyCode::ENTER, KeyCode::COMMAND_L, ModifierFlag::CONTROL_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::COMMAND_L, ModifierFlag::CONTROL_L</autogen>
         </item>
         <item>
           <name>Enter to Command_L+Shift_L</name>
           <sysctl>remap.enter2commandLshiftL</sysctl>
-          <autogen>--KeyToKeyWithModifier-- KeyCode::ENTER, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L</autogen>
         </item>
         <item>
           <name>Enter to Control_L+Option_L</name>
           <sysctl>remap.enter2controlLoptionL</sysctl>
-          <autogen>--KeyToKeyWithModifier-- KeyCode::ENTER, KeyCode::CONTROL_L, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::CONTROL_L, ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
           <name>Enter to Delete</name>
@@ -659,7 +659,7 @@
             <item>
               <name>Comma to Shift+Comma</name>
               <sysctl>remap.keypadcomma2shiftComma</sysctl>
-              <autogen>--KeyToKeyWithModifier-- KeyCode::KEYPAD_COMMA, KeyCode::KEYPAD_COMMA, ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_COMMA, KeyCode::KEYPAD_COMMA, ModifierFlag::SHIFT_L</autogen>
             </item>
           </list>
         </item>
