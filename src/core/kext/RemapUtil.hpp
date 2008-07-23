@@ -45,6 +45,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool isInternalKeyboard(unsigned int keyboardType);
 
     bool keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode);
+    inline bool toKey(const RemapParams &params, KeyCode::KeyCode toKeyCode) {
+      return keyToKey(params, static_cast<KeyCode::KeyCode>(params.ex_origKey), toKeyCode);
+    }
     bool keyToKeyWithModifier(const RemapParams &params, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode, ModifierFlag::ModifierFlag toFlag);
 
     bool keyToKey_dependingShift(const RemapParams &params, KeyCode::KeyCode fromKeyCode,
@@ -62,61 +65,22 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     void ejectToKey(const RemapConsumerParams &params, KeyCode::KeyCode toKeyCode);
 
-    void fireKeyWithModifiers(const RemapParams &params, unsigned int flags, unsigned int eventType, unsigned int keyCode, unsigned int charCode);
     void fireModifiers(unsigned int fromFlags, unsigned int toFlags,
                        KeyboardEventCallback callback, OSObject *target,
                        unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon);
 
     bool keypad2spaces(const RemapParams &params);
-    inline bool key2spaces(const RemapParams &params, unsigned int flags,
-                           KeyCode::KeyCode key1, KeyCode::KeyCode key2, KeyCode::KeyCode key3,
-                           KeyCode::KeyCode key4, KeyCode::KeyCode key5, KeyCode::KeyCode key6,
-                           KeyCode::KeyCode key7, KeyCode::KeyCode key8, KeyCode::KeyCode key9,
-                           KeyCode::KeyCode key10 = KeyCode::NONE,
-                           KeyCode::KeyCode key11 = KeyCode::NONE,
-                           KeyCode::KeyCode key12 = KeyCode::NONE,
-                           KeyCode::KeyCode key13 = KeyCode::NONE,
-                           KeyCode::KeyCode key14 = KeyCode::NONE,
-                           KeyCode::KeyCode key15 = KeyCode::NONE,
-                           KeyCode::KeyCode key16 = KeyCode::NONE) {
-      KeyCode::KeyCode keyCode = KeyCode::NONE;
-      CharCode::CharCode charCode = CharCode::NONE;
-
-      // --------------------------------------------------
-      if (RemapUtil::isKey(params, key1)) { keyCode = KeyCode::KEY_1; charCode = CharCode::KEY_1; }
-      if (RemapUtil::isKey(params, key2)) { keyCode = KeyCode::KEY_2; charCode = CharCode::KEY_2; }
-      if (RemapUtil::isKey(params, key3)) { keyCode = KeyCode::KEY_3; charCode = CharCode::KEY_3; }
-      if (RemapUtil::isKey(params, key4)) { keyCode = KeyCode::KEY_4; charCode = CharCode::KEY_4; }
-      if (RemapUtil::isKey(params, key5)) { keyCode = KeyCode::KEY_5; charCode = CharCode::KEY_5; }
-      if (RemapUtil::isKey(params, key6)) { keyCode = KeyCode::KEY_6; charCode = CharCode::KEY_6; }
-      if (RemapUtil::isKey(params, key7)) { keyCode = KeyCode::KEY_7; charCode = CharCode::KEY_7; }
-      if (RemapUtil::isKey(params, key8)) { keyCode = KeyCode::KEY_8; charCode = CharCode::KEY_8; }
-      if (RemapUtil::isKey(params, key9)) { keyCode = KeyCode::KEY_9; charCode = CharCode::KEY_9; }
-      if (RemapUtil::isKey(params, key10)) { keyCode = KeyCode::KEY_0; charCode = CharCode::KEY_0; }
-
-      if (keyCode != KeyCode::NONE) {
-        RemapUtil::fireKeyWithModifiers(params, flags, *(params.eventType), keyCode, charCode);
-        *(params.ex_dropKey) = true;
-        return true;
-      }
-
-      // --------------------------------------------------
-      if (RemapUtil::isKey(params, key11)) { keyCode = KeyCode::KEY_1; charCode = CharCode::KEY_1; }
-      if (RemapUtil::isKey(params, key12)) { keyCode = KeyCode::KEY_2; charCode = CharCode::KEY_2; }
-      if (RemapUtil::isKey(params, key13)) { keyCode = KeyCode::KEY_3; charCode = CharCode::KEY_3; }
-      if (RemapUtil::isKey(params, key14)) { keyCode = KeyCode::KEY_4; charCode = CharCode::KEY_4; }
-      if (RemapUtil::isKey(params, key15)) { keyCode = KeyCode::KEY_5; charCode = CharCode::KEY_5; }
-      if (RemapUtil::isKey(params, key16)) { keyCode = KeyCode::KEY_6; charCode = CharCode::KEY_6; }
-
-      if (keyCode != KeyCode::NONE) {
-        RemapUtil::fireKeyWithModifiers(params, flags | ModifierFlag::OPTION_L, *(params.eventType), keyCode, charCode);
-        *(params.ex_dropKey) = true;
-        return true;
-      }
-
-      return false;
-    }
-
+    bool key2spaces(const RemapParams &params, unsigned int flags,
+                    KeyCode::KeyCode key1, KeyCode::KeyCode key2, KeyCode::KeyCode key3,
+                    KeyCode::KeyCode key4, KeyCode::KeyCode key5, KeyCode::KeyCode key6,
+                    KeyCode::KeyCode key7, KeyCode::KeyCode key8, KeyCode::KeyCode key9,
+                    KeyCode::KeyCode key10 = KeyCode::NONE,
+                    KeyCode::KeyCode key11 = KeyCode::NONE,
+                    KeyCode::KeyCode key12 = KeyCode::NONE,
+                    KeyCode::KeyCode key13 = KeyCode::NONE,
+                    KeyCode::KeyCode key14 = KeyCode::NONE,
+                    KeyCode::KeyCode key15 = KeyCode::NONE,
+                    KeyCode::KeyCode key16 = KeyCode::NONE);
     void jis_toggle_eisuu_kana(const RemapParams &params, KeyCode::KeyCode fromKeyCode);
 
     // ----------------------------------------
@@ -133,6 +97,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void decrease(void) { --count; }
     void temporary_increase(void) { ++temporary_count; }
     void temporary_decrease(void) { --temporary_count; }
+    void temporary_reset(void) { temporary_count = 0; }
 
     bool isHeldDown(void) const { return (count + temporary_count) > 0; }
     unsigned int getFlag(void) const { return flag; }
@@ -178,6 +143,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     unsigned int makeFlags(unsigned int keyCode);
     unsigned int makeFlags(const RemapParams &params);
     void reset(void);
+    void temporary_set(unsigned int flags);
 
     FlagStatus *getFlagStatus(ModifierFlag::ModifierFlag flag);
     FlagStatus *getFlagStatus(KeyCode::KeyCode keyCode);
