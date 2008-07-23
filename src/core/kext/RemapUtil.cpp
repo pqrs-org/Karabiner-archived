@@ -421,6 +421,59 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
+  void
+  RemapUtil::fireModifiers(unsigned int fromFlags, unsigned int toFlags,
+                           KeyboardEventCallback callback, OSObject *target,
+                           unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon)
+  {
+    if (callback == NULL) return;
+
+    const ModifierFlag::ModifierFlag targetModifiers[] = {
+      ModifierFlag::CAPSLOCK,
+      ModifierFlag::SHIFT_L,
+      ModifierFlag::SHIFT_R,
+      ModifierFlag::CONTROL_L,
+      ModifierFlag::CONTROL_R,
+      ModifierFlag::OPTION_L,
+      ModifierFlag::OPTION_R,
+      ModifierFlag::COMMAND_L,
+      ModifierFlag::COMMAND_R,
+      ModifierFlag::FN,
+    };
+    const int maxnum = sizeof(targetModifiers) / sizeof(targetModifiers[0]);
+    bool modifierStatus[maxnum];
+
+    // setup modifierStatus
+    for (int i = 0; i < maxnum; ++i) {
+      modifierStatus[i] = RemapUtil::isModifierOn(fromFlags, targetModifiers[i]);
+    }
+
+    // fire
+    for (int i = 0; i < maxnum; ++i) {
+      ModifierFlag::ModifierFlag m = targetModifiers[i];
+      bool from = RemapUtil::isModifierOn(fromFlags, m);
+      bool to = RemapUtil::isModifierOn(toFlags, m);
+
+      if (from == to) return;
+
+      if (from) {
+        modifierStatus[i] = false;
+      } else {
+        modifierStatus[i] = true;
+      }
+
+      unsigned int flags = 0;
+      for (int j = 0; j < maxnum; ++j) {
+        if (modifierStatus[j]) {
+          flags |= targetModifiers[i];
+        }
+      }
+
+      KeyCode::KeyCode keyCode = RemapUtil::getModifierKeyCode(m);
+      callback(target, KeyEvent::MODIFY, flags, keyCode, 0, 0, 0, 0, keyboardType, false, ts, sender, refcon);
+    }
+  }
+
   bool
   RemapUtil::keypad2spaces(const RemapParams &params)
   {

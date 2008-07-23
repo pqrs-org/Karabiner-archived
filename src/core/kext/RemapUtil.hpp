@@ -63,6 +63,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     void ejectToKey(const RemapConsumerParams &params, KeyCode::KeyCode toKeyCode);
 
     void fireKeyWithModifiers(const RemapParams &params, unsigned int flags, unsigned int eventType, unsigned int keyCode, unsigned int charCode);
+    void fireModifiers(unsigned int fromFlags, unsigned int toFlags,
+                       KeyboardEventCallback callback, OSObject *target,
+                       unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon);
+
     bool keypad2spaces(const RemapParams &params);
     inline bool key2spaces(const RemapParams &params, unsigned int flags,
                            KeyCode::KeyCode key1, KeyCode::KeyCode key2, KeyCode::KeyCode key3,
