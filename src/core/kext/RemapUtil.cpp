@@ -412,6 +412,10 @@ namespace org_pqrs_KeyRemap4MacBook {
                            KeyboardEventCallback callback, OSObject *target,
                            unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon)
   {
+#if 0
+    printf("RemapUtil::fireModifiers from:%x to:%x\n", fromFlags, toFlags);
+#endif
+
     if (callback == NULL) return;
 
     bool modifierStatus[ModifierFlag::listsize];
