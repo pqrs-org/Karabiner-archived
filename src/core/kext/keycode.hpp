@@ -32,6 +32,20 @@ namespace org_pqrs_KeyRemap4MacBook {
       KEYPAD =     0x200000,
       FN =         0x800000,
     };
+
+    const ModifierFlag::ModifierFlag list[] = {
+      ModifierFlag::CAPSLOCK,
+      ModifierFlag::SHIFT_L,
+      ModifierFlag::SHIFT_R,
+      ModifierFlag::CONTROL_L,
+      ModifierFlag::CONTROL_R,
+      ModifierFlag::OPTION_L,
+      ModifierFlag::OPTION_R,
+      ModifierFlag::COMMAND_L,
+      ModifierFlag::COMMAND_R,
+      ModifierFlag::FN,
+    };
+    const int listsize = sizeof(list) / sizeof(list[0]);
   }
 
   namespace KeyCode {

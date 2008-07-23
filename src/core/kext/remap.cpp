@@ -149,15 +149,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (! RemapUtil::isKey(params, KeyCode::OPTION_R)) return;
 
-    KeyEvent::KeyEvent eventType = KeyEvent::DOWN;
-    if (! allFlagStatus.optionR.isHeldDown()) {
-      eventType = KeyEvent::UP;
-    }
-
-    RemapUtil::fireKeyWithModifiers(params,
-                                    (ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L),
-                                    eventType, KeyCode::F1, CharCode::F1);
-    *(params.ex_dropKey) = true;
+    allFlagStatus.commandL.temporary_increase();
+    allFlagStatus.controlL.temporary_increase();
+    allFlagStatus.optionL.temporary_increase();
+    allFlagStatus.shiftL.temporary_increase();
+    RemapUtil::keyToKey(params, KeyCode::OPTION_R, KeyCode::F1);
   }
 
   // ----------------------------------------
@@ -901,9 +897,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         *(params.key) == KeyCode::KEY_8 ||
         *(params.key) == KeyCode::KEY_9) {
       allFlagStatus.fn.temporary_decrease();
-      RemapUtil::fireKeyWithModifiers(params,
-                                      (ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L),
-                                      *(params.eventType), *(params.key), *(params.charCode));
+      allFlagStatus.commandL.temporary_increase();
+      allFlagStatus.controlL.temporary_increase();
+      allFlagStatus.optionL.temporary_increase();
+      allFlagStatus.shiftL.temporary_increase();
     }
   }
 
@@ -917,10 +914,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (RemapUtil::keypad2spaces(params)) {
       allFlagStatus.fn.temporary_decrease();
-
-      RemapUtil::fireKeyWithModifiers(params,
-                                      (ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L),
-                                      *(params.eventType), *(params.key), *(params.charCode));
+      allFlagStatus.commandL.temporary_increase();
+      allFlagStatus.controlL.temporary_increase();
+      allFlagStatus.optionL.temporary_increase();
+      allFlagStatus.shiftL.temporary_increase();
     }
   }
 
