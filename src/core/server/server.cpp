@@ -198,6 +198,7 @@ KeyRemap4MacBook_server::Server::do_ActiveApplicationInfo(KeyRemap4MacBook_bridg
   reply->type = KeyRemap4MacBook_bridge::ActiveApplicationInfo::UNKNOWN;
 
   const char *org_vim = "org.vim.";
+  const char *com_adobe = "com.adobe.";
 
   if (strcmp(applicationName, "org.gnu.Emacs") == 0 ||
       strcmp(applicationName, "org.gnu.AquamacsEmacs") == 0) {
@@ -245,6 +246,9 @@ KeyRemap4MacBook_server::Server::do_ActiveApplicationInfo(KeyRemap4MacBook_bridg
 
   } else if (strcmp(applicationName, "com.apple.TextEdit") == 0) {
     reply->type = KeyRemap4MacBook_bridge::ActiveApplicationInfo::EDITOR;
+
+  } else if (strncmp(applicationName, com_adobe, strlen(com_adobe)) == 0) {
+    reply->type = KeyRemap4MacBook_bridge::ActiveApplicationInfo::ADOBE;
   }
 
   return KeyRemap4MacBook_bridge::SUCCESS;

@@ -25,6 +25,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     KeyCode::KeyCode getModifierKeyCode(ModifierFlag::ModifierFlag flag);
     ModifierFlag::ModifierFlag getKeyCodeModifier(unsigned int keycode);
+
     void fnToNormal(const RemapParams &params);
     void toFN(const RemapParams &params);
     void toDelete(const RemapParams &params);
@@ -39,9 +40,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
 
-    KeyCode::KeyCode getEnterKeyCode(unsigned int keyboardType);
-    inline KeyCode::KeyCode getEnterKeyCode(const RemapParams &params) { return getEnterKeyCode(*(params.keyboardType)); }
-    CharCode::CharCode getEnterCharCode(KeyCode::KeyCode keyCode);
     bool isInternalKeyboard(unsigned int keyboardType);
 
     bool keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE);
@@ -68,6 +66,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     void fireModifiers(unsigned int fromFlags, unsigned int toFlags,
                        KeyboardEventCallback callback, OSObject *target,
                        unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon);
+
+    void fireKey(KeyboardEventCallback callback,
+                 OSObject *target, unsigned int eventType, unsigned int flags, unsigned int key, unsigned int charCode,
+                 unsigned int charSet, unsigned int origCharCode, unsigned int origCharSet, unsigned int keyboardType,
+                 bool repeat, AbsoluteTime ts, OSObject *sender, void *refcon);
 
     bool keypad2spaces(const RemapParams &params);
     bool key2spaces(const RemapParams &params, unsigned int flags,

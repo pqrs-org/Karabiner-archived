@@ -14,6 +14,19 @@ namespace org_pqrs_KeyRemap4MacBook {
   PointingButtonStatus pointingButtonStatus;
   JISKanaMode jisKanaMode;
 
+  bool
+  RemapUtil::isInternalKeyboard(unsigned int keyboardType)
+  {
+    if (keyboardType == KeyboardType::MACBOOK) return true;
+    if (keyboardType == KeyboardType::MACBOOK_COREDUO) return true;
+    if (keyboardType == KeyboardType::POWERBOOK) return true;
+    if (keyboardType == KeyboardType::POWERBOOK_G4) return true;
+    if (keyboardType == KeyboardType::POWERBOOK_G4_TI) return true;
+    if (keyboardType == KeyboardType::JIS_MACBOOK) return true;
+    if (keyboardType == KeyboardType::JIS_MACBOOK_2008) return true;
+    return false;
+  }
+
   KeyCode::KeyCode
   RemapUtil::getModifierKeyCode(ModifierFlag::ModifierFlag flag)
   {
@@ -118,36 +131,25 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
-  KeyCode::KeyCode
-  RemapUtil::getEnterKeyCode(unsigned int keyboardType)
-  {
-    if (keyboardType == KeyboardType::POWERBOOK ||
-        keyboardType == KeyboardType::POWERBOOK_G4 ||
-        keyboardType == KeyboardType::POWERBOOK_G4_TI) {
-      return KeyCode::ENTER_POWERBOOK;
+  namespace {
+    KeyCode::KeyCode
+    getEnterKeyCode(unsigned int keyboardType)
+    {
+      if (keyboardType == KeyboardType::POWERBOOK ||
+          keyboardType == KeyboardType::POWERBOOK_G4 ||
+          keyboardType == KeyboardType::POWERBOOK_G4_TI) {
+        return KeyCode::ENTER_POWERBOOK;
+      }
+      return KeyCode::ENTER;
     }
-    return KeyCode::ENTER;
-  }
 
-  CharCode::CharCode
-  RemapUtil::getEnterCharCode(KeyCode::KeyCode keyCode)
-  {
-    if (keyCode == KeyCode::ENTER_POWERBOOK) return CharCode::ENTER_POWERBOOK;
-    if (keyCode == KeyCode::ENTER) return CharCode::ENTER;
-    return CharCode::NONE;
-  }
-
-  bool
-  RemapUtil::isInternalKeyboard(unsigned int keyboardType)
-  {
-    if (keyboardType == KeyboardType::MACBOOK) return true;
-    if (keyboardType == KeyboardType::MACBOOK_COREDUO) return true;
-    if (keyboardType == KeyboardType::POWERBOOK) return true;
-    if (keyboardType == KeyboardType::POWERBOOK_G4) return true;
-    if (keyboardType == KeyboardType::POWERBOOK_G4_TI) return true;
-    if (keyboardType == KeyboardType::JIS_MACBOOK) return true;
-    if (keyboardType == KeyboardType::JIS_MACBOOK_2008) return true;
-    return false;
+    CharCode::CharCode
+    getEnterCharCode(KeyCode::KeyCode keyCode)
+    {
+      if (keyCode == KeyCode::ENTER_POWERBOOK) return CharCode::ENTER_POWERBOOK;
+      if (keyCode == KeyCode::ENTER) return CharCode::ENTER;
+      return CharCode::NONE;
+    }
   }
 
   bool
@@ -157,8 +159,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (fromKeyCode == KeyCode::FN) fnToNormal(params);
     if (toKeyCode == KeyCode::FN) toFN(params);
 
-    if (fromKeyCode == KeyCode::ENTER) fromKeyCode = getEnterKeyCode(params);
-    if (toKeyCode == KeyCode::ENTER) toKeyCode = getEnterKeyCode(params);
+    if (fromKeyCode == KeyCode::ENTER) fromKeyCode = getEnterKeyCode(*(params.keyboardType));
+    if (toKeyCode == KeyCode::ENTER) toKeyCode = getEnterKeyCode(*(params.keyboardType));
 
     // ----------------------------------------
     if (! RemapUtil::isKey(params, fromKeyCode)) return false;
@@ -418,6 +420,28 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       KeyCode::KeyCode keyCode = RemapUtil::getModifierKeyCode(m);
       callback(target, KeyEvent::MODIFY, flags, keyCode, 0, 0, 0, 0, keyboardType, false, ts, sender, refcon);
+    }
+  }
+
+  void
+  RemapUtil::fireKey(KeyboardEventCallback callback,
+                     OSObject *target, unsigned int eventType, unsigned int flags, unsigned int key, unsigned int charCode,
+                     unsigned int charSet, unsigned int origCharCode, unsigned int origCharSet, unsigned int keyboardType,
+                     bool repeat, AbsoluteTime ts, OSObject *sender, void *refcon)
+  {
+    if (! callback) return;
+
+    static unsigned int lastFlags = 0;
+    org_pqrs_KeyRemap4MacBook::RemapUtil::fireModifiers(lastFlags, flags, callback, target, keyboardType, ts, sender, refcon);
+    lastFlags = flags;
+
+    if (eventType == KeyEvent::DOWN || eventType == KeyEvent::UP) {
+      callback(target, eventType, flags, key, charCode,
+               charSet, origCharCode, origCharSet, keyboardType, repeat, ts, sender, refcon);
+
+      if (key == KeyCode::JIS_EISUU || key == KeyCode::JIS_KANA) {
+        jisKanaMode.setMode(eventType, key, flags);
+      }
     }
   }
 
@@ -786,14 +810,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       FireExtraKey &item = list[i];
 
       if (item.getType() == type) {
-        callback(target, item.getEventType(), item.getFlags(), item.getKey(), item.getCharCode(),
-                 charSet, origCharCode, origCharSet,
-                 keyboardType, false, ts, sender, refcon);
-
-        if (item.getKey() == KeyCode::JIS_EISUU ||
-            item.getKey() == KeyCode::JIS_KANA) {
-          jisKanaMode.setMode(item.getEventType(), item.getKey(), item.getFlags());
-        }
+        RemapUtil::fireKey(callback, target, item.getEventType(), item.getFlags(), item.getKey(), item.getCharCode(),
+                           charSet, origCharCode, origCharSet,
+                           keyboardType, false, ts, sender, refcon);
       }
     }
   }
@@ -852,8 +871,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   FireFunc::firefunc_enter(const RemapParams &params)
   {
     unsigned int flags = allFlagStatus.makeFlags(params);
-    KeyCode::KeyCode keyCode = RemapUtil::getEnterKeyCode(params);
-    CharCode::CharCode charCode = RemapUtil::getEnterCharCode(keyCode);
+    KeyCode::KeyCode keyCode = getEnterKeyCode(*(params.keyboardType));
+    CharCode::CharCode charCode = getEnterCharCode(keyCode);
     listFireExtraKey.addKey(flags, keyCode, charCode);
   }
 
@@ -1036,8 +1055,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     unsigned int charSet = 0;
     unsigned origCharCode = 0;
     unsigned origCharSet = 0;
-    callback(target, KeyEvent::DOWN, flags, KeyCode::ENTER, CharCode::ENTER, charSet, origCharCode, origCharSet, keyboardType, false, ts, sender, refcon);
-    callback(target, KeyEvent::UP,   flags, KeyCode::ENTER, CharCode::ENTER, charSet, origCharCode, origCharSet, keyboardType, false, ts, sender, refcon);
+
+    RemapUtil::fireKey(callback, target, KeyEvent::DOWN, flags, KeyCode::ENTER, CharCode::ENTER, charSet, origCharCode, origCharSet, keyboardType, false, ts, sender, refcon);
+    RemapUtil::fireKey(callback, target, KeyEvent::UP,   flags, KeyCode::ENTER, CharCode::ENTER, charSet, origCharCode, origCharSet, keyboardType, false, ts, sender, refcon);
   }
 
   void
@@ -1048,8 +1068,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     unsigned int charSet = 0;
     unsigned origCharCode = 0;
     unsigned origCharSet = 0;
-    callback(target, KeyEvent::DOWN, flags, KeyCode::SPACE, CharCode::SPACE, charSet, origCharCode, origCharSet, keyboardType, false, ts, sender, refcon);
-    callback(target, KeyEvent::UP,   flags, KeyCode::SPACE, CharCode::SPACE, charSet, origCharCode, origCharSet, keyboardType, false, ts, sender, refcon);
+    RemapUtil::fireKey(callback, target, KeyEvent::DOWN, flags, KeyCode::SPACE, CharCode::SPACE, charSet, origCharCode, origCharSet, keyboardType, false, ts, sender, refcon);
+    RemapUtil::fireKey(callback, target, KeyEvent::UP,   flags, KeyCode::SPACE, CharCode::SPACE, charSet, origCharCode, origCharSet, keyboardType, false, ts, sender, refcon);
   }
 
   void
@@ -1102,12 +1122,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     unsigned origCharSet = 0;
 
     if (keyCombination.keyCode1 != KeyCode::NONE) {
-      callback(target, KeyEvent::DOWN, flags, keyCombination.keyCode1, keyCombination.charCode1, charSet, origCharCode, origCharSet, keyboardType, false, ts, sender, refcon);
-      callback(target, KeyEvent::UP,   flags, keyCombination.keyCode1, keyCombination.charCode1, charSet, origCharCode, origCharSet, keyboardType, false, ts, sender, refcon);
+      RemapUtil::fireKey(callback, target, KeyEvent::DOWN, flags, keyCombination.keyCode1, keyCombination.charCode1, charSet, origCharCode, origCharSet, keyboardType, false, ts, sender, refcon);
+      RemapUtil::fireKey(callback, target, KeyEvent::UP,   flags, keyCombination.keyCode1, keyCombination.charCode1, charSet, origCharCode, origCharSet, keyboardType, false, ts, sender, refcon);
     }
     if (keyCombination.keyCode2 != KeyCode::NONE) {
-      callback(target, KeyEvent::DOWN, flags, keyCombination.keyCode2, keyCombination.charCode2, charSet, origCharCode, origCharSet, keyboardType, false, ts, sender, refcon);
-      callback(target, KeyEvent::UP,   flags, keyCombination.keyCode2, keyCombination.charCode2, charSet, origCharCode, origCharSet, keyboardType, false, ts, sender, refcon);
+      RemapUtil::fireKey(callback, target, KeyEvent::DOWN, flags, keyCombination.keyCode2, keyCombination.charCode2, charSet, origCharCode, origCharSet, keyboardType, false, ts, sender, refcon);
+      RemapUtil::fireKey(callback, target, KeyEvent::UP,   flags, keyCombination.keyCode2, keyCombination.charCode2, charSet, origCharCode, origCharSet, keyboardType, false, ts, sender, refcon);
     }
   }
 

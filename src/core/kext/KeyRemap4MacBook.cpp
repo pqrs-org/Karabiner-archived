@@ -743,15 +743,10 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardEventCallBack(OSObject *target,
     org_pqrs_KeyRemap4MacBook::listFireExtraKey.fire(org_pqrs_KeyRemap4MacBook::FireExtraKey::TYPE_BEFORE, p->origEventCallback, target, charSet, origCharCode, origCharSet, keyboardType, ts, sender, refcon);
 
     if (! ex_dropKey) {
-      static unsigned int lastFlags = 0;
-      org_pqrs_KeyRemap4MacBook::RemapUtil::fireModifiers(lastFlags, flags, p->origEventCallback, target, keyboardType, ts, sender, refcon);
-      lastFlags = flags;
-
-      if (eventType == org_pqrs_KeyRemap4MacBook::KeyEvent::DOWN ||
-          eventType == org_pqrs_KeyRemap4MacBook::KeyEvent::UP) {
-        p->origEventCallback(target, eventType, flags, key, charCode,
-                             charSet, origCharCode, origCharSet, keyboardType, repeat, ts, sender, refcon);
-      }
+      org_pqrs_KeyRemap4MacBook::RemapUtil::fireKey(p->origEventCallback,
+                                                    target, eventType, flags, key, charCode,
+                                                    charSet, origCharCode, origCharSet, keyboardType, repeat,
+                                                    ts, sender, refcon);
     }
 
     org_pqrs_KeyRemap4MacBook::listFireExtraKey.fire(org_pqrs_KeyRemap4MacBook::FireExtraKey::TYPE_AFTER, p->origEventCallback, target, charSet, origCharCode, origCharSet, keyboardType, ts, sender, refcon);

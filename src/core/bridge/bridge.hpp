@@ -31,6 +31,7 @@ namespace KeyRemap4MacBook_bridge {
       SKYPE,
       MAIL, // Mail.app
       EDITOR, // TextEdit
+      ADOBE, // Adobe Softwares
     };
 
     // none
