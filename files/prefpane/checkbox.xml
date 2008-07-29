@@ -1498,7 +1498,7 @@
         <item>
           <name>Command_R+g/G to Home/End</name>
           <sysctl>option.vimode_gG</sysctl>
-          <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::COMMAND_R, KeyCode::HOME</autogen>
+          <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::HOME</autogen>
           <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::COMMAND_R | ModifierFlag::SHIFT_L, KeyCode::END</autogen>
           <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::COMMAND_R | ModifierFlag::SHIFT_R, KeyCode::END</autogen>
         </item>
