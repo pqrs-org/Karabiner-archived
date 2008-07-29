@@ -1,5 +1,7 @@
 #!/usr/bin/ruby
 
+require 'rexml/document'
+
 # ----------------------------------------------------------------------
 template = {}
 Dir.glob('template/*.cpp') do |filename|
@@ -10,90 +12,185 @@ Dir.glob('template/*.cpp') do |filename|
 end
 
 # ----------------------------------------------------------------------
-lastName = nil;
-while l = $stdin.gets
-  l.strip!
+vars = ''
+sysctl = ''
+register = ''
+unregister = ''
+default = ''
+func = {
+  'key' => [],
+  'key_KeyOverlaidModifier' => [],
+  'key_KeyOverlaidModifierCombination' => [],
+  'key_ModifierHoldingKeyToKey' => [],
+  'consumer' => [],
+  'pointing' => [],
+}
+code = ''
 
-  if /<sysctl>(.+?)\.(.+)<\/sysctl>/ =~ l then
-    type = $1
-    entry = $2
-
-    lastName = "#{type}_#{entry}"
-
-    case ARGV[0]
-    when 'hpp'
-      print "int #{type}_#{entry};\n"
-    when 'cpp_SYSCTL'
-      print "SYSCTL_INT(_keyremap4macbook_#{type}, OID_AUTO, #{entry}, CTLTYPE_INT|CTLFLAG_RW, &(config.#{type}_#{entry}), 0, \"\");\n"
-    when 'cpp_register'
-      print "sysctl_register_oid(&sysctl__keyremap4macbook_#{type}_#{entry});\n"
-    when 'cpp_unregister'
-      print "sysctl_unregister_oid(&sysctl__keyremap4macbook_#{type}_#{entry});\n"
-    end
+$stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
+  if /.*(<item>.+?<\/item>)/m =~ item then
+    item = $1
   end
 
-  if /<default>(.+)<\/default>/ =~ l then
-    value = $1
-    if ARGV[0] == 'default' then
-      print "#{lastName} = #{value};\n"
-    end
+  name = nil
+  filter = ''
+  code_key = ''
+  code_consumer = ''
+  code_pointing = ''
+
+  if /<sysctl>([^\.]+?)\.(.+?)<\/sysctl>/m =~ item then
+    name = "#{$1}_#{$2}"
+    sysctl += "SYSCTL_INT(_keyremap4macbook_#{$1}, OID_AUTO, #{$2}, CTLTYPE_INT|CTLFLAG_RW, &(config.#{name}), 0, \"\");\n"
+    register += "sysctl_register_oid(&sysctl__keyremap4macbook_#{name});\n"
+    unregister += "sysctl_unregister_oid(&sysctl__keyremap4macbook_#{name});\n"
   end
 
-  if /<autogen>(.+)<\/autogen>/ =~ l then
-    value = $1
-    type = nil
-    params = nil
-    if /^--(.+?)-- (.+)$/ =~ value then
+  next if name.nil?
+
+  vars += "int #{name};\n"
+
+  if /<default>(.+?)<\/default>/m =~ item then
+    default += "#{name} = #{$1};\n"
+  end
+
+  if /<not>(.+?)<\/not>/m =~ item then
+    $1.split(/,/).each do |f|
+      filter += "if (params.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::#{f.strip}) return;\n"
+    end
+  end
+  if /<only>(.+?)<\/only>/m =~ item then
+    tmp = []
+    $1.split(/,/).each do |f|
+      tmp << "(params.appType != KeyRemap4MacBook_bridge::ActiveApplicationInfo::#{f.strip})"
+    end
+    filter += "if (#{tmp.join(' && ')}) return;\n"
+  end
+
+  item.scan(/<autogen>(.+?)<\/autogen>/m).each do |autogen|
+    if /^--(.+?)-- (.+)$/ =~ autogen[0] then
       type = $1
       params = $2
-    end
 
-    if type.nil? then
-      $stderr.puts "[ERROR] type is nil for #{value}"
-    end
+      case type
+      when 'KeyToKey'
+        code_key += "RemapUtil::keyToKey(params, #{params});"
+        func['key'] << name
 
-    case ARGV[0]
-    when 'remapcode_func'
-      code = template[type]
-      if code.nil? then
-        $stderr.puts "[ERROR] There is no template for #{type}"
+      when 'DoublePressModifier'
+        code_key += "{"
+        code_key += "static DoublePressModifier dpm;"
+        code_key += "dpm.remap(params, #{params});"
+        code_key += "}"
+        func['key'] << name
+
+      when 'KeyToComsumer'
+        code_key += "RemapUtil::keyToConsumer(params, #{params});"
+        func['key'] << name
+
+      when 'KeyToPointingButton'
+        code_key += "RemapUtil::keyToPointingButton(params, #{params});"
+        func['key'] << name
+
+      when 'JISToggleEisuuKana'
+        code_key += "RemapUtil::jis_toggle_eisuu_kana(params, #{params});"
+        func['key'] << name
+
+      when 'KeyOverlaidModifier'
+        code_key += "{"
+        code_key += "static KeyOverlaidModifier kom;"
+        code_key += "kom.remap(params, #{params});"
+        code_key += "}"
+        func['key_KeyOverlaidModifier'] << name
+
+      when 'KeyOverlaidModifierCombination'
+        code_key += "{"
+        code_key += "static KeyOverlaidModifierCombination komc;"
+        code_key += "komc.remap(params, #{params});"
+        code_key += "}"
+        func['key_KeyOverlaidModifierCombination'] << name
+
+      when 'ModifierHoldingKeyToKey'
+        code_key += "{"
+        code_key += "static ModifierHoldingKeyToKey mhkk;"
+        code_key += "mhkk.remap(params, #{params});"
+        code_key += "}"
+        func['key_ModifierHoldingKeyToKey'] << name
+
+      when 'ConsumerToKey'
+        code_consumer += "RemapUtil::consumerToKey(params, #{params});"
+        func['consumer'] << name
+
+      when 'ButtonRelativeToScroll'
+        code_pointing += "{"
+        code_pointing += "static ButtonRelativeToScroll brts;"
+        code_pointing += "brts.remap(params, #{params});"
+        code_pointing += "}"
+        func['pointing'] << name
+
       else
-        print code.gsub(/%%LASTNAME%%/, lastName).gsub(/%%PARAMS%%/, params)
-      end
+        print "%%% ERROR #{type} %%%"
 
-    when 'remapcode_call'
-      if type != 'KeyOverlaidModifier' &&
-          type != 'KeyOverlaidModifierCombination' &&
-          type != 'ModifierHoldingKeyToKey' &&
-          type != 'ConsumerToKey' &&
-          type != 'ButtonRelativeToScroll' then
-        print "GeneratedCode::#{lastName}(params);\n"
-      end
-
-    when 'remapcode_call_kom'
-      if type == 'KeyOverlaidModifier' then
-        print "GeneratedCode::#{lastName}(params);\n"
-      end
-
-    when 'remapcode_call_komc'
-      if type == 'KeyOverlaidModifierCombination' then
-        print "GeneratedCode::#{lastName}(params);\n"
-      end
-
-    when 'remapcode_call_mhkk'
-      if type == 'ModifierHoldingKeyToKey' then
-        print "GeneratedCode::#{lastName}(params);\n"
-      end
-
-    when 'remapcode_call_consumer'
-      if type == 'ConsumerToKey' then
-        print "GeneratedCode::#{lastName}(params);\n"
-      end
-
-    when 'remapcode_call_pointing_relative'
-      if type == 'ButtonRelativeToScroll' then
-        print "GeneratedCode::#{lastName}(params);\n"
       end
     end
+  end
+
+  check = "if (! config.#{name}) return;"
+  unless code_key.empty? then
+    code += "inline void #{name}(const RemapParams &params) { #{check} #{filter}#{code_key} }\n"
+  end
+  unless code_consumer.empty? then
+    code += "inline void #{name}(const RemapConsumerParams &params) { #{check} #{code_consumer} }\n"
+  end
+  unless code_pointing.empty? then
+    code += "inline void #{name}(const RemapPointingParams_relative &params) { #{check} #{code_pointing} }\n"
+  end
+end
+
+open('output/include.config.hpp', 'w') do |f|
+  f.puts vars
+end
+open('output/include.config_SYSCTL.cpp', 'w') do |f|
+  f.puts sysctl
+end
+open('output/include.config_register.cpp', 'w') do |f|
+  f.puts register
+end
+open('output/include.config_unregister.cpp', 'w') do |f|
+  f.puts unregister
+end
+open('output/include.config.default.hpp', 'w') do |f|
+  f.puts default
+end
+open('output/include.remapcode_func.cpp', 'w') do |f|
+  f.puts code
+end
+open('output/include.remapcode_call.cpp', 'w') do |f|
+  func['key'].uniq.each do |call|
+    f.puts "GeneratedCode::#{call}(params);\n"
+  end
+end
+open('output/include.remapcode_call_kom.cpp', 'w') do |f|
+  func['key_KeyOverlaidModifier'].uniq.each do |call|
+    f.puts "GeneratedCode::#{call}(params);\n"
+  end
+end
+open('output/include.remapcode_call_komc.cpp', 'w') do |f|
+  func['key_KeyOverlaidModifierCombination'].uniq.each do |call|
+    f.puts "GeneratedCode::#{call}(params);\n"
+  end
+end
+open('output/include.remapcode_call_mhkk.cpp', 'w') do |f|
+  func['key_ModifierHoldingKeyToKey'].uniq.each do |call|
+    f.puts "GeneratedCode::#{call}(params);\n"
+  end
+end
+open('output/include.remapcode_call_consumer.cpp', 'w') do |f|
+  func['consumer'].uniq.each do |call|
+    f.puts "GeneratedCode::#{call}(params);\n"
+  end
+end
+open('output/include.remapcode_call_pointing_relative.cpp', 'w') do |f|
+  func['pointing'].uniq.each do |call|
+    f.puts "GeneratedCode::#{call}(params);\n"
   end
 end

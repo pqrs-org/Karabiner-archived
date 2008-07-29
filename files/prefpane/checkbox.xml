@@ -588,26 +588,62 @@
             <item>
               <name>F1 to Brightness Down</name>
               <sysctl>remap.f1_to_brightnessdown</sysctl>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+              <autogen>--KeyToComsumer-- KeyCode::F1, ConsumerKeyCode::BRIGHTNESS_DOWN</autogen>
             </item>
             <item>
               <name>F2 to Brightness Up</name>
               <sysctl>remap.f2_to_brightnessup</sysctl>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+              <autogen>--KeyToComsumer-- KeyCode::F2, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
             </item>
             <item>
               <name>F3 to Volume Mute</name>
               <sysctl>remap.f3_to_volumemute</sysctl>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+              <autogen>--KeyToComsumer-- KeyCode::F3, ConsumerKeyCode::VOLUME_MUTE</autogen>
             </item>
             <item>
               <name>F4 to Volume Down</name>
               <sysctl>remap.f4_to_volumedown</sysctl>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+              <autogen>--KeyToComsumer-- KeyCode::F4, ConsumerKeyCode::VOLUME_DOWN</autogen>
             </item>
             <item>
               <name>F5 to Volume Up</name>
               <sysctl>remap.f5_to_volumeup</sysctl>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+              <autogen>--KeyToComsumer-- KeyCode::F5, ConsumerKeyCode::VOLUME_UP</autogen>
             </item>
             <item>
               <name>Force remap F1..F5 in VMware, Parallels, RDC</name>
-              <sysctl>option.f1_f5_force_vm</sysctl>
+              <list>
+                <item>
+                  <name>F1 to Brightness Down</name>
+                  <sysctl>remap.f1_to_brightnessdown_force</sysctl>
+                  <autogen>--KeyToComsumer-- KeyCode::F1, ConsumerKeyCode::BRIGHTNESS_DOWN</autogen>
+                </item>
+                <item>
+                  <name>F2 to Brightness Up</name>
+                  <sysctl>remap.f2_to_brightnessup_force</sysctl>
+                  <autogen>--KeyToComsumer-- KeyCode::F2, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
+                </item>
+                <item>
+                  <name>F3 to Volume Mute</name>
+                  <sysctl>remap.f3_to_volumemute_force</sysctl>
+                  <autogen>--KeyToComsumer-- KeyCode::F3, ConsumerKeyCode::VOLUME_MUTE</autogen>
+                </item>
+                <item>
+                  <name>F4 to Volume Down</name>
+                  <sysctl>remap.f4_to_volumedown_force</sysctl>
+                  <autogen>--KeyToComsumer-- KeyCode::F4, ConsumerKeyCode::VOLUME_DOWN</autogen>
+                </item>
+                <item>
+                  <name>F5 to Volume Up</name>
+                  <sysctl>remap.f5_to_volumeup_force</sysctl>
+                  <autogen>--KeyToComsumer-- KeyCode::F5, ConsumerKeyCode::VOLUME_UP</autogen>
+                </item>
+              </list>
             </item>
           </list>
         </item>
@@ -810,6 +846,7 @@
         <item>
           <name>Option_R to Command+Control+Option+Shift+F1</name>
           <sysctl>remap.optionR2allF1</sysctl>
+          <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::OPTION_R, KeyCode::F1, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
         </item>
       </list>
     </item>
@@ -1055,18 +1092,26 @@
         <item>
           <name>Command+Tab to Option+Tab</name>
           <sysctl>remap.commandTab2optionTab</sysctl>
+          <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::COMMAND_L, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::COMMAND_R, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
           <name>Command+Tab to F5</name>
           <sysctl>remap.commandTab2f5</sysctl>
+          <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::COMMAND_L, KeyCode::F5</autogen>
+          <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::COMMAND_R, KeyCode::F5</autogen>
         </item>
         <item>
           <name>Option+Tab to Command+Tab</name>
           <sysctl>remap.optionTab2commandTab</sysctl>
+          <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::OPTION_L, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::OPTION_R, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
           <name>Option+Tab to F5</name>
           <sysctl>remap.optionTab2f5</sysctl>
+          <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::OPTION_L, KeyCode::F5</autogen>
+          <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::OPTION_R, KeyCode::F5</autogen>
         </item>
       </list>
     </item>
@@ -1077,86 +1122,111 @@
         <item>
           <name>Control+D to Forward Delete</name>
           <sysctl>option.emacsmode_controlD</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
+          <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::FORWARD_DELETE</autogen>
+          <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_R, KeyCode::FORWARD_DELETE</autogen>
         </item>
         <item>
           <name>Control+H to Delete</name>
           <sysctl>option.emacsmode_controlH</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
+          <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::CONTROL_L, KeyCode::DELETE</autogen>
+          <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::CONTROL_R, KeyCode::DELETE</autogen>
         </item>
         <item>
           <name>Control+I to Tab</name>
           <sysctl>option.emacsmode_controlI</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
         </item>
         <item>
           <name>Control+[ to Escape</name>
           <sysctl>option.emacsmode_controlLeftbracket</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
         </item>
         <item>
           <name>Control+M to Return</name>
           <sysctl>option.emacsmode_controlM</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
         </item>
         <item>
           <name>Control+PNBF to Up/Down/Left/Right</name>
           <sysctl>option.emacsmode_controlPNBF</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
         </item>
         <item>
           <name>Control+V to PageDown</name>
           <sysctl>option.emacsmode_controlV</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
         </item>
         <item>
           <name>Option+V to PageUp</name>
           <sysctl>option.emacsmode_optionV</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
         </item>
         <item>
           <name>Command+V to PageUp</name>
           <sysctl>option.emacsmode_commandV</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
         </item>
         <item>
           <name>Control+Y to Command+V</name>
           <sysctl>option.emacsmode_controlY</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
         </item>
         <item>
           <name>Control+AE to Command+Left/Right</name>
           <sysctl>option.emacsmode_controlAE</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
         </item>
         <item>
           <name>Control+K to Command+Shift+Right,Command+X</name>
           <sysctl>option.emacsmode_controlK</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
         </item>
         <item>
           <name>Option+BF to Option+Left/Right</name>
           <sysctl>option.emacsmode_optionBF</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
         </item>
         <item>
           <name>Option+D to Option+Forward Delete</name>
           <sysctl>option.emacsmode_optionD</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
         </item>
         <item>
           <name>Option+&lt; to Home / Option+&gt; to End</name>
           <sysctl>option.emacsmode_optionLtGt</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
         </item>
         <item>
           <name>[ex] Control+1 to Home / Control+2 to End</name>
           <sysctl>option.emacsmode_ex_control12</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
         </item>
         <item>
           <name>[ex] Control+Q to PageUp</name>
           <sysctl>option.emacsmode_ex_controlQ</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
         </item>
         <item>
           <name>[ex] Control+W to Option+Delete</name>
           <sysctl>option.emacsmode_ex_controlW</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
         </item>
         <item>
           <name>[ex] Control+U to Command+Shift+Left,Command+X</name>
           <sysctl>option.emacsmode_ex_controlU</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
         </item>
         <item>
           <name>[ex] Control+G to Escape</name>
           <sysctl>option.emacsmode_ex_controlG</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
         </item>
         <item>
           <name>[ex] Control+AE to Home/End</name>
           <sysctl>option.emacsmode_ex_controlAE</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
         </item>
         <item>
           <name>Behavior in Emacs, Terminal, X11, VMware, Parallels, RDC</name>
@@ -1167,14 +1237,17 @@
                 <item>
                   <name>In Emacs, Terminal</name>
                   <sysctl>option.emacsmode_force_controlD_term</sysctl>
+                  <only>TERMINAL</only>
                 </item>
                 <item>
                   <name>In X11</name>
                   <sysctl>option.emacsmode_force_controlD_x11</sysctl>
+                  <only>X11</only>
                 </item>
                 <item>
                   <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
                   <sysctl>option.emacsmode_force_controlD_vm</sysctl>
+                  <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
                 </item>
               </list>
             </item>
@@ -1184,14 +1257,17 @@
                 <item>
                   <name>In Emacs, Terminal</name>
                   <sysctl>option.emacsmode_force_controlH_term</sysctl>
+                  <only>TERMINAL</only>
                 </item>
                 <item>
                   <name>In X11</name>
                   <sysctl>option.emacsmode_force_controlH_x11</sysctl>
+                  <only>X11</only>
                 </item>
                 <item>
                   <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
                   <sysctl>option.emacsmode_force_controlH_vm</sysctl>
+                  <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
                 </item>
               </list>
             </item>
@@ -1201,14 +1277,17 @@
                 <item>
                   <name>In Emacs, Terminal</name>
                   <sysctl>option.emacsmode_force_controlI_term</sysctl>
+                  <only>TERMINAL</only>
                 </item>
                 <item>
                   <name>In X11</name>
                   <sysctl>option.emacsmode_force_controlI_x11</sysctl>
+                  <only>X11</only>
                 </item>
                 <item>
                   <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
                   <sysctl>option.emacsmode_force_controlI_vm</sysctl>
+                  <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
                 </item>
               </list>
             </item>
@@ -1218,14 +1297,17 @@
                 <item>
                   <name>In Emacs, Terminal</name>
                   <sysctl>option.emacsmode_force_controlM_term</sysctl>
+                  <only>TERMINAL</only>
                 </item>
                 <item>
                   <name>In X11</name>
                   <sysctl>option.emacsmode_force_controlM_x11</sysctl>
+                  <only>X11</only>
                 </item>
                 <item>
                   <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
                   <sysctl>option.emacsmode_force_controlM_vm</sysctl>
+                  <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
                 </item>
               </list>
             </item>
@@ -1235,14 +1317,17 @@
                 <item>
                   <name>In Emacs, Terminal</name>
                   <sysctl>option.emacsmode_force_controlLeftbracket_term</sysctl>
+                  <only>TERMINAL</only>
                 </item>
                 <item>
                   <name>In X11</name>
                   <sysctl>option.emacsmode_force_controlLeftbracket_x11</sysctl>
+                  <only>X11</only>
                 </item>
                 <item>
                   <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
                   <sysctl>option.emacsmode_force_controlLeftbracket_vm</sysctl>
+                  <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
                 </item>
               </list>
             </item>
@@ -1252,14 +1337,17 @@
                 <item>
                   <name>In Emacs, Terminal</name>
                   <sysctl>option.emacsmode_force_controlPNBF_term</sysctl>
+                  <only>TERMINAL</only>
                 </item>
                 <item>
                   <name>In X11</name>
                   <sysctl>option.emacsmode_force_controlPNBF_x11</sysctl>
+                  <only>X11</only>
                 </item>
                 <item>
                   <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
                   <sysctl>option.emacsmode_force_controlPNBF_vm</sysctl>
+                  <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
                 </item>
               </list>
             </item>
@@ -1269,6 +1357,7 @@
                 <item>
                   <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
                   <sysctl>option.emacsmode_controlAE_vm</sysctl>
+                  <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
                 </item>
               </list>
             </item>
@@ -1283,18 +1372,29 @@
         <item>
           <name>Command_R+hjkl to Left/Down/Up/Right</name>
           <sysctl>option.vimode_hjkl</sysctl>
+          <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::COMMAND_R, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::COMMAND_R, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::COMMAND_R, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::COMMAND_R, KeyCode::CURSOR_RIGHT</autogen>
         </item>
         <item>
           <name>Command_R+g/G to Home/End</name>
           <sysctl>option.vimode_gG</sysctl>
+          <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::COMMAND_R, KeyCode::HOME</autogen>
+          <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::COMMAND_R | ModifierFlag::SHIFT_L, KeyCode::END</autogen>
+          <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::COMMAND_R | ModifierFlag::SHIFT_R, KeyCode::END</autogen>
         </item>
         <item>
           <name>Command_R+bf to PageUp/PageDown</name>
           <sysctl>option.vimode_bf</sysctl>
+          <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::COMMAND_R, KeyCode::PAGEUP</autogen>
+          <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::COMMAND_R, KeyCode::PAGEDOWN</autogen>
         </item>
         <item>
           <name>Command_R+0$ to Command+Left/Right</name>
           <sysctl>option.vimode_0dollar</sysctl>
+          <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::COMMAND_R, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::COMMAND_R, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
         </item>
       </list>
     </item>
@@ -1346,8 +1446,11 @@
             </item>
             <item>
               <name>Remap KeyPad numbers for Spaces(3x3)</name>
-              <sysctl>remap.keypad2spaces</sysctl>
               <list>
+                <item>
+                  <name>Enable KeyPad numbers for Spaces(3x3)</name>
+                  <sysctl>remap.keypad2spaces</sysctl>
+                </item>
                 <item>
                   <name>Check if your Spaces setting is Control+[123456789]</name>
                   <sysctl>option.keypad2spaces_modifier_control</sysctl>
@@ -1393,14 +1496,22 @@
             <item>
               <name>Remap Command+R to Return (== Rename)</name>
               <sysctl>remap.app_finder_command_R_to_return</sysctl>
+              <only>FINDER</only>
+              <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::COMMAND_L, KeyCode::RETURN</autogen>
+              <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::COMMAND_R, KeyCode::RETURN</autogen>
             </item>
             <item>
               <name>Remap F2 to Return (== Rename)</name>
               <sysctl>remap.app_finder_f2_to_return</sysctl>
+              <only>FINDER</only>
+              <autogen>--KeyToKey-- KeyCode::F2, KeyCode::RETURN</autogen>
             </item>
             <item>
               <name>Remap Return to Command+O (== Open)</name>
               <sysctl>remap.app_finder_return2commandO</sysctl>
+              <only>FINDER</only>
+              <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::O, ModifierFlag::COMMAND_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::O, ModifierFlag::COMMAND_R</autogen>
             </item>
           </list>
         </item>
@@ -1410,6 +1521,8 @@
             <item>
               <name>Remap Command_L to Option_L</name>
               <sysctl>remap.app_term_commandL2optionL</sysctl>
+              <only>TERMINAL</only>
+              <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
             </item>
           </list>
         </item>

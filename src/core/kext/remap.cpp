@@ -84,79 +84,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
-  namespace {
-    void
-    handle_f1_f5_to_consumer(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ConsumerKeyCode::ConsumerKeyCode toKeyCode)
-    {
-      unsigned int flags = allFlagStatus.makeFlags(params);
-      if (flags != 0) return;
-
-      bool is_virtualmachine = false;
-      if (params.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::VIRTUALMACHINE) is_virtualmachine = true;
-      if (params.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::REMOTEDESKTOPCONNECTION) is_virtualmachine = true;
-
-      if (is_virtualmachine && ! config.option_f1_f5_force_vm) return;
-
-      RemapUtil::keyToConsumer(params, fromKeyCode, toKeyCode);
-    }
-  }
-
-  void
-  remap_f1_to_brightnessdown(const RemapParams &params)
-  {
-    if (! config.remap_f1_to_brightnessdown) return;
-
-    handle_f1_f5_to_consumer(params, KeyCode::F1, ConsumerKeyCode::BRIGHTNESS_DOWN);
-  }
-
-  void
-  remap_f2_to_brightnessup(const RemapParams &params)
-  {
-    if (! config.remap_f2_to_brightnessup) return;
-
-    handle_f1_f5_to_consumer(params, KeyCode::F2, ConsumerKeyCode::BRIGHTNESS_UP);
-  }
-
-  void
-  remap_f3_to_volumemute(const RemapParams &params)
-  {
-    if (! config.remap_f3_to_volumemute) return;
-
-    handle_f1_f5_to_consumer(params, KeyCode::F3, ConsumerKeyCode::VOLUME_MUTE);
-  }
-
-  void
-  remap_f4_to_volumedown(const RemapParams &params)
-  {
-    if (! config.remap_f4_to_volumedown) return;
-
-    handle_f1_f5_to_consumer(params, KeyCode::F4, ConsumerKeyCode::VOLUME_DOWN);
-  }
-
-  void
-  remap_f5_to_volumeup(const RemapParams &params)
-  {
-    if (! config.remap_f5_to_volumeup) return;
-
-    handle_f1_f5_to_consumer(params, KeyCode::F5, ConsumerKeyCode::VOLUME_UP);
-  }
-
-  // ----------------------------------------
-  void
-  remap_optionR2allF1(const RemapParams &params)
-  {
-    if (! config.remap_optionR2allF1) return;
-
-    if (! RemapUtil::isKey(params, KeyCode::OPTION_R)) return;
-
-    allFlagStatus.commandL.temporary_increase();
-    allFlagStatus.controlL.temporary_increase();
-    allFlagStatus.optionL.temporary_increase();
-    allFlagStatus.shiftL.temporary_increase();
-    RemapUtil::keyToKey(params, KeyCode::OPTION_R, KeyCode::F1);
-  }
-
-  // ----------------------------------------
   void
   remap_semicolon2return_controlsemicolon2semicolon(const RemapParams &params)
   {
@@ -229,56 +156,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     static KeyOverlaidModifier kom;
     kom.remap(params, KeyCode::TAB, ModifierFlag::OPTION_L, FireFunc::firefunc_tab);
-  }
-
-  void
-  remap_commandTab2optionTab(const RemapParams &params)
-  {
-    if (! config.remap_commandTab2optionTab) return;
-
-    if (params.ex_origKey != KeyCode::TAB) return;
-
-    if (allFlagStatus.isHeldDown_command()) {
-      allFlagStatus.temporaryDecrease_command();
-      allFlagStatus.optionL.temporary_increase();
-    }
-  }
-
-  void
-  remap_commandTab2f5(const RemapParams &params)
-  {
-    if (! config.remap_commandTab2f5) return;
-
-    static KeyWithModifierToKey kwmk_l;
-    static KeyWithModifierToKey kwmk_r;
-
-    if (kwmk_l.remap(params, KeyCode::TAB, ModifierFlag::COMMAND_L, KeyCode::F5)) return;
-    if (kwmk_r.remap(params, KeyCode::TAB, ModifierFlag::COMMAND_R, KeyCode::F5)) return;
-  }
-
-  void
-  remap_optionTab2f5(const RemapParams &params)
-  {
-    if (! config.remap_optionTab2f5) return;
-
-    static KeyWithModifierToKey kwmk_l;
-    static KeyWithModifierToKey kwmk_r;
-
-    if (kwmk_l.remap(params, KeyCode::TAB, ModifierFlag::OPTION_L, KeyCode::F5)) return;
-    if (kwmk_r.remap(params, KeyCode::TAB, ModifierFlag::OPTION_R, KeyCode::F5)) return;
-  }
-
-  void
-  remap_optionTab2commandTab(const RemapParams &params)
-  {
-    if (! config.remap_optionTab2commandTab) return;
-
-    if (params.ex_origKey != KeyCode::TAB) return;
-
-    if (allFlagStatus.isHeldDown_option()) {
-      allFlagStatus.temporaryDecrease_option();
-      allFlagStatus.commandL.temporary_increase();
-    }
   }
 
   // ----------------------------------------
@@ -460,30 +337,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool ignore = is_terminal || is_virtualmachine || is_x11;
 
     if (allFlagStatus.isHeldDown_control()) {
-      // Control+D -> FORWARD_DELETE
-      if (config.option_emacsmode_controlD && *(params.key) == KeyCode::D) {
-        bool doremap = ! ignore;
-        if (is_terminal && config.option_emacsmode_force_controlD_term) doremap = true;
-        if (is_x11 && config.option_emacsmode_force_controlD_x11) doremap = true;
-        if (is_virtualmachine && config.option_emacsmode_force_controlD_vm) doremap = true;
-
-        if (doremap) {
-          *(params.key) = KeyCode::FORWARD_DELETE;
-          allFlagStatus.temporaryDecrease_control();
-        }
-      }
-      // Control+H -> DELETE
-      if (config.option_emacsmode_controlH && *(params.key) == KeyCode::H) {
-        bool doremap = ! ignore;
-        if (is_terminal && config.option_emacsmode_force_controlH_term) doremap = true;
-        if (is_x11 && config.option_emacsmode_force_controlH_x11) doremap = true;
-        if (is_virtualmachine && config.option_emacsmode_force_controlH_vm) doremap = true;
-
-        if (doremap) {
-          *(params.key) = KeyCode::DELETE;
-          allFlagStatus.temporaryDecrease_control();
-        }
-      }
       // Control+I -> TAB
       if (config.option_emacsmode_controlI && *(params.key) == KeyCode::I) {
         bool doremap = ! ignore;
@@ -973,65 +826,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
-  void
-  remap_app_finder_command_R_to_return(const RemapParams &params)
-  {
-    if (! config.remap_app_finder_command_R_to_return) return;
-
-    if (params.appType != KeyRemap4MacBook_bridge::ActiveApplicationInfo::FINDER) return;
-
-    static KeyWithModifierToKey kwmk_l;
-    static KeyWithModifierToKey kwmk_r;
-
-    if (kwmk_l.remap(params, KeyCode::R, ModifierFlag::COMMAND_L, KeyCode::RETURN)) return;
-    if (kwmk_r.remap(params, KeyCode::R, ModifierFlag::COMMAND_R, KeyCode::RETURN)) return;
-  }
-
-  void
-  remap_app_finder_f2_to_return(const RemapParams &params)
-  {
-    if (! config.remap_app_finder_f2_to_return) return;
-
-    if (params.appType != KeyRemap4MacBook_bridge::ActiveApplicationInfo::FINDER) return;
-
-    RemapUtil::keyToKey(params, KeyCode::F2, KeyCode::RETURN);
-  }
-
-  void
-  remap_app_finder_return2commandO(const RemapParams &params)
-  {
-    if (! config.remap_app_finder_return2commandO) return;
-
-    if (params.appType != KeyRemap4MacBook_bridge::ActiveApplicationInfo::FINDER) return;
-
-    if (*(params.key) == KeyCode::RETURN) {
-      if (*(params.eventType) == KeyEvent::DOWN) {
-        FireFunc::firefunc_commandO(params);
-      }
-      *(params.ex_dropKey) = true;
-    }
-  }
-
-  void
-  remap_app_term_commandL2optionL(const RemapParams &params)
-  {
-    if (! config.remap_app_term_commandL2optionL) return;
-
-    if (params.appType != KeyRemap4MacBook_bridge::ActiveApplicationInfo::TERMINAL) return;
-
-    if (*(params.key) == KeyCode::COMMAND_L) {
-      unsigned int flags = allFlagStatus.makeFlags(params);
-      if (RemapUtil::isModifierOn(flags, ModifierFlag::COMMAND_L)) {
-        allFlagStatus.optionL.increase();
-        allFlagStatus.commandL.decrease();
-      } else {
-        allFlagStatus.optionL.decrease();
-        allFlagStatus.commandL.increase();
-      }
-      *(params.key) = KeyCode::OPTION_L;
-    }
-  }
-
   // ----------------------------------------
   void
   remap_qwerty2colemak(const RemapParams &params)
@@ -1282,14 +1076,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_fn2controlL_commandR2fn(params);
   remap_fn2fn(params);
 
-  remap_f1_to_brightnessdown(params);
-  remap_f2_to_brightnessup(params);
-  remap_f3_to_volumemute(params);
-  remap_f4_to_volumedown(params);
-  remap_f5_to_volumeup(params);
-
-  remap_optionR2allF1(params);
-
   remap_semicolon2return_controlsemicolon2semicolon(params);
   remap_swapcolons(params);
 
@@ -1297,18 +1083,10 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_shiftRshiftL2space(params);
 
   remap_tab2option_withControlL(params);
-  remap_commandTab2optionTab(params);
-  remap_commandTab2f5(params);
-  remap_optionTab2f5(params);
-  remap_optionTab2commandTab(params);
 
   // ----------------------------------------
   remap_app_vm_enter2controlL(params);
   remap_app_vm_commandspace2optionbackquote(params);
-  // *** Note: we need to call return2commandO before command_R_to_return, f2_to_return ***
-  remap_app_finder_return2commandO(params);
-  remap_app_finder_command_R_to_return(params);
-  remap_app_finder_f2_to_return(params);
 
   // ----------------------------------------
   remap_qwerty2colemak(params);
@@ -1372,11 +1150,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_pclikehomeend(params);
 
   // ------------------------------------------------------------
-  // *** Note: we need to call remap_app_term_commandL2optionL as possible late. ***
-  // *** If any *2commandL remappings is enable, remap_app_term_commandL2optionL needs to handle it ***
-  remap_app_term_commandL2optionL(params);
-
-  // ------------------------------------------------------------
 #include "config/output/include.remapcode_call_mhkk.cpp"
 
   // ------------------------------------------------------------
@@ -1385,19 +1158,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 
   // ------------------------------------------------------------
   *(params.flags) = allFlagStatus.makeFlags(params);
-
-  // ======================================================================
-  // post actions
-  if (*(params.ex_dropKey)) return;
-
-  jisKanaMode.setMode(*(params.eventType), *(params.key), *(params.flags));
-
-  if (config.debug) {
-    printf("sending hid event type %d flags 0x%x key %d ", *(params.eventType), *(params.flags), *(params.key));
-    printf("charCode %d charSet %d ", *(params.charCode), *(params.charSet));
-    printf("origCharCode %d origCharSet %d kbdType %d\n",
-           *(params.origCharCode), *(params.origCharSet), *(params.keyboardType));
-  }
 }
 
 void
