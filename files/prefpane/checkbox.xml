@@ -1264,8 +1264,8 @@
           <name>[ex] Control+W to Option+Delete</name>
           <sysctl>option.emacsmode_ex_controlW</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
-          <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::OPTION_L, KeyCode::DELETE</autogen>
-          <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::OPTION_R, KeyCode::DELETE</autogen>
+          <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::CONTROL_L, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::CONTROL_R, KeyCode::DELETE, ModifierFlag::OPTION_R</autogen>
         </item>
         <item>
           <name>[ex] Control+U to Command+Shift+Left,Command+X</name>
@@ -1297,7 +1297,7 @@
                 <item>
                   <name>In Emacs, Terminal</name>
                   <sysctl>option.emacsmode_force_controlD_term</sysctl>
-                  <only>TERMINAL</only>
+                  <only>EMACS, TERMINAL</only>
                   <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::FORWARD_DELETE</autogen>
                   <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_R, KeyCode::FORWARD_DELETE</autogen>
                 </item>
@@ -1323,7 +1323,7 @@
                 <item>
                   <name>In Emacs, Terminal</name>
                   <sysctl>option.emacsmode_force_controlH_term</sysctl>
-                  <only>TERMINAL</only>
+                  <only>EMACS, TERMINAL</only>
                   <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::CONTROL_L, KeyCode::DELETE</autogen>
                   <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::CONTROL_R, KeyCode::DELETE</autogen>
                 </item>
@@ -1349,7 +1349,7 @@
                 <item>
                   <name>In Emacs, Terminal</name>
                   <sysctl>option.emacsmode_force_controlI_term</sysctl>
-                  <only>TERMINAL</only>
+                  <only>EMACS, TERMINAL</only>
                   <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::CONTROL_L, KeyCode::TAB</autogen>
                   <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::CONTROL_R, KeyCode::TAB</autogen>
                 </item>
@@ -1375,7 +1375,7 @@
                 <item>
                   <name>In Emacs, Terminal</name>
                   <sysctl>option.emacsmode_force_controlM_term</sysctl>
-                  <only>TERMINAL</only>
+                  <only>EMACS, TERMINAL</only>
                   <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::CONTROL_L, KeyCode::RETURN</autogen>
                   <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::CONTROL_R, KeyCode::RETURN</autogen>
                 </item>
@@ -1401,7 +1401,7 @@
                 <item>
                   <name>In Emacs, Terminal</name>
                   <sysctl>option.emacsmode_force_controlLeftbracket_term</sysctl>
-                  <only>TERMINAL</only>
+                  <only>EMACS, TERMINAL</only>
                   <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::CONTROL_L, KeyCode::ESCAPE</autogen>
                   <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::CONTROL_R, KeyCode::ESCAPE</autogen>
                 </item>
@@ -1427,7 +1427,7 @@
                 <item>
                   <name>In Emacs, Terminal</name>
                   <sysctl>option.emacsmode_force_controlPNBF_term</sysctl>
-                  <only>TERMINAL</only>
+                  <only>EMACS, TERMINAL</only>
                   <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::CONTROL_L, KeyCode::CURSOR_UP</autogen>
                   <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::CONTROL_R, KeyCode::CURSOR_UP</autogen>
                   <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN</autogen>
