@@ -233,24 +233,17 @@ namespace org_pqrs_KeyRemap4MacBook {
       unsigned int flags = allFlagStatus.makeFlags(params);
       if ((flags & fromFlags) != fromFlags) return false;
     }
+
+    if (! keyToKey(params, fromKeyCode, toKeyCode, toFlags)) return false;
+
     for (int i = 0; i < ModifierFlag::listsize; ++i) {
       ModifierFlag::ModifierFlag m = ModifierFlag::list[i];
-      bool from = RemapUtil::isModifierOn(fromFlags, m);
-      bool to = RemapUtil::isModifierOn(toFlags, m);
 
-      if (from == to) continue;
-
-      FlagStatus *p = allFlagStatus.getFlagStatus(m);
-      if (! p) continue;
-
-      if (from) {
-        p->temporary_decrease();
-      } else {
-        p->temporary_increase();
+      if (isModifierOn(fromFlags, m)) {
+        FlagStatus *p = allFlagStatus.getFlagStatus(m);
+        if (p) p->temporary_decrease();
       }
     }
-    keyToKey(params, fromKeyCode, toKeyCode);
-
     return true;
   }
 
@@ -379,47 +372,52 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // --------------------
-  void
-  RemapUtil::fireModifiers(unsigned int fromFlags, unsigned int toFlags,
-                           KeyboardEventCallback callback, OSObject *target,
-                           unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon)
-  {
+  namespace {
+    void
+    fireModifiers(unsigned int fromFlags, unsigned int toFlags,
+                  KeyboardEventCallback callback, OSObject *target,
+                  unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon)
+    {
 #if 0
-    printf("RemapUtil::fireModifiers from:%x to:%x\n", fromFlags, toFlags);
+      printf("RemapUtil::fireModifiers from:%x to:%x\n", fromFlags, toFlags);
 #endif
+      if (callback == NULL) return;
 
-    if (callback == NULL) return;
+      bool modifierStatus[ModifierFlag::listsize];
 
-    bool modifierStatus[ModifierFlag::listsize];
-
-    // setup modifierStatus
-    for (int i = 0; i < ModifierFlag::listsize; ++i) {
-      modifierStatus[i] = RemapUtil::isModifierOn(fromFlags, ModifierFlag::list[i]);
-    }
-
-    // fire
-    for (int i = 0; i < ModifierFlag::listsize; ++i) {
-      ModifierFlag::ModifierFlag m = ModifierFlag::list[i];
-      bool from = RemapUtil::isModifierOn(fromFlags, m);
-      bool to = RemapUtil::isModifierOn(toFlags, m);
-
-      if (from == to) continue;
-
-      if (from) {
-        modifierStatus[i] = false;
-      } else {
-        modifierStatus[i] = true;
+      // setup modifierStatus
+      for (int i = 0; i < ModifierFlag::listsize; ++i) {
+        modifierStatus[i] = RemapUtil::isModifierOn(fromFlags, ModifierFlag::list[i]);
       }
 
-      unsigned int flags = 0;
-      for (int j = 0; j < ModifierFlag::listsize; ++j) {
-        if (modifierStatus[j]) {
-          flags |= ModifierFlag::list[i];
+      // fire
+      for (int i = 0; i < ModifierFlag::listsize; ++i) {
+        ModifierFlag::ModifierFlag m = ModifierFlag::list[i];
+        bool from = RemapUtil::isModifierOn(fromFlags, m);
+        bool to = RemapUtil::isModifierOn(toFlags, m);
+
+        if (from == to) continue;
+
+        if (from) {
+          modifierStatus[i] = false;
+        } else {
+          modifierStatus[i] = true;
+        }
+
+        unsigned int flags = 0;
+        for (int j = 0; j < ModifierFlag::listsize; ++j) {
+          if (modifierStatus[j]) {
+            flags |= ModifierFlag::list[j];
+          }
+        }
+
+        KeyCode::KeyCode keyCode = RemapUtil::getModifierKeyCode(m);
+        callback(target, KeyEvent::MODIFY, flags, keyCode, 0, 0, 0, 0, keyboardType, false, ts, sender, refcon);
+
+        if (config.debug) {
+          printf("sending hid event type KeyEvent::MODIFY flags 0x%x key %d kbdType %d\n", flags, keyCode, keyboardType);
         }
       }
-
-      KeyCode::KeyCode keyCode = RemapUtil::getModifierKeyCode(m);
-      callback(target, KeyEvent::MODIFY, flags, keyCode, 0, 0, 0, 0, keyboardType, false, ts, sender, refcon);
     }
   }
 
@@ -432,10 +430,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! callback) return;
 
     static unsigned int lastFlags = 0;
-    org_pqrs_KeyRemap4MacBook::RemapUtil::fireModifiers(lastFlags, flags, callback, target, keyboardType, ts, sender, refcon);
+    fireModifiers(lastFlags, flags, callback, target, keyboardType, ts, sender, refcon);
     lastFlags = flags;
 
     if (eventType == KeyEvent::DOWN || eventType == KeyEvent::UP) {
+      if (config.debug) {
+        printf("sending hid event type %d flags 0x%x key %d ", eventType, flags, key);
+        printf("charCode %d charSet %d ", charCode, charSet);
+        printf("origCharCode %d origCharSet %d kbdType %d\n",
+               origCharCode, origCharSet, keyboardType);
+      }
       callback(target, eventType, flags, key, charCode,
                charSet, origCharCode, origCharSet, keyboardType, repeat, ts, sender, refcon);
 
@@ -849,10 +853,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     // fire only if no-modifiers
     if (allFlagStatus.makeFlags(params) != 0) return;
 
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, ModifierFlag::COMMAND_L, KeyCode::COMMAND_L, CharCode::COMMAND_L);
     listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN,   ModifierFlag::COMMAND_L, KeyCode::O,         CharCode::O);
     listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP,     ModifierFlag::COMMAND_L, KeyCode::O,         CharCode::O);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, 0,                       KeyCode::COMMAND_L, CharCode::COMMAND_L);
   }
 
   void
@@ -861,10 +863,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     // fire only if no-modifiers
     if (allFlagStatus.makeFlags(params) != 0) return;
 
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, ModifierFlag::COMMAND_L, KeyCode::COMMAND_L, CharCode::COMMAND_L);
     listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN,   ModifierFlag::COMMAND_L, KeyCode::SPACE,     CharCode::SPACE);
     listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP,     ModifierFlag::COMMAND_L, KeyCode::SPACE,     CharCode::SPACE);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, 0,                       KeyCode::COMMAND_L, CharCode::COMMAND_L);
   }
 
   void
@@ -1232,21 +1232,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
       clickWatcher.unset(&isClick);
     }
-  }
-
-  bool
-  KeyWithModifierToKey::remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag fromFlag, KeyCode::KeyCode toKeyCode)
-  {
-    FlagStatus *fromStatus = allFlagStatus.getFlagStatus(fromFlag);
-    if (fromStatus == NULL) return false;
-
-    if (fromStatus->isHeldDown()) {
-      if (RemapUtil::keyToKey(params, fromKeyCode, toKeyCode)) {
-        fromStatus->temporary_decrease();
-        return true;
-      }
-    }
-    return false;
   }
 
   void
