@@ -85,6 +85,7 @@
         <item>
           <name>Backquote(`) to Escape if no modifiers pressed</name>
           <sysctl>remap.backquote2escape_withoutmodifiers</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, ModifierFlag::NONE, KeyCode::ESCAPE</autogen>
         </item>
         <item>
           <name>Backquote(`) to F8</name>
@@ -317,10 +318,15 @@
           <name>Delete to F13</name>
           <appendix>(+ Shift+Delete to Tilde(~))</appendix>
           <sysctl>remap.delete2f13_shift2tilde</sysctl>
+          <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::SHIFT_L, KeyCode::BACKQUOTE</autogen>
+          <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::SHIFT_R, KeyCode::BACKQUOTE</autogen>
+          <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::NONE, KeyCode::F13</autogen>
         </item>
         <item>
           <name>Shift+Delete to Tilde(~)</name>
           <sysctl>remap.shiftDelete2tilde</sysctl>
+          <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::SHIFT_L, KeyCode::BACKQUOTE</autogen>
+          <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::SHIFT_R, KeyCode::BACKQUOTE</autogen>
         </item>
       </list>
     </item>
@@ -1137,46 +1143,72 @@
           <name>Control+I to Tab</name>
           <sysctl>option.emacsmode_controlI</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
+          <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::CONTROL_L, KeyCode::TAB</autogen>
+          <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::CONTROL_R, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>Control+[ to Escape</name>
           <sysctl>option.emacsmode_controlLeftbracket</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
+          <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::CONTROL_L, KeyCode::ESCAPE</autogen>
+          <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::CONTROL_R, KeyCode::ESCAPE</autogen>
         </item>
         <item>
           <name>Control+M to Return</name>
           <sysctl>option.emacsmode_controlM</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
+          <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::CONTROL_L, KeyCode::RETURN</autogen>
+          <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::CONTROL_R, KeyCode::RETURN</autogen>
         </item>
         <item>
           <name>Control+PNBF to Up/Down/Left/Right</name>
           <sysctl>option.emacsmode_controlPNBF</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
+          <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::CONTROL_L, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::CONTROL_R, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::CONTROL_R, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::CONTROL_L, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::CONTROL_R, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT</autogen>
+          <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT</autogen>
         </item>
         <item>
           <name>Control+V to PageDown</name>
           <sysctl>option.emacsmode_controlV</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
+          <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::CONTROL_L, KeyCode::PAGEDOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::CONTROL_R, KeyCode::PAGEDOWN</autogen>
         </item>
         <item>
           <name>Option+V to PageUp</name>
           <sysctl>option.emacsmode_optionV</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
+          <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::OPTION_L, KeyCode::PAGEUP</autogen>
+          <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::OPTION_R, KeyCode::PAGEUP</autogen>
         </item>
         <item>
           <name>Command+V to PageUp</name>
           <sysctl>option.emacsmode_commandV</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
+          <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::COMMAND_L, KeyCode::PAGEUP</autogen>
+          <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::COMMAND_R, KeyCode::PAGEUP</autogen>
         </item>
         <item>
           <name>Control+Y to Command+V</name>
           <sysctl>option.emacsmode_controlY</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
+          <autogen>--KeyToKey-- KeyCode::Y, ModifierFlag::CONTROL_L, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::Y, ModifierFlag::CONTROL_R, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
           <name>Control+AE to Command+Left/Right</name>
           <sysctl>option.emacsmode_controlAE</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
+          <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::CONTROL_R, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
           <name>Control+K to Command+Shift+Right,Command+X</name>
@@ -1187,31 +1219,53 @@
           <name>Option+BF to Option+Left/Right</name>
           <sysctl>option.emacsmode_optionBF</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
+          <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::OPTION_L, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::OPTION_R, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::OPTION_L, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::OPTION_R, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
           <name>Option+D to Option+Forward Delete</name>
           <sysctl>option.emacsmode_optionD</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
+          <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::OPTION_L, KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::OPTION_R, KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
           <name>Option+&lt; to Home / Option+&gt; to End</name>
           <sysctl>option.emacsmode_optionLtGt</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
+          <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L, KeyCode::HOME, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::OPTION_R | ModifierFlag::SHIFT_L, KeyCode::HOME, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_R, KeyCode::HOME, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::OPTION_R | ModifierFlag::SHIFT_R, KeyCode::HOME, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L, KeyCode::END, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::OPTION_R | ModifierFlag::SHIFT_L, KeyCode::END, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_R, KeyCode::END, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::OPTION_R | ModifierFlag::SHIFT_R, KeyCode::END, ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
           <name>[ex] Control+1 to Home / Control+2 to End</name>
           <sysctl>option.emacsmode_ex_control12</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
+          <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::CONTROL_L, KeyCode::HOME</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::CONTROL_R, KeyCode::HOME</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::CONTROL_L, KeyCode::END</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::CONTROL_R, KeyCode::END</autogen>
         </item>
         <item>
           <name>[ex] Control+Q to PageUp</name>
           <sysctl>option.emacsmode_ex_controlQ</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
+          <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::CONTROL_L, KeyCode::PAGEUP</autogen>
+          <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::CONTROL_R, KeyCode::PAGEUP</autogen>
         </item>
         <item>
           <name>[ex] Control+W to Option+Delete</name>
           <sysctl>option.emacsmode_ex_controlW</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
+          <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::OPTION_L, KeyCode::DELETE</autogen>
+          <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::OPTION_R, KeyCode::DELETE</autogen>
         </item>
         <item>
           <name>[ex] Control+U to Command+Shift+Left,Command+X</name>
@@ -1222,11 +1276,17 @@
           <name>[ex] Control+G to Escape</name>
           <sysctl>option.emacsmode_ex_controlG</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
+          <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::OPTION_L, KeyCode::ESCAPE</autogen>
+          <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::OPTION_R, KeyCode::ESCAPE</autogen>
         </item>
         <item>
           <name>[ex] Control+AE to Home/End</name>
           <sysctl>option.emacsmode_ex_controlAE</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
+          <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::HOME</autogen>
+          <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::CONTROL_R, KeyCode::HOME</autogen>
+          <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::CONTROL_L, KeyCode::END</autogen>
+          <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::CONTROL_R, KeyCode::END</autogen>
         </item>
         <item>
           <name>Behavior in Emacs, Terminal, X11, VMware, Parallels, RDC</name>
@@ -1238,16 +1298,22 @@
                   <name>In Emacs, Terminal</name>
                   <sysctl>option.emacsmode_force_controlD_term</sysctl>
                   <only>TERMINAL</only>
+                  <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::FORWARD_DELETE</autogen>
+                  <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_R, KeyCode::FORWARD_DELETE</autogen>
                 </item>
                 <item>
                   <name>In X11</name>
                   <sysctl>option.emacsmode_force_controlD_x11</sysctl>
                   <only>X11</only>
+                  <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::FORWARD_DELETE</autogen>
+                  <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_R, KeyCode::FORWARD_DELETE</autogen>
                 </item>
                 <item>
                   <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
                   <sysctl>option.emacsmode_force_controlD_vm</sysctl>
                   <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+                  <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::FORWARD_DELETE</autogen>
+                  <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_R, KeyCode::FORWARD_DELETE</autogen>
                 </item>
               </list>
             </item>
@@ -1258,16 +1324,22 @@
                   <name>In Emacs, Terminal</name>
                   <sysctl>option.emacsmode_force_controlH_term</sysctl>
                   <only>TERMINAL</only>
+                  <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::CONTROL_L, KeyCode::DELETE</autogen>
+                  <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::CONTROL_R, KeyCode::DELETE</autogen>
                 </item>
                 <item>
                   <name>In X11</name>
                   <sysctl>option.emacsmode_force_controlH_x11</sysctl>
                   <only>X11</only>
+                  <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::CONTROL_L, KeyCode::DELETE</autogen>
+                  <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::CONTROL_R, KeyCode::DELETE</autogen>
                 </item>
                 <item>
                   <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
                   <sysctl>option.emacsmode_force_controlH_vm</sysctl>
                   <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+                  <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::CONTROL_L, KeyCode::DELETE</autogen>
+                  <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::CONTROL_R, KeyCode::DELETE</autogen>
                 </item>
               </list>
             </item>
@@ -1278,16 +1350,22 @@
                   <name>In Emacs, Terminal</name>
                   <sysctl>option.emacsmode_force_controlI_term</sysctl>
                   <only>TERMINAL</only>
+                  <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::CONTROL_L, KeyCode::TAB</autogen>
+                  <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::CONTROL_R, KeyCode::TAB</autogen>
                 </item>
                 <item>
                   <name>In X11</name>
                   <sysctl>option.emacsmode_force_controlI_x11</sysctl>
                   <only>X11</only>
+                  <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::CONTROL_L, KeyCode::TAB</autogen>
+                  <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::CONTROL_R, KeyCode::TAB</autogen>
                 </item>
                 <item>
                   <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
                   <sysctl>option.emacsmode_force_controlI_vm</sysctl>
                   <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+                  <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::CONTROL_L, KeyCode::TAB</autogen>
+                  <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::CONTROL_R, KeyCode::TAB</autogen>
                 </item>
               </list>
             </item>
@@ -1298,16 +1376,22 @@
                   <name>In Emacs, Terminal</name>
                   <sysctl>option.emacsmode_force_controlM_term</sysctl>
                   <only>TERMINAL</only>
+                  <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::CONTROL_L, KeyCode::RETURN</autogen>
+                  <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::CONTROL_R, KeyCode::RETURN</autogen>
                 </item>
                 <item>
                   <name>In X11</name>
                   <sysctl>option.emacsmode_force_controlM_x11</sysctl>
                   <only>X11</only>
+                  <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::CONTROL_L, KeyCode::RETURN</autogen>
+                  <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::CONTROL_R, KeyCode::RETURN</autogen>
                 </item>
                 <item>
                   <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
                   <sysctl>option.emacsmode_force_controlM_vm</sysctl>
                   <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+                  <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::CONTROL_L, KeyCode::RETURN</autogen>
+                  <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::CONTROL_R, KeyCode::RETURN</autogen>
                 </item>
               </list>
             </item>
@@ -1318,16 +1402,22 @@
                   <name>In Emacs, Terminal</name>
                   <sysctl>option.emacsmode_force_controlLeftbracket_term</sysctl>
                   <only>TERMINAL</only>
+                  <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::CONTROL_L, KeyCode::ESCAPE</autogen>
+                  <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::CONTROL_R, KeyCode::ESCAPE</autogen>
                 </item>
                 <item>
                   <name>In X11</name>
                   <sysctl>option.emacsmode_force_controlLeftbracket_x11</sysctl>
                   <only>X11</only>
+                  <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::CONTROL_L, KeyCode::ESCAPE</autogen>
+                  <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::CONTROL_R, KeyCode::ESCAPE</autogen>
                 </item>
                 <item>
                   <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
                   <sysctl>option.emacsmode_force_controlLeftbracket_vm</sysctl>
                   <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+                  <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::CONTROL_L, KeyCode::ESCAPE</autogen>
+                  <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::CONTROL_R, KeyCode::ESCAPE</autogen>
                 </item>
               </list>
             </item>
@@ -1338,16 +1428,40 @@
                   <name>In Emacs, Terminal</name>
                   <sysctl>option.emacsmode_force_controlPNBF_term</sysctl>
                   <only>TERMINAL</only>
+                  <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::CONTROL_L, KeyCode::CURSOR_UP</autogen>
+                  <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::CONTROL_R, KeyCode::CURSOR_UP</autogen>
+                  <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN</autogen>
+                  <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::CONTROL_R, KeyCode::CURSOR_DOWN</autogen>
+                  <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::CONTROL_L, KeyCode::CURSOR_LEFT</autogen>
+                  <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::CONTROL_R, KeyCode::CURSOR_LEFT</autogen>
+                  <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT</autogen>
+                  <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT</autogen>
                 </item>
                 <item>
                   <name>In X11</name>
                   <sysctl>option.emacsmode_force_controlPNBF_x11</sysctl>
                   <only>X11</only>
+                  <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::CONTROL_L, KeyCode::CURSOR_UP</autogen>
+                  <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::CONTROL_R, KeyCode::CURSOR_UP</autogen>
+                  <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN</autogen>
+                  <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::CONTROL_R, KeyCode::CURSOR_DOWN</autogen>
+                  <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::CONTROL_L, KeyCode::CURSOR_LEFT</autogen>
+                  <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::CONTROL_R, KeyCode::CURSOR_LEFT</autogen>
+                  <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT</autogen>
+                  <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT</autogen>
                 </item>
                 <item>
                   <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
                   <sysctl>option.emacsmode_force_controlPNBF_vm</sysctl>
                   <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+                  <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::CONTROL_L, KeyCode::CURSOR_UP</autogen>
+                  <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::CONTROL_R, KeyCode::CURSOR_UP</autogen>
+                  <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN</autogen>
+                  <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::CONTROL_R, KeyCode::CURSOR_DOWN</autogen>
+                  <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::CONTROL_L, KeyCode::CURSOR_LEFT</autogen>
+                  <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::CONTROL_R, KeyCode::CURSOR_LEFT</autogen>
+                  <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT</autogen>
+                  <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT</autogen>
                 </item>
               </list>
             </item>
@@ -1358,6 +1472,10 @@
                   <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
                   <sysctl>option.emacsmode_controlAE_vm</sysctl>
                   <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+                  <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::HOME</autogen>
+                  <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::CONTROL_R, KeyCode::HOME</autogen>
+                  <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::CONTROL_L, KeyCode::END</autogen>
+                  <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::CONTROL_R, KeyCode::END</autogen>
                 </item>
               </list>
             </item>
@@ -1958,6 +2076,9 @@
             <item>
               <name>Control+[ to Escape at Japanese Keyboard</name>
               <sysctl>option.jis_emacsmode_controlLeftbracket</sysctl>
+              <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
+              <autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, ModifierFlag::CONTROL_L, KeyCode::ESCAPE</autogen>
+              <autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, ModifierFlag::CONTROL_R, KeyCode::ESCAPE</autogen>
             </item>
             <item>
               <name>Behavior in Emacs, Terminal, X11, VMware, Parallels, RDC</name>
@@ -1968,14 +2089,23 @@
                     <item>
                       <name>In Emacs, Terminal</name>
                       <sysctl>option.jis_emacsmode_force_controlLeftbracket_term</sysctl>
+                      <only>EMACS, TERMINAL</only>
+                      <autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, ModifierFlag::CONTROL_L, KeyCode::ESCAPE</autogen>
+                      <autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, ModifierFlag::CONTROL_R, KeyCode::ESCAPE</autogen>
                     </item>
                     <item>
                       <name>In X11</name>
                       <sysctl>option.jis_emacsmode_force_controlLeftbracket_x11</sysctl>
+                      <only>X11</only>
+                      <autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, ModifierFlag::CONTROL_L, KeyCode::ESCAPE</autogen>
+                      <autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, ModifierFlag::CONTROL_R, KeyCode::ESCAPE</autogen>
                     </item>
                     <item>
                       <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
                       <sysctl>option.jis_emacsmode_force_controlLeftbracket_vm</sysctl>
+                      <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+                      <autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, ModifierFlag::CONTROL_L, KeyCode::ESCAPE</autogen>
+                      <autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, ModifierFlag::CONTROL_R, KeyCode::ESCAPE</autogen>
                     </item>
                   </list>
                 </item>
