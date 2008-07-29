@@ -12,41 +12,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
-  remap_backquote2escape_withoutmodifiers(const RemapParams &params)
-  {
-    if (! config.remap_backquote2escape_withoutmodifiers) return;
-
-    unsigned int flags = allFlagStatus.makeFlags(params);
-    if (flags == 0) {
-      RemapUtil::keyToKey(params, KeyCode::BACKQUOTE, KeyCode::ESCAPE);
-    }
-  }
-
-  // ----------------------------------------
-  void
-  remap_delete2f13_shift2tilde(const RemapParams &params)
-  {
-    if (! config.remap_delete2f13_shift2tilde) return;
-
-    if (allFlagStatus.isHeldDown_shift()) {
-      RemapUtil::keyToKey(params, KeyCode::DELETE, KeyCode::BACKQUOTE);
-    } else {
-      RemapUtil::keyToKey(params, KeyCode::DELETE, KeyCode::F13);
-    }
-  }
-
-  void
-  remap_shiftDelete2tilde(const RemapParams &params)
-  {
-    if (! config.remap_shiftDelete2tilde) return;
-
-    if (allFlagStatus.isHeldDown_shift()) {
-      RemapUtil::keyToKey(params, KeyCode::DELETE, KeyCode::BACKQUOTE);
-    }
-  }
-
-  // ----------------------------------------
-  void
   remap_enter2commandL_enter2controlL_vm(const RemapParams &params)
   {
     if (! config.remap_enter2commandL_enter2controlL_vm) return;
@@ -337,118 +302,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool ignore = is_terminal || is_virtualmachine || is_x11;
 
     if (allFlagStatus.isHeldDown_control()) {
-      // Control+I -> TAB
-      if (config.option_emacsmode_controlI && *(params.key) == KeyCode::I) {
-        bool doremap = ! ignore;
-        if (is_terminal && config.option_emacsmode_force_controlI_term) doremap = true;
-        if (is_x11 && config.option_emacsmode_force_controlI_x11) doremap = true;
-        if (is_virtualmachine && config.option_emacsmode_force_controlI_vm) doremap = true;
-
-        if (doremap) {
-          *(params.key) = KeyCode::TAB;
-          allFlagStatus.temporaryDecrease_control();
-        }
-      }
-      // Control+M -> RETURN
-      if (config.option_emacsmode_controlM && *(params.key) == KeyCode::M) {
-        bool doremap = ! ignore;
-        if (is_terminal && config.option_emacsmode_force_controlM_term) doremap = true;
-        if (is_x11 && config.option_emacsmode_force_controlM_x11) doremap = true;
-        if (is_virtualmachine && config.option_emacsmode_force_controlM_vm) doremap = true;
-
-        if (doremap) {
-          *(params.key) = KeyCode::RETURN;
-          allFlagStatus.temporaryDecrease_control();
-        }
-      }
-      // Control+[ -> ESCAPE
-      if (config.option_emacsmode_controlLeftbracket && *(params.key) == KeyCode::BRACKET_LEFT) {
-        bool doremap = ! ignore;
-        if (is_terminal && config.option_emacsmode_force_controlLeftbracket_term) doremap = true;
-        if (is_x11 && config.option_emacsmode_force_controlLeftbracket_x11) doremap = true;
-        if (is_virtualmachine && config.option_emacsmode_force_controlLeftbracket_vm) doremap = true;
-
-        if (doremap) {
-          *(params.key) = KeyCode::ESCAPE;
-          allFlagStatus.temporaryDecrease_control();
-        }
-      }
-      // --JIS-- Control+[ -> ESCAPE
-      if (config.option_jis_emacsmode_controlLeftbracket && *(params.key) == KeyCode::JIS_BRACKET_LEFT) {
-        bool doremap = ! ignore;
-        if (is_terminal && config.option_jis_emacsmode_force_controlLeftbracket_term) doremap = true;
-        if (is_x11 && config.option_jis_emacsmode_force_controlLeftbracket_x11) doremap = true;
-        if (is_virtualmachine && config.option_jis_emacsmode_force_controlLeftbracket_vm) doremap = true;
-
-        if (doremap) {
-          *(params.key) = KeyCode::ESCAPE;
-          allFlagStatus.temporaryDecrease_control();
-        }
-      }
-      // Control+PNBF -> UP/Down/Left/Right
-      if (config.option_emacsmode_controlPNBF) {
-        bool doremap = ! ignore;
-        if (is_terminal && config.option_emacsmode_force_controlPNBF_term) doremap = true;
-        if (is_x11 && config.option_emacsmode_force_controlPNBF_x11) doremap = true;
-        if (is_virtualmachine && config.option_emacsmode_force_controlPNBF_vm) doremap = true;
-
-        if (doremap) {
-          if (*(params.key) == KeyCode::P) {
-            *(params.key) = KeyCode::CURSOR_UP;
-            allFlagStatus.temporaryDecrease_control();
-          }
-          if (*(params.key) == KeyCode::N) {
-            *(params.key) = KeyCode::CURSOR_DOWN;
-            allFlagStatus.temporaryDecrease_control();
-          }
-          if (*(params.key) == KeyCode::B) {
-            *(params.key) = KeyCode::CURSOR_LEFT;
-            allFlagStatus.temporaryDecrease_control();
-          }
-          if (*(params.key) == KeyCode::F) {
-            *(params.key) = KeyCode::CURSOR_RIGHT;
-            allFlagStatus.temporaryDecrease_control();
-          }
-        }
-      }
-      // Control+V -> PAGEDOWN
-      if (config.option_emacsmode_controlV && *(params.key) == KeyCode::V && ! ignore) {
-        *(params.key) = KeyCode::PAGEDOWN;
-        allFlagStatus.temporaryDecrease_control();
-      }
-      // Control+Y -> Command+V
-      // *** Note: You need to handle option_emacsmode_controlY after option_emacsmode_controlV ***
-      if (config.option_emacsmode_controlY && *(params.key) == KeyCode::Y && ! ignore) {
-        *(params.key) = KeyCode::V;
-        allFlagStatus.commandL.temporary_increase();
-        allFlagStatus.temporaryDecrease_control();
-      }
-      // Control+AE -> Command+LEFT/Right
-      if (config.option_emacsmode_controlAE) {
-        if (! ignore) {
-          if (*(params.key) == KeyCode::A) {
-            *(params.key) = KeyCode::CURSOR_LEFT;
-            allFlagStatus.commandL.temporary_increase();
-            allFlagStatus.temporaryDecrease_control();
-          }
-          if (*(params.key) == KeyCode::E) {
-            *(params.key) = KeyCode::CURSOR_RIGHT;
-            allFlagStatus.commandL.temporary_increase();
-            allFlagStatus.temporaryDecrease_control();
-          }
-        }
-      }
-      // Control+AE -> HOME/END (in VirtualMachine)
-      if (is_virtualmachine && config.option_emacsmode_controlAE_vm) {
-        if (*(params.key) == KeyCode::A) {
-          *(params.key) = KeyCode::HOME;
-          allFlagStatus.temporaryDecrease_control();
-        }
-        if (*(params.key) == KeyCode::E) {
-          *(params.key) = KeyCode::END;
-          allFlagStatus.temporaryDecrease_control();
-        }
-      }
       // Control+K -> Command+Shift+Right,Command+X
       if (config.option_emacsmode_controlK && ! ignore) {
         static bool firstcall = true;
@@ -467,17 +320,6 @@ namespace org_pqrs_KeyRemap4MacBook {
           allFlagStatus.temporaryDecrease_control();
         }
       }
-      // Control+Q -> PAGEUP
-      if (config.option_emacsmode_ex_controlQ && *(params.key) == KeyCode::Q && ! ignore) {
-        *(params.key) = KeyCode::PAGEUP;
-        allFlagStatus.temporaryDecrease_control();
-      }
-      // Control+W -> Option+DELETE
-      if (config.option_emacsmode_ex_controlW && *(params.key) == KeyCode::W && ! ignore) {
-        *(params.key) = KeyCode::DELETE;
-        allFlagStatus.optionL.temporary_increase();
-        allFlagStatus.temporaryDecrease_control();
-      }
       // Control+U -> Command+Shift+Left,Command+X
       if (config.option_emacsmode_ex_controlU && *(params.key) == KeyCode::U && ! ignore) {
         if (*(params.eventType) == KeyEvent::DOWN) {
@@ -485,153 +327,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
         *(params.ex_dropKey) = true;
         allFlagStatus.temporaryDecrease_control();
-      }
-      // Control+G -> Escape
-      if (config.option_emacsmode_ex_controlG && *(params.key) == KeyCode::G && ! ignore) {
-        *(params.key) = KeyCode::ESCAPE;
-        allFlagStatus.temporaryDecrease_control();
-      }
-      // Control+12 -> HOME/END
-      if (config.option_emacsmode_ex_control12) {
-        if (! ignore) {
-          if (*(params.key) == KeyCode::KEY_1) {
-            *(params.key) = KeyCode::HOME;
-            allFlagStatus.temporaryDecrease_control();
-          }
-          if (*(params.key) == KeyCode::KEY_2) {
-            *(params.key) = KeyCode::END;
-            allFlagStatus.temporaryDecrease_control();
-          }
-        }
-      }
-      // Control+AE -> HOME/END
-      if (config.option_emacsmode_ex_controlAE) {
-        if (! ignore) {
-          if (*(params.key) == KeyCode::A) {
-            *(params.key) = KeyCode::HOME;
-            allFlagStatus.temporaryDecrease_control();
-          }
-          if (*(params.key) == KeyCode::E) {
-            *(params.key) = KeyCode::END;
-            allFlagStatus.temporaryDecrease_control();
-          }
-        }
-      }
-    }
-
-    if (allFlagStatus.isHeldDown_option()) {
-      // Option+V -> PAGEUP
-      if (config.option_emacsmode_optionV && *(params.key) == KeyCode::V && ! ignore) {
-        *(params.key) = KeyCode::PAGEUP;
-        allFlagStatus.temporaryDecrease_option();
-      }
-      // Option+B -> Option+LEFT
-      if (config.option_emacsmode_optionBF && *(params.key) == KeyCode::B && ! ignore) {
-        *(params.key) = KeyCode::CURSOR_LEFT;
-      }
-      // Option+F -> Option+RIGHT
-      if (config.option_emacsmode_optionBF && *(params.key) == KeyCode::F && ! ignore) {
-        *(params.key) = KeyCode::CURSOR_RIGHT;
-      }
-      // Option+D -> Option+FORWARD_DELETE
-      if (config.option_emacsmode_optionD && *(params.key) == KeyCode::D && ! ignore) {
-        *(params.key) = KeyCode::FORWARD_DELETE;
-      }
-      // Option+< -> Home
-      if (config.option_emacsmode_optionLtGt) {
-        if (! ignore) {
-          if (allFlagStatus.isHeldDown_shift()) {
-            bool isremap = false;
-            if (*(params.key) == KeyCode::COMMA) {
-              *(params.key) = KeyCode::HOME;
-              allFlagStatus.temporaryDecrease_option();
-              isremap = true;
-            }
-            if (*(params.key) == KeyCode::DOT) {
-              *(params.key) = KeyCode::END;
-              allFlagStatus.temporaryDecrease_option();
-              isremap = true;
-            }
-            if (isremap) {
-              allFlagStatus.temporaryDecrease_shift();
-            }
-          }
-        }
-      }
-    }
-
-    if (allFlagStatus.isHeldDown_command()) {
-      // Command+V -> PageUp
-      if (config.option_emacsmode_commandV && *(params.key) == KeyCode::V && ! ignore) {
-        *(params.key) = KeyCode::PAGEUP;
-        allFlagStatus.temporaryDecrease_command();
-      }
-    }
-  }
-
-  // ----------------------------------------
-  void
-  remap_vimode(const RemapParams &params)
-  {
-    if (allFlagStatus.commandR.isHeldDown()) {
-      // Command_R+hjkl -> Up/Down/Left/Right
-      if (config.option_vimode_hjkl) {
-        if (*(params.key) == KeyCode::H) {
-          *(params.key) = KeyCode::CURSOR_LEFT;
-          allFlagStatus.temporaryDecrease_command();
-        }
-        if (*(params.key) == KeyCode::J) {
-          *(params.key) = KeyCode::CURSOR_DOWN;
-          allFlagStatus.temporaryDecrease_command();
-        }
-        if (*(params.key) == KeyCode::K) {
-          *(params.key) = KeyCode::CURSOR_UP;
-          allFlagStatus.temporaryDecrease_command();
-        }
-        if (*(params.key) == KeyCode::L) {
-          *(params.key) = KeyCode::CURSOR_RIGHT;
-          allFlagStatus.temporaryDecrease_command();
-        }
-      }
-
-      // Command_R+gG -> Home/End
-      if (config.option_vimode_gG) {
-        if (*(params.key) == KeyCode::G) {
-          if (allFlagStatus.isHeldDown_shift()) {
-            *(params.key) = KeyCode::END;
-            allFlagStatus.temporaryDecrease_shift();
-
-          } else {
-            *(params.key) = KeyCode::HOME;
-          }
-
-          allFlagStatus.temporaryDecrease_command();
-        }
-      }
-
-      // Command_R+bf -> PageUp/PageDown
-      if (config.option_vimode_bf) {
-        if (*(params.key) == KeyCode::B) {
-          *(params.key) = KeyCode::PAGEUP;
-          allFlagStatus.temporaryDecrease_command();
-        }
-        if (*(params.key) == KeyCode::F) {
-          *(params.key) = KeyCode::PAGEDOWN;
-          allFlagStatus.temporaryDecrease_command();
-        }
-      }
-
-      // Command_R+0$ -> Command+Left/Right
-      if (config.option_vimode_0dollar) {
-        if (*(params.key) == KeyCode::KEY_0) {
-          *(params.key) = KeyCode::CURSOR_LEFT;
-        }
-        if (*(params.key) == KeyCode::KEY_4) {
-          if (allFlagStatus.isHeldDown_shift()) {
-            *(params.key) = KeyCode::CURSOR_RIGHT;
-            allFlagStatus.temporaryDecrease_shift();
-          }
-        }
       }
     }
   }
@@ -1066,11 +761,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   // normal remapping
 #include "config/output/include.remapcode_call.cpp"
 
-  remap_backquote2escape_withoutmodifiers(params);
-
-  remap_delete2f13_shift2tilde(params);
-  remap_shiftDelete2tilde(params);
-
   remap_enter2commandL_enter2controlL_vm(params);
 
   remap_fn2controlL_commandR2fn(params);
@@ -1124,7 +814,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   // *** Note: we need to call remap_emacsmode as possible late. ***
   // *** If qwerty2colemak is enabled, Control+H... works with Colemak Keyboard Layout. ***
   remap_emacsmode(params);
-  remap_vimode(params);
 
   // ----------------------------------------
   // *** Note: we need to call remap_spaces_* after emacsmode. ***
