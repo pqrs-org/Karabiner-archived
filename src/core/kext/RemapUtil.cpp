@@ -449,57 +449,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
-  bool
-  RemapUtil::key2spaces(const RemapParams &params, unsigned int flags,
-                        KeyCode::KeyCode key1, KeyCode::KeyCode key2, KeyCode::KeyCode key3,
-                        KeyCode::KeyCode key4, KeyCode::KeyCode key5, KeyCode::KeyCode key6,
-                        KeyCode::KeyCode key7, KeyCode::KeyCode key8, KeyCode::KeyCode key9,
-                        KeyCode::KeyCode key10,
-                        KeyCode::KeyCode key11,
-                        KeyCode::KeyCode key12,
-                        KeyCode::KeyCode key13,
-                        KeyCode::KeyCode key14,
-                        KeyCode::KeyCode key15,
-                        KeyCode::KeyCode key16)
-  {
-    KeyCode::KeyCode keyCode = KeyCode::NONE;
-    CharCode::CharCode charCode = CharCode::NONE;
-
-    // --------------------------------------------------
-    if (RemapUtil::isKey(params, key1)) { keyCode = KeyCode::KEY_1; charCode = CharCode::KEY_1; }
-    if (RemapUtil::isKey(params, key2)) { keyCode = KeyCode::KEY_2; charCode = CharCode::KEY_2; }
-    if (RemapUtil::isKey(params, key3)) { keyCode = KeyCode::KEY_3; charCode = CharCode::KEY_3; }
-    if (RemapUtil::isKey(params, key4)) { keyCode = KeyCode::KEY_4; charCode = CharCode::KEY_4; }
-    if (RemapUtil::isKey(params, key5)) { keyCode = KeyCode::KEY_5; charCode = CharCode::KEY_5; }
-    if (RemapUtil::isKey(params, key6)) { keyCode = KeyCode::KEY_6; charCode = CharCode::KEY_6; }
-    if (RemapUtil::isKey(params, key7)) { keyCode = KeyCode::KEY_7; charCode = CharCode::KEY_7; }
-    if (RemapUtil::isKey(params, key8)) { keyCode = KeyCode::KEY_8; charCode = CharCode::KEY_8; }
-    if (RemapUtil::isKey(params, key9)) { keyCode = KeyCode::KEY_9; charCode = CharCode::KEY_9; }
-    if (RemapUtil::isKey(params, key10)) { keyCode = KeyCode::KEY_0; charCode = CharCode::KEY_0; }
-
-    if (keyCode != KeyCode::NONE) {
-      allFlagStatus.temporary_set(flags);
-      RemapUtil::toKey(params, keyCode);
-      return true;
-    }
-
-    // --------------------------------------------------
-    if (RemapUtil::isKey(params, key11)) { keyCode = KeyCode::KEY_1; charCode = CharCode::KEY_1; }
-    if (RemapUtil::isKey(params, key12)) { keyCode = KeyCode::KEY_2; charCode = CharCode::KEY_2; }
-    if (RemapUtil::isKey(params, key13)) { keyCode = KeyCode::KEY_3; charCode = CharCode::KEY_3; }
-    if (RemapUtil::isKey(params, key14)) { keyCode = KeyCode::KEY_4; charCode = CharCode::KEY_4; }
-    if (RemapUtil::isKey(params, key15)) { keyCode = KeyCode::KEY_5; charCode = CharCode::KEY_5; }
-    if (RemapUtil::isKey(params, key16)) { keyCode = KeyCode::KEY_6; charCode = CharCode::KEY_6; }
-
-    if (keyCode != KeyCode::NONE) {
-      allFlagStatus.temporary_set(flags | ModifierFlag::OPTION_L);
-      RemapUtil::toKey(params, keyCode);
-      return true;
-    }
-
-    return false;
-  }
-
   // --------------------
   void
   RemapUtil::jis_toggle_eisuu_kana(const RemapParams &params, KeyCode::KeyCode fromKeyCode)
