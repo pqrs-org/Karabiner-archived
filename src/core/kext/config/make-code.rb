@@ -160,13 +160,13 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
 
   check = "if (! config.#{name}) return;"
   unless code_key.empty? then
-    code += "inline void #{name}(const RemapParams &params) {\n#{check}\n#{filter}\n#{code_key}\n}\n"
+    code += "inline void #{name}(const RemapParams &params) {\n#{check}\n#{filter}\n#{code_key}\n}\n\n\n"
   end
   unless code_consumer.empty? then
-    code += "inline void #{name}(const RemapConsumerParams &params) {\n#{check}\n#{code_consumer}\n}\n"
+    code += "inline void #{name}(const RemapConsumerParams &params) {\n#{check}\n#{code_consumer}\n}\n\n\n"
   end
   unless code_pointing.empty? then
-    code += "inline void #{name}(const RemapPointingParams_relative &params) {\n#{check}\n#{code_pointing}\n}\n"
+    code += "inline void #{name}(const RemapPointingParams_relative &params) {\n#{check}\n#{code_pointing}\n}\n\n\n"
   end
 end
 
