@@ -450,35 +450,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  RemapUtil::keypad2spaces(const RemapParams &params)
-  {
-    // 789      123
-    // 456  to  456
-    // 123      789
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_1, KeyCode::KEYPAD_7);
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_2, KeyCode::KEYPAD_8);
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_3, KeyCode::KEYPAD_9);
-
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_7, KeyCode::KEYPAD_1);
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_8, KeyCode::KEYPAD_2);
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_9, KeyCode::KEYPAD_3);
-
-    if (*(params.key) == KeyCode::KEYPAD_1 ||
-        *(params.key) == KeyCode::KEYPAD_2 ||
-        *(params.key) == KeyCode::KEYPAD_3 ||
-        *(params.key) == KeyCode::KEYPAD_4 ||
-        *(params.key) == KeyCode::KEYPAD_5 ||
-        *(params.key) == KeyCode::KEYPAD_6 ||
-        *(params.key) == KeyCode::KEYPAD_7 ||
-        *(params.key) == KeyCode::KEYPAD_8 ||
-        *(params.key) == KeyCode::KEYPAD_9) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  bool
   RemapUtil::key2spaces(const RemapParams &params, unsigned int flags,
                         KeyCode::KeyCode key1, KeyCode::KeyCode key2, KeyCode::KeyCode key3,
                         KeyCode::KeyCode key4, KeyCode::KeyCode key5, KeyCode::KeyCode key6,

@@ -12,6 +12,12 @@ def preprocess(listAutogen)
       list << autogen.gsub(/VK_#{key}/, "ModifierFlag::#{key}_L")
       list << autogen.gsub(/VK_#{key}/, "ModifierFlag::#{key}_R")
       modify = true
+    elsif /VK_MOD_CCOS_L/ =~ autogen then
+      list << autogen.gsub(/VK_MOD_CCOS_L/, "ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L")
+      modify = true
+    elsif /VK_MOD_CCS_L/ =~ autogen then
+      list << autogen.gsub(/VK_MOD_CCS_L/, "ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L")
+      modify = true
     else
       list << autogen
     end
