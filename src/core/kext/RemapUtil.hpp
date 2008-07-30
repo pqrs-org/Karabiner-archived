@@ -70,17 +70,6 @@ namespace org_pqrs_KeyRemap4MacBook {
                  bool repeat, AbsoluteTime ts, OSObject *sender, void *refcon);
 
     // ----------------------------------------
-    bool key2spaces(const RemapParams &params, unsigned int flags,
-                    KeyCode::KeyCode key1, KeyCode::KeyCode key2, KeyCode::KeyCode key3,
-                    KeyCode::KeyCode key4, KeyCode::KeyCode key5, KeyCode::KeyCode key6,
-                    KeyCode::KeyCode key7, KeyCode::KeyCode key8, KeyCode::KeyCode key9,
-                    KeyCode::KeyCode key10 = KeyCode::NONE,
-                    KeyCode::KeyCode key11 = KeyCode::NONE,
-                    KeyCode::KeyCode key12 = KeyCode::NONE,
-                    KeyCode::KeyCode key13 = KeyCode::NONE,
-                    KeyCode::KeyCode key14 = KeyCode::NONE,
-                    KeyCode::KeyCode key15 = KeyCode::NONE,
-                    KeyCode::KeyCode key16 = KeyCode::NONE);
     void jis_toggle_eisuu_kana(const RemapParams &params, KeyCode::KeyCode fromKeyCode);
 
     // ----------------------------------------
