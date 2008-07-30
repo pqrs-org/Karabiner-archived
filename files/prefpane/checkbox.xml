@@ -318,15 +318,13 @@
           <name>Delete to F13</name>
           <appendix>(+ Shift+Delete to Tilde(~))</appendix>
           <sysctl>remap.delete2f13_shift2tilde</sysctl>
-          <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::SHIFT_L, KeyCode::BACKQUOTE</autogen>
-          <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::SHIFT_R, KeyCode::BACKQUOTE</autogen>
+          <autogen>--KeyToKey-- KeyCode::DELETE, VK_SHIFT, KeyCode::BACKQUOTE</autogen>
           <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::NONE, KeyCode::F13</autogen>
         </item>
         <item>
           <name>Shift+Delete to Tilde(~)</name>
           <sysctl>remap.shiftDelete2tilde</sysctl>
-          <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::SHIFT_L, KeyCode::BACKQUOTE</autogen>
-          <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::SHIFT_R, KeyCode::BACKQUOTE</autogen>
+          <autogen>--KeyToKey-- KeyCode::DELETE, VK_SHIFT, KeyCode::BACKQUOTE</autogen>
         </item>
       </list>
     </item>
@@ -712,54 +710,54 @@
       <name>Remap Num Key (1...0)</name>
       <list>
         <item>
-          <name>Shift_L(Holding)+1 to F1</name>
+          <name>Shift(Holding)+1 to F1</name>
           <sysctl>remap.holding_shiftL1_to_f1</sysctl>
-          <autogen>--ModifierHoldingKeyToKey-- ModifierFlag::SHIFT_L, KeyCode::KEY_1, KeyCode::F1</autogen>
+          <autogen>--ModifierHoldingKeyToKey-- VK_SHIFT, KeyCode::KEY_1, KeyCode::F1</autogen>
         </item>
         <item>
-          <name>Shift_L(Holding)+2 to F2</name>
+          <name>Shift(Holding)+2 to F2</name>
           <sysctl>remap.holding_shiftL2_to_f2</sysctl>
-          <autogen>--ModifierHoldingKeyToKey-- ModifierFlag::SHIFT_L, KeyCode::KEY_2, KeyCode::F2</autogen>
+          <autogen>--ModifierHoldingKeyToKey-- VK_SHIFT, KeyCode::KEY_2, KeyCode::F2</autogen>
         </item>
         <item>
-          <name>Shift_L(Holding)+3 to F3</name>
+          <name>Shift(Holding)+3 to F3</name>
           <sysctl>remap.holding_shiftL3_to_f3</sysctl>
-          <autogen>--ModifierHoldingKeyToKey-- ModifierFlag::SHIFT_L, KeyCode::KEY_3, KeyCode::F3</autogen>
+          <autogen>--ModifierHoldingKeyToKey-- VK_SHIFT, KeyCode::KEY_3, KeyCode::F3</autogen>
         </item>
         <item>
-          <name>Shift_L(Holding)+4 to F4</name>
+          <name>Shift(Holding)+4 to F4</name>
           <sysctl>remap.holding_shiftL4_to_f4</sysctl>
-          <autogen>--ModifierHoldingKeyToKey-- ModifierFlag::SHIFT_L, KeyCode::KEY_4, KeyCode::F4</autogen>
+          <autogen>--ModifierHoldingKeyToKey-- VK_SHIFT, KeyCode::KEY_4, KeyCode::F4</autogen>
         </item>
         <item>
-          <name>Shift_L(Holding)+5 to F5</name>
+          <name>Shift(Holding)+5 to F5</name>
           <sysctl>remap.holding_shiftL5_to_f5</sysctl>
-          <autogen>--ModifierHoldingKeyToKey-- ModifierFlag::SHIFT_L, KeyCode::KEY_5, KeyCode::F5</autogen>
+          <autogen>--ModifierHoldingKeyToKey-- VK_SHIFT, KeyCode::KEY_5, KeyCode::F5</autogen>
         </item>
         <item>
-          <name>Shift_L(Holding)+6 to F6</name>
+          <name>Shift(Holding)+6 to F6</name>
           <sysctl>remap.holding_shiftL6_to_f6</sysctl>
-          <autogen>--ModifierHoldingKeyToKey-- ModifierFlag::SHIFT_L, KeyCode::KEY_6, KeyCode::F6</autogen>
+          <autogen>--ModifierHoldingKeyToKey-- VK_SHIFT, KeyCode::KEY_6, KeyCode::F6</autogen>
         </item>
         <item>
-          <name>Shift_L(Holding)+7 to F7</name>
+          <name>Shift(Holding)+7 to F7</name>
           <sysctl>remap.holding_shiftL7_to_f7</sysctl>
-          <autogen>--ModifierHoldingKeyToKey-- ModifierFlag::SHIFT_L, KeyCode::KEY_7, KeyCode::F7</autogen>
+          <autogen>--ModifierHoldingKeyToKey-- VK_SHIFT, KeyCode::KEY_7, KeyCode::F7</autogen>
         </item>
         <item>
-          <name>Shift_L(Holding)+8 to F8</name>
+          <name>Shift(Holding)+8 to F8</name>
           <sysctl>remap.holding_shiftL8_to_f8</sysctl>
-          <autogen>--ModifierHoldingKeyToKey-- ModifierFlag::SHIFT_L, KeyCode::KEY_8, KeyCode::F8</autogen>
+          <autogen>--ModifierHoldingKeyToKey-- VK_SHIFT, KeyCode::KEY_8, KeyCode::F8</autogen>
         </item>
         <item>
-          <name>Shift_L(Holding)+9 to F9</name>
+          <name>Shift(Holding)+9 to F9</name>
           <sysctl>remap.holding_shiftL9_to_f9</sysctl>
-          <autogen>--ModifierHoldingKeyToKey-- ModifierFlag::SHIFT_L, KeyCode::KEY_9, KeyCode::F9</autogen>
+          <autogen>--ModifierHoldingKeyToKey-- VK_SHIFT, KeyCode::KEY_9, KeyCode::F9</autogen>
         </item>
         <item>
-          <name>Shift_L(Holding)+0 to F10</name>
+          <name>Shift(Holding)+0 to F10</name>
           <sysctl>remap.holding_shiftL0_to_f10</sysctl>
-          <autogen>--ModifierHoldingKeyToKey-- ModifierFlag::SHIFT_L, KeyCode::KEY_0, KeyCode::F10</autogen>
+          <autogen>--ModifierHoldingKeyToKey-- VK_SHIFT, KeyCode::KEY_0, KeyCode::F10</autogen>
         </item>
       </list>
     </item>
@@ -1098,26 +1096,22 @@
         <item>
           <name>Command+Tab to Option+Tab</name>
           <sysctl>remap.commandTab2optionTab</sysctl>
-          <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::COMMAND_L, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::COMMAND_R, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
           <name>Command+Tab to F5</name>
           <sysctl>remap.commandTab2f5</sysctl>
-          <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::COMMAND_L, KeyCode::F5</autogen>
-          <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::COMMAND_R, KeyCode::F5</autogen>
+          <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::F5</autogen>
         </item>
         <item>
           <name>Option+Tab to Command+Tab</name>
           <sysctl>remap.optionTab2commandTab</sysctl>
-          <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::OPTION_L, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::OPTION_R, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
           <name>Option+Tab to F5</name>
           <sysctl>remap.optionTab2f5</sysctl>
-          <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::OPTION_L, KeyCode::F5</autogen>
-          <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::OPTION_R, KeyCode::F5</autogen>
+          <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::F5</autogen>
         </item>
       </list>
     </item>
@@ -1129,86 +1123,71 @@
           <name>Control+D to Forward Delete</name>
           <sysctl>option.emacsmode_controlD</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
-          <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::FORWARD_DELETE</autogen>
-          <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_R, KeyCode::FORWARD_DELETE</autogen>
+          <autogen>--KeyToKey-- KeyCode::D, VK_CONTROL, KeyCode::FORWARD_DELETE</autogen>
         </item>
         <item>
           <name>Control+H to Delete</name>
           <sysctl>option.emacsmode_controlH</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
-          <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::CONTROL_L, KeyCode::DELETE</autogen>
-          <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::CONTROL_R, KeyCode::DELETE</autogen>
+          <autogen>--KeyToKey-- KeyCode::H, VK_CONTROL, KeyCode::DELETE</autogen>
         </item>
         <item>
           <name>Control+I to Tab</name>
           <sysctl>option.emacsmode_controlI</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
-          <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::CONTROL_L, KeyCode::TAB</autogen>
-          <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::CONTROL_R, KeyCode::TAB</autogen>
+          <autogen>--KeyToKey-- KeyCode::I, VK_CONTROL, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>Control+[ to Escape</name>
           <sysctl>option.emacsmode_controlLeftbracket</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
-          <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::CONTROL_L, KeyCode::ESCAPE</autogen>
-          <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::CONTROL_R, KeyCode::ESCAPE</autogen>
+          <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::ESCAPE</autogen>
         </item>
         <item>
           <name>Control+M to Return</name>
           <sysctl>option.emacsmode_controlM</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
-          <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::CONTROL_L, KeyCode::RETURN</autogen>
-          <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::CONTROL_R, KeyCode::RETURN</autogen>
+          <autogen>--KeyToKey-- KeyCode::M, VK_CONTROL, KeyCode::RETURN</autogen>
         </item>
         <item>
           <name>Control+PNBF to Up/Down/Left/Right</name>
           <sysctl>option.emacsmode_controlPNBF</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
-          <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::CONTROL_L, KeyCode::CURSOR_UP</autogen>
-          <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::CONTROL_R, KeyCode::CURSOR_UP</autogen>
-          <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN</autogen>
-          <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::CONTROL_R, KeyCode::CURSOR_DOWN</autogen>
-          <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::CONTROL_L, KeyCode::CURSOR_LEFT</autogen>
-          <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::CONTROL_R, KeyCode::CURSOR_LEFT</autogen>
-          <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT</autogen>
-          <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT</autogen>
+          <autogen>--KeyToKey-- KeyCode::P, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
         </item>
         <item>
           <name>Control+V to PageDown</name>
           <sysctl>option.emacsmode_controlV</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
-          <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::CONTROL_L, KeyCode::PAGEDOWN</autogen>
-          <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::CONTROL_R, KeyCode::PAGEDOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::V, VK_CONTROL, KeyCode::PAGEDOWN</autogen>
         </item>
         <item>
           <name>Option+V to PageUp</name>
           <sysctl>option.emacsmode_optionV</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
-          <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::OPTION_L, KeyCode::PAGEUP</autogen>
-          <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::OPTION_R, KeyCode::PAGEUP</autogen>
+          <autogen>--KeyToKey-- KeyCode::V, VK_OPTION, KeyCode::PAGEUP</autogen>
         </item>
         <item>
           <name>Command+V to PageUp</name>
           <sysctl>option.emacsmode_commandV</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
-          <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::COMMAND_L, KeyCode::PAGEUP</autogen>
-          <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::COMMAND_R, KeyCode::PAGEUP</autogen>
+          <autogen>--KeyToKey-- KeyCode::V, VK_COMMAND, KeyCode::PAGEUP</autogen>
         </item>
         <item>
           <name>Control+Y to Command+V</name>
           <sysctl>option.emacsmode_controlY</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
-          <autogen>--KeyToKey-- KeyCode::Y, ModifierFlag::CONTROL_L, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::Y, ModifierFlag::CONTROL_R, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::Y, VK_CONTROL, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
           <name>Control+AE to Command+Left/Right</name>
           <sysctl>option.emacsmode_controlAE</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
-          <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::CONTROL_R, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::E, VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
           <name>Control+K to Command+Shift+Right,Command+X</name>
@@ -1219,53 +1198,40 @@
           <name>Option+BF to Option+Left/Right</name>
           <sysctl>option.emacsmode_optionBF</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
-          <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::OPTION_L, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::OPTION_R, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::OPTION_L, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::OPTION_R, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::B, VK_OPTION, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::F, VK_OPTION, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
           <name>Option+D to Option+Forward Delete</name>
           <sysctl>option.emacsmode_optionD</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
-          <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::OPTION_L, KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::OPTION_R, KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::D, VK_OPTION, KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
           <name>Option+&lt; to Home / Option+&gt; to End</name>
           <sysctl>option.emacsmode_optionLtGt</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
-          <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L, KeyCode::HOME, ModifierFlag::OPTION_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::OPTION_R | ModifierFlag::SHIFT_L, KeyCode::HOME, ModifierFlag::OPTION_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_R, KeyCode::HOME, ModifierFlag::OPTION_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::OPTION_R | ModifierFlag::SHIFT_R, KeyCode::HOME, ModifierFlag::OPTION_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L, KeyCode::END, ModifierFlag::OPTION_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::OPTION_R | ModifierFlag::SHIFT_L, KeyCode::END, ModifierFlag::OPTION_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_R, KeyCode::END, ModifierFlag::OPTION_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::OPTION_R | ModifierFlag::SHIFT_R, KeyCode::END, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::COMMA, VK_OPTION | VK_SHIFT, KeyCode::HOME, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::DOT,   VK_OPTION | VK_SHIFT, KeyCode::END, ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
           <name>[ex] Control+1 to Home / Control+2 to End</name>
           <sysctl>option.emacsmode_ex_control12</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
-          <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::CONTROL_L, KeyCode::HOME</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::CONTROL_R, KeyCode::HOME</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::CONTROL_L, KeyCode::END</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::CONTROL_R, KeyCode::END</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_1, VK_CONTROL, KeyCode::HOME</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_2, VK_CONTROL, KeyCode::END</autogen>
         </item>
         <item>
           <name>[ex] Control+Q to PageUp</name>
           <sysctl>option.emacsmode_ex_controlQ</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
-          <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::CONTROL_L, KeyCode::PAGEUP</autogen>
-          <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::CONTROL_R, KeyCode::PAGEUP</autogen>
+          <autogen>--KeyToKey-- KeyCode::Q, VK_CONTROL, KeyCode::PAGEUP</autogen>
         </item>
         <item>
           <name>[ex] Control+W to Option+Delete</name>
           <sysctl>option.emacsmode_ex_controlW</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
-          <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::CONTROL_L, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::CONTROL_R, KeyCode::DELETE, ModifierFlag::OPTION_R</autogen>
+          <autogen>--KeyToKey-- KeyCode::W, VK_CONTROL, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
           <name>[ex] Control+U to Command+Shift+Left,Command+X</name>
@@ -1276,17 +1242,14 @@
           <name>[ex] Control+G to Escape</name>
           <sysctl>option.emacsmode_ex_controlG</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
-          <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::OPTION_L, KeyCode::ESCAPE</autogen>
-          <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::OPTION_R, KeyCode::ESCAPE</autogen>
+          <autogen>--KeyToKey-- KeyCode::G, VK_CONTROL, KeyCode::ESCAPE</autogen>
         </item>
         <item>
           <name>[ex] Control+AE to Home/End</name>
           <sysctl>option.emacsmode_ex_controlAE</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
-          <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::HOME</autogen>
-          <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::CONTROL_R, KeyCode::HOME</autogen>
-          <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::CONTROL_L, KeyCode::END</autogen>
-          <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::CONTROL_R, KeyCode::END</autogen>
+          <autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::HOME</autogen>
+          <autogen>--KeyToKey-- KeyCode::E, VK_CONTROL, KeyCode::END</autogen>
         </item>
         <item>
           <name>Behavior in Emacs, Terminal, X11, VMware, Parallels, RDC</name>
@@ -1298,22 +1261,19 @@
                   <name>In Emacs, Terminal</name>
                   <sysctl>option.emacsmode_force_controlD_term</sysctl>
                   <only>EMACS, TERMINAL</only>
-                  <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::FORWARD_DELETE</autogen>
-                  <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_R, KeyCode::FORWARD_DELETE</autogen>
+                  <autogen>--KeyToKey-- KeyCode::D, VK_CONTROL, KeyCode::FORWARD_DELETE</autogen>
                 </item>
                 <item>
                   <name>In X11</name>
                   <sysctl>option.emacsmode_force_controlD_x11</sysctl>
                   <only>X11</only>
-                  <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::FORWARD_DELETE</autogen>
-                  <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_R, KeyCode::FORWARD_DELETE</autogen>
+                  <autogen>--KeyToKey-- KeyCode::D, VK_CONTROL, KeyCode::FORWARD_DELETE</autogen>
                 </item>
                 <item>
                   <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
                   <sysctl>option.emacsmode_force_controlD_vm</sysctl>
                   <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-                  <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::FORWARD_DELETE</autogen>
-                  <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_R, KeyCode::FORWARD_DELETE</autogen>
+                  <autogen>--KeyToKey-- KeyCode::D, VK_CONTROL, KeyCode::FORWARD_DELETE</autogen>
                 </item>
               </list>
             </item>
@@ -1324,22 +1284,19 @@
                   <name>In Emacs, Terminal</name>
                   <sysctl>option.emacsmode_force_controlH_term</sysctl>
                   <only>EMACS, TERMINAL</only>
-                  <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::CONTROL_L, KeyCode::DELETE</autogen>
-                  <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::CONTROL_R, KeyCode::DELETE</autogen>
+                  <autogen>--KeyToKey-- KeyCode::H, VK_CONTROL, KeyCode::DELETE</autogen>
                 </item>
                 <item>
                   <name>In X11</name>
                   <sysctl>option.emacsmode_force_controlH_x11</sysctl>
                   <only>X11</only>
-                  <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::CONTROL_L, KeyCode::DELETE</autogen>
-                  <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::CONTROL_R, KeyCode::DELETE</autogen>
+                  <autogen>--KeyToKey-- KeyCode::H, VK_CONTROL, KeyCode::DELETE</autogen>
                 </item>
                 <item>
                   <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
                   <sysctl>option.emacsmode_force_controlH_vm</sysctl>
                   <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-                  <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::CONTROL_L, KeyCode::DELETE</autogen>
-                  <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::CONTROL_R, KeyCode::DELETE</autogen>
+                  <autogen>--KeyToKey-- KeyCode::H, VK_CONTROL, KeyCode::DELETE</autogen>
                 </item>
               </list>
             </item>
@@ -1350,22 +1307,19 @@
                   <name>In Emacs, Terminal</name>
                   <sysctl>option.emacsmode_force_controlI_term</sysctl>
                   <only>EMACS, TERMINAL</only>
-                  <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::CONTROL_L, KeyCode::TAB</autogen>
-                  <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::CONTROL_R, KeyCode::TAB</autogen>
+                  <autogen>--KeyToKey-- KeyCode::I, VK_CONTROL, KeyCode::TAB</autogen>
                 </item>
                 <item>
                   <name>In X11</name>
                   <sysctl>option.emacsmode_force_controlI_x11</sysctl>
                   <only>X11</only>
-                  <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::CONTROL_L, KeyCode::TAB</autogen>
-                  <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::CONTROL_R, KeyCode::TAB</autogen>
+                  <autogen>--KeyToKey-- KeyCode::I, VK_CONTROL, KeyCode::TAB</autogen>
                 </item>
                 <item>
                   <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
                   <sysctl>option.emacsmode_force_controlI_vm</sysctl>
                   <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-                  <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::CONTROL_L, KeyCode::TAB</autogen>
-                  <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::CONTROL_R, KeyCode::TAB</autogen>
+                  <autogen>--KeyToKey-- KeyCode::I, VK_CONTROL, KeyCode::TAB</autogen>
                 </item>
               </list>
             </item>
@@ -1376,22 +1330,19 @@
                   <name>In Emacs, Terminal</name>
                   <sysctl>option.emacsmode_force_controlM_term</sysctl>
                   <only>EMACS, TERMINAL</only>
-                  <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::CONTROL_L, KeyCode::RETURN</autogen>
-                  <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::CONTROL_R, KeyCode::RETURN</autogen>
+                  <autogen>--KeyToKey-- KeyCode::M, VK_CONTROL, KeyCode::RETURN</autogen>
                 </item>
                 <item>
                   <name>In X11</name>
                   <sysctl>option.emacsmode_force_controlM_x11</sysctl>
                   <only>X11</only>
-                  <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::CONTROL_L, KeyCode::RETURN</autogen>
-                  <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::CONTROL_R, KeyCode::RETURN</autogen>
+                  <autogen>--KeyToKey-- KeyCode::M, VK_CONTROL, KeyCode::RETURN</autogen>
                 </item>
                 <item>
                   <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
                   <sysctl>option.emacsmode_force_controlM_vm</sysctl>
                   <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-                  <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::CONTROL_L, KeyCode::RETURN</autogen>
-                  <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::CONTROL_R, KeyCode::RETURN</autogen>
+                  <autogen>--KeyToKey-- KeyCode::M, VK_CONTROL, KeyCode::RETURN</autogen>
                 </item>
               </list>
             </item>
@@ -1402,22 +1353,19 @@
                   <name>In Emacs, Terminal</name>
                   <sysctl>option.emacsmode_force_controlLeftbracket_term</sysctl>
                   <only>EMACS, TERMINAL</only>
-                  <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::CONTROL_L, KeyCode::ESCAPE</autogen>
-                  <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::CONTROL_R, KeyCode::ESCAPE</autogen>
+                  <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::ESCAPE</autogen>
                 </item>
                 <item>
                   <name>In X11</name>
                   <sysctl>option.emacsmode_force_controlLeftbracket_x11</sysctl>
                   <only>X11</only>
-                  <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::CONTROL_L, KeyCode::ESCAPE</autogen>
-                  <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::CONTROL_R, KeyCode::ESCAPE</autogen>
+                  <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::ESCAPE</autogen>
                 </item>
                 <item>
                   <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
                   <sysctl>option.emacsmode_force_controlLeftbracket_vm</sysctl>
                   <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-                  <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::CONTROL_L, KeyCode::ESCAPE</autogen>
-                  <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::CONTROL_R, KeyCode::ESCAPE</autogen>
+                  <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::ESCAPE</autogen>
                 </item>
               </list>
             </item>
@@ -1428,40 +1376,28 @@
                   <name>In Emacs, Terminal</name>
                   <sysctl>option.emacsmode_force_controlPNBF_term</sysctl>
                   <only>EMACS, TERMINAL</only>
-                  <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::CONTROL_L, KeyCode::CURSOR_UP</autogen>
-                  <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::CONTROL_R, KeyCode::CURSOR_UP</autogen>
-                  <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN</autogen>
-                  <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::CONTROL_R, KeyCode::CURSOR_DOWN</autogen>
-                  <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::CONTROL_L, KeyCode::CURSOR_LEFT</autogen>
-                  <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::CONTROL_R, KeyCode::CURSOR_LEFT</autogen>
-                  <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT</autogen>
-                  <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT</autogen>
+                  <autogen>--KeyToKey-- KeyCode::P, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
+                  <autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
+                  <autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
+                  <autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
                 </item>
                 <item>
                   <name>In X11</name>
                   <sysctl>option.emacsmode_force_controlPNBF_x11</sysctl>
                   <only>X11</only>
-                  <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::CONTROL_L, KeyCode::CURSOR_UP</autogen>
-                  <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::CONTROL_R, KeyCode::CURSOR_UP</autogen>
-                  <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN</autogen>
-                  <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::CONTROL_R, KeyCode::CURSOR_DOWN</autogen>
-                  <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::CONTROL_L, KeyCode::CURSOR_LEFT</autogen>
-                  <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::CONTROL_R, KeyCode::CURSOR_LEFT</autogen>
-                  <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT</autogen>
-                  <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT</autogen>
+                  <autogen>--KeyToKey-- KeyCode::P, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
+                  <autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
+                  <autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
+                  <autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
                 </item>
                 <item>
                   <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
                   <sysctl>option.emacsmode_force_controlPNBF_vm</sysctl>
                   <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-                  <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::CONTROL_L, KeyCode::CURSOR_UP</autogen>
-                  <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::CONTROL_R, KeyCode::CURSOR_UP</autogen>
-                  <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN</autogen>
-                  <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::CONTROL_R, KeyCode::CURSOR_DOWN</autogen>
-                  <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::CONTROL_L, KeyCode::CURSOR_LEFT</autogen>
-                  <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::CONTROL_R, KeyCode::CURSOR_LEFT</autogen>
-                  <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT</autogen>
-                  <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT</autogen>
+                  <autogen>--KeyToKey-- KeyCode::P, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
+                  <autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
+                  <autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
+                  <autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
                 </item>
               </list>
             </item>
@@ -1472,10 +1408,8 @@
                   <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
                   <sysctl>option.emacsmode_controlAE_vm</sysctl>
                   <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-                  <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::HOME</autogen>
-                  <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::CONTROL_R, KeyCode::HOME</autogen>
-                  <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::CONTROL_L, KeyCode::END</autogen>
-                  <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::CONTROL_R, KeyCode::END</autogen>
+                  <autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::HOME</autogen>
+                  <autogen>--KeyToKey-- KeyCode::E, VK_CONTROL, KeyCode::END</autogen>
                 </item>
               </list>
             </item>
@@ -1523,6 +1457,19 @@
         <item>
           <name>Drop Shift+[F1...F12] (Disable Show-Expose)</name>
           <sysctl>remap.drop_funcshift</sysctl>
+          <autogen>--KeyToKey-- KeyCode::F1, VK_SHIFT, KeyCode::F1</autogen>
+          <autogen>--KeyToKey-- KeyCode::F2, VK_SHIFT, KeyCode::F2</autogen>
+          <autogen>--KeyToKey-- KeyCode::F3, VK_SHIFT, KeyCode::F3</autogen>
+          <autogen>--KeyToKey-- KeyCode::F4, VK_SHIFT, KeyCode::F4</autogen>
+          <autogen>--KeyToKey-- KeyCode::F5, VK_SHIFT, KeyCode::F5</autogen>
+          <autogen>--KeyToKey-- KeyCode::F6, VK_SHIFT, KeyCode::F6</autogen>
+          <autogen>--KeyToKey-- KeyCode::F7, VK_SHIFT, KeyCode::F7</autogen>
+          <autogen>--KeyToKey-- KeyCode::F8, VK_SHIFT, KeyCode::F8</autogen>
+          <autogen>--KeyToKey-- KeyCode::F9, VK_SHIFT, KeyCode::F9</autogen>
+          <autogen>--KeyToKey-- KeyCode::F10, VK_SHIFT, KeyCode::F10</autogen>
+          <autogen>--KeyToKey-- KeyCode::F11, VK_SHIFT, KeyCode::F11</autogen>
+          <autogen>--KeyToKey-- KeyCode::F12, VK_SHIFT, KeyCode::F12</autogen>
+          <autogen>--KeyToKey-- KeyCode::EXPOSE_ALL, VK_SHIFT, KeyCode::EXPOSE_ALL</autogen>
         </item>
         <item>
           <name>Remapping for Spaces</name>
@@ -1531,61 +1478,148 @@
               <name>Use Command_R+[ASD FGH JKL] for Spaces</name>
               <appendix>(Command+Control+Option+Shift+[123 456 789])</appendix>
               <sysctl>remap.spaces_special</sysctl>
+              <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::COMMAND_R, KeyCode::KEY_1, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::COMMAND_R, KeyCode::KEY_2, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::COMMAND_R, KeyCode::KEY_3, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::COMMAND_R, KeyCode::KEY_4, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::COMMAND_R, KeyCode::KEY_5, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::COMMAND_R, KeyCode::KEY_6, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::COMMAND_R, KeyCode::KEY_7, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::COMMAND_R, KeyCode::KEY_8, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::COMMAND_R, KeyCode::KEY_9, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
             </item>
             <item>
               <name>Use Command_R+[123 QWE ASD] for Spaces (3x3)</name>
               <appendix>(Command+Control+Option+Shift+[123 456 789])</appendix>
               <sysctl>remap.spaces_special_123qweasd</sysctl>
+              <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::COMMAND_R, KeyCode::KEY_1, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::COMMAND_R, KeyCode::KEY_2, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::COMMAND_R, KeyCode::KEY_3, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::COMMAND_R, KeyCode::KEY_4, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::COMMAND_R, KeyCode::KEY_5, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::COMMAND_R, KeyCode::KEY_6, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::COMMAND_R, KeyCode::KEY_7, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::COMMAND_R, KeyCode::KEY_8, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::COMMAND_R, KeyCode::KEY_9, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
             </item>
             <item>
               <name>Use Command_R+[123 QWE ASD] for Spaces (4x4)</name>
               <appendix>(Cmd+Ctrl+Shift+[123 567 90], Cmd+Ctrl+Option+Shift[1])</appendix>
               <sysctl>remap.spaces_special_123qweasd_4x4</sysctl>
+              <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::COMMAND_R, KeyCode::KEY_1, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::COMMAND_R, KeyCode::KEY_2, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::COMMAND_R, KeyCode::KEY_3, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::COMMAND_R, KeyCode::KEY_5, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::COMMAND_R, KeyCode::KEY_6, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::COMMAND_R, KeyCode::KEY_7, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::COMMAND_R, KeyCode::KEY_9, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::COMMAND_R, KeyCode::KEY_0, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::COMMAND_R, KeyCode::KEY_1, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
             </item>
             <item>
               <name>Use Command_R+[QWE ASD ZXC] for Spaces (3x3)</name>
               <appendix>(Command+Control+Option+Shift+[123 456 789])</appendix>
               <sysctl>remap.spaces_special_qweasdzxc</sysctl>
+              <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::COMMAND_R, KeyCode::KEY_1, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::COMMAND_R, KeyCode::KEY_2, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::COMMAND_R, KeyCode::KEY_3, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::COMMAND_R, KeyCode::KEY_4, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::COMMAND_R, KeyCode::KEY_5, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::COMMAND_R, KeyCode::KEY_6, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::COMMAND_R, KeyCode::KEY_7, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::COMMAND_R, KeyCode::KEY_8, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::COMMAND_R, KeyCode::KEY_9, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
             </item>
             <item>
               <name>Use FN+[123456789] for Spaces</name>
               <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
               <sysctl>remap.spaces_special_fn</sysctl>
+              <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::FN, KeyCode::KEY_1, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::FN, KeyCode::KEY_2, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::FN, KeyCode::KEY_3, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::FN, KeyCode::KEY_4, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_5, ModifierFlag::FN, KeyCode::KEY_5, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::FN, KeyCode::KEY_6, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_7, ModifierFlag::FN, KeyCode::KEY_7, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::FN, KeyCode::KEY_8, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::FN, KeyCode::KEY_9, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
             </item>
             <item>
               <name>Use FN+[1234 QWER ASDF ZXCV] for Spaces (4x4)</name>
               <appendix>(Cmd+Ctrl+Shift+[1234 5678 90], Cmd+Ctrl+Option+Shift[12 3456])</appendix>
               <sysctl>remap.spaces_special_1234qwerasdfzxcv</sysctl>
+              <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::COMMAND_R, KeyCode::KEY_1, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::COMMAND_R, KeyCode::KEY_2, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::COMMAND_R, KeyCode::KEY_3, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::COMMAND_R, KeyCode::KEY_4, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::COMMAND_R, KeyCode::KEY_5, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::COMMAND_R, KeyCode::KEY_6, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::COMMAND_R, KeyCode::KEY_7, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::COMMAND_R, KeyCode::KEY_8, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::COMMAND_R, KeyCode::KEY_9, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::COMMAND_R, KeyCode::KEY_0, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::COMMAND_R, KeyCode::KEY_1, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::COMMAND_R, KeyCode::KEY_2, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::COMMAND_R, KeyCode::KEY_3, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::COMMAND_R, KeyCode::KEY_4, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::COMMAND_R, KeyCode::KEY_5, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::COMMAND_R, KeyCode::KEY_6, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
             </item>
             <item>
-              <name>Use KeyPad number for Spaces</name>
+              <name>Use KeyPad numbers for Spaces(3x3)</name>
               <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
               <sysctl>remap.spaces_special_keypad</sysctl>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_1, KeyCode::KEY_7, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_2, KeyCode::KEY_8, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_3, KeyCode::KEY_9, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_4, KeyCode::KEY_4, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_5, KeyCode::KEY_5, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_6, KeyCode::KEY_6, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_7, KeyCode::KEY_1, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_8, KeyCode::KEY_2, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_9, KeyCode::KEY_3, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
             </item>
             <item>
-              <name>Remap KeyPad numbers for Spaces(3x3)</name>
-              <list>
-                <item>
-                  <name>Enable KeyPad numbers for Spaces(3x3)</name>
-                  <sysctl>remap.keypad2spaces</sysctl>
-                </item>
-                <item>
-                  <name>Check if your Spaces setting is Control+[123456789]</name>
-                  <sysctl>option.keypad2spaces_modifier_control</sysctl>
-                </item>
-                <item>
-                  <name>Check if your Spaces setting is Command+[123456789]</name>
-                  <sysctl>option.keypad2spaces_modifier_command</sysctl>
-                </item>
-                <item>
-                  <name>Check if your Spaces setting is Option+[123456789]</name>
-                  <sysctl>option.keypad2spaces_modifier_option</sysctl>
-                </item>
-                <item>
-                  <name>Check if your Spaces setting is Shift+[123456789]</name>
-                  <sysctl>option.keypad2spaces_modifier_shift</sysctl>
-                </item>
-              </list>
+              <name>Use Command+KeyPad numbers for Spaces(3x3)</name>
+              <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
+              <sysctl>option.keypad2spaces_modifier_command</sysctl>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_1, VK_COMMAND, KeyCode::KEY_7, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_2, VK_COMMAND, KeyCode::KEY_8, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_3, VK_COMMAND, KeyCode::KEY_9, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_4, VK_COMMAND, KeyCode::KEY_4, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_5, VK_COMMAND, KeyCode::KEY_5, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_6, VK_COMMAND, KeyCode::KEY_6, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_7, VK_COMMAND, KeyCode::KEY_1, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_8, VK_COMMAND, KeyCode::KEY_2, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_9, VK_COMMAND, KeyCode::KEY_3, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+            </item>
+            <item>
+              <name>Use Control+KeyPad numbers for Spaces(3x3)</name>
+              <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
+              <sysctl>option.keypad2spaces_modifier_control</sysctl>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_1, VK_CONTROL, KeyCode::KEY_7, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_2, VK_CONTROL, KeyCode::KEY_8, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_3, VK_CONTROL, KeyCode::KEY_9, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_4, VK_CONTROL, KeyCode::KEY_4, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_5, VK_CONTROL, KeyCode::KEY_5, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_6, VK_CONTROL, KeyCode::KEY_6, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_7, VK_CONTROL, KeyCode::KEY_1, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_8, VK_CONTROL, KeyCode::KEY_2, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_9, VK_CONTROL, KeyCode::KEY_3, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+            </item>
+            <item>
+              <name>Use Option+KeyPad numbers for Spaces(3x3)</name>
+              <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
+              <sysctl>option.keypad2spaces_modifier_option</sysctl>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_1, VK_OPTION, KeyCode::KEY_7, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_2, VK_OPTION, KeyCode::KEY_8, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_3, VK_OPTION, KeyCode::KEY_9, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_4, VK_OPTION, KeyCode::KEY_4, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_5, VK_OPTION, KeyCode::KEY_5, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_6, VK_OPTION, KeyCode::KEY_6, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_7, VK_OPTION, KeyCode::KEY_1, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_8, VK_OPTION, KeyCode::KEY_2, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_9, VK_OPTION, KeyCode::KEY_3, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
             </item>
           </list>
         </item>
@@ -1615,8 +1649,7 @@
               <name>Remap Command+R to Return (== Rename)</name>
               <sysctl>remap.app_finder_command_R_to_return</sysctl>
               <only>FINDER</only>
-              <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::COMMAND_L, KeyCode::RETURN</autogen>
-              <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::COMMAND_R, KeyCode::RETURN</autogen>
+              <autogen>--KeyToKey-- KeyCode::R, VK_COMMAND, KeyCode::RETURN</autogen>
             </item>
             <item>
               <name>Remap F2 to Return (== Rename)</name>
@@ -1629,7 +1662,6 @@
               <sysctl>remap.app_finder_return2commandO</sysctl>
               <only>FINDER</only>
               <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::O, ModifierFlag::COMMAND_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::O, ModifierFlag::COMMAND_R</autogen>
             </item>
           </list>
         </item>
@@ -2077,8 +2109,7 @@
               <name>Control+[ to Escape at Japanese Keyboard</name>
               <sysctl>option.jis_emacsmode_controlLeftbracket</sysctl>
               <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
-              <autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, ModifierFlag::CONTROL_L, KeyCode::ESCAPE</autogen>
-              <autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, ModifierFlag::CONTROL_R, KeyCode::ESCAPE</autogen>
+              <autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, VK_CONTROL, KeyCode::ESCAPE</autogen>
             </item>
             <item>
               <name>Behavior in Emacs, Terminal, X11, VMware, Parallels, RDC</name>
@@ -2090,22 +2121,19 @@
                       <name>In Emacs, Terminal</name>
                       <sysctl>option.jis_emacsmode_force_controlLeftbracket_term</sysctl>
                       <only>EMACS, TERMINAL</only>
-                      <autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, ModifierFlag::CONTROL_L, KeyCode::ESCAPE</autogen>
-                      <autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, ModifierFlag::CONTROL_R, KeyCode::ESCAPE</autogen>
+                      <autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, VK_CONTROL, KeyCode::ESCAPE</autogen>
                     </item>
                     <item>
                       <name>In X11</name>
                       <sysctl>option.jis_emacsmode_force_controlLeftbracket_x11</sysctl>
                       <only>X11</only>
-                      <autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, ModifierFlag::CONTROL_L, KeyCode::ESCAPE</autogen>
-                      <autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, ModifierFlag::CONTROL_R, KeyCode::ESCAPE</autogen>
+                      <autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, VK_CONTROL, KeyCode::ESCAPE</autogen>
                     </item>
                     <item>
                       <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
                       <sysctl>option.jis_emacsmode_force_controlLeftbracket_vm</sysctl>
                       <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-                      <autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, ModifierFlag::CONTROL_L, KeyCode::ESCAPE</autogen>
-                      <autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, ModifierFlag::CONTROL_R, KeyCode::ESCAPE</autogen>
+                      <autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, VK_CONTROL, KeyCode::ESCAPE</autogen>
                     </item>
                   </list>
                 </item>
