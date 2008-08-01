@@ -979,7 +979,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     listFireExtraKey.reset();
     RemapParams params;
     firefunc(params);
-    listFireExtraKey.fire(FireExtraKey::TYPE_BEFORE, callback, target, charSet, origCharCode, origCharSet, keyboardType, ts, sender, refcon);
     listFireExtraKey.fire(FireExtraKey::TYPE_AFTER,  callback, target, charSet, origCharCode, origCharSet, keyboardType, ts, sender, refcon);
   }
 

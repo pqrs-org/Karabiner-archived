@@ -179,7 +179,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   class FireExtraKey {
   public:
     enum Type {
-      TYPE_BEFORE,
       TYPE_AFTER,
     };
     void set(FireExtraKey::Type _type, unsigned int _eventType, unsigned int _flags, unsigned int _key, unsigned int _charCode) {
