@@ -153,8 +153,17 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  RemapUtil::keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode, unsigned int toFlags)
+  RemapUtil::keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags, KeyCode::KeyCode toKeyCode, unsigned int toFlags)
   {
+    // ----------------------------------------
+    if (isModifierOn(fromFlags, ModifierFlag::NONE)) {
+      unsigned int flags = fromFlags & ~(ModifierFlag::NONE);
+      if (allFlagStatus.makeFlags(params) != flags) return false;
+    } else {
+      unsigned int flags = allFlagStatus.makeFlags(params);
+      if ((flags & fromFlags) != fromFlags) return false;
+    }
+
     // ----------------------------------------
     if (fromKeyCode == KeyCode::FN) fnToNormal(params);
     if (toKeyCode == KeyCode::FN) toFN(params);
@@ -213,37 +222,17 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     for (int i = 0; i < ModifierFlag::listsize; ++i) {
       ModifierFlag::ModifierFlag m = ModifierFlag::list[i];
-
-      if (isModifierOn(toFlags, m)) {
-        FlagStatus *p = allFlagStatus.getFlagStatus(m);
-        if (p) p->temporary_increase();
-      }
-    }
-
-    return true;
-  }
-
-  bool
-  RemapUtil::keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags, KeyCode::KeyCode toKeyCode, unsigned int toFlags)
-  {
-    if (isModifierOn(fromFlags, ModifierFlag::NONE)) {
-      unsigned int flags = fromFlags & ~(ModifierFlag::NONE);
-      if (allFlagStatus.makeFlags(params) != flags) return false;
-    } else {
-      unsigned int flags = allFlagStatus.makeFlags(params);
-      if ((flags & fromFlags) != fromFlags) return false;
-    }
-
-    if (! keyToKey(params, fromKeyCode, toKeyCode, toFlags)) return false;
-
-    for (int i = 0; i < ModifierFlag::listsize; ++i) {
-      ModifierFlag::ModifierFlag m = ModifierFlag::list[i];
+      FlagStatus *p = allFlagStatus.getFlagStatus(m);
+      if (! p) continue;
 
       if (isModifierOn(fromFlags, m)) {
-        FlagStatus *p = allFlagStatus.getFlagStatus(m);
-        if (p) p->temporary_decrease();
+        p->temporary_decrease();
+      }
+      if (isModifierOn(toFlags, m)) {
+        p->temporary_increase();
       }
     }
+
     return true;
   }
 
@@ -595,20 +584,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     commandR.reset();
     fn.reset();
     numHeldDownKeys = 0;
-  }
-
-  void
-  AllFlagStatus::temporary_set(unsigned int flags)
-  {
-    for (int i = 0; i < ModifierFlag::listsize; ++i) {
-      FlagStatus *p = getFlagStatus(ModifierFlag::list[i]);
-      if (! p) continue;
-
-      p->temporary_reset();
-      if (RemapUtil::isModifierOn(flags, ModifierFlag::list[i])) {
-        if (p) p->temporary_increase();
-      }
-    }
   }
 
   unsigned int

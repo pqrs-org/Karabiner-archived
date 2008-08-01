@@ -42,11 +42,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     bool isInternalKeyboard(unsigned int keyboardType);
 
-    bool keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE);
-    inline bool toKey(const RemapParams &params, KeyCode::KeyCode toKeyCode) {
-      return keyToKey(params, static_cast<KeyCode::KeyCode>(params.ex_origKey), toKeyCode);
-    }
     bool keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags, KeyCode::KeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE);
+    inline bool keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE) {
+      return keyToKey(params, fromKeyCode, 0, toKeyCode, toFlags);
+    }
 
     bool keyToKey_dependingShift(const RemapParams &params, KeyCode::KeyCode fromKeyCode,
                                  KeyCode::KeyCode toKeyCode_noflag1, CharCode::CharCode toCharCode_noflag1,
@@ -86,7 +85,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void decrease(void) { --count; }
     void temporary_increase(void) { ++temporary_count; }
     void temporary_decrease(void) { --temporary_count; }
-    void temporary_reset(void) { temporary_count = 0; }
 
     bool isHeldDown(void) const { return (count + temporary_count) > 0; }
     unsigned int getFlag(void) const { return flag; }
@@ -132,7 +130,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     unsigned int makeFlags(unsigned int keyCode);
     unsigned int makeFlags(const RemapParams &params);
     void reset(void);
-    void temporary_set(unsigned int flags);
 
     FlagStatus *getFlagStatus(ModifierFlag::ModifierFlag flag);
     FlagStatus *getFlagStatus(KeyCode::KeyCode keyCode);
