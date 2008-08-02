@@ -178,24 +178,18 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------------------------------------
   class FireExtraKey {
   public:
-    enum Type {
-      TYPE_AFTER,
-    };
-    void set(FireExtraKey::Type _type, unsigned int _eventType, unsigned int _flags, unsigned int _key, unsigned int _charCode) {
-      type = _type;
+    void set(unsigned int _eventType, unsigned int _flags, unsigned int _key, unsigned int _charCode) {
       eventType = _eventType;
       flags = _flags;
       key = _key;
       charCode = _charCode;
     }
-    unsigned int getType(void) const { return type; }
     unsigned int getEventType(void) const { return eventType; }
     unsigned int getFlags(void) const { return flags; }
     unsigned int getKey(void) const { return key; }
     unsigned int getCharCode(void) const { return charCode; }
 
   private:
-    Type type;
     unsigned int eventType;
     unsigned int flags;
     unsigned int key;
@@ -209,12 +203,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
     void reset(void) { size = 0; }
     bool isEmpty(void) { return size == 0; }
-    void add(FireExtraKey::Type type, unsigned int eventType, unsigned int flags, unsigned int key, unsigned int charCode) {
+    void add(unsigned int eventType, unsigned int flags, unsigned int key, unsigned int charCode) {
       if (size >= FIREEXTRAKEY_MAXNUM) return;
-      list[size].set(type, eventType, flags, key, charCode);
+      list[size].set(eventType, flags, key, charCode);
       ++size;
     }
-    void fire(FireExtraKey::Type type, KeyboardEventCallback callback,
+    void fire(KeyboardEventCallback callback,
               OSObject *target,
               unsigned int charSet, unsigned int origCharCode, unsigned int origCharSet, unsigned int keyboardType,
               AbsoluteTime ts, OSObject *sender, void *refcon);
@@ -222,10 +216,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     // utility
     void addKey(unsigned int flags, KeyCode::KeyCode keyCode, CharCode::CharCode charCode) {
       if (RemapUtil::getKeyCodeModifier(keyCode) != ModifierFlag::NONE) {
-        add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, keyCode, charCode);
+        add(KeyEvent::MODIFY, flags, keyCode, charCode);
       } else {
-        add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, flags, keyCode, charCode);
-        add(FireExtraKey::TYPE_AFTER, KeyEvent::UP, flags, keyCode, charCode);
+        add(KeyEvent::DOWN, flags, keyCode, charCode);
+        add(KeyEvent::UP, flags, keyCode, charCode);
       }
     }
 

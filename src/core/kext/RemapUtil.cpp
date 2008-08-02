@@ -698,7 +698,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   void
-  ListFireExtraKey::fire(FireExtraKey::Type type, KeyboardEventCallback callback,
+  ListFireExtraKey::fire(KeyboardEventCallback callback,
                          OSObject *target,
                          unsigned int charSet, unsigned int origCharCode, unsigned int origCharSet, unsigned int keyboardType,
                          AbsoluteTime ts, OSObject *sender, void *refcon)
@@ -708,11 +708,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (int i = 0; i < size; ++i) {
       FireExtraKey &item = list[i];
 
-      if (item.getType() == type) {
-        RemapUtil::fireKey(callback, target, item.getEventType(), item.getFlags(), item.getKey(), item.getCharCode(),
-                           charSet, origCharCode, origCharSet,
-                           keyboardType, false, ts, sender, refcon);
-      }
+      RemapUtil::fireKey(callback, target, item.getEventType(), item.getFlags(), item.getKey(), item.getCharCode(),
+                         charSet, origCharCode, origCharSet,
+                         keyboardType, false, ts, sender, refcon);
     }
   }
 
@@ -748,8 +746,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     // fire only if no-modifiers
     if (allFlagStatus.makeFlags(params) != 0) return;
 
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN,   ModifierFlag::COMMAND_L, KeyCode::O,         CharCode::O);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP,     ModifierFlag::COMMAND_L, KeyCode::O,         CharCode::O);
+    listFireExtraKey.add(KeyEvent::DOWN, ModifierFlag::COMMAND_L, KeyCode::O, CharCode::O);
+    listFireExtraKey.add(KeyEvent::UP,   ModifierFlag::COMMAND_L, KeyCode::O, CharCode::O);
   }
 
   void
@@ -758,8 +756,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     // fire only if no-modifiers
     if (allFlagStatus.makeFlags(params) != 0) return;
 
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN,   ModifierFlag::COMMAND_L, KeyCode::SPACE,     CharCode::SPACE);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP,     ModifierFlag::COMMAND_L, KeyCode::SPACE,     CharCode::SPACE);
+    listFireExtraKey.add(KeyEvent::DOWN, ModifierFlag::COMMAND_L, KeyCode::SPACE, CharCode::SPACE);
+    listFireExtraKey.add(KeyEvent::UP,   ModifierFlag::COMMAND_L, KeyCode::SPACE, CharCode::SPACE);
   }
 
   void
@@ -823,30 +821,17 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (counter % 2 == 0) {
       // Command+Shift+Right
-      unsigned int flags = ModifierFlag::SHIFT_L;
-      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::SHIFT_L,      CharCode::SHIFT_L);
-      flags |= ModifierFlag::COMMAND_L;
-      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::COMMAND_L,    CharCode::COMMAND_L);
-
-      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN,   flags, KeyCode::CURSOR_RIGHT, CharCode::CURSOR_RIGHT);
-      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP,     flags, KeyCode::CURSOR_RIGHT, CharCode::CURSOR_RIGHT);
-
-      // release Shift
-      flags = ModifierFlag::COMMAND_L;
-      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::SHIFT_L,      CharCode::SHIFT_L);
+      listFireExtraKey.add(KeyEvent::DOWN, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::CURSOR_RIGHT, CharCode::CURSOR_RIGHT);
+      listFireExtraKey.add(KeyEvent::UP,   ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::CURSOR_RIGHT, CharCode::CURSOR_RIGHT);
 
       // Command+X
-      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN,   flags, KeyCode::X,            CharCode::X);
-      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP,     flags, KeyCode::X,            CharCode::X);
+      listFireExtraKey.add(KeyEvent::DOWN, ModifierFlag::COMMAND_L, KeyCode::X, CharCode::X);
+      listFireExtraKey.add(KeyEvent::UP,   ModifierFlag::COMMAND_L, KeyCode::X, CharCode::X);
 
-      // release Command
-      flags = 0;
-      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::COMMAND_L,    CharCode::COMMAND_L);
     } else {
       // Forward Delete
-      unsigned int flags = 0;
-      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN, flags, KeyCode::FORWARD_DELETE, CharCode::X);
-      listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP,   flags, KeyCode::FORWARD_DELETE, CharCode::X);
+      listFireExtraKey.add(KeyEvent::DOWN, 0, KeyCode::FORWARD_DELETE, CharCode::X);
+      listFireExtraKey.add(KeyEvent::UP,   0, KeyCode::FORWARD_DELETE, CharCode::X);
     }
 
     ++counter;
@@ -862,22 +847,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   FireFunc::firefunc_emacsmode_ex_controlU(const RemapParams &params)
   {
     // Command+Shift+Left
-    unsigned int flags = ModifierFlag::SHIFT_L;
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::SHIFT_L,     CharCode::SHIFT_L);
-    flags |= ModifierFlag::COMMAND_L;
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::COMMAND_L,   CharCode::COMMAND_L);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN,   flags, KeyCode::CURSOR_LEFT, CharCode::CURSOR_LEFT);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP,     flags, KeyCode::CURSOR_LEFT, CharCode::CURSOR_LEFT);
+    listFireExtraKey.add(KeyEvent::DOWN, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::CURSOR_LEFT, CharCode::CURSOR_LEFT);
+    listFireExtraKey.add(KeyEvent::UP,   ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::CURSOR_LEFT, CharCode::CURSOR_LEFT);
 
     // Command+X
-    flags = ModifierFlag::COMMAND_L;
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::SHIFT_L, CharCode::SHIFT_L);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::DOWN,   flags, KeyCode::X,       CharCode::X);
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::UP,     flags, KeyCode::X,       CharCode::X);
-
-    // release Command
-    flags = 0;
-    listFireExtraKey.add(FireExtraKey::TYPE_AFTER, KeyEvent::MODIFY, flags, KeyCode::COMMAND_L,    CharCode::COMMAND_L);
+    listFireExtraKey.add(KeyEvent::DOWN, ModifierFlag::COMMAND_L, KeyCode::X, CharCode::X);
+    listFireExtraKey.add(KeyEvent::UP,   ModifierFlag::COMMAND_L, KeyCode::X, CharCode::X);
   }
 
   void
@@ -979,7 +954,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     listFireExtraKey.reset();
     RemapParams params;
     firefunc(params);
-    listFireExtraKey.fire(FireExtraKey::TYPE_AFTER,  callback, target, charSet, origCharCode, origCharSet, keyboardType, ts, sender, refcon);
+    listFireExtraKey.fire(callback, target, charSet, origCharCode, origCharSet, keyboardType, ts, sender, refcon);
   }
 
   void
