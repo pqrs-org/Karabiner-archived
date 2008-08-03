@@ -157,7 +157,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     // ----------------------------------------
     if (isModifierOn(fromFlags, ModifierFlag::NONE)) {
-      unsigned int flags = fromFlags & ~(ModifierFlag::NONE);
+      unsigned int flags = stripModifierNone(fromFlags);
       if (allFlagStatus.makeFlags(params) != flags) return false;
     } else {
       unsigned int flags = allFlagStatus.makeFlags(params);
