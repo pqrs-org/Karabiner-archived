@@ -22,6 +22,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     inline bool isModifierOn(const RemapParams &params, ModifierFlag::ModifierFlag flag) {
       return isModifierOn(*(params.flags), flag);
     }
+    inline unsigned int stripModifierNone(unsigned int flags) {
+      return (flags & ~(ModifierFlag::NONE));
+    }
 
     KeyCode::KeyCode getModifierKeyCode(ModifierFlag::ModifierFlag flag);
     ModifierFlag::ModifierFlag getKeyCodeModifier(unsigned int keycode);
