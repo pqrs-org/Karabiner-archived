@@ -171,10 +171,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         shiftR.temporary_decrease();
       }
     }
-
-    // ----------------------------------------
-    void temporary_flags_reset(void);
-    void temporary_flags_restore(KeyCode::KeyCode keyCode);
   };
   extern AllFlagStatus allFlagStatus;
 
@@ -292,9 +288,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     void firefunc_commandSpace(const RemapParams &params);
     void firefunc_enter(const RemapParams &params);
     void firefunc_escape(const RemapParams &params);
-    void firefunc_escape_noflags(const RemapParams &params);
     void firefunc_exposeAll(const RemapParams &params);
-    void firefunc_return_noflags(const RemapParams &params);
+    void firefunc_return(const RemapParams &params);
     void firefunc_space(const RemapParams &params);
     void firefunc_tab(const RemapParams &params);
     void firefunc_emacsmode_controlK(const RemapParams &params, bool first);
