@@ -1067,6 +1067,13 @@
           <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, ModifierFlag::SHIFT_L, FireFunc::firefunc_space, ExtraRepeatFunc::extraRepeatFunc_space</autogen>
         </item>
         <item>
+          <name>Space to Shift_L</name>
+          <appendix>(+ When you type Space only, send Space) (Disable on Adobe Softwares)</appendix>
+          <not>ADOBE</not>
+          <sysctl>remap.space2shiftL_space_not_adobe</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, ModifierFlag::SHIFT_L, FireFunc::firefunc_space</autogen>
+        </item>
+        <item>
           <name>Space to Return</name>
           <sysctl>remap.space2return</sysctl>
           <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::RETURN</autogen>
