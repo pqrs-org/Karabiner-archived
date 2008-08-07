@@ -90,7 +90,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void temporary_decrease(void) { --temporary_count; }
 
     bool isHeldDown(void) const { return (count + temporary_count) > 0; }
-    unsigned int getFlag(void) const { return flag; }
     unsigned int makeFlag(void) const { return (isHeldDown()) ? flag : 0; }
 
     KeyCode::KeyCode getKeyCode(void) const { return key; }
@@ -359,7 +358,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool doremap;
     bool first;
   };
-
 
   // ----------------------------------------------------------------------
   class ClickWatcher {
