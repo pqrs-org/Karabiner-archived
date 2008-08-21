@@ -40,14 +40,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::keyToKey(params, KeyCode::FN, KeyCode::CONTROL_L);
   }
 
-  void
-  remap_fn2fn(const RemapParams &params)
-  {
-    if (! config.remap_fn2fn) return;
-
-    RemapUtil::toFN(params);
-  }
-
   // ----------------------------------------
   void
   remap_semicolon2return_controlsemicolon2semicolon(const RemapParams &params)
@@ -124,100 +116,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
-  void
-  remap_hhkmode(const RemapParams &params)
-  {
-    if (! config.remap_hhkmode) return;
-
-    if (! allFlagStatus.fn.isHeldDown()) return;
-
-    // [ => up
-    if (params.ex_origKey == KeyCode::BRACKET_LEFT) {
-      *(params.key) = KeyCode::CURSOR_UP;
-      allFlagStatus.fn.temporary_decrease();
-    }
-    // ; => left
-    if (params.ex_origKey == KeyCode::SEMICOLON || params.ex_origKey == KeyCode::KEYPAD_MINUS) {
-      *(params.key) = KeyCode::CURSOR_LEFT;
-      allFlagStatus.fn.temporary_decrease();
-    }
-    // ' => right
-    if (params.ex_origKey == KeyCode::QUOTE) {
-      *(params.key) = KeyCode::CURSOR_RIGHT;
-      allFlagStatus.fn.temporary_decrease();
-    }
-    // / => down
-    if (params.ex_origKey == KeyCode::SLASH || params.ex_origKey == KeyCode::KEYPAD_PLUS) {
-      *(params.key) = KeyCode::CURSOR_DOWN;
-      allFlagStatus.fn.temporary_decrease();
-    }
-    // L => PageUp
-    if (params.ex_origKey == KeyCode::L || params.ex_origKey == KeyCode::KEYPAD_3) {
-      *(params.key) = KeyCode::PAGEUP;
-    }
-    // . => PageDown
-    if (params.ex_origKey == KeyCode::DOT || params.ex_origKey == KeyCode::KEYPAD_DOT) {
-      *(params.key) = KeyCode::PAGEDOWN;
-    }
-    // K => HOME
-    if (params.ex_origKey == KeyCode::K || params.ex_origKey == KeyCode::KEYPAD_2) {
-      *(params.key) = KeyCode::HOME;
-    }
-    // , => End
-    if (params.ex_origKey == KeyCode::COMMA) {
-      *(params.key) = KeyCode::END;
-    }
-
-    // 1..90-= => F1..F12
-    if (params.ex_origKey == KeyCode::KEY_1) {
-      *(params.key) = KeyCode::F1;
-    }
-    if (params.ex_origKey == KeyCode::KEY_2) {
-      *(params.key) = KeyCode::F2;
-    }
-    if (params.ex_origKey == KeyCode::KEY_3) {
-      *(params.key) = KeyCode::F3;
-    }
-    if (params.ex_origKey == KeyCode::KEY_4) {
-      *(params.key) = KeyCode::F4;
-    }
-    if (params.ex_origKey == KeyCode::KEY_5) {
-      *(params.key) = KeyCode::F5;
-    }
-    if (params.ex_origKey == KeyCode::KEY_6 || params.ex_origKey == KeyCode::KEYPAD_CLEAR) {
-      *(params.key) = KeyCode::F6;
-    }
-    if (params.ex_origKey == KeyCode::KEY_7 || params.ex_origKey == KeyCode::KEYPAD_7) {
-      *(params.key) = KeyCode::F7;
-    }
-    if (params.ex_origKey == KeyCode::KEY_8 || params.ex_origKey == KeyCode::KEYPAD_8) {
-      *(params.key) = KeyCode::F8;
-    }
-    if (params.ex_origKey == KeyCode::KEY_9 || params.ex_origKey == KeyCode::KEYPAD_9) {
-      *(params.key) = KeyCode::F9;
-    }
-    if (params.ex_origKey == KeyCode::KEY_0 || params.ex_origKey == KeyCode::KEYPAD_SLASH) {
-      *(params.key) = KeyCode::F10;
-    }
-    if (params.ex_origKey == KeyCode::MINUS || params.ex_origKey == KeyCode::KEYPAD_EQUAL) {
-      *(params.key) = KeyCode::F11;
-    }
-    if (params.ex_origKey == KeyCode::EQUAL) {
-      *(params.key) = KeyCode::F12;
-    }
-  }
-
-  void
-  remap_hhkmode_vi_cursor(const RemapParams &params)
-  {
-    if (! config.remap_hhkmode_vi_cursor) return;
-
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_MULTIPLY, KeyCode::CURSOR_LEFT);
-    RemapUtil::keyToKey(params, KeyCode::KEYPAD_SLASH, KeyCode::CURSOR_DOWN);
-    RemapUtil::keyToKey(params, KeyCode::HOME, KeyCode::CURSOR_UP);
-    RemapUtil::keyToKey(params, KeyCode::PAGEUP, KeyCode::CURSOR_RIGHT);
-  }
-
   void
   remap_pc_pause2eject(const RemapParams &params)
   {
@@ -605,7 +503,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_enter2commandL_enter2controlL_vm(params);
 
   remap_fn2controlL_commandR2fn(params);
-  remap_fn2fn(params);
 
   remap_semicolon2return_controlsemicolon2semicolon(params);
   remap_swapcolons(params);
@@ -627,10 +524,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_pc_pause2eject(params);
   remap_keypadnumlock(params);
   remap_keypadnumlock_togglekey_clear(params);
-
-  // ----------------------------------------
-  remap_hhkmode(params);
-  remap_hhkmode_vi_cursor(params);
 
   // ------------------------------------------------------------
   // jis

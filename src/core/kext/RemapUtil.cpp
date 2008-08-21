@@ -93,35 +93,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  RemapUtil::toFN(const RemapParams &params) {
-    if (! allFlagStatus.fn.isHeldDown()) return;
-
-    keyToKey(params, KeyCode::M, KeyCode::KEYPAD_0);
-    keyToKey(params, KeyCode::J, KeyCode::KEYPAD_1);
-    keyToKey(params, KeyCode::K, KeyCode::KEYPAD_2);
-    keyToKey(params, KeyCode::L, KeyCode::KEYPAD_3);
-    keyToKey(params, KeyCode::U, KeyCode::KEYPAD_4);
-    keyToKey(params, KeyCode::I, KeyCode::KEYPAD_5);
-    keyToKey(params, KeyCode::O, KeyCode::KEYPAD_6);
-    keyToKey(params, KeyCode::KEY_7, KeyCode::KEYPAD_7);
-    keyToKey(params, KeyCode::KEY_8, KeyCode::KEYPAD_8);
-    keyToKey(params, KeyCode::KEY_9, KeyCode::KEYPAD_9);
-    keyToKey(params, KeyCode::KEY_6, KeyCode::KEYPAD_CLEAR);
-    keyToKey(params, KeyCode::SLASH, KeyCode::KEYPAD_PLUS);
-    keyToKey(params, KeyCode::SEMICOLON, KeyCode::KEYPAD_MINUS);
-    keyToKey(params, KeyCode::P, KeyCode::KEYPAD_MULTIPLY);
-    keyToKey(params, KeyCode::KEY_0, KeyCode::KEYPAD_SLASH);
-    keyToKey(params, KeyCode::MINUS, KeyCode::KEYPAD_EQUAL);
-    keyToKey(params, KeyCode::DOT, KeyCode::KEYPAD_DOT);
-    keyToKey(params, KeyCode::CURSOR_UP, KeyCode::PAGEUP);
-    keyToKey(params, KeyCode::CURSOR_DOWN, KeyCode::PAGEDOWN);
-    keyToKey(params, KeyCode::CURSOR_LEFT, KeyCode::HOME);
-    keyToKey(params, KeyCode::CURSOR_RIGHT, KeyCode::END);
-    keyToKey(params, KeyCode::RETURN, KeyCode::ENTER);
-    keyToKey(params, KeyCode::DELETE, KeyCode::FORWARD_DELETE);
-  }
-
-  void
   RemapUtil::toDelete(const RemapParams &params)
   {
     if (! allFlagStatus.fn.isHeldDown()) return;
@@ -166,7 +137,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ----------------------------------------
     if (fromKeyCode == KeyCode::FN) fnToNormal(params);
-    if (toKeyCode == KeyCode::FN) toFN(params);
 
     if (fromKeyCode == KeyCode::ENTER) fromKeyCode = getEnterKeyCode(*(params.keyboardType));
     if (toKeyCode == KeyCode::ENTER) toKeyCode = getEnterKeyCode(*(params.keyboardType));
@@ -408,6 +378,38 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
       }
     }
+
+    unsigned int
+    toFN(unsigned int key, unsigned int flags)
+    {
+      if (! (flags & ModifierFlag::FN)) return key;
+
+      if (key == KeyCode::M) return KeyCode::KEYPAD_0;
+      if (key == KeyCode::J) return KeyCode::KEYPAD_1;
+      if (key == KeyCode::K) return KeyCode::KEYPAD_2;
+      if (key == KeyCode::L) return KeyCode::KEYPAD_3;
+      if (key == KeyCode::U) return KeyCode::KEYPAD_4;
+      if (key == KeyCode::I) return KeyCode::KEYPAD_5;
+      if (key == KeyCode::O) return KeyCode::KEYPAD_6;
+      if (key == KeyCode::KEY_7) return KeyCode::KEYPAD_7;
+      if (key == KeyCode::KEY_8) return KeyCode::KEYPAD_8;
+      if (key == KeyCode::KEY_9) return KeyCode::KEYPAD_9;
+      if (key == KeyCode::KEY_6) return KeyCode::KEYPAD_CLEAR;
+      if (key == KeyCode::SLASH) return KeyCode::KEYPAD_PLUS;
+      if (key == KeyCode::SEMICOLON) return KeyCode::KEYPAD_MINUS;
+      if (key == KeyCode::P) return KeyCode::KEYPAD_MULTIPLY;
+      if (key == KeyCode::KEY_0) return KeyCode::KEYPAD_SLASH;
+      if (key == KeyCode::MINUS) return KeyCode::KEYPAD_EQUAL;
+      if (key == KeyCode::DOT) return KeyCode::KEYPAD_DOT;
+      if (key == KeyCode::CURSOR_UP) return KeyCode::PAGEUP;
+      if (key == KeyCode::CURSOR_DOWN) return KeyCode::PAGEDOWN;
+      if (key == KeyCode::CURSOR_LEFT) return KeyCode::HOME;
+      if (key == KeyCode::CURSOR_RIGHT) return KeyCode::END;
+      if (key == KeyCode::RETURN) return KeyCode::ENTER;
+      if (key == KeyCode::DELETE) return KeyCode::FORWARD_DELETE;
+
+      return key;
+    }
   }
 
   void
@@ -423,6 +425,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     lastFlags = flags;
 
     if (eventType == KeyEvent::DOWN || eventType == KeyEvent::UP) {
+      key = toFN(key, flags);
+
       if (config.debug) {
         printf("sending hid event type %d flags 0x%x key %d ", eventType, flags, key);
         printf("charCode %d charSet %d ", charCode, charSet);

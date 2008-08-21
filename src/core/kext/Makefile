@@ -16,6 +16,5 @@ clean:
 	rm -f *.xcodeproj/*.pbxuser
 
 reload:
-	sleep 1
 	sudo ./scripts/unload.sh
 	sudo ./scripts/load.sh
