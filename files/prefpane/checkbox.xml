@@ -508,10 +508,6 @@
           <sysctl>remap.fn2controlL_commandR2fn</sysctl>
         </item>
         <item>
-          <name>FN to FN (with NumLock)</name>
-          <sysctl>remap.fn2fn</sysctl>
-        </item>
-        <item>
           <name>FN to Option_L</name>
           <sysctl>remap.fn2optionL</sysctl>
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::OPTION_L</autogen>
@@ -1824,10 +1820,45 @@
         <item>
           <name>Enable HHK compatible Arrow Key Mode</name>
           <sysctl>remap.hhkmode</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::FN, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::SEMICOLON,    ModifierFlag::FN, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_MINUS, ModifierFlag::FN, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::QUOTE,        ModifierFlag::FN, KeyCode::CURSOR_RIGHT</autogen>
+          <autogen>--KeyToKey-- KeyCode::SLASH,        ModifierFlag::FN, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_PLUS,  ModifierFlag::FN, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::L,            ModifierFlag::FN, KeyCode::PAGEUP</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_3,     ModifierFlag::FN, KeyCode::PAGEUP</autogen>
+          <autogen>--KeyToKey-- KeyCode::DOT,          ModifierFlag::FN, KeyCode::PAGEDOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT,   ModifierFlag::FN, KeyCode::PAGEDOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::K,            ModifierFlag::FN, KeyCode::HOME</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_2,     ModifierFlag::FN, KeyCode::HOME</autogen>
+          <autogen>--KeyToKey-- KeyCode::COMMA,        ModifierFlag::FN, KeyCode::END</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_1,        ModifierFlag::FN, KeyCode::F1</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_2,        ModifierFlag::FN, KeyCode::F2</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_3,        ModifierFlag::FN, KeyCode::F3</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_4,        ModifierFlag::FN, KeyCode::F4</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_5,        ModifierFlag::FN, KeyCode::F5</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_6,        ModifierFlag::FN, KeyCode::F6</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_CLEAR, ModifierFlag::FN, KeyCode::F6</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_7,        ModifierFlag::FN, KeyCode::F7</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_7,     ModifierFlag::FN, KeyCode::F7</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_8,        ModifierFlag::FN, KeyCode::F8</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_8,     ModifierFlag::FN, KeyCode::F8</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_9,        ModifierFlag::FN, KeyCode::F9</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_9,     ModifierFlag::FN, KeyCode::F9</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_0,        ModifierFlag::FN, KeyCode::F10</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_SLASH, ModifierFlag::FN, KeyCode::F10</autogen>
+          <autogen>--KeyToKey-- KeyCode::MINUS,        ModifierFlag::FN, KeyCode::F11</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_EQUAL, ModifierFlag::FN, KeyCode::F11</autogen>
+          <autogen>--KeyToKey-- KeyCode::EQUAL,        ModifierFlag::FN, KeyCode::F12</autogen>
         </item>
         <item>
           <name>Enable FN+hjkl at HHK to Left/Down/Up/Right</name>
           <sysctl>remap.hhkmode_vi_cursor</sysctl>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_MULTIPLY, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_SLASH,    KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::HOME,            KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::PAGEUP,          KeyCode::CURSOR_RIGHT</autogen>
         </item>
       </list>
     </item>

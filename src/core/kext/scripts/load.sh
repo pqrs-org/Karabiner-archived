@@ -9,4 +9,3 @@ while true; do
     [ "x`sysctl -n keyremap4macbook.initialized`" = "x1" ] && exit 0
     sleep 1
 done
-
