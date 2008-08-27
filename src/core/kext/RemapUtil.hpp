@@ -25,9 +25,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     inline unsigned int stripModifierNone(unsigned int flags) {
       return (flags & ~(ModifierFlag::NONE));
     }
+    inline unsigned int stripModifierFN(unsigned int flags) {
+      return (flags & ~(ModifierFlag::FN));
+    }
 
     KeyCode::KeyCode getModifierKeyCode(ModifierFlag::ModifierFlag flag);
     ModifierFlag::ModifierFlag getKeyCodeModifier(unsigned int keycode);
+
+    void normalizeKeyBeforeRemap(unsigned int *key, unsigned int *flags);
 
     void fnToNormal(const RemapParams &params);
     void toDelete(const RemapParams &params);

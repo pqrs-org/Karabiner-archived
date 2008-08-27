@@ -695,6 +695,8 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardEventCallBack(OSObject *target,
   unsigned int ex_extraRepeatFlags = 0;
   org_pqrs_KeyRemap4MacBook::ExtraRepeatFunc::ExtraRepeatFunc ex_extraRepeatFunc = NULL;
 
+  org_pqrs_KeyRemap4MacBook::RemapUtil::normalizeKeyBeforeRemap(&key, &flags);
+
   org_pqrs_KeyRemap4MacBook::RemapParams params = {
     &eventType, &flags, &key, &charCode, &charSet,
     &origCharCode, &origCharSet, &keyboardType, &ts,
