@@ -1631,10 +1631,14 @@
             <item>
               <name>Remap Enter to Control_L</name>
               <sysctl>remap.app_vm_enter2controlL</sysctl>
+              <only>VIRTUALMACHINE</only>
+              <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::CONTROL_L</autogen>
             </item>
             <item>
               <name>Remap Command+Space to Option+Backquote(`)</name>
               <sysctl>remap.app_vm_commandspace2optionbackquote</sysctl>
+              <only>VIRTUALMACHINE</only>
+              <autogen>--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L</autogen>
             </item>
           </list>
         </item>

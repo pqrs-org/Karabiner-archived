@@ -231,37 +231,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
-  remap_app_vm_enter2controlL(const RemapParams &params)
-  {
-    if (! config.remap_app_vm_enter2controlL) return;
-
-    if (params.appType != KeyRemap4MacBook_bridge::ActiveApplicationInfo::VIRTUALMACHINE) return;
-
-    RemapUtil::keyToKey(params, KeyCode::ENTER, KeyCode::CONTROL_L);
-  }
-
-  void
-  remap_app_vm_commandspace2optionbackquote(const RemapParams &params)
-  {
-    if (! config.remap_app_vm_commandspace2optionbackquote) return;
-
-    //  "Remote Desktop Connection" has the self remapping feature.
-    // Our targets are VMware, Parallels only.
-    if (params.appType != KeyRemap4MacBook_bridge::ActiveApplicationInfo::VIRTUALMACHINE) return;
-
-    if (allFlagStatus.isHeldDown_command()) {
-      if (*(params.key) == KeyCode::SPACE) {
-        // hack keyboardType to fire backquote on any keyboards.
-        *(params.keyboardType) = KeyboardType::MACBOOK;
-        *(params.key) = KeyCode::BACKQUOTE;
-        allFlagStatus.optionL.temporary_increase();
-        allFlagStatus.temporaryDecrease_command();
-      }
-    }
-  }
-
-  // ----------------------------------------
-  void
   remap_qwerty2colemak(const RemapParams &params)
   {
     if (! config.remap_qwerty2colemak) return;
@@ -511,10 +480,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_shiftRshiftL2space(params);
 
   remap_tab2option_withControlL(params);
-
-  // ----------------------------------------
-  remap_app_vm_enter2controlL(params);
-  remap_app_vm_commandspace2optionbackquote(params);
 
   // ----------------------------------------
   remap_qwerty2colemak(params);
