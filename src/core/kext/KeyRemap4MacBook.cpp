@@ -691,7 +691,6 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardEventCallBack(OSObject *target,
   org_pqrs_KeyRemap4MacBook::listFireConsumerKey.reset();
   org_pqrs_KeyRemap4MacBook::listFirePointingClick.reset();
 
-  bool ex_dropKey = false;
   unsigned int ex_extraRepeatFlags = 0;
   org_pqrs_KeyRemap4MacBook::ExtraRepeatFunc::ExtraRepeatFunc ex_extraRepeatFunc = NULL;
 
@@ -700,7 +699,7 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardEventCallBack(OSObject *target,
   org_pqrs_KeyRemap4MacBook::RemapParams params = {
     &eventType, &flags, &key, &charCode, &charSet,
     &origCharCode, &origCharSet, &keyboardType, &ts,
-    &ex_dropKey, key,
+    key,
     KeyRemap4MacBook_bridge::ActiveApplicationInfo::UNKNOWN,
     &ex_extraRepeatFunc,
     &ex_extraRepeatFlags,
@@ -742,19 +741,16 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardEventCallBack(OSObject *target,
   }
 
   if (p->origEventCallback) {
-    if (! ex_dropKey) {
-      org_pqrs_KeyRemap4MacBook::RemapUtil::fireKey(p->origEventCallback,
-                                                    target, eventType, flags, key, charCode,
-                                                    charSet, origCharCode, origCharSet, keyboardType, repeat,
-                                                    ts, sender, refcon);
-    }
-
+    org_pqrs_KeyRemap4MacBook::RemapUtil::fireKey(p->origEventCallback,
+                                                  target, eventType, flags, key, charCode,
+                                                  charSet, origCharCode, origCharSet, keyboardType, repeat,
+                                                  ts, sender, refcon);
     org_pqrs_KeyRemap4MacBook::listFireExtraKey.fire(p->origEventCallback, target, charSet, origCharCode, origCharSet, keyboardType, ts, sender, refcon);
   }
 
   p->setExtraRepeatInfo(ex_extraRepeatFunc, ex_extraRepeatFlags, keyboardType, ts, target, refcon);
 
-  if (ex_dropKey) return;
+  if (key == org_pqrs_KeyRemap4MacBook::KeyCode::NONE) return;
 
   p->setRepeatInfo(eventType, flags, key, charCode, charSet, origCharCode, origCharSet, keyboardType, ts, target, refcon);
 }

@@ -187,7 +187,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (toKeyCode2 != KeyCode::NONE) {
         listFireExtraKey.addKey(flags, toKeyCode2, toCharCode2);
       }
-      *(params.ex_dropKey) = true;
+      *(params.key) = KeyCode::NONE;
 
       ExtraRepeatFunc::register_keyCombination(toKeyCode1, toCharCode1, toKeyCode2, toCharCode2);
       *(params.ex_extraRepeatFunc) = ExtraRepeatFunc::extraRepeatFunc_keyCombination;
@@ -230,7 +230,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     ModifierFlag::ModifierFlag fromFlag = getKeyCodeModifier(fromKeyCode);
     FlagStatus *fromStatus = allFlagStatus.getFlagStatus(fromFlag);
 
-    *(params.ex_dropKey) = true;
+    *(params.key) = KeyCode::NONE;
 
     if (fromStatus) {
       // clear flags
@@ -260,7 +260,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! RemapUtil::isKey(params, fromKeyCode)) return false;
     listFireConsumerKey.add(*(params.eventType), 0, toKeyCode);
-    *(params.ex_dropKey) = true;
+    *(params.key) = KeyCode::NONE;
     return true;
   }
 
@@ -391,6 +391,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                      bool repeat, AbsoluteTime ts, OSObject *sender, void *refcon)
   {
     if (! callback) return;
+    if (key == KeyCode::NONE) return;
 
     static unsigned int lastFlags = 0;
     fireModifiers(lastFlags, flags, callback, target, keyboardType, ts, sender, refcon);
