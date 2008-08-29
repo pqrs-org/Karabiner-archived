@@ -1679,6 +1679,17 @@
             </item>
           </list>
         </item>
+        <item>
+          <name>Enable at only Adobe Softwares</name>
+          <list>
+            <item>
+              <name>Remap Command+Tab to Control_L+Tab</name>
+              <sysctl>remap.app_adobe_commandTab2controlLTab</sysctl>
+              <only>ADOBE</only>
+              <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
 
