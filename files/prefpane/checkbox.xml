@@ -1696,6 +1696,23 @@
         <item>
           <name>Use Colemak Keyboard Layout</name>
           <sysctl>remap.qwerty2colemak</sysctl>
+          <autogen>--KeyToKey-- KeyCode::E, KeyCode::F</autogen>
+          <autogen>--KeyToKey-- KeyCode::R, KeyCode::P</autogen>
+          <autogen>--KeyToKey-- KeyCode::T, KeyCode::G</autogen>
+          <autogen>--KeyToKey-- KeyCode::Y, KeyCode::J</autogen>
+          <autogen>--KeyToKey-- KeyCode::U, KeyCode::L</autogen>
+          <autogen>--KeyToKey-- KeyCode::I, KeyCode::U</autogen>
+          <autogen>--KeyToKey-- KeyCode::O, KeyCode::Y</autogen>
+          <autogen>--KeyToKey-- KeyCode::P, KeyCode::SEMICOLON</autogen>
+          <autogen>--KeyToKey-- KeyCode::S, KeyCode::R</autogen>
+          <autogen>--KeyToKey-- KeyCode::D, KeyCode::S</autogen>
+          <autogen>--KeyToKey-- KeyCode::F, KeyCode::T</autogen>
+          <autogen>--KeyToKey-- KeyCode::G, KeyCode::D</autogen>
+          <autogen>--KeyToKey-- KeyCode::J, KeyCode::N</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, KeyCode::E</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, KeyCode::I</autogen>
+          <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::O</autogen>
+          <autogen>--KeyToKey-- KeyCode::N, KeyCode::K</autogen>
         </item>
         <item>
           <name>Use QWERF Keyboard Layout</name>
