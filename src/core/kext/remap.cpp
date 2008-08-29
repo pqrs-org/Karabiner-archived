@@ -129,18 +129,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     *(params.key) = KeyCode::NONE;
   }
 
-  void
-  remap_pclikehomeend(const RemapParams &params)
-  {
-    if (! config.remap_pclikehomeend) return;
-
-    if (params.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::VIRTUALMACHINE) return;
-    if (params.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::REMOTEDESKTOPCONNECTION) return;
-
-    RemapUtil::keyToKey(params, KeyCode::HOME, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L);
-    RemapUtil::keyToKey(params, KeyCode::END, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L);
-  }
-
   // ----------------------------------------
   void
   remap_emacsmode(const RemapParams &params)
@@ -415,11 +403,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   // *** If any key2modifier or modifier2key remappings are enabled, miss-cancelling are occured. ***
 #include "config/output/include.remapcode_call_kom.cpp"
   remap_jis_eisuu2commandL_eisuu_eisuu2optionL_term(params);
-
-  // ------------------------------------------------------------
-  // *** Note: we need to call remap_pclikehomeend as possible late. ***
-  // *** If remap_emacsmode is enable, C-1 & C-2 replaced as HOME, END. ***
-  remap_pclikehomeend(params);
 
   // ------------------------------------------------------------
 #include "config/output/include.remapcode_call_mhkk.cpp"

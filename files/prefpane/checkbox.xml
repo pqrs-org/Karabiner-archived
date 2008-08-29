@@ -1859,6 +1859,11 @@
           <name>Use PC Style Home/End</name>
           <appendix>(behave like Command+Left/Right)</appendix>
           <sysctl>remap.pclikehomeend</sysctl>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <autogen>--KeyToKey-- KeyCode::HOME, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, ModifierFlag::FN, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::END, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, ModifierFlag::FN, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
         </item>
       </list>
     </item>
