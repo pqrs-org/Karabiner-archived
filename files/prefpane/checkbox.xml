@@ -315,16 +315,9 @@
           <autogen>--KeyToKey-- KeyCode::DELETE, KeyCode::FORWARD_DELETE</autogen>
         </item>
         <item>
-          <name>Delete to F13</name>
-          <appendix>(+ Shift+Delete to Tilde(~))</appendix>
-          <sysctl>remap.delete2f13_shift2tilde</sysctl>
-          <autogen>--KeyToKey-- KeyCode::DELETE, VK_SHIFT, KeyCode::BACKQUOTE</autogen>
-          <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::NONE, KeyCode::F13</autogen>
-        </item>
-        <item>
           <name>Shift+Delete to Tilde(~)</name>
           <sysctl>remap.shiftDelete2tilde</sysctl>
-          <autogen>--KeyToKey-- KeyCode::DELETE, VK_SHIFT, KeyCode::BACKQUOTE</autogen>
+          <autogen>--KeyToKey-- KeyCode::DELETE, VK_SHIFT, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
         </item>
       </list>
     </item>
