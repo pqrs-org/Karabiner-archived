@@ -1717,6 +1717,17 @@
         <item>
           <name>Use QWERF Keyboard Layout</name>
           <sysctl>remap.qwerty2qwerf</sysctl>
+          <autogen>--KeyToKey-- KeyCode::T, KeyCode::F</autogen>
+          <autogen>--KeyToKey-- KeyCode::Y, KeyCode::J</autogen>
+          <autogen>--KeyToKey-- KeyCode::U, KeyCode::Y</autogen>
+          <autogen>--KeyToKey-- KeyCode::I, KeyCode::K</autogen>
+          <autogen>--KeyToKey-- KeyCode::O, KeyCode::L</autogen>
+          <autogen>--KeyToKey-- KeyCode::P, KeyCode::SEMICOLON</autogen>
+          <autogen>--KeyToKey-- KeyCode::F, KeyCode::T</autogen>
+          <autogen>--KeyToKey-- KeyCode::J, KeyCode::U</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, KeyCode::I</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, KeyCode::O</autogen>
+          <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::P</autogen>
         </item>
       </list>
     </item>
@@ -1795,6 +1806,7 @@
             <item>
               <name>Pause Key to Eject</name>
               <sysctl>remap.pc_pause2eject</sysctl>
+              <autogen>--KeyToComsumer-- KeyCode::PC_PAUSE, ConsumerKeyCode::EJECT</autogen>
             </item>
           </list>
         </item>
