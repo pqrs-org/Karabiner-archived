@@ -230,8 +230,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     ModifierFlag::ModifierFlag fromFlag = getKeyCodeModifier(fromKeyCode);
     FlagStatus *fromStatus = allFlagStatus.getFlagStatus(fromFlag);
 
-    *(params.key) = KeyCode::NONE;
-
     if (fromStatus) {
       // clear flags
       if (RemapUtil::isKeyDown(params, fromKeyCode)) {
@@ -253,6 +251,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool *status = pointingButtonStatus.getButtonStatus(toButton);
       if (status) *status = false;
     }
+
+    *(params.key) = KeyCode::NONE;
   }
 
   bool
@@ -309,7 +309,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       printf("RemapUtil::fireModifiers from:%x to:%x\n", fromFlags, toFlags);
 #endif
       if (callback == NULL) return;
+      if (fromFlags == toFlags) return;
 
+      // ----------------------------------------------------------------------
       bool modifierStatus[ModifierFlag::listsize];
 
       // setup modifierStatus

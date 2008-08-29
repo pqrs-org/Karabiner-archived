@@ -749,9 +749,6 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardEventCallBack(OSObject *target,
   }
 
   p->setExtraRepeatInfo(ex_extraRepeatFunc, ex_extraRepeatFlags, keyboardType, ts, target, refcon);
-
-  if (key == org_pqrs_KeyRemap4MacBook::KeyCode::NONE) return;
-
   p->setRepeatInfo(eventType, flags, key, charCode, charSet, origCharCode, origCharSet, keyboardType, ts, target, refcon);
 }
 
@@ -762,8 +759,9 @@ org_pqrs_driver_KeyRemap4MacBook::doKeyRepeat(OSObject *owner, IOTimerEventSourc
   HookedKeyboard::RepeatInfo *r = &(p->repeat);
 
   if (p->origEventCallback) {
-    p->origEventCallback(r->target, org_pqrs_KeyRemap4MacBook::KeyEvent::DOWN, r->flags, r->key, r->charCode,
-                         r->charSet, r->origCharCode, r->origCharSet, r->keyboardType, true, r->ts, r->sender, r->refcon);
+    org_pqrs_KeyRemap4MacBook::RemapUtil::fireKey(p->origEventCallback,
+                                                  r->target, org_pqrs_KeyRemap4MacBook::KeyEvent::DOWN, r->flags, r->key, r->charCode,
+                                                  r->charSet, r->origCharCode, r->origCharSet, r->keyboardType, true, r->ts, r->sender, r->refcon);
   }
 
   sender->setTimeoutMS(getconfig_repeat_wait());
