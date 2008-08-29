@@ -199,27 +199,27 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     bool ignore = is_terminal || is_virtualmachine || is_x11;
 
-    if (allFlagStatus.isHeldDown_control()) {
-      // Control+K -> Command+Shift+Right,Command+X
-      if (config.option_emacsmode_controlK && ! ignore) {
-        static bool firstcall = true;
+    if (config.option_emacsmode_controlK && ! ignore) {
+      static bool firstcall = true;
 
-        if (*(params.key) != KeyCode::K) {
-          firstcall = true;
+      if (*(params.key) != KeyCode::K) {
+        firstcall = true;
 
-        } else {
-          if (*(params.eventType) == KeyEvent::DOWN) {
-            FireFunc::firefunc_emacsmode_controlK(params, firstcall);
-            firstcall = false;
-            *(params.ex_extraRepeatFunc) = ExtraRepeatFunc::extraRepeatFunc_emacsmode_controlK;
-            *(params.ex_extraRepeatFlags) = 0;
-          }
-          *(params.ex_dropKey) = true;
-          allFlagStatus.temporaryDecrease_control();
+      } else if (allFlagStatus.isHeldDown_control()) {
+        if (*(params.eventType) == KeyEvent::DOWN) {
+          FireFunc::firefunc_emacsmode_controlK(params, firstcall);
+          firstcall = false;
+          *(params.ex_extraRepeatFunc) = ExtraRepeatFunc::extraRepeatFunc_emacsmode_controlK;
+          *(params.ex_extraRepeatFlags) = 0;
         }
+        *(params.ex_dropKey) = true;
+        allFlagStatus.temporaryDecrease_control();
       }
-      // Control+U -> Command+Shift+Left,Command+X
-      if (config.option_emacsmode_ex_controlU && *(params.key) == KeyCode::U && ! ignore) {
+    }
+
+    // Control+U -> Command+Shift+Left,Command+X
+    if (config.option_emacsmode_ex_controlU && *(params.key) == KeyCode::U && ! ignore) {
+      if (allFlagStatus.isHeldDown_control()) {
         if (*(params.eventType) == KeyEvent::DOWN) {
           FireFunc::firefunc_emacsmode_ex_controlU(params);
         }
