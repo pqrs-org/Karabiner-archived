@@ -117,42 +117,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
-  remap_keypadnumlock(const RemapParams &params)
-  {
-    if (! config.remap_keypadnumlock) return;
-
-    if (params.ex_origKey == KeyCode::KEYPAD_0 ||
-        params.ex_origKey == KeyCode::KEYPAD_5 ||
-        params.ex_origKey == KeyCode::KEYPAD_COMMA) {
-      *(params.ex_dropKey) = true;
-    }
-
-    if (params.ex_origKey == KeyCode::KEYPAD_2 ||
-        params.ex_origKey == KeyCode::KEYPAD_4 ||
-        params.ex_origKey == KeyCode::KEYPAD_6 ||
-        params.ex_origKey == KeyCode::KEYPAD_8) {
-      RemapUtil::keyToKey(params, KeyCode::KEYPAD_2, KeyCode::CURSOR_DOWN);
-      RemapUtil::keyToKey(params, KeyCode::KEYPAD_4, KeyCode::CURSOR_LEFT);
-      RemapUtil::keyToKey(params, KeyCode::KEYPAD_6, KeyCode::CURSOR_RIGHT);
-      RemapUtil::keyToKey(params, KeyCode::KEYPAD_8, KeyCode::CURSOR_UP);
-    }
-
-    if (params.ex_origKey == KeyCode::KEYPAD_1 ||
-        params.ex_origKey == KeyCode::KEYPAD_3 ||
-        params.ex_origKey == KeyCode::KEYPAD_7 ||
-        params.ex_origKey == KeyCode::KEYPAD_9) {
-      RemapUtil::keyToKey(params, KeyCode::KEYPAD_1, KeyCode::END);
-      RemapUtil::keyToKey(params, KeyCode::KEYPAD_3, KeyCode::PAGEDOWN);
-      RemapUtil::keyToKey(params, KeyCode::KEYPAD_7, KeyCode::HOME);
-      RemapUtil::keyToKey(params, KeyCode::KEYPAD_9, KeyCode::PAGEUP);
-    }
-
-    if (params.ex_origKey == KeyCode::KEYPAD_DOT) {
-      RemapUtil::keyToKey(params, KeyCode::KEYPAD_DOT, KeyCode::FORWARD_DELETE);
-    }
-  }
-
-  void
   remap_keypadnumlock_togglekey_clear(const RemapParams &params)
   {
     if (! config.option_keypadnumlock_togglekey_clear) return;
@@ -162,7 +126,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (RemapUtil::isKeyDown(params, KeyCode::KEYPAD_CLEAR)) {
       config.remap_keypadnumlock = ! config.remap_keypadnumlock;
     }
-    *(params.ex_dropKey) = true;
+    *(params.key) = KeyCode::NONE;
   }
 
   void
@@ -204,7 +168,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           *(params.ex_extraRepeatFunc) = ExtraRepeatFunc::extraRepeatFunc_emacsmode_controlK;
           *(params.ex_extraRepeatFlags) = 0;
         }
-        *(params.ex_dropKey) = true;
+        *(params.key) = KeyCode::NONE;
         allFlagStatus.temporaryDecrease_control();
       }
     }
@@ -215,7 +179,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (*(params.eventType) == KeyEvent::DOWN) {
           FireFunc::firefunc_emacsmode_ex_controlU(params);
         }
-        *(params.ex_dropKey) = true;
+        *(params.key) = KeyCode::NONE;
         allFlagStatus.temporaryDecrease_control();
       }
     }
@@ -295,7 +259,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (*(params.eventType) == KeyEvent::DOWN) {
         FireFunc::firefunc_jis_toggle_eisuu_kana(params);
       }
-      *(params.ex_dropKey) = true;
+      *(params.key) = KeyCode::NONE;
     }
   }
 
@@ -310,7 +274,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (*(params.eventType) == KeyEvent::DOWN) {
         FireFunc::firefunc_jis_eisuu_escape(params);
       }
-      *(params.ex_dropKey) = true;
+      *(params.key) = KeyCode::NONE;
     }
   }
 
@@ -426,7 +390,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_tab2option_withControlL(params);
 
   // ----------------------------------------
-  remap_keypadnumlock(params);
   remap_keypadnumlock_togglekey_clear(params);
 
   // ------------------------------------------------------------

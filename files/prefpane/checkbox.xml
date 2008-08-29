@@ -1836,6 +1836,18 @@
             <item>
               <name>Enable KeyPad as Arrow</name>
               <sysctl>remap.keypadnumlock</sysctl>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_0, KeyCode::NONE</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_5, KeyCode::NONE</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_COMMA, KeyCode::NONE</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_2, KeyCode::CURSOR_DOWN</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_4, KeyCode::CURSOR_LEFT</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_6, KeyCode::CURSOR_RIGHT</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_8, KeyCode::CURSOR_UP</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_1, KeyCode::END</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_3, KeyCode::PAGEDOWN</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_7, KeyCode::HOME</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_9, KeyCode::PAGEUP</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::FORWARD_DELETE</autogen>
             </item>
             <item>
               <name>Use Clear Key to toggle "KeyPad as Arrow"</name>

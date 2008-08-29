@@ -16,7 +16,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     unsigned int *keyboardType;
     // Note: the repeat key code is dropped in the core code.
     AbsoluteTime *ts;
-    bool *ex_dropKey;
     unsigned int ex_origKey;
     KeyRemap4MacBook_bridge::ActiveApplicationInfo::ApplicationType appType;
     ExtraRepeatFunc::ExtraRepeatFunc *ex_extraRepeatFunc;
