@@ -63,8 +63,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  RemapUtil::normalizeKeyBeforeRemap(unsigned int *key, unsigned int *flags)
+  RemapUtil::normalizeKeyBeforeRemap(unsigned int *key, unsigned int *flags, unsigned int keyboardType)
   {
+    if (keyboardType == KeyboardType::POWERBOOK ||
+        keyboardType == KeyboardType::POWERBOOK_G4 ||
+        keyboardType == KeyboardType::POWERBOOK_G4_TI) {
+      if (*key == KeyCode::ENTER_POWERBOOK) { *key = KeyCode::ENTER; }
+    }
+
     if (RemapUtil::isModifierOn(*flags, ModifierFlag::FN)) {
       if (*key == KeyCode::KEYPAD_0) { *key = KeyCode::M; *flags = stripModifierFN(*flags); }
       if (*key == KeyCode::KEYPAD_1) { *key = KeyCode::J; *flags = stripModifierFN(*flags); }
@@ -92,67 +98,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
-  void
-  RemapUtil::fnToNormal(const RemapParams &params)
-  {
-    if (! RemapUtil::isModifierOn(params, ModifierFlag::FN)) return;
-
-    keyToKey(params, KeyCode::KEYPAD_0, KeyCode::M);
-    keyToKey(params, KeyCode::KEYPAD_1, KeyCode::J);
-    keyToKey(params, KeyCode::KEYPAD_2, KeyCode::K);
-    keyToKey(params, KeyCode::KEYPAD_3, KeyCode::L);
-    keyToKey(params, KeyCode::KEYPAD_4, KeyCode::U);
-    keyToKey(params, KeyCode::KEYPAD_5, KeyCode::I);
-    keyToKey(params, KeyCode::KEYPAD_6, KeyCode::O);
-    keyToKey(params, KeyCode::KEYPAD_7, KeyCode::KEY_7);
-    keyToKey(params, KeyCode::KEYPAD_8, KeyCode::KEY_8);
-    keyToKey(params, KeyCode::KEYPAD_9, KeyCode::KEY_9);
-    keyToKey(params, KeyCode::KEYPAD_CLEAR, KeyCode::KEY_6);
-    keyToKey(params, KeyCode::KEYPAD_PLUS, KeyCode::SLASH);
-    keyToKey(params, KeyCode::KEYPAD_MINUS, KeyCode::SEMICOLON);
-    keyToKey(params, KeyCode::KEYPAD_MULTIPLY, KeyCode::P);
-    keyToKey(params, KeyCode::KEYPAD_SLASH, KeyCode::KEY_0);
-    keyToKey(params, KeyCode::KEYPAD_EQUAL, KeyCode::MINUS);
-    keyToKey(params, KeyCode::KEYPAD_DOT, KeyCode::DOT);
-    keyToKey(params, KeyCode::PAGEUP, KeyCode::CURSOR_UP);
-    keyToKey(params, KeyCode::PAGEDOWN, KeyCode::CURSOR_DOWN);
-    keyToKey(params, KeyCode::HOME, KeyCode::CURSOR_LEFT);
-    keyToKey(params, KeyCode::END, KeyCode::CURSOR_RIGHT);
-    keyToKey(params, KeyCode::ENTER, KeyCode::RETURN);
-    keyToKey(params, KeyCode::FORWARD_DELETE, KeyCode::DELETE);
-  }
-
-  void
-  RemapUtil::toDelete(const RemapParams &params)
-  {
-    if (! allFlagStatus.fn.isHeldDown()) return;
-
-    if (*(params.key) == KeyCode::DELETE) {
-      *(params.key) = KeyCode::FORWARD_DELETE;
-    }
-  }
-
-  namespace {
-    KeyCode::KeyCode
-    getEnterKeyCode(unsigned int keyboardType)
-    {
-      if (keyboardType == KeyboardType::POWERBOOK ||
-          keyboardType == KeyboardType::POWERBOOK_G4 ||
-          keyboardType == KeyboardType::POWERBOOK_G4_TI) {
-        return KeyCode::ENTER_POWERBOOK;
-      }
-      return KeyCode::ENTER;
-    }
-
-    CharCode::CharCode
-    getEnterCharCode(KeyCode::KeyCode keyCode)
-    {
-      if (keyCode == KeyCode::ENTER_POWERBOOK) return CharCode::ENTER_POWERBOOK;
-      if (keyCode == KeyCode::ENTER) return CharCode::ENTER;
-      return CharCode::NONE;
-    }
-  }
-
   bool
   RemapUtil::keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags, KeyCode::KeyCode toKeyCode, unsigned int toFlags)
   {
@@ -164,12 +109,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       unsigned int flags = allFlagStatus.makeFlags(params);
       if ((flags & fromFlags) != fromFlags) return false;
     }
-
-    // ----------------------------------------
-    if (fromKeyCode == KeyCode::FN) fnToNormal(params);
-
-    if (fromKeyCode == KeyCode::ENTER) fromKeyCode = getEnterKeyCode(*(params.keyboardType));
-    if (toKeyCode == KeyCode::ENTER) toKeyCode = getEnterKeyCode(*(params.keyboardType));
 
     // ----------------------------------------
     if (! RemapUtil::isKey(params, fromKeyCode)) return false;
@@ -218,7 +157,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     *(params.key) = toKeyCode;
-    if (toKeyCode == KeyCode::DELETE) toDelete(params);
 
     for (int i = 0; i < ModifierFlag::listsize; ++i) {
       ModifierFlag::ModifierFlag m = ModifierFlag::list[i];
@@ -409,36 +347,40 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
 
-    unsigned int
-    toFN(unsigned int key, unsigned int flags)
+    // reverse convertion of RemapUtil::normalizeKeyBeforeRemap
+    void
+    reverseNormalizeKey(unsigned int *key, unsigned int *flags, unsigned int keyboardType)
     {
-      if (! RemapUtil::isModifierOn(flags, ModifierFlag::FN)) return key;
-
-      if (key == KeyCode::M) return KeyCode::KEYPAD_0;
-      if (key == KeyCode::J) return KeyCode::KEYPAD_1;
-      if (key == KeyCode::K) return KeyCode::KEYPAD_2;
-      if (key == KeyCode::L) return KeyCode::KEYPAD_3;
-      if (key == KeyCode::U) return KeyCode::KEYPAD_4;
-      if (key == KeyCode::I) return KeyCode::KEYPAD_5;
-      if (key == KeyCode::O) return KeyCode::KEYPAD_6;
-      if (key == KeyCode::KEY_7) return KeyCode::KEYPAD_7;
-      if (key == KeyCode::KEY_8) return KeyCode::KEYPAD_8;
-      if (key == KeyCode::KEY_9) return KeyCode::KEYPAD_9;
-      if (key == KeyCode::KEY_6) return KeyCode::KEYPAD_CLEAR;
-      if (key == KeyCode::SLASH) return KeyCode::KEYPAD_PLUS;
-      if (key == KeyCode::SEMICOLON) return KeyCode::KEYPAD_MINUS;
-      if (key == KeyCode::P) return KeyCode::KEYPAD_MULTIPLY;
-      if (key == KeyCode::KEY_0) return KeyCode::KEYPAD_SLASH;
-      if (key == KeyCode::MINUS) return KeyCode::KEYPAD_EQUAL;
-      if (key == KeyCode::DOT) return KeyCode::KEYPAD_DOT;
-      if (key == KeyCode::CURSOR_UP) return KeyCode::PAGEUP;
-      if (key == KeyCode::CURSOR_DOWN) return KeyCode::PAGEDOWN;
-      if (key == KeyCode::CURSOR_LEFT) return KeyCode::HOME;
-      if (key == KeyCode::CURSOR_RIGHT) return KeyCode::END;
-      if (key == KeyCode::RETURN) return KeyCode::ENTER;
-      if (key == KeyCode::DELETE) return KeyCode::FORWARD_DELETE;
-
-      return key;
+      if (RemapUtil::isModifierOn(*flags, ModifierFlag::FN)) {
+        if (*key == KeyCode::M) { *key = KeyCode::KEYPAD_0; }
+        if (*key == KeyCode::J) { *key = KeyCode::KEYPAD_1; }
+        if (*key == KeyCode::K) { *key = KeyCode::KEYPAD_2; }
+        if (*key == KeyCode::L) { *key = KeyCode::KEYPAD_3; }
+        if (*key == KeyCode::U) { *key = KeyCode::KEYPAD_4; }
+        if (*key == KeyCode::I) { *key = KeyCode::KEYPAD_5; }
+        if (*key == KeyCode::O) { *key = KeyCode::KEYPAD_6; }
+        if (*key == KeyCode::KEY_7) { *key = KeyCode::KEYPAD_7; }
+        if (*key == KeyCode::KEY_8) { *key = KeyCode::KEYPAD_8; }
+        if (*key == KeyCode::KEY_9) { *key = KeyCode::KEYPAD_9; }
+        if (*key == KeyCode::KEY_6) { *key = KeyCode::KEYPAD_CLEAR; }
+        if (*key == KeyCode::SLASH) { *key = KeyCode::KEYPAD_PLUS; }
+        if (*key == KeyCode::SEMICOLON) { *key = KeyCode::KEYPAD_MINUS; }
+        if (*key == KeyCode::P) { *key = KeyCode::KEYPAD_MULTIPLY; }
+        if (*key == KeyCode::KEY_0) { *key = KeyCode::KEYPAD_SLASH; }
+        if (*key == KeyCode::MINUS) { *key = KeyCode::KEYPAD_EQUAL; }
+        if (*key == KeyCode::DOT) { *key = KeyCode::KEYPAD_DOT; }
+        if (*key == KeyCode::CURSOR_UP) { *key = KeyCode::PAGEUP; }
+        if (*key == KeyCode::CURSOR_DOWN) { *key = KeyCode::PAGEDOWN; }
+        if (*key == KeyCode::CURSOR_LEFT) { *key = KeyCode::HOME; }
+        if (*key == KeyCode::CURSOR_RIGHT) { *key = KeyCode::END; }
+        if (*key == KeyCode::RETURN) { *key = KeyCode::ENTER; }
+        if (*key == KeyCode::DELETE) { *key = KeyCode::FORWARD_DELETE; }
+      }
+      if (keyboardType == KeyboardType::POWERBOOK ||
+          keyboardType == KeyboardType::POWERBOOK_G4 ||
+          keyboardType == KeyboardType::POWERBOOK_G4_TI) {
+        if (*key == KeyCode::ENTER) { *key = KeyCode::ENTER_POWERBOOK; }
+      }
     }
   }
 
@@ -455,7 +397,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     lastFlags = flags;
 
     if (eventType == KeyEvent::DOWN || eventType == KeyEvent::UP) {
-      key = toFN(key, flags);
+      reverseNormalizeKey(&key, &flags, keyboardType);
 
       if (config.debug) {
         printf("sending hid event type %d flags 0x%x key %d ", eventType, flags, key);
@@ -760,9 +702,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   FireFunc::firefunc_enter(const RemapParams &params)
   {
     unsigned int flags = allFlagStatus.makeFlags(params);
-    KeyCode::KeyCode keyCode = getEnterKeyCode(*(params.keyboardType));
-    CharCode::CharCode charCode = getEnterCharCode(keyCode);
-    listFireExtraKey.addKey(flags, keyCode, charCode);
+    listFireExtraKey.addKey(flags, KeyCode::ENTER, CharCode::ENTER);
   }
 
   void

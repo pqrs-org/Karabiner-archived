@@ -32,7 +32,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     KeyCode::KeyCode getModifierKeyCode(ModifierFlag::ModifierFlag flag);
     ModifierFlag::ModifierFlag getKeyCodeModifier(unsigned int keycode);
 
-    void normalizeKeyBeforeRemap(unsigned int *key, unsigned int *flags);
+    void normalizeKeyBeforeRemap(unsigned int *key, unsigned int *flags, unsigned int keyboardType);
 
     void fnToNormal(const RemapParams &params);
     void toDelete(const RemapParams &params);
