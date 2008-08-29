@@ -231,31 +231,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
-  remap_qwerty2colemak(const RemapParams &params)
-  {
-    if (! config.remap_qwerty2colemak) return;
-
-    // see http://colemak.com/
-    RemapUtil::keyToKey(params, KeyCode::E, KeyCode::F);
-    RemapUtil::keyToKey(params, KeyCode::R, KeyCode::P);
-    RemapUtil::keyToKey(params, KeyCode::T, KeyCode::G);
-    RemapUtil::keyToKey(params, KeyCode::Y, KeyCode::J);
-    RemapUtil::keyToKey(params, KeyCode::U, KeyCode::L);
-    RemapUtil::keyToKey(params, KeyCode::I, KeyCode::U);
-    RemapUtil::keyToKey(params, KeyCode::O, KeyCode::Y);
-    RemapUtil::keyToKey(params, KeyCode::P, KeyCode::SEMICOLON);
-    RemapUtil::keyToKey(params, KeyCode::S, KeyCode::R);
-    RemapUtil::keyToKey(params, KeyCode::D, KeyCode::S);
-    RemapUtil::keyToKey(params, KeyCode::F, KeyCode::T);
-    RemapUtil::keyToKey(params, KeyCode::G, KeyCode::D);
-    RemapUtil::keyToKey(params, KeyCode::J, KeyCode::N);
-    RemapUtil::keyToKey(params, KeyCode::K, KeyCode::E);
-    RemapUtil::keyToKey(params, KeyCode::L, KeyCode::I);
-    RemapUtil::keyToKey(params, KeyCode::SEMICOLON, KeyCode::O);
-    RemapUtil::keyToKey(params, KeyCode::N, KeyCode::K);
-  }
-
-  void
   remap_qwerty2qwerf(const RemapParams &params)
   {
     if (! config.remap_qwerty2qwerf) return;
@@ -482,7 +457,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   remap_tab2option_withControlL(params);
 
   // ----------------------------------------
-  remap_qwerty2colemak(params);
   remap_qwerty2qwerf(params);
 
   // ----------------------------------------
