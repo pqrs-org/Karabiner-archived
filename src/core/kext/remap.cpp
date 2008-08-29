@@ -169,7 +169,6 @@ namespace org_pqrs_KeyRemap4MacBook {
           *(params.ex_extraRepeatFlags) = 0;
         }
         *(params.key) = KeyCode::NONE;
-        allFlagStatus.temporaryDecrease_control();
       }
     }
 
@@ -180,7 +179,6 @@ namespace org_pqrs_KeyRemap4MacBook {
           FireFunc::firefunc_emacsmode_ex_controlU(params);
         }
         *(params.key) = KeyCode::NONE;
-        allFlagStatus.temporaryDecrease_control();
       }
     }
   }
