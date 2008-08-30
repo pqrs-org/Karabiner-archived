@@ -2157,6 +2157,7 @@
             <item>
               <name>Shift+KANA to EISUU</name>
               <sysctl>remap.jis_shiftKana2eisuu</sysctl>
+              <autogen>--KeyToKey-- KeyCode::JIS_KANA, VK_SHIFT, KeyCode::JIS_EISUU</autogen>
             </item>
             <item>
               <name>Use KANA as KANA/EISUU (toggle)</name>
