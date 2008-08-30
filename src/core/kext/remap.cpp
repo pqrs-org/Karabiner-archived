@@ -243,11 +243,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (params.appType != KeyRemap4MacBook_bridge::ActiveApplicationInfo::VI) return;
 
-    if (params.ex_origKey == KeyCode::JIS_EISUU) {
-      if (*(params.eventType) == KeyEvent::DOWN) {
-        FireFunc::firefunc_jis_eisuu_escape(params);
-      }
-      *(params.key) = KeyCode::NONE;
+    if (RemapUtil::isKeyDown(params, KeyCode::JIS_EISUU)) {
+      listFireExtraKey.addKey(0, KeyCode::ESCAPE, CharCode::ESCAPE);
     }
   }
 

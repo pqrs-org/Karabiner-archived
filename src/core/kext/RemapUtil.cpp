@@ -838,14 +838,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
-  void
-  FireFunc::firefunc_jis_eisuu_escape(const RemapParams &params)
-  {
-    unsigned int flags = allFlagStatus.makeFlags(params);
-    listFireExtraKey.addKey(0, KeyCode::JIS_EISUU, CharCode::JIS_EISUU);
-    listFireExtraKey.addKey(flags, KeyCode::ESCAPE, CharCode::ESCAPE);
-  }
-
   // --------------------
   void
   ExtraRepeatFunc::extraRepeatFunc_enter(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon)
