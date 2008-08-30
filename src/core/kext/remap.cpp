@@ -218,19 +218,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
-  remap_jis_shiftKana2eisuu(const RemapParams &params)
-  {
-    if (! config.remap_jis_shiftKana2eisuu) return;
-
-    if (params.ex_origKey != KeyCode::JIS_KANA) return;
-
-    if (allFlagStatus.isHeldDown_shift()) {
-      allFlagStatus.temporaryDecrease_shift();
-      RemapUtil::keyToKey(params, KeyCode::JIS_KANA, KeyCode::JIS_EISUU);
-    }
-  }
-
-  void
   remap_jis_shiftSpace2toggle_kana_eisuu(const RemapParams &params)
   {
     if (! config.remap_jis_shiftSpace2toggle_kana_eisuu) return;
@@ -381,8 +368,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
   // ------------------------------------------------------------
   // jis
   remap_jis_shiftSpace2toggle_kana_eisuu(params);
-
-  remap_jis_shiftKana2eisuu(params);
 
   remap_jis_underscore2backslash(params);
   remap_jis_yen2backslash(params);
