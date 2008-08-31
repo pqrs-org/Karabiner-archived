@@ -268,10 +268,19 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  RemapUtil::keyToConsumer(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ConsumerKeyCode::ConsumerKeyCode toKeyCode)
+  RemapUtil::keyToConsumer(const RemapParams &params,
+                           KeyCode::KeyCode fromKeyCode, unsigned int fromFlags,
+                           ConsumerKeyCode::ConsumerKeyCode toKeyCode, unsigned int toFlags)
   {
+    if (! isFromFlags(allFlagStatus.makeFlags(KeyCode::NONE), fromFlags)) return false;
     if (! RemapUtil::isKey(params, fromKeyCode)) return false;
-    listFireConsumerKey.add(*(params.eventType), 0, toKeyCode);
+
+    remapFlags(fromFlags, toFlags);
+
+    unsigned int eventType = (RemapUtil::isKeyDown(params, fromKeyCode) ? KeyEvent::DOWN : KeyEvent::UP);
+    unsigned int flags = allFlagStatus.makeFlags(toKeyCode);
+    listFireConsumerKey.add(eventType, flags, toKeyCode);
+
     *(params.key) = KeyCode::NONE;
     return true;
   }
@@ -286,9 +295,13 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     remapFlags(fromFlags, toFlags);
 
+    if (RemapUtil::getKeyCodeModifier(toKeyCode) != ModifierFlag::NONE) {
+      *(params.eventType) = KeyEvent::MODIFY;
+    }
     *(params.key) = KeyCode::NONE;
     *(params.ex_remapKeyCode) = toKeyCode;
-    *(params.flags) = allFlagStatus.makeFlags(KeyCode::NONE);
+    unsigned int flags = allFlagStatus.makeFlags(toKeyCode);
+    *(params.flags) = flags;
 
     return true;
   }
