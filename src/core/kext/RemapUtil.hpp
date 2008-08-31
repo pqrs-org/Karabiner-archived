@@ -73,11 +73,24 @@ namespace org_pqrs_KeyRemap4MacBook {
       return consumerToKey(params, fromKeyCode, 0, toKeyCode, toFlags);
     }
 
+    bool consumerToConsumer(const RemapConsumerParams &params,
+                            ConsumerKeyCode::ConsumerKeyCode fromKeyCode, unsigned int fromFlags,
+                            ConsumerKeyCode::ConsumerKeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE);
+    inline bool consumerToConsumer(const RemapConsumerParams &params,
+                                   ConsumerKeyCode::ConsumerKeyCode fromKeyCode,
+                                   ConsumerKeyCode::ConsumerKeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE) {
+      return consumerToConsumer(params, fromKeyCode, 0, toKeyCode, toFlags);
+    }
+
     // ----------------------------------------
     void fireKey(KeyboardEventCallback callback,
                  OSObject *target, unsigned int eventType, unsigned int flags, unsigned int key, unsigned int charCode,
                  unsigned int charSet, unsigned int origCharCode, unsigned int origCharSet, unsigned int keyboardType,
                  bool repeat, AbsoluteTime ts, OSObject *sender, void *refcon);
+    void fireConsumer(KeyboardSpecialEventCallback callback,
+                      OSObject *target, unsigned int eventType, unsigned int flags, unsigned int key,
+                      unsigned int flavor, UInt64 guid,
+                      bool repeat, AbsoluteTime ts, OSObject *sender, void *refcon);
 
     // ----------------------------------------
     void jis_toggle_eisuu_kana(const RemapParams &params, KeyCode::KeyCode fromKeyCode);
@@ -266,7 +279,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       list[size].set(eventType, flags, key);
       ++size;
     }
-    void fire(KeyboardSpecialEventCallback callback, OSObject *target, AbsoluteTime ts, OSObject *sender, void *refcon);
+    void fire(KeyboardSpecialEventCallback callback,
+              OSObject *target, AbsoluteTime ts, OSObject *sender, void *refcon);
 
   private:
     FireConsumerKey list[FIRECONSUMERKEY_MAXNUM];

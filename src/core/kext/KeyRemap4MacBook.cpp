@@ -810,7 +810,7 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardSpecialEventCallBack(OSObject *target,
 
     org_pqrs_KeyRemap4MacBook::listFireExtraKey.reset();
 
-    unsigned int ex_remapKeyCode = org_pqrs_KeyRemap4MacBook::KeyCode::NONE;
+    org_pqrs_KeyRemap4MacBook::KeyCode::KeyCode ex_remapKeyCode = org_pqrs_KeyRemap4MacBook::KeyCode::NONE;
     org_pqrs_KeyRemap4MacBook::RemapConsumerParams params = {
       &eventType, &flags, &key, &flavor, &ts, &ex_remapKeyCode,
     };
@@ -835,9 +835,8 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardSpecialEventCallBack(OSObject *target,
       org_pqrs_KeyRemap4MacBook::listFireExtraKey.fire(hk->origEventCallback, hk->origEventTarget, charSet, origCharCode, origCharSet, keyboardType, ts, sender, NULL);
     }
 
-    if (key != org_pqrs_KeyRemap4MacBook::ConsumerKeyCode::NONE) {
-      p->origSpecialEventCallback(target, eventType, flags, key, flavor, guid, repeat, ts, sender, refcon);
-    }
+    org_pqrs_KeyRemap4MacBook::RemapUtil::fireConsumer(p->origSpecialEventCallback,
+                                                       target, eventType, flags, key, flavor, guid, repeat, ts, sender, refcon);
   }
 }
 

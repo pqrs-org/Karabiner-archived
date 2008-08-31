@@ -300,37 +300,52 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
     *(params.key) = KeyCode::NONE;
     *(params.ex_remapKeyCode) = toKeyCode;
-    unsigned int flags = allFlagStatus.makeFlags(toKeyCode);
-    *(params.flags) = flags;
 
+    return true;
+  }
+
+  bool
+  RemapUtil::consumerToConsumer(const RemapConsumerParams &params,
+                                ConsumerKeyCode::ConsumerKeyCode fromKeyCode, unsigned int fromFlags,
+                                ConsumerKeyCode::ConsumerKeyCode toKeyCode, unsigned int toFlags)
+  {
+    if (! isFromFlags(allFlagStatus.makeFlags(KeyCode::NONE), fromFlags)) return false;
+    if (*(params.key) != fromKeyCode) return false;
+
+    remapFlags(fromFlags, toFlags);
+
+    *(params.key) = toKeyCode;
+    *(params.flavor) = toKeyCode;
     return true;
   }
 
   // --------------------
   namespace {
     void
-    fireModifiers(unsigned int fromFlags, unsigned int toFlags,
+    fireModifiers(unsigned int toFlags,
                   KeyboardEventCallback callback, OSObject *target,
                   unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon)
     {
-#if 0
-      printf("RemapUtil::fireModifiers from:%x to:%x\n", fromFlags, toFlags);
-#endif
       if (callback == NULL) return;
-      if (fromFlags == toFlags) return;
+
+      static unsigned int lastFlags = 0;
+      if (lastFlags == toFlags) return;
+#if 0
+      printf("RemapUtil::fireModifiers from:%x to:%x\n", lastFlags, toFlags);
+#endif
 
       // ----------------------------------------------------------------------
       bool modifierStatus[ModifierFlag::listsize];
 
       // setup modifierStatus
       for (int i = 0; i < ModifierFlag::listsize; ++i) {
-        modifierStatus[i] = RemapUtil::isModifierOn(fromFlags, ModifierFlag::list[i]);
+        modifierStatus[i] = RemapUtil::isModifierOn(lastFlags, ModifierFlag::list[i]);
       }
 
       // fire
       for (int i = 0; i < ModifierFlag::listsize; ++i) {
         ModifierFlag::ModifierFlag m = ModifierFlag::list[i];
-        bool from = RemapUtil::isModifierOn(fromFlags, m);
+        bool from = RemapUtil::isModifierOn(lastFlags, m);
         bool to = RemapUtil::isModifierOn(toFlags, m);
 
         if (from == to) continue;
@@ -355,6 +370,8 @@ namespace org_pqrs_KeyRemap4MacBook {
           printf("sending hid event type KeyEvent::MODIFY flags 0x%x key %d kbdType %d\n", flags, keyCode, keyboardType);
         }
       }
+
+      lastFlags = toFlags;
     }
 
     // reverse convertion of RemapUtil::normalizeKeyBeforeRemap
@@ -403,9 +420,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! callback) return;
     if (key == KeyCode::NONE) return;
 
-    static unsigned int lastFlags = 0;
-    fireModifiers(lastFlags, flags, callback, target, keyboardType, ts, sender, refcon);
-    lastFlags = flags;
+    fireModifiers(flags, callback, target, keyboardType, ts, sender, refcon);
 
     if (eventType == KeyEvent::DOWN || eventType == KeyEvent::UP) {
       reverseNormalizeKey(&key, &flags, keyboardType);
@@ -423,6 +438,21 @@ namespace org_pqrs_KeyRemap4MacBook {
         jisKanaMode.setMode(eventType, key, flags);
       }
     }
+  }
+
+  void
+  RemapUtil::fireConsumer(KeyboardSpecialEventCallback callback,
+                          OSObject *target, unsigned int eventType, unsigned int flags, unsigned int key,
+                          unsigned int flavor, UInt64 guid,
+                          bool repeat, AbsoluteTime ts, OSObject *sender, void *refcon)
+  {
+    if (! callback) return;
+    if (key == ConsumerKeyCode::NONE) return;
+
+    if (org_pqrs_KeyRemap4MacBook::config.debug) {
+      printf("send keyboardSpecialEventCallBack: eventType %d, flags 0x%x, key %d, flavor %d, guid %d\n", eventType, flags, key, flavor, guid);
+    }
+    callback(target, eventType, flags, key, flavor, guid, repeat, ts, sender, refcon);
   }
 
   // --------------------
@@ -664,7 +694,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  ListFireConsumerKey::fire(KeyboardSpecialEventCallback callback, OSObject *target, AbsoluteTime ts, OSObject *sender, void *refcon)
+  ListFireConsumerKey::fire(KeyboardSpecialEventCallback callback,
+                            OSObject *target, AbsoluteTime ts, OSObject *sender, void *refcon)
   {
     if (callback == NULL) return;
 
@@ -672,7 +703,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       FireConsumerKey &item = list[i];
       unsigned int flavor = item.getKey();
       unsigned int guid = -1;
-      callback(target, item.getEventType(), item.getFlags(), item.getKey(), flavor, guid, false, ts, sender, refcon);
+      RemapUtil::fireConsumer(callback,
+                              target, item.getEventType(), item.getFlags(), item.getKey(),
+                              flavor, guid, false, ts, sender, refcon);
     }
   }
 

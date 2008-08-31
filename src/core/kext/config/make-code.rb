@@ -143,6 +143,10 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
           code_consumer += "RemapUtil::consumerToKey(params, #{params});\n"
           func['consumer'] << name
 
+        when 'ConsumerToConsumer'
+          code_consumer += "RemapUtil::consumerToConsumer(params, #{params});\n"
+          func['consumer'] << name
+
         when 'ButtonRelativeToScroll'
           code_pointing += "{\n"
           code_pointing += "static ButtonRelativeToScroll brts;\n"
