@@ -55,7 +55,15 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     void keyToPointingButton(const RemapParams &params, KeyCode::KeyCode fromKeyCode, PointingButton::PointingButton toButton);
 
-    bool keyToConsumer(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ConsumerKeyCode::ConsumerKeyCode toKeyCode);
+    bool keyToConsumer(const RemapParams &params,
+                       KeyCode::KeyCode fromKeyCode, unsigned int fromFlags,
+                       ConsumerKeyCode::ConsumerKeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE);
+    inline bool keyToConsumer(const RemapParams &params,
+                              KeyCode::KeyCode fromKeyCode,
+                              ConsumerKeyCode::ConsumerKeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE) {
+      return keyToConsumer(params, fromKeyCode, 0, toKeyCode, toFlags);
+    }
+
     bool consumerToKey(const RemapConsumerParams &params,
                        ConsumerKeyCode::ConsumerKeyCode fromKeyCode, unsigned int fromFlags,
                        KeyCode::KeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE);
