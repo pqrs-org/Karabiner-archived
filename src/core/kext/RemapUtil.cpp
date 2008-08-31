@@ -293,27 +293,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     return true;
   }
 
-  void
-  RemapUtil::ejectToKey(const RemapConsumerParams &params, KeyCode::KeyCode toKeyCode)
-  {
-    if (*(params.key) != ConsumerKeyCode::EJECT) return;
-
-    if (config.option_retain_eject_controlL && allFlagStatus.controlL.isHeldDown()) {
-      *(params.flags) = ModifierFlag::CONTROL_L;
-      return;
-    }
-    if (config.option_retain_eject_shiftL && allFlagStatus.shiftL.isHeldDown()) {
-      *(params.flags) = 0;
-      return;
-    }
-    if (config.option_retain_eject_shiftR && allFlagStatus.shiftR.isHeldDown()) {
-      *(params.flags) = 0;
-      return;
-    }
-
-    consumerToKey(params, ConsumerKeyCode::EJECT, toKeyCode);
-  }
-
   // --------------------
   namespace {
     void
