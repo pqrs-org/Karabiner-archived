@@ -22,12 +22,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     inline bool isModifierOn(const RemapParams &params, ModifierFlag::ModifierFlag flag) {
       return isModifierOn(*(params.flags), flag);
     }
-    inline unsigned int stripModifierNone(unsigned int flags) {
-      return (flags & ~(ModifierFlag::NONE));
-    }
-    inline unsigned int stripModifierFN(unsigned int flags) {
-      return (flags & ~(ModifierFlag::FN));
-    }
 
     KeyCode::KeyCode getModifierKeyCode(ModifierFlag::ModifierFlag flag);
     ModifierFlag::ModifierFlag getKeyCodeModifier(unsigned int keycode);
@@ -65,7 +59,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     void keyToPointingButton(const RemapParams &params, KeyCode::KeyCode fromKeyCode, PointingButton::PointingButton toButton);
 
     bool keyToConsumer(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ConsumerKeyCode::ConsumerKeyCode toKeyCode);
-    bool consumerToKey(const RemapConsumerParams &params, ConsumerKeyCode::ConsumerKeyCode fromKeyCode, KeyCode::KeyCode toKeyCode);
+    bool consumerToKey(const RemapConsumerParams &params,
+                       ConsumerKeyCode::ConsumerKeyCode fromKeyCode, unsigned int fromFlags,
+                       KeyCode::KeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE);
+    inline bool consumerToKey(const RemapConsumerParams &params,
+                              ConsumerKeyCode::ConsumerKeyCode fromKeyCode,
+                              KeyCode::KeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE) {
+      return consumerToKey(params, fromKeyCode, 0, toKeyCode, toFlags);
+    }
 
     void ejectToKey(const RemapConsumerParams &params, KeyCode::KeyCode toKeyCode);
 

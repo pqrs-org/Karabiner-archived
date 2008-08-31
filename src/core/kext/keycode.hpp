@@ -274,6 +274,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       BRIGHTNESS_UP = 2,
       BRIGHTNESS_DOWN = 3,
       EJECT = 14,
+
+      NONE = 255,
     };
   }
 

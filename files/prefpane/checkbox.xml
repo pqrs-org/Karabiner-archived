@@ -328,27 +328,17 @@
         <item>
           <name>Eject to Forward Delete</name>
           <sysctl>remap.eject2forwarddelete</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::FORWARD_DELETE</autogen>
+        </item>
+        <item>
+          <name>Eject to Forward Delete if no modifiers pressed</name>
+          <sysctl>remap.eject2forwarddelete_withoutmodifiers</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
         </item>
         <item>
           <name>Eject to PageDown</name>
           <sysctl>remap.eject2pagedown</sysctl>
-        </item>
-        <item>
-          <name>Retain Eject Key</name>
-          <list>
-            <item>
-              <name>Control_L+Eject to Control_L+Eject</name>
-              <sysctl>option.retain_eject_controlL</sysctl>
-            </item>
-            <item>
-              <name>Shift_L+Eject to Eject</name>
-              <sysctl>option.retain_eject_shiftL</sysctl>
-            </item>
-            <item>
-              <name>Shift_R+Eject to Eject</name>
-              <sysctl>option.retain_eject_shiftR</sysctl>
-            </item>
-          </list>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::PAGEDOWN</autogen>
         </item>
       </list>
     </item>
