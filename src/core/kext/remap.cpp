@@ -303,23 +303,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ------------------------------------------------------------
   void
-  remap_eject2forwarddelete(const RemapConsumerParams &params)
-  {
-    if (! config.remap_eject2forwarddelete) return;
-
-    RemapUtil::ejectToKey(params, KeyCode::FORWARD_DELETE);
-  }
-
-  void
-  remap_eject2pagedown(const RemapConsumerParams &params)
-  {
-    if (! config.remap_eject2pagedown) return;
-
-    RemapUtil::ejectToKey(params, KeyCode::PAGEDOWN);
-  }
-
-  // ------------------------------------------------------------
-  void
   remap_pointing_relative_fn_to_scroll(const RemapPointingParams_relative &params)
   {
     if (! config.remap_pointing_relative_fn_to_scroll) return;
@@ -400,9 +383,9 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 void
 org_pqrs_KeyRemap4MacBook::remap_consumer(const RemapConsumerParams &params)
 {
-  remap_eject2forwarddelete(params);
-  remap_eject2pagedown(params);
 #include "config/output/include.remapcode_call_consumer.cpp"
+
+  *(params.flags) = allFlagStatus.makeFlags(KeyCode::NONE);
 }
 
 void

@@ -31,8 +31,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     unsigned int *key;
     unsigned int *flavor;
     AbsoluteTime *ts;
-    bool *ex_dropKey;
-    bool *ex_remapKey;
     unsigned int *ex_remapKeyCode;
   };
   void remap_consumer(const RemapConsumerParams &params);
