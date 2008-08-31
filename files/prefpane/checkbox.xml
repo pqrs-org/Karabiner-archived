@@ -559,6 +559,26 @@
           <sysctl>remap.volumeup2f5</sysctl>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, KeyCode::F5</autogen>
         </item>
+        <item>
+          <name>Video Mirror to Music Prev</name>
+          <sysctl>remap.videomirror2musicprev</sysctl>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VIDEO_MIRROR, ConsumerKeyCode::MUSIC_PREV</autogen>
+        </item>
+        <item>
+          <name>Keyboard Light Off to Music Play/Pause</name>
+          <sysctl>remap.keyboardlightoff2musicplay</sysctl>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_OFF, ConsumerKeyCode::MUSIC_PLAY</autogen>
+        </item>
+        <item>
+          <name>Keyboard Light LOW to Music Next</name>
+          <sysctl>remap.keyboardlightlow2musicnext</sysctl>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_LOW, ConsumerKeyCode::MUSIC_NEXT</autogen>
+        </item>
+        <item>
+          <name>Keyboard Light HIGH to Volume Mute</name>
+          <sysctl>remap.keyboardlighthigh2volumemute</sysctl>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_HIGH, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        </item>
       </list>
     </item>
 
@@ -630,6 +650,18 @@
           <sysctl>remap.f12_to_volumeup</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToComsumer-- KeyCode::F12, ConsumerKeyCode::VOLUME_UP</autogen>
+        </item>
+        <item>
+          <name>FN+F11 to Volume Down</name>
+          <sysctl>remap.fnF11_to_volumedown</sysctl>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <autogen>--KeyToComsumer-- KeyCode::F11, ModifierFlag::FN, ConsumerKeyCode::VOLUME_DOWN</autogen>
+        </item>
+        <item>
+          <name>FN+F12 to Volume Up</name>
+          <sysctl>remap.fnF12_to_volumeup</sysctl>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <autogen>--KeyToComsumer-- KeyCode::F12, ModifierFlag::FN, ConsumerKeyCode::VOLUME_UP</autogen>
         </item>
         <item>
           <name>Force remap F1..F12 in VMware, Parallels, RDC</name>

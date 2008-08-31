@@ -275,6 +275,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       BRIGHTNESS_DOWN = 3,
       EJECT = 14,
 
+      VIDEO_MIRROR = 15, // FN+F7
+
+      KEYBOARDLIGHT_OFF = 23,
+      KEYBOARDLIGHT_LOW = 22,
+      KEYBOARDLIGHT_HIGH = 21,
+
       MUSIC_PREV = 20,
       MUSIC_PLAY = 16,
       MUSIC_NEXT = 19,

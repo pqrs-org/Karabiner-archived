@@ -3,6 +3,7 @@
 
 #include "base.hpp"
 #include "bridge.hpp"
+#include "keycode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   struct RemapParams {
@@ -31,7 +32,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     unsigned int *key;
     unsigned int *flavor;
     AbsoluteTime *ts;
-    unsigned int *ex_remapKeyCode;
+    KeyCode::KeyCode *ex_remapKeyCode;
   };
   void remap_consumer(const RemapConsumerParams &params);
 

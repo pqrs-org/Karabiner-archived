@@ -385,7 +385,7 @@ org_pqrs_KeyRemap4MacBook::remap_consumer(const RemapConsumerParams &params)
 {
 #include "config/output/include.remapcode_call_consumer.cpp"
 
-  *(params.flags) = allFlagStatus.makeFlags(KeyCode::NONE);
+  *(params.flags) = allFlagStatus.makeFlags(*(params.ex_remapKeyCode));
 }
 
 void
