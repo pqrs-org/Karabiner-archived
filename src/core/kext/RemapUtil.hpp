@@ -28,9 +28,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     void normalizeKeyBeforeRemap(unsigned int *key, unsigned int *flags, unsigned int keyboardType);
 
-    void fnToNormal(const RemapParams &params);
-    void toDelete(const RemapParams &params);
-
     inline bool isKeyDown(const RemapParams &params, KeyCode::KeyCode keyCode) {
       if (*(params.eventType) == KeyEvent::DOWN) {
         return isKey(params, keyCode);
@@ -67,8 +64,6 @@ namespace org_pqrs_KeyRemap4MacBook {
                               KeyCode::KeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE) {
       return consumerToKey(params, fromKeyCode, 0, toKeyCode, toFlags);
     }
-
-    void ejectToKey(const RemapConsumerParams &params, KeyCode::KeyCode toKeyCode);
 
     // ----------------------------------------
     void fireKey(KeyboardEventCallback callback,
