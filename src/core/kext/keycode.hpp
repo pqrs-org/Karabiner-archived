@@ -275,6 +275,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       BRIGHTNESS_DOWN = 3,
       EJECT = 14,
 
+      MUSIC_PREV = 20,
+      MUSIC_PLAY = 16,
+      MUSIC_NEXT = 19,
+
       NONE = 255,
     };
   }
