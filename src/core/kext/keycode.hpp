@@ -177,6 +177,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       BRIGHTNESS_DOWN = 145, // Apple USB Keyboard Aluminum
 
       EXPOSE_ALL = 160,
+      DASHBOARD = 130,
 
       JIS_YEN = 93,
       JIS_UNDERSCORE = 94,
