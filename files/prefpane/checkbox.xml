@@ -897,7 +897,7 @@
         <item>
           <name>Option_R to Command+Control+Option+Shift+F1</name>
           <sysctl>remap.optionR2allF1</sysctl>
-          <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::OPTION_R, KeyCode::F1, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::F1, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
         </item>
       </list>
     </item>

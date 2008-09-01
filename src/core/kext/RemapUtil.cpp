@@ -320,60 +320,60 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // --------------------
-  namespace {
-    void
-    fireModifiers(unsigned int toFlags,
-                  KeyboardEventCallback callback, OSObject *target,
-                  unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon)
-    {
-      if (callback == NULL) return;
+  void
+  RemapUtil::fireModifiers(unsigned int toFlags,
+                           KeyboardEventCallback callback, OSObject *target,
+                           unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon)
+  {
+    if (callback == NULL) return;
 
-      static unsigned int lastFlags = 0;
-      if (lastFlags == toFlags) return;
+    static unsigned int lastFlags = 0;
+    if (lastFlags == toFlags) return;
 #if 0
-      printf("RemapUtil::fireModifiers from:%x to:%x\n", lastFlags, toFlags);
+    printf("RemapUtil::fireModifiers from:%x to:%x\n", lastFlags, toFlags);
 #endif
 
-      // ----------------------------------------------------------------------
-      bool modifierStatus[ModifierFlag::listsize];
+    // ----------------------------------------------------------------------
+    bool modifierStatus[ModifierFlag::listsize];
 
-      // setup modifierStatus
-      for (int i = 0; i < ModifierFlag::listsize; ++i) {
-        modifierStatus[i] = RemapUtil::isModifierOn(lastFlags, ModifierFlag::list[i]);
-      }
-
-      // fire
-      for (int i = 0; i < ModifierFlag::listsize; ++i) {
-        ModifierFlag::ModifierFlag m = ModifierFlag::list[i];
-        bool from = RemapUtil::isModifierOn(lastFlags, m);
-        bool to = RemapUtil::isModifierOn(toFlags, m);
-
-        if (from == to) continue;
-
-        if (from) {
-          modifierStatus[i] = false;
-        } else {
-          modifierStatus[i] = true;
-        }
-
-        unsigned int flags = 0;
-        for (int j = 0; j < ModifierFlag::listsize; ++j) {
-          if (modifierStatus[j]) {
-            flags |= ModifierFlag::list[j];
-          }
-        }
-
-        KeyCode::KeyCode keyCode = RemapUtil::getModifierKeyCode(m);
-        callback(target, KeyEvent::MODIFY, flags, keyCode, 0, 0, 0, 0, keyboardType, false, ts, sender, refcon);
-
-        if (config.debug) {
-          printf("sending hid event type KeyEvent::MODIFY flags 0x%x key %d kbdType %d\n", flags, keyCode, keyboardType);
-        }
-      }
-
-      lastFlags = toFlags;
+    // setup modifierStatus
+    for (int i = 0; i < ModifierFlag::listsize; ++i) {
+      modifierStatus[i] = RemapUtil::isModifierOn(lastFlags, ModifierFlag::list[i]);
     }
 
+    // fire
+    for (int i = 0; i < ModifierFlag::listsize; ++i) {
+      ModifierFlag::ModifierFlag m = ModifierFlag::list[i];
+      bool from = RemapUtil::isModifierOn(lastFlags, m);
+      bool to = RemapUtil::isModifierOn(toFlags, m);
+
+      if (from == to) continue;
+
+      if (from) {
+        modifierStatus[i] = false;
+      } else {
+        modifierStatus[i] = true;
+      }
+
+      unsigned int flags = 0;
+      for (int j = 0; j < ModifierFlag::listsize; ++j) {
+        if (modifierStatus[j]) {
+          flags |= ModifierFlag::list[j];
+        }
+      }
+
+      KeyCode::KeyCode keyCode = RemapUtil::getModifierKeyCode(m);
+      callback(target, KeyEvent::MODIFY, flags, keyCode, 0, 0, 0, 0, keyboardType, false, ts, sender, refcon);
+
+      if (config.debug) {
+        printf("sending hid event type KeyEvent::MODIFY flags 0x%x key %d kbdType %d\n", flags, keyCode, keyboardType);
+      }
+    }
+
+    lastFlags = toFlags;
+  }
+
+  namespace {
     // reverse convertion of RemapUtil::normalizeKeyBeforeRemap
     void
     reverseNormalizeKey(unsigned int *key, unsigned int *flags, unsigned int keyboardType)
@@ -420,7 +420,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! callback) return;
     if (key == KeyCode::NONE) return;
 
-    fireModifiers(flags, callback, target, keyboardType, ts, sender, refcon);
+    RemapUtil::fireModifiers(flags, callback, target, keyboardType, ts, sender, refcon);
 
     if (eventType == KeyEvent::DOWN || eventType == KeyEvent::UP) {
       reverseNormalizeKey(&key, &flags, keyboardType);
@@ -560,8 +560,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   AllFlagStatus::initialize(const RemapParams &params)
   {
-    if (*(params.eventType) == KeyEvent::DOWN) ++numHeldDownKeys;
-    if (*(params.eventType) == KeyEvent::UP) --numHeldDownKeys;
+    if (RemapUtil::isKeyDown(params, *(params.key))) {
+      ++numHeldDownKeys;
+    } else {
+      --numHeldDownKeys;
+    }
 
 #if 0
     if (config.debug) {
