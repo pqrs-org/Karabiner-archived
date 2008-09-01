@@ -2130,6 +2130,11 @@
               <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::SHIFT_L</autogen>
             </item>
             <item>
+              <name>EISUU to Delete</name>
+              <sysctl>remap.jis_eisuu2delete</sysctl>
+              <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::DELETE</autogen>
+            </item>
+            <item>
               <name>EISUU to Escape</name>
               <sysctl>remap.jis_eisuu2escape</sysctl>
               <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::ESCAPE</autogen>
