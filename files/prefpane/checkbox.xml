@@ -326,6 +326,11 @@
       <name>Remap Eject Key</name>
       <list>
         <item>
+          <name>Eject to Dashboard if no modifiers pressed</name>
+          <sysctl>remap.eject2dashboard_withoutmodifiers</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::DASHBOARD</autogen>
+        </item>
+        <item>
           <name>Eject to Forward Delete</name>
           <sysctl>remap.eject2forwarddelete</sysctl>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::FORWARD_DELETE</autogen>
