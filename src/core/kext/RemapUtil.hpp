@@ -13,7 +13,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       POINTING_POINT_SCALE = 10, // (== SCROLL_WHEEL_TO_PIXEL_SCALE >> 16)
     };
 
-    inline bool isKey(const RemapParams &params, KeyCode::KeyCode keyCode) {
+    inline bool isKey(const RemapParams &params, unsigned int keyCode) {
       return params.ex_origKey == keyCode && *(params.key) == keyCode;
     }
     inline bool isModifierOn(unsigned int flags, ModifierFlag::ModifierFlag f) {
@@ -28,7 +28,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     void normalizeKeyBeforeRemap(unsigned int *key, unsigned int *flags, unsigned int keyboardType);
 
-    inline bool isKeyDown(const RemapParams &params, KeyCode::KeyCode keyCode) {
+    inline bool isKeyDown(const RemapParams &params, unsigned int keyCode) {
       if (*(params.eventType) == KeyEvent::DOWN) {
         return isKey(params, keyCode);
       } else if (*(params.eventType) == KeyEvent::MODIFY) {
@@ -83,6 +83,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ----------------------------------------
+    void fireModifiers(unsigned int toFlags,
+                       KeyboardEventCallback callback, OSObject *target,
+                       unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon);
     void fireKey(KeyboardEventCallback callback,
                  OSObject *target, unsigned int eventType, unsigned int flags, unsigned int key, unsigned int charCode,
                  unsigned int charSet, unsigned int origCharCode, unsigned int origCharSet, unsigned int keyboardType,

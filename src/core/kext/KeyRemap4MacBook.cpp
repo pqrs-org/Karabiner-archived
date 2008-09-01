@@ -746,6 +746,11 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardEventCallBack(OSObject *target,
                                                   charSet, origCharCode, origCharSet, keyboardType, repeat,
                                                   ts, sender, refcon);
     org_pqrs_KeyRemap4MacBook::listFireExtraKey.fire(p->origEventCallback, target, charSet, origCharCode, origCharSet, keyboardType, ts, sender, refcon);
+
+    // reset modifiers
+    if (org_pqrs_KeyRemap4MacBook::allFlagStatus.numHeldDownKeys <= 0) {
+      org_pqrs_KeyRemap4MacBook::RemapUtil::fireModifiers(0, p->origEventCallback, target, keyboardType, ts, sender, refcon);
+    }
   }
 
   p->setExtraRepeatInfo(ex_extraRepeatFunc, ex_extraRepeatFlags, keyboardType, ts, target, refcon);
