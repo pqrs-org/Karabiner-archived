@@ -13,6 +13,8 @@
 		345B06AD0DB21A88000023FD /* Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345B06AB0DB21A88000023FD /* Client.cpp */; };
 		345B06AE0DB21A88000023FD /* Client.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345B06AC0DB21A88000023FD /* Client.hpp */; };
 		345B06B80DB21ABF000023FD /* bridge.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345B06B70DB21ABF000023FD /* bridge.hpp */; };
+		346B753E0E72C0BA00F9A79F /* FlagStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 346B753C0E72C0BA00F9A79F /* FlagStatus.cpp */; };
+		346B753F0E72C0BA00F9A79F /* FlagStatus.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 346B753D0E72C0BA00F9A79F /* FlagStatus.hpp */; };
 		348ED8340CE467FD00E179EC /* remap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 348ED8330CE467FD00E179EC /* remap.cpp */; };
 		348ED8360CE4680F00E179EC /* remap.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 348ED8350CE4680F00E179EC /* remap.hpp */; };
 		348ED8380CE4681700E179EC /* keycode.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 348ED8370CE4681700E179EC /* keycode.hpp */; };
@@ -35,6 +37,8 @@
 		345B06AB0DB21A88000023FD /* Client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Client.cpp; sourceTree = "<group>"; };
 		345B06AC0DB21A88000023FD /* Client.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Client.hpp; sourceTree = "<group>"; };
 		345B06B70DB21ABF000023FD /* bridge.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = bridge.hpp; path = ../bridge/bridge.hpp; sourceTree = SOURCE_ROOT; };
+		346B753C0E72C0BA00F9A79F /* FlagStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FlagStatus.cpp; path = util/FlagStatus.cpp; sourceTree = "<group>"; };
+		346B753D0E72C0BA00F9A79F /* FlagStatus.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FlagStatus.hpp; path = util/FlagStatus.hpp; sourceTree = "<group>"; };
 		348ED8330CE467FD00E179EC /* remap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = remap.cpp; sourceTree = "<group>"; };
 		348ED8350CE4680F00E179EC /* remap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = remap.hpp; sourceTree = "<group>"; };
 		348ED8370CE4681700E179EC /* keycode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = keycode.hpp; sourceTree = "<group>"; };
@@ -91,8 +95,7 @@
 		247142CAFF3F8F9811CA285C /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				349581060E7232A5003773EC /* PressDownKeys.cpp */,
-				349581070E7232A5003773EC /* PressDownKeys.hpp */,
+				346B753B0E72C0A200F9A79F /* util */,
 				345B06B70DB21ABF000023FD /* bridge.hpp */,
 				348ED8350CE4680F00E179EC /* remap.hpp */,
 				348ED8480CE47D9D00E179EC /* RemapUtil.hpp */,
@@ -109,6 +112,17 @@
 				1A224C3FFF42367911CA2CB7 /* KeyRemap4MacBook.cpp */,
 			);
 			name = Source;
+			sourceTree = "<group>";
+		};
+		346B753B0E72C0A200F9A79F /* util */ = {
+			isa = PBXGroup;
+			children = (
+				346B753C0E72C0BA00F9A79F /* FlagStatus.cpp */,
+				346B753D0E72C0BA00F9A79F /* FlagStatus.hpp */,
+				349581060E7232A5003773EC /* PressDownKeys.cpp */,
+				349581070E7232A5003773EC /* PressDownKeys.hpp */,
+			);
+			name = util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +142,7 @@
 				345B06AE0DB21A88000023FD /* Client.hpp in Headers */,
 				345B06B80DB21ABF000023FD /* bridge.hpp in Headers */,
 				349581090E7232A5003773EC /* PressDownKeys.hpp in Headers */,
+				346B753F0E72C0BA00F9A79F /* FlagStatus.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +218,7 @@
 				348ED8470CE47D9400E179EC /* RemapUtil.cpp in Sources */,
 				345B06AD0DB21A88000023FD /* Client.cpp in Sources */,
 				349581080E7232A5003773EC /* PressDownKeys.cpp in Sources */,
+				346B753E0E72C0BA00F9A79F /* FlagStatus.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
