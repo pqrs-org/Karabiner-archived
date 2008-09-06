@@ -975,38 +975,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
-  namespace {
-    bool
-    remapToModifier(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag)
-    {
-      bool isKeyDown = false;
-      KeyCode::KeyCode toKeyCode = RemapUtil::getModifierKeyCode(toFlag);
-
-      if (*(params.eventType) == KeyEvent::MODIFY) {
-        // remap Modifier to Modifier
-
-        ModifierFlag::ModifierFlag fromFlag = RemapUtil::getKeyCodeModifier(fromKeyCode);
-        FlagStatus *status = allFlagStatus.getFlagStatus(fromFlag);
-        if (status == NULL) return false;
-
-        if (status->isHeldDown()) {
-          isKeyDown = true;
-        }
-        RemapUtil::keyToKey(params, fromKeyCode, toKeyCode);
-
-      } else {
-        // remap Key to Modifier
-
-        if (*(params.eventType) == KeyEvent::DOWN) {
-          isKeyDown = true;
-        }
-        RemapUtil::keyToKey(params, fromKeyCode, toKeyCode);
-      }
-
-      return isKeyDown;
-    }
-  }
-
   void
   KeyOverlaidModifier::remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc::FireFunc firefunc, ExtraRepeatFunc::ExtraRepeatFunc extraRepeatFunc)
   {
@@ -1090,7 +1058,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ----------------------------------------
-    bool isKeyDown = remapToModifier(params, fromKeyCode, toFlag);
+    bool isKeyDown = RemapUtil::isKeyDown(params, fromKeyCode);
+
+    KeyCode::KeyCode toKeyCode = RemapUtil::getModifierKeyCode(toFlag);
+    RemapUtil::keyToKey(params, fromKeyCode, toKeyCode);
 
     if (isKeyDown) {
       ++pressCount;
