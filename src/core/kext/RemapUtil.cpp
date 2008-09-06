@@ -1018,7 +1018,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ----------------------------------------
-    bool isKeyDown = remapToModifier(params, fromKeyCode, toFlag);
+    bool isKeyDown = RemapUtil::isKeyDown(params, fromKeyCode);
+
+    KeyCode::KeyCode toKeyCode = RemapUtil::getModifierKeyCode(toFlag);
+    RemapUtil::keyToKey(params, fromKeyCode, toKeyCode);
 
     if (isKeyDown) {
       useAsModifier = false;
