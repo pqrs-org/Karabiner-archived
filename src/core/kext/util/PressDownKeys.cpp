@@ -39,19 +39,17 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (callback == NULL) return;
 
+    Params_KeyboardEventCallBack callbackparams = {
+      target, KeyEvent::UP, 0, 0, 0, 0, 0, 0, 0, false, ts, sender, refcon,
+    };
+
     for (int i = 0; i < MAXNUM; ++i) {
       if (! item[i].enable) continue;
       item[i].enable = false;
 
-      unsigned int flags = 0;
-      unsigned int charCode = 0;
-      unsigned int charSet = 0;
-      unsigned int origCharCode = 0;
-      unsigned int origCharSet = 0;
-      RemapUtil::fireKey(callback,
-                         target, KeyEvent::UP, flags, item[i].key,
-                         charCode, charSet, origCharCode, origCharSet,
-                         item[i].keyboardType, false, ts, sender, refcon);
+      callbackparams.key = item[i].key;
+      callbackparams.keyboardType = item[i].keyboardType;
+      RemapUtil::execCallBack_keyboardEventCallBack(callback, callbackparams);
     }
   }
 }

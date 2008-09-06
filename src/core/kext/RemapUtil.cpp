@@ -324,13 +324,21 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // --------------------
   void
-  execCallBack_keyboardEventCallBack(KeyboardEventCallback callback, Params_KeyboardEventCallBack params)
+  RemapUtil::execCallBack_keyboardEventCallBack(KeyboardEventCallback callback, const Params_KeyboardEventCallBack &params)
   {
     if (callback == NULL) return;
 
     if (config.debug) {
-      printf("sending hid event type %d flags 0x%x key %d kbdType %d\n",
-             params.eventType,
+      const char *type = "KeyEvent::UNKNOWN";
+      if (params.eventType == KeyEvent::DOWN) {
+        type = "KeyEvent::DOWN";
+      } else if (params.eventType == KeyEvent::UP) {
+        type = "KeyEvent::UP";
+      } else if (params.eventType == KeyEvent::MODIFY) {
+        type = "KeyEvent::MODIFY";
+      }
+      printf("KeyRemap4MacBook sending %s flags 0x%x key %d kbdType %d\n",
+             type,
              params.flags,
              params.key,
              params.keyboardType);
@@ -361,6 +369,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       modifierStatus[i] = RemapUtil::isModifierOn(lastFlags, ModifierFlag::list[i]);
     }
 
+    Params_KeyboardEventCallBack callbackparams = {
+      target,
+      KeyEvent::MODIFY,
+      0, 0, 0, 0, 0, 0,
+      keyboardType, false, ts, sender, refcon,
+    };
+
     // fire
     for (int i = 0; i < ModifierFlag::listsize; ++i) {
       ModifierFlag::ModifierFlag m = ModifierFlag::list[i];
@@ -382,12 +397,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
       }
 
-      KeyCode::KeyCode keyCode = RemapUtil::getModifierKeyCode(m);
-      callback(target, KeyEvent::MODIFY, flags, keyCode, 0, 0, 0, 0, keyboardType, false, ts, sender, refcon);
-
-      if (config.debug) {
-        printf("sending hid event type KeyEvent::MODIFY flags 0x%x key %d kbdType %d\n", flags, keyCode, keyboardType);
-      }
+      callbackparams.flags = flags;
+      callbackparams.key = RemapUtil::getModifierKeyCode(m);
+      execCallBack_keyboardEventCallBack(callback, callbackparams);
     }
 
     lastFlags = toFlags;
@@ -445,14 +457,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (eventType == KeyEvent::DOWN || eventType == KeyEvent::UP) {
       reverseNormalizeKey(&key, &flags, keyboardType);
 
-      if (config.debug) {
-        printf("sending hid event type %d flags 0x%x key %d ", eventType, flags, key);
-        printf("charCode %d charSet %d ", charCode, charSet);
-        printf("origCharCode %d origCharSet %d kbdType %d\n",
-               origCharCode, origCharSet, keyboardType);
-      }
-      callback(target, eventType, flags, key, charCode,
-               charSet, origCharCode, origCharSet, keyboardType, repeat, ts, sender, refcon);
+      Params_KeyboardEventCallBack callbackparams = {
+        target, eventType, flags, key, charCode, charSet, origCharCode, origCharSet, keyboardType, repeat, ts, sender, refcon,
+      };
+      execCallBack_keyboardEventCallBack(callback, callbackparams);
 
       if (eventType == KeyEvent::DOWN) {
         if (key == KeyCode::JIS_EISUU || key == KeyCode::JIS_KANA) {
