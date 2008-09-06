@@ -4,9 +4,12 @@
 #include "keycode.hpp"
 #include "Config.hpp"
 
+#include "util/PressDownKeys.hpp"
+
 namespace org_pqrs_KeyRemap4MacBook {
   AllFlagStatus allFlagStatus;
   ListFireExtraKey listFireExtraKey;
+  PressDownKeys pressDownKeys;
   ListFireConsumerKey listFireConsumerKey;
   ListFirePointingClick listFirePointingClick;
   FirePointingScroll firePointingScroll;
@@ -434,8 +437,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       callback(target, eventType, flags, key, charCode,
                charSet, origCharCode, origCharSet, keyboardType, repeat, ts, sender, refcon);
 
-      if (key == KeyCode::JIS_EISUU || key == KeyCode::JIS_KANA) {
-        jisKanaMode.setMode(eventType, key, flags);
+      if (eventType == KeyEvent::DOWN) {
+        if (key == KeyCode::JIS_EISUU || key == KeyCode::JIS_KANA) {
+          jisKanaMode.setMode(eventType, key, flags);
+        }
+        pressDownKeys.add(key, keyboardType);
+      } else {
+        pressDownKeys.remove(key, keyboardType);
       }
     }
   }

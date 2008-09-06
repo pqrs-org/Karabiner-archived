@@ -4,6 +4,7 @@
 #include <IOKit/hidsystem/IOHIKeyboard.h>
 #include "remap.hpp"
 #include "keycode.hpp"
+#include "util/PressDownKeys.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapUtil {
@@ -501,6 +502,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     Mode mode;
   };
   extern JISKanaMode jisKanaMode;
+
+  extern PressDownKeys pressDownKeys;
 }
 
 #endif
