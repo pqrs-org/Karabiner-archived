@@ -19,6 +19,8 @@
 		348ED83A0CE4682000E179EC /* version.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 348ED8390CE4682000E179EC /* version.hpp */; };
 		348ED8470CE47D9400E179EC /* RemapUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 348ED8460CE47D9400E179EC /* RemapUtil.cpp */; };
 		348ED8490CE47D9D00E179EC /* RemapUtil.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 348ED8480CE47D9D00E179EC /* RemapUtil.hpp */; };
+		349581080E7232A5003773EC /* PressDownKeys.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 349581060E7232A5003773EC /* PressDownKeys.cpp */; };
+		349581090E7232A5003773EC /* PressDownKeys.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 349581070E7232A5003773EC /* PressDownKeys.hpp */; };
 		34C7A9A20CE45EA400C98397 /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34C7A9A10CE45EA400C98397 /* Config.cpp */; };
 		34C7A9B00CE4605B00C98397 /* Config.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34C7A9AF0CE4605B00C98397 /* Config.hpp */; };
 		34FB835F0CE5DBFF00BD6A24 /* base.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34FB835E0CE5DBFF00BD6A24 /* base.hpp */; };
@@ -27,7 +29,7 @@
 /* Begin PBXFileReference section */
 		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1A224C3FFF42367911CA2CB7 /* KeyRemap4MacBook.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KeyRemap4MacBook.cpp; sourceTree = "<group>"; };
-		32D94FCF0562CBF700B6AF17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Info.plist; sourceTree = "<group>"; };
+		32D94FCF0562CBF700B6AF17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32D94FD00562CBF700B6AF17 /* KeyRemap4MacBook.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyRemap4MacBook.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		3452BE010AD6BCAF009D9E15 /* KeyRemap4MacBook.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = KeyRemap4MacBook.hpp; sourceTree = "<group>"; };
 		345B06AB0DB21A88000023FD /* Client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Client.cpp; sourceTree = "<group>"; };
@@ -39,6 +41,8 @@
 		348ED8390CE4682000E179EC /* version.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = version.hpp; sourceTree = "<group>"; };
 		348ED8460CE47D9400E179EC /* RemapUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RemapUtil.cpp; sourceTree = "<group>"; };
 		348ED8480CE47D9D00E179EC /* RemapUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RemapUtil.hpp; sourceTree = "<group>"; };
+		349581060E7232A5003773EC /* PressDownKeys.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PressDownKeys.cpp; path = util/PressDownKeys.cpp; sourceTree = "<group>"; };
+		349581070E7232A5003773EC /* PressDownKeys.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PressDownKeys.hpp; path = util/PressDownKeys.hpp; sourceTree = "<group>"; };
 		34C7A9A10CE45EA400C98397 /* Config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Config.cpp; sourceTree = "<group>"; };
 		34C7A9AF0CE4605B00C98397 /* Config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config.hpp; sourceTree = "<group>"; };
 		34FB835E0CE5DBFF00BD6A24 /* base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = base.hpp; sourceTree = "<group>"; };
@@ -87,6 +91,8 @@
 		247142CAFF3F8F9811CA285C /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				349581060E7232A5003773EC /* PressDownKeys.cpp */,
+				349581070E7232A5003773EC /* PressDownKeys.hpp */,
 				345B06B70DB21ABF000023FD /* bridge.hpp */,
 				348ED8350CE4680F00E179EC /* remap.hpp */,
 				348ED8480CE47D9D00E179EC /* RemapUtil.hpp */,
@@ -121,6 +127,7 @@
 				34FB835F0CE5DBFF00BD6A24 /* base.hpp in Headers */,
 				345B06AE0DB21A88000023FD /* Client.hpp in Headers */,
 				345B06B80DB21ABF000023FD /* bridge.hpp in Headers */,
+				349581090E7232A5003773EC /* PressDownKeys.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +202,7 @@
 				348ED8340CE467FD00E179EC /* remap.cpp in Sources */,
 				348ED8470CE47D9400E179EC /* RemapUtil.cpp in Sources */,
 				345B06AD0DB21A88000023FD /* Client.cpp in Sources */,
+				349581080E7232A5003773EC /* PressDownKeys.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

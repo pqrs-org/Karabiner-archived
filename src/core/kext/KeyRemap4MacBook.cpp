@@ -65,6 +65,7 @@ org_pqrs_driver_KeyRemap4MacBook::init(OSDictionary *dict)
     hookedPointing[i].pointing = NULL;
   }
   org_pqrs_KeyRemap4MacBook::clickWatcher.reset();
+  org_pqrs_KeyRemap4MacBook::pressDownKeys.initialize();
 
   KeyRemap4MacBook_client::initialize();
 
@@ -746,15 +747,15 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardEventCallBack(OSObject *target,
                                                   charSet, origCharCode, origCharSet, keyboardType, repeat,
                                                   ts, sender, refcon);
     org_pqrs_KeyRemap4MacBook::listFireExtraKey.fire(p->origEventCallback, target, charSet, origCharCode, origCharSet, keyboardType, ts, sender, refcon);
-
-    // reset modifiers
-    if (org_pqrs_KeyRemap4MacBook::allFlagStatus.numHeldDownKeys <= 0) {
-      org_pqrs_KeyRemap4MacBook::RemapUtil::fireModifiers(0, p->origEventCallback, target, keyboardType, ts, sender, refcon);
-    }
   }
 
   p->setExtraRepeatInfo(ex_extraRepeatFunc, ex_extraRepeatFlags, keyboardType, ts, target, refcon);
   p->setRepeatInfo(eventType, flags, key, charCode, charSet, origCharCode, origCharSet, keyboardType, ts, target, refcon);
+
+  if (org_pqrs_KeyRemap4MacBook::allFlagStatus.numHeldDownKeys <= 0) {
+    org_pqrs_KeyRemap4MacBook::RemapUtil::fireModifiers(0, p->origEventCallback, target, keyboardType, ts, sender, refcon);
+    org_pqrs_KeyRemap4MacBook::pressDownKeys.clear(p->origEventCallback, target, ts, sender, refcon);
+  }
 }
 
 void
