@@ -324,6 +324,23 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // --------------------
   void
+  execCallBack_keyboardEventCallBack(KeyboardEventCallback callback, Params_KeyboardEventCallBack params)
+  {
+    if (callback == NULL) return;
+
+    if (config.debug) {
+      printf("sending hid event type %d flags 0x%x key %d kbdType %d\n",
+             params.eventType,
+             params.flags,
+             params.key,
+             params.keyboardType);
+    }
+    callback(params.target, params.eventType, params.flags, params.key, params.charCode,
+             params.charSet, params.origCharCode, params.origCharSet,
+             params.keyboardType, params.repeat, params.ts, params.sender, params.refcon);
+  }
+
+  void
   RemapUtil::fireModifiers(unsigned int toFlags,
                            KeyboardEventCallback callback, OSObject *target,
                            unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon)
