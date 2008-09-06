@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		32D94FC80562CBF700B6AF17 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
 		32D94FCA0562CBF700B6AF17 /* KeyRemap4MacBook.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A224C3FFF42367911CA2CB7 /* KeyRemap4MacBook.cpp */; settings = {ATTRIBUTES = (); }; };
+		3424BC5E0E72FF9100298C45 /* JISKanaMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3424BC5C0E72FF9100298C45 /* JISKanaMode.cpp */; };
+		3424BC5F0E72FF9100298C45 /* JISKanaMode.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3424BC5D0E72FF9100298C45 /* JISKanaMode.hpp */; };
 		3452BE030AD6BCAF009D9E15 /* KeyRemap4MacBook.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3452BE010AD6BCAF009D9E15 /* KeyRemap4MacBook.hpp */; };
 		345B06AD0DB21A88000023FD /* Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345B06AB0DB21A88000023FD /* Client.cpp */; };
 		345B06AE0DB21A88000023FD /* Client.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345B06AC0DB21A88000023FD /* Client.hpp */; };
@@ -33,6 +35,8 @@
 		1A224C3FFF42367911CA2CB7 /* KeyRemap4MacBook.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KeyRemap4MacBook.cpp; sourceTree = "<group>"; };
 		32D94FCF0562CBF700B6AF17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32D94FD00562CBF700B6AF17 /* KeyRemap4MacBook.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyRemap4MacBook.kext; sourceTree = BUILT_PRODUCTS_DIR; };
+		3424BC5C0E72FF9100298C45 /* JISKanaMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = JISKanaMode.cpp; path = util/JISKanaMode.cpp; sourceTree = "<group>"; };
+		3424BC5D0E72FF9100298C45 /* JISKanaMode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = JISKanaMode.hpp; path = util/JISKanaMode.hpp; sourceTree = "<group>"; };
 		3452BE010AD6BCAF009D9E15 /* KeyRemap4MacBook.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = KeyRemap4MacBook.hpp; sourceTree = "<group>"; };
 		345B06AB0DB21A88000023FD /* Client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Client.cpp; sourceTree = "<group>"; };
 		345B06AC0DB21A88000023FD /* Client.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Client.hpp; sourceTree = "<group>"; };
@@ -117,6 +121,8 @@
 		346B753B0E72C0A200F9A79F /* util */ = {
 			isa = PBXGroup;
 			children = (
+				3424BC5C0E72FF9100298C45 /* JISKanaMode.cpp */,
+				3424BC5D0E72FF9100298C45 /* JISKanaMode.hpp */,
 				346B753C0E72C0BA00F9A79F /* FlagStatus.cpp */,
 				346B753D0E72C0BA00F9A79F /* FlagStatus.hpp */,
 				349581060E7232A5003773EC /* PressDownKeys.cpp */,
@@ -143,6 +149,7 @@
 				345B06B80DB21ABF000023FD /* bridge.hpp in Headers */,
 				349581090E7232A5003773EC /* PressDownKeys.hpp in Headers */,
 				346B753F0E72C0BA00F9A79F /* FlagStatus.hpp in Headers */,
+				3424BC5F0E72FF9100298C45 /* JISKanaMode.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +226,7 @@
 				345B06AD0DB21A88000023FD /* Client.cpp in Sources */,
 				349581080E7232A5003773EC /* PressDownKeys.cpp in Sources */,
 				346B753E0E72C0BA00F9A79F /* FlagStatus.cpp in Sources */,
+				3424BC5E0E72FF9100298C45 /* JISKanaMode.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,6 +6,7 @@
 #include "keycode.hpp"
 #include "util/FlagStatus.hpp"
 #include "util/PressDownKeys.hpp"
+#include "util/JISKanaMode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapUtil {
@@ -393,26 +394,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool isButtonHeldDown;
   };
 
-  // --------------------
-  class JISKanaMode {
-  public:
-    enum Mode {
-      JISKANAMODE_ASCII,
-      JISKANAMODE_HIRAGANA,
-      JISKANAMODE_KATAKANA,
-    };
-
-    Mode getMode(void) const { return mode; }
-    void setMode(Mode _mode) { mode = _mode; }
-    void setMode(unsigned int eventType, unsigned int keyCode, unsigned int flags);
-    void toggle(void);
-    bool iskana(void) const { return mode != JISKANAMODE_ASCII; }
-
-  private:
-    Mode mode;
-  };
   extern JISKanaMode jisKanaMode;
-
   extern PressDownKeys pressDownKeys;
 }
 
