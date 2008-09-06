@@ -85,7 +85,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ----------------------------------------
-    void execCallBack_keyboardEventCallBack(KeyboardEventCallback callback, Params_KeyboardEventCallBack params);
+    void execCallBack_keyboardEventCallBack(KeyboardEventCallback callback, const Params_KeyboardEventCallBack &params);
 
     void fireModifiers(unsigned int toFlags,
                        KeyboardEventCallback callback, OSObject *target,
