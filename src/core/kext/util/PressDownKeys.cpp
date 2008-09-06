@@ -41,6 +41,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     for (int i = 0; i < MAXNUM; ++i) {
       if (! item[i].enable) continue;
+      item[i].enable = false;
+
       unsigned int flags = 0;
       unsigned int charCode = 0;
       unsigned int charSet = 0;
