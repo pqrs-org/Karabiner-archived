@@ -4,8 +4,6 @@
 #include "keycode.hpp"
 #include "Config.hpp"
 
-#include "util/PressDownKeys.hpp"
-
 namespace org_pqrs_KeyRemap4MacBook {
   AllFlagStatus allFlagStatus;
   ListFireExtraKey listFireExtraKey;
@@ -575,23 +573,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------------------------------------
-  void
-  ListFireExtraKey::fire(KeyboardEventCallback callback,
-                         OSObject *target,
-                         unsigned int charSet, unsigned int origCharCode, unsigned int origCharSet, unsigned int keyboardType,
-                         AbsoluteTime ts, OSObject *sender, void *refcon)
-  {
-    if (callback == NULL) return;
-
-    for (int i = 0; i < size; ++i) {
-      FireExtraKey &item = list[i];
-
-      RemapUtil::fireKey(callback, target, item.getEventType(), item.getFlags(), item.getKey(), item.getCharCode(),
-                         charSet, origCharCode, origCharSet,
-                         keyboardType, false, ts, sender, refcon);
-    }
-  }
-
   void
   ListFireConsumerKey::fire(KeyboardSpecialEventCallback callback,
                             OSObject *target, AbsoluteTime ts, OSObject *sender, void *refcon)
