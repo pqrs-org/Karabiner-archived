@@ -3,13 +3,13 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   void
-  ListFireExtraKey::addKey(unsigned int flags, KeyCode::KeyCode keyCode, CharCode::CharCode charCode)
+  ListFireExtraKey::addKey(unsigned int flags, KeyCode::KeyCode keyCode)
   {
     if (RemapUtil::getKeyCodeModifier(keyCode) != ModifierFlag::NONE) {
-      add(KeyEvent::MODIFY, flags, keyCode, charCode);
+      add(KeyEvent::MODIFY, flags, keyCode);
     } else {
-      add(KeyEvent::DOWN, flags, keyCode, charCode);
-      add(KeyEvent::UP, flags, keyCode, charCode);
+      add(KeyEvent::DOWN, flags, keyCode);
+      add(KeyEvent::UP, flags, keyCode);
     }
   }
 
@@ -24,8 +24,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (int i = 0; i < size; ++i) {
       Item &item = list[i];
 
-      RemapUtil::fireKey(callback, target, item.getEventType(), item.getFlags(), item.getKey(), item.getCharCode(),
-                         charSet, origCharCode, origCharSet,
+      RemapUtil::fireKey(callback, target, item.getEventType(), item.getFlags(), item.getKey(),
+                         0, 0, 0, 0,
                          keyboardType, false, ts, sender, refcon);
     }
   }
