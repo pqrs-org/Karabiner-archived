@@ -9,6 +9,7 @@
 #include "util/ListFireExtraKey.hpp"
 #include "util/ListFireConsumerKey.hpp"
 #include "util/IntervalChecker.hpp"
+#include "util/ClickWatcher.hpp"
 #include "util/JISKanaMode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -195,20 +196,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
 
   // ----------------------------------------------------------------------
-  class ClickWatcher {
-  public:
-    enum {
-      CLICKWATCHER_MAXNUM = 8,
-    };
-    void reset(void);
-    void click(void);
-
-    void set(bool *b);
-    void unset(bool *b);
-
-  private:
-    bool *watchlist[CLICKWATCHER_MAXNUM];
-  };
   extern ClickWatcher clickWatcher;
 
   // --------------------
