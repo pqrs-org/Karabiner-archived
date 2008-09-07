@@ -29,6 +29,8 @@
 		34C7A9B00CE4605B00C98397 /* Config.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34C7A9AF0CE4605B00C98397 /* Config.hpp */; };
 		34F13A790E73B607006EB163 /* ListFireExtraKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F13A770E73B607006EB163 /* ListFireExtraKey.cpp */; };
 		34F13A7A0E73B607006EB163 /* ListFireExtraKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34F13A780E73B607006EB163 /* ListFireExtraKey.hpp */; };
+		34F13A820E73E5EC006EB163 /* ListFireConsumerKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F13A800E73E5EC006EB163 /* ListFireConsumerKey.cpp */; };
+		34F13A830E73E5EC006EB163 /* ListFireConsumerKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34F13A810E73E5EC006EB163 /* ListFireConsumerKey.hpp */; };
 		34FB835F0CE5DBFF00BD6A24 /* base.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34FB835E0CE5DBFF00BD6A24 /* base.hpp */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +59,8 @@
 		34C7A9AF0CE4605B00C98397 /* Config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config.hpp; sourceTree = "<group>"; };
 		34F13A770E73B607006EB163 /* ListFireExtraKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ListFireExtraKey.cpp; path = util/ListFireExtraKey.cpp; sourceTree = "<group>"; };
 		34F13A780E73B607006EB163 /* ListFireExtraKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ListFireExtraKey.hpp; path = util/ListFireExtraKey.hpp; sourceTree = "<group>"; };
+		34F13A800E73E5EC006EB163 /* ListFireConsumerKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ListFireConsumerKey.cpp; path = util/ListFireConsumerKey.cpp; sourceTree = "<group>"; };
+		34F13A810E73E5EC006EB163 /* ListFireConsumerKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ListFireConsumerKey.hpp; path = util/ListFireConsumerKey.hpp; sourceTree = "<group>"; };
 		34FB835E0CE5DBFF00BD6A24 /* base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = base.hpp; sourceTree = "<group>"; };
 		8DA8362C06AD9B9200E5AC22 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = /System/Library/Frameworks/Kernel.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -125,6 +129,8 @@
 		346B753B0E72C0A200F9A79F /* util */ = {
 			isa = PBXGroup;
 			children = (
+				34F13A800E73E5EC006EB163 /* ListFireConsumerKey.cpp */,
+				34F13A810E73E5EC006EB163 /* ListFireConsumerKey.hpp */,
 				34F13A770E73B607006EB163 /* ListFireExtraKey.cpp */,
 				34F13A780E73B607006EB163 /* ListFireExtraKey.hpp */,
 				3424BC5C0E72FF9100298C45 /* JISKanaMode.cpp */,
@@ -157,6 +163,7 @@
 				346B753F0E72C0BA00F9A79F /* FlagStatus.hpp in Headers */,
 				3424BC5F0E72FF9100298C45 /* JISKanaMode.hpp in Headers */,
 				34F13A7A0E73B607006EB163 /* ListFireExtraKey.hpp in Headers */,
+				34F13A830E73E5EC006EB163 /* ListFireConsumerKey.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,6 +242,7 @@
 				346B753E0E72C0BA00F9A79F /* FlagStatus.cpp in Sources */,
 				3424BC5E0E72FF9100298C45 /* JISKanaMode.cpp in Sources */,
 				34F13A790E73B607006EB163 /* ListFireExtraKey.cpp in Sources */,
+				34F13A820E73E5EC006EB163 /* ListFireConsumerKey.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
