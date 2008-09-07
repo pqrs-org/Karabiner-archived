@@ -31,6 +31,8 @@
 		34F13A7A0E73B607006EB163 /* ListFireExtraKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34F13A780E73B607006EB163 /* ListFireExtraKey.hpp */; };
 		34F13A820E73E5EC006EB163 /* ListFireConsumerKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F13A800E73E5EC006EB163 /* ListFireConsumerKey.cpp */; };
 		34F13A830E73E5EC006EB163 /* ListFireConsumerKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34F13A810E73E5EC006EB163 /* ListFireConsumerKey.hpp */; };
+		34F13A860E73E69D006EB163 /* IntervalChecker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F13A840E73E69D006EB163 /* IntervalChecker.cpp */; };
+		34F13A870E73E69D006EB163 /* IntervalChecker.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34F13A850E73E69D006EB163 /* IntervalChecker.hpp */; };
 		34FB835F0CE5DBFF00BD6A24 /* base.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34FB835E0CE5DBFF00BD6A24 /* base.hpp */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +63,8 @@
 		34F13A780E73B607006EB163 /* ListFireExtraKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ListFireExtraKey.hpp; path = util/ListFireExtraKey.hpp; sourceTree = "<group>"; };
 		34F13A800E73E5EC006EB163 /* ListFireConsumerKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ListFireConsumerKey.cpp; path = util/ListFireConsumerKey.cpp; sourceTree = "<group>"; };
 		34F13A810E73E5EC006EB163 /* ListFireConsumerKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ListFireConsumerKey.hpp; path = util/ListFireConsumerKey.hpp; sourceTree = "<group>"; };
+		34F13A840E73E69D006EB163 /* IntervalChecker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IntervalChecker.cpp; path = util/IntervalChecker.cpp; sourceTree = "<group>"; };
+		34F13A850E73E69D006EB163 /* IntervalChecker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IntervalChecker.hpp; path = util/IntervalChecker.hpp; sourceTree = "<group>"; };
 		34FB835E0CE5DBFF00BD6A24 /* base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = base.hpp; sourceTree = "<group>"; };
 		8DA8362C06AD9B9200E5AC22 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = /System/Library/Frameworks/Kernel.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -129,6 +133,8 @@
 		346B753B0E72C0A200F9A79F /* util */ = {
 			isa = PBXGroup;
 			children = (
+				34F13A840E73E69D006EB163 /* IntervalChecker.cpp */,
+				34F13A850E73E69D006EB163 /* IntervalChecker.hpp */,
 				34F13A800E73E5EC006EB163 /* ListFireConsumerKey.cpp */,
 				34F13A810E73E5EC006EB163 /* ListFireConsumerKey.hpp */,
 				34F13A770E73B607006EB163 /* ListFireExtraKey.cpp */,
@@ -164,6 +170,7 @@
 				3424BC5F0E72FF9100298C45 /* JISKanaMode.hpp in Headers */,
 				34F13A7A0E73B607006EB163 /* ListFireExtraKey.hpp in Headers */,
 				34F13A830E73E5EC006EB163 /* ListFireConsumerKey.hpp in Headers */,
+				34F13A870E73E69D006EB163 /* IntervalChecker.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +250,7 @@
 				3424BC5E0E72FF9100298C45 /* JISKanaMode.cpp in Sources */,
 				34F13A790E73B607006EB163 /* ListFireExtraKey.cpp in Sources */,
 				34F13A820E73E5EC006EB163 /* ListFireConsumerKey.cpp in Sources */,
+				34F13A860E73E69D006EB163 /* IntervalChecker.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
