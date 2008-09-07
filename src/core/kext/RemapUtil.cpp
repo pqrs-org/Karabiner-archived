@@ -7,7 +7,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   ListFireExtraKey listFireExtraKey;
   PressDownKeys pressDownKeys;
   ListFireConsumerKey listFireConsumerKey;
-  ListFirePointingClick listFirePointingClick;
+  ListFireRelativePointer listFireRelativePointer;
   FirePointingScroll firePointingScroll;
   ClickWatcher clickWatcher;
   PointingButtonStatus pointingButtonStatus;
@@ -251,13 +251,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     if (RemapUtil::isKeyDown(params, fromKeyCode)) {
-      listFirePointingClick.add(toButton);
+      listFireRelativePointer.add(toButton);
 
       bool *status = pointingButtonStatus.getButtonStatus(toButton);
       if (status) *status = true;
 
     } else {
-      listFirePointingClick.add(PointingButton::NONE);
+      listFireRelativePointer.add(PointingButton::NONE);
 
       bool *status = pointingButtonStatus.getButtonStatus(toButton);
       if (status) *status = false;
@@ -342,6 +342,18 @@ namespace org_pqrs_KeyRemap4MacBook {
     callback(params.target, params.eventType, params.flags, params.key, params.charCode,
              params.charSet, params.origCharCode, params.origCharSet,
              params.keyboardType, params.repeat, params.ts, params.sender, params.refcon);
+  }
+
+  void
+  RemapUtil::execCallBack_RelativePointerEventCallBack(RelativePointerEventCallback callback, const Params_RelativePointerEventCallback &params)
+  {
+    if (callback == NULL) return;
+
+    if (config.debug_pointing) {
+      printf("caught relativePointerEventCallBack: buttons: %d, dx: %d, dy: %d, ts: 0x%x\n",
+             params.buttons, params.dx, params.dy, params.ts);
+    }
+    callback(params.target, params.buttons, params.dx, params.dy, params.ts, params.sender, params.refcon);
   }
 
   void
@@ -945,30 +957,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
-  void
-  ListFirePointingClick::add(PointingButton::PointingButton button)
-  {
-    if (size >= FIREPOINTINGCLICK_MAXNUM) return;
-    list[size].set(button);
-    ++size;
-  }
-
-  void
-  ListFirePointingClick::fire(RelativePointerEventCallback callback, OSObject *target, OSObject *sender, AbsoluteTime ts)
-  {
-    if (callback == NULL) return;
-
-    for (int i = 0; i < size; ++i) {
-      FirePointingClick &item = list[i];
-
-      if (config.debug_pointing) {
-        printf("sending relativePointerEventCallBack: buttons: %d, ts: 0x%x\n", item.getButton(), ts);
-      }
-      callback(target, item.getButton(), 0, 0, ts, sender, 0);
-    }
-  }
-
-  // --------------------
   void
   FirePointingScroll::fire(ScrollWheelEventCallback callback, OSObject *target, IOHIPointing *pointing, AbsoluteTime ts)
   {
