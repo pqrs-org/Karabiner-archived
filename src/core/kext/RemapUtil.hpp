@@ -8,6 +8,7 @@
 #include "util/PressDownKeys.hpp"
 #include "util/ListFireExtraKey.hpp"
 #include "util/ListFireConsumerKey.hpp"
+#include "util/ListFireRelativePointer.hpp"
 #include "util/IntervalChecker.hpp"
 #include "util/ClickWatcher.hpp"
 #include "util/JISKanaMode.hpp"
@@ -91,6 +92,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ----------------------------------------
     void execCallBack_keyboardEventCallBack(KeyboardEventCallback callback, const Params_KeyboardEventCallBack &params);
+    void execCallBack_RelativePointerEventCallBack(RelativePointerEventCallback callback, const Params_RelativePointerEventCallback &params);
 
     void fireModifiers(unsigned int toFlags,
                        KeyboardEventCallback callback, OSObject *target,
@@ -210,33 +212,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   extern PointingButtonStatus pointingButtonStatus;
 
   // --------------------
-  class FirePointingClick {
-  public:
-    void set(PointingButton::PointingButton _button) {
-      button = _button;
-    }
-    PointingButton::PointingButton getButton(void) const { return button; }
-
-  private:
-    PointingButton::PointingButton button;
-  };
-
-  class ListFirePointingClick {
-  public:
-    enum {
-      FIREPOINTINGCLICK_MAXNUM = 4,
-    };
-    void reset(void) { size = 0; }
-    bool isEmpty(void) { return size == 0; }
-    void add(PointingButton::PointingButton button);
-    void fire(RelativePointerEventCallback callback, OSObject *target, OSObject *sender, AbsoluteTime ts);
-
-  private:
-    FirePointingClick list[FIREPOINTINGCLICK_MAXNUM];
-    int size;
-  };
-
-  extern ListFirePointingClick listFirePointingClick;
+  extern ListFireRelativePointer listFireRelativePointer;
 
   // --------------------
   class FirePointingScroll {

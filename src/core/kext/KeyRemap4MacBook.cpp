@@ -690,7 +690,7 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardEventCallBack(OSObject *target,
   // ------------------------------------------------------------
   org_pqrs_KeyRemap4MacBook::listFireExtraKey.reset();
   org_pqrs_KeyRemap4MacBook::listFireConsumerKey.reset();
-  org_pqrs_KeyRemap4MacBook::listFirePointingClick.reset();
+  org_pqrs_KeyRemap4MacBook::listFireRelativePointer.reset();
 
   unsigned int ex_extraRepeatFlags = 0;
   org_pqrs_KeyRemap4MacBook::ExtraRepeatFunc::ExtraRepeatFunc ex_extraRepeatFunc = NULL;
@@ -726,10 +726,10 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardEventCallBack(OSObject *target,
   }
 
   // pointing emulation
-  if (! org_pqrs_KeyRemap4MacBook::listFirePointingClick.isEmpty()) {
+  if (! org_pqrs_KeyRemap4MacBook::listFireRelativePointer.isEmpty()) {
     HookedPointing *hp = get_1stHookedPointing();
     if (hp) {
-      org_pqrs_KeyRemap4MacBook::listFirePointingClick.fire(hp->origRelativePointerEventCallback, hp->relativePointerEventTarget, hp->pointing, ts);
+      org_pqrs_KeyRemap4MacBook::listFireRelativePointer.fire(hp->origRelativePointerEventCallback, hp->relativePointerEventTarget, hp->pointing, ts);
     }
   }
 
@@ -863,7 +863,7 @@ org_pqrs_driver_KeyRemap4MacBook::relativePointerEventCallBack(OSObject *target,
   if (! p) return;
 
   // ------------------------------------------------------------
-  org_pqrs_KeyRemap4MacBook::listFirePointingClick.reset();
+  org_pqrs_KeyRemap4MacBook::listFireRelativePointer.reset();
 
   if (org_pqrs_KeyRemap4MacBook::config.debug_pointing) {
     printf("caught relativePointerEventCallBack: buttons: %d, dx: %d, dy: %d, ts: 0x%x\n", buttons, dx, dy, ts);
@@ -890,8 +890,8 @@ org_pqrs_driver_KeyRemap4MacBook::relativePointerEventCallBack(OSObject *target,
     }
   }
 
-  if (! org_pqrs_KeyRemap4MacBook::listFirePointingClick.isEmpty()) {
-    org_pqrs_KeyRemap4MacBook::listFirePointingClick.fire(reCallback, target, pointing, ts);
+  if (! org_pqrs_KeyRemap4MacBook::listFireRelativePointer.isEmpty()) {
+    org_pqrs_KeyRemap4MacBook::listFireRelativePointer.fire(reCallback, target, pointing, ts);
   }
 
   if (org_pqrs_KeyRemap4MacBook::firePointingScroll.isEnable()) {
