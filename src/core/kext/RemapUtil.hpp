@@ -8,6 +8,7 @@
 #include "util/PressDownKeys.hpp"
 #include "util/ListFireExtraKey.hpp"
 #include "util/ListFireConsumerKey.hpp"
+#include "util/IntervalChecker.hpp"
 #include "util/JISKanaMode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -112,17 +113,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   extern AllFlagStatus allFlagStatus;
   extern ListFireExtraKey listFireExtraKey;
   extern ListFireConsumerKey listFireConsumerKey;
-
-  // ----------------------------------------------------------------------
-  class IntervalChecker {
-  public:
-    void begin(void);
-    bool checkThreshold(uint32_t millisec);
-
-  private:
-    uint32_t secs;
-    uint32_t microsecs;
-  };
 
   // ----------------------------------------------------------------------
   namespace FireFunc {
