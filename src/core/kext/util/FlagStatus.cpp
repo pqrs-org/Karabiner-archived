@@ -139,11 +139,4 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (flag == ModifierFlag::FN) return &fn;
     return NULL;
   }
-
-  FlagStatus *
-  AllFlagStatus::getFlagStatus(KeyCode::KeyCode keyCode)
-  {
-    ModifierFlag::ModifierFlag fromFlag = RemapUtil::getKeyCodeModifier(keyCode);
-    return allFlagStatus.getFlagStatus(fromFlag);
-  }
 }
