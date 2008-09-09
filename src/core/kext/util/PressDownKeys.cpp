@@ -48,7 +48,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       callbackparams.key = item[i].key;
       callbackparams.keyboardType = item[i].keyboardType;
-      RemapUtil::execCallBack_keyboardEventCallBack(callback, callbackparams);
+      RemapUtil::execCallBack_KeyboardEventCallBack(callback, callbackparams);
     }
   }
 }
