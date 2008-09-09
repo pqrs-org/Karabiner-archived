@@ -510,13 +510,13 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // --------------------
   void
-  RemapUtil::pointingRelativeToScroll(const RemapPointingParams_relative &params)
+  RemapUtil::pointingRelativeToScroll(const RemapPointingParams_relative &remapParams)
   {
-    *(params.ex_dropEvent) = true;
+    *(remapParams.ex_dropEvent) = true;
 
     // ----------------------------------------
-    int delta1 = - *(params.dy);
-    int delta2 = - *(params.dx);
+    int delta1 = - (remapParams.params)->dy;
+    int delta2 = - (remapParams.params)->dx;
 
     if (config.option_pointing_disable_vertical_scroll) delta1 = 0;
     if (config.option_pointing_disable_horizontal_scroll) delta2 = 0;
@@ -981,17 +981,17 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ------------------------------------------------------------
   void
-  ButtonRelativeToScroll::remap(const RemapPointingParams_relative &params, PointingButton::PointingButton button)
+  ButtonRelativeToScroll::remap(const RemapPointingParams_relative &remapParams, PointingButton::PointingButton button)
   {
-    if ((*(params.buttons) & button) == 0) {
+    if (((remapParams.params)->buttons & button) == 0) {
       if (isButtonHeldDown) {
         isButtonHeldDown = false;
-        *(params.ex_dropEvent) = true;
+        *(remapParams.ex_dropEvent) = true;
       }
     } else {
       isButtonHeldDown = true;
-      *(params.ex_dropEvent) = true;
-      RemapUtil::pointingRelativeToScroll(params);
+      *(remapParams.ex_dropEvent) = true;
+      RemapUtil::pointingRelativeToScroll(remapParams);
     }
   }
 }

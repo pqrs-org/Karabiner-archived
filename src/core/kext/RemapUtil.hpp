@@ -110,7 +110,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void jis_toggle_eisuu_kana(const RemapParams &params, KeyCode::KeyCode fromKeyCode);
 
     // ----------------------------------------
-    void pointingRelativeToScroll(const RemapPointingParams_relative &params);
+    void pointingRelativeToScroll(const RemapPointingParams_relative &remapParams);
   }
 
   extern AllFlagStatus allFlagStatus;
