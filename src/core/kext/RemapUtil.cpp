@@ -320,7 +320,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // --------------------
   void
-  RemapUtil::execCallBack_keyboardEventCallBack(KeyboardEventCallback callback, const Params_KeyboardEventCallBack &params)
+  RemapUtil::execCallBack_KeyboardEventCallBack(KeyboardEventCallback callback, const Params_KeyboardEventCallBack &params)
   {
     if (callback == NULL) return;
 
@@ -342,6 +342,19 @@ namespace org_pqrs_KeyRemap4MacBook {
     callback(params.target, params.eventType, params.flags, params.key, params.charCode,
              params.charSet, params.origCharCode, params.origCharSet,
              params.keyboardType, params.repeat, params.ts, params.sender, params.refcon);
+  }
+
+  void
+  RemapUtil::execCallBack_KeyboardSpecialEventCallback(KeyboardSpecialEventCallback callback, const Params_KeyboardSpecialEventCallback &params)
+  {
+    if (callback == NULL) return;
+
+    if (org_pqrs_KeyRemap4MacBook::config.debug) {
+      printf("KeyboardSpecialEventCallback keyboardSpecialEventCallBack: eventType %d, flags 0x%x, key %d, flavor %d, guid %d\n",
+             params.eventType, params.flags, params.key, params.flavor, params.guid);
+    }
+    callback(params.target, params.eventType, params.flags, params.key, params.flavor,
+             params.guid, params.repeat, params.ts, params.sender, params.refcon);
   }
 
   void
@@ -407,7 +420,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       callbackparams.flags = flags;
       callbackparams.key = RemapUtil::getModifierKeyCode(m);
-      execCallBack_keyboardEventCallBack(callback, callbackparams);
+      execCallBack_KeyboardEventCallBack(callback, callbackparams);
     }
 
     lastFlags = toFlags;
@@ -468,7 +481,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       Params_KeyboardEventCallBack callbackparams = {
         target, eventType, flags, key, charCode, charSet, origCharCode, origCharSet, keyboardType, repeat, ts, sender, refcon,
       };
-      execCallBack_keyboardEventCallBack(callback, callbackparams);
+      execCallBack_KeyboardEventCallBack(callback, callbackparams);
 
       if (eventType == KeyEvent::DOWN) {
         if (key == KeyCode::JIS_EISUU || key == KeyCode::JIS_KANA) {
@@ -490,10 +503,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! callback) return;
     if (key == ConsumerKeyCode::NONE) return;
 
-    if (org_pqrs_KeyRemap4MacBook::config.debug) {
-      printf("send keyboardSpecialEventCallBack: eventType %d, flags 0x%x, key %d, flavor %d, guid %d\n", eventType, flags, key, flavor, guid);
-    }
-    callback(target, eventType, flags, key, flavor, guid, repeat, ts, sender, refcon);
+    Params_KeyboardSpecialEventCallback callbackparams = {
+      target, eventType, flags, key, flavor, guid, repeat, ts, sender, refcon,
+    };
+    execCallBack_KeyboardSpecialEventCallback(callback, callbackparams);
   }
 
   // --------------------

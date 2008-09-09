@@ -21,6 +21,18 @@ namespace org_pqrs_KeyRemap4MacBook {
     OSObject *sender;
     void *refcon;
   };
+  struct Params_KeyboardSpecialEventCallback {
+    OSObject *target;
+    unsigned int eventType;
+    unsigned int flags;
+    unsigned int key;
+    unsigned int flavor;
+    UInt64 guid;
+    bool repeat;
+    AbsoluteTime ts;
+    OSObject *sender;
+    void *refcon;
+  };
   struct Params_RelativePointerEventCallback {
     OSObject *target;
     int buttons;
