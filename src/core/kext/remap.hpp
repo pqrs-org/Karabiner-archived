@@ -63,13 +63,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // --------------------
   struct RemapPointingParams_relative {
-    int *buttons;
-    int *dx;
-    int *dy;
-    AbsoluteTime *ts;
+    Params_RelativePointerEventCallback *params;
     bool *ex_dropEvent;
   };
-  void remap_pointing_relative_core(const RemapPointingParams_relative &params);
+  void remap_pointing_relative_core(const RemapPointingParams_relative &remapParams);
 }
 
 #endif

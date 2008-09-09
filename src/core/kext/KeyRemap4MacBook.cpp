@@ -874,20 +874,18 @@ org_pqrs_driver_KeyRemap4MacBook::relativePointerEventCallBack(OSObject *target,
   }
 
   bool ex_dropEvent = false;
-  org_pqrs_KeyRemap4MacBook::RemapPointingParams_relative params = {
-    &buttons, &dx, &dy, &ts, &ex_dropEvent,
+  org_pqrs_KeyRemap4MacBook::Params_RelativePointerEventCallback params = {
+    target, buttons, dx, dy, ts, sender, refcon,
   };
-  org_pqrs_KeyRemap4MacBook::remap_pointing_relative_core(params);
+  org_pqrs_KeyRemap4MacBook::RemapPointingParams_relative remapParams = {
+    &params, &ex_dropEvent,
+  };
+  org_pqrs_KeyRemap4MacBook::remap_pointing_relative_core(remapParams);
 
   RelativePointerEventCallback reCallback = p->origRelativePointerEventCallback;
 
   if (! ex_dropEvent) {
-    if (reCallback) {
-      if (org_pqrs_KeyRemap4MacBook::config.debug_pointing) {
-        printf("sending relativePointerEventCallBack: buttons: %d, dx: %d, dy: %d, ts: 0x%x\n", buttons, dx, dy, ts);
-      }
-      reCallback(target, buttons, dx, dy, ts, sender, refcon);
-    }
+    org_pqrs_KeyRemap4MacBook::RemapUtil::execCallBack_RelativePointerEventCallBack(reCallback, params);
   }
 
   if (! org_pqrs_KeyRemap4MacBook::listFireRelativePointer.isEmpty()) {

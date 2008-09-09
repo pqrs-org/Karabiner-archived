@@ -303,13 +303,13 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ------------------------------------------------------------
   void
-  remap_pointing_relative_fn_to_scroll(const RemapPointingParams_relative &params)
+  remap_pointing_relative_fn_to_scroll(const RemapPointingParams_relative &remapParams)
   {
     if (! config.remap_pointing_relative_fn_to_scroll) return;
 
     if (! allFlagStatus.fn.isHeldDown()) return;
 
-    RemapUtil::pointingRelativeToScroll(params);
+    RemapUtil::pointingRelativeToScroll(remapParams);
   }
 }
 
@@ -389,22 +389,22 @@ org_pqrs_KeyRemap4MacBook::remap_consumer(const RemapConsumerParams &params)
 }
 
 void
-org_pqrs_KeyRemap4MacBook::remap_pointing_relative_core(const RemapPointingParams_relative &params)
+org_pqrs_KeyRemap4MacBook::remap_pointing_relative_core(const RemapPointingParams_relative &remapParams)
 {
   if (pointingButtonStatus.helddown_left) {
-    *(params.buttons) |= PointingButton::LEFT;
+    (remapParams.params)->buttons |= PointingButton::LEFT;
   }
   if (pointingButtonStatus.helddown_right) {
-    *(params.buttons) |= PointingButton::RIGHT;
+    (remapParams.params)->buttons |= PointingButton::RIGHT;
   }
   if (pointingButtonStatus.helddown_middle) {
-    *(params.buttons) |= PointingButton::MIDDLE;
+    (remapParams.params)->buttons |= PointingButton::MIDDLE;
   }
 
-  if (*(params.buttons) != PointingButton::NONE) {
+  if ((remapParams.params)->buttons != PointingButton::NONE) {
     clickWatcher.click();
   }
 
-  remap_pointing_relative_fn_to_scroll(params);
+  remap_pointing_relative_fn_to_scroll(remapParams);
 #include "config/output/include.remapcode_call_pointing_relative.cpp"
 }
