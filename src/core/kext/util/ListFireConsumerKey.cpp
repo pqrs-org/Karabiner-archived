@@ -12,9 +12,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       Item &item = list[i];
       unsigned int flavor = item.getKey();
       unsigned int guid = -1;
-      RemapUtil::fireConsumer(callback,
-                              target, item.getEventType(), item.getFlags(), item.getKey(),
-                              flavor, guid, false, ts, sender, refcon);
+
+      Params_KeyboardSpecialEventCallback params = {
+        target, item.getEventType(), item.getFlags(), item.getKey(),
+        flavor, guid, false, ts, sender, refcon,
+      };
+
+      RemapUtil::fireConsumer(callback, params);
     }
   }
 }

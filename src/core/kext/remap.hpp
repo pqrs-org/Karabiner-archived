@@ -64,11 +64,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // --------------------
   struct RemapConsumerParams {
-    unsigned int *eventType;
-    unsigned int *flags;
-    unsigned int *key;
-    unsigned int *flavor;
-    AbsoluteTime *ts;
+    Params_KeyboardSpecialEventCallback *params;
     KeyCode::KeyCode *ex_remapKeyCode;
   };
   void remap_consumer(const RemapConsumerParams &params);

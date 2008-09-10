@@ -817,10 +817,13 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardSpecialEventCallBack(OSObject *target,
     org_pqrs_KeyRemap4MacBook::listFireExtraKey.reset();
 
     org_pqrs_KeyRemap4MacBook::KeyCode::KeyCode ex_remapKeyCode = org_pqrs_KeyRemap4MacBook::KeyCode::NONE;
-    org_pqrs_KeyRemap4MacBook::RemapConsumerParams params = {
-      &eventType, &flags, &key, &flavor, &ts, &ex_remapKeyCode,
+    org_pqrs_KeyRemap4MacBook::Params_KeyboardSpecialEventCallback params = {
+      target, eventType, flags, key, flavor, guid, repeat, ts, sender, refcon,
     };
-    org_pqrs_KeyRemap4MacBook::remap_consumer(params);
+    org_pqrs_KeyRemap4MacBook::RemapConsumerParams remapParams = {
+      &params, &ex_remapKeyCode,
+    };
+    org_pqrs_KeyRemap4MacBook::remap_consumer(remapParams);
 
     // ----------------------------------------
     HookedKeyboard *hk = get_1stHookedKeyboard();
@@ -841,8 +844,7 @@ org_pqrs_driver_KeyRemap4MacBook::keyboardSpecialEventCallBack(OSObject *target,
       org_pqrs_KeyRemap4MacBook::listFireExtraKey.fire(hk->origEventCallback, hk->origEventTarget, charSet, origCharCode, origCharSet, keyboardType, ts, sender, NULL);
     }
 
-    org_pqrs_KeyRemap4MacBook::RemapUtil::fireConsumer(p->origSpecialEventCallback,
-                                                       target, eventType, flags, key, flavor, guid, repeat, ts, sender, refcon);
+    org_pqrs_KeyRemap4MacBook::RemapUtil::fireConsumer(p->origSpecialEventCallback, params);
   }
 }
 

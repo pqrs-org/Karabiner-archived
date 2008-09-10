@@ -381,11 +381,11 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &params)
 }
 
 void
-org_pqrs_KeyRemap4MacBook::remap_consumer(const RemapConsumerParams &params)
+org_pqrs_KeyRemap4MacBook::remap_consumer(const RemapConsumerParams &remapParams)
 {
 #include "config/output/include.remapcode_call_consumer.cpp"
 
-  *(params.flags) = allFlagStatus.makeFlags(*(params.ex_remapKeyCode));
+  (remapParams.params)->flags = allFlagStatus.makeFlags(*(remapParams.ex_remapKeyCode));
 }
 
 void
