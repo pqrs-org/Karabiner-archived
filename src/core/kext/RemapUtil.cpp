@@ -285,36 +285,36 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  RemapUtil::consumerToKey(const RemapConsumerParams &params,
+  RemapUtil::consumerToKey(const RemapConsumerParams &remapParams,
                            ConsumerKeyCode::ConsumerKeyCode fromKeyCode, unsigned int fromFlags,
                            KeyCode::KeyCode toKeyCode, unsigned int toFlags)
   {
     if (! isFromFlags(allFlagStatus.makeFlags(KeyCode::NONE), fromFlags)) return false;
-    if (*(params.key) != fromKeyCode) return false;
+    if (! isKey(remapParams, fromKeyCode)) return false;
 
     remapFlags(fromFlags, toFlags);
 
     if (RemapUtil::getKeyCodeModifier(toKeyCode) != ModifierFlag::NONE) {
-      *(params.eventType) = KeyEvent::MODIFY;
+      (remapParams.params)->eventType = KeyEvent::MODIFY;
     }
-    *(params.key) = KeyCode::NONE;
-    *(params.ex_remapKeyCode) = toKeyCode;
+    (remapParams.params)->key = ConsumerKeyCode::NONE;
+    *(remapParams.ex_remapKeyCode) = toKeyCode;
 
     return true;
   }
 
   bool
-  RemapUtil::consumerToConsumer(const RemapConsumerParams &params,
+  RemapUtil::consumerToConsumer(const RemapConsumerParams &remapParams,
                                 ConsumerKeyCode::ConsumerKeyCode fromKeyCode, unsigned int fromFlags,
                                 ConsumerKeyCode::ConsumerKeyCode toKeyCode, unsigned int toFlags)
   {
     if (! isFromFlags(allFlagStatus.makeFlags(KeyCode::NONE), fromFlags)) return false;
-    if (*(params.key) != fromKeyCode) return false;
+    if (! isKey(remapParams, fromKeyCode)) return false;
 
     remapFlags(fromFlags, toFlags);
 
-    *(params.key) = toKeyCode;
-    *(params.flavor) = toKeyCode;
+    (remapParams.params)->key = toKeyCode;
+    (remapParams.params)->flavor = toKeyCode;
     return true;
   }
 
@@ -495,18 +495,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  RemapUtil::fireConsumer(KeyboardSpecialEventCallback callback,
-                          OSObject *target, unsigned int eventType, unsigned int flags, unsigned int key,
-                          unsigned int flavor, UInt64 guid,
-                          bool repeat, AbsoluteTime ts, OSObject *sender, void *refcon)
+  RemapUtil::fireConsumer(KeyboardSpecialEventCallback callback, const Params_KeyboardSpecialEventCallback &params)
   {
     if (! callback) return;
-    if (key == ConsumerKeyCode::NONE) return;
+    if (params.key == ConsumerKeyCode::NONE) return;
 
-    Params_KeyboardSpecialEventCallback callbackparams = {
-      target, eventType, flags, key, flavor, guid, repeat, ts, sender, refcon,
-    };
-    execCallBack_KeyboardSpecialEventCallback(callback, callbackparams);
+    execCallBack_KeyboardSpecialEventCallback(callback, params);
   }
 
   // --------------------

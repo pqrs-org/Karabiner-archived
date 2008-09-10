@@ -24,6 +24,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     inline bool isKey(const RemapParams &params, unsigned int keyCode) {
       return params.ex_origKey == keyCode && *(params.key) == keyCode;
     }
+    inline bool isKey(const RemapConsumerParams &remapParams, ConsumerKeyCode::ConsumerKeyCode keyCode) {
+      return (remapParams.params)->key == keyCode;
+    }
+
     inline bool isModifierOn(unsigned int flags, ModifierFlag::ModifierFlag f) {
       return ((flags & f) == f);
     }
@@ -102,10 +106,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                  OSObject *target, unsigned int eventType, unsigned int flags, unsigned int key, unsigned int charCode,
                  unsigned int charSet, unsigned int origCharCode, unsigned int origCharSet, unsigned int keyboardType,
                  bool repeat, AbsoluteTime ts, OSObject *sender, void *refcon);
-    void fireConsumer(KeyboardSpecialEventCallback callback,
-                      OSObject *target, unsigned int eventType, unsigned int flags, unsigned int key,
-                      unsigned int flavor, UInt64 guid,
-                      bool repeat, AbsoluteTime ts, OSObject *sender, void *refcon);
+    void fireConsumer(KeyboardSpecialEventCallback callback, const Params_KeyboardSpecialEventCallback &params);
 
     // ----------------------------------------
     void jis_toggle_eisuu_kana(const RemapParams &params, KeyCode::KeyCode fromKeyCode);

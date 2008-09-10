@@ -214,7 +214,7 @@ open('output/include.remapcode_call_mhkk.cpp', 'w') do |f|
 end
 open('output/include.remapcode_call_consumer.cpp', 'w') do |f|
   func['consumer'].uniq.each do |call|
-    f.puts "GeneratedCode::#{call}(params);\n"
+    f.puts "GeneratedCode::#{call}(remapParams);\n"
   end
 end
 open('output/include.remapcode_call_pointing_relative.cpp', 'w') do |f|
