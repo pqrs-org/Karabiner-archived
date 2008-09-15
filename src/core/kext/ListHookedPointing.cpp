@@ -8,6 +8,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
     Item item[MAXNUM];
 
+    void
+    terminate(void)
+    {
+      for (int i = 0; i < MAXNUM; ++i) {
+        item[i].terminate();
+      }
+    }
+
     bool
     append(IOHIPointing *pointing)
     {
