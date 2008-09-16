@@ -47,6 +47,15 @@ namespace org_pqrs_KeyRemap4MacBook {
       return NULL;
     }
 
+    Item *
+    getConsumer(void)
+    {
+      for (int i = 0; i < MAXNUM; ++i) {
+        if (item[i].get() && item[i].isConsumer()) return item + i;
+      }
+      return NULL;
+    }
+
     void
     refresh(void)
     {
@@ -60,6 +69,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     Item::initialize(IOHIKeyboard *_kbd)
     {
       kbd = _kbd;
+
+      const char *name = kbd->getName();
+      consumerFlag = (strcmp(name, "IOHIDConsumer") == 0);
+
       refresh();
     }
 
