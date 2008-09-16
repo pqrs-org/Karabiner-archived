@@ -24,6 +24,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       IOHIPointing *get(void) const { return pointing; }
 
+      RelativePointerEventCallback getOrig_relativePointerEventAction() const { return orig_relativePointerEventAction; }
+      ScrollWheelEventCallback getOrig_scrollWheelEventAction() const { return orig_scrollWheelEventAction; }
+      OSObject *getOrig_relativePointerEventTarget() const { return orig_relativePointerEventTarget; }
+      OSObject *getOrig_scrollWheelEventTarget() const { return orig_scrollWheelEventTarget; }
+
     private:
       IOHIPointing *pointing;
       RelativePointerEventCallback orig_relativePointerEventAction;
