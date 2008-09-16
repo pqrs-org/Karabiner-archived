@@ -11,6 +11,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool append(IOHIKeyboard *kbd);
     Item *get(const IOHIKeyboard *kbd);
     Item *get(void);
+    Item *getConsumer(void);
     void refresh(void);
 
     // ----------------------------------------------------------------------
@@ -23,9 +24,17 @@ namespace org_pqrs_KeyRemap4MacBook {
       void terminate(void);
 
       IOHIKeyboard *get(void) const { return kbd; }
+      bool isConsumer(void) const { return consumerFlag; }
+
+      KeyboardEventCallback getOrig_keyboardEventAction() const { return orig_keyboardEventAction; }
+      KeyboardSpecialEventCallback getOrig_keyboardSpecialEventAction() const { return orig_keyboardSpecialEventAction; }
+      OSObject *getOrig_keyboardEventTarget() const { return orig_keyboardEventTarget; }
+      OSObject *getOrig_keyboardSpecialEventTarget() const { return orig_keyboardSpecialEventTarget; }
 
     private:
       IOHIKeyboard *kbd;
+      bool consumerFlag;
+
       KeyboardEventCallback orig_keyboardEventAction;
       KeyboardSpecialEventCallback orig_keyboardSpecialEventAction;
       OSObject *orig_keyboardEventTarget;
