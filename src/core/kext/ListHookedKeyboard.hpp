@@ -5,10 +5,11 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace ListHookedKeyboard {
+    bool append(IOHIKeyboard *kbd);
     void terminate(void);
+    bool terminate(IOHIKeyboard *kbd);
 
     class Item;
-    bool append(IOHIKeyboard *kbd);
     Item *get(const IOHIKeyboard *kbd);
     Item *get(void);
     Item *getConsumer(void);
@@ -19,7 +20,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     public:
       Item(void) { kbd = NULL; }
 
-      void initialize(IOHIKeyboard *_kbd);
+      bool initialize(IOHIKeyboard *_kbd);
       void refresh(void);
       void terminate(void);
 

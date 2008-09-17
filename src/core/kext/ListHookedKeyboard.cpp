@@ -8,6 +8,17 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
     Item item[MAXNUM];
 
+    bool
+    append(IOHIKeyboard *kbd)
+    {
+      for (int i = 0; i < MAXNUM; ++i) {
+        if (item[i].get()) continue;
+
+        return item[i].initialize(kbd);
+      }
+      return false;
+    }
+
     void
     terminate(void)
     {
@@ -17,14 +28,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     bool
-    append(IOHIKeyboard *kbd)
+    terminate(IOHIKeyboard *kbd)
     {
-      for (int i = 0; i < MAXNUM; ++i) {
-        if (item[i].get()) continue;
-
-        item[i].initialize(kbd);
-      }
-      return false;
+      Item *p = get(kbd);
+      if (p == NULL) return false;
+      p->terminate();
+      return true;
     }
 
     Item *
@@ -65,15 +74,22 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ======================================================================
-    void
+    bool
     Item::initialize(IOHIKeyboard *_kbd)
     {
+      const char *name = _kbd->getName();
+      if (strcmp(name, "IOHIDKeyboard") != 0 &&
+          strcmp(name, "AppleADBKeyboard") != 0 &&
+          strcmp(name, "IOHIDConsumer") != 0) {
+        IOLog("KeyRemap4MacBook replaceKeyboardEvent ignore device [%s]\n", name);
+        return false;
+      }
+
+      IOLog("KeyRemap4MacBook replaceKeyboardEvent name = %s\n", name);
       kbd = _kbd;
-
-      const char *name = kbd->getName();
       consumerFlag = (strcmp(name, "IOHIDConsumer") == 0);
-
       refresh();
+      return true;
     }
 
     void
