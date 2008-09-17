@@ -7,7 +7,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace ListHookedKeyboard {
     bool append(IOHIKeyboard *kbd);
     void terminate(void);
-    bool terminate(IOHIKeyboard *kbd);
+    bool terminate(const IOHIKeyboard *kbd);
 
     class Item;
     Item *get(const IOHIKeyboard *kbd);
