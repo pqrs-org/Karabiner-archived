@@ -28,7 +28,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     bool
-    terminate(IOHIKeyboard *kbd)
+    terminate(const IOHIKeyboard *kbd)
     {
       Item *p = get(kbd);
       if (p == NULL) return false;
