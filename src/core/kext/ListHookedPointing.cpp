@@ -8,6 +8,17 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
     Item item[MAXNUM];
 
+    bool
+    append(IOHIPointing *pointing)
+    {
+      for (int i = 0; i < MAXNUM; ++i) {
+        if (item[i].get()) continue;
+
+        return item[i].initialize(pointing);
+      }
+      return false;
+    }
+
     void
     terminate(void)
     {
@@ -17,14 +28,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     bool
-    append(IOHIPointing *pointing)
+    terminate(const IOHIPointing *pointing)
     {
-      for (int i = 0; i < MAXNUM; ++i) {
-        if (item[i].get()) continue;
-
-        item[i].initialize(pointing);
-      }
-      return false;
+      Item *p = get(pointing);
+      if (p == NULL) return false;
+      p->terminate();
+      return true;
     }
 
     Item *
@@ -56,11 +65,21 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ======================================================================
-    void
+    bool
     Item::initialize(IOHIPointing *_pointing)
     {
+      const char *name = _pointing->getName();
+      if (strcmp(name, "IOHIDPointing") != 0 &&
+          strcmp(name, "AppleUSBGrIIITrackpad") != 0 &&
+          strcmp(name, "AppleADBMouseType4") != 0) {
+        IOLog("KeyRemap4MacBook replacePointingEvent ignore device [%s]\n", name);
+        return false;
+      }
+
+      IOLog("KeyRemap4MacBook replacePointingEvent name = %s\n", name);
       pointing = _pointing;
       refresh();
+      return true;
     }
 
     void
