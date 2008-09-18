@@ -3,6 +3,7 @@
 
 #include "base.hpp"
 #include "keycode.hpp"
+#include "remap.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   class ListFireExtraKey {
@@ -17,10 +18,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       list[size].set(eventType, flags, key);
       ++size;
     }
-    void fire(KeyboardEventCallback callback,
-              OSObject *target,
-              unsigned int charSet, unsigned int origCharCode, unsigned int origCharSet, unsigned int keyboardType,
-              AbsoluteTime ts, OSObject *sender, void *refcon);
+    void fire(KeyboardEventCallback callback, const Params_KeyboardEventCallBack &params);
 
     // utility
     void addKey(unsigned int flags, KeyCode::KeyCode keyCode);

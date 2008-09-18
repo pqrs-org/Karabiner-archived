@@ -14,19 +14,20 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  ListFireExtraKey::fire(KeyboardEventCallback callback,
-                         OSObject *target,
-                         unsigned int charSet, unsigned int origCharCode, unsigned int origCharSet, unsigned int keyboardType,
-                         AbsoluteTime ts, OSObject *sender, void *refcon)
+  ListFireExtraKey::fire(KeyboardEventCallback callback, const Params_KeyboardEventCallBack &params)
   {
     if (callback == NULL) return;
+
+    Params_KeyboardEventCallBack callbackparams = params;
 
     for (int i = 0; i < size; ++i) {
       Item &item = list[i];
 
-      RemapUtil::fireKey(callback, target, item.getEventType(), item.getFlags(), item.getKey(),
-                         0, 0, 0, 0,
-                         keyboardType, false, ts, sender, refcon);
+      callbackparams.eventType = item.getEventType();
+      callbackparams.flags = item.getFlags();
+      callbackparams.key = item.getKey();
+
+      RemapUtil::fireKey(callback, callbackparams);
     }
   }
 }
