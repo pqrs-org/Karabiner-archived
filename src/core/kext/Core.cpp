@@ -17,19 +17,31 @@ namespace org_pqrs_KeyRemap4MacBook {
       TimerWrapper timer_refresh;
 
       TimerWrapper timer_repeat;
-      Params_KeyboardEventCallBack repeat;
-
       TimerWrapper timer_extraRepeat;
-      struct ExtraRepeatInfo {
-        unsigned int flags;
-        unsigned int keyboardType;
-        AbsoluteTime ts;
-        OSObject *target;
-        OSObject *sender;
-        void *refcon;
+
+      class KeyboardRepeatInfo {
+      public:
+        KeyboardRepeatInfo(void) { kbd = NULL; }
+        const IOHIKeyboard *kbd;
+        Params_KeyboardEventCallBack params;
+      } keyboardRepeatInfo;
+
+      class KeyboardExtraRepeatInfo {
+      public:
+        KeyboardExtraRepeatInfo(void) { kbd = NULL; }
+        IOHIKeyboard *kbd;
+        Params_KeyboardEventCallBack params;
         org_pqrs_KeyRemap4MacBook::ExtraRepeatFunc::ExtraRepeatFunc func;
         unsigned int counter;
-      } extraRepeat;
+      } keyboardExtraRepeatInfo;
+
+      IOHIKeyboard *last_keyboard = NULL;
+      IOHIKeyboard *last_consumer = NULL;
+      IOHIPointing *last_pointing = NULL;
+      Params_KeyboardEventCallBack params_lastKeyboard;
+      Params_KeyboardSpecialEventCallback params_lastConsumer;
+      Params_RelativePointerEventCallback params_lastRelativePointer;
+      Params_ScrollWheelEventCallback params_lastScrollWheel;
 
       // ------------------------------------------------------------
       enum {
@@ -43,6 +55,36 @@ namespace org_pqrs_KeyRemap4MacBook {
         ListHookedPointing::refresh();
 
         if (sender) sender->setTimeoutMS(REFRESH_DEVICE_INTERVAL);
+      }
+
+      // ----------------------------------------
+      void
+      cancelAllKeyRepeat(void)
+      {
+        timer_repeat.cancelTimeout();
+        timer_extraRepeat.cancelTimeout();
+      }
+
+      // ----------------------------------------
+      void
+      setKeyboardRepeat(const IOHIKeyboard *kbd, const Params_KeyboardEventCallBack &params)
+      {
+        if (params.eventType == KeyEvent::DOWN) {
+          keyboardRepeatInfo.kbd = kbd;
+          keyboardRepeatInfo.params = params;
+
+          timer_repeat.setTimeoutMS(config.get_repeat_initial_wait());
+        }
+      }
+
+      void
+      doKeyboardRepeat(OSObject *owner, IOTimerEventSource *sender)
+      {
+        ListHookedKeyboard::Item *p = ListHookedKeyboard::get(keyboardRepeatInfo.kbd);
+        if (! p) return;
+
+        RemapUtil::fireKey(p->getOrig_keyboardEventAction(), keyboardRepeatInfo.params);
+        sender->setTimeoutMS(config.get_repeat_wait());
       }
     }
 
@@ -58,6 +100,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (workLoop) {
         timer_refresh.initialize(workLoop, NULL, refreshHookedDevice);
         timer_refresh.setTimeoutMS(REFRESH_DEVICE_INTERVAL);
+
+        timer_repeat.initialize(workLoop, NULL, doKeyboardRepeat);
       }
     }
 
@@ -132,7 +176,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     remap_KeyboardEventCallback(Params_KeyboardEventCallBack *params)
     {
-      if (params == NULL) return;
+      if (! params) return;
 
       IOHIKeyboard *kbd = OSDynamicCast(IOHIKeyboard, params->sender);
       if (! kbd) return;
@@ -141,14 +185,16 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! p) return;
 
       // ------------------------------------------------------------
+      last_keyboard = kbd;
+      params_lastKeyboard = *params;
+
+      // ------------------------------------------------------------
       // Because the key repeat generates it by oneself, I throw it away.
-#if 0
-      if (repeat) {
-        (p->repeat).ts = ts;
-        (p->extraRepeat).ts = ts;
+      if (params->repeat) {
+        keyboardRepeatInfo.params.ts = params->ts;
+        keyboardExtraRepeatInfo.params.ts = params->ts;
         return;
       }
-#endif
 
       if (config.debug) {
         printf("KeyRemap4MacBook caught KeyboardEventCallback: eventType %d, flags 0x%x, key %d, kbdType %d\n",
@@ -179,7 +225,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         KeyRemap4MacBook_bridge::ActiveApplicationInfo::UNKNOWN,
         &ex_extraRepeatFunc,
         &ex_extraRepeatFlags,
-        extraRepeat.counter,
+        keyboardExtraRepeatInfo.counter,
       };
 
       bool skip = false;
@@ -216,9 +262,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       RemapUtil::fireKey(p->getOrig_keyboardEventAction(), *params);
       listFireExtraKey.fire(p->getOrig_keyboardEventAction(), *params);
 
+      setKeyboardRepeat(kbd, *params);
 #if 0
       p->setExtraRepeatInfo(ex_extraRepeatFunc, ex_extraRepeatFlags, params->keyboardType, params->ts, params->target, params->refcon);
-      p->setRepeatInfo(params);
 #endif
 
       if (allFlagStatus.numHeldDownKeys <= 0) {
@@ -231,7 +277,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     remap_KeyboardSpecialEventCallback(Params_KeyboardSpecialEventCallback *params)
     {
-      if (params == NULL) return;
+      if (! params) return;
 
       IOHIKeyboard *kbd = OSDynamicCast(IOHIKeyboard, params->sender);
       if (! kbd) return;
@@ -239,6 +285,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       ListHookedKeyboard::Item *p = ListHookedKeyboard::get(kbd);
       if (! p) return;
 
+      // ------------------------------------------------------------
+      last_consumer = kbd;
+      params_lastConsumer = *params;
+
+      // ------------------------------------------------------------
       if (config.debug) {
         printf("KeyRemap4MacBook caught keyboardSpecialEventCallBack: eventType %d, flags 0x%x, key %d, flavor %d, guid %d\n",
                params->eventType, params->flags, params->key, params->flavor, params->guid);
@@ -264,14 +315,89 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         if (ex_remapKeyCode != KeyCode::NONE) {
           RemapUtil::execCallBack_KeyboardEventCallBack(hk->getOrig_keyboardEventAction(), callbackparams);
-#if 0
-          hk->setRepeatInfo(callbackparams);
-#endif
+          setKeyboardRepeat(hk->get(), callbackparams);
         }
         listFireExtraKey.fire(hk->getOrig_keyboardEventAction(), callbackparams);
       }
 
       RemapUtil::fireConsumer(p->getOrig_keyboardSpecialEventAction(), *params);
+    }
+
+    void
+    remap_RelativePointerEventCallback(Params_RelativePointerEventCallback *params)
+    {
+      if (! params) return;
+
+      IOHIPointing *pointing = OSDynamicCast(IOHIPointing, params->sender);
+      if (! pointing) return;
+
+      ListHookedPointing::Item *p = ListHookedPointing::get(pointing);
+      if (! p) return;
+
+      // ------------------------------------------------------------
+      last_pointing = pointing;
+      params_lastRelativePointer = *params;
+
+      // ------------------------------------------------------------
+      listFireRelativePointer.reset();
+      if (config.debug_pointing) {
+        printf("KeyRemap4MacBook caught relativePointerEventCallBack: buttons: %d, dx: %d, dy: %d, ts: 0x%x\n",
+               params->buttons, params->dx, params->dy, params->ts);
+      }
+
+      if (params->buttons) {
+        cancelAllKeyRepeat();
+      }
+
+      bool ex_dropEvent = false;
+      RemapPointingParams_relative remapParams = {
+        params, &ex_dropEvent,
+      };
+      remap_pointing_relative_core(remapParams);
+
+      RelativePointerEventCallback reCallback = p->getOrig_relativePointerEventAction();
+
+      if (! ex_dropEvent) {
+        RemapUtil::execCallBack_RelativePointerEventCallBack(reCallback, *params);
+      }
+
+      if (! listFireRelativePointer.isEmpty()) {
+        listFireRelativePointer.fire(reCallback, params->target, pointing, params->ts);
+      }
+
+      if (firePointingScroll.isEnable()) {
+        firePointingScroll.fire(p->getOrig_scrollWheelEventAction(), p->getOrig_scrollWheelEventTarget(), pointing, params->ts);
+      }
+    }
+
+    void
+    remap_ScrollWheelEventCallback(Params_ScrollWheelEventCallback *params)
+    {
+      if (! params) return;
+
+      IOHIPointing *pointing = OSDynamicCast(IOHIPointing, params->sender);
+      if (! pointing) return;
+
+      ListHookedPointing::Item *p = ListHookedPointing::get(pointing);
+      if (! p) return;
+
+      // ------------------------------------------------------------
+      last_pointing = pointing;
+      params_lastScrollWheel = *params;
+
+      // ------------------------------------------------------------
+      cancelAllKeyRepeat();
+
+      if (config.debug_pointing) {
+        printf("KeyRemap4MacBook caught scrollWheelEventCallback: deltaAxis(%d, %d, %d), fixedDelta(%d, %d, %d), pointDelta(%d,%d,%d), options: %d\n",
+               params->deltaAxis1, params->deltaAxis2, params->deltaAxis3,
+               params->fixedDelta1, params->fixedDelta2, params->fixedDelta3,
+               params->pointDelta1, params->pointDelta2, params->pointDelta3,
+               params->options);
+      }
+
+      ScrollWheelEventCallback callback = p->getOrig_scrollWheelEventAction();
+      RemapUtil::execCallBack_ScrollWheelEventCallback(callback, *params);
     }
   }
 }

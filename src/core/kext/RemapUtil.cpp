@@ -322,7 +322,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapUtil::execCallBack_KeyboardEventCallBack(KeyboardEventCallback callback, const Params_KeyboardEventCallBack &params)
   {
-    if (callback == NULL) return;
+    if (! callback) return;
 
     if (config.debug) {
       const char *type = "KeyEvent::UNKNOWN";
@@ -333,7 +333,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       } else if (params.eventType == KeyEvent::MODIFY) {
         type = "KeyEvent::MODIFY";
       }
-      printf("KeyRemap4MacBook sending %s flags 0x%x key %d kbdType %d\n",
+      printf("KeyRemap4MacBook sending KeyboardEventCallback: %s flags 0x%x key %d kbdType %d\n",
              type,
              params.flags,
              params.key,
@@ -347,10 +347,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapUtil::execCallBack_KeyboardSpecialEventCallback(KeyboardSpecialEventCallback callback, const Params_KeyboardSpecialEventCallback &params)
   {
-    if (callback == NULL) return;
+    if (! callback) return;
 
     if (org_pqrs_KeyRemap4MacBook::config.debug) {
-      printf("KeyboardSpecialEventCallback keyboardSpecialEventCallBack: eventType %d, flags 0x%x, key %d, flavor %d, guid %d\n",
+      printf("KeyRemap4MacBook sending KeyboardSpecialEventCallback: keyboardSpecialEventCallBack: eventType %d, flags 0x%x, key %d, flavor %d, guid %d\n",
              params.eventType, params.flags, params.key, params.flavor, params.guid);
     }
     callback(params.target, params.eventType, params.flags, params.key, params.flavor,
@@ -360,13 +360,32 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapUtil::execCallBack_RelativePointerEventCallBack(RelativePointerEventCallback callback, const Params_RelativePointerEventCallback &params)
   {
-    if (callback == NULL) return;
+    if (! callback) return;
 
     if (config.debug_pointing) {
-      printf("caught relativePointerEventCallBack: buttons: %d, dx: %d, dy: %d, ts: 0x%x\n",
+      printf("KeyRemap4MacBook sending RelativePointerEventCallBack: buttons: %d, dx: %d, dy: %d, ts: 0x%x\n",
              params.buttons, params.dx, params.dy, params.ts);
     }
     callback(params.target, params.buttons, params.dx, params.dy, params.ts, params.sender, params.refcon);
+  }
+
+  void
+  RemapUtil::execCallBack_ScrollWheelEventCallback(ScrollWheelEventCallback callback, const Params_ScrollWheelEventCallback &params)
+  {
+    if (! callback) return;
+
+    if (config.debug_pointing) {
+      printf("KeyRemap4MacBook sending scrollWheelEventCallback: deltaAxis(%d, %d, %d), fixedDelta(%d, %d, %d), pointDelta(%d,%d,%d), options: %d\n",
+             params.deltaAxis1, params.deltaAxis2, params.deltaAxis3,
+             params.fixedDelta1, params.fixedDelta2, params.fixedDelta3,
+             params.pointDelta1, params.pointDelta2, params.pointDelta3,
+             params.options);
+    }
+    callback(params.target,
+             params.deltaAxis1, params.deltaAxis2, params.deltaAxis3,
+             params.fixedDelta1, params.fixedDelta2, params.fixedDelta3,
+             params.pointDelta1, params.pointDelta2, params.pointDelta3,
+             params.options, params.ts, params.sender, params.refcon);
   }
 
   void
