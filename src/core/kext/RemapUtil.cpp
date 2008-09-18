@@ -320,75 +320,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // --------------------
   void
-  RemapUtil::execCallBack_KeyboardEventCallBack(KeyboardEventCallback callback, const Params_KeyboardEventCallBack &params)
-  {
-    if (! callback) return;
-
-    if (config.debug) {
-      const char *type = "KeyEvent::UNKNOWN";
-      if (params.eventType == KeyEvent::DOWN) {
-        type = "KeyEvent::DOWN";
-      } else if (params.eventType == KeyEvent::UP) {
-        type = "KeyEvent::UP";
-      } else if (params.eventType == KeyEvent::MODIFY) {
-        type = "KeyEvent::MODIFY";
-      }
-      printf("KeyRemap4MacBook sending KeyboardEventCallback: %s flags 0x%x key %d kbdType %d\n",
-             type,
-             params.flags,
-             params.key,
-             params.keyboardType);
-    }
-    callback(params.target, params.eventType, params.flags, params.key, params.charCode,
-             params.charSet, params.origCharCode, params.origCharSet,
-             params.keyboardType, params.repeat, params.ts, params.sender, params.refcon);
-  }
-
-  void
-  RemapUtil::execCallBack_KeyboardSpecialEventCallback(KeyboardSpecialEventCallback callback, const Params_KeyboardSpecialEventCallback &params)
-  {
-    if (! callback) return;
-
-    if (org_pqrs_KeyRemap4MacBook::config.debug) {
-      printf("KeyRemap4MacBook sending KeyboardSpecialEventCallback: keyboardSpecialEventCallBack: eventType %d, flags 0x%x, key %d, flavor %d, guid %d\n",
-             params.eventType, params.flags, params.key, params.flavor, params.guid);
-    }
-    callback(params.target, params.eventType, params.flags, params.key, params.flavor,
-             params.guid, params.repeat, params.ts, params.sender, params.refcon);
-  }
-
-  void
-  RemapUtil::execCallBack_RelativePointerEventCallBack(RelativePointerEventCallback callback, const Params_RelativePointerEventCallback &params)
-  {
-    if (! callback) return;
-
-    if (config.debug_pointing) {
-      printf("KeyRemap4MacBook sending RelativePointerEventCallBack: buttons: %d, dx: %d, dy: %d, ts: 0x%x\n",
-             params.buttons, params.dx, params.dy, params.ts);
-    }
-    callback(params.target, params.buttons, params.dx, params.dy, params.ts, params.sender, params.refcon);
-  }
-
-  void
-  RemapUtil::execCallBack_ScrollWheelEventCallback(ScrollWheelEventCallback callback, const Params_ScrollWheelEventCallback &params)
-  {
-    if (! callback) return;
-
-    if (config.debug_pointing) {
-      printf("KeyRemap4MacBook sending scrollWheelEventCallback: deltaAxis(%d, %d, %d), fixedDelta(%d, %d, %d), pointDelta(%d,%d,%d), options: %d\n",
-             params.deltaAxis1, params.deltaAxis2, params.deltaAxis3,
-             params.fixedDelta1, params.fixedDelta2, params.fixedDelta3,
-             params.pointDelta1, params.pointDelta2, params.pointDelta3,
-             params.options);
-    }
-    callback(params.target,
-             params.deltaAxis1, params.deltaAxis2, params.deltaAxis3,
-             params.fixedDelta1, params.fixedDelta2, params.fixedDelta3,
-             params.pointDelta1, params.pointDelta2, params.pointDelta3,
-             params.options, params.ts, params.sender, params.refcon);
-  }
-
-  void
   RemapUtil::fireModifiers(KeyboardEventCallback callback, const Params_KeyboardEventCallBack &params)
   {
     if (callback == NULL) return;
@@ -435,7 +366,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       callbackparams.flags = flags;
       callbackparams.key = RemapUtil::getModifierKeyCode(m);
-      execCallBack_KeyboardEventCallBack(callback, callbackparams);
+      callbackparams.apply(callback);
     }
 
     lastFlags = toFlags;
@@ -493,7 +424,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       Params_KeyboardEventCallBack p = params;
       reverseNormalizeKey(&p);
 
-      execCallBack_KeyboardEventCallBack(callback, p);
+      p.apply(callback);
 
       if (p.eventType == KeyEvent::DOWN) {
         if (p.key == KeyCode::JIS_EISUU || p.key == KeyCode::JIS_KANA) {
@@ -512,7 +443,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! callback) return;
     if (params.key == ConsumerKeyCode::NONE) return;
 
-    execCallBack_KeyboardSpecialEventCallback(callback, params);
+    Params_KeyboardSpecialEventCallback p = params;
+    p.apply(callback);
   }
 
   // --------------------

@@ -308,7 +308,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         };
 
         if (ex_remapKeyCode != KeyCode::NONE) {
-          RemapUtil::execCallBack_KeyboardEventCallBack(hk->getOrig_keyboardEventAction(), callbackparams);
+          callbackparams.apply(hk->getOrig_keyboardEventAction());
           setKeyboardRepeat(hk->get(), callbackparams);
         }
         listFireExtraKey.fire(hk->getOrig_keyboardEventAction(), callbackparams);
@@ -350,7 +350,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       RelativePointerEventCallback reCallback = p->getOrig_relativePointerEventAction();
 
       if (! ex_dropEvent) {
-        RemapUtil::execCallBack_RelativePointerEventCallBack(reCallback, *params);
+        params->apply(reCallback);
       }
 
       if (! listFireRelativePointer.isEmpty()) {
@@ -381,9 +381,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       params->log();
 
       cancelAllKeyRepeat();
-
-      ScrollWheelEventCallback callback = p->getOrig_scrollWheelEventAction();
-      RemapUtil::execCallBack_ScrollWheelEventCallback(callback, *params);
+      params->apply(p->getOrig_scrollWheelEventAction());
     }
   }
 }

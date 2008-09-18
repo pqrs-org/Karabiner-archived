@@ -24,7 +24,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         0, 0,
         ts,sender, 0,
       };
-      RemapUtil::execCallBack_RelativePointerEventCallBack(callback, callbackparams);
+      callbackparams.apply(callback);
     }
   }
 }
