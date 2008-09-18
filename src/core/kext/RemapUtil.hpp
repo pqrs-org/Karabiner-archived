@@ -107,11 +107,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ----------------------------------------
-    void execCallBack_KeyboardEventCallBack(KeyboardEventCallback callback, const Params_KeyboardEventCallBack &params);
-    void execCallBack_KeyboardSpecialEventCallback(KeyboardSpecialEventCallback callback, const Params_KeyboardSpecialEventCallback &params);
-    void execCallBack_RelativePointerEventCallBack(RelativePointerEventCallback callback, const Params_RelativePointerEventCallback &params);
-    void execCallBack_ScrollWheelEventCallback(ScrollWheelEventCallback callback, const Params_ScrollWheelEventCallback &params);
-
     void fireModifiers(KeyboardEventCallback callback, const Params_KeyboardEventCallBack &params);
     void fireKey(KeyboardEventCallback callback, const Params_KeyboardEventCallBack &params);
     void fireConsumer(KeyboardSpecialEventCallback callback, const Params_KeyboardSpecialEventCallback &params);
