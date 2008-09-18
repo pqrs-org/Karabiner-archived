@@ -17,6 +17,14 @@
           <appendix>(To prevent the Apple keyboard's CapsLock delay)</appendix>
           <sysctl>general.capslock_led_hack</sysctl>
         </item>
+        <item>
+          <name>Remap Third Vendor's Keyboard</name>
+          <sysctl>general.remap_thirdvendor_keyboard</sysctl>
+        </item>
+        <item>
+          <name>Remap Third Vendor's Pointing Device</name>
+          <sysctl>general.remap_thirdvendor_pointing</sysctl>
+        </item>
       </list>
     </item>
 
