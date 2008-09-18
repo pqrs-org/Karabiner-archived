@@ -91,6 +91,44 @@ namespace org_pqrs_KeyRemap4MacBook {
       ListHookedPointing::terminate();
     }
 
+    // ======================================================================
+    bool
+    notifierfunc_hookKeyboard(void *target, void *refCon, IOService *newService)
+    {
+      IOLog("KeyRemap4MacBook notifierfunc_hookKeyboard\n");
+
+      IOHIKeyboard *kbd = OSDynamicCast(IOHIKeyboard, newService);
+      return ListHookedKeyboard::append(kbd);
+    }
+
+    bool
+    notifierfunc_unhookKeyboard(void *target, void *refCon, IOService *newService)
+    {
+      IOLog("KeyRemap4MacBook notifierfunc_unhookKeyboard\n");
+
+      IOHIKeyboard *kbd = OSDynamicCast(IOHIKeyboard, newService);
+      return ListHookedKeyboard::terminate(kbd);
+    }
+
+    bool
+    notifierfunc_hookPointing(void *target, void *refCon, IOService *newService)
+    {
+      IOLog("KeyRemap4MacBook notifierfunc_hookPointing\n");
+
+      IOHIPointing *pointing = OSDynamicCast(IOHIPointing, newService);
+      return ListHookedPointing::append(pointing);
+    }
+
+    bool
+    notifierfunc_unhookPointing(void *target, void *refCon, IOService *newService)
+    {
+      IOLog("KeyRemap4MacBook notifierfunc_unhookPointing\n");
+
+      IOHIPointing *pointing = OSDynamicCast(IOHIPointing, newService);
+      return ListHookedPointing::terminate(pointing);
+    }
+
+    // ======================================================================
     void
     remap_KeyboardEventCallback(Params_KeyboardEventCallBack *params)
     {
@@ -113,7 +151,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 #endif
 
       if (config.debug) {
-        printf("KeyRemap4MacBook caught hid event type %d flags 0x%x key %d kbdType %d\n",
+        printf("KeyRemap4MacBook caught KeyboardEventCallback: eventType %d, flags 0x%x, key %d, kbdType %d\n",
                params->eventType, params->flags, params->key, params->keyboardType);
       }
 
@@ -188,6 +226,52 @@ namespace org_pqrs_KeyRemap4MacBook {
         RemapUtil::fireModifiers(p->getOrig_keyboardEventAction(), *params);
         pressDownKeys.clear(p->getOrig_keyboardEventAction(), params->target, params->ts, params->sender, params->refcon);
       }
+    }
+
+    void
+    remap_KeyboardSpecialEventCallback(Params_KeyboardSpecialEventCallback *params)
+    {
+      if (params == NULL) return;
+
+      IOHIKeyboard *kbd = OSDynamicCast(IOHIKeyboard, params->sender);
+      if (! kbd) return;
+
+      ListHookedKeyboard::Item *p = ListHookedKeyboard::get(kbd);
+      if (! p) return;
+
+      if (config.debug) {
+        printf("KeyRemap4MacBook caught keyboardSpecialEventCallBack: eventType %d, flags 0x%x, key %d, flavor %d, guid %d\n",
+               params->eventType, params->flags, params->key, params->flavor, params->guid);
+      }
+
+      listFireExtraKey.reset();
+      KeyCode::KeyCode ex_remapKeyCode = KeyCode::NONE;
+      RemapConsumerParams remapParams = {
+        params, &ex_remapKeyCode,
+      };
+      remap_consumer(remapParams);
+
+      // ----------------------------------------
+      ListHookedKeyboard::Item *hk = ListHookedKeyboard::get();
+      unsigned int keyboardType = KeyboardType::MACBOOK;
+
+      if (hk) {
+        Params_KeyboardEventCallBack callbackparams = {
+          hk->getOrig_keyboardEventTarget(), params->eventType, params->flags, ex_remapKeyCode,
+          0, 0, 0, 0,
+          keyboardType, false, params->ts, hk->get(), NULL,
+        };
+
+        if (ex_remapKeyCode != KeyCode::NONE) {
+          RemapUtil::execCallBack_KeyboardEventCallBack(hk->getOrig_keyboardEventAction(), callbackparams);
+#if 0
+          hk->setRepeatInfo(callbackparams);
+#endif
+        }
+        listFireExtraKey.fire(hk->getOrig_keyboardEventAction(), callbackparams);
+      }
+
+      RemapUtil::fireConsumer(p->getOrig_keyboardSpecialEventAction(), *params);
     }
   }
 }
