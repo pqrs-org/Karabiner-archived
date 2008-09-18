@@ -1,5 +1,6 @@
 #include "ListHookedKeyboard.hpp"
 #include "Core.hpp"
+#include "Config.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace ListHookedKeyboard {
@@ -78,11 +79,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     Item::initialize(IOHIKeyboard *_kbd)
     {
       const char *name = _kbd->getName();
-      if (strcmp(name, "IOHIDKeyboard") != 0 &&
-          strcmp(name, "AppleADBKeyboard") != 0 &&
-          strcmp(name, "IOHIDConsumer") != 0) {
-        IOLog("KeyRemap4MacBook replaceKeyboardEvent ignore device [%s]\n", name);
-        return false;
+      if (! config.general_remap_thirdvendor_keyboard) {
+        if (strcmp(name, "IOHIDKeyboard") != 0 &&
+            strcmp(name, "AppleADBKeyboard") != 0 &&
+            strcmp(name, "IOHIDConsumer") != 0) {
+          IOLog("KeyRemap4MacBook replaceKeyboardEvent ignore device [%s]\n", name);
+          return false;
+        }
       }
 
       IOLog("KeyRemap4MacBook replaceKeyboardEvent name = %s\n", name);

@@ -1,5 +1,6 @@
 #include "ListHookedPointing.hpp"
 #include "Core.hpp"
+#include "Config.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace ListHookedPointing {
@@ -69,11 +70,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     Item::initialize(IOHIPointing *_pointing)
     {
       const char *name = _pointing->getName();
-      if (strcmp(name, "IOHIDPointing") != 0 &&
-          strcmp(name, "AppleUSBGrIIITrackpad") != 0 &&
-          strcmp(name, "AppleADBMouseType4") != 0) {
-        IOLog("KeyRemap4MacBook replacePointingEvent ignore device [%s]\n", name);
-        return false;
+      if (! config.general_remap_thirdvendor_pointing) {
+        if (strcmp(name, "IOHIDPointing") != 0 &&
+            strcmp(name, "AppleUSBGrIIITrackpad") != 0 &&
+            strcmp(name, "AppleADBMouseType4") != 0) {
+          IOLog("KeyRemap4MacBook replacePointingEvent ignore device [%s]\n", name);
+          return false;
+        }
       }
 
       IOLog("KeyRemap4MacBook replacePointingEvent name = %s\n", name);
