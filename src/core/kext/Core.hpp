@@ -1,7 +1,7 @@
 #ifndef CORE_HPP
 #define CORE_HPP
 
-#include "Params.hpp"
+#include "CallBackWrapper.hpp"
 #include "ListHookedKeyboard.hpp"
 #include "ListHookedPointing.hpp"
 

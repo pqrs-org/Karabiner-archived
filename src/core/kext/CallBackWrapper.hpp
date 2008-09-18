@@ -1,10 +1,14 @@
-#ifndef PARAMS_HPP
-#define PARAMS_HPP
+#ifndef CALLBACKWRAPPER_HPP
+#define CALLBACKWRAPPER_HPP
 
 #include "base.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  struct Params_KeyboardEventCallBack {
+  class Params_KeyboardEventCallBack {
+  public:
+    void log(void) const;
+    void apply(KeyboardEventCallback *callback);
+
     OSObject *target;
     unsigned int eventType;
     unsigned int flags;
@@ -19,7 +23,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     OSObject *sender;
     void *refcon;
   };
-  struct Params_KeyboardSpecialEventCallback {
+
+  class Params_KeyboardSpecialEventCallback {
+  public:
+    void log(void) const;
+    void apply(KeyboardSpecialEventCallback *callback);
+
     OSObject *target;
     unsigned int eventType;
     unsigned int flags;
@@ -31,7 +40,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     OSObject *sender;
     void *refcon;
   };
-  struct Params_RelativePointerEventCallback {
+
+  class Params_RelativePointerEventCallback {
+  public:
+    void log(void) const;
+    void apply(RelativePointerEventCallback *callback);
+
     OSObject *target;
     int buttons;
     int dx;
@@ -40,7 +54,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     OSObject *sender;
     void *refcon;
   };
-  struct Params_ScrollWheelEventCallback {
+  class Params_ScrollWheelEventCallback {
+  public:
+    void log(void) const;
+    void apply(ScrollWheelEventCallback *callback);
+
     OSObject * target;
     short deltaAxis1;
     short deltaAxis2;

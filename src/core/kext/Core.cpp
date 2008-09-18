@@ -196,10 +196,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         return;
       }
 
-      if (config.debug) {
-        printf("KeyRemap4MacBook caught KeyboardEventCallback: eventType %d, flags 0x%x, key %d, kbdType %d\n",
-               params->eventType, params->flags, params->key, params->keyboardType);
-      }
+      params->log();
 
       // ------------------------------------------------------------
       if (config.general_capslock_led_hack) {
@@ -290,10 +287,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       params_lastConsumer = *params;
 
       // ------------------------------------------------------------
-      if (config.debug) {
-        printf("KeyRemap4MacBook caught keyboardSpecialEventCallBack: eventType %d, flags 0x%x, key %d, flavor %d, guid %d\n",
-               params->eventType, params->flags, params->key, params->flavor, params->guid);
-      }
+      params->log();
 
       listFireExtraKey.reset();
       KeyCode::KeyCode ex_remapKeyCode = KeyCode::NONE;
@@ -339,11 +333,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       params_lastRelativePointer = *params;
 
       // ------------------------------------------------------------
+      params->log();
+
       listFireRelativePointer.reset();
-      if (config.debug_pointing) {
-        printf("KeyRemap4MacBook caught relativePointerEventCallBack: buttons: %d, dx: %d, dy: %d, ts: 0x%x\n",
-               params->buttons, params->dx, params->dy, params->ts);
-      }
 
       if (params->buttons) {
         cancelAllKeyRepeat();
@@ -386,15 +378,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       params_lastScrollWheel = *params;
 
       // ------------------------------------------------------------
-      cancelAllKeyRepeat();
+      params->log();
 
-      if (config.debug_pointing) {
-        printf("KeyRemap4MacBook caught scrollWheelEventCallback: deltaAxis(%d, %d, %d), fixedDelta(%d, %d, %d), pointDelta(%d,%d,%d), options: %d\n",
-               params->deltaAxis1, params->deltaAxis2, params->deltaAxis3,
-               params->fixedDelta1, params->fixedDelta2, params->fixedDelta3,
-               params->pointDelta1, params->pointDelta2, params->pointDelta3,
-               params->options);
-      }
+      cancelAllKeyRepeat();
 
       ScrollWheelEventCallback callback = p->getOrig_scrollWheelEventAction();
       RemapUtil::execCallBack_ScrollWheelEventCallback(callback, *params);

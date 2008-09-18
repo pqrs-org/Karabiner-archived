@@ -4,7 +4,7 @@
 #include "base.hpp"
 #include "bridge.hpp"
 #include "keycode.hpp"
-#include "Params.hpp"
+#include "CallBackWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   struct RemapParams {
