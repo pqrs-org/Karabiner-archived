@@ -21,30 +21,42 @@ namespace org_pqrs_KeyRemap4MacBook {
       POINTING_POINT_SCALE = 10, // (== SCROLL_WHEEL_TO_PIXEL_SCALE >> 16)
     };
 
-    inline bool isKey(const RemapParams &params, unsigned int keyCode) {
-      return params.ex_origKey == keyCode && *(params.key) == keyCode;
+    inline bool isKey(const RemapParams &remapParams, unsigned int keyCode) {
+      return remapParams.ex_origKey == keyCode && (remapParams.params)->key == keyCode;
     }
     inline bool isKey(const RemapConsumerParams &remapParams, ConsumerKeyCode::ConsumerKeyCode keyCode) {
       return (remapParams.params)->key == keyCode;
+    }
+    inline bool isEvent_Down(const RemapParams &remapParams) {
+      return (remapParams.params)->eventType == KeyEvent::DOWN;
+    }
+    inline bool isEvent_Up(const RemapParams &remapParams) {
+      return (remapParams.params)->eventType == KeyEvent::UP;
+    }
+    inline bool isEvent_Modify(const RemapParams &remapParams) {
+      return (remapParams.params)->eventType == KeyEvent::MODIFY;
+    }
+    inline void drop(const RemapParams &remapParams) {
+      (remapParams.params)->key = KeyCode::NONE;
     }
 
     inline bool isModifierOn(unsigned int flags, ModifierFlag::ModifierFlag f) {
       return ((flags & f) == f);
     }
-    inline bool isModifierOn(const RemapParams &params, ModifierFlag::ModifierFlag flag) {
-      return isModifierOn(*(params.flags), flag);
+    inline bool isModifierOn(const RemapParams &remapParams, ModifierFlag::ModifierFlag flag) {
+      return isModifierOn((remapParams.params)->flags, flag);
     }
 
     KeyCode::KeyCode getModifierKeyCode(ModifierFlag::ModifierFlag flag);
     ModifierFlag::ModifierFlag getKeyCodeModifier(unsigned int keycode);
 
-    void normalizeKeyBeforeRemap(unsigned int *key, unsigned int *flags, unsigned int keyboardType);
+    void normalizeKeyBeforeRemap(Params_KeyboardEventCallBack *params);
 
-    inline bool isKeyDown(const RemapParams &params, unsigned int keyCode) {
-      if (*(params.eventType) == KeyEvent::DOWN) {
-        return isKey(params, keyCode);
-      } else if (*(params.eventType) == KeyEvent::MODIFY) {
-        return isModifierOn(params, getKeyCodeModifier(keyCode));
+    inline bool isKeyDown(const RemapParams &remapParams, unsigned int keyCode) {
+      if (isEvent_Down(remapParams)) {
+        return isKey(remapParams, keyCode);
+      } else if (isEvent_Modify(remapParams)) {
+        return isModifierOn(remapParams, getKeyCodeModifier(keyCode));
       } else {
         return false;
       }
@@ -52,12 +64,12 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     bool isInternalKeyboard(unsigned int keyboardType);
 
-    bool keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags, KeyCode::KeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE);
-    inline bool keyToKey(const RemapParams &params, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE) {
-      return keyToKey(params, fromKeyCode, 0, toKeyCode, toFlags);
+    bool keyToKey(const RemapParams &remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags, KeyCode::KeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE);
+    inline bool keyToKey(const RemapParams &remapParams, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE) {
+      return keyToKey(remapParams, fromKeyCode, 0, toKeyCode, toFlags);
     }
 
-    bool keyToKey_dependingShift(const RemapParams &params, KeyCode::KeyCode fromKeyCode,
+    bool keyToKey_dependingShift(const RemapParams &remapParams, KeyCode::KeyCode fromKeyCode,
                                  KeyCode::KeyCode toKeyCode_noflag1, CharCode::CharCode toCharCode_noflag1,
                                  KeyCode::KeyCode toKeyCode_noflag2, CharCode::CharCode toCharCode_noflag2,
                                  KeyCode::KeyCode toKeyCode_shiftL1, CharCode::CharCode toCharCode_shiftL1,
@@ -65,33 +77,33 @@ namespace org_pqrs_KeyRemap4MacBook {
                                  KeyCode::KeyCode toKeyCode_shiftR1, CharCode::CharCode toCharCode_shiftR1,
                                  KeyCode::KeyCode toKeyCode_shiftR2, CharCode::CharCode toCharCode_shiftR2);
 
-    void keyToPointingButton(const RemapParams &params, KeyCode::KeyCode fromKeyCode, PointingButton::PointingButton toButton);
+    void keyToPointingButton(const RemapParams &remapParams, KeyCode::KeyCode fromKeyCode, PointingButton::PointingButton toButton);
 
-    bool keyToConsumer(const RemapParams &params,
+    bool keyToConsumer(const RemapParams &remapParams,
                        KeyCode::KeyCode fromKeyCode, unsigned int fromFlags,
                        ConsumerKeyCode::ConsumerKeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE);
-    inline bool keyToConsumer(const RemapParams &params,
+    inline bool keyToConsumer(const RemapParams &remapParams,
                               KeyCode::KeyCode fromKeyCode,
                               ConsumerKeyCode::ConsumerKeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE) {
-      return keyToConsumer(params, fromKeyCode, 0, toKeyCode, toFlags);
+      return keyToConsumer(remapParams, fromKeyCode, 0, toKeyCode, toFlags);
     }
 
-    bool consumerToKey(const RemapConsumerParams &params,
+    bool consumerToKey(const RemapConsumerParams &remapParams,
                        ConsumerKeyCode::ConsumerKeyCode fromKeyCode, unsigned int fromFlags,
                        KeyCode::KeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE);
-    inline bool consumerToKey(const RemapConsumerParams &params,
+    inline bool consumerToKey(const RemapConsumerParams &remapParams,
                               ConsumerKeyCode::ConsumerKeyCode fromKeyCode,
                               KeyCode::KeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE) {
-      return consumerToKey(params, fromKeyCode, 0, toKeyCode, toFlags);
+      return consumerToKey(remapParams, fromKeyCode, 0, toKeyCode, toFlags);
     }
 
-    bool consumerToConsumer(const RemapConsumerParams &params,
+    bool consumerToConsumer(const RemapConsumerParams &remapParams,
                             ConsumerKeyCode::ConsumerKeyCode fromKeyCode, unsigned int fromFlags,
                             ConsumerKeyCode::ConsumerKeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE);
-    inline bool consumerToConsumer(const RemapConsumerParams &params,
+    inline bool consumerToConsumer(const RemapConsumerParams &remapParams,
                                    ConsumerKeyCode::ConsumerKeyCode fromKeyCode,
                                    ConsumerKeyCode::ConsumerKeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE) {
-      return consumerToConsumer(params, fromKeyCode, 0, toKeyCode, toFlags);
+      return consumerToConsumer(remapParams, fromKeyCode, 0, toKeyCode, toFlags);
     }
 
     // ----------------------------------------
@@ -99,17 +111,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     void execCallBack_KeyboardSpecialEventCallback(KeyboardSpecialEventCallback callback, const Params_KeyboardSpecialEventCallback &params);
     void execCallBack_RelativePointerEventCallBack(RelativePointerEventCallback callback, const Params_RelativePointerEventCallback &params);
 
-    void fireModifiers(unsigned int toFlags,
-                       KeyboardEventCallback callback, OSObject *target,
-                       unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon);
-    void fireKey(KeyboardEventCallback callback,
-                 OSObject *target, unsigned int eventType, unsigned int flags, unsigned int key, unsigned int charCode,
-                 unsigned int charSet, unsigned int origCharCode, unsigned int origCharSet, unsigned int keyboardType,
-                 bool repeat, AbsoluteTime ts, OSObject *sender, void *refcon);
+    void fireModifiers(KeyboardEventCallback callback, const Params_KeyboardEventCallBack &params);
+    void fireKey(KeyboardEventCallback callback, const Params_KeyboardEventCallBack &params);
     void fireConsumer(KeyboardSpecialEventCallback callback, const Params_KeyboardSpecialEventCallback &params);
 
     // ----------------------------------------
-    void jis_toggle_eisuu_kana(const RemapParams &params, KeyCode::KeyCode fromKeyCode);
+    void jis_toggle_eisuu_kana(const RemapParams &remapParams, KeyCode::KeyCode fromKeyCode);
 
     // ----------------------------------------
     void pointingRelativeToScroll(const RemapPointingParams_relative &remapParams);
@@ -121,25 +128,25 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   namespace FireFunc {
-    typedef void (*FireFunc)(const RemapParams &params);
-    void firefunc_nop(const RemapParams &params);
-    void firefunc_backslash(const RemapParams &params);
-    void firefunc_commandO(const RemapParams &params);
-    void firefunc_commandSpace(const RemapParams &params);
-    void firefunc_enter(const RemapParams &params);
-    void firefunc_escape(const RemapParams &params);
-    void firefunc_exposeAll(const RemapParams &params);
-    void firefunc_return(const RemapParams &params);
-    void firefunc_space(const RemapParams &params);
-    void firefunc_tab(const RemapParams &params);
-    void firefunc_emacsmode_controlK(const RemapParams &params, bool first);
-    void firefunc_emacsmode_controlK_2nd(const RemapParams &params);
-    void firefunc_emacsmode_ex_controlU(const RemapParams &params);
-    void firefunc_jis_kana(const RemapParams &params);
-    void firefunc_jis_kana_x2(const RemapParams &params);
-    void firefunc_jis_eisuu(const RemapParams &params);
-    void firefunc_jis_eisuu_x2(const RemapParams &params);
-    void firefunc_jis_toggle_eisuu_kana(const RemapParams &params);
+    typedef void (*FireFunc)(const RemapParams &remapParams);
+    void firefunc_nop(const RemapParams &remapParams);
+    void firefunc_backslash(const RemapParams &remapParams);
+    void firefunc_commandO(const RemapParams &remapParams);
+    void firefunc_commandSpace(const RemapParams &remapParams);
+    void firefunc_enter(const RemapParams &remapParams);
+    void firefunc_escape(const RemapParams &remapParams);
+    void firefunc_exposeAll(const RemapParams &remapParams);
+    void firefunc_return(const RemapParams &remapParams);
+    void firefunc_space(const RemapParams &remapParams);
+    void firefunc_tab(const RemapParams &remapParams);
+    void firefunc_emacsmode_controlK(const RemapParams &remapParams, bool first);
+    void firefunc_emacsmode_controlK_2nd(const RemapParams &remapParams);
+    void firefunc_emacsmode_ex_controlU(const RemapParams &remapParams);
+    void firefunc_jis_kana(const RemapParams &remapParams);
+    void firefunc_jis_kana_x2(const RemapParams &remapParams);
+    void firefunc_jis_eisuu(const RemapParams &remapParams);
+    void firefunc_jis_eisuu_x2(const RemapParams &remapParams);
+    void firefunc_jis_toggle_eisuu_kana(const RemapParams &remapParams);
   }
 
   namespace ExtraRepeatFunc {
@@ -157,7 +164,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // for SandS like behavior remappings (remap_space2shift, remap_enter2optionL_commandSpace, ...)
   class KeyOverlaidModifier {
   public:
-    void remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc::FireFunc firefunc, ExtraRepeatFunc::ExtraRepeatFunc extraRepeatFunc = NULL);
+    void remap(const RemapParams &remapParams, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc::FireFunc firefunc, ExtraRepeatFunc::ExtraRepeatFunc extraRepeatFunc = NULL);
 
   private:
     bool useAsModifier;
@@ -169,7 +176,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // Command_R+Command_L to Escape, ...
   class KeyOverlaidModifierCombination {
   public:
-    void remap(const RemapParams &params, ModifierFlag::ModifierFlag fromFlag1, ModifierFlag::ModifierFlag fromFlag2, FireFunc::FireFunc firefunc);
+    void remap(const RemapParams &remapParams, ModifierFlag::ModifierFlag fromFlag1, ModifierFlag::ModifierFlag fromFlag2, FireFunc::FireFunc firefunc);
 
   private:
     bool isModifier1HeldDown;
@@ -181,7 +188,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // A modifier has DoublePressed key action.
   class DoublePressModifier {
   public:
-    void remap(const RemapParams &params, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc::FireFunc firefunc);
+    void remap(const RemapParams &remapParams, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc::FireFunc firefunc);
 
   private:
     int pressCount;
@@ -191,7 +198,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // Modifier Holding + Key -> Key
   class ModifierHoldingKeyToKey {
   public:
-    void remap(const RemapParams &params, ModifierFlag::ModifierFlag fromFlag, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode);
+    void remap(const RemapParams &remapParams, ModifierFlag::ModifierFlag fromFlag, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode);
 
   private:
     IntervalChecker ic;
@@ -252,7 +259,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------
   class ButtonRelativeToScroll {
   public:
-    void remap(const RemapPointingParams_relative &params, PointingButton::PointingButton button);
+    void remap(const RemapPointingParams_relative &remapParams, PointingButton::PointingButton button);
 
   private:
     bool isButtonHeldDown;
