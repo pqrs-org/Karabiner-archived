@@ -9,7 +9,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   class FlagStatus {
   public:
     FlagStatus(ModifierFlag::ModifierFlag _flag);
-    void initialize(const RemapParams &params);
+    void initialize(const RemapParams &remapParams);
 
     void reset(void) { count = 0; }
     void increase(void) { ++count; }
@@ -56,9 +56,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       commandR(ModifierFlag::COMMAND_R),
       fn(ModifierFlag::FN)
     {}
-    void initialize(const RemapParams &params);
+    void initialize(const RemapParams &remapParams);
     unsigned int makeFlags(unsigned int keyCode);
-    unsigned int makeFlags(const RemapParams &params);
+    unsigned int makeFlags(const RemapParams &remapParams);
     void reset(void);
 
     FlagStatus *getFlagStatus(ModifierFlag::ModifierFlag flag);

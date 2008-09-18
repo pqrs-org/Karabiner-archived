@@ -11,14 +11,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  FlagStatus::initialize(const RemapParams &params)
+  FlagStatus::initialize(const RemapParams &remapParams)
   {
     temporary_count = 0;
 
-    if (*(params.eventType) != KeyEvent::MODIFY) return;
-    if (params.ex_origKey != key) return;
+    if ((remapParams.params)->eventType != KeyEvent::MODIFY) return;
+    if (remapParams.ex_origKey != key) return;
 
-    if (RemapUtil::isModifierOn(params, flag)) {
+    if (RemapUtil::isModifierOn(remapParams, flag)) {
       increase();
     } else {
       decrease();
@@ -27,9 +27,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   void
-  AllFlagStatus::initialize(const RemapParams &params)
+  AllFlagStatus::initialize(const RemapParams &remapParams)
   {
-    if (RemapUtil::isKeyDown(params, *(params.key))) {
+    if (RemapUtil::isKeyDown(remapParams, (remapParams.params)->key)) {
       ++numHeldDownKeys;
     } else {
       --numHeldDownKeys;
@@ -41,16 +41,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 #endif
 
-    capslock.initialize(params);
-    shiftL.initialize(params);
-    shiftR.initialize(params);
-    controlL.initialize(params);
-    controlR.initialize(params);
-    optionL.initialize(params);
-    optionR.initialize(params);
-    commandL.initialize(params);
-    commandR.initialize(params);
-    fn.initialize(params);
+    capslock.initialize(remapParams);
+    shiftL.initialize(remapParams);
+    shiftR.initialize(remapParams);
+    controlL.initialize(remapParams);
+    controlR.initialize(remapParams);
+    optionL.initialize(remapParams);
+    optionR.initialize(remapParams);
+    commandL.initialize(remapParams);
+    commandR.initialize(remapParams);
+    fn.initialize(remapParams);
   }
 
   void
@@ -116,13 +116,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   unsigned int
-  AllFlagStatus::makeFlags(const RemapParams &params)
+  AllFlagStatus::makeFlags(const RemapParams &remapParams)
   {
-    if (numHeldDownKeys <= 0 && *(params.flags) == 0) {
+    if (numHeldDownKeys <= 0 && (remapParams.params)->flags == 0) {
       reset();
     }
 
-    return makeFlags(*(params.key));
+    return makeFlags((remapParams.params)->key);
   }
 
   FlagStatus *
