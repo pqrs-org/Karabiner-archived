@@ -4,70 +4,25 @@
 #include "base.hpp"
 #include "bridge.hpp"
 #include "keycode.hpp"
+#include "Params.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  struct Params_KeyboardEventCallBack {
-    OSObject *target;
-    unsigned int eventType;
-    unsigned int flags;
-    unsigned int key;
-    unsigned int charCode;
-    unsigned int charSet;
-    unsigned int origCharCode;
-    unsigned int origCharSet;
-    unsigned int keyboardType;
-    bool repeat;
-    AbsoluteTime ts;
-    OSObject *sender;
-    void *refcon;
-  };
-  struct Params_KeyboardSpecialEventCallback {
-    OSObject *target;
-    unsigned int eventType;
-    unsigned int flags;
-    unsigned int key;
-    unsigned int flavor;
-    UInt64 guid;
-    bool repeat;
-    AbsoluteTime ts;
-    OSObject *sender;
-    void *refcon;
-  };
-  struct Params_RelativePointerEventCallback {
-    OSObject *target;
-    int buttons;
-    int dx;
-    int dy;
-    AbsoluteTime ts;
-    OSObject *sender;
-    void *refcon;
-  };
-
   struct RemapParams {
-    unsigned int *eventType;
-    unsigned int *flags;
-    unsigned int *key;
-    unsigned int *charCode;
-    unsigned int *charSet;
-    unsigned int *origCharCode;
-    unsigned int *origCharSet;
-    unsigned int *keyboardType;
-    // Note: the repeat key code is dropped in the core code.
-    AbsoluteTime *ts;
+    Params_KeyboardEventCallBack *params;
     unsigned int ex_origKey;
     KeyRemap4MacBook_bridge::ActiveApplicationInfo::ApplicationType appType;
     ExtraRepeatFunc::ExtraRepeatFunc *ex_extraRepeatFunc;
     unsigned int *ex_extraRepeatFlags;
     unsigned int ex_extraRepeatCounter;
   };
-  void remap_core(const RemapParams &params);
+  void remap_core(const RemapParams &remapParams);
 
   // --------------------
   struct RemapConsumerParams {
     Params_KeyboardSpecialEventCallback *params;
     KeyCode::KeyCode *ex_remapKeyCode;
   };
-  void remap_consumer(const RemapConsumerParams &params);
+  void remap_consumer(const RemapConsumerParams &remapParams);
 
   // --------------------
   struct RemapPointingParams_relative {
