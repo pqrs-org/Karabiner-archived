@@ -74,13 +74,13 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
 
   if /<not>(.+?)<\/not>/m =~ item then
     $1.split(/,/).each do |f|
-      filter += "if (params.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::#{f.strip}) return;\n"
+      filter += "if (remapParams.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::#{f.strip}) return;\n"
     end
   end
   if /<only>(.+?)<\/only>/m =~ item then
     tmp = []
     $1.split(/,/).each do |f|
-      tmp << "(params.appType != KeyRemap4MacBook_bridge::ActiveApplicationInfo::#{f.strip})"
+      tmp << "(remapParams.appType != KeyRemap4MacBook_bridge::ActiveApplicationInfo::#{f.strip})"
     end
     filter += "if (#{tmp.join(' && ')}) return;\n"
   end
@@ -96,61 +96,61 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
 
         case type
         when 'KeyToKey'
-          code_key += "RemapUtil::keyToKey(params, #{params});\n"
+          code_key += "RemapUtil::keyToKey(remapParams, #{params});\n"
           func['key'] << name
 
         when 'DoublePressModifier'
           code_key += "{\n"
           code_key += "static DoublePressModifier dpm;\n"
-          code_key += "dpm.remap(params, #{params});\n"
+          code_key += "dpm.remap(remapParams, #{params});\n"
           code_key += "}\n"
           func['key'] << name
 
         when 'KeyToComsumer'
-          code_key += "RemapUtil::keyToConsumer(params, #{params});\n"
+          code_key += "RemapUtil::keyToConsumer(remapParams, #{params});\n"
           func['key'] << name
 
         when 'KeyToPointingButton'
-          code_key += "RemapUtil::keyToPointingButton(params, #{params});\n"
+          code_key += "RemapUtil::keyToPointingButton(remapParams, #{params});\n"
           func['key'] << name
 
         when 'JISToggleEisuuKana'
-          code_key += "RemapUtil::jis_toggle_eisuu_kana(params, #{params});\n"
+          code_key += "RemapUtil::jis_toggle_eisuu_kana(remapParams, #{params});\n"
           func['key'] << name
 
         when 'KeyOverlaidModifier'
           code_key += "{\n"
           code_key += "static KeyOverlaidModifier kom;\n"
-          code_key += "kom.remap(params, #{params});\n"
+          code_key += "kom.remap(remapParams, #{params});\n"
           code_key += "}\n"
           func['key_KeyOverlaidModifier'] << name
 
         when 'KeyOverlaidModifierCombination'
           code_key += "{\n"
           code_key += "static KeyOverlaidModifierCombination komc;\n"
-          code_key += "komc.remap(params, #{params});\n"
+          code_key += "komc.remap(remapParams, #{params});\n"
           code_key += "}\n"
           func['key_KeyOverlaidModifierCombination'] << name
 
         when 'ModifierHoldingKeyToKey'
           code_key += "{\n"
           code_key += "static ModifierHoldingKeyToKey mhkk;\n"
-          code_key += "mhkk.remap(params, #{params});\n"
+          code_key += "mhkk.remap(remapParams, #{params});\n"
           code_key += "}\n"
           func['key_ModifierHoldingKeyToKey'] << name
 
         when 'ConsumerToKey'
-          code_consumer += "RemapUtil::consumerToKey(params, #{params});\n"
+          code_consumer += "RemapUtil::consumerToKey(remapParams, #{params});\n"
           func['consumer'] << name
 
         when 'ConsumerToConsumer'
-          code_consumer += "RemapUtil::consumerToConsumer(params, #{params});\n"
+          code_consumer += "RemapUtil::consumerToConsumer(remapParams, #{params});\n"
           func['consumer'] << name
 
         when 'ButtonRelativeToScroll'
           code_pointing += "{\n"
           code_pointing += "static ButtonRelativeToScroll brts;\n"
-          code_pointing += "brts.remap(params, #{params});\n"
+          code_pointing += "brts.remap(remapParams, #{params});\n"
           code_pointing += "}\n"
           func['pointing'] << name
 
@@ -164,13 +164,13 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
 
   check = "if (! config.#{name}) return;"
   unless code_key.empty? then
-    code += "inline void #{name}(const RemapParams &params) {\n#{check}\n#{filter}\n#{code_key}\n}\n\n\n"
+    code += "inline void #{name}(const RemapParams &remapParams) {\n#{check}\n#{filter}\n#{code_key}\n}\n\n\n"
   end
   unless code_consumer.empty? then
-    code += "inline void #{name}(const RemapConsumerParams &params) {\n#{check}\n#{code_consumer}\n}\n\n\n"
+    code += "inline void #{name}(const RemapConsumerParams &remapParams) {\n#{check}\n#{code_consumer}\n}\n\n\n"
   end
   unless code_pointing.empty? then
-    code += "inline void #{name}(const RemapPointingParams_relative &params) {\n#{check}\n#{code_pointing}\n}\n\n\n"
+    code += "inline void #{name}(const RemapPointingParams_relative &remapParams) {\n#{check}\n#{code_pointing}\n}\n\n\n"
   end
 end
 
@@ -194,22 +194,22 @@ open('output/include.remapcode_func.cpp', 'w') do |f|
 end
 open('output/include.remapcode_call.cpp', 'w') do |f|
   func['key'].uniq.each do |call|
-    f.puts "GeneratedCode::#{call}(params);\n"
+    f.puts "GeneratedCode::#{call}(remapParams);\n"
   end
 end
 open('output/include.remapcode_call_kom.cpp', 'w') do |f|
   func['key_KeyOverlaidModifier'].uniq.each do |call|
-    f.puts "GeneratedCode::#{call}(params);\n"
+    f.puts "GeneratedCode::#{call}(remapParams);\n"
   end
 end
 open('output/include.remapcode_call_komc.cpp', 'w') do |f|
   func['key_KeyOverlaidModifierCombination'].uniq.each do |call|
-    f.puts "GeneratedCode::#{call}(params);\n"
+    f.puts "GeneratedCode::#{call}(remapParams);\n"
   end
 end
 open('output/include.remapcode_call_mhkk.cpp', 'w') do |f|
   func['key_ModifierHoldingKeyToKey'].uniq.each do |call|
-    f.puts "GeneratedCode::#{call}(params);\n"
+    f.puts "GeneratedCode::#{call}(remapParams);\n"
   end
 end
 open('output/include.remapcode_call_consumer.cpp', 'w') do |f|
