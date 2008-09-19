@@ -129,5 +129,47 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
       pointing = NULL;
     }
+
+    // ----------------------------------------------------------------------
+    void
+    hook_RelativePointerEventCallback(OSObject *target,
+                                      int buttons,
+                                      int dx,
+                                      int dy,
+                                      AbsoluteTime ts,
+                                      OSObject *sender,
+                                      void *refcon)
+    {
+      Params_RelativePointerEventCallback params = {
+        target, buttons, dx, dy, ts, sender, refcon,
+      };
+      Core::remap_RelativePointerEventCallback(&params);
+    }
+
+    void
+    hook_ScrollWheelEventCallback(OSObject * target,
+                                  short deltaAxis1,
+                                  short deltaAxis2,
+                                  short deltaAxis3,
+                                  IOFixed fixedDelta1,
+                                  IOFixed fixedDelta2,
+                                  IOFixed fixedDelta3,
+                                  SInt32 pointDelta1,
+                                  SInt32 pointDelta2,
+                                  SInt32 pointDelta3,
+                                  SInt32 options,
+                                  AbsoluteTime ts,
+                                  OSObject *sender,
+                                  void *refcon)
+    {
+      Params_ScrollWheelEventCallback params = {
+        target,
+        deltaAxis1, deltaAxis2, deltaAxis3,
+        fixedDelta1, fixedDelta2, fixedDelta3,
+        pointDelta1, pointDelta2, pointDelta3,
+        options, ts, sender, refcon,
+      };
+      Core::remap_ScrollWheelEventCallback(&params);
+    }
   }
 }
