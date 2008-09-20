@@ -5,11 +5,9 @@
 namespace org_pqrs_KeyRemap4MacBook {
   AllFlagStatus allFlagStatus;
   ListFireExtraKey listFireExtraKey;
-  PressDownKeys pressDownKeys;
   ListFireConsumerKey listFireConsumerKey;
   ListFireRelativePointer listFireRelativePointer;
   FirePointingScroll firePointingScroll;
-  ClickWatcher clickWatcher;
   PointingButtonStatus pointingButtonStatus;
   JISKanaMode jisKanaMode;
 
@@ -430,9 +428,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (p.key == KeyCode::JIS_EISUU || p.key == KeyCode::JIS_KANA) {
           jisKanaMode.setMode(p.eventType, p.key, p.flags);
         }
-        pressDownKeys.add(p.key, p.keyboardType);
+        PressDownKeys::add(p.key, p.keyboardType);
       } else {
-        pressDownKeys.remove(p.key, p.keyboardType);
+        PressDownKeys::remove(p.key, p.keyboardType);
       }
     }
   }
@@ -810,7 +808,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (isKeyDown) {
       useAsModifier = false;
-      clickWatcher.set(&isClick);
+      ClickWatcher::set(&isClick);
       ic.begin();
 
       if (extraRepeatFunc) {
@@ -833,7 +831,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
         }
       }
-      clickWatcher.unset(&isClick);
+      ClickWatcher::unset(&isClick);
     }
   }
 
@@ -855,14 +853,14 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (fromStatus2->isHeldDown()) {
       isCallFireFunc = true;
-      clickWatcher.set(&isClick);
+      ClickWatcher::set(&isClick);
 
     } else {
       if (fromStatus1->isHeldDown() && isCallFireFunc && isClick == false) {
         fromStatus1->temporary_decrease();
         firefunc(remapParams);
       }
-      clickWatcher.unset(&isClick);
+      ClickWatcher::unset(&isClick);
     }
   }
 

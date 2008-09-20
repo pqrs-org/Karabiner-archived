@@ -9,6 +9,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! _workLoop) return;
 
     workLoop = _workLoop;
+    if (owner == NULL) {
+      owner = reinterpret_cast<OSObject *>(this);
+    }
     timer = IOTimerEventSource::timerEventSource(owner, func);
 
     if (workLoop->addEventSource(timer) != kIOReturnSuccess) {
