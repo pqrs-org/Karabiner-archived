@@ -2,45 +2,52 @@
 #include "RemapUtil.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  void
-  ClickWatcher::reset(void)
-  {
-    for (int i = 0; i < MAXNUM; ++i) {
-      watchlist[i] = NULL;
-    }
-  }
+  namespace ClickWatcher {
+    enum {
+      MAXNUM = 8,
+    };
+    bool *item[MAXNUM];
 
-  void
-  ClickWatcher::click(void)
-  {
-    for (int i = 0; i < MAXNUM; ++i) {
-      if (watchlist[i]) {
-        *(watchlist[i]) = true;
+    void
+    reset(void)
+    {
+      for (int i = 0; i < MAXNUM; ++i) {
+        item[i] = NULL;
       }
     }
-  }
 
-  void
-  ClickWatcher::set(bool *b)
-  {
-    if (b == NULL) return;
-
-    *b = false;
-    for (int i = 0; i < MAXNUM; ++i) {
-      if (watchlist[i] == NULL) {
-        watchlist[i] = b;
+    void
+    click(void)
+    {
+      for (int i = 0; i < MAXNUM; ++i) {
+        if (item[i]) {
+          *(item[i]) = true;
+        }
       }
     }
-  }
 
-  void
-  ClickWatcher::unset(bool *b)
-  {
-    if (b == NULL) return;
+    void
+    set(bool *b)
+    {
+      if (b == NULL) return;
 
-    for (int i = 0; i < MAXNUM; ++i) {
-      if (watchlist[i] == b) {
-        watchlist[i] = NULL;
+      *b = false;
+      for (int i = 0; i < MAXNUM; ++i) {
+        if (item[i] == NULL) {
+          item[i] = b;
+        }
+      }
+    }
+
+    void
+    unset(bool *b)
+    {
+      if (b == NULL) return;
+
+      for (int i = 0; i < MAXNUM; ++i) {
+        if (item[i] == b) {
+          item[i] = NULL;
+        }
       }
     }
   }

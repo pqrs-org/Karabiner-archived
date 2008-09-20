@@ -202,9 +202,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool first;
   };
 
-  // ----------------------------------------------------------------------
-  extern ClickWatcher clickWatcher;
-
   // --------------------
   class PointingButtonStatus {
   public:
@@ -262,7 +259,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
 
   extern JISKanaMode jisKanaMode;
-  extern PressDownKeys pressDownKeys;
 }
 
 #endif

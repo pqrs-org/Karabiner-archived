@@ -92,9 +92,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     initialize(void)
     {
       sysctl_register();
-      clickWatcher.reset();
-      pressDownKeys.initialize();
+      ClickWatcher::reset();
+      PressDownKeys::initialize();
       KeyRemap4MacBook_client::initialize();
+      return;
 
       workLoop = IOWorkLoop::workLoop();
       if (workLoop) {
@@ -109,7 +110,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     terminate(void)
     {
       timer_refresh.terminate();
-
       sysctl_unregister();
     }
 
@@ -267,7 +267,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (allFlagStatus.numHeldDownKeys <= 0) {
         params->flags = 0;
         RemapUtil::fireModifiers(p->getOrig_keyboardEventAction(), *params);
-        pressDownKeys.clear(p->getOrig_keyboardEventAction(), params->target, params->ts, params->sender, params->refcon);
+        PressDownKeys::clear(p->getOrig_keyboardEventAction(), params->target, params->ts, params->sender, params->refcon);
       }
     }
 

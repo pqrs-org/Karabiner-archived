@@ -395,7 +395,7 @@ org_pqrs_KeyRemap4MacBook::remap_pointing_relative_core(const RemapPointingParam
   }
 
   if ((remapParams.params)->buttons != PointingButton::NONE) {
-    clickWatcher.click();
+    ClickWatcher::click();
   }
 
   remap_pointing_relative_fn_to_scroll(remapParams);

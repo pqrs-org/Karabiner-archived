@@ -47,8 +47,10 @@ org_pqrs_driver_KeyRemap4MacBook::start(IOService *provider)
   bool res = super::start(provider);
   if (!res) return res;
 
+#if 0
   org_pqrs_KeyRemap4MacBook::Core::start();
   if (! initialize_notification()) return false;
+#endif
 
   return res;
 }
@@ -58,8 +60,10 @@ org_pqrs_driver_KeyRemap4MacBook::stop(IOService *provider)
 {
   IOLog("KeyRemap4MacBook::stop\n");
 
+#if 0
   terminate_notification();
   org_pqrs_KeyRemap4MacBook::Core::stop();
+#endif
 
   super::stop(provider);
 }
