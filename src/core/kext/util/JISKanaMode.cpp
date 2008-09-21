@@ -1,35 +1,60 @@
 #include "JISKanaMode.hpp"
-#include "RemapUtil.hpp"
+#include "CallBackWrapper.hpp"
+#include "FlagStatus.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  void
-  JISKanaMode::setMode(unsigned int eventType, unsigned int keyCode, unsigned int flags)
-  {
-    if (eventType != KeyEvent::DOWN) return;
+  extern AllFlagStatus allFlagStatus;
 
-    if (keyCode == KeyCode::JIS_EISUU) setMode(JISKANAMODE_ASCII);
+  namespace JISKanaMode {
+    Mode mode;
 
-    if (keyCode == KeyCode::JIS_KANA) {
-      if (RemapUtil::isModifierOn(flags, ModifierFlag::SHIFT_L) ||
-          RemapUtil::isModifierOn(flags, ModifierFlag::SHIFT_R)) {
-        setMode(JISKANAMODE_KATAKANA);
-      } else {
-        setMode(JISKANAMODE_HIRAGANA);
+    Mode
+    getMode(void)
+    {
+      return mode;
+    }
+
+    void
+    setMode(Mode newmode)
+    {
+      mode = newmode;
+    }
+
+    void
+    setMode(const Params_KeyboardEventCallBack &params)
+    {
+      if (params.eventType != KeyEvent::DOWN) return;
+
+      if (params.key == KeyCode::JIS_EISUU) {
+        setMode(JISKANAMODE_ASCII);
+
+      } else if (params.key == KeyCode::JIS_KANA) {
+        if (allFlagStatus.isHeldDown_shift()) {
+          setMode(JISKANAMODE_KATAKANA);
+        } else {
+          setMode(JISKANAMODE_HIRAGANA);
+        }
       }
     }
-  }
 
-  void
-  JISKanaMode::toggle(void)
-  {
-    if (mode == JISKANAMODE_ASCII) {
-      if (allFlagStatus.isHeldDown_shift()) {
-        setMode(JISKANAMODE_KATAKANA);
+    void
+    toggle(void)
+    {
+      if (mode == JISKANAMODE_ASCII) {
+        if (allFlagStatus.isHeldDown_shift()) {
+          setMode(JISKANAMODE_KATAKANA);
+        } else {
+          setMode(JISKANAMODE_HIRAGANA);
+        }
       } else {
-        setMode(JISKANAMODE_HIRAGANA);
+        setMode(JISKANAMODE_ASCII);
       }
-    } else {
-      setMode(JISKANAMODE_ASCII);
+    }
+
+    bool
+    iskana(void)
+    {
+      return mode != JISKANAMODE_ASCII;
     }
   }
 }

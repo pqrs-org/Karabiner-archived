@@ -1,24 +1,22 @@
 #ifndef JISKANAMODE_HPP
 #define JISKANAMODE_HPP
 
+#include "CallBackWrapper.hpp"
+
 namespace org_pqrs_KeyRemap4MacBook {
-  class JISKanaMode {
-  public:
+  namespace JISKanaMode {
     enum Mode {
       JISKANAMODE_ASCII,
       JISKANAMODE_HIRAGANA,
       JISKANAMODE_KATAKANA,
     };
 
-    Mode getMode(void) const { return mode; }
-    void setMode(Mode _mode) { mode = _mode; }
-    void setMode(unsigned int eventType, unsigned int keyCode, unsigned int flags);
+    Mode getMode(void);
+    void setMode(Mode newmode);
+    void setMode(const Params_KeyboardEventCallBack &params);
     void toggle(void);
-    bool iskana(void) const { return mode != JISKANAMODE_ASCII; }
-
-  private:
-    Mode mode;
-  };
+    bool iskana(void);
+  }
 }
 
 #endif
