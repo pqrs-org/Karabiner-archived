@@ -1,6 +1,7 @@
 #include "RemapUtil.hpp"
 #include "keycode.hpp"
 #include "Config.hpp"
+#include "util/PointingButtonStatus.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   AllFlagStatus allFlagStatus;
@@ -8,7 +9,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   ListFireConsumerKey listFireConsumerKey;
   ListFireRelativePointer listFireRelativePointer;
   FirePointingScroll firePointingScroll;
-  PointingButtonStatus pointingButtonStatus;
 
   bool
   RemapUtil::isInternalKeyboard(unsigned int keyboardType)
@@ -250,14 +250,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (RemapUtil::isKeyDown(remapParams, fromKeyCode)) {
       listFireRelativePointer.add(toButton);
 
-      bool *status = pointingButtonStatus.getButtonStatus(toButton);
-      if (status) *status = true;
+      PointingButtonStatus::set(toButton, true);
 
     } else {
       listFireRelativePointer.add(PointingButton::NONE);
 
-      bool *status = pointingButtonStatus.getButtonStatus(toButton);
-      if (status) *status = false;
+      PointingButtonStatus::set(toButton, false);
     }
 
     (remapParams.params)->key = KeyCode::NONE;
@@ -915,16 +913,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     fromStatus->temporary_decrease();
     RemapUtil::keyToKey(remapParams, fromKeyCode, toKeyCode);
-  }
-
-  // ----------------------------------------
-  bool *
-  PointingButtonStatus::getButtonStatus(PointingButton::PointingButton button)
-  {
-    if (button == PointingButton::LEFT) return &helddown_left;
-    if (button == PointingButton::RIGHT) return &helddown_right;
-    if (button == PointingButton::MIDDLE) return &helddown_middle;
-    return NULL;
   }
 
   // ----------------------------------------

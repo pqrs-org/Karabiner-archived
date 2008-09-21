@@ -4,6 +4,7 @@
 #include "RemapUtil.hpp"
 #include "Config.hpp"
 #include "keycode.hpp"
+#include "util/PointingButtonStatus.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace GeneratedCode {
@@ -384,15 +385,7 @@ org_pqrs_KeyRemap4MacBook::remap_consumer(const RemapConsumerParams &remapParams
 void
 org_pqrs_KeyRemap4MacBook::remap_pointing_relative_core(const RemapPointingParams_relative &remapParams)
 {
-  if (pointingButtonStatus.helddown_left) {
-    (remapParams.params)->buttons |= PointingButton::LEFT;
-  }
-  if (pointingButtonStatus.helddown_right) {
-    (remapParams.params)->buttons |= PointingButton::RIGHT;
-  }
-  if (pointingButtonStatus.helddown_middle) {
-    (remapParams.params)->buttons |= PointingButton::MIDDLE;
-  }
+  (remapParams.params)->buttons |= PointingButtonStatus::get();
 
   if ((remapParams.params)->buttons != PointingButton::NONE) {
     ClickWatcher::click();
