@@ -75,7 +75,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
           timer_repeat.setTimeoutMS(config.get_repeat_initial_wait());
 
-        } else if (eventType == KeyEvent::MODIFY || keyboardRepeatInfo.params.key == key) {
+        } else if (params.eventType == KeyEvent::MODIFY || keyboardRepeatInfo.params.key == params.key) {
           timer_repeat.cancelTimeout();
         }
       }
