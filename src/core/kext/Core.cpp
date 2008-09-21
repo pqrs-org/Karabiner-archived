@@ -99,6 +99,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       sysctl_register();
       ClickWatcher::reset();
       PressDownKeys::initialize();
+      FlagStatus::initialize();
       KeyRemap4MacBook_client::initialize();
     }
 
@@ -222,6 +223,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         &ex_extraRepeatFlags,
         keyboardExtraRepeatInfo.counter,
       };
+      NumHeldDownKeys::set(remapParams);
 
       bool skip = false;
       if (RemapUtil::isInternalKeyboard(params->keyboardType)) {
@@ -294,6 +296,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       RemapConsumerParams remapParams = {
         params, &ex_remapKeyCode,
       };
+      NumHeldDownKeys::set(remapParams);
       remap_consumer(remapParams);
 
       // ----------------------------------------
