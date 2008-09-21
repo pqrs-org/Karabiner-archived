@@ -31,9 +31,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_fn2controlL_commandR2fn) return;
 
     if (RemapUtil::isModifierOn(remapParams, ModifierFlag::FN)) {
-      if (allFlagStatus.commandR.isHeldDown()) {
-        allFlagStatus.commandR.temporary_decrease();
-        allFlagStatus.controlL.temporary_decrease();
+      if (FlagStatus::isHeldDown(ModifierFlag::COMMAND_R)) {
+        FlagStatus::temporary_decrease(ModifierFlag::COMMAND_R);
+        FlagStatus::temporary_decrease(ModifierFlag::CONTROL_L);
         return;
       }
     }
@@ -47,10 +47,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_semicolon2return_controlsemicolon2semicolon) return;
 
-    if (! allFlagStatus.isHeldDown_control() && ! allFlagStatus.isHeldDown_shift()) {
+    if (! FlagStatus::isHeldDown_control() && ! FlagStatus::isHeldDown_shift()) {
       RemapUtil::keyToKey(remapParams, KeyCode::SEMICOLON, KeyCode::RETURN);
     } else {
-      allFlagStatus.temporaryDecrease_control();
+      FlagStatus::temporaryDecrease_control();
     }
   }
 
@@ -61,10 +61,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (! RemapUtil::isKey(remapParams, KeyCode::SEMICOLON)) return;
 
-    if (allFlagStatus.isHeldDown_shift()) {
-      allFlagStatus.temporaryDecrease_shift();
+    if (FlagStatus::isHeldDown_shift()) {
+      FlagStatus::temporaryDecrease_shift();
     } else {
-      allFlagStatus.shiftL.temporary_increase();
+      FlagStatus::temporary_increase(ModifierFlag::SHIFT_L);
     }
   }
 
@@ -76,7 +76,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (RemapUtil::isKey(remapParams, KeyCode::SHIFT_L)) {
       if (RemapUtil::isModifierOn(remapParams, ModifierFlag::SHIFT_R)) {
-        allFlagStatus.shiftR.temporary_decrease();
+        FlagStatus::temporary_decrease(ModifierFlag::SHIFT_R);
         RemapUtil::keyToKey(remapParams, KeyCode::SHIFT_L, KeyCode::SPACE);
       }
     } else if (RemapUtil::isKey(remapParams, KeyCode::SHIFT_R)) {
@@ -98,7 +98,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     } else if (RemapUtil::isKey(remapParams, KeyCode::SHIFT_R)) {
       if (RemapUtil::isModifierOn(remapParams, ModifierFlag::SHIFT_L)) {
-        allFlagStatus.shiftL.temporary_decrease();
+        FlagStatus::temporary_decrease(ModifierFlag::SHIFT_L);
         RemapUtil::keyToKey(remapParams, KeyCode::SHIFT_R, KeyCode::SPACE);
       }
     }
@@ -110,7 +110,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_tab2option_withControlL) return;
 
-    if (! allFlagStatus.controlL.isHeldDown()) return;
+    if (! FlagStatus::isHeldDown(ModifierFlag::CONTROL_L)) return;
 
     static KeyOverlaidModifier kom;
     kom.remap(remapParams, KeyCode::TAB, ModifierFlag::OPTION_L, FireFunc::firefunc_tab);
@@ -150,7 +150,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if ((remapParams.params)->key != KeyCode::K) {
         firstcall = true;
 
-      } else if (allFlagStatus.isHeldDown_control()) {
+      } else if (FlagStatus::isHeldDown_control()) {
         if (RemapUtil::isEvent_Down(remapParams)) {
           FireFunc::firefunc_emacsmode_controlK(remapParams, firstcall);
           firstcall = false;
@@ -163,7 +163,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // Control+U -> Command+Shift+Left,Command+X
     if (config.option_emacsmode_ex_controlU && (remapParams.params)->key == KeyCode::U && ! ignore) {
-      if (allFlagStatus.isHeldDown_control()) {
+      if (FlagStatus::isHeldDown_control()) {
         if (RemapUtil::isEvent_Down(remapParams)) {
           FireFunc::firefunc_emacsmode_ex_controlU(remapParams);
         }
@@ -197,7 +197,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (remapParams.ex_origKey != KeyCode::JIS_UNDERSCORE) return;
 
-    if (! allFlagStatus.isHeldDown_shift()) {
+    if (! FlagStatus::isHeldDown_shift()) {
       // hack to fire "the true backslash (not yen)" on JIS Keyboard.
       (remapParams.params)->keyboardType = KeyboardType::MACBOOK;
       RemapUtil::keyToKey(remapParams, KeyCode::JIS_UNDERSCORE, KeyCode::BACKSLASH);
@@ -227,8 +227,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (! RemapUtil::isKey(remapParams, KeyCode::SPACE)) return;
 
-    if (allFlagStatus.isHeldDown_shift()) {
-      allFlagStatus.temporaryDecrease_shift();
+    if (FlagStatus::isHeldDown_shift()) {
+      FlagStatus::temporaryDecrease_shift();
 
       if (RemapUtil::isEvent_Down(remapParams)) {
         FireFunc::firefunc_jis_toggle_eisuu_kana(remapParams);
@@ -290,7 +290,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (JISKanaMode::getMode() == JISKanaMode::JISKANAMODE_ASCII) return;
 
-    if (allFlagStatus.isHeldDown_shift()) {
+    if (FlagStatus::isHeldDown_shift()) {
       RemapUtil::keyToKey(remapParams, KeyCode::MINUS, KeyCode::BRACKET_RIGHT);
       RemapUtil::keyToKey(remapParams, KeyCode::BRACKET_RIGHT, KeyCode::BRACKET_LEFT);
       RemapUtil::keyToKey(remapParams, KeyCode::BRACKET_LEFT, KeyCode::EQUAL);
@@ -308,7 +308,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_pointing_relative_fn_to_scroll) return;
 
-    if (! allFlagStatus.fn.isHeldDown()) return;
+    if (! FlagStatus::isHeldDown(ModifierFlag::FN)) return;
 
     RemapUtil::pointingRelativeToScroll(remapParams);
   }
@@ -318,7 +318,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 void
 org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &remapParams)
 {
-  allFlagStatus.initialize(remapParams);
+  FlagStatus::set(remapParams);
 
   // ======================================================================
   // normal remapping
@@ -371,7 +371,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &remapParams)
 #include "config/output/include.remapcode_call_komc.cpp"
 
   // ------------------------------------------------------------
-  (remapParams.params)->flags = allFlagStatus.makeFlags(remapParams);
+  (remapParams.params)->flags = FlagStatus::makeFlags(remapParams);
 }
 
 void
@@ -379,7 +379,7 @@ org_pqrs_KeyRemap4MacBook::remap_consumer(const RemapConsumerParams &remapParams
 {
 #include "config/output/include.remapcode_call_consumer.cpp"
 
-  (remapParams.params)->flags = allFlagStatus.makeFlags(*(remapParams.ex_remapKeyCode));
+  (remapParams.params)->flags = FlagStatus::makeFlags(*(remapParams.ex_remapKeyCode));
 }
 
 void

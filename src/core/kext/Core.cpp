@@ -2,9 +2,10 @@
 #include "Config.hpp"
 #include "RemapUtil.hpp"
 #include "Client.hpp"
-#include "ListHookedKeyboard.hpp"
-#include "ListHookedPointing.hpp"
+#include "util/ListHookedKeyboard.hpp"
+#include "util/ListHookedPointing.hpp"
 #include "util/TimerWrapper.hpp"
+#include "util/NumHeldDownKeys.hpp"
 #include "remap.hpp"
 
 #include <IOKit/IOWorkLoop.h>
@@ -261,7 +262,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       p->setExtraRepeatInfo(ex_extraRepeatFunc, ex_extraRepeatFlags, params->keyboardType, params->ts, params->target, params->refcon);
 #endif
 
-      if (allFlagStatus.numHeldDownKeys <= 0) {
+      if (NumHeldDownKeys::iszero()) {
+        NumHeldDownKeys::reset();
+        FlagStatus::reset();
         params->flags = 0;
         RemapUtil::fireModifiers(p->getOrig_keyboardEventAction(), *params);
         PressDownKeys::clear(p->getOrig_keyboardEventAction(), params->target, params->ts, params->sender, params->refcon);

@@ -4,7 +4,6 @@
 #include "util/PointingButtonStatus.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  AllFlagStatus allFlagStatus;
   ListFireExtraKey listFireExtraKey;
   ListFireConsumerKey listFireConsumerKey;
   ListFireRelativePointer listFireRelativePointer;
@@ -114,7 +113,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void remapFlags(unsigned int fromFlags, unsigned int toFlags) {
       for (int i = 0; i < ModifierFlag::listsize; ++i) {
         ModifierFlag::ModifierFlag m = ModifierFlag::list[i];
-        FlagStatus *p = allFlagStatus.getFlagStatus(m);
+        FlagStatus::Item *p = FlagStatus::getFlagStatus(m);
         if (! p) continue;
 
         if (RemapUtil::isModifierOn(fromFlags, m)) {
@@ -130,14 +129,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   RemapUtil::keyToKey(const RemapParams &remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags, KeyCode::KeyCode toKeyCode, unsigned int toFlags)
   {
-    if (! isFromFlags(allFlagStatus.makeFlags(remapParams), fromFlags)) return false;
+    if (! isFromFlags(FlagStatus::makeFlags(remapParams), fromFlags)) return false;
     if (! RemapUtil::isKey(remapParams, fromKeyCode)) return false;
 
     ModifierFlag::ModifierFlag fromModifier = getKeyCodeModifier(fromKeyCode);
     ModifierFlag::ModifierFlag toModifier = getKeyCodeModifier(toKeyCode);
 
-    FlagStatus *fromStatus = allFlagStatus.getFlagStatus(fromModifier);
-    FlagStatus *toStatus = allFlagStatus.getFlagStatus(toModifier);
+    FlagStatus::Item *fromStatus = FlagStatus::getFlagStatus(fromModifier);
+    FlagStatus::Item *toStatus = FlagStatus::getFlagStatus(toModifier);
 
     if (fromStatus == NULL) {
       if (toStatus == NULL) {
@@ -190,7 +189,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       if (! RemapUtil::isKeyDown(remapParams, fromKeyCode)) return;
 
-      unsigned int flags = allFlagStatus.makeFlags(remapParams);
+      unsigned int flags = FlagStatus::makeFlags(remapParams);
       listFireExtraKey.addKey(flags, toKeyCode1);
       if (toKeyCode2 != KeyCode::NONE) {
         listFireExtraKey.addKey(flags, toKeyCode2);
@@ -214,12 +213,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! RemapUtil::isKey(remapParams, fromKeyCode)) return false;
 
-    if (allFlagStatus.shiftL.isHeldDown()) {
-      allFlagStatus.shiftL.temporary_decrease();
+    if (FlagStatus::isHeldDown(ModifierFlag::SHIFT_L)) {
+      FlagStatus::temporary_decrease(ModifierFlag::SHIFT_L);
       keyToKeyCombination(remapParams, fromKeyCode, toKeyCode_shiftL1, toCharCode_shiftL1, toKeyCode_shiftL2, toCharCode_shiftL2);
 
-    } else if (allFlagStatus.shiftR.isHeldDown()) {
-      allFlagStatus.shiftR.temporary_decrease();
+    } else if (FlagStatus::isHeldDown(ModifierFlag::SHIFT_R)) {
+      FlagStatus::temporary_decrease(ModifierFlag::SHIFT_R);
       keyToKeyCombination(remapParams, fromKeyCode, toKeyCode_shiftR1, toCharCode_shiftR1, toKeyCode_shiftR2, toCharCode_shiftR2);
 
     } else {
@@ -236,7 +235,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! RemapUtil::isKey(remapParams, fromKeyCode)) return;
 
     ModifierFlag::ModifierFlag fromModifier = getKeyCodeModifier(fromKeyCode);
-    FlagStatus *fromStatus = allFlagStatus.getFlagStatus(fromModifier);
+    FlagStatus::Item *fromStatus = FlagStatus::getFlagStatus(fromModifier);
 
     if (fromStatus) {
       // clear flags
@@ -266,13 +265,13 @@ namespace org_pqrs_KeyRemap4MacBook {
                            KeyCode::KeyCode fromKeyCode, unsigned int fromFlags,
                            ConsumerKeyCode::ConsumerKeyCode toKeyCode, unsigned int toFlags)
   {
-    if (! isFromFlags(allFlagStatus.makeFlags(KeyCode::NONE), fromFlags)) return false;
+    if (! isFromFlags(FlagStatus::makeFlags(KeyCode::NONE), fromFlags)) return false;
     if (! RemapUtil::isKey(remapParams, fromKeyCode)) return false;
 
     remapFlags(fromFlags, toFlags);
 
     unsigned int eventType = (RemapUtil::isKeyDown(remapParams, fromKeyCode) ? KeyEvent::DOWN : KeyEvent::UP);
-    unsigned int flags = allFlagStatus.makeFlags(toKeyCode);
+    unsigned int flags = FlagStatus::makeFlags(toKeyCode);
     listFireConsumerKey.add(eventType, flags, toKeyCode);
 
     (remapParams.params)->key = KeyCode::NONE;
@@ -284,7 +283,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                            ConsumerKeyCode::ConsumerKeyCode fromKeyCode, unsigned int fromFlags,
                            KeyCode::KeyCode toKeyCode, unsigned int toFlags)
   {
-    if (! isFromFlags(allFlagStatus.makeFlags(KeyCode::NONE), fromFlags)) return false;
+    if (! isFromFlags(FlagStatus::makeFlags(KeyCode::NONE), fromFlags)) return false;
     if (! isKey(remapParams, fromKeyCode)) return false;
 
     remapFlags(fromFlags, toFlags);
@@ -303,7 +302,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                                 ConsumerKeyCode::ConsumerKeyCode fromKeyCode, unsigned int fromFlags,
                                 ConsumerKeyCode::ConsumerKeyCode toKeyCode, unsigned int toFlags)
   {
-    if (! isFromFlags(allFlagStatus.makeFlags(KeyCode::NONE), fromFlags)) return false;
+    if (! isFromFlags(FlagStatus::makeFlags(KeyCode::NONE), fromFlags)) return false;
     if (! isKey(remapParams, fromKeyCode)) return false;
 
     remapFlags(fromFlags, toFlags);
@@ -518,7 +517,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   FireFunc::firefunc_backslash(const RemapParams &params)
   {
-    unsigned int flags = allFlagStatus.makeFlags(params);
+    unsigned int flags = FlagStatus::makeFlags(params);
     listFireExtraKey.addKey(flags, KeyCode::BACKSLASH);
   }
 
@@ -526,7 +525,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   FireFunc::firefunc_commandO(const RemapParams &params)
   {
     // fire only if no-modifiers
-    if (allFlagStatus.makeFlags(params) != 0) return;
+    if (FlagStatus::makeFlags(params) != 0) return;
 
     listFireExtraKey.add(KeyEvent::DOWN, ModifierFlag::COMMAND_L, KeyCode::O);
     listFireExtraKey.add(KeyEvent::UP,   ModifierFlag::COMMAND_L, KeyCode::O);
@@ -536,7 +535,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   FireFunc::firefunc_commandSpace(const RemapParams &params)
   {
     // fire only if no-modifiers
-    if (allFlagStatus.makeFlags(params) != 0) return;
+    if (FlagStatus::makeFlags(params) != 0) return;
 
     listFireExtraKey.add(KeyEvent::DOWN, ModifierFlag::COMMAND_L, KeyCode::SPACE);
     listFireExtraKey.add(KeyEvent::UP,   ModifierFlag::COMMAND_L, KeyCode::SPACE);
@@ -545,42 +544,42 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   FireFunc::firefunc_enter(const RemapParams &params)
   {
-    unsigned int flags = allFlagStatus.makeFlags(params);
+    unsigned int flags = FlagStatus::makeFlags(params);
     listFireExtraKey.addKey(flags, KeyCode::ENTER);
   }
 
   void
   FireFunc::firefunc_escape(const RemapParams &params)
   {
-    unsigned int flags = allFlagStatus.makeFlags(params);
+    unsigned int flags = FlagStatus::makeFlags(params);
     listFireExtraKey.addKey(flags, KeyCode::ESCAPE);
   }
 
   void
   FireFunc::firefunc_exposeAll(const RemapParams &params)
   {
-    unsigned int flags = allFlagStatus.makeFlags(params);
+    unsigned int flags = FlagStatus::makeFlags(params);
     listFireExtraKey.addKey(flags, KeyCode::EXPOSE_ALL);
   }
 
   void
   FireFunc::firefunc_return(const RemapParams &params)
   {
-    unsigned int flags = allFlagStatus.makeFlags(params);
+    unsigned int flags = FlagStatus::makeFlags(params);
     listFireExtraKey.addKey(flags, KeyCode::RETURN);
   }
 
   void
   FireFunc::firefunc_space(const RemapParams &params)
   {
-    unsigned int flags = allFlagStatus.makeFlags(params);
+    unsigned int flags = FlagStatus::makeFlags(params);
     listFireExtraKey.addKey(flags, KeyCode::SPACE);
   }
 
   void
   FireFunc::firefunc_tab(const RemapParams &params)
   {
-    unsigned int flags = allFlagStatus.makeFlags(params);
+    unsigned int flags = FlagStatus::makeFlags(params);
     listFireExtraKey.addKey(flags, KeyCode::TAB);
   }
 
@@ -630,7 +629,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   FireFunc::firefunc_jis_kana(const RemapParams &params)
   {
     // fire only if no-modifiers
-    if (allFlagStatus.makeFlags(params) != 0) return;
+    if (FlagStatus::makeFlags(params) != 0) return;
 
     listFireExtraKey.addKey(0, KeyCode::JIS_KANA);
   }
@@ -639,7 +638,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   FireFunc::firefunc_jis_kana_x2(const RemapParams &params)
   {
     // fire only if no-modifiers
-    if (allFlagStatus.makeFlags(params) != 0) return;
+    if (FlagStatus::makeFlags(params) != 0) return;
 
     listFireExtraKey.addKey(0, KeyCode::JIS_KANA);
     listFireExtraKey.addKey(0, KeyCode::JIS_KANA);
@@ -649,7 +648,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   FireFunc::firefunc_jis_eisuu(const RemapParams &params)
   {
     // fire only if no-modifiers
-    if (allFlagStatus.makeFlags(params) != 0) return;
+    if (FlagStatus::makeFlags(params) != 0) return;
 
     listFireExtraKey.addKey(0, KeyCode::JIS_EISUU);
   }
@@ -658,7 +657,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   FireFunc::firefunc_jis_eisuu_x2(const RemapParams &params)
   {
     // fire only if no-modifiers
-    if (allFlagStatus.makeFlags(params) != 0) return;
+    if (FlagStatus::makeFlags(params) != 0) return;
 
     listFireExtraKey.addKey(0, KeyCode::JIS_EISUU);
     listFireExtraKey.addKey(0, KeyCode::JIS_EISUU);
@@ -668,7 +667,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   FireFunc::firefunc_jis_toggle_eisuu_kana(const RemapParams &params)
   {
     // fire only if no-modifiers
-    if (allFlagStatus.makeFlags(params) != 0) return;
+    if (FlagStatus::makeFlags(params) != 0) return;
 
     JISKanaMode::toggle();
 
@@ -809,12 +808,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       ic.begin();
 
       if (extraRepeatFunc) {
-        FlagStatus *status = allFlagStatus.getFlagStatus(toFlag);
+        FlagStatus::Item *status = FlagStatus::getFlagStatus(toFlag);
         if (status) {
           status->temporary_decrease();
 
           *(remapParams.ex_extraRepeatFunc) = extraRepeatFunc;
-          *(remapParams.ex_extraRepeatFlags) = allFlagStatus.makeFlags(remapParams);
+          *(remapParams.ex_extraRepeatFlags) = FlagStatus::makeFlags(remapParams);
 
           status->temporary_increase();
         }
@@ -839,8 +838,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     KeyCode::KeyCode keyCode2 = RemapUtil::getModifierKeyCode(fromFlag2);
     if (keyCode1 == KeyCode::NONE || keyCode2 == KeyCode::NONE) return;
 
-    FlagStatus *fromStatus1 = allFlagStatus.getFlagStatus(fromFlag1);
-    FlagStatus *fromStatus2 = allFlagStatus.getFlagStatus(fromFlag2);
+    FlagStatus::Item *fromStatus1 = FlagStatus::getFlagStatus(fromFlag1);
+    FlagStatus::Item *fromStatus2 = FlagStatus::getFlagStatus(fromFlag2);
     if (fromStatus1 == NULL || fromStatus2 == NULL) return;
 
     if ((remapParams.params)->key != keyCode2) {
@@ -888,7 +887,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ModifierHoldingKeyToKey::remap(const RemapParams &remapParams, ModifierFlag::ModifierFlag fromFlag, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode)
   {
-    FlagStatus *fromStatus = allFlagStatus.getFlagStatus(fromFlag);
+    FlagStatus::Item *fromStatus = FlagStatus::getFlagStatus(fromFlag);
     if (fromStatus == NULL) return;
 
     KeyCode::KeyCode fromFlagKeyCode = fromStatus->getKeyCode();
