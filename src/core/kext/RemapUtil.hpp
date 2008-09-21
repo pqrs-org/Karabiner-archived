@@ -203,17 +203,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
 
   // --------------------
-  class PointingButtonStatus {
-  public:
-    bool helddown_left;
-    bool helddown_right;
-    bool helddown_middle;
-
-    bool *getButtonStatus(PointingButton::PointingButton button);
-  };
-  extern PointingButtonStatus pointingButtonStatus;
-
-  // --------------------
   extern ListFireRelativePointer listFireRelativePointer;
 
   // --------------------
