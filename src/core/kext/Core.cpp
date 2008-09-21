@@ -74,6 +74,9 @@ namespace org_pqrs_KeyRemap4MacBook {
           keyboardRepeatInfo.params = params;
 
           timer_repeat.setTimeoutMS(config.get_repeat_initial_wait());
+
+        } else if (eventType == KeyEvent::MODIFY || keyboardRepeatInfo.params.key == key) {
+          timer_repeat.cancelTimeout();
         }
       }
 
@@ -95,7 +98,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       ClickWatcher::reset();
       PressDownKeys::initialize();
       KeyRemap4MacBook_client::initialize();
-      return;
 
       workLoop = IOWorkLoop::workLoop();
       if (workLoop) {
