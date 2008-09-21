@@ -29,8 +29,6 @@
 		348ED8490CE47D9D00E179EC /* RemapUtil.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 348ED8480CE47D9D00E179EC /* RemapUtil.hpp */; };
 		349581080E7232A5003773EC /* PressDownKeys.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 349581060E7232A5003773EC /* PressDownKeys.cpp */; };
 		349581090E7232A5003773EC /* PressDownKeys.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 349581070E7232A5003773EC /* PressDownKeys.hpp */; };
-		34A0544E0E82B516001CE0BF /* CallBackWrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34A0544D0E82B516001CE0BF /* CallBackWrapper.hpp */; };
-		34A054500E82B80C001CE0BF /* CallBackWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A0544F0E82B80C001CE0BF /* CallBackWrapper.cpp */; };
 		34C7A9A20CE45EA400C98397 /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34C7A9A10CE45EA400C98397 /* Config.cpp */; };
 		34C7A9B00CE4605B00C98397 /* Config.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34C7A9AF0CE4605B00C98397 /* Config.hpp */; };
 		34F13A790E73B607006EB163 /* ListFireExtraKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F13A770E73B607006EB163 /* ListFireExtraKey.cpp */; };
@@ -43,6 +41,8 @@
 		34F13A8C0E740352006EB163 /* ClickWatcher.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34F13A8A0E740352006EB163 /* ClickWatcher.hpp */; };
 		34F13A8F0E740A7B006EB163 /* ListFireRelativePointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F13A8D0E740A7B006EB163 /* ListFireRelativePointer.cpp */; };
 		34F13A900E740A7B006EB163 /* ListFireRelativePointer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34F13A8E0E740A7B006EB163 /* ListFireRelativePointer.hpp */; };
+		34F14BAE0E861FC5001C15F3 /* CallBackWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F14BAC0E861FC5001C15F3 /* CallBackWrapper.cpp */; };
+		34F14BAF0E861FC5001C15F3 /* CallBackWrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34F14BAD0E861FC5001C15F3 /* CallBackWrapper.hpp */; };
 		34FB835F0CE5DBFF00BD6A24 /* base.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34FB835E0CE5DBFF00BD6A24 /* base.hpp */; };
 		34FDCE200E7D496700BFA969 /* ListHookedKeyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34FDCE1C0E7D496700BFA969 /* ListHookedKeyboard.cpp */; };
 		34FDCE210E7D496700BFA969 /* ListHookedKeyboard.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34FDCE1D0E7D496700BFA969 /* ListHookedKeyboard.hpp */; };
@@ -75,8 +75,6 @@
 		348ED8480CE47D9D00E179EC /* RemapUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RemapUtil.hpp; sourceTree = "<group>"; };
 		349581060E7232A5003773EC /* PressDownKeys.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PressDownKeys.cpp; path = util/PressDownKeys.cpp; sourceTree = "<group>"; };
 		349581070E7232A5003773EC /* PressDownKeys.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PressDownKeys.hpp; path = util/PressDownKeys.hpp; sourceTree = "<group>"; };
-		34A0544D0E82B516001CE0BF /* CallBackWrapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CallBackWrapper.hpp; sourceTree = "<group>"; };
-		34A0544F0E82B80C001CE0BF /* CallBackWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CallBackWrapper.cpp; sourceTree = "<group>"; };
 		34C7A9A10CE45EA400C98397 /* Config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Config.cpp; sourceTree = "<group>"; };
 		34C7A9AF0CE4605B00C98397 /* Config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config.hpp; sourceTree = "<group>"; };
 		34F13A770E73B607006EB163 /* ListFireExtraKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ListFireExtraKey.cpp; path = util/ListFireExtraKey.cpp; sourceTree = "<group>"; };
@@ -89,6 +87,8 @@
 		34F13A8A0E740352006EB163 /* ClickWatcher.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ClickWatcher.hpp; path = util/ClickWatcher.hpp; sourceTree = "<group>"; };
 		34F13A8D0E740A7B006EB163 /* ListFireRelativePointer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ListFireRelativePointer.cpp; path = util/ListFireRelativePointer.cpp; sourceTree = "<group>"; };
 		34F13A8E0E740A7B006EB163 /* ListFireRelativePointer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ListFireRelativePointer.hpp; path = util/ListFireRelativePointer.hpp; sourceTree = "<group>"; };
+		34F14BAC0E861FC5001C15F3 /* CallBackWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CallBackWrapper.cpp; path = util/CallBackWrapper.cpp; sourceTree = "<group>"; };
+		34F14BAD0E861FC5001C15F3 /* CallBackWrapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CallBackWrapper.hpp; path = util/CallBackWrapper.hpp; sourceTree = "<group>"; };
 		34FB835E0CE5DBFF00BD6A24 /* base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = base.hpp; sourceTree = "<group>"; };
 		34FDCE1C0E7D496700BFA969 /* ListHookedKeyboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ListHookedKeyboard.cpp; sourceTree = "<group>"; };
 		34FDCE1D0E7D496700BFA969 /* ListHookedKeyboard.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ListHookedKeyboard.hpp; sourceTree = "<group>"; };
@@ -139,8 +139,6 @@
 		247142CAFF3F8F9811CA285C /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				34A0544F0E82B80C001CE0BF /* CallBackWrapper.cpp */,
-				34A0544D0E82B516001CE0BF /* CallBackWrapper.hpp */,
 				34FDCE1C0E7D496700BFA969 /* ListHookedKeyboard.cpp */,
 				34FDCE1D0E7D496700BFA969 /* ListHookedKeyboard.hpp */,
 				34FDCE1E0E7D496700BFA969 /* ListHookedPointing.cpp */,
@@ -169,6 +167,8 @@
 		346B753B0E72C0A200F9A79F /* util */ = {
 			isa = PBXGroup;
 			children = (
+				34F14BAC0E861FC5001C15F3 /* CallBackWrapper.cpp */,
+				34F14BAD0E861FC5001C15F3 /* CallBackWrapper.hpp */,
 				34012A6C0E7AED010069FE39 /* TimerWrapper.cpp */,
 				34012A6D0E7AED010069FE39 /* TimerWrapper.hpp */,
 				34F13A8D0E740A7B006EB163 /* ListFireRelativePointer.cpp */,
@@ -219,7 +219,7 @@
 				345004B00E7CE48F0075324B /* Driver.hpp in Headers */,
 				34FDCE210E7D496700BFA969 /* ListHookedKeyboard.hpp in Headers */,
 				34FDCE230E7D496700BFA969 /* ListHookedPointing.hpp in Headers */,
-				34A0544E0E82B516001CE0BF /* CallBackWrapper.hpp in Headers */,
+				34F14BAF0E861FC5001C15F3 /* CallBackWrapper.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,7 +306,7 @@
 				345004AF0E7CE48F0075324B /* Driver.cpp in Sources */,
 				34FDCE200E7D496700BFA969 /* ListHookedKeyboard.cpp in Sources */,
 				34FDCE220E7D496700BFA969 /* ListHookedPointing.cpp in Sources */,
-				34A054500E82B80C001CE0BF /* CallBackWrapper.cpp in Sources */,
+				34F14BAE0E861FC5001C15F3 /* CallBackWrapper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

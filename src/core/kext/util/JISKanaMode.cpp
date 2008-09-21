@@ -1,12 +1,11 @@
 #include "JISKanaMode.hpp"
-#include "CallBackWrapper.hpp"
 #include "FlagStatus.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   extern AllFlagStatus allFlagStatus;
 
   namespace JISKanaMode {
-    Mode mode;
+    Mode mode = JISKANAMODE_ASCII;
 
     Mode
     getMode(void)
