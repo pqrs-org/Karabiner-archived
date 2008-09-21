@@ -49,6 +49,8 @@
 		34F14BB90E862109001C15F3 /* ListHookedPointing.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34F14BB70E862109001C15F3 /* ListHookedPointing.hpp */; };
 		34F14BBC0E862585001C15F3 /* PointingButtonStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F14BBA0E862585001C15F3 /* PointingButtonStatus.cpp */; };
 		34F14BBD0E862585001C15F3 /* PointingButtonStatus.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34F14BBB0E862585001C15F3 /* PointingButtonStatus.hpp */; };
+		34F14BC00E867884001C15F3 /* NumHeldDownKeys.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F14BBE0E867884001C15F3 /* NumHeldDownKeys.cpp */; };
+		34F14BC10E867884001C15F3 /* NumHeldDownKeys.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34F14BBF0E867884001C15F3 /* NumHeldDownKeys.hpp */; };
 		34FB835F0CE5DBFF00BD6A24 /* base.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34FB835E0CE5DBFF00BD6A24 /* base.hpp */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +99,8 @@
 		34F14BB70E862109001C15F3 /* ListHookedPointing.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ListHookedPointing.hpp; path = util/ListHookedPointing.hpp; sourceTree = "<group>"; };
 		34F14BBA0E862585001C15F3 /* PointingButtonStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PointingButtonStatus.cpp; path = util/PointingButtonStatus.cpp; sourceTree = "<group>"; };
 		34F14BBB0E862585001C15F3 /* PointingButtonStatus.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PointingButtonStatus.hpp; path = util/PointingButtonStatus.hpp; sourceTree = "<group>"; };
+		34F14BBE0E867884001C15F3 /* NumHeldDownKeys.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NumHeldDownKeys.cpp; path = util/NumHeldDownKeys.cpp; sourceTree = "<group>"; };
+		34F14BBF0E867884001C15F3 /* NumHeldDownKeys.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = NumHeldDownKeys.hpp; path = util/NumHeldDownKeys.hpp; sourceTree = "<group>"; };
 		34FB835E0CE5DBFF00BD6A24 /* base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = base.hpp; sourceTree = "<group>"; };
 		8DA8362C06AD9B9200E5AC22 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = /System/Library/Frameworks/Kernel.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -167,6 +171,8 @@
 		346B753B0E72C0A200F9A79F /* util */ = {
 			isa = PBXGroup;
 			children = (
+				34F14BBE0E867884001C15F3 /* NumHeldDownKeys.cpp */,
+				34F14BBF0E867884001C15F3 /* NumHeldDownKeys.hpp */,
 				34F14BBA0E862585001C15F3 /* PointingButtonStatus.cpp */,
 				34F14BBB0E862585001C15F3 /* PointingButtonStatus.hpp */,
 				34F14BB60E862109001C15F3 /* ListHookedPointing.cpp */,
@@ -227,6 +233,7 @@
 				34F14BB50E86205E001C15F3 /* ListHookedKeyboard.hpp in Headers */,
 				34F14BB90E862109001C15F3 /* ListHookedPointing.hpp in Headers */,
 				34F14BBD0E862585001C15F3 /* PointingButtonStatus.hpp in Headers */,
+				34F14BC10E867884001C15F3 /* NumHeldDownKeys.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +322,7 @@
 				34F14BB40E86205E001C15F3 /* ListHookedKeyboard.cpp in Sources */,
 				34F14BB80E862109001C15F3 /* ListHookedPointing.cpp in Sources */,
 				34F14BBC0E862585001C15F3 /* PointingButtonStatus.cpp in Sources */,
+				34F14BC00E867884001C15F3 /* NumHeldDownKeys.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

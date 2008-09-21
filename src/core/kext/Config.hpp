@@ -32,6 +32,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ----------------------------------------
     int debug;
     int debug_pointing;
+    int debug_devel;
   };
   extern Config config;
 
