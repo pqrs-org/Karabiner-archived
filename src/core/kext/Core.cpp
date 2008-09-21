@@ -98,7 +98,17 @@ namespace org_pqrs_KeyRemap4MacBook {
       ClickWatcher::reset();
       PressDownKeys::initialize();
       KeyRemap4MacBook_client::initialize();
+    }
 
+    void
+    terminate(void)
+    {
+      sysctl_unregister();
+    }
+
+    void
+    start(void)
+    {
       workLoop = IOWorkLoop::workLoop();
       if (workLoop) {
         timer_refresh.initialize(workLoop, NULL, refreshHookedDevice);
@@ -109,32 +119,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    terminate(void)
-    {
-      timer_refresh.terminate();
-      sysctl_unregister();
-    }
-
-    void
-    start(void)
-    {
-      const int INTERVAL = 1000;
-      timer_refresh.setTimeoutMS(INTERVAL);
-
-    }
-
-    void
     stop(void)
     {
       timer_refresh.terminate();
+      ListHookedKeyboard::terminate();
+      ListHookedPointing::terminate();
 
       if (workLoop) {
         workLoop->release();
         workLoop = NULL;
       }
-
-      ListHookedKeyboard::terminate();
-      ListHookedPointing::terminate();
     }
 
     // ======================================================================
