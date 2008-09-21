@@ -257,8 +257,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   private:
     bool isButtonHeldDown;
   };
-
-  extern JISKanaMode jisKanaMode;
 }
 
 #endif

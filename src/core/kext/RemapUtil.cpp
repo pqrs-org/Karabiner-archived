@@ -9,7 +9,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   ListFireRelativePointer listFireRelativePointer;
   FirePointingScroll firePointingScroll;
   PointingButtonStatus pointingButtonStatus;
-  JISKanaMode jisKanaMode;
 
   bool
   RemapUtil::isInternalKeyboard(unsigned int keyboardType)
@@ -426,7 +425,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       if (p.eventType == KeyEvent::DOWN) {
         if (p.key == KeyCode::JIS_EISUU || p.key == KeyCode::JIS_KANA) {
-          jisKanaMode.setMode(p.eventType, p.key, p.flags);
+          JISKanaMode::setMode(p);
         }
         PressDownKeys::add(p.key, p.keyboardType);
       } else {
@@ -451,9 +450,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! RemapUtil::isKey(params, fromKeyCode)) return;
 
-    if (RemapUtil::isKeyDown(params, fromKeyCode)) jisKanaMode.toggle();
+    if (RemapUtil::isKeyDown(params, fromKeyCode)) JISKanaMode::toggle();
 
-    KeyCode::KeyCode toKeyCode = jisKanaMode.iskana() ? KeyCode::JIS_KANA : KeyCode::JIS_EISUU;
+    KeyCode::KeyCode toKeyCode = JISKanaMode::iskana() ? KeyCode::JIS_KANA : KeyCode::JIS_EISUU;
     RemapUtil::keyToKey(params, fromKeyCode, toKeyCode);
   }
 
@@ -673,9 +672,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     // fire only if no-modifiers
     if (allFlagStatus.makeFlags(params) != 0) return;
 
-    jisKanaMode.toggle();
+    JISKanaMode::toggle();
 
-    if (jisKanaMode.iskana()) {
+    if (JISKanaMode::iskana()) {
       listFireExtraKey.addKey(0, KeyCode::JIS_KANA);
     } else {
       listFireExtraKey.addKey(0, KeyCode::JIS_EISUU);

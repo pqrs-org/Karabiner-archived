@@ -263,7 +263,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_jis_layout_kawashima) return;
 
-    if (jisKanaMode.getMode() != JISKanaMode::JISKANAMODE_HIRAGANA) return;
+    if (JISKanaMode::getMode() != JISKanaMode::JISKANAMODE_HIRAGANA) return;
 
     // A -> TA ( Q )
     // A+Shift_L -> NU ( 1 )
@@ -287,7 +287,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_jis_layout_windowskanainput) return;
 
-    if (jisKanaMode.getMode() == JISKanaMode::JISKANAMODE_ASCII) return;
+    if (JISKanaMode::getMode() == JISKanaMode::JISKANAMODE_ASCII) return;
 
     if (allFlagStatus.isHeldDown_shift()) {
       RemapUtil::keyToKey(remapParams, KeyCode::MINUS, KeyCode::BRACKET_RIGHT);
