@@ -74,6 +74,14 @@
           <sysctl>remap.leftarrow2controlL</sysctl>
           <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, KeyCode::CONTROL_L</autogen>
         </item>
+        <item>
+          <name>Option_R-Arrow to (PageUp/Down/Home/End) Key</name>
+          <sysctl>remap.optionR_arrow2PgUpDnHomeEnd</sysctl>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_UP, ModifierFlag::OPTION_R, KeyCode::PAGEUP</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_R, KeyCode::PAGEDOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_R, KeyCode::HOME</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_R, KeyCode::END</autogen>
+        </item>
       </list>
     </item>
 
@@ -1250,6 +1258,14 @@
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
           <autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- KeyCode::E, VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
+          <name>Control+AE to Command+Shift+Left/Right,Left/Right</name>
+          <appendix>(An Alternative way if you use Command+Left/Right for Spaces)</appendix>
+          <sysctl>option.emacsmode_controlAE_alternative</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
+          <autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::E, VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
         </item>
         <item>
           <name>Control+K to Command+Shift+Right,Command+X</name>
