@@ -28,14 +28,14 @@ namespace org_pqrs_KeyRemap4MacBook {
         Params_KeyboardEventCallBack params;
       } keyboardRepeatInfo;
 
-      class KeyboardExtraRepeatInfo {
+      class KeyboardRepeatInfo_extra {
       public:
-        KeyboardExtraRepeatInfo(void) { kbd = NULL; }
+        KeyboardRepeatInfo_extra(void) { kbd = NULL; }
         IOHIKeyboard *kbd;
         Params_KeyboardEventCallBack params;
-        org_pqrs_KeyRemap4MacBook::ExtraRepeatFunc::ExtraRepeatFunc func;
+        ExtraRepeatFunc::ExtraRepeatFunc func;
         unsigned int counter;
-      } keyboardExtraRepeatInfo;
+      } keyboardRepeatInfo_extra;
 
       IOHIKeyboard *last_keyboard = NULL;
       IOHIKeyboard *last_consumer = NULL;
@@ -83,12 +83,50 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       void
+      setRepeat_keyboard_extra(IOHIKeyboard *kbd, const Params_KeyboardEventCallBack &params, ExtraRepeatFunc::ExtraRepeatFunc func, unsigned int flags)
+      {
+        if (func) {
+          keyboardRepeatInfo_extra.kbd = kbd;
+          keyboardRepeatInfo_extra.func = func;
+          keyboardRepeatInfo_extra.counter = 0;
+          keyboardRepeatInfo_extra.params = params;
+          keyboardRepeatInfo_extra.params.flags = flags;
+
+          timer_repeat_keyboard_extra.setTimeoutMS(config.get_keyoverlaidmodifier_initial_wait());
+
+        } else {
+          timer_repeat_keyboard_extra.cancelTimeout();
+          keyboardRepeatInfo_extra.func = NULL;
+        }
+      }
+
+      void
       doRepeat_keyboard(OSObject *owner, IOTimerEventSource *sender)
       {
         ListHookedKeyboard::Item *p = ListHookedKeyboard::get(keyboardRepeatInfo.kbd);
         if (! p) return;
 
         RemapUtil::fireKey(p->getOrig_keyboardEventAction(), keyboardRepeatInfo.params);
+        sender->setTimeoutMS(config.get_repeat_wait());
+      }
+
+      void
+      doRepeat_keyboard_extra(OSObject *owner, IOTimerEventSource *sender)
+      {
+        ListHookedKeyboard::Item *p = ListHookedKeyboard::get(keyboardRepeatInfo_extra.kbd);
+        if (! p) return;
+
+        if (p->getOrig_keyboardEventAction()) {
+          keyboardRepeatInfo_extra.func(p->getOrig_keyboardEventAction(),
+                                        keyboardRepeatInfo_extra.params.target,
+                                        keyboardRepeatInfo_extra.params.flags,
+                                        keyboardRepeatInfo_extra.params.keyboardType,
+                                        keyboardRepeatInfo_extra.params.ts,
+                                        keyboardRepeatInfo_extra.params.sender,
+                                        keyboardRepeatInfo_extra.params.refcon);
+        }
+        ++(keyboardRepeatInfo_extra.counter);
+
         sender->setTimeoutMS(config.get_repeat_wait());
       }
     }
@@ -118,6 +156,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         timer_refresh.setTimeoutMS(REFRESH_DEVICE_INTERVAL);
 
         timer_repeat_keyboard.initialize(workLoop, NULL, doRepeat_keyboard);
+        timer_repeat_keyboard_extra.initialize(workLoop, NULL, doRepeat_keyboard_extra);
       }
     }
 
@@ -191,7 +230,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // Because the key repeat generates it by oneself, I throw it away.
       if (params->repeat) {
         keyboardRepeatInfo.params.ts = params->ts;
-        keyboardExtraRepeatInfo.params.ts = params->ts;
+        keyboardRepeatInfo_extra.params.ts = params->ts;
         return;
       }
 
@@ -221,7 +260,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         KeyRemap4MacBook_bridge::ActiveApplicationInfo::UNKNOWN,
         &ex_extraRepeatFunc,
         &ex_extraRepeatFlags,
-        keyboardExtraRepeatInfo.counter,
+        keyboardRepeatInfo_extra.counter,
       };
       NumHeldDownKeys::set(remapParams);
 
@@ -260,9 +299,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       listFireExtraKey.fire(p->getOrig_keyboardEventAction(), *params);
 
       setRepeat_keyboard(kbd, *params);
-#if 0
-      p->setExtraRepeatInfo(ex_extraRepeatFunc, ex_extraRepeatFlags, params->keyboardType, params->ts, params->target, params->refcon);
-#endif
+      setRepeat_keyboard_extra(kbd, *params, ex_extraRepeatFunc, ex_extraRepeatFlags);
 
       if (NumHeldDownKeys::iszero()) {
         NumHeldDownKeys::reset();
