@@ -2,32 +2,76 @@
 #include "RemapUtil.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  void
-  ListFireExtraKey::addKey(unsigned int flags, KeyCode::KeyCode keyCode)
-  {
-    if (RemapUtil::getKeyCodeModifier(keyCode) != ModifierFlag::NONE) {
-      add(KeyEvent::MODIFY, flags, keyCode);
-    } else {
-      add(KeyEvent::DOWN, flags, keyCode);
-      add(KeyEvent::UP, flags, keyCode);
+  namespace ListFireExtraKey {
+    enum {
+      MAXNUM = 32,
+    };
+
+    class Item {
+    public:
+      void set(unsigned int _eventType, unsigned int _flags, unsigned int _key) {
+        eventType = _eventType;
+        flags = _flags;
+        key = _key;
+      }
+      unsigned int getEventType(void) const { return eventType; }
+      unsigned int getFlags(void) const { return flags; }
+      unsigned int getKey(void) const { return key; }
+
+    private:
+      unsigned int eventType;
+      unsigned int flags;
+      unsigned int key;
+    };
+
+    Item item[MAXNUM];
+    int size;
+
+    void
+    reset(void)
+    {
+      size = 0;
     }
-  }
 
-  void
-  ListFireExtraKey::fire(KeyboardEventCallback callback, const Params_KeyboardEventCallBack &params)
-  {
-    if (callback == NULL) return;
+    bool
+    isEmpty(void)
+    {
+      return size == 0;
+    }
 
-    Params_KeyboardEventCallBack callbackparams = params;
+    void
+    add(unsigned int eventType, unsigned int flags, unsigned int key)
+    {
+      if (size >= MAXNUM) return;
+      item[size].set(eventType, flags, key);
+      ++size;
+    }
 
-    for (int i = 0; i < size; ++i) {
-      Item &item = list[i];
+    void
+    addKey(unsigned int flags, KeyCode::KeyCode keyCode)
+    {
+      if (RemapUtil::getKeyCodeModifier(keyCode) != ModifierFlag::NONE) {
+        add(KeyEvent::MODIFY, flags, keyCode);
+      } else {
+        add(KeyEvent::DOWN, flags, keyCode);
+        add(KeyEvent::UP, flags, keyCode);
+      }
+    }
 
-      callbackparams.eventType = item.getEventType();
-      callbackparams.flags = item.getFlags();
-      callbackparams.key = item.getKey();
+    void
+    fire(KeyboardEventCallback callback, const Params_KeyboardEventCallBack &params)
+    {
+      if (callback == NULL) return;
 
-      RemapUtil::fireKey(callback, callbackparams);
+      Params_KeyboardEventCallBack callbackparams = params;
+
+      for (int i = 0; i < size; ++i) {
+        callbackparams.eventType = item[i].getEventType();
+        callbackparams.flags = item[i].getFlags();
+        callbackparams.key = item[i].getKey();
+
+        RemapUtil::fireKey(callback, callbackparams);
+      }
     }
   }
 }

@@ -245,7 +245,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (remapParams.appType != KeyRemap4MacBook_bridge::ActiveApplicationInfo::VI) return;
 
     if (RemapUtil::isKeyDown(remapParams, KeyCode::JIS_EISUU)) {
-      listFireExtraKey.addKey(0, KeyCode::ESCAPE);
+      ListFireExtraKey::addKey(0, KeyCode::ESCAPE);
     }
   }
 

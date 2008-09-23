@@ -245,7 +245,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       // ------------------------------------------------------------
-      listFireExtraKey.reset();
+      ListFireExtraKey::reset();
       listFireConsumerKey.reset();
       listFireRelativePointer.reset();
 
@@ -296,7 +296,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       RemapUtil::fireKey(p->getOrig_keyboardEventAction(), *params);
-      listFireExtraKey.fire(p->getOrig_keyboardEventAction(), *params);
+      ListFireExtraKey::fire(p->getOrig_keyboardEventAction(), *params);
 
       setRepeat_keyboard(kbd, *params);
       setRepeat_keyboard_extra(kbd, *params, ex_extraRepeatFunc, ex_extraRepeatFlags);
@@ -328,7 +328,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ------------------------------------------------------------
       params->log();
 
-      listFireExtraKey.reset();
+      ListFireExtraKey::reset();
       KeyCode::KeyCode ex_remapKeyCode = KeyCode::NONE;
       RemapConsumerParams remapParams = {
         params, &ex_remapKeyCode,
@@ -351,7 +351,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           callbackparams.apply(hk->getOrig_keyboardEventAction());
           setRepeat_keyboard(hk->get(), callbackparams);
         }
-        listFireExtraKey.fire(hk->getOrig_keyboardEventAction(), callbackparams);
+        ListFireExtraKey::fire(hk->getOrig_keyboardEventAction(), callbackparams);
       }
 
       RemapUtil::fireConsumer(p->getOrig_keyboardSpecialEventAction(), *params);
