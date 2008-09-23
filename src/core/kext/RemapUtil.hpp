@@ -118,7 +118,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void pointingRelativeToScroll(const RemapPointingParams_relative &remapParams);
   }
 
-  extern ListFireExtraKey listFireExtraKey;
   extern ListFireConsumerKey listFireConsumerKey;
 
   // ----------------------------------------------------------------------
