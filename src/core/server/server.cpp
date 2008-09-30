@@ -208,7 +208,8 @@ KeyRemap4MacBook_server::Server::do_ActiveApplicationInfo(KeyRemap4MacBook_bridg
     reply->type = KeyRemap4MacBook_bridge::ActiveApplicationInfo::VI;
 
   } else if (strcmp(applicationName, "com.apple.Terminal") == 0 ||
-             strcmp(applicationName, "iTerm") == 0) {
+             strcmp(applicationName, "iTerm") == 0 ||
+             strcmp(applicationName, "net.sourceforge.iTerm") == 0) {
     reply->type = KeyRemap4MacBook_bridge::ActiveApplicationInfo::TERMINAL;
 
   } else if (strcmp(applicationName, "com.vmware.fusion") == 0 ||
