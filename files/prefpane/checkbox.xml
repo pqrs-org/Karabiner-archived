@@ -1911,6 +1911,11 @@
           <name>Remap PC PrintScreen Key</name>
           <list>
             <item>
+              <name>PrintScreen Key to Eject</name>
+              <sysctl>remap.pc_printscreen2eject</sysctl>
+              <autogen>--KeyToComsumer-- KeyCode::PC_PRINTSCREEN, ConsumerKeyCode::EJECT</autogen>
+            </item>
+            <item>
               <name>PrintScreen Key to F12</name>
               <sysctl>remap.pc_printscreen2f12</sysctl>
               <autogen>--KeyToKey-- KeyCode::PC_PRINTSCREEN, KeyCode::F12</autogen>
@@ -1943,6 +1948,23 @@
               <autogen>--KeyToKey-- KeyCode::KEYPAD_1, KeyCode::END</autogen>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_3, KeyCode::PAGEDOWN</autogen>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_7, KeyCode::HOME</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_9, KeyCode::PAGEUP</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::FORWARD_DELETE</autogen>
+            </item>
+            <item>
+              <name>Enable KeyPad as Arrow</name>
+              <appendix>(Num1/Num7 behave like PC Style Home/End)</appendix>
+              <sysctl>remap.keypadnumlock_pclikehomeend</sysctl>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_0, KeyCode::NONE</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_5, KeyCode::NONE</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_COMMA, KeyCode::NONE</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_2, KeyCode::CURSOR_DOWN</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_4, KeyCode::CURSOR_LEFT</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_6, KeyCode::CURSOR_RIGHT</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_8, KeyCode::CURSOR_UP</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_1, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_3, KeyCode::PAGEDOWN</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_7, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_9, KeyCode::PAGEUP</autogen>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::FORWARD_DELETE</autogen>
             </item>
