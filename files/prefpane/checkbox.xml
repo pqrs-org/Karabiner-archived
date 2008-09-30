@@ -1953,7 +1953,7 @@
             </item>
             <item>
               <name>Enable KeyPad as Arrow</name>
-              <appendix>(Num7/Num1 behave like PC Style Home/End)</appendix>
+              <appendix>(With PC Style Home/End/PageUp/PageDown)</appendix>
               <sysctl>remap.keypadnumlock_pclikehomeend</sysctl>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_0, KeyCode::NONE</autogen>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_5, KeyCode::NONE</autogen>
@@ -1963,9 +1963,9 @@
               <autogen>--KeyToKey-- KeyCode::KEYPAD_6, KeyCode::CURSOR_RIGHT</autogen>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_8, KeyCode::CURSOR_UP</autogen>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_1, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEYPAD_3, KeyCode::PAGEDOWN</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_3, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_7, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEYPAD_9, KeyCode::PAGEUP</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_9, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::FORWARD_DELETE</autogen>
             </item>
             <item>
@@ -1983,6 +1983,16 @@
           <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, ModifierFlag::FN, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- KeyCode::END, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, ModifierFlag::FN, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
+          <name>Use PC Style PageUp/PageDown</name>
+          <appendix>(behave like Option+PageUp/PageDown)</appendix>
+          <sysctl>remap.pclikepageupdown</sysctl>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <autogen>--KeyToKey-- KeyCode::PAGEUP, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_UP, ModifierFlag::FN, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::PAGEDOWN, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, ModifierFlag::FN, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
         </item>
       </list>
     </item>
