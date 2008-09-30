@@ -1953,7 +1953,7 @@
             </item>
             <item>
               <name>Enable KeyPad as Arrow</name>
-              <appendix>(Num1/Num7 behave like PC Style Home/End)</appendix>
+              <appendix>(Num7/Num1 behave like PC Style Home/End)</appendix>
               <sysctl>remap.keypadnumlock_pclikehomeend</sysctl>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_0, KeyCode::NONE</autogen>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_5, KeyCode::NONE</autogen>
