@@ -1541,6 +1541,14 @@
           <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::COMMAND_R, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::COMMAND_R | VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
         </item>
+        <item>
+          <name>Option_L+hjkl to Option+Left/Down/Up/Right</name>
+          <sysctl>option.vimode_option_hjkl</sysctl>
+          <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::OPTION_L, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::OPTION_L, KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::OPTION_L, KeyCode::CURSOR_UP, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::OPTION_L, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
+        </item>
       </list>
     </item>
 
