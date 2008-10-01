@@ -1524,6 +1524,14 @@
           <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::COMMAND_R, KeyCode::CURSOR_RIGHT</autogen>
         </item>
         <item>
+          <name>Control_L+hjkl to Left/Down/Up/Right</name>
+          <sysctl>option.vimode_control_hjkl</sysctl>
+          <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::CONTROL_L, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::CONTROL_L, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT</autogen>
+        </item>
+        <item>
           <name>Command_R+g/G to Home/End</name>
           <sysctl>option.vimode_gG</sysctl>
           <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::HOME</autogen>
