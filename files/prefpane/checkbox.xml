@@ -2432,6 +2432,11 @@
               <sysctl>remap.russian_paragraph2escape</sysctl>
               <autogen>--KeyToKey-- KeyCode::RUSSIAN_PARAGRAPH, KeyCode::ESCAPE</autogen>
             </item>
+            <item>
+              <name>Paragraph(§) to Forward Delete</name>
+              <sysctl>remap.russian_paragraph2forwarddelete</sysctl>
+              <autogen>--KeyToKey-- KeyCode::RUSSIAN_PARAGRAPH, KeyCode::FORWARD_DELETE</autogen>
+            </item>
           </list>
         </item>
       </list>
