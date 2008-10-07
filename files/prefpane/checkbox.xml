@@ -780,6 +780,17 @@
     </item>
 
     <item>
+      <name>Remap Minus Key</name>
+      <list>
+        <item>
+          <name>Remap Minus to Semicolon</name>
+          <sysctl>remap.minus2semicolon</sysctl>
+          <autogen>--KeyToKey-- KeyCode::MINUS, KeyCode::SEMICOLON</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>Remap Num Key (1...0)</name>
       <list>
         <item>
@@ -959,6 +970,11 @@
     <item>
       <name>Remap Semicolon Key</name>
       <list>
+        <item>
+          <name>Semicolon to Minus</name>
+          <sysctl>remap.semicolon2minus</sysctl>
+          <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::MINUS</autogen>
+        </item>
         <item>
           <name>Semicolon to Return</name>
           <sysctl>remap.semicolon2return</sysctl>
