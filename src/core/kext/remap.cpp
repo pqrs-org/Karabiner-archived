@@ -43,6 +43,27 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
+  remap_f6_to_numlock(const RemapParams &remapParams)
+  {
+    if (! config.remap_f6_to_numlock) return;
+
+    if (! RemapUtil::isKey(remapParams, KeyCode::F6)) return;
+
+    if (RemapUtil::isKeyDown(remapParams, KeyCode::F6)) {
+      static bool flag = true;
+      if (flag) {
+        FlagStatus::lock_increase(ModifierFlag::FN);
+      } else {
+        FlagStatus::lock_decrease(ModifierFlag::FN);
+      }
+      flag = ! flag;
+    }
+
+    (remapParams.params)->key = KeyCode::NONE;
+  }
+
+  // ----------------------------------------
+  void
   remap_semicolon2return_controlsemicolon2semicolon(const RemapParams &remapParams)
   {
     if (! config.remap_semicolon2return_controlsemicolon2semicolon) return;
@@ -327,6 +348,8 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &remapParams)
   remap_enter2commandL_enter2controlL_vm(remapParams);
 
   remap_fn2controlL_commandR2fn(remapParams);
+
+  remap_f6_to_numlock(remapParams);
 
   remap_semicolon2return_controlsemicolon2semicolon(remapParams);
   remap_swapcolons(remapParams);
