@@ -274,6 +274,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       VOLUME_MUTE = 7,
       BRIGHTNESS_UP = 2,
       BRIGHTNESS_DOWN = 3,
+      NUMLOCK = 10,
       EJECT = 14,
 
       VIDEO_MIRROR = 15, // FN+F7

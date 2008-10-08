@@ -647,6 +647,11 @@
           <autogen>--KeyToComsumer-- KeyCode::F5, ConsumerKeyCode::VOLUME_UP</autogen>
         </item>
         <item>
+          <name>F6 to NumLock</name>
+          <sysctl>remap.f6_to_numlock</sysctl>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+        </item>
+        <item>
           <name>F7 to Music Prev</name>
           <sysctl>remap.f7_to_musicprev</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
