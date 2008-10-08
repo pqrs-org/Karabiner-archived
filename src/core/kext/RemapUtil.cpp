@@ -423,6 +423,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (p.key == KeyCode::JIS_EISUU || p.key == KeyCode::JIS_KANA) {
           JISKanaMode::setMode(p);
         }
+        if (p.key == KeyCode::ESCAPE) {
+          FlagStatus::reset_lock();
+        }
         PressDownKeys::add(p.key, p.keyboardType);
       } else {
         PressDownKeys::remove(p.key, p.keyboardType);
