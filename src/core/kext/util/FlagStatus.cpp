@@ -13,6 +13,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       key = RemapUtil::getModifierKeyCode(_flag);
       count = 0;
       temporary_count = 0;
+      lock_count = 0;
     }
 
     void
@@ -56,6 +57,18 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       for (int i = 0; i < ModifierFlag::listsize; ++i) {
         item[i].reset();
+      }
+    }
+
+    void
+    reset_lock(void)
+    {
+      if (config.debug_devel) {
+        printf("KeyRemap4MacBook FlagStatus::reset_lock\n");
+      }
+
+      for (int i = 0; i < ModifierFlag::listsize; ++i) {
+        item[i].reset_lock();
       }
     }
 
@@ -115,6 +128,20 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
+    increase(ModifierFlag::ModifierFlag flag) {
+      Item *p = getFlagStatus(flag);
+      if (! p) return;
+      return p->increase();
+    }
+
+    void
+    decrease(ModifierFlag::ModifierFlag flag) {
+      Item *p = getFlagStatus(flag);
+      if (! p) return;
+      return p->decrease();
+    }
+
+    void
     temporary_increase(ModifierFlag::ModifierFlag flag) {
       Item *p = getFlagStatus(flag);
       if (! p) return;
@@ -126,6 +153,20 @@ namespace org_pqrs_KeyRemap4MacBook {
       Item *p = getFlagStatus(flag);
       if (! p) return;
       return p->temporary_decrease();
+    }
+
+    void
+    lock_increase(ModifierFlag::ModifierFlag flag) {
+      Item *p = getFlagStatus(flag);
+      if (! p) return;
+      return p->lock_increase();
+    }
+
+    void
+    lock_decrease(ModifierFlag::ModifierFlag flag) {
+      Item *p = getFlagStatus(flag);
+      if (! p) return;
+      return p->lock_decrease();
     }
   }
 }
