@@ -1,6 +1,7 @@
 extern "C" {
 #include <sys/systm.h>
 #include <sys/un.h>
+#include <sys/socket.h>
   errno_t sock_nointerrupt(socket_t so, int on);
 }
 #include "Client.hpp"
