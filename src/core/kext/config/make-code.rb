@@ -96,7 +96,7 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
 
         case type
         when 'KeyToKey'
-          code_key += "RemapUtil::keyToKey(remapParams, #{params});\n"
+          code_key += "if (RemapUtil::keyToKey(remapParams, #{params})) return;\n"
           func['key'] << name
 
         when 'DoublePressModifier'
