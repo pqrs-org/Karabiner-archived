@@ -11,7 +11,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (int i = 0; i < size; ++i) {
       Item &item = list[i];
       unsigned int flavor = item.getKey();
-      unsigned int guid = -1;
+      UInt64 guid = static_cast<UInt64>(-1);
 
       Params_KeyboardSpecialEventCallback params = {
         target, item.getEventType(), item.getFlags(), item.getKey(),

@@ -75,7 +75,10 @@ namespace org_pqrs_KeyRemap4MacBook {
           keyboardRepeatInfo.kbd = kbd;
           keyboardRepeatInfo.params = params;
 
-          timer_repeat_keyboard.setTimeoutMS(config.get_repeat_initial_wait());
+          IOReturn result = timer_repeat_keyboard.setTimeoutMS(config.get_repeat_initial_wait());
+          if (result != kIOReturnSuccess) {
+            IOLog("[KeyRemap4MacBook ERROR] setTimeoutMS failed\n");
+          }
 
         } else if (params.eventType == KeyEvent::MODIFY || keyboardRepeatInfo.params.key == params.key) {
           timer_repeat_keyboard.cancelTimeout();
@@ -151,7 +154,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     start(void)
     {
       workLoop = IOWorkLoop::workLoop();
-      if (workLoop) {
+      if (! workLoop) {
+        IOLog("[KeyRemap4MacBook ERROR] IOWorkLoop::workLoop failed\n");
+      } else {
         timer_refresh.initialize(workLoop, NULL, refreshHookedDevice);
         timer_refresh.setTimeoutMS(REFRESH_DEVICE_INTERVAL);
 
