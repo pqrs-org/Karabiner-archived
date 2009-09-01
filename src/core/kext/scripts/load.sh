@@ -1,7 +1,7 @@
 #!/bin/sh
 
 sudo cp -R build/Release/KeyRemap4MacBook.kext /tmp/
-sudo kextload -t /tmp/KeyRemap4MacBook.kext
+sudo kextutil -t /tmp/KeyRemap4MacBook.kext
 
 #--------------------
 while true; do
