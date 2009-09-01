@@ -171,7 +171,7 @@ KeyRemap4MacBook_server::Server::makeSocket(void)
   struct sockaddr_un listenSocketAddr;
   memset(&listenSocketAddr, 0, sizeof(listenSocketAddr));
   listenSocketAddr.sun_len = sizeof(listenSocketAddr);
-  listenSocketAddr.sun_family = AF_LOCAL;
+  listenSocketAddr.sun_family = AF_UNIX;
   snprintf(listenSocketAddr.sun_path, sizeof(listenSocketAddr.sun_path), KeyRemap4MacBook_bridge::socketPath);
 
   if (bind(listenSocket, reinterpret_cast<struct sockaddr *>(&listenSocketAddr), sizeof(listenSocketAddr)) < 0) return false;
