@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 42;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -114,7 +114,7 @@
 		08FB7793FE84155DC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "KeyRemap4MacBook_sysctl_reset" */;
-			compatibilityVersion = "Xcode 2.4";
+			compatibilityVersion = "Xcode 3.2";
 			hasScannedForEncodings = 1;
 			mainGroup = 08FB7794FE84155DC02AAC07 /* KeyRemap4MacBook_sysctlutil */;
 			projectDirPath = "";
@@ -137,24 +137,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		1DEB923208733DC60010E9CD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"_GLIBCXX_DEBUG=1",
-					"_GLIBCXX_DEBUG_PEDANTIC=1",
-				);
-				INSTALL_PATH = /usr/local/bin;
-				PRODUCT_NAME = KeyRemap4MacBook_sysctl_reset;
-				ZERO_LINK = YES;
-			};
-			name = Debug;
-		};
 		1DEB923308733DC60010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -165,28 +147,19 @@
 			};
 			name = Release;
 		};
-		1DEB923608733DC60010E9CD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_OPTIMIZATION_LEVEL = 3;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				PREBINDING = NO;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
-			};
-			name = Debug;
-		};
 		1DEB923708733DC60010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_ENABLE_OBJC_GC = supported;
 				GCC_OPTIMIZATION_LEVEL = 3;
-				GCC_VERSION = 4.0;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
+				SDKROOT = macosx10.6;
 				VALID_ARCHS = "i386 x86_64";
 			};
 			name = Release;
@@ -197,7 +170,6 @@
 		1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "KeyRemap4MacBook_sysctl_reset" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1DEB923208733DC60010E9CD /* Debug */,
 				1DEB923308733DC60010E9CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -206,7 +178,6 @@
 		1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "KeyRemap4MacBook_sysctl_reset" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1DEB923608733DC60010E9CD /* Debug */,
 				1DEB923708733DC60010E9CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
