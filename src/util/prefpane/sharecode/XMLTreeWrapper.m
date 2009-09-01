@@ -1,4 +1,4 @@
-// -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
+/* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
 #import "XMLTreeWrapper.h"
 
@@ -23,8 +23,8 @@
   return TRUE;
 }
 
-// ----------------------------------------------------------------------
-// for NSOutlineView
+/* ---------------------------------------------------------------------- */
+/* for NSOutlineView */
 - (id) normalizeItem:(id)item
 {
   if (! _XMLDocument) return nil;
@@ -35,7 +35,7 @@
   return item;
 }
 
-- (int) numberOfChildren:(id)item
+- (NSUInteger) numberOfChildren:(id)item
 {
   item = [self normalizeItem:item];
   if (! item) return 0;

@@ -1,4 +1,4 @@
-// -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
+/* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
 #import <Cocoa/Cocoa.h>
 
@@ -10,7 +10,7 @@
 - (BOOL) load:(NSString *)path;
 
 - (id) normalizeItem:(id)item;
-- (int) numberOfChildren:(id)item;
+- (NSUInteger) numberOfChildren:(id)item;
 - (id) getChild:(id)item index:(int)index;
 - (BOOL) isItemExpandable:(id)item;
 - (NSXMLNode *) getNode:(NSXMLNode *)node xpath:(NSString *)xpath;

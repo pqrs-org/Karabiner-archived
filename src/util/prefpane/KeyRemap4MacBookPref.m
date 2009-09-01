@@ -1,4 +1,4 @@
-// -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
+/* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
 #import "KeyRemap4MacBookPref.h"
 #import "sharecode.h"
@@ -8,7 +8,7 @@
 static NSString *sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_ctl";
 static NSString *launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook/extra/launchUninstaller.sh";
 
-// ----------------------------------------------------------------------
+/* ---------------------------------------------------------------------- */
 - (void) drawVersion
 {
   NSString *version = [BUNDLEPREFIX_SysctlWrapper getString:@"keyremap4macbook.version"];
@@ -18,7 +18,7 @@ static NSString *launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
   [_versionText setStringValue:version];
 }
 
-// ----------------------------------------------------------------------
+/* ---------------------------------------------------------------------- */
 - (void) setStatusBarState
 {
   NSString *result = [BUNDLEPREFIX_Common getExecResult:sysctl_ctl args:[NSArray arrayWithObjects:@"statusbar", nil]];
@@ -49,7 +49,7 @@ static NSString *launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
   [self startStatusBar];
 }
 
-// ----------------------------------------------------------------------
+/* ---------------------------------------------------------------------- */
 - (void) registerLoginWindow
 {
   NSString *app = @"/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook_launchd.app";
@@ -63,13 +63,13 @@ static NSString *launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
   }
 }
 
-// ----------------------------------------------------------------------
+/* ---------------------------------------------------------------------- */
 - (IBAction) launchUninstaller:(id)sender
 {
   [BUNDLEPREFIX_Common getExecResult:launchUninstallerCommand args:[NSArray arrayWithObjects:@"force", nil]];
 }
 
-// ----------------------------------------------------------------------
+/* ---------------------------------------------------------------------- */
 - (void) mainViewDidLoad
 {
   [self drawVersion];

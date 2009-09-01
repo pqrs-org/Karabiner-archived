@@ -1,4 +1,4 @@
-// -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
+/* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
 #import "OutlineView_number.h"
 #import "sharecode.h"
@@ -20,8 +20,8 @@ static NSString *sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
   return self;
 }
 
-// ------------------------------------------------------------
-- (int) outlineView:(NSOutlineView*)outlineView numberOfChildrenOfItem:(id)item
+/* ------------------------------------------------------------ */
+- (NSUInteger) outlineView:(NSOutlineView*)outlineView numberOfChildrenOfItem:(id)item
 {
   return [_xmlTreeWrapper numberOfChildren:item];
 }
