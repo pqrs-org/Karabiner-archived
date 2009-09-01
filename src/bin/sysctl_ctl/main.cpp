@@ -172,7 +172,7 @@ namespace {
   }
 
   CFDictionaryRef
-  getConfigDictionary(int index)
+  getConfigDictionary(CFIndex index)
   {
     CFArrayRef list = getConfigList();
     if (! list) return NULL;
@@ -184,7 +184,7 @@ namespace {
   }
 
   CFStringRef
-  getIdentify(int index)
+  getIdentify(CFIndex index)
   {
     CFDictionaryRef dict = getConfigDictionary(index);
     if (! dict) return NULL;
@@ -260,7 +260,7 @@ namespace {
     return true;
   }
 
-  int
+  CFIndex
   getConfigCount(void)
   {
     CFArrayRef list = getConfigList();
@@ -271,7 +271,7 @@ namespace {
 
   // ----------------------------------------
   bool
-  setSelectedIndex(int index)
+  setSelectedIndex(CFIndex index)
   {
     CFDictionaryRef dict = getConfigDictionary(index);
     if (! dict) return false;
@@ -282,7 +282,7 @@ namespace {
     return true;
   }
 
-  int
+  CFIndex
   getSelectedIndex(void)
   {
     Boolean isOK;
@@ -296,14 +296,14 @@ namespace {
 
   // ----------------------------------------
   bool
-  setStatusbarEnable(int enable)
+  setStatusbarEnable(CFIndex enable)
   {
     CFNumberRef val = CFNumberCreate(NULL, kCFNumberIntType, &enable);
     CFPreferencesSetAppValue(CFSTR("isStatusbarEnable"), val, applicationID);
     return true;
   }
 
-  int
+  CFIndex
   isStatusbarEnable(void)
   {
     Boolean isOK;
@@ -329,7 +329,7 @@ namespace {
       ++q;
     }
     *q = '\0';
-    snprintf(buf, buflen, p);
+    snprintf(buf, buflen, "%s", p);
   }
 }
 
@@ -379,19 +379,19 @@ main(int argc, char **argv)
     isSuccess = renameConfig(index, buf);
 
   } else if (strcmp(argv[1], "count") == 0) {
-    printf("%d\n", getConfigCount());
+    printf("%ld\n", getConfigCount());
     return 0;
 
   } else if (strcmp(argv[1], "current") == 0) {
-    printf("%d\n", getSelectedIndex());
+    printf("%ld\n", getSelectedIndex());
     return 0;
 
   } else if (strcmp(argv[1], "statusbar") == 0) {
-    printf("%d\n", isStatusbarEnable());
+    printf("%ld\n", isStatusbarEnable());
     return 0;
 
   } else if (strcmp(argv[1], "toggle_statusbar") == 0) {
-    int value = isStatusbarEnable();
+    CFIndex value = isStatusbarEnable();
     isSuccess = setStatusbarEnable(! value);
 
   } else if (strcmp(argv[1], "getname") == 0) {
@@ -413,7 +413,7 @@ main(int argc, char **argv)
     return 0;
 
   } else if ((strcmp(argv[1], "save") == 0) || (strcmp(argv[1], "load") == 0)) {
-    int value = getSelectedIndex();
+    CFIndex value = getSelectedIndex();
     CFStringRef identify = getIdentify(value);
 
     const char *targetFiles[] = {
