@@ -932,7 +932,12 @@ namespace org_pqrs_KeyRemap4MacBook {
              0, ts, pointing, 0);
 
     if (config.debug_pointing) {
-      printf("sending scrollWheelEventCallback: deltaAxis(%d, %d, %d), fixedDelta(%d, %d, %d), pointDelta(%d,%d,%d)\n",
+#if __x86_64__
+      const char *format = "sending scrollWheelEventCallback: deltaAxis(%d, %d, %d), fixedDelta(%ld, %ld, %ld), pointDelta(%d,%d,%d)\n";
+#else
+      const char *format = "sending scrollWheelEventCallback: deltaAxis(%d, %d, %d), fixedDelta(%d, %d, %d), pointDelta(%d,%d,%d)\n";
+#endif
+      printf(format,
              deltaAxis1, deltaAxis2, deltaAxis3,
              fixedDelta1, fixedDelta2, fixedDelta3,
              pointDelta1, pointDelta2, pointDelta3);

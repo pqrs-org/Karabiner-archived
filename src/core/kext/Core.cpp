@@ -175,7 +175,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ======================================================================
     bool
-    notifierfunc_hookKeyboard(void *target, void *refCon, IOService *newService)
+    notifierfunc_hookKeyboard(void *target, void *refCon, IOService *newService, IONotifier* notifier)
     {
       IOLog("KeyRemap4MacBook notifierfunc_hookKeyboard\n");
 
@@ -184,7 +184,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     bool
-    notifierfunc_unhookKeyboard(void *target, void *refCon, IOService *newService)
+    notifierfunc_unhookKeyboard(void *target, void *refCon, IOService *newService, IONotifier* notifier)
     {
       IOLog("KeyRemap4MacBook notifierfunc_unhookKeyboard\n");
 
@@ -193,7 +193,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     bool
-    notifierfunc_hookPointing(void *target, void *refCon, IOService *newService)
+    notifierfunc_hookPointing(void *target, void *refCon, IOService *newService, IONotifier* notifier)
     {
       IOLog("KeyRemap4MacBook notifierfunc_hookPointing\n");
 
@@ -202,7 +202,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     bool
-    notifierfunc_unhookPointing(void *target, void *refCon, IOService *newService)
+    notifierfunc_unhookPointing(void *target, void *refCon, IOService *newService, IONotifier* notifier)
     {
       IOLog("KeyRemap4MacBook notifierfunc_unhookPointing\n");
 

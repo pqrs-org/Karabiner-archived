@@ -12,7 +12,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
-  void
+  static void
   remap_enter2commandL_enter2controlL_vm(const RemapParams &remapParams)
   {
     if (! config.remap_enter2commandL_enter2controlL_vm) return;
@@ -25,7 +25,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
-  void
+  static void
   remap_fn2controlL_commandR2fn(const RemapParams &remapParams)
   {
     if (! config.remap_fn2controlL_commandR2fn) return;
@@ -42,7 +42,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
-  void
+  static void
   remap_f6_to_numlock(const RemapParams &remapParams)
   {
     if (! config.remap_f6_to_numlock) return;
@@ -63,7 +63,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
-  void
+  static void
   remap_semicolon2return_controlsemicolon2semicolon(const RemapParams &remapParams)
   {
     if (! config.remap_semicolon2return_controlsemicolon2semicolon) return;
@@ -75,7 +75,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
-  void
+  static void
   remap_swapcolons(const RemapParams &remapParams)
   {
     if (! config.remap_swapcolons) return;
@@ -90,7 +90,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
-  void
+  static void
   remap_shiftRshiftL2space(const RemapParams &remapParams)
   {
     if (! config.remap_shiftRshiftL2space) return;
@@ -108,7 +108,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
-  void
+  static void
   remap_shiftLshiftR2space(const RemapParams &remapParams)
   {
     if (! config.remap_shiftLshiftR2space) return;
@@ -126,7 +126,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
-  void
+  static void
   remap_tab2option_withControlL(const RemapParams &remapParams)
   {
     if (! config.remap_tab2option_withControlL) return;
@@ -138,7 +138,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
-  void
+  static void
   remap_keypadnumlock_togglekey_clear(const RemapParams &remapParams)
   {
     if (! config.option_keypadnumlock_togglekey_clear) return;
@@ -152,7 +152,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
-  void
+  static void
   remap_emacsmode(const RemapParams &remapParams)
   {
     bool is_terminal = false;
@@ -194,7 +194,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
-  void
+  static void
   remap_jis_eisuu2commandL_eisuu_eisuu2optionL_term(const RemapParams &remapParams)
   {
     if (! config.remap_jis_eisuu2commandL_eisuu_eisuu2optionL_term) return;
@@ -211,7 +211,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
-  void
+  static void
   remap_jis_underscore2backslash(const RemapParams &remapParams)
   {
     if (! config.remap_jis_underscore2backslash) return;
@@ -226,7 +226,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
-  void
+  static void
   remap_jis_yen2backslash(const RemapParams &remapParams)
   {
     if (! config.remap_jis_yen2backslash) return;
@@ -239,7 +239,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
-  void
+  static void
   remap_jis_shiftSpace2toggle_kana_eisuu(const RemapParams &remapParams)
   {
     if (! config.remap_jis_shiftSpace2toggle_kana_eisuu) return;
@@ -258,7 +258,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
-  void
+  static void
   remap_jis_app_vi_eisuu2eisuu_escape(const RemapParams &remapParams)
   {
     if (! config.remap_jis_app_vi_eisuu2eisuu_escape) return;
@@ -270,7 +270,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
-  void
+  static void
   remap_jis_jansi(const RemapParams &remapParams)
   {
     if (! config.remap_jis_jansi) return;
@@ -280,7 +280,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::keyToKey(remapParams, KeyCode::JIS_UNDERSCORE, KeyCode::BACKQUOTE);
   }
 
-  void
+  static void
   remap_jis_layout_kawashima(const RemapParams &remapParams)
   {
     if (! config.remap_jis_layout_kawashima) return;
@@ -304,7 +304,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                                        KeyCode::A, CharCode::A, KeyCode::NONE, CharCode::NONE);
   }
 
-  void
+  static void
   remap_jis_layout_windowskanainput(const RemapParams &remapParams)
   {
     if (! config.remap_jis_layout_windowskanainput) return;
@@ -324,7 +324,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ------------------------------------------------------------
-  void
+  static void
   remap_pointing_relative_fn_to_scroll(const RemapPointingParams_relative &remapParams)
   {
     if (! config.remap_pointing_relative_fn_to_scroll) return;
