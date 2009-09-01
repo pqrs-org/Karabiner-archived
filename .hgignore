@@ -9,6 +9,7 @@ pkgroot/
 .*\.xcodeproj/.*\.pbxuser
 src/core/kext/config/output
 util/getActiveApplication/getname
+^Tests/SysctlWrapper/test$
 files/share/reset
 pkginfo/Info.plist$
 src/core/kext/Info.plist$
