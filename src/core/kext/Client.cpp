@@ -144,7 +144,9 @@ KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::RequestType type, void
   }
 
   releaseSocket(socket);
-  if (error) error;
+  if (error) {
+    return error;
+  }
 
 #ifdef DEBUG
   if (result) {

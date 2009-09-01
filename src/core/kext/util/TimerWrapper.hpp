@@ -10,8 +10,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     void initialize(IOWorkLoop *_workLoop, OSObject *owner, IOTimerEventSource::Action func);
     void terminate(void);
 
-    void setTimeoutMS(int interval) { if (timer) timer->setTimeoutMS(interval); }
-    void cancelTimeout(void) { if (timer) timer->cancelTimeout(); }
+    IOReturn setTimeoutMS(UInt32 ms);
+    void cancelTimeout(void);
 
   private:
     IOWorkLoop *workLoop;

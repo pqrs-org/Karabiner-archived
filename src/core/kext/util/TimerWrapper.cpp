@@ -34,4 +34,21 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
     workLoop = NULL;
   }
+
+  IOReturn
+  TimerWrapper::setTimeoutMS(UInt32 ms)
+  {
+    if (! timer) {
+      return kIOReturnNoResources;
+    }
+    return timer->setTimeoutMS(ms);
+  }
+
+  void
+  TimerWrapper::cancelTimeout(void)
+  {
+    if (timer) {
+      timer->cancelTimeout();
+    }
+  }
 }
