@@ -16,7 +16,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.debug) return;
 
-    printf("KeyRemap4MacBook KeyboardSpecialEventCallBack [%s]: eventType %d, flags 0x%x, key %d, flavor %d, guid %d\n",
+    printf("KeyRemap4MacBook KeyboardSpecialEventCallBack [%s]: eventType %d, flags 0x%x, key %d, flavor %d, guid %lld\n",
            message, eventType, flags, key, flavor, guid);
   }
 
@@ -25,8 +25,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.debug_pointing) return;
 
-    printf("KeyRemap4MacBook RelativePointerEventCallBack [%s]: buttons: %d, dx: %d, dy: %d, ts: 0x%x\n",
-           message, buttons, dx, dy, ts);
+    printf("KeyRemap4MacBook RelativePointerEventCallBack [%s]: buttons: %d, dx: %d, dy: %d\n",
+           message, buttons, dx, dy);
   }
 
   void
@@ -34,7 +34,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.debug_pointing) return;
 
-    printf("KeyRemap4MacBook ScrollWheelEventCallback [%s]: deltaAxis(%d, %d, %d), fixedDelta(%d, %d, %d), pointDelta(%d,%d,%d), options: %d\n",
+#if __x86_64__
+    const char *format = "KeyRemap4MacBook ScrollWheelEventCallback [%s]: deltaAxis(%d, %d, %d), fixedDelta(%ld, %ld, %ld), pointDelta(%d,%d,%d), options: %d\n";
+#else
+    const char *format = "KeyRemap4MacBook ScrollWheelEventCallback [%s]: deltaAxis(%d, %d, %d), fixedDelta(%d, %d, %d), pointDelta(%d,%d,%d), options: %d\n";
+#endif
+    printf(format,
            message,
            deltaAxis1, deltaAxis2, deltaAxis3,
            fixedDelta1, fixedDelta2, fixedDelta3,
