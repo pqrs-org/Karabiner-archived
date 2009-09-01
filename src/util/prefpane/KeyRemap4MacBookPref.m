@@ -50,20 +50,6 @@ static NSString *launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
 }
 
 /* ---------------------------------------------------------------------- */
-- (void) registerLoginWindow
-{
-  NSString *app = @"/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook_launchd.app";
-
-  NSString *set_loginwindow = @"/Library/org.pqrs/KeyRemap4MacBook/bin/set_loginwindow";
-  NSString *result = [BUNDLEPREFIX_Common getExecResult:set_loginwindow args:[NSArray arrayWithObjects:@"exist", app, nil]];
-  if ([result intValue] == 0) {
-    [[NSWorkspace sharedWorkspace] launchApplication:app];
-
-    [BUNDLEPREFIX_Common getExecResult:set_loginwindow args:[NSArray arrayWithObjects:@"set", app, nil]];
-  }
-}
-
-/* ---------------------------------------------------------------------- */
 - (IBAction) launchUninstaller:(id)sender
 {
   [BUNDLEPREFIX_Common getExecResult:launchUninstallerCommand args:[NSArray arrayWithObjects:@"force", nil]];
@@ -74,7 +60,6 @@ static NSString *launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
 {
   [self drawVersion];
   [self setStatusBarState];
-  [self registerLoginWindow];
 }
 
 @end
