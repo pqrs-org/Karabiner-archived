@@ -10,7 +10,7 @@
 + (NSString *) getName:(int)index;
 + (void) setName:(int)index newName:(NSString *)newname;
 + (void) add;
-+ (void) delete:(int)index;
++ (void) delete:(NSInteger)index;
 + (void) select:(NSString *)idx;
 
 @end

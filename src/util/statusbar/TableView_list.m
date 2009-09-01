@@ -29,7 +29,7 @@
 
 - (IBAction) delete:(id)sender
 {
-  int index = [_tableView selectedRow];
+  NSInteger index = [_tableView selectedRow];
   if (index == -1) return;
 
   [ConfigList delete:index];

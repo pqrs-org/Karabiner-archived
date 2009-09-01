@@ -82,7 +82,7 @@ NSMutableDictionary *cache_name = nil;
   [ConfigList refresh];
 }
 
-+ (void) delete:(int)index
++ (void) delete:(NSInteger)index
 {
   NSString *selectedIndex = [[[NSString alloc] initWithFormat:@"%d", index] autorelease];
   [ConfigList getExecResult:[NSArray arrayWithObjects:@"delete", selectedIndex, nil]];
