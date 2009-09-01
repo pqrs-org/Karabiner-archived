@@ -1,4 +1,4 @@
-// -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
+/* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
 #import "OutlineView_checkbox.h"
 #import "sharecode.h"
@@ -33,7 +33,7 @@ static NSString *xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
   [BUNDLEPREFIX_OutlineViewUtil collapseALL:_outlineView_checkbox];
 }
 
-// ------------------------------------------------------------
+/* ------------------------------------------------------------ */
 - (BOOL) filter_sysctl:(NSXMLNode *)node
 {
   NSXMLNode *sysctl = [_xmlTreeWrapper getNode:node xpath:@"sysctl"];
@@ -68,7 +68,7 @@ static NSString *xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
   NSXMLNode *n;
   while (n = [enumerator nextObject]) {
     if ([self filter_checkChildren:n sysctl:sysctl search:search]) return TRUE;
-    if (sysctl != nil) {
+    if (sysctl) {
       if ([self filter_sysctl:n]) return TRUE;
     }
     if (search != nil) {
@@ -120,7 +120,7 @@ static NSString *xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
     while (str = [enumerator nextObject]) {
       str = [str lowercaseString];
       if (! [str isEqual:@""]) {
-        [self filter_core:[_xmlTreeWrapper getRoot] sysctl:nil search:str];
+        [self filter_core:[_xmlTreeWrapper getRoot] sysctl:FALSE search:str];
       }
     }
     expand = TRUE;
@@ -132,8 +132,8 @@ static NSString *xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
   }
 }
 
-// ----------------------------------------------------------------------
-- (int) outlineView:(NSOutlineView*)outlineView numberOfChildrenOfItem:(id)item
+/* ---------------------------------------------------------------------- */
+- (NSUInteger) outlineView:(NSOutlineView*)outlineView numberOfChildrenOfItem:(id)item
 {
   return [_xmlTreeWrapper numberOfChildren:item];
 }
@@ -177,7 +177,7 @@ static NSString *xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
   return nil;
 }
 
-- (float)outlineView:(NSOutlineView *)outlineView heightOfRowByItem:(id)item
+- (CGFloat)outlineView:(NSOutlineView *)outlineView heightOfRowByItem:(id)item
 {
   NSXMLNode *appendix = [_xmlTreeWrapper getNode:item xpath:@"appendix"];
   if (appendix) {

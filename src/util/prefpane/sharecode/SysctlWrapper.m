@@ -1,4 +1,8 @@
-// -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
+/* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
+
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/sysctl.h>
 
 #import "SysctlWrapper.h"
 
@@ -9,9 +13,13 @@
   const char *cstr = [name UTF8String];
 
   char buf[512];
-  int len = sizeof(buf);
+  size_t len = sizeof(buf);
   int error = sysctlbyname(cstr, &buf, &len, NULL, 0);
-  if (error) return nil;
+
+  if (error) {
+    NSLog(@"SysctlWrapper::getString error = %d(%d)", error, errno);
+    return nil;
+  }
   if (! buf[0]) return nil;
 
   return [[[NSString alloc] initWithUTF8String:buf] autorelease];
@@ -22,7 +30,7 @@
   const char *cstr = [name UTF8String];
 
   int value;
-  int len = sizeof(value);
+  size_t len = sizeof(value);
   int error = sysctlbyname(cstr, &value, &len, NULL, 0);
   if (error) return nil;
 
