@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>org.pqrs.KeyRemap4MacBook.statusbar</string>
+    <key>ProgramArguments</key>
+    <array>
+      <string>/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook_statusbar.app/Contents/MacOS/KeyRemap4MacBook_statusbar</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>ThrottleInterval</key>
+    <integer>0</integer>
+  </dict>
+</plist>
