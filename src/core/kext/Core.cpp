@@ -163,13 +163,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         timer_repeat_keyboard.initialize(workLoop, NULL, doRepeat_keyboard);
         timer_repeat_keyboard_extra.initialize(workLoop, NULL, doRepeat_keyboard_extra);
       }
-
-      {
-        org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::Reply activeApplicationInfo;
-        org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_client::sendmsg(org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::REQUEST_ACTIVE_APPLICATION_INFO,
-                                                                    NULL, 0,
-                                                                    &activeApplicationInfo, sizeof(activeApplicationInfo));
-      }
     }
 
     void
