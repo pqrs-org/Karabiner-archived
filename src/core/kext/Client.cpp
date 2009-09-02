@@ -13,10 +13,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     releaseSocket(socket_t &socket)
     {
-      errno_t error = sock_shutdown(socket, SHUT_RDWR);
-      if (error) {
-        printf("[KeyRemap4MacBook ERROR] sock_shutdown failed(%d)\n", error);
-      }
+      sock_shutdown(socket, SHUT_RDWR);
       sock_close(socket);
     }
 
