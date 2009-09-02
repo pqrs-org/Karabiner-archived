@@ -1,46 +1,48 @@
 #ifndef BRIDGE_HPP
 #define BRIDGE_HPP
 
-namespace KeyRemap4MacBook_bridge {
-  const char * const socketPath = "/Library/org.pqrs/KeyRemap4MacBook/tmp/socket";
+namespace org_pqrs_KeyRemap4MacBook {
+  namespace KeyRemap4MacBook_bridge {
+    const char * const socketPath = "/Library/org.pqrs/KeyRemap4MacBook/tmp/socket";
 
-  enum Error {
-    SUCCESS = 0,
-    ERROR = 1,
-  };
-
-  enum RequestType {
-    REQUEST_NONE,
-    REQUEST_ACTIVE_APPLICATION_INFO,
-  };
-
-  namespace ActiveApplicationInfo {
-    enum ApplicationType {
-      UNKNOWN,
-      EMACS, // Carbon Emacs, Aquamacs, ...
-      VI, // Vim, ...
-      TERMINAL, // Terminal.app, iTerm.app, ...
-      VIRTUALMACHINE, // VMware, Parallels, ...
-      REMOTEDESKTOPCONNECTION, // Microsoft Remote Desktop Connection, Cord, ...
-      X11,
-      FINDER,
-      SAFARI,
-      FIREFOX,
-      ICHAT, // iChat
-      ADIUMX,
-      SKYPE,
-      MAIL, // Mail.app
-      EDITOR, // TextEdit
-      ADOBE, // Adobe Softwares
+    enum Error {
+      SUCCESS = 0,
+      ERROR = 1,
     };
 
-    // none
-    struct Request {
+    enum RequestType {
+      REQUEST_NONE,
+      REQUEST_ACTIVE_APPLICATION_INFO,
     };
 
-    struct Reply {
-      ApplicationType type;
-    };
+    namespace ActiveApplicationInfo {
+      enum ApplicationType {
+        UNKNOWN,
+        EMACS, // Carbon Emacs, Aquamacs, ...
+        VI, // Vim, ...
+        TERMINAL, // Terminal.app, iTerm.app, ...
+        VIRTUALMACHINE, // VMware, Parallels, ...
+        REMOTEDESKTOPCONNECTION, // Microsoft Remote Desktop Connection, Cord, ...
+        X11,
+        FINDER,
+        SAFARI,
+        FIREFOX,
+        ICHAT, // iChat
+        ADIUMX,
+        SKYPE,
+        MAIL, // Mail.app
+        EDITOR, // TextEdit
+        ADOBE, // Adobe Softwares
+      };
+
+      // none
+      struct Request {
+      };
+
+      struct Reply {
+        ApplicationType type;
+      };
+    }
   }
 }
 
