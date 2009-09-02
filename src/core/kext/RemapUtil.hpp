@@ -25,7 +25,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       return remapParams.ex_origKey == keyCode && (remapParams.params)->key == keyCode;
     }
     inline bool isKey(const RemapConsumerParams &remapParams, ConsumerKeyCode::ConsumerKeyCode keyCode) {
-      return (remapParams.params)->key == keyCode;
+      return (remapParams.params)->key == static_cast<unsigned int>(keyCode);
     }
     inline bool isEvent_Down(const RemapParams &remapParams) {
       return (remapParams.params)->eventType == KeyEvent::DOWN;
@@ -41,7 +41,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     inline bool isModifierOn(unsigned int flags, ModifierFlag::ModifierFlag f) {
-      return ((flags & f) == f);
+      return ((flags & f) == static_cast<unsigned int>(f));
     }
     inline bool isModifierOn(const RemapParams &remapParams, ModifierFlag::ModifierFlag flag) {
       return isModifierOn((remapParams.params)->flags, flag);

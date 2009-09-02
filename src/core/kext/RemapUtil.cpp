@@ -844,7 +844,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     FlagStatus::Item *fromStatus2 = FlagStatus::getFlagStatus(fromFlag2);
     if (fromStatus1 == NULL || fromStatus2 == NULL) return;
 
-    if ((remapParams.params)->key != keyCode2) {
+    if ((remapParams.params)->key != static_cast<unsigned int>(keyCode2)) {
       isCallFireFunc = false;
       return;
     }
@@ -893,7 +893,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (fromStatus == NULL) return;
 
     KeyCode::KeyCode fromFlagKeyCode = fromStatus->getKeyCode();
-    if ((remapParams.params)->key == fromFlagKeyCode) {
+    if ((remapParams.params)->key == static_cast<unsigned int>(fromFlagKeyCode)) {
       doremap = false;
       first = fromStatus->isHeldDown();
       ic.begin();

@@ -22,7 +22,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       temporary_count = 0;
 
       if ((remapParams.params)->eventType != KeyEvent::MODIFY) return;
-      if (remapParams.ex_origKey != key) return;
+      if (remapParams.ex_origKey != static_cast<unsigned int>(key)) return;
 
       if (RemapUtil::isModifierOn(remapParams, flag)) {
         increase();

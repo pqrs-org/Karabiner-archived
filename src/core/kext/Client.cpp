@@ -82,8 +82,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   int
   KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::RequestType type, void *request, size_t requestsize, void *reply, size_t replysize)
   {
-    printf("[BEGIN] KeyRemap4MacBook_client::sendmsg\n");
-
     socket_t socket;
     if (! makeSocket(socket)) {
       return EIO;
