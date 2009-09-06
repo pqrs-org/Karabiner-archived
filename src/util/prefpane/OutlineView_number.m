@@ -26,9 +26,9 @@ static NSString *sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
   return [_xmlTreeWrapper numberOfChildren:item];
 }
 
-- (id) outlineView:(NSOutlineView*)outlineView child:(int)index ofItem:(id)item
+- (id) outlineView:(NSOutlineView*)outlineView child:(NSUInteger)idx ofItem:(id)item
 {
-  return [_xmlTreeWrapper getChild:item index:index];
+  return [_xmlTreeWrapper getChild:item index:idx];
 }
 
 - (BOOL) outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item
