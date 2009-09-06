@@ -1,8 +1,9 @@
 /* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
+#import "bundleprefix.h"
 #import <Cocoa/Cocoa.h>
 
-@interface BUNDLEPREFIX_XMLTreeWrapper : NSObject
+@interface BUNDLEPREFIX(XMLTreeWrapper) : NSObject
 {
   NSXMLDocument *_XMLDocument;
 }

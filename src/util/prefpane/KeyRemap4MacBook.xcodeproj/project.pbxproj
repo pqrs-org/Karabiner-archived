@@ -16,7 +16,6 @@
 		34CBFDDC0D94CEC00087D9DB /* OutlineView_checkbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CBFDD60D94CEC00087D9DB /* OutlineView_checkbox.m */; };
 		34CBFDDD0D94CEC00087D9DB /* OutlineView_number.h in Headers */ = {isa = PBXBuildFile; fileRef = 34CBFDD70D94CEC00087D9DB /* OutlineView_number.h */; };
 		34CBFDDE0D94CEC00087D9DB /* OutlineView_number.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CBFDD80D94CEC00087D9DB /* OutlineView_number.m */; };
-		34D5F8EC0DC8AB9100D6B4EE /* sharecode.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D5F8EB0DC8AB9100D6B4EE /* sharecode.h */; };
 		34E409DB0D54C4C1008441E7 /* SysctlWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 34E409D70D54C4C1008441E7 /* SysctlWrapper.h */; };
 		34E409DC0D54C4C1008441E7 /* SysctlWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E409D80D54C4C1008441E7 /* SysctlWrapper.m */; };
 		8D202CEA0486D31800D8A456 /* KeyRemap4MacBook_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32DBCFA20370C41700C91783 /* KeyRemap4MacBook_Prefix.pch */; };
@@ -44,7 +43,6 @@
 		34CBFDD60D94CEC00087D9DB /* OutlineView_checkbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutlineView_checkbox.m; sourceTree = "<group>"; };
 		34CBFDD70D94CEC00087D9DB /* OutlineView_number.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutlineView_number.h; sourceTree = "<group>"; };
 		34CBFDD80D94CEC00087D9DB /* OutlineView_number.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutlineView_number.m; sourceTree = "<group>"; };
-		34D5F8EB0DC8AB9100D6B4EE /* sharecode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sharecode.h; path = sharecode/sharecode.h; sourceTree = "<group>"; };
 		34E409D70D54C4C1008441E7 /* SysctlWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SysctlWrapper.h; path = sharecode/SysctlWrapper.h; sourceTree = "<group>"; };
 		34E409D80D54C4C1008441E7 /* SysctlWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SysctlWrapper.m; path = sharecode/SysctlWrapper.m; sourceTree = "<group>"; };
 		8D202CF70486D31800D8A456 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -158,7 +156,6 @@
 				34A482970D94ECD7002CF803 /* XMLTreeWrapper.m */,
 				34E409D70D54C4C1008441E7 /* SysctlWrapper.h */,
 				34E409D80D54C4C1008441E7 /* SysctlWrapper.m */,
-				34D5F8EB0DC8AB9100D6B4EE /* sharecode.h */,
 				34070C3B0DC89C050022A857 /* Common.h */,
 				34070C3C0DC89C050022A857 /* Common.m */,
 			);
@@ -179,7 +176,6 @@
 				34CBFDDD0D94CEC00087D9DB /* OutlineView_number.h in Headers */,
 				34A482980D94ECD7002CF803 /* XMLTreeWrapper.h in Headers */,
 				34070C3D0DC89C050022A857 /* Common.h in Headers */,
-				34D5F8EC0DC8AB9100D6B4EE /* sharecode.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
