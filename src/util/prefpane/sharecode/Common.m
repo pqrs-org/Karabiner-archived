@@ -24,14 +24,14 @@
 + (NSString *) getExecResult:(NSString *)path args:(NSArray *)args
 {
   NSTask *task = [[NSTask alloc] init];
-  NSPipe *pipe = [NSPipe pipe];
-  [task setStandardOutput:pipe];
+  NSPipe *pipe_ = [NSPipe pipe];
+  [task setStandardOutput:pipe_];
   [task setLaunchPath:path];
   [task setArguments:args];
   [task launch];
   [task waitUntilExit];
 
-  NSData *data = [[pipe fileHandleForReading] readDataToEndOfFile];
+  NSData *data = [[pipe_ fileHandleForReading] readDataToEndOfFile];
   NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
   return result;
 }

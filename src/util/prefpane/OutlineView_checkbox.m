@@ -23,14 +23,12 @@ static NSString *xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
 
 - (IBAction) expandALL:(id)sender
 {
-  [_outlineView_checkbox reloadData];
-  [BUNDLEPREFIX_OutlineViewUtil expandALL:_outlineView_checkbox];
+  [_outlineView_checkbox expandItem:nil expandChildren:YES];
 }
 
 - (IBAction) collapseALL:(id)sender
 {
-  [_outlineView_checkbox reloadData];
-  [BUNDLEPREFIX_OutlineViewUtil collapseALL:_outlineView_checkbox];
+  [_outlineView_checkbox collapseItem:nil collapseChildren:YES];
 }
 
 /* ------------------------------------------------------------ */
@@ -66,7 +64,10 @@ static NSString *xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
 
   NSEnumerator *enumerator = [a objectEnumerator];
   NSXMLNode *n;
-  while (n = [enumerator nextObject]) {
+  for (;;) {
+    n = [enumerator nextObject];
+    if (! n) break;
+
     if ([self filter_checkChildren:n sysctl:sysctl search:search]) return TRUE;
     if (sysctl) {
       if ([self filter_sysctl:n]) return TRUE;
@@ -85,7 +86,10 @@ static NSString *xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
 
   NSEnumerator *enumerator = [a objectEnumerator];
   NSXMLElement *n;
-  while (n = [enumerator nextObject]) {
+  for (;;) {
+    n = [enumerator nextObject];
+    if (! n) break;
+
     if (sysctl) {
       if ([self filter_sysctl:n] || [self filter_checkChildren:n sysctl:sysctl search:search]) {
         [self filter_core:n sysctl:sysctl search:search];
@@ -117,7 +121,10 @@ static NSString *xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
     NSArray *a = [[_searchText stringValue] componentsSeparatedByString:@" "];
     NSEnumerator *enumerator = [a objectEnumerator];
     NSString *str;
-    while (str = [enumerator nextObject]) {
+    for (;;) {
+      str = [enumerator nextObject];
+      if (! str) break;
+
       str = [str lowercaseString];
       if (! [str isEqual:@""]) {
         [self filter_core:[_xmlTreeWrapper getRoot] sysctl:FALSE search:str];
@@ -128,7 +135,7 @@ static NSString *xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
 
   [_outlineView_checkbox reloadData];
   if (expand) {
-    [BUNDLEPREFIX_OutlineViewUtil expandALL:_outlineView_checkbox];
+    [self expandALL:nil];
   }
 }
 
@@ -138,9 +145,9 @@ static NSString *xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
   return [_xmlTreeWrapper numberOfChildren:item];
 }
 
-- (id) outlineView:(NSOutlineView*)outlineView child:(int)index ofItem:(id)item
+- (id) outlineView:(NSOutlineView*)outlineView child:(NSUInteger)idx ofItem:(id)item
 {
-  return [_xmlTreeWrapper getChild:item index:index];
+  return [_xmlTreeWrapper getChild:item index:idx];
 }
 
 - (BOOL) outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item

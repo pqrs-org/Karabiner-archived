@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		34070C3D0DC89C050022A857 /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 34070C3B0DC89C050022A857 /* Common.h */; };
 		34070C3E0DC89C050022A857 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 34070C3C0DC89C050022A857 /* Common.m */; };
-		346842E30DC87D910094A095 /* OutlineViewUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 346842E10DC87D910094A095 /* OutlineViewUtil.h */; };
-		346842E40DC87D910094A095 /* OutlineViewUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 346842E20DC87D910094A095 /* OutlineViewUtil.m */; };
 		349FDBBF0D545C2200EED33C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 349FDBBE0D545C2200EED33C /* Security.framework */; };
 		34A482980D94ECD7002CF803 /* XMLTreeWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A482960D94ECD7002CF803 /* XMLTreeWrapper.h */; };
 		34A482990D94ECD7002CF803 /* XMLTreeWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A482970D94ECD7002CF803 /* XMLTreeWrapper.m */; };
@@ -39,8 +37,6 @@
 		32DBCFA20370C41700C91783 /* KeyRemap4MacBook_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyRemap4MacBook_Prefix.pch; sourceTree = "<group>"; };
 		34070C3B0DC89C050022A857 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = sharecode/Common.h; sourceTree = "<group>"; };
 		34070C3C0DC89C050022A857 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Common.m; path = sharecode/Common.m; sourceTree = "<group>"; };
-		346842E10DC87D910094A095 /* OutlineViewUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OutlineViewUtil.h; path = sharecode/OutlineViewUtil.h; sourceTree = "<group>"; };
-		346842E20DC87D910094A095 /* OutlineViewUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OutlineViewUtil.m; path = sharecode/OutlineViewUtil.m; sourceTree = "<group>"; };
 		349FDBBE0D545C2200EED33C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		34A482960D94ECD7002CF803 /* XMLTreeWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLTreeWrapper.h; path = sharecode/XMLTreeWrapper.h; sourceTree = "<group>"; };
 		34A482970D94ECD7002CF803 /* XMLTreeWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLTreeWrapper.m; path = sharecode/XMLTreeWrapper.m; sourceTree = "<group>"; };
@@ -110,19 +106,11 @@
 		08FB77AFFE84173DC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				34D5F8EB0DC8AB9100D6B4EE /* sharecode.h */,
-				34070C3B0DC89C050022A857 /* Common.h */,
-				34070C3C0DC89C050022A857 /* Common.m */,
-				346842E10DC87D910094A095 /* OutlineViewUtil.h */,
-				346842E20DC87D910094A095 /* OutlineViewUtil.m */,
-				34A482960D94ECD7002CF803 /* XMLTreeWrapper.h */,
-				34A482970D94ECD7002CF803 /* XMLTreeWrapper.m */,
+				34275C401053FE6000EF31B9 /* sharecode */,
 				34CBFDD50D94CEC00087D9DB /* OutlineView_checkbox.h */,
 				34CBFDD60D94CEC00087D9DB /* OutlineView_checkbox.m */,
 				34CBFDD70D94CEC00087D9DB /* OutlineView_number.h */,
 				34CBFDD80D94CEC00087D9DB /* OutlineView_number.m */,
-				34E409D70D54C4C1008441E7 /* SysctlWrapper.h */,
-				34E409D80D54C4C1008441E7 /* SysctlWrapper.m */,
 				F506C03C013D9D7901CA16C8 /* KeyRemap4MacBookPref.h */,
 				F506C03D013D9D7901CA16C8 /* KeyRemap4MacBookPref.m */,
 			);
@@ -163,6 +151,20 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
+		34275C401053FE6000EF31B9 /* sharecode */ = {
+			isa = PBXGroup;
+			children = (
+				34A482960D94ECD7002CF803 /* XMLTreeWrapper.h */,
+				34A482970D94ECD7002CF803 /* XMLTreeWrapper.m */,
+				34E409D70D54C4C1008441E7 /* SysctlWrapper.h */,
+				34E409D80D54C4C1008441E7 /* SysctlWrapper.m */,
+				34D5F8EB0DC8AB9100D6B4EE /* sharecode.h */,
+				34070C3B0DC89C050022A857 /* Common.h */,
+				34070C3C0DC89C050022A857 /* Common.m */,
+			);
+			name = sharecode;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -176,7 +178,6 @@
 				34CBFDDB0D94CEC00087D9DB /* OutlineView_checkbox.h in Headers */,
 				34CBFDDD0D94CEC00087D9DB /* OutlineView_number.h in Headers */,
 				34A482980D94ECD7002CF803 /* XMLTreeWrapper.h in Headers */,
-				346842E30DC87D910094A095 /* OutlineViewUtil.h in Headers */,
 				34070C3D0DC89C050022A857 /* Common.h in Headers */,
 				34D5F8EC0DC8AB9100D6B4EE /* sharecode.h in Headers */,
 			);
@@ -255,7 +256,6 @@
 				34CBFDDC0D94CEC00087D9DB /* OutlineView_checkbox.m in Sources */,
 				34CBFDDE0D94CEC00087D9DB /* OutlineView_number.m in Sources */,
 				34A482990D94ECD7002CF803 /* XMLTreeWrapper.m in Sources */,
-				346842E40DC87D910094A095 /* OutlineViewUtil.m in Sources */,
 				34070C3E0DC89C050022A857 /* Common.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,8 +303,17 @@
 				GCC_ENABLE_OBJC_GC = supported;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
 				SDKROOT = macosx10.6;
