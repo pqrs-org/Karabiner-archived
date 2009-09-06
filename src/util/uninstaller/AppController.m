@@ -1,9 +1,10 @@
 #import "AppController.h"
+#import "sharecode/AdminAction.h"
 
 @implementation AppController
 
 static NSString *appName = @"KeyRemap4MacBook";
-static NSString *uninstallCommand = @"/Library/org.pqrs/KeyRemap4MacBook/bin/uninstall";
+static char uninstallCommand[] = "/Library/org.pqrs/KeyRemap4MacBook/extra/uninstall.sh";
 
 - (void) setMessage
 {
@@ -13,12 +14,12 @@ static NSString *uninstallCommand = @"/Library/org.pqrs/KeyRemap4MacBook/bin/uni
 // ----------------------------------------------------------------------
 - (IBAction) uninstall:(id)sender
 {
-  NSTask *task = [[NSTask alloc] init];
-  [task setLaunchPath:uninstallCommand];
-  [task launch];
-  [task waitUntilExit];
-
-  NSRunAlertPanel(@"Uninstaller", [NSString stringWithFormat:@"%@ is uninstalled.", appName], @"OK", nil, nil);
+  BOOL result = [AdminAction execCommand:uninstallCommand];
+  if (result) {
+    NSRunAlertPanel(@"Uninstaller", [NSString stringWithFormat:@"%@ is uninstalled.", appName], @"OK", nil, nil);
+  } else {
+    NSRunAlertPanel(@"Uninstaller", [NSString stringWithFormat:@"Failed to uninstall %@.", appName], @"OK", nil, nil);
+  }
   [NSApp terminate:self];
 }
 

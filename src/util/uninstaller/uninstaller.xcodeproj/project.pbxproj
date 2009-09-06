@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		348CC2EC105407F800FA2DE0 /* AdminAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 348CC2EB105407F800FA2DE0 /* AdminAction.m */; };
+		348CC2F01054083800FA2DE0 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 348CC2EF1054083800FA2DE0 /* Security.framework */; };
 		349B4CFE0DE2B371007CC17E /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 349B4CFD0DE2B371007CC17E /* AppController.m */; };
 		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
@@ -23,6 +25,9 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* uninstaller_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uninstaller_Prefix.pch; sourceTree = "<group>"; };
+		348CC2EA105407F800FA2DE0 /* AdminAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdminAction.h; path = ../prefpane/sharecode/AdminAction.h; sourceTree = SOURCE_ROOT; };
+		348CC2EB105407F800FA2DE0 /* AdminAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AdminAction.m; path = ../prefpane/sharecode/AdminAction.m; sourceTree = SOURCE_ROOT; };
+		348CC2EF1054083800FA2DE0 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		349B4CFC0DE2B371007CC17E /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		349B4CFD0DE2B371007CC17E /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -35,6 +40,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				348CC2F01054083800FA2DE0 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +50,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				348CC2EA105407F800FA2DE0 /* AdminAction.h */,
+				348CC2EB105407F800FA2DE0 /* AdminAction.m */,
 				349B4CFC0DE2B371007CC17E /* AppController.h */,
 				349B4CFD0DE2B371007CC17E /* AppController.m */,
 			);
@@ -64,6 +72,7 @@
 				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
 				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
 				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
+				348CC2EF1054083800FA2DE0 /* Security.framework */,
 			);
 			name = "Other Frameworks";
 			sourceTree = "<group>";
@@ -173,6 +182,7 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				349B4CFE0DE2B371007CC17E /* AppController.m in Sources */,
+				348CC2EC105407F800FA2DE0 /* AdminAction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,8 +229,8 @@
 				GCC_ENABLE_OBJC_GC = supported;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
 				GCC_WARN_MISSING_PARENTHESES = YES;
