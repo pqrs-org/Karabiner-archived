@@ -14,7 +14,7 @@ static char uninstallCommand[] = "/Library/org.pqrs/KeyRemap4MacBook/extra/unins
 // ----------------------------------------------------------------------
 - (IBAction) uninstall:(id)sender
 {
-  BOOL result = [AdminAction execCommand:uninstallCommand];
+  BOOL result = [BUNDLEPREFIX(AdminAction) execCommand:uninstallCommand];
   if (result) {
     NSRunAlertPanel(@"Uninstaller", [NSString stringWithFormat:@"%@ is uninstalled.", appName], @"OK", nil, nil);
   } else {
