@@ -1,7 +1,8 @@
 /* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
 #import "KeyRemap4MacBookPref.h"
-#import "sharecode.h"
+#import "Common.h"
+#import "SysctlWrapper.h"
 
 @implementation KeyRemap4MacBookPref
 
@@ -11,7 +12,7 @@ static NSString *launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
 /* ---------------------------------------------------------------------- */
 - (void) drawVersion
 {
-  NSString *version = [BUNDLEPREFIX_SysctlWrapper getString:@"keyremap4macbook.version"];
+  NSString *version = [BUNDLEPREFIX(SysctlWrapper) getString:@"keyremap4macbook.version"];
   if (! version) {
     version = @"-.-.-";
   }
@@ -21,7 +22,7 @@ static NSString *launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
 /* ---------------------------------------------------------------------- */
 - (void) setStatusBarState
 {
-  NSString *result = [BUNDLEPREFIX_Common getExecResult:sysctl_ctl args:[NSArray arrayWithObjects:@"statusbar", nil]];
+  NSString *result = [BUNDLEPREFIX(Common) getExecResult:sysctl_ctl args:[NSArray arrayWithObjects:@"statusbar", nil]];
   if (! result) return;
 
   if ([result intValue] == 1) {
@@ -44,7 +45,7 @@ static NSString *launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
 
 - (IBAction) toggleStatusBar:(id)sender
 {
-  [BUNDLEPREFIX_Common getExecResult:sysctl_ctl args:[NSArray arrayWithObjects:@"toggle_statusbar", nil]];
+  [BUNDLEPREFIX(Common) getExecResult:sysctl_ctl args:[NSArray arrayWithObjects:@"toggle_statusbar", nil]];
   [self setStatusBarState];
   [self startStatusBar];
 }
@@ -52,7 +53,7 @@ static NSString *launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
 /* ---------------------------------------------------------------------- */
 - (IBAction) launchUninstaller:(id)sender
 {
-  [BUNDLEPREFIX_Common getExecResult:launchUninstallerCommand args:[NSArray arrayWithObjects:@"force", nil]];
+  [BUNDLEPREFIX(Common) getExecResult:launchUninstallerCommand args:[NSArray arrayWithObjects:@"force", nil]];
 }
 
 /* ---------------------------------------------------------------------- */
