@@ -29,10 +29,10 @@
 
 - (IBAction) delete:(id)sender
 {
-  NSInteger index = [_tableView selectedRow];
-  if (index == -1) return;
+  NSInteger idx = [_tableView selectedRow];
+  if (idx == -1) return;
 
-  [ConfigList delete:index];
+  [ConfigList delete:idx];
   [_tableView reloadData];
 }
 

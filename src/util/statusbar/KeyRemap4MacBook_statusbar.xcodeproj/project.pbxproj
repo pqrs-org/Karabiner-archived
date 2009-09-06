@@ -12,6 +12,7 @@
 		348F3B200DB4D19900E53E06 /* icon.statusbar.0.tif in Resources */ = {isa = PBXBuildFile; fileRef = 348F3B1E0DB4D19900E53E06 /* icon.statusbar.0.tif */; };
 		348F3B210DB4D19900E53E06 /* icon.statusbar.1.tif in Resources */ = {isa = PBXBuildFile; fileRef = 348F3B1F0DB4D19900E53E06 /* icon.statusbar.1.tif */; };
 		348F3B230DB4D1B900E53E06 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 348F3B220DB4D1B900E53E06 /* AppController.m */; };
+		34D1FC5E1054096500000272 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D1FC5D1054096500000272 /* Common.m */; };
 		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -35,6 +36,9 @@
 		348F3B1F0DB4D19900E53E06 /* icon.statusbar.1.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon.statusbar.1.tif; path = Resources/icon.statusbar.1.tif; sourceTree = "<group>"; };
 		348F3B220DB4D1B900E53E06 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
 		348F3B2F0DB4D30200E53E06 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
+		34D1FC5C1054096500000272 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = ../prefpane/sharecode/Common.h; sourceTree = SOURCE_ROOT; };
+		34D1FC5D1054096500000272 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Common.m; path = ../prefpane/sharecode/Common.m; sourceTree = SOURCE_ROOT; };
+		34EAC99A10540E4B00CAE325 /* bundleprefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bundleprefix.h; sourceTree = "<group>"; };
 		34ECE70F0DC4CF20007B23CE /* KeyRemap4MacBook_statusbar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyRemap4MacBook_statusbar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -54,6 +58,9 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				34EAC99A10540E4B00CAE325 /* bundleprefix.h */,
+				34D1FC5C1054096500000272 /* Common.h */,
+				34D1FC5D1054096500000272 /* Common.m */,
 				3454A7BF0DC4BE10004998A8 /* ConfigList.h */,
 				3454A7C00DC4BE10004998A8 /* ConfigList.m */,
 				3406C8610DC0BACB00343C8A /* TableView_list.h */,
@@ -193,6 +200,7 @@
 				348F3B230DB4D1B900E53E06 /* AppController.m in Sources */,
 				3406C8640DC0BACB00343C8A /* TableView_list.m in Sources */,
 				3454A7C10DC4BE10004998A8 /* ConfigList.m in Sources */,
+				34D1FC5E1054096500000272 /* Common.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,8 +247,8 @@
 				GCC_ENABLE_OBJC_GC = supported;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
 				GCC_WARN_MISSING_PARENTHESES = YES;
