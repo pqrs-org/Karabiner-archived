@@ -12,17 +12,6 @@
 bool
 KeyRemap4MacBook_server::Server::initialize(void)
 {
-  // --------------------
-  // setup thread pool
-  pthread_attr_t attr;
-  pthread_t thread;
-  pthread_attr_init(&attr);
-  pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
-  for (int i = 0; i < NUM_THREAD; ++i) {
-    pthread_create(&thread, &attr, handleRequestThread, this);
-  }
-
-  // --------------------
   return makeSocket();
 }
 
@@ -79,47 +68,6 @@ error:
   sendReply(sock, NULL, 0, org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ERROR);
 }
 
-void *
-KeyRemap4MacBook_server::Server::handleRequestThread(void *arg)
-{
-  KeyRemap4MacBook_server::Server *serv = reinterpret_cast<KeyRemap4MacBook_server::Server *>(arg);
-
-  KeyRemap4MacBook_server::Thread::Mutex &mutex = (serv->requestsMutex);
-  KeyRemap4MacBook_server::Thread::Cond &cond = (serv->requestCond);
-  std::queue<int> &queue = (serv->queueRequestSocket);
-
-  for (;;) {
-    mutex.lock();
-    if (queue.empty()) {
-      cond.wait(&mutex);
-      mutex.unlock();
-      continue;
-
-    } else {
-      int sock = queue.front();
-      queue.pop();
-
-      mutex.unlock();
-      (serv->dispatchOperator)(sock);
-      close(sock);
-    }
-  }
-
-  return NULL;
-}
-
-bool
-KeyRemap4MacBook_server::Server::enqueueRequest(int sock)
-{
-  requestsMutex.lock();
-
-  queueRequestSocket.push(sock);
-  requestCond.signal();
-
-  requestsMutex.unlock();
-  return true;
-}
-
 void
 KeyRemap4MacBook_server::Server::doLoop(void)
 {
@@ -130,8 +78,7 @@ KeyRemap4MacBook_server::Server::doLoop(void)
 
   listen(listenSocket, 128);
 
-  exitLoopFlag = false;
-  while (! exitLoopFlag) {
+  for (;;) {
     fd_set readfds;
     FD_ZERO(&readfds);
     FD_SET(listenSocket, &readfds);
@@ -152,7 +99,8 @@ KeyRemap4MacBook_server::Server::doLoop(void)
       if (s < 0) {
         return;
       }
-      enqueueRequest(s);
+      dispatchOperator(s);
+      close(s);
     }
   }
 
