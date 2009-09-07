@@ -32,7 +32,6 @@
 		345B06890DB1FF29000023FD /* getActiveApplicationName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getActiveApplicationName.m; sourceTree = "<group>"; };
 		345B068A0DB1FF29000023FD /* server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = server.cpp; sourceTree = "<group>"; };
 		345B068B0DB1FF29000023FD /* server.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = server.hpp; sourceTree = "<group>"; };
-		345B068C0DB1FF29000023FD /* thread.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = thread.hpp; sourceTree = "<group>"; };
 		345B068F0DB1FF3A000023FD /* bridge.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = bridge.hpp; path = ../bridge/bridge.hpp; sourceTree = SOURCE_ROOT; };
 		345B06950DB2063C000023FD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		3480838C0DC3008000D3D707 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = /System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<absolute>"; };
@@ -71,7 +70,6 @@
 				345B06890DB1FF29000023FD /* getActiveApplicationName.m */,
 				345B068A0DB1FF29000023FD /* server.cpp */,
 				345B068B0DB1FF29000023FD /* server.hpp */,
-				345B068C0DB1FF29000023FD /* thread.hpp */,
 				08FB7796FE84155DC02AAC07 /* main.cpp */,
 			);
 			name = Source;
@@ -171,8 +169,8 @@
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
 				GCC_WARN_MISSING_PARENTHESES = YES;
