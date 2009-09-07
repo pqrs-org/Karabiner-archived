@@ -11,17 +11,12 @@ getActiveApplicationName(char *buffer, size_t len)
   buffer[0] = '\0';
 
   // ----------------------------------------
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-
   NSWorkspace *ws = [NSWorkspace sharedWorkspace];
-  if (! ws) goto finish;
+  if (! ws) return;
 
   NSDictionary *app = [ws activeApplication];
-  if (! app) goto finish;
+  if (! app) return;
 
   NSString *nsappname = [app objectForKey:@"NSApplicationBundleIdentifier"];
   snprintf(buffer, len, "%s", [nsappname UTF8String]);
-
- finish:
-  [pool release];
 }
