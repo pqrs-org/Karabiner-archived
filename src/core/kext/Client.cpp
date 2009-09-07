@@ -121,7 +121,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ----------------------------------------
     memset(&msg, 0, sizeof(msg));
 
-    int result;
+    int result = -1;
     aiov[0].iov_base = reinterpret_cast<caddr_t>(&result);
     aiov[0].iov_len = sizeof(result);
     aiov[1].iov_base = reinterpret_cast<caddr_t>(reply);
