@@ -218,6 +218,11 @@
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::OPTION_L</autogen>
         </item>
         <item>
+          <name>Command_R to Option_R</name>
+          <sysctl>remap.commandR2optionR</sysctl>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
+        </item>
+        <item>
           <name>Command_R to Shift_L</name>
           <sysctl>remap.commandR2shiftL</sysctl>
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::SHIFT_L</autogen>
