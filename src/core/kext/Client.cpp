@@ -57,7 +57,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       errno_t error = sock_connect(socket, reinterpret_cast<const sockaddr *>(&sockaddr_), 0);
       if (error) {
+#if 0
+        // the connection failure is no problem because a server does not start at login window.
         printf("[KeyRemap4MacBook ERROR] sock_connect failed(%d)\n", error);
+#endif
         return false;
       }
       error = sock_nointerrupt(socket, TRUE);
