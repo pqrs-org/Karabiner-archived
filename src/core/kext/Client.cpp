@@ -28,8 +28,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ----------------------------------------
       struct timeval tv;
-      tv.tv_sec = KeyRemap4MacBook_client::TIMEOUT;
-      tv.tv_usec = 0;
+      tv.tv_sec = KeyRemap4MacBook_client::TIMEOUT_SECOND;
+      tv.tv_usec = KeyRemap4MacBook_client::TIMEOUT_MICROSECOND;
 
       error = sock_setsockopt(socket, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(struct timeval));
       if (error) {
@@ -129,14 +129,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     msg.msg_iov = aiov;
     msg.msg_iovlen = (replysize == 0 ? 1 : 2);
 
-    for (;;) {
-      error = sock_receive(socket, &msg, MSG_WAITALL, &iolen);
-      if (error == EWOULDBLOCK) continue;
-      if (error) {
-        printf("KeyRemap4MacBook_client::sendmsg sock_receive failed(%d)\n", error);
-      }
-
-      break;
+    error = sock_receive(socket, &msg, MSG_WAITALL, &iolen);
+    if (error) {
+      printf("KeyRemap4MacBook_client::sendmsg sock_receive failed(%d)\n", error);
     }
 
     releaseSocket(socket);
