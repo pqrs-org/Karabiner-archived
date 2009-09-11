@@ -102,6 +102,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         flags |= ModifierFlag::CURSOR;
       }
 
+      if (config.debug_devel) {
+        printf("KeyRemap4MacBook -INFO- FlagStatus::makeFlags = 0x%x\n", flags);
+      }
+
       return flags;
     }
 
