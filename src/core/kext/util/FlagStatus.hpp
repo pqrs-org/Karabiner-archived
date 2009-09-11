@@ -18,8 +18,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       void decrease(void) { --count; }
       void temporary_increase(void) { ++temporary_count; }
       void temporary_decrease(void) { --temporary_count; }
-      void lock_increase(void) { ++lock_count; }
-      void lock_decrease(void) { --lock_count; }
+      void lock_increase(void) { lock_count = 1; }
+      void lock_decrease(void) { lock_count = 0; }
 
       bool isHeldDown(void) const { return (count + temporary_count + lock_count) > 0; }
       unsigned int makeFlag(void) const { return (isHeldDown()) ? flag : 0; }
