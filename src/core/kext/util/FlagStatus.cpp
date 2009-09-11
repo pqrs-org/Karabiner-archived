@@ -21,6 +21,21 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       temporary_count = 0;
 
+      // At some keyboard, when we press CapsLock key, the down & up event are thrown at a time.
+      // So, we treat the capslock key exceptionally.
+      if (key == KeyCode::CAPSLOCK) {
+        if (RemapUtil::isModifierOn(remapParams, flag)) {
+          lock_increase();
+        } else {
+          lock_decrease();
+        }
+
+        if (config.debug_devel) {
+          printf("KeyRemap4MacBook -Info- FlagStatus::set CAPSLOCK (lock_count = %d)\n", lock_count);
+        }
+        return;
+      }
+
       if ((remapParams.params)->eventType != KeyEvent::MODIFY) return;
       if (remapParams.ex_origKey != static_cast<unsigned int>(key)) return;
 
@@ -100,10 +115,6 @@ namespace org_pqrs_KeyRemap4MacBook {
           keyCode == KeyCode::CURSOR_LEFT ||
           keyCode == KeyCode::CURSOR_RIGHT) {
         flags |= ModifierFlag::CURSOR;
-      }
-
-      if (config.debug_devel) {
-        printf("KeyRemap4MacBook -INFO- FlagStatus::makeFlags = 0x%x\n", flags);
       }
 
       return flags;

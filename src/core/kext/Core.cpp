@@ -309,7 +309,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (NumHeldDownKeys::iszero()) {
         NumHeldDownKeys::reset();
         FlagStatus::reset();
-        params->flags = 0;
+        params->flags = FlagStatus::makeFlags(params->key);
         RemapUtil::fireModifiers(p->getOrig_keyboardEventAction(), *params);
         PressDownKeys::clear(p->getOrig_keyboardEventAction(), params->target, params->ts, params->sender, params->refcon);
       }
