@@ -1207,6 +1207,17 @@
           <sysctl>remap.space2return</sysctl>
           <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::RETURN</autogen>
         </item>
+        <item>
+          <name>Shift+Space to Command_L+Space</name>
+          <sysctl>remap.shiftSpace2commandLSpace</sysctl>
+          <autogen>--KeyToKey-- KeyCode::SPACE, VK_SHIFT, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
+          <name>Control+Space to Option_L+Enter (except Emacs)</name>
+          <not>EMACS</not>
+          <sysctl>remap.controlSpace2optionLEnter</sysctl>
+          <autogen>--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::ENTER, ModifierFlag::OPTION_L</autogen>
+        </item>
       </list>
     </item>
 
