@@ -92,7 +92,7 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
   if /<jiskanamode_only>(.+?)<\/jiskanamode_only>/m =~ item then
     tmp = []
     $1.split(/,/).each do |f|
-      tmp += "(JISKanaMode::getMode() == JISKanaMode::#{f.strip})"
+      tmp << "(JISKanaMode::getMode() != JISKanaMode::#{f.strip})"
     end
     filter += "if (#{tmp.join(' && ')}) return;\n"
   end

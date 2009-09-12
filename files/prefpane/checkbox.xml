@@ -2245,6 +2245,13 @@
                 </item>
               </list>
             </item>
+            <item>
+              <name>Shift+Space to Equal</name>
+              <appendix>(Disable when KANA mode)</appendix>
+              <sysctl>remap.jis_shiftSpace2equal</sysctl>
+              <jiskanamode_only>JISKANAMODE_ASCII</jiskanamode_only>
+              <autogen>--KeyToKey-- KeyCode::SPACE, VK_SHIFT, KeyCode::EQUAL</autogen>
+            </item>
           </list>
         </item>
         <item>
