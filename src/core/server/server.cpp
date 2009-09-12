@@ -181,6 +181,9 @@ KeyRemap4MacBook_server::Server::do_ActiveApplicationInfo(org_pqrs_KeyRemap4MacB
   } else if (strcmp(applicationName, "org.mozilla.firefox") == 0) {
     reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::FIREFOX;
 
+  } else if (strcmp(applicationName, "org.mozilla.thunderbird") == 0) {
+    reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::THUNDERBIRD;
+
   } else if (strcmp(applicationName, "com.apple.iChat") == 0) {
     reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::ICHAT;
 

@@ -27,6 +27,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         FINDER,
         SAFARI,
         FIREFOX,
+        THUNDERBIRD,
         ICHAT, // iChat
         ADIUMX,
         SKYPE,
