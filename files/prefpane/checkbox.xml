@@ -491,6 +491,11 @@
       <name>Remap Escape Key</name>
       <list>
         <item>
+          <name>Escape to CapsLock</name>
+          <sysctl>remap.escape2capslock</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::CAPSLOCK</autogen>
+        </item>
+        <item>
           <name>Escape to Command_L</name>
           <sysctl>remap.escape2commandL</sysctl>
           <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::COMMAND_L</autogen>

@@ -13,15 +13,14 @@ namespace org_pqrs_KeyRemap4MacBook {
       void set(const RemapParams &remapParams);
 
       void reset(void) { count = 0; }
-      void reset_lock(void) { lock_count = 0; }
-      void increase(void) { ++count; }
-      void decrease(void) { --count; }
+      void increase(void);
+      void decrease(void);
       void temporary_increase(void) { ++temporary_count; }
       void temporary_decrease(void) { --temporary_count; }
       void lock_increase(void) { lock_count = 1; }
       void lock_decrease(void) { lock_count = 0; }
 
-      bool isHeldDown(void) const { return (count + temporary_count + lock_count) > 0; }
+      bool isHeldDown(void) const { return (count + temporary_count + lock_count + original_lock_count) > 0; }
       unsigned int makeFlag(void) const { return (isHeldDown()) ? flag : 0; }
 
       KeyCode::KeyCode getKeyCode(void) const { return key; }
@@ -31,7 +30,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       KeyCode::KeyCode key;
       int count;
       int temporary_count;
-      int lock_count;
+
+      int lock_count; // store remapped lock status. (CapsLock, FN lock, ...)
+      int original_lock_count; // store original CapsLock status.
     };
 
     void initialize(void);
@@ -39,7 +40,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     unsigned int makeFlags(unsigned int keyCode = KeyCode::NONE);
     unsigned int makeFlags(const RemapParams &remapParams);
     void reset(void);
-    void reset_lock(void);
 
     Item *getFlagStatus(ModifierFlag::ModifierFlag flag);
     Item *getFlagStatus(KeyCode::KeyCode keyCode);

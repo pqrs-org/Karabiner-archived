@@ -14,6 +14,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       count = 0;
       temporary_count = 0;
       lock_count = 0;
+      original_lock_count = 0;
     }
 
     void
@@ -25,13 +26,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       // So, we treat the capslock key exceptionally.
       if (key == KeyCode::CAPSLOCK) {
         if (RemapUtil::isModifierOn(remapParams, flag)) {
-          lock_increase();
+          original_lock_count = 1;
         } else {
-          lock_decrease();
+          original_lock_count = 0;
         }
 
         if (config.debug_devel) {
-          printf("KeyRemap4MacBook -Info- FlagStatus::set CAPSLOCK (lock_count = %d)\n", lock_count);
+          printf("KeyRemap4MacBook -Info- FlagStatus::set CAPSLOCK (lock_count = %d)\n", original_lock_count);
         }
         return;
       }
@@ -43,6 +44,26 @@ namespace org_pqrs_KeyRemap4MacBook {
         increase();
       } else {
         decrease();
+      }
+    }
+
+    void
+    Item::increase(void)
+    {
+      if (key == KeyCode::CAPSLOCK) {
+        lock_count = ! lock_count;
+      } else {
+        ++count;
+      }
+    }
+
+    void
+    Item::decrease(void)
+    {
+      if (key == KeyCode::CAPSLOCK) {
+        // do nothing (toggle at Item::increase).
+      } else {
+        --count;
       }
     }
 
@@ -72,18 +93,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       for (int i = 0; i < ModifierFlag::listsize; ++i) {
         item[i].reset();
-      }
-    }
-
-    void
-    reset_lock(void)
-    {
-      if (config.debug_devel) {
-        printf("KeyRemap4MacBook FlagStatus::reset_lock\n");
-      }
-
-      for (int i = 0; i < ModifierFlag::listsize; ++i) {
-        item[i].reset_lock();
       }
     }
 
