@@ -304,25 +304,6 @@ namespace org_pqrs_KeyRemap4MacBook {
                                        KeyCode::A, CharCode::A, KeyCode::NONE, CharCode::NONE);
   }
 
-  static void
-  remap_jis_layout_windowskanainput(const RemapParams &remapParams)
-  {
-    if (! config.remap_jis_layout_windowskanainput) return;
-
-    if (JISKanaMode::getMode() == JISKanaMode::JISKANAMODE_ASCII) return;
-
-    if (FlagStatus::isHeldDown_shift()) {
-      RemapUtil::keyToKey(remapParams, KeyCode::MINUS, KeyCode::BRACKET_RIGHT);
-      RemapUtil::keyToKey(remapParams, KeyCode::BRACKET_RIGHT, KeyCode::BRACKET_LEFT);
-      RemapUtil::keyToKey(remapParams, KeyCode::BRACKET_LEFT, KeyCode::EQUAL);
-      RemapUtil::keyToKey(remapParams, KeyCode::EQUAL, KeyCode::MINUS);
-    } else {
-      RemapUtil::keyToKey(remapParams, KeyCode::BRACKET_RIGHT, KeyCode::EQUAL);
-      RemapUtil::keyToKey(remapParams, KeyCode::EQUAL, KeyCode::BACKSLASH);
-      RemapUtil::keyToKey(remapParams, KeyCode::BACKSLASH, KeyCode::BRACKET_RIGHT);
-    }
-  }
-
   // ------------------------------------------------------------
   static void
   remap_pointing_relative_fn_to_scroll(const RemapPointingParams_relative &remapParams)
@@ -373,7 +354,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &remapParams)
 
   remap_jis_jansi(remapParams);
   remap_jis_layout_kawashima(remapParams);
-  remap_jis_layout_windowskanainput(remapParams);
 
   // ------------------------------------------------------------
   // *** Note: we need to call remap_emacsmode as possible late. ***

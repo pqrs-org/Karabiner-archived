@@ -2475,6 +2475,15 @@
             </item>
             <item>
               <name>Use Windows Kana-Input Layout on ASCII Keyboard</name>
+              <jiskanamode_not>JISKANAMODE_ASCII</jiskanamode_not>
+              <autogen>--KeyToKey-- KeyCode::MINUS, VK_SHIFT, KeyCode::BRACKET_RIGHT</autogen>
+              <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, VK_SHIFT, KeyCode::BRACKET_LEFT</autogen>
+              <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_SHIFT, KeyCode::EQUAL</autogen>
+              <autogen>--KeyToKey-- KeyCode::EQUAL, VK_SHIFT, KeyCode::MINUS</autogen>
+
+              <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, KeyCode::EQUAL</autogen>
+              <autogen>--KeyToKey-- KeyCode::EQUAL, KeyCode::BACKSLASH</autogen>
+              <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::BRACKET_RIGHT</autogen>
               <sysctl>remap.jis_layout_windowskanainput</sysctl>
             </item>
           </list>

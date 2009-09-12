@@ -84,6 +84,18 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
     end
     filter += "if (#{tmp.join(' && ')}) return;\n"
   end
+  if /<jiskanamode_not>(.+?)<\/jiskanamode_not>/m =~ item then
+    $1.split(/,/).each do |f|
+      filter += "if (JISKanaMode::getMode() == JISKanaMode::#{f.strip}) return;\n"
+    end
+  end
+  if /<jiskanamode_only>(.+?)<\/jiskanamode_only>/m =~ item then
+    tmp = []
+    $1.split(/,/).each do |f|
+      tmp += "(JISKanaMode::getMode() == JISKanaMode::#{f.strip})"
+    end
+    filter += "if (#{tmp.join(' && ')}) return;\n"
+  end
 
   listAutogen = item.scan(/<autogen>(.+?)<\/autogen>/m)
   unless listAutogen.empty? then
