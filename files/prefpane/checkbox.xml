@@ -1361,6 +1361,12 @@
           <autogen>--KeyToKey-- KeyCode::W, VK_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
+          <name>Command+W to Command+C</name>
+          <sysctl>option.emacsmode_commandW</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
+          <autogen>--KeyToKey-- KeyCode::W, VK_COMMAND, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
           <name>Option+BF to Option+Left/Right</name>
           <sysctl>option.emacsmode_optionBF</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
