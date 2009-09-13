@@ -18,6 +18,18 @@ def preprocess(listAutogen)
     elsif /VK_MOD_CCS_L/ =~ autogen then
       list << autogen.gsub(/VK_MOD_CCS_L/, "ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L")
       modify = true
+    elsif /FROMKEYCODE_(HOME|END)\s*,\s*ModifierFlag::/ =~ autogen then
+      key = $1
+      extrakey = (key == 'HOME') ? 'CURSOR_LEFT' : 'CURSOR_RIGHT'
+      list << autogen.gsub(/FROMKEYCODE_#{key}\s*,/, "KeyCode::#{key},")
+      list << autogen.gsub(/FROMKEYCODE_#{key}\s*,/, "KeyCode::#{extrakey}, ModifierFlag::FN |")
+      modify = true
+    elsif /FROMKEYCODE_(HOME|END)/ =~ autogen then
+      key = $1
+      extrakey = (key == 'HOME') ? 'CURSOR_LEFT' : 'CURSOR_RIGHT'
+      list << autogen.gsub(/FROMKEYCODE_#{key}\s*,/, "KeyCode::#{key},")
+      list << autogen.gsub(/FROMKEYCODE_#{key}\s*,/, "KeyCode::#{extrakey}, ModifierFlag::FN,")
+      modify = true
     else
       list << autogen
     end

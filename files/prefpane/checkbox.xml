@@ -2009,6 +2009,24 @@
             </item>
           </list>
         </item>
+        <item>
+          <name>Enable at only Firefox/Thunderbird</name>
+          <list>
+            <item>
+              <name>Fix Home/End</name>
+              <appendix>(Home/End move to beg/end of line, Ctl/Cmd+Home/End move to beg/end of page)</appendix>
+              <sysctl>remap.app_firefox_fix_home_end</sysctl>
+              <only>FIREFOX, THUNDERBIRD</only>
+              <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_COMMAND, KeyCode::HOME</autogen>
+              <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_CONTROL, KeyCode::HOME</autogen>
+              <autogen>--KeyToKey-- FROMKEYCODE_END, VK_COMMAND, KeyCode::END</autogen>
+              <autogen>--KeyToKey-- FROMKEYCODE_END, VK_CONTROL, KeyCode::END</autogen>
+
+              <autogen>--KeyToKey-- FROMKEYCODE_HOME, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+              <autogen>--KeyToKey-- FROMKEYCODE_END, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
 
@@ -2204,10 +2222,8 @@
           <appendix>(behave like Command+Left/Right)</appendix>
           <sysctl>remap.pclikehomeend</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToKey-- KeyCode::HOME, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, ModifierFlag::FN, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::END, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, ModifierFlag::FN, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- FROMKEYCODE_HOME, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- FROMKEYCODE_END, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
           <name>Use PC Style PageUp/PageDown</name>

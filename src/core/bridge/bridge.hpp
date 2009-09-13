@@ -27,13 +27,13 @@ namespace org_pqrs_KeyRemap4MacBook {
         FINDER,
         SAFARI,
         FIREFOX,
-        THUNDERBIRD,
         ICHAT, // iChat
         ADIUMX,
         SKYPE,
         MAIL, // Mail.app
         EDITOR, // TextEdit
         ADOBE, // Adobe Softwares
+        THUNDERBIRD,
       };
 
       // none
