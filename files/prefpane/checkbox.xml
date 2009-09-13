@@ -1850,6 +1850,118 @@
               <only>VIRTUALMACHINE</only>
               <autogen>--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L</autogen>
             </item>
+            <item>
+              <name>Remap Command_L Keys</name>
+              <appendix>(To support Emacs on Fusion. This allows controlling individual key translations)</appendix>
+              <list>
+                <item>
+                  <name>Remap Command_L to Option_L</name>
+                  <sysctl>remap.app_vm_commandL2optionL</sysctl>
+                  <appendix>(Option_L is translated to Alt_L by Fusion)</appendix>
+                  <only>VIRTUALMACHINE</only>
+                  <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
+                </item>
+                <item>
+                  <name>Remap Command_L+A to Control+A</name>
+                  <sysctl>remap.app_vm_commandLA</sysctl>
+                  <only>VIRTUALMACHINE</only>
+                  <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::COMMAND_L, KeyCode::A, ModifierFlag::CONTROL_L</autogen>
+                </item>
+                <item>
+                  <name>Remap Command_L+C to Control+C</name>
+                  <sysctl>remap.app_vm_commandLC</sysctl>
+                  <only>VIRTUALMACHINE</only>
+                  <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::COMMAND_L, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
+                </item>
+                <item>
+                  <name>Remap Command_L+F to Control+F</name>
+                  <sysctl>remap.app_vm_commandLF</sysctl>
+                  <only>VIRTUALMACHINE</only>
+                  <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::COMMAND_L, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
+                </item>
+                <item>
+                  <name>Remap Command_L+P to Control+P</name>
+                  <sysctl>remap.app_vm_commandLP</sysctl>
+                  <only>VIRTUALMACHINE</only>
+                  <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::COMMAND_L, KeyCode::P, ModifierFlag::CONTROL_L</autogen>
+                </item>
+                <item>
+                  <name>Remap Command_L+V to Control+V</name>
+                  <sysctl>remap.app_vm_commandLV</sysctl>
+                  <only>VIRTUALMACHINE</only>
+                  <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::COMMAND_L, KeyCode::V, ModifierFlag::CONTROL_L</autogen>
+                </item>
+                <item>
+                  <name>Remap Command_L+X to Control+X</name>
+                  <sysctl>remap.app_vm_commandLX</sysctl>
+                  <appendix>(Leave it unchecked for using left Meta+X in Emacs on Fusion)</appendix>
+                  <only>VIRTUALMACHINE</only>
+                  <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::COMMAND_L, KeyCode::X, ModifierFlag::CONTROL_L</autogen>
+                </item>
+                <item>
+                  <name>Remap Command_L+Z to Control+Z</name>
+                  <sysctl>remap.app_vm_commandLZ</sysctl>
+                  <only>VIRTUALMACHINE</only>
+                  <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::COMMAND_L, KeyCode::Z, ModifierFlag::CONTROL_L</autogen>
+                </item>
+              </list>
+            </item>
+            <item>
+              <name>Remap Command_R Keys</name>
+              <appendix>(To support Emacs on Fusion. This allows controlling individual key translations)</appendix>
+              <list>
+                <item>
+                  <name>Remap Command_R to Option_R</name>
+                  <appendix>(This allows controlling individual key translations)</appendix>
+                  <sysctl>remap.app_vm_commandR2optionR</sysctl>
+                  <only>VIRTUALMACHINE</only>
+                  <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
+                </item>
+                <item>
+                  <name>Remap Command_R+A to Control+A</name>
+                  <sysctl>remap.app_vm_commandRA</sysctl>
+                  <only>VIRTUALMACHINE</only>
+                  <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::COMMAND_R, KeyCode::A, ModifierFlag::CONTROL_L</autogen>
+                </item>
+                <item>
+                  <name>Remap Command_R+C to Control+C</name>
+                  <sysctl>remap.app_vm_commandRC</sysctl>
+                  <only>VIRTUALMACHINE</only>
+                  <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::COMMAND_R, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
+                </item>
+                <item>
+                  <name>Remap Command_R+F to Control+F</name>
+                  <sysctl>remap.app_vm_commandRF</sysctl>
+                  <only>VIRTUALMACHINE</only>
+                  <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::COMMAND_R, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
+                </item>
+                <item>
+                  <name>Remap Command_R+P to Control+P</name>
+                  <sysctl>remap.app_vm_commandRP</sysctl>
+                  <only>VIRTUALMACHINE</only>
+                  <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::COMMAND_R, KeyCode::P, ModifierFlag::CONTROL_L</autogen>
+                </item>
+                <item>
+                  <name>Remap Command_R+V to Control+V</name>
+                  <sysctl>remap.app_vm_commandRV</sysctl>
+                  <only>VIRTUALMACHINE</only>
+                  <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::COMMAND_R, KeyCode::V, ModifierFlag::CONTROL_L</autogen>
+                </item>
+                <item>
+                  <name>Remap Command_R+X to Control+X</name>
+                  <appendix>(Leave it unchecked for using right Meta+X in Emacs on Fusion)</appendix>
+                  <sysctl>remap.app_vm_commandRX</sysctl>
+                  <only>VIRTUALMACHINE</only>
+                  <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::COMMAND_R, KeyCode::X, ModifierFlag::CONTROL_L</autogen>
+                </item>
+                <item>
+                  <name>Remap Command_R+Z to Control+Z </name>
+                  <sysctl>remap.app_vm_commandRZ</sysctl>
+                  <only>VIRTUALMACHINE</only>
+                  <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::COMMAND_R, KeyCode::Z, ModifierFlag::CONTROL_L</autogen>
+                </item>
+              </list>
+            </item>
           </list>
         </item>
         <item>
