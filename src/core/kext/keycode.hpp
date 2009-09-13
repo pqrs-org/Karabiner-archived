@@ -186,6 +186,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       JIS_BRACKET_LEFT = 30,
 
       RUSSIAN_PARAGRAPH = 10,
+      UK_SECTION = 10,
 
       NONE = 255,
     };

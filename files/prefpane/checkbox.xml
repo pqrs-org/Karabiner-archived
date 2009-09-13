@@ -2682,5 +2682,25 @@
         </item>
       </list>
     </item>
+    <item>
+      <name>For UK Keyboard users</name>
+      <list>
+        <item>
+          <name>Improve UK Keyboard Layout</name>
+          <appendix>( '\' to additional Enter, '§' to '`' and '`' to '\' )</appendix>
+          <sysctl>remap.uk_saneuklayout</sysctl>
+          <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKQUOTE</autogen>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::BACKSLASH</autogen>
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::ENTER</autogen>
+        </item>
+        <item>
+          <name>Improve UK Keyboard Layout (Option 2)</name>
+          <appendix>( '§' to '`' and '`' to '\' )</appendix>
+          <sysctl>remap.uk_saneuklayout2</sysctl>
+          <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKQUOTE</autogen>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::BACKSLASH</autogen>
+        </item>
+      </list>
+    </item>
   </list>
 </root>
