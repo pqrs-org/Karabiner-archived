@@ -1,7 +1,8 @@
 #!/bin/sh
 PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 
-osmajor=`sysctl -n kern.osrelease | cut -d . -f 1`
+uname=`uname -r`
+osmajor="${uname%%.*}"
 [ $osmajor -lt 10 ] && exit 125
 
 [ -d /Library/StartupItems/SetKeyboardLED ] && exit 126
