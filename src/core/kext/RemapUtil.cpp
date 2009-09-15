@@ -296,7 +296,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! isFromFlags(FlagStatus::makeFlags(KeyCode::NONE), fromFlags)) return false;
     if (! isKey(remapParams, fromKeyCode)) return false;
 
-    remapFlags(fromFlags, toFlags);
+    remapFlags(fromFlags, toFlags, toKeyCode);
 
     if (RemapUtil::getKeyCodeModifier(toKeyCode) != ModifierFlag::NONE) {
       (remapParams.params)->eventType = KeyEvent::MODIFY;
