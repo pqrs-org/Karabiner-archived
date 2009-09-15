@@ -109,17 +109,28 @@ namespace org_pqrs_KeyRemap4MacBook {
         return ((flags & fromFlags) == fromFlags);
       }
     }
-    void remapFlags(unsigned int fromFlags, unsigned int toFlags) {
+    void remapFlags(unsigned int fromFlags, unsigned int toFlags, unsigned int toKeyCode = KeyCode::NONE) {
+      // if to Modifier, we change the flag permanently, else change temporary.
+      bool isToModifier = (RemapUtil::getKeyCodeModifier(toKeyCode) != ModifierFlag::NONE);
+
       for (int i = 0; i < ModifierFlag::listsize; ++i) {
         ModifierFlag::ModifierFlag m = ModifierFlag::list[i];
         FlagStatus::Item *p = FlagStatus::getFlagStatus(m);
         if (! p) continue;
 
         if (RemapUtil::isModifierOn(fromFlags, m)) {
-          p->temporary_decrease();
+          if (isToModifier) {
+            p->decrease();
+          } else {
+            p->temporary_decrease();
+          }
         }
         if (RemapUtil::isModifierOn(toFlags, m)) {
-          p->temporary_increase();
+          if (isToModifier) {
+            p->increase();
+          } else {
+            p->temporary_increase();
+          }
         }
       }
     }
@@ -175,7 +186,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     (remapParams.params)->key = toKeyCode;
-    remapFlags(fromFlags, toFlags);
+    remapFlags(fromFlags, toFlags, toKeyCode);
 
     return true;
   }
