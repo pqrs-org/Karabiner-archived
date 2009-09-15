@@ -26,23 +26,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   static void
-  remap_fn2controlL_commandR2fn(const RemapParams &remapParams)
-  {
-    if (! config.remap_fn2controlL_commandR2fn) return;
-
-    if (RemapUtil::isModifierOn(remapParams, ModifierFlag::FN)) {
-      if (FlagStatus::isHeldDown(ModifierFlag::COMMAND_R)) {
-        FlagStatus::temporary_decrease(ModifierFlag::COMMAND_R);
-        FlagStatus::temporary_decrease(ModifierFlag::CONTROL_L);
-        return;
-      }
-    }
-
-    RemapUtil::keyToKey(remapParams, KeyCode::FN, KeyCode::CONTROL_L);
-  }
-
-  // ----------------------------------------
-  static void
   remap_f6_to_numlock(const RemapParams &remapParams)
   {
     if (! config.remap_f6_to_numlock) return;
@@ -327,8 +310,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &remapParams)
 #include "config/output/include.remapcode_call.cpp"
 
   remap_enter2commandL_enter2controlL_vm(remapParams);
-
-  remap_fn2controlL_commandR2fn(remapParams);
 
   remap_f6_to_numlock(remapParams);
 

@@ -530,6 +530,8 @@
           <name>FN to Control_L</name>
           <appendix>(+ Command_R+FN to FN)</appendix>
           <sysctl>remap.fn2controlL_commandR2fn</sysctl>
+          <autogen>--KeyToKey-- KeyCode::FN, ModifierFlag::COMMAND_R, KeyCode::FN</autogen>
+          <autogen>--KeyToKey-- KeyCode::FN, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
           <name>FN to Option_L</name>
