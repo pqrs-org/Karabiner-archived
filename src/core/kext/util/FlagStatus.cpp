@@ -48,6 +48,20 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
+    Item::reset(void)
+    {
+      count = 0;
+      temporary_count = 0;
+
+      /*
+        preserve lock_count, original_lock_count.
+
+        FlagStatus::reset is called when NumHeldDownKeys == 0,
+        so we need remember the status of CapsLock, NumLock, ...
+      */
+    }
+
+    void
     Item::increase(void)
     {
       if (key == KeyCode::CAPSLOCK) {
