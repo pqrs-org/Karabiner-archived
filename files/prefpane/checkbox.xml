@@ -534,6 +534,13 @@
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
+          <name>FN to Control_L</name>
+          <appendix>(+ Option_L+FN to FN)</appendix>
+          <sysctl>remap.fn2controlL_optionL2fn</sysctl>
+          <autogen>--KeyToKey-- KeyCode::FN, ModifierFlag::OPTION_L, KeyCode::FN</autogen>
+          <autogen>--KeyToKey-- KeyCode::FN, KeyCode::CONTROL_L</autogen>
+        </item>
+        <item>
           <name>FN to Option_L</name>
           <sysctl>remap.fn2optionL</sysctl>
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::OPTION_L</autogen>
@@ -1996,6 +2003,15 @@
               <name>Remap Command_L to Option_L</name>
               <sysctl>remap.app_term_commandL2optionL</sysctl>
               <only>TERMINAL</only>
+              <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
+            </item>
+            <item>
+              <name>Remap Command_L to Option_L</name>
+              <appendix>(Pass-Through Tab and Backquote)</appendix>
+              <sysctl>remap.app_term_commandL2optionL_except_tab</sysctl>
+              <only>TERMINAL</only>
+              <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::OPTION_L, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L</autogen>
               <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
             </item>
           </list>
