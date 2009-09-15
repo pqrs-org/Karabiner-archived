@@ -12,7 +12,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       void initialize(ModifierFlag::ModifierFlag _flag);
       void set(const RemapParams &remapParams);
 
-      void reset(void) { count = 0; }
+      void reset(void);
       void increase(void);
       void decrease(void);
       void temporary_increase(void) { ++temporary_count; }
