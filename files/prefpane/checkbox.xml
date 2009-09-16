@@ -923,6 +923,11 @@
           <sysctl>remap.optionL2shiftL</sysctl>
           <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::SHIFT_L</autogen>
         </item>
+        <item>
+          <name>Option_L to Space</name>
+          <sysctl>remap.optionL2space</sysctl>
+          <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::SPACE</autogen>
+        </item>
       </list>
     </item>
 
