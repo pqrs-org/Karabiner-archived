@@ -109,7 +109,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         return ((flags & fromFlags) == fromFlags);
       }
     }
-    void remapFlags(unsigned int fromFlags, unsigned int toFlags, unsigned int toKeyCode = KeyCode::NONE) {
+    void remapFlags(unsigned int fromFlags, unsigned int toFlags, unsigned int toKeyCode = KeyCode::NONE, bool isKeyDown = false) {
       // if to Modifier, we change the flag permanently, else change temporary.
       bool isToModifier = (RemapUtil::getKeyCodeModifier(toKeyCode) != ModifierFlag::NONE);
 
@@ -120,15 +120,25 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         if (RemapUtil::isModifierOn(fromFlags, m)) {
           if (isToModifier) {
-            p->decrease();
+            if (isKeyDown) {
+              p->decrease();
+            } else {
+              p->increase();
+            }
           } else {
+            // always decrease
             p->temporary_decrease();
           }
         }
         if (RemapUtil::isModifierOn(toFlags, m)) {
           if (isToModifier) {
-            p->increase();
+            if (isKeyDown) {
+              p->increase();
+            } else {
+              p->decrease();
+            }
           } else {
+            // always increase
             p->temporary_increase();
           }
         }
@@ -147,6 +157,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     FlagStatus::Item *fromStatus = FlagStatus::getFlagStatus(fromModifier);
     FlagStatus::Item *toStatus = FlagStatus::getFlagStatus(toModifier);
+
+    bool isKeyDown = RemapUtil::isKeyDown(remapParams, fromKeyCode);
 
     if (fromStatus == NULL) {
       if (toStatus == NULL) {
@@ -186,7 +198,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     (remapParams.params)->key = toKeyCode;
-    remapFlags(fromFlags, toFlags, toKeyCode);
+    remapFlags(fromFlags, toFlags, toKeyCode, isKeyDown);
 
     return true;
   }
