@@ -1718,20 +1718,6 @@
               <autogen>--KeyToKey-- KeyCode::D,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
             </item>
             <item>
-              <name>Use Command_R+[123 QWE ASD] for Spaces (4x4)</name>
-              <appendix>(Command+[123 567 90], Command+Option[1])</appendix>
-              <sysctl>remap.spaces_special_123qweasd_4x4_simple</sysctl>
-              <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_1, ModifierFlag::COMMAND_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_2, ModifierFlag::COMMAND_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_3, ModifierFlag::COMMAND_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::Q,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_5, ModifierFlag::COMMAND_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::W,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_6, ModifierFlag::COMMAND_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::E,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_7, ModifierFlag::COMMAND_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::A,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_9, ModifierFlag::COMMAND_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::S,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_0, ModifierFlag::COMMAND_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::D,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_1, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
-            </item>
-            <item>
               <name>Use Command_R+[QWE ASD ZXC] for Spaces (3x3)</name>
               <appendix>(Command+Control+Option+Shift+[123 456 789])</appendix>
               <sysctl>remap.spaces_special_qweasdzxc</sysctl>
