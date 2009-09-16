@@ -308,7 +308,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! isFromFlags(FlagStatus::makeFlags(KeyCode::NONE), fromFlags)) return false;
     if (! isKey(remapParams, fromKeyCode)) return false;
 
-    remapFlags(fromFlags, toFlags, toKeyCode);
+    bool isKeyDown = ((remapParams.params)->eventType == KeyEvent::DOWN);
+    remapFlags(fromFlags, toFlags, toKeyCode, isKeyDown);
 
     if (RemapUtil::getKeyCodeModifier(toKeyCode) != ModifierFlag::NONE) {
       (remapParams.params)->eventType = KeyEvent::MODIFY;
