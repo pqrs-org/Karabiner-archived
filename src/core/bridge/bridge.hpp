@@ -34,6 +34,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         EDITOR, // TextEdit
         ADOBE, // Adobe Softwares
         THUNDERBIRD,
+        EXCEL, // Microsoft Excel
+        ENTOURAGE, // Microsoft Entourage
       };
 
       // none
