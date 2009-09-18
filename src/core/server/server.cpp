@@ -201,6 +201,12 @@ KeyRemap4MacBook_server::Server::do_ActiveApplicationInfo(org_pqrs_KeyRemap4MacB
 
   } else if (strncmp(applicationName, com_adobe, strlen(com_adobe)) == 0) {
     reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::ADOBE;
+
+  } else if (strcmp(applicationName, "com.microsoft.Excel") == 0) {
+    reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::EXCEL;
+
+  } else if (strcmp(applicationName, "com.microsoft.Entourage") == 0) {
+    reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::ENTOURAGE;
   }
 
   return org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS;
