@@ -2,6 +2,21 @@
 
 require 'rexml/document'
 
+def getextrakey(key)
+  case key
+  when 'HOME'
+    'CURSOR_LEFT'
+  when 'END'
+    'CURSOR_RIGHT'
+  when 'PAGEUP'
+    'CURSOR_UP'
+  when 'PAGEDOWN'
+    'CURSOR_DOWN'
+  else
+    nil
+  end
+end
+
 def preprocess(listAutogen)
   modify = false
 
@@ -18,15 +33,15 @@ def preprocess(listAutogen)
     elsif /VK_MOD_CCS_L/ =~ autogen then
       list << autogen.gsub(/VK_MOD_CCS_L/, "ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L")
       modify = true
-    elsif /FROMKEYCODE_(HOME|END)\s*,\s*ModifierFlag::/ =~ autogen then
+    elsif /FROMKEYCODE_(HOME|END|PAGEUP|PAGEDOWN)\s*,\s*ModifierFlag::/ =~ autogen then
       key = $1
-      extrakey = (key == 'HOME') ? 'CURSOR_LEFT' : 'CURSOR_RIGHT'
+      extrakey = getextrakey(key)
       list << autogen.gsub(/FROMKEYCODE_#{key}\s*,/, "KeyCode::#{key},")
       list << autogen.gsub(/FROMKEYCODE_#{key}\s*,/, "KeyCode::#{extrakey}, ModifierFlag::FN |")
       modify = true
-    elsif /FROMKEYCODE_(HOME|END)/ =~ autogen then
+    elsif /FROMKEYCODE_(HOME|END|PAGEUP|PAGEDOWN)/ =~ autogen then
       key = $1
-      extrakey = (key == 'HOME') ? 'CURSOR_LEFT' : 'CURSOR_RIGHT'
+      extrakey = getextrakey(key)
       list << autogen.gsub(/FROMKEYCODE_#{key}\s*,/, "KeyCode::#{key},")
       list << autogen.gsub(/FROMKEYCODE_#{key}\s*,/, "KeyCode::#{extrakey}, ModifierFlag::FN,")
       modify = true

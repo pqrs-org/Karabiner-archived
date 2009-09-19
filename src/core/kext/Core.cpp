@@ -278,6 +278,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! skip) {
         KeyRemap4MacBook_bridge::ActiveApplicationInfo::Reply activeApplicationInfo;
         int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_ACTIVE_APPLICATION_INFO, NULL, 0, &activeApplicationInfo, sizeof(activeApplicationInfo));
+        if (config.debug_devel) {
+          printf("KeyRemap4MacBook -Info- ActiveApplicationInfo: %d (error: %d)\n", activeApplicationInfo.type, error);
+        }
         if (error == 0) {
           remapParams.appType = activeApplicationInfo.type;
         }
