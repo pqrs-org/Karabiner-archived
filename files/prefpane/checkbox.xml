@@ -2054,8 +2054,8 @@
               <name>Remap PageUp/PageDown to Option+Up/Down</name>
               <sysctl>remap.app_entourage_pageupdown_to_optionupdown</sysctl>
               <only>ENTOURAGE</only>
-              <autogen>--KeyToKey-- KeyCode::PAGEUP, KeyCode::CURSOR_UP, ModifierFlag::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::PAGEDOWN, KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- FROMKEYCODE_PAGEUP, KeyCode::CURSOR_UP, ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- FROMKEYCODE_PAGEDOWN, KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_L</autogen>
             </item>
           </list>
         </item>
@@ -2262,10 +2262,8 @@
           <appendix>(behave like Option+PageUp/PageDown)</appendix>
           <sysctl>remap.pclikepageupdown</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToKey-- KeyCode::PAGEUP, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::CURSOR_UP, ModifierFlag::FN, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::PAGEDOWN, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, ModifierFlag::FN, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- FROMKEYCODE_PAGEUP, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- FROMKEYCODE_PAGEDOWN, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
         </item>
       </list>
     </item>
