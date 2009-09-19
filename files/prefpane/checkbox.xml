@@ -580,7 +580,7 @@
     </item>
 
     <item>
-      <name>Remap Functional Key (Brightness, Volume, ...)</name>
+      <name>Remap Functional Key (Brightness, Volume, ....)</name>
       <list>
         <item>
           <name>Brightness Down to F1</name>
@@ -2033,6 +2033,29 @@
 
               <autogen>--KeyToKey-- FROMKEYCODE_HOME, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
               <autogen>--KeyToKey-- FROMKEYCODE_END, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
+          <name>Enable at only Excel</name>
+          <list>
+            <item>
+              <name>Remap F2 to Ctrl+U</name>
+              <sysctl>remap.app_excel_f2_to_ctrlu</sysctl>
+              <only>EXCEL</only>
+              <autogen>--KeyToKey-- KeyCode::F2, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
+          <name>Enable at only Entourage</name>
+          <list>
+            <item>
+              <name>Remap PageUp/PageDown to Option+Up/Down</name>
+              <sysctl>remap.app_entourage_pageupdown_to_optionupdown</sysctl>
+              <only>ENTOURAGE</only>
+              <autogen>--KeyToKey-- KeyCode::PAGEUP, KeyCode::CURSOR_UP, ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::PAGEDOWN, KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_L</autogen>
             </item>
           </list>
         </item>
