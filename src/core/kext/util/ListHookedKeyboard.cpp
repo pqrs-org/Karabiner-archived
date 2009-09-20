@@ -69,7 +69,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! isAppleDriver && ! config.general_remap_thirdvendor_keyboard) return false;
 
     IOHIKeyboard *kbd = OSDynamicCast(IOHIKeyboard, device);
-    if (kbd == NULL) return false;
+    if (! kbd) return false;
 
     // ------------------------------------------------------------
     KeyboardEventCallback callback = reinterpret_cast<KeyboardEventCallback>(kbd->_keyboardEventAction);
@@ -92,7 +92,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! device) return false;
 
     IOHIKeyboard *kbd = OSDynamicCast(IOHIKeyboard, device);
-    if (kbd == NULL) return false;
+    if (! kbd) return false;
 
     // ------------------------------------------------------------
     KeyboardEventCallback callback = reinterpret_cast<KeyboardEventCallback>(kbd->_keyboardEventAction);

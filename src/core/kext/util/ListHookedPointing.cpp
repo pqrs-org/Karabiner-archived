@@ -3,134 +3,16 @@
 #include "Config.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  namespace ListHookedPointing {
-    enum {
-      MAXNUM = 16,
-    };
-    Item item[MAXNUM];
+  ListHookedPointing listHookedPointing;
 
-    bool
-    append(IOHIPointing *pointing)
-    {
-      for (int i = 0; i < MAXNUM; ++i) {
-        if (item[i].get()) continue;
+  ListHookedPointing &
+  ListHookedPointing::instance(void)
+  {
+    return listHookedPointing;
+  }
 
-        return item[i].initialize(pointing);
-      }
-      return false;
-    }
-
-    void
-    terminate(void)
-    {
-      for (int i = 0; i < MAXNUM; ++i) {
-        item[i].terminate();
-      }
-    }
-
-    bool
-    terminate(const IOHIPointing *pointing)
-    {
-      Item *p = get(pointing);
-      if (p == NULL) return false;
-      p->terminate();
-      return true;
-    }
-
-    Item *
-    get(const IOHIPointing *pointing)
-    {
-      if (pointing == NULL) return NULL;
-
-      for (int i = 0; i < MAXNUM; ++i) {
-        if (item[i].get() == pointing) return item + i;
-      }
-      return NULL;
-    }
-
-    Item *
-    get(void)
-    {
-      for (int i = 0; i < MAXNUM; ++i) {
-        if (item[i].get()) return item + i;
-      }
-      return NULL;
-    }
-
-    void
-    refresh(void)
-    {
-      for (int i = 0; i < MAXNUM; ++i) {
-        item[i].refresh();
-      }
-    }
-
-    // ======================================================================
-    bool
-    Item::initialize(IOHIPointing *_pointing)
-    {
-      const char *name = _pointing->getName();
-      if (! config.general_remap_thirdvendor_pointing) {
-        if (strcmp(name, "IOHIDPointing") != 0 &&
-            strcmp(name, "AppleUSBGrIIITrackpad") != 0 &&
-            strcmp(name, "AppleADBMouseType4") != 0) {
-          IOLog("KeyRemap4MacBook replacePointingEvent ignore device [%s]\n", name);
-          return false;
-        }
-      }
-
-      IOLog("KeyRemap4MacBook replacePointingEvent name = %s\n", name);
-      pointing = _pointing;
-      refresh();
-      return true;
-    }
-
-    void
-    Item::refresh(void)
-    {
-      if (pointing == NULL) return;
-
-      {
-        RelativePointerEventCallback old = getCurrent_relativePointerEventAction();
-
-        if (old != hook_RelativePointerEventCallback) {
-          IOLog("KeyRemap4MacBook [refresh] RelativePointerEventAction\n");
-
-          orig_relativePointerEventAction = old;
-          pointing->_relativePointerEventAction = reinterpret_cast<RelativePointerEventAction>(hook_RelativePointerEventCallback);
-
-          orig_relativePointerEventTarget = pointing->_relativePointerEventTarget;
-        }
-      }
-      {
-        ScrollWheelEventCallback old = getCurrent_scrollWheelEventAction();
-
-        if (old != hook_ScrollWheelEventCallback) {
-          IOLog("KeyRemap4MacBook [refresh] ScrollWheelEventAction\n");
-
-          orig_scrollWheelEventAction = old;
-          pointing->_scrollWheelEventAction = reinterpret_cast<ScrollWheelEventAction>(hook_ScrollWheelEventCallback);
-
-          orig_scrollWheelEventTarget = pointing->_scrollWheelEventTarget;
-        }
-      }
-    }
-
-    void
-    Item::terminate(void)
-    {
-      if (! pointing) return;
-
-      if (getCurrent_relativePointerEventAction() == hook_RelativePointerEventCallback) {
-        pointing->_relativePointerEventAction = reinterpret_cast<RelativePointerEventAction>(orig_relativePointerEventAction);
-      }
-      if (getCurrent_scrollWheelEventAction() == hook_ScrollWheelEventCallback) {
-        pointing->_scrollWheelEventAction = reinterpret_cast<ScrollWheelEventAction>(orig_scrollWheelEventAction);
-      }
-      pointing = NULL;
-    }
-
-    // ----------------------------------------------------------------------
+  // ----------------------------------------------------------------------
+  namespace {
     void
     hook_RelativePointerEventCallback(OSObject *target,
                                       int buttons,
@@ -171,5 +53,96 @@ namespace org_pqrs_KeyRemap4MacBook {
       };
       Core::remap_ScrollWheelEventCallback(&params);
     }
+  }
+
+  HookedPointing::HookedPointing(void) :
+    isAppleDriver(false),
+    orig_relativePointerEventAction(NULL), orig_scrollWheelEventAction(NULL),
+    orig_relativePointerEventTarget(NULL), orig_scrollWheelEventTarget(NULL)
+  {
+  }
+
+  bool
+  HookedPointing::initialize(IOHIDevice *_device)
+  {
+    const char *name = _device->getName();
+
+    device = _device;
+    IOLog("KeyRemap4MacBook HookedPointing::initialize name = %s, device = 0x%p\n", name, device);
+
+    if (strcmp(name, "IOHIDPointing") == 0 ||
+        strcmp(name, "AppleUSBGrIIITrackpad") == 0 ||
+        strcmp(name, "AppleADBMouseType4") == 0) {
+      isAppleDriver = true;
+    } else {
+      isAppleDriver = false;
+    }
+
+    return refresh();
+  }
+
+  bool
+  HookedPointing::refresh(void)
+  {
+    if (! device) return false;
+    if (! isAppleDriver && ! config.general_remap_thirdvendor_pointing) return false;
+
+    IOHIPointing *pointing = OSDynamicCast(IOHIPointing, device);
+    if (! pointing) return false;
+
+    // ----------------------------------------
+    {
+      RelativePointerEventCallback callback = reinterpret_cast<RelativePointerEventCallback>(pointing->_relativePointerEventAction);
+
+      if (callback != hook_RelativePointerEventCallback) {
+        IOLog("KeyRemap4MacBook [refresh] RelativePointerEventAction (device = 0x%p)\n", device);
+
+        orig_relativePointerEventAction = callback;
+        orig_relativePointerEventTarget = pointing->_relativePointerEventTarget;
+
+        pointing->_relativePointerEventAction = reinterpret_cast<RelativePointerEventAction>(hook_RelativePointerEventCallback);
+      }
+    }
+    {
+      ScrollWheelEventCallback callback = reinterpret_cast<ScrollWheelEventCallback>(pointing->_scrollWheelEventAction);
+
+      if (callback != hook_ScrollWheelEventCallback) {
+        IOLog("KeyRemap4MacBook [refresh] ScrollWheelEventAction (device = 0x%p)\n", device);
+
+        orig_scrollWheelEventAction = callback;
+        orig_scrollWheelEventTarget = pointing->_scrollWheelEventTarget;
+
+        pointing->_scrollWheelEventAction = reinterpret_cast<ScrollWheelEventAction>(hook_ScrollWheelEventCallback);
+      }
+    }
+    return true;
+  }
+
+  bool
+  HookedPointing::terminate(void)
+  {
+    if (! device) return false;
+
+    IOHIPointing *pointing = OSDynamicCast(IOHIPointing, device);
+    if (! pointing) return false;
+
+    // ----------------------------------------
+    {
+      RelativePointerEventCallback callback = reinterpret_cast<RelativePointerEventCallback>(pointing->_relativePointerEventAction);
+
+      if (callback == hook_RelativePointerEventCallback) {
+        pointing->_relativePointerEventAction = reinterpret_cast<RelativePointerEventAction>(orig_relativePointerEventAction);
+      }
+    }
+    {
+      ScrollWheelEventCallback callback = reinterpret_cast<ScrollWheelEventCallback>(pointing->_scrollWheelEventAction);
+
+      if (callback == hook_ScrollWheelEventCallback) {
+        pointing->_scrollWheelEventAction = reinterpret_cast<ScrollWheelEventAction>(orig_scrollWheelEventAction);
+      }
+    }
+    device = NULL;
+
+    return true;
   }
 }
