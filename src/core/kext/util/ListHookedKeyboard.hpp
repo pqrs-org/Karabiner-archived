@@ -2,80 +2,46 @@
 #define LISTHOOKEDKEYBOARD_HPP
 
 #include "base.hpp"
+#include "ListHookedDevice.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  namespace ListHookedKeyboard {
-    bool append(IOHIKeyboard *kbd);
-    void terminate(void);
-    bool terminate(const IOHIKeyboard *kbd);
+  class HookedKeyboard : public HookedDevice {
+  public:
+    HookedKeyboard(void);
 
-    class Item;
-    Item *get(const IOHIKeyboard *kbd);
-    Item *get(void);
-    Item *getConsumer(void);
-    void refresh(void);
+    bool initialize(IOHIDevice *_device);
+    bool refresh(void);
+    bool terminate(void);
 
-    // ----------------------------------------------------------------------
-    class Item {
-    public:
-      Item(void) { kbd = NULL; }
+    IOHIKeyboard *get(void) const { return OSDynamicCast(IOHIKeyboard, HookedDevice::get()); }
 
-      bool initialize(IOHIKeyboard *_kbd);
-      void refresh(void);
-      void terminate(void);
+    KeyboardEventCallback getOrig_keyboardEventAction() const { return orig_keyboardEventAction; }
+    OSObject *getOrig_keyboardEventTarget() const { return orig_keyboardEventTarget; }
 
-      IOHIKeyboard *get(void) const { return kbd; }
-      bool isConsumer(void) const { return consumerFlag; }
+  private:
+    bool isAppleDriver;
 
-      KeyboardEventCallback getOrig_keyboardEventAction() const { return orig_keyboardEventAction; }
-      KeyboardSpecialEventCallback getOrig_keyboardSpecialEventAction() const { return orig_keyboardSpecialEventAction; }
-      OSObject *getOrig_keyboardEventTarget() const { return orig_keyboardEventTarget; }
-      OSObject *getOrig_keyboardSpecialEventTarget() const { return orig_keyboardSpecialEventTarget; }
+    KeyboardEventCallback orig_keyboardEventAction;
+    OSObject *orig_keyboardEventTarget;
+  };
 
-    private:
-      IOHIKeyboard *kbd;
-      bool consumerFlag;
+  class ListHookedKeyboard : public ListHookedDevice {
+  public:
+    static ListHookedKeyboard &instance(void);
+    HookedKeyboard *get(void) { return static_cast<HookedKeyboard *>(ListHookedDevice::get()); }
+    HookedKeyboard *get(const IOHIKeyboard *kbd) { return static_cast<HookedKeyboard *>(ListHookedDevice::get(kbd)); }
 
-      KeyboardEventCallback orig_keyboardEventAction;
-      KeyboardSpecialEventCallback orig_keyboardSpecialEventAction;
-      OSObject *orig_keyboardEventTarget;
-      OSObject *orig_keyboardSpecialEventTarget;
-
-      KeyboardEventCallback getCurrent_keyboardEventAction(void) const {
-        if (kbd == NULL) return NULL;
-        return reinterpret_cast<KeyboardEventCallback>(kbd->_keyboardEventAction);
-      }
-      KeyboardSpecialEventCallback getCurrent_keyboardSpecialEventAction(void) const {
-        if (kbd == NULL) return NULL;
-        return reinterpret_cast<KeyboardSpecialEventCallback>(kbd->_keyboardSpecialEventAction);
-      }
+  private:
+    enum {
+      MAXNUM = 16,
     };
+    HookedKeyboard item[MAXNUM];
 
-    // ----------------------------------------------------------------------
-    void hook_KeyboardEventCallback(OSObject *target,
-                                    unsigned int eventType,
-                                    unsigned int flags,
-                                    unsigned int key,
-                                    unsigned int charCode,
-                                    unsigned int charSet,
-                                    unsigned int origCharCode,
-                                    unsigned int origCharSet,
-                                    unsigned int keyboardType,
-                                    bool repeat,
-                                    AbsoluteTime ts,
-                                    OSObject *sender,
-                                    void *refcon);
-    void hook_KeyboardSpecialEventCallback(OSObject *target,
-                                           unsigned int eventType,
-                                           unsigned int flags,
-                                           unsigned int key,
-                                           unsigned int flavor,
-                                           UInt64 guid,
-                                           bool repeat,
-                                           AbsoluteTime ts,
-                                           OSObject *sender,
-                                           void *refcon);
-  }
+    HookedDevice *getItem(int index) {
+      if (index < 0 || index >= MAXNUM) return NULL;
+      return item + index;
+    }
+  };
 }
 
 #endif
