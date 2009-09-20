@@ -86,8 +86,24 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   HookedPointing::refresh(void)
   {
+    if (! isAppleDriver && ! config.general_remap_thirdvendor_pointing) {
+      return restoreEventAction();
+    }
+    return replaceEventAction();
+  }
+
+  bool
+  HookedPointing::terminate(void)
+  {
+    bool result = restoreEventAction();
+    device = NULL;
+    return result;
+  }
+
+  bool
+  HookedPointing::replaceEventAction(void)
+  {
     if (! device) return false;
-    if (! isAppleDriver && ! config.general_remap_thirdvendor_pointing) return false;
 
     IOHIPointing *pointing = OSDynamicCast(IOHIPointing, device);
     if (! pointing) return false;
@@ -117,11 +133,12 @@ namespace org_pqrs_KeyRemap4MacBook {
         pointing->_scrollWheelEventAction = reinterpret_cast<ScrollWheelEventAction>(hook_ScrollWheelEventCallback);
       }
     }
+
     return true;
   }
 
   bool
-  HookedPointing::terminate(void)
+  HookedPointing::restoreEventAction(void)
   {
     if (! device) return false;
 
@@ -143,7 +160,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         pointing->_scrollWheelEventAction = reinterpret_cast<ScrollWheelEventAction>(orig_scrollWheelEventAction);
       }
     }
-    device = NULL;
 
     return true;
   }

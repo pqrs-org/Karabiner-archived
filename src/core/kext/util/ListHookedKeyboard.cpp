@@ -77,10 +77,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   HookedKeyboard::terminate(void)
   {
     bool result = restoreEventAction();
-    if (! result) return false;
-
     device = NULL;
-    return true;
+    return result;
   }
 
   bool
