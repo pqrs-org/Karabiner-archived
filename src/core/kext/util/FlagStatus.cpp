@@ -26,9 +26,15 @@ namespace org_pqrs_KeyRemap4MacBook {
       // So, we treat the capslock key exceptionally.
       if (key == KeyCode::CAPSLOCK) {
         if (RemapUtil::isModifierOn(remapParams, flag)) {
-          original_lock_count = 1;
+          if (! original_lock_count) {
+            original_lock_count = 1;
+            lock_count = 0; // clear remapped lock_count when original changed.
+          }
         } else {
-          original_lock_count = 0;
+          if (original_lock_count) {
+            original_lock_count = 0;
+            lock_count = 0; // clear remapped lock_count when original changed.
+          }
         }
 
         if (config.debug_devel) {
