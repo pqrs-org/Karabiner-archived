@@ -2,8 +2,6 @@
 #define CORE_HPP
 
 #include "CallBackWrapper.hpp"
-#include "ListHookedKeyboard.hpp"
-#include "ListHookedPointing.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace Core {

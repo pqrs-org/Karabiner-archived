@@ -3,6 +3,7 @@
 #include "RemapUtil.hpp"
 #include "Client.hpp"
 #include "util/ListHookedKeyboard.hpp"
+#include "util/ListHookedConsumer.hpp"
 #include "util/ListHookedPointing.hpp"
 #include "util/TimerWrapper.hpp"
 #include "util/NumHeldDownKeys.hpp"
@@ -53,7 +54,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       void
       refreshHookedDevice(OSObject *owner, IOTimerEventSource *sender)
       {
-        ListHookedKeyboard::refresh();
+        ListHookedKeyboard::instance().refresh();
+        ListHookedConsumer::instance().refresh();
         ListHookedPointing::refresh();
 
         if (sender) sender->setTimeoutMS(REFRESH_DEVICE_INTERVAL);
@@ -106,7 +108,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       void
       doRepeat_keyboard(OSObject *owner, IOTimerEventSource *sender)
       {
-        ListHookedKeyboard::Item *p = ListHookedKeyboard::get(keyboardRepeatInfo.kbd);
+        HookedKeyboard *p = ListHookedKeyboard::instance().get(keyboardRepeatInfo.kbd);
         if (! p) return;
 
         RemapUtil::fireKey(p->getOrig_keyboardEventAction(), keyboardRepeatInfo.params);
@@ -116,7 +118,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       void
       doRepeat_keyboard_extra(OSObject *owner, IOTimerEventSource *sender)
       {
-        ListHookedKeyboard::Item *p = ListHookedKeyboard::get(keyboardRepeatInfo_extra.kbd);
+        HookedKeyboard *p = ListHookedKeyboard::instance().get(keyboardRepeatInfo_extra.kbd);
         if (! p) return;
 
         if (p->getOrig_keyboardEventAction()) {
@@ -169,7 +171,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     stop(void)
     {
       timer_refresh.terminate();
-      ListHookedKeyboard::terminate();
+      ListHookedKeyboard::instance().terminate();
+      ListHookedConsumer::instance().terminate();
       ListHookedPointing::terminate();
 
       if (workLoop) {
@@ -185,7 +188,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       IOLog("KeyRemap4MacBook notifierfunc_hookKeyboard\n");
 
       IOHIKeyboard *kbd = OSDynamicCast(IOHIKeyboard, newService);
-      return ListHookedKeyboard::append(kbd);
+      ListHookedKeyboard::instance().append(kbd);
+      ListHookedConsumer::instance().append(kbd);
+      return true;
     }
 
     bool
@@ -194,7 +199,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       IOLog("KeyRemap4MacBook notifierfunc_unhookKeyboard\n");
 
       IOHIKeyboard *kbd = OSDynamicCast(IOHIKeyboard, newService);
-      return ListHookedKeyboard::terminate(kbd);
+      ListHookedKeyboard::instance().terminate(kbd);
+      ListHookedConsumer::instance().terminate(kbd);
+      return true;
     }
 
     bool
@@ -224,7 +231,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       IOHIKeyboard *kbd = OSDynamicCast(IOHIKeyboard, params->sender);
       if (! kbd) return;
 
-      ListHookedKeyboard::Item *p = ListHookedKeyboard::get(kbd);
+      HookedKeyboard *p = ListHookedKeyboard::instance().get(kbd);
       if (! p) return;
 
       // ------------------------------------------------------------
@@ -297,7 +304,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // consumer emulation
       if (! listFireConsumerKey.isEmpty()) {
-        ListHookedKeyboard::Item *hc = ListHookedKeyboard::getConsumer();
+        HookedConsumer *hc = ListHookedConsumer::instance().get();
         if (hc) {
           listFireConsumerKey.fire(hc->getOrig_keyboardSpecialEventAction(), hc->getOrig_keyboardSpecialEventTarget(), params->ts, params->sender, params->refcon);
         }
@@ -326,7 +333,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       IOHIKeyboard *kbd = OSDynamicCast(IOHIKeyboard, params->sender);
       if (! kbd) return;
 
-      ListHookedKeyboard::Item *p = ListHookedKeyboard::get(kbd);
+      HookedConsumer *p = ListHookedConsumer::instance().get(kbd);
       if (! p) return;
 
       // ------------------------------------------------------------
@@ -345,7 +352,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       remap_consumer(remapParams);
 
       // ----------------------------------------
-      ListHookedKeyboard::Item *hk = ListHookedKeyboard::get();
+      HookedKeyboard *hk = ListHookedKeyboard::instance().get();
       unsigned int keyboardType = KeyboardType::MACBOOK;
 
       if (hk) {
