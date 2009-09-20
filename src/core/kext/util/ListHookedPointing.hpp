@@ -27,6 +27,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     ScrollWheelEventCallback orig_scrollWheelEventAction;
     OSObject *orig_relativePointerEventTarget;
     OSObject *orig_scrollWheelEventTarget;
+
+    bool replaceEventAction(void);
+    bool restoreEventAction(void);
   };
 
   class ListHookedPointing : public ListHookedDevice {
