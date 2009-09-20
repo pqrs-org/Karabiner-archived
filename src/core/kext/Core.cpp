@@ -56,7 +56,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       {
         ListHookedKeyboard::instance().refresh();
         ListHookedConsumer::instance().refresh();
-        ListHookedPointing::refresh();
+        ListHookedPointing::instance().refresh();
 
         if (sender) sender->setTimeoutMS(REFRESH_DEVICE_INTERVAL);
       }
@@ -173,7 +173,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       timer_refresh.terminate();
       ListHookedKeyboard::instance().terminate();
       ListHookedConsumer::instance().terminate();
-      ListHookedPointing::terminate();
+      ListHookedPointing::instance().terminate();
 
       if (workLoop) {
         workLoop->release();
@@ -210,7 +210,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       IOLog("KeyRemap4MacBook notifierfunc_hookPointing\n");
 
       IOHIPointing *pointing = OSDynamicCast(IOHIPointing, newService);
-      return ListHookedPointing::append(pointing);
+      return ListHookedPointing::instance().append(pointing);
     }
 
     bool
@@ -219,7 +219,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       IOLog("KeyRemap4MacBook notifierfunc_unhookPointing\n");
 
       IOHIPointing *pointing = OSDynamicCast(IOHIPointing, newService);
-      return ListHookedPointing::terminate(pointing);
+      return ListHookedPointing::instance().terminate(pointing);
     }
 
     // ======================================================================
@@ -296,7 +296,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // pointing emulation
       if (! listFireRelativePointer.isEmpty()) {
-        ListHookedPointing::Item *hp = ListHookedPointing::get();
+        HookedPointing *hp = ListHookedPointing::instance().get();
         if (hp) {
           listFireRelativePointer.fire(hp->getOrig_relativePointerEventAction(), hp->getOrig_relativePointerEventTarget(), hp->get(), params->ts);
         }
@@ -380,7 +380,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       IOHIPointing *pointing = OSDynamicCast(IOHIPointing, params->sender);
       if (! pointing) return;
 
-      ListHookedPointing::Item *p = ListHookedPointing::get(pointing);
+      HookedPointing *p = ListHookedPointing::instance().get(pointing);
       if (! p) return;
 
       // ------------------------------------------------------------
@@ -425,7 +425,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       IOHIPointing *pointing = OSDynamicCast(IOHIPointing, params->sender);
       if (! pointing) return;
 
-      ListHookedPointing::Item *p = ListHookedPointing::get(pointing);
+      HookedPointing *p = ListHookedPointing::instance().get(pointing);
       if (! p) return;
 
       // ------------------------------------------------------------
