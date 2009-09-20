@@ -48,7 +48,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       enum {
-        REFRESH_DEVICE_INTERVAL = 1000,
+        REFRESH_DEVICE_INTERVAL = 3000,
       };
 
       void

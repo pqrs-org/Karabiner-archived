@@ -29,6 +29,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     void refresh(void);
 
   protected:
+    enum {
+      MAXNUM = 16,
+    };
     ListHookedDevice(void) : last(NULL) {}
     virtual ~ListHookedDevice(void) {}
 

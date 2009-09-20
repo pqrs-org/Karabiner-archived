@@ -3,7 +3,9 @@
 #include "Config.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  ListHookedPointing listHookedPointing;
+  namespace {
+    ListHookedPointing listHookedPointing;
+  }
 
   ListHookedPointing &
   ListHookedPointing::instance(void)

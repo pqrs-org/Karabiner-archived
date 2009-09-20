@@ -3,7 +3,9 @@
 #include "Config.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  ListHookedConsumer listHookedConsumer;
+  namespace {
+    ListHookedConsumer listHookedConsumer;
+  }
 
   ListHookedConsumer &
   ListHookedConsumer::instance(void)

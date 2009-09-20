@@ -30,9 +30,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     HookedConsumer *get(const IOHIKeyboard *kbd) { return static_cast<HookedConsumer *>(ListHookedDevice::get(kbd)); }
 
   private:
-    enum {
-      MAXNUM = 16,
-    };
     HookedConsumer item[MAXNUM];
 
     HookedDevice *getItem(int index) {
