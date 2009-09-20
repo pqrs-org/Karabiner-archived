@@ -3,144 +3,16 @@
 #include "Config.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  namespace ListHookedKeyboard {
-    enum {
-      MAXNUM = 16,
-    };
-    Item item[MAXNUM];
+  ListHookedKeyboard listHookedKeyboard;
 
-    bool
-    append(IOHIKeyboard *kbd)
-    {
-      for (int i = 0; i < MAXNUM; ++i) {
-        if (item[i].get()) continue;
+  ListHookedKeyboard &
+  ListHookedKeyboard::instance(void)
+  {
+    return listHookedKeyboard;
+  }
 
-        return item[i].initialize(kbd);
-      }
-      return false;
-    }
-
-    void
-    terminate(void)
-    {
-      for (int i = 0; i < MAXNUM; ++i) {
-        item[i].terminate();
-      }
-    }
-
-    bool
-    terminate(const IOHIKeyboard *kbd)
-    {
-      Item *p = get(kbd);
-      if (p == NULL) return false;
-      p->terminate();
-      return true;
-    }
-
-    Item *
-    get(const IOHIKeyboard *kbd)
-    {
-      if (kbd == NULL) return NULL;
-
-      for (int i = 0; i < MAXNUM; ++i) {
-        if (item[i].get() == kbd) return item + i;
-      }
-      return NULL;
-    }
-
-    Item *
-    get(void)
-    {
-      for (int i = 0; i < MAXNUM; ++i) {
-        if (item[i].get()) return item + i;
-      }
-      return NULL;
-    }
-
-    Item *
-    getConsumer(void)
-    {
-      for (int i = 0; i < MAXNUM; ++i) {
-        if (item[i].get() && item[i].isConsumer()) return item + i;
-      }
-      return NULL;
-    }
-
-    void
-    refresh(void)
-    {
-      for (int i = 0; i < MAXNUM; ++i) {
-        item[i].refresh();
-      }
-    }
-
-    // ======================================================================
-    bool
-    Item::initialize(IOHIKeyboard *_kbd)
-    {
-      const char *name = _kbd->getName();
-      if (! config.general_remap_thirdvendor_keyboard) {
-        if (strcmp(name, "IOHIDKeyboard") != 0 &&
-            strcmp(name, "AppleADBKeyboard") != 0 &&
-            strcmp(name, "IOHIDConsumer") != 0) {
-          IOLog("KeyRemap4MacBook replaceKeyboardEvent ignore device [%s]\n", name);
-          return false;
-        }
-      }
-
-      IOLog("KeyRemap4MacBook replaceKeyboardEvent name = %s\n", name);
-      kbd = _kbd;
-      consumerFlag = (strcmp(name, "IOHIDConsumer") == 0);
-      refresh();
-      return true;
-    }
-
-    void
-    Item::refresh(void)
-    {
-      if (kbd == NULL) return;
-
-      {
-        KeyboardEventCallback old = getCurrent_keyboardEventAction();
-
-        if (old != hook_KeyboardEventCallback) {
-          IOLog("KeyRemap4MacBook [refresh] KeyboardEventAction\n");
-
-          orig_keyboardEventAction = old;
-          kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(hook_KeyboardEventCallback);
-
-          orig_keyboardEventTarget = kbd->_keyboardEventTarget;
-        }
-      }
-      {
-        KeyboardSpecialEventCallback old = getCurrent_keyboardSpecialEventAction();
-
-        if (old != hook_KeyboardSpecialEventCallback) {
-          IOLog("KeyRemap4MacBook [refresh] KeyboardSpecialEventAction\n");
-
-          orig_keyboardSpecialEventAction = old;
-          kbd->_keyboardSpecialEventAction = reinterpret_cast<KeyboardSpecialEventAction>(hook_KeyboardSpecialEventCallback);
-
-          orig_keyboardSpecialEventTarget = kbd->_keyboardSpecialEventTarget;
-        }
-      }
-    }
-
-    void
-    Item::terminate(void)
-    {
-      if (! kbd) return;
-
-      if (getCurrent_keyboardEventAction() == hook_KeyboardEventCallback) {
-        kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(orig_keyboardEventAction);
-      }
-      if (getCurrent_keyboardSpecialEventAction() == hook_KeyboardSpecialEventCallback) {
-        kbd->_keyboardSpecialEventAction = reinterpret_cast<KeyboardSpecialEventAction>(orig_keyboardSpecialEventAction);
-      }
-      kbd = NULL;
-    }
-
-    // ----------------------------------------------------------------------
+  // ----------------------------------------------------------------------
+  namespace {
     void
     hook_KeyboardEventCallback(OSObject *target,
                                unsigned int eventType,
@@ -163,24 +35,72 @@ namespace org_pqrs_KeyRemap4MacBook {
       };
       Core::remap_KeyboardEventCallback(&params);
     }
+  }
 
-    void
-    hook_KeyboardSpecialEventCallback(OSObject *target,
-                                      unsigned int eventType,
-                                      unsigned int flags,
-                                      unsigned int key,
-                                      unsigned int flavor,
-                                      UInt64 guid,
-                                      bool repeat,
-                                      AbsoluteTime ts,
-                                      OSObject *sender,
-                                      void *refcon)
-    {
-      Params_KeyboardSpecialEventCallback params = {
-        target, eventType, flags, key, flavor,
-        guid, repeat, ts, sender, refcon,
-      };
-      Core::remap_KeyboardSpecialEventCallback(&params);
+  HookedKeyboard::HookedKeyboard(void) :
+    isAppleDriver(false),
+    orig_keyboardEventAction(NULL), orig_keyboardEventTarget(NULL)
+  {
+  }
+
+  bool
+  HookedKeyboard::initialize(IOHIDevice *_device)
+  {
+    const char *name = _device->getName();
+    if (strcmp(name, "IOHIDConsumer") == 0) return false;
+
+    device = _device;
+    IOLog("KeyRemap4MacBook HookedKeyboard::initialize name = %s, device = 0x%p\n", name, device);
+
+    if (strcmp(name, "IOHIDKeyboard") == 0 ||
+        strcmp(name, "AppleADBKeyboard") == 0) {
+      isAppleDriver = true;
+    } else {
+      isAppleDriver = false;
     }
+
+    return refresh();
+  }
+
+  bool
+  HookedKeyboard::refresh(void)
+  {
+    if (! device) return false;
+    if (! isAppleDriver && ! config.general_remap_thirdvendor_keyboard) return false;
+
+    IOHIKeyboard *kbd = OSDynamicCast(IOHIKeyboard, device);
+    if (kbd == NULL) return false;
+
+    // ------------------------------------------------------------
+    KeyboardEventCallback callback = reinterpret_cast<KeyboardEventCallback>(kbd->_keyboardEventAction);
+
+    if (callback != hook_KeyboardEventCallback) {
+      IOLog("KeyRemap4MacBook [refresh] HookedKeyboard::refresh KeyboardEventCallback (device = 0x%p)\n", device);
+
+      orig_keyboardEventAction = callback;
+      orig_keyboardEventTarget = kbd->_keyboardEventTarget;
+
+      kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(hook_KeyboardEventCallback);
+    }
+
+    return true;
+  }
+
+  bool
+  HookedKeyboard::terminate(void)
+  {
+    if (! device) return false;
+
+    IOHIKeyboard *kbd = OSDynamicCast(IOHIKeyboard, device);
+    if (kbd == NULL) return false;
+
+    // ------------------------------------------------------------
+    KeyboardEventCallback callback = reinterpret_cast<KeyboardEventCallback>(kbd->_keyboardEventAction);
+    if (callback == hook_KeyboardEventCallback) {
+        kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(orig_keyboardEventAction);
+    }
+
+    device = NULL;
+    return true;
   }
 }
