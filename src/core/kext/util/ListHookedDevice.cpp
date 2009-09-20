@@ -6,9 +6,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     last = device;
 
-    for (int i = 0; ; ++i) {
+    for (int i = 0; i < MAXNUM; ++i) {
       HookedDevice *p = getItem(i);
-      if (p == NULL) break;
+      if (! p) continue;
 
       if (! p->get()) {
         return p->initialize(device);
@@ -22,9 +22,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     last = NULL;
 
-    for (int i = 0; ; ++i) {
+    for (int i = 0; i < MAXNUM; ++i) {
       HookedDevice *p = getItem(i);
-      if (p == NULL) break;
+      if (! p) continue;
 
       p->terminate();
     }
@@ -46,9 +46,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (device == NULL) return NULL;
 
-    for (int i = 0; ; ++i) {
+    for (int i = 0; i < MAXNUM; ++i) {
       HookedDevice *p = getItem(i);
-      if (p == NULL) break;
+      if (! p) continue;
 
       if (p->get() == device) return p;
     }
@@ -61,9 +61,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     HookedDevice *p = get(last);
     if (p) return p;
 
-    for (int i = 0; ; ++i) {
+    for (int i = 0; i < MAXNUM; ++i) {
       p = getItem(i);
-      if (p == NULL) break;
+      if (! p) continue;
 
       return p;
     }
@@ -73,9 +73,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListHookedDevice::refresh(void)
   {
-    for (int i = 0; ; ++i) {
+    for (int i = 0; i < MAXNUM; ++i) {
       HookedDevice *p = getItem(i);
-      if (p == NULL) break;
+      if (! p) continue;
 
       p->refresh();
     }

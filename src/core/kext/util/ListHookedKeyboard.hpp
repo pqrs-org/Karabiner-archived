@@ -23,6 +23,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     KeyboardEventCallback orig_keyboardEventAction;
     OSObject *orig_keyboardEventTarget;
+
+    bool replaceEventAction(void);
+    bool restoreEventAction(void);
   };
 
   class ListHookedKeyboard : public ListHookedDevice {
@@ -32,9 +35,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     HookedKeyboard *get(const IOHIKeyboard *kbd) { return static_cast<HookedKeyboard *>(ListHookedDevice::get(kbd)); }
 
   private:
-    enum {
-      MAXNUM = 16,
-    };
     HookedKeyboard item[MAXNUM];
 
     HookedDevice *getItem(int index) {

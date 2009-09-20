@@ -36,9 +36,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     HookedPointing *get(const IOHIPointing *pointing) { return static_cast<HookedPointing *>(ListHookedDevice::get(pointing)); }
 
   private:
-    enum {
-      MAXNUM = 16,
-    };
     HookedPointing item[MAXNUM];
 
     HookedDevice *getItem(int index) {
