@@ -1318,6 +1318,28 @@
     </item>
 
     <item>
+      <name>Diamond Cursor</name>
+      <list>
+        <item>
+          <name>Control_L+EXSD to Up/Down/Left/Right</name>
+          <sysctl>remap.diamond_cursor_controlL_exsd</sysctl>
+          <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::CONTROL_L, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::CONTROL_L, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT</autogen>
+        </item>
+        <item>
+          <name>Control_R+EXSD to Up/Down/Left/Right</name>
+          <sysctl>remap.diamond_cursor_controlR_exsd</sysctl>
+          <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::CONTROL_R, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::CONTROL_R, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::CONTROL_R, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>Emacs Mode</name>
       <list>
         <item>
