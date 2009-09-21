@@ -706,18 +706,48 @@
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToComsumer-- KeyCode::F12, ConsumerKeyCode::VOLUME_UP</autogen>
         </item>
+
+        <item>
+          <name>FN+F1 to Brightness Down</name>
+          <sysctl>remap.fnF1_to_brightnessdown</sysctl>
+          <autogen>--KeyToComsumer-- KeyCode::F1, ModifierFlag::FN, ConsumerKeyCode::BRIGHTNESS_DOWN</autogen>
+        </item>
+        <item>
+          <name>FN+F2 to Brightness Up</name>
+          <sysctl>remap.fnF2_to_brightnessup</sysctl>
+          <autogen>--KeyToComsumer-- KeyCode::F2, ModifierFlag::FN, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
+        </item>
+        <item>
+          <name>FN+F7 to Music Prev</name>
+          <sysctl>remap.fnF7_to_musicprev</sysctl>
+          <autogen>--KeyToComsumer-- KeyCode::F7, ModifierFlag::FN, ConsumerKeyCode::MUSIC_PREV</autogen>
+        </item>
+        <item>
+          <name>FN+F8 to Music Play/Pause</name>
+          <sysctl>remap.fnF8_to_musicplay</sysctl>
+          <autogen>--KeyToComsumer-- KeyCode::F8, ModifierFlag::FN, ConsumerKeyCode::MUSIC_PLAY</autogen>
+        </item>
+        <item>
+          <name>FN+F9 to Music Next</name>
+          <sysctl>remap.fnF9_to_musicplay</sysctl>
+          <autogen>--KeyToComsumer-- KeyCode::F9, ModifierFlag::FN, ConsumerKeyCode::MUSIC_NEXT</autogen>
+        </item>
+        <item>
+          <name>FN+F10 to Volume Mute</name>
+          <sysctl>remap.fnF10_to_volumemute</sysctl>
+          <autogen>--KeyToComsumer-- KeyCode::F10, ModifierFlag::FN, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        </item>
         <item>
           <name>FN+F11 to Volume Down</name>
           <sysctl>remap.fnF11_to_volumedown</sysctl>
-          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToComsumer-- KeyCode::F11, ModifierFlag::FN, ConsumerKeyCode::VOLUME_DOWN</autogen>
         </item>
         <item>
           <name>FN+F12 to Volume Up</name>
           <sysctl>remap.fnF12_to_volumeup</sysctl>
-          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToComsumer-- KeyCode::F12, ModifierFlag::FN, ConsumerKeyCode::VOLUME_UP</autogen>
         </item>
+
         <item>
           <name>Force remap F1..F12 in VMware, Parallels, RDC</name>
           <list>
