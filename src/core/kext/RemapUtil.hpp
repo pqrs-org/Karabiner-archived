@@ -106,6 +106,15 @@ namespace org_pqrs_KeyRemap4MacBook {
       return consumerToConsumer(remapParams, fromKeyCode, 0, toKeyCode, toFlags);
     }
 
+    bool pointingButtonToPointingButton(const RemapPointingParams_relative &remapParams,
+                                        PointingButton::PointingButton fromButton, unsigned int fromFlags,
+                                        PointingButton::PointingButton toButton);
+    inline bool pointingButtonToPointingButton(const RemapPointingParams_relative &remapParams,
+                                               PointingButton::PointingButton fromButton,
+                                               PointingButton::PointingButton toButton) {
+      return pointingButtonToPointingButton(remapParams, fromButton, 0, toButton);
+    }
+
     // ----------------------------------------
     void fireModifiers(KeyboardEventCallback callback, const Params_KeyboardEventCallBack &params);
     void fireKey(KeyboardEventCallback callback, const Params_KeyboardEventCallBack &params);
