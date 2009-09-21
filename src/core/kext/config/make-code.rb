@@ -193,6 +193,10 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
           code_pointing += "}\n"
           func['pointing'] << name
 
+        when 'PointingButtonToPointingButton'
+          code_pointing += "if (RemapUtil::pointingButtonToPointingButton(remapParams, #{params})) return;\n"
+          func['pointing'] << name
+
         else
           print "%%% ERROR #{type} %%%"
 

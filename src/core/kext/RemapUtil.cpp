@@ -335,6 +335,22 @@ namespace org_pqrs_KeyRemap4MacBook {
     return true;
   }
 
+  bool
+  RemapUtil::pointingButtonToPointingButton(const RemapPointingParams_relative &remapParams,
+                                            PointingButton::PointingButton fromButton, unsigned int fromFlags,
+                                            PointingButton::PointingButton toButton)
+  {
+    if (! isFromFlags(FlagStatus::makeFlags(KeyCode::NONE), fromFlags)) return false;
+    if (! ((remapParams.params)->buttons & fromButton)) return false;
+
+    // XXX: call fireModifiers if needed.
+    remapFlags(fromFlags, 0);
+
+    (remapParams.params)->buttons = ((remapParams.params)->buttons & ~fromButton);
+    (remapParams.params)->buttons |= toButton;
+    return true;
+  }
+
   // --------------------
   void
   RemapUtil::fireModifiers(KeyboardEventCallback callback, const Params_KeyboardEventCallBack &params)
