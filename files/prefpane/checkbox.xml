@@ -1133,6 +1133,8 @@
           <name>Shift_R+Shift_L to Space</name>
           <appendix>(Shift_R+Shift_L to Space, Shift_L+Shift_R to Shift+Space)</appendix>
           <sysctl>remap.shiftRshiftL2space</sysctl>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_L, KeyCode::SPACE, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_R, KeyCode::SPACE</autogen>
         </item>
       </list>
     </item>
@@ -1202,6 +1204,8 @@
           <name>Shift_L+Shift_R to Space</name>
           <appendix>(Shift_L+Shift_R to Space, Shift_R+Shift_L to Shift+Space)</appendix>
           <sysctl>remap.shiftLshiftR2space</sysctl>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_R, KeyCode::SPACE, ModifierFlag::SHIFT_R</autogen>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_L, KeyCode::SPACE</autogen>
         </item>
         <item>
           <name>Shift_R to Tab</name>

@@ -47,42 +47,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   static void
-  remap_shiftRshiftL2space(const RemapParams &remapParams)
-  {
-    if (! config.remap_shiftRshiftL2space) return;
-
-    if (RemapUtil::isKey(remapParams, KeyCode::SHIFT_L)) {
-      if (RemapUtil::isModifierOn(remapParams, ModifierFlag::SHIFT_R)) {
-        FlagStatus::temporary_decrease(ModifierFlag::SHIFT_R);
-        RemapUtil::keyToKey(remapParams, KeyCode::SHIFT_L, KeyCode::SPACE);
-      }
-    } else if (RemapUtil::isKey(remapParams, KeyCode::SHIFT_R)) {
-      if (RemapUtil::isModifierOn(remapParams, ModifierFlag::SHIFT_L)) {
-        RemapUtil::keyToKey(remapParams, KeyCode::SHIFT_R, KeyCode::SPACE);
-      }
-    }
-  }
-
-  // ----------------------------------------
-  static void
-  remap_shiftLshiftR2space(const RemapParams &remapParams)
-  {
-    if (! config.remap_shiftLshiftR2space) return;
-
-    if (RemapUtil::isKey(remapParams, KeyCode::SHIFT_L)) {
-      if (RemapUtil::isModifierOn(remapParams, ModifierFlag::SHIFT_R)) {
-        RemapUtil::keyToKey(remapParams, KeyCode::SHIFT_L, KeyCode::SPACE);
-      }
-    } else if (RemapUtil::isKey(remapParams, KeyCode::SHIFT_R)) {
-      if (RemapUtil::isModifierOn(remapParams, ModifierFlag::SHIFT_L)) {
-        FlagStatus::temporary_decrease(ModifierFlag::SHIFT_L);
-        RemapUtil::keyToKey(remapParams, KeyCode::SHIFT_R, KeyCode::SPACE);
-      }
-    }
-  }
-
-  // ----------------------------------------
-  static void
   remap_tab2option_withControlL(const RemapParams &remapParams)
   {
     if (! config.remap_tab2option_withControlL) return;
@@ -285,9 +249,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &remapParams)
   remap_enter2commandL_enter2controlL_vm(remapParams);
 
   remap_f6_to_numlock(remapParams);
-
-  remap_shiftLshiftR2space(remapParams);
-  remap_shiftRshiftL2space(remapParams);
 
   remap_tab2option_withControlL(remapParams);
 
