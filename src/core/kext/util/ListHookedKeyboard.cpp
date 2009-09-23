@@ -1,6 +1,7 @@
 #include "ListHookedKeyboard.hpp"
 #include "Core.hpp"
 #include "Config.hpp"
+#include "RemapUtil.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace {
@@ -70,6 +71,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! isAppleDriver && ! config.general_remap_thirdvendor_keyboard) {
       return restoreEventAction();
     }
+    if (RemapUtil::isInternalKeyboard(device->deviceType())) {
+      if (config.general_dont_remap_internal) {
+        return restoreEventAction();
+      }
+    } else {
+      if (config.general_dont_remap_external) {
+        return restoreEventAction();
+      }
+    }
+
     return replaceEventAction();
   }
 
@@ -91,7 +102,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     KeyboardEventCallback callback = reinterpret_cast<KeyboardEventCallback>(kbd->_keyboardEventAction);
     if (callback != hook_KeyboardEventCallback) {
-      IOLog("KeyRemap4MacBook [refresh] HookedKeyboard::refresh KeyboardEventCallback (device = 0x%p)\n", device);
+      IOLog("KeyRemap4MacBook HookedKeyboard::replaceEventAction (device = 0x%p)\n", device);
 
       orig_keyboardEventAction = callback;
       orig_keyboardEventTarget = kbd->_keyboardEventTarget;
@@ -112,7 +123,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     KeyboardEventCallback callback = reinterpret_cast<KeyboardEventCallback>(kbd->_keyboardEventAction);
     if (callback == hook_KeyboardEventCallback) {
-        kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(orig_keyboardEventAction);
+      IOLog("KeyRemap4MacBook HookedKeyboard::restoreEventAction (device = 0x%p)\n", device);
+
+      kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(orig_keyboardEventAction);
     }
 
     return true;
