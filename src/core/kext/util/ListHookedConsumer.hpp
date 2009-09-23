@@ -9,10 +9,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     HookedConsumer(void);
 
-    bool initialize(IOHIDevice *_device);
-    bool refresh(void);
-    bool terminate(void);
-
     IOHIKeyboard *get(void) const { return OSDynamicCast(IOHIKeyboard, HookedDevice::get()); }
 
     KeyboardSpecialEventCallback getOrig_keyboardSpecialEventAction() const { return orig_keyboardSpecialEventAction; }
@@ -21,6 +17,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   private:
     KeyboardSpecialEventCallback orig_keyboardSpecialEventAction;
     OSObject *orig_keyboardSpecialEventTarget;
+
+    bool initialize(IOHIDevice *_device);
+    bool refresh(void);
+    bool terminate(void);
   };
 
   class ListHookedConsumer : public ListHookedDevice {

@@ -2,24 +2,57 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   bool
+  ListHookedDevice::initialize(void)
+  {
+    lock = IOLockAlloc();
+    if (! lock) {
+      IOLog("[KeyRemap4MacBook WARNING] ListHookedDevice::initialize IOLockAlloc failed.\n");
+      return false;
+    }
+    return true;
+  }
+
+  bool
   ListHookedDevice::append(IOHIDevice *device)
   {
-    last = device;
+    if (! lock) return false;
 
-    for (int i = 0; i < MAXNUM; ++i) {
-      HookedDevice *p = getItem(i);
-      if (! p) continue;
+    // ------------------------------------------------------------
+    bool result = false;
 
-      if (! p->get()) {
-        return p->initialize(device);
+    IOLockLock(lock);
+    {
+      last = device;
+
+      for (int i = 0; i < MAXNUM; ++i) {
+        HookedDevice *p = getItem(i);
+        if (! p) continue;
+
+        if (! p->get()) {
+          result = p->initialize(device);
+          break;
+        }
       }
     }
-    return false;
+    IOLockUnlock(lock);
+
+    return result;
   }
 
   void
   ListHookedDevice::terminate(void)
   {
+    if (! lock) return;
+
+    // ------------------------------------------------------------
+    IOLock *l = NULL;
+    if (lock) {
+      l = lock;
+      IOLockLock(l);
+      lock = NULL;
+    }
+
+    // ----------------------------------------
     last = NULL;
 
     for (int i = 0; i < MAXNUM; ++i) {
@@ -28,56 +61,102 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       p->terminate();
     }
+
+    // ----------------------------------------
+    if (l) {
+      IOLockUnlock(l);
+      IOLockFree(l);
+    }
   }
 
   bool
   ListHookedDevice::terminate(const IOHIDevice *device)
   {
-    HookedDevice *p = get(device);
-    if (! p) return false;
+    if (! lock) return false;
 
-    return p->terminate();
+    // ----------------------------------------------------------------------
+    bool result = false;
+
+    IOLockLock(lock);
+    {
+      HookedDevice *p = get(device);
+      if (p) {
+        result = p->terminate();
+      }
+    }
+    IOLockUnlock(lock);
+
+    return result;
   }
 
   HookedDevice *
   ListHookedDevice::get(const IOHIDevice *device)
   {
-    last = device;
+    if (! lock) return NULL;
 
-    if (device == NULL) return NULL;
+    // ----------------------------------------------------------------------
+    HookedDevice *result = NULL;
 
-    for (int i = 0; i < MAXNUM; ++i) {
-      HookedDevice *p = getItem(i);
-      if (! p) continue;
+    IOLockLock(lock);
+    {
+      last = device;
 
-      if (p->get() == device) return p;
+      if (device) {
+        for (int i = 0; i < MAXNUM; ++i) {
+          HookedDevice *p = getItem(i);
+          if (! p) continue;
+
+          if (p->get() == device) {
+            result = p;
+            break;
+          }
+        }
+      }
     }
-    return NULL;
+    IOLockUnlock(lock);
+
+    return result;
   }
 
   HookedDevice *
   ListHookedDevice::get(void)
   {
-    HookedDevice *p = get(last);
-    if (p) return p;
+    if (! lock) return NULL;
 
-    for (int i = 0; i < MAXNUM; ++i) {
-      p = getItem(i);
-      if (! p) continue;
+    // ----------------------------------------------------------------------
+    HookedDevice *result = NULL;
 
-      return p;
+    IOLockLock(lock);
+    {
+      result = get(last);
+
+      if (! result) {
+        for (int i = 0; i < MAXNUM; ++i) {
+          result = getItem(i);
+          if (result) break;
+        }
+      }
     }
-    return NULL;
+    IOLockUnlock(lock);
+
+    return result;
   }
 
   void
   ListHookedDevice::refresh(void)
   {
-    for (int i = 0; i < MAXNUM; ++i) {
-      HookedDevice *p = getItem(i);
-      if (! p) continue;
+    if (! lock) return;
 
-      p->refresh();
+    // ----------------------------------------------------------------------
+    IOLockLock(lock);
+    {
+      for (int i = 0; i < MAXNUM; ++i) {
+        HookedDevice *p = getItem(i);
+        if (! p) continue;
+
+        p->refresh();
+      }
     }
+    IOLockUnlock(lock);
   }
 }
