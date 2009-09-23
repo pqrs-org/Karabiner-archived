@@ -278,30 +278,26 @@ namespace org_pqrs_KeyRemap4MacBook {
       };
       NumHeldDownKeys::set(remapParams);
 
-      bool skip = false;
-      if (RemapUtil::isInternalKeyboard(params->keyboardType)) {
-        if (config.general_dont_remap_internal) skip = true;
-      } else {
-        if (config.general_dont_remap_external) skip = true;
-      }
-      if (! skip) {
-        static KeyRemap4MacBook_bridge::ActiveApplicationInfo::ApplicationType lastApplicationType = KeyRemap4MacBook_bridge::ActiveApplicationInfo::UNKNOWN;
+      // ------------------------------------------------------------
+      static KeyRemap4MacBook_bridge::ActiveApplicationInfo::ApplicationType lastApplicationType = KeyRemap4MacBook_bridge::ActiveApplicationInfo::UNKNOWN;
 
-        KeyRemap4MacBook_bridge::ActiveApplicationInfo::Reply activeApplicationInfo;
-        int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_ACTIVE_APPLICATION_INFO, NULL, 0, &activeApplicationInfo, sizeof(activeApplicationInfo));
-        if (config.debug_devel) {
-          printf("KeyRemap4MacBook -Info- ActiveApplicationInfo: %d (error: %d)\n", activeApplicationInfo.type, error);
-        }
-        if (error == 0) {
-          remapParams.appType = activeApplicationInfo.type;
-          lastApplicationType = activeApplicationInfo.type;
-        } else if (error != EIO) {
-          // use last info.
-          remapParams.appType = lastApplicationType;
-        }
-        remap_core(remapParams);
+      KeyRemap4MacBook_bridge::ActiveApplicationInfo::Reply activeApplicationInfo;
+      int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_ACTIVE_APPLICATION_INFO, NULL, 0, &activeApplicationInfo, sizeof(activeApplicationInfo));
+      if (config.debug_devel) {
+        printf("KeyRemap4MacBook -Info- ActiveApplicationInfo: %d (error: %d)\n", activeApplicationInfo.type, error);
+      }
+      if (error == 0) {
+        remapParams.appType = activeApplicationInfo.type;
+        lastApplicationType = activeApplicationInfo.type;
+      } else if (error != EIO) {
+        // use last info.
+        remapParams.appType = lastApplicationType;
       }
 
+      // ------------------------------------------------------------
+      remap_core(remapParams);
+
+      // ------------------------------------------------------------
       // pointing emulation
       if (! listFireRelativePointer.isEmpty()) {
         HookedPointing *hp = ListHookedPointing::instance().get();
