@@ -157,6 +157,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     start(void)
     {
+      ListHookedKeyboard::instance().initialize();
+      ListHookedConsumer::instance().initialize();
+      ListHookedPointing::instance().initialize();
+
       workLoop = IOWorkLoop::workLoop();
       if (! workLoop) {
         IOLog("[KeyRemap4MacBook ERROR] IOWorkLoop::workLoop failed\n");

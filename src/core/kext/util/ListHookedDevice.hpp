@@ -5,21 +5,24 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   class HookedDevice {
+    friend class ListHookedDevice;
+
   public:
     HookedDevice(void) : device(NULL) {}
-
-    virtual bool initialize(IOHIDevice *_device) = 0;
-    virtual bool refresh(void) = 0;
-    virtual bool terminate(void) = 0;
 
     IOHIDevice *get(void) const { return device; }
 
   protected:
     IOHIDevice *device;
+
+    virtual bool initialize(IOHIDevice *_device) = 0;
+    virtual bool refresh(void) = 0;
+    virtual bool terminate(void) = 0;
   };
 
   class ListHookedDevice {
   public:
+    bool initialize(void);
     bool append(IOHIDevice *device);
     void terminate(void);
     bool terminate(const IOHIDevice *device);
@@ -32,12 +35,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     enum {
       MAXNUM = 16,
     };
-    ListHookedDevice(void) : last(NULL) {}
+    ListHookedDevice(void) : last(NULL), lock(NULL) {}
     virtual ~ListHookedDevice(void) {}
 
   private:
     virtual HookedDevice *getItem(int index) = 0;
     const IOHIDevice *last;
+
+    IOLock *lock;
   };
 }
 

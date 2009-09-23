@@ -9,10 +9,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     HookedPointing(void);
 
-    bool initialize(IOHIDevice *_device);
-    bool refresh(void);
-    bool terminate(void);
-
     IOHIPointing *get(void) const { return OSDynamicCast(IOHIPointing, HookedDevice::get()); }
 
     RelativePointerEventCallback getOrig_relativePointerEventAction() const { return orig_relativePointerEventAction; }
@@ -27,6 +23,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     ScrollWheelEventCallback orig_scrollWheelEventAction;
     OSObject *orig_relativePointerEventTarget;
     OSObject *orig_scrollWheelEventTarget;
+
+    bool initialize(IOHIDevice *_device);
+    bool refresh(void);
+    bool terminate(void);
 
     bool replaceEventAction(void);
     bool restoreEventAction(void);
