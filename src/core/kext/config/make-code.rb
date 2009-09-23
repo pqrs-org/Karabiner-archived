@@ -179,11 +179,11 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
           func['key_ModifierHoldingKeyToKey'] << name
 
         when 'ConsumerToKey'
-          code_consumer += "RemapUtil::consumerToKey(remapParams, #{params});\n"
+          code_consumer += "if (RemapUtil::consumerToKey(remapParams, #{params})) return;\n"
           func['consumer'] << name
 
         when 'ConsumerToConsumer'
-          code_consumer += "RemapUtil::consumerToConsumer(remapParams, #{params});\n"
+          code_consumer += "if (RemapUtil::consumerToConsumer(remapParams, #{params})) return;\n"
           func['consumer'] << name
 
         when 'ButtonRelativeToScroll'

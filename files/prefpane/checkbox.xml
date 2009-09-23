@@ -372,6 +372,13 @@
           <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::FORWARD_DELETE</autogen>
         </item>
         <item>
+          <name>Eject to Forward Delete</name>
+          <appendix>(FN+Eject to Eject)</appendix>
+          <sysctl>remap.eject2forwarddelete_retain_fnEject</sysctl>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::FORWARD_DELETE</autogen>
+        </item>
+        <item>
           <name>Eject to Forward Delete if no modifiers pressed</name>
           <sysctl>remap.eject2forwarddelete_withoutmodifiers</sysctl>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
