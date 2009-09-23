@@ -1076,6 +1076,8 @@
         <item>
           <name>Swap Semicolon and Colon</name>
           <sysctl>remap.swapcolons</sysctl>
+          <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_SHIFT, KeyCode::SEMICOLON</autogen>
+          <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::SEMICOLON, ModifierFlag::SHIFT_L</autogen>
         </item>
       </list>
     </item>
