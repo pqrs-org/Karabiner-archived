@@ -198,7 +198,8 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
           func['pointing'] << name
 
         else
-          print "%%% ERROR #{type} %%%"
+          print "%%% ERROR #{type} %%%\n#{item}\n"
+          exit 1
 
         end
       end
