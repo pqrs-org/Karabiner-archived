@@ -47,19 +47,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   static void
-  remap_semicolon2return_controlsemicolon2semicolon(const RemapParams &remapParams)
-  {
-    if (! config.remap_semicolon2return_controlsemicolon2semicolon) return;
-
-    if (! FlagStatus::isHeldDown_control() && ! FlagStatus::isHeldDown_shift()) {
-      RemapUtil::keyToKey(remapParams, KeyCode::SEMICOLON, KeyCode::RETURN);
-    } else {
-      FlagStatus::temporaryDecrease_control();
-    }
-  }
-
-  // ----------------------------------------
-  static void
   remap_shiftRshiftL2space(const RemapParams &remapParams)
   {
     if (! config.remap_shiftRshiftL2space) return;
@@ -298,8 +285,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &remapParams)
   remap_enter2commandL_enter2controlL_vm(remapParams);
 
   remap_f6_to_numlock(remapParams);
-
-  remap_semicolon2return_controlsemicolon2semicolon(remapParams);
 
   remap_shiftLshiftR2space(remapParams);
   remap_shiftRshiftL2space(remapParams);
