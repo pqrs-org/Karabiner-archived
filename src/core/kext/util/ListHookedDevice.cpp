@@ -52,14 +52,16 @@ namespace org_pqrs_KeyRemap4MacBook {
       lock = NULL;
     }
 
-    // ----------------------------------------
-    last = NULL;
+    {
+      // lock scope
+      last = NULL;
 
-    for (int i = 0; i < MAXNUM; ++i) {
-      HookedDevice *p = getItem(i);
-      if (! p) continue;
+      for (int i = 0; i < MAXNUM; ++i) {
+        HookedDevice *p = getItem(i);
+        if (! p) continue;
 
-      p->terminate();
+        p->terminate();
+      }
     }
 
     // ----------------------------------------
@@ -79,7 +81,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     IOLockLock(lock);
     {
-      HookedDevice *p = get(device);
+      HookedDevice *p = get_nolock(device);
       if (p) {
         result = p->terminate();
       }
@@ -88,6 +90,23 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     return result;
   }
+
+  HookedDevice *
+  ListHookedDevice::get_nolock(const IOHIDevice *device)
+  {
+    last = device;
+
+    if (! device) return NULL;
+
+    for (int i = 0; i < MAXNUM; ++i) {
+      HookedDevice *p = getItem(i);
+      if (! p) continue;
+
+      if (p->get() == device) return p;
+    }
+    return NULL;
+  }
+
 
   HookedDevice *
   ListHookedDevice::get(const IOHIDevice *device)
@@ -99,19 +118,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     IOLockLock(lock);
     {
-      last = device;
-
-      if (device) {
-        for (int i = 0; i < MAXNUM; ++i) {
-          HookedDevice *p = getItem(i);
-          if (! p) continue;
-
-          if (p->get() == device) {
-            result = p;
-            break;
-          }
-        }
-      }
+      result = get_nolock(device);
     }
     IOLockUnlock(lock);
 
@@ -128,7 +135,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     IOLockLock(lock);
     {
-      result = get(last);
+      result = get_nolock(last);
 
       if (! result) {
         for (int i = 0; i < MAXNUM; ++i) {

@@ -40,6 +40,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   private:
     virtual HookedDevice *getItem(int index) = 0;
+    HookedDevice *get_nolock(const IOHIDevice *device);
+
     const IOHIDevice *last;
 
     IOLock *lock;
