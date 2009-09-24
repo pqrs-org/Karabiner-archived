@@ -2,6 +2,14 @@
 #include "NumHeldDownKeys.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
+  namespace {
+    void
+    reset(void)
+    {
+      NumHeldDownKeys::reset();
+    }
+  }
+
   bool
   ListHookedDevice::initialize(void)
   {
@@ -33,6 +41,10 @@ namespace org_pqrs_KeyRemap4MacBook {
           IOLog("KeyRemap4MacBook ListHookedDevice::append (device = 0x%p, slot = %d)\n", device, i);
 
           result = p->initialize(device);
+          if (result) {
+            // reset if any event actions are replaced.
+            reset();
+          }
           break;
         }
       }
@@ -67,6 +79,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
 
+    reset();
+
     // ----------------------------------------
     if (l) {
       IOLockUnlock(l);
@@ -87,6 +101,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       HookedDevice *p = get_nolock(device);
       if (p) {
         result = p->terminate();
+        if (result) {
+          reset();
+        }
       }
     }
     IOLockUnlock(lock);
@@ -166,7 +183,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         if (p->refresh()) {
           // reset if any event actions are replaced.
-          NumHeldDownKeys::reset();
+          reset();
         }
       }
     }
