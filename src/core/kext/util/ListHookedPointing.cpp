@@ -86,6 +86,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   HookedPointing::refresh(void)
   {
+    if (! config.initialized) {
+      return restoreEventAction();
+    }
     if (! isAppleDriver && ! config.general_remap_thirdvendor_pointing) {
       return restoreEventAction();
     }
@@ -96,7 +99,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   HookedPointing::terminate(void)
   {
     bool result = restoreEventAction();
+
     device = NULL;
+    orig_relativePointerEventAction = NULL;
+    orig_scrollWheelEventAction = NULL;
+    orig_relativePointerEventTarget = NULL;
+    orig_scrollWheelEventTarget = NULL;
+
     return result;
   }
 
@@ -108,33 +117,39 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOHIPointing *pointing = OSDynamicCast(IOHIPointing, device);
     if (! pointing) return false;
 
+    bool result = false;
+
     // ----------------------------------------
     {
       RelativePointerEventCallback callback = reinterpret_cast<RelativePointerEventCallback>(pointing->_relativePointerEventAction);
 
       if (callback != hook_RelativePointerEventCallback) {
-        IOLog("KeyRemap4MacBook [refresh] RelativePointerEventAction (device = 0x%p)\n", device);
+        IOLog("KeyRemap4MacBook HookedPointing::replaceEventAction (RelativePointerEventCallback) (device = 0x%p)\n", device);
 
         orig_relativePointerEventAction = callback;
         orig_relativePointerEventTarget = pointing->_relativePointerEventTarget;
 
         pointing->_relativePointerEventAction = reinterpret_cast<RelativePointerEventAction>(hook_RelativePointerEventCallback);
+
+        result = true;
       }
     }
     {
       ScrollWheelEventCallback callback = reinterpret_cast<ScrollWheelEventCallback>(pointing->_scrollWheelEventAction);
 
       if (callback != hook_ScrollWheelEventCallback) {
-        IOLog("KeyRemap4MacBook [refresh] ScrollWheelEventAction (device = 0x%p)\n", device);
+        IOLog("KeyRemap4MacBook HookedPointing::replaceEventAction (ScrollWheelEventCallback) (device = 0x%p)\n", device);
 
         orig_scrollWheelEventAction = callback;
         orig_scrollWheelEventTarget = pointing->_scrollWheelEventTarget;
 
         pointing->_scrollWheelEventAction = reinterpret_cast<ScrollWheelEventAction>(hook_ScrollWheelEventCallback);
+
+        result = true;
       }
     }
 
-    return true;
+    return result;
   }
 
   bool
@@ -145,22 +160,32 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOHIPointing *pointing = OSDynamicCast(IOHIPointing, device);
     if (! pointing) return false;
 
+    bool result = false;
+
     // ----------------------------------------
     {
       RelativePointerEventCallback callback = reinterpret_cast<RelativePointerEventCallback>(pointing->_relativePointerEventAction);
 
       if (callback == hook_RelativePointerEventCallback) {
+        IOLog("KeyRemap4MacBook HookedPointing::replaceEventAction (RelativePointerEventCallback) (device = 0x%p)\n", device);
+
         pointing->_relativePointerEventAction = reinterpret_cast<RelativePointerEventAction>(orig_relativePointerEventAction);
+
+        result = true;
       }
     }
     {
       ScrollWheelEventCallback callback = reinterpret_cast<ScrollWheelEventCallback>(pointing->_scrollWheelEventAction);
 
       if (callback == hook_ScrollWheelEventCallback) {
+        IOLog("KeyRemap4MacBook HookedPointing::replaceEventAction (ScrollWheelEventCallback) (device = 0x%p)\n", device);
+
         pointing->_scrollWheelEventAction = reinterpret_cast<ScrollWheelEventAction>(orig_scrollWheelEventAction);
+
+        result = true;
       }
     }
 
-    return true;
+    return result;
   }
 }
