@@ -25,7 +25,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool refresh(void);
     bool terminate(void);
 
+    /** return true if event action is replaced. */
     bool replaceEventAction(void);
+    /** return true if event action is replaced. */
     bool restoreEventAction(void);
   };
 

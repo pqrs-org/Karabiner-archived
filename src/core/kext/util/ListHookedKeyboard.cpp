@@ -91,7 +91,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   HookedKeyboard::terminate(void)
   {
     bool result = restoreEventAction();
+
     device = NULL;
+    orig_keyboardEventAction = NULL;
+    orig_keyboardEventTarget = NULL;
+
     return result;
   }
 
@@ -104,14 +108,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! kbd) return false;
 
     KeyboardEventCallback callback = reinterpret_cast<KeyboardEventCallback>(kbd->_keyboardEventAction);
-    if (callback != hook_KeyboardEventCallback) {
-      IOLog("KeyRemap4MacBook HookedKeyboard::replaceEventAction (device = 0x%p)\n", device);
+    if (callback == hook_KeyboardEventCallback) return false;
 
-      orig_keyboardEventAction = callback;
-      orig_keyboardEventTarget = kbd->_keyboardEventTarget;
+    // ------------------------------------------------------------
+    IOLog("KeyRemap4MacBook HookedKeyboard::replaceEventAction (device = 0x%p)\n", device);
 
-      kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(hook_KeyboardEventCallback);
-    }
+    orig_keyboardEventAction = callback;
+    orig_keyboardEventTarget = kbd->_keyboardEventTarget;
+
+    kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(hook_KeyboardEventCallback);
 
     return true;
   }
@@ -125,11 +130,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! kbd) return false;
 
     KeyboardEventCallback callback = reinterpret_cast<KeyboardEventCallback>(kbd->_keyboardEventAction);
-    if (callback == hook_KeyboardEventCallback) {
-      IOLog("KeyRemap4MacBook HookedKeyboard::restoreEventAction (device = 0x%p)\n", device);
+    if (callback != hook_KeyboardEventCallback) return false;
 
-      kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(orig_keyboardEventAction);
-    }
+    // ----------------------------------------
+    IOLog("KeyRemap4MacBook HookedKeyboard::restoreEventAction (device = 0x%p)\n", device);
+
+    kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(orig_keyboardEventAction);
 
     return true;
   }
