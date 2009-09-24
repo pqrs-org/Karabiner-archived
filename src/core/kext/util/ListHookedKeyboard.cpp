@@ -71,6 +71,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   HookedKeyboard::refresh(void)
   {
+    if (! config.initialized) {
+      return restoreEventAction();
+    }
     if (! isAppleDriver && ! config.general_remap_thirdvendor_keyboard) {
       return restoreEventAction();
     }
