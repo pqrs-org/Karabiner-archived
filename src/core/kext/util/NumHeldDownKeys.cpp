@@ -38,6 +38,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     reset(void)
     {
+      if (config.debug_devel) {
+        printf("KeyRemap4MacBook NumHeldDownKeys::reset\n");
+      }
       num = 0;
     }
 
