@@ -283,6 +283,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       NumHeldDownKeys::set(remapParams);
 
       // ------------------------------------------------------------
+      /*
+        When we press the functional key (ex. F2) with the keyboard of the third vendor,
+        KeyRemap4MacBook_client::sendmsg returns EIO.
+
+        We use the previous value when the error occurred.
+      */
       static KeyRemap4MacBook_bridge::ActiveApplicationInfo::ApplicationType lastApplicationType = KeyRemap4MacBook_bridge::ActiveApplicationInfo::UNKNOWN;
 
       KeyRemap4MacBook_bridge::ActiveApplicationInfo::Reply activeApplicationInfo;
@@ -293,7 +299,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (error == 0) {
         remapParams.appType = activeApplicationInfo.type;
         lastApplicationType = activeApplicationInfo.type;
-      } else if (error != EIO) {
+      } else {
         // use last info.
         remapParams.appType = lastApplicationType;
       }
