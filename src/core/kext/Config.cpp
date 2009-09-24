@@ -6,7 +6,6 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   Config config;
-  int initialized = 0;
 
   // ----------------------------------------------------------------------
   // SYSCTL staff
@@ -40,7 +39,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   SYSCTL_INT(_keyremap4macbook, OID_AUTO, debug_devel, CTLTYPE_INT|CTLFLAG_RW, &(config.debug_devel), 0, "");
 
   SYSCTL_STRING(_keyremap4macbook, OID_AUTO, version, CTLFLAG_RD, config_version, 0, "");
-  SYSCTL_INT(_keyremap4macbook, OID_AUTO, initialized, CTLTYPE_INT|CTLFLAG_RW, &(initialized), 0, "");
+  SYSCTL_INT(_keyremap4macbook, OID_AUTO, initialized, CTLTYPE_INT|CTLFLAG_RW, &(config.initialized), 0, "");
 
   // ----------------------------------------------------------------------
   void
