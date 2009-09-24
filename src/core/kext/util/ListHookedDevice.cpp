@@ -1,4 +1,5 @@
 #include "ListHookedDevice.hpp"
+#include "NumHeldDownKeys.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   bool
@@ -29,6 +30,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (! p) continue;
 
         if (! p->get()) {
+          IOLog("KeyRemap4MacBook ListHookedDevice::append (device = 0x%p, slot = %d)\n", device, i);
+
           result = p->initialize(device);
           break;
         }
@@ -161,7 +164,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         HookedDevice *p = getItem(i);
         if (! p) continue;
 
-        p->refresh();
+        if (p->refresh()) {
+          // reset if any event actions are replaced.
+          NumHeldDownKeys::reset();
+        }
       }
     }
     IOLockUnlock(lock);
