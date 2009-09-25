@@ -65,14 +65,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ----------------------------------------
       void
-      cancelAllKeyRepeat(void)
-      {
-        timer_repeat_keyboard.cancelTimeout();
-        timer_repeat_keyboard_extra.cancelTimeout();
-      }
-
-      // ----------------------------------------
-      void
       setRepeat_keyboard(const IOHIKeyboard *kbd, const Params_KeyboardEventCallBack &params)
       {
         if (params.eventType == KeyEvent::DOWN) {
@@ -406,10 +398,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       listFireRelativePointer.reset();
 
-      if (params->buttons) {
-        cancelAllKeyRepeat();
-      }
-
       bool ex_dropEvent = false;
       RemapPointingParams_relative remapParams = {
         params, &ex_dropEvent,
@@ -449,7 +437,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ------------------------------------------------------------
       params->log();
 
-      cancelAllKeyRepeat();
       params->apply(p->getOrig_scrollWheelEventAction());
     }
   }
