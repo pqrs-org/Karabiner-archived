@@ -10,6 +10,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     class Item {
     public:
       void initialize(ModifierFlag::ModifierFlag _flag);
+      void set(void);
       void set(const RemapParams &remapParams);
 
       void reset(void);
@@ -36,6 +37,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
 
     void initialize(void);
+    void set(void);
     void set(const RemapParams &remapParams);
     unsigned int makeFlags(unsigned int keyCode = KeyCode::NONE);
     unsigned int makeFlags(const RemapParams &remapParams);

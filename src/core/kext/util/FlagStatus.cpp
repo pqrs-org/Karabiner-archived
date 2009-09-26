@@ -18,6 +18,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
+    Item::set(void)
+    {
+      temporary_count = 0;
+    }
+
+    void
     Item::set(const RemapParams &remapParams)
     {
       temporary_count = 0;
@@ -93,6 +99,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       for (int i = 0; i < ModifierFlag::listsize; ++i) {
         item[i].initialize(ModifierFlag::list[i]);
+      }
+    }
+
+    void
+    set(void)
+    {
+      for (int i = 0; i < ModifierFlag::listsize; ++i) {
+        item[i].set();
       }
     }
 
