@@ -292,6 +292,8 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &remapParams)
 void
 org_pqrs_KeyRemap4MacBook::remap_consumer(const RemapConsumerParams &remapParams)
 {
+  FlagStatus::set();
+
 #include "config/output/include.remapcode_call_consumer.cpp"
 
   (remapParams.params)->flags = FlagStatus::makeFlags(*(remapParams.ex_remapKeyCode));
