@@ -3,4 +3,4 @@ include ../Makefile.common
 a.out: test.cpp
 	$(CXX) $(CXXFLAGS) -o $@ $< $(LDFLAGS)
 
-include ../Makefile.clean
+include ../Makefile.rules
