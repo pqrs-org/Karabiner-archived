@@ -12,6 +12,7 @@
 		34012A6F0E7AED010069FE39 /* TimerWrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34012A6D0E7AED010069FE39 /* TimerWrapper.hpp */; };
 		3424BC5E0E72FF9100298C45 /* JISKanaMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3424BC5C0E72FF9100298C45 /* JISKanaMode.cpp */; };
 		3424BC5F0E72FF9100298C45 /* JISKanaMode.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3424BC5D0E72FF9100298C45 /* JISKanaMode.hpp */; };
+		34311761106F657200030711 /* keycode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34311760106F657200030711 /* keycode.cpp */; };
 		345004AD0E7CE48F0075324B /* Core.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345004A80E7CE48F0075324B /* Core.cpp */; };
 		345004AE0E7CE48F0075324B /* Core.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345004A90E7CE48F0075324B /* Core.hpp */; };
 		345004AF0E7CE48F0075324B /* Driver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345004AA0E7CE48F0075324B /* Driver.cpp */; };
@@ -66,6 +67,7 @@
 		34012A6D0E7AED010069FE39 /* TimerWrapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TimerWrapper.hpp; path = util/TimerWrapper.hpp; sourceTree = "<group>"; };
 		3424BC5C0E72FF9100298C45 /* JISKanaMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = JISKanaMode.cpp; path = util/JISKanaMode.cpp; sourceTree = "<group>"; };
 		3424BC5D0E72FF9100298C45 /* JISKanaMode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = JISKanaMode.hpp; path = util/JISKanaMode.hpp; sourceTree = "<group>"; };
+		34311760106F657200030711 /* keycode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = keycode.cpp; sourceTree = "<group>"; };
 		345004A80E7CE48F0075324B /* Core.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Core.cpp; sourceTree = "<group>"; };
 		345004A90E7CE48F0075324B /* Core.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Core.hpp; sourceTree = "<group>"; };
 		345004AA0E7CE48F0075324B /* Driver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Driver.cpp; sourceTree = "<group>"; };
@@ -127,8 +129,6 @@
 		089C166AFE841209C02AAC07 /* KeyRemap4MacBook */ = {
 			isa = PBXGroup;
 			children = (
-				34A59B861065C00B0048D1E7 /* ListHookedConsumer.cpp */,
-				34A59B871065C00B0048D1E7 /* ListHookedConsumer.hpp */,
 				247142CAFF3F8F9811CA285C /* Source */,
 				8DA8362C06AD9B9200E5AC22 /* Kernel.framework */,
 				089C167CFE841241C02AAC07 /* Resources */,
@@ -157,6 +157,9 @@
 		247142CAFF3F8F9811CA285C /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				34311760106F657200030711 /* keycode.cpp */,
+				34A59B861065C00B0048D1E7 /* ListHookedConsumer.cpp */,
+				34A59B871065C00B0048D1E7 /* ListHookedConsumer.hpp */,
 				34AA1F331065B1EE00E9A418 /* ListHookedDevice.cpp */,
 				34AA1F341065B1EE00E9A418 /* ListHookedDevice.hpp */,
 				345004A80E7CE48F0075324B /* Core.cpp */,
@@ -339,6 +342,7 @@
 				34F14BC00E867884001C15F3 /* NumHeldDownKeys.cpp in Sources */,
 				34AA1F351065B1EE00E9A418 /* ListHookedDevice.cpp in Sources */,
 				34A59B881065C00B0048D1E7 /* ListHookedConsumer.cpp in Sources */,
+				34311761106F657200030711 /* keycode.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
