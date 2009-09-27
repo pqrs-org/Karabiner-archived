@@ -57,60 +57,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   namespace {
-    inline unsigned int stripModifier(unsigned int flags, ModifierFlag::ModifierFlag f) {
-      return (flags & ~f);
-    }
-    inline unsigned int stripModifierFN(unsigned int flags) {
-      return stripModifier(flags, ModifierFlag::FN);
-    }
-    inline unsigned int stripModifierCURSOR(unsigned int flags) {
-      return stripModifier(flags, ModifierFlag::CURSOR);
-    }
-  }
-
-  void
-  RemapUtil::normalizeKeyBeforeRemap(Params_KeyboardEventCallBack *params)
-  {
-    if (params->keyboardType == KeyboardType::POWERBOOK ||
-        params->keyboardType == KeyboardType::POWERBOOK_G4 ||
-        params->keyboardType == KeyboardType::POWERBOOK_G4_TI) {
-      if (params->key == KeyCode::ENTER_POWERBOOK) { params->key = KeyCode::ENTER; }
-    }
-
-    if (RemapUtil::isModifierOn(params->flags, ModifierFlag::FN)) {
-      if (params->key == KeyCode::KEYPAD_0) { params->key = KeyCode::M; params->flags = stripModifierFN(params->flags); }
-      if (params->key == KeyCode::KEYPAD_1) { params->key = KeyCode::J; params->flags = stripModifierFN(params->flags); }
-      if (params->key == KeyCode::KEYPAD_2) { params->key = KeyCode::K; params->flags = stripModifierFN(params->flags); }
-      if (params->key == KeyCode::KEYPAD_3) { params->key = KeyCode::L; params->flags = stripModifierFN(params->flags); }
-      if (params->key == KeyCode::KEYPAD_4) { params->key = KeyCode::U; params->flags = stripModifierFN(params->flags); }
-      if (params->key == KeyCode::KEYPAD_5) { params->key = KeyCode::I; params->flags = stripModifierFN(params->flags); }
-      if (params->key == KeyCode::KEYPAD_6) { params->key = KeyCode::O; params->flags = stripModifierFN(params->flags); }
-      if (params->key == KeyCode::KEYPAD_7) { params->key = KeyCode::KEY_7; params->flags = stripModifierFN(params->flags); }
-      if (params->key == KeyCode::KEYPAD_8) { params->key = KeyCode::KEY_8; params->flags = stripModifierFN(params->flags); }
-      if (params->key == KeyCode::KEYPAD_9) { params->key = KeyCode::KEY_9; params->flags = stripModifierFN(params->flags); }
-      if (params->key == KeyCode::KEYPAD_CLEAR) { params->key = KeyCode::KEY_6; params->flags = stripModifierFN(params->flags); }
-      if (params->key == KeyCode::KEYPAD_PLUS) { params->key = KeyCode::SLASH; params->flags = stripModifierFN(params->flags); }
-      if (params->key == KeyCode::KEYPAD_MINUS) { params->key = KeyCode::SEMICOLON; params->flags = stripModifierFN(params->flags); }
-      if (params->key == KeyCode::KEYPAD_MULTIPLY) { params->key = KeyCode::P; params->flags = stripModifierFN(params->flags); }
-      if (params->key == KeyCode::KEYPAD_SLASH) { params->key = KeyCode::KEY_0; params->flags = stripModifierFN(params->flags); }
-      if (params->key == KeyCode::KEYPAD_EQUAL) { params->key = KeyCode::MINUS; params->flags = stripModifierFN(params->flags); }
-      if (params->key == KeyCode::KEYPAD_DOT) { params->key = KeyCode::DOT; params->flags = stripModifierFN(params->flags); }
-      if (params->key == KeyCode::PAGEUP) { params->key = KeyCode::CURSOR_UP; params->flags = (stripModifierFN(params->flags) | ModifierFlag::CURSOR); }
-      if (params->key == KeyCode::PAGEDOWN) { params->key = KeyCode::CURSOR_DOWN; params->flags = (stripModifierFN(params->flags) | ModifierFlag::CURSOR); }
-      if (params->key == KeyCode::HOME) { params->key = KeyCode::CURSOR_LEFT; params->flags = (stripModifierFN(params->flags) | ModifierFlag::CURSOR); }
-      if (params->key == KeyCode::END) { params->key = KeyCode::CURSOR_RIGHT; params->flags = (stripModifierFN(params->flags) | ModifierFlag::CURSOR); }
-      if (params->key == KeyCode::ENTER) { params->key = KeyCode::RETURN; params->flags = stripModifierFN(params->flags); }
-      if (params->key == KeyCode::FORWARD_DELETE) { params->key = KeyCode::DELETE; params->flags = stripModifierFN(params->flags); }
-    }
-  }
-
-  namespace {
-    inline unsigned int stripModifierNone(unsigned int flags) {
-      return (flags & ~(ModifierFlag::NONE));
-    }
     inline bool isFromFlags(unsigned int flags, unsigned int fromFlags) {
       if (RemapUtil::isModifierOn(fromFlags, ModifierFlag::NONE)) {
-        return (flags == stripModifierNone(fromFlags));
+        return (flags == ModifierFlag::stripNONE(fromFlags));
       } else {
         return ((flags & fromFlags) == fromFlags);
       }
@@ -411,46 +360,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     lastFlags = toFlags;
   }
 
-  namespace {
-    // reverse convertion of RemapUtil::normalizeKeyBeforeRemap
-    void
-    reverseNormalizeKey(Params_KeyboardEventCallBack *params)
-    {
-      if (! params) return;
-
-      if (RemapUtil::isModifierOn(params->flags, ModifierFlag::FN)) {
-        if (params->key == KeyCode::M) { params->key = KeyCode::KEYPAD_0; }
-        if (params->key == KeyCode::J) { params->key = KeyCode::KEYPAD_1; }
-        if (params->key == KeyCode::K) { params->key = KeyCode::KEYPAD_2; }
-        if (params->key == KeyCode::L) { params->key = KeyCode::KEYPAD_3; }
-        if (params->key == KeyCode::U) { params->key = KeyCode::KEYPAD_4; }
-        if (params->key == KeyCode::I) { params->key = KeyCode::KEYPAD_5; }
-        if (params->key == KeyCode::O) { params->key = KeyCode::KEYPAD_6; }
-        if (params->key == KeyCode::KEY_7) { params->key = KeyCode::KEYPAD_7; }
-        if (params->key == KeyCode::KEY_8) { params->key = KeyCode::KEYPAD_8; }
-        if (params->key == KeyCode::KEY_9) { params->key = KeyCode::KEYPAD_9; }
-        if (params->key == KeyCode::KEY_6) { params->key = KeyCode::KEYPAD_CLEAR; }
-        if (params->key == KeyCode::SLASH) { params->key = KeyCode::KEYPAD_PLUS; }
-        if (params->key == KeyCode::SEMICOLON) { params->key = KeyCode::KEYPAD_MINUS; }
-        if (params->key == KeyCode::P) { params->key = KeyCode::KEYPAD_MULTIPLY; }
-        if (params->key == KeyCode::KEY_0) { params->key = KeyCode::KEYPAD_SLASH; }
-        if (params->key == KeyCode::MINUS) { params->key = KeyCode::KEYPAD_EQUAL; }
-        if (params->key == KeyCode::DOT) { params->key = KeyCode::KEYPAD_DOT; }
-        if (params->key == KeyCode::CURSOR_UP) { params->key = KeyCode::PAGEUP; params->flags = stripModifierCURSOR(params->flags); }
-        if (params->key == KeyCode::CURSOR_DOWN) { params->key = KeyCode::PAGEDOWN; params->flags = stripModifierCURSOR(params->flags); }
-        if (params->key == KeyCode::CURSOR_LEFT) { params->key = KeyCode::HOME; params->flags = stripModifierCURSOR(params->flags); }
-        if (params->key == KeyCode::CURSOR_RIGHT) { params->key = KeyCode::END; params->flags = stripModifierCURSOR(params->flags); }
-        if (params->key == KeyCode::RETURN) { params->key = KeyCode::ENTER; }
-        if (params->key == KeyCode::DELETE) { params->key = KeyCode::FORWARD_DELETE; }
-      }
-      if (params->keyboardType == KeyboardType::POWERBOOK ||
-          params->keyboardType == KeyboardType::POWERBOOK_G4 ||
-          params->keyboardType == KeyboardType::POWERBOOK_G4_TI) {
-        if (params->key == KeyCode::ENTER) { params->key = KeyCode::ENTER_POWERBOOK; }
-      }
-    }
-  }
-
   void
   RemapUtil::fireKey(KeyboardEventCallback callback, const Params_KeyboardEventCallBack &params)
   {
@@ -458,7 +367,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (params.key == KeyCode::NONE) return;
 
     Params_KeyboardEventCallBack p = params;
-    reverseNormalizeKey(&p);
+    KeyCode::reverseNormalizeKey(p.key, p.flags, p.keyboardType);
 
     RemapUtil::fireModifiers(callback, p);
 

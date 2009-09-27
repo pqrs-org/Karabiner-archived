@@ -262,7 +262,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       unsigned int ex_extraRepeatFlags = 0;
       ExtraRepeatFunc::ExtraRepeatFunc ex_extraRepeatFunc = NULL;
 
-      RemapUtil::normalizeKeyBeforeRemap(params);
+      KeyCode::normalizeKey(params->key, params->flags, params->keyboardType);
 
       RemapParams remapParams = {
         params,

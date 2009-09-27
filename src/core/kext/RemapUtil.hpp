@@ -50,8 +50,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     KeyCode::KeyCode getModifierKeyCode(ModifierFlag::ModifierFlag flag);
     ModifierFlag::ModifierFlag getKeyCodeModifier(unsigned int keycode);
 
-    void normalizeKeyBeforeRemap(Params_KeyboardEventCallBack *params);
-
     inline bool isKeyDown(const RemapParams &remapParams, unsigned int keyCode) {
       if (isEvent_Down(remapParams)) {
         return isKey(remapParams, keyCode);
