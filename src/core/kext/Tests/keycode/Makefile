@@ -1,6 +1,6 @@
 include ../Makefile.common
 
-a.out: test.cpp
-	$(CXX) $(CXXFLAGS) -o $@ $< $(LDFLAGS)
+a.out: $(SOURCES)
+	$(CXX) $(CXXFLAGS) -o $@ $(SOURCES) $(LDFLAGS)
 
 include ../Makefile.rules
