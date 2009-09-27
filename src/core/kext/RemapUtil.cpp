@@ -57,8 +57,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   namespace {
+    inline unsigned int stripModifier(unsigned int flags, ModifierFlag::ModifierFlag f) {
+      return (flags & ~f);
+    }
     inline unsigned int stripModifierFN(unsigned int flags) {
-      return (flags & ~(ModifierFlag::FN));
+      return stripModifier(flags, ModifierFlag::FN);
+    }
+    inline unsigned int stripModifierCURSOR(unsigned int flags) {
+      return stripModifier(flags, ModifierFlag::CURSOR);
     }
   }
 
@@ -430,10 +436,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (params->key == KeyCode::KEY_0) { params->key = KeyCode::KEYPAD_SLASH; }
         if (params->key == KeyCode::MINUS) { params->key = KeyCode::KEYPAD_EQUAL; }
         if (params->key == KeyCode::DOT) { params->key = KeyCode::KEYPAD_DOT; }
-        if (params->key == KeyCode::CURSOR_UP) { params->key = KeyCode::PAGEUP; }
-        if (params->key == KeyCode::CURSOR_DOWN) { params->key = KeyCode::PAGEDOWN; }
-        if (params->key == KeyCode::CURSOR_LEFT) { params->key = KeyCode::HOME; }
-        if (params->key == KeyCode::CURSOR_RIGHT) { params->key = KeyCode::END; }
+        if (params->key == KeyCode::CURSOR_UP) { params->key = KeyCode::PAGEUP; params->flags = stripModifierCURSOR(params->flags); }
+        if (params->key == KeyCode::CURSOR_DOWN) { params->key = KeyCode::PAGEDOWN; params->flags = stripModifierCURSOR(params->flags); }
+        if (params->key == KeyCode::CURSOR_LEFT) { params->key = KeyCode::HOME; params->flags = stripModifierCURSOR(params->flags); }
+        if (params->key == KeyCode::CURSOR_RIGHT) { params->key = KeyCode::END; params->flags = stripModifierCURSOR(params->flags); }
         if (params->key == KeyCode::RETURN) { params->key = KeyCode::ENTER; }
         if (params->key == KeyCode::DELETE) { params->key = KeyCode::FORWARD_DELETE; }
       }
@@ -451,12 +457,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! callback) return;
     if (params.key == KeyCode::NONE) return;
 
-    RemapUtil::fireModifiers(callback, params);
+    Params_KeyboardEventCallBack p = params;
+    reverseNormalizeKey(&p);
 
-    if (params.eventType == KeyEvent::DOWN || params.eventType == KeyEvent::UP) {
-      Params_KeyboardEventCallBack p = params;
-      reverseNormalizeKey(&p);
+    RemapUtil::fireModifiers(callback, p);
 
+    if (p.eventType == KeyEvent::DOWN || p.eventType == KeyEvent::UP) {
       p.apply(callback);
 
       if (p.eventType == KeyEvent::DOWN) {
