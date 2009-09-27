@@ -1,0 +1,2 @@
+CXXFLAGS = -I../../
+LDFLAGS =-F$(HOME)/Library/Frameworks -framework gtest
