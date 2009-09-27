@@ -10,6 +10,26 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
   }
 
+  namespace KeyboardType {
+    enum KeyboardType {
+      MACBOOK = 37,
+      MACBOOK_COREDUO = 38,
+      POWERBOOK_G4_TI = 201,
+      POWERBOOK_G4 = 202,
+      POWERBOOK = 207,
+
+      Logitech_DI_NOVO_KEYBOARD = 41,
+      REALFORCE91UBK = 42,
+
+      JIS_MACBOOK = 43,
+      JIS_MACBOOK_2008 = 45,
+      JIS_APPLE_USB_KEYBOARD = 36,
+      JIS_APPLE_USB_KEYBOARD_ALUMINUM = 48,
+      JIS_PC_USB_KEYBOARD = 42,
+      JIS_HAPPY_HACKING_KEYBOARD = 40,
+    };
+  }
+
   namespace ModifierFlag {
     enum ModifierFlag {
       CAPSLOCK =    0x10000,
@@ -47,6 +67,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
     const int listsize = sizeof(list) / sizeof(list[0]);
 
+    // ----------------------------------------------------------------------
     inline unsigned int stripFN(unsigned int flags) {
       return (flags & ~ModifierFlag::FN);
     }
@@ -55,6 +76,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
     inline unsigned int stripNONE(unsigned int flags) {
       return (flags & ~ModifierFlag::NONE);
+    }
+
+    inline bool isOn(unsigned int flags, ModifierFlag::ModifierFlag f) {
+      return ((flags & f) == static_cast<unsigned int>(f));
     }
   }
 
@@ -200,6 +225,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       NONE = 255,
     };
+
+    void normalizeKey(unsigned int &key, unsigned int &flags, unsigned int keyboardType);
+    void reverseNormalizeKey(unsigned int &key, unsigned int &flags, unsigned int keyboardType);
   }
 
   namespace CharCode {
@@ -255,26 +283,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       JIS_EISUU = 0,
 
       NONE = 255,
-    };
-  }
-
-  namespace KeyboardType {
-    enum KeyboardType {
-      MACBOOK = 37,
-      MACBOOK_COREDUO = 38,
-      POWERBOOK_G4_TI = 201,
-      POWERBOOK_G4 = 202,
-      POWERBOOK = 207,
-
-      Logitech_DI_NOVO_KEYBOARD = 41,
-      REALFORCE91UBK = 42,
-
-      JIS_MACBOOK = 43,
-      JIS_MACBOOK_2008 = 45,
-      JIS_APPLE_USB_KEYBOARD = 36,
-      JIS_APPLE_USB_KEYBOARD_ALUMINUM = 48,
-      JIS_PC_USB_KEYBOARD = 42,
-      JIS_HAPPY_HACKING_KEYBOARD = 40,
     };
   }
 
