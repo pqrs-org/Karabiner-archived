@@ -12,16 +12,16 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   namespace ModifierFlag {
     enum ModifierFlag {
-      CAPSLOCK =   0x10000,
+      CAPSLOCK =    0x10000,
 
-      SHIFT_L =    0x20002,
-      SHIFT_R =    0x20004,
+      SHIFT_L =     0x20002,
+      SHIFT_R =     0x20004,
 
-      CONTROL_L =  0x40001,
-      CONTROL_R =  0x42000,
+      CONTROL_L =   0x40001,
+      CONTROL_R =   0x42000,
 
-      OPTION_L =   0x80020,
-      OPTION_R =   0x80040,
+      OPTION_L =    0x80020,
+      OPTION_R =    0x80040,
 
       COMMAND_L =  0x100008,
       COMMAND_R =  0x100010,
@@ -46,6 +46,16 @@ namespace org_pqrs_KeyRemap4MacBook {
       ModifierFlag::FN,
     };
     const int listsize = sizeof(list) / sizeof(list[0]);
+
+    inline unsigned int stripFN(unsigned int flags) {
+      return (flags & ~ModifierFlag::FN);
+    }
+    inline unsigned int stripCURSOR(unsigned int flags) {
+      return (flags & ~ModifierFlag::CURSOR);
+    }
+    inline unsigned int stripNONE(unsigned int flags) {
+      return (flags & ~ModifierFlag::NONE);
+    }
   }
 
   namespace KeyCode {
