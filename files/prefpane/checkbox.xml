@@ -248,6 +248,11 @@
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::HOME</autogen>
         </item>
         <item>
+          <name>Command_R to Command_L+Left-Arrow</name>
+          <sysctl>remap.commandR2commandLleftarrow</sysctl>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
           <name>Command_R to PageUp</name>
           <sysctl>remap.commandR2pageup</sysctl>
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::PAGEUP</autogen>
@@ -1036,6 +1041,11 @@
           <name>Option_R to PageDown</name>
           <sysctl>remap.optionR2pagedown</sysctl>
           <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::PAGEDOWN</autogen>
+        </item>
+        <item>
+          <name>Option_R to Command_L+Right-Arrow</name>
+          <sysctl>remap.optionR2commandLrightarrow</sysctl>
+          <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
           <name>Option_R to Semicolon</name>
