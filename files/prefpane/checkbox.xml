@@ -583,6 +583,11 @@
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::FORWARD_DELETE</autogen>
         </item>
         <item>
+          <name>FN to Help</name>
+          <sysctl>remap.fn2help</sysctl>
+          <autogen>--KeyToKey-- KeyCode::FN, KeyCode::HELP</autogen>
+        </item>
+        <item>
           <name>FN to Tab</name>
           <sysctl>remap.fn2tab</sysctl>
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::TAB</autogen>
