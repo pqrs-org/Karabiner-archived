@@ -248,8 +248,15 @@
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::HOME</autogen>
         </item>
         <item>
-          <name>Command_R to Command_L+Left-Arrow</name>
+          <name>Command_R to Home (only VirtualMachine, RDC)</name>
+          <sysctl>remap.commandR2home_vm</sysctl>
+          <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::HOME</autogen>
+        </item>
+        <item>
+          <name>Command_R to Command_L+Left-Arrow (except VirtualMachine, RDC)</name>
           <sysctl>remap.commandR2commandLleftarrow</sysctl>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
@@ -1028,6 +1035,12 @@
           <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::END</autogen>
         </item>
         <item>
+          <name>Option_R to End (only VirtualMachine, RDC)</name>
+          <sysctl>remap.optionR2end_vm</sysctl>
+          <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+          <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::END</autogen>
+        </item>
+        <item>
           <name>Option_R to Enter</name>
           <sysctl>remap.optionR2enter</sysctl>
           <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::ENTER</autogen>
@@ -1043,8 +1056,9 @@
           <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::PAGEDOWN</autogen>
         </item>
         <item>
-          <name>Option_R to Command_L+Right-Arrow</name>
+          <name>Option_R to Command_L+Right-Arrow (except VirtualMachine, RDC)</name>
           <sysctl>remap.optionR2commandLrightarrow</sysctl>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
