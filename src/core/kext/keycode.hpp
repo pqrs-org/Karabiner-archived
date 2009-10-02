@@ -74,6 +74,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     inline unsigned int stripCURSOR(unsigned int flags) {
       return (flags & ~ModifierFlag::CURSOR);
     }
+    inline unsigned int stripKEYPAD(unsigned int flags) {
+      return (flags & ~ModifierFlag::KEYPAD);
+    }
     inline unsigned int stripNONE(unsigned int flags) {
       return (flags & ~ModifierFlag::NONE);
     }
