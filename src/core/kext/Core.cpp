@@ -369,7 +369,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         };
 
         if (ex_remapKeyCode != KeyCode::NONE) {
-          callbackparams.apply(hk->getOrig_keyboardEventAction());
+          RemapUtil::fireKey(hk->getOrig_keyboardEventAction(), callbackparams);
           setRepeat_keyboard(hk->get(), callbackparams);
         }
         ListFireExtraKey::fire(hk->getOrig_keyboardEventAction(), callbackparams);
