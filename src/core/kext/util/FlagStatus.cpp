@@ -137,29 +137,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       for (int i = 0; i < ModifierFlag::listsize; ++i) {
         flags |= item[i].makeFlag();
       }
-
-      if (keyCode == KeyCode::KEYPAD_0 || keyCode == KeyCode::KEYPAD_1 || keyCode == KeyCode::KEYPAD_2 ||
-          keyCode == KeyCode::KEYPAD_3 || keyCode == KeyCode::KEYPAD_4 || keyCode == KeyCode::KEYPAD_5 ||
-          keyCode == KeyCode::KEYPAD_6 || keyCode == KeyCode::KEYPAD_7 || keyCode == KeyCode::KEYPAD_8 ||
-          keyCode == KeyCode::KEYPAD_9 ||
-          keyCode == KeyCode::KEYPAD_DOT ||
-          keyCode == KeyCode::KEYPAD_MULTIPLY ||
-          keyCode == KeyCode::KEYPAD_PLUS ||
-          keyCode == KeyCode::KEYPAD_CLEAR ||
-          keyCode == KeyCode::KEYPAD_SLASH ||
-          keyCode == KeyCode::KEYPAD_MINUS ||
-          keyCode == KeyCode::KEYPAD_EQUAL ||
-          keyCode == KeyCode::KEYPAD_COMMA) {
-        flags |= ModifierFlag::KEYPAD;
-      }
-
-      if (keyCode == KeyCode::CURSOR_UP ||
-          keyCode == KeyCode::CURSOR_DOWN ||
-          keyCode == KeyCode::CURSOR_LEFT ||
-          keyCode == KeyCode::CURSOR_RIGHT) {
-        flags |= ModifierFlag::CURSOR;
-      }
-
       return flags;
     }
 
