@@ -88,9 +88,11 @@ TEST(KeyCode, normalizeKey) {
 
   // KEYPAD
   for (size_t i = 0; i < sizeof(keypads) / sizeof(keypads[0]); ++i) {
-    key = keypads[i][0]; flags = ModifierFlag::SHIFT_L | ModifierFlag::KEYPAD; keyboardType = KeyboardType::MACBOOK;
+    key = keypads[i][0]; flags = ModifierFlag::SHIFT_L; keyboardType = KeyboardType::MACBOOK;
+    if (key != KeyCode::KEYPAD_CLEAR && KeyCode::KEYPAD_COMMA) flags |= ModifierFlag::KEYPAD;
+    unsigned int flags_orig = flags;
     KeyCode::normalizeKey(key, flags, keyboardType);
-    EXPECT_EQ(key, keypads[i][0]); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::SHIFT_L | ModifierFlag::KEYPAD));
+    EXPECT_EQ(key, keypads[i][0]); EXPECT_EQ(flags, flags_orig);
   }
 
   // PAGEUP
@@ -117,7 +119,9 @@ TEST(KeyCode, normalizeKey) {
 
   // KEYPAD(+FN)
   for (size_t i = 0; i < sizeof(keypads) / sizeof(keypads[0]); ++i) {
-    key = keypads[i][0]; flags = ModifierFlag::SHIFT_L | ModifierFlag::FN | ModifierFlag::KEYPAD; keyboardType = KeyboardType::MACBOOK;
+    key = keypads[i][0]; flags = ModifierFlag::SHIFT_L | ModifierFlag::FN; keyboardType = KeyboardType::MACBOOK;
+    if (key != KeyCode::KEYPAD_CLEAR && KeyCode::KEYPAD_COMMA) flags |= ModifierFlag::KEYPAD;
+    if (key == KeyCode::KEYPAD_COMMA) continue;
     KeyCode::normalizeKey(key, flags, keyboardType);
     EXPECT_EQ(key, static_cast<unsigned int>(keypads[i][1])); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::SHIFT_L));
   }
@@ -166,10 +170,12 @@ TEST(KeyCode, reverseNormalizeKey) {
 
   // KEYPAD
   for (size_t i = 0; i < sizeof(keypads) / sizeof(keypads[0]); ++i) {
-    key = keypads[i][0]; flags = ModifierFlag::SHIFT_L | ModifierFlag::KEYPAD; keyboardType = KeyboardType::MACBOOK;
+    key = keypads[i][0]; flags = ModifierFlag::SHIFT_L; keyboardType = KeyboardType::MACBOOK;
+    if (key != KeyCode::KEYPAD_CLEAR && KeyCode::KEYPAD_COMMA) flags |= ModifierFlag::KEYPAD;
+    unsigned int flags_orig = flags;
     KeyCode::normalizeKey(key, flags, keyboardType);
     KeyCode::reverseNormalizeKey(key, flags, keyboardType);
-    EXPECT_EQ(key, keypads[i][0]); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::SHIFT_L | ModifierFlag::KEYPAD));
+    EXPECT_EQ(key, keypads[i][0]); EXPECT_EQ(flags, flags_orig);
   }
 
   // PAGEUP
@@ -209,11 +215,14 @@ TEST(KeyCode, reverseNormalizeKey) {
 
   // KEYPAD(+FN)
   for (size_t i = 0; i < sizeof(keypads) / sizeof(keypads[0]); ++i) {
-    key = keypads[i][0]; flags = ModifierFlag::SHIFT_L | ModifierFlag::FN | ModifierFlag::KEYPAD; keyboardType = KeyboardType::MACBOOK;
+    key = keypads[i][0]; flags = ModifierFlag::SHIFT_L | ModifierFlag::FN; keyboardType = KeyboardType::MACBOOK;
+    if (key != KeyCode::KEYPAD_CLEAR && KeyCode::KEYPAD_COMMA) flags |= ModifierFlag::KEYPAD;
+    if (key == KeyCode::KEYPAD_COMMA) continue;
+    unsigned int flags_orig = flags;
     KeyCode::normalizeKey(key, flags, keyboardType);
     flags |= ModifierFlag::FN;
     KeyCode::reverseNormalizeKey(key, flags, keyboardType);
-    EXPECT_EQ(key, static_cast<unsigned int>(keypads[i][0])); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::SHIFT_L | ModifierFlag::FN | ModifierFlag::KEYPAD));
+    EXPECT_EQ(key, static_cast<unsigned int>(keypads[i][0])); EXPECT_EQ(flags, flags_orig);
   }
 
   // PAGEUP(+FN)
