@@ -119,7 +119,7 @@ TEST(KeyCode, normalizeKey) {
   for (size_t i = 0; i < sizeof(keypads) / sizeof(keypads[0]); ++i) {
     key = keypads[i][0]; flags = ModifierFlag::SHIFT_L | ModifierFlag::FN | ModifierFlag::KEYPAD; keyboardType = KeyboardType::MACBOOK;
     KeyCode::normalizeKey(key, flags, keyboardType);
-    EXPECT_EQ(key, static_cast<unsigned int>(keypads[i][1])); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::SHIFT_L | ModifierFlag::KEYPAD));
+    EXPECT_EQ(key, static_cast<unsigned int>(keypads[i][1])); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::SHIFT_L));
   }
 
   // PAGEUP(+FN)
