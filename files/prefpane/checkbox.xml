@@ -540,9 +540,9 @@
           <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::BACKQUOTE</autogen>
         </item>
         <item>
-          <name>FN+Escape to Control_L+Eject</name>
-          <sysctl>remap.fnEscape2controlLeject</sysctl>
-          <autogen>--KeyToComsumer-- KeyCode::ESCAPE, ModifierFlag::FN, ConsumerKeyCode::EJECT, ModifierFlag::CONTROL_L</autogen>
+          <name>FN+Escape to Power</name>
+          <sysctl>remap.fnEscape2power</sysctl>
+          <autogen>--KeyToComsumer-- KeyCode::ESCAPE, ModifierFlag::FN, ConsumerKeyCode::POWER</autogen>
         </item>
         <item>
           <name>Escape to RightClick</name>
