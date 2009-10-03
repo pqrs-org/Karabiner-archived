@@ -2856,6 +2856,18 @@
           <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKQUOTE</autogen>
           <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::BACKSLASH</autogen>
         </item>
+        <item>
+          <name>Swap @ and double-quote(")</name>
+          <sysctl>remap.uk_swap_at_doublequote</sysctl>
+          <autogen>--KeyToKey-- KeyCode::KEY_2, VK_SHIFT, KeyCode::QUOTE, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::QUOTE, VK_SHIFT, KeyCode::KEY_2, ModifierFlag::SHIFT_L</autogen>
+        </item>
+        <item>
+          <name>Section(§) to Option_L+3 (#), Shift+Section(§) to Tilde(~)</name>
+          <sysctl>remap.uk_section2hash</sysctl>
+          <autogen>--KeyToKey-- KeyCode::UK_SECTION, VK_SHIFT, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::KEY_3, ModifierFlag::OPTION_L</autogen>
+        </item>
       </list>
     </item>
   </list>
