@@ -162,7 +162,7 @@ KeyRemap4MacBook_server::Server::do_ActiveApplicationInfo(org_pqrs_KeyRemap4MacB
 
   } else if (strcmp(applicationName, "com.vmware.fusion") == 0 ||
              strcmp(applicationName, "com.parallels.desktop") == 0 ||
-             strcmp(applicationName, "org.virtualbox.app.VirtualBox") == 0) {
+             strcmp(applicationName, "org.virtualbox.app.VirtualBoxVM") == 0) {
     reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::VIRTUALMACHINE;
 
   } else if (strcmp(applicationName, "com.microsoft.rdc") == 0 ||

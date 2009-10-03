@@ -260,6 +260,11 @@
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
+          <name>Command_R to Command_L+Left-Arrow</name>
+          <sysctl>remap.commandR2commandLleftarrow_all</sysctl>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
           <name>Command_R to PageUp</name>
           <sysctl>remap.commandR2pageup</sysctl>
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::PAGEUP</autogen>
@@ -1059,6 +1064,11 @@
           <name>Option_R to Command_L+Right-Arrow (except VirtualMachine, RDC)</name>
           <sysctl>remap.optionR2commandLrightarrow</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
+          <name>Option_R to Command_L+Right-Arrow</name>
+          <sysctl>remap.optionR2commandLrightarrow_all</sysctl>
           <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
