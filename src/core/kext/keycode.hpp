@@ -225,7 +225,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       RUSSIAN_PARAGRAPH = 10,
       UK_SECTION = 10,
-      GERMAN_BACKQUOTE = 24,
+      GERMAN_QUOTE = 24,
 
       NONE = 255,
     };
