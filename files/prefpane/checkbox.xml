@@ -2438,6 +2438,16 @@
     </item>
 
     <item>
+      <name>For German</name>
+      <list>
+        <item>
+          <name>Backquote(`) to Forward Delete</name>
+          <sysctl>remap.german_backquote2forwarddelete</sysctl>
+          <autogen>--KeyToKey-- KeyCode::GERMAN_BACKQUOTE, KeyCode::FORWARD_DELETE</autogen>
+        </item>
+      </list>
+    </item>
+    <item>
       <name>For Japanese</name>
       <list>
         <item>
