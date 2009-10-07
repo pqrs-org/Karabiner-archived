@@ -151,6 +151,12 @@
           <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
+          <name>Command_L to Control_L (only in virtual machine, RDC)</name>
+          <sysctl>remap.commandL2controlL_vm</sysctl>
+          <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
+        </item>
+        <item>
           <name>Command_L to Option_L</name>
           <sysctl>remap.commandL2optionL</sysctl>
           <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
@@ -312,6 +318,12 @@
         <item>
           <name>Control_L to Command_L</name>
           <sysctl>remap.controlL2commandL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
+        </item>
+        <item>
+          <name>Control_L to Command_L (only in virtual machine, RDC)</name>
+          <sysctl>remap.controlL2commandL_vm</sysctl>
+          <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
           <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
         </item>
         <item>
