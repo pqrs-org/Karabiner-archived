@@ -1419,6 +1419,12 @@
           <sysctl>remap.optionTab2f5</sysctl>
           <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::F5</autogen>
         </item>
+        <item>
+          <name>Swap Command+Tab and Option+Tab</name>
+          <sysctl>remap.swap_commandtaboptiontab</sysctl>
+          <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
+        </item>
       </list>
     </item>
 
