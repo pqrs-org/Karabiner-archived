@@ -354,6 +354,11 @@
           <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::SHIFT_L</autogen>
         </item>
         <item>
+          <name>Control_L to Delete</name>
+          <sysctl>remap.controlL2delete</sysctl>
+          <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::DELETE</autogen>
+        </item>
+        <item>
           <name>Control_L to Escape</name>
           <sysctl>remap.controlL2escape</sysctl>
           <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::ESCAPE</autogen>
