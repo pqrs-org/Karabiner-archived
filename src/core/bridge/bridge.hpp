@@ -36,6 +36,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         THUNDERBIRD,
         EXCEL, // Microsoft Excel
         ENTOURAGE, // Microsoft Entourage
+        ECLIPSE,
       };
 
       // none
