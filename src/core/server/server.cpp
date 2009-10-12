@@ -208,6 +208,9 @@ KeyRemap4MacBook_server::Server::do_ActiveApplicationInfo(org_pqrs_KeyRemap4MacB
 
   } else if (strcmp(applicationName, "com.microsoft.Entourage") == 0) {
     reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::ENTOURAGE;
+
+  } else if (strcmp(applicationName, "org.eclipse.eclipse") == 0) {
+    reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::ECLIPSE;
   }
 
   return org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS;
