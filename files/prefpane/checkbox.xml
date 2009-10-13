@@ -2379,6 +2379,11 @@
               <autogen>--KeyToKey-- KeyCode::PC_INSERT, KeyCode::CONTROL_R</autogen>
             </item>
             <item>
+              <name>Insert Key to Option_L+Insert</name>
+              <sysctl>remap.pc_insert2optionLinsert</sysctl>
+              <autogen>--KeyToKey-- KeyCode::PC_INSERT, KeyCode::PC_INSERT, ModifierFlag::OPTION_L</autogen>
+            </item>
+            <item>
               <name>Insert Key to Tab</name>
               <sysctl>remap.pc_insert2tab</sysctl>
               <autogen>--KeyToKey-- KeyCode::PC_INSERT, KeyCode::TAB</autogen>
