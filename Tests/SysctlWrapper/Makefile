@@ -10,4 +10,5 @@ clean:
 	rm -f *.o a.out
 
 run: all
+	@echo "Running test."
 	@sh -c '[ "`./a.out`" = "`sysctl -n kern.ostype`" ]'
