@@ -2063,6 +2063,12 @@
               <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::CONTROL_L</autogen>
             </item>
             <item>
+              <name>Remap FN+Return to Insert</name>
+              <sysctl>remap.app_vm_fnReturn2insert</sysctl>
+              <only>VIRTUALMACHINE</only>
+              <autogen>--KeyToKey-- KeyCode::RETURN, ModifierFlag::FN, KeyCode::HELP</autogen>
+            </item>
+            <item>
               <name>Remap Command+Space to Option+Backquote(`)</name>
               <sysctl>remap.app_vm_commandspace2optionbackquote</sysctl>
               <only>VIRTUALMACHINE</only>
