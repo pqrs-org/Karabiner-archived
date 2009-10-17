@@ -4,7 +4,10 @@ SOURCES=$(wildcard *.m)
 OBJECTS=$(patsubst %.m,%.o,$(SOURCES))
 
 all: $(OBJECTS)
-	g++ -o test $(OBJECTS) -framework cocoa
+	g++ -o a.out $(OBJECTS) -framework cocoa
 
 clean:
-	rm -f *.o test
+	rm -f *.o a.out
+
+run: all
+	@sh -c '[ "`./a.out`" = "`sysctl -n kern.ostype`" ]'
