@@ -101,16 +101,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         RemapUtil::drop(remapParams);
       }
     }
-
-    // Control+U -> Command+Shift+Left,Command+X
-    if (config.option_emacsmode_ex_controlU && (remapParams.params)->key == KeyCode::U && ! ignore) {
-      if (FlagStatus::isHeldDown_control()) {
-        if (RemapUtil::isEvent_Down(remapParams)) {
-          FireFunc::firefunc_emacsmode_ex_controlU(remapParams);
-        }
-        RemapUtil::drop(remapParams);
-      }
-    }
   }
 
   // ----------------------------------------

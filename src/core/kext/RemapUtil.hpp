@@ -150,7 +150,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void firefunc_tab(const RemapParams &remapParams);
     void firefunc_emacsmode_controlK(const RemapParams &remapParams, bool first);
     void firefunc_emacsmode_controlK_2nd(const RemapParams &remapParams);
-    void firefunc_emacsmode_ex_controlU(const RemapParams &remapParams);
     void firefunc_jis_kana(const RemapParams &remapParams);
     void firefunc_jis_kana_x2(const RemapParams &remapParams);
     void firefunc_jis_eisuu(const RemapParams &remapParams);
