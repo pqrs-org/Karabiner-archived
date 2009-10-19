@@ -590,18 +590,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  FireFunc::firefunc_emacsmode_ex_controlU(const RemapParams &params)
-  {
-    // Command+Shift+Left
-    ListFireExtraKey::add(KeyEvent::DOWN, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::CURSOR_LEFT);
-    ListFireExtraKey::add(KeyEvent::UP,   ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::CURSOR_LEFT);
-
-    // Command+X
-    ListFireExtraKey::add(KeyEvent::DOWN, ModifierFlag::COMMAND_L, KeyCode::X);
-    ListFireExtraKey::add(KeyEvent::UP,   ModifierFlag::COMMAND_L, KeyCode::X);
-  }
-
-  void
   FireFunc::firefunc_jis_kana(const RemapParams &params)
   {
     // fire only if no-modifiers
