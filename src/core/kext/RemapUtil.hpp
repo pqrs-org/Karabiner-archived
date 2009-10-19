@@ -66,6 +66,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     inline bool keyToKey(const RemapParams &remapParams, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE) {
       return keyToKey(remapParams, fromKeyCode, 0, toKeyCode, toFlags);
     }
+    bool keyToKey(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags,
+                  KeyCode::KeyCode toKeyCode1, unsigned int toFlags1,
+                  KeyCode::KeyCode toKeyCode2, unsigned int toFlags2 = ModifierFlag::NONE);
+    inline bool keyToKey(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags,
+                         KeyCode::KeyCode toKeyCode1,
+                         KeyCode::KeyCode toKeyCode2, unsigned int toFlags2 = ModifierFlag::NONE) {
+      return keyToKey(remapParams, fromKeyCode, fromFlags, toKeyCode1, ModifierFlag::NONE, toKeyCode2, toFlags2);
+    }
 
     bool keyToKey_dependingShift(const RemapParams &remapParams, KeyCode::KeyCode fromKeyCode,
                                  KeyCode::KeyCode toKeyCode_noflag1, CharCode::CharCode toCharCode_noflag1,

@@ -158,6 +158,28 @@ namespace org_pqrs_KeyRemap4MacBook {
     return true;
   }
 
+  bool
+  RemapUtil::keyToKey(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags,
+                      KeyCode::KeyCode toKeyCode1, unsigned int toFlags1,
+                      KeyCode::KeyCode toKeyCode2, unsigned int toFlags2)
+  {
+    bool isKeyDown = RemapUtil::isKeyDown(remapParams, fromKeyCode);
+
+    bool result = keyToKey(remapParams, fromKeyCode, fromFlags, toKeyCode1, toFlags1);
+    if (! result) return false;
+
+    if (isKeyDown) {
+      // calc flags
+      remapFlags(toFlags1, toFlags2, toKeyCode2, isKeyDown);
+      unsigned int flags = FlagStatus::makeFlags(toKeyCode2);
+      ListFireExtraKey::addKey(flags, toKeyCode2);
+      // restore flags
+      remapFlags(toFlags2, toFlags1, toKeyCode1, isKeyDown);
+    }
+
+    return true;
+  }
+
   namespace {
     void
     keyToKeyCombination(const RemapParams &remapParams, KeyCode::KeyCode fromKeyCode,
