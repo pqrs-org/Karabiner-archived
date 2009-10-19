@@ -2988,5 +2988,15 @@
         </item>
       </list>
     </item>
+    <item>
+      <name>Samples for KeyRemap4MacBook Developer</name>
+      <list>
+        <item>
+          <name>Control+U to Command+Shift+Left,Command+X</name>
+          <sysctl>remap.samples_controlU</sysctl>
+          <autogen>--KeyToKey-- KeyCode::U, VK_CONTROL, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+        </item>
+      </list>
+    </item>
   </list>
 </root>
