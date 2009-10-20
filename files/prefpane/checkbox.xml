@@ -1599,6 +1599,12 @@
           <autogen>--KeyToKey-- KeyCode::U, VK_CONTROL, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
+          <name>[ex] Control+U to Command+Shift+Left,Delete</name>
+          <sysctl>option.emacsmode_ex_controlU_delete</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+          <autogen>--KeyToKey-- KeyCode::U, VK_CONTROL, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::DELETE</autogen>
+        </item>
+        <item>
           <name>[ex] Control+G to Escape</name>
           <sysctl>option.emacsmode_ex_controlG</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
