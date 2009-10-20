@@ -266,9 +266,25 @@
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::HOME</autogen>
         </item>
         <item>
+          <name>Command_R to Home (only in virtual machine, RDC)</name>
+          <appendix>(+ Shift+Command_R to Shift+Home,Control_L+C)</appendix>
+          <sysctl>remap.commandR2home_vm_ex</sysctl>
+          <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, VK_SHIFT, KeyCode::HOME, ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::HOME</autogen>
+        </item>
+        <item>
           <name>Command_R to Command_L+Left-Arrow (except virtual machine, RDC)</name>
           <sysctl>remap.commandR2commandLleftarrow</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
+          <name>Command_R to Command_L+Left-Arrow (except virtual machine, RDC)</name>
+          <appendix>(+ Shift+Command_R to Command_L+Shift_L+Left-Arrow,Command_L+C)</appendix>
+          <sysctl>remap.commandR2commandLleftarrow_ex</sysctl>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, VK_SHIFT, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
