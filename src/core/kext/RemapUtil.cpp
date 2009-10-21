@@ -908,17 +908,18 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ------------------------------------------------------------
   void
-  ButtonRelativeToScroll::remap(const RemapPointingParams_relative &remapParams, PointingButton::PointingButton button)
+  ButtonRelativeToScroll::remap(const RemapPointingParams_relative &remapParams, unsigned int button)
   {
-    if (((remapParams.params)->buttons & button) == 0) {
+    if (((remapParams.params)->buttons & button) == button) {
+      isButtonHeldDown = true;
+      *(remapParams.ex_dropEvent) = true;
+      RemapUtil::pointingRelativeToScroll(remapParams);
+    } else {
+      // ignore button up event.
       if (isButtonHeldDown) {
         isButtonHeldDown = false;
         *(remapParams.ex_dropEvent) = true;
       }
-    } else {
-      isButtonHeldDown = true;
-      *(remapParams.ex_dropEvent) = true;
-      RemapUtil::pointingRelativeToScroll(remapParams);
     }
   }
 }

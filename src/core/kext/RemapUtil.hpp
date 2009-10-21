@@ -253,7 +253,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------
   class ButtonRelativeToScroll {
   public:
-    void remap(const RemapPointingParams_relative &remapParams, PointingButton::PointingButton button);
+    void remap(const RemapPointingParams_relative &remapParams, unsigned int button);
 
   private:
     bool isButtonHeldDown;
