@@ -3084,9 +3084,22 @@
       <name>Samples for KeyRemap4MacBook Developer</name>
       <list>
         <item>
-          <name>Control+U to Command+Shift+Left,Command+X</name>
+          <name>KeyToKey (Combination)</name>
+          <appendix>Control+U to Command+Shift+Left,Command+X</appendix>
           <sysctl>remap.samples_controlU</sysctl>
           <autogen>--KeyToKey-- KeyCode::U, VK_CONTROL, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
+          <name>ButtonRelativeToScroll (One Button)</name>
+          <appendix>RightClick+CursorMove to ScrollWheel</appendix>
+          <sysctl>remap.samples_pointing_relative_rightclick_to_scroll</sysctl>
+          <autogen>--ButtonRelativeToScroll-- PointingButton::RIGHT</autogen>
+        </item>
+        <item>
+          <name>ButtonRelativeToScroll (Multi Buttons)</name>
+          <appendix>LeftClick+RightClick+CursorMove to ScrollWheel</appendix>
+          <sysctl>remap.samples_pointing_relative_LRClick_to_scroll</sysctl>
+          <autogen>--ButtonRelativeToScroll-- PointingButton::LEFT | PointingButton::RIGHT</autogen>
         </item>
       </list>
     </item>
