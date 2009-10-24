@@ -97,56 +97,56 @@
           <appendix>(only in virtual machine, RDC)</appendix>
           <sysctl>remap.commandLeftarrow2beginningofline_cut_vm</sysctl>
           <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-          <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_COMMAND, KeyCode::HOME, ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_COMMAND | ModifierFlag::NONE, KeyCode::HOME, ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
           <name>Command+Left-Arrow to Shift_L+Home,Control_L+X</name>
           <appendix>(only in virtual machine, RDC)</appendix>
           <sysctl>remap.commandLeftarrow2beginningofline_cut2_vm</sysctl>
           <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-          <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_COMMAND, KeyCode::HOME, ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::CONTROL_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_COMMAND | ModifierFlag::NONE, KeyCode::HOME, ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::CONTROL_L</autogen>
         </item>
         <item>
           <name>Command+Left-Arrow to Command_L+Shift_L+Left-Arrow,Command_L+X</name>
           <appendix>(except virtual machine, RDC)</appendix>
           <sysctl>remap.commandLeftarrow2beginningofline_cut</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_COMMAND, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_COMMAND | ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
           <name>Command+Left-Arrow to Command_L+Shift_L+Left-Arrow,Control_L+X</name>
           <appendix>(except virtual machine, RDC)</appendix>
           <sysctl>remap.commandLeftarrow2beginningofline_cut2</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_COMMAND, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::CONTROL_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_COMMAND | ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::CONTROL_L</autogen>
         </item>
         <item>
           <name>Command+Right-Arrow to Shift_L+End,Command_L+X</name>
           <appendix>(only in virtual machine, RDC)</appendix>
           <sysctl>remap.commandRightarrow2endofline_cut_vm</sysctl>
           <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-          <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_COMMAND, KeyCode::END, ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_COMMAND | ModifierFlag::NONE, KeyCode::END, ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
           <name>Command+Right-Arrow to Shift_L+End,Control_L+X</name>
           <appendix>(only in virtual machine, RDC)</appendix>
           <sysctl>remap.commandRightarrow2endofline_cut2_vm</sysctl>
           <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-          <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_COMMAND, KeyCode::END, ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::CONTROL_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_COMMAND | ModifierFlag::NONE, KeyCode::END, ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::CONTROL_L</autogen>
         </item>
         <item>
           <name>Command+Right-Arrow to Command_L+Shift_L+Right-Arrow,Command_L+X</name>
           <appendix>(except virtual machine, RDC)</appendix>
           <sysctl>remap.commandRightarrow2endofline_cut</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_COMMAND, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_COMMAND | ModifierFlag::NONE, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
           <name>Command+Right-Arrow to Command_L+Shift_L+Right-Arrow,Control_L+X</name>
           <appendix>(except virtual machine, RDC)</appendix>
           <sysctl>remap.commandRightarrow2endofline_cut2</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_COMMAND, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::CONTROL_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_COMMAND | ModifierFlag::NONE, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::CONTROL_L</autogen>
         </item>
       </list>
     </item>
