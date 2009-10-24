@@ -2705,6 +2705,11 @@
           <name>Remap Command_L Key</name>
           <list>
             <item>
+              <name>Command_L to EISUU</name>
+              <sysctl>remap.jis_commandL2eisuu</sysctl>
+              <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::JIS_EISUU</autogen>
+            </item>
+            <item>
               <name>Command_L to Command_L</name>
               <appendix>(+ When you type Command_L only, send EISUU)</appendix>
               <sysctl>remap.jis_commandL2commandL_eisuu</sysctl>
