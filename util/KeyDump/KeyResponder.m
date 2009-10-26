@@ -66,7 +66,7 @@
 
 - (void) flagsChanged:(NSEvent*)event
 {
-  [self output:[NSString stringWithFormat:@"flagsChanged\tflags:%@", [self modifierFlagsToString:[event modifierFlags]]]];
+  [self output:[NSString stringWithFormat:@"flagsChanged\tkey:0x%02x\tflags:%@", [event keyCode], [self modifierFlagsToString:[event modifierFlags]]]];
 }
 
 @end
