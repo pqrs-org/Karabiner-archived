@@ -3060,10 +3060,10 @@
             <item>
               <name>Use Windows Kana-Input Layout on ASCII Keyboard</name>
               <jiskanamode_not>JISKANAMODE_ASCII</jiskanamode_not>
-              <autogen>--KeyToKey-- KeyCode::MINUS, VK_SHIFT, KeyCode::BRACKET_RIGHT</autogen>
-              <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, VK_SHIFT, KeyCode::BRACKET_LEFT</autogen>
-              <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_SHIFT, KeyCode::EQUAL</autogen>
-              <autogen>--KeyToKey-- KeyCode::EQUAL, VK_SHIFT, KeyCode::MINUS</autogen>
+              <autogen>--KeyToKey-- KeyCode::MINUS, VK_SHIFT, KeyCode::BRACKET_RIGHT, ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, VK_SHIFT, KeyCode::BRACKET_LEFT, ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_SHIFT, KeyCode::EQUAL, ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::EQUAL, VK_SHIFT, KeyCode::MINUS, ModifierFlag::SHIFT_L</autogen>
 
               <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, KeyCode::EQUAL</autogen>
               <autogen>--KeyToKey-- KeyCode::EQUAL, KeyCode::BACKSLASH</autogen>
