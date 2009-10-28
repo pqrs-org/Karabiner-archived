@@ -2633,6 +2633,14 @@
         </item>
         <item>
           <name>Use PC Style Home/End</name>
+          <appendix>(behave like Control_L+A/E)</appendix>
+          <sysctl>remap.pclikehomeend_emacs</sysctl>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <autogen>--KeyToKey-- FROMKEYCODE_HOME, KeyCode::A, ModifierFlag::CONTROL_L</autogen>
+          <autogen>--KeyToKey-- FROMKEYCODE_END, KeyCode::E, ModifierFlag::CONTROL_L</autogen>
+        </item>
+        <item>
+          <name>Use PC Style Home/End</name>
           <appendix>(behave like Command+Left/Right)</appendix>
           <sysctl>remap.pclikehomeend</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
