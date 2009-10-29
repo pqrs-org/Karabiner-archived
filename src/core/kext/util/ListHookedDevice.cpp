@@ -35,6 +35,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     // Logitech USB Headset
     if (vendorID == 0x046d && productID == 0x0a0b) return true;
 
+#if 0
+    // Apple External Keyboard
+    if (vendorID == 0x05ac && productID == 0x0222) return true;
+
+    // My Private Mouse (SIGMA Levy)
+    if (vendorID == 0x093a && productID == 0x2510) return true;
+#endif
+
     return false;
   }
 
