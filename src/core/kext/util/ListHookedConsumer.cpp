@@ -45,6 +45,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     const char *name = _device->getName();
     if (strcmp(name, "IOHIDConsumer") != 0) return false;
+    if (HookedDevice::isIgnoreDevice(_device)) return false;
 
     device = _device;
     IOLog("KeyRemap4MacBook HookedConsumer::initialize name = %s, device = 0x%p\n", name, device);
