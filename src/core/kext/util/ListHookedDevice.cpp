@@ -1,3 +1,4 @@
+#include <IOKit/hid/IOHIDKeys.h>
 #include "ListHookedDevice.hpp"
 #include "NumHeldDownKeys.hpp"
 
@@ -10,6 +11,34 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
+  bool
+  HookedDevice::isIgnoreDevice(IOHIDevice* dev)
+  {
+    if (! dev) return false;
+
+    // ------------------------------------------------------------
+    const OSNumber* number = NULL;
+
+    number = OSDynamicCast(OSNumber, dev->getProperty(kIOHIDVendorIDKey));
+    if (! number) return false;
+    UInt32 vendorID = number->unsigned32BitValue();
+
+    number = OSDynamicCast(OSNumber, dev->getProperty(kIOHIDProductIDKey));
+    if (! number) return false;
+    UInt32 productID = number->unsigned32BitValue();
+
+    IOLog("KeyRemap4MacBook HookedDevice::isIgnoreDevice checking vendorID = 0x%x, productID = 0x%x\n",
+          static_cast<unsigned int>(vendorID),
+          static_cast<unsigned int>(productID));
+
+    // ------------------------------------------------------------
+    // Logitech USB Headset
+    if (vendorID == 0x046d && productID == 0x0a0b) return true;
+
+    return false;
+  }
+
+  // ----------------------------------------------------------------------
   bool
   ListHookedDevice::initialize(void)
   {

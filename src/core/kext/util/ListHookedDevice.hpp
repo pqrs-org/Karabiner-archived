@@ -18,6 +18,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     virtual bool initialize(IOHIDevice *_device) = 0;
     virtual bool refresh(void) = 0;
     virtual bool terminate(void) = 0;
+
+    static bool isIgnoreDevice(IOHIDevice* dev);
   };
 
   class ListHookedDevice {
