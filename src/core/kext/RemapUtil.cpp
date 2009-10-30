@@ -590,6 +590,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  FireFunc::firefunc_french_backslash(const RemapParams &params)
+  {
+    ListFireExtraKey::addKey(ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L, KeyCode::DOT);
+  }
+
+  void
   FireFunc::firefunc_jis_kana(const RemapParams &params)
   {
     // fire only if no-modifiers

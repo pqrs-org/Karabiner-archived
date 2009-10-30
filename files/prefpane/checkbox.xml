@@ -2699,6 +2699,17 @@
     </item>
 
     <item>
+      <name>For French</name>
+      <list>
+        <item>
+          <name>Shift_R to Shift_R</name>
+          <appendix>(+ When you type Shift_R only, send Backslash)</appendix>
+          <sysctl>remap.french_shiftR2shiftR_backslash</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R, FireFunc::firefunc_french_backslash</autogen>
+        </item>
+      </list>
+    </item>
+    <item>
       <name>For German</name>
       <list>
         <item>
