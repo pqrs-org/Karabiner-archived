@@ -90,7 +90,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.initialized) {
       return restoreEventAction();
     }
-    if (! isAppleDriver && ! config.general_remap_thirdvendor_pointing) {
+    if (! isAppleDriver && config.general_dont_remap_thirdvendor_pointing) {
       return restoreEventAction();
     }
     return replaceEventAction();

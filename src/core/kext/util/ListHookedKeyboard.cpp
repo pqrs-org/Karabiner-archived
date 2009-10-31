@@ -76,7 +76,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.initialized) {
       return restoreEventAction();
     }
-    if (! isAppleDriver && ! config.general_remap_thirdvendor_keyboard) {
+    if (! isAppleDriver && config.general_dont_remap_thirdvendor_keyboard) {
       return restoreEventAction();
     }
     if (isInternalKeyboard) {
