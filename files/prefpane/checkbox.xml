@@ -1192,6 +1192,11 @@
           <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_R, ModifierFlag::OPTION_R, FireFunc::firefunc_commandSpace</autogen>
         </item>
         <item>
+          <name>Option_R to Option_R+Shift_L</name>
+          <sysctl>remap.optionR2optionRshiftL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::OPTION_R, ModifierFlag::SHIFT_L</autogen>
+        </item>
+        <item>
           <name>Option_R to End</name>
           <sysctl>remap.optionR2end</sysctl>
           <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::END</autogen>
