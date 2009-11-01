@@ -2666,6 +2666,19 @@
     </item>
 
     <item>
+      <name>For Dvorak Users</name>
+      <list>
+        <item>
+          <name>Control+W to Option+Delete</name>
+          <appendix>(except Emacs, Terminal, X11, virtual machine, RDC, Eclipse)</appendix>
+          <sysctl>option.dvorak_emacsmode_ex_controlW</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+          <autogen>--KeyToKey-- KeyCode::COMMA, VK_CONTROL, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>For HHK (Happy Hacking Keyboard) Users</name>
       <list>
         <item>
