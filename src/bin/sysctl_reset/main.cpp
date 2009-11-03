@@ -35,6 +35,19 @@ namespace {
       perror("sysctl");
     }
   }
+
+  void
+  set_string(const char* name, char* value)
+  {
+    char entry[512];
+    snprintf(entry, sizeof(entry), "keyremap4macbook.%s", name);
+
+    size_t oldlen = 0;
+    size_t newlen = strlen(value) + 1;
+    if (sysctlbyname(entry, NULL, &oldlen, value, newlen) == -1) {
+      perror("sysctl");
+    }
+  }
 }
 
 
@@ -62,6 +75,9 @@ main(int argc, char **argv)
   }
 
   if (argc == 2 && strcmp(argv[1], "terminate") == 0) {
+    char socket_path[] = "";
+    set_string("socket_path", socket_path);
+
     set("initialized", 0);
   }
 
