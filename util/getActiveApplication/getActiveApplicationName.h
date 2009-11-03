@@ -1,1 +1,0 @@
-../../src/core/server/getActiveApplicationName.h
