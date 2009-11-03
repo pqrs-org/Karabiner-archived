@@ -1,13 +1,14 @@
+#include <stdio.h>
+#include <string.h>
 #include <sys/select.h>
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <sys/uio.h>
 #include <sys/un.h>
-#include <stdio.h>
 #include <unistd.h>
 
-#include "getActiveApplicationName.h"
 #include "server.hpp"
+#include "server_objc_part.h"
 
 bool
 KeyRemap4MacBook_server::Server::initialize(void)
@@ -141,7 +142,9 @@ KeyRemap4MacBook_server::Server::do_ActiveApplicationInfo(org_pqrs_KeyRemap4MacB
   if (! reply) return org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ERROR;
 
   char applicationName[128];
+  autoreleasepool_begin();
   getActiveApplicationName(applicationName, sizeof(applicationName));
+  autoreleasepool_end();
 
   reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::UNKNOWN;
 
