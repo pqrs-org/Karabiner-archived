@@ -37,18 +37,31 @@ main(int argc, char **argv)
   char name[512];
   snprintf(name, sizeof(name), "keyremap4macbook.%s", argv[1]);
 
-  int value = atoi(argv[2]);
+  if (strcmp(argv[1], "socket_path") == 0) {
+    char* value = argv[2];
+    size_t oldlen = 0;
+    size_t newlen = strlen(value) + 1;
+    int error = sysctlbyname(name, NULL, &oldlen, value, newlen);
 
-  size_t oldlen = 0;
-  size_t newlen = sizeof(value);
-  int error = sysctlbyname(name, NULL, &oldlen, &value, newlen);
+    if (error) {
+      perror("sysctl");
+      return 1;
+    }
 
-  if (error) {
-    perror("sysctl");
-    return 1;
+  } else {
+    int value = atoi(argv[2]);
+
+    size_t oldlen = 0;
+    size_t newlen = sizeof(value);
+    int error = sysctlbyname(name, NULL, &oldlen, &value, newlen);
+
+    if (error) {
+      perror("sysctl");
+      return 1;
+    }
+
+    fprintf(stderr, "%s -> %d\n", name, value);
   }
-
-  fprintf(stderr, "%s -> %d\n", name, value);
 
   return 0;
 }
