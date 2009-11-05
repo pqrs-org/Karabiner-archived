@@ -269,6 +269,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         params,
         params->key,
         KeyRemap4MacBook_bridge::GetWorkspaceData::UNKNOWN,
+        KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_ROMAN,
         &ex_extraRepeatFunc,
         &ex_extraRepeatFlags,
         keyboardRepeatInfo_extra.counter,
@@ -283,18 +284,23 @@ namespace org_pqrs_KeyRemap4MacBook {
         We use the previous value when the error occurred.
       */
       static KeyRemap4MacBook_bridge::GetWorkspaceData::ApplicationType lastApplicationType = KeyRemap4MacBook_bridge::GetWorkspaceData::UNKNOWN;
+      static KeyRemap4MacBook_bridge::GetWorkspaceData::InputMode lastInputMode = KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_ROMAN;
 
-      KeyRemap4MacBook_bridge::GetWorkspaceData::Reply activeApplicationInfo;
-      int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_ACTIVE_APPLICATION_INFO, NULL, 0, &activeApplicationInfo, sizeof(activeApplicationInfo));
+      KeyRemap4MacBook_bridge::GetWorkspaceData::Reply workspacedata;
+      int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_WORKSPACE_DATA, NULL, 0, &workspacedata, sizeof(workspacedata));
       if (config.debug_devel) {
-        printf("KeyRemap4MacBook -Info- GetWorkspaceData: %d (error: %d)\n", activeApplicationInfo.type, error);
+        printf("KeyRemap4MacBook -Info- GetWorkspaceData: %d,%d (error: %d)\n", workspacedata.type, workspacedata.inputmode, error);
       }
       if (error == 0) {
-        remapParams.appType = activeApplicationInfo.type;
-        lastApplicationType = activeApplicationInfo.type;
+        remapParams.appType = workspacedata.type;
+        lastApplicationType = workspacedata.type;
+
+        remapParams.inputmode = workspacedata.inputmode;
+        lastInputMode = workspacedata.inputmode;
       } else {
         // use last info.
         remapParams.appType = lastApplicationType;
+        remapParams.inputmode = lastInputMode;
       }
 
       // ------------------------------------------------------------

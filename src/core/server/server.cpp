@@ -51,7 +51,7 @@ KeyRemap4MacBook_server::Server::dispatchOperator(int sock)
   if (read(sock, &operation, sizeof(operation)) < 0) goto error;
 
   switch (operation) {
-    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::REQUEST_ACTIVE_APPLICATION_INFO:
+    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::REQUEST_GET_WORKSPACE_DATA:
     {
       org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::Reply reply;
       org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error error = do_GetWorkspaceData(reply);
@@ -133,7 +133,7 @@ KeyRemap4MacBook_server::Server::do_GetWorkspaceData(org_pqrs_KeyRemap4MacBook::
   autoreleasepool_end();
 
   reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::UNKNOWN;
-  reply.inputmode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_UNKNOWN;
+  reply.inputmode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_ROMAN;
 
   // ----------------------------------------------------------------------
   // type
@@ -207,15 +207,9 @@ KeyRemap4MacBook_server::Server::do_GetWorkspaceData(org_pqrs_KeyRemap4MacBook::
 
   // ----------------------------------------------------------------------
   // inputmode
-  const char* tis_roman = CFStringGetCStringPtr(kTextServiceInputModeRoman, kCFStringEncodingUTF8);
-  const char* tis_password = CFStringGetCStringPtr(kTextServiceInputModePassword, kCFStringEncodingUTF8);
   const char* tis_japanese = CFStringGetCStringPtr(kTextServiceInputModeJapanese, kCFStringEncodingUTF8);
 
-  if (strcmp(inputmodeName, tis_roman) == 0 ||
-      strcmp(inputmodeName, tis_password) == 0) {
-    reply.inputmode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_ROMAN;
-
-  } else if (strncmp(inputmodeName, tis_japanese, strlen(tis_japanese)) == 0) {
+  if (strncmp(inputmodeName, tis_japanese, strlen(tis_japanese)) == 0) {
     reply.inputmode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE;
   }
 

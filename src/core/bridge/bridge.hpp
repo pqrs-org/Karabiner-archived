@@ -10,7 +10,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     enum RequestType {
       REQUEST_NONE,
-      REQUEST_ACTIVE_APPLICATION_INFO,
+      REQUEST_GET_WORKSPACE_DATA,
     };
 
     namespace GetWorkspaceData {
@@ -37,8 +37,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         ECLIPSE,
       };
       enum InputMode {
-        INPUTMODE_UNKNOWN,
-        INPUTMODE_ROMAN, // Roman, Password
+        INPUTMODE_ROMAN, // Roman, Password, ...
         INPUTMODE_JAPANESE, // Japanese, Japanese.*
       };
 
