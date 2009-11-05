@@ -3,8 +3,6 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace KeyRemap4MacBook_bridge {
-    const char * const socketPath = "/Library/org.pqrs/KeyRemap4MacBook/tmp/socket";
-
     enum Error {
       SUCCESS = 0,
       ERROR = 1,
