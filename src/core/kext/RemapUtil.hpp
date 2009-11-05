@@ -11,7 +11,6 @@
 #include "util/ListFireRelativePointer.hpp"
 #include "util/IntervalChecker.hpp"
 #include "util/ClickWatcher.hpp"
-#include "util/JISKanaMode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapUtil {

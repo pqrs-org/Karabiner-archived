@@ -111,15 +111,15 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
     end
     filter += "if (#{tmp.join(' && ')}) return;\n"
   end
-  if /<jiskanamode_not>(.+?)<\/jiskanamode_not>/m =~ item then
+  if /<inputmode_not>(.+?)<\/inputmode_not>/m =~ item then
     $1.split(/,/).each do |f|
-      filter += "if (JISKanaMode::getMode() == JISKanaMode::#{f.strip}) return;\n"
+      filter += "if (remapParams.inputmode == KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}) return;\n"
     end
   end
-  if /<jiskanamode_only>(.+?)<\/jiskanamode_only>/m =~ item then
+  if /<inputmode_only>(.+?)<\/inputmode_only>/m =~ item then
     tmp = []
     $1.split(/,/).each do |f|
-      tmp << "(JISKanaMode::getMode() != JISKanaMode::#{f.strip})"
+      tmp << "(remapParams.inputmode != KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip})"
     end
     filter += "if (#{tmp.join(' && ')}) return;\n"
   end

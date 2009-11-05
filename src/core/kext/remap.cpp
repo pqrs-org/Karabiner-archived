@@ -195,7 +195,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_jis_layout_kawashima) return;
 
-    if (JISKanaMode::getMode() != JISKanaMode::JISKANAMODE_HIRAGANA) return;
+    if (remapParams.inputmodedetail != KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_HIRAGANA &&
+        remapParams.inputmodedetail != KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE) {
+      return;
+    }
 
     // A -> TA ( Q )
     // A+Shift_L -> NU ( 1 )
