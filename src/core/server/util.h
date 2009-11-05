@@ -6,12 +6,11 @@ extern "C" {
 #endif
 
 /**
- * check the process user is a login user.
- *
- * @return return 0 if invalid user.
+ * initialize server.
+ * @return return 0 if failed.
  */
-int verifyUser(void);
-void runServer(void);
+int server_initialize(const char* basedirectory);
+void server_run(void);
 
 #ifdef __cplusplus
 }

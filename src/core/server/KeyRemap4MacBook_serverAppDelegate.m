@@ -16,18 +16,13 @@
 - (void) threadMain {
   NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
 
-  runServer();
+  server_run();
 
   [pool drain];
   [NSThread exit];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-  if (! verifyUser()) {
-    NSLog(@"[ERROR] invalid user");
-    [NSApp terminate:self];
-  }
-
   [NSThread detachNewThreadSelector:@selector(threadMain) toTarget:self withObject:nil];
 }
 

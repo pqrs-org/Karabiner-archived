@@ -11,15 +11,13 @@
 #include "server_objc_part.h"
 
 bool
-KeyRemap4MacBook_server::Server::initialize(void)
+KeyRemap4MacBook_server::Server::initialize(const char* basedirectory)
 {
-  return makeSocket();
-}
+  if (! basedirectory) return false;
+  if (*basedirectory == '\0') return false;
 
-void
-KeyRemap4MacBook_server::Server::terminate(void)
-{
-  deleteSocket();
+  socketpath_ = std::string(basedirectory) + "/KeyRemap4MacBook_server";
+  return makeSocket();
 }
 
 void
@@ -72,19 +70,17 @@ error:
 void
 KeyRemap4MacBook_server::Server::doLoop(void)
 {
-  if (! initialize()) return;
+  if (listenSocket_ == -1) return;
 
-  // no more root privilege
-  seteuid(getuid());
-
-  listen(listenSocket, 128);
+  int error = listen(listenSocket_, 128);
+  if (error) return;
 
   for (;;) {
     fd_set readfds;
     FD_ZERO(&readfds);
-    FD_SET(listenSocket, &readfds);
+    FD_SET(listenSocket_, &readfds);
 
-    int nfds = listenSocket + 1;
+    int nfds = listenSocket_ + 1;
     struct timeval timeout;
     timeout.tv_sec = 1;
     timeout.tv_usec = 0;
@@ -92,11 +88,11 @@ KeyRemap4MacBook_server::Server::doLoop(void)
       return;
     }
 
-    if (FD_ISSET(listenSocket, &readfds)) {
+    if (FD_ISSET(listenSocket_, &readfds)) {
       struct sockaddr_un addr;
       socklen_t addrlen;
 
-      int s = accept(listenSocket, reinterpret_cast<struct sockaddr *>(&addr), &addrlen);
+      int s = accept(listenSocket_, reinterpret_cast<struct sockaddr *>(&addr), &addrlen);
       if (s < 0) {
         return;
       }
@@ -104,36 +100,25 @@ KeyRemap4MacBook_server::Server::doLoop(void)
       close(s);
     }
   }
-
-  terminate();
 }
 
 // --------------------------------------------------
 bool
 KeyRemap4MacBook_server::Server::makeSocket(void)
 {
-  deleteSocket();
-
-  listenSocket = socket(PF_LOCAL, SOCK_STREAM, 0);
-  if (listenSocket < 0) return false;
+  listenSocket_ = socket(PF_LOCAL, SOCK_STREAM, 0);
+  if (listenSocket_ < 0) return false;
 
   struct sockaddr_un listenSocketAddr;
   memset(&listenSocketAddr, 0, sizeof(listenSocketAddr));
   listenSocketAddr.sun_len = sizeof(listenSocketAddr);
   listenSocketAddr.sun_family = AF_UNIX;
-  snprintf(listenSocketAddr.sun_path, sizeof(listenSocketAddr.sun_path), org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::socketPath);
+  snprintf(listenSocketAddr.sun_path, sizeof(listenSocketAddr.sun_path), "%s", socketpath_.c_str());
 
-  if (bind(listenSocket, reinterpret_cast<struct sockaddr *>(&listenSocketAddr), sizeof(listenSocketAddr)) < 0) return false;
+  if (bind(listenSocket_, reinterpret_cast<struct sockaddr *>(&listenSocketAddr), sizeof(listenSocketAddr)) < 0) return false;
 
   return true;
 }
-
-void
-KeyRemap4MacBook_server::Server::deleteSocket(void)
-{
-  unlink(org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::socketPath);
-}
-
 
 // --------------------------------------------------
 org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error

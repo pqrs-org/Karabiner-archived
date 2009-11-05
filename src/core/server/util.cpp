@@ -8,22 +8,18 @@
 #include <CoreFoundation/CoreFoundation.h>
 #include <SystemConfiguration/SystemConfiguration.h>
 
-int
-verifyUser(void)
-{
-  uid_t consoleUID;
-  CFStringRef result = SCDynamicStoreCopyConsoleUser(NULL, &consoleUID, NULL);
-  if (! result) return false;
-  CFRelease(result);
+namespace {
+  KeyRemap4MacBook_server::Server server;
+}
 
-  return (getuid() == consoleUID);
+int
+server_initialize(const char* basedirectory)
+{
+  return server.initialize(basedirectory);
 }
 
 void
-runServer(void)
+server_run(void)
 {
-  umask(0077);
-
-  KeyRemap4MacBook_server::Server server;
   server.doLoop();
 }
