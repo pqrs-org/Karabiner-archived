@@ -50,7 +50,7 @@ sudo chmod 4755 pkgroot/$basedir/bin/KeyRemap4MacBook_sysctl_reset
 sudo chmod 4755 pkgroot/$basedir/bin/KeyRemap4MacBook_sysctl_set
 sudo chmod 755 pkgroot/$basedir/bin/KeyRemap4MacBook_sysctl_confd
 sudo chmod 755 pkgroot/$basedir/bin/KeyRemap4MacBook_sysctl_ctl
-sudo chmod 4755 pkgroot/$basedir/app/KeyRemap4MacBook_server.app/Contents/MacOS/KeyRemap4MacBook_server
+sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook_server.app/Contents/MacOS/KeyRemap4MacBook_server
 sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook_statusbar.app/Contents/MacOS/KeyRemap4MacBook_statusbar
 sudo chmod 755 pkgroot/$basedir/app/uninstaller.app/Contents/MacOS/uninstaller
 sudo chown -R root:wheel pkgroot

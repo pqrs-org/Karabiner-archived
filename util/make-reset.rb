@@ -20,3 +20,8 @@ end
 unless entry.nil? then
   print "#{entry} #{value}\n"
 end
+
+# static
+print "debug 0\n"
+print "debug_pointing 0\n"
+print "debug_devel 0\n"
