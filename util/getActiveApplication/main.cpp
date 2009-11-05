@@ -13,6 +13,6 @@ main()
     autoreleasepool_end();
 
     std::cout << applicationName << std::endl;
-    //sleep(1);
+    sleep(1);
   }
 }
