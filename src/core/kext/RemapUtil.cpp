@@ -397,9 +397,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       p.apply(callback);
 
       if (p.eventType == KeyEvent::DOWN) {
-        if (p.key == KeyCode::JIS_EISUU || p.key == KeyCode::JIS_KANA) {
-          JISKanaMode::setMode(p);
-        }
         PressDownKeys::add(p.key, p.keyboardType);
       } else {
         PressDownKeys::remove(p.key, p.keyboardType);
@@ -423,9 +420,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! RemapUtil::isKey(params, fromKeyCode)) return;
 
-    if (RemapUtil::isKeyDown(params, fromKeyCode)) JISKanaMode::toggle();
-
-    KeyCode::KeyCode toKeyCode = JISKanaMode::iskana() ? KeyCode::JIS_KANA : KeyCode::JIS_EISUU;
+    static KeyCode::KeyCode toKeyCode = KeyCode::NONE;
+    if (RemapUtil::isKeyDown(params, fromKeyCode)) {
+      if (params.inputmode == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE) {
+        toKeyCode = KeyCode::JIS_EISUU;
+      } else {
+        toKeyCode = KeyCode::JIS_KANA;
+      }
+    }
     RemapUtil::keyToKey(params, fromKeyCode, toKeyCode);
   }
 
@@ -639,12 +641,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     // fire only if no-modifiers
     if (FlagStatus::makeFlags(params) != 0) return;
 
-    JISKanaMode::toggle();
-
-    if (JISKanaMode::iskana()) {
-      ListFireExtraKey::addKey(0, KeyCode::JIS_KANA);
-    } else {
+    if (params.inputmode == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE) {
       ListFireExtraKey::addKey(0, KeyCode::JIS_EISUU);
+    } else {
+      ListFireExtraKey::addKey(0, KeyCode::JIS_KANA);
     }
   }
 

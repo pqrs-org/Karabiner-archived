@@ -10,8 +10,6 @@
 		32D94FC80562CBF700B6AF17 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
 		34012A6E0E7AED010069FE39 /* TimerWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34012A6C0E7AED010069FE39 /* TimerWrapper.cpp */; };
 		34012A6F0E7AED010069FE39 /* TimerWrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34012A6D0E7AED010069FE39 /* TimerWrapper.hpp */; };
-		3424BC5E0E72FF9100298C45 /* JISKanaMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3424BC5C0E72FF9100298C45 /* JISKanaMode.cpp */; };
-		3424BC5F0E72FF9100298C45 /* JISKanaMode.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3424BC5D0E72FF9100298C45 /* JISKanaMode.hpp */; };
 		34311761106F657200030711 /* keycode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34311760106F657200030711 /* keycode.cpp */; };
 		345004AD0E7CE48F0075324B /* Core.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345004A80E7CE48F0075324B /* Core.cpp */; };
 		345004AE0E7CE48F0075324B /* Core.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345004A90E7CE48F0075324B /* Core.hpp */; };
@@ -66,8 +64,6 @@
 		32D94FD00562CBF700B6AF17 /* KeyRemap4MacBook.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyRemap4MacBook.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		34012A6C0E7AED010069FE39 /* TimerWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TimerWrapper.cpp; path = util/TimerWrapper.cpp; sourceTree = "<group>"; };
 		34012A6D0E7AED010069FE39 /* TimerWrapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TimerWrapper.hpp; path = util/TimerWrapper.hpp; sourceTree = "<group>"; };
-		3424BC5C0E72FF9100298C45 /* JISKanaMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = JISKanaMode.cpp; path = util/JISKanaMode.cpp; sourceTree = "<group>"; };
-		3424BC5D0E72FF9100298C45 /* JISKanaMode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = JISKanaMode.hpp; path = util/JISKanaMode.hpp; sourceTree = "<group>"; };
 		34311760106F657200030711 /* keycode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = keycode.cpp; sourceTree = "<group>"; };
 		345004A80E7CE48F0075324B /* Core.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Core.cpp; sourceTree = "<group>"; };
 		345004A90E7CE48F0075324B /* Core.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Core.hpp; sourceTree = "<group>"; };
@@ -211,8 +207,6 @@
 				34F13A810E73E5EC006EB163 /* ListFireConsumerKey.hpp */,
 				34F13A770E73B607006EB163 /* ListFireExtraKey.cpp */,
 				34F13A780E73B607006EB163 /* ListFireExtraKey.hpp */,
-				3424BC5C0E72FF9100298C45 /* JISKanaMode.cpp */,
-				3424BC5D0E72FF9100298C45 /* JISKanaMode.hpp */,
 				346B753C0E72C0BA00F9A79F /* FlagStatus.cpp */,
 				346B753D0E72C0BA00F9A79F /* FlagStatus.hpp */,
 				349581060E7232A5003773EC /* PressDownKeys.cpp */,
@@ -238,7 +232,6 @@
 				345B06B80DB21ABF000023FD /* bridge.hpp in Headers */,
 				349581090E7232A5003773EC /* PressDownKeys.hpp in Headers */,
 				346B753F0E72C0BA00F9A79F /* FlagStatus.hpp in Headers */,
-				3424BC5F0E72FF9100298C45 /* JISKanaMode.hpp in Headers */,
 				34F13A7A0E73B607006EB163 /* ListFireExtraKey.hpp in Headers */,
 				34F13A830E73E5EC006EB163 /* ListFireConsumerKey.hpp in Headers */,
 				34F13A870E73E69D006EB163 /* IntervalChecker.hpp in Headers */,
@@ -330,7 +323,6 @@
 				345B06AD0DB21A88000023FD /* Client.cpp in Sources */,
 				349581080E7232A5003773EC /* PressDownKeys.cpp in Sources */,
 				346B753E0E72C0BA00F9A79F /* FlagStatus.cpp in Sources */,
-				3424BC5E0E72FF9100298C45 /* JISKanaMode.cpp in Sources */,
 				34F13A790E73B607006EB163 /* ListFireExtraKey.cpp in Sources */,
 				34F13A820E73E5EC006EB163 /* ListFireConsumerKey.cpp in Sources */,
 				34F13A860E73E69D006EB163 /* IntervalChecker.cpp in Sources */,
