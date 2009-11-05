@@ -134,6 +134,7 @@ KeyRemap4MacBook_server::Server::do_GetWorkspaceData(org_pqrs_KeyRemap4MacBook::
 
   reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::UNKNOWN;
   reply.inputmode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_ROMAN;
+  reply.inputmodedetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_ROMAN;
 
   // ----------------------------------------------------------------------
   // type
@@ -207,10 +208,21 @@ KeyRemap4MacBook_server::Server::do_GetWorkspaceData(org_pqrs_KeyRemap4MacBook::
 
   // ----------------------------------------------------------------------
   // inputmode
+  const char* tis_japanese_hiragana = CFStringGetCStringPtr(kTextServiceInputModeJapaneseHiragana, kCFStringEncodingUTF8);
+  const char* tis_japanese_katakana = CFStringGetCStringPtr(kTextServiceInputModeJapaneseKatakana, kCFStringEncodingUTF8);
   const char* tis_japanese = CFStringGetCStringPtr(kTextServiceInputModeJapanese, kCFStringEncodingUTF8);
 
-  if (strncmp(inputmodeName, tis_japanese, strlen(tis_japanese)) == 0) {
+  if (strcmp(inputmodeName, tis_japanese_hiragana) == 0) {
     reply.inputmode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE;
+    reply.inputmodedetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_HIRAGANA;
+
+  } else if (strcmp(inputmodeName, tis_japanese_katakana) == 0) {
+    reply.inputmode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE;
+    reply.inputmodedetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_KATAKANA;
+
+  } else if (strncmp(inputmodeName, tis_japanese, strlen(tis_japanese)) == 0) {
+    reply.inputmode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE;
+    reply.inputmodedetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE;
   }
 
   // ----------------------------------------------------------------------

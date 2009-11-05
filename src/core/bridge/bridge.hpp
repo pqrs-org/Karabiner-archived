@@ -40,6 +40,12 @@ namespace org_pqrs_KeyRemap4MacBook {
         INPUTMODE_ROMAN, // Roman, Password, ...
         INPUTMODE_JAPANESE, // Japanese, Japanese.*
       };
+      enum InputModeDetail {
+        INPUTMODE_DETAIL_ROMAN,
+        INPUTMODE_DETAIL_JAPANESE_HIRAGANA,
+        INPUTMODE_DETAIL_JAPANESE_KATAKANA,
+        INPUTMODE_DETAIL_JAPANESE, // other Japanese mode
+      };
 
       // none
       struct Request {
@@ -48,6 +54,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       struct Reply {
         ApplicationType type;
         InputMode inputmode;
+        InputModeDetail inputmodedetail;
       };
     }
   }

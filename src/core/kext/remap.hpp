@@ -12,6 +12,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     unsigned int ex_origKey;
     KeyRemap4MacBook_bridge::GetWorkspaceData::ApplicationType appType;
     KeyRemap4MacBook_bridge::GetWorkspaceData::InputMode inputmode;
+    KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail inputmodedetail;
     ExtraRepeatFunc::ExtraRepeatFunc *ex_extraRepeatFunc;
     unsigned int *ex_extraRepeatFlags;
     unsigned int ex_extraRepeatCounter;

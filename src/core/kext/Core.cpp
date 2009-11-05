@@ -270,6 +270,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         params->key,
         KeyRemap4MacBook_bridge::GetWorkspaceData::UNKNOWN,
         KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_ROMAN,
+        KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_ROMAN,
         &ex_extraRepeatFunc,
         &ex_extraRepeatFlags,
         keyboardRepeatInfo_extra.counter,
@@ -285,11 +286,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       */
       static KeyRemap4MacBook_bridge::GetWorkspaceData::ApplicationType lastApplicationType = KeyRemap4MacBook_bridge::GetWorkspaceData::UNKNOWN;
       static KeyRemap4MacBook_bridge::GetWorkspaceData::InputMode lastInputMode = KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_ROMAN;
+      static KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail lastInputModeDetail = KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_ROMAN;
 
       KeyRemap4MacBook_bridge::GetWorkspaceData::Reply workspacedata;
       int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_WORKSPACE_DATA, NULL, 0, &workspacedata, sizeof(workspacedata));
       if (config.debug_devel) {
-        printf("KeyRemap4MacBook -Info- GetWorkspaceData: %d,%d (error: %d)\n", workspacedata.type, workspacedata.inputmode, error);
+        printf("KeyRemap4MacBook -Info- GetWorkspaceData: %d,%d,%d (error: %d)\n", workspacedata.type, workspacedata.inputmode, workspacedata.inputmodedetail, error);
       }
       if (error == 0) {
         remapParams.appType = workspacedata.type;
@@ -297,10 +299,14 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         remapParams.inputmode = workspacedata.inputmode;
         lastInputMode = workspacedata.inputmode;
+
+        remapParams.inputmodedetail = workspacedata.inputmodedetail;
+        lastInputModeDetail = workspacedata.inputmodedetail;
       } else {
         // use last info.
         remapParams.appType = lastApplicationType;
         remapParams.inputmode = lastInputMode;
+        remapParams.inputmodedetail = lastInputModeDetail;
       }
 
       // ------------------------------------------------------------
