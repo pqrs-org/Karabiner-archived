@@ -18,3 +18,4 @@ clean:
 reload:
 	sudo ./scripts/unload.sh
 	sudo ./scripts/load.sh
+	launchctl stop org.pqrs.KeyRemap4MacBook.server
