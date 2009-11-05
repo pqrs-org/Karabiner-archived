@@ -268,7 +268,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       RemapParams remapParams = {
         params,
         params->key,
-        KeyRemap4MacBook_bridge::ActiveApplicationInfo::UNKNOWN,
+        KeyRemap4MacBook_bridge::GetWorkspaceData::UNKNOWN,
         &ex_extraRepeatFunc,
         &ex_extraRepeatFlags,
         keyboardRepeatInfo_extra.counter,
@@ -282,12 +282,12 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         We use the previous value when the error occurred.
       */
-      static KeyRemap4MacBook_bridge::ActiveApplicationInfo::ApplicationType lastApplicationType = KeyRemap4MacBook_bridge::ActiveApplicationInfo::UNKNOWN;
+      static KeyRemap4MacBook_bridge::GetWorkspaceData::ApplicationType lastApplicationType = KeyRemap4MacBook_bridge::GetWorkspaceData::UNKNOWN;
 
-      KeyRemap4MacBook_bridge::ActiveApplicationInfo::Reply activeApplicationInfo;
+      KeyRemap4MacBook_bridge::GetWorkspaceData::Reply activeApplicationInfo;
       int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_ACTIVE_APPLICATION_INFO, NULL, 0, &activeApplicationInfo, sizeof(activeApplicationInfo));
       if (config.debug_devel) {
-        printf("KeyRemap4MacBook -Info- ActiveApplicationInfo: %d (error: %d)\n", activeApplicationInfo.type, error);
+        printf("KeyRemap4MacBook -Info- GetWorkspaceData: %d (error: %d)\n", activeApplicationInfo.type, error);
       }
       if (error == 0) {
         remapParams.appType = activeApplicationInfo.type;

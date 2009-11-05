@@ -101,13 +101,13 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
 
   if /<not>(.+?)<\/not>/m =~ item then
     $1.split(/,/).each do |f|
-      filter += "if (remapParams.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::#{f.strip}) return;\n"
+      filter += "if (remapParams.appType == KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}) return;\n"
     end
   end
   if /<only>(.+?)<\/only>/m =~ item then
     tmp = []
     $1.split(/,/).each do |f|
-      tmp << "(remapParams.appType != KeyRemap4MacBook_bridge::ActiveApplicationInfo::#{f.strip})"
+      tmp << "(remapParams.appType != KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip})"
     end
     filter += "if (#{tmp.join(' && ')}) return;\n"
   end

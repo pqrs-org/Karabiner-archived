@@ -13,7 +13,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       REQUEST_ACTIVE_APPLICATION_INFO,
     };
 
-    namespace ActiveApplicationInfo {
+    namespace GetWorkspaceData {
       enum ApplicationType {
         UNKNOWN,
         EMACS, // Carbon Emacs, Aquamacs, ...
@@ -36,6 +36,11 @@ namespace org_pqrs_KeyRemap4MacBook {
         ENTOURAGE, // Microsoft Entourage
         ECLIPSE,
       };
+      enum InputMode {
+        INPUTMODE_UNKNOWN,
+        INPUTMODE_ROMAN, // Roman, Password
+        INPUTMODE_JAPANESE, // Japanese, Japanese.*
+      };
 
       // none
       struct Request {
@@ -43,6 +48,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       struct Reply {
         ApplicationType type;
+        InputMode inputmode;
       };
     }
   }

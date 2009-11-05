@@ -17,7 +17,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_enter2commandL_enter2controlL_vm) return;
 
-    if (remapParams.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::VIRTUALMACHINE) {
+    if (remapParams.appType == KeyRemap4MacBook_bridge::GetWorkspaceData::VIRTUALMACHINE) {
       RemapUtil::keyToKey(remapParams, KeyCode::ENTER, KeyCode::CONTROL_L);
     } else {
       RemapUtil::keyToKey(remapParams, KeyCode::ENTER, KeyCode::COMMAND_L);
@@ -76,12 +76,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   remap_emacsmode(const RemapParams &remapParams)
   {
     bool is_terminal = false;
-    if (remapParams.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::EMACS) is_terminal = true;
-    if (remapParams.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::TERMINAL) is_terminal = true;
+    if (remapParams.appType == KeyRemap4MacBook_bridge::GetWorkspaceData::EMACS) is_terminal = true;
+    if (remapParams.appType == KeyRemap4MacBook_bridge::GetWorkspaceData::TERMINAL) is_terminal = true;
     bool is_virtualmachine = false;
-    if (remapParams.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::VIRTUALMACHINE) is_virtualmachine = true;
-    if (remapParams.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::REMOTEDESKTOPCONNECTION) is_virtualmachine = true;
-    bool is_x11 = (remapParams.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::X11);
+    if (remapParams.appType == KeyRemap4MacBook_bridge::GetWorkspaceData::VIRTUALMACHINE) is_virtualmachine = true;
+    if (remapParams.appType == KeyRemap4MacBook_bridge::GetWorkspaceData::REMOTEDESKTOPCONNECTION) is_virtualmachine = true;
+    bool is_x11 = (remapParams.appType == KeyRemap4MacBook_bridge::GetWorkspaceData::X11);
 
     bool ignore = is_terminal || is_virtualmachine || is_x11;
 
@@ -110,10 +110,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_jis_eisuu2commandL_eisuu_eisuu2optionL_term) return;
 
     FireFunc::FireFunc func = FireFunc::firefunc_jis_eisuu;
-    if (remapParams.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::VIRTUALMACHINE) func = FireFunc::firefunc_nop;
+    if (remapParams.appType == KeyRemap4MacBook_bridge::GetWorkspaceData::VIRTUALMACHINE) func = FireFunc::firefunc_nop;
 
     static KeyOverlaidModifier kom;
-    if (remapParams.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::TERMINAL) {
+    if (remapParams.appType == KeyRemap4MacBook_bridge::GetWorkspaceData::TERMINAL) {
       kom.remap(remapParams, KeyCode::JIS_EISUU, ModifierFlag::OPTION_L, func);
     } else {
       kom.remap(remapParams, KeyCode::JIS_EISUU, ModifierFlag::COMMAND_L, func);
@@ -154,7 +154,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_jis_shiftSpace2toggle_kana_eisuu) return;
 
-    if (config.option_jis_shiftSpace2toggle_kana_eisuu_disable_emacs && remapParams.appType == KeyRemap4MacBook_bridge::ActiveApplicationInfo::EMACS) return;
+    if (config.option_jis_shiftSpace2toggle_kana_eisuu_disable_emacs && remapParams.appType == KeyRemap4MacBook_bridge::GetWorkspaceData::EMACS) return;
 
     if (! RemapUtil::isKey(remapParams, KeyCode::SPACE)) return;
 
@@ -173,7 +173,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_jis_app_vi_eisuu2eisuu_escape) return;
 
-    if (remapParams.appType != KeyRemap4MacBook_bridge::ActiveApplicationInfo::VI) return;
+    if (remapParams.appType != KeyRemap4MacBook_bridge::GetWorkspaceData::VI) return;
 
     if (RemapUtil::isKeyDown(remapParams, KeyCode::JIS_EISUU)) {
       ListFireExtraKey::addKey(0, KeyCode::ESCAPE);
