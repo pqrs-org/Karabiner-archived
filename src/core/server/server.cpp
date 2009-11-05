@@ -6,6 +6,7 @@
 #include <sys/uio.h>
 #include <sys/un.h>
 #include <unistd.h>
+#include <Carbon/Carbon.h>
 
 #include "server.hpp"
 #include "server_objc_part.h"
@@ -52,8 +53,8 @@ KeyRemap4MacBook_server::Server::dispatchOperator(int sock)
   switch (operation) {
     case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::REQUEST_ACTIVE_APPLICATION_INFO:
     {
-      org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::Reply reply;
-      org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error error = do_ActiveApplicationInfo(&reply);
+      org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::Reply reply;
+      org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error error = do_GetWorkspaceData(reply);
       sendReply(sock, &reply, sizeof(reply), error);
       break;
     }
@@ -122,84 +123,102 @@ KeyRemap4MacBook_server::Server::makeSocket(void)
 
 // --------------------------------------------------
 org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error
-KeyRemap4MacBook_server::Server::do_ActiveApplicationInfo(org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::Reply *reply)
+KeyRemap4MacBook_server::Server::do_GetWorkspaceData(org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& reply)
 {
-  if (! reply) return org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ERROR;
-
   char applicationName[128];
+  char inputmodeName[128];
   autoreleasepool_begin();
   getActiveApplicationName(applicationName, sizeof(applicationName));
+  getTISPropertyInputModeID(inputmodeName, sizeof(inputmodeName));
   autoreleasepool_end();
 
-  reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::UNKNOWN;
+  reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::UNKNOWN;
+  reply.inputmode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_UNKNOWN;
 
+  // ----------------------------------------------------------------------
+  // type
   const char *org_vim = "org.vim.";
   const char *com_adobe = "com.adobe.";
 
   if (strcmp(applicationName, "org.gnu.Emacs") == 0 ||
       strcmp(applicationName, "org.gnu.AquamacsEmacs") == 0) {
-    reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::EMACS;
+    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::EMACS;
 
   } else if (strncmp(applicationName, org_vim, strlen(org_vim)) == 0) {
-    reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::VI;
+    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::VI;
 
   } else if (strcmp(applicationName, "com.apple.Terminal") == 0 ||
              strcmp(applicationName, "iTerm") == 0 ||
              strcmp(applicationName, "net.sourceforge.iTerm") == 0) {
-    reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::TERMINAL;
+    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::TERMINAL;
 
   } else if (strcmp(applicationName, "com.vmware.fusion") == 0 ||
              strcmp(applicationName, "com.parallels.desktop") == 0 ||
              strcmp(applicationName, "org.virtualbox.app.VirtualBoxVM") == 0) {
-    reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::VIRTUALMACHINE;
+    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::VIRTUALMACHINE;
 
   } else if (strcmp(applicationName, "com.microsoft.rdc") == 0 ||
              strcmp(applicationName, "net.sf.cord") == 0) {
-    reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::REMOTEDESKTOPCONNECTION;
+    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::REMOTEDESKTOPCONNECTION;
 
   } else if (strcmp(applicationName, "org.x.X11") == 0 ||
              strcmp(applicationName, "com.apple.x11") == 0) {
-    reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::X11;
+    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::X11;
 
   } else if (strcmp(applicationName, "com.apple.finder") == 0) {
-    reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::FINDER;
+    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::FINDER;
 
   } else if (strcmp(applicationName, "com.apple.Safari") == 0) {
-    reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::SAFARI;
+    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::SAFARI;
 
   } else if (strcmp(applicationName, "org.mozilla.firefox") == 0) {
-    reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::FIREFOX;
+    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::FIREFOX;
 
   } else if (strcmp(applicationName, "org.mozilla.thunderbird") == 0) {
-    reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::THUNDERBIRD;
+    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::THUNDERBIRD;
 
   } else if (strcmp(applicationName, "com.apple.iChat") == 0) {
-    reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::ICHAT;
+    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::ICHAT;
 
   } else if (strcmp(applicationName, "com.adiumX.adiumX") == 0) {
-    reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::ADIUMX;
+    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::ADIUMX;
 
   } else if (strcmp(applicationName, "com.skype.skype") == 0) {
-    reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::SKYPE;
+    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::SKYPE;
 
   } else if (strcmp(applicationName, "com.apple.mail") == 0) {
-    reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::MAIL;
+    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::MAIL;
 
   } else if (strcmp(applicationName, "com.apple.TextEdit") == 0) {
-    reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::EDITOR;
+    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::EDITOR;
 
   } else if (strncmp(applicationName, com_adobe, strlen(com_adobe)) == 0) {
-    reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::ADOBE;
+    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::ADOBE;
 
   } else if (strcmp(applicationName, "com.microsoft.Excel") == 0) {
-    reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::EXCEL;
+    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::EXCEL;
 
   } else if (strcmp(applicationName, "com.microsoft.Entourage") == 0) {
-    reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::ENTOURAGE;
+    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::ENTOURAGE;
 
   } else if (strcmp(applicationName, "org.eclipse.eclipse") == 0) {
-    reply->type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ActiveApplicationInfo::ECLIPSE;
+    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::ECLIPSE;
   }
 
+  // ----------------------------------------------------------------------
+  // inputmode
+  const char* tis_roman = CFStringGetCStringPtr(kTextServiceInputModeRoman, kCFStringEncodingUTF8);
+  const char* tis_password = CFStringGetCStringPtr(kTextServiceInputModePassword, kCFStringEncodingUTF8);
+  const char* tis_japanese = CFStringGetCStringPtr(kTextServiceInputModeJapanese, kCFStringEncodingUTF8);
+
+  if (strcmp(inputmodeName, tis_roman) == 0 ||
+      strcmp(inputmodeName, tis_password) == 0) {
+    reply.inputmode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_ROMAN;
+
+  } else if (strncmp(inputmodeName, tis_japanese, strlen(tis_japanese)) == 0) {
+    reply.inputmode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE;
+  }
+
+  // ----------------------------------------------------------------------
   return org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS;
 }
