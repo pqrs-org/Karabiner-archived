@@ -3,9 +3,21 @@
 
 #include "Config.hpp"
 #include "version.hpp"
+#include "Client.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   Config config;
+
+  namespace {
+    int socket_path_handler SYSCTL_HANDLER_ARGS
+    {
+      int error = sysctl_handle_string(oidp, oidp->oid_arg1, oidp->oid_arg2,  req);
+      if (! error && req->newptr) {
+        KeyRemap4MacBook_client::refreshSockAddr();
+      }
+      return error;
+    }
+  }
 
   // ----------------------------------------------------------------------
   // SYSCTL staff
@@ -34,6 +46,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 #include "config/output/include.config_SYSCTL.cpp"
 
   // ----------------------------------------
+  SYSCTL_PROC(_keyremap4macbook, OID_AUTO, socket_path, CTLTYPE_STRING|CTLFLAG_RW, config.socket_path, sizeof(config.socket_path), socket_path_handler, "A", "");
   SYSCTL_INT(_keyremap4macbook, OID_AUTO, debug, CTLTYPE_INT|CTLFLAG_RW, &(config.debug), 0, "");
   SYSCTL_INT(_keyremap4macbook, OID_AUTO, debug_pointing, CTLTYPE_INT|CTLFLAG_RW, &(config.debug_pointing), 0, "");
   SYSCTL_INT(_keyremap4macbook, OID_AUTO, debug_devel, CTLTYPE_INT|CTLFLAG_RW, &(config.debug_devel), 0, "");
@@ -57,6 +70,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 #include "config/output/include.config_register.cpp"
 
     // ----------------------------------------
+    sysctl_register_oid(&sysctl__keyremap4macbook_socket_path);
     sysctl_register_oid(&sysctl__keyremap4macbook_debug);
     sysctl_register_oid(&sysctl__keyremap4macbook_debug_pointing);
     sysctl_register_oid(&sysctl__keyremap4macbook_debug_devel);
@@ -79,6 +93,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 #include "config/output/include.config_unregister.cpp"
 
     // ----------------------------------------
+    sysctl_unregister_oid(&sysctl__keyremap4macbook_socket_path);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_debug);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_debug_pointing);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_debug_devel);

@@ -4,11 +4,16 @@ extern "C" {
 #include <sys/kpi_socket.h>
   errno_t sock_nointerrupt(socket_t so, int on);
 }
+#include "base.hpp"
 #include "Client.hpp"
+#include "Config.hpp"
+#include "IOLockWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace {
     struct sockaddr_un sockaddr_;
+    bool sockaddr_available_ = false;
+    IOLock* lock_ = NULL;
 
     void
     releaseSocket(socket_t &socket)
@@ -55,6 +60,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     connectSocket(socket_t &socket)
     {
+      if (! sockaddr_available_) return false;
+
       errno_t error = sock_connect(socket, reinterpret_cast<const sockaddr *>(&sockaddr_), 0);
       if (error) {
 #if 0
@@ -76,15 +83,43 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   KeyRemap4MacBook_client::initialize(void)
   {
-    memset(&sockaddr_, 0, sizeof(sockaddr_));
-    sockaddr_.sun_len = sizeof(sockaddr_);
-    sockaddr_.sun_family = AF_UNIX;
-    strncpy(sockaddr_.sun_path, KeyRemap4MacBook_bridge::socketPath, sizeof(sockaddr_.sun_path) - 8);
+    lock_ = IOLockWrapper::alloc();
+    refreshSockAddr();
+  }
+
+  void
+  KeyRemap4MacBook_client::terminate(void)
+  {
+    if (lock_) {
+      IOLockWrapper::free(lock_);
+    }
+  }
+
+  void
+  KeyRemap4MacBook_client::refreshSockAddr(void)
+  {
+    if (! lock_) return;
+    IOLockWrapper::ScopedLock lk(lock_);
+
+    if (config.socket_path[0] == '\0') {
+      sockaddr_available_ = false;
+    } else {
+      sockaddr_available_ = true;
+
+      memset(&sockaddr_, 0, sizeof(sockaddr_));
+      sockaddr_.sun_len = sizeof(sockaddr_);
+      sockaddr_.sun_family = AF_UNIX;
+      strlcpy(sockaddr_.sun_path, config.socket_path, sizeof(sockaddr_.sun_path) - 8);
+    }
   }
 
   int
   KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::RequestType type, void *request, size_t requestsize, void *reply, size_t replysize)
   {
+    if (! lock_) { return EIO; }
+
+    IOLockWrapper::ScopedLock lk(lock_);
+
     socket_t socket;
     if (! makeSocket(socket)) {
       return EIO;

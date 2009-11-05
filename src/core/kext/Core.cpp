@@ -143,6 +143,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     terminate(void)
     {
+      KeyRemap4MacBook_client::terminate();
       sysctl_unregister();
     }
 

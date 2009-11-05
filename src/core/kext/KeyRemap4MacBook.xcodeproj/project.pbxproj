@@ -20,6 +20,7 @@
 		345B06AD0DB21A88000023FD /* Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345B06AB0DB21A88000023FD /* Client.cpp */; };
 		345B06AE0DB21A88000023FD /* Client.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345B06AC0DB21A88000023FD /* Client.hpp */; };
 		345B06B80DB21ABF000023FD /* bridge.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345B06B70DB21ABF000023FD /* bridge.hpp */; };
+		3465DB6010A2E93300DFCEC5 /* IOLockWrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3465DB5F10A2E93300DFCEC5 /* IOLockWrapper.hpp */; };
 		346B753E0E72C0BA00F9A79F /* FlagStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 346B753C0E72C0BA00F9A79F /* FlagStatus.cpp */; };
 		346B753F0E72C0BA00F9A79F /* FlagStatus.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 346B753D0E72C0BA00F9A79F /* FlagStatus.hpp */; };
 		348ED8340CE467FD00E179EC /* remap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 348ED8330CE467FD00E179EC /* remap.cpp */; };
@@ -75,6 +76,7 @@
 		345B06AB0DB21A88000023FD /* Client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Client.cpp; sourceTree = "<group>"; };
 		345B06AC0DB21A88000023FD /* Client.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Client.hpp; sourceTree = "<group>"; };
 		345B06B70DB21ABF000023FD /* bridge.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = bridge.hpp; path = ../bridge/bridge.hpp; sourceTree = SOURCE_ROOT; };
+		3465DB5F10A2E93300DFCEC5 /* IOLockWrapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IOLockWrapper.hpp; path = util/IOLockWrapper.hpp; sourceTree = "<group>"; };
 		346B753C0E72C0BA00F9A79F /* FlagStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FlagStatus.cpp; path = util/FlagStatus.cpp; sourceTree = "<group>"; };
 		346B753D0E72C0BA00F9A79F /* FlagStatus.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FlagStatus.hpp; path = util/FlagStatus.hpp; sourceTree = "<group>"; };
 		348ED8330CE467FD00E179EC /* remap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = remap.cpp; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 		346B753B0E72C0A200F9A79F /* util */ = {
 			isa = PBXGroup;
 			children = (
+				3465DB5F10A2E93300DFCEC5 /* IOLockWrapper.hpp */,
 				34F14BBE0E867884001C15F3 /* NumHeldDownKeys.cpp */,
 				34F14BBF0E867884001C15F3 /* NumHeldDownKeys.hpp */,
 				34F14BBA0E862585001C15F3 /* PointingButtonStatus.cpp */,
@@ -251,6 +254,7 @@
 				34F14BC10E867884001C15F3 /* NumHeldDownKeys.hpp in Headers */,
 				34AA1F361065B1EE00E9A418 /* ListHookedDevice.hpp in Headers */,
 				34A59B891065C00B0048D1E7 /* ListHookedConsumer.hpp in Headers */,
+				3465DB6010A2E93300DFCEC5 /* IOLockWrapper.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
