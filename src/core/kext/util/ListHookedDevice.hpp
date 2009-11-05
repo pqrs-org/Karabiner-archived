@@ -37,16 +37,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     enum {
       MAXNUM = 16,
     };
-    ListHookedDevice(void) : last(NULL), lock(NULL) {}
+    ListHookedDevice(void) : last_(NULL), lock_(NULL) {}
     virtual ~ListHookedDevice(void) {}
 
   private:
     virtual HookedDevice *getItem(int index) = 0;
     HookedDevice *get_nolock(const IOHIDevice *device);
 
-    const IOHIDevice *last;
-
-    IOLock *lock;
+    const IOHIDevice* last_;
+    IOLock* lock_;
   };
 }
 

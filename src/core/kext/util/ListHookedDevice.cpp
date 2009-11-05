@@ -1,6 +1,7 @@
 #include <IOKit/hid/IOHIDKeys.h>
 #include "ListHookedDevice.hpp"
 #include "NumHeldDownKeys.hpp"
+#include "IOLockWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace {
@@ -50,63 +51,47 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   ListHookedDevice::initialize(void)
   {
-    lock = IOLockAlloc();
-    if (! lock) {
-      IOLog("[KeyRemap4MacBook WARNING] ListHookedDevice::initialize IOLockAlloc failed.\n");
-      return false;
-    }
+    lock_ = IOLockWrapper::alloc();
+    if (! lock_) return false;
+
     return true;
   }
 
   bool
   ListHookedDevice::append(IOHIDevice *device)
   {
-    if (! lock) return false;
+    if (! lock_) return false;
+    IOLockWrapper::ScopedLock lk(lock_);
 
-    // ------------------------------------------------------------
-    bool result = false;
+    last_ = device;
 
-    IOLockLock(lock);
-    {
-      last = device;
+    for (int i = 0; i < MAXNUM; ++i) {
+      HookedDevice *p = getItem(i);
+      if (! p) continue;
+      if (p->get()) continue;
 
-      for (int i = 0; i < MAXNUM; ++i) {
-        HookedDevice *p = getItem(i);
-        if (! p) continue;
+      IOLog("KeyRemap4MacBook ListHookedDevice::append (device = 0x%p, slot = %d)\n", device, i);
 
-        if (! p->get()) {
-          IOLog("KeyRemap4MacBook ListHookedDevice::append (device = 0x%p, slot = %d)\n", device, i);
-
-          result = p->initialize(device);
-          if (result) {
-            // reset if any event actions are replaced.
-            reset();
-          }
-          break;
-        }
+      bool result = p->initialize(device);
+      if (result) {
+        // reset if any event actions are replaced.
+        reset();
       }
+      return reset;
     }
-    IOLockUnlock(lock);
 
-    return result;
+    return false;
   }
 
   void
   ListHookedDevice::terminate(void)
   {
-    if (! lock) return;
-
-    // ------------------------------------------------------------
-    IOLock *l = NULL;
-    if (lock) {
-      l = lock;
-      IOLockLock(l);
-      lock = NULL;
-    }
+    if (! lock_) return;
 
     {
-      // lock scope
-      last = NULL;
+      IOLockWrapper::ScopedLock lk(lock_);
+
+      last_ = NULL;
 
       for (int i = 0; i < MAXNUM; ++i) {
         HookedDevice *p = getItem(i);
@@ -118,40 +103,29 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     reset();
 
-    // ----------------------------------------
-    if (l) {
-      IOLockUnlock(l);
-      IOLockFree(l);
-    }
+    IOLockWrapper::free(lock_);
   }
 
   bool
   ListHookedDevice::terminate(const IOHIDevice *device)
   {
-    if (! lock) return false;
+    if (! lock_) return false;
+    IOLockWrapper::ScopedLock lk(lock_);
 
-    // ----------------------------------------------------------------------
-    bool result = false;
+    HookedDevice *p = get_nolock(device);
+    if (! p) return false;
 
-    IOLockLock(lock);
-    {
-      HookedDevice *p = get_nolock(device);
-      if (p) {
-        result = p->terminate();
-        if (result) {
-          reset();
-        }
-      }
-    }
-    IOLockUnlock(lock);
+    bool result = p->terminate();
+    if (! result) return false;
 
-    return result;
+    reset();
+    return true;
   }
 
   HookedDevice *
   ListHookedDevice::get_nolock(const IOHIDevice *device)
   {
-    last = device;
+    last_ = device;
 
     if (! device) return NULL;
 
@@ -164,66 +138,47 @@ namespace org_pqrs_KeyRemap4MacBook {
     return NULL;
   }
 
-
-  HookedDevice *
+  HookedDevice*
   ListHookedDevice::get(const IOHIDevice *device)
   {
-    if (! lock) return NULL;
+    if (! lock_) return NULL;
+    IOLockWrapper::ScopedLock lk(lock_);
 
-    // ----------------------------------------------------------------------
-    HookedDevice *result = NULL;
-
-    IOLockLock(lock);
-    {
-      result = get_nolock(device);
-    }
-    IOLockUnlock(lock);
-
-    return result;
+    return get_nolock(device);
   }
 
-  HookedDevice *
+  HookedDevice*
   ListHookedDevice::get(void)
   {
-    if (! lock) return NULL;
+    if (! lock_) return NULL;
+    IOLockWrapper::ScopedLock lk(lock_);
 
     // ----------------------------------------------------------------------
-    HookedDevice *result = NULL;
+    HookedDevice* p = get_nolock(last_);
+    if (p) return p;
 
-    IOLockLock(lock);
-    {
-      result = get_nolock(last);
-
-      if (! result) {
-        for (int i = 0; i < MAXNUM; ++i) {
-          result = getItem(i);
-          if (result) break;
-        }
-      }
+    for (int i = 0; i < MAXNUM; ++i) {
+      p = getItem(i);
+      if (p) return p;
     }
-    IOLockUnlock(lock);
 
-    return result;
+    return NULL;
   }
 
   void
   ListHookedDevice::refresh(void)
   {
-    if (! lock) return;
+    if (! lock_) return;
+    IOLockWrapper::ScopedLock lk(lock_);
 
-    // ----------------------------------------------------------------------
-    IOLockLock(lock);
-    {
-      for (int i = 0; i < MAXNUM; ++i) {
-        HookedDevice *p = getItem(i);
-        if (! p) continue;
+    for (int i = 0; i < MAXNUM; ++i) {
+      HookedDevice *p = getItem(i);
+      if (! p) continue;
 
-        if (p->refresh()) {
-          // reset if any event actions are replaced.
-          reset();
-        }
+      if (p->refresh()) {
+        // reset if any event actions are replaced.
+        reset();
       }
     }
-    IOLockUnlock(lock);
   }
 }
