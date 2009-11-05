@@ -35,6 +35,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     int debug_pointing;
     int debug_devel;
     int initialized;
+
+    enum { SOCKET_PATH_MAX = 256 };
+    char socket_path[SOCKET_PATH_MAX];
   };
   extern Config config;
 
