@@ -1302,6 +1302,28 @@
     </item>
 
     <item>
+      <name>Remap PageDown Key</name>
+      <list>
+        <item>
+          <name>PageDown to PageUp</name>
+          <sysctl>remap.pagedown2pageup</sysctl>
+          <autogen>--KeyToKey-- FROMKEYCODE_PAGEDOWN, KeyCode::PAGEUP</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
+      <name>Remap PageUp Key</name>
+      <list>
+        <item>
+          <name>PageUp to PC Insert Key</name>
+          <sysctl>remap.pageup2pcinsert</sysctl>
+          <autogen>--KeyToKey-- FROMKEYCODE_PAGEUP, KeyCode::PC_INSERT</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>Remap Return Key</name>
       <list>
         <item>
@@ -2561,6 +2583,11 @@
               <name>Insert Key to Option_L+Insert</name>
               <sysctl>remap.pc_insert2optionLinsert</sysctl>
               <autogen>--KeyToKey-- KeyCode::PC_INSERT, KeyCode::PC_INSERT, ModifierFlag::OPTION_L</autogen>
+            </item>
+            <item>
+              <name>Insert Key to PageDown</name>
+              <sysctl>remap.pc_insert2pagedown</sysctl>
+              <autogen>--KeyToKey-- KeyCode::PC_INSERT, KeyCode::PAGEDOWN</autogen>
             </item>
             <item>
               <name>Insert Key to Tab</name>
