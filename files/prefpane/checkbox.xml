@@ -2743,6 +2743,16 @@
           <sysctl>remap.french_shiftR2shiftR_backslash</sysctl>
           <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R, FireFunc::firefunc_french_backslash</autogen>
         </item>
+        <item>
+          <name>Option+Shift+4 to Left Brace, Option+Shift+Minus to Right Brace</name>
+          <appendix>Option+5 to Quote, Option+Right Paren to Minus</appendix>
+          <sysctl>remap.french_swap_brackets_and_braces</sysctl>
+          <autogen>--KeyToKey-- KeyCode::KEY_4,        VK_OPTION | VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_5, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::FRENCH_MINUS, VK_OPTION | VK_SHIFT | ModifierFlag::NONE, KeyCode::FRENCH_RIGHT_PAREN, ModifierFlag::OPTION_L</autogen>
+
+          <autogen>--KeyToKey-- KeyCode::KEY_5,              VK_OPTION | ModifierFlag::NONE, KeyCode::KEY_4, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::FRENCH_RIGHT_PAREN, VK_OPTION | ModifierFlag::NONE, KeyCode::FRENCH_MINUS, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+        </item>
       </list>
     </item>
     <item>

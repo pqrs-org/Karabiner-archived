@@ -226,6 +226,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       RUSSIAN_PARAGRAPH = 10,
       UK_SECTION = 10,
       GERMAN_QUOTE = 24,
+      FRENCH_MINUS = 24,
+      FRENCH_RIGHT_PAREN = 27,
 
       NONE = 255,
     };
