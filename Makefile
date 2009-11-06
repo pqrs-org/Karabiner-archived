@@ -9,6 +9,7 @@ build:
 
 clean:
 	$(MAKE) -C src clean
+	$(MAKE) -C util clean
 	sudo rm -rf pkgroot
 	sudo rm -rf *.pkg
 	sudo rm -rf *.tar.gz
