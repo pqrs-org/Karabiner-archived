@@ -3247,9 +3247,10 @@
         </item>
         <item>
           <name>JISToggleEisuuKana</name>
-          <appendix>Use Command_L as KANA/EISUU (toggle)</appendix>
-          <sysctl>remap.samples_jis_unify_kana_eisuu_to_commandL</sysctl>
+          <appendix>Use Command_L,Command_R as KANA/EISUU (toggle)</appendix>
+          <sysctl>remap.samples_jis_unify_kana_eisuu_to_commandLR</sysctl>
           <autogen>--JISToggleEisuuKana-- KeyCode::COMMAND_L</autogen>
+          <autogen>--JISToggleEisuuKana-- KeyCode::COMMAND_R</autogen>
         </item>
         <item>
           <name>firefunc_jis_toggle_eisuu_kana</name>
