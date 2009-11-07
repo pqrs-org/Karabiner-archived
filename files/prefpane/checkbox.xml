@@ -1603,6 +1603,11 @@
           <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::F5</autogen>
         </item>
         <item>
+          <name>Control+Tab to Command+Tab</name>
+          <sysctl>remap.controlTab2commandTab</sysctl>
+          <autogen>--KeyToKey-- KeyCode::TAB, VK_CONTROL, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
           <name>Option+Tab to Command+Tab</name>
           <sysctl>remap.optionTab2commandTab</sysctl>
           <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
