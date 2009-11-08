@@ -19,7 +19,11 @@
   for (;;) {
     char inputmodeName[128];
     getTISPropertyInputModeID(inputmodeName, sizeof(inputmodeName));
-    NSLog(@"%s", inputmodeName);
+    if (*inputmodeName) {
+      NSLog(@"inputmodeName = %s", inputmodeName);
+    } else {
+      NSLog(@"inputmodeName = <NULL>");
+    }
     sleep(1);
   }
 
