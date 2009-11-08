@@ -85,6 +85,14 @@
       <name>Remap Arrow(Up/Down/Left/Right) Key</name>
       <list>
         <item>
+          <name>Command-Arrow to Option_L+Arrow</name>
+          <sysctl>remap.commandArrow2optionLarrow</sysctl>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_UP, VK_COMMAND, KeyCode::CURSOR_UP, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, VK_COMMAND, KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_COMMAND, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_COMMAND, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
+        </item>
+        <item>
           <name>Left-Arrow to Control_L</name>
           <sysctl>remap.leftarrow2controlL</sysctl>
           <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, KeyCode::CONTROL_L</autogen>
@@ -506,6 +514,11 @@
           <name>Delete to Backslash(\)</name>
           <sysctl>remap.delete2backslash</sysctl>
           <autogen>--KeyToKey-- KeyCode::DELETE, KeyCode::BACKSLASH</autogen>
+        </item>
+        <item>
+          <name>Command+Delete to Option_L+Delete</name>
+          <sysctl>remap.commandDelete2optionLdelete</sysctl>
+          <autogen>--KeyToKey-- KeyCode::DELETE, VK_COMMAND, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
           <name>Delete to Forward Delete</name>
