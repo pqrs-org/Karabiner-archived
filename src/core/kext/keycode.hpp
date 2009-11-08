@@ -228,6 +228,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       GERMAN_QUOTE = 24,
       FRENCH_MINUS = 24,
       FRENCH_RIGHT_PAREN = 27,
+      FRENCH_EQUAL = 44,
 
       NONE = 255,
     };
