@@ -2785,6 +2785,24 @@
           <autogen>--KeyToKey-- KeyCode::KEY_5,              VK_OPTION | ModifierFlag::NONE, KeyCode::KEY_4, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
           <autogen>--KeyToKey-- KeyCode::FRENCH_RIGHT_PAREN, VK_OPTION | ModifierFlag::NONE, KeyCode::FRENCH_MINUS, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
         </item>
+        <item>
+          <name>Make MacBook AZERTY closer to the standard latin-9 mapping</name>
+          <appendix>(For "French - Numerical" users)</appendix>
+          <sysctl>remap.french_azerty_to_latin9</sysctl>
+          <!-- - the key -/_ (where you put the brace), I would like to be =/+, that is, = on normal and + on SHIFT; -->
+          <autogen>--KeyToKey-- KeyCode::FRENCH_MINUS, ModifierFlag::NONE, KeyCode::FRENCH_EQUAL</autogen>
+          <autogen>--KeyToKey-- KeyCode::FRENCH_MINUS, VK_SHIFT | ModifierFlag::NONE, KeyCode::FRENCH_EQUAL, ModifierFlag::SHIFT_L</autogen>
+          <!-- - the key 6, I would like to do -/6/|  (normal -, SHIFT 6, ALT+SHIFT |) -->
+          <autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::NONE, KeyCode::FRENCH_MINUS</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_6, VK_OPTION | VK_SHIFT | ModifierFlag::NONE, KeyCode::L, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+          <!-- - the key =/+ I would like to be §/! -->
+          <autogen>--KeyToKey-- KeyCode::FRENCH_EQUAL, ModifierFlag::NONE, KeyCode::KEY_6</autogen>
+          <autogen>--KeyToKey-- KeyCode::FRENCH_EQUAL, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_8</autogen>
+          <!-- - ALT+SHIFT+2 gives ~ -->
+          <autogen>--KeyToKey-- KeyCode::KEY_2, VK_OPTION | VK_SHIFT | ModifierFlag::NONE, KeyCode::N, ModifierFlag::OPTION_L</autogen>
+          <!-- - ALT+SHIFT+3 gives # -->
+          <autogen>--KeyToKey-- KeyCode::KEY_3, VK_OPTION | VK_SHIFT | ModifierFlag::NONE, KeyCode::BACKSLASH, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+        </item>
       </list>
     </item>
     <item>
