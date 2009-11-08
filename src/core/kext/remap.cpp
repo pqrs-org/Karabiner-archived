@@ -295,6 +295,8 @@ org_pqrs_KeyRemap4MacBook::remap_consumer(const RemapConsumerParams &remapParams
 void
 org_pqrs_KeyRemap4MacBook::remap_pointing_relative_core(const RemapPointingParams_relative &remapParams)
 {
+  FlagStatus::set();
+
   (remapParams.params)->buttons |= PointingButtonStatus::get();
 
   if ((remapParams.params)->buttons != PointingButton::NONE) {

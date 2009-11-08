@@ -61,6 +61,11 @@
           <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, ModifierFlag::FN, PointingButton::MIDDLE</autogen>
         </item>
         <item>
+          <name>Control+LeftClick to MiddleClick</name>
+          <sysctl>remap.pointing_controlLeftclick2middleclick</sysctl>
+          <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, VK_CONTROL, PointingButton::MIDDLE</autogen>
+        </item>
+        <item>
           <name>CursorMove to ScrollWheel Option</name>
           <list>
             <item>

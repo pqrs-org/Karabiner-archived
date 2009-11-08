@@ -390,6 +390,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       params->log();
 
       listFireRelativePointer.reset();
+      unsigned int flags = FlagStatus::makeFlags(KeyCode::NONE);
 
       bool ex_dropEvent = false;
       RemapPointingParams_relative remapParams = {
@@ -397,6 +398,22 @@ namespace org_pqrs_KeyRemap4MacBook {
       };
       remap_pointing_relative_core(remapParams);
 
+      // ------------------------------------------------------------
+      unsigned int newflags = FlagStatus::makeFlags(KeyCode::NONE);
+      if (flags != newflags) {
+        HookedKeyboard *hk = ListHookedKeyboard::instance().get();
+        unsigned int keyboardType = KeyboardType::MACBOOK;
+        if (hk) {
+          Params_KeyboardEventCallBack callbackparams = {
+            hk->getOrig_keyboardEventTarget(), KeyEvent::MODIFY, newflags, KeyCode::NONE,
+            0, 0, 0, 0,
+            keyboardType, false, params->ts, hk->get(), NULL,
+          };
+          RemapUtil::fireModifiers(hk->getOrig_keyboardEventAction(), callbackparams);
+        }
+      }
+
+      // ------------------------------------------------------------
       RelativePointerEventCallback reCallback = p->getOrig_relativePointerEventAction();
 
       if (! ex_dropEvent) {

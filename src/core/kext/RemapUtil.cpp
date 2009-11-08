@@ -320,7 +320,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! isFromFlags(FlagStatus::makeFlags(KeyCode::NONE), fromFlags)) return false;
     if (! ((remapParams.params)->buttons & fromButton)) return false;
 
-    // XXX: call fireModifiers if needed.
     remapFlags(fromFlags, 0);
 
     (remapParams.params)->buttons = ((remapParams.params)->buttons & ~fromButton);
