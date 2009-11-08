@@ -2803,6 +2803,15 @@
           <!-- - ALT+SHIFT+3 gives # -->
           <autogen>--KeyToKey-- KeyCode::KEY_3, VK_OPTION | VK_SHIFT | ModifierFlag::NONE, KeyCode::BACKSLASH, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
         </item>
+        <item>
+          <name>Forgiving open brackets binding.</name>
+          <appendix>Command+4 to Left Brace, Command+5 to Left Bracket</appendix>
+          <sysctl>remap.french_brackets_hack</sysctl>
+          <!-- command+4 to { -->
+          <autogen>--KeyToKey-- KeyCode::KEY_4, VK_COMMAND | ModifierFlag::NONE, KeyCode::KEY_5, ModifierFlag::OPTION_L</autogen>
+          <!-- command+5 to [ -->
+          <autogen>--KeyToKey-- KeyCode::KEY_5, VK_COMMAND | ModifierFlag::NONE, KeyCode::KEY_5, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+        </item>
       </list>
     </item>
     <item>
