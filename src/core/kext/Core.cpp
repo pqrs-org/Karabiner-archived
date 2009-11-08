@@ -40,14 +40,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         unsigned int counter;
       } keyboardRepeatInfo_extra;
 
-      IOHIKeyboard *last_keyboard = NULL;
-      IOHIKeyboard *last_consumer = NULL;
-      IOHIPointing *last_pointing = NULL;
-      Params_KeyboardEventCallBack params_lastKeyboard;
-      Params_KeyboardSpecialEventCallback params_lastConsumer;
-      Params_RelativePointerEventCallback params_lastRelativePointer;
-      Params_ScrollWheelEventCallback params_lastScrollWheel;
-
       // ------------------------------------------------------------
       enum {
         REFRESH_DEVICE_INTERVAL = 3000,
@@ -234,10 +226,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! p) return;
 
       // ------------------------------------------------------------
-      last_keyboard = kbd;
-      params_lastKeyboard = *params;
-
-      // ------------------------------------------------------------
       // Because the key repeat generates it by oneself, I throw it away.
       if (params->repeat) {
         keyboardRepeatInfo.params.ts = params->ts;
@@ -356,10 +344,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! p) return;
 
       // ------------------------------------------------------------
-      last_consumer = kbd;
-      params_lastConsumer = *params;
-
-      // ------------------------------------------------------------
       params->log();
 
       ListFireExtraKey::reset();
@@ -403,10 +387,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! p) return;
 
       // ------------------------------------------------------------
-      last_pointing = pointing;
-      params_lastRelativePointer = *params;
-
-      // ------------------------------------------------------------
       params->log();
 
       listFireRelativePointer.reset();
@@ -442,10 +422,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       HookedPointing *p = ListHookedPointing::instance().get(pointing);
       if (! p) return;
-
-      // ------------------------------------------------------------
-      last_pointing = pointing;
-      params_lastScrollWheel = *params;
 
       // ------------------------------------------------------------
       params->log();
