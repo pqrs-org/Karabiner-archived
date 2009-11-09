@@ -56,14 +56,19 @@
           <sysctl>remap.pointing_relative_fn_to_scroll</sysctl>
         </item>
         <item>
+          <name>Control+LeftClick to MiddleClick</name>
+          <sysctl>remap.pointing_controlLeftclick2middleclick</sysctl>
+          <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, VK_CONTROL, PointingButton::MIDDLE</autogen>
+        </item>
+        <item>
           <name>FN+LeftClick to MiddleClick</name>
           <sysctl>remap.pointing_fnLeftclick2middleclick</sysctl>
           <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, ModifierFlag::FN, PointingButton::MIDDLE</autogen>
         </item>
         <item>
-          <name>Control+LeftClick to MiddleClick</name>
-          <sysctl>remap.pointing_controlLeftclick2middleclick</sysctl>
-          <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, VK_CONTROL, PointingButton::MIDDLE</autogen>
+          <name>Option+LeftClick to MiddleClick</name>
+          <sysctl>remap.pointing_optionLeftclick2middleclick</sysctl>
+          <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, VK_OPTION, PointingButton::MIDDLE</autogen>
         </item>
         <item>
           <name>CursorMove to ScrollWheel Option</name>
