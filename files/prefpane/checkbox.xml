@@ -3316,6 +3316,24 @@
           <autogen>--KeyToKey-- KeyCode::U, VK_CONTROL, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
+          <name>KeyToConsumer</name>
+          <appendix>F10 to Volume Mute</appendix>
+          <sysctl>remap.samples_f10_to_volumemute</sysctl>
+          <autogen>--KeyToComsumer-- KeyCode::F10, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        </item>
+        <item>
+          <name>ConsumerToKey</name>
+          <appendix>Brightness Down to Return</appendix>
+          <sysctl>remap.samples_brightnessdown2return</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_DOWN, KeyCode::RETURN</autogen>
+        </item>
+        <item>
+          <name>KeyToPointingButton</name>
+          <appendix>Control_L to LeftClick</appendix>
+          <sysctl>remap.samples_controlL2leftclick</sysctl>
+          <autogen>--KeyToPointingButton-- KeyCode::CONTROL_L, PointingButton::LEFT</autogen>
+        </item>
+        <item>
           <name>ButtonRelativeToScroll (One Button)</name>
           <appendix>RightClick+CursorMove to ScrollWheel</appendix>
           <sysctl>remap.samples_pointing_relative_rightclick_to_scroll</sysctl>
