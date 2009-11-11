@@ -208,9 +208,9 @@ KeyRemap4MacBook_server::Server::do_GetWorkspaceData(org_pqrs_KeyRemap4MacBook::
 
   // ----------------------------------------------------------------------
   // inputmode
-  const char* tis_japanese_hiragana = CFStringGetCStringPtr(kTextServiceInputModeJapaneseHiragana, kCFStringEncodingUTF8);
-  const char* tis_japanese_katakana = CFStringGetCStringPtr(kTextServiceInputModeJapaneseKatakana, kCFStringEncodingUTF8);
-  const char* tis_japanese = CFStringGetCStringPtr(kTextServiceInputModeJapanese, kCFStringEncodingUTF8);
+  const char* tis_japanese_hiragana = "com.apple.inputmethod.Japanese.Hiragana";
+  const char* tis_japanese_katakana = "com.apple.inputmethod.Japanese.Katakana";
+  const char* tis_japanese = "com.apple.inputmethod.Japanese";
 
   if (strcmp(inputmodeName, tis_japanese_hiragana) == 0) {
     reply.inputmode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE;
