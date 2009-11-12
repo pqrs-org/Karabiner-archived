@@ -792,7 +792,7 @@
         <item>
           <name>Forward Delete to Delete</name>
           <sysctl>remap.forwarddelete2delete</sysctl>
-          <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, KeyCode::DELETE</autogen>
+          <autogen>--KeyToKey-- FROMKEYCODE_FORWARD_DELETE, KeyCode::DELETE</autogen>
         </item>
       </list>
     </item>
@@ -2425,6 +2425,12 @@
               <sysctl>remap.app_finder_f2_to_return</sysctl>
               <only>FINDER</only>
               <autogen>--KeyToKey-- KeyCode::F2, KeyCode::RETURN</autogen>
+            </item>
+            <item>
+              <name>Remap Forward Delete to Command_L+Delete (== Delete Files)</name>
+              <sysctl>remap.app_finder_forwarddelete2commandLdelete</sysctl>
+              <only>FINDER</only>
+              <autogen>--KeyToKey-- FROMKEYCODE_FORWARD_DELETE, KeyCode::DELETE, ModifierFlag::COMMAND_L</autogen>
             </item>
             <item>
               <name>Remap Return to Command+O (== Open)</name>
