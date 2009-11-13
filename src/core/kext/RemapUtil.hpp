@@ -61,18 +61,25 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     bool isInternalKeyboard(unsigned int keyboardType);
 
-    bool keyToKey(const RemapParams &remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags, KeyCode::KeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE);
-    inline bool keyToKey(const RemapParams &remapParams, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE) {
-      return keyToKey(remapParams, fromKeyCode, 0, toKeyCode, toFlags);
-    }
-    bool keyToKey(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags,
-                  KeyCode::KeyCode toKeyCode1, unsigned int toFlags1,
-                  KeyCode::KeyCode toKeyCode2, unsigned int toFlags2 = ModifierFlag::NONE);
-    inline bool keyToKey(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags,
-                         KeyCode::KeyCode toKeyCode1,
-                         KeyCode::KeyCode toKeyCode2, unsigned int toFlags2 = ModifierFlag::NONE) {
-      return keyToKey(remapParams, fromKeyCode, fromFlags, toKeyCode1, ModifierFlag::NONE, toKeyCode2, toFlags2);
-    }
+    class KeyToKey {
+    public:
+      // KeyToKey(void) : active_(false) {}
+
+      bool remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags, KeyCode::KeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE);
+      bool remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE) {
+        return remap(remapParams, fromKeyCode, 0, toKeyCode, toFlags);
+      }
+      bool remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags,
+                 KeyCode::KeyCode toKeyCode1, unsigned int toFlags1,
+                 KeyCode::KeyCode toKeyCode2, unsigned int toFlags2 = ModifierFlag::NONE);
+      bool remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags,
+                 KeyCode::KeyCode toKeyCode1,
+                 KeyCode::KeyCode toKeyCode2, unsigned int toFlags2 = ModifierFlag::NONE) {
+        return remap(remapParams, fromKeyCode, fromFlags, toKeyCode1, ModifierFlag::NONE, toKeyCode2, toFlags2);
+      }
+    private:
+      bool active_;
+    };
 
     bool keyToKey_dependingShift(const RemapParams &remapParams, KeyCode::KeyCode fromKeyCode,
                                  KeyCode::KeyCode toKeyCode_noflag1, CharCode::CharCode toCharCode_noflag1,
@@ -126,7 +133,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     void fireConsumer(KeyboardSpecialEventCallback callback, const Params_KeyboardSpecialEventCallback &params);
 
     // ----------------------------------------
-    void jis_toggle_eisuu_kana(const RemapParams &remapParams, KeyCode::KeyCode fromKeyCode);
+    class JISToggleEisuuKana {
+    public:
+      bool remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode);
+
+    private:
+      KeyToKey keytokey_;
+    };
 
     // ----------------------------------------
     void pointingRelativeToScroll(const RemapPointingParams_relative &remapParams);
@@ -178,6 +191,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool useAsModifier;
     bool isClick;
     IntervalChecker ic;
+    RemapUtil::KeyToKey keytokey_;
   };
 
   // ----------------------------------------
@@ -200,6 +214,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   private:
     int pressCount;
+    RemapUtil::KeyToKey keytokey_;
   };
 
   // ----------------------------------------
@@ -212,6 +227,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     IntervalChecker ic;
     bool doremap;
     bool first;
+    RemapUtil::KeyToKey keytokey_;
   };
 
   // --------------------
