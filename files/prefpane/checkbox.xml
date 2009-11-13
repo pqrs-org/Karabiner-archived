@@ -1361,6 +1361,11 @@
           <autogen>--KeyOverlaidModifier-- KeyCode::RETURN, ModifierFlag::OPTION_L, FireFunc::firefunc_escape</autogen>
         </item>
         <item>
+          <name>FN+Return to Option_L</name>
+          <sysctl>remap.fnReturn2optionL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::RETURN, ModifierFlag::FN, KeyCode::OPTION_L</autogen>
+        </item>
+        <item>
           <name>Return to Semicolon</name>
           <sysctl>remap.return2semicolon</sysctl>
           <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::SEMICOLON</autogen>
