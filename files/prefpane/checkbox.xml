@@ -3345,6 +3345,12 @@
           <autogen>--KeyToKey-- KeyCode::U, VK_CONTROL, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
+          <name>KeyToKey (Key+Modifier To Modifier)</name>
+          <appendix>FN+Return to Option_L</appendix>
+          <sysctl>remap.samples_fnReturn2optionL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::RETURN, ModifierFlag::FN, KeyCode::OPTION_L</autogen>
+        </item>
+        <item>
           <name>KeyToConsumer</name>
           <appendix>F10 to Volume Mute</appendix>
           <sysctl>remap.samples_f10_to_volumemute</sysctl>
