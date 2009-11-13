@@ -18,9 +18,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_enter2commandL_enter2controlL_vm) return;
 
     if (remapParams.appType == KeyRemap4MacBook_bridge::GetWorkspaceData::VIRTUALMACHINE) {
-      RemapUtil::keyToKey(remapParams, KeyCode::ENTER, KeyCode::CONTROL_L);
+      static RemapUtil::KeyToKey keytokey;
+      keytokey.remap(remapParams, KeyCode::ENTER, KeyCode::CONTROL_L);
     } else {
-      RemapUtil::keyToKey(remapParams, KeyCode::ENTER, KeyCode::COMMAND_L);
+      static RemapUtil::KeyToKey keytokey;
+      keytokey.remap(remapParams, KeyCode::ENTER, KeyCode::COMMAND_L);
     }
   }
 
@@ -131,7 +133,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! FlagStatus::isHeldDown_shift()) {
       // hack to fire "the true backslash (not yen)" on JIS Keyboard.
       (remapParams.params)->keyboardType = KeyboardType::MACBOOK;
-      RemapUtil::keyToKey(remapParams, KeyCode::JIS_UNDERSCORE, KeyCode::BACKSLASH);
+
+      static RemapUtil::KeyToKey keytokey;
+      keytokey.remap(remapParams, KeyCode::JIS_UNDERSCORE, KeyCode::BACKSLASH);
     }
   }
 
@@ -144,7 +148,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (remapParams.ex_origKey == KeyCode::JIS_YEN) {
       // hack to fire "the true backslash (not yen)" on JIS Keyboard.
       (remapParams.params)->keyboardType = KeyboardType::MACBOOK;
-      RemapUtil::keyToKey(remapParams, KeyCode::JIS_YEN, KeyCode::BACKSLASH);
+
+      static RemapUtil::KeyToKey keytokey;
+      keytokey.remap(remapParams, KeyCode::JIS_YEN, KeyCode::BACKSLASH);
     }
   }
 
@@ -186,8 +192,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.remap_jis_jansi) return;
 
     (remapParams.params)->keyboardType = KeyboardType::MACBOOK;
-    RemapUtil::keyToKey(remapParams, KeyCode::JIS_YEN, KeyCode::BACKQUOTE);
-    RemapUtil::keyToKey(remapParams, KeyCode::JIS_UNDERSCORE, KeyCode::BACKQUOTE);
+
+    {
+      static RemapUtil::KeyToKey keytokey;
+      keytokey.remap(remapParams, KeyCode::JIS_YEN, KeyCode::BACKQUOTE);
+    }
+    {
+      static RemapUtil::KeyToKey keytokey;
+      keytokey.remap(remapParams, KeyCode::JIS_UNDERSCORE, KeyCode::BACKQUOTE);
+    }
   }
 
   static void

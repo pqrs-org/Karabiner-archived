@@ -137,7 +137,10 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
 
         case type
         when 'KeyToKey'
-          code_key += "if (RemapUtil::keyToKey(remapParams, #{params})) return;\n"
+          code_key += "{\n"
+          code_key += "static RemapUtil::KeyToKey keytokey;\n"
+          code_key += "if (keytokey.remap(remapParams, #{params})) return;\n"
+          code_key += "}\n"
           func['key'] << name
 
         when 'DoublePressModifier'
@@ -156,7 +159,10 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
           func['key'] << name
 
         when 'JISToggleEisuuKana'
-          code_key += "RemapUtil::jis_toggle_eisuu_kana(remapParams, #{params});\n"
+          code_key += "{\n"
+          code_key += "static RemapUtil::JISToggleEisuuKana jtek;\n"
+          code_key += "jtek.remap(remapParams, #{params});\n"
+          code_key += "}\n"
           func['key'] << name
 
         when 'KeyOverlaidModifier'

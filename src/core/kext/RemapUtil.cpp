@@ -102,18 +102,38 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  RemapUtil::keyToKey(const RemapParams &remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags, KeyCode::KeyCode toKeyCode, unsigned int toFlags)
+  RemapUtil::KeyToKey::remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags, KeyCode::KeyCode toKeyCode, unsigned int toFlags)
   {
-    if (! isFromFlags(FlagStatus::makeFlags(remapParams), fromFlags)) return false;
     if (! RemapUtil::isKey(remapParams, fromKeyCode)) return false;
+
+    bool isKeyDown = RemapUtil::isKeyDown(remapParams, fromKeyCode);
+    if (isKeyDown) {
+      active_ = false;
+      if (! isFromFlags(FlagStatus::makeFlags(remapParams), fromFlags)) return false;
+      active_ = true;
+
+    } else {
+      // When active_ is true, we converted the key at KeyDown.
+      // So we also convert the key at KeyUp.
+      //
+      // We don't check the flags in KeyUp.
+      // When we decide by flags, a problem occurs in the following situation.
+      //
+      // ex. "Shift+Delete to Forward Delete"
+      // (1) KeyDown "Delete" => "Delete"
+      // (2) KeyDown "Shift"  => "Shift"
+      // (3) KeyUp   "Delete" => "Forward Delete" *** Bad ***
+      // (4) KeyUp   "Shift"  => "Shift"
+
+      if (! active_) return false;
+      active_ = false;
+    }
 
     ModifierFlag::ModifierFlag fromModifier = getKeyCodeModifier(fromKeyCode);
     ModifierFlag::ModifierFlag toModifier = getKeyCodeModifier(toKeyCode);
 
     FlagStatus::Item *fromStatus = FlagStatus::getFlagStatus(fromModifier);
     FlagStatus::Item *toStatus = FlagStatus::getFlagStatus(toModifier);
-
-    bool isKeyDown = RemapUtil::isKeyDown(remapParams, fromKeyCode);
 
     if (fromStatus == NULL) {
       if (toStatus == NULL) {
@@ -159,13 +179,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  RemapUtil::keyToKey(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags,
-                      KeyCode::KeyCode toKeyCode1, unsigned int toFlags1,
-                      KeyCode::KeyCode toKeyCode2, unsigned int toFlags2)
+  RemapUtil::KeyToKey::remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags,
+                             KeyCode::KeyCode toKeyCode1, unsigned int toFlags1,
+                             KeyCode::KeyCode toKeyCode2, unsigned int toFlags2)
   {
     bool isKeyDown = RemapUtil::isKeyDown(remapParams, fromKeyCode);
 
-    bool result = keyToKey(remapParams, fromKeyCode, fromFlags, toKeyCode1, toFlags1);
+    bool result = remap(remapParams, fromKeyCode, fromFlags, toKeyCode1, toFlags1);
     if (! result) return false;
 
     if (isKeyDown) {
@@ -414,10 +434,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // --------------------
-  void
-  RemapUtil::jis_toggle_eisuu_kana(const RemapParams &params, KeyCode::KeyCode fromKeyCode)
+  bool
+  RemapUtil::JISToggleEisuuKana::remap(const RemapParams& params, KeyCode::KeyCode fromKeyCode)
   {
-    if (! RemapUtil::isKey(params, fromKeyCode)) return;
+    if (! RemapUtil::isKey(params, fromKeyCode)) return false;
 
     static KeyCode::KeyCode toKeyCode = KeyCode::NONE;
     if (RemapUtil::isKeyDown(params, fromKeyCode)) {
@@ -427,7 +447,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         toKeyCode = KeyCode::JIS_KANA;
       }
     }
-    RemapUtil::keyToKey(params, fromKeyCode, toKeyCode);
+    return keytokey_.remap(params, fromKeyCode, toKeyCode);
   }
 
   // --------------------
@@ -769,7 +789,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool isKeyDown = RemapUtil::isKeyDown(remapParams, fromKeyCode);
 
     KeyCode::KeyCode toKeyCode = RemapUtil::getModifierKeyCode(toFlag);
-    RemapUtil::keyToKey(remapParams, fromKeyCode, toKeyCode);
+    keytokey_.remap(remapParams, fromKeyCode, toKeyCode);
 
     if (isKeyDown) {
       useAsModifier = false;
@@ -841,7 +861,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool isKeyDown = RemapUtil::isKeyDown(remapParams, fromKeyCode);
 
     KeyCode::KeyCode toKeyCode = RemapUtil::getModifierKeyCode(toFlag);
-    RemapUtil::keyToKey(remapParams, fromKeyCode, toKeyCode);
+    keytokey_.remap(remapParams, fromKeyCode, toKeyCode);
 
     if (isKeyDown) {
       ++pressCount;
@@ -880,7 +900,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! doremap) return;
 
     fromStatus->temporary_decrease();
-    RemapUtil::keyToKey(remapParams, fromKeyCode, toKeyCode);
+    keytokey_.remap(remapParams, fromKeyCode, toKeyCode);
   }
 
   // ----------------------------------------
