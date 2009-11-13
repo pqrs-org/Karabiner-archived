@@ -3333,6 +3333,30 @@
       <name>Samples for KeyRemap4MacBook Developer</name>
       <list>
         <item>
+          <name>KeyToKey (Standard)</name>
+          <appendix>A to B</appendix>
+          <sysctl>remap.samples_a2b</sysctl>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
+        </item>
+        <item>
+          <name>KeyToKey (KeyToModifier)</name>
+          <appendix>S to SHIFT_L</appendix>
+          <sysctl>remap.samples_s2shiftL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::S, KeyCode::SHIFT_L</autogen>
+        </item>
+        <item>
+          <name>KeyToKey (ModifierToKey)</name>
+          <appendix>SHIFT_L to Return</appendix>
+          <sysctl>remap.samples_shiftL2return</sysctl>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::RETURN</autogen>
+        </item>
+        <item>
+          <name>KeyToKey (ModifierToModier)</name>
+          <appendix>SHIFT_L to Command_L</appendix>
+          <sysctl>remap.samples_shiftL2commandL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::COMMAND_L</autogen>
+        </item>
+        <item>
           <name>KeyToKey (Two Modifiers)</name>
           <appendix>Enter to Command_L+Shift_L</appendix>
           <sysctl>remap.samples_enter2commandLshiftL</sysctl>
@@ -3343,6 +3367,12 @@
           <appendix>Control+U to Command+Shift+Left,Command+X</appendix>
           <sysctl>remap.samples_controlU</sysctl>
           <autogen>--KeyToKey-- KeyCode::U, VK_CONTROL, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
+          <name>KeyToKey (Key+Modifier To Key)</name>
+          <appendix>Shift+E to Space</appendix>
+          <sysctl>remap.samples_shiftE2space</sysctl>
+          <autogen>--KeyToKey-- KeyCode::E, VK_SHIFT, KeyCode::SPACE</autogen>
         </item>
         <item>
           <name>KeyToKey (Key+Modifier To Modifier)</name>
@@ -3361,6 +3391,12 @@
           <appendix>Brightness Down to Return</appendix>
           <sysctl>remap.samples_brightnessdown2return</sysctl>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_DOWN, KeyCode::RETURN</autogen>
+        </item>
+        <item>
+          <name>DoublePressModifier</name>
+          <appendix>Shift_L x 2 to RETURN</appendix>
+          <sysctl>remap.samples_shiftL_x2_to_return</sysctl>
+          <autogen>--DoublePressModifier-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L, FireFunc::firefunc_return</autogen>
         </item>
         <item>
           <name>KeyToPointingButton</name>
