@@ -120,6 +120,33 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         sender->setTimeoutMS(config.get_repeat_wait());
       }
+
+      void
+      getWorkspaceData(KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& reply)
+      {
+        // ------------------------------------------------------------
+        // When we press the functional key (ex. F2) with the keyboard of the third vendor,
+        // KeyRemap4MacBook_client::sendmsg returns EIO.
+        //
+        // We use the previous value when the error occurred.
+        static KeyRemap4MacBook_bridge::GetWorkspaceData::Reply last = {
+          KeyRemap4MacBook_bridge::GetWorkspaceData::UNKNOWN,
+          KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_ROMAN,
+          KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_ROMAN,
+        };
+
+        int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_WORKSPACE_DATA, NULL, 0, &reply, sizeof(reply));
+        if (config.debug_devel) {
+          printf("KeyRemap4MacBook -Info- GetWorkspaceData: %d,%d,%d (error: %d)\n",
+                 reply.type, reply.inputmode, reply.inputmodedetail, error);
+        }
+        if (error == 0) {
+          last = reply;
+        } else {
+          // use last info.
+          reply = last;
+        }
+      }
     }
 
     void
@@ -256,9 +283,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       RemapParams remapParams = {
         params,
         params->key,
-        KeyRemap4MacBook_bridge::GetWorkspaceData::UNKNOWN,
-        KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_ROMAN,
-        KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_ROMAN,
+        KeyRemap4MacBook_bridge::GetWorkspaceData::Reply(),
         &ex_extraRepeatFunc,
         &ex_extraRepeatFlags,
         keyboardRepeatInfo_extra.counter,
@@ -266,36 +291,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       NumHeldDownKeys::set(remapParams);
 
       // ------------------------------------------------------------
-      /*
-        When we press the functional key (ex. F2) with the keyboard of the third vendor,
-        KeyRemap4MacBook_client::sendmsg returns EIO.
-
-        We use the previous value when the error occurred.
-      */
-      static KeyRemap4MacBook_bridge::GetWorkspaceData::ApplicationType lastApplicationType = KeyRemap4MacBook_bridge::GetWorkspaceData::UNKNOWN;
-      static KeyRemap4MacBook_bridge::GetWorkspaceData::InputMode lastInputMode = KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_ROMAN;
-      static KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail lastInputModeDetail = KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_ROMAN;
-
-      KeyRemap4MacBook_bridge::GetWorkspaceData::Reply workspacedata;
-      int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_WORKSPACE_DATA, NULL, 0, &workspacedata, sizeof(workspacedata));
-      if (config.debug_devel) {
-        printf("KeyRemap4MacBook -Info- GetWorkspaceData: %d,%d,%d (error: %d)\n", workspacedata.type, workspacedata.inputmode, workspacedata.inputmodedetail, error);
-      }
-      if (error == 0) {
-        remapParams.appType = workspacedata.type;
-        lastApplicationType = workspacedata.type;
-
-        remapParams.inputmode = workspacedata.inputmode;
-        lastInputMode = workspacedata.inputmode;
-
-        remapParams.inputmodedetail = workspacedata.inputmodedetail;
-        lastInputModeDetail = workspacedata.inputmodedetail;
-      } else {
-        // use last info.
-        remapParams.appType = lastApplicationType;
-        remapParams.inputmode = lastInputMode;
-        remapParams.inputmodedetail = lastInputModeDetail;
-      }
+      getWorkspaceData(remapParams.workspacedata);
 
       // ------------------------------------------------------------
       remap_core(remapParams);
@@ -349,9 +345,16 @@ namespace org_pqrs_KeyRemap4MacBook {
       ListFireExtraKey::reset();
       KeyCode::KeyCode ex_remapKeyCode = KeyCode::NONE;
       RemapConsumerParams remapParams = {
-        params, &ex_remapKeyCode,
+        params,
+        KeyRemap4MacBook_bridge::GetWorkspaceData::Reply(),
+        &ex_remapKeyCode,
       };
       NumHeldDownKeys::set(remapParams);
+
+      // ------------------------------------------------------------
+      getWorkspaceData(remapParams.workspacedata);
+
+      // ------------------------------------------------------------
       remap_consumer(remapParams);
 
       // ----------------------------------------
