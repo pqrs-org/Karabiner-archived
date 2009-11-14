@@ -310,6 +310,12 @@
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
+          <name>Command_R to Control_R (only in virtual machine, RDC)</name>
+          <sysctl>remap.commandR2controlR_vm</sysctl>
+          <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::CONTROL_R</autogen>
+        </item>
+        <item>
           <name>Command_R to Control_L (only in X11)</name>
           <sysctl>remap.commandR2controlL_x11</sysctl>
           <only>X11</only>
@@ -503,6 +509,18 @@
           <appendix>(Note: Escape is sent when you release Control_L)</appendix>
           <sysctl>remap.shiftLcontrolL2escape</sysctl>
           <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::SHIFT_L, ModifierFlag::CONTROL_L, FireFunc::firefunc_escape</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
+      <name>Remap Control_R Key</name>
+      <list>
+        <item>
+          <name>Control_R to Command_R (only in virtual machine, RDC)</name>
+          <sysctl>remap.controlR2commandR_vm</sysctl>
+          <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+          <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::COMMAND_R</autogen>
         </item>
       </list>
     </item>
