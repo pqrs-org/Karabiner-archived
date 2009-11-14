@@ -3417,6 +3417,20 @@
           <autogen>--ButtonRelativeToScroll-- PointingButton::LEFT | PointingButton::RIGHT</autogen>
         </item>
         <item>
+          <name>application only</name>
+          <appendix>A to B if application == TERMINAL</appendix>
+          <sysctl>remap.samples_term_a2b</sysctl>
+          <only>TERMINAL</only>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
+        </item>
+        <item>
+          <name>application only (except)</name>
+          <appendix>A to B if application != TERMINAL</appendix>
+          <sysctl>remap.samples_except_term_a2b</sysctl>
+          <not>TERMINAL</not>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
+        </item>
+        <item>
           <name>inputmode_only</name>
           <appendix>ASDFG to AIUEO if inputmode == INPUTMODE_JAPANESE</appendix>
           <sysctl>remap.samples_jis_asdfg2aiueo</sysctl>
