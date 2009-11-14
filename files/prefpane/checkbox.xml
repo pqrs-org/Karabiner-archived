@@ -2438,6 +2438,12 @@
               <autogen>--KeyToKey-- FROMKEYCODE_FORWARD_DELETE, KeyCode::DELETE, ModifierFlag::COMMAND_L</autogen>
             </item>
             <item>
+              <name>Remap Control+Delete to Command_L+Delete (== Delete Files)</name>
+              <sysctl>remap.app_finder_controlDelete2commandLdelete</sysctl>
+              <only>FINDER</only>
+              <autogen>--KeyToKey-- KeyCode::DELETE, VK_CONTROL, KeyCode::DELETE, ModifierFlag::COMMAND_L</autogen>
+            </item>
+            <item>
               <name>Remap Return to Command+O (== Open)</name>
               <sysctl>remap.app_finder_return2commandO</sysctl>
               <only>FINDER</only>
