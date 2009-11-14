@@ -10,9 +10,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   struct RemapParams {
     Params_KeyboardEventCallBack *params;
     unsigned int ex_origKey;
-    KeyRemap4MacBook_bridge::GetWorkspaceData::ApplicationType appType;
-    KeyRemap4MacBook_bridge::GetWorkspaceData::InputMode inputmode;
-    KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail inputmodedetail;
+    KeyRemap4MacBook_bridge::GetWorkspaceData::Reply workspacedata;
     ExtraRepeatFunc::ExtraRepeatFunc *ex_extraRepeatFunc;
     unsigned int *ex_extraRepeatFlags;
     unsigned int ex_extraRepeatCounter;
@@ -22,6 +20,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // --------------------
   struct RemapConsumerParams {
     Params_KeyboardSpecialEventCallback *params;
+    KeyRemap4MacBook_bridge::GetWorkspaceData::Reply workspacedata;
     KeyCode::KeyCode *ex_remapKeyCode;
   };
   void remap_consumer(const RemapConsumerParams &remapParams);

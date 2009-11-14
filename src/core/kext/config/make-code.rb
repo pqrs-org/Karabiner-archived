@@ -103,25 +103,25 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
 
   if /<not>(.+?)<\/not>/m =~ item then
     $1.split(/,/).each do |f|
-      filter += "if (remapParams.appType == KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}) return;\n"
+      filter += "if (remapParams.workspacedata.type == KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}) return;\n"
     end
   end
   if /<only>(.+?)<\/only>/m =~ item then
     tmp = []
     $1.split(/,/).each do |f|
-      tmp << "(remapParams.appType != KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip})"
+      tmp << "(remapParams.workspacedata.type != KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip})"
     end
     filter += "if (#{tmp.join(' && ')}) return;\n"
   end
   if /<inputmode_not>(.+?)<\/inputmode_not>/m =~ item then
     $1.split(/,/).each do |f|
-      filter += "if (remapParams.inputmode == KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}) return;\n"
+      filter += "if (remapParams.workspacedata.inputmode == KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}) return;\n"
     end
   end
   if /<inputmode_only>(.+?)<\/inputmode_only>/m =~ item then
     tmp = []
     $1.split(/,/).each do |f|
-      tmp << "(remapParams.inputmode != KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip})"
+      tmp << "(remapParams.workspacedata.inputmode != KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip})"
     end
     filter += "if (#{tmp.join(' && ')}) return;\n"
   end
@@ -219,7 +219,7 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
     code += "static void #{name}(const RemapParams &remapParams) {\n#{check}\n#{filter}\n#{code_key}\n}\n\n\n"
   end
   unless code_consumer.empty? then
-    code += "static void #{name}(const RemapConsumerParams &remapParams) {\n#{check}\n#{code_consumer}\n}\n\n\n"
+    code += "static void #{name}(const RemapConsumerParams &remapParams) {\n#{check}\n#{filter}\n#{code_consumer}\n}\n\n\n"
   end
   unless code_pointing.empty? then
     code += "static void #{name}(const RemapPointingParams_relative &remapParams) {\n#{check}\n#{code_pointing}\n}\n\n\n"
