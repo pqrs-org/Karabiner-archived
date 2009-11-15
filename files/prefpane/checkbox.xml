@@ -554,6 +554,11 @@
           <autogen>--KeyToKey-- KeyCode::DELETE, VK_SHIFT, KeyCode::FORWARD_DELETE</autogen>
         </item>
         <item>
+          <name>Control+Delete to Command_L+Delete</name>
+          <sysctl>remap.controlDelete2commandLdelete</sysctl>
+          <autogen>--KeyToKey-- KeyCode::DELETE, VK_CONTROL, KeyCode::DELETE, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
           <name>Shift+Delete to Tilde(~)</name>
           <sysctl>remap.shiftDelete2tilde</sysctl>
           <autogen>--KeyToKey-- KeyCode::DELETE, VK_SHIFT, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
@@ -2454,12 +2459,6 @@
               <sysctl>remap.app_finder_forwarddelete2commandLdelete</sysctl>
               <only>FINDER</only>
               <autogen>--KeyToKey-- FROMKEYCODE_FORWARD_DELETE, KeyCode::DELETE, ModifierFlag::COMMAND_L</autogen>
-            </item>
-            <item>
-              <name>Remap Control+Delete to Command_L+Delete (== Delete Files)</name>
-              <sysctl>remap.app_finder_controlDelete2commandLdelete</sysctl>
-              <only>FINDER</only>
-              <autogen>--KeyToKey-- KeyCode::DELETE, VK_CONTROL, KeyCode::DELETE, ModifierFlag::COMMAND_L</autogen>
             </item>
             <item>
               <name>Remap Return to Command+O (== Open)</name>
