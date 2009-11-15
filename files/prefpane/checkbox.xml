@@ -544,6 +544,11 @@
           <autogen>--KeyToKey-- KeyCode::DELETE, VK_COMMAND, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
+          <name>Control+Delete to Command_L+Delete</name>
+          <sysctl>remap.controlDelete2commandLdelete</sysctl>
+          <autogen>--KeyToKey-- KeyCode::DELETE, VK_CONTROL, KeyCode::DELETE, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
           <name>Delete to Forward Delete</name>
           <sysctl>remap.delete2forwarddelete</sysctl>
           <autogen>--KeyToKey-- KeyCode::DELETE, KeyCode::FORWARD_DELETE</autogen>
@@ -552,11 +557,6 @@
           <name>Shift+Delete to Forward Delete</name>
           <sysctl>remap.shiftDelete2forwarddelete</sysctl>
           <autogen>--KeyToKey-- KeyCode::DELETE, VK_SHIFT, KeyCode::FORWARD_DELETE</autogen>
-        </item>
-        <item>
-          <name>Control+Delete to Command_L+Delete</name>
-          <sysctl>remap.controlDelete2commandLdelete</sysctl>
-          <autogen>--KeyToKey-- KeyCode::DELETE, VK_CONTROL, KeyCode::DELETE, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
           <name>Shift+Delete to Tilde(~)</name>
