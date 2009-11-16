@@ -64,6 +64,12 @@
         <item>
           <name>FN+CursorMove to ScrollWheel</name>
           <sysctl>remap.pointing_relative_fn_to_scroll</sysctl>
+          <autogen>--ButtonRelativeToScroll-- PointingButton::NONE, ModifierFlag::FN</autogen>
+        </item>
+        <item>
+          <name>Option+CursorMove to ScrollWheel</name>
+          <sysctl>remap.pointing_relative_option_to_scroll</sysctl>
+          <autogen>--ButtonRelativeToScroll-- PointingButton::NONE, VK_OPTION</autogen>
         </item>
         <item>
           <name>Control+LeftClick to MiddleClick</name>
@@ -729,6 +735,11 @@
           <name>Escape to Command_L</name>
           <sysctl>remap.escape2commandL</sysctl>
           <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::COMMAND_L</autogen>
+        </item>
+        <item>
+          <name>Escape to Option_L</name>
+          <sysctl>remap.escape2optionL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::OPTION_L</autogen>
         </item>
         <item>
           <name>Escape to Backquote(`)</name>
@@ -3448,6 +3459,18 @@
           <appendix>LeftClick+RightClick+CursorMove to ScrollWheel</appendix>
           <sysctl>remap.samples_pointing_relative_LRClick_to_scroll</sysctl>
           <autogen>--ButtonRelativeToScroll-- PointingButton::LEFT | PointingButton::RIGHT</autogen>
+        </item>
+        <item>
+          <name>ButtonRelativeToScroll (ModifierFlag)</name>
+          <appendix>Option+CursorMove to ScrollWheel</appendix>
+          <sysctl>remap.sample_pointing_relative_option_to_scroll</sysctl>
+          <autogen>--ButtonRelativeToScroll-- PointingButton::NONE, VK_OPTION</autogen>
+        </item>
+        <item>
+          <name>ButtonRelativeToScroll (Button+ModifierFlag)</name>
+          <appendix>Option+RightClick+CursorMove to ScrollWheel</appendix>
+          <sysctl>remap.sample_pointing_controlLeftclick2middleclick</sysctl>
+          <autogen>--ButtonRelativeToScroll-- PointingButton::RIGHT, VK_OPTION</autogen>
         </item>
         <item>
           <name>application only</name>
