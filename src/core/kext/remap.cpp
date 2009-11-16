@@ -229,17 +229,6 @@ namespace org_pqrs_KeyRemap4MacBook {
                                        KeyCode::A, CharCode::A, KeyCode::BRACKET_LEFT, CharCode::BRACKET_LEFT,
                                        KeyCode::A, CharCode::A, KeyCode::NONE, CharCode::NONE);
   }
-
-  // ------------------------------------------------------------
-  static void
-  remap_pointing_relative_fn_to_scroll(const RemapPointingParams_relative &remapParams)
-  {
-    if (! config.remap_pointing_relative_fn_to_scroll) return;
-
-    if (! FlagStatus::isHeldDown(ModifierFlag::FN)) return;
-
-    RemapUtil::pointingRelativeToScroll(remapParams);
-  }
 }
 
 // ----------------------------------------------------------------------
@@ -316,6 +305,5 @@ org_pqrs_KeyRemap4MacBook::remap_pointing_relative_core(const RemapPointingParam
     ClickWatcher::click();
   }
 
-  remap_pointing_relative_fn_to_scroll(remapParams);
 #include "config/output/include.remapcode_call_pointing_relative.cpp"
 }
