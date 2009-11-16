@@ -52,6 +52,16 @@
           <autogen>--ButtonRelativeToScroll-- PointingButton::LEFT | PointingButton::RIGHT</autogen>
         </item>
         <item>
+          <name>Control+RightClick+CursorMove to ScrollWheel</name>
+          <sysctl>remap.pointing_relative_controlRightClick_to_scroll</sysctl>
+          <autogen>--ButtonRelativeToScroll-- PointingButton::RIGHT, VK_CONTROL</autogen>
+        </item>
+        <item>
+          <name>Shift+RightClick+CursorMove to ScrollWheel</name>
+          <sysctl>remap.pointing_relative_shiftRightClick_to_scroll</sysctl>
+          <autogen>--ButtonRelativeToScroll-- PointingButton::RIGHT, VK_SHIFT</autogen>
+        </item>
+        <item>
           <name>FN+CursorMove to ScrollWheel</name>
           <sysctl>remap.pointing_relative_fn_to_scroll</sysctl>
         </item>

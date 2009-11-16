@@ -932,9 +932,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ------------------------------------------------------------
-  void
-  ButtonRelativeToScroll::remap(const RemapPointingParams_relative &remapParams, unsigned int button)
+  bool
+  ButtonRelativeToScroll::remap(const RemapPointingParams_relative &remapParams, unsigned int button, unsigned int fromFlags)
   {
+    if (! isFromFlags(FlagStatus::makeFlags(KeyCode::NONE), fromFlags)) return false;
+
     if (((remapParams.params)->buttons & button) == button) {
       // if the source button contains left button, we cancel left click for iPhoto, or some applications.
       // iPhoto store the scroll events when left button is pressed, and restore events after left button is released.
@@ -948,12 +950,21 @@ namespace org_pqrs_KeyRemap4MacBook {
       isButtonHeldDown = true;
       *(remapParams.ex_dropEvent) = true;
       RemapUtil::pointingRelativeToScroll(remapParams);
+
+      remapFlags(fromFlags, 0);
+      return true;
+
     } else {
       // ignore button up event.
       if (isButtonHeldDown) {
         isButtonHeldDown = false;
         *(remapParams.ex_dropEvent) = true;
+
+        remapFlags(fromFlags, 0);
+        return true;
       }
+
+      return false;
     }
   }
 }
