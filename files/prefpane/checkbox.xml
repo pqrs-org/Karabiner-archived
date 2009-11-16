@@ -2347,6 +2347,12 @@
               <autogen>--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L</autogen>
             </item>
             <item>
+              <name>Remap Command+Space to Option_L+Shift_L</name>
+              <sysctl>remap.app_vm_commandspace2optionLshiftL</sysctl>
+              <only>VIRTUALMACHINE</only>
+              <autogen>--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::OPTION_L, ModifierFlag::SHIFT_L</autogen>
+            </item>
+            <item>
               <name>Remap Command_L Keys</name>
               <appendix>(To support Emacs on Fusion. This allows controlling individual key translations)</appendix>
               <list>
