@@ -5,7 +5,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface KeyResponder : NSResponder
+@interface KeyResponder : NSImageView
 {
   IBOutlet id _result;
 }
