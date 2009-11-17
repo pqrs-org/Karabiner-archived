@@ -3517,6 +3517,16 @@
           <autogen>--KeyToKey-- KeyCode::G, KeyCode::O</autogen>
         </item>
         <item>
+          <name>inputmodedetail_only</name>
+          <appendix>ASDFG to AIUEO if inputmodedetail == INPUTMODE_DETAIL_JAPANESE_KATAKANA</appendix>
+          <sysctl>remap.samples_jis_asdfg2aiueo_katakana</sysctl>
+          <inputmodedetail_only>INPUTMODE_DETAIL_JAPANESE_KATAKANA</inputmodedetail_only>
+          <autogen>--KeyToKey-- KeyCode::S, KeyCode::I</autogen>
+          <autogen>--KeyToKey-- KeyCode::D, KeyCode::U</autogen>
+          <autogen>--KeyToKey-- KeyCode::F, KeyCode::E</autogen>
+          <autogen>--KeyToKey-- KeyCode::G, KeyCode::O</autogen>
+        </item>
+        <item>
           <name>JISToggleEisuuKana</name>
           <appendix>Use Command_L,Command_R as KANA/EISUU (toggle)</appendix>
           <sysctl>remap.samples_jis_unify_kana_eisuu_to_commandLR</sysctl>
