@@ -2350,7 +2350,7 @@
               <name>Remap Command+Space to Option_L+Shift_L</name>
               <sysctl>remap.app_vm_commandspace2optionLshiftL</sysctl>
               <only>VIRTUALMACHINE</only>
-              <autogen>--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::OPTION_L, ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::SHIFT_L, ModifierFlag::OPTION_L</autogen>
             </item>
             <item>
               <name>Remap Command_L Keys</name>
