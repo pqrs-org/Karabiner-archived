@@ -54,6 +54,18 @@
   [textview setSelectable:NO];
 }
 
+- (void) outputMouseDownUp:(NSEvent*)event name:(NSString*)name
+{
+  NSPoint point = [event locationInWindow];
+  [self output:[NSString stringWithFormat:@"%@\tpoint:%@\tcount:%d\tbutton:%d\tflags:%@", name, NSStringFromPoint(point), [event clickCount], [event buttonNumber], [self modifierFlagsToString:[event modifierFlags]]]];
+}
+
+- (void) outputMouseDragged:(NSEvent*)event name:(NSString*)name
+{
+  NSPoint point = [event locationInWindow];
+  [self output:[NSString stringWithFormat:@"%@\tpoint:%@\tbutton:%d\tflags:%@", name, NSStringFromPoint(point), [event buttonNumber], [self modifierFlagsToString:[event modifierFlags]]]];
+}
+
 - (void) keyDown:(NSEvent*)event
 {
   [self output:[NSString stringWithFormat:@"keyDown\tkey:0x%02x\tflags:%@", [event keyCode], [self modifierFlagsToString:[event modifierFlags]]]];
@@ -67,6 +79,56 @@
 - (void) flagsChanged:(NSEvent*)event
 {
   [self output:[NSString stringWithFormat:@"flagsChanged\tkey:0x%02x\tflags:%@", [event keyCode], [self modifierFlagsToString:[event modifierFlags]]]];
+}
+
+- (void) mouseDown:(NSEvent*)event
+{
+  [self outputMouseDownUp:event name:@"mouseDown"];
+}
+
+- (void) mouseUp:(NSEvent*)event
+{
+  [self outputMouseDownUp:event name:@"mouseUp"];
+}
+
+- (void) mouseDragged:(NSEvent*)event
+{
+  [self outputMouseDragged:event name:@"mouseDragged"];
+}
+
+- (void) rightMouseDown:(NSEvent *)event
+{
+  [self outputMouseDownUp:event name:@"rightMouseDown"];
+}
+
+- (void) rightMouseUp:(NSEvent *)event
+{
+  [self outputMouseDownUp:event name:@"rightMouseUp"];
+}
+
+- (void) rightMouseDragged:(NSEvent *)event
+{
+  [self outputMouseDragged:event name:@"rightMouseDragged"];
+}
+
+- (void) otherMouseDown:(NSEvent *)event
+{
+  [self outputMouseDownUp:event name:@"otherMouseDown"];
+}
+
+- (void) otherMouseUp:(NSEvent *)event
+{
+  [self outputMouseDownUp:event name:@"otherMouseUp"];
+}
+
+- (void) otherMouseDragged:(NSEvent *)event
+{
+  [self outputMouseDragged:event name:@"otherMouseDragged"];
+}
+
+- (void) scrollWheel:(NSEvent *)event
+{
+  [self output:[NSString stringWithFormat:@"scrollWheel\tdeltaX:%.03f\tdeltaY:%.03f\tdeltaZ:%.03f\tflags:%@", [event deltaX], [event deltaY], [event deltaZ], [self modifierFlagsToString:[event modifierFlags]]]];
 }
 
 @end
