@@ -113,15 +113,17 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
     end
     filter += "if (#{tmp.join(' && ')}) return;\n"
   end
-  if /<inputmode_not>(.+?)<\/inputmode_not>/m =~ item then
-    $1.split(/,/).each do |f|
-      filter += "if (remapParams.workspacedata.inputmode == KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}) return;\n"
+  if /<(inputmode|inputmodedetail)_not>(.+?)<\/(inputmode|inputmodedetail)_not>/m =~ item then
+    inputmodetype = $1
+    $2.split(/,/).each do |f|
+      filter += "if (remapParams.workspacedata.#{inputmodetype} == KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}) return;\n"
     end
   end
-  if /<inputmode_only>(.+?)<\/inputmode_only>/m =~ item then
+  if /<(inputmode|inputmodedetail)_only>(.+?)<\/(inputmode|inputmodedetail)_only>/m =~ item then
+    inputmodetype = $1
     tmp = []
-    $1.split(/,/).each do |f|
-      tmp << "(remapParams.workspacedata.inputmode != KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip})"
+    $2.split(/,/).each do |f|
+      tmp << "(remapParams.workspacedata.#{inputmodetype} != KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip})"
     end
     filter += "if (#{tmp.join(' && ')}) return;\n"
   end
