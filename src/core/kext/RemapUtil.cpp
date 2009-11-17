@@ -372,30 +372,49 @@ namespace org_pqrs_KeyRemap4MacBook {
     Params_KeyboardEventCallBack callbackparams = params;
     callbackparams.eventType = KeyEvent::MODIFY;
 
+    // ----------------------------------------------------------------------
     // fire
-    for (int i = 0; i < ModifierFlag::listsize; ++i) {
-      ModifierFlag::ModifierFlag m = ModifierFlag::list[i];
-      bool from = RemapUtil::isModifierOn(lastFlags, m);
-      bool to = RemapUtil::isModifierOn(toFlags, m);
 
-      if (from == to) continue;
+    // At first I handle KeyUp and handle KeyDown next.
+    // We need to end KeyDown at Command+Space to Option_L+Shift_L.
+    //
+    // When Option_L+Shift_L has a meaning (switch input language at Windows),
+    // it does not works well when the last is KeyUp of Command.
 
-      if (from) {
-        modifierStatus[i] = false;
-      } else {
-        modifierStatus[i] = true;
-      }
+    bool listIsFireKeyUp[] = { true, false };
+    for (size_t firetype = 0; firetype < sizeof(listIsFireKeyUp) / sizeof(listIsFireKeyUp[0]); ++firetype) {
+      bool isFireKeyUp = listIsFireKeyUp[firetype];
 
-      unsigned int flags = 0;
-      for (int j = 0; j < ModifierFlag::listsize; ++j) {
-        if (modifierStatus[j]) {
-          flags |= ModifierFlag::list[j];
+      for (int i = 0; i < ModifierFlag::listsize; ++i) {
+        ModifierFlag::ModifierFlag m = ModifierFlag::list[i];
+        bool from = RemapUtil::isModifierOn(lastFlags, m);
+        bool to = RemapUtil::isModifierOn(toFlags, m);
+
+        if (isFireKeyUp) {
+          // fire Up only
+          if (! (from == true && to == false)) continue;
+        } else {
+          // fire Down only
+          if (! (from == false && to == true)) continue;
         }
-      }
 
-      callbackparams.flags = flags;
-      callbackparams.key = RemapUtil::getModifierKeyCode(m);
-      callbackparams.apply(callback);
+        if (from) {
+          modifierStatus[i] = false;
+        } else {
+          modifierStatus[i] = true;
+        }
+
+        unsigned int flags = 0;
+        for (int j = 0; j < ModifierFlag::listsize; ++j) {
+          if (modifierStatus[j]) {
+            flags |= ModifierFlag::list[j];
+          }
+        }
+
+        callbackparams.flags = flags;
+        callbackparams.key = RemapUtil::getModifierKeyCode(m);
+        callbackparams.apply(callback);
+      }
     }
 
     lastFlags = toFlags;
