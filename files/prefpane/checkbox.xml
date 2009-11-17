@@ -34,42 +34,42 @@
         <item>
           <name>RightClick+CursorMove to ScrollWheel</name>
           <sysctl>remap.pointing_relative_rightclick_to_scroll</sysctl>
-          <autogen>--ButtonRelativeToScroll-- PointingButton::RIGHT</autogen>
+          <autogen>--PointingRelativeToScroll-- PointingButton::RIGHT</autogen>
         </item>
         <item>
           <name>MiddleClick+CursorMove to ScrollWheel</name>
           <sysctl>remap.pointing_relative_middleclick_to_scroll</sysctl>
-          <autogen>--ButtonRelativeToScroll-- PointingButton::MIDDLE</autogen>
+          <autogen>--PointingRelativeToScroll-- PointingButton::MIDDLE</autogen>
         </item>
         <item>
           <name>MouseButton4+CursorMove to ScrollWheel</name>
           <sysctl>remap.pointing_relative_mousebutton4_to_scroll</sysctl>
-          <autogen>--ButtonRelativeToScroll-- PointingButton::BUTTON4</autogen>
+          <autogen>--PointingRelativeToScroll-- PointingButton::BUTTON4</autogen>
         </item>
         <item>
           <name>LeftClick+RightClick+CursorMove to ScrollWheel</name>
           <sysctl>remap.pointing_relative_LRClick_to_scroll</sysctl>
-          <autogen>--ButtonRelativeToScroll-- PointingButton::LEFT | PointingButton::RIGHT</autogen>
+          <autogen>--PointingRelativeToScroll-- PointingButton::LEFT | PointingButton::RIGHT</autogen>
         </item>
         <item>
           <name>Control+RightClick+CursorMove to ScrollWheel</name>
           <sysctl>remap.pointing_relative_controlRightClick_to_scroll</sysctl>
-          <autogen>--ButtonRelativeToScroll-- PointingButton::RIGHT, VK_CONTROL</autogen>
+          <autogen>--PointingRelativeToScroll-- PointingButton::RIGHT, VK_CONTROL</autogen>
         </item>
         <item>
           <name>Shift+RightClick+CursorMove to ScrollWheel</name>
           <sysctl>remap.pointing_relative_shiftRightClick_to_scroll</sysctl>
-          <autogen>--ButtonRelativeToScroll-- PointingButton::RIGHT, VK_SHIFT</autogen>
+          <autogen>--PointingRelativeToScroll-- PointingButton::RIGHT, VK_SHIFT</autogen>
         </item>
         <item>
           <name>FN+CursorMove to ScrollWheel</name>
           <sysctl>remap.pointing_relative_fn_to_scroll</sysctl>
-          <autogen>--ButtonRelativeToScroll-- PointingButton::NONE, ModifierFlag::FN</autogen>
+          <autogen>--PointingRelativeToScroll-- PointingButton::NONE, ModifierFlag::FN</autogen>
         </item>
         <item>
           <name>Option+CursorMove to ScrollWheel</name>
           <sysctl>remap.pointing_relative_option_to_scroll</sysctl>
-          <autogen>--ButtonRelativeToScroll-- PointingButton::NONE, VK_OPTION</autogen>
+          <autogen>--PointingRelativeToScroll-- PointingButton::NONE, VK_OPTION</autogen>
         </item>
         <item>
           <name>Control+LeftClick to MiddleClick</name>
@@ -3471,28 +3471,28 @@
           <autogen>--KeyToPointingButton-- KeyCode::CONTROL_L, PointingButton::LEFT</autogen>
         </item>
         <item>
-          <name>ButtonRelativeToScroll (One Button)</name>
+          <name>PointingRelativeToScroll (One Button)</name>
           <appendix>RightClick+CursorMove to ScrollWheel</appendix>
           <sysctl>remap.samples_pointing_relative_rightclick_to_scroll</sysctl>
-          <autogen>--ButtonRelativeToScroll-- PointingButton::RIGHT</autogen>
+          <autogen>--PointingRelativeToScroll-- PointingButton::RIGHT</autogen>
         </item>
         <item>
-          <name>ButtonRelativeToScroll (Multi Buttons)</name>
+          <name>PointingRelativeToScroll (Multi Buttons)</name>
           <appendix>LeftClick+RightClick+CursorMove to ScrollWheel</appendix>
           <sysctl>remap.samples_pointing_relative_LRClick_to_scroll</sysctl>
-          <autogen>--ButtonRelativeToScroll-- PointingButton::LEFT | PointingButton::RIGHT</autogen>
+          <autogen>--PointingRelativeToScroll-- PointingButton::LEFT | PointingButton::RIGHT</autogen>
         </item>
         <item>
-          <name>ButtonRelativeToScroll (ModifierFlag)</name>
+          <name>PointingRelativeToScroll (ModifierFlag)</name>
           <appendix>Option+CursorMove to ScrollWheel</appendix>
           <sysctl>remap.sample_pointing_relative_option_to_scroll</sysctl>
-          <autogen>--ButtonRelativeToScroll-- PointingButton::NONE, VK_OPTION</autogen>
+          <autogen>--PointingRelativeToScroll-- PointingButton::NONE, VK_OPTION</autogen>
         </item>
         <item>
-          <name>ButtonRelativeToScroll (Button+ModifierFlag)</name>
+          <name>PointingRelativeToScroll (Button+ModifierFlag)</name>
           <appendix>Option+RightClick+CursorMove to ScrollWheel</appendix>
           <sysctl>remap.sample_pointing_controlLeftclick2middleclick</sysctl>
-          <autogen>--ButtonRelativeToScroll-- PointingButton::RIGHT, VK_OPTION</autogen>
+          <autogen>--PointingRelativeToScroll-- PointingButton::RIGHT, VK_OPTION</autogen>
         </item>
         <item>
           <name>application only</name>

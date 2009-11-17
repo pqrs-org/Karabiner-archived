@@ -267,7 +267,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   extern FirePointingScroll firePointingScroll;
 
   // ----------------------------------------
-  class ButtonRelativeToScroll {
+  class PointingRelativeToScroll {
   public:
     bool remap(const RemapPointingParams_relative &remapParams, unsigned int button = 0, unsigned int fromFlags = 0);
 
