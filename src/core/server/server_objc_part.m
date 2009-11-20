@@ -32,15 +32,22 @@ getActiveApplicationName(char *buffer, size_t len)
   buffer[0] = '\0';
 
   // ----------------------------------------
-  NSWorkspace *ws = [NSWorkspace sharedWorkspace];
+  NSWorkspace* ws = [NSWorkspace sharedWorkspace];
   if (! ws) return;
 
-  NSDictionary *app = [ws activeApplication];
-  if (! app) return;
+  NSArray* a = [ws runningApplications];
+  NSEnumerator *e = [a objectEnumerator];
+  for (;;) {
+    NSRunningApplication* app = [e nextObject];
+    if (! app) return;
 
-  NSString *nsappname = [app objectForKey:@"NSApplicationBundleIdentifier"];
-  if (nsappname) {
-    snprintf(buffer, len, "%s", [nsappname UTF8String]);
+    if ([app isActive]) {
+      NSString* nsappname = [app bundleIdentifier];
+      if (nsappname) {
+        snprintf(buffer, len, "%s", [nsappname UTF8String]);
+      }
+      return;
+    }
   }
 }
 
