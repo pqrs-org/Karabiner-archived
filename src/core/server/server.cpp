@@ -11,6 +11,11 @@
 #include "server.hpp"
 #include "server_objc_part.h"
 
+namespace {
+  org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::ApplicationType currentApplicationType = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::UNKNOWN;
+  KeyRemap4MacBook_server::Mutex mutex_currentApplicationType;
+}
+
 bool
 KeyRemap4MacBook_server::Server::initialize(const char* basedirectory)
 {
@@ -125,86 +130,17 @@ KeyRemap4MacBook_server::Server::makeSocket(void)
 org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error
 KeyRemap4MacBook_server::Server::do_GetWorkspaceData(org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& reply)
 {
-  char applicationName[128];
   char inputmodeName[128];
   autoreleasepool_begin();
-  getActiveApplicationName(applicationName, sizeof(applicationName));
   getTISPropertyInputModeID(inputmodeName, sizeof(inputmodeName));
   autoreleasepool_end();
 
-  reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::UNKNOWN;
+  {
+    Mutex::ScopedLock lk(mutex_currentApplicationType);
+    reply.type = currentApplicationType;
+  }
   reply.inputmode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_ROMAN;
   reply.inputmodedetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_ROMAN;
-
-  // ----------------------------------------------------------------------
-  // type
-  const char *org_vim = "org.vim.";
-  const char *com_adobe = "com.adobe.";
-
-  if (strcmp(applicationName, "org.gnu.Emacs") == 0 ||
-      strcmp(applicationName, "org.gnu.AquamacsEmacs") == 0) {
-    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::EMACS;
-
-  } else if (strncmp(applicationName, org_vim, strlen(org_vim)) == 0) {
-    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::VI;
-
-  } else if (strcmp(applicationName, "com.apple.Terminal") == 0 ||
-             strcmp(applicationName, "iTerm") == 0 ||
-             strcmp(applicationName, "net.sourceforge.iTerm") == 0) {
-    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::TERMINAL;
-
-  } else if (strcmp(applicationName, "com.vmware.fusion") == 0 ||
-             strcmp(applicationName, "com.parallels.desktop") == 0 ||
-             strcmp(applicationName, "org.virtualbox.app.VirtualBoxVM") == 0) {
-    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::VIRTUALMACHINE;
-
-  } else if (strcmp(applicationName, "com.microsoft.rdc") == 0 ||
-             strcmp(applicationName, "net.sf.cord") == 0) {
-    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::REMOTEDESKTOPCONNECTION;
-
-  } else if (strcmp(applicationName, "org.x.X11") == 0 ||
-             strcmp(applicationName, "com.apple.x11") == 0) {
-    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::X11;
-
-  } else if (strcmp(applicationName, "com.apple.finder") == 0) {
-    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::FINDER;
-
-  } else if (strcmp(applicationName, "com.apple.Safari") == 0) {
-    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::SAFARI;
-
-  } else if (strcmp(applicationName, "org.mozilla.firefox") == 0) {
-    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::FIREFOX;
-
-  } else if (strcmp(applicationName, "org.mozilla.thunderbird") == 0) {
-    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::THUNDERBIRD;
-
-  } else if (strcmp(applicationName, "com.apple.iChat") == 0) {
-    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::ICHAT;
-
-  } else if (strcmp(applicationName, "com.adiumX.adiumX") == 0) {
-    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::ADIUMX;
-
-  } else if (strcmp(applicationName, "com.skype.skype") == 0) {
-    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::SKYPE;
-
-  } else if (strcmp(applicationName, "com.apple.mail") == 0) {
-    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::MAIL;
-
-  } else if (strcmp(applicationName, "com.apple.TextEdit") == 0) {
-    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::EDITOR;
-
-  } else if (strncmp(applicationName, com_adobe, strlen(com_adobe)) == 0) {
-    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::ADOBE;
-
-  } else if (strcmp(applicationName, "com.microsoft.Excel") == 0) {
-    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::EXCEL;
-
-  } else if (strcmp(applicationName, "com.microsoft.Entourage") == 0) {
-    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::ENTOURAGE;
-
-  } else if (strcmp(applicationName, "org.eclipse.eclipse") == 0) {
-    reply.type = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::ECLIPSE;
-  }
 
   // ----------------------------------------------------------------------
   // inputmode
@@ -227,4 +163,102 @@ KeyRemap4MacBook_server::Server::do_GetWorkspaceData(org_pqrs_KeyRemap4MacBook::
 
   // ----------------------------------------------------------------------
   return org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS;
+}
+
+void
+setCurrentApplicationType(const char* applicationName)
+{
+  KeyRemap4MacBook_server::Mutex::ScopedLock lk(mutex_currentApplicationType);
+
+#define SET_CURRENT_APPLICATION_TYPE(type) {                            \
+    currentApplicationType = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData:: type; \
+    return;                                                             \
+  }
+
+  if (strcmp(applicationName, "org.gnu.Emacs") == 0 ||
+      strcmp(applicationName, "org.gnu.AquamacsEmacs") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(EMACS);
+  }
+
+  const char *org_vim = "org.vim.";
+  if (strncmp(applicationName, org_vim, strlen(org_vim)) == 0) {
+    SET_CURRENT_APPLICATION_TYPE(VI);
+  }
+
+  if (strcmp(applicationName, "com.apple.Terminal") == 0 ||
+      strcmp(applicationName, "iTerm") == 0 ||
+      strcmp(applicationName, "net.sourceforge.iTerm") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(TERMINAL);
+  }
+
+  if (strcmp(applicationName, "com.vmware.fusion") == 0 ||
+      strcmp(applicationName, "com.parallels.desktop") == 0 ||
+      strcmp(applicationName, "org.virtualbox.app.VirtualBoxVM") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(VIRTUALMACHINE);
+  }
+
+  if (strcmp(applicationName, "com.microsoft.rdc") == 0 ||
+      strcmp(applicationName, "net.sf.cord") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(REMOTEDESKTOPCONNECTION);
+  }
+
+  if (strcmp(applicationName, "org.x.X11") == 0 ||
+      strcmp(applicationName, "com.apple.x11") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(X11);
+  }
+
+  if (strcmp(applicationName, "com.apple.finder") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(FINDER);
+  }
+
+  if (strcmp(applicationName, "com.apple.Safari") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(SAFARI);
+  }
+
+  if (strcmp(applicationName, "org.mozilla.firefox") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(FIREFOX);
+  }
+
+  if (strcmp(applicationName, "org.mozilla.thunderbird") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(THUNDERBIRD);
+  }
+
+  if (strcmp(applicationName, "com.apple.iChat") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(ICHAT);
+  }
+
+  if (strcmp(applicationName, "com.adiumX.adiumX") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(ADIUMX);
+  }
+
+  if (strcmp(applicationName, "com.skype.skype") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(SKYPE);
+  }
+
+  if (strcmp(applicationName, "com.apple.mail") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(MAIL);
+  }
+
+  if (strcmp(applicationName, "com.apple.TextEdit") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(EDITOR);
+  }
+
+  const char *com_adobe = "com.adobe.";
+  if (strncmp(applicationName, com_adobe, strlen(com_adobe)) == 0) {
+    SET_CURRENT_APPLICATION_TYPE(ADOBE);
+  }
+
+  if (strcmp(applicationName, "com.microsoft.Excel") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(EXCEL);
+  }
+
+  if (strcmp(applicationName, "com.microsoft.Entourage") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(ENTOURAGE);
+  }
+
+  if (strcmp(applicationName, "org.eclipse.eclipse") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(ECLIPSE);
+  }
+
+  SET_CURRENT_APPLICATION_TYPE(UNKNOWN);
 }
