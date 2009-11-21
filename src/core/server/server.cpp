@@ -170,6 +170,12 @@ setCurrentApplicationType(const char* applicationName)
 {
   KeyRemap4MacBook_server::Mutex::ScopedLock lk(mutex_currentApplicationType);
 
+  // we ignore the program for our investigation.
+  if (strcmp(applicationName, "org.pqrs.KeyDump") == 0) {
+    // use previous value. (not set "currentApplicationType")
+    return;
+  }
+
 #define SET_CURRENT_APPLICATION_TYPE(type) {                            \
     currentApplicationType = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData:: type; \
     return;                                                             \
