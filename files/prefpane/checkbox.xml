@@ -32,70 +32,80 @@
       <name>Remap Pointing Device</name>
       <list>
         <item>
-          <name>RightClick+CursorMove to ScrollWheel</name>
-          <sysctl>remap.pointing_relative_rightclick_to_scroll</sysctl>
-          <autogen>--PointingRelativeToScroll-- PointingButton::RIGHT</autogen>
-        </item>
-        <item>
-          <name>MiddleClick+CursorMove to ScrollWheel</name>
-          <sysctl>remap.pointing_relative_middleclick_to_scroll</sysctl>
-          <autogen>--PointingRelativeToScroll-- PointingButton::MIDDLE</autogen>
-        </item>
-        <item>
-          <name>MouseButton4+CursorMove to ScrollWheel</name>
-          <sysctl>remap.pointing_relative_mousebutton4_to_scroll</sysctl>
-          <autogen>--PointingRelativeToScroll-- PointingButton::BUTTON4</autogen>
-        </item>
-        <item>
-          <name>LeftClick+RightClick+CursorMove to ScrollWheel</name>
-          <sysctl>remap.pointing_relative_LRClick_to_scroll</sysctl>
-          <autogen>--PointingRelativeToScroll-- PointingButton::LEFT | PointingButton::RIGHT</autogen>
-        </item>
-        <item>
-          <name>Control+RightClick+CursorMove to ScrollWheel</name>
-          <sysctl>remap.pointing_relative_controlRightClick_to_scroll</sysctl>
-          <autogen>--PointingRelativeToScroll-- PointingButton::RIGHT, VK_CONTROL</autogen>
-        </item>
-        <item>
-          <name>Shift+RightClick+CursorMove to ScrollWheel</name>
-          <sysctl>remap.pointing_relative_shiftRightClick_to_scroll</sysctl>
-          <autogen>--PointingRelativeToScroll-- PointingButton::RIGHT, VK_SHIFT</autogen>
-        </item>
-        <item>
-          <name>FN+CursorMove to ScrollWheel</name>
-          <sysctl>remap.pointing_relative_fn_to_scroll</sysctl>
-          <autogen>--PointingRelativeToScroll-- PointingButton::NONE, ModifierFlag::FN</autogen>
-        </item>
-        <item>
-          <name>Option+CursorMove to ScrollWheel</name>
-          <sysctl>remap.pointing_relative_option_to_scroll</sysctl>
-          <autogen>--PointingRelativeToScroll-- PointingButton::NONE, VK_OPTION</autogen>
-        </item>
-        <item>
-          <name>Control+LeftClick to MiddleClick</name>
-          <sysctl>remap.pointing_controlLeftclick2middleclick</sysctl>
-          <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, VK_CONTROL, PointingButton::MIDDLE</autogen>
-        </item>
-        <item>
-          <name>FN+LeftClick to MiddleClick</name>
-          <sysctl>remap.pointing_fnLeftclick2middleclick</sysctl>
-          <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, ModifierFlag::FN, PointingButton::MIDDLE</autogen>
-        </item>
-        <item>
-          <name>Option+LeftClick to MiddleClick</name>
-          <sysctl>remap.pointing_optionLeftclick2middleclick</sysctl>
-          <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, VK_OPTION, PointingButton::MIDDLE</autogen>
-        </item>
-        <item>
-          <name>CursorMove to ScrollWheel Option</name>
+          <name>CursorMove to ScrollWheel</name>
           <list>
             <item>
-              <name>Disable Horizontal ScrollWheel</name>
-              <sysctl>option.pointing_disable_horizontal_scroll</sysctl>
+              <name>RightClick+CursorMove to ScrollWheel</name>
+              <sysctl>remap.pointing_relative_rightclick_to_scroll</sysctl>
+              <autogen>--PointingRelativeToScroll-- PointingButton::RIGHT</autogen>
             </item>
             <item>
-              <name>Disable Vertical ScrollWheel</name>
-              <sysctl>option.pointing_disable_vertical_scroll</sysctl>
+              <name>MiddleClick+CursorMove to ScrollWheel</name>
+              <sysctl>remap.pointing_relative_middleclick_to_scroll</sysctl>
+              <autogen>--PointingRelativeToScroll-- PointingButton::MIDDLE</autogen>
+            </item>
+            <item>
+              <name>MouseButton4+CursorMove to ScrollWheel</name>
+              <sysctl>remap.pointing_relative_mousebutton4_to_scroll</sysctl>
+              <autogen>--PointingRelativeToScroll-- PointingButton::BUTTON4</autogen>
+            </item>
+            <item>
+              <name>LeftClick+RightClick+CursorMove to ScrollWheel</name>
+              <sysctl>remap.pointing_relative_LRClick_to_scroll</sysctl>
+              <autogen>--PointingRelativeToScroll-- PointingButton::LEFT | PointingButton::RIGHT</autogen>
+            </item>
+            <item>
+              <name>Control+RightClick+CursorMove to ScrollWheel</name>
+              <sysctl>remap.pointing_relative_controlRightClick_to_scroll</sysctl>
+              <autogen>--PointingRelativeToScroll-- PointingButton::RIGHT, VK_CONTROL</autogen>
+            </item>
+            <item>
+              <name>Shift+RightClick+CursorMove to ScrollWheel</name>
+              <sysctl>remap.pointing_relative_shiftRightClick_to_scroll</sysctl>
+              <autogen>--PointingRelativeToScroll-- PointingButton::RIGHT, VK_SHIFT</autogen>
+            </item>
+            <item>
+              <name>FN+CursorMove to ScrollWheel</name>
+              <sysctl>remap.pointing_relative_fn_to_scroll</sysctl>
+              <autogen>--PointingRelativeToScroll-- PointingButton::NONE, ModifierFlag::FN</autogen>
+            </item>
+            <item>
+              <name>Option+CursorMove to ScrollWheel</name>
+              <sysctl>remap.pointing_relative_option_to_scroll</sysctl>
+              <autogen>--PointingRelativeToScroll-- PointingButton::NONE, VK_OPTION</autogen>
+            </item>
+            <item>
+              <name>CursorMove to ScrollWheel Option</name>
+              <list>
+                <item>
+                  <name>Disable Horizontal ScrollWheel</name>
+                  <sysctl>option.pointing_disable_horizontal_scroll</sysctl>
+                </item>
+                <item>
+                  <name>Disable Vertical ScrollWheel</name>
+                  <sysctl>option.pointing_disable_vertical_scroll</sysctl>
+                </item>
+              </list>
+            </item>
+          </list>
+        </item>
+        <item>
+          <name>Remap Button</name>
+          <list>
+            <item>
+              <name>Control+LeftClick to MiddleClick</name>
+              <sysctl>remap.pointing_controlLeftclick2middleclick</sysctl>
+              <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, VK_CONTROL, PointingButton::MIDDLE</autogen>
+            </item>
+            <item>
+              <name>FN+LeftClick to MiddleClick</name>
+              <sysctl>remap.pointing_fnLeftclick2middleclick</sysctl>
+              <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, ModifierFlag::FN, PointingButton::MIDDLE</autogen>
+            </item>
+            <item>
+              <name>Option+LeftClick to MiddleClick</name>
+              <sysctl>remap.pointing_optionLeftclick2middleclick</sysctl>
+              <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, VK_OPTION, PointingButton::MIDDLE</autogen>
             </item>
           </list>
         </item>
