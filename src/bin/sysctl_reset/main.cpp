@@ -18,13 +18,21 @@ namespace {
     CFStringRef result = SCDynamicStoreCopyConsoleUser(NULL, &consoleUID, NULL);
     // TRUE if no user is logged in
     if (result == NULL) return true;
+
+    bool isvalid = false;
+    // If the current console user is "loginwindow", treat that as TRUE.
+    if (CFEqual(result, CFSTR("loginwindow"))) {
+      isvalid = true;
+    } else {
+      isvalid = (getuid() == consoleUID);
+    }
     CFRelease(result);
 
-    return (getuid() == consoleUID);
+    return isvalid;
   }
 
   void
-  set(const char *name, int value)
+  set(const char* name, int value)
   {
     char entry[512];
     snprintf(entry, sizeof(entry), "keyremap4macbook.%s", name);
@@ -52,10 +60,10 @@ namespace {
 
 
 int
-main(int argc, char **argv)
+main(int argc, char** argv)
 {
   if (! verifyUser()) {
-    fprintf(stderr, "Permission denied\n");
+    std::cerr << "Permission denied" << std::endl;
     return 1;
   }
 
@@ -67,7 +75,7 @@ main(int argc, char **argv)
 
     ifs.getline(line, sizeof(line));
 
-    char *p = strchr(line, ' ');
+    char* p = strchr(line, ' ');
     if (! p) continue;
     *p = '\0';
 
