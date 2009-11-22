@@ -42,7 +42,12 @@
 - (void) observer_NSWorkspaceSessionDidBecomeActiveNotification:(NSNotification*)notification
 {
   NSLog(@"observer_NSWorkspaceSessionDidBecomeActiveNotification");
-  system("/bin/launchctl load /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.sysctl_confd.plist");
+
+  // Note: The console user is "real login user" or "loginwindow",
+  //       when NSWorkspaceSessionDidBecomeActiveNotification, NSWorkspaceSessionDidResignActiveNotification are called.
+
+  system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_reset terminate");
+
   // reload myself
   [NSApp terminate:self];
 }
@@ -50,7 +55,10 @@
 - (void) observer_NSWorkspaceSessionDidResignActiveNotification:(NSNotification*)notification
 {
   NSLog(@"observer_NSWorkspaceSessionDidResignActiveNotification");
-  system("/bin/launchctl unload /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.sysctl_confd.plist");
+
+  // Note: The console user is "real login user" or "loginwindow",
+  //       when NSWorkspaceSessionDidBecomeActiveNotification, NSWorkspaceSessionDidResignActiveNotification are called.
+  system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_reset terminate");
 }
 
 // ------------------------------------------------------------
