@@ -41,7 +41,7 @@ main()
     if (exitstatus != 0) goto nextLoop;
 
   nextLoop:
-    sleep(3);
+    sleep(1);
   }
 
   return 0;
