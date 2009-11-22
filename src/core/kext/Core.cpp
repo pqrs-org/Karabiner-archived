@@ -48,17 +48,21 @@ namespace org_pqrs_KeyRemap4MacBook {
       void
       refreshHookedDevice(OSObject *owner, IOTimerEventSource *sender)
       {
+        IOLockWrapper::ScopedLock lk(timer_refresh.getlock());
+
         ListHookedKeyboard::instance().refresh();
         ListHookedConsumer::instance().refresh();
         ListHookedPointing::instance().refresh();
 
-        if (sender) sender->setTimeoutMS(REFRESH_DEVICE_INTERVAL);
+        timer_refresh.setTimeoutMS(REFRESH_DEVICE_INTERVAL);
       }
 
       // ----------------------------------------
       void
       setRepeat_keyboard(const IOHIKeyboard *kbd, const Params_KeyboardEventCallBack &params)
       {
+        IOLockWrapper::ScopedLock lk(timer_repeat_keyboard.getlock());
+
         if (params.eventType == KeyEvent::DOWN) {
           keyboardRepeatInfo.kbd = kbd;
           keyboardRepeatInfo.params = params;
@@ -79,6 +83,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       void
       setRepeat_keyboard_extra(IOHIKeyboard *kbd, const Params_KeyboardEventCallBack &params, ExtraRepeatFunc::ExtraRepeatFunc func, unsigned int flags)
       {
+        IOLockWrapper::ScopedLock lk(timer_repeat_keyboard_extra.getlock());
+
         if (func) {
           keyboardRepeatInfo_extra.kbd = kbd;
           keyboardRepeatInfo_extra.func = func;
@@ -97,31 +103,45 @@ namespace org_pqrs_KeyRemap4MacBook {
       void
       doRepeat_keyboard(OSObject *owner, IOTimerEventSource *sender)
       {
+        IOLockWrapper::ScopedLock lk(timer_repeat_keyboard.getlock());
+
         HookedKeyboard *p = ListHookedKeyboard::instance().get(keyboardRepeatInfo.kbd);
         if (! p) return;
 
-        RemapUtil::fireKey(p->getOrig_keyboardEventAction(), keyboardRepeatInfo.params);
-        sender->setTimeoutMS(config.get_repeat_wait());
+        KeyboardEventCallback callback = p->getOrig_keyboardEventAction();
+        if (! callback) {
+          IOLog("KeyRemap4MacBook -Info- doRepeat_keyboard: callback == NULL (== don't remap xxx is enabled). \n");
+          return;
+        }
+
+        RemapUtil::fireKey(callback, keyboardRepeatInfo.params);
+        timer_repeat_keyboard.setTimeoutMS(config.get_repeat_wait());
       }
 
       void
       doRepeat_keyboard_extra(OSObject *owner, IOTimerEventSource *sender)
       {
+        IOLockWrapper::ScopedLock lk(timer_repeat_keyboard_extra.getlock());
+
         HookedKeyboard *p = ListHookedKeyboard::instance().get(keyboardRepeatInfo_extra.kbd);
         if (! p) return;
 
-        if (p->getOrig_keyboardEventAction()) {
-          keyboardRepeatInfo_extra.func(p->getOrig_keyboardEventAction(),
-                                        keyboardRepeatInfo_extra.params.target,
-                                        keyboardRepeatInfo_extra.params.flags,
-                                        keyboardRepeatInfo_extra.params.keyboardType,
-                                        keyboardRepeatInfo_extra.params.ts,
-                                        keyboardRepeatInfo_extra.params.sender,
-                                        keyboardRepeatInfo_extra.params.refcon);
+        KeyboardEventCallback callback = p->getOrig_keyboardEventAction();
+        if (! callback) {
+          IOLog("KeyRemap4MacBook -Info- doRepeat_keyboard_extra: callback == NULL (== don't remap xxx is enabled). \n");
+          return;
         }
+
+        keyboardRepeatInfo_extra.func(callback,
+                                      keyboardRepeatInfo_extra.params.target,
+                                      keyboardRepeatInfo_extra.params.flags,
+                                      keyboardRepeatInfo_extra.params.keyboardType,
+                                      keyboardRepeatInfo_extra.params.ts,
+                                      keyboardRepeatInfo_extra.params.sender,
+                                      keyboardRepeatInfo_extra.params.refcon);
         ++(keyboardRepeatInfo_extra.counter);
 
-        sender->setTimeoutMS(config.get_repeat_wait());
+        timer_repeat_keyboard_extra.setTimeoutMS(config.get_repeat_wait());
       }
 
       void
