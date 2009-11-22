@@ -30,7 +30,6 @@ main(int argc, char **argv)
   }
 
   if (! verifyUser()) {
-    fprintf(stderr, "Permission denied\n");
     return 1;
   }
 
