@@ -3,34 +3,17 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <signal.h>
-#include <iostream>
 
 namespace {
   void sigfunc(int param) {
     system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_reset terminate");
     exit(0);
   }
-
-  bool doFirstReset(void) {
-    // We wait till a user session is ready.
-    const int MAX_TRY_COUNT = 5;
-
-    for (int trycount = 0; trycount < MAX_TRY_COUNT; ++trycount) {
-      int exitstatus = system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_reset");
-      if (exitstatus == 0) return true;
-    }
-    return false;
-  }
 }
 
 int
 main()
 {
-  if (! doFirstReset()) {
-    std::cerr << "[ERROR] KeyRemap4MacBook_sysctl_confd: can't reset configuration." << std::endl;
-    exit(1);
-  }
-
   signal(SIGHUP, sigfunc);
   signal(SIGTERM, sigfunc);
 
@@ -47,9 +30,15 @@ main()
       goto nextLoop;
     }
 
-    system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_reset");
-    system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set initialized 1");
-    system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_ctl load");
+    int exitstatus;
+    exitstatus = system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_reset");
+    if (exitstatus != 0) goto nextLoop;
+
+    exitstatus = system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set initialized 1");
+    if (exitstatus != 0) goto nextLoop;
+
+    exitstatus = system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_ctl load");
+    if (exitstatus != 0) goto nextLoop;
 
   nextLoop:
     sleep(3);
