@@ -19,20 +19,28 @@ namespace org_pqrs_KeyRemap4MacBook {
       timer_->release();
       timer_ = NULL;
     }
+
+    lock_ = IOLockWrapper::alloc();
   }
 
   void
   TimerWrapper::terminate(void)
   {
-    if (timer_) {
-      timer_->cancelTimeout();
-      if (workloop_) {
-        workloop_->removeEventSource(timer_);
+    {
+      IOLockWrapper::ScopedLock lk(lock_);
+
+      if (timer_) {
+        timer_->cancelTimeout();
+        if (workloop_) {
+          workloop_->removeEventSource(timer_);
+        }
+        timer_->release();
+        timer_ = NULL;
       }
-      timer_->release();
-      timer_ = NULL;
+      workloop_ = NULL;
     }
-    workloop_ = NULL;
+
+    IOLockWrapper::free(lock_);
   }
 
   IOReturn
