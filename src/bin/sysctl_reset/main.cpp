@@ -63,7 +63,6 @@ int
 main(int argc, char** argv)
 {
   if (! verifyUser()) {
-    std::cerr << "Permission denied" << std::endl;
     return 1;
   }
 
