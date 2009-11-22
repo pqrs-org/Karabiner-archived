@@ -71,6 +71,9 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (result != kIOReturnSuccess) {
             IOLog("[KeyRemap4MacBook ERROR] setTimeoutMS failed\n");
           }
+          if (config.debug_devel) {
+            IOLog("KeyRemap4MacBook -Info- setRepeat_keyboard key:%d\n", params.key);
+          }
 
         } else if (params.eventType == KeyEvent::MODIFY || keyboardRepeatInfo.params.key == params.key) {
           if (config.debug_devel) {
@@ -97,6 +100,23 @@ namespace org_pqrs_KeyRemap4MacBook {
         } else {
           timer_repeat_keyboard_extra.cancelTimeout();
           keyboardRepeatInfo_extra.func = NULL;
+        }
+      }
+
+      void
+      cancelRepeat(void)
+      {
+        if (config.debug_devel) {
+          IOLog("KeyRemap4MacBook -Info- cancelRepeat\n");
+        }
+
+        {
+          IOLockWrapper::ScopedLock lk(timer_repeat_keyboard.getlock());
+          timer_repeat_keyboard.cancelTimeout();
+        }
+        {
+          IOLockWrapper::ScopedLock lk(timer_repeat_keyboard_extra.getlock());
+          timer_repeat_keyboard_extra.cancelTimeout();
         }
       }
 
@@ -344,6 +364,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       if (NumHeldDownKeys::iszero()) {
         NumHeldDownKeys::reset();
+        cancelRepeat();
         FlagStatus::reset();
         params->flags = FlagStatus::makeFlags(params->key);
         RemapUtil::fireModifiers(p->getOrig_keyboardEventAction(), *params);
@@ -394,6 +415,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (ex_remapKeyCode != KeyCode::NONE) {
           RemapUtil::fireKey(hk->getOrig_keyboardEventAction(), callbackparams);
           setRepeat_keyboard(hk->get(), callbackparams);
+          setRepeat_keyboard_extra(hk->get(), callbackparams, NULL, 0);
         }
         ListFireExtraKey::fire(hk->getOrig_keyboardEventAction(), callbackparams);
       }
