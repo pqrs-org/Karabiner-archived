@@ -142,6 +142,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(orig_keyboardEventAction);
 
+    orig_keyboardEventAction = NULL;
+    orig_keyboardEventTarget = NULL;
+
     return true;
   }
 }

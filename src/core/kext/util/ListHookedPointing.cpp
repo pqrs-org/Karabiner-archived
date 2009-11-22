@@ -187,6 +187,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
 
+    orig_relativePointerEventAction = NULL;
+    orig_scrollWheelEventAction = NULL;
+    orig_relativePointerEventTarget = NULL;
+    orig_scrollWheelEventTarget = NULL;
+
     return result;
   }
 }
