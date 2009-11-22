@@ -69,6 +69,9 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
 
         } else if (params.eventType == KeyEvent::MODIFY || keyboardRepeatInfo.params.key == params.key) {
+          if (config.debug_devel) {
+            IOLog("KeyRemap4MacBook -Info- cancel keyrepeat\n");
+          }
           timer_repeat_keyboard.cancelTimeout();
         }
       }
