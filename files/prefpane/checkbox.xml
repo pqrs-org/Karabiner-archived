@@ -65,6 +65,11 @@
               <autogen>--PointingRelativeToScroll-- PointingButton::RIGHT, VK_SHIFT</autogen>
             </item>
             <item>
+              <name>Command+Control+CursorMove to ScrollWheel</name>
+              <sysctl>remap.pointing_relative_commandControl_to_scroll</sysctl>
+              <autogen>--PointingRelativeToScroll-- PointingButton::NONE, VK_COMMAND | VK_CONTROL</autogen>
+            </item>
+            <item>
               <name>FN+CursorMove to ScrollWheel</name>
               <sysctl>remap.pointing_relative_fn_to_scroll</sysctl>
               <autogen>--PointingRelativeToScroll-- PointingButton::NONE, ModifierFlag::FN</autogen>
