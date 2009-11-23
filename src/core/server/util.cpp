@@ -1,6 +1,8 @@
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/sysctl.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include "server.hpp"
 #include "util.h"
@@ -22,4 +24,43 @@ void
 server_run(void)
 {
   server.doLoop();
+}
+
+// ----------------------------------------------------------------------
+namespace {
+  KeyRemap4MacBook_server::Mutex mutex_sysctl;
+}
+
+void
+sysctl_reset(void)
+{
+  KeyRemap4MacBook_server::Mutex::ScopedLock lk(mutex_sysctl);
+  system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_reset terminate");
+}
+
+void
+sysctl_load(void)
+{
+  KeyRemap4MacBook_server::Mutex::ScopedLock lk(mutex_sysctl);
+
+  // --------------------------------------------------
+  // check already initialized
+  const char *name = "keyremap4macbook.initialized";
+
+  int value;
+  size_t len = sizeof(value);
+  int error = sysctlbyname(name, &value, &len, NULL, 0);
+  if (error) return;
+  if (value != 0) return;
+
+  // --------------------------------------------------
+  int exitstatus;
+  exitstatus = system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_reset");
+  if (exitstatus != 0) return;
+
+  exitstatus = system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set initialized 1");
+  if (exitstatus != 0) return;
+
+  exitstatus = system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_ctl load");
+  if (exitstatus != 0) return;
 }
