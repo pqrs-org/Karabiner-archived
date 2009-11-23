@@ -35,6 +35,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     inline bool isEvent_Modify(const RemapParams &remapParams) {
       return (remapParams.params)->eventType == KeyEvent::MODIFY;
     }
+    inline bool isAlreadyRemapped(const RemapParams& remapParams) {
+      return (remapParams.isremapped == true);
+    }
     inline void drop(const RemapParams &remapParams) {
       (remapParams.params)->key = KeyCode::NONE;
       remapParams.isremapped = true;
