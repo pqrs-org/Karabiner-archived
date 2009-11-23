@@ -231,6 +231,16 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
 
   // --------------------
+  // ex. Ignore JIS_KANA x 2. (validate only the first once)
+  class IgnoreMultipleSameKeyPress {
+  public:
+    bool remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags = 0);
+
+  private:
+    unsigned int lastkeycode_;
+  };
+
+  // --------------------
   extern ListFireRelativePointer listFireRelativePointer;
 
   // --------------------

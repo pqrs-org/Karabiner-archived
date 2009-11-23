@@ -3497,6 +3497,12 @@
           <autogen>--DoublePressModifier-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L, FireFunc::firefunc_return</autogen>
         </item>
         <item>
+          <name>IgnoreMultipleSameKeyPress</name>
+          <appendix>Ignore the multiple press of 'Shift+A'</appendix>
+          <sysctl>remap.samples_ignore_multiple_a</sysctl>
+          <autogen>--IgnoreMultipleSameKeyPress-- KeyCode::A, VK_SHIFT</autogen>
+        </item>
+        <item>
           <name>KeyToPointingButton</name>
           <appendix>Control_L to LeftClick</appendix>
           <sysctl>remap.samples_controlL2leftclick</sysctl>
