@@ -16,6 +16,8 @@ clean:
 	rm -f *.xcodeproj/*.pbxuser
 
 reload:
+	@launchctl unload /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.server.plist
 	sudo ./scripts/unload.sh
 	sudo ./scripts/load.sh
-	launchctl stop org.pqrs.KeyRemap4MacBook.server
+	@launchctl load /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.server.plist
+	@./scripts/wait.sh

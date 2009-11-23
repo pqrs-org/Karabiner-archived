@@ -1859,6 +1859,7 @@
           <name>Control+K to Command+Shift+Right,Command+X</name>
           <sysctl>option.emacsmode_controlK</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+          <autogen>--KeyToKey-- KeyCode::K, VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
           <name>Control+W to Command+X</name>

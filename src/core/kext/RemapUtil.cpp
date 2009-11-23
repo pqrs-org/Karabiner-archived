@@ -173,7 +173,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     (remapParams.params)->key = toKeyCode;
-    *(remapParams.isremapped) = true;
+    remapParams.isremapped = true;
     remapFlags(fromFlags, toFlags, toKeyCode, isKeyDown);
 
     return true;
@@ -554,36 +554,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  FireFunc::firefunc_emacsmode_controlK(const RemapParams &params, bool first)
-  {
-    static int counter = 0;
-    if (first) counter = 0;
-
-    if (counter % 2 == 0) {
-      // Command+Shift+Right
-      ListFireExtraKey::add(KeyEvent::DOWN, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::CURSOR_RIGHT);
-      ListFireExtraKey::add(KeyEvent::UP,   ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::CURSOR_RIGHT);
-
-      // Command+X
-      ListFireExtraKey::add(KeyEvent::DOWN, ModifierFlag::COMMAND_L, KeyCode::X);
-      ListFireExtraKey::add(KeyEvent::UP,   ModifierFlag::COMMAND_L, KeyCode::X);
-
-    } else {
-      // Forward Delete
-      ListFireExtraKey::add(KeyEvent::DOWN, 0, KeyCode::FORWARD_DELETE);
-      ListFireExtraKey::add(KeyEvent::UP,   0, KeyCode::FORWARD_DELETE);
-    }
-
-    ++counter;
-  }
-
-  void
-  FireFunc::firefunc_emacsmode_controlK_2nd(const RemapParams &params)
-  {
-    firefunc_emacsmode_controlK(params, false);
-  }
-
-  void
   FireFunc::firefunc_french_backslash(const RemapParams &params)
   {
     ListFireExtraKey::addKey(ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L, KeyCode::DOT);
@@ -672,79 +642,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     params.eventType = KeyEvent::UP;
     RemapUtil::fireKey(callback, params);
-  }
-
-  void
-  ExtraRepeatFunc::call_firefunc(FireFunc::FireFunc firefunc, KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon)
-  {
-    if (callback == NULL) return;
-
-    ListFireExtraKey::reset();
-    {
-      RemapParams params;
-      firefunc(params);
-    }
-    {
-      Params_KeyboardEventCallBack params = {
-        target, 0, flags, KeyCode::SPACE,
-        0, 0, 0, 0,
-        keyboardType, false, ts, sender, refcon,
-      };
-      ListFireExtraKey::fire(callback, params);
-    }
-  }
-
-  void
-  ExtraRepeatFunc::extraRepeatFunc_emacsmode_controlK(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon)
-  {
-    call_firefunc(FireFunc::firefunc_emacsmode_controlK_2nd, callback, target, flags, keyboardType, ts, sender, refcon);
-  }
-
-  namespace ExtraRepeatFunc {
-    struct KeyCombination {
-      KeyCode::KeyCode keyCode1;
-      KeyCode::KeyCode keyCode2;
-      CharCode::CharCode charCode1;
-      CharCode::CharCode charCode2;
-    } keyCombination;
-  }
-
-  void
-  ExtraRepeatFunc::register_keyCombination(KeyCode::KeyCode keyCode1, CharCode::CharCode charCode1, KeyCode::KeyCode keyCode2, CharCode::CharCode charCode2)
-  {
-    keyCombination.keyCode1 = keyCode1;
-    keyCombination.keyCode2 = keyCode2;
-    keyCombination.charCode1 = charCode1;
-    keyCombination.charCode2 = charCode2;
-  }
-
-  void
-  ExtraRepeatFunc::extraRepeatFunc_keyCombination(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon)
-  {
-    if (callback == NULL) return;
-
-    Params_KeyboardEventCallBack params = {
-      target, 0, flags, 0,
-      0, 0, 0, 0,
-      keyboardType, false, ts, sender, refcon,
-    };
-
-    if (keyCombination.keyCode1 != KeyCode::NONE) {
-      params.eventType = KeyEvent::DOWN;
-      params.key = keyCombination.keyCode1;
-      RemapUtil::fireKey(callback, params);
-
-      params.eventType = KeyEvent::UP;
-      RemapUtil::fireKey(callback, params);
-    }
-    if (keyCombination.keyCode2 != KeyCode::NONE) {
-      params.eventType = KeyEvent::DOWN;
-      params.key = keyCombination.keyCode2;
-      RemapUtil::fireKey(callback, params);
-
-      params.eventType = KeyEvent::UP;
-      RemapUtil::fireKey(callback, params);
-    }
   }
 
   // ----------------------------------------
@@ -880,7 +777,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   IgnoreMultipleSameKeyPress::remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags)
   {
-    if (*(remapParams.isremapped) || FlagStatus::makeFlags(remapParams) != fromFlags) {
+    if (remapParams.isremapped || FlagStatus::makeFlags(remapParams) != fromFlags) {
       lastkeycode_ = KeyCode::NONE;
       return false;
     }
