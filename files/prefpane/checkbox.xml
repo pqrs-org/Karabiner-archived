@@ -3352,6 +3352,15 @@
             <item>
               <name>Use KAWASHIMA Special Keyboard Layout</name>
               <sysctl>remap.jis_layout_kawashima</sysctl>
+              <inputmodedetail_only>INPUTMODE_DETAIL_JAPANESE_HIRAGANA, INPUTMODE_DETAIL_JAPANESE</inputmodedetail_only>
+              <!-- A -> Q, A+Shift_L -> 1, A+Shift_R -> Q[ -->
+              <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::SHIFT_L, KeyCode::KEY_1</autogen>
+              <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::SHIFT_R, KeyCode::Q, KeyCode::BRACKET_LEFT</autogen>
+              <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::NONE, KeyCode::Q</autogen>
+              <!-- J -> E, J+Shift_L -> A[, J+Shift_R -> A -->
+              <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::SHIFT_L, KeyCode::A, KeyCode::BRACKET_LEFT</autogen>
+              <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::SHIFT_R, KeyCode::A</autogen>
+              <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::NONE, KeyCode::E</autogen>
             </item>
             <item>
               <name>Use Windows Kana-Input Layout on ASCII Keyboard</name>
