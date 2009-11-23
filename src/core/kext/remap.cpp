@@ -128,14 +128,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_jis_underscore2backslash) return;
 
-    if (remapParams.ex_origKey != KeyCode::JIS_UNDERSCORE) return;
-
-    if (! FlagStatus::isHeldDown_shift()) {
-      // hack to fire "the true backslash (not yen)" on JIS Keyboard.
+    static RemapUtil::KeyToKey keytokey;
+    if (keytokey.remap(remapParams, KeyCode::JIS_UNDERSCORE, ModifierFlag::NONE, KeyCode::BACKSLASH)) {
       (remapParams.params)->keyboardType = KeyboardType::MACBOOK;
-
-      static RemapUtil::KeyToKey keytokey;
-      keytokey.remap(remapParams, KeyCode::JIS_UNDERSCORE, KeyCode::BACKSLASH);
     }
   }
 
