@@ -3182,6 +3182,11 @@
               <sysctl>remap.jis_unify_kana_to_eisuu</sysctl>
               <autogen>--JISToggleEisuuKana-- KeyCode::JIS_EISUU</autogen>
             </item>
+            <item>
+              <name>Ignore the multiple press of EISUU</name>
+              <sysctl>remap.jis_ignore_multiple_eisuu</sysctl>
+              <autogen>--IgnoreMultipleSameKeyPress-- KeyCode::JIS_EISUU</autogen>
+            </item>
           </list>
         </item>
         <item>
@@ -3248,6 +3253,11 @@
               <name>Use KANA as KANA/EISUU (toggle)</name>
               <sysctl>remap.jis_unify_eisuu_to_kana</sysctl>
               <autogen>--JISToggleEisuuKana-- KeyCode::JIS_KANA</autogen>
+            </item>
+            <item>
+              <name>Ignore the multiple press of KANA</name>
+              <sysctl>remap.jis_ignore_multiple_kana</sysctl>
+              <autogen>--IgnoreMultipleSameKeyPress-- KeyCode::JIS_KANA</autogen>
             </item>
           </list>
         </item>
