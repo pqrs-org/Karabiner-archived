@@ -492,16 +492,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  FireFunc::firefunc_commandO(const RemapParams &params)
-  {
-    // fire only if no-modifiers
-    if (FlagStatus::makeFlags(params) != 0) return;
-
-    ListFireExtraKey::add(KeyEvent::DOWN, ModifierFlag::COMMAND_L, KeyCode::O);
-    ListFireExtraKey::add(KeyEvent::UP,   ModifierFlag::COMMAND_L, KeyCode::O);
-  }
-
-  void
   FireFunc::firefunc_commandSpace(const RemapParams &params)
   {
     // fire only if no-modifiers
