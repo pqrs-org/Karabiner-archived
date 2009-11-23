@@ -202,33 +202,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       keytokey.remap(remapParams, KeyCode::JIS_UNDERSCORE, KeyCode::BACKQUOTE);
     }
   }
-
-  static void
-  remap_jis_layout_kawashima(const RemapParams &remapParams)
-  {
-    if (! config.remap_jis_layout_kawashima) return;
-
-    if (remapParams.workspacedata.inputmodedetail != KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_HIRAGANA &&
-        remapParams.workspacedata.inputmodedetail != KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE) {
-      return;
-    }
-
-    // A -> TA ( Q )
-    // A+Shift_L -> NU ( 1 )
-    // A+Shift_R -> DA ( Q[ )
-    RemapUtil::keyToKey_dependingShift(remapParams, KeyCode::A,
-                                       KeyCode::Q, CharCode::Q, KeyCode::NONE, CharCode::NONE,
-                                       KeyCode::KEY_1, CharCode::KEY_1, KeyCode::NONE, CharCode::NONE,
-                                       KeyCode::Q, CharCode::Q, KeyCode::BRACKET_LEFT, CharCode::BRACKET_LEFT);
-
-    // J -> I ( E )
-    // J+Shift_L -> DI ( A[ )
-    // J+Shift_R -> TI ( A )
-    RemapUtil::keyToKey_dependingShift(remapParams, KeyCode::J,
-                                       KeyCode::E, CharCode::E, KeyCode::NONE, CharCode::NONE,
-                                       KeyCode::A, CharCode::A, KeyCode::BRACKET_LEFT, CharCode::BRACKET_LEFT,
-                                       KeyCode::A, CharCode::A, KeyCode::NONE, CharCode::NONE);
-  }
 }
 
 // ----------------------------------------------------------------------
@@ -260,7 +233,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &remapParams)
   remap_jis_app_vi_eisuu2eisuu_escape(remapParams);
 
   remap_jis_jansi(remapParams);
-  remap_jis_layout_kawashima(remapParams);
 
   // ------------------------------------------------------------
   // *** Note: we need to call remap_emacsmode as possible late. ***

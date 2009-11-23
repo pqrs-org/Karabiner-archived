@@ -201,53 +201,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     return true;
   }
 
-  namespace {
-    void
-    keyToKeyCombination(const RemapParams &remapParams, KeyCode::KeyCode fromKeyCode,
-                        KeyCode::KeyCode toKeyCode1, CharCode::CharCode toCharCode1,
-                        KeyCode::KeyCode toKeyCode2, CharCode::CharCode toCharCode2)
-    {
-      if (! RemapUtil::isKeyDown(remapParams, fromKeyCode)) return;
-
-      unsigned int flags = FlagStatus::makeFlags(remapParams);
-      ListFireExtraKey::addKey(flags, toKeyCode1);
-      if (toKeyCode2 != KeyCode::NONE) {
-        ListFireExtraKey::addKey(flags, toKeyCode2);
-      }
-      RemapUtil::drop(remapParams);
-
-      ExtraRepeatFunc::register_keyCombination(toKeyCode1, toCharCode1, toKeyCode2, toCharCode2);
-      *(remapParams.ex_extraRepeatFunc) = ExtraRepeatFunc::extraRepeatFunc_keyCombination;
-      *(remapParams.ex_extraRepeatFlags) = flags;
-    }
-  }
-
-  bool
-  RemapUtil::keyToKey_dependingShift(const RemapParams &remapParams, KeyCode::KeyCode fromKeyCode,
-                                     KeyCode::KeyCode toKeyCode_noflag1, CharCode::CharCode toCharCode_noflag1,
-                                     KeyCode::KeyCode toKeyCode_noflag2, CharCode::CharCode toCharCode_noflag2,
-                                     KeyCode::KeyCode toKeyCode_shiftL1, CharCode::CharCode toCharCode_shiftL1,
-                                     KeyCode::KeyCode toKeyCode_shiftL2, CharCode::CharCode toCharCode_shiftL2,
-                                     KeyCode::KeyCode toKeyCode_shiftR1, CharCode::CharCode toCharCode_shiftR1,
-                                     KeyCode::KeyCode toKeyCode_shiftR2, CharCode::CharCode toCharCode_shiftR2)
-  {
-    if (! RemapUtil::isKey(remapParams, fromKeyCode)) return false;
-
-    if (FlagStatus::isHeldDown(ModifierFlag::SHIFT_L)) {
-      FlagStatus::temporary_decrease(ModifierFlag::SHIFT_L);
-      keyToKeyCombination(remapParams, fromKeyCode, toKeyCode_shiftL1, toCharCode_shiftL1, toKeyCode_shiftL2, toCharCode_shiftL2);
-
-    } else if (FlagStatus::isHeldDown(ModifierFlag::SHIFT_R)) {
-      FlagStatus::temporary_decrease(ModifierFlag::SHIFT_R);
-      keyToKeyCombination(remapParams, fromKeyCode, toKeyCode_shiftR1, toCharCode_shiftR1, toKeyCode_shiftR2, toCharCode_shiftR2);
-
-    } else {
-      keyToKeyCombination(remapParams, fromKeyCode, toKeyCode_noflag1, toCharCode_noflag1, toKeyCode_noflag2, toCharCode_noflag2);
-    }
-
-    return true;
-  }
-
   // ----------
   void
   RemapUtil::keyToPointingButton(const RemapParams &remapParams, KeyCode::KeyCode fromKeyCode, PointingButton::PointingButton toButton)
