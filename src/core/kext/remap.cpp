@@ -75,38 +75,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   static void
-  remap_emacsmode(const RemapParams &remapParams)
-  {
-    bool is_terminal = false;
-    if (remapParams.workspacedata.type == KeyRemap4MacBook_bridge::GetWorkspaceData::EMACS) is_terminal = true;
-    if (remapParams.workspacedata.type == KeyRemap4MacBook_bridge::GetWorkspaceData::TERMINAL) is_terminal = true;
-    bool is_virtualmachine = false;
-    if (remapParams.workspacedata.type == KeyRemap4MacBook_bridge::GetWorkspaceData::VIRTUALMACHINE) is_virtualmachine = true;
-    if (remapParams.workspacedata.type == KeyRemap4MacBook_bridge::GetWorkspaceData::REMOTEDESKTOPCONNECTION) is_virtualmachine = true;
-    bool is_x11 = (remapParams.workspacedata.type == KeyRemap4MacBook_bridge::GetWorkspaceData::X11);
-
-    bool ignore = is_terminal || is_virtualmachine || is_x11;
-
-    if (config.option_emacsmode_controlK && ! ignore) {
-      static bool firstcall = true;
-
-      if ((remapParams.params)->key != KeyCode::K) {
-        firstcall = true;
-
-      } else if (FlagStatus::isHeldDown_control()) {
-        if (RemapUtil::isEvent_Down(remapParams)) {
-          FireFunc::firefunc_emacsmode_controlK(remapParams, firstcall);
-          firstcall = false;
-          *(remapParams.ex_extraRepeatFunc) = ExtraRepeatFunc::extraRepeatFunc_emacsmode_controlK;
-          *(remapParams.ex_extraRepeatFlags) = 0;
-        }
-        RemapUtil::drop(remapParams);
-      }
-    }
-  }
-
-  // ----------------------------------------
-  static void
   remap_jis_eisuu2commandL_eisuu_eisuu2optionL_term(const RemapParams &remapParams)
   {
     if (! config.remap_jis_eisuu2commandL_eisuu_eisuu2optionL_term) return;
@@ -225,11 +193,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &remapParams)
   remap_jis_app_vi_eisuu2eisuu_escape(remapParams);
 
   remap_jis_jansi(remapParams);
-
-  // ------------------------------------------------------------
-  // *** Note: we need to call remap_emacsmode as possible late. ***
-  // *** If qwerty2colemak is enabled, Control+H... works with Colemak Keyboard Layout. ***
-  remap_emacsmode(remapParams);
 
   // ------------------------------------------------------------
   // *** Note: we need to call remap_space2shift, remap_enter2optionL_commandSpace (has SandS like behavior) as possible late. ***

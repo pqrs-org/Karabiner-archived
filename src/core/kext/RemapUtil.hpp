@@ -37,7 +37,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
     inline void drop(const RemapParams &remapParams) {
       (remapParams.params)->key = KeyCode::NONE;
-      *(remapParams.isremapped) = true;
+      remapParams.isremapped = true;
     }
 
     inline bool isModifierOn(unsigned int flags, ModifierFlag::ModifierFlag f) {
@@ -153,8 +153,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void firefunc_return(const RemapParams &remapParams);
     void firefunc_space(const RemapParams &remapParams);
     void firefunc_tab(const RemapParams &remapParams);
-    void firefunc_emacsmode_controlK(const RemapParams &remapParams, bool first);
-    void firefunc_emacsmode_controlK_2nd(const RemapParams &remapParams);
     void firefunc_french_backslash(const RemapParams &remapParams);
     void firefunc_jis_kana(const RemapParams &remapParams);
     void firefunc_jis_kana_x2(const RemapParams &remapParams);
@@ -164,14 +162,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   namespace ExtraRepeatFunc {
-    void call_firefunc(FireFunc::FireFunc firefunc, KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon);
-
     void extraRepeatFunc_enter(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon);
     void extraRepeatFunc_space(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon);
-    void extraRepeatFunc_emacsmode_controlK(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon);
-
-    void register_keyCombination(KeyCode::KeyCode keyCode1, CharCode::CharCode charCode1, KeyCode::KeyCode keyCode2, CharCode::CharCode charCode2);
-    void extraRepeatFunc_keyCombination(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon);
   }
 
   // ----------------------------------------
