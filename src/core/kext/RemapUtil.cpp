@@ -671,8 +671,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (status) {
           status->temporary_decrease();
 
-          *(remapParams.ex_extraRepeatFunc) = extraRepeatFunc;
-          *(remapParams.ex_extraRepeatFlags) = FlagStatus::makeFlags(remapParams);
+          remapParams.ex_extraRepeatFunc = extraRepeatFunc;
+          remapParams.ex_extraRepeatFlags = FlagStatus::makeFlags(remapParams);
 
           status->temporary_increase();
         }

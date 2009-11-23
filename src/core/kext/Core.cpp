@@ -329,8 +329,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         params->key,
         isremapped,
         KeyRemap4MacBook_bridge::GetWorkspaceData::Reply(),
-        &ex_extraRepeatFunc,
-        &ex_extraRepeatFlags,
+        ex_extraRepeatFunc,
+        ex_extraRepeatFlags,
         keyboardRepeatInfo_extra.counter,
       };
       NumHeldDownKeys::set(remapParams);
