@@ -44,7 +44,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       flag = ! flag;
     }
 
-    (remapParams.params)->key = KeyCode::NONE;
+    RemapUtil::drop(remapParams);
   }
 
   // ----------------------------------------
