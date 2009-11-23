@@ -152,6 +152,13 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
           code_key += "}\n"
           func['key'] << name
 
+        when 'IgnoreMultipleSameKeyPress'
+          code_key += "{\n"
+          code_key += "static IgnoreMultipleSameKeyPress imsp;\n"
+          code_key += "if (imsp.remap(remapParams, #{params})) return;\n"
+          code_key += "}\n"
+          func['key'] << name
+
         when 'KeyToComsumer'
           code_key += "RemapUtil::keyToConsumer(remapParams, #{params});\n"
           func['key'] << name

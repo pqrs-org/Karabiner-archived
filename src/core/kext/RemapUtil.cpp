@@ -923,6 +923,29 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
+  bool
+  IgnoreMultipleSameKeyPress::remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags)
+  {
+    if (FlagStatus::makeFlags(remapParams) != fromFlags) {
+      lastkeycode_ = KeyCode::NONE;
+      return false;
+    }
+
+    if (static_cast<unsigned int>(fromKeyCode) == (remapParams.params)->key &&
+        static_cast<unsigned int>(fromKeyCode) == lastkeycode_) {
+      // disable event.
+      (remapParams.params)->key = KeyCode::NONE;
+      return true;
+    }
+
+    // set lastkeycode_ if KeyUp.
+    if (! RemapUtil::isKeyDown(remapParams, fromKeyCode)) {
+      lastkeycode_ = (remapParams.params)->key;
+    }
+    return false;
+  }
+
+  // ----------------------------------------
   void
   FirePointingScroll::fire(ScrollWheelEventCallback callback, OSObject *target, IOHIPointing *pointing, AbsoluteTime ts)
   {
