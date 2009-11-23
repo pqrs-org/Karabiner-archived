@@ -173,6 +173,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     (remapParams.params)->key = toKeyCode;
+    *(remapParams.isremapped) = true;
     remapFlags(fromFlags, toFlags, toKeyCode, isKeyDown);
 
     return true;
@@ -213,7 +214,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (toKeyCode2 != KeyCode::NONE) {
         ListFireExtraKey::addKey(flags, toKeyCode2);
       }
-      (remapParams.params)->key = KeyCode::NONE;
+      RemapUtil::drop(remapParams);
 
       ExtraRepeatFunc::register_keyCombination(toKeyCode1, toCharCode1, toKeyCode2, toCharCode2);
       *(remapParams.ex_extraRepeatFunc) = ExtraRepeatFunc::extraRepeatFunc_keyCombination;
@@ -276,7 +277,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       PointingButtonStatus::set(toButton, false);
     }
 
-    (remapParams.params)->key = KeyCode::NONE;
+    RemapUtil::drop(remapParams);
   }
 
   bool
@@ -293,7 +294,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     unsigned int flags = FlagStatus::makeFlags(toKeyCode);
     listFireConsumerKey.add(eventType, flags, toKeyCode);
 
-    (remapParams.params)->key = KeyCode::NONE;
+    RemapUtil::drop(remapParams);
     return true;
   }
 
@@ -926,15 +927,15 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   IgnoreMultipleSameKeyPress::remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags)
   {
-    if (FlagStatus::makeFlags(remapParams) != fromFlags) {
+    if (*(remapParams.isremapped) || FlagStatus::makeFlags(remapParams) != fromFlags) {
       lastkeycode_ = KeyCode::NONE;
       return false;
     }
 
-    if (static_cast<unsigned int>(fromKeyCode) == (remapParams.params)->key &&
+    if (RemapUtil::isKey(remapParams, fromKeyCode) &&
         static_cast<unsigned int>(fromKeyCode) == lastkeycode_) {
       // disable event.
-      (remapParams.params)->key = KeyCode::NONE;
+      RemapUtil::drop(remapParams);
       return true;
     }
 

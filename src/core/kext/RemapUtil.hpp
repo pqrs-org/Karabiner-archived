@@ -37,6 +37,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
     inline void drop(const RemapParams &remapParams) {
       (remapParams.params)->key = KeyCode::NONE;
+      *(remapParams.isremapped) = true;
     }
 
     inline bool isModifierOn(unsigned int flags, ModifierFlag::ModifierFlag f) {
