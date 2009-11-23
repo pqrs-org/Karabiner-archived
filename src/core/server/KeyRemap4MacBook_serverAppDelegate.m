@@ -51,12 +51,6 @@
 }
 
 // ------------------------------------------------------------
-- (void) observer_NSWorkspaceDidTerminateApplicationNotification:(NSNotification*)notification
-{
-  NSLog(@"observer_NSWorkspaceDidTerminateApplicationNotification");
-  sysctl_reset();
-}
-
 - (void) observer_NSWorkspaceSessionDidBecomeActiveNotification:(NSNotification*)notification
 {
   NSLog(@"observer_NSWorkspaceSessionDidBecomeActiveNotification");
@@ -81,11 +75,6 @@
 // ------------------------------------------------------------
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
   [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
-                                                      selector:@selector(observer_NSWorkspaceDidTerminateApplicationNotification:)
-                                                      name:NSWorkspaceDidTerminateApplicationNotification
-                                                      object:nil];
-
-  [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
                                                       selector:@selector(observer_NSWorkspaceDidActivateApplicationNotification:)
                                                       name:NSWorkspaceDidActivateApplicationNotification
                                                       object:nil];
@@ -108,6 +97,11 @@
   // ------------------------------------------------------------
   [NSThread detachNewThreadSelector:@selector(threadMain) toTarget:self withObject:nil];
   [NSThread detachNewThreadSelector:@selector(configThreadMain) toTarget:self withObject:nil];
+}
+
+- (void) applicationWillTerminate:(NSNotification*)aNotification {
+  NSLog(@"applicationWillTerminate");
+  sysctl_reset();
 }
 
 @end
