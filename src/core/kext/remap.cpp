@@ -140,12 +140,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_jis_yen2backslash) return;
 
-    if (remapParams.ex_origKey == KeyCode::JIS_YEN) {
-      // hack to fire "the true backslash (not yen)" on JIS Keyboard.
+    static RemapUtil::KeyToKey keytokey;
+    if (keytokey.remap(remapParams, KeyCode::JIS_YEN, KeyCode::BACKSLASH)) {
       (remapParams.params)->keyboardType = KeyboardType::MACBOOK;
-
-      static RemapUtil::KeyToKey keytokey;
-      keytokey.remap(remapParams, KeyCode::JIS_YEN, KeyCode::BACKSLASH);
     }
   }
 
