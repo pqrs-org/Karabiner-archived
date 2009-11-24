@@ -35,6 +35,7 @@ void
 sysctl_reset(void)
 {
   KeyRemap4MacBook_server::Mutex::ScopedLock lk(mutex_sysctl);
+
   system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_reset terminate");
 }
 
