@@ -1,3 +1,4 @@
+// -*- Mode: objc -*-
 //
 //  ThreeFingerRelativeToScrollAppDelegate.h
 //  ThreeFingerRelativeToScroll
@@ -9,9 +10,10 @@
 #import <Cocoa/Cocoa.h>
 
 @interface ThreeFingerRelativeToScrollAppDelegate : NSObject <NSApplicationDelegate> {
-    NSWindow *window;
+  NSStatusItem* _statusItem;
+  IBOutlet NSMenu* _statusMenu;
 }
 
-@property (assign) IBOutlet NSWindow *window;
+- (IBAction) quit:(id)sender;
 
 @end
