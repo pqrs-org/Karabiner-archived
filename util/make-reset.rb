@@ -22,6 +22,7 @@ unless entry.nil? then
 end
 
 # static
+print "remap.pointing_relative_to_scroll 0\n"
 print "debug 0\n"
 print "debug_pointing 0\n"
 print "debug_devel 0\n"

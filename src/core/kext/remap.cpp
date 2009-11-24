@@ -162,6 +162,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       keytokey.remap(remapParams, KeyCode::JIS_UNDERSCORE, KeyCode::BACKQUOTE);
     }
   }
+
+  static void remap_pointing_relative_to_scroll(const RemapPointingParams_relative &remapParams) {
+    if (! config.remap_pointing_relative_to_scroll) return;
+
+    RemapUtil::pointingRelativeToScroll(remapParams);
+  }
 }
 
 // ----------------------------------------------------------------------
@@ -233,4 +239,5 @@ org_pqrs_KeyRemap4MacBook::remap_pointing_relative_core(const RemapPointingParam
   }
 
 #include "config/output/include.remapcode_call_pointing_relative.cpp"
+  remap_pointing_relative_to_scroll(remapParams);
 }

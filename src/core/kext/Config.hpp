@@ -11,6 +11,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
 #include "config/output/include.config.hpp"
 
+    // Don't put remap_pointing_relative_to_scroll in checkbox.xml.
+    // Because it is dangerous that a user changes setting.
+    int remap_pointing_relative_to_scroll;
+
     int get_repeat_initial_wait(void) {
       const int MINVAL = 200;
       int value = repeat_initial_wait;

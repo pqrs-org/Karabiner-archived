@@ -45,6 +45,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
 #include "config/output/include.config_SYSCTL.cpp"
 
+  SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, pointing_relative_to_scroll, CTLTYPE_INT|CTLFLAG_RW, &(config.remap_pointing_relative_to_scroll), 0, "");
+
   // ----------------------------------------
   SYSCTL_PROC(_keyremap4macbook, OID_AUTO, socket_path, CTLTYPE_STRING|CTLFLAG_RW, config.socket_path, sizeof(config.socket_path), socket_path_handler, "A", "");
   SYSCTL_INT(_keyremap4macbook, OID_AUTO, debug, CTLTYPE_INT|CTLFLAG_RW, &(config.debug), 0, "");
@@ -69,6 +71,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ----------------------------------------
 #include "config/output/include.config_register.cpp"
 
+    sysctl_register_oid(&sysctl__keyremap4macbook_remap_pointing_relative_to_scroll);
+
     // ----------------------------------------
     sysctl_register_oid(&sysctl__keyremap4macbook_socket_path);
     sysctl_register_oid(&sysctl__keyremap4macbook_debug);
@@ -91,6 +95,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ----------------------------------------
 #include "config/output/include.config_unregister.cpp"
+
+    sysctl_unregister_oid(&sysctl__keyremap4macbook_remap_pointing_relative_to_scroll);
 
     // ----------------------------------------
     sysctl_unregister_oid(&sysctl__keyremap4macbook_socket_path);
