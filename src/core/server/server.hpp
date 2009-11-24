@@ -44,6 +44,7 @@ namespace KeyRemap4MacBook_server {
     Server(void) : listenSocket_(-1) {}
     bool initialize(const char* basedirectory);
     void doLoop(void);
+    const std::string getSocketPath(void) { return socketpath_; }
 
   private:
     bool makeSocket(void);

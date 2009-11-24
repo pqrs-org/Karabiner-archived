@@ -8,8 +8,5 @@ rm -rf /tmp/KeyRemap4MacBook_server.$uid.*
 
 tmpdir=`mktemp -d /tmp/KeyRemap4MacBook_server.$uid.XXXXXXXX`
 
-# set socket_path
-/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set socket_path "$tmpdir/KeyRemap4MacBook_server"
-
 # kick server
 exec /Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook_server.app/Contents/MacOS/KeyRemap4MacBook_server "$tmpdir"

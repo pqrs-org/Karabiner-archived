@@ -57,9 +57,8 @@
 
   // Note: The console user is "real login user" or "loginwindow",
   //       when NSWorkspaceSessionDidBecomeActiveNotification, NSWorkspaceSessionDidResignActiveNotification are called.
-
-  // reload myself
-  [NSApp terminate:self];
+  sysctl_reset();
+  sysctl_load();
 }
 
 - (void) observer_NSWorkspaceSessionDidResignActiveNotification:(NSNotification*)notification
@@ -69,7 +68,6 @@
   // Note: The console user is "real login user" or "loginwindow",
   //       when NSWorkspaceSessionDidBecomeActiveNotification, NSWorkspaceSessionDidResignActiveNotification are called.
   sysctl_reset();
-  sysctl_load();
 }
 
 // ------------------------------------------------------------
