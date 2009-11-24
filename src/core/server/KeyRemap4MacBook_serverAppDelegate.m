@@ -93,6 +93,7 @@
   setCurrentApplicationType(buffer);
 
   // ------------------------------------------------------------
+  sysctl_reset();
   [NSThread detachNewThreadSelector:@selector(threadMain) toTarget:self withObject:nil];
   [NSThread detachNewThreadSelector:@selector(configThreadMain) toTarget:self withObject:nil];
 }
