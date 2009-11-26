@@ -3591,6 +3591,13 @@
           <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, KeyCode::RETURN</autogen>
         </item>
         <item>
+          <name>KeyboardType only</name>
+          <appendix>A to B if KeyboardType == KeyboardType::MACBOOK</appendix>
+          <sysctl>remap.samples_a2b_keyboardtype_macbook</sysctl>
+          <keyboardtype_only>MACBOOK</keyboardtype_only>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
+        </item>
+        <item>
           <name>inputmode_only</name>
           <appendix>ASDFG to AIUEO if inputmode == INPUTMODE_JAPANESE</appendix>
           <sysctl>remap.samples_jis_asdfg2aiueo</sysctl>

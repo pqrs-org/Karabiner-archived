@@ -1,4 +1,5 @@
 #!/usr/bin/ruby
+# -*- coding: undecided -*-
 
 require 'rexml/document'
 
@@ -110,6 +111,13 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
     tmp = []
     $1.split(/,/).each do |f|
       tmp << "(remapParams.workspacedata.type != KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip})"
+    end
+    filter += "if (#{tmp.join(' && ')}) return;\n"
+  end
+  if /<keyboardtype_only>(.+?)<\/keyboardtype_only>/m =~ item then
+    tmp = []
+    $1.split(/,/).each do |f|
+      tmp << "((remapParams.params)->keyboardType != KeyboardType::#{f.strip})"
     end
     filter += "if (#{tmp.join(' && ')}) return;\n"
   end
