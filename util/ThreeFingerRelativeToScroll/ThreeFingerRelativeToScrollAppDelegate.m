@@ -133,6 +133,8 @@ static void observer_kIOMatchedNotification(void* refcon, io_iterator_t iterator
   setcallback(NO);
 
   sysctl_set(0);
+
+  [_statusItem release];
 }
 
 // ------------------------------------------------------------
