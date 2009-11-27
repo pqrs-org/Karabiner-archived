@@ -35,7 +35,7 @@
 		34A44A1B10BC2939007C5DBD /* icon.statusbar.0.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = icon.statusbar.0.tif; sourceTree = "<group>"; };
 		34A44A1C10BC2939007C5DBD /* icon.statusbar.1.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = icon.statusbar.1.tif; sourceTree = "<group>"; };
 		34AF6E5E10BC226F0073E3A5 /* MultitouchSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultitouchSupport.framework; path = /System/Library/PrivateFrameworks/MultitouchSupport.framework; sourceTree = "<absolute>"; };
-		8D1107310486CEB800E47090 /* ThreeFingerRelativeToScroll-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ThreeFingerRelativeToScroll-Info.plist"; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* ThreeFingerRelativeToScroll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThreeFingerRelativeToScroll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -117,7 +117,7 @@
 				3422420D10BC395400D7AB5A /* ThreeFingerRelativeToScroll.icns */,
 				34A44A1B10BC2939007C5DBD /* icon.statusbar.0.tif */,
 				34A44A1C10BC2939007C5DBD /* icon.statusbar.1.tif */,
-				8D1107310486CEB800E47090 /* ThreeFingerRelativeToScroll-Info.plist */,
+				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
 			);
@@ -230,7 +230,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ThreeFingerRelativeToScroll_Prefix.pch;
-				INFOPLIST_FILE = "ThreeFingerRelativeToScroll-Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = ThreeFingerRelativeToScroll;
 			};
