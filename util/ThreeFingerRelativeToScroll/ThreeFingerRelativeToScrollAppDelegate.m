@@ -84,6 +84,7 @@ static void observer_kIOMatchedNotification(void* refcon, io_iterator_t iterator
   NSMutableDictionary* subdict = [NSMutableDictionary dictionary];
   [subdict setObject:@"AppleMultitouchDevice" forKey:@"IOClass"];
   [match setObject:subdict forKey:@kIOPropertyMatchKey];
+  [match retain];
 
   IONotificationPortRef port = IONotificationPortCreate(kIOMasterPortDefault);
   if (! port) {
