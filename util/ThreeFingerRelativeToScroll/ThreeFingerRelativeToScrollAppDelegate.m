@@ -44,7 +44,10 @@ static int callback(int device, struct Finger *data, int fingers, double timesta
 
 static void setcallback(BOOL isset) {
   NSMutableArray* list = (NSMutableArray*)MTDeviceCreateList();
+  if (! list) return;
+
   NSEnumerator *e = [list objectEnumerator];
+  if (! e) return;
 
   for (;;) {
     MTDeviceRef device = [e nextObject];
