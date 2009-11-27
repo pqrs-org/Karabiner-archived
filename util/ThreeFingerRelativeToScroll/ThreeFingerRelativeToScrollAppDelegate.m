@@ -7,6 +7,7 @@
 //
 
 #import "ThreeFingerRelativeToScrollAppDelegate.h"
+#include <IOKit/IOKitLib.h>
 
 @implementation ThreeFingerRelativeToScrollAppDelegate
 
@@ -22,9 +23,8 @@ void MTDeviceStart(MTDeviceRef, int);
 void MTDeviceStop(MTDeviceRef, int);
 
 // ------------------------------------------------------------
-static void
-sysctl_set(int newvalue)
-{
+// Multitouch callback
+static void sysctl_set(int newvalue) {
   char buf[512];
   snprintf(buf, sizeof(buf), "/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set remap.pointing_relative_to_scroll %d", newvalue);
   system(buf);
@@ -42,16 +42,76 @@ static int callback(int device, struct Finger *data, int fingers, double timesta
   return 0;
 }
 
-- (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
+static void setcallback(BOOL isset) {
   NSMutableArray* list = (NSMutableArray*)MTDeviceCreateList();
   NSEnumerator *e = [list objectEnumerator];
+
   for (;;) {
     MTDeviceRef device = [e nextObject];
     if (! device) break;
 
-    MTRegisterContactFrameCallback(device, callback);
-    MTDeviceStart(device, 0);
+    if (isset) {
+      MTRegisterContactFrameCallback(device, callback);
+      MTDeviceStart(device, 0);
+    } else {
+      MTUnregisterContactFrameCallback(device, callback);
+      MTDeviceStop(device, 0);
+    }
   }
+}
+
+// ------------------------------------------------------------
+// Notification
+static void observer_kIOMatchedNotification(void* refcon, io_iterator_t iterator) {
+  bool isfound = false;
+  while (IOIteratorNext(iterator)) {
+    isfound = true;
+  }
+  if (isfound) {
+    // wait for the initialization of the device
+    sleep(1);
+
+    setcallback(NO);
+    setcallback(YES);
+  }
+}
+
+- (void) setNotification {
+  NSMutableDictionary* match = [NSMutableDictionary dictionary];
+  NSMutableDictionary* subdict = [NSMutableDictionary dictionary];
+  [subdict setObject:@"AppleMultitouchDevice" forKey:@"IOClass"];
+  [match setObject:subdict forKey:@kIOPropertyMatchKey];
+
+  IONotificationPortRef port = IONotificationPortCreate(kIOMasterPortDefault);
+  if (! port) {
+    NSLog(@"[ERROR] IONotificationPortCreate");
+    return;
+  }
+
+  io_iterator_t it;
+  kern_return_t kr = IOServiceAddMatchingNotification(port,
+                                                      kIOMatchedNotification,
+                                                      (CFMutableDictionaryRef)match,
+                                                      &observer_kIOMatchedNotification,
+                                                      NULL,
+                                                      &it);
+  if (kr != kIOReturnSuccess) {
+    NSLog(@"[ERROR] IOServiceAddMatchingNotification");
+    return;
+  }
+  observer_kIOMatchedNotification(NULL, it);
+
+  CFRunLoopSourceRef loopsource = IONotificationPortGetRunLoopSource(port);
+  if (! loopsource) {
+    NSLog(@"[ERROR] IONotificationPortGetRunLoopSource");
+    return;
+  }
+  CFRunLoopAddSource(CFRunLoopGetCurrent(), loopsource, kCFRunLoopDefaultMode);
+}
+
+// ------------------------------------------------------------
+- (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
+  [self setNotification];
 
   // --------------------------------------------------
   NSStatusBar *statusBar = [NSStatusBar systemStatusBar];
@@ -66,16 +126,8 @@ static int callback(int device, struct Finger *data, int fingers, double timesta
 }
 
 - (void) applicationWillTerminate:(NSNotification*)aNotification {
-  NSMutableArray* list = (NSMutableArray*)MTDeviceCreateList();
-  NSEnumerator *e = [list objectEnumerator];
-  for (;;) {
-    MTDeviceRef device = [e nextObject];
-    if (! device) break;
-    MTUnregisterContactFrameCallback(device, callback);
-    MTDeviceStop(device, 0);
-  }
+  setcallback(NO);
 
-  // --------------------------------------------------
   sysctl_set(0);
 }
 

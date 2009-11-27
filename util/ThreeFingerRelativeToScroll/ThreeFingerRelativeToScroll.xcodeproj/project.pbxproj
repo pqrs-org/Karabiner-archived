@@ -10,6 +10,7 @@
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* ThreeFingerRelativeToScrollAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* ThreeFingerRelativeToScrollAppDelegate.m */; };
 		3422420E10BC395400D7AB5A /* ThreeFingerRelativeToScroll.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3422420D10BC395400D7AB5A /* ThreeFingerRelativeToScroll.icns */; };
+		34812B7310BF4F6C00B6EE5D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34812B7210BF4F6C00B6EE5D /* IOKit.framework */; };
 		34A44A1D10BC2939007C5DBD /* icon.statusbar.0.tif in Resources */ = {isa = PBXBuildFile; fileRef = 34A44A1B10BC2939007C5DBD /* icon.statusbar.0.tif */; };
 		34A44A1E10BC2939007C5DBD /* icon.statusbar.1.tif in Resources */ = {isa = PBXBuildFile; fileRef = 34A44A1C10BC2939007C5DBD /* icon.statusbar.1.tif */; };
 		34AF6E5F10BC226F0073E3A5 /* MultitouchSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34AF6E5E10BC226F0073E3A5 /* MultitouchSupport.framework */; };
@@ -30,6 +31,7 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		3422420D10BC395400D7AB5A /* ThreeFingerRelativeToScroll.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ThreeFingerRelativeToScroll.icns; sourceTree = "<group>"; };
+		34812B7210BF4F6C00B6EE5D /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		34A44A1B10BC2939007C5DBD /* icon.statusbar.0.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = icon.statusbar.0.tif; sourceTree = "<group>"; };
 		34A44A1C10BC2939007C5DBD /* icon.statusbar.1.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = icon.statusbar.1.tif; sourceTree = "<group>"; };
 		34AF6E5E10BC226F0073E3A5 /* MultitouchSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultitouchSupport.framework; path = /System/Library/PrivateFrameworks/MultitouchSupport.framework; sourceTree = "<absolute>"; };
@@ -44,6 +46,7 @@
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				34AF6E5F10BC226F0073E3A5 /* MultitouchSupport.framework in Frameworks */,
+				34812B7310BF4F6C00B6EE5D /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +77,7 @@
 				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
 				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
 				34AF6E5E10BC226F0073E3A5 /* MultitouchSupport.framework */,
+				34812B7210BF4F6C00B6EE5D /* IOKit.framework */,
 			);
 			name = "Other Frameworks";
 			sourceTree = "<group>";
