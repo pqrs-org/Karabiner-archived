@@ -203,7 +203,7 @@ org_pqrs_KeyRemap4MacBook::remap_consumer(const RemapConsumerParams &remapParams
 
 #include "config/output/include.remapcode_call_consumer.cpp"
 
-  remapParams.params.flags = FlagStatus::makeFlags(*(remapParams.ex_remapKeyCode));
+  remapParams.params.flags = FlagStatus::makeFlags(remapParams.ex_remapKeyCode);
 }
 
 void

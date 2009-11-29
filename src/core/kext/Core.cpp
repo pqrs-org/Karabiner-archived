@@ -388,7 +388,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       RemapConsumerParams remapParams = {
         params,
         KeyRemap4MacBook_bridge::GetWorkspaceData::Reply(),
-        &ex_remapKeyCode,
+        ex_remapKeyCode,
       };
       NumHeldDownKeys::set(remapParams);
 
@@ -437,7 +437,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       bool ex_dropEvent = false;
       RemapPointingParams_relative remapParams = {
-        params, &ex_dropEvent,
+        params, ex_dropEvent,
       };
       remap_pointing_relative_core(remapParams);
 

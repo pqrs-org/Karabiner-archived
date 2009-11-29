@@ -266,7 +266,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       remapParams.params.eventType = KeyEvent::MODIFY;
     }
     remapParams.params.key = ConsumerKeyCode::NONE;
-    *(remapParams.ex_remapKeyCode) = toKeyCode;
+    remapParams.ex_remapKeyCode = toKeyCode;
 
     return true;
   }
@@ -428,7 +428,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapUtil::pointingRelativeToScroll(const RemapPointingParams_relative &remapParams)
   {
-    *(remapParams.ex_dropEvent) = true;
+    remapParams.ex_dropEvent = true;
 
     // ----------------------------------------
     int delta1 = - remapParams.params.dy;
@@ -847,7 +847,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ignore button up event.
       if (isButtonHeldDown) {
         isButtonHeldDown = false;
-        *(remapParams.ex_dropEvent) = true;
+        remapParams.ex_dropEvent = true;
 
         remapFlags(fromFlags, 0);
         return true;
