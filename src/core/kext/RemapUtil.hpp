@@ -132,7 +132,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ----------------------------------------
     class JISToggleEisuuKana {
     public:
-      bool remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode);
+      bool remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags = 0);
 
     private:
       KeyToKey keytokey_;
