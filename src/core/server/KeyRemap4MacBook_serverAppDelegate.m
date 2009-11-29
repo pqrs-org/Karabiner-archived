@@ -6,8 +6,6 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#include <stdlib.h>
-
 #import "KeyRemap4MacBook_serverAppDelegate.h"
 #include "util.h"
 #include "server_objc_part.h"
