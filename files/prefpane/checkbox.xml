@@ -3617,10 +3617,17 @@
         </item>
         <item>
           <name>JISToggleEisuuKana</name>
-          <appendix>Use Command_L,Command_R as KANA/EISUU (toggle)</appendix>
+          <appendix>Use A,Command_L,Command_R as KANA/EISUU (toggle)</appendix>
           <sysctl>remap.samples_jis_unify_kana_eisuu_to_commandLR</sysctl>
+          <autogen>--JISToggleEisuuKana-- KeyCode::A</autogen>
           <autogen>--JISToggleEisuuKana-- KeyCode::COMMAND_L</autogen>
           <autogen>--JISToggleEisuuKana-- KeyCode::COMMAND_R</autogen>
+        </item>
+        <item>
+          <name>JISToggleEisuuKana with ModifierFlag</name>
+          <appendix>Use Shift+A as KANA/EISUU (toggle)</appendix>
+          <sysctl>remap.samples_shiftA2toggle_eisuu_kana</sysctl>
+          <autogen>--JISToggleEisuuKana-- KeyCode::A, VK_SHIFT</autogen>
         </item>
         <item>
           <name>firefunc_jis_toggle_eisuu_kana</name>
