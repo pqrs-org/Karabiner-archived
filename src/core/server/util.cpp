@@ -1,14 +1,10 @@
 #include <sys/types.h>
-#include <sys/stat.h>
 #include <sys/sysctl.h>
-#include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
+#include <string>
 #include "server.hpp"
 #include "util.h"
-
-#include <CoreFoundation/CoreFoundation.h>
-#include <SystemConfiguration/SystemConfiguration.h>
+#include "Mutex.hpp"
 
 namespace {
   KeyRemap4MacBook_server::Server server;
@@ -28,13 +24,13 @@ server_run(void)
 
 // ----------------------------------------------------------------------
 namespace {
-  KeyRemap4MacBook_server::Mutex mutex_sysctl;
+  Mutex mutex_sysctl;
 }
 
 void
 sysctl_reset(void)
 {
-  KeyRemap4MacBook_server::Mutex::ScopedLock lk(mutex_sysctl);
+  Mutex::ScopedLock lk(mutex_sysctl);
 
   system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_reset terminate");
 }
@@ -42,7 +38,7 @@ sysctl_reset(void)
 void
 sysctl_load(void)
 {
-  KeyRemap4MacBook_server::Mutex::ScopedLock lk(mutex_sysctl);
+  Mutex::ScopedLock lk(mutex_sysctl);
 
   // --------------------------------------------------
   // check already initialized
