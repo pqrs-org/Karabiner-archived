@@ -667,7 +667,7 @@
           <name>Enter to Option_L</name>
           <appendix>(+ When you type Enter only, send Command+Space)</appendix>
           <sysctl>remap.enter2optionL_commandSpace</sysctl>
-          <autogen>--KeyOverlaidModifier-- KeyCode::ENTER, ModifierFlag::OPTION_L, FireFunc::firefunc_commandSpace</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::ENTER, ModifierFlag::OPTION_L, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
           <name>Enter to Option_R</name>
@@ -678,7 +678,7 @@
           <name>Enter to Option_R</name>
           <appendix>(+ When you type Enter only, send Command+Space)</appendix>
           <sysctl>remap.enter2optionR_commandSpace</sysctl>
-          <autogen>--KeyOverlaidModifier-- KeyCode::ENTER, ModifierFlag::OPTION_R, FireFunc::firefunc_commandSpace</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::ENTER, ModifierFlag::OPTION_R, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
           <name>Enter to Command_L+Control_L</name>
@@ -1264,7 +1264,7 @@
           <name>Option_L to Option_L</name>
           <appendix>(+ When you type Option_L only, send Command+Space)</appendix>
           <sysctl>remap.optionL2optionL_commandSpace</sysctl>
-          <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_L, ModifierFlag::OPTION_L, FireFunc::firefunc_commandSpace</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_L, ModifierFlag::OPTION_L, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
           <name>Option_L to Shift_L</name>
@@ -1306,7 +1306,7 @@
           <name>Option_R to Option_R</name>
           <appendix>(+ When you type Option_R only, send Command+Space)</appendix>
           <sysctl>remap.optionR2optionR_commandSpace</sysctl>
-          <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_R, ModifierFlag::OPTION_R, FireFunc::firefunc_commandSpace</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_R, ModifierFlag::OPTION_R, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
           <name>Option_R to Option_R+Shift_L</name>
@@ -1434,7 +1434,7 @@
           <name>Return to Option_L</name>
           <appendix>(+ When you type Return only, send Escape)</appendix>
           <sysctl>remap.return2optionL_escape</sysctl>
-          <autogen>--KeyOverlaidModifier-- KeyCode::RETURN, ModifierFlag::OPTION_L, FireFunc::firefunc_escape</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::RETURN, ModifierFlag::OPTION_L, KeyCode::ESCAPE</autogen>
         </item>
         <item>
           <name>FN+Return to Option_L</name>
@@ -1500,7 +1500,7 @@
           <name>Shift_L to Shift_L</name>
           <appendix>(+ When you type shiftL only, send Space)</appendix>
           <sysctl>remap.shiftL2shiftL_space</sysctl>
-          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L, FireFunc::firefunc_space</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L, KeyCode::SPACE</autogen>
         </item>
         <item>
           <name>Shift_L to Shift_L</name>
@@ -1560,13 +1560,13 @@
           <name>Shift_R to Shift_R</name>
           <appendix>(+ When you type Shift_R only, send Backslash)</appendix>
           <sysctl>remap.shiftR2shiftR_backslash</sysctl>
-          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R, FireFunc::firefunc_backslash</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R, KeyCode::BACKSLASH</autogen>
         </item>
         <item>
           <name>Shift_R to Shift_R</name>
           <appendix>(+ When you type shiftR only, send Space)</appendix>
           <sysctl>remap.shiftR2shiftR_space</sysctl>
-          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R, FireFunc::firefunc_space</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R, KeyCode::SPACE</autogen>
         </item>
         <item>
           <name>Shift_R to Shift_R</name>
@@ -1626,7 +1626,7 @@
           <name>Space to Control_L</name>
           <appendix>(+ When you type Space only, send Space)</appendix>
           <sysctl>remap.space2controlL_space</sysctl>
-          <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, ModifierFlag::CONTROL_L, FireFunc::firefunc_space</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, ModifierFlag::CONTROL_L, KeyCode::SPACE</autogen>
         </item>
         <item>
           <name>Space to Control_L</name>
@@ -1656,7 +1656,7 @@
           <appendix>(+ When you type Space only, send Space) (Disable on Adobe Softwares)</appendix>
           <not>ADOBE</not>
           <sysctl>remap.space2shiftL_space_not_adobe</sysctl>
-          <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, ModifierFlag::SHIFT_L, FireFunc::firefunc_space</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, ModifierFlag::SHIFT_L, KeyCode::SPACE</autogen>
         </item>
         <item>
           <name>Space to Return</name>
@@ -1684,7 +1684,7 @@
           <name>Tab to Command_L</name>
           <appendix>(+ When you type Tab only, send Expose All)</appendix>
           <sysctl>remap.tab2commandL_exposeAll</sysctl>
-          <autogen>--KeyOverlaidModifier-- KeyCode::TAB, ModifierFlag::COMMAND_L, FireFunc::firefunc_exposeAll</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::TAB, ModifierFlag::COMMAND_L, KeyCode::EXPOSE_ALL</autogen>
         </item>
         <item>
           <name>Tab to Option_L when you held down Control_L</name>
@@ -2924,7 +2924,7 @@
           <name>Shift_R to Shift_R</name>
           <appendix>(+ When you type Shift_R only, send Backslash)</appendix>
           <sysctl>remap.french_shiftR2shiftR_backslash</sysctl>
-          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R, FireFunc::firefunc_french_backslash</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R, KeyCode::DOT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
         </item>
         <item>
           <name>Option+Shift+4 to Left Brace, Option+Shift+Minus to Right Brace</name>
@@ -2990,7 +2990,7 @@
               <name>Command_L to Command_L</name>
               <appendix>(+ When you type Command_L only, send EISUU)</appendix>
               <sysctl>remap.jis_commandL2commandL_eisuu</sysctl>
-              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, FireFunc::firefunc_jis_eisuu</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, KeyCode::JIS_EISUU</autogen>
             </item>
             <item>
               <name>Command_L to Command_L</name>
@@ -3002,7 +3002,7 @@
               <name>Command_L to Control_L</name>
               <appendix>(+ When you type Command_L only, send EISUU)</appendix>
               <sysctl>remap.jis_commandL2controlL_eisuu</sysctl>
-              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, ModifierFlag::CONTROL_L, FireFunc::firefunc_jis_eisuu</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, ModifierFlag::CONTROL_L, KeyCode::JIS_EISUU</autogen>
             </item>
             <item>
               <name>Command_L x2 to EISUU</name>
@@ -3038,7 +3038,7 @@
               <name>Command_R to Command_R</name>
               <appendix>(+ When you type Command_R only, send KANA)</appendix>
               <sysctl>remap.jis_commandR2commandR_kana</sysctl>
-              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, FireFunc::firefunc_jis_kana</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, KeyCode::JIS_KANA</autogen>
             </item>
             <item>
               <name>Command_R to Command_R</name>
@@ -3118,7 +3118,7 @@
               <name>EISUU to Command_L</name>
               <appendix>(+ When you type EISUU only, send EISUU)</appendix>
               <sysctl>remap.jis_eisuu2commandL_eisuu</sysctl>
-              <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, ModifierFlag::COMMAND_L, FireFunc::firefunc_jis_eisuu</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, ModifierFlag::COMMAND_L, KeyCode::JIS_EISUU</autogen>
             </item>
             <item>
               <name>EISUU to Command_L. In Terminal, EISUU to OptionL</name>
@@ -3134,7 +3134,7 @@
               <name>EISUU to Control_L</name>
               <appendix>(+ When you type EISUU only, send EISUU)</appendix>
               <sysctl>remap.jis_eisuu2controlL_eisuu</sysctl>
-              <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, ModifierFlag::CONTROL_L, FireFunc::firefunc_jis_eisuu</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, ModifierFlag::CONTROL_L, KeyCode::JIS_EISUU</autogen>
             </item>
             <item>
               <name>EISUU to FN</name>
@@ -3205,7 +3205,7 @@
               <name>KANA to Command_R</name>
               <appendix>(+ When you type KANA only, send KANA)</appendix>
               <sysctl>remap.jis_kana2commandR_kana</sysctl>
-              <autogen>--KeyOverlaidModifier-- KeyCode::JIS_KANA, ModifierFlag::COMMAND_R, FireFunc::firefunc_jis_kana</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::JIS_KANA, ModifierFlag::COMMAND_R, KeyCode::JIS_KANA</autogen>
             </item>
             <item>
               <name>KANA to Control_L</name>
@@ -3216,7 +3216,7 @@
               <name>KANA to Control_L</name>
               <appendix>(+ When you type KANA only, send KANA)</appendix>
               <sysctl>remap.jis_kana2controlL_kana</sysctl>
-              <autogen>--KeyOverlaidModifier-- KeyCode::JIS_KANA, ModifierFlag::CONTROL_L, FireFunc::firefunc_jis_kana</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::JIS_KANA, ModifierFlag::CONTROL_L, KeyCode::JIS_KANA</autogen>
             </item>
             <item>
               <name>KANA to FN</name>
