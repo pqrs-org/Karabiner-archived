@@ -21,7 +21,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
 
     inline bool isKey(const RemapParams &remapParams, unsigned int keyCode) {
-      return remapParams.ex_origKey == keyCode && (remapParams.params)->key == keyCode;
+      if (remapParams.isremapped) return false;
+      return (remapParams.params)->key == keyCode;
     }
     inline bool isKey(const RemapConsumerParams &remapParams, ConsumerKeyCode::ConsumerKeyCode keyCode) {
       return (remapParams.params)->key == static_cast<unsigned int>(keyCode);

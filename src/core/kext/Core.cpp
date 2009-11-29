@@ -326,7 +326,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       RemapParams remapParams = {
         params,
-        params->key,
         isremapped,
         KeyRemap4MacBook_bridge::GetWorkspaceData::Reply(),
         ex_extraRepeatFunc,

@@ -27,6 +27,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     temporary_count_ = 0;
 
+    // ------------------------------------------------------------
     // At some keyboard, when we press CapsLock key, the down & up event are thrown at a time.
     // So, we treat the capslock key exceptionally.
     if (key_ == KeyCode::CAPSLOCK) {
@@ -48,8 +49,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       return;
     }
 
-    if ((remapParams.params)->eventType != KeyEvent::MODIFY) return;
-    if (remapParams.ex_origKey != static_cast<unsigned int>(key_)) return;
+    // ------------------------------------------------------------
+    if (! RemapUtil::isKey(remapParams, key_)) return;
 
     if (RemapUtil::isModifierOn(remapParams, flag_)) {
       increase();

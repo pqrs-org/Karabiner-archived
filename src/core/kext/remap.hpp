@@ -9,7 +9,6 @@
 namespace org_pqrs_KeyRemap4MacBook {
   struct RemapParams {
     Params_KeyboardEventCallBack *params;
-    unsigned int ex_origKey;
     bool& isremapped;
     KeyRemap4MacBook_bridge::GetWorkspaceData::Reply workspacedata;
     ExtraRepeatFunc::ExtraRepeatFunc& ex_extraRepeatFunc;
