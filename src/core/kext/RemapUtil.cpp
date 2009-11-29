@@ -146,7 +146,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         } else if (isEvent_Up(remapParams)) {
           toStatus->decrease();
         }
-        (remapParams.params)->eventType = KeyEvent::MODIFY;
+        remapParams.params.eventType = KeyEvent::MODIFY;
       }
 
     } else {
@@ -154,10 +154,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         // modifier2key
         if (isModifierOn(remapParams, fromModifier)) {
           fromStatus->decrease();
-          (remapParams.params)->eventType = KeyEvent::DOWN;
+          remapParams.params.eventType = KeyEvent::DOWN;
         } else {
           fromStatus->increase();
-          (remapParams.params)->eventType = KeyEvent::UP;
+          remapParams.params.eventType = KeyEvent::UP;
         }
 
       } else {
@@ -172,7 +172,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
 
-    (remapParams.params)->key = toKeyCode;
+    remapParams.params.key = toKeyCode;
     remapParams.isremapped = true;
     remapFlags(fromFlags, toFlags, toKeyCode, isKeyDown);
 
@@ -259,13 +259,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! isFromFlags(FlagStatus::makeFlags(KeyCode::NONE), fromFlags)) return false;
     if (! isKey(remapParams, fromKeyCode)) return false;
 
-    bool isKeyDown = ((remapParams.params)->eventType == KeyEvent::DOWN);
+    bool isKeyDown = (remapParams.params.eventType == KeyEvent::DOWN);
     remapFlags(fromFlags, toFlags, toKeyCode, isKeyDown);
 
     if (RemapUtil::getKeyCodeModifier(toKeyCode) != ModifierFlag::NONE) {
-      (remapParams.params)->eventType = KeyEvent::MODIFY;
+      remapParams.params.eventType = KeyEvent::MODIFY;
     }
-    (remapParams.params)->key = ConsumerKeyCode::NONE;
+    remapParams.params.key = ConsumerKeyCode::NONE;
     *(remapParams.ex_remapKeyCode) = toKeyCode;
 
     return true;
@@ -281,8 +281,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     remapFlags(fromFlags, toFlags);
 
-    (remapParams.params)->key = toKeyCode;
-    (remapParams.params)->flavor = toKeyCode;
+    remapParams.params.key = toKeyCode;
+    remapParams.params.flavor = toKeyCode;
     return true;
   }
 
@@ -292,12 +292,12 @@ namespace org_pqrs_KeyRemap4MacBook {
                                             PointingButton::PointingButton toButton)
   {
     if (! isFromFlags(FlagStatus::makeFlags(KeyCode::NONE), fromFlags)) return false;
-    if (! ((remapParams.params)->buttons & fromButton)) return false;
+    if (! (remapParams.params.buttons & fromButton)) return false;
 
     remapFlags(fromFlags, 0);
 
-    (remapParams.params)->buttons = ((remapParams.params)->buttons & ~fromButton);
-    (remapParams.params)->buttons |= toButton;
+    remapParams.params.buttons = (remapParams.params.buttons & ~fromButton);
+    remapParams.params.buttons |= toButton;
     return true;
   }
 
@@ -431,8 +431,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     *(remapParams.ex_dropEvent) = true;
 
     // ----------------------------------------
-    int delta1 = - (remapParams.params)->dy;
-    int delta2 = - (remapParams.params)->dx;
+    int delta1 = - remapParams.params.dy;
+    int delta2 = - remapParams.params.dx;
 
     if (config.option_pointing_disable_vertical_scroll) delta1 = 0;
     if (config.option_pointing_disable_horizontal_scroll) delta2 = 0;
@@ -692,7 +692,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     FlagStatus::Item *fromStatus2 = FlagStatus::getFlagStatus(fromFlag2);
     if (fromStatus1 == NULL || fromStatus2 == NULL) return;
 
-    if ((remapParams.params)->key != static_cast<unsigned int>(keyCode2)) {
+    if (remapParams.params.key != static_cast<unsigned int>(keyCode2)) {
       isCallFireFunc = false;
       return;
     }
@@ -741,7 +741,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (fromStatus == NULL) return;
 
     KeyCode::KeyCode fromFlagKeyCode = fromStatus->getKeyCode();
-    if ((remapParams.params)->key == static_cast<unsigned int>(fromFlagKeyCode)) {
+    if (remapParams.params.key == static_cast<unsigned int>(fromFlagKeyCode)) {
       doremap = false;
       first = fromStatus->isHeldDown();
       ic.begin();
@@ -782,7 +782,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // set lastkeycode_ if KeyUp.
     if (! RemapUtil::isKeyDown(remapParams, fromKeyCode)) {
-      lastkeycode_ = (remapParams.params)->key;
+      lastkeycode_ = remapParams.params.key;
     }
     return false;
   }
@@ -827,7 +827,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       return true;
     }
 
-    if (((remapParams.params)->buttons & button) == button) {
+    if ((remapParams.params.buttons & button) == button) {
       // if the source button contains left button, we cancel left click for iPhoto, or some applications.
       // iPhoto store the scroll events when left button is pressed, and restore events after left button is released.
       // PointingRelativeToScroll doesn't aim it, we release the left button and do normal scroll event.

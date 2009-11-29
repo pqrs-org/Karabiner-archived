@@ -8,18 +8,18 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   struct RemapParams {
-    Params_KeyboardEventCallBack *params;
+    Params_KeyboardEventCallBack& params;
     bool& isremapped;
     KeyRemap4MacBook_bridge::GetWorkspaceData::Reply workspacedata;
     ExtraRepeatFunc::ExtraRepeatFunc& ex_extraRepeatFunc;
     unsigned int& ex_extraRepeatFlags;
     unsigned int ex_extraRepeatCounter;
   };
-  void remap_core(const RemapParams &remapParams);
+  void remap_core(const RemapParams& remapParams);
 
   // --------------------
   struct RemapConsumerParams {
-    Params_KeyboardSpecialEventCallback *params;
+    Params_KeyboardSpecialEventCallback& params;
     KeyRemap4MacBook_bridge::GetWorkspaceData::Reply workspacedata;
     KeyCode::KeyCode *ex_remapKeyCode;
   };
@@ -27,7 +27,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // --------------------
   struct RemapPointingParams_relative {
-    Params_RelativePointerEventCallback *params;
+    Params_RelativePointerEventCallback& params;
     bool *ex_dropEvent;
   };
   void remap_pointing_relative_core(const RemapPointingParams_relative &remapParams);
