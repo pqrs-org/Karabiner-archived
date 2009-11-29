@@ -98,7 +98,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     static RemapUtil::KeyToKey keytokey;
     if (keytokey.remap(remapParams, KeyCode::JIS_UNDERSCORE, ModifierFlag::NONE, KeyCode::BACKSLASH)) {
-      (remapParams.params)->keyboardType = KeyboardType::MACBOOK;
+      remapParams.params.keyboardType = KeyboardType::MACBOOK;
     }
   }
 
@@ -110,7 +110,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     static RemapUtil::KeyToKey keytokey;
     if (keytokey.remap(remapParams, KeyCode::JIS_YEN, KeyCode::BACKSLASH)) {
-      (remapParams.params)->keyboardType = KeyboardType::MACBOOK;
+      remapParams.params.keyboardType = KeyboardType::MACBOOK;
     }
   }
 
@@ -132,7 +132,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_jis_jansi) return;
 
-    (remapParams.params)->keyboardType = KeyboardType::MACBOOK;
+    remapParams.params.keyboardType = KeyboardType::MACBOOK;
 
     {
       static RemapUtil::KeyToKey keytokey;
@@ -193,7 +193,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &remapParams)
 #include "config/output/include.remapcode_call_komc.cpp"
 
   // ------------------------------------------------------------
-  (remapParams.params)->flags = FlagStatus::makeFlags(remapParams);
+  remapParams.params.flags = FlagStatus::makeFlags(remapParams);
 }
 
 void
@@ -203,7 +203,7 @@ org_pqrs_KeyRemap4MacBook::remap_consumer(const RemapConsumerParams &remapParams
 
 #include "config/output/include.remapcode_call_consumer.cpp"
 
-  (remapParams.params)->flags = FlagStatus::makeFlags(*(remapParams.ex_remapKeyCode));
+  remapParams.params.flags = FlagStatus::makeFlags(*(remapParams.ex_remapKeyCode));
 }
 
 void
@@ -211,9 +211,9 @@ org_pqrs_KeyRemap4MacBook::remap_pointing_relative_core(const RemapPointingParam
 {
   FlagStatus::set();
 
-  (remapParams.params)->buttons |= PointingButtonStatus::get();
+  remapParams.params.buttons |= PointingButtonStatus::get();
 
-  if ((remapParams.params)->buttons != PointingButton::NONE) {
+  if (remapParams.params.buttons != PointingButton::NONE) {
     ClickWatcher::click();
   }
 

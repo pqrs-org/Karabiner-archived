@@ -17,7 +17,7 @@
 namespace org_pqrs_KeyRemap4MacBook {
   namespace Core {
     namespace {
-      IOWorkLoop *workLoop = NULL;
+      IOWorkLoop* workLoop = NULL;
       TimerWrapper timer_refresh;
 
       TimerWrapper timer_repeat_keyboard;
@@ -27,14 +27,14 @@ namespace org_pqrs_KeyRemap4MacBook {
       class KeyboardRepeatInfo {
       public:
         KeyboardRepeatInfo(void) { kbd = NULL; }
-        const IOHIKeyboard *kbd;
+        const IOHIKeyboard* kbd;
         Params_KeyboardEventCallBack params;
       } keyboardRepeatInfo;
 
       class KeyboardRepeatInfo_extra {
       public:
         KeyboardRepeatInfo_extra(void) { kbd = NULL; }
-        IOHIKeyboard *kbd;
+        IOHIKeyboard* kbd;
         Params_KeyboardEventCallBack params;
         ExtraRepeatFunc::ExtraRepeatFunc func;
         unsigned int counter;
@@ -46,7 +46,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       };
 
       void
-      refreshHookedDevice(OSObject *owner, IOTimerEventSource *sender)
+      refreshHookedDevice(OSObject* owner, IOTimerEventSource* sender)
       {
         IOLockWrapper::ScopedLock lk(timer_refresh.getlock());
 
@@ -59,7 +59,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ----------------------------------------
       void
-      setRepeat_keyboard(const IOHIKeyboard *kbd, const Params_KeyboardEventCallBack &params)
+      setRepeat_keyboard(const IOHIKeyboard* kbd, const Params_KeyboardEventCallBack& params)
       {
         IOLockWrapper::ScopedLock lk(timer_repeat_keyboard.getlock());
 
@@ -84,7 +84,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       void
-      setRepeat_keyboard_extra(IOHIKeyboard *kbd, const Params_KeyboardEventCallBack &params, ExtraRepeatFunc::ExtraRepeatFunc func, unsigned int flags)
+      setRepeat_keyboard_extra(IOHIKeyboard* kbd, const Params_KeyboardEventCallBack& params, ExtraRepeatFunc::ExtraRepeatFunc func, unsigned int flags)
       {
         IOLockWrapper::ScopedLock lk(timer_repeat_keyboard_extra.getlock());
 
@@ -121,11 +121,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       void
-      doRepeat_keyboard(OSObject *owner, IOTimerEventSource *sender)
+      doRepeat_keyboard(OSObject* owner, IOTimerEventSource* sender)
       {
         IOLockWrapper::ScopedLock lk(timer_repeat_keyboard.getlock());
 
-        HookedKeyboard *p = ListHookedKeyboard::instance().get(keyboardRepeatInfo.kbd);
+        HookedKeyboard* p = ListHookedKeyboard::instance().get(keyboardRepeatInfo.kbd);
         if (! p) return;
 
         KeyboardEventCallback callback = p->getOrig_keyboardEventAction();
@@ -139,11 +139,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       void
-      doRepeat_keyboard_extra(OSObject *owner, IOTimerEventSource *sender)
+      doRepeat_keyboard_extra(OSObject* owner, IOTimerEventSource* sender)
       {
         IOLockWrapper::ScopedLock lk(timer_repeat_keyboard_extra.getlock());
 
-        HookedKeyboard *p = ListHookedKeyboard::instance().get(keyboardRepeatInfo_extra.kbd);
+        HookedKeyboard* p = ListHookedKeyboard::instance().get(keyboardRepeatInfo_extra.kbd);
         if (! p) return;
 
         KeyboardEventCallback callback = p->getOrig_keyboardEventAction();
@@ -244,66 +244,64 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ======================================================================
     bool
-    notifierfunc_hookKeyboard(void *target, void *refCon, IOService *newService, IONotifier* notifier)
+    notifierfunc_hookKeyboard(void* target, void* refCon, IOService* newService, IONotifier* notifier)
     {
       IOLog("KeyRemap4MacBook notifierfunc_hookKeyboard\n");
 
-      IOHIKeyboard *kbd = OSDynamicCast(IOHIKeyboard, newService);
+      IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, newService);
       ListHookedKeyboard::instance().append(kbd);
       ListHookedConsumer::instance().append(kbd);
       return true;
     }
 
     bool
-    notifierfunc_unhookKeyboard(void *target, void *refCon, IOService *newService, IONotifier* notifier)
+    notifierfunc_unhookKeyboard(void* target, void* refCon, IOService* newService, IONotifier* notifier)
     {
       IOLog("KeyRemap4MacBook notifierfunc_unhookKeyboard\n");
 
-      IOHIKeyboard *kbd = OSDynamicCast(IOHIKeyboard, newService);
+      IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, newService);
       ListHookedKeyboard::instance().terminate(kbd);
       ListHookedConsumer::instance().terminate(kbd);
       return true;
     }
 
     bool
-    notifierfunc_hookPointing(void *target, void *refCon, IOService *newService, IONotifier* notifier)
+    notifierfunc_hookPointing(void* target, void* refCon, IOService* newService, IONotifier* notifier)
     {
       IOLog("KeyRemap4MacBook notifierfunc_hookPointing\n");
 
-      IOHIPointing *pointing = OSDynamicCast(IOHIPointing, newService);
+      IOHIPointing* pointing = OSDynamicCast(IOHIPointing, newService);
       return ListHookedPointing::instance().append(pointing);
     }
 
     bool
-    notifierfunc_unhookPointing(void *target, void *refCon, IOService *newService, IONotifier* notifier)
+    notifierfunc_unhookPointing(void* target, void* refCon, IOService* newService, IONotifier* notifier)
     {
       IOLog("KeyRemap4MacBook notifierfunc_unhookPointing\n");
 
-      IOHIPointing *pointing = OSDynamicCast(IOHIPointing, newService);
+      IOHIPointing* pointing = OSDynamicCast(IOHIPointing, newService);
       return ListHookedPointing::instance().terminate(pointing);
     }
 
     // ======================================================================
     void
-    remap_KeyboardEventCallback(Params_KeyboardEventCallBack *params)
+    remap_KeyboardEventCallback(Params_KeyboardEventCallBack& params)
     {
-      if (! params) return;
-
-      IOHIKeyboard *kbd = OSDynamicCast(IOHIKeyboard, params->sender);
+      IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, params.sender);
       if (! kbd) return;
 
-      HookedKeyboard *p = ListHookedKeyboard::instance().get(kbd);
+      HookedKeyboard* p = ListHookedKeyboard::instance().get(kbd);
       if (! p) return;
 
       // ------------------------------------------------------------
       // Because the key repeat generates it by oneself, I throw it away.
-      if (params->repeat) {
-        keyboardRepeatInfo.params.ts = params->ts;
-        keyboardRepeatInfo_extra.params.ts = params->ts;
+      if (params.repeat) {
+        keyboardRepeatInfo.params.ts = params.ts;
+        keyboardRepeatInfo_extra.params.ts = params.ts;
         return;
       }
 
-      params->log();
+      params.log();
 
       // ------------------------------------------------------------
       if (config.general_capslock_led_hack) {
@@ -322,7 +320,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       unsigned int ex_extraRepeatFlags = 0;
       ExtraRepeatFunc::ExtraRepeatFunc ex_extraRepeatFunc = NULL;
 
-      KeyCode::normalizeKey(params->key, params->flags, params->keyboardType);
+      KeyCode::normalizeKey(params.key, params.flags, params.keyboardType);
 
       RemapParams remapParams = {
         params,
@@ -343,49 +341,47 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ------------------------------------------------------------
       // pointing emulation
       if (! listFireRelativePointer.isEmpty()) {
-        HookedPointing *hp = ListHookedPointing::instance().get();
+        HookedPointing* hp = ListHookedPointing::instance().get();
         if (hp) {
-          listFireRelativePointer.fire(hp->getOrig_relativePointerEventAction(), hp->getOrig_relativePointerEventTarget(), hp->get(), params->ts);
+          listFireRelativePointer.fire(hp->getOrig_relativePointerEventAction(), hp->getOrig_relativePointerEventTarget(), hp->get(), params.ts);
         }
       }
 
       // consumer emulation
       if (! listFireConsumerKey.isEmpty()) {
-        HookedConsumer *hc = ListHookedConsumer::instance().get();
+        HookedConsumer* hc = ListHookedConsumer::instance().get();
         if (hc) {
-          listFireConsumerKey.fire(hc->getOrig_keyboardSpecialEventAction(), hc->getOrig_keyboardSpecialEventTarget(), params->ts, params->sender, params->refcon);
+          listFireConsumerKey.fire(hc->getOrig_keyboardSpecialEventAction(), hc->getOrig_keyboardSpecialEventTarget(), params.ts, params.sender, params.refcon);
         }
       }
 
-      RemapUtil::fireKey(p->getOrig_keyboardEventAction(), *params);
-      ListFireExtraKey::fire(p->getOrig_keyboardEventAction(), *params);
+      RemapUtil::fireKey(p->getOrig_keyboardEventAction(), params);
+      ListFireExtraKey::fire(p->getOrig_keyboardEventAction(), params);
 
-      setRepeat_keyboard(kbd, *params);
-      setRepeat_keyboard_extra(kbd, *params, ex_extraRepeatFunc, ex_extraRepeatFlags);
+      setRepeat_keyboard(kbd, params);
+      setRepeat_keyboard_extra(kbd, params, ex_extraRepeatFunc, ex_extraRepeatFlags);
 
       if (NumHeldDownKeys::iszero()) {
         NumHeldDownKeys::reset();
         cancelRepeat();
         FlagStatus::reset();
-        params->flags = FlagStatus::makeFlags(params->key);
-        RemapUtil::fireModifiers(p->getOrig_keyboardEventAction(), *params);
-        PressDownKeys::clear(p->getOrig_keyboardEventAction(), params->target, params->ts, params->sender, params->refcon);
+        params.flags = FlagStatus::makeFlags(params.key);
+        RemapUtil::fireModifiers(p->getOrig_keyboardEventAction(), params);
+        PressDownKeys::clear(p->getOrig_keyboardEventAction(), params.target, params.ts, params.sender, params.refcon);
       }
     }
 
     void
-    remap_KeyboardSpecialEventCallback(Params_KeyboardSpecialEventCallback *params)
+    remap_KeyboardSpecialEventCallback(Params_KeyboardSpecialEventCallback& params)
     {
-      if (! params) return;
-
-      IOHIKeyboard *kbd = OSDynamicCast(IOHIKeyboard, params->sender);
+      IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, params.sender);
       if (! kbd) return;
 
-      HookedConsumer *p = ListHookedConsumer::instance().get(kbd);
+      HookedConsumer* p = ListHookedConsumer::instance().get(kbd);
       if (! p) return;
 
       // ------------------------------------------------------------
-      params->log();
+      params.log();
 
       ListFireExtraKey::reset();
       KeyCode::KeyCode ex_remapKeyCode = KeyCode::NONE;
@@ -403,14 +399,14 @@ namespace org_pqrs_KeyRemap4MacBook {
       remap_consumer(remapParams);
 
       // ----------------------------------------
-      HookedKeyboard *hk = ListHookedKeyboard::instance().get();
+      HookedKeyboard* hk = ListHookedKeyboard::instance().get();
       unsigned int keyboardType = KeyboardType::MACBOOK;
 
       if (hk) {
         Params_KeyboardEventCallBack callbackparams = {
-          hk->getOrig_keyboardEventTarget(), params->eventType, params->flags, ex_remapKeyCode,
+          hk->getOrig_keyboardEventTarget(), params.eventType, params.flags, ex_remapKeyCode,
           0, 0, 0, 0,
-          keyboardType, false, params->ts, hk->get(), NULL,
+          keyboardType, false, params.ts, hk->get(), NULL,
         };
 
         if (ex_remapKeyCode != KeyCode::NONE) {
@@ -421,22 +417,20 @@ namespace org_pqrs_KeyRemap4MacBook {
         ListFireExtraKey::fire(hk->getOrig_keyboardEventAction(), callbackparams);
       }
 
-      RemapUtil::fireConsumer(p->getOrig_keyboardSpecialEventAction(), *params);
+      RemapUtil::fireConsumer(p->getOrig_keyboardSpecialEventAction(), params);
     }
 
     void
-    remap_RelativePointerEventCallback(Params_RelativePointerEventCallback *params)
+    remap_RelativePointerEventCallback(Params_RelativePointerEventCallback& params)
     {
-      if (! params) return;
-
-      IOHIPointing *pointing = OSDynamicCast(IOHIPointing, params->sender);
+      IOHIPointing* pointing = OSDynamicCast(IOHIPointing, params.sender);
       if (! pointing) return;
 
-      HookedPointing *p = ListHookedPointing::instance().get(pointing);
+      HookedPointing* p = ListHookedPointing::instance().get(pointing);
       if (! p) return;
 
       // ------------------------------------------------------------
-      params->log();
+      params.log();
 
       listFireRelativePointer.reset();
       unsigned int flags = FlagStatus::makeFlags(KeyCode::NONE);
@@ -450,13 +444,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ------------------------------------------------------------
       unsigned int newflags = FlagStatus::makeFlags(KeyCode::NONE);
       if (flags != newflags) {
-        HookedKeyboard *hk = ListHookedKeyboard::instance().get();
+        HookedKeyboard* hk = ListHookedKeyboard::instance().get();
         unsigned int keyboardType = KeyboardType::MACBOOK;
         if (hk) {
           Params_KeyboardEventCallBack callbackparams = {
             hk->getOrig_keyboardEventTarget(), KeyEvent::MODIFY, newflags, KeyCode::NONE,
             0, 0, 0, 0,
-            keyboardType, false, params->ts, hk->get(), NULL,
+            keyboardType, false, params.ts, hk->get(), NULL,
           };
           RemapUtil::fireModifiers(hk->getOrig_keyboardEventAction(), callbackparams);
         }
@@ -466,33 +460,31 @@ namespace org_pqrs_KeyRemap4MacBook {
       RelativePointerEventCallback reCallback = p->getOrig_relativePointerEventAction();
 
       if (! ex_dropEvent) {
-        params->apply(reCallback);
+        params.apply(reCallback);
       }
 
       if (! listFireRelativePointer.isEmpty()) {
-        listFireRelativePointer.fire(reCallback, params->target, pointing, params->ts);
+        listFireRelativePointer.fire(reCallback, params.target, pointing, params.ts);
       }
 
       if (firePointingScroll.isEnable()) {
-        firePointingScroll.fire(p->getOrig_scrollWheelEventAction(), p->getOrig_scrollWheelEventTarget(), pointing, params->ts);
+        firePointingScroll.fire(p->getOrig_scrollWheelEventAction(), p->getOrig_scrollWheelEventTarget(), pointing, params.ts);
       }
     }
 
     void
-    remap_ScrollWheelEventCallback(Params_ScrollWheelEventCallback *params)
+    remap_ScrollWheelEventCallback(Params_ScrollWheelEventCallback& params)
     {
-      if (! params) return;
-
-      IOHIPointing *pointing = OSDynamicCast(IOHIPointing, params->sender);
+      IOHIPointing* pointing = OSDynamicCast(IOHIPointing, params.sender);
       if (! pointing) return;
 
-      HookedPointing *p = ListHookedPointing::instance().get(pointing);
+      HookedPointing* p = ListHookedPointing::instance().get(pointing);
       if (! p) return;
 
       // ------------------------------------------------------------
-      params->log();
+      params.log();
 
-      params->apply(p->getOrig_scrollWheelEventAction());
+      params.apply(p->getOrig_scrollWheelEventAction());
     }
   }
 }

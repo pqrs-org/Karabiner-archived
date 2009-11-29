@@ -143,7 +143,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   unsigned int
   FlagStatus::makeFlags(const RemapParams& remapParams)
   {
-    return makeFlags((remapParams.params)->key);
+    return makeFlags(remapParams.params.key);
   }
 
   FlagStatus::Item*

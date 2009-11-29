@@ -117,7 +117,7 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
   if /<keyboardtype_only>(.+?)<\/keyboardtype_only>/m =~ item then
     tmp = []
     $1.split(/,/).each do |f|
-      tmp << "((remapParams.params)->keyboardType != KeyboardType::#{f.strip})"
+      tmp << "(remapParams.params.keyboardType != KeyboardType::#{f.strip})"
     end
     filter += "if (#{tmp.join(' && ')}) return;\n"
   end
