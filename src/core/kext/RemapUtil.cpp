@@ -486,23 +486,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  FireFunc::firefunc_backslash(const RemapParams &params)
-  {
-    unsigned int flags = FlagStatus::makeFlags(params);
-    ListFireExtraKey::addKey(flags, KeyCode::BACKSLASH);
-  }
-
-  void
-  FireFunc::firefunc_commandSpace(const RemapParams &params)
-  {
-    // fire only if no-modifiers
-    if (FlagStatus::makeFlags(params) != 0) return;
-
-    ListFireExtraKey::add(KeyEvent::DOWN, ModifierFlag::COMMAND_L, KeyCode::SPACE);
-    ListFireExtraKey::add(KeyEvent::UP,   ModifierFlag::COMMAND_L, KeyCode::SPACE);
-  }
-
-  void
   FireFunc::firefunc_enter(const RemapParams &params)
   {
     unsigned int flags = FlagStatus::makeFlags(params);
@@ -514,13 +497,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     unsigned int flags = FlagStatus::makeFlags(params);
     ListFireExtraKey::addKey(flags, KeyCode::ESCAPE);
-  }
-
-  void
-  FireFunc::firefunc_exposeAll(const RemapParams &params)
-  {
-    unsigned int flags = FlagStatus::makeFlags(params);
-    ListFireExtraKey::addKey(flags, KeyCode::EXPOSE_ALL);
   }
 
   void
@@ -542,12 +518,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     unsigned int flags = FlagStatus::makeFlags(params);
     ListFireExtraKey::addKey(flags, KeyCode::TAB);
-  }
-
-  void
-  FireFunc::firefunc_french_backslash(const RemapParams &params)
-  {
-    ListFireExtraKey::addKey(ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L, KeyCode::DOT);
   }
 
   void
