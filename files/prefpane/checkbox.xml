@@ -496,7 +496,7 @@
           <name>Control_L to Control_L</name>
           <appendix>(+ When you type Control_L only, send Escape)</appendix>
           <sysctl>remap.controlL2controlL_escape</sysctl>
-          <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_L, ModifierFlag::CONTROL_L, FireFunc::firefunc_escape</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_L, ModifierFlag::CONTROL_L, KeyCode::ESCAPE</autogen>
         </item>
         <item>
           <name>Control_L to FN</name>
