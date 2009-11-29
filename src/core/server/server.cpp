@@ -10,10 +10,11 @@
 
 #include "server.hpp"
 #include "server_objc_part.h"
+#include "Mutex.hpp"
 
 namespace {
   org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::ApplicationType currentApplicationType = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::UNKNOWN;
-  KeyRemap4MacBook_server::Mutex mutex_currentApplicationType;
+  Mutex mutex_currentApplicationType;
 }
 
 bool
@@ -168,7 +169,7 @@ KeyRemap4MacBook_server::Server::do_GetWorkspaceData(org_pqrs_KeyRemap4MacBook::
 void
 setCurrentApplicationType(const char* applicationName)
 {
-  KeyRemap4MacBook_server::Mutex::ScopedLock lk(mutex_currentApplicationType);
+  Mutex::ScopedLock lk(mutex_currentApplicationType);
 
   // we ignore the program for our investigation.
   if (strcmp(applicationName, "org.pqrs.KeyDump") == 0) {
