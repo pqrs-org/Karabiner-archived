@@ -57,15 +57,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void lock_increase(ModifierFlag::ModifierFlag flag);
     static void lock_decrease(ModifierFlag::ModifierFlag flag);
 
-    // ----------------------------------------
-    static void temporaryDecrease_shift(void) {
-      if (isHeldDown(ModifierFlag::SHIFT_L)) {
-        temporary_decrease(ModifierFlag::SHIFT_L);
-      } else {
-        temporary_decrease(ModifierFlag::SHIFT_R);
-      }
-    }
-
   private:
     static Item item_[ModifierFlag::listsize];
   };

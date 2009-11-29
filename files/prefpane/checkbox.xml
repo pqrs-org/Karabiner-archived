@@ -3089,15 +3089,13 @@
             <item>
               <name>Shift+Space to KANA/EISUU (toggle)</name>
               <sysctl>remap.jis_shiftSpace2toggle_kana_eisuu</sysctl>
+              <autogen>--JISToggleEisuuKana-- KeyCode::SPACE, VK_SHIFT</autogen>
             </item>
             <item>
-              <name>Shift+Space to KANA/EISUU (toggle) Option</name>
-              <list>
-                <item>
-                  <name>Don't Remap in Emacs.app</name>
-                  <sysctl>option.jis_shiftSpace2toggle_kana_eisuu_disable_emacs</sysctl>
-                </item>
-              </list>
+              <name>Shift+Space to KANA/EISUU (toggle) (except Emacs.app)</name>
+              <sysctl>remap.jis_shiftSpace2toggle_kana_eisuu_ex_emacs</sysctl>
+              <not>EMACS</not>
+              <autogen>--JISToggleEisuuKana-- KeyCode::SPACE, VK_SHIFT</autogen>
             </item>
             <item>
               <name>Shift+Space to Equal</name>
