@@ -6,89 +6,69 @@
 #include "remap.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  namespace FlagStatus {
+  class FlagStatus {
+  public:
     class Item {
-    public:
-      void initialize(ModifierFlag::ModifierFlag _flag);
-      void set(void);
-      void set(const RemapParams &remapParams);
+      friend class FlagStatus;
 
-      void reset(void);
+    public:
       void increase(void);
       void decrease(void);
-      void temporary_increase(void) { ++temporary_count; }
-      void temporary_decrease(void) { --temporary_count; }
-      void lock_increase(void) { lock_count = 1; }
-      void lock_decrease(void) { lock_count = 0; }
+      void temporary_increase(void) { ++temporary_count_; }
+      void temporary_decrease(void) { --temporary_count_; }
+      void lock_increase(void) { lock_count_ = 1; }
+      void lock_decrease(void) { lock_count_ = 0; }
 
-      bool isHeldDown(void) const { return (count + temporary_count + lock_count + original_lock_count) > 0; }
-      unsigned int makeFlag(void) const { return (isHeldDown()) ? flag : 0; }
-
-      KeyCode::KeyCode getKeyCode(void) const { return key; }
+      bool isHeldDown(void) const { return (count_ + temporary_count_ + lock_count_ + original_lock_count_) > 0; }
+      KeyCode::KeyCode getKeyCode(void) const { return key_; }
 
     private:
-      ModifierFlag::ModifierFlag flag;
-      KeyCode::KeyCode key;
-      int count;
-      int temporary_count;
+      void initialize(ModifierFlag::ModifierFlag f);
+      void set(void);
+      void set(const RemapParams& remapParams);
 
-      int lock_count; // store remapped lock status. (CapsLock, FN lock, ...)
-      int original_lock_count; // store original CapsLock status.
+      void reset(void);
+      unsigned int makeFlag(void) const { return (isHeldDown()) ? flag_ : 0; }
+
+      ModifierFlag::ModifierFlag flag_;
+      KeyCode::KeyCode key_;
+      int count_;
+      int temporary_count_;
+
+      int lock_count_; // store remapped lock status. (CapsLock, FN lock, ...)
+      int original_lock_count_; // store original CapsLock status.
     };
 
-    void initialize(void);
-    void set(void);
-    void set(const RemapParams &remapParams);
-    unsigned int makeFlags(unsigned int keyCode = KeyCode::NONE);
-    unsigned int makeFlags(const RemapParams &remapParams);
-    void reset(void);
+    static void initialize(void);
+    static void set(void);
+    static void set(const RemapParams& remapParams);
+    static unsigned int makeFlags(unsigned int keyCode = KeyCode::NONE);
+    static unsigned int makeFlags(const RemapParams& remapParams);
+    static void reset(void);
 
-    Item *getFlagStatus(ModifierFlag::ModifierFlag flag);
-    Item *getFlagStatus(KeyCode::KeyCode keyCode);
+    static Item* getFlagStatus(ModifierFlag::ModifierFlag flag);
+    static Item* getFlagStatus(KeyCode::KeyCode keyCode);
 
-    bool isHeldDown(ModifierFlag::ModifierFlag flag);
-    void increase(ModifierFlag::ModifierFlag flag);
-    void decrease(ModifierFlag::ModifierFlag flag);
-    void temporary_increase(ModifierFlag::ModifierFlag flag);
-    void temporary_decrease(ModifierFlag::ModifierFlag flag);
-    void lock_increase(ModifierFlag::ModifierFlag flag);
-    void lock_decrease(ModifierFlag::ModifierFlag flag);
+    static bool isHeldDown(ModifierFlag::ModifierFlag flag);
+    static void increase(ModifierFlag::ModifierFlag flag);
+    static void decrease(ModifierFlag::ModifierFlag flag);
+    static void temporary_increase(ModifierFlag::ModifierFlag flag);
+    static void temporary_decrease(ModifierFlag::ModifierFlag flag);
+    static void lock_increase(ModifierFlag::ModifierFlag flag);
+    static void lock_decrease(ModifierFlag::ModifierFlag flag);
 
     // ----------------------------------------
-    inline bool isHeldDown_command(void) { return isHeldDown(ModifierFlag::COMMAND_L) || isHeldDown(ModifierFlag::COMMAND_R); }
-    inline bool isHeldDown_control(void) { return isHeldDown(ModifierFlag::CONTROL_L) || isHeldDown(ModifierFlag::CONTROL_R); }
-    inline bool isHeldDown_option(void) { return isHeldDown(ModifierFlag::OPTION_L) || isHeldDown(ModifierFlag::OPTION_R); }
-    inline bool isHeldDown_shift(void) { return isHeldDown(ModifierFlag::SHIFT_L) || isHeldDown(ModifierFlag::SHIFT_R); }
-
-    inline void temporaryDecrease_control(void) {
-      if (isHeldDown(ModifierFlag::CONTROL_L)) {
-        temporary_decrease(ModifierFlag::CONTROL_L);
-      } else {
-        temporary_decrease(ModifierFlag::CONTROL_R);
-      }
-    }
-    inline void temporaryDecrease_command(void) {
-      if (isHeldDown(ModifierFlag::COMMAND_L)) {
-        temporary_decrease(ModifierFlag::COMMAND_L);
-      } else {
-        temporary_decrease(ModifierFlag::COMMAND_R);
-      }
-    }
-    inline void temporaryDecrease_option(void) {
-      if (isHeldDown(ModifierFlag::OPTION_L)) {
-        temporary_decrease(ModifierFlag::OPTION_L);
-      } else {
-        temporary_decrease(ModifierFlag::OPTION_R);
-      }
-    }
-    inline void temporaryDecrease_shift(void) {
+    static void temporaryDecrease_shift(void) {
       if (isHeldDown(ModifierFlag::SHIFT_L)) {
         temporary_decrease(ModifierFlag::SHIFT_L);
       } else {
         temporary_decrease(ModifierFlag::SHIFT_R);
       }
     }
-  }
+
+  private:
+    static Item item_[ModifierFlag::listsize];
+  };
 }
 
 #endif

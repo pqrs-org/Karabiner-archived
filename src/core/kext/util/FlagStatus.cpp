@@ -3,205 +3,203 @@
 #include "Config.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  namespace FlagStatus {
-    Item item[ModifierFlag::listsize];
+  FlagStatus::Item FlagStatus::item_[ModifierFlag::listsize];
 
-    void
-    Item::initialize(ModifierFlag::ModifierFlag _flag)
-    {
-      flag = _flag;
-      key = RemapUtil::getModifierKeyCode(_flag);
-      count = 0;
-      temporary_count = 0;
-      lock_count = 0;
-      original_lock_count = 0;
-    }
+  void
+  FlagStatus::Item::initialize(ModifierFlag::ModifierFlag f)
+  {
+    flag_ = f;
+    key_ = RemapUtil::getModifierKeyCode(flag_);
+    count_ = 0;
+    temporary_count_ = 0;
+    lock_count_ = 0;
+    original_lock_count_ = 0;
+  }
 
-    void
-    Item::set(void)
-    {
-      temporary_count = 0;
-    }
+  void
+  FlagStatus::Item::set(void)
+  {
+    temporary_count_ = 0;
+  }
 
-    void
-    Item::set(const RemapParams &remapParams)
-    {
-      temporary_count = 0;
+  void
+  FlagStatus::Item::set(const RemapParams& remapParams)
+  {
+    temporary_count_ = 0;
 
-      // At some keyboard, when we press CapsLock key, the down & up event are thrown at a time.
-      // So, we treat the capslock key exceptionally.
-      if (key == KeyCode::CAPSLOCK) {
-        if (RemapUtil::isModifierOn(remapParams, flag)) {
-          if (! original_lock_count) {
-            original_lock_count = 1;
-            lock_count = 0; // clear remapped lock_count when original changed.
-          }
-        } else {
-          if (original_lock_count) {
-            original_lock_count = 0;
-            lock_count = 0; // clear remapped lock_count when original changed.
-          }
+    // At some keyboard, when we press CapsLock key, the down & up event are thrown at a time.
+    // So, we treat the capslock key exceptionally.
+    if (key_ == KeyCode::CAPSLOCK) {
+      if (RemapUtil::isModifierOn(remapParams, flag_)) {
+        if (! original_lock_count_) {
+          original_lock_count_ = 1;
+          lock_count_ = 0; // clear remapped lock_count_ when original changed.
         }
-
-        if (config.debug_devel) {
-          printf("KeyRemap4MacBook -Info- FlagStatus::set CAPSLOCK (lock_count = %d)\n", original_lock_count);
+      } else {
+        if (original_lock_count_) {
+          original_lock_count_ = 0;
+          lock_count_ = 0; // clear remapped lock_count_ when original changed.
         }
-        return;
       }
 
-      if ((remapParams.params)->eventType != KeyEvent::MODIFY) return;
-      if (remapParams.ex_origKey != static_cast<unsigned int>(key)) return;
-
-      if (RemapUtil::isModifierOn(remapParams, flag)) {
-        increase();
-      } else {
-        decrease();
-      }
-    }
-
-    void
-    Item::reset(void)
-    {
-      count = 0;
-      temporary_count = 0;
-
-      /*
-        preserve lock_count, original_lock_count.
-
-        FlagStatus::reset is called when NumHeldDownKeys == 0,
-        so we need remember the status of CapsLock, NumLock, ...
-      */
-    }
-
-    void
-    Item::increase(void)
-    {
-      if (key == KeyCode::CAPSLOCK) {
-        lock_count = ! lock_count;
-      } else {
-        ++count;
-      }
-    }
-
-    void
-    Item::decrease(void)
-    {
-      if (key == KeyCode::CAPSLOCK) {
-        // do nothing (toggle at Item::increase).
-      } else {
-        --count;
-      }
-    }
-
-    // ----------------------------------------------------------------------
-    void
-    initialize(void)
-    {
-      for (int i = 0; i < ModifierFlag::listsize; ++i) {
-        item[i].initialize(ModifierFlag::list[i]);
-      }
-    }
-
-    void
-    set(void)
-    {
-      for (int i = 0; i < ModifierFlag::listsize; ++i) {
-        item[i].set();
-      }
-    }
-
-    void
-    set(const RemapParams &remapParams)
-    {
-      for (int i = 0; i < ModifierFlag::listsize; ++i) {
-        item[i].set(remapParams);
-      }
-    }
-
-    void
-    reset(void)
-    {
       if (config.debug_devel) {
-        printf("KeyRemap4MacBook FlagStatus::reset\n");
+        printf("KeyRemap4MacBook -Info- FlagStatus::set CAPSLOCK (original_lock_count_:%d, lock_count_:%d)\n", original_lock_count_, lock_count_);
       }
-
-      for (int i = 0; i < ModifierFlag::listsize; ++i) {
-        item[i].reset();
-      }
+      return;
     }
 
-    unsigned int
-    makeFlags(unsigned int keyCode)
-    {
-      unsigned int flags = 0;
-      for (int i = 0; i < ModifierFlag::listsize; ++i) {
-        flags |= item[i].makeFlag();
-      }
-      return flags;
+    if ((remapParams.params)->eventType != KeyEvent::MODIFY) return;
+    if (remapParams.ex_origKey != static_cast<unsigned int>(key_)) return;
+
+    if (RemapUtil::isModifierOn(remapParams, flag_)) {
+      increase();
+    } else {
+      decrease();
+    }
+  }
+
+  void
+  FlagStatus::Item::reset(void)
+  {
+    count_ = 0;
+    temporary_count_ = 0;
+
+    /*
+       preserve lock_count, original_lock_count.
+
+       FlagStatus::reset is called when NumHeldDownKeys == 0,
+       so we need remember the status of CapsLock, NumLock, ...
+     */
+  }
+
+  void
+  FlagStatus::Item::increase(void)
+  {
+    if (key_ == KeyCode::CAPSLOCK) {
+      lock_count_ = ! lock_count_;
+    } else {
+      ++count_;
+    }
+  }
+
+  void
+  FlagStatus::Item::decrease(void)
+  {
+    if (key_ == KeyCode::CAPSLOCK) {
+      // do nothing (toggle at Item::increase).
+    } else {
+      --count_;
+    }
+  }
+
+  // ----------------------------------------------------------------------
+  void
+  FlagStatus::initialize(void)
+  {
+    for (int i = 0; i < ModifierFlag::listsize; ++i) {
+      item_[i].initialize(ModifierFlag::list[i]);
+    }
+  }
+
+  void
+  FlagStatus::set(void)
+  {
+    for (int i = 0; i < ModifierFlag::listsize; ++i) {
+      item_[i].set();
+    }
+  }
+
+  void
+  FlagStatus::set(const RemapParams& remapParams)
+  {
+    for (int i = 0; i < ModifierFlag::listsize; ++i) {
+      item_[i].set(remapParams);
+    }
+  }
+
+  void
+  FlagStatus::reset(void)
+  {
+    if (config.debug_devel) {
+      printf("KeyRemap4MacBook FlagStatus::reset\n");
     }
 
-    unsigned int
-    makeFlags(const RemapParams &remapParams)
-    {
-      return makeFlags((remapParams.params)->key);
+    for (int i = 0; i < ModifierFlag::listsize; ++i) {
+      item_[i].reset();
     }
+  }
 
-    Item *
-    getFlagStatus(ModifierFlag::ModifierFlag flag) {
-      for (int i = 0; i < ModifierFlag::listsize; ++i) {
-        if (flag == ModifierFlag::list[i]) return item + i;
-      }
-      return NULL;
+  unsigned int
+  FlagStatus::makeFlags(unsigned int keyCode)
+  {
+    unsigned int flags = 0;
+    for (int i = 0; i < ModifierFlag::listsize; ++i) {
+      flags |= item_[i].makeFlag();
     }
+    return flags;
+  }
 
-    // ----------------------------------------
-    bool
-    isHeldDown(ModifierFlag::ModifierFlag flag) {
-      Item *p = getFlagStatus(flag);
-      if (! p) return false;
-      return p->isHeldDown();
-    }
+  unsigned int
+  FlagStatus::makeFlags(const RemapParams& remapParams)
+  {
+    return makeFlags((remapParams.params)->key);
+  }
 
-    void
-    increase(ModifierFlag::ModifierFlag flag) {
-      Item *p = getFlagStatus(flag);
-      if (! p) return;
-      return p->increase();
+  FlagStatus::Item*
+  FlagStatus::getFlagStatus(ModifierFlag::ModifierFlag flag) {
+    for (int i = 0; i < ModifierFlag::listsize; ++i) {
+      if (flag == ModifierFlag::list[i]) return item_ + i;
     }
+    return NULL;
+  }
 
-    void
-    decrease(ModifierFlag::ModifierFlag flag) {
-      Item *p = getFlagStatus(flag);
-      if (! p) return;
-      return p->decrease();
-    }
+  // ----------------------------------------
+  bool
+  FlagStatus::isHeldDown(ModifierFlag::ModifierFlag flag) {
+    Item* p = getFlagStatus(flag);
+    if (! p) return false;
+    return p->isHeldDown();
+  }
 
-    void
-    temporary_increase(ModifierFlag::ModifierFlag flag) {
-      Item *p = getFlagStatus(flag);
-      if (! p) return;
-      return p->temporary_increase();
-    }
+  void
+  FlagStatus::increase(ModifierFlag::ModifierFlag flag) {
+    Item* p = getFlagStatus(flag);
+    if (! p) return;
+    return p->increase();
+  }
 
-    void
-    temporary_decrease(ModifierFlag::ModifierFlag flag) {
-      Item *p = getFlagStatus(flag);
-      if (! p) return;
-      return p->temporary_decrease();
-    }
+  void
+  FlagStatus::decrease(ModifierFlag::ModifierFlag flag) {
+    Item* p = getFlagStatus(flag);
+    if (! p) return;
+    return p->decrease();
+  }
 
-    void
-    lock_increase(ModifierFlag::ModifierFlag flag) {
-      Item *p = getFlagStatus(flag);
-      if (! p) return;
-      return p->lock_increase();
-    }
+  void
+  FlagStatus::temporary_increase(ModifierFlag::ModifierFlag flag) {
+    Item* p = getFlagStatus(flag);
+    if (! p) return;
+    return p->temporary_increase();
+  }
 
-    void
-    lock_decrease(ModifierFlag::ModifierFlag flag) {
-      Item *p = getFlagStatus(flag);
-      if (! p) return;
-      return p->lock_decrease();
-    }
+  void
+  FlagStatus::temporary_decrease(ModifierFlag::ModifierFlag flag) {
+    Item* p = getFlagStatus(flag);
+    if (! p) return;
+    return p->temporary_decrease();
+  }
+
+  void
+  FlagStatus::lock_increase(ModifierFlag::ModifierFlag flag) {
+    Item* p = getFlagStatus(flag);
+    if (! p) return;
+    return p->lock_increase();
+  }
+
+  void
+  FlagStatus::lock_decrease(ModifierFlag::ModifierFlag flag) {
+    Item* p = getFlagStatus(flag);
+    if (! p) return;
+    return p->lock_decrease();
   }
 }

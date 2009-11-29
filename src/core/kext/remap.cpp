@@ -124,7 +124,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (! RemapUtil::isKey(remapParams, KeyCode::SPACE)) return;
 
-    if (FlagStatus::isHeldDown_shift()) {
+    if (FlagStatus::isHeldDown(ModifierFlag::SHIFT_L) || FlagStatus::isHeldDown(ModifierFlag::SHIFT_R)) {
       FlagStatus::temporaryDecrease_shift();
 
       if (RemapUtil::isEvent_Down(remapParams)) {
