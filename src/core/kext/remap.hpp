@@ -13,7 +13,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     KeyRemap4MacBook_bridge::GetWorkspaceData::Reply workspacedata;
     ExtraRepeatFunc::ExtraRepeatFunc& ex_extraRepeatFunc;
     unsigned int& ex_extraRepeatFlags;
-    unsigned int ex_extraRepeatCounter;
+    KeyCode::KeyCode& ex_repeatKeyCode;
+    unsigned int& ex_repeatFlags;
+    unsigned int ex_extraRepeatCounter; // for KeyOverlaidModifier
   };
   void remap_core(const RemapParams& remapParams);
 

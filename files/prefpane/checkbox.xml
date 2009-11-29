@@ -321,7 +321,7 @@
           <name>Command_R to Command_R</name>
           <appendix>(+ When you type Command_R only, send Command+Space)</appendix>
           <sysctl>remap.commandR2commandR_commandSpace</sysctl>
-          <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, FireFunc::firefunc_commandSpace</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
           <name>Command_R to Command_R</name>
@@ -1643,7 +1643,7 @@
           <name>Space to Shift_L</name>
           <appendix>(+ When you type Space only, send Space)</appendix>
           <sysctl>remap.space2shiftL_space</sysctl>
-          <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, ModifierFlag::SHIFT_L, FireFunc::firefunc_space</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, ModifierFlag::SHIFT_L, KeyCode::SPACE</autogen>
         </item>
         <item>
           <name>Space to Shift_L</name>
