@@ -2200,7 +2200,7 @@
       <name>Remapping for Mac OS X Features</name>
       <list>
         <item>
-          <name>Drop Shift+[F1...F12] (Disable Show-Expose)</name>
+          <name>Drop Shift+[F1...F12] (Disable Slow-Expose)</name>
           <sysctl>remap.drop_funcshift</sysctl>
           <autogen>--KeyToKey-- KeyCode::F1, VK_SHIFT, KeyCode::F1</autogen>
           <autogen>--KeyToKey-- KeyCode::F2, VK_SHIFT, KeyCode::F2</autogen>
@@ -3373,6 +3373,16 @@
               <autogen>--KeyToKey-- KeyCode::EQUAL, ModifierFlag::NONE, KeyCode::BACKSLASH</autogen>
               <autogen>--KeyToKey-- KeyCode::BACKSLASH, ModifierFlag::NONE, KeyCode::BRACKET_RIGHT</autogen>
               <sysctl>remap.jis_layout_windowskanainput</sysctl>
+            </item>
+          </list>
+        </item>
+        <item>
+          <name>Hack for the bug of MacOS X</name>
+          <list>
+            <item>
+              <name>Drop Command/Control/Option/Shift+EISUU, Command/Control/Option/Shift+KANA</name>
+              <appendix>(to prevent the system hangup at Snow Leopard)</appendix>
+              <sysctl>option.jis_drop_eisuukana_with_modifiers</sysctl>
             </item>
           </list>
         </item>
