@@ -2201,7 +2201,7 @@
       <list>
         <item>
           <name>Drop Shift+[F1...F12] (Disable Slow-Expose)</name>
-          <sysctl>remap.drop_funcshift</sysctl>
+          <sysctl>option.drop_slowexpose</sysctl>
           <autogen>--KeyToKey-- KeyCode::F1, VK_SHIFT, KeyCode::F1</autogen>
           <autogen>--KeyToKey-- KeyCode::F2, VK_SHIFT, KeyCode::F2</autogen>
           <autogen>--KeyToKey-- KeyCode::F3, VK_SHIFT, KeyCode::F3</autogen>
