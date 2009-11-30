@@ -61,6 +61,18 @@ namespace org_pqrs_KeyRemap4MacBook {
       return;
     }
 
+    if (config.option_drop_slowexpose) {
+      // Skip if Shift+F8,F9,F10,F11,F12,EXPOSE_ALL.
+      if (key == KeyCode::F8 || key == KeyCode::F9 ||
+          key == KeyCode::F10 || key == KeyCode::F11 ||
+          key == KeyCode::F12 || key == KeyCode::EXPOSE_ALL) {
+        if (ModifierFlag::isOn(flags, ModifierFlag::SHIFT_L) ||
+            ModifierFlag::isOn(flags, ModifierFlag::SHIFT_R)) {
+          return;
+        }
+      }
+    }
+
     if (config.option_jis_drop_eisuukana_with_modifiers) {
       // Skip if EISUU,KANA with any modifiers.
       if (key == KeyCode::JIS_EISUU || key == KeyCode::JIS_KANA) {
