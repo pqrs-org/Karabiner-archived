@@ -486,13 +486,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  FireFunc::firefunc_enter(const RemapParams &params)
-  {
-    unsigned int flags = FlagStatus::makeFlags(params);
-    ListFireExtraKey::addKey(flags, KeyCode::ENTER);
-  }
-
-  void
   FireFunc::firefunc_escape(const RemapParams &params)
   {
     unsigned int flags = FlagStatus::makeFlags(params);
@@ -504,13 +497,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     unsigned int flags = FlagStatus::makeFlags(params);
     ListFireExtraKey::addKey(flags, KeyCode::RETURN);
-  }
-
-  void
-  FireFunc::firefunc_space(const RemapParams &params)
-  {
-    unsigned int flags = FlagStatus::makeFlags(params);
-    ListFireExtraKey::addKey(flags, KeyCode::SPACE);
   }
 
   void
