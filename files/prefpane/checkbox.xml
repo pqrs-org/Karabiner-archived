@@ -2996,7 +2996,7 @@
               <name>Command_L to Command_L</name>
               <appendix>(+ When you type Command_L only, send KANA/EISUU (toggle))</appendix>
               <sysctl>remap.jis_commandL2commandL_toggle_kana_eisuu</sysctl>
-              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, FireFunc::firefunc_jis_toggle_eisuu_kana</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
             </item>
             <item>
               <name>Command_L to Control_L</name>
@@ -3044,7 +3044,7 @@
               <name>Command_R to Command_R</name>
               <appendix>(+ When you type Command_R only, send KANA/EISUU (toggle))</appendix>
               <sysctl>remap.jis_commandR2commandR_toggle_kana_eisuu</sysctl>
-              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, FireFunc::firefunc_jis_toggle_eisuu_kana</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
             </item>
             <item>
               <name>Command_R x2 to KANA</name>
@@ -3640,10 +3640,10 @@
           <autogen>--JISToggleEisuuKana-- KeyCode::A, VK_SHIFT</autogen>
         </item>
         <item>
-          <name>firefunc_jis_toggle_eisuu_kana</name>
+          <name>VK_JIS_TOGGLE_EISUU_KANA</name>
           <appendix>Command_L to Command_L (+ When you type Command_L only, send KANA/EISUU (toggle))</appendix>
           <sysctl>remap.samples_jis_commandL2commandL_toggle_kana_eisuu</sysctl>
-          <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, FireFunc::firefunc_jis_toggle_eisuu_kana</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
         </item>
       </list>
     </item>

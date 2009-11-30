@@ -74,6 +74,10 @@ namespace org_pqrs_KeyRemap4MacBook {
           // use last info.
           reply = last;
         }
+
+        // ------------------------------------------------------------
+        // Store data to KeyboardRepeat
+        KeyboardRepeat::setWorkSpaceData(reply);
       }
     }
 
@@ -239,8 +243,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
       }
 
-      RemapUtil::fireKey(p->getOrig_keyboardEventAction(), params);
-      ListFireExtraKey::fire(p->getOrig_keyboardEventAction(), params);
+      RemapUtil::fireKey(p->getOrig_keyboardEventAction(), params, remapParams.workspacedata);
+      ListFireExtraKey::fire(p->getOrig_keyboardEventAction(), params, remapParams.workspacedata);
 
       if (ex_repeatKeyCode != KeyCode::NONE) {
         // XXX: need cleanup
@@ -300,10 +304,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         };
 
         if (ex_remapKeyCode != KeyCode::NONE) {
-          RemapUtil::fireKey(hk->getOrig_keyboardEventAction(), callbackparams);
+          RemapUtil::fireKey(hk->getOrig_keyboardEventAction(), callbackparams, remapParams.workspacedata);
           KeyboardRepeat::set(callbackparams);
         }
-        ListFireExtraKey::fire(hk->getOrig_keyboardEventAction(), callbackparams);
+        ListFireExtraKey::fire(hk->getOrig_keyboardEventAction(), callbackparams, remapParams.workspacedata);
       }
 
       RemapUtil::fireConsumer(p->getOrig_keyboardSpecialEventAction(), params);

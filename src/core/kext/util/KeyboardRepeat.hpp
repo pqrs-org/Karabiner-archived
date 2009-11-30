@@ -2,6 +2,7 @@
 #define KEYBOARDREPEAT_HPP
 
 #include "base.hpp"
+#include "bridge.hpp"
 #include "keycode.hpp"
 #include "Config.hpp"
 #include "CallbackWrapper.hpp"
@@ -16,6 +17,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void terminate(void);
 
     static void setTS(const AbsoluteTime& ts) { params_.ts = ts; }
+    static void setWorkSpaceData(const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) { workspacedata_ = workspacedata; }
 
     static void set(KeyEvent::KeyEvent eventType = KeyEvent::DOWN, unsigned int flags = 0, KeyCode::KeyCode key = KeyCode::NONE, KeyboardType::KeyboardType keyboardType = KeyboardType::MACBOOK,
                     int wait = config.get_repeat_initial_wait());
@@ -34,6 +36,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     static TimerWrapper timer_;
     static Params_KeyboardEventCallBack params_;
+    static KeyRemap4MacBook_bridge::GetWorkspaceData::Reply workspacedata_;
   };
 }
 

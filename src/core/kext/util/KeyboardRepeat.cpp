@@ -5,6 +5,7 @@
 namespace org_pqrs_KeyRemap4MacBook {
   TimerWrapper KeyboardRepeat::timer_;
   Params_KeyboardEventCallBack KeyboardRepeat::params_;
+  KeyRemap4MacBook_bridge::GetWorkspaceData::Reply KeyboardRepeat::workspacedata_;
 
   void
   KeyboardRepeat::initialize(IOWorkLoop& workloop)
@@ -89,7 +90,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       return;
     }
 
-    RemapUtil::fireKey(callback, params_);
+    RemapUtil::fireKey(callback, params_, workspacedata_);
     timer_.setTimeoutMS(config.get_repeat_wait());
   }
 }
