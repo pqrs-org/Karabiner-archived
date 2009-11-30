@@ -667,23 +667,26 @@ namespace org_pqrs_KeyRemap4MacBook {
     KeyCode::KeyCode toKeyCode = RemapUtil::getModifierKeyCode(toFlag);
     keytokey_.remap(remapParams, fromKeyCode, toKeyCode);
 
+    // ----------------------------------------
     if (isKeyDown) {
       useAsModifier = false;
       ClickWatcher::set(&isClick);
       ic.begin();
 
       if (isFireRepeat) {
+        FlagStatus::temporary_decrease(toFlag);
+        unsigned int flags = ModifierFlag::stripNONE(FlagStatus::makeFlags(remapParams) | fireFlags);
+        FlagStatus::temporary_increase(toFlag);
+
         remapParams.ex_repeatKeyCode = fireKeyCode;
-        remapParams.ex_repeatFlags = fireFlags;
+        remapParams.ex_repeatFlags = flags;
       }
 
     } else {
       if (useAsModifier == false && isClick == false) {
         if (remapParams.ex_extraRepeatCounter == 0) {
           if (config.parameter_keyoverlaidmodifier_timeout <= 0 || ic.checkThreshold(config.parameter_keyoverlaidmodifier_timeout) == false) {
-            unsigned int flags = FlagStatus::makeFlags(remapParams);
-            flags |= fireFlags;
-            flags = ModifierFlag::stripNONE(flags);
+            unsigned int flags = ModifierFlag::stripNONE(FlagStatus::makeFlags(remapParams) | fireFlags);
             ListFireExtraKey::addKey(flags, fireKeyCode);
           }
         }
