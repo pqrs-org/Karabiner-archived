@@ -172,6 +172,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
 
+    // ----------------------------------------
     remapParams.params.key = toKeyCode;
     remapParams.isremapped = true;
     remapFlags(fromFlags, toFlags, toKeyCode, isKeyDown);
@@ -380,6 +381,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! callback) return;
     if (params.key == KeyCode::NONE) return;
 
+    // ------------------------------------------------------------
     Params_KeyboardEventCallBack p = params;
     KeyCode::reverseNormalizeKey(p.key, p.flags, p.keyboardType);
 
@@ -557,86 +559,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
-  // --------------------
-  void
-  ExtraRepeatFunc::extraRepeatFunc_enter(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon)
-  {
-    if (callback == NULL) return;
-
-    Params_KeyboardEventCallBack params = {
-      target, KeyEvent::DOWN, flags, KeyCode::ENTER,
-      0, 0, 0, 0,
-      keyboardType, false, ts, sender, refcon,
-    };
-    RemapUtil::fireKey(callback, params);
-
-    params.eventType = KeyEvent::UP;
-    RemapUtil::fireKey(callback, params);
-  }
-
-  void
-  ExtraRepeatFunc::extraRepeatFunc_space(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon)
-  {
-    if (callback == NULL) return;
-
-    Params_KeyboardEventCallBack params = {
-      target, KeyEvent::DOWN, flags, KeyCode::SPACE,
-      0, 0, 0, 0,
-      keyboardType, false, ts, sender, refcon,
-    };
-
-    RemapUtil::fireKey(callback, params);
-
-    params.eventType = KeyEvent::UP;
-    RemapUtil::fireKey(callback, params);
-  }
-
   // ----------------------------------------
-  void
-  KeyOverlaidModifier::remap(const RemapParams &remapParams, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc::FireFunc firefunc, ExtraRepeatFunc::ExtraRepeatFunc extraRepeatFunc)
-  {
-    if (! RemapUtil::isKey(remapParams, fromKeyCode)) {
-      if (! RemapUtil::isEvent_Up(remapParams)) {
-        useAsModifier = true;
-      }
-      return;
-    }
-
-    // ----------------------------------------
-    bool isKeyDown = RemapUtil::isKeyDown(remapParams, fromKeyCode);
-
-    KeyCode::KeyCode toKeyCode = RemapUtil::getModifierKeyCode(toFlag);
-    keytokey_.remap(remapParams, fromKeyCode, toKeyCode);
-
-    if (isKeyDown) {
-      useAsModifier = false;
-      ClickWatcher::set(&isClick);
-      ic.begin();
-
-      if (extraRepeatFunc) {
-        FlagStatus::Item *status = FlagStatus::getFlagStatus(toFlag);
-        if (status) {
-          status->temporary_decrease();
-
-          remapParams.ex_extraRepeatFunc = extraRepeatFunc;
-          remapParams.ex_extraRepeatFlags = FlagStatus::makeFlags(remapParams);
-
-          status->temporary_increase();
-        }
-      }
-
-    } else {
-      if (useAsModifier == false && isClick == false) {
-        if (extraRepeatFunc == NULL || remapParams.ex_extraRepeatCounter == 0) {
-          if (config.parameter_keyoverlaidmodifier_timeout <= 0 || ic.checkThreshold(config.parameter_keyoverlaidmodifier_timeout) == false) {
-            firefunc(remapParams);
-          }
-        }
-      }
-      ClickWatcher::unset(&isClick);
-    }
-  }
-
   void
   KeyOverlaidModifier::remap(const RemapParams &remapParams, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, KeyCode::KeyCode fireKeyCode, unsigned int fireFlags, bool isFireRepeat)
   {

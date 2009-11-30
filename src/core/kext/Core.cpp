@@ -201,8 +201,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       listFireRelativePointer.reset();
 
       bool isremapped = false;
-      unsigned int ex_extraRepeatFlags = 0;
-      ExtraRepeatFunc::ExtraRepeatFunc ex_extraRepeatFunc = NULL;
       KeyCode::KeyCode ex_repeatKeyCode = KeyCode::NONE;
       unsigned int ex_repeatFlags = 0;
 
@@ -212,8 +210,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         params,
         isremapped,
         KeyRemap4MacBook_bridge::GetWorkspaceData::Reply(),
-        ex_extraRepeatFunc,
-        ex_extraRepeatFlags,
         ex_repeatKeyCode,
         ex_repeatFlags,
         0,

@@ -233,9 +233,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       NONE = 255,
 
       // Virtual KeyCode
-      VK_JIS_TOGGLE_EISUU_KANA = 1024,
+      VK__BEGIN__ = 1024,
+      VK_JIS_TOGGLE_EISUU_KANA,
       VK_JIS_EISUU_x2,
       VK_JIS_KANA_x2,
+      VK__END__,
     };
 
     void normalizeKey(unsigned int &key, unsigned int &flags, unsigned int keyboardType);

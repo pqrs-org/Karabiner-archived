@@ -55,6 +55,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! callback) return;
 
     // ------------------------------------------------------------
+    if (key >= KeyCode::VK__BEGIN__) {
+      // Invalid keycode
+      IOLog("[KeyRemap4MacBook ERROR] Params_KeyboardEventCallBack::apply invalid key:%d\n", key);
+      return;
+    }
+
     if (config.option_jis_drop_eisuukana_with_modifiers) {
       // Skip if EISUU,KANA with any modifiers.
       if (key == KeyCode::JIS_EISUU || key == KeyCode::JIS_KANA) {
