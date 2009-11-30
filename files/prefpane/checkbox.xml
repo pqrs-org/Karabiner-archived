@@ -333,7 +333,7 @@
           <name>Command_R to Command_R</name>
           <appendix>(+ When you type Command_R only, send Enter) + [KeyRepeat]</appendix>
           <sysctl>remap.commandR2commandR_enter_keyrepeat</sysctl>
-          <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, FireFunc::firefunc_enter, ExtraRepeatFunc::extraRepeatFunc_enter</autogen>
+          <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, KeyCode::ENTER</autogen>
         </item>
         <item>
           <name>Command_R to Control_L</name>
@@ -1506,7 +1506,7 @@
           <name>Shift_L to Shift_L</name>
           <appendix>(+ When you type shiftL only, send Space) + [KeyRepeat]</appendix>
           <sysctl>remap.shiftL2shiftL_space_keyrepeat</sysctl>
-          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L, FireFunc::firefunc_space, ExtraRepeatFunc::extraRepeatFunc_space</autogen>
+          <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L, KeyCode::SPACE</autogen>
         </item>
         <item>
           <name>Shift_L to Option_L</name>
@@ -1572,7 +1572,7 @@
           <name>Shift_R to Shift_R</name>
           <appendix>(+ When you type shiftR only, send Space) + [KeyRepeat]</appendix>
           <sysctl>remap.shiftR2shiftR_space_keyrepeat</sysctl>
-          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R, FireFunc::firefunc_space, ExtraRepeatFunc::extraRepeatFunc_space</autogen>
+          <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R, KeyCode::SPACE</autogen>
         </item>
         <item>
           <name>Shift_R to Enter</name>
@@ -1632,7 +1632,7 @@
           <name>Space to Control_L</name>
           <appendix>(+ When you type Space only, send Space) + [KeyRepeat]</appendix>
           <sysctl>remap.space2controlL_space_keyrepeat</sysctl>
-          <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, ModifierFlag::CONTROL_L, FireFunc::firefunc_space, ExtraRepeatFunc::extraRepeatFunc_space</autogen>
+          <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::SPACE, ModifierFlag::CONTROL_L, KeyCode::SPACE</autogen>
         </item>
         <item>
           <name>Space to Shift_L</name>
@@ -3377,7 +3377,7 @@
           </list>
         </item>
         <item>
-          <name>Hack for the bug of MacOS X</name>
+          <name>Hack for the bug of Mac OS X</name>
           <list>
             <item>
               <name>Drop Command/Control/Option/Shift+EISUU, Command/Control/Option/Shift+KANA</name>
