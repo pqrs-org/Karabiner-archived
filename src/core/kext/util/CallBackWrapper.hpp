@@ -6,10 +6,10 @@
 namespace org_pqrs_KeyRemap4MacBook {
   class Params_KeyboardEventCallBack {
   public:
-    void log(const char *message = "caught") const;
-    void apply(KeyboardEventCallback callback);
+    void log(const char* message = "caught") const;
+    void apply(KeyboardEventCallback callback) const;
 
-    OSObject *target;
+    OSObject* target;
     unsigned int eventType;
     unsigned int flags;
     unsigned int key;
@@ -20,16 +20,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     unsigned int keyboardType;
     bool repeat;
     AbsoluteTime ts;
-    OSObject *sender;
-    void *refcon;
+    OSObject* sender;
+    void* refcon;
   };
 
   class Params_KeyboardSpecialEventCallback {
   public:
-    void log(const char *message = "caught") const;
-    void apply(KeyboardSpecialEventCallback callback);
+    void log(const char* message = "caught") const;
+    void apply(KeyboardSpecialEventCallback callback) const;
 
-    OSObject *target;
+    OSObject* target;
     unsigned int eventType;
     unsigned int flags;
     unsigned int key;
@@ -37,29 +37,29 @@ namespace org_pqrs_KeyRemap4MacBook {
     UInt64 guid;
     bool repeat;
     AbsoluteTime ts;
-    OSObject *sender;
-    void *refcon;
+    OSObject* sender;
+    void* refcon;
   };
 
   class Params_RelativePointerEventCallback {
   public:
-    void log(const char *message = "caught") const;
-    void apply(RelativePointerEventCallback callback);
+    void log(const char* message = "caught") const;
+    void apply(RelativePointerEventCallback callback) const;
 
-    OSObject *target;
+    OSObject* target;
     int buttons;
     int dx;
     int dy;
     AbsoluteTime ts;
-    OSObject *sender;
-    void *refcon;
+    OSObject* sender;
+    void* refcon;
   };
   class Params_ScrollWheelEventCallback {
   public:
-    void log(const char *message = "caught") const;
-    void apply(ScrollWheelEventCallback callback);
+    void log(const char* message = "caught") const;
+    void apply(ScrollWheelEventCallback callback) const;
 
-    OSObject * target;
+    OSObject* target;
     short deltaAxis1;
     short deltaAxis2;
     short deltaAxis3;
@@ -71,8 +71,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     SInt32 pointDelta3;
     SInt32 options;
     AbsoluteTime ts;
-    OSObject *sender;
-    void *refcon;
+    OSObject* sender;
+    void* refcon;
   };
 }
 

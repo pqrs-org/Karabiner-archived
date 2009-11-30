@@ -4,7 +4,7 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   void
-  Params_KeyboardEventCallBack::log(const char *message) const
+  Params_KeyboardEventCallBack::log(const char* message) const
   {
     if (! config.debug) return;
 
@@ -13,7 +13,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  Params_KeyboardSpecialEventCallback::log(const char *message) const
+  Params_KeyboardSpecialEventCallback::log(const char* message) const
   {
     if (! config.debug) return;
 
@@ -22,7 +22,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  Params_RelativePointerEventCallback::log(const char *message) const
+  Params_RelativePointerEventCallback::log(const char* message) const
   {
     if (! config.debug_pointing) return;
 
@@ -31,14 +31,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  Params_ScrollWheelEventCallback::log(const char *message) const
+  Params_ScrollWheelEventCallback::log(const char* message) const
   {
     if (! config.debug_pointing) return;
 
 #if __x86_64__
-    const char *format = "KeyRemap4MacBook ScrollWheelEventCallback [%s]: deltaAxis(%d, %d, %d), fixedDelta(%ld, %ld, %ld), pointDelta(%d,%d,%d), options: %d\n";
+    const char* format = "KeyRemap4MacBook ScrollWheelEventCallback [%s]: deltaAxis(%d, %d, %d), fixedDelta(%ld, %ld, %ld), pointDelta(%d,%d,%d), options: %d\n";
 #else
-    const char *format = "KeyRemap4MacBook ScrollWheelEventCallback [%s]: deltaAxis(%d, %d, %d), fixedDelta(%d, %d, %d), pointDelta(%d,%d,%d), options: %d\n";
+    const char* format = "KeyRemap4MacBook ScrollWheelEventCallback [%s]: deltaAxis(%d, %d, %d), fixedDelta(%d, %d, %d), pointDelta(%d,%d,%d), options: %d\n";
 #endif
     printf(format,
            message,
@@ -50,7 +50,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   void
-  Params_KeyboardEventCallBack::apply(KeyboardEventCallback callback)
+  Params_KeyboardEventCallBack::apply(KeyboardEventCallback callback) const
   {
     if (! callback) return;
 
@@ -71,7 +71,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  Params_KeyboardSpecialEventCallback::apply(KeyboardSpecialEventCallback callback)
+  Params_KeyboardSpecialEventCallback::apply(KeyboardSpecialEventCallback callback) const
   {
     if (! callback) return;
 
@@ -80,7 +80,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  Params_RelativePointerEventCallback::apply(RelativePointerEventCallback callback)
+  Params_RelativePointerEventCallback::apply(RelativePointerEventCallback callback) const
   {
     if (! callback) return;
 
@@ -89,7 +89,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  Params_ScrollWheelEventCallback::apply(ScrollWheelEventCallback callback)
+  Params_ScrollWheelEventCallback::apply(ScrollWheelEventCallback callback) const
   {
     if (! callback) return;
 
