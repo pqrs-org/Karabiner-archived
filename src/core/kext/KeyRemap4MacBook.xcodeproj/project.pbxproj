@@ -15,6 +15,8 @@
 		345004AE0E7CE48F0075324B /* Core.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345004A90E7CE48F0075324B /* Core.hpp */; };
 		345004AF0E7CE48F0075324B /* Driver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345004AA0E7CE48F0075324B /* Driver.cpp */; };
 		345004B00E7CE48F0075324B /* Driver.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345004AB0E7CE48F0075324B /* Driver.hpp */; };
+		3459F55C10C418D700DAB1FE /* KeyboardRepeat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3459F55A10C418D700DAB1FE /* KeyboardRepeat.cpp */; };
+		3459F55D10C418D700DAB1FE /* KeyboardRepeat.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3459F55B10C418D700DAB1FE /* KeyboardRepeat.hpp */; };
 		345B06AD0DB21A88000023FD /* Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345B06AB0DB21A88000023FD /* Client.cpp */; };
 		345B06AE0DB21A88000023FD /* Client.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345B06AC0DB21A88000023FD /* Client.hpp */; };
 		345B06B80DB21ABF000023FD /* bridge.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345B06B70DB21ABF000023FD /* bridge.hpp */; };
@@ -69,6 +71,8 @@
 		345004A90E7CE48F0075324B /* Core.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Core.hpp; sourceTree = "<group>"; };
 		345004AA0E7CE48F0075324B /* Driver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Driver.cpp; sourceTree = "<group>"; };
 		345004AB0E7CE48F0075324B /* Driver.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Driver.hpp; sourceTree = "<group>"; };
+		3459F55A10C418D700DAB1FE /* KeyboardRepeat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyboardRepeat.cpp; path = util/KeyboardRepeat.cpp; sourceTree = "<group>"; };
+		3459F55B10C418D700DAB1FE /* KeyboardRepeat.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyboardRepeat.hpp; path = util/KeyboardRepeat.hpp; sourceTree = "<group>"; };
 		345B06AB0DB21A88000023FD /* Client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Client.cpp; sourceTree = "<group>"; };
 		345B06AC0DB21A88000023FD /* Client.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Client.hpp; sourceTree = "<group>"; };
 		345B06B70DB21ABF000023FD /* bridge.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = bridge.hpp; path = ../bridge/bridge.hpp; sourceTree = SOURCE_ROOT; };
@@ -184,6 +188,8 @@
 		346B753B0E72C0A200F9A79F /* util */ = {
 			isa = PBXGroup;
 			children = (
+				3459F55A10C418D700DAB1FE /* KeyboardRepeat.cpp */,
+				3459F55B10C418D700DAB1FE /* KeyboardRepeat.hpp */,
 				3465DB5F10A2E93300DFCEC5 /* IOLockWrapper.hpp */,
 				34F14BBE0E867884001C15F3 /* NumHeldDownKeys.cpp */,
 				34F14BBF0E867884001C15F3 /* NumHeldDownKeys.hpp */,
@@ -248,6 +254,7 @@
 				34AA1F361065B1EE00E9A418 /* ListHookedDevice.hpp in Headers */,
 				34A59B891065C00B0048D1E7 /* ListHookedConsumer.hpp in Headers */,
 				3465DB6010A2E93300DFCEC5 /* IOLockWrapper.hpp in Headers */,
+				3459F55D10C418D700DAB1FE /* KeyboardRepeat.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +346,7 @@
 				34AA1F351065B1EE00E9A418 /* ListHookedDevice.cpp in Sources */,
 				34A59B881065C00B0048D1E7 /* ListHookedConsumer.cpp in Sources */,
 				34311761106F657200030711 /* keycode.cpp in Sources */,
+				3459F55C10C418D700DAB1FE /* KeyboardRepeat.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

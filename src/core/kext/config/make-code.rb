@@ -189,6 +189,13 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
           code_key += "}\n"
           func['key_KeyOverlaidModifier'] << name
 
+        when 'KeyOverlaidModifierWithRepeat'
+          code_key += "{\n"
+          code_key += "static KeyOverlaidModifier kom;\n"
+          code_key += "kom.remapWithRepeat(remapParams, #{params});\n"
+          code_key += "}\n"
+          func['key_KeyOverlaidModifier'] << name
+
         when 'KeyOverlaidModifierCombination'
           code_key += "{\n"
           code_key += "static KeyOverlaidModifierCombination komc;\n"

@@ -1649,7 +1649,7 @@
           <name>Space to Shift_L</name>
           <appendix>(+ When you type Space only, send Space) + [KeyRepeat]</appendix>
           <sysctl>remap.space2shiftL_space_keyrepeat</sysctl>
-          <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, ModifierFlag::SHIFT_L, FireFunc::firefunc_space, ExtraRepeatFunc::extraRepeatFunc_space</autogen>
+          <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::SPACE, ModifierFlag::SHIFT_L, KeyCode::SPACE</autogen>
         </item>
         <item>
           <name>Space to Shift_L</name>

@@ -5,6 +5,7 @@
 #include "util/ListHookedKeyboard.hpp"
 #include "util/ListHookedConsumer.hpp"
 #include "util/ListHookedPointing.hpp"
+#include "util/KeyboardRepeat.hpp"
 #include "util/TimerWrapper.hpp"
 #include "util/NumHeldDownKeys.hpp"
 #include "remap.hpp"
@@ -19,26 +20,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     namespace {
       IOWorkLoop* workLoop = NULL;
       TimerWrapper timer_refresh;
-
-      TimerWrapper timer_repeat_keyboard;
-      TimerWrapper timer_repeat_keyboard_extra;
-      TimerWrapper timer_repeat_consumer;
-
-      class KeyboardRepeatInfo {
-      public:
-        KeyboardRepeatInfo(void) { kbd = NULL; }
-        const IOHIKeyboard* kbd;
-        Params_KeyboardEventCallBack params;
-      } keyboardRepeatInfo;
-
-      class KeyboardRepeatInfo_extra {
-      public:
-        KeyboardRepeatInfo_extra(void) { kbd = NULL; }
-        IOHIKeyboard* kbd;
-        Params_KeyboardEventCallBack params;
-        ExtraRepeatFunc::ExtraRepeatFunc func;
-        unsigned int counter;
-      } keyboardRepeatInfo_extra;
 
       // ------------------------------------------------------------
       enum {
@@ -59,109 +40,13 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ----------------------------------------
       void
-      setRepeat_keyboard(const IOHIKeyboard* kbd, const Params_KeyboardEventCallBack& params)
-      {
-        IOLockWrapper::ScopedLock lk(timer_repeat_keyboard.getlock());
-
-        if (params.eventType == KeyEvent::DOWN) {
-          keyboardRepeatInfo.kbd = kbd;
-          keyboardRepeatInfo.params = params;
-
-          IOReturn result = timer_repeat_keyboard.setTimeoutMS(config.get_repeat_initial_wait());
-          if (result != kIOReturnSuccess) {
-            IOLog("[KeyRemap4MacBook ERROR] setTimeoutMS failed\n");
-          }
-          if (config.debug_devel) {
-            IOLog("KeyRemap4MacBook -Info- setRepeat_keyboard key:%d\n", params.key);
-          }
-
-        } else if (params.eventType == KeyEvent::MODIFY || keyboardRepeatInfo.params.key == params.key) {
-          if (config.debug_devel) {
-            IOLog("KeyRemap4MacBook -Info- cancel keyrepeat\n");
-          }
-          timer_repeat_keyboard.cancelTimeout();
-        }
-      }
-
-      void
-      setRepeat_keyboard_extra(IOHIKeyboard* kbd, const Params_KeyboardEventCallBack& params, ExtraRepeatFunc::ExtraRepeatFunc func, unsigned int flags)
-      {
-        IOLockWrapper::ScopedLock lk(timer_repeat_keyboard_extra.getlock());
-
-        if (func) {
-          keyboardRepeatInfo_extra.kbd = kbd;
-          keyboardRepeatInfo_extra.func = func;
-          keyboardRepeatInfo_extra.counter = 0;
-          keyboardRepeatInfo_extra.params = params;
-          keyboardRepeatInfo_extra.params.flags = flags;
-
-          timer_repeat_keyboard_extra.setTimeoutMS(config.get_keyoverlaidmodifier_initial_wait());
-
-        } else {
-          timer_repeat_keyboard_extra.cancelTimeout();
-          keyboardRepeatInfo_extra.func = NULL;
-        }
-      }
-
-      void
       cancelRepeat(void)
       {
         if (config.debug_devel) {
           IOLog("KeyRemap4MacBook -Info- cancelRepeat\n");
         }
 
-        {
-          IOLockWrapper::ScopedLock lk(timer_repeat_keyboard.getlock());
-          timer_repeat_keyboard.cancelTimeout();
-        }
-        {
-          IOLockWrapper::ScopedLock lk(timer_repeat_keyboard_extra.getlock());
-          timer_repeat_keyboard_extra.cancelTimeout();
-        }
-      }
-
-      void
-      doRepeat_keyboard(OSObject* owner, IOTimerEventSource* sender)
-      {
-        IOLockWrapper::ScopedLock lk(timer_repeat_keyboard.getlock());
-
-        HookedKeyboard* p = ListHookedKeyboard::instance().get(keyboardRepeatInfo.kbd);
-        if (! p) return;
-
-        KeyboardEventCallback callback = p->getOrig_keyboardEventAction();
-        if (! callback) {
-          IOLog("KeyRemap4MacBook -Info- doRepeat_keyboard: callback == NULL (== don't remap xxx is enabled). \n");
-          return;
-        }
-
-        RemapUtil::fireKey(callback, keyboardRepeatInfo.params);
-        timer_repeat_keyboard.setTimeoutMS(config.get_repeat_wait());
-      }
-
-      void
-      doRepeat_keyboard_extra(OSObject* owner, IOTimerEventSource* sender)
-      {
-        IOLockWrapper::ScopedLock lk(timer_repeat_keyboard_extra.getlock());
-
-        HookedKeyboard* p = ListHookedKeyboard::instance().get(keyboardRepeatInfo_extra.kbd);
-        if (! p) return;
-
-        KeyboardEventCallback callback = p->getOrig_keyboardEventAction();
-        if (! callback) {
-          IOLog("KeyRemap4MacBook -Info- doRepeat_keyboard_extra: callback == NULL (== don't remap xxx is enabled). \n");
-          return;
-        }
-
-        keyboardRepeatInfo_extra.func(callback,
-                                      keyboardRepeatInfo_extra.params.target,
-                                      keyboardRepeatInfo_extra.params.flags,
-                                      keyboardRepeatInfo_extra.params.keyboardType,
-                                      keyboardRepeatInfo_extra.params.ts,
-                                      keyboardRepeatInfo_extra.params.sender,
-                                      keyboardRepeatInfo_extra.params.refcon);
-        ++(keyboardRepeatInfo_extra.counter);
-
-        timer_repeat_keyboard_extra.setTimeoutMS(config.get_repeat_wait());
+        KeyboardRepeat::cancel();
       }
 
       void
@@ -223,8 +108,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         timer_refresh.initialize(workLoop, NULL, refreshHookedDevice);
         timer_refresh.setTimeoutMS(REFRESH_DEVICE_INTERVAL);
 
-        timer_repeat_keyboard.initialize(workLoop, NULL, doRepeat_keyboard);
-        timer_repeat_keyboard_extra.initialize(workLoop, NULL, doRepeat_keyboard_extra);
+        KeyboardRepeat::initialize(*workLoop);
       }
     }
 
@@ -235,6 +119,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       ListHookedKeyboard::instance().terminate();
       ListHookedConsumer::instance().terminate();
       ListHookedPointing::instance().terminate();
+      KeyboardRepeat::terminate();
 
       if (workLoop) {
         workLoop->release();
@@ -295,9 +180,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       // Because the key repeat generates it by oneself, I throw it away.
+      KeyboardRepeat::setTS(params.ts);
       if (params.repeat) {
-        keyboardRepeatInfo.params.ts = params.ts;
-        keyboardRepeatInfo_extra.params.ts = params.ts;
         return;
       }
 
@@ -332,7 +216,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         ex_extraRepeatFlags,
         ex_repeatKeyCode,
         ex_repeatFlags,
-        keyboardRepeatInfo_extra.counter,
+        0,
       };
       NumHeldDownKeys::set(remapParams);
 
@@ -362,8 +246,14 @@ namespace org_pqrs_KeyRemap4MacBook {
       RemapUtil::fireKey(p->getOrig_keyboardEventAction(), params);
       ListFireExtraKey::fire(p->getOrig_keyboardEventAction(), params);
 
-      setRepeat_keyboard(kbd, params);
-      setRepeat_keyboard_extra(kbd, params, ex_extraRepeatFunc, ex_extraRepeatFlags);
+      if (ex_repeatKeyCode != KeyCode::NONE) {
+        // XXX: need cleanup
+        KeyboardRepeat::set(KeyEvent::DOWN, ex_repeatFlags, ex_repeatKeyCode, static_cast<KeyboardType::KeyboardType>(params.keyboardType),
+                            config.get_keyoverlaidmodifier_initial_wait());
+      } else {
+        // XXX: need cleanup
+        KeyboardRepeat::set(params);
+      }
 
       if (NumHeldDownKeys::iszero()) {
         NumHeldDownKeys::reset();
@@ -415,8 +305,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         if (ex_remapKeyCode != KeyCode::NONE) {
           RemapUtil::fireKey(hk->getOrig_keyboardEventAction(), callbackparams);
-          setRepeat_keyboard(hk->get(), callbackparams);
-          setRepeat_keyboard_extra(hk->get(), callbackparams, NULL, 0);
+          KeyboardRepeat::set(callbackparams);
         }
         ListFireExtraKey::fire(hk->getOrig_keyboardEventAction(), callbackparams);
       }
