@@ -2,6 +2,7 @@
 #define REMAPUTIL_HPP
 
 #include <IOKit/hidsystem/IOHIKeyboard.h>
+#include "bridge.hpp"
 #include "remap.hpp"
 #include "keycode.hpp"
 #include "util/FlagStatus.hpp"
@@ -126,7 +127,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ----------------------------------------
     void fireModifiers(KeyboardEventCallback callback, const Params_KeyboardEventCallBack &params);
-    void fireKey(KeyboardEventCallback callback, const Params_KeyboardEventCallBack &params);
+    void fireKey(KeyboardEventCallback callback, const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
     void fireConsumer(KeyboardSpecialEventCallback callback, const Params_KeyboardSpecialEventCallback &params);
 
     // ----------------------------------------

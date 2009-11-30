@@ -376,10 +376,30 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  RemapUtil::fireKey(KeyboardEventCallback callback, const Params_KeyboardEventCallBack &params)
+  RemapUtil::fireKey(KeyboardEventCallback callback, const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
   {
     if (! callback) return;
     if (params.key == KeyCode::NONE) return;
+
+    // ----------------------------------------
+    // handle virtual keys
+    if (params.key == KeyCode::VK_JIS_TOGGLE_EISUU_KANA) {
+      // It is necessary to save toKeyCode for KeyUp.
+      static KeyCode::KeyCode newkeycode = KeyCode::NONE;
+
+      if (params.eventType == KeyEvent::DOWN) {
+        if (workspacedata.inputmode == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE) {
+          newkeycode = KeyCode::JIS_EISUU;
+        } else {
+          newkeycode = KeyCode::JIS_KANA;
+        }
+      }
+
+      Params_KeyboardEventCallBack p = params;
+      p.key = newkeycode;
+      fireKey(callback, p, workspacedata);
+      return;
+    }
 
     // ------------------------------------------------------------
     Params_KeyboardEventCallBack p = params;
