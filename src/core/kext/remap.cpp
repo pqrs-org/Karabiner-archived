@@ -56,7 +56,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! FlagStatus::isHeldDown(ModifierFlag::CONTROL_L)) return;
 
     static KeyOverlaidModifier kom;
-    kom.remap(remapParams, KeyCode::TAB, ModifierFlag::OPTION_L, FireFunc::firefunc_tab);
+    kom.remap(remapParams, KeyCode::TAB, ModifierFlag::OPTION_L, KeyCode::TAB);
   }
 
   // ----------------------------------------
@@ -79,14 +79,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_jis_eisuu2commandL_eisuu_eisuu2optionL_term) return;
 
-    FireFunc::FireFunc func = FireFunc::firefunc_jis_eisuu;
-    if (remapParams.workspacedata.type == KeyRemap4MacBook_bridge::GetWorkspaceData::VIRTUALMACHINE) func = FireFunc::firefunc_nop;
-
     static KeyOverlaidModifier kom;
     if (remapParams.workspacedata.type == KeyRemap4MacBook_bridge::GetWorkspaceData::TERMINAL) {
-      kom.remap(remapParams, KeyCode::JIS_EISUU, ModifierFlag::OPTION_L, func);
+      kom.remap(remapParams, KeyCode::JIS_EISUU, ModifierFlag::OPTION_L, KeyCode::JIS_EISUU);
     } else {
-      kom.remap(remapParams, KeyCode::JIS_EISUU, ModifierFlag::COMMAND_L, func);
+      kom.remap(remapParams, KeyCode::JIS_EISUU, ModifierFlag::COMMAND_L, KeyCode::JIS_EISUU);
     }
   }
 

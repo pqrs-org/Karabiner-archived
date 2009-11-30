@@ -158,16 +158,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     void firefunc_jis_toggle_eisuu_kana(const RemapParams &remapParams);
   }
 
-  namespace ExtraRepeatFunc {
-    void extraRepeatFunc_enter(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon);
-    void extraRepeatFunc_space(KeyboardEventCallback callback, OSObject *target, unsigned int flags, unsigned int keyboardType, AbsoluteTime ts, OSObject *sender, void *refcon);
-  }
-
   // ----------------------------------------
   // for SandS like behavior remappings (remap_space2shift, remap_enter2optionL_commandSpace, ...)
   class KeyOverlaidModifier {
   public:
-    void remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc::FireFunc firefunc, ExtraRepeatFunc::ExtraRepeatFunc extraRepeatFunc = NULL);
     void remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, KeyCode::KeyCode fireKeyCode, unsigned int fireFlags = ModifierFlag::NONE, bool isFireRepeat = false);
     void remapWithRepeat(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, KeyCode::KeyCode fireKeyCode, unsigned int fireFlags = ModifierFlag::NONE) {
       return remap(remapParams, fromKeyCode, toFlag, fireKeyCode, fireFlags, true);
