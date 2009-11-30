@@ -1,5 +1,6 @@
 #include "CallBackWrapper.hpp"
 #include "Config.hpp"
+#include "keycode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   void
@@ -53,6 +54,17 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! callback) return;
 
+    // ------------------------------------------------------------
+    if (config.option_jis_drop_eisuukana_with_modifiers) {
+      // Skip if EISUU,KANA with any modifiers.
+      if (key == KeyCode::JIS_EISUU || key == KeyCode::JIS_KANA) {
+        if (flags != 0) {
+          return;
+        }
+      }
+    }
+
+    // ------------------------------------------------------------
     log("sending");
     callback(target, eventType, flags, key, charCode, charSet, origCharCode, origCharSet,
              keyboardType, repeat, ts, sender, refcon);
