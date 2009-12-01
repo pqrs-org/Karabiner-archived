@@ -179,7 +179,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // A modifier has DoublePressed key action.
   class DoublePressModifier {
   public:
-    void remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc::FireFunc firefunc);
+    void remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, KeyCode::KeyCode fireKeyCode, unsigned int fireFlags = ModifierFlag::NONE);
 
   private:
     int pressCount;

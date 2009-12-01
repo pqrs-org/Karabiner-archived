@@ -3007,12 +3007,12 @@
             <item>
               <name>Command_L x2 to EISUU</name>
               <sysctl>remap.jis_commandL_x2_to_eisuu</sysctl>
-              <autogen>--DoublePressModifier-- KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, FireFunc::firefunc_jis_eisuu</autogen>
+              <autogen>--DoublePressModifier-- KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, KeyCode::JIS_EISUU</autogen>
             </item>
             <item>
               <name>Command_L x2 to EISUU x2 (for Kotoeri Users)</name>
               <sysctl>remap.jis_commandL_x2_to_eisuu_x2</sysctl>
-              <autogen>--DoublePressModifier-- KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, FireFunc::firefunc_jis_eisuu_x2</autogen>
+              <autogen>--DoublePressModifier-- KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, KeyCode::VK_JIS_EISUU_x2</autogen>
             </item>
             <item>
               <name>Use Command_L as KANA/EISUU (toggle)</name>
@@ -3049,12 +3049,12 @@
             <item>
               <name>Command_R x2 to KANA</name>
               <sysctl>remap.jis_commandR_x2_to_kana</sysctl>
-              <autogen>--DoublePressModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, FireFunc::firefunc_jis_kana</autogen>
+              <autogen>--DoublePressModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, KeyCode::JIS_KANA</autogen>
             </item>
             <item>
               <name>Command_R x2 to KANA x2 (for Kotoeri Users)</name>
               <sysctl>remap.jis_commandR_x2_to_kana_x2</sysctl>
-              <autogen>--DoublePressModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, FireFunc::firefunc_jis_kana_x2</autogen>
+              <autogen>--DoublePressModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, KeyCode::VK_JIS_KANA_x2</autogen>
             </item>
             <item>
               <name>Use Command_R as KANA/EISUU (toggle)</name>
@@ -3532,7 +3532,7 @@
           <name>DoublePressModifier</name>
           <appendix>Shift_L x 2 to RETURN</appendix>
           <sysctl>remap.samples_shiftL_x2_to_return</sysctl>
-          <autogen>--DoublePressModifier-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L, FireFunc::firefunc_return</autogen>
+          <autogen>--DoublePressModifier-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L, KeyCode::RETURN</autogen>
         </item>
         <item>
           <name>IgnoreMultipleSameKeyPress</name>
@@ -3644,6 +3644,12 @@
           <appendix>Command_L to Command_L (+ When you type Command_L only, send KANA/EISUU (toggle))</appendix>
           <sysctl>remap.samples_jis_commandL2commandL_toggle_kana_eisuu</sysctl>
           <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
+        </item>
+        <item>
+          <name>VK_JIS_EISUU_x2</name>
+          <appendix>Use T as EISUU x2</appendix>
+          <sysctl>remap.samples_t2eisuu_x2</sysctl>
+          <autogen>--KeyToKey-- KeyCode::T, KeyCode::VK_JIS_EISUU_x2</autogen>
         </item>
       </list>
     </item>
