@@ -542,44 +542,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     ListFireExtraKey::addKey(flags, KeyCode::RETURN);
   }
 
-  void
-  FireFunc::firefunc_jis_kana(const RemapParams& params)
-  {
-    // fire only if no-modifiers
-    if (FlagStatus::makeFlags(params) != 0) return;
-
-    ListFireExtraKey::addKey(0, KeyCode::JIS_KANA);
-  }
-
-  void
-  FireFunc::firefunc_jis_kana_x2(const RemapParams& params)
-  {
-    // fire only if no-modifiers
-    if (FlagStatus::makeFlags(params) != 0) return;
-
-    ListFireExtraKey::addKey(0, KeyCode::JIS_KANA);
-    ListFireExtraKey::addKey(0, KeyCode::JIS_KANA);
-  }
-
-  void
-  FireFunc::firefunc_jis_eisuu(const RemapParams& params)
-  {
-    // fire only if no-modifiers
-    if (FlagStatus::makeFlags(params) != 0) return;
-
-    ListFireExtraKey::addKey(0, KeyCode::JIS_EISUU);
-  }
-
-  void
-  FireFunc::firefunc_jis_eisuu_x2(const RemapParams& params)
-  {
-    // fire only if no-modifiers
-    if (FlagStatus::makeFlags(params) != 0) return;
-
-    ListFireExtraKey::addKey(0, KeyCode::JIS_EISUU);
-    ListFireExtraKey::addKey(0, KeyCode::JIS_EISUU);
-  }
-
   // ----------------------------------------
   void
   KeyOverlaidModifier::remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, KeyCode::KeyCode fireKeyCode, unsigned int fireFlags, bool isFireRepeat)
