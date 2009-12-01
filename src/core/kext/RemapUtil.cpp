@@ -375,15 +375,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     lastFlags = toFlags;
   }
 
-  void
-  RemapUtil::fireKey(KeyboardEventCallback callback, const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
-  {
-    if (! callback) return;
-    if (params.key == KeyCode::NONE) return;
+  // ------------------------------------------------------------
+  namespace {
+    void
+    handle_VK_JIS_TOGGLE_EISUU_KANA(KeyboardEventCallback callback, Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
+    {
+      if (params.key != KeyCode::VK_JIS_TOGGLE_EISUU_KANA) return;
 
-    // ----------------------------------------
-    // handle virtual keys
-    if (params.key == KeyCode::VK_JIS_TOGGLE_EISUU_KANA) {
       // It is necessary to save toKeyCode for KeyUp.
       static KeyCode::KeyCode newkeycode = KeyCode::NONE;
 
@@ -395,14 +393,23 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
       }
 
-      Params_KeyboardEventCallBack p = params;
-      p.key = newkeycode;
-      fireKey(callback, p, workspacedata);
-      return;
+      params.key = newkeycode;
+      RemapUtil::fireKey(callback, params, workspacedata);
     }
+  }
+
+  void
+  RemapUtil::fireKey(KeyboardEventCallback callback, const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
+  {
+    if (! callback) return;
+    if (params.key == KeyCode::NONE) return;
+
+    // ----------------------------------------
+    // handle virtual keys
+    Params_KeyboardEventCallBack p = params;
+    handle_VK_JIS_TOGGLE_EISUU_KANA(callback, p, workspacedata);
 
     // ------------------------------------------------------------
-    Params_KeyboardEventCallBack p = params;
     KeyCode::reverseNormalizeKey(p.key, p.flags, p.keyboardType);
 
     RemapUtil::fireModifiers(callback, p);
@@ -496,13 +503,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     unsigned int flags = FlagStatus::makeFlags(params);
     ListFireExtraKey::addKey(flags, KeyCode::RETURN);
-  }
-
-  void
-  FireFunc::firefunc_tab(const RemapParams& params)
-  {
-    unsigned int flags = FlagStatus::makeFlags(params);
-    ListFireExtraKey::addKey(flags, KeyCode::TAB);
   }
 
   void
