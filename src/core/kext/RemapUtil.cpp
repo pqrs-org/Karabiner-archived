@@ -70,7 +70,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       for (int i = 0; i < ModifierFlag::listsize; ++i) {
         ModifierFlag::ModifierFlag m = ModifierFlag::list[i];
-        FlagStatus::Item *p = FlagStatus::getFlagStatus(m);
+        FlagStatus::Item* p = FlagStatus::getFlagStatus(m);
         if (! p) continue;
 
         if (RemapUtil::isModifierOn(fromFlags, m)) {
@@ -132,8 +132,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     ModifierFlag::ModifierFlag fromModifier = getKeyCodeModifier(fromKeyCode);
     ModifierFlag::ModifierFlag toModifier = getKeyCodeModifier(toKeyCode);
 
-    FlagStatus::Item *fromStatus = FlagStatus::getFlagStatus(fromModifier);
-    FlagStatus::Item *toStatus = FlagStatus::getFlagStatus(toModifier);
+    FlagStatus::Item* fromStatus = FlagStatus::getFlagStatus(fromModifier);
+    FlagStatus::Item* toStatus = FlagStatus::getFlagStatus(toModifier);
 
     if (fromStatus == NULL) {
       if (toStatus == NULL) {
@@ -204,12 +204,12 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------
   void
-  RemapUtil::keyToPointingButton(const RemapParams &remapParams, KeyCode::KeyCode fromKeyCode, PointingButton::PointingButton toButton)
+  RemapUtil::keyToPointingButton(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, PointingButton::PointingButton toButton)
   {
     if (! RemapUtil::isKey(remapParams, fromKeyCode)) return;
 
     ModifierFlag::ModifierFlag fromModifier = getKeyCodeModifier(fromKeyCode);
-    FlagStatus::Item *fromStatus = FlagStatus::getFlagStatus(fromModifier);
+    FlagStatus::Item* fromStatus = FlagStatus::getFlagStatus(fromModifier);
 
     if (fromStatus) {
       // clear flags
@@ -235,7 +235,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  RemapUtil::keyToConsumer(const RemapParams &remapParams,
+  RemapUtil::keyToConsumer(const RemapParams& remapParams,
                            KeyCode::KeyCode fromKeyCode, unsigned int fromFlags,
                            ConsumerKeyCode::ConsumerKeyCode toKeyCode, unsigned int toFlags)
   {
@@ -253,7 +253,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  RemapUtil::consumerToKey(const RemapConsumerParams &remapParams,
+  RemapUtil::consumerToKey(const RemapConsumerParams& remapParams,
                            ConsumerKeyCode::ConsumerKeyCode fromKeyCode, unsigned int fromFlags,
                            KeyCode::KeyCode toKeyCode, unsigned int toFlags)
   {
@@ -273,7 +273,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  RemapUtil::consumerToConsumer(const RemapConsumerParams &remapParams,
+  RemapUtil::consumerToConsumer(const RemapConsumerParams& remapParams,
                                 ConsumerKeyCode::ConsumerKeyCode fromKeyCode, unsigned int fromFlags,
                                 ConsumerKeyCode::ConsumerKeyCode toKeyCode, unsigned int toFlags)
   {
@@ -288,7 +288,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  RemapUtil::pointingButtonToPointingButton(const RemapPointingParams_relative &remapParams,
+  RemapUtil::pointingButtonToPointingButton(const RemapPointingParams_relative& remapParams,
                                             PointingButton::PointingButton fromButton, unsigned int fromFlags,
                                             PointingButton::PointingButton toButton)
   {
@@ -304,7 +304,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // --------------------
   void
-  RemapUtil::fireModifiers(KeyboardEventCallback callback, const Params_KeyboardEventCallBack &params)
+  RemapUtil::fireModifiers(KeyboardEventCallback callback, const Params_KeyboardEventCallBack& params)
   {
     if (callback == NULL) return;
 
@@ -419,7 +419,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  RemapUtil::fireConsumer(KeyboardSpecialEventCallback callback, const Params_KeyboardSpecialEventCallback &params)
+  RemapUtil::fireConsumer(KeyboardSpecialEventCallback callback, const Params_KeyboardSpecialEventCallback& params)
   {
     if (! callback) return;
     if (params.key == ConsumerKeyCode::NONE) return;
@@ -430,13 +430,13 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // --------------------
   void
-  RemapUtil::pointingRelativeToScroll(const RemapPointingParams_relative &remapParams)
+  RemapUtil::pointingRelativeToScroll(const RemapPointingParams_relative& remapParams)
   {
     remapParams.ex_dropEvent = true;
 
     // ----------------------------------------
-    int delta1 = - remapParams.params.dy;
-    int delta2 = - remapParams.params.dx;
+    int delta1 = -remapParams.params.dy;
+    int delta2 = -remapParams.params.dx;
 
     if (config.option_pointing_disable_vertical_scroll) delta1 = 0;
     if (config.option_pointing_disable_horizontal_scroll) delta2 = 0;
@@ -485,33 +485,28 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   void
-  FireFunc::firefunc_nop(const RemapParams &params)
-  {
-  }
-
-  void
-  FireFunc::firefunc_escape(const RemapParams &params)
+  FireFunc::firefunc_escape(const RemapParams& params)
   {
     unsigned int flags = FlagStatus::makeFlags(params);
     ListFireExtraKey::addKey(flags, KeyCode::ESCAPE);
   }
 
   void
-  FireFunc::firefunc_return(const RemapParams &params)
+  FireFunc::firefunc_return(const RemapParams& params)
   {
     unsigned int flags = FlagStatus::makeFlags(params);
     ListFireExtraKey::addKey(flags, KeyCode::RETURN);
   }
 
   void
-  FireFunc::firefunc_tab(const RemapParams &params)
+  FireFunc::firefunc_tab(const RemapParams& params)
   {
     unsigned int flags = FlagStatus::makeFlags(params);
     ListFireExtraKey::addKey(flags, KeyCode::TAB);
   }
 
   void
-  FireFunc::firefunc_jis_kana(const RemapParams &params)
+  FireFunc::firefunc_jis_kana(const RemapParams& params)
   {
     // fire only if no-modifiers
     if (FlagStatus::makeFlags(params) != 0) return;
@@ -520,7 +515,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  FireFunc::firefunc_jis_kana_x2(const RemapParams &params)
+  FireFunc::firefunc_jis_kana_x2(const RemapParams& params)
   {
     // fire only if no-modifiers
     if (FlagStatus::makeFlags(params) != 0) return;
@@ -530,7 +525,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  FireFunc::firefunc_jis_eisuu(const RemapParams &params)
+  FireFunc::firefunc_jis_eisuu(const RemapParams& params)
   {
     // fire only if no-modifiers
     if (FlagStatus::makeFlags(params) != 0) return;
@@ -539,7 +534,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  FireFunc::firefunc_jis_eisuu_x2(const RemapParams &params)
+  FireFunc::firefunc_jis_eisuu_x2(const RemapParams& params)
   {
     // fire only if no-modifiers
     if (FlagStatus::makeFlags(params) != 0) return;
@@ -550,7 +545,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
-  KeyOverlaidModifier::remap(const RemapParams &remapParams, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, KeyCode::KeyCode fireKeyCode, unsigned int fireFlags, bool isFireRepeat)
+  KeyOverlaidModifier::remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, KeyCode::KeyCode fireKeyCode, unsigned int fireFlags, bool isFireRepeat)
   {
     if (! RemapUtil::isKey(remapParams, fromKeyCode)) {
       if (! RemapUtil::isEvent_Up(remapParams)) {
@@ -594,14 +589,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  KeyOverlaidModifierCombination::remap(const RemapParams &remapParams, ModifierFlag::ModifierFlag fromFlag1, ModifierFlag::ModifierFlag fromFlag2, FireFunc::FireFunc firefunc)
+  KeyOverlaidModifierCombination::remap(const RemapParams& remapParams, ModifierFlag::ModifierFlag fromFlag1, ModifierFlag::ModifierFlag fromFlag2, FireFunc::FireFunc firefunc)
   {
     KeyCode::KeyCode keyCode1 = RemapUtil::getModifierKeyCode(fromFlag1);
     KeyCode::KeyCode keyCode2 = RemapUtil::getModifierKeyCode(fromFlag2);
     if (keyCode1 == KeyCode::NONE || keyCode2 == KeyCode::NONE) return;
 
-    FlagStatus::Item *fromStatus1 = FlagStatus::getFlagStatus(fromFlag1);
-    FlagStatus::Item *fromStatus2 = FlagStatus::getFlagStatus(fromFlag2);
+    FlagStatus::Item* fromStatus1 = FlagStatus::getFlagStatus(fromFlag1);
+    FlagStatus::Item* fromStatus2 = FlagStatus::getFlagStatus(fromFlag2);
     if (fromStatus1 == NULL || fromStatus2 == NULL) return;
 
     if (remapParams.params.key != static_cast<unsigned int>(keyCode2)) {
@@ -623,7 +618,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  DoublePressModifier::remap(const RemapParams &remapParams, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc::FireFunc firefunc)
+  DoublePressModifier::remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc::FireFunc firefunc)
   {
     if (! RemapUtil::isKey(remapParams, fromKeyCode)) {
       pressCount = 0;
@@ -647,9 +642,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
-  ModifierHoldingKeyToKey::remap(const RemapParams &remapParams, ModifierFlag::ModifierFlag fromFlag, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode)
+  ModifierHoldingKeyToKey::remap(const RemapParams& remapParams, ModifierFlag::ModifierFlag fromFlag, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode)
   {
-    FlagStatus::Item *fromStatus = FlagStatus::getFlagStatus(fromFlag);
+    FlagStatus::Item* fromStatus = FlagStatus::getFlagStatus(fromFlag);
     if (fromStatus == NULL) return;
 
     KeyCode::KeyCode fromFlagKeyCode = fromStatus->getKeyCode();
@@ -701,7 +696,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   void
-  FirePointingScroll::fire(ScrollWheelEventCallback callback, OSObject *target, IOHIPointing *pointing, AbsoluteTime ts)
+  FirePointingScroll::fire(ScrollWheelEventCallback callback, OSObject* target, IOHIPointing* pointing, AbsoluteTime ts)
   {
     if (! enable) return;
     enable = false;
@@ -716,9 +711,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (config.debug_pointing) {
 #if __x86_64__
-      const char *format = "sending scrollWheelEventCallback: deltaAxis(%d, %d, %d), fixedDelta(%ld, %ld, %ld), pointDelta(%d,%d,%d)\n";
+      const char* format = "sending scrollWheelEventCallback: deltaAxis(%d, %d, %d), fixedDelta(%ld, %ld, %ld), pointDelta(%d,%d,%d)\n";
 #else
-      const char *format = "sending scrollWheelEventCallback: deltaAxis(%d, %d, %d), fixedDelta(%d, %d, %d), pointDelta(%d,%d,%d)\n";
+      const char* format = "sending scrollWheelEventCallback: deltaAxis(%d, %d, %d), fixedDelta(%d, %d, %d), pointDelta(%d,%d,%d)\n";
 #endif
       printf(format,
              deltaAxis1, deltaAxis2, deltaAxis3,
@@ -729,7 +724,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ------------------------------------------------------------
   bool
-  PointingRelativeToScroll::remap(const RemapPointingParams_relative &remapParams, unsigned int button, unsigned int fromFlags)
+  PointingRelativeToScroll::remap(const RemapPointingParams_relative& remapParams, unsigned int button, unsigned int fromFlags)
   {
     if (! isFromFlags(FlagStatus::makeFlags(KeyCode::NONE), fromFlags)) return false;
 
