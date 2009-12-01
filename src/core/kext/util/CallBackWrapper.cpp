@@ -1,5 +1,6 @@
 #include "CallBackWrapper.hpp"
 #include "Config.hpp"
+#include "EventWatcher.hpp"
 #include "keycode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -86,6 +87,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     log("sending");
     callback(target, eventType, flags, key, charCode, charSet, origCharCode, origCharSet,
              keyboardType, repeat, ts, sender, refcon);
+
+    // XXX: comment out temporarily
+    //EventWatcher::on();
   }
 
   void
@@ -95,6 +99,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     log("sending");
     callback(target, eventType, flags, key, flavor, guid, repeat, ts, sender, refcon);
+
+    // XXX: comment out temporarily
+    //EventWatcher::on();
   }
 
   void
@@ -104,6 +111,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     log("sending");
     callback(target, buttons, dx, dy, ts, sender, refcon);
+
+    if (buttons != PointingButton::NONE) {
+      EventWatcher::on();
+    }
   }
 
   void
@@ -117,5 +128,7 @@ namespace org_pqrs_KeyRemap4MacBook {
              fixedDelta1, fixedDelta2, fixedDelta3,
              pointDelta1, pointDelta2, pointDelta3,
              options, ts, sender, refcon);
+
+    // EventWatcher::on is not necessary.
   }
 }

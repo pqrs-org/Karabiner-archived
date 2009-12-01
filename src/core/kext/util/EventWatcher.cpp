@@ -17,11 +17,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    click(void)
+    on(void)
     {
       for (int i = 0; i < MAXNUM; ++i) {
         if (item[i]) {
           *(item[i]) = true;
+          item[i] = NULL;
         }
       }
     }

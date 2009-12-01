@@ -6,7 +6,8 @@
 namespace org_pqrs_KeyRemap4MacBook {
   namespace EventWatcher {
     void reset(void);
-    void click(void);
+
+    void on(void);
 
     void set(bool* b);
     void unset(bool* b);
