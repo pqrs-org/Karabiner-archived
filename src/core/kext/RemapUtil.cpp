@@ -377,10 +377,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ------------------------------------------------------------
   namespace {
-    void
+    bool
     handle_VK_JIS_TOGGLE_EISUU_KANA(KeyboardEventCallback callback, Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
     {
-      if (params.key != KeyCode::VK_JIS_TOGGLE_EISUU_KANA) return;
+      if (params.key != KeyCode::VK_JIS_TOGGLE_EISUU_KANA) return false;
 
       // It is necessary to save toKeyCode for KeyUp.
       static KeyCode::KeyCode newkeycode = KeyCode::NONE;
@@ -395,6 +395,41 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       params.key = newkeycode;
       RemapUtil::fireKey(callback, params, workspacedata);
+      return true;
+    }
+
+    bool
+    handle_VK_JIS_EISUU_x2(KeyboardEventCallback callback, Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
+    {
+      if (params.key != KeyCode::VK_JIS_EISUU_x2) return false;
+
+      if (params.eventType == KeyEvent::DOWN) {
+        params.key = KeyCode::JIS_EISUU;
+        for (int i = 0; i < 2; ++i) {
+          params.eventType = KeyEvent::DOWN;
+          RemapUtil::fireKey(callback, params, workspacedata);
+          params.eventType = KeyEvent::UP;
+          RemapUtil::fireKey(callback, params, workspacedata);
+        }
+      }
+      return true;
+    }
+
+    bool
+    handle_VK_JIS_KANA_x2(KeyboardEventCallback callback, Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
+    {
+      if (params.key != KeyCode::VK_JIS_KANA_x2) return false;
+
+      if (params.eventType == KeyEvent::DOWN) {
+        params.key = KeyCode::JIS_KANA;
+        for (int i = 0; i < 2; ++i) {
+          params.eventType = KeyEvent::DOWN;
+          RemapUtil::fireKey(callback, params, workspacedata);
+          params.eventType = KeyEvent::UP;
+          RemapUtil::fireKey(callback, params, workspacedata);
+        }
+      }
+      return true;
     }
   }
 
@@ -407,7 +442,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ----------------------------------------
     // handle virtual keys
     Params_KeyboardEventCallBack p = params;
-    handle_VK_JIS_TOGGLE_EISUU_KANA(callback, p, workspacedata);
+    if (handle_VK_JIS_TOGGLE_EISUU_KANA(callback, p, workspacedata)) return;
+    if (handle_VK_JIS_EISUU_x2(callback, p, workspacedata)) return;
+    if (handle_VK_JIS_KANA_x2(callback, p, workspacedata)) return;
 
     // ------------------------------------------------------------
     KeyCode::reverseNormalizeKey(p.key, p.flags, p.keyboardType);
@@ -618,7 +655,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  DoublePressModifier::remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, FireFunc::FireFunc firefunc)
+  DoublePressModifier::remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, KeyCode::KeyCode fireKeyCode, unsigned int fireFlags)
   {
     if (! RemapUtil::isKey(remapParams, fromKeyCode)) {
       pressCount = 0;
@@ -635,7 +672,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       ++pressCount;
     } else {
       if (pressCount >= 2) {
-        firefunc(remapParams);
+        unsigned int flags = ModifierFlag::stripNONE(FlagStatus::makeFlags(remapParams) | fireFlags);
+        ListFireExtraKey::addKey(flags, fireKeyCode);
       }
     }
   }
