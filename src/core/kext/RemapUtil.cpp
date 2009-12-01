@@ -562,7 +562,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ----------------------------------------
     if (isKeyDown) {
       useAsModifier = false;
-      ClickWatcher::set(&isClick);
+      EventWatcher::set(&isClick);
       ic.begin();
 
       if (isFireRepeat) {
@@ -583,7 +583,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
         }
       }
-      ClickWatcher::unset(&isClick);
+      EventWatcher::unset(&isClick);
     }
   }
 
@@ -605,14 +605,14 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (fromStatus2->isHeldDown()) {
       isCallFireFunc = true;
-      ClickWatcher::set(&isClick);
+      EventWatcher::set(&isClick);
 
     } else {
       if (fromStatus1->isHeldDown() && isCallFireFunc && isClick == false) {
         fromStatus1->temporary_decrease();
         firefunc(remapParams);
       }
-      ClickWatcher::unset(&isClick);
+      EventWatcher::unset(&isClick);
     }
   }
 
