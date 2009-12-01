@@ -1,7 +1,6 @@
 #ifndef FLAGSTATUS_HPP
 #define FLAGSTATUS_HPP
 
-#include "base.hpp"
 #include "keycode.hpp"
 #include "remap.hpp"
 

@@ -131,15 +131,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void fireConsumer(KeyboardSpecialEventCallback callback, const Params_KeyboardSpecialEventCallback &params);
 
     // ----------------------------------------
-    class JISToggleEisuuKana {
-    public:
-      bool remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags = 0);
-
-    private:
-      KeyToKey keytokey_;
-    };
-
-    // ----------------------------------------
     void pointingRelativeToScroll(const RemapPointingParams_relative &remapParams);
   }
 
@@ -156,7 +147,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void firefunc_jis_kana_x2(const RemapParams &remapParams);
     void firefunc_jis_eisuu(const RemapParams &remapParams);
     void firefunc_jis_eisuu_x2(const RemapParams &remapParams);
-    void firefunc_jis_toggle_eisuu_kana(const RemapParams &remapParams);
   }
 
   // ----------------------------------------

@@ -429,24 +429,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // --------------------
-  bool
-  RemapUtil::JISToggleEisuuKana::remap(const RemapParams& params, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags)
-  {
-    // It is necessary to save toKeyCode for KeyUp.
-    static KeyCode::KeyCode toKeyCode = KeyCode::NONE;
-
-    if (RemapUtil::isKeyDown(params, fromKeyCode)) {
-      if (params.workspacedata.inputmode == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE) {
-        toKeyCode = KeyCode::JIS_EISUU;
-      } else {
-        toKeyCode = KeyCode::JIS_KANA;
-      }
-    }
-
-    return keytokey_.remap(params, fromKeyCode, fromFlags, toKeyCode);
-  }
-
-  // --------------------
   void
   RemapUtil::pointingRelativeToScroll(const RemapPointingParams_relative &remapParams)
   {
@@ -564,19 +546,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     ListFireExtraKey::addKey(0, KeyCode::JIS_EISUU);
     ListFireExtraKey::addKey(0, KeyCode::JIS_EISUU);
-  }
-
-  void
-  FireFunc::firefunc_jis_toggle_eisuu_kana(const RemapParams &params)
-  {
-    // fire only if no-modifiers
-    if (FlagStatus::makeFlags(params) != 0) return;
-
-    if (params.workspacedata.inputmode == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE) {
-      ListFireExtraKey::addKey(0, KeyCode::JIS_EISUU);
-    } else {
-      ListFireExtraKey::addKey(0, KeyCode::JIS_KANA);
-    }
   }
 
   // ----------------------------------------
