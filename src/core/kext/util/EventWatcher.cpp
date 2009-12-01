@@ -1,5 +1,6 @@
 #include "EventWatcher.hpp"
 #include "RemapUtil.hpp"
+#include "IOLockWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace EventWatcher {
@@ -7,10 +8,26 @@ namespace org_pqrs_KeyRemap4MacBook {
       MAXNUM = 32,
     };
     bool* item[MAXNUM];
+    IOLock* lock = NULL;
+
+    void
+    initialize(void)
+    {
+      lock = IOLockWrapper::alloc();
+      reset();
+    }
+
+    void
+    terminate(void)
+    {
+      IOLockWrapper::free(lock);
+    }
 
     void
     reset(void)
     {
+      IOLockWrapper::ScopedLock lk(lock);
+
       for (int i = 0; i < MAXNUM; ++i) {
         item[i] = NULL;
       }
@@ -19,6 +36,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     on(void)
     {
+      IOLockWrapper::ScopedLock lk(lock);
+
       for (int i = 0; i < MAXNUM; ++i) {
         if (item[i]) {
           *(item[i]) = true;
@@ -30,6 +49,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     set(bool* b)
     {
+      IOLockWrapper::ScopedLock lk(lock);
+
       if (b == NULL) return;
 
       *b = false;
@@ -43,6 +64,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     unset(bool* b)
     {
+      IOLockWrapper::ScopedLock lk(lock);
+
       if (b == NULL) return;
 
       for (int i = 0; i < MAXNUM; ++i) {

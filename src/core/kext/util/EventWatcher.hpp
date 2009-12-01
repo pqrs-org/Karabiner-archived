@@ -5,6 +5,9 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace EventWatcher {
+    void initialize(void);
+    void terminate(void);
+
     void reset(void);
 
     void on(void);

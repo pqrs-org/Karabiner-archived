@@ -85,7 +85,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     initialize(void)
     {
       sysctl_register();
-      EventWatcher::reset();
+      EventWatcher::initialize();
       PressDownKeys::initialize();
       FlagStatus::initialize();
       KeyRemap4MacBook_client::initialize();
@@ -95,6 +95,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     terminate(void)
     {
       KeyRemap4MacBook_client::terminate();
+      EventWatcher::terminate();
       sysctl_unregister();
     }
 
