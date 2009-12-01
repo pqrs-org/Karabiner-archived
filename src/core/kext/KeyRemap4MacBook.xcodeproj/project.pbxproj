@@ -10,6 +10,8 @@
 		32D94FC80562CBF700B6AF17 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
 		34012A6E0E7AED010069FE39 /* TimerWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34012A6C0E7AED010069FE39 /* TimerWrapper.cpp */; };
 		34012A6F0E7AED010069FE39 /* TimerWrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34012A6D0E7AED010069FE39 /* TimerWrapper.hpp */; };
+		3430E93310C558CA00FC2D64 /* EventWatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3430E93110C558CA00FC2D64 /* EventWatcher.cpp */; };
+		3430E93410C558CA00FC2D64 /* EventWatcher.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3430E93210C558CA00FC2D64 /* EventWatcher.hpp */; };
 		34311761106F657200030711 /* keycode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34311760106F657200030711 /* keycode.cpp */; };
 		345004AD0E7CE48F0075324B /* Core.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345004A80E7CE48F0075324B /* Core.cpp */; };
 		345004AE0E7CE48F0075324B /* Core.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345004A90E7CE48F0075324B /* Core.hpp */; };
@@ -43,8 +45,6 @@
 		34F13A830E73E5EC006EB163 /* ListFireConsumerKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34F13A810E73E5EC006EB163 /* ListFireConsumerKey.hpp */; };
 		34F13A860E73E69D006EB163 /* IntervalChecker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F13A840E73E69D006EB163 /* IntervalChecker.cpp */; };
 		34F13A870E73E69D006EB163 /* IntervalChecker.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34F13A850E73E69D006EB163 /* IntervalChecker.hpp */; };
-		34F13A8B0E740352006EB163 /* ClickWatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F13A890E740352006EB163 /* ClickWatcher.cpp */; };
-		34F13A8C0E740352006EB163 /* ClickWatcher.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34F13A8A0E740352006EB163 /* ClickWatcher.hpp */; };
 		34F13A8F0E740A7B006EB163 /* ListFireRelativePointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F13A8D0E740A7B006EB163 /* ListFireRelativePointer.cpp */; };
 		34F13A900E740A7B006EB163 /* ListFireRelativePointer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34F13A8E0E740A7B006EB163 /* ListFireRelativePointer.hpp */; };
 		34F14BAE0E861FC5001C15F3 /* CallBackWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F14BAC0E861FC5001C15F3 /* CallBackWrapper.cpp */; };
@@ -66,6 +66,8 @@
 		32D94FD00562CBF700B6AF17 /* KeyRemap4MacBook.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyRemap4MacBook.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		34012A6C0E7AED010069FE39 /* TimerWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TimerWrapper.cpp; path = util/TimerWrapper.cpp; sourceTree = "<group>"; };
 		34012A6D0E7AED010069FE39 /* TimerWrapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TimerWrapper.hpp; path = util/TimerWrapper.hpp; sourceTree = "<group>"; };
+		3430E93110C558CA00FC2D64 /* EventWatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventWatcher.cpp; path = util/EventWatcher.cpp; sourceTree = "<group>"; };
+		3430E93210C558CA00FC2D64 /* EventWatcher.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = EventWatcher.hpp; path = util/EventWatcher.hpp; sourceTree = "<group>"; };
 		34311760106F657200030711 /* keycode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = keycode.cpp; sourceTree = "<group>"; };
 		345004A80E7CE48F0075324B /* Core.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Core.cpp; sourceTree = "<group>"; };
 		345004A90E7CE48F0075324B /* Core.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Core.hpp; sourceTree = "<group>"; };
@@ -99,8 +101,6 @@
 		34F13A810E73E5EC006EB163 /* ListFireConsumerKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ListFireConsumerKey.hpp; path = util/ListFireConsumerKey.hpp; sourceTree = "<group>"; };
 		34F13A840E73E69D006EB163 /* IntervalChecker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IntervalChecker.cpp; path = util/IntervalChecker.cpp; sourceTree = "<group>"; };
 		34F13A850E73E69D006EB163 /* IntervalChecker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IntervalChecker.hpp; path = util/IntervalChecker.hpp; sourceTree = "<group>"; };
-		34F13A890E740352006EB163 /* ClickWatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ClickWatcher.cpp; path = util/ClickWatcher.cpp; sourceTree = "<group>"; };
-		34F13A8A0E740352006EB163 /* ClickWatcher.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ClickWatcher.hpp; path = util/ClickWatcher.hpp; sourceTree = "<group>"; };
 		34F13A8D0E740A7B006EB163 /* ListFireRelativePointer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ListFireRelativePointer.cpp; path = util/ListFireRelativePointer.cpp; sourceTree = "<group>"; };
 		34F13A8E0E740A7B006EB163 /* ListFireRelativePointer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ListFireRelativePointer.hpp; path = util/ListFireRelativePointer.hpp; sourceTree = "<group>"; };
 		34F14BAC0E861FC5001C15F3 /* CallBackWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CallBackWrapper.cpp; path = util/CallBackWrapper.cpp; sourceTree = "<group>"; };
@@ -188,6 +188,8 @@
 		346B753B0E72C0A200F9A79F /* util */ = {
 			isa = PBXGroup;
 			children = (
+				3430E93110C558CA00FC2D64 /* EventWatcher.cpp */,
+				3430E93210C558CA00FC2D64 /* EventWatcher.hpp */,
 				3459F55A10C418D700DAB1FE /* KeyboardRepeat.cpp */,
 				3459F55B10C418D700DAB1FE /* KeyboardRepeat.hpp */,
 				3465DB5F10A2E93300DFCEC5 /* IOLockWrapper.hpp */,
@@ -205,8 +207,6 @@
 				34012A6D0E7AED010069FE39 /* TimerWrapper.hpp */,
 				34F13A8D0E740A7B006EB163 /* ListFireRelativePointer.cpp */,
 				34F13A8E0E740A7B006EB163 /* ListFireRelativePointer.hpp */,
-				34F13A890E740352006EB163 /* ClickWatcher.cpp */,
-				34F13A8A0E740352006EB163 /* ClickWatcher.hpp */,
 				34F13A840E73E69D006EB163 /* IntervalChecker.cpp */,
 				34F13A850E73E69D006EB163 /* IntervalChecker.hpp */,
 				34F13A800E73E5EC006EB163 /* ListFireConsumerKey.cpp */,
@@ -241,7 +241,6 @@
 				34F13A7A0E73B607006EB163 /* ListFireExtraKey.hpp in Headers */,
 				34F13A830E73E5EC006EB163 /* ListFireConsumerKey.hpp in Headers */,
 				34F13A870E73E69D006EB163 /* IntervalChecker.hpp in Headers */,
-				34F13A8C0E740352006EB163 /* ClickWatcher.hpp in Headers */,
 				34F13A900E740A7B006EB163 /* ListFireRelativePointer.hpp in Headers */,
 				34012A6F0E7AED010069FE39 /* TimerWrapper.hpp in Headers */,
 				345004AE0E7CE48F0075324B /* Core.hpp in Headers */,
@@ -255,6 +254,7 @@
 				34A59B891065C00B0048D1E7 /* ListHookedConsumer.hpp in Headers */,
 				3465DB6010A2E93300DFCEC5 /* IOLockWrapper.hpp in Headers */,
 				3459F55D10C418D700DAB1FE /* KeyboardRepeat.hpp in Headers */,
+				3430E93410C558CA00FC2D64 /* EventWatcher.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,7 +333,6 @@
 				34F13A790E73B607006EB163 /* ListFireExtraKey.cpp in Sources */,
 				34F13A820E73E5EC006EB163 /* ListFireConsumerKey.cpp in Sources */,
 				34F13A860E73E69D006EB163 /* IntervalChecker.cpp in Sources */,
-				34F13A8B0E740352006EB163 /* ClickWatcher.cpp in Sources */,
 				34F13A8F0E740A7B006EB163 /* ListFireRelativePointer.cpp in Sources */,
 				34012A6E0E7AED010069FE39 /* TimerWrapper.cpp in Sources */,
 				345004AD0E7CE48F0075324B /* Core.cpp in Sources */,
@@ -347,6 +346,7 @@
 				34A59B881065C00B0048D1E7 /* ListHookedConsumer.cpp in Sources */,
 				34311761106F657200030711 /* keycode.cpp in Sources */,
 				3459F55C10C418D700DAB1FE /* KeyboardRepeat.cpp in Sources */,
+				3430E93310C558CA00FC2D64 /* EventWatcher.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

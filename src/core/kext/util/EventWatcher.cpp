@@ -1,12 +1,12 @@
-#include "ClickWatcher.hpp"
+#include "EventWatcher.hpp"
 #include "RemapUtil.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  namespace ClickWatcher {
+  namespace EventWatcher {
     enum {
-      MAXNUM = 8,
+      MAXNUM = 32,
     };
-    bool *item[MAXNUM];
+    bool* item[MAXNUM];
 
     void
     reset(void)
@@ -27,7 +27,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    set(bool *b)
+    set(bool* b)
     {
       if (b == NULL) return;
 
@@ -40,7 +40,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    unset(bool *b)
+    unset(bool* b)
     {
       if (b == NULL) return;
 

@@ -85,7 +85,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     initialize(void)
     {
       sysctl_register();
-      ClickWatcher::reset();
+      EventWatcher::reset();
       PressDownKeys::initialize();
       FlagStatus::initialize();
       KeyRemap4MacBook_client::initialize();
@@ -258,6 +258,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (NumHeldDownKeys::iszero()) {
         NumHeldDownKeys::reset();
         cancelRepeat();
+        EventWatcher::reset();
         FlagStatus::reset();
         params.flags = FlagStatus::makeFlags(params.key);
         RemapUtil::fireModifiers(p->getOrig_keyboardEventAction(), params);
