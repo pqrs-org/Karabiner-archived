@@ -175,13 +175,6 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
           code_key += "RemapUtil::keyToPointingButton(remapParams, #{params});\n"
           func['key'] << name
 
-        when 'JISToggleEisuuKana'
-          code_key += "{\n"
-          code_key += "static RemapUtil::JISToggleEisuuKana jtek;\n"
-          code_key += "jtek.remap(remapParams, #{params});\n"
-          code_key += "}\n"
-          func['key'] << name
-
         when 'KeyOverlaidModifier'
           code_key += "{\n"
           code_key += "static KeyOverlaidModifier kom;\n"
