@@ -17,8 +17,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       list[size].set(eventType, flags, key);
       ++size;
     }
-    void fire(KeyboardSpecialEventCallback callback,
-              OSObject *target, AbsoluteTime ts, OSObject *sender, void *refcon);
+    void fire(OSObject *target, AbsoluteTime ts, OSObject *sender, void *refcon);
 
   private:
     class Item {
