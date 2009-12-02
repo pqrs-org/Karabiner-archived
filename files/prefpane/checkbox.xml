@@ -297,19 +297,19 @@
           <name>Command_R+Command_L to Escape</name>
           <appendix>(Note: Escape is sent when you release Command_L)</appendix>
           <sysctl>remap.commandRcommandL2escape</sysctl>
-          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::COMMAND_R, ModifierFlag::COMMAND_L, FireFunc::firefunc_escape</autogen>
+          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::COMMAND_R, ModifierFlag::COMMAND_L, KeyCode::ESCAPE</autogen>
         </item>
         <item>
           <name>Control_L+Command_L to Escape</name>
           <appendix>(Note: Escape is sent when you release Command_L)</appendix>
           <sysctl>remap.controlLcommandL2escape</sysctl>
-          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::CONTROL_L, ModifierFlag::COMMAND_L, FireFunc::firefunc_escape</autogen>
+          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::CONTROL_L, ModifierFlag::COMMAND_L, KeyCode::ESCAPE</autogen>
         </item>
         <item>
           <name>Shift_L+Command_L to Escape</name>
           <appendix>(Note: Escape is sent when you release Command_L)</appendix>
           <sysctl>remap.shiftLcommandL2escape</sysctl>
-          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::SHIFT_L, ModifierFlag::COMMAND_L, FireFunc::firefunc_escape</autogen>
+          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::SHIFT_L, ModifierFlag::COMMAND_L, KeyCode::ESCAPE</autogen>
         </item>
       </list>
     </item>
@@ -455,19 +455,19 @@
           <name>Command_L+Command_R to Return</name>
           <appendix>(Note: Return is sent when you release Command_R)</appendix>
           <sysctl>remap.commandLcommandR2return</sysctl>
-          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R, FireFunc::firefunc_return</autogen>
+          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R, KeyCode::RETURN</autogen>
         </item>
         <item>
           <name>Control_L+Command_R to Return</name>
           <appendix>(Note: Return is sent when you release Command_R)</appendix>
           <sysctl>remap.controlLcommandR2return</sysctl>
-          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::CONTROL_L, ModifierFlag::COMMAND_R, FireFunc::firefunc_return</autogen>
+          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::CONTROL_L, ModifierFlag::COMMAND_R, KeyCode::RETURN</autogen>
         </item>
         <item>
           <name>Shift_L+Command_R to Return</name>
           <appendix>(Note: Return is sent when you release Command_R)</appendix>
           <sysctl>remap.shiftLcommandR2return</sysctl>
-          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::SHIFT_L, ModifierFlag::COMMAND_R, FireFunc::firefunc_return</autogen>
+          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::SHIFT_L, ModifierFlag::COMMAND_R, KeyCode::RETURN</autogen>
         </item>
       </list>
     </item>
@@ -533,13 +533,13 @@
           <name>Command_R+Control_L to Escape</name>
           <appendix>(Note: Escape is sent when you release Control_L)</appendix>
           <sysctl>remap.commandRcontrolL2escape</sysctl>
-          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::COMMAND_R, ModifierFlag::CONTROL_L, FireFunc::firefunc_escape</autogen>
+          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::COMMAND_R, ModifierFlag::CONTROL_L, KeyCode::ESCAPE</autogen>
         </item>
         <item>
           <name>Shift_L+Control_L to Escape</name>
           <appendix>(Note: Escape is sent when you release Control_L)</appendix>
           <sysctl>remap.shiftLcontrolL2escape</sysctl>
-          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::SHIFT_L, ModifierFlag::CONTROL_L, FireFunc::firefunc_escape</autogen>
+          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::SHIFT_L, ModifierFlag::CONTROL_L, KeyCode::ESCAPE</autogen>
         </item>
       </list>
     </item>
@@ -3494,9 +3494,9 @@
         </item>
         <item>
           <name>KeyToKey (Two Modifiers)</name>
-          <appendix>Enter to Command_L+Shift_L</appendix>
-          <sysctl>remap.samples_enter2commandLshiftL</sysctl>
-          <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L</autogen>
+          <appendix>A to Command_L+Shift_L</appendix>
+          <sysctl>remap.samples_a2commandLshiftL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L</autogen>
         </item>
         <item>
           <name>KeyToKey (Combination)</name>
@@ -3533,6 +3533,18 @@
           <appendix>Brightness Down to Return</appendix>
           <sysctl>remap.samples_brightnessdown2return</sysctl>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_DOWN, KeyCode::RETURN</autogen>
+        </item>
+        <item>
+          <name>KeyOverlaidModifier (Standard)</name>
+          <appendix>A to Shift_L (When type only, send Space)</appendix>
+          <sysctl>remap.samples_a2shiftL_space</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::A, ModifierFlag::SHIFT_L, KeyCode::SPACE</autogen>
+        </item>
+        <item>
+          <name>KeyOverlaidModifier (ModifierFlag)</name>
+          <appendix>Control+A to Shift_L (When type only, send Space)</appendix>
+          <sysctl>remap.samples_control_a2shiftL_space</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::A, VK_CONTROL, ModifierFlag::SHIFT_L, KeyCode::SPACE</autogen>
         </item>
         <item>
           <name>DoublePressModifier</name>
@@ -3656,6 +3668,12 @@
           <appendix>Use T as EISUU x2</appendix>
           <sysctl>remap.samples_t2eisuu_x2</sysctl>
           <autogen>--KeyToKey-- KeyCode::T, KeyCode::VK_JIS_EISUU_x2</autogen>
+        </item>
+        <item>
+          <name>VK_JIS_KANA_x2</name>
+          <appendix>Use Y as KANA x2</appendix>
+          <sysctl>remap.samples_y2kana_x2</sysctl>
+          <autogen>--KeyToKey-- KeyCode::Y, KeyCode::VK_JIS_KANA_x2</autogen>
         </item>
       </list>
     </item>

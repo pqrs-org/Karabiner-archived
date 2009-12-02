@@ -203,8 +203,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (isKeyDown) {
       // calc flags
       remapFlags(toFlags1, toFlags2, toKeyCode2, isKeyDown);
+
       unsigned int flags = FlagStatus::makeFlags(toKeyCode2);
-      ListFireExtraKey::addKey(flags, toKeyCode2);
+      RemapUtil::fireKey_downup(flags, toKeyCode2, remapParams.params, remapParams.workspacedata);
+
       // restore flags
       remapFlags(toFlags2, toFlags1, toKeyCode1, isKeyDown);
     }
@@ -412,12 +414,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (params.key != KeyCode::VK_JIS_EISUU_x2) return false;
 
       if (params.eventType == KeyEvent::DOWN) {
-        params.key = KeyCode::JIS_EISUU;
         for (int i = 0; i < 2; ++i) {
-          params.eventType = KeyEvent::DOWN;
-          RemapUtil::fireKey(params, workspacedata);
-          params.eventType = KeyEvent::UP;
-          RemapUtil::fireKey(params, workspacedata);
+          RemapUtil::fireKey_downup(params.flags, KeyCode::JIS_EISUU, params, workspacedata);
         }
       }
       return true;
@@ -429,12 +427,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (params.key != KeyCode::VK_JIS_KANA_x2) return false;
 
       if (params.eventType == KeyEvent::DOWN) {
-        params.key = KeyCode::JIS_KANA;
         for (int i = 0; i < 2; ++i) {
-          params.eventType = KeyEvent::DOWN;
-          RemapUtil::fireKey(params, workspacedata);
-          params.eventType = KeyEvent::UP;
-          RemapUtil::fireKey(params, workspacedata);
+          RemapUtil::fireKey_downup(params.flags, KeyCode::JIS_KANA, params, workspacedata);
         }
       }
       return true;
@@ -465,6 +459,25 @@ namespace org_pqrs_KeyRemap4MacBook {
         PressDownKeys::remove(p.key, p.keyboardType);
       }
     }
+  }
+
+  void
+  RemapUtil::fireKey(KeyEvent::KeyEvent eventType, unsigned int flags, KeyCode::KeyCode key, KeyboardType::KeyboardType keyboardType, const AbsoluteTime& ts,
+                     const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
+  {
+    HookedKeyboard* hk = ListHookedKeyboard::instance().get();
+    if (! hk) return;
+
+    if (RemapUtil::getKeyCodeModifier(key) != ModifierFlag::NONE) {
+      eventType = KeyEvent::MODIFY;
+    }
+
+    Params_KeyboardEventCallBack params = {
+      hk->getOrig_keyboardEventTarget(), eventType, flags, key,
+      0, 0, 0, 0,
+      keyboardType, false, ts, hk->get(), NULL,
+    };
+    RemapUtil::fireKey(params, workspacedata);
   }
 
   void
@@ -531,37 +544,19 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   void
-  FireFunc::firefunc_escape(const RemapParams& params)
+  KeyOverlaidModifier::remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags,
+                             ModifierFlag::ModifierFlag toFlag, KeyCode::KeyCode fireKeyCode, unsigned int fireFlags, bool isFireRepeat)
   {
-    unsigned int flags = FlagStatus::makeFlags(params);
-    ListFireExtraKey::addKey(flags, KeyCode::ESCAPE);
-  }
-
-  void
-  FireFunc::firefunc_return(const RemapParams& params)
-  {
-    unsigned int flags = FlagStatus::makeFlags(params);
-    ListFireExtraKey::addKey(flags, KeyCode::RETURN);
-  }
-
-  // ----------------------------------------
-  void
-  KeyOverlaidModifier::remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, KeyCode::KeyCode fireKeyCode, unsigned int fireFlags, bool isFireRepeat)
-  {
-    if (! RemapUtil::isKey(remapParams, fromKeyCode)) return;
-
     // ----------------------------------------
     bool isKeyDown = RemapUtil::isKeyDown(remapParams, fromKeyCode);
-    if (! isKeyDown) {
-      EventWatcher::unset(&isAnyEventHappen_);
-    }
+    bool savedIsAnyEventHappen = isAnyEventHappen_;
 
     KeyCode::KeyCode toKeyCode = RemapUtil::getModifierKeyCode(toFlag);
-    keytokey_.remap(remapParams, fromKeyCode, toKeyCode);
+    if (! keytokey_.remap(remapParams, fromKeyCode, fromFlags, toKeyCode)) return;
 
     // ----------------------------------------
     if (isKeyDown) {
-      EventWatcher::set(&isAnyEventHappen_);
+      EventWatcher::set(isAnyEventHappen_);
       ic_.begin();
 
       FlagStatus::temporary_decrease(toFlag);
@@ -574,16 +569,18 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
     } else {
-      if (isAnyEventHappen_ == false) {
+      if (savedIsAnyEventHappen == false) {
         if (config.parameter_keyoverlaidmodifier_timeout <= 0 || ic_.checkThreshold(config.parameter_keyoverlaidmodifier_timeout) == false) {
-          ListFireExtraKey::addKey(savedflags_, fireKeyCode);
+          RemapUtil::fireKey_downup(savedflags_, fireKeyCode, remapParams.params, remapParams.workspacedata);
         }
       }
+      EventWatcher::unset(isAnyEventHappen_);
     }
   }
 
   void
-  KeyOverlaidModifierCombination::remap(const RemapParams& remapParams, ModifierFlag::ModifierFlag fromFlag1, ModifierFlag::ModifierFlag fromFlag2, FireFunc::FireFunc firefunc)
+  KeyOverlaidModifierCombination::remap(const RemapParams& remapParams, ModifierFlag::ModifierFlag fromFlag1, ModifierFlag::ModifierFlag fromFlag2,
+                                        KeyCode::KeyCode fireKeyCode, unsigned int fireFlags)
   {
     KeyCode::KeyCode keyCode1 = RemapUtil::getModifierKeyCode(fromFlag1);
     KeyCode::KeyCode keyCode2 = RemapUtil::getModifierKeyCode(fromFlag2);
@@ -593,21 +590,31 @@ namespace org_pqrs_KeyRemap4MacBook {
     FlagStatus::Item* fromStatus2 = FlagStatus::getFlagStatus(fromFlag2);
     if (fromStatus1 == NULL || fromStatus2 == NULL) return;
 
+    // Note: We check the remapped keycode instead of RemapUtil::isKey in KeyOverlaidModifierCombination.
     if (remapParams.params.key != static_cast<unsigned int>(keyCode2)) {
-      isCallFireFunc = false;
       return;
     }
 
-    if (fromStatus2->isHeldDown()) {
-      isCallFireFunc = true;
-      EventWatcher::set(&isClick);
+    if (RemapUtil::isKeyDown(remapParams, keyCode2)) {
+      if (! fromStatus1->isHeldDown()) {
+        isFireKey_ = false;
+
+      } else {
+        isFireKey_ = true;
+        EventWatcher::set(isAnyEventHappen_);
+
+        fromStatus1->temporary_decrease();
+        fromStatus2->temporary_decrease();
+        savedflags_ = ModifierFlag::stripNONE(FlagStatus::makeFlags(remapParams) | fireFlags);
+        fromStatus1->temporary_increase();
+        fromStatus2->temporary_increase();
+      }
 
     } else {
-      if (fromStatus1->isHeldDown() && isCallFireFunc && isClick == false) {
-        fromStatus1->temporary_decrease();
-        firefunc(remapParams);
+      if (isFireKey_ == true && isAnyEventHappen_ == false) {
+        RemapUtil::fireKey_downup(savedflags_, fireKeyCode, remapParams.params, remapParams.workspacedata);
       }
-      EventWatcher::unset(&isClick);
+      EventWatcher::unset(isAnyEventHappen_);
     }
   }
 
@@ -630,7 +637,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     } else {
       if (pressCount >= 2) {
         unsigned int flags = ModifierFlag::stripNONE(FlagStatus::makeFlags(remapParams) | fireFlags);
-        ListFireExtraKey::addKey(flags, fireKeyCode);
+        RemapUtil::fireKey_downup(flags, fireKeyCode, remapParams.params, remapParams.workspacedata);
       }
     }
   }
