@@ -230,10 +230,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       FRENCH_RIGHT_PAREN = 27,
       FRENCH_EQUAL = 44,
 
-      NONE = 255,
-
       // Virtual KeyCode
       VK__BEGIN__ = 1024,
+      VK_NONE,
       VK_JIS_TOGGLE_EISUU_KANA,
       VK_JIS_EISUU_x2,
       VK_JIS_KANA_x2,
@@ -242,62 +241,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     void normalizeKey(unsigned int &key, unsigned int &flags, unsigned int keyboardType);
     void reverseNormalizeKey(unsigned int &key, unsigned int &flags, unsigned int keyboardType);
-  }
-
-  namespace CharCode {
-    enum CharCode {
-      COMMAND_L = 0,
-      COMMAND_R = 0,
-      CONTROL_L = 0,
-      CONTROL_R = 0,
-      OPTION_L = 0,
-      OPTION_R = 0,
-      SHIFT_L = 0,
-      SHIFT_R = 0,
-      FN = 0,
-      EXPOSE_ALL = 0,
-      TAB = 9,
-      RETURN = 13,
-      ENTER = 13,
-      ENTER_POWERBOOK = 0,
-      DELETE = 127,
-      ESCAPE = 27,
-      SPACE = 32,
-      BACKSLASH = 92,
-      BACKQUOTE = 96,
-      CURSOR_LEFT = 172,
-      CURSOR_UP = 173,
-      CURSOR_RIGHT = 174,
-      CURSOR_DOWN = 175,
-
-      BRACKET_LEFT = 91,
-
-      A = 97,
-      C = 99,
-      E = 101,
-      O = 111,
-      Q = 113,
-      X = 120,
-      Z = 122,
-
-      KEY_0 = 48,
-      KEY_1 = 49,
-      KEY_2 = 50,
-      KEY_3 = 51,
-      KEY_4 = 52,
-      KEY_5 = 53,
-      KEY_6 = 54,
-      KEY_7 = 55,
-      KEY_8 = 56,
-      KEY_9 = 57,
-
-      F1 = 32,
-
-      JIS_KANA = 0,
-      JIS_EISUU = 0,
-
-      NONE = 255,
-    };
   }
 
   namespace ConsumerKeyCode {
@@ -321,7 +264,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       MUSIC_PLAY = 16,
       MUSIC_NEXT = 19,
 
-      NONE = 255,
+      // Virtual KeyCode
+      VK__BEGIN__ = 1024,
+      VK_NONE,
+      VK__END__,
     };
   }
 

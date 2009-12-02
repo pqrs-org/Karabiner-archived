@@ -41,7 +41,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void initialize(void);
     static void set(void);
     static void set(const RemapParams& remapParams);
-    static unsigned int makeFlags(unsigned int keyCode = KeyCode::NONE);
+    static unsigned int makeFlags(unsigned int keyCode = KeyCode::VK_NONE);
     static unsigned int makeFlags(const RemapParams& remapParams);
     static void reset(void);
 

@@ -40,7 +40,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         break;
 
       case KeyEvent::DOWN:
-        if (key == KeyCode::NONE) goto cancel;
+        if (key == KeyCode::VK_NONE) goto cancel;
 
         {
           HookedKeyboard* hk = ListHookedKeyboard::instance().get();

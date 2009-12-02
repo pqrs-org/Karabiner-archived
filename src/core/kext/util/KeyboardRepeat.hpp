@@ -19,7 +19,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void setTS(const AbsoluteTime& ts) { params_.ts = ts; }
     static void setWorkSpaceData(const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) { workspacedata_ = workspacedata; }
 
-    static void set(KeyEvent::KeyEvent eventType = KeyEvent::DOWN, unsigned int flags = 0, KeyCode::KeyCode key = KeyCode::NONE, KeyboardType::KeyboardType keyboardType = KeyboardType::MACBOOK,
+    static void set(KeyEvent::KeyEvent eventType = KeyEvent::DOWN, unsigned int flags = 0, KeyCode::KeyCode key = KeyCode::VK_NONE, KeyboardType::KeyboardType keyboardType = KeyboardType::MACBOOK,
                     int wait = config.get_repeat_initial_wait());
 
     static void set(const Params_KeyboardEventCallBack& p,

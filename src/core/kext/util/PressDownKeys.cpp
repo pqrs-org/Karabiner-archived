@@ -25,7 +25,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     add(unsigned int _key, unsigned int _keyboardType)
     {
-      if (_key == KeyCode::NONE) return;
+      if (_key == KeyCode::VK_NONE) return;
 
       // skip if already added.
       for (int i = 0; i < MAXNUM; ++i) {
