@@ -10,7 +10,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void reset(void);
     bool isEmpty(void);
     void add(unsigned int eventType, unsigned int flags, unsigned int key);
-    void fire(KeyboardEventCallback callback, const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
+    void fire(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
 
     // utility
     void addKey(unsigned int flags, KeyCode::KeyCode keyCode);

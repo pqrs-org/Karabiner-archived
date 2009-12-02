@@ -59,10 +59,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    fire(KeyboardEventCallback callback, const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
+    fire(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
     {
-      if (callback == NULL) return;
-
       Params_KeyboardEventCallBack callbackparams = params;
 
       for (int i = 0; i < size; ++i) {
@@ -70,7 +68,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         callbackparams.flags = item[i].getFlags();
         callbackparams.key = item[i].getKey();
 
-        RemapUtil::fireKey(callback, callbackparams, workspacedata);
+        RemapUtil::fireKey(callbackparams, workspacedata);
       }
     }
   }
