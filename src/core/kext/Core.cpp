@@ -232,7 +232,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! listFireRelativePointer.isEmpty()) {
         HookedPointing* hp = ListHookedPointing::instance().get();
         if (hp) {
-          listFireRelativePointer.fire(hp->getOrig_relativePointerEventAction(), hp->getOrig_relativePointerEventTarget(), hp->get(), params.ts);
+          listFireRelativePointer.fire(hp->getOrig_relativePointerEventTarget(), hp->get(), params.ts);
         }
       }
 
@@ -240,15 +240,15 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! listFireConsumerKey.isEmpty()) {
         HookedConsumer* hc = ListHookedConsumer::instance().get();
         if (hc) {
-          listFireConsumerKey.fire(hc->getOrig_keyboardSpecialEventAction(), hc->getOrig_keyboardSpecialEventTarget(), params.ts, params.sender, params.refcon);
+          listFireConsumerKey.fire(hc->getOrig_keyboardSpecialEventTarget(), params.ts, params.sender, params.refcon);
         }
       }
 
       if (! remapParams.isremapped) {
-        RemapUtil::fireKey(p->getOrig_keyboardEventAction(), params, remapParams.workspacedata);
+        RemapUtil::fireKey(params, remapParams.workspacedata);
         KeyboardRepeat::set(params);
       }
-      ListFireExtraKey::fire(p->getOrig_keyboardEventAction(), params, remapParams.workspacedata);
+      ListFireExtraKey::fire(params, remapParams.workspacedata);
 
       if (NumHeldDownKeys::iszero()) {
         NumHeldDownKeys::reset();
@@ -256,8 +256,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         EventWatcher::reset();
         FlagStatus::reset();
         params.flags = FlagStatus::makeFlags(params.key);
-        RemapUtil::fireModifiers(p->getOrig_keyboardEventAction(), params);
-        PressDownKeys::clear(p->getOrig_keyboardEventAction(), params.target, params.ts, params.sender, params.refcon);
+        RemapUtil::fireModifiers(params);
+        PressDownKeys::clear(params.target, params.ts, params.sender, params.refcon);
       }
     }
 
@@ -300,13 +300,13 @@ namespace org_pqrs_KeyRemap4MacBook {
         };
 
         if (ex_remapKeyCode != KeyCode::NONE) {
-          RemapUtil::fireKey(hk->getOrig_keyboardEventAction(), callbackparams, remapParams.workspacedata);
+          RemapUtil::fireKey(callbackparams, remapParams.workspacedata);
           KeyboardRepeat::set(callbackparams);
         }
-        ListFireExtraKey::fire(hk->getOrig_keyboardEventAction(), callbackparams, remapParams.workspacedata);
+        ListFireExtraKey::fire(callbackparams, remapParams.workspacedata);
       }
 
-      RemapUtil::fireConsumer(p->getOrig_keyboardSpecialEventAction(), params);
+      RemapUtil::fireConsumer(params);
     }
 
     void
@@ -341,19 +341,17 @@ namespace org_pqrs_KeyRemap4MacBook {
             0, 0, 0, 0,
             keyboardType, false, params.ts, hk->get(), NULL,
           };
-          RemapUtil::fireModifiers(hk->getOrig_keyboardEventAction(), callbackparams);
+          RemapUtil::fireModifiers(callbackparams);
         }
       }
 
       // ------------------------------------------------------------
-      RelativePointerEventCallback reCallback = p->getOrig_relativePointerEventAction();
-
       if (! ex_dropEvent) {
-        params.apply(reCallback);
+        params.apply();
       }
 
       if (! listFireRelativePointer.isEmpty()) {
-        listFireRelativePointer.fire(reCallback, params.target, pointing, params.ts);
+        listFireRelativePointer.fire(params.target, pointing, params.ts);
       }
 
       if (firePointingScroll.isEnable()) {
@@ -372,8 +370,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       params.log();
-
-      params.apply(p->getOrig_scrollWheelEventAction());
+      params.apply();
     }
   }
 }
