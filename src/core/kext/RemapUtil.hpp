@@ -142,9 +142,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ----------------------------------------
-    void fireModifiers(KeyboardEventCallback callback, const Params_KeyboardEventCallBack& params);
-    void fireKey(KeyboardEventCallback callback, const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
-    void fireConsumer(KeyboardSpecialEventCallback callback, const Params_KeyboardSpecialEventCallback& params);
+    void fireModifiers(const Params_KeyboardEventCallBack& params);
+    void fireKey(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
+    void fireConsumer(const Params_KeyboardSpecialEventCallback& params);
 
     // ----------------------------------------
     void pointingRelativeToScroll(const RemapPointingParams_relative& remapParams);
