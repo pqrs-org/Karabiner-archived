@@ -3,76 +3,77 @@
 #include "IOLockWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  namespace EventWatcher {
-    enum {
-      MAXNUM = 32,
-    };
-    bool* item[MAXNUM];
-    IOLock* lock = NULL;
+  EventWatcher::Item EventWatcher::item_[MAXNUM];
+  IOLock* EventWatcher::lock_;
+  int EventWatcher::count_;
 
-    void
-    initialize(void)
-    {
-      lock = IOLockWrapper::alloc();
-      reset();
+  void
+  EventWatcher::initialize(void)
+  {
+    lock_ = IOLockWrapper::alloc();
+    reset();
+  }
+
+  void
+  EventWatcher::terminate(void)
+  {
+    IOLockWrapper::free(lock_);
+  }
+
+  void
+  EventWatcher::reset(void)
+  {
+    IOLockWrapper::ScopedLock lk(lock_);
+
+    for (int i = 0; i < MAXNUM; ++i) {
+      item_[i].flag = NULL;
     }
+  }
 
-    void
-    terminate(void)
-    {
-      IOLockWrapper::free(lock);
-    }
+  void
+  EventWatcher::on(void)
+  {
+    IOLockWrapper::ScopedLock lk(lock_);
 
-    void
-    reset(void)
-    {
-      IOLockWrapper::ScopedLock lk(lock);
-
-      for (int i = 0; i < MAXNUM; ++i) {
-        item[i] = NULL;
+    for (int i = 0; i < MAXNUM; ++i) {
+      if (item_[i].flag && item_[i].count != count_) {
+        *(item_[i].flag) = true;
+        item_[i].flag = NULL;
       }
     }
+  }
 
-    void
-    on(void)
-    {
-      IOLockWrapper::ScopedLock lk(lock);
+  void
+  EventWatcher::set(bool& b)
+  {
+    IOLockWrapper::ScopedLock lk(lock_);
 
-      for (int i = 0; i < MAXNUM; ++i) {
-        if (item[i]) {
-          *(item[i]) = true;
-          item[i] = NULL;
-        }
+    b = false;
+    for (int i = 0; i < MAXNUM; ++i) {
+      if (item_[i].flag == NULL) {
+        item_[i].flag = &b;
+        item_[i].count = count_;
       }
     }
+  }
 
-    void
-    set(bool* b)
-    {
-      IOLockWrapper::ScopedLock lk(lock);
+  void
+  EventWatcher::unset(bool& b)
+  {
+    IOLockWrapper::ScopedLock lk(lock_);
 
-      if (b == NULL) return;
-
-      *b = false;
-      for (int i = 0; i < MAXNUM; ++i) {
-        if (item[i] == NULL) {
-          item[i] = b;
-        }
+    for (int i = 0; i < MAXNUM; ++i) {
+      if (item_[i].flag == &b) {
+        item_[i].flag = NULL;
       }
     }
+  }
 
-    void
-    unset(bool* b)
-    {
-      IOLockWrapper::ScopedLock lk(lock);
+  void
+  EventWatcher::countup(void)
+  {
+    IOLockWrapper::ScopedLock lk(lock_);
 
-      if (b == NULL) return;
-
-      for (int i = 0; i < MAXNUM; ++i) {
-        if (item[i] == b) {
-          item[i] = NULL;
-        }
-      }
-    }
+    ++count_;
   }
 }
