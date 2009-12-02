@@ -120,7 +120,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (remapParams.workspacedata.type != KeyRemap4MacBook_bridge::GetWorkspaceData::VI) return;
 
     if (RemapUtil::isKeyDown(remapParams, KeyCode::JIS_EISUU)) {
-      ListFireExtraKey::addKey(0, KeyCode::ESCAPE);
+      RemapUtil::fireKey(remapParams.params, remapParams.workspacedata);
+      RemapUtil::fireKey_downup(remapParams.params.flags, KeyCode::ESCAPE, remapParams.params, remapParams.workspacedata);
+      remapParams.isremapped = true;
     }
   }
 
@@ -179,15 +181,12 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &remapParams)
   // ------------------------------------------------------------
   // *** Note: we need to call remap_space2shift, remap_enter2optionL_commandSpace (has SandS like behavior) as possible late. ***
   // *** If any key2modifier or modifier2key remappings are enabled, miss-cancelling are occured. ***
+#include "config/output/include.remapcode_call_komc.cpp"
 #include "config/output/include.remapcode_call_kom.cpp"
   remap_jis_eisuu2commandL_eisuu_eisuu2optionL_term(remapParams);
 
   // ------------------------------------------------------------
 #include "config/output/include.remapcode_call_mhkk.cpp"
-
-  // ------------------------------------------------------------
-  // *** we need to handle KeyOverlaidModifierCombination at last. ***
-#include "config/output/include.remapcode_call_komc.cpp"
 
   // ------------------------------------------------------------
   remapParams.params.flags = FlagStatus::makeFlags(remapParams);

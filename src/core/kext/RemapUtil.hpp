@@ -7,7 +7,6 @@
 #include "keycode.hpp"
 #include "util/FlagStatus.hpp"
 #include "util/PressDownKeys.hpp"
-#include "util/ListFireExtraKey.hpp"
 #include "util/ListFireConsumerKey.hpp"
 #include "util/ListFireRelativePointer.hpp"
 #include "util/IntervalChecker.hpp"
@@ -143,7 +142,37 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ----------------------------------------
     void fireModifiers(const Params_KeyboardEventCallBack& params);
+
     void fireKey(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
+
+    void fireKey(KeyEvent::KeyEvent eventType, unsigned int flags, KeyCode::KeyCode key, KeyboardType::KeyboardType keyboardType, const AbsoluteTime& ts,
+                 const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
+
+    inline void fireKey(KeyEvent::KeyEvent eventType, unsigned int flags, KeyCode::KeyCode key,
+                        const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
+      RemapUtil::fireKey(eventType,
+                         flags, key,
+                         static_cast<KeyboardType::KeyboardType>(params.keyboardType),
+                         params.ts,
+                         workspacedata);
+
+    }
+
+    inline void fireKey(unsigned int flags, KeyCode::KeyCode key,
+                        const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
+      RemapUtil::fireKey(static_cast<KeyEvent::KeyEvent>(params.eventType), flags, key, params, workspacedata);
+    }
+
+    inline void fireKey_downup(unsigned int flags, KeyCode::KeyCode key,
+                               const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
+      if (RemapUtil::getKeyCodeModifier(key) == ModifierFlag::NONE) {
+        RemapUtil::fireKey(KeyEvent::DOWN,   flags, key, params, workspacedata);
+        RemapUtil::fireKey(KeyEvent::UP,     flags, key, params, workspacedata);
+      } else {
+        RemapUtil::fireKey(KeyEvent::MODIFY, flags, key, params, workspacedata);
+      }
+    }
+
     void fireConsumer(const Params_KeyboardSpecialEventCallback& params);
 
     // ----------------------------------------
@@ -153,19 +182,27 @@ namespace org_pqrs_KeyRemap4MacBook {
   extern ListFireConsumerKey listFireConsumerKey;
 
   // ----------------------------------------------------------------------
-  namespace FireFunc {
-    typedef void (*FireFunc)(const RemapParams& remapParams);
-    void firefunc_escape(const RemapParams& remapParams);
-    void firefunc_return(const RemapParams& remapParams);
-  }
-
-  // ----------------------------------------
   // for SandS like behavior remappings (remap_space2shift, remap_enter2optionL_commandSpace, ...)
   class KeyOverlaidModifier {
   public:
-    void remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, KeyCode::KeyCode fireKeyCode, unsigned int fireFlags = ModifierFlag::NONE, bool isFireRepeat = false);
-    void remapWithRepeat(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, KeyCode::KeyCode fireKeyCode, unsigned int fireFlags = ModifierFlag::NONE) {
-      return remap(remapParams, fromKeyCode, toFlag, fireKeyCode, fireFlags, true);
+    void remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags,
+               ModifierFlag::ModifierFlag toFlag, KeyCode::KeyCode fireKeyCode, unsigned int fireFlags = ModifierFlag::NONE, bool isFireRepeat = false);
+
+    // no-fromFlags version.
+    void remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode,
+               ModifierFlag::ModifierFlag toFlag, KeyCode::KeyCode fireKeyCode, unsigned int fireFlags = ModifierFlag::NONE, bool isFireRepeat = false) {
+      remap(remapParams, fromKeyCode, 0, toFlag, fireKeyCode, fireFlags, isFireRepeat);
+    }
+
+    // no-isFireRepeat version.
+    void remapWithRepeat(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags,
+                         ModifierFlag::ModifierFlag toFlag, KeyCode::KeyCode fireKeyCode, unsigned int fireFlags = ModifierFlag::NONE) {
+      remap(remapParams, fromKeyCode, fromFlags, toFlag, fireKeyCode, fireFlags, true);
+    }
+    // no-fromFlags, no-isFireRepeat version.
+    void remapWithRepeat(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode,
+                         ModifierFlag::ModifierFlag toFlag, KeyCode::KeyCode fireKeyCode, unsigned int fireFlags = ModifierFlag::NONE) {
+      remap(remapParams, fromKeyCode, toFlag, fireKeyCode, fireFlags, true);
     }
 
   private:
@@ -179,12 +216,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   // Command_R+Command_L to Escape, ...
   class KeyOverlaidModifierCombination {
   public:
-    void remap(const RemapParams& remapParams, ModifierFlag::ModifierFlag fromFlag1, ModifierFlag::ModifierFlag fromFlag2, FireFunc::FireFunc firefunc);
+    void remap(const RemapParams& remapParams, ModifierFlag::ModifierFlag fromFlag1, ModifierFlag::ModifierFlag fromFlag2,
+               KeyCode::KeyCode fireKeyCode, unsigned int fireFlags = ModifierFlag::NONE);
 
   private:
-    bool isModifier1HeldDown;
-    bool isCallFireFunc;
-    bool isClick;
+    bool isAnyEventHappen_;
+    bool isFireKey_;
+    unsigned int savedflags_;
   };
 
   // ----------------------------------------

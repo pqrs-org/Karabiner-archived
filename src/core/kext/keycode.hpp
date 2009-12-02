@@ -239,8 +239,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       VK__END__,
     };
 
-    void normalizeKey(unsigned int &key, unsigned int &flags, unsigned int keyboardType);
-    void reverseNormalizeKey(unsigned int &key, unsigned int &flags, unsigned int keyboardType);
+    void normalizeKey(unsigned int& key, unsigned int& flags, unsigned int keyboardType);
+    void reverseNormalizeKey(unsigned int& key, unsigned int& flags, unsigned int keyboardType);
   }
 
   namespace ConsumerKeyCode {
