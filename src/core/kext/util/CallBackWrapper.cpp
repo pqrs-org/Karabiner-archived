@@ -2,6 +2,7 @@
 #include "Config.hpp"
 #include "EventWatcher.hpp"
 #include "keycode.hpp"
+#include "RemapUtil.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   void
@@ -88,8 +89,18 @@ namespace org_pqrs_KeyRemap4MacBook {
     callback(target, eventType, flags, key, charCode, charSet, origCharCode, origCharSet,
              keyboardType, repeat, ts, sender, refcon);
 
-    // XXX: comment out temporarily
-    //EventWatcher::on();
+    switch (eventType) {
+      case KeyEvent::DOWN:
+        EventWatcher::on();
+        break;
+      case KeyEvent::MODIFY:
+        if (RemapUtil::isModifierOn(flags, RemapUtil::getKeyCodeModifier(key))) {
+          EventWatcher::on();
+        }
+        break;
+      default:
+        break;
+    }
   }
 
   void
@@ -100,8 +111,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     log("sending");
     callback(target, eventType, flags, key, flavor, guid, repeat, ts, sender, refcon);
 
-    // XXX: comment out temporarily
-    //EventWatcher::on();
+    if (eventType == KeyEvent::DOWN) {
+      EventWatcher::on();
+    }
   }
 
   void
