@@ -13,7 +13,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void reset(void) { size = 0; }
     bool isEmpty(void) { return size == 0; }
     void add(PointingButton::PointingButton button);
-    void fire(RelativePointerEventCallback callback, OSObject *target, OSObject *sender, AbsoluteTime ts);
+    void fire(OSObject *target, OSObject *sender, AbsoluteTime ts);
 
   private:
     class Item {

@@ -11,10 +11,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  ListFireRelativePointer::fire(RelativePointerEventCallback callback, OSObject *target, OSObject *sender, AbsoluteTime ts)
+  ListFireRelativePointer::fire(OSObject *target, OSObject *sender, AbsoluteTime ts)
   {
-    if (callback == NULL) return;
-
     for (int i = 0; i < size; ++i) {
       Item &item = list[i];
 
@@ -24,7 +22,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         0, 0,
         ts,sender, 0,
       };
-      callbackparams.apply(callback);
+      callbackparams.apply();
     }
   }
 }
