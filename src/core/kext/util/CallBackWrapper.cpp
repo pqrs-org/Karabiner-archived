@@ -1,8 +1,11 @@
 #include "CallBackWrapper.hpp"
 #include "Config.hpp"
 #include "EventWatcher.hpp"
-#include "keycode.hpp"
+#include "ListHookedConsumer.hpp"
+#include "ListHookedKeyboard.hpp"
+#include "ListHookedPointing.hpp"
 #include "RemapUtil.hpp"
+#include "keycode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   void
@@ -52,8 +55,14 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   void
-  Params_KeyboardEventCallBack::apply(KeyboardEventCallback callback) const
+  Params_KeyboardEventCallBack::apply(void) const
   {
+    if (key == KeyCode::NONE) return;
+
+    HookedKeyboard* hk = ListHookedKeyboard::instance().get();
+    if (! hk) return;
+
+    KeyboardEventCallback callback = hk->getOrig_keyboardEventAction();
     if (! callback) return;
 
     // ------------------------------------------------------------
@@ -104,8 +113,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  Params_KeyboardSpecialEventCallback::apply(KeyboardSpecialEventCallback callback) const
+  Params_KeyboardSpecialEventCallback::apply(void) const
   {
+    if (key == ConsumerKeyCode::NONE) return;
+
+    HookedConsumer* hc = ListHookedConsumer::instance().get();
+    if (! hc) return;
+
+    KeyboardSpecialEventCallback callback = hc->getOrig_keyboardSpecialEventAction();
     if (! callback) return;
 
     log("sending");
@@ -117,8 +132,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  Params_RelativePointerEventCallback::apply(RelativePointerEventCallback callback) const
+  Params_RelativePointerEventCallback::apply(void) const
   {
+    HookedPointing* hp = ListHookedPointing::instance().get();
+    if (! hp) return;
+
+    RelativePointerEventCallback callback = hp->getOrig_relativePointerEventAction();
     if (! callback) return;
 
     log("sending");
@@ -130,8 +149,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  Params_ScrollWheelEventCallback::apply(ScrollWheelEventCallback callback) const
+  Params_ScrollWheelEventCallback::apply(void) const
   {
+    HookedPointing* hp = ListHookedPointing::instance().get();
+    if (! hp) return;
+
+    ScrollWheelEventCallback callback = hp->getOrig_scrollWheelEventAction();
     if (! callback) return;
 
     log("sending");
