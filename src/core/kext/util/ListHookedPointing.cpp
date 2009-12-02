@@ -1,3 +1,4 @@
+#include "EventWatcher.hpp"
 #include "ListHookedPointing.hpp"
 #include "Core.hpp"
 #include "Config.hpp"
@@ -24,6 +25,8 @@ namespace org_pqrs_KeyRemap4MacBook {
                                       OSObject *sender,
                                       void *refcon)
     {
+      EventWatcher::countup();
+
       Params_RelativePointerEventCallback params = {
         target, buttons, dx, dy, ts, sender, refcon,
       };
@@ -46,6 +49,8 @@ namespace org_pqrs_KeyRemap4MacBook {
                                   OSObject *sender,
                                   void *refcon)
     {
+      EventWatcher::countup();
+
       Params_ScrollWheelEventCallback params = {
         target,
         deltaAxis1, deltaAxis2, deltaAxis3,

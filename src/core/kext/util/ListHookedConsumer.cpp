@@ -1,3 +1,4 @@
+#include "EventWatcher.hpp"
 #include "ListHookedConsumer.hpp"
 #include "Core.hpp"
 #include "Config.hpp"
@@ -27,6 +28,8 @@ namespace org_pqrs_KeyRemap4MacBook {
                                       OSObject *sender,
                                       void *refcon)
     {
+      EventWatcher::countup();
+
       Params_KeyboardSpecialEventCallback params = {
         target, eventType, flags, key, flavor,
         guid, repeat, ts, sender, refcon,
