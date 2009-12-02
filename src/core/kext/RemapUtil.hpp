@@ -71,18 +71,34 @@ namespace org_pqrs_KeyRemap4MacBook {
     public:
       // KeyToKey(void) : active_(false) {}
 
-      bool remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags, KeyCode::KeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE);
-      bool remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE) {
-        return remap(remapParams, fromKeyCode, 0, toKeyCode, toFlags);
+      bool remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags, KeyCode::KeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE, bool isSetKeyRepeat = true);
+      // no-fromFlags version.
+      bool remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, KeyCode::KeyCode toKeyCode, unsigned int toFlags = ModifierFlag::NONE, bool isSetKeyRepeat = true) {
+        return remap(remapParams, fromKeyCode, 0, toKeyCode, toFlags, isSetKeyRepeat);
       }
+
       bool remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags,
                  KeyCode::KeyCode toKeyCode1, unsigned int toFlags1,
                  KeyCode::KeyCode toKeyCode2, unsigned int toFlags2 = ModifierFlag::NONE);
+      // no-toFlag1 version.
       bool remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags,
                  KeyCode::KeyCode toKeyCode1,
                  KeyCode::KeyCode toKeyCode2, unsigned int toFlags2 = ModifierFlag::NONE) {
         return remap(remapParams, fromKeyCode, fromFlags, toKeyCode1, ModifierFlag::NONE, toKeyCode2, toFlags2);
       }
+      // no fromFlags version.
+      bool remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode,
+                 KeyCode::KeyCode toKeyCode1, unsigned int toFlags1,
+                 KeyCode::KeyCode toKeyCode2, unsigned int toFlags2 = ModifierFlag::NONE) {
+        return remap(remapParams, fromKeyCode, 0, toKeyCode1, toFlags1, toKeyCode2, toFlags2);
+      }
+      // no fromFlags, toFlags1 version
+      bool remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode,
+                 KeyCode::KeyCode toKeyCode1,
+                 KeyCode::KeyCode toKeyCode2, unsigned int toFlags2 = ModifierFlag::NONE) {
+        return remap(remapParams, fromKeyCode, 0, toKeyCode1, ModifierFlag::NONE, toKeyCode2, toFlags2);
+      }
+
     private:
       bool active_;
     };
@@ -153,10 +169,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
   private:
-    bool useAsModifier;
-    bool isClick;
-    IntervalChecker ic;
+    bool isAnyEventHappen_;
+    IntervalChecker ic_;
     RemapUtil::KeyToKey keytokey_;
+    unsigned int savedflags_;
   };
 
   // ----------------------------------------

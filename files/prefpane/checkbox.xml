@@ -3500,6 +3500,12 @@
         </item>
         <item>
           <name>KeyToKey (Combination)</name>
+          <appendix>A to B,C</appendix>
+          <sysctl>remap.samples_a2bc</sysctl>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::B, KeyCode::C</autogen>
+        </item>
+        <item>
+          <name>KeyToKey (Combination(2))</name>
           <appendix>Control+U to Command+Shift+Left,Command+X</appendix>
           <sysctl>remap.samples_controlU</sysctl>
           <autogen>--KeyToKey-- KeyCode::U, VK_CONTROL, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
