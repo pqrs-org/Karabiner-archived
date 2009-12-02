@@ -244,17 +244,11 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
       }
 
-      RemapUtil::fireKey(p->getOrig_keyboardEventAction(), params, remapParams.workspacedata);
-      ListFireExtraKey::fire(p->getOrig_keyboardEventAction(), params, remapParams.workspacedata);
-
-      if (ex_repeatKeyCode != KeyCode::NONE) {
-        // XXX: need cleanup
-        KeyboardRepeat::set(KeyEvent::DOWN, ex_repeatFlags, ex_repeatKeyCode, static_cast<KeyboardType::KeyboardType>(params.keyboardType),
-                            config.get_keyoverlaidmodifier_initial_wait());
-      } else {
-        // XXX: need cleanup
+      if (! remapParams.isremapped) {
+        RemapUtil::fireKey(p->getOrig_keyboardEventAction(), params, remapParams.workspacedata);
         KeyboardRepeat::set(params);
       }
+      ListFireExtraKey::fire(p->getOrig_keyboardEventAction(), params, remapParams.workspacedata);
 
       if (NumHeldDownKeys::iszero()) {
         NumHeldDownKeys::reset();

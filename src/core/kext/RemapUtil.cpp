@@ -1,6 +1,8 @@
 #include "RemapUtil.hpp"
 #include "keycode.hpp"
 #include "Config.hpp"
+#include "util/KeyboardRepeat.hpp"
+#include "util/ListHookedKeyboard.hpp"
 #include "util/PointingButtonStatus.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -102,7 +104,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  RemapUtil::KeyToKey::remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags, KeyCode::KeyCode toKeyCode, unsigned int toFlags)
+  RemapUtil::KeyToKey::remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags, KeyCode::KeyCode toKeyCode, unsigned int toFlags, bool isSetKeyRepeat)
   {
     if (! RemapUtil::isKey(remapParams, fromKeyCode)) return false;
 
@@ -177,6 +179,18 @@ namespace org_pqrs_KeyRemap4MacBook {
     remapParams.isremapped = true;
     remapFlags(fromFlags, toFlags, toKeyCode, isKeyDown);
 
+    remapParams.params.flags = FlagStatus::makeFlags(remapParams);
+    {
+      HookedKeyboard* hk = ListHookedKeyboard::instance().get();
+      if (hk) {
+        RemapUtil::fireKey(hk->getOrig_keyboardEventAction(), remapParams.params, remapParams.workspacedata);
+      }
+    }
+    // ----------------------------------------
+    if (isSetKeyRepeat) {
+      KeyboardRepeat::set(remapParams.params);
+    }
+
     return true;
   }
 
@@ -187,7 +201,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     bool isKeyDown = RemapUtil::isKeyDown(remapParams, fromKeyCode);
 
-    bool result = remap(remapParams, fromKeyCode, fromFlags, toKeyCode1, toFlags1);
+    bool result = remap(remapParams, fromKeyCode, fromFlags, toKeyCode1, toFlags1, false);
     if (! result) return false;
 
     if (isKeyDown) {
@@ -546,44 +560,37 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   KeyOverlaidModifier::remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, KeyCode::KeyCode fireKeyCode, unsigned int fireFlags, bool isFireRepeat)
   {
-    if (! RemapUtil::isKey(remapParams, fromKeyCode)) {
-      if (! RemapUtil::isEvent_Up(remapParams)) {
-        useAsModifier = true;
-      }
-      return;
-    }
+    if (! RemapUtil::isKey(remapParams, fromKeyCode)) return;
 
     // ----------------------------------------
     bool isKeyDown = RemapUtil::isKeyDown(remapParams, fromKeyCode);
+    if (! isKeyDown) {
+      EventWatcher::unset(&isAnyEventHappen_);
+    }
 
     KeyCode::KeyCode toKeyCode = RemapUtil::getModifierKeyCode(toFlag);
     keytokey_.remap(remapParams, fromKeyCode, toKeyCode);
 
     // ----------------------------------------
     if (isKeyDown) {
-      useAsModifier = false;
-      EventWatcher::set(&isClick);
-      ic.begin();
+      EventWatcher::set(&isAnyEventHappen_);
+      ic_.begin();
+
+      FlagStatus::temporary_decrease(toFlag);
+      savedflags_ = ModifierFlag::stripNONE(FlagStatus::makeFlags(remapParams) | fireFlags);
+      FlagStatus::temporary_increase(toFlag);
 
       if (isFireRepeat) {
-        FlagStatus::temporary_decrease(toFlag);
-        unsigned int flags = ModifierFlag::stripNONE(FlagStatus::makeFlags(remapParams) | fireFlags);
-        FlagStatus::temporary_increase(toFlag);
-
-        remapParams.ex_repeatKeyCode = fireKeyCode;
-        remapParams.ex_repeatFlags = flags;
+        KeyboardRepeat::set(KeyEvent::DOWN, savedflags_, fireKeyCode, static_cast<KeyboardType::KeyboardType>(remapParams.params.keyboardType),
+                            config.get_keyoverlaidmodifier_initial_wait());
       }
 
     } else {
-      if (useAsModifier == false && isClick == false) {
-        if (remapParams.ex_extraRepeatCounter == 0) {
-          if (config.parameter_keyoverlaidmodifier_timeout <= 0 || ic.checkThreshold(config.parameter_keyoverlaidmodifier_timeout) == false) {
-            unsigned int flags = ModifierFlag::stripNONE(FlagStatus::makeFlags(remapParams) | fireFlags);
-            ListFireExtraKey::addKey(flags, fireKeyCode);
-          }
+      if (isAnyEventHappen_ == false) {
+        if (config.parameter_keyoverlaidmodifier_timeout <= 0 || ic_.checkThreshold(config.parameter_keyoverlaidmodifier_timeout) == false) {
+          ListFireExtraKey::addKey(savedflags_, fireKeyCode);
         }
       }
-      EventWatcher::unset(&isClick);
     }
   }
 
