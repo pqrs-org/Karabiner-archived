@@ -41,7 +41,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       return (remapParams.isremapped == true);
     }
     inline void drop(const RemapParams& remapParams) {
-      remapParams.params.key = KeyCode::NONE;
+      remapParams.params.key = KeyCode::VK_NONE;
       remapParams.isremapped = true;
     }
 

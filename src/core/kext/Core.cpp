@@ -206,7 +206,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       listFireRelativePointer.reset();
 
       bool isremapped = false;
-      KeyCode::KeyCode ex_repeatKeyCode = KeyCode::NONE;
+      KeyCode::KeyCode ex_repeatKeyCode = KeyCode::VK_NONE;
       unsigned int ex_repeatFlags = 0;
 
       KeyCode::normalizeKey(params.key, params.flags, params.keyboardType);
@@ -274,7 +274,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       params.log();
 
       ListFireExtraKey::reset();
-      KeyCode::KeyCode ex_remapKeyCode = KeyCode::NONE;
+      KeyCode::KeyCode ex_remapKeyCode = KeyCode::VK_NONE;
       RemapConsumerParams remapParams = {
         params,
         KeyRemap4MacBook_bridge::GetWorkspaceData::Reply(),
@@ -299,7 +299,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           keyboardType, false, params.ts, hk->get(), NULL,
         };
 
-        if (ex_remapKeyCode != KeyCode::NONE) {
+        if (ex_remapKeyCode != KeyCode::VK_NONE) {
           RemapUtil::fireKey(callbackparams, remapParams.workspacedata);
           KeyboardRepeat::set(callbackparams);
         }
@@ -322,7 +322,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       params.log();
 
       listFireRelativePointer.reset();
-      unsigned int flags = FlagStatus::makeFlags(KeyCode::NONE);
+      unsigned int flags = FlagStatus::makeFlags(KeyCode::VK_NONE);
 
       bool ex_dropEvent = false;
       RemapPointingParams_relative remapParams = {
@@ -331,13 +331,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       remap_pointing_relative_core(remapParams);
 
       // ------------------------------------------------------------
-      unsigned int newflags = FlagStatus::makeFlags(KeyCode::NONE);
+      unsigned int newflags = FlagStatus::makeFlags(KeyCode::VK_NONE);
       if (flags != newflags) {
         HookedKeyboard* hk = ListHookedKeyboard::instance().get();
         unsigned int keyboardType = KeyboardType::MACBOOK;
         if (hk) {
           Params_KeyboardEventCallBack callbackparams = {
-            hk->getOrig_keyboardEventTarget(), KeyEvent::MODIFY, newflags, KeyCode::NONE,
+            hk->getOrig_keyboardEventTarget(), KeyEvent::MODIFY, newflags, KeyCode::VK_NONE,
             0, 0, 0, 0,
             keyboardType, false, params.ts, hk->get(), NULL,
           };

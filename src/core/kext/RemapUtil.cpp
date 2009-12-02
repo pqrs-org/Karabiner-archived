@@ -38,7 +38,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (flag == ModifierFlag::FN) return KeyCode::FN;
 
     //IOLog("KeyRemap4MacBook::getModifierKeyCode invalid args\n");
-    return KeyCode::NONE;
+    return KeyCode::VK_NONE;
   }
 
   ModifierFlag::ModifierFlag
@@ -66,7 +66,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         return ((flags & fromFlags) == fromFlags);
       }
     }
-    void remapFlags(unsigned int fromFlags, unsigned int toFlags, unsigned int toKeyCode = KeyCode::NONE, bool isKeyDown = false) {
+    void remapFlags(unsigned int fromFlags, unsigned int toFlags, unsigned int toKeyCode = KeyCode::VK_NONE, bool isKeyDown = false) {
       // if to Modifier, we change the flag permanently, else change temporary.
       bool isToModifier = (RemapUtil::getKeyCodeModifier(toKeyCode) != ModifierFlag::NONE);
 
@@ -249,7 +249,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                            KeyCode::KeyCode fromKeyCode, unsigned int fromFlags,
                            ConsumerKeyCode::ConsumerKeyCode toKeyCode, unsigned int toFlags)
   {
-    if (! isFromFlags(FlagStatus::makeFlags(KeyCode::NONE), fromFlags)) return false;
+    if (! isFromFlags(FlagStatus::makeFlags(KeyCode::VK_NONE), fromFlags)) return false;
     if (! RemapUtil::isKey(remapParams, fromKeyCode)) return false;
 
     remapFlags(fromFlags, toFlags);
@@ -267,7 +267,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                            ConsumerKeyCode::ConsumerKeyCode fromKeyCode, unsigned int fromFlags,
                            KeyCode::KeyCode toKeyCode, unsigned int toFlags)
   {
-    if (! isFromFlags(FlagStatus::makeFlags(KeyCode::NONE), fromFlags)) return false;
+    if (! isFromFlags(FlagStatus::makeFlags(KeyCode::VK_NONE), fromFlags)) return false;
     if (! isKey(remapParams, fromKeyCode)) return false;
 
     bool isKeyDown = (remapParams.params.eventType == KeyEvent::DOWN);
@@ -276,7 +276,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (RemapUtil::getKeyCodeModifier(toKeyCode) != ModifierFlag::NONE) {
       remapParams.params.eventType = KeyEvent::MODIFY;
     }
-    remapParams.params.key = ConsumerKeyCode::NONE;
+    remapParams.params.key = ConsumerKeyCode::VK_NONE;
     remapParams.ex_remapKeyCode = toKeyCode;
 
     return true;
@@ -287,7 +287,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                                 ConsumerKeyCode::ConsumerKeyCode fromKeyCode, unsigned int fromFlags,
                                 ConsumerKeyCode::ConsumerKeyCode toKeyCode, unsigned int toFlags)
   {
-    if (! isFromFlags(FlagStatus::makeFlags(KeyCode::NONE), fromFlags)) return false;
+    if (! isFromFlags(FlagStatus::makeFlags(KeyCode::VK_NONE), fromFlags)) return false;
     if (! isKey(remapParams, fromKeyCode)) return false;
 
     remapFlags(fromFlags, toFlags);
@@ -302,7 +302,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                                             PointingButton::PointingButton fromButton, unsigned int fromFlags,
                                             PointingButton::PointingButton toButton)
   {
-    if (! isFromFlags(FlagStatus::makeFlags(KeyCode::NONE), fromFlags)) return false;
+    if (! isFromFlags(FlagStatus::makeFlags(KeyCode::VK_NONE), fromFlags)) return false;
     if (! (remapParams.params.buttons & fromButton)) return false;
 
     remapFlags(fromFlags, 0);
@@ -391,7 +391,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (params.key != KeyCode::VK_JIS_TOGGLE_EISUU_KANA) return false;
 
       // It is necessary to save toKeyCode for KeyUp.
-      static KeyCode::KeyCode newkeycode = KeyCode::NONE;
+      static KeyCode::KeyCode newkeycode = KeyCode::VK_NONE;
 
       if (params.eventType == KeyEvent::DOWN) {
         if (workspacedata.inputmode == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE) {
@@ -587,7 +587,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     KeyCode::KeyCode keyCode1 = RemapUtil::getModifierKeyCode(fromFlag1);
     KeyCode::KeyCode keyCode2 = RemapUtil::getModifierKeyCode(fromFlag2);
-    if (keyCode1 == KeyCode::NONE || keyCode2 == KeyCode::NONE) return;
+    if (keyCode1 == KeyCode::VK_NONE || keyCode2 == KeyCode::VK_NONE) return;
 
     FlagStatus::Item* fromStatus1 = FlagStatus::getFlagStatus(fromFlag1);
     FlagStatus::Item* fromStatus2 = FlagStatus::getFlagStatus(fromFlag2);
@@ -671,7 +671,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   IgnoreMultipleSameKeyPress::remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags)
   {
     if (RemapUtil::isAlreadyRemapped(remapParams) || FlagStatus::makeFlags(remapParams) != fromFlags) {
-      lastkeycode_ = KeyCode::NONE;
+      lastkeycode_ = KeyCode::VK_NONE;
       return false;
     }
 
@@ -721,7 +721,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   PointingRelativeToScroll::remap(const RemapPointingParams_relative& remapParams, unsigned int button, unsigned int fromFlags)
   {
-    if (! isFromFlags(FlagStatus::makeFlags(KeyCode::NONE), fromFlags)) return false;
+    if (! isFromFlags(FlagStatus::makeFlags(KeyCode::VK_NONE), fromFlags)) return false;
 
     if (button == PointingButton::NONE) {
       RemapUtil::pointingRelativeToScroll(remapParams);

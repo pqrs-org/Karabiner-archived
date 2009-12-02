@@ -57,20 +57,18 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   Params_KeyboardEventCallBack::apply(void) const
   {
-    if (key == KeyCode::NONE) return;
-
-    HookedKeyboard* hk = ListHookedKeyboard::instance().get();
-    if (! hk) return;
-
-    KeyboardEventCallback callback = hk->getOrig_keyboardEventAction();
-    if (! callback) return;
-
-    // ------------------------------------------------------------
     if (key >= KeyCode::VK__BEGIN__) {
       // Invalid keycode
       IOLog("[KeyRemap4MacBook ERROR] Params_KeyboardEventCallBack::apply invalid key:%d\n", key);
       return;
     }
+
+    // ------------------------------------------------------------
+    HookedKeyboard* hk = ListHookedKeyboard::instance().get();
+    if (! hk) return;
+
+    KeyboardEventCallback callback = hk->getOrig_keyboardEventAction();
+    if (! callback) return;
 
     if (config.option_drop_slowexpose) {
       // Skip if Shift+F8,F9,F10,F11,F12,EXPOSE_ALL.
@@ -115,8 +113,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   Params_KeyboardSpecialEventCallback::apply(void) const
   {
-    if (key == ConsumerKeyCode::NONE) return;
+    if (key >= ConsumerKeyCode::VK__BEGIN__) {
+      // Invalid keycode
+      IOLog("[KeyRemap4MacBook ERROR] Params_KeyboardSpecialEventCallback::apply invalid key:%d\n", key);
+      return;
+    }
 
+    // ------------------------------------------------------------
     HookedConsumer* hc = ListHookedConsumer::instance().get();
     if (! hc) return;
 
