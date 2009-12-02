@@ -201,7 +201,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       // ------------------------------------------------------------
-      ListFireExtraKey::reset();
       listFireConsumerKey.reset();
       listFireRelativePointer.reset();
 
@@ -248,7 +247,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         RemapUtil::fireKey(params, remapParams.workspacedata);
         KeyboardRepeat::set(params);
       }
-      ListFireExtraKey::fire(params, remapParams.workspacedata);
 
       if (NumHeldDownKeys::iszero()) {
         NumHeldDownKeys::reset();
@@ -273,7 +271,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ------------------------------------------------------------
       params.log();
 
-      ListFireExtraKey::reset();
       KeyCode::KeyCode ex_remapKeyCode = KeyCode::VK_NONE;
       RemapConsumerParams remapParams = {
         params,
@@ -290,20 +287,17 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ----------------------------------------
       HookedKeyboard* hk = ListHookedKeyboard::instance().get();
-      unsigned int keyboardType = KeyboardType::MACBOOK;
-
       if (hk) {
         Params_KeyboardEventCallBack callbackparams = {
           hk->getOrig_keyboardEventTarget(), params.eventType, params.flags, ex_remapKeyCode,
           0, 0, 0, 0,
-          keyboardType, false, params.ts, hk->get(), NULL,
+          KeyboardType::MACBOOK, false, params.ts, hk->get(), NULL,
         };
 
         if (ex_remapKeyCode != KeyCode::VK_NONE) {
           RemapUtil::fireKey(callbackparams, remapParams.workspacedata);
           KeyboardRepeat::set(callbackparams);
         }
-        ListFireExtraKey::fire(callbackparams, remapParams.workspacedata);
       }
 
       RemapUtil::fireConsumer(params);
@@ -334,12 +328,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       unsigned int newflags = FlagStatus::makeFlags(KeyCode::VK_NONE);
       if (flags != newflags) {
         HookedKeyboard* hk = ListHookedKeyboard::instance().get();
-        unsigned int keyboardType = KeyboardType::MACBOOK;
         if (hk) {
           Params_KeyboardEventCallBack callbackparams = {
             hk->getOrig_keyboardEventTarget(), KeyEvent::MODIFY, newflags, KeyCode::VK_NONE,
             0, 0, 0, 0,
-            keyboardType, false, params.ts, hk->get(), NULL,
+            KeyboardType::MACBOOK, false, params.ts, hk->get(), NULL,
           };
           RemapUtil::fireModifiers(callbackparams);
         }
