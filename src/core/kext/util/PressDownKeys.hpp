@@ -10,7 +10,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void initialize(void);
     void add(unsigned int _key, unsigned int _keyboardType);
     void remove(unsigned int _key, unsigned int _keyboardType);
-    void clear(KeyboardEventCallback callback, OSObject *target, AbsoluteTime ts, OSObject *sender, void *refcon);
+    void clear(OSObject* target, AbsoluteTime ts, OSObject* sender, void* refcon);
   }
 }
 

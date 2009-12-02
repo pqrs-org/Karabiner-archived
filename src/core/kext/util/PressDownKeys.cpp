@@ -64,13 +64,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    clear(KeyboardEventCallback callback, OSObject *target, AbsoluteTime ts, OSObject *sender, void *refcon)
+    clear(OSObject* target, AbsoluteTime ts, OSObject* sender, void* refcon)
     {
       if (config.debug_devel) {
         printf("KeyRemap4MacBook -Info- PressDownKeys::clear\n");
       }
-
-      if (callback == NULL) return;
 
       Params_KeyboardEventCallBack callbackparams = {
         target, KeyEvent::UP, 0, 0, 0, 0, 0, 0, 0, false, ts, sender, refcon,
@@ -86,7 +84,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         callbackparams.key = item[i].key;
         callbackparams.keyboardType = item[i].keyboardType;
-        callbackparams.apply(callback);
+        callbackparams.apply();
       }
     }
   }
