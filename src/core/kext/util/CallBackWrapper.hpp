@@ -7,7 +7,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   class Params_KeyboardEventCallBack {
   public:
     void log(const char* message = "caught") const;
-    void apply(KeyboardEventCallback callback) const;
+    void apply(void) const;
 
     OSObject* target;
     unsigned int eventType;
@@ -27,7 +27,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   class Params_KeyboardSpecialEventCallback {
   public:
     void log(const char* message = "caught") const;
-    void apply(KeyboardSpecialEventCallback callback) const;
+    void apply(void) const;
 
     OSObject* target;
     unsigned int eventType;
@@ -44,7 +44,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   class Params_RelativePointerEventCallback {
   public:
     void log(const char* message = "caught") const;
-    void apply(RelativePointerEventCallback callback) const;
+    void apply(void) const;
 
     OSObject* target;
     int buttons;
@@ -57,7 +57,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   class Params_ScrollWheelEventCallback {
   public:
     void log(const char* message = "caught") const;
-    void apply(ScrollWheelEventCallback callback) const;
+    void apply(void) const;
 
     OSObject* target;
     short deltaAxis1;
