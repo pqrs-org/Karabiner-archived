@@ -81,16 +81,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
 
-    HookedKeyboard* p = ListHookedKeyboard::instance().get();
-    if (! p) return;
-
-    KeyboardEventCallback callback = p->getOrig_keyboardEventAction();
-    if (! callback) {
-      IOLog("KeyRemap4MacBook -Info- doRepeat_keyboard: callback == NULL (== don't remap xxx is enabled). \n");
-      return;
-    }
-
-    RemapUtil::fireKey(callback, params_, workspacedata_);
+    RemapUtil::fireKey(params_, workspacedata_);
     timer_.setTimeoutMS(config.get_repeat_wait());
   }
 }
