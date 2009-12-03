@@ -455,19 +455,19 @@
           <name>Command_L+Command_R to Return</name>
           <appendix>(Note: Return is sent when you release Command_R)</appendix>
           <sysctl>remap.commandLcommandR2return</sysctl>
-          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R, KeyCode::RETURN</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_L, KeyCode::COMMAND_R, ModifierFlag::COMMAND_L, KeyCode::RETURN</autogen>
         </item>
         <item>
           <name>Control_L+Command_R to Return</name>
           <appendix>(Note: Return is sent when you release Command_R)</appendix>
           <sysctl>remap.controlLcommandR2return</sysctl>
-          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::CONTROL_L, ModifierFlag::COMMAND_R, KeyCode::RETURN</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, ModifierFlag::CONTROL_L, KeyCode::COMMAND_R, ModifierFlag::CONTROL_L, KeyCode::RETURN</autogen>
         </item>
         <item>
           <name>Shift_L+Command_R to Return</name>
           <appendix>(Note: Return is sent when you release Command_R)</appendix>
           <sysctl>remap.shiftLcommandR2return</sysctl>
-          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::SHIFT_L, ModifierFlag::COMMAND_R, KeyCode::RETURN</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, ModifierFlag::SHIFT_L, KeyCode::COMMAND_R, ModifierFlag::SHIFT_L, KeyCode::RETURN</autogen>
         </item>
       </list>
     </item>
@@ -533,13 +533,13 @@
           <name>Command_R+Control_L to Escape</name>
           <appendix>(Note: Escape is sent when you release Control_L)</appendix>
           <sysctl>remap.commandRcontrolL2escape</sysctl>
-          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::COMMAND_R, ModifierFlag::CONTROL_L, KeyCode::ESCAPE</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_L, ModifierFlag::COMMAND_R, KeyCode::CONTROL_L, ModifierFlag::COMMAND_R, KeyCode::ESCAPE</autogen>
         </item>
         <item>
           <name>Shift_L+Control_L to Escape</name>
           <appendix>(Note: Escape is sent when you release Control_L)</appendix>
           <sysctl>remap.shiftLcontrolL2escape</sysctl>
-          <autogen>--KeyOverlaidModifierCombination-- ModifierFlag::SHIFT_L, ModifierFlag::CONTROL_L, KeyCode::ESCAPE</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::ESCAPE</autogen>
         </item>
       </list>
     </item>
