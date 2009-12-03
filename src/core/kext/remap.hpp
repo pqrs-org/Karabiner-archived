@@ -18,7 +18,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   struct RemapConsumerParams {
     Params_KeyboardSpecialEventCallback& params;
     KeyRemap4MacBook_bridge::GetWorkspaceData::Reply workspacedata;
-    KeyCode::KeyCode& ex_remapKeyCode;
+    bool& isremapped;
   };
   void remap_consumer(const RemapConsumerParams& remapParams);
 

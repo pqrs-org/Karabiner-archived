@@ -40,7 +40,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       return (remapParams.isremapped == true);
     }
     inline void drop(const RemapParams& remapParams) {
-      remapParams.params.key = KeyCode::VK_NONE;
+      remapParams.isremapped = true;
+    }
+    inline void drop(const RemapConsumerParams& remapParams) {
       remapParams.isremapped = true;
     }
 
@@ -145,15 +147,15 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     void fireKey(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
 
-    void fireKey(KeyEvent::KeyEvent eventType, unsigned int flags, KeyCode::KeyCode key, KeyboardType::KeyboardType keyboardType, const AbsoluteTime& ts,
+    void fireKey(unsigned int eventType, unsigned int flags, unsigned int key,
+                 unsigned int keyboardType, const AbsoluteTime& ts,
                  const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
 
-    inline void fireKey(KeyEvent::KeyEvent eventType, unsigned int flags, KeyCode::KeyCode key,
+    inline void fireKey(unsigned int eventType, unsigned int flags, unsigned int key,
                         const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
       RemapUtil::fireKey(eventType,
                          flags, key,
-                         static_cast<KeyboardType::KeyboardType>(params.keyboardType),
-                         params.ts,
+                         params.keyboardType, params.ts,
                          workspacedata);
 
     }
@@ -163,14 +165,21 @@ namespace org_pqrs_KeyRemap4MacBook {
       RemapUtil::fireKey(static_cast<KeyEvent::KeyEvent>(params.eventType), flags, key, params, workspacedata);
     }
 
+    inline void fireKey_downup(unsigned int flags, KeyCode::KeyCode key, unsigned int keyboardType, const AbsoluteTime& ts,
+                               const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
+      if (RemapUtil::getKeyCodeModifier(key) == ModifierFlag::NONE) {
+        RemapUtil::fireKey(KeyEvent::DOWN,   flags, key, keyboardType, ts, workspacedata);
+        RemapUtil::fireKey(KeyEvent::UP,     flags, key, keyboardType, ts, workspacedata);
+      } else {
+        RemapUtil::fireKey(KeyEvent::MODIFY, flags, key, keyboardType, ts, workspacedata);
+      }
+    }
+
     inline void fireKey_downup(unsigned int flags, KeyCode::KeyCode key,
                                const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
-      if (RemapUtil::getKeyCodeModifier(key) == ModifierFlag::NONE) {
-        RemapUtil::fireKey(KeyEvent::DOWN,   flags, key, params, workspacedata);
-        RemapUtil::fireKey(KeyEvent::UP,     flags, key, params, workspacedata);
-      } else {
-        RemapUtil::fireKey(KeyEvent::MODIFY, flags, key, params, workspacedata);
-      }
+      RemapUtil::fireKey_downup(flags, key,
+                                params.keyboardType, params.ts,
+                                workspacedata);
     }
 
     void fireConsumer(const Params_KeyboardSpecialEventCallback& params);

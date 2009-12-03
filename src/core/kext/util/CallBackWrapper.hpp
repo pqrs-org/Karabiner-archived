@@ -9,6 +9,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     void log(const char* message = "caught") const;
     void apply(void) const;
 
+    void setcurrent(void);
+    static unsigned int getcurrent_keyboardType(void);
+
     OSObject* target;
     unsigned int eventType;
     unsigned int flags;
@@ -22,6 +25,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     AbsoluteTime ts;
     OSObject* sender;
     void* refcon;
+
+  private:
+    static unsigned int current_keyboardType_;
   };
 
   class Params_KeyboardSpecialEventCallback {

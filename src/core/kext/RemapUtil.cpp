@@ -278,8 +278,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (RemapUtil::getKeyCodeModifier(toKeyCode) != ModifierFlag::NONE) {
       remapParams.params.eventType = KeyEvent::MODIFY;
     }
-    remapParams.params.key = ConsumerKeyCode::VK_NONE;
-    remapParams.ex_remapKeyCode = toKeyCode;
+    RemapUtil::drop(remapParams);
+
+    unsigned int flags = FlagStatus::makeFlags(toKeyCode);
+    RemapUtil::fireKey(remapParams.params.eventType, flags, toKeyCode,
+                       Params_KeyboardEventCallBack::getcurrent_keyboardType(),
+                       remapParams.params.ts,
+                       remapParams.workspacedata);
 
     return true;
   }
@@ -462,7 +467,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  RemapUtil::fireKey(KeyEvent::KeyEvent eventType, unsigned int flags, KeyCode::KeyCode key, KeyboardType::KeyboardType keyboardType, const AbsoluteTime& ts,
+  RemapUtil::fireKey(unsigned int eventType, unsigned int flags, unsigned int key, unsigned int keyboardType, const AbsoluteTime& ts,
                      const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
   {
     HookedKeyboard* hk = ListHookedKeyboard::instance().get();

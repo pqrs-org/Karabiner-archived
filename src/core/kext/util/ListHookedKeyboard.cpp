@@ -39,6 +39,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         charCode, charSet, origCharCode, origCharSet,
         keyboardType, repeat, ts, sender, refcon,
       };
+      params.setcurrent();
       Core::remap_KeyboardEventCallback(params);
     }
   }

@@ -238,7 +238,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
       }
 
-      if (! remapParams.isremapped) {
+      if (! isremapped) {
         RemapUtil::fireKey(params, remapParams.workspacedata);
         KeyboardRepeat::set(params);
       }
@@ -266,11 +266,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ------------------------------------------------------------
       params.log();
 
-      KeyCode::KeyCode ex_remapKeyCode = KeyCode::VK_NONE;
+      bool isremapped = false;
       RemapConsumerParams remapParams = {
         params,
         KeyRemap4MacBook_bridge::GetWorkspaceData::Reply(),
-        ex_remapKeyCode,
+        isremapped,
       };
       NumHeldDownKeys::set(remapParams);
 
@@ -281,21 +281,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       remap_consumer(remapParams);
 
       // ----------------------------------------
-      HookedKeyboard* hk = ListHookedKeyboard::instance().get();
-      if (hk) {
-        Params_KeyboardEventCallBack callbackparams = {
-          hk->getOrig_keyboardEventTarget(), params.eventType, params.flags, ex_remapKeyCode,
-          0, 0, 0, 0,
-          KeyboardType::MACBOOK, false, params.ts, hk->get(), NULL,
-        };
-
-        if (ex_remapKeyCode != KeyCode::VK_NONE) {
-          RemapUtil::fireKey(callbackparams, remapParams.workspacedata);
-          KeyboardRepeat::set(callbackparams);
-        }
+      if (! isremapped) {
+        RemapUtil::fireConsumer(params);
       }
-
-      RemapUtil::fireConsumer(params);
     }
 
     void
