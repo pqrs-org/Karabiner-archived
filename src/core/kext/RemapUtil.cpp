@@ -543,25 +543,34 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------------------------------------
-  void
+  bool
   KeyOverlaidModifier::remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags,
-                             ModifierFlag::ModifierFlag toFlag, KeyCode::KeyCode fireKeyCode, unsigned int fireFlags, bool isFireRepeat)
+                             KeyCode::KeyCode toKeyCode, unsigned int toFlags,
+                             KeyCode::KeyCode fireKeyCode, unsigned int fireFlags, bool isFireRepeat)
   {
     // ----------------------------------------
     bool isKeyDown = RemapUtil::isKeyDown(remapParams, fromKeyCode);
     bool savedIsAnyEventHappen = isAnyEventHappen_;
 
-    KeyCode::KeyCode toKeyCode = RemapUtil::getModifierKeyCode(toFlag);
-    if (! keytokey_.remap(remapParams, fromKeyCode, fromFlags, toKeyCode)) return;
+    if (! keytokey_.remap(remapParams, fromKeyCode, fromFlags, toKeyCode, toFlags)) {
+      return false;
+    }
 
     // ----------------------------------------
     if (isKeyDown) {
       EventWatcher::set(isAnyEventHappen_);
       ic_.begin();
 
-      FlagStatus::temporary_decrease(toFlag);
-      savedflags_ = ModifierFlag::stripNONE(FlagStatus::makeFlags(remapParams) | fireFlags);
-      FlagStatus::temporary_increase(toFlag);
+      // calc flags
+      unsigned int toKeyCodeFlag = RemapUtil::getKeyCodeModifier(toKeyCode);
+      // XXX: add FlagStatus::temporary_decrease(unsigned int flags);
+      remapFlags(toKeyCodeFlag | toFlags, fireFlags);
+
+      savedflags_ = FlagStatus::makeFlags(fireKeyCode);
+
+      // restore flags
+      // XXX: add FlagStatus::temporary_increase(unsigned int flags);
+      remapFlags(fireFlags, toKeyCodeFlag | toFlags);
 
       if (isFireRepeat) {
         KeyboardRepeat::set(KeyEvent::DOWN, savedflags_, fireKeyCode, static_cast<KeyboardType::KeyboardType>(remapParams.params.keyboardType),
@@ -576,6 +585,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
       EventWatcher::unset(isAnyEventHappen_);
     }
+
+    return true;
   }
 
   void

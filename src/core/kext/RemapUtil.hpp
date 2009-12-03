@@ -185,24 +185,65 @@ namespace org_pqrs_KeyRemap4MacBook {
   // for SandS like behavior remappings (remap_space2shift, remap_enter2optionL_commandSpace, ...)
   class KeyOverlaidModifier {
   public:
-    void remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags,
-               ModifierFlag::ModifierFlag toFlag, KeyCode::KeyCode fireKeyCode, unsigned int fireFlags = ModifierFlag::NONE, bool isFireRepeat = false);
-
+    bool remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags,
+               KeyCode::KeyCode toKeyCode, unsigned int toFlags,
+               KeyCode::KeyCode fireKeyCode, unsigned int fireFlags = ModifierFlag::NONE, bool isFireRepeat = false);
     // no-fromFlags version.
-    void remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode,
-               ModifierFlag::ModifierFlag toFlag, KeyCode::KeyCode fireKeyCode, unsigned int fireFlags = ModifierFlag::NONE, bool isFireRepeat = false) {
-      remap(remapParams, fromKeyCode, 0, toFlag, fireKeyCode, fireFlags, isFireRepeat);
+    bool remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode,
+               KeyCode::KeyCode toKeyCode, unsigned int toFlags,
+               KeyCode::KeyCode fireKeyCode, unsigned int fireFlags = ModifierFlag::NONE, bool isFireRepeat = false) {
+      return remap(remapParams, fromKeyCode, 0,
+                   toKeyCode, toFlags,
+                   fireKeyCode, fireFlags, isFireRepeat);
+    }
+    // no-toFlags version.
+    bool remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags,
+               KeyCode::KeyCode toKeyCode,
+               KeyCode::KeyCode fireKeyCode, unsigned int fireFlags = ModifierFlag::NONE, bool isFireRepeat = false) {
+      return remap(remapParams, fromKeyCode, fromFlags,
+                   toKeyCode, ModifierFlag::NONE,
+                   fireKeyCode, fireFlags, isFireRepeat);
+    }
+    // no-fromFlags, no-toFlags version.
+    bool remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode,
+               KeyCode::KeyCode toKeyCode,
+               KeyCode::KeyCode fireKeyCode, unsigned int fireFlags = ModifierFlag::NONE, bool isFireRepeat = false) {
+      return remap(remapParams, fromKeyCode, 0,
+                   toKeyCode, ModifierFlag::NONE,
+                   fireKeyCode, fireFlags, isFireRepeat);
     }
 
     // no-isFireRepeat version.
-    void remapWithRepeat(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags,
-                         ModifierFlag::ModifierFlag toFlag, KeyCode::KeyCode fireKeyCode, unsigned int fireFlags = ModifierFlag::NONE) {
-      remap(remapParams, fromKeyCode, fromFlags, toFlag, fireKeyCode, fireFlags, true);
+    bool remapWithRepeat(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags,
+                         KeyCode::KeyCode toKeyCode, unsigned int toFlags,
+                         KeyCode::KeyCode fireKeyCode, unsigned int fireFlags = ModifierFlag::NONE) {
+      return remap(remapParams, fromKeyCode, fromFlags,
+                   toKeyCode, toFlags,
+                   fireKeyCode, fireFlags, true);
     }
     // no-fromFlags, no-isFireRepeat version.
-    void remapWithRepeat(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode,
-                         ModifierFlag::ModifierFlag toFlag, KeyCode::KeyCode fireKeyCode, unsigned int fireFlags = ModifierFlag::NONE) {
-      remap(remapParams, fromKeyCode, toFlag, fireKeyCode, fireFlags, true);
+    bool remapWithRepeat(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode,
+                         KeyCode::KeyCode toKeyCode, unsigned int toFlags,
+                         KeyCode::KeyCode fireKeyCode, unsigned int fireFlags = ModifierFlag::NONE) {
+      return remap(remapParams, fromKeyCode, 0,
+                   toKeyCode, toFlags,
+                   fireKeyCode, fireFlags, true);
+    }
+    // no-toFlag, no-isFireRepeat version.
+    bool remapWithRepeat(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags,
+                         KeyCode::KeyCode toKeyCode,
+                         KeyCode::KeyCode fireKeyCode, unsigned int fireFlags = ModifierFlag::NONE) {
+      return remap(remapParams, fromKeyCode, fromFlags,
+                   toKeyCode, ModifierFlag::NONE,
+                   fireKeyCode, fireFlags, true);
+    }
+    // no-fromFlags, no-toFlag, no-isFireRepeat version.
+    bool remapWithRepeat(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode,
+                         KeyCode::KeyCode toKeyCode,
+                         KeyCode::KeyCode fireKeyCode, unsigned int fireFlags = ModifierFlag::NONE) {
+      return remap(remapParams, fromKeyCode, 0,
+                   toKeyCode, ModifierFlag::NONE,
+                   fireKeyCode, fireFlags, true);
     }
 
   private:
