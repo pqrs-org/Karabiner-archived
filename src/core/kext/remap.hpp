@@ -25,7 +25,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // --------------------
   struct RemapPointingParams_relative {
     Params_RelativePointerEventCallback& params;
-    bool& ex_dropEvent;
+    bool& isremapped;
   };
   void remap_pointing_relative_core(const RemapPointingParams_relative& remapParams);
 }

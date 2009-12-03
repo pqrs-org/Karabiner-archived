@@ -491,7 +491,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapUtil::pointingRelativeToScroll(const RemapPointingParams_relative& remapParams)
   {
-    remapParams.ex_dropEvent = true;
+    remapParams.isremapped = true;
 
     // ----------------------------------------
     int delta1 = -remapParams.params.dy;
@@ -767,7 +767,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ignore button up event.
       if (isButtonHeldDown) {
         isButtonHeldDown = false;
-        remapParams.ex_dropEvent = true;
+        remapParams.isremapped = true;
 
         remapFlags(fromFlags, 0);
         return true;

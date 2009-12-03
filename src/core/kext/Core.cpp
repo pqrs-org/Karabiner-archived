@@ -313,9 +313,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       listFireRelativePointer.reset();
       unsigned int flags = FlagStatus::makeFlags(KeyCode::VK_NONE);
 
-      bool ex_dropEvent = false;
+      bool isremapped = false;
       RemapPointingParams_relative remapParams = {
-        params, ex_dropEvent,
+        params, isremapped,
       };
       remap_pointing_relative_core(remapParams);
 
@@ -334,7 +334,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       // ------------------------------------------------------------
-      if (! ex_dropEvent) {
+      if (! isremapped) {
         params.apply();
       }
 
