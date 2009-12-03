@@ -205,8 +205,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       listFireRelativePointer.reset();
 
       bool isremapped = false;
-      KeyCode::KeyCode ex_repeatKeyCode = KeyCode::VK_NONE;
-      unsigned int ex_repeatFlags = 0;
 
       KeyCode::normalizeKey(params.key, params.flags, params.keyboardType);
 
@@ -214,9 +212,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         params,
         isremapped,
         KeyRemap4MacBook_bridge::GetWorkspaceData::Reply(),
-        ex_repeatKeyCode,
-        ex_repeatFlags,
-        0,
       };
       NumHeldDownKeys::set(remapParams);
 

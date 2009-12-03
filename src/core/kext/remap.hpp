@@ -11,9 +11,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     Params_KeyboardEventCallBack& params;
     bool& isremapped;
     KeyRemap4MacBook_bridge::GetWorkspaceData::Reply workspacedata;
-    KeyCode::KeyCode& ex_repeatKeyCode;
-    unsigned int& ex_repeatFlags;
-    unsigned int ex_extraRepeatCounter; // for KeyOverlaidModifier
   };
   void remap_core(const RemapParams& remapParams);
 
