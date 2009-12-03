@@ -195,7 +195,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &remapParams)
   // ------------------------------------------------------------
   // *** Note: we need to call remap_space2shift, remap_enter2optionL_commandSpace (has SandS like behavior) as possible late. ***
   // *** If any key2modifier or modifier2key remappings are enabled, miss-cancelling are occured. ***
-#include "config/output/include.remapcode_call_komc.cpp"
 #include "config/output/include.remapcode_call_kom.cpp"
   remap_jis_eisuu2commandL_eisuu_eisuu2optionL_term(remapParams);
 

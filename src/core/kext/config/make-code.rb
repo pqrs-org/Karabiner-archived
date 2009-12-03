@@ -69,7 +69,6 @@ default = ''
 func = {
   'key' => [],
   'key_KeyOverlaidModifier' => [],
-  'key_KeyOverlaidModifierCombination' => [],
   'key_ModifierHoldingKeyToKey' => [],
   'consumer' => [],
   'pointing' => [],
@@ -189,13 +188,6 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
           code_key += "}\n"
           func['key_KeyOverlaidModifier'] << name
 
-        when 'KeyOverlaidModifierCombination'
-          code_key += "{\n"
-          code_key += "static KeyOverlaidModifierCombination komc;\n"
-          code_key += "komc.remap(remapParams, #{params});\n"
-          code_key += "}\n"
-          func['key_KeyOverlaidModifierCombination'] << name
-
         when 'ModifierHoldingKeyToKey'
           code_key += "{\n"
           code_key += "static ModifierHoldingKeyToKey mhkk;\n"
@@ -268,11 +260,6 @@ open('output/include.remapcode_call.cpp', 'w') do |f|
 end
 open('output/include.remapcode_call_kom.cpp', 'w') do |f|
   func['key_KeyOverlaidModifier'].uniq.each do |call|
-    f.puts "GeneratedCode::#{call}(remapParams);\n"
-  end
-end
-open('output/include.remapcode_call_komc.cpp', 'w') do |f|
-  func['key_KeyOverlaidModifierCombination'].uniq.each do |call|
     f.puts "GeneratedCode::#{call}(remapParams);\n"
   end
 end

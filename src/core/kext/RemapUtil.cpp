@@ -589,46 +589,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     return true;
   }
 
-  void
-  KeyOverlaidModifierCombination::remap(const RemapParams& remapParams, ModifierFlag::ModifierFlag fromFlag1, ModifierFlag::ModifierFlag fromFlag2,
-                                        KeyCode::KeyCode fireKeyCode, unsigned int fireFlags)
-  {
-    KeyCode::KeyCode keyCode1 = RemapUtil::getModifierKeyCode(fromFlag1);
-    KeyCode::KeyCode keyCode2 = RemapUtil::getModifierKeyCode(fromFlag2);
-    if (keyCode1 == KeyCode::VK_NONE || keyCode2 == KeyCode::VK_NONE) return;
-
-    FlagStatus::Item* fromStatus1 = FlagStatus::getFlagStatus(fromFlag1);
-    FlagStatus::Item* fromStatus2 = FlagStatus::getFlagStatus(fromFlag2);
-    if (fromStatus1 == NULL || fromStatus2 == NULL) return;
-
-    // Note: We check the remapped keycode instead of RemapUtil::isKey in KeyOverlaidModifierCombination.
-    if (remapParams.params.key != static_cast<unsigned int>(keyCode2)) {
-      return;
-    }
-
-    if (RemapUtil::isKeyDown(remapParams, keyCode2)) {
-      if (! fromStatus1->isHeldDown()) {
-        isFireKey_ = false;
-
-      } else {
-        isFireKey_ = true;
-        EventWatcher::set(isAnyEventHappen_);
-
-        fromStatus1->temporary_decrease();
-        fromStatus2->temporary_decrease();
-        savedflags_ = ModifierFlag::stripNONE(FlagStatus::makeFlags(remapParams) | fireFlags);
-        fromStatus1->temporary_increase();
-        fromStatus2->temporary_increase();
-      }
-
-    } else {
-      if (isFireKey_ == true && isAnyEventHappen_ == false) {
-        RemapUtil::fireKey_downup(savedflags_, fireKeyCode, remapParams.params, remapParams.workspacedata);
-      }
-      EventWatcher::unset(isAnyEventHappen_);
-    }
-  }
-
+  // ----------------------------------------------------------------------
   void
   DoublePressModifier::remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, ModifierFlag::ModifierFlag toFlag, KeyCode::KeyCode fireKeyCode, unsigned int fireFlags)
   {
