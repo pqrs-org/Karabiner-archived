@@ -12,27 +12,27 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
-  static void
+  static bool
   remap_enter2commandL_enter2controlL_vm(const RemapParams &remapParams)
   {
-    if (! config.remap_enter2commandL_enter2controlL_vm) return;
+    if (! config.remap_enter2commandL_enter2controlL_vm) return false;
 
     if (remapParams.workspacedata.type == KeyRemap4MacBook_bridge::GetWorkspaceData::VIRTUALMACHINE) {
       static RemapUtil::KeyToKey keytokey;
-      keytokey.remap(remapParams, KeyCode::ENTER, KeyCode::CONTROL_L);
+      return keytokey.remap(remapParams, KeyCode::ENTER, KeyCode::CONTROL_L);
     } else {
       static RemapUtil::KeyToKey keytokey;
-      keytokey.remap(remapParams, KeyCode::ENTER, KeyCode::COMMAND_L);
+      return keytokey.remap(remapParams, KeyCode::ENTER, KeyCode::COMMAND_L);
     }
   }
 
   // ----------------------------------------
-  static void
+  static bool
   remap_f6_to_numlock(const RemapParams &remapParams)
   {
-    if (! config.remap_f6_to_numlock) return;
+    if (! config.remap_f6_to_numlock) return false;
 
-    if (! RemapUtil::isKey(remapParams, KeyCode::F6)) return;
+    if (! RemapUtil::isKey(remapParams, KeyCode::F6)) return false;
 
     if (RemapUtil::isKeyDown(remapParams, KeyCode::F6)) {
       static bool flag = true;
@@ -45,108 +45,122 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     RemapUtil::drop(remapParams);
+    return true;
   }
 
   // ----------------------------------------
-  static void
+  static bool
   remap_tab2option_withControlL(const RemapParams &remapParams)
   {
-    if (! config.remap_tab2option_withControlL) return;
+    if (! config.remap_tab2option_withControlL) return false;
 
-    if (! FlagStatus::isHeldDown(ModifierFlag::CONTROL_L)) return;
+    if (! FlagStatus::isHeldDown(ModifierFlag::CONTROL_L)) return false;
 
     static KeyOverlaidModifier kom;
-    kom.remap(remapParams, KeyCode::TAB, ModifierFlag::OPTION_L, KeyCode::TAB);
+    return kom.remap(remapParams, KeyCode::TAB, KeyCode::OPTION_L, KeyCode::TAB);
   }
 
   // ----------------------------------------
-  static void
+  static bool
   remap_keypadnumlock_togglekey_clear(const RemapParams &remapParams)
   {
-    if (! config.option_keypadnumlock_togglekey_clear) return;
+    if (! config.option_keypadnumlock_togglekey_clear) return false;
 
-    if (! RemapUtil::isKey(remapParams, KeyCode::KEYPAD_CLEAR)) return;
+    if (! RemapUtil::isKey(remapParams, KeyCode::KEYPAD_CLEAR)) return false;
 
     if (RemapUtil::isKeyDown(remapParams, KeyCode::KEYPAD_CLEAR)) {
       config.remap_keypadnumlock = ! config.remap_keypadnumlock;
     }
     RemapUtil::drop(remapParams);
+    return true;
   }
 
   // ----------------------------------------
-  static void
+  static bool
   remap_jis_eisuu2commandL_eisuu_eisuu2optionL_term(const RemapParams &remapParams)
   {
-    if (! config.remap_jis_eisuu2commandL_eisuu_eisuu2optionL_term) return;
+    if (! config.remap_jis_eisuu2commandL_eisuu_eisuu2optionL_term) return false;
 
-    static KeyOverlaidModifier kom;
     if (remapParams.workspacedata.type == KeyRemap4MacBook_bridge::GetWorkspaceData::TERMINAL) {
-      kom.remap(remapParams, KeyCode::JIS_EISUU, ModifierFlag::OPTION_L, KeyCode::JIS_EISUU);
+      static KeyOverlaidModifier kom;
+      return kom.remap(remapParams, KeyCode::JIS_EISUU, KeyCode::OPTION_L, KeyCode::JIS_EISUU);
     } else {
-      kom.remap(remapParams, KeyCode::JIS_EISUU, ModifierFlag::COMMAND_L, KeyCode::JIS_EISUU);
+      static KeyOverlaidModifier kom;
+      return kom.remap(remapParams, KeyCode::JIS_EISUU, KeyCode::COMMAND_L, KeyCode::JIS_EISUU);
     }
   }
 
   // ----------------------------------------
-  static void
+  static bool
   remap_jis_underscore2backslash(const RemapParams &remapParams)
   {
-    if (! config.remap_jis_underscore2backslash) return;
+    if (! config.remap_jis_underscore2backslash) return false;
 
     static RemapUtil::KeyToKey keytokey;
-    if (keytokey.remap(remapParams, KeyCode::JIS_UNDERSCORE, ModifierFlag::NONE, KeyCode::BACKSLASH)) {
-      remapParams.params.keyboardType = KeyboardType::MACBOOK;
+    if (! keytokey.remap(remapParams, KeyCode::JIS_UNDERSCORE, ModifierFlag::NONE, KeyCode::BACKSLASH)) {
+      return false;
     }
+    remapParams.params.keyboardType = KeyboardType::MACBOOK;
+    return true;
   }
 
   // ----------------------------------------
-  static void
+  static bool
   remap_jis_yen2backslash(const RemapParams &remapParams)
   {
-    if (! config.remap_jis_yen2backslash) return;
+    if (! config.remap_jis_yen2backslash) return false;
 
     static RemapUtil::KeyToKey keytokey;
-    if (keytokey.remap(remapParams, KeyCode::JIS_YEN, KeyCode::BACKSLASH)) {
-      remapParams.params.keyboardType = KeyboardType::MACBOOK;
+    if (! keytokey.remap(remapParams, KeyCode::JIS_YEN, KeyCode::BACKSLASH)) {
+      return false;
     }
+    remapParams.params.keyboardType = KeyboardType::MACBOOK;
+    return true;
   }
 
   // ----------------------------------------
-  static void
+  static bool
   remap_jis_app_vi_eisuu2eisuu_escape(const RemapParams &remapParams)
   {
-    if (! config.remap_jis_app_vi_eisuu2eisuu_escape) return;
+    if (! config.remap_jis_app_vi_eisuu2eisuu_escape) return false;
 
-    if (remapParams.workspacedata.type != KeyRemap4MacBook_bridge::GetWorkspaceData::VI) return;
+    if (remapParams.workspacedata.type != KeyRemap4MacBook_bridge::GetWorkspaceData::VI) return false;
 
-    if (RemapUtil::isKeyDown(remapParams, KeyCode::JIS_EISUU)) {
-      RemapUtil::fireKey(remapParams.params, remapParams.workspacedata);
-      RemapUtil::fireKey_downup(remapParams.params.flags, KeyCode::ESCAPE, remapParams.params, remapParams.workspacedata);
-      remapParams.isremapped = true;
-    }
+    if (! RemapUtil::isKeyDown(remapParams, KeyCode::JIS_EISUU)) return false;
+
+    RemapUtil::fireKey(remapParams.params, remapParams.workspacedata);
+    RemapUtil::fireKey_downup(remapParams.params.flags, KeyCode::ESCAPE, remapParams.params, remapParams.workspacedata);
+    remapParams.isremapped = true;
+    return true;
   }
 
-  static void
+  static bool
   remap_jis_jansi(const RemapParams &remapParams)
   {
-    if (! config.remap_jis_jansi) return;
+    if (! config.remap_jis_jansi) return false;
 
     remapParams.params.keyboardType = KeyboardType::MACBOOK;
 
     {
       static RemapUtil::KeyToKey keytokey;
-      keytokey.remap(remapParams, KeyCode::JIS_YEN, KeyCode::BACKQUOTE);
+      if (keytokey.remap(remapParams, KeyCode::JIS_YEN, KeyCode::BACKQUOTE)) return true;
     }
     {
       static RemapUtil::KeyToKey keytokey;
-      keytokey.remap(remapParams, KeyCode::JIS_UNDERSCORE, KeyCode::BACKQUOTE);
+      if (keytokey.remap(remapParams, KeyCode::JIS_UNDERSCORE, KeyCode::BACKQUOTE)) return true;
     }
+
+    // Note: remap_jis_jansi return false if changed keyboardType only.
+    return false;
   }
 
-  static void remap_pointing_relative_to_scroll(const RemapPointingParams_relative &remapParams) {
-    if (! config.remap_pointing_relative_to_scroll) return;
+  static bool
+  remap_pointing_relative_to_scroll(const RemapPointingParams_relative &remapParams)
+  {
+    if (! config.remap_pointing_relative_to_scroll) return false;
 
     RemapUtil::pointingRelativeToScroll(remapParams);
+    return true;
   }
 }
 
