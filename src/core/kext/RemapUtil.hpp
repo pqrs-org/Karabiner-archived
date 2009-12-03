@@ -254,19 +254,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
 
   // ----------------------------------------
-  // Command_R+Command_L to Escape, ...
-  class KeyOverlaidModifierCombination {
-  public:
-    void remap(const RemapParams& remapParams, ModifierFlag::ModifierFlag fromFlag1, ModifierFlag::ModifierFlag fromFlag2,
-               KeyCode::KeyCode fireKeyCode, unsigned int fireFlags = ModifierFlag::NONE);
-
-  private:
-    bool isAnyEventHappen_;
-    bool isFireKey_;
-    unsigned int savedflags_;
-  };
-
-  // ----------------------------------------
   // A modifier has DoublePressed key action.
   class DoublePressModifier {
   public:
