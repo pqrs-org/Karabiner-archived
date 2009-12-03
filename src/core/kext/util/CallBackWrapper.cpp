@@ -169,4 +169,16 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // EventWatcher::on is not necessary.
   }
+
+  // ----------------------------------------------------------------------
+  unsigned int Params_KeyboardEventCallBack::current_keyboardType_ = KeyboardType::MACBOOK;
+
+  void
+  Params_KeyboardEventCallBack::setcurrent(void) {
+    current_keyboardType_ = keyboardType;
+  }
+  unsigned int
+  Params_KeyboardEventCallBack::getcurrent_keyboardType(void) {
+    return current_keyboardType_;
+  }
 }
