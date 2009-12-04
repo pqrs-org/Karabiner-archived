@@ -18,37 +18,63 @@ TEST(KeyboardType, isInternalKeyboard) {
   }
 }
 
-TEST(ModifierFlag, stripFN) {
-  unsigned int flags = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
-  EXPECT_EQ(ModifierFlag::stripFN(flags), flags);
-  EXPECT_EQ(ModifierFlag::stripFN(flags | ModifierFlag::FN), flags);
+TEST(Flags, add) {
+  unsigned int mask = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
+  Flags flags = mask;
+  EXPECT_EQ(mask, flags.stripFN().get());
+
+  flags.add(ModifierFlag::OPTION_L);
+  EXPECT_EQ(mask | ModifierFlag::OPTION_L, flags.get());
+
+  flags.add(ModifierFlag::NONE);
+  EXPECT_EQ(mask | ModifierFlag::OPTION_L | ModifierFlag::NONE, flags.get());
 }
 
-TEST(ModifierFlag, stripCURSOR) {
-  unsigned int flags = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
-  EXPECT_EQ(ModifierFlag::stripCURSOR(flags), flags);
-  EXPECT_EQ(ModifierFlag::stripCURSOR(flags | ModifierFlag::CURSOR), flags);
+TEST(Flags, stripFN) {
+  unsigned int mask = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
+  Flags flags = mask;
+  EXPECT_EQ(mask, flags.stripFN().get());
+
+  flags.add(ModifierFlag::FN);
+  EXPECT_EQ(mask, flags.stripFN().get());
 }
 
-TEST(ModifierFlag, stripKEYPAD) {
-  unsigned int flags = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
-  EXPECT_EQ(ModifierFlag::stripKEYPAD(flags), flags);
-  EXPECT_EQ(ModifierFlag::stripKEYPAD(flags | ModifierFlag::KEYPAD), flags);
+TEST(Flags, stripCURSOR) {
+  unsigned int mask = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
+  Flags flags = mask;
+  EXPECT_EQ(mask, flags.stripCURSOR().get());
+
+  flags.add(ModifierFlag::CURSOR);
+  EXPECT_EQ(mask, flags.stripCURSOR().get());
 }
 
-TEST(ModifierFlag, stripNONE) {
-  unsigned int flags = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
-  EXPECT_EQ(ModifierFlag::stripNONE(flags), flags);
-  EXPECT_EQ(ModifierFlag::stripNONE(flags | ModifierFlag::NONE), flags);
+TEST(Flags, stripKEYPAD) {
+  unsigned int mask = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
+  Flags flags = mask;
+  EXPECT_EQ(mask, flags.stripKEYPAD().get());
+
+  flags.add(ModifierFlag::KEYPAD);
+  EXPECT_EQ(mask, flags.stripKEYPAD().get());
 }
 
-TEST(ModifierFlag, isOn) {
-  unsigned int flags = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
-  EXPECT_TRUE(ModifierFlag::isOn(flags, ModifierFlag::SHIFT_L));
-  EXPECT_FALSE(ModifierFlag::isOn(flags, ModifierFlag::SHIFT_R));
+TEST(Flags, stripNONE) {
+  unsigned int mask = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
+  Flags flags = mask;
+  EXPECT_EQ(mask, flags.stripNONE().get());
+
+  flags.add(ModifierFlag::NONE);
+  EXPECT_EQ(mask, flags.stripNONE().get());
+}
+
+TEST(Flags, isOn) {
+  unsigned int mask = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
+  Flags flags = mask;
+
+  EXPECT_TRUE(flags.isOn(ModifierFlag::SHIFT_L));
+  EXPECT_FALSE(flags.isOn(ModifierFlag::SHIFT_R));
 
   flags = ModifierFlag::NONE;
-  EXPECT_TRUE(ModifierFlag::isOn(flags, ModifierFlag::NONE));
+  EXPECT_TRUE(flags.isOn(ModifierFlag::NONE));
 }
 
 namespace {
@@ -80,227 +106,236 @@ namespace {
   };
 }
 
-
 TEST(KeyCode, normalizeKey) {
-  unsigned int key = 0;
-  unsigned int flags = 0;
-  unsigned int keyboardType = 0;
+  KeyCode key;
+  Flags flags;
+  KeyboardType keyboardType;
+
+#define CHECK_NORMALIZEKEY(KEYCODE, MODIFIERFLAG) {                     \
+    EXPECT_EQ(static_cast<unsigned int>(KEYCODE), key.get());           \
+    EXPECT_EQ(static_cast<unsigned int>(MODIFIERFLAG), flags.get());    \
+  }
 
   // ENTER_POWERBOOK -> ENTER
   key = KeyCode::ENTER_POWERBOOK; flags = ModifierFlag::SHIFT_L; keyboardType = KeyboardType::POWERBOOK;
-  KeyCode::normalizeKey(key, flags, keyboardType);
-  EXPECT_EQ(key, static_cast<unsigned int>(KeyCode::ENTER)); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::SHIFT_L));
+  key.normalizeKey(flags, keyboardType);
+  CHECK_NORMALIZEKEY(KeyCode::ENTER, ModifierFlag::SHIFT_L);
 
   // ENTER_POWERBOOK(+FN) -> ENTER(+FN) -> RETURN
   key = KeyCode::ENTER_POWERBOOK; flags = ModifierFlag::SHIFT_L | ModifierFlag::FN; keyboardType = KeyboardType::POWERBOOK;
-  KeyCode::normalizeKey(key, flags, keyboardType);
-  EXPECT_EQ(key, static_cast<unsigned int>(KeyCode::RETURN)); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::SHIFT_L));
+  key.normalizeKey(flags, keyboardType);
+  CHECK_NORMALIZEKEY(KeyCode::RETURN, ModifierFlag::SHIFT_L);
 
   // normal key
   key = KeyCode::A; flags = ModifierFlag::SHIFT_L; keyboardType = KeyboardType::MACBOOK;
-  KeyCode::normalizeKey(key, flags, keyboardType);
-  EXPECT_EQ(key, static_cast<unsigned int>(KeyCode::A)); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::SHIFT_L));
+  key.normalizeKey(flags, keyboardType);
+  CHECK_NORMALIZEKEY(KeyCode::A, ModifierFlag::SHIFT_L);
 
   // KEYPAD
   for (size_t i = 0; i < sizeof(keypads) / sizeof(keypads[0]); ++i) {
     key = keypads[i][0]; flags = ModifierFlag::SHIFT_L; keyboardType = KeyboardType::MACBOOK;
-    if (key != KeyCode::KEYPAD_CLEAR && KeyCode::KEYPAD_COMMA) flags |= ModifierFlag::KEYPAD;
-    unsigned int flags_orig = flags;
-    KeyCode::normalizeKey(key, flags, keyboardType);
-    EXPECT_EQ(key, keypads[i][0]); EXPECT_EQ(flags, flags_orig);
+    if (key != KeyCode::KEYPAD_CLEAR && KeyCode::KEYPAD_COMMA) flags.add(ModifierFlag::KEYPAD);
+    unsigned int flags_orig = flags.get();
+    key.normalizeKey(flags, keyboardType);
+    CHECK_NORMALIZEKEY(keypads[i][0], flags_orig);
   }
 
   // PAGEUP
   for (size_t i = 0; i < sizeof(cursors) / sizeof(cursors[0]); ++i) {
     key = cursors[i][0]; flags = ModifierFlag::SHIFT_L; keyboardType = KeyboardType::MACBOOK;
-    KeyCode::normalizeKey(key, flags, keyboardType);
-    EXPECT_EQ(key, cursors[i][0]); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::SHIFT_L));
+    key.normalizeKey(flags, keyboardType);
+    CHECK_NORMALIZEKEY(cursors[i][0], ModifierFlag::SHIFT_L);
   }
 
   // ENTER
   key = KeyCode::ENTER; flags = ModifierFlag::SHIFT_L; keyboardType = KeyboardType::MACBOOK;
-  KeyCode::normalizeKey(key, flags, keyboardType);
-  EXPECT_EQ(key, static_cast<unsigned int>(KeyCode::ENTER)); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::SHIFT_L));
+  key.normalizeKey(flags, keyboardType);
+  CHECK_NORMALIZEKEY(KeyCode::ENTER, ModifierFlag::SHIFT_L);
 
   // FORWARD_DELETE
   key = KeyCode::FORWARD_DELETE; flags = ModifierFlag::SHIFT_L; keyboardType = KeyboardType::MACBOOK;
-  KeyCode::normalizeKey(key, flags, keyboardType);
-  EXPECT_EQ(key, static_cast<unsigned int>(KeyCode::FORWARD_DELETE)); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::SHIFT_L));
+  key.normalizeKey(flags, keyboardType);
+  CHECK_NORMALIZEKEY(KeyCode::FORWARD_DELETE, ModifierFlag::SHIFT_L);
 
   // normal key(+FN)
   key = KeyCode::A; flags = ModifierFlag::SHIFT_L | ModifierFlag::FN; keyboardType = KeyboardType::MACBOOK;
-  KeyCode::normalizeKey(key, flags, keyboardType);
-  EXPECT_EQ(key, static_cast<unsigned int>(KeyCode::A)); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::SHIFT_L | ModifierFlag::FN));
+  key.normalizeKey(flags, keyboardType);
+  CHECK_NORMALIZEKEY(KeyCode::A, ModifierFlag::SHIFT_L | ModifierFlag::FN);
 
   // KEYPAD(+FN)
   for (size_t i = 0; i < sizeof(keypads) / sizeof(keypads[0]); ++i) {
     key = keypads[i][0]; flags = ModifierFlag::SHIFT_L | ModifierFlag::FN; keyboardType = KeyboardType::MACBOOK;
-    if (key != KeyCode::KEYPAD_CLEAR && KeyCode::KEYPAD_COMMA) flags |= ModifierFlag::KEYPAD;
+    if (key != KeyCode::KEYPAD_CLEAR && KeyCode::KEYPAD_COMMA) flags.add(ModifierFlag::KEYPAD);
     if (key == KeyCode::KEYPAD_COMMA) continue;
-    KeyCode::normalizeKey(key, flags, keyboardType);
-    EXPECT_EQ(key, static_cast<unsigned int>(keypads[i][1])); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::SHIFT_L));
+    key.normalizeKey(flags, keyboardType);
+    CHECK_NORMALIZEKEY(keypads[i][1], ModifierFlag::SHIFT_L);
   }
 
   // PAGEUP(+FN)
   for (size_t i = 0; i < sizeof(cursors) / sizeof(cursors[0]); ++i) {
     key = cursors[i][0]; flags = ModifierFlag::SHIFT_L | ModifierFlag::FN; keyboardType = KeyboardType::MACBOOK;
-    KeyCode::normalizeKey(key, flags, keyboardType);
-    EXPECT_EQ(key, cursors[i][1]); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::SHIFT_L | ModifierFlag::CURSOR));
+    key.normalizeKey(flags, keyboardType);
+    CHECK_NORMALIZEKEY(cursors[i][1], ModifierFlag::SHIFT_L | ModifierFlag::CURSOR);
   }
 
   // ENTER(+FN)
   key = KeyCode::ENTER; flags = ModifierFlag::SHIFT_L | ModifierFlag::FN; keyboardType = KeyboardType::MACBOOK;
-  KeyCode::normalizeKey(key, flags, keyboardType);
-  EXPECT_EQ(key, static_cast<unsigned int>(KeyCode::RETURN)); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::SHIFT_L));
+  key.normalizeKey(flags, keyboardType);
+  CHECK_NORMALIZEKEY(KeyCode::RETURN, ModifierFlag::SHIFT_L);
 
   // FORWARD_DELETE(+FN)
   key = KeyCode::FORWARD_DELETE; flags = ModifierFlag::SHIFT_L | ModifierFlag::FN; keyboardType = KeyboardType::MACBOOK;
-  KeyCode::normalizeKey(key, flags, keyboardType);
-  EXPECT_EQ(key, static_cast<unsigned int>(KeyCode::DELETE)); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::SHIFT_L));
+  key.normalizeKey(flags, keyboardType);
+  CHECK_NORMALIZEKEY(KeyCode::DELETE, ModifierFlag::SHIFT_L);
 }
 
 TEST(KeyCode, reverseNormalizeKey) {
-  unsigned int key = 0;
-  unsigned int flags = 0;
-  unsigned int keyboardType = 0;
+  KeyCode key;
+  Flags flags;
+  KeyboardType keyboardType;
+
+#define CHECK_REVERSENORMALIZEKEY(KEYCODE, MODIFIERFLAG) {              \
+    EXPECT_EQ(static_cast<unsigned int>(KEYCODE), key.get());           \
+    EXPECT_EQ(static_cast<unsigned int>(MODIFIERFLAG), flags.get());    \
+  }
 
   // ENTER_POWERBOOK -> ENTER
   key = KeyCode::ENTER_POWERBOOK; flags = ModifierFlag::SHIFT_L; keyboardType = KeyboardType::POWERBOOK;
-  KeyCode::normalizeKey(key, flags, keyboardType);
-  KeyCode::reverseNormalizeKey(key, flags, keyboardType);
-  EXPECT_EQ(key, static_cast<unsigned int>(KeyCode::ENTER_POWERBOOK)); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::SHIFT_L));
+  key.normalizeKey(flags, keyboardType);
+  key.reverseNormalizeKey(flags, keyboardType);
+  CHECK_REVERSENORMALIZEKEY(KeyCode::ENTER_POWERBOOK, ModifierFlag::SHIFT_L);
 
   // ENTER_POWERBOOK(+FN) -> ENTER(+FN) -> RETURN
   key = KeyCode::ENTER_POWERBOOK; flags = ModifierFlag::SHIFT_L | ModifierFlag::FN; keyboardType = KeyboardType::POWERBOOK;
-  KeyCode::normalizeKey(key, flags, keyboardType);
-  flags |= ModifierFlag::FN;
-  KeyCode::reverseNormalizeKey(key, flags, keyboardType);
-  EXPECT_EQ(key, static_cast<unsigned int>(KeyCode::ENTER_POWERBOOK)); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::SHIFT_L | ModifierFlag::FN));
+  key.normalizeKey(flags, keyboardType);
+  flags.add(ModifierFlag::FN);
+  key.reverseNormalizeKey(flags, keyboardType);
+  CHECK_REVERSENORMALIZEKEY(KeyCode::ENTER_POWERBOOK, ModifierFlag::SHIFT_L | ModifierFlag::FN);
 
   // normal key
   key = KeyCode::A; flags = ModifierFlag::SHIFT_L; keyboardType = KeyboardType::MACBOOK;
-  KeyCode::normalizeKey(key, flags, keyboardType);
-  KeyCode::reverseNormalizeKey(key, flags, keyboardType);
-  EXPECT_EQ(key, static_cast<unsigned int>(KeyCode::A)); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::SHIFT_L));
+  key.normalizeKey(flags, keyboardType);
+  key.reverseNormalizeKey(flags, keyboardType);
+  CHECK_REVERSENORMALIZEKEY(KeyCode::A, ModifierFlag::SHIFT_L);
 
   // KEYPAD
   for (size_t i = 0; i < sizeof(keypads) / sizeof(keypads[0]); ++i) {
     key = keypads[i][0]; flags = ModifierFlag::SHIFT_L; keyboardType = KeyboardType::MACBOOK;
-    if (key != KeyCode::KEYPAD_CLEAR && KeyCode::KEYPAD_COMMA) flags |= ModifierFlag::KEYPAD;
-    unsigned int flags_orig = flags;
-    KeyCode::normalizeKey(key, flags, keyboardType);
-    KeyCode::reverseNormalizeKey(key, flags, keyboardType);
-    EXPECT_EQ(key, keypads[i][0]); EXPECT_EQ(flags, flags_orig);
+    if (key != KeyCode::KEYPAD_CLEAR && KeyCode::KEYPAD_COMMA) flags.add(ModifierFlag::KEYPAD);
+    unsigned int flags_orig = flags.get();
+    key.normalizeKey(flags, keyboardType);
+    key.reverseNormalizeKey(flags, keyboardType);
+    CHECK_REVERSENORMALIZEKEY(keypads[i][0], flags_orig);
   }
 
   // PAGEUP
   for (size_t i = 0; i < sizeof(cursors) / sizeof(cursors[0]); ++i) {
     key = cursors[i][0]; flags = ModifierFlag::SHIFT_L; keyboardType = KeyboardType::MACBOOK;
-    KeyCode::normalizeKey(key, flags, keyboardType);
-    KeyCode::reverseNormalizeKey(key, flags, keyboardType);
-    EXPECT_EQ(key, cursors[i][0]); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::SHIFT_L));
+    key.normalizeKey(flags, keyboardType);
+    key.reverseNormalizeKey(flags, keyboardType);
+    CHECK_REVERSENORMALIZEKEY(cursors[i][0], ModifierFlag::SHIFT_L);
   }
 
   // ENTER
   key = KeyCode::ENTER; flags = ModifierFlag::SHIFT_L; keyboardType = KeyboardType::MACBOOK;
-  KeyCode::normalizeKey(key, flags, keyboardType);
-  KeyCode::reverseNormalizeKey(key, flags, keyboardType);
-  EXPECT_EQ(key, static_cast<unsigned int>(KeyCode::ENTER)); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::SHIFT_L));
+  key.normalizeKey(flags, keyboardType);
+  key.reverseNormalizeKey(flags, keyboardType);
+  CHECK_REVERSENORMALIZEKEY(KeyCode::ENTER, ModifierFlag::SHIFT_L);
 
   // FORWARD_DELETE
   key = KeyCode::FORWARD_DELETE; flags = ModifierFlag::SHIFT_L; keyboardType = KeyboardType::MACBOOK;
-  KeyCode::normalizeKey(key, flags, keyboardType);
-  KeyCode::reverseNormalizeKey(key, flags, keyboardType);
-  EXPECT_EQ(key, static_cast<unsigned int>(KeyCode::FORWARD_DELETE)); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::SHIFT_L));
+  key.normalizeKey(flags, keyboardType);
+  key.reverseNormalizeKey(flags, keyboardType);
+  CHECK_REVERSENORMALIZEKEY(KeyCode::FORWARD_DELETE, ModifierFlag::SHIFT_L);
 
   // CURSOR
   for (size_t i = 0; i < sizeof(cursors) / sizeof(cursors[0]); ++i) {
     key = cursors[i][1]; flags = ModifierFlag::CURSOR; keyboardType = KeyboardType::MACBOOK;
-    KeyCode::normalizeKey(key, flags, keyboardType);
-    KeyCode::reverseNormalizeKey(key, flags, keyboardType);
-    EXPECT_EQ(key, static_cast<unsigned int>(cursors[i][1])); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::CURSOR));
+    key.normalizeKey(flags, keyboardType);
+    key.reverseNormalizeKey(flags, keyboardType);
+    CHECK_REVERSENORMALIZEKEY(cursors[i][1], ModifierFlag::CURSOR);
   }
 
   // normal key(+FN)
   key = KeyCode::A; flags = ModifierFlag::SHIFT_L | ModifierFlag::FN; keyboardType = KeyboardType::MACBOOK;
-  KeyCode::normalizeKey(key, flags, keyboardType);
-  flags |= ModifierFlag::FN;
-  KeyCode::reverseNormalizeKey(key, flags, keyboardType);
-  EXPECT_EQ(key, static_cast<unsigned int>(KeyCode::A)); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::SHIFT_L | ModifierFlag::FN));
+  key.normalizeKey(flags, keyboardType);
+  flags.add(ModifierFlag::FN);
+  key.reverseNormalizeKey(flags, keyboardType);
+  CHECK_REVERSENORMALIZEKEY(KeyCode::A, ModifierFlag::SHIFT_L | ModifierFlag::FN);
 
   // KEYPAD(+FN)
   for (size_t i = 0; i < sizeof(keypads) / sizeof(keypads[0]); ++i) {
     key = keypads[i][0]; flags = ModifierFlag::SHIFT_L | ModifierFlag::FN; keyboardType = KeyboardType::MACBOOK;
-    if (key != KeyCode::KEYPAD_CLEAR && KeyCode::KEYPAD_COMMA) flags |= ModifierFlag::KEYPAD;
+    if (key != KeyCode::KEYPAD_CLEAR && KeyCode::KEYPAD_COMMA) flags.add(ModifierFlag::KEYPAD);
     if (key == KeyCode::KEYPAD_COMMA) continue;
-    unsigned int flags_orig = flags;
-    KeyCode::normalizeKey(key, flags, keyboardType);
-    flags |= ModifierFlag::FN;
-    KeyCode::reverseNormalizeKey(key, flags, keyboardType);
-    EXPECT_EQ(key, static_cast<unsigned int>(keypads[i][0])); EXPECT_EQ(flags, flags_orig);
+    unsigned int flags_orig = flags.get();
+    key.normalizeKey(flags, keyboardType);
+    flags.add(ModifierFlag::FN);
+    key.reverseNormalizeKey(flags, keyboardType);
+    CHECK_REVERSENORMALIZEKEY(keypads[i][0], flags_orig);
   }
 
   // PAGEUP(+FN)
   for (size_t i = 0; i < sizeof(cursors) / sizeof(cursors[0]); ++i) {
     key = cursors[i][0]; flags = ModifierFlag::SHIFT_L | ModifierFlag::FN; keyboardType = KeyboardType::MACBOOK;
-    KeyCode::normalizeKey(key, flags, keyboardType);
-    flags |= ModifierFlag::FN;
-    KeyCode::reverseNormalizeKey(key, flags, keyboardType);
-    EXPECT_EQ(key, cursors[i][0]); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::SHIFT_L | ModifierFlag::FN));
+    key.normalizeKey(flags, keyboardType);
+    flags.add(ModifierFlag::FN);
+    key.reverseNormalizeKey(flags, keyboardType);
+    CHECK_REVERSENORMALIZEKEY(cursors[i][0], ModifierFlag::SHIFT_L | ModifierFlag::FN);
   }
 
   // ENTER(+FN)
   key = KeyCode::ENTER; flags = ModifierFlag::SHIFT_L | ModifierFlag::FN; keyboardType = KeyboardType::MACBOOK;
-  KeyCode::normalizeKey(key, flags, keyboardType);
-  flags |= ModifierFlag::FN;
-  KeyCode::reverseNormalizeKey(key, flags, keyboardType);
-  EXPECT_EQ(key, static_cast<unsigned int>(KeyCode::ENTER)); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::SHIFT_L | ModifierFlag::FN));
+  key.normalizeKey(flags, keyboardType);
+  flags.add(ModifierFlag::FN);
+  key.reverseNormalizeKey(flags, keyboardType);
+  CHECK_REVERSENORMALIZEKEY(KeyCode::ENTER, ModifierFlag::SHIFT_L | ModifierFlag::FN);
 
   // FORWARD_DELETE(+FN)
   key = KeyCode::FORWARD_DELETE; flags = ModifierFlag::SHIFT_L | ModifierFlag::FN; keyboardType = KeyboardType::MACBOOK;
-  KeyCode::normalizeKey(key, flags, keyboardType);
-  flags |= ModifierFlag::FN;
-  KeyCode::reverseNormalizeKey(key, flags, keyboardType);
-  EXPECT_EQ(key, static_cast<unsigned int>(KeyCode::FORWARD_DELETE)); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::SHIFT_L | ModifierFlag::FN));
+  key.normalizeKey(flags, keyboardType);
+  flags.add(ModifierFlag::FN);
+  key.reverseNormalizeKey(flags, keyboardType);
+  CHECK_REVERSENORMALIZEKEY(KeyCode::FORWARD_DELETE, ModifierFlag::SHIFT_L | ModifierFlag::FN);
 }
 
 TEST(ModifierFlag, getKeyCode) {
-  EXPECT_EQ(KeyCode::CAPSLOCK, ModifierFlag::getKeyCode(ModifierFlag::CAPSLOCK));
-  EXPECT_EQ(KeyCode::SHIFT_L, ModifierFlag::getKeyCode(ModifierFlag::SHIFT_L));
-  EXPECT_EQ(KeyCode::SHIFT_R, ModifierFlag::getKeyCode(ModifierFlag::SHIFT_R));
-  EXPECT_EQ(KeyCode::CONTROL_L, ModifierFlag::getKeyCode(ModifierFlag::CONTROL_L));
-  EXPECT_EQ(KeyCode::CONTROL_R, ModifierFlag::getKeyCode(ModifierFlag::CONTROL_R));
-  EXPECT_EQ(KeyCode::OPTION_L, ModifierFlag::getKeyCode(ModifierFlag::OPTION_L));
-  EXPECT_EQ(KeyCode::OPTION_R, ModifierFlag::getKeyCode(ModifierFlag::OPTION_R));
-  EXPECT_EQ(KeyCode::COMMAND_L, ModifierFlag::getKeyCode(ModifierFlag::COMMAND_L));
-  EXPECT_EQ(KeyCode::COMMAND_R, ModifierFlag::getKeyCode(ModifierFlag::COMMAND_R));
-  EXPECT_EQ(KeyCode::FN, ModifierFlag::getKeyCode(ModifierFlag::FN));
+  EXPECT_EQ(KeyCode::CAPSLOCK, ModifierFlag::getKeyCode(ModifierFlag::CAPSLOCK).get());
+  EXPECT_EQ(KeyCode::SHIFT_L, ModifierFlag::getKeyCode(ModifierFlag::SHIFT_L).get());
+  EXPECT_EQ(KeyCode::SHIFT_R, ModifierFlag::getKeyCode(ModifierFlag::SHIFT_R).get());
+  EXPECT_EQ(KeyCode::CONTROL_L, ModifierFlag::getKeyCode(ModifierFlag::CONTROL_L).get());
+  EXPECT_EQ(KeyCode::CONTROL_R, ModifierFlag::getKeyCode(ModifierFlag::CONTROL_R).get());
+  EXPECT_EQ(KeyCode::OPTION_L, ModifierFlag::getKeyCode(ModifierFlag::OPTION_L).get());
+  EXPECT_EQ(KeyCode::OPTION_R, ModifierFlag::getKeyCode(ModifierFlag::OPTION_R).get());
+  EXPECT_EQ(KeyCode::COMMAND_L, ModifierFlag::getKeyCode(ModifierFlag::COMMAND_L).get());
+  EXPECT_EQ(KeyCode::COMMAND_R, ModifierFlag::getKeyCode(ModifierFlag::COMMAND_R).get());
+  EXPECT_EQ(KeyCode::FN, ModifierFlag::getKeyCode(ModifierFlag::FN).get());
 
-  EXPECT_EQ(KeyCode::VK_NONE, ModifierFlag::getKeyCode(ModifierFlag::CURSOR));
-  EXPECT_EQ(KeyCode::VK_NONE, ModifierFlag::getKeyCode(ModifierFlag::KEYPAD));
+  EXPECT_EQ(KeyCode::VK_NONE, ModifierFlag::getKeyCode(ModifierFlag::CURSOR).get());
+  EXPECT_EQ(KeyCode::VK_NONE, ModifierFlag::getKeyCode(ModifierFlag::KEYPAD).get());
 
-  EXPECT_EQ(KeyCode::VK_NONE, ModifierFlag::getKeyCode(ModifierFlag::CAPSLOCK | ModifierFlag::SHIFT_L));
+  EXPECT_EQ(KeyCode::VK_NONE, ModifierFlag::getKeyCode(ModifierFlag::CAPSLOCK | ModifierFlag::SHIFT_L).get());
 }
 
 TEST(KeyCode, getModifierFlag) {
-  EXPECT_EQ(ModifierFlag::CAPSLOCK, KeyCode::getModifierFlag(KeyCode::CAPSLOCK));
-  EXPECT_EQ(ModifierFlag::SHIFT_L, KeyCode::getModifierFlag(KeyCode::SHIFT_L));
-  EXPECT_EQ(ModifierFlag::SHIFT_R, KeyCode::getModifierFlag(KeyCode::SHIFT_R));
-  EXPECT_EQ(ModifierFlag::CONTROL_L, KeyCode::getModifierFlag(KeyCode::CONTROL_L));
-  EXPECT_EQ(ModifierFlag::CONTROL_R, KeyCode::getModifierFlag(KeyCode::CONTROL_R));
-  EXPECT_EQ(ModifierFlag::OPTION_L, KeyCode::getModifierFlag(KeyCode::OPTION_L));
-  EXPECT_EQ(ModifierFlag::OPTION_R, KeyCode::getModifierFlag(KeyCode::OPTION_R));
-  EXPECT_EQ(ModifierFlag::COMMAND_L, KeyCode::getModifierFlag(KeyCode::COMMAND_L));
-  EXPECT_EQ(ModifierFlag::COMMAND_R, KeyCode::getModifierFlag(KeyCode::COMMAND_R));
-  EXPECT_EQ(ModifierFlag::FN, KeyCode::getModifierFlag(KeyCode::FN));
+  EXPECT_EQ(ModifierFlag::CAPSLOCK, KeyCode(KeyCode::CAPSLOCK).getModifierFlag());
+  EXPECT_EQ(ModifierFlag::SHIFT_L, KeyCode(KeyCode::SHIFT_L).getModifierFlag());
+  EXPECT_EQ(ModifierFlag::SHIFT_R, KeyCode(KeyCode::SHIFT_R).getModifierFlag());
+  EXPECT_EQ(ModifierFlag::CONTROL_L, KeyCode(KeyCode::CONTROL_L).getModifierFlag());
+  EXPECT_EQ(ModifierFlag::CONTROL_R, KeyCode(KeyCode::CONTROL_R).getModifierFlag());
+  EXPECT_EQ(ModifierFlag::OPTION_L, KeyCode(KeyCode::OPTION_L).getModifierFlag());
+  EXPECT_EQ(ModifierFlag::OPTION_R, KeyCode(KeyCode::OPTION_R).getModifierFlag());
+  EXPECT_EQ(ModifierFlag::COMMAND_L, KeyCode(KeyCode::COMMAND_L).getModifierFlag());
+  EXPECT_EQ(ModifierFlag::COMMAND_R, KeyCode(KeyCode::COMMAND_R).getModifierFlag());
+  EXPECT_EQ(ModifierFlag::FN, KeyCode(KeyCode::FN).getModifierFlag());
 
-  EXPECT_EQ(ModifierFlag::NONE, KeyCode::getModifierFlag(KeyCode::A));
-  EXPECT_EQ(ModifierFlag::NONE, KeyCode::getModifierFlag(KeyCode::VK_NONE));
+  EXPECT_EQ(ModifierFlag::NONE, KeyCode(KeyCode::A).getModifierFlag());
+  EXPECT_EQ(ModifierFlag::NONE, KeyCode(KeyCode::VK_NONE).getModifierFlag());
 }
 
 TEST(KeyCode, isModifier) {
-  EXPECT_EQ(true, KeyCode::isModifier(KeyCode::CAPSLOCK));
-  EXPECT_EQ(true, KeyCode::isModifier(KeyCode::SHIFT_L));
-  EXPECT_EQ(false, KeyCode::isModifier(KeyCode::A));
-  EXPECT_EQ(false, KeyCode::isModifier(KeyCode::VK_NONE));
+  EXPECT_EQ(true, KeyCode(KeyCode::CAPSLOCK).isModifier());
+  EXPECT_EQ(true, KeyCode(KeyCode::SHIFT_L).isModifier());
+  EXPECT_EQ(false, KeyCode(KeyCode::A).isModifier());
+  EXPECT_EQ(false, KeyCode(KeyCode::VK_NONE).isModifier());
 }
