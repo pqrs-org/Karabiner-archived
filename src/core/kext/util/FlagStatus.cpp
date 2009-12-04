@@ -162,45 +162,20 @@ namespace org_pqrs_KeyRemap4MacBook {
     return p->isHeldDown();
   }
 
-  void
-  FlagStatus::increase(ModifierFlag::ModifierFlag flag) {
-    Item* p = getFlagStatus(flag);
-    if (! p) return;
-    return p->increase();
+  // ------------------------------------------------------------
+#define FOREACH_TO_FLAGS(METHOD) {                          \
+    for (int i = 0; i < ModifierFlag::listsize; ++i) {      \
+      ModifierFlag::ModifierFlag f = ModifierFlag::list[i]; \
+      if (ModifierFlag::isOn(flags, f)) {                   \
+        item_[i].METHOD();                                  \
+      }                                                     \
+    }                                                       \
   }
-
-  void
-  FlagStatus::decrease(ModifierFlag::ModifierFlag flag) {
-    Item* p = getFlagStatus(flag);
-    if (! p) return;
-    return p->decrease();
-  }
-
-  void
-  FlagStatus::temporary_increase(ModifierFlag::ModifierFlag flag) {
-    Item* p = getFlagStatus(flag);
-    if (! p) return;
-    return p->temporary_increase();
-  }
-
-  void
-  FlagStatus::temporary_decrease(ModifierFlag::ModifierFlag flag) {
-    Item* p = getFlagStatus(flag);
-    if (! p) return;
-    return p->temporary_decrease();
-  }
-
-  void
-  FlagStatus::lock_increase(ModifierFlag::ModifierFlag flag) {
-    Item* p = getFlagStatus(flag);
-    if (! p) return;
-    return p->lock_increase();
-  }
-
-  void
-  FlagStatus::lock_decrease(ModifierFlag::ModifierFlag flag) {
-    Item* p = getFlagStatus(flag);
-    if (! p) return;
-    return p->lock_decrease();
-  }
+  void FlagStatus::increase(unsigned int flags) { FOREACH_TO_FLAGS(increase); }
+  void FlagStatus::decrease(unsigned int flags) { FOREACH_TO_FLAGS(decrease); }
+  void FlagStatus::temporary_increase(unsigned int flags) { FOREACH_TO_FLAGS(temporary_increase); }
+  void FlagStatus::temporary_decrease(unsigned int flags) { FOREACH_TO_FLAGS(temporary_decrease); }
+  void FlagStatus::lock_increase(unsigned int flags) { FOREACH_TO_FLAGS(lock_increase); }
+  void FlagStatus::lock_decrease(unsigned int flags) { FOREACH_TO_FLAGS(lock_decrease); }
+#undef FOREACH_TO_FLAGS
 }
