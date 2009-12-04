@@ -39,8 +39,6 @@
 		34AA1F361065B1EE00E9A418 /* ListHookedDevice.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34AA1F341065B1EE00E9A418 /* ListHookedDevice.hpp */; };
 		34C7A9A20CE45EA400C98397 /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34C7A9A10CE45EA400C98397 /* Config.cpp */; };
 		34C7A9B00CE4605B00C98397 /* Config.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34C7A9AF0CE4605B00C98397 /* Config.hpp */; };
-		34F13A820E73E5EC006EB163 /* ListFireConsumerKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F13A800E73E5EC006EB163 /* ListFireConsumerKey.cpp */; };
-		34F13A830E73E5EC006EB163 /* ListFireConsumerKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34F13A810E73E5EC006EB163 /* ListFireConsumerKey.hpp */; };
 		34F13A860E73E69D006EB163 /* IntervalChecker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F13A840E73E69D006EB163 /* IntervalChecker.cpp */; };
 		34F13A870E73E69D006EB163 /* IntervalChecker.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34F13A850E73E69D006EB163 /* IntervalChecker.hpp */; };
 		34F13A8F0E740A7B006EB163 /* ListFireRelativePointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F13A8D0E740A7B006EB163 /* ListFireRelativePointer.cpp */; };
@@ -93,8 +91,6 @@
 		34AA1F341065B1EE00E9A418 /* ListHookedDevice.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ListHookedDevice.hpp; path = util/ListHookedDevice.hpp; sourceTree = "<group>"; };
 		34C7A9A10CE45EA400C98397 /* Config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Config.cpp; sourceTree = "<group>"; };
 		34C7A9AF0CE4605B00C98397 /* Config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config.hpp; sourceTree = "<group>"; };
-		34F13A800E73E5EC006EB163 /* ListFireConsumerKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ListFireConsumerKey.cpp; path = util/ListFireConsumerKey.cpp; sourceTree = "<group>"; };
-		34F13A810E73E5EC006EB163 /* ListFireConsumerKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ListFireConsumerKey.hpp; path = util/ListFireConsumerKey.hpp; sourceTree = "<group>"; };
 		34F13A840E73E69D006EB163 /* IntervalChecker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IntervalChecker.cpp; path = util/IntervalChecker.cpp; sourceTree = "<group>"; };
 		34F13A850E73E69D006EB163 /* IntervalChecker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IntervalChecker.hpp; path = util/IntervalChecker.hpp; sourceTree = "<group>"; };
 		34F13A8D0E740A7B006EB163 /* ListFireRelativePointer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ListFireRelativePointer.cpp; path = util/ListFireRelativePointer.cpp; sourceTree = "<group>"; };
@@ -156,10 +152,6 @@
 			isa = PBXGroup;
 			children = (
 				34311760106F657200030711 /* keycode.cpp */,
-				34A59B861065C00B0048D1E7 /* ListHookedConsumer.cpp */,
-				34A59B871065C00B0048D1E7 /* ListHookedConsumer.hpp */,
-				34AA1F331065B1EE00E9A418 /* ListHookedDevice.cpp */,
-				34AA1F341065B1EE00E9A418 /* ListHookedDevice.hpp */,
 				345004A80E7CE48F0075324B /* Core.cpp */,
 				345004A90E7CE48F0075324B /* Core.hpp */,
 				345004AA0E7CE48F0075324B /* Driver.cpp */,
@@ -184,6 +176,10 @@
 		346B753B0E72C0A200F9A79F /* util */ = {
 			isa = PBXGroup;
 			children = (
+				34A59B861065C00B0048D1E7 /* ListHookedConsumer.cpp */,
+				34A59B871065C00B0048D1E7 /* ListHookedConsumer.hpp */,
+				34AA1F331065B1EE00E9A418 /* ListHookedDevice.cpp */,
+				34AA1F341065B1EE00E9A418 /* ListHookedDevice.hpp */,
 				3430E93110C558CA00FC2D64 /* EventWatcher.cpp */,
 				3430E93210C558CA00FC2D64 /* EventWatcher.hpp */,
 				3459F55A10C418D700DAB1FE /* KeyboardRepeat.cpp */,
@@ -205,8 +201,6 @@
 				34F13A8E0E740A7B006EB163 /* ListFireRelativePointer.hpp */,
 				34F13A840E73E69D006EB163 /* IntervalChecker.cpp */,
 				34F13A850E73E69D006EB163 /* IntervalChecker.hpp */,
-				34F13A800E73E5EC006EB163 /* ListFireConsumerKey.cpp */,
-				34F13A810E73E5EC006EB163 /* ListFireConsumerKey.hpp */,
 				346B753C0E72C0BA00F9A79F /* FlagStatus.cpp */,
 				346B753D0E72C0BA00F9A79F /* FlagStatus.hpp */,
 				349581060E7232A5003773EC /* PressDownKeys.cpp */,
@@ -232,7 +226,6 @@
 				345B06B80DB21ABF000023FD /* bridge.hpp in Headers */,
 				349581090E7232A5003773EC /* PressDownKeys.hpp in Headers */,
 				346B753F0E72C0BA00F9A79F /* FlagStatus.hpp in Headers */,
-				34F13A830E73E5EC006EB163 /* ListFireConsumerKey.hpp in Headers */,
 				34F13A870E73E69D006EB163 /* IntervalChecker.hpp in Headers */,
 				34F13A900E740A7B006EB163 /* ListFireRelativePointer.hpp in Headers */,
 				34012A6F0E7AED010069FE39 /* TimerWrapper.hpp in Headers */,
@@ -323,7 +316,6 @@
 				345B06AD0DB21A88000023FD /* Client.cpp in Sources */,
 				349581080E7232A5003773EC /* PressDownKeys.cpp in Sources */,
 				346B753E0E72C0BA00F9A79F /* FlagStatus.cpp in Sources */,
-				34F13A820E73E5EC006EB163 /* ListFireConsumerKey.cpp in Sources */,
 				34F13A860E73E69D006EB163 /* IntervalChecker.cpp in Sources */,
 				34F13A8F0E740A7B006EB163 /* ListFireRelativePointer.cpp in Sources */,
 				34012A6E0E7AED010069FE39 /* TimerWrapper.cpp in Sources */,
