@@ -201,7 +201,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       // ------------------------------------------------------------
-      listFireConsumerKey.reset();
       listFireRelativePointer.reset();
 
       bool isremapped = false;
@@ -227,14 +226,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         HookedPointing* hp = ListHookedPointing::instance().get();
         if (hp) {
           listFireRelativePointer.fire(hp->getOrig_relativePointerEventTarget(), hp->get(), params.ts);
-        }
-      }
-
-      // consumer emulation
-      if (! listFireConsumerKey.isEmpty()) {
-        HookedConsumer* hc = ListHookedConsumer::instance().get();
-        if (hc) {
-          listFireConsumerKey.fire(hc->getOrig_keyboardSpecialEventTarget(), params.ts, params.sender, params.refcon);
         }
       }
 

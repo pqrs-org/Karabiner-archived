@@ -3,10 +3,10 @@
 #include "Config.hpp"
 #include "util/KeyboardRepeat.hpp"
 #include "util/ListHookedKeyboard.hpp"
+#include "util/ListHookedConsumer.hpp"
 #include "util/PointingButtonStatus.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  ListFireConsumerKey listFireConsumerKey;
   ListFireRelativePointer listFireRelativePointer;
   FirePointingScroll firePointingScroll;
 
@@ -256,9 +256,19 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     remapFlags(fromFlags, toFlags);
 
-    unsigned int eventType = (RemapUtil::isKeyDown(remapParams, fromKeyCode) ? KeyEvent::DOWN : KeyEvent::UP);
-    unsigned int flags = FlagStatus::makeFlags(toKeyCode);
-    listFireConsumerKey.add(eventType, flags, toKeyCode);
+    HookedConsumer* hc = ListHookedConsumer::instance().get();
+    if (hc) {
+      unsigned int eventType = (RemapUtil::isKeyDown(remapParams, fromKeyCode) ? KeyEvent::DOWN : KeyEvent::UP);
+      unsigned int flags = FlagStatus::makeFlags(toKeyCode);
+      unsigned int flavor = toKeyCode;
+      UInt64 guid = static_cast<UInt64>(-1);
+
+      Params_KeyboardSpecialEventCallback p = {
+        hc->getOrig_keyboardSpecialEventTarget(),
+        eventType, flags, toKeyCode, flavor, guid, false, remapParams.params.ts, hc->get(), NULL,
+      };
+      RemapUtil::fireConsumer(p);
+    }
 
     RemapUtil::drop(remapParams);
     return true;
@@ -488,8 +498,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapUtil::fireConsumer(const Params_KeyboardSpecialEventCallback& params)
   {
-    Params_KeyboardSpecialEventCallback p = params;
-    p.apply();
+    params.apply();
   }
 
   // --------------------

@@ -7,7 +7,6 @@
 #include "keycode.hpp"
 #include "util/FlagStatus.hpp"
 #include "util/PressDownKeys.hpp"
-#include "util/ListFireConsumerKey.hpp"
 #include "util/ListFireRelativePointer.hpp"
 #include "util/IntervalChecker.hpp"
 #include "util/EventWatcher.hpp"
@@ -187,8 +186,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ----------------------------------------
     void pointingRelativeToScroll(const RemapPointingParams_relative& remapParams);
   }
-
-  extern ListFireConsumerKey listFireConsumerKey;
 
   // ----------------------------------------------------------------------
   // for SandS like behavior remappings (remap_space2shift, remap_enter2optionL_commandSpace, ...)
