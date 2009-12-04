@@ -14,105 +14,118 @@ namespace org_pqrs_KeyRemap4MacBook {
     return false;
   }
 
+  const ModifierFlag::Mask ModifierFlag::list[] = {
+    ModifierFlag::CAPSLOCK,
+    ModifierFlag::SHIFT_L,
+    ModifierFlag::SHIFT_R,
+    ModifierFlag::CONTROL_L,
+    ModifierFlag::CONTROL_R,
+    ModifierFlag::OPTION_L,
+    ModifierFlag::OPTION_R,
+    ModifierFlag::COMMAND_L,
+    ModifierFlag::COMMAND_R,
+    ModifierFlag::FN,
+  };
+  const int ModifierFlag::listsize = sizeof(ModifierFlag::list) / sizeof(ModifierFlag::list[0]);
+
   void
-  KeyCode::normalizeKey(unsigned int &key, unsigned int &flags, const KeyboardType& keyboardType)
+  KeyCode::normalizeKey(Flags& flags, const KeyboardType& keyboardType)
   {
     if (keyboardType == KeyboardType::POWERBOOK ||
         keyboardType == KeyboardType::POWERBOOK_G4 ||
         keyboardType == KeyboardType::POWERBOOK_G4_TI) {
-      if (key == KeyCode::ENTER_POWERBOOK) { key = KeyCode::ENTER; }
+      if (value_ == KeyCode::ENTER_POWERBOOK) { value_ = KeyCode::ENTER; }
     }
 
-    if (ModifierFlag::isOn(flags, ModifierFlag::FN)) {
+    if (flags.isOn(ModifierFlag::FN)) {
       // Note: KEYPAD_CLEAR has no ModifierFlag::KEYPAD bit.
-      if (key == KeyCode::KEYPAD_0)        { key = KeyCode::M;            flags = ModifierFlag::stripFN(ModifierFlag::stripKEYPAD(flags)); }
-      if (key == KeyCode::KEYPAD_1)        { key = KeyCode::J;            flags = ModifierFlag::stripFN(ModifierFlag::stripKEYPAD(flags)); }
-      if (key == KeyCode::KEYPAD_2)        { key = KeyCode::K;            flags = ModifierFlag::stripFN(ModifierFlag::stripKEYPAD(flags)); }
-      if (key == KeyCode::KEYPAD_3)        { key = KeyCode::L;            flags = ModifierFlag::stripFN(ModifierFlag::stripKEYPAD(flags)); }
-      if (key == KeyCode::KEYPAD_4)        { key = KeyCode::U;            flags = ModifierFlag::stripFN(ModifierFlag::stripKEYPAD(flags)); }
-      if (key == KeyCode::KEYPAD_5)        { key = KeyCode::I;            flags = ModifierFlag::stripFN(ModifierFlag::stripKEYPAD(flags)); }
-      if (key == KeyCode::KEYPAD_6)        { key = KeyCode::O;            flags = ModifierFlag::stripFN(ModifierFlag::stripKEYPAD(flags)); }
-      if (key == KeyCode::KEYPAD_7)        { key = KeyCode::KEY_7;        flags = ModifierFlag::stripFN(ModifierFlag::stripKEYPAD(flags)); }
-      if (key == KeyCode::KEYPAD_8)        { key = KeyCode::KEY_8;        flags = ModifierFlag::stripFN(ModifierFlag::stripKEYPAD(flags)); }
-      if (key == KeyCode::KEYPAD_9)        { key = KeyCode::KEY_9;        flags = ModifierFlag::stripFN(ModifierFlag::stripKEYPAD(flags)); }
-      if (key == KeyCode::KEYPAD_CLEAR)    { key = KeyCode::KEY_6;        flags = ModifierFlag::stripFN(flags); }
-      if (key == KeyCode::KEYPAD_PLUS)     { key = KeyCode::SLASH;        flags = ModifierFlag::stripFN(ModifierFlag::stripKEYPAD(flags)); }
-      if (key == KeyCode::KEYPAD_MINUS)    { key = KeyCode::SEMICOLON;    flags = ModifierFlag::stripFN(ModifierFlag::stripKEYPAD(flags)); }
-      if (key == KeyCode::KEYPAD_MULTIPLY) { key = KeyCode::P;            flags = ModifierFlag::stripFN(ModifierFlag::stripKEYPAD(flags)); }
-      if (key == KeyCode::KEYPAD_SLASH)    { key = KeyCode::KEY_0;        flags = ModifierFlag::stripFN(ModifierFlag::stripKEYPAD(flags)); }
-      if (key == KeyCode::KEYPAD_EQUAL)    { key = KeyCode::MINUS;        flags = ModifierFlag::stripFN(ModifierFlag::stripKEYPAD(flags)); }
-      if (key == KeyCode::KEYPAD_DOT)      { key = KeyCode::DOT;          flags = ModifierFlag::stripFN(ModifierFlag::stripKEYPAD(flags)); }
-      if (key == KeyCode::PAGEUP)          { key = KeyCode::CURSOR_UP;    flags = ModifierFlag::stripFN(flags) | ModifierFlag::CURSOR; }
-      if (key == KeyCode::PAGEDOWN)        { key = KeyCode::CURSOR_DOWN;  flags = ModifierFlag::stripFN(flags) | ModifierFlag::CURSOR; }
-      if (key == KeyCode::HOME)            { key = KeyCode::CURSOR_LEFT;  flags = ModifierFlag::stripFN(flags) | ModifierFlag::CURSOR; }
-      if (key == KeyCode::END)             { key = KeyCode::CURSOR_RIGHT; flags = ModifierFlag::stripFN(flags) | ModifierFlag::CURSOR; }
-      if (key == KeyCode::ENTER)           { key = KeyCode::RETURN;       flags = ModifierFlag::stripFN(flags); }
-      if (key == KeyCode::FORWARD_DELETE)  { key = KeyCode::DELETE;       flags = ModifierFlag::stripFN(flags); }
+      if (value_ == KeyCode::KEYPAD_0)        { value_ = KeyCode::M;            flags.stripFN().stripKEYPAD(); }
+      if (value_ == KeyCode::KEYPAD_1)        { value_ = KeyCode::J;            flags.stripFN().stripKEYPAD(); }
+      if (value_ == KeyCode::KEYPAD_2)        { value_ = KeyCode::K;            flags.stripFN().stripKEYPAD(); }
+      if (value_ == KeyCode::KEYPAD_3)        { value_ = KeyCode::L;            flags.stripFN().stripKEYPAD(); }
+      if (value_ == KeyCode::KEYPAD_4)        { value_ = KeyCode::U;            flags.stripFN().stripKEYPAD(); }
+      if (value_ == KeyCode::KEYPAD_5)        { value_ = KeyCode::I;            flags.stripFN().stripKEYPAD(); }
+      if (value_ == KeyCode::KEYPAD_6)        { value_ = KeyCode::O;            flags.stripFN().stripKEYPAD(); }
+      if (value_ == KeyCode::KEYPAD_7)        { value_ = KeyCode::KEY_7;        flags.stripFN().stripKEYPAD(); }
+      if (value_ == KeyCode::KEYPAD_8)        { value_ = KeyCode::KEY_8;        flags.stripFN().stripKEYPAD(); }
+      if (value_ == KeyCode::KEYPAD_9)        { value_ = KeyCode::KEY_9;        flags.stripFN().stripKEYPAD(); }
+      if (value_ == KeyCode::KEYPAD_CLEAR)    { value_ = KeyCode::KEY_6;        flags.stripFN(); }
+      if (value_ == KeyCode::KEYPAD_PLUS)     { value_ = KeyCode::SLASH;        flags.stripFN().stripKEYPAD(); }
+      if (value_ == KeyCode::KEYPAD_MINUS)    { value_ = KeyCode::SEMICOLON;    flags.stripFN().stripKEYPAD(); }
+      if (value_ == KeyCode::KEYPAD_MULTIPLY) { value_ = KeyCode::P;            flags.stripFN().stripKEYPAD(); }
+      if (value_ == KeyCode::KEYPAD_SLASH)    { value_ = KeyCode::KEY_0;        flags.stripFN().stripKEYPAD(); }
+      if (value_ == KeyCode::KEYPAD_EQUAL)    { value_ = KeyCode::MINUS;        flags.stripFN().stripKEYPAD(); }
+      if (value_ == KeyCode::KEYPAD_DOT)      { value_ = KeyCode::DOT;          flags.stripFN().stripKEYPAD(); }
+      if (value_ == KeyCode::PAGEUP)          { value_ = KeyCode::CURSOR_UP;    flags.stripFN().add(ModifierFlag::CURSOR); }
+      if (value_ == KeyCode::PAGEDOWN)        { value_ = KeyCode::CURSOR_DOWN;  flags.stripFN().add(ModifierFlag::CURSOR); }
+      if (value_ == KeyCode::HOME)            { value_ = KeyCode::CURSOR_LEFT;  flags.stripFN().add(ModifierFlag::CURSOR); }
+      if (value_ == KeyCode::END)             { value_ = KeyCode::CURSOR_RIGHT; flags.stripFN().add(ModifierFlag::CURSOR); }
+      if (value_ == KeyCode::ENTER)           { value_ = KeyCode::RETURN;       flags.stripFN(); }
+      if (value_ == KeyCode::FORWARD_DELETE)  { value_ = KeyCode::DELETE;       flags.stripFN(); }
     }
   }
 
   void
-  KeyCode::reverseNormalizeKey(unsigned int &key, unsigned int &flags, const KeyboardType& keyboardType)
+  KeyCode::reverseNormalizeKey(Flags& flags, const KeyboardType& keyboardType)
   {
-    if (ModifierFlag::isOn(flags, ModifierFlag::FN)) {
-      if (key == KeyCode::M)            { key = KeyCode::KEYPAD_0; }
-      if (key == KeyCode::J)            { key = KeyCode::KEYPAD_1; }
-      if (key == KeyCode::K)            { key = KeyCode::KEYPAD_2; }
-      if (key == KeyCode::L)            { key = KeyCode::KEYPAD_3; }
-      if (key == KeyCode::U)            { key = KeyCode::KEYPAD_4; }
-      if (key == KeyCode::I)            { key = KeyCode::KEYPAD_5; }
-      if (key == KeyCode::O)            { key = KeyCode::KEYPAD_6; }
-      if (key == KeyCode::KEY_7)        { key = KeyCode::KEYPAD_7; }
-      if (key == KeyCode::KEY_8)        { key = KeyCode::KEYPAD_8; }
-      if (key == KeyCode::KEY_9)        { key = KeyCode::KEYPAD_9; }
-      if (key == KeyCode::KEY_6)        { key = KeyCode::KEYPAD_CLEAR; }
-      if (key == KeyCode::SLASH)        { key = KeyCode::KEYPAD_PLUS; }
-      if (key == KeyCode::SEMICOLON)    { key = KeyCode::KEYPAD_MINUS; }
-      if (key == KeyCode::P)            { key = KeyCode::KEYPAD_MULTIPLY; }
-      if (key == KeyCode::KEY_0)        { key = KeyCode::KEYPAD_SLASH; }
-      if (key == KeyCode::MINUS)        { key = KeyCode::KEYPAD_EQUAL; }
-      if (key == KeyCode::DOT)          { key = KeyCode::KEYPAD_DOT; }
-      if (key == KeyCode::CURSOR_UP)    { key = KeyCode::PAGEUP; }
-      if (key == KeyCode::CURSOR_DOWN)  { key = KeyCode::PAGEDOWN; }
-      if (key == KeyCode::CURSOR_LEFT)  { key = KeyCode::HOME; }
-      if (key == KeyCode::CURSOR_RIGHT) { key = KeyCode::END; }
-      if (key == KeyCode::RETURN)       { key = KeyCode::ENTER; }
-      if (key == KeyCode::DELETE)       { key = KeyCode::FORWARD_DELETE; }
+    if (flags.isOn(ModifierFlag::FN)) {
+      if (value_ == KeyCode::M)            { value_ = KeyCode::KEYPAD_0; }
+      if (value_ == KeyCode::J)            { value_ = KeyCode::KEYPAD_1; }
+      if (value_ == KeyCode::K)            { value_ = KeyCode::KEYPAD_2; }
+      if (value_ == KeyCode::L)            { value_ = KeyCode::KEYPAD_3; }
+      if (value_ == KeyCode::U)            { value_ = KeyCode::KEYPAD_4; }
+      if (value_ == KeyCode::I)            { value_ = KeyCode::KEYPAD_5; }
+      if (value_ == KeyCode::O)            { value_ = KeyCode::KEYPAD_6; }
+      if (value_ == KeyCode::KEY_7)        { value_ = KeyCode::KEYPAD_7; }
+      if (value_ == KeyCode::KEY_8)        { value_ = KeyCode::KEYPAD_8; }
+      if (value_ == KeyCode::KEY_9)        { value_ = KeyCode::KEYPAD_9; }
+      if (value_ == KeyCode::KEY_6)        { value_ = KeyCode::KEYPAD_CLEAR; }
+      if (value_ == KeyCode::SLASH)        { value_ = KeyCode::KEYPAD_PLUS; }
+      if (value_ == KeyCode::SEMICOLON)    { value_ = KeyCode::KEYPAD_MINUS; }
+      if (value_ == KeyCode::P)            { value_ = KeyCode::KEYPAD_MULTIPLY; }
+      if (value_ == KeyCode::KEY_0)        { value_ = KeyCode::KEYPAD_SLASH; }
+      if (value_ == KeyCode::MINUS)        { value_ = KeyCode::KEYPAD_EQUAL; }
+      if (value_ == KeyCode::DOT)          { value_ = KeyCode::KEYPAD_DOT; }
+      if (value_ == KeyCode::CURSOR_UP)    { value_ = KeyCode::PAGEUP; }
+      if (value_ == KeyCode::CURSOR_DOWN)  { value_ = KeyCode::PAGEDOWN; }
+      if (value_ == KeyCode::CURSOR_LEFT)  { value_ = KeyCode::HOME; }
+      if (value_ == KeyCode::CURSOR_RIGHT) { value_ = KeyCode::END; }
+      if (value_ == KeyCode::RETURN)       { value_ = KeyCode::ENTER; }
+      if (value_ == KeyCode::DELETE)       { value_ = KeyCode::FORWARD_DELETE; }
     }
     if (keyboardType == KeyboardType::POWERBOOK ||
         keyboardType == KeyboardType::POWERBOOK_G4 ||
         keyboardType == KeyboardType::POWERBOOK_G4_TI) {
-      if (key == KeyCode::ENTER) { key = KeyCode::ENTER_POWERBOOK; }
+      if (value_ == KeyCode::ENTER) { value_ = KeyCode::ENTER_POWERBOOK; }
     }
 
     // ------------------------------------------------------------
     // set ModifierFlag::KEYPAD, ModifierFlag::CURSOR
-    flags = ModifierFlag::stripCURSOR(flags);
-    flags = ModifierFlag::stripKEYPAD(flags);
+    flags.stripCURSOR().stripKEYPAD();
 
     // Note: KEYPAD_CLEAR, KEYPAD_COMMA have no ModifierFlag::KEYPAD bit.
-    if (key == KeyCode::KEYPAD_0 || key == KeyCode::KEYPAD_1 || key == KeyCode::KEYPAD_2 ||
-        key == KeyCode::KEYPAD_3 || key == KeyCode::KEYPAD_4 || key == KeyCode::KEYPAD_5 ||
-        key == KeyCode::KEYPAD_6 || key == KeyCode::KEYPAD_7 || key == KeyCode::KEYPAD_8 ||
-        key == KeyCode::KEYPAD_9 ||
-        key == KeyCode::KEYPAD_DOT ||
-        key == KeyCode::KEYPAD_MULTIPLY ||
-        key == KeyCode::KEYPAD_PLUS ||
-        key == KeyCode::KEYPAD_SLASH ||
-        key == KeyCode::KEYPAD_MINUS ||
-        key == KeyCode::KEYPAD_EQUAL) {
-      flags |= ModifierFlag::KEYPAD;
+    if (value_ == KeyCode::KEYPAD_0 || value_ == KeyCode::KEYPAD_1 || value_ == KeyCode::KEYPAD_2 ||
+        value_ == KeyCode::KEYPAD_3 || value_ == KeyCode::KEYPAD_4 || value_ == KeyCode::KEYPAD_5 ||
+        value_ == KeyCode::KEYPAD_6 || value_ == KeyCode::KEYPAD_7 || value_ == KeyCode::KEYPAD_8 ||
+        value_ == KeyCode::KEYPAD_9 ||
+        value_ == KeyCode::KEYPAD_DOT ||
+        value_ == KeyCode::KEYPAD_MULTIPLY ||
+        value_ == KeyCode::KEYPAD_PLUS ||
+        value_ == KeyCode::KEYPAD_SLASH ||
+        value_ == KeyCode::KEYPAD_MINUS ||
+        value_ == KeyCode::KEYPAD_EQUAL) {
+      flags.add(ModifierFlag::KEYPAD);
     }
 
-    if (key == KeyCode::CURSOR_UP ||
-        key == KeyCode::CURSOR_DOWN ||
-        key == KeyCode::CURSOR_LEFT ||
-        key == KeyCode::CURSOR_RIGHT) {
-      flags |= ModifierFlag::CURSOR;
+    if (value_ == KeyCode::CURSOR_UP ||
+        value_ == KeyCode::CURSOR_DOWN ||
+        value_ == KeyCode::CURSOR_LEFT ||
+        value_ == KeyCode::CURSOR_RIGHT) {
+      flags.add(ModifierFlag::CURSOR);
     }
   }
 
-  KeyCode::KeyCode
+  KeyCode
   ModifierFlag::getKeyCode(unsigned int flag) {
     if (flag == ModifierFlag::CAPSLOCK) return KeyCode::CAPSLOCK;
     if (flag == ModifierFlag::SHIFT_L) return KeyCode::SHIFT_L;
@@ -128,19 +141,19 @@ namespace org_pqrs_KeyRemap4MacBook {
     return KeyCode::VK_NONE;
   }
 
-  ModifierFlag::ModifierFlag
-  KeyCode::getModifierFlag(unsigned int key)
+  ModifierFlag::Mask
+  KeyCode::getModifierFlag(void)
   {
-    if (key == KeyCode::CAPSLOCK) return ModifierFlag::CAPSLOCK;
-    if (key == KeyCode::SHIFT_L) return ModifierFlag::SHIFT_L;
-    if (key == KeyCode::SHIFT_R) return ModifierFlag::SHIFT_R;
-    if (key == KeyCode::CONTROL_L) return ModifierFlag::CONTROL_L;
-    if (key == KeyCode::CONTROL_R) return ModifierFlag::CONTROL_R;
-    if (key == KeyCode::OPTION_L) return ModifierFlag::OPTION_L;
-    if (key == KeyCode::OPTION_R) return ModifierFlag::OPTION_R;
-    if (key == KeyCode::COMMAND_L) return ModifierFlag::COMMAND_L;
-    if (key == KeyCode::COMMAND_R) return ModifierFlag::COMMAND_R;
-    if (key == KeyCode::FN) return ModifierFlag::FN;
+    if (value_ == KeyCode::CAPSLOCK) return ModifierFlag::CAPSLOCK;
+    if (value_ == KeyCode::SHIFT_L) return ModifierFlag::SHIFT_L;
+    if (value_ == KeyCode::SHIFT_R) return ModifierFlag::SHIFT_R;
+    if (value_ == KeyCode::CONTROL_L) return ModifierFlag::CONTROL_L;
+    if (value_ == KeyCode::CONTROL_R) return ModifierFlag::CONTROL_R;
+    if (value_ == KeyCode::OPTION_L) return ModifierFlag::OPTION_L;
+    if (value_ == KeyCode::OPTION_R) return ModifierFlag::OPTION_R;
+    if (value_ == KeyCode::COMMAND_L) return ModifierFlag::COMMAND_L;
+    if (value_ == KeyCode::COMMAND_R) return ModifierFlag::COMMAND_R;
+    if (value_ == KeyCode::FN) return ModifierFlag::FN;
 
     return ModifierFlag::NONE;
   }

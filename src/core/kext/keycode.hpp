@@ -57,8 +57,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
   };
 
-  namespace ModifierFlag {
-    enum ModifierFlag {
+  class KeyCode;
+
+  class ModifierFlag {
+  public:
+    enum Mask {
       CAPSLOCK =    0x10000,
 
       SHIFT_L =     0x20002,
@@ -79,42 +82,34 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       NONE =      0x1000000,
     };
+    static const Mask list[];
+    static const int listsize;
 
-    const ModifierFlag::ModifierFlag list[] = {
-      ModifierFlag::CAPSLOCK,
-      ModifierFlag::SHIFT_L,
-      ModifierFlag::SHIFT_R,
-      ModifierFlag::CONTROL_L,
-      ModifierFlag::CONTROL_R,
-      ModifierFlag::OPTION_L,
-      ModifierFlag::OPTION_R,
-      ModifierFlag::COMMAND_L,
-      ModifierFlag::COMMAND_R,
-      ModifierFlag::FN,
-    };
-    const int listsize = sizeof(list) / sizeof(list[0]);
+    static KeyCode getKeyCode(unsigned int flag);
+  };
+  class Flags : public ParamsItem {
+  public:
+    Flags(void) : ParamsItem() {}
+    Flags(unsigned int v) : ParamsItem(v) {}
 
-    // ----------------------------------------------------------------------
-    inline unsigned int stripFN(unsigned int flags) {
-      return (flags & ~ModifierFlag::FN);
-    }
-    inline unsigned int stripCURSOR(unsigned int flags) {
-      return (flags & ~ModifierFlag::CURSOR);
-    }
-    inline unsigned int stripKEYPAD(unsigned int flags) {
-      return (flags & ~ModifierFlag::KEYPAD);
-    }
-    inline unsigned int stripNONE(unsigned int flags) {
-      return (flags & ~ModifierFlag::NONE);
-    }
+    Flags& add(ModifierFlag::Mask flag) { value_ |= flag; return *this; }
+    Flags& stripFN(void)     { value_ &= ~static_cast<unsigned int>(ModifierFlag::FN);     return *this; }
+    Flags& stripCURSOR(void) { value_ &= ~static_cast<unsigned int>(ModifierFlag::CURSOR); return *this; }
+    Flags& stripKEYPAD(void) { value_ &= ~static_cast<unsigned int>(ModifierFlag::KEYPAD); return *this; }
+    Flags& stripNONE(void)   { value_ &= ~static_cast<unsigned int>(ModifierFlag::NONE);   return *this; }
 
-    inline bool isOn(unsigned int flags, ModifierFlag::ModifierFlag f) {
-      return ((flags & f) == static_cast<unsigned int>(f));
+    bool isOn(ModifierFlag::Mask flag) {
+      unsigned int mask = flag;
+      return (value_ & mask) == mask;
     }
-  }
+  };
 
-  namespace KeyCode {
-    enum KeyCode {
+  class KeyCode : public ParamsItem {
+  public:
+    KeyCode(void) : ParamsItem() {}
+    KeyCode(unsigned int v) : ParamsItem(v) {}
+
+    enum {
       RETURN = 36,
       BACKSLASH = 42,
       TAB = 48,
@@ -266,17 +261,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       VK__END__,
     };
 
-    void normalizeKey(unsigned int& key, unsigned int& flags, const KeyboardType& keyboardType);
-    void reverseNormalizeKey(unsigned int& key, unsigned int& flags, const KeyboardType& keyboardType);
-  }
+    void normalizeKey(Flags& flags, const KeyboardType& keyboardType);
+    void reverseNormalizeKey(Flags& flags, const KeyboardType& keyboardType);
 
-  namespace ModifierFlag {
-    KeyCode::KeyCode getKeyCode(unsigned int flag);
-  }
-  namespace KeyCode {
-    ModifierFlag::ModifierFlag getModifierFlag(unsigned int key);
-    inline bool isModifier(unsigned int key) { return getModifierFlag(key) != ModifierFlag::NONE; }
-  }
+    ModifierFlag::Mask getModifierFlag(void);
+    bool isModifier(void) { return getModifierFlag() != ModifierFlag::NONE; }
+  };
 
   namespace ConsumerKeyCode {
     enum ConsumerKeyCode {
