@@ -70,7 +70,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       isAppleDriver = false;
     }
 
-    isInternalKeyboard = KeyboardType::isInternalKeyboard(device->deviceType());
+    isInternalKeyboard = KeyboardType(device->deviceType()).isInternalKeyboard();
 
     return refresh();
   }

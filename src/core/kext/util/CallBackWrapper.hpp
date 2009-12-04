@@ -2,6 +2,7 @@
 #define CALLBACKWRAPPER_HPP
 
 #include "base.hpp"
+#include "keycode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   class Params_KeyboardEventCallBack {
@@ -10,7 +11,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void apply(void) const;
 
     void setcurrent(void);
-    static unsigned int getcurrent_keyboardType(void);
+    static KeyboardType getcurrent_keyboardType(void);
     static AbsoluteTime& getcurrent_ts(void);
 
     OSObject* target;
@@ -21,14 +22,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     unsigned int charSet;
     unsigned int origCharCode;
     unsigned int origCharSet;
-    unsigned int keyboardType;
+    KeyboardType keyboardType;
     bool repeat;
     AbsoluteTime ts;
     OSObject* sender;
     void* refcon;
 
   private:
-    static unsigned int current_keyboardType_;
+    static KeyboardType current_keyboardType_;
   };
 
   class Params_KeyboardSpecialEventCallback {

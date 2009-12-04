@@ -3,91 +3,82 @@
 #include "Config.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  namespace PressDownKeys {
-    enum {
-      MAXNUM = 16,
-    };
-    struct Item {
-      bool enable;
-      unsigned int key;
-      unsigned int keyboardType;
-    };
-    Item item[MAXNUM];
+  PressDownKeys::Item PressDownKeys::item_[PressDownKeys::MAXNUM];
 
-    void
-    initialize(void)
-    {
-      for (int i = 0; i < MAXNUM; ++i) {
-        item[i].enable = false;
-      }
+  void
+  PressDownKeys::initialize(void)
+  {
+    for (int i = 0; i < MAXNUM; ++i) {
+      item_[i].enable = false;
+    }
+  }
+
+  void
+  PressDownKeys::add(unsigned int key, const KeyboardType& keyboardType)
+  {
+    if (key == KeyCode::VK_NONE) return;
+
+    // skip if already added.
+    for (int i = 0; i < MAXNUM; ++i) {
+      if (! item_[i].enable) continue;
+      if (item_[i].key != key) continue;
+      if (item_[i].keyboardType != keyboardType) continue;
+      return;
     }
 
-    void
-    add(unsigned int _key, unsigned int _keyboardType)
-    {
-      if (_key == KeyCode::VK_NONE) return;
+    // register
+    for (int i = 0; i < MAXNUM; ++i) {
+      if (! item_[i].enable) {
+        item_[i].enable = true;
+        item_[i].key = key;
+        item_[i].keyboardType = keyboardType;
 
-      // skip if already added.
-      for (int i = 0; i < MAXNUM; ++i) {
-        if (! item[i].enable) continue;
-        if (item[i].key != _key) continue;
-        if (item[i].keyboardType != _keyboardType) continue;
+        if (config.debug_devel) {
+          printf("KeyRemap4MacBook -Info- PressDownKeys::add (key = %d)\n", key);
+        }
         return;
       }
-
-      // register
-      for (int i = 0; i < MAXNUM; ++i) {
-        if (! item[i].enable) {
-          item[i].enable = true;
-          item[i].key = _key;
-          item[i].keyboardType = _keyboardType;
-
-          if (config.debug_devel) {
-            printf("KeyRemap4MacBook -Info- PressDownKeys::add (key = %d)\n", _key);
-          }
-          return;
-        }
-      }
     }
+  }
 
-    void
-    remove(unsigned int _key, unsigned int _keyboardType)
-    {
-      for (int i = 0; i < MAXNUM; ++i) {
-        if (! item[i].enable) continue;
-        if (item[i].key != _key) continue;
-        if (item[i].keyboardType != _keyboardType) continue;
-        item[i].enable = false;
+  void
+  PressDownKeys::remove(unsigned int key, const KeyboardType& keyboardType)
+  {
+    for (int i = 0; i < MAXNUM; ++i) {
+      if (! item_[i].enable) continue;
+      if (item_[i].key != key) continue;
+      if (item_[i].keyboardType != keyboardType) continue;
 
-        if (config.debug_devel) {
-          printf("KeyRemap4MacBook -Info- PressDownKeys::remove (key = %d)\n", _key);
-        }
-      }
-    }
+      item_[i].enable = false;
 
-    void
-    clear(OSObject* target, AbsoluteTime ts, OSObject* sender, void* refcon)
-    {
       if (config.debug_devel) {
-        printf("KeyRemap4MacBook -Info- PressDownKeys::clear\n");
+        printf("KeyRemap4MacBook -Info- PressDownKeys::remove (key = %d)\n", key);
+      }
+    }
+  }
+
+  void
+  PressDownKeys::clear(OSObject* target, AbsoluteTime ts, OSObject* sender, void* refcon)
+  {
+    if (config.debug_devel) {
+      printf("KeyRemap4MacBook -Info- PressDownKeys::clear\n");
+    }
+
+    Params_KeyboardEventCallBack callbackparams = {
+      target, KeyEvent::UP, 0, 0, 0, 0, 0, 0, 0, false, ts, sender, refcon,
+    };
+
+    for (int i = 0; i < MAXNUM; ++i) {
+      if (! item_[i].enable) continue;
+      item_[i].enable = false;
+
+      if (config.debug_devel) {
+        printf("KeyRemap4MacBook -Info- PressDownKeys::clear (key = %d)\n", item_[i].key);
       }
 
-      Params_KeyboardEventCallBack callbackparams = {
-        target, KeyEvent::UP, 0, 0, 0, 0, 0, 0, 0, false, ts, sender, refcon,
-      };
-
-      for (int i = 0; i < MAXNUM; ++i) {
-        if (! item[i].enable) continue;
-        item[i].enable = false;
-
-        if (config.debug_devel) {
-          printf("KeyRemap4MacBook -Info- PressDownKeys::clear (key = %d)\n", item[i].key);
-        }
-
-        callbackparams.key = item[i].key;
-        callbackparams.keyboardType = item[i].keyboardType;
-        callbackparams.apply();
-      }
+      callbackparams.key = item_[i].key;
+      callbackparams.keyboardType = item_[i].keyboardType;
+      callbackparams.apply();
     }
   }
 }

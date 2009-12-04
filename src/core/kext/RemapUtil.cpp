@@ -428,7 +428,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  RemapUtil::fireKey(unsigned int eventType, unsigned int flags, unsigned int key, unsigned int keyboardType, const AbsoluteTime& ts,
+  RemapUtil::fireKey(unsigned int eventType, unsigned int flags, unsigned int key, const KeyboardType& keyboardType, const AbsoluteTime& ts,
                      const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
   {
     HookedKeyboard* hk = ListHookedKeyboard::instance().get();
@@ -574,7 +574,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       remapFlags(fireFlags, toKeyCodeFlag | toFlags);
 
       if (isFireRepeat) {
-        KeyboardRepeat::set(KeyEvent::DOWN, savedflags_, fireKeyCode, static_cast<KeyboardType::KeyboardType>(remapParams.params.keyboardType),
+        KeyboardRepeat::set(KeyEvent::DOWN, savedflags_, fireKeyCode, remapParams.params.keyboardType,
                             config.get_keyoverlaidmodifier_initial_wait());
       }
 
