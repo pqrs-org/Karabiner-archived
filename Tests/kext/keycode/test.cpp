@@ -282,3 +282,9 @@ TEST(KeyCode, getModifierFlag) {
   EXPECT_EQ(ModifierFlag::NONE, KeyCode::getModifierFlag(KeyCode::A));
   EXPECT_EQ(ModifierFlag::NONE, KeyCode::getModifierFlag(KeyCode::VK_NONE));
 }
+
+TEST(KeyCode, isModifier) {
+  EXPECT_EQ(true, KeyCode::isModifier(KeyCode::CAPSLOCK));
+  EXPECT_EQ(true, KeyCode::isModifier(KeyCode::SHIFT_L));
+  EXPECT_EQ(false, KeyCode::isModifier(KeyCode::A));
+}
