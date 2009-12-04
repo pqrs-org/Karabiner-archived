@@ -41,8 +41,6 @@
 		34C7A9B00CE4605B00C98397 /* Config.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34C7A9AF0CE4605B00C98397 /* Config.hpp */; };
 		34F13A860E73E69D006EB163 /* IntervalChecker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F13A840E73E69D006EB163 /* IntervalChecker.cpp */; };
 		34F13A870E73E69D006EB163 /* IntervalChecker.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34F13A850E73E69D006EB163 /* IntervalChecker.hpp */; };
-		34F13A8F0E740A7B006EB163 /* ListFireRelativePointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F13A8D0E740A7B006EB163 /* ListFireRelativePointer.cpp */; };
-		34F13A900E740A7B006EB163 /* ListFireRelativePointer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34F13A8E0E740A7B006EB163 /* ListFireRelativePointer.hpp */; };
 		34F14BAE0E861FC5001C15F3 /* CallBackWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F14BAC0E861FC5001C15F3 /* CallBackWrapper.cpp */; };
 		34F14BAF0E861FC5001C15F3 /* CallBackWrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34F14BAD0E861FC5001C15F3 /* CallBackWrapper.hpp */; };
 		34F14BB40E86205E001C15F3 /* ListHookedKeyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F14BB20E86205E001C15F3 /* ListHookedKeyboard.cpp */; };
@@ -93,8 +91,6 @@
 		34C7A9AF0CE4605B00C98397 /* Config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config.hpp; sourceTree = "<group>"; };
 		34F13A840E73E69D006EB163 /* IntervalChecker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IntervalChecker.cpp; path = util/IntervalChecker.cpp; sourceTree = "<group>"; };
 		34F13A850E73E69D006EB163 /* IntervalChecker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IntervalChecker.hpp; path = util/IntervalChecker.hpp; sourceTree = "<group>"; };
-		34F13A8D0E740A7B006EB163 /* ListFireRelativePointer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ListFireRelativePointer.cpp; path = util/ListFireRelativePointer.cpp; sourceTree = "<group>"; };
-		34F13A8E0E740A7B006EB163 /* ListFireRelativePointer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ListFireRelativePointer.hpp; path = util/ListFireRelativePointer.hpp; sourceTree = "<group>"; };
 		34F14BAC0E861FC5001C15F3 /* CallBackWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CallBackWrapper.cpp; path = util/CallBackWrapper.cpp; sourceTree = "<group>"; };
 		34F14BAD0E861FC5001C15F3 /* CallBackWrapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CallBackWrapper.hpp; path = util/CallBackWrapper.hpp; sourceTree = "<group>"; };
 		34F14BB20E86205E001C15F3 /* ListHookedKeyboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ListHookedKeyboard.cpp; path = util/ListHookedKeyboard.cpp; sourceTree = "<group>"; };
@@ -197,8 +193,6 @@
 				34F14BAD0E861FC5001C15F3 /* CallBackWrapper.hpp */,
 				34012A6C0E7AED010069FE39 /* TimerWrapper.cpp */,
 				34012A6D0E7AED010069FE39 /* TimerWrapper.hpp */,
-				34F13A8D0E740A7B006EB163 /* ListFireRelativePointer.cpp */,
-				34F13A8E0E740A7B006EB163 /* ListFireRelativePointer.hpp */,
 				34F13A840E73E69D006EB163 /* IntervalChecker.cpp */,
 				34F13A850E73E69D006EB163 /* IntervalChecker.hpp */,
 				346B753C0E72C0BA00F9A79F /* FlagStatus.cpp */,
@@ -227,7 +221,6 @@
 				349581090E7232A5003773EC /* PressDownKeys.hpp in Headers */,
 				346B753F0E72C0BA00F9A79F /* FlagStatus.hpp in Headers */,
 				34F13A870E73E69D006EB163 /* IntervalChecker.hpp in Headers */,
-				34F13A900E740A7B006EB163 /* ListFireRelativePointer.hpp in Headers */,
 				34012A6F0E7AED010069FE39 /* TimerWrapper.hpp in Headers */,
 				345004AE0E7CE48F0075324B /* Core.hpp in Headers */,
 				345004B00E7CE48F0075324B /* Driver.hpp in Headers */,
@@ -317,7 +310,6 @@
 				349581080E7232A5003773EC /* PressDownKeys.cpp in Sources */,
 				346B753E0E72C0BA00F9A79F /* FlagStatus.cpp in Sources */,
 				34F13A860E73E69D006EB163 /* IntervalChecker.cpp in Sources */,
-				34F13A8F0E740A7B006EB163 /* ListFireRelativePointer.cpp in Sources */,
 				34012A6E0E7AED010069FE39 /* TimerWrapper.cpp in Sources */,
 				345004AD0E7CE48F0075324B /* Core.cpp in Sources */,
 				345004AF0E7CE48F0075324B /* Driver.cpp in Sources */,

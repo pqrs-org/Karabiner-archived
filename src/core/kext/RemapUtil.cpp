@@ -4,10 +4,10 @@
 #include "util/KeyboardRepeat.hpp"
 #include "util/ListHookedKeyboard.hpp"
 #include "util/ListHookedConsumer.hpp"
+#include "util/ListHookedPointing.hpp"
 #include "util/PointingButtonStatus.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  ListFireRelativePointer listFireRelativePointer;
   FirePointingScroll firePointingScroll;
 
   bool
@@ -233,12 +233,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     if (RemapUtil::isKeyDown(remapParams, fromKeyCode)) {
-      listFireRelativePointer.add(toButton);
+      RemapUtil::fireRelativePointer(toButton);
 
       PointingButtonStatus::set(toButton, true);
 
     } else {
-      listFireRelativePointer.add(PointingButton::NONE);
+      RemapUtil::fireRelativePointer(PointingButton::NONE);
 
       PointingButtonStatus::set(toButton, false);
     }
@@ -501,6 +501,22 @@ namespace org_pqrs_KeyRemap4MacBook {
     params.apply();
   }
 
+  void
+  RemapUtil::fireRelativePointer(PointingButton::PointingButton button)
+  {
+    HookedPointing* hp = ListHookedPointing::instance().get();
+    if (! hp) return;
+
+    OSObject* target = hp->getOrig_relativePointerEventTarget();
+    OSObject* sender = hp->get();
+    AbsoluteTime& ts = Params_RelativePointerEventCallback::getcurrent_ts();
+
+    Params_RelativePointerEventCallback params = {
+      target, button, 0, 0, ts, sender, NULL,
+    };
+    params.apply();
+  }
+
   // --------------------
   void
   RemapUtil::pointingRelativeToScroll(const RemapPointingParams_relative& remapParams)
@@ -728,7 +744,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // PointingRelativeToScroll doesn't aim it, we release the left button and do normal scroll event.
       if (button & PointingButton::LEFT) {
         if (! isButtonHeldDown) {
-          listFireRelativePointer.add(PointingButton::NONE);
+          RemapUtil::fireRelativePointer(PointingButton::NONE);
         }
       }
 

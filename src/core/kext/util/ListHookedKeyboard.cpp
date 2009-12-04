@@ -40,6 +40,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         keyboardType, repeat, ts, sender, refcon,
       };
       params.setcurrent();
+
       Core::remap_KeyboardEventCallback(params);
     }
   }

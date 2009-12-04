@@ -7,7 +7,6 @@
 #include "keycode.hpp"
 #include "util/FlagStatus.hpp"
 #include "util/PressDownKeys.hpp"
-#include "util/ListFireRelativePointer.hpp"
 #include "util/IntervalChecker.hpp"
 #include "util/EventWatcher.hpp"
 
@@ -182,6 +181,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void fireConsumer(const Params_KeyboardSpecialEventCallback& params);
+    void fireRelativePointer(PointingButton::PointingButton button);
 
     // ----------------------------------------
     void pointingRelativeToScroll(const RemapPointingParams_relative& remapParams);
@@ -292,9 +292,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   private:
     unsigned int lastkeycode_;
   };
-
-  // --------------------
-  extern ListFireRelativePointer listFireRelativePointer;
 
   // --------------------
   class FirePointingScroll {

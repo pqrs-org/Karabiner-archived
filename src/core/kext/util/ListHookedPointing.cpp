@@ -30,6 +30,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       Params_RelativePointerEventCallback params = {
         target, buttons, dx, dy, ts, sender, refcon,
       };
+      params.setcurrent();
+
       Core::remap_RelativePointerEventCallback(params);
     }
 
@@ -58,6 +60,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         pointDelta1, pointDelta2, pointDelta3,
         options, ts, sender, refcon,
       };
+      params.setcurrent();
+
       Core::remap_ScrollWheelEventCallback(params);
     }
   }
