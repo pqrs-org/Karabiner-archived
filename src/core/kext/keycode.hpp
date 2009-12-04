@@ -36,7 +36,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     KeyboardType(void) : ParamsItem() {}
     KeyboardType(unsigned int v) : ParamsItem(v) {}
 
-    bool isInternalKeyboard(void);
+    bool isInternalKeyboard(void) const;
 
     enum {
       MACBOOK = 37,
@@ -98,7 +98,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     Flags& stripKEYPAD(void) { value_ &= ~static_cast<unsigned int>(ModifierFlag::KEYPAD); return *this; }
     Flags& stripNONE(void)   { value_ &= ~static_cast<unsigned int>(ModifierFlag::NONE);   return *this; }
 
-    bool isOn(ModifierFlag::Mask flag) {
+    bool isOn(ModifierFlag::Mask flag) const {
       unsigned int mask = flag;
       return (value_ & mask) == mask;
     }
@@ -264,12 +264,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     void normalizeKey(Flags& flags, const KeyboardType& keyboardType);
     void reverseNormalizeKey(Flags& flags, const KeyboardType& keyboardType);
 
-    ModifierFlag::Mask getModifierFlag(void);
-    bool isModifier(void) { return getModifierFlag() != ModifierFlag::NONE; }
+    ModifierFlag::Mask getModifierFlag(void) const;
+    bool isModifier(void) const { return getModifierFlag() != ModifierFlag::NONE; }
   };
 
-  namespace ConsumerKeyCode {
-    enum ConsumerKeyCode {
+  class ConsumerKeyCode : public ParamsItem {
+  public:
+    ConsumerKeyCode(void) : ParamsItem() {}
+    ConsumerKeyCode(unsigned int v) : ParamsItem(v) {}
+
+    enum {
       VOLUME_UP = 0,
       VOLUME_DOWN = 1,
       POWER = 6,
@@ -294,17 +298,22 @@ namespace org_pqrs_KeyRemap4MacBook {
       VK_NONE,
       VK__END__,
     };
-  }
+  };
 
-  namespace PointingButton {
-    enum PointingButton {
+  class PointingButton {
+    enum Mask {
       NONE = 0,
       LEFT = 4,
       RIGHT = 1,
       MIDDLE = 2,
       BUTTON4 = 8,
     };
-  }
+  };
+  class Buttons : public ParamsItem {
+  public:
+    Buttons(void) : ParamsItem() {}
+    Buttons(unsigned int v) : ParamsItem(v) {}
+  };
 }
 
 #endif

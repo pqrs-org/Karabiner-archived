@@ -2,7 +2,7 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   bool
-  KeyboardType::isInternalKeyboard(void)
+  KeyboardType::isInternalKeyboard(void) const
   {
     if (value_ == KeyboardType::MACBOOK) return true;
     if (value_ == KeyboardType::MACBOOK_COREDUO) return true;
@@ -142,7 +142,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   ModifierFlag::Mask
-  KeyCode::getModifierFlag(void)
+  KeyCode::getModifierFlag(void) const
   {
     if (value_ == KeyCode::CAPSLOCK) return ModifierFlag::CAPSLOCK;
     if (value_ == KeyCode::SHIFT_L) return ModifierFlag::SHIFT_L;
