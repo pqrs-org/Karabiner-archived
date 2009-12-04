@@ -4,13 +4,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   KeyboardType::isInternalKeyboard(void)
   {
-    if (keyboardType_ == KeyboardType::MACBOOK) return true;
-    if (keyboardType_ == KeyboardType::MACBOOK_COREDUO) return true;
-    if (keyboardType_ == KeyboardType::POWERBOOK) return true;
-    if (keyboardType_ == KeyboardType::POWERBOOK_G4) return true;
-    if (keyboardType_ == KeyboardType::POWERBOOK_G4_TI) return true;
-    if (keyboardType_ == KeyboardType::JIS_MACBOOK) return true;
-    if (keyboardType_ == KeyboardType::JIS_MACBOOK_2008) return true;
+    if (value_ == KeyboardType::MACBOOK) return true;
+    if (value_ == KeyboardType::MACBOOK_COREDUO) return true;
+    if (value_ == KeyboardType::POWERBOOK) return true;
+    if (value_ == KeyboardType::POWERBOOK_G4) return true;
+    if (value_ == KeyboardType::POWERBOOK_G4_TI) return true;
+    if (value_ == KeyboardType::JIS_MACBOOK) return true;
+    if (value_ == KeyboardType::JIS_MACBOOK_2008) return true;
     return false;
   }
 

@@ -14,7 +14,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.debug) return;
 
     printf("KeyRemap4MacBook KeyboardEventCallback [%s]: eventType %d, flags 0x%x, key %d, kbdType %d\n",
-           message, eventType, flags, key, keyboardType.get());
+           message, eventType.get(), flags, key, keyboardType.get());
   }
 
   void
@@ -23,7 +23,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.debug) return;
 
     printf("KeyRemap4MacBook KeyboardSpecialEventCallBack [%s]: eventType %d, flags 0x%x, key %d, flavor %d, guid %lld\n",
-           message, eventType, flags, key, flavor, guid);
+           message, eventType.get(), flags, key, flavor, guid);
   }
 
   void
@@ -93,14 +93,14 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ------------------------------------------------------------
     log("sending");
-    callback(target, eventType, flags, key, charCode, charSet, origCharCode, origCharSet,
+    callback(target, eventType.get(), flags, key, charCode, charSet, origCharCode, origCharSet,
              keyboardType.get(), repeat, ts, sender, refcon);
 
-    switch (eventType) {
-      case KeyEvent::DOWN:
+    switch (eventType.get()) {
+      case EventType::DOWN:
         EventWatcher::on();
         break;
-      case KeyEvent::MODIFY:
+      case EventType::MODIFY:
         if (ModifierFlag::isOn(flags, KeyCode::getModifierFlag(key))) {
           EventWatcher::on();
         }
@@ -127,9 +127,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! callback) return;
 
     log("sending");
-    callback(target, eventType, flags, key, flavor, guid, repeat, ts, sender, refcon);
+    callback(target, eventType.get(), flags, key, flavor, guid, repeat, ts, sender, refcon);
 
-    if (eventType == KeyEvent::DOWN) {
+    if (eventType == EventType::DOWN) {
       EventWatcher::on();
     }
   }

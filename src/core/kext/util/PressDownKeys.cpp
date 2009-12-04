@@ -65,7 +65,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     Params_KeyboardEventCallBack callbackparams = {
-      target, KeyEvent::UP, 0, 0, 0, 0, 0, 0, 0, false, ts, sender, refcon,
+      target, EventType::UP, 0, 0, 0, 0, 0, 0, 0, false, ts, sender, refcon,
     };
 
     for (int i = 0; i < MAXNUM; ++i) {

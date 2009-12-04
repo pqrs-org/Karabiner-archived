@@ -27,9 +27,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     void set(const RemapConsumerParams &remapParams)
     {
-      if (remapParams.params.eventType == KeyEvent::DOWN) {
+      if (remapParams.params.eventType == EventType::DOWN) {
         ++num;
-      } else if (remapParams.params.eventType == KeyEvent::UP) {
+      } else if (remapParams.params.eventType == EventType::UP) {
         --num;
       }
       log_();

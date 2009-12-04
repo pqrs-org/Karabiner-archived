@@ -293,7 +293,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         HookedKeyboard* hk = ListHookedKeyboard::instance().get();
         if (hk) {
           Params_KeyboardEventCallBack callbackparams = {
-            hk->getOrig_keyboardEventTarget(), KeyEvent::MODIFY, newflags, KeyCode::VK_NONE,
+            hk->getOrig_keyboardEventTarget(), EventType::MODIFY, newflags, KeyCode::VK_NONE,
             0, 0, 0, 0,
             KeyboardType::MACBOOK, false, params.ts, hk->get(), NULL,
           };

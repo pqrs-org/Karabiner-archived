@@ -2,28 +2,41 @@
 #define KEYCODE_HPP
 
 namespace org_pqrs_KeyRemap4MacBook {
-  namespace KeyEvent {
-    enum KeyEvent {
+  class ParamsItem {
+  public:
+    ParamsItem(void) {}
+    ParamsItem(unsigned int v) : value_(v) {}
+
+    unsigned int get(void) const { return value_; }
+    void set(unsigned int v) { value_ = v; }
+
+    bool operator==(const unsigned int& other) const { return value_ == other; }
+    bool operator==(const ParamsItem& other) const { return value_ == other.get(); }
+    bool operator!=(const unsigned int& other) const { return ! (*this == other); }
+    bool operator!=(const ParamsItem& other) const { return ! (*this == other); }
+
+  protected:
+    unsigned int value_;
+  };
+
+  class EventType : public ParamsItem {
+  public:
+    EventType(void) : ParamsItem() {}
+    EventType(unsigned int v) : ParamsItem(v) {}
+
+    enum {
       DOWN = 10,
       UP = 11,
       MODIFY = 12,
     };
-  }
+  };
 
-  class KeyboardType {
+  class KeyboardType : public ParamsItem {
   public:
-    KeyboardType(void) {}
-    KeyboardType(unsigned int keyboardType) : keyboardType_(keyboardType) {}
-
-    unsigned int get(void) const { return keyboardType_; }
-    void set(unsigned int v) { keyboardType_ = v; }
+    KeyboardType(void) : ParamsItem() {}
+    KeyboardType(unsigned int v) : ParamsItem(v) {}
 
     bool isInternalKeyboard(void);
-
-    bool operator==(const unsigned int& other) const { return keyboardType_ == other; }
-    bool operator==(const KeyboardType& other) const { return keyboardType_ == other.get(); }
-    bool operator!=(const unsigned int& other) const { return ! (*this == other); }
-    bool operator!=(const KeyboardType& other) const { return ! (*this == other); }
 
     enum {
       MACBOOK = 37,
@@ -42,9 +55,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       JIS_PC_USB_KEYBOARD = 42,
       JIS_HAPPY_HACKING_KEYBOARD = 40,
     };
-
-  private:
-    unsigned int keyboardType_;
   };
 
   namespace ModifierFlag {

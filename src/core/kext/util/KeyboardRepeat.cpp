@@ -27,19 +27,19 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  KeyboardRepeat::set(KeyEvent::KeyEvent eventType, unsigned int flags, KeyCode::KeyCode key, const KeyboardType& keyboardType, int wait)
+  KeyboardRepeat::set(EventType::EventType eventType, unsigned int flags, KeyCode::KeyCode key, const KeyboardType& keyboardType, int wait)
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
 
-    switch (eventType) {
-      case KeyEvent::MODIFY:
+    switch (eventType.get()) {
+      case EventType::MODIFY:
         goto cancel;
 
-      case KeyEvent::UP:
+      case EventType::UP:
         if (static_cast<unsigned int>(key) == params_.key) goto cancel;
         break;
 
-      case KeyEvent::DOWN:
+      case EventType::DOWN:
         if (key == KeyCode::VK_NONE) goto cancel;
 
         {
