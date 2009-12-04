@@ -182,6 +182,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     void fireConsumer(const Params_KeyboardSpecialEventCallback& params);
     void fireRelativePointer(PointingButton::PointingButton button);
+    void fireScrollWheel(short int deltaAxis1, short int deltaAxis2, short int deltaAxis3,
+                         IOFixed fixedDelta1, IOFixed fixedDelta2, IOFixed fixedDelta3,
+                         SInt32 pointDelta1, SInt32 pointDelta2, SInt32 pointDelta3);
 
     // ----------------------------------------
     void pointingRelativeToScroll(const RemapPointingParams_relative& remapParams);
@@ -292,39 +295,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   private:
     unsigned int lastkeycode_;
   };
-
-  // --------------------
-  class FirePointingScroll {
-  public:
-    void set(short int _deltaAxis1, short int _deltaAxis2, short int _deltaAxis3, IOFixed _fixedDelta1, IOFixed _fixedDelta2, IOFixed _fixedDelta3, SInt32 _pointDelta1, SInt32 _pointDelta2, SInt32 _pointDelta3) {
-      enable = true;
-      deltaAxis1 = _deltaAxis1;
-      deltaAxis2 = _deltaAxis2;
-      deltaAxis3 = _deltaAxis3;
-      fixedDelta1 = _fixedDelta1;
-      fixedDelta2 = _fixedDelta2;
-      fixedDelta3 = _fixedDelta3;
-      pointDelta1 = _pointDelta1;
-      pointDelta2 = _pointDelta2;
-      pointDelta3 = _pointDelta3;
-    }
-    void fire(ScrollWheelEventCallback callback, OSObject* target, IOHIPointing* pointing, AbsoluteTime ts);
-    bool isEnable(void) const { return enable; }
-
-  private:
-    bool enable;
-    short int deltaAxis1;
-    short int deltaAxis2;
-    short int deltaAxis3;
-    IOFixed fixedDelta1;
-    IOFixed fixedDelta2;
-    IOFixed fixedDelta3;
-    SInt32 pointDelta1;
-    SInt32 pointDelta2;
-    SInt32 pointDelta3;
-  };
-
-  extern FirePointingScroll firePointingScroll;
 
   // ----------------------------------------
   class PointingRelativeToScroll {
