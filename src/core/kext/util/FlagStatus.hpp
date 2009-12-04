@@ -49,12 +49,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     static Item* getFlagStatus(KeyCode::KeyCode keyCode);
 
     static bool isHeldDown(ModifierFlag::ModifierFlag flag);
-    static void increase(ModifierFlag::ModifierFlag flag);
-    static void decrease(ModifierFlag::ModifierFlag flag);
-    static void temporary_increase(ModifierFlag::ModifierFlag flag);
-    static void temporary_decrease(ModifierFlag::ModifierFlag flag);
-    static void lock_increase(ModifierFlag::ModifierFlag flag);
-    static void lock_decrease(ModifierFlag::ModifierFlag flag);
+
+    static void increase(unsigned int flags);
+    static void decrease(unsigned int flags);
+    static void temporary_increase(unsigned int flags);
+    static void temporary_decrease(unsigned int flags);
+    static void lock_increase(unsigned int flags);
+    static void lock_decrease(unsigned int flags);
 
   private:
     static Item item_[ModifierFlag::listsize];
