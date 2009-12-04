@@ -248,3 +248,21 @@ TEST(KeyCode, reverseNormalizeKey) {
   KeyCode::reverseNormalizeKey(key, flags, keyboardType);
   EXPECT_EQ(key, static_cast<unsigned int>(KeyCode::FORWARD_DELETE)); EXPECT_EQ(flags, static_cast<unsigned int>(ModifierFlag::SHIFT_L | ModifierFlag::FN));
 }
+
+TEST(ModifierFlag, getKeyCode) {
+  EXPECT_EQ(KeyCode::CAPSLOCK, ModifierFlag::getKeyCode(ModifierFlag::CAPSLOCK));
+  EXPECT_EQ(KeyCode::SHIFT_L, ModifierFlag::getKeyCode(ModifierFlag::SHIFT_L));
+  EXPECT_EQ(KeyCode::SHIFT_R, ModifierFlag::getKeyCode(ModifierFlag::SHIFT_R));
+  EXPECT_EQ(KeyCode::CONTROL_L, ModifierFlag::getKeyCode(ModifierFlag::CONTROL_L));
+  EXPECT_EQ(KeyCode::CONTROL_R, ModifierFlag::getKeyCode(ModifierFlag::CONTROL_R));
+  EXPECT_EQ(KeyCode::OPTION_L, ModifierFlag::getKeyCode(ModifierFlag::OPTION_L));
+  EXPECT_EQ(KeyCode::OPTION_R, ModifierFlag::getKeyCode(ModifierFlag::OPTION_R));
+  EXPECT_EQ(KeyCode::COMMAND_L, ModifierFlag::getKeyCode(ModifierFlag::COMMAND_L));
+  EXPECT_EQ(KeyCode::COMMAND_R, ModifierFlag::getKeyCode(ModifierFlag::COMMAND_R));
+  EXPECT_EQ(KeyCode::FN, ModifierFlag::getKeyCode(ModifierFlag::FN));
+
+  EXPECT_EQ(KeyCode::VK_NONE, ModifierFlag::getKeyCode(ModifierFlag::CURSOR));
+  EXPECT_EQ(KeyCode::VK_NONE, ModifierFlag::getKeyCode(ModifierFlag::KEYPAD));
+
+  EXPECT_EQ(KeyCode::VK_NONE, ModifierFlag::getKeyCode(ModifierFlag::CAPSLOCK | ModifierFlag::SHIFT_L));
+}
