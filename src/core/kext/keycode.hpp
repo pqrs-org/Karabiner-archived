@@ -248,6 +248,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
   namespace KeyCode {
     ModifierFlag::ModifierFlag getModifierFlag(unsigned int key);
+    inline bool isModifier(unsigned int key) { return getModifierFlag(key) != ModifierFlag::NONE; }
   }
 
   namespace ConsumerKeyCode {
