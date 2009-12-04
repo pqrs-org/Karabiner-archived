@@ -243,6 +243,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     void reverseNormalizeKey(unsigned int& key, unsigned int& flags, unsigned int keyboardType);
   }
 
+  namespace ModifierFlag {
+    KeyCode::KeyCode getKeyCode(unsigned int flag);
+  }
+  namespace KeyCode {
+    ModifierFlag::ModifierFlag getModifierFlag(unsigned int key);
+  }
+
   namespace ConsumerKeyCode {
     enum ConsumerKeyCode {
       VOLUME_UP = 0,
