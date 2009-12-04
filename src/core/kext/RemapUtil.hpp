@@ -61,8 +61,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
 
-    bool isInternalKeyboard(unsigned int keyboardType);
-
     class KeyToKey {
     public:
       // KeyToKey(void) : active_(false) {}
