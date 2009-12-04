@@ -1,6 +1,19 @@
 #include "keycode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
+  bool
+  KeyboardType::isInternalKeyboard(unsigned int keyboardType)
+  {
+    if (keyboardType == KeyboardType::MACBOOK) return true;
+    if (keyboardType == KeyboardType::MACBOOK_COREDUO) return true;
+    if (keyboardType == KeyboardType::POWERBOOK) return true;
+    if (keyboardType == KeyboardType::POWERBOOK_G4) return true;
+    if (keyboardType == KeyboardType::POWERBOOK_G4_TI) return true;
+    if (keyboardType == KeyboardType::JIS_MACBOOK) return true;
+    if (keyboardType == KeyboardType::JIS_MACBOOK_2008) return true;
+    return false;
+  }
+
   void
   KeyCode::normalizeKey(unsigned int &key, unsigned int &flags, unsigned int keyboardType)
   {

@@ -3,6 +3,12 @@
 
 using namespace org_pqrs_KeyRemap4MacBook;
 
+TEST(KeyboardType, isInternalKeyboard) {
+  EXPECT_EQ(true, KeyboardType::isInternalKeyboard(KeyboardType::MACBOOK));
+  EXPECT_EQ(false, KeyboardType::isInternalKeyboard(KeyboardType::JIS_APPLE_USB_KEYBOARD));
+  EXPECT_EQ(false, 0);
+}
+
 TEST(ModifierFlag, stripFN) {
   unsigned int flags = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
   EXPECT_EQ(ModifierFlag::stripFN(flags), flags);
