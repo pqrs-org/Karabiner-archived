@@ -4,9 +4,18 @@
 using namespace org_pqrs_KeyRemap4MacBook;
 
 TEST(KeyboardType, isInternalKeyboard) {
-  EXPECT_EQ(true, KeyboardType::isInternalKeyboard(KeyboardType::MACBOOK));
-  EXPECT_EQ(false, KeyboardType::isInternalKeyboard(KeyboardType::JIS_APPLE_USB_KEYBOARD));
-  EXPECT_EQ(false, 0);
+  {
+    KeyboardType v(KeyboardType::MACBOOK);
+    EXPECT_EQ(true, v.isInternalKeyboard());
+  }
+  {
+    KeyboardType v(KeyboardType::JIS_APPLE_USB_KEYBOARD);
+    EXPECT_EQ(false, v.isInternalKeyboard());
+  }
+  {
+    KeyboardType v;
+    EXPECT_EQ(false, v.isInternalKeyboard());
+  }
 }
 
 TEST(ModifierFlag, stripFN) {

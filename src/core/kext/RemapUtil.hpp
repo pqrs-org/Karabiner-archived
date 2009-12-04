@@ -134,7 +134,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void fireKey(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
 
     void fireKey(unsigned int eventType, unsigned int flags, unsigned int key,
-                 unsigned int keyboardType, const AbsoluteTime& ts,
+                 const KeyboardType& keyboardType, const AbsoluteTime& ts,
                  const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
 
     inline void fireKey(unsigned int eventType, unsigned int flags, unsigned int key,
@@ -151,7 +151,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       RemapUtil::fireKey(static_cast<KeyEvent::KeyEvent>(params.eventType), flags, key, params, workspacedata);
     }
 
-    inline void fireKey_downup(unsigned int flags, KeyCode::KeyCode key, unsigned int keyboardType, const AbsoluteTime& ts,
+    inline void fireKey_downup(unsigned int flags, KeyCode::KeyCode key, const KeyboardType& keyboardType, const AbsoluteTime& ts,
                                const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
       if (! KeyCode::isModifier(key)) {
         RemapUtil::fireKey(KeyEvent::DOWN,   flags, key, keyboardType, ts, workspacedata);

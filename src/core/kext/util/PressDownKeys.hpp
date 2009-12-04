@@ -2,16 +2,28 @@
 #define PRESSDOWNKEYS_HPP
 
 #include "base.hpp"
+#include "keycode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  // ----------------------------------------------------------------------
   // store RemapUtil::fireKey results
-  namespace PressDownKeys {
-    void initialize(void);
-    void add(unsigned int _key, unsigned int _keyboardType);
-    void remove(unsigned int _key, unsigned int _keyboardType);
-    void clear(OSObject* target, AbsoluteTime ts, OSObject* sender, void* refcon);
-  }
+  class PressDownKeys {
+  public:
+    static void initialize(void);
+    static void add(unsigned int key, const KeyboardType& keyboardType);
+    static void remove(unsigned int key, const KeyboardType& keyboardType);
+    static void clear(OSObject* target, AbsoluteTime ts, OSObject* sender, void* refcon);
+
+  private:
+    enum {
+      MAXNUM = 16,
+    };
+    struct Item {
+      bool enable;
+      unsigned int key;
+      KeyboardType keyboardType;
+    };
+    static Item item_[MAXNUM];
+  };
 }
 
 #endif

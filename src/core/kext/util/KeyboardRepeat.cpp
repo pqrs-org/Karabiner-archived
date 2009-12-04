@@ -27,7 +27,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  KeyboardRepeat::set(KeyEvent::KeyEvent eventType, unsigned int flags, KeyCode::KeyCode key, KeyboardType::KeyboardType keyboardType, int wait)
+  KeyboardRepeat::set(KeyEvent::KeyEvent eventType, unsigned int flags, KeyCode::KeyCode key, const KeyboardType& keyboardType, int wait)
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
 

@@ -10,15 +10,29 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
   }
 
-  namespace KeyboardType {
-    enum KeyboardType {
+  class KeyboardType {
+  public:
+    KeyboardType(void) {}
+    KeyboardType(unsigned int keyboardType) : keyboardType_(keyboardType) {}
+
+    unsigned int get(void) const { return keyboardType_; }
+    void set(unsigned int v) { keyboardType_ = v; }
+
+    bool isInternalKeyboard(void);
+
+    bool operator==(const unsigned int& other) const { return keyboardType_ == other; }
+    bool operator==(const KeyboardType& other) const { return keyboardType_ == other.get(); }
+    bool operator!=(const unsigned int& other) const { return ! (*this == other); }
+    bool operator!=(const KeyboardType& other) const { return ! (*this == other); }
+
+    enum {
       MACBOOK = 37,
       MACBOOK_COREDUO = 38,
       POWERBOOK_G4_TI = 201,
       POWERBOOK_G4 = 202,
       POWERBOOK = 207,
 
-      Logitech_DI_NOVO_KEYBOARD = 41,
+      LOGITECH_DI_NOVO_KEYBOARD = 41,
       REALFORCE91UBK = 42,
 
       JIS_MACBOOK = 43,
@@ -28,8 +42,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       JIS_PC_USB_KEYBOARD = 42,
       JIS_HAPPY_HACKING_KEYBOARD = 40,
     };
-    bool isInternalKeyboard(unsigned int keyboardType);
-  }
+
+  private:
+    unsigned int keyboardType_;
+  };
 
   namespace ModifierFlag {
     enum ModifierFlag {
@@ -240,8 +256,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       VK__END__,
     };
 
-    void normalizeKey(unsigned int& key, unsigned int& flags, unsigned int keyboardType);
-    void reverseNormalizeKey(unsigned int& key, unsigned int& flags, unsigned int keyboardType);
+    void normalizeKey(unsigned int& key, unsigned int& flags, const KeyboardType& keyboardType);
+    void reverseNormalizeKey(unsigned int& key, unsigned int& flags, const KeyboardType& keyboardType);
   }
 
   namespace ModifierFlag {

@@ -14,7 +14,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.debug) return;
 
     printf("KeyRemap4MacBook KeyboardEventCallback [%s]: eventType %d, flags 0x%x, key %d, kbdType %d\n",
-           message, eventType, flags, key, keyboardType);
+           message, eventType, flags, key, keyboardType.get());
   }
 
   void
@@ -94,7 +94,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     log("sending");
     callback(target, eventType, flags, key, charCode, charSet, origCharCode, origCharSet,
-             keyboardType, repeat, ts, sender, refcon);
+             keyboardType.get(), repeat, ts, sender, refcon);
 
     switch (eventType) {
       case KeyEvent::DOWN:
@@ -171,7 +171,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------------------------------------
-  unsigned int Params_KeyboardEventCallBack::current_keyboardType_ = KeyboardType::MACBOOK;
+  KeyboardType Params_KeyboardEventCallBack::current_keyboardType_(KeyboardType::MACBOOK);
   namespace {
     AbsoluteTime current_ts;
   }
@@ -198,7 +198,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     current_ts = ts;
   }
 
-  unsigned int Params_KeyboardEventCallBack::getcurrent_keyboardType(void) { return current_keyboardType_; }
+  KeyboardType Params_KeyboardEventCallBack::getcurrent_keyboardType(void) { return current_keyboardType_; }
 
   AbsoluteTime& Params_KeyboardEventCallBack::getcurrent_ts(void) { return current_ts; }
   AbsoluteTime& Params_KeyboardSpecialEventCallback::getcurrent_ts(void) { return current_ts; }
