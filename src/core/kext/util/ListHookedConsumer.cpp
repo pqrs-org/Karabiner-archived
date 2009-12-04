@@ -34,6 +34,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         target, eventType, flags, key, flavor,
         guid, repeat, ts, sender, refcon,
       };
+      params.setcurrent();
+
       Core::remap_KeyboardSpecialEventCallback(params);
     }
   }

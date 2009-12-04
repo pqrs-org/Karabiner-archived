@@ -172,13 +172,36 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   unsigned int Params_KeyboardEventCallBack::current_keyboardType_ = KeyboardType::MACBOOK;
+  namespace {
+    AbsoluteTime current_ts;
+  }
 
   void
-  Params_KeyboardEventCallBack::setcurrent(void) {
+  Params_KeyboardEventCallBack::setcurrent(void)
+  {
     current_keyboardType_ = keyboardType;
+    current_ts = ts;
   }
-  unsigned int
-  Params_KeyboardEventCallBack::getcurrent_keyboardType(void) {
-    return current_keyboardType_;
+  void
+  Params_KeyboardSpecialEventCallback::setcurrent(void)
+  {
+    current_ts = ts;
   }
+  void
+  Params_RelativePointerEventCallback::setcurrent(void)
+  {
+    current_ts = ts;
+  }
+  void
+  Params_ScrollWheelEventCallback::setcurrent(void)
+  {
+    current_ts = ts;
+  }
+
+  unsigned int Params_KeyboardEventCallBack::getcurrent_keyboardType(void) { return current_keyboardType_; }
+
+  AbsoluteTime& Params_KeyboardEventCallBack::getcurrent_ts(void) { return current_ts; }
+  AbsoluteTime& Params_KeyboardSpecialEventCallback::getcurrent_ts(void) { return current_ts; }
+  AbsoluteTime& Params_RelativePointerEventCallback::getcurrent_ts(void) { return current_ts; }
+  AbsoluteTime& Params_ScrollWheelEventCallback::getcurrent_ts(void) { return current_ts; }
 }

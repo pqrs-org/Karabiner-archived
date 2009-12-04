@@ -11,6 +11,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     void setcurrent(void);
     static unsigned int getcurrent_keyboardType(void);
+    static AbsoluteTime& getcurrent_ts(void);
 
     OSObject* target;
     unsigned int eventType;
@@ -35,6 +36,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     void log(const char* message = "caught") const;
     void apply(void) const;
 
+    void setcurrent(void);
+    static AbsoluteTime& getcurrent_ts(void);
+
     OSObject* target;
     unsigned int eventType;
     unsigned int flags;
@@ -52,6 +56,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     void log(const char* message = "caught") const;
     void apply(void) const;
 
+    void setcurrent(void);
+    static AbsoluteTime& getcurrent_ts(void);
+
     OSObject* target;
     int buttons;
     int dx;
@@ -64,6 +71,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     void log(const char* message = "caught") const;
     void apply(void) const;
+
+    void setcurrent(void);
+    static AbsoluteTime& getcurrent_ts(void);
 
     OSObject* target;
     short deltaAxis1;

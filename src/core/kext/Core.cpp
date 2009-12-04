@@ -201,8 +201,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       // ------------------------------------------------------------
-      listFireRelativePointer.reset();
-
       bool isremapped = false;
 
       KeyCode::normalizeKey(params.key, params.flags, params.keyboardType);
@@ -221,14 +219,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       remap_core(remapParams);
 
       // ------------------------------------------------------------
-      // pointing emulation
-      if (! listFireRelativePointer.isEmpty()) {
-        HookedPointing* hp = ListHookedPointing::instance().get();
-        if (hp) {
-          listFireRelativePointer.fire(hp->getOrig_relativePointerEventTarget(), hp->get(), params.ts);
-        }
-      }
-
       if (! isremapped) {
         RemapUtil::fireKey(params, remapParams.workspacedata);
         KeyboardRepeat::set(params);
@@ -289,7 +279,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ------------------------------------------------------------
       params.log();
 
-      listFireRelativePointer.reset();
       unsigned int flags = FlagStatus::makeFlags(KeyCode::VK_NONE);
 
       bool isremapped = false;
@@ -315,10 +304,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ------------------------------------------------------------
       if (! isremapped) {
         params.apply();
-      }
-
-      if (! listFireRelativePointer.isEmpty()) {
-        listFireRelativePointer.fire(params.target, pointing, params.ts);
       }
 
       if (firePointingScroll.isEnable()) {
