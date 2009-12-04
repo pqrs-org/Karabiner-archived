@@ -51,14 +51,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       return isModifierOn(remapParams.params.flags, flag);
     }
 
-    KeyCode::KeyCode getModifierKeyCode(ModifierFlag::ModifierFlag flag);
-    ModifierFlag::ModifierFlag getKeyCodeModifier(unsigned int keycode);
-
     inline bool isKeyDown(const RemapParams& remapParams, unsigned int keyCode) {
       if (isEvent_Down(remapParams)) {
         return isKey(remapParams, keyCode);
       } else if (isEvent_Modify(remapParams)) {
-        return isModifierOn(remapParams, getKeyCodeModifier(keyCode));
+        return isModifierOn(remapParams, KeyCode::getModifierFlag(keyCode));
       } else {
         return false;
       }
@@ -102,7 +99,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool active_;
     };
 
-    void keyToPointingButton(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, PointingButton::PointingButton toButton);
+    bool keyToPointingButton(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, PointingButton::PointingButton toButton);
 
     bool keyToConsumer(const RemapParams& remapParams,
                        KeyCode::KeyCode fromKeyCode, unsigned int fromFlags,
@@ -165,7 +162,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     inline void fireKey_downup(unsigned int flags, KeyCode::KeyCode key, unsigned int keyboardType, const AbsoluteTime& ts,
                                const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
-      if (RemapUtil::getKeyCodeModifier(key) == ModifierFlag::NONE) {
+      if (! KeyCode::isModifier(key)) {
         RemapUtil::fireKey(KeyEvent::DOWN,   flags, key, keyboardType, ts, workspacedata);
         RemapUtil::fireKey(KeyEvent::UP,     flags, key, keyboardType, ts, workspacedata);
       } else {

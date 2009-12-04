@@ -3513,6 +3513,12 @@
           <autogen>--KeyToKey-- KeyCode::A, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L</autogen>
         </item>
         <item>
+          <name>KeyToKey (Modifier to Two Modifiers)</name>
+          <appendix>Shift_L to Command_L+Option_L</appendix>
+          <sysctl>remap.samples_shiftL2commandLoptionL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::COMMAND_L, ModifierFlag::OPTION_L</autogen>
+        </item>
+        <item>
           <name>KeyToKey (Combination)</name>
           <appendix>A to B,C</appendix>
           <sysctl>remap.samples_a2bc</sysctl>

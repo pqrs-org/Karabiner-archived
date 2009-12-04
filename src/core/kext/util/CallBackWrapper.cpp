@@ -101,7 +101,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         EventWatcher::on();
         break;
       case KeyEvent::MODIFY:
-        if (RemapUtil::isModifierOn(flags, RemapUtil::getKeyCodeModifier(key))) {
+        if (RemapUtil::isModifierOn(flags, KeyCode::getModifierFlag(key))) {
           EventWatcher::on();
         }
         break;

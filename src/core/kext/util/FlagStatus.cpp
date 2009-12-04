@@ -9,7 +9,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   FlagStatus::Item::initialize(ModifierFlag::ModifierFlag f)
   {
     flag_ = f;
-    key_ = RemapUtil::getModifierKeyCode(flag_);
+    key_ = ModifierFlag::getKeyCode(flag_);
     count_ = 0;
     temporary_count_ = 0;
     lock_count_ = 0;
