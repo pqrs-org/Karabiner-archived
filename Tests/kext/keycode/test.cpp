@@ -266,3 +266,19 @@ TEST(ModifierFlag, getKeyCode) {
 
   EXPECT_EQ(KeyCode::VK_NONE, ModifierFlag::getKeyCode(ModifierFlag::CAPSLOCK | ModifierFlag::SHIFT_L));
 }
+
+TEST(KeyCode, getModifierFlag) {
+  EXPECT_EQ(ModifierFlag::CAPSLOCK, KeyCode::getModifierFlag(KeyCode::CAPSLOCK));
+  EXPECT_EQ(ModifierFlag::SHIFT_L, KeyCode::getModifierFlag(KeyCode::SHIFT_L));
+  EXPECT_EQ(ModifierFlag::SHIFT_R, KeyCode::getModifierFlag(KeyCode::SHIFT_R));
+  EXPECT_EQ(ModifierFlag::CONTROL_L, KeyCode::getModifierFlag(KeyCode::CONTROL_L));
+  EXPECT_EQ(ModifierFlag::CONTROL_R, KeyCode::getModifierFlag(KeyCode::CONTROL_R));
+  EXPECT_EQ(ModifierFlag::OPTION_L, KeyCode::getModifierFlag(KeyCode::OPTION_L));
+  EXPECT_EQ(ModifierFlag::OPTION_R, KeyCode::getModifierFlag(KeyCode::OPTION_R));
+  EXPECT_EQ(ModifierFlag::COMMAND_L, KeyCode::getModifierFlag(KeyCode::COMMAND_L));
+  EXPECT_EQ(ModifierFlag::COMMAND_R, KeyCode::getModifierFlag(KeyCode::COMMAND_R));
+  EXPECT_EQ(ModifierFlag::FN, KeyCode::getModifierFlag(KeyCode::FN));
+
+  EXPECT_EQ(ModifierFlag::NONE, KeyCode::getModifierFlag(KeyCode::A));
+  EXPECT_EQ(ModifierFlag::NONE, KeyCode::getModifierFlag(KeyCode::VK_NONE));
+}
