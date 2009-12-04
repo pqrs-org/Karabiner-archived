@@ -44,18 +44,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       remapParams.isremapped = true;
     }
 
-    inline bool isModifierOn(unsigned int flags, ModifierFlag::ModifierFlag f) {
-      return ((flags & f) == static_cast<unsigned int>(f));
-    }
-    inline bool isModifierOn(const RemapParams& remapParams, ModifierFlag::ModifierFlag flag) {
-      return isModifierOn(remapParams.params.flags, flag);
-    }
-
     inline bool isKeyDown(const RemapParams& remapParams, unsigned int keyCode) {
       if (isEvent_Down(remapParams)) {
         return isKey(remapParams, keyCode);
       } else if (isEvent_Modify(remapParams)) {
-        return isModifierOn(remapParams, KeyCode::getModifierFlag(keyCode));
+        return ModifierFlag::isOn(remapParams.params.flags, KeyCode::getModifierFlag(keyCode));
       } else {
         return false;
       }
