@@ -9,8 +9,8 @@
 namespace org_pqrs_KeyRemap4MacBook {
   struct RemapParams {
     Params_KeyboardEventCallBack& params;
-    bool& isremapped;
     KeyRemap4MacBook_bridge::GetWorkspaceData::Reply workspacedata;
+    bool& isremapped;
   };
   void remap_core(const RemapParams& remapParams);
 
