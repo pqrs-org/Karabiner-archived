@@ -305,10 +305,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! isremapped) {
         params.apply();
       }
-
-      if (firePointingScroll.isEnable()) {
-        firePointingScroll.fire(p->getOrig_scrollWheelEventAction(), p->getOrig_scrollWheelEventTarget(), pointing, params.ts);
-      }
     }
 
     void

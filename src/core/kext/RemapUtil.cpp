@@ -8,8 +8,6 @@
 #include "util/PointingButtonStatus.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  FirePointingScroll firePointingScroll;
-
   bool
   RemapUtil::isInternalKeyboard(unsigned int keyboardType)
   {
@@ -517,6 +515,28 @@ namespace org_pqrs_KeyRemap4MacBook {
     params.apply();
   }
 
+  void
+  RemapUtil::fireScrollWheel(short int deltaAxis1, short int deltaAxis2, short int deltaAxis3,
+                             IOFixed fixedDelta1, IOFixed fixedDelta2, IOFixed fixedDelta3,
+                             SInt32 pointDelta1, SInt32 pointDelta2, SInt32 pointDelta3)
+  {
+    HookedPointing* hp = ListHookedPointing::instance().get();
+    if (! hp) return;
+
+    OSObject* target = hp->getOrig_scrollWheelEventTarget();
+    OSObject* sender = hp->get();
+    AbsoluteTime& ts = Params_ScrollWheelEventCallback::getcurrent_ts();
+
+    Params_ScrollWheelEventCallback params = {
+      target,
+      deltaAxis1, deltaAxis2, deltaAxis3,
+      fixedDelta1, fixedDelta2, fixedDelta3,
+      pointDelta1, pointDelta2, pointDelta3,
+      0, ts, sender, NULL,
+    };
+    params.apply();
+  }
+
   // --------------------
   void
   RemapUtil::pointingRelativeToScroll(const RemapPointingParams_relative& remapParams)
@@ -567,9 +587,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     SInt32 pointDelta1 = (delta1 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1000;
     SInt32 pointDelta2 = (delta2 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1000;
 
-    firePointingScroll.set(deltaAxis1, deltaAxis2, 0,
-                           fixedDelta1, fixedDelta2, 0,
-                           pointDelta1, pointDelta2, 0);
+    fireScrollWheel(deltaAxis1, deltaAxis2, 0,
+                    fixedDelta1, fixedDelta2, 0,
+                    pointDelta1, pointDelta2, 0);
   }
 
   // ----------------------------------------------------------------------
@@ -696,34 +716,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       lastkeycode_ = remapParams.params.key;
     }
     return false;
-  }
-
-  // ----------------------------------------
-  void
-  FirePointingScroll::fire(ScrollWheelEventCallback callback, OSObject* target, IOHIPointing* pointing, AbsoluteTime ts)
-  {
-    if (! enable) return;
-    enable = false;
-
-    if (callback == NULL) return;
-
-    callback(target,
-             deltaAxis1, deltaAxis2, deltaAxis3,
-             fixedDelta1, fixedDelta2, fixedDelta3,
-             pointDelta1, pointDelta2, pointDelta3,
-             0, ts, pointing, 0);
-
-    if (config.debug_pointing) {
-#if __x86_64__
-      const char* format = "sending scrollWheelEventCallback: deltaAxis(%d, %d, %d), fixedDelta(%ld, %ld, %ld), pointDelta(%d,%d,%d)\n";
-#else
-      const char* format = "sending scrollWheelEventCallback: deltaAxis(%d, %d, %d), fixedDelta(%d, %d, %d), pointDelta(%d,%d,%d)\n";
-#endif
-      printf(format,
-             deltaAxis1, deltaAxis2, deltaAxis3,
-             fixedDelta1, fixedDelta2, fixedDelta3,
-             pointDelta1, pointDelta2, pointDelta3);
-    }
   }
 
   // ------------------------------------------------------------
