@@ -21,41 +21,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     return false;
   }
 
-  KeyCode::KeyCode
-  RemapUtil::getModifierKeyCode(ModifierFlag::ModifierFlag flag)
-  {
-    if (flag == ModifierFlag::CAPSLOCK) return KeyCode::CAPSLOCK;
-    if (flag == ModifierFlag::SHIFT_L) return KeyCode::SHIFT_L;
-    if (flag == ModifierFlag::SHIFT_R) return KeyCode::SHIFT_R;
-    if (flag == ModifierFlag::CONTROL_L) return KeyCode::CONTROL_L;
-    if (flag == ModifierFlag::CONTROL_R) return KeyCode::CONTROL_R;
-    if (flag == ModifierFlag::OPTION_L) return KeyCode::OPTION_L;
-    if (flag == ModifierFlag::OPTION_R) return KeyCode::OPTION_R;
-    if (flag == ModifierFlag::COMMAND_L) return KeyCode::COMMAND_L;
-    if (flag == ModifierFlag::COMMAND_R) return KeyCode::COMMAND_R;
-    if (flag == ModifierFlag::FN) return KeyCode::FN;
-
-    //IOLog("KeyRemap4MacBook::getModifierKeyCode invalid args\n");
-    return KeyCode::VK_NONE;
-  }
-
-  ModifierFlag::ModifierFlag
-  RemapUtil::getKeyCodeModifier(unsigned int keycode) {
-    if (keycode == KeyCode::CAPSLOCK) return ModifierFlag::CAPSLOCK;
-    if (keycode == KeyCode::SHIFT_L) return ModifierFlag::SHIFT_L;
-    if (keycode == KeyCode::SHIFT_R) return ModifierFlag::SHIFT_R;
-    if (keycode == KeyCode::CONTROL_L) return ModifierFlag::CONTROL_L;
-    if (keycode == KeyCode::CONTROL_R) return ModifierFlag::CONTROL_R;
-    if (keycode == KeyCode::OPTION_L) return ModifierFlag::OPTION_L;
-    if (keycode == KeyCode::OPTION_R) return ModifierFlag::OPTION_R;
-    if (keycode == KeyCode::COMMAND_L) return ModifierFlag::COMMAND_L;
-    if (keycode == KeyCode::COMMAND_R) return ModifierFlag::COMMAND_R;
-    if (keycode == KeyCode::FN) return ModifierFlag::FN;
-
-    //IOLog("KeyRemap4MacBook::getKeyCodeModifier invalid args\n");
-    return ModifierFlag::NONE;
-  }
-
   namespace {
     inline bool isFromFlags(unsigned int flags, unsigned int fromFlags) {
       if (RemapUtil::isModifierOn(fromFlags, ModifierFlag::NONE)) {
@@ -65,16 +30,14 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
     void remapFlags(unsigned int fromFlags, unsigned int toFlags, unsigned int toKeyCode = KeyCode::VK_NONE, bool isKeyDown = false) {
-      // if to Modifier, we change the flag permanently, else change temporary.
-      bool isToModifier = (RemapUtil::getKeyCodeModifier(toKeyCode) != ModifierFlag::NONE);
-
       for (int i = 0; i < ModifierFlag::listsize; ++i) {
         ModifierFlag::ModifierFlag m = ModifierFlag::list[i];
         FlagStatus::Item* p = FlagStatus::getFlagStatus(m);
         if (! p) continue;
 
         if (RemapUtil::isModifierOn(fromFlags, m)) {
-          if (isToModifier) {
+          // if remap to Modifier, we change the flag permanently, else change temporary.
+          if (KeyCode::isModifier(toKeyCode)) {
             if (isKeyDown) {
               p->decrease();
             } else {
@@ -86,7 +49,8 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
         }
         if (RemapUtil::isModifierOn(toFlags, m)) {
-          if (isToModifier) {
+          // if remap to Modifier, we change the flag permanently, else change temporary.
+          if (KeyCode::isModifier(toKeyCode)) {
             if (isKeyDown) {
               p->increase();
             } else {
@@ -104,7 +68,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   RemapUtil::KeyToKey::remap(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, unsigned int fromFlags, KeyCode::KeyCode toKeyCode, unsigned int toFlags, bool isSetKeyRepeat)
   {
-    if (! RemapUtil::isKey(remapParams, fromKeyCode)) return false;
+    if (remapParams.isremapped) return false;
+    if (remapParams.params.key != static_cast<unsigned int>(fromKeyCode)) return false;
 
     bool isKeyDown = RemapUtil::isKeyDown(remapParams, fromKeyCode);
     if (isKeyDown) {
@@ -129,45 +94,42 @@ namespace org_pqrs_KeyRemap4MacBook {
       active_ = false;
     }
 
-    ModifierFlag::ModifierFlag fromModifier = getKeyCodeModifier(fromKeyCode);
-    ModifierFlag::ModifierFlag toModifier = getKeyCodeModifier(toKeyCode);
+    ModifierFlag::ModifierFlag fromModifierFlag = KeyCode::getModifierFlag(fromKeyCode);
+    ModifierFlag::ModifierFlag toModifierFlag = KeyCode::getModifierFlag(toKeyCode);
 
-    FlagStatus::Item* fromStatus = FlagStatus::getFlagStatus(fromModifier);
-    FlagStatus::Item* toStatus = FlagStatus::getFlagStatus(toModifier);
-
-    if (fromStatus == NULL) {
-      if (toStatus == NULL) {
+    if (fromModifierFlag == ModifierFlag::NONE) {
+      if (toModifierFlag == ModifierFlag::NONE) {
         // key2key
 
       } else {
         // key2modifier
         if (isEvent_Down(remapParams)) {
-          toStatus->increase();
+          FlagStatus::increase(toModifierFlag);
         } else if (isEvent_Up(remapParams)) {
-          toStatus->decrease();
+          FlagStatus::decrease(toModifierFlag);
         }
         remapParams.params.eventType = KeyEvent::MODIFY;
       }
 
     } else {
-      if (toStatus == NULL) {
+      if (toModifierFlag == ModifierFlag::NONE) {
         // modifier2key
-        if (isModifierOn(remapParams, fromModifier)) {
-          fromStatus->decrease();
+        if (isModifierOn(remapParams, fromModifierFlag)) {
+          FlagStatus::decrease(fromModifierFlag);
           remapParams.params.eventType = KeyEvent::DOWN;
         } else {
-          fromStatus->increase();
+          FlagStatus::increase(fromModifierFlag);
           remapParams.params.eventType = KeyEvent::UP;
         }
 
       } else {
         // modifier2modifier
-        if (isModifierOn(remapParams, fromModifier)) {
-          toStatus->increase();
-          fromStatus->decrease();
+        if (isModifierOn(remapParams, fromModifierFlag)) {
+          FlagStatus::increase(toModifierFlag);
+          FlagStatus::decrease(fromModifierFlag);
         } else {
-          toStatus->decrease();
-          fromStatus->increase();
+          FlagStatus::decrease(toModifierFlag);
+          FlagStatus::increase(fromModifierFlag);
         }
       }
     }
@@ -213,23 +175,25 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------
-  void
+  bool
   RemapUtil::keyToPointingButton(const RemapParams& remapParams, KeyCode::KeyCode fromKeyCode, PointingButton::PointingButton toButton)
   {
-    if (! RemapUtil::isKey(remapParams, fromKeyCode)) return;
+    if (remapParams.isremapped) return false;
+    if (remapParams.params.key != static_cast<unsigned int>(fromKeyCode)) return false;
 
-    ModifierFlag::ModifierFlag fromModifier = getKeyCodeModifier(fromKeyCode);
-    FlagStatus::Item* fromStatus = FlagStatus::getFlagStatus(fromModifier);
+    // ------------------------------------------------------------
+    ModifierFlag::ModifierFlag fromModifierFlag = KeyCode::getModifierFlag(fromKeyCode);
 
-    if (fromStatus) {
+    if (fromModifierFlag != ModifierFlag::NONE) {
       // clear flags
       if (RemapUtil::isKeyDown(remapParams, fromKeyCode)) {
-        fromStatus->decrease();
+        FlagStatus::decrease(fromModifierFlag);
       } else {
-        fromStatus->increase();
+        FlagStatus::increase(fromModifierFlag);
       }
     }
 
+    // ------------------------------------------------------------
     if (RemapUtil::isKeyDown(remapParams, fromKeyCode)) {
       RemapUtil::fireRelativePointer(toButton);
 
@@ -242,6 +206,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     RemapUtil::drop(remapParams);
+    return true;
   }
 
   bool
@@ -283,13 +248,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool isKeyDown = (remapParams.params.eventType == KeyEvent::DOWN);
     remapFlags(fromFlags, toFlags, toKeyCode, isKeyDown);
 
-    if (RemapUtil::getKeyCodeModifier(toKeyCode) != ModifierFlag::NONE) {
-      remapParams.params.eventType = KeyEvent::MODIFY;
+    unsigned int eventType = remapParams.params.eventType;
+    if (KeyCode::isModifier(toKeyCode)) {
+      eventType = KeyEvent::MODIFY;
     }
     RemapUtil::drop(remapParams);
 
     unsigned int flags = FlagStatus::makeFlags(toKeyCode);
-    RemapUtil::fireKey(remapParams.params.eventType, flags, toKeyCode,
+    RemapUtil::fireKey(eventType, flags, toKeyCode,
                        Params_KeyboardEventCallBack::getcurrent_keyboardType(),
                        remapParams.params.ts,
                        remapParams.workspacedata);
@@ -390,7 +356,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
         callbackparams.flags = flags;
-        callbackparams.key = RemapUtil::getModifierKeyCode(m);
+        callbackparams.key = ModifierFlag::getKeyCode(m);
         callbackparams.apply();
       }
     }
@@ -481,7 +447,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     HookedKeyboard* hk = ListHookedKeyboard::instance().get();
     if (! hk) return;
 
-    if (RemapUtil::getKeyCodeModifier(key) != ModifierFlag::NONE) {
+    if (KeyCode::isModifier(key)) {
       eventType = KeyEvent::MODIFY;
     }
 
@@ -612,14 +578,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       ic_.begin();
 
       // calc flags
-      unsigned int toKeyCodeFlag = RemapUtil::getKeyCodeModifier(toKeyCode);
-      // XXX: add FlagStatus::temporary_decrease(unsigned int flags);
+      unsigned int toKeyCodeFlag = KeyCode::getModifierFlag(toKeyCode);
       remapFlags(toKeyCodeFlag | toFlags, fireFlags);
 
       savedflags_ = FlagStatus::makeFlags(fireKeyCode);
 
       // restore flags
-      // XXX: add FlagStatus::temporary_increase(unsigned int flags);
       remapFlags(fireFlags, toKeyCodeFlag | toFlags);
 
       if (isFireRepeat) {
@@ -651,7 +615,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ----------------------------------------
     bool isKeyDown = RemapUtil::isKeyDown(remapParams, fromKeyCode);
 
-    KeyCode::KeyCode toKeyCode = RemapUtil::getModifierKeyCode(toFlag);
+    KeyCode::KeyCode toKeyCode = ModifierFlag::getKeyCode(toFlag);
     keytokey_.remap(remapParams, fromKeyCode, toKeyCode);
 
     if (isKeyDown) {
