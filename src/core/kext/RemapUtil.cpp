@@ -10,7 +10,7 @@
 namespace org_pqrs_KeyRemap4MacBook {
   namespace {
     inline bool isFromFlags(unsigned int flags, unsigned int fromFlags) {
-      if (RemapUtil::isModifierOn(fromFlags, ModifierFlag::NONE)) {
+      if (ModifierFlag::isOn(fromFlags, ModifierFlag::NONE)) {
         return (flags == ModifierFlag::stripNONE(fromFlags));
       } else {
         return ((flags & fromFlags) == fromFlags);
@@ -22,7 +22,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         FlagStatus::Item* p = FlagStatus::getFlagStatus(m);
         if (! p) continue;
 
-        if (RemapUtil::isModifierOn(fromFlags, m)) {
+        if (ModifierFlag::isOn(fromFlags, m)) {
           // if remap to Modifier, we change the flag permanently, else change temporary.
           if (KeyCode::isModifier(toKeyCode)) {
             if (isKeyDown) {
@@ -35,7 +35,7 @@ namespace org_pqrs_KeyRemap4MacBook {
             p->temporary_decrease();
           }
         }
-        if (RemapUtil::isModifierOn(toFlags, m)) {
+        if (ModifierFlag::isOn(toFlags, m)) {
           // if remap to Modifier, we change the flag permanently, else change temporary.
           if (KeyCode::isModifier(toKeyCode)) {
             if (isKeyDown) {
@@ -101,7 +101,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     } else {
       if (toModifierFlag == ModifierFlag::NONE) {
         // modifier2key
-        if (isModifierOn(remapParams, fromModifierFlag)) {
+        if (ModifierFlag::isOn(remapParams.params.flags, fromModifierFlag)) {
           FlagStatus::decrease(fromModifierFlag);
           remapParams.params.eventType = KeyEvent::DOWN;
         } else {
@@ -111,7 +111,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       } else {
         // modifier2modifier
-        if (isModifierOn(remapParams, fromModifierFlag)) {
+        if (ModifierFlag::isOn(remapParams.params.flags, fromModifierFlag)) {
           FlagStatus::increase(toModifierFlag);
           FlagStatus::decrease(fromModifierFlag);
         } else {
@@ -297,7 +297,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // setup modifierStatus
     for (int i = 0; i < ModifierFlag::listsize; ++i) {
-      modifierStatus[i] = RemapUtil::isModifierOn(lastFlags, ModifierFlag::list[i]);
+      modifierStatus[i] = ModifierFlag::isOn(lastFlags, ModifierFlag::list[i]);
     }
 
     Params_KeyboardEventCallBack callbackparams = params;
@@ -318,8 +318,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       for (int i = 0; i < ModifierFlag::listsize; ++i) {
         ModifierFlag::ModifierFlag m = ModifierFlag::list[i];
-        bool from = RemapUtil::isModifierOn(lastFlags, m);
-        bool to = RemapUtil::isModifierOn(toFlags, m);
+        bool from = ModifierFlag::isOn(lastFlags, m);
+        bool to = ModifierFlag::isOn(toFlags, m);
 
         if (isFireKeyUp) {
           // fire Up only
