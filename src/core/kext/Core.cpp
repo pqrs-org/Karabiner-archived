@@ -207,8 +207,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       RemapParams remapParams = {
         params,
-        isremapped,
         KeyRemap4MacBook_bridge::GetWorkspaceData::Reply(),
+        isremapped,
       };
       NumHeldDownKeys::set(remapParams);
 
