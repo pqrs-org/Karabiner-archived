@@ -28,6 +28,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       JIS_PC_USB_KEYBOARD = 42,
       JIS_HAPPY_HACKING_KEYBOARD = 40,
     };
+    bool isInternalKeyboard(unsigned int keyboardType);
   }
 
   namespace ModifierFlag {
