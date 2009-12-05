@@ -27,47 +27,45 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  KeyboardRepeat::set(EventType::EventType eventType, unsigned int flags, KeyCode::KeyCode key, const KeyboardType& keyboardType, int wait)
+  KeyboardRepeat::set(const EventType& eventType,
+                      const Flags& flags,
+                      const KeyCode& key,
+                      const KeyboardType& keyboardType,
+                      int wait)
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
 
-    switch (eventType.get()) {
-      case EventType::MODIFY:
+    if (eventType == EventType::MODIFY) {
+      goto cancel;
+
+    } else if (eventType == EventType::UP) {
+      if (key == params_.key) {
         goto cancel;
+      }
 
-      case EventType::UP:
-        if (static_cast<unsigned int>(key) == params_.key) goto cancel;
-        break;
+    } else if (eventType == EventType::DOWN) {
+      if (key == KeyCode::VK_NONE) goto cancel;
 
-      case EventType::DOWN:
-        if (key == KeyCode::VK_NONE) goto cancel;
+      // set keyrepeat
+      {
+        HookedKeyboard* hk = ListHookedKeyboard::instance().get();
+        if (! hk) goto cancel;
 
-        {
-          HookedKeyboard* hk = ListHookedKeyboard::instance().get();
-          if (! hk) goto cancel;
+        params_.target = hk->getOrig_keyboardEventTarget();
+        params_.eventType = eventType;
+        params_.flags = flags;
+        params_.key = key;
+        params_.keyboardType = keyboardType;
+        params_.sender = hk->get();
 
-          params_.target = hk->getOrig_keyboardEventTarget();
-          params_.eventType = eventType;
-          params_.flags = flags;
-          params_.key = key;
-          params_.keyboardType = keyboardType;
-          params_.sender = hk->get();
-
-          {
-            IOReturn result = timer_.setTimeoutMS(wait);
-            if (result != kIOReturnSuccess) {
-              IOLog("[KeyRemap4MacBook ERROR] setTimeoutMS failed\n");
-            }
-          }
-        }
-
+        timer_.setTimeoutMS(wait);
         if (config.debug_devel) {
-          IOLog("KeyRemap4MacBook -Info- setRepeat_keyboard key:%d flags:0x%x\n", key, flags);
+          IOLog("KeyRemap4MacBook -Info- setRepeat_keyboard key:%d flags:0x%x\n", key.get(), flags.get());
         }
-        break;
+      }
 
-      default:
-        goto cancel;
+    } else {
+      goto cancel;
     }
 
     return;
