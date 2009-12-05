@@ -4,16 +4,16 @@
 namespace org_pqrs_KeyRemap4MacBook {
   class ParamsItem {
   public:
-    ParamsItem(void) {}
+    ParamsItem(void) : value_(0) {}
     ParamsItem(unsigned int v) : value_(v) {}
 
     unsigned int get(void) const { return value_; }
     void set(unsigned int v) { value_ = v; }
 
-    bool operator==(const unsigned int& other) const { return value_ == other; }
     bool operator==(const ParamsItem& other) const { return value_ == other.get(); }
-    bool operator!=(const unsigned int& other) const { return ! (*this == other); }
     bool operator!=(const ParamsItem& other) const { return ! (*this == other); }
+    bool operator>(const ParamsItem& other)  const { return value_ > other.get(); }
+    bool operator>=(const ParamsItem& other) const { return value_ >= other.get(); }
 
   protected:
     unsigned int value_;
@@ -45,9 +45,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   class ModifierFlag : public ParamsItem {
   public:
-    static const ModifierFlag list[];
-    static const int listsize;
-
     const KeyCode& getKeyCode(void) const;
 
     unsigned int operator~(void) const { return ~value_; }
@@ -59,6 +56,21 @@ namespace org_pqrs_KeyRemap4MacBook {
     ModifierFlag(void) : ParamsItem() {}
     ModifierFlag(unsigned int v) : ParamsItem(v) {}
   };
+  namespace ModifierFlagList {
+    const ModifierFlag list[] = {
+      ModifierFlag::CAPSLOCK,
+      ModifierFlag::SHIFT_L,
+      ModifierFlag::SHIFT_R,
+      ModifierFlag::CONTROL_L,
+      ModifierFlag::CONTROL_R,
+      ModifierFlag::OPTION_L,
+      ModifierFlag::OPTION_R,
+      ModifierFlag::COMMAND_L,
+      ModifierFlag::COMMAND_R,
+      ModifierFlag::FN,
+    };
+    const int listsize = sizeof(list) / sizeof(list[0]);
+  };
   class Flags : public ParamsItem {
   public:
     Flags(void) : ParamsItem() {}
@@ -69,6 +81,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     Flags operator|(const ModifierFlag& other) const { return value_ | other.get(); }
 
     Flags& add(const ModifierFlag& flag) { value_ |= flag.get(); return *this; }
+    Flags& add(const Flags& flags) { value_ |= flags.get(); return *this; }
     Flags& stripFN(void)     { value_ &= ~ModifierFlag::FN;     return *this; }
     Flags& stripCURSOR(void) { value_ &= ~ModifierFlag::CURSOR; return *this; }
     Flags& stripKEYPAD(void) { value_ &= ~ModifierFlag::KEYPAD; return *this; }
