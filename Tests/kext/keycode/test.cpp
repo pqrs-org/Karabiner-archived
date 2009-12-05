@@ -11,6 +11,11 @@ operator<<(std::ostream& os, const ParamsItem& v)
   return os;
 }
 
+TEST(KeyCode, op) {
+  EXPECT_TRUE(KeyCode::A == KeyCode::A);
+  EXPECT_TRUE(KeyCode::VK_NONE > KeyCode::A);
+}
+
 TEST(KeyboardType, isInternalKeyboard) {
   {
     KeyboardType v(KeyboardType::MACBOOK);
