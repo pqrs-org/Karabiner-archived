@@ -3,13 +3,12 @@
 #include "Config.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  FlagStatus::Item FlagStatus::item_[ModifierFlag::listsize];
+  FlagStatus::Item FlagStatus::item_[ModifierFlagList::listsize];
 
   void
-  FlagStatus::Item::initialize(ModifierFlag::ModifierFlag f)
+  FlagStatus::Item::initialize(const ModifierFlag& f)
   {
     flag_ = f;
-    key_ = ModifierFlag::getKeyCode(flag_);
     count_ = 0;
     temporary_count_ = 0;
     lock_count_ = 0;
@@ -30,8 +29,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     // At some keyboard, when we press CapsLock key, the down & up event are thrown at a time.
     // So, we treat the capslock key exceptionally.
-    if (key_ == KeyCode::CAPSLOCK) {
-      if (ModifierFlag::isOn(remapParams.params.flags, flag_)) {
+    if (flag_ == ModifierFlag::CAPSLOCK) {
+      if (remapParams.params.flags.isOn(flag_)) {
         if (! original_lock_count_) {
           original_lock_count_ = 1;
           lock_count_ = 0; // clear remapped lock_count_ when original changed.
@@ -50,9 +49,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ------------------------------------------------------------
-    if (! RemapUtil::isKey(remapParams, key_)) return;
+    if (remapParams.params.key != flag_.getKeyCode()) return;
 
-    if (ModifierFlag::isOn(remapParams.params.flags, flag_)) {
+    if (remapParams.params.flags.isOn(flag_)) {
       increase();
     } else {
       decrease();
@@ -76,7 +75,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   FlagStatus::Item::increase(void)
   {
-    if (key_ == KeyCode::CAPSLOCK) {
+    if (flag_ == ModifierFlag::CAPSLOCK) {
       lock_count_ = ! lock_count_;
     } else {
       ++count_;
@@ -86,7 +85,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   FlagStatus::Item::decrease(void)
   {
-    if (key_ == KeyCode::CAPSLOCK) {
+    if (flag_ == ModifierFlag::CAPSLOCK) {
       // do nothing (toggle at Item::increase).
     } else {
       --count_;
@@ -97,15 +96,15 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   FlagStatus::initialize(void)
   {
-    for (int i = 0; i < ModifierFlag::listsize; ++i) {
-      item_[i].initialize(ModifierFlag::list[i]);
+    for (int i = 0; i < ModifierFlagList::listsize; ++i) {
+      item_[i].initialize(ModifierFlagList::list[i]);
     }
   }
 
   void
   FlagStatus::set(void)
   {
-    for (int i = 0; i < ModifierFlag::listsize; ++i) {
+    for (int i = 0; i < ModifierFlagList::listsize; ++i) {
       item_[i].set();
     }
   }
@@ -113,7 +112,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   FlagStatus::set(const RemapParams& remapParams)
   {
-    for (int i = 0; i < ModifierFlag::listsize; ++i) {
+    for (int i = 0; i < ModifierFlagList::listsize; ++i) {
       item_[i].set(remapParams);
     }
   }
@@ -125,38 +124,32 @@ namespace org_pqrs_KeyRemap4MacBook {
       printf("KeyRemap4MacBook FlagStatus::reset\n");
     }
 
-    for (int i = 0; i < ModifierFlag::listsize; ++i) {
+    for (int i = 0; i < ModifierFlagList::listsize; ++i) {
       item_[i].reset();
     }
   }
 
-  unsigned int
-  FlagStatus::makeFlags(unsigned int keyCode)
+  Flags
+  FlagStatus::makeFlags(void)
   {
-    unsigned int flags = 0;
-    for (int i = 0; i < ModifierFlag::listsize; ++i) {
-      flags |= item_[i].makeFlag();
+    Flags flags;
+    for (int i = 0; i < ModifierFlagList::listsize; ++i) {
+      flags.add(item_[i].makeFlag());
     }
     return flags;
   }
 
-  unsigned int
-  FlagStatus::makeFlags(const RemapParams& remapParams)
-  {
-    return makeFlags(remapParams.params.key);
-  }
-
   FlagStatus::Item*
-  FlagStatus::getFlagStatus(ModifierFlag::ModifierFlag flag) {
-    for (int i = 0; i < ModifierFlag::listsize; ++i) {
-      if (flag == ModifierFlag::list[i]) return item_ + i;
+  FlagStatus::getFlagStatus(const ModifierFlag& flag) {
+    for (int i = 0; i < ModifierFlagList::listsize; ++i) {
+      if (flag == ModifierFlagList::list[i]) return item_ + i;
     }
     return NULL;
   }
 
   // ----------------------------------------
   bool
-  FlagStatus::isHeldDown(ModifierFlag::ModifierFlag flag) {
+  FlagStatus::isHeldDown(const ModifierFlag& flag) {
     Item* p = getFlagStatus(flag);
     if (! p) return false;
     return p->isHeldDown();
@@ -164,18 +157,17 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ------------------------------------------------------------
 #define FOREACH_TO_FLAGS(METHOD) {                          \
-    for (int i = 0; i < ModifierFlag::listsize; ++i) {      \
-      ModifierFlag::ModifierFlag f = ModifierFlag::list[i]; \
-      if (ModifierFlag::isOn(flags, f)) {                   \
+    for (int i = 0; i < ModifierFlagList::listsize; ++i) {      \
+      if (flags.isOn(ModifierFlagList::list[i])) {              \
         item_[i].METHOD();                                  \
       }                                                     \
     }                                                       \
   }
-  void FlagStatus::increase(unsigned int flags) { FOREACH_TO_FLAGS(increase); }
-  void FlagStatus::decrease(unsigned int flags) { FOREACH_TO_FLAGS(decrease); }
-  void FlagStatus::temporary_increase(unsigned int flags) { FOREACH_TO_FLAGS(temporary_increase); }
-  void FlagStatus::temporary_decrease(unsigned int flags) { FOREACH_TO_FLAGS(temporary_decrease); }
-  void FlagStatus::lock_increase(unsigned int flags) { FOREACH_TO_FLAGS(lock_increase); }
-  void FlagStatus::lock_decrease(unsigned int flags) { FOREACH_TO_FLAGS(lock_decrease); }
+  void FlagStatus::increase(const Flags& flags) { FOREACH_TO_FLAGS(increase); }
+  void FlagStatus::decrease(const Flags& flags) { FOREACH_TO_FLAGS(decrease); }
+  void FlagStatus::temporary_increase(const Flags& flags) { FOREACH_TO_FLAGS(temporary_increase); }
+  void FlagStatus::temporary_decrease(const Flags& flags) { FOREACH_TO_FLAGS(temporary_decrease); }
+  void FlagStatus::lock_increase(const Flags& flags) { FOREACH_TO_FLAGS(lock_increase); }
+  void FlagStatus::lock_decrease(const Flags& flags) { FOREACH_TO_FLAGS(lock_decrease); }
 #undef FOREACH_TO_FLAGS
 }

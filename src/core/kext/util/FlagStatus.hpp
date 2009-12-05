@@ -11,6 +11,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       friend class FlagStatus;
 
     public:
+      Item(void) : flag_(ModifierFlag::NONE) {}
+
       void increase(void);
       void decrease(void);
       void temporary_increase(void) { ++temporary_count_; }
@@ -19,18 +21,16 @@ namespace org_pqrs_KeyRemap4MacBook {
       void lock_decrease(void) { lock_count_ = 0; }
 
       bool isHeldDown(void) const { return (count_ + temporary_count_ + lock_count_ + original_lock_count_) > 0; }
-      KeyCode::KeyCode getKeyCode(void) const { return key_; }
 
     private:
-      void initialize(ModifierFlag::ModifierFlag f);
+      void initialize(const ModifierFlag& f);
       void set(void);
       void set(const RemapParams& remapParams);
 
       void reset(void);
-      unsigned int makeFlag(void) const { return (isHeldDown()) ? flag_ : 0; }
+      Flags makeFlag(void) const { return (isHeldDown()) ? Flags(flag_) : Flags(); }
 
-      ModifierFlag::ModifierFlag flag_;
-      KeyCode::KeyCode key_;
+      ModifierFlag flag_;
       int count_;
       int temporary_count_;
 
@@ -41,24 +41,23 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void initialize(void);
     static void set(void);
     static void set(const RemapParams& remapParams);
-    static unsigned int makeFlags(unsigned int keyCode = KeyCode::VK_NONE);
-    static unsigned int makeFlags(const RemapParams& remapParams);
+    static Flags makeFlags(void);
     static void reset(void);
 
-    static Item* getFlagStatus(ModifierFlag::ModifierFlag flag);
-    static Item* getFlagStatus(KeyCode::KeyCode keyCode);
+    static Item* getFlagStatus(const ModifierFlag& flag);
+    static Item* getFlagStatus(const KeyCode& key);
 
-    static bool isHeldDown(ModifierFlag::ModifierFlag flag);
+    static bool isHeldDown(const ModifierFlag& flag);
 
-    static void increase(unsigned int flags);
-    static void decrease(unsigned int flags);
-    static void temporary_increase(unsigned int flags);
-    static void temporary_decrease(unsigned int flags);
-    static void lock_increase(unsigned int flags);
-    static void lock_decrease(unsigned int flags);
+    static void increase(const Flags& flags);
+    static void decrease(const Flags& flags);
+    static void temporary_increase(const Flags& flags);
+    static void temporary_decrease(const Flags& flags);
+    static void lock_increase(const Flags& flags);
+    static void lock_decrease(const Flags& flags);
 
   private:
-    static Item item_[ModifierFlag::listsize];
+    static Item item_[ModifierFlagList::listsize];
   };
 }
 
