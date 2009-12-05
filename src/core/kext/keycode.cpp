@@ -28,20 +28,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     return value_ | other.get();
   }
 
-  const ModifierFlag ModifierFlag::list[] = {
-    ModifierFlag::CAPSLOCK,
-    ModifierFlag::SHIFT_L,
-    ModifierFlag::SHIFT_R,
-    ModifierFlag::CONTROL_L,
-    ModifierFlag::CONTROL_R,
-    ModifierFlag::OPTION_L,
-    ModifierFlag::OPTION_R,
-    ModifierFlag::COMMAND_L,
-    ModifierFlag::COMMAND_R,
-    ModifierFlag::FN,
-  };
-  const int ModifierFlag::listsize = sizeof(ModifierFlag::list) / sizeof(ModifierFlag::list[0]);
-
   void
   KeyCode::normalizeKey(Flags& flags, const KeyboardType& keyboardType)
   {
