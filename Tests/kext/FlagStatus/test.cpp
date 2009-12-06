@@ -105,6 +105,9 @@ TEST(FlagStatus, increase) {
 
   FlagStatus::increase(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L);
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L), FlagStatus::makeFlags());
+
+  FlagStatus::increase(ModifierFlag::NONE);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L), FlagStatus::makeFlags());
 }
 
 TEST(FlagStatus, decrease) {
