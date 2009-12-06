@@ -12,7 +12,6 @@
 		34012A6F0E7AED010069FE39 /* TimerWrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34012A6D0E7AED010069FE39 /* TimerWrapper.hpp */; };
 		3430E93310C558CA00FC2D64 /* EventWatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3430E93110C558CA00FC2D64 /* EventWatcher.cpp */; };
 		3430E93410C558CA00FC2D64 /* EventWatcher.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3430E93210C558CA00FC2D64 /* EventWatcher.hpp */; };
-		34311761106F657200030711 /* keycode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34311760106F657200030711 /* keycode.cpp */; };
 		345004AD0E7CE48F0075324B /* Core.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345004A80E7CE48F0075324B /* Core.cpp */; };
 		345004AE0E7CE48F0075324B /* Core.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345004A90E7CE48F0075324B /* Core.hpp */; };
 		345004AF0E7CE48F0075324B /* Driver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345004AA0E7CE48F0075324B /* Driver.cpp */; };
@@ -27,7 +26,6 @@
 		346B753F0E72C0BA00F9A79F /* FlagStatus.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 346B753D0E72C0BA00F9A79F /* FlagStatus.hpp */; };
 		348ED8340CE467FD00E179EC /* remap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 348ED8330CE467FD00E179EC /* remap.cpp */; };
 		348ED8360CE4680F00E179EC /* remap.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 348ED8350CE4680F00E179EC /* remap.hpp */; };
-		348ED8380CE4681700E179EC /* keycode.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 348ED8370CE4681700E179EC /* keycode.hpp */; };
 		348ED83A0CE4682000E179EC /* version.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 348ED8390CE4682000E179EC /* version.hpp */; };
 		348ED8470CE47D9400E179EC /* RemapUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 348ED8460CE47D9400E179EC /* RemapUtil.cpp */; };
 		348ED8490CE47D9D00E179EC /* RemapUtil.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 348ED8480CE47D9D00E179EC /* RemapUtil.hpp */; };
@@ -60,7 +58,6 @@
 		34012A6D0E7AED010069FE39 /* TimerWrapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TimerWrapper.hpp; path = util/TimerWrapper.hpp; sourceTree = "<group>"; };
 		3430E93110C558CA00FC2D64 /* EventWatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventWatcher.cpp; path = util/EventWatcher.cpp; sourceTree = "<group>"; };
 		3430E93210C558CA00FC2D64 /* EventWatcher.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = EventWatcher.hpp; path = util/EventWatcher.hpp; sourceTree = "<group>"; };
-		34311760106F657200030711 /* keycode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = keycode.cpp; sourceTree = "<group>"; };
 		345004A80E7CE48F0075324B /* Core.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Core.cpp; sourceTree = "<group>"; };
 		345004A90E7CE48F0075324B /* Core.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Core.hpp; sourceTree = "<group>"; };
 		345004AA0E7CE48F0075324B /* Driver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Driver.cpp; sourceTree = "<group>"; };
@@ -75,7 +72,6 @@
 		346B753D0E72C0BA00F9A79F /* FlagStatus.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FlagStatus.hpp; path = util/FlagStatus.hpp; sourceTree = "<group>"; };
 		348ED8330CE467FD00E179EC /* remap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = remap.cpp; sourceTree = "<group>"; };
 		348ED8350CE4680F00E179EC /* remap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = remap.hpp; sourceTree = "<group>"; };
-		348ED8370CE4681700E179EC /* keycode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = keycode.hpp; sourceTree = "<group>"; };
 		348ED8390CE4682000E179EC /* version.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = version.hpp; sourceTree = "<group>"; };
 		348ED8460CE47D9400E179EC /* RemapUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RemapUtil.cpp; sourceTree = "<group>"; };
 		348ED8480CE47D9D00E179EC /* RemapUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RemapUtil.hpp; sourceTree = "<group>"; };
@@ -143,7 +139,6 @@
 		247142CAFF3F8F9811CA285C /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				34311760106F657200030711 /* keycode.cpp */,
 				345004A80E7CE48F0075324B /* Core.cpp */,
 				345004A90E7CE48F0075324B /* Core.hpp */,
 				345004AA0E7CE48F0075324B /* Driver.cpp */,
@@ -154,7 +149,6 @@
 				348ED8390CE4682000E179EC /* version.hpp */,
 				34FB835E0CE5DBFF00BD6A24 /* base.hpp */,
 				34C7A9AF0CE4605B00C98397 /* Config.hpp */,
-				348ED8370CE4681700E179EC /* keycode.hpp */,
 				345B06AB0DB21A88000023FD /* Client.cpp */,
 				345B06AC0DB21A88000023FD /* Client.hpp */,
 				348ED8460CE47D9400E179EC /* RemapUtil.cpp */,
@@ -206,7 +200,6 @@
 			files = (
 				34C7A9B00CE4605B00C98397 /* Config.hpp in Headers */,
 				348ED8360CE4680F00E179EC /* remap.hpp in Headers */,
-				348ED8380CE4681700E179EC /* keycode.hpp in Headers */,
 				348ED83A0CE4682000E179EC /* version.hpp in Headers */,
 				348ED8490CE47D9D00E179EC /* RemapUtil.hpp in Headers */,
 				34FB835F0CE5DBFF00BD6A24 /* base.hpp in Headers */,
@@ -312,7 +305,6 @@
 				34F14BC00E867884001C15F3 /* NumHeldDownKeys.cpp in Sources */,
 				34AA1F351065B1EE00E9A418 /* ListHookedDevice.cpp in Sources */,
 				34A59B881065C00B0048D1E7 /* ListHookedConsumer.cpp in Sources */,
-				34311761106F657200030711 /* keycode.cpp in Sources */,
 				3459F55C10C418D700DAB1FE /* KeyboardRepeat.cpp in Sources */,
 				3430E93310C558CA00FC2D64 /* EventWatcher.cpp in Sources */,
 			);
