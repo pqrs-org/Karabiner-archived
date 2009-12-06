@@ -4,7 +4,6 @@
 #include "RemapUtil.hpp"
 #include "Config.hpp"
 #include "keycode.hpp"
-#include "util/PointingButtonStatus.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace GeneratedCode {
@@ -202,7 +201,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &remapParams)
 #include "config/output/include.remapcode_call_mhkk.cpp"
 
   // ------------------------------------------------------------
-  remapParams.params.flags = FlagStatus::makeFlags(remapParams);
+  remapParams.params.flags = FlagStatus::makeFlags();
 }
 
 void
@@ -212,7 +211,7 @@ org_pqrs_KeyRemap4MacBook::remap_consumer(const RemapConsumerParams &remapParams
 
 #include "config/output/include.remapcode_call_consumer.cpp"
 
-  remapParams.params.flags = FlagStatus::makeFlags(KeyCode::VK_NONE);
+  remapParams.params.flags = FlagStatus::makeFlags();
 }
 
 void
@@ -220,7 +219,7 @@ org_pqrs_KeyRemap4MacBook::remap_pointing_relative_core(const RemapPointingParam
 {
   FlagStatus::set();
 
-  remapParams.params.buttons |= PointingButtonStatus::get();
+  remapParams.params.buttons.add(RemapUtil::getRemappedButtons());
 
 #include "config/output/include.remapcode_call_pointing_relative.cpp"
   remap_pointing_relative_to_scroll(remapParams);
