@@ -343,6 +343,28 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ------------------------------------------------------------
   namespace {
+    class Handle_VK_FNLOCK {
+    public:
+      static bool handle(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
+        if (params.key != KeyCode::VK_FNLOCK) return false;
+
+        if (params.eventType == EventType::DOWN) {
+          active_ = ! active_;
+          if (active_) {
+            FlagStatus::lock_increase(ModifierFlag::FN);
+          } else {
+            FlagStatus::lock_decrease(ModifierFlag::FN);
+          }
+        }
+
+        return true;
+      }
+
+    private:
+      static bool active_;
+    };
+    bool Handle_VK_FNLOCK::active_ = false;
+
     class Handle_VK_JIS_TOGGLE_EISUU_KANA {
     public:
       static bool handle(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
@@ -411,6 +433,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ----------------------------------------
     // handle virtual keys
     Params_KeyboardEventCallBack p = params;
+    if (Handle_VK_FNLOCK::handle(p, workspacedata)) return;
     if (Handle_VK_JIS_TOGGLE_EISUU_KANA::handle(p, workspacedata)) return;
     if (handle_VK_JIS_EISUU_x2(p, workspacedata)) return;
     if (handle_VK_JIS_KANA_x2(p, workspacedata)) return;
@@ -640,17 +663,17 @@ namespace org_pqrs_KeyRemap4MacBook {
       return false;
     }
 
-    if (! RemapUtil::isKeyDown(remapParams, fromKeyCode)) {
+    if (remapParams.isremapped || remapParams.params.key != fromKeyCode) {
       ic_.begin();
       EventWatcher::set(isAnyEventHappen_);
       return false;
     }
 
     if (isAnyEventHappen_ == false) {
+      EventWatcher::unset(isAnyEventHappen_);
       if (ic_.checkThreshold(config.parameter_modifierholdingkeytokey_wait)) {
         keytokey_.remap(remapParams, fromKeyCode, fromFlags, toKeyCode);
       }
-      EventWatcher::unset(isAnyEventHappen_);
     }
 
     return true;

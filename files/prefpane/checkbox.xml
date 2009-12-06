@@ -946,6 +946,7 @@
           <name>F6 to NumLock</name>
           <sysctl>remap.f6_to_numlock</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <autogen>--KeyToKey-- KeyCode::F6, KeyCode::VK_FNLOCK</autogen>
         </item>
         <item>
           <name>F7 to Music Prev</name>
@@ -3674,6 +3675,12 @@
           <autogen>--KeyToKey-- KeyCode::G, KeyCode::O</autogen>
         </item>
         <item>
+          <name>VK_FNLOCK</name>
+          <appendix>Use A to numlock</appendix>
+          <sysctl>remap.samples_a2numlock</sysctl>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_FNLOCK</autogen>
+        </item>
+        <item>
           <name>VK_JIS_TOGGLE_EISUU_KANA (Standard)</name>
           <appendix>Use A,Command_L,Command_R as KANA/EISUU (toggle)</appendix>
           <sysctl>remap.samples_jis_unify_kana_eisuu_to_commandLR</sysctl>
@@ -3704,6 +3711,12 @@
           <appendix>Use Y as KANA x2</appendix>
           <sysctl>remap.samples_y2kana_x2</sysctl>
           <autogen>--KeyToKey-- KeyCode::Y, KeyCode::VK_JIS_KANA_x2</autogen>
+        </item>
+        <item>
+          <name>VK_JIS_BACKSLASH</name>
+          <appendix>Use A as JIS_BACKSLASH</appendix>
+          <sysctl>remap.samples_a2jisbackslash</sysctl>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_JIS_BACKSLASH</autogen>
         </item>
       </list>
     </item>
