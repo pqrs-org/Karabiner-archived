@@ -22,12 +22,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     return false;
   }
 
-  Flags
-  ModifierFlag::operator|(const ModifierFlag& other) const
-  {
-    return value_ | other.get();
-  }
-
   void
   KeyCode::normalizeKey(Flags& flags, const KeyboardType& keyboardType)
   {
