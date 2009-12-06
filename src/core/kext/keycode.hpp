@@ -172,7 +172,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     Buttons& remove(const Buttons& button) { value_ &= ~button; return *this; }
 
     bool isNONE(void) const { return value_ == 0; }
-    bool isOn(const Buttons& buttons) {
+    bool isOn(const Buttons& buttons) const {
       return (value_ & buttons.get()) == buttons.get();
     }
 
