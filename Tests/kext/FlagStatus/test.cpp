@@ -144,6 +144,11 @@ TEST(FlagStatus, lock_increase) {
 
   FlagStatus::lock_increase(ModifierFlag::COMMAND_L);
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), FlagStatus::makeFlags());
+
+  // lock don't cancel by reset & set.
+  FlagStatus::reset();
+  FlagStatus::set(KeyCode::A, 0);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), FlagStatus::makeFlags());
 }
 
 TEST(FlagStatus, CapsLock) {
