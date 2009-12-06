@@ -33,6 +33,14 @@ TEST(KeyboardType, isInternalKeyboard) {
   }
 }
 
+TEST(ModifierFlag, get) {
+  EXPECT_EQ(static_cast<unsigned int>(0x10000), ModifierFlag::CAPSLOCK.get());
+}
+
+TEST(ModifierFlagList, list) {
+  EXPECT_EQ(ModifierFlagList::list[0], ModifierFlag::CAPSLOCK);
+}
+
 TEST(Flags, add) {
   Flags mask = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
   Flags flags = mask;
@@ -129,6 +137,10 @@ namespace {
     { KeyCode::HOME, KeyCode::CURSOR_LEFT },
     { KeyCode::END, KeyCode::CURSOR_RIGHT },
   };
+}
+
+TEST(KeyCode, get) {
+  EXPECT_EQ(static_cast<unsigned int>(57), KeyCode::CAPSLOCK.get());
 }
 
 TEST(KeyCode, normalizeKey) {
