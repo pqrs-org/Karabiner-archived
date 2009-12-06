@@ -143,4 +143,8 @@ TEST(FlagStatus, CapsLock) {
   ASSERT_TRUE(FlagStatus::initialize());
 
   FlagStatus::set(KeyCode::CAPSLOCK, ModifierFlag::CAPSLOCK);
+  EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), FlagStatus::makeFlags());
+
+  FlagStatus::set(KeyCode::A, ModifierFlag::CAPSLOCK);
+  EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), FlagStatus::makeFlags());
 }
