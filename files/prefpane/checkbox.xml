@@ -3592,7 +3592,7 @@
         <item>
           <name>KeyOverlaidModifierWithRepeat (With ModifierFlag)</name>
           <appendix>Option+A to Shift_L (When type only, send Control_L+F) + [KeyRepeat]</appendix>
-          <sysctl>remap.samples_control_a2shiftL_controlLf_repeat</sysctl>
+          <sysctl>remap.samples_option_a2shiftL_controlLf_repeat</sysctl>
           <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::A, VK_OPTION, KeyCode::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
         </item>
         <item>
