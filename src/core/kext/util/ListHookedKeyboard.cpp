@@ -1,7 +1,8 @@
+#include "CommonData.hpp"
+#include "Config.hpp"
+#include "Core.hpp"
 #include "EventWatcher.hpp"
 #include "ListHookedKeyboard.hpp"
-#include "Core.hpp"
-#include "Config.hpp"
 #include "RemapUtil.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -32,14 +33,22 @@ namespace org_pqrs_KeyRemap4MacBook {
                                OSObject *sender,
                                void *refcon)
     {
+      IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, sender);
+      if (! kbd) return;
+
+      HookedKeyboard* hk = ListHookedKeyboard::instance().get(kbd);
+      if (! hk) return;
+
+      // ------------------------------------------------------------
       EventWatcher::countup();
 
       Params_KeyboardEventCallBack params = {
-        target, eventType, flags, key,
+        eventType, flags, key,
         charCode, charSet, origCharCode, origCharSet,
-        keyboardType, repeat, ts, sender, refcon,
+        keyboardType, repeat,
       };
-      params.setcurrent();
+      CommonData::setcurrent_ts(ts);
+      CommonData::setcurrent_keyboardType(keyboardType);
 
       Core::remap_KeyboardEventCallback(params);
     }

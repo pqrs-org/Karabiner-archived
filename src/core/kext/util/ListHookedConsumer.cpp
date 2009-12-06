@@ -1,7 +1,8 @@
+#include "CommonData.hpp"
+#include "Config.hpp"
+#include "Core.hpp"
 #include "EventWatcher.hpp"
 #include "ListHookedConsumer.hpp"
-#include "Core.hpp"
-#include "Config.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace {
@@ -34,7 +35,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         target, eventType, flags, key, flavor,
         guid, repeat, ts, sender, refcon,
       };
-      params.setcurrent();
+      CommonData::setcurrent_ts(ts);
 
       Core::remap_KeyboardSpecialEventCallback(params);
     }

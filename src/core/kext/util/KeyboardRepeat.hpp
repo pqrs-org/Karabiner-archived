@@ -16,7 +16,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void initialize(IOWorkLoop& workloop);
     static void terminate(void);
 
-    static void setTS(const AbsoluteTime& ts) { params_.ts = ts; }
     static void setWorkSpaceData(const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) { workspacedata_ = workspacedata; }
 
     static void set(const EventType& eventType = EventType::DOWN,

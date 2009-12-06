@@ -1,9 +1,10 @@
-#include "RemapUtil.hpp"
-#include "KeyCode.hpp"
+#include "CommonData.hpp"
 #include "Config.hpp"
+#include "KeyCode.hpp"
+#include "RemapUtil.hpp"
 #include "util/KeyboardRepeat.hpp"
-#include "util/ListHookedKeyboard.hpp"
 #include "util/ListHookedConsumer.hpp"
+#include "util/ListHookedKeyboard.hpp"
 #include "util/ListHookedPointing.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -185,7 +186,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       Params_KeyboardSpecialEventCallback p = {
         hc->getOrig_keyboardSpecialEventTarget(),
-        eventType, flags, toKeyCode, flavor, guid, false, remapParams.params.ts, hc->get(), NULL,
+        eventType, flags, toKeyCode, flavor, guid, false, CommonData::getcurrent_ts(), hc->get(), NULL,
       };
       RemapUtil::fireConsumer(p);
     }
@@ -216,8 +217,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     Flags flags = FlagStatus::makeFlags();
     RemapUtil::fireKey(eventType, flags, toKeyCode,
-                       Params_KeyboardEventCallBack::getcurrent_keyboardType(),
-                       remapParams.params.ts,
+                       CommonData::getcurrent_keyboardType(),
                        remapParams.workspacedata);
 
     return true;
@@ -454,7 +454,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  RemapUtil::fireKey(const EventType& eventType, const Flags& flags, const KeyCode& key, const KeyboardType& keyboardType, const AbsoluteTime& ts,
+  RemapUtil::fireKey(const EventType& eventType, const Flags& flags, const KeyCode& key, const KeyboardType& keyboardType,
                      const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
   {
     HookedKeyboard* hk = ListHookedKeyboard::instance().get();
@@ -466,9 +466,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     Params_KeyboardEventCallBack params = {
-      hk->getOrig_keyboardEventTarget(), eventType, flags, key,
+      eventType, flags, key,
       0, 0, 0, 0,
-      keyboardType, false, ts, hk->get(), NULL,
+      keyboardType, false,
     };
     RemapUtil::fireKey(params, workspacedata);
   }
@@ -487,10 +487,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     OSObject* target = hp->getOrig_relativePointerEventTarget();
     OSObject* sender = hp->get();
-    AbsoluteTime& ts = Params_RelativePointerEventCallback::getcurrent_ts();
 
     Params_RelativePointerEventCallback params = {
-      target, buttons, 0, 0, ts, sender, NULL,
+      target, buttons, 0, 0, CommonData::getcurrent_ts(), sender, NULL,
     };
     params.apply();
   }
@@ -505,14 +504,13 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     OSObject* target = hp->getOrig_scrollWheelEventTarget();
     OSObject* sender = hp->get();
-    AbsoluteTime& ts = Params_ScrollWheelEventCallback::getcurrent_ts();
 
     Params_ScrollWheelEventCallback params = {
       target,
       deltaAxis1, deltaAxis2, deltaAxis3,
       fixedDelta1, fixedDelta2, fixedDelta3,
       pointDelta1, pointDelta2, pointDelta3,
-      0, ts, sender, NULL,
+      0, CommonData::getcurrent_ts(), sender, NULL,
     };
     params.apply();
   }

@@ -11,7 +11,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void initialize(void);
     static void add(const KeyCode& key, const KeyboardType& keyboardType);
     static void remove(const KeyCode& key, const KeyboardType& keyboardType);
-    static void clear(OSObject* target, AbsoluteTime ts, OSObject* sender, void* refcon);
+    static void clear(void);
 
   private:
     enum {
