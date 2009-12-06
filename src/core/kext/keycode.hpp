@@ -78,7 +78,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     Flags operator|(const Flags& other) const { return value_ | other.get(); }
     Flags operator&(const Flags& other) const { return value_ & other.get(); }
 
-    Flags& add(const ModifierFlag& flag) { value_ |= flag.get(); return *this; }
     Flags& add(const Flags& flags) { value_ |= flags.get(); return *this; }
     Flags& stripFN(void)     { value_ &= ~ModifierFlag::FN;     return *this; }
     Flags& stripCURSOR(void) { value_ &= ~ModifierFlag::CURSOR; return *this; }
