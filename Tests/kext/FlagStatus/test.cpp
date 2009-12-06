@@ -48,6 +48,47 @@ TEST(FlagStatus, makeFlags) {
   // up CONTROL_L
   FlagStatus::set(KeyCode::CONTROL_L, 0);
   EXPECT_EQ(Flags(), FlagStatus::makeFlags());
+
+  // All flags
+  FlagStatus::reset();
+  FlagStatus::set(KeyCode::CAPSLOCK, ModifierFlag::CAPSLOCK);
+  EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), FlagStatus::makeFlags());
+
+  FlagStatus::reset();
+  FlagStatus::set(KeyCode::SHIFT_L, ModifierFlag::SHIFT_L);
+  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), FlagStatus::makeFlags());
+
+  FlagStatus::reset();
+  FlagStatus::set(KeyCode::SHIFT_R, ModifierFlag::SHIFT_R);
+  EXPECT_EQ(Flags(ModifierFlag::SHIFT_R), FlagStatus::makeFlags());
+
+  FlagStatus::reset();
+  FlagStatus::set(KeyCode::CONTROL_L, ModifierFlag::CONTROL_L);
+  EXPECT_EQ(Flags(ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
+
+  FlagStatus::reset();
+  FlagStatus::set(KeyCode::CONTROL_R, ModifierFlag::CONTROL_R);
+  EXPECT_EQ(Flags(ModifierFlag::CONTROL_R), FlagStatus::makeFlags());
+
+  FlagStatus::reset();
+  FlagStatus::set(KeyCode::OPTION_L, ModifierFlag::OPTION_L);
+  EXPECT_EQ(Flags(ModifierFlag::OPTION_L), FlagStatus::makeFlags());
+
+  FlagStatus::reset();
+  FlagStatus::set(KeyCode::OPTION_R, ModifierFlag::OPTION_R);
+  EXPECT_EQ(Flags(ModifierFlag::OPTION_R), FlagStatus::makeFlags());
+
+  FlagStatus::reset();
+  FlagStatus::set(KeyCode::COMMAND_L, ModifierFlag::COMMAND_L);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), FlagStatus::makeFlags());
+
+  FlagStatus::reset();
+  FlagStatus::set(KeyCode::COMMAND_R, ModifierFlag::COMMAND_R);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_R), FlagStatus::makeFlags());
+
+  FlagStatus::reset();
+  FlagStatus::set(KeyCode::FN, ModifierFlag::FN);
+  EXPECT_EQ(Flags(ModifierFlag::FN), FlagStatus::makeFlags());
 }
 
 TEST(FlagStatus, increase) {
