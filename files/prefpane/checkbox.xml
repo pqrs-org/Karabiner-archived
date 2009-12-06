@@ -3590,10 +3590,16 @@
           <autogen>--IgnoreMultipleSameKeyPress-- KeyCode::A, VK_SHIFT</autogen>
         </item>
         <item>
-          <name>KeyToPointingButton</name>
-          <appendix>Control_L to LeftClick</appendix>
-          <sysctl>remap.samples_controlL2leftclick</sysctl>
-          <autogen>--KeyToPointingButton-- KeyCode::CONTROL_L, PointingButton::LEFT</autogen>
+          <name>KeyToPointingButton (Standard)</name>
+          <appendix>A to LeftClick</appendix>
+          <sysctl>remap.samples_a2leftclick</sysctl>
+          <autogen>--KeyToPointingButton-- KeyCode::A, PointingButton::LEFT</autogen>
+        </item>
+        <item>
+          <name>KeyToPointingButton (ModifierFlag)</name>
+          <appendix>Option_L to LeftClick</appendix>
+          <sysctl>remap.samples_optionL2leftclick</sysctl>
+          <autogen>--KeyToPointingButton-- KeyCode::OPTION_L, PointingButton::LEFT</autogen>
         </item>
         <item>
           <name>PointingRelativeToScroll (One Button)</name>

@@ -45,7 +45,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (! RemapUtil::isKey(remapParams, KeyCode::KEYPAD_CLEAR)) return false;
 
-    if (RemapUtil::isKeyDown(remapParams, KeyCode::KEYPAD_CLEAR)) {
+    if (remapParams.params.eventType.isKeyDownOrModifierDown(remapParams.params.key, remapParams.params.flags)) {
       config.remap_keypadnumlock = ! config.remap_keypadnumlock;
     }
 

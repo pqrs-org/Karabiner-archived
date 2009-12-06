@@ -17,7 +17,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     set(const RemapParams &remapParams)
     {
-      if (RemapUtil::isKeyDown(remapParams, remapParams.params.key)) {
+      if (remapParams.isKeyDownOrModifierDown()) {
         ++num;
       } else {
         --num;

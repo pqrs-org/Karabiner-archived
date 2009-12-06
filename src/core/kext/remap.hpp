@@ -13,6 +13,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool& isremapped;
 
     void drop(void) const { isremapped = true; }
+    bool isKeyDownOrModifierDown(void) const { return params.eventType.isKeyDownOrModifierDown(params.key, params.flags); }
   };
   void remap_core(const RemapParams& remapParams);
 
