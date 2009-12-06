@@ -24,6 +24,27 @@ TEST(FlagStatus, makeFlags) {
   FlagStatus::set(KeyCode::A, 0);
   EXPECT_EQ(Flags(), FlagStatus::makeFlags());
 
+  // down SHIFT_L
   FlagStatus::set(KeyCode::SHIFT_L, ModifierFlag::SHIFT_L);
   EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), FlagStatus::makeFlags());
+
+  // no effect with ModifierFlag::NONE
+  FlagStatus::set(KeyCode::A, ModifierFlag::NONE);
+  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), FlagStatus::makeFlags());
+
+  // down CONTROL_
+  FlagStatus::set(KeyCode::CONTROL_L, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L);
+  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
+
+  // down A
+  FlagStatus::set(KeyCode::A, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L);
+  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
+
+  // up SHIFT_L
+  FlagStatus::set(KeyCode::SHIFT_L, ModifierFlag::CONTROL_L);
+  EXPECT_EQ(Flags(ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
+
+  // up CONTROL_L
+  FlagStatus::set(KeyCode::CONTROL_L, 0);
+  EXPECT_EQ(Flags(), FlagStatus::makeFlags());
 }
