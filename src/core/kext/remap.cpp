@@ -91,20 +91,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   static bool
-  remap_jis_underscore2backslash(const RemapParams &remapParams)
-  {
-    if (! config.remap_jis_underscore2backslash) return false;
-
-    static RemapUtil::KeyToKey keytokey;
-    if (! keytokey.remap(remapParams, KeyCode::JIS_UNDERSCORE, ModifierFlag::NONE, KeyCode::BACKSLASH)) {
-      return false;
-    }
-    remapParams.params.keyboardType = KeyboardType::MACBOOK;
-    return true;
-  }
-
-  // ----------------------------------------
-  static bool
   remap_jis_app_vi_eisuu2eisuu_escape(const RemapParams &remapParams)
   {
     if (! config.remap_jis_app_vi_eisuu2eisuu_escape) return false;
@@ -170,8 +156,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &remapParams)
 
   // ------------------------------------------------------------
   // jis
-  remap_jis_underscore2backslash(remapParams);
-
   remap_jis_app_vi_eisuu2eisuu_escape(remapParams);
 
   remap_jis_jansi(remapParams);
