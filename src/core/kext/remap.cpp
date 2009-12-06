@@ -48,7 +48,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (RemapUtil::isKeyDown(remapParams, KeyCode::KEYPAD_CLEAR)) {
       config.remap_keypadnumlock = ! config.remap_keypadnumlock;
     }
-    RemapUtil::drop(remapParams);
+
+    remapParams.drop();
     return true;
   }
 
