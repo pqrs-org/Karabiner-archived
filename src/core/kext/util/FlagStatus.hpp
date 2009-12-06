@@ -44,9 +44,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     static Flags makeFlags(void);
     static void reset(void);
 
-    static Item* getFlagStatus(const ModifierFlag& flag);
-    static Item* getFlagStatus(const KeyCode& key);
-
     static bool isHeldDown(const ModifierFlag& flag);
 
     static void increase(const Flags& flags);

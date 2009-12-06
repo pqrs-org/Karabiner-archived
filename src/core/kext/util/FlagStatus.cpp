@@ -139,22 +139,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     return flags;
   }
 
-  FlagStatus::Item*
-  FlagStatus::getFlagStatus(const ModifierFlag& flag) {
-    for (int i = 0; i < ModifierFlagList::listsize; ++i) {
-      if (flag == ModifierFlagList::list[i]) return item_ + i;
-    }
-    return NULL;
-  }
-
-  // ----------------------------------------
-  bool
-  FlagStatus::isHeldDown(const ModifierFlag& flag) {
-    Item* p = getFlagStatus(flag);
-    if (! p) return false;
-    return p->isHeldDown();
-  }
-
   // ------------------------------------------------------------
 #define FOREACH_TO_FLAGS(METHOD) {                          \
     for (int i = 0; i < ModifierFlagList::listsize; ++i) {      \
