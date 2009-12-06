@@ -4,12 +4,14 @@
 
 using namespace org_pqrs_KeyRemap4MacBook;
 
-std::ostream&
-operator<<(std::ostream& os, const ParamsItem& v)
-{
-  os << v.get();
-  return os;
-}
+std::ostream& operator<<(std::ostream& os, const EventType& v) { return os << v.get(); }
+std::ostream& operator<<(std::ostream& os, const KeyboardType& v) { return os << v.get(); }
+std::ostream& operator<<(std::ostream& os, const ModifierFlag& v) { return os << v.get(); }
+std::ostream& operator<<(std::ostream& os, const Flags& v) { return os << v.get(); }
+std::ostream& operator<<(std::ostream& os, const KeyCode& v) { return os << v.get(); }
+std::ostream& operator<<(std::ostream& os, const ConsumerKeyCode& v) { return os << v.get(); }
+std::ostream& operator<<(std::ostream& os, const PointingButton& v) { return os << v.get(); }
+std::ostream& operator<<(std::ostream& os, const Buttons& v) { return os << v.get(); }
 
 TEST(KeyCode, op) {
   EXPECT_TRUE(KeyCode::A == KeyCode::A);
@@ -126,7 +128,7 @@ TEST(KeyCode, normalizeKey) {
 
 #define CHECK_NORMALIZEKEY(KEYCODE, FLAGS) {    \
     EXPECT_EQ(KEYCODE, key);                    \
-    EXPECT_EQ(FLAGS, flags);                    \
+    EXPECT_EQ(Flags(flags), FLAGS);             \
 }
 
   // ENTER_POWERBOOK -> ENTER
@@ -207,10 +209,10 @@ TEST(KeyCode, reverseNormalizeKey) {
   Flags flags;
   KeyboardType keyboardType;
 
-#define CHECK_REVERSENORMALIZEKEY(KEYCODE, MODIFIERFLAG) {              \
-    EXPECT_EQ(KEYCODE, key);           \
-    EXPECT_EQ(MODIFIERFLAG, flags);    \
-}
+#define CHECK_REVERSENORMALIZEKEY(KEYCODE, MODIFIERFLAG) {  \
+    EXPECT_EQ(KEYCODE, key);                                \
+    EXPECT_EQ(Flags(MODIFIERFLAG), flags);                  \
+  }
 
   // ENTER_POWERBOOK -> ENTER
   key = KeyCode::ENTER_POWERBOOK; flags = ModifierFlag::SHIFT_L; keyboardType = KeyboardType::POWERBOOK;
