@@ -56,8 +56,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     class KeyToKey {
     public:
-      // KeyToKey(void) : active_(false) {}
-
       bool remap(const RemapParams& remapParams,
                  const KeyCode& fromKeyCode, const Flags& fromFlags,
                  const KeyCode& toKeyCode,   const Flags& toFlags = ModifierFlag::NONE,
@@ -182,7 +180,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void fireConsumer(const Params_KeyboardSpecialEventCallback& params);
-    void fireRelativePointer(PointingButton::PointingButton button);
+    void fireRelativePointer(const Buttons& buttons);
     void fireScrollWheel(short int deltaAxis1, short int deltaAxis2, short int deltaAxis3,
                          IOFixed fixedDelta1, IOFixed fixedDelta2, IOFixed fixedDelta3,
                          SInt32 pointDelta1, SInt32 pointDelta2, SInt32 pointDelta3);
