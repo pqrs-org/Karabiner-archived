@@ -75,8 +75,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool operator==(const Flags& other) const { return value_ == other.get(); }
     bool operator!=(const Flags& other) const { return ! (*this == other); }
 
-    Flags operator|(const Flags& other)        const { return value_ | other.get(); }
-    Flags operator|(const ModifierFlag& other) const { return value_ | other.get(); }
+    Flags operator|(const Flags& other) const { return value_ | other.get(); }
+    Flags operator&(const Flags& other) const { return value_ & other.get(); }
 
     Flags& add(const ModifierFlag& flag) { value_ |= flag.get(); return *this; }
     Flags& add(const Flags& flags) { value_ |= flags.get(); return *this; }
@@ -162,6 +162,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     Buttons& remove(const PointingButton& button) { value_ &= ~button; return *this; }
 
     bool isNONE(void) const { return value_ == 0; }
+    bool isOn(const Buttons& buttons) {
+      return (value_ & buttons.get()) == buttons.get();
+    }
 
   private:
     unsigned int value_;
