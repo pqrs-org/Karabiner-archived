@@ -276,11 +276,13 @@ namespace org_pqrs_KeyRemap4MacBook {
 #endif
 
     // ----------------------------------------------------------------------
-    bool modifierStatus[ModifierFlagList::listsize];
+    bool modifierStatus[FlagStatus::MAXNUM];
 
     // setup modifierStatus
-    for (int i = 0; i < ModifierFlagList::listsize; ++i) {
-      modifierStatus[i] = lastFlags_.isOn(ModifierFlagList::list[i]);
+    for (int i = 0; ; ++i) {
+      const ModifierFlag& m = FlagStatus::getFlag(i);
+      if (m == ModifierFlag::NONE) break;
+      modifierStatus[i] = lastFlags_.isOn(m);
     }
 
     Params_KeyboardEventCallBack callbackparams = params;
@@ -299,8 +301,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (size_t firetype = 0; firetype < sizeof(listIsFireKeyUp) / sizeof(listIsFireKeyUp[0]); ++firetype) {
       bool isFireKeyUp = listIsFireKeyUp[firetype];
 
-      for (int i = 0; i < ModifierFlagList::listsize; ++i) {
-        const ModifierFlag& m = ModifierFlagList::list[i];
+      for (int i = 0; ; ++i) {
+        const ModifierFlag& m = FlagStatus::getFlag(i);
+        if (m == ModifierFlag::NONE) break;
+
         bool from = lastFlags_.isOn(m);
         bool to = toFlags.isOn(m);
 
@@ -319,9 +323,12 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
         Flags flags = 0;
-        for (int j = 0; j < ModifierFlagList::listsize; ++j) {
+        for (int j = 0; ; ++j) {
+          const ModifierFlag& mm = FlagStatus::getFlag(j);
+          if (mm == ModifierFlag::NONE) break;
+
           if (modifierStatus[j]) {
-            flags.add(ModifierFlagList::list[j]);
+            flags.add(mm);
           }
         }
 

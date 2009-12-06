@@ -40,6 +40,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       int lock_count_; // store remapped lock status. (CapsLock, FN lock, ...)
       int original_lock_count_; // store original CapsLock status.
     };
+    enum { MAXNUM = 16 };
 
     static bool initialize(void);
     static void set(void);
@@ -57,7 +58,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void lock_decrease(const Flags& flags);
 
   private:
-    enum { MAXNUM = 16 };
     static Item item_[MAXNUM];
   };
 }
