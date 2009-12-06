@@ -1162,52 +1162,52 @@
         <item>
           <name>Shift(Holding)+1 to F1</name>
           <sysctl>remap.holding_shiftL1_to_f1</sysctl>
-          <autogen>--ModifierHoldingKeyToKey-- VK_SHIFT, KeyCode::KEY_1, KeyCode::F1</autogen>
+          <autogen>--ModifierHoldingKeyToKey-- KeyCode::KEY_1, VK_SHIFT, KeyCode::F1</autogen>
         </item>
         <item>
           <name>Shift(Holding)+2 to F2</name>
           <sysctl>remap.holding_shiftL2_to_f2</sysctl>
-          <autogen>--ModifierHoldingKeyToKey-- VK_SHIFT, KeyCode::KEY_2, KeyCode::F2</autogen>
+          <autogen>--ModifierHoldingKeyToKey-- KeyCode::KEY_2, VK_SHIFT, KeyCode::F2</autogen>
         </item>
         <item>
           <name>Shift(Holding)+3 to F3</name>
           <sysctl>remap.holding_shiftL3_to_f3</sysctl>
-          <autogen>--ModifierHoldingKeyToKey-- VK_SHIFT, KeyCode::KEY_3, KeyCode::F3</autogen>
+          <autogen>--ModifierHoldingKeyToKey-- KeyCode::KEY_3, VK_SHIFT, KeyCode::F3</autogen>
         </item>
         <item>
           <name>Shift(Holding)+4 to F4</name>
           <sysctl>remap.holding_shiftL4_to_f4</sysctl>
-          <autogen>--ModifierHoldingKeyToKey-- VK_SHIFT, KeyCode::KEY_4, KeyCode::F4</autogen>
+          <autogen>--ModifierHoldingKeyToKey-- KeyCode::KEY_4, VK_SHIFT, KeyCode::F4</autogen>
         </item>
         <item>
           <name>Shift(Holding)+5 to F5</name>
           <sysctl>remap.holding_shiftL5_to_f5</sysctl>
-          <autogen>--ModifierHoldingKeyToKey-- VK_SHIFT, KeyCode::KEY_5, KeyCode::F5</autogen>
+          <autogen>--ModifierHoldingKeyToKey-- KeyCode::KEY_5, VK_SHIFT, KeyCode::F5</autogen>
         </item>
         <item>
           <name>Shift(Holding)+6 to F6</name>
           <sysctl>remap.holding_shiftL6_to_f6</sysctl>
-          <autogen>--ModifierHoldingKeyToKey-- VK_SHIFT, KeyCode::KEY_6, KeyCode::F6</autogen>
+          <autogen>--ModifierHoldingKeyToKey-- KeyCode::KEY_6, VK_SHIFT, KeyCode::F6</autogen>
         </item>
         <item>
           <name>Shift(Holding)+7 to F7</name>
           <sysctl>remap.holding_shiftL7_to_f7</sysctl>
-          <autogen>--ModifierHoldingKeyToKey-- VK_SHIFT, KeyCode::KEY_7, KeyCode::F7</autogen>
+          <autogen>--ModifierHoldingKeyToKey-- KeyCode::KEY_7, VK_SHIFT, KeyCode::F7</autogen>
         </item>
         <item>
           <name>Shift(Holding)+8 to F8</name>
           <sysctl>remap.holding_shiftL8_to_f8</sysctl>
-          <autogen>--ModifierHoldingKeyToKey-- VK_SHIFT, KeyCode::KEY_8, KeyCode::F8</autogen>
+          <autogen>--ModifierHoldingKeyToKey-- KeyCode::KEY_8, VK_SHIFT, KeyCode::F8</autogen>
         </item>
         <item>
           <name>Shift(Holding)+9 to F9</name>
           <sysctl>remap.holding_shiftL9_to_f9</sysctl>
-          <autogen>--ModifierHoldingKeyToKey-- VK_SHIFT, KeyCode::KEY_9, KeyCode::F9</autogen>
+          <autogen>--ModifierHoldingKeyToKey-- KeyCode::KEY_9, VK_SHIFT, KeyCode::F9</autogen>
         </item>
         <item>
           <name>Shift(Holding)+0 to F10</name>
           <sysctl>remap.holding_shiftL0_to_f10</sysctl>
-          <autogen>--ModifierHoldingKeyToKey-- VK_SHIFT, KeyCode::KEY_0, KeyCode::F10</autogen>
+          <autogen>--ModifierHoldingKeyToKey-- KeyCode::KEY_0, VK_SHIFT, KeyCode::F10</autogen>
         </item>
         <item>
           <name>1234567890 to !@#$%^&amp;*() / Shift+1234567890 to 1234567890</name>
