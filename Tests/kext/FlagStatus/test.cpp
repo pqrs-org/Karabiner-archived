@@ -16,6 +16,7 @@ std::ostream& operator<<(std::ostream& os, const Buttons& v) { return os << v.ge
 
 TEST(FlagStatus, makeFlags) {
   ASSERT_TRUE(FlagStatus::initialize());
+
   EXPECT_EQ(Flags(), FlagStatus::makeFlags());
 
   FlagStatus::set();
@@ -47,4 +48,30 @@ TEST(FlagStatus, makeFlags) {
   // up CONTROL_L
   FlagStatus::set(KeyCode::CONTROL_L, 0);
   EXPECT_EQ(Flags(), FlagStatus::makeFlags());
+}
+
+TEST(FlagStatus, increase) {
+  ASSERT_TRUE(FlagStatus::initialize());
+
+  FlagStatus::increase(ModifierFlag::SHIFT_L);
+  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), FlagStatus::makeFlags());
+
+  FlagStatus::increase(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L), FlagStatus::makeFlags());
+}
+
+TEST(FlagStatus, decrease) {
+  ASSERT_TRUE(FlagStatus::initialize());
+
+  FlagStatus::increase(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
+
+  FlagStatus::decrease(ModifierFlag::CONTROL_L);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), FlagStatus::makeFlags());
+}
+
+TEST(FlagStatus, CapsLock) {
+  ASSERT_TRUE(FlagStatus::initialize());
+
+  FlagStatus::set(KeyCode::CAPSLOCK, ModifierFlag::CAPSLOCK);
 }
