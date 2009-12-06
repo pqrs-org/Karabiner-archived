@@ -352,3 +352,12 @@ TEST(KeyCode, isModifier) {
   EXPECT_EQ(false, KeyCode(KeyCode::A).isModifier());
   EXPECT_EQ(false, KeyCode(KeyCode::VK_NONE).isModifier());
 }
+
+TEST(Buttons, add) {
+  Buttons buttons;
+  buttons.add(PointingButton::LEFT);
+  EXPECT_EQ(Buttons(PointingButton::LEFT), buttons);
+
+  buttons.add(PointingButton::MIDDLE);
+  EXPECT_EQ(Buttons(PointingButton::LEFT | PointingButton::MIDDLE), buttons);
+}
