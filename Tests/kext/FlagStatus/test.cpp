@@ -79,6 +79,21 @@ TEST(FlagStatus, temporary_increase) {
   FlagStatus::temporary_increase(ModifierFlag::OPTION_L);
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L), FlagStatus::makeFlags());
 
+  // temporary_increase will reset by FlagStatus::set
+  FlagStatus::set(KeyCode::COMMAND_L, ModifierFlag::COMMAND_L);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
+}
+
+TEST(FlagStatus, temporary_decrease) {
+  ASSERT_TRUE(FlagStatus::initialize());
+
+  FlagStatus::increase(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
+
+  FlagStatus::temporary_decrease(ModifierFlag::CONTROL_L);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), FlagStatus::makeFlags());
+
+  // temporary_increase will reset by FlagStatus::set
   FlagStatus::set(KeyCode::COMMAND_L, ModifierFlag::COMMAND_L);
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
 }
