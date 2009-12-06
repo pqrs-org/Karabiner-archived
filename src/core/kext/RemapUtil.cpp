@@ -392,6 +392,17 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
       return true;
     }
+
+    bool
+    handle_VK_JIS_BACKSLASH(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
+    {
+      if (params.key != KeyCode::VK_JIS_BACKSLASH) return false;
+
+      params.key = KeyCode::BACKSLASH;
+      params.keyboardType = KeyboardType::MACBOOK;
+      RemapUtil::fireKey(params, workspacedata);
+      return true;
+    }
   }
 
   void
@@ -403,6 +414,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (Handle_VK_JIS_TOGGLE_EISUU_KANA::handle(p, workspacedata)) return;
     if (handle_VK_JIS_EISUU_x2(p, workspacedata)) return;
     if (handle_VK_JIS_KANA_x2(p, workspacedata)) return;
+    if (handle_VK_JIS_BACKSLASH(p, workspacedata)) return;
 
     // ------------------------------------------------------------
     p.key.reverseNormalizeKey(p.flags, p.keyboardType);
