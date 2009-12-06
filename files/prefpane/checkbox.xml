@@ -3290,6 +3290,7 @@
             <item>
               <name>Underscore(Ro) to Backslash(\)</name>
               <sysctl>remap.jis_underscore2backslash</sysctl>
+              <autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, ModifierFlag::NONE, KeyCode::VK_JIS_BACKSLASH</autogen>
             </item>
           </list>
         </item>
