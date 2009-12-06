@@ -16,8 +16,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     OSObject* target;
     EventType eventType;
-    unsigned int flags;
-    unsigned int key;
+    Flags flags;
+    KeyCode key;
     unsigned int charCode;
     unsigned int charSet;
     unsigned int origCharCode;
@@ -42,8 +42,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     OSObject* target;
     EventType eventType;
-    unsigned int flags;
-    unsigned int key;
+    Flags flags;
+    ConsumerKeyCode key;
     unsigned int flavor;
     UInt64 guid;
     bool repeat;
@@ -61,7 +61,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static AbsoluteTime& getcurrent_ts(void);
 
     OSObject* target;
-    int buttons;
+    Buttons buttons;
     int dx;
     int dy;
     AbsoluteTime ts;

@@ -14,7 +14,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.debug) return;
 
     printf("KeyRemap4MacBook KeyboardEventCallback [%s]: eventType %d, flags 0x%x, key %d, kbdType %d\n",
-           message, eventType.get(), flags, key, keyboardType.get());
+           message, eventType.get(), flags.get(), key.get(), keyboardType.get());
   }
 
   void
@@ -23,7 +23,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.debug) return;
 
     printf("KeyRemap4MacBook KeyboardSpecialEventCallBack [%s]: eventType %d, flags 0x%x, key %d, flavor %d, guid %lld\n",
-           message, eventType.get(), flags, key, flavor, guid);
+           message, eventType.get(), flags.get(), key.get(), flavor, guid);
   }
 
   void
@@ -32,7 +32,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.debug_pointing) return;
 
     printf("KeyRemap4MacBook RelativePointerEventCallBack [%s]: buttons: %d, dx: %d, dy: %d\n",
-           message, buttons, dx, dy);
+           message, buttons.get(), dx, dy);
   }
 
   void
@@ -59,7 +59,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (key >= KeyCode::VK__BEGIN__) {
       // Invalid keycode
-      IOLog("[KeyRemap4MacBook ERROR] Params_KeyboardEventCallBack::apply invalid key:%d\n", key);
+      IOLog("[KeyRemap4MacBook ERROR] Params_KeyboardEventCallBack::apply invalid key:%d\n", key.get());
+      return;
+    }
+    if (eventType == EventType::MODIFY && ! key.isModifier()) {
+      // Invalid modifierkeycode
+      IOLog("[KeyRemap4MacBook ERROR] Params_KeyboardEventCallBack::apply invalid modifierkey:%d\n", key.get());
       return;
     }
 
@@ -75,8 +80,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (key == KeyCode::F8 || key == KeyCode::F9 ||
           key == KeyCode::F10 || key == KeyCode::F11 ||
           key == KeyCode::F12 || key == KeyCode::EXPOSE_ALL) {
-        if (ModifierFlag::isOn(flags, ModifierFlag::SHIFT_L) ||
-            ModifierFlag::isOn(flags, ModifierFlag::SHIFT_R)) {
+        if (flags.isOn(ModifierFlag::SHIFT_L) ||
+            flags.isOn(ModifierFlag::SHIFT_R)) {
           return;
         }
       }
@@ -93,20 +98,16 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ------------------------------------------------------------
     log("sending");
-    callback(target, eventType.get(), flags, key, charCode, charSet, origCharCode, origCharSet,
+    callback(target, eventType.get(), flags.get(), key.get(),
+             charCode, charSet, origCharCode, origCharSet,
              keyboardType.get(), repeat, ts, sender, refcon);
 
-    switch (eventType.get()) {
-      case EventType::DOWN:
+    if (eventType == EventType::DOWN) {
+      EventWatcher::on();
+    } else if (eventType == EventType::MODIFY) {
+      if (flags.isOn(key.getModifierFlag())) {
         EventWatcher::on();
-        break;
-      case EventType::MODIFY:
-        if (ModifierFlag::isOn(flags, KeyCode::getModifierFlag(key))) {
-          EventWatcher::on();
-        }
-        break;
-      default:
-        break;
+      }
     }
   }
 
@@ -115,7 +116,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (key >= ConsumerKeyCode::VK__BEGIN__) {
       // Invalid keycode
-      IOLog("[KeyRemap4MacBook ERROR] Params_KeyboardSpecialEventCallback::apply invalid key:%d\n", key);
+      IOLog("[KeyRemap4MacBook ERROR] Params_KeyboardSpecialEventCallback::apply invalid key:%d\n", key.get());
       return;
     }
 
@@ -127,7 +128,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! callback) return;
 
     log("sending");
-    callback(target, eventType.get(), flags, key, flavor, guid, repeat, ts, sender, refcon);
+    callback(target, eventType.get(), flags.get(), key.get(),
+             flavor, guid, repeat, ts, sender, refcon);
 
     if (eventType == EventType::DOWN) {
       EventWatcher::on();
@@ -144,9 +146,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! callback) return;
 
     log("sending");
-    callback(target, buttons, dx, dy, ts, sender, refcon);
+    callback(target, buttons.get(), dx, dy, ts, sender, refcon);
 
-    if (buttons != PointingButton::NONE) {
+    if (! buttons.isNONE()) {
       EventWatcher::on();
     }
   }
