@@ -91,21 +91,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   static bool
-  remap_jis_app_vi_eisuu2eisuu_escape(const RemapParams &remapParams)
-  {
-    if (! config.remap_jis_app_vi_eisuu2eisuu_escape) return false;
-
-    if (remapParams.workspacedata.type != KeyRemap4MacBook_bridge::GetWorkspaceData::VI) return false;
-
-    if (! RemapUtil::isKeyDown(remapParams, KeyCode::JIS_EISUU)) return false;
-
-    RemapUtil::fireKey(remapParams.params, remapParams.workspacedata);
-    RemapUtil::fireKey_downup(remapParams.params.flags, KeyCode::ESCAPE, remapParams.params, remapParams.workspacedata);
-    remapParams.isremapped = true;
-    return true;
-  }
-
-  static bool
   remap_jis_jansi(const RemapParams &remapParams)
   {
     if (! config.remap_jis_jansi) return false;
@@ -156,8 +141,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &remapParams)
 
   // ------------------------------------------------------------
   // jis
-  remap_jis_app_vi_eisuu2eisuu_escape(remapParams);
-
   remap_jis_jansi(remapParams);
 
   // ------------------------------------------------------------
