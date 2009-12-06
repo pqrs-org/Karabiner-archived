@@ -375,3 +375,12 @@ TEST(Buttons, addremove) {
   buttons.remove(PointingButton::RIGHT);
   EXPECT_EQ(Buttons(PointingButton::MIDDLE), buttons);
 }
+
+TEST(Buttons, isOn) {
+  Buttons buttons(PointingButton::LEFT | PointingButton::MIDDLE);
+  EXPECT_TRUE(buttons.isOn(PointingButton::LEFT));
+  EXPECT_TRUE(buttons.isOn(PointingButton::LEFT | PointingButton::MIDDLE));
+
+  EXPECT_FALSE(buttons.isOn(PointingButton::RIGHT));
+  EXPECT_FALSE(buttons.isOn(PointingButton::LEFT | PointingButton::RIGHT));
+}
