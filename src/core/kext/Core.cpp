@@ -1,15 +1,17 @@
-#include "Core.hpp"
-#include "Config.hpp"
-#include "RemapUtil.hpp"
+#include "base.hpp"
 #include "Client.hpp"
-#include "util/ListHookedKeyboard.hpp"
-#include "util/ListHookedConsumer.hpp"
-#include "util/ListHookedPointing.hpp"
-#include "util/KeyboardRepeat.hpp"
-#include "util/TimerWrapper.hpp"
-#include "util/NumHeldDownKeys.hpp"
-#include "remap.hpp"
+#include "CommonData.hpp"
+#include "Config.hpp"
+#include "Core.hpp"
+#include "RemapUtil.hpp"
 #include "bridge.hpp"
+#include "remap.hpp"
+#include "util/KeyboardRepeat.hpp"
+#include "util/ListHookedConsumer.hpp"
+#include "util/ListHookedKeyboard.hpp"
+#include "util/ListHookedPointing.hpp"
+#include "util/NumHeldDownKeys.hpp"
+#include "util/TimerWrapper.hpp"
 
 #include <sys/errno.h>
 #include <IOKit/IOWorkLoop.h>
@@ -177,15 +179,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     remap_KeyboardEventCallback(Params_KeyboardEventCallBack& params)
     {
-      IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, params.sender);
-      if (! kbd) return;
-
-      HookedKeyboard* p = ListHookedKeyboard::instance().get(kbd);
-      if (! p) return;
-
       // ------------------------------------------------------------
       // Because the key repeat generates it by oneself, I throw it away.
-      KeyboardRepeat::setTS(params.ts);
       if (params.repeat) {
         return;
       }
@@ -194,9 +189,12 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       if (config.general_capslock_led_hack) {
-        int led = kbd->getLEDStatus();
-        if (led == 0) {
-          kbd->setAlphaLockFeedback(true);
+        HookedKeyboard* hk = ListHookedKeyboard::instance().get();
+        if (hk && hk->get()) {
+          int led = hk->get()->getLEDStatus();
+          if (led == 0) {
+            hk->get()->setAlphaLockFeedback(true);
+          }
         }
       }
 
@@ -231,7 +229,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         FlagStatus::reset();
         params.flags = FlagStatus::makeFlags();
         FireModifiers::fire(params);
-        PressDownKeys::clear(params.target, params.ts, params.sender, params.refcon);
+        PressDownKeys::clear();
       }
     }
 
@@ -293,9 +291,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         HookedKeyboard* hk = ListHookedKeyboard::instance().get();
         if (hk) {
           Params_KeyboardEventCallBack callbackparams = {
-            hk->getOrig_keyboardEventTarget(), EventType::MODIFY, newflags, KeyCode::VK_NONE,
+            EventType::MODIFY, newflags, KeyCode::VK_NONE,
             0, 0, 0, 0,
-            KeyboardType::MACBOOK, false, params.ts, hk->get(), NULL,
+            CommonData::getcurrent_keyboardType(), false,
           };
           FireModifiers::fire(callbackparams);
         }

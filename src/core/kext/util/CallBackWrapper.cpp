@@ -1,10 +1,10 @@
 #include "CallBackWrapper.hpp"
+#include "CommonData.hpp"
 #include "Config.hpp"
 #include "EventWatcher.hpp"
 #include "ListHookedConsumer.hpp"
 #include "ListHookedKeyboard.hpp"
 #include "ListHookedPointing.hpp"
-#include "RemapUtil.hpp"
 #include "KeyCode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -69,12 +69,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ------------------------------------------------------------
-    HookedKeyboard* hk = ListHookedKeyboard::instance().get();
-    if (! hk) return;
-
-    KeyboardEventCallback callback = hk->getOrig_keyboardEventAction();
-    if (! callback) return;
-
     if (config.option_drop_slowexpose) {
       // Skip if Shift+F8,F9,F10,F11,F12,EXPOSE_ALL.
       if (key == KeyCode::F8 || key == KeyCode::F9 ||
@@ -97,10 +91,27 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ------------------------------------------------------------
+    HookedKeyboard* hk = ListHookedKeyboard::instance().get();
+    if (! hk) return;
+
+    KeyboardEventCallback callback = hk->getOrig_keyboardEventAction();
+    if (! callback) return;
+
+    OSObject* target = hk->getOrig_keyboardEventTarget();
+    if (! target) return;
+
+    OSObject* sender = hk->get();
+    if (! sender) return;
+
+    const AbsoluteTime& ts = CommonData::getcurrent_ts();
+    OSObject* refcon = NULL;
+
     log("sending");
     callback(target, eventType.get(), flags.get(), key.get(),
              charCode, charSet, origCharCode, origCharSet,
              keyboardType.get(), repeat, ts, sender, refcon);
+
+    CommonData::setcurrent_keyboardType(keyboardType);
 
     if (eventType == EventType::DOWN) {
       EventWatcher::on();
@@ -171,39 +182,4 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // EventWatcher::on is not necessary.
   }
-
-  // ----------------------------------------------------------------------
-  KeyboardType Params_KeyboardEventCallBack::current_keyboardType_(KeyboardType::MACBOOK);
-  namespace {
-    AbsoluteTime current_ts;
-  }
-
-  void
-  Params_KeyboardEventCallBack::setcurrent(void)
-  {
-    current_keyboardType_ = keyboardType;
-    current_ts = ts;
-  }
-  void
-  Params_KeyboardSpecialEventCallback::setcurrent(void)
-  {
-    current_ts = ts;
-  }
-  void
-  Params_RelativePointerEventCallback::setcurrent(void)
-  {
-    current_ts = ts;
-  }
-  void
-  Params_ScrollWheelEventCallback::setcurrent(void)
-  {
-    current_ts = ts;
-  }
-
-  KeyboardType Params_KeyboardEventCallBack::getcurrent_keyboardType(void) { return current_keyboardType_; }
-
-  AbsoluteTime& Params_KeyboardEventCallBack::getcurrent_ts(void) { return current_ts; }
-  AbsoluteTime& Params_KeyboardSpecialEventCallback::getcurrent_ts(void) { return current_ts; }
-  AbsoluteTime& Params_RelativePointerEventCallback::getcurrent_ts(void) { return current_ts; }
-  AbsoluteTime& Params_ScrollWheelEventCallback::getcurrent_ts(void) { return current_ts; }
 }

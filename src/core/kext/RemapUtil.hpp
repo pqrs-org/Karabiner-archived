@@ -106,15 +106,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ----------------------------------------
     void fireKey(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
 
-    void fireKey(const EventType& eventType, const Flags& flags, const KeyCode& key,
-                 const KeyboardType& keyboardType, const AbsoluteTime& ts,
+    void fireKey(const EventType& eventType, const Flags& flags, const KeyCode& key, const KeyboardType& keyboardType,
                  const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
 
     inline void fireKey(const EventType& eventType, const Flags& flags, const KeyCode& key,
                         const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
       RemapUtil::fireKey(eventType,
                          flags, key,
-                         params.keyboardType, params.ts,
+                         params.keyboardType,
                          workspacedata);
 
     }
@@ -124,21 +123,19 @@ namespace org_pqrs_KeyRemap4MacBook {
       RemapUtil::fireKey(params.eventType, flags, key, params, workspacedata);
     }
 
-    inline void fireKey_downup(const Flags& flags, const KeyCode& key, const KeyboardType& keyboardType, const AbsoluteTime& ts,
+    inline void fireKey_downup(const Flags& flags, const KeyCode& key, const KeyboardType& keyboardType,
                                const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
       if (key.isModifier()) {
-        RemapUtil::fireKey(EventType::MODIFY, flags, key, keyboardType, ts, workspacedata);
+        RemapUtil::fireKey(EventType::MODIFY, flags, key, keyboardType, workspacedata);
       } else {
-        RemapUtil::fireKey(EventType::DOWN,   flags, key, keyboardType, ts, workspacedata);
-        RemapUtil::fireKey(EventType::UP,     flags, key, keyboardType, ts, workspacedata);
+        RemapUtil::fireKey(EventType::DOWN,   flags, key, keyboardType, workspacedata);
+        RemapUtil::fireKey(EventType::UP,     flags, key, keyboardType, workspacedata);
       }
     }
 
     inline void fireKey_downup(const Flags& flags, const KeyCode& key,
                                const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
-      RemapUtil::fireKey_downup(flags, key,
-                                params.keyboardType, params.ts,
-                                workspacedata);
+      RemapUtil::fireKey_downup(flags, key, params.keyboardType, workspacedata);
     }
 
     void fireConsumer(const Params_KeyboardSpecialEventCallback& params);

@@ -1,6 +1,7 @@
+#include "CommonData.hpp"
+#include "Config.hpp"
 #include "PressDownKeys.hpp"
 #include "RemapUtil.hpp"
-#include "Config.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   PressDownKeys::Item PressDownKeys::item_[PressDownKeys::MAXNUM];
@@ -58,14 +59,16 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  PressDownKeys::clear(OSObject* target, AbsoluteTime ts, OSObject* sender, void* refcon)
+  PressDownKeys::clear(void)
   {
     if (config.debug_devel) {
       IOLog("KeyRemap4MacBook -Info- PressDownKeys::clear\n");
     }
 
     Params_KeyboardEventCallBack callbackparams = {
-      target, EventType::UP, 0, 0, 0, 0, 0, 0, 0, false, ts, sender, refcon,
+      EventType::UP, Flags(0), KeyCode(0),
+      0, 0, 0, 0,
+      CommonData::getcurrent_keyboardType(), false,
     };
 
     for (int i = 0; i < MAXNUM; ++i) {

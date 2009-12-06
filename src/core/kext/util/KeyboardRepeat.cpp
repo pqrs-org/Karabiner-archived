@@ -15,7 +15,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     params_.origCharCode = 0;
     params_.origCharSet = 0;
     params_.repeat = true;
-    params_.refcon = NULL;
 
     timer_.initialize(&workloop, NULL, KeyboardRepeat::fire);
   }
@@ -46,22 +45,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     } else if (eventType == EventType::DOWN) {
       if (key == KeyCode::VK_NONE) goto cancel;
 
-      // set keyrepeat
-      {
-        HookedKeyboard* hk = ListHookedKeyboard::instance().get();
-        if (! hk) goto cancel;
+      params_.eventType = eventType;
+      params_.flags = flags;
+      params_.key = key;
+      params_.keyboardType = keyboardType;
 
-        params_.target = hk->getOrig_keyboardEventTarget();
-        params_.eventType = eventType;
-        params_.flags = flags;
-        params_.key = key;
-        params_.keyboardType = keyboardType;
-        params_.sender = hk->get();
-
-        timer_.setTimeoutMS(wait);
-        if (config.debug_devel) {
-          IOLog("KeyRemap4MacBook -Info- setRepeat_keyboard key:%d flags:0x%x\n", key.get(), flags.get());
-        }
+      timer_.setTimeoutMS(wait);
+      if (config.debug_devel) {
+        IOLog("KeyRemap4MacBook -Info- setRepeat_keyboard key:%d flags:0x%x\n", key.get(), flags.get());
       }
 
     } else {
