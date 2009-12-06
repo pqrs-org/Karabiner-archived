@@ -387,7 +387,7 @@ TEST(Buttons, addremove) {
 }
 
 TEST(Buttons, isOn) {
-  Buttons buttons(PointingButton::LEFT | PointingButton::MIDDLE);
+  Buttons buttons(PointingButton::LEFT | PointingButton::MIDDLE | PointingButton::BUTTON4);
   EXPECT_TRUE(buttons.isOn(PointingButton::LEFT));
   EXPECT_TRUE(buttons.isOn(PointingButton::LEFT | PointingButton::MIDDLE));
 
