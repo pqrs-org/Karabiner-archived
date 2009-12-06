@@ -253,7 +253,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                const KeyCode& fireKeyCode, const Flags& fireFlags = ModifierFlag::NONE);
 
   private:
-    int pressCount;
+    int pressCount_;
     RemapUtil::KeyToKey keytokey_;
   };
 
