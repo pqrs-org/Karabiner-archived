@@ -18,23 +18,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       POINTING_POINT_SCALE = 10, // (== SCROLL_WHEEL_TO_PIXEL_SCALE >> 16)
     };
 
-    inline bool isKey(const RemapParams& remapParams, const KeyCode& key) {
-      if (remapParams.isremapped) return false;
-      return remapParams.params.key == key;
-    }
-    inline bool isKey(const RemapConsumerParams& remapParams, const ConsumerKeyCode& key) {
-      return remapParams.params.key == key;
-    }
-    inline bool isEvent_Down(const RemapParams& remapParams) {
-      return remapParams.params.eventType == EventType::DOWN;
-    }
-    inline bool isEvent_Up(const RemapParams& remapParams) {
-      return remapParams.params.eventType == EventType::UP;
-    }
-    inline bool isEvent_Modify(const RemapParams& remapParams) {
-      return remapParams.params.eventType == EventType::MODIFY;
-    }
-
     class KeyToKey {
     public:
       bool remap(const RemapParams& remapParams,

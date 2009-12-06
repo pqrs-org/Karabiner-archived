@@ -70,9 +70,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       } else {
         // key2modifier
-        if (isEvent_Down(remapParams)) {
+        if (remapParams.params.eventType == EventType::DOWN) {
           FlagStatus::increase(toModifierFlag);
-        } else if (isEvent_Up(remapParams)) {
+        } else if (remapParams.params.eventType == EventType::UP) {
           FlagStatus::decrease(toModifierFlag);
         }
         remapParams.params.eventType = EventType::MODIFY;
@@ -171,9 +171,8 @@ namespace org_pqrs_KeyRemap4MacBook {
                            const ConsumerKeyCode& toKeyCode, const Flags& toFlags)
   {
     if (remapParams.isremapped) return false;
-
+    if (remapParams.params.key != fromKeyCode) return false;
     if (! FlagStatus::makeFlags().isOn(fromFlags)) return false;
-    if (! RemapUtil::isKey(remapParams, fromKeyCode)) return false;
 
     remapFlags(fromFlags, toFlags);
 
@@ -229,8 +228,9 @@ namespace org_pqrs_KeyRemap4MacBook {
                                 const ConsumerKeyCode& fromKeyCode, const Flags& fromFlags,
                                 const ConsumerKeyCode& toKeyCode,   const Flags& toFlags)
   {
+    if (remapParams.isremapped) return false;
+    if (remapParams.params.key != fromKeyCode) return false;
     if (! FlagStatus::makeFlags().isOn(fromFlags)) return false;
-    if (! isKey(remapParams, fromKeyCode)) return false;
 
     remapFlags(fromFlags, toFlags);
 
@@ -623,7 +623,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   DoublePressModifier::remap(const RemapParams& remapParams, const KeyCode& fromKeyCode, const ModifierFlag& toFlag, const KeyCode& fireKeyCode, const Flags& fireFlags)
   {
-    if (! RemapUtil::isKey(remapParams, fromKeyCode)) {
+    if (remapParams.isremapped || remapParams.params.key != fromKeyCode) {
       pressCount = 0;
       return false;
     }
@@ -680,7 +680,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       return false;
     }
 
-    if (RemapUtil::isKey(remapParams, fromKeyCode) &&
+    if (remapParams.params.key == fromKeyCode &&
         fromKeyCode == lastkeycode_) {
       // disable event.
       remapParams.drop();
