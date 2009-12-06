@@ -34,19 +34,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     inline bool isEvent_Modify(const RemapParams& remapParams) {
       return remapParams.params.eventType == EventType::MODIFY;
     }
-    inline bool isAlreadyRemapped(const RemapParams& remapParams) {
-      return (remapParams.isremapped == true);
-    }
-
-    inline bool isKeyDown(const RemapParams& remapParams, const KeyCode& key) {
-      if (isEvent_Down(remapParams)) {
-        return isKey(remapParams, key);
-      } else if (isEvent_Modify(remapParams)) {
-        return remapParams.params.flags.isOn(key.getModifierFlag());
-      } else {
-        return false;
-      }
-    }
 
     class KeyToKey {
     public:

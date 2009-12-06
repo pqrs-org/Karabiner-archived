@@ -37,7 +37,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (remapParams.params.key != fromKeyCode) return false;
 
     // ------------------------------------------------------------
-    bool isKeyDown = RemapUtil::isKeyDown(remapParams, fromKeyCode);
+    bool isKeyDown = remapParams.isKeyDownOrModifierDown();
     if (isKeyDown) {
       active_ = false;
       if (! FlagStatus::makeFlags().isOn(fromFlags)) return false;
@@ -123,7 +123,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                              const KeyCode& toKeyCode1,  const Flags& toFlags1,
                              const KeyCode& toKeyCode2,  const Flags& toFlags2)
   {
-    bool isKeyDown = RemapUtil::isKeyDown(remapParams, fromKeyCode);
+    bool isKeyDown = remapParams.isKeyDownOrModifierDown();
 
     bool result = remap(remapParams, fromKeyCode, fromFlags, toKeyCode1, toFlags1, false);
     if (! result) return false;
@@ -150,23 +150,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (remapParams.params.key != fromKeyCode) return false;
 
     // ------------------------------------------------------------
-    const ModifierFlag& fromModifierFlag = fromKeyCode.getModifierFlag();
-
-    if (fromModifierFlag != ModifierFlag::NONE) {
-      // clear flags
-      if (RemapUtil::isKeyDown(remapParams, fromKeyCode)) {
-        FlagStatus::decrease(fromModifierFlag);
-      } else {
-        FlagStatus::increase(fromModifierFlag);
-      }
-    }
-
-    // ------------------------------------------------------------
-    if (RemapUtil::isKeyDown(remapParams, fromKeyCode)) {
+    if (remapParams.isKeyDownOrModifierDown()) {
+      FlagStatus::decrease(fromKeyCode.getModifierFlag());
       RemapUtil::fireRelativePointer(toButton);
       remappedButtions.add(toButton);
 
     } else {
+      FlagStatus::increase(fromKeyCode.getModifierFlag());
       RemapUtil::fireRelativePointer(PointingButton::NONE);
       remappedButtions.remove(toButton);
     }
@@ -180,6 +170,8 @@ namespace org_pqrs_KeyRemap4MacBook {
                            const KeyCode& fromKeyCode, const Flags& fromFlags,
                            const ConsumerKeyCode& toKeyCode, const Flags& toFlags)
   {
+    if (remapParams.isremapped) return false;
+
     if (! FlagStatus::makeFlags().isOn(fromFlags)) return false;
     if (! RemapUtil::isKey(remapParams, fromKeyCode)) return false;
 
@@ -187,7 +179,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     HookedConsumer* hc = ListHookedConsumer::instance().get();
     if (hc) {
-      EventType eventType = (RemapUtil::isKeyDown(remapParams, fromKeyCode) ? EventType::DOWN : EventType::UP);
+      EventType eventType = (remapParams.isKeyDownOrModifierDown() ? EventType::DOWN : EventType::UP);
       Flags flags = FlagStatus::makeFlags();
       unsigned int flavor = toKeyCode.get();
       UInt64 guid = static_cast<UInt64>(-1);
@@ -589,7 +581,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                              bool isFireRepeat)
   {
     // ----------------------------------------
-    bool isKeyDown = RemapUtil::isKeyDown(remapParams, fromKeyCode);
+    bool isKeyDown = remapParams.isKeyDownOrModifierDown();
     bool savedIsAnyEventHappen = isAnyEventHappen_;
 
     if (! keytokey_.remap(remapParams, fromKeyCode, fromFlags, toKeyCode, toFlags)) {
@@ -637,7 +629,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ----------------------------------------
-    bool isKeyDown = RemapUtil::isKeyDown(remapParams, fromKeyCode);
+    bool isKeyDown = remapParams.isKeyDownOrModifierDown();
 
     const KeyCode& toKeyCode = toFlag.getKeyCode();
     keytokey_.remap(remapParams, fromKeyCode, toKeyCode);
@@ -683,7 +675,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   IgnoreMultipleSameKeyPress::remap(const RemapParams& remapParams, const KeyCode& fromKeyCode, const Flags& fromFlags)
   {
-    if (RemapUtil::isAlreadyRemapped(remapParams) || FlagStatus::makeFlags() != fromFlags) {
+    if (remapParams.isremapped || FlagStatus::makeFlags() != fromFlags) {
       lastkeycode_ = KeyCode::VK_NONE.get();
       return false;
     }
@@ -696,7 +688,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // set lastkeycode_ if KeyUp.
-    if (! RemapUtil::isKeyDown(remapParams, fromKeyCode)) {
+    if (! remapParams.isKeyDownOrModifierDown()) {
       lastkeycode_ = remapParams.params.key.get();
     }
     return false;
