@@ -1,7 +1,7 @@
 #ifndef FLAGSTATUS_HPP
 #define FLAGSTATUS_HPP
 
-#include "keycode.hpp"
+#include "KeyCode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   class FlagStatus {

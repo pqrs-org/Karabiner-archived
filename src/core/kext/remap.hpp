@@ -3,7 +3,7 @@
 
 #include "base.hpp"
 #include "bridge.hpp"
-#include "keycode.hpp"
+#include "KeyCode.hpp"
 #include "CallBackWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {

@@ -1,5 +1,5 @@
 #include "RemapUtil.hpp"
-#include "keycode.hpp"
+#include "KeyCode.hpp"
 #include "Config.hpp"
 #include "util/KeyboardRepeat.hpp"
 #include "util/ListHookedKeyboard.hpp"

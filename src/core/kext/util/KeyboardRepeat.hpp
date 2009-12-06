@@ -3,7 +3,7 @@
 
 #include "base.hpp"
 #include "bridge.hpp"
-#include "keycode.hpp"
+#include "KeyCode.hpp"
 #include "Config.hpp"
 #include "CallbackWrapper.hpp"
 #include "TimerWrapper.hpp"
