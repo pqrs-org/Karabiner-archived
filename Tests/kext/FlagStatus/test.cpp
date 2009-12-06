@@ -149,6 +149,9 @@ TEST(FlagStatus, lock_increase) {
   FlagStatus::reset();
   FlagStatus::set(KeyCode::A, 0);
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), FlagStatus::makeFlags());
+
+  FlagStatus::lock_decrease(ModifierFlag::COMMAND_L);
+  EXPECT_EQ(Flags(), FlagStatus::makeFlags());
 }
 
 TEST(FlagStatus, CapsLock) {
