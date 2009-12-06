@@ -43,7 +43,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.option_keypadnumlock_togglekey_clear) return false;
 
-    if (! RemapUtil::isKey(remapParams, KeyCode::KEYPAD_CLEAR)) return false;
+    if (remapParams.isremapped) return false;
+    if (remapParams.params.key != KeyCode::KEYPAD_CLEAR) return false;
 
     if (remapParams.params.eventType.isKeyDownOrModifierDown(remapParams.params.key, remapParams.params.flags)) {
       config.remap_keypadnumlock = ! config.remap_keypadnumlock;
