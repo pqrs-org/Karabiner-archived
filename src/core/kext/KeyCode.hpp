@@ -2,6 +2,10 @@
 #define KEYCODE_HPP
 
 namespace org_pqrs_KeyRemap4MacBook {
+  class KeyCode;
+  class Flags;
+  class Buttons;
+
   // ======================================================================
   class EventType {
   public:
@@ -9,6 +13,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     unsigned int get(void) const { return value_; }
     bool operator==(const EventType& other) const { return value_ == other.get(); }
     bool operator!=(const EventType& other) const { return ! (*this == other); }
+
+    bool isKeyDownOrModifierDown(const KeyCode& key, const Flags& flags) const;
 
 #include "keycode/output/include.EventType.hpp"
 
@@ -33,9 +39,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
 
   // ======================================================================
-  class KeyCode;
-  class Flags;
-
   class ModifierFlag {
   public:
     unsigned int get(void) const { return value_; }
@@ -96,8 +99,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool operator> (const KeyCode& other) const { return value_ > other.get(); }
     bool operator>=(const KeyCode& other) const { return value_ >= other.get(); }
 
-    void normalizeKey(Flags & flags, const KeyboardType &keyboardType);
-    void reverseNormalizeKey(Flags & flags, const KeyboardType &keyboardType);
+    void normalizeKey(Flags& flags, const KeyboardType& keyboardType);
+    void reverseNormalizeKey(Flags& flags, const KeyboardType& keyboardType);
 
     ModifierFlag getModifierFlag(void) const;
     bool isModifier(void) const { return getModifierFlag() != ModifierFlag::NONE; }
@@ -126,8 +129,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
 
   // ======================================================================
-  class Buttons;
-
   class PointingButton {
   public:
     unsigned int get(void) const { return value_; }

@@ -13,9 +13,12 @@ std::ostream& operator<<(std::ostream& os, const ConsumerKeyCode& v) { return os
 std::ostream& operator<<(std::ostream& os, const PointingButton& v) { return os << v.get(); }
 std::ostream& operator<<(std::ostream& os, const Buttons& v) { return os << v.get(); }
 
-TEST(KeyCode, op) {
-  EXPECT_TRUE(KeyCode::A == KeyCode::A);
-  EXPECT_TRUE(KeyCode::VK_NONE > KeyCode::A);
+TEST(EventType, isKeyDownOrModifierDown) {
+  EXPECT_TRUE(EventType::DOWN.isKeyDownOrModifierDown(KeyCode::A, 0));
+  EXPECT_FALSE(EventType::UP.isKeyDownOrModifierDown(KeyCode::A, 0));
+
+  EXPECT_TRUE(EventType::MODIFY.isKeyDownOrModifierDown(KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L));
+  EXPECT_FALSE(EventType::MODIFY.isKeyDownOrModifierDown(KeyCode::SHIFT_L, ModifierFlag::CONTROL_L));
 }
 
 TEST(KeyboardType, isInternalKeyboard) {
@@ -133,6 +136,11 @@ namespace {
     { KeyCode::HOME, KeyCode::CURSOR_LEFT },
     { KeyCode::END, KeyCode::CURSOR_RIGHT },
   };
+}
+
+TEST(KeyCode, op) {
+  EXPECT_TRUE(KeyCode::A == KeyCode::A);
+  EXPECT_TRUE(KeyCode::VK_NONE > KeyCode::A);
 }
 
 TEST(KeyCode, get) {
