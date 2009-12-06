@@ -5,7 +5,7 @@
 #include "ListHookedKeyboard.hpp"
 #include "ListHookedPointing.hpp"
 #include "RemapUtil.hpp"
-#include "keycode.hpp"
+#include "KeyCode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   void

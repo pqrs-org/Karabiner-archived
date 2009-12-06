@@ -4,7 +4,7 @@
 #include <IOKit/hidsystem/IOHIKeyboard.h>
 #include "bridge.hpp"
 #include "remap.hpp"
-#include "keycode.hpp"
+#include "KeyCode.hpp"
 #include "util/FlagStatus.hpp"
 #include "util/PressDownKeys.hpp"
 #include "util/IntervalChecker.hpp"

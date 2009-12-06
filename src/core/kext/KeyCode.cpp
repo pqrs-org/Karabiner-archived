@@ -1,4 +1,4 @@
-#include "keycode.hpp"
+#include "KeyCode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
 #include "keycode/output/include.EventType.cpp"

@@ -1,6 +1,6 @@
 #include <ostream>
 #include <gtest/gtest.h>
-#include "keycode.hpp"
+#include "KeyCode.hpp"
 #include "FlagStatus.hpp"
 
 using namespace org_pqrs_KeyRemap4MacBook;

@@ -2,7 +2,7 @@
 #define CALLBACKWRAPPER_HPP
 
 #include "base.hpp"
-#include "keycode.hpp"
+#include "KeyCode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   class Params_KeyboardEventCallBack {

@@ -2,7 +2,7 @@
 #define PRESSDOWNKEYS_HPP
 
 #include "base.hpp"
-#include "keycode.hpp"
+#include "KeyCode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   // store RemapUtil::fireKey results
