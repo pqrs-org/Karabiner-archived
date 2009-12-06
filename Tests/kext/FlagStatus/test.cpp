@@ -139,6 +139,13 @@ TEST(FlagStatus, temporary_decrease) {
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
 }
 
+TEST(FlagStatus, lock_increase) {
+  ASSERT_TRUE(FlagStatus::initialize());
+
+  FlagStatus::lock_increase(ModifierFlag::COMMAND_L);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), FlagStatus::makeFlags());
+}
+
 TEST(FlagStatus, CapsLock) {
   ASSERT_TRUE(FlagStatus::initialize());
 
