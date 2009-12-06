@@ -162,4 +162,12 @@ TEST(FlagStatus, CapsLock) {
 
   FlagStatus::set(KeyCode::A, ModifierFlag::CAPSLOCK);
   EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), FlagStatus::makeFlags());
+
+  // reset
+  FlagStatus::set(KeyCode::A, 0);
+  EXPECT_EQ(Flags(), FlagStatus::makeFlags());
+
+  // some keyboard send key with ModifierFlag::CAPSLOCK without KeyCode::CAPSLOCK.
+  FlagStatus::set(KeyCode::A, ModifierFlag::CAPSLOCK);
+  EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), FlagStatus::makeFlags());
 }
