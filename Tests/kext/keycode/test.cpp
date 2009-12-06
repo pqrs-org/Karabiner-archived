@@ -374,15 +374,23 @@ TEST(Buttons, add) {
   // some PointingButton twice.
   buttons.add(PointingButton::LEFT);
   EXPECT_EQ(Buttons(PointingButton::LEFT | PointingButton::MIDDLE), buttons);
+
+  buttons = 0;
+  buttons.add(PointingButton::LEFT | PointingButton::MIDDLE);
+  EXPECT_EQ(Buttons(PointingButton::LEFT | PointingButton::MIDDLE), buttons);
 }
 
-TEST(Buttons, addremove) {
+TEST(Buttons, remove) {
   Buttons buttons(PointingButton::LEFT | PointingButton::MIDDLE);
   buttons.remove(PointingButton::LEFT);
   EXPECT_EQ(Buttons(PointingButton::MIDDLE), buttons);
 
   // unexist PointingButton.
   buttons.remove(PointingButton::RIGHT);
+  EXPECT_EQ(Buttons(PointingButton::MIDDLE), buttons);
+
+  buttons = PointingButton::LEFT | PointingButton::MIDDLE | PointingButton::RIGHT;
+  buttons.remove(PointingButton::LEFT | PointingButton::RIGHT);
   EXPECT_EQ(Buttons(PointingButton::MIDDLE), buttons);
 }
 
