@@ -22,7 +22,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       } else {
         // we always perform the same movement regardless of isKeyDown.
         FlagStatus::decrease(fromFlags);
-        FlagStatus::increase(fromFlags);
+        FlagStatus::increase(toFlags);
       }
     }
   }
