@@ -299,7 +299,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool isFireKeyUp = listIsFireKeyUp[firetype];
 
       for (int i = 0; i < ModifierFlagList::listsize; ++i) {
-        ModifierFlag::ModifierFlag m = ModifierFlagList::list[i];
+        const ModifierFlag& m = ModifierFlagList::list[i];
         bool from = lastFlags.isOn(m);
         bool to = toFlags.isOn(m);
 
@@ -341,7 +341,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (params.key != KeyCode::VK_JIS_TOGGLE_EISUU_KANA) return false;
 
       // It is necessary to save toKeyCode for KeyUp.
-      static KeyCode::KeyCode newkeycode = KeyCode::VK_NONE;
+      static KeyCode newkeycode = KeyCode::VK_NONE;
 
       if (params.eventType == EventType::DOWN) {
         if (workspacedata.inputmode == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE) {
@@ -442,7 +442,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  RemapUtil::fireRelativePointer(PointingButton::PointingButton button)
+  RemapUtil::fireRelativePointer(const Buttons& buttons)
   {
     HookedPointing* hp = ListHookedPointing::instance().get();
     if (! hp) return;
@@ -452,7 +452,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     AbsoluteTime& ts = Params_RelativePointerEventCallback::getcurrent_ts();
 
     Params_RelativePointerEventCallback params = {
-      target, button, 0, 0, ts, sender, NULL,
+      target, buttons, 0, 0, ts, sender, NULL,
     };
     params.apply();
   }
