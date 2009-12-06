@@ -155,6 +155,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool operator==(const Buttons& other) const { return value_ == other.get(); }
     bool operator!=(const Buttons& other) const { return ! (*this == other); }
 
+    bool isNONE(void) const { return value_ == 0; }
+
   private:
     unsigned int value_;
   };
