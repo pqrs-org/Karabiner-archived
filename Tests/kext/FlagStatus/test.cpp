@@ -70,6 +70,19 @@ TEST(FlagStatus, decrease) {
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), FlagStatus::makeFlags());
 }
 
+TEST(FlagStatus, temporary_increase) {
+  ASSERT_TRUE(FlagStatus::initialize());
+
+  FlagStatus::increase(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
+
+  FlagStatus::temporary_increase(ModifierFlag::OPTION_L);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L), FlagStatus::makeFlags());
+
+  FlagStatus::set(KeyCode::COMMAND_L, ModifierFlag::COMMAND_L);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
+}
+
 TEST(FlagStatus, CapsLock) {
   ASSERT_TRUE(FlagStatus::initialize());
 
