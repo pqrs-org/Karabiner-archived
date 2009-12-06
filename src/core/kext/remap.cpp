@@ -167,7 +167,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 void
 org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &remapParams)
 {
-  FlagStatus::set(remapParams);
+  FlagStatus::set(remapParams.params.key, remapParams.params.flags);
 
   // ======================================================================
   // normal remapping

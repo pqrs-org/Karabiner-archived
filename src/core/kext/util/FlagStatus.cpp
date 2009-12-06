@@ -1,6 +1,4 @@
 #include "FlagStatus.hpp"
-#include "RemapUtil.hpp"
-#include "Config.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   FlagStatus::Item FlagStatus::item_[ModifierFlagList::listsize];
@@ -22,7 +20,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  FlagStatus::Item::set(const RemapParams& remapParams)
+  FlagStatus::Item::set(const KeyCode& key, const Flags& flags)
   {
     temporary_count_ = 0;
 
@@ -30,7 +28,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // At some keyboard, when we press CapsLock key, the down & up event are thrown at a time.
     // So, we treat the capslock key exceptionally.
     if (flag_ == ModifierFlag::CAPSLOCK) {
-      if (remapParams.params.flags.isOn(flag_)) {
+      if (flags.isOn(flag_)) {
         if (! original_lock_count_) {
           original_lock_count_ = 1;
           lock_count_ = 0; // clear remapped lock_count_ when original changed.
@@ -42,16 +40,13 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
       }
 
-      if (config.debug_devel) {
-        printf("KeyRemap4MacBook -Info- FlagStatus::set CAPSLOCK (original_lock_count_:%d, lock_count_:%d)\n", original_lock_count_, lock_count_);
-      }
       return;
     }
 
     // ------------------------------------------------------------
-    if (remapParams.params.key != flag_.getKeyCode()) return;
+    if (key != flag_.getKeyCode()) return;
 
-    if (remapParams.params.flags.isOn(flag_)) {
+    if (flags.isOn(flag_)) {
       increase();
     } else {
       decrease();
@@ -110,20 +105,16 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  FlagStatus::set(const RemapParams& remapParams)
+  FlagStatus::set(const KeyCode& key, const Flags& flags)
   {
     for (int i = 0; i < ModifierFlagList::listsize; ++i) {
-      item_[i].set(remapParams);
+      item_[i].set(key, flags);
     }
   }
 
   void
   FlagStatus::reset(void)
   {
-    if (config.debug_devel) {
-      printf("KeyRemap4MacBook FlagStatus::reset\n");
-    }
-
     for (int i = 0; i < ModifierFlagList::listsize; ++i) {
       item_[i].reset();
     }
