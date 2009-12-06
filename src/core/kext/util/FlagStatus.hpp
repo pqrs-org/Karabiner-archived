@@ -45,6 +45,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void set(void);
     static void set(const KeyCode& key, const Flags& flags);
     static Flags makeFlags(void);
+    // get registered ModifierFlag by index.
+    static const ModifierFlag& getFlag(int index);
     static void reset(void);
 
     static void increase(const Flags& flags);

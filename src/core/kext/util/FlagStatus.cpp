@@ -149,6 +149,17 @@ namespace org_pqrs_KeyRemap4MacBook {
     return flags;
   }
 
+  const ModifierFlag&
+  FlagStatus::getFlag(int index)
+  {
+    for (int i = 0; item_[i].flag_ != ModifierFlag::NONE; ++i) {
+      if (i == index) {
+        return item_[i].flag_;
+      }
+    }
+    return ModifierFlag::NONE;
+  }
+
   // ------------------------------------------------------------
 #define FOREACH_TO_FLAGS(METHOD) {                                  \
     for (int i = 0; item_[i].flag_ != ModifierFlag::NONE; ++i) {    \
