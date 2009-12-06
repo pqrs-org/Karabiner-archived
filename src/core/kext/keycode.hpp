@@ -87,6 +87,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool isOn(const ModifierFlag& flag) const {
       return (value_ & flag.get()) == flag.get();
     }
+    bool isOn(const Flags& flags) const {
+      if (flags.isOn(ModifierFlag::NONE)) {
+        return (value_ | ModifierFlag::NONE.get()) == flags.get();
+      } else {
+        return (value_ & flags.get()) == flags.get();
+      }
+    }
+
   private:
     unsigned int value_;
   };
