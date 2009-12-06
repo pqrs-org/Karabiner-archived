@@ -9,8 +9,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   class PressDownKeys {
   public:
     static void initialize(void);
-    static void add(unsigned int key, const KeyboardType& keyboardType);
-    static void remove(unsigned int key, const KeyboardType& keyboardType);
+    static void add(const KeyCode& key, const KeyboardType& keyboardType);
+    static void remove(const KeyCode& key, const KeyboardType& keyboardType);
     static void clear(OSObject* target, AbsoluteTime ts, OSObject* sender, void* refcon);
 
   private:
@@ -19,7 +19,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
     struct Item {
       bool enable;
-      unsigned int key;
+      KeyCode key;
       KeyboardType keyboardType;
     };
     static Item item_[MAXNUM];

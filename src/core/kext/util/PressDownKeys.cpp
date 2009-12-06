@@ -14,7 +14,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  PressDownKeys::add(unsigned int key, const KeyboardType& keyboardType)
+  PressDownKeys::add(const KeyCode& key, const KeyboardType& keyboardType)
   {
     if (key == KeyCode::VK_NONE) return;
 
@@ -34,7 +34,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         item_[i].keyboardType = keyboardType;
 
         if (config.debug_devel) {
-          printf("KeyRemap4MacBook -Info- PressDownKeys::add (key = %d)\n", key);
+          IOLog("KeyRemap4MacBook -Info- PressDownKeys::add (key = %d)\n", key.get());
         }
         return;
       }
@@ -42,7 +42,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  PressDownKeys::remove(unsigned int key, const KeyboardType& keyboardType)
+  PressDownKeys::remove(const KeyCode& key, const KeyboardType& keyboardType)
   {
     for (int i = 0; i < MAXNUM; ++i) {
       if (! item_[i].enable) continue;
@@ -52,7 +52,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       item_[i].enable = false;
 
       if (config.debug_devel) {
-        printf("KeyRemap4MacBook -Info- PressDownKeys::remove (key = %d)\n", key);
+        IOLog("KeyRemap4MacBook -Info- PressDownKeys::remove (key = %d)\n", key.get());
       }
     }
   }
@@ -61,7 +61,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   PressDownKeys::clear(OSObject* target, AbsoluteTime ts, OSObject* sender, void* refcon)
   {
     if (config.debug_devel) {
-      printf("KeyRemap4MacBook -Info- PressDownKeys::clear\n");
+      IOLog("KeyRemap4MacBook -Info- PressDownKeys::clear\n");
     }
 
     Params_KeyboardEventCallBack callbackparams = {
@@ -73,7 +73,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       item_[i].enable = false;
 
       if (config.debug_devel) {
-        printf("KeyRemap4MacBook -Info- PressDownKeys::clear (key = %d)\n", item_[i].key);
+        IOLog("KeyRemap4MacBook -Info- PressDownKeys::clear (key = %d)\n", item_[i].key.get());
       }
 
       callbackparams.key = item_[i].key;
