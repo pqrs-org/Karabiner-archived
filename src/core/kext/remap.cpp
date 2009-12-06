@@ -53,7 +53,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_tab2option_withControlL) return false;
 
-    if (! FlagStatus::isHeldDown(ModifierFlag::CONTROL_L)) return false;
+    if (! FlagStatus::makeFlags().isOn(ModifierFlag::CONTROL_L)) return false;
 
     static KeyOverlaidModifier kom;
     return kom.remap(remapParams, KeyCode::TAB, KeyCode::OPTION_L, KeyCode::TAB);
