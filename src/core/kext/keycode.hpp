@@ -142,6 +142,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool operator==(const PointingButton& other) const { return value_ == other.get(); }
     bool operator!=(const PointingButton& other) const { return ! (*this == other); }
 
+    unsigned int operator~(void) const { return ~value_; }
+
 #include "keycode/output/include.PointingButton.hpp"
 
   private:
@@ -151,9 +153,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   class Buttons {
   public:
     Buttons(unsigned int v = 0) : value_(v) {}
+    Buttons(const PointingButton& v) : value_(v.get()) {}
     unsigned int get(void) const { return value_; }
     bool operator==(const Buttons& other) const { return value_ == other.get(); }
     bool operator!=(const Buttons& other) const { return ! (*this == other); }
+
+    Buttons& add(const PointingButton& button) { value_ |= button.get(); return *this; }
+    Buttons& remove(const PointingButton& button) { value_ &= ~button; return *this; }
 
     bool isNONE(void) const { return value_ == 0; }
 
