@@ -1,7 +1,7 @@
 #include "FlagStatus.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  FlagStatus::Item FlagStatus::item_[ModifierFlagList::listsize];
+  FlagStatus::Item FlagStatus::item_[FlagStatus::MAXNUM];
 
   void
   FlagStatus::Item::initialize(const ModifierFlag& f)
@@ -88,18 +88,37 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------------------------------------
-  void
+  bool
   FlagStatus::initialize(void)
   {
-    for (int i = 0; i < ModifierFlagList::listsize; ++i) {
-      item_[i].initialize(ModifierFlagList::list[i]);
+#define PUSH_ITEM(FLAG) {                       \
+      if (i >= MAXNUM) return false;            \
+      item_[i].initialize(FLAG);                \
+      i++;                                      \
     }
+
+    int i = 0;
+    PUSH_ITEM(ModifierFlag::CAPSLOCK);
+    PUSH_ITEM(ModifierFlag::SHIFT_L);
+    PUSH_ITEM(ModifierFlag::SHIFT_R);
+    PUSH_ITEM(ModifierFlag::CONTROL_L);
+    PUSH_ITEM(ModifierFlag::CONTROL_R);
+    PUSH_ITEM(ModifierFlag::OPTION_L);
+    PUSH_ITEM(ModifierFlag::OPTION_R);
+    PUSH_ITEM(ModifierFlag::COMMAND_L);
+    PUSH_ITEM(ModifierFlag::COMMAND_R);
+    PUSH_ITEM(ModifierFlag::FN);
+    PUSH_ITEM(ModifierFlag::NONE);
+
+#undef PUSH_ITEM
+
+    return true;
   }
 
   void
   FlagStatus::set(void)
   {
-    for (int i = 0; i < ModifierFlagList::listsize; ++i) {
+    for (int i = 0; item_[i].flag_ != ModifierFlag::NONE; ++i) {
       item_[i].set();
     }
   }
@@ -107,7 +126,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   FlagStatus::set(const KeyCode& key, const Flags& flags)
   {
-    for (int i = 0; i < ModifierFlagList::listsize; ++i) {
+    for (int i = 0; item_[i].flag_ != ModifierFlag::NONE; ++i) {
       item_[i].set(key, flags);
     }
   }
@@ -115,7 +134,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   FlagStatus::reset(void)
   {
-    for (int i = 0; i < ModifierFlagList::listsize; ++i) {
+    for (int i = 0; item_[i].flag_ != ModifierFlag::NONE; ++i) {
       item_[i].reset();
     }
   }
@@ -124,19 +143,19 @@ namespace org_pqrs_KeyRemap4MacBook {
   FlagStatus::makeFlags(void)
   {
     Flags flags;
-    for (int i = 0; i < ModifierFlagList::listsize; ++i) {
+    for (int i = 0; item_[i].flag_ != ModifierFlag::NONE; ++i) {
       flags.add(item_[i].makeFlag());
     }
     return flags;
   }
 
   // ------------------------------------------------------------
-#define FOREACH_TO_FLAGS(METHOD) {                          \
-    for (int i = 0; i < ModifierFlagList::listsize; ++i) {      \
-      if (flags.isOn(ModifierFlagList::list[i])) {              \
-        item_[i].METHOD();                                  \
-      }                                                     \
-    }                                                       \
+#define FOREACH_TO_FLAGS(METHOD) {                                  \
+    for (int i = 0; item_[i].flag_ != ModifierFlag::NONE; ++i) {    \
+      if (flags.isOn(item_[i].flag_)) {                             \
+        item_[i].METHOD();                                          \
+      }                                                             \
+    }                                                               \
   }
   void FlagStatus::increase(const Flags& flags) { FOREACH_TO_FLAGS(increase); }
   void FlagStatus::decrease(const Flags& flags) { FOREACH_TO_FLAGS(decrease); }

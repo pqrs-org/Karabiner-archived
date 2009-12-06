@@ -41,7 +41,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       int original_lock_count_; // store original CapsLock status.
     };
 
-    static void initialize(void);
+    static bool initialize(void);
     static void set(void);
     static void set(const KeyCode& key, const Flags& flags);
     static Flags makeFlags(void);
@@ -55,7 +55,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void lock_decrease(const Flags& flags);
 
   private:
-    static Item item_[ModifierFlagList::listsize];
+    enum { MAXNUM = 16 };
+    static Item item_[MAXNUM];
   };
 }
 
