@@ -165,10 +165,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool operator==(const Buttons& other) const { return value_ == other.get(); }
     bool operator!=(const Buttons& other) const { return ! (*this == other); }
 
+    unsigned int operator~(void) const { return ~value_; }
     Buttons operator|(const Buttons& other) const { return value_ | other.get(); }
 
-    Buttons& add(const PointingButton& button) { value_ |= button.get(); return *this; }
-    Buttons& remove(const PointingButton& button) { value_ &= ~button; return *this; }
+    Buttons& add(const Buttons& button) { value_ |= button.get(); return *this; }
+    Buttons& remove(const Buttons& button) { value_ &= ~button; return *this; }
 
     bool isNONE(void) const { return value_ == 0; }
     bool isOn(const Buttons& buttons) {
