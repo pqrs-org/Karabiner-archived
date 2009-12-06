@@ -10,6 +10,16 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ------------------------------------------------------------
   bool
+  EventType::isKeyDownOrModifierDown(const KeyCode& key, const Flags& flags) const
+  {
+    if (*this == EventType::DOWN) return true;
+    if (*this == EventType::MODIFY) {
+      return flags.isOn(key.getModifierFlag());
+    }
+    return false;
+  }
+
+  bool
   KeyboardType::isInternalKeyboard(void) const
   {
     if (*this == KeyboardType::MACBOOK) return true;
