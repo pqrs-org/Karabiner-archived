@@ -203,7 +203,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ------------------------------------------------------------
       bool isremapped = false;
 
-      KeyCode::normalizeKey(params.key, params.flags, params.keyboardType);
+      params.key.normalizeKey(params.flags, params.keyboardType);
 
       RemapParams remapParams = {
         params,
@@ -229,7 +229,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         cancelRepeat();
         EventWatcher::reset();
         FlagStatus::reset();
-        params.flags = FlagStatus::makeFlags(params.key);
+        params.flags = FlagStatus::makeFlags();
         RemapUtil::fireModifiers(params);
         PressDownKeys::clear(params.target, params.ts, params.sender, params.refcon);
       }
@@ -279,7 +279,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ------------------------------------------------------------
       params.log();
 
-      unsigned int flags = FlagStatus::makeFlags(KeyCode::VK_NONE);
+      Flags flags = FlagStatus::makeFlags();
 
       bool isremapped = false;
       RemapPointingParams_relative remapParams = {
@@ -288,7 +288,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       remap_pointing_relative_core(remapParams);
 
       // ------------------------------------------------------------
-      unsigned int newflags = FlagStatus::makeFlags(KeyCode::VK_NONE);
+      Flags newflags = FlagStatus::makeFlags();
       if (flags != newflags) {
         HookedKeyboard* hk = ListHookedKeyboard::instance().get();
         if (hk) {
