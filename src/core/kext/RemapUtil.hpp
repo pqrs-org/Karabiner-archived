@@ -140,8 +140,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ----------------------------------------
-    void fireModifiers(const Params_KeyboardEventCallBack& params);
-
     void fireKey(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
 
     void fireKey(const EventType& eventType, const Flags& flags, const KeyCode& key,
@@ -189,6 +187,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     void pointingRelativeToScroll(const RemapPointingParams_relative& remapParams);
     const Buttons& getRemappedButtons(void);
   }
+
+  class FireModifiers {
+  public:
+    static void fire(const Params_KeyboardEventCallBack& params);
+
+  private:
+    static Flags lastFlags_;
+  };
 
   // ----------------------------------------------------------------------
   // for SandS like behavior remappings (remap_space2shift, remap_enter2optionL_commandSpace, ...)

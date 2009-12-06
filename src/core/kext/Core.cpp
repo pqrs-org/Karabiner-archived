@@ -230,7 +230,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         EventWatcher::reset();
         FlagStatus::reset();
         params.flags = FlagStatus::makeFlags();
-        RemapUtil::fireModifiers(params);
+        FireModifiers::fire(params);
         PressDownKeys::clear(params.target, params.ts, params.sender, params.refcon);
       }
     }
@@ -297,7 +297,7 @@ namespace org_pqrs_KeyRemap4MacBook {
             0, 0, 0, 0,
             KeyboardType::MACBOOK, false, params.ts, hk->get(), NULL,
           };
-          RemapUtil::fireModifiers(callbackparams);
+          FireModifiers::fire(callbackparams);
         }
       }
 

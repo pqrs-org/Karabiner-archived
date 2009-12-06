@@ -263,16 +263,16 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // --------------------
-  void
-  RemapUtil::fireModifiers(const Params_KeyboardEventCallBack& params)
-  {
-    static unsigned int savedLastFlags = 0; // save as 'unsigned int' to avoid ___cxa_guard_acquire.
-    const Flags& toFlags = params.flags;
-    const Flags lastFlags = savedLastFlags;
+  Flags FireModifiers::lastFlags_;
 
-    if (lastFlags == toFlags) return;
+  void
+  FireModifiers::fire(const Params_KeyboardEventCallBack& params)
+  {
+    const Flags& toFlags = params.flags;
+
+    if (lastFlags_ == toFlags) return;
 #if 0
-    printf("RemapUtil::fireModifiers from:%x to:%x\n", lastFlags.get(), toFlags.get());
+    printf("FireModifiers::fire from:%x to:%x\n", lastFlags_.get(), toFlags.get());
 #endif
 
     // ----------------------------------------------------------------------
@@ -280,7 +280,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // setup modifierStatus
     for (int i = 0; i < ModifierFlagList::listsize; ++i) {
-      modifierStatus[i] = lastFlags.isOn(ModifierFlagList::list[i]);
+      modifierStatus[i] = lastFlags_.isOn(ModifierFlagList::list[i]);
     }
 
     Params_KeyboardEventCallBack callbackparams = params;
@@ -301,7 +301,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       for (int i = 0; i < ModifierFlagList::listsize; ++i) {
         const ModifierFlag& m = ModifierFlagList::list[i];
-        bool from = lastFlags.isOn(m);
+        bool from = lastFlags_.isOn(m);
         bool to = toFlags.isOn(m);
 
         if (isFireKeyUp) {
@@ -331,31 +331,34 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
 
-    savedLastFlags = toFlags.get();
+    lastFlags_ = toFlags.get();
   }
 
   // ------------------------------------------------------------
   namespace {
-    bool
-    handle_VK_JIS_TOGGLE_EISUU_KANA(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
-    {
-      if (params.key != KeyCode::VK_JIS_TOGGLE_EISUU_KANA) return false;
+    class Handle_VK_JIS_TOGGLE_EISUU_KANA {
+    public:
+      static bool handle(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
+        if (params.key != KeyCode::VK_JIS_TOGGLE_EISUU_KANA) return false;
 
-      // It is necessary to save toKeyCode for KeyUp.
-      static unsigned int newkeycode = KeyCode::VK_NONE.get(); // save as 'unsigned int' to avoid ___cxa_guard_acquire.
-
-      if (params.eventType == EventType::DOWN) {
-        if (workspacedata.inputmode == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE) {
-          newkeycode = KeyCode::JIS_EISUU.get();
-        } else {
-          newkeycode = KeyCode::JIS_KANA.get();
+        if (params.eventType == EventType::DOWN) {
+          if (workspacedata.inputmode == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE) {
+            newkeycode_ = KeyCode::JIS_EISUU;
+          } else {
+            newkeycode_ = KeyCode::JIS_KANA;
+          }
         }
+
+        params.key = newkeycode_;
+        RemapUtil::fireKey(params, workspacedata);
+        return true;
       }
 
-      params.key = newkeycode;
-      RemapUtil::fireKey(params, workspacedata);
-      return true;
-    }
+    private:
+      // It is necessary to save toKeyCode for KeyUp.
+      static KeyCode newkeycode_;
+    };
+    KeyCode Handle_VK_JIS_TOGGLE_EISUU_KANA::newkeycode_ = KeyCode::VK_NONE;
 
     bool
     handle_VK_JIS_EISUU_x2(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
@@ -390,14 +393,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ----------------------------------------
     // handle virtual keys
     Params_KeyboardEventCallBack p = params;
-    if (handle_VK_JIS_TOGGLE_EISUU_KANA(p, workspacedata)) return;
+    if (Handle_VK_JIS_TOGGLE_EISUU_KANA::handle(p, workspacedata)) return;
     if (handle_VK_JIS_EISUU_x2(p, workspacedata)) return;
     if (handle_VK_JIS_KANA_x2(p, workspacedata)) return;
 
     // ------------------------------------------------------------
     p.key.reverseNormalizeKey(p.flags, p.keyboardType);
 
-    RemapUtil::fireModifiers(p);
+    FireModifiers::fire(p);
 
     // skip no-outputable keycodes.
     if (p.key == KeyCode::VK_NONE ||
