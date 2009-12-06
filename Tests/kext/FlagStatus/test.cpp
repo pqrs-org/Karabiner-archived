@@ -91,6 +91,12 @@ TEST(FlagStatus, makeFlags) {
   EXPECT_EQ(Flags(ModifierFlag::FN), FlagStatus::makeFlags());
 }
 
+TEST(FlagStatus, getFlag) {
+  ASSERT_TRUE(FlagStatus::initialize());
+
+  EXPECT_EQ(ModifierFlag::CAPSLOCK, FlagStatus::getFlag(0));
+}
+
 TEST(FlagStatus, increase) {
   ASSERT_TRUE(FlagStatus::initialize());
 
