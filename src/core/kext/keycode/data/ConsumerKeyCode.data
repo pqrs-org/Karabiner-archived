@@ -19,4 +19,4 @@ MUSIC_NEXT 19
 
 // Virtual KeyCode
 VK__BEGIN__ 1024
-VK_NONE 1025
+VK_NONE --AUTO--
