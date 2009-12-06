@@ -8,6 +8,7 @@ pkgroot/
 .*\.xcodeproj/.*\.mode1v3
 .*\.xcodeproj/.*\.pbxuser
 src/core/kext/config/output
+src/core/kext/keycode/output
 util/getActiveApplication/getname
 files/share/reset
 pkginfo/Info.plist$
