@@ -171,7 +171,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       remappedButtions.remove(toButton);
     }
 
-    RemapUtil::drop(remapParams);
+    remapParams.drop();
     return true;
   }
 
@@ -199,7 +199,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       RemapUtil::fireConsumer(p);
     }
 
-    RemapUtil::drop(remapParams);
+    remapParams.drop();
     return true;
   }
 
@@ -221,7 +221,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (toKeyCode.isModifier()) {
       eventType = EventType::MODIFY;
     }
-    RemapUtil::drop(remapParams);
+    remapParams.drop();
 
     Flags flags = FlagStatus::makeFlags();
     RemapUtil::fireKey(eventType, flags, toKeyCode,
@@ -691,7 +691,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (RemapUtil::isKey(remapParams, fromKeyCode) &&
         fromKeyCode == lastkeycode_) {
       // disable event.
-      RemapUtil::drop(remapParams);
+      remapParams.drop();
       return true;
     }
 

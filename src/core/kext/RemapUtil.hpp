@@ -37,12 +37,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     inline bool isAlreadyRemapped(const RemapParams& remapParams) {
       return (remapParams.isremapped == true);
     }
-    inline void drop(const RemapParams& remapParams) {
-      remapParams.isremapped = true;
-    }
-    inline void drop(const RemapConsumerParams& remapParams) {
-      remapParams.isremapped = true;
-    }
 
     inline bool isKeyDown(const RemapParams& remapParams, const KeyCode& key) {
       if (isEvent_Down(remapParams)) {
