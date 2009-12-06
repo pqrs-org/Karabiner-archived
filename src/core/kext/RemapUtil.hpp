@@ -271,7 +271,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool isAnyEventHappen_;
     IntervalChecker ic_;
     RemapUtil::KeyToKey keytokey_;
-    Flags savedflags_;
+    unsigned int savedflags_; // save as 'unsigned int' to avoid ___cxa_guard_acquire.
   };
 
   // ----------------------------------------
@@ -306,7 +306,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool remap(const RemapParams& remapParams, const KeyCode& fromKeyCode, const Flags& fromFlags = 0);
 
   private:
-    KeyCode lastkeycode_;
+    unsigned int lastkeycode_; // save as 'unsigned int' to avoid ___cxa_guard_acquire.
   };
 
   // ----------------------------------------

@@ -266,12 +266,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapUtil::fireModifiers(const Params_KeyboardEventCallBack& params)
   {
-    static Flags lastFlags = 0;
+    static unsigned int savedLastFlags = 0; // save as 'unsigned int' to avoid ___cxa_guard_acquire.
     const Flags& toFlags = params.flags;
+    const Flags lastFlags = savedLastFlags;
 
     if (lastFlags == toFlags) return;
 #if 0
-    printf("RemapUtil::fireModifiers from:%x to:%x\n", lastFlags, toFlags);
+    printf("RemapUtil::fireModifiers from:%x to:%x\n", lastFlags.get(), toFlags.get());
 #endif
 
     // ----------------------------------------------------------------------
@@ -330,7 +331,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
 
-    lastFlags = toFlags;
+    savedLastFlags = toFlags.get();
   }
 
   // ------------------------------------------------------------
@@ -341,13 +342,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (params.key != KeyCode::VK_JIS_TOGGLE_EISUU_KANA) return false;
 
       // It is necessary to save toKeyCode for KeyUp.
-      static KeyCode newkeycode = KeyCode::VK_NONE;
+      static unsigned int newkeycode = KeyCode::VK_NONE.get(); // save as 'unsigned int' to avoid ___cxa_guard_acquire.
 
       if (params.eventType == EventType::DOWN) {
         if (workspacedata.inputmode == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE) {
-          newkeycode = KeyCode::JIS_EISUU;
+          newkeycode = KeyCode::JIS_EISUU.get();
         } else {
-          newkeycode = KeyCode::JIS_KANA;
+          newkeycode = KeyCode::JIS_KANA.get();
         }
       }
 
@@ -559,7 +560,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       ModifierFlag toKeyCodeFlag = toKeyCode.getModifierFlag();
       remapFlags(toFlags | toKeyCodeFlag, fireFlags);
 
-      savedflags_ = FlagStatus::makeFlags();
+      savedflags_ = FlagStatus::makeFlags().get();
 
       // restore flags
       remapFlags(fireFlags, toFlags | toKeyCodeFlag);
@@ -638,7 +639,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   IgnoreMultipleSameKeyPress::remap(const RemapParams& remapParams, const KeyCode& fromKeyCode, const Flags& fromFlags)
   {
     if (RemapUtil::isAlreadyRemapped(remapParams) || FlagStatus::makeFlags() != fromFlags) {
-      lastkeycode_ = KeyCode::VK_NONE;
+      lastkeycode_ = KeyCode::VK_NONE.get();
       return false;
     }
 
@@ -651,7 +652,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // set lastkeycode_ if KeyUp.
     if (! RemapUtil::isKeyDown(remapParams, fromKeyCode)) {
-      lastkeycode_ = remapParams.params.key;
+      lastkeycode_ = remapParams.params.key.get();
     }
     return false;
   }
