@@ -170,4 +170,19 @@ TEST(FlagStatus, CapsLock) {
   // some keyboard send key with ModifierFlag::CAPSLOCK without KeyCode::CAPSLOCK.
   FlagStatus::set(KeyCode::A, ModifierFlag::CAPSLOCK);
   EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), FlagStatus::makeFlags());
+
+  // reset
+  FlagStatus::set(KeyCode::A, 0);
+  EXPECT_EQ(Flags(), FlagStatus::makeFlags());
+
+  // soft caps
+  FlagStatus::lock_increase(ModifierFlag::CAPSLOCK);
+  FlagStatus::set(KeyCode::A, 0);
+  EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), FlagStatus::makeFlags());
+
+  // soft caps will be canceled by hardware caps
+  FlagStatus::set(KeyCode::A, ModifierFlag::CAPSLOCK);
+  EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), FlagStatus::makeFlags());
+  FlagStatus::set(KeyCode::A, 0);
+  EXPECT_EQ(Flags(), FlagStatus::makeFlags());
 }
