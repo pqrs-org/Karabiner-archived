@@ -624,7 +624,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   DoublePressModifier::remap(const RemapParams& remapParams, const KeyCode& fromKeyCode, const ModifierFlag& toFlag, const KeyCode& fireKeyCode, const Flags& fireFlags)
   {
     if (remapParams.isremapped || remapParams.params.key != fromKeyCode) {
-      pressCount = 0;
+      pressCount_ = 0;
       return false;
     }
 
@@ -635,9 +635,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     keytokey_.remap(remapParams, fromKeyCode, toKeyCode);
 
     if (isKeyDown) {
-      ++pressCount;
+      ++pressCount_;
     } else {
-      if (pressCount >= 2) {
+      if (pressCount_ >= 2) {
         Flags flags = (FlagStatus::makeFlags() | fireFlags).stripNONE();
         RemapUtil::fireKey_downup(flags, fireKeyCode, remapParams.params, remapParams.workspacedata);
       }
