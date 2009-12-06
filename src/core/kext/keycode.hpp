@@ -52,21 +52,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     ModifierFlag(unsigned int v) : value_(v) {}
     unsigned int value_;
   };
-  namespace ModifierFlagList {
-    const ModifierFlag list[] = {
-      ModifierFlag::CAPSLOCK,
-      ModifierFlag::SHIFT_L,
-      ModifierFlag::SHIFT_R,
-      ModifierFlag::CONTROL_L,
-      ModifierFlag::CONTROL_R,
-      ModifierFlag::OPTION_L,
-      ModifierFlag::OPTION_R,
-      ModifierFlag::COMMAND_L,
-      ModifierFlag::COMMAND_R,
-      ModifierFlag::FN,
-    };
-    const int listsize = sizeof(list) / sizeof(list[0]);
-  };
   class Flags {
   public:
     Flags(unsigned int v = 0) : value_(v) {}
