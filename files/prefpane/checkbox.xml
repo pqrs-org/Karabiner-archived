@@ -3006,6 +3006,16 @@
       <name>For Japanese</name>
       <list>
         <item>
+          <name>Remap Backquote(`) Key</name>
+          <list>
+            <item>
+              <name>Backquote(`) to KANA/EISUU (toggle)</name>
+              <sysctl>remap.jis_backquote_kana_eisuu</sysctl>
+              <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Remap Command_L Key</name>
           <list>
             <item>
