@@ -673,7 +673,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   IgnoreMultipleSameKeyPress::remap(const RemapParams& remapParams, const KeyCode& fromKeyCode, const Flags& fromFlags)
   {
-    if (remapParams.isremapped || FlagStatus::makeFlags() != fromFlags) {
+    if (remapParams.isremapped || ! FlagStatus::makeFlags().isOn(fromFlags)) {
       lastkeycode_ = KeyCode::VK_NONE.get();
       return false;
     }
