@@ -1053,8 +1053,8 @@
           <name>Remap Command+F1...F12 to Functional Keys</name>
           <appendix>(ex. F10 to Volume Mute, F11 to Volume Down)</appendix>
           <sysctl>remap.command_f1_f12_to_functional</sysctl>
-          <autogen>--KeyToComsumer-- KeyCode::F1, VK_COMMAND, ConsumerKeyCode::BRIGHTNESS_DOWN</autogen>
-          <autogen>--KeyToComsumer-- KeyCode::F2, VK_COMMAND, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::F1, VK_COMMAND, KeyCode::BRIGHTNESS_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::F2, VK_COMMAND, KeyCode::BRIGHTNESS_UP</autogen>
           <autogen>--KeyToKey-- KeyCode::F3, VK_COMMAND, KeyCode::EXPOSE_ALL</autogen>
           <autogen>--KeyToKey-- KeyCode::F4, VK_COMMAND, KeyCode::DASHBOARD</autogen>
           <autogen>--KeyToComsumer-- KeyCode::F7, VK_COMMAND, ConsumerKeyCode::MUSIC_PREV</autogen>
@@ -1070,8 +1070,8 @@
           <appendix>(ex. F10 to Volume Mute, F11 to Volume Down)</appendix>
           <sysctl>remap.f1_f12_to_functional</sysctl>
           <not>TERMINAL</not>
-          <autogen>--KeyToComsumer-- KeyCode::F1, ConsumerKeyCode::BRIGHTNESS_DOWN</autogen>
-          <autogen>--KeyToComsumer-- KeyCode::F2, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::F1, KeyCode::BRIGHTNESS_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::F2, KeyCode::BRIGHTNESS_UP</autogen>
           <autogen>--KeyToKey-- KeyCode::F3, KeyCode::EXPOSE_ALL</autogen>
           <autogen>--KeyToKey-- KeyCode::F4, KeyCode::DASHBOARD</autogen>
           <autogen>--KeyToComsumer-- KeyCode::F7, ConsumerKeyCode::MUSIC_PREV</autogen>
