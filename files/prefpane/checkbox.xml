@@ -3733,7 +3733,7 @@
           <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
         </item>
         <item>
-          <name>inputmode_only</name>
+          <name>inputmode_only (Japanese)</name>
           <appendix>ASDFG to AIUEO if inputmode == INPUTMODE_JAPANESE</appendix>
           <sysctl>remap.samples_jis_asdfg2aiueo</sysctl>
           <inputmode_only>INPUTMODE_JAPANESE</inputmode_only>
@@ -3741,6 +3741,27 @@
           <autogen>--KeyToKey-- KeyCode::D, KeyCode::U</autogen>
           <autogen>--KeyToKey-- KeyCode::F, KeyCode::E</autogen>
           <autogen>--KeyToKey-- KeyCode::G, KeyCode::O</autogen>
+        </item>
+        <item>
+          <name>inputmode_only (Chinese Traditional)</name>
+          <appendix>A to Space if inputmode == INPUTMODE_CHINESE_TRADITIONAL</appendix>
+          <sysctl>remap.samples_tradchinese_a2space</sysctl>
+          <inputmode_only>INPUTMODE_CHINESE_TRADITIONAL</inputmode_only>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::SPACE</autogen>
+        </item>
+        <item>
+          <name>inputmode_only (Chinese Simplified)</name>
+          <appendix>A to Space if inputmode == INPUTMODE_CHINESE_SIMPLIFIED</appendix>
+          <sysctl>remap.samples_simpchinese_a2space</sysctl>
+          <inputmode_only>INPUTMODE_CHINESE_SIMPLIFIED</inputmode_only>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::SPACE</autogen>
+        </item>
+        <item>
+          <name>inputmode_only (Korean)</name>
+          <appendix>A to Space if inputmode == INPUTMODE_KOREAN</appendix>
+          <sysctl>remap.samples_korean_a2space</sysctl>
+          <inputmode_only>INPUTMODE_KOREAN</inputmode_only>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::SPACE</autogen>
         </item>
         <item>
           <name>inputmodedetail_only</name>

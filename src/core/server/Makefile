@@ -11,4 +11,5 @@ clean:
 	rm -f *.xcodeproj/*.pbxuser
 
 run:
-	sudo ./build/Release/KeyRemap4MacBook_server
+	rm -f /tmp/KeyRemap4MacBook_server
+	./build/Release/KeyRemap4MacBook_server.app/Contents/MacOS/KeyRemap4MacBook_server /tmp

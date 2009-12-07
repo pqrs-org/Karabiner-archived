@@ -39,12 +39,21 @@ namespace org_pqrs_KeyRemap4MacBook {
       enum InputMode {
         INPUTMODE_ROMAN, // Roman, Password, ...
         INPUTMODE_JAPANESE, // Japanese, Japanese.*
+        INPUTMODE_CHINESE_TRADITIONAL,
+        INPUTMODE_CHINESE_SIMPLIFIED,
+        INPUTMODE_KOREAN,
       };
       enum InputModeDetail {
         INPUTMODE_DETAIL_ROMAN,
+
         INPUTMODE_DETAIL_JAPANESE_HIRAGANA,
         INPUTMODE_DETAIL_JAPANESE_KATAKANA,
         INPUTMODE_DETAIL_JAPANESE, // other Japanese mode
+
+        INPUTMODE_DETAIL_CHINESE_TRADITIONAL,
+        INPUTMODE_DETAIL_CHINESE_SIMPLIFIED,
+
+        INPUTMODE_DETAIL_KOREAN,
       };
 
       // none

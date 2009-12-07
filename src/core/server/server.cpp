@@ -28,7 +28,7 @@ KeyRemap4MacBook_server::Server::initialize(const char* basedirectory)
 }
 
 void
-KeyRemap4MacBook_server::Server::sendReply(int sock, void *data, size_t size, int error)
+KeyRemap4MacBook_server::Server::sendReply(int sock, void* data, size_t size, int error)
 {
   struct iovec iov[2];
   iov[0].iov_base = reinterpret_cast<caddr_t>(&error);
@@ -99,7 +99,7 @@ KeyRemap4MacBook_server::Server::doLoop(void)
       struct sockaddr_un addr;
       socklen_t addrlen;
 
-      int s = accept(listenSocket_, reinterpret_cast<struct sockaddr *>(&addr), &addrlen);
+      int s = accept(listenSocket_, reinterpret_cast<struct sockaddr*>(&addr), &addrlen);
       if (s < 0) {
         return;
       }
@@ -122,7 +122,7 @@ KeyRemap4MacBook_server::Server::makeSocket(void)
   listenSocketAddr.sun_family = AF_UNIX;
   snprintf(listenSocketAddr.sun_path, sizeof(listenSocketAddr.sun_path), "%s", socketpath_.c_str());
 
-  if (bind(listenSocket_, reinterpret_cast<struct sockaddr *>(&listenSocketAddr), sizeof(listenSocketAddr)) < 0) return false;
+  if (bind(listenSocket_, reinterpret_cast<struct sockaddr*>(&listenSocketAddr), sizeof(listenSocketAddr)) < 0) return false;
 
   return true;
 }
@@ -145,9 +145,13 @@ KeyRemap4MacBook_server::Server::do_GetWorkspaceData(org_pqrs_KeyRemap4MacBook::
 
   // ----------------------------------------------------------------------
   // inputmode
+  // get data from util/DumpInputModeToConsole/dump-from-plist.sh
   const char* tis_japanese_hiragana = "com.apple.inputmethod.Japanese.Hiragana";
   const char* tis_japanese_katakana = "com.apple.inputmethod.Japanese.Katakana";
   const char* tis_japanese = "com.apple.inputmethod.Japanese";
+  const char* tis_tradchinese = "com.apple.inputmethod.TCIM"; // TradChinese
+  const char* tis_simpchinese = "com.apple.inputmethod.SCIM"; // SimpChinese
+  const char* tis_korean = "com.apple.inputmethod.Korean";
 
   if (strcmp(inputmodeName, tis_japanese_hiragana) == 0) {
     reply.inputmode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE;
@@ -160,6 +164,19 @@ KeyRemap4MacBook_server::Server::do_GetWorkspaceData(org_pqrs_KeyRemap4MacBook::
   } else if (strncmp(inputmodeName, tis_japanese, strlen(tis_japanese)) == 0) {
     reply.inputmode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE;
     reply.inputmodedetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE;
+
+  } else if (strncmp(inputmodeName, tis_tradchinese, strlen(tis_tradchinese)) == 0) {
+    reply.inputmode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_CHINESE_TRADITIONAL;
+    reply.inputmodedetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_CHINESE_TRADITIONAL;
+
+  } else if (strncmp(inputmodeName, tis_simpchinese, strlen(tis_simpchinese)) == 0) {
+    reply.inputmode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_CHINESE_SIMPLIFIED;
+    reply.inputmodedetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_CHINESE_SIMPLIFIED;
+
+  } else if (strncmp(inputmodeName, tis_korean, strlen(tis_korean)) == 0) {
+    reply.inputmode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_KOREAN;
+    reply.inputmodedetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_KOREAN;
+
   }
 
   // ----------------------------------------------------------------------
@@ -178,7 +195,7 @@ setCurrentApplicationType(const char* applicationName)
   }
 
 #define SET_CURRENT_APPLICATION_TYPE(type) {                            \
-    currentApplicationType = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData:: type; \
+    currentApplicationType = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::type; \
     return;                                                             \
   }
 
@@ -187,7 +204,7 @@ setCurrentApplicationType(const char* applicationName)
     SET_CURRENT_APPLICATION_TYPE(EMACS);
   }
 
-  const char *org_vim = "org.vim.";
+  const char* org_vim = "org.vim.";
   if (strncmp(applicationName, org_vim, strlen(org_vim)) == 0) {
     SET_CURRENT_APPLICATION_TYPE(VI);
   }
@@ -250,7 +267,7 @@ setCurrentApplicationType(const char* applicationName)
     SET_CURRENT_APPLICATION_TYPE(EDITOR);
   }
 
-  const char *com_adobe = "com.adobe.";
+  const char* com_adobe = "com.adobe.";
   if (strncmp(applicationName, com_adobe, strlen(com_adobe)) == 0) {
     SET_CURRENT_APPLICATION_TYPE(ADOBE);
   }
