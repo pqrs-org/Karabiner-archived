@@ -541,6 +541,11 @@
           <sysctl>remap.shiftLcontrolL2escape</sysctl>
           <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::ESCAPE</autogen>
         </item>
+        <item>
+          <name>FN+Control_L to Control_R</name>
+          <sysctl>remap.fncontrolL2controlR</sysctl>
+          <autogen>--KeyToKey-- KeyCode::CONTROL_L, ModifierFlag::FN, KeyCode::CONTROL_R</autogen>
+        </item>
       </list>
     </item>
 
@@ -1530,6 +1535,11 @@
           <sysctl>remap.shiftRshiftL2space</sysctl>
           <autogen>--KeyToKey-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_L, KeyCode::SPACE, ModifierFlag::SHIFT_L</autogen>
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_R, KeyCode::SPACE</autogen>
+        </item>
+        <item>
+          <name>FN+Shift_L to Control_R</name>
+          <sysctl>remap.fnshiftL2controlR</sysctl>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::FN, KeyCode::CONTROL_R</autogen>
         </item>
       </list>
     </item>
@@ -3510,6 +3520,12 @@
           <appendix>SHIFT_L to Command_L</appendix>
           <sysctl>remap.samples_shiftL2commandL</sysctl>
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::COMMAND_L</autogen>
+        </item>
+        <item>
+          <name>KeyToKey (Modifier x 2 To Modier)</name>
+          <appendix>FN+SHIFT_L to Command_L</appendix>
+          <sysctl>remap.samples_fnshiftL2commandL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::FN, KeyCode::COMMAND_L</autogen>
         </item>
         <item>
           <name>KeyToKey (Key to Key+Modifier)</name>
