@@ -911,6 +911,26 @@
           <sysctl>remap.keyboardlighthigh2volumemute</sysctl>
           <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_HIGH, ConsumerKeyCode::VOLUME_MUTE</autogen>
         </item>
+        <item>
+          <name>Command+Functional to Functional</name>
+          <appendix>(ex. Command+Volume Mute to Volume Mute</appendix>
+          <sysctl>remap.command_functional_to_functional</sysctl>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::BRIGHTNESS_DOWN, VK_COMMAND, ConsumerKeyCode::BRIGHTNESS_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::BRIGHTNESS_DOWN, VK_COMMAND, KeyCode::BRIGHTNESS_DOWN</autogen>
+
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::BRIGHTNESS_UP, VK_COMMAND, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::BRIGHTNESS_UP, VK_COMMAND, KeyCode::BRIGHTNESS_UP</autogen>
+
+          <autogen>--KeyToKey-- KeyCode::EXPOSE_ALL, VK_COMMAND, KeyCode::EXPOSE_ALL</autogen>
+          <autogen>--KeyToKey-- KeyCode::DASHBOARD, VK_COMMAND, KeyCode::DASHBOARD</autogen>
+
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::MUSIC_PREV, VK_COMMAND, ConsumerKeyCode::MUSIC_PREV</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::MUSIC_PLAY, VK_COMMAND, ConsumerKeyCode::MUSIC_PLAY</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::MUSIC_NEXT, VK_COMMAND, ConsumerKeyCode::MUSIC_NEXT</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_MUTE, VK_COMMAND, ConsumerKeyCode::VOLUME_MUTE</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_DOWN, VK_COMMAND, ConsumerKeyCode::VOLUME_DOWN</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_UP, VK_COMMAND, ConsumerKeyCode::VOLUME_UP</autogen>
+        </item>
       </list>
     </item>
 
@@ -3612,6 +3632,18 @@
           <appendix>Brightness Down to Return</appendix>
           <sysctl>remap.samples_brightnessdown2return</sysctl>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_DOWN, KeyCode::RETURN</autogen>
+        </item>
+        <item>
+          <name>ConsumerToConsumer</name>
+          <appendix>Brightness Down to Volume Mute</appendix>
+          <sysctl>remap.samples_brightnessdown2volumemute</sysctl>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::BRIGHTNESS_DOWN, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        </item>
+        <item>
+          <name>ConsumerToConsumer (With ModifierFlag)</name>
+          <appendix>Command+Brightness Down to Volume Mute</appendix>
+          <sysctl>remap.samples_commandbrightnessdown2volumemute</sysctl>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::BRIGHTNESS_DOWN, VK_COMMAND, ConsumerKeyCode::VOLUME_MUTE</autogen>
         </item>
         <item>
           <name>KeyOverlaidModifier (Standard)</name>
