@@ -26,11 +26,16 @@ namespace org_pqrs_KeyRemap4MacBook {
                                       OSObject *sender,
                                       void *refcon)
     {
+      IOHIPointing* pointing = OSDynamicCast(IOHIPointing, sender);
+      if (! pointing) return;
+
+      HookedPointing* hp = ListHookedPointing::instance().get(pointing);
+      if (! hp) return;
+
+      // ------------------------------------------------------------
       EventWatcher::countup();
 
-      Params_RelativePointerEventCallback params = {
-        target, buttons, dx, dy, ts, sender, refcon,
-      };
+      Params_RelativePointerEventCallback params(buttons, dx, dy);
       CommonData::setcurrent_ts(ts);
 
       Core::remap_RelativePointerEventCallback(params);

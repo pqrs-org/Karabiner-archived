@@ -165,6 +165,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     RelativePointerEventCallback callback = hp->getOrig_relativePointerEventAction();
     if (! callback) return;
 
+    OSObject* target = hp->getOrig_relativePointerEventTarget();
+    if (! target) return;
+
+    OSObject* sender = hp->get();
+    if (! sender) return;
+
+    const AbsoluteTime& ts = CommonData::getcurrent_ts();
+    OSObject* refcon = NULL;
+
     log("sending");
     callback(target, buttons.get(), dx, dy, ts, sender, refcon);
 
