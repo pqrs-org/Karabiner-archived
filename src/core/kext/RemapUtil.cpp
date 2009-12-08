@@ -181,13 +181,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (hc) {
       EventType eventType = (remapParams.isKeyDownOrModifierDown() ? EventType::DOWN : EventType::UP);
       Flags flags = FlagStatus::makeFlags();
-      unsigned int flavor = toKeyCode.get();
-      UInt64 guid = static_cast<UInt64>(-1);
 
-      Params_KeyboardSpecialEventCallback p = {
-        hc->getOrig_keyboardSpecialEventTarget(),
-        eventType, flags, toKeyCode, flavor, guid, false, CommonData::getcurrent_ts(), hc->get(), NULL,
-      };
+      Params_KeyboardSpecialEventCallback p(eventType, flags, toKeyCode, false);
       RemapUtil::fireConsumer(p);
     }
 
@@ -457,19 +452,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   RemapUtil::fireKey(const EventType& eventType, const Flags& flags, const KeyCode& key, const KeyboardType& keyboardType,
                      const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
   {
-    HookedKeyboard* hk = ListHookedKeyboard::instance().get();
-    if (! hk) return;
-
     EventType et = eventType;
     if (key.isModifier()) {
       et = EventType::MODIFY;
     }
 
-    Params_KeyboardEventCallBack params = {
-      eventType, flags, key,
-      0, 0, 0, 0,
-      keyboardType, false,
-    };
+    Params_KeyboardEventCallBack params(eventType, flags, key, keyboardType, false);
     RemapUtil::fireKey(params, workspacedata);
   }
 

@@ -138,6 +138,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     KeyboardSpecialEventCallback callback = hc->getOrig_keyboardSpecialEventAction();
     if (! callback) return;
 
+    OSObject* target = hc->getOrig_keyboardSpecialEventTarget();
+    if (! target) return;
+
+    OSObject* sender = hc->get();
+    if (! sender) return;
+
+    const AbsoluteTime& ts = CommonData::getcurrent_ts();
+    OSObject* refcon = NULL;
+
     log("sending");
     callback(target, eventType.get(), flags.get(), key.get(),
              flavor, guid, repeat, ts, sender, refcon);

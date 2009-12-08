@@ -4,18 +4,12 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   TimerWrapper KeyboardRepeat::timer_;
-  Params_KeyboardEventCallBack KeyboardRepeat::params_;
+  Params_KeyboardEventCallBack KeyboardRepeat::params_(EventType(0), Flags(0), KeyCode(0), KeyboardType(0), true);
   KeyRemap4MacBook_bridge::GetWorkspaceData::Reply KeyboardRepeat::workspacedata_;
 
   void
   KeyboardRepeat::initialize(IOWorkLoop& workloop)
   {
-    params_.charCode = 0;
-    params_.charSet = 0;
-    params_.origCharCode = 0;
-    params_.origCharSet = 0;
-    params_.repeat = true;
-
     timer_.initialize(&workloop, NULL, KeyboardRepeat::fire);
   }
 
