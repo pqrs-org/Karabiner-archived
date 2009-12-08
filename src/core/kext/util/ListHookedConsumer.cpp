@@ -29,12 +29,17 @@ namespace org_pqrs_KeyRemap4MacBook {
                                       OSObject *sender,
                                       void *refcon)
     {
+      IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, sender);
+      if (! kbd) return;
+
+      HookedConsumer* hc = ListHookedConsumer::instance().get(kbd);
+      if (! hc) return;
+
+      // ------------------------------------------------------------
       EventWatcher::countup();
 
-      Params_KeyboardSpecialEventCallback params = {
-        target, eventType, flags, key, flavor,
-        guid, repeat, ts, sender, refcon,
-      };
+      Params_KeyboardSpecialEventCallback params(EventType(eventType), Flags(flags), ConsumerKeyCode(key),
+                                                 flavor, guid, repeat);
       CommonData::setcurrent_ts(ts);
 
       Core::remap_KeyboardSpecialEventCallback(params);

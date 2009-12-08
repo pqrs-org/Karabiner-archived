@@ -236,13 +236,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     remap_KeyboardSpecialEventCallback(Params_KeyboardSpecialEventCallback& params)
     {
-      IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, params.sender);
-      if (! kbd) return;
-
-      HookedConsumer* p = ListHookedConsumer::instance().get(kbd);
-      if (! p) return;
-
-      // ------------------------------------------------------------
       params.log();
 
       bool isremapped = false;
@@ -288,15 +281,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ------------------------------------------------------------
       Flags newflags = FlagStatus::makeFlags();
       if (flags != newflags) {
-        HookedKeyboard* hk = ListHookedKeyboard::instance().get();
-        if (hk) {
-          Params_KeyboardEventCallBack callbackparams = {
-            EventType::MODIFY, newflags, KeyCode::VK_NONE,
-            0, 0, 0, 0,
-            CommonData::getcurrent_keyboardType(), false,
-          };
-          FireModifiers::fire(callbackparams);
-        }
+        Params_KeyboardEventCallBack callbackparams(EventType::MODIFY, newflags, KeyCode::VK_NONE, CommonData::getcurrent_keyboardType(), false);
+        FireModifiers::fire(callbackparams);
       }
 
       // ------------------------------------------------------------

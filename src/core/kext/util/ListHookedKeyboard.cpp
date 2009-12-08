@@ -42,11 +42,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ------------------------------------------------------------
       EventWatcher::countup();
 
-      Params_KeyboardEventCallBack params = {
-        eventType, flags, key,
-        charCode, charSet, origCharCode, origCharSet,
-        keyboardType, repeat,
-      };
+      Params_KeyboardEventCallBack params(EventType(eventType), Flags(flags), KeyCode(key),
+                                          charCode, charSet, origCharCode, origCharSet,
+                                          KeyboardType(keyboardType), repeat);
       CommonData::setcurrent_ts(ts);
       CommonData::setcurrent_keyboardType(keyboardType);
 

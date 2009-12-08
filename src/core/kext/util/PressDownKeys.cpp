@@ -65,11 +65,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       IOLog("KeyRemap4MacBook -Info- PressDownKeys::clear\n");
     }
 
-    Params_KeyboardEventCallBack callbackparams = {
-      EventType::UP, Flags(0), KeyCode(0),
-      0, 0, 0, 0,
-      CommonData::getcurrent_keyboardType(), false,
-    };
+    Params_KeyboardEventCallBack callbackparams(EventType::UP, Flags(0), KeyCode(0), CommonData::getcurrent_keyboardType(), false);
 
     for (int i = 0; i < MAXNUM; ++i) {
       if (! item_[i].enable) continue;
