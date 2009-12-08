@@ -108,7 +108,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     log("sending");
     callback(target, eventType.get(), flags.get(), key.get(),
-             charCode, charSet, origCharCode, origCharSet,
+             charCode.get(), charSet.get(), origCharCode.get(), origCharSet.get(),
              keyboardType.get(), repeat, ts, sender, refcon);
 
     CommonData::setcurrent_keyboardType(keyboardType);
