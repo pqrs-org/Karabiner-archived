@@ -111,6 +111,47 @@ namespace org_pqrs_KeyRemap4MacBook {
     unsigned int value_;
   };
 
+  class CharCode {
+  public:
+    CharCode(unsigned int v = 0) : value_(v) {}
+    unsigned int get(void) const { return value_; }
+    bool operator==(const CharCode& other) const { return value_ == other.get(); }
+    bool operator!=(const CharCode& other) const { return ! (*this == other); }
+
+  private:
+    unsigned int value_;
+  };
+  class CharSet {
+  public:
+    CharSet(unsigned int v = 0) : value_(v) {}
+    unsigned int get(void) const { return value_; }
+    bool operator==(const CharSet& other) const { return value_ == other.get(); }
+    bool operator!=(const CharSet& other) const { return ! (*this == other); }
+
+  private:
+    unsigned int value_;
+  };
+  class OrigCharCode {
+  public:
+    OrigCharCode(unsigned int v = 0) : value_(v) {}
+    unsigned int get(void) const { return value_; }
+    bool operator==(const OrigCharCode& other) const { return value_ == other.get(); }
+    bool operator!=(const OrigCharCode& other) const { return ! (*this == other); }
+
+  private:
+    unsigned int value_;
+  };
+  class OrigCharSet {
+  public:
+    OrigCharSet(unsigned int v = 0) : value_(v) {}
+    unsigned int get(void) const { return value_; }
+    bool operator==(const OrigCharSet& other) const { return value_ == other.get(); }
+    bool operator!=(const OrigCharSet& other) const { return ! (*this == other); }
+
+  private:
+    unsigned int value_;
+  };
+
   // ======================================================================
   class ConsumerKeyCode {
   public:

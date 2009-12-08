@@ -7,18 +7,15 @@
 namespace org_pqrs_KeyRemap4MacBook {
   class Params_KeyboardEventCallBack {
   public:
-    explicit Params_KeyboardEventCallBack(const EventType& et, const Flags& fl, const KeyCode& kc,
-                                          unsigned int cc,
-                                          unsigned int cs,
-                                          unsigned int occ,
-                                          unsigned int ocs,
-                                          const KeyboardType& kt, bool r) :
+    Params_KeyboardEventCallBack(const EventType& et, const Flags& fl, const KeyCode& kc,
+                                 const CharCode& cc, const CharSet& cs, const OrigCharCode& occ, const OrigCharSet& ocs,
+                                 const KeyboardType& kt, bool r) :
       eventType(et), flags(fl), key(kc),
       charCode(cc), charSet(cs), origCharCode(occ), origCharSet(ocs),
       keyboardType(kt), repeat(r) {}
 
-    explicit Params_KeyboardEventCallBack(const EventType& et, const Flags& fl, const KeyCode& kc,
-                                          const KeyboardType& kt, bool r) :
+    Params_KeyboardEventCallBack(const EventType& et, const Flags& fl, const KeyCode& kc,
+                                 const KeyboardType& kt, bool r) :
       eventType(et), flags(fl), key(kc),
       charCode(0), charSet(0), origCharCode(0), origCharSet(0),
       keyboardType(kt), repeat(r) {}
@@ -30,10 +27,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     EventType eventType;
     Flags flags;
     KeyCode key;
-    unsigned int charCode;
-    unsigned int charSet;
-    unsigned int origCharCode;
-    unsigned int origCharSet;
+    CharCode charCode;
+    CharSet charSet;
+    OrigCharCode origCharCode;
+    OrigCharSet origCharSet;
     KeyboardType keyboardType;
     bool repeat;
 
@@ -43,15 +40,15 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   class Params_KeyboardSpecialEventCallback {
   public:
-    explicit Params_KeyboardSpecialEventCallback(const EventType& et, const Flags& fl, const ConsumerKeyCode& ckc,
-                                                 unsigned int fv, UInt64 g,
-                                                 bool r) :
+    Params_KeyboardSpecialEventCallback(const EventType& et, const Flags& fl, const ConsumerKeyCode& ckc,
+                                        unsigned int fv, UInt64 g,
+                                        bool r) :
       eventType(et), flags(fl), key(ckc),
       flavor(fv), guid(g),
       repeat(r) {}
 
-    explicit Params_KeyboardSpecialEventCallback(const EventType& et, const Flags& fl, const ConsumerKeyCode& ckc,
-                                                 bool r) :
+    Params_KeyboardSpecialEventCallback(const EventType& et, const Flags& fl, const ConsumerKeyCode& ckc,
+                                        bool r) :
       eventType(et), flags(fl), key(ckc),
       flavor(ckc.get()), guid(static_cast<UInt64>(-1)),
       repeat(r) {}
