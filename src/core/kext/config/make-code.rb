@@ -196,7 +196,10 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
           func['key_ModifierHoldingKeyToKey'] << name
 
         when 'ConsumerToKey'
-          code_consumer += "if (RemapUtil::consumerToKey(remapParams, #{params})) return;\n"
+          code_consumer += "{\n"
+          code_consumer += "static RemapUtil::ConsumerToKey consumertokey;\n"
+          code_consumer += "if (consumertokey.remap(remapParams, #{params})) return;\n"
+          code_consumer += "}\n"
           func['consumer'] << name
 
         when 'ConsumerToConsumer'
