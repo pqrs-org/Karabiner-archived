@@ -282,13 +282,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     remap_ScrollWheelEventCallback(Params_ScrollWheelEventCallback& params)
     {
-      IOHIPointing* pointing = OSDynamicCast(IOHIPointing, params.sender);
-      if (! pointing) return;
-
-      HookedPointing* p = ListHookedPointing::instance().get(pointing);
-      if (! p) return;
-
-      // ------------------------------------------------------------
       params.log();
       params.apply();
     }

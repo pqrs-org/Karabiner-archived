@@ -57,15 +57,19 @@ namespace org_pqrs_KeyRemap4MacBook {
                                   OSObject *sender,
                                   void *refcon)
     {
+      IOHIPointing* pointing = OSDynamicCast(IOHIPointing, sender);
+      if (! pointing) return;
+
+      HookedPointing* hp = ListHookedPointing::instance().get(pointing);
+      if (! hp) return;
+
+      // ------------------------------------------------------------
       EventWatcher::countup();
 
-      Params_ScrollWheelEventCallback params = {
-        target,
-        deltaAxis1, deltaAxis2, deltaAxis3,
-        fixedDelta1, fixedDelta2, fixedDelta3,
-        pointDelta1, pointDelta2, pointDelta3,
-        options, ts, sender, refcon,
-      };
+      Params_ScrollWheelEventCallback params(deltaAxis1, deltaAxis2, deltaAxis3,
+                                             fixedDelta1, fixedDelta2, fixedDelta3,
+                                             pointDelta1, pointDelta2, pointDelta3,
+                                             options);
       CommonData::setcurrent_ts(ts);
 
       Core::remap_ScrollWheelEventCallback(params);

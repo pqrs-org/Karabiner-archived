@@ -191,6 +191,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     ScrollWheelEventCallback callback = hp->getOrig_scrollWheelEventAction();
     if (! callback) return;
 
+    OSObject* target = hp->getOrig_scrollWheelEventTarget();
+    if (! target) return;
+
+    OSObject* sender = hp->get();
+    if (! sender) return;
+
+    const AbsoluteTime& ts = CommonData::getcurrent_ts();
+    OSObject* refcon = NULL;
+
     log("sending");
     callback(target,
              deltaAxis1, deltaAxis2, deltaAxis3,
