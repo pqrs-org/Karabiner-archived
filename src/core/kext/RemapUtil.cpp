@@ -479,19 +479,10 @@ namespace org_pqrs_KeyRemap4MacBook {
                              IOFixed fixedDelta1, IOFixed fixedDelta2, IOFixed fixedDelta3,
                              SInt32 pointDelta1, SInt32 pointDelta2, SInt32 pointDelta3)
   {
-    HookedPointing* hp = ListHookedPointing::instance().get();
-    if (! hp) return;
-
-    OSObject* target = hp->getOrig_scrollWheelEventTarget();
-    OSObject* sender = hp->get();
-
-    Params_ScrollWheelEventCallback params = {
-      target,
-      deltaAxis1, deltaAxis2, deltaAxis3,
-      fixedDelta1, fixedDelta2, fixedDelta3,
-      pointDelta1, pointDelta2, pointDelta3,
-      0, CommonData::getcurrent_ts(), sender, NULL,
-    };
+    Params_ScrollWheelEventCallback params(deltaAxis1,  deltaAxis2,  deltaAxis3,
+                                           fixedDelta1, fixedDelta2, fixedDelta3,
+                                           pointDelta1, pointDelta2, pointDelta3,
+                                           0);
     params.apply();
   }
 
