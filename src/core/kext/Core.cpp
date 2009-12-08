@@ -261,16 +261,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     remap_RelativePointerEventCallback(Params_RelativePointerEventCallback& params)
     {
-      IOHIPointing* pointing = OSDynamicCast(IOHIPointing, params.sender);
-      if (! pointing) return;
-
-      HookedPointing* p = ListHookedPointing::instance().get(pointing);
-      if (! p) return;
-
-      // ------------------------------------------------------------
       params.log();
-
-      Flags flags = FlagStatus::makeFlags();
 
       bool isremapped = false;
       RemapPointingParams_relative remapParams = {
@@ -279,11 +270,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       remap_pointing_relative_core(remapParams);
 
       // ------------------------------------------------------------
-      Flags newflags = FlagStatus::makeFlags();
-      if (flags != newflags) {
-        Params_KeyboardEventCallBack callbackparams(EventType::MODIFY, newflags, KeyCode::VK_NONE, CommonData::getcurrent_keyboardType(), false);
-        FireModifiers::fire(callbackparams);
-      }
+      Params_KeyboardEventCallBack callbackparams(EventType::MODIFY, FlagStatus::makeFlags(), KeyCode::VK_NONE, CommonData::getcurrent_keyboardType(), false);
+      FireModifiers::fire(callbackparams);
 
       // ------------------------------------------------------------
       if (! isremapped) {

@@ -3720,14 +3720,20 @@
         <item>
           <name>PointingRelativeToScroll (ModifierFlag)</name>
           <appendix>Option+CursorMove to ScrollWheel</appendix>
-          <sysctl>remap.sample_pointing_relative_option_to_scroll</sysctl>
+          <sysctl>remap.samples_pointing_relative_option_to_scroll</sysctl>
           <autogen>--PointingRelativeToScroll-- PointingButton::NONE, VK_OPTION</autogen>
         </item>
         <item>
           <name>PointingRelativeToScroll (Button+ModifierFlag)</name>
           <appendix>Option+RightClick+CursorMove to ScrollWheel</appendix>
-          <sysctl>remap.sample_pointing_controlLeftclick2middleclick</sysctl>
+          <sysctl>remap.samples_pointing_controlLeftclick2middleclick</sysctl>
           <autogen>--PointingRelativeToScroll-- PointingButton::RIGHT, VK_OPTION</autogen>
+        </item>
+        <item>
+          <name>PointingButtonToPointingButton</name>
+          <appendix>Option+LeftClick to MiddleClick</appendix>
+          <sysctl>remap.samples_pointing_optionLeftclick2middleclick</sysctl>
+          <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, VK_OPTION, PointingButton::MIDDLE</autogen>
         </item>
         <item>
           <name>application only</name>

@@ -67,16 +67,14 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   class Params_RelativePointerEventCallback {
   public:
+    Params_RelativePointerEventCallback(const Buttons& bt, int x, int y) : buttons(bt), dx(x), dy(y) {}
+
     void log(const char* message = "caught") const;
     void apply(void) const;
 
-    OSObject* target;
     Buttons buttons;
     int dx;
     int dy;
-    AbsoluteTime ts;
-    OSObject* sender;
-    void* refcon;
   };
   class Params_ScrollWheelEventCallback {
   public:

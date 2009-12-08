@@ -470,15 +470,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapUtil::fireRelativePointer(const Buttons& buttons)
   {
-    HookedPointing* hp = ListHookedPointing::instance().get();
-    if (! hp) return;
-
-    OSObject* target = hp->getOrig_relativePointerEventTarget();
-    OSObject* sender = hp->get();
-
-    Params_RelativePointerEventCallback params = {
-      target, buttons, 0, 0, CommonData::getcurrent_ts(), sender, NULL,
-    };
+    Params_RelativePointerEventCallback params(buttons, 0, 0);
     params.apply();
   }
 
