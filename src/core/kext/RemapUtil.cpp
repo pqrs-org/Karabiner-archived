@@ -198,6 +198,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (remapParams.isremapped) return false;
     if (remapParams.params.key != fromKeyCode) return false;
 
+    // We ignore the key repeat because we handle it by myself.
+    if (remapParams.params.repeat) {
+      remapParams.drop();
+      return true;
+    }
+
     // ----------------------------------------
     Params_KeyboardEventCallBack params(remapParams.params.eventType,
                                         FlagStatus::makeFlags(),
