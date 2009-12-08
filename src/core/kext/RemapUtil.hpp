@@ -76,14 +76,22 @@ namespace org_pqrs_KeyRemap4MacBook {
       return keyToConsumer(remapParams, fromKeyCode, 0, toKeyCode, toFlags);
     }
 
-    bool consumerToKey(const RemapConsumerParams& remapParams,
-                       const ConsumerKeyCode& fromKeyCode, const Flags& fromFlags,
-                       const KeyCode& toKeyCode, const Flags& toFlags = ModifierFlag::NONE);
-    inline bool consumerToKey(const RemapConsumerParams& remapParams,
-                              const ConsumerKeyCode& fromKeyCode,
-                              const KeyCode& toKeyCode, const Flags& toFlags = ModifierFlag::NONE) {
-      return consumerToKey(remapParams, fromKeyCode, 0, toKeyCode, toFlags);
-    }
+    class ConsumerToKey {
+    public:
+      bool remap(const RemapConsumerParams& remapParams,
+                 const ConsumerKeyCode& fromKeyCode, const Flags& fromFlags,
+                 const KeyCode& toKeyCode, const Flags& toFlags = ModifierFlag::NONE);
+
+      // no fromFlags version
+      bool remap(const RemapConsumerParams& remapParams,
+                 const ConsumerKeyCode& fromKeyCode,
+                 const KeyCode& toKeyCode, const Flags& toFlags = ModifierFlag::NONE) {
+        return remap(remapParams, fromKeyCode, 0, toKeyCode, toFlags);
+      }
+
+    private:
+      RemapUtil::KeyToKey keytokey_;
+    };
 
     bool consumerToConsumer(const RemapConsumerParams& remapParams,
                             const ConsumerKeyCode& fromKeyCode, const Flags& fromFlags,
@@ -105,38 +113,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ----------------------------------------
     void fireKey(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
-
-    void fireKey(const EventType& eventType, const Flags& flags, const KeyCode& key, const KeyboardType& keyboardType,
-                 const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
-
-    inline void fireKey(const EventType& eventType, const Flags& flags, const KeyCode& key,
-                        const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
-      RemapUtil::fireKey(eventType,
-                         flags, key,
-                         params.keyboardType,
-                         workspacedata);
-
-    }
-
-    inline void fireKey(const Flags& flags, const KeyCode& key,
-                        const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
-      RemapUtil::fireKey(params.eventType, flags, key, params, workspacedata);
-    }
-
-    inline void fireKey_downup(const Flags& flags, const KeyCode& key, const KeyboardType& keyboardType,
-                               const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
-      if (key.isModifier()) {
-        RemapUtil::fireKey(EventType::MODIFY, flags, key, keyboardType, workspacedata);
-      } else {
-        RemapUtil::fireKey(EventType::DOWN,   flags, key, keyboardType, workspacedata);
-        RemapUtil::fireKey(EventType::UP,     flags, key, keyboardType, workspacedata);
-      }
-    }
-
-    inline void fireKey_downup(const Flags& flags, const KeyCode& key,
-                               const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
-      RemapUtil::fireKey_downup(flags, key, params.keyboardType, workspacedata);
-    }
+    void fireKey_downup(const Flags& flags, const KeyCode& key, const KeyboardType& keyboardType,
+                        const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
 
     void fireConsumer(const Params_KeyboardSpecialEventCallback& params);
     void fireRelativePointer(const Buttons& buttons);

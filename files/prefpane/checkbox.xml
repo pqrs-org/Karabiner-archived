@@ -3634,6 +3634,12 @@
           <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_DOWN, KeyCode::RETURN</autogen>
         </item>
         <item>
+          <name>ConsumerToKey (with ModifierFlag)</name>
+          <appendix>Shift+Brightness Down to Return</appendix>
+          <sysctl>remap.samples_shift_brightnessdown2return</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_DOWN, ModifierFlag::SHIFT_L, KeyCode::RETURN</autogen>
+        </item>
+        <item>
           <name>ConsumerToConsumer</name>
           <appendix>Brightness Down to Volume Mute</appendix>
           <sysctl>remap.samples_brightnessdown2volumemute</sysctl>
