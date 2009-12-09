@@ -10,8 +10,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool checkThreshold(uint32_t millisec);
 
   private:
-    clock_sec_t secs;
-    clock_usec_t microsecs;
+    clock_sec_t secs_;
+    clock_usec_t microsecs_;
   };
 }
 
