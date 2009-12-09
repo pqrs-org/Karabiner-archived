@@ -29,21 +29,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   static bool
-  remap_jis_eisuu2commandL_eisuu_eisuu2optionL_term(const RemapParams &remapParams)
-  {
-    if (! config.remap_jis_eisuu2commandL_eisuu_eisuu2optionL_term) return false;
-
-    if (remapParams.workspacedata.type == KeyRemap4MacBook_bridge::GetWorkspaceData::TERMINAL) {
-      static KeyOverlaidModifier kom;
-      return kom.remap(remapParams, KeyCode::JIS_EISUU, KeyCode::OPTION_L, KeyCode::JIS_EISUU);
-    } else {
-      static KeyOverlaidModifier kom;
-      return kom.remap(remapParams, KeyCode::JIS_EISUU, KeyCode::COMMAND_L, KeyCode::JIS_EISUU);
-    }
-  }
-
-  // ----------------------------------------
-  static bool
   remap_jis_jansi(const RemapParams &remapParams)
   {
     if (! config.remap_jis_jansi) return false;
@@ -83,18 +68,13 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &remapParams)
   // normal remapping
 #include "config/output/include.remapcode_call.cpp"
 
-  // ----------------------------------------
   remap_keypadnumlock_togglekey_clear(remapParams);
-
-  // ------------------------------------------------------------
-  // jis
   remap_jis_jansi(remapParams);
 
   // ------------------------------------------------------------
   // *** Note: we need to call remap_space2shift, remap_enter2optionL_commandSpace (has SandS like behavior) as possible late. ***
   // *** If any key2modifier or modifier2key remappings are enabled, miss-cancelling are occured. ***
 #include "config/output/include.remapcode_call_kom.cpp"
-  remap_jis_eisuu2commandL_eisuu_eisuu2optionL_term(remapParams);
 
   // ------------------------------------------------------------
 #include "config/output/include.remapcode_call_mhkk.cpp"

@@ -3200,9 +3200,11 @@
               <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, KeyCode::COMMAND_L, KeyCode::JIS_EISUU</autogen>
             </item>
             <item>
-              <name>EISUU to Command_L. In Terminal, EISUU to OptionL</name>
+              <name>EISUU to Command_L (except Terminal)</name>
               <appendix>(+ When you type EISUU only, send EISUU)</appendix>
-              <sysctl>remap.jis_eisuu2commandL_eisuu_eisuu2optionL_term</sysctl>
+              <not>TERMINAL</not>
+              <sysctl>remap.jis_eisuu2commandL_eisuu_ex_term</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, KeyCode::COMMAND_L, KeyCode::JIS_EISUU</autogen>
             </item>
             <item>
               <name>EISUU to Control_L</name>
@@ -3224,6 +3226,13 @@
               <name>EISUU to Option_L</name>
               <sysctl>remap.jis_eisuu2optionL</sysctl>
               <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::OPTION_L</autogen>
+            </item>
+            <item>
+              <name>EISUU to Option_L (only in Terminal)</name>
+              <appendix>(+ When you type EISUU only, send EISUU)</appendix>
+              <only>TERMINAL</only>
+              <sysctl>remap.jis_eisuu2optionL_eisuu_term</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, KeyCode::OPTION_L, KeyCode::JIS_EISUU</autogen>
             </item>
             <item>
               <name>EISUU to Shift_L</name>
