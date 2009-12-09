@@ -644,13 +644,20 @@
           <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::COMMAND_L</autogen>
         </item>
         <item>
-          <name>Enter to Command_L</name>
-          <appendix>(+ Enter to Control_L in Parallels, VMware)</appendix>
-          <sysctl>remap.enter2commandL_enter2controlL_vm</sysctl>
+          <name>Enter to Command_L (except virtual machine, RDC)</name>
+          <sysctl>remap.enter2commandL_ex_vm</sysctl>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::COMMAND_L</autogen>
         </item>
         <item>
           <name>Enter to Control_L</name>
           <sysctl>remap.enter2controlL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::CONTROL_L</autogen>
+        </item>
+        <item>
+          <name>Enter to Control_L (only in virtual machine, RDC)</name>
+          <sysctl>remap.enter2controlL_vm</sysctl>
+          <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
           <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
