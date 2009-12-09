@@ -54,7 +54,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   HookedKeyboard::HookedKeyboard(void) :
     isAppleDriver_(false),
-    isInternalKeyboard(false),
+    isInternalKeyboard_(false),
     orig_keyboardEventAction(NULL), orig_keyboardEventTarget(NULL)
   {}
 
@@ -76,7 +76,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       isAppleDriver_ = false;
     }
 
-    isInternalKeyboard = KeyboardType(device->deviceType()).isInternalKeyboard();
+    isInternalKeyboard_ = KeyboardType(device->deviceType()).isInternalKeyboard();
 
     return refresh();
   }
@@ -90,7 +90,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! isAppleDriver_ && config.general_dont_remap_thirdvendor_keyboard) {
       return restoreEventAction();
     }
-    if (isInternalKeyboard) {
+    if (isInternalKeyboard_) {
       if (config.general_dont_remap_internal) {
         return restoreEventAction();
       }
