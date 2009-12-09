@@ -30,56 +30,51 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
-  static bool
-  remap_keypadnumlock_togglekey_clear(const RemapParams &remapParams)
+  static void
+  remap_keypadnumlock_togglekey_clear(const RemapParams& remapParams)
   {
-    if (! config.option_keypadnumlock_togglekey_clear) return false;
+    if (! config.option_keypadnumlock_togglekey_clear) return;
 
-    if (remapParams.isremapped) return false;
-    if (remapParams.params.key != KeyCode::KEYPAD_CLEAR) return false;
+    if (remapParams.isremapped) return;
+    if (remapParams.params.key != KeyCode::KEYPAD_CLEAR) return;
 
     if (remapParams.params.eventType.isKeyDownOrModifierDown(remapParams.params.key, remapParams.params.flags)) {
       config.remap_keypadnumlock = ! config.remap_keypadnumlock;
     }
 
     remapParams.drop();
-    return true;
   }
 
   // ----------------------------------------
-  static bool
-  remap_jis_jansi(const RemapParams &remapParams)
+  static void
+  remap_jis_jansi(const RemapParams& remapParams)
   {
-    if (! config.remap_jis_jansi) return false;
+    if (! config.remap_jis_jansi) return;
 
     remapParams.params.keyboardType = KeyboardType::MACBOOK;
 
     {
       static RemapUtil::KeyToKey keytokey;
-      if (keytokey.remap(remapParams, KeyCode::JIS_YEN, KeyCode::BACKQUOTE)) return true;
+      if (keytokey.remap(remapParams, KeyCode::JIS_YEN, KeyCode::BACKQUOTE)) return;
     }
     {
       static RemapUtil::KeyToKey keytokey;
-      if (keytokey.remap(remapParams, KeyCode::JIS_UNDERSCORE, KeyCode::BACKQUOTE)) return true;
+      if (keytokey.remap(remapParams, KeyCode::JIS_UNDERSCORE, KeyCode::BACKQUOTE)) return;
     }
-
-    // Note: remap_jis_jansi return false if changed keyboardType only.
-    return false;
   }
 
-  static bool
-  remap_pointing_relative_to_scroll(const RemapPointingParams_relative &remapParams)
+  static void
+  remap_pointing_relative_to_scroll(const RemapPointingParams_relative& remapParams)
   {
-    if (! config.remap_pointing_relative_to_scroll) return false;
+    if (! config.remap_pointing_relative_to_scroll) return;
 
     RemapUtil::pointingRelativeToScroll(remapParams);
-    return true;
   }
 }
 
 // ----------------------------------------------------------------------
 void
-org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &remapParams)
+org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams& remapParams)
 {
   FlagStatus::set(remapParams.params.key, remapParams.params.flags);
 
@@ -104,7 +99,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &remapParams)
 }
 
 void
-org_pqrs_KeyRemap4MacBook::remap_consumer(const RemapConsumerParams &remapParams)
+org_pqrs_KeyRemap4MacBook::remap_consumer(const RemapConsumerParams& remapParams)
 {
   FlagStatus::set();
 
@@ -114,7 +109,7 @@ org_pqrs_KeyRemap4MacBook::remap_consumer(const RemapConsumerParams &remapParams
 }
 
 void
-org_pqrs_KeyRemap4MacBook::remap_pointing_relative_core(const RemapPointingParams_relative &remapParams)
+org_pqrs_KeyRemap4MacBook::remap_pointing_relative_core(const RemapPointingParams_relative& remapParams)
 {
   FlagStatus::set();
 
