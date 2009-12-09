@@ -12,21 +12,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   static bool
-  remap_enter2commandL_enter2controlL_vm(const RemapParams &remapParams)
-  {
-    if (! config.remap_enter2commandL_enter2controlL_vm) return false;
-
-    if (remapParams.workspacedata.type == KeyRemap4MacBook_bridge::GetWorkspaceData::VIRTUALMACHINE) {
-      static RemapUtil::KeyToKey keytokey;
-      return keytokey.remap(remapParams, KeyCode::ENTER, KeyCode::CONTROL_L);
-    } else {
-      static RemapUtil::KeyToKey keytokey;
-      return keytokey.remap(remapParams, KeyCode::ENTER, KeyCode::COMMAND_L);
-    }
-  }
-
-  // ----------------------------------------
-  static bool
   remap_keypadnumlock_togglekey_clear(const RemapParams &remapParams)
   {
     if (! config.option_keypadnumlock_togglekey_clear) return false;
@@ -97,8 +82,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &remapParams)
   // ======================================================================
   // normal remapping
 #include "config/output/include.remapcode_call.cpp"
-
-  remap_enter2commandL_enter2controlL_vm(remapParams);
 
   // ----------------------------------------
   remap_keypadnumlock_togglekey_clear(remapParams);
