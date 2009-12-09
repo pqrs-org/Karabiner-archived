@@ -62,6 +62,19 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ------------------------------------------------------------
+    remapParams.isremapped = true;
+
+    // We ignore the key repeat because we handle it by myself.
+    //
+    // The key repeat does not come to here by the handling of normal KeyToKey.
+    // Because the key repeat is ignored in remap_KeyboardEventCallback.
+    //
+    // This processing is sake of ConsumerToKey.
+    if (remapParams.params.repeat) {
+      return true;
+    }
+
+    // ------------------------------------------------------------
     const ModifierFlag& fromModifierFlag = fromKeyCode.getModifierFlag();
     const ModifierFlag& toModifierFlag = toKeyCode.getModifierFlag();
 
@@ -104,7 +117,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ----------------------------------------
     remapParams.params.key = toKeyCode;
-    remapParams.isremapped = true;
     remapFlags(fromFlags, toFlags, toKeyCode, isKeyDown);
 
     remapParams.params.flags = FlagStatus::makeFlags();
@@ -198,18 +210,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (remapParams.isremapped) return false;
     if (remapParams.params.key != fromKeyCode) return false;
 
-    // We ignore the key repeat because we handle it by myself.
-    if (remapParams.params.repeat) {
-      remapParams.drop();
-      return true;
-    }
-
     // ----------------------------------------
     Params_KeyboardEventCallBack params(remapParams.params.eventType,
                                         FlagStatus::makeFlags(),
                                         KeyCode::VK_CONSUMERKEY,
                                         CommonData::getcurrent_keyboardType(),
-                                        false);
+                                        remapParams.params.repeat);
     bool isremapped = false;
     RemapParams rp = {
       params,
