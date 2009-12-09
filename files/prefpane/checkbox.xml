@@ -1737,6 +1737,7 @@
           <name>Tab to Option_L when you held down Control_L</name>
           <appendix>(+ When you type Control_L+Tab, send Control_L+Tab)</appendix>
           <sysctl>remap.tab2option_withControlL</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::TAB, ModifierFlag::CONTROL_L, KeyCode::OPTION_L, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
         </item>
         <item>
           <name>Tab to Expose All</name>
