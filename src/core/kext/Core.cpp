@@ -188,17 +188,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       params.log();
 
       // ------------------------------------------------------------
-      if (config.general_capslock_led_hack) {
-        HookedKeyboard* hk = ListHookedKeyboard::instance().get();
-        if (hk && hk->get()) {
-          int led = hk->get()->getLEDStatus();
-          if (led == 0) {
-            hk->get()->setAlphaLockFeedback(true);
-          }
-        }
-      }
-
-      // ------------------------------------------------------------
       bool isremapped = false;
 
       params.key.normalizeKey(params.flags, params.keyboardType);
