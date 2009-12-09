@@ -27,18 +27,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   static bool
-  remap_tab2option_withControlL(const RemapParams &remapParams)
-  {
-    if (! config.remap_tab2option_withControlL) return false;
-
-    if (! FlagStatus::makeFlags().isOn(ModifierFlag::CONTROL_L)) return false;
-
-    static KeyOverlaidModifier kom;
-    return kom.remap(remapParams, KeyCode::TAB, KeyCode::OPTION_L, KeyCode::TAB);
-  }
-
-  // ----------------------------------------
-  static bool
   remap_keypadnumlock_togglekey_clear(const RemapParams &remapParams)
   {
     if (! config.option_keypadnumlock_togglekey_clear) return false;
@@ -111,8 +99,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &remapParams)
 #include "config/output/include.remapcode_call.cpp"
 
   remap_enter2commandL_enter2controlL_vm(remapParams);
-
-  remap_tab2option_withControlL(remapParams);
 
   // ----------------------------------------
   remap_keypadnumlock_togglekey_clear(remapParams);
