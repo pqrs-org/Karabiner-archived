@@ -15,7 +15,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
     static void free(IOLock*& lock) {
       IOLockLock(lock);
-      IOLock *tmplock = lock;
+      IOLock* tmplock = lock;
       lock = NULL;
       IOLockUnlock(tmplock);
       IOLockFree(tmplock);
