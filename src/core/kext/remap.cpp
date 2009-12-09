@@ -4,10 +4,29 @@
 #include "RemapUtil.hpp"
 #include "Config.hpp"
 #include "KeyCode.hpp"
+#include "ListHookedKeyboard.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace GeneratedCode {
 #include "config/output/include.remapcode_func.cpp"
+  }
+
+  // ----------------------------------------
+  static void
+  general_capslock_led_hack(const RemapParams& /*remapParams*/)
+  {
+    if (! config.general_capslock_led_hack) return;
+
+    HookedKeyboard* hk = ListHookedKeyboard::instance().get();
+    if (! hk) return;
+
+    IOHIKeyboard* kbd = hk->get();
+    if (! kbd) return;
+
+    int led = kbd->getLEDStatus();
+    if (led == 0) {
+      kbd->setAlphaLockFeedback(true);
+    }
   }
 
   // ----------------------------------------
@@ -68,6 +87,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams &remapParams)
   // normal remapping
 #include "config/output/include.remapcode_call.cpp"
 
+  general_capslock_led_hack(remapParams);
   remap_keypadnumlock_togglekey_clear(remapParams);
   remap_jis_jansi(remapParams);
 
