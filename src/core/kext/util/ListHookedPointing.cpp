@@ -9,7 +9,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     ListHookedPointing listHookedPointing;
   }
 
-  ListHookedPointing &
+  ListHookedPointing&
   ListHookedPointing::instance(void)
   {
     return listHookedPointing;
@@ -18,13 +18,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------------------------------------
   namespace {
     void
-    hook_RelativePointerEventCallback(OSObject *target,
+    hook_RelativePointerEventCallback(OSObject* target,
                                       int buttons,
                                       int dx,
                                       int dy,
                                       AbsoluteTime ts,
-                                      OSObject *sender,
-                                      void *refcon)
+                                      OSObject* sender,
+                                      void* refcon)
     {
       IOHIPointing* pointing = OSDynamicCast(IOHIPointing, sender);
       if (! pointing) return;
@@ -42,7 +42,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    hook_ScrollWheelEventCallback(OSObject * target,
+    hook_ScrollWheelEventCallback(OSObject* target,
                                   short deltaAxis1,
                                   short deltaAxis2,
                                   short deltaAxis3,
@@ -54,8 +54,8 @@ namespace org_pqrs_KeyRemap4MacBook {
                                   SInt32 pointDelta3,
                                   SInt32 options,
                                   AbsoluteTime ts,
-                                  OSObject *sender,
-                                  void *refcon)
+                                  OSObject* sender,
+                                  void* refcon)
     {
       IOHIPointing* pointing = OSDynamicCast(IOHIPointing, sender);
       if (! pointing) return;
@@ -77,16 +77,15 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   HookedPointing::HookedPointing(void) :
-    isAppleDriver(false),
+    isAppleDriver_(false),
     orig_relativePointerEventAction(NULL), orig_scrollWheelEventAction(NULL),
     orig_relativePointerEventTarget(NULL), orig_scrollWheelEventTarget(NULL)
-  {
-  }
+  {}
 
   bool
-  HookedPointing::initialize(IOHIDevice *_device)
+  HookedPointing::initialize(IOHIDevice* _device)
   {
-    const char *name = _device->getName();
+    const char* name = _device->getName();
     if (HookedDevice::isIgnoreDevice(_device)) return false;
 
     device = _device;
@@ -95,9 +94,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (strcmp(name, "IOHIDPointing") == 0 ||
         strcmp(name, "AppleUSBGrIIITrackpad") == 0 ||
         strcmp(name, "AppleADBMouseType4") == 0) {
-      isAppleDriver = true;
+      isAppleDriver_ = true;
     } else {
-      isAppleDriver = false;
+      isAppleDriver_ = false;
     }
 
     return refresh();
@@ -109,7 +108,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.initialized) {
       return restoreEventAction();
     }
-    if (! isAppleDriver && config.general_dont_remap_thirdvendor_pointing) {
+    if (! isAppleDriver_ && config.general_dont_remap_thirdvendor_pointing) {
       return restoreEventAction();
     }
     return replaceEventAction();
@@ -134,7 +133,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! device) return false;
 
-    IOHIPointing *pointing = OSDynamicCast(IOHIPointing, device);
+    IOHIPointing* pointing = OSDynamicCast(IOHIPointing, device);
     if (! pointing) return false;
 
     bool result = false;
@@ -177,7 +176,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! device) return false;
 
-    IOHIPointing *pointing = OSDynamicCast(IOHIPointing, device);
+    IOHIPointing* pointing = OSDynamicCast(IOHIPointing, device);
     if (! pointing) return false;
 
     bool result = false;
