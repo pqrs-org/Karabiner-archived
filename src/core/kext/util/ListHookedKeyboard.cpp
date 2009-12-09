@@ -10,7 +10,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     ListHookedKeyboard listHookedKeyboard;
   }
 
-  ListHookedKeyboard &
+  ListHookedKeyboard&
   ListHookedKeyboard::instance(void)
   {
     return listHookedKeyboard;
@@ -19,7 +19,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------------------------------------
   namespace {
     void
-    hook_KeyboardEventCallback(OSObject *target,
+    hook_KeyboardEventCallback(OSObject* target,
                                unsigned int eventType,
                                unsigned int flags,
                                unsigned int key,
@@ -30,8 +30,8 @@ namespace org_pqrs_KeyRemap4MacBook {
                                unsigned int keyboardType,
                                bool repeat,
                                AbsoluteTime ts,
-                               OSObject *sender,
-                               void *refcon)
+                               OSObject* sender,
+                               void* refcon)
     {
       IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, sender);
       if (! kbd) return;
@@ -56,13 +56,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     isAppleDriver(false),
     isInternalKeyboard(false),
     orig_keyboardEventAction(NULL), orig_keyboardEventTarget(NULL)
-  {
-  }
+  {}
 
   bool
-  HookedKeyboard::initialize(IOHIDevice *_device)
+  HookedKeyboard::initialize(IOHIDevice* _device)
   {
-    const char *name = _device->getName();
+    const char* name = _device->getName();
     if (strcmp(name, "IOHIDConsumer") == 0) return false;
     if (HookedDevice::isIgnoreDevice(_device)) return false;
 
@@ -121,7 +120,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! device) return false;
 
-    IOHIKeyboard *kbd = OSDynamicCast(IOHIKeyboard, device);
+    IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, device);
     if (! kbd) return false;
 
     KeyboardEventCallback callback = reinterpret_cast<KeyboardEventCallback>(kbd->_keyboardEventAction);
@@ -143,7 +142,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! device) return false;
 
-    IOHIKeyboard *kbd = OSDynamicCast(IOHIKeyboard, device);
+    IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, device);
     if (! kbd) return false;
 
     KeyboardEventCallback callback = reinterpret_cast<KeyboardEventCallback>(kbd->_keyboardEventAction);
