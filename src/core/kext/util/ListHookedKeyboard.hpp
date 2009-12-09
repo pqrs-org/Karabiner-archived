@@ -15,7 +15,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     OSObject* getOrig_keyboardEventTarget() const { return orig_keyboardEventTarget; }
 
   private:
-    bool isAppleDriver;
+    bool isAppleDriver_;
     bool isInternalKeyboard;
 
     KeyboardEventCallback orig_keyboardEventAction;
