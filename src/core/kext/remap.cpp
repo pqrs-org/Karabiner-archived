@@ -86,15 +86,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams& remapParams)
   remap_keypadnumlock_togglekey_clear(remapParams);
   remap_jis_jansi(remapParams);
 
-  // ------------------------------------------------------------
-  // *** Note: we need to call remap_space2shift, remap_enter2optionL_commandSpace (has SandS like behavior) as possible late. ***
-  // *** If any key2modifier or modifier2key remappings are enabled, miss-cancelling are occured. ***
-#include "config/output/include.remapcode_call_kom.cpp"
-
-  // ------------------------------------------------------------
-#include "config/output/include.remapcode_call_mhkk.cpp"
-
-  // ------------------------------------------------------------
   remapParams.params.flags = FlagStatus::makeFlags();
 }
 
