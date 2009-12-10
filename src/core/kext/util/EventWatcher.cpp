@@ -53,6 +53,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (item_[i].flag == NULL) {
         item_[i].flag = &b;
         item_[i].count = count_;
+        return;
       }
     }
   }
