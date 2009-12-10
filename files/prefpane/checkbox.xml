@@ -1644,6 +1644,11 @@
           <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::RETURN</autogen>
         </item>
         <item>
+          <name>Shift_R to Right-Arrow</name>
+          <sysctl>remap.shiftR2rightarrow</sysctl>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::CURSOR_RIGHT</autogen>
+        </item>
+        <item>
           <name>Shift_R to Space</name>
           <sysctl>remap.shiftR2space</sysctl>
           <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::SPACE</autogen>
