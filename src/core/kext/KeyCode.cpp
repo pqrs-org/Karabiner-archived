@@ -24,6 +24,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (*this == KeyboardType::MACBOOK) return true;
     if (*this == KeyboardType::MACBOOK_COREDUO) return true;
+    if (*this == KeyboardType::MACBOOK_3_1) return true;
     if (*this == KeyboardType::POWERBOOK) return true;
     if (*this == KeyboardType::POWERBOOK_G4) return true;
     if (*this == KeyboardType::POWERBOOK_G4_TI) return true;
