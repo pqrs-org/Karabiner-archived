@@ -634,25 +634,23 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   ModifierHoldingKeyToKey::remap(const RemapParams& remapParams, const KeyCode& fromKeyCode, const Flags& fromFlags, const KeyCode& toKeyCode)
   {
-    if (! FlagStatus::makeFlags().isOn(fromFlags)) {
-      isAnyEventHappen_ = true;
-      return false;
-    }
-
     if (remapParams.isremapped || remapParams.params.key != fromKeyCode) {
-      ic_.begin();
-      EventWatcher::set(isAnyEventHappen_);
-      return false;
+      IOLog("nottargetkey\n");
+      goto nottargetkey;
     }
 
-    if (isAnyEventHappen_ == false) {
-      EventWatcher::unset(isAnyEventHappen_);
-      if (ic_.checkThreshold(config.parameter_modifierholdingkeytokey_wait)) {
-        keytokey_.remap(remapParams, fromKeyCode, fromFlags, toKeyCode);
-      }
-    }
+    if (isAnyEventHappen_) goto nottargetkey;
+    if (! FlagStatus::makeFlags().isOn(fromFlags)) goto nottargetkey;
 
-    return true;
+    EventWatcher::unset(isAnyEventHappen_);
+    if (! ic_.checkThreshold(config.parameter_modifierholdingkeytokey_wait)) goto nottargetkey;
+
+    return keytokey_.remap(remapParams, fromKeyCode, fromFlags, toKeyCode);
+
+  nottargetkey:
+    ic_.begin();
+    EventWatcher::set(isAnyEventHappen_);
+    return false;
   }
 
   // ----------------------------------------
