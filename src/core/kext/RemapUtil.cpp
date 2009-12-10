@@ -3,9 +3,6 @@
 #include "KeyCode.hpp"
 #include "RemapUtil.hpp"
 #include "util/KeyboardRepeat.hpp"
-#include "util/ListHookedConsumer.hpp"
-#include "util/ListHookedKeyboard.hpp"
-#include "util/ListHookedPointing.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace {
@@ -187,17 +184,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (remapParams.params.key != fromKeyCode) return false;
     if (! FlagStatus::makeFlags().isOn(fromFlags)) return false;
 
+    // ----------------------------------------
     remapFlags(fromFlags, toFlags);
 
-    HookedConsumer* hc = ListHookedConsumer::instance().get();
-    if (hc) {
-      EventType eventType = (remapParams.isKeyDownOrModifierDown() ? EventType::DOWN : EventType::UP);
-      Flags flags = FlagStatus::makeFlags();
+    EventType eventType = (remapParams.isKeyDownOrModifierDown() ? EventType::DOWN : EventType::UP);
+    Flags flags = FlagStatus::makeFlags();
 
-      Params_KeyboardSpecialEventCallback p(eventType, flags, toKeyCode, false);
-      RemapUtil::fireConsumer(p);
-    }
+    Params_KeyboardSpecialEventCallback p(eventType, flags, toKeyCode, false);
+    RemapUtil::fireConsumer(p);
 
+    // ----------------------------------------
     remapParams.drop();
     return true;
   }
