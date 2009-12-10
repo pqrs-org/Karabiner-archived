@@ -68,8 +68,6 @@ unregister = ''
 default = ''
 func = {
   'key' => [],
-  'key_KeyOverlaidModifier' => [],
-  'key_ModifierHoldingKeyToKey' => [],
   'consumer' => [],
   'pointing' => [],
 }
@@ -179,21 +177,21 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
           code_key += "static KeyOverlaidModifier kom;\n"
           code_key += "kom.remap(remapParams, #{params});\n"
           code_key += "}\n"
-          func['key_KeyOverlaidModifier'] << name
+          func['key'] << name
 
         when 'KeyOverlaidModifierWithRepeat'
           code_key += "{\n"
           code_key += "static KeyOverlaidModifier kom;\n"
           code_key += "if (kom.remapWithRepeat(remapParams, #{params})) return;\n"
           code_key += "}\n"
-          func['key_KeyOverlaidModifier'] << name
+          func['key'] << name
 
         when 'ModifierHoldingKeyToKey'
           code_key += "{\n"
           code_key += "static ModifierHoldingKeyToKey mhkk;\n"
           code_key += "mhkk.remap(remapParams, #{params});\n"
           code_key += "}\n"
-          func['key_ModifierHoldingKeyToKey'] << name
+          func['key'] << name
 
         when 'ConsumerToKey'
           code_consumer += "{\n"
@@ -258,16 +256,6 @@ open('output/include.remapcode_func.cpp', 'w') do |f|
 end
 open('output/include.remapcode_call.cpp', 'w') do |f|
   func['key'].uniq.each do |call|
-    f.puts "GeneratedCode::#{call}(remapParams);\n"
-  end
-end
-open('output/include.remapcode_call_kom.cpp', 'w') do |f|
-  func['key_KeyOverlaidModifier'].uniq.each do |call|
-    f.puts "GeneratedCode::#{call}(remapParams);\n"
-  end
-end
-open('output/include.remapcode_call_mhkk.cpp', 'w') do |f|
-  func['key_ModifierHoldingKeyToKey'].uniq.each do |call|
     f.puts "GeneratedCode::#{call}(remapParams);\n"
   end
 end
