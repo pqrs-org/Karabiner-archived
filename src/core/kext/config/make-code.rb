@@ -153,7 +153,7 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
         when 'DoublePressModifier'
           code_key += "{\n"
           code_key += "static DoublePressModifier dpm;\n"
-          code_key += "dpm.remap(remapParams, #{params});\n"
+          code_key += "if (dpm.remap(remapParams, #{params})) return;\n"
           code_key += "}\n"
           func['key'] << name
 
@@ -165,17 +165,17 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
           func['key'] << name
 
         when 'KeyToComsumer'
-          code_key += "RemapUtil::keyToConsumer(remapParams, #{params});\n"
+          code_key += "if (RemapUtil::keyToConsumer(remapParams, #{params})) return;\n"
           func['key'] << name
 
         when 'KeyToPointingButton'
-          code_key += "RemapUtil::keyToPointingButton(remapParams, #{params});\n"
+          code_key += "if (RemapUtil::keyToPointingButton(remapParams, #{params})) return;\n"
           func['key'] << name
 
         when 'KeyOverlaidModifier'
           code_key += "{\n"
           code_key += "static KeyOverlaidModifier kom;\n"
-          code_key += "kom.remap(remapParams, #{params});\n"
+          code_key += "if (kom.remap(remapParams, #{params})) return;\n"
           code_key += "}\n"
           func['key'] << name
 
@@ -189,7 +189,7 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
         when 'ModifierHoldingKeyToKey'
           code_key += "{\n"
           code_key += "static ModifierHoldingKeyToKey mhkk;\n"
-          code_key += "mhkk.remap(remapParams, #{params});\n"
+          code_key += "if (mhkk.remap(remapParams, #{params})) return;\n"
           code_key += "}\n"
           func['key'] << name
 
@@ -207,7 +207,7 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
         when 'PointingRelativeToScroll'
           code_pointing += "{\n"
           code_pointing += "static PointingRelativeToScroll brts;\n"
-          code_pointing += "brts.remap(remapParams, #{params});\n"
+          code_pointing += "if (brts.remap(remapParams, #{params})) return;\n"
           code_pointing += "}\n"
           func['pointing'] << name
 
