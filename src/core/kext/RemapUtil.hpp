@@ -67,15 +67,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     bool keyToPointingButton(const RemapParams& remapParams, const KeyCode& fromKeyCode, const PointingButton& toButton);
 
-    bool keyToConsumer(const RemapParams& remapParams,
-                       const KeyCode& fromKeyCode, const Flags& fromFlags,
-                       const ConsumerKeyCode& toKeyCode, const Flags& toFlags = ModifierFlag::NONE);
-    inline bool keyToConsumer(const RemapParams& remapParams,
-                              const KeyCode& fromKeyCode,
-                              const ConsumerKeyCode& toKeyCode, const Flags& toFlags = ModifierFlag::NONE) {
-      return keyToConsumer(remapParams, fromKeyCode, 0, toKeyCode, toFlags);
-    }
-
     class ConsumerToKey {
     public:
       bool remap(const RemapConsumerParams& remapParams,
@@ -108,6 +99,23 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     private:
       bool active_;
+    };
+
+    class KeyToConsumer {
+    public:
+      bool remap(const RemapParams& remapParams,
+                 const KeyCode& fromKeyCode, const Flags& fromFlags,
+                 const ConsumerKeyCode& toKeyCode, const Flags& toFlags = ModifierFlag::NONE);
+
+      // no fromFlags version
+      bool remap(const RemapParams& remapParams,
+                 const KeyCode& fromKeyCode,
+                 const ConsumerKeyCode& toKeyCode, const Flags& toFlags = ModifierFlag::NONE) {
+        return remap(remapParams, fromKeyCode, 0, toKeyCode, toFlags);
+      }
+
+    private:
+      RemapUtil::ConsumerToConsumer consumertoconsumer_;
     };
 
     bool pointingButtonToPointingButton(const RemapPointingParams_relative& remapParams,
