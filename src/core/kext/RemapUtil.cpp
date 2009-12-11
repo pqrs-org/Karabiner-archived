@@ -8,20 +8,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace {
     Buttons remappedButtions;
 
-    void remapFlags(const Flags& fromFlags, const Flags& toFlags, const KeyCode& toKeyCode = KeyCode::VK_NONE, bool isKeyDown = false) {
-      if (toKeyCode.isModifier()) {
-        if (isKeyDown) {
-          FlagStatus::decrease(fromFlags);
-          FlagStatus::increase(toFlags);
-        } else {
-          FlagStatus::increase(fromFlags);
-          FlagStatus::decrease(toFlags);
-        }
-      } else {
-        // we always perform the same movement regardless of isKeyDown.
-        FlagStatus::temporary_decrease(fromFlags);
-        FlagStatus::temporary_increase(toFlags);
-      }
+    void remapFlags(const Flags& fromFlags, const Flags& toFlags) {
+      // we always perform the same movement regardless of isKeyDown.
+      FlagStatus::temporary_decrease(fromFlags);
+      FlagStatus::temporary_increase(toFlags);
     }
   }
 
@@ -144,13 +134,15 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (isKeyDown) {
       // calc flags
-      remapFlags(toFlags1, toFlags2, toKeyCode2, isKeyDown);
+      FlagStatus::temporary_decrease(toFlags1);
+      FlagStatus::temporary_increase(toFlags2);
 
       Flags flags = FlagStatus::makeFlags();
       RemapUtil::fireKey_downup(flags, toKeyCode2, remapParams.params.keyboardType, remapParams.workspacedata);
 
       // restore flags
-      remapFlags(toFlags2, toFlags1, toKeyCode1, isKeyDown);
+      FlagStatus::temporary_increase(toFlags1);
+      FlagStatus::temporary_decrease(toFlags2);
     }
 
     return true;
