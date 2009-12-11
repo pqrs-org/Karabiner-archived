@@ -201,7 +201,10 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
           func['consumer'] << name
 
         when 'ConsumerToConsumer'
-          code_consumer += "if (RemapUtil::consumerToConsumer(remapParams, #{params})) return;\n"
+          code_consumer += "{\n"
+          code_consumer += "static RemapUtil::ConsumerToConsumer consumertoconsumer;\n"
+          code_consumer += "if (consumertoconsumer.remap(remapParams, #{params})) return;\n"
+          code_consumer += "}\n"
           func['consumer'] << name
 
         when 'PointingRelativeToScroll'

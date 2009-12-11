@@ -93,14 +93,22 @@ namespace org_pqrs_KeyRemap4MacBook {
       RemapUtil::KeyToKey keytokey_;
     };
 
-    bool consumerToConsumer(const RemapConsumerParams& remapParams,
-                            const ConsumerKeyCode& fromKeyCode, const Flags& fromFlags,
-                            const ConsumerKeyCode& toKeyCode, const Flags& toFlags = ModifierFlag::NONE);
-    inline bool consumerToConsumer(const RemapConsumerParams& remapParams,
-                                   const ConsumerKeyCode& fromKeyCode,
-                                   const ConsumerKeyCode& toKeyCode, const Flags& toFlags = ModifierFlag::NONE) {
-      return consumerToConsumer(remapParams, fromKeyCode, 0, toKeyCode, toFlags);
-    }
+    class ConsumerToConsumer {
+    public:
+      bool remap(const RemapConsumerParams& remapParams,
+                 const ConsumerKeyCode& fromKeyCode, const Flags& fromFlags,
+                 const ConsumerKeyCode& toKeyCode, const Flags& toFlags = ModifierFlag::NONE);
+
+      // no fromFlags version
+      bool remap(const RemapConsumerParams& remapParams,
+                 const ConsumerKeyCode& fromKeyCode,
+                 const ConsumerKeyCode& toKeyCode, const Flags& toFlags = ModifierFlag::NONE) {
+        return remap(remapParams, fromKeyCode, 0, toKeyCode, toFlags);
+      }
+
+    private:
+      bool active_;
+    };
 
     bool pointingButtonToPointingButton(const RemapPointingParams_relative& remapParams,
                                         const PointingButton& fromButton, const Flags& fromFlags,

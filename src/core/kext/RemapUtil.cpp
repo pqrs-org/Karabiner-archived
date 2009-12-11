@@ -27,9 +27,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     bool isKeyDown = remapParams.isKeyDownOrModifierDown();
     if (isKeyDown) {
-      active_ = false;
-      if (! FlagStatus::makeFlags().isOn(fromFlags)) return false;
-      active_ = true;
+      // We consider a case of the key repeat for ConsumerToKey.
+      // We continue remapping the key if it was remapped once.
+      if (active_ == false) {
+        if (! FlagStatus::makeFlags().isOn(fromFlags)) return false;
+        active_ = true;
+      }
 
     } else {
       // When active_ is true, we converted the key at KeyDown.
@@ -223,18 +226,35 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  RemapUtil::consumerToConsumer(const RemapConsumerParams& remapParams,
-                                const ConsumerKeyCode& fromKeyCode, const Flags& fromFlags,
-                                const ConsumerKeyCode& toKeyCode,   const Flags& toFlags)
+  RemapUtil::ConsumerToConsumer::remap(const RemapConsumerParams& remapParams,
+                                       const ConsumerKeyCode& fromKeyCode, const Flags& fromFlags,
+                                       const ConsumerKeyCode& toKeyCode,   const Flags& toFlags)
   {
     if (remapParams.isremapped) return false;
     if (remapParams.params.key != fromKeyCode) return false;
-    if (! FlagStatus::makeFlags().isOn(fromFlags)) return false;
 
-    remapFlags(fromFlags, toFlags);
+    if (remapParams.params.eventType == EventType::DOWN) {
+      // See RemapUtil::KeyToKey::remap about handling of "active_".
+      if (active_ == false) {
+        if (! FlagStatus::makeFlags().isOn(fromFlags)) return false;
+        active_ = true;
+      }
+
+    } else {
+      if (! active_) return false;
+      active_ = false;
+    }
+
+    // ------------------------------------------------------------
+    remapParams.isremapped = true;
+
+    FlagStatus::temporary_decrease(fromFlags);
+    FlagStatus::temporary_increase(toFlags);
 
     remapParams.params.key = toKeyCode;
     remapParams.params.flavor = toKeyCode.get();
+
+    RemapUtil::fireConsumer(remapParams.params);
     return true;
   }
 
