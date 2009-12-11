@@ -72,25 +72,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ------------------------------------------------------------
+    // handle Modifiers
     const ModifierFlag& fromModifierFlag = fromKeyCode.getModifierFlag();
     const ModifierFlag& toModifierFlag = toKeyCode.getModifierFlag();
 
-    if (fromModifierFlag == ModifierFlag::NONE) {
-      if (toModifierFlag == ModifierFlag::NONE) {
+    if (toModifierFlag == ModifierFlag::NONE) {
+      if (fromModifierFlag == ModifierFlag::NONE) {
         // key2key
 
       } else {
-        // key2modifier
-        if (remapParams.params.eventType == EventType::DOWN) {
-          FlagStatus::increase(toModifierFlag);
-        } else if (remapParams.params.eventType == EventType::UP) {
-          FlagStatus::decrease(toModifierFlag);
-        }
-        remapParams.params.eventType = EventType::MODIFY;
-      }
-
-    } else {
-      if (toModifierFlag == ModifierFlag::NONE) {
         // modifier2key
         if (remapParams.params.flags.isOn(fromModifierFlag)) {
           FlagStatus::decrease(fromModifierFlag);
@@ -99,23 +89,37 @@ namespace org_pqrs_KeyRemap4MacBook {
           FlagStatus::increase(fromModifierFlag);
           remapParams.params.eventType = EventType::UP;
         }
+      }
+
+      FlagStatus::temporary_decrease(fromFlags);
+      FlagStatus::temporary_increase(toFlags);
+
+    } else {
+      if (fromModifierFlag == ModifierFlag::NONE) {
+        // key2modifier
+        if (remapParams.params.eventType == EventType::DOWN) {
+          FlagStatus::increase(toFlags | toModifierFlag);
+          FlagStatus::decrease(fromFlags);
+        } else if (remapParams.params.eventType == EventType::UP) {
+          FlagStatus::decrease(toFlags | toModifierFlag);
+          FlagStatus::increase(fromFlags);
+        }
+        remapParams.params.eventType = EventType::MODIFY;
 
       } else {
         // modifier2modifier
         if (remapParams.params.flags.isOn(fromModifierFlag)) {
-          FlagStatus::increase(toModifierFlag);
-          FlagStatus::decrease(fromModifierFlag);
+          FlagStatus::increase(toFlags | toModifierFlag);
+          FlagStatus::decrease(fromFlags | fromModifierFlag);
         } else {
-          FlagStatus::decrease(toModifierFlag);
-          FlagStatus::increase(fromModifierFlag);
+          FlagStatus::decrease(toFlags | toModifierFlag);
+          FlagStatus::increase(fromFlags | fromModifierFlag);
         }
       }
     }
 
     // ----------------------------------------
     remapParams.params.key = toKeyCode;
-    remapFlags(fromFlags, toFlags, toKeyCode, isKeyDown);
-
     remapParams.params.flags = FlagStatus::makeFlags();
     RemapUtil::fireKey(remapParams.params, remapParams.workspacedata);
 
