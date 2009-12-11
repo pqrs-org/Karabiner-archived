@@ -175,29 +175,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  RemapUtil::keyToConsumer(const RemapParams& remapParams,
-                           const KeyCode& fromKeyCode, const Flags& fromFlags,
-                           const ConsumerKeyCode& toKeyCode, const Flags& toFlags)
-  {
-    if (remapParams.isremapped) return false;
-    if (remapParams.params.key != fromKeyCode) return false;
-    if (! FlagStatus::makeFlags().isOn(fromFlags)) return false;
-
-    // ----------------------------------------
-    remapFlags(fromFlags, toFlags);
-
-    EventType eventType = (remapParams.isKeyDownOrModifierDown() ? EventType::DOWN : EventType::UP);
-    Flags flags = FlagStatus::makeFlags();
-
-    Params_KeyboardSpecialEventCallback p(eventType, flags, toKeyCode, false);
-    RemapUtil::fireConsumer(p);
-
-    // ----------------------------------------
-    remapParams.drop();
-    return true;
-  }
-
-  bool
   RemapUtil::ConsumerToKey::remap(const RemapConsumerParams& remapParams,
                                   const ConsumerKeyCode& fromKeyCode, const Flags& fromFlags,
                                   const KeyCode& toKeyCode, const Flags& toFlags)
@@ -255,6 +232,34 @@ namespace org_pqrs_KeyRemap4MacBook {
     remapParams.params.flavor = toKeyCode.get();
 
     RemapUtil::fireConsumer(remapParams.params);
+    return true;
+  }
+
+  bool
+  RemapUtil::KeyToConsumer::remap(const RemapParams& remapParams,
+                                  const KeyCode& fromKeyCode, const Flags& fromFlags,
+                                  const ConsumerKeyCode& toKeyCode, const Flags& toFlags)
+  {
+    if (remapParams.isremapped) return false;
+    if (remapParams.params.key != fromKeyCode) return false;
+
+    // ----------------------------------------
+    Params_KeyboardSpecialEventCallback params(remapParams.params.eventType,
+                                               FlagStatus::makeFlags(),
+                                               ConsumerKeyCode::VK_KEY,
+                                               remapParams.params.repeat);
+
+    bool isremapped = false;
+    RemapConsumerParams rp = {
+      params,
+      remapParams.workspacedata,
+      isremapped,
+    };
+    if (! consumertoconsumer_.remap(rp, ConsumerKeyCode::VK_KEY, fromFlags, toKeyCode, toFlags)) {
+      return false;
+    }
+
+    remapParams.drop();
     return true;
   }
 
