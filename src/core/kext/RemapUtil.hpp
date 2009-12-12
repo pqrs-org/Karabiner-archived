@@ -119,14 +119,22 @@ namespace org_pqrs_KeyRemap4MacBook {
       RemapUtil::ConsumerToConsumer consumertoconsumer_;
     };
 
-    bool pointingButtonToPointingButton(const RemapPointingParams_relative& remapParams,
-                                        const PointingButton& fromButton, const Flags& fromFlags,
-                                        const PointingButton& toButton);
-    inline bool pointingButtonToPointingButton(const RemapPointingParams_relative& remapParams,
-                                               const PointingButton& fromButton,
-                                               const PointingButton& toButton) {
-      return pointingButtonToPointingButton(remapParams, fromButton, 0, toButton);
-    }
+    class PointingButtonToPointingButton {
+    public:
+      bool remap(const RemapPointingParams_relative& remapParams,
+                 const PointingButton& fromButton, const Flags& fromFlags,
+                 const PointingButton& toButton);
+
+      // no fromFlags version
+      bool remap(const RemapPointingParams_relative& remapParams,
+                 const PointingButton& fromButton,
+                 const PointingButton& toButton) {
+        return remap(remapParams, fromButton, 0, toButton);
+      }
+
+    private:
+      bool active_;
+    };
 
     // ----------------------------------------
     void fireKey(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
@@ -134,7 +142,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                         const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
 
     void fireConsumer(const Params_KeyboardSpecialEventCallback& params);
-    void fireRelativePointer(const Buttons& buttons);
+    void fireRelativePointer(const Buttons& buttons, int dx = 0, int dy = 0);
     void fireScrollWheel(short int deltaAxis1, short int deltaAxis2, short int deltaAxis3,
                          IOFixed fixedDelta1, IOFixed fixedDelta2, IOFixed fixedDelta3,
                          SInt32 pointDelta1, SInt32 pointDelta2, SInt32 pointDelta3);
