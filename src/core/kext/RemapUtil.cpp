@@ -1,5 +1,6 @@
 #include "CommonData.hpp"
 #include "Config.hpp"
+#include "FlagStatus.hpp"
 #include "KeyCode.hpp"
 #include "RemapUtil.hpp"
 #include "util/KeyboardRepeat.hpp"
@@ -228,10 +229,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     FlagStatus::temporary_decrease(fromFlags);
     FlagStatus::temporary_increase(toFlags);
 
-    remapParams.params.key = toKeyCode;
-    remapParams.params.flavor = toKeyCode.get();
-
-    RemapUtil::fireConsumer(remapParams.params);
+    Params_KeyboardSpecialEventCallback params(remapParams.params.eventType,
+                                               FlagStatus::makeFlags(),
+                                               toKeyCode,
+                                               remapParams.params.repeat);
+    RemapUtil::fireConsumer(params);
     return true;
   }
 
@@ -282,10 +284,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   Flags FireModifiers::lastFlags_;
 
   void
-  FireModifiers::fire(const Params_KeyboardEventCallBack& params)
+  FireModifiers::fire(const Flags& toFlags, const KeyboardType& keyboardType)
   {
-    const Flags& toFlags = params.flags;
-
     if (lastFlags_ == toFlags) return;
 #if 0
     printf("FireModifiers::fire from:%x to:%x\n", lastFlags_.get(), toFlags.get());
@@ -301,8 +301,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       modifierStatus[i] = lastFlags_.isOn(m);
     }
 
-    Params_KeyboardEventCallBack callbackparams = params;
-    callbackparams.eventType = EventType::MODIFY;
+    Params_KeyboardEventCallBack params(EventType::MODIFY, 0, KeyCode::VK_NONE,
+                                        keyboardType, false);
 
     // ----------------------------------------------------------------------
     // fire
@@ -348,13 +348,13 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
         }
 
-        callbackparams.flags = flags;
-        callbackparams.key = m.getKeyCode();
-        callbackparams.apply();
+        params.flags = flags;
+        params.key = m.getKeyCode();
+        params.apply();
       }
     }
 
-    lastFlags_ = toFlags.get();
+    lastFlags_ = toFlags;
   }
 
   // ------------------------------------------------------------
@@ -458,7 +458,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     p.key.reverseNormalizeKey(p.flags, p.keyboardType);
 
-    FireModifiers::fire(p);
+    FireModifiers::fire(p.flags, p.keyboardType);
 
     // skip no-outputable keycodes.
     if (p.key == KeyCode::VK_NONE ||
@@ -496,12 +496,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapUtil::fireConsumer(const Params_KeyboardSpecialEventCallback& params)
   {
+    FireModifiers::fire();
     params.apply();
   }
 
   void
   RemapUtil::fireRelativePointer(const Buttons& buttons)
   {
+    FireModifiers::fire();
     Params_RelativePointerEventCallback params(buttons, 0, 0);
     params.apply();
   }
