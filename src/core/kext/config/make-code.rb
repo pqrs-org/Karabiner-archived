@@ -238,7 +238,7 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
     code += "static void #{name}(RemapParams &remapParams) {\n#{check}\n#{filter}\n#{code_key}\n}\n\n\n"
   end
   unless code_consumer.empty? then
-    code += "static void #{name}(const RemapConsumerParams &remapParams) {\n#{check}\n#{filter}\n#{code_consumer}\n}\n\n\n"
+    code += "static void #{name}(RemapConsumerParams &remapParams) {\n#{check}\n#{filter}\n#{code_consumer}\n}\n\n\n"
   end
   unless code_pointing.empty? then
     code += "static void #{name}(RemapPointingParams_relative &remapParams) {\n#{check}\n#{code_pointing}\n}\n\n\n"

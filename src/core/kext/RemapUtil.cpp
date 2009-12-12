@@ -117,7 +117,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ----------------------------------------
     if (isSetKeyRepeat) {
-      KeyboardRepeat::set(remapParams.params);
+      KeyboardRepeat::set(params);
     }
 
     return true;
@@ -176,7 +176,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  RemapUtil::ConsumerToKey::remap(const RemapConsumerParams& remapParams,
+  RemapUtil::ConsumerToKey::remap(RemapConsumerParams& remapParams,
                                   const ConsumerKeyCode& fromKeyCode, const Flags& fromFlags,
                                   const KeyCode& toKeyCode, const Flags& toFlags)
   {
@@ -199,7 +199,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  RemapUtil::ConsumerToConsumer::remap(const RemapConsumerParams& remapParams,
+  RemapUtil::ConsumerToConsumer::remap(RemapConsumerParams& remapParams,
                                        const ConsumerKeyCode& fromKeyCode, const Flags& fromFlags,
                                        const ConsumerKeyCode& toKeyCode,   const Flags& toFlags)
   {
@@ -246,12 +246,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                ConsumerKeyCode::VK_KEY,
                                                remapParams.params.repeat);
 
-    bool isremapped = false;
-    RemapConsumerParams rp = {
-      params,
-      remapParams.workspacedata,
-      isremapped,
-    };
+    RemapConsumerParams rp(params, remapParams.workspacedata);
     if (! consumertoconsumer_.remap(rp, ConsumerKeyCode::VK_KEY, fromFlags, toKeyCode, toFlags)) {
       return false;
     }

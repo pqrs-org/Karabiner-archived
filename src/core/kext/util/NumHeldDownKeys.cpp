@@ -7,7 +7,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     int num = 0;
 
     static void
-    log_(void)
+    log(void)
     {
       if (config.debug_devel) {
         printf("KeyRemap4MacBook NumHeldDownKeys = %d\n", num);
@@ -22,7 +22,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       } else {
         --num;
       }
-      log_();
+      log();
     }
 
     void set(const RemapConsumerParams &remapParams)
@@ -32,7 +32,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       } else if (remapParams.params.eventType == EventType::UP) {
         --num;
       }
-      log_();
+      log();
     }
 
     void

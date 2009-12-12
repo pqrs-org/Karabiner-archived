@@ -224,22 +224,18 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       params.log();
 
-      bool isremapped = false;
-      RemapConsumerParams remapParams = {
-        params,
-        KeyRemap4MacBook_bridge::GetWorkspaceData::Reply(),
-        isremapped,
-      };
-      NumHeldDownKeys::set(remapParams);
+      KeyRemap4MacBook_bridge::GetWorkspaceData::Reply workspacedata;
+      getWorkspaceData(workspacedata);
 
-      // ------------------------------------------------------------
-      getWorkspaceData(remapParams.workspacedata);
+      RemapConsumerParams remapParams(params, workspacedata);
+      NumHeldDownKeys::set(remapParams);
 
       // ------------------------------------------------------------
       remap_consumer(remapParams);
 
       // ----------------------------------------
-      if (! isremapped) {
+      if (! remapParams.isremapped) {
+        params.flags = FlagStatus::makeFlags();
         RemapUtil::fireConsumer(params);
       }
     }
