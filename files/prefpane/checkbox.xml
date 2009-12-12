@@ -3774,6 +3774,12 @@
           <sysctl>remap.samples_optionL2leftclick</sysctl>
           <autogen>--KeyToPointingButton-- KeyCode::OPTION_L, PointingButton::LEFT</autogen>
         </item>
+        <item>
+          <name>KeyToPointingButton (with ModifierFlag)</name>
+          <appendix>Shift+A to RightClick</appendix>
+          <sysctl>remap.samples_shiftA2rightclick</sysctl>
+          <autogen>--KeyToPointingButton-- KeyCode::A, VK_SHIFT, PointingButton::RIGHT</autogen>
+        </item>
 
         <!-- PointingRelativeToScroll -->
         <item>
