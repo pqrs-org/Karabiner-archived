@@ -70,12 +70,12 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     class ConsumerToKey {
     public:
-      bool remap(const RemapConsumerParams& remapParams,
+      bool remap(RemapConsumerParams& remapParams,
                  const ConsumerKeyCode& fromKeyCode, const Flags& fromFlags,
                  const KeyCode& toKeyCode, const Flags& toFlags = ModifierFlag::NONE);
 
       // no fromFlags version
-      bool remap(const RemapConsumerParams& remapParams,
+      bool remap(RemapConsumerParams& remapParams,
                  const ConsumerKeyCode& fromKeyCode,
                  const KeyCode& toKeyCode, const Flags& toFlags = ModifierFlag::NONE) {
         return remap(remapParams, fromKeyCode, 0, toKeyCode, toFlags);
@@ -87,12 +87,12 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     class ConsumerToConsumer {
     public:
-      bool remap(const RemapConsumerParams& remapParams,
+      bool remap(RemapConsumerParams& remapParams,
                  const ConsumerKeyCode& fromKeyCode, const Flags& fromFlags,
                  const ConsumerKeyCode& toKeyCode, const Flags& toFlags = ModifierFlag::NONE);
 
       // no fromFlags version
-      bool remap(const RemapConsumerParams& remapParams,
+      bool remap(RemapConsumerParams& remapParams,
                  const ConsumerKeyCode& fromKeyCode,
                  const ConsumerKeyCode& toKeyCode, const Flags& toFlags = ModifierFlag::NONE) {
         return remap(remapParams, fromKeyCode, 0, toKeyCode, toFlags);
