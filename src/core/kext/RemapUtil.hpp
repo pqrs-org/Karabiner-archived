@@ -4,6 +4,7 @@
 #include <IOKit/hidsystem/IOHIKeyboard.h>
 #include "bridge.hpp"
 #include "remap.hpp"
+#include "CommonData.hpp"
 #include "KeyCode.hpp"
 #include "util/FlagStatus.hpp"
 #include "util/PressDownKeys.hpp"
@@ -145,7 +146,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   class FireModifiers {
   public:
-    static void fire(const Params_KeyboardEventCallBack& params);
+    static void fire(const Flags& toFlags = FlagStatus::makeFlags(), const KeyboardType& keyboardType = CommonData::getcurrent_keyboardType());
 
   private:
     static Flags lastFlags_;

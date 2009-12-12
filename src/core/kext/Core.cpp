@@ -216,8 +216,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         cancelRepeat();
         EventWatcher::reset();
         FlagStatus::reset();
-        params.flags = FlagStatus::makeFlags();
-        FireModifiers::fire(params);
+        FireModifiers::fire(0);
         PressDownKeys::clear();
       }
     }
@@ -259,8 +258,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       remap_pointing_relative_core(remapParams);
 
       // ------------------------------------------------------------
-      Params_KeyboardEventCallBack callbackparams(EventType::MODIFY, FlagStatus::makeFlags(), KeyCode::VK_NONE, CommonData::getcurrent_keyboardType(), false);
-      FireModifiers::fire(callbackparams);
+      FireModifiers::fire();
 
       // ------------------------------------------------------------
       if (! isremapped) {
