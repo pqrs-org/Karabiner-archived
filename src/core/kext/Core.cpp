@@ -253,17 +253,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       params.buttons.add(RemapUtil::getRemappedButtons());
 
-      bool isremapped = false;
-      RemapPointingParams_relative remapParams = {
-        params, isremapped,
-      };
+      RemapPointingParams_relative remapParams(params);
       remap_pointing_relative_core(remapParams);
 
       // ------------------------------------------------------------
-      FireModifiers::fire();
-
-      // ------------------------------------------------------------
-      if (! isremapped) {
+      if (! remapParams.isremapped) {
         params.apply();
       }
     }

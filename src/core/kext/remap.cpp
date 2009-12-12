@@ -64,7 +64,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   static void
-  remap_pointing_relative_to_scroll(const RemapPointingParams_relative& remapParams)
+  remap_pointing_relative_to_scroll(RemapPointingParams_relative& remapParams)
   {
     if (! config.remap_pointing_relative_to_scroll) return;
 
@@ -100,7 +100,7 @@ org_pqrs_KeyRemap4MacBook::remap_consumer(const RemapConsumerParams& remapParams
 }
 
 void
-org_pqrs_KeyRemap4MacBook::remap_pointing_relative_core(const RemapPointingParams_relative& remapParams)
+org_pqrs_KeyRemap4MacBook::remap_pointing_relative_core(RemapPointingParams_relative& remapParams)
 {
   FlagStatus::set();
 

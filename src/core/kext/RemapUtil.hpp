@@ -121,12 +121,12 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     class PointingButtonToPointingButton {
     public:
-      bool remap(const RemapPointingParams_relative& remapParams,
+      bool remap(RemapPointingParams_relative& remapParams,
                  const PointingButton& fromButton, const Flags& fromFlags,
                  const PointingButton& toButton);
 
       // no fromFlags version
-      bool remap(const RemapPointingParams_relative& remapParams,
+      bool remap(RemapPointingParams_relative& remapParams,
                  const PointingButton& fromButton,
                  const PointingButton& toButton) {
         return remap(remapParams, fromButton, 0, toButton);
@@ -148,7 +148,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                          SInt32 pointDelta1, SInt32 pointDelta2, SInt32 pointDelta3);
 
     // ----------------------------------------
-    void pointingRelativeToScroll(const RemapPointingParams_relative& remapParams);
+    void pointingRelativeToScroll(RemapPointingParams_relative& remapParams);
     const Buttons& getRemappedButtons(void);
   }
 
@@ -282,7 +282,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------
   class PointingRelativeToScroll {
   public:
-    bool remap(const RemapPointingParams_relative& remapParams, const Buttons& buttons = 0, const Flags& fromFlags = 0);
+    bool remap(RemapPointingParams_relative& remapParams, const Buttons& buttons = 0, const Flags& fromFlags = 0);
 
   private:
     bool isButtonHeldDown_;

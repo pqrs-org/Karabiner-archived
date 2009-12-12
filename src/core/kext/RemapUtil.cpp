@@ -262,7 +262,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  RemapUtil::PointingButtonToPointingButton::remap(const RemapPointingParams_relative& remapParams,
+  RemapUtil::PointingButtonToPointingButton::remap(RemapPointingParams_relative& remapParams,
                                                    const PointingButton& fromButton, const Flags& fromFlags,
                                                    const PointingButton& toButton)
   {
@@ -548,7 +548,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // --------------------
   void
-  RemapUtil::pointingRelativeToScroll(const RemapPointingParams_relative& remapParams)
+  RemapUtil::pointingRelativeToScroll(RemapPointingParams_relative& remapParams)
   {
     remapParams.isremapped = true;
 
@@ -725,7 +725,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ------------------------------------------------------------
   bool
-  PointingRelativeToScroll::remap(const RemapPointingParams_relative& remapParams, const Buttons& buttons, const Flags& fromFlags)
+  PointingRelativeToScroll::remap(RemapPointingParams_relative& remapParams, const Buttons& buttons, const Flags& fromFlags)
   {
     if (! FlagStatus::makeFlags().isOn(fromFlags)) return false;
 
