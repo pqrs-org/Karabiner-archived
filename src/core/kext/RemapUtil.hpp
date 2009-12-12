@@ -66,8 +66,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool active_;
     };
 
-    bool keyToPointingButton(RemapParams& remapParams, const KeyCode& fromKeyCode, const PointingButton& toButton);
-
     class ConsumerToKey {
     public:
       bool remap(RemapConsumerParams& remapParams,
@@ -134,6 +132,23 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     private:
       bool active_;
+    };
+
+    class KeyToPointingButton {
+    public:
+      bool remap(RemapParams& remapParams,
+                 const KeyCode& fromKeyCode, const Flags& fromFlags,
+                 const PointingButton& toButton);
+
+      // no fromFlags version
+      bool remap(RemapParams& remapParams,
+                 const KeyCode& fromKeyCode,
+                 const PointingButton& toButton) {
+        return remap(remapParams, fromKeyCode, 0, toButton);
+      }
+
+    private:
+      PointingButtonToPointingButton buttontobutton_;
     };
 
     // ----------------------------------------

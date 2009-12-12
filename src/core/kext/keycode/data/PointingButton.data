@@ -3,3 +3,8 @@ LEFT 4
 RIGHT 1
 MIDDLE 2
 BUTTON4 8
+// Virtual Button
+VK__BEGIN__ 1024
+// For KeyToPointingButton
+VK_KEY --AUTO--
+VK_NONE --AUTO--

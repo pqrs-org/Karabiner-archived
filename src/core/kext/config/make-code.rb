@@ -172,7 +172,10 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
           func['key'] << name
 
         when 'KeyToPointingButton'
-          code_key += "if (RemapUtil::keyToPointingButton(remapParams, #{params})) return;\n"
+          code_key += "{\n"
+          code_key += "static RemapUtil::KeyToPointingButton keytopointing;\n"
+          code_key += "if (keytopointing.remap(remapParams, #{params})) return;\n"
+          code_key += "}\n"
           func['key'] << name
 
         when 'KeyOverlaidModifier'
