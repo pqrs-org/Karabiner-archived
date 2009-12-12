@@ -266,17 +266,47 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  RemapUtil::pointingButtonToPointingButton(const RemapPointingParams_relative& remapParams,
-                                            const PointingButton& fromButton, const Flags& fromFlags,
-                                            const PointingButton& toButton)
+  RemapUtil::PointingButtonToPointingButton::remap(const RemapPointingParams_relative& remapParams,
+                                                   const PointingButton& fromButton, const Flags& fromFlags,
+                                                   const PointingButton& toButton)
   {
-    if (! FlagStatus::makeFlags().isOn(fromFlags)) return false;
-    if (! remapParams.params.buttons.isOn(fromButton)) return false;
+    if (remapParams.isremapped) return false;
 
-    remapFlags(fromFlags, 0);
+    // We consider it about Option_L+LeftClick to MiddleClick.
+    // LeftClick generates the following events by ButtonDown and ButtonUp.
+    //
+    // (1) buttons == PointingButton::LEFT  (ButtonDown event)
+    // (2) buttons == PointingButton::NONE  (ButtonUp event)
+    //
+    // We must cancel Option_L in both (1), (2).
+    // We use "active_" flag to detect (2), because the "buttons" has no useful information at (2).
+    //
+    // Attention: We need fire MiddleClick only at (1).
 
-    remapParams.params.buttons.remove(fromButton);
-    remapParams.params.buttons.add(toButton);
+    if (remapParams.params.buttons.isOn(fromButton) &&
+        FlagStatus::makeFlags().isOn(fromFlags)) {
+      active_ = true;
+
+    } else {
+      if (active_) {
+        // We handle it as a ButtonUp Event.
+        active_ = false;
+      } else {
+        return false;
+      }
+    }
+
+    // ----------------------------------------
+    FlagStatus::temporary_decrease(fromFlags);
+
+    Buttons buttons = remapParams.params.buttons;
+    if (active_) {
+      buttons.remove(fromButton);
+      buttons.add(toButton);
+    }
+    fireRelativePointer(buttons, remapParams.params.dx, remapParams.params.dy);
+
+    remapParams.drop();
     return true;
   }
 
@@ -501,10 +531,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  RemapUtil::fireRelativePointer(const Buttons& buttons)
+  RemapUtil::fireRelativePointer(const Buttons& buttons, int dx, int dy)
   {
+    Params_RelativePointerEventCallback params(buttons, dx, dy);
+
     FireModifiers::fire();
-    Params_RelativePointerEventCallback params(buttons, 0, 0);
     params.apply();
   }
 
