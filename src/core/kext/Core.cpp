@@ -188,25 +188,23 @@ namespace org_pqrs_KeyRemap4MacBook {
       params.log();
 
       // ------------------------------------------------------------
-      bool isremapped = false;
-
       params.key.normalizeKey(params.flags, params.keyboardType);
+      if (config.remap_jis_jansi) {
+        params.keyboardType = KeyboardType::MACBOOK;
+      }
 
-      RemapParams remapParams = {
-        params,
-        KeyRemap4MacBook_bridge::GetWorkspaceData::Reply(),
-        isremapped,
-      };
+      KeyRemap4MacBook_bridge::GetWorkspaceData::Reply workspacedata;
+      getWorkspaceData(workspacedata);
+
+      RemapParams remapParams(params, workspacedata);
       NumHeldDownKeys::set(remapParams);
-
-      // ------------------------------------------------------------
-      getWorkspaceData(remapParams.workspacedata);
 
       // ------------------------------------------------------------
       remap_core(remapParams);
 
       // ------------------------------------------------------------
-      if (! isremapped) {
+      if (! remapParams.isremapped) {
+        params.flags = FlagStatus::makeFlags();
         RemapUtil::fireKey(params, remapParams.workspacedata);
         KeyboardRepeat::set(params);
       }

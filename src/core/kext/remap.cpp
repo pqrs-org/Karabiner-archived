@@ -13,7 +13,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   static void
-  general_capslock_led_hack(const RemapParams& /*remapParams*/)
+  general_capslock_led_hack(RemapParams& /*remapParams*/)
   {
     if (! config.general_capslock_led_hack) return;
 
@@ -31,7 +31,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   static void
-  remap_keypadnumlock_togglekey_clear(const RemapParams& remapParams)
+  remap_keypadnumlock_togglekey_clear(RemapParams& remapParams)
   {
     if (! config.option_keypadnumlock_togglekey_clear) return;
 
@@ -47,23 +47,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   static void
-  remap_jis_jansi(const RemapParams& remapParams)
-  {
-    if (! config.remap_jis_jansi) return;
-
-    remapParams.params.keyboardType = KeyboardType::MACBOOK;
-
-    {
-      static RemapUtil::KeyToKey keytokey;
-      if (keytokey.remap(remapParams, KeyCode::JIS_YEN, KeyCode::BACKQUOTE)) return;
-    }
-    {
-      static RemapUtil::KeyToKey keytokey;
-      if (keytokey.remap(remapParams, KeyCode::JIS_UNDERSCORE, KeyCode::BACKQUOTE)) return;
-    }
-  }
-
-  static void
   remap_pointing_relative_to_scroll(RemapPointingParams_relative& remapParams)
   {
     if (! config.remap_pointing_relative_to_scroll) return;
@@ -74,7 +57,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
 // ----------------------------------------------------------------------
 void
-org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams& remapParams)
+org_pqrs_KeyRemap4MacBook::remap_core(RemapParams& remapParams)
 {
   FlagStatus::set(remapParams.params.key, remapParams.params.flags);
 
@@ -84,9 +67,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(const RemapParams& remapParams)
 
   general_capslock_led_hack(remapParams);
   remap_keypadnumlock_togglekey_clear(remapParams);
-  remap_jis_jansi(remapParams);
-
-  remapParams.params.flags = FlagStatus::makeFlags();
 }
 
 void
