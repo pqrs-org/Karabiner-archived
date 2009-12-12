@@ -8,12 +8,6 @@
 namespace org_pqrs_KeyRemap4MacBook {
   namespace {
     Buttons remappedButtions;
-
-    void remapFlags(const Flags& fromFlags, const Flags& toFlags) {
-      // we always perform the same movement regardless of isKeyDown.
-      FlagStatus::temporary_decrease(fromFlags);
-      FlagStatus::temporary_increase(toFlags);
-    }
   }
 
   bool
