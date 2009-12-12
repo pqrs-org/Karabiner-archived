@@ -104,8 +104,6 @@ org_pqrs_KeyRemap4MacBook::remap_pointing_relative_core(const RemapPointingParam
 {
   FlagStatus::set();
 
-  remapParams.params.buttons.add(RemapUtil::getRemappedButtons());
-
 #include "config/output/include.remapcode_call_pointing_relative.cpp"
   remap_pointing_relative_to_scroll(remapParams);
 }

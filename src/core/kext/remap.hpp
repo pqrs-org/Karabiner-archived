@@ -29,7 +29,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // --------------------
   struct RemapPointingParams_relative {
-    Params_RelativePointerEventCallback& params;
+    const Params_RelativePointerEventCallback& params;
     bool& isremapped;
 
     void drop(void) const { isremapped = true; }

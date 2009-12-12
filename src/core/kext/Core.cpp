@@ -251,6 +251,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       params.log();
 
+      params.buttons.add(RemapUtil::getRemappedButtons());
+
       bool isremapped = false;
       RemapPointingParams_relative remapParams = {
         params, isremapped,
