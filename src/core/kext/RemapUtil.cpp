@@ -630,12 +630,14 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // calc flags
       ModifierFlag toKeyCodeFlag = toKeyCode.getModifierFlag();
-      remapFlags(toFlags | toKeyCodeFlag, fireFlags);
+      FlagStatus::temporary_decrease(toFlags | toKeyCodeFlag);
+      FlagStatus::temporary_increase(fireFlags);
 
       savedflags_ = FlagStatus::makeFlags().get();
 
       // restore flags
-      remapFlags(fireFlags, toFlags | toKeyCodeFlag);
+      FlagStatus::temporary_increase(toFlags | toKeyCodeFlag);
+      FlagStatus::temporary_decrease(fireFlags);
 
       if (isFireRepeat) {
         KeyboardRepeat::set(EventType::DOWN, savedflags_, fireKeyCode, remapParams.params.keyboardType,
