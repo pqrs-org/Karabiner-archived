@@ -21,12 +21,12 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     class KeyToKey {
     public:
-      bool remap(const RemapParams& remapParams,
+      bool remap(RemapParams& remapParams,
                  const KeyCode& fromKeyCode, const Flags& fromFlags,
                  const KeyCode& toKeyCode,   const Flags& toFlags = ModifierFlag::NONE,
                  bool isSetKeyRepeat = true);
       // no-fromFlags version.
-      bool remap(const RemapParams& remapParams,
+      bool remap(RemapParams& remapParams,
                  const KeyCode& fromKeyCode,
                  const KeyCode& toKeyCode, const Flags& toFlags = ModifierFlag::NONE,
                  bool isSetKeyRepeat = true) {
@@ -35,27 +35,27 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // --------------------------------------------------
       // Combination
-      bool remap(const RemapParams& remapParams,
+      bool remap(RemapParams& remapParams,
                  const KeyCode& fromKeyCode, const Flags& fromFlags,
                  const KeyCode& toKeyCode1,  const Flags& toFlags1,
                  const KeyCode& toKeyCode2,  const Flags& toFlags2 = ModifierFlag::NONE);
 
       // no-toFlag1 version.
-      bool remap(const RemapParams& remapParams,
+      bool remap(RemapParams& remapParams,
                  const KeyCode& fromKeyCode, const Flags& fromFlags,
                  const KeyCode& toKeyCode1,
                  const KeyCode& toKeyCode2,  const Flags& toFlags2 = ModifierFlag::NONE) {
         return remap(remapParams, fromKeyCode, fromFlags, toKeyCode1, ModifierFlag::NONE, toKeyCode2, toFlags2);
       }
       // no fromFlags version.
-      bool remap(const RemapParams& remapParams,
+      bool remap(RemapParams& remapParams,
                  const KeyCode& fromKeyCode,
                  const KeyCode& toKeyCode1,  const Flags& toFlags1,
                  const KeyCode& toKeyCode2,  const Flags& toFlags2 = ModifierFlag::NONE) {
         return remap(remapParams, fromKeyCode, 0, toKeyCode1, toFlags1, toKeyCode2, toFlags2);
       }
       // no fromFlags, toFlags1 version
-      bool remap(const RemapParams& remapParams,
+      bool remap(RemapParams& remapParams,
                  const KeyCode& fromKeyCode,
                  const KeyCode& toKeyCode1,
                  const KeyCode& toKeyCode2,  const Flags& toFlags2 = ModifierFlag::NONE) {
@@ -66,7 +66,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool active_;
     };
 
-    bool keyToPointingButton(const RemapParams& remapParams, const KeyCode& fromKeyCode, const PointingButton& toButton);
+    bool keyToPointingButton(RemapParams& remapParams, const KeyCode& fromKeyCode, const PointingButton& toButton);
 
     class ConsumerToKey {
     public:
@@ -104,12 +104,12 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     class KeyToConsumer {
     public:
-      bool remap(const RemapParams& remapParams,
+      bool remap(RemapParams& remapParams,
                  const KeyCode& fromKeyCode, const Flags& fromFlags,
                  const ConsumerKeyCode& toKeyCode, const Flags& toFlags = ModifierFlag::NONE);
 
       // no fromFlags version
-      bool remap(const RemapParams& remapParams,
+      bool remap(RemapParams& remapParams,
                  const KeyCode& fromKeyCode,
                  const ConsumerKeyCode& toKeyCode, const Flags& toFlags = ModifierFlag::NONE) {
         return remap(remapParams, fromKeyCode, 0, toKeyCode, toFlags);
@@ -164,13 +164,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   // for SandS like behavior remappings (remap_space2shift, remap_enter2optionL_commandSpace, ...)
   class KeyOverlaidModifier {
   public:
-    bool remap(const RemapParams& remapParams,
+    bool remap(RemapParams& remapParams,
                const KeyCode& fromKeyCode, const Flags& fromFlags,
                const KeyCode& toKeyCode,   const Flags& toFlags,
                const KeyCode& fireKeyCode, const Flags& fireFlags = ModifierFlag::NONE,
                bool isFireRepeat = false);
     // no-fromFlags version.
-    bool remap(const RemapParams& remapParams,
+    bool remap(RemapParams& remapParams,
                const KeyCode& fromKeyCode,
                const KeyCode& toKeyCode,   const Flags& toFlags,
                const KeyCode& fireKeyCode, const Flags& fireFlags = ModifierFlag::NONE,
@@ -180,7 +180,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                    fireKeyCode, fireFlags, isFireRepeat);
     }
     // no-toFlags version.
-    bool remap(const RemapParams& remapParams,
+    bool remap(RemapParams& remapParams,
                const KeyCode& fromKeyCode, const Flags& fromFlags,
                const KeyCode& toKeyCode,
                const KeyCode& fireKeyCode, const Flags& fireFlags = ModifierFlag::NONE,
@@ -190,7 +190,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                    fireKeyCode, fireFlags, isFireRepeat);
     }
     // no-fromFlags, no-toFlags version.
-    bool remap(const RemapParams& remapParams,
+    bool remap(RemapParams& remapParams,
                const KeyCode& fromKeyCode,
                const KeyCode& toKeyCode,
                const KeyCode& fireKeyCode, const Flags& fireFlags = ModifierFlag::NONE,
@@ -201,7 +201,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // no-isFireRepeat version.
-    bool remapWithRepeat(const RemapParams& remapParams,
+    bool remapWithRepeat(RemapParams& remapParams,
                          const KeyCode& fromKeyCode, const Flags& fromFlags,
                          const KeyCode& toKeyCode,   const Flags& toFlags,
                          const KeyCode& fireKeyCode, const Flags& fireFlags = ModifierFlag::NONE) {
@@ -210,7 +210,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                    fireKeyCode, fireFlags, true);
     }
     // no-fromFlags, no-isFireRepeat version.
-    bool remapWithRepeat(const RemapParams& remapParams,
+    bool remapWithRepeat(RemapParams& remapParams,
                          const KeyCode& fromKeyCode,
                          const KeyCode& toKeyCode,   const Flags& toFlags,
                          const KeyCode& fireKeyCode, const Flags& fireFlags = ModifierFlag::NONE) {
@@ -219,7 +219,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                    fireKeyCode, fireFlags, true);
     }
     // no-toFlag, no-isFireRepeat version.
-    bool remapWithRepeat(const RemapParams& remapParams,
+    bool remapWithRepeat(RemapParams& remapParams,
                          const KeyCode& fromKeyCode, const Flags& fromFlags,
                          const KeyCode& toKeyCode,
                          const KeyCode& fireKeyCode, const Flags& fireFlags = ModifierFlag::NONE) {
@@ -228,7 +228,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                    fireKeyCode, fireFlags, true);
     }
     // no-fromFlags, no-toFlag, no-isFireRepeat version.
-    bool remapWithRepeat(const RemapParams& remapParams,
+    bool remapWithRepeat(RemapParams& remapParams,
                          const KeyCode& fromKeyCode,
                          const KeyCode& toKeyCode,
                          const KeyCode& fireKeyCode, const Flags& fireFlags = ModifierFlag::NONE) {
@@ -248,7 +248,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // A modifier has DoublePressed key action.
   class DoublePressModifier {
   public:
-    bool remap(const RemapParams& remapParams,
+    bool remap(RemapParams& remapParams,
                const KeyCode& fromKeyCode, const ModifierFlag& toFlag,
                const KeyCode& fireKeyCode, const Flags& fireFlags = ModifierFlag::NONE);
 
@@ -261,7 +261,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // Modifier Holding + Key -> Key
   class ModifierHoldingKeyToKey {
   public:
-    bool remap(const RemapParams& remapParams, const KeyCode& fromKeyCode, const Flags& fromFlags, const KeyCode& toKeyCode);
+    bool remap(RemapParams& remapParams, const KeyCode& fromKeyCode, const Flags& fromFlags, const KeyCode& toKeyCode);
 
   private:
     bool isAnyEventHappen_;
@@ -273,7 +273,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ex. Ignore JIS_KANA x 2. (validate only the first once)
   class IgnoreMultipleSameKeyPress {
   public:
-    bool remap(const RemapParams& remapParams, const KeyCode& fromKeyCode, const Flags& fromFlags = 0);
+    bool remap(RemapParams& remapParams, const KeyCode& fromKeyCode, const Flags& fromFlags = 0);
 
   private:
     unsigned int lastkeycode_; // save as 'unsigned int' to avoid ___cxa_guard_acquire.

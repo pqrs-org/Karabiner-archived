@@ -8,14 +8,17 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   struct RemapParams {
-    Params_KeyboardEventCallBack& params;
-    KeyRemap4MacBook_bridge::GetWorkspaceData::Reply workspacedata;
-    bool& isremapped;
+    RemapParams(const Params_KeyboardEventCallBack& p, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& w) :
+      params(p), workspacedata(w), isremapped(false) {}
 
-    void drop(void) const { isremapped = true; }
+    const Params_KeyboardEventCallBack& params;
+    const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata;
+    bool isremapped;
+
+    void drop(void) { isremapped = true; }
     bool isKeyDownOrModifierDown(void) const { return params.eventType.isKeyDownOrModifierDown(params.key, params.flags); }
   };
-  void remap_core(const RemapParams& remapParams);
+  void remap_core(RemapParams& remapParams);
 
   // --------------------
   struct RemapConsumerParams {

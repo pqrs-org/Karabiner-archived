@@ -3444,6 +3444,8 @@
             <item>
               <name>Use Japanese Keyboard as ASCII Keyboard</name>
               <sysctl>remap.jis_jansi</sysctl>
+              <autogen>--KeyToKey-- KeyCode::JIS_YEN, KeyCode::BACKQUOTE</autogen>
+              <autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, KeyCode::BACKQUOTE</autogen>
             </item>
             <item>
               <name>Use KAWASHIMA Special Keyboard Layout</name>
