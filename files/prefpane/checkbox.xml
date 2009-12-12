@@ -3729,6 +3729,14 @@
           <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::A, VK_OPTION, KeyCode::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
         </item>
 
+        <!-- ModifierHoldingKeyToKey -->
+        <item>
+          <name>ModifierHoldingKeyToKey</name>
+          <appendix>Shift(Holding)+A to Return</appendix>
+          <sysctl>remap.samples_holding_shiftLa2return</sysctl>
+          <autogen>--ModifierHoldingKeyToKey-- KeyCode::A, VK_SHIFT, KeyCode::RETURN</autogen>
+        </item>
+
         <!-- DoublePressModifier -->
         <item>
           <name>DoublePressModifier</name>
