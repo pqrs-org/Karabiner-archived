@@ -736,8 +736,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! FlagStatus::makeFlags().isOn(fromFlags)) return false;
 
     if (buttons == PointingButton::NONE) {
+      FlagStatus::temporary_decrease(fromFlags);
       RemapUtil::pointingRelativeToScroll(remapParams);
-      remapFlags(fromFlags, 0);
       return true;
     }
 
@@ -752,9 +752,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       isButtonHeldDown_ = true;
+      FlagStatus::temporary_decrease(fromFlags);
       RemapUtil::pointingRelativeToScroll(remapParams);
 
-      remapFlags(fromFlags, 0);
       return true;
 
     } else {
@@ -763,7 +763,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         isButtonHeldDown_ = false;
         remapParams.isremapped = true;
 
-        remapFlags(fromFlags, 0);
         return true;
       }
 
