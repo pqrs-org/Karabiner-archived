@@ -159,15 +159,17 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (remapParams.isremapped) return false;
     if (remapParams.params.key != fromKeyCode) return false;
 
+    // XXX: use PointingButtonToPointingButton
+
     // ------------------------------------------------------------
     if (remapParams.isKeyDownOrModifierDown()) {
       FlagStatus::decrease(fromKeyCode.getModifierFlag());
-      RemapUtil::fireRelativePointer(toButton);
+      RemapUtil::fireRelativePointer(Params_RelativePointerEventCallback(toButton, 0, 0));
       remappedButtions.add(toButton);
 
     } else {
       FlagStatus::increase(fromKeyCode.getModifierFlag());
-      RemapUtil::fireRelativePointer(PointingButton::NONE);
+      RemapUtil::fireRelativePointer(Params_RelativePointerEventCallback(PointingButton::NONE, 0, 0));
       remappedButtions.remove(toButton);
     }
 
@@ -299,12 +301,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ----------------------------------------
     FlagStatus::temporary_decrease(fromFlags);
 
-    Buttons buttons = remapParams.params.buttons;
+    Params_RelativePointerEventCallback params = remapParams.params;
+
     if (active_) {
-      buttons.remove(fromButton);
-      buttons.add(toButton);
+      params.buttons.remove(fromButton);
+      params.buttons.add(toButton);
     }
-    fireRelativePointer(buttons, remapParams.params.dx, remapParams.params.dy);
+    fireRelativePointer(params);
 
     remapParams.drop();
     return true;
@@ -531,10 +534,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  RemapUtil::fireRelativePointer(const Buttons& buttons, int dx, int dy)
+  RemapUtil::fireRelativePointer(const Params_RelativePointerEventCallback& params)
   {
-    Params_RelativePointerEventCallback params(buttons, dx, dy);
-
     FireModifiers::fire();
     params.apply();
   }
@@ -744,7 +745,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // PointingRelativeToScroll doesn't aim it, we release the left button and do normal scroll event.
       if (buttons.isOn(PointingButton::LEFT)) {
         if (! isButtonHeldDown_) {
-          RemapUtil::fireRelativePointer(PointingButton::NONE);
+          RemapUtil::fireRelativePointer(Params_RelativePointerEventCallback(PointingButton::NONE, 0, 0));
         }
       }
 
