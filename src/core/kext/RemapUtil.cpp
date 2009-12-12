@@ -150,31 +150,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     return true;
   }
 
-  // ----------
-  bool
-  RemapUtil::keyToPointingButton(RemapParams& remapParams, const KeyCode& fromKeyCode, const PointingButton& toButton)
-  {
-    if (remapParams.isremapped) return false;
-    if (remapParams.params.key != fromKeyCode) return false;
-
-    // XXX: use PointingButtonToPointingButton
-
-    // ------------------------------------------------------------
-    if (remapParams.isKeyDownOrModifierDown()) {
-      FlagStatus::decrease(fromKeyCode.getModifierFlag());
-      RemapUtil::fireRelativePointer(Params_RelativePointerEventCallback(toButton, 0, 0));
-      remappedButtions.add(toButton);
-
-    } else {
-      FlagStatus::increase(fromKeyCode.getModifierFlag());
-      RemapUtil::fireRelativePointer(Params_RelativePointerEventCallback(PointingButton::NONE, 0, 0));
-      remappedButtions.remove(toButton);
-    }
-
-    remapParams.drop();
-    return true;
-  }
-
   bool
   RemapUtil::ConsumerToKey::remap(RemapConsumerParams& remapParams,
                                   const ConsumerKeyCode& fromKeyCode, const Flags& fromFlags,
@@ -294,8 +269,36 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (active_) {
       params.buttons.remove(fromButton);
       params.buttons.add(toButton);
+
+      remappedButtions.add(toButton);
+    } else {
+      remappedButtions.remove(toButton);
     }
     fireRelativePointer(params);
+
+    remapParams.drop();
+    return true;
+  }
+
+  bool
+  RemapUtil::KeyToPointingButton::remap(RemapParams& remapParams, const KeyCode& fromKeyCode, const Flags& fromFlags, const PointingButton& toButton)
+  {
+    if (remapParams.isremapped) return false;
+    if (remapParams.params.key != fromKeyCode) return false;
+
+    Params_RelativePointerEventCallback params(PointingButton::VK_KEY, 0, 0);
+    if (! remapParams.isKeyDownOrModifierDown()) {
+      params.buttons = PointingButton::NONE;
+    }
+    Flags flags = fromFlags;
+    if (fromKeyCode.isModifier()) {
+      flags.add(fromKeyCode.getModifierFlag());
+    }
+
+    RemapPointingParams_relative rp(params);
+    if (! buttontobutton_.remap(rp, PointingButton::VK_KEY, flags, toButton)) {
+      return false;
+    }
 
     remapParams.drop();
     return true;
@@ -316,7 +319,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool modifierStatus[FlagStatus::MAXNUM];
 
     // setup modifierStatus
-    for (int i = 0; ; ++i) {
+    for (int i = 0;; ++i) {
       const ModifierFlag& m = FlagStatus::getFlag(i);
       if (m == ModifierFlag::NONE) break;
       modifierStatus[i] = lastFlags_.isOn(m);
@@ -338,7 +341,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (size_t firetype = 0; firetype < sizeof(listIsFireKeyUp) / sizeof(listIsFireKeyUp[0]); ++firetype) {
       bool isFireKeyUp = listIsFireKeyUp[firetype];
 
-      for (int i = 0; ; ++i) {
+      for (int i = 0;; ++i) {
         const ModifierFlag& m = FlagStatus::getFlag(i);
         if (m == ModifierFlag::NONE) break;
 
@@ -360,7 +363,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
         Flags flags = 0;
-        for (int j = 0; ; ++j) {
+        for (int j = 0;; ++j) {
           const ModifierFlag& mm = FlagStatus::getFlag(j);
           if (mm == ModifierFlag::NONE) break;
 
