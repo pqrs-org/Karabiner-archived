@@ -55,18 +55,18 @@ namespace org_pqrs_KeyRemap4MacBook {
   HookedKeyboard::HookedKeyboard(void) :
     isAppleDriver_(false),
     isInternalKeyboard_(false),
-    orig_keyboardEventAction(NULL), orig_keyboardEventTarget(NULL)
+    orig_keyboardEventAction_(NULL), orig_keyboardEventTarget_(NULL)
   {}
 
   bool
-  HookedKeyboard::initialize(IOHIDevice* _device)
+  HookedKeyboard::initialize(IOHIDevice* d)
   {
-    const char* name = _device->getName();
+    const char* name = d->getName();
     if (strcmp(name, "IOHIDConsumer") == 0) return false;
-    if (HookedDevice::isIgnoreDevice(_device)) return false;
+    if (HookedDevice::isIgnoreDevice(d)) return false;
 
     // ------------------------------------------------------------
-    device = _device;
+    device = d;
     IOLog("KeyRemap4MacBook HookedKeyboard::initialize name = %s, device = 0x%p\n", name, device);
 
     if (strcmp(name, "IOHIDKeyboard") == 0 ||
@@ -109,8 +109,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool result = restoreEventAction();
 
     device = NULL;
-    orig_keyboardEventAction = NULL;
-    orig_keyboardEventTarget = NULL;
+    orig_keyboardEventAction_ = NULL;
+    orig_keyboardEventTarget_ = NULL;
 
     return result;
   }
@@ -129,8 +129,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     IOLog("KeyRemap4MacBook HookedKeyboard::replaceEventAction (device = 0x%p)\n", device);
 
-    orig_keyboardEventAction = callback;
-    orig_keyboardEventTarget = kbd->_keyboardEventTarget;
+    orig_keyboardEventAction_ = callback;
+    orig_keyboardEventTarget_ = kbd->_keyboardEventTarget;
 
     kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(hook_KeyboardEventCallback);
 
@@ -151,10 +151,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ----------------------------------------
     IOLog("KeyRemap4MacBook HookedKeyboard::restoreEventAction (device = 0x%p)\n", device);
 
-    kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(orig_keyboardEventAction);
+    kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(orig_keyboardEventAction_);
 
-    orig_keyboardEventAction = NULL;
-    orig_keyboardEventTarget = NULL;
+    orig_keyboardEventAction_ = NULL;
+    orig_keyboardEventTarget_ = NULL;
 
     return true;
   }
