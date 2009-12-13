@@ -11,17 +11,17 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     IOHIKeyboard* get(void) const { return OSDynamicCast(IOHIKeyboard, HookedDevice::get()); }
 
-    KeyboardEventCallback getOrig_keyboardEventAction() const { return orig_keyboardEventAction; }
-    OSObject* getOrig_keyboardEventTarget() const { return orig_keyboardEventTarget; }
+    KeyboardEventCallback getOrig_keyboardEventAction() const { return orig_keyboardEventAction_; }
+    OSObject* getOrig_keyboardEventTarget() const { return orig_keyboardEventTarget_; }
 
   private:
     bool isAppleDriver_;
     bool isInternalKeyboard_;
 
-    KeyboardEventCallback orig_keyboardEventAction;
-    OSObject* orig_keyboardEventTarget;
+    KeyboardEventCallback orig_keyboardEventAction_;
+    OSObject* orig_keyboardEventTarget_;
 
-    bool initialize(IOHIDevice* _device);
+    bool initialize(IOHIDevice* d);
     bool refresh(void);
     bool terminate(void);
 
@@ -38,11 +38,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     HookedKeyboard* get(const IOHIKeyboard* kbd) { return static_cast<HookedKeyboard*>(ListHookedDevice::get(kbd)); }
 
   private:
-    HookedKeyboard item[MAXNUM];
+    HookedKeyboard item_[MAXNUM];
 
     HookedDevice* getItem(int index) {
       if (index < 0 || index >= MAXNUM) return NULL;
-      return item + index;
+      return item_ + index;
     }
   };
 }
