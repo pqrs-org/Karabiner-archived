@@ -60,11 +60,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     temporary_count_ = 0;
 
     /*
-      preserve lock_count, original_lock_count.
+       preserve lock_count, original_lock_count.
 
-      FlagStatus::reset is called when NumHeldDownKeys == 0,
-      so we need remember the status of CapsLock, NumLock, ...
-    */
+       FlagStatus::reset is called when NumHeldDownKeys == 0,
+       so we need remember the status of CapsLock, NumLock, ...
+     */
   }
 
   void
@@ -91,11 +91,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   FlagStatus::initialize(void)
   {
-#define PUSH_ITEM(FLAG) {                       \
-      if (i >= MAXNUM) return false;            \
-      item_[i].initialize(FLAG);                \
-      i++;                                      \
-    }
+#define PUSH_ITEM(FLAG) {           \
+    if (i >= MAXNUM) return false;  \
+    item_[i].initialize(FLAG);      \
+    i++;                            \
+}
 
     int i = 0;
     PUSH_ITEM(ModifierFlag::CAPSLOCK);
@@ -161,13 +161,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ------------------------------------------------------------
-#define FOREACH_TO_FLAGS(METHOD) {                                  \
-    for (int i = 0; item_[i].flag_ != ModifierFlag::NONE; ++i) {    \
-      if (flags.isOn(item_[i].flag_)) {                             \
-        item_[i].METHOD();                                          \
-      }                                                             \
-    }                                                               \
-  }
+#define FOREACH_TO_FLAGS(METHOD) {                               \
+    for (int i = 0; item_[i].flag_ != ModifierFlag::NONE; ++i) { \
+      if (flags.isOn(item_[i].flag_)) {                          \
+        item_[i].METHOD();                                       \
+      }                                                          \
+    }                                                            \
+}
   void FlagStatus::increase(const Flags& flags) { FOREACH_TO_FLAGS(increase); }
   void FlagStatus::decrease(const Flags& flags) { FOREACH_TO_FLAGS(decrease); }
   void FlagStatus::temporary_increase(const Flags& flags) { FOREACH_TO_FLAGS(temporary_increase); }
