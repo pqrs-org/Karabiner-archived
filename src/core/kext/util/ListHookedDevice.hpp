@@ -10,12 +10,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     HookedDevice(void) : device(NULL) {}
 
-    IOHIDevice *get(void) const { return device; }
+    IOHIDevice* get(void) const { return device; }
 
   protected:
-    IOHIDevice *device;
+    IOHIDevice* device;
 
-    virtual bool initialize(IOHIDevice *_device) = 0;
+    virtual bool initialize(IOHIDevice* _device) = 0;
     virtual bool refresh(void) = 0;
     virtual bool terminate(void) = 0;
 
@@ -25,12 +25,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   class ListHookedDevice {
   public:
     bool initialize(void);
-    bool append(IOHIDevice *device);
+    bool append(IOHIDevice* device);
     void terminate(void);
-    bool terminate(const IOHIDevice *device);
+    bool terminate(const IOHIDevice* device);
 
-    HookedDevice *get(const IOHIDevice *device);
-    HookedDevice *get(void);
+    HookedDevice* get(const IOHIDevice* device);
+    HookedDevice* get(void);
     void refresh(void);
 
   protected:
@@ -41,8 +41,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     virtual ~ListHookedDevice(void) {}
 
   private:
-    virtual HookedDevice *getItem(int index) = 0;
-    HookedDevice *get_nolock(const IOHIDevice *device);
+    virtual HookedDevice* getItem(int index) = 0;
+    HookedDevice* get_nolock(const IOHIDevice* device);
 
     const IOHIDevice* last_;
     IOLock* lock_;

@@ -58,7 +58,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  ListHookedDevice::append(IOHIDevice *device)
+  ListHookedDevice::append(IOHIDevice* device)
   {
     if (! lock_) return false;
     IOLockWrapper::ScopedLock lk(lock_);
@@ -66,7 +66,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     last_ = device;
 
     for (int i = 0; i < MAXNUM; ++i) {
-      HookedDevice *p = getItem(i);
+      HookedDevice* p = getItem(i);
       if (! p) continue;
       if (p->get()) continue;
 
@@ -94,7 +94,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       last_ = NULL;
 
       for (int i = 0; i < MAXNUM; ++i) {
-        HookedDevice *p = getItem(i);
+        HookedDevice* p = getItem(i);
         if (! p) continue;
 
         p->terminate();
@@ -107,12 +107,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  ListHookedDevice::terminate(const IOHIDevice *device)
+  ListHookedDevice::terminate(const IOHIDevice* device)
   {
     if (! lock_) return false;
     IOLockWrapper::ScopedLock lk(lock_);
 
-    HookedDevice *p = get_nolock(device);
+    HookedDevice* p = get_nolock(device);
     if (! p) return false;
 
     bool result = p->terminate();
@@ -122,15 +122,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     return true;
   }
 
-  HookedDevice *
-  ListHookedDevice::get_nolock(const IOHIDevice *device)
+  HookedDevice*
+  ListHookedDevice::get_nolock(const IOHIDevice* device)
   {
     last_ = device;
 
     if (! device) return NULL;
 
     for (int i = 0; i < MAXNUM; ++i) {
-      HookedDevice *p = getItem(i);
+      HookedDevice* p = getItem(i);
       if (! p) continue;
 
       if (p->get() == device) return p;
@@ -139,7 +139,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   HookedDevice*
-  ListHookedDevice::get(const IOHIDevice *device)
+  ListHookedDevice::get(const IOHIDevice* device)
   {
     if (! lock_) return NULL;
     IOLockWrapper::ScopedLock lk(lock_);
@@ -172,7 +172,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOLockWrapper::ScopedLock lk(lock_);
 
     for (int i = 0; i < MAXNUM; ++i) {
-      HookedDevice *p = getItem(i);
+      HookedDevice* p = getItem(i);
       if (! p) continue;
 
       if (p->refresh()) {
