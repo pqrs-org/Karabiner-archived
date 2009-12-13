@@ -8,14 +8,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     friend class ListHookedDevice;
 
   public:
-    HookedDevice(void) : device(NULL) {}
+    HookedDevice(void) : device_(NULL) {}
 
-    IOHIDevice* get(void) const { return device; }
+    IOHIDevice* get(void) const { return device_; }
 
   protected:
-    IOHIDevice* device;
+    IOHIDevice* device_;
 
-    virtual bool initialize(IOHIDevice* _device) = 0;
+    virtual bool initialize(IOHIDevice* d) = 0;
     virtual bool refresh(void) = 0;
     virtual bool terminate(void) = 0;
 
