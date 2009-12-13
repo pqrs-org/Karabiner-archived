@@ -57,8 +57,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       };
 
       // none
-      struct Request {
-      };
+      struct Request {};
 
       struct Reply {
         ApplicationType type;
