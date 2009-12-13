@@ -22,7 +22,7 @@ namespace {
 
 
 int
-main(int argc, char **argv)
+main(int argc, char** argv)
 {
   if (argc != 3) {
     fprintf(stderr, "Usage: %s key value\n", argv[0]);
