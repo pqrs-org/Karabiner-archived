@@ -152,9 +152,9 @@ TEST(KeyCode, normalizeKey) {
   Flags flags;
   KeyboardType keyboardType;
 
-#define CHECK_NORMALIZEKEY(KEYCODE, FLAGS) {    \
-    EXPECT_EQ(KEYCODE, key);                    \
-    EXPECT_EQ(Flags(flags), FLAGS);             \
+#define CHECK_NORMALIZEKEY(KEYCODE, FLAGS) { \
+    EXPECT_EQ(KEYCODE, key);                 \
+    EXPECT_EQ(Flags(flags), FLAGS);          \
 }
 
   // ENTER_POWERBOOK -> ENTER
@@ -235,10 +235,10 @@ TEST(KeyCode, reverseNormalizeKey) {
   Flags flags;
   KeyboardType keyboardType;
 
-#define CHECK_REVERSENORMALIZEKEY(KEYCODE, MODIFIERFLAG) {  \
-    EXPECT_EQ(KEYCODE, key);                                \
-    EXPECT_EQ(Flags(MODIFIERFLAG), flags);                  \
-  }
+#define CHECK_REVERSENORMALIZEKEY(KEYCODE, MODIFIERFLAG) { \
+    EXPECT_EQ(KEYCODE, key);                               \
+    EXPECT_EQ(Flags(MODIFIERFLAG), flags);                 \
+}
 
   // ENTER_POWERBOOK -> ENTER
   key = KeyCode::ENTER_POWERBOOK; flags = ModifierFlag::SHIFT_L; keyboardType = KeyboardType::POWERBOOK;
