@@ -4,8 +4,7 @@
 namespace org_pqrs_KeyRemap4MacBook {
   class Config {
   public:
-    Config() : debug(0), debug_pointing(0), debug_devel(0),
-               initialized(0) {
+    Config() : debug(0), debug_pointing(0), debug_devel(0), initialized(0) {
 #include "config/output/include.config.default.hpp"
     }
 

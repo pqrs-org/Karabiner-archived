@@ -9,21 +9,21 @@ class org_pqrs_driver_KeyRemap4MacBook : public IOService
   OSDeclareDefaultStructors(org_pqrs_driver_KeyRemap4MacBook);
 
 public:
-  virtual bool init(OSDictionary *dictionary = 0);
+  virtual bool init(OSDictionary* dictionary = 0);
   virtual void free(void);
-  virtual IOService *probe(IOService *provider, SInt32 *score);
-  virtual bool start(IOService *provider);
-  virtual void stop(IOService *provider);
+  virtual IOService* probe(IOService* provider, SInt32* score);
+  virtual bool start(IOService* provider);
+  virtual void stop(IOService* provider);
 
 private:
   bool initialize_notification(void);
   void terminate_notification(void);
 
-  IONotifier *notifier_hookKeyboard;
-  IONotifier *notifier_unhookKeyboard;
+  IONotifier* notifier_hookKeyboard;
+  IONotifier* notifier_unhookKeyboard;
 
-  IONotifier *notifier_hookPointing;
-  IONotifier *notifier_unhookPointing;
+  IONotifier* notifier_hookPointing;
+  IONotifier* notifier_unhookPointing;
 };
 
 #endif
