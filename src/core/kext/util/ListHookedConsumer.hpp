@@ -9,16 +9,16 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     HookedConsumer(void);
 
-    IOHIKeyboard *get(void) const { return OSDynamicCast(IOHIKeyboard, HookedDevice::get()); }
+    IOHIKeyboard* get(void) const { return OSDynamicCast(IOHIKeyboard, HookedDevice::get()); }
 
-    KeyboardSpecialEventCallback getOrig_keyboardSpecialEventAction() const { return orig_keyboardSpecialEventAction; }
-    OSObject *getOrig_keyboardSpecialEventTarget() const { return orig_keyboardSpecialEventTarget; }
+    KeyboardSpecialEventCallback getOrig_keyboardSpecialEventAction() const { return orig_keyboardSpecialEventAction_; }
+    OSObject* getOrig_keyboardSpecialEventTarget() const { return orig_keyboardSpecialEventTarget_; }
 
   private:
-    KeyboardSpecialEventCallback orig_keyboardSpecialEventAction;
-    OSObject *orig_keyboardSpecialEventTarget;
+    KeyboardSpecialEventCallback orig_keyboardSpecialEventAction_;
+    OSObject* orig_keyboardSpecialEventTarget_;
 
-    bool initialize(IOHIDevice *_device);
+    bool initialize(IOHIDevice* d);
     bool refresh(void);
     bool terminate(void);
 
@@ -30,16 +30,16 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   class ListHookedConsumer : public ListHookedDevice {
   public:
-    static ListHookedConsumer &instance(void);
-    HookedConsumer *get(void) { return static_cast<HookedConsumer *>(ListHookedDevice::get()); }
-    HookedConsumer *get(const IOHIKeyboard *kbd) { return static_cast<HookedConsumer *>(ListHookedDevice::get(kbd)); }
+    static ListHookedConsumer& instance(void);
+    HookedConsumer* get(void) { return static_cast<HookedConsumer*>(ListHookedDevice::get()); }
+    HookedConsumer* get(const IOHIKeyboard* kbd) { return static_cast<HookedConsumer*>(ListHookedDevice::get(kbd)); }
 
   private:
-    HookedConsumer item[MAXNUM];
+    HookedConsumer item_[MAXNUM];
 
-    HookedDevice *getItem(int index) {
+    HookedDevice* getItem(int index) {
       if (index < 0 || index >= MAXNUM) return NULL;
-      return item + index;
+      return item_ + index;
     }
   };
 }
