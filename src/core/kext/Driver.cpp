@@ -69,39 +69,39 @@ org_pqrs_driver_KeyRemap4MacBook::stop(IOService* provider)
 bool
 org_pqrs_driver_KeyRemap4MacBook::initialize_notification(void)
 {
-  notifier_hookKeyboard = addMatchingNotification(gIOMatchedNotification,
-                                                  serviceMatching("IOHIKeyboard"),
-                                                  org_pqrs_KeyRemap4MacBook::Core::notifierfunc_hookKeyboard,
-                                                  this, NULL, 0);
-  if (notifier_hookKeyboard == NULL) {
+  notifier_hookKeyboard_ = addMatchingNotification(gIOMatchedNotification,
+                                                   serviceMatching("IOHIKeyboard"),
+                                                   org_pqrs_KeyRemap4MacBook::Core::notifierfunc_hookKeyboard,
+                                                   this, NULL, 0);
+  if (notifier_hookKeyboard_ == NULL) {
     IOLog("[KeyRemap4MacBook ERROR] addNotification(gIOMatchedNotification) Keyboard\n");
     return false;
   }
 
-  notifier_unhookKeyboard = addMatchingNotification(gIOTerminatedNotification,
-                                                    serviceMatching("IOHIKeyboard"),
-                                                    org_pqrs_KeyRemap4MacBook::Core::notifierfunc_unhookKeyboard,
-                                                    this, NULL, 0);
-  if (notifier_unhookKeyboard == NULL) {
+  notifier_unhookKeyboard_ = addMatchingNotification(gIOTerminatedNotification,
+                                                     serviceMatching("IOHIKeyboard"),
+                                                     org_pqrs_KeyRemap4MacBook::Core::notifierfunc_unhookKeyboard,
+                                                     this, NULL, 0);
+  if (notifier_unhookKeyboard_ == NULL) {
     IOLog("[KeyRemap4MacBook ERROR] addNotification(gIOTerminatedNotification) Keyboard\n");
     return false;
   }
 
   // ----------------------------------------
-  notifier_hookPointing = addMatchingNotification(gIOMatchedNotification,
-                                                  serviceMatching("IOHIPointing"),
-                                                  org_pqrs_KeyRemap4MacBook::Core::notifierfunc_hookPointing,
-                                                  this, NULL, 0);
-  if (notifier_hookPointing == NULL) {
+  notifier_hookPointing_ = addMatchingNotification(gIOMatchedNotification,
+                                                   serviceMatching("IOHIPointing"),
+                                                   org_pqrs_KeyRemap4MacBook::Core::notifierfunc_hookPointing,
+                                                   this, NULL, 0);
+  if (notifier_hookPointing_ == NULL) {
     IOLog("[KeyRemap4MacBook ERROR] addNotification(gIOMatchedNotification) Pointing\n");
     return false;
   }
 
-  notifier_unhookPointing = addMatchingNotification(gIOTerminatedNotification,
-                                                    serviceMatching("IOHIPointing"),
-                                                    org_pqrs_KeyRemap4MacBook::Core::notifierfunc_unhookPointing,
-                                                    this, NULL, 0);
-  if (notifier_unhookPointing == NULL) {
+  notifier_unhookPointing_ = addMatchingNotification(gIOTerminatedNotification,
+                                                     serviceMatching("IOHIPointing"),
+                                                     org_pqrs_KeyRemap4MacBook::Core::notifierfunc_unhookPointing,
+                                                     this, NULL, 0);
+  if (notifier_unhookPointing_ == NULL) {
     IOLog("[KeyRemap4MacBook ERROR] addNotification(gIOTerminatedNotification) Pointing\n");
     return false;
   }
@@ -112,8 +112,8 @@ org_pqrs_driver_KeyRemap4MacBook::initialize_notification(void)
 void
 org_pqrs_driver_KeyRemap4MacBook::terminate_notification(void)
 {
-  if (notifier_hookKeyboard) notifier_hookKeyboard->remove();
-  if (notifier_unhookKeyboard) notifier_unhookKeyboard->remove();
-  if (notifier_hookPointing) notifier_hookPointing->remove();
-  if (notifier_unhookPointing) notifier_unhookPointing->remove();
+  if (notifier_hookKeyboard_) notifier_hookKeyboard_->remove();
+  if (notifier_unhookKeyboard_) notifier_unhookKeyboard_->remove();
+  if (notifier_hookPointing_) notifier_hookPointing_->remove();
+  if (notifier_unhookPointing_) notifier_unhookPointing_->remove();
 }

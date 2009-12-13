@@ -19,11 +19,11 @@ private:
   bool initialize_notification(void);
   void terminate_notification(void);
 
-  IONotifier* notifier_hookKeyboard;
-  IONotifier* notifier_unhookKeyboard;
+  IONotifier* notifier_hookKeyboard_;
+  IONotifier* notifier_unhookKeyboard_;
 
-  IONotifier* notifier_hookPointing;
-  IONotifier* notifier_unhookPointing;
+  IONotifier* notifier_hookPointing_;
+  IONotifier* notifier_unhookPointing_;
 };
 
 #endif
