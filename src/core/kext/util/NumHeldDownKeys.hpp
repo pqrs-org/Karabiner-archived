@@ -4,12 +4,18 @@
 #include "remap.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  namespace NumHeldDownKeys {
-    void set(const RemapParams &remapParams);
-    void set(const RemapConsumerParams &remapParams);
-    void reset(void);
-    bool iszero(void);
-  }
+  class NumHeldDownKeys {
+  public:
+    static void set(const RemapParams& remapParams);
+    static void set(const RemapConsumerParams& remapParams);
+    static void reset(void);
+    static bool iszero(void);
+
+  private:
+    static void log(void);
+
+    static int num_;
+  };
 }
 
 #endif
