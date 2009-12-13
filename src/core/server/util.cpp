@@ -42,7 +42,7 @@ sysctl_load(void)
 
   // --------------------------------------------------
   // check already initialized
-  const char *name = "keyremap4macbook.initialized";
+  const char* name = "keyremap4macbook.initialized";
 
   int value;
   size_t len = sizeof(value);

@@ -194,10 +194,10 @@ setCurrentApplicationType(const char* applicationName)
     return;
   }
 
-#define SET_CURRENT_APPLICATION_TYPE(type) {                            \
+#define SET_CURRENT_APPLICATION_TYPE(type) {                                                             \
     currentApplicationType = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::type; \
-    return;                                                             \
-  }
+    return;                                                                                              \
+}
 
   if (strcmp(applicationName, "org.gnu.Emacs") == 0 ||
       strcmp(applicationName, "org.gnu.AquamacsEmacs") == 0) {
