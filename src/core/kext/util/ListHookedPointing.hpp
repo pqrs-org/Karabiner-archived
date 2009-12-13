@@ -11,20 +11,20 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     IOHIPointing* get(void) const { return OSDynamicCast(IOHIPointing, HookedDevice::get()); }
 
-    RelativePointerEventCallback getOrig_relativePointerEventAction() const { return orig_relativePointerEventAction; }
-    ScrollWheelEventCallback getOrig_scrollWheelEventAction() const { return orig_scrollWheelEventAction; }
-    OSObject* getOrig_relativePointerEventTarget() const { return orig_relativePointerEventTarget; }
-    OSObject* getOrig_scrollWheelEventTarget() const { return orig_scrollWheelEventTarget; }
+    RelativePointerEventCallback getOrig_relativePointerEventAction() const { return orig_relativePointerEventAction_; }
+    ScrollWheelEventCallback getOrig_scrollWheelEventAction() const { return orig_scrollWheelEventAction_; }
+    OSObject* getOrig_relativePointerEventTarget() const { return orig_relativePointerEventTarget_; }
+    OSObject* getOrig_scrollWheelEventTarget() const { return orig_scrollWheelEventTarget_; }
 
   private:
     bool isAppleDriver_;
 
-    RelativePointerEventCallback orig_relativePointerEventAction;
-    ScrollWheelEventCallback orig_scrollWheelEventAction;
-    OSObject* orig_relativePointerEventTarget;
-    OSObject* orig_scrollWheelEventTarget;
+    RelativePointerEventCallback orig_relativePointerEventAction_;
+    ScrollWheelEventCallback orig_scrollWheelEventAction_;
+    OSObject* orig_relativePointerEventTarget_;
+    OSObject* orig_scrollWheelEventTarget_;
 
-    bool initialize(IOHIDevice* _device);
+    bool initialize(IOHIDevice* d);
     bool refresh(void);
     bool terminate(void);
 
@@ -41,11 +41,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     HookedPointing* get(const IOHIPointing* pointing) { return static_cast<HookedPointing*>(ListHookedDevice::get(pointing)); }
 
   private:
-    HookedPointing item[MAXNUM];
+    HookedPointing item_[MAXNUM];
 
     HookedDevice* getItem(int index) {
       if (index < 0 || index >= MAXNUM) return NULL;
-      return item + index;
+      return item_ + index;
     }
   };
 }
