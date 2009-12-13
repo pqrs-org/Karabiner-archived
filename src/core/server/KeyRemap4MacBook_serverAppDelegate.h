@@ -9,9 +9,9 @@
 #import <Cocoa/Cocoa.h>
 
 @interface KeyRemap4MacBook_serverAppDelegate : NSObject <NSApplicationDelegate> {
-    NSWindow *window;
+  NSWindow* window;
 }
 
-@property (assign) IBOutlet NSWindow *window;
+@property (assign) IBOutlet NSWindow* window;
 
 @end

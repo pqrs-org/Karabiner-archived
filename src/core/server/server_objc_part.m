@@ -4,7 +4,7 @@
 #import <Carbon/Carbon.h>
 #import "server_objc_part.h"
 
-static NSAutoreleasePool *pool = nil;
+static NSAutoreleasePool* pool = nil;
 
 void
 autoreleasepool_begin(void)
@@ -25,7 +25,7 @@ autoreleasepool_end(void)
 }
 
 void
-getActiveApplicationName(char *buffer, size_t len)
+getActiveApplicationName(char* buffer, size_t len)
 {
   if (! buffer) return;
   if (len <= 0) return;
@@ -36,7 +36,7 @@ getActiveApplicationName(char *buffer, size_t len)
   if (! ws) return;
 
   NSArray* a = [ws runningApplications];
-  NSEnumerator *e = [a objectEnumerator];
+  NSEnumerator* e = [a objectEnumerator];
   for (;;) {
     NSRunningApplication* app = [e nextObject];
     if (! app) return;
@@ -52,7 +52,7 @@ getActiveApplicationName(char *buffer, size_t len)
 }
 
 void
-getTISPropertyInputModeID(char *buffer, size_t len)
+getTISPropertyInputModeID(char* buffer, size_t len)
 {
   if (! buffer) return;
   if (len <= 0) return;
@@ -62,7 +62,7 @@ getTISPropertyInputModeID(char *buffer, size_t len)
   TISInputSourceRef ref = TISCopyCurrentKeyboardInputSource();
   if (! ref) return;
 
-  NSString *inputmodeid = TISGetInputSourceProperty(ref, kTISPropertyInputModeID);
+  NSString* inputmodeid = TISGetInputSourceProperty(ref, kTISPropertyInputModeID);
   if (inputmodeid) {
     snprintf(buffer, len, "%s", [inputmodeid UTF8String]);
   }
