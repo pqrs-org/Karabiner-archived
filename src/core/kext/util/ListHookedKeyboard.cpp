@@ -66,8 +66,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (HookedDevice::isIgnoreDevice(d)) return false;
 
     // ------------------------------------------------------------
-    device = d;
-    IOLog("KeyRemap4MacBook HookedKeyboard::initialize name = %s, device = 0x%p\n", name, device);
+    device_ = d;
+    IOLog("KeyRemap4MacBook HookedKeyboard::initialize name = %s, device_ = 0x%p\n", name, device_);
 
     if (strcmp(name, "IOHIDKeyboard") == 0 ||
         strcmp(name, "AppleADBKeyboard") == 0) {
@@ -76,7 +76,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       isAppleDriver_ = false;
     }
 
-    isInternalKeyboard_ = KeyboardType(device->deviceType()).isInternalKeyboard();
+    isInternalKeyboard_ = KeyboardType(device_->deviceType()).isInternalKeyboard();
 
     return refresh();
   }
@@ -108,7 +108,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     bool result = restoreEventAction();
 
-    device = NULL;
+    device_ = NULL;
     orig_keyboardEventAction_ = NULL;
     orig_keyboardEventTarget_ = NULL;
 
@@ -118,16 +118,16 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   HookedKeyboard::replaceEventAction(void)
   {
-    if (! device) return false;
+    if (! device_) return false;
 
-    IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, device);
+    IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, device_);
     if (! kbd) return false;
 
     KeyboardEventCallback callback = reinterpret_cast<KeyboardEventCallback>(kbd->_keyboardEventAction);
     if (callback == hook_KeyboardEventCallback) return false;
 
     // ------------------------------------------------------------
-    IOLog("KeyRemap4MacBook HookedKeyboard::replaceEventAction (device = 0x%p)\n", device);
+    IOLog("KeyRemap4MacBook HookedKeyboard::replaceEventAction (device_ = 0x%p)\n", device_);
 
     orig_keyboardEventAction_ = callback;
     orig_keyboardEventTarget_ = kbd->_keyboardEventTarget;
@@ -140,16 +140,16 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   HookedKeyboard::restoreEventAction(void)
   {
-    if (! device) return false;
+    if (! device_) return false;
 
-    IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, device);
+    IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, device_);
     if (! kbd) return false;
 
     KeyboardEventCallback callback = reinterpret_cast<KeyboardEventCallback>(kbd->_keyboardEventAction);
     if (callback != hook_KeyboardEventCallback) return false;
 
     // ----------------------------------------
-    IOLog("KeyRemap4MacBook HookedKeyboard::restoreEventAction (device = 0x%p)\n", device);
+    IOLog("KeyRemap4MacBook HookedKeyboard::restoreEventAction (device_ = 0x%p)\n", device_);
 
     kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(orig_keyboardEventAction_);
 
