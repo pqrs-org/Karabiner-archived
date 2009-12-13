@@ -19,7 +19,7 @@ namespace {
   std::map<std::string, int> map_reset;
 
   void
-  save(const char *name)
+  save(const char* name)
   {
     if (! dict_sysctl) return;
 
@@ -33,7 +33,7 @@ namespace {
     CFStringRef key = CFStringCreateWithCString(NULL, name, kCFStringEncodingUTF8);
     CFNumberRef val = CFNumberCreate(NULL, kCFNumberIntType, &value);
 
-    typeof(map_reset.end()) it = map_reset.find(name);
+    std::map<std::string, int>::iterator it = map_reset.find(name);
     if (it == map_reset.end()) return;
     CFNumberRef defaultval = CFNumberCreate(NULL, kCFNumberIntType, &(it->second));
 
@@ -43,7 +43,7 @@ namespace {
   }
 
   void
-  load(const char *name)
+  load(const char* name)
   {
     if (! dict_sysctl) return;
     CFStringRef key = CFStringCreateWithCString(NULL, name, kCFStringEncodingUTF8);
@@ -60,7 +60,7 @@ namespace {
   }
 
   void
-  scanLines(const char *filename, void (*func)(const char *))
+  scanLines(const char* filename, void (* func)(const char*))
   {
     std::ifstream ifs(filename);
     if (! ifs) return;
@@ -70,12 +70,12 @@ namespace {
 
       ifs.getline(line, sizeof(line));
 
-      const char *sysctl_begin = "<sysctl>";
-      const char *sysctl_end = "</sysctl>";
+      const char* sysctl_begin = "<sysctl>";
+      const char* sysctl_end = "</sysctl>";
 
-      char *begin = strstr(line, "<sysctl>");
+      char* begin = strstr(line, "<sysctl>");
       if (! begin) continue;
-      char *end = strstr(line, sysctl_end);
+      char* end = strstr(line, sysctl_end);
       if (! end) continue;
 
       begin += strlen(sysctl_begin);
@@ -96,7 +96,7 @@ namespace {
 
       ifs.getline(line, sizeof(line));
 
-      char *p = strchr(line, ' ');
+      char* p = strchr(line, ' ');
       if (! p) continue;
       *p = '\0';
 
@@ -109,15 +109,15 @@ namespace {
   }
 
   bool
-  saveToFile(const char **targetFiles, CFStringRef identify)
+  saveToFile(const char** targetFiles, CFStringRef identify)
   {
     if (! makeMapReset()) return false;
 
     dict_sysctl = CFDictionaryCreateMutable(NULL, 0, NULL, NULL);
     if (! dict_sysctl) return false;
 
-    for (int i = 0; ; ++i) {
-      const char *filename = targetFiles[i];
+    for (int i = 0;; ++i) {
+      const char* filename = targetFiles[i];
       if (! filename) break;
       scanLines(filename, save);
     }
@@ -128,13 +128,13 @@ namespace {
   }
 
   bool
-  loadFromFile(const char **targetFiles, CFStringRef identify)
+  loadFromFile(const char** targetFiles, CFStringRef identify)
   {
-    dict_sysctl = reinterpret_cast<CFMutableDictionaryRef>(const_cast<void *>(CFPreferencesCopyAppValue(identify, applicationID)));
+    dict_sysctl = reinterpret_cast<CFMutableDictionaryRef>(const_cast<void*>(CFPreferencesCopyAppValue(identify, applicationID)));
     if (! dict_sysctl) return false;
 
-    for (int i = 0; ; ++i) {
-      const char *filename = targetFiles[i];
+    for (int i = 0;; ++i) {
+      const char* filename = targetFiles[i];
       if (! filename) break;
       scanLines(filename, load);
     }
@@ -164,7 +164,7 @@ namespace {
       CFDictionarySetValue(dict[0], CFSTR("name"), CFSTR("Default"));
       CFDictionarySetValue(dict[0], CFSTR("identify"), CFSTR("config_default"));
 
-      list = CFArrayCreate(NULL, const_cast<const void **>(reinterpret_cast<void **>(dict)), 1, NULL);
+      list = CFArrayCreate(NULL, const_cast<const void**>(reinterpret_cast<void**>(dict)), 1, NULL);
       setConfigList(list);
     }
 
@@ -242,7 +242,7 @@ namespace {
   }
 
   bool
-  renameConfig(int index, const char *newname)
+  renameConfig(int index, const char* newname)
   {
     CFArrayRef list = getConfigList();
     if (! list) return false;
@@ -316,14 +316,14 @@ namespace {
   }
 
   void
-  stripString(char *buf, size_t buflen)
+  stripString(char* buf, size_t buflen)
   {
-    char *p = buf;
+    char* p = buf;
     for (;;) {
       if (! isspace(*p)) break;
       ++p;
     }
-    char *q = p;
+    char* q = p;
     for (;;) {
       if (*q == '\0' || *q == '\r' || *q == '\n') break;
       ++q;
@@ -335,7 +335,7 @@ namespace {
 
 
 int
-main(int argc, char **argv)
+main(int argc, char** argv)
 {
   if (argc == 1) {
     fprintf(stderr, "Usage: %s (save|load|add|delete|rename|getname|select|count|current|statusbar|toggle_statusbar) [params]\n", argv[0]);
@@ -416,7 +416,7 @@ main(int argc, char **argv)
     CFIndex value = getSelectedIndex();
     CFStringRef identify = getIdentify(value);
 
-    const char *targetFiles[] = {
+    const char* targetFiles[] = {
       "/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml",
       "/Library/org.pqrs/KeyRemap4MacBook/prefpane/number.xml",
       NULL,
