@@ -245,13 +245,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       params.log();
 
-      params.buttons.add(RemapUtil::getRemappedButtons());
-
       RemapPointingParams_relative remapParams(params);
       remap_pointing_relative_core(remapParams);
 
       // ------------------------------------------------------------
       if (! remapParams.isremapped) {
+        params.buttons.add(RemapUtil::getRemappedButtons());
         params.apply();
       }
     }
