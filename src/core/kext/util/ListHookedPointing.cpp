@@ -78,17 +78,17 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   HookedPointing::HookedPointing(void) :
     isAppleDriver_(false),
-    orig_relativePointerEventAction(NULL), orig_scrollWheelEventAction(NULL),
-    orig_relativePointerEventTarget(NULL), orig_scrollWheelEventTarget(NULL)
+    orig_relativePointerEventAction_(NULL), orig_scrollWheelEventAction_(NULL),
+    orig_relativePointerEventTarget_(NULL), orig_scrollWheelEventTarget_(NULL)
   {}
 
   bool
-  HookedPointing::initialize(IOHIDevice* _device)
+  HookedPointing::initialize(IOHIDevice* d)
   {
-    const char* name = _device->getName();
-    if (HookedDevice::isIgnoreDevice(_device)) return false;
+    const char* name = d->getName();
+    if (HookedDevice::isIgnoreDevice(d)) return false;
 
-    device = _device;
+    device = d;
     IOLog("KeyRemap4MacBook HookedPointing::initialize name = %s, device = 0x%p\n", name, device);
 
     if (strcmp(name, "IOHIDPointing") == 0 ||
@@ -120,10 +120,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool result = restoreEventAction();
 
     device = NULL;
-    orig_relativePointerEventAction = NULL;
-    orig_scrollWheelEventAction = NULL;
-    orig_relativePointerEventTarget = NULL;
-    orig_scrollWheelEventTarget = NULL;
+    orig_relativePointerEventAction_ = NULL;
+    orig_scrollWheelEventAction_ = NULL;
+    orig_relativePointerEventTarget_ = NULL;
+    orig_scrollWheelEventTarget_ = NULL;
 
     return result;
   }
@@ -145,8 +145,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (callback != hook_RelativePointerEventCallback) {
         IOLog("KeyRemap4MacBook HookedPointing::replaceEventAction (RelativePointerEventCallback) (device = 0x%p)\n", device);
 
-        orig_relativePointerEventAction = callback;
-        orig_relativePointerEventTarget = pointing->_relativePointerEventTarget;
+        orig_relativePointerEventAction_ = callback;
+        orig_relativePointerEventTarget_ = pointing->_relativePointerEventTarget;
 
         pointing->_relativePointerEventAction = reinterpret_cast<RelativePointerEventAction>(hook_RelativePointerEventCallback);
 
@@ -159,8 +159,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (callback != hook_ScrollWheelEventCallback) {
         IOLog("KeyRemap4MacBook HookedPointing::replaceEventAction (ScrollWheelEventCallback) (device = 0x%p)\n", device);
 
-        orig_scrollWheelEventAction = callback;
-        orig_scrollWheelEventTarget = pointing->_scrollWheelEventTarget;
+        orig_scrollWheelEventAction_ = callback;
+        orig_scrollWheelEventTarget_ = pointing->_scrollWheelEventTarget;
 
         pointing->_scrollWheelEventAction = reinterpret_cast<ScrollWheelEventAction>(hook_ScrollWheelEventCallback);
 
@@ -188,7 +188,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (callback == hook_RelativePointerEventCallback) {
         IOLog("KeyRemap4MacBook HookedPointing::restoreEventAction (RelativePointerEventCallback) (device = 0x%p)\n", device);
 
-        pointing->_relativePointerEventAction = reinterpret_cast<RelativePointerEventAction>(orig_relativePointerEventAction);
+        pointing->_relativePointerEventAction = reinterpret_cast<RelativePointerEventAction>(orig_relativePointerEventAction_);
 
         result = true;
       }
@@ -199,16 +199,16 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (callback == hook_ScrollWheelEventCallback) {
         IOLog("KeyRemap4MacBook HookedPointing::restoreEventAction (ScrollWheelEventCallback) (device = 0x%p)\n", device);
 
-        pointing->_scrollWheelEventAction = reinterpret_cast<ScrollWheelEventAction>(orig_scrollWheelEventAction);
+        pointing->_scrollWheelEventAction = reinterpret_cast<ScrollWheelEventAction>(orig_scrollWheelEventAction_);
 
         result = true;
       }
     }
 
-    orig_relativePointerEventAction = NULL;
-    orig_scrollWheelEventAction = NULL;
-    orig_relativePointerEventTarget = NULL;
-    orig_scrollWheelEventTarget = NULL;
+    orig_relativePointerEventAction_ = NULL;
+    orig_scrollWheelEventAction_ = NULL;
+    orig_relativePointerEventTarget_ = NULL;
+    orig_scrollWheelEventTarget_ = NULL;
 
     return result;
   }
