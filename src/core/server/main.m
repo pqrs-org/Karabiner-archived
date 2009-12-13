@@ -10,7 +10,7 @@
 #import "util.h"
 #include <signal.h>
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
   if (argc != 2) {
     NSLog(@"Usage: KeyRemap4MacBook_server basedirectory");
@@ -25,5 +25,5 @@ int main(int argc, char *argv[])
     return 1;
   }
 
-  return NSApplicationMain(argc,  (const char **) argv);
+  return NSApplicationMain(argc, (const char**) argv);
 }
