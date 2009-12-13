@@ -12,7 +12,7 @@ OSDefineMetaClassAndStructors(org_pqrs_driver_KeyRemap4MacBook, IOService)
 
 // ----------------------------------------------------------------------
 bool
-org_pqrs_driver_KeyRemap4MacBook::init(OSDictionary *dict)
+org_pqrs_driver_KeyRemap4MacBook::init(OSDictionary* dict)
 {
   IOLog("KeyRemap4MacBook [init]\n");
 
@@ -32,20 +32,20 @@ org_pqrs_driver_KeyRemap4MacBook::free(void)
   super::free();
 }
 
-IOService *
-org_pqrs_driver_KeyRemap4MacBook::probe(IOService *provider, SInt32 *score)
+IOService*
+org_pqrs_driver_KeyRemap4MacBook::probe(IOService* provider, SInt32* score)
 {
-  IOService *res = super::probe(provider, score);
+  IOService* res = super::probe(provider, score);
   return res;
 }
 
 bool
-org_pqrs_driver_KeyRemap4MacBook::start(IOService *provider)
+org_pqrs_driver_KeyRemap4MacBook::start(IOService* provider)
 {
   IOLog("KeyRemap4MacBook [start]\n");
 
   bool res = super::start(provider);
-  if (!res) return res;
+  if (! res) return res;
 
   org_pqrs_KeyRemap4MacBook::Core::start();
   if (! initialize_notification()) return false;
@@ -54,7 +54,7 @@ org_pqrs_driver_KeyRemap4MacBook::start(IOService *provider)
 }
 
 void
-org_pqrs_driver_KeyRemap4MacBook::stop(IOService *provider)
+org_pqrs_driver_KeyRemap4MacBook::stop(IOService* provider)
 {
   IOLog("KeyRemap4MacBook [stop]\n");
 

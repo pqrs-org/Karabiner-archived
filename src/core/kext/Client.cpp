@@ -2,7 +2,7 @@ extern "C" {
 #include <sys/systm.h>
 #include <sys/un.h>
 #include <sys/kpi_socket.h>
-  errno_t sock_nointerrupt(socket_t so, int on);
+errno_t sock_nointerrupt(socket_t so, int on);
 }
 #include "base.hpp"
 #include "Client.hpp"
@@ -16,14 +16,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOLock* lock_ = NULL;
 
     void
-    releaseSocket(socket_t &socket)
+    releaseSocket(socket_t& socket)
     {
       sock_shutdown(socket, SHUT_RDWR);
       sock_close(socket);
     }
 
     bool
-    makeSocket(socket_t &socket)
+    makeSocket(socket_t& socket)
     {
       int error = sock_socket(PF_LOCAL, SOCK_STREAM, 0, NULL, NULL, &socket);
       if (error) {
@@ -58,11 +58,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     bool
-    connectSocket(socket_t &socket)
+    connectSocket(socket_t& socket)
     {
       if (! sockaddr_available_) return false;
 
-      errno_t error = sock_connect(socket, reinterpret_cast<const sockaddr *>(&sockaddr_), 0);
+      errno_t error = sock_connect(socket, reinterpret_cast<const sockaddr*>(&sockaddr_), 0);
       if (error) {
 #if 0
         // the connection failure is no problem because a server does not start at login window.
@@ -114,7 +114,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   int
-  KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::RequestType type, void *request, size_t requestsize, void *reply, size_t replysize)
+  KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::RequestType type, void* request, size_t requestsize, void* reply, size_t replysize)
   {
     if (! lock_) { return EIO; }
 

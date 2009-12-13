@@ -679,7 +679,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   ModifierHoldingKeyToKey::remap(RemapParams& remapParams, const KeyCode& fromKeyCode, const Flags& fromFlags, const KeyCode& toKeyCode)
   {
     if (remapParams.isremapped || remapParams.params.key != fromKeyCode) {
-      IOLog("nottargetkey\n");
       goto nottargetkey;
     }
 
