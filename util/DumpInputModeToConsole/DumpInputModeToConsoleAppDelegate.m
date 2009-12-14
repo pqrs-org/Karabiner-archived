@@ -31,8 +31,8 @@
   [NSThread exit];
 }
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-  [NSThread detachNewThreadSelector:@selector(threadMain) toTarget:self withObject:nil];
+- (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
+  [NSThread detachNewThreadSelector:@selector(threadMain)toTarget:self withObject:nil];
 }
 
 @end
