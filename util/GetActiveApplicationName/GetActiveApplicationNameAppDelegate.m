@@ -43,11 +43,11 @@
 {
   // ------------------------------------------------------------
   [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
-                                                      selector:@selector(observer_NSWorkspaceDidActivateApplicationNotification:)
-                                                      name:NSWorkspaceDidActivateApplicationNotification
-                                                      object:nil];
+                                                         selector:@selector(observer_NSWorkspaceDidActivateApplicationNotification:)
+                                                             name:NSWorkspaceDidActivateApplicationNotification
+                                                           object:nil];
 
-  [NSThread detachNewThreadSelector:@selector(threadMain) toTarget:self withObject:nil];
+  [NSThread detachNewThreadSelector:@selector(threadMain)toTarget:self withObject:nil];
 }
 
 @end
