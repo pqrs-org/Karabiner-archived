@@ -2,7 +2,7 @@
 
 #import "XMLTreeWrapper.h"
 
-@implementation BUNDLEPREFIX(XMLTreeWrapper)
+@implementation BUNDLEPREFIX (XMLTreeWrapper)
 
 - (id) init
 {
@@ -12,9 +12,9 @@
   return self;
 }
 
-- (BOOL) load:(NSString *)path
+- (BOOL) load:(NSString*)path
 {
-  NSURL *url = [NSURL fileURLWithPath:path];
+  NSURL* url = [NSURL fileURLWithPath:path];
 
   if (_XMLDocument) [_XMLDocument release];
 
@@ -40,7 +40,7 @@
   item = [self normalizeItem:item];
   if (! item) return 0;
 
-  NSArray *nodes = [item nodesForXPath:@"list/item" error:NULL];
+  NSArray* nodes = [item nodesForXPath:@"list/item" error:NULL];
   return [nodes count];
 }
 
@@ -49,7 +49,7 @@
   item = [self normalizeItem:item];
   if (! item) return nil;
 
-  NSArray *nodes = [item nodesForXPath:@"list/item" error:NULL];
+  NSArray* nodes = [item nodesForXPath:@"list/item" error:NULL];
   return [nodes objectAtIndex:idx];
 }
 
@@ -61,16 +61,16 @@
   return [self numberOfChildren:item] > 0;
 }
 
-- (NSXMLNode *) getNode:(NSXMLNode *)node xpath:(NSString *)xpath
+- (NSXMLNode*) getNode:(NSXMLNode*)node xpath:(NSString*)xpath
 {
-  NSArray *a = [node nodesForXPath:xpath error:NULL];
+  NSArray* a = [node nodesForXPath:xpath error:NULL];
   if (a == nil) return nil;
   if ([a count] == 0) return nil;
 
   return [a objectAtIndex:0];
 }
 
-- (NSXMLElement *) getRoot
+- (NSXMLElement*) getRoot
 {
   return [_XMLDocument rootElement];
 }

@@ -3,8 +3,8 @@
 #import "bundleprefix.h"
 #import <Cocoa/Cocoa.h>
 
-@interface BUNDLEPREFIX(Common) : NSObject
+@interface BUNDLEPREFIX (Common) : NSObject
 
-+ (NSString *) getExecResult:(NSString *)path args:(NSArray *)args;
++ (NSString*) getExecResult:(NSString*)path args:(NSArray*)args;
 
 @end

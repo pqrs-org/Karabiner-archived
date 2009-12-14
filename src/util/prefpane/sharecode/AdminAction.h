@@ -5,8 +5,8 @@
 #import <Security/Authorization.h>
 #import <Security/AuthorizationTags.h>
 
-@interface BUNDLEPREFIX(AdminAction) : NSObject
+@interface BUNDLEPREFIX (AdminAction) : NSObject
 
-+ (BOOL) execCommand:(char *)command;
++ (BOOL) execCommand:(char*)command;
 
 @end

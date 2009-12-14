@@ -6,13 +6,13 @@
 
 @implementation KeyRemap4MacBookPref
 
-static NSString *sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_ctl";
-static NSString *launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook/extra/launchUninstaller.sh";
+static NSString* sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_ctl";
+static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook/extra/launchUninstaller.sh";
 
 /* ---------------------------------------------------------------------- */
 - (void) drawVersion
 {
-  NSString *version = [BUNDLEPREFIX(SysctlWrapper) getString:@"keyremap4macbook.version"];
+  NSString* version = [BUNDLEPREFIX(SysctlWrapper) getString:@"keyremap4macbook.version"];
   if (! version) {
     version = @"-.-.-";
   }
@@ -22,7 +22,7 @@ static NSString *launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
 /* ---------------------------------------------------------------------- */
 - (void) setStatusBarState
 {
-  NSString *result = [BUNDLEPREFIX(Common) getExecResult:sysctl_ctl args:[NSArray arrayWithObjects:@"statusbar", nil]];
+  NSString* result = [BUNDLEPREFIX(Common) getExecResult:sysctl_ctl args:[NSArray arrayWithObjects:@"statusbar", nil]];
   if (! result) return;
 
   if ([result intValue] == 1) {
@@ -34,12 +34,12 @@ static NSString *launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
 
 - (void) startStatusBar
 {
-  NSString *killall = @"/usr/bin/killall";
-  NSArray *args = [NSArray arrayWithObjects:@"KeyRemap4MacBook_statusbar", nil];
-  NSTask *task_killall = [NSTask launchedTaskWithLaunchPath:killall arguments:args];
+  NSString* killall = @"/usr/bin/killall";
+  NSArray* args = [NSArray arrayWithObjects:@"KeyRemap4MacBook_statusbar", nil];
+  NSTask* task_killall = [NSTask launchedTaskWithLaunchPath:killall arguments:args];
   [task_killall waitUntilExit];
 
-  NSString *app = @"/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook_statusbar.app";
+  NSString* app = @"/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook_statusbar.app";
   [[NSWorkspace sharedWorkspace] launchApplication:app];
 }
 
