@@ -7,6 +7,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   class IntervalChecker {
   public:
     void begin(void);
+    uint32_t getmillisec(void) const;
     bool checkThreshold(uint32_t millisec);
 
   private:
