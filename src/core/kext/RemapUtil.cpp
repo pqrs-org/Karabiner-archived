@@ -483,11 +483,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
 
-#if 1
-    // XXX: execute only if dynamic scroll lock is enable
-    continuous_delta1 += (delta1 > 0 ? delta1 : -delta1);
-    continuous_delta2 += (delta2 > 0 ? delta2 : -delta2);
-#endif
+    if (config.option_pointing_enable_scrollwheel_fixation) {
+      continuous_delta1 += (delta1 > 0 ? delta1 : -delta1);
+      continuous_delta2 += (delta2 > 0 ? delta2 : -delta2);
+    }
     continuous_ic_.begin();
 
     if (delta1 == 0 && delta2 == 0) return;
