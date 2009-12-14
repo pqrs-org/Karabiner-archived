@@ -51,7 +51,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.remap_pointing_relative_to_scroll) return;
 
-    RemapUtil::PointingRelativeToScroll prts;
+    static RemapUtil::PointingRelativeToScroll prts;
     prts.remap(remapParams, PointingButton::NONE, Flags(0));
   }
 }
