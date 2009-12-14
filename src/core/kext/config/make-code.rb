@@ -215,8 +215,8 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
 
         when 'PointingRelativeToScroll'
           code_pointing += "{\n"
-          code_pointing += "static RemapUtil::PointingRelativeToScroll brts;\n"
-          code_pointing += "if (brts.remap(remapParams, #{params})) return;\n"
+          code_pointing += "static RemapUtil::PointingRelativeToScroll prts;\n"
+          code_pointing += "if (prts.remap(remapParams, #{params})) return;\n"
           code_pointing += "}\n"
           func['pointing'] << name
 
