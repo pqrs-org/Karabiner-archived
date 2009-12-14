@@ -682,17 +682,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       goto nottargetkey;
     }
 
-    if (isAnyEventHappen_) goto nottargetkey;
     if (! FlagStatus::makeFlags().isOn(fromFlags)) goto nottargetkey;
-
-    EventWatcher::unset(isAnyEventHappen_);
     if (! ic_.checkThreshold(config.parameter_modifierholdingkeytokey_wait)) goto nottargetkey;
 
     return keytokey_.remap(remapParams, fromKeyCode, fromFlags, toKeyCode);
 
   nottargetkey:
     ic_.begin();
-    EventWatcher::set(isAnyEventHappen_);
     return false;
   }
 
