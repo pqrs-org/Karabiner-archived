@@ -158,9 +158,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     void fireConsumer(const Params_KeyboardSpecialEventCallback& params);
     void fireRelativePointer(const Params_RelativePointerEventCallback& params);
-    void fireScrollWheel(short int deltaAxis1, short int deltaAxis2, short int deltaAxis3,
-                         IOFixed fixedDelta1, IOFixed fixedDelta2, IOFixed fixedDelta3,
-                         SInt32 pointDelta1, SInt32 pointDelta2, SInt32 pointDelta3);
+    void fireScrollWheel(const Params_ScrollWheelEventCallback& params);
 
     // ----------------------------------------
     void pointingRelativeToScroll(RemapPointingParams_relative& remapParams);

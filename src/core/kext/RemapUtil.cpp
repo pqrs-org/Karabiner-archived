@@ -532,14 +532,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  RemapUtil::fireScrollWheel(short int deltaAxis1, short int deltaAxis2, short int deltaAxis3,
-                             IOFixed fixedDelta1, IOFixed fixedDelta2, IOFixed fixedDelta3,
-                             SInt32 pointDelta1, SInt32 pointDelta2, SInt32 pointDelta3)
+  RemapUtil::fireScrollWheel(const Params_ScrollWheelEventCallback& params)
   {
-    Params_ScrollWheelEventCallback params(deltaAxis1,  deltaAxis2,  deltaAxis3,
-                                           fixedDelta1, fixedDelta2, fixedDelta3,
-                                           pointDelta1, pointDelta2, pointDelta3,
-                                           0);
+    FireModifiers::fire();
     params.apply();
   }
 
@@ -577,25 +572,28 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (delta1 == 0 && delta2 == 0) return;
 
     // ----------------------------------------
-    int deltaAxis1 = (delta1 * config.pointing_relative2scroll_rate) / 1000;
-    if (deltaAxis1 == 0 && delta1 != 0) {
-      deltaAxis1 = delta1 > 0 ? 1 : -1;
+    Params_ScrollWheelEventCallback params(0, 0, 0,
+                                           0, 0, 0,
+                                           0, 0, 0,
+                                           0);
+
+    params.deltaAxis1 = (delta1 * config.pointing_relative2scroll_rate) / 1000;
+    if (params.deltaAxis1 == 0 && delta1 != 0) {
+      params.deltaAxis1 = delta1 > 0 ? 1 : -1;
     }
-    int deltaAxis2 = (delta2 * config.pointing_relative2scroll_rate) / 1000;
-    if (deltaAxis2 == 0 && delta2 != 0) {
-      deltaAxis2 = delta2 > 0 ? 1 : -1;
+    params.deltaAxis2 = (delta2 * config.pointing_relative2scroll_rate) / 1000;
+    if (params.deltaAxis2 == 0 && delta2 != 0) {
+      params.deltaAxis2 = delta2 > 0 ? 1 : -1;
     }
 
     // ----------------------------------------
-    IOFixed fixedDelta1 = (delta1 * POINTING_FIXED_SCALE * config.pointing_relative2scroll_rate) / 1000;
-    IOFixed fixedDelta2 = (delta2 * POINTING_FIXED_SCALE * config.pointing_relative2scroll_rate) / 1000;
+    params.fixedDelta1 = (delta1 * POINTING_FIXED_SCALE * config.pointing_relative2scroll_rate) / 1000;
+    params.fixedDelta2 = (delta2 * POINTING_FIXED_SCALE * config.pointing_relative2scroll_rate) / 1000;
 
-    SInt32 pointDelta1 = (delta1 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1000;
-    SInt32 pointDelta2 = (delta2 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1000;
+    params.pointDelta1 = (delta1 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1000;
+    params.pointDelta2 = (delta2 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1000;
 
-    fireScrollWheel(deltaAxis1, deltaAxis2, 0,
-                    fixedDelta1, fixedDelta2, 0,
-                    pointDelta1, pointDelta2, 0);
+    fireScrollWheel(params);
   }
 
   // ----------------------------------------------------------------------
