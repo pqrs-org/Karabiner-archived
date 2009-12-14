@@ -4,7 +4,7 @@
 
 static AuthorizationRef authorizationRef = nil;
 
-@implementation BUNDLEPREFIX(AdminAction)
+@implementation BUNDLEPREFIX (AdminAction)
 
 + (BOOL) setup
 {
@@ -39,11 +39,11 @@ static AuthorizationRef authorizationRef = nil;
   return TRUE;
 }
 
-+ (BOOL) execCommand:(char *)command
++ (BOOL) execCommand:(char*)command
 {
   if (! [BUNDLEPREFIX(AdminAction) getPrivilege]) return FALSE;
 
-  char *const args[] = {
+  char* const args[] = {
     "-c",
     command,
     NULL,
