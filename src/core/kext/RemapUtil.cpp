@@ -382,6 +382,104 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ------------------------------------------------------------
+  bool
+  RemapUtil::PointingRelativeToScroll::remap(RemapPointingParams_relative& remapParams, const Buttons& buttons, const Flags& fromFlags)
+  {
+    if (! FlagStatus::makeFlags().isOn(fromFlags)) return false;
+
+    if (buttons == PointingButton::NONE) {
+      FlagStatus::temporary_decrease(fromFlags);
+      toscroll(remapParams);
+      return true;
+    }
+
+    if (remapParams.params.buttons.isOn(buttons)) {
+      // if the source buttons contains left button, we cancel left click for iPhoto, or some applications.
+      // iPhoto store the scroll events when left button is pressed, and restore events after left button is released.
+      // PointingRelativeToScroll doesn't aim it, we release the left button and do normal scroll event.
+      if (buttons.isOn(PointingButton::LEFT)) {
+        if (! active_) {
+          RemapUtil::fireRelativePointer(Params_RelativePointerEventCallback(PointingButton::NONE, 0, 0));
+        }
+      }
+
+      active_ = true;
+      FlagStatus::temporary_decrease(fromFlags);
+      toscroll(remapParams);
+
+      return true;
+
+    } else {
+      // ignore button up event.
+      if (active_) {
+        active_ = false;
+        remapParams.isremapped = true;
+
+        return true;
+      }
+
+      return false;
+    }
+  }
+
+  void
+  RemapUtil::PointingRelativeToScroll::toscroll(RemapPointingParams_relative& remapParams)
+  {
+    remapParams.isremapped = true;
+
+    // ----------------------------------------
+    int delta1 = -remapParams.params.dy;
+    int delta2 = -remapParams.params.dx;
+
+    if (config.option_pointing_disable_vertical_scroll) delta1 = 0;
+    if (config.option_pointing_disable_horizontal_scroll) delta2 = 0;
+
+    // ----------------------------------------
+    // ignore minuscule move
+    int abs1 = delta1 > 0 ? delta1 : -delta1;
+    int abs2 = delta2 > 0 ? delta2 : -delta2;
+    int SCALE = 100;
+
+    if (abs1 > abs2) {
+      // case y > x (ignore x if x is very small)
+      if (abs2) {
+        if ((abs1 * SCALE / abs2) > (10 * SCALE / 5)) delta2 = 0;
+      }
+    }
+    if (abs1 < abs2) {
+      if (abs1) {
+        if ((abs2 * SCALE / abs1) > (10 * SCALE / 5)) delta1 = 0;
+      }
+    }
+
+    if (delta1 == 0 && delta2 == 0) return;
+
+    // ----------------------------------------
+    Params_ScrollWheelEventCallback params(0, 0, 0,
+                                           0, 0, 0,
+                                           0, 0, 0,
+                                           0);
+
+    params.deltaAxis1 = (delta1 * config.pointing_relative2scroll_rate) / 1000;
+    if (params.deltaAxis1 == 0 && delta1 != 0) {
+      params.deltaAxis1 = delta1 > 0 ? 1 : -1;
+    }
+    params.deltaAxis2 = (delta2 * config.pointing_relative2scroll_rate) / 1000;
+    if (params.deltaAxis2 == 0 && delta2 != 0) {
+      params.deltaAxis2 = delta2 > 0 ? 1 : -1;
+    }
+
+    // ----------------------------------------
+    params.fixedDelta1 = (delta1 * POINTING_FIXED_SCALE * config.pointing_relative2scroll_rate) / 1000;
+    params.fixedDelta2 = (delta2 * POINTING_FIXED_SCALE * config.pointing_relative2scroll_rate) / 1000;
+
+    params.pointDelta1 = (delta1 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1000;
+    params.pointDelta2 = (delta2 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1000;
+
+    fireScrollWheel(params);
+  }
+
+  // ------------------------------------------------------------
   namespace {
     class Handle_VK_FNLOCK {
     public:
@@ -538,64 +636,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     params.apply();
   }
 
-  // --------------------
-  void
-  RemapUtil::pointingRelativeToScroll(RemapPointingParams_relative& remapParams)
-  {
-    remapParams.isremapped = true;
-
-    // ----------------------------------------
-    int delta1 = -remapParams.params.dy;
-    int delta2 = -remapParams.params.dx;
-
-    if (config.option_pointing_disable_vertical_scroll) delta1 = 0;
-    if (config.option_pointing_disable_horizontal_scroll) delta2 = 0;
-
-    // ----------------------------------------
-    // ignore minuscule move
-    int abs1 = delta1 > 0 ? delta1 : -delta1;
-    int abs2 = delta2 > 0 ? delta2 : -delta2;
-    int SCALE = 100;
-
-    if (abs1 > abs2) {
-      // case y > x (ignore x if x is very small)
-      if (abs2) {
-        if ((abs1 * SCALE / abs2) > (10 * SCALE / 5)) delta2 = 0;
-      }
-    }
-    if (abs1 < abs2) {
-      if (abs1) {
-        if ((abs2 * SCALE / abs1) > (10 * SCALE / 5)) delta1 = 0;
-      }
-    }
-
-    if (delta1 == 0 && delta2 == 0) return;
-
-    // ----------------------------------------
-    Params_ScrollWheelEventCallback params(0, 0, 0,
-                                           0, 0, 0,
-                                           0, 0, 0,
-                                           0);
-
-    params.deltaAxis1 = (delta1 * config.pointing_relative2scroll_rate) / 1000;
-    if (params.deltaAxis1 == 0 && delta1 != 0) {
-      params.deltaAxis1 = delta1 > 0 ? 1 : -1;
-    }
-    params.deltaAxis2 = (delta2 * config.pointing_relative2scroll_rate) / 1000;
-    if (params.deltaAxis2 == 0 && delta2 != 0) {
-      params.deltaAxis2 = delta2 > 0 ? 1 : -1;
-    }
-
-    // ----------------------------------------
-    params.fixedDelta1 = (delta1 * POINTING_FIXED_SCALE * config.pointing_relative2scroll_rate) / 1000;
-    params.fixedDelta2 = (delta2 * POINTING_FIXED_SCALE * config.pointing_relative2scroll_rate) / 1000;
-
-    params.pointDelta1 = (delta1 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1000;
-    params.pointDelta2 = (delta2 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1000;
-
-    fireScrollWheel(params);
-  }
-
   // ----------------------------------------------------------------------
   bool
   KeyOverlaidModifier::remap(RemapParams& remapParams,
@@ -714,46 +754,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ------------------------------------------------------------
-  bool
-  PointingRelativeToScroll::remap(RemapPointingParams_relative& remapParams, const Buttons& buttons, const Flags& fromFlags)
-  {
-    if (! FlagStatus::makeFlags().isOn(fromFlags)) return false;
-
-    if (buttons == PointingButton::NONE) {
-      FlagStatus::temporary_decrease(fromFlags);
-      RemapUtil::pointingRelativeToScroll(remapParams);
-      return true;
-    }
-
-    if (remapParams.params.buttons.isOn(buttons)) {
-      // if the source buttons contains left button, we cancel left click for iPhoto, or some applications.
-      // iPhoto store the scroll events when left button is pressed, and restore events after left button is released.
-      // PointingRelativeToScroll doesn't aim it, we release the left button and do normal scroll event.
-      if (buttons.isOn(PointingButton::LEFT)) {
-        if (! isButtonHeldDown_) {
-          RemapUtil::fireRelativePointer(Params_RelativePointerEventCallback(PointingButton::NONE, 0, 0));
-        }
-      }
-
-      isButtonHeldDown_ = true;
-      FlagStatus::temporary_decrease(fromFlags);
-      RemapUtil::pointingRelativeToScroll(remapParams);
-
-      return true;
-
-    } else {
-      // ignore button up event.
-      if (isButtonHeldDown_) {
-        isButtonHeldDown_ = false;
-        remapParams.isremapped = true;
-
-        return true;
-      }
-
-      return false;
-    }
-  }
-
   const Buttons&
   RemapUtil::getRemappedButtons(void)
   {
