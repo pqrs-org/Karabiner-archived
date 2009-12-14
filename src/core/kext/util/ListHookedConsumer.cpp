@@ -40,7 +40,8 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                  flavor, guid, repeat);
       CommonData::setcurrent_ts(ts);
 
-      if (params.eventType == EventType::DOWN) {
+      if (params.eventType == EventType::DOWN &&
+          params.repeat == false) {
         EventWatcher::on();
       }
 

@@ -1,3 +1,4 @@
+#include "Config.hpp"
 #include "EventWatcher.hpp"
 #include "RemapUtil.hpp"
 #include "IOLockWrapper.hpp"
@@ -33,6 +34,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   EventWatcher::on(void)
   {
     IOLockWrapper::ScopedLock lk(lock_);
+
+    if (config.debug_devel) {
+      IOLog("KeyRemap4MacBook -Info- EventWatcher::on\n");
+    }
 
     for (int i = 0; i < MAXNUM; ++i) {
       if (item_[i]) {

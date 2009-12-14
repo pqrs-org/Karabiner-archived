@@ -46,7 +46,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       CommonData::setcurrent_ts(ts);
       CommonData::setcurrent_keyboardType(keyboardType);
 
-      if (params.eventType.isKeyDownOrModifierDown(params.key, params.flags)) {
+      if (params.eventType.isKeyDownOrModifierDown(params.key, params.flags) &&
+          params.repeat == false) {
         EventWatcher::on();
       }
 
