@@ -428,37 +428,67 @@ namespace org_pqrs_KeyRemap4MacBook {
     remapParams.isremapped = true;
 
     // ----------------------------------------
-    int delta1 = -remapParams.params.dy;
-    int delta2 = -remapParams.params.dx;
+    // Buffer processing
+    buffered_delta1 += -remapParams.params.dy;
+    buffered_delta2 += -remapParams.params.dx;
+
+    // buffer events in 20ms (60fps)
+    if (buffered_ic_.getmillisec() < 20) {
+      return;
+    }
+
+    int delta1 = buffered_delta1;
+    int delta2 = buffered_delta2;
+    buffered_delta1 = 0;
+    buffered_delta2 = 0;
+    buffered_ic_.begin();
 
     if (config.option_pointing_disable_vertical_scroll) delta1 = 0;
     if (config.option_pointing_disable_horizontal_scroll) delta2 = 0;
 
     // ----------------------------------------
     // ignore minuscule move
-    int abs1 = delta1 > 0 ? delta1 : -delta1;
-    int abs2 = delta2 > 0 ? delta2 : -delta2;
+
+    // When 300ms passes from the last event, we reset a value.
+    if (continuous_ic_.getmillisec() > 300) {
+      continuous_delta1 = 0;
+      continuous_delta2 = 0;
+    }
+
+    // check minuscule move
+    int abs1 = (delta1 > 0 ? delta1 : -delta1);
+    int abs2 = (delta2 > 0 ? delta2 : -delta2);
     const int SCALE = 1000;
 
-    //  y              2
-    // --- * SCALE >  --- * SCALE
-    //  x              1
+    int checkval1 = continuous_delta1 + abs1;
+    int checkval2 = continuous_delta2 + abs2;
 
-    if (abs1 > abs2) {
-      // case y > x (ignore x if x is very small)
-      if (abs2) {
-        if ((abs1 * SCALE / abs2) > (2 * SCALE)) {
+    if (checkval1 > checkval2) {
+      // We ignore delta2 if delta satisfy the following conditions.
+      //
+      //  cv1                 2
+      // ----- * SCALE   >   --- * SCALE
+      //  cv2                 1
+
+      if (checkval2) {
+        if ((checkval1 * SCALE / checkval2) > (2 * SCALE)) {
           delta2 = 0;
         }
       }
-    }
-    if (abs1 < abs2) {
-      if (abs1) {
-        if ((abs2 * SCALE / abs1) > (2 * SCALE)) {
+    } else {
+      if (checkval1) {
+        if ((checkval2 * SCALE / checkval1) > (2 * SCALE)) {
           delta1 = 0;
         }
       }
     }
+
+#if 1
+    // XXX: execute only if dynamic scroll lock is enable
+    continuous_delta1 += (delta1 > 0 ? delta1 : -delta1);
+    continuous_delta2 += (delta2 > 0 ? delta2 : -delta2);
+#endif
+    continuous_ic_.begin();
 
     if (delta1 == 0 && delta2 == 0) return;
 
