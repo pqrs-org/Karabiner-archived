@@ -96,42 +96,42 @@
   [self outputMouseDragged:event name:@"mouseDragged"];
 }
 
-- (void) rightMouseDown:(NSEvent *)event
+- (void) rightMouseDown:(NSEvent*)event
 {
   [self outputMouseDownUp:event name:@"rightMouseDown"];
 }
 
-- (void) rightMouseUp:(NSEvent *)event
+- (void) rightMouseUp:(NSEvent*)event
 {
   [self outputMouseDownUp:event name:@"rightMouseUp"];
 }
 
-- (void) rightMouseDragged:(NSEvent *)event
+- (void) rightMouseDragged:(NSEvent*)event
 {
   [self outputMouseDragged:event name:@"rightMouseDragged"];
 }
 
-- (void) otherMouseDown:(NSEvent *)event
+- (void) otherMouseDown:(NSEvent*)event
 {
   [self outputMouseDownUp:event name:@"otherMouseDown"];
 }
 
-- (void) otherMouseUp:(NSEvent *)event
+- (void) otherMouseUp:(NSEvent*)event
 {
   [self outputMouseDownUp:event name:@"otherMouseUp"];
 }
 
-- (void) otherMouseDragged:(NSEvent *)event
+- (void) otherMouseDragged:(NSEvent*)event
 {
   [self outputMouseDragged:event name:@"otherMouseDragged"];
 }
 
-- (void) scrollWheel:(NSEvent *)event
+- (void) scrollWheel:(NSEvent*)event
 {
   [self output:[NSString stringWithFormat:@"scrollWheel\tdeltaX:%.03f\tdeltaY:%.03f\tdeltaZ:%.03f\tflags:%@", [event deltaX], [event deltaY], [event deltaZ], [self modifierFlagsToString:[event modifierFlags]]]];
 }
 
-- (void) swipeWithEvent:(NSEvent *)event
+- (void) swipeWithEvent:(NSEvent*)event
 {
   [self output:[NSString stringWithFormat:@"swipeWithEvent\tdeltaX:%.03f\tdeltaY:%.03f\tflags:%@", [event deltaX], [event deltaY], [self modifierFlagsToString:[event modifierFlags]]]];
 }

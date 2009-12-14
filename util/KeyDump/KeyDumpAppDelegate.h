@@ -9,12 +9,12 @@
 #import <Cocoa/Cocoa.h>
 
 @interface KeyDumpAppDelegate : NSObject <NSApplicationDelegate> {
-  NSWindow *window;
+  NSWindow* window;
   IBOutlet id _keyResponder;
   IBOutlet id _result;
 }
 
-@property (assign) IBOutlet NSWindow *window;
+@property (assign) IBOutlet NSWindow* window;
 
 //
 // Actions
