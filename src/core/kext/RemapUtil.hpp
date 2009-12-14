@@ -279,7 +279,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool remap(RemapParams& remapParams, const KeyCode& fromKeyCode, const Flags& fromFlags, const KeyCode& toKeyCode);
 
   private:
-    bool isAnyEventHappen_;
     IntervalChecker ic_;
     RemapUtil::KeyToKey keytokey_;
   };
