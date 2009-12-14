@@ -151,6 +151,19 @@ namespace org_pqrs_KeyRemap4MacBook {
       PointingButtonToPointingButton buttontobutton_;
     };
 
+
+    // ----------------------------------------
+    class PointingRelativeToScroll {
+    public:
+      bool remap(RemapPointingParams_relative& remapParams, const Buttons& buttons = 0, const Flags& fromFlags = 0);
+
+    private:
+      void toscroll(RemapPointingParams_relative& remapParams);
+
+      bool active_;
+      IntervalChecker ic_;
+    };
+
     // ----------------------------------------
     void fireKey(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
     void fireKey_downup(const Flags& flags, const KeyCode& key, const KeyboardType& keyboardType,
@@ -161,7 +174,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void fireScrollWheel(const Params_ScrollWheelEventCallback& params);
 
     // ----------------------------------------
-    void pointingRelativeToScroll(RemapPointingParams_relative& remapParams);
     const Buttons& getRemappedButtons(void);
   }
 
@@ -289,15 +301,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   private:
     unsigned int lastkeycode_; // save as 'unsigned int' to avoid ___cxa_guard_acquire.
-  };
-
-  // ----------------------------------------
-  class PointingRelativeToScroll {
-  public:
-    bool remap(RemapPointingParams_relative& remapParams, const Buttons& buttons = 0, const Flags& fromFlags = 0);
-
-  private:
-    bool isButtonHeldDown_;
   };
 }
 
