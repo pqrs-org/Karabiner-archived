@@ -96,7 +96,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool operator==(const KeyCode& other) const { return value_ == other.get(); }
     bool operator!=(const KeyCode& other) const { return ! (*this == other); }
 
-    bool operator> (const KeyCode& other) const { return value_ > other.get(); }
+    bool operator>(const KeyCode& other) const { return value_ > other.get(); }
     bool operator>=(const KeyCode& other) const { return value_ >= other.get(); }
 
     void normalizeKey(Flags& flags, const KeyboardType& keyboardType);
@@ -160,7 +160,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool operator==(const ConsumerKeyCode& other) const { return value_ == other.get(); }
     bool operator!=(const ConsumerKeyCode& other) const { return ! (*this == other); }
 
-    bool operator> (const ConsumerKeyCode& other) const { return value_ > other.get(); }
+    bool operator>(const ConsumerKeyCode& other) const { return value_ > other.get(); }
     bool operator>=(const ConsumerKeyCode& other) const { return value_ >= other.get(); }
 
 #include "keycode/output/include.ConsumerKeyCode.hpp"
