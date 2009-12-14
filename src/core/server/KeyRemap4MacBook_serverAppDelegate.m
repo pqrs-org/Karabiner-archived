@@ -69,7 +69,7 @@
 }
 
 // ------------------------------------------------------------
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+- (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
   [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
                                                       selector:@selector(observer_NSWorkspaceDidActivateApplicationNotification:)
                                                       name:NSWorkspaceDidActivateApplicationNotification
@@ -81,9 +81,9 @@
                                                       object:nil];
 
   [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
-                                                      selector:@selector(observer_NSWorkspaceSessionDidResignActiveNotification:)
-                                                      name:NSWorkspaceSessionDidResignActiveNotification
-                                                      object:nil];
+                                                         selector:@selector(observer_NSWorkspaceSessionDidResignActiveNotification:)
+                                                             name:NSWorkspaceSessionDidResignActiveNotification
+                                                           object:nil];
 
   // ------------------------------------------------------------
   char buffer[512];
@@ -92,8 +92,12 @@
 
   // ------------------------------------------------------------
   sysctl_reset();
-  [NSThread detachNewThreadSelector:@selector(threadMain) toTarget:self withObject:nil];
-  [NSThread detachNewThreadSelector:@selector(configThreadMain) toTarget:self withObject:nil];
+  [NSThread detachNewThreadSelector:@selector(threadMain)
+                           toTarget:self
+                         withObject:nil];
+  [NSThread detachNewThreadSelector:@selector(configThreadMain)
+                           toTarget:self
+                         withObject:nil];
 }
 
 - (void) applicationWillTerminate:(NSNotification*)aNotification {
