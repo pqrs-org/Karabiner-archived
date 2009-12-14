@@ -33,10 +33,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! hp) return;
 
       // ------------------------------------------------------------
-      EventWatcher::countup();
-
       Params_RelativePointerEventCallback params(buttons, dx, dy);
       CommonData::setcurrent_ts(ts);
+
+      if (! params.buttons.isNONE()) {
+        EventWatcher::on();
+      }
 
       Core::remap_RelativePointerEventCallback(params);
     }
@@ -64,13 +66,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! hp) return;
 
       // ------------------------------------------------------------
-      EventWatcher::countup();
-
       Params_ScrollWheelEventCallback params(deltaAxis1, deltaAxis2, deltaAxis3,
                                              fixedDelta1, fixedDelta2, fixedDelta3,
                                              pointDelta1, pointDelta2, pointDelta3,
                                              options);
       CommonData::setcurrent_ts(ts);
+
+      // EventWatcher::on is not necessary.
 
       Core::remap_ScrollWheelEventCallback(params);
     }

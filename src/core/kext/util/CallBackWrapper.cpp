@@ -1,7 +1,6 @@
 #include "CallBackWrapper.hpp"
 #include "CommonData.hpp"
 #include "Config.hpp"
-#include "EventWatcher.hpp"
 #include "ListHookedConsumer.hpp"
 #include "ListHookedKeyboard.hpp"
 #include "ListHookedPointing.hpp"
@@ -112,14 +111,6 @@ namespace org_pqrs_KeyRemap4MacBook {
              keyboardType.get(), repeat, ts, sender, refcon);
 
     CommonData::setcurrent_keyboardType(keyboardType);
-
-    if (eventType == EventType::DOWN) {
-      EventWatcher::on();
-    } else if (eventType == EventType::MODIFY) {
-      if (flags.isOn(key.getModifierFlag())) {
-        EventWatcher::on();
-      }
-    }
   }
 
   void
@@ -150,10 +141,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     log("sending");
     callback(target, eventType.get(), flags.get(), key.get(),
              flavor, guid, repeat, ts, sender, refcon);
-
-    if (eventType == EventType::DOWN) {
-      EventWatcher::on();
-    }
   }
 
   void
@@ -176,10 +163,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     log("sending");
     callback(target, buttons.get(), dx, dy, ts, sender, refcon);
-
-    if (! buttons.isNONE()) {
-      EventWatcher::on();
-    }
   }
 
   void
@@ -206,7 +189,5 @@ namespace org_pqrs_KeyRemap4MacBook {
              fixedDelta1, fixedDelta2, fixedDelta3,
              pointDelta1, pointDelta2, pointDelta3,
              options, ts, sender, refcon);
-
-    // EventWatcher::on is not necessary.
   }
 }

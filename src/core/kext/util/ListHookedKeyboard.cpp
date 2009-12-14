@@ -40,13 +40,15 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! hk) return;
 
       // ------------------------------------------------------------
-      EventWatcher::countup();
-
       Params_KeyboardEventCallBack params(EventType(eventType), Flags(flags), KeyCode(key),
                                           CharCode(charCode), CharSet(charSet), OrigCharCode(origCharCode), OrigCharSet(origCharSet),
                                           KeyboardType(keyboardType), repeat);
       CommonData::setcurrent_ts(ts);
       CommonData::setcurrent_keyboardType(keyboardType);
+
+      if (params.eventType.isKeyDownOrModifierDown(params.key, params.flags)) {
+        EventWatcher::on();
+      }
 
       Core::remap_KeyboardEventCallback(params);
     }
