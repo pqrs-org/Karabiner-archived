@@ -3918,7 +3918,8 @@
         </item>
         <item>
           <name>VK_JIS_TOGGLE_EISUU_KANA (KeyOverlaidModifier)</name>
-          <appendix>Command_L to Command_L (+ When you type Command_L only, send KANA/EISUU (toggle))</appendix>
+          <appendix>Command_L to Command_L</appendix>
+          <appendix>(+ When you type Command_L only, send KANA/EISUU (toggle))</appendix>
           <sysctl>remap.samples_jis_commandL2commandL_toggle_kana_eisuu</sysctl>
           <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
         </item>

@@ -161,16 +161,28 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
   NSButtonCell* cell = [tableColumn dataCell];
   if (! cell) return nil;
 
+  // ------------------------------------------------------------
   NSXMLNode* title = [_xmlTreeWrapper getNode:item xpath:@"name"];
   if (! title) return nil;
 
-  NSXMLNode* appendix = [_xmlTreeWrapper getNode:item xpath:@"appendix"];
-  if (appendix) {
-    [cell setTitle:[NSString stringWithFormat:@"%@\n  %@", [title stringValue], [appendix stringValue]]];
-  } else {
-    [cell setTitle:[title stringValue]];
+  NSMutableString* titlestring = [NSMutableString stringWithString:[title stringValue]];
+
+  NSArray* a = [item nodesForXPath:@"appendix" error:NULL];
+  if (a) {
+    NSEnumerator* e = [a objectEnumerator];
+    NSXMLNode* appendix;
+    for (;;) {
+      appendix = [e nextObject];
+      if (! appendix) break;
+
+      [titlestring appendString:@"\n  "];
+      [titlestring appendString:[appendix stringValue]];
+    }
   }
 
+  [cell setTitle:titlestring];
+
+  // ------------------------------------------------------------
   NSXMLNode* sysctl = [_xmlTreeWrapper getNode:item xpath:@"sysctl"];
   if (! sysctl) {
     [cell setImagePosition:NSNoImage];
@@ -187,12 +199,12 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
 
 - (CGFloat) outlineView:(NSOutlineView*)outlineView heightOfRowByItem:(id)item
 {
-  NSXMLNode* appendix = [_xmlTreeWrapper getNode:item xpath:@"appendix"];
-  if (appendix) {
-    return [outlineView rowHeight] * 2;
-  } else {
-    return [outlineView rowHeight];
+  NSUInteger appendixnum = 0;
+  NSArray* a = [item nodesForXPath:@"appendix" error:NULL];
+  if (a) {
+    appendixnum = [a count];
   }
+  return [outlineView rowHeight] * (1 + appendixnum);
 }
 
 - (void) outlineView:(NSOutlineView*)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn*)tableColumn byItem:(id)item
