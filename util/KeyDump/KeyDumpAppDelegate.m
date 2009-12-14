@@ -11,7 +11,7 @@
 
 @synthesize window;
 
-- (void) applicationDidFinishLaunching:(NSNotification *)aNotification {
+- (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
   NSTextView* textview = [_result documentView];
   [textview setSelectable:NO];
   [textview setEditable:NO];
