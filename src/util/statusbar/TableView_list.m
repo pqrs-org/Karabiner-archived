@@ -5,17 +5,17 @@
 
 @implementation TableView_list
 
-- (int) numberOfRowsInTableView:(NSTableView *)aTableView
+- (int) numberOfRowsInTableView:(NSTableView*)aTableView
 {
   return [ConfigList getSize];
 }
 
-- (id) tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(int)rowIndex
+- (id) tableView:(NSTableView*)aTableView objectValueForTableColumn:(NSTableColumn*)aTableColumn row:(int)rowIndex
 {
   return [ConfigList getName:rowIndex];
 }
 
-- (void)tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn row:(int)rowIndex
+- (void) tableView:(NSTableView*)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn*)aTableColumn row:(int)rowIndex
 {
   [ConfigList setName:rowIndex newName:anObject];
   [_tableView reloadData];

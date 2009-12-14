@@ -5,16 +5,16 @@
 
 - (void) configItemSelected:(id)sender
 {
-  NSString *idx = [sender representedObject];
+  NSString* idx = [sender representedObject];
   [ConfigList select:idx];
 }
 
-- (void) menuNeedsUpdate:(NSMenu *)menu
+- (void) menuNeedsUpdate:(NSMenu*)menu
 {
   // --------------------
   // clear
   for (;;) {
-    NSMenuItem *item = [_statusMenu itemAtIndex:0];
+    NSMenuItem* item = [_statusMenu itemAtIndex:0];
     if (item == nil || [[item title] isEqualToString:@"endoflist"]) break;
 
     [_statusMenu removeItemAtIndex:0];
@@ -27,8 +27,8 @@
   int size = [ConfigList getSize];
   int i = 0;
   for (i = 0; i < size; ++i) {
-    NSMenuItem *newItem = [[[NSMenuItem alloc] initWithTitle:[ConfigList getName:i] action:@selector(configItemSelected:) keyEquivalent:@""] autorelease];
-    NSString *idx = [[[NSString alloc] initWithFormat:@"%d", i] autorelease];
+    NSMenuItem* newItem = [[[NSMenuItem alloc] initWithTitle:[ConfigList getName:i] action:@selector(configItemSelected:)keyEquivalent:@""] autorelease];
+    NSString* idx = [[[NSString alloc] initWithFormat:@"%d", i] autorelease];
     [newItem setRepresentedObject:idx];
     if (selectedIndex == i) {
       [newItem setState:NSOnState];
@@ -40,13 +40,13 @@
   }
 }
 
-- (void) applicationDidFinishLaunching:(NSNotification *)notification
+- (void) applicationDidFinishLaunching:(NSNotification*)notification
 {
   if (! [ConfigList isStatusbarEnable]) {
     [NSApp terminate:self];
 
   } else {
-    NSStatusBar *statusBar = [NSStatusBar systemStatusBar];
+    NSStatusBar* statusBar = [NSStatusBar systemStatusBar];
 
     _statusItem = [statusBar statusItemWithLength:24];
     [_statusItem retain];
