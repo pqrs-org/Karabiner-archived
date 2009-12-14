@@ -3,9 +3,8 @@
 #include "IOLockWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  EventWatcher::Item EventWatcher::item_[MAXNUM];
+  bool* EventWatcher::item_[MAXNUM];
   IOLock* EventWatcher::lock_;
-  int EventWatcher::count_;
 
   void
   EventWatcher::initialize(void)
@@ -26,7 +25,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOLockWrapper::ScopedLock lk(lock_);
 
     for (int i = 0; i < MAXNUM; ++i) {
-      item_[i].flag = NULL;
+      item_[i] = NULL;
     }
   }
 
@@ -36,9 +35,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOLockWrapper::ScopedLock lk(lock_);
 
     for (int i = 0; i < MAXNUM; ++i) {
-      if (item_[i].flag && item_[i].count != count_) {
-        *(item_[i].flag) = true;
-        item_[i].flag = NULL;
+      if (item_[i]) {
+        *(item_[i]) = true;
+        item_[i] = NULL;
       }
     }
   }
@@ -50,9 +49,12 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     b = false;
     for (int i = 0; i < MAXNUM; ++i) {
-      if (item_[i].flag == NULL) {
-        item_[i].flag = &b;
-        item_[i].count = count_;
+      if (item_[i] == NULL) {
+        item_[i] = &b;
+
+        if (i == MAXNUM - 1) {
+          IOLog("KeyRemap4MacBook --Warning-- EventWatcher was filled up. Expand MAXNUM.\n");
+        }
         return;
       }
     }
@@ -64,17 +66,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOLockWrapper::ScopedLock lk(lock_);
 
     for (int i = 0; i < MAXNUM; ++i) {
-      if (item_[i].flag == &b) {
-        item_[i].flag = NULL;
+      if (item_[i] == &b) {
+        item_[i] = NULL;
       }
     }
-  }
-
-  void
-  EventWatcher::countup(void)
-  {
-    IOLockWrapper::ScopedLock lk(lock_);
-
-    ++count_;
   }
 }
