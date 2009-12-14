@@ -438,17 +438,25 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ignore minuscule move
     int abs1 = delta1 > 0 ? delta1 : -delta1;
     int abs2 = delta2 > 0 ? delta2 : -delta2;
-    int SCALE = 100;
+    const int SCALE = 1000;
+
+    //  y              2
+    // --- * SCALE >  --- * SCALE
+    //  x              1
 
     if (abs1 > abs2) {
       // case y > x (ignore x if x is very small)
       if (abs2) {
-        if ((abs1 * SCALE / abs2) > (10 * SCALE / 5)) delta2 = 0;
+        if ((abs1 * SCALE / abs2) > (2 * SCALE)) {
+          delta2 = 0;
+        }
       }
     }
     if (abs1 < abs2) {
       if (abs1) {
-        if ((abs2 * SCALE / abs1) > (10 * SCALE / 5)) delta1 = 0;
+        if ((abs2 * SCALE / abs1) > (2 * SCALE)) {
+          delta1 = 0;
+        }
       }
     }
 
@@ -460,21 +468,21 @@ namespace org_pqrs_KeyRemap4MacBook {
                                            0, 0, 0,
                                            0);
 
-    params.deltaAxis1 = (delta1 * config.pointing_relative2scroll_rate) / 1000;
+    params.deltaAxis1 = (delta1 * config.pointing_relative2scroll_rate) / 1024;
     if (params.deltaAxis1 == 0 && delta1 != 0) {
       params.deltaAxis1 = delta1 > 0 ? 1 : -1;
     }
-    params.deltaAxis2 = (delta2 * config.pointing_relative2scroll_rate) / 1000;
+    params.deltaAxis2 = (delta2 * config.pointing_relative2scroll_rate) / 1024;
     if (params.deltaAxis2 == 0 && delta2 != 0) {
       params.deltaAxis2 = delta2 > 0 ? 1 : -1;
     }
 
     // ----------------------------------------
-    params.fixedDelta1 = (delta1 * POINTING_FIXED_SCALE * config.pointing_relative2scroll_rate) / 1000;
-    params.fixedDelta2 = (delta2 * POINTING_FIXED_SCALE * config.pointing_relative2scroll_rate) / 1000;
+    params.fixedDelta1 = (delta1 * config.pointing_relative2scroll_rate) * (POINTING_FIXED_SCALE / 1024);
+    params.fixedDelta2 = (delta2 * config.pointing_relative2scroll_rate) * (POINTING_FIXED_SCALE / 1024);
 
-    params.pointDelta1 = (delta1 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1000;
-    params.pointDelta2 = (delta2 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1000;
+    params.pointDelta1 = (delta1 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1024;
+    params.pointDelta2 = (delta2 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1024;
 
     fireScrollWheel(params);
   }
