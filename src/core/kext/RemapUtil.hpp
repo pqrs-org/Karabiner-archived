@@ -161,9 +161,14 @@ namespace org_pqrs_KeyRemap4MacBook {
       void toscroll(RemapPointingParams_relative& remapParams);
 
       bool active_;
-      IntervalChecker ic_;
-      int saved_delta1;
-      int saved_delta2;
+
+      IntervalChecker buffered_ic_;
+      int buffered_delta1;
+      int buffered_delta2;
+
+      IntervalChecker continuous_ic_;
+      int continuous_delta1;
+      int continuous_delta2;
     };
 
     // ----------------------------------------
