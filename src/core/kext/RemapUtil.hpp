@@ -162,6 +162,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       bool active_;
       IntervalChecker ic_;
+      int saved_delta1;
+      int saved_delta2;
     };
 
     // ----------------------------------------
