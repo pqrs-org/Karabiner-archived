@@ -7,10 +7,10 @@
 + (int) isStatusbarEnable;
 + (int) getSelectedIndex;
 + (int) getSize;
-+ (NSString *) getName:(int)index;
-+ (void) setName:(int)index newName:(NSString *)newname;
++ (NSString*) getName:(int)index;
++ (void) setName:(int)index newName:(NSString*)newname;
 + (void) add;
 + (void) delete:(NSInteger)index;
-+ (void) select:(NSString *)idx;
++ (void) select:(NSString*)idx;
 
 @end
