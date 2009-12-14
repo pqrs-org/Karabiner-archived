@@ -83,6 +83,10 @@
               <name>CursorMove to ScrollWheel Option</name>
               <list>
                 <item>
+                  <name>Enable dynamic scrollwheel direction fixation (Horizontal/Vertical)</name>
+                  <sysctl>option.pointing_enable_scrollwheel_fixation</sysctl>
+                </item>
+                <item>
                   <name>Disable Horizontal ScrollWheel</name>
                   <sysctl>option.pointing_disable_horizontal_scroll</sysctl>
                 </item>
