@@ -3075,7 +3075,8 @@
               <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::CONTROL_L, KeyCode::JIS_EISUU</autogen>
             </item>
             <item>
-              <name>Command_L to Control_L (+ When you type Command_L only, send EISUU)</name>
+              <name>Command_L to Control_L</name>
+              <appendix>(+ When you type Command_L only, send EISUU)</appendix>
               <appendix>(+ When you type Shift+Command_L only, send ESCAPE)</appendix>
               <sysctl>remap.jis_commandL2controlL_eisuu_escape</sysctl>
               <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, VK_SHIFT, KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::ESCAPE</autogen>
@@ -3124,7 +3125,8 @@
               <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
             </item>
             <item>
-              <name>Command_R to Command_R (+ When you type Command_R only, send KANA)</name>
+              <name>Command_R to Command_R</name>
+              <appendix>(+ When you type Command_R only, send KANA)</appendix>
               <appendix>(+ When you type Shift_L+Command_R only, send Return)</appendix>
               <sysctl>remap.jis_commandR2commandR_kana_return</sysctl>
               <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, VK_SHIFT, KeyCode::COMMAND_R, ModifierFlag::SHIFT_L, KeyCode::RETURN</autogen>
