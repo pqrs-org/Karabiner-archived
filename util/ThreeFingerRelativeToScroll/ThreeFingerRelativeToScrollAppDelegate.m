@@ -13,8 +13,8 @@
 
 // ------------------------------------------------------------
 struct Finger;
-typedef void *MTDeviceRef;
-typedef int (*MTContactCallbackFunction)(int,struct Finger*,int,double,int);
+typedef void* MTDeviceRef;
+typedef int (* MTContactCallbackFunction)(int, struct Finger*, int, double, int);
 
 CFMutableArrayRef MTDeviceCreateList(void);
 void MTRegisterContactFrameCallback(MTDeviceRef, MTContactCallbackFunction);
@@ -30,7 +30,7 @@ static void sysctl_set(int newvalue) {
   system(buf);
 }
 
-static int callback(int device, struct Finger *data, int fingers, double timestamp, int frame) {
+static int callback(int device, struct Finger* data, int fingers, double timestamp, int frame) {
   static int current = 0;
   int newstatus = (fingers >= 3 ? 1 : 0);
 
@@ -46,7 +46,7 @@ static void setcallback(BOOL isset) {
   NSMutableArray* list = (NSMutableArray*)MTDeviceCreateList();
   if (! list) return;
 
-  NSEnumerator *e = [list objectEnumerator];
+  NSEnumerator* e = [list objectEnumerator];
   if (! e) return;
 
   for (;;) {
@@ -118,7 +118,7 @@ static void observer_kIOMatchedNotification(void* refcon, io_iterator_t iterator
   [self setNotification];
 
   // --------------------------------------------------
-  NSStatusBar *statusBar = [NSStatusBar systemStatusBar];
+  NSStatusBar* statusBar = [NSStatusBar systemStatusBar];
   _statusItem = [statusBar statusItemWithLength:24];
   [_statusItem retain];
 
