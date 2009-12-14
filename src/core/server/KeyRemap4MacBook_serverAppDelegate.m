@@ -71,14 +71,14 @@
 // ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
   [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
-                                                      selector:@selector(observer_NSWorkspaceDidActivateApplicationNotification:)
-                                                      name:NSWorkspaceDidActivateApplicationNotification
-                                                      object:nil];
+                                                         selector:@selector(observer_NSWorkspaceDidActivateApplicationNotification:)
+                                                             name:NSWorkspaceDidActivateApplicationNotification
+                                                           object:nil];
 
   [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
-                                                      selector:@selector(observer_NSWorkspaceSessionDidBecomeActiveNotification:)
-                                                      name:NSWorkspaceSessionDidBecomeActiveNotification
-                                                      object:nil];
+                                                         selector:@selector(observer_NSWorkspaceSessionDidBecomeActiveNotification:)
+                                                             name:NSWorkspaceSessionDidBecomeActiveNotification
+                                                           object:nil];
 
   [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
                                                          selector:@selector(observer_NSWorkspaceSessionDidResignActiveNotification:)
