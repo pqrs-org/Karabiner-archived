@@ -3,7 +3,7 @@
 
 @implementation AppController
 
-static NSString *appName = @"KeyRemap4MacBook";
+static NSString* appName = @"KeyRemap4MacBook";
 static char uninstallCommand[] = "/Library/org.pqrs/KeyRemap4MacBook/extra/uninstall.sh";
 
 - (void) setMessage
@@ -24,7 +24,7 @@ static char uninstallCommand[] = "/Library/org.pqrs/KeyRemap4MacBook/extra/unins
 }
 
 // ----------------------------------------------------------------------
-- (void) applicationDidFinishLaunching:(NSNotification *)notification
+- (void) applicationDidFinishLaunching:(NSNotification*)notification
 {
   [self setMessage];
 }
