@@ -3748,6 +3748,14 @@
           <sysctl>remap.samples_option_a2shiftL_controlLf_repeat</sysctl>
           <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::A, VK_OPTION, KeyCode::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
         </item>
+        <item>
+          <name>KeyOverlaidModifier (With VK_NONE)</name>
+          <appendix>A to Shift_L (When type only, send Space)</appendix>
+          <appendix>B to KeyCode::VK_NONE</appendix>
+          <sysctl>remap.samples_a2shiftL_space_b2vknone</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::A, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+          <autogen>--KeyToKey-- KeyCode::B, KeyCode::VK_NONE</autogen>
+        </item>
 
         <!-- ModifierHoldingKeyToKey -->
         <item>
