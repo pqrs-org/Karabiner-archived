@@ -253,6 +253,11 @@
           <sysctl>remap.backslash2forwarddelete</sysctl>
           <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::FORWARD_DELETE</autogen>
         </item>
+        <item>
+          <name>Backslash(\) to Return</name>
+          <sysctl>remap.backslash2return</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::RETURN</autogen>
+        </item>
       </list>
     </item>
 
@@ -3539,6 +3544,16 @@
               <name>Paragraph(§) to Forward Delete</name>
               <sysctl>remap.russian_paragraph2forwarddelete</sysctl>
               <autogen>--KeyToKey-- KeyCode::RUSSIAN_PARAGRAPH, KeyCode::FORWARD_DELETE</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
+          <name>Remap Tilda(~) Key</name>
+          <list>
+            <item>
+              <name>Tilda(~) to Shift_L</name>
+              <sysctl>remap.russian_tilda2shiftL</sysctl>
+              <autogen>--KeyToKey-- KeyCode::RUSSIAN_TILDA, KeyCode::SHIFT_L</autogen>
             </item>
           </list>
         </item>
