@@ -465,27 +465,29 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ----------------------------------------
     // Fixation processing
 
-    // When 300ms passes from the last event, we reset a value.
-    const uint32_t FIXATION_MILLISEC = 300;
-    if (fixation_ic_.getmillisec() > FIXATION_MILLISEC) {
-      fixation_begin_ic_.begin();
-      fixation_delta1 = 0;
-      fixation_delta2 = 0;
-    }
-    fixation_ic_.begin();
+    if (config.option_pointing_enable_scrollwheel_fixation) {
+      // When 300ms passes from the last event, we reset a value.
+      const uint32_t FIXATION_MILLISEC = 300;
+      if (fixation_ic_.getmillisec() > FIXATION_MILLISEC) {
+        fixation_begin_ic_.begin();
+        fixation_delta1 = 0;
+        fixation_delta2 = 0;
+      }
+      fixation_ic_.begin();
 
-    if (fixation_delta1 > fixation_delta2 * 2) {
-      delta2 = 0;
-    }
-    if (fixation_delta2 > fixation_delta1 * 2) {
-      delta1 = 0;
-    }
+      if (fixation_delta1 > fixation_delta2 * 2) {
+        delta2 = 0;
+      }
+      if (fixation_delta2 > fixation_delta1 * 2) {
+        delta1 = 0;
+      }
 
-    // Only first 1000ms performs the addition of fixation_delta1, fixation_delta2.
-    const uint32_t FIXATION_EARLY_MILLISEC  = 1000;
-    if (fixation_begin_ic_.getmillisec() < FIXATION_EARLY_MILLISEC) {
-      if (delta1 == 0) fixation_delta2 += abs2;
-      if (delta2 == 0) fixation_delta1 += abs1;
+      // Only first 1000ms performs the addition of fixation_delta1, fixation_delta2.
+      const uint32_t FIXATION_EARLY_MILLISEC  = 1000;
+      if (fixation_begin_ic_.getmillisec() < FIXATION_EARLY_MILLISEC) {
+        if (delta1 == 0) fixation_delta2 += abs2;
+        if (delta2 == 0) fixation_delta1 += abs1;
+      }
     }
 
     // ----------------------------------------
