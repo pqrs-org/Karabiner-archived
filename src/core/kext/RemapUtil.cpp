@@ -481,15 +481,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       delta1 = 0;
     }
 
-    if (config.option_pointing_enable_scrollwheel_fixation) {
-      // Only first 1000ms performs the addition of fixation_delta1, fixation_delta2.
-      const uint32_t FIXATION_EARLY_MILLISEC  = 1000;
-      if (fixation_begin_ic_.getmillisec() < FIXATION_EARLY_MILLISEC) {
-        if (delta1 == 0) fixation_delta2 += abs2;
-        if (delta2 == 0) fixation_delta1 += abs1;
-      }
+    // Only first 1000ms performs the addition of fixation_delta1, fixation_delta2.
+    const uint32_t FIXATION_EARLY_MILLISEC  = 1000;
+    if (fixation_begin_ic_.getmillisec() < FIXATION_EARLY_MILLISEC) {
+      if (delta1 == 0) fixation_delta2 += abs2;
+      if (delta2 == 0) fixation_delta1 += abs1;
     }
-
 
     // ----------------------------------------
     if (delta1 == 0 && delta2 == 0) return;
