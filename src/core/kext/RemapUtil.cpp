@@ -623,6 +623,68 @@ namespace org_pqrs_KeyRemap4MacBook {
       RemapUtil::fireKey(params, workspacedata);
       return true;
     }
+
+    namespace {
+      // It is processing specialized in Japanese Kotoeri.
+      void
+      jis_firekeytoinputdetail(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata,
+                               KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail inputmodedetail)
+      {
+        if (inputmodedetail == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_ROMAN) {
+          RemapUtil::fireKey_downup(Flags(0), KeyCode::JIS_EISUU, params.keyboardType, workspacedata);
+          return;
+        }
+
+        if (inputmodedetail == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE ||
+            inputmodedetail == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_HIRAGANA) {
+          RemapUtil::fireKey_downup(Flags(0), KeyCode::JIS_KANA, params.keyboardType, workspacedata);
+          return;
+        }
+
+        if (inputmodedetail == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_KATAKANA) {
+          RemapUtil::fireKey_downup(ModifierFlag::SHIFT_L, KeyCode::JIS_KANA, params.keyboardType, workspacedata);
+          return;
+        }
+      }
+    }
+
+    class Handle_VK_JIS_TEMPORARY_EISUU {
+    public:
+      static bool handle(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
+        if (params.key != KeyCode::VK_JIS_TEMPORARY_EISUU) return false;
+
+        if (params.eventType == EventType::DOWN) {
+          savedinputmodedetail_ = workspacedata.inputmodedetail;
+          RemapUtil::fireKey_downup(params.flags, KeyCode::JIS_EISUU, params.keyboardType, workspacedata);
+        } else {
+          jis_firekeytoinputdetail(params, workspacedata, savedinputmodedetail_);
+        }
+        return true;
+      }
+
+    private:
+      static KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail savedinputmodedetail_;
+    };
+    KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail Handle_VK_JIS_TEMPORARY_EISUU::savedinputmodedetail_;
+
+    class Handle_VK_JIS_TEMPORARY_KANA {
+    public:
+      static bool handle(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
+        if (params.key != KeyCode::VK_JIS_TEMPORARY_KANA) return false;
+
+        if (params.eventType == EventType::DOWN) {
+          savedinputmodedetail_ = workspacedata.inputmodedetail;
+          RemapUtil::fireKey_downup(params.flags, KeyCode::JIS_KANA, params.keyboardType, workspacedata);
+        } else {
+          jis_firekeytoinputdetail(params, workspacedata, savedinputmodedetail_);
+        }
+        return true;
+      }
+
+    private:
+      static KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail savedinputmodedetail_;
+    };
+    KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail Handle_VK_JIS_TEMPORARY_KANA::savedinputmodedetail_;
   }
 
   void
@@ -636,6 +698,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (handle_VK_JIS_EISUU_x2(p, workspacedata)) return;
     if (handle_VK_JIS_KANA_x2(p, workspacedata)) return;
     if (handle_VK_JIS_BACKSLASH(p, workspacedata)) return;
+    if (Handle_VK_JIS_TEMPORARY_EISUU::handle(p, workspacedata)) return;
+    if (Handle_VK_JIS_TEMPORARY_KANA::handle(p, workspacedata)) return;
 
     // ------------------------------------------------------------
     p.key.reverseNormalizeKey(p.flags, p.keyboardType);

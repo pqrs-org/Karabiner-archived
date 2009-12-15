@@ -3977,6 +3977,18 @@
           <sysctl>remap.samples_a2jisbackslash</sysctl>
           <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_JIS_BACKSLASH</autogen>
         </item>
+        <item>
+          <name>VK_JIS_TEMPORARY_EISUU</name>
+          <appendix>Use A as A,I,VK_JIS_TEMPORARY_EISUU,U,E</appendix>
+          <sysctl>remap.samples_vk_jis_temporary_eisuu</sysctl>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::A, KeyCode::I, KeyCode::VK_JIS_TEMPORARY_EISUU, KeyCode::U, KeyCode::E</autogen>
+        </item>
+        <item>
+          <name>VK_JIS_TEMPORARY_KANA</name>
+          <appendix>Use A as A,I,VK_JIS_TEMPORARY_KANA,U,E</appendix>
+          <sysctl>remap.samples_vk_jis_temporary_kana</sysctl>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::A, KeyCode::I, KeyCode::VK_JIS_TEMPORARY_KANA, KeyCode::U, KeyCode::E</autogen>
+        </item>
       </list>
     </item>
   </list>
