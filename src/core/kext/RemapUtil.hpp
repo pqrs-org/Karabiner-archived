@@ -35,32 +35,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // --------------------------------------------------
       // Combination
-      bool remap(RemapParams& remapParams,
-                 const KeyCode& fromKeyCode, const Flags& fromFlags,
-                 const KeyCode& toKeyCode1,  const Flags& toFlags1,
-                 const KeyCode& toKeyCode2,  const Flags& toFlags2 = ModifierFlag::NONE);
-
-      // no-toFlag1 version.
-      bool remap(RemapParams& remapParams,
-                 const KeyCode& fromKeyCode, const Flags& fromFlags,
-                 const KeyCode& toKeyCode1,
-                 const KeyCode& toKeyCode2,  const Flags& toFlags2 = ModifierFlag::NONE) {
-        return remap(remapParams, fromKeyCode, fromFlags, toKeyCode1, ModifierFlag::NONE, toKeyCode2, toFlags2);
-      }
-      // no fromFlags version.
-      bool remap(RemapParams& remapParams,
-                 const KeyCode& fromKeyCode,
-                 const KeyCode& toKeyCode1,  const Flags& toFlags1,
-                 const KeyCode& toKeyCode2,  const Flags& toFlags2 = ModifierFlag::NONE) {
-        return remap(remapParams, fromKeyCode, 0, toKeyCode1, toFlags1, toKeyCode2, toFlags2);
-      }
-      // no fromFlags, toFlags1 version
-      bool remap(RemapParams& remapParams,
-                 const KeyCode& fromKeyCode,
-                 const KeyCode& toKeyCode1,
-                 const KeyCode& toKeyCode2,  const Flags& toFlags2 = ModifierFlag::NONE) {
-        return remap(remapParams, fromKeyCode, 0, toKeyCode1, ModifierFlag::NONE, toKeyCode2, toFlags2);
-      }
+#include "generate/output/include.keytokey.hpp"
 
     private:
       bool active_;
