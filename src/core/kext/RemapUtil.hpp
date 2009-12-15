@@ -166,9 +166,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       int buffered_delta1;
       int buffered_delta2;
 
-      IntervalChecker continuous_ic_;
-      int continuous_delta1;
-      int continuous_delta2;
+      IntervalChecker fixation_ic_;
+      IntervalChecker fixation_begin_ic_;
+      int fixation_delta1;
+      int fixation_delta2;
     };
 
     // ----------------------------------------

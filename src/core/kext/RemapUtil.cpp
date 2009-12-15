@@ -429,11 +429,14 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ----------------------------------------
     // Buffer processing
+
+    // buffer events in 20ms (60fps)
+    const uint32_t BUFFER_MILLISEC = 20;
+
     buffered_delta1 += -remapParams.params.dy;
     buffered_delta2 += -remapParams.params.dx;
 
-    // buffer events in 20ms (60fps)
-    if (buffered_ic_.getmillisec() < 20) {
+    if (buffered_ic_.getmillisec() < BUFFER_MILLISEC) {
       return;
     }
 
@@ -443,55 +446,54 @@ namespace org_pqrs_KeyRemap4MacBook {
     buffered_delta2 = 0;
     buffered_ic_.begin();
 
+    // ----------------------------------------
     if (config.option_pointing_disable_vertical_scroll) delta1 = 0;
     if (config.option_pointing_disable_horizontal_scroll) delta2 = 0;
 
     // ----------------------------------------
     // ignore minuscule move
+    const int abs1 = (delta1 > 0 ? delta1 : -delta1);
+    const int abs2 = (delta2 > 0 ? delta2 : -delta2);
 
-    // When 300ms passes from the last event, we reset a value.
-    if (continuous_ic_.getmillisec() > 300) {
-      continuous_delta1 = 0;
-      continuous_delta2 = 0;
+    if (abs1 > abs2 * 2) {
+      delta2 = 0;
+    }
+    if (abs2 > abs1 * 2) {
+      delta1 = 0;
     }
 
-    // check minuscule move
-    int abs1 = (delta1 > 0 ? delta1 : -delta1);
-    int abs2 = (delta2 > 0 ? delta2 : -delta2);
-    const int SCALE = 1000;
+    // ----------------------------------------
+    // Fixation processing
 
-    int checkval1 = continuous_delta1 + abs1;
-    int checkval2 = continuous_delta2 + abs2;
+    // When 300ms passes from the last event, we reset a value.
+    const uint32_t FIXATION_MILLISEC = 300;
+    if (fixation_ic_.getmillisec() > FIXATION_MILLISEC) {
+      fixation_begin_ic_.begin();
+      fixation_delta1 = 0;
+      fixation_delta2 = 0;
+    }
+    fixation_ic_.begin();
 
-    if (checkval1 > checkval2) {
-      // We ignore delta2 if delta satisfy the following conditions.
-      //
-      //  cv1                 2
-      // ----- * SCALE   >   --- * SCALE
-      //  cv2                 1
-
-      if (checkval2) {
-        if ((checkval1 * SCALE / checkval2) > (2 * SCALE)) {
-          delta2 = 0;
-        }
-      }
-    } else {
-      if (checkval1) {
-        if ((checkval2 * SCALE / checkval1) > (2 * SCALE)) {
-          delta1 = 0;
-        }
-      }
+    if (fixation_delta1 > fixation_delta2 * 2) {
+      delta2 = 0;
+    }
+    if (fixation_delta2 > fixation_delta1 * 2) {
+      delta1 = 0;
     }
 
     if (config.option_pointing_enable_scrollwheel_fixation) {
-      continuous_delta1 += (delta1 > 0 ? delta1 : -delta1);
-      continuous_delta2 += (delta2 > 0 ? delta2 : -delta2);
+      // Only first 1000ms performs the addition of fixation_delta1, fixation_delta2.
+      const uint32_t FIXATION_EARLY_MILLISEC  = 1000;
+      if (fixation_begin_ic_.getmillisec() < FIXATION_EARLY_MILLISEC) {
+        if (delta1 == 0) fixation_delta2 += abs2;
+        if (delta2 == 0) fixation_delta1 += abs1;
+      }
     }
-    continuous_ic_.begin();
 
-    if (delta1 == 0 && delta2 == 0) return;
 
     // ----------------------------------------
+    if (delta1 == 0 && delta2 == 0) return;
+
     Params_ScrollWheelEventCallback params(0, 0, 0,
                                            0, 0, 0,
                                            0, 0, 0,
