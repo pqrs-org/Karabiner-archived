@@ -3680,6 +3680,12 @@
           <sysctl>remap.samples_controlA2shiftLa_controlLc</sysctl>
           <autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::A, ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
         </item>
+        <item>
+          <name>KeyToKey (Combination Full)</name>
+          <appendix>A to B, C, Shift_L+D, E, Control_L+F</appendix>
+          <sysctl>remap.samples_a2bcdef</sysctl>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::B, KeyCode::C, KeyCode::D, ModifierFlag::SHIFT_L, KeyCode::E, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
+        </item>
 
         <!-- KeyToConsumer -->
         <item>
