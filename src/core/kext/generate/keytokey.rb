@@ -35,7 +35,7 @@ makeset(num+1).each do |omitflags|
     code += ", fromFlags"
   else
     print "           const KeyCode& fromKeyCode,\n"
-    code += ", 0"
+    code += ", Flags(0)"
   end
 
   i = 1
