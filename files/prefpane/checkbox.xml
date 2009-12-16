@@ -773,6 +773,11 @@
           <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::COMMAND_L</autogen>
         </item>
         <item>
+          <name>Escape to Command_R Lock</name>
+          <sysctl>remap.escape2commandR_lock</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_LOCK_COMMAND_R</autogen>
+        </item>
+        <item>
           <name>Escape to Option_L</name>
           <sysctl>remap.escape2optionL</sysctl>
           <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::OPTION_L</autogen>
@@ -987,7 +992,7 @@
           <name>F6 to NumLock</name>
           <sysctl>remap.f6_to_numlock</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToKey-- KeyCode::F6, KeyCode::VK_FNLOCK</autogen>
+          <autogen>--KeyToKey-- KeyCode::F6, KeyCode::VK_LOCK_FN</autogen>
         </item>
         <item>
           <name>F7 to Music Prev</name>
@@ -3948,10 +3953,16 @@
 
         <!-- Virtual KeyCode -->
         <item>
-          <name>VK_FNLOCK</name>
+          <name>VK_LOCK_FN</name>
           <appendix>Use A to numlock</appendix>
           <sysctl>remap.samples_a2numlock</sysctl>
-          <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_FNLOCK</autogen>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_LOCK_FN</autogen>
+        </item>
+        <item>
+          <name>VK_LOCK_COMMAND_R</name>
+          <appendix>Use A to Command_R Lock</appendix>
+          <sysctl>remap.samples_a2commandRlock</sysctl>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_LOCK_COMMAND_R</autogen>
         </item>
         <item>
           <name>VK_JIS_TOGGLE_EISUU_KANA (Standard)</name>
