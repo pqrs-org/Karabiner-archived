@@ -30,8 +30,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool operator==(const KeyboardType& other) const { return value_ == other.get(); }
     bool operator!=(const KeyboardType& other) const { return ! (*this == other); }
 
-    bool isInternalKeyboard(void) const;
-
 #include "keycode/output/include.KeyboardType.hpp"
 
   private:
