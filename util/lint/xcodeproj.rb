@@ -1,7 +1,7 @@
 #!/usr/bin/ruby
 
 $lines = []
-while l = gets
+while l = $stdin.gets
   $lines << l.strip
 end
 
@@ -15,6 +15,9 @@ def parseline(line)
 end
 
 def check_value(name, value)
+  return if ARGV.include?(name)
+  print "  check #{name}\n"
+
   isexist = false
   $lines.each do |l|
     (linename, linevalue) = parseline(l)
