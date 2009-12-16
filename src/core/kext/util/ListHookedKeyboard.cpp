@@ -1,3 +1,4 @@
+#include <IOKit/hid/IOHIDKeys.h>
 #include "CommonData.hpp"
 #include "Config.hpp"
 #include "Core.hpp"
@@ -64,7 +65,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   HookedKeyboard::initialize(IOHIDevice* d)
   {
+    if (! d) return false;
+
     const char* name = d->getName();
+    if (! name) return false;
+
     if (strcmp(name, "IOHIDConsumer") == 0) return false;
     if (HookedDevice::isIgnoreDevice(d)) return false;
 
@@ -79,7 +84,24 @@ namespace org_pqrs_KeyRemap4MacBook {
       isAppleDriver_ = false;
     }
 
-    isInternalKeyboard_ = KeyboardType(device_->deviceType()).isInternalKeyboard();
+    // ------------------------------------------------------------
+    // set isInternalKeyboard_
+    //
+    // We judge it from a product name whether it is internal keyboard.
+    // We cannot use the KeyboardType,
+    // because some external keyboard has the same KeyboardType as Apple internal keyboard.
+
+    const OSString* productname = NULL;
+    productname = OSDynamicCast(OSString, device_->getProperty(kIOHIDProductKey));
+    if (productname) {
+      const char* pname = productname->getCStringNoCopy();
+      if (pname) {
+        const char* internalname = "Apple Internal ";
+        if (strncmp(internalname, pname, strlen(internalname)) == 0) {
+          isInternalKeyboard_ = true;
+        }
+      }
+    }
 
     return refresh();
   }
