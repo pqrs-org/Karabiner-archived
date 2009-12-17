@@ -30,29 +30,29 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (flags.isOn(ModifierFlag::FN)) {
       // Note: KEYPAD_CLEAR has no ModifierFlag::KEYPAD bit.
-      if (*this == KeyCode::KEYPAD_0)        { *this = KeyCode::M;            flags.stripFN().stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_1)        { *this = KeyCode::J;            flags.stripFN().stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_2)        { *this = KeyCode::K;            flags.stripFN().stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_3)        { *this = KeyCode::L;            flags.stripFN().stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_4)        { *this = KeyCode::U;            flags.stripFN().stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_5)        { *this = KeyCode::I;            flags.stripFN().stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_6)        { *this = KeyCode::O;            flags.stripFN().stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_7)        { *this = KeyCode::KEY_7;        flags.stripFN().stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_8)        { *this = KeyCode::KEY_8;        flags.stripFN().stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_9)        { *this = KeyCode::KEY_9;        flags.stripFN().stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_CLEAR)    { *this = KeyCode::KEY_6;        flags.stripFN(); }
-      if (*this == KeyCode::KEYPAD_PLUS)     { *this = KeyCode::SLASH;        flags.stripFN().stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_MINUS)    { *this = KeyCode::SEMICOLON;    flags.stripFN().stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_MULTIPLY) { *this = KeyCode::P;            flags.stripFN().stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_SLASH)    { *this = KeyCode::KEY_0;        flags.stripFN().stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_EQUAL)    { *this = KeyCode::MINUS;        flags.stripFN().stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_DOT)      { *this = KeyCode::DOT;          flags.stripFN().stripKEYPAD(); }
-      if (*this == KeyCode::PAGEUP)          { *this = KeyCode::CURSOR_UP;    flags.stripFN().add(ModifierFlag::CURSOR); }
-      if (*this == KeyCode::PAGEDOWN)        { *this = KeyCode::CURSOR_DOWN;  flags.stripFN().add(ModifierFlag::CURSOR); }
-      if (*this == KeyCode::HOME)            { *this = KeyCode::CURSOR_LEFT;  flags.stripFN().add(ModifierFlag::CURSOR); }
-      if (*this == KeyCode::END)             { *this = KeyCode::CURSOR_RIGHT; flags.stripFN().add(ModifierFlag::CURSOR); }
-      if (*this == KeyCode::ENTER)           { *this = KeyCode::RETURN;       flags.stripFN(); }
-      if (*this == KeyCode::FORWARD_DELETE)  { *this = KeyCode::DELETE;       flags.stripFN(); }
+      if (*this == KeyCode::KEYPAD_0)        { *this = KeyCode::M;            flags.stripKEYPAD(); }
+      if (*this == KeyCode::KEYPAD_1)        { *this = KeyCode::J;            flags.stripKEYPAD(); }
+      if (*this == KeyCode::KEYPAD_2)        { *this = KeyCode::K;            flags.stripKEYPAD(); }
+      if (*this == KeyCode::KEYPAD_3)        { *this = KeyCode::L;            flags.stripKEYPAD(); }
+      if (*this == KeyCode::KEYPAD_4)        { *this = KeyCode::U;            flags.stripKEYPAD(); }
+      if (*this == KeyCode::KEYPAD_5)        { *this = KeyCode::I;            flags.stripKEYPAD(); }
+      if (*this == KeyCode::KEYPAD_6)        { *this = KeyCode::O;            flags.stripKEYPAD(); }
+      if (*this == KeyCode::KEYPAD_7)        { *this = KeyCode::KEY_7;        flags.stripKEYPAD(); }
+      if (*this == KeyCode::KEYPAD_8)        { *this = KeyCode::KEY_8;        flags.stripKEYPAD(); }
+      if (*this == KeyCode::KEYPAD_9)        { *this = KeyCode::KEY_9;        flags.stripKEYPAD(); }
+      if (*this == KeyCode::KEYPAD_CLEAR)    { *this = KeyCode::KEY_6; }
+      if (*this == KeyCode::KEYPAD_PLUS)     { *this = KeyCode::SLASH;        flags.stripKEYPAD(); }
+      if (*this == KeyCode::KEYPAD_MINUS)    { *this = KeyCode::SEMICOLON;    flags.stripKEYPAD(); }
+      if (*this == KeyCode::KEYPAD_MULTIPLY) { *this = KeyCode::P;            flags.stripKEYPAD(); }
+      if (*this == KeyCode::KEYPAD_SLASH)    { *this = KeyCode::KEY_0;        flags.stripKEYPAD(); }
+      if (*this == KeyCode::KEYPAD_EQUAL)    { *this = KeyCode::MINUS;        flags.stripKEYPAD(); }
+      if (*this == KeyCode::KEYPAD_DOT)      { *this = KeyCode::DOT;          flags.stripKEYPAD(); }
+      if (*this == KeyCode::PAGEUP)          { *this = KeyCode::CURSOR_UP;    flags.add(ModifierFlag::CURSOR); }
+      if (*this == KeyCode::PAGEDOWN)        { *this = KeyCode::CURSOR_DOWN;  flags.add(ModifierFlag::CURSOR); }
+      if (*this == KeyCode::HOME)            { *this = KeyCode::CURSOR_LEFT;  flags.add(ModifierFlag::CURSOR); }
+      if (*this == KeyCode::END)             { *this = KeyCode::CURSOR_RIGHT; flags.add(ModifierFlag::CURSOR); }
+      if (*this == KeyCode::ENTER)           { *this = KeyCode::RETURN; }
+      if (*this == KeyCode::FORWARD_DELETE)  { *this = KeyCode::DELETE; }
     }
   }
 
