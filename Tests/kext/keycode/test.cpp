@@ -21,21 +21,6 @@ TEST(EventType, isKeyDownOrModifierDown) {
   EXPECT_FALSE(EventType::MODIFY.isKeyDownOrModifierDown(KeyCode::SHIFT_L, ModifierFlag::CONTROL_L));
 }
 
-TEST(KeyboardType, isInternalKeyboard) {
-  {
-    KeyboardType v(KeyboardType::MACBOOK);
-    EXPECT_EQ(true, v.isInternalKeyboard());
-  }
-  {
-    KeyboardType v(KeyboardType::JIS_APPLE_USB_KEYBOARD);
-    EXPECT_EQ(false, v.isInternalKeyboard());
-  }
-  {
-    KeyboardType v;
-    EXPECT_EQ(false, v.isInternalKeyboard());
-  }
-}
-
 TEST(ModifierFlag, get) {
   EXPECT_EQ(static_cast<unsigned int>(0x10000), ModifierFlag::CAPSLOCK.get());
 }
@@ -165,7 +150,7 @@ TEST(KeyCode, normalizeKey) {
   // ENTER_POWERBOOK(+FN) -> ENTER(+FN) -> RETURN
   key = KeyCode::ENTER_POWERBOOK; flags = ModifierFlag::SHIFT_L | ModifierFlag::FN; keyboardType = KeyboardType::POWERBOOK;
   key.normalizeKey(flags, keyboardType);
-  CHECK_NORMALIZEKEY(KeyCode::RETURN, ModifierFlag::SHIFT_L);
+  CHECK_NORMALIZEKEY(KeyCode::RETURN, ModifierFlag::SHIFT_L | ModifierFlag::FN);
 
   // normal key
   key = KeyCode::A; flags = ModifierFlag::SHIFT_L; keyboardType = KeyboardType::MACBOOK;
@@ -203,31 +188,35 @@ TEST(KeyCode, normalizeKey) {
   key.normalizeKey(flags, keyboardType);
   CHECK_NORMALIZEKEY(KeyCode::A, ModifierFlag::SHIFT_L | ModifierFlag::FN);
 
+  key = KeyCode::K; flags = ModifierFlag::SHIFT_L | ModifierFlag::FN; keyboardType = KeyboardType::MACBOOK;
+  key.normalizeKey(flags, keyboardType);
+  CHECK_NORMALIZEKEY(KeyCode::K, ModifierFlag::SHIFT_L | ModifierFlag::FN);
+
   // KEYPAD(+FN)
   for (size_t i = 0; i < sizeof(keypads) / sizeof(keypads[0]); ++i) {
     key = keypads[i][0]; flags = ModifierFlag::SHIFT_L | ModifierFlag::FN; keyboardType = KeyboardType::MACBOOK;
     if (key != KeyCode::KEYPAD_CLEAR && key != KeyCode::KEYPAD_COMMA) flags.add(ModifierFlag::KEYPAD);
     if (key == KeyCode::KEYPAD_COMMA) continue;
     key.normalizeKey(flags, keyboardType);
-    CHECK_NORMALIZEKEY(keypads[i][1], ModifierFlag::SHIFT_L);
+    CHECK_NORMALIZEKEY(keypads[i][1], ModifierFlag::SHIFT_L | ModifierFlag::FN);
   }
 
   // PAGEUP(+FN)
   for (size_t i = 0; i < sizeof(cursors) / sizeof(cursors[0]); ++i) {
     key = cursors[i][0]; flags = ModifierFlag::SHIFT_L | ModifierFlag::FN; keyboardType = KeyboardType::MACBOOK;
     key.normalizeKey(flags, keyboardType);
-    CHECK_NORMALIZEKEY(cursors[i][1], ModifierFlag::SHIFT_L | ModifierFlag::CURSOR);
+    CHECK_NORMALIZEKEY(cursors[i][1], ModifierFlag::SHIFT_L | ModifierFlag::FN | ModifierFlag::CURSOR);
   }
 
   // ENTER(+FN)
   key = KeyCode::ENTER; flags = ModifierFlag::SHIFT_L | ModifierFlag::FN; keyboardType = KeyboardType::MACBOOK;
   key.normalizeKey(flags, keyboardType);
-  CHECK_NORMALIZEKEY(KeyCode::RETURN, ModifierFlag::SHIFT_L);
+  CHECK_NORMALIZEKEY(KeyCode::RETURN, ModifierFlag::SHIFT_L | ModifierFlag::FN);
 
   // FORWARD_DELETE(+FN)
   key = KeyCode::FORWARD_DELETE; flags = ModifierFlag::SHIFT_L | ModifierFlag::FN; keyboardType = KeyboardType::MACBOOK;
   key.normalizeKey(flags, keyboardType);
-  CHECK_NORMALIZEKEY(KeyCode::DELETE, ModifierFlag::SHIFT_L);
+  CHECK_NORMALIZEKEY(KeyCode::DELETE, ModifierFlag::SHIFT_L | ModifierFlag::FN);
 }
 
 TEST(KeyCode, reverseNormalizeKey) {
