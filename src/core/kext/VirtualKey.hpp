@@ -11,7 +11,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     Handle_VK_LOCK_common(const KeyCode& k, const ModifierFlag& f) :
       active_(false), key_(k), flag_(f) {}
-    bool handle(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
+    bool handle(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
 
   private:
     bool active_;
@@ -21,14 +21,14 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   class Handle_VK_LOCK_FN {
   public:
-    static bool handle(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) { return h_.handle(params, workspacedata); }
+    static bool handle(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) { return h_.handle(params, workspacedata); }
   private:
     static Handle_VK_LOCK_common h_;
   };
 
   class Handle_VK_LOCK_COMMAND_R {
   public:
-    static bool handle(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) { return h_.handle(params, workspacedata); }
+    static bool handle(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) { return h_.handle(params, workspacedata); }
   private:
     static Handle_VK_LOCK_common h_;
   };
@@ -43,9 +43,44 @@ namespace org_pqrs_KeyRemap4MacBook {
     static KeyCode newkeycode_;
   };
 
-  bool handle_VK_JIS_EISUU_x2(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
-  bool handle_VK_JIS_KANA_x2(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
+  bool handle_VK_JIS_EISUU_x2(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
+  bool handle_VK_JIS_KANA_x2(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
   bool handle_VK_JIS_BACKSLASH(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
+
+  // ----------------------------------------------------------------------
+  class Handle_VK_JIS_TEMPORARY {
+  public:
+    static bool handle_ROMAN(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
+      return handle(params, workspacedata,
+                    KeyCode::VK_JIS_TEMPORARY_ROMAN,
+                    KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_ROMAN);
+    }
+    static bool handle_HIRAGANA(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
+      return handle(params, workspacedata,
+                    KeyCode::VK_JIS_TEMPORARY_HIRAGANA,
+                    KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_HIRAGANA);
+    }
+    static bool handle_KATAKANA(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
+      return handle(params, workspacedata,
+                    KeyCode::VK_JIS_TEMPORARY_KATAKANA,
+                    KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_KATAKANA);
+    }
+
+    static void restore(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
+
+  private:
+    static bool handle(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata,
+                       const KeyCode& key,
+                       const KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail& inputmodedetail);
+
+    static void firekeytoinputdetail(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata,
+                                     KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail inputmodedetail);
+
+    static KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail normalize(const KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail& imd);
+
+    static KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail savedinputmodedetail_;
+    static KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail currentinputmodedetail_;
+  };
 }
 
 #endif
