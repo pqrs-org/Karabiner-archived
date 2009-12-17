@@ -3705,14 +3705,18 @@
         <item>
           <name>KeyToKey (Combination)</name>
           <appendix>A to B,C</appendix>
+          <appendix>Shift_L to B,C</appendix>
           <sysctl>remap.samples_a2bc</sysctl>
           <autogen>--KeyToKey-- KeyCode::A, KeyCode::B, KeyCode::C</autogen>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::B, KeyCode::C</autogen>
         </item>
         <item>
           <name>KeyToKey (Combination With Modifiers)</name>
           <appendix>Control+A to Shift_L+A, Control_L+C</appendix>
+          <appendix>Shift_L to A, Control_L+C</appendix>
           <sysctl>remap.samples_controlA2shiftLa_controlLc</sysctl>
           <autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::A, ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::A, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
         </item>
         <item>
           <name>KeyToKey (Combination Full)</name>

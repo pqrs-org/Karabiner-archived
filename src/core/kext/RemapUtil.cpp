@@ -152,6 +152,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool result = remap(remapParams, fromKeyCode, fromFlags, toKeyCode1, toFlags1, false);
     if (! result) return false;
 
+    KeyboardRepeat::cancel();
+
     // We output keys from 2 to 5 at the time of KeyDown.
     // Because we don't know whether it is a remap target before we fire toKeyCode1's KeyUp.
     if (isKeyDown) {
