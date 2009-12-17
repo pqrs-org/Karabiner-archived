@@ -21,5 +21,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   Handle_VK_LOCK_common Handle_VK_LOCK_FN::h_(KeyCode::VK_LOCK_FN, ModifierFlag::FN);
+  Handle_VK_LOCK_common Handle_VK_LOCK_COMMAND_R::h_(KeyCode::VK_LOCK_COMMAND_R, ModifierFlag::COMMAND_R);
   // ----------------------------------------------------------------------
 }
