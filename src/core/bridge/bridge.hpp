@@ -37,6 +37,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         ECLIPSE,
       };
       enum InputMode {
+        INPUTMODE_NONE,
         INPUTMODE_ROMAN, // Roman, Password, ...
         INPUTMODE_JAPANESE, // Japanese, Japanese.*
         INPUTMODE_CHINESE_TRADITIONAL,
@@ -44,6 +45,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         INPUTMODE_KOREAN,
       };
       enum InputModeDetail {
+        INPUTMODE_DETAIL_NONE,
         INPUTMODE_DETAIL_ROMAN,
 
         INPUTMODE_DETAIL_JAPANESE_HIRAGANA,

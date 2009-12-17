@@ -4,6 +4,7 @@
 #include "KeyCode.hpp"
 #include "RemapUtil.hpp"
 #include "util/KeyboardRepeat.hpp"
+#include "VirtualKey.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace {
@@ -168,6 +169,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       FlagStatus::temporary_increase(toFlags1);
     }
+
+    Handle_VK_JIS_TEMPORARY::restore(remapParams.params, remapParams.workspacedata);
 
     return true;
   }
@@ -540,175 +543,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ------------------------------------------------------------
-  namespace {
-    class Handle_VK_LOCK_FN {
-    public:
-      static bool handle(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
-        if (params.key != KeyCode::VK_LOCK_FN) return false;
-
-        if (params.eventType == EventType::DOWN) {
-          active_ = ! active_;
-          if (active_) {
-            FlagStatus::lock_increase(ModifierFlag::FN);
-          } else {
-            FlagStatus::lock_decrease(ModifierFlag::FN);
-          }
-        }
-
-        return true;
-      }
-
-    private:
-      static bool active_;
-    };
-    bool Handle_VK_LOCK_FN::active_ = false;
-
-    class Handle_VK_LOCK_COMMAND_R {
-    public:
-      static bool handle(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
-        if (params.key != KeyCode::VK_LOCK_COMMAND_R) return false;
-
-        if (params.eventType == EventType::DOWN) {
-          active_ = ! active_;
-          if (active_) {
-            FlagStatus::lock_increase(ModifierFlag::COMMAND_R);
-          } else {
-            FlagStatus::lock_decrease(ModifierFlag::COMMAND_R);
-          }
-        }
-
-        return true;
-      }
-
-    private:
-      static bool active_;
-    };
-    bool Handle_VK_LOCK_COMMAND_R::active_ = false;
-
-    class Handle_VK_JIS_TOGGLE_EISUU_KANA {
-    public:
-      static bool handle(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
-        if (params.key != KeyCode::VK_JIS_TOGGLE_EISUU_KANA) return false;
-
-        if (params.eventType == EventType::DOWN) {
-          if (workspacedata.inputmode == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE) {
-            newkeycode_ = KeyCode::JIS_EISUU;
-          } else {
-            newkeycode_ = KeyCode::JIS_KANA;
-          }
-        }
-
-        params.key = newkeycode_;
-        RemapUtil::fireKey(params, workspacedata);
-        return true;
-      }
-
-    private:
-      // It is necessary to save toKeyCode for KeyUp.
-      static KeyCode newkeycode_;
-    };
-    KeyCode Handle_VK_JIS_TOGGLE_EISUU_KANA::newkeycode_ = KeyCode::VK_NONE;
-
-    bool
-    handle_VK_JIS_EISUU_x2(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
-    {
-      if (params.key != KeyCode::VK_JIS_EISUU_x2) return false;
-
-      if (params.eventType == EventType::DOWN) {
-        for (int i = 0; i < 2; ++i) {
-          RemapUtil::fireKey_downup(params.flags, KeyCode::JIS_EISUU, params.keyboardType, workspacedata);
-        }
-      }
-      return true;
-    }
-
-    bool
-    handle_VK_JIS_KANA_x2(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
-    {
-      if (params.key != KeyCode::VK_JIS_KANA_x2) return false;
-
-      if (params.eventType == EventType::DOWN) {
-        for (int i = 0; i < 2; ++i) {
-          RemapUtil::fireKey_downup(params.flags, KeyCode::JIS_KANA, params.keyboardType, workspacedata);
-        }
-      }
-      return true;
-    }
-
-    bool
-    handle_VK_JIS_BACKSLASH(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
-    {
-      if (params.key != KeyCode::VK_JIS_BACKSLASH) return false;
-
-      params.key = KeyCode::BACKSLASH;
-      params.keyboardType = KeyboardType::MACBOOK;
-      RemapUtil::fireKey(params, workspacedata);
-      return true;
-    }
-
-    namespace {
-      // It is processing specialized in Japanese Kotoeri.
-      void
-      jis_firekeytoinputdetail(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata,
-                               KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail inputmodedetail)
-      {
-        if (inputmodedetail == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_ROMAN) {
-          RemapUtil::fireKey_downup(Flags(0), KeyCode::JIS_EISUU, params.keyboardType, workspacedata);
-          return;
-        }
-
-        if (inputmodedetail == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE ||
-            inputmodedetail == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_HIRAGANA) {
-          RemapUtil::fireKey_downup(Flags(0), KeyCode::JIS_KANA, params.keyboardType, workspacedata);
-          return;
-        }
-
-        if (inputmodedetail == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_KATAKANA) {
-          RemapUtil::fireKey_downup(ModifierFlag::SHIFT_L, KeyCode::JIS_KANA, params.keyboardType, workspacedata);
-          return;
-        }
-      }
-    }
-
-    class Handle_VK_JIS_TEMPORARY_EISUU {
-    public:
-      static bool handle(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
-        if (params.key != KeyCode::VK_JIS_TEMPORARY_EISUU) return false;
-
-        if (params.eventType == EventType::DOWN) {
-          savedinputmodedetail_ = workspacedata.inputmodedetail;
-          RemapUtil::fireKey_downup(params.flags, KeyCode::JIS_EISUU, params.keyboardType, workspacedata);
-        } else {
-          jis_firekeytoinputdetail(params, workspacedata, savedinputmodedetail_);
-        }
-        return true;
-      }
-
-    private:
-      static KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail savedinputmodedetail_;
-    };
-    KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail Handle_VK_JIS_TEMPORARY_EISUU::savedinputmodedetail_;
-
-    class Handle_VK_JIS_TEMPORARY_KANA {
-    public:
-      static bool handle(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
-        if (params.key != KeyCode::VK_JIS_TEMPORARY_KANA) return false;
-
-        if (params.eventType == EventType::DOWN) {
-          savedinputmodedetail_ = workspacedata.inputmodedetail;
-          RemapUtil::fireKey_downup(params.flags, KeyCode::JIS_KANA, params.keyboardType, workspacedata);
-        } else {
-          jis_firekeytoinputdetail(params, workspacedata, savedinputmodedetail_);
-        }
-        return true;
-      }
-
-    private:
-      static KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail savedinputmodedetail_;
-    };
-    KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail Handle_VK_JIS_TEMPORARY_KANA::savedinputmodedetail_;
-  }
-
   void
   RemapUtil::fireKey(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
   {
@@ -721,8 +555,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (handle_VK_JIS_EISUU_x2(p, workspacedata)) return;
     if (handle_VK_JIS_KANA_x2(p, workspacedata)) return;
     if (handle_VK_JIS_BACKSLASH(p, workspacedata)) return;
-    if (Handle_VK_JIS_TEMPORARY_EISUU::handle(p, workspacedata)) return;
-    if (Handle_VK_JIS_TEMPORARY_KANA::handle(p, workspacedata)) return;
+    if (Handle_VK_JIS_TEMPORARY::handle_ROMAN(p, workspacedata)) return;
+    if (Handle_VK_JIS_TEMPORARY::handle_HIRAGANA(p, workspacedata)) return;
+    if (Handle_VK_JIS_TEMPORARY::handle_KATAKANA(p, workspacedata)) return;
 
     // ------------------------------------------------------------
     p.key.reverseNormalizeKey(p.flags, p.keyboardType);
