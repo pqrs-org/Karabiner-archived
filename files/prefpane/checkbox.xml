@@ -2242,6 +2242,14 @@
           <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT</autogen>
         </item>
         <item>
+          <name>FN+hjkl to Left/Down/Up/Right</name>
+          <sysctl>option.vimode_fn_hjkl</sysctl>
+          <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::FN, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::FN, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::FN, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::FN, KeyCode::CURSOR_RIGHT</autogen>
+        </item>
+        <item>
           <name>Command_R+g/G to Home/End</name>
           <sysctl>option.vimode_gG</sysctl>
           <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::HOME</autogen>
@@ -3706,6 +3714,17 @@
           <sysctl>remap.samples_a2bcdef</sysctl>
           <autogen>--KeyToKey-- KeyCode::A, KeyCode::B, KeyCode::C, KeyCode::D, ModifierFlag::SHIFT_L, KeyCode::E, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
         </item>
+
+        <item>
+          <name>KeyToKey (With FN+KeyPad)</name>
+          <appendix>FN+hjkl to Left/Down/Up/Right</appendix>
+          <sysctl>option.samples_vimode_fn_hjkl</sysctl>
+          <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::FN, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::FN, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::FN, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::FN, KeyCode::CURSOR_RIGHT</autogen>
+        </item>
+
 
         <!-- KeyToConsumer -->
         <item>
