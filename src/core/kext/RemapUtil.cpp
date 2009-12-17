@@ -172,8 +172,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       FlagStatus::temporary_increase(toFlags1);
     }
 
-    Handle_VK_JIS_TEMPORARY::restore(remapParams.params, remapParams.workspacedata);
-
     return true;
   }
 

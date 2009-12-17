@@ -84,17 +84,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------------------------------------
-  // VK_JIS_TEMPORARY_* assumes use in the combination version of KeyToKey.
-  void
-  Handle_VK_JIS_TEMPORARY::restore(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
-  {
-    if (savedinputmodedetail_ == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_NONE) return;
-
-    firekeytoinputdetail(params, workspacedata, savedinputmodedetail_);
-    savedinputmodedetail_ = KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_NONE;
-    currentinputmodedetail_ = KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_NONE;
-  }
-
   bool
   Handle_VK_JIS_TEMPORARY::handle(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata,
                                   const KeyCode& key,
@@ -108,8 +97,22 @@ namespace org_pqrs_KeyRemap4MacBook {
         currentinputmodedetail_ = workspacedata.inputmodedetail;
       }
       firekeytoinputdetail(params, workspacedata, inputmodedetail);
+
+    } else {
+      restore(params, workspacedata);
     }
+
     return true;
+  }
+
+  void
+  Handle_VK_JIS_TEMPORARY::restore(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
+  {
+    if (savedinputmodedetail_ == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_NONE) return;
+
+    firekeytoinputdetail(params, workspacedata, savedinputmodedetail_);
+    savedinputmodedetail_ = KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_NONE;
+    currentinputmodedetail_ = KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_NONE;
   }
 
   void
