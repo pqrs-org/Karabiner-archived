@@ -276,6 +276,12 @@
           <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
+          <name>Command_L to Control_L (only in RDC)</name>
+          <sysctl>remap.commandL2controlL_rdc</sysctl>
+          <only>REMOTEDESKTOPCONNECTION</only>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
+        </item>
+        <item>
           <name>Command_L to Control_L (only in X11)</name>
           <sysctl>remap.commandL2controlL_x11</sysctl>
           <only>X11</only>
