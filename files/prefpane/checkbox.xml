@@ -125,9 +125,10 @@
       <name>Remap Arrow(Up/Down/Left/Right) Key</name>
       <list>
         <item>
-          <name>Arrow(Up/Down/Left/Right) to FN</name>
+          <name>Arrow(Down/Left/Right) to FN</name>
+          <appendix>drop Up-Arrow</appendix>
           <sysctl>remap.arrow2fn</sysctl>
-          <autogen>--KeyToKey-- KeyCode::CURSOR_UP, KeyCode::FN</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_UP, KeyCode::VK_NONE</autogen>
           <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, KeyCode::FN</autogen>
           <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, KeyCode::FN</autogen>
           <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, KeyCode::FN</autogen>
