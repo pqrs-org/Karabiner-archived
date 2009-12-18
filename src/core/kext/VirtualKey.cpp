@@ -97,9 +97,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         currentinputmodedetail_ = workspacedata.inputmodedetail;
       }
       firekeytoinputdetail(params, workspacedata, inputmodedetail);
-
-    } else {
-      restore(params, workspacedata);
     }
 
     return true;

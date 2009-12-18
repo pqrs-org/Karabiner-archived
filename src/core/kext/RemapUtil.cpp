@@ -156,6 +156,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       firekeycombination(remapParams, toKeyCode3, toFlags3);
       firekeycombination(remapParams, toKeyCode4, toFlags4);
       firekeycombination(remapParams, toKeyCode5, toFlags5);
+
+      Handle_VK_JIS_TEMPORARY::restore(remapParams.params, remapParams.workspacedata);
     }
 
     return true;
