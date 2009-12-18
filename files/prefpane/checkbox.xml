@@ -3721,8 +3721,10 @@
         <item>
           <name>KeyToKey (Combination Full)</name>
           <appendix>A to B, C, Shift_L+D, E, Control_L+F</appendix>
+          <appendix>B to JIS_KANA, A, I, JIS_EISUU, U</appendix>
           <sysctl>remap.samples_a2bcdef</sysctl>
           <autogen>--KeyToKey-- KeyCode::A, KeyCode::B, KeyCode::C, KeyCode::D, ModifierFlag::SHIFT_L, KeyCode::E, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::B, KeyCode::JIS_KANA, KeyCode::A, KeyCode::I, KeyCode::JIS_EISUU, KeyCode::U</autogen>
         </item>
 
         <item>
