@@ -66,11 +66,12 @@ namespace org_pqrs_KeyRemap4MacBook {
                     KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_KATAKANA);
     }
 
+    static void restore(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
+
   private:
     static bool handle(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata,
                        const KeyCode& key,
                        const KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail& inputmodedetail);
-    static void restore(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
 
     static void firekeytoinputdetail(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata,
                                      KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail inputmodedetail);
