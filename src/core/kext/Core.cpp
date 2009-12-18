@@ -206,8 +206,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ------------------------------------------------------------
       if (! remapParams.isremapped) {
         params.flags = FlagStatus::makeFlags();
-        RemapUtil::fireKey(params, remapParams.workspacedata);
         KeyboardRepeat::set(params);
+        RemapUtil::fireKey(params, remapParams.workspacedata);
       }
 
       if (NumHeldDownKeys::iszero()) {

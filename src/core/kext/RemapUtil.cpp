@@ -114,12 +114,10 @@ namespace org_pqrs_KeyRemap4MacBook {
                                         toKeyCode,
                                         remapParams.params.keyboardType,
                                         remapParams.params.repeat);
-    RemapUtil::fireKey(params, remapParams.workspacedata);
-
-    // ----------------------------------------
     if (isSetKeyRepeat) {
       KeyboardRepeat::set(params);
     }
+    RemapUtil::fireKey(params, remapParams.workspacedata);
 
     return true;
   }
