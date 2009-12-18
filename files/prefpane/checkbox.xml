@@ -125,6 +125,14 @@
       <name>Remap Arrow(Up/Down/Left/Right) Key</name>
       <list>
         <item>
+          <name>Arrow(Up/Down/Left/Right) to FN</name>
+          <sysctl>remap.arrow2fn</sysctl>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_UP, KeyCode::FN</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, KeyCode::FN</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, KeyCode::FN</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, KeyCode::FN</autogen>
+        </item>
+        <item>
           <name>Command-Arrow to Option_L+Arrow</name>
           <sysctl>remap.commandArrow2optionLarrow</sysctl>
           <autogen>--KeyToKey-- KeyCode::CURSOR_UP, VK_COMMAND, KeyCode::CURSOR_UP, ModifierFlag::OPTION_L</autogen>
