@@ -124,14 +124,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   namespace {
     void
-    firekeycombination(const RemapParams& remapParams, const EventType& eventType, const KeyCode& key, const Flags& flags)
+    firekeycombination(const RemapParams& remapParams, const KeyCode& key, const Flags& flags)
     {
       FlagStatus::temporary_increase(flags);
-
-      Params_KeyboardEventCallBack params(eventType, FlagStatus::makeFlags(), key,
-                                          remapParams.params.keyboardType, false);
-      RemapUtil::fireKey(params, remapParams.workspacedata);
-
+      RemapUtil::fireKey_downup(FlagStatus::makeFlags(), key, remapParams.params.keyboardType, remapParams.workspacedata);
       FlagStatus::temporary_decrease(flags);
     }
   }
@@ -147,27 +143,19 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     bool isKeyDown = remapParams.isKeyDownOrModifierDown();
 
-    bool result = remap(remapParams, fromKeyCode, fromFlags, toKeyCode1, toFlags1, false);
+    // We convert it into VK_NONE about the real hardware key.
+    // This is necessary to output toKeyCode1 - toKeyCode5 at the KeyDown event.
+    bool result = remap(remapParams, fromKeyCode, fromFlags, KeyCode::VK_NONE, ModifierFlag::NONE, false);
     if (! result) return false;
 
     KeyboardRepeat::cancel();
 
-    // We output keys from 2 to 5 at the time of KeyDown.
-    // Because we don't know whether it is a remap target before we fire toKeyCode1's KeyUp.
     if (isKeyDown) {
-      FlagStatus::temporary_decrease(toFlags1);
-
-      firekeycombination(remapParams, EventType::DOWN, toKeyCode2, toFlags2);
-      firekeycombination(remapParams, EventType::DOWN, toKeyCode3, toFlags3);
-      firekeycombination(remapParams, EventType::DOWN, toKeyCode4, toFlags4);
-      firekeycombination(remapParams, EventType::DOWN, toKeyCode5, toFlags5);
-
-      firekeycombination(remapParams, EventType::UP,   toKeyCode5, toFlags5);
-      firekeycombination(remapParams, EventType::UP,   toKeyCode4, toFlags4);
-      firekeycombination(remapParams, EventType::UP,   toKeyCode3, toFlags3);
-      firekeycombination(remapParams, EventType::UP,   toKeyCode2, toFlags2);
-
-      FlagStatus::temporary_increase(toFlags1);
+      firekeycombination(remapParams, toKeyCode1, toFlags1);
+      firekeycombination(remapParams, toKeyCode2, toFlags2);
+      firekeycombination(remapParams, toKeyCode3, toFlags3);
+      firekeycombination(remapParams, toKeyCode4, toFlags4);
+      firekeycombination(remapParams, toKeyCode5, toFlags5);
     }
 
     return true;
