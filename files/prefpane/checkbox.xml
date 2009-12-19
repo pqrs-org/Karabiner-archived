@@ -1951,6 +1951,12 @@
           <autogen>--KeyToKey-- KeyCode::K, VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
+          <name>Control+K to Shift+Right,Command+Shift+Right,Forward Delete</name>
+          <sysctl>option.emacsmode_controlK_ex</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+          <autogen>--KeyToKey-- KeyCode::K, VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::SHIFT_L, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::FORWARD_DELETE</autogen>
+        </item>
+        <item>
           <name>Control+W to Command+X</name>
           <sysctl>option.emacsmode_controlW</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
