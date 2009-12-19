@@ -4051,7 +4051,7 @@
         </item>
         <item>
           <name>VK_JIS_TEMPORARY_ROMAN</name>
-          <appendix>Use A as A,I,VK_JIS_TEMPORARY_ROMAN,U</appendix>
+          <appendix>Use A as A,VK_JIS_TEMPORARY_ROMAN,I,U</appendix>
           <appendix>Use B as VK_JIS_TEMPORARY_ROMAN,A,I,U</appendix>
           <sysctl>remap.samples_vk_jis_temporary_roman</sysctl>
           <autogen>--KeyToKey-- KeyCode::A, KeyCode::A, KeyCode::VK_JIS_TEMPORARY_ROMAN, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
@@ -4059,7 +4059,7 @@
         </item>
         <item>
           <name>VK_JIS_TEMPORARY_HIRAGANA</name>
-          <appendix>Use A as A,I,VK_JIS_TEMPORARY_HIRAGANA,U</appendix>
+          <appendix>Use A as A,VK_JIS_TEMPORARY_HIRAGANA,I,U</appendix>
           <appendix>Use B as VK_JIS_TEMPORARY_HIRAGANA,A,I,U</appendix>
           <sysctl>remap.samples_vk_jis_temporary_hiragana</sysctl>
           <autogen>--KeyToKey-- KeyCode::A, KeyCode::A, KeyCode::VK_JIS_TEMPORARY_HIRAGANA, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
@@ -4067,7 +4067,7 @@
         </item>
         <item>
           <name>VK_JIS_TEMPORARY_KATAKANA</name>
-          <appendix>Use A as A,I,VK_JIS_TEMPORARY_KATAKANA,U</appendix>
+          <appendix>Use A as A,VK_JIS_TEMPORARY_KATAKANA,I,U</appendix>
           <appendix>Use B as VK_JIS_TEMPORARY_KATAKANA,A,I,U</appendix>
           <sysctl>remap.samples_vk_jis_temporary_katakana</sysctl>
           <autogen>--KeyToKey-- KeyCode::A, KeyCode::A, KeyCode::VK_JIS_TEMPORARY_KATAKANA, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
