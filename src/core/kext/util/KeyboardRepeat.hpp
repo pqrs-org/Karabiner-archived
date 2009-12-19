@@ -18,26 +18,54 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     static void setWorkSpaceData(const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) { workspacedata_ = workspacedata; }
 
-    static void set(const EventType& eventType = EventType::DOWN,
-                    const Flags& flags = 0,
-                    const KeyCode& key = KeyCode::VK_NONE,
-                    const KeyboardType& keyboardType = KeyboardType::MACBOOK,
-                    int wait = config.get_repeat_initial_wait());
+    static void cancel(void);
+
+    // --------------------------------------------------
+    static void set(const EventType& eventType,
+                    const Flags& flags,
+                    const KeyCode& key,
+                    const KeyboardType& keyboardType,
+                    int wait);
 
     static void set(const Params_KeyboardEventCallBack& p,
                     int wait = config.get_repeat_initial_wait()) {
       set(p.eventType, p.flags, p.key, p.keyboardType, wait);
     }
 
-    static void cancel(void) {
-      set();
-    }
+    // --------------------------------------------------
+    // primitive operations.
+    static void primitive_add(const EventType& eventType,
+                              const Flags& flags,
+                              const KeyCode& key,
+                              const KeyboardType& keyboardType);
+    static void primitive_start(int wait = config.get_repeat_initial_wait());
 
   private:
+    enum {
+      MAXNUM = 16,
+    };
+    struct Item {
+      Item(void) : params(EventType(0), Flags(0), KeyCode(0), KeyboardType(0), true), active(false) {}
+
+      Params_KeyboardEventCallBack params;
+      bool active;
+    };
+
+    // ------------------------------------------------------------
     static void fire(OSObject* owner, IOTimerEventSource* sender);
 
+    static void cancel_nolock(void);
+
+    static void primitive_add_nolock(const EventType& eventType,
+                                     const Flags& flags,
+                                     const KeyCode& key,
+                                     const KeyboardType& keyboardType);
+    static void primitive_start_nolock(int wait);
+
+    static int getActiveItemNum(void);
+
     static TimerWrapper timer_;
-    static Params_KeyboardEventCallBack params_;
+    static Item item_[MAXNUM];
     static KeyRemap4MacBook_bridge::GetWorkspaceData::Reply workspacedata_;
   };
 }

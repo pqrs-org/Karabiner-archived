@@ -127,7 +127,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     firekeycombination(const RemapParams& remapParams, const KeyCode& key, const Flags& flags)
     {
       FlagStatus::temporary_increase(flags);
-      RemapUtil::fireKey_downup(FlagStatus::makeFlags(), key, remapParams.params.keyboardType, remapParams.workspacedata);
+
+      Flags f = FlagStatus::makeFlags();
+      KeyboardType keyboardType = remapParams.params.keyboardType;
+
+      RemapUtil::fireKey_downup(f, key, keyboardType, remapParams.workspacedata);
+      KeyboardRepeat::primitive_add(EventType::DOWN, f, key, keyboardType);
+      KeyboardRepeat::primitive_add(EventType::UP, f, key, keyboardType);
+
       FlagStatus::temporary_decrease(flags);
     }
   }
@@ -157,7 +164,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       firekeycombination(remapParams, toKeyCode4, toFlags4);
       firekeycombination(remapParams, toKeyCode5, toFlags5);
 
-      Handle_VK_JIS_TEMPORARY::restore(remapParams.params, remapParams.workspacedata);
+      KeyboardRepeat::primitive_start();
     }
 
     return true;
@@ -546,6 +553,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (Handle_VK_JIS_TEMPORARY::handle_ROMAN(p, workspacedata)) return;
     if (Handle_VK_JIS_TEMPORARY::handle_HIRAGANA(p, workspacedata)) return;
     if (Handle_VK_JIS_TEMPORARY::handle_KATAKANA(p, workspacedata)) return;
+    if (Handle_VK_JIS_TEMPORARY::handle_RESTORE(p, workspacedata)) return;
 
     // ------------------------------------------------------------
     p.key.reverseNormalizeKey(p.flags, p.keyboardType);
