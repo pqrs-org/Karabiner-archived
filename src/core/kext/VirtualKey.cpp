@@ -102,14 +102,18 @@ namespace org_pqrs_KeyRemap4MacBook {
     return true;
   }
 
-  void
-  Handle_VK_JIS_TEMPORARY::restore(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
+  bool
+  Handle_VK_JIS_TEMPORARY::handle_RESTORE(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
   {
-    if (savedinputmodedetail_ == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_NONE) return;
+    if (params.key != KeyCode::VK_JIS_TEMPORARY_RESTORE) return false;
 
-    firekeytoinputdetail(params, workspacedata, savedinputmodedetail_);
-    savedinputmodedetail_ = KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_NONE;
-    currentinputmodedetail_ = KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_NONE;
+    if (savedinputmodedetail_ != KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_NONE) {
+      firekeytoinputdetail(params, workspacedata, savedinputmodedetail_);
+      savedinputmodedetail_ = KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_NONE;
+      currentinputmodedetail_ = KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_NONE;
+    }
+
+    return true;
   }
 
   void
