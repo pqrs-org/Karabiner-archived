@@ -107,10 +107,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (params.key != KeyCode::VK_JIS_TEMPORARY_RESTORE) return false;
 
-    if (savedinputmodedetail_ != KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_NONE) {
-      firekeytoinputdetail(params, workspacedata, savedinputmodedetail_);
-      savedinputmodedetail_ = KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_NONE;
-      currentinputmodedetail_ = KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_NONE;
+    if (params.eventType == EventType::DOWN) {
+      if (savedinputmodedetail_ != KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_NONE) {
+        firekeytoinputdetail(params, workspacedata, savedinputmodedetail_);
+        savedinputmodedetail_ = KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_NONE;
+        currentinputmodedetail_ = KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_NONE;
+      }
     }
 
     return true;
