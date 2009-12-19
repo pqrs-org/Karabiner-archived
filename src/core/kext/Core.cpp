@@ -179,12 +179,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     remap_KeyboardEventCallback(Params_KeyboardEventCallBack& params)
     {
-      // ------------------------------------------------------------
-      // Because the key repeat generates it by oneself, I throw it away.
-      if (params.repeat) {
-        return;
-      }
-
       params.log();
 
       // ------------------------------------------------------------
