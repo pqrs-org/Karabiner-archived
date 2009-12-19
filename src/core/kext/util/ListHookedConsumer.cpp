@@ -36,10 +36,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! hc) return;
 
       // ------------------------------------------------------------
-      Params_KeyboardSpecialEventCallback params(EventType(eventType), Flags(flags), ConsumerKeyCode(key),
-                                                 flavor, guid, repeat);
       CommonData::setcurrent_ts(ts);
 
+      // ------------------------------------------------------------
+      Params_KeyboardSpecialEventCallback params(EventType(eventType), Flags(flags), ConsumerKeyCode(key),
+                                                 flavor, guid, repeat);
       if (params.eventType == EventType::DOWN &&
           params.repeat == false) {
         EventWatcher::on();
