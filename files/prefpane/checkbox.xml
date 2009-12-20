@@ -2779,6 +2779,11 @@
           <autogen>--KeyToKey-- KeyCode::L, KeyCode::O</autogen>
           <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::P</autogen>
         </item>
+        <item>
+          <name>Use US Keyboard Layout</name>
+          <sysctl>remap.layout2us</sysctl>
+          <autogen>--SetKeyboardType-- KeyboardType::MACBOOK</autogen>
+        </item>
       </list>
     </item>
 
