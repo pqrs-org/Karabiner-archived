@@ -1,4 +1,6 @@
+#include "CommonData.hpp"
 #include "KeyboardRepeat.hpp"
+#include "IOLockWrapper.hpp"
 #include "ListHookedKeyboard.hpp"
 #include "RemapUtil.hpp"
 #include "remap.hpp"
@@ -133,6 +135,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   KeyboardRepeat::fire(OSObject* owner, IOTimerEventSource* sender)
   {
+    if (! CommonData::eventLock) return;
+    IOLockWrapper::ScopedLock eventLock(CommonData::eventLock);
+
+    // ------------------------------------------------------------
     IOLockWrapper::ScopedLock lk(timer_.getlock());
 
     for (int i = 0; i < MAXNUM; ++i) {

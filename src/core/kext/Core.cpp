@@ -91,11 +91,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       PressDownKeys::initialize();
       FlagStatus::initialize();
       KeyRemap4MacBook_client::initialize();
+      CommonData::initialize();
     }
 
     void
     terminate(void)
     {
+      CommonData::terminate();
       KeyRemap4MacBook_client::terminate();
       EventWatcher::terminate();
       sysctl_unregister();
