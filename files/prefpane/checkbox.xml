@@ -3659,6 +3659,7 @@
           <appendix>Shift+D to Option_L (Key+Modifier To Modifier)</appendix>
           <appendix>Shift+E to Control_L+Space (Key+Modifier To Key+Modifier)</appendix>
           <appendix>Shift+F to Option_L+Shift_L (Key+Modifier To Modifier+Modifier)</appendix>
+          <appendix>FN+hjkl to Left/Down/Up/Right (Key+FN to Key) (around KeyPad)</appendix>
           <sysctl>remap.samples_keytokey_key2xxx</sysctl>
           <autogen>--KeyToKey-- KeyCode::A, KeyCode::B, ModifierFlag::SHIFT_L</autogen>
           <autogen>--KeyToKey-- KeyCode::B, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L</autogen>
@@ -3666,6 +3667,10 @@
           <autogen>--KeyToKey-- KeyCode::D, VK_SHIFT, KeyCode::OPTION_L</autogen>
           <autogen>--KeyToKey-- KeyCode::E, VK_SHIFT, KeyCode::SPACE, ModifierFlag::CONTROL_L</autogen>
           <autogen>--KeyToKey-- KeyCode::F, VK_SHIFT, KeyCode::SHIFT_L, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::FN, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::FN, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::FN, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::FN, KeyCode::CURSOR_RIGHT</autogen>
         </item>
 
         <item>
@@ -3690,16 +3695,6 @@
           <autogen>--KeyToKey-- KeyCode::C, KeyCode::JIS_KANA, KeyCode::A, KeyCode::I, KeyCode::JIS_EISUU, KeyCode::U</autogen>
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::A, KeyCode::B, KeyCode::B, ModifierFlag::CONTROL_L, KeyCode::C, ModifierFlag::SHIFT_L, KeyCode::D</autogen>
           <autogen>--KeyToKey-- KeyCode::D, VK_CONTROL, KeyCode::A, ModifierFlag::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
-        </item>
-
-        <item>
-          <name>KeyToKey (With FN+KeyPad)</name>
-          <appendix>FN+hjkl to Left/Down/Up/Right</appendix>
-          <sysctl>option.samples_vimode_fn_hjkl</sysctl>
-          <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::FN, KeyCode::CURSOR_LEFT</autogen>
-          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::FN, KeyCode::CURSOR_DOWN</autogen>
-          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::FN, KeyCode::CURSOR_UP</autogen>
-          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::FN, KeyCode::CURSOR_RIGHT</autogen>
         </item>
 
         <!-- KeyToConsumer -->
