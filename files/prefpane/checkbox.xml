@@ -3726,44 +3726,21 @@
           <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_UP, VK_SHIFT, ConsumerKeyCode::VOLUME_MUTE</autogen>
         </item>
 
-        <!-- KeyOverlaidModifier -->
         <item>
-          <name>KeyOverlaidModifier (Standard)</name>
-          <appendix>A to Shift_L (When type only, send Space)</appendix>
-          <sysctl>remap.samples_a2shiftL_space</sysctl>
+          <name>KeyOverlaidModifier</name>
+          <appendix>A to Shift_L (When type only, send Space) (Standard)</appendix>
+          <appendix>Option_L to Shift_L (When type only, send Space) (Modifier)</appendix>
+          <appendix>Control+B to Shift_L (When type only, send Space) (Key+Modifier)</appendix>
+          <appendix>C to Shift_L (When type only, send Space) + [KeyRepeat]</appendix>
+          <appendix>Command+D to Shift_L (When type only, send Control_L+F) + [KeyRepeat]</appendix>
+          <appendix>E to KeyCode::VK_NONE</appendix>
+          <sysctl>remap.samples_keyoverlaidmodifier</sysctl>
           <autogen>--KeyOverlaidModifier-- KeyCode::A, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
-        </item>
-        <item>
-          <name>KeyOverlaidModifier (ModifierFlag)</name>
-          <appendix>Option_L to Shift_L (When type only, send Space)</appendix>
-          <sysctl>remap.samples_optionL2shiftL_space</sysctl>
           <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_L, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
-        </item>
-        <item>
-          <name>KeyOverlaidModifier (With ModifierFlag)</name>
-          <appendix>Control+A to Shift_L (When type only, send Space)</appendix>
-          <sysctl>remap.samples_control_a2shiftL_space</sysctl>
-          <autogen>--KeyOverlaidModifier-- KeyCode::A, VK_CONTROL, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
-        </item>
-        <item>
-          <name>KeyOverlaidModifierWithRepeat (Standard)</name>
-          <appendix>A to Shift_L (When type only, send Space) + [KeyRepeat]</appendix>
-          <sysctl>remap.samples_a2shiftL_space_repeat</sysctl>
-          <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::A, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
-        </item>
-        <item>
-          <name>KeyOverlaidModifierWithRepeat (With ModifierFlag)</name>
-          <appendix>Option+A to Shift_L (When type only, send Control_L+F) + [KeyRepeat]</appendix>
-          <sysctl>remap.samples_option_a2shiftL_controlLf_repeat</sysctl>
-          <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::A, VK_OPTION, KeyCode::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
-        </item>
-        <item>
-          <name>KeyOverlaidModifier (With VK_NONE)</name>
-          <appendix>A to Shift_L (When type only, send Space)</appendix>
-          <appendix>B to KeyCode::VK_NONE</appendix>
-          <sysctl>remap.samples_a2shiftL_space_b2vknone</sysctl>
-          <autogen>--KeyOverlaidModifier-- KeyCode::A, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
-          <autogen>--KeyToKey-- KeyCode::B, KeyCode::VK_NONE</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::B, VK_CONTROL, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+          <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::C, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+          <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::D, VK_COMMAND, KeyCode::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::E, KeyCode::VK_NONE</autogen>
         </item>
 
         <!-- ModifierHoldingKeyToKey -->
