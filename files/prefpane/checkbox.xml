@@ -3505,6 +3505,7 @@
             <item>
               <name>Use Japanese Keyboard as ASCII Keyboard</name>
               <sysctl>remap.jis_jansi</sysctl>
+              <autogen>--SetKeyboardType-- KeyboardType::MACBOOK</autogen>
               <autogen>--KeyToKey-- KeyCode::JIS_YEN, KeyCode::BACKQUOTE</autogen>
               <autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, KeyCode::BACKQUOTE</autogen>
             </item>
@@ -3638,6 +3639,13 @@
     <item>
       <name>Samples for KeyRemap4MacBook Developer</name>
       <list>
+        <item>
+          <name>SetKeyboardType</name>
+          <appendix>Set keyboardType = KeyboardType::MACBOOK</appendix>
+          <sysctl>remap.samples_setkeyboardtype_us</sysctl>
+          <autogen>--SetKeyboardType-- KeyboardType::MACBOOK</autogen>
+        </item>
+
         <item>
           <name>KeyToKey (Standard)</name>
           <appendix>A to B (KeyToKey)</appendix>

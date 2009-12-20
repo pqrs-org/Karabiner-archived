@@ -41,6 +41,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! hk) return;
 
       // ------------------------------------------------------------
+#include "../config/output/include.remapcode_keyboardtype.hpp"
       CommonData::setcurrent_ts(ts);
       CommonData::setcurrent_keyboardType(keyboardType);
 
