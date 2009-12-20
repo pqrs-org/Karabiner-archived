@@ -3743,34 +3743,27 @@
           <autogen>--KeyToKey-- KeyCode::E, KeyCode::VK_NONE</autogen>
         </item>
 
-        <!-- ModifierHoldingKeyToKey -->
         <item>
           <name>ModifierHoldingKeyToKey</name>
           <appendix>Shift(Holding)+A to Return</appendix>
-          <sysctl>remap.samples_holding_shiftLa2return</sysctl>
+          <sysctl>remap.samples_modifierholdingkeytokey</sysctl>
           <autogen>--ModifierHoldingKeyToKey-- KeyCode::A, VK_SHIFT, KeyCode::RETURN</autogen>
         </item>
 
-        <!-- DoublePressModifier -->
         <item>
           <name>DoublePressModifier</name>
           <appendix>Shift_L x 2 to RETURN</appendix>
-          <sysctl>remap.samples_shiftL_x2_to_return</sysctl>
+          <sysctl>remap.samples_doublepressmodifier</sysctl>
           <autogen>--DoublePressModifier-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L, KeyCode::RETURN</autogen>
         </item>
 
-        <!-- IgnoreMultipleSameKeyPress -->
         <item>
           <name>IgnoreMultipleSameKeyPress</name>
           <appendix>Ignore the multiple press of 'A'</appendix>
-          <sysctl>remap.samples_ignore_multiple_a</sysctl>
+          <appendix>Ignore the multiple press of 'Shift+B' (with Modifier)</appendix>
+          <sysctl>remap.samples_ignoremultiplesamekeypress</sysctl>
           <autogen>--IgnoreMultipleSameKeyPress-- KeyCode::A</autogen>
-        </item>
-        <item>
-          <name>IgnoreMultipleSameKeyPress (with ModifierFlag)</name>
-          <appendix>Ignore the multiple press of 'Shift+A'</appendix>
-          <sysctl>remap.samples_ignore_multiple_shift_a</sysctl>
-          <autogen>--IgnoreMultipleSameKeyPress-- KeyCode::A, VK_SHIFT</autogen>
+          <autogen>--IgnoreMultipleSameKeyPress-- KeyCode::B, VK_SHIFT</autogen>
         </item>
 
         <!-- KeyToPointingButton -->
