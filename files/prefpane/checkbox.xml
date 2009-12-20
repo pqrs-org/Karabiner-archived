@@ -3719,15 +3719,11 @@
 
         <item>
           <name>ConsumerToConsumer</name>
-          <appendix>Brightness Down to Volume Mute</appendix>
-          <sysctl>remap.samples_brightnessdown2volumemute</sysctl>
-          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::BRIGHTNESS_DOWN, ConsumerKeyCode::VOLUME_MUTE</autogen>
-        </item>
-        <item>
-          <name>ConsumerToConsumer (With ModifierFlag)</name>
-          <appendix>Command+Brightness Down to Volume Mute</appendix>
-          <sysctl>remap.samples_commandbrightnessdown2volumemute</sysctl>
-          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::BRIGHTNESS_DOWN, VK_COMMAND, ConsumerKeyCode::VOLUME_MUTE</autogen>
+          <appendix>Volume Down to Volume Mute</appendix>
+          <appendix>Command+Volume Up to Volume Mute (with Modifier)</appendix>
+          <sysctl>remap.samples_consumertoconsumer</sysctl>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_DOWN, ConsumerKeyCode::VOLUME_MUTE</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_UP, VK_COMMAND, ConsumerKeyCode::VOLUME_MUTE</autogen>
         </item>
 
         <!-- KeyOverlaidModifier -->
