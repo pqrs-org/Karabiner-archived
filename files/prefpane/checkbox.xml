@@ -3720,10 +3720,10 @@
         <item>
           <name>ConsumerToConsumer</name>
           <appendix>Volume Down to Volume Mute</appendix>
-          <appendix>Command+Volume Up to Volume Mute (with Modifier)</appendix>
+          <appendix>Shift+Volume Up to Volume Mute (with Modifier)</appendix>
           <sysctl>remap.samples_consumertoconsumer</sysctl>
           <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_DOWN, ConsumerKeyCode::VOLUME_MUTE</autogen>
-          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_UP, VK_COMMAND, ConsumerKeyCode::VOLUME_MUTE</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_UP, VK_SHIFT, ConsumerKeyCode::VOLUME_MUTE</autogen>
         </item>
 
         <!-- KeyOverlaidModifier -->
