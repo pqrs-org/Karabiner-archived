@@ -215,7 +215,9 @@ setCurrentApplicationType(const char* applicationName)
     SET_CURRENT_APPLICATION_TYPE(TERMINAL);
   }
 
+  const char* vmware_unity = "com.vmware.proxyApp.";
   if (strcmp(applicationName, "com.vmware.fusion") == 0 ||
+      strncmp(applicationName, vmware_unity, strlen(vmware_unity)) == 0 ||
       strcmp(applicationName, "com.parallels.desktop") == 0 ||
       strcmp(applicationName, "org.virtualbox.app.VirtualBoxVM") == 0) {
     SET_CURRENT_APPLICATION_TYPE(VIRTUALMACHINE);
