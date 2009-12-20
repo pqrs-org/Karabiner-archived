@@ -2,6 +2,7 @@
 #include "Config.hpp"
 #include "Core.hpp"
 #include "EventWatcher.hpp"
+#include "IOLockWrapper.hpp"
 #include "ListHookedConsumer.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -29,6 +30,9 @@ namespace org_pqrs_KeyRemap4MacBook {
                                       OSObject* sender,
                                       void* refcon)
     {
+      if (! CommonData::eventLock) return;
+      IOLockWrapper::ScopedLock lk(CommonData::eventLock);
+
       IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, sender);
       if (! kbd) return;
 
