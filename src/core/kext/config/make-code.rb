@@ -270,7 +270,6 @@ open('output/include.config.default.hpp', 'w') do |f|
   f.puts default
 end
 open('output/include.remapcode_keyboardtype.hpp', 'w') do |f|
-  print code_keyboardtype
   f.puts code_keyboardtype
 end
 open('output/include.remapcode_func.cpp', 'w') do |f|
