@@ -3697,33 +3697,26 @@
           <autogen>--KeyToKey-- KeyCode::D, VK_CONTROL, KeyCode::A, ModifierFlag::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
         </item>
 
-        <!-- KeyToConsumer -->
         <item>
           <name>KeyToConsumer</name>
           <appendix>A to Volume Mute</appendix>
-          <sysctl>remap.samples_a2volumemute</sysctl>
+          <appendix>Shift+B to Volume Mute (With Modifier)</appendix>
+          <sysctl>remap.samples_keytoconsumer</sysctl>
           <autogen>--KeyToComsumer-- KeyCode::A, ConsumerKeyCode::VOLUME_MUTE</autogen>
-        </item>
-        <item>
-          <name>KeyToConsumer (With ModifierFlag)</name>
-          <appendix>Shift+A to Volume Mute</appendix>
-          <sysctl>remap.samples_shift_a_to_volumemute</sysctl>
-          <autogen>--KeyToComsumer-- KeyCode::A, VK_SHIFT, ConsumerKeyCode::VOLUME_MUTE</autogen>
+          <autogen>--KeyToComsumer-- KeyCode::B, VK_SHIFT, ConsumerKeyCode::VOLUME_MUTE</autogen>
         </item>
 
-        <!-- ConsumerToKey -->
         <item>
           <name>ConsumerToKey</name>
-          <appendix>Brightness Down to Return</appendix>
-          <sysctl>remap.samples_brightnessdown2return</sysctl>
-          <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_DOWN, KeyCode::RETURN</autogen>
+          <appendix>Volume Down to A</appendix>
+          <appendix>Shift+Volume Up to B (with Modifier)</appendix>
+          <appendix>Option+Volume Mute to Shift_L+C (to Key+Modifier)</appendix>
+          <sysctl>remap.samples_consumertokey</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, KeyCode::A</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, VK_SHIFT, KeyCode::B</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, VK_OPTION, KeyCode::C, ModifierFlag::SHIFT_L</autogen>
         </item>
-        <item>
-          <name>ConsumerToKey (with ModifierFlag)</name>
-          <appendix>Shift+Brightness Down to Return</appendix>
-          <sysctl>remap.samples_shift_brightnessdown2return</sysctl>
-          <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_DOWN, ModifierFlag::SHIFT_L, KeyCode::RETURN</autogen>
-        </item>
+
         <item>
           <name>ConsumerToConsumer</name>
           <appendix>Brightness Down to Volume Mute</appendix>
