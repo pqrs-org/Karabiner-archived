@@ -3638,30 +3638,17 @@
     <item>
       <name>Samples for KeyRemap4MacBook Developer</name>
       <list>
-        <!-- KeyToKey Standard -->
         <item>
           <name>KeyToKey (Standard)</name>
-          <appendix>A to B</appendix>
-          <sysctl>remap.samples_a2b</sysctl>
+          <appendix>A to B (KeyToKey)</appendix>
+          <appendix>S to SHIFT_L (KeyToModifier)</appendix>
+          <appendix>SHIFT_L to Return (ModifierToKey)</appendix>
+          <appendix>Option_L to Command_L</appendix>
+          <sysctl>remap.samples_keytokey_standard</sysctl>
           <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
-        </item>
-        <item>
-          <name>KeyToKey (KeyToModifier)</name>
-          <appendix>S to SHIFT_L</appendix>
-          <sysctl>remap.samples_s2shiftL</sysctl>
           <autogen>--KeyToKey-- KeyCode::S, KeyCode::SHIFT_L</autogen>
-        </item>
-        <item>
-          <name>KeyToKey (ModifierToKey)</name>
-          <appendix>SHIFT_L to Return</appendix>
-          <sysctl>remap.samples_shiftL2return</sysctl>
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::RETURN</autogen>
-        </item>
-        <item>
-          <name>KeyToKey (ModifierToModier)</name>
-          <appendix>SHIFT_L to Command_L</appendix>
-          <sysctl>remap.samples_shiftL2commandL</sysctl>
-          <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
         </item>
 
         <!-- KeyToKey Special -->
@@ -3751,7 +3738,6 @@
           <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::FN, KeyCode::CURSOR_UP</autogen>
           <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::FN, KeyCode::CURSOR_RIGHT</autogen>
         </item>
-
 
         <!-- KeyToConsumer -->
         <item>
