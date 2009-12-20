@@ -967,6 +967,16 @@
           <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_DOWN, VK_COMMAND, ConsumerKeyCode::VOLUME_DOWN</autogen>
           <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_UP, VK_COMMAND, ConsumerKeyCode::VOLUME_UP</autogen>
         </item>
+        <item>
+          <name>Remap Power Key</name>
+          <list>
+            <item>
+              <name>Power to Command_L</name>
+              <sysctl>remap.power2commandL</sysctl>
+              <autogen>--ConsumerToKey-- ConsumerKeyCode::POWER, KeyCode::COMMAND_L</autogen>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
 
@@ -3727,10 +3737,12 @@
         <item>
           <name>ConsumerToKey</name>
           <appendix>Volume Down to A</appendix>
+          <appendix>Music Prev to Shift_L (to Modifier)</appendix>
           <appendix>Shift+Volume Up to B (with Modifier)</appendix>
           <appendix>Option+Volume Mute to Shift_L+C (to Key+Modifier)</appendix>
           <sysctl>remap.samples_consumertokey</sysctl>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, KeyCode::A</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PREV, KeyCode::SHIFT_L</autogen>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, VK_SHIFT, KeyCode::B</autogen>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, VK_OPTION, KeyCode::C, ModifierFlag::SHIFT_L</autogen>
         </item>
