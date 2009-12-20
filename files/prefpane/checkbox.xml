@@ -3651,57 +3651,30 @@
           <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
         </item>
 
-        <!-- KeyToKey Special -->
         <item>
-          <name>KeyToKey (Key to Key+Modifier)</name>
-          <appendix>A to Shift_L+B</appendix>
-          <sysctl>remap.samples_a2shiftLb</sysctl>
+          <name>KeyToKey (Key To XXX)</name>
+          <appendix>A to Shift_L+B (Key to Key+Modifier)</appendix>
+          <appendix>B to Command_L+Shift_L (Key to Modifier+Modifier)</appendix>
+          <appendix>Shift+C to Space (Key+Modifier To Key)</appendix>
+          <appendix>Shift+D to Option_L (Key+Modifier To Modifier)</appendix>
+          <appendix>Shift+E to Control_L+Space (Key+Modifier To Key+Modifier)</appendix>
+          <appendix>Shift+F to Option_L+Shift_L (Key+Modifier To Modifier+Modifier)</appendix>
+          <sysctl>remap.samples_keytokey_key2xxx</sysctl>
           <autogen>--KeyToKey-- KeyCode::A, KeyCode::B, ModifierFlag::SHIFT_L</autogen>
-        </item>
-        <item>
-          <name>KeyToKey (Key to Two Modifiers)</name>
-          <appendix>A to Command_L+Shift_L</appendix>
-          <sysctl>remap.samples_a2commandLshiftL</sysctl>
-          <autogen>--KeyToKey-- KeyCode::A, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L</autogen>
-        </item>
-
-        <item>
-          <name>KeyToKey (Key+Modifier To Key)</name>
-          <appendix>Shift+E to Space</appendix>
-          <sysctl>remap.samples_shiftE2space</sysctl>
-          <autogen>--KeyToKey-- KeyCode::E, VK_SHIFT, KeyCode::SPACE</autogen>
-        </item>
-        <item>
-          <name>KeyToKey (Key+Modifier To Modifier)</name>
-          <appendix>FN+Return to Option_L</appendix>
-          <sysctl>remap.samples_fnReturn2optionL</sysctl>
-          <autogen>--KeyToKey-- KeyCode::RETURN, ModifierFlag::FN, KeyCode::OPTION_L</autogen>
-        </item>
-        <item>
-          <name>KeyToKey (Key+Modifier To Key+Modifier)</name>
-          <appendix>Shift+E to Control_L+Space</appendix>
-          <sysctl>remap.samples_shiftE2controlLspace</sysctl>
+          <autogen>--KeyToKey-- KeyCode::B, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::C, VK_SHIFT, KeyCode::SPACE</autogen>
+          <autogen>--KeyToKey-- KeyCode::D, VK_SHIFT, KeyCode::OPTION_L</autogen>
           <autogen>--KeyToKey-- KeyCode::E, VK_SHIFT, KeyCode::SPACE, ModifierFlag::CONTROL_L</autogen>
-        </item>
-        <item>
-          <name>KeyToKey (Key+Modifier To Two Modifiers)</name>
-          <appendix>Shift+A to Option_L+Shift_L</appendix>
-          <sysctl>remap.samples_shiftA2optionLshiftL</sysctl>
-          <autogen>--KeyToKey-- KeyCode::A, VK_SHIFT, KeyCode::SHIFT_L, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::F, VK_SHIFT, KeyCode::SHIFT_L, ModifierFlag::OPTION_L</autogen>
         </item>
 
         <item>
-          <name>KeyToKey (Modifier to Two Modifiers)</name>
-          <appendix>Shift_L to Command_L+Option_L</appendix>
-          <sysctl>remap.samples_shiftL2commandLoptionL</sysctl>
-          <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::COMMAND_L, ModifierFlag::OPTION_L</autogen>
-        </item>
-
-        <item>
-          <name>KeyToKey (Modifier x 2 To Modier)</name>
-          <appendix>FN+SHIFT_L to Command_L</appendix>
-          <sysctl>remap.samples_fnshiftL2commandL</sysctl>
-          <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::FN, KeyCode::COMMAND_L</autogen>
+          <name>KeyToKey (Modifier To XXX)</name>
+          <appendix>Shift_R to Command_L+Option_L (Modifier to Modifier+Modifier)</appendix>
+          <appendix>FN+Option_L to Command_L (Modifier+Modifier To Modier)</appendix>
+          <sysctl>remap.samples_keytokey_modifier2xxx</sysctl>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::COMMAND_L, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::OPTION_L, ModifierFlag::FN, KeyCode::COMMAND_L</autogen>
         </item>
 
         <item>
