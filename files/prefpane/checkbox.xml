@@ -3510,6 +3510,11 @@
               <autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, KeyCode::BACKQUOTE</autogen>
             </item>
             <item>
+              <name>Use ASCII Keyboard as Japanese Keyboard</name>
+              <sysctl>remap.jis_layout_us2japanese</sysctl>
+              <autogen>--SetKeyboardType-- KeyboardType::JIS_MACBOOK_2008</autogen>
+            </item>
+            <item>
               <name>Use KAWASHIMA Special Keyboard Layout</name>
               <sysctl>remap.jis_layout_kawashima</sysctl>
               <inputmodedetail_only>INPUTMODE_DETAIL_JAPANESE_HIRAGANA, INPUTMODE_DETAIL_JAPANESE</inputmodedetail_only>
