@@ -3777,35 +3777,23 @@
           <autogen>--KeyToPointingButton-- KeyCode::B, VK_SHIFT, PointingButton::RIGHT</autogen>
         </item>
 
-        <!-- PointingRelativeToScroll -->
         <item>
-          <name>PointingRelativeToScroll (One Button)</name>
-          <appendix>RightClick+CursorMove to ScrollWheel</appendix>
-          <sysctl>remap.samples_pointing_relative_rightclick_to_scroll</sysctl>
-          <autogen>--PointingRelativeToScroll-- PointingButton::RIGHT</autogen>
-        </item>
-        <item>
-          <name>PointingRelativeToScroll (Multi Buttons)</name>
-          <appendix>LeftClick+RightClick+CursorMove to ScrollWheel</appendix>
-          <sysctl>remap.samples_pointing_relative_LRClick_to_scroll</sysctl>
+          <name>PointingRelativeToScroll</name>
+          <appendix>MiddleClick+CursorMove to ScrollWheel (One Button)</appendix>
+          <appendix>LeftClick+RightClick+CursorMove to ScrollWheel (Multi Buttons)</appendix>
+          <appendix>Option+CursorMove to ScrollWheel (Modifier)</appendix>
+          <appendix>Shift+LeftClick+CursorMove to ScrollWheel (Button+Modifier)</appendix>
+          <sysctl>remap.samples_pointingrelativetoscroll</sysctl>
+          <autogen>--PointingRelativeToScroll-- PointingButton::MIDDLE</autogen>
           <autogen>--PointingRelativeToScroll-- PointingButton::LEFT | PointingButton::RIGHT</autogen>
-        </item>
-        <item>
-          <name>PointingRelativeToScroll (ModifierFlag)</name>
-          <appendix>Option+CursorMove to ScrollWheel</appendix>
-          <sysctl>remap.samples_pointing_relative_option_to_scroll</sysctl>
           <autogen>--PointingRelativeToScroll-- PointingButton::NONE, VK_OPTION</autogen>
+          <autogen>--PointingRelativeToScroll-- PointingButton::LEFT, VK_SHIFT</autogen>
         </item>
-        <item>
-          <name>PointingRelativeToScroll (Button+ModifierFlag)</name>
-          <appendix>Option+RightClick+CursorMove to ScrollWheel</appendix>
-          <sysctl>remap.samples_pointing_controlLeftclick2middleclick</sysctl>
-          <autogen>--PointingRelativeToScroll-- PointingButton::RIGHT, VK_OPTION</autogen>
-        </item>
+
         <item>
           <name>PointingButtonToPointingButton</name>
           <appendix>Option+LeftClick to MiddleClick</appendix>
-          <sysctl>remap.samples_pointing_optionLeftclick2middleclick</sysctl>
+          <sysctl>remap.samples_pointingbuttontopointingbutton</sysctl>
           <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, VK_OPTION, PointingButton::MIDDLE</autogen>
         </item>
 
