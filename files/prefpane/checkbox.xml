@@ -3671,7 +3671,7 @@
         <item>
           <name>KeyToKey (Modifier To XXX)</name>
           <appendix>Shift_R to Command_L+Option_L (Modifier to Modifier+Modifier)</appendix>
-          <appendix>FN+Option_L to Command_L (Modifier+Modifier To Modier)</appendix>
+          <appendix>FN+Option_L to Command_L (Modifier+Modifier To Modifier)</appendix>
           <sysctl>remap.samples_keytokey_modifier2xxx</sysctl>
           <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::COMMAND_L, ModifierFlag::OPTION_L</autogen>
           <autogen>--KeyToKey-- KeyCode::OPTION_L, ModifierFlag::FN, KeyCode::COMMAND_L</autogen>
@@ -3679,27 +3679,17 @@
 
         <item>
           <name>KeyToKey (Combination)</name>
-          <appendix>A to B,C</appendix>
-          <appendix>Shift_L to B,C</appendix>
-          <sysctl>remap.samples_a2bc</sysctl>
+          <appendix>A to B,C (Standard)</appendix>
+          <appendix>B to A,B,Shift_L+C,D,Control_L+P (Key To)</appendix>
+          <appendix>C to JIS_KANA,A,I,JIS_EISUU,U (Key To with Japanese)</appendix>
+          <appendix>Shift_L to A,B,Control_L+B,Shift_L+C,D (Modifier To)</appendix>
+          <appendix>Control+D to Shift_L+A, Control_L+F (Key+Modifier To)</appendix>
+          <sysctl>remap.samples_keytokey_combination</sysctl>
           <autogen>--KeyToKey-- KeyCode::A, KeyCode::B, KeyCode::C</autogen>
-          <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::B, KeyCode::C</autogen>
-        </item>
-        <item>
-          <name>KeyToKey (Combination With Modifiers)</name>
-          <appendix>Control+A to Shift_L+A, Control_L+C</appendix>
-          <appendix>Shift_L to A, Control_L+C</appendix>
-          <sysctl>remap.samples_controlA2shiftLa_controlLc</sysctl>
-          <autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::A, ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::A, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
-        </item>
-        <item>
-          <name>KeyToKey (Combination Full)</name>
-          <appendix>A to B, C, Shift_L+D, E, Control_L+F</appendix>
-          <appendix>B to JIS_KANA, A, I, JIS_EISUU, U</appendix>
-          <sysctl>remap.samples_a2bcdef</sysctl>
-          <autogen>--KeyToKey-- KeyCode::A, KeyCode::B, KeyCode::C, KeyCode::D, ModifierFlag::SHIFT_L, KeyCode::E, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::B, KeyCode::JIS_KANA, KeyCode::A, KeyCode::I, KeyCode::JIS_EISUU, KeyCode::U</autogen>
+          <autogen>--KeyToKey-- KeyCode::B, KeyCode::A, KeyCode::B, KeyCode::C, ModifierFlag::SHIFT_L, KeyCode::D, KeyCode::P, ModifierFlag::CONTROL_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::C, KeyCode::JIS_KANA, KeyCode::A, KeyCode::I, KeyCode::JIS_EISUU, KeyCode::U</autogen>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::A, KeyCode::B, KeyCode::B, ModifierFlag::CONTROL_L, KeyCode::C, ModifierFlag::SHIFT_L, KeyCode::D</autogen>
+          <autogen>--KeyToKey-- KeyCode::D, VK_CONTROL, KeyCode::A, ModifierFlag::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
         </item>
 
         <item>
