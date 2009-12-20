@@ -1757,6 +1757,14 @@
           <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
         </item>
         <item>
+          <name>Space to Shift_L</name>
+          <appendix>(+ When you type Space only, send Space)</appendix>
+          <appendix>FN+Space to Space</appendix>
+          <sysctl>remap.space2shiftL_space_fnspace</sysctl>
+          <autogen>--KeyToKey-- KeyCode::SPACE, ModifierFlag::FN, KeyCode::SPACE</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+        </item>
+        <item>
           <name>Space to Return</name>
           <sysctl>remap.space2return</sysctl>
           <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::RETURN</autogen>
