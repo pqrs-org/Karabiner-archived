@@ -71,6 +71,7 @@ func = {
   'consumer' => [],
   'pointing' => [],
 }
+code_keyboardtype = ''
 code = ''
 
 $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
@@ -143,6 +144,11 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
         params = $2
 
         case type
+        when 'SetKeyboardType'
+          code_keyboardtype += "if (config.#{name}) {\n"
+          code_keyboardtype += "keyboardType = #{params}.get();\n"
+          code_keyboardtype += "}\n"
+
         when 'KeyToKey'
           code_key += "{\n"
           code_key += "static RemapUtil::KeyToKey keytokey;\n"
@@ -262,6 +268,10 @@ open('output/include.config_unregister.cpp', 'w') do |f|
 end
 open('output/include.config.default.hpp', 'w') do |f|
   f.puts default
+end
+open('output/include.remapcode_keyboardtype.hpp', 'w') do |f|
+  print code_keyboardtype
+  f.puts code_keyboardtype
 end
 open('output/include.remapcode_func.cpp', 'w') do |f|
   f.puts code

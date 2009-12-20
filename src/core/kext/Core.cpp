@@ -183,10 +183,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       params.key.normalizeKey(params.flags, params.keyboardType);
-      if (config.remap_jis_jansi) {
-        params.keyboardType = KeyboardType::MACBOOK;
-        CommonData::setcurrent_keyboardType(params.keyboardType);
-      }
 
       KeyRemap4MacBook_bridge::GetWorkspaceData::Reply workspacedata;
       getWorkspaceData(workspacedata);
