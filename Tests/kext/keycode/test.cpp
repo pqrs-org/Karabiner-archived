@@ -263,20 +263,20 @@ TEST(KeyCode, reverseNormalizeKey) {
     key = cursors[i][0]; flags = ModifierFlag::SHIFT_L; keyboardType = KeyboardType::MACBOOK;
     key.normalizeKey(flags, keyboardType);
     key.reverseNormalizeKey(flags, keyboardType);
-    CHECK_REVERSENORMALIZEKEY(cursors[i][0], ModifierFlag::SHIFT_L);
+    CHECK_REVERSENORMALIZEKEY(cursors[i][0], ModifierFlag::SHIFT_L | ModifierFlag::FN);
   }
 
   // ENTER
   key = KeyCode::ENTER; flags = ModifierFlag::SHIFT_L; keyboardType = KeyboardType::MACBOOK;
   key.normalizeKey(flags, keyboardType);
   key.reverseNormalizeKey(flags, keyboardType);
-  CHECK_REVERSENORMALIZEKEY(KeyCode::ENTER, ModifierFlag::SHIFT_L);
+  CHECK_REVERSENORMALIZEKEY(KeyCode::ENTER, ModifierFlag::SHIFT_L | ModifierFlag::FN);
 
   // FORWARD_DELETE
   key = KeyCode::FORWARD_DELETE; flags = ModifierFlag::SHIFT_L; keyboardType = KeyboardType::MACBOOK;
   key.normalizeKey(flags, keyboardType);
   key.reverseNormalizeKey(flags, keyboardType);
-  CHECK_REVERSENORMALIZEKEY(KeyCode::FORWARD_DELETE, ModifierFlag::SHIFT_L);
+  CHECK_REVERSENORMALIZEKEY(KeyCode::FORWARD_DELETE, ModifierFlag::SHIFT_L | ModifierFlag::FN);
 
   // CURSOR
   for (size_t i = 0; i < sizeof(cursors) / sizeof(cursors[0]); ++i) {
