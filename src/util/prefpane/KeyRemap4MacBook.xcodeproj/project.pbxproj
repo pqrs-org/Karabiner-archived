@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		34070C3D0DC89C050022A857 /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 34070C3B0DC89C050022A857 /* Common.h */; };
 		34070C3E0DC89C050022A857 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 34070C3C0DC89C050022A857 /* Common.m */; };
+		3458A3F810E128A20053F81C /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3458A3F710E128A20053F81C /* Sparkle.framework */; };
+		3458A3FC10E128DD0053F81C /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3458A3F710E128A20053F81C /* Sparkle.framework */; };
+		3458A40B10E128FF0053F81C /* kr4mb_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 3458A40A10E128FF0053F81C /* kr4mb_pub.pem */; };
 		349FDBBF0D545C2200EED33C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 349FDBBE0D545C2200EED33C /* Security.framework */; };
 		34A482980D94ECD7002CF803 /* XMLTreeWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A482960D94ECD7002CF803 /* XMLTreeWrapper.h */; };
 		34A482990D94ECD7002CF803 /* XMLTreeWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A482970D94ECD7002CF803 /* XMLTreeWrapper.m */; };
@@ -28,6 +31,19 @@
 		8D202CF40486D31800D8A456 /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F506C035013D953901CA16C8 /* PreferencePanes.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		3458A40910E128E40053F81C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3458A3FC10E128DD0053F81C /* Sparkle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		089C1672FE841209C02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -36,6 +52,8 @@
 		32DBCFA20370C41700C91783 /* KeyRemap4MacBook_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyRemap4MacBook_Prefix.pch; sourceTree = "<group>"; };
 		34070C3B0DC89C050022A857 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = sharecode/Common.h; sourceTree = "<group>"; };
 		34070C3C0DC89C050022A857 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Common.m; path = sharecode/Common.m; sourceTree = "<group>"; };
+		3458A3F710E128A20053F81C /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = "<group>"; };
+		3458A40A10E128FF0053F81C /* kr4mb_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kr4mb_pub.pem; sourceTree = "<group>"; };
 		349FDBBE0D545C2200EED33C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		34A482960D94ECD7002CF803 /* XMLTreeWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLTreeWrapper.h; path = sharecode/XMLTreeWrapper.h; sourceTree = "<group>"; };
 		34A482970D94ECD7002CF803 /* XMLTreeWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLTreeWrapper.m; path = sharecode/XMLTreeWrapper.m; sourceTree = "<group>"; };
@@ -62,6 +80,7 @@
 				8D202CF30486D31800D8A456 /* Cocoa.framework in Frameworks */,
 				8D202CF40486D31800D8A456 /* PreferencePanes.framework in Frameworks */,
 				349FDBBF0D545C2200EED33C /* Security.framework in Frameworks */,
+				3458A3F810E128A20053F81C /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +112,7 @@
 		089C167CFE841241C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3458A40A10E128FF0053F81C /* kr4mb_pub.pem */,
 				8D202CF70486D31800D8A456 /* Info.plist */,
 				089C167DFE841241C02AAC07 /* InfoPlist.strings */,
 				F506C040013D9D8001CA16C8 /* KeyRemap4MacBookPref.tiff */,
@@ -127,6 +147,7 @@
 		1058C7AEFEA557BF11CA2CBB /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3458A3F710E128A20053F81C /* Sparkle.framework */,
 				089C1672FE841209C02AAC07 /* Foundation.framework */,
 				089C167FFE841241C02AAC07 /* AppKit.framework */,
 			);
@@ -191,6 +212,7 @@
 				8D202CF00486D31800D8A456 /* Sources */,
 				8D202CF20486D31800D8A456 /* Frameworks */,
 				8D202CF50486D31800D8A456 /* Rez */,
+				3458A40910E128E40053F81C /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -227,6 +249,7 @@
 				8D202CED0486D31800D8A456 /* InfoPlist.strings in Resources */,
 				8D202CEE0486D31800D8A456 /* KeyRemap4MacBookPref.tiff in Resources */,
 				8D202CEF0486D31800D8A456 /* KeyRemap4MacBookPref.nib in Resources */,
+				3458A40B10E128FF0053F81C /* kr4mb_pub.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +305,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = KeyRemap4MacBook_Prefix.pch;
