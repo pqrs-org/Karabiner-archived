@@ -3,6 +3,7 @@
 #import "KeyRemap4MacBookPref.h"
 #import "Common.h"
 #import "SysctlWrapper.h"
+#import "Sparkle/SUUpdater.h"
 
 @implementation KeyRemap4MacBookPref
 
@@ -61,6 +62,8 @@ static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
 {
   [self drawVersion];
   [self setStatusBarState];
+
+  _suupdater = [SUUpdater updaterForBundle:[NSBundle bundleForClass:[self class]]];
 }
 
 @end
