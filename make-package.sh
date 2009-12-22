@@ -3,7 +3,8 @@
 version=$(cat version)
 
 packagemaker=/Developer/Applications/Utilities/PackageMaker.app/Contents/MacOS/PackageMaker
-pkgName="KeyRemap4MacBook-${version}.pkg"
+pkgName="KeyRemap4MacBook.pkg"
+archiveName="KeyRemap4MacBook-${version}.pkg.tar.gz"
 
 make clean build || exit $?
 
@@ -72,9 +73,9 @@ sudo $packagemaker -build \
 echo "Make Archive"
 
 sudo chown -R root:wheel $pkgName
-sudo tar zcf $pkgName.tar.gz $pkgName
+sudo tar zcf $archiveName $pkgName
 sudo rm -rf $pkgName
-tar zxf $pkgName.tar.gz
+tar zxf $archiveName
 
 # --------------------------------------------------
 echo "Cleanup"
