@@ -3695,8 +3695,14 @@
         <item>
           <name>SetKeyboardType</name>
           <appendix>Set keyboardType = KeyboardType::MACBOOK</appendix>
-          <sysctl>remap.samples_setkeyboardtype_us</sysctl>
+          <sysctl>remap.samples_setkeyboardtype_macbook</sysctl>
           <autogen>--SetKeyboardType-- KeyboardType::MACBOOK</autogen>
+        </item>
+        <item>
+          <name>SetKeyboardType</name>
+          <appendix>Set keyboardType = KeyboardType::MACBOOK_3_1</appendix>
+          <sysctl>remap.samples_setkeyboardtype_macbook_3_1</sysctl>
+          <autogen>--SetKeyboardType-- KeyboardType::MACBOOK_3_1</autogen>
         </item>
 
         <item>
