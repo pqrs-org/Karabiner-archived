@@ -244,7 +244,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ------------------------------------------------------------
       if (! remapParams.isremapped) {
         params.buttons.add(RemapUtil::getRemappedButtons());
-        params.apply();
+        RemapUtil::fireRelativePointer(params);
       }
     }
 
@@ -252,7 +252,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     remap_ScrollWheelEventCallback(Params_ScrollWheelEventCallback& params)
     {
       params.log();
-      params.apply();
+      RemapUtil::fireScrollWheel(params);
     }
   }
 }

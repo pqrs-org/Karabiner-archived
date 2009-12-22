@@ -91,6 +91,21 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ------------------------------------------------------------
+    // set ModifierFlag::FN
+    //
+    // We add ModifierFlag::FN for Cocoa Application.
+    // Cocoa Application manages the flag status inside,
+    // so unless we attach FN, the flag status becomes invalid in Cocoa.
+    if (*this == KeyCode::HOME ||
+        *this == KeyCode::END ||
+        *this == KeyCode::PAGEUP ||
+        *this == KeyCode::PAGEDOWN ||
+        *this == KeyCode::FORWARD_DELETE ||
+        *this == KeyCode::ENTER) {
+      flags.add(ModifierFlag::FN);
+    }
+
+    // ------------------------------------------------------------
     // set ModifierFlag::KEYPAD, ModifierFlag::CURSOR
     flags.stripCURSOR().stripKEYPAD();
 
