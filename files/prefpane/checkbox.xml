@@ -2684,6 +2684,12 @@
               <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
             </item>
             <item>
+              <name>Remap Option_L to Command_L</name>
+              <sysctl>remap.app_term_optionL2commandL</sysctl>
+              <only>TERMINAL</only>
+              <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+            </item>
+            <item>
               <name>Remap Functional Keys to F1...F12</name>
               <appendix>(For keyboards of F10 == Volume Mute)</appendix>
               <sysctl>remap.app_term_functional2function</sysctl>
@@ -3129,6 +3135,13 @@
               <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::JIS_EISUU</autogen>
             </item>
             <item>
+              <name>Command_L to Command_L (except Terminal)</name>
+              <appendix>(+ When you type Command_L only, send EISUU)</appendix>
+              <sysctl>remap.jis_commandL2commandL_eisuu_ex_term</sysctl>
+              <not>TERMINAL</not>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::JIS_EISUU</autogen>
+            </item>
+            <item>
               <name>Command_L to Command_L</name>
               <appendix>(+ When you type Command_L only, send KANA/EISUU (toggle))</appendix>
               <sysctl>remap.jis_commandL2commandL_toggle_kana_eisuu</sysctl>
@@ -3509,6 +3522,18 @@
         <item>
           <name>Remapping for Applications</name>
           <list>
+            <item>
+              <name>Enable at only Terminal</name>
+              <list>
+                <item>
+                  <name>Command_L to Option_L</name>
+                  <appendix>(+ When you type Command_L only, send EISUU)</appendix>
+                  <only>TERMINAL</only>
+                  <sysctl>remap.jis_app_commandL2optionL_eisuu</sysctl>
+                  <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::OPTION_L, KeyCode::JIS_EISUU</autogen>
+                </item>
+              </list>
+            </item>
             <item>
               <name>Enable at only Vim</name>
               <list>
