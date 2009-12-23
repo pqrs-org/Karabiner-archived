@@ -54,6 +54,8 @@ sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook_server.app/Contents/MacOS/K
 sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook_statusbar.app/Contents/MacOS/KeyRemap4MacBook_statusbar
 sudo chmod 755 pkgroot/$basedir/app/uninstaller.app/Contents/MacOS/uninstaller
 sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook.app/Contents/MacOS/KeyRemap4MacBook
+sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook.app/Contents/Frameworks/Sparkle.framework/Resources/relaunch
+sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook.app/Contents/Frameworks/Sparkle.framework/Versions/Current/Sparkle
 sudo chown -R root:wheel pkgroot
 
 sudo chmod 1775 pkgroot/Library
