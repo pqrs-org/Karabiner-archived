@@ -296,21 +296,21 @@ namespace {
 
   // ----------------------------------------
   bool
-  setStatusbarEnable(CFIndex enable)
+  setBool(CFStringRef name, CFIndex enable)
   {
     CFNumberRef val = CFNumberCreate(NULL, kCFNumberIntType, &enable);
-    CFPreferencesSetAppValue(CFSTR("isStatusbarEnable"), val, applicationID);
+    CFPreferencesSetAppValue(name, val, applicationID);
     return true;
   }
 
   CFIndex
-  isStatusbarEnable(void)
+  getBool(CFStringRef name)
   {
     Boolean isOK;
-    CFIndex value = CFPreferencesGetAppIntegerValue(CFSTR("isStatusbarEnable"), applicationID, &isOK);
+    CFIndex value = CFPreferencesGetAppIntegerValue(name, applicationID, &isOK);
     if (! isOK) {
       value = 1;
-      setStatusbarEnable(value);
+      setBool(name, value);
     }
     return value;
   }
@@ -387,12 +387,13 @@ main(int argc, char** argv)
     return 0;
 
   } else if (strcmp(argv[1], "statusbar") == 0) {
-    printf("%ld\n", isStatusbarEnable());
+    printf("%ld\n", getBool(CFSTR("isStatusbarEnable")));
     return 0;
 
   } else if (strcmp(argv[1], "toggle_statusbar") == 0) {
-    CFIndex value = isStatusbarEnable();
-    isSuccess = setStatusbarEnable(! value);
+    CFStringRef name = CFSTR("isStatusbarEnable");
+    CFIndex value = getBool(name);
+    isSuccess = setBool(name, ! value);
 
   } else if (strcmp(argv[1], "getname") == 0) {
     if (argc < 3) {
