@@ -1,9 +1,6 @@
 #!/bin/sh
 PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 
-# make tmpdir for KeyRemap4MacBook_server
-mkdir -p /Library/org.pqrs/KeyRemap4MacBook/tmp
-
 basedir="/Library/org.pqrs/KeyRemap4MacBook"
 
 argument="$1"
