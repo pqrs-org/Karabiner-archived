@@ -98,6 +98,10 @@
   [NSThread detachNewThreadSelector:@selector(configThreadMain)
                            toTarget:self
                          withObject:nil];
+
+  // ------------------------------------------------------------
+  // Kick updater
+  [[NSWorkspace sharedWorkspace] launchApplication:@"/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app"];
 }
 
 - (void) applicationWillTerminate:(NSNotification*)aNotification {
