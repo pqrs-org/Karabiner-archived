@@ -7,7 +7,6 @@
   IBOutlet id _versionText;
   IBOutlet id _checkbox_statusbar;
   IBOutlet id _checkbox_checkupdate;
-  id _suupdater;
 }
 
 - (IBAction) toggleStatusBar:(id)sender;
