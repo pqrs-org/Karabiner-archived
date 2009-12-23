@@ -7,7 +7,7 @@
 #include "Mutex.hpp"
 
 namespace {
-  KeyRemap4MacBook::Server server;
+  KeyRemap4MacBook_server::Server server;
 }
 
 int

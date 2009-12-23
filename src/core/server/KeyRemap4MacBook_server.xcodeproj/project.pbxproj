@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
-		256AC3DA0F4B6AC300CF3369 /* KeyRemap4MacBookAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* KeyRemap4MacBookAppDelegate.m */; };
+		256AC3DA0F4B6AC300CF3369 /* KeyRemap4MacBook_serverAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* KeyRemap4MacBook_serverAppDelegate.m */; };
 		3425210310E24D94003752CD /* kr4mb_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 3425210210E24D94003752CD /* kr4mb_pub.pem */; };
 		342A5E6A10E24F2E00235E0D /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 342A5E6910E24F2E00235E0D /* Common.m */; };
 		345683B6109F2DD900125F91 /* server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345683B2109F2DD900125F91 /* server.cpp */; };
@@ -40,9 +40,9 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		256AC3D80F4B6AC300CF3369 /* KeyRemap4MacBookAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyRemap4MacBookAppDelegate.h; sourceTree = "<group>"; };
-		256AC3D90F4B6AC300CF3369 /* KeyRemap4MacBookAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyRemap4MacBookAppDelegate.m; sourceTree = "<group>"; };
-		256AC3F00F4B6AF500CF3369 /* KeyRemap4MacBook_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyRemap4MacBook_Prefix.pch; sourceTree = "<group>"; };
+		256AC3D80F4B6AC300CF3369 /* KeyRemap4MacBook_serverAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyRemap4MacBook_serverAppDelegate.h; sourceTree = "<group>"; };
+		256AC3D90F4B6AC300CF3369 /* KeyRemap4MacBook_serverAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyRemap4MacBook_serverAppDelegate.m; sourceTree = "<group>"; };
+		256AC3F00F4B6AF500CF3369 /* KeyRemap4MacBook_server_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyRemap4MacBook_server_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -91,8 +91,8 @@
 				345683B2109F2DD900125F91 /* server.cpp */,
 				345683B3109F2DD900125F91 /* server.hpp */,
 				345683B4109F2DD900125F91 /* util.cpp */,
-				256AC3D80F4B6AC300CF3369 /* KeyRemap4MacBookAppDelegate.h */,
-				256AC3D90F4B6AC300CF3369 /* KeyRemap4MacBookAppDelegate.m */,
+				256AC3D80F4B6AC300CF3369 /* KeyRemap4MacBook_serverAppDelegate.h */,
+				256AC3D90F4B6AC300CF3369 /* KeyRemap4MacBook_serverAppDelegate.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -123,7 +123,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		29B97314FDCFA39411CA2CEA /* KeyRemap4MacBook */ = {
+		29B97314FDCFA39411CA2CEA /* KeyRemap4MacBook_server */ = {
 			isa = PBXGroup;
 			children = (
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -132,13 +132,13 @@
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
-			name = KeyRemap4MacBook;
+			name = KeyRemap4MacBook_server;
 			sourceTree = "<group>";
 		};
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				256AC3F00F4B6AF500CF3369 /* KeyRemap4MacBook_Prefix.pch */,
+				256AC3F00F4B6AF500CF3369 /* KeyRemap4MacBook_server_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
@@ -178,9 +178,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8D1107260486CEB800E47090 /* KeyRemap4MacBook */ = {
+		8D1107260486CEB800E47090 /* KeyRemap4MacBook_server */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "KeyRemap4MacBook" */;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "KeyRemap4MacBook_server" */;
 			buildPhases = (
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
@@ -191,9 +191,9 @@
 			);
 			dependencies = (
 			);
-			name = KeyRemap4MacBook;
+			name = KeyRemap4MacBook_server;
 			productInstallPath = "$(HOME)/Applications";
-			productName = KeyRemap4MacBook;
+			productName = KeyRemap4MacBook_server;
 			productReference = 8D1107320486CEB800E47090 /* KeyRemap4MacBook.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -202,14 +202,14 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "KeyRemap4MacBook" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "KeyRemap4MacBook_server" */;
 			compatibilityVersion = "Xcode 3.2";
 			hasScannedForEncodings = 1;
-			mainGroup = 29B97314FDCFA39411CA2CEA /* KeyRemap4MacBook */;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* KeyRemap4MacBook_server */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D1107260486CEB800E47090 /* KeyRemap4MacBook */,
+				8D1107260486CEB800E47090 /* KeyRemap4MacBook_server */,
 			);
 		};
 /* End PBXProject section */
@@ -233,7 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
-				256AC3DA0F4B6AC300CF3369 /* KeyRemap4MacBookAppDelegate.m in Sources */,
+				256AC3DA0F4B6AC300CF3369 /* KeyRemap4MacBook_serverAppDelegate.m in Sources */,
 				345683B6109F2DD900125F91 /* server.cpp in Sources */,
 				345683B7109F2DD900125F91 /* util.cpp in Sources */,
 				348A6B9110A0214B00AC93FE /* server_objc_part.m in Sources */,
@@ -274,7 +274,7 @@
 				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = KeyRemap4MacBook_Prefix.pch;
+				GCC_PREFIX_HEADER = KeyRemap4MacBook_server_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = KeyRemap4MacBook;
@@ -310,7 +310,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "KeyRemap4MacBook" */ = {
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "KeyRemap4MacBook_server" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4C08A954540054247B /* Release */,
@@ -318,7 +318,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "KeyRemap4MacBook" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "KeyRemap4MacBook_server" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF5008A954540054247B /* Release */,

@@ -7,7 +7,7 @@
 #include <string>
 #include <pthread.h>
 
-namespace KeyRemap4MacBook {
+namespace KeyRemap4MacBook_server {
   class Server {
   public:
     Server(void) : listenSocket_(-1) {}
