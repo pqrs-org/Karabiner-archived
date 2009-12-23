@@ -1,18 +1,18 @@
 //
-//  KeyRemap4MacBook_serverAppDelegate.m
-//  KeyRemap4MacBook_server
+//  KeyRemap4MacBookAppDelegate.m
+//  KeyRemap4MacBook
 //
 //  Created by Takayama Fumihiko on 09/11/01.
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "KeyRemap4MacBook_serverAppDelegate.h"
+#import "KeyRemap4MacBookAppDelegate.h"
 #include "util.h"
 #include "server_objc_part.h"
 #include "server.hpp"
 #include "Common.h"
 
-@implementation KeyRemap4MacBook_serverAppDelegate
+@implementation KeyRemap4MacBookAppDelegate
 
 @synthesize window;
 
