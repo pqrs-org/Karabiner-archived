@@ -31,7 +31,6 @@
     NSLog(@"checkForUpdatesInBackground");
     [_suupdater checkForUpdatesInBackground];
   }
-  //[NSApp terminate:self];
 }
 
 @end
