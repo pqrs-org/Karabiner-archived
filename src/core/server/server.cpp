@@ -18,7 +18,7 @@ namespace {
 }
 
 bool
-KeyRemap4MacBook::Server::initialize(const char* basedirectory)
+KeyRemap4MacBook_server::Server::initialize(const char* basedirectory)
 {
   if (! basedirectory) return false;
   if (*basedirectory == '\0') return false;
@@ -28,7 +28,7 @@ KeyRemap4MacBook::Server::initialize(const char* basedirectory)
 }
 
 void
-KeyRemap4MacBook::Server::sendReply(int sock, void* data, size_t size, int error)
+KeyRemap4MacBook_server::Server::sendReply(int sock, void* data, size_t size, int error)
 {
   struct iovec iov[2];
   iov[0].iov_base = reinterpret_cast<caddr_t>(&error);
@@ -51,7 +51,7 @@ KeyRemap4MacBook::Server::sendReply(int sock, void* data, size_t size, int error
 }
 
 void
-KeyRemap4MacBook::Server::dispatchOperator(int sock)
+KeyRemap4MacBook_server::Server::dispatchOperator(int sock)
 {
   int operation;
   if (read(sock, &operation, sizeof(operation)) < 0) goto error;
@@ -75,7 +75,7 @@ error:
 }
 
 void
-KeyRemap4MacBook::Server::doLoop(void)
+KeyRemap4MacBook_server::Server::doLoop(void)
 {
   if (listenSocket_ == -1) return;
 
@@ -111,7 +111,7 @@ KeyRemap4MacBook::Server::doLoop(void)
 
 // --------------------------------------------------
 bool
-KeyRemap4MacBook::Server::makeSocket(void)
+KeyRemap4MacBook_server::Server::makeSocket(void)
 {
   listenSocket_ = socket(PF_LOCAL, SOCK_STREAM, 0);
   if (listenSocket_ < 0) return false;
@@ -129,7 +129,7 @@ KeyRemap4MacBook::Server::makeSocket(void)
 
 // --------------------------------------------------
 org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error
-KeyRemap4MacBook::Server::do_GetWorkspaceData(org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& reply)
+KeyRemap4MacBook_server::Server::do_GetWorkspaceData(org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& reply)
 {
   char inputmodeName[128];
   autoreleasepool_begin();

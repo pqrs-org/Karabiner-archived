@@ -1,6 +1,6 @@
 //
 //  main.m
-//  KeyRemap4MacBook
+//  KeyRemap4MacBook_server
 //
 //  Created by Takayama Fumihiko on 09/11/01.
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
@@ -13,7 +13,7 @@
 int main(int argc, char* argv[])
 {
   if (argc != 2) {
-    NSLog(@"Usage: KeyRemap4MacBook basedirectory");
+    NSLog(@"Usage: KeyRemap4MacBook_server basedirectory");
     return 1;
   }
 
@@ -21,7 +21,7 @@ int main(int argc, char* argv[])
 
   int success = server_initialize(argv[1]);
   if (! success) {
-    NSLog(@"KeyRemap4MacBook: failed to server_initialize");
+    NSLog(@"KeyRemap4MacBook_server: failed to server_initialize");
     return 1;
   }
 
