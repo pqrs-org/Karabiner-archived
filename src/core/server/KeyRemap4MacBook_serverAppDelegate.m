@@ -10,6 +10,7 @@
 #include "util.h"
 #include "server_objc_part.h"
 #include "server.hpp"
+#include "Common.h"
 
 @implementation KeyRemap4MacBook_serverAppDelegate
 
@@ -34,6 +35,19 @@
 
   [pool drain];
   [NSThread exit];
+}
+
+// ------------------------------------------------------------
+- (NSString*) execSysctl:(NSArray*)args
+{
+  NSString* path = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_ctl";
+  return [BUNDLEPREFIX(Common) getExecResult:path args:args];
+}
+
+- (int) isCheckUpdate
+{
+  NSString* result = [self execSysctl:[NSArray arrayWithObjects:@"checkupdate", nil]];
+  return [result intValue];
 }
 
 // ------------------------------------------------------------
@@ -98,6 +112,13 @@
   [NSThread detachNewThreadSelector:@selector(configThreadMain)
                            toTarget:self
                          withObject:nil];
+
+  // ------------------------------------------------------------
+  // Check for updates
+  if ([self isCheckUpdate]) {
+    NSLog(@"checkForUpdatesInBackground");
+    [_suupdater checkForUpdatesInBackground];
+  }
 }
 
 - (void) applicationWillTerminate:(NSNotification*)aNotification {
