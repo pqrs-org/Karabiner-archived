@@ -12,4 +12,4 @@ clean:
 
 run:
 	rm -f /tmp/KeyRemap4MacBook_server
-	./build/Release/KeyRemap4MacBook.app/Contents/MacOS/KeyRemap4MacBook /tmp
+	./build/Release/KeyRemap4MacBook_server.app/Contents/MacOS/KeyRemap4MacBook_server /tmp
