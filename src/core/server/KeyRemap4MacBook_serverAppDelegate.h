@@ -7,11 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "Sparkle/SUUpdater.h"
 
 @interface KeyRemap4MacBook_serverAppDelegate : NSObject <NSApplicationDelegate> {
   NSWindow* window;
-  IBOutlet SUUpdater* _suupdater;
 }
 
 @property (assign) IBOutlet NSWindow* window;
