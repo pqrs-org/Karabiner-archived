@@ -11,6 +11,8 @@
 		256AC3DA0F4B6AC300CF3369 /* KeyRemap4MacBookAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* KeyRemap4MacBookAppDelegate.m */; };
 		3489358210E279A700315CC1 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3489358110E279A700315CC1 /* Sparkle.framework */; };
 		3489358610E279B300315CC1 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3489358110E279A700315CC1 /* Sparkle.framework */; };
+		349CF9BD10E27B7600FA98E6 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 349CF9BC10E27B7600FA98E6 /* Common.m */; };
+		349CF9D610E27BED00FA98E6 /* kr4mb_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 349CF9D510E27BED00FA98E6 /* kr4mb_pub.pem */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -41,6 +43,10 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		3489358110E279A700315CC1 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = "<group>"; };
+		349CF9B710E27B6500FA98E6 /* bundleprefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bundleprefix.h; sourceTree = "<group>"; };
+		349CF9BB10E27B7600FA98E6 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = ../prefpane/sharecode/Common.h; sourceTree = SOURCE_ROOT; };
+		349CF9BC10E27B7600FA98E6 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Common.m; path = ../prefpane/sharecode/Common.m; sourceTree = SOURCE_ROOT; };
+		349CF9D510E27BED00FA98E6 /* kr4mb_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kr4mb_pub.pem; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* KeyRemap4MacBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyRemap4MacBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -61,6 +67,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				349CF9BA10E27B6800FA98E6 /* sharecode */,
+				349CF9B710E27B6500FA98E6 /* bundleprefix.h */,
 				256AC3D80F4B6AC300CF3369 /* KeyRemap4MacBookAppDelegate.h */,
 				256AC3D90F4B6AC300CF3369 /* KeyRemap4MacBookAppDelegate.m */,
 			);
@@ -117,6 +125,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				349CF9D510E27BED00FA98E6 /* kr4mb_pub.pem */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
@@ -132,6 +141,15 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		349CF9BA10E27B6800FA98E6 /* sharecode */ = {
+			isa = PBXGroup;
+			children = (
+				349CF9BB10E27B7600FA98E6 /* Common.h */,
+				349CF9BC10E27B7600FA98E6 /* Common.m */,
+			);
+			name = sharecode;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,6 +198,7 @@
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
+				349CF9D610E27BED00FA98E6 /* kr4mb_pub.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +211,7 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				256AC3DA0F4B6AC300CF3369 /* KeyRemap4MacBookAppDelegate.m in Sources */,
+				349CF9BD10E27B7600FA98E6 /* Common.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
