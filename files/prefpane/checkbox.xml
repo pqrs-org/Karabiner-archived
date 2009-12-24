@@ -1882,6 +1882,20 @@
     </item>
 
     <item>
+      <name>Extra Cursor</name>
+      <list>
+        <item>
+          <name>Control_L+jkil to Left/Down/Up/Right</name>
+          <sysctl>option.extra_cursor_controlL_jkil</sysctl>
+          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::CONTROL_L, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::CONTROL_L, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>Emacs Mode</name>
       <list>
         <item>
