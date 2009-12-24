@@ -503,13 +503,13 @@
 															<object class="NSOutlineView" id="388417527">
 																<reference key="NSNextResponder" ref="465907325"/>
 																<int key="NSvFlags">274</int>
-																<string key="NSFrameSize">{578, 362}</string>
+																<string key="NSFrameSize">{571, 362}</string>
 																<reference key="NSSuperview" ref="465907325"/>
 																<bool key="NSEnabled">YES</bool>
 																<object class="NSTableHeaderView" key="NSHeaderView" id="809773680">
 																	<reference key="NSNextResponder" ref="189098454"/>
 																	<int key="NSvFlags">256</int>
-																	<string key="NSFrameSize">{578, 17}</string>
+																	<string key="NSFrameSize">{571, 17}</string>
 																	<reference key="NSSuperview" ref="189098454"/>
 																	<reference key="NSTableView" ref="388417527"/>
 																</object>
@@ -523,7 +523,7 @@
 																	<bool key="EncodedWithXMLCoder">YES</bool>
 																	<object class="NSTableColumn" id="527569832">
 																		<string key="NSIdentifier">checkbox</string>
-																		<double key="NSWidth">576</double>
+																		<double key="NSWidth">569</double>
 																		<double key="NSMinWidth">16</double>
 																		<double key="NSMaxWidth">1000</double>
 																		<object class="NSTableHeaderCell" key="NSHeaderCell">
@@ -592,7 +592,6 @@
 														<int key="NSvFlags">-2147483392</int>
 														<string key="NSFrame">{{-100, -100}, {543, 15}}</string>
 														<reference key="NSSuperview" ref="1011972"/>
-														<bool key="NSEnabled">YES</bool>
 														<int key="NSsFlags">1</int>
 														<reference key="NSTarget" ref="1011972"/>
 														<string key="NSAction">_doScroller:</string>
@@ -617,7 +616,7 @@
 												<string key="NSFrame">{{17, 17}, {588, 380}}</string>
 												<reference key="NSSuperview" ref="126432317"/>
 												<reference key="NSNextKeyView" ref="465907325"/>
-												<int key="NSsFlags">146</int>
+												<int key="NSsFlags">18</int>
 												<reference key="NSVScroller" ref="839550362"/>
 												<reference key="NSHScroller" ref="296442866"/>
 												<reference key="NSContentView" ref="465907325"/>
@@ -2190,20 +2189,6 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">Foundation.framework/Headers/NSURLDownload.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBFrameworkSource</string>
-						<string key="minorKey">Sparkle.framework/Headers/SUAppcast.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBFrameworkSource</string>
-						<string key="minorKey">Sparkle.framework/Headers/SUUpdater.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
