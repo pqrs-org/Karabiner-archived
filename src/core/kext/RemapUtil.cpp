@@ -583,8 +583,18 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     Params_KeyboardEventCallBack params(EventType::MODIFY, flags, key, keyboardType, false);
 
-    if (key.isModifier()) {
+    Flags f = key.getModifierFlag();
+
+    if (f != ModifierFlag::NONE) {
+      // We operate FlagStatus for the case "key == KeyCode::CAPSLOCK".
+      FlagStatus::increase(f);
+      params.flags.add(f);
       RemapUtil::fireKey(params, workspacedata);
+
+      FlagStatus::decrease(f);
+      params.flags = flags;
+      RemapUtil::fireKey(params, workspacedata);
+
     } else {
       params.eventType = EventType::DOWN;
       RemapUtil::fireKey(params, workspacedata);
