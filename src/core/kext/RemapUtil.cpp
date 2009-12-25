@@ -665,14 +665,14 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         KeyboardRepeat::primitive_add(EventType::DOWN, fireFlags1 | savedflags_, fireKeyCode1, remapParams.params.keyboardType);
         KeyboardRepeat::primitive_add(EventType::UP,   fireFlags1 | savedflags_, fireKeyCode1, remapParams.params.keyboardType);
-        KeyboardRepeat::primitive_add(EventType::DOWN, fireFlags2 | savedflags_, fireKeyCode1, remapParams.params.keyboardType);
-        KeyboardRepeat::primitive_add(EventType::UP,   fireFlags2 | savedflags_, fireKeyCode1, remapParams.params.keyboardType);
-        KeyboardRepeat::primitive_add(EventType::DOWN, fireFlags3 | savedflags_, fireKeyCode1, remapParams.params.keyboardType);
-        KeyboardRepeat::primitive_add(EventType::UP,   fireFlags3 | savedflags_, fireKeyCode1, remapParams.params.keyboardType);
-        KeyboardRepeat::primitive_add(EventType::DOWN, fireFlags4 | savedflags_, fireKeyCode1, remapParams.params.keyboardType);
-        KeyboardRepeat::primitive_add(EventType::UP,   fireFlags4 | savedflags_, fireKeyCode1, remapParams.params.keyboardType);
-        KeyboardRepeat::primitive_add(EventType::DOWN, fireFlags5 | savedflags_, fireKeyCode1, remapParams.params.keyboardType);
-        KeyboardRepeat::primitive_add(EventType::UP,   fireFlags5 | savedflags_, fireKeyCode1, remapParams.params.keyboardType);
+        KeyboardRepeat::primitive_add(EventType::DOWN, fireFlags2 | savedflags_, fireKeyCode2, remapParams.params.keyboardType);
+        KeyboardRepeat::primitive_add(EventType::UP,   fireFlags2 | savedflags_, fireKeyCode2, remapParams.params.keyboardType);
+        KeyboardRepeat::primitive_add(EventType::DOWN, fireFlags3 | savedflags_, fireKeyCode3, remapParams.params.keyboardType);
+        KeyboardRepeat::primitive_add(EventType::UP,   fireFlags3 | savedflags_, fireKeyCode3, remapParams.params.keyboardType);
+        KeyboardRepeat::primitive_add(EventType::DOWN, fireFlags4 | savedflags_, fireKeyCode4, remapParams.params.keyboardType);
+        KeyboardRepeat::primitive_add(EventType::UP,   fireFlags4 | savedflags_, fireKeyCode4, remapParams.params.keyboardType);
+        KeyboardRepeat::primitive_add(EventType::DOWN, fireFlags5 | savedflags_, fireKeyCode5, remapParams.params.keyboardType);
+        KeyboardRepeat::primitive_add(EventType::UP,   fireFlags5 | savedflags_, fireKeyCode5, remapParams.params.keyboardType);
 
         KeyboardRepeat::primitive_start(config.get_keyoverlaidmodifier_initial_wait());
       }
