@@ -650,6 +650,15 @@ namespace org_pqrs_KeyRemap4MacBook {
       ic_.begin();
 
       // ----------------------------------------
+      // We store the flags when KeyDown.
+      // Because it lets you make a natural input when the following sequence.
+      //
+      // ex. "Space to Shift (when type only, send Space)"
+      // (1) KeyDown Command_L
+      // (2) KeyDown Space        save flags (Command_L)
+      // (3) KeyUp   Command_L
+      // (4) KeyUp   Space        fire Command_L+Space
+
       // calc flags
       ModifierFlag toKeyCodeFlag = toKeyCode.getModifierFlag();
       FlagStatus::temporary_decrease(toFlags | toKeyCodeFlag);
