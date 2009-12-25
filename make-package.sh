@@ -46,6 +46,7 @@ sudo cp -R "src/util/prefpane/build/Release/KeyRemap4MacBook.prefPane" "pkgroot/
 
 sudo find pkgroot -type d -print0 | xargs -0 sudo chmod 755
 sudo find pkgroot -type f -print0 | xargs -0 sudo chmod 644
+sudo find pkgroot -type l -print0 | xargs -0 sudo chmod -h 755
 sudo find pkgroot -name '*.sh' -print0 | xargs -0 sudo chmod 755
 sudo chmod 4755 pkgroot/$basedir/bin/KeyRemap4MacBook_sysctl_reset
 sudo chmod 4755 pkgroot/$basedir/bin/KeyRemap4MacBook_sysctl_set
