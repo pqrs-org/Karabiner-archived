@@ -3997,25 +3997,14 @@
           <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_LOCK_COMMAND_R</autogen>
         </item>
         <item>
-          <name>VK_JIS_TOGGLE_EISUU_KANA (Standard)</name>
-          <appendix>Use A,Command_L,Command_R as KANA/EISUU (toggle)</appendix>
-          <sysctl>remap.samples_jis_unify_kana_eisuu_to_commandLR</sysctl>
+          <name>VK_JIS_TOGGLE_EISUU_KANA</name>
+          <appendix>A to KANA/EISUU (toggle)</appendix>
+          <appendix>Command_L to KANA/EISUU (toggle)</appendix>
+          <appendix>Command_R to Command_R (When type only, send send KANA/EISUU (toggle))</appendix>
+          <sysctl>remap.samples_vk_jis_toggle_eisuu_kana</sysctl>
           <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
           <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
-          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
-        </item>
-        <item>
-          <name>VK_JIS_TOGGLE_EISUU_KANA (with ModifierFlag)</name>
-          <appendix>Use Shift+A as KANA/EISUU (toggle)</appendix>
-          <sysctl>remap.samples_shiftA2toggle_eisuu_kana</sysctl>
-          <autogen>--KeyToKey-- KeyCode::A, VK_SHIFT, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
-        </item>
-        <item>
-          <name>VK_JIS_TOGGLE_EISUU_KANA (KeyOverlaidModifier)</name>
-          <appendix>Command_L to Command_L</appendix>
-          <appendix>(+ When you type Command_L only, send KANA/EISUU (toggle))</appendix>
-          <sysctl>remap.samples_jis_commandL2commandL_toggle_kana_eisuu</sysctl>
-          <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
         </item>
         <item>
           <name>VK_JIS_EISUU_x2</name>
