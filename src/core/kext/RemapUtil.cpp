@@ -627,9 +627,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------------------------------------
   bool
   KeyOverlaidModifier::remap(RemapParams& remapParams,
-                             const KeyCode& fromKeyCode, const Flags& fromFlags,
-                             const KeyCode& toKeyCode,   const Flags& toFlags,
-                             const KeyCode& fireKeyCode, const Flags& fireFlags,
+                             const KeyCode& fromKeyCode,   const Flags& fromFlags,
+                             const KeyCode& toKeyCode,     const Flags& toFlags,
+                             const KeyCode& fireKeyCode1,  const Flags& fireFlags1,
+                             const KeyCode& fireKeyCode2,  const Flags& fireFlags2,
+                             const KeyCode& fireKeyCode3,  const Flags& fireFlags3,
+                             const KeyCode& fireKeyCode4,  const Flags& fireFlags4,
+                             const KeyCode& fireKeyCode5,  const Flags& fireFlags5,
                              bool isFireRepeat)
   {
     // ----------------------------------------
@@ -648,23 +652,23 @@ namespace org_pqrs_KeyRemap4MacBook {
       // calc flags
       ModifierFlag toKeyCodeFlag = toKeyCode.getModifierFlag();
       FlagStatus::temporary_decrease(toFlags | toKeyCodeFlag);
-      FlagStatus::temporary_increase(fireFlags);
+      FlagStatus::temporary_increase(fireFlags1);
 
       savedflags_ = FlagStatus::makeFlags().get();
 
       // restore flags
       FlagStatus::temporary_increase(toFlags | toKeyCodeFlag);
-      FlagStatus::temporary_decrease(fireFlags);
+      FlagStatus::temporary_decrease(fireFlags1);
 
       if (isFireRepeat) {
-        KeyboardRepeat::set(EventType::DOWN, savedflags_, fireKeyCode, remapParams.params.keyboardType,
+        KeyboardRepeat::set(EventType::DOWN, savedflags_, fireKeyCode1, remapParams.params.keyboardType,
                             config.get_keyoverlaidmodifier_initial_wait());
       }
 
     } else {
       if (savedIsAnyEventHappen == false) {
         if (config.parameter_keyoverlaidmodifier_timeout <= 0 || ic_.checkThreshold(config.parameter_keyoverlaidmodifier_timeout) == false) {
-          RemapUtil::fireKey_downup(savedflags_, fireKeyCode, remapParams.params.keyboardType, remapParams.workspacedata);
+          RemapUtil::fireKey_downup(savedflags_, fireKeyCode1, remapParams.params.keyboardType, remapParams.workspacedata);
         }
       }
       EventWatcher::unset(isAnyEventHappen_);

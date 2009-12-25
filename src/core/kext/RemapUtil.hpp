@@ -172,78 +172,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // for SandS like behavior remappings (remap_space2shift, remap_enter2optionL_commandSpace, ...)
   class KeyOverlaidModifier {
   public:
-    bool remap(RemapParams& remapParams,
-               const KeyCode& fromKeyCode, const Flags& fromFlags,
-               const KeyCode& toKeyCode,   const Flags& toFlags,
-               const KeyCode& fireKeyCode, const Flags& fireFlags = ModifierFlag::NONE,
-               bool isFireRepeat = false);
-    // no-fromFlags version.
-    bool remap(RemapParams& remapParams,
-               const KeyCode& fromKeyCode,
-               const KeyCode& toKeyCode,   const Flags& toFlags,
-               const KeyCode& fireKeyCode, const Flags& fireFlags = ModifierFlag::NONE,
-               bool isFireRepeat = false) {
-      return remap(remapParams, fromKeyCode, 0,
-                   toKeyCode, toFlags,
-                   fireKeyCode, fireFlags, isFireRepeat);
-    }
-    // no-toFlags version.
-    bool remap(RemapParams& remapParams,
-               const KeyCode& fromKeyCode, const Flags& fromFlags,
-               const KeyCode& toKeyCode,
-               const KeyCode& fireKeyCode, const Flags& fireFlags = ModifierFlag::NONE,
-               bool isFireRepeat = false) {
-      return remap(remapParams, fromKeyCode, fromFlags,
-                   toKeyCode, ModifierFlag::NONE,
-                   fireKeyCode, fireFlags, isFireRepeat);
-    }
-    // no-fromFlags, no-toFlags version.
-    bool remap(RemapParams& remapParams,
-               const KeyCode& fromKeyCode,
-               const KeyCode& toKeyCode,
-               const KeyCode& fireKeyCode, const Flags& fireFlags = ModifierFlag::NONE,
-               bool isFireRepeat = false) {
-      return remap(remapParams, fromKeyCode, 0,
-                   toKeyCode, ModifierFlag::NONE,
-                   fireKeyCode, fireFlags, isFireRepeat);
-    }
-
-    // no-isFireRepeat version.
-    bool remapWithRepeat(RemapParams& remapParams,
-                         const KeyCode& fromKeyCode, const Flags& fromFlags,
-                         const KeyCode& toKeyCode,   const Flags& toFlags,
-                         const KeyCode& fireKeyCode, const Flags& fireFlags = ModifierFlag::NONE) {
-      return remap(remapParams, fromKeyCode, fromFlags,
-                   toKeyCode, toFlags,
-                   fireKeyCode, fireFlags, true);
-    }
-    // no-fromFlags, no-isFireRepeat version.
-    bool remapWithRepeat(RemapParams& remapParams,
-                         const KeyCode& fromKeyCode,
-                         const KeyCode& toKeyCode,   const Flags& toFlags,
-                         const KeyCode& fireKeyCode, const Flags& fireFlags = ModifierFlag::NONE) {
-      return remap(remapParams, fromKeyCode, 0,
-                   toKeyCode, toFlags,
-                   fireKeyCode, fireFlags, true);
-    }
-    // no-toFlag, no-isFireRepeat version.
-    bool remapWithRepeat(RemapParams& remapParams,
-                         const KeyCode& fromKeyCode, const Flags& fromFlags,
-                         const KeyCode& toKeyCode,
-                         const KeyCode& fireKeyCode, const Flags& fireFlags = ModifierFlag::NONE) {
-      return remap(remapParams, fromKeyCode, fromFlags,
-                   toKeyCode, ModifierFlag::NONE,
-                   fireKeyCode, fireFlags, true);
-    }
-    // no-fromFlags, no-toFlag, no-isFireRepeat version.
-    bool remapWithRepeat(RemapParams& remapParams,
-                         const KeyCode& fromKeyCode,
-                         const KeyCode& toKeyCode,
-                         const KeyCode& fireKeyCode, const Flags& fireFlags = ModifierFlag::NONE) {
-      return remap(remapParams, fromKeyCode, 0,
-                   toKeyCode, ModifierFlag::NONE,
-                   fireKeyCode, fireFlags, true);
-    }
+#include "generate/output/include.keyoverlaidmodifier.hpp"
 
   private:
     bool isAnyEventHappen_;
