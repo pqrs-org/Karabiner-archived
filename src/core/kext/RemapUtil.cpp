@@ -649,26 +649,42 @@ namespace org_pqrs_KeyRemap4MacBook {
       EventWatcher::set(isAnyEventHappen_);
       ic_.begin();
 
+      // ----------------------------------------
       // calc flags
       ModifierFlag toKeyCodeFlag = toKeyCode.getModifierFlag();
       FlagStatus::temporary_decrease(toFlags | toKeyCodeFlag);
-      FlagStatus::temporary_increase(fireFlags1);
 
       savedflags_ = FlagStatus::makeFlags().get();
 
       // restore flags
       FlagStatus::temporary_increase(toFlags | toKeyCodeFlag);
-      FlagStatus::temporary_decrease(fireFlags1);
 
+      // ----------------------------------------
       if (isFireRepeat) {
-        KeyboardRepeat::set(EventType::DOWN, savedflags_, fireKeyCode1, remapParams.params.keyboardType,
-                            config.get_keyoverlaidmodifier_initial_wait());
+        KeyboardRepeat::cancel();
+
+        KeyboardRepeat::primitive_add(EventType::DOWN, fireFlags1 | savedflags_, fireKeyCode1, remapParams.params.keyboardType);
+        KeyboardRepeat::primitive_add(EventType::UP,   fireFlags1 | savedflags_, fireKeyCode1, remapParams.params.keyboardType);
+        KeyboardRepeat::primitive_add(EventType::DOWN, fireFlags2 | savedflags_, fireKeyCode1, remapParams.params.keyboardType);
+        KeyboardRepeat::primitive_add(EventType::UP,   fireFlags2 | savedflags_, fireKeyCode1, remapParams.params.keyboardType);
+        KeyboardRepeat::primitive_add(EventType::DOWN, fireFlags3 | savedflags_, fireKeyCode1, remapParams.params.keyboardType);
+        KeyboardRepeat::primitive_add(EventType::UP,   fireFlags3 | savedflags_, fireKeyCode1, remapParams.params.keyboardType);
+        KeyboardRepeat::primitive_add(EventType::DOWN, fireFlags4 | savedflags_, fireKeyCode1, remapParams.params.keyboardType);
+        KeyboardRepeat::primitive_add(EventType::UP,   fireFlags4 | savedflags_, fireKeyCode1, remapParams.params.keyboardType);
+        KeyboardRepeat::primitive_add(EventType::DOWN, fireFlags5 | savedflags_, fireKeyCode1, remapParams.params.keyboardType);
+        KeyboardRepeat::primitive_add(EventType::UP,   fireFlags5 | savedflags_, fireKeyCode1, remapParams.params.keyboardType);
+
+        KeyboardRepeat::primitive_start(config.get_keyoverlaidmodifier_initial_wait());
       }
 
     } else {
       if (savedIsAnyEventHappen == false) {
         if (config.parameter_keyoverlaidmodifier_timeout <= 0 || ic_.checkThreshold(config.parameter_keyoverlaidmodifier_timeout) == false) {
-          RemapUtil::fireKey_downup(savedflags_, fireKeyCode1, remapParams.params.keyboardType, remapParams.workspacedata);
+          RemapUtil::fireKey_downup(fireFlags1 | savedflags_, fireKeyCode1, remapParams.params.keyboardType, remapParams.workspacedata);
+          RemapUtil::fireKey_downup(fireFlags2 | savedflags_, fireKeyCode2, remapParams.params.keyboardType, remapParams.workspacedata);
+          RemapUtil::fireKey_downup(fireFlags3 | savedflags_, fireKeyCode3, remapParams.params.keyboardType, remapParams.workspacedata);
+          RemapUtil::fireKey_downup(fireFlags4 | savedflags_, fireKeyCode4, remapParams.params.keyboardType, remapParams.workspacedata);
+          RemapUtil::fireKey_downup(fireFlags5 | savedflags_, fireKeyCode5, remapParams.params.keyboardType, remapParams.workspacedata);
         }
       }
       EventWatcher::unset(isAnyEventHappen_);

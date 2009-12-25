@@ -44,6 +44,8 @@ namespace org_pqrs_KeyRemap4MacBook {
                                        const KeyCode& key,
                                        const KeyboardType& keyboardType)
   {
+    if (key == KeyCode::VK_NONE) return;
+
     for (int i = 0; i < MAXNUM; ++i) {
       if (! item_[i].active) {
         item_[i].params.eventType = eventType;
