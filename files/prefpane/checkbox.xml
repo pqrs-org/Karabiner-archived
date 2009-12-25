@@ -3752,6 +3752,7 @@
           <appendix>Shift+E to Control_L+Space (Key+Modifier To Key+Modifier)</appendix>
           <appendix>Shift+F to Option_L+Shift_L (Key+Modifier To Modifier+Modifier)</appendix>
           <appendix>FN+hjkl to Left/Down/Up/Right (Key+FN to Key) (around KeyPad)</appendix>
+          <appendix>G to CapsLock (To CapsLock)</appendix>
           <sysctl>remap.samples_keytokey_key2xxx</sysctl>
           <autogen>--KeyToKey-- KeyCode::A, KeyCode::B, ModifierFlag::SHIFT_L</autogen>
           <autogen>--KeyToKey-- KeyCode::B, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L</autogen>
@@ -3763,6 +3764,7 @@
           <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::FN, KeyCode::CURSOR_DOWN</autogen>
           <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::FN, KeyCode::CURSOR_UP</autogen>
           <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::FN, KeyCode::CURSOR_RIGHT</autogen>
+          <autogen>--KeyToKey-- KeyCode::G, KeyCode::CAPSLOCK</autogen>
         </item>
 
         <item>
@@ -3828,6 +3830,9 @@
           <appendix>C to Shift_L (When type only, send Space) + [KeyRepeat]</appendix>
           <appendix>Command+D to Shift_L (When type only, send Control_L+F) + [KeyRepeat]</appendix>
           <appendix>E to KeyCode::VK_NONE</appendix>
+          <appendix>F to Shift_L (When type only, send CapsLock)</appendix>
+          <appendix>G to Shift_L (When type only, send A,B,Shift_L+C,Control_L+B)</appendix>
+          <appendix>H to Shift_L (When type only, send A,B,Shift_L+C,Control_L+B) + [KeyRepeat]</appendix>
           <sysctl>remap.samples_keyoverlaidmodifier</sysctl>
           <autogen>--KeyOverlaidModifier-- KeyCode::A, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
           <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_L, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
@@ -3835,6 +3840,9 @@
           <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::C, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
           <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::D, VK_COMMAND, KeyCode::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
           <autogen>--KeyToKey-- KeyCode::E, KeyCode::VK_NONE</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::F, KeyCode::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+          <autogen>--KeyOverlaidModifier--           KeyCode::G, KeyCode::SHIFT_L, KeyCode::A, KeyCode::B, KeyCode::C, ModifierFlag::SHIFT_L, KeyCode::B, ModifierFlag::CONTROL_L</autogen>
+          <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::H, KeyCode::SHIFT_L, KeyCode::A, KeyCode::B, KeyCode::C, ModifierFlag::SHIFT_L, KeyCode::B, ModifierFlag::CONTROL_L</autogen>
         </item>
 
         <item>
