@@ -8,6 +8,7 @@ max = ARGV[1].to_i
 
 if max == 0 then
   $stderr.print "Usage: keytokey.rb num max\n"
+  exit
 end
 
 def makeset(n)
