@@ -66,6 +66,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       IOLog("[KeyRemap4MacBook ERROR] Params_KeyboardEventCallBack::apply invalid modifierkey:%d\n", key.get());
       return;
     }
+    if (flags.isOn(ModifierFlag::NONE)) {
+      IOLog("[KeyRemap4MacBook ERROR] Params_KeyboardEventCallBack::apply invalid flags:0x%x\n", flags.get());
+      return;
+    }
 
     // ------------------------------------------------------------
     if (config.option_drop_slowexpose) {
