@@ -35,10 +35,10 @@
       <appendix>Shift+D to Option_L (Key+Modifier To Modifier)</appendix>
       <appendix>Shift+E to Control_L+Space (Key+Modifier To Key+Modifier)</appendix>
       <appendix>Shift+F to Option_L+Shift_L (Key+Modifier To Modifier+Modifier)</appendix>
-      <appendix>FN+hjkl to Left/Down/Up/Right (Key+FN to Key) (around KeyPad)</appendix>
       <appendix>G to CapsLock (To CapsLock)</appendix>
-      <appendix>H to A (only if no Modifiers)</appendix>
-      <appendix>I to A (only if ModifierFlag == Shift_L)</appendix>
+      <appendix>FN+hjkl to Left/Down/Up/Right (Key+FN to Key) (around KeyPad)</appendix>
+      <appendix>1 to A (only if no Modifiers)</appendix>
+      <appendix>2 to A (only if ModifierFlag == Shift_L)</appendix>
       <sysctl>remap.samples_keytokey_key2xxx</sysctl>
       <autogen>--KeyToKey-- KeyCode::A, KeyCode::B, ModifierFlag::SHIFT_L</autogen>
       <autogen>--KeyToKey-- KeyCode::B, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L</autogen>
@@ -46,13 +46,13 @@
       <autogen>--KeyToKey-- KeyCode::D, VK_SHIFT, KeyCode::OPTION_L</autogen>
       <autogen>--KeyToKey-- KeyCode::E, VK_SHIFT, KeyCode::SPACE, ModifierFlag::CONTROL_L</autogen>
       <autogen>--KeyToKey-- KeyCode::F, VK_SHIFT, KeyCode::SHIFT_L, ModifierFlag::OPTION_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::G, KeyCode::CAPSLOCK</autogen>
       <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::FN, KeyCode::CURSOR_LEFT</autogen>
       <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::FN, KeyCode::CURSOR_DOWN</autogen>
       <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::FN, KeyCode::CURSOR_UP</autogen>
       <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::FN, KeyCode::CURSOR_RIGHT</autogen>
-      <autogen>--KeyToKey-- KeyCode::G, KeyCode::CAPSLOCK</autogen>
-      <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::NONE, KeyCode::A</autogen>
-      <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::A</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::A</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::A</autogen>
     </item>
 
     <item>
