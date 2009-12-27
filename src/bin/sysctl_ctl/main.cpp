@@ -404,6 +404,15 @@ main(int argc, char** argv)
     CFIndex value = getBool(name);
     isSuccess = setBool(name, ! value);
 
+  } else if (strcmp(argv[1], "checkupdate_stableonly") == 0) {
+    printf("%ld\n", getBool(CFSTR("isCheckUpdate_stableonly")));
+    return 0;
+
+  } else if (strcmp(argv[1], "toggle_checkupdate_stableonly") == 0) {
+    CFStringRef name = CFSTR("isCheckUpdate_stableonly");
+    CFIndex value = getBool(name);
+    isSuccess = setBool(name, ! value);
+
   } else if (strcmp(argv[1], "getname") == 0) {
     if (argc < 3) {
       fprintf(stderr, "Usage: %s getname index\n", argv[0]);
