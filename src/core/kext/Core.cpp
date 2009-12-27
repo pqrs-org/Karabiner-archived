@@ -207,7 +207,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         cancelRepeat();
         EventWatcher::reset();
         FlagStatus::reset();
-        FireModifiers::fire(0);
+        FireModifiers::fire(FlagStatus::makeFlags());
         PressDownKeys::clear();
       }
     }

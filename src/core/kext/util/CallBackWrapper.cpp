@@ -103,7 +103,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     OSObject* target = hk->getOrig_keyboardEventTarget();
     if (! target) return;
 
-    OSObject* sender = hk->get();
+    IOHIKeyboard* sender = hk->get();
     if (! sender) return;
 
     const AbsoluteTime& ts = CommonData::getcurrent_ts();
@@ -115,6 +115,25 @@ namespace org_pqrs_KeyRemap4MacBook {
              keyboardType.get(), repeat, ts, sender, refcon);
 
     CommonData::setcurrent_keyboardType(keyboardType);
+
+    // --------------------
+    // handle CapsLock LED
+    int led = sender->getLEDStatus();
+    if (config.general_capslock_led_hack) {
+      if (led == 0) {
+        sender->setAlphaLockFeedback(true);
+      }
+    } else {
+      if (flags.isOn(ModifierFlag::CAPSLOCK)) {
+        if (led == 0) {
+          sender->setAlphaLockFeedback(true);
+        }
+      } else {
+        if (led != 0) {
+          sender->setAlphaLockFeedback(false);
+        }
+      }
+    }
   }
 
   void
@@ -136,7 +155,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     OSObject* target = hc->getOrig_keyboardSpecialEventTarget();
     if (! target) return;
 
-    OSObject* sender = hc->get();
+    IOHIKeyboard* sender = hc->get();
     if (! sender) return;
 
     const AbsoluteTime& ts = CommonData::getcurrent_ts();
@@ -159,7 +178,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     OSObject* target = hp->getOrig_relativePointerEventTarget();
     if (! target) return;
 
-    OSObject* sender = hp->get();
+    IOHIPointing* sender = hp->get();
     if (! sender) return;
 
     const AbsoluteTime& ts = CommonData::getcurrent_ts();
@@ -181,7 +200,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     OSObject* target = hp->getOrig_scrollWheelEventTarget();
     if (! target) return;
 
-    OSObject* sender = hp->get();
+    IOHIPointing* sender = hp->get();
     if (! sender) return;
 
     const AbsoluteTime& ts = CommonData::getcurrent_ts();
