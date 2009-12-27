@@ -3,6 +3,7 @@ all:
 
 build:
 	$(MAKE) -C pkginfo
+	$(MAKE) -C files/prefpane
 	$(MAKE) -C src
 	mkdir -p files/share
 	./util/make-reset.rb files/prefpane/*.xml > files/share/reset
