@@ -3714,6 +3714,345 @@
         </item>
       </list>
     </item>
-    <!-- #include "include/samples.xml" -->
+<item>
+  <name>Samples for KeyRemap4MacBook Developer</name>
+  <list>
+    <item>
+      <name>SetKeyboardType</name>
+      <appendix>Set keyboardType = KeyboardType::MACBOOK</appendix>
+      <sysctl>remap.samples_setkeyboardtype_macbook</sysctl>
+      <autogen>--SetKeyboardType-- KeyboardType::MACBOOK</autogen>
+    </item>
+    <item>
+      <name>SetKeyboardType</name>
+      <appendix>Set keyboardType = KeyboardType::MACBOOK_3_1</appendix>
+      <sysctl>remap.samples_setkeyboardtype_macbook_3_1</sysctl>
+      <autogen>--SetKeyboardType-- KeyboardType::MACBOOK_3_1</autogen>
+    </item>
+
+    <item>
+      <name>KeyToKey (Standard)</name>
+      <appendix>A to B (KeyToKey)</appendix>
+      <appendix>S to SHIFT_L (KeyToModifier)</appendix>
+      <appendix>SHIFT_L to Return (ModifierToKey)</appendix>
+      <appendix>Option_L to Command_L</appendix>
+      <sysctl>remap.samples_keytokey_standard</sysctl>
+      <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
+      <autogen>--KeyToKey-- KeyCode::S, KeyCode::SHIFT_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::RETURN</autogen>
+      <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+    </item>
+
+    <item>
+      <name>KeyToKey (Key To XXX)</name>
+      <appendix>A to Shift_L+B (Key to Key+Modifier)</appendix>
+      <appendix>B to Command_L+Shift_L (Key to Modifier+Modifier)</appendix>
+      <appendix>Shift+C to Space (Key+Modifier To Key)</appendix>
+      <appendix>Shift+D to Option_L (Key+Modifier To Modifier)</appendix>
+      <appendix>Shift+E to Control_L+Space (Key+Modifier To Key+Modifier)</appendix>
+      <appendix>Shift+F to Option_L+Shift_L (Key+Modifier To Modifier+Modifier)</appendix>
+      <appendix>FN+hjkl to Left/Down/Up/Right (Key+FN to Key) (around KeyPad)</appendix>
+      <appendix>G to CapsLock (To CapsLock)</appendix>
+      <appendix>H to A (only if no Modifiers)</appendix>
+      <appendix>I to A (only if ModifierFlag == Shift_L)</appendix>
+      <sysctl>remap.samples_keytokey_key2xxx</sysctl>
+      <autogen>--KeyToKey-- KeyCode::A, KeyCode::B, ModifierFlag::SHIFT_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::B, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::C, VK_SHIFT, KeyCode::SPACE</autogen>
+      <autogen>--KeyToKey-- KeyCode::D, VK_SHIFT, KeyCode::OPTION_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::E, VK_SHIFT, KeyCode::SPACE, ModifierFlag::CONTROL_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::F, VK_SHIFT, KeyCode::SHIFT_L, ModifierFlag::OPTION_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::FN, KeyCode::CURSOR_LEFT</autogen>
+      <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::FN, KeyCode::CURSOR_DOWN</autogen>
+      <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::FN, KeyCode::CURSOR_UP</autogen>
+      <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::FN, KeyCode::CURSOR_RIGHT</autogen>
+      <autogen>--KeyToKey-- KeyCode::G, KeyCode::CAPSLOCK</autogen>
+      <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::NONE, KeyCode::A</autogen>
+      <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::A</autogen>
+    </item>
+
+    <item>
+      <name>KeyToKey (Modifier To XXX)</name>
+      <appendix>Shift_R to Command_L+Option_L (Modifier to Modifier+Modifier)</appendix>
+      <appendix>FN+Option_L to Command_L (Modifier+Modifier To Modifier)</appendix>
+      <sysctl>remap.samples_keytokey_modifier2xxx</sysctl>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::COMMAND_L, ModifierFlag::OPTION_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::OPTION_L, ModifierFlag::FN, KeyCode::COMMAND_L</autogen>
+    </item>
+
+    <item>
+      <name>KeyToKey (Combination)</name>
+      <appendix>A to B,C (Standard)</appendix>
+      <appendix>B to A,B,Shift_L+C,D,Control_L+P (Key To)</appendix>
+      <appendix>C to JIS_KANA,A,I,JIS_EISUU,U (Key To with Japanese)</appendix>
+      <appendix>Shift_L to A,B,Control_L+B,Shift_L+C,D (Modifier To)</appendix>
+      <appendix>Control+D to Shift_L+A, Control_L+F (Key+Modifier To)</appendix>
+      <sysctl>remap.samples_keytokey_combination</sysctl>
+      <autogen>--KeyToKey-- KeyCode::A, KeyCode::B, KeyCode::C</autogen>
+      <autogen>--KeyToKey-- KeyCode::B, KeyCode::A, KeyCode::B, KeyCode::C, ModifierFlag::SHIFT_L, KeyCode::D, KeyCode::P, ModifierFlag::CONTROL_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::C, KeyCode::JIS_KANA, KeyCode::A, KeyCode::I, KeyCode::JIS_EISUU, KeyCode::U</autogen>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::A, KeyCode::B, KeyCode::B, ModifierFlag::CONTROL_L, KeyCode::C, ModifierFlag::SHIFT_L, KeyCode::D</autogen>
+      <autogen>--KeyToKey-- KeyCode::D, VK_CONTROL, KeyCode::A, ModifierFlag::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
+    </item>
+
+    <item>
+      <name>KeyToConsumer</name>
+      <appendix>A to Volume Mute</appendix>
+      <appendix>Shift+B to Volume Mute (With Modifier)</appendix>
+      <sysctl>remap.samples_keytoconsumer</sysctl>
+      <autogen>--KeyToComsumer-- KeyCode::A, ConsumerKeyCode::VOLUME_MUTE</autogen>
+      <autogen>--KeyToComsumer-- KeyCode::B, VK_SHIFT, ConsumerKeyCode::VOLUME_MUTE</autogen>
+    </item>
+
+    <item>
+      <name>ConsumerToKey</name>
+      <appendix>Volume Down to A</appendix>
+      <appendix>Music Prev to Shift_L (to Modifier)</appendix>
+      <appendix>Shift+Volume Up to B (with Modifier)</appendix>
+      <appendix>Option+Volume Mute to Shift_L+C (to Key+Modifier)</appendix>
+      <sysctl>remap.samples_consumertokey</sysctl>
+      <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, KeyCode::A</autogen>
+      <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PREV, KeyCode::SHIFT_L</autogen>
+      <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, VK_SHIFT, KeyCode::B</autogen>
+      <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, VK_OPTION, KeyCode::C, ModifierFlag::SHIFT_L</autogen>
+    </item>
+
+    <item>
+      <name>ConsumerToConsumer</name>
+      <appendix>Volume Down to Volume Mute</appendix>
+      <appendix>Shift+Volume Up to Volume Mute (with Modifier)</appendix>
+      <sysctl>remap.samples_consumertoconsumer</sysctl>
+      <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_DOWN, ConsumerKeyCode::VOLUME_MUTE</autogen>
+      <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_UP, VK_SHIFT, ConsumerKeyCode::VOLUME_MUTE</autogen>
+    </item>
+
+    <item>
+      <name>KeyOverlaidModifier</name>
+      <appendix>A to Shift_L (When type only, send Space) (Standard)</appendix>
+      <appendix>Option_L to Shift_L (When type only, send Space) (Modifier)</appendix>
+      <appendix>Control+B to Shift_L (When type only, send Space) (Key+Modifier)</appendix>
+      <appendix>C to Shift_L (When type only, send Space) + [KeyRepeat]</appendix>
+      <appendix>Command+D to Shift_L (When type only, send Control_L+F) + [KeyRepeat]</appendix>
+      <appendix>E to KeyCode::VK_NONE</appendix>
+      <appendix>F to Shift_L (When type only, send CapsLock)</appendix>
+      <appendix>G to Shift_L (When type only, send A,B,Shift_L+C,Control_L+B)</appendix>
+      <appendix>H to Shift_L (When type only, send A,B,Shift_L+C,Control_L+B) + [KeyRepeat]</appendix>
+      <appendix>I to Shift_L (When type only, send Option_L)</appendix>
+      <sysctl>remap.samples_keyoverlaidmodifier</sysctl>
+      <autogen>--KeyOverlaidModifier-- KeyCode::A, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+      <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_L, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+      <autogen>--KeyOverlaidModifier-- KeyCode::B, VK_CONTROL, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+      <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::C, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+      <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::D, VK_COMMAND, KeyCode::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::E, KeyCode::VK_NONE</autogen>
+      <autogen>--KeyOverlaidModifier-- KeyCode::F, KeyCode::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+      <autogen>--KeyOverlaidModifier--           KeyCode::G, KeyCode::SHIFT_L, KeyCode::A, KeyCode::B, KeyCode::C, ModifierFlag::SHIFT_L, KeyCode::B, ModifierFlag::CONTROL_L</autogen>
+      <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::H, KeyCode::SHIFT_L, KeyCode::A, KeyCode::B, KeyCode::C, ModifierFlag::SHIFT_L, KeyCode::B, ModifierFlag::CONTROL_L</autogen>
+      <autogen>--KeyOverlaidModifier-- KeyCode::I, KeyCode::SHIFT_L, KeyCode::OPTION_L</autogen>
+    </item>
+
+    <item>
+      <name>ModifierHoldingKeyToKey</name>
+      <appendix>Shift(Holding)+A to Return</appendix>
+      <sysctl>remap.samples_modifierholdingkeytokey</sysctl>
+      <autogen>--ModifierHoldingKeyToKey-- KeyCode::A, VK_SHIFT, KeyCode::RETURN</autogen>
+    </item>
+
+    <item>
+      <name>DoublePressModifier</name>
+      <appendix>Shift_L x 2 to RETURN</appendix>
+      <sysctl>remap.samples_doublepressmodifier</sysctl>
+      <autogen>--DoublePressModifier-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L, KeyCode::RETURN</autogen>
+    </item>
+
+    <item>
+      <name>IgnoreMultipleSameKeyPress</name>
+      <appendix>Ignore the multiple press of 'A'</appendix>
+      <appendix>Ignore the multiple press of 'Shift+B' (with Modifier)</appendix>
+      <sysctl>remap.samples_ignoremultiplesamekeypress</sysctl>
+      <autogen>--IgnoreMultipleSameKeyPress-- KeyCode::A</autogen>
+      <autogen>--IgnoreMultipleSameKeyPress-- KeyCode::B, VK_SHIFT</autogen>
+    </item>
+
+    <item>
+      <name>KeyToPointingButton</name>
+      <appendix>A to LeftClick (Standard)</appendix>
+      <appendix>Option_L to LeftClick (Modifier)</appendix>
+      <appendix>Shift+B to RightClick (Key+Modifier)</appendix>
+      <sysctl>remap.samples_keytopointingbutton</sysctl>
+      <autogen>--KeyToPointingButton-- KeyCode::A, PointingButton::LEFT</autogen>
+      <autogen>--KeyToPointingButton-- KeyCode::OPTION_L, PointingButton::LEFT</autogen>
+      <autogen>--KeyToPointingButton-- KeyCode::B, VK_SHIFT, PointingButton::RIGHT</autogen>
+    </item>
+
+    <item>
+      <name>PointingRelativeToScroll</name>
+      <appendix>MiddleClick+CursorMove to ScrollWheel (One Button)</appendix>
+      <appendix>LeftClick+RightClick+CursorMove to ScrollWheel (Multi Buttons)</appendix>
+      <appendix>Option+CursorMove to ScrollWheel (Modifier)</appendix>
+      <appendix>Shift+LeftClick+CursorMove to ScrollWheel (Button+Modifier)</appendix>
+      <sysctl>remap.samples_pointingrelativetoscroll</sysctl>
+      <autogen>--PointingRelativeToScroll-- PointingButton::MIDDLE</autogen>
+      <autogen>--PointingRelativeToScroll-- PointingButton::LEFT | PointingButton::RIGHT</autogen>
+      <autogen>--PointingRelativeToScroll-- PointingButton::NONE, VK_OPTION</autogen>
+      <autogen>--PointingRelativeToScroll-- PointingButton::LEFT, VK_SHIFT</autogen>
+    </item>
+
+    <item>
+      <name>PointingButtonToPointingButton</name>
+      <appendix>Option+LeftClick to MiddleClick</appendix>
+      <sysctl>remap.samples_pointingbuttontopointingbutton</sysctl>
+      <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, VK_OPTION, PointingButton::MIDDLE</autogen>
+    </item>
+
+    <!-- application only -->
+    <item>
+      <name>application only</name>
+      <appendix>A to B if application == TERMINAL</appendix>
+      <sysctl>remap.samples_term_a2b</sysctl>
+      <only>TERMINAL</only>
+      <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
+    </item>
+    <item>
+      <name>application except</name>
+      <appendix>A to B if application != TERMINAL</appendix>
+      <sysctl>remap.samples_except_term_a2b</sysctl>
+      <not>TERMINAL</not>
+      <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
+    </item>
+    <item>
+      <name>application only (ConsumerToKey)</name>
+      <appendix>Volume Mute to Return if application == TERMINAL</appendix>
+      <sysctl>remap.samples_term_volumemute2return</sysctl>
+      <only>TERMINAL</only>
+      <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, KeyCode::RETURN</autogen>
+    </item>
+    <item>
+      <name>application except (ConsumerToKey)</name>
+      <appendix>Volume Mute to Return if application != TERMINAL</appendix>
+      <sysctl>remap.samples_except_term_volumemute2return</sysctl>
+      <not>TERMINAL</not>
+      <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, KeyCode::RETURN</autogen>
+    </item>
+
+    <!-- KeyboardType only -->
+    <item>
+      <name>KeyboardType only</name>
+      <appendix>A to B if KeyboardType == KeyboardType::MACBOOK</appendix>
+      <sysctl>remap.samples_a2b_keyboardtype_macbook</sysctl>
+      <keyboardtype_only>MACBOOK</keyboardtype_only>
+      <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
+    </item>
+
+    <!-- inputmode only -->
+    <item>
+      <name>inputmode_only (Japanese)</name>
+      <appendix>ASDFG to AIUEO if inputmode == INPUTMODE_JAPANESE</appendix>
+      <sysctl>remap.samples_jis_asdfg2aiueo</sysctl>
+      <inputmode_only>INPUTMODE_JAPANESE</inputmode_only>
+      <autogen>--KeyToKey-- KeyCode::S, KeyCode::I</autogen>
+      <autogen>--KeyToKey-- KeyCode::D, KeyCode::U</autogen>
+      <autogen>--KeyToKey-- KeyCode::F, KeyCode::E</autogen>
+      <autogen>--KeyToKey-- KeyCode::G, KeyCode::O</autogen>
+    </item>
+    <item>
+      <name>inputmode_only (Chinese Traditional)</name>
+      <appendix>A to Space if inputmode == INPUTMODE_CHINESE_TRADITIONAL</appendix>
+      <sysctl>remap.samples_tradchinese_a2space</sysctl>
+      <inputmode_only>INPUTMODE_CHINESE_TRADITIONAL</inputmode_only>
+      <autogen>--KeyToKey-- KeyCode::A, KeyCode::SPACE</autogen>
+    </item>
+    <item>
+      <name>inputmode_only (Chinese Simplified)</name>
+      <appendix>A to Space if inputmode == INPUTMODE_CHINESE_SIMPLIFIED</appendix>
+      <sysctl>remap.samples_simpchinese_a2space</sysctl>
+      <inputmode_only>INPUTMODE_CHINESE_SIMPLIFIED</inputmode_only>
+      <autogen>--KeyToKey-- KeyCode::A, KeyCode::SPACE</autogen>
+    </item>
+    <item>
+      <name>inputmode_only (Korean)</name>
+      <appendix>A to Space if inputmode == INPUTMODE_KOREAN</appendix>
+      <sysctl>remap.samples_korean_a2space</sysctl>
+      <inputmode_only>INPUTMODE_KOREAN</inputmode_only>
+      <autogen>--KeyToKey-- KeyCode::A, KeyCode::SPACE</autogen>
+    </item>
+    <item>
+      <name>inputmodedetail_only</name>
+      <appendix>ASDFG to AIUEO if inputmodedetail == INPUTMODE_DETAIL_JAPANESE_KATAKANA</appendix>
+      <sysctl>remap.samples_jis_asdfg2aiueo_katakana</sysctl>
+      <inputmodedetail_only>INPUTMODE_DETAIL_JAPANESE_KATAKANA</inputmodedetail_only>
+      <autogen>--KeyToKey-- KeyCode::S, KeyCode::I</autogen>
+      <autogen>--KeyToKey-- KeyCode::D, KeyCode::U</autogen>
+      <autogen>--KeyToKey-- KeyCode::F, KeyCode::E</autogen>
+      <autogen>--KeyToKey-- KeyCode::G, KeyCode::O</autogen>
+    </item>
+
+    <!-- Virtual KeyCode -->
+    <item>
+      <name>VK_LOCK_FN</name>
+      <appendix>Use A to numlock</appendix>
+      <sysctl>remap.samples_a2numlock</sysctl>
+      <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_LOCK_FN</autogen>
+    </item>
+    <item>
+      <name>VK_LOCK_COMMAND_R</name>
+      <appendix>Use A to Command_R Lock</appendix>
+      <sysctl>remap.samples_a2commandRlock</sysctl>
+      <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_LOCK_COMMAND_R</autogen>
+    </item>
+    <item>
+      <name>VK_JIS_TOGGLE_EISUU_KANA</name>
+      <appendix>A to KANA/EISUU (toggle)</appendix>
+      <appendix>Command_L to KANA/EISUU (toggle)</appendix>
+      <appendix>Command_R to Command_R (When type only, send send KANA/EISUU (toggle))</appendix>
+      <sysctl>remap.samples_vk_jis_toggle_eisuu_kana</sysctl>
+      <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
+      <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
+      <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
+    </item>
+    <item>
+      <name>VK_JIS_EISUU_x2</name>
+      <appendix>Use T as EISUU x2</appendix>
+      <sysctl>remap.samples_t2eisuu_x2</sysctl>
+      <autogen>--KeyToKey-- KeyCode::T, KeyCode::VK_JIS_EISUU_x2</autogen>
+    </item>
+    <item>
+      <name>VK_JIS_KANA_x2</name>
+      <appendix>Use Y as KANA x2</appendix>
+      <sysctl>remap.samples_y2kana_x2</sysctl>
+      <autogen>--KeyToKey-- KeyCode::Y, KeyCode::VK_JIS_KANA_x2</autogen>
+    </item>
+    <item>
+      <name>VK_JIS_BACKSLASH</name>
+      <appendix>Use A as JIS_BACKSLASH</appendix>
+      <sysctl>remap.samples_a2jisbackslash</sysctl>
+      <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_JIS_BACKSLASH</autogen>
+    </item>
+    <item>
+      <name>VK_JIS_TEMPORARY_ROMAN</name>
+      <appendix>Use A as A,VK_JIS_TEMPORARY_ROMAN,I,U</appendix>
+      <appendix>Use B as VK_JIS_TEMPORARY_ROMAN,A,I,U</appendix>
+      <sysctl>remap.samples_vk_jis_temporary_roman</sysctl>
+      <autogen>--KeyToKey-- KeyCode::A, KeyCode::A, KeyCode::VK_JIS_TEMPORARY_ROMAN, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
+      <autogen>--KeyToKey-- KeyCode::B, KeyCode::VK_JIS_TEMPORARY_ROMAN, KeyCode::A, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
+    </item>
+    <item>
+      <name>VK_JIS_TEMPORARY_HIRAGANA</name>
+      <appendix>Use A as A,VK_JIS_TEMPORARY_HIRAGANA,I,U</appendix>
+      <appendix>Use B as VK_JIS_TEMPORARY_HIRAGANA,A,I,U</appendix>
+      <sysctl>remap.samples_vk_jis_temporary_hiragana</sysctl>
+      <autogen>--KeyToKey-- KeyCode::A, KeyCode::A, KeyCode::VK_JIS_TEMPORARY_HIRAGANA, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
+      <autogen>--KeyToKey-- KeyCode::B, KeyCode::VK_JIS_TEMPORARY_HIRAGANA, KeyCode::A, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
+    </item>
+    <item>
+      <name>VK_JIS_TEMPORARY_KATAKANA</name>
+      <appendix>Use A as A,VK_JIS_TEMPORARY_KATAKANA,I,U</appendix>
+      <appendix>Use B as VK_JIS_TEMPORARY_KATAKANA,A,I,U</appendix>
+      <sysctl>remap.samples_vk_jis_temporary_katakana</sysctl>
+      <autogen>--KeyToKey-- KeyCode::A, KeyCode::A, KeyCode::VK_JIS_TEMPORARY_KATAKANA, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
+      <autogen>--KeyToKey-- KeyCode::B, KeyCode::VK_JIS_TEMPORARY_KATAKANA, KeyCode::A, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
+    </item>
+  </list>
+</item>
   </list>
 </root>
