@@ -296,7 +296,7 @@ namespace {
 
   // ----------------------------------------
   bool
-  setBool(CFStringRef name, CFIndex enable)
+  setValue(CFStringRef name, CFIndex enable)
   {
     CFNumberRef val = CFNumberCreate(NULL, kCFNumberIntType, &enable);
     CFPreferencesSetAppValue(name, val, applicationID);
@@ -304,13 +304,13 @@ namespace {
   }
 
   CFIndex
-  getBool(CFStringRef name)
+  getValue(CFStringRef name)
   {
     Boolean isOK;
     CFIndex value = CFPreferencesGetAppIntegerValue(name, applicationID, &isOK);
     if (! isOK) {
       value = 1;
-      setBool(name, value);
+      setValue(name, value);
     }
     return value;
   }
@@ -387,31 +387,27 @@ main(int argc, char** argv)
     return 0;
 
   } else if (strcmp(argv[1], "statusbar") == 0) {
-    printf("%ld\n", getBool(CFSTR("isStatusbarEnable")));
+    printf("%ld\n", getValue(CFSTR("isStatusbarEnable")));
     return 0;
 
   } else if (strcmp(argv[1], "toggle_statusbar") == 0) {
     CFStringRef name = CFSTR("isStatusbarEnable");
-    CFIndex value = getBool(name);
-    isSuccess = setBool(name, ! value);
+    CFIndex value = getValue(name);
+    isSuccess = setValue(name, ! value);
 
   } else if (strcmp(argv[1], "checkupdate") == 0) {
-    printf("%ld\n", getBool(CFSTR("isCheckUpdate")));
+    printf("%ld\n", getValue(CFSTR("isCheckUpdate")));
     return 0;
 
-  } else if (strcmp(argv[1], "toggle_checkupdate") == 0) {
+  } else if (strcmp(argv[1], "set_checkupdate") == 0) {
+    if (argc < 3) {
+      fprintf(stderr, "Usage: %s set_checkupdate value\n", argv[0]);
+      goto finish;
+    }
+
     CFStringRef name = CFSTR("isCheckUpdate");
-    CFIndex value = getBool(name);
-    isSuccess = setBool(name, ! value);
-
-  } else if (strcmp(argv[1], "checkupdate_stableonly") == 0) {
-    printf("%ld\n", getBool(CFSTR("isCheckUpdate_stableonly")));
-    return 0;
-
-  } else if (strcmp(argv[1], "toggle_checkupdate_stableonly") == 0) {
-    CFStringRef name = CFSTR("isCheckUpdate_stableonly");
-    CFIndex value = getBool(name);
-    isSuccess = setBool(name, ! value);
+    CFIndex value = atoi(argv[2]);
+    isSuccess = setValue(name, value);
 
   } else if (strcmp(argv[1], "getname") == 0) {
     if (argc < 3) {
