@@ -1932,10 +1932,7 @@
           <name>Control+PNBF to Up/Down/Left/Right</name>
           <sysctl>option.emacsmode_controlPNBF</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
-          <autogen>--KeyToKey-- KeyCode::P, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
-          <autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
-          <autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
-          <autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
+          <!-- #include "include/emacsmode_controlPNBF.xml" -->
         </item>
         <item>
           <name>Control+V to PageDown</name>
@@ -2224,37 +2221,25 @@
                   <name>In Emacs, Terminal</name>
                   <sysctl>option.emacsmode_force_controlPNBF_term</sysctl>
                   <only>EMACS, TERMINAL</only>
-                  <autogen>--KeyToKey-- KeyCode::P, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
-                  <autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
-                  <autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
-                  <autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
+                  <!-- #include "include/emacsmode_controlPNBF.xml" -->
                 </item>
                 <item>
                   <name>In X11</name>
                   <sysctl>option.emacsmode_force_controlPNBF_x11</sysctl>
                   <only>X11</only>
-                  <autogen>--KeyToKey-- KeyCode::P, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
-                  <autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
-                  <autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
-                  <autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
+                  <!-- #include "include/emacsmode_controlPNBF.xml" -->
                 </item>
                 <item>
                   <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
                   <sysctl>option.emacsmode_force_controlPNBF_vm</sysctl>
                   <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-                  <autogen>--KeyToKey-- KeyCode::P, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
-                  <autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
-                  <autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
-                  <autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
+                  <!-- #include "include/emacsmode_controlPNBF.xml" -->
                 </item>
                 <item>
                   <name>In Eclipse</name>
                   <sysctl>option.emacsmode_force_controlPNBF_eclipse</sysctl>
                   <only>ECLIPSE</only>
-                  <autogen>--KeyToKey-- KeyCode::P, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
-                  <autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
-                  <autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
-                  <autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
+                  <!-- #include "include/emacsmode_controlPNBF.xml" -->
                 </item>
               </list>
             </item>
