@@ -20,7 +20,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (remapParams.isremapped) return;
     if (remapParams.params.key != KeyCode::KEYPAD_CLEAR) return;
 
-    if (remapParams.params.eventType.isKeyDownOrModifierDown(remapParams.params.key, remapParams.params.flags)) {
+    if (remapParams.isKeyDownOrModifierDown()) {
       config.remap_keypadnumlock = ! config.remap_keypadnumlock;
     }
 
