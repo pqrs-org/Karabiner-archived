@@ -21,8 +21,8 @@ sudo cp -R src/core/kext/build/Release/KeyRemap4MacBook.kext "pkgroot/$basedir"
 sudo cp -R files/scripts "pkgroot/$basedir"
 sudo cp -R files/share "pkgroot/$basedir"
 
-sudo mkdir -p "pkgroot/$basedir/files/prefpane"
-sudo cp files/prefpane/number.xml files/prefpane/output/checkbox.xml "pkgroot/$basedir/files/prefpane"
+sudo mkdir -p "pkgroot/$basedir/prefpane"
+sudo cp files/prefpane/number.xml files/prefpane/output/checkbox.xml "pkgroot/$basedir/prefpane"
 
 sudo mkdir -p "pkgroot/$basedir/extra"
 sudo cp -R pkginfo/Resources/preflight "pkgroot/$basedir/extra/uninstall.sh"
