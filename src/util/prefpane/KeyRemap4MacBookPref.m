@@ -56,16 +56,14 @@ static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
   NSString* result = [BUNDLEPREFIX(Common) getExecResult:sysctl_ctl args:[NSArray arrayWithObjects:@"checkupdate", nil]];
   if (! result) return;
 
-  if ([result intValue] == 1) {
-    [_checkbox_checkupdate setState:NSOnState];
-  } else {
-    [_checkbox_checkupdate setState:NSOffState];
-  }
+  [_popup_checkupdate selectItemAtIndex:[result intValue]];
 }
 
-- (IBAction) toggleCheckUpdate:(id)sender
+- (IBAction) changeCheckUpdate:(id)sender
 {
-  [BUNDLEPREFIX(Common) getExecResult:sysctl_ctl args:[NSArray arrayWithObjects:@"toggle_checkupdate", nil]];
+  NSString* selectedIndex = [[[NSString alloc] initWithFormat:@"%d", [_popup_checkupdate indexOfSelectedItem]] autorelease];
+
+  [BUNDLEPREFIX(Common) getExecResult:sysctl_ctl args:[NSArray arrayWithObjects:@"set_checkupdate", selectedIndex, nil]];
   [self setCheckUpdateState];
 }
 
