@@ -2,7 +2,9 @@
 
 require 'cgi'
 
-file = "%s/../files/prefpane/checkbox.xml" % File.dirname($0)
+system('make -C ../files/prefpane')
+
+file = "%s/../files/prefpane/output/checkbox.xml" % File.dirname($0)
 open(file) do |f|
   total = 0
   while l = f.gets
