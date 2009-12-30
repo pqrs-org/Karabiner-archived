@@ -3222,6 +3222,12 @@
               <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::JIS_KANA</autogen>
             </item>
             <item>
+              <name>Command_R to Control_L</name>
+              <appendix>(+ When you type Command_R only, send KANA)</appendix>
+              <sysctl>remap.jis_commandR2controlL</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::CONTROL_L, KeyCode::JIS_KANA</autogen>
+            </item>
+            <item>
               <name>Command_R x2 to KANA</name>
               <sysctl>remap.jis_commandR_x2_to_kana</sysctl>
               <autogen>--DoublePressModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, KeyCode::JIS_KANA</autogen>
