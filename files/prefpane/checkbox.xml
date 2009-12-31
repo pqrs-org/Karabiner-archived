@@ -3729,6 +3729,11 @@
           <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::UK_SECTION</autogen>
         </item>
         <item>
+          <name>Backquote(`) to Shift_L</name>
+          <sysctl>remap.uk_backquote2shiftL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::SHIFT_L</autogen>
+        </item>
+        <item>
           <name>Section(§) to Backquote(`)</name>
           <sysctl>remap.uk_section2backquote</sysctl>
           <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKQUOTE</autogen>
