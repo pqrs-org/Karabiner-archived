@@ -1632,6 +1632,11 @@
           <sysctl>remap.fnshiftL2controlR</sysctl>
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::FN, KeyCode::CONTROL_R</autogen>
         </item>
+        <item>
+          <name>Drop Shift_L</name>
+          <sysctl>remap.drop_shiftL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::VK_NONE</autogen>
+        </item>
       </list>
     </item>
 
