@@ -134,6 +134,15 @@
           <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, KeyCode::FN</autogen>
         </item>
         <item>
+          <name>Arrow(Down/Left/Right) to Option_L</name>
+          <appendix>drop Up-Arrow</appendix>
+          <sysctl>remap.arrow2optionL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_UP, KeyCode::VK_NONE</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, KeyCode::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, KeyCode::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, KeyCode::OPTION_L</autogen>
+        </item>
+        <item>
           <name>Command-Arrow to Option_L+Arrow</name>
           <sysctl>remap.commandArrow2optionLarrow</sysctl>
           <autogen>--KeyToKey-- KeyCode::CURSOR_UP, VK_COMMAND, KeyCode::CURSOR_UP, ModifierFlag::OPTION_L</autogen>
@@ -2429,6 +2438,27 @@
               <autogen>--KeyToKey-- KeyCode::X,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
               <autogen>--KeyToKey-- KeyCode::C,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
               <autogen>--KeyToKey-- KeyCode::V,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
+            </item>
+            <item>
+              <name>Use FN+[7890 UIOP JKL; M,./] for Spaces (4x4)</name>
+              <appendix>(Cmd+Ctrl+Shift+[1234 5678 90], Cmd+Ctrl+Option+Shift[12 3456])</appendix>
+              <sysctl>remap.spaces_special_7890uiopjklm</sysctl>
+              <autogen>--KeyToKey-- KeyCode::KEY_7,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCS_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_8,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCS_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_9,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCS_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_0,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCS_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::U,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCS_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::I,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCS_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::O,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCS_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::P,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCS_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::J,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCS_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::K,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_0, VK_MOD_CCS_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::L,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::M,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::COMMA,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::DOT,       ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::SLASH,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
             </item>
             <item>
               <name>Use KeyPad numbers for Spaces(3x3)</name>
