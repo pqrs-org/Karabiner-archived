@@ -15,7 +15,7 @@ open("|sysctl -a | grep ^keyremap4macbook | grep -v ': 0$'") do |f|
 end
 
 # ------------------------------------------------------------
-file = "%s/../files/prefpane/output/checkbox.xml" % File.dirname($0)
+file = "%s/../../files/prefpane/output/checkbox.xml" % File.dirname($0)
 
 parser = XML::Parser.file(file)
 libxmldoc = parser.parse
