@@ -6,8 +6,8 @@ lines = []
 if ARGV[0] == '-' then
   lines = $stdin.readlines
 else
-  system('make -C ../files/prefpane > /dev/null')
-  file = "%s/../files/prefpane/output/checkbox.xml" % File.dirname($0)
+  system('make -C ../../files/prefpane > /dev/null')
+  file = "%s/../../files/prefpane/output/checkbox.xml" % File.dirname($0)
   open(file) do |f|
     lines = f.readlines
   end
