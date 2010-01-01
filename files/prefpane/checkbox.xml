@@ -1523,6 +1523,11 @@
       <name>Remap Return Key</name>
       <list>
         <item>
+          <name>Return to Command_L</name>
+          <sysctl>remap.return2commandL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::COMMAND_L</autogen>
+        </item>
+        <item>
           <name>Return to Option_L</name>
           <sysctl>remap.return2optionL</sysctl>
           <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::OPTION_L</autogen>
