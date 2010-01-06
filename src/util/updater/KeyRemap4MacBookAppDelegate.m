@@ -28,9 +28,15 @@
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification
 {
   int checkupdate = [self getCheckUpdate];
-  // check nothing.
-  if (checkupdate == 0) return;
 
+  // ----------------------------------------
+  // check nothing.
+  if (checkupdate == 0) {
+    NSLog(@"skip checkForUpdatesInBackground");
+    return;
+  }
+
+  // ----------------------------------------
   // check beta & stable releases.
 
   // Once we check appcast.xml, SUFeedURL is stored in a user's preference file.
