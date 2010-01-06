@@ -101,7 +101,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         *this == KeyCode::PAGEUP ||
         *this == KeyCode::PAGEDOWN ||
         *this == KeyCode::FORWARD_DELETE ||
-        *this == KeyCode::ENTER) {
+        *this == KeyCode::ENTER ||
+        *this == KeyCode::HELP) {
       flags.add(ModifierFlag::FN);
     }
 
