@@ -32,9 +32,16 @@
   if (checkupdate == 0) return;
 
   // check beta & stable releases.
+
+  // Once we check appcast.xml, SUFeedURL is stored in a user's preference file.
+  // So that Sparkle gives priority to a preference over Info.plist,
+  // we overwrite SUFeedURL here.
+  NSString* feedurl = @"http://pqrs.org/macosx/keyremap4macbook/files/appcast.xml";
   if (checkupdate == 2) {
-    [_suupdater setFeedURL:[[[NSURL alloc] initWithString:@"http://pqrs.org/macosx/keyremap4macbook/files/appcast-devel.xml"] autorelease]];
+    feedurl = @"http://pqrs.org/macosx/keyremap4macbook/files/appcast-devel.xml";
   }
+  [_suupdater setFeedURL:[[[NSURL alloc] initWithString:feedurl] autorelease]];
+
   NSLog(@"checkForUpdatesInBackground %@", [[_suupdater feedURL] absoluteString]);
   [_suupdater checkForUpdatesInBackground];
 }
