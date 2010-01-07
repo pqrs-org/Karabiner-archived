@@ -491,6 +491,12 @@
           <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_L, KeyCode::COMMAND_R, ModifierFlag::COMMAND_L, KeyCode::RETURN</autogen>
         </item>
         <item>
+          <name>Command_L+Command_R to Enter</name>
+          <appendix>(Note: Enter is sent when you release Command_R)</appendix>
+          <sysctl>remap.commandLcommandR2enter</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_L, KeyCode::COMMAND_R, ModifierFlag::COMMAND_L, KeyCode::ENTER</autogen>
+        </item>
+        <item>
           <name>Control_L+Command_R to Return</name>
           <appendix>(Note: Return is sent when you release Command_R)</appendix>
           <sysctl>remap.controlLcommandR2return</sysctl>
@@ -1686,6 +1692,13 @@
         </item>
         <item>
           <name>Shift_R to Shift_R</name>
+          <appendix>(+ When you type Shift_R only, send Enter)</appendix>
+          <sysctl>remap.shiftR2shiftR_enter</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::ENTER</autogen>
+        </item>
+
+        <item>
+          <name>Shift_R to Shift_R</name>
           <appendix>(+ When you type shiftR only, send Space)</appendix>
           <sysctl>remap.shiftR2shiftR_space</sysctl>
           <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::SPACE</autogen>
@@ -1920,6 +1933,14 @@
           <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN</autogen>
           <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::CONTROL_L, KeyCode::CURSOR_UP</autogen>
           <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT</autogen>
+        </item>
+        <item>
+          <name>Option_L+jkil to Left/Down/Up/Right</name>
+          <sysctl>option.extra_cursor_optionL_jkil</sysctl>
+          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::OPTION_L, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::OPTION_L, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::OPTION_L, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::OPTION_L, KeyCode::CURSOR_RIGHT</autogen>
         </item>
       </list>
     </item>
@@ -2711,6 +2732,12 @@
               <sysctl>remap.app_finder_return2commandO</sysctl>
               <only>FINDER</only>
               <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::O, ModifierFlag::COMMAND_L</autogen>
+            </item>
+            <item>
+              <name>Remap Enter to Command+O (== Open)</name>
+              <sysctl>remap.app_finder_enter2commandO</sysctl>
+              <only>FINDER</only>
+              <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::O, ModifierFlag::COMMAND_L</autogen>
             </item>
           </list>
         </item>
