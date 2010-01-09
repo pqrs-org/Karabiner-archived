@@ -82,6 +82,7 @@ echo "Make Archive"
 sudo chown -R root:wheel $pkgName
 sudo tar zcf $archiveName $pkgName
 sudo rm -rf $pkgName
+sudo chmod 644 $archiveName
 tar zxf $archiveName
 
 # --------------------------------------------------
