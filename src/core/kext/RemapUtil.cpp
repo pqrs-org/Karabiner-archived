@@ -335,19 +335,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     printf("FireModifiers::fire from:%x to:%x\n", lastFlags_.get(), toFlags.get());
 #endif
 
-    // ----------------------------------------------------------------------
-    bool modifierStatus[FlagStatus::MAXNUM];
-
-    // setup modifierStatus
-    for (int i = 0;; ++i) {
-      const ModifierFlag& m = FlagStatus::getFlag(i);
-      if (m == ModifierFlag::NONE) break;
-      modifierStatus[i] = lastFlags_.isOn(m);
-    }
-
-    // ----------------------------------------------------------------------
-    // fire
-
     // At first I handle KeyUp and handle KeyDown next.
     // We need to end KeyDown at Command+Space to Option_L+Shift_L.
     //
@@ -359,42 +346,34 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool isFireKeyUp = listIsFireKeyUp[firetype];
 
       for (int i = 0;; ++i) {
-        const ModifierFlag& m = FlagStatus::getFlag(i);
-        if (m == ModifierFlag::NONE) break;
+        const ModifierFlag& flag = FlagStatus::getFlag(i);
+        if (flag == ModifierFlag::NONE) break;
 
-        bool from = lastFlags_.isOn(m);
-        bool to = toFlags.isOn(m);
+        bool from = lastFlags_.isOn(flag);
+        bool to = toFlags.isOn(flag);
+
+        // Skip if the flag status of lastFlags_ and toFlags are same.
+        if (from == to) continue;
 
         if (isFireKeyUp) {
           // fire Up only
-          if (! (from == true && to == false)) continue;
+          if (from == false) continue;
+          lastFlags_.remove(flag);
+
         } else {
           // fire Down only
-          if (! (from == false && to == true)) continue;
+          if (from == true) continue;
+          lastFlags_.add(flag);
         }
 
-        if (from) {
-          modifierStatus[i] = false;
-        } else {
-          modifierStatus[i] = true;
-        }
-
-        Flags flags = 0;
-        for (int j = 0;; ++j) {
-          const ModifierFlag& mm = FlagStatus::getFlag(j);
-          if (mm == ModifierFlag::NONE) break;
-
-          if (modifierStatus[j]) {
-            flags.add(mm);
-          }
-        }
-
-        Params_KeyboardEventCallBack params(EventType::MODIFY, flags, m.getKeyCode(), keyboardType, false);
+        Params_KeyboardEventCallBack params(EventType::MODIFY, lastFlags_, flag.getKeyCode(), keyboardType, false);
         params.apply();
       }
     }
 
-    lastFlags_ = toFlags;
+    if (lastFlags_ != toFlags) {
+      printf("KeyRemap4MacBook --BUG-- lastFlags_:%x != toFlags:%x\n", lastFlags_.get(), toFlags.get());
+    }
   }
 
   // ------------------------------------------------------------
