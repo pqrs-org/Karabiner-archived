@@ -14,6 +14,7 @@ find $workdir -name '.DS_Store' -print0 | xargs -0 rm -f
 
 # archive
 tar czf $name.tar.gz -C $tmpdir $name
+chmod 644 $name.tar.gz
 
 # purge tmpdir
 rm -rf $tmpdir
