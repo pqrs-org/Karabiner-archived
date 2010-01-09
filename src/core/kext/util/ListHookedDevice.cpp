@@ -47,6 +47,17 @@ namespace org_pqrs_KeyRemap4MacBook {
     return false;
   }
 
+  bool
+  HookedDevice::isConsumer(const char* name)
+  {
+    if (! name) return false;
+
+    if (strcmp(name, "IOHIDConsumer") == 0) return true;
+    if (strcmp(name, "com_Logitech_HISpecialKeys") == 0) return true;
+
+    return false;
+  }
+
   // ----------------------------------------------------------------------
   bool
   ListHookedDevice::initialize(void)
