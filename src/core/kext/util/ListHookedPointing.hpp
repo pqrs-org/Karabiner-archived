@@ -11,10 +11,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     IOHIPointing* get(void) const { return OSDynamicCast(IOHIPointing, HookedDevice::get()); }
 
-    RelativePointerEventCallback getOrig_relativePointerEventAction() const { return orig_relativePointerEventAction_; }
-    ScrollWheelEventCallback getOrig_scrollWheelEventAction() const { return orig_scrollWheelEventAction_; }
-    OSObject* getOrig_relativePointerEventTarget() const { return orig_relativePointerEventTarget_; }
-    OSObject* getOrig_scrollWheelEventTarget() const { return orig_scrollWheelEventTarget_; }
+    RelativePointerEventCallback getOrig_relativePointerEventAction(void) const { return orig_relativePointerEventAction_; }
+    ScrollWheelEventCallback getOrig_scrollWheelEventAction(void) const { return orig_scrollWheelEventAction_; }
+    OSObject* getOrig_relativePointerEventTarget(void) const { return orig_relativePointerEventTarget_; }
+    OSObject* getOrig_scrollWheelEventTarget(void) const { return orig_scrollWheelEventTarget_; }
 
   private:
     bool isAppleDriver_;

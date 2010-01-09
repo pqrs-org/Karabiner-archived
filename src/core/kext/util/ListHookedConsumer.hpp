@@ -11,8 +11,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     IOHIKeyboard* get(void) const { return OSDynamicCast(IOHIKeyboard, HookedDevice::get()); }
 
-    KeyboardSpecialEventCallback getOrig_keyboardSpecialEventAction() const { return orig_keyboardSpecialEventAction_; }
-    OSObject* getOrig_keyboardSpecialEventTarget() const { return orig_keyboardSpecialEventTarget_; }
+    KeyboardSpecialEventCallback getOrig_keyboardSpecialEventAction(void) const { return orig_keyboardSpecialEventAction_; }
+    OSObject* getOrig_keyboardSpecialEventTarget(void) const { return orig_keyboardSpecialEventTarget_; }
 
   private:
     KeyboardSpecialEventCallback orig_keyboardSpecialEventAction_;

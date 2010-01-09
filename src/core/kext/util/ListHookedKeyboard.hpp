@@ -11,8 +11,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     IOHIKeyboard* get(void) const { return OSDynamicCast(IOHIKeyboard, HookedDevice::get()); }
 
-    KeyboardEventCallback getOrig_keyboardEventAction() const { return orig_keyboardEventAction_; }
-    OSObject* getOrig_keyboardEventTarget() const { return orig_keyboardEventTarget_; }
+    KeyboardEventCallback getOrig_keyboardEventAction(void) const { return orig_keyboardEventAction_; }
+    OSObject* getOrig_keyboardEventTarget(void) const { return orig_keyboardEventTarget_; }
 
   private:
     bool isAppleDriver_;
