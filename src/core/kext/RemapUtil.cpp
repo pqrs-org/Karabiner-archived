@@ -345,9 +345,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       modifierStatus[i] = lastFlags_.isOn(m);
     }
 
-    Params_KeyboardEventCallBack params(EventType::MODIFY, 0, KeyCode::VK_NONE,
-                                        keyboardType, false);
-
     // ----------------------------------------------------------------------
     // fire
 
@@ -392,8 +389,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
         }
 
-        params.flags = flags;
-        params.key = m.getKeyCode();
+        Params_KeyboardEventCallBack params(EventType::MODIFY, flags, m.getKeyCode(), keyboardType, false);
         params.apply();
       }
     }
