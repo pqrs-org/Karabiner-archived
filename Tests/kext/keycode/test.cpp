@@ -37,6 +37,12 @@ TEST(Flags, add) {
   EXPECT_EQ(mask | ModifierFlag::OPTION_L | ModifierFlag::NONE, flags);
 }
 
+TEST(Flags, remove) {
+  Flags flags = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
+  Flags removed = ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
+  EXPECT_EQ(removed, flags.remove(ModifierFlag::SHIFT_L));
+}
+
 TEST(Flags, stripFN) {
   Flags mask = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
   Flags flags = mask;
