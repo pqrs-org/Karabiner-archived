@@ -103,7 +103,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     OSObject* target = hk->getOrig_keyboardEventTarget();
     if (! target) return;
 
-    IOHIKeyboard* sender = hk->get();
+    OSObject* sender = OSDynamicCast(OSObject, hk->get());
     if (! sender) return;
 
     const AbsoluteTime& ts = CommonData::getcurrent_ts();
@@ -118,19 +118,22 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // --------------------
     // handle CapsLock LED
-    int led = sender->getLEDStatus();
-    if (config.general_capslock_led_hack) {
-      if (led == 0) {
-        sender->setAlphaLockFeedback(true);
-      }
-    } else {
-      if (flags.isOn(ModifierFlag::CAPSLOCK)) {
+    IOHIKeyboard* kbd = hk->get();
+    if (kbd) {
+      int led = kbd->getLEDStatus();
+      if (config.general_capslock_led_hack) {
         if (led == 0) {
-          sender->setAlphaLockFeedback(true);
+          kbd->setAlphaLockFeedback(true);
         }
       } else {
-        if (led != 0) {
-          sender->setAlphaLockFeedback(false);
+        if (flags.isOn(ModifierFlag::CAPSLOCK)) {
+          if (led == 0) {
+            kbd->setAlphaLockFeedback(true);
+          }
+        } else {
+          if (led != 0) {
+            kbd->setAlphaLockFeedback(false);
+          }
         }
       }
     }
@@ -155,7 +158,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     OSObject* target = hc->getOrig_keyboardSpecialEventTarget();
     if (! target) return;
 
-    IOHIKeyboard* sender = hc->get();
+    OSObject* sender = OSDynamicCast(OSObject, hc->get());
     if (! sender) return;
 
     const AbsoluteTime& ts = CommonData::getcurrent_ts();
@@ -178,7 +181,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     OSObject* target = hp->getOrig_relativePointerEventTarget();
     if (! target) return;
 
-    IOHIPointing* sender = hp->get();
+    OSObject* sender = OSDynamicCast(OSObject, hp->get());
     if (! sender) return;
 
     const AbsoluteTime& ts = CommonData::getcurrent_ts();
@@ -200,7 +203,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     OSObject* target = hp->getOrig_scrollWheelEventTarget();
     if (! target) return;
 
-    IOHIPointing* sender = hp->get();
+    OSObject* sender = OSDynamicCast(OSObject, hp->get());
     if (! sender) return;
 
     const AbsoluteTime& ts = CommonData::getcurrent_ts();
