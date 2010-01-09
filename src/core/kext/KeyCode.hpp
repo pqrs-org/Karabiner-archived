@@ -61,14 +61,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool operator==(const Flags& other) const { return value_ == other.get(); }
     bool operator!=(const Flags& other) const { return ! (*this == other); }
 
+    unsigned int operator~(void) const { return ~value_; }
     Flags operator|(const Flags& other) const { return value_ | other.get(); }
     Flags operator&(const Flags& other) const { return value_ & other.get(); }
 
     Flags& add(const Flags& flags) { value_ |= flags.get(); return *this; }
-    Flags& stripFN(void)     { value_ &= ~ModifierFlag::FN;     return *this; }
-    Flags& stripCURSOR(void) { value_ &= ~ModifierFlag::CURSOR; return *this; }
-    Flags& stripKEYPAD(void) { value_ &= ~ModifierFlag::KEYPAD; return *this; }
-    Flags& stripNONE(void)   { value_ &= ~ModifierFlag::NONE;   return *this; }
+    Flags& remove(const Flags& flags) { value_ &= ~flags; return *this; }
+    Flags& stripFN(void)     { return remove(ModifierFlag::FN); }
+    Flags& stripCURSOR(void) { return remove(ModifierFlag::CURSOR); }
+    Flags& stripKEYPAD(void) { return remove(ModifierFlag::KEYPAD); }
+    Flags& stripNONE(void)   { return remove(ModifierFlag::NONE); }
 
     bool isOn(const ModifierFlag& flag) const {
       return (value_ & flag.get()) == flag.get();
