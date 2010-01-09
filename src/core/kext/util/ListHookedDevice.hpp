@@ -20,6 +20,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     virtual bool terminate(void) = 0;
 
     static bool isIgnoreDevice(IOHIDevice* dev);
+    static bool isConsumer(const char* name);
   };
 
   class ListHookedDevice {
