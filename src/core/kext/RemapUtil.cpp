@@ -330,11 +330,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   FireModifiers::fire(const Flags& toFlags, const KeyboardType& keyboardType)
   {
-    if (lastFlags_ == toFlags) return;
-#if 0
-    printf("FireModifiers::fire from:%x to:%x\n", lastFlags_.get(), toFlags.get());
-#endif
-
     // At first I handle KeyUp and handle KeyDown next.
     // We need to end KeyDown at Command+Space to Option_L+Shift_L.
     //
@@ -365,10 +360,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       lastFlags_.add(flag);
       Params_KeyboardEventCallBack params(EventType::MODIFY, lastFlags_, flag.getKeyCode(), keyboardType, false);
       params.apply();
-    }
-
-    if (lastFlags_ != toFlags) {
-      printf("KeyRemap4MacBook --BUG-- lastFlags_:%x != toFlags:%x\n", lastFlags_.get(), toFlags.get());
     }
   }
 
