@@ -341,34 +341,30 @@ namespace org_pqrs_KeyRemap4MacBook {
     // When Option_L+Shift_L has a meaning (switch input language at Windows),
     // it does not works well when the last is KeyUp of Command.
 
-    bool listIsFireKeyUp[] = { true, false };
-    for (size_t firetype = 0; firetype < sizeof(listIsFireKeyUp) / sizeof(listIsFireKeyUp[0]); ++firetype) {
-      bool isFireKeyUp = listIsFireKeyUp[firetype];
+    // KeyUp
+    for (int i = 0;; ++i) {
+      const ModifierFlag& flag = FlagStatus::getFlag(i);
+      if (flag == ModifierFlag::NONE) break;
 
-      for (int i = 0;; ++i) {
-        const ModifierFlag& flag = FlagStatus::getFlag(i);
-        if (flag == ModifierFlag::NONE) break;
+      if (! lastFlags_.isOn(flag)) continue;
+      if (toFlags.isOn(flag)) continue;
 
-        bool from = lastFlags_.isOn(flag);
-        bool to = toFlags.isOn(flag);
+      lastFlags_.remove(flag);
+      Params_KeyboardEventCallBack params(EventType::MODIFY, lastFlags_, flag.getKeyCode(), keyboardType, false);
+      params.apply();
+    }
 
-        // Skip if the flag status of lastFlags_ and toFlags are same.
-        if (from == to) continue;
+    // KeyDown
+    for (int i = 0;; ++i) {
+      const ModifierFlag& flag = FlagStatus::getFlag(i);
+      if (flag == ModifierFlag::NONE) break;
 
-        if (isFireKeyUp) {
-          // fire Up only
-          if (from == false) continue;
-          lastFlags_.remove(flag);
+      if (! toFlags.isOn(flag)) continue;
+      if (lastFlags_.isOn(flag)) continue;
 
-        } else {
-          // fire Down only
-          if (from == true) continue;
-          lastFlags_.add(flag);
-        }
-
-        Params_KeyboardEventCallBack params(EventType::MODIFY, lastFlags_, flag.getKeyCode(), keyboardType, false);
-        params.apply();
-      }
+      lastFlags_.add(flag);
+      Params_KeyboardEventCallBack params(EventType::MODIFY, lastFlags_, flag.getKeyCode(), keyboardType, false);
+      params.apply();
     }
 
     if (lastFlags_ != toFlags) {
