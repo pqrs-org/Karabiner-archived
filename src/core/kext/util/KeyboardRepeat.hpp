@@ -45,9 +45,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       MAXNUM = 16,
     };
     struct Item {
-      Item(void) : params(EventType(0), Flags(0), KeyCode(0), KeyboardType(0), true), active(false) {}
+      Item(void) : params(NULL), active(false) {}
 
-      Params_KeyboardEventCallBack params;
+      Params_KeyboardEventCallBack* params;
       bool active;
     };
 

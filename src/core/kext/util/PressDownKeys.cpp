@@ -65,7 +65,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       IOLog("KeyRemap4MacBook -Info- PressDownKeys::clear\n");
     }
 
-    Params_KeyboardEventCallBack callbackparams(EventType::UP, Flags(0), KeyCode(0), CommonData::getcurrent_keyboardType(), false);
+    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::UP, Flags(0), KeyCode(0), CommonData::getcurrent_keyboardType(), false));
+    if (! ptr) return;
+    Params_KeyboardEventCallBack& params = *ptr;
 
     for (int i = 0; i < MAXNUM; ++i) {
       if (! item_[i].enable) continue;
@@ -75,9 +77,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         IOLog("KeyRemap4MacBook -Info- PressDownKeys::clear (key = %d)\n", item_[i].key.get());
       }
 
-      callbackparams.key = item_[i].key;
-      callbackparams.keyboardType = item_[i].keyboardType;
-      callbackparams.apply();
+      params.key = item_[i].key;
+      params.keyboardType = item_[i].keyboardType;
+      params.apply();
     }
   }
 }

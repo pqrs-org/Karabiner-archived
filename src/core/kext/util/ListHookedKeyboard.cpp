@@ -54,9 +54,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (repeat) return;
 
       // ------------------------------------------------------------
-      Params_KeyboardEventCallBack params(EventType(eventType), Flags(flags), KeyCode(key),
-                                          CharCode(charCode), CharSet(charSet), OrigCharCode(origCharCode), OrigCharSet(origCharSet),
-                                          KeyboardType(keyboardType), repeat);
+      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType(eventType), Flags(flags), KeyCode(key),
+                                                                                     CharCode(charCode), CharSet(charSet), OrigCharCode(origCharCode), OrigCharSet(origCharSet),
+                                                                                     KeyboardType(keyboardType), repeat));
+      if (! ptr) return;
+      Params_KeyboardEventCallBack& params = *ptr;
 
       if (params.eventType.isKeyDownOrModifierDown(params.key, params.flags)) {
         EventWatcher::on();
