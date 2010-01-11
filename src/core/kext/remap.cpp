@@ -46,15 +46,15 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     typedef void (*RemapFunc_key)(RemapParams& remapParams);
     RemapFunc_key listRemapFunc_key[MAXNUM_REMAPFUNC_KEY + 1];
-    size_t listRemapFunc_key_size = 0;
+    int listRemapFunc_key_size = 0;
 
     typedef void (*RemapFunc_consumer)(RemapConsumerParams& remapParams);
     RemapFunc_consumer listRemapFunc_consumer[MAXNUM_REMAPFUNC_CONSUMER + 1];
-    size_t listRemapFunc_consumer_size = 0;
+    int listRemapFunc_consumer_size = 0;
 
     typedef void (*RemapFunc_pointing)(RemapPointingParams_relative& remapParams);
     RemapFunc_pointing listRemapFunc_pointing[MAXNUM_REMAPFUNC_POINTING + 1];
-    size_t listRemapFunc_pointing_size = 0;
+    int listRemapFunc_pointing_size = 0;
   }
 }
 
@@ -83,6 +83,13 @@ org_pqrs_KeyRemap4MacBook::refresh_remapfunc(void)
     listRemapFunc_pointing[listRemapFunc_pointing_size] = RemapClass_remap_pointing_relative_to_scroll::remap_pointing;
     ++listRemapFunc_pointing_size;
   }
+
+  if (config.debug_devel) {
+    printf("KeyRemap4MacBook --INFO-- enabled remappings: key:%d, consumer:%d, pointing:%d\n",
+           listRemapFunc_key_size,
+           listRemapFunc_consumer_size,
+           listRemapFunc_pointing_size);
+  }
 }
 
 void
@@ -90,7 +97,7 @@ org_pqrs_KeyRemap4MacBook::remap_core(RemapParams& remapParams)
 {
   FlagStatus::set(remapParams.params.key, remapParams.params.flags);
 
-  for (size_t i = 0; i < listRemapFunc_key_size; ++i) {
+  for (int i = 0; i < listRemapFunc_key_size; ++i) {
     RemapFunc_key func = listRemapFunc_key[i];
     if (func) {
       func(remapParams);
@@ -103,7 +110,7 @@ org_pqrs_KeyRemap4MacBook::remap_consumer(RemapConsumerParams& remapParams)
 {
   FlagStatus::set();
 
-  for (size_t i = 0; i < listRemapFunc_consumer_size; ++i) {
+  for (int i = 0; i < listRemapFunc_consumer_size; ++i) {
     RemapFunc_consumer func = listRemapFunc_consumer[i];
     if (func) {
       func(remapParams);
@@ -116,7 +123,7 @@ org_pqrs_KeyRemap4MacBook::remap_pointing_relative_core(RemapPointingParams_rela
 {
   FlagStatus::set();
 
-  for (size_t i = 0; i < listRemapFunc_pointing_size; ++i) {
+  for (int i = 0; i < listRemapFunc_pointing_size; ++i) {
     RemapFunc_pointing func = listRemapFunc_pointing[i];
     if (func) {
       func(remapParams);
