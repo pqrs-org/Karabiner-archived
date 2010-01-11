@@ -6,6 +6,7 @@
   public:                                               \
     auto_ptr(CLASS * ptr) { ptr_ = ptr; }               \
     ~auto_ptr(void) { if (ptr_) delete ptr_; }          \
+    operator CLASS *(void) const { return ptr_; }       \
     bool operator!(void) const { return ptr_ == NULL; } \
     CLASS & operator*(void) const { return *ptr_; }     \
                                                         \

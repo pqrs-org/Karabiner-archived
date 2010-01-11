@@ -84,7 +84,12 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   class Params_RelativePointerEventCallback {
   public:
-    Params_RelativePointerEventCallback(const Buttons& bt, int x, int y) : buttons(bt), dx(x), dy(y) {}
+    // Use auto_ptr instead allocating in kernel stack.
+    DECLARE_AUTO_PTR(Params_RelativePointerEventCallback);
+
+    static Params_RelativePointerEventCallback* alloc(const Buttons& bt, int x, int y) {
+      return new Params_RelativePointerEventCallback(bt, x, y);
+    }
 
     void log(const char* message = "caught") const;
     void apply(void) const;
@@ -92,6 +97,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     Buttons buttons;
     int dx;
     int dy;
+
+  private:
+    Params_RelativePointerEventCallback(const Buttons& bt, int x, int y) : buttons(bt), dx(x), dy(y) {}
   };
   class Params_ScrollWheelEventCallback {
   public:
