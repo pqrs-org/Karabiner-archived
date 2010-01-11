@@ -225,10 +225,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     FlagStatus::temporary_decrease(fromFlags);
     FlagStatus::temporary_increase(toFlags);
 
-    Params_KeyboardSpecialEventCallback params(remapParams.params.eventType,
-                                               FlagStatus::makeFlags(),
-                                               toKeyCode,
-                                               remapParams.params.repeat);
+    Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(remapParams.params.eventType,
+                                                                                                 FlagStatus::makeFlags(),
+                                                                                                 toKeyCode,
+                                                                                                 remapParams.params.repeat));
+    if (! ptr) return false;
+    Params_KeyboardSpecialEventCallback& params = *ptr;
+
     RemapUtil::fireConsumer(params);
     return true;
   }
@@ -242,10 +245,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (remapParams.params.key != fromKeyCode) return false;
 
     // ----------------------------------------
-    Params_KeyboardSpecialEventCallback params(remapParams.params.eventType,
-                                               FlagStatus::makeFlags(),
-                                               ConsumerKeyCode::VK_KEY,
-                                               remapParams.params.repeat);
+    Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(remapParams.params.eventType,
+                                                                                                 FlagStatus::makeFlags(),
+                                                                                                 ConsumerKeyCode::VK_KEY,
+                                                                                                 remapParams.params.repeat));
+    if (! ptr) return false;
+    Params_KeyboardSpecialEventCallback& params = *ptr;
 
     RemapConsumerParams rp(params, remapParams.workspacedata);
     if (! consumertoconsumer_.remap(rp, ConsumerKeyCode::VK_KEY, fromFlags, toKeyCode, toFlags)) {
