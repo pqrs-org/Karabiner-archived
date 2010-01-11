@@ -229,26 +229,24 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
     end
   end
 
-  check = "  if (! config.#{name}) return;\n"
-
   code += "class RemapClass_#{name} {\n"
   code += "public:\n"
   unless code_key.empty? then
-    code += "static void remap_key(RemapParams &remapParams) {\n#{check}#{filter}\n"
+    code += "static void remap_key(RemapParams &remapParams) {\n#{filter}\n"
     code_key.each do |line|
       code += "  #{line}\n"
     end
     code += "}\n"
   end
   unless code_consumer.empty? then
-    code += "static void remap_consumer(RemapConsumerParams &remapParams) {\n#{check}#{filter}\n"
+    code += "static void remap_consumer(RemapConsumerParams &remapParams) {\n#{filter}\n"
     code_consumer.each do |line|
       code += "  #{line}\n"
     end
     code += "}\n"
   end
   unless code_pointing.empty? then
-    code += "static void remap_pointing(RemapPointingParams_relative &remapParams) {\n#{check}\n"
+    code += "static void remap_pointing(RemapPointingParams_relative &remapParams) {\n"
     code_pointing.each do |line|
       code += "  #{line}\n"
     end
@@ -289,17 +287,23 @@ open('output/include.remapcode_func.cpp', 'w') do |f|
   f.puts code
 end
 open('output/include.remapcode_call.cpp', 'w') do |f|
-  func['key'].uniq.each do |call|
-    f.puts "GeneratedCode::RemapClass_#{call}::remap_key(remapParams);\n"
+  func['key'].uniq.each do |name|
+    f.puts "if (config.#{name}) {\n"
+    f.puts "  GeneratedCode::RemapClass_#{name}::remap_key(remapParams);\n"
+    f.puts "}\n"
   end
 end
 open('output/include.remapcode_call_consumer.cpp', 'w') do |f|
-  func['consumer'].uniq.each do |call|
-    f.puts "GeneratedCode::RemapClass_#{call}::remap_consumer(remapParams);\n"
+  func['consumer'].uniq.each do |name|
+    f.puts "if (config.#{name}) {\n"
+    f.puts "  GeneratedCode::RemapClass_#{name}::remap_consumer(remapParams);\n"
+    f.puts "}\n"
   end
 end
 open('output/include.remapcode_call_pointing_relative.cpp', 'w') do |f|
-  func['pointing'].uniq.each do |call|
-    f.puts "GeneratedCode::RemapClass_#{call}::remap_pointing(remapParams);\n"
+  func['pointing'].uniq.each do |name|
+    f.puts "if (config.#{name}) {\n"
+    f.puts "  GeneratedCode::RemapClass_#{name}::remap_pointing(remapParams);\n"
+    f.puts "}\n"
   end
 end

@@ -54,8 +54,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     DECLARE_AUTO_PTR(Params_KeyboardSpecialEventCallback);
 
     static Params_KeyboardSpecialEventCallback* alloc(const EventType& et, const Flags& fl, const ConsumerKeyCode& ckc,
-                                               unsigned int fv, UInt64 g,
-                                               bool r) {
+                                                      unsigned int fv, UInt64 g,
+                                                      bool r) {
       return new Params_KeyboardSpecialEventCallback(et, fl, ckc, fv, g, r);
     }
 
