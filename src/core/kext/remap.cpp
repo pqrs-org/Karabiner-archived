@@ -15,8 +15,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   class RemapClass_remap_keypadnumlock_togglekey_clear {
   public:
     static void remap_key(RemapParams& remapParams) {
-      if (! config.option_keypadnumlock_togglekey_clear) return;
-
       if (remapParams.isremapped) return;
       if (remapParams.params.key != KeyCode::KEYPAD_CLEAR) return;
 
@@ -32,7 +30,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   class RemapClass_remap_pointing_relative_to_scroll {
   public:
     static void remap_pointing(RemapPointingParams_relative& remapParams) {
-      if (! config.remap_pointing_relative_to_scroll) return;
       prts_.remap(remapParams, PointingButton::NONE, Flags(0));
     }
 
@@ -52,7 +49,9 @@ org_pqrs_KeyRemap4MacBook::remap_core(RemapParams& remapParams)
   // normal remapping
 #include "config/output/include.remapcode_call.cpp"
 
-  RemapClass_remap_keypadnumlock_togglekey_clear::remap_key(remapParams);
+  if (config.option_keypadnumlock_togglekey_clear) {
+    RemapClass_remap_keypadnumlock_togglekey_clear::remap_key(remapParams);
+  }
 }
 
 void
@@ -69,5 +68,7 @@ org_pqrs_KeyRemap4MacBook::remap_pointing_relative_core(RemapPointingParams_rela
   FlagStatus::set();
 
 #include "config/output/include.remapcode_call_pointing_relative.cpp"
-  RemapClass_remap_pointing_relative_to_scroll::remap_pointing(remapParams);
+  if (config.remap_pointing_relative_to_scroll) {
+    RemapClass_remap_pointing_relative_to_scroll::remap_pointing(remapParams);
+  }
 }
