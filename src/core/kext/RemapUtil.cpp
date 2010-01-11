@@ -325,7 +325,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // --------------------
-  Flags FireModifiers::lastFlags_;
+  Flags FireModifiers::lastFlags_(0);
 
   void
   FireModifiers::fire(const Flags& toFlags, const KeyboardType& keyboardType)
@@ -625,7 +625,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       ModifierFlag toKeyCodeFlag = toKeyCode.getModifierFlag();
       FlagStatus::temporary_decrease(toFlags | toKeyCodeFlag);
 
-      savedflags_ = FlagStatus::makeFlags().get();
+      savedflags_ = FlagStatus::makeFlags();
 
       // restore flags
       FlagStatus::temporary_increase(toFlags | toKeyCodeFlag);
@@ -714,7 +714,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   IgnoreMultipleSameKeyPress::remap(RemapParams& remapParams, const KeyCode& fromKeyCode, const Flags& fromFlags)
   {
     if (remapParams.isremapped || ! FlagStatus::makeFlags().isOn(fromFlags)) {
-      lastkeycode_ = KeyCode::VK_NONE.get();
+      lastkeycode_ = KeyCode::VK_NONE;
       return false;
     }
 
@@ -727,7 +727,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // set lastkeycode_ if KeyUp.
     if (! remapParams.isKeyDownOrModifierDown()) {
-      lastkeycode_ = remapParams.params.key.get();
+      lastkeycode_ = remapParams.params.key;
     }
     return false;
   }
