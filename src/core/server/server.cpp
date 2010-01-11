@@ -216,9 +216,12 @@ setCurrentApplicationType(const char* applicationName)
   }
 
   const char* vmware_unity = "com.vmware.proxyApp.";
+  const char* parallels_coherence = "com.parallels.winapp.";
   if (strcmp(applicationName, "com.vmware.fusion") == 0 ||
       strncmp(applicationName, vmware_unity, strlen(vmware_unity)) == 0 ||
       strcmp(applicationName, "com.parallels.desktop") == 0 ||
+      strcmp(applicationName, "com.parallels.vm") == 0 ||
+      strncmp(applicationName, parallels_coherence, strlen(parallels_coherence)) == 0 ||
       strcmp(applicationName, "org.virtualbox.app.VirtualBoxVM") == 0) {
     SET_CURRENT_APPLICATION_TYPE(VIRTUALMACHINE);
   }
