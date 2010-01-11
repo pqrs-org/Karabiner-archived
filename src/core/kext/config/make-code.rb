@@ -83,7 +83,7 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
 
   if /<sysctl>([^\.]+?)\.(.+?)<\/sysctl>/m =~ item then
     name = "#{$1}_#{$2}"
-    sysctl += "SYSCTL_INT(_keyremap4macbook_#{$1}, OID_AUTO, #{$2}, CTLTYPE_INT|CTLFLAG_RW, &(config.#{name}), 0, \"\");\n"
+    sysctl += "SYSCTL_PROC(_keyremap4macbook_#{$1}, OID_AUTO, #{$2}, CTLTYPE_INT|CTLFLAG_RW, &(config.#{name}), 0, refresh_remapfunc_handler, \"I\", \"\");\n"
     register += "sysctl_register_oid(&sysctl__keyremap4macbook_#{name});\n"
     unregister += "sysctl_unregister_oid(&sysctl__keyremap4macbook_#{name});\n"
   end
@@ -286,24 +286,34 @@ end
 open('output/include.remapcode_func.cpp', 'w') do |f|
   f.puts code
 end
-open('output/include.remapcode_call.cpp', 'w') do |f|
+open('output/include.remapcode_info.cpp', 'w') do |f|
+  f.puts "enum {\n"
+  f.puts "  MAXNUM_REMAPFUNC_KEY = #{func['key'].uniq.count},\n"
+  f.puts "  MAXNUM_REMAPFUNC_CONSUMER = #{func['consumer'].uniq.count},\n"
+  f.puts "  MAXNUM_REMAPFUNC_POINTING = #{func['pointing'].uniq.count},\n"
+  f.puts "};\n"
+end
+open('output/include.remapcode_refresh_remapfunc_key.cpp', 'w') do |f|
   func['key'].uniq.each do |name|
     f.puts "if (config.#{name}) {\n"
-    f.puts "  GeneratedCode::RemapClass_#{name}::remap_key(remapParams);\n"
+    f.puts "  listRemapFunc_key[listRemapFunc_key_size] = GeneratedCode::RemapClass_#{name}::remap_key;\n"
+    f.puts "  ++listRemapFunc_key_size;\n"
     f.puts "}\n"
   end
 end
-open('output/include.remapcode_call_consumer.cpp', 'w') do |f|
+open('output/include.remapcode_refresh_remapfunc_consumer.cpp', 'w') do |f|
   func['consumer'].uniq.each do |name|
     f.puts "if (config.#{name}) {\n"
-    f.puts "  GeneratedCode::RemapClass_#{name}::remap_consumer(remapParams);\n"
+    f.puts "  listRemapFunc_consumer[listRemapFunc_consumer_size] = GeneratedCode::RemapClass_#{name}::remap_consumer;\n"
+    f.puts "  ++listRemapFunc_consumer_size;\n"
     f.puts "}\n"
   end
 end
-open('output/include.remapcode_call_pointing_relative.cpp', 'w') do |f|
+open('output/include.remapcode_refresh_remapfunc_pointing.cpp', 'w') do |f|
   func['pointing'].uniq.each do |name|
     f.puts "if (config.#{name}) {\n"
-    f.puts "  GeneratedCode::RemapClass_#{name}::remap_pointing(remapParams);\n"
+    f.puts "  listRemapFunc_pointing[listRemapFunc_pointing_size] = GeneratedCode::RemapClass_#{name}::remap_pointing;\n"
+    f.puts "  ++listRemapFunc_pointing_size;\n"
     f.puts "}\n"
   end
 end

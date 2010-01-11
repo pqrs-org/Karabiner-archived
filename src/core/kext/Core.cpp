@@ -92,6 +92,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       FlagStatus::initialize();
       KeyRemap4MacBook_client::initialize();
       CommonData::initialize();
+      refresh_remapfunc();
     }
 
     void

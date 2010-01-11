@@ -7,6 +7,9 @@
 #include "CallBackWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
+  void refresh_remapfunc(void);
+
+  // ----------------------------------------------------------------------
   struct RemapParams {
     RemapParams(const Params_KeyboardEventCallBack& p, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& w) :
       params(p), workspacedata(w), isremapped(false) {}
