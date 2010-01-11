@@ -23,6 +23,8 @@ namespace org_pqrs_KeyRemap4MacBook {
                                               kt, r);
     }
 
+    //~Params_KeyboardEventCallBack(void) { printf("Params_KeyboardEventCallBack released\n"); }
+
     // ----------------------------------------
     void log(const char* message = "caught") const;
     void apply(void) const;
@@ -62,6 +64,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       return new Params_KeyboardSpecialEventCallback(et, fl, ckc, ckc.get(), static_cast<UInt64>(-1), r);
     }
 
+    //~Params_KeyboardSpecialEventCallback(void) { printf("Params_KeyboardSpecialEventCallback released\n"); }
+
     // ----------------------------------------
     void log(const char* message = "caught") const;
     void apply(void) const;
@@ -91,6 +95,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       return new Params_RelativePointerEventCallback(bt, x, y);
     }
 
+    //~Params_RelativePointerEventCallback(void) { printf("Params_RelativePointerEventCallback released\n"); }
+
     void log(const char* message = "caught") const;
     void apply(void) const;
 
@@ -115,6 +121,8 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                  pd1, pd2, pd3,
                                                  op);
     }
+
+    //~Params_ScrollWheelEventCallback(void) { printf("Params_ScrollWheelEventCallback released\n"); }
 
     void log(const char* message = "caught") const;
     void apply(void) const;
