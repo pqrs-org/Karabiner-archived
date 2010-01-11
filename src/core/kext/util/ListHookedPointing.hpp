@@ -7,7 +7,12 @@
 namespace org_pqrs_KeyRemap4MacBook {
   class HookedPointing : public HookedDevice {
   public:
-    HookedPointing(void);
+    HookedPointing(void) :
+      isAppleDriver_(false),
+      orig_relativePointerEventAction_(NULL),
+      orig_scrollWheelEventAction_(NULL),
+      orig_relativePointerEventTarget_(NULL),
+      orig_scrollWheelEventTarget_(NULL) {}
 
     IOHIPointing* get(void) const { return OSDynamicCast(IOHIPointing, HookedDevice::get()); }
 

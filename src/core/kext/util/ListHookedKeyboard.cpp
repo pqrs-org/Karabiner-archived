@@ -66,12 +66,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
-  HookedKeyboard::HookedKeyboard(void) :
-    isAppleDriver_(false),
-    isInternalKeyboard_(false),
-    orig_keyboardEventAction_(NULL), orig_keyboardEventTarget_(NULL)
-  {}
-
   bool
   HookedKeyboard::initialize(IOHIDevice* d)
   {

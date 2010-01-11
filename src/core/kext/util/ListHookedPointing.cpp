@@ -88,12 +88,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
-  HookedPointing::HookedPointing(void) :
-    isAppleDriver_(false),
-    orig_relativePointerEventAction_(NULL), orig_scrollWheelEventAction_(NULL),
-    orig_relativePointerEventTarget_(NULL), orig_scrollWheelEventTarget_(NULL)
-  {}
-
   bool
   HookedPointing::initialize(IOHIDevice* d)
   {

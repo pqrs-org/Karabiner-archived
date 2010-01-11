@@ -54,10 +54,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
-  HookedConsumer::HookedConsumer(void) :
-    orig_keyboardSpecialEventAction_(NULL), orig_keyboardSpecialEventTarget_(NULL)
-  {}
-
   bool
   HookedConsumer::initialize(IOHIDevice* d)
   {

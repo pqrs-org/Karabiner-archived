@@ -7,7 +7,11 @@
 namespace org_pqrs_KeyRemap4MacBook {
   class HookedKeyboard : public HookedDevice {
   public:
-    HookedKeyboard(void);
+    HookedKeyboard(void) :
+      isAppleDriver_(false),
+      isInternalKeyboard_(false),
+      orig_keyboardEventAction_(NULL),
+      orig_keyboardEventTarget_(NULL) {}
 
     IOHIKeyboard* get(void) const { return OSDynamicCast(IOHIKeyboard, HookedDevice::get()); }
 
