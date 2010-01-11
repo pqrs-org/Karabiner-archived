@@ -3,6 +3,7 @@
 #include "remap.hpp"
 #include "RemapUtil.hpp"
 #include "Config.hpp"
+#include "IOLockWrapper.hpp"
 #include "KeyCode.hpp"
 #include "ListHookedKeyboard.hpp"
 
@@ -55,12 +56,30 @@ namespace org_pqrs_KeyRemap4MacBook {
     typedef void (*RemapFunc_pointing)(RemapPointingParams_relative& remapParams);
     RemapFunc_pointing listRemapFunc_pointing[MAXNUM_REMAPFUNC_POINTING + 1];
     int listRemapFunc_pointing_size = 0;
+
+    IOLock* refresh_remapfunc_lock = NULL;
   }
+}
+
+void
+org_pqrs_KeyRemap4MacBook::remapfunc_initialize(void)
+{
+  refresh_remapfunc_lock = IOLockWrapper::alloc();
+
+  refresh_remapfunc();
+}
+
+void
+org_pqrs_KeyRemap4MacBook::remapfunc_terminate(void)
+{
+  IOLockWrapper::free(refresh_remapfunc_lock);
 }
 
 void
 org_pqrs_KeyRemap4MacBook::refresh_remapfunc(void)
 {
+  IOLockWrapper::ScopedLock lk(refresh_remapfunc_lock);
+
   listRemapFunc_key_size = 0;
   listRemapFunc_consumer_size = 0;
   listRemapFunc_pointing_size = 0;

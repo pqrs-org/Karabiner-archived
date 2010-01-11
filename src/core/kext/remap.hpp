@@ -7,6 +7,8 @@
 #include "CallBackWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
+  void remapfunc_initialize(void);
+  void remapfunc_terminate(void);
   void refresh_remapfunc(void);
 
   // ----------------------------------------------------------------------

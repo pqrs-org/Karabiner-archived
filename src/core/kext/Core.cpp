@@ -87,12 +87,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     initialize(void)
     {
       sysctl_register();
+      remapfunc_initialize();
       EventWatcher::initialize();
       PressDownKeys::initialize();
       FlagStatus::initialize();
       KeyRemap4MacBook_client::initialize();
       CommonData::initialize();
-      refresh_remapfunc();
     }
 
     void
@@ -101,6 +101,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       CommonData::terminate();
       KeyRemap4MacBook_client::terminate();
       EventWatcher::terminate();
+      remapfunc_terminate();
       sysctl_unregister();
     }
 
