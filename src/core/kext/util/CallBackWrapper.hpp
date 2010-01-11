@@ -44,8 +44,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       eventType(et), flags(fl), key(kc),
       charCode(cc), charSet(cs), origCharCode(occ), origCharSet(ocs),
       keyboardType(kt), repeat(r) {}
-
-    static KeyboardType current_keyboardType_;
   };
 
   class Params_KeyboardSpecialEventCallback {
