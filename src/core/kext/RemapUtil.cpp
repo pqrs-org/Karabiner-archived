@@ -498,10 +498,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ----------------------------------------
     if (delta1 == 0 && delta2 == 0) return;
 
-    Params_ScrollWheelEventCallback params(0, 0, 0,
-                                           0, 0, 0,
-                                           0, 0, 0,
-                                           0);
+    Params_ScrollWheelEventCallback::auto_ptr ptr(Params_ScrollWheelEventCallback::alloc(0, 0, 0,
+                                                                                         0, 0, 0,
+                                                                                         0, 0, 0,
+                                                                                         0));
+    if (! ptr) return;
+    Params_ScrollWheelEventCallback& params = *ptr;
 
     params.deltaAxis1 = (delta1 * config.pointing_relative2scroll_rate) / 1024;
     if (params.deltaAxis1 == 0 && delta1 != 0) {
