@@ -80,10 +80,6 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
   end
 
   name = nil
-  filter = ''
-  code_key = ''
-  code_consumer = ''
-  code_pointing = ''
 
   if /<sysctl>([^\.]+?)\.(.+?)<\/sysctl>/m =~ item then
     name = "#{$1}_#{$2}"
@@ -100,9 +96,14 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
     default += "#{name} = #{$1};\n"
   end
 
+  # ======================================================================
+  # filter
+
+  filter = ''
+
   if /<not>(.+?)<\/not>/m =~ item then
     $1.split(/,/).each do |f|
-      filter += "if (remapParams.workspacedata.type == KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}) return;\n"
+      filter += "  if (remapParams.workspacedata.type == KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}) return;\n"
     end
   end
   if /<only>(.+?)<\/only>/m =~ item then
@@ -110,19 +111,19 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
     $1.split(/,/).each do |f|
       tmp << "(remapParams.workspacedata.type != KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip})"
     end
-    filter += "if (#{tmp.join(' && ')}) return;\n"
+    filter += "  if (#{tmp.join(' && ')}) return;\n"
   end
   if /<keyboardtype_only>(.+?)<\/keyboardtype_only>/m =~ item then
     tmp = []
     $1.split(/,/).each do |f|
       tmp << "(remapParams.params.keyboardType != KeyboardType::#{f.strip})"
     end
-    filter += "if (#{tmp.join(' && ')}) return;\n"
+    filter += "  if (#{tmp.join(' && ')}) return;\n"
   end
   if /<(inputmode|inputmodedetail)_not>(.+?)<\/(inputmode|inputmodedetail)_not>/m =~ item then
     inputmodetype = $1
     $2.split(/,/).each do |f|
-      filter += "if (remapParams.workspacedata.#{inputmodetype} == KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}) return;\n"
+      filter += "  if (remapParams.workspacedata.#{inputmodetype} == KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}) return;\n"
     end
   end
   if /<(inputmode|inputmodedetail)_only>(.+?)<\/(inputmode|inputmodedetail)_only>/m =~ item then
@@ -131,127 +132,139 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
     $2.split(/,/).each do |f|
       tmp << "(remapParams.workspacedata.#{inputmodetype} != KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip})"
     end
-    filter += "if (#{tmp.join(' && ')}) return;\n"
+    filter += "  if (#{tmp.join(' && ')}) return;\n"
   end
 
+  # ======================================================================
+  # autogen
+
   listAutogen = item.scan(/<autogen>(.+?)<\/autogen>/m)
-  unless listAutogen.empty? then
-    listAutogen = listAutogen.map{|autogen| autogen[0]}
-    listAutogen = preprocess(listAutogen)
-    listAutogen.each do |autogen|
-      if /^--(.+?)-- (.+)$/ =~ autogen then
-        type = $1
-        params = $2
+  next if listAutogen.empty?
 
-        case type
-        when 'SetKeyboardType'
-          code_keyboardtype += "if (config.#{name}) {\n"
-          code_keyboardtype += "keyboardType = #{params}.get();\n"
-          code_keyboardtype += "}\n"
+  autogen_index = 0
+  code_key = []
+  code_consumer = []
+  code_pointing = []
+  code_variable = []
 
-        when 'KeyToKey'
-          code_key += "{\n"
-          code_key += "static RemapUtil::KeyToKey keytokey;\n"
-          code_key += "if (keytokey.remap(remapParams, #{params})) return;\n"
-          code_key += "}\n"
-          func['key'] << name
+  listAutogen = listAutogen.map{|autogen| autogen[0]}
+  listAutogen = preprocess(listAutogen)
+  listAutogen.each do |autogen|
+    if /^--(.+?)-- (.+)$/ =~ autogen then
+      type = $1
+      params = $2
+      autogen_index += 1
 
-        when 'DoublePressModifier'
-          code_key += "{\n"
-          code_key += "static DoublePressModifier dpm;\n"
-          code_key += "if (dpm.remap(remapParams, #{params})) return;\n"
-          code_key += "}\n"
-          func['key'] << name
+      case type
+      when 'SetKeyboardType'
+        code_keyboardtype += "if (config.#{name}) {\n"
+        code_keyboardtype += "keyboardType = #{params}.get();\n"
+        code_keyboardtype += "}\n"
 
-        when 'IgnoreMultipleSameKeyPress'
-          code_key += "{\n"
-          code_key += "static IgnoreMultipleSameKeyPress imsp;\n"
-          code_key += "if (imsp.remap(remapParams, #{params})) return;\n"
-          code_key += "}\n"
-          func['key'] << name
+      when 'KeyToKey'
+        code_variable << ['RemapUtil::KeyToKey', "keytokey#{autogen_index}_"]
+        code_key << "if (keytokey#{autogen_index}_.remap(remapParams, #{params})) return;"
+        func['key'] << name
 
-        when 'KeyToComsumer'
-          code_key += "{\n"
-          code_key += "static RemapUtil::KeyToConsumer keytoconsumer;\n"
-          code_key += "if (keytoconsumer.remap(remapParams, #{params})) return;\n"
-          code_key += "}\n"
-          func['key'] << name
+      when 'DoublePressModifier'
+        code_variable << ['DoublePressModifier', "doublepressmodifier#{autogen_index}_"]
+        code_key << "if (doublepressmodifier#{autogen_index}_.remap(remapParams, #{params})) return;"
+        func['key'] << name
 
-        when 'KeyToPointingButton'
-          code_key += "{\n"
-          code_key += "static RemapUtil::KeyToPointingButton keytopointing;\n"
-          code_key += "if (keytopointing.remap(remapParams, #{params})) return;\n"
-          code_key += "}\n"
-          func['key'] << name
+      when 'IgnoreMultipleSameKeyPress'
+        code_variable << ['IgnoreMultipleSameKeyPress', "ignoremultiplesamekeypress#{autogen_index}_"]
+        code_key << "if (ignoremultiplesamekeypress#{autogen_index}_.remap(remapParams, #{params})) return;"
+        func['key'] << name
 
-        when 'KeyOverlaidModifier'
-          code_key += "{\n"
-          code_key += "static KeyOverlaidModifier kom;\n"
-          code_key += "if (kom.remap(remapParams, #{params})) return;\n"
-          code_key += "}\n"
-          func['key'] << name
+      when 'KeyToComsumer'
+        code_variable << ['RemapUtil::KeyToConsumer', "keytoconsumer#{autogen_index}_"]
+        code_key << "if (keytoconsumer#{autogen_index}_.remap(remapParams, #{params})) return;"
+        func['key'] << name
 
-        when 'KeyOverlaidModifierWithRepeat'
-          code_key += "{\n"
-          code_key += "static KeyOverlaidModifier kom;\n"
-          code_key += "if (kom.remapWithRepeat(remapParams, #{params})) return;\n"
-          code_key += "}\n"
-          func['key'] << name
+      when 'KeyToPointingButton'
+        code_variable << ['RemapUtil::KeyToPointingButton', "keytopointing#{autogen_index}_"]
+        code_key << "if (keytopointing#{autogen_index}_.remap(remapParams, #{params})) return;"
+        func['key'] << name
 
-        when 'ModifierHoldingKeyToKey'
-          code_key += "{\n"
-          code_key += "static ModifierHoldingKeyToKey mhkk;\n"
-          code_key += "if (mhkk.remap(remapParams, #{params})) return;\n"
-          code_key += "}\n"
-          func['key'] << name
+      when 'KeyOverlaidModifier'
+        code_variable << ['KeyOverlaidModifier', "keyoverlaidmodifier#{autogen_index}_"]
+        code_key << "if (keyoverlaidmodifier#{autogen_index}_.remap(remapParams, #{params})) return;"
+        func['key'] << name
 
-        when 'ConsumerToKey'
-          code_consumer += "{\n"
-          code_consumer += "static RemapUtil::ConsumerToKey consumertokey;\n"
-          code_consumer += "if (consumertokey.remap(remapParams, #{params})) return;\n"
-          code_consumer += "}\n"
-          func['consumer'] << name
+      when 'KeyOverlaidModifierWithRepeat'
+        code_variable << ['KeyOverlaidModifier', "keyoverlaidmodifier#{autogen_index}_"]
+        code_key << "if (keyoverlaidmodifier#{autogen_index}_.remapWithRepeat(remapParams, #{params})) return;"
+        func['key'] << name
 
-        when 'ConsumerToConsumer'
-          code_consumer += "{\n"
-          code_consumer += "static RemapUtil::ConsumerToConsumer consumertoconsumer;\n"
-          code_consumer += "if (consumertoconsumer.remap(remapParams, #{params})) return;\n"
-          code_consumer += "}\n"
-          func['consumer'] << name
+      when 'ModifierHoldingKeyToKey'
+        code_variable << ['ModifierHoldingKeyToKey', "modifierholdingkeytokey#{autogen_index}_"]
+        code_key << "if (modifierholdingkeytokey#{autogen_index}_.remap(remapParams, #{params})) return;"
+        func['key'] << name
 
-        when 'PointingRelativeToScroll'
-          code_pointing += "{\n"
-          code_pointing += "static RemapUtil::PointingRelativeToScroll prts;\n"
-          code_pointing += "if (prts.remap(remapParams, #{params})) return;\n"
-          code_pointing += "}\n"
-          func['pointing'] << name
+      when 'ConsumerToKey'
+        code_variable << ['RemapUtil::ConsumerToKey', "consumertokey#{autogen_index}_"]
+        code_consumer << "if (consumertokey#{autogen_index}_.remap(remapParams, #{params})) return;"
+        func['consumer'] << name
 
-        when 'PointingButtonToPointingButton'
-          code_pointing += "{\n"
-          code_pointing += "static RemapUtil::PointingButtonToPointingButton pbtopb;\n"
-          code_pointing += "if (pbtopb.remap(remapParams, #{params})) return;\n"
-          code_pointing += "}\n"
-          func['pointing'] << name
+      when 'ConsumerToConsumer'
+        code_variable << ['RemapUtil::ConsumerToConsumer', "consumertoconsumer#{autogen_index}_"]
+        code_consumer << "if (consumertoconsumer#{autogen_index}_.remap(remapParams, #{params})) return;"
+        func['consumer'] << name
 
-        else
-          print "%%% ERROR #{type} %%%\n#{item}\n"
-          exit 1
+      when 'PointingRelativeToScroll'
+        code_variable << ['RemapUtil::PointingRelativeToScroll', "pointingrelativetoscroll#{autogen_index}_"]
+        code_pointing << "if (pointingrelativetoscroll#{autogen_index}_.remap(remapParams, #{params})) return;"
+        func['pointing'] << name
 
-        end
+      when 'PointingButtonToPointingButton'
+        code_variable << ['RemapUtil::PointingButtonToPointingButton', "pointingbuttontopointingbutton#{autogen_index}_"]
+        code_pointing << "if (pointingbuttontopointingbutton#{autogen_index}_.remap(remapParams, #{params})) return;"
+        func['pointing'] << name
+
+      else
+        print "%%% ERROR #{type} %%%\n#{item}\n"
+        exit 1
+
       end
     end
   end
 
-  check = "if (! config.#{name}) return;"
+  check = "  if (! config.#{name}) return;\n"
+
+  code += "class RemapClass_#{name} {\n"
+  code += "public:\n"
   unless code_key.empty? then
-    code += "static void #{name}(RemapParams &remapParams) {\n#{check}\n#{filter}\n#{code_key}\n}\n\n\n"
+    code += "static void remap_key(RemapParams &remapParams) {\n#{check}#{filter}\n"
+    code_key.each do |line|
+      code += "  #{line}\n"
+    end
+    code += "}\n"
   end
   unless code_consumer.empty? then
-    code += "static void #{name}(RemapConsumerParams &remapParams) {\n#{check}\n#{filter}\n#{code_consumer}\n}\n\n\n"
+    code += "static void remap_consumer(RemapConsumerParams &remapParams) {\n#{check}#{filter}\n"
+    code_consumer.each do |line|
+      code += "  #{line}\n"
+    end
+    code += "}\n"
   end
   unless code_pointing.empty? then
-    code += "static void #{name}(RemapPointingParams_relative &remapParams) {\n#{check}\n#{code_pointing}\n}\n\n\n"
+    code += "static void remap_pointing(RemapPointingParams_relative &remapParams) {\n#{check}\n"
+    code_pointing.each do |line|
+      code += "  #{line}\n"
+    end
+    code += "}\n"
   end
+  code += "\n"
+  code += "private:\n"
+  code_variable.each do |variable|
+    code += "  static #{variable[0]} #{variable[1]};\n"
+  end
+  code += "};\n"
+
+  code_variable.each do |variable|
+    code += "#{variable[0]} RemapClass_#{name}::#{variable[1]};\n"
+  end
+  code += "\n\n"
 end
 
 open('output/include.config.hpp', 'w') do |f|
@@ -277,16 +290,16 @@ open('output/include.remapcode_func.cpp', 'w') do |f|
 end
 open('output/include.remapcode_call.cpp', 'w') do |f|
   func['key'].uniq.each do |call|
-    f.puts "GeneratedCode::#{call}(remapParams);\n"
+    f.puts "GeneratedCode::RemapClass_#{call}::remap_key(remapParams);\n"
   end
 end
 open('output/include.remapcode_call_consumer.cpp', 'w') do |f|
   func['consumer'].uniq.each do |call|
-    f.puts "GeneratedCode::#{call}(remapParams);\n"
+    f.puts "GeneratedCode::RemapClass_#{call}::remap_consumer(remapParams);\n"
   end
 end
 open('output/include.remapcode_call_pointing_relative.cpp', 'w') do |f|
   func['pointing'].uniq.each do |call|
-    f.puts "GeneratedCode::#{call}(remapParams);\n"
+    f.puts "GeneratedCode::RemapClass_#{call}::remap_pointing(remapParams);\n"
   end
 end
