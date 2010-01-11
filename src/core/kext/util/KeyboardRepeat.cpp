@@ -13,6 +13,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   KeyboardRepeat::initialize(IOWorkLoop& workloop)
   {
+    for (int i = 0; i < MAXNUM; ++i) {
+      item_[i].params = Params_KeyboardEventCallBack::alloc(EventType(0), Flags(0), KeyCode(0), KeyboardType(0), true);
+    }
+
     timer_.initialize(&workloop, NULL, KeyboardRepeat::fire);
   }
 
@@ -20,6 +24,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   KeyboardRepeat::terminate(void)
   {
     timer_.terminate();
+
+    for (int i = 0; i < MAXNUM; ++i) {
+      Params_KeyboardEventCallBack* p = item_[i].params;
+      if (p) {
+        delete p;
+      }
+    }
   }
 
   void
@@ -48,10 +59,13 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     for (int i = 0; i < MAXNUM; ++i) {
       if (! item_[i].active) {
-        item_[i].params.eventType = eventType;
-        item_[i].params.flags = flags;
-        item_[i].params.key = key;
-        item_[i].params.keyboardType = keyboardType;
+        Params_KeyboardEventCallBack* p = item_[i].params;
+        if (! p) return;
+
+        p->eventType = eventType;
+        p->flags = flags;
+        p->key = key;
+        p->keyboardType = keyboardType;
         item_[i].active = true;
 
         return;
@@ -108,7 +122,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     } else if (eventType == EventType::UP) {
       // We stop key repeat only when the repeating key is up.
       if (getActiveItemNum() == 1 &&
-          key == item_[0].params.key) {
+          key == (item_[0].params)->key) {
         goto cancel;
       }
 
@@ -145,7 +159,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     for (int i = 0; i < MAXNUM; ++i) {
       if (item_[i].active) {
-        RemapUtil::fireKey(item_[i].params, workspacedata_);
+        Params_KeyboardEventCallBack* p = item_[i].params;
+        if (p) {
+          RemapUtil::fireKey(*p, workspacedata_);
+        }
       }
     }
 

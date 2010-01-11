@@ -3,22 +3,25 @@
 
 #include "base.hpp"
 #include "KeyCode.hpp"
+#include "auto_ptr.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   class Params_KeyboardEventCallBack {
   public:
-    Params_KeyboardEventCallBack(const EventType& et, const Flags& fl, const KeyCode& kc,
-                                 const CharCode& cc, const CharSet& cs, const OrigCharCode& occ, const OrigCharSet& ocs,
-                                 const KeyboardType& kt, bool r) :
-      eventType(et), flags(fl), key(kc),
-      charCode(cc), charSet(cs), origCharCode(occ), origCharSet(ocs),
-      keyboardType(kt), repeat(r) {}
+    // Use auto_ptr instead allocating Params_KeyboardEventCallBack in kernel stack.
+    DECLARE_AUTO_PTR(Params_KeyboardEventCallBack);
 
-    Params_KeyboardEventCallBack(const EventType& et, const Flags& fl, const KeyCode& kc,
-                                 const KeyboardType& kt, bool r) :
-      eventType(et), flags(fl), key(kc),
-      charCode(0), charSet(0), origCharCode(0), origCharSet(0),
-      keyboardType(kt), repeat(r) {}
+    static Params_KeyboardEventCallBack* alloc(const EventType& et, const Flags& fl, const KeyCode& kc,
+                                               const CharCode& cc, const CharSet& cs, const OrigCharCode& occ, const OrigCharSet& ocs,
+                                               const KeyboardType& kt, bool r) {
+      return new Params_KeyboardEventCallBack(et, fl, kc, cc, cs, occ, ocs, kt, r);
+    }
+    static Params_KeyboardEventCallBack* alloc(const EventType& et, const Flags& fl, const KeyCode& kc,
+                                               const KeyboardType& kt, bool r) {
+      return new Params_KeyboardEventCallBack(et, fl, kc,
+                                              CharCode(0), CharSet(0), OrigCharCode(0), OrigCharSet(0),
+                                              kt, r);
+    }
 
     // ----------------------------------------
     void log(const char* message = "caught") const;
@@ -35,6 +38,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool repeat;
 
   private:
+    Params_KeyboardEventCallBack(const EventType& et, const Flags& fl, const KeyCode& kc,
+                                 const CharCode& cc, const CharSet& cs, const OrigCharCode& occ, const OrigCharSet& ocs,
+                                 const KeyboardType& kt, bool r) :
+      eventType(et), flags(fl), key(kc),
+      charCode(cc), charSet(cs), origCharCode(occ), origCharSet(ocs),
+      keyboardType(kt), repeat(r) {}
+
     static KeyboardType current_keyboardType_;
   };
 

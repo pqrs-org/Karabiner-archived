@@ -109,11 +109,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ----------------------------------------
-    Params_KeyboardEventCallBack params(newEventType,
-                                        FlagStatus::makeFlags(),
-                                        toKeyCode,
-                                        remapParams.params.keyboardType,
-                                        remapParams.params.repeat);
+    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(newEventType,
+                                                                                   FlagStatus::makeFlags(),
+                                                                                   toKeyCode,
+                                                                                   remapParams.params.keyboardType,
+                                                                                   remapParams.params.repeat));
+    if (! ptr) return false;
+    Params_KeyboardEventCallBack& params = *ptr;
+
     if (isSetKeyRepeat) {
       KeyboardRepeat::set(params);
     }
@@ -179,11 +182,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (remapParams.params.key != fromKeyCode) return false;
 
     // ----------------------------------------
-    Params_KeyboardEventCallBack params(remapParams.params.eventType,
-                                        FlagStatus::makeFlags(),
-                                        KeyCode::VK_CONSUMERKEY,
-                                        CommonData::getcurrent_keyboardType(),
-                                        remapParams.params.repeat);
+    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(remapParams.params.eventType,
+                                                                                   FlagStatus::makeFlags(),
+                                                                                   KeyCode::VK_CONSUMERKEY,
+                                                                                   CommonData::getcurrent_keyboardType(),
+                                                                                   remapParams.params.repeat));
+    if (! ptr) return false;
+    Params_KeyboardEventCallBack& params = *ptr;
+
     RemapParams rp(params, remapParams.workspacedata);
     if (! keytokey_.remap(rp, KeyCode::VK_CONSUMERKEY, fromFlags, toKeyCode, toFlags)) {
       return false;
@@ -345,7 +351,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (toFlags.isOn(flag)) continue;
 
       lastFlags_.remove(flag);
-      Params_KeyboardEventCallBack params(EventType::MODIFY, lastFlags_, flag.getKeyCode(), keyboardType, false);
+
+      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, lastFlags_, flag.getKeyCode(), keyboardType, false));
+      if (! ptr) continue;
+      Params_KeyboardEventCallBack& params = *ptr;
       params.apply();
     }
 
@@ -358,7 +367,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (lastFlags_.isOn(flag)) continue;
 
       lastFlags_.add(flag);
-      Params_KeyboardEventCallBack params(EventType::MODIFY, lastFlags_, flag.getKeyCode(), keyboardType, false);
+
+      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, lastFlags_, flag.getKeyCode(), keyboardType, false));
+      if (! ptr) continue;
+      Params_KeyboardEventCallBack& params = *ptr;
       params.apply();
     }
   }
@@ -505,7 +517,18 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     // ----------------------------------------
     // handle virtual keys
-    Params_KeyboardEventCallBack p = params;
+    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(params.eventType,
+                                                                                   params.flags,
+                                                                                   params.key,
+                                                                                   params.charCode,
+                                                                                   params.charSet,
+                                                                                   params.origCharCode,
+                                                                                   params.origCharSet,
+                                                                                   params.keyboardType,
+                                                                                   params.repeat));
+    if (! ptr) return;
+    Params_KeyboardEventCallBack& p = *ptr;
+
     if (Handle_VK_LOCK_FN::handle(p, workspacedata)) return;
     if (Handle_VK_LOCK_COMMAND_R::handle(p, workspacedata)) return;
     if (Handle_VK_JIS_TOGGLE_EISUU_KANA::handle(p, workspacedata)) return;
@@ -543,7 +566,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   RemapUtil::fireKey_downup(const Flags& flags, const KeyCode& key, const KeyboardType& keyboardType,
                             const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
   {
-    Params_KeyboardEventCallBack params(EventType::MODIFY, flags, key, keyboardType, false);
+    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, flags, key, keyboardType, false));
+    if (! ptr) return;
+    Params_KeyboardEventCallBack& params = *ptr;
 
     Flags f = key.getModifierFlag();
 
