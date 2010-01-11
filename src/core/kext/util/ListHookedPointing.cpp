@@ -80,10 +80,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       CommonData::setcurrent_ts(ts);
 
       // ------------------------------------------------------------
-      Params_ScrollWheelEventCallback params(deltaAxis1, deltaAxis2, deltaAxis3,
-                                             fixedDelta1, fixedDelta2, fixedDelta3,
-                                             pointDelta1, pointDelta2, pointDelta3,
-                                             options);
+      Params_ScrollWheelEventCallback::auto_ptr ptr(Params_ScrollWheelEventCallback::alloc(deltaAxis1, deltaAxis2, deltaAxis3,
+                                                                                           fixedDelta1, fixedDelta2, fixedDelta3,
+                                                                                           pointDelta1, pointDelta2, pointDelta3,
+                                                                                           options));
+      if (! ptr) return;
+      Params_ScrollWheelEventCallback& params = *ptr;
       // EventWatcher::on is not necessary.
 
       Core::remap_ScrollWheelEventCallback(params);

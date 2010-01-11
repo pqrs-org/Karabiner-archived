@@ -103,14 +103,18 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
   class Params_ScrollWheelEventCallback {
   public:
-    Params_ScrollWheelEventCallback(short da1, short da2, short da3,
-                                    IOFixed fd1, IOFixed fd2, IOFixed fd3,
-                                    SInt32 pd1, SInt32 pd2, SInt32 pd3,
-                                    SInt32 op) :
-      deltaAxis1(da1), deltaAxis2(da2), deltaAxis3(da3),
-      fixedDelta1(fd1), fixedDelta2(fd2), fixedDelta3(fd3),
-      pointDelta1(pd1), pointDelta2(pd2), pointDelta3(pd3),
-      options(op) {}
+    // Use auto_ptr instead allocating in kernel stack.
+    DECLARE_AUTO_PTR(Params_ScrollWheelEventCallback);
+
+    static Params_ScrollWheelEventCallback* alloc(short da1, short da2, short da3,
+                                                  IOFixed fd1, IOFixed fd2, IOFixed fd3,
+                                                  SInt32 pd1, SInt32 pd2, SInt32 pd3,
+                                                  SInt32 op) {
+      return new Params_ScrollWheelEventCallback(da1, da2, da3,
+                                                 fd1, fd2, fd3,
+                                                 pd1, pd2, pd3,
+                                                 op);
+    }
 
     void log(const char* message = "caught") const;
     void apply(void) const;
@@ -125,6 +129,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     SInt32 pointDelta2;
     SInt32 pointDelta3;
     SInt32 options;
+
+  private:
+    Params_ScrollWheelEventCallback(short da1, short da2, short da3,
+                                    IOFixed fd1, IOFixed fd2, IOFixed fd3,
+                                    SInt32 pd1, SInt32 pd2, SInt32 pd3,
+                                    SInt32 op) :
+      deltaAxis1(da1), deltaAxis2(da2), deltaAxis3(da3),
+      fixedDelta1(fd1), fixedDelta2(fd2), fixedDelta3(fd3),
+      pointDelta1(pd1), pointDelta2(pd2), pointDelta3(pd3),
+      options(op) {}
   };
 }
 
