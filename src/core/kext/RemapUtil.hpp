@@ -21,6 +21,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     class KeyToKey {
     public:
+      KeyToKey(void) : active_(false) {}
+
       bool remap(RemapParams& remapParams,
                  const KeyCode& fromKeyCode, const Flags& fromFlags,
                  const KeyCode& toKeyCode,   const Flags& toFlags = ModifierFlag::NONE,
@@ -60,6 +62,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     class ConsumerToConsumer {
     public:
+      ConsumerToConsumer(void) : active_(false) {}
+
       bool remap(RemapConsumerParams& remapParams,
                  const ConsumerKeyCode& fromKeyCode, const Flags& fromFlags,
                  const ConsumerKeyCode& toKeyCode, const Flags& toFlags = ModifierFlag::NONE);
@@ -94,6 +98,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     class PointingButtonToPointingButton {
     public:
+      PointingButtonToPointingButton(void) : active_(false) {}
+
       bool remap(RemapPointingParams_relative& remapParams,
                  const PointingButton& fromButton, const Flags& fromFlags,
                  const PointingButton& toButton);
@@ -130,6 +136,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ----------------------------------------
     class PointingRelativeToScroll {
     public:
+      PointingRelativeToScroll(void) :
+        active_(false),
+        buffered_delta1(0), buffered_delta2(0),
+        fixation_delta1(0), fixation_delta2(0) {}
+
       bool remap(RemapPointingParams_relative& remapParams, const Buttons& buttons = 0, const Flags& fromFlags = 0);
 
     private:
@@ -172,19 +183,23 @@ namespace org_pqrs_KeyRemap4MacBook {
   // for SandS like behavior remappings (remap_space2shift, remap_enter2optionL_commandSpace, ...)
   class KeyOverlaidModifier {
   public:
+    KeyOverlaidModifier(void) : isAnyEventHappen_(false), savedflags_(0) {}
+
 #include "generate/output/include.keyoverlaidmodifier.hpp"
 
   private:
     bool isAnyEventHappen_;
     IntervalChecker ic_;
     RemapUtil::KeyToKey keytokey_;
-    unsigned int savedflags_; // save as 'unsigned int' to avoid ___cxa_guard_acquire.
+    Flags savedflags_;
   };
 
   // ----------------------------------------
   // A modifier has DoublePressed key action.
   class DoublePressModifier {
   public:
+    DoublePressModifier(void) : pressCount_(0) {}
+
     bool remap(RemapParams& remapParams,
                const KeyCode& fromKeyCode, const ModifierFlag& toFlag,
                const KeyCode& fireKeyCode, const Flags& fireFlags = ModifierFlag::NONE);
@@ -209,10 +224,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ex. Ignore JIS_KANA x 2. (validate only the first once)
   class IgnoreMultipleSameKeyPress {
   public:
+    IgnoreMultipleSameKeyPress(void) : lastkeycode_(KeyCode::VK_NONE) {};
+
     bool remap(RemapParams& remapParams, const KeyCode& fromKeyCode, const Flags& fromFlags = 0);
 
   private:
-    unsigned int lastkeycode_; // save as 'unsigned int' to avoid ___cxa_guard_acquire.
+    KeyCode lastkeycode_;
   };
 }
 
