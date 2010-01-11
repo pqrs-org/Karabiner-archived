@@ -40,7 +40,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       CommonData::setcurrent_ts(ts);
 
       // ------------------------------------------------------------
-      Params_RelativePointerEventCallback params(buttons, dx, dy);
+      Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, dx, dy));
+      if (! ptr) return;
+      Params_RelativePointerEventCallback& params = *ptr;
 
       if (! params.buttons.isNONE()) {
         EventWatcher::on();

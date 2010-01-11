@@ -317,7 +317,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (remapParams.isremapped) return false;
     if (remapParams.params.key != fromKeyCode) return false;
 
-    Params_RelativePointerEventCallback params(PointingButton::VK_KEY, 0, 0);
+    Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(PointingButton::VK_KEY, 0, 0));
+    if (! ptr) return false;
+    Params_RelativePointerEventCallback& params = *ptr;
+
     if (! remapParams.isKeyDownOrModifierDown()) {
       params.buttons = PointingButton::NONE;
     }
@@ -398,7 +401,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       // PointingRelativeToScroll doesn't aim it, we release the left button and do normal scroll event.
       if (buttons.isOn(PointingButton::LEFT)) {
         if (! active_) {
-          RemapUtil::fireRelativePointer(Params_RelativePointerEventCallback(PointingButton::NONE, 0, 0));
+          Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(PointingButton::NONE, 0, 0));
+          if (ptr) {
+            RemapUtil::fireRelativePointer(*ptr);
+          }
         }
       }
 
