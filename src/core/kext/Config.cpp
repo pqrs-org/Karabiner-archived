@@ -4,6 +4,7 @@
 #include "Config.hpp"
 #include "version.hpp"
 #include "Client.hpp"
+#include "remap.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   Config config;
@@ -16,6 +17,15 @@ namespace org_pqrs_KeyRemap4MacBook {
         KeyRemap4MacBook_client::refreshSockAddr();
       }
       return error;
+    }
+
+    int refresh_remapfunc_handler SYSCTL_HANDLER_ARGS
+    {
+      int error = sysctl_handle_int(oidp, oidp->oid_arg1, oidp->oid_arg2,  req);
+      if (! error && req->newptr) {
+        refresh_remapfunc();
+      }
+      return 0;
     }
   }
 
@@ -45,7 +55,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
 #include "config/output/include.config_SYSCTL.cpp"
 
-  SYSCTL_INT(_keyremap4macbook_remap, OID_AUTO, pointing_relative_to_scroll, CTLTYPE_INT | CTLFLAG_RW, &(config.remap_pointing_relative_to_scroll), 0, "");
+  SYSCTL_PROC(_keyremap4macbook_remap, OID_AUTO, pointing_relative_to_scroll, CTLTYPE_INT | CTLFLAG_RW, &(config.remap_pointing_relative_to_scroll), 0, refresh_remapfunc_handler, "I", "");
 
   // ----------------------------------------
   SYSCTL_PROC(_keyremap4macbook, OID_AUTO, socket_path, CTLTYPE_STRING | CTLFLAG_RW, config.socket_path, sizeof(config.socket_path), socket_path_handler, "A", "");
