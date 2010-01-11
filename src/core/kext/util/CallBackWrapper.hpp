@@ -8,7 +8,7 @@
 namespace org_pqrs_KeyRemap4MacBook {
   class Params_KeyboardEventCallBack {
   public:
-    // Use auto_ptr instead allocating Params_KeyboardEventCallBack in kernel stack.
+    // Use auto_ptr instead allocating in kernel stack.
     DECLARE_AUTO_PTR(Params_KeyboardEventCallBack);
 
     static Params_KeyboardEventCallBack* alloc(const EventType& et, const Flags& fl, const KeyCode& kc,
@@ -48,18 +48,19 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   class Params_KeyboardSpecialEventCallback {
   public:
-    Params_KeyboardSpecialEventCallback(const EventType& et, const Flags& fl, const ConsumerKeyCode& ckc,
-                                        unsigned int fv, UInt64 g,
-                                        bool r) :
-      eventType(et), flags(fl), key(ckc),
-      flavor(fv), guid(g),
-      repeat(r) {}
+    // Use auto_ptr instead allocating in kernel stack.
+    DECLARE_AUTO_PTR(Params_KeyboardSpecialEventCallback);
 
-    Params_KeyboardSpecialEventCallback(const EventType& et, const Flags& fl, const ConsumerKeyCode& ckc,
-                                        bool r) :
-      eventType(et), flags(fl), key(ckc),
-      flavor(ckc.get()), guid(static_cast<UInt64>(-1)),
-      repeat(r) {}
+    static Params_KeyboardSpecialEventCallback* alloc(const EventType& et, const Flags& fl, const ConsumerKeyCode& ckc,
+                                               unsigned int fv, UInt64 g,
+                                               bool r) {
+      return new Params_KeyboardSpecialEventCallback(et, fl, ckc, fv, g, r);
+    }
+
+    static Params_KeyboardSpecialEventCallback* alloc(const EventType& et, const Flags& fl, const ConsumerKeyCode& ckc,
+                                                      bool r) {
+      return new Params_KeyboardSpecialEventCallback(et, fl, ckc, ckc.get(), static_cast<UInt64>(-1), r);
+    }
 
     // ----------------------------------------
     void log(const char* message = "caught") const;
@@ -71,6 +72,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     unsigned int flavor;
     UInt64 guid;
     bool repeat;
+
+  private:
+    Params_KeyboardSpecialEventCallback(const EventType& et, const Flags& fl, const ConsumerKeyCode& ckc,
+                                        unsigned int fv, UInt64 g,
+                                        bool r) :
+      eventType(et), flags(fl), key(ckc),
+      flavor(fv), guid(g),
+      repeat(r) {}
   };
 
   class Params_RelativePointerEventCallback {
