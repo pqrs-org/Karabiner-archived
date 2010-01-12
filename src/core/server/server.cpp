@@ -221,6 +221,7 @@ setCurrentApplicationType(const char* applicationName)
       strncmp(applicationName, vmware_unity, strlen(vmware_unity)) == 0 ||
       strcmp(applicationName, "com.parallels.desktop") == 0 ||
       strcmp(applicationName, "com.parallels.vm") == 0 ||
+      strcmp(applicationName, "com.parallels.desktop.console") == 0 ||
       strncmp(applicationName, parallels_coherence, strlen(parallels_coherence)) == 0 ||
       strcmp(applicationName, "org.virtualbox.app.VirtualBoxVM") == 0) {
     SET_CURRENT_APPLICATION_TYPE(VIRTUALMACHINE);
