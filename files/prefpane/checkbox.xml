@@ -475,6 +475,11 @@
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::PAGEUP</autogen>
         </item>
         <item>
+          <name>Command_R to LeftClick</name>
+          <sysctl>remap.commandR2leftclick</sysctl>
+          <autogen>--KeyToPointingButton-- KeyCode::COMMAND_R, PointingButton::LEFT</autogen>
+        </item>
+        <item>
           <name>Command_R to MiddleClick</name>
           <sysctl>remap.commandR2middleclick</sysctl>
           <autogen>--KeyToPointingButton-- KeyCode::COMMAND_R, PointingButton::MIDDLE</autogen>
@@ -601,6 +606,11 @@
           <sysctl>remap.controlR2commandR_vm</sysctl>
           <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
           <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::COMMAND_R</autogen>
+        </item>
+        <item>
+          <name>Control_R to RightClick</name>
+          <sysctl>remap.controlR2rightclick</sysctl>
+          <autogen>--KeyToPointingButton-- KeyCode::CONTROL_R, PointingButton::RIGHT</autogen>
         </item>
       </list>
     </item>
