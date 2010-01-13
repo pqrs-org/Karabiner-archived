@@ -3294,6 +3294,11 @@
               <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::JIS_KANA</autogen>
             </item>
             <item>
+              <name>Command_R to Shift_L+KANA</name>
+              <sysctl>remap.jis_commandR2shiftLkana</sysctl>
+              <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::JIS_KANA, ModifierFlag::SHIFT_L</autogen>
+            </item>
+            <item>
               <name>Command_R to Command_R</name>
               <appendix>(+ When you type Command_R only, send KANA)</appendix>
               <sysctl>remap.jis_commandR2commandR_kana</sysctl>
