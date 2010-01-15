@@ -9,6 +9,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------------------------------------
   class Handle_VK_LOCK_common {
   public:
+    // We use this class instance as global variable.
+    // The value of KeyCode (and ModifierFlag) are unsettled at the constructer,
+    // so we need to use reference at arguments.
     Handle_VK_LOCK_common(const KeyCode& k, const ModifierFlag& f) :
       active_(false), key_(k), flag_(f) {}
     bool handle(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
