@@ -10,7 +10,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ------------------------------------------------------------
   bool
-  EventType::isKeyDownOrModifierDown(const KeyCode& key, const Flags& flags) const
+  EventType::isKeyDownOrModifierDown(KeyCode key, Flags flags) const
   {
     if (*this == EventType::DOWN) return true;
     if (*this == EventType::MODIFY) {
@@ -20,7 +20,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  KeyCode::normalizeKey(Flags& flags, const KeyboardType& keyboardType)
+  KeyCode::normalizeKey(Flags& flags, KeyboardType keyboardType)
   {
     if (keyboardType == KeyboardType::POWERBOOK ||
         keyboardType == KeyboardType::POWERBOOK_G4 ||
@@ -57,7 +57,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  KeyCode::reverseNormalizeKey(Flags& flags, const KeyboardType& keyboardType)
+  KeyCode::reverseNormalizeKey(Flags& flags, KeyboardType keyboardType)
   {
     if (flags.isOn(ModifierFlag::FN)) {
       if (*this == KeyCode::M)            { *this = KeyCode::KEYPAD_0; }
@@ -132,7 +132,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
-  const KeyCode&
+  KeyCode
   ModifierFlag::getKeyCode(void) const {
     if (*this == ModifierFlag::CAPSLOCK) return KeyCode::CAPSLOCK;
     if (*this == ModifierFlag::SHIFT_L) return KeyCode::SHIFT_L;

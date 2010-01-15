@@ -11,10 +11,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     EventType(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
-    bool operator==(const EventType& other) const { return value_ == other.get(); }
-    bool operator!=(const EventType& other) const { return ! (*this == other); }
+    bool operator==(EventType other) const { return value_ == other.get(); }
+    bool operator!=(EventType other) const { return ! (*this == other); }
 
-    bool isKeyDownOrModifierDown(const KeyCode& key, const Flags& flags) const;
+    bool isKeyDownOrModifierDown(KeyCode key, Flags flags) const;
 
 #include "keycode/output/include.EventType.hpp"
 
@@ -27,8 +27,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     KeyboardType(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
-    bool operator==(const KeyboardType& other) const { return value_ == other.get(); }
-    bool operator!=(const KeyboardType& other) const { return ! (*this == other); }
+    bool operator==(KeyboardType other) const { return value_ == other.get(); }
+    bool operator!=(KeyboardType other) const { return ! (*this == other); }
 
 #include "keycode/output/include.KeyboardType.hpp"
 
@@ -40,12 +40,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   class ModifierFlag {
   public:
     unsigned int get(void) const { return value_; }
-    bool operator==(const ModifierFlag& other) const { return value_ == other.get(); }
-    bool operator!=(const ModifierFlag& other) const { return ! (*this == other); }
+    bool operator==(ModifierFlag other) const { return value_ == other.get(); }
+    bool operator!=(ModifierFlag other) const { return ! (*this == other); }
 
     unsigned int operator~(void) const { return ~value_; }
 
-    const KeyCode& getKeyCode(void) const;
+    KeyCode getKeyCode(void) const;
 
 #include "keycode/output/include.ModifierFlag.hpp"
 
@@ -56,26 +56,26 @@ namespace org_pqrs_KeyRemap4MacBook {
   class Flags {
   public:
     Flags(unsigned int v = 0) : value_(v) {}
-    Flags(const ModifierFlag& v) : value_(v.get()) {}
+    Flags(ModifierFlag v) : value_(v.get()) {}
     unsigned int get(void) const { return value_; }
-    bool operator==(const Flags& other) const { return value_ == other.get(); }
-    bool operator!=(const Flags& other) const { return ! (*this == other); }
+    bool operator==(Flags other) const { return value_ == other.get(); }
+    bool operator!=(Flags other) const { return ! (*this == other); }
 
     unsigned int operator~(void) const { return ~value_; }
-    Flags operator|(const Flags& other) const { return value_ | other.get(); }
-    Flags operator&(const Flags& other) const { return value_ & other.get(); }
+    Flags operator|(Flags other) const { return value_ | other.get(); }
+    Flags operator&(Flags other) const { return value_ & other.get(); }
 
-    Flags& add(const Flags& flags) { value_ |= flags.get(); return *this; }
-    Flags& remove(const Flags& flags) { value_ &= ~flags; return *this; }
+    Flags& add(Flags flags) { value_ |= flags.get(); return *this; }
+    Flags& remove(Flags flags) { value_ &= ~flags; return *this; }
     Flags& stripFN(void)     { return remove(ModifierFlag::FN); }
     Flags& stripCURSOR(void) { return remove(ModifierFlag::CURSOR); }
     Flags& stripKEYPAD(void) { return remove(ModifierFlag::KEYPAD); }
     Flags& stripNONE(void)   { return remove(ModifierFlag::NONE); }
 
-    bool isOn(const ModifierFlag& flag) const {
+    bool isOn(ModifierFlag flag) const {
       return (value_ & flag.get()) == flag.get();
     }
-    bool isOn(const Flags& flags) const {
+    bool isOn(Flags flags) const {
       if (flags.isOn(ModifierFlag::NONE)) {
         return (value_ | ModifierFlag::NONE.get()) == flags.get();
       } else {
@@ -86,21 +86,21 @@ namespace org_pqrs_KeyRemap4MacBook {
   private:
     unsigned int value_;
   };
-  inline Flags operator|(const ModifierFlag& lhs, const ModifierFlag& rhs) { return lhs.get() | rhs.get(); }
+  inline Flags operator|(ModifierFlag lhs, ModifierFlag rhs) { return lhs.get() | rhs.get(); }
 
   // ======================================================================
   class KeyCode {
   public:
     KeyCode(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
-    bool operator==(const KeyCode& other) const { return value_ == other.get(); }
-    bool operator!=(const KeyCode& other) const { return ! (*this == other); }
+    bool operator==(KeyCode other) const { return value_ == other.get(); }
+    bool operator!=(KeyCode other) const { return ! (*this == other); }
 
-    bool operator>(const KeyCode& other) const { return value_ > other.get(); }
-    bool operator>=(const KeyCode& other) const { return value_ >= other.get(); }
+    bool operator>(KeyCode other) const { return value_ > other.get(); }
+    bool operator>=(KeyCode other) const { return value_ >= other.get(); }
 
-    void normalizeKey(Flags& flags, const KeyboardType& keyboardType);
-    void reverseNormalizeKey(Flags& flags, const KeyboardType& keyboardType);
+    void normalizeKey(Flags& flags, KeyboardType keyboardType);
+    void reverseNormalizeKey(Flags& flags, KeyboardType keyboardType);
 
     ModifierFlag getModifierFlag(void) const;
     bool isModifier(void) const { return getModifierFlag() != ModifierFlag::NONE; }
@@ -115,8 +115,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     CharCode(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
-    bool operator==(const CharCode& other) const { return value_ == other.get(); }
-    bool operator!=(const CharCode& other) const { return ! (*this == other); }
+    bool operator==(CharCode other) const { return value_ == other.get(); }
+    bool operator!=(CharCode other) const { return ! (*this == other); }
 
   private:
     unsigned int value_;
@@ -125,8 +125,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     CharSet(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
-    bool operator==(const CharSet& other) const { return value_ == other.get(); }
-    bool operator!=(const CharSet& other) const { return ! (*this == other); }
+    bool operator==(CharSet other) const { return value_ == other.get(); }
+    bool operator!=(CharSet other) const { return ! (*this == other); }
 
   private:
     unsigned int value_;
@@ -135,8 +135,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     OrigCharCode(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
-    bool operator==(const OrigCharCode& other) const { return value_ == other.get(); }
-    bool operator!=(const OrigCharCode& other) const { return ! (*this == other); }
+    bool operator==(OrigCharCode other) const { return value_ == other.get(); }
+    bool operator!=(OrigCharCode other) const { return ! (*this == other); }
 
   private:
     unsigned int value_;
@@ -145,8 +145,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     OrigCharSet(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
-    bool operator==(const OrigCharSet& other) const { return value_ == other.get(); }
-    bool operator!=(const OrigCharSet& other) const { return ! (*this == other); }
+    bool operator==(OrigCharSet other) const { return value_ == other.get(); }
+    bool operator!=(OrigCharSet other) const { return ! (*this == other); }
 
   private:
     unsigned int value_;
@@ -157,11 +157,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     ConsumerKeyCode(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
-    bool operator==(const ConsumerKeyCode& other) const { return value_ == other.get(); }
-    bool operator!=(const ConsumerKeyCode& other) const { return ! (*this == other); }
+    bool operator==(ConsumerKeyCode other) const { return value_ == other.get(); }
+    bool operator!=(ConsumerKeyCode other) const { return ! (*this == other); }
 
-    bool operator>(const ConsumerKeyCode& other) const { return value_ > other.get(); }
-    bool operator>=(const ConsumerKeyCode& other) const { return value_ >= other.get(); }
+    bool operator>(ConsumerKeyCode other) const { return value_ > other.get(); }
+    bool operator>=(ConsumerKeyCode other) const { return value_ >= other.get(); }
 
 #include "keycode/output/include.ConsumerKeyCode.hpp"
 
@@ -173,8 +173,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   class PointingButton {
   public:
     unsigned int get(void) const { return value_; }
-    bool operator==(const PointingButton& other) const { return value_ == other.get(); }
-    bool operator!=(const PointingButton& other) const { return ! (*this == other); }
+    bool operator==(PointingButton other) const { return value_ == other.get(); }
+    bool operator!=(PointingButton other) const { return ! (*this == other); }
 
     unsigned int operator~(void) const { return ~value_; }
 
@@ -187,26 +187,26 @@ namespace org_pqrs_KeyRemap4MacBook {
   class Buttons {
   public:
     Buttons(unsigned int v = 0) : value_(v) {}
-    Buttons(const PointingButton& v) : value_(v.get()) {}
+    Buttons(PointingButton v) : value_(v.get()) {}
     unsigned int get(void) const { return value_; }
-    bool operator==(const Buttons& other) const { return value_ == other.get(); }
-    bool operator!=(const Buttons& other) const { return ! (*this == other); }
+    bool operator==(Buttons other) const { return value_ == other.get(); }
+    bool operator!=(Buttons other) const { return ! (*this == other); }
 
     unsigned int operator~(void) const { return ~value_; }
-    Buttons operator|(const Buttons& other) const { return value_ | other.get(); }
+    Buttons operator|(Buttons other) const { return value_ | other.get(); }
 
-    Buttons& add(const Buttons& button) { value_ |= button.get(); return *this; }
-    Buttons& remove(const Buttons& button) { value_ &= ~button; return *this; }
+    Buttons& add(Buttons button) { value_ |= button.get(); return *this; }
+    Buttons& remove(Buttons button) { value_ &= ~button; return *this; }
 
     bool isNONE(void) const { return value_ == 0; }
-    bool isOn(const Buttons& buttons) const {
+    bool isOn(Buttons buttons) const {
       return (value_ & buttons.get()) == buttons.get();
     }
 
   private:
     unsigned int value_;
   };
-  inline Buttons operator|(const PointingButton& lhs, const PointingButton& rhs) { return lhs.get() | rhs.get(); }
+  inline Buttons operator|(PointingButton lhs, PointingButton rhs) { return lhs.get() | rhs.get(); }
 }
 
 #endif
