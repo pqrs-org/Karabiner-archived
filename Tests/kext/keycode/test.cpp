@@ -13,6 +13,17 @@ std::ostream& operator<<(std::ostream& os, const ConsumerKeyCode& v) { return os
 std::ostream& operator<<(std::ostream& os, const PointingButton& v) { return os << v.get(); }
 std::ostream& operator<<(std::ostream& os, const Buttons& v) { return os << v.get(); }
 
+TEST(Generic, sizeof_) {
+  EXPECT_EQ(sizeof(unsigned int), sizeof(EventType));
+  EXPECT_EQ(sizeof(unsigned int), sizeof(KeyboardType));
+  EXPECT_EQ(sizeof(unsigned int), sizeof(ModifierFlag));
+  EXPECT_EQ(sizeof(unsigned int), sizeof(Flags));
+  EXPECT_EQ(sizeof(unsigned int), sizeof(KeyCode));
+  EXPECT_EQ(sizeof(unsigned int), sizeof(ConsumerKeyCode));
+  EXPECT_EQ(sizeof(unsigned int), sizeof(PointingButton));
+  EXPECT_EQ(sizeof(unsigned int), sizeof(Buttons));
+}
+
 TEST(EventType, isKeyDownOrModifierDown) {
   EXPECT_TRUE(EventType::DOWN.isKeyDownOrModifierDown(KeyCode::A, 0));
   EXPECT_FALSE(EventType::UP.isKeyDownOrModifierDown(KeyCode::A, 0));
