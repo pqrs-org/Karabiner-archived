@@ -23,14 +23,17 @@ namespace org_pqrs_KeyRemap4MacBook {
     public:
       KeyToKey(void) : active_(false) {}
 
+      // Don't use reference for a Flags argument.
+      // Because Flags is generated from a combination of ModifierFlag anytime,
+      // it wastes the stack of the caller if we use a reference argument.
       bool remap(RemapParams& remapParams,
-                 const KeyCode& fromKeyCode, const Flags& fromFlags,
-                 const KeyCode& toKeyCode,   const Flags& toFlags = ModifierFlag::NONE,
+                 KeyCode fromKeyCode, Flags fromFlags,
+                 KeyCode toKeyCode,   Flags toFlags = ModifierFlag::NONE,
                  bool isSetKeyRepeat = true);
       // no-fromFlags version.
       bool remap(RemapParams& remapParams,
-                 const KeyCode& fromKeyCode,
-                 const KeyCode& toKeyCode, const Flags& toFlags = ModifierFlag::NONE,
+                 KeyCode fromKeyCode,
+                 KeyCode toKeyCode, Flags toFlags = ModifierFlag::NONE,
                  bool isSetKeyRepeat = true) {
         return remap(remapParams, fromKeyCode, 0, toKeyCode, toFlags, isSetKeyRepeat);
       }
@@ -46,13 +49,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     class ConsumerToKey {
     public:
       bool remap(RemapConsumerParams& remapParams,
-                 const ConsumerKeyCode& fromKeyCode, const Flags& fromFlags,
-                 const KeyCode& toKeyCode, const Flags& toFlags = ModifierFlag::NONE);
+                 ConsumerKeyCode fromKeyCode, Flags fromFlags,
+                 KeyCode toKeyCode,           Flags toFlags = ModifierFlag::NONE);
 
       // no fromFlags version
       bool remap(RemapConsumerParams& remapParams,
-                 const ConsumerKeyCode& fromKeyCode,
-                 const KeyCode& toKeyCode, const Flags& toFlags = ModifierFlag::NONE) {
+                 ConsumerKeyCode fromKeyCode,
+                 KeyCode toKeyCode, Flags toFlags = ModifierFlag::NONE) {
         return remap(remapParams, fromKeyCode, 0, toKeyCode, toFlags);
       }
 
@@ -65,13 +68,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       ConsumerToConsumer(void) : active_(false) {}
 
       bool remap(RemapConsumerParams& remapParams,
-                 const ConsumerKeyCode& fromKeyCode, const Flags& fromFlags,
-                 const ConsumerKeyCode& toKeyCode, const Flags& toFlags = ModifierFlag::NONE);
+                 ConsumerKeyCode fromKeyCode, Flags fromFlags,
+                 ConsumerKeyCode toKeyCode,   Flags toFlags = ModifierFlag::NONE);
 
       // no fromFlags version
       bool remap(RemapConsumerParams& remapParams,
-                 const ConsumerKeyCode& fromKeyCode,
-                 const ConsumerKeyCode& toKeyCode, const Flags& toFlags = ModifierFlag::NONE) {
+                 ConsumerKeyCode fromKeyCode,
+                 ConsumerKeyCode toKeyCode, Flags toFlags = ModifierFlag::NONE) {
         return remap(remapParams, fromKeyCode, 0, toKeyCode, toFlags);
       }
 
@@ -82,13 +85,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     class KeyToConsumer {
     public:
       bool remap(RemapParams& remapParams,
-                 const KeyCode& fromKeyCode, const Flags& fromFlags,
-                 const ConsumerKeyCode& toKeyCode, const Flags& toFlags = ModifierFlag::NONE);
+                 KeyCode fromKeyCode,       Flags fromFlags,
+                 ConsumerKeyCode toKeyCode, Flags toFlags = ModifierFlag::NONE);
 
       // no fromFlags version
       bool remap(RemapParams& remapParams,
-                 const KeyCode& fromKeyCode,
-                 const ConsumerKeyCode& toKeyCode, const Flags& toFlags = ModifierFlag::NONE) {
+                 KeyCode fromKeyCode,
+                 ConsumerKeyCode toKeyCode, Flags toFlags = ModifierFlag::NONE) {
         return remap(remapParams, fromKeyCode, 0, toKeyCode, toFlags);
       }
 
@@ -101,13 +104,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       PointingButtonToPointingButton(void) : active_(false) {}
 
       bool remap(RemapPointingParams_relative& remapParams,
-                 const PointingButton& fromButton, const Flags& fromFlags,
-                 const PointingButton& toButton);
+                 PointingButton fromButton, Flags fromFlags,
+                 PointingButton toButton);
 
       // no fromFlags version
       bool remap(RemapPointingParams_relative& remapParams,
-                 const PointingButton& fromButton,
-                 const PointingButton& toButton) {
+                 PointingButton fromButton,
+                 PointingButton toButton) {
         return remap(remapParams, fromButton, 0, toButton);
       }
 
@@ -118,13 +121,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     class KeyToPointingButton {
     public:
       bool remap(RemapParams& remapParams,
-                 const KeyCode& fromKeyCode, const Flags& fromFlags,
-                 const PointingButton& toButton);
+                 KeyCode fromKeyCode, Flags fromFlags,
+                 PointingButton toButton);
 
       // no fromFlags version
       bool remap(RemapParams& remapParams,
-                 const KeyCode& fromKeyCode,
-                 const PointingButton& toButton) {
+                 KeyCode fromKeyCode,
+                 PointingButton toButton) {
         return remap(remapParams, fromKeyCode, 0, toButton);
       }
 
@@ -141,7 +144,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         buffered_delta1(0), buffered_delta2(0),
         fixation_delta1(0), fixation_delta2(0) {}
 
-      bool remap(RemapPointingParams_relative& remapParams, const Buttons& buttons = 0, const Flags& fromFlags = 0);
+      bool remap(RemapPointingParams_relative& remapParams, Buttons buttons = 0, Flags fromFlags = 0);
 
     private:
       void toscroll(RemapPointingParams_relative& remapParams);
@@ -160,7 +163,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ----------------------------------------
     void fireKey(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
-    void fireKey_downup(const Flags& flags, const KeyCode& key, const KeyboardType& keyboardType,
+    void fireKey_downup(Flags flags, KeyCode key, KeyboardType keyboardType,
                         const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
 
     void fireConsumer(const Params_KeyboardSpecialEventCallback& params);
@@ -168,12 +171,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     void fireScrollWheel(const Params_ScrollWheelEventCallback& params);
 
     // ----------------------------------------
-    const Buttons& getRemappedButtons(void);
+    Buttons getRemappedButtons(void);
   }
 
   class FireModifiers {
   public:
-    static void fire(const Flags& toFlags = FlagStatus::makeFlags(), const KeyboardType& keyboardType = CommonData::getcurrent_keyboardType());
+    static void fire(Flags toFlags = FlagStatus::makeFlags(), KeyboardType keyboardType = CommonData::getcurrent_keyboardType());
 
   private:
     static Flags lastFlags_;
@@ -201,8 +204,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     DoublePressModifier(void) : pressCount_(0) {}
 
     bool remap(RemapParams& remapParams,
-               const KeyCode& fromKeyCode, const ModifierFlag& toFlag,
-               const KeyCode& fireKeyCode, const Flags& fireFlags = ModifierFlag::NONE);
+               KeyCode fromKeyCode, ModifierFlag toFlag,
+               KeyCode fireKeyCode, Flags fireFlags = ModifierFlag::NONE);
 
   private:
     int pressCount_;
@@ -213,7 +216,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // Modifier Holding + Key -> Key
   class ModifierHoldingKeyToKey {
   public:
-    bool remap(RemapParams& remapParams, const KeyCode& fromKeyCode, const Flags& fromFlags, const KeyCode& toKeyCode);
+    bool remap(RemapParams& remapParams, KeyCode fromKeyCode, Flags fromFlags, KeyCode toKeyCode);
 
   private:
     IntervalChecker ic_;
@@ -226,7 +229,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     IgnoreMultipleSameKeyPress(void) : lastkeycode_(KeyCode::VK_NONE) {};
 
-    bool remap(RemapParams& remapParams, const KeyCode& fromKeyCode, const Flags& fromFlags = 0);
+    bool remap(RemapParams& remapParams, KeyCode fromKeyCode, Flags fromFlags = 0);
 
   private:
     KeyCode lastkeycode_;
