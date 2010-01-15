@@ -9,8 +9,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   class PressDownKeys {
   public:
     static void initialize(void);
-    static void add(const KeyCode& key, const KeyboardType& keyboardType);
-    static void remove(const KeyCode& key, const KeyboardType& keyboardType);
+    static void add(KeyCode key, KeyboardType keyboardType);
+    static void remove(KeyCode key, KeyboardType keyboardType);
     static void clear(void);
 
   private:

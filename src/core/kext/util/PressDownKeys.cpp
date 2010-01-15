@@ -15,7 +15,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  PressDownKeys::add(const KeyCode& key, const KeyboardType& keyboardType)
+  PressDownKeys::add(KeyCode key, KeyboardType keyboardType)
   {
     if (key == KeyCode::VK_NONE) return;
 
@@ -43,7 +43,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  PressDownKeys::remove(const KeyCode& key, const KeyboardType& keyboardType)
+  PressDownKeys::remove(KeyCode key, KeyboardType keyboardType)
   {
     for (int i = 0; i < MAXNUM; ++i) {
       if (! item_[i].enable) continue;
