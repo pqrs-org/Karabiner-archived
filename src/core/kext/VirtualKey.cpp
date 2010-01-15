@@ -86,7 +86,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------------------------------------
   bool
   Handle_VK_JIS_TEMPORARY::handle(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata,
-                                  const KeyCode& key,
+                                  KeyCode key,
                                   const KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail& inputmodedetail)
   {
     if (params.key != key) return false;
