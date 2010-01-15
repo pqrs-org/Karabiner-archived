@@ -8,7 +8,7 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace {
-    Buttons remappedButtions;
+    Buttons remappedButtons;
   }
 
   bool
@@ -301,9 +301,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       params.buttons.remove(fromButton);
       params.buttons.add(toButton);
 
-      remappedButtions.add(toButton);
+      remappedButtons.add(toButton);
     } else {
-      remappedButtions.remove(toButton);
+      remappedButtons.remove(toButton);
     }
     fireRelativePointer(params);
 
@@ -774,6 +774,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   Buttons
   RemapUtil::getRemappedButtons(void)
   {
-    return remappedButtions;
+    return remappedButtons;
   }
 }
