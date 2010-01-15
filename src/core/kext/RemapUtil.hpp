@@ -120,6 +120,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     class KeyToPointingButton {
     public:
+      KeyToPointingButton(void) : active_(false) {}
+
       bool remap(RemapParams& remapParams,
                  KeyCode fromKeyCode, Flags fromFlags,
                  PointingButton toButton);
@@ -132,6 +134,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
     private:
+      bool active_;
       PointingButtonToPointingButton buttontobutton_;
     };
 
