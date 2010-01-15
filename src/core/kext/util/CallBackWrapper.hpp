@@ -11,13 +11,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     // Use auto_ptr instead allocating in kernel stack.
     DECLARE_AUTO_PTR(Params_KeyboardEventCallBack);
 
-    static Params_KeyboardEventCallBack* alloc(const EventType& et, const Flags& fl, const KeyCode& kc,
-                                               const CharCode& cc, const CharSet& cs, const OrigCharCode& occ, const OrigCharSet& ocs,
-                                               const KeyboardType& kt, bool r) {
+    static Params_KeyboardEventCallBack* alloc(EventType et, Flags fl, KeyCode kc,
+                                               CharCode cc, CharSet cs, OrigCharCode occ, OrigCharSet ocs,
+                                               KeyboardType kt, bool r) {
       return new Params_KeyboardEventCallBack(et, fl, kc, cc, cs, occ, ocs, kt, r);
     }
-    static Params_KeyboardEventCallBack* alloc(const EventType& et, const Flags& fl, const KeyCode& kc,
-                                               const KeyboardType& kt, bool r) {
+    static Params_KeyboardEventCallBack* alloc(EventType et, Flags fl, const KeyCode kc,
+                                               KeyboardType kt, bool r) {
       return new Params_KeyboardEventCallBack(et, fl, kc,
                                               CharCode(0), CharSet(0), OrigCharCode(0), OrigCharSet(0),
                                               kt, r);
@@ -40,9 +40,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool repeat;
 
   private:
-    Params_KeyboardEventCallBack(const EventType& et, const Flags& fl, const KeyCode& kc,
-                                 const CharCode& cc, const CharSet& cs, const OrigCharCode& occ, const OrigCharSet& ocs,
-                                 const KeyboardType& kt, bool r) :
+    Params_KeyboardEventCallBack(EventType et, Flags fl, KeyCode kc,
+                                 CharCode cc, CharSet cs, OrigCharCode occ, OrigCharSet ocs,
+                                 KeyboardType kt, bool r) :
       eventType(et), flags(fl), key(kc),
       charCode(cc), charSet(cs), origCharCode(occ), origCharSet(ocs),
       keyboardType(kt), repeat(r) {}
@@ -53,13 +53,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     // Use auto_ptr instead allocating in kernel stack.
     DECLARE_AUTO_PTR(Params_KeyboardSpecialEventCallback);
 
-    static Params_KeyboardSpecialEventCallback* alloc(const EventType& et, const Flags& fl, const ConsumerKeyCode& ckc,
+    static Params_KeyboardSpecialEventCallback* alloc(EventType et, Flags fl, ConsumerKeyCode ckc,
                                                       unsigned int fv, UInt64 g,
                                                       bool r) {
       return new Params_KeyboardSpecialEventCallback(et, fl, ckc, fv, g, r);
     }
 
-    static Params_KeyboardSpecialEventCallback* alloc(const EventType& et, const Flags& fl, const ConsumerKeyCode& ckc,
+    static Params_KeyboardSpecialEventCallback* alloc(EventType et, Flags fl, ConsumerKeyCode ckc,
                                                       bool r) {
       return new Params_KeyboardSpecialEventCallback(et, fl, ckc, ckc.get(), static_cast<UInt64>(-1), r);
     }
@@ -78,7 +78,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool repeat;
 
   private:
-    Params_KeyboardSpecialEventCallback(const EventType& et, const Flags& fl, const ConsumerKeyCode& ckc,
+    Params_KeyboardSpecialEventCallback(EventType et, Flags fl, ConsumerKeyCode ckc,
                                         unsigned int fv, UInt64 g,
                                         bool r) :
       eventType(et), flags(fl), key(ckc),
@@ -91,7 +91,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // Use auto_ptr instead allocating in kernel stack.
     DECLARE_AUTO_PTR(Params_RelativePointerEventCallback);
 
-    static Params_RelativePointerEventCallback* alloc(const Buttons& bt, int x, int y) {
+    static Params_RelativePointerEventCallback* alloc(Buttons bt, int x, int y) {
       return new Params_RelativePointerEventCallback(bt, x, y);
     }
 
@@ -105,7 +105,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     int dy;
 
   private:
-    Params_RelativePointerEventCallback(const Buttons& bt, int x, int y) : buttons(bt), dx(x), dy(y) {}
+    Params_RelativePointerEventCallback(Buttons bt, int x, int y) : buttons(bt), dx(x), dy(y) {}
   };
   class Params_ScrollWheelEventCallback {
   public:
