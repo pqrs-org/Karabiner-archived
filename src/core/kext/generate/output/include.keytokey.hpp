@@ -1,7 +1,7 @@
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -12,9 +12,9 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -25,9 +25,9 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -38,9 +38,9 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -51,9 +51,9 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -64,9 +64,9 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -77,9 +77,9 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -90,9 +90,9 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -103,10 +103,10 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,  Flags toFlags3) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -117,10 +117,10 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,  Flags toFlags3) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -131,10 +131,10 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,  Flags toFlags3) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -145,10 +145,10 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,  Flags toFlags3) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -159,10 +159,10 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,  Flags toFlags3) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -173,10 +173,10 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,  Flags toFlags3) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -187,10 +187,10 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,  Flags toFlags3) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -201,10 +201,10 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,  Flags toFlags3) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -215,10 +215,10 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -229,10 +229,10 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -243,10 +243,10 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -257,10 +257,10 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -271,10 +271,10 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -285,10 +285,10 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -299,10 +299,10 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -313,10 +313,10 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -327,11 +327,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,  Flags toFlags4) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -342,11 +342,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,  Flags toFlags4) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -357,11 +357,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,  Flags toFlags4) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -372,11 +372,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,  Flags toFlags4) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -387,11 +387,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,  Flags toFlags4) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -402,11 +402,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,  Flags toFlags4) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -417,11 +417,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,  Flags toFlags4) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -432,11 +432,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,  Flags toFlags4) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -447,11 +447,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,  Flags toFlags4) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -462,11 +462,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,  Flags toFlags4) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -477,11 +477,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,  Flags toFlags4) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -492,11 +492,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,  Flags toFlags4) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -507,11 +507,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,  Flags toFlags4) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -522,11 +522,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,  Flags toFlags4) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -537,11 +537,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,  Flags toFlags4) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -552,11 +552,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,  Flags toFlags4) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -567,11 +567,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -582,11 +582,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -597,11 +597,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -612,11 +612,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -627,11 +627,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -642,11 +642,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -657,11 +657,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -672,11 +672,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -687,11 +687,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -702,11 +702,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -717,11 +717,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -732,11 +732,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -747,11 +747,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -762,11 +762,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -777,11 +777,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -792,11 +792,11 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -807,20 +807,20 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5);
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5,  Flags toFlags5);
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -831,12 +831,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -847,12 +847,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -863,12 +863,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -879,12 +879,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -895,12 +895,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -911,12 +911,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -927,12 +927,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -943,12 +943,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -959,12 +959,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -975,12 +975,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -991,12 +991,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -1007,12 +1007,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -1023,12 +1023,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -1039,12 +1039,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -1055,12 +1055,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -1071,12 +1071,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -1087,12 +1087,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -1103,12 +1103,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -1119,12 +1119,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -1135,12 +1135,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -1151,12 +1151,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -1167,12 +1167,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -1183,12 +1183,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -1199,12 +1199,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -1215,12 +1215,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -1231,12 +1231,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -1247,12 +1247,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -1263,12 +1263,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -1279,12 +1279,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -1295,12 +1295,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5,  const Flags& toFlags5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5,  Flags toFlags5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -1311,12 +1311,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -1327,12 +1327,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -1343,12 +1343,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -1359,12 +1359,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -1375,12 +1375,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -1391,12 +1391,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -1407,12 +1407,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -1423,12 +1423,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -1439,12 +1439,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -1455,12 +1455,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -1471,12 +1471,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -1487,12 +1487,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -1503,12 +1503,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -1519,12 +1519,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -1535,12 +1535,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -1551,12 +1551,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,  const Flags& toFlags4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,  Flags toFlags4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -1567,12 +1567,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -1583,12 +1583,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -1599,12 +1599,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -1615,12 +1615,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -1631,12 +1631,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -1647,12 +1647,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -1663,12 +1663,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -1679,12 +1679,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,  const Flags& toFlags3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,  Flags toFlags3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -1695,12 +1695,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -1711,12 +1711,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -1727,12 +1727,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -1743,12 +1743,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,  const Flags& toFlags2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,  Flags toFlags2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,
@@ -1759,12 +1759,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, toFlags1,
@@ -1775,12 +1775,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,  const Flags& toFlags1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,  Flags toFlags1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, toFlags1,
@@ -1791,12 +1791,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode, const Flags& fromFlags,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode, Flags fromFlags,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, fromFlags,
                toKeyCode1, ModifierFlag::NONE,
@@ -1807,12 +1807,12 @@ bool remap(RemapParams& remapParams,
 }
 
 bool remap(RemapParams& remapParams,
-           const KeyCode& fromKeyCode,
-           const KeyCode& toKeyCode1,
-           const KeyCode& toKeyCode2,
-           const KeyCode& toKeyCode3,
-           const KeyCode& toKeyCode4,
-           const KeyCode& toKeyCode5) {
+           KeyCode fromKeyCode,
+           KeyCode toKeyCode1,
+           KeyCode toKeyCode2,
+           KeyCode toKeyCode3,
+           KeyCode toKeyCode4,
+           KeyCode toKeyCode5) {
   return remap(remapParams,
                fromKeyCode, Flags(0),
                toKeyCode1, ModifierFlag::NONE,

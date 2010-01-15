@@ -32,10 +32,10 @@ makeset(num+1).each do |omitflags|
   code = "return remap(remapParams,\n               fromKeyCode"
 
   if omitflags.shift then
-    print "           const KeyCode& fromKeyCode, const Flags& fromFlags,\n"
+    print "           KeyCode fromKeyCode, Flags fromFlags,\n"
     code += ", fromFlags"
   else
-    print "           const KeyCode& fromKeyCode,\n"
+    print "           KeyCode fromKeyCode,\n"
     code += ", Flags(0)"
   end
 
@@ -43,10 +43,10 @@ makeset(num+1).each do |omitflags|
   omitflags.each do |flag|
     text = nil
     if flag then
-      text = "           const KeyCode& toKeyCode#{i},  const Flags& toFlags#{i}"
+      text = "           KeyCode toKeyCode#{i},  Flags toFlags#{i}"
       code += ",\n               toKeyCode#{i}, toFlags#{i}"
     else
-      text = "           const KeyCode& toKeyCode#{i}"
+      text = "           KeyCode toKeyCode#{i}"
       code += ",\n               toKeyCode#{i}, ModifierFlag::NONE"
     end
     if i < num then
