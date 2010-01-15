@@ -13,7 +13,7 @@ clean:
 	$(MAKE) -C util clean
 	sudo rm -rf pkgroot
 	sudo rm -rf *.pkg
-	sudo rm -rf *.tar.gz
+	sudo rm -rf *.zip
 
 source:
 	./make-source.sh
