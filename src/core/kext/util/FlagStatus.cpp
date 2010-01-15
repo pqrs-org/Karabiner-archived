@@ -4,7 +4,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   FlagStatus::Item FlagStatus::item_[FlagStatus::MAXNUM];
 
   void
-  FlagStatus::Item::initialize(const ModifierFlag& f)
+  FlagStatus::Item::initialize(ModifierFlag f)
   {
     flag_ = f;
     count_ = 0;
@@ -20,7 +20,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  FlagStatus::Item::set(const KeyCode& key, const Flags& flags)
+  FlagStatus::Item::set(KeyCode key, Flags flags)
   {
     temporary_count_ = 0;
 
@@ -124,7 +124,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  FlagStatus::set(const KeyCode& key, const Flags& flags)
+  FlagStatus::set(KeyCode key, Flags flags)
   {
     for (int i = 0; item_[i].flag_ != ModifierFlag::NONE; ++i) {
       item_[i].set(key, flags);
@@ -149,7 +149,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     return flags;
   }
 
-  const ModifierFlag&
+  ModifierFlag
   FlagStatus::getFlag(int index)
   {
     for (int i = 0; item_[i].flag_ != ModifierFlag::NONE; ++i) {
@@ -168,11 +168,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       }                                                          \
     }                                                            \
 }
-  void FlagStatus::increase(const Flags& flags) { FOREACH_TO_FLAGS(increase); }
-  void FlagStatus::decrease(const Flags& flags) { FOREACH_TO_FLAGS(decrease); }
-  void FlagStatus::temporary_increase(const Flags& flags) { FOREACH_TO_FLAGS(temporary_increase); }
-  void FlagStatus::temporary_decrease(const Flags& flags) { FOREACH_TO_FLAGS(temporary_decrease); }
-  void FlagStatus::lock_increase(const Flags& flags) { FOREACH_TO_FLAGS(lock_increase); }
-  void FlagStatus::lock_decrease(const Flags& flags) { FOREACH_TO_FLAGS(lock_decrease); }
+  void FlagStatus::increase(Flags flags) { FOREACH_TO_FLAGS(increase); }
+  void FlagStatus::decrease(Flags flags) { FOREACH_TO_FLAGS(decrease); }
+  void FlagStatus::temporary_increase(Flags flags) { FOREACH_TO_FLAGS(temporary_increase); }
+  void FlagStatus::temporary_decrease(Flags flags) { FOREACH_TO_FLAGS(temporary_decrease); }
+  void FlagStatus::lock_increase(Flags flags) { FOREACH_TO_FLAGS(lock_increase); }
+  void FlagStatus::lock_decrease(Flags flags) { FOREACH_TO_FLAGS(lock_decrease); }
 #undef FOREACH_TO_FLAGS
 }
