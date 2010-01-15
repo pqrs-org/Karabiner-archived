@@ -21,10 +21,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void cancel(void);
 
     // --------------------------------------------------
-    static void set(const EventType& eventType,
-                    const Flags& flags,
-                    const KeyCode& key,
-                    const KeyboardType& keyboardType,
+    static void set(EventType eventType,
+                    Flags flags,
+                    KeyCode key,
+                    KeyboardType keyboardType,
                     int wait);
 
     static void set(const Params_KeyboardEventCallBack& p,
@@ -34,10 +34,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // --------------------------------------------------
     // primitive operations.
-    static void primitive_add(const EventType& eventType,
-                              const Flags& flags,
-                              const KeyCode& key,
-                              const KeyboardType& keyboardType);
+    static void primitive_add(EventType eventType,
+                              Flags flags,
+                              KeyCode key,
+                              KeyboardType keyboardType);
     static void primitive_start(int wait = config.get_repeat_initial_wait());
 
   private:
@@ -56,10 +56,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     static void cancel_nolock(void);
 
-    static void primitive_add_nolock(const EventType& eventType,
-                                     const Flags& flags,
-                                     const KeyCode& key,
-                                     const KeyboardType& keyboardType);
+    static void primitive_add_nolock(EventType eventType,
+                                     Flags flags,
+                                     KeyCode key,
+                                     KeyboardType keyboardType);
     static void primitive_start_nolock(int wait);
 
     static int getActiveItemNum(void);
