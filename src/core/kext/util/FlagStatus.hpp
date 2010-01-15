@@ -13,9 +13,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       Item(void) : flag_(ModifierFlag::NONE) {}
 
     private:
-      void initialize(const ModifierFlag& f);
+      void initialize(ModifierFlag f);
       void set(void);
-      void set(const KeyCode& key, const Flags& flags);
+      void set(KeyCode key, Flags flags);
 
       void reset(void);
       Flags makeFlag(void) const {
@@ -44,18 +44,18 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     static bool initialize(void);
     static void set(void);
-    static void set(const KeyCode& key, const Flags& flags);
+    static void set(KeyCode key, Flags flags);
     static Flags makeFlags(void);
     // get registered ModifierFlag by index.
-    static const ModifierFlag& getFlag(int index);
+    static ModifierFlag getFlag(int index);
     static void reset(void);
 
-    static void increase(const Flags& flags);
-    static void decrease(const Flags& flags);
-    static void temporary_increase(const Flags& flags);
-    static void temporary_decrease(const Flags& flags);
-    static void lock_increase(const Flags& flags);
-    static void lock_decrease(const Flags& flags);
+    static void increase(Flags flags);
+    static void decrease(Flags flags);
+    static void temporary_increase(Flags flags);
+    static void temporary_decrease(Flags flags);
+    static void lock_increase(Flags flags);
+    static void lock_decrease(Flags flags);
 
   private:
     static Item item_[MAXNUM];
