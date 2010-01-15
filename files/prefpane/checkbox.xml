@@ -3093,6 +3093,14 @@
       <name>For Dvorak Users</name>
       <list>
         <item>
+          <name>Swap U and I</name>
+          <sysctl>remap.dvorak_u2i</sysctl>
+          <!-- Dvorak:U == Qwerty:F, Dvorak:I == Qwerty:G -->
+          <autogen>--KeyToKey-- KeyCode::F, KeyCode::G</autogen>
+          <autogen>--KeyToKey-- KeyCode::G, KeyCode::F</autogen>
+        </item>
+
+        <item>
           <name>Control+W to Option+Delete</name>
           <appendix>(except Emacs, Terminal, X11, virtual machine, RDC, Eclipse)</appendix>
           <sysctl>option.dvorak_emacsmode_ex_controlW</sysctl>
