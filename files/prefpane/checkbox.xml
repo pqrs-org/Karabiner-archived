@@ -644,6 +644,16 @@
           <autogen>--KeyToKey-- KeyCode::DELETE, KeyCode::FORWARD_DELETE</autogen>
         </item>
         <item>
+          <name>Control+Delete to Forward Delete</name>
+          <sysctl>remap.controlDelete2forwarddelete</sysctl>
+          <autogen>--KeyToKey-- KeyCode::DELETE, VK_CONTROL, KeyCode::FORWARD_DELETE</autogen>
+        </item>
+        <item>
+          <name>Option+Delete to Forward Delete</name>
+          <sysctl>remap.optionDelete2forwarddelete</sysctl>
+          <autogen>--KeyToKey-- KeyCode::DELETE, VK_OPTION, KeyCode::FORWARD_DELETE</autogen>
+        </item>
+        <item>
           <name>Shift+Delete to Forward Delete</name>
           <sysctl>remap.shiftDelete2forwarddelete</sysctl>
           <autogen>--KeyToKey-- KeyCode::DELETE, VK_SHIFT, KeyCode::FORWARD_DELETE</autogen>
