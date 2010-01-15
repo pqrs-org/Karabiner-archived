@@ -71,8 +71,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     static bool handle_RESTORE(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
 
   private:
+    // We use this class instance as global variable.
+    // The value of KeyCode (and ModifierFlag) are unsettled at the constructer,
+    // so we need to use reference at arguments.
     static bool handle(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata,
-                       const KeyCode& key,
+                       KeyCode key,
                        const KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail& inputmodedetail);
 
     static void firekeytoinputdetail(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata,
