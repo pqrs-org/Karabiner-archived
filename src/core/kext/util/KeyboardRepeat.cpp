@@ -50,10 +50,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  KeyboardRepeat::primitive_add_nolock(const EventType& eventType,
-                                       const Flags& flags,
-                                       const KeyCode& key,
-                                       const KeyboardType& keyboardType)
+  KeyboardRepeat::primitive_add_nolock(EventType eventType,
+                                       Flags flags,
+                                       KeyCode key,
+                                       KeyboardType keyboardType)
   {
     if (key == KeyCode::VK_NONE) return;
 
@@ -75,10 +75,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  KeyboardRepeat::primitive_add(const EventType& eventType,
-                                const Flags& flags,
-                                const KeyCode& key,
-                                const KeyboardType& keyboardType)
+  KeyboardRepeat::primitive_add(EventType eventType,
+                                Flags flags,
+                                KeyCode key,
+                                KeyboardType keyboardType)
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
     primitive_add_nolock(eventType, flags, key, keyboardType);
@@ -108,10 +108,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  KeyboardRepeat::set(const EventType& eventType,
-                      const Flags& flags,
-                      const KeyCode& key,
-                      const KeyboardType& keyboardType,
+  KeyboardRepeat::set(EventType eventType,
+                      Flags flags,
+                      KeyCode key,
+                      KeyboardType keyboardType,
                       int wait)
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
