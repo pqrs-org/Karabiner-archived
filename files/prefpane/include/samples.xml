@@ -163,10 +163,12 @@
       <appendix>A to LeftClick (Standard)</appendix>
       <appendix>Option_L to LeftClick (Modifier)</appendix>
       <appendix>Shift+B to RightClick (Key+Modifier)</appendix>
+      <appendix>Shift+Control_L to RightClick (Modifier+Modifier)</appendix>
       <sysctl>remap.samples_keytopointingbutton</sysctl>
       <autogen>--KeyToPointingButton-- KeyCode::A, PointingButton::LEFT</autogen>
       <autogen>--KeyToPointingButton-- KeyCode::OPTION_L, PointingButton::LEFT</autogen>
       <autogen>--KeyToPointingButton-- KeyCode::B, VK_SHIFT, PointingButton::RIGHT</autogen>
+      <autogen>--KeyToPointingButton-- KeyCode::CONTROL_L, VK_SHIFT, PointingButton::RIGHT</autogen>
     </item>
 
     <item>

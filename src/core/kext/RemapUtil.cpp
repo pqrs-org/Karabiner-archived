@@ -317,24 +317,37 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (remapParams.isremapped) return false;
     if (remapParams.params.key != fromKeyCode) return false;
 
+    bool isKeyDown = remapParams.isKeyDownOrModifierDown();
+    if (isKeyDown) {
+      if (active_ == false) {
+        if (! FlagStatus::makeFlags().isOn(fromFlags)) return false;
+        active_ = true;
+
+        FlagStatus::decrease(fromFlags | fromKeyCode.getModifierFlag());
+      }
+    } else {
+      if (! active_) return false;
+      active_ = false;
+    }
+
+    // ------------------------------------------------------------
+    remapParams.isremapped = true;
+
     Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(PointingButton::VK_KEY, 0, 0));
     if (! ptr) return false;
     Params_RelativePointerEventCallback& params = *ptr;
 
-    if (! remapParams.isKeyDownOrModifierDown()) {
+    if (! isKeyDown) {
       params.buttons = PointingButton::NONE;
-    }
-    Flags flags = fromFlags;
-    if (fromKeyCode.isModifier()) {
-      flags.add(fromKeyCode.getModifierFlag());
     }
 
     RemapPointingParams_relative rp(params);
-    if (! buttontobutton_.remap(rp, PointingButton::VK_KEY, flags, toButton)) {
-      return false;
+    buttontobutton_.remap(rp, PointingButton::VK_KEY, toButton);
+
+    if (! isKeyDown) {
+      FlagStatus::increase(fromFlags | fromKeyCode.getModifierFlag());
     }
 
-    remapParams.drop();
     return true;
   }
 
