@@ -214,10 +214,17 @@
     <!-- KeyboardType only -->
     <item>
       <name>KeyboardType only</name>
-      <appendix>A to B if KeyboardType == KeyboardType::MACBOOK</appendix>
-      <sysctl>remap.samples_a2b_keyboardtype_macbook</sysctl>
-      <keyboardtype_only>MACBOOK</keyboardtype_only>
-      <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
+      <appendix>A to B if KeyboardType == KeyboardType::MACBOOK or MACBOOK_3_1</appendix>
+      <appendix>A to C if KeyboardType != KeyboardType::MACBOOK and MACBOOK_3_1</appendix>
+      <sysctl>remap.samples_keyboardtype</sysctl>
+      <block>
+        <keyboardtype_only>MACBOOK, MACBOOK_3_1</keyboardtype_only>
+        <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
+      </block>
+      <block>
+        <keyboardtype_not>MACBOOK,MACBOOK_3_1</keyboardtype_not>
+        <autogen>--KeyToKey-- KeyCode::A, KeyCode::C</autogen>
+      </block>
     </item>
 
     <!-- inputmode only -->
@@ -261,6 +268,30 @@
       <autogen>--KeyToKey-- KeyCode::D, KeyCode::U</autogen>
       <autogen>--KeyToKey-- KeyCode::F, KeyCode::E</autogen>
       <autogen>--KeyToKey-- KeyCode::G, KeyCode::O</autogen>
+    </item>
+
+    <!-- block -->
+    <item>
+      <name>block sample</name>
+      <appendix>A to B if application == TERMINAL (KeyToKey)</appendix>
+      <appendix>B to D if application == TERMINAL (KeyToKey)</appendix>
+      <appendix>A to C if application != TERMINAL (KeyToKey)</appendix>
+      <appendix>B to E if application != TERMINAL (KeyToKey)</appendix>
+      <appendix>C to Y</appendix>
+      <appendix>D to Z</appendix>
+      <sysctl>remap.samples_block</sysctl>
+      <block>
+        <only>TERMINAL</only>
+        <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
+        <autogen>--KeyToKey-- KeyCode::B, KeyCode::D</autogen>
+      </block>
+      <block>
+        <not>TERMINAL</not>
+        <autogen>--KeyToKey-- KeyCode::A, KeyCode::C</autogen>
+        <autogen>--KeyToKey-- KeyCode::B, KeyCode::E</autogen>
+      </block>
+      <autogen>--KeyToKey-- KeyCode::C, KeyCode::Y</autogen>
+      <autogen>--KeyToKey-- KeyCode::D, KeyCode::Z</autogen>
     </item>
 
     <!-- Virtual KeyCode -->
