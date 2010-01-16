@@ -1,5 +1,6 @@
 syntax: regexp
 .*\.pkg/
+.*\.zip$
 .*\.gz
 .*\.o
 pkgroot/
