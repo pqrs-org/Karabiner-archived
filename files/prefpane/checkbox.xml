@@ -1978,6 +1978,22 @@
           <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::CONTROL_R, KeyCode::CURSOR_LEFT</autogen>
           <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT</autogen>
         </item>
+        <item>
+          <name>Control_L+ESDF to Up/Down/Left/Right</name>
+          <sysctl>remap.diamond_cursor_controlL_esdf</sysctl>
+          <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::CONTROL_L, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::CONTROL_L, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT</autogen>
+        </item>
+        <item>
+          <name>Control_R+ESDF to Up/Down/Left/Right</name>
+          <sysctl>remap.diamond_cursor_controlR_esdf</sysctl>
+          <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::CONTROL_R, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_R, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::CONTROL_R, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT</autogen>
+        </item>
       </list>
     </item>
 
