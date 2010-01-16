@@ -193,32 +193,22 @@
 
     <!-- application only -->
     <item>
-      <name>application only</name>
-      <appendix>A to B if application == TERMINAL</appendix>
-      <sysctl>remap.samples_term_a2b</sysctl>
-      <only>TERMINAL</only>
-      <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
-    </item>
-    <item>
-      <name>application except</name>
-      <appendix>A to B if application != TERMINAL</appendix>
-      <sysctl>remap.samples_except_term_a2b</sysctl>
-      <not>TERMINAL</not>
-      <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
-    </item>
-    <item>
-      <name>application only (ConsumerToKey)</name>
-      <appendix>Volume Mute to Return if application == TERMINAL</appendix>
-      <sysctl>remap.samples_term_volumemute2return</sysctl>
-      <only>TERMINAL</only>
-      <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, KeyCode::RETURN</autogen>
-    </item>
-    <item>
-      <name>application except (ConsumerToKey)</name>
-      <appendix>Volume Mute to Return if application != TERMINAL</appendix>
-      <sysctl>remap.samples_except_term_volumemute2return</sysctl>
-      <not>TERMINAL</not>
-      <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, KeyCode::RETURN</autogen>
+      <name>application</name>
+      <appendix>A to B if application == TERMINAL (KeyToKey)</appendix>
+      <appendix>A to C if application != TERMINAL (KeyToKey)</appendix>
+      <appendix>Volume Mute to B if application == TERMINAL (ConsumerToKey)</appendix>
+      <appendix>Volume Mute to C if application != TERMINAL (ConsumerToKey)</appendix>
+      <sysctl>remap.samples_application</sysctl>
+      <block>
+        <only>TERMINAL</only>
+        <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, KeyCode::B</autogen>
+      </block>
+      <block>
+        <not>TERMINAL</not>
+        <autogen>--KeyToKey-- KeyCode::A, KeyCode::C</autogen>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, KeyCode::C</autogen>
+      </block>
     </item>
 
     <!-- KeyboardType only -->
