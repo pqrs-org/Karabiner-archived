@@ -946,7 +946,7 @@
       <name>Remap Functional Key (Brightness, Volume, ....)</name>
       <list>
         <item>
-          <name>Functional Keys to FN</name>
+          <name>Functional Keys to F1..F12</name>
           <appendix>Brightness Down to F1</appendix>
           <appendix>Brightness Up to F2</appendix>
           <appendix>Expose to F3</appendix>
