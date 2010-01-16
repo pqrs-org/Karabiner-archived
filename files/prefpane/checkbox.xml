@@ -946,6 +946,39 @@
       <name>Remap Functional Key (Brightness, Volume, ....)</name>
       <list>
         <item>
+          <name>Functional Keys to FN</name>
+          <appendix>Brightness Down to F1</appendix>
+          <appendix>Brightness Up to F2</appendix>
+          <appendix>Expose to F3</appendix>
+          <appendix>Dashboard to F4</appendix>
+          <appendix>Keyboard Light LOW to F5</appendix>
+          <appendix>Keyboard Light HIGH to F6</appendix>
+          <appendix>Music Prev to F7</appendix>
+          <appendix>Music Play/Pause to F8</appendix>
+          <appendix>Music Next to F9</appendix>
+          <appendix>Volume Mute to F10</appendix>
+          <appendix>Volume Down to F11</appendix>
+          <appendix>Volume Up to F12</appendix>
+          <sysctl>remap.functional2fn_2008</sysctl>
+          <!-- F1 -->
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_DOWN, KeyCode::F1</autogen>
+          <autogen>--KeyToKey-- KeyCode::BRIGHTNESS_DOWN, KeyCode::F1</autogen>
+          <!-- F2 -->
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_UP, KeyCode::F2</autogen>
+          <autogen>--KeyToKey-- KeyCode::BRIGHTNESS_UP, KeyCode::F2</autogen>
+          <!-- F3 - F12 -->
+          <autogen>--KeyToKey-- KeyCode::EXPOSE_ALL, KeyCode::F3</autogen>
+          <autogen>--KeyToKey-- KeyCode::DASHBOARD, KeyCode::F4</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::KEYBOARDLIGHT_LOW, KeyCode::F5</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::KEYBOARDLIGHT_HIGH, KeyCode::F6</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PREV, KeyCode::F7</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PLAY, KeyCode::F8</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_NEXT, KeyCode::F9</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, KeyCode::F10</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, KeyCode::F11</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, KeyCode::F12</autogen>
+        </item>
+        <item>
           <name>Brightness Down to F1</name>
           <sysctl>remap.brightnessdown2f1</sysctl>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_DOWN, KeyCode::F1</autogen>
