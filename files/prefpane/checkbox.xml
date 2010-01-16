@@ -2022,26 +2022,20 @@
           <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::CONTROL_R, KeyCode::CURSOR_LEFT</autogen>
           <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT</autogen>
         </item>
-      </list>
-    </item>
-
-    <item>
-      <name>Extra Cursor</name>
-      <list>
         <item>
-          <name>Control_L+jkil to Left/Down/Up/Right</name>
+          <name>Control_L+IKJL to Up/Down/Left/Right</name>
           <sysctl>option.extra_cursor_controlL_jkil</sysctl>
-          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::CONTROL_L, KeyCode::CURSOR_LEFT</autogen>
-          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN</autogen>
           <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::CONTROL_L, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::CONTROL_L, KeyCode::CURSOR_LEFT</autogen>
           <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT</autogen>
         </item>
         <item>
-          <name>Option_L+jkil to Left/Down/Up/Right</name>
+          <name>Option_L+IKJL to Up/Down/Left/Right</name>
           <sysctl>option.extra_cursor_optionL_jkil</sysctl>
-          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::OPTION_L, KeyCode::CURSOR_LEFT</autogen>
-          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::OPTION_L, KeyCode::CURSOR_DOWN</autogen>
           <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::OPTION_L, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::OPTION_L, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::OPTION_L, KeyCode::CURSOR_LEFT</autogen>
           <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::OPTION_L, KeyCode::CURSOR_RIGHT</autogen>
         </item>
       </list>
