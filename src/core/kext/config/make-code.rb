@@ -308,22 +308,17 @@ $func['key'].uniq.each do |name|
   $outfile['remapcode_refresh_remapfunc_key'] << "  ++listRemapFunc_key_size;\n"
   $outfile['remapcode_refresh_remapfunc_key'] << "}\n"
 end
-
-open('output/include.remapcode_refresh_remapfunc_consumer.cpp', 'w') do |f|
-  $func['consumer'].uniq.each do |name|
-    f.puts "if (config.#{name}) {\n"
-    f.puts "  listRemapFunc_consumer[listRemapFunc_consumer_size] = GeneratedCode::RemapClass_#{name}::remap_consumer;\n"
-    f.puts "  ++listRemapFunc_consumer_size;\n"
-    f.puts "}\n"
-  end
+$func['consumer'].uniq.each do |name|
+  $outfile['remapcode_refresh_remapfunc_consumer'] << "if (config.#{name}) {\n"
+  $outfile['remapcode_refresh_remapfunc_consumer'] << "  listRemapFunc_consumer[listRemapFunc_consumer_size] = GeneratedCode::RemapClass_#{name}::remap_consumer;\n"
+  $outfile['remapcode_refresh_remapfunc_consumer'] << "  ++listRemapFunc_consumer_size;\n"
+  $outfile['remapcode_refresh_remapfunc_consumer'] << "}\n"
 end
-open('output/include.remapcode_refresh_remapfunc_pointing.cpp', 'w') do |f|
-  $func['pointing'].uniq.each do |name|
-    f.puts "if (config.#{name}) {\n"
-    f.puts "  listRemapFunc_pointing[listRemapFunc_pointing_size] = GeneratedCode::RemapClass_#{name}::remap_pointing;\n"
-    f.puts "  ++listRemapFunc_pointing_size;\n"
-    f.puts "}\n"
-  end
+$func['pointing'].uniq.each do |name|
+  $outfile['remapcode_refresh_remapfunc_pointing'] << "if (config.#{name}) {\n"
+  $outfile['remapcode_refresh_remapfunc_pointing'] << "  listRemapFunc_pointing[listRemapFunc_pointing_size] = GeneratedCode::RemapClass_#{name}::remap_pointing;\n"
+  $outfile['remapcode_refresh_remapfunc_pointing'] << "  ++listRemapFunc_pointing_size;\n"
+  $outfile['remapcode_refresh_remapfunc_pointing'] << "}\n"
 end
 
 $outfile.each do |name,file|
