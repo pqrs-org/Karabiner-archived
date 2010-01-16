@@ -84,8 +84,8 @@
       <appendix>A to Volume Mute</appendix>
       <appendix>Shift+B to Volume Mute (With Modifier)</appendix>
       <sysctl>remap.samples_keytoconsumer</sysctl>
-      <autogen>--KeyToComsumer-- KeyCode::A, ConsumerKeyCode::VOLUME_MUTE</autogen>
-      <autogen>--KeyToComsumer-- KeyCode::B, VK_SHIFT, ConsumerKeyCode::VOLUME_MUTE</autogen>
+      <autogen>--KeyToConsumer-- KeyCode::A, ConsumerKeyCode::VOLUME_MUTE</autogen>
+      <autogen>--KeyToConsumer-- KeyCode::B, VK_SHIFT, ConsumerKeyCode::VOLUME_MUTE</autogen>
     </item>
 
     <item>
