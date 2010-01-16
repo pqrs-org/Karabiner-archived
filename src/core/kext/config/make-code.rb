@@ -95,6 +95,11 @@ def parsefilter(block)
     end
     filter << "if (#{tmp.join(' && ')}) break;"
   end
+  if /<keyboardtype_not>(.+?)<\/keyboardtype_not>/m =~ block then
+    $1.split(/,/).each do |f|
+      filter << "if (remapParams.params.keyboardType == KeyboardType::#{f.strip}) break;"
+    end
+  end
   if /<keyboardtype_only>(.+?)<\/keyboardtype_only>/m =~ block then
     tmp = []
     $1.split(/,/).each do |f|
@@ -273,11 +278,9 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
 
   # ======================================================================
   listBlock = item.scan(/<block>(.+?)<\/block>/m)
-  if listBlock.empty? then
-    listBlock = [item]
-  else
-    listBlock = listBlock.map{|block| block[0]}
-  end
+  listBlock = listBlock.map{|block| block[0]}
+  item.gsub!(/<block>(.+?)<\/block>/m, '')
+  listBlock << item
 
   out = {
     :code_key => '',
