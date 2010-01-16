@@ -176,7 +176,7 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
         code_key << "if (ignoremultiplesamekeypress#{autogen_index}_.remap(remapParams, #{params})) return;"
         func['key'] << name
 
-      when 'KeyToComsumer'
+      when 'KeyToConsumer'
         code_variable << ['RemapUtil::KeyToConsumer', "keytoconsumer#{autogen_index}_"]
         code_key << "if (keytoconsumer#{autogen_index}_.remap(remapParams, #{params})) return;"
         func['key'] << name
