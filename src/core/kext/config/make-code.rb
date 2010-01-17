@@ -1,5 +1,4 @@
 #!/usr/bin/ruby
-# -*- coding: undecided -*-
 
 $outfile = {
   :config => open('output/include.config.hpp', 'w'),
@@ -80,177 +79,202 @@ def preprocess(listAutogen)
 end
 
 # ======================================================================
-def parsefilter(block)
+def parseautogen(name, lines, autogen_index)
   filter = []
-
-  if /<not>(.+?)<\/not>/m =~ block then
-    $1.split(/,/).each do |f|
-      filter << "if (remapParams.workspacedata.type == KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}) break;"
-    end
-  end
-  if /<only>(.+?)<\/only>/m =~ block then
-    tmp = []
-    $1.split(/,/).each do |f|
-      tmp << "(remapParams.workspacedata.type != KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip})"
-    end
-    filter << "if (#{tmp.join(' && ')}) break;"
-  end
-  if /<keyboardtype_not>(.+?)<\/keyboardtype_not>/m =~ block then
-    $1.split(/,/).each do |f|
-      filter << "if (remapParams.params.keyboardType == KeyboardType::#{f.strip}) break;"
-    end
-  end
-  if /<keyboardtype_only>(.+?)<\/keyboardtype_only>/m =~ block then
-    tmp = []
-    $1.split(/,/).each do |f|
-      tmp << "(remapParams.params.keyboardType != KeyboardType::#{f.strip})"
-    end
-    filter << "if (#{tmp.join(' && ')}) break;"
-  end
-  if /<(inputmode|inputmodedetail)_not>(.+?)<\/(inputmode|inputmodedetail)_not>/m =~ block then
-    inputmodetype = $1
-    $2.split(/,/).each do |f|
-      filter << "if (remapParams.workspacedata.#{inputmodetype} == KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}) break;"
-    end
-  end
-  if /<(inputmode|inputmodedetail)_only>(.+?)<\/(inputmode|inputmodedetail)_only>/m =~ block then
-    inputmodetype = $1
-    tmp = []
-    $2.split(/,/).each do |f|
-      tmp << "(remapParams.workspacedata.#{inputmodetype} != KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip})"
-    end
-    filter << "if (#{tmp.join(' && ')}) break;"
-  end
-
-  code = ''
-  filter.each do |f|
-    code += "    #{f}\n"
-  end
-  code
-end
-
-def parseautogen(name, block, out)
-  listAutogen = block.scan(/<autogen>(.+?)<\/autogen>/m)
-  return if listAutogen.empty?
-
   code_key = []
   code_consumer = []
   code_pointing = []
   code_variable = []
 
-  filter = parsefilter(block)
+  while true
+    l = lines.shift
+    break if l.nil?
 
-  listAutogen = listAutogen.map{|autogen| autogen[0]}
-  listAutogen = preprocess(listAutogen)
-  listAutogen.each do |autogen|
-    if /^--(.+?)-- (.+)$/ =~ autogen then
-      type = $1
-      params = $2
-      out[:autogen_index] += 1
+    # --------------------------------------------------
+    next if /<\/?item>/ =~ l
+    next if /<name>.+?<\/name>/ =~ l
+    next if /<appendix>.+?<\/appendix>/ =~ l
+    next if /<sysctl>.+?<\/sysctl>/ =~ l
+    next if /<baseunit>.+?<\/baseunit>/ =~ l
+    next if /<default>.+?<\/default>/ =~ l
 
-      case type
-      when 'SetKeyboardType'
-        $outfile[:remapcode_keyboardtype] << "if (config.#{name}) {\n"
-        # XXX: indent me!
-        $outfile[:remapcode_keyboardtype] << "keyboardType = #{params}.get();\n"
-        $outfile[:remapcode_keyboardtype] << "}\n"
+    # --------------------------------------------------
+    if /<block>/ =~ l then
+      block_code_key, block_code_consumer, block_code_pointing, block_code_variable, autogen_index = parseautogen(name, lines, autogen_index)
 
-      when 'KeyToKey'
-        code_variable << ['RemapUtil::KeyToKey', "keytokey#{out[:autogen_index]}_"]
-        code_key << "if (keytokey#{out[:autogen_index]}_.remap(remapParams, #{params})) break;"
-        $func[:key] << name
+      code_key << block_code_key unless block_code_key.empty?
+      code_consumer << block_code_consumer unless block_code_consumer.empty?
+      code_pointing << block_code_pointing unless block_code_pointing.empty?
+      code_variable += block_code_variable
 
-      when 'DoublePressModifier'
-        code_variable << ['DoublePressModifier', "doublepressmodifier#{out[:autogen_index]}_"]
-        code_key << "if (doublepressmodifier#{out[:autogen_index]}_.remap(remapParams, #{params})) break;"
-        $func[:key] << name
+    elsif /<\/block>/ =~ l then
+      break
 
-      when 'IgnoreMultipleSameKeyPress'
-        code_variable << ['IgnoreMultipleSameKeyPress', "ignoremultiplesamekeypress#{out[:autogen_index]}_"]
-        code_key << "if (ignoremultiplesamekeypress#{out[:autogen_index]}_.remap(remapParams, #{params})) break;"
-        $func[:key] << name
-
-      when 'KeyToConsumer'
-        code_variable << ['RemapUtil::KeyToConsumer', "keytoconsumer#{out[:autogen_index]}_"]
-        code_key << "if (keytoconsumer#{out[:autogen_index]}_.remap(remapParams, #{params})) break;"
-        $func[:key] << name
-
-      when 'KeyToPointingButton'
-        code_variable << ['RemapUtil::KeyToPointingButton', "keytopointing#{out[:autogen_index]}_"]
-        code_key << "if (keytopointing#{out[:autogen_index]}_.remap(remapParams, #{params})) break;"
-        $func[:key] << name
-
-      when 'KeyOverlaidModifier'
-        code_variable << ['KeyOverlaidModifier', "keyoverlaidmodifier#{out[:autogen_index]}_"]
-        code_key << "if (keyoverlaidmodifier#{out[:autogen_index]}_.remap(remapParams, #{params})) break;"
-        $func[:key] << name
-
-      when 'KeyOverlaidModifierWithRepeat'
-        code_variable << ['KeyOverlaidModifier', "keyoverlaidmodifier#{out[:autogen_index]}_"]
-        code_key << "if (keyoverlaidmodifier#{out[:autogen_index]}_.remapWithRepeat(remapParams, #{params})) break;"
-        $func[:key] << name
-
-      when 'ModifierHoldingKeyToKey'
-        code_variable << ['ModifierHoldingKeyToKey', "modifierholdingkeytokey#{out[:autogen_index]}_"]
-        code_key << "if (modifierholdingkeytokey#{out[:autogen_index]}_.remap(remapParams, #{params})) break;"
-        $func[:key] << name
-
-      when 'ConsumerToKey'
-        code_variable << ['RemapUtil::ConsumerToKey', "consumertokey#{out[:autogen_index]}_"]
-        code_consumer << "if (consumertokey#{out[:autogen_index]}_.remap(remapParams, #{params})) break;"
-        $func[:consumer] << name
-
-      when 'ConsumerToConsumer'
-        code_variable << ['RemapUtil::ConsumerToConsumer', "consumertoconsumer#{out[:autogen_index]}_"]
-        code_consumer << "if (consumertoconsumer#{out[:autogen_index]}_.remap(remapParams, #{params})) break;"
-        $func[:consumer] << name
-
-      when 'PointingRelativeToScroll'
-        code_variable << ['RemapUtil::PointingRelativeToScroll', "pointingrelativetoscroll#{out[:autogen_index]}_"]
-        code_pointing << "if (pointingrelativetoscroll#{out[:autogen_index]}_.remap(remapParams, #{params})) break;"
-        $func[:pointing] << name
-
-      when 'PointingButtonToPointingButton'
-        code_variable << ['RemapUtil::PointingButtonToPointingButton', "pointingbuttontopointingbutton#{out[:autogen_index]}_"]
-        code_pointing << "if (pointingbuttontopointingbutton#{out[:autogen_index]}_.remap(remapParams, #{params})) break;"
-        $func[:pointing] << name
-
-      else
-        print "%%% ERROR #{type} %%%\n#{item}\n"
-        exit 1
-
+      # ================================================================================
+    elsif /<not>(.+?)<\/not>/ =~ l then
+      $1.split(/,/).each do |f|
+        filter << "if (remapParams.workspacedata.type == KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}) break;"
       end
+
+    elsif /<only>(.+?)<\/only>/ =~ l then
+      tmp = []
+      $1.split(/,/).each do |f|
+        tmp << "(remapParams.workspacedata.type != KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip})"
+      end
+      filter << "if (#{tmp.join(' && ')}) break;"
+
+    elsif /<keyboardtype_not>(.+?)<\/keyboardtype_not>/ =~ l then
+      $1.split(/,/).each do |f|
+        filter << "if (remapParams.params.keyboardType == KeyboardType::#{f.strip}) break;"
+      end
+
+    elsif /<keyboardtype_only>(.+?)<\/keyboardtype_only>/ =~ l then
+      tmp = []
+      $1.split(/,/).each do |f|
+        tmp << "(remapParams.params.keyboardType != KeyboardType::#{f.strip})"
+      end
+      filter << "if (#{tmp.join(' && ')}) break;"
+
+    elsif /<(inputmode|inputmodedetail)_not>(.+?)<\/(inputmode|inputmodedetail)_not>/ =~ l then
+      inputmodetype = $1
+      $2.split(/,/).each do |f|
+        filter << "if (remapParams.workspacedata.#{inputmodetype} == KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}) break;"
+      end
+
+    elsif /<(inputmode|inputmodedetail)_only>(.+?)<\/(inputmode|inputmodedetail)_only>/ =~ l then
+      inputmodetype = $1
+      tmp = []
+      $2.split(/,/).each do |f|
+        tmp << "(remapParams.workspacedata.#{inputmodetype} != KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip})"
+      end
+      filter << "if (#{tmp.join(' && ')}) break;"
+
+      # ================================================================================
+
+    elsif /<autogen>(.+?)<\/autogen>/ =~ l then
+      autogen = $1
+      if /^--(.+?)-- (.+)$/ =~ autogen then
+        type = $1
+        params = $2
+        autogen_index += 1
+
+        case type
+        when 'SetKeyboardType'
+          $outfile[:remapcode_keyboardtype] << "if (config.#{name}) {\n"
+          # XXX: indent me!
+          $outfile[:remapcode_keyboardtype] << "keyboardType = #{params}.get();\n"
+          $outfile[:remapcode_keyboardtype] << "}\n"
+
+        when 'KeyToKey'
+          code_variable << ['RemapUtil::KeyToKey', "keytokey#{autogen_index}_"]
+          code_key << "if (keytokey#{autogen_index}_.remap(remapParams, #{params})) break;"
+          $func[:key] << name
+
+        when 'DoublePressModifier'
+          code_variable << ['DoublePressModifier', "doublepressmodifier#{autogen_index}_"]
+          code_key << "if (doublepressmodifier#{autogen_index}_.remap(remapParams, #{params})) break;"
+          $func[:key] << name
+
+        when 'IgnoreMultipleSameKeyPress'
+          code_variable << ['IgnoreMultipleSameKeyPress', "ignoremultiplesamekeypress#{autogen_index}_"]
+          code_key << "if (ignoremultiplesamekeypress#{autogen_index}_.remap(remapParams, #{params})) break;"
+          $func[:key] << name
+
+        when 'KeyToConsumer'
+          code_variable << ['RemapUtil::KeyToConsumer', "keytoconsumer#{autogen_index}_"]
+          code_key << "if (keytoconsumer#{autogen_index}_.remap(remapParams, #{params})) break;"
+          $func[:key] << name
+
+        when 'KeyToPointingButton'
+          code_variable << ['RemapUtil::KeyToPointingButton', "keytopointing#{autogen_index}_"]
+          code_key << "if (keytopointing#{autogen_index}_.remap(remapParams, #{params})) break;"
+          $func[:key] << name
+
+        when 'KeyOverlaidModifier'
+          code_variable << ['KeyOverlaidModifier', "keyoverlaidmodifier#{autogen_index}_"]
+          code_key << "if (keyoverlaidmodifier#{autogen_index}_.remap(remapParams, #{params})) break;"
+          $func[:key] << name
+
+        when 'KeyOverlaidModifierWithRepeat'
+          code_variable << ['KeyOverlaidModifier', "keyoverlaidmodifier#{autogen_index}_"]
+          code_key << "if (keyoverlaidmodifier#{autogen_index}_.remapWithRepeat(remapParams, #{params})) break;"
+          $func[:key] << name
+
+        when 'ModifierHoldingKeyToKey'
+          code_variable << ['ModifierHoldingKeyToKey', "modifierholdingkeytokey#{autogen_index}_"]
+          code_key << "if (modifierholdingkeytokey#{autogen_index}_.remap(remapParams, #{params})) break;"
+          $func[:key] << name
+
+        when 'ConsumerToKey'
+          code_variable << ['RemapUtil::ConsumerToKey', "consumertokey#{autogen_index}_"]
+          code_consumer << "if (consumertokey#{autogen_index}_.remap(remapParams, #{params})) break;"
+          $func[:consumer] << name
+
+        when 'ConsumerToConsumer'
+          code_variable << ['RemapUtil::ConsumerToConsumer', "consumertoconsumer#{autogen_index}_"]
+          code_consumer << "if (consumertoconsumer#{autogen_index}_.remap(remapParams, #{params})) break;"
+          $func[:consumer] << name
+
+        when 'PointingRelativeToScroll'
+          code_variable << ['RemapUtil::PointingRelativeToScroll', "pointingrelativetoscroll#{autogen_index}_"]
+          code_pointing << "if (pointingrelativetoscroll#{autogen_index}_.remap(remapParams, #{params})) break;"
+          $func[:pointing] << name
+
+        when 'PointingButtonToPointingButton'
+          code_variable << ['RemapUtil::PointingButtonToPointingButton', "pointingbuttontopointingbutton#{autogen_index}_"]
+          code_pointing << "if (pointingbuttontopointingbutton#{autogen_index}_.remap(remapParams, #{params})) break;"
+          $func[:pointing] << name
+
+        else
+          print "%%% ERROR #{type} %%%\n#{item}\n"
+          exit 1
+
+        end
+      end
+    elsif /<.+?>.+?<\/.+?>/ =~ l then
+      print "%%% ERROR unknown command %%%\n#{l}\n"
+      exit 1
     end
   end
+
+  # ======================================================================
+  result_code_key = ''
+  result_code_consumer = ''
+  result_code_pointing = ''
 
   unless code_key.empty? then
-    out[:code_key] += "  do {\n"
-    unless filter.empty? then
-      out[:code_key] += "#{filter}\n"
+    result_code_key += "  do {\n"
+    filter.each do |f|
+      result_code_key += "    #{f}\n"
     end
+    result_code_key += "\n" unless filter.empty?
     code_key.each do |line|
-      out[:code_key] += "    #{line}\n"
+      result_code_key += "    #{line}\n"
     end
-    out[:code_key] += "  } while (false);\n"
+    result_code_key += "  } while (false);\n"
   end
+
   unless code_consumer.empty? then
-    out[:code_consumer] += "  do {\n"
-    unless filter.empty? then
-      out[:code_consumer] += "#{filter}\n"
+    result_code_consumer += "  do {\n"
+    filter.each do |f|
+      result_code_consumer += "    #{f}\n"
     end
+    result_code_consumer += "\n" unless filter.empty?
     code_consumer.each do |line|
-      out[:code_consumer] += "    #{line}\n"
+      result_code_consumer += "    #{line}\n"
     end
-    out[:code_consumer] += "  } while (false);\n"
+    result_code_consumer += "  } while (false);\n"
   end
+
   unless code_pointing.empty? then
-    out[:code_pointing] += "  do {\n"
+    result_code_pointing += "  do {\n"
     code_pointing.each do |line|
-      out[:code_pointing] += "    #{line}\n"
+      result_code_pointing += "    #{line}\n"
     end
-    out[:code_pointing] += "  } while (false);\n"
+    result_code_pointing += "  } while (false);\n"
   end
-  out[:code_variable] += code_variable
+
+  return result_code_key, result_code_consumer, result_code_pointing, code_variable, autogen_index
 end
 
 # ----------------------------------------------------------------------
@@ -277,53 +301,45 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
   end
 
   # ======================================================================
-  listBlock = item.scan(/<block>(.+?)<\/block>/m)
-  listBlock = listBlock.map{|block| block[0]}
-  item.gsub!(/<block>(.+?)<\/block>/m, '')
-  listBlock << item
+  lines = item.split(/\n/)
+  lines = preprocess(lines)
 
-  out = {
-    :code_key => '',
-    :code_consumer => '',
-    :code_pointing => '',
-    :code_variable => [],
-    :autogen_index => 0
-  }
+  code_key, code_consumer, code_pointing, code_variable, autogen_index = parseautogen(name, lines, 0)
 
-  listBlock.each do |block|
-    parseautogen(name, block, out)
+  unless lines.empty? then
+    print "%%% ERROR no </block> at #{name} %%%\n"
   end
 
-  next if out[:code_key].empty? &&
-    out[:code_consumer].empty? &&
-    out[:code_pointing].empty? &&
-    out[:code_variable].empty?
+  next if code_key.empty? &&
+    code_consumer.empty? &&
+    code_pointing.empty? &&
+    code_variable.empty?
 
   $outfile[:remapcode_func] << "class RemapClass_#{name} {\n"
   $outfile[:remapcode_func] << "public:\n"
-  unless out[:code_key].empty? then
+  unless code_key.empty? then
     $outfile[:remapcode_func] << "static void remap_key(RemapParams &remapParams) {\n"
-    $outfile[:remapcode_func] << out[:code_key]
+    $outfile[:remapcode_func] << code_key
     $outfile[:remapcode_func] << "}\n"
   end
-  unless out[:code_consumer].empty? then
+  unless code_consumer.empty? then
     $outfile[:remapcode_func] << "static void remap_consumer(RemapConsumerParams &remapParams) {\n"
-    $outfile[:remapcode_func] << out[:code_consumer]
+    $outfile[:remapcode_func] << code_consumer
     $outfile[:remapcode_func] << "}\n"
   end
-  unless out[:code_pointing].empty? then
+  unless code_pointing.empty? then
     $outfile[:remapcode_func] << "static void remap_pointing(RemapPointingParams_relative &remapParams) {\n"
-    $outfile[:remapcode_func] << out[:code_pointing]
+    $outfile[:remapcode_func] << code_pointing
     $outfile[:remapcode_func] << "}\n"
   end
   $outfile[:remapcode_func] << "\n"
   $outfile[:remapcode_func] << "private:\n"
-  out[:code_variable].each do |variable|
+  code_variable.each do |variable|
     $outfile[:remapcode_func] << "  static #{variable[0]} #{variable[1]};\n"
   end
   $outfile[:remapcode_func] << "};\n"
 
-  out[:code_variable].each do |variable|
+  code_variable.each do |variable|
     $outfile[:remapcode_func] << "#{variable[0]} RemapClass_#{name}::#{variable[1]};\n"
   end
   $outfile[:remapcode_func] << "\n\n"
