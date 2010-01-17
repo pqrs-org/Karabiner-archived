@@ -277,8 +277,12 @@
       <appendix>B to D if application == TERMINAL (KeyToKey)</appendix>
       <appendix>A to C if application != TERMINAL (KeyToKey)</appendix>
       <appendix>B to E if application != TERMINAL (KeyToKey)</appendix>
-      <appendix>C to Y</appendix>
-      <appendix>D to Z</appendix>
+      <appendix>Shift+C to Y</appendix>
+      <appendix>Shift+D to Z</appendix>
+      <appendix>C to 1 if application == TERMINAL (KeyToKey), keyboardType == MACBOOK</appendix>
+      <appendix>C to 2 if application == TERMINAL (KeyToKey), keyboardType != MACBOOK</appendix>
+      <appendix>C to 3 if application != TERMINAL (KeyToKey), keyboardType == MACBOOK</appendix>
+      <appendix>C to 4 if application != TERMINAL (KeyToKey), keyboardType != MACBOOK</appendix>
       <sysctl>remap.samples_block</sysctl>
       <block>
         <only>TERMINAL</only>
@@ -290,8 +294,30 @@
         <autogen>--KeyToKey-- KeyCode::A, KeyCode::C</autogen>
         <autogen>--KeyToKey-- KeyCode::B, KeyCode::E</autogen>
       </block>
-      <autogen>--KeyToKey-- KeyCode::C, KeyCode::Y</autogen>
-      <autogen>--KeyToKey-- KeyCode::D, KeyCode::Z</autogen>
+      <autogen>--KeyToKey-- KeyCode::C, VK_SHIFT, KeyCode::Y</autogen>
+      <autogen>--KeyToKey-- KeyCode::D, VK_SHIFT, KeyCode::Z</autogen>
+      <block>
+        <only>TERMINAL</only>
+        <block>
+          <keyboardtype_only>MACBOOK</keyboardtype_only>
+          <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_1</autogen>
+        </block>
+        <block>
+          <keyboardtype_not>MACBOOK</keyboardtype_not>
+          <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_2</autogen>
+        </block>
+      </block>
+      <block>
+        <not>TERMINAL</not>
+        <block>
+          <keyboardtype_only>MACBOOK</keyboardtype_only>
+          <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_3</autogen>
+        </block>
+        <block>
+          <keyboardtype_not>MACBOOK</keyboardtype_not>
+          <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_4</autogen>
+        </block>
+      </block>
     </item>
 
     <!-- Virtual KeyCode -->
