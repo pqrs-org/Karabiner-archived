@@ -1,0 +1,12 @@
+<autogen>--KeyToConsumer-- KeyCode::F1,  ConsumerKeyCode::BRIGHTNESS_DOWN</autogen>
+<autogen>--KeyToConsumer-- KeyCode::F2,  ConsumerKeyCode::BRIGHTNESS_UP</autogen>
+<autogen>--KeyToKey--      KeyCode::F3,  KeyCode::EXPOSE_ALL</autogen>
+<autogen>--KeyToKey--      KeyCode::F4,  KeyCode::DASHBOARD</autogen>
+<autogen>--KeyToConsumer-- KeyCode::F5,  ConsumerKeyCode::KEYBOARDLIGHT_LOW</autogen>
+<autogen>--KeyToConsumer-- KeyCode::F6,  ConsumerKeyCode::KEYBOARDLIGHT_HIGH</autogen>
+<autogen>--KeyToConsumer-- KeyCode::F7,  ConsumerKeyCode::MUSIC_PREV</autogen>
+<autogen>--KeyToConsumer-- KeyCode::F8,  ConsumerKeyCode::MUSIC_PLAY</autogen>
+<autogen>--KeyToConsumer-- KeyCode::F9,  ConsumerKeyCode::MUSIC_NEXT</autogen>
+<autogen>--KeyToConsumer-- KeyCode::F10, ConsumerKeyCode::VOLUME_MUTE</autogen>
+<autogen>--KeyToConsumer-- KeyCode::F11, ConsumerKeyCode::VOLUME_DOWN</autogen>
+<autogen>--KeyToConsumer-- KeyCode::F12, ConsumerKeyCode::VOLUME_UP</autogen>
