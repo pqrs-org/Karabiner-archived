@@ -65,6 +65,16 @@
   if (keycode == 0x67) return @"F11";
   if (keycode == 0x6f) return @"F12";
 
+  if (keycode == 0x74) return @"PageUp";
+  if (keycode == 0x79) return @"PageDown";
+  if (keycode == 0x73) return @"Home";
+  if (keycode == 0x77) return @"End";
+
+  if (keycode == 0x7e) return @"Up";
+  if (keycode == 0x7d) return @"Down";
+  if (keycode == 0x7b) return @"Left";
+  if (keycode == 0x7c) return @"Right";
+
   if (keycode == 0x24) return @"Return";
   if (keycode == 0x31) return @"Space";
 
