@@ -1065,9 +1065,17 @@
           <name>F1..F12 to Functional</name>
           <!-- #include "include/appendix_f1_f12_to_functional.xml" -->
           <!-- #include "include/caution_functionkey.xml" -->
-          <sysctl>remap.f1_f12_to_f1_f12_normal</sysctl>
+          <sysctl>remap.f1_f12_to_functional_all</sysctl>
           <!-- #include "include/fnF1_F12_to_function.xml" -->
           <!-- #include "include/f1_f12_to_functional.xml" -->
+        </item>
+        <item>
+          <name>F5,F6 to Functional</name>
+          <!-- #include "include/appendix_f5_f6_to_functional.xml" -->
+          <!-- #include "include/caution_functionkey.xml" -->
+          <sysctl>remap.f5_f6_to_functional_all</sysctl>
+          <!-- #include "include/fnF5_F6_to_function.xml" -->
+          <!-- #include "include/f5_f6_to_functional.xml" -->
         </item>
 
         <item>
@@ -1078,6 +1086,15 @@
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <!-- #include "include/fnF1_F12_to_function.xml" -->
           <!-- #include "include/f1_f12_to_functional.xml" -->
+        </item>
+        <item>
+          <name>F5,F6 to Functional (except virtual machine, RDC)</name>
+          <!-- #include "include/appendix_f5_f6_to_functional.xml" -->
+          <!-- #include "include/caution_functionkey.xml" -->
+          <sysctl>remap.f5_f6_to_functional_ex_vm</sysctl>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <!-- #include "include/fnF5_F6_to_function.xml" -->
+          <!-- #include "include/f5_f6_to_functional.xml" -->
         </item>
 
         <item>
