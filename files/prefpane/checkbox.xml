@@ -1062,11 +1062,21 @@
       <name>Remap F1..F16 Key</name>
       <list>
         <item>
+          <name>F1..F12 to Functional</name>
+          <!-- #include "include/appendix_f1_f12_to_functional.xml" -->
+          <!-- #include "include/caution_functionkey.xml" -->
+          <sysctl>remap.f1_f12_to_f1_f12_normal</sysctl>
+          <!-- #include "include/fnF1_F12_to_function.xml" -->
+          <!-- #include "include/f1_f12_to_functional.xml" -->
+        </item>
+
+        <item>
           <name>F1..F12 to Functional (except virtual machine, RDC)</name>
           <!-- #include "include/appendix_f1_f12_to_functional.xml" -->
           <!-- #include "include/caution_functionkey.xml" -->
           <sysctl>remap.f1_f12_to_functional_ex_vm</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <!-- #include "include/fnF1_F12_to_function.xml" -->
           <!-- #include "include/f1_f12_to_functional.xml" -->
         </item>
 
@@ -1089,26 +1099,6 @@
           <!-- #include "include/caution_functionkey.xml" -->
           <sysctl>remap.fnF1_F12_to_functional</sysctl>
           <!-- #include "include/f1_f12_to_functional_withfn.xml" -->
-        </item>
-
-        <item>
-          <name>FN+F1..F12 to F1..F12</name>
-          <appendix>F1..F12 to Functional</appendix>
-          <!-- #include "include/caution_functionkey.xml" -->
-          <sysctl>remap.fnF1_F12_to_f1_f12</sysctl>
-          <autogen>--KeyToKey-- KeyCode::F1,  ModifierFlag::FN, KeyCode::F1</autogen>
-          <autogen>--KeyToKey-- KeyCode::F2,  ModifierFlag::FN, KeyCode::F2</autogen>
-          <autogen>--KeyToKey-- KeyCode::F3,  ModifierFlag::FN, KeyCode::F3</autogen>
-          <autogen>--KeyToKey-- KeyCode::F4,  ModifierFlag::FN, KeyCode::F4</autogen>
-          <autogen>--KeyToKey-- KeyCode::F5,  ModifierFlag::FN, KeyCode::F5</autogen>
-          <autogen>--KeyToKey-- KeyCode::F6,  ModifierFlag::FN, KeyCode::F6</autogen>
-          <autogen>--KeyToKey-- KeyCode::F7,  ModifierFlag::FN, KeyCode::F7</autogen>
-          <autogen>--KeyToKey-- KeyCode::F8,  ModifierFlag::FN, KeyCode::F8</autogen>
-          <autogen>--KeyToKey-- KeyCode::F9,  ModifierFlag::FN, KeyCode::F9</autogen>
-          <autogen>--KeyToKey-- KeyCode::F10, ModifierFlag::FN, KeyCode::F10</autogen>
-          <autogen>--KeyToKey-- KeyCode::F11, ModifierFlag::FN, KeyCode::F11</autogen>
-          <autogen>--KeyToKey-- KeyCode::F12, ModifierFlag::FN, KeyCode::F12</autogen>
-          <!-- #include "include/f1_f12_to_functional.xml" -->
         </item>
 
         <item>
