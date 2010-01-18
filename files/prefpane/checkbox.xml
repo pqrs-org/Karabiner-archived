@@ -1062,6 +1062,36 @@
       <name>Remap F1..F16 Key</name>
       <list>
         <item>
+          <name>F1..F12 to Functional (except virtual machine, RDC)</name>
+          <appendix>F1 to Brightness Down</appendix>
+          <appendix>F2 to Brightness Up</appendix>
+          <appendix>F3 to Expose</appendix>
+          <appendix>F4 to Dashboard</appendix>
+          <appendix>F5 to Keyboard Light LOW</appendix>
+          <appendix>F6 to Keyboard Light HIGH</appendix>
+          <appendix>F7 to Music Prev</appendix>
+          <appendix>F8 to Music Play/Pause</appendix>
+          <appendix>F9 to Music Next</appendix>
+          <appendix>F10 to Volume Mute</appendix>
+          <appendix>F11 to Volume Down</appendix>
+          <appendix>F12 to Volume Up</appendix>
+          <sysctl>remap.f1_f12_to_functional_2008_ex_vm</sysctl>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <autogen>--KeyToConsumer-- KeyCode::F1,  ConsumerKeyCode::BRIGHTNESS_DOWN</autogen>
+          <autogen>--KeyToConsumer-- KeyCode::F2,  ConsumerKeyCode::BRIGHTNESS_UP</autogen>
+          <autogen>--KeyToKey--      KeyCode::F3,  KeyCode::EXPOSE_ALL</autogen>
+          <autogen>--KeyToKey--      KeyCode::F4,  KeyCode::DASHBOARD</autogen>
+          <autogen>--KeyToConsumer-- KeyCode::F5,  ConsumerKeyCode::KEYBOARDLIGHT_LOW</autogen>
+          <autogen>--KeyToConsumer-- KeyCode::F6,  ConsumerKeyCode::KEYBOARDLIGHT_HIGH</autogen>
+          <autogen>--KeyToConsumer-- KeyCode::F7,  ConsumerKeyCode::MUSIC_PREV</autogen>
+          <autogen>--KeyToConsumer-- KeyCode::F8,  ConsumerKeyCode::MUSIC_PLAY</autogen>
+          <autogen>--KeyToConsumer-- KeyCode::F9,  ConsumerKeyCode::MUSIC_NEXT</autogen>
+          <autogen>--KeyToConsumer-- KeyCode::F10, ConsumerKeyCode::VOLUME_MUTE</autogen>
+          <autogen>--KeyToConsumer-- KeyCode::F11, ConsumerKeyCode::VOLUME_DOWN</autogen>
+          <autogen>--KeyToConsumer-- KeyCode::F12, ConsumerKeyCode::VOLUME_UP</autogen>
+        </item>
+
+        <item>
           <name>FN+F1..F12 to Functional</name>
           <appendix>FN+F1 to Brightness Down</appendix>
           <appendix>FN+F2 to Brightness Up</appendix>
@@ -1089,92 +1119,93 @@
           <autogen>--KeyToConsumer-- KeyCode::F11, ModifierFlag::FN, ConsumerKeyCode::VOLUME_DOWN</autogen>
           <autogen>--KeyToConsumer-- KeyCode::F12, ModifierFlag::FN, ConsumerKeyCode::VOLUME_UP</autogen>
         </item>
+
         <item>
-          <name>F1 to Brightness Down</name>
+          <name>F1 to Brightness Down (except virtual machine, RDC)</name>
           <sysctl>remap.f1_to_brightnessdown</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToConsumer-- KeyCode::F1, ConsumerKeyCode::BRIGHTNESS_DOWN</autogen>
         </item>
         <item>
-          <name>F2 to Brightness Up</name>
+          <name>F2 to Brightness Up (except virtual machine, RDC)</name>
           <sysctl>remap.f2_to_brightnessup</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToConsumer-- KeyCode::F2, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
         </item>
         <item>
-          <name>F3 to Volume Mute</name>
+          <name>F3 to Volume Mute (except virtual machine, RDC)</name>
           <sysctl>remap.f3_to_volumemute</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToConsumer-- KeyCode::F3, ConsumerKeyCode::VOLUME_MUTE</autogen>
         </item>
         <item>
-          <name>F4 to Volume Down</name>
+          <name>F4 to Volume Down (except virtual machine, RDC)</name>
           <sysctl>remap.f4_to_volumedown</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToConsumer-- KeyCode::F4, ConsumerKeyCode::VOLUME_DOWN</autogen>
         </item>
         <item>
-          <name>F5 to Volume Up</name>
+          <name>F5 to Volume Up (except virtual machine, RDC)</name>
           <sysctl>remap.f5_to_volumeup</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToConsumer-- KeyCode::F5, ConsumerKeyCode::VOLUME_UP</autogen>
         </item>
         <item>
-          <name>F6 to NumLock</name>
+          <name>F6 to NumLock (except virtual machine, RDC)</name>
           <sysctl>remap.f6_to_numlock</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToKey-- KeyCode::F6, KeyCode::VK_LOCK_FN</autogen>
         </item>
         <item>
-          <name>F7 to Music Prev</name>
+          <name>F7 to Music Prev (except virtual machine, RDC)</name>
           <sysctl>remap.f7_to_musicprev</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToConsumer-- KeyCode::F7, ConsumerKeyCode::MUSIC_PREV</autogen>
         </item>
         <item>
-          <name>F8 to Music Play/Pause</name>
+          <name>F8 to Music Play/Pause (except virtual machine, RDC)</name>
           <sysctl>remap.f8_to_musicplay</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToConsumer-- KeyCode::F8, ConsumerKeyCode::MUSIC_PLAY</autogen>
         </item>
         <item>
-          <name>F9 to Music Next</name>
+          <name>F9 to Music Next (except virtual machine, RDC)</name>
           <sysctl>remap.f9_to_musicplay</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToConsumer-- KeyCode::F9, ConsumerKeyCode::MUSIC_NEXT</autogen>
         </item>
         <item>
-          <name>F10 to Volume Mute</name>
+          <name>F10 to Volume Mute (except virtual machine, RDC)</name>
           <sysctl>remap.f10_to_volumemute</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToConsumer-- KeyCode::F10, ConsumerKeyCode::VOLUME_MUTE</autogen>
         </item>
         <item>
-          <name>F11 to Volume Down</name>
+          <name>F11 to Volume Down (except virtual machine, RDC)</name>
           <sysctl>remap.f11_to_volumedown</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToConsumer-- KeyCode::F11, ConsumerKeyCode::VOLUME_DOWN</autogen>
         </item>
         <item>
-          <name>F12 to Volume Up</name>
+          <name>F12 to Volume Up (except virtual machine, RDC)</name>
           <sysctl>remap.f12_to_volumeup</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToConsumer-- KeyCode::F12, ConsumerKeyCode::VOLUME_UP</autogen>
         </item>
         <item>
-          <name>F13 to Volume Mute</name>
+          <name>F13 to Volume Mute (except virtual machine, RDC)</name>
           <sysctl>remap.f13_to_volumemute</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToConsumer-- KeyCode::F13, ConsumerKeyCode::VOLUME_MUTE</autogen>
         </item>
         <item>
-          <name>F14 to Volume Down</name>
+          <name>F14 to Volume Down (except virtual machine, RDC)</name>
           <sysctl>remap.f14_to_volumedown</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToConsumer-- KeyCode::F14, ConsumerKeyCode::VOLUME_DOWN</autogen>
         </item>
         <item>
-          <name>F15 to Volume Up</name>
+          <name>F15 to Volume Up (except virtual machine, RDC)</name>
           <sysctl>remap.f15_to_volumeup</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToConsumer-- KeyCode::F15, ConsumerKeyCode::VOLUME_UP</autogen>
