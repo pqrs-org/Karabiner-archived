@@ -40,6 +40,37 @@
   return string;
 }
 
+- (NSString*) keycodeToString:(unsigned short)keycode
+{
+  if (keycode == 0x36) return @"Command_R";
+  if (keycode == 0x37) return @"Command_L";
+  if (keycode == 0x38) return @"Shift_L";
+  if (keycode == 0x3a) return @"Option_L";
+  if (keycode == 0x3b) return @"Control_L";
+  if (keycode == 0x3c) return @"Shift_R";
+  if (keycode == 0x3d) return @"Option_R";
+  if (keycode == 0x3e) return @"Control_R";
+  if (keycode == 0x3f) return @"FN";
+
+  if (keycode == 0x7a) return @"F1";
+  if (keycode == 0x78) return @"F2";
+  if (keycode == 0x63) return @"F3";
+  if (keycode == 0x76) return @"F4";
+  if (keycode == 0x60) return @"F5";
+  if (keycode == 0x61) return @"F6";
+  if (keycode == 0x62) return @"F7";
+  if (keycode == 0x64) return @"F8";
+  if (keycode == 0x65) return @"F9";
+  if (keycode == 0x6d) return @"F10";
+  if (keycode == 0x67) return @"F11";
+  if (keycode == 0x6f) return @"F12";
+
+  if (keycode == 0x24) return @"Return";
+  if (keycode == 0x31) return @"Space";
+
+  return @"";
+}
+
 - (void) output:(NSString*)text
 {
   NSTextView* textview = [_result documentView];
@@ -68,17 +99,17 @@
 
 - (void) keyDown:(NSEvent*)event
 {
-  [self output:[NSString stringWithFormat:@"keyDown\tkey:0x%02x\tflags:%@", [event keyCode], [self modifierFlagsToString:[event modifierFlags]]]];
+  [self output:[NSString stringWithFormat:@"keyDown\tkey:0x%02x\tflags:%@\t(%@)", [event keyCode], [self modifierFlagsToString:[event modifierFlags]], [self keycodeToString:[event keyCode]]]];
 }
 
 - (void) keyUp:(NSEvent*)event
 {
-  [self output:[NSString stringWithFormat:@"keyUp\tkey:0x%02x\tflags:%@", [event keyCode], [self modifierFlagsToString:[event modifierFlags]]]];
+  [self output:[NSString stringWithFormat:@"keyUp\tkey:0x%02x\tflags:%@\t(%@)", [event keyCode], [self modifierFlagsToString:[event modifierFlags]], [self keycodeToString:[event keyCode]]]];
 }
 
 - (void) flagsChanged:(NSEvent*)event
 {
-  [self output:[NSString stringWithFormat:@"flagsChanged\tkey:0x%02x\tflags:%@", [event keyCode], [self modifierFlagsToString:[event modifierFlags]]]];
+  [self output:[NSString stringWithFormat:@"flagsChanged\tkey:0x%02x\tflags:%@\t(%@)", [event keyCode], [self modifierFlagsToString:[event modifierFlags]], [self keycodeToString:[event keyCode]]]];
 }
 
 - (void) mouseDown:(NSEvent*)event
