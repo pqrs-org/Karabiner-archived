@@ -290,5 +290,9 @@ setCurrentApplicationType(const char* applicationName)
     SET_CURRENT_APPLICATION_TYPE(ECLIPSE);
   }
 
+  if (strcmp(applicationName, "org.pqrs.unknownapp.MacSOUP") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(MACSOUP);
+  }
+
   SET_CURRENT_APPLICATION_TYPE(UNKNOWN);
 }
