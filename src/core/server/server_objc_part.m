@@ -43,9 +43,20 @@ getActiveApplicationName(char* buffer, size_t len)
 
     if ([app isActive]) {
       NSString* nsappname = [app bundleIdentifier];
+
       if (nsappname) {
         snprintf(buffer, len, "%s", [nsappname UTF8String]);
+
+      } else {
+        // We use localizedName instead of bundleIdentifier,
+        // because "MacSOUP" doesn't have bundleIdentifier.
+        // http://www.haller-berlin.de/macsoup/index.html
+        NSString* localizedName = [app localizedName];
+        if (localizedName) {
+          snprintf(buffer, len, "org.pqrs.unknownapp.%s", [localizedName UTF8String]);
+        }
       }
+
       return;
     }
   }
