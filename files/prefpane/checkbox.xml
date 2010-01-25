@@ -2953,6 +2953,17 @@
             </item>
           </list>
         </item>
+        <item>
+          <name>Enable at only MacSOUP</name>
+          <list>
+            <item>
+              <name>Remap Option_R to Enter</name>
+              <sysctl>remap.app_macsoup_optionR2enter</sysctl>
+              <only>MACSOUP</only>
+              <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::ENTER</autogen>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
 
