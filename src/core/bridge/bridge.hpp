@@ -35,6 +35,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         EXCEL, // Microsoft Excel
         ENTOURAGE, // Microsoft Entourage
         ECLIPSE,
+        MACSOUP,
       };
       enum InputMode {
         INPUTMODE_NONE,
