@@ -287,7 +287,7 @@ TEST(KeyCode, reverseNormalizeKey) {
   key = KeyCode::ENTER; flags = ModifierFlag::SHIFT_L; keyboardType = KeyboardType::MACBOOK;
   key.normalizeKey(flags, keyboardType);
   key.reverseNormalizeKey(flags, keyboardType);
-  CHECK_REVERSENORMALIZEKEY(KeyCode::ENTER, ModifierFlag::SHIFT_L | ModifierFlag::FN);
+  CHECK_REVERSENORMALIZEKEY(KeyCode::ENTER, ModifierFlag::SHIFT_L);
 
   // FORWARD_DELETE
   key = KeyCode::FORWARD_DELETE; flags = ModifierFlag::SHIFT_L; keyboardType = KeyboardType::MACBOOK;
