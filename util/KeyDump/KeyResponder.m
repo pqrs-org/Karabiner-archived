@@ -90,7 +90,7 @@
   if (keycode == 0x68) return @"JIS_KANA";
   if (keycode == 0x75) return @"ForwardDelete";
 
-  return [event characters];
+  return [event charactersIgnoringModifiers];
 }
 
 - (void) output:(NSString*)text
