@@ -77,6 +77,7 @@
 
   if (keycode == 0x24) return @"Return";
   if (keycode == 0x31) return @"Space";
+  if (keycode == 0x4c) return @"Enter";
 
   return @"";
 }
