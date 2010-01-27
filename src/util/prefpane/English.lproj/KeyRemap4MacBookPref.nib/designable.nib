@@ -13,7 +13,7 @@
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<integer value="741"/>
-			<integer value="705"/>
+			<integer value="706"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -405,7 +405,7 @@
 										<string key="NSFrame">{{10, 33}, {622, 538}}</string>
 										<reference key="NSSuperview" ref="880316616"/>
 									</object>
-									<string key="NSLabel">Setting</string>
+									<string key="NSLabel">Mapping</string>
 									<reference key="NSColor" ref="58023412"/>
 									<reference key="NSTabView" ref="880316616"/>
 								</object>
