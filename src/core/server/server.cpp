@@ -294,5 +294,9 @@ setCurrentApplicationType(const char* applicationName)
     SET_CURRENT_APPLICATION_TYPE(MACSOUP);
   }
 
+  if (strcmp(applicationName, "uk.co.opencommunity.vienna2") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(VIENNA);
+  }
+
   SET_CURRENT_APPLICATION_TYPE(UNKNOWN);
 }

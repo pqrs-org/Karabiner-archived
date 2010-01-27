@@ -36,6 +36,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         ENTOURAGE, // Microsoft Entourage
         ECLIPSE,
         MACSOUP,
+        VIENNA,
       };
       enum InputMode {
         INPUTMODE_NONE,

@@ -2969,6 +2969,17 @@
             </item>
           </list>
         </item>
+        <item>
+          <name>Enable at only Vienna</name>
+          <list>
+            <item>
+              <name>Remap Option_R to Enter</name>
+              <sysctl>remap.app_vienna_optionR2enter</sysctl>
+              <only>VIENNA</only>
+              <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::ENTER</autogen>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
 
