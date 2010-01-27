@@ -42,10 +42,9 @@
   NSRunningApplication* app = [[notification userInfo] objectForKey:@"NSWorkspaceApplicationKey"];
   if (! app) return;
 
-  NSString* applicationName = [app bundleIdentifier];
-  if (! applicationName) return;
-
-  setCurrentApplicationType([applicationName UTF8String]);
+  char buffer[512];
+  getActiveApplicationName(buffer, sizeof(buffer));
+  setCurrentApplicationType(buffer);
 }
 
 // ------------------------------------------------------------
