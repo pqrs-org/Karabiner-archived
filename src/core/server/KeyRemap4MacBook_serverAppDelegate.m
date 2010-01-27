@@ -50,9 +50,9 @@
 
 // ------------------------------------------------------------
 static void observer_kTISNotifySelectedKeyboardInputSourceChanged(CFNotificationCenterRef center,
-                                                                  void *observer,
+                                                                  void* observer,
                                                                   CFStringRef name,
-                                                                  const void *object,
+                                                                  const void* object,
                                                                   CFDictionaryRef userInfo)
 {
   char inputmodeName[128];
