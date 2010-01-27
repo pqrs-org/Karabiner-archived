@@ -59,3 +59,80 @@ getTISPropertyInputModeID(char* buffer, size_t len)
 
   CFRelease(ref);
 }
+
+
+// ----------------------------------------------------------------------
+static TISInputSourceRef
+copySelectableInputSourceForInputMode(CFStringRef inputmode)
+{
+  TISInputSourceRef inputsource = NULL;
+  CFDictionaryRef filter = NULL;
+  CFArrayRef list = NULL;
+
+  if (! inputmode) {
+    inputsource = TISCopyCurrentASCIICapableKeyboardInputSource();
+    goto finish;
+  }
+
+  // ------------------------------------------------------------
+  const void* keys[] = {
+    kTISPropertyInputSourceIsSelectCapable,
+    kTISPropertyInputModeID,
+  };
+  const void* values[] = {
+    kCFBooleanTrue,
+    inputmode,
+  };
+
+  filter = CFDictionaryCreate(NULL, keys, values, 2, NULL, NULL);
+  if (! filter) goto finish;
+
+  list = TISCreateInputSourceList(filter, false);
+  if (! list) goto finish;
+
+  for (int i = 0; i < CFArrayGetCount(list); ++i) {
+    TISInputSourceRef source = (TISInputSourceRef)(CFArrayGetValueAtIndex(list, i));
+    if (! source) continue;
+
+    inputsource = source;
+    CFRetain(inputsource);
+    break;
+  }
+
+finish:
+  if (filter) {
+    CFRelease(filter);
+  }
+  if (list) {
+    CFRelease(list);
+  }
+  return inputsource;
+}
+
+void
+selectInputSource(CFStringRef inputmode)
+{
+  TISInputSourceRef inputsource = copySelectableInputSourceForInputMode(inputmode);
+  if (! inputsource) return;
+
+  TISSelectInputSource(inputsource);
+  CFRelease(inputsource);
+}
+
+
+// ======================================================================
+void
+selectInputSource_ascii(void)
+{
+  selectInputSource(NULL);
+}
+void
+selectInputSource_japanese(void)
+{
+  selectInputSource(CFSTR("com.apple.inputmethod.Japanese"));
+}
+void
+selectInputSource_japanese_katakana(void)
+{
+  selectInputSource(CFSTR("com.apple.inputmethod.Japanese.Katakana"));
+}

@@ -1,26 +1,31 @@
 #ifndef SERVER_OBJC_PART_H
 #define SERVER_OBJC_PART_H
 
+#ifndef __cplusplus
+
+void getActiveApplicationName(char* buffer, size_t len);
+
+// get current InputSourceProperty(kTISPropertyInputModeID)
+//
+// Note: getTISPropertyInputModeID works only by calling from "Application".
+//       (== does not work from a terminal application).
+//
+void getTISPropertyInputModeID(char* buffer, size_t len);
+
+// inputmode == "com.apple.inputmethod.Japanese", "com.apple.inputmethod.Japanese.Katakana", ... or NULL.
+// if inputmethod == NULL, change to ASCII.
+void selectInputSource(CFStringRef inputmode);
+
+#endif
+
+// ======================================================================
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-/**
- * These functions are not thread safe.
- */
-
-void autoreleasepool_begin(void);
-void autoreleasepool_end(void);
-
-void getActiveApplicationName(char* buffer, size_t len);
-
-/**
- * get current InputSourceProperty(kTISPropertyInputModeID)
- *
- * Note: getTISPropertyInputModeID works only by calling from "Application".
- *       (== does not work from a terminal application).
- */
-void getTISPropertyInputModeID(char* buffer, size_t len);
+void selectInputSource_ascii(void);
+void selectInputSource_japanese(void);
+void selectInputSource_japanese_katakana(void);
 
 #ifdef __cplusplus
 }
