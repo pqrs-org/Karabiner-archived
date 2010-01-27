@@ -14,7 +14,11 @@
 
 namespace {
   org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::ApplicationType currentApplicationType = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::UNKNOWN;
+  org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::InputMode currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_NONE;
+  org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_NONE;
+
   Mutex mutex_currentApplicationType;
+  Mutex mutex_currentInputMode;
 }
 
 bool
@@ -131,52 +135,14 @@ KeyRemap4MacBook_server::Server::makeSocket(void)
 org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error
 KeyRemap4MacBook_server::Server::do_GetWorkspaceData(org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& reply)
 {
-  char inputmodeName[128];
-  autoreleasepool_begin();
-  getTISPropertyInputModeID(inputmodeName, sizeof(inputmodeName));
-  autoreleasepool_end();
-
   {
     Mutex::ScopedLock lk(mutex_currentApplicationType);
     reply.type = currentApplicationType;
   }
-  reply.inputmode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_ROMAN;
-  reply.inputmodedetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_ROMAN;
-
-  // ----------------------------------------------------------------------
-  // inputmode
-  // get data from util/DumpInputModeToConsole/dump-from-plist.sh
-  const char* tis_japanese_hiragana = "com.apple.inputmethod.Japanese.Hiragana";
-  const char* tis_japanese_katakana = "com.apple.inputmethod.Japanese.Katakana";
-  const char* tis_japanese = "com.apple.inputmethod.Japanese";
-  const char* tis_tradchinese = "com.apple.inputmethod.TCIM"; // TradChinese
-  const char* tis_simpchinese = "com.apple.inputmethod.SCIM"; // SimpChinese
-  const char* tis_korean = "com.apple.inputmethod.Korean";
-
-  if (strcmp(inputmodeName, tis_japanese_hiragana) == 0) {
-    reply.inputmode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE;
-    reply.inputmodedetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_HIRAGANA;
-
-  } else if (strcmp(inputmodeName, tis_japanese_katakana) == 0) {
-    reply.inputmode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE;
-    reply.inputmodedetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_KATAKANA;
-
-  } else if (strncmp(inputmodeName, tis_japanese, strlen(tis_japanese)) == 0) {
-    reply.inputmode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE;
-    reply.inputmodedetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE;
-
-  } else if (strncmp(inputmodeName, tis_tradchinese, strlen(tis_tradchinese)) == 0) {
-    reply.inputmode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_CHINESE_TRADITIONAL;
-    reply.inputmodedetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_CHINESE_TRADITIONAL;
-
-  } else if (strncmp(inputmodeName, tis_simpchinese, strlen(tis_simpchinese)) == 0) {
-    reply.inputmode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_CHINESE_SIMPLIFIED;
-    reply.inputmodedetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_CHINESE_SIMPLIFIED;
-
-  } else if (strncmp(inputmodeName, tis_korean, strlen(tis_korean)) == 0) {
-    reply.inputmode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_KOREAN;
-    reply.inputmodedetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_KOREAN;
-
+  {
+    Mutex::ScopedLock lk(mutex_currentInputMode);
+    reply.inputmode = currentInputMode;
+    reply.inputmodedetail = currentInputModeDetail;
   }
 
   // ----------------------------------------------------------------------
@@ -299,4 +265,49 @@ setCurrentApplicationType(const char* applicationName)
   }
 
   SET_CURRENT_APPLICATION_TYPE(UNKNOWN);
+}
+
+void
+setCurrentInputMode(const char* inputmodeName)
+{
+  Mutex::ScopedLock lk(mutex_currentInputMode);
+
+  // ----------------------------------------------------------------------
+  // inputmode
+  // get data from util/DumpInputModeToConsole/dump-from-plist.sh
+  const char* tis_japanese_hiragana = "com.apple.inputmethod.Japanese.Hiragana";
+  const char* tis_japanese_katakana = "com.apple.inputmethod.Japanese.Katakana";
+  const char* tis_japanese = "com.apple.inputmethod.Japanese";
+  const char* tis_tradchinese = "com.apple.inputmethod.TCIM"; // TradChinese
+  const char* tis_simpchinese = "com.apple.inputmethod.SCIM"; // SimpChinese
+  const char* tis_korean = "com.apple.inputmethod.Korean";
+
+  if (strcmp(inputmodeName, tis_japanese_hiragana) == 0) {
+    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE;
+    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_HIRAGANA;
+
+  } else if (strcmp(inputmodeName, tis_japanese_katakana) == 0) {
+    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE;
+    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_KATAKANA;
+
+  } else if (strncmp(inputmodeName, tis_japanese, strlen(tis_japanese)) == 0) {
+    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE;
+    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE;
+
+  } else if (strncmp(inputmodeName, tis_tradchinese, strlen(tis_tradchinese)) == 0) {
+    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_CHINESE_TRADITIONAL;
+    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_CHINESE_TRADITIONAL;
+
+  } else if (strncmp(inputmodeName, tis_simpchinese, strlen(tis_simpchinese)) == 0) {
+    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_CHINESE_SIMPLIFIED;
+    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_CHINESE_SIMPLIFIED;
+
+  } else if (strncmp(inputmodeName, tis_korean, strlen(tis_korean)) == 0) {
+    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_KOREAN;
+    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_KOREAN;
+
+  } else {
+    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_ROMAN;
+    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_ROMAN;
+  }
 }

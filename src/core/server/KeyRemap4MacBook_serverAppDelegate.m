@@ -6,6 +6,7 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
+#import <Carbon/Carbon.h>
 #import "KeyRemap4MacBook_serverAppDelegate.h"
 #include "util.h"
 #include "server_objc_part.h"
@@ -48,6 +49,18 @@
 }
 
 // ------------------------------------------------------------
+static void observer_kTISNotifySelectedKeyboardInputSourceChanged(CFNotificationCenterRef center,
+                                                                  void *observer,
+                                                                  CFStringRef name,
+                                                                  const void *object,
+                                                                  CFDictionaryRef userInfo)
+{
+  char inputmodeName[128];
+  getTISPropertyInputModeID(inputmodeName, sizeof(inputmodeName));
+  setCurrentInputMode(inputmodeName);
+}
+
+// ------------------------------------------------------------
 - (void) observer_NSWorkspaceSessionDidBecomeActiveNotification:(NSNotification*)notification
 {
   NSLog(@"observer_NSWorkspaceSessionDidBecomeActiveNotification");
@@ -74,6 +87,14 @@
                                                              name:NSWorkspaceDidActivateApplicationNotification
                                                            object:nil];
 
+  CFNotificationCenterAddObserver(CFNotificationCenterGetDistributedCenter(),
+                                  self,
+                                  observer_kTISNotifySelectedKeyboardInputSourceChanged,
+                                  kTISNotifySelectedKeyboardInputSourceChanged,
+                                  NULL,
+                                  CFNotificationSuspensionBehaviorCoalesce);
+
+  // ------------------------------
   [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
                                                          selector:@selector(observer_NSWorkspaceSessionDidBecomeActiveNotification:)
                                                              name:NSWorkspaceSessionDidBecomeActiveNotification
@@ -88,6 +109,9 @@
   char buffer[512];
   getActiveApplicationName(buffer, sizeof(buffer));
   setCurrentApplicationType(buffer);
+
+  getTISPropertyInputModeID(buffer, sizeof(buffer));
+  setCurrentInputMode(buffer);
 
   // ------------------------------------------------------------
   sysctl_reset();
