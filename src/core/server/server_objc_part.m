@@ -1,28 +1,7 @@
 #include <sys/types.h>
 #include <stdio.h>
-#import <AppKit/AppKit.h>
 #import <Carbon/Carbon.h>
 #import "server_objc_part.h"
-
-static NSAutoreleasePool* pool = nil;
-
-void
-autoreleasepool_begin(void)
-{
-  if (pool) {
-    autoreleasepool_end();
-  }
-  pool = [[NSAutoreleasePool alloc] init];
-}
-
-void
-autoreleasepool_end(void)
-{
-  if (pool) {
-    [pool drain];
-    pool = nil;
-  }
-}
 
 void
 getActiveApplicationName(char* buffer, size_t len)

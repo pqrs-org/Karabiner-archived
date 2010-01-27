@@ -36,6 +36,7 @@ extern "C" {
 #endif
 
 void setCurrentApplicationType(const char* applicationName);
+void setCurrentInputMode(const char* inputmodeName);
 
 #ifdef __cplusplus
 }
