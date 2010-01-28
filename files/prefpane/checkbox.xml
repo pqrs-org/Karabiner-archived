@@ -3849,15 +3849,6 @@
             </item>
           </list>
         </item>
-        <item>
-          <name>Misc Parameters</name>
-          <list>
-            <item>
-              <name>Use TISSelectInputSource at VK_JIS_TEMPORARY_*</name>
-              <sysctl>option.jis_use_raw_select_input_source</sysctl>
-            </item>
-          </list>
-        </item>
       </list>
     </item>
     <item>
