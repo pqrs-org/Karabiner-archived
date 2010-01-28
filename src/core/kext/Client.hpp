@@ -13,7 +13,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void terminate(void);
 
     void refreshSockAddr(void);
-    int sendmsg(KeyRemap4MacBook_bridge::RequestType type, void* request, size_t requestsize, void* reply, size_t replysize);
+    int sendmsg(KeyRemap4MacBook_bridge::RequestType type, void* request, uint32_t requestsize, void* reply, uint32_t replysize);
   }
 }
 
