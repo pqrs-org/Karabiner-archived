@@ -22,8 +22,7 @@ namespace KeyRemap4MacBook_server {
     void dispatchOperator(int sock);
 
     org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error do_GetWorkspaceData(org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& reply);
-    org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error do_ChangeInputMode(org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::Reply& reply,
-                                                                                 const org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::Request& request);
+    org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error do_ChangeInputMode(const org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::Request& request);
 
     int listenSocket_;
     std::string socketpath_;
