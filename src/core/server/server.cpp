@@ -76,10 +76,11 @@ KeyRemap4MacBook_server::Server::dispatchOperator(int sock)
       org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::Request request;
       if (size != sizeof(request)) goto error;
       if (read(sock, &request, sizeof(request)) < 0) goto error;
+      // send reply before do_ChangeInputMode (slow function).
+      sendReply(sock, NULL, 0, org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS);
 
-      org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::Reply reply;
-      org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error error = do_ChangeInputMode(reply, request);
-      sendReply(sock, &reply, sizeof(reply), error);
+      do_ChangeInputMode(request);
+
       break;
     }
     default:
@@ -164,8 +165,7 @@ KeyRemap4MacBook_server::Server::do_GetWorkspaceData(org_pqrs_KeyRemap4MacBook::
 }
 
 org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error
-KeyRemap4MacBook_server::Server::do_ChangeInputMode(org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::Reply& reply,
-                                                    const org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::Request& request)
+KeyRemap4MacBook_server::Server::do_ChangeInputMode(const org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::Request& request)
 {
   switch (request.inputmode) {
     case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_ASCII:
