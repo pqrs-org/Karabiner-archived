@@ -32,7 +32,7 @@ KeyRemap4MacBook_server::Server::initialize(const char* basedirectory)
 }
 
 void
-KeyRemap4MacBook_server::Server::sendReply(int sock, void* data, size_t size, int error)
+KeyRemap4MacBook_server::Server::sendReply(int sock, void* data, size_t size, uint32_t error)
 {
   struct iovec iov[2];
   iov[0].iov_base = reinterpret_cast<caddr_t>(&error);
@@ -76,8 +76,6 @@ KeyRemap4MacBook_server::Server::dispatchOperator(int sock)
       org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::Request request;
       if (size != sizeof(request)) goto error;
       if (read(sock, &request, sizeof(request)) < 0) goto error;
-      // send reply before do_ChangeInputMode (slow function).
-      sendReply(sock, NULL, 0, org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS);
 
       do_ChangeInputMode(request);
 
