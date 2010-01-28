@@ -38,6 +38,27 @@ namespace org_pqrs_KeyRemap4MacBook {
     private:
       IOLock* lock_;
     };
+
+    class ScopedTryLock {
+    public:
+      ScopedTryLock(IOLock* lock) : lock_(lock) {
+        if (lock_) {
+          if (! IOLockTryLock(lock_)) {
+            // lock failed.
+            lock_ = NULL;
+          }
+        }
+      }
+      ~ScopedTryLock(void) {
+        if (lock_) {
+          IOLockUnlock(lock_);
+        }
+      }
+      bool locked(void) const { return lock_ != NULL; }
+
+    private:
+      IOLock* lock_;
+    };
   };
 }
 
