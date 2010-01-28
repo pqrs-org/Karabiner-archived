@@ -6,7 +6,7 @@ build:
 	$(MAKE) -C files/prefpane
 	$(MAKE) -C src
 	mkdir -p files/share
-	./util/make-reset.rb files/prefpane/*.xml > files/share/reset
+	./util/make-reset.rb files/prefpane/output/checkbox.xml files/prefpane/number.xml > files/share/reset
 
 clean:
 	$(MAKE) -C src clean
