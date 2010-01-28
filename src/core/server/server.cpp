@@ -68,6 +68,20 @@ KeyRemap4MacBook_server::Server::dispatchOperator(int sock)
       sendReply(sock, &reply, sizeof(reply), error);
       break;
     }
+    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::REQUEST_CHANGE_INPUTMODE:
+    {
+      uint32_t size;
+      if (read(sock, &size, sizeof(size)) < 0) goto error;
+
+      org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::Request request;
+      if (size != sizeof(request)) goto error;
+      if (read(sock, &request, sizeof(request)) < 0) goto error;
+
+      org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::Reply reply;
+      org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error error = do_ChangeInputMode(reply, request);
+      sendReply(sock, &reply, sizeof(reply), error);
+      break;
+    }
     default:
       goto error;
   }
@@ -149,6 +163,25 @@ KeyRemap4MacBook_server::Server::do_GetWorkspaceData(org_pqrs_KeyRemap4MacBook::
   return org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS;
 }
 
+org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error
+KeyRemap4MacBook_server::Server::do_ChangeInputMode(org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::Reply& reply,
+                                                    const org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::Request& request)
+{
+  switch (request.inputmode) {
+    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_ASCII:
+      selectInputSource_ascii();
+      break;
+    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_JAPANESE:
+      selectInputSource_japanese();
+      break;
+    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_JAPANESE_KATAKANA:
+      selectInputSource_japanese_katakana();
+      break;
+  }
+  return org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS;
+}
+
+// --------------------------------------------------
 void
 setCurrentApplicationType(const char* applicationName)
 {
