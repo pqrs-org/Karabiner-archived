@@ -1,3 +1,5 @@
+#include "base.hpp"
+#include "Client.hpp"
 #include "FlagStatus.hpp"
 #include "VirtualKey.hpp"
 #include "RemapUtil.hpp"
@@ -23,6 +25,28 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   Handle_VK_LOCK_common Handle_VK_LOCK_FN::h_(KeyCode::VK_LOCK_FN, ModifierFlag::FN);
   Handle_VK_LOCK_common Handle_VK_LOCK_COMMAND_R::h_(KeyCode::VK_LOCK_COMMAND_R, ModifierFlag::COMMAND_R);
+
+  // ----------------------------------------------------------------------
+  bool
+  Handle_VK_CHANGE_INPUTMODE::handle(const Params_KeyboardEventCallBack& params, KeyCode key)
+  {
+    if (params.key != key) return false;
+
+    KeyRemap4MacBook_bridge::ChangeInputMode::Request request;
+
+    if (key == KeyCode::VK_CHANGE_INPUTMODE_ASCII) {
+      request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_ASCII;
+    } else if (key == KeyCode::VK_CHANGE_INPUTMODE_JAPANESE) {
+      request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_JAPANESE;
+    } else if (key == KeyCode::VK_CHANGE_INPUTMODE_JAPANESE_KATAKANA) {
+      request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_JAPANESE_KATAKANA;
+    } else {
+      return false;
+    }
+
+    KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_CHANGE_INPUTMODE, &request, sizeof(request), NULL, 0);
+    return true;
+  }
 
   // ----------------------------------------------------------------------
   bool

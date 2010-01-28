@@ -334,6 +334,16 @@
       <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_LOCK_COMMAND_R</autogen>
     </item>
     <item>
+      <name>VK_CHANGE_INPUTMODE_*</name>
+      <appendix>Use 1 to VK_CHANGE_INPUTMODE_ASCII</appendix>
+      <appendix>Use 2 to VK_CHANGE_INPUTMODE_JAPANESE</appendix>
+      <appendix>Use 3 to VK_CHANGE_INPUTMODE_JAPANESE_KATAKANA</appendix>
+      <sysctl>remap.samples_vk_change_inputmode</sysctl>
+      <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_CHANGE_INPUTMODE_ASCII</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_CHANGE_INPUTMODE_JAPANESE</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::VK_CHANGE_INPUTMODE_JAPANESE_KATAKANA</autogen>
+    </item>
+    <item>
       <name>VK_JIS_TOGGLE_EISUU_KANA</name>
       <appendix>A to KANA/EISUU (toggle)</appendix>
       <appendix>Command_L to KANA/EISUU (toggle)</appendix>

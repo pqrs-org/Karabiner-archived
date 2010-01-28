@@ -37,6 +37,23 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
 
   // ----------------------------------------------------------------------
+  class Handle_VK_CHANGE_INPUTMODE {
+  public:
+    static bool handle_ASCII(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
+      return handle(params, KeyCode::VK_CHANGE_INPUTMODE_ASCII);
+    }
+    static bool handle_JAPANESE(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
+      return handle(params, KeyCode::VK_CHANGE_INPUTMODE_JAPANESE);
+    }
+    static bool handle_JAPANESE_KATAKANA(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
+      return handle(params, KeyCode::VK_CHANGE_INPUTMODE_JAPANESE_KATAKANA);
+    }
+
+  private:
+    static bool handle(const Params_KeyboardEventCallBack& params, KeyCode key);
+  };
+
+  // ----------------------------------------------------------------------
   class Handle_VK_JIS_TOGGLE_EISUU_KANA {
   public:
     static bool handle(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
