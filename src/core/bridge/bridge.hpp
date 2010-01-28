@@ -11,6 +11,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     enum RequestType {
       REQUEST_NONE,
       REQUEST_GET_WORKSPACE_DATA,
+      REQUEST_CHANGE_INPUTMODE,
     };
 
     namespace GetWorkspaceData {
@@ -68,6 +69,18 @@ namespace org_pqrs_KeyRemap4MacBook {
         InputMode inputmode;
         InputModeDetail inputmodedetail;
       };
+    }
+
+    namespace ChangeInputMode {
+      enum InputMode {
+        INPUTMODE_ASCII,
+        INPUTMODE_JAPANESE,
+        INPUTMODE_JAPANESE_KATAKANA,
+      };
+      struct Request {
+        InputMode inputmode;
+      };
+      struct Reply {};
     }
   }
 }
