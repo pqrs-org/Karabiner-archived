@@ -226,6 +226,11 @@
       <name>Remap Backquote(`) Key</name>
       <list>
         <item>
+          <name>Backquote(`) to CapsLock</name>
+          <sysctl>remap.backquote2capslock</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::CAPSLOCK</autogen>
+        </item>
+        <item>
           <name>Backquote(`) to Command_L</name>
           <sysctl>remap.backquote2commandL</sysctl>
           <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::COMMAND_L</autogen>
@@ -3733,6 +3738,11 @@
         <item>
           <name>Remap Underscore(Ro) Key</name>
           <list>
+            <item>
+              <name>Underscore(Ro) to Shift_R</name>
+              <sysctl>remap.jis_underscore2shiftR</sysctl>
+              <autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, KeyCode::SHIFT_R</autogen>
+            </item>
             <item>
               <name>Underscore(Ro) to Backslash(\)</name>
               <sysctl>remap.jis_underscore2backslash</sysctl>
