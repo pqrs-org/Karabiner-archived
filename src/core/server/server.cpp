@@ -166,14 +166,17 @@ org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error
 KeyRemap4MacBook_server::Server::do_ChangeInputMode(const org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::Request& request)
 {
   switch (request.inputmode) {
-    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_ASCII:
-      selectInputSource_ascii();
+    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_ENGLISH:
+      selectInputSource_english();
+      break;
+    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_FRENCH:
+      selectInputSource_french();
+      break;
+    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_GERMAN:
+      selectInputSource_german();
       break;
     case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_JAPANESE:
       selectInputSource_japanese();
-      break;
-    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_JAPANESE_KATAKANA:
-      selectInputSource_japanese_katakana();
       break;
   }
   return org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS;
