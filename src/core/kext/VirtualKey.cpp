@@ -32,19 +32,24 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (params.key != key) return false;
 
-    KeyRemap4MacBook_bridge::ChangeInputMode::Request request;
+    if (params.eventType == EventType::DOWN && params.repeat == false) {
+      KeyRemap4MacBook_bridge::ChangeInputMode::Request request;
 
-    if (key == KeyCode::VK_CHANGE_INPUTMODE_ASCII) {
-      request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_ASCII;
-    } else if (key == KeyCode::VK_CHANGE_INPUTMODE_JAPANESE) {
-      request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_JAPANESE;
-    } else if (key == KeyCode::VK_CHANGE_INPUTMODE_JAPANESE_KATAKANA) {
-      request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_JAPANESE_KATAKANA;
-    } else {
-      return false;
+      if (key == KeyCode::VK_CHANGE_INPUTMODE_ENGLISH) {
+        request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_ENGLISH;
+      } else if (key == KeyCode::VK_CHANGE_INPUTMODE_FRENCH) {
+        request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_FRENCH;
+      } else if (key == KeyCode::VK_CHANGE_INPUTMODE_GERMAN) {
+        request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_GERMAN;
+      } else if (key == KeyCode::VK_CHANGE_INPUTMODE_JAPANESE) {
+        request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_JAPANESE;
+      } else {
+        return false;
+      }
+
+      KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_CHANGE_INPUTMODE, &request, sizeof(request), NULL, 0);
     }
 
-    KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_CHANGE_INPUTMODE, &request, sizeof(request), NULL, 0);
     return true;
   }
 

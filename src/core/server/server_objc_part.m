@@ -62,29 +62,27 @@ getTISPropertyInputModeID(char* buffer, size_t len)
 
 
 // ----------------------------------------------------------------------
+// Note:
+// TISCopyInputSourceForLanguage returns unselectable InputSource.
+// Therefore we get InputSource by ourself.
 static TISInputSourceRef
-copySelectableInputSourceForInputMode(CFStringRef inputmode)
+copySelectableInputSourceForLanguage(CFStringRef language)
 {
   TISInputSourceRef inputsource = NULL;
   CFDictionaryRef filter = NULL;
   CFArrayRef list = NULL;
 
-  if (! inputmode) {
-    inputsource = TISCopyCurrentASCIICapableKeyboardInputSource();
-    goto finish;
-  }
+  if (! language) goto finish;
 
   // ------------------------------------------------------------
   const void* keys[] = {
     kTISPropertyInputSourceIsSelectCapable,
-    kTISPropertyInputModeID,
   };
   const void* values[] = {
     kCFBooleanTrue,
-    inputmode,
   };
 
-  filter = CFDictionaryCreate(NULL, keys, values, 2, NULL, NULL);
+  filter = CFDictionaryCreate(NULL, keys, values, 1, NULL, NULL);
   if (! filter) goto finish;
 
   list = TISCreateInputSourceList(filter, false);
@@ -94,9 +92,21 @@ copySelectableInputSourceForInputMode(CFStringRef inputmode)
     TISInputSourceRef source = (TISInputSourceRef)(CFArrayGetValueAtIndex(list, i));
     if (! source) continue;
 
-    inputsource = source;
-    CFRetain(inputsource);
-    break;
+    CFArrayRef listLanguage = (CFArrayRef)(TISGetInputSourceProperty(source, kTISPropertyInputSourceLanguages));
+    if (! listLanguage) continue;
+
+    // U.S. InputSource has many languages (en, de, fr, ...),
+    // so we check the first language only to detect real InputSource for French, German, etc.
+    if (CFArrayGetCount(listLanguage) > 0) {
+      CFStringRef lang = (CFStringRef)(CFArrayGetValueAtIndex(listLanguage, 0));
+      if (! lang) continue;
+
+      if (CFStringCompare(language, lang, 0) == kCFCompareEqualTo) {
+        inputsource = source;
+        CFRetain(inputsource);
+        goto finish;
+      }
+    }
   }
 
 finish:
@@ -110,9 +120,9 @@ finish:
 }
 
 void
-selectInputSource(CFStringRef inputmode)
+selectInputSource(CFStringRef language)
 {
-  TISInputSourceRef inputsource = copySelectableInputSourceForInputMode(inputmode);
+  TISInputSourceRef inputsource = copySelectableInputSourceForLanguage(language);
   if (! inputsource) return;
 
   TISSelectInputSource(inputsource);
@@ -121,18 +131,7 @@ selectInputSource(CFStringRef inputmode)
 
 
 // ======================================================================
-void
-selectInputSource_ascii(void)
-{
-  selectInputSource(NULL);
-}
-void
-selectInputSource_japanese(void)
-{
-  selectInputSource(CFSTR("com.apple.inputmethod.Japanese"));
-}
-void
-selectInputSource_japanese_katakana(void)
-{
-  selectInputSource(CFSTR("com.apple.inputmethod.Japanese.Katakana"));
-}
+void selectInputSource_english(void) { selectInputSource(CFSTR("en")); }
+void selectInputSource_french(void) { selectInputSource(CFSTR("fr")); }
+void selectInputSource_german(void) { selectInputSource(CFSTR("de")); }
+void selectInputSource_japanese(void) { selectInputSource(CFSTR("ja")); }
