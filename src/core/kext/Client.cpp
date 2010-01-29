@@ -120,14 +120,21 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     IOLockWrapper::ScopedLock lk(lock_);
 
+    // ------------------------------------------------------------
+    int result = 0;
+    int error = 0;
     socket_t socket;
+    bool isMakeSocket = false;
+
     if (! makeSocket(socket)) {
-      return EIO;
+      result = EIO;
+      goto finish;
     }
+    isMakeSocket = true;
 
     if (! connectSocket(socket)) {
-      releaseSocket(socket);
-      return EIO;
+      result = EIO;
+      goto finish;
     }
 
     // ----------------------------------------
@@ -149,34 +156,37 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
     msg.msg_iov = aiov;
 
-    int error = sock_send(socket, &msg, 0, &iolen);
+    error = sock_send(socket, &msg, 0, &iolen);
     if (error) {
       printf("KeyRemap4MacBook_client::sendmsg sock_send failed(%d)\n", error);
-      releaseSocket(socket);
-      return error;
+      result = error;
+      goto finish;
     }
 
     // ----------------------------------------
-    memset(&msg, 0, sizeof(msg));
+    if (replysize > 0) {
+      memset(&msg, 0, sizeof(msg));
 
-    int result = -1;
-    aiov[0].iov_base = reinterpret_cast<caddr_t>(&result);
-    aiov[0].iov_len = sizeof(result);
-    aiov[1].iov_base = reinterpret_cast<caddr_t>(reply);
-    aiov[1].iov_len = replysize;
-    msg.msg_iov = aiov;
-    msg.msg_iovlen = (replysize == 0 ? 1 : 2);
+      uint32_t status = -1;
+      aiov[0].iov_base = reinterpret_cast<caddr_t>(&status);
+      aiov[0].iov_len = sizeof(status);
+      aiov[1].iov_base = reinterpret_cast<caddr_t>(reply);
+      aiov[1].iov_len = replysize;
+      msg.msg_iov = aiov;
+      msg.msg_iovlen = 2;
 
-    error = sock_receive(socket, &msg, MSG_WAITALL, &iolen);
-    if (error) {
-      printf("KeyRemap4MacBook_client::sendmsg sock_receive failed(%d)\n", error);
+      error = sock_receive(socket, &msg, MSG_WAITALL, &iolen);
+      if (error) {
+        printf("KeyRemap4MacBook_client::sendmsg sock_receive failed(%d)\n", error);
+        result = error;
+        goto finish;
+      }
     }
 
-    releaseSocket(socket);
-    if (error) {
-      return error;
+  finish:
+    if (isMakeSocket) {
+      releaseSocket(socket);
     }
-
     if (result) {
       printf("KeyRemap4MacBook_client::sendmsg error result (%d)\n", result);
     }
