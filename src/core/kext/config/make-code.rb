@@ -54,6 +54,9 @@ def preprocess(listAutogen)
     elsif /VK_MOD_CCS_L/ =~ autogen then
       list << autogen.gsub(/VK_MOD_CCS_L/, "ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L")
       modify = true
+    elsif /VK_MOD_CCO_L/ =~ autogen then
+      list << autogen.gsub(/VK_MOD_CCO_L/, "ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L")
+      modify = true
     elsif /FROMKEYCODE_(HOME|END|PAGEUP|PAGEDOWN|FORWARD_DELETE)\s*,\s*ModifierFlag::/ =~ autogen then
       key = $1
       extrakey = getextrakey(key)
