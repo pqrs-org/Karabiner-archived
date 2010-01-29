@@ -12,10 +12,6 @@ void getActiveApplicationName(char* buffer, size_t len);
 //
 void getTISPropertyInputModeID(char* buffer, size_t len);
 
-// inputmode == "com.apple.inputmethod.Japanese", "com.apple.inputmethod.Japanese.Katakana", ... or NULL.
-// if inputmethod == NULL, change to ASCII.
-void selectInputSource(CFStringRef inputmode);
-
 #endif
 
 // ======================================================================
