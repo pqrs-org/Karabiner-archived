@@ -2567,6 +2567,20 @@
               <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
             </item>
             <item>
+              <name>Use Command_R+[QWE ASD ZXC] for Spaces (3x3)</name>
+              <appendix>(Command+Control+Option+[123 456 789])</appendix>
+              <sysctl>remap.spaces_special_qweasdzxc_without_shift</sysctl>
+              <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCO_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCO_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCO_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCO_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCO_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCO_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCO_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCO_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCO_L</autogen>
+            </item>
+            <item>
               <name>Use FN+[123456789] for Spaces</name>
               <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
               <sysctl>remap.spaces_special_fn</sysctl>
