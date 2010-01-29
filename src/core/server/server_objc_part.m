@@ -119,8 +119,8 @@ finish:
   return inputsource;
 }
 
-void
-selectInputSource(CFStringRef language)
+static void
+selectInputSource_language(CFStringRef language)
 {
   TISInputSourceRef inputsource = copySelectableInputSourceForLanguage(language);
   if (! inputsource) return;
@@ -129,9 +129,8 @@ selectInputSource(CFStringRef language)
   CFRelease(inputsource);
 }
 
-
 // ======================================================================
-void selectInputSource_english(void) { selectInputSource(CFSTR("en")); }
-void selectInputSource_french(void) { selectInputSource(CFSTR("fr")); }
-void selectInputSource_german(void) { selectInputSource(CFSTR("de")); }
-void selectInputSource_japanese(void) { selectInputSource(CFSTR("ja")); }
+void selectInputSource_english(void) { selectInputSource_language(CFSTR("en")); }
+void selectInputSource_french(void) { selectInputSource_language(CFSTR("fr")); }
+void selectInputSource_german(void) { selectInputSource_language(CFSTR("de")); }
+void selectInputSource_japanese(void) { selectInputSource_language(CFSTR("ja")); }
