@@ -52,7 +52,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       void
-      getWorkspaceData(KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& reply)
+      getWorkspaceData(KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& reply, bool copylast = false)
       {
         // ------------------------------------------------------------
         // When we press the functional key (ex. F2) with the keyboard of the third vendor,
@@ -65,16 +65,20 @@ namespace org_pqrs_KeyRemap4MacBook {
           KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_ROMAN,
         };
 
-        int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_WORKSPACE_DATA, NULL, 0, &reply, sizeof(reply));
-        if (config.debug_devel) {
-          printf("KeyRemap4MacBook -Info- GetWorkspaceData: %d,%d,%d (error: %d)\n",
-                 reply.type, reply.inputmode, reply.inputmodedetail, error);
-        }
-        if (error == 0) {
-          last = reply;
-        } else {
-          // use last info.
+        if (copylast) {
           reply = last;
+        } else {
+          int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_WORKSPACE_DATA, NULL, 0, &reply, sizeof(reply));
+          if (config.debug_devel) {
+            printf("KeyRemap4MacBook -Info- GetWorkspaceData: %d,%d,%d (error: %d)\n",
+                   reply.type, reply.inputmode, reply.inputmodedetail, error);
+          }
+          if (error == 0) {
+            last = reply;
+          } else {
+            // use last info.
+            reply = last;
+          }
         }
 
         // ------------------------------------------------------------
@@ -189,7 +193,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       params.key.normalizeKey(params.flags, params.keyboardType);
 
       KeyRemap4MacBook_bridge::GetWorkspaceData::Reply workspacedata;
-      getWorkspaceData(workspacedata);
+      bool copylast = (params.eventType.isKeyDownOrModifierDown(params.key, params.flags) == false);
+      getWorkspaceData(workspacedata, copylast);
 
       RemapParams remapParams(params, workspacedata);
       NumHeldDownKeys::set(remapParams);
@@ -220,7 +225,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       params.log();
 
       KeyRemap4MacBook_bridge::GetWorkspaceData::Reply workspacedata;
-      getWorkspaceData(workspacedata);
+      bool copylast = (params.eventType != EventType::DOWN);
+      getWorkspaceData(workspacedata, copylast);
 
       RemapConsumerParams remapParams(params, workspacedata);
       NumHeldDownKeys::set(remapParams);
