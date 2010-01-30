@@ -650,7 +650,7 @@
         </item>
         <item>
           <name>Delete to Forward Delete</name>
-          <appendix>(FN+Delete to Delete</appendix>
+          <appendix>(FN+Delete to Delete)</appendix>
           <sysctl>remap.delete2forwarddelete_fnDelete2delete</sysctl>
           <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::FN, KeyCode::DELETE</autogen>
           <autogen>--KeyToKey-- KeyCode::DELETE, KeyCode::FORWARD_DELETE</autogen>
