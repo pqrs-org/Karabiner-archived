@@ -311,6 +311,12 @@
           <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
+          <name>Command_L to Control_L (except Emacs)</name>
+          <sysctl>remap.commandL2controlL_ex_emacs</sysctl>
+          <not>EMACS</not>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
+        </item>
+        <item>
           <name>Command_L to Option_L</name>
           <sysctl>remap.commandL2optionL</sysctl>
           <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
@@ -539,6 +545,12 @@
           <name>Control_L to Command_L (only in X11)</name>
           <sysctl>remap.controlL2commandL_x11</sysctl>
           <only>X11</only>
+          <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
+        </item>
+        <item>
+          <name>Control_L to Command_L (except Emacs)</name>
+          <sysctl>remap.controlL2commandL_ex_emacs</sysctl>
+          <not>EMACS</not>
           <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
         </item>
         <item>
