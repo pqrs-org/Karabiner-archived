@@ -3878,6 +3878,11 @@
               <appendix>(to prevent the system hangup at Snow Leopard)</appendix>
               <sysctl>option.jis_drop_eisuukana_with_modifiers</sysctl>
             </item>
+            <item>
+              <name>Drop Frequently EISUU,KANA</name>
+              <appendix>(to prevent the system hangup at Snow Leopard)</appendix>
+              <sysctl>option.jis_drop_frequently_eisuukana</sysctl>
+            </item>
           </list>
         </item>
       </list>
