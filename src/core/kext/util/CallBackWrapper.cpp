@@ -99,7 +99,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (eventType.isKeyDownOrModifierDown(key, flags)) {
           static KeyFloodChecker keyfloodchecker;
           enum {
-            INTERVAL_MILLISEC = 500,
+            INTERVAL_MILLISEC = 600,
             ALLOWED_COUNT_IN_INTERVAL = 5,
           };
           if (! keyfloodchecker.check(INTERVAL_MILLISEC, ALLOWED_COUNT_IN_INTERVAL)) {
