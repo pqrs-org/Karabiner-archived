@@ -1920,6 +1920,12 @@
           <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::OPTION_L</autogen>
         </item>
         <item>
+          <name>Space to Option_L</name>
+          <appendix>(+ When you type Space only, send Space)</appendix>
+          <sysctl>remap.space2optionL_space</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::OPTION_L, KeyCode::SPACE</autogen>
+        </item>
+        <item>
           <name>Control+Space to Option_L</name>
           <sysctl>remap.controlSpace2optionL</sysctl>
           <autogen>--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::OPTION_L</autogen>
@@ -3956,6 +3962,29 @@
               <autogen>--KeyToKey-- KeyCode::RUSSIAN_TILDA, KeyCode::SHIFT_L</autogen>
             </item>
           </list>
+        </item>
+      </list>
+    </item>
+    <item>
+      <name>For Swedish</name>
+      <list>
+        <item>
+          <name>Space to Option_L (when inputmode == swedish)</name>
+          <sysctl>remap.swedish_space2optionL_swedish</sysctl>
+          <inputmode_only>INPUTMODE_SWEDISH</inputmode_only>
+          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::OPTION_L</autogen>
+        </item>
+        <item>
+          <name>Command_L to Command_L</name>
+          <appendix>(+ When you type Command_L only, change inputmode to english)</appendix>
+          <sysctl>remap.swedish_commandL2commandL_english</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
+        </item>
+        <item>
+          <name>Command_R to Command_R</name>
+          <appendix>(+ When you type Command_R only, change inputmode to swedish)</appendix>
+          <sysctl>remap.swedish_commandR2commandR_swedish</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CHANGE_INPUTMODE_SWEDISH</autogen>
         </item>
       </list>
     </item>

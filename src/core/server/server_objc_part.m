@@ -55,6 +55,15 @@ getTISPropertyInputModeID(char* buffer, size_t len)
   NSString* inputmodeid = TISGetInputSourceProperty(ref, kTISPropertyInputModeID);
   if (inputmodeid) {
     snprintf(buffer, len, "%s", [inputmodeid UTF8String]);
+  } else {
+    // use kTISPropertyInputSourceLanguages as inputmode
+    CFArrayRef languages = TISGetInputSourceProperty(ref, kTISPropertyInputSourceLanguages);
+    if (languages && CFArrayGetCount(languages) > 0) {
+      CFStringRef lang = CFArrayGetValueAtIndex(languages, 0);
+      if (lang) {
+        snprintf(buffer, len, "org.pqrs.inputmode.%s", [(NSString*)lang UTF8String]);
+      }
+    }
   }
 
   CFRelease(ref);
