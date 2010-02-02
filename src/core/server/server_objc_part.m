@@ -48,6 +48,21 @@ getInputSourceLanguage(TISInputSourceRef source)
 {
   // Because we cannot distinguish en and ca from kTISPropertyInputSourceLanguages,
   // we use kTISPropertyInputSourceID at first.
+  //
+  // Note:
+  // kTISPropertyInputSourceID is different every IM, and
+  // it is desirable as possible to use kTISPropertyInputSourceLanguages because
+  // kTISPropertyInputSourceID does not get the correspondence with the input language.
+  //
+  // Example:
+  //   kTISPropertyInputSourceID: jp.sourceforge.inputmethod.aquaskk
+  //   kTISPropertyInputSourceLanguages: ja
+  //
+  //   kTISPropertyInputSourceID: com.apple.inputmethod.Kotoeri.Japanese
+  //   kTISPropertyInputSourceLanguages: ja
+  //
+  //   * These two IM are Japanese input method.
+
   CFStringRef name = TISGetInputSourceProperty(source, kTISPropertyInputSourceID);
   if (name) {
     if (CFStringCompare(name, CFSTR("com.apple.keylayout.Canadian"), 0) == kCFCompareEqualTo) {
