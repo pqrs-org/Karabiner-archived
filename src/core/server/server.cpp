@@ -181,6 +181,9 @@ KeyRemap4MacBook_server::Server::do_ChangeInputMode(const org_pqrs_KeyRemap4MacB
     case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_SWEDISH:
       selectInputSource_swedish();
       break;
+    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_CANADIAN:
+      selectInputSource_canadian();
+      break;
   }
   return org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS;
 }
@@ -319,6 +322,7 @@ setCurrentInputMode(const char* inputmodeName)
   const char* tis_simpchinese = "com.apple.inputmethod.SCIM"; // SimpChinese
   const char* tis_korean = "com.apple.inputmethod.Korean";
   const char* language_swedish = "org.pqrs.inputmode.sv";
+  const char* language_canadian = "org.pqrs.inputmode.ca";
 
   if (strcmp(inputmodeName, tis_japanese_hiragana) == 0) {
     currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE;
@@ -347,6 +351,10 @@ setCurrentInputMode(const char* inputmodeName)
   } else if (strcmp(inputmodeName, language_swedish) == 0) {
     currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_SWEDISH;
     currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_SWEDISH;
+
+  } else if (strcmp(inputmodeName, language_canadian) == 0) {
+    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_CANADIAN;
+    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_CANADIAN;
 
   } else {
     currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_ROMAN;
