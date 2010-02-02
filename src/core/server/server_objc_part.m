@@ -49,8 +49,10 @@ getInputSourceLanguage(TISInputSourceRef source)
   // Because we cannot distinguish en and ca from kTISPropertyInputSourceLanguages,
   // we use LocalizedName at first.
   CFStringRef name = TISGetInputSourceProperty(source, kTISPropertyLocalizedName);
-  if (CFStringCompare(name, CFSTR("Canadian English"), 0) == kCFCompareEqualTo) {
-    return kInputSourceLanguage_canadian;
+  if (name) {
+    if (CFStringCompare(name, CFSTR("Canadian English"), 0) == kCFCompareEqualTo) {
+      return kInputSourceLanguage_canadian;
+    }
   }
 
   CFArrayRef languages = TISGetInputSourceProperty(source, kTISPropertyInputSourceLanguages);
@@ -82,7 +84,9 @@ getTISPropertyInputModeID(char* buffer, size_t len)
     snprintf(buffer, len, "%s", [inputmodeid UTF8String]);
   } else {
     CFStringRef lang = getInputSourceLanguage(ref);
-    snprintf(buffer, len, "org.pqrs.inputmode.%s", [(NSString*)(lang) UTF8String]);
+    if (lang) {
+      snprintf(buffer, len, "org.pqrs.inputmode.%s", [(NSString*)(lang) UTF8String]);
+    }
   }
   //NSLog(@"buffer: %s", buffer);
 
@@ -122,6 +126,8 @@ copySelectableInputSourceForLanguage(CFStringRef language)
     if (! source) continue;
 
     CFStringRef lang = getInputSourceLanguage(source);
+    if (! lang) continue;
+
     if (CFStringCompare(language, lang, 0) == kCFCompareEqualTo) {
       inputsource = source;
       CFRetain(inputsource);
