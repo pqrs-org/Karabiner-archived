@@ -1910,6 +1910,16 @@
           <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::SPACE, KeyCode::CONTROL_L, KeyCode::SPACE</autogen>
         </item>
         <item>
+          <name>Space to Option_L</name>
+          <sysctl>remap.space2optionL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::OPTION_L</autogen>
+        </item>
+        <item>
+          <name>Control+Space to Option_L</name>
+          <sysctl>remap.controlSpace2optionL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::OPTION_L</autogen>
+        </item>
+        <item>
           <name>Space to Shift_L</name>
           <sysctl>remap.space2shiftL</sysctl>
           <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::SHIFT_L</autogen>
