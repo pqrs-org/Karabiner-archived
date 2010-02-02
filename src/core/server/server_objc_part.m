@@ -47,10 +47,10 @@ static CFStringRef
 getInputSourceLanguage(TISInputSourceRef source)
 {
   // Because we cannot distinguish en and ca from kTISPropertyInputSourceLanguages,
-  // we use LocalizedName at first.
-  CFStringRef name = TISGetInputSourceProperty(source, kTISPropertyLocalizedName);
+  // we use kTISPropertyInputSourceID at first.
+  CFStringRef name = TISGetInputSourceProperty(source, kTISPropertyInputSourceID);
   if (name) {
-    if (CFStringCompare(name, CFSTR("Canadian English"), 0) == kCFCompareEqualTo) {
+    if (CFStringCompare(name, CFSTR("com.apple.keylayout.Canadian"), 0) == kCFCompareEqualTo) {
       return kInputSourceLanguage_canadian;
     }
   }
