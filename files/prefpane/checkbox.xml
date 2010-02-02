@@ -3336,6 +3336,18 @@
     </item>
 
     <item>
+      <name>For Canadian</name>
+      <list>
+        <item>
+          <name>Space to Option_L (when inputmode == canadian)</name>
+          <appendix>(+ When you type Space only, send Space)</appendix>
+          <sysctl>remap.canadian_space2optionL_space</sysctl>
+          <inputmode_only>INPUTMODE_CANADIAN</inputmode_only>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::OPTION_L, KeyCode::SPACE</autogen>
+        </item>
+      </list>
+    </item>
+    <item>
       <name>For French</name>
       <list>
         <item>
