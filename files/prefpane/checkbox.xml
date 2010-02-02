@@ -1510,6 +1510,11 @@
           <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_L, KeyCode::OPTION_L, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
+          <name>Option_L to Option_R</name>
+          <sysctl>remap.optionL2optionR</sysctl>
+          <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::OPTION_R</autogen>
+        </item>
+        <item>
           <name>Option_L to Shift_L</name>
           <sysctl>remap.optionL2shiftL</sysctl>
           <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::SHIFT_L</autogen>
