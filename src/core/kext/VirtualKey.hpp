@@ -39,21 +39,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------------------------------------
   class Handle_VK_CHANGE_INPUTMODE {
   public:
-    static bool handle_ENGLISH(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
-      return handle(params, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH);
-    }
-    static bool handle_FRENCH(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
-      return handle(params, KeyCode::VK_CHANGE_INPUTMODE_FRENCH);
-    }
-    static bool handle_GERMAN(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
-      return handle(params, KeyCode::VK_CHANGE_INPUTMODE_GERMAN);
-    }
-    static bool handle_JAPANESE(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) {
-      return handle(params, KeyCode::VK_CHANGE_INPUTMODE_JAPANESE);
-    }
-
-  private:
-    static bool handle(const Params_KeyboardEventCallBack& params, KeyCode key);
+    static bool handle(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
   };
 
   // ----------------------------------------------------------------------

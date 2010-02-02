@@ -77,6 +77,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         INPUTMODE_FRENCH,
         INPUTMODE_GERMAN,
         INPUTMODE_JAPANESE,
+        INPUTMODE_SWEDISH,
       };
       struct Request {
         InputMode inputmode;
