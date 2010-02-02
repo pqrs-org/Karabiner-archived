@@ -24,6 +24,7 @@ void selectInputSource_french(void);
 void selectInputSource_german(void);
 void selectInputSource_japanese(void);
 void selectInputSource_swedish(void);
+void selectInputSource_canadian(void);
 
 #ifdef __cplusplus
 }

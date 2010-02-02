@@ -41,6 +41,31 @@ getActiveApplicationName(char* buffer, size_t len)
   }
 }
 
+static CFStringRef kInputSourceLanguage_canadian = CFSTR("ca");
+
+static CFStringRef
+getInputSourceLanguage(TISInputSourceRef source)
+{
+  // Because we cannot distinguish en and ca from kTISPropertyInputSourceLanguages,
+  // we use LocalizedName at first.
+  CFStringRef name = TISGetInputSourceProperty(source, kTISPropertyLocalizedName);
+  if (CFStringCompare(name, CFSTR("Canadian English"), 0) == kCFCompareEqualTo) {
+    return kInputSourceLanguage_canadian;
+  }
+
+  CFArrayRef languages = TISGetInputSourceProperty(source, kTISPropertyInputSourceLanguages);
+  if (languages && CFArrayGetCount(languages) > 0) {
+    // U.S. InputSource has many languages (en, de, fr, ...),
+    // so we check the first language only to detect real InputSource for French, German, etc.
+    CFStringRef lang = CFArrayGetValueAtIndex(languages, 0);
+    if (lang) {
+      return lang;
+    }
+  }
+
+  return NULL;
+}
+
 void
 getTISPropertyInputModeID(char* buffer, size_t len)
 {
@@ -56,15 +81,10 @@ getTISPropertyInputModeID(char* buffer, size_t len)
   if (inputmodeid) {
     snprintf(buffer, len, "%s", [inputmodeid UTF8String]);
   } else {
-    // use kTISPropertyInputSourceLanguages as inputmode
-    CFArrayRef languages = TISGetInputSourceProperty(ref, kTISPropertyInputSourceLanguages);
-    if (languages && CFArrayGetCount(languages) > 0) {
-      CFStringRef lang = CFArrayGetValueAtIndex(languages, 0);
-      if (lang) {
-        snprintf(buffer, len, "org.pqrs.inputmode.%s", [(NSString*)lang UTF8String]);
-      }
-    }
+    CFStringRef lang = getInputSourceLanguage(ref);
+    snprintf(buffer, len, "org.pqrs.inputmode.%s", [(NSString*)(lang) UTF8String]);
   }
+  //NSLog(@"buffer: %s", buffer);
 
   CFRelease(ref);
 }
@@ -101,20 +121,11 @@ copySelectableInputSourceForLanguage(CFStringRef language)
     TISInputSourceRef source = (TISInputSourceRef)(CFArrayGetValueAtIndex(list, i));
     if (! source) continue;
 
-    CFArrayRef listLanguage = (CFArrayRef)(TISGetInputSourceProperty(source, kTISPropertyInputSourceLanguages));
-    if (! listLanguage) continue;
-
-    // U.S. InputSource has many languages (en, de, fr, ...),
-    // so we check the first language only to detect real InputSource for French, German, etc.
-    if (CFArrayGetCount(listLanguage) > 0) {
-      CFStringRef lang = (CFStringRef)(CFArrayGetValueAtIndex(listLanguage, 0));
-      if (! lang) continue;
-
-      if (CFStringCompare(language, lang, 0) == kCFCompareEqualTo) {
-        inputsource = source;
-        CFRetain(inputsource);
-        goto finish;
-      }
+    CFStringRef lang = getInputSourceLanguage(source);
+    if (CFStringCompare(language, lang, 0) == kCFCompareEqualTo) {
+      inputsource = source;
+      CFRetain(inputsource);
+      goto finish;
     }
   }
 
@@ -139,6 +150,7 @@ selectInputSource_language(CFStringRef language)
 }
 
 // ======================================================================
+void selectInputSource_canadian(void) { selectInputSource_language(CFSTR("ca")); }
 void selectInputSource_english(void) { selectInputSource_language(CFSTR("en")); }
 void selectInputSource_french(void) { selectInputSource_language(CFSTR("fr")); }
 void selectInputSource_german(void) { selectInputSource_language(CFSTR("de")); }
