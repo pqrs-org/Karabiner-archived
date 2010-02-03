@@ -3340,6 +3340,12 @@
       <list>
         <item>
           <name>Space to Option_L (when inputmode == canadian)</name>
+          <sysctl>remap.canadian_space2optionL</sysctl>
+          <inputmode_only>INPUTMODE_CANADIAN</inputmode_only>
+          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::OPTION_L</autogen>
+        </item>
+        <item>
+          <name>Space to Option_L (when inputmode == canadian)</name>
           <appendix>(+ When you type Space only, send Space)</appendix>
           <sysctl>remap.canadian_space2optionL_space</sysctl>
           <inputmode_only>INPUTMODE_CANADIAN</inputmode_only>
