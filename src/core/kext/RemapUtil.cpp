@@ -264,7 +264,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   RemapUtil::PointingButtonToPointingButton::remap(RemapPointingParams_relative& remapParams,
                                                    PointingButton fromButton, Flags fromFlags,
-                                                   PointingButton toButton)
+                                                   PointingButton toButton,   Flags toFlags)
   {
     if (remapParams.isremapped) return false;
 
@@ -294,6 +294,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ----------------------------------------
     FlagStatus::temporary_decrease(fromFlags);
+    FlagStatus::temporary_increase(toFlags);
 
     Params_RelativePointerEventCallback params = remapParams.params;
 

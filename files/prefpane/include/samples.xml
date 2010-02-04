@@ -187,8 +187,10 @@
     <item>
       <name>PointingButtonToPointingButton</name>
       <appendix>Option+LeftClick to MiddleClick</appendix>
+      <appendix>FN+LeftClick to Option_L+LeftClick</appendix>
       <sysctl>remap.samples_pointingbuttontopointingbutton</sysctl>
       <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, VK_OPTION, PointingButton::MIDDLE</autogen>
+      <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, ModifierFlag::FN, PointingButton::LEFT, ModifierFlag::OPTION_L</autogen>
     </item>
 
     <!-- application only -->

@@ -112,6 +112,11 @@
               <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, ModifierFlag::FN, PointingButton::MIDDLE</autogen>
             </item>
             <item>
+              <name>FN+LeftClick to Option_L+LeftClick</name>
+              <sysctl>remap.pointing_fnLeftclick2optionLeftclick</sysctl>
+              <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, ModifierFlag::FN, PointingButton::LEFT, ModifierFlag::OPTION_L</autogen>
+            </item>
+            <item>
               <name>Option+LeftClick to MiddleClick</name>
               <sysctl>remap.pointing_optionLeftclick2middleclick</sysctl>
               <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, VK_OPTION, PointingButton::MIDDLE</autogen>
