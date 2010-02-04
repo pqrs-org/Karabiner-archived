@@ -105,13 +105,13 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       bool remap(RemapPointingParams_relative& remapParams,
                  PointingButton fromButton, Flags fromFlags,
-                 PointingButton toButton);
+                 PointingButton toButton,   Flags toFlags = ModifierFlag::NONE);
 
       // no fromFlags version
       bool remap(RemapPointingParams_relative& remapParams,
                  PointingButton fromButton,
-                 PointingButton toButton) {
-        return remap(remapParams, fromButton, 0, toButton);
+                 PointingButton toButton,   Flags toFlags = ModifierFlag::NONE) {
+        return remap(remapParams, fromButton, 0, toButton, toFlags);
       }
 
     private:
