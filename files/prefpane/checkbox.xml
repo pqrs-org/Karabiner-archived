@@ -2126,6 +2126,13 @@
           <autogen>--KeyToKey-- KeyCode::D, VK_CONTROL, KeyCode::FORWARD_DELETE</autogen>
         </item>
         <item>
+          <name>Control+D to Forward Delete</name>
+          <appendix>(when there are not other modifiers)</appendix>
+          <sysctl>option.emacsmode_controlD_nomodifiers</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+          <autogen>--KeyToKey-- KeyCode::D, VK_CONTROL | ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
+        </item>
+        <item>
           <name>Control+H to Delete</name>
           <sysctl>option.emacsmode_controlH</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
@@ -2154,6 +2161,13 @@
           <sysctl>option.emacsmode_controlPNBF</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
           <!-- #include "include/emacsmode_controlPNBF.xml" -->
+        </item>
+        <item>
+          <name>Control+PNBF to Up/Down/Left/Right</name>
+          <appendix>(when there are not other modifiers)</appendix>
+          <sysctl>option.emacsmode_controlPNBF_nomodifiers</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+          <!-- #include "include/emacsmode_controlPNBF_nomodifiers.xml" -->
         </item>
         <item>
           <name>Control+V to PageDown</name>
