@@ -617,6 +617,11 @@
           <sysctl>remap.drop_controlL</sysctl>
           <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::VK_NONE</autogen>
         </item>
+        <item>
+          <name>Control_L to RightClick</name>
+          <sysctl>remap.controlL2rightclick</sysctl>
+          <autogen>--KeyToPointingButton-- KeyCode::CONTROL_L, PointingButton::RIGHT</autogen>
+        </item>
       </list>
     </item>
 
