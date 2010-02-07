@@ -28,7 +28,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
 
-    printf("KeyFloodChecker: count=%d\n", count);
     return count <= allowdnum;
   }
 }
