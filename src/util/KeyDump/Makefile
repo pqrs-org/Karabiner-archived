@@ -9,3 +9,6 @@ clean:
 	rm -f *.xcodeproj/*.mode1
 	rm -f *.xcodeproj/*.mode1v3
 	rm -f *.xcodeproj/*.pbxuser
+
+run: all
+	open ./build/Release/KeyDump.app
