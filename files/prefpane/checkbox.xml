@@ -2052,6 +2052,17 @@
     </item>
 
     <item>
+      <name>Virtual Mouse</name>
+      <list>
+        <item>
+          <name>Control+L to RightClick</name>
+          <sysctl>remap.control_l2rightclick</sysctl>
+          <autogen>--KeyToPointingButton-- KeyCode::L, VK_CONTROL, PointingButton::RIGHT</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>Diamond Cursor</name>
       <list>
         <item>
