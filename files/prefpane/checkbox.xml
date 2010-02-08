@@ -2796,6 +2796,12 @@
               <autogen>--KeyToKey-- KeyCode::RETURN, ModifierFlag::FN, KeyCode::HELP</autogen>
             </item>
             <item>
+              <name>Remap Option_R to Control_R</name>
+              <sysctl>remap.app_vm_optionR2controlR</sysctl>
+              <only>VIRTUALMACHINE</only>
+              <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CONTROL_R</autogen>
+            </item>
+            <item>
               <name>Remap Command+Space to Option+Backquote(`)</name>
               <sysctl>remap.app_vm_commandspace2optionbackquote</sysctl>
               <only>VIRTUALMACHINE</only>
@@ -2979,6 +2985,12 @@
               <sysctl>remap.app_term_optionL2commandL</sysctl>
               <only>TERMINAL</only>
               <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+            </item>
+            <item>
+              <name>Remap Option_R to Control_R</name>
+              <sysctl>remap.app_term_optionR2controlR</sysctl>
+              <only>TERMINAL</only>
+              <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CONTROL_R</autogen>
             </item>
             <item>
               <name>Remap Functional Keys to F1...F12</name>
