@@ -13,15 +13,15 @@
 
 - (NSString*) modifierFlagsToString:(NSUInteger)flags
 {
-  return [NSString stringWithFormat:@"%4s %5s %4s %3s %3s %6s %4s %2s",
-                   ((flags & NSAlphaShiftKeyMask) ? "Caps"   : ""),
-                   ((flags & NSShiftKeyMask)      ? "Shift"  : ""),
-                   ((flags & NSControlKeyMask)    ? "Ctrl"   : ""),
-                   ((flags & NSAlternateKeyMask)  ? "Opt"    : ""),
-                   ((flags & NSCommandKeyMask)    ? "Cmd"    : ""),
-                   ((flags & NSNumericPadKeyMask) ? "NumPad" : ""),
-                   ((flags & NSHelpKeyMask)       ? "Help"   : ""),
-                   ((flags & NSFunctionKeyMask)   ? "FN"     : "")];
+  return [NSString stringWithFormat                 :@"%s%s%s%s%s%s%s%s",
+          ((flags & NSAlphaShiftKeyMask) ? "Caps "  :""),
+          ((flags & NSShiftKeyMask)      ? "Shift " :""),
+          ((flags & NSControlKeyMask)    ? "Ctrl "  :""),
+          ((flags & NSAlternateKeyMask)  ? "Opt "   :""),
+          ((flags & NSCommandKeyMask)    ? "Cmd "   :""),
+          ((flags & NSNumericPadKeyMask) ? "NumPad ":""),
+          ((flags & NSHelpKeyMask)       ? "Help "  :""),
+          ((flags & NSFunctionKeyMask)   ? "FN "    :"")];
 }
 
 - (NSString*) keycodeToString:(NSEvent*)event
@@ -77,109 +77,114 @@
   return [event charactersIgnoringModifiers];
 }
 
-- (void) output:(NSString*)text
+- (NSString*) buttonToString:(NSEvent*)event
 {
-  NSTextView* textview = [_result documentView];
-  [textview setSelectedRange:NSMakeRange([[[textview textStorage] mutableString] length], 0)];
-
-  [textview setEditable:YES];
-
-  [textview insertText:text];
-  [textview insertText:@"\n"];
-
-  [textview setEditable:NO];
-  [textview setSelectable:NO];
+  switch ([event buttonNumber]) {
+    case 0 :
+      return @"left";
+    case 1 :
+      return @"right";
+    case 2 :
+      return @"middle";
+    default :
+      return @"other";
+  }
 }
 
-- (void) outputMouseDownUp:(NSEvent*)event name:(NSString*)name
+- (void) outputKeyEvent:(NSEvent*)event eventType:(NSString*)eventType
 {
-  NSPoint point = [event locationInWindow];
-  [self output:[NSString stringWithFormat:@"%@\tpoint:%@\tcount:%d\tbutton:%d\tflags:%@", name, NSStringFromPoint(point), [event clickCount], [event buttonNumber], [self modifierFlagsToString:[event modifierFlags]]]];
+  [eventqueue_ push:eventType
+               code:[NSString stringWithFormat:@"0x%x", [event keyCode]]
+               name:[self keycodeToString:event]
+              flags:[self modifierFlagsToString:[event modifierFlags]]
+               misc:@""];
 }
 
-- (void) outputMouseDragged:(NSEvent*)event name:(NSString*)name
+- (void) outputMouseEvent:(NSEvent*)event eventType:(NSString*)eventType
 {
-  NSPoint point = [event locationInWindow];
-  [self output:[NSString stringWithFormat:@"%@\tpoint:%@\tbutton:%d\tflags:%@", name, NSStringFromPoint(point), [event buttonNumber], [self modifierFlagsToString:[event modifierFlags]]]];
-}
-
-- (void) outputKeyEvent:(NSEvent*)event eventType:(const char*)eventType
-{
-  [self output:[NSString stringWithFormat:@"%-7s %-14s (0x%02x) [%@]",
-                         eventType,
-                         [[self keycodeToString:event] UTF8String],
-                         [event keyCode],
-                         [self modifierFlagsToString:[event modifierFlags]]]];
+  [eventqueue_ push:eventType
+               code:[NSString stringWithFormat:@"0x%x", [event buttonNumber]]
+               name:[self buttonToString:event]
+              flags:[self modifierFlagsToString:[event modifierFlags]]
+               misc:[NSString stringWithFormat:@"%@ %d", NSStringFromPoint([event locationInWindow]), [event clickCount]]];
 }
 
 - (void) keyDown:(NSEvent*)event
 {
-  [self outputKeyEvent:event eventType:"keyDown"];
+  [self outputKeyEvent:event eventType:@"keyDown"];
 }
 
 - (void) keyUp:(NSEvent*)event
 {
-  [self outputKeyEvent:event eventType:"keyUp"];
+  [self outputKeyEvent:event eventType:@"keyUp"];
 }
 
 - (void) flagsChanged:(NSEvent*)event
 {
-  [self outputKeyEvent:event eventType:"keyMod"];
+  [self outputKeyEvent:event eventType:@"keyMod"];
 }
 
 - (void) mouseDown:(NSEvent*)event
 {
-  [self outputMouseDownUp:event name:@"mouseDown"];
+  [self outputMouseEvent:event eventType:@"mouseDown"];
 }
 
 - (void) mouseUp:(NSEvent*)event
 {
-  [self outputMouseDownUp:event name:@"mouseUp"];
+  [self outputMouseEvent:event eventType:@"mouseUp"];
 }
 
 - (void) mouseDragged:(NSEvent*)event
 {
-  [self outputMouseDragged:event name:@"mouseDragged"];
+  [self outputMouseEvent:event eventType:@"mouseDragged"];
 }
 
 - (void) rightMouseDown:(NSEvent*)event
 {
-  [self outputMouseDownUp:event name:@"rightMouseDown"];
+  [self outputMouseEvent:event eventType:@"mouseDown"];
 }
 
 - (void) rightMouseUp:(NSEvent*)event
 {
-  [self outputMouseDownUp:event name:@"rightMouseUp"];
+  [self outputMouseEvent:event eventType:@"mouseUp"];
 }
 
 - (void) rightMouseDragged:(NSEvent*)event
 {
-  [self outputMouseDragged:event name:@"rightMouseDragged"];
+  [self outputMouseEvent:event eventType:@"mouseDragged"];
 }
 
 - (void) otherMouseDown:(NSEvent*)event
 {
-  [self outputMouseDownUp:event name:@"otherMouseDown"];
+  [self outputMouseEvent:event eventType:@"mouseDown"];
 }
 
 - (void) otherMouseUp:(NSEvent*)event
 {
-  [self outputMouseDownUp:event name:@"otherMouseUp"];
+  [self outputMouseEvent:event eventType:@"mouseUp"];
 }
 
 - (void) otherMouseDragged:(NSEvent*)event
 {
-  [self outputMouseDragged:event name:@"otherMouseDragged"];
+  [self outputMouseEvent:event eventType:@"mouseDragged"];
 }
 
 - (void) scrollWheel:(NSEvent*)event
 {
-  [self output:[NSString stringWithFormat:@"scrollWheel\tdeltaX:%.03f\tdeltaY:%.03f\tdeltaZ:%.03f\tflags:%@", [event deltaX], [event deltaY], [event deltaZ], [self modifierFlagsToString:[event modifierFlags]]]];
+  [eventqueue_ push:@"scroll"
+               code:@""
+               name:@""
+              flags:[self modifierFlagsToString:[event modifierFlags]]
+               misc:[NSString stringWithFormat:@"dx:%.03f dy:%.03f dz:%.03f", [event deltaX], [event deltaY], [event deltaZ]]];
 }
 
 - (void) swipeWithEvent:(NSEvent*)event
 {
-  [self output:[NSString stringWithFormat:@"swipeWithEvent\tdeltaX:%.03f\tdeltaY:%.03f\tflags:%@", [event deltaX], [event deltaY], [self modifierFlagsToString:[event modifierFlags]]]];
+  [eventqueue_ push:@"swipe"
+               code:@""
+               name:@""
+              flags:[self modifierFlagsToString:[event modifierFlags]]
+               misc:[NSString stringWithFormat:@"dx:%.03f dy:%.03f", [event deltaX], [event deltaY]]];
 }
 
 @end

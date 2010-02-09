@@ -4,9 +4,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "EventQueue.h"
 
 @interface KeyResponder : NSImageView
 {
-  IBOutlet id _result;
+  IBOutlet EventQueue* eventqueue_;
 }
 @end
