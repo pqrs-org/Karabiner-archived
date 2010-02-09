@@ -12,6 +12,7 @@
 - (IBAction) toggleStatusBar:(id)sender;
 - (IBAction) changeCheckUpdate:(id)sender;
 - (IBAction) launchUninstaller:(id)sender;
+- (IBAction) launchEventViewer:(id)sender;
 - (void) mainViewDidLoad;
 
 @end
