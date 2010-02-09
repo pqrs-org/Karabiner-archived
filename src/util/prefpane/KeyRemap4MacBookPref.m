@@ -73,6 +73,11 @@ static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
   [BUNDLEPREFIX(Common) getExecResult:launchUninstallerCommand args:[NSArray arrayWithObjects:@"force", nil]];
 }
 
+- (IBAction) launchEventViewer:(id)sender
+{
+  [[NSWorkspace sharedWorkspace] launchApplication:@"/Library/org.pqrs/KeyRemap4MacBook/app/KeyDump.app"];
+}
+
 /* ---------------------------------------------------------------------- */
 - (void) mainViewDidLoad
 {
