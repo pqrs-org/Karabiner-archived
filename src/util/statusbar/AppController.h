@@ -8,5 +8,6 @@
 }
 
 - (IBAction) openPreferencePane:(id)sender;
+- (IBAction) launchEventViewer:(id)sender;
 
 @end

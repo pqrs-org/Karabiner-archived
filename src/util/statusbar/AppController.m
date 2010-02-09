@@ -65,4 +65,9 @@
   [[NSWorkspace sharedWorkspace] openFile:@"/Library/PreferencePanes/KeyRemap4MacBook.prefPane"];
 }
 
+- (IBAction) launchEventViewer:(id)sender
+{
+  [[NSWorkspace sharedWorkspace] launchApplication:@"/Library/org.pqrs/KeyRemap4MacBook/app/KeyDump.app"];
+}
+
 @end
