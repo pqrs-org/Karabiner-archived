@@ -12,36 +12,7 @@
 @synthesize window;
 
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
-  NSTextView* textview = [_result documentView];
-  [textview setSelectable:NO];
-  [textview setEditable:NO];
-
-  NSFont* font = [NSFont fontWithName:@"Menlo-Regular" size:0];
-  if (font) {
-    [textview setFont:font];
-  }
-
   [window makeFirstResponder:_keyResponder];
-}
-
-- (IBAction) clear:(id)sender
-{
-  NSTextStorage* storage = [[_result documentView] textStorage];
-  NSMutableString* originalstring = [storage mutableString];
-  [storage beginEditing];
-  [originalstring setString:@""];
-  [storage endEditing];
-}
-
-- (IBAction) copy:(id)sender
-{
-  NSPasteboard* pboard = [NSPasteboard generalPasteboard];
-  NSMutableString* string = [[[_result documentView] textStorage] mutableString];
-
-  if ([string length] > 0) {
-    [pboard clearContents];
-    [pboard writeObjects:[NSArray arrayWithObject:string]];
-  }
 }
 
 - (IBAction) quit:(id)sender
