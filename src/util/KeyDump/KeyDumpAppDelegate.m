@@ -16,6 +16,11 @@
   [textview setSelectable:NO];
   [textview setEditable:NO];
 
+  NSFont* font = [NSFont fontWithName:@"Menlo-Regular" size:0];
+  if (font) {
+    [textview setFont:font];
+  }
+
   [window makeFirstResponder:_keyResponder];
 }
 
