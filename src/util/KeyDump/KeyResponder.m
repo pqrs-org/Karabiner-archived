@@ -11,33 +11,17 @@
 // Key event handlers
 //
 
-- (NSMutableString*) modifierFlagsToString:(NSUInteger)flags
+- (NSString*) modifierFlagsToString:(NSUInteger)flags
 {
-  NSMutableArray* array = [[[NSMutableArray alloc] init] autorelease];
-
-#define APPEND_FLAG_NAME(mask, name) if (flags & mask) [array addObject:name];
-  APPEND_FLAG_NAME(NSAlphaShiftKeyMask, @"AlphaShift");
-  APPEND_FLAG_NAME(NSShiftKeyMask, @"Shift");
-  APPEND_FLAG_NAME(NSControlKeyMask, @"Control");
-  APPEND_FLAG_NAME(NSAlternateKeyMask, @"Alternate");
-  APPEND_FLAG_NAME(NSCommandKeyMask, @"Command");
-  APPEND_FLAG_NAME(NSNumericPadKeyMask, @"NumericPad");
-  APPEND_FLAG_NAME(NSHelpKeyMask, @"Help");
-  APPEND_FLAG_NAME(NSFunctionKeyMask, @"Function");
-  //APPEND_FLAG_NAME(NSDeviceIndependentModifierFlagsMask, @"DeviceIndependent");
-#undef APPEND_FLAG_NAME
-
-  NSMutableString* string = [NSMutableString stringWithString:@""];
-  if ([array count] == 0) {
-    return string;
-  }
-  for (unsigned int i = 0; i < [array count]; ++i) {
-    [string appendString:[array objectAtIndex:i]];
-    if (i < [array count] - 1) {
-      [string appendString:@","];
-    }
-  }
-  return string;
+  return [NSString stringWithFormat:@"%4s %5s %4s %3s %3s %6s %4s %2s",
+                   ((flags & NSAlphaShiftKeyMask) ? "Caps"   : ""),
+                   ((flags & NSShiftKeyMask)      ? "Shift"  : ""),
+                   ((flags & NSControlKeyMask)    ? "Ctrl"   : ""),
+                   ((flags & NSAlternateKeyMask)  ? "Opt"    : ""),
+                   ((flags & NSCommandKeyMask)    ? "Cmd"    : ""),
+                   ((flags & NSNumericPadKeyMask) ? "NumPad" : ""),
+                   ((flags & NSHelpKeyMask)       ? "Help"   : ""),
+                   ((flags & NSFunctionKeyMask)   ? "FN"     : "")];
 }
 
 - (NSString*) keycodeToString:(NSEvent*)event
@@ -119,19 +103,28 @@
   [self output:[NSString stringWithFormat:@"%@\tpoint:%@\tbutton:%d\tflags:%@", name, NSStringFromPoint(point), [event buttonNumber], [self modifierFlagsToString:[event modifierFlags]]]];
 }
 
+- (void) outputKeyEvent:(NSEvent*)event eventType:(const char*)eventType
+{
+  [self output:[NSString stringWithFormat:@"%-7s %-14s (0x%02x) [%@]",
+                         eventType,
+                         [[self keycodeToString:event] UTF8String],
+                         [event keyCode],
+                         [self modifierFlagsToString:[event modifierFlags]]]];
+}
+
 - (void) keyDown:(NSEvent*)event
 {
-  [self output:[NSString stringWithFormat:@"keyDown\tkey:0x%02x\tflags:%@\t(%@)", [event keyCode], [self modifierFlagsToString:[event modifierFlags]], [self keycodeToString:event]]];
+  [self outputKeyEvent:event eventType:"keyDown"];
 }
 
 - (void) keyUp:(NSEvent*)event
 {
-  [self output:[NSString stringWithFormat:@"keyUp\tkey:0x%02x\tflags:%@\t(%@)", [event keyCode], [self modifierFlagsToString:[event modifierFlags]], [self keycodeToString:event]]];
+  [self outputKeyEvent:event eventType:"keyUp"];
 }
 
 - (void) flagsChanged:(NSEvent*)event
 {
-  [self output:[NSString stringWithFormat:@"flagsChanged\tkey:0x%02x\tflags:%@\t(%@)", [event keyCode], [self modifierFlagsToString:[event modifierFlags]], [self keycodeToString:event]]];
+  [self outputKeyEvent:event eventType:"keyMod"];
 }
 
 - (void) mouseDown:(NSEvent*)event
