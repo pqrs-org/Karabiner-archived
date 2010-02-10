@@ -195,7 +195,7 @@ setCurrentApplicationType(const char* applicationName)
   Mutex::ScopedLock lk(mutex_currentApplicationType);
 
   // we ignore the program for our investigation.
-  if (strcmp(applicationName, "org.pqrs.KeyDump") == 0) {
+  if (strcmp(applicationName, "org.pqrs.KeyRemap4MacBook.KeyDump") == 0) {
     // use previous value. (not set "currentApplicationType")
     return;
   }
