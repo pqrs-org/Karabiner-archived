@@ -60,6 +60,12 @@
   }
 }
 
+- (IBAction) openSettingList:(id)sender
+{
+  [NSApp activateIgnoringOtherApps:YES];
+  [_window makeKeyAndOrderFront:self];
+}
+
 - (IBAction) openPreferencePane:(id)sender
 {
   [[NSWorkspace sharedWorkspace] openFile:@"/Library/PreferencePanes/KeyRemap4MacBook.prefPane"];
