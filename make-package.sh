@@ -25,8 +25,9 @@ sudo mkdir -p "pkgroot/$basedir/prefpane"
 sudo cp files/prefpane/number.xml files/prefpane/output/checkbox.xml "pkgroot/$basedir/prefpane"
 
 sudo mkdir -p "pkgroot/$basedir/extra"
-sudo cp -R pkginfo/Resources/preflight "pkgroot/$basedir/extra/uninstall.sh"
+sudo cp -R pkginfo/Resources/preflight "pkgroot/$basedir/extra/uninstall_core.sh"
 sudo cp -R files/extra/launchUninstaller.sh "pkgroot/$basedir/extra/"
+sudo cp -R files/extra/uninstall.sh "pkgroot/$basedir/extra/"
 
 sudo mkdir -p "pkgroot/Library"
 sudo cp -R files/LaunchDaemons pkgroot/Library
