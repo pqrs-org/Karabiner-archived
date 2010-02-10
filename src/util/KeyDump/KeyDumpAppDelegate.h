@@ -7,10 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "EventQueue.h"
 
 @interface KeyDumpAppDelegate : NSObject <NSApplicationDelegate> {
   NSWindow* window;
-  IBOutlet id _keyResponder;
+  IBOutlet id keyResponder_;
+  IBOutlet EventQueue* eventqueue_;
 }
 
 @property (assign) IBOutlet NSWindow* window;

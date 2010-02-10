@@ -12,6 +12,8 @@
 		34412BCE10946AEF00F66D0F /* KeyDump.icns in Resources */ = {isa = PBXBuildFile; fileRef = 34412BCD10946AEF00F66D0F /* KeyDump.icns */; };
 		34412BEA10946CDB00F66D0F /* KeyResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 34412BE910946CDB00F66D0F /* KeyResponder.m */; };
 		347450D41121467A00C3F0CF /* EventQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 347450D31121467A00C3F0CF /* EventQueue.m */; };
+		349CA9FA1122EA200021BE23 /* server_objc_part.m in Sources */ = {isa = PBXBuildFile; fileRef = 349CA9F91122EA200021BE23 /* server_objc_part.m */; };
+		34C92D221122EDA100B0B4ED /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C92D211122EDA100B0B4ED /* Carbon.framework */; };
 		34FBE7F010B2E8E500DD22E9 /* mousearea.png in Resources */ = {isa = PBXBuildFile; fileRef = 34FBE7EF10B2E8E500DD22E9 /* mousearea.png */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -34,6 +36,9 @@
 		34412BE910946CDB00F66D0F /* KeyResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyResponder.m; sourceTree = "<group>"; };
 		347450D21121467A00C3F0CF /* EventQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventQueue.h; sourceTree = "<group>"; };
 		347450D31121467A00C3F0CF /* EventQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventQueue.m; sourceTree = "<group>"; };
+		349CA9F81122EA200021BE23 /* server_objc_part.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = server_objc_part.h; sourceTree = "<group>"; };
+		349CA9F91122EA200021BE23 /* server_objc_part.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = server_objc_part.m; sourceTree = "<group>"; };
+		34C92D211122EDA100B0B4ED /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		34FBE7EF10B2E8E500DD22E9 /* mousearea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mousearea.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* KeyDump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyDump.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +50,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				34C92D221122EDA100B0B4ED /* Carbon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +60,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				349CA9F81122EA200021BE23 /* server_objc_part.h */,
+				349CA9F91122EA200021BE23 /* server_objc_part.m */,
 				347450D21121467A00C3F0CF /* EventQueue.h */,
 				347450D31121467A00C3F0CF /* EventQueue.m */,
 				256AC3D80F4B6AC300CF3369 /* KeyDumpAppDelegate.h */,
@@ -128,6 +136,7 @@
 			children = (
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+				34C92D211122EDA100B0B4ED /* Carbon.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -193,6 +202,7 @@
 				256AC3DA0F4B6AC300CF3369 /* KeyDumpAppDelegate.m in Sources */,
 				34412BEA10946CDB00F66D0F /* KeyResponder.m in Sources */,
 				347450D41121467A00C3F0CF /* EventQueue.m in Sources */,
+				349CA9FA1122EA200021BE23 /* server_objc_part.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
