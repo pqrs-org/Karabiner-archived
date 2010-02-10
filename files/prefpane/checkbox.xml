@@ -3295,6 +3295,11 @@
               <sysctl>option.keypadnumlock_togglekey_clear</sysctl>
               <autogen>--ToggleConfig-- KeyCode::KEYPAD_CLEAR, config.remap_keypadnumlock</autogen>
             </item>
+            <item>
+              <name>Use Clear Key to toggle "KeyPad as Arrow (PC Style Home/End/PageUp/PageDown)"</name>
+              <sysctl>option.keypadnumlock_pclikehomeend_togglekey_clear</sysctl>
+              <autogen>--ToggleConfig-- KeyCode::KEYPAD_CLEAR, config.remap_keypadnumlock_pclikehomeend</autogen>
+            </item>
           </list>
         </item>
         <item>
