@@ -13,22 +13,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
-  class RemapClass_remap_keypadnumlock_togglekey_clear {
-  public:
-    static void remap_key(RemapParams& remapParams) {
-      if (remapParams.isremapped) return;
-      if (remapParams.params.key != KeyCode::KEYPAD_CLEAR) return;
-
-      if (remapParams.isKeyDownOrModifierDown()) {
-        config.remap_keypadnumlock = ! config.remap_keypadnumlock;
-        refresh_remapfunc();
-      }
-
-      remapParams.drop();
-    }
-  };
-
-  // ----------------------------------------
   class RemapClass_remap_pointing_relative_to_scroll {
   public:
     static void remap_pointing(RemapPointingParams_relative& remapParams) {
@@ -87,11 +71,6 @@ org_pqrs_KeyRemap4MacBook::refresh_remapfunc(void)
 
   // ------------------------------------------------------------
 #include "config/output/include.remapcode_refresh_remapfunc_key.cpp"
-
-  if (config.option_keypadnumlock_togglekey_clear) {
-    listRemapFunc_key[listRemapFunc_key_size] = RemapClass_remap_keypadnumlock_togglekey_clear::remap_key;
-    ++listRemapFunc_key_size;
-  }
 
   // ------------------------------------------------------------
 #include "config/output/include.remapcode_refresh_remapfunc_consumer.cpp"
