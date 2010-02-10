@@ -3293,6 +3293,7 @@
             <item>
               <name>Use Clear Key to toggle "KeyPad as Arrow"</name>
               <sysctl>option.keypadnumlock_togglekey_clear</sysctl>
+              <autogen>--ToggleConfig-- KeyCode::KEYPAD_CLEAR, config.remap_keypadnumlock</autogen>
             </item>
           </list>
         </item>

@@ -183,6 +183,11 @@ def parseautogen(name, lines, autogen_index)
           code_key << "if (ignoremultiplesamekeypress#{autogen_index}_.remap(remapParams, #{params})) break;"
           $func[:key] << name
 
+        when 'ToggleConfig'
+          code_variable << ['ToggleConfig', "toggleconfig#{autogen_index}_"]
+          code_key << "if (toggleconfig#{autogen_index}_.remap(remapParams, #{params})) break;"
+          $func[:key] << name
+
         when 'KeyToConsumer'
           code_variable << ['RemapUtil::KeyToConsumer', "keytoconsumer#{autogen_index}_"]
           code_key << "if (keytoconsumer#{autogen_index}_.remap(remapParams, #{params})) break;"

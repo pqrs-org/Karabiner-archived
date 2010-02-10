@@ -159,6 +159,15 @@
     </item>
 
     <item>
+      <name>ToggleConfig</name>
+      <appendix>Use Shift_R to toggle IgnoreMultipleSameKeyPress</appendix>
+      <appendix>Use Shift_L+B to toggle IgnoreMultipleSameKeyPress</appendix>
+      <sysctl>remap.samples_toggleconfig</sysctl>
+      <autogen>--ToggleConfig-- KeyCode::SHIFT_R, config.remap_samples_ignoremultiplesamekeypress</autogen>
+      <autogen>--ToggleConfig-- KeyCode::B, ModifierFlag::SHIFT_L, config.remap_samples_ignoremultiplesamekeypress</autogen>
+    </item>
+
+    <item>
       <name>KeyToPointingButton</name>
       <appendix>A to LeftClick (Standard)</appendix>
       <appendix>Option_L to LeftClick (Modifier)</appendix>

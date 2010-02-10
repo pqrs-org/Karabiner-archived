@@ -237,6 +237,17 @@ namespace org_pqrs_KeyRemap4MacBook {
   private:
     KeyCode lastkeycode_;
   };
+
+  class ToggleConfig {
+  public:
+    bool remap(RemapParams& remapParams, KeyCode fromKeyCode, Flags fromFlags, int& configitem);
+    bool remap(RemapParams& remapParams, KeyCode fromKeyCode, int& configitem) {
+      return remap(remapParams, fromKeyCode, 0, configitem);
+    }
+
+  private:
+    RemapUtil::KeyToKey keytokey_;
+  };
 }
 
 #endif

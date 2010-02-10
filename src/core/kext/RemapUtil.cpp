@@ -786,6 +786,24 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ------------------------------------------------------------
+  bool
+  ToggleConfig::remap(RemapParams& remapParams, KeyCode fromKeyCode, Flags fromFlags, int& configitem)
+  {
+    bool isKeyDown = remapParams.isKeyDownOrModifierDown();
+
+    if (! keytokey_.remap(remapParams, fromKeyCode, fromFlags, KeyCode::VK_NONE)) {
+      return false;
+    }
+
+    if (isKeyDown) {
+      configitem = ! configitem;
+      refresh_remapfunc();
+    }
+
+    return true;
+  }
+
+  // ------------------------------------------------------------
   Buttons
   RemapUtil::getRemappedButtons(void)
   {
