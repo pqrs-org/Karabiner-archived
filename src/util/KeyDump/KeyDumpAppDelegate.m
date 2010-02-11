@@ -58,7 +58,7 @@ static void observer_kTISNotifySelectedKeyboardInputSourceChanged(CFNotification
   observer_kTISNotifySelectedKeyboardInputSourceChanged(NULL, otherinformationstore_, NULL, NULL, NULL);
 }
 
-- (BOOL) applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
+- (BOOL) applicationShouldTerminateAfterLastWindowClosed:(NSApplication*)theApplication {
   return YES;
 }
 
