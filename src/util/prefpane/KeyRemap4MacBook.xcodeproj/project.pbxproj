@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		34070C3D0DC89C050022A857 /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 34070C3B0DC89C050022A857 /* Common.h */; };
 		34070C3E0DC89C050022A857 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 34070C3C0DC89C050022A857 /* Common.m */; };
+		3428688E1124492B0063E730 /* ConfigControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 3428688C1124492B0063E730 /* ConfigControl.h */; };
+		3428688F1124492B0063E730 /* ConfigControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3428688D1124492B0063E730 /* ConfigControl.m */; };
+		34286891112449340063E730 /* bundleprefix.h in Headers */ = {isa = PBXBuildFile; fileRef = 34286890112449340063E730 /* bundleprefix.h */; };
+		3428689411244C7D0063E730 /* TableView_configlist.h in Headers */ = {isa = PBXBuildFile; fileRef = 3428689211244C7D0063E730 /* TableView_configlist.h */; };
+		3428689511244C7D0063E730 /* TableView_configlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 3428689311244C7D0063E730 /* TableView_configlist.m */; };
 		349FDBBF0D545C2200EED33C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 349FDBBE0D545C2200EED33C /* Security.framework */; };
 		34A482980D94ECD7002CF803 /* XMLTreeWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A482960D94ECD7002CF803 /* XMLTreeWrapper.h */; };
 		34A482990D94ECD7002CF803 /* XMLTreeWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A482970D94ECD7002CF803 /* XMLTreeWrapper.m */; };
@@ -36,6 +41,11 @@
 		32DBCFA20370C41700C91783 /* KeyRemap4MacBook_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyRemap4MacBook_Prefix.pch; sourceTree = "<group>"; };
 		34070C3B0DC89C050022A857 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = sharecode/Common.h; sourceTree = "<group>"; };
 		34070C3C0DC89C050022A857 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Common.m; path = sharecode/Common.m; sourceTree = "<group>"; };
+		3428688C1124492B0063E730 /* ConfigControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigControl.h; sourceTree = "<group>"; };
+		3428688D1124492B0063E730 /* ConfigControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigControl.m; sourceTree = "<group>"; };
+		34286890112449340063E730 /* bundleprefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bundleprefix.h; sourceTree = "<group>"; };
+		3428689211244C7D0063E730 /* TableView_configlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView_configlist.h; sourceTree = "<group>"; };
+		3428689311244C7D0063E730 /* TableView_configlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView_configlist.m; sourceTree = "<group>"; };
 		349FDBBE0D545C2200EED33C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		34A482960D94ECD7002CF803 /* XMLTreeWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLTreeWrapper.h; path = sharecode/XMLTreeWrapper.h; sourceTree = "<group>"; };
 		34A482970D94ECD7002CF803 /* XMLTreeWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLTreeWrapper.m; path = sharecode/XMLTreeWrapper.m; sourceTree = "<group>"; };
@@ -104,6 +114,11 @@
 		08FB77AFFE84173DC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3428689211244C7D0063E730 /* TableView_configlist.h */,
+				3428689311244C7D0063E730 /* TableView_configlist.m */,
+				34286890112449340063E730 /* bundleprefix.h */,
+				3428688C1124492B0063E730 /* ConfigControl.h */,
+				3428688D1124492B0063E730 /* ConfigControl.m */,
 				34275C401053FE6000EF31B9 /* sharecode */,
 				34CBFDD50D94CEC00087D9DB /* OutlineView_checkbox.h */,
 				34CBFDD60D94CEC00087D9DB /* OutlineView_checkbox.m */,
@@ -176,6 +191,9 @@
 				34CBFDDD0D94CEC00087D9DB /* OutlineView_number.h in Headers */,
 				34A482980D94ECD7002CF803 /* XMLTreeWrapper.h in Headers */,
 				34070C3D0DC89C050022A857 /* Common.h in Headers */,
+				3428688E1124492B0063E730 /* ConfigControl.h in Headers */,
+				34286891112449340063E730 /* bundleprefix.h in Headers */,
+				3428689411244C7D0063E730 /* TableView_configlist.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +271,8 @@
 				34CBFDDE0D94CEC00087D9DB /* OutlineView_number.m in Sources */,
 				34A482990D94ECD7002CF803 /* XMLTreeWrapper.m in Sources */,
 				34070C3E0DC89C050022A857 /* Common.m in Sources */,
+				3428688F1124492B0063E730 /* ConfigControl.m in Sources */,
+				3428689511244C7D0063E730 /* TableView_configlist.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

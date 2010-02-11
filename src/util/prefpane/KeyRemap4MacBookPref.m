@@ -2,6 +2,7 @@
 
 #import "KeyRemap4MacBookPref.h"
 #import "Common.h"
+#import "ConfigControl.h"
 #import "SysctlWrapper.h"
 
 @implementation KeyRemap4MacBookPref
@@ -22,10 +23,7 @@ static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
 /* ---------------------------------------------------------------------- */
 - (void) setStatusBarState
 {
-  NSString* result = [BUNDLEPREFIX(Common) getExecResult:sysctl_ctl args:[NSArray arrayWithObjects:@"statusbar", nil]];
-  if (! result) return;
-
-  if ([result intValue] == 1) {
+  if ([ConfigControl isStatusbarEnable]) {
     [_checkbox_statusbar setState:NSOnState];
   } else {
     [_checkbox_statusbar setState:NSOffState];
