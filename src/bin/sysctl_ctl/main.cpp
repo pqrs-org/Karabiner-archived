@@ -14,6 +14,16 @@ namespace {
   CFStringRef applicationID = CFSTR("org.pqrs.KeyRemap4MacBook");
 
   // ============================================================
+  bool
+  isInitialized(void)
+  {
+    int value;
+    size_t len = sizeof(value);
+    if (sysctlbyname("keyremap4macbook.initialized", &value, &len, NULL, 0) == -1) return false;
+    return value;
+  }
+
+  // ============================================================
   // SAVE & LOAD
   CFMutableDictionaryRef dict_sysctl = NULL;
   std::map<std::string, int> map_reset;
@@ -111,6 +121,7 @@ namespace {
   bool
   saveToFile(const char** targetFiles, CFStringRef identify)
   {
+    if (! isInitialized()) return false;
     if (! makeMapReset()) return false;
 
     dict_sysctl = CFDictionaryCreateMutable(NULL, 0, NULL, NULL);
@@ -131,7 +142,7 @@ namespace {
   loadFromFile(const char** targetFiles, CFStringRef identify)
   {
     dict_sysctl = reinterpret_cast<CFMutableDictionaryRef>(const_cast<void*>(CFPreferencesCopyAppValue(identify, applicationID)));
-    if (! dict_sysctl) return false;
+    if (! dict_sysctl) return true;
 
     for (int i = 0;; ++i) {
       const char* filename = targetFiles[i];
@@ -260,15 +271,6 @@ namespace {
     return true;
   }
 
-  CFIndex
-  getConfigCount(void)
-  {
-    CFArrayRef list = getConfigList();
-    if (! list) return 0;
-
-    return CFArrayGetCount(list);
-  }
-
   // ----------------------------------------
   bool
   setSelectedIndex(CFIndex index)
@@ -294,6 +296,47 @@ namespace {
     return value;
   }
 
+  void
+  stripString(char* buf, size_t buflen)
+  {
+    char* p = buf;
+    for (;;) {
+      if (! isspace(*p)) break;
+      ++p;
+    }
+    char* q = p;
+    for (;;) {
+      if (*q == '\0' || *q == '\r' || *q == '\n') break;
+      ++q;
+    }
+    *q = '\0';
+    snprintf(buf, buflen, "%s", p);
+  }
+
+  void
+  outputConfigList(void)
+  {
+    CFArrayRef list = getConfigList();
+    if (! list) return;
+
+    CFIndex selected = getSelectedIndex();
+
+    for (int i = 0; i < CFArrayGetCount(list); ++i) {
+      CFDictionaryRef d = reinterpret_cast<CFDictionaryRef>(CFArrayGetValueAtIndex(list, i));
+      CFStringRef s = reinterpret_cast<CFStringRef>(CFDictionaryGetValue(d, CFSTR("name")));
+
+      std::cout << ((i == selected) ? "+" : "-");
+
+      char buf[512];
+      if (CFStringGetCString(s, buf, sizeof(buf), kCFStringEncodingUTF8)) {
+        stripString(buf, sizeof(buf));
+      } else {
+        snprintf(buf, sizeof(buf), "(null)");
+      }
+      std::cout << buf << std::endl;
+    }
+  }
+
   // ----------------------------------------
   bool
   setValue(CFStringRef name, CFIndex enable)
@@ -314,31 +357,13 @@ namespace {
     }
     return value;
   }
-
-  void
-  stripString(char* buf, size_t buflen)
-  {
-    char* p = buf;
-    for (;;) {
-      if (! isspace(*p)) break;
-      ++p;
-    }
-    char* q = p;
-    for (;;) {
-      if (*q == '\0' || *q == '\r' || *q == '\n') break;
-      ++q;
-    }
-    *q = '\0';
-    snprintf(buf, buflen, "%s", p);
-  }
 }
-
 
 int
 main(int argc, char** argv)
 {
   if (argc == 1) {
-    fprintf(stderr, "Usage: %s (save|load|add|delete|rename|getname|select|count|current|statusbar|toggle_statusbar) [params]\n", argv[0]);
+    fprintf(stderr, "Usage: %s (save|load|add|delete|rename|select|list|statusbar|toggle_statusbar|checkupdate|set_checkupdate) [params]\n", argv[0]);
     return 1;
   }
 
@@ -378,12 +403,8 @@ main(int argc, char** argv)
     }
     isSuccess = renameConfig(index, buf);
 
-  } else if (strcmp(argv[1], "count") == 0) {
-    printf("%ld\n", getConfigCount());
-    return 0;
-
-  } else if (strcmp(argv[1], "current") == 0) {
-    printf("%ld\n", getSelectedIndex());
+  } else if (strcmp(argv[1], "list") == 0) {
+    outputConfigList();
     return 0;
 
   } else if (strcmp(argv[1], "statusbar") == 0) {
@@ -408,24 +429,6 @@ main(int argc, char** argv)
     CFStringRef name = CFSTR("isCheckUpdate");
     CFIndex value = atoi(argv[2]);
     isSuccess = setValue(name, value);
-
-  } else if (strcmp(argv[1], "getname") == 0) {
-    if (argc < 3) {
-      fprintf(stderr, "Usage: %s getname index\n", argv[0]);
-      goto finish;
-    }
-    int index = atoi(argv[2]);
-    CFStringRef name = getConfigName(index);
-    if (name) {
-      char buf[512];
-      if (CFStringGetCString(name, buf, sizeof(buf), kCFStringEncodingUTF8)) {
-        stripString(buf, sizeof(buf));
-        printf("%s\n", buf);
-      } else {
-        printf("(null)\n", buf);
-      }
-    }
-    return 0;
 
   } else if ((strcmp(argv[1], "save") == 0) || (strcmp(argv[1], "load") == 0)) {
     CFIndex value = getSelectedIndex();
