@@ -64,10 +64,6 @@ enum {
   NSPasteboard* pboard = [NSPasteboard generalPasteboard];
   NSMutableString* string = [[NSMutableString alloc] init];
 
-  [string appendFormat:@"applicationName: %@\n", applicationname_];
-  [string appendFormat:@"inputsourceName: %@\n", inputsourcename_];
-  [string appendString:@"\n"];
-
   for (NSUInteger i = 0; i < [queue_ count]; ++i) {
     NSDictionary* dict = [queue_ objectAtIndex:([queue_ count] - 1 - i)];
     [string appendFormat:@"eventType:%@\tcode:%@\tname:%@\tflags:%@\tmisc:%@\n",
@@ -78,24 +74,10 @@ enum {
      [dict  objectForKey:@"misc"]];
   }
 
-  [pboard clearContents];
-  [pboard writeObjects:[NSArray arrayWithObject:string]];
-}
-
-- (void) setApplicationName:(NSString*)name
-{
-  if ([name isEqualToString:@"org.pqrs.KeyRemap4MacBook.KeyDump"]) {
-    return;
+  if ([string length] > 0) {
+    [pboard clearContents];
+    [pboard writeObjects:[NSArray arrayWithObject:string]];
   }
-
-  applicationname_ = name;
-  [label_applicationname_ setStringValue:name];
-}
-
-- (void) setInputSourceName:(NSString*)name
-{
-  inputsourcename_ = name;
-  [label_inputsourcename_ setStringValue:name];
 }
 
 @end

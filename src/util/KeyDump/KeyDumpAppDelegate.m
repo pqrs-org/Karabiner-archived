@@ -19,7 +19,7 @@
   char buffer[512];
   getActiveApplicationName(buffer, sizeof(buffer));
   NSString* name = [NSString stringWithCString:buffer encoding:NSUTF8StringEncoding];
-  [eventqueue_ setApplicationName:name];
+  [otherinformationstore_ setApplicationName:name];
 }
 
 // ------------------------------------------------------------
@@ -33,8 +33,8 @@ static void observer_kTISNotifySelectedKeyboardInputSourceChanged(CFNotification
   getTISPropertyInputModeID(buffer, sizeof(buffer));
   NSString* inputsourcename = [NSString stringWithCString:buffer encoding:NSUTF8StringEncoding];
 
-  EventQueue* eq = observer;
-  [eq setInputSourceName:inputsourcename];
+  OtherInformationStore* ois = observer;
+  [ois setInputSourceName:inputsourcename];
 }
 
 // ------------------------------------------------------------
@@ -47,19 +47,19 @@ static void observer_kTISNotifySelectedKeyboardInputSourceChanged(CFNotification
                                                            object:nil];
 
   CFNotificationCenterAddObserver(CFNotificationCenterGetDistributedCenter(),
-                                  eventqueue_,
+                                  otherinformationstore_,
                                   observer_kTISNotifySelectedKeyboardInputSourceChanged,
                                   kTISNotifySelectedKeyboardInputSourceChanged,
                                   NULL,
                                   CFNotificationSuspensionBehaviorCoalesce);
 
-  [eventqueue_ setApplicationName:@""];
-  observer_kTISNotifySelectedKeyboardInputSourceChanged(NULL, eventqueue_, NULL, NULL, NULL);
+  [otherinformationstore_ setVersion];
+  [otherinformationstore_ setApplicationName:@"---"];
+  observer_kTISNotifySelectedKeyboardInputSourceChanged(NULL, otherinformationstore_, NULL, NULL, NULL);
 }
 
-- (IBAction) quit:(id)sender
-{
-  [NSApp terminate:self];
+- (BOOL) applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
+  return YES;
 }
 
 @end
