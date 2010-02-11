@@ -8,18 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 #import "EventQueue.h"
+#import "OtherInformationStore.h"
 
 @interface KeyDumpAppDelegate : NSObject <NSApplicationDelegate> {
   NSWindow* window;
   IBOutlet id keyResponder_;
-  IBOutlet EventQueue* eventqueue_;
+  IBOutlet OtherInformationStore* otherinformationstore_;
 }
 
 @property (assign) IBOutlet NSWindow* window;
-
-//
-// Actions
-//
-- (IBAction) quit:(id)sender;
 
 @end
