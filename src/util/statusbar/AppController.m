@@ -1,12 +1,12 @@
 #import "AppController.h"
-#import "ConfigList.h"
+#import "ConfigControl.h"
 
 @implementation AppController
 
 - (void) configItemSelected:(id)sender
 {
   NSString* idx = [sender representedObject];
-  [ConfigList select:idx];
+  [ConfigControl select:idx];
 }
 
 - (void) menuNeedsUpdate:(NSMenu*)menu
@@ -22,27 +22,31 @@
 
   // --------------------
   // append
-  int selectedIndex = [ConfigList getSelectedIndex];
-
-  int size = [ConfigList getSize];
+  NSArray* list = [ConfigControl getConfigList];
   int i = 0;
-  for (i = 0; i < size; ++i) {
-    NSMenuItem* newItem = [[[NSMenuItem alloc] initWithTitle:[ConfigList getName:i] action:@selector(configItemSelected:)keyEquivalent:@""] autorelease];
+  for (id name in list) {
+    if ([name length] == 0) continue;
+
+    NSString* selected = [name substringToIndex:1];
+    NSString* title = [name substringFromIndex:1];
+
+    NSMenuItem* newItem = [[[NSMenuItem alloc] initWithTitle:title action:@selector(configItemSelected:)keyEquivalent:@""] autorelease];
     NSString* idx = [[[NSString alloc] initWithFormat:@"%d", i] autorelease];
     [newItem setRepresentedObject:idx];
-    if (selectedIndex == i) {
+    if ([selected isEqualToString:@"+"]) {
       [newItem setState:NSOnState];
     } else {
       [newItem setState:NSOffState];
     }
 
     [_statusMenu insertItem:newItem atIndex:i];
+    ++i;
   }
 }
 
 - (void) applicationDidFinishLaunching:(NSNotification*)notification
 {
-  if (! [ConfigList isStatusbarEnable]) {
+  if (! [ConfigControl isStatusbarEnable]) {
     [NSApp terminate:self];
 
   } else {
@@ -58,12 +62,6 @@
 
     [_statusItem setMenu:_statusMenu];
   }
-}
-
-- (IBAction) openSettingList:(id)sender
-{
-  [NSApp activateIgnoringOtherApps:YES];
-  [_window makeKeyAndOrderFront:self];
 }
 
 - (IBAction) openPreferencePane:(id)sender

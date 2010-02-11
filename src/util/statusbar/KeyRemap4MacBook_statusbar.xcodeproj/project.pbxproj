@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3406C8640DC0BACB00343C8A /* TableView_list.m in Sources */ = {isa = PBXBuildFile; fileRef = 3406C8620DC0BACB00343C8A /* TableView_list.m */; };
-		3454A7C10DC4BE10004998A8 /* ConfigList.m in Sources */ = {isa = PBXBuildFile; fileRef = 3454A7C00DC4BE10004998A8 /* ConfigList.m */; };
+		345F4BAA1124508F007989AC /* ConfigControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 345F4BA91124508F007989AC /* ConfigControl.m */; };
 		348F3B200DB4D19900E53E06 /* icon.statusbar.0.tif in Resources */ = {isa = PBXBuildFile; fileRef = 348F3B1E0DB4D19900E53E06 /* icon.statusbar.0.tif */; };
 		348F3B210DB4D19900E53E06 /* icon.statusbar.1.tif in Resources */ = {isa = PBXBuildFile; fileRef = 348F3B1F0DB4D19900E53E06 /* icon.statusbar.1.tif */; };
 		348F3B230DB4D1B900E53E06 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 348F3B220DB4D1B900E53E06 /* AppController.m */; };
@@ -27,11 +26,9 @@
 		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		3406C8610DC0BACB00343C8A /* TableView_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView_list.h; sourceTree = "<group>"; };
-		3406C8620DC0BACB00343C8A /* TableView_list.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView_list.m; sourceTree = "<group>"; };
 		340C1F4D0DC4D0A2007A0C1B /* KeyRemap4MacBook_statusbar_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyRemap4MacBook_statusbar_Prefix.pch; sourceTree = "<group>"; };
-		3454A7BF0DC4BE10004998A8 /* ConfigList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigList.h; sourceTree = "<group>"; };
-		3454A7C00DC4BE10004998A8 /* ConfigList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigList.m; sourceTree = "<group>"; };
+		345F4BA81124508F007989AC /* ConfigControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigControl.h; sourceTree = "<group>"; };
+		345F4BA91124508F007989AC /* ConfigControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigControl.m; sourceTree = "<group>"; };
 		348F3B1E0DB4D19900E53E06 /* icon.statusbar.0.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon.statusbar.0.tif; path = Resources/icon.statusbar.0.tif; sourceTree = "<group>"; };
 		348F3B1F0DB4D19900E53E06 /* icon.statusbar.1.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon.statusbar.1.tif; path = Resources/icon.statusbar.1.tif; sourceTree = "<group>"; };
 		348F3B220DB4D1B900E53E06 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
@@ -58,13 +55,11 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				345F4BA81124508F007989AC /* ConfigControl.h */,
+				345F4BA91124508F007989AC /* ConfigControl.m */,
 				34EAC99A10540E4B00CAE325 /* bundleprefix.h */,
 				34D1FC5C1054096500000272 /* Common.h */,
 				34D1FC5D1054096500000272 /* Common.m */,
-				3454A7BF0DC4BE10004998A8 /* ConfigList.h */,
-				3454A7C00DC4BE10004998A8 /* ConfigList.m */,
-				3406C8610DC0BACB00343C8A /* TableView_list.h */,
-				3406C8620DC0BACB00343C8A /* TableView_list.m */,
 				348F3B2F0DB4D30200E53E06 /* AppController.h */,
 				348F3B220DB4D1B900E53E06 /* AppController.m */,
 			);
@@ -198,9 +193,8 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				348F3B230DB4D1B900E53E06 /* AppController.m in Sources */,
-				3406C8640DC0BACB00343C8A /* TableView_list.m in Sources */,
-				3454A7C10DC4BE10004998A8 /* ConfigList.m in Sources */,
 				34D1FC5E1054096500000272 /* Common.m in Sources */,
+				345F4BAA1124508F007989AC /* ConfigControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
