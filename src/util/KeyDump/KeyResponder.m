@@ -28,6 +28,7 @@
 {
   unsigned short keycode = [event keyCode];
 
+  if (keycode == 0x35) return @"Escape";
   if (keycode == 0x36) return @"Command_R";
   if (keycode == 0x37) return @"Command_L";
   if (keycode == 0x38) return @"Shift_L";
