@@ -427,6 +427,11 @@
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::ENTER</autogen>
         </item>
         <item>
+          <name>Command_R to Escape</name>
+          <sysctl>remap.commandR2escape</sysctl>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::ESCAPE</autogen>
+        </item>
+        <item>
           <name>Command_R to Delete</name>
           <sysctl>remap.commandR2delete</sysctl>
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::DELETE</autogen>
