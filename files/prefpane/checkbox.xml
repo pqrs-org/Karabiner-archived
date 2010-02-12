@@ -3465,6 +3465,29 @@
       </list>
     </item>
     <item>
+      <name>For Italian</name>
+      <list>
+        <item>
+          <name>Option+AEIUO to àèìùò on "Italian Input Source"</name>
+          <sysctl>remap.italian_optionAEIUO_grave_italian</sysctl>
+          <autogen>--KeyToKey-- KeyCode::A, VK_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::A</autogen>
+          <autogen>--KeyToKey-- KeyCode::E, VK_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::E</autogen>
+          <autogen>--KeyToKey-- KeyCode::I, VK_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::I</autogen>
+          <autogen>--KeyToKey-- KeyCode::U, VK_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::U</autogen>
+          <autogen>--KeyToKey-- KeyCode::O, VK_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::O</autogen>
+        </item>
+        <item>
+          <name>Option+AEIUO to àèìùò on "U.S. Input Source"</name>
+          <sysctl>remap.italian_optionAEIUO_grave_us</sysctl>
+          <autogen>--KeyToKey-- KeyCode::A, VK_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::A</autogen>
+          <autogen>--KeyToKey-- KeyCode::E, VK_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::E</autogen>
+          <autogen>--KeyToKey-- KeyCode::I, VK_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::I</autogen>
+          <autogen>--KeyToKey-- KeyCode::U, VK_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::U</autogen>
+          <autogen>--KeyToKey-- KeyCode::O, VK_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::O</autogen>
+        </item>
+      </list>
+    </item>
+    <item>
       <name>For Japanese</name>
       <list>
         <item>
