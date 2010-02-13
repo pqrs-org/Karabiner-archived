@@ -12,7 +12,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace {
     int socket_path_handler SYSCTL_HANDLER_ARGS
     {
-      int error = sysctl_handle_string(oidp, oidp->oid_arg1, oidp->oid_arg2,  req);
+      int error = sysctl_handle_string(oidp, oidp->oid_arg1, oidp->oid_arg2, req);
       if (! error && req->newptr) {
         KeyRemap4MacBook_client::refreshSockAddr();
       }
@@ -21,7 +21,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     int refresh_remapfunc_handler SYSCTL_HANDLER_ARGS
     {
-      int error = sysctl_handle_int(oidp, oidp->oid_arg1, oidp->oid_arg2,  req);
+      int error = sysctl_handle_int(oidp, oidp->oid_arg1, oidp->oid_arg2, req);
       if (! error && req->newptr) {
         refresh_remapfunc();
       }
