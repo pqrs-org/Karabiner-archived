@@ -3,7 +3,7 @@
 
 @interface TableView_configlist : NSObject
 {
-@private
+  @private
   NSMutableArray* cache_;
   IBOutlet id view_;
 }
