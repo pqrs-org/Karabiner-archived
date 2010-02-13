@@ -81,6 +81,19 @@ KeyRemap4MacBook_server::Server::dispatchOperator(int sock)
 
       break;
     }
+    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::REQUEST_STATUS_MESSAGE:
+    {
+      uint32_t size;
+      if (read(sock, &size, sizeof(size)) < 0) goto error;
+
+      org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::StatusMessage::Request request;
+      if (size != sizeof(request)) goto error;
+      if (read(sock, &request, sizeof(request)) < 0) goto error;
+
+      do_StatusMessage(request);
+
+      break;
+    }
     default:
       goto error;
   }
@@ -184,6 +197,17 @@ KeyRemap4MacBook_server::Server::do_ChangeInputMode(const org_pqrs_KeyRemap4MacB
     case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_CANADIAN:
       selectInputSource_canadian();
       break;
+  }
+  return org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS;
+}
+
+org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error
+KeyRemap4MacBook_server::Server::do_StatusMessage(const org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::StatusMessage::Request& request)
+{
+  if (request.show) {
+    show_statuswindow(request.message);
+  } else {
+    hide_statuswindow();
   }
   return org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS;
 }
