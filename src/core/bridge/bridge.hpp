@@ -1,6 +1,8 @@
 #ifndef BRIDGE_HPP
 #define BRIDGE_HPP
 
+#include <string.h>
+
 namespace org_pqrs_KeyRemap4MacBook {
   namespace KeyRemap4MacBook_bridge {
     enum Error {
@@ -12,6 +14,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       REQUEST_NONE,
       REQUEST_GET_WORKSPACE_DATA,
       REQUEST_CHANGE_INPUTMODE,
+      REQUEST_STATUS_MESSAGE,
     };
 
     namespace GetWorkspaceData {
@@ -86,6 +89,26 @@ namespace org_pqrs_KeyRemap4MacBook {
       };
       struct Request {
         InputMode inputmode;
+      };
+      struct Reply {};
+    }
+
+    namespace StatusMessage {
+      struct Request {
+        Request(void) : show(false) {
+          message[0] = '\0';
+        }
+
+        Request(bool s, const char* m = "") : show(s) {
+          if (! m) {
+            message[0] = '\0';
+          } else {
+            strlcpy(message, m, sizeof(message));
+          }
+        }
+
+        bool show;
+        char message[16];
       };
       struct Reply {};
     }

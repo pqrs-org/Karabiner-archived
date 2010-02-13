@@ -12,6 +12,7 @@ $outfile = {
   :remapcode_refresh_remapfunc_key => open('output/include.remapcode_refresh_remapfunc_key.cpp', 'w'),
   :remapcode_refresh_remapfunc_consumer => open('output/include.remapcode_refresh_remapfunc_consumer.cpp', 'w'),
   :remapcode_refresh_remapfunc_pointing => open('output/include.remapcode_refresh_remapfunc_pointing.cpp', 'w'),
+  :remapcode_refresh_remapfunc_statusmessage => open('output/include.remapcode_refresh_remapfunc_statusmessage.cpp', 'w'),
 }
 
 $func = {
@@ -164,9 +165,14 @@ def parseautogen(name, lines, autogen_index)
         case type
         when 'SetKeyboardType'
           $outfile[:remapcode_keyboardtype] << "if (config.#{name}) {\n"
-          # XXX: indent me!
-          $outfile[:remapcode_keyboardtype] << "keyboardType = #{params}.get();\n"
+          $outfile[:remapcode_keyboardtype] << "  keyboardType = #{params}.get();\n"
           $outfile[:remapcode_keyboardtype] << "}\n"
+
+        when 'ShowStatusMessage'
+          $outfile[:remapcode_refresh_remapfunc_statusmessage] << "if (config.#{name}) {\n"
+          $outfile[:remapcode_refresh_remapfunc_statusmessage] << "  statusmessage = #{params};\n"
+          $outfile[:remapcode_refresh_remapfunc_statusmessage] << "  isStatusMessageVisible = true;\n"
+          $outfile[:remapcode_refresh_remapfunc_statusmessage] << "}\n"
 
         when 'KeyToKey'
           code_variable << ['RemapUtil::KeyToKey', "keytokey#{autogen_index}_"]

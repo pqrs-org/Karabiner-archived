@@ -2,6 +2,7 @@
 
 #include "remap.hpp"
 #include "RemapUtil.hpp"
+#include "Client.hpp"
 #include "Config.hpp"
 #include "IOLockWrapper.hpp"
 #include "KeyCode.hpp"
@@ -83,6 +84,31 @@ org_pqrs_KeyRemap4MacBook::refresh_remapfunc(void)
     ++listRemapFunc_pointing_size;
   }
 
+  // ------------------------------------------------------------
+  // handle StatusMessage
+  static bool isCurrentlyStatusMessageVisible = false;
+
+  const char *statusmessage = NULL;
+  bool isStatusMessageVisible = false;
+#include "config/output/include.remapcode_refresh_remapfunc_statusmessage.cpp"
+
+  if (isCurrentlyStatusMessageVisible) {
+    if (! isStatusMessageVisible) {
+      // hide
+      KeyRemap4MacBook_bridge::StatusMessage::Request request(false, "");
+      KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_STATUS_MESSAGE, &request, sizeof(request), NULL, 0);
+      isCurrentlyStatusMessageVisible = false;
+    }
+  } else {
+    if (isStatusMessageVisible == true) {
+      // show
+      KeyRemap4MacBook_bridge::StatusMessage::Request request(true, statusmessage);
+      KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_STATUS_MESSAGE, &request, sizeof(request), NULL, 0);
+      isCurrentlyStatusMessageVisible = true;
+    }
+  }
+
+  // ------------------------------------------------------------
   if (config.debug_devel) {
     printf("KeyRemap4MacBook --INFO-- enabled remappings: key:%d, consumer:%d, pointing:%d\n",
            listRemapFunc_key_size,

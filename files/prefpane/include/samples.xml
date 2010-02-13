@@ -15,6 +15,12 @@
     </item>
 
     <item>
+      <name>ShowStatusMessage</name>
+      <sysctl>remap.samples_showstatusmessage</sysctl>
+      <autogen>--ShowStatusMessage-- "Sample Message"</autogen>
+    </item>
+
+    <item>
       <name>KeyToKey (Standard)</name>
       <appendix>A to B (KeyToKey)</appendix>
       <appendix>S to SHIFT_L (KeyToModifier)</appendix>
