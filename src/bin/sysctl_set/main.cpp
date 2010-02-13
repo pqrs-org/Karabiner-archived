@@ -43,7 +43,7 @@ main(int argc, char** argv)
     int error = sysctlbyname(name, NULL, &oldlen, value, newlen);
 
     if (error) {
-      perror("sysctl");
+      perror("sysctl_set socket_path");
       return 1;
     }
 
@@ -55,7 +55,7 @@ main(int argc, char** argv)
     int error = sysctlbyname(name, NULL, &oldlen, &value, newlen);
 
     if (error) {
-      perror("sysctl");
+      perror("sysctl_set");
       return 1;
     }
   }
