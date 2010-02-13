@@ -787,7 +787,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ------------------------------------------------------------
   bool
-  ToggleConfig::remap(RemapParams& remapParams, KeyCode fromKeyCode, Flags fromFlags, int& configitem)
+  ToggleConfig::remap(RemapParams& remapParams, KeyCode fromKeyCode, Flags fromFlags, int& configitem, Type type)
   {
     bool isKeyDown = remapParams.isKeyDownOrModifierDown();
 
@@ -796,7 +796,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     if (isKeyDown) {
-      configitem = ! configitem;
+      switch (type) {
+        case TYPE_TOGGLE:    configitem = ! configitem; break;
+        case TYPE_FORCE_ON:  configitem = 1; break;
+        case TYPE_FORCE_OFF: configitem = 0; break;
+      }
       refresh_remapfunc();
     }
 

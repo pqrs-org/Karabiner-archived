@@ -240,9 +240,14 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   class ToggleConfig {
   public:
-    bool remap(RemapParams& remapParams, KeyCode fromKeyCode, Flags fromFlags, int& configitem);
-    bool remap(RemapParams& remapParams, KeyCode fromKeyCode, int& configitem) {
-      return remap(remapParams, fromKeyCode, 0, configitem);
+    enum Type {
+      TYPE_TOGGLE,
+      TYPE_FORCE_ON,
+      TYPE_FORCE_OFF,
+    };
+    bool remap(RemapParams& remapParams, KeyCode fromKeyCode, Flags fromFlags, int& configitem, Type type = TYPE_TOGGLE);
+    bool remap(RemapParams& remapParams, KeyCode fromKeyCode, int& configitem, Type type = TYPE_TOGGLE) {
+      return remap(remapParams, fromKeyCode, 0, configitem, type);
     }
 
   private:
