@@ -3,6 +3,8 @@
 
 #ifndef __cplusplus
 
+#import <Cocoa/Cocoa.h>
+
 void getActiveApplicationName(char* buffer, size_t len);
 
 // get current InputSourceProperty(kTISPropertyInputModeID)
@@ -11,6 +13,9 @@ void getActiveApplicationName(char* buffer, size_t len);
 //       (== does not work from a terminal application).
 //
 void getTISPropertyInputModeID(char* buffer, size_t len);
+
+// ------------------------------------------------------------
+void registerStatusWindow(NSWindow* window, NSTextField* label);
 
 #endif
 
@@ -25,6 +30,9 @@ void selectInputSource_german(void);
 void selectInputSource_japanese(void);
 void selectInputSource_swedish(void);
 void selectInputSource_canadian(void);
+
+void show_statuswindow(const char* message);
+void hide_statuswindow(void);
 
 #ifdef __cplusplus
 }
