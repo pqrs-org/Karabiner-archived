@@ -10,6 +10,7 @@
 
 @interface KeyRemap4MacBook_serverAppDelegate : NSObject <NSApplicationDelegate> {
   NSWindow* window;
+  IBOutlet NSTextField* statusmessage_;
 }
 
 @property (assign) IBOutlet NSWindow* window;

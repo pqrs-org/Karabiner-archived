@@ -170,6 +170,33 @@ selectInputSource_language(CFStringRef language)
   CFRelease(inputsource);
 }
 
+static NSWindow* statuswindow = nil;
+static NSTextField* statuswindow_label = nil;
+
+void
+registerStatusWindow(NSWindow* window, NSTextField* label)
+{
+  statuswindow = window;
+  statuswindow_label = label;
+}
+
+void
+show_statuswindow(const char* message)
+{
+  if (! message) return;
+  if (! statuswindow) return;
+  if (! statuswindow_label) return;
+
+  [statuswindow_label setStringValue:[NSString stringWithCString:message encoding:NSUTF8StringEncoding]];
+  [statuswindow makeKeyAndOrderFront:nil];
+}
+
+void
+hide_statuswindow(void)
+{
+  [statuswindow orderOut:nil];
+}
+
 // ======================================================================
 void selectInputSource_canadian(void) { selectInputSource_language(CFSTR("ca")); }
 void selectInputSource_english(void) { selectInputSource_language(CFSTR("en")); }

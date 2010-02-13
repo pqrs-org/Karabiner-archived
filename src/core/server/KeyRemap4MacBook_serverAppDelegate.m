@@ -37,6 +37,22 @@
   [NSThread exit];
 }
 
+- (void) setupStatusWindow {
+  NSWindowCollectionBehavior behavior = NSWindowCollectionBehaviorCanJoinAllSpaces |
+                                        NSWindowCollectionBehaviorStationary |
+                                        NSWindowCollectionBehaviorIgnoresCycle;
+
+  [window setBackgroundColor:[NSColor clearColor]];
+  [window setOpaque:NO];
+  [window setStyleMask:NSBorderlessWindowMask];
+  [window setLevel:NSStatusWindowLevel];
+  [window setIgnoresMouseEvents:YES];
+  [window setCollectionBehavior:behavior];
+  [window center];
+
+  registerStatusWindow(window, statusmessage_);
+}
+
 // ------------------------------------------------------------
 - (void) observer_NSWorkspaceDidActivateApplicationNotification:(NSNotification*)notification
 {
@@ -121,6 +137,8 @@ static void observer_kTISNotifySelectedKeyboardInputSourceChanged(CFNotification
   [NSThread detachNewThreadSelector:@selector(configThreadMain)
                            toTarget:self
                          withObject:nil];
+
+  [self setupStatusWindow];
 
   // ------------------------------------------------------------
   // Kick updater
