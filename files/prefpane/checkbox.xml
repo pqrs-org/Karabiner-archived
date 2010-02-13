@@ -2569,6 +2569,38 @@
           <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::OPTION_L, KeyCode::CURSOR_UP, ModifierFlag::OPTION_L</autogen>
           <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::OPTION_L, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
         </item>
+        <item>
+          <name>Completely Vi Mode</name>
+          <list>
+            <item>
+              <name>Option+V to toggle Vi Mode</name>
+              <sysctl>option.vimode_toggle_optionV</sysctl>
+              <autogen>--ToggleConfig-- KeyCode::V, VK_OPTION, config.remap_completely_vimode</autogen>
+            </item>
+            <item>
+              <name>Option+V to turn on Vi Mode</name>
+              <sysctl>option.vimode_turnon_optionV</sysctl>
+              <autogen>--ToggleConfig-- KeyCode::V, VK_OPTION, config.remap_completely_vimode, ToggleConfig::TYPE_FORCE_ON</autogen>
+            </item>
+            <item>
+              <name>Completely Vi Mode Core</name>
+              <list>
+                <item>
+                  <name>Completely Vi Mode Core</name>
+                  <appendix>hjkl to Left/Down/Up/Right</appendix>
+                  <appendix>Escape to turn off Vi Mode</appendix>
+                  <sysctl>remap.completely_vimode</sysctl>
+                  <autogen>--ShowStatusMessage-- "Vi Mode"</autogen>
+                  <autogen>--KeyToKey-- KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
+                  <autogen>--KeyToKey-- KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
+                  <autogen>--KeyToKey-- KeyCode::K, KeyCode::CURSOR_UP</autogen>
+                  <autogen>--KeyToKey-- KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
+                  <autogen>--ToggleConfig-- KeyCode::ESCAPE, config.remap_completely_vimode, ToggleConfig::TYPE_FORCE_OFF</autogen>
+                </item>
+              </list>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
 
