@@ -97,6 +97,18 @@ TEST(FlagStatus, getFlag) {
   EXPECT_EQ(ModifierFlag::CAPSLOCK, FlagStatus::getFlag(0));
 }
 
+TEST(FlagStatus, getLockedFlags) {
+  ASSERT_TRUE(FlagStatus::initialize());
+
+  EXPECT_EQ(Flags(0), FlagStatus::getLockedFlags());
+
+  FlagStatus::increase(ModifierFlag::SHIFT_L);
+  FlagStatus::temporary_increase(ModifierFlag::SHIFT_R);
+  FlagStatus::lock_increase(ModifierFlag::COMMAND_L);
+  FlagStatus::lock_increase(ModifierFlag::OPTION_L);
+  EXPECT_EQ(ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L, FlagStatus::getLockedFlags());
+}
+
 TEST(FlagStatus, increase) {
   ASSERT_TRUE(FlagStatus::initialize());
 

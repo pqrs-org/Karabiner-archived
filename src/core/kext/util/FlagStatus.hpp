@@ -50,6 +50,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     static ModifierFlag getFlag(int index);
     static void reset(void);
 
+    static Flags getLockedFlags(void);
+
     static void increase(Flags flags);
     static void decrease(Flags flags);
     static void temporary_increase(Flags flags);
