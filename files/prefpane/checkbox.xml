@@ -948,6 +948,11 @@
           <autogen>--KeyOverlaidModifier-- KeyCode::FN, KeyCode::FN, KeyCode::VK_LOCK_FN</autogen>
         </item>
         <item>
+          <name>FN to FN_Lock</name>
+          <sysctl>remap.fn2fnlock</sysctl>
+          <autogen>--KeyToKey-- KeyCode::FN, KeyCode::VK_LOCK_FN</autogen>
+        </item>
+        <item>
           <name>FN to Option_L</name>
           <sysctl>remap.fn2optionL</sysctl>
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::OPTION_L</autogen>
@@ -2608,6 +2613,12 @@
                 <item>
                   <name>Completely Vi Mode Core</name>
                   <appendix>hjkl to Left/Down/Up/Right</appendix>
+                  <appendix>b to Option_L+Left</appendix>
+                  <appendix>e to Option_L+Right</appendix>
+                  <appendix>Control+F to PageDown</appendix>
+                  <appendix>Control+B to PageUp</appendix>
+                  <appendix>g to Home</appendix>
+                  <appendix>Shift+g to End</appendix>
                   <appendix>Escape to turn off Vi Mode</appendix>
                   <sysctl>remap.completely_vimode</sysctl>
                   <autogen>--ShowStatusMessage-- "Vi Mode"</autogen>
@@ -2615,6 +2626,16 @@
                   <autogen>--KeyToKey-- KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
                   <autogen>--KeyToKey-- KeyCode::K, KeyCode::CURSOR_UP</autogen>
                   <autogen>--KeyToKey-- KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
+
+                  <autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::PAGEDOWN</autogen>
+                  <autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::PAGEUP</autogen>
+
+                  <autogen>--KeyToKey-- KeyCode::B, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
+                  <autogen>--KeyToKey-- KeyCode::E, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
+
+                  <autogen>--KeyToKey-- KeyCode::G, VK_SHIFT, KeyCode::END</autogen>
+                  <autogen>--KeyToKey-- KeyCode::G, KeyCode::HOME</autogen>
+
                   <autogen>--ToggleConfig-- KeyCode::ESCAPE, config.remap_completely_vimode, ToggleConfig::TYPE_FORCE_OFF</autogen>
                 </item>
               </list>
