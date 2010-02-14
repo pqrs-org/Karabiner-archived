@@ -81,6 +81,28 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   bool
+  Handle_VK_TOGGLE_CONFIG::handle(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
+  {
+    int *configitem = NULL;
+
+    if (params.key == KeyCode::VK_TOGGLE_CONFIG_remap_completely_vimode) {
+      configitem = &(config.remap_completely_vimode);
+    } else {
+      return false;
+    }
+
+    // ------------------------------------------------------------
+    if (params.eventType == EventType::DOWN && params.repeat == false) {
+      if (configitem) {
+        *configitem = ! *configitem;
+        refresh_remapfunc();
+      }
+    }
+    return true;
+  }
+
+  // ----------------------------------------------------------------------
+  bool
   Handle_VK_JIS_TOGGLE_EISUU_KANA::handle(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
   {
     if (params.key != KeyCode::VK_JIS_TOGGLE_EISUU_KANA) return false;

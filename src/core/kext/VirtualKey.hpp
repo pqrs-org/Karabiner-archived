@@ -45,6 +45,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
 
   // ----------------------------------------------------------------------
+  class Handle_VK_TOGGLE_CONFIG {
+  public:
+    static bool handle(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
+  };
+
+  // ----------------------------------------------------------------------
   class Handle_VK_JIS_TOGGLE_EISUU_KANA {
   public:
     static bool handle(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
