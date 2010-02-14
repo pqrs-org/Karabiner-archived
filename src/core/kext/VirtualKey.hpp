@@ -20,6 +20,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool active_;
     const KeyCode& key_;
     const ModifierFlag& flag_;
+
+    static Flags statusMessageFlags;
   };
 
   class Handle_VK_LOCK_FN {

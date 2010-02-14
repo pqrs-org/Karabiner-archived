@@ -25,6 +25,10 @@
           <appendix>(Keep LED on to prevent a delay of CapsLock at some Apple's keyboard)</appendix>
           <sysctl>general.capslock_led_hack</sysctl>
         </item>
+        <item>
+          <name>Don't show Modifier lock status on screen</name>
+          <sysctl>general.hide_modifier_lock_status</sysctl>
+        </item>
       </list>
     </item>
 

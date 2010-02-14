@@ -1,11 +1,14 @@
 #include "base.hpp"
 #include "Client.hpp"
+#include "Config.hpp"
 #include "FlagStatus.hpp"
 #include "VirtualKey.hpp"
 #include "RemapUtil.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------------------------------------
+  Flags Handle_VK_LOCK_common::statusMessageFlags(0);
+
   bool
   Handle_VK_LOCK_common::handle(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
   {
@@ -20,6 +23,29 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
 
+    // ------------------------------------------------------------
+    // handle StatusMessage
+    if (! config.general_hide_modifier_lock_status) {
+      Flags f = FlagStatus::getLockedFlags();
+      if (f != statusMessageFlags) {
+        KeyRemap4MacBook_bridge::StatusMessage::Request request(false, "Lock: ");
+
+        if (f.isOn(ModifierFlag::FN)) {
+          request.show = true;
+          strlcat(request.message, "FN ", sizeof(request.message));
+        }
+        if (f.isOn(ModifierFlag::COMMAND_L) || f.isOn(ModifierFlag::COMMAND_R)) {
+          request.show = true;
+          strlcat(request.message, "Cmd ", sizeof(request.message));
+        }
+
+        KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_STATUS_MESSAGE, &request, sizeof(request), NULL, 0);
+
+        statusMessageFlags = f;
+      }
+    }
+
+    // ------------------------------------------------------------
     return true;
   }
 
