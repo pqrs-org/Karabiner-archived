@@ -559,6 +559,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (Handle_VK_LOCK_FN::handle(p, workspacedata)) return;
     if (Handle_VK_LOCK_COMMAND_R::handle(p, workspacedata)) return;
     if (Handle_VK_CHANGE_INPUTMODE::handle(p, workspacedata)) return;
+    if (Handle_VK_TOGGLE_CONFIG::handle(p, workspacedata)) return;
     if (Handle_VK_JIS_TOGGLE_EISUU_KANA::handle(p, workspacedata)) return;
     if (handle_VK_JIS_EISUU_x2(p, workspacedata)) return;
     if (handle_VK_JIS_KANA_x2(p, workspacedata)) return;
