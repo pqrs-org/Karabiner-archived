@@ -1,3 +1,5 @@
+/* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
+
 #ifndef SERVER_OBJC_PART_H
 #define SERVER_OBJC_PART_H
 
@@ -15,7 +17,7 @@ void getActiveApplicationName(char* buffer, size_t len);
 void getTISPropertyInputModeID(char* buffer, size_t len);
 
 // ------------------------------------------------------------
-void registerStatusWindow(NSWindow* window, NSTextField* label_lock, NSTextField* label_extra);
+void registerStatusWindow(NSWindow* window, NSTextField* label);
 
 #endif
 

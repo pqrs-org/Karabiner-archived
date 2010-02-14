@@ -50,9 +50,7 @@
   [window setCollectionBehavior:behavior];
   [window center];
 
-  [label_lock_ setStringValue:@""];
-  [label_extra_ setStringValue:@""];
-  registerStatusWindow(window, label_lock_, label_extra_);
+  registerStatusWindow(window, statusmessage_);
 }
 
 // ------------------------------------------------------------
