@@ -942,6 +942,12 @@
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
+          <name>FN to FN</name>
+          <appendix>(+ When you type FN only, send FN_Lock)</appendix>
+          <sysctl>remap.fn2fn_fnlock</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::FN, KeyCode::FN, KeyCode::VK_LOCK_FN</autogen>
+        </item>
+        <item>
           <name>FN to Option_L</name>
           <sysctl>remap.fn2optionL</sysctl>
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::OPTION_L</autogen>
@@ -3197,6 +3203,12 @@
               <name>Application Key to FN</name>
               <sysctl>remap.pc_application2fn</sysctl>
               <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::FN</autogen>
+            </item>
+            <item>
+              <name>Application Key to FN</name>
+              <appendix>(+ When you type Application only, send FN_Lock)</appendix>
+              <sysctl>remap.pc_application2fn_fnlock</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::PC_APPLICATION, KeyCode::FN, KeyCode::VK_LOCK_FN</autogen>
             </item>
             <item>
               <name>Application Key to Option_L</name>
