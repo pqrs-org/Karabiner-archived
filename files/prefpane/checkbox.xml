@@ -1828,6 +1828,12 @@
           <sysctl>remap.drop_shiftL</sysctl>
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::VK_NONE</autogen>
         </item>
+        <item>
+          <name>Drop Shift_L</name>
+          <appendix>(+ When you type Shift_L only, send FN_Lock)</appendix>
+          <sysctl>remap.drop_shiftL_fn</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::VK_NONE, KeyCode::VK_LOCK_FN</autogen>
+        </item>
       </list>
     </item>
 
