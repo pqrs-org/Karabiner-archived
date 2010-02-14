@@ -95,14 +95,14 @@ org_pqrs_KeyRemap4MacBook::refresh_remapfunc(void)
   if (isCurrentlyStatusMessageVisible) {
     if (! isStatusMessageVisible) {
       // hide
-      KeyRemap4MacBook_bridge::StatusMessage::Request request(false, "");
+      KeyRemap4MacBook_bridge::StatusMessage::Request request(KeyRemap4MacBook_bridge::StatusMessage::MESSAGETYPE_EXTRA, "");
       KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_STATUS_MESSAGE, &request, sizeof(request), NULL, 0);
       isCurrentlyStatusMessageVisible = false;
     }
   } else {
     if (isStatusMessageVisible == true) {
       // show
-      KeyRemap4MacBook_bridge::StatusMessage::Request request(true, statusmessage);
+      KeyRemap4MacBook_bridge::StatusMessage::Request request(KeyRemap4MacBook_bridge::StatusMessage::MESSAGETYPE_EXTRA, statusmessage);
       KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_STATUS_MESSAGE, &request, sizeof(request), NULL, 0);
       isCurrentlyStatusMessageVisible = true;
     }

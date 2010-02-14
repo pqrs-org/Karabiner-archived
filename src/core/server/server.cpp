@@ -204,11 +204,20 @@ KeyRemap4MacBook_server::Server::do_ChangeInputMode(const org_pqrs_KeyRemap4MacB
 org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error
 KeyRemap4MacBook_server::Server::do_StatusMessage(const org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::StatusMessage::Request& request)
 {
-  if (request.show) {
-    show_statuswindow(request.message);
-  } else {
-    hide_statuswindow();
+  StatusMessageType type = STATUSMESSAGETYPE_NONE;
+
+  switch (request.type) {
+    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::StatusMessage::MESSAGETYPE_MODIFIER_LOCK:
+      type = STATUSMESSAGETYPE_LOCK;
+      break;
+    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::StatusMessage::MESSAGETYPE_EXTRA:
+      type = STATUSMESSAGETYPE_EXTRA;
+      break;
+    default:
+      break;
   }
+  set_statusmessage(type, request.message);
+
   return org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS;
 }
 
