@@ -94,12 +94,18 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     namespace StatusMessage {
+      enum MessageType {
+        MESSAGETYPE_NONE,
+        MESSAGETYPE_MODIFIER_LOCK,
+        MESSAGETYPE_EXTRA,
+      };
+
       struct Request {
-        Request(void) : show(false) {
+        Request(void) : type(MESSAGETYPE_NONE) {
           message[0] = '\0';
         }
 
-        Request(bool s, const char* m = "") : show(s) {
+        Request(MessageType t, const char* m = "") : type(t) {
           if (! m) {
             message[0] = '\0';
           } else {
@@ -107,7 +113,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
         }
 
-        bool show;
+        MessageType type;
         char message[16];
       };
       struct Reply {};

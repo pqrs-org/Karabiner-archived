@@ -15,7 +15,7 @@ void getActiveApplicationName(char* buffer, size_t len);
 void getTISPropertyInputModeID(char* buffer, size_t len);
 
 // ------------------------------------------------------------
-void registerStatusWindow(NSWindow* window, NSTextField* label);
+void registerStatusWindow(NSWindow* window, NSTextField* label_lock, NSTextField* label_extra);
 
 #endif
 
@@ -31,8 +31,12 @@ void selectInputSource_japanese(void);
 void selectInputSource_swedish(void);
 void selectInputSource_canadian(void);
 
-void show_statuswindow(const char* message);
-void hide_statuswindow(void);
+typedef enum {
+  STATUSMESSAGETYPE_NONE,
+  STATUSMESSAGETYPE_LOCK,
+  STATUSMESSAGETYPE_EXTRA,
+} StatusMessageType;
+void set_statusmessage(StatusMessageType type, const char* message);
 
 #ifdef __cplusplus
 }

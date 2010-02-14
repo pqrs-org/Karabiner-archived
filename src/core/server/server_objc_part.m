@@ -171,30 +171,50 @@ selectInputSource_language(CFStringRef language)
 }
 
 static NSWindow* statuswindow = nil;
-static NSTextField* statuswindow_label = nil;
+static NSTextField* statuswindow_label_lock = nil;
+static NSTextField* statuswindow_label_extra = nil;
 
 void
-registerStatusWindow(NSWindow* window, NSTextField* label)
+registerStatusWindow(NSWindow* window, NSTextField* label_lock, NSTextField* label_extra)
 {
   statuswindow = window;
-  statuswindow_label = label;
+  statuswindow_label_lock = label_lock;
+  statuswindow_label_extra = label_extra;
 }
 
 void
-show_statuswindow(const char* message)
+set_statusmessage(StatusMessageType type, const char* message)
 {
   if (! message) return;
   if (! statuswindow) return;
-  if (! statuswindow_label) return;
+  if (! statuswindow_label_lock) return;
+  if (! statuswindow_label_extra) return;
 
-  [statuswindow_label setStringValue:[NSString stringWithCString:message encoding:NSUTF8StringEncoding]];
-  [statuswindow makeKeyAndOrderFront:nil];
-}
+  NSTextField* label = nil;
 
-void
-hide_statuswindow(void)
-{
-  [statuswindow orderOut:nil];
+  switch (type) {
+  case STATUSMESSAGETYPE_LOCK:
+    label = statuswindow_label_lock;
+    break;
+  case STATUSMESSAGETYPE_EXTRA:
+    label = statuswindow_label_extra;
+    break;
+  default:
+    break;
+  }
+
+  if (label) {
+    [label setStringValue:[NSString stringWithCString:message encoding:NSUTF8StringEncoding]];
+  }
+
+  if ([[statuswindow_label_lock stringValue] length] > 0 ||
+      [[statuswindow_label_extra stringValue] length] > 0) {
+    // show
+    [statuswindow makeKeyAndOrderFront:nil];
+  } else {
+    // hide
+    [statuswindow orderOut:nil];
+  }
 }
 
 // ======================================================================
