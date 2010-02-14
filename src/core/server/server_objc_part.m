@@ -190,30 +190,33 @@ set_statusmessage(StatusMessageType type, const char* message)
   if (! statuswindow_label_lock) return;
   if (! statuswindow_label_extra) return;
 
-  NSTextField* label = nil;
+  @synchronized(statuswindow) {
+    NSTextField* label = nil;
 
-  switch (type) {
-  case STATUSMESSAGETYPE_LOCK:
-    label = statuswindow_label_lock;
-    break;
-  case STATUSMESSAGETYPE_EXTRA:
-    label = statuswindow_label_extra;
-    break;
-  default:
-    break;
-  }
+    switch (type) {
+    case STATUSMESSAGETYPE_LOCK:
+      label = statuswindow_label_lock;
+      break;
+    case STATUSMESSAGETYPE_EXTRA:
+      label = statuswindow_label_extra;
+      break;
+    default:
+      break;
+    }
 
-  if (label) {
-    [label setStringValue:[NSString stringWithCString:message encoding:NSUTF8StringEncoding]];
-  }
+    if (label) {
+      [label setStringValue:[NSString stringWithCString:message encoding:NSUTF8StringEncoding]];
+    }
 
-  if ([[statuswindow_label_lock stringValue] length] > 0 ||
-      [[statuswindow_label_extra stringValue] length] > 0) {
-    // show
-    [statuswindow makeKeyAndOrderFront:nil];
-  } else {
-    // hide
-    [statuswindow orderOut:nil];
+    if ([[statuswindow_label_lock stringValue] length] > 0 ||
+        [[statuswindow_label_extra stringValue] length] > 0) {
+      // show
+      //[statuswindow makeKeyAndOrderFront:nil];
+      [statuswindow orderFront:nil];
+    } else {
+      // hide
+      [statuswindow orderOut:nil];
+    }
   }
 }
 
