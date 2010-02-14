@@ -14,7 +14,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (params.key != key_) return false;
 
-    if (params.eventType == EventType::DOWN) {
+    if (params.eventType == EventType::DOWN && params.repeat == false) {
       active_ = ! active_;
       if (active_) {
         FlagStatus::lock_increase(flag_);
@@ -28,17 +28,21 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.general_hide_modifier_lock_status) {
       Flags f = FlagStatus::getLockedFlags();
       if (f != statusMessageFlags) {
-        KeyRemap4MacBook_bridge::StatusMessage::Request request(false, "Lock: ");
+        KeyRemap4MacBook_bridge::StatusMessage::Request request(KeyRemap4MacBook_bridge::StatusMessage::MESSAGETYPE_MODIFIER_LOCK, "Lock: ");
+        bool isempty = true;
 
         if (f.isOn(ModifierFlag::FN)) {
-          request.show = true;
+          isempty = false;
           strlcat(request.message, "FN ", sizeof(request.message));
         }
         if (f.isOn(ModifierFlag::COMMAND_L) || f.isOn(ModifierFlag::COMMAND_R)) {
-          request.show = true;
+          isempty = false;
           strlcat(request.message, "Cmd ", sizeof(request.message));
         }
 
+        if (isempty) {
+          request.message[0] = '\0';
+        }
         KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_STATUS_MESSAGE, &request, sizeof(request), NULL, 0);
 
         statusMessageFlags = f;
