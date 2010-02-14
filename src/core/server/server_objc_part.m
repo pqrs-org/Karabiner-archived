@@ -2,7 +2,6 @@
 #include <stdio.h>
 #import <Carbon/Carbon.h>
 #import "server_objc_part.h"
-#import "KeyRemap4MacBook_serverAppDelegate.h"
 
 void
 getActiveApplicationName(char* buffer, size_t len)
