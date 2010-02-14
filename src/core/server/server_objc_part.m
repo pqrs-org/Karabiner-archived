@@ -2,6 +2,7 @@
 #include <stdio.h>
 #import <Carbon/Carbon.h>
 #import "server_objc_part.h"
+#import "KeyRemap4MacBook_serverAppDelegate.h"
 
 void
 getActiveApplicationName(char* buffer, size_t len)
@@ -170,60 +171,70 @@ selectInputSource_language(CFStringRef language)
   CFRelease(inputsource);
 }
 
-static NSWindow* statuswindow = nil;
-static NSTextField* statuswindow_label_lock = nil;
-static NSTextField* statuswindow_label_extra = nil;
-
-void
-registerStatusWindow(NSWindow* window, NSTextField* label_lock, NSTextField* label_extra)
-{
-  statuswindow = window;
-  statuswindow_label_lock = label_lock;
-  statuswindow_label_extra = label_extra;
-}
-
-void
-set_statusmessage(StatusMessageType type, const char* message)
-{
-  if (! message) return;
-  if (! statuswindow) return;
-  if (! statuswindow_label_lock) return;
-  if (! statuswindow_label_extra) return;
-
-  @synchronized(statuswindow) {
-    NSTextField* label = nil;
-
-    switch (type) {
-    case STATUSMESSAGETYPE_LOCK:
-      label = statuswindow_label_lock;
-      break;
-    case STATUSMESSAGETYPE_EXTRA:
-      label = statuswindow_label_extra;
-      break;
-    default:
-      break;
-    }
-
-    if (label) {
-      [label setStringValue:[NSString stringWithCString:message encoding:NSUTF8StringEncoding]];
-    }
-
-    if ([[statuswindow_label_lock stringValue] length] > 0 ||
-        [[statuswindow_label_extra stringValue] length] > 0) {
-      // show
-      //[statuswindow makeKeyAndOrderFront:nil];
-      [statuswindow orderFront:nil];
-    } else {
-      // hide
-      [statuswindow orderOut:nil];
-    }
-  }
-}
-
-// ======================================================================
+// ------------------------------------------------------------
 void selectInputSource_canadian(void) { selectInputSource_language(CFSTR("ca")); }
 void selectInputSource_english(void) { selectInputSource_language(CFSTR("en")); }
 void selectInputSource_french(void) { selectInputSource_language(CFSTR("fr")); }
 void selectInputSource_german(void) { selectInputSource_language(CFSTR("de")); }
 void selectInputSource_japanese(void) { selectInputSource_language(CFSTR("ja")); }
 void selectInputSource_swedish(void) { selectInputSource_language(CFSTR("sv")); }
+
+
+// ======================================================================
+static NSWindow* statuswindow = nil;
+static NSTextField* statuswindow_label = nil;
+static NSString* statusmessage_lock = nil;
+static NSString* statusmessage_extra = nil;
+
+void
+registerStatusWindow(NSWindow* window, NSTextField* label)
+{
+  statuswindow = window;
+  statuswindow_label = label;
+}
+
+static void
+updateStatusMessageWindow(void) {
+  if (! statuswindow) return;
+  if (! statuswindow_label) return;
+
+  NSMutableString* message = [[NSMutableString alloc] init];
+  if (statusmessage_lock && [statusmessage_lock length] > 0) {
+    [message appendString:statusmessage_lock];
+    [message appendString:@"\n"];
+  }
+  if (statusmessage_extra && [statusmessage_extra length] > 0) {
+    [message appendString:statusmessage_extra];
+  }
+
+  [statuswindow_label setStringValue:message];
+
+  if ([message length] > 0) {
+    // show
+    [statuswindow orderFront:nil];
+  } else {
+    // hide
+    [statuswindow orderOut:nil];
+  }
+}
+
+void
+set_statusmessage(StatusMessageType type, const char* message)
+{
+  NSString* s = [NSString stringWithCString:message encoding:NSUTF8StringEncoding];
+
+  switch (type) {
+  case STATUSMESSAGETYPE_LOCK:
+    statusmessage_lock = s;
+    break;
+  case STATUSMESSAGETYPE_EXTRA:
+    statusmessage_extra = s;
+    break;
+  default:
+    break;
+  }
+
+  // XXX: FIXME: don't touch UI from no-main-thread!!!
+  //[s performSelectorOnMainThread:@selector(updateStatusMessageWindow) withObject:nil waitUntilDone:NO];
+  updateStatusMessageWindow();
+}
