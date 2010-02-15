@@ -50,8 +50,6 @@
   [window setIgnoresMouseEvents:YES];
   [window setCollectionBehavior:behavior];
   [window center];
-
-  registerStatusWindow(window, statusmessage_);
 }
 
 // ------------------------------------------------------------
@@ -137,6 +135,8 @@ static void observer_kTISNotifySelectedKeyboardInputSourceChanged(CFNotification
                          withObject:nil];
 
   [self setupStatusWindow];
+  [serverobjcpart_ registerStatusWindow:window label:statusmessage_];
+  registerServerObjcPart(serverobjcpart_);
 
   // ------------------------------------------------------------
   // Kick updater

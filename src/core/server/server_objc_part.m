@@ -150,6 +150,56 @@ finish:
   return inputsource;
 }
 
+// ----------------------------------------------------------------------
+- (void) registerStatusWindow:(NSWindow*)window label:(NSTextField*)label
+{
+  statuswindow_ = window;
+  statuswindow_label_ = label;
+}
+
+- (void) updateStatusMessageWindow
+{
+  if (! statuswindow_) return;
+  if (! statuswindow_label_) return;
+
+  NSMutableString* message = [[NSMutableString alloc] init];
+  if (statusmessage_lock_ && [statusmessage_lock_ length] > 0) {
+    [message appendString:statusmessage_lock_];
+    [message appendString:@"\n"];
+  }
+  if (statusmessage_extra_ && [statusmessage_extra_ length] > 0) {
+    [message appendString:statusmessage_extra_];
+  }
+
+  [statuswindow_label_ setStringValue:message];
+
+  if ([message length] > 0) {
+    // show
+    [statuswindow_ orderFront:nil];
+  } else {
+    // hide
+    [statuswindow_ orderOut:nil];
+  }
+}
+
+- (void) setStatusMessage:(StatusMessageType)type message:(const char*)message
+{
+  NSString* s = [NSString stringWithCString:message encoding:NSUTF8StringEncoding];
+
+  switch (type) {
+  case STATUSMESSAGETYPE_LOCK:
+    statusmessage_lock_ = s;
+    break;
+  case STATUSMESSAGETYPE_EXTRA:
+    statusmessage_extra_ = s;
+    break;
+  default:
+    break;
+  }
+
+  [self performSelectorOnMainThread:@selector(updateStatusMessageWindow) withObject:nil waitUntilDone:NO];
+}
+
 @end
 
 // ======================================================================
@@ -181,62 +231,11 @@ void selectInputSource_german(void) { selectInputSource_language(CFSTR("de")); }
 void selectInputSource_japanese(void) { selectInputSource_language(CFSTR("ja")); }
 void selectInputSource_swedish(void) { selectInputSource_language(CFSTR("sv")); }
 
-
-// ======================================================================
-static NSWindow* statuswindow = nil;
-static NSTextField* statuswindow_label = nil;
-static NSString* statusmessage_lock = nil;
-static NSString* statusmessage_extra = nil;
-
-void
-registerStatusWindow(NSWindow* window, NSTextField* label)
-{
-  statuswindow = window;
-  statuswindow_label = label;
-}
-
-static void
-updateStatusMessageWindow(void) {
-  if (! statuswindow) return;
-  if (! statuswindow_label) return;
-
-  NSMutableString* message = [[NSMutableString alloc] init];
-  if (statusmessage_lock && [statusmessage_lock length] > 0) {
-    [message appendString:statusmessage_lock];
-    [message appendString:@"\n"];
-  }
-  if (statusmessage_extra && [statusmessage_extra length] > 0) {
-    [message appendString:statusmessage_extra];
-  }
-
-  [statuswindow_label setStringValue:message];
-
-  if ([message length] > 0) {
-    // show
-    [statuswindow orderFront:nil];
-  } else {
-    // hide
-    [statuswindow orderOut:nil];
-  }
-}
-
+// ------------------------------------------------------------
 void
 set_statusmessage(StatusMessageType type, const char* message)
 {
-  NSString* s = [NSString stringWithCString:message encoding:NSUTF8StringEncoding];
-
-  switch (type) {
-  case STATUSMESSAGETYPE_LOCK:
-    statusmessage_lock = s;
-    break;
-  case STATUSMESSAGETYPE_EXTRA:
-    statusmessage_extra = s;
-    break;
-  default:
-    break;
+  if (serverobjcpart) {
+    [serverobjcpart setStatusMessage:type message:message];
   }
-
-  // XXX: FIXME: don't touch UI from no-main-thread!!!
-  //[s performSelectorOnMainThread:@selector(updateStatusMessageWindow) withObject:nil waitUntilDone:NO];
-  updateStatusMessageWindow();
 }
