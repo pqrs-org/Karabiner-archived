@@ -17,6 +17,5 @@
 }
 
 @property (assign) IBOutlet NSWindow* window;
-@property (assign) ServerObjcPart* serverobjcpart_;
 
 @end
