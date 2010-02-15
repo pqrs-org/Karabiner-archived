@@ -15,7 +15,6 @@
 @implementation KeyRemap4MacBook_serverAppDelegate
 
 @synthesize window;
-@synthesize serverobjcpart_;
 
 - (void) threadMain {
   NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
@@ -62,17 +61,11 @@
 }
 
 // ------------------------------------------------------------
-static void observer_kTISNotifySelectedKeyboardInputSourceChanged(CFNotificationCenterRef center,
-                                                                  void* observer,
-                                                                  CFStringRef name,
-                                                                  const void* object,
-                                                                  CFDictionaryRef userInfo)
+- (void) observer_kTISNotifySelectedKeyboardInputSourceChanged:(NSNotification*)notification
 {
-  KeyRemap4MacBook_serverAppDelegate* app = observer;
-
-  NSString* inputsourcename = [[app serverobjcpart_] getTISPropertyInputModeID];
-  if (inputsourcename) {
-    setCurrentInputMode([inputsourcename UTF8String]);
+  NSString* name = [serverobjcpart_ getTISPropertyInputModeID];
+  if (name) {
+    setCurrentInputMode([name UTF8String]);
   }
 }
 
@@ -103,12 +96,10 @@ static void observer_kTISNotifySelectedKeyboardInputSourceChanged(CFNotification
                                                              name:NSWorkspaceDidActivateApplicationNotification
                                                            object:nil];
 
-  CFNotificationCenterAddObserver(CFNotificationCenterGetDistributedCenter(),
-                                  self,
-                                  observer_kTISNotifySelectedKeyboardInputSourceChanged,
-                                  kTISNotifySelectedKeyboardInputSourceChanged,
-                                  NULL,
-                                  CFNotificationSuspensionBehaviorCoalesce);
+  [[NSDistributedNotificationCenter defaultCenter] addObserver:self
+                                                      selector:@selector(observer_kTISNotifySelectedKeyboardInputSourceChanged:)
+                                                          name:(NSString*)(kTISNotifySelectedKeyboardInputSourceChanged)
+                                                        object:nil];
 
   // ------------------------------
   [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
@@ -123,7 +114,7 @@ static void observer_kTISNotifySelectedKeyboardInputSourceChanged(CFNotification
 
   // ------------------------------------------------------------
   [self observer_NSWorkspaceDidActivateApplicationNotification:nil];
-  observer_kTISNotifySelectedKeyboardInputSourceChanged(NULL, self, NULL, NULL, NULL);
+  [self observer_kTISNotifySelectedKeyboardInputSourceChanged:nil];
 
   // ------------------------------------------------------------
   sysctl_reset();

@@ -180,6 +180,8 @@ finish:
     // hide
     [statuswindow_ orderOut:nil];
   }
+
+  [message release];
 }
 
 - (void) setStatusMessage:(StatusMessageType)type message:(const char*)message
