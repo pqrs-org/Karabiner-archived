@@ -3,14 +3,30 @@
 #ifndef SERVER_OBJC_PART_H
 #define SERVER_OBJC_PART_H
 
+typedef enum {
+  STATUSMESSAGETYPE_NONE,
+  STATUSMESSAGETYPE_LOCK,
+  STATUSMESSAGETYPE_EXTRA,
+} StatusMessageType;
+
 #ifndef __cplusplus
 
 #import <Cocoa/Cocoa.h>
 
-@interface ServerObjcPart : NSObject {}
+@interface ServerObjcPart : NSObject {
+  NSWindow* statuswindow_;
+  NSTextField* statuswindow_label_;
+
+  NSString* statusmessage_lock_;
+  NSString* statusmessage_extra_;
+}
 
 - (NSString*) getActiveApplicationName;
 - (NSString*) getTISPropertyInputModeID;
+
+- (void) registerStatusWindow:(NSWindow*)window label:(NSTextField*)label;
+- (void) updateStatusMessageWindow;
+- (void) setStatusMessage:(StatusMessageType)type message:(const char*)message;
 
 @end
 
@@ -32,11 +48,6 @@ void selectInputSource_japanese(void);
 void selectInputSource_swedish(void);
 void selectInputSource_canadian(void);
 
-typedef enum {
-  STATUSMESSAGETYPE_NONE,
-  STATUSMESSAGETYPE_LOCK,
-  STATUSMESSAGETYPE_EXTRA,
-} StatusMessageType;
 void set_statusmessage(StatusMessageType type, const char* message);
 
 #ifdef __cplusplus
