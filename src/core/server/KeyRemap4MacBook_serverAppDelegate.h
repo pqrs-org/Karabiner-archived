@@ -1,3 +1,4 @@
+// -*- Mode: objc -*-
 //
 //  KeyRemap4MacBook_serverAppDelegate.h
 //  KeyRemap4MacBook_server
@@ -7,12 +8,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "server_objc_part.h"
 
 @interface KeyRemap4MacBook_serverAppDelegate : NSObject <NSApplicationDelegate> {
   NSWindow* window;
+  IBOutlet ServerObjcPart* serverobjcpart_;
   IBOutlet NSTextField* statusmessage_;
 }
 
 @property (assign) IBOutlet NSWindow* window;
+@property (assign) ServerObjcPart* serverobjcpart_;
 
 @end

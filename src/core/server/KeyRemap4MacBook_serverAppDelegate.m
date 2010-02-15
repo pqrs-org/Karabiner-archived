@@ -15,6 +15,7 @@
 @implementation KeyRemap4MacBook_serverAppDelegate
 
 @synthesize window;
+@synthesize serverobjcpart_;
 
 - (void) threadMain {
   NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
@@ -56,12 +57,10 @@
 // ------------------------------------------------------------
 - (void) observer_NSWorkspaceDidActivateApplicationNotification:(NSNotification*)notification
 {
-  NSRunningApplication* app = [[notification userInfo] objectForKey:@"NSWorkspaceApplicationKey"];
-  if (! app) return;
-
-  char buffer[512];
-  getActiveApplicationName(buffer, sizeof(buffer));
-  setCurrentApplicationType(buffer);
+  NSString* name = [serverobjcpart_ getActiveApplicationName];
+  if (name) {
+    setCurrentApplicationType([name UTF8String]);
+  }
 }
 
 // ------------------------------------------------------------
@@ -71,9 +70,12 @@ static void observer_kTISNotifySelectedKeyboardInputSourceChanged(CFNotification
                                                                   const void* object,
                                                                   CFDictionaryRef userInfo)
 {
-  char inputmodeName[128];
-  getTISPropertyInputModeID(inputmodeName, sizeof(inputmodeName));
-  setCurrentInputMode(inputmodeName);
+  KeyRemap4MacBook_serverAppDelegate* app = observer;
+
+  NSString* inputsourcename = [[app serverobjcpart_] getTISPropertyInputModeID];
+  if (inputsourcename) {
+    setCurrentInputMode([inputsourcename UTF8String]);
+  }
 }
 
 // ------------------------------------------------------------
@@ -122,12 +124,8 @@ static void observer_kTISNotifySelectedKeyboardInputSourceChanged(CFNotification
                                                            object:nil];
 
   // ------------------------------------------------------------
-  char buffer[512];
-  getActiveApplicationName(buffer, sizeof(buffer));
-  setCurrentApplicationType(buffer);
-
-  getTISPropertyInputModeID(buffer, sizeof(buffer));
-  setCurrentInputMode(buffer);
+  [self observer_NSWorkspaceDidActivateApplicationNotification:nil];
+  observer_kTISNotifySelectedKeyboardInputSourceChanged(NULL, self, NULL, NULL, NULL);
 
   // ------------------------------------------------------------
   sysctl_reset();
