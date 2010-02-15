@@ -7,16 +7,15 @@
 
 #import <Cocoa/Cocoa.h>
 
-void getActiveApplicationName(char* buffer, size_t len);
+@interface ServerObjcPart : NSObject {}
 
-// get current InputSourceProperty(kTISPropertyInputModeID)
-//
-// Note: getTISPropertyInputModeID works only by calling from "Application".
-//       (== does not work from a terminal application).
-//
-void getTISPropertyInputModeID(char* buffer, size_t len);
+- (NSString*) getActiveApplicationName;
+- (NSString*) getTISPropertyInputModeID;
+
+@end
 
 // ------------------------------------------------------------
+void registerServerObjcPart(ServerObjcPart* object);
 void registerStatusWindow(NSWindow* window, NSTextField* label);
 
 #endif

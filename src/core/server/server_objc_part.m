@@ -3,28 +3,25 @@
 #import <Carbon/Carbon.h>
 #import "server_objc_part.h"
 
-void
-getActiveApplicationName(char* buffer, size_t len)
-{
-  if (! buffer) return;
-  if (len <= 0) return;
-  buffer[0] = '\0';
+@implementation ServerObjcPart
 
+- (NSString*) getActiveApplicationName
+{
   // ----------------------------------------
   NSWorkspace* ws = [NSWorkspace sharedWorkspace];
-  if (! ws) return;
+  if (! ws) return nil;
 
   NSArray* a = [ws runningApplications];
   NSEnumerator* e = [a objectEnumerator];
   for (;;) {
     NSRunningApplication* app = [e nextObject];
-    if (! app) return;
+    if (! app) return nil;
 
     if ([app isActive]) {
       NSString* nsappname = [app bundleIdentifier];
 
       if (nsappname) {
-        snprintf(buffer, len, "%s", [nsappname UTF8String]);
+        return [NSString stringWithString:nsappname];
 
       } else {
         // We use localizedName instead of bundleIdentifier,
@@ -32,19 +29,19 @@ getActiveApplicationName(char* buffer, size_t len)
         // http://www.haller-berlin.de/macsoup/index.html
         NSString* localizedName = [app localizedName];
         if (localizedName) {
-          snprintf(buffer, len, "org.pqrs.unknownapp.%s", [localizedName UTF8String]);
+          return [NSString stringWithFormat:@"org.pqrs.unknownapp.%@", localizedName];
         }
       }
-
-      return;
     }
   }
+
+  return nil;
 }
 
+// ======================================================================
 static CFStringRef kInputSourceLanguage_canadian = CFSTR("ca");
 
-static CFStringRef
-getInputSourceLanguage(TISInputSourceRef source)
+- (CFStringRef) getInputSourceLanguage:(TISInputSourceRef)source
 {
   // Because we cannot distinguish en and ca from kTISPropertyInputSourceLanguages,
   // we use kTISPropertyInputSourceID at first.
@@ -83,38 +80,31 @@ getInputSourceLanguage(TISInputSourceRef source)
   return NULL;
 }
 
-void
-getTISPropertyInputModeID(char* buffer, size_t len)
+- (NSString*) getTISPropertyInputModeID
 {
-  if (! buffer) return;
-  if (len <= 0) return;
-  buffer[0] = '\0';
-
-  // ----------------------------------------
   TISInputSourceRef ref = TISCopyCurrentKeyboardInputSource();
-  if (! ref) return;
+  if (! ref) return nil;
 
+  NSString* retval = nil;
   NSString* inputmodeid = TISGetInputSourceProperty(ref, kTISPropertyInputModeID);
   if (inputmodeid) {
-    snprintf(buffer, len, "%s", [inputmodeid UTF8String]);
+    retval = [NSString stringWithString:inputmodeid];
   } else {
-    CFStringRef lang = getInputSourceLanguage(ref);
+    CFStringRef lang = [self getInputSourceLanguage:ref];
     if (lang) {
-      snprintf(buffer, len, "org.pqrs.inputmode.%s", [(NSString*)(lang) UTF8String]);
+      retval = [NSString stringWithFormat:@"org.pqrs.inputmode.%@", lang];
     }
   }
-  //NSLog(@"buffer: %s", buffer);
 
   CFRelease(ref);
+  return retval;
 }
-
 
 // ----------------------------------------------------------------------
 // Note:
 // TISCopyInputSourceForLanguage returns unselectable InputSource.
 // Therefore we get InputSource by ourself.
-static TISInputSourceRef
-copySelectableInputSourceForLanguage(CFStringRef language)
+- (TISInputSourceRef) copySelectableInputSourceForLanguage:(CFStringRef)language
 {
   TISInputSourceRef inputsource = NULL;
   CFDictionaryRef filter = NULL;
@@ -140,7 +130,7 @@ copySelectableInputSourceForLanguage(CFStringRef language)
     TISInputSourceRef source = (TISInputSourceRef)(CFArrayGetValueAtIndex(list, i));
     if (! source) continue;
 
-    CFStringRef lang = getInputSourceLanguage(source);
+    CFStringRef lang = [self getInputSourceLanguage:source];
     if (! lang) continue;
 
     if (CFStringCompare(language, lang, 0) == kCFCompareEqualTo) {
@@ -160,10 +150,23 @@ finish:
   return inputsource;
 }
 
+@end
+
+// ======================================================================
+static ServerObjcPart* serverobjcpart = nil;
+
+void
+registerServerObjcPart(ServerObjcPart* object)
+{
+  serverobjcpart = object;
+}
+
 static void
 selectInputSource_language(CFStringRef language)
 {
-  TISInputSourceRef inputsource = copySelectableInputSourceForLanguage(language);
+  if (! serverobjcpart) return;
+
+  TISInputSourceRef inputsource = [serverobjcpart copySelectableInputSourceForLanguage:language];
   if (! inputsource) return;
 
   TISSelectInputSource(inputsource);
