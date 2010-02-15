@@ -12,13 +12,13 @@
 @implementation KeyDumpAppDelegate
 
 @synthesize window;
+@synthesize serverobjcpart_;
+@synthesize otherinformationstore_;
 
 // ------------------------------------------------------------
 - (void) observer_NSWorkspaceDidActivateApplicationNotification:(NSNotification*)notification
 {
-  char buffer[512];
-  getActiveApplicationName(buffer, sizeof(buffer));
-  NSString* name = [NSString stringWithCString:buffer encoding:NSUTF8StringEncoding];
+  NSString* name = [serverobjcpart_ getActiveApplicationName];
   [otherinformationstore_ setApplicationName:name];
 }
 
@@ -29,12 +29,10 @@ static void observer_kTISNotifySelectedKeyboardInputSourceChanged(CFNotification
                                                                   const void* object,
                                                                   CFDictionaryRef userInfo)
 {
-  char buffer[128];
-  getTISPropertyInputModeID(buffer, sizeof(buffer));
-  NSString* inputsourcename = [NSString stringWithCString:buffer encoding:NSUTF8StringEncoding];
+  KeyDumpAppDelegate* app = observer;
 
-  OtherInformationStore* ois = observer;
-  [ois setInputSourceName:inputsourcename];
+  NSString* inputsourcename = [[app serverobjcpart_] getTISPropertyInputModeID];
+  [[app otherinformationstore_] setInputSourceName:inputsourcename];
 }
 
 // ------------------------------------------------------------
@@ -47,15 +45,15 @@ static void observer_kTISNotifySelectedKeyboardInputSourceChanged(CFNotification
                                                            object:nil];
 
   CFNotificationCenterAddObserver(CFNotificationCenterGetDistributedCenter(),
-                                  otherinformationstore_,
+                                  self,
                                   observer_kTISNotifySelectedKeyboardInputSourceChanged,
                                   kTISNotifySelectedKeyboardInputSourceChanged,
                                   NULL,
                                   CFNotificationSuspensionBehaviorCoalesce);
 
   [otherinformationstore_ setVersion];
-  [otherinformationstore_ setApplicationName:@"---"];
-  observer_kTISNotifySelectedKeyboardInputSourceChanged(NULL, otherinformationstore_, NULL, NULL, NULL);
+  [otherinformationstore_ setApplicationName:nil];
+  observer_kTISNotifySelectedKeyboardInputSourceChanged(NULL, self, NULL, NULL, NULL);
 }
 
 - (BOOL) applicationShouldTerminateAfterLastWindowClosed:(NSApplication*)theApplication {

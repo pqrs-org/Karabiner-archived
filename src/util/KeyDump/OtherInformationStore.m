@@ -26,6 +26,10 @@
 
 - (void) setApplicationName:(NSString*)name
 {
+  if (! name) {
+    name = @"---";
+  }
+
   if ([name isEqualToString:@"org.pqrs.KeyRemap4MacBook.KeyDump"]) {
     return;
   }
@@ -36,6 +40,10 @@
 
 - (void) setInputSourceName:(NSString*)name
 {
+  if (! name) {
+    name = @"---";
+  }
+
   inputsourcename_ = name;
   [label_inputsourcename_ setStringValue:name];
 }
