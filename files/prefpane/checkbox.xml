@@ -260,6 +260,13 @@
           <autogen>--KeyToKey-- KeyCode::BACKQUOTE, ModifierFlag::NONE, KeyCode::ESCAPE</autogen>
         </item>
         <item>
+          <name>Backquote(`) to Forward Delete</name>
+          <appendix>(Shift+Backquote(`) to Backquote(`))</appendix>
+          <sysctl>remap.backquote2forwarddelete_shift</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, VK_SHIFT, KeyCode::BACKQUOTE</autogen>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::FORWARD_DELETE</autogen>
+        </item>
+        <item>
           <name>Backquote(`) to F8</name>
           <sysctl>remap.backquote2f8</sysctl>
           <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::F8</autogen>
