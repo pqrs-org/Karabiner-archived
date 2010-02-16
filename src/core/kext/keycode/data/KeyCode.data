@@ -147,6 +147,7 @@ VK_NONE --AUTO--
 // For ConsumerToKey
 VK_CONSUMERKEY --AUTO--
 VK_LOCK_FN --AUTO--
+VK_LOCK_FN_FORCE_OFF --AUTO--
 VK_LOCK_COMMAND_R --AUTO--
 // Raw InputMode Change using "Text Input Source Services"
 VK_CHANGE_INPUTMODE_ENGLISH --AUTO--

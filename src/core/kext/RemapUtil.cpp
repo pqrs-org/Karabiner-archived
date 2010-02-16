@@ -556,8 +556,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! ptr) return;
     Params_KeyboardEventCallBack& p = *ptr;
 
-    if (Handle_VK_LOCK_FN::handle(p, workspacedata)) return;
-    if (Handle_VK_LOCK_COMMAND_R::handle(p, workspacedata)) return;
+    if (Handle_VK_LOCK::handle(p, workspacedata)) return;
     if (Handle_VK_CHANGE_INPUTMODE::handle(p, workspacedata)) return;
     if (Handle_VK_TOGGLE_CONFIG::handle(p, workspacedata)) return;
     if (Handle_VK_JIS_TOGGLE_EISUU_KANA::handle(p, workspacedata)) return;
