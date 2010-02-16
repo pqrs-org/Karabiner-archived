@@ -152,7 +152,7 @@
           <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, KeyCode::OPTION_L</autogen>
         </item>
         <item>
-          <name>Command-Arrow to Option_L+Arrow</name>
+          <name>Command+Arrow to Option_L+Arrow</name>
           <sysctl>remap.commandArrow2optionLarrow</sysctl>
           <autogen>--KeyToKey-- KeyCode::CURSOR_UP, VK_COMMAND, KeyCode::CURSOR_UP, ModifierFlag::OPTION_L</autogen>
           <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, VK_COMMAND, KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_L</autogen>
@@ -165,7 +165,7 @@
           <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
-          <name>Option_R-Arrow to (PageUp/Down/Home/End) Key</name>
+          <name>Option_R+Arrow to (PageUp/Down/Home/End) Key</name>
           <sysctl>remap.optionR_arrow2PgUpDnHomeEnd</sysctl>
           <autogen>--KeyToKey-- KeyCode::CURSOR_UP, ModifierFlag::OPTION_R, KeyCode::PAGEUP</autogen>
           <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_R, KeyCode::PAGEDOWN</autogen>
@@ -3422,20 +3422,6 @@
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToKey-- FROMKEYCODE_PAGEUP, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
           <autogen>--KeyToKey-- FROMKEYCODE_PAGEDOWN, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
-        </item>
-
-        <item>
-          <name>Use PC Style Home/End/PageUp/PageDown with Command</name>
-          <appendix>(Command+Home to Command_L+Left)</appendix>
-          <appendix>(Command+End to Command_L+Right)</appendix>
-          <appendix>(Command+PageUp to Option_L+PageUp)</appendix>
-          <appendix>(Command+PageDown to Option_L+PageDown)</appendix>
-          <sysctl>remap.pclikehomeend_command</sysctl>
-          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToKey-- FROMKEYCODE_HOME,     VK_COMMAND, KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- FROMKEYCODE_END,      VK_COMMAND, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- FROMKEYCODE_PAGEUP,   VK_COMMAND, KeyCode::PAGEUP,       ModifierFlag::OPTION_L</autogen>
-          <autogen>--KeyToKey-- FROMKEYCODE_PAGEDOWN, VK_COMMAND, KeyCode::PAGEDOWN,     ModifierFlag::OPTION_L</autogen>
         </item>
       </list>
     </item>
