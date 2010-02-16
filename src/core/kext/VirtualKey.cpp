@@ -7,19 +7,33 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------------------------------------
-  Flags Handle_VK_LOCK_common::statusMessageFlags(0);
+  Flags Handle_VK_LOCK::statusMessageFlags(0);
 
   bool
-  Handle_VK_LOCK_common::handle(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
+  Handle_VK_LOCK::handle(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
   {
-    if (params.key != key_) return false;
+    Flags flags(0);
+    bool force_on = false;
+    bool force_off = false;
+
+    if (params.key == KeyCode::VK_LOCK_FN) {
+      flags.add(ModifierFlag::FN);
+    } else if (params.key == KeyCode::VK_LOCK_FN_FORCE_OFF) {
+      flags.add(ModifierFlag::FN);
+      force_off = true;
+    } else if (params.key == KeyCode::VK_LOCK_COMMAND_R) {
+      flags.add(ModifierFlag::COMMAND_R);
+    } else {
+      return false;
+    }
 
     if (params.eventType == EventType::DOWN && params.repeat == false) {
-      active_ = ! active_;
-      if (active_) {
-        FlagStatus::lock_increase(flag_);
+      if (force_off) {
+        FlagStatus::lock_decrease(flags);
+      } else if (force_on) {
+        FlagStatus::lock_increase(flags);
       } else {
-        FlagStatus::lock_decrease(flag_);
+        FlagStatus::lock_toggle(flags);
       }
     }
 
@@ -52,9 +66,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     return true;
   }
-
-  Handle_VK_LOCK_common Handle_VK_LOCK_FN::h_(KeyCode::VK_LOCK_FN, ModifierFlag::FN);
-  Handle_VK_LOCK_common Handle_VK_LOCK_COMMAND_R::h_(KeyCode::VK_LOCK_COMMAND_R, ModifierFlag::COMMAND_R);
 
   // ----------------------------------------------------------------------
   bool

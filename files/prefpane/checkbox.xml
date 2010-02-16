@@ -2632,7 +2632,8 @@
                   <appendix>Control+B to PageUp</appendix>
                   <appendix>g to Home</appendix>
                   <appendix>Shift+g to End</appendix>
-                  <appendix>Escape to turn off Vi Mode</appendix>
+                  <appendix>f to FN_Lock</appendix>
+                  <appendix>i to turn off Vi Mode (+ FN_Lock off)</appendix>
                   <sysctl>remap.completely_vimode</sysctl>
                   <autogen>--ShowStatusMessage-- "Vi Mode"</autogen>
                   <autogen>--KeyToKey-- KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
@@ -2649,7 +2650,8 @@
                   <autogen>--KeyToKey-- KeyCode::G, VK_SHIFT, KeyCode::END</autogen>
                   <autogen>--KeyToKey-- KeyCode::G, KeyCode::HOME</autogen>
 
-                  <autogen>--ToggleConfig-- KeyCode::ESCAPE, config.remap_completely_vimode, ToggleConfig::TYPE_FORCE_OFF</autogen>
+                  <autogen>--KeyToKey-- KeyCode::F, KeyCode::VK_LOCK_FN</autogen>
+                  <autogen>--KeyToKey-- KeyCode::I, KeyCode::VK_LOCK_FN_FORCE_OFF, KeyCode::VK_TOGGLE_CONFIG_remap_completely_vimode</autogen>
                 </item>
               </list>
             </item>
