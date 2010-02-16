@@ -160,15 +160,15 @@
           <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_COMMAND, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
-          <name>Command+Arrow to (PageUp/Down/Home/End) Key</name>
-          <sysctl>remap.command_arrow2PgUpDnHomeEnd</sysctl>
-          <autogen>--KeyToKey-- KeyCode::CURSOR_UP,    VK_COMMAND, KeyCode::PAGEUP</autogen>
-          <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN,  VK_COMMAND, KeyCode::PAGEDOWN</autogen>
-          <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT,  VK_COMMAND, KeyCode::HOME</autogen>
-          <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_COMMAND, KeyCode::END</autogen>
+          <name>Command_R+Arrow to PageUp/PageDown/Home/End</name>
+          <sysctl>remap.commandR_arrow2PgUpDnHomeEnd</sysctl>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_R, KeyCode::PAGEUP</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_R, KeyCode::PAGEDOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_R, KeyCode::HOME</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_R, KeyCode::END</autogen>
         </item>
         <item>
-          <name>Option_R+Arrow to (PageUp/Down/Home/End) Key</name>
+          <name>Option_R+Arrow to PageUp/PageDown/Home/End</name>
           <sysctl>remap.optionR_arrow2PgUpDnHomeEnd</sysctl>
           <autogen>--KeyToKey-- KeyCode::CURSOR_UP, ModifierFlag::OPTION_R, KeyCode::PAGEUP</autogen>
           <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_R, KeyCode::PAGEDOWN</autogen>
