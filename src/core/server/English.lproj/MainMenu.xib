@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="371"/>
+			<integer value="372"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -90,6 +90,7 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{26, 27}, {500, 114}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
+							<double key="NSViewAlphaValue">0.59999999999999998</double>
 							<object class="NSShadow" key="NSViewShadow">
 								<object class="NSColor" key="NSShadowColor">
 									<int key="NSColorSpace">3</int>
@@ -102,7 +103,7 @@
 								<int key="NSCellFlags2">172004352</int>
 								<string type="base64-UTF8" key="NSContents">TG9jayBNZXNzYWdlCkV4dHJhIE1lc3NhZ2U</string>
 								<object class="NSFont" key="NSSupport">
-									<string key="NSName">LucidaGrande</string>
+									<string key="NSName">LucidaGrande-Bold</string>
 									<double key="NSSize">48</double>
 									<int key="NSfFlags">16</int>
 								</object>
