@@ -3287,6 +3287,11 @@
               <sysctl>remap.pc_application2f11</sysctl>
               <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::F11</autogen>
             </item>
+            <item>
+              <name>Application Key to Underscore(Shift_L+Minus)</name>
+              <sysctl>remap.pc_application2underscore</sysctl>
+              <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::MINUS, ModifierFlag::SHIFT_L</autogen>
+            </item>
           </list>
         </item>
         <item>
