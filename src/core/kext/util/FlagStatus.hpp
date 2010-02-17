@@ -61,6 +61,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void lock_decrease(Flags flags);
     static void lock_toggle(Flags flags);
 
+    static void lock_clear(void) { lock_decrease(getLockedFlags()); }
+
   private:
     static Item item_[MAXNUM];
   };

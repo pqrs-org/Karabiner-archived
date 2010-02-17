@@ -188,6 +188,16 @@ TEST(FlagStatus, lock_toggle) {
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), FlagStatus::makeFlags());
 }
 
+TEST(FlagStatus, lock_clear) {
+  ASSERT_TRUE(FlagStatus::initialize());
+
+  FlagStatus::lock_increase(ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L);
+  EXPECT_EQ(ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L, FlagStatus::makeFlags());
+
+  FlagStatus::lock_clear();
+  EXPECT_EQ(Flags(0), FlagStatus::makeFlags());
+}
+
 TEST(FlagStatus, CapsLock) {
   ASSERT_TRUE(FlagStatus::initialize());
 
