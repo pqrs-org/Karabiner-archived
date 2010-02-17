@@ -3372,6 +3372,7 @@
               <name>Enable KeyPad as Arrow</name>
               <sysctl>remap.keypadnumlock</sysctl>
               <vk_config>true</vk_config>
+              <autogen>--ShowStatusMessage-- "KeyPad Arrow"</autogen>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_0, KeyCode::VK_NONE</autogen>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_5, KeyCode::VK_NONE</autogen>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_COMMA, KeyCode::VK_NONE</autogen>
@@ -3390,6 +3391,7 @@
               <appendix>(With PC Style Home/End/PageUp/PageDown)</appendix>
               <sysctl>remap.keypadnumlock_pclikehomeend</sysctl>
               <vk_config>true</vk_config>
+              <autogen>--ShowStatusMessage-- "KeyPad Arrow"</autogen>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_0, KeyCode::VK_NONE</autogen>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_5, KeyCode::VK_NONE</autogen>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_COMMA, KeyCode::VK_NONE</autogen>
