@@ -27,7 +27,7 @@
         </item>
         <item>
           <name>Don't show Modifier lock status on screen</name>
-          <sysctl>general.hide_modifier_lock_status</sysctl>
+          <sysctl>general.hide_statusmessage</sysctl>
         </item>
       </list>
     </item>
