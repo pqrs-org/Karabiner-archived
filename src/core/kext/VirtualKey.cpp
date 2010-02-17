@@ -7,8 +7,6 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------------------------------------
-  Flags Handle_VK_LOCK::statusMessageFlags(0);
-
   bool
   Handle_VK_LOCK::handle(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
   {
@@ -37,33 +35,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
 
-    // ------------------------------------------------------------
-    // handle StatusMessage
-    if (! config.general_hide_modifier_lock_status) {
-      Flags f = FlagStatus::getLockedFlags();
-      if (f != statusMessageFlags) {
-        KeyRemap4MacBook_bridge::StatusMessage::Request request(KeyRemap4MacBook_bridge::StatusMessage::MESSAGETYPE_MODIFIER_LOCK, "Lock: ");
-        bool isempty = true;
-
-        if (f.isOn(ModifierFlag::FN)) {
-          isempty = false;
-          strlcat(request.message, "FN ", sizeof(request.message));
-        }
-        if (f.isOn(ModifierFlag::COMMAND_L) || f.isOn(ModifierFlag::COMMAND_R)) {
-          isempty = false;
-          strlcat(request.message, "Cmd ", sizeof(request.message));
-        }
-
-        if (isempty) {
-          request.message[0] = '\0';
-        }
-        KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_STATUS_MESSAGE, &request, sizeof(request), NULL, 0);
-
-        statusMessageFlags = f;
-      }
-    }
-
-    // ------------------------------------------------------------
     return true;
   }
 

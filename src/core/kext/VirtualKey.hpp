@@ -10,9 +10,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   class Handle_VK_LOCK {
   public:
     static bool handle(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
-
-  private:
-    static Flags statusMessageFlags;
   };
 
   // ----------------------------------------------------------------------
