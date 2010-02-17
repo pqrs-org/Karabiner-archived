@@ -165,15 +165,6 @@
     </item>
 
     <item>
-      <name>ToggleConfig</name>
-      <appendix>Use Shift_R to toggle IgnoreMultipleSameKeyPress</appendix>
-      <appendix>Use Shift_L+B to toggle IgnoreMultipleSameKeyPress</appendix>
-      <sysctl>remap.samples_toggleconfig</sysctl>
-      <autogen>--ToggleConfig-- KeyCode::SHIFT_R, config.remap_samples_ignoremultiplesamekeypress</autogen>
-      <autogen>--ToggleConfig-- KeyCode::B, ModifierFlag::SHIFT_L, config.remap_samples_ignoremultiplesamekeypress</autogen>
-    </item>
-
-    <item>
       <name>KeyToPointingButton</name>
       <appendix>A to LeftClick (Standard)</appendix>
       <appendix>Option_L to LeftClick (Modifier)</appendix>
@@ -365,6 +356,14 @@
       <autogen>--KeyToKey-- KeyCode::KEY_4, KeyCode::VK_CHANGE_INPUTMODE_JAPANESE</autogen>
       <autogen>--KeyToKey-- KeyCode::KEY_5, KeyCode::VK_CHANGE_INPUTMODE_SWEDISH</autogen>
       <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::VK_CHANGE_INPUTMODE_CANADIAN</autogen>
+    </item>
+    <item>
+      <name>VK_CONFIG</name>
+      <appendix>Use A to toggle Completely Vi Mode</appendix>
+      <appendix>Use S to turn on Completely Vi Mode</appendix>
+      <sysctl>remap.samples_vk_config</sysctl>
+      <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_CONFIG_TOGGLE_remap_completely_vimode</autogen>
+      <autogen>--KeyToKey-- KeyCode::S, KeyCode::VK_CONFIG_FORCE_ON_remap_completely_vimode</autogen>
     </item>
     <item>
       <name>VK_JIS_TOGGLE_EISUU_KANA</name>

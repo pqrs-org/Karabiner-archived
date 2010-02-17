@@ -237,22 +237,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   private:
     KeyCode lastkeycode_;
   };
-
-  class ToggleConfig {
-  public:
-    enum Type {
-      TYPE_TOGGLE,
-      TYPE_FORCE_ON,
-      TYPE_FORCE_OFF,
-    };
-    bool remap(RemapParams& remapParams, KeyCode fromKeyCode, Flags fromFlags, int& configitem, Type type = TYPE_TOGGLE);
-    bool remap(RemapParams& remapParams, KeyCode fromKeyCode, int& configitem, Type type = TYPE_TOGGLE) {
-      return remap(remapParams, fromKeyCode, 0, configitem, type);
-    }
-
-  private:
-    RemapUtil::KeyToKey keytokey_;
-  };
 }
 
 #endif

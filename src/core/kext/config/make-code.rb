@@ -13,6 +13,8 @@ $outfile = {
   :remapcode_refresh_remapfunc_consumer => open('output/include.remapcode_refresh_remapfunc_consumer.cpp', 'w'),
   :remapcode_refresh_remapfunc_pointing => open('output/include.remapcode_refresh_remapfunc_pointing.cpp', 'w'),
   :remapcode_refresh_remapfunc_statusmessage => open('output/include.remapcode_refresh_remapfunc_statusmessage.cpp', 'w'),
+  :remapcode_vk_config => open('output/include.remapcode_vk_config.cpp', 'w'),
+  :keycode_vk_config => open('../keycode/data/include/KeyCode.VK_CONFIG.data', 'w'),
 }
 
 $func = {
@@ -101,6 +103,7 @@ def parseautogen(name, lines, autogen_index)
     next if /<sysctl>.+?<\/sysctl>/ =~ l
     next if /<baseunit>.+?<\/baseunit>/ =~ l
     next if /<default>.+?<\/default>/ =~ l
+    next if /<vk_config>.+?<\/vk_config>/ =~ l
 
     # --------------------------------------------------
     if /<block>/ =~ l then
@@ -189,11 +192,6 @@ def parseautogen(name, lines, autogen_index)
           code_key << "if (ignoremultiplesamekeypress#{autogen_index}_.remap(remapParams, #{params})) break;"
           $func[:key] << name
 
-        when 'ToggleConfig'
-          code_variable << ['ToggleConfig', "toggleconfig#{autogen_index}_"]
-          code_key << "if (toggleconfig#{autogen_index}_.remap(remapParams, #{params})) break;"
-          $func[:key] << name
-
         when 'KeyToConsumer'
           code_variable << ['RemapUtil::KeyToConsumer', "keytoconsumer#{autogen_index}_"]
           code_key << "if (keytoconsumer#{autogen_index}_.remap(remapParams, #{params})) break;"
@@ -240,7 +238,7 @@ def parseautogen(name, lines, autogen_index)
           $func[:pointing] << name
 
         else
-          print "%%% ERROR #{type} %%%\n#{item}\n"
+          print "%%% ERROR #{type} %%%\n#{l}\n"
           exit 1
 
         end
@@ -357,6 +355,25 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
     $outfile[:remapcode_func] << "#{variable[0]} RemapClass_#{name}::#{variable[1]};\n"
   end
   $outfile[:remapcode_func] << "\n\n"
+
+  if /<vk_config>true<\/vk_config>/ =~ item then
+    $outfile[:remapcode_vk_config] << "if (params.key == KeyCode::VK_CONFIG_TOGGLE_#{name}) {\n"
+    $outfile[:remapcode_vk_config] << "  configitem = &(config.#{name});\n"
+    $outfile[:remapcode_vk_config] << "  type = TYPE_TOGGLE;\n"
+    $outfile[:remapcode_vk_config] << "}\n"
+    $outfile[:remapcode_vk_config] << "if (params.key == KeyCode::VK_CONFIG_FORCE_ON_#{name}) {\n"
+    $outfile[:remapcode_vk_config] << "  configitem = &(config.#{name});\n"
+    $outfile[:remapcode_vk_config] << "  type = TYPE_FORCE_ON;\n"
+    $outfile[:remapcode_vk_config] << "}\n"
+    $outfile[:remapcode_vk_config] << "if (params.key == KeyCode::VK_CONFIG_FORCE_OFF_#{name}) {\n"
+    $outfile[:remapcode_vk_config] << "  configitem = &(config.#{name});\n"
+    $outfile[:remapcode_vk_config] << "  type = TYPE_FORCE_OFF;\n"
+    $outfile[:remapcode_vk_config] << "}\n"
+
+    $outfile[:keycode_vk_config] << "VK_CONFIG_TOGGLE_#{name} --AUTO--\n"
+    $outfile[:keycode_vk_config] << "VK_CONFIG_FORCE_ON_#{name} --AUTO--\n"
+    $outfile[:keycode_vk_config] << "VK_CONFIG_FORCE_OFF_#{name} --AUTO--\n"
+  end
 end
 
 $outfile[:remapcode_info] << "enum {\n"

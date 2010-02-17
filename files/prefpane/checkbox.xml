@@ -2611,20 +2611,20 @@
               <appendix>drop Up-Arrow</appendix>
               <appendix>(+ When you type Arrow only, toggle Vi Mode)</appendix>
               <sysctl>remap.vimode_toggle_arrow2optionL</sysctl>
-              <autogen>--KeyToKey-- KeyCode::CURSOR_UP, KeyCode::VK_NONE</autogen>
-              <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_DOWN, KeyCode::OPTION_L, KeyCode::VK_TOGGLE_CONFIG_remap_completely_vimode</autogen>
-              <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_LEFT, KeyCode::OPTION_L, KeyCode::VK_TOGGLE_CONFIG_remap_completely_vimode</autogen>
-              <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_RIGHT, KeyCode::OPTION_L, KeyCode::VK_TOGGLE_CONFIG_remap_completely_vimode</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_UP,    KeyCode::VK_NONE,  KeyCode::VK_CONFIG_TOGGLE_remap_completely_vimode</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_DOWN,  KeyCode::OPTION_L, KeyCode::VK_CONFIG_TOGGLE_remap_completely_vimode</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_LEFT,  KeyCode::OPTION_L, KeyCode::VK_CONFIG_TOGGLE_remap_completely_vimode</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_RIGHT, KeyCode::OPTION_L, KeyCode::VK_CONFIG_TOGGLE_remap_completely_vimode</autogen>
             </item>
             <item>
               <name>Option+V to toggle Vi Mode</name>
               <sysctl>option.vimode_toggle_optionV</sysctl>
-              <autogen>--ToggleConfig-- KeyCode::V, VK_OPTION, config.remap_completely_vimode</autogen>
+              <autogen>--KeyToKey-- KeyCode::V, VK_OPTION, KeyCode::VK_CONFIG_TOGGLE_remap_completely_vimode</autogen>
             </item>
             <item>
               <name>Option+V to turn on Vi Mode</name>
               <sysctl>option.vimode_turnon_optionV</sysctl>
-              <autogen>--ToggleConfig-- KeyCode::V, VK_OPTION, config.remap_completely_vimode, ToggleConfig::TYPE_FORCE_ON</autogen>
+              <autogen>--KeyToKey-- KeyCode::V, VK_OPTION, KeyCode::VK_CONFIG_FORCE_ON_remap_completely_vimode</autogen>
             </item>
             <item>
               <name>Completely Vi Mode Core</name>
@@ -2641,6 +2641,7 @@
                   <appendix>f to FN_Lock</appendix>
                   <appendix>i to turn off Vi Mode (+ FN_Lock off)</appendix>
                   <sysctl>remap.completely_vimode</sysctl>
+                  <vk_config>true</vk_config>
                   <autogen>--ShowStatusMessage-- "Vi Mode"</autogen>
                   <autogen>--KeyToKey-- KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
                   <autogen>--KeyToKey-- KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
@@ -2657,7 +2658,7 @@
                   <autogen>--KeyToKey-- KeyCode::G, KeyCode::HOME</autogen>
 
                   <autogen>--KeyToKey-- KeyCode::F, KeyCode::VK_LOCK_FN</autogen>
-                  <autogen>--KeyToKey-- KeyCode::I, KeyCode::VK_LOCK_FN_FORCE_OFF, KeyCode::VK_TOGGLE_CONFIG_remap_completely_vimode</autogen>
+                  <autogen>--KeyToKey-- KeyCode::I, KeyCode::VK_LOCK_FN_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_remap_completely_vimode</autogen>
                 </item>
               </list>
             </item>
@@ -3370,6 +3371,7 @@
             <item>
               <name>Enable KeyPad as Arrow</name>
               <sysctl>remap.keypadnumlock</sysctl>
+              <vk_config>true</vk_config>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_0, KeyCode::VK_NONE</autogen>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_5, KeyCode::VK_NONE</autogen>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_COMMA, KeyCode::VK_NONE</autogen>
@@ -3387,6 +3389,7 @@
               <name>Enable KeyPad as Arrow</name>
               <appendix>(With PC Style Home/End/PageUp/PageDown)</appendix>
               <sysctl>remap.keypadnumlock_pclikehomeend</sysctl>
+              <vk_config>true</vk_config>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_0, KeyCode::VK_NONE</autogen>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_5, KeyCode::VK_NONE</autogen>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_COMMA, KeyCode::VK_NONE</autogen>
@@ -3403,12 +3406,12 @@
             <item>
               <name>Use Clear Key to toggle "KeyPad as Arrow"</name>
               <sysctl>option.keypadnumlock_togglekey_clear</sysctl>
-              <autogen>--ToggleConfig-- KeyCode::KEYPAD_CLEAR, config.remap_keypadnumlock</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_CLEAR, KeyCode::VK_CONFIG_TOGGLE_remap_keypadnumlock</autogen>
             </item>
             <item>
               <name>Use Clear Key to toggle "KeyPad as Arrow (PC Style Home/End/PageUp/PageDown)"</name>
               <sysctl>option.keypadnumlock_pclikehomeend_togglekey_clear</sysctl>
-              <autogen>--ToggleConfig-- KeyCode::KEYPAD_CLEAR, config.remap_keypadnumlock_pclikehomeend</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_CLEAR, KeyCode::VK_CONFIG_TOGGLE_remap_keypadnumlock_pclikehomeend</autogen>
             </item>
           </list>
         </item>
