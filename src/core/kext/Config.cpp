@@ -5,6 +5,7 @@
 #include "version.hpp"
 #include "Client.hpp"
 #include "remap.hpp"
+#include "FlagStatus.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   Config config;
@@ -23,6 +24,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       int error = sysctl_handle_int(oidp, oidp->oid_arg1, oidp->oid_arg2, req);
       if (! error && req->newptr) {
+        FlagStatus::lock_clear();
         refresh_remapfunc();
       }
       return 0;

@@ -51,6 +51,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static ModifierFlag getFlag(int index);
     static void reset(void);
 
+    // getLockedFlags returns only Virtual locks (not hardware CapsLock).
     static Flags getLockedFlags(void);
 
     static void increase(Flags flags);
@@ -61,9 +62,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void lock_decrease(Flags flags);
     static void lock_toggle(Flags flags);
 
+    // lock_clear clears only Virtual locks (not hardware CapsLock).
     static void lock_clear(void) { lock_decrease(getLockedFlags()); }
 
   private:
+    static void updateStatusMessage(void);
+
+    static Flags statusMessageFlags_;
     static Item item_[MAXNUM];
   };
 }

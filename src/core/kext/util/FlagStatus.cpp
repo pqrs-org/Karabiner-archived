@@ -1,7 +1,14 @@
 #include "FlagStatus.hpp"
 
+#ifndef FLAGSTATUS_TEST
+#include "base.hpp"
+#include "Config.hpp"
+#include "Client.hpp"
+#endif
+
 namespace org_pqrs_KeyRemap4MacBook {
   FlagStatus::Item FlagStatus::item_[FlagStatus::MAXNUM];
+  Flags FlagStatus::statusMessageFlags_(0);
 
   void
   FlagStatus::Item::initialize(ModifierFlag f)
@@ -184,8 +191,38 @@ namespace org_pqrs_KeyRemap4MacBook {
   void FlagStatus::decrease(Flags flags) { FOREACH_TO_FLAGS(decrease); }
   void FlagStatus::temporary_increase(Flags flags) { FOREACH_TO_FLAGS(temporary_increase); }
   void FlagStatus::temporary_decrease(Flags flags) { FOREACH_TO_FLAGS(temporary_decrease); }
-  void FlagStatus::lock_increase(Flags flags) { FOREACH_TO_FLAGS(lock_increase); }
-  void FlagStatus::lock_decrease(Flags flags) { FOREACH_TO_FLAGS(lock_decrease); }
-  void FlagStatus::lock_toggle(Flags flags) { FOREACH_TO_FLAGS(lock_toggle); }
+  void FlagStatus::lock_increase(Flags flags) { FOREACH_TO_FLAGS(lock_increase); updateStatusMessage(); }
+  void FlagStatus::lock_decrease(Flags flags) { FOREACH_TO_FLAGS(lock_decrease); updateStatusMessage(); }
+  void FlagStatus::lock_toggle(Flags flags) { FOREACH_TO_FLAGS(lock_toggle); updateStatusMessage(); }
 #undef FOREACH_TO_FLAGS
+
+  void
+  FlagStatus::updateStatusMessage(void)
+  {
+#ifndef FLAGSTATUS_TEST
+    if (! config.general_hide_modifier_lock_status) {
+      Flags f = FlagStatus::getLockedFlags();
+      if (f != statusMessageFlags_) {
+        KeyRemap4MacBook_bridge::StatusMessage::Request request(KeyRemap4MacBook_bridge::StatusMessage::MESSAGETYPE_MODIFIER_LOCK, "Lock: ");
+        bool isempty = true;
+
+        if (f.isOn(ModifierFlag::FN)) {
+          isempty = false;
+          strlcat(request.message, "FN ", sizeof(request.message));
+        }
+        if (f.isOn(ModifierFlag::COMMAND_L) || f.isOn(ModifierFlag::COMMAND_R)) {
+          isempty = false;
+          strlcat(request.message, "Cmd ", sizeof(request.message));
+        }
+
+        if (isempty) {
+          request.message[0] = '\0';
+        }
+        KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_STATUS_MESSAGE, &request, sizeof(request), NULL, 0);
+
+        statusMessageFlags_ = f;
+      }
+    }
+#endif
+  }
 }
