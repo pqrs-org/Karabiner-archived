@@ -558,7 +558,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (Handle_VK_LOCK::handle(p, workspacedata)) return;
     if (Handle_VK_CHANGE_INPUTMODE::handle(p, workspacedata)) return;
-    if (Handle_VK_TOGGLE_CONFIG::handle(p, workspacedata)) return;
+    if (Handle_VK_CONFIG::handle(p, workspacedata)) return;
     if (Handle_VK_JIS_TOGGLE_EISUU_KANA::handle(p, workspacedata)) return;
     if (handle_VK_JIS_EISUU_x2(p, workspacedata)) return;
     if (handle_VK_JIS_KANA_x2(p, workspacedata)) return;
@@ -783,28 +783,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       lastkeycode_ = remapParams.params.key;
     }
     return false;
-  }
-
-  // ------------------------------------------------------------
-  bool
-  ToggleConfig::remap(RemapParams& remapParams, KeyCode fromKeyCode, Flags fromFlags, int& configitem, Type type)
-  {
-    bool isKeyDown = remapParams.isKeyDownOrModifierDown();
-
-    if (! keytokey_.remap(remapParams, fromKeyCode, fromFlags, KeyCode::VK_NONE)) {
-      return false;
-    }
-
-    if (isKeyDown) {
-      switch (type) {
-        case TYPE_TOGGLE:    configitem = ! configitem; break;
-        case TYPE_FORCE_ON:  configitem = 1; break;
-        case TYPE_FORCE_OFF: configitem = 0; break;
-      }
-      refresh_remapfunc();
-    }
-
-    return true;
   }
 
   // ------------------------------------------------------------

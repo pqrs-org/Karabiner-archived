@@ -19,7 +19,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
 
   // ----------------------------------------------------------------------
-  class Handle_VK_TOGGLE_CONFIG {
+  class Handle_VK_CONFIG {
   public:
     static bool handle(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
   };

@@ -67,22 +67,36 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   bool
-  Handle_VK_TOGGLE_CONFIG::handle(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
+  Handle_VK_CONFIG::handle(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
   {
     int *configitem = NULL;
 
-    if (params.key == KeyCode::VK_TOGGLE_CONFIG_remap_completely_vimode) {
-      configitem = &(config.remap_completely_vimode);
-    } else {
+    enum Type {
+      TYPE_TOGGLE,
+      TYPE_FORCE_ON,
+      TYPE_FORCE_OFF,
+    } type = TYPE_TOGGLE;
+
+#include "config/output/include.remapcode_vk_config.cpp"
+
+    if (configitem == NULL) {
       return false;
     }
 
     // ------------------------------------------------------------
     if (params.eventType == EventType::DOWN && params.repeat == false) {
-      if (configitem) {
-        *configitem = ! *configitem;
-        refresh_remapfunc();
+      switch (type) {
+        case TYPE_TOGGLE:
+          *configitem = ! *configitem;
+          break;
+        case TYPE_FORCE_ON:
+          *configitem = 1;
+          break;
+        case TYPE_FORCE_OFF:
+          *configitem = 1;
+          break;
       }
+      refresh_remapfunc();
     }
     return true;
   }

@@ -1,4 +1,5 @@
 all:
+	make -C ../config
 	mkdir -p output
 	ruby ./make-code.rb
 

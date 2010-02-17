@@ -1,12 +1,14 @@
 #!/usr/bin/ruby
 
-Dir.glob("data/*.data") do |filename|
+Dir.chdir("data")
+
+Dir.glob("*.data") do |filename|
   if /(.+)\.data/ =~ File.basename(filename) then
     classname = $1
     lastvalue = 0
-    open("output/include.#{classname}.hpp", "w") do |of_hpp|
-      open("output/include.#{classname}.cpp", "w") do |of_cpp|
-        open(filename) do |f|
+    open("../output/include.#{classname}.hpp", "w") do |of_hpp|
+      open("../output/include.#{classname}.cpp", "w") do |of_cpp|
+        open("| cpp -P #{filename}") do |f|
           while l = f.gets
             if /^\/\// =~ l then
               of_hpp.print l
@@ -34,4 +36,3 @@ Dir.glob("data/*.data") do |filename|
     end
   end
 end
-
