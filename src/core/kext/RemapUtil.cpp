@@ -50,16 +50,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     remapParams.isremapped = true;
 
-    // We ignore the key repeat because we handle it by myself.
-    //
-    // The key repeat does not come to here by the handling of normal KeyToKey.
-    // Because the key repeat is ignored in remap_KeyboardEventCallback.
-    //
-    // This processing is sake of ConsumerToKey.
-    if (remapParams.params.repeat) {
-      return true;
-    }
-
     // ------------------------------------------------------------
     // handle EventType & Modifiers
     EventType newEventType = remapParams.params.eventType;
