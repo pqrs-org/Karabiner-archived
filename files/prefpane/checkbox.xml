@@ -3274,6 +3274,13 @@
               <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::SHIFT_L</autogen>
             </item>
             <item>
+              <name>Application Key to Delete</name>
+              <appendix>(+ Command+Application Key to CapsLock)</appendix>
+              <sysctl>remap.pc_application2delete_capslock</sysctl>
+              <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, VK_COMMAND, KeyCode::CAPSLOCK</autogen>
+              <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::DELETE</autogen>
+            </item>
+            <item>
               <name>Application Key to Expose All</name>
               <sysctl>remap.pc_application2exposeALL</sysctl>
               <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::EXPOSE_ALL</autogen>
