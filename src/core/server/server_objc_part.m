@@ -189,23 +189,25 @@ finish:
   NSString* s = [NSString stringWithCString:message encoding:NSUTF8StringEncoding];
 
   switch (type) {
-  case STATUSMESSAGETYPE_LOCK:
-    statusmessage_lock_ = s;
-    break;
-  case STATUSMESSAGETYPE_EXTRA:
-    statusmessage_extra_ = s;
-    break;
-  default:
-    break;
+    case STATUSMESSAGETYPE_LOCK:
+      statusmessage_lock_ = s;
+      break;
+    case STATUSMESSAGETYPE_EXTRA:
+      statusmessage_extra_ = s;
+      break;
+    default:
+      break;
   }
 
-  [self performSelectorOnMainThread:@selector(updateStatusMessageWindow) withObject:nil waitUntilDone:NO];
+  [self performSelectorOnMainThread:@selector(updateStatusMessageWindow)
+                         withObject:nil
+                      waitUntilDone:NO];
 }
 
 @end
 
 // ======================================================================
-static ServerObjcPart* serverobjcpart = nil;
+static ServerObjcPart * serverobjcpart = nil;
 
 void
 registerServerObjcPart(ServerObjcPart* object)
