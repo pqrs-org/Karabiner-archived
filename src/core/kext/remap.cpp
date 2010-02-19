@@ -88,7 +88,7 @@ org_pqrs_KeyRemap4MacBook::refresh_remapfunc(void)
   // handle StatusMessage
   static bool isCurrentlyStatusMessageVisible = false;
 
-  const char *statusmessage = NULL;
+  const char* statusmessage = NULL;
   bool isStatusMessageVisible = false;
 #include "config/output/include.remapcode_refresh_remapfunc_statusmessage.cpp"
 
