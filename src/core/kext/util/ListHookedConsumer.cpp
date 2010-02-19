@@ -43,13 +43,16 @@ namespace org_pqrs_KeyRemap4MacBook {
       CommonData::setcurrent_ts(ts);
 
       // ------------------------------------------------------------
+      // Because we handle the key repeat ourself, drop the key repeat by hardware.
+      if (repeat) return;
+
+      // ------------------------------------------------------------
       Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(EventType(eventType), Flags(flags), ConsumerKeyCode(key),
                                                                                                    flavor, guid, repeat));
       if (! ptr) return;
       Params_KeyboardSpecialEventCallback& params = *ptr;
 
-      if (params.eventType == EventType::DOWN &&
-          params.repeat == false) {
+      if (params.eventType == EventType::DOWN) {
         EventWatcher::on();
       }
 
