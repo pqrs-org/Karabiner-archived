@@ -69,7 +69,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   Handle_VK_CONFIG::handle(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
   {
-    int *configitem = NULL;
+    int* configitem = NULL;
 
     enum Type {
       TYPE_TOGGLE,
