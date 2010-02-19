@@ -232,6 +232,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! ptr) return false;
     Params_KeyboardSpecialEventCallback& params = *ptr;
 
+    KeyboardRepeat::set(params);
     RemapUtil::fireConsumer(params);
     return true;
   }

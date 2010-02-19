@@ -237,6 +237,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ----------------------------------------
       if (! remapParams.isremapped) {
         params.flags = FlagStatus::makeFlags();
+        KeyboardRepeat::set(params);
         RemapUtil::fireConsumer(params);
       }
     }
