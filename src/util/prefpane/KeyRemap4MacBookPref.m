@@ -20,6 +20,22 @@ static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
   [_versionText setStringValue:version];
 }
 
+- (void) terminateTargetApplication:(NSString*)bundleidentifier
+{
+  NSArray* list = [[NSWorkspace sharedWorkspace] runningApplications];
+
+  for (NSRunningApplication* app in list) {
+    if (! app) continue;
+
+    NSString* bi = [app bundleIdentifier];
+    if (! bi) continue;
+
+    if ([bi isEqualToString:bundleidentifier]) {
+      [app terminate];
+    }
+  }
+}
+
 /* ---------------------------------------------------------------------- */
 - (void) setStatusBarState
 {
@@ -32,10 +48,7 @@ static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
 
 - (void) startStatusBar
 {
-  NSString* killall = @"/usr/bin/killall";
-  NSArray* args = [NSArray arrayWithObjects:@"KeyRemap4MacBook_statusbar", nil];
-  NSTask* task_killall = [NSTask launchedTaskWithLaunchPath:killall arguments:args];
-  [task_killall waitUntilExit];
+  [self terminateTargetApplication:@"org.pqrs.KeyRemap4MacBook_statusbar"];
 
   NSString* app = @"/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook_statusbar.app";
   [[NSWorkspace sharedWorkspace] launchApplication:app];
@@ -74,6 +87,12 @@ static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
 - (IBAction) launchEventViewer:(id)sender
 {
   [[NSWorkspace sharedWorkspace] launchApplication:@"/Library/org.pqrs/KeyRemap4MacBook/app/KeyDump.app"];
+}
+
+- (IBAction) checkUpdateNow:(id)sender
+{
+  [self terminateTargetApplication:@"org.pqrs.KeyRemap4MacBook.updater"];
+  [self terminateTargetApplication:@"org.pqrs.KeyRemap4MacBook-server"];
 }
 
 /* ---------------------------------------------------------------------- */

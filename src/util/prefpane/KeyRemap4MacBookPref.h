@@ -13,6 +13,7 @@
 - (IBAction) changeCheckUpdate:(id)sender;
 - (IBAction) launchUninstaller:(id)sender;
 - (IBAction) launchEventViewer:(id)sender;
+- (IBAction) checkUpdateNow:(id)sender;
 - (void) mainViewDidLoad;
 
 @end
