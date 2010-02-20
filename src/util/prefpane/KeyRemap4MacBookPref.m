@@ -93,6 +93,12 @@ static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
 {
   [self terminateTargetApplication:@"org.pqrs.KeyRemap4MacBook.updater"];
   [self terminateTargetApplication:@"org.pqrs.KeyRemap4MacBook-server"];
+
+  // We wait 1sec to improve the impression that pushed the button.
+  // This is useless processing, but it is surely necessary for UI.
+  [NSThread sleepForTimeInterval:1.0];
+
+  [_label_updatechecked setHidden:NO];
 }
 
 /* ---------------------------------------------------------------------- */

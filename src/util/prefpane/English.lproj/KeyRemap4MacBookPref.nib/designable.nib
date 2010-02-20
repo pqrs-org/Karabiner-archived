@@ -11,7 +11,7 @@
 			<string key="NS.object.0">740</string>
 		</object>
 		<array class="NSMutableArray" key="IBDocument.EditedObjectIDs">
-			<integer value="12"/>
+			<integer value="705"/>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -984,6 +984,25 @@
 																	<int key="NSPeriodicInterval">25</int>
 																</object>
 															</object>
+															<object class="NSTextField" id="1057813760">
+																<reference key="NSNextResponder" ref="896409556"/>
+																<int key="NSvFlags">-2147483380</int>
+																<string key="NSFrame">{{167, 15}, {157, 17}}</string>
+																<reference key="NSSuperview" ref="896409556"/>
+																<bool key="NSEnabled">YES</bool>
+																<object class="NSTextFieldCell" key="NSCell" id="199049728">
+																	<int key="NSCellFlags">68288064</int>
+																	<int key="NSCellFlags2">306189312</int>
+																	<string key="NSContents">checked</string>
+																	<reference key="NSSupport" ref="322818650"/>
+																	<reference key="NSControlView" ref="1057813760"/>
+																	<reference key="NSBackgroundColor" ref="58023412"/>
+																	<object class="NSColor" key="NSTextColor">
+																		<int key="NSColorSpace">1</int>
+																		<bytes key="NSRGB">MC40OTQ1NjUyMTc0IDAuNDk0NTY1MjE3NCAwLjQ5NDU2NTIxNzQAA</bytes>
+																	</object>
+																</object>
+															</object>
 														</array>
 														<string key="NSFrame">{{1, 1}, {602, 70}}</string>
 														<reference key="NSSuperview" ref="895914296"/>
@@ -1351,6 +1370,14 @@
 					</object>
 					<int key="connectionID">776</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">_label_updatechecked</string>
+						<reference key="source" ref="762499249"/>
+						<reference key="destination" ref="1057813760"/>
+					</object>
+					<int key="connectionID">779</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -1590,6 +1617,7 @@
 							<reference ref="238880903"/>
 							<reference ref="30684655"/>
 							<reference ref="336157582"/>
+							<reference ref="1057813760"/>
 						</array>
 						<reference key="parent" ref="871498761"/>
 					</object>
@@ -1927,6 +1955,19 @@
 						<reference key="object" ref="2329225"/>
 						<reference key="parent" ref="336157582"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">777</int>
+						<reference key="object" ref="1057813760"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="199049728"/>
+						</array>
+						<reference key="parent" ref="895914296"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">778</int>
+						<reference key="object" ref="199049728"/>
+						<reference key="parent" ref="1057813760"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -2045,12 +2086,14 @@
 				<string key="772.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="772.ImportedFromIB2"/>
 				<string key="773.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="777.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="778.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">776</int>
+			<int key="maxID">779</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2074,6 +2117,7 @@
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="_checkbox_statusbar">id</string>
+						<string key="_label_updatechecked">id</string>
 						<string key="_popup_checkupdate">id</string>
 						<string key="_versionText">id</string>
 					</dictionary>
