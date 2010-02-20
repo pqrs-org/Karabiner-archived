@@ -253,6 +253,16 @@
           <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::COMMAND_L</autogen>
         </item>
         <item>
+          <name>Backquote(`) to Control_L</name>
+          <sysctl>remap.backquote2controlL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::CONTROL_L</autogen>
+        </item>
+        <item>
+          <name>Backquote(`) to Option_L</name>
+          <sysctl>remap.backquote2optionL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::OPTION_L</autogen>
+        </item>
+        <item>
           <name>Backquote(`) to Delete</name>
           <sysctl>remap.backquote2delete</sysctl>
           <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::DELETE</autogen>
@@ -1769,6 +1779,13 @@
           <sysctl>remap.semicolon2return_controlsemicolon2semicolon</sysctl>
           <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_CONTROL, KeyCode::SEMICOLON</autogen>
           <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::RETURN</autogen>
+        </item>
+        <item>
+          <name>Semicolon to Return (when there are not any modifiers)</name>
+          <appendix>(+ Control+Semicolon to Semicolon)</appendix>
+          <sysctl>remap.semicolon2return_nomod</sysctl>
+          <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_CONTROL | ModifierFlag::NONE, KeyCode::SEMICOLON</autogen>
+          <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::RETURN</autogen>
         </item>
         <item>
           <name>Swap Semicolon and Colon</name>
