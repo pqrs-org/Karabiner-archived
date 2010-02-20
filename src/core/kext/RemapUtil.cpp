@@ -23,12 +23,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     bool isKeyDown = remapParams.isKeyDownOrModifierDown();
     if (isKeyDown) {
-      // We consider a case of the key repeat for ConsumerToKey.
-      // We continue remapping the key if it was remapped once.
-      if (active_ == false) {
-        if (! FlagStatus::makeFlags().isOn(fromFlags)) return false;
-        active_ = true;
-      }
+      if (! FlagStatus::makeFlags().isOn(fromFlags)) return false;
+      active_ = true;
 
     } else {
       // When active_ is true, we converted the key at KeyDown.
@@ -199,10 +195,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (remapParams.params.eventType == EventType::DOWN) {
       // See RemapUtil::KeyToKey::remap about handling of "active_".
-      if (active_ == false) {
-        if (! FlagStatus::makeFlags().isOn(fromFlags)) return false;
-        active_ = true;
-      }
+      if (! FlagStatus::makeFlags().isOn(fromFlags)) return false;
+      active_ = true;
 
     } else {
       if (! active_) return false;
@@ -311,12 +305,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     bool isKeyDown = remapParams.isKeyDownOrModifierDown();
     if (isKeyDown) {
-      if (active_ == false) {
-        if (! FlagStatus::makeFlags().isOn(fromFlags)) return false;
-        active_ = true;
-
-        FlagStatus::decrease(fromFlags | fromKeyCode.getModifierFlag());
-      }
+      if (! FlagStatus::makeFlags().isOn(fromFlags)) return false;
+      active_ = true;
     } else {
       if (! active_) return false;
       active_ = false;
@@ -324,6 +314,27 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ------------------------------------------------------------
     remapParams.isremapped = true;
+
+    // We need to call FlagStatus::decrease before mapping,
+    // and call FlagStatus::increase after a mapping.
+    //
+    // ex. Option_L+Space to Right Button
+    // (1) KeyDown Option_L
+    //      1. KeyDown Option_L
+    // (2) KeyDown Space
+    //      2. KeyUp   Option_L
+    //      3. ButtonDown Right
+    // (3) KeyUp   Space
+    //      4. ButtonUp   Right
+    //      5. KeyUp   Option_L
+    //
+    // *** To support Mouse Dragging,
+    // *** we need to use FlagStatus::decrease/increase.
+    // *** (not temporary_decrease/temporary_increase).
+
+    if (isKeyDown) {
+      FlagStatus::decrease(fromFlags | fromKeyCode.getModifierFlag());
+    }
 
     Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(PointingButton::VK_KEY, 0, 0));
     if (! ptr) return false;
@@ -338,6 +349,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (! isKeyDown) {
       FlagStatus::increase(fromFlags | fromKeyCode.getModifierFlag());
+      FireModifiers::fire();
     }
 
     return true;
