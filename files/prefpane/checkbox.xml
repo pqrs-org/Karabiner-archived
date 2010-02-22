@@ -2658,7 +2658,7 @@
                   <appendix>0 to Command_L+Left</appendix>
                   <appendix>$ to Command_L+Right ($ == Shift+4)</appendix>
                   <appendix>f to FN</appendix>
-                  <appendix>i to turn off Vi Mode (+ FN_Lock off)</appendix>
+                  <appendix>i to turn off Vi Mode</appendix>
                   <sysctl>remap.completely_vimode</sysctl>
                   <vk_config>true</vk_config>
                   <autogen>--ShowStatusMessage-- "Vi Mode"</autogen>
@@ -2680,7 +2680,7 @@
                   <autogen>--KeyToKey-- KeyCode::G, KeyCode::HOME</autogen>
 
                   <autogen>--KeyToKey-- KeyCode::F, KeyCode::FN</autogen>
-                  <autogen>--KeyToKey-- KeyCode::I, KeyCode::VK_LOCK_FN_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_remap_completely_vimode</autogen>
+                  <autogen>--KeyToKey-- KeyCode::I, KeyCode::VK_CONFIG_TOGGLE_remap_completely_vimode</autogen>
                 </item>
               </list>
             </item>
