@@ -2655,6 +2655,8 @@
                   <appendix>Control+B to PageUp</appendix>
                   <appendix>g to Home</appendix>
                   <appendix>Shift+g to End</appendix>
+                  <appendix>0 to Command_L+Left</appendix>
+                  <appendix>$ to Command_L+Right ($ == Shift+4)</appendix>
                   <appendix>f to FN_Lock</appendix>
                   <appendix>i to turn off Vi Mode (+ FN_Lock off)</appendix>
                   <sysctl>remap.completely_vimode</sysctl>
@@ -2664,6 +2666,9 @@
                   <autogen>--KeyToKey-- KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
                   <autogen>--KeyToKey-- KeyCode::K, KeyCode::CURSOR_UP</autogen>
                   <autogen>--KeyToKey-- KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
+
+                  <autogen>--KeyToKey-- KeyCode::KEY_0, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+                  <autogen>--KeyToKey-- KeyCode::KEY_4, VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
 
                   <autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::PAGEDOWN</autogen>
                   <autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::PAGEUP</autogen>
