@@ -21,6 +21,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       force_off = true;
     } else if (params.key == KeyCode::VK_LOCK_COMMAND_R) {
       flags.add(ModifierFlag::COMMAND_R);
+
+    } else if (params.key == KeyCode::VK_LOCK_ALL_FORCE_OFF) {
+      FlagStatus::lock_clear();
+      return true;
     } else {
       return false;
     }
@@ -93,7 +97,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           *configitem = 1;
           break;
         case TYPE_FORCE_OFF:
-          *configitem = 1;
+          *configitem = 0;
           break;
       }
       refresh_remapfunc();
