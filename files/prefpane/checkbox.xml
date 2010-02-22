@@ -2626,12 +2626,12 @@
             <item>
               <name>Arrow(Down/Left/Right) to Option_L</name>
               <appendix>drop Up-Arrow</appendix>
-              <appendix>(+ When you type Arrow only, turn on Vi Mode)</appendix>
-              <sysctl>remap.vimode_turnon_arrow2optionL</sysctl>
-              <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_UP,    KeyCode::VK_NONE,  KeyCode::VK_CONFIG_FORCE_ON_remap_completely_vimode</autogen>
-              <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_DOWN,  KeyCode::OPTION_L, KeyCode::VK_CONFIG_FORCE_ON_remap_completely_vimode</autogen>
-              <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_LEFT,  KeyCode::OPTION_L, KeyCode::VK_CONFIG_FORCE_ON_remap_completely_vimode</autogen>
-              <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_RIGHT, KeyCode::OPTION_L, KeyCode::VK_CONFIG_FORCE_ON_remap_completely_vimode</autogen>
+              <appendix>(+ When you type Arrow only, toggle Vi Mode)</appendix>
+              <sysctl>remap.vimode_toggle_arrow2optionL</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_UP,    KeyCode::VK_NONE,  KeyCode::VK_CONFIG_TOGGLE_remap_completely_vimode</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_DOWN,  KeyCode::OPTION_L, KeyCode::VK_CONFIG_TOGGLE_remap_completely_vimode</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_LEFT,  KeyCode::OPTION_L, KeyCode::VK_CONFIG_TOGGLE_remap_completely_vimode</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_RIGHT, KeyCode::OPTION_L, KeyCode::VK_CONFIG_TOGGLE_remap_completely_vimode</autogen>
             </item>
             <item>
               <name>Option+V to toggle Vi Mode</name>
