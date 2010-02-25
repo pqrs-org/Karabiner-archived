@@ -763,6 +763,11 @@
           <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
         </item>
         <item>
+          <name>Eject to F14</name>
+          <sysctl>remap.eject2f14</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::F14</autogen>
+        </item>
+        <item>
           <name>Eject to PageDown</name>
           <sysctl>remap.eject2pagedown</sysctl>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::PAGEDOWN</autogen>
@@ -999,6 +1004,11 @@
           <name>FN to Forward Delete</name>
           <sysctl>remap.fn2forwarddelete</sysctl>
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::FORWARD_DELETE</autogen>
+        </item>
+        <item>
+          <name>FN to F14</name>
+          <sysctl>remap.fn2f14</sysctl>
+          <autogen>--KeyToKey-- KeyCode::FN, KeyCode::F14</autogen>
         </item>
         <item>
           <name>FN to Help</name>
