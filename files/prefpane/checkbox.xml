@@ -2644,6 +2644,12 @@
               <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_RIGHT, KeyCode::OPTION_L, KeyCode::VK_CONFIG_TOGGLE_remap_completely_vimode</autogen>
             </item>
             <item>
+              <name>Command_R to Command_R</name>
+              <appendix>(+ When you type Command_R only, toggle Vi Mode)</appendix>
+              <sysctl>remap.vimode_toggle_commandR</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CONFIG_TOGGLE_remap_completely_vimode</autogen>
+            </item>
+            <item>
               <name>FN to FN</name>
               <appendix>(+ When you type FN only, toggle Vi Mode)</appendix>
               <sysctl>remap.vimode_toggle_fn2fn</sysctl>
