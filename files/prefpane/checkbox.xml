@@ -3304,6 +3304,12 @@
               <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::COMMAND_L</autogen>
             </item>
             <item>
+              <name>Application Key to Command_R</name>
+              <sysctl>remap.pc_application2commandR_comamndLspace</sysctl>
+              <appendix>(+ When you type Application only, send Command_L+Space)</appendix>
+              <autogen>--KeyOverlaidModifier-- KeyCode::PC_APPLICATION, KeyCode::COMMAND_R, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+            </item>
+            <item>
               <name>Application Key to Control_L</name>
               <sysctl>remap.pc_application2controlL</sysctl>
               <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::CONTROL_L</autogen>
@@ -3350,6 +3356,11 @@
               <name>Application Key to F11</name>
               <sysctl>remap.pc_application2f11</sysctl>
               <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::F11</autogen>
+            </item>
+            <item>
+              <name>Application Key to Command_L+Space</name>
+              <sysctl>remap.pc_application2commandLspace</sysctl>
+              <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
             </item>
             <item>
               <name>Application Key to Underscore(Shift_L+Minus)</name>
