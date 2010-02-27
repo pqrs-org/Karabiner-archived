@@ -12,9 +12,9 @@
   if (! ws) return nil;
 
   NSArray* a = [ws runningApplications];
-  NSEnumerator* e = [a objectEnumerator];
-  for (;;) {
-    NSRunningApplication* app = [e nextObject];
+  if (! a) return nil;
+
+  for (NSRunningApplication* app in a) {
     if (! app) return nil;
 
     if ([app isActive]) {
