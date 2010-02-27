@@ -3805,7 +3805,7 @@
             <item>
               <name>Command_R to Command_R</name>
               <appendix>(+ When you type Command_R only, send KANA)</appendix>
-              <appendix>(+ When you type Control+Command_R only, toggle Vi Mode)</appendix>
+              <appendix>(+ When you type Control+Command_R only, toggle Completely Vi Mode)</appendix>
               <appendix>(+ When you type Shift+Command_R only, send Return)</appendix>
               <sysctl>remap.jis_commandR2commandR_kana_vimode_return</sysctl>
               <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, VK_SHIFT, KeyCode::COMMAND_R, ModifierFlag::SHIFT_L, KeyCode::RETURN</autogen>
