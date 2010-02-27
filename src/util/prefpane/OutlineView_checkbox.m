@@ -67,7 +67,6 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
 {
   NSArray* a = [node nodesForXPath:@"list/item" error:NULL];
   if (a == nil) return FALSE;
-  if ([a count] == 0) return FALSE;
 
   for (NSXMLNode* n in a) {
     if (! n) break;
@@ -87,11 +86,9 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
 - (void) filter_core:(NSXMLElement*)node sysctl:(BOOL)sysctl search:(NSString*)search
 {
   NSArray* a = [node nodesForXPath:@"list/item" error:NULL];
+  if (a == nil) return;
 
-  NSEnumerator* enumerator = [a objectEnumerator];
-  NSXMLElement* n;
-  for (;;) {
-    n = [enumerator nextObject];
+  for (NSXMLElement* n in a) {
     if (! n) break;
 
     if (sysctl) {
@@ -123,10 +120,7 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
   }
   if (! [[_searchText stringValue] isEqual:@""]) {
     NSArray* a = [[_searchText stringValue] componentsSeparatedByString:@" "];
-    NSEnumerator* enumerator = [a objectEnumerator];
-    NSString* str;
-    for (;;) {
-      str = [enumerator nextObject];
+    for (NSString* str in a) {
       if (! str) break;
 
       str = [str lowercaseString];
@@ -172,10 +166,7 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
 
   NSArray* a = [item nodesForXPath:@"appendix" error:NULL];
   if (a) {
-    NSEnumerator* e = [a objectEnumerator];
-    NSXMLNode* appendix;
-    for (;;) {
-      appendix = [e nextObject];
+    for (NSXMLNode* appendix in a) {
       if (! appendix) break;
 
       [titlestring appendString:@"\n  "];
