@@ -51,8 +51,14 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
   NSXMLNode* text = [_xmlTreeWrapper getNode:node xpath:@"name"];
   if (text && [[[text stringValue] lowercaseString] rangeOfString:search].location != NSNotFound) return TRUE;
 
-  text = [_xmlTreeWrapper getNode:node xpath:@"appendix"];
-  if (text && [[[text stringValue] lowercaseString] rangeOfString:search].location != NSNotFound) return TRUE;
+  NSArray* a = [node nodesForXPath:@"appendix" error:NULL];
+  if (a) {
+    for (NSXMLNode* appendix in a) {
+      if (! appendix) continue;
+
+      if ([[[appendix stringValue] lowercaseString] rangeOfString:search].location != NSNotFound) return TRUE;
+    }
+  }
 
   return FALSE;
 }
@@ -63,10 +69,7 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
   if (a == nil) return FALSE;
   if ([a count] == 0) return FALSE;
 
-  NSEnumerator* enumerator = [a objectEnumerator];
-  NSXMLNode* n;
-  for (;;) {
-    n = [enumerator nextObject];
+  for (NSXMLNode* n in a) {
     if (! n) break;
 
     if ([self filter_checkChildren:n sysctl:sysctl search:search]) return TRUE;
