@@ -14,6 +14,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       return lock;
     }
     static void free(IOLock*& lock) {
+      if (! lock) {
+        IOLog("[KeyRemap4MacBook ERROR] IOLockAlloc failed.\n");
+        return;
+      }
+
       IOLockLock(lock);
       IOLock* tmplock = lock;
       lock = NULL;
