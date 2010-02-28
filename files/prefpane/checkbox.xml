@@ -4178,8 +4178,39 @@
             </item>
             <item>
               <name>Use ASCII Keyboard as Japanese Keyboard</name>
-              <sysctl>remap.jis_layout_us2japanese</sysctl>
-              <autogen>--SetKeyboardType-- KeyboardType::JIS_MACBOOK_2008</autogen>
+              <list>
+                <item>
+                  <name>Use ASCII Keyboard as Japanese Keyboard</name>
+                  <sysctl>remap.jis_layout_us2japanese</sysctl>
+                  <autogen>--SetKeyboardType-- KeyboardType::JIS_MACBOOK_2008</autogen>
+                </item>
+                <item>
+                  <name>Options</name>
+                  <list>
+                    <item>
+                      <name>Backquote(`) to Yen</name>
+                      <sysctl>option.jis_layout_us2japanese_backquote2yen</sysctl>
+                      <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::JIS_YEN</autogen>
+                    </item>
+                    <item>
+                      <name>Backquote(`) to Backslash</name>
+                      <sysctl>option.jis_layout_us2japanese_backquote2backslash</sysctl>
+                      <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::VK_JIS_BACKSLASH</autogen>
+                    </item>
+                    <item>
+                      <name>Shift_R to Shift_R</name>
+                      <appendix>(+ When you type Shift_R only, send Underscore)</appendix>
+                      <sysctl>option.jis_layout_us2japanese_shiftR2shiftR_underscore</sysctl>
+                      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::JIS_UNDERSCORE</autogen>
+                    </item>
+                    <item>
+                      <name>(Shift_L+Shift_R to Underscore)</name>
+                      <sysctl>option.jis_layout_us2japanese_shiftR2shiftR_shiftLshiftR2underscore</sysctl>
+                      <autogen>--KeyToKey-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_L, KeyCode::JIS_UNDERSCORE</autogen>
+                    </item>
+                  </list>
+                </item>
+              </list>
             </item>
             <item>
               <name>Use KAWASHIMA Special Keyboard Layout</name>
