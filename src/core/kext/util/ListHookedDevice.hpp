@@ -14,6 +14,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     HookedDevice(void) : device_(NULL), vendorID_(0), productID_(0) {}
 
     IOHIDevice* get(void) const { return device_; }
+    bool isEqualVendorIDProductID(VendorID vendorID, ProductID productID) const;
 
   protected:
     IOHIDevice* device_;
