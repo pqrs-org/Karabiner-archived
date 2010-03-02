@@ -8,18 +8,24 @@ namespace org_pqrs_KeyRemap4MacBook {
     friend class ListHookedDevice;
 
   public:
-    HookedDevice(void) : device_(NULL) {}
+    typedef UInt32 VendorID;
+    typedef UInt32 ProductID;
+
+    HookedDevice(void) : device_(NULL), vendorID_(0), productID_(0) {}
 
     IOHIDevice* get(void) const { return device_; }
 
   protected:
     IOHIDevice* device_;
+    VendorID vendorID_;
+    ProductID productID_;
 
     virtual bool initialize(IOHIDevice* d) = 0;
     virtual bool refresh(void) = 0;
     virtual bool terminate(void) = 0;
 
-    static bool isIgnoreDevice(IOHIDevice* dev);
+    static void getVendorIDProductID(IORegistryEntry* dev, VendorID& vendorID, ProductID& productID);
+    static bool isIgnoreDevice(VendorID vendorID, ProductID productID);
     static bool isConsumer(const char* name);
   };
 

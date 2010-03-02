@@ -68,7 +68,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     const char* name = d->getName();
     if (! name) return false;
 
-    if (HookedDevice::isIgnoreDevice(d)) return false;
     if (! HookedDevice::isConsumer(name)) return false;
 
     device_ = d;

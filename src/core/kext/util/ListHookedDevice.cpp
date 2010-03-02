@@ -12,22 +12,33 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
-  bool
-  HookedDevice::isIgnoreDevice(IOHIDevice* dev)
+  void
+  HookedDevice::getVendorIDProductID(IORegistryEntry* dev, VendorID& vendorID, ProductID& productID)
   {
-    if (! dev) return false;
+    vendorID = 0;
+    productID = 0;
 
-    // ------------------------------------------------------------
-    const OSNumber* number = NULL;
+    while (dev) {
+      const OSNumber* vid = NULL;
+      vid = OSDynamicCast(OSNumber, dev->getProperty(kIOHIDVendorIDKey));
 
-    number = OSDynamicCast(OSNumber, dev->getProperty(kIOHIDVendorIDKey));
-    if (! number) return false;
-    UInt32 vendorID = number->unsigned32BitValue();
+      const OSNumber* pid = NULL;
+      pid = OSDynamicCast(OSNumber, dev->getProperty(kIOHIDProductIDKey));
 
-    number = OSDynamicCast(OSNumber, dev->getProperty(kIOHIDProductIDKey));
-    if (! number) return false;
-    UInt32 productID = number->unsigned32BitValue();
+      if (vid && pid) {
+        vendorID = vid->unsigned32BitValue();
+        productID = pid->unsigned32BitValue();
+        return;
+      }
 
+      // check parent property.
+      dev = dev->getParentEntry(IORegistryEntry::getPlane(kIOServicePlane));
+    }
+  }
+
+  bool
+  HookedDevice::isIgnoreDevice(VendorID vendorID, ProductID productID)
+  {
     IOLog("KeyRemap4MacBook HookedDevice::isIgnoreDevice checking vendorID = 0x%x, productID = 0x%x\n",
           static_cast<unsigned int>(vendorID),
           static_cast<unsigned int>(productID));
@@ -39,6 +50,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 #if 0
     // Apple External Keyboard
     if (vendorID == 0x05ac && productID == 0x0222) return true;
+
+    // Apple Magic Mouse
+    if (vendorID == 0x05ac && productID == 0x030d) return true;
 
     // My Private Mouse (SIGMA Levy)
     if (vendorID == 0x093a && productID == 0x2510) return true;
@@ -74,6 +88,17 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! lock_) return false;
     IOLockWrapper::ScopedLock lk(lock_);
 
+    HookedDevice::VendorID vendorID;
+    HookedDevice::ProductID productID;
+
+    HookedDevice::getVendorIDProductID(device, vendorID, productID);
+    if (HookedDevice::isIgnoreDevice(vendorID, productID)) {
+      IOLog("KeyRemap4MacBook ListHookedDevice::append skip vendorID = 0x%x, productID = 0x%x\n",
+            static_cast<unsigned int>(vendorID),
+            static_cast<unsigned int>(productID));
+      return true;
+    }
+
     last_ = device;
 
     for (int i = 0; i < MAXNUM; ++i) {
@@ -85,10 +110,12 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       bool result = p->initialize(device);
       if (result) {
+        p->vendorID_ = vendorID;
+        p->productID_ = productID;
         // reset if any event actions are replaced.
         reset();
       }
-      return reset;
+      return true;
     }
 
     return false;
