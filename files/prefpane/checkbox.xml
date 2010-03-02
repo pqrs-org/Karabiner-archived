@@ -1406,6 +1406,11 @@
           </list>
         </item>
         <item>
+          <name>Control+F1 to F16</name>
+          <sysctl>remap.controlF1toF16</sysctl>
+          <autogen>--KeyToKey-- KeyCode::F1, VK_CONTROL, KeyCode::F16</autogen>
+        </item>
+        <item>
           <name>F16 to Tab</name>
           <sysctl>remap.f16_to_tab</sysctl>
           <autogen>--KeyToKey-- KeyCode::F16, KeyCode::TAB</autogen>
