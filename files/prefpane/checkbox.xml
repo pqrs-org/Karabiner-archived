@@ -29,6 +29,15 @@
           <name>Don't show Modifier lock status on screen</name>
           <sysctl>general.hide_statusmessage</sysctl>
         </item>
+        <item>
+          <name>Excluding Devices</name>
+          <list>
+            <item>
+              <name>Don't Remap Logitech Cordless Presenter</name>
+              <sysctl>general.dont_remap_logitech_cordless_presenter</sysctl>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
 
