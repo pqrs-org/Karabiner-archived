@@ -44,6 +44,25 @@ namespace org_pqrs_KeyRemap4MacBook {
       HookedKeyboard* hk = ListHookedKeyboard::instance().get(kbd);
       if (! hk) return;
 
+      // Logitech Cordless Presenter (LCP) Hack
+      //
+      // When an LCP is first plugged in, it will send a CONTROL_L down event
+      // when the first pageup/pagedown key is pressed without sending a corresponding
+      // up event -- effectively rendering the device (and the Mac) useless until it is
+      // unplugged from the system.
+      //
+      // Similarly, when the volume keys are first pressed, a SHIFT_L down event
+      // is generated, with now up event.
+      //
+      // This code effectively throws these events away if they are received from an LCP.
+      //
+      // *** LCP has 6 keys (Page Up, Page Down, a 'B' key, an 'Esc' key, and volume up / down keys). ***
+      // *** So, we can drop CONTROL_L and SHIFT_L without a problem. ***
+      if (hk->isEqualVendorIDProductID(HookedDevice::VendorID(0x046d), HookedDevice::ProductID(0xc515))) {
+        if (KeyCode::CONTROL_L == key) return;
+        if (KeyCode::SHIFT_L == key) return;
+      }
+
       // ------------------------------------------------------------
 #include "../config/output/include.remapcode_keyboardtype.hpp"
       CommonData::setcurrent_ts(ts);
