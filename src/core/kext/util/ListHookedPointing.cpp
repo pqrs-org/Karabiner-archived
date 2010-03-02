@@ -100,8 +100,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     const char* name = d->getName();
     if (! name) return false;
 
-    if (HookedDevice::isIgnoreDevice(d)) return false;
-
     device_ = d;
     IOLog("KeyRemap4MacBook HookedPointing::initialize name = %s, device_ = 0x%p\n", name, device_);
 
