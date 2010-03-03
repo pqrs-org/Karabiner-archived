@@ -312,6 +312,12 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
     $outfile[:config_default] << "#{name} = #{$1};\n"
   end
 
+  # check <name> num == 1
+  if item.scan(/<name>(.+?)<\/name>/m).size != 1 then
+    print "%%% ERROR multiple <name> for #{name}\n"
+    exit 1
+  end
+
   # ======================================================================
   lines = item.split(/\n/)
   lines = preprocess(lines)
