@@ -2687,7 +2687,7 @@
             </item>
             <item>
               <name>Escape to turn off Vi Mode</name>
-              <name>(+ turn off Modifier Lock)</name>
+              <appendix>(+ turn off Modifier Lock)</appendix>
               <sysctl>option.vimode_turnoff_escape</sysctl>
               <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_remap_completely_vimode</autogen>
             </item>
