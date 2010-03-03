@@ -3762,6 +3762,16 @@
               <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::CONTROL_L, KeyCode::JIS_EISUU</autogen>
             </item>
             <item>
+              <name>Command_L to Control_L</name>
+              <appendix>(+ When you type Command_L only, send EISUU)</appendix>
+              <appendix>(+ When you type Command_R+Command_L only, toggle Completely Vi Mode)</appendix>
+              <appendix>(+ When you type Shift+Command_L only, send ESCAPE)</appendix>
+              <sysctl>remap.jis_commandL2controlL_eisuu_vimode_escape</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, VK_SHIFT, KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::ESCAPE</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, ModifierFlag::COMMAND_R, KeyCode::CONTROL_L, ModifierFlag::COMMAND_R, KeyCode::VK_CONFIG_TOGGLE_remap_completely_vimode</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::CONTROL_L, KeyCode::JIS_EISUU</autogen>
+            </item>
+            <item>
               <name>Command_L x2 to EISUU</name>
               <sysctl>remap.jis_commandL_x2_to_eisuu</sysctl>
               <autogen>--DoublePressModifier-- KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, KeyCode::JIS_EISUU</autogen>
