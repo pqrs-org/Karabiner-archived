@@ -52,7 +52,7 @@ KeyRemap4MacBook_server::Server::sendReply(int sock, void* data, size_t size, ui
 void
 KeyRemap4MacBook_server::Server::dispatchOperator(int sock)
 {
-  int operation;
+  org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::RequestType operation;
   if (read(sock, &operation, sizeof(operation)) < 0) goto error;
 
   switch (operation) {
@@ -89,7 +89,7 @@ KeyRemap4MacBook_server::Server::dispatchOperator(int sock)
 
       break;
     }
-    default:
+    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::REQUEST_NONE:
       goto error;
   }
 
