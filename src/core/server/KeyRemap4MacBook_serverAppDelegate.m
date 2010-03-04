@@ -22,7 +22,8 @@
   server_run();
 
   [pool drain];
-  [NSThread exit];
+
+  [NSApp terminate:self];
 }
 
 - (void) configThreadMain {
