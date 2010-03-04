@@ -2,6 +2,7 @@
 #include <sys/sysctl.h>
 #include <stdlib.h>
 #include <string>
+#include <iostream>
 #include "server.hpp"
 #include "util.h"
 #include "Mutex.hpp"
@@ -20,6 +21,7 @@ void
 server_run(void)
 {
   server.doLoop();
+  std::cerr << "[ERROR] KeyRemap4MacBook_server: server.doLoop was finished for some reason." << std::endl;
 }
 
 // ----------------------------------------------------------------------
