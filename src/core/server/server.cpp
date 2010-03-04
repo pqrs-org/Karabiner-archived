@@ -1,11 +1,6 @@
 #include <stdio.h>
-#include <string.h>
-#include <sys/select.h>
 #include <sys/socket.h>
-#include <sys/types.h>
-#include <sys/uio.h>
 #include <sys/un.h>
-#include <unistd.h>
 #include <Carbon/Carbon.h>
 
 #include "server.hpp"
@@ -113,29 +108,15 @@ KeyRemap4MacBook_server::Server::doLoop(void)
   if (error) return;
 
   for (;;) {
-    fd_set readfds;
-    FD_ZERO(&readfds);
-    FD_SET(listenSocket_, &readfds);
+    struct sockaddr_un addr;
+    socklen_t addrlen = sizeof(addr);
 
-    int nfds = listenSocket_ + 1;
-    struct timeval timeout;
-    timeout.tv_sec = 1;
-    timeout.tv_usec = 0;
-    if (select(nfds, &readfds, NULL, NULL, &timeout) == -1) {
+    int s = accept(listenSocket_, reinterpret_cast<struct sockaddr*>(&addr), &addrlen);
+    if (s < 0) {
       return;
     }
-
-    if (FD_ISSET(listenSocket_, &readfds)) {
-      struct sockaddr_un addr;
-      socklen_t addrlen;
-
-      int s = accept(listenSocket_, reinterpret_cast<struct sockaddr*>(&addr), &addrlen);
-      if (s < 0) {
-        return;
-      }
-      dispatchOperator(s);
-      close(s);
-    }
+    dispatchOperator(s);
+    close(s);
   }
 }
 
