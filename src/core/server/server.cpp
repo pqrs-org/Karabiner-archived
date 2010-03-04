@@ -108,10 +108,7 @@ KeyRemap4MacBook_server::Server::doLoop(void)
   if (error) return;
 
   for (;;) {
-    struct sockaddr_un addr;
-    socklen_t addrlen = sizeof(addr);
-
-    int s = accept(listenSocket_, reinterpret_cast<struct sockaddr*>(&addr), &addrlen);
+    int s = accept(listenSocket_, NULL, NULL);
     if (s < 0) {
       return;
     }
