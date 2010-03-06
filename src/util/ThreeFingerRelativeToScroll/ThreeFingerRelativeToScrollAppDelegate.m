@@ -88,7 +88,8 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
   NSMutableDictionary* subdict = [NSMutableDictionary dictionary];
   [subdict setObject:@"AppleMultitouchDevice" forKey:@"IOClass"];
   [match setObject:subdict forKey:@kIOPropertyMatchKey];
-  [match retain];
+  [match retain]; // for kIOTerminatedNotification
+  [match retain]; // for kIOMatchedNotification
 
   IONotificationPortRef port = IONotificationPortCreate(kIOMasterPortDefault);
   if (! port) {
