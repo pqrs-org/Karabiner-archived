@@ -10,5 +10,6 @@ clean:
 	rm -f *.xcodeproj/*.mode1v3
 	rm -f *.xcodeproj/*.pbxuser
 
-zip:
-	./makezip.sh
+run: all
+	open ./build/Release/ThreeFingerRelativeToScroll.app
+

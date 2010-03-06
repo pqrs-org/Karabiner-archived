@@ -65,7 +65,11 @@ static void setcallback(BOOL isset) {
 
 // ------------------------------------------------------------
 // Notification
-static void observer_kIOMatchedNotification(void* refcon, io_iterator_t iterator) {
+static void observer_refresh(void* refcon, io_iterator_t iterator) {
+  NSLog(@"[INFO] observer_refresh called\n");
+
+  sysctl_set(0);
+
   bool isfound = false;
   while (IOIteratorNext(iterator)) {
     isfound = true;
@@ -92,19 +96,35 @@ static void observer_kIOMatchedNotification(void* refcon, io_iterator_t iterator
     return;
   }
 
+  // ----------------------------------------------------------------------
   io_iterator_t it;
-  kern_return_t kr = IOServiceAddMatchingNotification(port,
-                                                      kIOMatchedNotification,
-                                                      (CFMutableDictionaryRef)match,
-                                                      &observer_kIOMatchedNotification,
-                                                      NULL,
-                                                      &it);
+  kern_return_t kr;
+
+  kr = IOServiceAddMatchingNotification(port,
+                                        kIOTerminatedNotification,
+                                        (CFMutableDictionaryRef)match,
+                                        &observer_refresh,
+                                        NULL,
+                                        &it);
   if (kr != kIOReturnSuccess) {
     NSLog(@"[ERROR] IOServiceAddMatchingNotification");
     return;
   }
-  observer_kIOMatchedNotification(NULL, it);
+  observer_refresh(NULL, it);
 
+  kr = IOServiceAddMatchingNotification(port,
+                                        kIOMatchedNotification,
+                                        (CFMutableDictionaryRef)match,
+                                        &observer_refresh,
+                                        NULL,
+                                        &it);
+  if (kr != kIOReturnSuccess) {
+    NSLog(@"[ERROR] IOServiceAddMatchingNotification");
+    return;
+  }
+  observer_refresh(NULL, it);
+
+  // ----------------------------------------------------------------------
   CFRunLoopSourceRef loopsource = IONotificationPortGetRunLoopSource(port);
   if (! loopsource) {
     NSLog(@"[ERROR] IONotificationPortGetRunLoopSource");
