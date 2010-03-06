@@ -17,6 +17,7 @@ pkginfo/Info.plist$
 src/core/kext/Info.plist$
 src/core/server/Info.plist$
 src/util/KeyDump/Info.plist$
+src/util/ThreeFingerRelativeToScroll/Info.plist$
 src/util/launchd/Info.plist$
 src/util/prefpane/Info.plist$
 src/util/statusbar/Info.plist$
