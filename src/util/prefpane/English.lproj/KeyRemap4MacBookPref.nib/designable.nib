@@ -761,17 +761,21 @@
 															<object class="NSButton" id="37826231">
 																<reference key="NSNextResponder" ref="943764650"/>
 																<int key="NSvFlags">268</int>
-																<string key="NSFrame">{{396, 6}, {96, 32}}</string>
+																<string key="NSFrame">{{18, 24}, {22, 22}}</string>
 																<reference key="NSSuperview" ref="943764650"/>
 																<bool key="NSEnabled">YES</bool>
 																<object class="NSButtonCell" key="NSCell" id="682777743">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">134217728</int>
-																	<string key="NSContents">add</string>
+																	<string key="NSContents"/>
 																	<reference key="NSSupport" ref="322818650"/>
 																	<reference key="NSControlView" ref="37826231"/>
-																	<int key="NSButtonFlags">-2038284033</int>
-																	<int key="NSButtonFlags2">129</int>
+																	<int key="NSButtonFlags">-2033434369</int>
+																	<int key="NSButtonFlags2">134</int>
+																	<object class="NSCustomResource" key="NSNormalImage">
+																		<string key="NSClassName">NSImage</string>
+																		<string key="NSResourceName">NSAddTemplate</string>
+																	</object>
 																	<string key="NSAlternateContents"/>
 																	<string key="NSKeyEquivalent"/>
 																	<int key="NSPeriodicDelay">200</int>
@@ -781,17 +785,21 @@
 															<object class="NSButton" id="209111657">
 																<reference key="NSNextResponder" ref="943764650"/>
 																<int key="NSvFlags">268</int>
-																<string key="NSFrame">{{492, 6}, {96, 32}}</string>
+																<string key="NSFrame">{{39, 24}, {22, 22}}</string>
 																<reference key="NSSuperview" ref="943764650"/>
 																<bool key="NSEnabled">YES</bool>
 																<object class="NSButtonCell" key="NSCell" id="777828908">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">134217728</int>
-																	<string key="NSContents">delete</string>
+																	<string key="NSContents"/>
 																	<reference key="NSSupport" ref="322818650"/>
 																	<reference key="NSControlView" ref="209111657"/>
-																	<int key="NSButtonFlags">-2038284033</int>
-																	<int key="NSButtonFlags2">129</int>
+																	<int key="NSButtonFlags">-2033434369</int>
+																	<int key="NSButtonFlags2">134</int>
+																	<object class="NSCustomResource" key="NSNormalImage">
+																		<string key="NSClassName">NSImage</string>
+																		<string key="NSResourceName">NSRemoveTemplate</string>
+																	</object>
 																	<string key="NSAlternateContents"/>
 																	<string key="NSKeyEquivalent"/>
 																	<int key="NSPeriodicDelay">200</int>
@@ -1973,9 +1981,9 @@
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
 				<string key="-3.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="-3.ImportedFromIB2"/>
-				<string key="12.IBEditorWindowLastContentRect">{{492, 347}, {668, 600}}</string>
+				<string key="12.IBEditorWindowLastContentRect">{{440, 198}, {668, 600}}</string>
 				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="12.IBWindowTemplateEditedContentRect">{{492, 347}, {668, 600}}</string>
+				<string key="12.IBWindowTemplateEditedContentRect">{{440, 198}, {668, 600}}</string>
 				<boolean value="YES" key="12.ImportedFromIB2"/>
 				<string key="338.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="338.ImportedFromIB2"/>
