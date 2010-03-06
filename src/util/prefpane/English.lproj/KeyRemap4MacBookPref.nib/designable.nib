@@ -1100,7 +1100,7 @@
 															<object class="NSButton" id="868077194">
 																<reference key="NSNextResponder" ref="307156380"/>
 																<int key="NSvFlags">268</int>
-																<string key="NSFrame">{{8, 6}, {162, 32}}</string>
+																<string key="NSFrame">{{8, 80}, {162, 32}}</string>
 																<reference key="NSSuperview" ref="307156380"/>
 																<bool key="NSEnabled">YES</bool>
 																<object class="NSButtonCell" key="NSCell" id="691228737">
@@ -1117,12 +1117,48 @@
 																	<int key="NSPeriodicInterval">25</int>
 																</object>
 															</object>
+															<object class="NSButton" id="454071999">
+																<reference key="NSNextResponder" ref="307156380"/>
+																<int key="NSvFlags">268</int>
+																<string key="NSFrame">{{8, 31}, {380, 32}}</string>
+																<reference key="NSSuperview" ref="307156380"/>
+																<bool key="NSEnabled">YES</bool>
+																<object class="NSButtonCell" key="NSCell" id="377236948">
+																	<int key="NSCellFlags">67239424</int>
+																	<int key="NSCellFlags2">134217728</int>
+																	<string key="NSContents">launch "ThreeFingerRelativeToScroll for Magic Mouse"</string>
+																	<reference key="NSSupport" ref="322818650"/>
+																	<reference key="NSControlView" ref="454071999"/>
+																	<int key="NSButtonFlags">-2038284033</int>
+																	<int key="NSButtonFlags2">129</int>
+																	<string key="NSAlternateContents"/>
+																	<string key="NSKeyEquivalent"/>
+																	<int key="NSPeriodicDelay">200</int>
+																	<int key="NSPeriodicInterval">25</int>
+																</object>
+															</object>
+															<object class="NSTextField" id="1047412017">
+																<reference key="NSNextResponder" ref="307156380"/>
+																<int key="NSvFlags">268</int>
+																<string key="NSFrame">{{31, 14}, {451, 17}}</string>
+																<reference key="NSSuperview" ref="307156380"/>
+																<bool key="NSEnabled">YES</bool>
+																<object class="NSTextFieldCell" key="NSCell" id="587980380">
+																	<int key="NSCellFlags">68288064</int>
+																	<int key="NSCellFlags2">272630784</int>
+																	<string key="NSContents">(Remap CursorMove to Scroll when 3 fingers are on your Magic Mouse)</string>
+																	<reference key="NSSupport" ref="322818650"/>
+																	<reference key="NSControlView" ref="1047412017"/>
+																	<reference key="NSBackgroundColor" ref="58023412"/>
+																	<reference key="NSTextColor" ref="367881935"/>
+																</object>
+															</object>
 														</array>
-														<string key="NSFrame">{{1, 1}, {602, 44}}</string>
+														<string key="NSFrame">{{1, 1}, {602, 118}}</string>
 														<reference key="NSSuperview" ref="994222821"/>
 													</object>
 												</array>
-												<string key="NSFrame">{{12, 195}, {604, 60}}</string>
+												<string key="NSFrame">{{12, 121}, {604, 134}}</string>
 												<reference key="NSSuperview" ref="871498761"/>
 												<string key="NSOffsets">{0, 0}</string>
 												<object class="NSTextFieldCell" key="NSTitleCell">
@@ -1385,6 +1421,14 @@
 						<reference key="destination" ref="1057813760"/>
 					</object>
 					<int key="connectionID">779</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">launchThreeFingerRelativeToScroll:</string>
+						<reference key="source" ref="762499249"/>
+						<reference key="destination" ref="454071999"/>
+					</object>
+					<int key="connectionID">785</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1809,6 +1853,8 @@
 						<reference key="object" ref="994222821"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="868077194"/>
+							<reference ref="1047412017"/>
+							<reference ref="454071999"/>
 						</array>
 						<reference key="parent" ref="871498761"/>
 					</object>
@@ -1976,14 +2022,40 @@
 						<reference key="object" ref="199049728"/>
 						<reference key="parent" ref="1057813760"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">780</int>
+						<reference key="object" ref="454071999"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="377236948"/>
+						</array>
+						<reference key="parent" ref="994222821"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">781</int>
+						<reference key="object" ref="377236948"/>
+						<reference key="parent" ref="454071999"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">783</int>
+						<reference key="object" ref="1047412017"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="587980380"/>
+						</array>
+						<reference key="parent" ref="994222821"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">784</int>
+						<reference key="object" ref="587980380"/>
+						<reference key="parent" ref="1047412017"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
 				<string key="-3.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="-3.ImportedFromIB2"/>
-				<string key="12.IBEditorWindowLastContentRect">{{440, 198}, {668, 600}}</string>
+				<string key="12.IBEditorWindowLastContentRect">{{316, 303}, {668, 600}}</string>
 				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="12.IBWindowTemplateEditedContentRect">{{440, 198}, {668, 600}}</string>
+				<string key="12.IBWindowTemplateEditedContentRect">{{316, 303}, {668, 600}}</string>
 				<boolean value="YES" key="12.ImportedFromIB2"/>
 				<string key="338.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="338.ImportedFromIB2"/>
@@ -2096,12 +2168,17 @@
 				<string key="773.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="777.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="778.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="780.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<boolean value="YES" key="780.ImportedFromIB2"/>
+				<string key="781.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="783.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="784.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">779</int>
+			<int key="maxID">785</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2120,6 +2197,7 @@
 						<string key="changeCheckUpdate:">id</string>
 						<string key="checkUpdateNow:">id</string>
 						<string key="launchEventViewer:">id</string>
+						<string key="launchThreeFingerRelativeToScroll:">id</string>
 						<string key="launchUninstaller:">id</string>
 						<string key="toggleStatusBar:">id</string>
 					</dictionary>

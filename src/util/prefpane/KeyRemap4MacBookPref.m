@@ -89,6 +89,11 @@ static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
   [[NSWorkspace sharedWorkspace] launchApplication:@"/Library/org.pqrs/KeyRemap4MacBook/app/KeyDump.app"];
 }
 
+- (IBAction) launchThreeFingerRelativeToScroll:(id)sender
+{
+  [[NSWorkspace sharedWorkspace] launchApplication:@"/Library/org.pqrs/KeyRemap4MacBook/app/ThreeFingerRelativeToScroll.app"];
+}
+
 - (IBAction) checkUpdateNow:(id)sender
 {
   [self terminateTargetApplication:@"org.pqrs.KeyRemap4MacBook.updater"];
