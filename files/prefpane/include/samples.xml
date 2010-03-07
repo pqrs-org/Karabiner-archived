@@ -362,8 +362,8 @@
       <appendix>Use A to toggle Completely Vi Mode</appendix>
       <appendix>Use S to turn on Completely Vi Mode</appendix>
       <sysctl>remap.samples_vk_config</sysctl>
-      <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_CONFIG_TOGGLE_remap_completely_vimode</autogen>
-      <autogen>--KeyToKey-- KeyCode::S, KeyCode::VK_CONFIG_FORCE_ON_remap_completely_vimode</autogen>
+      <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_CONFIG_TOGGLE_notsave_completely_vimode</autogen>
+      <autogen>--KeyToKey-- KeyCode::S, KeyCode::VK_CONFIG_FORCE_ON_notsave_completely_vimode</autogen>
     </item>
     <item>
       <name>VK_JIS_TOGGLE_EISUU_KANA</name>

@@ -2652,44 +2652,44 @@
               <appendix>drop Up-Arrow</appendix>
               <appendix>(+ When you type Arrow only, toggle Vi Mode)</appendix>
               <sysctl>remap.vimode_toggle_arrow2optionL</sysctl>
-              <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_UP,    KeyCode::VK_NONE,  KeyCode::VK_CONFIG_TOGGLE_remap_completely_vimode</autogen>
-              <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_DOWN,  KeyCode::OPTION_L, KeyCode::VK_CONFIG_TOGGLE_remap_completely_vimode</autogen>
-              <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_LEFT,  KeyCode::OPTION_L, KeyCode::VK_CONFIG_TOGGLE_remap_completely_vimode</autogen>
-              <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_RIGHT, KeyCode::OPTION_L, KeyCode::VK_CONFIG_TOGGLE_remap_completely_vimode</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_UP,    KeyCode::VK_NONE,  KeyCode::VK_CONFIG_TOGGLE_notsave_completely_vimode</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_DOWN,  KeyCode::OPTION_L, KeyCode::VK_CONFIG_TOGGLE_notsave_completely_vimode</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_LEFT,  KeyCode::OPTION_L, KeyCode::VK_CONFIG_TOGGLE_notsave_completely_vimode</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_RIGHT, KeyCode::OPTION_L, KeyCode::VK_CONFIG_TOGGLE_notsave_completely_vimode</autogen>
             </item>
             <item>
               <name>Command_R to Command_R</name>
               <appendix>(+ When you type Command_R only, toggle Vi Mode)</appendix>
               <sysctl>remap.vimode_toggle_commandR</sysctl>
-              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CONFIG_TOGGLE_remap_completely_vimode</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CONFIG_TOGGLE_notsave_completely_vimode</autogen>
             </item>
             <item>
               <name>FN to FN</name>
               <appendix>(+ When you type FN only, toggle Vi Mode)</appendix>
               <sysctl>remap.vimode_toggle_fn2fn</sysctl>
-              <autogen>--KeyOverlaidModifier-- KeyCode::FN, KeyCode::FN, KeyCode::VK_CONFIG_TOGGLE_remap_completely_vimode</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::FN, KeyCode::FN, KeyCode::VK_CONFIG_TOGGLE_notsave_completely_vimode</autogen>
             </item>
             <item>
               <name>Option+V to toggle Vi Mode</name>
               <sysctl>option.vimode_toggle_optionV</sysctl>
-              <autogen>--KeyToKey-- KeyCode::V, VK_OPTION, KeyCode::VK_CONFIG_TOGGLE_remap_completely_vimode</autogen>
+              <autogen>--KeyToKey-- KeyCode::V, VK_OPTION, KeyCode::VK_CONFIG_TOGGLE_notsave_completely_vimode</autogen>
             </item>
             <item>
               <name>Option+V to turn on Vi Mode</name>
               <sysctl>option.vimode_turnon_optionV</sysctl>
-              <autogen>--KeyToKey-- KeyCode::V, VK_OPTION, KeyCode::VK_CONFIG_FORCE_ON_remap_completely_vimode</autogen>
+              <autogen>--KeyToKey-- KeyCode::V, VK_OPTION, KeyCode::VK_CONFIG_FORCE_ON_notsave_completely_vimode</autogen>
             </item>
             <item>
               <name>Drop Shift_L</name>
               <appendix>(+ When you type Shift_L only, toggle Vi Mode)</appendix>
               <sysctl>remap.vimode_toggle_drop_shiftL</sysctl>
-              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::VK_NONE, KeyCode::VK_CONFIG_TOGGLE_remap_completely_vimode</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::VK_NONE, KeyCode::VK_CONFIG_TOGGLE_notsave_completely_vimode</autogen>
             </item>
             <item>
               <name>Escape to turn off Vi Mode</name>
               <appendix>(+ turn off Modifier Lock)</appendix>
               <sysctl>option.vimode_turnoff_escape</sysctl>
-              <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_remap_completely_vimode</autogen>
+              <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_completely_vimode</autogen>
             </item>
             <item>
               <name>Completely Vi Mode Core</name>
@@ -2707,7 +2707,7 @@
                   <appendix>$ to Command_L+Right ($ == Shift+4)</appendix>
                   <appendix>f to FN</appendix>
                   <appendix>i to turn off Vi Mode</appendix>
-                  <sysctl>remap.completely_vimode</sysctl>
+                  <sysctl>notsave.completely_vimode</sysctl>
                   <vk_config>true</vk_config>
                   <autogen>--ShowStatusMessage-- "Vi Mode"</autogen>
                   <autogen>--KeyToKey-- KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
@@ -2728,7 +2728,7 @@
                   <autogen>--KeyToKey-- KeyCode::G, KeyCode::HOME</autogen>
 
                   <autogen>--KeyToKey-- KeyCode::F, KeyCode::FN</autogen>
-                  <autogen>--KeyToKey-- KeyCode::I, KeyCode::VK_CONFIG_TOGGLE_remap_completely_vimode</autogen>
+                  <autogen>--KeyToKey-- KeyCode::I, KeyCode::VK_CONFIG_TOGGLE_notsave_completely_vimode</autogen>
                 </item>
               </list>
             </item>
@@ -3805,7 +3805,7 @@
               <appendix>(+ When you type Shift+Command_L only, send ESCAPE)</appendix>
               <sysctl>remap.jis_commandL2controlL_eisuu_vimode_escape</sysctl>
               <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, VK_SHIFT, KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::ESCAPE</autogen>
-              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, ModifierFlag::COMMAND_R, KeyCode::CONTROL_L, ModifierFlag::COMMAND_R, KeyCode::VK_CONFIG_TOGGLE_remap_completely_vimode</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, ModifierFlag::COMMAND_R, KeyCode::CONTROL_L, ModifierFlag::COMMAND_R, KeyCode::VK_CONFIG_TOGGLE_notsave_completely_vimode</autogen>
               <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::CONTROL_L, KeyCode::JIS_EISUU</autogen>
             </item>
             <item>
@@ -3870,7 +3870,7 @@
               <appendix>(+ When you type Shift+Command_R only, send Return)</appendix>
               <sysctl>remap.jis_commandR2commandR_kana_vimode_return</sysctl>
               <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, VK_SHIFT, KeyCode::COMMAND_R, ModifierFlag::SHIFT_L, KeyCode::RETURN</autogen>
-              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, VK_CONTROL, KeyCode::COMMAND_R, ModifierFlag::CONTROL_L, KeyCode::VK_CONFIG_TOGGLE_remap_completely_vimode</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, VK_CONTROL, KeyCode::COMMAND_R, ModifierFlag::CONTROL_L, KeyCode::VK_CONFIG_TOGGLE_notsave_completely_vimode</autogen>
               <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::JIS_KANA</autogen>
             </item>
             <item>
