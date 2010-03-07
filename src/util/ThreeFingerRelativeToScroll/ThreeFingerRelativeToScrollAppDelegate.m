@@ -26,7 +26,7 @@ void MTDeviceStop(MTDeviceRef, int);
 // Multitouch callback
 static void sysctl_set(int newvalue) {
   char buf[512];
-  snprintf(buf, sizeof(buf), "/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set remap.pointing_relative_to_scroll %d", newvalue);
+  snprintf(buf, sizeof(buf), "/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set notsave.pointing_relative_to_scroll %d", newvalue);
   system(buf);
 }
 
