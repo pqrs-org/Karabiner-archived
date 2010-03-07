@@ -14,7 +14,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
-  class RemapClass_remap_pointing_relative_to_scroll {
+  class RemapClass_notsave_pointing_relative_to_scroll {
   public:
     static void remap_pointing(RemapPointingParams_relative& remapParams) {
       prts_.remap(remapParams, PointingButton::NONE, Flags(0));
@@ -23,7 +23,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   private:
     static RemapUtil::PointingRelativeToScroll prts_;
   };
-  RemapUtil::PointingRelativeToScroll RemapClass_remap_pointing_relative_to_scroll::prts_;
+  RemapUtil::PointingRelativeToScroll RemapClass_notsave_pointing_relative_to_scroll::prts_;
 }
 
 // ----------------------------------------------------------------------
@@ -79,8 +79,8 @@ org_pqrs_KeyRemap4MacBook::refresh_remapfunc(void)
   // ------------------------------------------------------------
 #include "config/output/include.remapcode_refresh_remapfunc_pointing.cpp"
 
-  if (config.remap_pointing_relative_to_scroll) {
-    listRemapFunc_pointing[listRemapFunc_pointing_size] = RemapClass_remap_pointing_relative_to_scroll::remap_pointing;
+  if (config.notsave_pointing_relative_to_scroll) {
+    listRemapFunc_pointing[listRemapFunc_pointing_size] = RemapClass_notsave_pointing_relative_to_scroll::remap_pointing;
     ++listRemapFunc_pointing_size;
   }
 
