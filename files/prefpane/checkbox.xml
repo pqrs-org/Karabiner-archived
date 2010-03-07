@@ -3980,6 +3980,16 @@
               <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, KeyCode::CONTROL_L, KeyCode::JIS_EISUU</autogen>
             </item>
             <item>
+              <name>EISUU to Control_L</name>
+              <appendix>(+ When you type Shift+EISUU only, send Escape)</appendix>
+              <appendix>(+ When you type Command_R+EISUU only, toggle Completely Vi Mode)</appendix>
+              <appendix>(+ When you type EISUU only, send EISUU)</appendix>
+              <sysctl>remap.jis_eisuu2controlL_eisuu_vimode_escape</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, VK_SHIFT, KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::ESCAPE</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, ModifierFlag::COMMAND_R, KeyCode::CONTROL_L, ModifierFlag::COMMAND_R, KeyCode::VK_CONFIG_TOGGLE_notsave_completely_vimode</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, KeyCode::CONTROL_L, KeyCode::JIS_EISUU</autogen>
+            </item>
+            <item>
               <name>EISUU to FN</name>
               <sysctl>remap.jis_eisuu2fn</sysctl>
               <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::FN</autogen>
@@ -4063,6 +4073,16 @@
               <appendix>(+ When you type KANA only, send KANA)</appendix>
               <sysctl>remap.jis_kana2commandR_kana_return</sysctl>
               <autogen>--KeyOverlaidModifier-- KeyCode::JIS_KANA, VK_SHIFT, KeyCode::COMMAND_R, ModifierFlag::SHIFT_L, KeyCode::RETURN</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::JIS_KANA, KeyCode::COMMAND_R, KeyCode::JIS_KANA</autogen>
+            </item>
+            <item>
+              <name>KANA to Command_R</name>
+              <appendix>(+ When you type Shift+KANA only, send Return)</appendix>
+              <appendix>(+ When you type Control+KANA only, toggle Completely Vi Mode)</appendix>
+              <appendix>(+ When you type KANA only, send KANA)</appendix>
+              <sysctl>remap.jis_kana2commandR_kana_vimode_return</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::JIS_KANA, VK_SHIFT, KeyCode::COMMAND_R, ModifierFlag::SHIFT_L, KeyCode::RETURN</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::JIS_KANA, VK_CONTROL, KeyCode::COMMAND_R, ModifierFlag::CONTROL_L, KeyCode::VK_CONFIG_TOGGLE_notsave_completely_vimode</autogen>
               <autogen>--KeyOverlaidModifier-- KeyCode::JIS_KANA, KeyCode::COMMAND_R, KeyCode::JIS_KANA</autogen>
             </item>
             <item>
