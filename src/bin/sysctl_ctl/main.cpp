@@ -32,6 +32,13 @@ namespace {
   save(const char* name)
   {
     if (! dict_sysctl) return;
+    if (! name) return;
+
+    const char* notsave = "notsave.";
+    if (strncmp(name, notsave, strlen(notsave)) == 0) {
+      std::cerr << "skip: " << name << std::endl;
+      return;
+    }
 
     char entry[512];
     snprintf(entry, sizeof(entry), "keyremap4macbook.%s", name);
