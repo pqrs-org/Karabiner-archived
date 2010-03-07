@@ -36,7 +36,6 @@ namespace {
 
     const char* notsave = "notsave.";
     if (strncmp(name, notsave, strlen(notsave)) == 0) {
-      std::cerr << "skip: " << name << std::endl;
       return;
     }
 
