@@ -12,8 +12,10 @@
 @interface ThreeFingerRelativeToScrollAppDelegate : NSObject <NSApplicationDelegate> {
   NSStatusItem* _statusItem;
   IBOutlet NSMenu* _statusMenu;
+  IBOutlet NSMenuItem* _startAtLoginMenuItem;
 }
 
 - (IBAction) quit:(id)sender;
+- (IBAction) setStartAtLogin:(id)sender;
 
 @end

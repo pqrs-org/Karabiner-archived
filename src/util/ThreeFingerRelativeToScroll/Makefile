@@ -11,5 +11,5 @@ clean:
 	rm -f *.xcodeproj/*.pbxuser
 
 run: all
-	open ./build/Release/ThreeFingerRelativeToScroll.app
+	./build/Release/ThreeFingerRelativeToScroll.app/Contents/MacOS/ThreeFingerRelativeToScroll
 
