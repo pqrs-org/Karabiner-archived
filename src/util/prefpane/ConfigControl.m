@@ -27,7 +27,10 @@
 
 + (void) setName:(int)index_ newName:(NSString*)name
 {
-  if ([name isEqualToString:@""]) return;
+  name = [name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+  if ([name isEqualToString:@""]) {
+    name = @"NewItem";
+  }
   NSString* idx = [[[NSString alloc] initWithFormat:@"%d", index_] autorelease];
   [ConfigControl execSysctl:[NSArray arrayWithObjects:@"rename", idx, name, nil]];
 }
