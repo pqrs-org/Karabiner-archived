@@ -53,7 +53,9 @@ namespace {
     size_t oldlen = 0;
     size_t newlen = sizeof(value);
     if (sysctlbyname(entry, NULL, &oldlen, &value, newlen) == -1) {
-      perror("sysctl_reset set");
+      char buf[512];
+      snprintf(buf, sizeof(buf), "sysctl_reset %s", entry);
+      perror(buf);
     }
   }
 
@@ -66,7 +68,9 @@ namespace {
     size_t oldlen = 0;
     size_t newlen = strlen(value) + 1;
     if (sysctlbyname(entry, NULL, &oldlen, value, newlen) == -1) {
-      perror("sysctl_reset set_string");
+      char buf[512];
+      snprintf(buf, sizeof(buf), "sysctl_reset %s", entry);
+      perror(buf);
     }
   }
 }
