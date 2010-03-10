@@ -3778,6 +3778,14 @@
               <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::JIS_EISUU</autogen>
             </item>
             <item>
+              <name>Command_L to Command_L</name>
+              <appendix>(+ When you type Command_L only, send EISUU)</appendix>
+              <appendix>(+ When you type Command_R+Command_L only, toggle Completely Vi Mode)</appendix>
+              <sysctl>remap.jis_commandL2commandL_vimode_eisuu</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, ModifierFlag::COMMAND_R, KeyCode::COMMAND_L, ModifierFlag::COMMAND_R, KeyCode::VK_CONFIG_TOGGLE_notsave_completely_vimode</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::JIS_EISUU</autogen>
+            </item>
+            <item>
               <name>Command_L to Command_L (except Terminal)</name>
               <appendix>(+ When you type Command_L only, send EISUU)</appendix>
               <sysctl>remap.jis_commandL2commandL_eisuu_ex_term</sysctl>
@@ -3853,6 +3861,14 @@
               <name>Command_R to Command_R</name>
               <appendix>(+ When you type Command_R only, send KANA)</appendix>
               <sysctl>remap.jis_commandR2commandR_kana</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::JIS_KANA</autogen>
+            </item>
+            <item>
+              <name>Command_R to Command_R</name>
+              <appendix>(+ When you type Command_R only, send KANA)</appendix>
+              <appendix>(+ When you type Command_L+Command_R only, toggle Completely Vi Mode)</appendix>
+              <sysctl>remap.jis_commandR2commandR_vimode_kana</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_L, KeyCode::COMMAND_R, KeyCode::COMMAND_L, KeyCode::VK_CONFIG_TOGGLE_notsave_completely_vimode</autogen>
               <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::JIS_KANA</autogen>
             </item>
             <item>
