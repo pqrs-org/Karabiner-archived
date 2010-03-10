@@ -3920,6 +3920,11 @@
           <name>Remap Space Key</name>
           <list>
             <item>
+              <name>Command+Space to KANA/EISUU (toggle)</name>
+              <sysctl>remap.jis_commandSpace2toggle_kana_eisuu</sysctl>
+              <autogen>--KeyToKey-- KeyCode::SPACE, VK_COMMAND | ModifierFlag::NONE, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
+            </item>
+            <item>
               <name>Shift+Space to KANA/EISUU (toggle)</name>
               <sysctl>remap.jis_shiftSpace2toggle_kana_eisuu</sysctl>
               <autogen>--KeyToKey-- KeyCode::SPACE, VK_SHIFT, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
