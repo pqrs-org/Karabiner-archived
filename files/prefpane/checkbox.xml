@@ -4195,13 +4195,8 @@
           <list>
             <item>
               <name>JIS Yen(\) to Backslash(\)</name>
-              <sysctl>remap.jis_yen2backslash</sysctl>
-              <autogen>--KeyToKey-- KeyCode::JIS_YEN, KeyCode::VK_JIS_BACKSLASH</autogen>
-            </item>
-            <item>
-              <name>JIS Yen(\) to Backslash(\)</name>
               <appendix>(except virtual machine, X11)</appendix>
-              <sysctl>remap.jis_yen2backslash_nox11</sysctl>
+              <sysctl>remap.jis_yen2backslash</sysctl>
               <not>VIRTUALMACHINE, X11</not>
               <autogen>--KeyToKey-- KeyCode::JIS_YEN, KeyCode::VK_JIS_BACKSLASH</autogen>
             </item>
