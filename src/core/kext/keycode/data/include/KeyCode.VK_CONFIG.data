@@ -1,6 +1,6 @@
-VK_CONFIG_TOGGLE_notsave_completely_vimode --AUTO--
-VK_CONFIG_FORCE_ON_notsave_completely_vimode --AUTO--
-VK_CONFIG_FORCE_OFF_notsave_completely_vimode --AUTO--
+VK_CONFIG_TOGGLE_notsave_complete_vimode --AUTO--
+VK_CONFIG_FORCE_ON_notsave_complete_vimode --AUTO--
+VK_CONFIG_FORCE_OFF_notsave_complete_vimode --AUTO--
 VK_CONFIG_TOGGLE_remap_keypadnumlock --AUTO--
 VK_CONFIG_FORCE_ON_remap_keypadnumlock --AUTO--
 VK_CONFIG_FORCE_OFF_remap_keypadnumlock --AUTO--
