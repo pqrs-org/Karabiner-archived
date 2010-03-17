@@ -1256,10 +1256,22 @@
           <autogen>--KeyToKey-- KeyCode::F6, KeyCode::VK_LOCK_FN</autogen>
         </item>
         <item>
+          <name>F7 to Video Mirror (except virtual machine, RDC)</name>
+          <sysctl>remap.f7_to_videomirror</sysctl>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <autogen>--KeyToConsumer-- KeyCode::F7, ConsumerKeyCode::VIDEO_MIRROR</autogen>
+        </item>
+        <item>
           <name>F7 to Music Prev (except virtual machine, RDC)</name>
           <sysctl>remap.f7_to_musicprev</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToConsumer-- KeyCode::F7, ConsumerKeyCode::MUSIC_PREV</autogen>
+        </item>
+        <item>
+          <name>F8 to Keyboard Light Off (except virtual machine, RDC)</name>
+          <sysctl>remap.f8_to_keyboardlightoff</sysctl>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <autogen>--KeyToConsumer-- KeyCode::F8, ConsumerKeyCode::KEYBOARDLIGHT_OFF</autogen>
         </item>
         <item>
           <name>F8 to Music Play/Pause (except virtual machine, RDC)</name>
@@ -1268,10 +1280,22 @@
           <autogen>--KeyToConsumer-- KeyCode::F8, ConsumerKeyCode::MUSIC_PLAY</autogen>
         </item>
         <item>
+          <name>F9 to Keyboard Light LOW (except virtual machine, RDC)</name>
+          <sysctl>remap.f9_to_keyboardlightlow</sysctl>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <autogen>--KeyToConsumer-- KeyCode::F9, ConsumerKeyCode::KEYBOARDLIGHT_LOW</autogen>
+        </item>
+        <item>
           <name>F9 to Music Next (except virtual machine, RDC)</name>
           <sysctl>remap.f9_to_musicplay</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToConsumer-- KeyCode::F9, ConsumerKeyCode::MUSIC_NEXT</autogen>
+        </item>
+        <item>
+          <name>F10 to Keyboard Light HIGH (except virtual machine, RDC)</name>
+          <sysctl>remap.f10_to_keyboardlighthigh</sysctl>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <autogen>--KeyToConsumer-- KeyCode::F10, ConsumerKeyCode::KEYBOARDLIGHT_HIGH</autogen>
         </item>
         <item>
           <name>F10 to Volume Mute (except virtual machine, RDC)</name>
