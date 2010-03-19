@@ -314,7 +314,9 @@
         </item>
         <item>
           <name>Backslash(\) to Forward Delete</name>
+          <appendix>(+ FN+Backslash(\) to Backslash(\))</appendix>
           <sysctl>remap.backslash2forwarddelete</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH, ModifierFlag::FN, KeyCode::BACKSLASH</autogen>
           <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::FORWARD_DELETE</autogen>
         </item>
         <item>
