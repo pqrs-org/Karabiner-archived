@@ -4305,6 +4305,18 @@
                   <sysctl>remap.jis_app_commandL2optionL_eisuu</sysctl>
                   <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::OPTION_L, KeyCode::JIS_EISUU</autogen>
                 </item>
+                <item>
+                  <name>JIS Yen(¥) to F18 (if no modifiers pressed)</name>
+                  <only>TERMINAL</only>
+                  <sysctl>remap.jis_app_term_yen2f18</sysctl>
+                  <autogen>--KeyToKey-- KeyCode::JIS_YEN, ModifierFlag::NONE, KeyCode::F18</autogen>
+                </item>
+                <item>
+                  <name>Option+y to F18</name>
+                  <only>TERMINAL</only>
+                  <sysctl>remap.jis_app_term_optionY2f18</sysctl>
+                  <autogen>--KeyToKey-- KeyCode::Y, VK_OPTION, KeyCode::F18</autogen>
+                </item>
               </list>
             </item>
             <item>
