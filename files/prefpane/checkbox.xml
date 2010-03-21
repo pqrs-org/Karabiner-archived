@@ -4214,17 +4214,42 @@
               <sysctl>remap.jis_underscore2backslash</sysctl>
               <autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, ModifierFlag::NONE, KeyCode::VK_JIS_BACKSLASH</autogen>
             </item>
+            <item>
+              <name>Underscore(Ro) to JIS Yen(¥)</name>
+              <sysctl>remap.jis_underscore2jis_yen</sysctl>
+              <autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, KeyCode::JIS_YEN</autogen>
+            </item>
           </list>
         </item>
         <item>
-          <name>Remap Yen(\) Key</name>
+          <name>Remap Yen(¥) Key</name>
           <list>
             <item>
-              <name>JIS Yen(\) to Backslash(\)</name>
+              <name>JIS Yen(¥) to Backslash(\)</name>
               <appendix>(except virtual machine, X11)</appendix>
               <sysctl>remap.jis_yen2backslash</sysctl>
               <not>VIRTUALMACHINE, X11</not>
               <autogen>--KeyToKey-- KeyCode::JIS_YEN, KeyCode::VK_JIS_BACKSLASH</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
+          <name>Remap Zero(0) Key</name>
+          <list>
+            <item>
+              <name>Shift+0 to Backslash(\)</name>
+              <sysctl>remap.jis_shift0_to_backslash</sysctl>
+              <autogen>--KeyToKey-- KeyCode::KEY_0, VK_SHIFT, KeyCode::VK_JIS_BACKSLASH</autogen>
+            </item>
+            <item>
+              <name>Shift+0 to JIS Yen(¥)</name>
+              <sysctl>remap.jis_shift0_to_yen</sysctl>
+              <autogen>--KeyToKey-- KeyCode::KEY_0, VK_SHIFT, KeyCode::JIS_YEN</autogen>
+            </item>
+            <item>
+              <name>Shift+0 to Underscore(Ro)</name>
+              <sysctl>remap.jis_shift0_to_underscore</sysctl>
+              <autogen>--KeyToKey-- KeyCode::KEY_0, VK_SHIFT, KeyCode::JIS_UNDERSCORE</autogen>
             </item>
           </list>
         </item>
@@ -4317,7 +4342,7 @@
                   <name>Options</name>
                   <list>
                     <item>
-                      <name>Backquote(`) to Yen</name>
+                      <name>Backquote(`) to JIS Yen(¥)</name>
                       <sysctl>option.jis_layout_us2japanese_backquote2yen</sysctl>
                       <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::JIS_YEN</autogen>
                     </item>
