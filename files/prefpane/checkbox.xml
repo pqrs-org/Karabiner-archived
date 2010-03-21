@@ -320,6 +320,15 @@
           <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::FORWARD_DELETE</autogen>
         </item>
         <item>
+          <name>Backslash(\) to Forward Delete</name>
+          <appendix>(+ FN+Backslash(\) to Backslash(\))</appendix>
+          <appendix>(+ retain Shift+Backslash(\))</appendix>
+          <sysctl>remap.backslash2forwarddelete_retain_shiftbackslash</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH, ModifierFlag::FN, KeyCode::BACKSLASH</autogen>
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH, VK_SHIFT, KeyCode::BACKSLASH, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::FORWARD_DELETE</autogen>
+        </item>
+        <item>
           <name>Backslash(\) to Return</name>
           <sysctl>remap.backslash2return</sysctl>
           <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::RETURN</autogen>
