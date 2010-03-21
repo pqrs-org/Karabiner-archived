@@ -55,6 +55,10 @@
   if (keycode == 0x69) return @"F13";
   if (keycode == 0x6b) return @"F14";
   if (keycode == 0x71) return @"F15";
+  if (keycode == 0x6a) return @"F16";
+  if (keycode == 0x40) return @"F17";
+  if (keycode == 0x4f) return @"F18";
+  if (keycode == 0x50) return @"F19";
 
   if (keycode == 0x74) return @"PageUp";
   if (keycode == 0x79) return @"PageDown";
