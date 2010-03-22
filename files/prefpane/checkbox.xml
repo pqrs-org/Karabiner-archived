@@ -2759,6 +2759,7 @@
                   <appendix>hjkl to Left/Down/Up/Right</appendix>
                   <appendix>b to Option_L+Left</appendix>
                   <appendix>e to Option_L+Right</appendix>
+                  <appendix>w to Option_L+Right,Option_L+Right,Option_L+Left</appendix>
                   <appendix>Control+F to PageDown</appendix>
                   <appendix>Control+B to PageUp</appendix>
                   <appendix>g to Home</appendix>
@@ -2785,6 +2786,8 @@
 
                   <autogen>--KeyToKey-- KeyCode::B, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
                   <autogen>--KeyToKey-- KeyCode::E, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
+
+                  <autogen>--KeyToKey-- KeyCode::W, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
 
                   <autogen>--KeyToKey-- KeyCode::G, VK_SHIFT, KeyCode::END</autogen>
                   <autogen>--KeyToKey-- KeyCode::G, KeyCode::HOME</autogen>
