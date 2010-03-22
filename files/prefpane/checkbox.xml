@@ -2142,9 +2142,19 @@
           <autogen>--KeyToKey-- KeyCode::TAB, VK_CONTROL, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
+          <name>Control+Tab to Option+Tab</name>
+          <sysctl>remap.controlTab2optionTab</sysctl>
+          <autogen>--KeyToKey-- KeyCode::TAB, VK_CONTROL, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
+        </item>
+        <item>
           <name>Option+Tab to Command+Tab</name>
           <sysctl>remap.optionTab2commandTab</sysctl>
           <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
+          <name>Option+Tab to Control+Tab</name>
+          <sysctl>remap.optionTab2controlTab</sysctl>
+          <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
         </item>
         <item>
           <name>Option+Tab to F5</name>
