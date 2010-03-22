@@ -2443,6 +2443,15 @@
           <autogen>--KeyToKey-- KeyCode::W, VK_OPTION, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
+          <name>Dvorak's Control+PNBF to Up/Down/Left/Right</name>
+          <sysctl>option.dvorak_emacsmode_controlPNBF</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+          <autogen>--KeyToKey-- KeyCode::R, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::Y, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
+        </item>
+        <item>
           <name>Behavior in Emacs, Terminal, X11, VMware, Parallels, RDC, Eclipse</name>
           <list>
             <item>
