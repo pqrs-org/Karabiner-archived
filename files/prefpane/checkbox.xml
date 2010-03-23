@@ -329,6 +329,11 @@
           <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::FORWARD_DELETE</autogen>
         </item>
         <item>
+          <name>Backslash(\) to Forward Delete (if no other modifiers pressed)</name>
+          <sysctl>remap.backslash2forwarddelete_nomods</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH, ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
+        </item>
+        <item>
           <name>Backslash(\) to Return</name>
           <sysctl>remap.backslash2return</sysctl>
           <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::RETURN</autogen>
@@ -1325,6 +1330,11 @@
           <sysctl>remap.f12_to_volumeup</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToConsumer-- KeyCode::F12, ConsumerKeyCode::VOLUME_UP</autogen>
+        </item>
+        <item>
+          <name>F12 to Forward Delete</name>
+          <sysctl>remap.f12_to_forwarddelete</sysctl>
+          <autogen>--KeyToKey-- KeyCode::F12, KeyCode::FORWARD_DELETE</autogen>
         </item>
         <item>
           <name>F13 to Volume Mute (except virtual machine, RDC)</name>
