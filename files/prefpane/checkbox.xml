@@ -3987,6 +3987,16 @@
           </list>
         </item>
         <item>
+          <name>Remap Escape Key</name>
+          <list>
+            <item>
+              <name>Escape to EISUU+Escape</name>
+              <sysctl>remap.jis_escape2eisuuAndEscape</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::ESCAPE, KeyCode::JIS_EISUU, KeyCode::ESCAPE</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Remap Option_R Key</name>
           <list>
             <item>
