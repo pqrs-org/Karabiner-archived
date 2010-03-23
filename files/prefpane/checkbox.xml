@@ -3248,6 +3248,12 @@
               <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, KeyCode::F11</autogen>
               <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, KeyCode::F12</autogen>
             </item>
+            <item>
+              <name>Remap Option+y to F18</name>
+              <only>TERMINAL</only>
+              <sysctl>remap.app_term_optionY2f18</sysctl>
+              <autogen>--KeyToKey-- KeyCode::Y, VK_OPTION, KeyCode::F18</autogen>
+            </item>
           </list>
         </item>
         <item>
@@ -4255,6 +4261,11 @@
               <sysctl>remap.jis_underscore2jis_yen</sysctl>
               <autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, KeyCode::JIS_YEN</autogen>
             </item>
+            <item>
+              <name>Underscore(Ro) to JIS Yen(¥) (if no modifiers pressed)</name>
+              <sysctl>remap.jis_underscore2jis_yen_nomods</sysctl>
+              <autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, ModifierFlag::NONE, KeyCode::JIS_YEN</autogen>
+            </item>
           </list>
         </item>
         <item>
@@ -4346,12 +4357,6 @@
                   <only>TERMINAL</only>
                   <sysctl>remap.jis_app_term_yen2f18</sysctl>
                   <autogen>--KeyToKey-- KeyCode::JIS_YEN, ModifierFlag::NONE, KeyCode::F18</autogen>
-                </item>
-                <item>
-                  <name>Option+y to F18</name>
-                  <only>TERMINAL</only>
-                  <sysctl>remap.jis_app_term_optionY2f18</sysctl>
-                  <autogen>--KeyToKey-- KeyCode::Y, VK_OPTION, KeyCode::F18</autogen>
                 </item>
               </list>
             </item>
