@@ -15,6 +15,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       REQUEST_GET_WORKSPACE_DATA,
       REQUEST_CHANGE_INPUTMODE,
       REQUEST_STATUS_MESSAGE,
+      REQUEST_STATUS_MESSAGE_WINDOW_PARAMETER,
     };
 
     namespace GetWorkspaceData {
@@ -115,6 +116,17 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         MessageType type;
         char message[16];
+      };
+      struct Reply {};
+    }
+
+    namespace StatusMessageWindowParameter {
+      struct Request {
+        Request(void) : alpha_font(0), alpha_background(0) {}
+        Request(uint32_t af, uint32_t ab) : alpha_font(af), alpha_background(ab) {}
+
+        uint32_t alpha_font;
+        uint32_t alpha_background;
       };
       struct Reply {};
     }

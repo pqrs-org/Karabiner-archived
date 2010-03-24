@@ -151,10 +151,11 @@ finish:
 }
 
 // ----------------------------------------------------------------------
-- (void) registerStatusWindow:(NSWindow*)window label:(NSTextField*)label
+- (void) registerStatusWindow:(NSWindow*)window label:(NSTextField*)label background:(NSImageView*)background
 {
   statuswindow_ = window;
   statuswindow_label_ = label;
+  statuswindow_backgroud_ = background;
 }
 
 - (void) updateStatusMessageWindow
@@ -204,6 +205,21 @@ finish:
                       waitUntilDone:NO];
 }
 
+- (void) setStatusMessageWindowParam:(uint32_t)alpha_font alpha_background:(uint32_t)alpha_background
+{
+  CGFloat af = (CGFloat)(alpha_font) / (CGFloat)(100.0);
+  CGFloat ab = (CGFloat)(alpha_background) / (CGFloat)(100.0);
+
+  if (af < 0) af = 0;
+  if (af > 100) af = 100;
+
+  if (ab < 0) ab = 0;
+  if (ab > 100) ab = 100;
+
+  [statuswindow_label_ setAlphaValue:af];
+  [statuswindow_backgroud_ setAlphaValue:ab];
+}
+
 @end
 
 // ======================================================================
@@ -241,5 +257,13 @@ set_statusmessage(StatusMessageType type, const char* message)
 {
   if (serverobjcpart) {
     [serverobjcpart setStatusMessage:type message:message];
+  }
+}
+
+void
+set_statusmessageWindowParam(uint32_t alpha_font, uint32_t alpha_background)
+{
+  if (serverobjcpart) {
+    [serverobjcpart setStatusMessageWindowParam:alpha_font alpha_background:alpha_background];
   }
 }

@@ -26,6 +26,21 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! error && req->newptr) {
         FlagStatus::lock_clear();
         refresh_remapfunc();
+
+        // StatusMessageWindowParameter
+        {
+          static int last_parameter_statuswindow_alpha_font = -1;
+          static int last_parameter_statuswindow_alpha_background = -1;
+          if (last_parameter_statuswindow_alpha_font       != config.parameter_statuswindow_alpha_font ||
+              last_parameter_statuswindow_alpha_background != config.parameter_statuswindow_alpha_background) {
+            last_parameter_statuswindow_alpha_font = config.parameter_statuswindow_alpha_font;
+            last_parameter_statuswindow_alpha_background = config.parameter_statuswindow_alpha_background;
+
+            KeyRemap4MacBook_bridge::StatusMessageWindowParameter::Request request(config.parameter_statuswindow_alpha_font,
+                                                                                   config.parameter_statuswindow_alpha_background);
+            KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_STATUS_MESSAGE_WINDOW_PARAMETER, &request, sizeof(request), NULL, 0);
+          }
+        }
       }
       return 0;
     }

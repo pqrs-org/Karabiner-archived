@@ -16,6 +16,7 @@ typedef enum {
 @interface ServerObjcPart : NSObject {
   NSWindow* statuswindow_;
   NSTextField* statuswindow_label_;
+  NSImageView* statuswindow_backgroud_;
 
   NSString* statusmessage_lock_;
   NSString* statusmessage_extra_;
@@ -24,9 +25,10 @@ typedef enum {
 - (NSString*) getActiveApplicationName;
 - (NSString*) getTISPropertyInputModeID;
 
-- (void) registerStatusWindow:(NSWindow*)window label:(NSTextField*)label;
+- (void) registerStatusWindow:(NSWindow*)window label:(NSTextField*)label background:(NSImageView*)background;
 - (void) updateStatusMessageWindow;
 - (void) setStatusMessage:(StatusMessageType)type message:(const char*)message;
+- (void) setStatusMessageWindowParam:(uint32_t)alpha_font alpha_background:(uint32_t)alpha_background;
 
 @end
 
@@ -49,6 +51,7 @@ void selectInputSource_swedish(void);
 void selectInputSource_canadian(void);
 
 void set_statusmessage(StatusMessageType type, const char* message);
+void set_statusmessageWindowParam(uint32_t alpha_font, uint32_t alpha_background);
 
 #ifdef __cplusplus
 }
