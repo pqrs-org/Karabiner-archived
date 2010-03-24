@@ -3288,6 +3288,17 @@
               <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CONTROL_R</autogen>
             </item>
             <item>
+              <name>Remap Slash(/) Key</name>
+              <list>
+                <item>
+                  <name>Control+Shift+Slash(/) to Delete</name>
+                  <sysctl>remap.app_term_controlshiftslash2delete</sysctl>
+                  <only>TERMINAL</only>
+                  <autogen>--KeyToKey-- KeyCode::SLASH, VK_CONTROL | VK_SHIFT, KeyCode::DELETE</autogen>
+                </item>
+              </list>
+            </item>
+            <item>
               <name>Remap Functional Keys to F1...F12</name>
               <appendix>(For keyboards of F10 == Volume Mute)</appendix>
               <sysctl>remap.app_term_functional2function</sysctl>
