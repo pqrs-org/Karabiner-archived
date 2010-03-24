@@ -3229,6 +3229,53 @@
               <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
             </item>
             <item>
+              <name>Remap Delete Key</name>
+              <list>
+                <item>
+                  <name>Delete to Control_L+H</name>
+                  <sysctl>remap.app_term_delete2controlLh</sysctl>
+                  <only>TERMINAL</only>
+                  <autogen>--KeyToKey-- KeyCode::DELETE, KeyCode::H, ModifierFlag::CONTROL_L</autogen>
+                </item>
+                <item>
+                  <name>Control+Delete to Control_L+H</name>
+                  <sysctl>remap.app_term_controldelete2controlLh</sysctl>
+                  <only>TERMINAL</only>
+                  <autogen>--KeyToKey-- KeyCode::DELETE, VK_CONTROL, KeyCode::H, ModifierFlag::CONTROL_L</autogen>
+                </item>
+                <item>
+                  <name>Option+Delete to Control_L+H</name>
+                  <sysctl>remap.app_term_optiondelete2controlLh</sysctl>
+                  <only>TERMINAL</only>
+                  <autogen>--KeyToKey-- KeyCode::DELETE, VK_OPTION, KeyCode::H, ModifierFlag::CONTROL_L</autogen>
+                </item>
+                <item>
+                  <name>Shift+Delete to Control_L+H</name>
+                  <sysctl>remap.app_term_shiftdelete2controlLh</sysctl>
+                  <only>TERMINAL</only>
+                  <autogen>--KeyToKey-- KeyCode::DELETE, VK_SHIFT, KeyCode::H, ModifierFlag::CONTROL_L</autogen>
+                </item>
+                <item>
+                  <name>Control+Delete to Delete</name>
+                  <sysctl>remap.app_term_controldelete2delete</sysctl>
+                  <only>TERMINAL</only>
+                  <autogen>--KeyToKey-- KeyCode::DELETE, VK_CONTROL, KeyCode::DELETE</autogen>
+                </item>
+                <item>
+                  <name>Option+Delete to Delete</name>
+                  <sysctl>remap.app_term_optiondelete2delete</sysctl>
+                  <only>TERMINAL</only>
+                  <autogen>--KeyToKey-- KeyCode::DELETE, VK_OPTION, KeyCode::DELETE</autogen>
+                </item>
+                <item>
+                  <name>Shift+Delete to Delete</name>
+                  <sysctl>remap.app_term_shiftdelete2delete</sysctl>
+                  <only>TERMINAL</only>
+                  <autogen>--KeyToKey-- KeyCode::DELETE, VK_SHIFT, KeyCode::DELETE</autogen>
+                </item>
+              </list>
+            </item>
+            <item>
               <name>Remap Option_L to Command_L</name>
               <sysctl>remap.app_term_optionL2commandL</sysctl>
               <only>TERMINAL</only>
