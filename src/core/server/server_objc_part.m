@@ -253,6 +253,13 @@ void selectInputSource_swedish(void) { selectInputSource_language(CFSTR("sv")); 
 
 // ------------------------------------------------------------
 void
+reset_statusmessage(void)
+{
+  set_statusmessage(STATUSMESSAGETYPE_LOCK, "");
+  set_statusmessage(STATUSMESSAGETYPE_EXTRA, "");
+}
+
+void
 set_statusmessage(StatusMessageType type, const char* message)
 {
   if (serverobjcpart) {

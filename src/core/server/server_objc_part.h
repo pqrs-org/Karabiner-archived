@@ -50,6 +50,7 @@ void selectInputSource_japanese(void);
 void selectInputSource_swedish(void);
 void selectInputSource_canadian(void);
 
+void reset_statusmessage(void);
 void set_statusmessage(StatusMessageType type, const char* message);
 void set_statusmessageWindowParam(uint32_t alpha_font, uint32_t alpha_background);
 
