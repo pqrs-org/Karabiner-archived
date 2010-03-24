@@ -54,6 +54,17 @@ sysctl_load(void)
 
   // --------------------------------------------------
   int exitstatus;
+
+  // We need to set socket_path first,
+  // because "sysctl_reset" and "sysctl_ctl" use socket when
+  // they set "parameter.statuswindow_alpha_font" or "parameter.statuswindow_alpha_background".
+  const std::string socket_path = server.getSocketPath();
+  if (! socket_path.empty()) {
+    std::string command = std::string("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set socket_path ") + socket_path;
+    exitstatus = system(command.c_str());
+    if (exitstatus != 0) return;
+  }
+
   exitstatus = system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_reset");
   if (exitstatus != 0) return;
 
@@ -62,11 +73,4 @@ sysctl_load(void)
 
   exitstatus = system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_ctl load");
   if (exitstatus != 0) return;
-
-  const std::string socket_path = server.getSocketPath();
-  if (! socket_path.empty()) {
-    std::string command = std::string("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set socket_path ") + socket_path;
-    exitstatus = system(command.c_str());
-    if (exitstatus != 0) return;
-  }
 }
