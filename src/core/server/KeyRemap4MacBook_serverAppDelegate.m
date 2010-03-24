@@ -127,7 +127,7 @@
                          withObject:nil];
 
   [self setupStatusWindow];
-  [serverobjcpart_ registerStatusWindow:window label:statusmessage_];
+  [serverobjcpart_ registerStatusWindow:window label:statusmessage_ background:statusmessage_background_];
   registerServerObjcPart(serverobjcpart_);
 
   // ------------------------------------------------------------

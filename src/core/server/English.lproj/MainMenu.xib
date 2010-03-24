@@ -170,6 +170,14 @@
 					</object>
 					<int key="connectionID">550</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">statusmessage_background_</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="1020017451"/>
+					</object>
+					<int key="connectionID">551</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -313,7 +321,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">550</int>
+			<int key="maxID">551</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -327,12 +335,14 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>serverobjcpart_</string>
 							<string>statusmessage_</string>
+							<string>statusmessage_background_</string>
 							<string>window</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>ServerObjcPart</string>
 							<string>NSTextField</string>
+							<string>NSImageView</string>
 							<string>NSWindow</string>
 						</object>
 					</object>

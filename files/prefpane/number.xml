@@ -37,5 +37,17 @@
       <default>150</default>
       <baseunit>/ 1000</baseunit>
     </item>
+    <item>
+      <name>[StatusWindow] AlphaValue for Font</name>
+      <sysctl>parameter.statuswindow_alpha_font</sysctl>
+      <default>60</default>
+      <baseunit>/ 100</baseunit>
+    </item>
+    <item>
+      <name>[StatusWindow] AlphaValue for Background</name>
+      <sysctl>parameter.statuswindow_alpha_background</sysctl>
+      <default>20</default>
+      <baseunit>/ 100</baseunit>
+    </item>
   </list>
 </root>

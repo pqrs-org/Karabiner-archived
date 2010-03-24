@@ -89,6 +89,19 @@ KeyRemap4MacBook_server::Server::dispatchOperator(int sock)
 
       break;
     }
+    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::REQUEST_STATUS_MESSAGE_WINDOW_PARAMETER:
+    {
+      uint32_t size;
+      if (read(sock, &size, sizeof(size)) < 0) goto error;
+
+      org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::StatusMessageWindowParameter::Request request;
+      if (size != sizeof(request)) goto error;
+      if (read(sock, &request, sizeof(request)) < 0) goto error;
+
+      do_StatusMessageWindowParameter(request);
+
+      break;
+    }
     case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::REQUEST_NONE:
       goto error;
   }
@@ -196,6 +209,13 @@ KeyRemap4MacBook_server::Server::do_StatusMessage(const org_pqrs_KeyRemap4MacBoo
   }
   set_statusmessage(type, request.message);
 
+  return org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS;
+}
+
+org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error
+KeyRemap4MacBook_server::Server::do_StatusMessageWindowParameter(const org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::StatusMessageWindowParameter::Request& request)
+{
+  set_statusmessageWindowParam(request.alpha_font, request.alpha_background);
   return org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS;
 }
 

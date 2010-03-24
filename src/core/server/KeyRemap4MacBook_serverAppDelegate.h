@@ -14,6 +14,7 @@
   NSWindow* window;
   IBOutlet ServerObjcPart* serverobjcpart_;
   IBOutlet NSTextField* statusmessage_;
+  IBOutlet NSImageView* statusmessage_background_;
 }
 
 @property (assign) IBOutlet NSWindow* window;
