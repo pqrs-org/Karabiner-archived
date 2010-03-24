@@ -77,6 +77,7 @@
 
   // Note: The console user is "real login user" or "loginwindow",
   //       when NSWorkspaceSessionDidBecomeActiveNotification, NSWorkspaceSessionDidResignActiveNotification are called.
+  reset_statusmessage();
   sysctl_reset();
   sysctl_load();
 }
@@ -87,6 +88,7 @@
 
   // Note: The console user is "real login user" or "loginwindow",
   //       when NSWorkspaceSessionDidBecomeActiveNotification, NSWorkspaceSessionDidResignActiveNotification are called.
+  reset_statusmessage();
   sysctl_reset();
 }
 
@@ -118,6 +120,7 @@
   [self observer_kTISNotifySelectedKeyboardInputSourceChanged:nil];
 
   // ------------------------------------------------------------
+  reset_statusmessage();
   sysctl_reset();
   [NSThread detachNewThreadSelector:@selector(threadMain)
                            toTarget:self
