@@ -4436,6 +4436,32 @@
                   <sysctl>remap.jis_app_term_yen2f18</sysctl>
                   <autogen>--KeyToKey-- KeyCode::JIS_YEN, ModifierFlag::NONE, KeyCode::F18</autogen>
                 </item>
+                <item>
+                  <name>Underscore(Ro) to F18</name>
+                  <appendix>(+ Underscore to JIS Yen(¥) except Terminal)</appendix>
+                  <sysctl>remap.jis_app_term_underscore2f18</sysctl>
+                  <block>
+                    <only>TERMINAL</only>
+                    <autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, ModifierFlag::NONE, KeyCode::F18</autogen>
+                  </block>
+                  <block>
+                    <not>TERMINAL</not>
+                    <autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, KeyCode::JIS_YEN</autogen>
+                  </block>
+                </item>
+                <item>
+                  <name>Shift+0 to F18</name>
+                  <appendix>(+ Shift+0 to JIS Yen(¥) except Terminal)</appendix>
+                  <sysctl>remap.jis_app_term_shift0_to_f18</sysctl>
+                  <block>
+                    <only>TERMINAL</only>
+                    <autogen>--KeyToKey-- KeyCode::KEY_0, VK_SHIFT, KeyCode::F18</autogen>
+                  </block>
+                  <block>
+                    <not>TERMINAL</not>
+                    <autogen>--KeyToKey-- KeyCode::KEY_0, VK_SHIFT, KeyCode::JIS_YEN</autogen>
+                  </block>
+                </item>
               </list>
             </item>
             <item>
