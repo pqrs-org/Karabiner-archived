@@ -566,10 +566,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (handle_VK_JIS_EISUU_x2(p, workspacedata)) return;
     if (handle_VK_JIS_KANA_x2(p, workspacedata)) return;
     if (handle_VK_JIS_BACKSLASH(p, workspacedata)) return;
-    if (Handle_VK_JIS_TEMPORARY::handle_ROMAN(p, workspacedata)) return;
-    if (Handle_VK_JIS_TEMPORARY::handle_HIRAGANA(p, workspacedata)) return;
-    if (Handle_VK_JIS_TEMPORARY::handle_KATAKANA(p, workspacedata)) return;
-    if (Handle_VK_JIS_TEMPORARY::handle_RESTORE(p, workspacedata)) return;
+    if (Handle_VK_JIS_TEMPORARY::handle(p, workspacedata)) return;
 
     // ------------------------------------------------------------
     p.key.reverseNormalizeKey(p.flags, p.keyboardType);

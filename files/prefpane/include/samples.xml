@@ -417,5 +417,13 @@
       <autogen>--KeyToKey-- KeyCode::A, KeyCode::A, KeyCode::VK_JIS_TEMPORARY_KATAKANA, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
       <autogen>--KeyToKey-- KeyCode::B, KeyCode::VK_JIS_TEMPORARY_KATAKANA, KeyCode::A, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
     </item>
+    <item>
+      <name>VK_JIS_TEMPORARY_AINU</name>
+      <appendix>Use A as A,VK_JIS_TEMPORARY_AINU,I,U</appendix>
+      <appendix>Use B as VK_JIS_TEMPORARY_AINU,A,I,U</appendix>
+      <sysctl>remap.samples_vk_jis_temporary_ainu</sysctl>
+      <autogen>--KeyToKey-- KeyCode::A, KeyCode::A, KeyCode::VK_JIS_TEMPORARY_AINU, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
+      <autogen>--KeyToKey-- KeyCode::B, KeyCode::VK_JIS_TEMPORARY_AINU, KeyCode::A, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
+    </item>
   </list>
 </item>
