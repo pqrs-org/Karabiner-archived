@@ -52,6 +52,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         INPUTMODE_KOREAN,
         INPUTMODE_SWEDISH,
         INPUTMODE_CANADIAN,
+        INPUTMODE_AINU,
       };
       enum InputModeDetail {
         INPUTMODE_DETAIL_NONE,
@@ -67,6 +68,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         INPUTMODE_DETAIL_KOREAN,
         INPUTMODE_DETAIL_SWEDISH,
         INPUTMODE_DETAIL_CANADIAN,
+        INPUTMODE_DETAIL_AINU,
       };
 
       // none

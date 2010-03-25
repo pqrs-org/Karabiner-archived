@@ -166,9 +166,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   bool
-  Handle_VK_JIS_TEMPORARY::handle(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata,
-                                  KeyCode key,
-                                  const KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail& inputmodedetail)
+  Handle_VK_JIS_TEMPORARY::handle_core(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata,
+                                       KeyCode key,
+                                       const KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail& inputmodedetail)
   {
     if (params.key != key) return false;
 
@@ -225,6 +225,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (inputmodedetail == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_KATAKANA) {
       RemapUtil::fireKey_downup(ModifierFlag::SHIFT_L, KeyCode::JIS_KANA, params.keyboardType, workspacedata);
+      return;
+    }
+
+    if (inputmodedetail == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_AINU) {
+      RemapUtil::fireKey_downup(ModifierFlag::OPTION_L, KeyCode::JIS_KANA, params.keyboardType, workspacedata);
       return;
     }
   }
