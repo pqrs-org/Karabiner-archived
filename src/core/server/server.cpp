@@ -348,6 +348,8 @@ setCurrentInputMode(const char* inputmodeName)
   // get data from util/DumpInputModeToConsole/dump-from-plist.sh
   const char* tis_japanese_hiragana = "com.apple.inputmethod.Japanese.Hiragana";
   const char* tis_japanese_katakana = "com.apple.inputmethod.Japanese.Katakana";
+  const char* tis_japanese_fullwidth_roman = "com.apple.inputmethod.Japanese.FullWidthRoman";
+  const char* tis_japanese_halfwidth_kana = "com.apple.inputmethod.Japanese.HalfWidthKana";
   const char* tis_japanese = "com.apple.inputmethod.Japanese";
   const char* tis_tradchinese = "com.apple.inputmethod.TCIM"; // TradChinese
   const char* tis_simpchinese = "com.apple.inputmethod.SCIM"; // SimpChinese
@@ -363,6 +365,14 @@ setCurrentInputMode(const char* inputmodeName)
   } else if (strcmp(inputmodeName, tis_japanese_katakana) == 0) {
     currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE;
     currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_KATAKANA;
+
+  } else if (strcmp(inputmodeName, tis_japanese_fullwidth_roman) == 0) {
+    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE;
+    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_FULLWIDTH_ROMAN;
+
+  } else if (strcmp(inputmodeName, tis_japanese_halfwidth_kana) == 0) {
+    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE;
+    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_HALFWIDTH_KANA;
 
   } else if (strncmp(inputmodeName, tis_japanese, strlen(tis_japanese)) == 0) {
     currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE;
