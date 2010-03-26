@@ -23,7 +23,13 @@ KeyRemap4MacBook_server::Server::initialize(const char* basedirectory)
   if (*basedirectory == '\0') return false;
 
   socketpath_ = std::string(basedirectory) + "/KeyRemap4MacBook_server";
-  return makeSocket();
+  if (! makeSocket()) return false;
+  if (listenSocket_ == -1) return false;
+
+  int error = listen(listenSocket_, 128);
+  if (error) return false;
+
+  return true;
 }
 
 void
@@ -116,9 +122,6 @@ void
 KeyRemap4MacBook_server::Server::doLoop(void)
 {
   if (listenSocket_ == -1) return;
-
-  int error = listen(listenSocket_, 128);
-  if (error) return;
 
   for (;;) {
     int s = accept(listenSocket_, NULL, NULL);
