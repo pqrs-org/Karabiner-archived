@@ -4337,7 +4337,7 @@
             <item>
               <name>Underscore(Ro) to JIS Yen(¥)</name>
               <sysctl>remap.jis_underscore2jis_yen</sysctl>
-              <autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, KeyCode::JIS_YEN</autogen>
+              <autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, ModifierFlag::NONE, KeyCode::JIS_YEN</autogen>
             </item>
             <item>
               <name>Underscore(Ro) to JIS Yen(¥) (if no modifiers pressed)</name>
@@ -4446,7 +4446,7 @@
                   </block>
                   <block>
                     <not>TERMINAL</not>
-                    <autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, KeyCode::JIS_YEN</autogen>
+                    <autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, ModifierFlag::NONE, KeyCode::JIS_YEN</autogen>
                   </block>
                 </item>
                 <item>
