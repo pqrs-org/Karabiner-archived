@@ -4692,41 +4692,6 @@
           </list>
         </item>
         <item>
-          <name>For Kotoeri users</name>
-          <list>
-            <item>
-              <name>Use "Option+Shift+Z" as Roman Input</name>
-              <sysctl>option.jis_kotoeri_optionshiftz</sysctl>
-              <autogen>--KeyToKey-- KeyCode::Z, VK_OPTION | VK_SHIFT | ModifierFlag::NONE, KeyCode::VK_JIS_TEMPORARY_ROMAN, KeyCode::Z, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
-            </item>
-            <item>
-              <name>Use "Option+Shift+X" as Roman Input</name>
-              <sysctl>option.jis_kotoeri_optionshiftx</sysctl>
-              <autogen>--KeyToKey-- KeyCode::X, VK_OPTION | VK_SHIFT | ModifierFlag::NONE, KeyCode::VK_JIS_TEMPORARY_ROMAN, KeyCode::X, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
-            </item>
-            <item>
-              <name>Use "Option+Shift+C" as Roman Input</name>
-              <sysctl>option.jis_kotoeri_optionshiftc</sysctl>
-              <autogen>--KeyToKey-- KeyCode::C, VK_OPTION | VK_SHIFT | ModifierFlag::NONE, KeyCode::VK_JIS_TEMPORARY_ROMAN, KeyCode::C, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
-            </item>
-            <item>
-              <name>Use "Option+Shift+A" as Roman Input</name>
-              <sysctl>option.jis_kotoeri_optionshifta</sysctl>
-              <autogen>--KeyToKey-- KeyCode::A, VK_OPTION | VK_SHIFT | ModifierFlag::NONE, KeyCode::VK_JIS_TEMPORARY_ROMAN, KeyCode::A, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
-            </item>
-            <item>
-              <name>Use "Option+Shift+S" as Roman Input</name>
-              <sysctl>option.jis_kotoeri_optionshifts</sysctl>
-              <autogen>--KeyToKey-- KeyCode::S, VK_OPTION | VK_SHIFT | ModifierFlag::NONE, KeyCode::VK_JIS_TEMPORARY_ROMAN, KeyCode::S, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
-            </item>
-            <item>
-              <name>Use "Option+Shift+D" as Roman Input</name>
-              <sysctl>option.jis_kotoeri_optionshiftd</sysctl>
-              <autogen>--KeyToKey-- KeyCode::D, VK_OPTION | VK_SHIFT | ModifierFlag::NONE, KeyCode::VK_JIS_TEMPORARY_ROMAN, KeyCode::D, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
-            </item>
-          </list>
-        </item>
-        <item>
           <name>Hack for the bug of Mac OS X</name>
           <list>
             <item>
