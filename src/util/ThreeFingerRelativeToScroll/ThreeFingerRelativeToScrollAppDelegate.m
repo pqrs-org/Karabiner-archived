@@ -86,7 +86,7 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
 - (void) setNotification {
   NSMutableDictionary* match = [NSMutableDictionary dictionary];
   NSMutableDictionary* subdict = [NSMutableDictionary dictionary];
-  [subdict setObject:@"AppleMultitouchDevice" forKey:@"IOClass"];
+  [subdict setObject:@"AppleMultitouchHIDEventDriver" forKey:@"IOClass"];
   [match setObject:subdict forKey:@kIOPropertyMatchKey];
   [match retain]; // for kIOTerminatedNotification
   [match retain]; // for kIOMatchedNotification
