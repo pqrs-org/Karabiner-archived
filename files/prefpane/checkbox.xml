@@ -1817,6 +1817,11 @@
           <autogen>--KeyToKey-- KeyCode::RETURN, ModifierFlag::FN, KeyCode::OPTION_L</autogen>
         </item>
         <item>
+          <name>Return to Control_L+F4 (= Move focus to the active (or next) window)</name>
+          <sysctl>remap.return2controlLf4</sysctl>
+          <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::F4, ModifierFlag::CONTROL_L</autogen>
+        </item>
+        <item>
           <name>FN+Return to Shift_L+Insert</name>
           <sysctl>remap.fnReturn2shiftLinsert</sysctl>
           <autogen>--KeyToKey-- KeyCode::RETURN, ModifierFlag::FN, KeyCode::PC_INSERT, ModifierFlag::SHIFT_L</autogen>
