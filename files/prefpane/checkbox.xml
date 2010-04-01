@@ -2783,6 +2783,8 @@
                   <appendix>$ to Command_L+Right ($ == Shift+4)</appendix>
                   <appendix>/ to Command_L+F (+ turn off Vi Mode)</appendix>
                   <appendix>n to Command_L+G</appendix>
+                  <appendix>x to Forward Delete</appendix>
+                  <appendix>Shift+x to Delete</appendix>
                   <appendix>f to FN</appendix>
                   <appendix>i to turn off Vi Mode</appendix>
                   <sysctl>notsave.complete_vimode</sysctl>
@@ -2809,6 +2811,9 @@
 
                   <autogen>--KeyToKey-- KeyCode::SLASH, KeyCode::F, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_complete_vimode</autogen>
                   <autogen>--KeyToKey-- KeyCode::N, KeyCode::G, ModifierFlag::COMMAND_L</autogen>
+
+                  <autogen>--KeyToKey-- KeyCode::X, VK_SHIFT, KeyCode::DELETE</autogen>
+                  <autogen>--KeyToKey-- KeyCode::X, KeyCode::FORWARD_DELETE</autogen>
 
                   <autogen>--KeyToKey-- KeyCode::F, KeyCode::FN</autogen>
                   <autogen>--KeyToKey-- KeyCode::I, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
