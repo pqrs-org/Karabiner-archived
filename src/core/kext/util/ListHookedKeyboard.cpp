@@ -58,7 +58,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       //
       // *** LCP has 6 keys (Page Up, Page Down, a 'B' key, an 'Esc' key, and volume up / down keys). ***
       // *** So, we can drop CONTROL_L and SHIFT_L without a problem. ***
-      if (hk->isEqualVendorIDProductID(HookedDevice::VendorID(0x046d), HookedDevice::ProductID(0xc515))) {
+      if (hk->isEqualVendorIDProductID(VendorID(0x046d), ProductID(0xc515))) {
         if (KeyCode::CONTROL_L == key) return;
         if (KeyCode::SHIFT_L == key) return;
       }

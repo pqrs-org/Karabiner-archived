@@ -2,15 +2,13 @@
 #define LISTHOOKEDDEVICE_HPP
 
 #include "base.hpp"
+#include "KeyCode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   class HookedDevice {
     friend class ListHookedDevice;
 
   public:
-    typedef UInt32 VendorID;
-    typedef UInt32 ProductID;
-
     HookedDevice(void) : device_(NULL), vendorID_(0), productID_(0) {}
 
     IOHIDevice* get(void) const { return device_; }
