@@ -2812,8 +2812,8 @@
                   <autogen>--KeyToKey-- KeyCode::SLASH, KeyCode::F, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_complete_vimode</autogen>
                   <autogen>--KeyToKey-- KeyCode::N, KeyCode::G, ModifierFlag::COMMAND_L</autogen>
 
-                  <autogen>--KeyToKey-- KeyCode::X, VK_SHIFT, KeyCode::DELETE</autogen>
-                  <autogen>--KeyToKey-- KeyCode::X, KeyCode::FORWARD_DELETE</autogen>
+                  <autogen>--KeyToKey-- KeyCode::X, VK_SHIFT | ModifierFlag::NONE, KeyCode::DELETE</autogen>
+                  <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
 
                   <autogen>--KeyToKey-- KeyCode::F, KeyCode::FN</autogen>
                   <autogen>--KeyToKey-- KeyCode::I, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
