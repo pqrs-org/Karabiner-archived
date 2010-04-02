@@ -235,6 +235,23 @@
       </block>
     </item>
 
+    <!-- Device only -->
+    <item>
+      <name>Device only</name>
+      <appendix>A to B if (VendorID,ProductID) == (0x5ac,0x21a) or (0x5ac,0x222)</appendix>
+      <appendix>A to C unless (VendorID,ProductID) == (0x5ac,0x21a) or (0x5ac,0x222)</appendix>
+      <sysctl>remap.samples_device</sysctl>
+      <block>
+        <device_only>DeviceVendorID(0x5ac),DeviceProductID(0x21a), DeviceVendorID(0x5ac),DeviceProductID(0x222)</device_only>
+        <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
+      </block>
+      <block>
+        <device_not>DeviceVendorID(0x5ac),DeviceProductID(0x21a), DeviceVendorID(0x5ac),DeviceProductID(0x222)</device_not>
+        <autogen>--KeyToKey-- KeyCode::A, KeyCode::C</autogen>
+      </block>
+    </item>
+
+
     <!-- inputmode only -->
     <item>
       <name>inputmode_only (Japanese)</name>

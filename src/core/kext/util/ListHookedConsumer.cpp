@@ -41,6 +41,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       CommonData::setcurrent_ts(ts);
+      CommonData::setcurrent_vendorIDproductID(hc->getVendorID(), hc->getProductID());
 
       // ------------------------------------------------------------
       // Because we handle the key repeat ourself, drop the key repeat by hardware.

@@ -4,6 +4,8 @@
 namespace org_pqrs_KeyRemap4MacBook {
   AbsoluteTime CommonData::current_ts_;
   KeyboardType CommonData::current_keyboardType_;
+  DeviceVendorID CommonData::current_deviceVendorID_;
+  DeviceProductID CommonData::current_deviceProductID_;
   IOLock* CommonData::eventLock = NULL;
 
   bool

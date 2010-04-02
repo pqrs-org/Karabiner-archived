@@ -142,6 +142,18 @@ def parseautogen(name, lines, autogen_index)
       end
       filter << "if (#{tmp.join(' && ')}) break;"
 
+    elsif /<device_not>(.+?)<\/device_not>/ =~ l then
+      $1.scan(/DeviceVendorID\(.+?\)\s*,\s*DeviceProductID\(.+?\)/).each do |f|
+        filter << "if (CommonData::isEqualVendorIDProductID(#{f.strip})) break;"
+      end
+
+    elsif /<device_only>(.+?)<\/device_only>/ =~ l then
+      tmp = []
+      $1.scan(/DeviceVendorID\(.+?\)\s*,\s*DeviceProductID\(.+?\)/).each do |f|
+        tmp << "(! CommonData::isEqualVendorIDProductID(#{f.strip}))"
+      end
+      filter << "if (#{tmp.join(' && ')}) break;"
+
     elsif /<(inputmode|inputmodedetail)_not>(.+?)<\/(inputmode|inputmodedetail)_not>/ =~ l then
       inputmodetype = $1
       $2.split(/,/).each do |f|

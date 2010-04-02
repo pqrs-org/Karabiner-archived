@@ -66,6 +66,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ------------------------------------------------------------
 #include "../config/output/include.remapcode_keyboardtype.hpp"
       CommonData::setcurrent_ts(ts);
+      CommonData::setcurrent_vendorIDproductID(hk->getVendorID(), hk->getProductID());
       CommonData::setcurrent_keyboardType(keyboardType);
 
       // ------------------------------------------------------------
