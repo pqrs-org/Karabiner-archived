@@ -100,8 +100,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! lock_) return false;
     IOLockWrapper::ScopedLock lk(lock_);
 
-    HookedDevice::VendorID vendorID;
-    HookedDevice::ProductID productID;
+    VendorID vendorID;
+    ProductID productID;
 
     HookedDevice::getVendorIDProductID(device, vendorID, productID);
     if (HookedDevice::isIgnoreDevice(vendorID, productID)) {
