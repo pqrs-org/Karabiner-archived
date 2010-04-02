@@ -209,8 +209,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   inline Buttons operator|(PointingButton lhs, PointingButton rhs) { return lhs.get() | rhs.get(); }
 
   // ======================================================================
-  typedef unsigned int VendorID;
-  typedef unsigned int ProductID;
+  typedef unsigned int DeviceVendorID;
+  typedef unsigned int DeviceProductID;
 }
 
 #endif

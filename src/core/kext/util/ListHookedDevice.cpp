@@ -14,13 +14,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  HookedDevice::isEqualVendorIDProductID(VendorID vendorID, ProductID productID) const
+  HookedDevice::isEqualVendorIDProductID(DeviceVendorID vendorID, DeviceProductID productID) const
   {
     return vendorID_ == vendorID && productID_ == productID;
   }
 
   void
-  HookedDevice::getVendorIDProductID(IORegistryEntry* dev, VendorID& vendorID, ProductID& productID)
+  HookedDevice::getVendorIDProductID(IORegistryEntry* dev, DeviceVendorID& vendorID, DeviceProductID& productID)
   {
     vendorID = 0;
     productID = 0;
@@ -44,7 +44,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  HookedDevice::isIgnoreDevice(VendorID vendorID, ProductID productID)
+  HookedDevice::isIgnoreDevice(DeviceVendorID vendorID, DeviceProductID productID)
   {
     IOLog("KeyRemap4MacBook HookedDevice::isIgnoreDevice checking vendorID = 0x%x, productID = 0x%x\n",
           static_cast<unsigned int>(vendorID),
@@ -100,8 +100,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! lock_) return false;
     IOLockWrapper::ScopedLock lk(lock_);
 
-    VendorID vendorID;
-    ProductID productID;
+    DeviceVendorID vendorID;
+    DeviceProductID productID;
 
     HookedDevice::getVendorIDProductID(device, vendorID, productID);
     if (HookedDevice::isIgnoreDevice(vendorID, productID)) {
