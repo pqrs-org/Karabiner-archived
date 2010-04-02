@@ -16,6 +16,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void setcurrent_keyboardType(KeyboardType keyboardType) { current_keyboardType_ = keyboardType; }
     static KeyboardType getcurrent_keyboardType(void) { return current_keyboardType_; }
 
+    static void setcurrent_vendorIDproductID(DeviceVendorID vendorID, DeviceProductID productID) {
+      current_deviceVendorID_ = vendorID;
+      current_deviceProductID_ = productID;
+    }
+    static bool isEqualVendorIDProductID(DeviceVendorID vendorID, DeviceProductID productID) {
+      if (current_deviceVendorID_  != vendorID)  return false;
+      if (current_deviceProductID_ != productID) return false;
+      return true;
+    }
+
     // We get the lock to save internal data (ex. FlagStatus) at
     //   - KeyboardEventCallback
     //   - KeyboardRepeat
@@ -27,6 +37,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   private:
     static AbsoluteTime current_ts_;
     static KeyboardType current_keyboardType_;
+    static DeviceVendorID current_deviceVendorID_;
+    static DeviceProductID current_deviceProductID_;
   };
 }
 

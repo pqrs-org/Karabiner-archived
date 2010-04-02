@@ -120,13 +120,13 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       IOLog("KeyRemap4MacBook ListHookedDevice::append (device = 0x%p, slot = %d)\n", device, i);
 
-      bool result = p->initialize(device);
-      if (result) {
-        p->vendorID_ = vendorID;
-        p->productID_ = productID;
-        // reset if any event actions are replaced.
-        reset();
-      }
+      p->vendorID_ = vendorID;
+      p->productID_ = productID;
+      p->initialize(device);
+
+      // Call reset whenever the device status is changed.
+      reset();
+
       return true;
     }
 

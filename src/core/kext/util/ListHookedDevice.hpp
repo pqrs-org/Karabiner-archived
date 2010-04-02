@@ -13,6 +13,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     IOHIDevice* get(void) const { return device_; }
     bool isEqualVendorIDProductID(DeviceVendorID vendorID, DeviceProductID productID) const;
+    DeviceVendorID getVendorID(void) const { return vendorID_; }
+    DeviceProductID getProductID(void) const { return productID_; }
 
   protected:
     IOHIDevice* device_;
