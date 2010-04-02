@@ -4441,6 +4441,16 @@
                   <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::OPTION_L, KeyCode::JIS_EISUU</autogen>
                 </item>
                 <item>
+                  <name>Command_L to Option_L</name>
+                  <appendix>(+ When you type Command_L only, send EISUU)</appendix>
+                  <appendix>(Pass-Through Tab and Backquote)</appendix>
+                  <only>TERMINAL</only>
+                  <sysctl>remap.jis_app_commandL2optionL_eisuu_except_tab</sysctl>
+                  <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::OPTION_L, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
+                  <autogen>--KeyToKey-- KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L</autogen>
+                  <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::OPTION_L, KeyCode::JIS_EISUU</autogen>
+                </item>
+                <item>
                   <name>JIS Yen(¥) to F18 (if no modifiers pressed)</name>
                   <only>TERMINAL</only>
                   <sysctl>remap.jis_app_term_yen2f18</sysctl>
