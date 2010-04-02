@@ -12,19 +12,19 @@ namespace org_pqrs_KeyRemap4MacBook {
     HookedDevice(void) : device_(NULL), vendorID_(0), productID_(0) {}
 
     IOHIDevice* get(void) const { return device_; }
-    bool isEqualVendorIDProductID(VendorID vendorID, ProductID productID) const;
+    bool isEqualVendorIDProductID(DeviceVendorID vendorID, DeviceProductID productID) const;
 
   protected:
     IOHIDevice* device_;
-    VendorID vendorID_;
-    ProductID productID_;
+    DeviceVendorID vendorID_;
+    DeviceProductID productID_;
 
     virtual bool initialize(IOHIDevice* d) = 0;
     virtual bool refresh(void) = 0;
     virtual bool terminate(void) = 0;
 
-    static void getVendorIDProductID(IORegistryEntry* dev, VendorID& vendorID, ProductID& productID);
-    static bool isIgnoreDevice(VendorID vendorID, ProductID productID);
+    static void getVendorIDProductID(IORegistryEntry* dev, DeviceVendorID& vendorID, DeviceProductID& productID);
+    static bool isIgnoreDevice(DeviceVendorID vendorID, DeviceProductID productID);
     static bool isConsumer(const char* name);
   };
 
