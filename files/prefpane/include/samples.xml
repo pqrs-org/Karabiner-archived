@@ -240,6 +240,8 @@
       <name>Device only</name>
       <appendix>A to B if (VendorID,ProductID) == (0x5ac,0x21a) or (0x5ac,0x222)</appendix>
       <appendix>A to C unless (VendorID,ProductID) == (0x5ac,0x21a) or (0x5ac,0x222)</appendix>
+      <appendix>* (0x5ac,0x21a) is MacBookPro2,1</appendix>
+      <appendix>* (0x5ac,0x222) is Apple Aluminum Keyboard (JIS)</appendix>
       <sysctl>remap.samples_device</sysctl>
       <block>
         <device_only>DeviceVendorID(0x5ac),DeviceProductID(0x21a), DeviceVendorID(0x5ac),DeviceProductID(0x222)</device_only>
