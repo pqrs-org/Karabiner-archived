@@ -165,8 +165,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     HookedDevice* p = get_nolock(device);
     if (! p) return false;
 
-    bool result = p->terminate();
-    if (! result) return false;
+    p->terminate();
+    p->vendorID_ = 0;
+    p->productID_ = 0;
+    p->device_ = NULL;
 
     reset();
     return true;
