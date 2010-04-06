@@ -21,7 +21,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       current_deviceProductID_ = productID;
     }
     static bool isEqualVendorIDProductID(DeviceVendorID vendorID, DeviceProductID productID) {
-      if (current_deviceVendorID_  != vendorID)  return false;
+      if (current_deviceVendorID_  != vendorID) return false;
       if (current_deviceProductID_ != productID) return false;
       return true;
     }
