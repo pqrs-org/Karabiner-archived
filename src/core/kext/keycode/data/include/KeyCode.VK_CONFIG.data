@@ -1,3 +1,6 @@
+VK_CONFIG_TOGGLE_notsave_emacsmode_ex_controlX_core --AUTO--
+VK_CONFIG_FORCE_ON_notsave_emacsmode_ex_controlX_core --AUTO--
+VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlX_core --AUTO--
 VK_CONFIG_TOGGLE_notsave_complete_vimode --AUTO--
 VK_CONFIG_FORCE_ON_notsave_complete_vimode --AUTO--
 VK_CONFIG_FORCE_OFF_notsave_complete_vimode --AUTO--
