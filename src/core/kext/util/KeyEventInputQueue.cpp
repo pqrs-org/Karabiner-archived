@@ -138,6 +138,16 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   KeyEventInputQueue::Remap::remap(KeyCode fromKeyCode1, KeyCode fromKeyCode2, KeyCode toKeyCode)
   {
+    // We ignore repeated key event to prevent the KeyUp lost.
+    //
+    // An example of KeyUp lost with invalid repeated key handling.
+    // (1) KeyDown fromKeyCode2 without "Simultaneous Key Presses"
+    // (2) Fire normal fromKeyCode2
+    // (3) KeyDown fromKeyCode1 with repeated fromKeyCode2 (Simultaneous Key Presses)
+    // (4) Fire toKeyCode
+    // (5) KeyUp fromKeyCode2
+    // (6) drop KeyUp fromKeyCode2 (***lost***)
+
     // ------------------------------------------------------------
     if (active1_ || active2_) {
       // restore KeyUp Event (fromKeyCode1).
