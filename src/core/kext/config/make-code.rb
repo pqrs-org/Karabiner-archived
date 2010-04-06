@@ -421,12 +421,24 @@ $outfile[:remapcode_info] << "  MAXNUM_REMAPFUNC_CONSUMER = #{$func[:consumer].u
 $outfile[:remapcode_info] << "  MAXNUM_REMAPFUNC_POINTING = #{$func[:pointing].uniq.count},\n"
 $outfile[:remapcode_info] << "};\n"
 
+# set higher priority to notsave.* (ex. Vi Mode)
+remapfunc_key_notsave = ''
+remapfunc_key_other = ''
 $func[:key].uniq.each do |name|
-  $outfile[:remapcode_refresh_remapfunc_key] << "if (config.#{name}) {\n"
-  $outfile[:remapcode_refresh_remapfunc_key] << "  listRemapFunc_key[listRemapFunc_key_size] = GeneratedCode::RemapClass_#{name}::remap_key;\n"
-  $outfile[:remapcode_refresh_remapfunc_key] << "  ++listRemapFunc_key_size;\n"
-  $outfile[:remapcode_refresh_remapfunc_key] << "}\n"
+  text = ''
+  text += "if (config.#{name}) {\n"
+  text += "  listRemapFunc_key[listRemapFunc_key_size] = GeneratedCode::RemapClass_#{name}::remap_key;\n"
+  text += "  ++listRemapFunc_key_size;\n"
+  text += "}\n"
+  if /^notsave_/ =~ name then
+    remapfunc_key_notsave += text
+  else
+    remapfunc_key_other += text
+  end
 end
+$outfile[:remapcode_refresh_remapfunc_key] << remapfunc_key_notsave
+$outfile[:remapcode_refresh_remapfunc_key] << remapfunc_key_other
+
 $func[:consumer].uniq.each do |name|
   $outfile[:remapcode_refresh_remapfunc_consumer] << "if (config.#{name}) {\n"
   $outfile[:remapcode_refresh_remapfunc_consumer] << "  listRemapFunc_consumer[listRemapFunc_consumer_size] = GeneratedCode::RemapClass_#{name}::remap_consumer;\n"
