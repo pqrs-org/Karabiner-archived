@@ -13,6 +13,7 @@
       <default>30</default>
       <baseunit>ms</baseunit>
     </item>
+
     <item>
       <name>[Key Overlaid Modifier] Timeout</name>
       <sysctl>parameter.keyoverlaidmodifier_timeout</sysctl>
@@ -25,18 +26,28 @@
       <default>500</default>
       <baseunit>ms</baseunit>
     </item>
+
+    <item>
+      <name>[Simultaneous Key Presses] Delay Threshold</name>
+      <sysctl>parameter.simultaneouskeypresses_delay</sysctl>
+      <default>50</default>
+      <baseunit>ms</baseunit>
+    </item>
+
     <item>
       <name>[Modifier Holding Key to Key] Holding Threshold</name>
       <sysctl>parameter.modifierholdingkeytokey_wait</sysctl>
       <default>1000</default>
       <baseunit>ms</baseunit>
     </item>
+
     <item>
       <name>[Pointing Device] CursorMove to ScrollWheel Rate</name>
       <sysctl>pointing.relative2scroll_rate</sysctl>
       <default>150</default>
       <baseunit>/ 1000</baseunit>
     </item>
+
     <item>
       <name>[StatusWindow] AlphaValue for Font</name>
       <sysctl>parameter.statuswindow_alpha_font</sysctl>
