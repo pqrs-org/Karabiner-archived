@@ -13,6 +13,7 @@
 #include "util/ListHookedPointing.hpp"
 #include "util/NumHeldDownKeys.hpp"
 #include "util/TimerWrapper.hpp"
+#include "VirtualKey.hpp"
 
 #include <sys/errno.h>
 #include <IOKit/IOWorkLoop.h>
@@ -126,6 +127,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         KeyboardRepeat::initialize(*workLoop);
         KeyEventInputQueue::initialize(*workLoop);
+        VirtualKey::initialize(*workLoop);
       }
     }
 
@@ -138,6 +140,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       ListHookedPointing::instance().terminate();
       KeyboardRepeat::terminate();
       KeyEventInputQueue::terminate();
+      VirtualKey::terminate();
 
       if (workLoop) {
         workLoop->release();
