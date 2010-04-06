@@ -7,6 +7,7 @@
 #include "bridge.hpp"
 #include "remap.hpp"
 #include "util/KeyboardRepeat.hpp"
+#include "util/KeyEventInputQueue.hpp"
 #include "util/ListHookedConsumer.hpp"
 #include "util/ListHookedKeyboard.hpp"
 #include "util/ListHookedPointing.hpp"
@@ -124,6 +125,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         timer_refresh.setTimeoutMS(REFRESH_DEVICE_INTERVAL);
 
         KeyboardRepeat::initialize(*workLoop);
+        KeyEventInputQueue::initialize(*workLoop);
       }
     }
 
@@ -135,6 +137,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       ListHookedConsumer::instance().terminate();
       ListHookedPointing::instance().terminate();
       KeyboardRepeat::terminate();
+      KeyEventInputQueue::terminate();
 
       if (workLoop) {
         workLoop->release();
@@ -185,7 +188,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ======================================================================
     void
-    remap_KeyboardEventCallback(Params_KeyboardEventCallBack& params)
+    remap_KeyboardEventCallback(Params_KeyboardEventCallBack& params, bool passthrough)
     {
       params.log();
 
@@ -200,7 +203,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       NumHeldDownKeys::set(remapParams);
 
       // ------------------------------------------------------------
-      remap_core(remapParams);
+      if (! passthrough) {
+        remap_core(remapParams);
+      }
 
       // ------------------------------------------------------------
       if (! remapParams.isremapped) {

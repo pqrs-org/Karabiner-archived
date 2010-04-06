@@ -18,7 +18,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool notifierfunc_unhookPointing(void* target, void* refCon, IOService* newService, IONotifier* notifier);
 
     // ----------------------------------------------------------------------
-    void remap_KeyboardEventCallback(Params_KeyboardEventCallBack& params);
+    // We use the "passthrough" argument to ignore keys which are remapped by KeyEventInputQueue.
+    void remap_KeyboardEventCallback(Params_KeyboardEventCallBack& params, bool passthrough);
     void remap_KeyboardSpecialEventCallback(Params_KeyboardSpecialEventCallback& params);
     void remap_RelativePointerEventCallback(Params_RelativePointerEventCallback& params);
     void remap_ScrollWheelEventCallback(Params_ScrollWheelEventCallback& params);
