@@ -2714,18 +2714,6 @@
           <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::OPTION_L, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
-          <name>Simultaneous Key Presses [F+HJKL] to Left/Down/Up/Right</name>
-          <appendix>(F+H to Left)</appendix>
-          <appendix>(F+J to Down)</appendix>
-          <appendix>(F+K to Up)</appendix>
-          <appendix>(F+L to Right)</appendix>
-          <sysctl>option.vimode_f_hjkl</sysctl>
-          <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
-          <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
-          <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::K, KeyCode::CURSOR_UP</autogen>
-          <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
-        </item>
-        <item>
           <name>Complete Vi Mode</name>
           <list>
             <item>
@@ -2833,6 +2821,34 @@
               </list>
             </item>
           </list>
+        </item>
+      </list>
+    </item>
+
+    <item>
+      <name>Simultaneous Key Presses Remapping</name>
+      <list>
+        <item>
+          <name>Simultaneous Key Presses [F+HJKL] to Left/Down/Up/Right</name>
+          <appendix>(F+H to Left)</appendix>
+          <appendix>(F+J to Down)</appendix>
+          <appendix>(F+K to Up)</appendix>
+          <appendix>(F+L to Right)</appendix>
+          <sysctl>remap.simultaneouskeypresses_vimode_f</sysctl>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::K, KeyCode::CURSOR_UP</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
+        </item>
+        <item>
+          <name>Simultaneous Key Presses [F+N] to FN_Lock</name>
+          <sysctl>remap.simultaneouskeypresses_fn_to_fnlock</sysctl>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::N, KeyCode::VK_LOCK_FN</autogen>
+        </item>
+        <item>
+          <name>Simultaneous Key Presses [V+I] to toggle Complete Vi Mode</name>
+          <sysctl>remap.simultaneouskeypresses_vi_to_vimode</sysctl>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::V, KeyCode::I, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
         </item>
       </list>
     </item>
