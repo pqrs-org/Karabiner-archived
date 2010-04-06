@@ -190,7 +190,7 @@ def parseautogen(name, lines, autogen_index)
 
         when 'ShowStatusMessage'
           $outfile[:remapcode_refresh_remapfunc_statusmessage] << "if (config.#{name}) {\n"
-          $outfile[:remapcode_refresh_remapfunc_statusmessage] << "  statusmessage = #{params};\n"
+          $outfile[:remapcode_refresh_remapfunc_statusmessage] << "  strlcat(statusmessage, #{params} \" \", sizeof(statusmessage));\n"
           $outfile[:remapcode_refresh_remapfunc_statusmessage] << "  isStatusMessageVisible = true;\n"
           $outfile[:remapcode_refresh_remapfunc_statusmessage] << "}\n"
 
