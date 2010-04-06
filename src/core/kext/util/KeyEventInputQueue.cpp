@@ -144,6 +144,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // drop KeyUp Event (fromKeyCode2).
       for (Item* p = current_; p != last_; p = getnext(p)) {
         if (! p->active) continue;
+        if (p->repeat) continue;
         if (p->dropped) continue;
         if (p->isremapped) continue;
         if ((p->eventType).isKeyDownOrModifierDown(p->key, p->flags)) continue;
@@ -167,6 +168,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     for (Item* p = current_; p != last_; p = getnext(p)) {
       if (! p->active) continue;
+      if (p->repeat) continue;
       if (p->dropped) continue;
       if (p->isremapped) continue;
       if (! (p->eventType).isKeyDownOrModifierDown(p->key, p->flags)) continue;
