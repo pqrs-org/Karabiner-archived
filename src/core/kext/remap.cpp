@@ -2,6 +2,7 @@
 
 #include "remap.hpp"
 #include "RemapUtil.hpp"
+#include "KeyboardRepeat.hpp"
 #include "Client.hpp"
 #include "Config.hpp"
 #include "IOLockWrapper.hpp"
@@ -65,6 +66,8 @@ void
 org_pqrs_KeyRemap4MacBook::refresh_remapfunc(void)
 {
   IOLockWrapper::ScopedLock lk(refresh_remapfunc_lock);
+
+  KeyboardRepeat::cancel();
 
   listRemapFunc_key_size = 0;
   listRemapFunc_consumer_size = 0;
