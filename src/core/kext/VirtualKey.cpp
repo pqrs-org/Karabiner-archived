@@ -6,6 +6,18 @@
 #include "RemapUtil.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
+  void
+  VirtualKey::initialize(IOWorkLoop& workloop)
+  {
+    Handle_VK_JIS_TEMPORARY::initialize(workloop);
+  }
+
+  void
+  VirtualKey::terminate(void)
+  {
+    Handle_VK_JIS_TEMPORARY::terminate();
+  }
+
   // ----------------------------------------------------------------------
   bool
   Handle_VK_LOCK::handle(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
@@ -165,6 +177,19 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------------------------------------
+  void
+  Handle_VK_JIS_TEMPORARY::initialize(IOWorkLoop& workloop)
+  {
+    timer_.initialize(&workloop, NULL, Handle_VK_JIS_TEMPORARY::fire);
+    fireKeyInfo_.active = false;
+  }
+
+  void
+  Handle_VK_JIS_TEMPORARY::terminate(void)
+  {
+    timer_.terminate();
+  }
+
   bool
   Handle_VK_JIS_TEMPORARY::handle_core(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata,
                                        KeyCode key,
@@ -199,10 +224,48 @@ namespace org_pqrs_KeyRemap4MacBook {
     return true;
   }
 
+  bool
+  Handle_VK_JIS_TEMPORARY::handle(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
+  {
+    // ------------------------------------------------------------
+    if (handle_core(params, workspacedata,
+                    KeyCode::VK_JIS_TEMPORARY_ROMAN,
+                    KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_ROMAN)) return true;
+
+    if (handle_core(params, workspacedata,
+                    KeyCode::VK_JIS_TEMPORARY_HIRAGANA,
+                    KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_HIRAGANA)) return true;
+
+    if (handle_core(params, workspacedata,
+                    KeyCode::VK_JIS_TEMPORARY_KATAKANA,
+                    KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_KATAKANA)) return true;
+
+    // OK, Ainu is not Japanese.
+    // But the input source of Ainu is Kotoeri, we need to handle it here.
+    if (handle_core(params, workspacedata,
+                    KeyCode::VK_JIS_TEMPORARY_AINU,
+                    KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_AINU)) return true;
+
+    // ------------------------------------------------------------
+    if (handle_RESTORE(params, workspacedata)) return true;
+
+    // ------------------------------------------------------------
+    // flash keyevent
+    if (fireKeyInfo_.active) {
+      IOLockWrapper::ScopedLock lk(timer_.getlock());
+      timer_.cancelTimeout();
+      fire_nolock();
+    }
+
+    return false;
+  }
+
   void
   Handle_VK_JIS_TEMPORARY::firekeytoinputdetail(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata,
                                                 KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail inputmodedetail)
   {
+    IOLockWrapper::ScopedLock lk(timer_.getlock());
+
     inputmodedetail = normalize(inputmodedetail);
     currentinputmodedetail_ = normalize(currentinputmodedetail_);
 
@@ -214,24 +277,30 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ------------------------------------------------------------
     if (inputmodedetail == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_ROMAN) {
-      RemapUtil::fireKey_downup(Flags(0), KeyCode::JIS_EISUU, params.keyboardType, workspacedata);
+      fireKeyInfo_.flags = Flags(0);
+      fireKeyInfo_.key = KeyCode::JIS_EISUU;
+
+    } else if (inputmodedetail == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_HIRAGANA) {
+      fireKeyInfo_.flags = Flags(0);
+      fireKeyInfo_.key = KeyCode::JIS_KANA;
+
+    } else if (inputmodedetail == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_KATAKANA) {
+      fireKeyInfo_.flags = ModifierFlag::SHIFT_L;
+      fireKeyInfo_.key = KeyCode::JIS_KANA;
+
+    } else if (inputmodedetail == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_AINU) {
+      fireKeyInfo_.flags = ModifierFlag::OPTION_L;
+      fireKeyInfo_.key = KeyCode::JIS_KANA;
+
+    } else {
       return;
     }
 
-    if (inputmodedetail == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_HIRAGANA) {
-      RemapUtil::fireKey_downup(Flags(0), KeyCode::JIS_KANA, params.keyboardType, workspacedata);
-      return;
-    }
+    fireKeyInfo_.keyboardType = params.keyboardType;
+    fireKeyInfo_.workspacedata = workspacedata;
+    fireKeyInfo_.active = true;
 
-    if (inputmodedetail == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_KATAKANA) {
-      RemapUtil::fireKey_downup(ModifierFlag::SHIFT_L, KeyCode::JIS_KANA, params.keyboardType, workspacedata);
-      return;
-    }
-
-    if (inputmodedetail == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_AINU) {
-      RemapUtil::fireKey_downup(ModifierFlag::OPTION_L, KeyCode::JIS_KANA, params.keyboardType, workspacedata);
-      return;
-    }
+    timer_.setTimeoutMS(KEYEVENT_DELAY_MS);
   }
 
   KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail
@@ -243,6 +312,23 @@ namespace org_pqrs_KeyRemap4MacBook {
     return imd;
   }
 
+  void
+  Handle_VK_JIS_TEMPORARY::fire(OSObject* notuse_owner, IOTimerEventSource* notuse_sender)
+  {
+    IOLockWrapper::ScopedLock lk(timer_.getlock());
+    fire_nolock();
+  }
+
+  void
+  Handle_VK_JIS_TEMPORARY::fire_nolock(void)
+  {
+    if (! fireKeyInfo_.active) return;
+    fireKeyInfo_.active = false;
+    RemapUtil::fireKey_downup(fireKeyInfo_.flags, fireKeyInfo_.key, fireKeyInfo_.keyboardType, fireKeyInfo_.workspacedata);
+  }
+
   KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail Handle_VK_JIS_TEMPORARY::savedinputmodedetail_ = KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_NONE;
   KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail Handle_VK_JIS_TEMPORARY::currentinputmodedetail_ = KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_NONE;
+  Handle_VK_JIS_TEMPORARY::FireKeyInfo Handle_VK_JIS_TEMPORARY::fireKeyInfo_;
+  TimerWrapper Handle_VK_JIS_TEMPORARY::timer_;
 }
