@@ -29,6 +29,8 @@
 		3465DB6010A2E93300DFCEC5 /* IOLockWrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3465DB5F10A2E93300DFCEC5 /* IOLockWrapper.hpp */; };
 		346B753E0E72C0BA00F9A79F /* FlagStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 346B753C0E72C0BA00F9A79F /* FlagStatus.cpp */; };
 		346B753F0E72C0BA00F9A79F /* FlagStatus.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 346B753D0E72C0BA00F9A79F /* FlagStatus.hpp */; };
+		347A27EA1168C09F00EB155B /* KeyEventInputQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 347A27E81168C09F00EB155B /* KeyEventInputQueue.cpp */; };
+		347A27EB1168C09F00EB155B /* KeyEventInputQueue.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 347A27E91168C09F00EB155B /* KeyEventInputQueue.hpp */; };
 		348ED8340CE467FD00E179EC /* remap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 348ED8330CE467FD00E179EC /* remap.cpp */; };
 		348ED8360CE4680F00E179EC /* remap.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 348ED8350CE4680F00E179EC /* remap.hpp */; };
 		348ED83A0CE4682000E179EC /* version.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 348ED8390CE4682000E179EC /* version.hpp */; };
@@ -84,6 +86,8 @@
 		3465DB5F10A2E93300DFCEC5 /* IOLockWrapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IOLockWrapper.hpp; path = util/IOLockWrapper.hpp; sourceTree = "<group>"; };
 		346B753C0E72C0BA00F9A79F /* FlagStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FlagStatus.cpp; path = util/FlagStatus.cpp; sourceTree = "<group>"; };
 		346B753D0E72C0BA00F9A79F /* FlagStatus.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FlagStatus.hpp; path = util/FlagStatus.hpp; sourceTree = "<group>"; };
+		347A27E81168C09F00EB155B /* KeyEventInputQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyEventInputQueue.cpp; path = util/KeyEventInputQueue.cpp; sourceTree = "<group>"; };
+		347A27E91168C09F00EB155B /* KeyEventInputQueue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyEventInputQueue.hpp; path = util/KeyEventInputQueue.hpp; sourceTree = "<group>"; };
 		348ED8330CE467FD00E179EC /* remap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = remap.cpp; sourceTree = "<group>"; };
 		348ED8350CE4680F00E179EC /* remap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = remap.hpp; sourceTree = "<group>"; };
 		348ED8390CE4682000E179EC /* version.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = version.hpp; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 		346B753B0E72C0A200F9A79F /* util */ = {
 			isa = PBXGroup;
 			children = (
+				347A27E81168C09F00EB155B /* KeyEventInputQueue.cpp */,
+				347A27E91168C09F00EB155B /* KeyEventInputQueue.hpp */,
 				340E0BFB111489020030A382 /* KeyFloodChecker.cpp */,
 				340E0BFC111489020030A382 /* KeyFloodChecker.hpp */,
 				3453149210FB44D3005EBFAF /* auto_ptr.hpp */,
@@ -252,6 +258,7 @@
 				3456837D10DA734200D7E2E6 /* VirtualKey.hpp in Headers */,
 				3453149310FB44D3005EBFAF /* auto_ptr.hpp in Headers */,
 				340E0BFE111489020030A382 /* KeyFloodChecker.hpp in Headers */,
+				347A27EB1168C09F00EB155B /* KeyEventInputQueue.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +350,7 @@
 				34A7885110CBFBDC00DF72FD /* CommonData.cpp in Sources */,
 				3456837C10DA734200D7E2E6 /* VirtualKey.cpp in Sources */,
 				340E0BFD111489020030A382 /* KeyFloodChecker.cpp in Sources */,
+				347A27EA1168C09F00EB155B /* KeyEventInputQueue.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

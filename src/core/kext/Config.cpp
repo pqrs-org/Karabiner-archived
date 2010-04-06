@@ -27,6 +27,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         FlagStatus::lock_clear();
         refresh_remapfunc();
 
+        config.set_isactive_simultaneouskeypresses(false);
+#include "config/output/include.remapcode_isactive_simultaneouskeypresses.cpp"
+
         // StatusMessageWindowParameter
         {
           static int last_parameter_statuswindow_alpha_font = -1;
