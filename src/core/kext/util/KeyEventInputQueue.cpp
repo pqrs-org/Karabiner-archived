@@ -31,27 +31,27 @@ namespace org_pqrs_KeyRemap4MacBook {
     timer_.terminate();
   }
 
-  void
-  KeyEventInputQueue::add(OSObject* target,
-                          EventType eventType,
-                          Flags flags,
-                          KeyCode key,
-                          CharCode charCode,
-                          CharSet charSet,
-                          OrigCharCode origCharCode,
-                          OrigCharSet origCharSet,
-                          KeyboardType keyboardType,
-                          bool repeat,
-                          AbsoluteTime ts,
-                          OSObject* sender,
-                          void* refcon)
+  KeyEventInputQueue::Item*
+  KeyEventInputQueue::enqueue_(OSObject* target,
+                               EventType eventType,
+                               Flags flags,
+                               KeyCode key,
+                               CharCode charCode,
+                               CharSet charSet,
+                               OrigCharCode origCharCode,
+                               OrigCharSet origCharSet,
+                               KeyboardType keyboardType,
+                               bool repeat,
+                               AbsoluteTime ts,
+                               OSObject* sender,
+                               void* refcon)
   {
-    IOLockWrapper::ScopedLock lk(timer_.getlock());
+    Item* p = last_;
 
     uint32_t ms = ic_.getmillisec();
     if (ms < 5) ms = 5;
     uint32_t delay = config.get_simultaneouskeypresses_delay();
-    delay = (ms < delay) ? ms : delay;
+    delay = (ms < delay) ? ms : delay; // min(ms, delay)
 
     last_->target = target;
     last_->eventType = eventType;
@@ -78,14 +78,38 @@ namespace org_pqrs_KeyRemap4MacBook {
       IOLog("KeyRemap4MacBook --Warning-- KeyEventInputQueue::Item was filled up. Expand MAXNUM.\n");
     }
 
+    ic_.begin();
+
+    return p;
+  }
+
+  void
+  KeyEventInputQueue::add(OSObject* target,
+                          EventType eventType,
+                          Flags flags,
+                          KeyCode key,
+                          CharCode charCode,
+                          CharSet charSet,
+                          OrigCharCode origCharCode,
+                          OrigCharSet origCharSet,
+                          KeyboardType keyboardType,
+                          bool repeat,
+                          AbsoluteTime ts,
+                          OSObject* sender,
+                          void* refcon)
+  {
+    IOLockWrapper::ScopedLock lk(timer_.getlock());
+
+    Item* p = enqueue_(target, eventType, flags, key,
+                       charCode, charSet, origCharCode, origCharSet,
+                       keyboardType, repeat, ts, sender, refcon);
+
     // ------------------------------------------------------------
     // check queue
 #include "../config/output/include.remapcode_simultaneouskeypresses.cpp"
 
     // ------------------------------------------------------------
-    ic_.begin();
-
-    if (delay == 0) {
+    if (p->delayMS == 0) {
       fire_nolock();
     } else {
       if (! isTimerActive_) {
@@ -136,7 +160,44 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  KeyEventInputQueue::Remap::remap(KeyCode fromKeyCode1, KeyCode fromKeyCode2, KeyCode toKeyCode)
+  KeyEventInputQueue::Remap::push(Item* base, KeyCode key)
+  {
+    if (key == KeyCode::VK_NONE) return;
+
+    for (int i = 0; i < 2; ++i) {
+      bool isKeyDown = (i == 0);
+
+      EventType eventType = isKeyDown ? EventType::DOWN : EventType::UP;
+      Flags flags = base->flags;
+
+      if (key.isModifier()) {
+        eventType = EventType::MODIFY;
+        if (isKeyDown) {
+          flags.add(key.getModifierFlag());
+        } else {
+          flags.remove(key.getModifierFlag());
+        }
+      }
+
+      Item* p = KeyEventInputQueue::enqueue_(base->target,
+                                             eventType,
+                                             flags,
+                                             key,
+                                             base->charCode,
+                                             base->charSet,
+                                             base->origCharCode,
+                                             base->origCharSet,
+                                             base->keyboardType,
+                                             base->repeat,
+                                             base->ts,
+                                             base->sender,
+                                             base->refcon);
+      p->isremapped = true;
+    }
+  }
+
+  void
+  KeyEventInputQueue::Remap::remap(KeyCode fromKeyCode1, KeyCode fromKeyCode2, KeyCode toKeyCode1, KeyCode toKeyCode2, KeyCode toKeyCode3, KeyCode toKeyCode4, KeyCode toKeyCode5)
   {
     // We ignore repeated key event to prevent the KeyUp lost.
     //
@@ -144,7 +205,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // (1) KeyDown fromKeyCode2 without "Simultaneous Key Presses"
     // (2) Fire normal fromKeyCode2
     // (3) KeyDown fromKeyCode1 with repeated fromKeyCode2 (Simultaneous Key Presses)
-    // (4) Fire toKeyCode
+    // (4) Fire toKeyCode1
     // (5) KeyUp fromKeyCode2
     // (6) drop KeyUp fromKeyCode2 (***lost***)
 
@@ -160,8 +221,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         if ((p->eventType).isKeyDownOrModifierDown(p->key, p->flags)) continue;
 
         if (active1_ && p->key == fromKeyCode1) {
-          p->key = toKeyCode;
-          p->isremapped = true;
+          p->dropped = true;
           active1_ = false;
         }
         if (active2_ && p->key == fromKeyCode2) {
@@ -189,12 +249,17 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // replace first fromKeyCode1. and drop first fromKeyCode2
     if (item1 && item2) {
-      item1->key = toKeyCode;
-      item1->isremapped = true;
+      item1->dropped = true;
       active1_ = true;
 
       item2->dropped = true;
       active2_ = true;
+
+      push(item1, toKeyCode1);
+      push(item1, toKeyCode2);
+      push(item1, toKeyCode3);
+      push(item1, toKeyCode4);
+      push(item1, toKeyCode5);
     }
   }
 }
