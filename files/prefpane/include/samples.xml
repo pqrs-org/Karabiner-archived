@@ -165,6 +165,19 @@
     </item>
 
     <item>
+      <name>SimultaneousKeyPresses</name>
+      <appendix>(A+J to Down)</appendix>
+      <appendix>(A+K to Up)</appendix>
+      <appendix>(A+S to A,S,A,J)</appendix>
+      <appendix>(A+D to A,Shift_L,Control_L,S)</appendix>
+      <sysctl>remap.samples_simultaneouskeypresses</sysctl>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::A, KeyCode::CURSOR_DOWN</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::A, KeyCode::CURSOR_UP</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::A, KeyCode::A, KeyCode::S, KeyCode::A, KeyCode::J</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::A, KeyCode::A, KeyCode::SHIFT_L, KeyCode::CONTROL_L, KeyCode::S</autogen>
+    </item>
+
+    <item>
       <name>KeyToPointingButton</name>
       <appendix>A to LeftClick (Standard)</appendix>
       <appendix>Option_L to LeftClick (Modifier)</appendix>
