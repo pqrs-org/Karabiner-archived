@@ -120,8 +120,6 @@ org_pqrs_KeyRemap4MacBook::refresh_remapfunc(void)
 void
 org_pqrs_KeyRemap4MacBook::remap_core(RemapParams& remapParams)
 {
-  FlagStatus::set(remapParams.params.key, remapParams.params.flags);
-
   for (int i = 0; i < listRemapFunc_key_size; ++i) {
     RemapFunc_key func = listRemapFunc_key[i];
     if (func) {
@@ -133,8 +131,6 @@ org_pqrs_KeyRemap4MacBook::remap_core(RemapParams& remapParams)
 void
 org_pqrs_KeyRemap4MacBook::remap_consumer(RemapConsumerParams& remapParams)
 {
-  FlagStatus::set();
-
   for (int i = 0; i < listRemapFunc_consumer_size; ++i) {
     RemapFunc_consumer func = listRemapFunc_consumer[i];
     if (func) {
@@ -146,8 +142,6 @@ org_pqrs_KeyRemap4MacBook::remap_consumer(RemapConsumerParams& remapParams)
 void
 org_pqrs_KeyRemap4MacBook::remap_pointing_relative_core(RemapPointingParams_relative& remapParams)
 {
-  FlagStatus::set();
-
   for (int i = 0; i < listRemapFunc_pointing_size; ++i) {
     RemapFunc_pointing func = listRemapFunc_pointing[i];
     if (func) {
