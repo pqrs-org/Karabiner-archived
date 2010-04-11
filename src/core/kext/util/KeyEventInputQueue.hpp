@@ -9,9 +9,6 @@
 namespace org_pqrs_KeyRemap4MacBook {
   class KeyEventInputQueue {
   public:
-    class Remap;
-    friend class Remap;
-
     static void initialize(IOWorkLoop& workloop);
     static void terminate(void);
 
