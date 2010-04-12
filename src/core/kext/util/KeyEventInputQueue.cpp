@@ -11,7 +11,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   TimerWrapper KeyEventInputQueue::timer_;
   bool KeyEventInputQueue::isTimerActive_;
 
+  namespace {
 #include "../config/output/include.remapcode_simultaneouskeypresses_decl.cpp"
+  }
 
   void
   KeyEventInputQueue::initialize(IOWorkLoop& workloop)
@@ -23,12 +25,21 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     timer_.initialize(&workloop, NULL, KeyEventInputQueue::fire);
     isTimerActive_ = false;
+
+#include "../config/output/include.remapcode_simultaneouskeypresses_initialize.cpp"
   }
 
   void
   KeyEventInputQueue::terminate(void)
   {
     timer_.terminate();
+  }
+
+  bool
+  KeyEventInputQueue::handleVirtualKey(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
+  {
+#include "../config/output/include.remapcode_simultaneouskeypresses_handle_vk.cpp"
+    return false;
   }
 
   KeyEventInputQueue::Item*
@@ -69,7 +80,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     last_->active = true;
     last_->dropped = false;
-    last_->isremapped = false;
     last_->delayMS = delay;
 
     last_ = getnext(last_);
@@ -146,8 +156,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                             current_->repeat,
                                                             current_->ts,
                                                             current_->sender,
-                                                            current_->refcon,
-                                                            current_->isremapped);
+                                                            current_->refcon);
     }
     current_->active = false;
 
@@ -160,71 +169,58 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  KeyEventInputQueue::Remap::push(Item* base, KeyCode key)
+  KeyEventInputQueue::Remap::push(Item* base, KeyCode key, bool isKeyDown)
   {
     if (key == KeyCode::VK_NONE) return;
+    if (! base) return;
 
-    for (int i = 0; i < 2; ++i) {
-      bool isKeyDown = (i == 0);
+    EventType eventType = isKeyDown ? EventType::DOWN : EventType::UP;
 
-      EventType eventType = isKeyDown ? EventType::DOWN : EventType::UP;
-      Flags flags = base->flags;
-
-      if (key.isModifier()) {
-        eventType = EventType::MODIFY;
-        if (isKeyDown) {
-          flags.add(key.getModifierFlag());
-        } else {
-          flags.remove(key.getModifierFlag());
-        }
-      }
-
-      Item* p = KeyEventInputQueue::enqueue_(base->target,
-                                             eventType,
-                                             flags,
-                                             key,
-                                             base->charCode,
-                                             base->charSet,
-                                             base->origCharCode,
-                                             base->origCharSet,
-                                             base->keyboardType,
-                                             base->repeat,
-                                             base->ts,
-                                             base->sender,
-                                             base->refcon);
-      p->isremapped = true;
-    }
+    KeyEventInputQueue::enqueue_(base->target,
+                                 eventType,
+                                 base->flags,
+                                 key,
+                                 base->charCode,
+                                 base->charSet,
+                                 base->origCharCode,
+                                 base->origCharSet,
+                                 base->keyboardType,
+                                 base->repeat,
+                                 base->ts,
+                                 base->sender,
+                                 base->refcon);
   }
 
   void
-  KeyEventInputQueue::Remap::remap(KeyCode fromKeyCode1, KeyCode fromKeyCode2, KeyCode toKeyCode1, KeyCode toKeyCode2, KeyCode toKeyCode3, KeyCode toKeyCode4, KeyCode toKeyCode5)
+  KeyEventInputQueue::Remap::remap(void)
   {
     // We ignore repeated key event to prevent the KeyUp lost.
     //
     // An example of KeyUp lost with invalid repeated key handling.
-    // (1) KeyDown fromKeyCode2 without "Simultaneous Key Presses"
-    // (2) Fire normal fromKeyCode2
-    // (3) KeyDown fromKeyCode1 with repeated fromKeyCode2 (Simultaneous Key Presses)
+    // (1) KeyDown fromKeyCode2_ without "Simultaneous Key Presses"
+    // (2) Fire normal fromKeyCode2_
+    // (3) KeyDown fromKeyCode1_ with repeated fromKeyCode2_ (Simultaneous Key Presses)
     // (4) Fire toKeyCode1
-    // (5) KeyUp fromKeyCode2
-    // (6) drop KeyUp fromKeyCode2 (***lost***)
+    // (5) KeyUp fromKeyCode2_
+    // (6) drop KeyUp fromKeyCode2_ (***lost***)
 
     // ------------------------------------------------------------
     if (active1_ || active2_) {
-      // restore KeyUp Event (fromKeyCode1).
-      // drop KeyUp Event (fromKeyCode2).
+      // restore KeyUp Event (fromKeyCode1_).
+      // drop KeyUp Event (fromKeyCode2_).
       for (Item* p = current_; p != last_; p = getnext(p)) {
         if (! p->active) continue;
         if (p->repeat) continue;
         if (p->dropped) continue;
-        if (p->isremapped) continue;
         if ((p->eventType).isKeyDownOrModifierDown(p->key, p->flags)) continue;
 
-        if (active1_ && p->key == fromKeyCode1) {
+        if (active1_ && p->key == fromKeyCode1_) {
+          push(p, virtualKeyCode_, false);
+
           p->dropped = true;
           active1_ = false;
         }
-        if (active2_ && p->key == fromKeyCode2) {
+        if (active2_ && p->key == fromKeyCode2_) {
           p->dropped = true;
           active2_ = false;
         }
@@ -232,19 +228,25 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ------------------------------------------------------------
-    // find fromKeyCode*
+    // find fromKeyCode*_
     Item* item1 = NULL;
     Item* item2 = NULL;
+    Item* base = NULL; // later item of item1 or item2
 
     for (Item* p = current_; p != last_; p = getnext(p)) {
       if (! p->active) continue;
       if (p->repeat) continue;
       if (p->dropped) continue;
-      if (p->isremapped) continue;
       if (! (p->eventType).isKeyDownOrModifierDown(p->key, p->flags)) continue;
 
-      if (p->key == fromKeyCode1) item1 = p;
-      if (p->key == fromKeyCode2) item2 = p;
+      if (p->key == fromKeyCode1_ && ! item1) {
+        item1 = p;
+        if (item2) base = p;
+      }
+      if (p->key == fromKeyCode2_ && ! item2) {
+        item2 = p;
+        if (item1) base = p;
+      }
     }
 
     // replace first fromKeyCode1. and drop first fromKeyCode2
@@ -255,11 +257,23 @@ namespace org_pqrs_KeyRemap4MacBook {
       item2->dropped = true;
       active2_ = true;
 
-      push(item1, toKeyCode1);
-      push(item1, toKeyCode2);
-      push(item1, toKeyCode3);
-      push(item1, toKeyCode4);
-      push(item1, toKeyCode5);
+      push(base, virtualKeyCode_, true);
     }
+  }
+
+  bool
+  KeyEventInputQueue::Remap::handleVirtualKey(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
+  {
+    if (virtualKeyCode_ != params.key) return false;
+
+    RemapParams rp(params, workspacedata);
+    keytokey_.remap(rp, virtualKeyCode_,
+                    toKeyCode1_, toFlags1_,
+                    toKeyCode2_, toFlags2_,
+                    toKeyCode3_, toFlags3_,
+                    toKeyCode4_, toFlags4_,
+                    toKeyCode5_, toFlags5_);
+
+    return true;
   }
 }
