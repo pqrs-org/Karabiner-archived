@@ -3851,6 +3851,7 @@
       <list>
         <item>
           <name>Remap IBM Model M Keyboard</name>
+          <appendix>(with PS2-to-USB adapters (Chesen Electronics Corp))</appendix>
           <appendix>Bottom row of Model M keyboard:</appendix>
           <appendix>   Original: Ctrl Alt [space bar] Alt Ctrl</appendix>
           <appendix>   Remapped: Ctrl Cmd [space bar] Cmd Alt</appendix>
