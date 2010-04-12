@@ -16,8 +16,10 @@ $outfile = {
   :remapcode_vk_config => open('output/include.remapcode_vk_config.cpp', 'w'),
   :remapcode_simultaneouskeypresses => open('output/include.remapcode_simultaneouskeypresses.cpp', 'w'),
   :remapcode_simultaneouskeypresses_decl => open('output/include.remapcode_simultaneouskeypresses_decl.cpp', 'w'),
+  :remapcode_simultaneouskeypresses_initialize => open('output/include.remapcode_simultaneouskeypresses_initialize.cpp', 'w'),
+  :remapcode_simultaneouskeypresses_handle_vk => open('output/include.remapcode_simultaneouskeypresses_handle_vk.cpp', 'w'),
   :remapcode_isactive_simultaneouskeypresses => open('output/include.remapcode_isactive_simultaneouskeypresses.cpp', 'w'),
-  :keycode_vk_config => open('../keycode/data/include/KeyCode.VK_CONFIG.data', 'w'),
+  :keycode_vk_config => open('../keycode/data/include/KeyCode.VK_GENERATED.data', 'w'),
 }
 
 $func = {
@@ -195,6 +197,7 @@ def parseautogen(name, lines, autogen_index)
           $outfile[:remapcode_refresh_remapfunc_statusmessage] << "}\n"
 
         when 'SimultaneousKeyPresses'
+          $outfile[:keycode_vk_config] << "VK_SIMULTANEOUSKEYPRESSES_#{name}_#{code_simultaneouskeypresses.count} --AUTO--\n"
           code_simultaneouskeypresses << params
 
         when 'KeyToKey'
@@ -310,8 +313,10 @@ def parseautogen(name, lines, autogen_index)
     $outfile[:remapcode_simultaneouskeypresses] << "if (config.#{name}) {\n"
     $outfile[:remapcode_simultaneouskeypresses] << "  do {\n"
     code_simultaneouskeypresses.each_with_index do |line, index|
-      $outfile[:remapcode_simultaneouskeypresses] << "    remap_#{name}_#{index}.remap(#{line});\n"
+      $outfile[:remapcode_simultaneouskeypresses] << "    remap_#{name}_#{index}.remap();\n"
       $outfile[:remapcode_simultaneouskeypresses_decl] << "KeyEventInputQueue::Remap remap_#{name}_#{index};\n"
+      $outfile[:remapcode_simultaneouskeypresses_initialize] << "remap_#{name}_#{index}.initialize(KeyCode::VK_SIMULTANEOUSKEYPRESSES_#{name}_#{index}, #{line});\n"
+      $outfile[:remapcode_simultaneouskeypresses_handle_vk] << "if (remap_#{name}_#{index}.handleVirtualKey(params, workspacedata)) return true;\n"
     end
     $outfile[:remapcode_simultaneouskeypresses] << "  } while (false);\n"
     $outfile[:remapcode_simultaneouskeypresses] << "}\n"
