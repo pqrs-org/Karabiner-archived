@@ -53,8 +53,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                   bool repeat,
                                                   AbsoluteTime ts,
                                                   OSObject* sender,
-                                                  void* refcon,
-                                                  bool isremapped);
+                                                  void* refcon);
 
   private:
     HookedKeyboard item_[MAXNUM];

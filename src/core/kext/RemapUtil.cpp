@@ -4,6 +4,7 @@
 #include "KeyCode.hpp"
 #include "RemapUtil.hpp"
 #include "util/KeyboardRepeat.hpp"
+#include "util/KeyEventInputQueue.hpp"
 #include "VirtualKey.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -567,6 +568,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (handle_VK_JIS_KANA_x2(p, workspacedata)) return;
     if (handle_VK_JIS_BACKSLASH(p, workspacedata)) return;
     if (Handle_VK_JIS_TEMPORARY::handle(p, workspacedata)) return;
+    if (KeyEventInputQueue::handleVirtualKey(p, workspacedata)) return;
 
     // ------------------------------------------------------------
     p.key.reverseNormalizeKey(p.flags, p.keyboardType);

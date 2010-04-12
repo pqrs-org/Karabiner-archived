@@ -4,6 +4,7 @@
 #include "base.hpp"
 #include "IntervalChecker.hpp"
 #include "KeyCode.hpp"
+#include "RemapUtil.hpp"
 #include "TimerWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -11,6 +12,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     static void initialize(IOWorkLoop& workloop);
     static void terminate(void);
+
+    static bool handleVirtualKey(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
 
     static void add(OSObject* target,
                     EventType eventType,
@@ -43,32 +46,37 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       bool active;
       bool dropped;
-      bool isremapped;
       UInt32 delayMS;
     };
 
     class Remap {
     public:
-      Remap(void) : active1_(false), active2_(false) {}
-      void push(Item* base, KeyCode key);
-
-      void remap(KeyCode fromKeyCode1, KeyCode fromKeyCode2, KeyCode toKeyCode1, KeyCode toKeyCode2, KeyCode toKeyCode3, KeyCode toKeyCode4, KeyCode toKeyCode5);
-      void remap(KeyCode fromKeyCode1, KeyCode fromKeyCode2, KeyCode toKeyCode1, KeyCode toKeyCode2, KeyCode toKeyCode3, KeyCode toKeyCode4) {
-        remap(fromKeyCode1, fromKeyCode2, toKeyCode1, toKeyCode2, toKeyCode3, toKeyCode4, KeyCode::VK_NONE);
-      }
-      void remap(KeyCode fromKeyCode1, KeyCode fromKeyCode2, KeyCode toKeyCode1, KeyCode toKeyCode2, KeyCode toKeyCode3) {
-        remap(fromKeyCode1, fromKeyCode2, toKeyCode1, toKeyCode2, toKeyCode3, KeyCode::VK_NONE);
-      }
-      void remap(KeyCode fromKeyCode1, KeyCode fromKeyCode2, KeyCode toKeyCode1, KeyCode toKeyCode2) {
-        remap(fromKeyCode1, fromKeyCode2, toKeyCode1, toKeyCode2, KeyCode::VK_NONE);
-      }
-      void remap(KeyCode fromKeyCode1, KeyCode fromKeyCode2, KeyCode toKeyCode1) {
-        remap(fromKeyCode1, fromKeyCode2, toKeyCode1, KeyCode::VK_NONE);
-      }
+#include "../generate/output/include.keyeventinputqueue.hpp"
+      void push(Item* base, KeyCode key, bool isKeyDown);
+      void remap(void);
+      bool handleVirtualKey(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
 
     private:
+      KeyCode virtualKeyCode_;
+
+      KeyCode fromKeyCode1_;
+      KeyCode fromKeyCode2_;
+
+      KeyCode toKeyCode1_;
+      Flags toFlags1_;
+      KeyCode toKeyCode2_;
+      Flags toFlags2_;
+      KeyCode toKeyCode3_;
+      Flags toFlags3_;
+      KeyCode toKeyCode4_;
+      Flags toFlags4_;
+      KeyCode toKeyCode5_;
+      Flags toFlags5_;
+
       bool active1_;
       bool active2_;
+
+      RemapUtil::KeyToKey keytokey_;
     };
 
   private:

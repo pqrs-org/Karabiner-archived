@@ -57,8 +57,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                         bool repeat,
                                                         AbsoluteTime ts,
                                                         OSObject* sender,
-                                                        void* refcon,
-                                                        bool isremapped)
+                                                        void* refcon)
   {
     if (! CommonData::eventLock) return;
     IOLockWrapper::ScopedLock lk(CommonData::eventLock);
@@ -109,7 +108,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       EventWatcher::on();
     }
 
-    Core::remap_KeyboardEventCallback(params, isremapped);
+    Core::remap_KeyboardEventCallback(params);
   }
 
   bool

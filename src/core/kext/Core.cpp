@@ -191,7 +191,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ======================================================================
     void
-    remap_KeyboardEventCallback(Params_KeyboardEventCallBack& params, bool passthrough)
+    remap_KeyboardEventCallback(Params_KeyboardEventCallBack& params)
     {
       params.log();
 
@@ -208,9 +208,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ------------------------------------------------------------
       FlagStatus::set(params.key, params.flags);
 
-      if (! passthrough) {
-        remap_core(remapParams);
-      }
+      remap_core(remapParams);
 
       // ------------------------------------------------------------
       if (! remapParams.isremapped) {
