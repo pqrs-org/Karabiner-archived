@@ -53,6 +53,22 @@ namespace org_pqrs_KeyRemap4MacBook {
            options);
   }
 
+  namespace {
+    bool
+    checkFlags(Flags flags) {
+      if (flags.isOn(ModifierFlag::NONE) ||
+          flags.isOn(ModifierFlag::EXTRA1) ||
+          flags.isOn(ModifierFlag::EXTRA2) ||
+          flags.isOn(ModifierFlag::EXTRA3) ||
+          flags.isOn(ModifierFlag::EXTRA4) ||
+          flags.isOn(ModifierFlag::EXTRA5)) {
+        IOLog("[KeyRemap4MacBook ERROR] CallBackWrapper::checkFlags invalid flags:0x%x\n", flags.get());
+        return false;
+      }
+      return true;
+    }
+  }
+
   // ----------------------------------------------------------------------
   void
   Params_KeyboardEventCallBack::apply(void) const
@@ -67,10 +83,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       IOLog("[KeyRemap4MacBook ERROR] Params_KeyboardEventCallBack::apply invalid modifierkey:%d\n", key.get());
       return;
     }
-    if (flags.isOn(ModifierFlag::NONE)) {
-      IOLog("[KeyRemap4MacBook ERROR] Params_KeyboardEventCallBack::apply invalid flags:0x%x\n", flags.get());
-      return;
-    }
+    if (! checkFlags(flags)) return;
 
     // ------------------------------------------------------------
     if (config.option_drop_slowexpose) {
@@ -164,6 +177,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       IOLog("[KeyRemap4MacBook ERROR] Params_KeyboardSpecialEventCallback::apply invalid key:%d\n", key.get());
       return;
     }
+    if (! checkFlags(flags)) return;
 
     // ------------------------------------------------------------
     HookedConsumer* hc = ListHookedConsumer::instance().get();

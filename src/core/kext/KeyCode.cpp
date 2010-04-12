@@ -143,6 +143,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (*this == ModifierFlag::COMMAND_L) return KeyCode::COMMAND_L;
     if (*this == ModifierFlag::COMMAND_R) return KeyCode::COMMAND_R;
     if (*this == ModifierFlag::FN) return KeyCode::FN;
+    if (*this == ModifierFlag::EXTRA1) return KeyCode::VK_MODIFIER_EXTRA1;
+    if (*this == ModifierFlag::EXTRA2) return KeyCode::VK_MODIFIER_EXTRA2;
+    if (*this == ModifierFlag::EXTRA3) return KeyCode::VK_MODIFIER_EXTRA3;
+    if (*this == ModifierFlag::EXTRA4) return KeyCode::VK_MODIFIER_EXTRA4;
+    if (*this == ModifierFlag::EXTRA5) return KeyCode::VK_MODIFIER_EXTRA5;
 
     return KeyCode::VK_NONE;
   }
@@ -160,6 +165,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (*this == KeyCode::COMMAND_L) return ModifierFlag::COMMAND_L;
     if (*this == KeyCode::COMMAND_R) return ModifierFlag::COMMAND_R;
     if (*this == KeyCode::FN) return ModifierFlag::FN;
+    if (*this == KeyCode::VK_MODIFIER_EXTRA1) return ModifierFlag::EXTRA1;
+    if (*this == KeyCode::VK_MODIFIER_EXTRA2) return ModifierFlag::EXTRA2;
+    if (*this == KeyCode::VK_MODIFIER_EXTRA3) return ModifierFlag::EXTRA3;
+    if (*this == KeyCode::VK_MODIFIER_EXTRA4) return ModifierFlag::EXTRA4;
+    if (*this == KeyCode::VK_MODIFIER_EXTRA5) return ModifierFlag::EXTRA5;
 
     return ModifierFlag::NONE;
   }

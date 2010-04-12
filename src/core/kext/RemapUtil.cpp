@@ -372,6 +372,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (int i = 0;; ++i) {
       ModifierFlag flag = FlagStatus::getFlag(i);
       if (flag == ModifierFlag::NONE) break;
+      if (flag == ModifierFlag::EXTRA1) continue;
+      if (flag == ModifierFlag::EXTRA2) continue;
+      if (flag == ModifierFlag::EXTRA3) continue;
+      if (flag == ModifierFlag::EXTRA4) continue;
+      if (flag == ModifierFlag::EXTRA5) continue;
 
       if (! lastFlags_.isOn(flag)) continue;
       if (toFlags.isOn(flag)) continue;
@@ -388,6 +393,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (int i = 0;; ++i) {
       ModifierFlag flag = FlagStatus::getFlag(i);
       if (flag == ModifierFlag::NONE) break;
+      if (flag == ModifierFlag::EXTRA1) continue;
+      if (flag == ModifierFlag::EXTRA2) continue;
+      if (flag == ModifierFlag::EXTRA3) continue;
+      if (flag == ModifierFlag::EXTRA4) continue;
+      if (flag == ModifierFlag::EXTRA5) continue;
 
       if (! toFlags.isOn(flag)) continue;
       if (lastFlags_.isOn(flag)) continue;
@@ -569,9 +579,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (handle_VK_JIS_BACKSLASH(p, workspacedata)) return;
     if (Handle_VK_JIS_TEMPORARY::handle(p, workspacedata)) return;
     if (KeyEventInputQueue::handleVirtualKey(p, workspacedata)) return;
+    if (p.key == KeyCode::VK_MODIFIER_EXTRA1 ||
+        p.key == KeyCode::VK_MODIFIER_EXTRA2 ||
+        p.key == KeyCode::VK_MODIFIER_EXTRA3 ||
+        p.key == KeyCode::VK_MODIFIER_EXTRA4 ||
+        p.key == KeyCode::VK_MODIFIER_EXTRA5) return;
 
     // ------------------------------------------------------------
     p.key.reverseNormalizeKey(p.flags, p.keyboardType);
+    p.flags.stripEXTRA();
 
     FireModifiers::fire(p.flags, p.keyboardType);
 
@@ -623,8 +639,19 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapUtil::fireConsumer(const Params_KeyboardSpecialEventCallback& params)
   {
+    Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(params.eventType,
+                                                                                                 params.flags,
+                                                                                                 params.key,
+                                                                                                 params.flavor,
+                                                                                                 params.guid,
+                                                                                                 params.repeat));
+    if (! ptr) return;
+
+    Params_KeyboardSpecialEventCallback& p = *ptr;
+
+    p.flags.stripEXTRA();
     FireModifiers::fire();
-    params.apply();
+    p.apply();
   }
 
   void

@@ -115,6 +115,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     PUSH_ITEM(ModifierFlag::COMMAND_L);
     PUSH_ITEM(ModifierFlag::COMMAND_R);
     PUSH_ITEM(ModifierFlag::FN);
+    PUSH_ITEM(ModifierFlag::EXTRA1);
+    PUSH_ITEM(ModifierFlag::EXTRA2);
+    PUSH_ITEM(ModifierFlag::EXTRA3);
+    PUSH_ITEM(ModifierFlag::EXTRA4);
+    PUSH_ITEM(ModifierFlag::EXTRA5);
     PUSH_ITEM(ModifierFlag::NONE);
 
 #undef PUSH_ITEM
