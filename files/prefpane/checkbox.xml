@@ -3847,6 +3847,31 @@
     </item>
 
     <item>
+      <name>For IBM Model M Keyboard Users</name>
+      <list>
+        <item>
+          <name>Remap IBM Model M Keyboard</name>
+          <appendix>Bottom row of Model M keyboard:</appendix>
+          <appendix>   Original: Ctrl Alt [space bar] Alt Ctrl</appendix>
+          <appendix>   Remapped: Ctrl Cmd [space bar] Cmd Alt</appendix>
+          <sysctl>remap.modelMkeyboard</sysctl>
+          <device_only>DeviceVendorID(0xa81),DeviceProductID(0x205)</device_only>
+          <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::COMMAND_R</autogen>
+          <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::OPTION_R</autogen>
+        </item>
+        <item>
+          <name>Swap Start (aka Command) and Alt keys on Windows keyboard</name>
+          <sysctl>remap.windows4mac</sysctl>
+          <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::COMMAND_R</autogen>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>For Canadian</name>
       <list>
         <item>
