@@ -10,6 +10,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   KeyEventInputQueue::Item* KeyEventInputQueue::last_ = KeyEventInputQueue::item_;
   TimerWrapper KeyEventInputQueue::timer_;
   bool KeyEventInputQueue::isTimerActive_;
+  KeyEventInputQueue::Remap* KeyEventInputQueue::listRemap[MAXNUM_REMAPFUNC_SIMULTANEOUSKEYPRESSES + 1];
+  int KeyEventInputQueue::listRemap_size = 0;
 
   namespace {
 #include "../config/output/include.remapcode_simultaneouskeypresses_decl.cpp"
@@ -26,6 +28,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     timer_.initialize(&workloop, NULL, KeyEventInputQueue::fire);
     isTimerActive_ = false;
 
+    for (int i = 0; i < MAXNUM_REMAPFUNC_SIMULTANEOUSKEYPRESSES; ++i) {
+      listRemap[i] = NULL;
+    }
+    listRemap_size = 0;
+
 #include "../config/output/include.remapcode_simultaneouskeypresses_initialize.cpp"
   }
 
@@ -35,10 +42,23 @@ namespace org_pqrs_KeyRemap4MacBook {
     timer_.terminate();
   }
 
+  void
+  KeyEventInputQueue::refresh_remapfunc(void)
+  {
+    IOLockWrapper::ScopedLock lk(timer_.getlock());
+
+    listRemap_size = 0;
+#include "../config/output/include.remapcode_refresh_remapfunc_simultaneouskeypresses.cpp"
+  }
+
   bool
   KeyEventInputQueue::handleVirtualKey(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
   {
-#include "../config/output/include.remapcode_simultaneouskeypresses_handle_vk.cpp"
+    for (int i = 0; i < listRemap_size; ++i) {
+      if (listRemap[i]) {
+        if (listRemap[i]->handleVirtualKey(params, workspacedata)) return true;
+      }
+    }
     return false;
   }
 
@@ -116,7 +136,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ------------------------------------------------------------
     // check queue
-#include "../config/output/include.remapcode_simultaneouskeypresses.cpp"
+    for (int i = 0; i < listRemap_size; ++i) {
+      if (listRemap[i]) {
+        listRemap[i]->remap();
+      }
+    }
 
     // ------------------------------------------------------------
     if (p->delayMS == 0) {

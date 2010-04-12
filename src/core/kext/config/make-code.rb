@@ -13,11 +13,10 @@ $outfile = {
   :remapcode_refresh_remapfunc_consumer => open('output/include.remapcode_refresh_remapfunc_consumer.cpp', 'w'),
   :remapcode_refresh_remapfunc_pointing => open('output/include.remapcode_refresh_remapfunc_pointing.cpp', 'w'),
   :remapcode_refresh_remapfunc_statusmessage => open('output/include.remapcode_refresh_remapfunc_statusmessage.cpp', 'w'),
+  :remapcode_refresh_remapfunc_simultaneouskeypresses => open('output/include.remapcode_refresh_remapfunc_simultaneouskeypresses.cpp', 'w'),
   :remapcode_vk_config => open('output/include.remapcode_vk_config.cpp', 'w'),
-  :remapcode_simultaneouskeypresses => open('output/include.remapcode_simultaneouskeypresses.cpp', 'w'),
   :remapcode_simultaneouskeypresses_decl => open('output/include.remapcode_simultaneouskeypresses_decl.cpp', 'w'),
   :remapcode_simultaneouskeypresses_initialize => open('output/include.remapcode_simultaneouskeypresses_initialize.cpp', 'w'),
-  :remapcode_simultaneouskeypresses_handle_vk => open('output/include.remapcode_simultaneouskeypresses_handle_vk.cpp', 'w'),
   :remapcode_isactive_simultaneouskeypresses => open('output/include.remapcode_isactive_simultaneouskeypresses.cpp', 'w'),
   :keycode_vk_config => open('../keycode/data/include/KeyCode.VK_GENERATED.data', 'w'),
 }
@@ -26,6 +25,8 @@ $func = {
   :key => [],
   :consumer => [],
   :pointing => [],
+
+  :simultaneouskeypresses => [],
 }
 
 # ======================================================================
@@ -198,6 +199,7 @@ def parseautogen(name, lines, autogen_index)
 
         when 'SimultaneousKeyPresses'
           $outfile[:keycode_vk_config] << "VK_SIMULTANEOUSKEYPRESSES_#{name}_#{code_simultaneouskeypresses.count} --AUTO--\n"
+          $func[:simultaneouskeypresses] << name
           code_simultaneouskeypresses << params
 
         when 'KeyToKey'
@@ -310,16 +312,15 @@ def parseautogen(name, lines, autogen_index)
   end
 
   unless code_simultaneouskeypresses.empty? then
-    $outfile[:remapcode_simultaneouskeypresses] << "if (config.#{name}) {\n"
-    $outfile[:remapcode_simultaneouskeypresses] << "  do {\n"
     code_simultaneouskeypresses.each_with_index do |line, index|
-      $outfile[:remapcode_simultaneouskeypresses] << "    remap_#{name}_#{index}.remap();\n"
       $outfile[:remapcode_simultaneouskeypresses_decl] << "KeyEventInputQueue::Remap remap_#{name}_#{index};\n"
       $outfile[:remapcode_simultaneouskeypresses_initialize] << "remap_#{name}_#{index}.initialize(KeyCode::VK_SIMULTANEOUSKEYPRESSES_#{name}_#{index}, #{line});\n"
-      $outfile[:remapcode_simultaneouskeypresses_handle_vk] << "if (remap_#{name}_#{index}.handleVirtualKey(params, workspacedata)) return true;\n"
+
+      $outfile[:remapcode_refresh_remapfunc_simultaneouskeypresses] << "if (config.#{name}) {\n"
+      $outfile[:remapcode_refresh_remapfunc_simultaneouskeypresses] << "  listRemap[listRemap_size] = &remap_#{name}_#{index};\n"
+      $outfile[:remapcode_refresh_remapfunc_simultaneouskeypresses] << "  ++listRemap_size;\n"
+      $outfile[:remapcode_refresh_remapfunc_simultaneouskeypresses] << "}\n"
     end
-    $outfile[:remapcode_simultaneouskeypresses] << "  } while (false);\n"
-    $outfile[:remapcode_simultaneouskeypresses] << "}\n"
 
     $outfile[:remapcode_isactive_simultaneouskeypresses] << "if (config.#{name}) config.set_isactive_simultaneouskeypresses(true);\n"
   end
@@ -420,11 +421,15 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
   end
 end
 
+$outfile[:remapcode_info] << "#ifndef REMAPCODE_INFO\n"
+$outfile[:remapcode_info] << "#define REMAPCODE_INFO\n"
 $outfile[:remapcode_info] << "enum {\n"
 $outfile[:remapcode_info] << "  MAXNUM_REMAPFUNC_KEY = #{$func[:key].uniq.count},\n"
 $outfile[:remapcode_info] << "  MAXNUM_REMAPFUNC_CONSUMER = #{$func[:consumer].uniq.count},\n"
 $outfile[:remapcode_info] << "  MAXNUM_REMAPFUNC_POINTING = #{$func[:pointing].uniq.count},\n"
+$outfile[:remapcode_info] << "  MAXNUM_REMAPFUNC_SIMULTANEOUSKEYPRESSES = #{$func[:simultaneouskeypresses].count},\n" # don't uniq for simultaneouskeypresses
 $outfile[:remapcode_info] << "};\n"
+$outfile[:remapcode_info] << "#endif\n"
 
 # set higher priority to notsave.* (ex. Vi Mode)
 remapfunc_key_notsave = ''
