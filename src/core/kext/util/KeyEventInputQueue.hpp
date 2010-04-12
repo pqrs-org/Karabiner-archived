@@ -6,12 +6,15 @@
 #include "KeyCode.hpp"
 #include "RemapUtil.hpp"
 #include "TimerWrapper.hpp"
+#include "../config/output/include.remapcode_info.cpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   class KeyEventInputQueue {
   public:
     static void initialize(IOWorkLoop& workloop);
     static void terminate(void);
+
+    static void refresh_remapfunc(void);
 
     static bool handleVirtualKey(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
 
@@ -114,6 +117,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     static Item* last_;
     static TimerWrapper timer_;
     static bool isTimerActive_;
+    static Remap* listRemap[MAXNUM_REMAPFUNC_SIMULTANEOUSKEYPRESSES + 1];
+    static int listRemap_size;
   };
 }
 
