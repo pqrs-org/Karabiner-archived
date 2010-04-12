@@ -71,6 +71,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     Flags& stripCURSOR(void) { return remove(ModifierFlag::CURSOR); }
     Flags& stripKEYPAD(void) { return remove(ModifierFlag::KEYPAD); }
     Flags& stripNONE(void)   { return remove(ModifierFlag::NONE); }
+    Flags& stripEXTRA(void) {
+      return remove(Flags(ModifierFlag::EXTRA1) |
+                    Flags(ModifierFlag::EXTRA2) |
+                    Flags(ModifierFlag::EXTRA3) |
+                    Flags(ModifierFlag::EXTRA4) |
+                    Flags(ModifierFlag::EXTRA5));
+    }
 
     bool isOn(ModifierFlag flag) const {
       return (value_ & flag.get()) == flag.get();
