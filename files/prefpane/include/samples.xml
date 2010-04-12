@@ -365,11 +365,13 @@
       <name>VK_MODIFIER_EXTRA1</name>
       <appendix>Use A as ModifierFlag::EXTRA1</appendix>
       <appendix>Use D as ModifierFlag::EXTRA5</appendix>
+      <appendix>Use F as ModifierFlag::EXTRA5 (When type only, send Space)</appendix>
       <appendix>EXTRA1+S to B</appendix>
       <appendix>EXTRA5+S to C</appendix>
       <sysctl>remap.samples_modifier_extra1</sysctl>
       <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_MODIFIER_EXTRA1</autogen>
       <autogen>--KeyToKey-- KeyCode::D, KeyCode::VK_MODIFIER_EXTRA5</autogen>
+      <autogen>--KeyOverlaidModifier-- KeyCode::F, KeyCode::VK_MODIFIER_EXTRA5, KeyCode::SPACE</autogen>
       <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::EXTRA1, KeyCode::B</autogen>
       <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::EXTRA5, KeyCode::C</autogen>
     </item>
