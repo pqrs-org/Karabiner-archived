@@ -489,6 +489,11 @@
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::DELETE</autogen>
         </item>
         <item>
+          <name>Command_R to Forward Delete</name>
+          <sysctl>remap.commandR2forwarddelete</sysctl>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::FORWARD_DELETE</autogen>
+        </item>
+        <item>
           <name>Command_R to Home</name>
           <sysctl>remap.commandR2home</sysctl>
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::HOME</autogen>
