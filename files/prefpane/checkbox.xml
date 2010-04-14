@@ -4773,6 +4773,21 @@
               <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::NONE, KeyCode::DOT, ModifierFlag::SHIFT_L</autogen>
               <!-- / -> RE (;) -->
               <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::NONE, KeyCode::SEMICOLON</autogen>
+
+              <!-- An upper step -->
+              <autogen>--KeyToKey-- KeyCode::KEY_1,     KeyCode::KEY_1,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_2,     KeyCode::KEY_2,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_3,     KeyCode::KEY_3,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_4,     KeyCode::KEY_4,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_5,     KeyCode::KEY_5,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_6,     KeyCode::KEY_6,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_7,     KeyCode::KEY_7,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_8,     KeyCode::KEY_8,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_9,     KeyCode::KEY_9,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_0,     KeyCode::KEY_0,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::MINUS,     KeyCode::MINUS,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::JIS_HAT,   KeyCode::JIS_HAT,   ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::JIS_YEN,   KeyCode::JIS_YEN,   ModifierFlag::OPTION_L</autogen>
             </item>
             <item>
               <name>Use JIS X 6004 for US Keyboard</name>
@@ -4913,6 +4928,21 @@
               <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::NONE, KeyCode::DOT, ModifierFlag::SHIFT_L</autogen>
               <!-- / -> RE (;) -->
               <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::NONE, KeyCode::SEMICOLON</autogen>
+
+              <!-- An upper step -->
+              <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_1,     KeyCode::KEY_1,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_2,     KeyCode::KEY_2,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_3,     KeyCode::KEY_3,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_4,     KeyCode::KEY_4,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_5,     KeyCode::KEY_5,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_6,     KeyCode::KEY_6,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_7,     KeyCode::KEY_7,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_8,     KeyCode::KEY_8,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_9,     KeyCode::KEY_9,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_0,     KeyCode::KEY_0,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::MINUS,     KeyCode::MINUS,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::EQUAL,     KeyCode::EQUAL,     ModifierFlag::OPTION_L</autogen>
             </item>
             <item>
               <name>Use KAWASHIMA Special Keyboard Layout</name>
