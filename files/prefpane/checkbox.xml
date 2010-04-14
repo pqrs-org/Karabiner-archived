@@ -4775,6 +4775,146 @@
               <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::NONE, KeyCode::SEMICOLON</autogen>
             </item>
             <item>
+              <name>Use JIS X 6004 for US Keyboard</name>
+              <sysctl>remap.jis_layout_jisx6004_us</sysctl>
+              <inputmodedetail_only>INPUTMODE_DETAIL_JAPANESE_HIRAGANA, INPUTMODE_DETAIL_JAPANESE, INPUTMODE_DETAIL_JAPANESE_KATAKANA, INPUTMODE_DETAIL_JAPANESE_HALFWIDTH_KANA</inputmodedetail_only>
+
+              <!-- ====================================================================== -->
+              <!-- Shift+Q -> small A (Shift+3) -->
+              <autogen>--KeyToKey-- KeyCode::Q, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_3, ModifierFlag::SHIFT_L</autogen>
+              <!-- Shift+W -> p-sound (=) -->
+              <autogen>--KeyToKey-- KeyCode::W, VK_SHIFT | ModifierFlag::NONE, KeyCode::EQUAL</autogen>
+              <!-- Shift+E -> HO (minus) -->
+              <autogen>--KeyToKey-- KeyCode::E, VK_SHIFT | ModifierFlag::NONE, KeyCode::MINUS</autogen>
+              <!-- Shift+R -> FU (2) -->
+              <autogen>--KeyToKey-- KeyCode::R, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_2</autogen>
+              <!-- Shift+T -> ME (/) -->
+              <autogen>--KeyToKey-- KeyCode::T, VK_SHIFT | ModifierFlag::NONE, KeyCode::SLASH</autogen>
+              <!-- Shift+Y -> HI (V) -->
+              <autogen>--KeyToKey-- KeyCode::Y, VK_SHIFT | ModifierFlag::NONE, KeyCode::V</autogen>
+              <!-- Shift+U -> E (5) -->
+              <autogen>--KeyToKey-- KeyCode::U, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_5</autogen>
+              <!-- Shift+I -> MI (N) -->
+              <autogen>--KeyToKey-- KeyCode::I, VK_SHIFT | ModifierFlag::NONE, KeyCode::N</autogen>
+              <!-- Shift+O -> YA (7) -->
+              <autogen>--KeyToKey-- KeyCode::O, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_7</autogen>
+              <!-- Shift+P -> NU (1) -->
+              <autogen>--KeyToKey-- KeyCode::P, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_1</autogen>
+              <!-- Shift+[ -> [ (Shift+=) -->
+              <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_SHIFT | ModifierFlag::NONE, KeyCode::EQUAL, ModifierFlag::SHIFT_L</autogen>
+
+              <!-- Q -> SO (C) -->
+              <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::NONE, KeyCode::C</autogen>
+              <!-- W -> KE (') -->
+              <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::NONE, KeyCode::QUOTE</autogen>
+              <!-- E -> SE (P) -->
+              <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::NONE, KeyCode::P</autogen>
+              <!-- R -> TE (W) -->
+              <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::NONE, KeyCode::W</autogen>
+              <!-- T -> small YO (Shift+9) -->
+              <autogen>--KeyToKey-- KeyCode::T, ModifierFlag::NONE, KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
+              <!-- Y -> TU (Z) -->
+              <autogen>--KeyToKey-- KeyCode::Y, ModifierFlag::NONE, KeyCode::Z</autogen>
+              <!-- U -> NN (Y) -->
+              <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::NONE, KeyCode::Y</autogen>
+              <!-- I -> NO (K) -->
+              <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::NONE, KeyCode::K</autogen>
+              <!-- O -> WO (Shift+0) -->
+              <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::NONE, KeyCode::KEY_0, ModifierFlag::SHIFT_L</autogen>
+              <!-- P -> RI (L) -->
+              <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::NONE, KeyCode::L</autogen>
+              <!-- [ -> TI (A) -->
+              <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::NONE, KeyCode::A</autogen>
+
+              <!-- ====================================================================== -->
+              <!-- Shift+A -> small I (Shift+E) -->
+              <autogen>--KeyToKey-- KeyCode::A, VK_SHIFT | ModifierFlag::NONE, KeyCode::E, ModifierFlag::SHIFT_L</autogen>
+              <!-- Shift+S -> HE (\) -->
+              <autogen>--KeyToKey-- KeyCode::S, VK_SHIFT | ModifierFlag::NONE, KeyCode::BACKSLASH</autogen>
+              <!-- Shift+D -> RA (O) -->
+              <autogen>--KeyToKey-- KeyCode::D, VK_SHIFT | ModifierFlag::NONE, KeyCode::O</autogen>
+              <!-- Shift+F -> small YU (Shift+8) -->
+              <autogen>--KeyToKey-- KeyCode::F, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_8, ModifierFlag::SHIFT_L</autogen>
+              <!-- Shift+G -> YO (9) -->
+              <autogen>--KeyToKey-- KeyCode::G, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_9</autogen>
+              <!-- Shift+H -> MA (J) -->
+              <autogen>--KeyToKey-- KeyCode::H, VK_SHIFT | ModifierFlag::NONE, KeyCode::J</autogen>
+              <!-- Shift+J -> O (6) -->
+              <autogen>--KeyToKey-- KeyCode::J, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_6</autogen>
+              <!-- Shift+K -> MO (M) -->
+              <autogen>--KeyToKey-- KeyCode::K, VK_SHIFT | ModifierFlag::NONE, KeyCode::M</autogen>
+              <!-- Shift+L -> WA (0) -->
+              <autogen>--KeyToKey-- KeyCode::L, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_0</autogen>
+              <!-- Shift+; -> YU (8) -->
+              <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_8</autogen>
+              <!-- Shift+' -> ] (Shift+[) -->
+              <autogen>--KeyToKey-- KeyCode::QUOTE, VK_SHIFT | ModifierFlag::NONE, KeyCode::BRACKET_LEFT, ModifierFlag::SHIFT_L</autogen>
+
+              <!-- A -> HA (F) -->
+              <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::NONE, KeyCode::F</autogen>
+              <!-- S -> KA (T) -->
+              <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::T</autogen>
+              <!-- D -> SI (D) -->
+              <!-- don't change D -->
+              <!-- F -> TO (S) -->
+              <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::NONE, KeyCode::S</autogen>
+              <!-- G -> TA (Q) -->
+              <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::NONE, KeyCode::Q</autogen>
+              <!-- H -> KU (H) -->
+              <!-- don't change H -->
+              <!-- J -> U (4) -->
+              <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::NONE, KeyCode::KEY_4</autogen>
+              <!-- K -> I (E) -->
+              <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::NONE, KeyCode::E</autogen>
+              <!-- L -> voiced-sound ([) -->
+              <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::NONE, KeyCode::BRACKET_LEFT</autogen>
+              <!-- ; -> KI (G) -->
+              <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::G</autogen>
+              <!-- ' -> NA (U) -->
+              <autogen>--KeyToKey-- KeyCode::QUOTE, ModifierFlag::NONE, KeyCode::U</autogen>
+
+              <!-- ====================================================================== -->
+              <!-- Shift+Z -> small U (Shift+4) -->
+              <autogen>--KeyToKey-- KeyCode::Z, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_4, ModifierFlag::SHIFT_L</autogen>
+              <!-- Shift+X -> small E (Shift+5) -->
+              <autogen>--KeyToKey-- KeyCode::X, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_5, ModifierFlag::SHIFT_L</autogen>
+              <!-- Shift+C -> small O (Shift+6) -->
+              <autogen>--KeyToKey-- KeyCode::C, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_6, ModifierFlag::SHIFT_L</autogen>
+              <!-- Shift+V -> NE (,) -->
+              <autogen>--KeyToKey-- KeyCode::V, VK_SHIFT | ModifierFlag::NONE, KeyCode::COMMA</autogen>
+              <!-- Shift+B -> small YA (Shift+7) -->
+              <autogen>--KeyToKey-- KeyCode::B, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_7, ModifierFlag::SHIFT_L</autogen>
+              <!-- Shift+N -> MU (]) -->
+              <autogen>--KeyToKey-- KeyCode::N, VK_SHIFT | ModifierFlag::NONE, KeyCode::BRACKET_RIGHT</autogen>
+              <!-- Shift+M -> RO (Shift+') -->
+              <autogen>--KeyToKey-- KeyCode::M, VK_SHIFT | ModifierFlag::NONE, KeyCode::QUOTE, ModifierFlag::SHIFT_L</autogen>
+              <!-- Shift+, -> dot (Shift+slash) -->
+              <autogen>--KeyToKey-- KeyCode::COMMA, VK_SHIFT | ModifierFlag::NONE, KeyCode::SLASH, ModifierFlag::SHIFT_L</autogen>
+              <!-- Shift+. -> minus (JIS_YEN) -->
+              <autogen>--KeyToKey-- KeyCode::DOT, VK_SHIFT | ModifierFlag::NONE, KeyCode::VK_JIS_YEN</autogen>
+
+              <!-- Z -> SU (R) -->
+              <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::NONE, KeyCode::R</autogen>
+              <!-- X -> KO (B) -->
+              <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::NONE, KeyCode::B</autogen>
+              <!-- C -> NI (I) -->
+              <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::NONE, KeyCode::I</autogen>
+              <!-- V -> SA (X) -->
+              <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::NONE, KeyCode::X</autogen>
+              <!-- B -> A (3) -->
+              <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::NONE, KeyCode::KEY_3</autogen>
+              <!-- N -> small TU (Shift+Z) -->
+              <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::NONE, KeyCode::Z, ModifierFlag::SHIFT_L</autogen>
+              <!-- M -> RU (dot) -->
+              <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::NONE, KeyCode::DOT</autogen>
+              <!-- , -> , (Shift+,) -->
+              <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::NONE, KeyCode::COMMA, ModifierFlag::SHIFT_L</autogen>
+              <!-- . -> . (Shift+.) -->
+              <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::NONE, KeyCode::DOT, ModifierFlag::SHIFT_L</autogen>
+              <!-- / -> RE (;) -->
+              <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::NONE, KeyCode::SEMICOLON</autogen>
+            </item>
+            <item>
               <name>Use KAWASHIMA Special Keyboard Layout</name>
               <sysctl>remap.jis_layout_kawashima</sysctl>
               <inputmodedetail_only>INPUTMODE_DETAIL_JAPANESE_HIRAGANA, INPUTMODE_DETAIL_JAPANESE</inputmodedetail_only>
