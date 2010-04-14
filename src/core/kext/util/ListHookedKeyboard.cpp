@@ -121,21 +121,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (HookedDevice::isConsumer(name)) return false;
 
-    // Ignore "Kensington USB/PS2 Trackball"
-    // Note: We need to add a hook for this device in ListHookedPointing, so don't skip in HookedDevice::isIgnoreDevice.
-    if (isEqualVendorIDProductID(DeviceVendorID(0x047d), DeviceProductID(0x1005))) {
-      IOLog("KeyRemap4MacBook HookedKeyboard::initialize skip device(0x%x, 0x%x)\n", vendorID_, productID_);
-      return false;
-    }
-
-#if 0
-    // Test Code.
-    if (isEqualVendorIDProductID(DeviceVendorID(0x3f0), DeviceProductID(0x224))) {
-      IOLog("KeyRemap4MacBook HookedKeyboard::initialize skip device(0x%x, 0x%x)\n", vendorID_, productID_);
-      return false;
-    }
-#endif
-
     // ------------------------------------------------------------
     device_ = d;
     IOLog("KeyRemap4MacBook HookedKeyboard::initialize name = %s, device_ = 0x%p\n", name, device_);

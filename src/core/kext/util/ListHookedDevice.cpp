@@ -59,6 +59,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (vendorID == 0x046d && productID == 0xc515) return true;
     }
 
+    // Kensington Virtual Device (0x0, 0x0)
+    if (vendorID == 0x0 && productID == 0x0) return true;
+
 #if 0
     // Apple External Keyboard
     if (vendorID == 0x05ac && productID == 0x0222) return true;
