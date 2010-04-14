@@ -577,6 +577,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (handle_VK_JIS_EISUU_x2(p, workspacedata)) return;
     if (handle_VK_JIS_KANA_x2(p, workspacedata)) return;
     if (handle_VK_JIS_BACKSLASH(p, workspacedata)) return;
+    if (handle_VK_JIS_YEN(p, workspacedata)) return;
     if (Handle_VK_JIS_TEMPORARY::handle(p, workspacedata)) return;
     if (KeyEventInputQueue::handleVirtualKey(p, workspacedata)) return;
     if (p.key == KeyCode::VK_MODIFIER_EXTRA1 ||

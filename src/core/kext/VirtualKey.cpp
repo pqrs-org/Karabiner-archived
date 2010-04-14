@@ -176,6 +176,17 @@ namespace org_pqrs_KeyRemap4MacBook {
     return true;
   }
 
+  bool
+  handle_VK_JIS_YEN(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
+  {
+    if (params.key != KeyCode::VK_JIS_YEN) return false;
+
+    params.key = KeyCode::JIS_YEN;
+    params.keyboardType = KeyboardType::JIS_MACBOOK_2008;
+    RemapUtil::fireKey(params, workspacedata);
+    return true;
+  }
+
   // ----------------------------------------------------------------------
   void
   Handle_VK_JIS_TEMPORARY::initialize(IOWorkLoop& workloop)
