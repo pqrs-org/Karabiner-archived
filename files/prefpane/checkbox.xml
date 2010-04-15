@@ -4774,20 +4774,35 @@
               <!-- / -> RE (;) -->
               <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::NONE, KeyCode::SEMICOLON</autogen>
 
+              <!-- ====================================================================== -->
               <!-- An upper step -->
-              <autogen>--KeyToKey-- KeyCode::KEY_1,     KeyCode::KEY_1,     ModifierFlag::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_2,     KeyCode::KEY_2,     ModifierFlag::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_3,     KeyCode::KEY_3,     ModifierFlag::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_4,     KeyCode::KEY_4,     ModifierFlag::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_5,     KeyCode::KEY_5,     ModifierFlag::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_6,     KeyCode::KEY_6,     ModifierFlag::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_7,     KeyCode::KEY_7,     ModifierFlag::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_8,     KeyCode::KEY_8,     ModifierFlag::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_9,     KeyCode::KEY_9,     ModifierFlag::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_0,     KeyCode::KEY_0,     ModifierFlag::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::MINUS,     KeyCode::MINUS,     ModifierFlag::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::JIS_HAT,   KeyCode::JIS_HAT,   ModifierFlag::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::JIS_YEN,   KeyCode::JIS_YEN,   ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_1,     VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_1,     ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_2,     VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_2,     ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_3,     VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_3,     ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_4,     VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_4,     ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_5,     VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_5,     ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_6,     VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_6,     ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_7,     VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_7,     ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_8,     VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_8,     ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_9,     VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_9,     ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_0,     VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_0,     ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::MINUS,     VK_SHIFT | ModifierFlag::NONE, KeyCode::MINUS,     ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::JIS_HAT,   VK_SHIFT | ModifierFlag::NONE, KeyCode::JIS_HAT,   ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::JIS_YEN,   VK_SHIFT | ModifierFlag::NONE, KeyCode::JIS_YEN,   ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+
+              <autogen>--KeyToKey-- KeyCode::KEY_1,     ModifierFlag::NONE, KeyCode::KEY_1,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_2,     ModifierFlag::NONE, KeyCode::KEY_2,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_3,     ModifierFlag::NONE, KeyCode::KEY_3,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_4,     ModifierFlag::NONE, KeyCode::KEY_4,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_5,     ModifierFlag::NONE, KeyCode::KEY_5,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_6,     ModifierFlag::NONE, KeyCode::KEY_6,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_7,     ModifierFlag::NONE, KeyCode::KEY_7,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_8,     ModifierFlag::NONE, KeyCode::KEY_8,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_9,     ModifierFlag::NONE, KeyCode::KEY_9,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_0,     ModifierFlag::NONE, KeyCode::KEY_0,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::MINUS,     ModifierFlag::NONE, KeyCode::MINUS,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::JIS_HAT,   ModifierFlag::NONE, KeyCode::JIS_HAT,   ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::JIS_YEN,   ModifierFlag::NONE, KeyCode::JIS_YEN,   ModifierFlag::OPTION_L</autogen>
             </item>
             <item>
               <name>Use JIS X 6004 for US Keyboard</name>
@@ -4929,20 +4944,35 @@
               <!-- / -> RE (;) -->
               <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::NONE, KeyCode::SEMICOLON</autogen>
 
+              <!-- ====================================================================== -->
               <!-- An upper step -->
-              <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_1,     KeyCode::KEY_1,     ModifierFlag::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_2,     KeyCode::KEY_2,     ModifierFlag::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_3,     KeyCode::KEY_3,     ModifierFlag::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_4,     KeyCode::KEY_4,     ModifierFlag::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_5,     KeyCode::KEY_5,     ModifierFlag::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_6,     KeyCode::KEY_6,     ModifierFlag::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_7,     KeyCode::KEY_7,     ModifierFlag::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_8,     KeyCode::KEY_8,     ModifierFlag::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_9,     KeyCode::KEY_9,     ModifierFlag::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_0,     KeyCode::KEY_0,     ModifierFlag::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::MINUS,     KeyCode::MINUS,     ModifierFlag::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::EQUAL,     KeyCode::EQUAL,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::BACKQUOTE, VK_SHIFT | ModifierFlag::NONE, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_1,     VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_1,     ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_2,     VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_2,     ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_3,     VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_3,     ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_4,     VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_4,     ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_5,     VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_5,     ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_6,     VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_6,     ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_7,     VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_7,     ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_8,     VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_8,     ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_9,     VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_9,     ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_0,     VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_0,     ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::MINUS,     VK_SHIFT | ModifierFlag::NONE, KeyCode::MINUS,     ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::EQUAL,     VK_SHIFT | ModifierFlag::NONE, KeyCode::EQUAL,     ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+
+              <autogen>--KeyToKey-- KeyCode::BACKQUOTE, ModifierFlag::NONE, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_1,     ModifierFlag::NONE, KeyCode::KEY_1,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_2,     ModifierFlag::NONE, KeyCode::KEY_2,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_3,     ModifierFlag::NONE, KeyCode::KEY_3,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_4,     ModifierFlag::NONE, KeyCode::KEY_4,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_5,     ModifierFlag::NONE, KeyCode::KEY_5,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_6,     ModifierFlag::NONE, KeyCode::KEY_6,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_7,     ModifierFlag::NONE, KeyCode::KEY_7,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_8,     ModifierFlag::NONE, KeyCode::KEY_8,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_9,     ModifierFlag::NONE, KeyCode::KEY_9,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_0,     ModifierFlag::NONE, KeyCode::KEY_0,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::MINUS,     ModifierFlag::NONE, KeyCode::MINUS,     ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::EQUAL,     ModifierFlag::NONE, KeyCode::EQUAL,     ModifierFlag::OPTION_L</autogen>
             </item>
             <item>
               <name>Use KAWASHIMA Special Keyboard Layout</name>
