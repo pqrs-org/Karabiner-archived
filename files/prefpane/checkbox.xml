@@ -2883,7 +2883,7 @@
     </item>
 
     <item>
-      <name>Simultaneous Key Presses Changeping</name>
+      <name>Simultaneous Key Presses Remapping</name>
       <list>
         <item>
           <name>Simultaneous Key Presses [F+HJKL] to Left/Down/Up/Right</name>
@@ -2911,7 +2911,7 @@
     </item>
 
     <item>
-      <name>Changeping for Mac OS X Features</name>
+      <name>Remapping for Mac OS X Features</name>
       <list>
         <item>
           <name>Drop Shift+[F1...F12] (Disable Slow-Expose)</name>
@@ -2931,7 +2931,7 @@
           <autogen>--KeyToKey-- KeyCode::EXPOSE_ALL, VK_SHIFT, KeyCode::EXPOSE_ALL</autogen>
         </item>
         <item>
-          <name>Changeping for Spaces</name>
+          <name>Remapping for Spaces</name>
           <list>
             <item>
               <name>Use Command_R+[ASD FGH JKL] for Spaces</name>
@@ -3121,7 +3121,7 @@
     </item>
 
     <item>
-      <name>Changeping for Applications</name>
+      <name>Remapping for Applications</name>
       <list>
         <item>
           <name>Enable at only VMware Fusion, Parallels Desktop</name>
@@ -4539,7 +4539,7 @@
           </list>
         </item>
         <item>
-          <name>Changeping for Applications</name>
+          <name>Remapping for Applications</name>
           <list>
             <item>
               <name>Enable at only Terminal</name>
