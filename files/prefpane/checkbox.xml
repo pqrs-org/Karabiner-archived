@@ -1662,6 +1662,12 @@
           <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_L, KeyCode::OPTION_L, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
+          <name>Option_L to Option_L</name>
+          <appendix>(+ When you type Option_L only, send End)</appendix>
+          <sysctl>remap.optionL2optionL_End</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_L, KeyCode::OPTION_L, KeyCode::END</autogen>
+        </item>
+        <item>
           <name>Option_L to Option_R</name>
           <sysctl>remap.optionL2optionR</sysctl>
           <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::OPTION_R</autogen>
@@ -2753,6 +2759,14 @@
           <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::FN, KeyCode::CURSOR_DOWN</autogen>
           <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::FN, KeyCode::CURSOR_UP</autogen>
           <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::FN, KeyCode::CURSOR_RIGHT</autogen>
+        </item>
+        <item>
+          <name>Option_L+hjkl to Left/Down/Up/Right</name>
+          <sysctl>option.extra_cursor_optionL_kjhl</sysctl>
+          <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::OPTION_L, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::OPTION_L, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::OPTION_L, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::OPTION_L, KeyCode::CURSOR_RIGHT</autogen>
         </item>
         <item>
           <name>Command_R+g/G to Home/End</name>
