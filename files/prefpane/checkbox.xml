@@ -140,7 +140,7 @@
     </item>
 
     <item>
-      <name>Remap Arrow(Up/Down/Left/Right) Key</name>
+      <name>Change Arrow(Up/Down/Left/Right) Key</name>
       <list>
         <item>
           <name>Arrow(Down/Left/Right) to FN</name>
@@ -249,7 +249,7 @@
     </item>
 
     <item>
-      <name>Remap Backquote(`) Key</name>
+      <name>Change Backquote(`) Key</name>
       <list>
         <item>
           <name>Backquote(`) to CapsLock</name>
@@ -300,7 +300,7 @@
     </item>
 
     <item>
-      <name>Remap Backslash(\) Key</name>
+      <name>Change Backslash(\) Key</name>
       <list>
         <item>
           <name>Backslash(\) to Delete</name>
@@ -342,7 +342,7 @@
     </item>
 
     <item>
-      <name>Remap Command_L Key</name>
+      <name>Change Command_L Key</name>
       <list>
         <item>
           <name>Command_L to Control_L</name>
@@ -416,7 +416,7 @@
     </item>
 
     <item>
-      <name>Remap Command_R Key</name>
+      <name>Change Command_R Key</name>
       <list>
         <item>
           <name>Command_R to Command_R</name>
@@ -595,7 +595,7 @@
     </item>
 
     <item>
-      <name>Remap Control_L Key</name>
+      <name>Change Control_L Key</name>
       <list>
         <item>
           <name>Control_L to Command_L</name>
@@ -693,7 +693,7 @@
     </item>
 
     <item>
-      <name>Remap Control_R Key</name>
+      <name>Change Control_R Key</name>
       <list>
         <item>
           <name>Control_R to Command_R (only in virtual machine, RDC)</name>
@@ -710,7 +710,7 @@
     </item>
 
     <item>
-      <name>Remap Delete Key</name>
+      <name>Change Delete Key</name>
       <list>
         <item>
           <name>Delete to Backquote(`)</name>
@@ -773,7 +773,7 @@
     </item>
 
     <item>
-      <name>Remap Eject Key</name>
+      <name>Change Eject Key</name>
       <list>
         <item>
           <name>Eject to Dashboard if no modifiers pressed</name>
@@ -811,7 +811,7 @@
     </item>
 
     <item>
-      <name>Remap Enter Key</name>
+      <name>Change Enter Key</name>
       <list>
         <item>
           <name>Enter to Command_L</name>
@@ -931,7 +931,7 @@
     </item>
 
     <item>
-      <name>Remap Escape Key</name>
+      <name>Change Escape Key</name>
       <list>
         <item>
           <name>Escape to CapsLock</name>
@@ -972,7 +972,7 @@
     </item>
 
     <item>
-      <name>Remap FN Key</name>
+      <name>Change FN Key</name>
       <list>
         <item>
           <name>FN to Command_L</name>
@@ -1069,7 +1069,7 @@
     </item>
 
     <item>
-      <name>Remap Forward Delete Key</name>
+      <name>Change Forward Delete Key</name>
       <list>
         <item>
           <name>Forward Delete to Delete</name>
@@ -1080,7 +1080,7 @@
     </item>
 
     <item>
-      <name>Remap Functional Key (Brightness, Volume, ....)</name>
+      <name>Change Functional Key (Brightness, Volume, ....)</name>
       <list>
         <item>
           <name>Functional Keys to F1..F12</name>
@@ -1183,7 +1183,7 @@
           <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_UP, VK_COMMAND, ConsumerKeyCode::VOLUME_UP</autogen>
         </item>
         <item>
-          <name>Remap Power Key</name>
+          <name>Change Power Key</name>
           <list>
             <item>
               <name>Power to Command_L</name>
@@ -1196,7 +1196,7 @@
     </item>
 
     <item>
-      <name>Remap F1..F16 Key</name>
+      <name>Change F1..F16 Key</name>
       <list>
         <item>
           <name>F1..F12 to Functional</name>
@@ -1417,7 +1417,7 @@
         </item>
 
         <item>
-          <name>Remap Command+F1...F12 to Functional Keys</name>
+          <name>Change Command+F1...F12 to Functional Keys</name>
           <appendix>(ex. F10 to Volume Mute, F11 to Volume Down)</appendix>
           <sysctl>remap.command_f1_f12_to_functional</sysctl>
           <autogen>--KeyToKey-- KeyCode::F1,       VK_COMMAND, KeyCode::BRIGHTNESS_DOWN</autogen>
@@ -1433,7 +1433,7 @@
         </item>
 
         <item>
-          <name>Remap F1...F12 to Functional Keys (except Terminal)</name>
+          <name>Change F1...F12 to Functional Keys (except Terminal)</name>
           <appendix>(ex. F10 to Volume Mute, F11 to Volume Down)</appendix>
           <sysctl>remap.f1_f12_to_functional</sysctl>
           <not>TERMINAL</not>
@@ -1441,7 +1441,7 @@
         </item>
 
         <item>
-          <name>Force remap F1..F12 in VMware, Parallels, RDC</name>
+          <name>Force change F1..F12 in VMware, Parallels, RDC</name>
           <list>
             <item>
               <name>F1 to Brightness Down</name>
@@ -1484,10 +1484,10 @@
     </item>
 
     <item>
-      <name>Remap Help Key</name>
+      <name>Change Help Key</name>
       <list>
         <item>
-          <name>Remap Help to F13</name>
+          <name>Change Help to F13</name>
           <sysctl>remap.help2f13</sysctl>
           <autogen>--KeyToKey-- KeyCode::HELP, KeyCode::F13</autogen>
         </item>
@@ -1495,10 +1495,10 @@
     </item>
 
     <item>
-      <name>Remap KeyPad Key</name>
+      <name>Change KeyPad Key</name>
       <list>
         <item>
-          <name>Remap Clear Key</name>
+          <name>Change Clear Key</name>
           <list>
             <item>
               <name>Clear to Delete</name>
@@ -1518,7 +1518,7 @@
           </list>
         </item>
         <item>
-          <name>Remap Comma(,) Key</name>
+          <name>Change Comma(,) Key</name>
           <list>
             <item>
               <name>Comma to Shift+Comma</name>
@@ -1531,10 +1531,10 @@
     </item>
 
     <item>
-      <name>Remap Minus Key</name>
+      <name>Change Minus Key</name>
       <list>
         <item>
-          <name>Remap Minus to Semicolon</name>
+          <name>Change Minus to Semicolon</name>
           <sysctl>remap.minus2semicolon</sysctl>
           <autogen>--KeyToKey-- KeyCode::MINUS, KeyCode::SEMICOLON</autogen>
         </item>
@@ -1542,7 +1542,7 @@
     </item>
 
     <item>
-      <name>Remap Num Key (1...0)</name>
+      <name>Change Num Key (1...0)</name>
       <list>
         <item>
           <name>Shift(Holding)+1 to F1</name>
@@ -1622,7 +1622,7 @@
     </item>
 
     <item>
-      <name>Remap Option_L Key</name>
+      <name>Change Option_L Key</name>
       <list>
         <item>
           <name>Option_L to Command_L</name>
@@ -1675,7 +1675,7 @@
     </item>
 
     <item>
-      <name>Remap Option_R Key</name>
+      <name>Change Option_R Key</name>
       <list>
         <item>
           <name>Option_R to Command_L</name>
@@ -1796,7 +1796,7 @@
     </item>
 
     <item>
-      <name>Remap PageDown Key</name>
+      <name>Change PageDown Key</name>
       <list>
         <item>
           <name>PageDown to PageUp</name>
@@ -1807,7 +1807,7 @@
     </item>
 
     <item>
-      <name>Remap PageUp Key</name>
+      <name>Change PageUp Key</name>
       <list>
         <item>
           <name>PageUp to PC Insert Key</name>
@@ -1818,7 +1818,7 @@
     </item>
 
     <item>
-      <name>Remap Return Key</name>
+      <name>Change Return Key</name>
       <list>
         <item>
           <name>Return to Command_L</name>
@@ -1860,7 +1860,7 @@
     </item>
 
     <item>
-      <name>Remap Semicolon Key</name>
+      <name>Change Semicolon Key</name>
       <list>
         <item>
           <name>Semicolon to Minus</name>
@@ -1896,7 +1896,7 @@
     </item>
 
     <item>
-      <name>Remap Shift_L Key</name>
+      <name>Change Shift_L Key</name>
       <list>
         <item>
           <name>Shift_L to Command_L</name>
@@ -1967,7 +1967,7 @@
     </item>
 
     <item>
-      <name>Remap Shift_R Key</name>
+      <name>Change Shift_R Key</name>
       <list>
         <item>
           <name>Shift_R to Command_L</name>
@@ -2060,7 +2060,7 @@
     </item>
 
     <item>
-      <name>Remap Space Key</name>
+      <name>Change Space Key</name>
       <list>
         <item>
           <name>Space to Control_L</name>
@@ -2147,7 +2147,7 @@
     </item>
 
     <item>
-      <name>Remap Tab Key</name>
+      <name>Change Tab Key</name>
       <list>
         <item>
           <name>Tab to Command_L</name>
@@ -2527,7 +2527,7 @@
           <name>Behavior in Emacs, Terminal, X11, VMware, Parallels, RDC, Eclipse</name>
           <list>
             <item>
-              <name>Force remap C-d to Forward Delete</name>
+              <name>Force change C-d to Forward Delete</name>
               <list>
                 <item>
                   <name>In Emacs, Terminal</name>
@@ -2556,7 +2556,7 @@
               </list>
             </item>
             <item>
-              <name>Force remap C-h to Delete</name>
+              <name>Force change C-h to Delete</name>
               <list>
                 <item>
                   <name>In Emacs, Terminal</name>
@@ -2585,7 +2585,7 @@
               </list>
             </item>
             <item>
-              <name>Force remap C-i to Tab</name>
+              <name>Force change C-i to Tab</name>
               <list>
                 <item>
                   <name>In Emacs, Terminal</name>
@@ -2614,7 +2614,7 @@
               </list>
             </item>
             <item>
-              <name>Force remap C-m to Return</name>
+              <name>Force change C-m to Return</name>
               <list>
                 <item>
                   <name>In Emacs, Terminal</name>
@@ -2643,7 +2643,7 @@
               </list>
             </item>
             <item>
-              <name>Force remap C-[ to Escape</name>
+              <name>Force change C-[ to Escape</name>
               <list>
                 <item>
                   <name>In Emacs, Terminal</name>
@@ -2672,7 +2672,7 @@
               </list>
             </item>
             <item>
-              <name>Force remap C-pnbf to Up/Down/Left/Right</name>
+              <name>Force change C-pnbf to Up/Down/Left/Right</name>
               <list>
                 <item>
                   <name>In Emacs, Terminal</name>
@@ -2883,7 +2883,7 @@
     </item>
 
     <item>
-      <name>Simultaneous Key Presses Remapping</name>
+      <name>Simultaneous Key Presses Changeping</name>
       <list>
         <item>
           <name>Simultaneous Key Presses [F+HJKL] to Left/Down/Up/Right</name>
@@ -2911,7 +2911,7 @@
     </item>
 
     <item>
-      <name>Remapping for Mac OS X Features</name>
+      <name>Changeping for Mac OS X Features</name>
       <list>
         <item>
           <name>Drop Shift+[F1...F12] (Disable Slow-Expose)</name>
@@ -2931,7 +2931,7 @@
           <autogen>--KeyToKey-- KeyCode::EXPOSE_ALL, VK_SHIFT, KeyCode::EXPOSE_ALL</autogen>
         </item>
         <item>
-          <name>Remapping for Spaces</name>
+          <name>Changeping for Spaces</name>
           <list>
             <item>
               <name>Use Command_R+[ASD FGH JKL] for Spaces</name>
@@ -3121,91 +3121,91 @@
     </item>
 
     <item>
-      <name>Remapping for Applications</name>
+      <name>Changeping for Applications</name>
       <list>
         <item>
           <name>Enable at only VMware Fusion, Parallels Desktop</name>
           <list>
             <item>
-              <name>Remap Enter to Control_L</name>
+              <name>Change Enter to Control_L</name>
               <sysctl>remap.app_vm_enter2controlL</sysctl>
               <only>VIRTUALMACHINE</only>
               <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::CONTROL_L</autogen>
             </item>
             <item>
-              <name>Remap FN+Return to Insert</name>
+              <name>Change FN+Return to Insert</name>
               <sysctl>remap.app_vm_fnReturn2insert</sysctl>
               <only>VIRTUALMACHINE</only>
               <autogen>--KeyToKey-- KeyCode::RETURN, ModifierFlag::FN, KeyCode::HELP</autogen>
             </item>
             <item>
-              <name>Remap Option_R to Control_R</name>
+              <name>Change Option_R to Control_R</name>
               <sysctl>remap.app_vm_optionR2controlR</sysctl>
               <only>VIRTUALMACHINE</only>
               <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CONTROL_R</autogen>
             </item>
             <item>
-              <name>Remap Command+Space to Option+Backquote(`)</name>
+              <name>Change Command+Space to Option+Backquote(`)</name>
               <sysctl>remap.app_vm_commandspace2optionbackquote</sysctl>
               <only>VIRTUALMACHINE</only>
               <autogen>--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L</autogen>
             </item>
             <item>
-              <name>Remap Command+Space to Option_L+Shift_L</name>
+              <name>Change Command+Space to Option_L+Shift_L</name>
               <sysctl>remap.app_vm_commandspace2optionLshiftL</sysctl>
               <only>VIRTUALMACHINE</only>
               <autogen>--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::SHIFT_L, ModifierFlag::OPTION_L</autogen>
             </item>
             <item>
-              <name>Remap Command_L Keys</name>
+              <name>Change Command_L Keys</name>
               <appendix>(To support Emacs on Fusion. This allows controlling individual key translations)</appendix>
               <list>
                 <item>
-                  <name>Remap Command_L to Option_L</name>
+                  <name>Change Command_L to Option_L</name>
                   <sysctl>remap.app_vm_commandL2optionL</sysctl>
                   <appendix>(Option_L is translated to Alt_L by Fusion)</appendix>
                   <only>VIRTUALMACHINE</only>
                   <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
                 </item>
                 <item>
-                  <name>Remap Command_L+A to Control+A</name>
+                  <name>Change Command_L+A to Control+A</name>
                   <sysctl>remap.app_vm_commandLA</sysctl>
                   <only>VIRTUALMACHINE</only>
                   <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::COMMAND_L, KeyCode::A, ModifierFlag::CONTROL_L</autogen>
                 </item>
                 <item>
-                  <name>Remap Command_L+C to Control+C</name>
+                  <name>Change Command_L+C to Control+C</name>
                   <sysctl>remap.app_vm_commandLC</sysctl>
                   <only>VIRTUALMACHINE</only>
                   <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::COMMAND_L, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
                 </item>
                 <item>
-                  <name>Remap Command_L+F to Control+F</name>
+                  <name>Change Command_L+F to Control+F</name>
                   <sysctl>remap.app_vm_commandLF</sysctl>
                   <only>VIRTUALMACHINE</only>
                   <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::COMMAND_L, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
                 </item>
                 <item>
-                  <name>Remap Command_L+P to Control+P</name>
+                  <name>Change Command_L+P to Control+P</name>
                   <sysctl>remap.app_vm_commandLP</sysctl>
                   <only>VIRTUALMACHINE</only>
                   <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::COMMAND_L, KeyCode::P, ModifierFlag::CONTROL_L</autogen>
                 </item>
                 <item>
-                  <name>Remap Command_L+V to Control+V</name>
+                  <name>Change Command_L+V to Control+V</name>
                   <sysctl>remap.app_vm_commandLV</sysctl>
                   <only>VIRTUALMACHINE</only>
                   <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::COMMAND_L, KeyCode::V, ModifierFlag::CONTROL_L</autogen>
                 </item>
                 <item>
-                  <name>Remap Command_L+X to Control+X</name>
+                  <name>Change Command_L+X to Control+X</name>
                   <sysctl>remap.app_vm_commandLX</sysctl>
                   <appendix>(Leave it unchecked for using left Meta+X in Emacs on Fusion)</appendix>
                   <only>VIRTUALMACHINE</only>
                   <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::COMMAND_L, KeyCode::X, ModifierFlag::CONTROL_L</autogen>
                 </item>
                 <item>
-                  <name>Remap Command_L+Z to Control+Z</name>
+                  <name>Change Command_L+Z to Control+Z</name>
                   <sysctl>remap.app_vm_commandLZ</sysctl>
                   <only>VIRTUALMACHINE</only>
                   <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::COMMAND_L, KeyCode::Z, ModifierFlag::CONTROL_L</autogen>
@@ -3213,55 +3213,55 @@
               </list>
             </item>
             <item>
-              <name>Remap Command_R Keys</name>
+              <name>Change Command_R Keys</name>
               <appendix>(To support Emacs on Fusion. This allows controlling individual key translations)</appendix>
               <list>
                 <item>
-                  <name>Remap Command_R to Option_R</name>
+                  <name>Change Command_R to Option_R</name>
                   <appendix>(This allows controlling individual key translations)</appendix>
                   <sysctl>remap.app_vm_commandR2optionR</sysctl>
                   <only>VIRTUALMACHINE</only>
                   <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
                 </item>
                 <item>
-                  <name>Remap Command_R+A to Control+A</name>
+                  <name>Change Command_R+A to Control+A</name>
                   <sysctl>remap.app_vm_commandRA</sysctl>
                   <only>VIRTUALMACHINE</only>
                   <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::COMMAND_R, KeyCode::A, ModifierFlag::CONTROL_L</autogen>
                 </item>
                 <item>
-                  <name>Remap Command_R+C to Control+C</name>
+                  <name>Change Command_R+C to Control+C</name>
                   <sysctl>remap.app_vm_commandRC</sysctl>
                   <only>VIRTUALMACHINE</only>
                   <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::COMMAND_R, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
                 </item>
                 <item>
-                  <name>Remap Command_R+F to Control+F</name>
+                  <name>Change Command_R+F to Control+F</name>
                   <sysctl>remap.app_vm_commandRF</sysctl>
                   <only>VIRTUALMACHINE</only>
                   <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::COMMAND_R, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
                 </item>
                 <item>
-                  <name>Remap Command_R+P to Control+P</name>
+                  <name>Change Command_R+P to Control+P</name>
                   <sysctl>remap.app_vm_commandRP</sysctl>
                   <only>VIRTUALMACHINE</only>
                   <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::COMMAND_R, KeyCode::P, ModifierFlag::CONTROL_L</autogen>
                 </item>
                 <item>
-                  <name>Remap Command_R+V to Control+V</name>
+                  <name>Change Command_R+V to Control+V</name>
                   <sysctl>remap.app_vm_commandRV</sysctl>
                   <only>VIRTUALMACHINE</only>
                   <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::COMMAND_R, KeyCode::V, ModifierFlag::CONTROL_L</autogen>
                 </item>
                 <item>
-                  <name>Remap Command_R+X to Control+X</name>
+                  <name>Change Command_R+X to Control+X</name>
                   <appendix>(Leave it unchecked for using right Meta+X in Emacs on Fusion)</appendix>
                   <sysctl>remap.app_vm_commandRX</sysctl>
                   <only>VIRTUALMACHINE</only>
                   <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::COMMAND_R, KeyCode::X, ModifierFlag::CONTROL_L</autogen>
                 </item>
                 <item>
-                  <name>Remap Command_R+Z to Control+Z </name>
+                  <name>Change Command_R+Z to Control+Z </name>
                   <sysctl>remap.app_vm_commandRZ</sysctl>
                   <only>VIRTUALMACHINE</only>
                   <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::COMMAND_R, KeyCode::Z, ModifierFlag::CONTROL_L</autogen>
@@ -3274,31 +3274,31 @@
           <name>Enable at only Finder</name>
           <list>
             <item>
-              <name>Remap Command+R to Return (== Rename)</name>
+              <name>Change Command+R to Return (== Rename)</name>
               <sysctl>remap.app_finder_command_R_to_return</sysctl>
               <only>FINDER</only>
               <autogen>--KeyToKey-- KeyCode::R, VK_COMMAND, KeyCode::RETURN</autogen>
             </item>
             <item>
-              <name>Remap F2 to Return (== Rename)</name>
+              <name>Change F2 to Return (== Rename)</name>
               <sysctl>remap.app_finder_f2_to_return</sysctl>
               <only>FINDER</only>
               <autogen>--KeyToKey-- KeyCode::F2, KeyCode::RETURN</autogen>
             </item>
             <item>
-              <name>Remap Forward Delete to Command_L+Delete (== Delete Files)</name>
+              <name>Change Forward Delete to Command_L+Delete (== Delete Files)</name>
               <sysctl>remap.app_finder_forwarddelete2commandLdelete</sysctl>
               <only>FINDER</only>
               <autogen>--KeyToKey-- FROMKEYCODE_FORWARD_DELETE, KeyCode::DELETE, ModifierFlag::COMMAND_L</autogen>
             </item>
             <item>
-              <name>Remap Return to Command+O (== Open)</name>
+              <name>Change Return to Command+O (== Open)</name>
               <sysctl>remap.app_finder_return2commandO</sysctl>
               <only>FINDER</only>
               <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::O, ModifierFlag::COMMAND_L</autogen>
             </item>
             <item>
-              <name>Remap Enter to Command+O (== Open)</name>
+              <name>Change Enter to Command+O (== Open)</name>
               <sysctl>remap.app_finder_enter2commandO</sysctl>
               <only>FINDER</only>
               <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::O, ModifierFlag::COMMAND_L</autogen>
@@ -3309,13 +3309,13 @@
           <name>Enable at only Terminal</name>
           <list>
             <item>
-              <name>Remap Command_L to Option_L</name>
+              <name>Change Command_L to Option_L</name>
               <sysctl>remap.app_term_commandL2optionL</sysctl>
               <only>TERMINAL</only>
               <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
             </item>
             <item>
-              <name>Remap Command_L to Option_L</name>
+              <name>Change Command_L to Option_L</name>
               <appendix>(Pass-Through Tab and Backquote)</appendix>
               <sysctl>remap.app_term_commandL2optionL_except_tab</sysctl>
               <only>TERMINAL</only>
@@ -3324,7 +3324,7 @@
               <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
             </item>
             <item>
-              <name>Remap Delete Key</name>
+              <name>Change Delete Key</name>
               <list>
                 <item>
                   <name>Delete to Control_L+H</name>
@@ -3371,19 +3371,19 @@
               </list>
             </item>
             <item>
-              <name>Remap Option_L to Command_L</name>
+              <name>Change Option_L to Command_L</name>
               <sysctl>remap.app_term_optionL2commandL</sysctl>
               <only>TERMINAL</only>
               <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
             </item>
             <item>
-              <name>Remap Option_R to Control_R</name>
+              <name>Change Option_R to Control_R</name>
               <sysctl>remap.app_term_optionR2controlR</sysctl>
               <only>TERMINAL</only>
               <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CONTROL_R</autogen>
             </item>
             <item>
-              <name>Remap Slash(/) Key</name>
+              <name>Change Slash(/) Key</name>
               <list>
                 <item>
                   <name>Control+Shift+Slash(/) to Delete</name>
@@ -3394,7 +3394,7 @@
               </list>
             </item>
             <item>
-              <name>Remap Functional Keys to F1...F12</name>
+              <name>Change Functional Keys to F1...F12</name>
               <appendix>(For keyboards of F10 == Volume Mute)</appendix>
               <sysctl>remap.app_term_functional2function</sysctl>
               <only>TERMINAL</only>
@@ -3412,7 +3412,7 @@
               <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, KeyCode::F12</autogen>
             </item>
             <item>
-              <name>Remap Option+y to F18</name>
+              <name>Change Option+y to F18</name>
               <only>TERMINAL</only>
               <sysctl>remap.app_term_optionY2f18</sysctl>
               <autogen>--KeyToKey-- KeyCode::Y, VK_OPTION, KeyCode::F18</autogen>
@@ -3423,7 +3423,7 @@
           <name>Enable at only Adobe Softwares</name>
           <list>
             <item>
-              <name>Remap Command+Tab to Control_L+Tab</name>
+              <name>Change Command+Tab to Control_L+Tab</name>
               <sysctl>remap.app_adobe_commandTab2controlLTab</sysctl>
               <only>ADOBE</only>
               <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
@@ -3452,7 +3452,7 @@
           <name>Enable at only Excel</name>
           <list>
             <item>
-              <name>Remap F2 to Ctrl+U</name>
+              <name>Change F2 to Ctrl+U</name>
               <sysctl>remap.app_excel_f2_to_ctrlu</sysctl>
               <only>EXCEL</only>
               <autogen>--KeyToKey-- KeyCode::F2, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
@@ -3463,7 +3463,7 @@
           <name>Enable at only Entourage</name>
           <list>
             <item>
-              <name>Remap PageUp/PageDown to Option+Up/Down</name>
+              <name>Change PageUp/PageDown to Option+Up/Down</name>
               <sysctl>remap.app_entourage_pageupdown_to_optionupdown</sysctl>
               <only>ENTOURAGE</only>
               <autogen>--KeyToKey-- FROMKEYCODE_PAGEUP, KeyCode::CURSOR_UP, ModifierFlag::OPTION_L</autogen>
@@ -3475,7 +3475,7 @@
           <name>Enable at only MacSOUP</name>
           <list>
             <item>
-              <name>Remap Option_R to Enter</name>
+              <name>Change Option_R to Enter</name>
               <sysctl>remap.app_macsoup_optionR2enter</sysctl>
               <only>MACSOUP</only>
               <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::ENTER</autogen>
@@ -3486,7 +3486,7 @@
           <name>Enable at only Vienna</name>
           <list>
             <item>
-              <name>Remap Option_R to Enter</name>
+              <name>Change Option_R to Enter</name>
               <sysctl>remap.app_vienna_optionR2enter</sysctl>
               <only>VIENNA</only>
               <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::ENTER</autogen>
@@ -3584,7 +3584,7 @@
       <name>For PC Users</name>
       <list>
         <item>
-          <name>Remap PC Application Key</name>
+          <name>Change PC Application Key</name>
           <list>
             <item>
               <name>Application Key to Command_L</name>
@@ -3658,7 +3658,7 @@
           </list>
         </item>
         <item>
-          <name>Remap PC Insert Key</name>
+          <name>Change PC Insert Key</name>
           <list>
             <item>
               <name>Insert Key to Control_R</name>
@@ -3683,7 +3683,7 @@
           </list>
         </item>
         <item>
-          <name>Remap PC NumLock Key</name>
+          <name>Change PC NumLock Key</name>
           <list>
             <item>
               <name>NumLock Key to F11</name>
@@ -3693,7 +3693,7 @@
           </list>
         </item>
         <item>
-          <name>Remap PC Pause Key</name>
+          <name>Change PC Pause Key</name>
           <list>
             <item>
               <name>Pause Key to Eject</name>
@@ -3703,7 +3703,7 @@
           </list>
         </item>
         <item>
-          <name>Remap PC PrintScreen Key</name>
+          <name>Change PC PrintScreen Key</name>
           <list>
             <item>
               <name>PrintScreen Key to Eject</name>
@@ -3718,7 +3718,7 @@
           </list>
         </item>
         <item>
-          <name>Remap PC ScrollLock Key</name>
+          <name>Change PC ScrollLock Key</name>
           <list>
             <item>
               <name>ScrollLock Key to F13</name>
@@ -3875,7 +3875,7 @@
       <name>For IBM Model M Keyboard Users</name>
       <list>
         <item>
-          <name>Remap IBM Model M Keyboard</name>
+          <name>Change IBM Model M Keyboard</name>
           <appendix>(with PS2-to-USB adapters (Chesen Electronics Corp))</appendix>
           <appendix>Bottom row of Model M keyboard:</appendix>
           <appendix>   Original: Ctrl Alt [space bar] Alt Ctrl</appendix>
@@ -4000,7 +4000,7 @@
       <name>For Japanese</name>
       <list>
         <item>
-          <name>Remap PC Application Key</name>
+          <name>Change PC Application Key</name>
           <list>
             <item>
               <name>Application Key to Control_L</name>
@@ -4011,7 +4011,7 @@
           </list>
         </item>
         <item>
-          <name>Remap Backquote(`) Key</name>
+          <name>Change Backquote(`) Key</name>
           <list>
             <item>
               <name>Backquote(`) to KANA/EISUU (toggle)</name>
@@ -4021,7 +4021,7 @@
           </list>
         </item>
         <item>
-          <name>Remap Command_L Key</name>
+          <name>Change Command_L Key</name>
           <list>
             <item>
               <name>Command_L to EISUU</name>
@@ -4097,7 +4097,7 @@
           </list>
         </item>
         <item>
-          <name>Remap Command_R Key</name>
+          <name>Change Command_R Key</name>
           <list>
             <item>
               <name>Command_R to EISUU</name>
@@ -4176,7 +4176,7 @@
           </list>
         </item>
         <item>
-          <name>Remap Escape Key</name>
+          <name>Change Escape Key</name>
           <list>
             <item>
               <name>Escape to EISUU+Escape</name>
@@ -4186,7 +4186,7 @@
           </list>
         </item>
         <item>
-          <name>Remap Option_R Key</name>
+          <name>Change Option_R Key</name>
           <list>
             <item>
               <name>Option_R to EISUU</name>
@@ -4206,7 +4206,7 @@
           </list>
         </item>
         <item>
-          <name>Remap Space Key</name>
+          <name>Change Space Key</name>
           <list>
             <item>
               <name>Command+Space to KANA/EISUU (toggle)</name>
@@ -4234,7 +4234,7 @@
           </list>
         </item>
         <item>
-          <name>Remap EISUU Key</name>
+          <name>Change EISUU Key</name>
           <list>
             <item>
               <name>EISUU to Command_L</name>
@@ -4348,7 +4348,7 @@
           </list>
         </item>
         <item>
-          <name>Remap KANA Key</name>
+          <name>Change KANA Key</name>
           <list>
             <item>
               <name>KANA to Command_L</name>
@@ -4443,7 +4443,7 @@
           </list>
         </item>
         <item>
-          <name>Remap Underscore(Ro) Key</name>
+          <name>Change Underscore(Ro) Key</name>
           <list>
             <item>
               <name>Underscore(Ro) to Shift_R</name>
@@ -4468,7 +4468,7 @@
           </list>
         </item>
         <item>
-          <name>Remap Yen(¥) Key</name>
+          <name>Change Yen(¥) Key</name>
           <list>
             <item>
               <name>JIS Yen(¥) to Backslash(\)</name>
@@ -4480,7 +4480,7 @@
           </list>
         </item>
         <item>
-          <name>Remap Zero(0) Key</name>
+          <name>Change Zero(0) Key</name>
           <list>
             <item>
               <name>Shift+0 to Backslash(\)</name>
@@ -4512,7 +4512,7 @@
               <name>Behavior in Emacs, Terminal, X11, VMware, Parallels, RDC</name>
               <list>
                 <item>
-                  <name>Force remap C-[ to Escape</name>
+                  <name>Force change C-[ to Escape</name>
                   <list>
                     <item>
                       <name>In Emacs, Terminal</name>
@@ -4539,7 +4539,7 @@
           </list>
         </item>
         <item>
-          <name>Remapping for Applications</name>
+          <name>Changeping for Applications</name>
           <list>
             <item>
               <name>Enable at only Terminal</name>
@@ -4599,7 +4599,7 @@
               <name>Enable at only Vim</name>
               <list>
                 <item>
-                  <name>Remap EISUU to EISUU &amp; Escape</name>
+                  <name>Change EISUU to EISUU &amp; Escape</name>
                   <only>VI</only>
                   <sysctl>remap.jis_app_vi_eisuu2eisuu_escape</sysctl>
                   <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::JIS_EISUU, KeyCode::ESCAPE</autogen>
@@ -5043,7 +5043,7 @@
       <name>For Russian</name>
       <list>
         <item>
-          <name>Remap Backquote(`) Key</name>
+          <name>Change Backquote(`) Key</name>
           <list>
             <item>
               <name>Backquote(`) to Paragraph(§)</name>
@@ -5053,7 +5053,7 @@
           </list>
         </item>
         <item>
-          <name>Remap Paragraph(§) Key</name>
+          <name>Change Paragraph(§) Key</name>
           <list>
             <item>
               <name>Paragraph(§) to Backquote(`)</name>
@@ -5073,7 +5073,7 @@
           </list>
         </item>
         <item>
-          <name>Remap Tilda(~) Key</name>
+          <name>Change Tilda(~) Key</name>
           <list>
             <item>
               <name>Tilda(~) to Shift_L</name>
