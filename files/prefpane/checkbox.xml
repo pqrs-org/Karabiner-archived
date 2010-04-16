@@ -4430,6 +4430,12 @@
               <autogen>--KeyToKey-- KeyCode::JIS_KANA, KeyCode::SHIFT_L</autogen>
             </item>
             <item>
+              <name>KANA to Shift_L</name>
+              <appendix>(+ When you type KANA only, send KANA)</appendix>
+              <sysctl>remap.jis_kana2shiftL_kana</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::JIS_KANA, KeyCode::SHIFT_L, KeyCode::JIS_KANA</autogen>
+            </item>
+            <item>
               <name>Command+KANA to KANA</name>
               <sysctl>remap.jis_commandKana2kana</sysctl>
               <autogen>--KeyToKey-- KeyCode::JIS_KANA, VK_COMMAND, KeyCode::JIS_KANA</autogen>
