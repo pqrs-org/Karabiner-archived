@@ -1021,6 +1021,11 @@
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::OPTION_L</autogen>
         </item>
         <item>
+          <name>FN to Control_L+Option_L</name>
+          <sysctl>remap.fn2controlLoptionL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::FN, KeyCode::OPTION_L, ModifierFlag::CONTROL_L</autogen>
+        </item>
+        <item>
           <name>FN to Shift_L</name>
           <sysctl>remap.fn2shiftL</sysctl>
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::SHIFT_L</autogen>
