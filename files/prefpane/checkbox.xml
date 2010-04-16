@@ -638,6 +638,11 @@
           <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::FN</autogen>
         </item>
         <item>
+          <name>Option_L+Control_L to FN</name>
+          <sysctl>remap.optionLcontrolL2fn</sysctl>
+          <autogen>--KeyToKey-- KeyCode::CONTROL_L, ModifierFlag::OPTION_L, KeyCode::FN</autogen>
+        </item>
+        <item>
           <name>Control_L to Option_L</name>
           <sysctl>remap.controlL2optionL</sysctl>
           <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::OPTION_L</autogen>
@@ -1029,6 +1034,11 @@
           <name>FN to Enter</name>
           <sysctl>remap.fn2enter</sysctl>
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::ENTER</autogen>
+        </item>
+        <item>
+          <name>FN to Eject</name>
+          <sysctl>remap.fn2eject</sysctl>
+          <autogen>--KeyToConsumer-- KeyCode::FN, ConsumerKeyCode::EJECT</autogen>
         </item>
         <item>
           <name>FN to Forward Delete</name>
@@ -1629,6 +1639,11 @@
           <name>Option_L to FN</name>
           <sysctl>remap.optionL2fn</sysctl>
           <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::FN</autogen>
+        </item>
+        <item>
+          <name>Control_L+Option_L to FN</name>
+          <sysctl>remap.controlLoptionL2fn</sysctl>
+          <autogen>--KeyToKey-- KeyCode::OPTION_L, ModifierFlag::CONTROL_L, KeyCode::FN</autogen>
         </item>
         <item>
           <name>Option_L to Option_L</name>
