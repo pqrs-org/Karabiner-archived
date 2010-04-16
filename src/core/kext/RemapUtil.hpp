@@ -97,6 +97,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     private:
       RemapUtil::ConsumerToConsumer consumertoconsumer_;
+      RemapUtil::KeyToKey keytokey_;
     };
 
     class PointingButtonToPointingButton {

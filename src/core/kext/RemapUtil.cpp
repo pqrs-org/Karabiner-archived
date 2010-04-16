@@ -227,11 +227,13 @@ namespace org_pqrs_KeyRemap4MacBook {
                                   KeyCode fromKeyCode,       Flags fromFlags,
                                   ConsumerKeyCode toKeyCode, Flags toFlags)
   {
-    if (remapParams.isremapped) return false;
-    if (remapParams.params.key != fromKeyCode) return false;
+    bool isKeyDown = remapParams.isKeyDownOrModifierDown();
 
-    // ----------------------------------------
-    Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(remapParams.params.eventType,
+    bool result = keytokey_.remap(remapParams, fromKeyCode, fromFlags, KeyCode::VK_NONE);
+    if (! result) return false;
+
+    EventType eventType = isKeyDown ? EventType::DOWN : EventType::UP;
+    Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(eventType,
                                                                                                  FlagStatus::makeFlags(),
                                                                                                  ConsumerKeyCode::VK_KEY,
                                                                                                  remapParams.params.repeat));
@@ -239,7 +241,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     Params_KeyboardSpecialEventCallback& params = *ptr;
 
     RemapConsumerParams rp(params, remapParams.workspacedata);
-    if (! consumertoconsumer_.remap(rp, ConsumerKeyCode::VK_KEY, fromFlags, toKeyCode, toFlags)) {
+    if (! consumertoconsumer_.remap(rp, ConsumerKeyCode::VK_KEY, toKeyCode, toFlags)) {
       return false;
     }
 
