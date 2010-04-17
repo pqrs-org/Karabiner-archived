@@ -42,7 +42,7 @@
     </item>
 
     <item>
-      <name>Remap Pointing Device</name>
+      <name>Pointing Device</name>
       <list>
         <item>
           <name>CursorMove to ScrollWheel</name>
@@ -112,7 +112,7 @@
           </list>
         </item>
         <item>
-          <name>Remap Button</name>
+          <name>Button</name>
           <list>
             <item>
               <name>Control+LeftClick to MiddleClick</name>
@@ -2907,7 +2907,7 @@
     </item>
 
     <item>
-      <name>Simultaneous Key Presses Remapping</name>
+      <name>Simultaneous Key Presses</name>
       <list>
         <item>
           <name>Simultaneous Key Presses [F+HJKL] to Left/Down/Up/Right</name>
@@ -2935,7 +2935,7 @@
     </item>
 
     <item>
-      <name>Remapping for Mac OS X Features</name>
+      <name>For Expose, Spaces</name>
       <list>
         <item>
           <name>Drop Shift+[F1...F12] (Disable Slow-Expose)</name>
@@ -2955,7 +2955,7 @@
           <autogen>--KeyToKey-- KeyCode::EXPOSE_ALL, VK_SHIFT, KeyCode::EXPOSE_ALL</autogen>
         </item>
         <item>
-          <name>Remapping for Spaces</name>
+          <name>For Spaces</name>
           <list>
             <item>
               <name>Use Command_R+[ASD FGH JKL] for Spaces</name>
@@ -3145,7 +3145,7 @@
     </item>
 
     <item>
-      <name>Remapping for Applications</name>
+      <name>For Applications</name>
       <list>
         <item>
           <name>Enable at only VMware Fusion, Parallels Desktop</name>
@@ -4569,7 +4569,7 @@
           </list>
         </item>
         <item>
-          <name>Remapping for Applications</name>
+          <name>For Applications</name>
           <list>
             <item>
               <name>Enable at only Terminal</name>
