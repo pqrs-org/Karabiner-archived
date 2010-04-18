@@ -56,6 +56,7 @@
     [_statusItem retain];
 
     [_statusItem setTitle:@""];
+    [_statusItem setToolTip:@"KeyRemap4MacBook"];
     [_statusItem setImage:[NSImage imageNamed:@"icon.statusbar.0"]];
     [_statusItem setAlternateImage:[NSImage imageNamed:@"icon.statusbar.1"]];
     [_statusItem setHighlightMode:YES];
