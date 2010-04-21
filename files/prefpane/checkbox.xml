@@ -1536,6 +1536,34 @@
     </item>
 
     <item>
+      <name>Change Media Keys (Play/Pause, Prev, Next)</name>
+      <list>
+        <item>
+          <name>Media Keys to F7..F9</name>
+          <appendix>Music Prev to F7</appendix>
+          <appendix>Music Play/Pause to F8</appendix>
+          <appendix>Music Next to F9</appendix>
+          <sysctl>remap.mediaKeysToFKeys</sysctl>
+          <!-- F7 - F9 -->
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PREV,         KeyCode::F7</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PLAY,         KeyCode::F8</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_NEXT,         KeyCode::F9</autogen>
+        </item>
+        <item>
+          <name>FN+Function Keys to Media Keys</name>
+          <appendix>FN+F7 to Music Prev</appendix>
+          <appendix>FN+F8 to Music Play/Pause</appendix>
+          <appendix>FN+F9 to Music Next</appendix>
+          <sysctl>remap.FNFkeysToMediaKeys</sysctl>
+          <!-- F7 - F9 -->
+          <autogen>--KeyToConsumer-- KeyCode::F7, ModifierFlag::FN, ConsumerKeyCode::MUSIC_PREV</autogen>
+          <autogen>--KeyToConsumer-- KeyCode::F8, ModifierFlag::FN, ConsumerKeyCode::MUSIC_PLAY</autogen>
+          <autogen>--KeyToConsumer-- KeyCode::F9, ModifierFlag::FN, ConsumerKeyCode::MUSIC_NEXT</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>Change Minus Key</name>
       <list>
         <item>
