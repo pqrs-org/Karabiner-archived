@@ -5063,6 +5063,24 @@
               <autogen>--KeyToKey-- KeyCode::KEY_0,     ModifierFlag::NONE, KeyCode::KEY_0,     ModifierFlag::OPTION_L</autogen>
               <autogen>--KeyToKey-- KeyCode::MINUS,     ModifierFlag::NONE, KeyCode::MINUS,     ModifierFlag::OPTION_L</autogen>
               <autogen>--KeyToKey-- KeyCode::EQUAL,     ModifierFlag::NONE, KeyCode::EQUAL,     ModifierFlag::OPTION_L</autogen>
+
+              <!-- ====================================================================== -->
+              <!-- Extra -->
+
+              <!-- \ -> JIS_BACKSLASH -->
+              <autogen>--KeyToKey-- KeyCode::BACKSLASH, ModifierFlag::NONE, KeyCode::VK_JIS_BACKSLASH, ModifierFlag::OPTION_L</autogen>
+
+              <!-- \ -> vertical_line (JIS_VERTICAL_LINE) -->
+              <autogen>--KeyToKey-- KeyCode::BACKSLASH, VK_SHIFT | ModifierFlag::NONE, KeyCode::VK_JIS_YEN, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+
+              <!-- ] -> NONE -->
+              <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+
+              <!-- Shift+] -> NONE -->
+              <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT,VK_SHIFT | ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+
+              <!-- Shift+/ -> question (JIS_QUESION) -->
+              <autogen>--KeyToKey-- KeyCode::SLASH, VK_SHIFT | ModifierFlag::NONE, KeyCode::SLASH, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
             </item>
             <item>
               <name>Use KAWASHIMA Special Keyboard Layout</name>
