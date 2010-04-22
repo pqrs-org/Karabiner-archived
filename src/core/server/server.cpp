@@ -338,6 +338,10 @@ setCurrentApplicationType(const char* applicationName)
     SET_CURRENT_APPLICATION_TYPE(VIENNA);
   }
 
+  if (strcmp(applicationName, "com.apple.Xcode") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(XCODE);
+  }
+
   SET_CURRENT_APPLICATION_TYPE(UNKNOWN);
 }
 

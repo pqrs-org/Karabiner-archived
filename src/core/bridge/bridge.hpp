@@ -42,6 +42,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         ECLIPSE,
         MACSOUP,
         VIENNA,
+        XCODE,
       };
       enum InputMode {
         INPUTMODE_NONE,
