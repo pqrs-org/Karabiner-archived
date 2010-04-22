@@ -2307,6 +2307,14 @@
           <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT</autogen>
         </item>
         <item>
+          <name>Control_L+RVDF to Up/Down/Left/Right</name>
+          <sysctl>remap.diamond_cursor_controlL_rvdf</sysctl>
+          <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::CONTROL_L, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT</autogen>
+        </item>
+        <item>
           <name>Control_L+ESDF to Up/Down/Left/Right</name>
           <sysctl>remap.diamond_cursor_controlL_esdf</sysctl>
           <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::CONTROL_L, KeyCode::CURSOR_UP</autogen>
@@ -3886,7 +3894,16 @@
           <autogen>--KeyToKey-- KeyCode::F, KeyCode::G</autogen>
           <autogen>--KeyToKey-- KeyCode::G, KeyCode::F</autogen>
         </item>
-
+        <item>
+          <name>Control+J to Delete</name>
+          <sysctl>remap.dvorak_controlJ</sysctl>
+          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::CONTROL_L, KeyCode::DELETE</autogen>
+        </item>
+        <item>
+          <name>Control+H to Forward Delete</name>
+          <sysctl>remap.dvorak_controlH</sysctl>
+          <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::CONTROL_L, KeyCode::FORWARD_DELETE</autogen>
+        </item>
         <item>
           <name>Control+W to Option+Delete</name>
           <appendix>(except Emacs, Terminal, X11, virtual machine, RDC, Eclipse)</appendix>
