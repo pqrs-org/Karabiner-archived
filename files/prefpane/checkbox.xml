@@ -2555,7 +2555,7 @@
             <autogen>--KeyToKey-- KeyCode::W, VK_COMMAND, KeyCode::X, ModifierFlag::CONTROL_L, KeyCode::M, ModifierFlag::CONTROL_L, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
           </block>
           <block>
-            <not>XCODE</not>
+            <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE, XCODE</not>
             <autogen>--KeyToKey-- KeyCode::W, VK_COMMAND, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
           </block>
         </item>
