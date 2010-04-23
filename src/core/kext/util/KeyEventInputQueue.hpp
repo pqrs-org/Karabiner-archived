@@ -110,6 +110,13 @@ namespace org_pqrs_KeyRemap4MacBook {
         return p + 1;
       }
     }
+    static Item* getprev(Item* p) {
+      if (p <= item_) {
+        return item_ + (MAXNUM - 1);
+      } else {
+        return p - 1;
+      }
+    }
 
     static Item item_[MAXNUM];
     static IntervalChecker ic_;
