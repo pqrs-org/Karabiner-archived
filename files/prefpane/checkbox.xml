@@ -964,6 +964,11 @@
           <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::BACKQUOTE</autogen>
         </item>
         <item>
+          <name>Control+Escape to Control_L+F3</name>
+          <sysctl>remap.escape2controlLf3</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ESCAPE, VK_CONTROL | ModifierFlag::NONE, KeyCode::F3, ModifierFlag::CONTROL_L</autogen>
+        </item>
+        <item>
           <name>FN+Escape to Power</name>
           <sysctl>remap.fnEscape2power</sysctl>
           <autogen>--KeyToConsumer-- KeyCode::ESCAPE, ModifierFlag::FN, ConsumerKeyCode::POWER</autogen>
@@ -4415,6 +4420,11 @@
               <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::ESCAPE</autogen>
             </item>
             <item>
+              <name>EISUU to Control_L+F2 (= Move focus to the menu bar)</name>
+              <sysctl>remap.jis_eisuu2controlLf2</sysctl>
+              <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::F2, ModifierFlag::CONTROL_L</autogen>
+            </item>
+            <item>
               <name>EISUU to Tab</name>
               <sysctl>remap.jis_eisuu2tab</sysctl>
               <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::TAB</autogen>
@@ -4506,6 +4516,11 @@
               <autogen>--KeyOverlaidModifier-- KeyCode::JIS_KANA, KeyCode::SHIFT_L, KeyCode::JIS_KANA</autogen>
             </item>
             <item>
+              <name>KANA to Control_L+F2 (= Move focus to the menu bar)</name>
+              <sysctl>remap.jis_kana2controlLf2</sysctl>
+              <autogen>--KeyToKey-- KeyCode::JIS_KANA, KeyCode::F2, ModifierFlag::CONTROL_L</autogen>
+            </item>
+            <item>
               <name>Command+KANA to KANA</name>
               <sysctl>remap.jis_commandKana2kana</sysctl>
               <autogen>--KeyToKey-- KeyCode::JIS_KANA, VK_COMMAND, KeyCode::JIS_KANA</autogen>
@@ -4554,6 +4569,11 @@
               <name>Underscore(Ro) to Backslash(\)</name>
               <sysctl>remap.jis_underscore2backslash</sysctl>
               <autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, ModifierFlag::NONE, KeyCode::VK_JIS_BACKSLASH</autogen>
+            </item>
+            <item>
+              <name>Underscore(Ro) to Delete</name>
+              <sysctl>remap.jis_underscore2delete</sysctl>
+              <autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, KeyCode::DELETE</autogen>
             </item>
             <item>
               <name>Underscore(Ro) to JIS Yen(¥)</name>
