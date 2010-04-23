@@ -253,28 +253,38 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ------------------------------------------------------------
     // find fromKeyCode*_
+    //
+    // We consider "A+B to C".
+    // In this case, we change key in case1, but don't change key in case2.
+    // Because A is released in case2.
+    //
+    // case1) "KeyDown A", "KeyDown B"             (=> change key)
+    // case2) "KeyDown A", "KeyUp A", "KeyDown B". (=> don't change key)
+    //
+    // So, we check keys from tail.
+
     Item* item1 = NULL;
     Item* item2 = NULL;
     Item* base = NULL; // later item of item1 or item2
 
-    for (Item* p = current_; p != last_; p = getnext(p)) {
+    for (Item* p = getprev(last_); p != getprev(current_); p = getprev(p)) {
       if (! p->active) continue;
       if (p->repeat) continue;
       if (p->dropped) continue;
-      if (! (p->eventType).isKeyDownOrModifierDown(p->key, p->flags)) continue;
 
       if (p->key == fromKeyCode1_ && ! item1) {
         item1 = p;
-        if (item2) base = p;
+        if (! base) base = p;
       }
       if (p->key == fromKeyCode2_ && ! item2) {
         item2 = p;
-        if (item1) base = p;
+        if (! base) base = p;
       }
     }
 
     // replace first fromKeyCode1. and drop first fromKeyCode2
-    if (item1 && item2) {
+    if (item1 && (item1->eventType).isKeyDownOrModifierDown(item1->key, item1->flags) &&
+        item2 && (item2->eventType).isKeyDownOrModifierDown(item2->key, item2->flags)) {
       item1->dropped = true;
       active1_ = true;
 
