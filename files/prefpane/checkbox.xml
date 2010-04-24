@@ -3001,6 +3001,19 @@
           <autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::F, KeyCode::CURSOR_RIGHT</autogen>
         </item>
         <item>
+          <name>Simultaneous Key Presses [F+G] to ModifierFlag::EXTRA1</name>
+          <appendix>(EXTRA1+H to Home)</appendix>
+          <appendix>(EXTRA1+J to PageDown)</appendix>
+          <appendix>(EXTRA1+K to PageUp)</appendix>
+          <appendix>(EXTRA1+L to End)</appendix>
+          <sysctl>remap.simultaneouskeypresses_vimode_fn_fg</sysctl>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::G, KeyCode::F, KeyCode::VK_MODIFIER_EXTRA1</autogen>
+          <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA1, KeyCode::HOME</autogen>
+          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA1, KeyCode::PAGEDOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA1, KeyCode::PAGEUP</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA1, KeyCode::END</autogen>
+        </item>
+        <item>
           <name>Simultaneous Key Presses [F+N] to FN_Lock</name>
           <sysctl>remap.simultaneouskeypresses_fn_to_fnlock</sysctl>
           <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::N, KeyCode::VK_LOCK_FN</autogen>
