@@ -174,11 +174,15 @@
       <appendix>(A+K to Up)</appendix>
       <appendix>(A+S to A,S,A,J)</appendix>
       <appendix>(A+D to A,Shift_L+S,Control_L+D,F)</appendix>
+      <appendix>(A+G to Shift_L)</appendix>
+      <appendix>(Shift_L+Shift_R to Space)</appendix>
       <sysctl>remap.samples_simultaneouskeypresses</sysctl>
       <autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::A, KeyCode::CURSOR_DOWN</autogen>
       <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::A, KeyCode::CURSOR_UP</autogen>
       <autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::A, KeyCode::A, KeyCode::S, KeyCode::A, KeyCode::J</autogen>
       <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::A, KeyCode::A, KeyCode::S, ModifierFlag::SHIFT_L, KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::F</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::G, KeyCode::A, KeyCode::SHIFT_L</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::SHIFT_L, KeyCode::SHIFT_R, KeyCode::SPACE</autogen>
     </item>
 
     <item>

@@ -301,12 +301,18 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (virtualKeyCode_ != params.key) return false;
 
     RemapParams rp(params, workspacedata);
-    keytokey_.remap(rp, virtualKeyCode_,
-                    toKeyCode1_, toFlags1_,
-                    toKeyCode2_, toFlags2_,
-                    toKeyCode3_, toFlags3_,
-                    toKeyCode4_, toFlags4_,
-                    toKeyCode5_, toFlags5_);
+    if (toKeyCode2_ == KeyCode::VK_NONE) {
+      keytokey_.remap(rp, virtualKeyCode_,
+                      toKeyCode1_, toFlags1_);
+
+    } else {
+      keytokey_.remap(rp, virtualKeyCode_,
+                      toKeyCode1_, toFlags1_,
+                      toKeyCode2_, toFlags2_,
+                      toKeyCode3_, toFlags3_,
+                      toKeyCode4_, toFlags4_,
+                      toKeyCode5_, toFlags5_);
+    }
 
     return true;
   }
