@@ -403,6 +403,7 @@
       <appendix>Use 4 to VK_CHANGE_INPUTMODE_JAPANESE</appendix>
       <appendix>Use 5 to VK_CHANGE_INPUTMODE_SWEDISH</appendix>
       <appendix>Use 6 to VK_CHANGE_INPUTMODE_CANADIAN</appendix>
+      <appendix>Use 7 to VK_CHANGE_INPUTMODE_RUSSIAN</appendix>
       <sysctl>remap.samples_vk_change_inputmode</sysctl>
       <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
       <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_CHANGE_INPUTMODE_FRENCH</autogen>
@@ -410,6 +411,7 @@
       <autogen>--KeyToKey-- KeyCode::KEY_4, KeyCode::VK_CHANGE_INPUTMODE_JAPANESE</autogen>
       <autogen>--KeyToKey-- KeyCode::KEY_5, KeyCode::VK_CHANGE_INPUTMODE_SWEDISH</autogen>
       <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::VK_CHANGE_INPUTMODE_CANADIAN</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_7, KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN</autogen>
     </item>
     <item>
       <name>VK_CONFIG</name>
