@@ -250,6 +250,7 @@ void selectInputSource_french(void) { selectInputSource_language(CFSTR("fr")); }
 void selectInputSource_german(void) { selectInputSource_language(CFSTR("de")); }
 void selectInputSource_japanese(void) { selectInputSource_language(CFSTR("ja")); }
 void selectInputSource_swedish(void) { selectInputSource_language(CFSTR("sv")); }
+void selectInputSource_russian(void) { selectInputSource_language(CFSTR("ru")); }
 
 // ------------------------------------------------------------
 void

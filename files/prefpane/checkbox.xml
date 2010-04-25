@@ -5217,6 +5217,28 @@
           </list>
         </item>
         <item>
+          <name>Change Command_L Key</name>
+          <list>
+            <item>
+              <name>Command_L to Command_L</name>
+              <appendix>(+ When you type Command_L only, change inputmode to english)</appendix>
+              <sysctl>remap.russian_commandL2commandL_english</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
+          <name>Change Command_R Key</name>
+          <list>
+            <item>
+              <name>Command_R to Command_R</name>
+              <appendix>(+ When you type Command_R only, change inputmode to russian)</appendix>
+              <sysctl>remap.russian_commandR2commandR_russian</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Change Paragraph(§) Key</name>
           <list>
             <item>
