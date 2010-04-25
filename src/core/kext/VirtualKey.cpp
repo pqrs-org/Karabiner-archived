@@ -71,6 +71,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_SWEDISH;
     } else if (params.key == KeyCode::VK_CHANGE_INPUTMODE_CANADIAN) {
       request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_CANADIAN;
+    } else if (params.key == KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN) {
+      request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_RUSSIAN;
     } else {
       return false;
     }

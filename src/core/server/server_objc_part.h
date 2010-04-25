@@ -49,6 +49,7 @@ void selectInputSource_german(void);
 void selectInputSource_japanese(void);
 void selectInputSource_swedish(void);
 void selectInputSource_canadian(void);
+void selectInputSource_russian(void);
 
 void reset_statusmessage(void);
 void set_statusmessage(StatusMessageType type, const char* message);
