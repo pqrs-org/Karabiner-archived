@@ -3014,6 +3014,19 @@
           <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA1, KeyCode::END</autogen>
         </item>
         <item>
+          <name>Simultaneous Key Presses [S+D] to ModifierFlag::EXTRA2</name>
+          <appendix>(EXTRA2+H to Left)</appendix>
+          <appendix>(EXTRA2+J to Down)</appendix>
+          <appendix>(EXTRA2+K to Up)</appendix>
+          <appendix>(EXTRA2+L to Right)</appendix>
+          <sysctl>remap.simultaneouskeypresses_vimode_sd</sysctl>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, KeyCode::VK_MODIFIER_EXTRA2</autogen>
+          <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA2, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA2, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA2, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA2, KeyCode::CURSOR_RIGHT</autogen>
+        </item>
+        <item>
           <name>Simultaneous Key Presses [F+N] to FN_Lock</name>
           <sysctl>remap.simultaneouskeypresses_fn_to_fnlock</sysctl>
           <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::N, KeyCode::VK_LOCK_FN</autogen>
