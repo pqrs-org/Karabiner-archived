@@ -72,7 +72,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! HookedDevice::isConsumer(name)) return false;
 
     device_ = d;
-    IOLog("KeyRemap4MacBook HookedConsumer::initialize name = %s, device = 0x%p\n", name, device_);
+    IOLog("KeyRemap4MacBook HookedConsumer::initialize name = %s, device = %p\n", name, device_);
 
     return refresh();
   }
@@ -110,7 +110,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (callback == hook_KeyboardSpecialEventCallback) return false;
 
     // ------------------------------------------------------------
-    IOLog("KeyRemap4MacBook HookedConsumer::replaceEventAction (device_ = 0x%p)\n", device_);
+    IOLog("KeyRemap4MacBook HookedConsumer::replaceEventAction (device_ = %p)\n", device_);
 
     orig_keyboardSpecialEventAction_ = callback;
     orig_keyboardSpecialEventTarget_ = kbd->_keyboardSpecialEventTarget;
@@ -132,7 +132,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (callback != hook_KeyboardSpecialEventCallback) return false;
 
     // ----------------------------------------
-    IOLog("KeyRemap4MacBook HookedConsumer::restoreEventAction (device_ = 0x%p)\n", device_);
+    IOLog("KeyRemap4MacBook HookedConsumer::restoreEventAction (device_ = %p)\n", device_);
 
     kbd->_keyboardSpecialEventAction = reinterpret_cast<KeyboardSpecialEventAction>(orig_keyboardSpecialEventAction_);
 

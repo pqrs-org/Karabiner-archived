@@ -123,7 +123,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ------------------------------------------------------------
     device_ = d;
-    IOLog("KeyRemap4MacBook HookedKeyboard::initialize name = %s, device_ = 0x%p\n", name, device_);
+    IOLog("KeyRemap4MacBook HookedKeyboard::initialize name = %s, device_ = %p\n", name, device_);
 
     if (strcmp(name, "IOHIDKeyboard") == 0 ||
         strcmp(name, "AppleADBKeyboard") == 0) {
@@ -200,7 +200,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (callback == hook_KeyboardEventCallback) return false;
 
     // ------------------------------------------------------------
-    IOLog("KeyRemap4MacBook HookedKeyboard::replaceEventAction (device_ = 0x%p)\n", device_);
+    IOLog("KeyRemap4MacBook HookedKeyboard::replaceEventAction (device_ = %p)\n", device_);
 
     orig_keyboardEventAction_ = callback;
     orig_keyboardEventTarget_ = kbd->_keyboardEventTarget;
@@ -222,7 +222,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (callback != hook_KeyboardEventCallback) return false;
 
     // ----------------------------------------
-    IOLog("KeyRemap4MacBook HookedKeyboard::restoreEventAction (device_ = 0x%p)\n", device_);
+    IOLog("KeyRemap4MacBook HookedKeyboard::restoreEventAction (device_ = %p)\n", device_);
 
     kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(orig_keyboardEventAction_);
 

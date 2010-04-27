@@ -121,7 +121,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! p) continue;
       if (p->get()) continue;
 
-      IOLog("KeyRemap4MacBook ListHookedDevice::append (device = 0x%p, slot = %d)\n", device, i);
+      IOLog("KeyRemap4MacBook ListHookedDevice::append (device = %p, slot = %d)\n", device, i);
 
       p->vendorID_ = vendorID;
       p->productID_ = productID;
