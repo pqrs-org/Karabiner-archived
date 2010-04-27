@@ -3001,30 +3001,19 @@
           <autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::F, KeyCode::CURSOR_RIGHT</autogen>
         </item>
         <item>
-          <name>Simultaneous Key Presses [F+G] to ModifierFlag::EXTRA1</name>
-          <appendix>(EXTRA1+H to Home)</appendix>
-          <appendix>(EXTRA1+J to PageDown)</appendix>
-          <appendix>(EXTRA1+K to PageUp)</appendix>
-          <appendix>(EXTRA1+L to End)</appendix>
-          <sysctl>remap.simultaneouskeypresses_vimode_fn_fg</sysctl>
-          <autogen>--SimultaneousKeyPresses-- KeyCode::G, KeyCode::F, KeyCode::VK_MODIFIER_EXTRA1</autogen>
-          <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA1, KeyCode::HOME</autogen>
-          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA1, KeyCode::PAGEDOWN</autogen>
-          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA1, KeyCode::PAGEUP</autogen>
-          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA1, KeyCode::END</autogen>
-        </item>
-        <item>
-          <name>Simultaneous Key Presses [S+D] to ModifierFlag::EXTRA2</name>
-          <appendix>(EXTRA2+H to Left)</appendix>
-          <appendix>(EXTRA2+J to Down)</appendix>
-          <appendix>(EXTRA2+K to Up)</appendix>
-          <appendix>(EXTRA2+L to Right)</appendix>
+          <name>Simultaneous Key Presses [S+D] to ModifierFlag::EXTRA1</name>
+          <appendix>(EXTRA1+H to Left)</appendix>
+          <appendix>(EXTRA1+J to Down)</appendix>
+          <appendix>(EXTRA1+K to Up)</appendix>
+          <appendix>(EXTRA1+L to Right)</appendix>
+          <appendix>(EXTRA1+F to FN)</appendix>
           <sysctl>remap.simultaneouskeypresses_vimode_sd</sysctl>
-          <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, KeyCode::VK_MODIFIER_EXTRA2</autogen>
-          <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA2, KeyCode::CURSOR_LEFT</autogen>
-          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA2, KeyCode::CURSOR_DOWN</autogen>
-          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA2, KeyCode::CURSOR_UP</autogen>
-          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA2, KeyCode::CURSOR_RIGHT</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, KeyCode::VK_MODIFIER_EXTRA1</autogen>
+          <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA1, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA1, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA1, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA1, KeyCode::CURSOR_RIGHT</autogen>
+          <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::EXTRA1, KeyCode::FN, ModifierFlag::EXTRA1</autogen>
         </item>
         <item>
           <name>Simultaneous Key Presses [F+N] to FN_Lock</name>
