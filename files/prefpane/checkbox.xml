@@ -4338,6 +4338,16 @@
           </list>
         </item>
         <item>
+          <name>Change Right Bracket(]) Key</name>
+          <list>
+            <item>
+              <name>Right Bracket(]) to Backquote(`)</name>
+              <sysctl>remap.jis_rightbracket2backquote</sysctl>
+              <autogen>--KeyToKey-- KeyCode::JIS_BRACKET_RIGHT, KeyCode::BACKQUOTE</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Change Space Key</name>
           <list>
             <item>
