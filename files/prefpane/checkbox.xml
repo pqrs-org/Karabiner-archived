@@ -3822,12 +3822,17 @@
           </list>
         </item>
         <item>
-          <name>Change PC Pause Key</name>
+          <name>Change PC Pause/Break Key</name>
           <list>
             <item>
-              <name>Pause Key to Eject</name>
+              <name>Pause/Break Key to Eject</name>
               <sysctl>remap.pc_pause2eject</sysctl>
               <autogen>--KeyToConsumer-- KeyCode::PC_PAUSE, ConsumerKeyCode::EJECT</autogen>
+            </item>
+            <item>
+              <name>Pause/Break Key to Power</name>
+              <sysctl>remap.pc_pause2power</sysctl>
+              <autogen>--KeyToConsumer-- KeyCode::PC_PAUSE, ConsumerKeyCode::POWER</autogen>
             </item>
           </list>
         </item>
