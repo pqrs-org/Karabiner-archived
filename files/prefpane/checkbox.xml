@@ -474,6 +474,12 @@
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
         </item>
         <item>
+          <name>Command_R to Option_R (only in Emacs, Terminal, X11)</name>
+          <sysctl>remap.commandR2optionR_etx</sysctl>
+          <only>EMACS, TERMINAL, X11</only>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
+        </item>
+        <item>
           <name>Command_R to Shift_L</name>
           <sysctl>remap.commandR2shiftL</sysctl>
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::SHIFT_L</autogen>
@@ -1734,6 +1740,12 @@
         <item>
           <name>Option_R to Control_R</name>
           <sysctl>remap.optionR2controlR</sysctl>
+          <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CONTROL_R</autogen>
+        </item>
+        <item>
+          <name>Option_R to Control_R (only in Emacs, Terminal, X11)</name>
+          <sysctl>remap.optionR2controlR_etx</sysctl>
+          <only>EMACS, TERMINAL, X11</only>
           <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CONTROL_R</autogen>
         </item>
         <item>
