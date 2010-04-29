@@ -109,6 +109,8 @@ TEST(Flags, isOn) {
   Flags mask = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
   Flags flags = mask;
 
+  EXPECT_TRUE(flags.isOn(Flags(0)));
+
   EXPECT_TRUE(flags.isOn(ModifierFlag::SHIFT_L));
   EXPECT_FALSE(flags.isOn(ModifierFlag::SHIFT_R));
 
@@ -118,6 +120,7 @@ TEST(Flags, isOn) {
   flags = 0;
   EXPECT_FALSE(flags.isOn(ModifierFlag::NONE));
   EXPECT_TRUE(flags.isOn(Flags(ModifierFlag::NONE)));
+  EXPECT_TRUE(flags.isOn(Flags(0)));
 
   flags = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
   EXPECT_TRUE(flags.isOn(ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R));
