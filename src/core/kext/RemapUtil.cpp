@@ -589,7 +589,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         p.key == KeyCode::VK_MODIFIER_EXTRA5) return;
 
     // ------------------------------------------------------------
-    p.key.reverseNormalizeKey(p.flags, p.keyboardType);
+    p.key.reverseNormalizeKey(p.flags, p.eventType, p.keyboardType);
     p.flags.stripEXTRA();
 
     FireModifiers::fire(p.flags, p.keyboardType);
