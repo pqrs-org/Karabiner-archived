@@ -79,7 +79,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     for (unsigned int i = 0; i < sizeof(fnkeyhack) / sizeof(fnkeyhack[0]); ++i) {
-      fnkeyhack[i].normalize(*this, flags, eventType);
+      if (fnkeyhack[i].normalize(*this, flags, eventType)) break;
     }
   }
 
@@ -87,7 +87,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   KeyCode::reverseNormalizeKey(Flags& flags, EventType eventType, KeyboardType keyboardType)
   {
     for (unsigned int i = 0; i < sizeof(fnkeyhack) / sizeof(fnkeyhack[0]); ++i) {
-      fnkeyhack[i].reverse(*this, flags, eventType);
+      if (fnkeyhack[i].reverse(*this, flags, eventType)) break;
     }
 
     if (keyboardType == KeyboardType::POWERBOOK ||
