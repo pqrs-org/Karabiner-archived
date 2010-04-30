@@ -2,8 +2,10 @@
 #include <vector>
 #include <gtest/gtest.h>
 #include "KeyCode.hpp"
+#include "Config.hpp"
 
 using namespace org_pqrs_KeyRemap4MacBook;
+Config config;
 
 std::ostream& operator<<(std::ostream& os, const EventType& v) { return os << v.get(); }
 std::ostream& operator<<(std::ostream& os, const KeyboardType& v) { return os << v.get(); }
