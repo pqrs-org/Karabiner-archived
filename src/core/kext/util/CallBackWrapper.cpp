@@ -13,7 +13,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.debug) return;
 
-    printf("KeyRemap4MacBook KeyboardEventCallback [%s]: eventType %d, flags 0x%x, key %d, kbdType %d\n",
+    printf("KeyRemap4MacBook KeyboardEventCallback [%7s]: eventType %d, flags 0x%x, key %d, kbdType %d\n",
            message, eventType.get(), flags.get(), key.get(), keyboardType.get());
   }
 
@@ -22,7 +22,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.debug) return;
 
-    printf("KeyRemap4MacBook KeyboardSpecialEventCallBack [%s]: eventType %d, flags 0x%x, key %d, flavor %d, guid %lld\n",
+    printf("KeyRemap4MacBook KeyboardSpecialEventCallBack [%7s]: eventType %d, flags 0x%x, key %d, flavor %d, guid %lld\n",
            message, eventType.get(), flags.get(), key.get(), flavor, guid);
   }
 
@@ -31,7 +31,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.debug_pointing) return;
 
-    printf("KeyRemap4MacBook RelativePointerEventCallBack [%s]: buttons: %d, dx: %d, dy: %d\n",
+    printf("KeyRemap4MacBook RelativePointerEventCallBack [%7s]: buttons: %d, dx: %d, dy: %d\n",
            message, buttons.get(), dx, dy);
   }
 
