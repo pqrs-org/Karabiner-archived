@@ -1,4 +1,5 @@
 #include "KeyCode.hpp"
+#include "Config.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
 #include "keycode/output/include.EventType.cpp"
@@ -78,16 +79,20 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (*this == KeyCode::ENTER_POWERBOOK) { *this = KeyCode::ENTER; }
     }
 
-    for (unsigned int i = 0; i < sizeof(fnkeyhack) / sizeof(fnkeyhack[0]); ++i) {
-      if (fnkeyhack[i].normalize(*this, flags, eventType)) break;
+    if (! config.general_disable_numpad_hack) {
+      for (unsigned int i = 0; i < sizeof(fnkeyhack) / sizeof(fnkeyhack[0]); ++i) {
+        if (fnkeyhack[i].normalize(*this, flags, eventType)) break;
+      }
     }
   }
 
   void
   KeyCode::reverseNormalizeKey(Flags& flags, EventType eventType, KeyboardType keyboardType)
   {
-    for (unsigned int i = 0; i < sizeof(fnkeyhack) / sizeof(fnkeyhack[0]); ++i) {
-      if (fnkeyhack[i].reverse(*this, flags, eventType)) break;
+    if (! config.general_disable_numpad_hack) {
+      for (unsigned int i = 0; i < sizeof(fnkeyhack) / sizeof(fnkeyhack[0]); ++i) {
+        if (fnkeyhack[i].reverse(*this, flags, eventType)) break;
+      }
     }
 
     if (keyboardType == KeyboardType::POWERBOOK ||

@@ -30,6 +30,11 @@
           <sysctl>general.hide_statusmessage</sysctl>
         </item>
         <item>
+          <name>Disable NumPad Hack</name>
+          <appendix>(Don't change FN+JKL.. to NumPad, and other FN+key combinations)</appendix>
+          <sysctl>general.disable_numpad_hack</sysctl>
+        </item>
+        <item>
           <name>Excluding Devices</name>
           <list>
             <item>
