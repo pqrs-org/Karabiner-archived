@@ -148,10 +148,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ----------------------------------------
-    struct msghdr msg;
+    // We can use static variable, because this function uses lock at the beginning.
+    static struct msghdr msg;
     memset(&msg, 0, sizeof(msg));
 
-    struct iovec aiov[3];
+    static struct iovec aiov[3];
     size_t iolen;
     aiov[0].iov_base = reinterpret_cast<caddr_t>(&type);
     aiov[0].iov_len = sizeof(type);
