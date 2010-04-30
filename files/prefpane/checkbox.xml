@@ -5368,6 +5368,12 @@
           <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::SHIFT_L</autogen>
         </item>
         <item>
+          <name>Backslash(\) to Option_L+3 (#), Shift+Backslash(\) to Tilde(~)</name>
+          <sysctl>remap.uk_backslash2hash</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH, VK_SHIFT, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::KEY_3, ModifierFlag::OPTION_L</autogen>
+        </item>
+        <item>
           <name>Section(§) to Backquote(`)</name>
           <sysctl>remap.uk_section2backquote</sysctl>
           <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKQUOTE</autogen>
