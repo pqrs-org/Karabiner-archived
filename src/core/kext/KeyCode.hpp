@@ -106,13 +106,36 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool operator>(KeyCode other) const { return value_ > other.get(); }
     bool operator>=(KeyCode other) const { return value_ >= other.get(); }
 
-    void normalizeKey(Flags& flags, KeyboardType keyboardType);
-    void reverseNormalizeKey(Flags& flags, KeyboardType keyboardType);
+    void normalizeKey(Flags& flags, EventType eventType, KeyboardType keyboardType);
+    void reverseNormalizeKey(Flags& flags, EventType eventType, KeyboardType keyboardType);
 
     ModifierFlag getModifierFlag(void) const;
     bool isModifier(void) const { return getModifierFlag() != ModifierFlag::NONE; }
 
 #include "keycode/output/include.KeyCode.hpp"
+
+    // When FN key and Arrow key were pushed together, another key code was sent (Home,End,PageUp,PageDown or something).
+    // We need to change these Home,End,PageUp,PageDown keys to FN+Arrow key before sending key code to remapper.
+    // (If we change FN to Control_L, FN+Up-Arrow must be changed to Control_L+Up-Arrow. Not Control_L+PageUp).
+    // We also need to change FN+Arrow to Home,End,PageUp,PageDown before outputting key code.
+    //
+    // This class handles the above.
+    class FNKeyHack {
+    public:
+      FNKeyHack(const KeyCode& fk, const KeyCode& tk) : fromKeyCode_(fk), toKeyCode_(tk), active_normalize_(false), active_reverse_(false) {}
+      // FN+PageUp to FN+Up-Arrow
+      bool normalize(KeyCode& key, Flags flags, EventType eventType) { return remap(key, flags, eventType, active_normalize_, fromKeyCode_, toKeyCode_); }
+      // FN+Up-Arrow to PageUp
+      bool reverse(KeyCode& key, Flags flags, EventType eventType) { return remap(key, flags, eventType, active_reverse_, toKeyCode_, fromKeyCode_); }
+
+    private:
+      bool remap(KeyCode& key, Flags flags, EventType eventType, bool& active, KeyCode fromKeyCode, KeyCode toKeyCode);
+
+      const KeyCode& fromKeyCode_;
+      const KeyCode& toKeyCode_;
+      bool active_normalize_;
+      bool active_reverse_;
+    };
 
   private:
     unsigned int value_;

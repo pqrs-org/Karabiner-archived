@@ -196,7 +196,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       params.log();
 
       // ------------------------------------------------------------
-      params.key.normalizeKey(params.flags, params.keyboardType);
+      params.key.normalizeKey(params.flags, params.eventType, params.keyboardType);
 
       KeyRemap4MacBook_bridge::GetWorkspaceData::Reply workspacedata;
       bool copylast = (params.eventType.isKeyDownOrModifierDown(params.key, params.flags) == false);

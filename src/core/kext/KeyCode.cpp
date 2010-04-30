@@ -19,71 +19,77 @@ namespace org_pqrs_KeyRemap4MacBook {
     return false;
   }
 
-  void
-  KeyCode::normalizeKey(Flags& flags, KeyboardType keyboardType)
+  bool
+  KeyCode::FNKeyHack::remap(KeyCode& key, Flags flags, EventType eventType, bool& active, KeyCode fromKeyCode, KeyCode toKeyCode)
   {
+    if (key != fromKeyCode) return false;
+
+    bool isKeyDown = eventType.isKeyDownOrModifierDown(key, flags);
+    if (isKeyDown) {
+      if (! flags.isOn(ModifierFlag::FN)) return false;
+      active = true;
+    } else {
+      if (! active) return false;
+      active = false;
+    }
+
+    key = toKeyCode;
+
+    return true;
+  }
+
+  namespace {
+    KeyCode::FNKeyHack fnkeyhack[] = {
+      KeyCode::FNKeyHack(KeyCode::KEYPAD_0, KeyCode::M),
+      KeyCode::FNKeyHack(KeyCode::KEYPAD_1, KeyCode::J),
+      KeyCode::FNKeyHack(KeyCode::KEYPAD_2, KeyCode::K),
+      KeyCode::FNKeyHack(KeyCode::KEYPAD_3, KeyCode::L),
+      KeyCode::FNKeyHack(KeyCode::KEYPAD_4, KeyCode::U),
+      KeyCode::FNKeyHack(KeyCode::KEYPAD_5, KeyCode::I),
+      KeyCode::FNKeyHack(KeyCode::KEYPAD_6, KeyCode::O),
+      KeyCode::FNKeyHack(KeyCode::KEYPAD_7, KeyCode::KEY_7),
+      KeyCode::FNKeyHack(KeyCode::KEYPAD_8, KeyCode::KEY_8),
+      KeyCode::FNKeyHack(KeyCode::KEYPAD_9, KeyCode::KEY_9),
+      KeyCode::FNKeyHack(KeyCode::KEYPAD_CLEAR, KeyCode::KEY_6),
+      KeyCode::FNKeyHack(KeyCode::KEYPAD_PLUS, KeyCode::SLASH),
+      KeyCode::FNKeyHack(KeyCode::KEYPAD_MINUS, KeyCode::SEMICOLON),
+      KeyCode::FNKeyHack(KeyCode::KEYPAD_MULTIPLY, KeyCode::P),
+      KeyCode::FNKeyHack(KeyCode::KEYPAD_SLASH, KeyCode::KEY_0),
+      KeyCode::FNKeyHack(KeyCode::KEYPAD_EQUAL, KeyCode::MINUS),
+      KeyCode::FNKeyHack(KeyCode::KEYPAD_DOT, KeyCode::DOT),
+      KeyCode::FNKeyHack(KeyCode::PAGEUP, KeyCode::CURSOR_UP),
+      KeyCode::FNKeyHack(KeyCode::PAGEDOWN, KeyCode::CURSOR_DOWN),
+      KeyCode::FNKeyHack(KeyCode::HOME, KeyCode::CURSOR_LEFT),
+      KeyCode::FNKeyHack(KeyCode::END, KeyCode::CURSOR_RIGHT),
+      KeyCode::FNKeyHack(KeyCode::ENTER, KeyCode::RETURN),
+      KeyCode::FNKeyHack(KeyCode::FORWARD_DELETE, KeyCode::DELETE),
+    };
+  }
+
+  void
+  KeyCode::normalizeKey(Flags& flags, EventType eventType, KeyboardType keyboardType)
+  {
+    // We can drop CURSOR and KEYPAD flags, because we'll set these flags at reverseNormalizeKey.
+    flags.stripCURSOR().stripKEYPAD();
+
     if (keyboardType == KeyboardType::POWERBOOK ||
         keyboardType == KeyboardType::POWERBOOK_G4 ||
         keyboardType == KeyboardType::POWERBOOK_G4_TI) {
       if (*this == KeyCode::ENTER_POWERBOOK) { *this = KeyCode::ENTER; }
     }
 
-    if (flags.isOn(ModifierFlag::FN)) {
-      // Note: KEYPAD_CLEAR has no ModifierFlag::KEYPAD bit.
-      if (*this == KeyCode::KEYPAD_0)        { *this = KeyCode::M;            flags.stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_1)        { *this = KeyCode::J;            flags.stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_2)        { *this = KeyCode::K;            flags.stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_3)        { *this = KeyCode::L;            flags.stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_4)        { *this = KeyCode::U;            flags.stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_5)        { *this = KeyCode::I;            flags.stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_6)        { *this = KeyCode::O;            flags.stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_7)        { *this = KeyCode::KEY_7;        flags.stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_8)        { *this = KeyCode::KEY_8;        flags.stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_9)        { *this = KeyCode::KEY_9;        flags.stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_CLEAR)    { *this = KeyCode::KEY_6; }
-      if (*this == KeyCode::KEYPAD_PLUS)     { *this = KeyCode::SLASH;        flags.stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_MINUS)    { *this = KeyCode::SEMICOLON;    flags.stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_MULTIPLY) { *this = KeyCode::P;            flags.stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_SLASH)    { *this = KeyCode::KEY_0;        flags.stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_EQUAL)    { *this = KeyCode::MINUS;        flags.stripKEYPAD(); }
-      if (*this == KeyCode::KEYPAD_DOT)      { *this = KeyCode::DOT;          flags.stripKEYPAD(); }
-      if (*this == KeyCode::PAGEUP)          { *this = KeyCode::CURSOR_UP;    flags.add(ModifierFlag::CURSOR); }
-      if (*this == KeyCode::PAGEDOWN)        { *this = KeyCode::CURSOR_DOWN;  flags.add(ModifierFlag::CURSOR); }
-      if (*this == KeyCode::HOME)            { *this = KeyCode::CURSOR_LEFT;  flags.add(ModifierFlag::CURSOR); }
-      if (*this == KeyCode::END)             { *this = KeyCode::CURSOR_RIGHT; flags.add(ModifierFlag::CURSOR); }
-      if (*this == KeyCode::ENTER)           { *this = KeyCode::RETURN; }
-      if (*this == KeyCode::FORWARD_DELETE)  { *this = KeyCode::DELETE; }
+    for (unsigned int i = 0; i < sizeof(fnkeyhack) / sizeof(fnkeyhack[0]); ++i) {
+      fnkeyhack[i].normalize(*this, flags, eventType);
     }
   }
 
   void
-  KeyCode::reverseNormalizeKey(Flags& flags, KeyboardType keyboardType)
+  KeyCode::reverseNormalizeKey(Flags& flags, EventType eventType, KeyboardType keyboardType)
   {
-    if (flags.isOn(ModifierFlag::FN)) {
-      if (*this == KeyCode::M)            { *this = KeyCode::KEYPAD_0; }
-      if (*this == KeyCode::J)            { *this = KeyCode::KEYPAD_1; }
-      if (*this == KeyCode::K)            { *this = KeyCode::KEYPAD_2; }
-      if (*this == KeyCode::L)            { *this = KeyCode::KEYPAD_3; }
-      if (*this == KeyCode::U)            { *this = KeyCode::KEYPAD_4; }
-      if (*this == KeyCode::I)            { *this = KeyCode::KEYPAD_5; }
-      if (*this == KeyCode::O)            { *this = KeyCode::KEYPAD_6; }
-      if (*this == KeyCode::KEY_7)        { *this = KeyCode::KEYPAD_7; }
-      if (*this == KeyCode::KEY_8)        { *this = KeyCode::KEYPAD_8; }
-      if (*this == KeyCode::KEY_9)        { *this = KeyCode::KEYPAD_9; }
-      if (*this == KeyCode::KEY_6)        { *this = KeyCode::KEYPAD_CLEAR; }
-      if (*this == KeyCode::SLASH)        { *this = KeyCode::KEYPAD_PLUS; }
-      if (*this == KeyCode::SEMICOLON)    { *this = KeyCode::KEYPAD_MINUS; }
-      if (*this == KeyCode::P)            { *this = KeyCode::KEYPAD_MULTIPLY; }
-      if (*this == KeyCode::KEY_0)        { *this = KeyCode::KEYPAD_SLASH; }
-      if (*this == KeyCode::MINUS)        { *this = KeyCode::KEYPAD_EQUAL; }
-      if (*this == KeyCode::DOT)          { *this = KeyCode::KEYPAD_DOT; }
-      if (*this == KeyCode::CURSOR_UP)    { *this = KeyCode::PAGEUP; }
-      if (*this == KeyCode::CURSOR_DOWN)  { *this = KeyCode::PAGEDOWN; }
-      if (*this == KeyCode::CURSOR_LEFT)  { *this = KeyCode::HOME; }
-      if (*this == KeyCode::CURSOR_RIGHT) { *this = KeyCode::END; }
-      if (*this == KeyCode::RETURN)       { *this = KeyCode::ENTER; }
-      if (*this == KeyCode::DELETE)       { *this = KeyCode::FORWARD_DELETE; }
+    for (unsigned int i = 0; i < sizeof(fnkeyhack) / sizeof(fnkeyhack[0]); ++i) {
+      fnkeyhack[i].reverse(*this, flags, eventType);
     }
+
     if (keyboardType == KeyboardType::POWERBOOK ||
         keyboardType == KeyboardType::POWERBOOK_G4 ||
         keyboardType == KeyboardType::POWERBOOK_G4_TI) {
