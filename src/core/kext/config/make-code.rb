@@ -162,6 +162,20 @@ def parseautogen(name, lines, autogen_index)
       end
       filter << "if (#{tmp.join(' && ')}) break;"
 
+    elsif /<config_not>(.+?)<\/config_not>/ =~ l then
+      $1.split(/,/).each do |f|
+        f.gsub!(/\./, '_')
+        filter << "if (config.#{f.strip}) break;"
+      end
+
+    elsif /<config_only>(.+?)<\/config_only>/ =~ l then
+      tmp = []
+      $1.split(/,/).each do |f|
+        f.gsub!(/\./, '_')
+        tmp << "(! config.#{f.strip})"
+      end
+      filter << "if (#{tmp.join(' && ')}) break;"
+
     elsif /<(inputmode|inputmodedetail)_not>(.+?)<\/(inputmode|inputmodedetail)_not>/ =~ l then
       inputmodetype = $1
       $2.split(/,/).each do |f|
