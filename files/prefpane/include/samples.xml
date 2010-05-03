@@ -274,6 +274,43 @@
       </block>
     </item>
 
+    <!-- Config only -->
+    <item>
+      <name>Config only</name>
+      <sysctl>remap.samples_config</sysctl>
+      <appendix>A to 1 if samples_config_mode1 == active</appendix>
+      <appendix>B to 2 if samples_config_mode1 or samples_config_mode2 == active</appendix>
+      <appendix>A to 3 if samples_config_mode1 != active</appendix>
+      <appendix>B to 4 if samples_config_mode1 and samples_config_mode2 != active</appendix>
+      <appendix>C to 5</appendix>
+      <block>
+        <config_only>option.samples_config_mode1</config_only>
+        <autogen>--KeyToKey-- KeyCode::A, KeyCode::KEY_1</autogen>
+      </block>
+      <block>
+        <config_only>option.samples_config_mode1, option.samples_config_mode2</config_only>
+        <autogen>--KeyToKey-- KeyCode::B, KeyCode::KEY_2</autogen>
+      </block>
+      <block>
+        <config_not>option.samples_config_mode1</config_not>
+        <autogen>--KeyToKey-- KeyCode::A, KeyCode::KEY_3</autogen>
+      </block>
+      <block>
+        <config_not>option.samples_config_mode1, option.samples_config_mode2</config_not>
+        <autogen>--KeyToKey-- KeyCode::B, KeyCode::KEY_4</autogen>
+      </block>
+      <block>
+        <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_5</autogen>
+      </block>
+    </item>
+    <item>
+      <name>Config only mode1</name>
+      <sysctl>option.samples_config_mode1</sysctl>
+    </item>
+    <item>
+      <name>Config only mode2</name>
+      <sysctl>option.samples_config_mode2</sysctl>
+    </item>
 
     <!-- inputmode only -->
     <item>
