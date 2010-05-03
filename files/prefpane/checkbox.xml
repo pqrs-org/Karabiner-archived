@@ -4541,6 +4541,12 @@
               <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::ESCAPE</autogen>
             </item>
             <item>
+              <name>EISUU to Escape (only when inputmode == roman)</name>
+              <sysctl>remap.jis_eisuu2escape_onlyroman</sysctl>
+              <inputmode_only>INPUTMODE_ROMAN</inputmode_only>
+              <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::ESCAPE</autogen>
+            </item>
+            <item>
               <name>EISUU to Control_L+F2 (= Move focus to the menu bar)</name>
               <sysctl>remap.jis_eisuu2controlLf2</sysctl>
               <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::F2, ModifierFlag::CONTROL_L</autogen>
