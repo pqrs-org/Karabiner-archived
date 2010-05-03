@@ -3689,6 +3689,39 @@
             </item>
           </list>
         </item>
+        <item>
+          <name>Enable at only Remote Desktop Connection Client</name>
+          <list>
+            <item>
+              <name>Command+Tab to Option+Tab</name>
+              <appendix>(only in RDC)</appendix>
+              <sysctl>remap.app_rdc_commandTab2optionTab</sysctl>
+              <only>REMOTEDESKTOPCONNECTION</only>
+              <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
+            </item>
+            <item>
+              <name>Command+XCVSZWF to Ctrl+XCVSZWF</name>
+              <appendix>(only in RDC)</appendix>
+              <sysctl>remap.app_rdc_commandXCVSZWF2controlXCVSZWF</sysctl>
+              <only>REMOTEDESKTOPCONNECTION</only>
+              <autogen>--KeyToKey-- KeyCode::X, VK_COMMAND, KeyCode::X, ModifierFlag::CONTROL_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::C, VK_COMMAND, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::V, VK_COMMAND, KeyCode::V, ModifierFlag::CONTROL_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::S, VK_COMMAND, KeyCode::S, ModifierFlag::CONTROL_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::Z, VK_COMMAND, KeyCode::Z, ModifierFlag::CONTROL_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::Y, VK_COMMAND, KeyCode::Y, ModifierFlag::CONTROL_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::W, VK_COMMAND, KeyCode::W, ModifierFlag::CONTROL_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::F, VK_COMMAND, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
+            </item>
+            <item>
+              <name>Command+SPACE to Ctrl+SPACE</name>
+              <appendix>(only in RDC)</appendix>
+              <sysctl>remap.app_rdc_commandSpace2controlSpace</sysctl>
+              <only>REMOTEDESKTOPCONNECTION</only>
+              <autogen>--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::SPACE, ModifierFlag::CONTROL_L</autogen>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
 
