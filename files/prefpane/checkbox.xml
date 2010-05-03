@@ -1722,6 +1722,11 @@
           <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::SHIFT_L</autogen>
         </item>
         <item>
+          <name>Option_L to Command+Control+Option+Shift+F1</name>
+          <sysctl>remap.optionL2allF1</sysctl>
+          <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::F1, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+        </item>
+        <item>
           <name>Option_L to Space</name>
           <sysctl>remap.optionL2space</sysctl>
           <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::SPACE</autogen>
