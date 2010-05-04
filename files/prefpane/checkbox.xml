@@ -3094,6 +3094,11 @@
           <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::EXTRA1, KeyCode::FN, ModifierFlag::EXTRA1</autogen>
         </item>
         <item>
+          <name>Simultaneous Key Presses [X+C] to Escape</name>
+          <sysctl>remap.simultaneouskeypresses_xc2escape</sysctl>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::C, KeyCode::X, KeyCode::ESCAPE</autogen>
+        </item>
+        <item>
           <name>Simultaneous Key Presses [F+N] to FN_Lock</name>
           <sysctl>remap.simultaneouskeypresses_fn_to_fnlock</sysctl>
           <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::N, KeyCode::VK_LOCK_FN</autogen>
