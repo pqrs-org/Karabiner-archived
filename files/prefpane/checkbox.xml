@@ -3099,6 +3099,11 @@
           <autogen>--SimultaneousKeyPresses-- KeyCode::C, KeyCode::X, KeyCode::ESCAPE</autogen>
         </item>
         <item>
+          <name>Simultaneous Key Presses [M+N] to F13</name>
+          <sysctl>remap.simultaneouskeypresses_mn2f13</sysctl>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::N, KeyCode::M, KeyCode::F13</autogen>
+        </item>
+        <item>
           <name>Simultaneous Key Presses [F+N] to FN_Lock</name>
           <sysctl>remap.simultaneouskeypresses_fn_to_fnlock</sysctl>
           <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::N, KeyCode::VK_LOCK_FN</autogen>
