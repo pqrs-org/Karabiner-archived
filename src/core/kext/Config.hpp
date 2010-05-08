@@ -27,13 +27,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       return value;
     }
     int get_repeat_consumer_initial_wait(void) const {
-      const int MINVAL = 200;
+      const int MINVAL = 10;
       int value = repeat_consumer_initial_wait;
       if (value < MINVAL) return MINVAL;
       return value;
     }
     int get_repeat_consumer_wait(void) const {
-      const int MINVAL = 20;
+      const int MINVAL = 10;
       int value = repeat_consumer_wait;
       if (value < MINVAL) return MINVAL;
       return value;
