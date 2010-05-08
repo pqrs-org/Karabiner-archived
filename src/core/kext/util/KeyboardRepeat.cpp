@@ -202,7 +202,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       cancel_nolock();
 
       primitive_add_nolock(eventType, flags, key);
-      primitive_start_nolock(CONSUMER_INITIAL_WAIT);
+      primitive_start_nolock(config.get_repeat_consumer_initial_wait());
 
       if (config.debug_devel) {
         IOLog("KeyRemap4MacBook -Info- setRepeat_keyboard consumer key:%d flags:0x%x\n", key.get(), flags.get());
@@ -258,7 +258,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     if (isconsumer) {
-      timer_.setTimeoutMS(CONSUMER_WAIT);
+      timer_.setTimeoutMS(config.get_repeat_consumer_wait());
     } else {
       timer_.setTimeoutMS(config.get_repeat_wait());
     }

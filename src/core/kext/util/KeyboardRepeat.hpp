@@ -54,9 +54,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   private:
     enum {
       MAXNUM = 16,
-
-      CONSUMER_INITIAL_WAIT = 500,
-      CONSUMER_WAIT = 100,
     };
     struct Item {
       enum Type {
