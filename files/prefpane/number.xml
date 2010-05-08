@@ -15,6 +15,19 @@
     </item>
 
     <item>
+      <name>[Functional Key Repeat] Initial Wait</name>
+      <sysctl>repeat.consumer_initial_wait</sysctl>
+      <default>500</default>
+      <baseunit>ms</baseunit>
+    </item>
+    <item>
+      <name>[Functional Key Repeat] Wait</name>
+      <sysctl>repeat.consumer_wait</sysctl>
+      <default>100</default>
+      <baseunit>ms</baseunit>
+    </item>
+
+    <item>
       <name>[Key Overlaid Modifier] Timeout</name>
       <sysctl>parameter.keyoverlaidmodifier_timeout</sysctl>
       <default>1000</default>
