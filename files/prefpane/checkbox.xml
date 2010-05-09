@@ -2202,6 +2202,11 @@
           <name>Swap Space and Option+Space</name>
           <list>
             <item>
+              <name>FN+Escape to turn on "Swap Space and Option+Space" Mode</name>
+              <sysctl>remap.swap_space_optionspace_toggle_fnescape</sysctl>
+              <autogen>--KeyToKey-- KeyCode::ESCAPE, ModifierFlag::FN, KeyCode::VK_CONFIG_TOGGLE_notsave_swap_space_optionspace</autogen>
+            </item>
+            <item>
               <name>FN+Space to turn on "Swap Space and Option+Space" Mode</name>
               <sysctl>remap.swap_space_optionspace_toggle_fnspace</sysctl>
               <autogen>--KeyToKey-- KeyCode::SPACE, ModifierFlag::FN, KeyCode::VK_CONFIG_TOGGLE_notsave_swap_space_optionspace</autogen>
