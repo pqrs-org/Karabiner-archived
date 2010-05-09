@@ -2199,6 +2199,29 @@
           <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
         </item>
         <item>
+          <name>Swap Space and Option+Space</name>
+          <list>
+            <item>
+              <name>FN+Space to turn on "Swap Space and Option+Space" Mode</name>
+              <sysctl>remap.swap_space_optionspace_toggle_fnspace</sysctl>
+              <autogen>--KeyToKey-- KeyCode::SPACE, ModifierFlag::FN, KeyCode::VK_CONFIG_TOGGLE_notsave_swap_space_optionspace</autogen>
+            </item>
+            <item>
+              <name>Swap Space and Option+Space Core</name>
+              <list>
+                <item>
+                  <name>Swap Space and Option+Space Core</name>
+                  <sysctl>notsave.swap_space_optionspace</sysctl>
+                  <vk_config>true</vk_config>
+                  <autogen>--ShowStatusMessage-- "Swap Mode"</autogen>
+                  <autogen>--KeyToKey-- KeyCode::SPACE, VK_OPTION | ModifierFlag::NONE, KeyCode::SPACE</autogen>
+                  <autogen>--KeyToKey-- KeyCode::SPACE, ModifierFlag::NONE, KeyCode::SPACE, ModifierFlag::OPTION_L</autogen>
+                </item>
+              </list>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Space to Return</name>
           <sysctl>remap.space2return</sysctl>
           <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::RETURN</autogen>
