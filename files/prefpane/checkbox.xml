@@ -5438,6 +5438,17 @@
       </list>
     </item>
     <item>
+      <name>For Swiss</name>
+      <list>
+        <item>
+          <name>Swap Y and Z</name>
+          <sysctl>remap.swiss_swap_y_z</sysctl>
+          <autogen>--KeyToKey-- KeyCode::Y, KeyCode::Z</autogen>
+          <autogen>--KeyToKey-- KeyCode::Z, KeyCode::Y</autogen>
+        </item>
+      </list>
+    </item>
+    <item>
       <name>For UK Keyboard users</name>
       <list>
         <item>
