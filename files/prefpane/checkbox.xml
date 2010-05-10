@@ -2346,6 +2346,18 @@
           <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT</autogen>
         </item>
         <item>
+          <name>ModifierFlag::EXTRA1+WXSD to Up/Down/Left/Right</name>
+          <appendix>(+ ModifierFlag::EXTRA1+A to Command_L+Left)</appendix>
+          <appendix>(+ ModifierFlag::EXTRA1+F to Command_L+Right)</appendix>
+          <sysctl>remap.diamond_cursor_extra1_exsd</sysctl>
+          <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::EXTRA1, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::EXTRA1, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::EXTRA1, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::EXTRA1, KeyCode::CURSOR_RIGHT</autogen>
+          <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA1, KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::EXTRA1, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
           <name>Control_L+EXSD to Up/Down/Left/Right</name>
           <sysctl>remap.diamond_cursor_controlL_exsd</sysctl>
           <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::CONTROL_L, KeyCode::CURSOR_UP</autogen>
@@ -4081,6 +4093,16 @@
           <autogen>--KeyToKey-- FROMKEYCODE_PAGEUP, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
           <autogen>--KeyToKey-- FROMKEYCODE_PAGEDOWN, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
         </item>
+        <item>
+          <name>Use PC Style Copy/Paste</name>
+          <appendix>(Control+C to Command_L+C)</appendix>
+          <appendix>(Control+V to Command_L+V)</appendix>
+          <appendix>(Control+X to Command_L+X)</appendix>
+          <sysctl>remap.copy_paste_winstyle</sysctl>
+          <autogen>--KeyToKey-- KeyCode::C, VK_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::V, VK_CONTROL, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::X, VK_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+        </item>
       </list>
     </item>
 
@@ -4595,6 +4617,11 @@
               <name>EISUU to Shift_L</name>
               <sysctl>remap.jis_eisuu2shiftL</sysctl>
               <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::SHIFT_L</autogen>
+            </item>
+            <item>
+              <name>EISUU to ModifierFlag::EXTRA1</name>
+              <sysctl>remap.jis_eisuu2modextra1</sysctl>
+              <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::VK_MODIFIER_EXTRA1</autogen>
             </item>
             <item>
               <name>EISUU to Delete</name>
