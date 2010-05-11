@@ -1001,6 +1001,19 @@
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::COMMAND_L</autogen>
         </item>
         <item>
+          <name>FN to Command_L (except virtual machine, RDC)</name>
+          <appendix>(+ FN to Control_L (only in virtual machine, RDC))</appendix>
+          <sysctl>remap.fn2commandL_fn2controlL_vm</sysctl>
+          <block>
+            <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+            <autogen>--KeyToKey-- KeyCode::FN, KeyCode::COMMAND_L</autogen>
+          </block>
+          <block>
+            <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+            <autogen>--KeyToKey-- KeyCode::FN, KeyCode::CONTROL_L</autogen>
+          </block>
+        </item>
+        <item>
           <name>FN to Control_L</name>
           <sysctl>remap.fn2controlL</sysctl>
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::CONTROL_L</autogen>
