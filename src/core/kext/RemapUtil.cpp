@@ -613,13 +613,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     p.key.reverseNormalizeKey(p.flags, p.eventType, p.keyboardType);
     p.flags.stripEXTRA();
 
-    FireModifiers::fire(p.flags, p.keyboardType);
-
     // skip no-outputable keycodes.
+    // Note: check before FireModifiers to avoid meaningless modifier event.
     if (p.key == KeyCode::VK_NONE ||
         p.key == KeyCode::VK_CONSUMERKEY) {
       return;
     }
+
+    FireModifiers::fire(p.flags, p.keyboardType);
 
     if (p.eventType == EventType::DOWN || p.eventType == EventType::UP) {
       p.apply();
@@ -674,12 +675,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     Params_KeyboardSpecialEventCallback& p = *ptr;
 
     p.flags.stripEXTRA();
-    FireModifiers::fire();
 
     // skip no-outputable keycodes.
-    if (p.key == ConsumerKeyCode::VK_NONE) {
+    // Note: check before FireModifiers to avoid meaningless modifier event.
+    if (p.key == ConsumerKeyCode::VK_NONE ||
+        p.key == ConsumerKeyCode::VK_KEY) {
       return;
     }
+
+    FireModifiers::fire();
 
     p.apply();
   }
