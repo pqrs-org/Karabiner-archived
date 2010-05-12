@@ -165,11 +165,13 @@ namespace org_pqrs_KeyRemap4MacBook {
                                   ConsumerKeyCode fromKeyCode, Flags fromFlags,
                                   KeyCode toKeyCode,           Flags toFlags)
   {
-    if (remapParams.isremapped) return false;
-    if (remapParams.params.key != fromKeyCode) return false;
+    EventType eventType = remapParams.params.eventType;
+
+    bool result = consumertoconsumer_.remap(remapParams, fromKeyCode, fromFlags, ConsumerKeyCode::VK_NONE);
+    if (! result) return false;
 
     // ----------------------------------------
-    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(remapParams.params.eventType,
+    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(eventType,
                                                                                    FlagStatus::makeFlags(),
                                                                                    KeyCode::VK_CONSUMERKEY,
                                                                                    CommonData::getcurrent_keyboardType(),
