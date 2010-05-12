@@ -104,20 +104,24 @@
       <appendix>Music Prev to Shift_L (to Modifier)</appendix>
       <appendix>Shift+Volume Up to B (with Modifier)</appendix>
       <appendix>Option+Volume Mute to Shift_L+C (to Key+Modifier)</appendix>
+      <appendix>NumLock to A</appendix>
       <sysctl>remap.samples_consumertokey</sysctl>
       <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, KeyCode::A</autogen>
       <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PREV, KeyCode::SHIFT_L</autogen>
       <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, VK_SHIFT, KeyCode::B</autogen>
       <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, VK_OPTION, KeyCode::C, ModifierFlag::SHIFT_L</autogen>
+      <autogen>--ConsumerToKey-- ConsumerKeyCode::NUMLOCK, KeyCode::A</autogen>
     </item>
 
     <item>
       <name>ConsumerToConsumer</name>
       <appendix>Volume Down to Volume Mute</appendix>
       <appendix>Shift+Volume Up to Volume Mute (with Modifier)</appendix>
+      <appendix>NumLock to Volume Mute</appendix>
       <sysctl>remap.samples_consumertoconsumer</sysctl>
       <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_DOWN, ConsumerKeyCode::VOLUME_MUTE</autogen>
       <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_UP, VK_SHIFT, ConsumerKeyCode::VOLUME_MUTE</autogen>
+      <autogen>--ConsumerToConsumer-- ConsumerKeyCode::NUMLOCK, ConsumerKeyCode::VOLUME_MUTE</autogen>
     </item>
 
     <item>
