@@ -26,6 +26,10 @@
           <sysctl>general.capslock_led_hack</sysctl>
         </item>
         <item>
+          <name>Disable NumLock LED</name>
+          <sysctl>general.disable_numlock_led</sysctl>
+        </item>
+        <item>
           <name>Don't show Modifier lock status on screen</name>
           <sysctl>general.hide_statusmessage</sysctl>
         </item>
@@ -1679,6 +1683,17 @@
           <autogen>--KeyToKey-- KeyCode::KEY_8, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_8</autogen>
           <autogen>--KeyToKey-- KeyCode::KEY_9, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_9</autogen>
           <autogen>--KeyToKey-- KeyCode::KEY_0, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_0</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
+      <name>Change NumLock Key</name>
+      <list>
+        <item>
+          <name>NumLock to F6</name>
+          <sysctl>remap.numlock2f6</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::NUMLOCK, KeyCode::F6</autogen>
         </item>
       </list>
     </item>
