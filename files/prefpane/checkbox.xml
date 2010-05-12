@@ -2125,6 +2125,11 @@
           <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::ESCAPE</autogen>
         </item>
         <item>
+          <name>Shift_R to Forward Delete</name>
+          <sysctl>remap.shiftR2forwarddelete</sysctl>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::FORWARD_DELETE</autogen>
+        </item>
+        <item>
           <name>Shift_R to Return</name>
           <sysctl>remap.shiftR2return</sysctl>
           <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::RETURN</autogen>
