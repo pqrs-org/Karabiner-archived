@@ -276,7 +276,9 @@ setCurrentApplicationType(const char* applicationName)
   }
 
   if (strcmp(applicationName, "org.x.X11") == 0 ||
-      strcmp(applicationName, "com.apple.x11") == 0) {
+      strcmp(applicationName, "com.apple.x11") == 0 ||
+      strcmp(applicationName, "org.macosforge.xquartz.X11") == 0 ||
+      strcmp(applicationName, "org.macports.X11") == 0) {
     SET_CURRENT_APPLICATION_TYPE(X11);
   }
 
