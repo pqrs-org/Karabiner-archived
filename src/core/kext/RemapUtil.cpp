@@ -5,6 +5,7 @@
 #include "RemapUtil.hpp"
 #include "util/KeyboardRepeat.hpp"
 #include "util/KeyEventInputQueue.hpp"
+#include "util/ListHookedKeyboard.hpp"
 #include "VirtualKey.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -193,6 +194,24 @@ namespace org_pqrs_KeyRemap4MacBook {
                                        ConsumerKeyCode fromKeyCode, Flags fromFlags,
                                        ConsumerKeyCode toKeyCode,   Flags toFlags)
   {
+    // ------------------------------------------------------------
+    // NumLock Hack
+    // If we change NumLock key, we need to call IOHIKeyboard::setNumLock(false).
+    // Unless call setNumLock, internal NumLock status of IOHIKeyboard is still active.
+    // And NumLock retains working status.
+    if (fromKeyCode == ConsumerKeyCode::NUMLOCK && toKeyCode != ConsumerKeyCode::NUMLOCK) {
+      HookedKeyboard* hk = ListHookedKeyboard::instance().get();
+      if (hk) {
+        IOHIKeyboard* kbd = hk->get();
+        if (kbd) {
+          if (kbd->numLock()) {
+            kbd->setNumLock(false);
+          }
+        }
+      }
+    }
+
+    // ------------------------------------------------------------
     if (remapParams.isremapped) return false;
     if (remapParams.params.key != fromKeyCode) return false;
 
