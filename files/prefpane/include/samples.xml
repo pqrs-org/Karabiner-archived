@@ -105,6 +105,9 @@
       <appendix>Shift+Volume Up to B (with Modifier)</appendix>
       <appendix>Option+Volume Mute to Shift_L+C (to Key+Modifier)</appendix>
       <appendix>NumLock to A</appendix>
+      <!-- Note: -->
+      <!-- NumLock is a special key. When we press "A" key with holding NumLock key, there is no key down event occurred -->
+      <!-- Therefore we cannot change NumLock to Modifier -->
       <sysctl>remap.samples_consumertokey</sysctl>
       <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, KeyCode::A</autogen>
       <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PREV, KeyCode::SHIFT_L</autogen>
