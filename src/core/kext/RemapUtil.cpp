@@ -181,7 +181,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     Params_KeyboardEventCallBack& params = *ptr;
 
     RemapParams rp(params, remapParams.workspacedata);
-    if (! keytokey_.remap(rp, KeyCode::VK_CONSUMERKEY, fromFlags, toKeyCode, toFlags)) {
+    if (! keytokey_.remap(rp, KeyCode::VK_CONSUMERKEY, toKeyCode, toFlags)) {
       return false;
     }
 
@@ -675,6 +675,12 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     p.flags.stripEXTRA();
     FireModifiers::fire();
+
+    // skip no-outputable keycodes.
+    if (p.key == ConsumerKeyCode::VK_NONE) {
+      return;
+    }
+
     p.apply();
   }
 
