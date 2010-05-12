@@ -26,10 +26,6 @@
           <sysctl>general.capslock_led_hack</sysctl>
         </item>
         <item>
-          <name>Disable NumLock LED</name>
-          <sysctl>general.disable_numlock_led</sysctl>
-        </item>
-        <item>
           <name>Don't show Modifier lock status on screen</name>
           <sysctl>general.hide_statusmessage</sysctl>
         </item>

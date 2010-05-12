@@ -166,10 +166,6 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
         }
       }
-
-      if (config.general_disable_numlock_led) {
-        kbd->setNumLockFeedback(false);
-      }
     }
   }
 
