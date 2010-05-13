@@ -131,10 +131,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     namespace StatusMessageWindowParameter {
       struct Request {
         Request(void) : alpha_font(0), alpha_background(0) {}
-        Request(uint32_t af, uint32_t ab) : alpha_font(af), alpha_background(ab) {}
+        Request(uint32_t af, uint32_t ab, int32_t px, int32_t py) : alpha_font(af), alpha_background(ab), posx_adjustment(px), posy_adjustment(py) {}
 
         uint32_t alpha_font;
         uint32_t alpha_background;
+        int32_t posx_adjustment;
+        int32_t posy_adjustment;
       };
       struct Reply {};
     }

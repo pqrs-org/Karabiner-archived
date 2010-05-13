@@ -36,13 +36,21 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           static int last_parameter_statuswindow_alpha_font = -1;
           static int last_parameter_statuswindow_alpha_background = -1;
+          static int last_parameter_statuswindow_posx_adjustment = 0;
+          static int last_parameter_statuswindow_posy_adjustment = 0;
           if (last_parameter_statuswindow_alpha_font       != config.parameter_statuswindow_alpha_font ||
-              last_parameter_statuswindow_alpha_background != config.parameter_statuswindow_alpha_background) {
-            last_parameter_statuswindow_alpha_font = config.parameter_statuswindow_alpha_font;
+              last_parameter_statuswindow_alpha_background != config.parameter_statuswindow_alpha_background ||
+              last_parameter_statuswindow_posx_adjustment  != config.parameter_statuswindow_posx_adjustment ||
+              last_parameter_statuswindow_posy_adjustment  != config.parameter_statuswindow_posy_adjustment) {
+            last_parameter_statuswindow_alpha_font       = config.parameter_statuswindow_alpha_font;
             last_parameter_statuswindow_alpha_background = config.parameter_statuswindow_alpha_background;
+            last_parameter_statuswindow_posx_adjustment  = config.parameter_statuswindow_posx_adjustment;
+            last_parameter_statuswindow_posy_adjustment  = config.parameter_statuswindow_posy_adjustment;
 
             KeyRemap4MacBook_bridge::StatusMessageWindowParameter::Request request(config.parameter_statuswindow_alpha_font,
-                                                                                   config.parameter_statuswindow_alpha_background);
+                                                                                   config.parameter_statuswindow_alpha_background,
+                                                                                   config.parameter_statuswindow_posx_adjustment,
+                                                                                   config.parameter_statuswindow_posy_adjustment);
             KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_STATUS_MESSAGE_WINDOW_PARAMETER, &request, sizeof(request), NULL, 0);
           }
         }

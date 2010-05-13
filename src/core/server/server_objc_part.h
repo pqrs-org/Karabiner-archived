@@ -26,9 +26,6 @@ typedef enum {
 - (NSString*) getTISPropertyInputModeID;
 
 - (void) registerStatusWindow:(NSWindow*)window label:(NSTextField*)label background:(NSImageView*)background;
-- (void) updateStatusMessageWindow;
-- (void) setStatusMessage:(StatusMessageType)type message:(const char*)message;
-- (void) setStatusMessageWindowParam:(uint32_t)alpha_font alpha_background:(uint32_t)alpha_background;
 
 @end
 
@@ -53,7 +50,7 @@ void selectInputSource_russian(void);
 
 void reset_statusmessage(void);
 void set_statusmessage(StatusMessageType type, const char* message);
-void set_statusmessageWindowParam(uint32_t alpha_font, uint32_t alpha_background);
+void set_statusmessageWindowParam(uint32_t alpha_font, uint32_t alpha_background, int32_t posx_adjustment, int32_t posy_adjustment);
 
 #ifdef __cplusplus
 }

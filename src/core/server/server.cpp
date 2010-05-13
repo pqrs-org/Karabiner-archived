@@ -221,7 +221,7 @@ KeyRemap4MacBook_server::Server::do_StatusMessage(const org_pqrs_KeyRemap4MacBoo
 org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error
 KeyRemap4MacBook_server::Server::do_StatusMessageWindowParameter(const org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::StatusMessageWindowParameter::Request& request)
 {
-  set_statusmessageWindowParam(request.alpha_font, request.alpha_background);
+  set_statusmessageWindowParam(request.alpha_font, request.alpha_background, request.posx_adjustment, request.posy_adjustment);
   return org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS;
 }
 
