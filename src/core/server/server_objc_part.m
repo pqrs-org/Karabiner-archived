@@ -205,7 +205,7 @@ finish:
                       waitUntilDone:NO];
 }
 
-- (void) setStatusMessageWindowParam:(uint32_t)alpha_font alpha_background:(uint32_t)alpha_background
+- (void) setStatusMessageWindowParam:(uint32_t)alpha_font alpha_background:(uint32_t)alpha_background posx_adjustment:(int32_t)posx_adjustment posy_adjustment:(int32_t)posy_adjustment
 {
   CGFloat af = (CGFloat)(alpha_font) / (CGFloat)(100.0);
   CGFloat ab = (CGFloat)(alpha_background) / (CGFloat)(100.0);
@@ -218,6 +218,12 @@ finish:
 
   [statuswindow_label_ setAlphaValue:af];
   [statuswindow_backgroud_ setAlphaValue:ab];
+
+  [statuswindow_ center];
+  NSRect frame = [statuswindow_ frame];
+  frame.origin.x += posx_adjustment;
+  frame.origin.y += posy_adjustment;
+  [statuswindow_ setFrameOrigin:frame.origin];
 }
 
 @end
@@ -269,9 +275,9 @@ set_statusmessage(StatusMessageType type, const char* message)
 }
 
 void
-set_statusmessageWindowParam(uint32_t alpha_font, uint32_t alpha_background)
+set_statusmessageWindowParam(uint32_t alpha_font, uint32_t alpha_background, int32_t posx_adjustment, int32_t posy_adjustment)
 {
   if (serverobjcpart) {
-    [serverobjcpart setStatusMessageWindowParam:alpha_font alpha_background:alpha_background];
+    [serverobjcpart setStatusMessageWindowParam:alpha_font alpha_background:alpha_background posx_adjustment:posx_adjustment posy_adjustment:posy_adjustment];
   }
 }
