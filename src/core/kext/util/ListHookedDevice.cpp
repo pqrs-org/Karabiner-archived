@@ -44,9 +44,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  HookedDevice::isIgnoreDevice(DeviceVendorID vendorID, DeviceProductID productID)
+  HookedDevice::isIgnoreDevice(const char* name, DeviceVendorID vendorID, DeviceProductID productID)
   {
-    IOLog("KeyRemap4MacBook HookedDevice::isIgnoreDevice checking vendorID = 0x%x, productID = 0x%x\n",
+    IOLog("KeyRemap4MacBook HookedDevice::isIgnoreDevice checking name = %s, vendorID = 0x%x, productID = 0x%x\n",
+          name ? name : "null",
           static_cast<unsigned int>(vendorID),
           static_cast<unsigned int>(productID));
 
@@ -60,7 +61,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // Kensington Virtual Device (0x0, 0x0)
-    if (vendorID == 0x0 && productID == 0x0) return true;
+    if (vendorID == 0x0 && productID == 0x0) {
+      // Note: USB Overdrive also use 0x0,0x0.
+      // We allow to use USB Overdrive.
+      if (strcmp(name, "OverdriveHIDKeyboard") != 0 &&
+          strcmp(name, "OverdriveHIDPointer") != 0) {
+        return true;
+      }
+    }
 
 #if 0
     // Apple External Keyboard
@@ -107,7 +115,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     DeviceProductID productID;
 
     HookedDevice::getVendorIDProductID(device, vendorID, productID);
-    if (HookedDevice::isIgnoreDevice(vendorID, productID)) {
+    const char* name = NULL;
+    if (device) {
+      name = device->getName();
+    }
+    if (HookedDevice::isIgnoreDevice(name, vendorID, productID)) {
       IOLog("KeyRemap4MacBook ListHookedDevice::append skip vendorID = 0x%x, productID = 0x%x\n",
             static_cast<unsigned int>(vendorID),
             static_cast<unsigned int>(productID));
