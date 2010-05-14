@@ -26,7 +26,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     virtual bool terminate(void) = 0;
 
     static void getVendorIDProductID(IORegistryEntry* dev, DeviceVendorID& vendorID, DeviceProductID& productID);
-    static bool isIgnoreDevice(DeviceVendorID vendorID, DeviceProductID productID);
+    static bool isIgnoreDevice(const char* name, DeviceVendorID vendorID, DeviceProductID productID);
     static bool isConsumer(const char* name);
   };
 
