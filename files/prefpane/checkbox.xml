@@ -701,6 +701,11 @@
           <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::VK_NONE</autogen>
         </item>
         <item>
+          <name>Control_L x2 to Control_L+Space</name>
+          <sysctl>remap.controlL_x2_to_controlLspace</sysctl>
+          <autogen>--DoublePressModifier-- KeyCode::CONTROL_L, ModifierFlag::CONTROL_L, KeyCode::SPACE, ModifierFlag::CONTROL_L</autogen>
+        </item>
+        <item>
           <name>Control_L to RightClick</name>
           <sysctl>remap.controlL2rightclick</sysctl>
           <autogen>--KeyToPointingButton-- KeyCode::CONTROL_L, PointingButton::RIGHT</autogen>
