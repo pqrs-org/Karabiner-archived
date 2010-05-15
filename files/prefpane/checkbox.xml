@@ -4256,6 +4256,12 @@
       <name>For French</name>
       <list>
         <item>
+          <name>Shift_L to Shift_L</name>
+          <appendix>(+ When you type Shift_L only, send Backslash)</appendix>
+          <sysctl>remap.french_shiftL2shiftL_backslash</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::DOT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+        </item>
+        <item>
           <name>Shift_R to Shift_R</name>
           <appendix>(+ When you type Shift_R only, send Backslash)</appendix>
           <sysctl>remap.french_shiftR2shiftR_backslash</sysctl>
