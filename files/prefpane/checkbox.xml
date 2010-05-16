@@ -703,7 +703,7 @@
         <item>
           <name>Control_L x2 to Control_L+Space</name>
           <sysctl>remap.controlL_x2_to_controlLspace</sysctl>
-          <autogen>--DoublePressModifier-- KeyCode::CONTROL_L, ModifierFlag::CONTROL_L, KeyCode::SPACE, ModifierFlag::CONTROL_L</autogen>
+          <autogen>--DoublePressModifier-- KeyCode::CONTROL_L, KeyCode::CONTROL_L, KeyCode::SPACE, ModifierFlag::CONTROL_L</autogen>
         </item>
         <item>
           <name>Control_L to RightClick</name>
@@ -4430,12 +4430,12 @@
             <item>
               <name>Command_L x2 to EISUU</name>
               <sysctl>remap.jis_commandL_x2_to_eisuu</sysctl>
-              <autogen>--DoublePressModifier-- KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, KeyCode::JIS_EISUU</autogen>
+              <autogen>--DoublePressModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::JIS_EISUU</autogen>
             </item>
             <item>
               <name>Command_L x2 to EISUU x2 (for Kotoeri Users)</name>
               <sysctl>remap.jis_commandL_x2_to_eisuu_x2</sysctl>
-              <autogen>--DoublePressModifier-- KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, KeyCode::VK_JIS_EISUU_x2</autogen>
+              <autogen>--DoublePressModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_JIS_EISUU_x2</autogen>
             </item>
             <item>
               <name>Use Command_L as KANA/EISUU (toggle)</name>
@@ -4509,12 +4509,12 @@
             <item>
               <name>Command_R x2 to KANA</name>
               <sysctl>remap.jis_commandR_x2_to_kana</sysctl>
-              <autogen>--DoublePressModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, KeyCode::JIS_KANA</autogen>
+              <autogen>--DoublePressModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::JIS_KANA</autogen>
             </item>
             <item>
               <name>Command_R x2 to KANA x2 (for Kotoeri Users)</name>
               <sysctl>remap.jis_commandR_x2_to_kana_x2</sysctl>
-              <autogen>--DoublePressModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R, KeyCode::VK_JIS_KANA_x2</autogen>
+              <autogen>--DoublePressModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_JIS_KANA_x2</autogen>
             </item>
             <item>
               <name>Use Command_R as KANA/EISUU (toggle)</name>

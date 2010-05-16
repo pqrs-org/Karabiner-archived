@@ -209,11 +209,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     DoublePressModifier(void) : pressCount_(0) {}
 
     bool remap(RemapParams& remapParams,
-               KeyCode fromKeyCode, ModifierFlag toFlag,
+               KeyCode fromKeyCode, KeyCode toKeyCode,
                KeyCode fireKeyCode, Flags fireFlags = ModifierFlag::NONE);
 
   private:
     int pressCount_;
+    IntervalChecker ic_;
     RemapUtil::KeyToKey keytokey_;
   };
 
