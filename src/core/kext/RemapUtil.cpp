@@ -794,14 +794,13 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     keytokey_.remap(remapParams, fromKeyCode, toKeyCode);
 
+    if (ic_.getmillisec() > static_cast<uint32_t>(config.parameter_doublepressmodifier_threshold)) {
+      pressCount_ = 0;
+    }
+    ic_.begin();
+
     if (isKeyDown) {
-      if (pressCount_ == 0 ||
-          ic_.getmillisec() < static_cast<uint32_t>(config.parameter_doublepressmodifier_threshold)) {
-        ++pressCount_;
-      } else {
-        pressCount_ = 0;
-      }
-      ic_.begin();
+      ++pressCount_;
     } else {
       if (pressCount_ >= 2) {
         pressCount_ = 0;
