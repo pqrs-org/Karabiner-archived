@@ -45,6 +45,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   HookedDevice::isIgnoreDevice(const char* name, DeviceVendorID vendorID, DeviceProductID productID)
   {
+    // Note: Don't refer config.xxx here.
+    // When isIgnoreDevice is called, all config.xxx == 0.
+
     IOLog("KeyRemap4MacBook HookedDevice::isIgnoreDevice checking name = %s, vendorID = 0x%x, productID = 0x%x\n",
           name ? name : "null",
           static_cast<unsigned int>(vendorID),
