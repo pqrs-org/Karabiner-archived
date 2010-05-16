@@ -50,7 +50,7 @@
     <item>
       <name>[Double Press Modifier] Recognition Threshold</name>
       <sysctl>parameter.doublepressmodifier_threshold</sysctl>
-      <default>1000</default>
+      <default>500</default>
       <baseunit>ms</baseunit>
     </item>
 
