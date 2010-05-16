@@ -3,12 +3,12 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1060</int>
 		<string key="IBDocument.SystemVersion">10D573</string>
-		<string key="IBDocument.InterfaceBuilderVersion">740</string>
+		<string key="IBDocument.InterfaceBuilderVersion">762</string>
 		<string key="IBDocument.AppKitVersion">1038.29</string>
 		<string key="IBDocument.HIToolboxVersion">460.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">740</string>
+			<string key="NS.object.0">762</string>
 		</object>
 		<array class="NSMutableArray" key="IBDocument.EditedObjectIDs"/>
 		<array key="IBDocument.PluginDependencies">
@@ -258,6 +258,7 @@
 														</array>
 														<string key="NSFrame">{{1, 17}, {571, 470}}</string>
 														<reference key="NSSuperview" ref="1011972"/>
+														<reference key="NSNextKeyView" ref="388417527"/>
 														<reference key="NSDocView" ref="388417527"/>
 														<reference key="NSBGColor" ref="886340672"/>
 														<int key="NScvFlags">2</int>
@@ -289,6 +290,7 @@
 														</array>
 														<string key="NSFrame">{{1, 0}, {571, 17}}</string>
 														<reference key="NSSuperview" ref="1011972"/>
+														<reference key="NSNextKeyView" ref="809773680"/>
 														<reference key="NSDocView" ref="809773680"/>
 														<reference key="NSBGColor" ref="657400823"/>
 														<int key="NScvFlags">4</int>
@@ -297,12 +299,12 @@
 												</array>
 												<string key="NSFrame">{{17, 17}, {588, 488}}</string>
 												<reference key="NSSuperview" ref="126432317"/>
+												<reference key="NSNextKeyView" ref="465907325"/>
 												<int key="NSsFlags">18</int>
 												<reference key="NSVScroller" ref="839550362"/>
 												<reference key="NSHScroller" ref="296442866"/>
 												<reference key="NSContentView" ref="465907325"/>
 												<reference key="NSHeaderClipView" ref="189098454"/>
-												<reference key="NSCornerView" ref="246636842"/>
 												<bytes key="NSScrollAmts">QSAAAEEgAABBoAAAQaAAAA</bytes>
 											</object>
 											<object class="NSButton" id="822294204">
@@ -605,7 +607,6 @@
 												<reference key="NSHScroller" ref="572701389"/>
 												<reference key="NSContentView" ref="560413009"/>
 												<reference key="NSHeaderClipView" ref="575658362"/>
-												<reference key="NSCornerView" ref="288176493"/>
 												<bytes key="NSScrollAmts">QSAAAEEgAABBmAAAQZgAAA</bytes>
 											</object>
 										</array>
@@ -2844,6 +2845,7 @@
 			</array>
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
+		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
 			<integer value="1060" key="NS.object.0"/>
@@ -2851,5 +2853,12 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<string key="IBDocument.LastKnownRelativeProjectPath">../KeyRemap4MacBook.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
+		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="NSAddTemplate">{8, 8}</string>
+			<string key="NSMenuCheckmark">{9, 8}</string>
+			<string key="NSMenuMixedState">{7, 2}</string>
+			<string key="NSRemoveTemplate">{8, 8}</string>
+			<string key="NSSwitch">{15, 15}</string>
+		</dictionary>
 	</data>
 </archive>
