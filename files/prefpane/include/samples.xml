@@ -163,7 +163,7 @@
       <name>DoublePressModifier</name>
       <appendix>Shift_L x 2 to RETURN</appendix>
       <sysctl>remap.samples_doublepressmodifier</sysctl>
-      <autogen>--DoublePressModifier-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L, KeyCode::RETURN</autogen>
+      <autogen>--DoublePressModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::RETURN</autogen>
     </item>
 
     <item>
