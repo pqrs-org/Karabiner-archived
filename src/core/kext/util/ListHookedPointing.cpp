@@ -125,6 +125,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! isAppleDriver_ && config.general_dont_remap_thirdvendor_pointing) {
       return restoreEventAction();
     }
+    // Logitech Cordless Presenter
+    if (config.general_dont_remap_logitech_cordless_presenter &&
+        isEqualVendorIDProductID(DeviceVendorID(0x046d), DeviceProductID(0xc515))) {
+      return restoreEventAction();
+    }
+
     return replaceEventAction();
   }
 

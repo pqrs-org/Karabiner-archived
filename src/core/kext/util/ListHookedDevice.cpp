@@ -2,7 +2,6 @@
 #include "ListHookedDevice.hpp"
 #include "NumHeldDownKeys.hpp"
 #include "IOLockWrapper.hpp"
-#include "Config.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace {
@@ -54,11 +53,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     // Logitech USB Headset
     if (vendorID == 0x046d && productID == 0x0a0b) return true;
-
-    // Logitech Cordless Presenter
-    if (config.general_dont_remap_logitech_cordless_presenter) {
-      if (vendorID == 0x046d && productID == 0xc515) return true;
-    }
 
     // Kensington Virtual Device (0x0, 0x0)
     if (vendorID == 0x0 && productID == 0x0) {
