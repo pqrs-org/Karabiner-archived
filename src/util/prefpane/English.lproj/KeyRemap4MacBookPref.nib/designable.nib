@@ -10,7 +10,9 @@
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			<string key="NS.object.0">762</string>
 		</object>
-		<array class="NSMutableArray" key="IBDocument.EditedObjectIDs"/>
+		<array class="NSMutableArray" key="IBDocument.EditedObjectIDs">
+			<integer value="12"/>
+		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 		</array>
@@ -37,7 +39,7 @@
 				</object>
 				<string key="NSWindowContentMaxSize">{1.79769e+308, 1.79769e+308}</string>
 				<object class="NSView" key="NSWindowView" id="920310986">
-					<nil key="NSNextResponder"/>
+					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<array class="NSMutableArray" key="NSSubviews">
 						<object class="NSTabView" id="880316616">
@@ -305,6 +307,7 @@
 												<reference key="NSHScroller" ref="296442866"/>
 												<reference key="NSContentView" ref="465907325"/>
 												<reference key="NSHeaderClipView" ref="189098454"/>
+												<reference key="NSCornerView" ref="246636842"/>
 												<bytes key="NSScrollAmts">QSAAAEEgAABBoAAAQaAAAA</bytes>
 											</object>
 											<object class="NSButton" id="822294204">
@@ -377,7 +380,7 @@
 															<object class="NSOutlineView" id="737811286">
 																<reference key="NSNextResponder" ref="560413009"/>
 																<int key="NSvFlags">274</int>
-																<string key="NSFrameSize">{571, 266}</string>
+																<string key="NSFrameSize">{571, 418}</string>
 																<reference key="NSSuperview" ref="560413009"/>
 																<bool key="NSEnabled">YES</bool>
 																<object class="NSTableHeaderView" key="NSHeaderView" id="845919554">
@@ -558,7 +561,7 @@
 																<int key="NSTableViewDraggingDestinationStyle">0</int>
 															</object>
 														</array>
-														<string key="NSFrame">{{1, 17}, {571, 266}}</string>
+														<string key="NSFrame">{{1, 17}, {571, 418}}</string>
 														<reference key="NSSuperview" ref="604566672"/>
 														<reference key="NSNextKeyView" ref="737811286"/>
 														<reference key="NSDocView" ref="737811286"/>
@@ -568,7 +571,7 @@
 													<object class="NSScroller" id="775313334">
 														<reference key="NSNextResponder" ref="604566672"/>
 														<int key="NSvFlags">256</int>
-														<string key="NSFrame">{{572, 17}, {15, 266}}</string>
+														<string key="NSFrame">{{572, 17}, {15, 418}}</string>
 														<reference key="NSSuperview" ref="604566672"/>
 														<reference key="NSTarget" ref="604566672"/>
 														<string key="NSAction">_doScroller:</string>
@@ -599,7 +602,7 @@
 													</object>
 													<reference ref="288176493"/>
 												</array>
-												<string key="NSFrame">{{17, 251}, {588, 284}}</string>
+												<string key="NSFrame">{{17, 99}, {588, 436}}</string>
 												<reference key="NSSuperview" ref="815230021"/>
 												<reference key="NSNextKeyView" ref="560413009"/>
 												<int key="NSsFlags">18</int>
@@ -607,6 +610,7 @@
 												<reference key="NSHScroller" ref="572701389"/>
 												<reference key="NSContentView" ref="560413009"/>
 												<reference key="NSHeaderClipView" ref="575658362"/>
+												<reference key="NSCornerView" ref="288176493"/>
 												<bytes key="NSScrollAmts">QSAAAEEgAABBmAAAQZgAAA</bytes>
 											</object>
 										</array>
@@ -1193,6 +1197,7 @@
 						</object>
 					</array>
 					<string key="NSFrameSize">{668, 600}</string>
+					<reference key="NSSuperview"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
 				<string key="NSMaxSize">{1.79769e+308, 1.79769e+308}</string>
