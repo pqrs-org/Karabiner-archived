@@ -19,10 +19,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  HookedDevice::getVendorIDProductID(IORegistryEntry* dev, DeviceVendorID& vendorID, DeviceProductID& productID)
+  HookedDevice::setVendorIDProductID(IORegistryEntry* dev)
   {
-    vendorID = 0;
-    productID = 0;
+    vendorID_ = 0;
+    productID_ = 0;
 
     while (dev) {
       const OSNumber* vid = NULL;
@@ -32,38 +32,75 @@ namespace org_pqrs_KeyRemap4MacBook {
       pid = OSDynamicCast(OSNumber, dev->getProperty(kIOHIDProductIDKey));
 
       if (vid && pid) {
-        vendorID = vid->unsigned32BitValue();
-        productID = pid->unsigned32BitValue();
-        return;
+        vendorID_ = vid->unsigned32BitValue();
+        productID_ = pid->unsigned32BitValue();
+
+        goto finish;
       }
 
       // check parent property.
       dev = dev->getParentEntry(IORegistryEntry::getPlane(kIOServicePlane));
     }
+
+  finish:
+    IOLog("KeyRemap4MacBook HookedDevice::setVendorIDProductID (device = %p, vendorID_ = 0x%x, productID_ = 0x%x)\n", dev, vendorID_, productID_);
   }
 
-  bool
-  HookedDevice::isIgnoreDevice(const char* name, DeviceVendorID vendorID, DeviceProductID productID)
+  void
+  HookedDevice::setDeviceType(IOHIDevice* dev)
   {
-    // Note: Don't refer config.xxx here.
-    // When isIgnoreDevice is called, all config.xxx == 0.
+    const char* name = NULL;
 
-    IOLog("KeyRemap4MacBook HookedDevice::isIgnoreDevice checking name = %s, vendorID = 0x%x, productID = 0x%x\n",
-          name ? name : "null",
-          static_cast<unsigned int>(vendorID),
-          static_cast<unsigned int>(productID));
+    deviceType_ = DeviceType::UNKNOWN;
 
-    // Kensington Virtual Device (0x0, 0x0)
-    if (vendorID == 0x0 && productID == 0x0) {
-      // Note: USB Overdrive also use 0x0,0x0.
-      // We allow to use USB Overdrive.
-      if (strcmp(name, "OverdriveHIDKeyboard") != 0 &&
-          strcmp(name, "OverdriveHIDPointer") != 0) {
-        return true;
+    if (! dev) goto finish;
+
+    name = dev->getName();
+    if (! name) goto finish;
+
+    // Apple device
+    if (strcmp(name, "IOHIDKeyboard")         == 0 ||
+        strcmp(name, "AppleADBKeyboard")      == 0 ||
+        strcmp(name, "IOHIDConsumer")         == 0 ||
+        strcmp(name, "IOHIDPointing")         == 0 ||
+        strcmp(name, "AppleUSBGrIIITrackpad") == 0 ||
+        strcmp(name, "AppleADBMouseType4")    == 0) {
+
+      deviceType_ = DeviceType::APPLE_EXTERNAL;
+
+      // ------------------------------------------------------------
+      // Judge internal device or external device.
+      //
+      // We judge it from a product name whether it is internal device.
+      // At keyboard, we cannot use the KeyboardType,
+      // because some external keyboard has the same KeyboardType as Apple internal keyboard.
+      const OSString* productname = NULL;
+      productname = OSDynamicCast(OSString, dev->getProperty(kIOHIDProductKey));
+      if (productname) {
+        const char* pname = productname->getCStringNoCopy();
+        if (pname) {
+          const char* internalname = "Apple Internal ";
+          if (strncmp(internalname, pname, strlen(internalname)) == 0) {
+            deviceType_ = DeviceType::APPLE_INTERNAL;
+          }
+        }
       }
+
+      goto finish;
     }
 
-    return false;
+    // USB Overdrive
+    if (strcmp(name, "OverdriveHIDKeyboard") == 0 ||
+        strcmp(name, "OverdriveHIDPointer")  == 0) {
+      deviceType_ = DeviceType::USB_OVERDRIVE;
+      goto finish;
+    }
+
+  finish:
+    IOLog("KeyRemap4MacBook HookedDevice::setDeviceType (device = %p, name = %s, deviceType_ = %d)\n",
+          dev,
+          name ? name : "null",
+          deviceType_);
   }
 
   bool
@@ -93,21 +130,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! lock_) return false;
     IOLockWrapper::ScopedLock lk(lock_);
 
-    DeviceVendorID vendorID;
-    DeviceProductID productID;
-
-    HookedDevice::getVendorIDProductID(device, vendorID, productID);
-    const char* name = NULL;
-    if (device) {
-      name = device->getName();
-    }
-    if (HookedDevice::isIgnoreDevice(name, vendorID, productID)) {
-      IOLog("KeyRemap4MacBook ListHookedDevice::append skip vendorID = 0x%x, productID = 0x%x\n",
-            static_cast<unsigned int>(vendorID),
-            static_cast<unsigned int>(productID));
-      return true;
-    }
-
     last_ = device;
 
     for (int i = 0; i < MAXNUM; ++i) {
@@ -117,8 +139,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       IOLog("KeyRemap4MacBook ListHookedDevice::append (device = %p, slot = %d)\n", device, i);
 
-      p->vendorID_ = vendorID;
-      p->productID_ = productID;
+      p->setVendorIDProductID(device);
+      p->setDeviceType(device);
       p->initialize(device);
 
       // Call reset whenever the device status is changed.
@@ -203,7 +225,17 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOLockWrapper::ScopedLock lk(lock_);
 
     // ----------------------------------------------------------------------
+    // Search a replaced device first.
     HookedDevice* p = get_nolock(last_);
+    if (p && p->isReplaced()) return p;
+
+    for (int i = 0; i < MAXNUM; ++i) {
+      p = getItem(i);
+      if (p && p->isReplaced()) return p;
+    }
+
+    // Search others.
+    p = get_nolock(last_);
     if (p) return p;
 
     for (int i = 0; i < MAXNUM; ++i) {
