@@ -241,6 +241,17 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ======================================================================
   typedef unsigned int DeviceVendorID;
   typedef unsigned int DeviceProductID;
+
+  namespace DeviceType {
+    enum DeviceType {
+      UNKNOWN,
+
+      APPLE_INTERNAL,
+      APPLE_EXTERNAL,
+
+      USB_OVERDRIVE,
+    };
+  }
 }
 
 #endif
