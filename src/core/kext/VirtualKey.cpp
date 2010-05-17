@@ -33,6 +33,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       force_off = true;
     } else if (params.key == KeyCode::VK_LOCK_COMMAND_R) {
       flags.add(ModifierFlag::COMMAND_R);
+    } else if (params.key == KeyCode::VK_LOCK_SHIFT_L) {
+      flags.add(ModifierFlag::SHIFT_L);
 
     } else if (params.key == KeyCode::VK_LOCK_ALL_FORCE_OFF) {
       FlagStatus::lock_clear();

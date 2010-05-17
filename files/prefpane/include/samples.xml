@@ -431,15 +431,21 @@
     </item>
     <item>
       <name>VK_LOCK_FN</name>
-      <appendix>Use A to numlock</appendix>
+      <appendix>Use A to FN_Lock</appendix>
       <sysctl>remap.samples_a2numlock</sysctl>
       <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_LOCK_FN</autogen>
     </item>
     <item>
       <name>VK_LOCK_COMMAND_R</name>
-      <appendix>Use A to Command_R Lock</appendix>
+      <appendix>Use A to Command_R_Lock</appendix>
       <sysctl>remap.samples_a2commandRlock</sysctl>
       <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_LOCK_COMMAND_R</autogen>
+    </item>
+    <item>
+      <name>VK_LOCK_SHIFT_L</name>
+      <appendix>Use A to Shift_L_Lock</appendix>
+      <sysctl>remap.samples_a2shiftL_lock</sysctl>
+      <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_LOCK_SHIFT_L</autogen>
     </item>
     <item>
       <name>VK_CHANGE_INPUTMODE_*</name>

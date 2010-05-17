@@ -218,6 +218,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         isempty = false;
         strlcat(request.message, "Cmd ", sizeof(request.message));
       }
+      if (f.isOn(ModifierFlag::SHIFT_L) || f.isOn(ModifierFlag::SHIFT_R)) {
+        isempty = false;
+        strlcat(request.message, "Shift ", sizeof(request.message));
+      }
 
       if (isempty) {
         request.message[0] = '\0';

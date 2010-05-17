@@ -2238,6 +2238,11 @@
           <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
         </item>
         <item>
+          <name>Control+Space to Shift_L_Lock</name>
+          <sysctl>remap.controlSpace2shiftL_lock</sysctl>
+          <autogen>--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::VK_LOCK_SHIFT_L</autogen>
+        </item>
+        <item>
           <name>Swap Space and Option+Space</name>
           <list>
             <item>
