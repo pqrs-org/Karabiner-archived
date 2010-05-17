@@ -9,7 +9,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     friend class ListHookedDevice;
 
   public:
-    HookedDevice(void) : device_(NULL), vendorID_(0), productID_(0) {}
+    HookedDevice(void) : device_(NULL), vendorID_(0), productID_(0), deviceType_(DeviceType::UNKNOWN) {}
 
     IOHIDevice* get(void) const { return device_; }
     bool isEqualVendorIDProductID(DeviceVendorID vendorID, DeviceProductID productID) const;
@@ -20,13 +20,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOHIDevice* device_;
     DeviceVendorID vendorID_;
     DeviceProductID productID_;
+    DeviceType::DeviceType deviceType_;
 
     virtual bool initialize(IOHIDevice* d) = 0;
     virtual bool refresh(void) = 0;
     virtual bool terminate(void) = 0;
+    virtual bool isReplaced(void) const = 0;
 
-    static void getVendorIDProductID(IORegistryEntry* dev, DeviceVendorID& vendorID, DeviceProductID& productID);
-    static bool isIgnoreDevice(const char* name, DeviceVendorID vendorID, DeviceProductID productID);
+    void setVendorIDProductID(IORegistryEntry* dev);
+    void setDeviceType(IOHIDevice* dev);
     static bool isConsumer(const char* name);
   };
 
