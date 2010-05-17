@@ -53,10 +53,6 @@ namespace org_pqrs_KeyRemap4MacBook {
           static_cast<unsigned int>(vendorID),
           static_cast<unsigned int>(productID));
 
-    // ------------------------------------------------------------
-    // Logitech USB Headset
-    if (vendorID == 0x046d && productID == 0x0a0b) return true;
-
     // Kensington Virtual Device (0x0, 0x0)
     if (vendorID == 0x0 && productID == 0x0) {
       // Note: USB Overdrive also use 0x0,0x0.
@@ -66,17 +62,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         return true;
       }
     }
-
-#if 0
-    // Apple External Keyboard
-    if (vendorID == 0x05ac && productID == 0x0222) return true;
-
-    // Apple Magic Mouse
-    if (vendorID == 0x05ac && productID == 0x030d) return true;
-
-    // My Private Mouse (SIGMA Levy)
-    if (vendorID == 0x093a && productID == 0x2510) return true;
-#endif
 
     return false;
   }
