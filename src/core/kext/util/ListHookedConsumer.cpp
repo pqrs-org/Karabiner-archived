@@ -97,7 +97,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (isEqualVendorIDProductID(DeviceVendorID(0x05ac), DeviceProductID(0x21a))) {
       goto restore;
     }
-
+#endif
+#if 0
     // Apple External Keyboard
     if (isEqualVendorIDProductID(DeviceProductID(0x05ac), DeviceProductID(0x0222))) {
       goto restore;
