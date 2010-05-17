@@ -81,9 +81,28 @@ namespace org_pqrs_KeyRemap4MacBook {
   HookedConsumer::refresh(void)
   {
     if (! config.initialized) {
-      return restoreEventAction();
+      goto restore;
     }
+    // Logitech USB Headset
+    if (isEqualVendorIDProductID(DeviceVendorID(0x046d), DeviceProductID(0x0a0b))) {
+      goto restore;
+    }
+#if 0
+    // Apple Internal Keyboard
+    if (isEqualVendorIDProductID(DeviceVendorID(0x05ac), DeviceProductID(0x21a))) {
+      goto restore;
+    }
+
+    // Apple External Keyboard
+    if (isEqualVendorIDProductID(DeviceProductID(0x05ac), DeviceProductID(0x0222))) {
+      goto restore;
+    }
+#endif
+
     return replaceEventAction();
+
+  restore:
+    return restoreEventAction();
   }
 
   bool
