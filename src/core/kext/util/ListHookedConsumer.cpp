@@ -87,6 +87,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (isEqualVendorIDProductID(DeviceVendorID(0x046d), DeviceProductID(0x0a0b))) {
       goto restore;
     }
+    // Logitech Cordless Presenter
+    if (config.general_dont_remap_logitech_cordless_presenter &&
+        isEqualVendorIDProductID(DeviceVendorID(0x046d), DeviceProductID(0xc515))) {
+      goto restore;
+    }
 #if 0
     // Apple Internal Keyboard
     if (isEqualVendorIDProductID(DeviceVendorID(0x05ac), DeviceProductID(0x21a))) {
