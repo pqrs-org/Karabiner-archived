@@ -2725,6 +2725,36 @@
           </list>
         </item>
         <item>
+          <name>[ex] Use Control+Space as MarkSet</name>
+          <list>
+            <item>
+              <name>Enable Control+Space</name>
+              <sysctl>option.emacsmode_ex_controlSpace</sysctl>
+              <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+              <autogen>--KeyToKey-- KeyCode::SPACE, VK_CONTROL | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_ON, KeyCode::VK_CONFIG_FORCE_ON_notsave_emacsmode_ex_controlSpace_core</autogen>
+            </item>
+            <item>
+              <name>Control+Space Mode Core</name>
+              <list>
+                <item>
+                  <name>Control+Space Mode Core</name>
+                  <appendix>Control+W to Command_L+X</appendix>
+                  <appendix>Option+W to Command_L+C</appendix>
+                  <appendix>Control+G to turn off MarkSet</appendix>
+                  <appendix>Control+Space to turn off MarkSet</appendix>
+                  <sysctl>notsave.emacsmode_ex_controlSpace_core</sysctl>
+                  <vk_config>true</vk_config>
+                  <autogen>--ShowStatusMessage-- "MarkSet"</autogen>
+                  <autogen>--KeyToKey-- KeyCode::W,     VK_CONTROL | ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::X, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlSpace_core</autogen>
+                  <autogen>--KeyToKey-- KeyCode::W,     VK_OPTION  | ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::C, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlSpace_core</autogen>
+                  <autogen>--KeyToKey-- KeyCode::G,     VK_CONTROL | ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF,                                      KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlSpace_core</autogen>
+                  <autogen>--KeyToKey-- KeyCode::SPACE, VK_CONTROL | ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF,                                      KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlSpace_core</autogen>
+                </item>
+              </list>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Behavior in Emacs, Terminal, X11, VMware, Parallels, RDC, Eclipse</name>
           <list>
             <item>
