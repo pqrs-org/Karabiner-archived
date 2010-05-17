@@ -125,32 +125,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     device_ = d;
     IOLog("KeyRemap4MacBook HookedKeyboard::initialize name = %s, device_ = %p\n", name, device_);
 
-    if (strcmp(name, "IOHIDKeyboard") == 0 ||
-        strcmp(name, "AppleADBKeyboard") == 0) {
-      isAppleDriver_ = true;
-    } else {
-      isAppleDriver_ = false;
-    }
-
-    // ------------------------------------------------------------
-    // set isInternalKeyboard_
-    //
-    // We judge it from a product name whether it is internal keyboard.
-    // We cannot use the KeyboardType,
-    // because some external keyboard has the same KeyboardType as Apple internal keyboard.
-
-    const OSString* productname = NULL;
-    productname = OSDynamicCast(OSString, device_->getProperty(kIOHIDProductKey));
-    if (productname) {
-      const char* pname = productname->getCStringNoCopy();
-      if (pname) {
-        const char* internalname = "Apple Internal ";
-        if (strncmp(internalname, pname, strlen(internalname)) == 0) {
-          isInternalKeyboard_ = true;
-        }
-      }
-    }
-
     return refresh();
   }
 
@@ -160,22 +134,37 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.initialized) {
       goto restore;
     }
-    if (! isAppleDriver_ && config.general_dont_remap_thirdvendor_keyboard) {
+    if (config.general_dont_remap_thirdvendor_keyboard &&
+        deviceType_ != DeviceType::APPLE_INTERNAL &&
+        deviceType_ != DeviceType::APPLE_EXTERNAL) {
       goto restore;
     }
-    if (isInternalKeyboard_) {
-      if (config.general_dont_remap_internal) {
-        goto restore;
-      }
-    } else {
-      if (config.general_dont_remap_external) {
-        goto restore;
-      }
+    if (config.general_dont_remap_internal &&
+        deviceType_ == DeviceType::APPLE_INTERNAL) {
+      goto restore;
+    }
+    if (config.general_dont_remap_external &&
+        deviceType_ != DeviceType::APPLE_INTERNAL) {
+      goto restore;
     }
     // Logitech USB Headset
     if (isEqualVendorIDProductID(DeviceVendorID(0x046d), DeviceProductID(0x0a0b))) {
       goto restore;
     }
+    // Logitech Cordless Presenter
+    if (config.general_dont_remap_logitech_cordless_presenter &&
+        isEqualVendorIDProductID(DeviceVendorID(0x046d), DeviceProductID(0xc515))) {
+      goto restore;
+    }
+    // Kensington Virtual Device (0x0, 0x0)
+    if (isEqualVendorIDProductID(DeviceVendorID(0), DeviceProductID(0))) {
+      // Note: USB Overdrive also use 0x0,0x0.
+      // We allow to use USB Overdrive.
+      if (deviceType_ != DeviceType::USB_OVERDRIVE) {
+        goto restore;
+      }
+    }
+
 #if 0
     // Apple Internal Keyboard
     if (isEqualVendorIDProductID(DeviceVendorID(0x05ac), DeviceProductID(0x21a))) {
