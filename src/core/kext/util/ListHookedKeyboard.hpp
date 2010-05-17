@@ -8,8 +8,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   class HookedKeyboard : public HookedDevice {
   public:
     HookedKeyboard(void) :
-      isAppleDriver_(false),
-      isInternalKeyboard_(false),
       orig_keyboardEventAction_(NULL),
       orig_keyboardEventTarget_(NULL) {}
 
@@ -19,15 +17,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     OSObject* getOrig_keyboardEventTarget(void) const { return orig_keyboardEventTarget_; }
 
   private:
-    bool isAppleDriver_;
-    bool isInternalKeyboard_;
-
     KeyboardEventCallback orig_keyboardEventAction_;
     OSObject* orig_keyboardEventTarget_;
 
     bool initialize(IOHIDevice* d);
     bool refresh(void);
     bool terminate(void);
+    bool isReplaced(void) const { return orig_keyboardEventAction_ != NULL; }
 
     /** return true if event action is replaced. */
     bool replaceEventAction(void);
