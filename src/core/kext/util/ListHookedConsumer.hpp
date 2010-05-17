@@ -23,6 +23,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool initialize(IOHIDevice* d);
     bool refresh(void);
     bool terminate(void);
+    bool isReplaced(void) const { return orig_keyboardSpecialEventAction_ != NULL; }
 
     /** return true if event action is replaced. */
     bool replaceEventAction(void);
