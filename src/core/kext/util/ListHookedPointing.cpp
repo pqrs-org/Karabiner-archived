@@ -105,14 +105,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     device_ = d;
     IOLog("KeyRemap4MacBook HookedPointing::initialize name = %s, device_ = %p\n", name, device_);
 
-    if (strcmp(name, "IOHIDPointing") == 0 ||
-        strcmp(name, "AppleUSBGrIIITrackpad") == 0 ||
-        strcmp(name, "AppleADBMouseType4") == 0) {
-      isAppleDriver_ = true;
-    } else {
-      isAppleDriver_ = false;
-    }
-
     return refresh();
   }
 
@@ -120,18 +112,29 @@ namespace org_pqrs_KeyRemap4MacBook {
   HookedPointing::refresh(void)
   {
     if (! config.initialized) {
-      return restoreEventAction();
+      goto restore;
     }
-    if (! isAppleDriver_ && config.general_dont_remap_thirdvendor_pointing) {
-      return restoreEventAction();
+    if (config.general_dont_remap_thirdvendor_pointing &&
+        deviceType_ != DeviceType::APPLE_INTERNAL &&
+        deviceType_ != DeviceType::APPLE_EXTERNAL) {
+      goto restore;
     }
     // Logitech Cordless Presenter
     if (config.general_dont_remap_logitech_cordless_presenter &&
         isEqualVendorIDProductID(DeviceVendorID(0x046d), DeviceProductID(0xc515))) {
-      return restoreEventAction();
+      goto restore;
     }
+#if 0
+    // Apple Magic Mouse
+    if (isEqualVendorIDProductID(DeviceVendorID(0x05ac), DeviceProductID(0x030d))) {
+      goto restore;
+    }
+#endif
 
     return replaceEventAction();
+
+  restore:
+    return restoreEventAction();
   }
 
   bool
