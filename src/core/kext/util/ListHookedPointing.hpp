@@ -8,7 +8,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   class HookedPointing : public HookedDevice {
   public:
     HookedPointing(void) :
-      isAppleDriver_(false),
       orig_relativePointerEventAction_(NULL),
       orig_scrollWheelEventAction_(NULL),
       orig_relativePointerEventTarget_(NULL),
@@ -22,8 +21,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     OSObject* getOrig_scrollWheelEventTarget(void) const { return orig_scrollWheelEventTarget_; }
 
   private:
-    bool isAppleDriver_;
-
     RelativePointerEventCallback orig_relativePointerEventAction_;
     ScrollWheelEventCallback orig_scrollWheelEventAction_;
     OSObject* orig_relativePointerEventTarget_;
@@ -32,6 +29,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool initialize(IOHIDevice* d);
     bool refresh(void);
     bool terminate(void);
+    bool isReplaced(void) const { return orig_relativePointerEventAction_ != NULL; }
 
     /** return true if event action is replaced. */
     bool replaceEventAction(void);
