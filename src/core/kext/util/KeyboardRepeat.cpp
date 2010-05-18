@@ -8,7 +8,6 @@
 namespace org_pqrs_KeyRemap4MacBook {
   TimerWrapper KeyboardRepeat::timer_;
   KeyboardRepeat::Item KeyboardRepeat::item_[KeyboardRepeat::MAXNUM];
-  KeyRemap4MacBook_bridge::GetWorkspaceData::Reply KeyboardRepeat::workspacedata_;
 
   void
   KeyboardRepeat::initialize(IOWorkLoop& workloop)
@@ -241,7 +240,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           {
             Params_KeyboardEventCallBack* p = item_[i].params;
             if (p) {
-              RemapUtil::fireKey(*p, workspacedata_);
+              RemapUtil::fireKey(*p);
             }
             break;
           }

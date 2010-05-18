@@ -4,7 +4,6 @@
 #include "Config.hpp"
 #include "Core.hpp"
 #include "RemapUtil.hpp"
-#include "bridge.hpp"
 #include "remap.hpp"
 #include "util/KeyboardRepeat.hpp"
 #include "util/KeyEventInputQueue.hpp"
@@ -51,41 +50,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
         KeyboardRepeat::cancel();
-      }
-
-      void
-      getWorkspaceData(KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& reply, bool copylast = false)
-      {
-        // ------------------------------------------------------------
-        // When we press the functional key (ex. F2) with the keyboard of the third vendor,
-        // KeyRemap4MacBook_client::sendmsg returns EIO.
-        //
-        // We use the previous value when the error occurred.
-        static KeyRemap4MacBook_bridge::GetWorkspaceData::Reply last = {
-          KeyRemap4MacBook_bridge::GetWorkspaceData::UNKNOWN,
-          KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_ROMAN,
-          KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_ROMAN,
-        };
-
-        if (copylast) {
-          reply = last;
-        } else {
-          int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_WORKSPACE_DATA, NULL, 0, &reply, sizeof(reply));
-          if (config.debug_devel) {
-            printf("KeyRemap4MacBook -Info- GetWorkspaceData: %d,%d,%d (error: %d)\n",
-                   reply.type, reply.inputmode, reply.inputmodedetail, error);
-          }
-          if (error == 0) {
-            last = reply;
-          } else {
-            // use last info.
-            reply = last;
-          }
-        }
-
-        // ------------------------------------------------------------
-        // Store data to KeyboardRepeat
-        KeyboardRepeat::setWorkSpaceData(reply);
       }
     }
 
@@ -198,11 +162,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ------------------------------------------------------------
       params.key.normalizeKey(params.flags, params.eventType, params.keyboardType);
 
-      KeyRemap4MacBook_bridge::GetWorkspaceData::Reply workspacedata;
-      bool copylast = (params.eventType.isKeyDownOrModifierDown(params.key, params.flags) == false);
-      getWorkspaceData(workspacedata, copylast);
-
-      RemapParams remapParams(params, workspacedata);
+      RemapParams remapParams(params);
       NumHeldDownKeys::set(remapParams);
 
       // ------------------------------------------------------------
@@ -214,7 +174,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! remapParams.isremapped) {
         params.flags = FlagStatus::makeFlags();
         KeyboardRepeat::set(params);
-        RemapUtil::fireKey(params, remapParams.workspacedata);
+        RemapUtil::fireKey(params);
       }
 
       if (NumHeldDownKeys::iszero()) {
@@ -232,11 +192,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       params.log();
 
-      KeyRemap4MacBook_bridge::GetWorkspaceData::Reply workspacedata;
-      bool copylast = (params.eventType != EventType::DOWN);
-      getWorkspaceData(workspacedata, copylast);
-
-      RemapConsumerParams remapParams(params, workspacedata);
+      RemapConsumerParams remapParams(params);
       NumHeldDownKeys::set(remapParams);
 
       // ------------------------------------------------------------

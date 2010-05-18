@@ -16,35 +16,35 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------------------------------------
   class Handle_VK_LOCK {
   public:
-    static bool handle(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
+    static bool handle(const Params_KeyboardEventCallBack& params);
   };
 
   // ----------------------------------------------------------------------
   class Handle_VK_CHANGE_INPUTMODE {
   public:
-    static bool handle(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
+    static bool handle(const Params_KeyboardEventCallBack& params);
   };
 
   // ----------------------------------------------------------------------
   class Handle_VK_CONFIG {
   public:
-    static bool handle(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
+    static bool handle(const Params_KeyboardEventCallBack& params);
   };
 
   // ----------------------------------------------------------------------
   class Handle_VK_JIS_TOGGLE_EISUU_KANA {
   public:
-    static bool handle(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
+    static bool handle(Params_KeyboardEventCallBack& params);
 
   private:
     // It is necessary to save toKeyCode for KeyUp.
     static KeyCode newkeycode_;
   };
 
-  bool handle_VK_JIS_EISUU_x2(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
-  bool handle_VK_JIS_KANA_x2(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
-  bool handle_VK_JIS_BACKSLASH(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
-  bool handle_VK_JIS_YEN(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
+  bool handle_VK_JIS_EISUU_x2(const Params_KeyboardEventCallBack& params);
+  bool handle_VK_JIS_KANA_x2(const Params_KeyboardEventCallBack& params);
+  bool handle_VK_JIS_BACKSLASH(Params_KeyboardEventCallBack& params);
+  bool handle_VK_JIS_YEN(Params_KeyboardEventCallBack& params);
 
   // ----------------------------------------------------------------------
   class Handle_VK_JIS_TEMPORARY {
@@ -52,18 +52,18 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void initialize(IOWorkLoop& workloop);
     static void terminate(void);
 
-    static bool handle(Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
+    static bool handle(Params_KeyboardEventCallBack& params);
 
   private:
     enum {
       KEYEVENT_DELAY_MS = 100,
     };
-    static bool handle_core(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata,
+    static bool handle_core(const Params_KeyboardEventCallBack& params,
                             KeyCode key,
                             const KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail& inputmodedetail);
-    static bool handle_RESTORE(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
+    static bool handle_RESTORE(const Params_KeyboardEventCallBack& params);
 
-    static void firekeytoinputdetail(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata,
+    static void firekeytoinputdetail(const Params_KeyboardEventCallBack& params,
                                      KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail inputmodedetail);
 
     static KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail normalize(const KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail& imd);
@@ -78,7 +78,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       Flags flags;
       KeyCode key;
       KeyboardType keyboardType;
-      KeyRemap4MacBook_bridge::GetWorkspaceData::Reply workspacedata;
       bool active;
     };
     static FireKeyInfo fireKeyInfo_;

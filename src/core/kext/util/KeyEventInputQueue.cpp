@@ -52,11 +52,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  KeyEventInputQueue::handleVirtualKey(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
+  KeyEventInputQueue::handleVirtualKey(const Params_KeyboardEventCallBack& params)
   {
     for (int i = 0; i < listRemap_size; ++i) {
       if (listRemap[i]) {
-        if (listRemap[i]->handleVirtualKey(params, workspacedata)) return true;
+        if (listRemap[i]->handleVirtualKey(params)) return true;
       }
     }
     return false;
@@ -296,11 +296,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  KeyEventInputQueue::Remap::handleVirtualKey(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
+  KeyEventInputQueue::Remap::handleVirtualKey(const Params_KeyboardEventCallBack& params)
   {
     if (virtualKeyCode_ != params.key) return false;
 
-    RemapParams rp(params, workspacedata);
+    RemapParams rp(params);
     if (toKeyCode2_ == KeyCode::VK_NONE) {
       keytokey_.remap(rp, virtualKeyCode_,
                       toKeyCode1_, toFlags1_);

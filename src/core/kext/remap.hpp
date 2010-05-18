@@ -13,11 +13,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   struct RemapParams {
-    RemapParams(const Params_KeyboardEventCallBack& p, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& w) :
-      params(p), workspacedata(w), isremapped(false) {}
+    RemapParams(const Params_KeyboardEventCallBack& p) :
+      params(p), isremapped(false) {}
 
     const Params_KeyboardEventCallBack& params;
-    const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata;
     bool isremapped;
 
     void drop(void) { isremapped = true; }
@@ -27,11 +26,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // --------------------
   struct RemapConsumerParams {
-    RemapConsumerParams(const Params_KeyboardSpecialEventCallback& p, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& w) :
-      params(p), workspacedata(w), isremapped(false) {}
+    RemapConsumerParams(const Params_KeyboardSpecialEventCallback& p) :
+      params(p), isremapped(false) {}
 
     const Params_KeyboardSpecialEventCallback& params;
-    const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata;
     bool isremapped;
 
     void drop(void) { isremapped = true; }

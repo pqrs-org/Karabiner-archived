@@ -16,7 +16,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     static void refresh_remapfunc(void);
 
-    static bool handleVirtualKey(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
+    static bool handleVirtualKey(const Params_KeyboardEventCallBack& params);
 
     static void add(OSObject* target,
                     EventType eventType,
@@ -57,7 +57,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 #include "../generate/output/include.keyeventinputqueue.hpp"
       void push(Item* base, KeyCode key, bool isKeyDown);
       void remap(void);
-      bool handleVirtualKey(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
+      bool handleVirtualKey(const Params_KeyboardEventCallBack& params);
 
     private:
       KeyCode virtualKeyCode_;
