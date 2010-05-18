@@ -128,13 +128,13 @@ def parseautogen(name, lines, autogen_index)
       # ================================================================================
     elsif /<not>(.+?)<\/not>/ =~ l then
       $1.split(/,/).each do |f|
-        filter << "if (remapParams.workspacedata.type == KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}) break;"
+        filter << "if (CommonData::getcurrent_workspacedata().type == KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}) break;"
       end
 
     elsif /<only>(.+?)<\/only>/ =~ l then
       tmp = []
       $1.split(/,/).each do |f|
-        tmp << "(remapParams.workspacedata.type != KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip})"
+        tmp << "(CommonData::getcurrent_workspacedata().type != KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip})"
       end
       filter << "if (#{tmp.join(' && ')}) break;"
 
@@ -179,14 +179,14 @@ def parseautogen(name, lines, autogen_index)
     elsif /<(inputmode|inputmodedetail)_not>(.+?)<\/(inputmode|inputmodedetail)_not>/ =~ l then
       inputmodetype = $1
       $2.split(/,/).each do |f|
-        filter << "if (remapParams.workspacedata.#{inputmodetype} == KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}) break;"
+        filter << "if (CommonData::getcurrent_workspacedata().#{inputmodetype} == KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}) break;"
       end
 
     elsif /<(inputmode|inputmodedetail)_only>(.+?)<\/(inputmode|inputmodedetail)_only>/ =~ l then
       inputmodetype = $1
       tmp = []
       $2.split(/,/).each do |f|
-        tmp << "(remapParams.workspacedata.#{inputmodetype} != KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip})"
+        tmp << "(CommonData::getcurrent_workspacedata().#{inputmodetype} != KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip})"
       end
       filter << "if (#{tmp.join(' && ')}) break;"
 

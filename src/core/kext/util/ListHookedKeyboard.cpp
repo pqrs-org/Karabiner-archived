@@ -76,6 +76,11 @@ namespace org_pqrs_KeyRemap4MacBook {
         // ------------------------------------------------------------
         // Because we handle the key repeat ourself, drop the key repeat by hardware.
         if (repeat) return;
+
+        // ------------------------------------------------------------
+        if (EventType(eventType).isKeyDownOrModifierDown(KeyCode(key), Flags(flags))) {
+          CommonData::setcurrent_workspacedata();
+        }
       }
 
       // ------------------------------------------------------------

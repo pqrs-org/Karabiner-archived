@@ -108,7 +108,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (isSetKeyRepeat) {
       KeyboardRepeat::set(params);
     }
-    RemapUtil::fireKey(params, remapParams.workspacedata);
+    RemapUtil::fireKey(params);
 
     return true;
   }
@@ -122,7 +122,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       Flags f = FlagStatus::makeFlags();
       KeyboardType keyboardType = remapParams.params.keyboardType;
 
-      RemapUtil::fireKey_downup(f, key, keyboardType, remapParams.workspacedata);
+      RemapUtil::fireKey_downup(f, key, keyboardType);
       KeyboardRepeat::primitive_add(EventType::DOWN, f, key, keyboardType);
       KeyboardRepeat::primitive_add(EventType::UP, f, key, keyboardType);
 
@@ -180,7 +180,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! ptr) return false;
     Params_KeyboardEventCallBack& params = *ptr;
 
-    RemapParams rp(params, remapParams.workspacedata);
+    RemapParams rp(params);
     if (! keytokey_.remap(rp, KeyCode::VK_CONSUMERKEY, toKeyCode, toFlags)) {
       return false;
     }
@@ -261,7 +261,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! ptr) return false;
     Params_KeyboardSpecialEventCallback& params = *ptr;
 
-    RemapConsumerParams rp(params, remapParams.workspacedata);
+    RemapConsumerParams rp(params);
     if (! consumertoconsumer_.remap(rp, ConsumerKeyCode::VK_KEY, toKeyCode, toFlags)) {
       return false;
     }
@@ -577,7 +577,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ------------------------------------------------------------
   void
-  RemapUtil::fireKey(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
+  RemapUtil::fireKey(const Params_KeyboardEventCallBack& params)
   {
     // ----------------------------------------
     // handle virtual keys
@@ -593,16 +593,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! ptr) return;
     Params_KeyboardEventCallBack& p = *ptr;
 
-    if (Handle_VK_LOCK::handle(p, workspacedata)) return;
-    if (Handle_VK_CHANGE_INPUTMODE::handle(p, workspacedata)) return;
-    if (Handle_VK_CONFIG::handle(p, workspacedata)) return;
-    if (Handle_VK_JIS_TOGGLE_EISUU_KANA::handle(p, workspacedata)) return;
-    if (handle_VK_JIS_EISUU_x2(p, workspacedata)) return;
-    if (handle_VK_JIS_KANA_x2(p, workspacedata)) return;
-    if (handle_VK_JIS_BACKSLASH(p, workspacedata)) return;
-    if (handle_VK_JIS_YEN(p, workspacedata)) return;
-    if (Handle_VK_JIS_TEMPORARY::handle(p, workspacedata)) return;
-    if (KeyEventInputQueue::handleVirtualKey(p, workspacedata)) return;
+    if (Handle_VK_LOCK::handle(p)) return;
+    if (Handle_VK_CHANGE_INPUTMODE::handle(p)) return;
+    if (Handle_VK_CONFIG::handle(p)) return;
+    if (Handle_VK_JIS_TOGGLE_EISUU_KANA::handle(p)) return;
+    if (handle_VK_JIS_EISUU_x2(p)) return;
+    if (handle_VK_JIS_KANA_x2(p)) return;
+    if (handle_VK_JIS_BACKSLASH(p)) return;
+    if (handle_VK_JIS_YEN(p)) return;
+    if (Handle_VK_JIS_TEMPORARY::handle(p)) return;
+    if (KeyEventInputQueue::handleVirtualKey(p)) return;
     if (p.key == KeyCode::VK_MODIFIER_EXTRA1 ||
         p.key == KeyCode::VK_MODIFIER_EXTRA2 ||
         p.key == KeyCode::VK_MODIFIER_EXTRA3 ||
@@ -634,8 +634,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  RemapUtil::fireKey_downup(Flags flags, KeyCode key, KeyboardType keyboardType,
-                            const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata)
+  RemapUtil::fireKey_downup(Flags flags, KeyCode key, KeyboardType keyboardType)
   {
     Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, flags, key, keyboardType, false));
     if (! ptr) return;
@@ -647,17 +646,17 @@ namespace org_pqrs_KeyRemap4MacBook {
       // We operate FlagStatus for the case "key == KeyCode::CAPSLOCK".
       FlagStatus::increase(f);
       params.flags.add(f);
-      RemapUtil::fireKey(params, workspacedata);
+      RemapUtil::fireKey(params);
 
       FlagStatus::decrease(f);
       params.flags = flags;
-      RemapUtil::fireKey(params, workspacedata);
+      RemapUtil::fireKey(params);
 
     } else {
       params.eventType = EventType::DOWN;
-      RemapUtil::fireKey(params, workspacedata);
+      RemapUtil::fireKey(params);
       params.eventType = EventType::UP;
-      RemapUtil::fireKey(params, workspacedata);
+      RemapUtil::fireKey(params);
     }
   }
 
@@ -767,11 +766,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     } else {
       if (savedIsAnyEventHappen == false) {
         if (config.parameter_keyoverlaidmodifier_timeout <= 0 || ic_.checkThreshold(config.parameter_keyoverlaidmodifier_timeout) == false) {
-          RemapUtil::fireKey_downup((fireFlags1 | savedflags_).stripNONE(), fireKeyCode1, remapParams.params.keyboardType, remapParams.workspacedata);
-          RemapUtil::fireKey_downup((fireFlags2 | savedflags_).stripNONE(), fireKeyCode2, remapParams.params.keyboardType, remapParams.workspacedata);
-          RemapUtil::fireKey_downup((fireFlags3 | savedflags_).stripNONE(), fireKeyCode3, remapParams.params.keyboardType, remapParams.workspacedata);
-          RemapUtil::fireKey_downup((fireFlags4 | savedflags_).stripNONE(), fireKeyCode4, remapParams.params.keyboardType, remapParams.workspacedata);
-          RemapUtil::fireKey_downup((fireFlags5 | savedflags_).stripNONE(), fireKeyCode5, remapParams.params.keyboardType, remapParams.workspacedata);
+          RemapUtil::fireKey_downup((fireFlags1 | savedflags_).stripNONE(), fireKeyCode1, remapParams.params.keyboardType);
+          RemapUtil::fireKey_downup((fireFlags2 | savedflags_).stripNONE(), fireKeyCode2, remapParams.params.keyboardType);
+          RemapUtil::fireKey_downup((fireFlags3 | savedflags_).stripNONE(), fireKeyCode3, remapParams.params.keyboardType);
+          RemapUtil::fireKey_downup((fireFlags4 | savedflags_).stripNONE(), fireKeyCode4, remapParams.params.keyboardType);
+          RemapUtil::fireKey_downup((fireFlags5 | savedflags_).stripNONE(), fireKeyCode5, remapParams.params.keyboardType);
         }
       }
       EventWatcher::unset(isAnyEventHappen_);
@@ -805,7 +804,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (pressCount_ >= 2) {
         pressCount_ = 0;
         Flags flags = (FlagStatus::makeFlags() | fireFlags).stripNONE();
-        RemapUtil::fireKey_downup(flags, fireKeyCode, remapParams.params.keyboardType, remapParams.workspacedata);
+        RemapUtil::fireKey_downup(flags, fireKeyCode, remapParams.params.keyboardType);
       }
     }
 

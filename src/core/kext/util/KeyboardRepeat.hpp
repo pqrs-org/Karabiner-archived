@@ -16,8 +16,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void initialize(IOWorkLoop& workloop);
     static void terminate(void);
 
-    static void setWorkSpaceData(const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata) { workspacedata_ = workspacedata; }
-
     static void cancel(void);
 
     // --------------------------------------------------
@@ -86,7 +84,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     static TimerWrapper timer_;
     static Item item_[MAXNUM];
-    static KeyRemap4MacBook_bridge::GetWorkspaceData::Reply workspacedata_;
   };
 }
 

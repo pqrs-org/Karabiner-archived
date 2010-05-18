@@ -167,9 +167,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
 
     // ----------------------------------------
-    void fireKey(const Params_KeyboardEventCallBack& params, const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
-    void fireKey_downup(Flags flags, KeyCode key, KeyboardType keyboardType,
-                        const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& workspacedata);
+    void fireKey(const Params_KeyboardEventCallBack& params);
+    void fireKey_downup(Flags flags, KeyCode key, KeyboardType keyboardType);
 
     void fireConsumer(const Params_KeyboardSpecialEventCallback& params);
     void fireRelativePointer(const Params_RelativePointerEventCallback& params);
