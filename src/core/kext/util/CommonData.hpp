@@ -3,6 +3,7 @@
 
 #include "base.hpp"
 #include "KeyCode.hpp"
+#include "bridge.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   class CommonData {
@@ -26,6 +27,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       return true;
     }
 
+    static void setcurrent_workspacedata(void);
+    static const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& getcurrent_workspacedata(void) { return current_workspacedata_; }
+
     // We get the lock to save internal data (ex. FlagStatus) at
     //   - KeyboardEventCallback
     //   - KeyboardRepeat
@@ -39,6 +43,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static KeyboardType current_keyboardType_;
     static DeviceVendorID current_deviceVendorID_;
     static DeviceProductID current_deviceProductID_;
+    static KeyRemap4MacBook_bridge::GetWorkspaceData::Reply current_workspacedata_;
   };
 }
 
