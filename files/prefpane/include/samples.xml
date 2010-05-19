@@ -185,6 +185,9 @@
       <appendix>(A+D to A,Shift_L+S,Control_L+D,F)</appendix>
       <appendix>(A+G to Shift_L)</appendix>
       <appendix>(Shift_L+Shift_R to Space)</appendix>
+      <appendix>Return to Space</appendix>
+      <appendix>(Z+X to Return (== to Return))</appendix>
+      <appendix>(X+C to Return with Option::RAW (== to Space))</appendix>
       <appendix>(W+E to Escape if application == TERMINAL)</appendix>
       <appendix>(Q+W to Escape if inputmode == INPUTMODE_ROMAN)</appendix>
       <sysctl>remap.samples_simultaneouskeypresses</sysctl>
@@ -194,6 +197,9 @@
       <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::A, KeyCode::A, KeyCode::S, ModifierFlag::SHIFT_L, KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::F</autogen>
       <autogen>--SimultaneousKeyPresses-- KeyCode::G, KeyCode::A, KeyCode::SHIFT_L</autogen>
       <autogen>--SimultaneousKeyPresses-- KeyCode::SHIFT_L, KeyCode::SHIFT_R, KeyCode::SPACE</autogen>
+      <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::SPACE</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::X, KeyCode::Z, KeyCode::RETURN</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::C, KeyCode::X, KeyCode::RETURN, SimultaneousKeyPresses::Option::RAW</autogen>
       <block>
         <only>TERMINAL</only>
         <autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::W, KeyCode::ESCAPE</autogen>

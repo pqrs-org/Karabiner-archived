@@ -1,5 +1,6 @@
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
-                KeyCode toKeyCode1, Flags toFlags1)
+                KeyCode toKeyCode1, Flags toFlags1,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -23,9 +24,11 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
-                KeyCode toKeyCode1)
+                KeyCode toKeyCode1,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -49,10 +52,12 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
-                KeyCode toKeyCode2, Flags toFlags2)
+                KeyCode toKeyCode2, Flags toFlags2,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -76,10 +81,12 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
-                KeyCode toKeyCode2, Flags toFlags2)
+                KeyCode toKeyCode2, Flags toFlags2,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -103,10 +110,12 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
-                KeyCode toKeyCode2)
+                KeyCode toKeyCode2,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -130,10 +139,12 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
-                KeyCode toKeyCode2)
+                KeyCode toKeyCode2,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -157,11 +168,13 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
                 KeyCode toKeyCode2, Flags toFlags2,
-                KeyCode toKeyCode3, Flags toFlags3)
+                KeyCode toKeyCode3, Flags toFlags3,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -185,11 +198,13 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
                 KeyCode toKeyCode2, Flags toFlags2,
-                KeyCode toKeyCode3, Flags toFlags3)
+                KeyCode toKeyCode3, Flags toFlags3,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -213,11 +228,13 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
                 KeyCode toKeyCode2,
-                KeyCode toKeyCode3, Flags toFlags3)
+                KeyCode toKeyCode3, Flags toFlags3,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -241,11 +258,13 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
                 KeyCode toKeyCode2,
-                KeyCode toKeyCode3, Flags toFlags3)
+                KeyCode toKeyCode3, Flags toFlags3,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -269,11 +288,13 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
                 KeyCode toKeyCode2, Flags toFlags2,
-                KeyCode toKeyCode3)
+                KeyCode toKeyCode3,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -297,11 +318,13 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
                 KeyCode toKeyCode2, Flags toFlags2,
-                KeyCode toKeyCode3)
+                KeyCode toKeyCode3,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -325,11 +348,13 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
                 KeyCode toKeyCode2,
-                KeyCode toKeyCode3)
+                KeyCode toKeyCode3,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -353,11 +378,13 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
                 KeyCode toKeyCode2,
-                KeyCode toKeyCode3)
+                KeyCode toKeyCode3,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -381,12 +408,14 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
                 KeyCode toKeyCode2, Flags toFlags2,
                 KeyCode toKeyCode3, Flags toFlags3,
-                KeyCode toKeyCode4, Flags toFlags4)
+                KeyCode toKeyCode4, Flags toFlags4,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -410,12 +439,14 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
                 KeyCode toKeyCode2, Flags toFlags2,
                 KeyCode toKeyCode3, Flags toFlags3,
-                KeyCode toKeyCode4, Flags toFlags4)
+                KeyCode toKeyCode4, Flags toFlags4,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -439,12 +470,14 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
                 KeyCode toKeyCode2,
                 KeyCode toKeyCode3, Flags toFlags3,
-                KeyCode toKeyCode4, Flags toFlags4)
+                KeyCode toKeyCode4, Flags toFlags4,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -468,12 +501,14 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
                 KeyCode toKeyCode2,
                 KeyCode toKeyCode3, Flags toFlags3,
-                KeyCode toKeyCode4, Flags toFlags4)
+                KeyCode toKeyCode4, Flags toFlags4,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -497,12 +532,14 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
                 KeyCode toKeyCode2, Flags toFlags2,
                 KeyCode toKeyCode3,
-                KeyCode toKeyCode4, Flags toFlags4)
+                KeyCode toKeyCode4, Flags toFlags4,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -526,12 +563,14 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
                 KeyCode toKeyCode2, Flags toFlags2,
                 KeyCode toKeyCode3,
-                KeyCode toKeyCode4, Flags toFlags4)
+                KeyCode toKeyCode4, Flags toFlags4,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -555,12 +594,14 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
                 KeyCode toKeyCode2,
                 KeyCode toKeyCode3,
-                KeyCode toKeyCode4, Flags toFlags4)
+                KeyCode toKeyCode4, Flags toFlags4,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -584,12 +625,14 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
                 KeyCode toKeyCode2,
                 KeyCode toKeyCode3,
-                KeyCode toKeyCode4, Flags toFlags4)
+                KeyCode toKeyCode4, Flags toFlags4,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -613,12 +656,14 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
                 KeyCode toKeyCode2, Flags toFlags2,
                 KeyCode toKeyCode3, Flags toFlags3,
-                KeyCode toKeyCode4)
+                KeyCode toKeyCode4,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -642,12 +687,14 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
                 KeyCode toKeyCode2, Flags toFlags2,
                 KeyCode toKeyCode3, Flags toFlags3,
-                KeyCode toKeyCode4)
+                KeyCode toKeyCode4,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -671,12 +718,14 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
                 KeyCode toKeyCode2,
                 KeyCode toKeyCode3, Flags toFlags3,
-                KeyCode toKeyCode4)
+                KeyCode toKeyCode4,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -700,12 +749,14 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
                 KeyCode toKeyCode2,
                 KeyCode toKeyCode3, Flags toFlags3,
-                KeyCode toKeyCode4)
+                KeyCode toKeyCode4,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -729,12 +780,14 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
                 KeyCode toKeyCode2, Flags toFlags2,
                 KeyCode toKeyCode3,
-                KeyCode toKeyCode4)
+                KeyCode toKeyCode4,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -758,12 +811,14 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
                 KeyCode toKeyCode2, Flags toFlags2,
                 KeyCode toKeyCode3,
-                KeyCode toKeyCode4)
+                KeyCode toKeyCode4,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -787,12 +842,14 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
                 KeyCode toKeyCode2,
                 KeyCode toKeyCode3,
-                KeyCode toKeyCode4)
+                KeyCode toKeyCode4,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -816,12 +873,14 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
                 KeyCode toKeyCode2,
                 KeyCode toKeyCode3,
-                KeyCode toKeyCode4)
+                KeyCode toKeyCode4,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -845,13 +904,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
                 KeyCode toKeyCode2, Flags toFlags2,
                 KeyCode toKeyCode3, Flags toFlags3,
                 KeyCode toKeyCode4, Flags toFlags4,
-                KeyCode toKeyCode5, Flags toFlags5)
+                KeyCode toKeyCode5, Flags toFlags5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -875,13 +936,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
                 KeyCode toKeyCode2, Flags toFlags2,
                 KeyCode toKeyCode3, Flags toFlags3,
                 KeyCode toKeyCode4, Flags toFlags4,
-                KeyCode toKeyCode5, Flags toFlags5)
+                KeyCode toKeyCode5, Flags toFlags5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -905,13 +968,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
                 KeyCode toKeyCode2,
                 KeyCode toKeyCode3, Flags toFlags3,
                 KeyCode toKeyCode4, Flags toFlags4,
-                KeyCode toKeyCode5, Flags toFlags5)
+                KeyCode toKeyCode5, Flags toFlags5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -935,13 +1000,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
                 KeyCode toKeyCode2,
                 KeyCode toKeyCode3, Flags toFlags3,
                 KeyCode toKeyCode4, Flags toFlags4,
-                KeyCode toKeyCode5, Flags toFlags5)
+                KeyCode toKeyCode5, Flags toFlags5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -965,13 +1032,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
                 KeyCode toKeyCode2, Flags toFlags2,
                 KeyCode toKeyCode3,
                 KeyCode toKeyCode4, Flags toFlags4,
-                KeyCode toKeyCode5, Flags toFlags5)
+                KeyCode toKeyCode5, Flags toFlags5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -995,13 +1064,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
                 KeyCode toKeyCode2, Flags toFlags2,
                 KeyCode toKeyCode3,
                 KeyCode toKeyCode4, Flags toFlags4,
-                KeyCode toKeyCode5, Flags toFlags5)
+                KeyCode toKeyCode5, Flags toFlags5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -1025,13 +1096,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
                 KeyCode toKeyCode2,
                 KeyCode toKeyCode3,
                 KeyCode toKeyCode4, Flags toFlags4,
-                KeyCode toKeyCode5, Flags toFlags5)
+                KeyCode toKeyCode5, Flags toFlags5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -1055,13 +1128,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
                 KeyCode toKeyCode2,
                 KeyCode toKeyCode3,
                 KeyCode toKeyCode4, Flags toFlags4,
-                KeyCode toKeyCode5, Flags toFlags5)
+                KeyCode toKeyCode5, Flags toFlags5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -1085,13 +1160,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
                 KeyCode toKeyCode2, Flags toFlags2,
                 KeyCode toKeyCode3, Flags toFlags3,
                 KeyCode toKeyCode4,
-                KeyCode toKeyCode5, Flags toFlags5)
+                KeyCode toKeyCode5, Flags toFlags5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -1115,13 +1192,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
                 KeyCode toKeyCode2, Flags toFlags2,
                 KeyCode toKeyCode3, Flags toFlags3,
                 KeyCode toKeyCode4,
-                KeyCode toKeyCode5, Flags toFlags5)
+                KeyCode toKeyCode5, Flags toFlags5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -1145,13 +1224,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
                 KeyCode toKeyCode2,
                 KeyCode toKeyCode3, Flags toFlags3,
                 KeyCode toKeyCode4,
-                KeyCode toKeyCode5, Flags toFlags5)
+                KeyCode toKeyCode5, Flags toFlags5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -1175,13 +1256,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
                 KeyCode toKeyCode2,
                 KeyCode toKeyCode3, Flags toFlags3,
                 KeyCode toKeyCode4,
-                KeyCode toKeyCode5, Flags toFlags5)
+                KeyCode toKeyCode5, Flags toFlags5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -1205,13 +1288,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
                 KeyCode toKeyCode2, Flags toFlags2,
                 KeyCode toKeyCode3,
                 KeyCode toKeyCode4,
-                KeyCode toKeyCode5, Flags toFlags5)
+                KeyCode toKeyCode5, Flags toFlags5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -1235,13 +1320,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
                 KeyCode toKeyCode2, Flags toFlags2,
                 KeyCode toKeyCode3,
                 KeyCode toKeyCode4,
-                KeyCode toKeyCode5, Flags toFlags5)
+                KeyCode toKeyCode5, Flags toFlags5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -1265,13 +1352,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
                 KeyCode toKeyCode2,
                 KeyCode toKeyCode3,
                 KeyCode toKeyCode4,
-                KeyCode toKeyCode5, Flags toFlags5)
+                KeyCode toKeyCode5, Flags toFlags5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -1295,13 +1384,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
                 KeyCode toKeyCode2,
                 KeyCode toKeyCode3,
                 KeyCode toKeyCode4,
-                KeyCode toKeyCode5, Flags toFlags5)
+                KeyCode toKeyCode5, Flags toFlags5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -1325,13 +1416,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
                 KeyCode toKeyCode2, Flags toFlags2,
                 KeyCode toKeyCode3, Flags toFlags3,
                 KeyCode toKeyCode4, Flags toFlags4,
-                KeyCode toKeyCode5)
+                KeyCode toKeyCode5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -1355,13 +1448,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
                 KeyCode toKeyCode2, Flags toFlags2,
                 KeyCode toKeyCode3, Flags toFlags3,
                 KeyCode toKeyCode4, Flags toFlags4,
-                KeyCode toKeyCode5)
+                KeyCode toKeyCode5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -1385,13 +1480,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
                 KeyCode toKeyCode2,
                 KeyCode toKeyCode3, Flags toFlags3,
                 KeyCode toKeyCode4, Flags toFlags4,
-                KeyCode toKeyCode5)
+                KeyCode toKeyCode5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -1415,13 +1512,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
                 KeyCode toKeyCode2,
                 KeyCode toKeyCode3, Flags toFlags3,
                 KeyCode toKeyCode4, Flags toFlags4,
-                KeyCode toKeyCode5)
+                KeyCode toKeyCode5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -1445,13 +1544,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
                 KeyCode toKeyCode2, Flags toFlags2,
                 KeyCode toKeyCode3,
                 KeyCode toKeyCode4, Flags toFlags4,
-                KeyCode toKeyCode5)
+                KeyCode toKeyCode5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -1475,13 +1576,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
                 KeyCode toKeyCode2, Flags toFlags2,
                 KeyCode toKeyCode3,
                 KeyCode toKeyCode4, Flags toFlags4,
-                KeyCode toKeyCode5)
+                KeyCode toKeyCode5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -1505,13 +1608,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
                 KeyCode toKeyCode2,
                 KeyCode toKeyCode3,
                 KeyCode toKeyCode4, Flags toFlags4,
-                KeyCode toKeyCode5)
+                KeyCode toKeyCode5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -1535,13 +1640,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
                 KeyCode toKeyCode2,
                 KeyCode toKeyCode3,
                 KeyCode toKeyCode4, Flags toFlags4,
-                KeyCode toKeyCode5)
+                KeyCode toKeyCode5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -1565,13 +1672,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
                 KeyCode toKeyCode2, Flags toFlags2,
                 KeyCode toKeyCode3, Flags toFlags3,
                 KeyCode toKeyCode4,
-                KeyCode toKeyCode5)
+                KeyCode toKeyCode5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -1595,13 +1704,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
                 KeyCode toKeyCode2, Flags toFlags2,
                 KeyCode toKeyCode3, Flags toFlags3,
                 KeyCode toKeyCode4,
-                KeyCode toKeyCode5)
+                KeyCode toKeyCode5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -1625,13 +1736,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
                 KeyCode toKeyCode2,
                 KeyCode toKeyCode3, Flags toFlags3,
                 KeyCode toKeyCode4,
-                KeyCode toKeyCode5)
+                KeyCode toKeyCode5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -1655,13 +1768,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
                 KeyCode toKeyCode2,
                 KeyCode toKeyCode3, Flags toFlags3,
                 KeyCode toKeyCode4,
-                KeyCode toKeyCode5)
+                KeyCode toKeyCode5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -1685,13 +1800,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
                 KeyCode toKeyCode2, Flags toFlags2,
                 KeyCode toKeyCode3,
                 KeyCode toKeyCode4,
-                KeyCode toKeyCode5)
+                KeyCode toKeyCode5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -1715,13 +1832,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
                 KeyCode toKeyCode2, Flags toFlags2,
                 KeyCode toKeyCode3,
                 KeyCode toKeyCode4,
-                KeyCode toKeyCode5)
+                KeyCode toKeyCode5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -1745,13 +1864,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1, Flags toFlags1,
                 KeyCode toKeyCode2,
                 KeyCode toKeyCode3,
                 KeyCode toKeyCode4,
-                KeyCode toKeyCode5)
+                KeyCode toKeyCode5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -1775,13 +1896,15 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }
 void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2,
                 KeyCode toKeyCode1,
                 KeyCode toKeyCode2,
                 KeyCode toKeyCode3,
                 KeyCode toKeyCode4,
-                KeyCode toKeyCode5)
+                KeyCode toKeyCode5,
+                SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)
 {
   virtualKeyCode_ = virtualKeyCode;
 
@@ -1805,4 +1928,5 @@ void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCod
 
   active1_ = false;
   active2_ = false;
+  option_ = option;
 }

@@ -185,12 +185,17 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  KeyEventInputQueue::Remap::push(Item* base, KeyCode key, bool isKeyDown)
+  KeyEventInputQueue::Remap::push(Item* base, bool isKeyDown)
   {
-    if (key == KeyCode::VK_NONE) return;
     if (! base) return;
 
     EventType eventType = isKeyDown ? EventType::DOWN : EventType::UP;
+
+    KeyCode key = virtualKeyCode_;
+    if (option_ == SimultaneousKeyPresses::Option::RAW) {
+      key = toKeyCode1_;
+    }
+    if (key == KeyCode::VK_NONE) return;
 
     KeyEventInputQueue::enqueue_(base->target,
                                  eventType,
@@ -231,7 +236,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         if ((p->eventType).isKeyDownOrModifierDown(p->key, p->flags)) continue;
 
         if (active1_ && p->key == fromKeyCode1_) {
-          push(p, virtualKeyCode_, false);
+          push(p, false);
 
           p->dropped = true;
           active1_ = false;
@@ -283,7 +288,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       item2->dropped = true;
       active2_ = true;
 
-      push(base, virtualKeyCode_, true);
+      push(base, true);
     }
   }
 

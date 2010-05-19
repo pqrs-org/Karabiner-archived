@@ -9,6 +9,15 @@
 #include "../config/output/include.remapcode_info.cpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
+  namespace SimultaneousKeyPresses {
+    namespace Option {
+      enum Option {
+        NORMAL,
+        RAW,
+      };
+    };
+  }
+
   class KeyEventInputQueue {
   public:
     static void initialize(IOWorkLoop& workloop);
@@ -53,7 +62,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     class Remap {
     public:
 #include "../generate/output/include.keyeventinputqueue.hpp"
-      void push(Item* base, KeyCode key, bool isKeyDown);
+      void push(Item* base, bool isKeyDown);
       void remap(void);
       bool handleVirtualKey(const Params_KeyboardEventCallBack& params);
 
@@ -76,6 +85,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       bool active1_;
       bool active2_;
+
+      SimultaneousKeyPresses::Option::Option option_;
 
       RemapUtil::KeyToKey keytokey_;
     };
