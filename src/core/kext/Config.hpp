@@ -4,7 +4,7 @@
 namespace org_pqrs_KeyRemap4MacBook {
   class Config {
   public:
-    Config() : debug(0), debug_pointing(0), debug_devel(0), initialized(0), isactive_simultaneouskeypresses_(false) {
+    Config() : debug(0), debug_pointing(0), debug_devel(0), initialized(0) {
 #include "config/output/include.config.default.hpp"
     }
 
@@ -45,17 +45,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       return value;
     }
     int get_simultaneouskeypresses_delay(void) {
-      if (! isactive_simultaneouskeypresses_) return 0;
-
       const int MINVAL = 5;
       const int MAXVAL = 1000;
       int value = parameter_simultaneouskeypresses_delay;
       if (value < MINVAL) return MINVAL;
       if (value > MAXVAL) return MAXVAL;
       return value;
-    }
-    void set_isactive_simultaneouskeypresses(bool newval) {
-      isactive_simultaneouskeypresses_ = newval;
     }
 
     // ----------------------------------------
@@ -66,9 +61,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     enum { SOCKET_PATH_MAX = 256 };
     char socket_path[SOCKET_PATH_MAX];
-
-  private:
-    bool isactive_simultaneouskeypresses_;
   };
   extern Config config;
 

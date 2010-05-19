@@ -27,10 +27,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! error && req->newptr) {
         FlagStatus::lock_clear();
         refresh_remapfunc();
-        KeyEventInputQueue::refresh_remapfunc();
-
-        config.set_isactive_simultaneouskeypresses(false);
-#include "config/output/include.remapcode_isactive_simultaneouskeypresses.cpp"
 
         // StatusMessageWindowParameter
         {
