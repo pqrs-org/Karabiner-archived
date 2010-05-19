@@ -50,9 +50,11 @@ makeset(num).each do |omitflags|
     code += "  toFlags#{i}_ = ModifierFlag::NONE;\n\n"
   end
 
-  print ")\n{\n"
+  print ",\n"
+  print "      SimultaneousKeyPresses::Option::Option option = SimultaneousKeyPresses::Option::NORMAL)\n{\n"
   print code
   print "  active1_ = false;\n"
   print "  active2_ = false;\n"
+  print "  option_ = option;\n"
   print "}\n"
 end
