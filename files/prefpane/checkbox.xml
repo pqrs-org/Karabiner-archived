@@ -313,6 +313,15 @@
           <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::DELETE</autogen>
         </item>
         <item>
+          <name>Backslash(\) to Delete</name>
+          <appendix>(+ FN+Backslash(\) to Backslash(\))</appendix>
+          <appendix>(+ retain Shift+Backslash(\))</appendix>
+          <sysctl>remap.backslash2delete_retain_shiftbackslash</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH, ModifierFlag::FN, KeyCode::BACKSLASH</autogen>
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH, VK_SHIFT, KeyCode::BACKSLASH, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::DELETE</autogen>
+        </item>
+        <item>
           <name>Backslash(\) to Enter</name>
           <sysctl>remap.backslash2enter</sysctl>
           <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::ENTER</autogen>
