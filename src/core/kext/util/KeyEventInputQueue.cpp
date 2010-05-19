@@ -10,11 +10,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   KeyEventInputQueue::Item* KeyEventInputQueue::last_ = KeyEventInputQueue::item_;
   TimerWrapper KeyEventInputQueue::timer_;
   bool KeyEventInputQueue::isTimerActive_;
-  KeyEventInputQueue::Remap* KeyEventInputQueue::listRemap[MAXNUM_REMAPFUNC_SIMULTANEOUSKEYPRESSES + 1];
-  int KeyEventInputQueue::listRemap_size = 0;
 
-  namespace {
-#include "../config/output/include.remapcode_simultaneouskeypresses_decl.cpp"
+  namespace GeneratedCode {
+#include "../config/output/include.remapcode_simultaneouskeypresses_func.cpp"
   }
 
   void
@@ -28,12 +26,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     timer_.initialize(&workloop, NULL, KeyEventInputQueue::fire);
     isTimerActive_ = false;
 
-    for (int i = 0; i < MAXNUM_REMAPFUNC_SIMULTANEOUSKEYPRESSES; ++i) {
-      listRemap[i] = NULL;
+    for (unsigned int i = 0; GeneratedCode::listRemapClass_simultaneouskeypresses[i]; ++i) {
+      GeneratedCode::listRemapClass_simultaneouskeypresses[i]->initialize();
     }
-    listRemap_size = 0;
-
-#include "../config/output/include.remapcode_simultaneouskeypresses_initialize.cpp"
   }
 
   void
@@ -42,21 +37,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     timer_.terminate();
   }
 
-  void
-  KeyEventInputQueue::refresh_remapfunc(void)
-  {
-    IOLockWrapper::ScopedLock lk(timer_.getlock());
-
-    listRemap_size = 0;
-#include "../config/output/include.remapcode_refresh_remapfunc_simultaneouskeypresses.cpp"
-  }
-
   bool
   KeyEventInputQueue::handleVirtualKey(const Params_KeyboardEventCallBack& params)
   {
-    for (int i = 0; i < listRemap_size; ++i) {
-      if (listRemap[i]) {
-        if (listRemap[i]->handleVirtualKey(params)) return true;
+    for (unsigned int i = 0; GeneratedCode::listRemapClass_simultaneouskeypresses[i]; ++i) {
+      if (GeneratedCode::listRemapClass_simultaneouskeypresses[i]->enabled()) {
+        if (GeneratedCode::listRemapClass_simultaneouskeypresses[i]->handleVirtualKey(params)) return true;
       }
     }
     return false;
@@ -81,7 +67,13 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     uint32_t ms = ic_.getmillisec();
     if (ms < 5) ms = 5;
-    uint32_t delay = config.get_simultaneouskeypresses_delay();
+    uint32_t delay = 0;
+    for (unsigned int i = 0; GeneratedCode::listRemapClass_simultaneouskeypresses[i]; ++i) {
+      if (GeneratedCode::listRemapClass_simultaneouskeypresses[i]->enabled()) {
+        delay = config.get_simultaneouskeypresses_delay();
+        break;
+      }
+    }
     delay = (ms < delay) ? ms : delay; // min(ms, delay)
 
     last_->target = target;
@@ -136,9 +128,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ------------------------------------------------------------
     // check queue
-    for (int i = 0; i < listRemap_size; ++i) {
-      if (listRemap[i]) {
-        listRemap[i]->remap();
+    for (unsigned int i = 0; GeneratedCode::listRemapClass_simultaneouskeypresses[i]; ++i) {
+      if (GeneratedCode::listRemapClass_simultaneouskeypresses[i]->enabled()) {
+        GeneratedCode::listRemapClass_simultaneouskeypresses[i]->remap();
       }
     }
 
