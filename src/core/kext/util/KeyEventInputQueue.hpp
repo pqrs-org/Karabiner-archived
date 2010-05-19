@@ -14,8 +14,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void initialize(IOWorkLoop& workloop);
     static void terminate(void);
 
-    static void refresh_remapfunc(void);
-
     static bool handleVirtualKey(const Params_KeyboardEventCallBack& params);
 
     static void add(OSObject* target,
@@ -82,6 +80,14 @@ namespace org_pqrs_KeyRemap4MacBook {
       RemapUtil::KeyToKey keytokey_;
     };
 
+    class RemapClass {
+    public:
+      virtual void initialize(void) = 0;
+      virtual void remap(void) = 0;
+      virtual bool handleVirtualKey(const Params_KeyboardEventCallBack& params) = 0;
+      virtual bool enabled(void) const = 0;
+    };
+
   private:
     enum {
       MAXNUM = 64,
@@ -124,8 +130,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     static Item* last_;
     static TimerWrapper timer_;
     static bool isTimerActive_;
-    static Remap* listRemap[MAXNUM_REMAPFUNC_SIMULTANEOUSKEYPRESSES + 1];
-    static int listRemap_size;
   };
 }
 
