@@ -95,7 +95,8 @@ def parseautogen(name, lines, autogen_index)
   code_pointing = []
   code_variable = []
 
-  code_simultaneouskeypresses = []
+  simultaneouskeypresses_code = []
+  simultaneouskeypresses_variable = []
 
   while true
     l = lines.shift
@@ -112,13 +113,14 @@ def parseautogen(name, lines, autogen_index)
 
     # --------------------------------------------------
     if /<block>/ =~ l then
-      block_code_key, block_code_consumer, block_code_pointing, block_code_variable, autogen_index, block_code_simultaneouskeypresses = parseautogen(name, lines, autogen_index)
+      block_code_key, block_code_consumer, block_code_pointing, block_code_variable, autogen_index, block_simultaneouskeypresses_code, block_simultaneouskeypresses_variable = parseautogen(name, lines, autogen_index)
 
       code_key << block_code_key unless block_code_key.empty?
       code_consumer << block_code_consumer unless block_code_consumer.empty?
       code_pointing << block_code_pointing unless block_code_pointing.empty?
       code_variable += block_code_variable
-      code_simultaneouskeypresses += block_code_simultaneouskeypresses
+      simultaneouskeypresses_code << block_simultaneouskeypresses_code unless block_simultaneouskeypresses_code.empty?
+      simultaneouskeypresses_variable += block_simultaneouskeypresses_variable
 
     elsif /<\/block>/ =~ l then
       break
@@ -138,13 +140,13 @@ def parseautogen(name, lines, autogen_index)
 
     elsif /<keyboardtype_not>(.+?)<\/keyboardtype_not>/ =~ l then
       $1.split(/,/).each do |f|
-        filter << "if (remapParams.params.keyboardType == KeyboardType::#{f.strip}) break;"
+        filter << "if (CommonData::getcurrent_keyboardType() == KeyboardType::#{f.strip}) break;"
       end
 
     elsif /<keyboardtype_only>(.+?)<\/keyboardtype_only>/ =~ l then
       tmp = []
       $1.split(/,/).each do |f|
-        tmp << "(remapParams.params.keyboardType != KeyboardType::#{f.strip})"
+        tmp << "(CommonData::getcurrent_keyboardType() != KeyboardType::#{f.strip})"
       end
       filter << "if (#{tmp.join(' && ')}) break;"
 
@@ -212,7 +214,8 @@ def parseautogen(name, lines, autogen_index)
         when 'SimultaneousKeyPresses'
           $outfile[:keycode_vk_config] << "VK_SIMULTANEOUSKEYPRESSES_#{name}_#{autogen_index} --AUTO--\n"
           $func[:simultaneouskeypresses] << name
-          code_simultaneouskeypresses << ["remap_#{autogen_index}_", "KeyCode::VK_SIMULTANEOUSKEYPRESSES_#{name}_#{autogen_index}, #{params}"]
+          simultaneouskeypresses_variable << { :name => "remap_#{autogen_index}_", :params => "KeyCode::VK_SIMULTANEOUSKEYPRESSES_#{name}_#{autogen_index}, #{params}" }
+          simultaneouskeypresses_code << "remap_#{autogen_index}_.remap();"
 
         when 'KeyToKey'
           code_variable << ['RemapUtil::KeyToKey', "keytokey#{autogen_index}_"]
@@ -290,6 +293,7 @@ def parseautogen(name, lines, autogen_index)
   result_code_key = ''
   result_code_consumer = ''
   result_code_pointing = ''
+  result_simultaneouskeypresses_code = ''
 
   unless code_key.empty? then
     result_code_key += "  do {\n"
@@ -323,7 +327,19 @@ def parseautogen(name, lines, autogen_index)
     result_code_pointing += "  } while (false);\n"
   end
 
-  return result_code_key, result_code_consumer, result_code_pointing, code_variable, autogen_index, code_simultaneouskeypresses
+  unless simultaneouskeypresses_variable.empty? then
+    result_simultaneouskeypresses_code += "  do {\n"
+    filter.each do |f|
+      result_simultaneouskeypresses_code += "    #{f}\n"
+    end
+    result_simultaneouskeypresses_code += "\n" unless filter.empty?
+    simultaneouskeypresses_code.each do |line|
+      result_simultaneouskeypresses_code += "    #{line}\n"
+    end
+    result_simultaneouskeypresses_code += "  } while (false);\n"
+  end
+
+  return result_code_key, result_code_consumer, result_code_pointing, code_variable, autogen_index, result_simultaneouskeypresses_code, simultaneouskeypresses_variable
 end
 
 # ----------------------------------------------------------------------
@@ -359,7 +375,7 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
   lines = item.split(/\n/)
   lines = preprocess(lines)
 
-  code_key, code_consumer, code_pointing, code_variable, autogen_index, code_simultaneouskeypresses = parseautogen(name, lines, 0)
+  code_key, code_consumer, code_pointing, code_variable, autogen_index, simultaneouskeypresses_code, simultaneouskeypresses_variable = parseautogen(name, lines, 0)
 
   unless lines.empty? then
     print "%%% ERROR no </block> at #{name} %%%\n"
@@ -369,7 +385,8 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
     code_consumer.empty? &&
     code_pointing.empty? &&
     code_variable.empty? &&
-    code_simultaneouskeypresses.empty?
+    simultaneouskeypresses_code.empty? &&
+    simultaneouskeypresses_variable.empty?
 
   $outfile[:remapcode_func] << "class RemapClass_#{name} {\n"
   $outfile[:remapcode_func] << "public:\n"
@@ -400,25 +417,23 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
   end
   $outfile[:remapcode_func] << "\n\n"
 
-  unless code_simultaneouskeypresses.empty? then
+  unless simultaneouskeypresses_variable.empty? then
     $outfile[:remapcode_simultaneouskeypresses_func] << "class RemapClass_#{name} : public KeyEventInputQueue::RemapClass {\n"
     $outfile[:remapcode_simultaneouskeypresses_func] << "public:\n"
 
     $outfile[:remapcode_simultaneouskeypresses_func] << "void initialize(void) {\n"
-    code_simultaneouskeypresses.each do |variable|
-      $outfile[:remapcode_simultaneouskeypresses_func] << "  #{variable[0]}.initialize(#{variable[1]});\n"
+    simultaneouskeypresses_variable.each do |variable|
+      $outfile[:remapcode_simultaneouskeypresses_func] << "  #{variable[:name]}.initialize(#{variable[:params]});\n"
     end
     $outfile[:remapcode_simultaneouskeypresses_func] << "}\n"
 
     $outfile[:remapcode_simultaneouskeypresses_func] << "void remap(void) {\n"
-    code_simultaneouskeypresses.each do |variable|
-      $outfile[:remapcode_simultaneouskeypresses_func] << "  #{variable[0]}.remap();\n"
-    end
+    $outfile[:remapcode_simultaneouskeypresses_func] << simultaneouskeypresses_code
     $outfile[:remapcode_simultaneouskeypresses_func] << "}\n"
 
     $outfile[:remapcode_simultaneouskeypresses_func] << "bool handleVirtualKey(const Params_KeyboardEventCallBack& params) {\n"
-    code_simultaneouskeypresses.each do |variable|
-      $outfile[:remapcode_simultaneouskeypresses_func] << "  if (#{variable[0]}.handleVirtualKey(params)) return true;\n"
+    simultaneouskeypresses_variable.each do |variable|
+      $outfile[:remapcode_simultaneouskeypresses_func] << "  if (#{variable[:name]}.handleVirtualKey(params)) return true;\n"
     end
     $outfile[:remapcode_simultaneouskeypresses_func] << "  return false;\n"
     $outfile[:remapcode_simultaneouskeypresses_func] << "}\n"
@@ -426,8 +441,8 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
     $outfile[:remapcode_simultaneouskeypresses_func] << "bool enabled(void) const { return config.#{name}; }\n"
 
     $outfile[:remapcode_simultaneouskeypresses_func] << "private:\n"
-    code_simultaneouskeypresses.each do |variable|
-      $outfile[:remapcode_simultaneouskeypresses_func] << "  KeyEventInputQueue::Remap #{variable[0]};\n"
+    simultaneouskeypresses_variable.each do |variable|
+      $outfile[:remapcode_simultaneouskeypresses_func] << "  KeyEventInputQueue::Remap #{variable[:name]};\n"
     end
     $outfile[:remapcode_simultaneouskeypresses_func] << "};\n"
 
