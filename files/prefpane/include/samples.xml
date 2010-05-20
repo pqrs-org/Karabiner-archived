@@ -139,6 +139,7 @@
       <appendix>G to Shift_L (When type only, send A,B,Shift_L+C,Control_L+B)</appendix>
       <appendix>H to Shift_L (When type only, send A,B,Shift_L+C,Control_L+B) + [KeyRepeat]</appendix>
       <appendix>I to Shift_L (When type only, send Option_L)</appendix>
+      <appendix>Command_R to Shift_L (When type only without other modifiers, send Space)</appendix>
       <sysctl>remap.samples_keyoverlaidmodifier</sysctl>
       <autogen>--KeyOverlaidModifier-- KeyCode::A, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
       <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_L, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
@@ -150,6 +151,7 @@
       <autogen>--KeyOverlaidModifier--           KeyCode::G, KeyCode::SHIFT_L, KeyCode::A, KeyCode::B, KeyCode::C, ModifierFlag::SHIFT_L, KeyCode::B, ModifierFlag::CONTROL_L</autogen>
       <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::H, KeyCode::SHIFT_L, KeyCode::A, KeyCode::B, KeyCode::C, ModifierFlag::SHIFT_L, KeyCode::B, ModifierFlag::CONTROL_L</autogen>
       <autogen>--KeyOverlaidModifier-- KeyCode::I, KeyCode::SHIFT_L, KeyCode::OPTION_L</autogen>
+      <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
     </item>
 
     <item>
