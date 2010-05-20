@@ -3236,6 +3236,11 @@
           <sysctl>remap.simultaneouskeypresses_vi_to_vimode</sysctl>
           <autogen>--SimultaneousKeyPresses-- KeyCode::V, KeyCode::I, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
         </item>
+        <item>
+          <name>Simultaneous Key Presses [K+L] to PC Application Key</name>
+          <sysctl>remap.simultaneouskeypresses_kl2pc_application</sysctl>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::L, KeyCode::PC_APPLICATION, SimultaneousKeyPresses::Option::RAW</autogen>
+        </item>
       </list>
     </item>
 
