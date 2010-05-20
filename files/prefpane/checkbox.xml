@@ -1346,10 +1346,20 @@
           <autogen>--KeyToConsumer-- KeyCode::F5, ConsumerKeyCode::VOLUME_UP</autogen>
         </item>
         <item>
+          <name>F5 to Volume Down 1/4</name>
+          <sysctl>remap.f5_to_volumedown_quarter</sysctl>
+          <autogen>--KeyToConsumer-- KeyCode::F5, ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
+        </item>
+        <item>
           <name>F6 to FN_Lock (except virtual machine, RDC)</name>
           <sysctl>remap.f6_to_numlock</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToKey-- KeyCode::F6, KeyCode::VK_LOCK_FN</autogen>
+        </item>
+        <item>
+          <name>F6 to Volume Up 1/4</name>
+          <sysctl>remap.f6_to_volumeup_quarter</sysctl>
+          <autogen>--KeyToConsumer-- KeyCode::F6, ConsumerKeyCode::VOLUME_UP, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
           <name>F7 to Video Mirror (except virtual machine, RDC)</name>
@@ -1586,6 +1596,22 @@
               <autogen>--KeyToKey-- KeyCode::KEYPAD_COMMA, KeyCode::KEYPAD_COMMA, ModifierFlag::SHIFT_L</autogen>
             </item>
           </list>
+        </item>
+        <item>
+          <name>Keypad_0 to Shift_L</name>
+          <appendix>(+ When you type Keypad_0 only, send Keypad_0) + [KeyRepeat]</appendix>
+          <sysctl>remap.keypad0_2_shiftL_keypad0_keyrepeat</sysctl>
+          <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::KEYPAD_0, KeyCode::SHIFT_L, KeyCode::KEYPAD_0</autogen>
+        </item>
+        <item>
+          <name>Shift+Dot to Comma</name>
+          <sysctl>remap.shift_keypad_dot2comma</sysctl>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, ModifierFlag::VK_SHIFT, KeyCode::KEYPAD_COMMA</autogen>
+        </item>
+        <item>
+          <name>Shift+Enter to Equal</name>
+          <sysctl>remap.shift_enter2equal</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ENTER, ModifierFlag::VK_SHIFT, KeyCode::KEYPAD_EQUAL</autogen>
         </item>
       </list>
     </item>
@@ -3229,6 +3255,11 @@
           <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::EXTRA1, KeyCode::FN, ModifierFlag::EXTRA1</autogen>
         </item>
         <item>
+          <name>Simultaneous Key Presses [F+J] to Return</name>
+          <sysctl>remap.simultaneouskeypresses_fj_to_return</sysctl>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::J, KeyCode::RETURN</autogen>
+        </item>
+        <item>
           <name>Simultaneous Key Presses [X+C] to Escape</name>
           <sysctl>remap.simultaneouskeypresses_xc2escape</sysctl>
           <autogen>--SimultaneousKeyPresses-- KeyCode::C, KeyCode::X, KeyCode::ESCAPE</autogen>
@@ -4075,6 +4106,11 @@
               <name>NumLock Key to F11</name>
               <sysctl>remap.pc_numlock2f11</sysctl>
               <autogen>--KeyToKey-- KeyCode::PC_KEYPAD_NUMLOCK, KeyCode::F11</autogen>
+            </item>
+            <item>
+              <name>Drop NumLock Key</name>
+              <sysctl>remap.drop_numlock</sysctl>
+              <autogen>--KeyToKey-- KeyCode::PC_KEYPAD_NUMLOCK, KeyCode::VK_NONE</autogen>
             </item>
           </list>
         </item>
