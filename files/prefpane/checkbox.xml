@@ -1214,14 +1214,34 @@
           <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, KeyCode::F5</autogen>
         </item>
         <item>
-          <name>Video Mirror to Music Prev</name>
+          <name>NumLock to F6</name>
+          <sysctl>remap.numlock2f6</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::NUMLOCK, KeyCode::F6</autogen>
+        </item>
+        <item>
+          <name>NumLock to Music Prev</name>
+          <sysctl>remap.numlock2musicprev</sysctl>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::NUMLOCK, ConsumerKeyCode::MUSIC_PREV</autogen>
+        </item>
+        <item>
+          <name>Video Mirroring to Music Prev</name>
           <sysctl>remap.videomirror2musicprev</sysctl>
           <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VIDEO_MIRROR, ConsumerKeyCode::MUSIC_PREV</autogen>
+        </item>
+        <item>
+          <name>Video Mirroring to Music Play/Pause</name>
+          <sysctl>remap.videomirror2musicplay</sysctl>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VIDEO_MIRROR, ConsumerKeyCode::MUSIC_PLAY</autogen>
         </item>
         <item>
           <name>Keyboard Light Off to Music Play/Pause</name>
           <sysctl>remap.keyboardlightoff2musicplay</sysctl>
           <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_OFF, ConsumerKeyCode::MUSIC_PLAY</autogen>
+        </item>
+        <item>
+          <name>Keyboard Light OFF to Music Next</name>
+          <sysctl>remap.keyboardlightoff2musicnext</sysctl>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_OFF, ConsumerKeyCode::MUSIC_NEXT</autogen>
         </item>
         <item>
           <name>Keyboard Light LOW to Music Next</name>
@@ -1421,10 +1441,20 @@
           <autogen>--KeyToConsumer-- KeyCode::F10, ConsumerKeyCode::VOLUME_MUTE</autogen>
         </item>
         <item>
+          <name>FN+F11 to F11</name>
+          <sysctl>remap.FnF11_to_f11</sysctl>
+          <autogen>--KeyToKey-- KeyCode::F11, ModifierFlag::FN, KeyCode::F11</autogen>
+        </item>
+        <item>
           <name>F11 to Volume Down (except virtual machine, RDC)</name>
           <sysctl>remap.f11_to_volumedown</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToConsumer-- KeyCode::F11, ConsumerKeyCode::VOLUME_DOWN</autogen>
+        </item>
+        <item>
+          <name>F11 to display mirroring</name>
+          <sysctl>remap.F11_to_mirroring</sysctl>
+          <autogen>--KeyToConsumer-- KeyCode::F11, ConsumerKeyCode::VIDEO_MIRROR</autogen>
         </item>
         <item>
           <name>F12 to Volume Up (except virtual machine, RDC)</name>
@@ -1433,9 +1463,19 @@
           <autogen>--KeyToConsumer-- KeyCode::F12, ConsumerKeyCode::VOLUME_UP</autogen>
         </item>
         <item>
+          <name>FN+F12 to F12</name>
+          <sysctl>remap.FnF12_to_f12</sysctl>
+          <autogen>--KeyToKey-- KeyCode::F12, ModifierFlag::FN, KeyCode::F12</autogen>
+        </item>
+        <item>
           <name>F12 to Forward Delete</name>
           <sysctl>remap.f12_to_forwarddelete</sysctl>
           <autogen>--KeyToKey-- KeyCode::F12, KeyCode::FORWARD_DELETE</autogen>
+        </item>
+        <item>
+          <name>F12 to Expose</name>
+          <sysctl>remap.F12_to_expose</sysctl>
+          <autogen>--KeyToKey-- KeyCode::F12, KeyCode::EXPOSE_ALL</autogen>
         </item>
         <item>
           <name>F13 to Volume Mute (except virtual machine, RDC)</name>
@@ -1745,18 +1785,6 @@
         </item>
       </list>
     </item>
-
-    <item>
-      <name>Change NumLock Key</name>
-      <list>
-        <item>
-          <name>NumLock to F6</name>
-          <sysctl>remap.numlock2f6</sysctl>
-          <autogen>--ConsumerToKey-- ConsumerKeyCode::NUMLOCK, KeyCode::F6</autogen>
-        </item>
-      </list>
-    </item>
-
     <item>
       <name>Change Option_L Key</name>
       <list>
