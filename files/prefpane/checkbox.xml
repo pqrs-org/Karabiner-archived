@@ -409,6 +409,17 @@
           <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::BACKQUOTE</autogen>
         </item>
         <item>
+          <name>Command_L to Escape</name>
+          <sysctl>remap.commandL2escape</sysctl>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::ESCAPE</autogen>
+        </item>
+        <item>
+          <name>Command_L to Escape (only in Emacs)</name>
+          <sysctl>remap.commandL2escape_emacs</sysctl>
+          <only>EMACS</only>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::ESCAPE</autogen>
+        </item>
+        <item>
           <name>Command_R+Command_L to Escape</name>
           <appendix>(Note: Escape is sent when you release Command_L)</appendix>
           <sysctl>remap.commandRcommandL2escape</sysctl>
