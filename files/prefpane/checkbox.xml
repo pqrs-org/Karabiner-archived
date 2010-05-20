@@ -653,6 +653,12 @@
         </item>
         <item>
           <name>Control_L to Control_L</name>
+          <appendix>(+ When you type Control_L only without other modifiers, send Delete) + [KeyRepeat]</appendix>
+          <sysctl>remap.controlL2controlL_delete_nomod_keyrepeat</sysctl>
+          <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::CONTROL_L, ModifierFlag::CONTROL_L | ModifierFlag::NONE, KeyCode::CONTROL_L, KeyCode::DELETE</autogen>
+        </item>
+        <item>
+          <name>Control_L to Control_L</name>
           <appendix>(+ When you type Control_L only, send Escape)</appendix>
           <sysctl>remap.controlL2controlL_escape</sysctl>
           <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_L, KeyCode::CONTROL_L, KeyCode::ESCAPE</autogen>
@@ -3244,8 +3250,15 @@
         </item>
         <item>
           <name>Simultaneous Key Presses [K+L] to PC Application Key</name>
+          <appendix>(We can change the key once again)</appendix>
           <sysctl>remap.simultaneouskeypresses_kl2pc_application</sysctl>
           <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::L, KeyCode::PC_APPLICATION, SimultaneousKeyPresses::Option::RAW</autogen>
+        </item>
+        <item>
+          <name>Simultaneous Key Presses [K+L] to Return</name>
+          <appendix>(We can change the key once again)</appendix>
+          <sysctl>remap.simultaneouskeypresses_kl2return</sysctl>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::L, KeyCode::RETURN, SimultaneousKeyPresses::Option::RAW</autogen>
         </item>
       </list>
     </item>
