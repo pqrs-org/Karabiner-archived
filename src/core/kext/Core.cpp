@@ -5,6 +5,7 @@
 #include "Core.hpp"
 #include "RemapUtil.hpp"
 #include "remap.hpp"
+#include "util/CallBackWrapper.hpp"
 #include "util/KeyboardRepeat.hpp"
 #include "util/KeyEventInputQueue.hpp"
 #include "util/ListHookedConsumer.hpp"
@@ -92,6 +93,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         KeyboardRepeat::initialize(*workLoop);
         KeyEventInputQueue::initialize(*workLoop);
         VirtualKey::initialize(*workLoop);
+        Params_KeyboardEventCallBack::Queue::initialize(*workLoop);
       }
     }
 
@@ -105,6 +107,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       KeyboardRepeat::terminate();
       KeyEventInputQueue::terminate();
       VirtualKey::terminate();
+      Params_KeyboardEventCallBack::Queue::terminate();
 
       if (workLoop) {
         workLoop->release();

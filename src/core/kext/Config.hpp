@@ -52,6 +52,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (value > MAXVAL) return MAXVAL;
       return value;
     }
+    unsigned int get_keyevent_minimal_interval(void) {
+      return getvalue(parameter_keyevent_minimal_interval, 5, 1000);
+    }
 
     // ----------------------------------------
     int debug;
@@ -61,6 +64,17 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     enum { SOCKET_PATH_MAX = 256 };
     char socket_path[SOCKET_PATH_MAX];
+
+  private:
+    unsigned int getvalue(int value, int minval) {
+      if (value < minval) return minval;
+      return value;
+    }
+    unsigned int getvalue(int value, int minval, int maxval) {
+      if (value < minval) return minval;
+      if (value > maxval) return maxval;
+      return value;
+    }
   };
   extern Config config;
 
