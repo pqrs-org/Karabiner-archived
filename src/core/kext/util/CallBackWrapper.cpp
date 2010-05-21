@@ -124,14 +124,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ------------------------------------------------------------
-    if (isempty && ic_.getmillisec() > config.get_keyevent_minimal_interval()) {
+    if (isempty && ic_.getmillisec() > DELAY) {
       fire_nolock();
     } else {
       if (! isTimerActive_) {
         if (config.debug_devel) {
           IOLog("KeyRemap4MacBook --Info-- Params_KeyboardEventCallBack::Queue enqueued ic_.getmillisec() = %d\n", ic_.getmillisec());
         }
-        timer_.setTimeoutMS(config.get_keyevent_minimal_interval());
+        timer_.setTimeoutMS(DELAY);
         isTimerActive_ = true;
       }
     }
@@ -160,7 +160,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     current_ = getnext(current_);
 
     if (! empty()) {
-      timer_.setTimeoutMS(config.get_keyevent_minimal_interval());
+      timer_.setTimeoutMS(DELAY);
       isTimerActive_ = true;
     }
   }

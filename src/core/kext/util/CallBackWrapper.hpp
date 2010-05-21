@@ -52,6 +52,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     private:
       enum {
         MAXNUM = 128,
+        DELAY = 1,
       };
       static bool empty(void) { return current_ == last_; }
 

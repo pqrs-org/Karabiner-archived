@@ -52,9 +52,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (value > MAXVAL) return MAXVAL;
       return value;
     }
-    unsigned int get_keyevent_minimal_interval(void) {
-      return getvalue(parameter_keyevent_minimal_interval, 5, 1000);
-    }
 
     // ----------------------------------------
     int debug;

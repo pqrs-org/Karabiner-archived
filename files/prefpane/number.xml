@@ -62,13 +62,6 @@
     </item>
 
     <item>
-      <name>[Key Event] Minimal Interval</name>
-      <sysctl>parameter.keyevent_minimal_interval</sysctl>
-      <default>5</default>
-      <baseunit>ms</baseunit>
-    </item>
-
-    <item>
       <name>[Pointing Device] CursorMove to ScrollWheel Rate</name>
       <sysctl>pointing.relative2scroll_rate</sysctl>
       <default>150</default>
