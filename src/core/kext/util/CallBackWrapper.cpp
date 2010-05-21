@@ -8,6 +8,13 @@
 #include "KeyCode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
+  Params_KeyboardEventCallBack* Params_KeyboardEventCallBack::Queue::item_[Params_KeyboardEventCallBack::Queue::MAXNUM];
+  IntervalChecker Params_KeyboardEventCallBack::Queue::ic_;
+  Params_KeyboardEventCallBack** Params_KeyboardEventCallBack::Queue::current_ = Params_KeyboardEventCallBack::Queue::item_;
+  Params_KeyboardEventCallBack** Params_KeyboardEventCallBack::Queue::last_ = Params_KeyboardEventCallBack::Queue::item_;
+  TimerWrapper Params_KeyboardEventCallBack::Queue::timer_;
+  bool Params_KeyboardEventCallBack::Queue::isTimerActive_;
+
   void
   Params_KeyboardEventCallBack::log(const char* message) const
   {
@@ -71,7 +78,102 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   void
+  Params_KeyboardEventCallBack::Queue::initialize(IOWorkLoop& workloop)
+  {
+    for (int i = 0; i < MAXNUM; ++i) {
+      item_[i] = NULL;
+    }
+
+    ic_.begin();
+    timer_.initialize(&workloop, NULL, Params_KeyboardEventCallBack::Queue::fire);
+    isTimerActive_ = false;
+  }
+
+  void
+  Params_KeyboardEventCallBack::Queue::terminate(void)
+  {
+    for (int i = 0; i < MAXNUM; ++i) {
+      if (item_[i]) {
+        delete item_[i];
+        item_[i] = NULL;
+      }
+    }
+
+    timer_.terminate();
+  }
+
+  void
+  Params_KeyboardEventCallBack::Queue::add(const Params_KeyboardEventCallBack& p)
+  {
+    IOLockWrapper::ScopedLock lk(timer_.getlock());
+
+    bool isempty = empty();
+
+    if (*last_) {
+      delete *last_;
+      *last_ = NULL;
+    }
+
+    *last_ = Params_KeyboardEventCallBack::alloc(p.eventType, p.flags, p.key,
+                                                 p.charCode, p.charSet, p.origCharCode, p.origCharSet,
+                                                 p.keyboardType, p.repeat);
+    last_ = getnext(last_);
+
+    if (last_ == current_) {
+      IOLog("KeyRemap4MacBook --Warning-- Params_KeyboardEventCallBack::Queue was filled up. Expand MAXNUM.\n");
+    }
+
+    // ------------------------------------------------------------
+    if (isempty && ic_.getmillisec() > config.get_keyevent_minimal_interval()) {
+      fire_nolock();
+    } else {
+      if (! isTimerActive_) {
+        if (config.debug_devel) {
+          IOLog("KeyRemap4MacBook --Info-- Params_KeyboardEventCallBack::Queue enqueued ic_.getmillisec() = %d\n", ic_.getmillisec());
+        }
+        timer_.setTimeoutMS(config.get_keyevent_minimal_interval());
+        isTimerActive_ = true;
+      }
+    }
+
+    ic_.begin();
+  }
+
+  void
+  Params_KeyboardEventCallBack::Queue::fire(OSObject* owner, IOTimerEventSource* sender)
+  {
+    IOLockWrapper::ScopedLock lk(timer_.getlock());
+    fire_nolock();
+  }
+
+  void
+  Params_KeyboardEventCallBack::Queue::fire_nolock(void)
+  {
+    isTimerActive_ = false;
+
+    if (empty()) return;
+
+    Params_KeyboardEventCallBack* p = *current_;
+    if (! p) return;
+    p->do_apply();
+
+    current_ = getnext(current_);
+
+    if (! empty()) {
+      timer_.setTimeoutMS(config.get_keyevent_minimal_interval());
+      isTimerActive_ = true;
+    }
+  }
+
+  // ----------------------------------------------------------------------
+  void
   Params_KeyboardEventCallBack::apply(void) const
+  {
+    Params_KeyboardEventCallBack::Queue::add(*this);
+  }
+
+  void
+  Params_KeyboardEventCallBack::do_apply(void) const
   {
     if (key >= KeyCode::VK__BEGIN__) {
       // Invalid keycode

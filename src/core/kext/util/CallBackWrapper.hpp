@@ -4,6 +4,8 @@
 #include "base.hpp"
 #include "KeyCode.hpp"
 #include "auto_ptr.hpp"
+#include "IntervalChecker.hpp"
+#include "TimerWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   class Params_KeyboardEventCallBack {
@@ -39,6 +41,38 @@ namespace org_pqrs_KeyRemap4MacBook {
     KeyboardType keyboardType;
     bool repeat;
 
+    // ----------------------------------------
+    class Queue {
+    public:
+      static void initialize(IOWorkLoop& workloop);
+      static void terminate(void);
+
+      static void add(const Params_KeyboardEventCallBack& p);
+
+    private:
+      enum {
+        MAXNUM = 128,
+      };
+      static bool empty(void) { return current_ == last_; }
+
+      static void fire(OSObject* owner, IOTimerEventSource* sender);
+      static void fire_nolock(void);
+      static Params_KeyboardEventCallBack** getnext(Params_KeyboardEventCallBack** p) {
+        if (p >= item_ + (MAXNUM - 1)) {
+          return item_;
+        } else {
+          return p + 1;
+        }
+      }
+
+      static Params_KeyboardEventCallBack* item_[MAXNUM];
+      static IntervalChecker ic_;
+      static Params_KeyboardEventCallBack** current_;
+      static Params_KeyboardEventCallBack** last_;
+      static TimerWrapper timer_;
+      static bool isTimerActive_;
+    };
+
   private:
     Params_KeyboardEventCallBack(EventType et, Flags fl, KeyCode kc,
                                  CharCode cc, CharSet cs, OrigCharCode occ, OrigCharSet ocs,
@@ -46,6 +80,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       eventType(et), flags(fl), key(kc),
       charCode(cc), charSet(cs), origCharCode(occ), origCharSet(ocs),
       keyboardType(kt), repeat(r) {}
+
+    void do_apply(void) const;
   };
 
   class Params_KeyboardSpecialEventCallback {
