@@ -65,6 +65,28 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   bool
+  Handle_VK_LAZY::handle(const Params_KeyboardEventCallBack& params)
+  {
+    ModifierFlag f = ModifierFlag::NONE;
+
+    if (params.key == KeyCode::VK_LAZY_SHIFT_L) {
+      f = ModifierFlag::SHIFT_L;
+    }
+
+    if (f == ModifierFlag::NONE) return false;
+
+    // ----------------------------------------
+    if (params.eventType == EventType::DOWN && params.repeat == false) {
+      FlagStatus::increase(f);
+    } else {
+      FlagStatus::decrease(f);
+    }
+
+    return true;
+  }
+
+  // ----------------------------------------------------------------------
+  bool
   Handle_VK_CHANGE_INPUTMODE::handle(const Params_KeyboardEventCallBack& params)
   {
     KeyRemap4MacBook_bridge::ChangeInputMode::Request request;

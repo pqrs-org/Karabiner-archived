@@ -20,6 +20,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
 
   // ----------------------------------------------------------------------
+  class Handle_VK_LAZY {
+  public:
+    static bool handle(const Params_KeyboardEventCallBack& params);
+  };
+
+  // ----------------------------------------------------------------------
   class Handle_VK_CHANGE_INPUTMODE {
   public:
     static bool handle(const Params_KeyboardEventCallBack& params);
