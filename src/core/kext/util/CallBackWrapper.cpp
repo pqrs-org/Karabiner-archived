@@ -153,11 +153,13 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (empty()) return;
 
-    Params_KeyboardEventCallBack* p = *current_;
-    if (! p) return;
-    p->do_apply();
+    do {
+      Params_KeyboardEventCallBack* p = *current_;
+      if (! p) return;
+      p->do_apply();
 
-    current_ = getnext(current_);
+      current_ = getnext(current_);
+    } while (size() > MAXNUM / 2);
 
     if (! empty()) {
       timer_.setTimeoutMS(DELAY);

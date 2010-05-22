@@ -65,6 +65,13 @@ namespace org_pqrs_KeyRemap4MacBook {
           return p + 1;
         }
       }
+      static size_t size(void) {
+        if (last_ >= current_) {
+          return last_ - current_;
+        } else {
+          return MAXNUM - (current_ - last_);
+        }
+      }
 
       static Params_KeyboardEventCallBack* item_[MAXNUM];
       static IntervalChecker ic_;
