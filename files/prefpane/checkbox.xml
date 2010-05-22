@@ -658,6 +658,12 @@
         </item>
         <item>
           <name>Control_L to Control_L</name>
+          <appendix>(+ When you type Control_L only, send Delete)</appendix>
+          <sysctl>remap.controlL2controlL_delete</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_L, KeyCode::CONTROL_L, KeyCode::DELETE</autogen>
+        </item>
+        <item>
+          <name>Control_L to Control_L</name>
           <appendix>(+ When you type Control_L only, send Delete) + [KeyRepeat]</appendix>
           <sysctl>remap.controlL2controlL_delete_keyrepeat</sysctl>
           <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::CONTROL_L, KeyCode::CONTROL_L, KeyCode::DELETE</autogen>
