@@ -43,6 +43,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         MACSOUP,
         VIENNA,
         XCODE,
+        OPERA,
+        GOOGLE_CHROME,
       };
       enum InputMode {
         INPUTMODE_NONE,
