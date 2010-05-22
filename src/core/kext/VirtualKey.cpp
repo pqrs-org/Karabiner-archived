@@ -79,10 +79,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (f == ModifierFlag::NONE) return false;
 
     // ----------------------------------------
-    if (params.eventType == EventType::DOWN && params.repeat == false) {
+    if (params.repeat) return true;
+
+    if (params.eventType == EventType::DOWN) {
       FlagStatus::increase(f);
-    } else {
+    } else if (params.eventType == EventType::UP) {
       FlagStatus::decrease(f);
+    } else {
+      IOLog("KeyRemap4MacBook --Warning-- Handle_VK_LAZY invalid EventType.\n");
     }
 
     return true;
