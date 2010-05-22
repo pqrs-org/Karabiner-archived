@@ -2463,6 +2463,7 @@
         </item>
         <item>
           <name>Control+Tab to Command+Tab</name>
+          <appendix>*** We recommend using "Shift_L to Lazy_Shift_L" together. ***</appendix>
           <sysctl>remap.controlTab2commandTab</sysctl>
           <autogen>--KeyToKey-- KeyCode::TAB, VK_CONTROL, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
         </item>
@@ -2473,6 +2474,7 @@
         </item>
         <item>
           <name>Option+Tab to Command+Tab</name>
+          <appendix>*** We recommend using "Shift_L to Lazy_Shift_L" together. ***</appendix>
           <sysctl>remap.optionTab2commandTab</sysctl>
           <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
         </item>
