@@ -2141,6 +2141,11 @@
           <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
         </item>
         <item>
+          <name>Shift_L to Lazy_Shift_L</name>
+          <sysctl>remap.shiftL2lazy_shiftL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::VK_LAZY_SHIFT_L</autogen>
+        </item>
+        <item>
           <name>Shift_L to Option_L</name>
           <sysctl>remap.shiftL2optionL</sysctl>
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::OPTION_L</autogen>
@@ -2216,7 +2221,6 @@
           <sysctl>remap.shiftR2shiftR_enter</sysctl>
           <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::ENTER</autogen>
         </item>
-
         <item>
           <name>Shift_R to Shift_R</name>
           <appendix>(+ When you type shiftR only, send Space)</appendix>
@@ -2228,6 +2232,11 @@
           <appendix>(+ When you type shiftR only, send Space) + [KeyRepeat]</appendix>
           <sysctl>remap.shiftR2shiftR_space_keyrepeat</sysctl>
           <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::SPACE</autogen>
+        </item>
+        <item>
+          <name>Shift_R to Lazy_Shift_R</name>
+          <sysctl>remap.shiftR2lazy_shiftR</sysctl>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::VK_LAZY_SHIFT_R</autogen>
         </item>
         <item>
           <name>Shift_R to Enter</name>

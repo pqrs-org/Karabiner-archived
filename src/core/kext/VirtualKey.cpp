@@ -72,6 +72,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (params.key == KeyCode::VK_LAZY_SHIFT_L) {
       f = ModifierFlag::SHIFT_L;
     }
+    if (params.key == KeyCode::VK_LAZY_SHIFT_R) {
+      f = ModifierFlag::SHIFT_R;
+    }
 
     if (f == ModifierFlag::NONE) return false;
 

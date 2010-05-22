@@ -468,8 +468,10 @@
     <item>
       <name>VK_LAZY_SHIFT_L</name>
       <appendix>Use A to Lazy_Shift_L</appendix>
+      <appendix>Use B to Lazy_Shift_R</appendix>
       <sysctl>remap.samples_a2lazy_shiftL</sysctl>
       <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_LAZY_SHIFT_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::B, KeyCode::VK_LAZY_SHIFT_R</autogen>
     </item>
     <item>
       <name>VK_CHANGE_INPUTMODE_*</name>
