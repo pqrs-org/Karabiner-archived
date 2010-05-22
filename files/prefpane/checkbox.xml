@@ -2276,6 +2276,23 @@
           <sysctl>remap.shiftR2uparrow</sysctl>
           <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::CURSOR_UP</autogen>
         </item>
+        <item>
+          <name>Back/Forward in Finder, Safari, etc. Left/Right Shift in mi.</name>
+          <list>
+            <item>
+              <name>Shift_R to Shift_R</name>
+              <appendix>(+ When you type shift_R only without other modifiers, send Command+[ )</appendix>
+              <sysctl>remap.shiftR2shiftR_backward_nomod</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R | ModifierFlag::NONE, KeyCode::SHIFT_R, KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_R</autogen>
+            </item>
+            <item>
+              <name>Option_R+Shift_R to Command+]</name>
+              <appendix>(only without other modifiers)</appendix>
+              <sysctl>remap.optionRshiftR2forward</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R | ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::SHIFT_R, ModifierFlag::OPTION_R, KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_R</autogen>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
 
