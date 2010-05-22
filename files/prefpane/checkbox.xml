@@ -1383,20 +1383,22 @@
           <autogen>--KeyToConsumer-- KeyCode::F5, ConsumerKeyCode::VOLUME_UP</autogen>
         </item>
         <item>
-          <name>F5 to Volume Down 1/4</name>
-          <sysctl>remap.f5_to_volumedown_quarter</sysctl>
-          <autogen>--KeyToConsumer-- KeyCode::F5, ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
+          <name>F5/F6 to Volume Up/Down 1/4</name>
+          <sysctl>remap.f5f6_to_volumedownup_quarter</sysctl>
+          <autogen>--KeyToConsumer-- KeyCode::F5, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToConsumer-- KeyCode::F6, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_UP, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
+        </item>
+        <item>
+          <name>F5/F6 to Volume Down/Up without click</name>
+          <sysctl>remap.f5f6_to_voldownup_woclick</sysctl>
+          <autogen>--KeyToConsumer-- KeyCode::F5, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToConsumer-- KeyCode::F6, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_UP, ModifierFlag::SHIFT_L</autogen>
         </item>
         <item>
           <name>F6 to FN_Lock (except virtual machine, RDC)</name>
           <sysctl>remap.f6_to_numlock</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToKey-- KeyCode::F6, KeyCode::VK_LOCK_FN</autogen>
-        </item>
-        <item>
-          <name>F6 to Volume Up 1/4</name>
-          <sysctl>remap.f6_to_volumeup_quarter</sysctl>
-          <autogen>--KeyToConsumer-- KeyCode::F6, ConsumerKeyCode::VOLUME_UP, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
           <name>F7 to Video Mirror (except virtual machine, RDC)</name>
