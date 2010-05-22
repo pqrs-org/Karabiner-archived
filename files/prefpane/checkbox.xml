@@ -2112,6 +2112,12 @@
         </item>
         <item>
           <name>Shift_L to Shift_L</name>
+          <appendix>(+ When you type shift_L only without other modifiers, send Escape)</appendix>
+          <sysctl>remap.shiftL2shiftL_escape</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::SHIFT_L, KeyCode::ESCAPE</autogen>
+        </item>
+        <item>
+          <name>Shift_L to Shift_L</name>
           <appendix>(+ When you type shiftL only, send Space)</appendix>
           <sysctl>remap.shiftL2shiftL_space</sysctl>
           <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
