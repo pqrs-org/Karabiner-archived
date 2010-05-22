@@ -78,6 +78,7 @@
   if (keycode == 0x4c) return @"Enter";
   if (keycode == 0x66) return @"JIS_EISUU";
   if (keycode == 0x68) return @"JIS_KANA";
+  if (keycode == 0x6e) return @"Application";
   if (keycode == 0x75) return @"ForwardDelete";
 
   return [event charactersIgnoringModifiers];
