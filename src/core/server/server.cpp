@@ -347,6 +347,14 @@ setCurrentApplicationType(const char* applicationName)
     SET_CURRENT_APPLICATION_TYPE(XCODE);
   }
 
+  if (strcmp(applicationName, "com.operasoftware.Opera") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(OPERA);
+  }
+
+  if (strcmp(applicationName, "com.google.Chrome") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(GOOGLE_CHROME);
+  }
+
   SET_CURRENT_APPLICATION_TYPE(UNKNOWN);
 }
 

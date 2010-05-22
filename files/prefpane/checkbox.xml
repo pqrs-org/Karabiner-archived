@@ -2396,6 +2396,12 @@
           <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::EXPOSE_ALL</autogen>
         </item>
         <item>
+          <name>Command+Tab to Control+Tab (only in Firefox, Google Chrome, Opera, Safari)</name>
+          <sysctl>remap.commandTab2controlTab_browser</sysctl>
+          <only>FIREFOX, GOOGLE_CHROME, OPERA, SAFARI</only>
+          <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
+        </item>
+        <item>
           <name>Command+Tab to Option+Tab</name>
           <sysctl>remap.commandTab2optionTab</sysctl>
           <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
