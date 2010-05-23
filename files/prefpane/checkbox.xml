@@ -5742,6 +5742,14 @@
           <sysctl>remap.swedish_commandR2commandR_swedish</sysctl>
           <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CHANGE_INPUTMODE_SWEDISH</autogen>
         </item>
+        <item>
+          <name>Swap Section(§) and Less-Than(&lt;)</name>
+          <appendix>(only in virtual machine, RDC)</appendix>
+          <sysctl>remap.swedish_swap_section_lessthan_vm</sysctl>
+          <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+          <autogen>--KeyToKey-- KeyCode::SWEDISH_SECTION, KeyCode::SWEDISH_LESS_THAN</autogen>
+          <autogen>--KeyToKey-- KeyCode::SWEDISH_LESS_THAN, KeyCode::SWEDISH_SECTION</autogen>
+        </item>
       </list>
     </item>
     <item>
