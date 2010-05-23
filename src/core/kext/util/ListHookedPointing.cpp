@@ -45,9 +45,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! ptr) return;
       Params_RelativePointerEventCallback& params = *ptr;
 
-      if (! params.buttons.isNONE()) {
-        EventWatcher::on();
-      }
+      EventWatcher::on();
 
       Core::remap_RelativePointerEventCallback(params);
     }
@@ -88,7 +86,8 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                                                            options));
       if (! ptr) return;
       Params_ScrollWheelEventCallback& params = *ptr;
-      // EventWatcher::on is not necessary.
+
+      EventWatcher::on();
 
       Core::remap_ScrollWheelEventCallback(params);
     }
