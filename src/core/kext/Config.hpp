@@ -14,34 +14,22 @@ namespace org_pqrs_KeyRemap4MacBook {
     // Because it is dangerous that a user changes setting.
     int notsave_pointing_relative_to_scroll;
 
-    int get_repeat_initial_wait(void) const {
-      const int MINVAL = 200;
-      int value = repeat_initial_wait;
-      if (value < MINVAL) return MINVAL;
-      return value;
+    unsigned int get_repeat_initial_wait(void) const {
+      return getvalue(repeat_initial_wait, 200);
     }
-    int get_repeat_wait(void) const {
-      const int MINVAL = 5;
-      int value = repeat_wait;
-      if (value < MINVAL) return MINVAL;
-      return value;
+    unsigned int get_repeat_wait(void) const {
+      return getvalue(repeat_wait, 5);
     }
-    int get_repeat_consumer_initial_wait(void) const {
-      const int MINVAL = 10;
-      int value = repeat_consumer_initial_wait;
-      if (value < MINVAL) return MINVAL;
-      return value;
+    unsigned int get_repeat_consumer_initial_wait(void) const {
+      return getvalue(repeat_consumer_initial_wait, 10);
     }
-    int get_repeat_consumer_wait(void) const {
-      const int MINVAL = 10;
-      int value = repeat_consumer_wait;
-      if (value < MINVAL) return MINVAL;
-      return value;
+    unsigned int get_repeat_consumer_wait(void) const {
+      return getvalue(repeat_consumer_wait, 10);
     }
-    int get_keyoverlaidmodifier_initial_wait(void) {
+    unsigned int get_keyoverlaidmodifier_initial_wait(void) const {
       return getvalue(repeat_keyoverlaidmodifier_initial_wait, 200);
     }
-    int get_simultaneouskeypresses_delay(void) {
+    unsigned int get_simultaneouskeypresses_delay(void) const {
       return getvalue(parameter_simultaneouskeypresses_delay, 5, 1000);
     }
 
@@ -55,11 +43,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     char socket_path[SOCKET_PATH_MAX];
 
   private:
-    unsigned int getvalue(int value, int minval) {
+    unsigned int getvalue(int value, int minval) const {
       if (value < minval) return minval;
       return value;
     }
-    unsigned int getvalue(int value, int minval, int maxval) {
+    unsigned int getvalue(int value, int minval, int maxval) const {
       if (value < minval) return minval;
       if (value > maxval) return maxval;
       return value;
