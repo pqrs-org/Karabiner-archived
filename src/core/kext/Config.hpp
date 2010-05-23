@@ -39,10 +39,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       return value;
     }
     int get_keyoverlaidmodifier_initial_wait(void) {
-      const int MINVAL = 200;
-      int value = repeat_keyoverlaidmodifier_initial_wait;
-      if (value < MINVAL) return MINVAL;
-      return value;
+      return getvalue(repeat_keyoverlaidmodifier_initial_wait, 200);
     }
     int get_simultaneouskeypresses_delay(void) {
       return getvalue(parameter_simultaneouskeypresses_delay, 5, 1000);
