@@ -1032,6 +1032,11 @@
           <sysctl>remap.escape2rightclick</sysctl>
           <autogen>--KeyToPointingButton-- KeyCode::ESCAPE, PointingButton::RIGHT</autogen>
         </item>
+        <item>
+          <name>Drop Escape</name>
+          <sysctl>remap.drop_escape</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_NONE</autogen>
+        </item>
       </list>
     </item>
 
