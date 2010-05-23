@@ -3383,6 +3383,12 @@
           <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::L, KeyCode::PC_APPLICATION, SimultaneousKeyPresses::Option::RAW</autogen>
         </item>
         <item>
+          <name>Simultaneous Key Presses [Shift_R+Up Arrow] to PC Application Key</name>
+          <appendix>(We can change the key once again)</appendix>
+          <sysctl>remap.simultaneouskeypresses_shiftRuparrow2pc_application</sysctl>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::CURSOR_UP, KeyCode::SHIFT_R, KeyCode::PC_APPLICATION, SimultaneousKeyPresses::Option::RAW</autogen>
+        </item>
+        <item>
           <name>Simultaneous Key Presses [K+L] to Return</name>
           <appendix>(We can change the key once again)</appendix>
           <sysctl>remap.simultaneouskeypresses_kl2return</sysctl>
