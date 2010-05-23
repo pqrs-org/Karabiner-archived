@@ -19,6 +19,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   private:
     KeyboardEventCallback orig_keyboardEventAction_;
     OSObject* orig_keyboardEventTarget_;
+    AbsoluteTime orig_initialKeyRepeat_;
 
     bool initialize(IOHIDevice* d);
     bool refresh(void);
