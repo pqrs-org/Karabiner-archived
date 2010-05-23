@@ -5013,6 +5013,11 @@
               <autogen>--KeyToKey-- KeyCode::JIS_KANA, KeyCode::RETURN</autogen>
             </item>
             <item>
+              <name>KANA to Space</name>
+              <sysctl>remap.jis_kana2space</sysctl>
+              <autogen>--KeyToKey-- KeyCode::JIS_KANA, KeyCode::SPACE</autogen>
+            </item>
+            <item>
               <name>KANA to MiddleClick</name>
               <sysctl>remap.jis_kana2middleclick</sysctl>
               <autogen>--KeyToPointingButton-- KeyCode::JIS_KANA, PointingButton::MIDDLE</autogen>
