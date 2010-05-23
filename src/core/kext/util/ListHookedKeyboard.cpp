@@ -223,8 +223,16 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     orig_keyboardEventAction_ = callback;
     orig_keyboardEventTarget_ = kbd->_keyboardEventTarget;
+    orig_initialKeyRepeat_ = kbd->_initialKeyRepeat;
 
     kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(hook_KeyboardEventCallback);
+    if (sizeof(AbsoluteTime) == sizeof(uint64_t)) {
+      // disable hardware keyboard repeat.
+      uint64_t* p = reinterpret_cast<uint64_t*>(&(kbd->_initialKeyRepeat));
+      *p = 0;
+    } else {
+      IOLog("KeyRemap4MacBook --FIXME-- ListHookedKeyboard.cpp::%d invalid sizeof(AbsoluteTime).\n", __LINE__);
+    }
 
     return true;
   }
@@ -244,6 +252,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOLog("KeyRemap4MacBook HookedKeyboard::restoreEventAction (device_ = %p)\n", device_);
 
     kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(orig_keyboardEventAction_);
+    kbd->_initialKeyRepeat = orig_initialKeyRepeat_;
 
     orig_keyboardEventAction_ = NULL;
     orig_keyboardEventTarget_ = NULL;
