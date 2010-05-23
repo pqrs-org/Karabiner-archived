@@ -45,12 +45,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       return value;
     }
     int get_simultaneouskeypresses_delay(void) {
-      const int MINVAL = 5;
-      const int MAXVAL = 1000;
-      int value = parameter_simultaneouskeypresses_delay;
-      if (value < MINVAL) return MINVAL;
-      if (value > MAXVAL) return MAXVAL;
-      return value;
+      return getvalue(parameter_simultaneouskeypresses_delay, 5, 1000);
     }
 
     // ----------------------------------------
