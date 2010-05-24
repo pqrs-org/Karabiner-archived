@@ -93,6 +93,12 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         // ------------------------------------------------------------
         // clear temporary_count_
+        //
+        // Don't call FlagStatus::set(key, flags) here.
+        // If SimultaneousKeyPresses is enabled, keys may be dropped.
+        // For example, Shift_L+Shift_R to Space is enabled, Shift_L and Shift_R may be dropped.
+        // If we call FlagStatus::set(key, flags) here, dropped keys are kept as pushed status.
+        // So, call FlagStatus::set(key, flags) after KeyEventInputQueue.
         FlagStatus::set();
 
         // ------------------------------------------------------------
