@@ -391,6 +391,30 @@ namespace org_pqrs_KeyRemap4MacBook {
     // When Option_L+Shift_L has a meaning (switch input language at Windows),
     // it does not works well when the last is KeyUp of Command.
 
+    // ------------------------------------------------------------
+    // Handle KEYPAD first
+
+    // KeyUp
+    if (lastFlags_.isOn(ModifierFlag::KEYPAD) && ! toFlags.isOn(ModifierFlag::KEYPAD)) {
+      lastFlags_.remove(ModifierFlag::KEYPAD);
+
+      Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(lastFlags_));
+      if (ptr) {
+        Params_UpdateEventFlagsCallback& params = *ptr;
+        params.apply();
+      }
+    }
+    if (! lastFlags_.isOn(ModifierFlag::KEYPAD) && toFlags.isOn(ModifierFlag::KEYPAD)) {
+      lastFlags_.add(ModifierFlag::KEYPAD);
+
+      Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(lastFlags_));
+      if (ptr) {
+        Params_UpdateEventFlagsCallback& params = *ptr;
+        params.apply();
+      }
+    }
+
+    // ------------------------------------------------------------
     // KeyUp
     for (int i = 0;; ++i) {
       ModifierFlag flag = FlagStatus::getFlag(i);
