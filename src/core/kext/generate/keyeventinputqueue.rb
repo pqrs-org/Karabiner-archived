@@ -25,23 +25,32 @@ def makeset(n)
   end
 end
 
-makeset(num).each do |omitflags|
+makeset(num + 1).each do |omitflags|
   print "void initialize(KeyCode virtualKeyCode, KeyCode fromKeyCode1, KeyCode fromKeyCode2"
   code = ''
   code += "  virtualKeyCode_ = virtualKeyCode;\n\n"
   code += "  fromKeyCode1_ = fromKeyCode1;\n"
   code += "  fromKeyCode2_ = fromKeyCode2;\n\n"
 
-  i = 1
+  i = 0
   omitflags.each do |flag|
-    if flag then
-      print ",\n      KeyCode toKeyCode#{i}, Flags toFlags#{i}"
-      code += "  toKeyCode#{i}_ = toKeyCode#{i};\n"
-      code += "  toFlags#{i}_ = toFlags#{i};\n\n"
+    if i == 0 then
+      if flag then
+        print ",\n      Flags fromFlags"
+        code += "  fromFlags_ = fromFlags;\n"
+      else
+        code += "  fromFlags_ = Flags(0);\n"
+      end
     else
-      print ",\n      KeyCode toKeyCode#{i}"
-      code += "  toKeyCode#{i}_ = toKeyCode#{i};\n"
-      code += "  toFlags#{i}_ = ModifierFlag::NONE;\n\n"
+      if flag then
+        print ",\n      KeyCode toKeyCode#{i}, Flags toFlags#{i}"
+        code += "  toKeyCode#{i}_ = toKeyCode#{i};\n"
+        code += "  toFlags#{i}_ = toFlags#{i};\n\n"
+      else
+        print ",\n      KeyCode toKeyCode#{i}"
+        code += "  toKeyCode#{i}_ = toKeyCode#{i};\n"
+        code += "  toFlags#{i}_ = ModifierFlag::NONE;\n\n"
+      end
     end
     i += 1
   end
