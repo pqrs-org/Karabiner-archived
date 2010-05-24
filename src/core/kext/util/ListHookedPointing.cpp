@@ -41,6 +41,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       CommonData::setcurrent_vendorIDproductID(hp->getVendorID(), hp->getProductID());
 
       // ------------------------------------------------------------
+      // clear temporary_count_
+      FlagStatus::set();
+
+      // ------------------------------------------------------------
       Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, dx, dy));
       if (! ptr) return;
       Params_RelativePointerEventCallback& params = *ptr;
@@ -78,6 +82,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ------------------------------------------------------------
       CommonData::setcurrent_ts(ts);
       CommonData::setcurrent_vendorIDproductID(hp->getVendorID(), hp->getProductID());
+
+      // ------------------------------------------------------------
+      // clear temporary_count_
+      FlagStatus::set();
 
       // ------------------------------------------------------------
       Params_ScrollWheelEventCallback::auto_ptr ptr(Params_ScrollWheelEventCallback::alloc(deltaAxis1, deltaAxis2, deltaAxis3,

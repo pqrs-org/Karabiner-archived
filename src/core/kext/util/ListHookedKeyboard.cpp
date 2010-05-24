@@ -91,9 +91,11 @@ namespace org_pqrs_KeyRemap4MacBook {
           CommonData::setcurrent_workspacedata();
         }
 
+        // ------------------------------------------------------------
         // clear temporary_count_
         FlagStatus::set();
 
+        // ------------------------------------------------------------
         key.normalizeKey(flags, eventType, keyboardType);
       }
 
