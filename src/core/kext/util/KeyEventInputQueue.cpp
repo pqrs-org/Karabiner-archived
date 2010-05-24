@@ -2,6 +2,7 @@
 #include "IOLockWrapper.hpp"
 #include "ListHookedKeyboard.hpp"
 #include "Config.hpp"
+#include "FlagStatus.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   KeyEventInputQueue::Item KeyEventInputQueue::item_[KeyEventInputQueue::MAXNUM];
@@ -281,7 +282,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // replace first fromKeyCode1. and drop first fromKeyCode2
     if (item1 && (item1->eventType).isKeyDownOrModifierDown(item1->key, item1->flags) &&
-        item2 && (item2->eventType).isKeyDownOrModifierDown(item2->key, item2->flags)) {
+        item2 && (item2->eventType).isKeyDownOrModifierDown(item2->key, item2->flags) &&
+        FlagStatus::makeFlags().isOn(fromFlags_)) {
       item1->dropped = true;
       active1_ = true;
 
@@ -299,11 +301,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     RemapParams rp(params);
     if (toKeyCode2_ == KeyCode::VK_NONE) {
-      keytokey_.remap(rp, virtualKeyCode_,
+      keytokey_.remap(rp, virtualKeyCode_, fromFlags_,
                       toKeyCode1_, toFlags1_);
 
     } else {
-      keytokey_.remap(rp, virtualKeyCode_,
+      keytokey_.remap(rp, virtualKeyCode_, fromFlags_,
                       toKeyCode1_, toFlags1_,
                       toKeyCode2_, toFlags2_,
                       toKeyCode3_, toFlags3_,

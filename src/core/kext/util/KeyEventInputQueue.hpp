@@ -71,6 +71,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       KeyCode fromKeyCode1_;
       KeyCode fromKeyCode2_;
+      Flags fromFlags_;
 
       KeyCode toKeyCode1_;
       Flags toFlags1_;
