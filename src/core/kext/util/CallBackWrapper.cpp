@@ -25,6 +25,15 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  Params_UpdateEventFlagsCallback::log(const char* message) const
+  {
+    if (! config.debug) return;
+
+    printf("KeyRemap4MacBook UpdateEventFlagsCallback [%7s]: flags 0x%x\n",
+           message, flags.get());
+  }
+
+  void
   Params_KeyboardSpecialEventCallback::log(const char* message) const
   {
     if (! config.debug) return;
@@ -271,6 +280,30 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
       }
     }
+  }
+
+  void
+  Params_UpdateEventFlagsCallback::apply(void) const
+  {
+    if (! checkFlags(flags)) return;
+
+    // ------------------------------------------------------------
+    HookedKeyboard* hk = ListHookedKeyboard::instance().get();
+    if (! hk) return;
+
+    UpdateEventFlagsCallback callback = hk->getOrig_updateEventFlagsAction();
+    if (! callback) return;
+
+    OSObject* target = hk->getOrig_updateEventFlagsTarget();
+    if (! target) return;
+
+    OSObject* sender = OSDynamicCast(OSObject, hk->get());
+    if (! sender) return;
+
+    OSObject* refcon = NULL;
+
+    log("sending");
+    callback(target, flags.get(), sender, refcon);
   }
 
   void

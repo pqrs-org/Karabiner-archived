@@ -92,6 +92,24 @@ namespace org_pqrs_KeyRemap4MacBook {
     void do_apply(void) const;
   };
 
+  class Params_UpdateEventFlagsCallback {
+  public:
+    // Use auto_ptr instead allocating in kernel stack.
+    DECLARE_AUTO_PTR(Params_UpdateEventFlagsCallback);
+
+    static Params_UpdateEventFlagsCallback* alloc(Flags fl) {
+      return new Params_UpdateEventFlagsCallback(fl);
+    }
+
+    // ----------------------------------------
+    void log(const char* message = "caught") const;
+    void apply(void) const;
+    Flags flags;
+
+  private:
+    Params_UpdateEventFlagsCallback(Flags fl) : flags(fl) {}
+  };
+
   class Params_KeyboardSpecialEventCallback {
   public:
     // Use auto_ptr instead allocating in kernel stack.
