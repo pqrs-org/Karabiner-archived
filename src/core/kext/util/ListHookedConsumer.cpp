@@ -53,6 +53,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       // ------------------------------------------------------------
+      // clear temporary_count_
+      FlagStatus::set();
+
+      // ------------------------------------------------------------
       Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(EventType(eventType), Flags(flags), ConsumerKeyCode(key),
                                                                                                    flavor, guid, repeat));
       if (! ptr) return;
