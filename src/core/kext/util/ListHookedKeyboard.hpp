@@ -29,8 +29,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     UpdateEventFlagsCallback orig_updateEventFlagsAction_;
     OSObject* orig_updateEventFlagsTarget_;
 
-    AbsoluteTime orig_initialKeyRepeat_;
-
     bool initialize(IOHIDevice* d);
     bool refresh(void);
     bool terminate(void);
