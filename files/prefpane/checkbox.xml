@@ -967,6 +967,11 @@
           <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
+          <name>Enter to Right-Arrow</name>
+          <sysctl>remap.enter2rightarrow</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::CURSOR_RIGHT</autogen>
+        </item>
+        <item>
           <name>Enter to Semicolon</name>
           <sysctl>remap.enter2semicolon</sysctl>
           <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::SEMICOLON</autogen>
