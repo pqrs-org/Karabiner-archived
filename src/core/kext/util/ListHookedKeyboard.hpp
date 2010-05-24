@@ -9,16 +9,26 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     HookedKeyboard(void) :
       orig_keyboardEventAction_(NULL),
-      orig_keyboardEventTarget_(NULL) {}
+      orig_keyboardEventTarget_(NULL),
+      orig_updateEventFlagsAction_(NULL),
+      orig_updateEventFlagsTarget_(NULL)
+    {}
 
     IOHIKeyboard* get(void) const { return OSDynamicCast(IOHIKeyboard, HookedDevice::get()); }
 
     KeyboardEventCallback getOrig_keyboardEventAction(void) const { return orig_keyboardEventAction_; }
     OSObject* getOrig_keyboardEventTarget(void) const { return orig_keyboardEventTarget_; }
 
+    UpdateEventFlagsCallback getOrig_updateEventFlagsAction(void) const { return orig_updateEventFlagsAction_; }
+    OSObject* getOrig_updateEventFlagsTarget(void) const { return orig_updateEventFlagsTarget_; }
+
   private:
     KeyboardEventCallback orig_keyboardEventAction_;
     OSObject* orig_keyboardEventTarget_;
+
+    UpdateEventFlagsCallback orig_updateEventFlagsAction_;
+    OSObject* orig_updateEventFlagsTarget_;
+
     AbsoluteTime orig_initialKeyRepeat_;
 
     bool initialize(IOHIDevice* d);

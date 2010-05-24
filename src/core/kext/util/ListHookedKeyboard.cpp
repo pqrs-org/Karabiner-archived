@@ -90,6 +90,30 @@ namespace org_pqrs_KeyRemap4MacBook {
                               KeyboardType(keyboardType), repeat,
                               ts, sender, refcon);
     }
+
+    void
+    hook_UpdateEventFlagsCallback(OSObject* target,
+                                  unsigned flags,
+                                  OSObject* sender,
+                                  void* refcon)
+    {
+      // We don't need to get eventLock, because we do nothing here.
+
+      // ------------------------------------------------------------
+      // update device priority by calling ListHookedKeyboard::instance().get(kbd).
+      IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, sender);
+      if (! kbd) return;
+
+      HookedKeyboard* hk = ListHookedKeyboard::instance().get(kbd);
+      if (! hk) return;
+
+      // ------------------------------------------------------------
+      Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(flags));
+      if (! ptr) return;
+
+      Params_UpdateEventFlagsCallback& params = *ptr;
+      params.log();
+    }
   }
 
   void
@@ -203,6 +227,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     device_ = NULL;
     orig_keyboardEventAction_ = NULL;
     orig_keyboardEventTarget_ = NULL;
+    orig_updateEventFlagsAction_ = NULL;
+    orig_updateEventFlagsTarget_ = NULL;
 
     return result;
   }
@@ -215,26 +241,37 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, device_);
     if (! kbd) return false;
 
-    KeyboardEventCallback callback = reinterpret_cast<KeyboardEventCallback>(kbd->_keyboardEventAction);
-    if (callback == hook_KeyboardEventCallback) return false;
+    bool result = false;
 
     // ------------------------------------------------------------
-    IOLog("KeyRemap4MacBook HookedKeyboard::replaceEventAction (device_ = %p)\n", device_);
+    {
+      KeyboardEventCallback callback = reinterpret_cast<KeyboardEventCallback>(kbd->_keyboardEventAction);
+      if (callback != hook_KeyboardEventCallback) {
+        IOLog("KeyRemap4MacBook HookedKeyboard::replaceEventAction (KeyboardEventCallback) (device_ = %p)\n", device_);
 
-    orig_keyboardEventAction_ = callback;
-    orig_keyboardEventTarget_ = kbd->_keyboardEventTarget;
-    orig_initialKeyRepeat_ = kbd->_initialKeyRepeat;
+        orig_keyboardEventAction_ = callback;
+        orig_keyboardEventTarget_ = kbd->_keyboardEventTarget;
 
-    kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(hook_KeyboardEventCallback);
-    if (sizeof(AbsoluteTime) == sizeof(uint64_t)) {
-      // disable hardware keyboard repeat.
-      uint64_t* p = reinterpret_cast<uint64_t*>(&(kbd->_initialKeyRepeat));
-      *p = 0;
-    } else {
-      IOLog("KeyRemap4MacBook --FIXME-- ListHookedKeyboard.cpp::%d invalid sizeof(AbsoluteTime).\n", __LINE__);
+        kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(hook_KeyboardEventCallback);
+
+        result = true;
+      }
+    }
+    {
+      UpdateEventFlagsCallback callback = reinterpret_cast<UpdateEventFlagsCallback>(kbd->_updateEventFlagsAction);
+      if (callback != hook_UpdateEventFlagsCallback) {
+        IOLog("KeyRemap4MacBook HookedKeyboard::replaceEventAction (UpdateEventFlagsCallback) (device_ = %p)\n", device_);
+
+        orig_updateEventFlagsAction_ = callback;
+        orig_updateEventFlagsTarget_ = kbd->_updateEventFlagsTarget;
+
+        kbd->_updateEventFlagsAction = reinterpret_cast<UpdateEventFlagsAction>(hook_UpdateEventFlagsCallback);
+
+        result = true;
+      }
     }
 
-    return true;
+    return result;
   }
 
   bool
@@ -252,10 +289,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOLog("KeyRemap4MacBook HookedKeyboard::restoreEventAction (device_ = %p)\n", device_);
 
     kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(orig_keyboardEventAction_);
-    kbd->_initialKeyRepeat = orig_initialKeyRepeat_;
+    kbd->_updateEventFlagsAction = reinterpret_cast<UpdateEventFlagsAction>(orig_updateEventFlagsAction_);
 
     orig_keyboardEventAction_ = NULL;
     orig_keyboardEventTarget_ = NULL;
+    orig_updateEventFlagsAction_ = NULL;
+    orig_updateEventFlagsTarget_ = NULL;
 
     return true;
   }
