@@ -2,6 +2,7 @@
 #include "Config.hpp"
 #include "Core.hpp"
 #include "EventWatcher.hpp"
+#include "FlagStatus.hpp"
 #include "IOLockWrapper.hpp"
 #include "ListHookedPointing.hpp"
 
