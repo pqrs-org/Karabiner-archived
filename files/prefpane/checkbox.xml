@@ -5759,9 +5759,9 @@
         </item>
         <item>
           <name>Swap Section(§) and Less-Than(&lt;)</name>
-          <appendix>(only in virtual machine, RDC)</appendix>
+          <appendix>(only in virtual machine)</appendix>
           <sysctl>remap.swedish_swap_section_lessthan_vm</sysctl>
-          <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+          <only>VIRTUALMACHINE</only>
           <autogen>--KeyToKey-- KeyCode::SWEDISH_SECTION, KeyCode::SWEDISH_LESS_THAN</autogen>
           <autogen>--KeyToKey-- KeyCode::SWEDISH_LESS_THAN, KeyCode::SWEDISH_SECTION</autogen>
         </item>
@@ -5775,6 +5775,14 @@
           <sysctl>remap.swiss_swap_y_z</sysctl>
           <autogen>--KeyToKey-- KeyCode::Y, KeyCode::Z</autogen>
           <autogen>--KeyToKey-- KeyCode::Z, KeyCode::Y</autogen>
+        </item>
+        <item>
+          <name>Swap Section(§) and Less-Than(&lt;)</name>
+          <appendix>(only in virtual machine)</appendix>
+          <sysctl>remap.swiss_swap_section_lessthan_vm</sysctl>
+          <only>VIRTUALMACHINE</only>
+          <autogen>--KeyToKey-- KeyCode::SWISS_SECTION, KeyCode::SWISS_LESS_THAN</autogen>
+          <autogen>--KeyToKey-- KeyCode::SWISS_LESS_THAN, KeyCode::SWISS_SECTION</autogen>
         </item>
       </list>
     </item>
