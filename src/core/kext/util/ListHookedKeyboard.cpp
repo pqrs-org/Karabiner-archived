@@ -23,20 +23,29 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace {
     void
     hook_KeyboardEventCallback(OSObject* target,
-                               unsigned int eventType,
-                               unsigned int flags,
-                               unsigned int key,
-                               unsigned int charCode,
-                               unsigned int charSet,
-                               unsigned int origCharCode,
-                               unsigned int origCharSet,
-                               unsigned int keyboardType,
+                               unsigned int eventType_value,
+                               unsigned int flags_value,
+                               unsigned int key_value,
+                               unsigned int charCode_value,
+                               unsigned int charSet_value,
+                               unsigned int origCharCode_value,
+                               unsigned int origCharSet_value,
+                               unsigned int keyboardType_value,
                                bool repeat,
                                AbsoluteTime ts,
                                OSObject* sender,
                                void* refcon)
     {
       if (! CommonData::eventLock) return;
+
+      EventType eventType(eventType_value);
+      Flags flags(flags_value);
+      KeyCode key(key_value);
+      CharCode charCode(charCode_value);
+      CharSet charSet(charSet_value);
+      OrigCharCode origCharCode(origCharCode_value);
+      OrigCharSet origCharSet(origCharSet_value);
+      KeyboardType keyboardType(keyboardType_value);
 
       {
         IOLockWrapper::ScopedLock lk(CommonData::eventLock);
@@ -78,16 +87,21 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (repeat) return;
 
         // ------------------------------------------------------------
-        if (EventType(eventType).isKeyDownOrModifierDown(KeyCode(key), Flags(flags))) {
+        if (eventType.isKeyDownOrModifierDown(key, flags)) {
           CommonData::setcurrent_workspacedata();
         }
+
+        // clear temporary_count_
+        FlagStatus::set();
+
+        key.normalizeKey(flags, eventType, keyboardType);
       }
 
       // ------------------------------------------------------------
       KeyEventInputQueue::add(target,
-                              EventType(eventType), Flags(flags), KeyCode(key),
-                              CharCode(charCode), CharSet(charSet), OrigCharCode(origCharCode), OrigCharSet(origCharSet),
-                              KeyboardType(keyboardType), repeat,
+                              eventType, flags, key,
+                              charCode, charSet, origCharCode, origCharSet,
+                              keyboardType, repeat,
                               ts, sender, refcon);
     }
 

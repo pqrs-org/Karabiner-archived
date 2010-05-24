@@ -163,8 +163,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       params.log();
 
       // ------------------------------------------------------------
-      params.key.normalizeKey(params.flags, params.eventType, params.keyboardType);
-
       RemapParams remapParams(params);
       NumHeldDownKeys::set(remapParams);
 
