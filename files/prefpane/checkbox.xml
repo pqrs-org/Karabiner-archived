@@ -4536,6 +4536,14 @@
           <sysctl>remap.german_quote2forwarddelete</sysctl>
           <autogen>--KeyToKey-- KeyCode::GERMAN_QUOTE, KeyCode::FORWARD_DELETE</autogen>
         </item>
+        <item>
+          <name>Swap Circumflex(^) and Less-Than(&lt;)</name>
+          <appendix>(only in virtual machine)</appendix>
+          <sysctl>remap.german_swap_circumflex_lessthan_vm</sysctl>
+          <only>VIRTUALMACHINE</only>
+          <autogen>--KeyToKey-- KeyCode::GERMAN_CIRCUMFLEX, KeyCode::GERMAN_LESS_THAN</autogen>
+          <autogen>--KeyToKey-- KeyCode::GERMAN_LESS_THAN, KeyCode::GERMAN_CIRCUMFLEX</autogen>
+        </item>
       </list>
     </item>
     <item>
