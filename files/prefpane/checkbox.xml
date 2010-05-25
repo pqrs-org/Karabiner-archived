@@ -4184,7 +4184,8 @@
               <autogen>--KeyToKey-- KeyCode::PC_KEYPAD_NUMLOCK, KeyCode::F11</autogen>
             </item>
             <item>
-              <name>Drop NumLock Key</name>
+              <name>Drop NumLock Key (except in TeamViewer.app)</name>
+              <not>TEAMVIEWER</not>
               <sysctl>remap.drop_numlock</sysctl>
               <autogen>--KeyToKey-- KeyCode::PC_KEYPAD_NUMLOCK, KeyCode::VK_NONE</autogen>
             </item>
