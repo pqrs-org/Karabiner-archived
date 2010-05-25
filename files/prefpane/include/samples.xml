@@ -188,6 +188,7 @@
       <appendix>(A+G to Shift_L)</appendix>
       <appendix>(Command_R+[E+R] to Space)</appendix>
       <appendix>(Command_R+[R+T] to Space)</appendix>
+      <appendix>(Control_L+[R+T] to Shift_L)</appendix>
       <appendix>(R+T to Delete)</appendix>
       <appendix>(FN+[K+L] to Space)</appendix>
       <appendix>(Shift_L+Shift_R to Space)</appendix>
@@ -205,6 +206,7 @@
       <autogen>--SimultaneousKeyPresses-- KeyCode::G, KeyCode::A, KeyCode::SHIFT_L</autogen>
       <autogen>--SimultaneousKeyPresses-- KeyCode::R, KeyCode::E, ModifierFlag::COMMAND_R, KeyCode::SPACE</autogen>
       <autogen>--SimultaneousKeyPresses-- KeyCode::T, KeyCode::R, ModifierFlag::COMMAND_R, KeyCode::SPACE</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::T, KeyCode::R, ModifierFlag::CONTROL_L, KeyCode::SHIFT_L</autogen>
       <autogen>--SimultaneousKeyPresses-- KeyCode::T, KeyCode::R, KeyCode::DELETE</autogen>
       <autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::K, ModifierFlag::FN, KeyCode::SPACE</autogen>
       <autogen>--SimultaneousKeyPresses-- KeyCode::SHIFT_L, KeyCode::SHIFT_R, KeyCode::SPACE</autogen>
