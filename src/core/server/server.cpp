@@ -355,6 +355,10 @@ setCurrentApplicationType(const char* applicationName)
     SET_CURRENT_APPLICATION_TYPE(GOOGLE_CHROME);
   }
 
+  if (strcmp(applicationName, "com.TeamViewer.TeamViewer") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(TEAMVIEWER);
+  }
+
   SET_CURRENT_APPLICATION_TYPE(UNKNOWN);
 }
 
