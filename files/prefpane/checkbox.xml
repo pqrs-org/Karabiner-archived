@@ -5342,6 +5342,24 @@
               </list>
             </item>
             <item>
+              <name>Use Japanese Keyboard as Semi-ASCII Keyboard</name>
+              <appendix>Change Shift+semicolon(;) to colon(:)</appendix>
+              <appendix>Change colon(:) to apostrophe(')</appendix>
+              <appendix>Change Shift+colon(:) to double quote(")</appendix>
+              <appendix>Change Shift+2 to plus(+)</appendix>
+              <appendix>Change Shift+7 to asterisk(*)</appendix>
+              <sysctl>remap.jis_layout_semiascii</sysctl>
+              <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_SHIFT,           KeyCode::JIS_COLON</autogen>
+              <!-- double quote(") == Shift+2 -->
+              <autogen>--KeyToKey-- KeyCode::JIS_COLON, VK_SHIFT,           KeyCode::KEY_2, ModifierFlag::SHIFT_L</autogen>
+              <!-- apostrophe(') == Shift+7 -->
+              <autogen>--KeyToKey-- KeyCode::JIS_COLON,                     KeyCode::KEY_7, ModifierFlag::SHIFT_L</autogen>
+              <!-- plus(+) == Shift+; -->
+              <autogen>--KeyToKey-- KeyCode::KEY_2,     VK_SHIFT,           KeyCode::SEMICOLON, ModifierFlag::SHIFT_L</autogen>
+              <!-- asterisk(*) == Shift+: -->
+              <autogen>--KeyToKey-- KeyCode::KEY_7,     VK_SHIFT,           KeyCode::JIS_COLON, ModifierFlag::SHIFT_L</autogen>
+            </item>
+            <item>
               <name>Use JIS X 6004</name>
               <sysctl>remap.jis_layout_jisx6004</sysctl>
               <inputmodedetail_only>INPUTMODE_DETAIL_JAPANESE_HIRAGANA, INPUTMODE_DETAIL_JAPANESE, INPUTMODE_DETAIL_JAPANESE_KATAKANA, INPUTMODE_DETAIL_JAPANESE_HALFWIDTH_KANA</inputmodedetail_only>
