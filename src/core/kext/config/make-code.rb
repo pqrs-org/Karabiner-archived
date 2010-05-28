@@ -201,12 +201,16 @@ def parseautogen(name, lines, autogen_index)
 
         case type
         when 'SetKeyboardType'
-          $outfile[:remapcode_keyboardtype] << "if (config.#{name}) {\n"
+          $outfile[:remapcode_keyboardtype] << "if (config.#{name} && ! config.notsave_passthrough) {\n"
           $outfile[:remapcode_keyboardtype] << "  keyboardType = #{params}.get();\n"
           $outfile[:remapcode_keyboardtype] << "}\n"
 
         when 'ShowStatusMessage'
-          $outfile[:remapcode_refresh_remapfunc_statusmessage] << "if (config.#{name}) {\n"
+          if (name == 'notsave_passthrough') then
+            $outfile[:remapcode_refresh_remapfunc_statusmessage] << "if (config.#{name}) {\n"
+          else
+            $outfile[:remapcode_refresh_remapfunc_statusmessage] << "if (config.#{name} && ! config.notsave_passthrough) {\n"
+          end
           $outfile[:remapcode_refresh_remapfunc_statusmessage] << "  strlcat(statusmessage, #{params} \" \", sizeof(statusmessage));\n"
           $outfile[:remapcode_refresh_remapfunc_statusmessage] << "  isStatusMessageVisible = true;\n"
           $outfile[:remapcode_refresh_remapfunc_statusmessage] << "}\n"
@@ -371,6 +375,25 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
     exit 1
   end
 
+  if /<vk_config>true<\/vk_config>/ =~ item then
+    $outfile[:remapcode_vk_config] << "if (params.key == KeyCode::VK_CONFIG_TOGGLE_#{name}) {\n"
+    $outfile[:remapcode_vk_config] << "  configitem = &(config.#{name});\n"
+    $outfile[:remapcode_vk_config] << "  type = TYPE_TOGGLE;\n"
+    $outfile[:remapcode_vk_config] << "}\n"
+    $outfile[:remapcode_vk_config] << "if (params.key == KeyCode::VK_CONFIG_FORCE_ON_#{name}) {\n"
+    $outfile[:remapcode_vk_config] << "  configitem = &(config.#{name});\n"
+    $outfile[:remapcode_vk_config] << "  type = TYPE_FORCE_ON;\n"
+    $outfile[:remapcode_vk_config] << "}\n"
+    $outfile[:remapcode_vk_config] << "if (params.key == KeyCode::VK_CONFIG_FORCE_OFF_#{name}) {\n"
+    $outfile[:remapcode_vk_config] << "  configitem = &(config.#{name});\n"
+    $outfile[:remapcode_vk_config] << "  type = TYPE_FORCE_OFF;\n"
+    $outfile[:remapcode_vk_config] << "}\n"
+
+    $outfile[:keycode_vk_config] << "VK_CONFIG_TOGGLE_#{name} --AUTO--\n"
+    $outfile[:keycode_vk_config] << "VK_CONFIG_FORCE_ON_#{name} --AUTO--\n"
+    $outfile[:keycode_vk_config] << "VK_CONFIG_FORCE_OFF_#{name} --AUTO--\n"
+  end
+
   # ======================================================================
   lines = item.split(/\n/)
   lines = preprocess(lines)
@@ -438,7 +461,11 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
     $outfile[:remapcode_simultaneouskeypresses_func] << "  return false;\n"
     $outfile[:remapcode_simultaneouskeypresses_func] << "}\n"
 
-    $outfile[:remapcode_simultaneouskeypresses_func] << "bool enabled(void) const { return config.#{name}; }\n"
+    if /^passthrough_/ =~ name then
+      $outfile[:remapcode_simultaneouskeypresses_func] << "bool enabled(void) const { return config.#{name}; }\n"
+    else
+      $outfile[:remapcode_simultaneouskeypresses_func] << "bool enabled(void) const { return config.#{name} && ! config.notsave_passthrough; }\n"
+    end
 
     $outfile[:remapcode_simultaneouskeypresses_func] << "private:\n"
     simultaneouskeypresses_variable.each do |variable|
@@ -449,25 +476,6 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
     $outfile[:remapcode_simultaneouskeypresses_func] << "RemapClass_#{name} remapclass_#{name};\n"
 
     $outfile[:remapcode_simultaneouskeypresses_func] << "\n\n"
-  end
-
-  if /<vk_config>true<\/vk_config>/ =~ item then
-    $outfile[:remapcode_vk_config] << "if (params.key == KeyCode::VK_CONFIG_TOGGLE_#{name}) {\n"
-    $outfile[:remapcode_vk_config] << "  configitem = &(config.#{name});\n"
-    $outfile[:remapcode_vk_config] << "  type = TYPE_TOGGLE;\n"
-    $outfile[:remapcode_vk_config] << "}\n"
-    $outfile[:remapcode_vk_config] << "if (params.key == KeyCode::VK_CONFIG_FORCE_ON_#{name}) {\n"
-    $outfile[:remapcode_vk_config] << "  configitem = &(config.#{name});\n"
-    $outfile[:remapcode_vk_config] << "  type = TYPE_FORCE_ON;\n"
-    $outfile[:remapcode_vk_config] << "}\n"
-    $outfile[:remapcode_vk_config] << "if (params.key == KeyCode::VK_CONFIG_FORCE_OFF_#{name}) {\n"
-    $outfile[:remapcode_vk_config] << "  configitem = &(config.#{name});\n"
-    $outfile[:remapcode_vk_config] << "  type = TYPE_FORCE_OFF;\n"
-    $outfile[:remapcode_vk_config] << "}\n"
-
-    $outfile[:keycode_vk_config] << "VK_CONFIG_TOGGLE_#{name} --AUTO--\n"
-    $outfile[:keycode_vk_config] << "VK_CONFIG_FORCE_ON_#{name} --AUTO--\n"
-    $outfile[:keycode_vk_config] << "VK_CONFIG_FORCE_OFF_#{name} --AUTO--\n"
   end
 end
 
@@ -485,7 +493,11 @@ remapfunc_key_notsave = ''
 remapfunc_key_other = ''
 $func[:key].uniq.each do |name|
   text = ''
-  text += "if (config.#{name}) {\n"
+  if /^passthrough_/ =~ name then
+    text += "if (config.#{name}) {\n"
+  else
+    text += "if (config.#{name} && ! config.notsave_passthrough) {\n"
+  end
   text += "  listRemapFunc_key[listRemapFunc_key_size] = GeneratedCode::RemapClass_#{name}::remap_key;\n"
   text += "  ++listRemapFunc_key_size;\n"
   text += "}\n"
@@ -499,13 +511,21 @@ $outfile[:remapcode_refresh_remapfunc_key] << remapfunc_key_notsave
 $outfile[:remapcode_refresh_remapfunc_key] << remapfunc_key_other
 
 $func[:consumer].uniq.each do |name|
-  $outfile[:remapcode_refresh_remapfunc_consumer] << "if (config.#{name}) {\n"
+  if /^passthrough_/ =~ name then
+    $outfile[:remapcode_refresh_remapfunc_consumer] << "if (config.#{name}) {\n"
+  else
+    $outfile[:remapcode_refresh_remapfunc_consumer] << "if (config.#{name} && ! config.notsave_passthrough) {\n"
+  end
   $outfile[:remapcode_refresh_remapfunc_consumer] << "  listRemapFunc_consumer[listRemapFunc_consumer_size] = GeneratedCode::RemapClass_#{name}::remap_consumer;\n"
   $outfile[:remapcode_refresh_remapfunc_consumer] << "  ++listRemapFunc_consumer_size;\n"
   $outfile[:remapcode_refresh_remapfunc_consumer] << "}\n"
 end
 $func[:pointing].uniq.each do |name|
-  $outfile[:remapcode_refresh_remapfunc_pointing] << "if (config.#{name}) {\n"
+  if /^passthrough_/ =~ name then
+    $outfile[:remapcode_refresh_remapfunc_pointing] << "if (config.#{name}) {\n"
+  else
+    $outfile[:remapcode_refresh_remapfunc_pointing] << "if (config.#{name} && ! config.notsave_passthrough) {\n"
+  end
   $outfile[:remapcode_refresh_remapfunc_pointing] << "  listRemapFunc_pointing[listRemapFunc_pointing_size] = GeneratedCode::RemapClass_#{name}::remap_pointing;\n"
   $outfile[:remapcode_refresh_remapfunc_pointing] << "  ++listRemapFunc_pointing_size;\n"
   $outfile[:remapcode_refresh_remapfunc_pointing] << "}\n"

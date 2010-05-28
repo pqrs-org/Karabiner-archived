@@ -47,6 +47,33 @@
     </item>
 
     <item>
+      <name>Pass Through Mode (Disable all settings temporarily)</name>
+      <list>
+        <item>
+          <name>Change FN+Escape to toggle "Pass Through Mode"</name>
+          <sysctl>passthrough.fnescape</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ESCAPE, ModifierFlag::FN, KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough</autogen>
+        </item>
+        <item>
+          <name>Simultaneous Key Presses [Escape+Tab] to toggle "Pass Through Mode"</name>
+          <sysctl>passthrough.escapetab</sysctl>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::ESCAPE, KeyCode::TAB, KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough</autogen>
+        </item>
+        <item>
+          <name>Pass Through Core</name>
+          <list>
+            <item>
+              <name>Pass Through Core</name>
+              <sysctl>notsave.passthrough</sysctl>
+              <vk_config>true</vk_config>
+              <autogen>--ShowStatusMessage-- "Pass Through"</autogen>
+            </item>
+          </list>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>Pointing Device</name>
       <list>
         <item>
