@@ -15,6 +15,31 @@
     </item>
 
     <item>
+      <name>Pass Through Mode</name>
+      <list>
+        <item>
+          <name>Core</name>
+          <appendix>Change A to toggle "Pass Through Mode"</appendix>
+          <sysctl>passthrough.samples</sysctl>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough</autogen>
+        </item>
+        <item>
+          <name>Samples</name>
+          <appendix>B to C</appendix>
+          <appendix>Volume Mute to A</appendix>
+          <appendix>RightClick+CursorMove to ScrollWheel</appendix>
+          <appendix>Simultaneous Key Presses [D+F] to Escape</appendix>
+          <sysctl>remap.samples_passthrough</sysctl>
+          <autogen>--ShowStatusMessage-- "Samples"</autogen>
+          <autogen>--KeyToKey-- KeyCode::B, KeyCode::C</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, KeyCode::A</autogen>
+          <autogen>--PointingRelativeToScroll-- PointingButton::RIGHT</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::D, KeyCode::ESCAPE</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>ShowStatusMessage</name>
       <sysctl>remap.samples_showstatusmessage</sysctl>
       <autogen>--ShowStatusMessage-- "Sample Message"</autogen>
