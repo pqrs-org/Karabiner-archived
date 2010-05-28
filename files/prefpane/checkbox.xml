@@ -1928,6 +1928,11 @@
           <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::OPTION_R, ModifierFlag::SHIFT_L</autogen>
         </item>
         <item>
+          <name>Option_R to Delete</name>
+          <sysctl>remap.optionR2delete</sysctl>
+          <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::DELETE</autogen>
+        </item>
+        <item>
           <name>Option_R to End</name>
           <sysctl>remap.optionR2end</sysctl>
           <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::END</autogen>
