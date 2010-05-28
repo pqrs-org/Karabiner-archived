@@ -82,6 +82,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   SYSCTL_DECL(_keyremap4macbook_parameter);
   SYSCTL_NODE(_keyremap4macbook, OID_AUTO, parameter, CTLFLAG_RW, 0, "");
 
+  SYSCTL_DECL(_keyremap4macbook_passthrough);
+  SYSCTL_NODE(_keyremap4macbook, OID_AUTO, passthrough, CTLFLAG_RW, 0, "");
+
 #include "config/output/include.config_SYSCTL.cpp"
 
   SYSCTL_PROC(_keyremap4macbook_notsave, OID_AUTO, pointing_relative_to_scroll, CTLTYPE_INT | CTLFLAG_RW, &(config.notsave_pointing_relative_to_scroll), 0, refresh_remapfunc_handler, "I", "");
@@ -107,6 +110,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_register_oid(&sysctl__keyremap4macbook_repeat);
     sysctl_register_oid(&sysctl__keyremap4macbook_pointing);
     sysctl_register_oid(&sysctl__keyremap4macbook_parameter);
+    sysctl_register_oid(&sysctl__keyremap4macbook_passthrough);
 
     // ----------------------------------------
 #include "config/output/include.config_register.cpp"
@@ -133,6 +137,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_unregister_oid(&sysctl__keyremap4macbook_repeat);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_pointing);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_parameter);
+    sysctl_unregister_oid(&sysctl__keyremap4macbook_passthrough);
 
     // ----------------------------------------
 #include "config/output/include.config_unregister.cpp"
