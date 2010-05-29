@@ -178,7 +178,7 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
 
   // ------------------------------------------------------------
   NSXMLNode* sysctl = [_xmlTreeWrapper getNode:item xpath:@"sysctl"];
-  if (! sysctl) {
+  if (! sysctl || [[sysctl stringValue] hasPrefix:@"notsave."]) {
     [cell setImagePosition:NSNoImage];
     return nil;
 
@@ -206,11 +206,13 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
   NSXMLNode* sysctl = [_xmlTreeWrapper getNode:item xpath:@"sysctl"];
   if (sysctl) {
     NSString* name = [sysctl stringValue];
-    NSString* entry = [NSString stringWithFormat:@"keyremap4macbook.%@", name];
+    if (! [name hasPrefix:@"notsave."]) {
+      NSString* entry = [NSString stringWithFormat:@"keyremap4macbook.%@", name];
 
-    NSNumber* value = [BUNDLEPREFIX(SysctlWrapper) getInt:entry];
-    NSNumber* new = [[[NSNumber alloc] initWithBool:! [value boolValue]] autorelease];
-    [BUNDLEPREFIX(SysctlWrapper) setSysctlInt:@"keyremap4macbook" name:name value:new sysctl_set:sysctl_set sysctl_ctl:sysctl_ctl];
+      NSNumber* value = [BUNDLEPREFIX(SysctlWrapper) getInt:entry];
+      NSNumber* new = [[[NSNumber alloc] initWithBool:! [value boolValue]] autorelease];
+      [BUNDLEPREFIX(SysctlWrapper) setSysctlInt:@"keyremap4macbook" name:name value:new sysctl_set:sysctl_set sysctl_ctl:sysctl_ctl];
+    }
   }
 }
 
