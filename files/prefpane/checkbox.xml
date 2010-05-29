@@ -60,10 +60,10 @@
           <autogen>--SimultaneousKeyPresses-- KeyCode::ESCAPE, KeyCode::TAB, KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough</autogen>
         </item>
         <item>
-          <name>Pass Through Core</name>
+          <name>Pass Through Mode Core</name>
           <list>
             <item>
-              <name>Pass Through Core</name>
+              <name>Pass Through Mode Core</name>
               <sysctl>notsave.passthrough</sysctl>
               <vk_config>true</vk_config>
               <autogen>--ShowStatusMessage-- "Pass Through"</autogen>
