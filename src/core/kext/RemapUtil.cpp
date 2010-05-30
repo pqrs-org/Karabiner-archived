@@ -474,13 +474,18 @@ namespace org_pqrs_KeyRemap4MacBook {
       // if the source buttons contains left button, we cancel left click for iPhoto, or some applications.
       // iPhoto store the scroll events when left button is pressed, and restore events after left button is released.
       // PointingRelativeToScroll doesn't aim it, we release the left button and do normal scroll event.
-      if (buttons.isOn(PointingButton::LEFT)) {
-        if (! active_) {
+      if (! active_) {
+        if (buttons.isOn(PointingButton::LEFT)) {
           Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(PointingButton::NONE, 0, 0));
           if (ptr) {
             RemapUtil::fireRelativePointer(*ptr);
           }
         }
+
+        begin_buttons_ = remapParams.params.buttons;
+        isscroll_ = false;
+        buffered_delta1 = 0;
+        buffered_delta2 = 0;
       }
 
       active_ = true;
@@ -494,6 +499,16 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (active_) {
         active_ = false;
         remapParams.isremapped = true;
+
+        if (! isscroll_) {
+          Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(begin_buttons_, 0, 0));
+          if (ptr) {
+            Params_RelativePointerEventCallback& params = *ptr;
+            RemapUtil::fireRelativePointer(params);
+            params.buttons = remapParams.params.buttons;
+            RemapUtil::fireRelativePointer(params);
+          }
+        }
 
         return true;
       }
@@ -532,8 +547,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ----------------------------------------
     // ignore minuscule move
-    const int abs1 = (delta1 > 0 ? delta1 : -delta1);
-    const int abs2 = (delta2 > 0 ? delta2 : -delta2);
+    const unsigned int abs1 = RemapUtil::abs(delta1);
+    const unsigned int abs2 = RemapUtil::abs(delta2);
 
     if (abs1 > abs2 * 2) {
       delta2 = 0;
@@ -597,6 +612,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     params.pointDelta2 = (delta2 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1024;
 
     fireScrollWheel(params);
+
+    isscroll_ = true;
   }
 
   // ------------------------------------------------------------

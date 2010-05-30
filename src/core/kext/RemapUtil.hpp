@@ -19,6 +19,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       POINTING_POINT_SCALE = 10, // (== SCROLL_WHEEL_TO_PIXEL_SCALE >> 16)
     };
 
+    inline unsigned int abs(int v) { return v > 0 ? v : -v; }
+
     class KeyToKey {
     public:
       KeyToKey(void) : active_(false) {}
@@ -146,6 +148,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     public:
       PointingRelativeToScroll(void) :
         active_(false),
+        isscroll_(false),
         buffered_delta1(0), buffered_delta2(0),
         fixation_delta1(0), fixation_delta2(0) {}
 
@@ -155,6 +158,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       void toscroll(RemapPointingParams_relative& remapParams);
 
       bool active_;
+
+      Buttons begin_buttons_;
+      bool isscroll_;
 
       IntervalChecker buffered_ic_;
       int buffered_delta1;
