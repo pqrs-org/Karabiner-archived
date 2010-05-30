@@ -2874,31 +2874,27 @@
           <name>[ex] Use Control+X as prefix key</name>
           <list>
             <item>
+              <!-- C-x Mode Core -->
+              <name>Control+X detail</name>
+              <appendix>C-x C-s to Command_L+S</appendix>
+              <appendix>C-x C-f to Command_L+O</appendix>
+              <appendix>C-x k to Command_L+W</appendix>
+              <appendix>C-x C-c to Command_L+Q</appendix>
+              <appendix>C-x C-g to turn off Control+X Mode</appendix>
+              <sysctl>notsave.emacsmode_ex_controlX_core</sysctl>
+              <vk_config>true</vk_config>
+              <autogen>--ShowStatusMessage-- "C-x Mode"</autogen>
+              <autogen>--KeyToKey-- KeyCode::S, VK_CONTROL | ModifierFlag::NONE, KeyCode::S, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlX_core</autogen>
+              <autogen>--KeyToKey-- KeyCode::C, VK_CONTROL | ModifierFlag::NONE, KeyCode::Q, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlX_core</autogen>
+              <autogen>--KeyToKey-- KeyCode::F, VK_CONTROL | ModifierFlag::NONE, KeyCode::O, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlX_core</autogen>
+              <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::NONE,              KeyCode::W, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlX_core</autogen>
+              <autogen>--KeyToKey-- KeyCode::G, VK_CONTROL | ModifierFlag::NONE,                                      KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlX_core</autogen>
+            </item>
+            <item>
               <name>Enable Control+X</name>
               <sysctl>option.emacsmode_ex_controlX</sysctl>
               <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
               <autogen>--KeyToKey-- KeyCode::X, VK_CONTROL | ModifierFlag::NONE, KeyCode::VK_CONFIG_FORCE_ON_notsave_emacsmode_ex_controlX_core</autogen>
-            </item>
-            <item>
-              <name>Control+X Mode Core</name>
-              <list>
-                <item>
-                  <name>Control+X Mode Core</name>
-                  <appendix>C-x C-s to Command_L+S</appendix>
-                  <appendix>C-x C-f to Command_L+O</appendix>
-                  <appendix>C-x k to Command_L+W</appendix>
-                  <appendix>C-x C-c to Command_L+Q</appendix>
-                  <appendix>C-x C-g to turn off Control+X Mode</appendix>
-                  <sysctl>notsave.emacsmode_ex_controlX_core</sysctl>
-                  <vk_config>true</vk_config>
-                  <autogen>--ShowStatusMessage-- "C-x Mode"</autogen>
-                  <autogen>--KeyToKey-- KeyCode::S, VK_CONTROL | ModifierFlag::NONE, KeyCode::S, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlX_core</autogen>
-                  <autogen>--KeyToKey-- KeyCode::C, VK_CONTROL | ModifierFlag::NONE, KeyCode::Q, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlX_core</autogen>
-                  <autogen>--KeyToKey-- KeyCode::F, VK_CONTROL | ModifierFlag::NONE, KeyCode::O, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlX_core</autogen>
-                  <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::NONE,              KeyCode::W, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlX_core</autogen>
-                  <autogen>--KeyToKey-- KeyCode::G, VK_CONTROL | ModifierFlag::NONE,                                      KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlX_core</autogen>
-                </item>
-              </list>
             </item>
           </list>
         </item>
