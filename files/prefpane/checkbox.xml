@@ -1133,6 +1133,28 @@
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::OPTION_L</autogen>
         </item>
         <item>
+          <name>FN to Option_L</name>
+          <appendix>(only in Illustrator, Photoshop, Cheetah3D)</appendix>
+          <appendix>(retain FN+F1...FN+F12)</appendix>
+          <sysctl>remap.fn2optionL_illphoche</sysctl>
+          <only>ILLUSTRATOR, PHOTOSHOP, CHEETAH_3D</only>
+          <autogen>--KeyToKey-- KeyCode::BRIGHTNESS_DOWN,                      ModifierFlag::OPTION_L, KeyCode::BRIGHTNESS_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::BRIGHTNESS_UP,                        ModifierFlag::OPTION_L, KeyCode::BRIGHTNESS_UP</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::BRIGHTNESS_DOWN,    ModifierFlag::OPTION_L, ConsumerKeyCode::BRIGHTNESS_DOWN</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::BRIGHTNESS_UP,      ModifierFlag::OPTION_L, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::EXPOSE_ALL,                           ModifierFlag::OPTION_L, KeyCode::EXPOSE_ALL</autogen>
+          <autogen>--KeyToKey-- KeyCode::DASHBOARD,                            ModifierFlag::OPTION_L, KeyCode::DASHBOARD</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_LOW,  ModifierFlag::OPTION_L, ConsumerKeyCode::KEYBOARDLIGHT_LOW</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_HIGH, ModifierFlag::OPTION_L, ConsumerKeyCode::KEYBOARDLIGHT_HIGH</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::MUSIC_PREV,         ModifierFlag::OPTION_L, ConsumerKeyCode::MUSIC_PREV</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::MUSIC_PLAY,         ModifierFlag::OPTION_L, ConsumerKeyCode::MUSIC_PLAY</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::MUSIC_NEXT,         ModifierFlag::OPTION_L, ConsumerKeyCode::MUSIC_NEXT</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_MUTE,        ModifierFlag::OPTION_L, ConsumerKeyCode::VOLUME_MUTE</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_DOWN,        ModifierFlag::OPTION_L, ConsumerKeyCode::VOLUME_DOWN</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_UP,          ModifierFlag::OPTION_L, ConsumerKeyCode::VOLUME_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::FN, KeyCode::OPTION_L</autogen>
+        </item>
+        <item>
           <name>FN to Control_L+Option_L</name>
           <sysctl>remap.fn2controlLoptionL</sysctl>
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::OPTION_L, ModifierFlag::CONTROL_L</autogen>
