@@ -2401,7 +2401,7 @@
         <item>
           <name>Space to Shift_L</name>
           <appendix>(+ When you type Space only, send Space) (Disable on Adobe Softwares)</appendix>
-          <not>ADOBE</not>
+          <not>ADOBE, PHOTOSHOP, ILLUSTRATOR</not>
           <sysctl>remap.space2shiftL_space_not_adobe</sysctl>
           <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
         </item>
@@ -3953,7 +3953,7 @@
             <item>
               <name>Change Command+Tab to Control_L+Tab</name>
               <sysctl>remap.app_adobe_commandTab2controlLTab</sysctl>
-              <only>ADOBE</only>
+              <only>ADOBE, PHOTOSHOP, ILLUSTRATOR</only>
               <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
             </item>
           </list>
