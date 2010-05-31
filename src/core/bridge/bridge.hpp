@@ -46,6 +46,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         OPERA,
         GOOGLE_CHROME,
         TEAMVIEWER,
+        CHEETAH_3D,
       };
       enum InputMode {
         INPUTMODE_NONE,

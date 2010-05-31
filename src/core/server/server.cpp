@@ -359,6 +359,10 @@ setCurrentApplicationType(const char* applicationName)
     SET_CURRENT_APPLICATION_TYPE(TEAMVIEWER);
   }
 
+  if (strcmp(applicationName, "de.wengenmayer.Cheetah3D") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(CHEETAH_3D);
+  }
+
   SET_CURRENT_APPLICATION_TYPE(UNKNOWN);
 }
 
