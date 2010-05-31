@@ -148,7 +148,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     public:
       PointingRelativeToScroll(void) :
         active_(false),
-        isscroll_(false),
+        absolute_distance_(0),
         buffered_delta1(0), buffered_delta2(0),
         fixation_delta1(0), fixation_delta2(0) {}
 
@@ -160,7 +160,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool active_;
 
       Buttons begin_buttons_;
-      bool isscroll_;
+      unsigned int absolute_distance_;
+      IntervalChecker begin_ic_;
 
       IntervalChecker buffered_ic_;
       int buffered_delta1;
