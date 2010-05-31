@@ -318,6 +318,15 @@ setCurrentApplicationType(const char* applicationName)
     SET_CURRENT_APPLICATION_TYPE(EDITOR);
   }
 
+  if (strcmp(applicationName, "com.adobe.Photoshop") == 0 ||
+      strcmp(applicationName, "com.adobe.Photoshop.Elements") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(PHOTOSHOP);
+  }
+
+  if (strcmp(applicationName, "com.adobe.illustrator") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(ILLUSTRATOR);
+  }
+
   const char* com_adobe = "com.adobe.";
   if (strncmp(applicationName, com_adobe, strlen(com_adobe)) == 0) {
     SET_CURRENT_APPLICATION_TYPE(ADOBE);

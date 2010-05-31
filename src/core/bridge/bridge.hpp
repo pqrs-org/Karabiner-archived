@@ -35,6 +35,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         SKYPE,
         MAIL, // Mail.app
         EDITOR, // TextEdit
+        PHOTOSHOP,
+        ILLUSTRATOR,
         ADOBE, // Adobe Softwares
         THUNDERBIRD,
         EXCEL, // Microsoft Excel
