@@ -483,7 +483,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
         begin_buttons_ = remapParams.params.buttons;
-        isscroll_ = false;
+        absolute_distance_ = 0;
+        begin_ic_.begin();
         buffered_delta1 = 0;
         buffered_delta2 = 0;
       }
@@ -500,7 +501,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         active_ = false;
         remapParams.isremapped = true;
 
-        if (! isscroll_) {
+        const uint32_t DISTANCE_THRESHOLD = 5;
+        const uint32_t TIME_THRESHOLD = 300;
+        if (absolute_distance_ <= DISTANCE_THRESHOLD && begin_ic_.getmillisec() < TIME_THRESHOLD) {
           Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(begin_buttons_, 0, 0));
           if (ptr) {
             Params_RelativePointerEventCallback& params = *ptr;
@@ -613,7 +616,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     fireScrollWheel(params);
 
-    isscroll_ = true;
+    absolute_distance_ += RemapUtil::abs(delta1) + RemapUtil::abs(delta2);
   }
 
   // ------------------------------------------------------------
