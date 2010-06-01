@@ -3345,6 +3345,21 @@
           <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
         </item>
         <item>
+          <name>Escape to turn on Vi Mode</name>
+          <appendix>(except in Vim)</appendix>
+          <sysctl>remap.vimode_turnon_escape</sysctl>
+          <not>VI</not>
+          <config_not>notsave.complete_vimode</config_not>
+          <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_CONFIG_FORCE_ON_notsave_complete_vimode</autogen>
+        </item>
+        <item>
+          <name>Escape to turn off Vi Mode</name>
+          <appendix>(+ turn off Modifier Lock)</appendix>
+          <sysctl>option.vimode_turnoff_escape</sysctl>
+          <config_only>notsave.complete_vimode</config_only>
+          <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_complete_vimode</autogen>
+        </item>
+        <item>
           <name>FN to FN</name>
           <appendix>(+ When you type FN only, toggle Vi Mode)</appendix>
           <sysctl>remap.vimode_toggle_fn2fn</sysctl>
@@ -3365,12 +3380,6 @@
           <appendix>(+ When you type Shift_L only, toggle Vi Mode)</appendix>
           <sysctl>remap.vimode_toggle_drop_shiftL</sysctl>
           <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::VK_NONE, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
-        </item>
-        <item>
-          <name>Escape to turn off Vi Mode</name>
-          <appendix>(+ turn off Modifier Lock)</appendix>
-          <sysctl>option.vimode_turnoff_escape</sysctl>
-          <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_complete_vimode</autogen>
         </item>
       </list>
     </item>
