@@ -1721,6 +1721,11 @@
               <sysctl>remap.keypadcomma2shiftComma</sysctl>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_COMMA, KeyCode::KEYPAD_COMMA, ModifierFlag::SHIFT_L</autogen>
             </item>
+            <item>
+              <name>Comma to Equal</name>
+              <sysctl>remap.keypadcomma2keypadequal</sysctl>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_COMMA, KeyCode::KEYPAD_EQUAL</autogen>
+            </item>
           </list>
         </item>
         <item>
