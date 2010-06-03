@@ -164,6 +164,16 @@
               <sysctl>remap.pointing_optionLeftclick2middleclick</sysctl>
               <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, VK_OPTION, PointingButton::MIDDLE</autogen>
             </item>
+            <item>
+              <name>RightClick to LeftClick</name>
+              <sysctl>remap.pointing_rightclick2leftclick</sysctl>
+              <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, PointingButton::LEFT</autogen>
+            </item>
+            <item>
+              <name>MiddleClick to Command+LeftClick</name>
+              <sysctl>remap.pointing_middleclick2commandLeftclick</sysctl>
+              <autogen>--PointingButtonToPointingButton-- PointingButton::MIDDLE, PointingButton::LEFT, ModifierFlag::COMMAND_L</autogen>
+            </item>
           </list>
         </item>
       </list>
