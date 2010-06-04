@@ -3476,6 +3476,12 @@
           <autogen>--SimultaneousKeyPresses-- KeyCode::CURSOR_UP, KeyCode::SHIFT_R, KeyCode::PC_APPLICATION, SimultaneousKeyPresses::Option::RAW</autogen>
         </item>
         <item>
+          <name>Simultaneous Key Presses [Up-Arrow+Down-Arrow] to PC Application Key</name>
+          <appendix>(We can change the key once again)</appendix>
+          <sysctl>remap.simultaneouskeypresses_UpDown2pc_application</sysctl>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::CURSOR_UP, KeyCode::CURSOR_DOWN, KeyCode::PC_APPLICATION, SimultaneousKeyPresses::Option::RAW</autogen>
+        </item>
+        <item>
           <name>Simultaneous Key Presses [K+L] to Return</name>
           <appendix>(We can change the key once again)</appendix>
           <sysctl>remap.simultaneouskeypresses_kl2return</sysctl>
@@ -4261,9 +4267,14 @@
               <autogen>--KeyToKey-- KeyCode::PC_KEYPAD_NUMLOCK, KeyCode::F11</autogen>
             </item>
             <item>
+              <name>Drop NumLock Key</name>
+              <sysctl>remap.drop_numlock</sysctl>
+              <autogen>--KeyToKey-- KeyCode::PC_KEYPAD_NUMLOCK, KeyCode::VK_NONE</autogen>
+            </item>
+            <item>
               <name>Drop NumLock Key (except in TeamViewer.app)</name>
               <not>TEAMVIEWER</not>
-              <sysctl>remap.drop_numlock</sysctl>
+              <sysctl>remap.drop_numlock_ex_teamviewer</sysctl>
               <autogen>--KeyToKey-- KeyCode::PC_KEYPAD_NUMLOCK, KeyCode::VK_NONE</autogen>
             </item>
           </list>
