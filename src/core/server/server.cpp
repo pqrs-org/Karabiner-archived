@@ -372,6 +372,10 @@ setCurrentApplicationType(const char* applicationName)
     SET_CURRENT_APPLICATION_TYPE(CHEETAH_3D);
   }
 
+  if (strcmp(applicationName, "com.apple.securityagent") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(PASSWORD);
+  }
+
   SET_CURRENT_APPLICATION_TYPE(UNKNOWN);
 }
 
