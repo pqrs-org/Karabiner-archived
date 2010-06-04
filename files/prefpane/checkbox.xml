@@ -391,7 +391,7 @@
     </item>
 
     <item>
-      <name>Change Command_L Key</name>
+      <name>Change Command_L Key (Left Command)</name>
       <list>
         <item>
           <name>Command_L to Control_L</name>
@@ -476,7 +476,7 @@
     </item>
 
     <item>
-      <name>Change Command_R Key</name>
+      <name>Change Command_R Key (Right Command)</name>
       <list>
         <item>
           <name>Command_R to Command_R</name>
@@ -666,7 +666,7 @@
     </item>
 
     <item>
-      <name>Change Control_L Key</name>
+      <name>Change Control_L Key (Left Control)</name>
       <list>
         <item>
           <name>Control_L to Command_L</name>
@@ -787,7 +787,7 @@
     </item>
 
     <item>
-      <name>Change Control_R Key</name>
+      <name>Change Control_R Key (Right Control)</name>
       <list>
         <item>
           <name>Control_R to Command_R (only in virtual machine, RDC)</name>
@@ -1890,7 +1890,7 @@
       </list>
     </item>
     <item>
-      <name>Change Option_L Key</name>
+      <name>Change Option_L Key (Left Option)</name>
       <list>
         <item>
           <name>Option_L to Command_L</name>
@@ -1959,7 +1959,7 @@
     </item>
 
     <item>
-      <name>Change Option_R Key</name>
+      <name>Change Option_R Key (Right Option)</name>
       <list>
         <item>
           <name>Option_R to Command_L</name>
@@ -2196,7 +2196,7 @@
     </item>
 
     <item>
-      <name>Change Shift_L Key</name>
+      <name>Change Shift_L Key (Left Shift)</name>
       <list>
         <item>
           <name>Shift_L to Command_L</name>
@@ -2278,7 +2278,7 @@
     </item>
 
     <item>
-      <name>Change Shift_R Key</name>
+      <name>Change Shift_R Key (Right Shift)</name>
       <list>
         <item>
           <name>Shift_R to Command_L</name>
