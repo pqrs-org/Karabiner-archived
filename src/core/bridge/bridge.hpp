@@ -49,6 +49,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         GOOGLE_CHROME,
         TEAMVIEWER,
         CHEETAH_3D,
+        PASSWORD, // com.apple.securityagent
       };
       enum InputMode {
         INPUTMODE_NONE,
