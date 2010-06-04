@@ -1754,6 +1754,17 @@
           <sysctl>remap.shift_enter2equal</sysctl>
           <autogen>--KeyToKey-- KeyCode::ENTER, ModifierFlag::VK_SHIFT, KeyCode::KEYPAD_EQUAL</autogen>
         </item>
+        <item>
+          <name>Logitech N305 hack</name>
+          <sysctl>remap.logitech_n305_hack</sysctl>
+          <appendix>Enable equal, parentheses</appendix>
+          <!-- Option_L+6, Option_L+1 == equal -->
+          <autogen>--SimultaneousKeyPresses-- KeyCode::KEYPAD_6, KeyCode::KEYPAD_1, ModifierFlag::OPTION_L, KeyCode::KEYPAD_EQUAL</autogen>
+          <!-- Option_L+4, Option_L+0 == ( -->
+          <autogen>--SimultaneousKeyPresses-- KeyCode::KEYPAD_4, KeyCode::KEYPAD_0, ModifierFlag::OPTION_L, KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
+          <!-- Option_L+4, Option_L+1 == ) -->
+          <autogen>--SimultaneousKeyPresses-- KeyCode::KEYPAD_4, KeyCode::KEYPAD_1, ModifierFlag::OPTION_L, KeyCode::KEY_0, ModifierFlag::SHIFT_L</autogen>
+        </item>
       </list>
     </item>
 
