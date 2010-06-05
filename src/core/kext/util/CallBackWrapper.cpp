@@ -1,6 +1,7 @@
 #include "CallBackWrapper.hpp"
 #include "CommonData.hpp"
 #include "Config.hpp"
+#include "FlagStatus.hpp"
 #include "ListHookedConsumer.hpp"
 #include "ListHookedKeyboard.hpp"
 #include "ListHookedPointing.hpp"
@@ -258,6 +259,11 @@ namespace org_pqrs_KeyRemap4MacBook {
              keyboardType.get(), repeat, ts, sender, refcon);
 
     CommonData::setcurrent_keyboardType(keyboardType);
+
+    // --------------------
+    if (eventType == EventType::DOWN) {
+      FlagStatus::sticky_clear();
+    }
 
     // --------------------
     // handle CapsLock LED
