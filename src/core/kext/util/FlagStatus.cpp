@@ -18,6 +18,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     temporary_count_ = 0;
     lock_count_ = 0;
     original_lock_count_ = 0;
+    sticky_count_ = 0;
   }
 
   void
