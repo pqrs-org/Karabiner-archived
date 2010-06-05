@@ -70,6 +70,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     // lock_clear clears only Virtual locks (not hardware CapsLock).
     static void lock_clear(void) { lock_decrease(getLockedFlags()); }
 
+    static void sticky_increase(Flags flags);
+    static void sticky_decrease(Flags flags);
+    static void sticky_toggle(Flags flags);
+    static void sticky_clear(void);
+
   private:
     static void updateStatusMessage(void);
 
