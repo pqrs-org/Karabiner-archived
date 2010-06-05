@@ -341,6 +341,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     log("sending");
     callback(target, eventType.get(), flags.get(), key.get(),
              flavor, guid, repeat, ts, sender, refcon);
+
+    // --------------------
+    if (eventType == EventType::DOWN) {
+      FlagStatus::sticky_clear();
+    }
   }
 
   void
@@ -363,6 +368,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     log("sending");
     callback(target, buttons.get(), dx, dy, ts, sender, refcon);
+
+    // --------------------
+    if (buttons != Buttons(0)) {
+      FlagStatus::sticky_clear();
+    }
   }
 
   void
@@ -389,5 +399,8 @@ namespace org_pqrs_KeyRemap4MacBook {
              fixedDelta1, fixedDelta2, fixedDelta3,
              pointDelta1, pointDelta2, pointDelta3,
              options, ts, sender, refcon);
+
+    // --------------------
+    FlagStatus::sticky_clear();
   }
 }
