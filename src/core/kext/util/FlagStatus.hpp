@@ -19,7 +19,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       void reset(void);
       Flags makeFlag(void) const {
-        if (count_ + temporary_count_ + lock_count_ + original_lock_count_ > 0) {
+        if (count_ + temporary_count_ + lock_count_ + original_lock_count_ + sticky_count_ > 0) {
           return flag_;
         } else {
           return 0;
@@ -33,6 +33,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       void lock_increase(void) { lock_count_ = 1; }
       void lock_decrease(void) { lock_count_ = 0; }
       void lock_toggle(void)   { lock_count_ = ! lock_count_; }
+      void sticky_increase(void) { sticky_count_ = 1; }
+      void sticky_decrease(void) { sticky_count_ = 0; }
+      void sticky_toggle(void) { sticky_count_ = ! sticky_count_; }
 
       ModifierFlag flag_;
       int count_;
@@ -40,6 +43,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       int lock_count_; // store remapped lock status. (CapsLock, FN lock, ...)
       int original_lock_count_; // store original CapsLock status.
+
+      int sticky_count_;
     };
     enum { MAXNUM = 16 };
 
