@@ -58,6 +58,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       } else {
         FlagStatus::lock_toggle(flags);
       }
+      FireModifiers::fire();
     }
 
     return true;
@@ -103,6 +104,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (params.eventType == EventType::DOWN && params.repeat == false) {
       FlagStatus::sticky_toggle(flag);
+      FireModifiers::fire();
     }
 
     return true;
