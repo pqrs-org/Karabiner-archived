@@ -1759,13 +1759,89 @@
           <sysctl>remap.logitech_n305_hack</sysctl>
           <appendix>(Enable equal, parentheses)</appendix>
           <appendix>(Drop NumLock key)</appendix>
-          <!-- Option_L+6, Option_L+1 == equal -->
-          <autogen>--SimultaneousKeyPresses-- KeyCode::KEYPAD_6, KeyCode::KEYPAD_1, ModifierFlag::OPTION_L, KeyCode::KEYPAD_EQUAL</autogen>
-          <!-- Option_L+4, Option_L+0 == ( -->
-          <autogen>--SimultaneousKeyPresses-- KeyCode::KEYPAD_4, KeyCode::KEYPAD_0, ModifierFlag::OPTION_L, KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
-          <!-- Option_L+4, Option_L+1 == ) -->
-          <autogen>--SimultaneousKeyPresses-- KeyCode::KEYPAD_4, KeyCode::KEYPAD_1, ModifierFlag::OPTION_L, KeyCode::KEY_0, ModifierFlag::SHIFT_L</autogen>
+          <!--
+              ============================================================
+              [Device Information]
 
+              The following is the output for the number one key:
+              *** An unnecessary Clear key is output ***
+              eventType:keyDown code:0x47 name:Clear    flags:FN         misc:
+              eventType:keyUp   code:0x47 name:Clear    flags:FN         misc:
+              eventType:keyDown code:0x53 name:1        flags:NumPad     misc:
+              eventType:keyUp   code:0x53 name:1        flags:NumPad     misc:
+              eventType:keyDown code:0x47 name:Clear    flags:FN         misc:
+              eventType:keyUp   code:0x47 name:Clear    flags:FN         misc:
+
+              Equal Symbol:
+              eventType:keyMod  code:0x3a name:Option_L flags:Opt        misc:
+              eventType:keyDown code:0x58 name:6        flags:Opt NumPad misc:
+              eventType:keyDown code:0x53 name:1        flags:Opt NumPad misc:
+              eventType:keyUp   code:0x58 name:6        flags:Opt NumPad misc:
+              eventType:keyUp   code:0x53 name:1        flags:Opt NumPad misc:
+              eventType:keyMod  code:0x3a name:Option_L flags:           misc:
+
+              Left Parenthesis:
+              eventType:keyMod  code:0x3a name:Option_L flags:Opt        misc:
+              eventType:keyDown code:0x56 name:4        flags:Opt NumPad misc:
+              eventType:keyUp   code:0x56 name:4        flags:Opt NumPad misc:
+              eventType:keyDown code:0x52 name:0        flags:Opt NumPad misc:
+              eventType:keyUp   code:0x52 name:0        flags:Opt NumPad misc:
+              eventType:keyMod  code:0x3a name:Option_L flags:           misc:
+
+              Right Parenthesis:
+              eventType:keyMod  code:0x3a name:Option_L flags:Opt        misc:
+              eventType:keyDown code:0x56 name:4        flags:Opt NumPad misc:
+              eventType:keyDown code:0x53 name:1        flags:Opt NumPad misc:
+              eventType:keyUp   code:0x56 name:4        flags:Opt NumPad misc:
+              eventType:keyUp   code:0x53 name:1        flags:Opt NumPad misc:
+              eventType:keyMod  code:0x3a name:Option_L flags:           misc:
+
+              ============================================================
+              [Our approach]
+
+              We use sticky modifiers to achieve equal, parentheses.
+
+              Option_L+6 to EXTRA1.
+              - EXTRA1+1 to Equal
+
+              Option_L+4 to EXTRA2.
+              -EXTRA2+0 to Left Parenthesis
+              -EXTRA2+1 to Right Parenthesis
+
+              Option_L+1 to EXTRA3.
+              - EXTRA3+6 to Equal
+              - EXTRA3+4 to Right Parenthesis
+
+              Option_L+0 to EXTRA4.
+              - EXTRA4+4 to Left Parenthesis
+
+            -->
+          <!-- to Equal -->
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_1, ModifierFlag::EXTRA1 | ModifierFlag::OPTION_L, KeyCode::KEYPAD_EQUAL</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_1, ModifierFlag::EXTRA1,                          KeyCode::KEYPAD_EQUAL</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_6, ModifierFlag::EXTRA3 | ModifierFlag::OPTION_L, KeyCode::KEYPAD_EQUAL</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_6, ModifierFlag::EXTRA3,                          KeyCode::KEYPAD_EQUAL</autogen>
+
+          <!-- to Left Parenthesis -->
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_0, ModifierFlag::EXTRA2 | ModifierFlag::OPTION_L, KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_0, ModifierFlag::EXTRA2,                          KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_4, ModifierFlag::EXTRA4 | ModifierFlag::OPTION_L, KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_4, ModifierFlag::EXTRA4,                          KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
+
+          <!-- to Right Parenthesis -->
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_1, ModifierFlag::EXTRA2 | ModifierFlag::OPTION_L, KeyCode::KEY_0, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_1, ModifierFlag::EXTRA2,                          KeyCode::KEY_0, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_4, ModifierFlag::EXTRA3 | ModifierFlag::OPTION_L, KeyCode::KEY_0, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_4, ModifierFlag::EXTRA3,                          KeyCode::KEY_0, ModifierFlag::SHIFT_L</autogen>
+
+          <!-- to Sticky Modifier -->
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_6, ModifierFlag::OPTION_L | ModifierFlag::NONE, KeyCode::VK_STICKY_EXTRA1</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_4, ModifierFlag::OPTION_L | ModifierFlag::NONE, KeyCode::VK_STICKY_EXTRA2</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_1, ModifierFlag::OPTION_L | ModifierFlag::NONE, KeyCode::VK_STICKY_EXTRA3</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_0, ModifierFlag::OPTION_L | ModifierFlag::NONE, KeyCode::VK_STICKY_EXTRA4</autogen>
+
+          <!-- ================================================== -->
+          <!-- Drop unnecessary Clear -->
           <autogen>--KeyToKey-- KeyCode::PC_KEYPAD_NUMLOCK, KeyCode::VK_NONE</autogen>
         </item>
       </list>
