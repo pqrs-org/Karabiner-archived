@@ -200,6 +200,39 @@ TEST(FlagStatus, lock_clear) {
   EXPECT_EQ(Flags(0), FlagStatus::makeFlags());
 }
 
+TEST(FlagStatus, sticky_increase) {
+  ASSERT_TRUE(FlagStatus::initialize());
+
+  FlagStatus::sticky_increase(ModifierFlag::COMMAND_L | ModifierFlag::FN);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::FN), FlagStatus::makeFlags());
+
+  FlagStatus::sticky_decrease(ModifierFlag::COMMAND_L);
+  EXPECT_EQ(Flags(ModifierFlag::FN), FlagStatus::makeFlags());
+}
+
+TEST(FlagStatus, sticky_toggle) {
+  ASSERT_TRUE(FlagStatus::initialize());
+
+  FlagStatus::sticky_increase(ModifierFlag::COMMAND_L);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), FlagStatus::makeFlags());
+
+  FlagStatus::sticky_toggle(ModifierFlag::COMMAND_L);
+  EXPECT_EQ(Flags(0), FlagStatus::makeFlags());
+
+  FlagStatus::sticky_toggle(ModifierFlag::COMMAND_L);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), FlagStatus::makeFlags());
+}
+
+TEST(FlagStatus, sticky_clear) {
+  ASSERT_TRUE(FlagStatus::initialize());
+
+  FlagStatus::sticky_increase(ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L);
+  EXPECT_EQ(ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L, FlagStatus::makeFlags());
+
+  FlagStatus::sticky_clear();
+  EXPECT_EQ(Flags(0), FlagStatus::makeFlags());
+}
+
 TEST(FlagStatus, CapsLock) {
   ASSERT_TRUE(FlagStatus::initialize());
 

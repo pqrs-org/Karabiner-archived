@@ -200,7 +200,16 @@ namespace org_pqrs_KeyRemap4MacBook {
   void FlagStatus::lock_increase(Flags flags) { FOREACH_TO_FLAGS(lock_increase); updateStatusMessage(); }
   void FlagStatus::lock_decrease(Flags flags) { FOREACH_TO_FLAGS(lock_decrease); updateStatusMessage(); }
   void FlagStatus::lock_toggle(Flags flags) { FOREACH_TO_FLAGS(lock_toggle); updateStatusMessage(); }
+  void FlagStatus::sticky_increase(Flags flags) { FOREACH_TO_FLAGS(sticky_increase); updateStatusMessage(); }
+  void FlagStatus::sticky_decrease(Flags flags) { FOREACH_TO_FLAGS(sticky_decrease); updateStatusMessage(); }
+  void FlagStatus::sticky_toggle(Flags flags) { FOREACH_TO_FLAGS(sticky_toggle); updateStatusMessage(); }
 #undef FOREACH_TO_FLAGS
+
+  void FlagStatus::sticky_clear(void) {
+    for (int i = 0; item_[i].flag_ != ModifierFlag::NONE; ++i) {
+      item_[i].sticky_decrease();
+    }
+  }
 
   void
   FlagStatus::updateStatusMessage(void)
