@@ -471,7 +471,7 @@
 
     <!-- Virtual KeyCode -->
     <item>
-      <name>VK_MODIFIER_EXTRA1</name>
+      <name>VK_MODIFIER_EXTRA</name>
       <appendix>Use A as ModifierFlag::EXTRA1</appendix>
       <appendix>Use D as ModifierFlag::EXTRA5</appendix>
       <appendix>Use F as ModifierFlag::EXTRA5 (When type only, send Space)</appendix>
@@ -485,22 +485,57 @@
       <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::EXTRA5, KeyCode::C</autogen>
     </item>
     <item>
-      <name>VK_LOCK_FN</name>
-      <appendix>Use A to FN_Lock</appendix>
-      <sysctl>remap.samples_a2numlock</sysctl>
-      <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_LOCK_FN</autogen>
+      <name>VK_LOCK</name>
+      <appendix>Use 1 to FN_Lock</appendix>
+      <appendix>Use 2 to Command_R_Lock</appendix>
+      <appendix>Use 3 to Shift_L_Lock</appendix>
+      <sysctl>remap.samples_vk_lock</sysctl>
+      <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_LOCK_FN</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_LOCK_COMMAND_R</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::VK_LOCK_SHIFT_L</autogen>
     </item>
     <item>
-      <name>VK_LOCK_COMMAND_R</name>
-      <appendix>Use A to Command_R_Lock</appendix>
-      <sysctl>remap.samples_a2commandRlock</sysctl>
-      <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_LOCK_COMMAND_R</autogen>
-    </item>
-    <item>
-      <name>VK_LOCK_SHIFT_L</name>
-      <appendix>Use A to Shift_L_Lock</appendix>
-      <sysctl>remap.samples_a2shiftL_lock</sysctl>
-      <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_LOCK_SHIFT_L</autogen>
+      <name>VK_STICKY</name>
+      <appendix>Use 1 to Sticky Command_L</appendix>
+      <appendix>Use 2 to Sticky Command_R</appendix>
+      <appendix>Use 3 to Sticky Control_L</appendix>
+      <appendix>Use 4 to Sticky Control_R</appendix>
+      <appendix>Use 5 to Sticky FN</appendix>
+      <appendix>Use 6 to Sticky Option_L</appendix>
+      <appendix>Use 7 to Sticky Option_R</appendix>
+      <appendix>Use 8 to Sticky Shift_L</appendix>
+      <appendix>Use 9 to Sticky Shift_R</appendix>
+      <appendix>Use Q to Sticky ModifierFlag::EXTRA1</appendix>
+      <appendix>Use W to Sticky ModifierFlag::EXTRA2</appendix>
+      <appendix>Use E to Sticky ModifierFlag::EXTRA3</appendix>
+      <appendix>Use R to Sticky ModifierFlag::EXTRA4</appendix>
+      <appendix>Use T to Sticky ModifierFlag::EXTRA5</appendix>
+      <appendix></appendix>
+      <appendix>EXTRA1+A to 1</appendix>
+      <appendix>EXTRA2+A to 2</appendix>
+      <appendix>EXTRA3+A to 3</appendix>
+      <appendix>EXTRA4+A to 4</appendix>
+      <appendix>EXTRA5+A to 5</appendix>
+      <sysctl>remap.samples_vk_sticky</sysctl>
+      <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_STICKY_COMMAND_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_STICKY_COMMAND_R</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::VK_STICKY_CONTROL_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_4, KeyCode::VK_STICKY_CONTROL_R</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_5, KeyCode::VK_STICKY_FN</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::VK_STICKY_OPTION_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_7, KeyCode::VK_STICKY_OPTION_R</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_8, KeyCode::VK_STICKY_SHIFT_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_9, KeyCode::VK_STICKY_SHIFT_R</autogen>
+      <autogen>--KeyToKey-- KeyCode::Q, KeyCode::VK_STICKY_EXTRA1</autogen>
+      <autogen>--KeyToKey-- KeyCode::W, KeyCode::VK_STICKY_EXTRA2</autogen>
+      <autogen>--KeyToKey-- KeyCode::E, KeyCode::VK_STICKY_EXTRA3</autogen>
+      <autogen>--KeyToKey-- KeyCode::R, KeyCode::VK_STICKY_EXTRA4</autogen>
+      <autogen>--KeyToKey-- KeyCode::T, KeyCode::VK_STICKY_EXTRA5</autogen>
+      <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA1, KeyCode::KEY_1</autogen>
+      <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA2, KeyCode::KEY_2</autogen>
+      <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA3, KeyCode::KEY_3</autogen>
+      <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA4, KeyCode::KEY_4</autogen>
+      <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA5, KeyCode::KEY_5</autogen>
     </item>
     <item>
       <name>VK_LAZY_SHIFT_L</name>

@@ -26,6 +26,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       int error = sysctl_handle_int(oidp, oidp->oid_arg1, oidp->oid_arg2, req);
       if (! error && req->newptr) {
         FlagStatus::lock_clear();
+        FlagStatus::sticky_clear();
         refresh_remapfunc();
 
         // StatusMessageWindowParameter

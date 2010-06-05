@@ -638,6 +638,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     Params_KeyboardEventCallBack& p = *ptr;
 
     if (Handle_VK_LOCK::handle(p)) return;
+    if (Handle_VK_STICKY::handle(p)) return;
     if (Handle_VK_LAZY::handle(p)) return;
     if (Handle_VK_CHANGE_INPUTMODE::handle(p)) return;
     if (Handle_VK_CONFIG::handle(p)) return;
