@@ -9,10 +9,10 @@
 #include "KeyCode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  Queue* CallBackWrapperQueue::queue_;
-  IntervalChecker CallBackWrapperQueue::ic_;
-  TimerWrapper CallBackWrapperQueue::timer_;
-  bool CallBackWrapperQueue::isTimerActive_;
+  Queue* EventOutputQueue::queue_;
+  IntervalChecker EventOutputQueue::ic_;
+  TimerWrapper EventOutputQueue::timer_;
+  bool EventOutputQueue::isTimerActive_;
 
   void
   Params_KeyboardEventCallBack::log(const char* message) const
@@ -87,12 +87,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------------------------------------
   void
   Params_KeyboardEventCallBack::apply(void) const
-  {
-    CallBackWrapperQueue::push(*this);
-  }
-
-  void
-  Params_KeyboardEventCallBack::do_apply(void) const
   {
     if (key >= KeyCode::VK__BEGIN__) {
       // Invalid keycode
@@ -314,21 +308,21 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ======================================================================
   void
-  CallBackWrapperQueue::initialize(IOWorkLoop& workloop)
+  EventOutputQueue::initialize(IOWorkLoop& workloop)
   {
     queue_ = new Queue();
     ic_.begin();
-    timer_.initialize(&workloop, NULL, CallBackWrapperQueue::fire);
+    timer_.initialize(&workloop, NULL, EventOutputQueue::fire);
     isTimerActive_ = false;
   }
 
   void
-  CallBackWrapperQueue::terminate(void)
+  EventOutputQueue::terminate(void)
   {
     timer_.terminate();
 
     for (;;) {
-      CallBackWrapperQueue::Item* p = static_cast<CallBackWrapperQueue::Item*>(queue_->front());
+      EventOutputQueue::Item* p = static_cast<EventOutputQueue::Item*>(queue_->front());
       if (! p) break;
 
       queue_->pop();
@@ -337,7 +331,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  CallBackWrapperQueue::push(Item& p)
+  EventOutputQueue::push(Item& p)
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
 
@@ -361,12 +355,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  CallBackWrapperQueue::push(const Params_KeyboardEventCallBack& p)
+  EventOutputQueue::push(const Params_KeyboardEventCallBack& p)
   {
     Item* newp = new Item;
     if (! newp) return;
 
     newp->type = Item::KEYBOARD;
+    // newp->params will be deleted at ~Item().
     newp->params.params_KeyboardEventCallBack = Params_KeyboardEventCallBack::alloc(p.eventType, p.flags, p.key,
                                                                                     p.charCode, p.charSet, p.origCharCode, p.origCharSet,
                                                                                     p.keyboardType, p.repeat);
@@ -374,14 +369,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  CallBackWrapperQueue::fire(OSObject* owner, IOTimerEventSource* sender)
+  EventOutputQueue::fire(OSObject* owner, IOTimerEventSource* sender)
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
     fire_nolock();
   }
 
   void
-  CallBackWrapperQueue::fire_nolock(void)
+  EventOutputQueue::fire_nolock(void)
   {
     isTimerActive_ = false;
 
@@ -389,7 +384,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! p) return;
 
     queue_->pop();
-    ((p->params).params_KeyboardEventCallBack)->do_apply();
+    ((p->params).params_KeyboardEventCallBack)->apply();
     delete p;
 
     if (! queue_->empty()) {
@@ -398,7 +393,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
-  CallBackWrapperQueue::Item::~Item(void)
+  EventOutputQueue::Item::~Item(void)
   {
 #define DELETE_PARAMS(PARAMS) { \
     if (PARAMS) {               \

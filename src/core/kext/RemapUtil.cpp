@@ -432,8 +432,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, lastFlags_, flag.getKeyCode(), keyboardType, false));
       if (! ptr) continue;
-      Params_KeyboardEventCallBack& params = *ptr;
-      params.apply();
+      EventOutputQueue::push(*ptr);
     }
 
     // KeyDown
@@ -453,8 +452,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, lastFlags_, flag.getKeyCode(), keyboardType, false));
       if (! ptr) continue;
-      Params_KeyboardEventCallBack& params = *ptr;
-      params.apply();
+      EventOutputQueue::push(*ptr);
     }
   }
 
@@ -669,7 +667,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     FireModifiers::fire(p.flags, p.keyboardType);
 
     if (p.eventType == EventType::DOWN || p.eventType == EventType::UP) {
-      p.apply();
+      EventOutputQueue::push(p);
 
       if (p.eventType == EventType::DOWN) {
         PressDownKeys::add(p.key, p.keyboardType);

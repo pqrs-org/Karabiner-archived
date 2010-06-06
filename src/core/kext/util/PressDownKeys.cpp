@@ -79,7 +79,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       params.key = item_[i].key;
       params.keyboardType = item_[i].keyboardType;
-      params.apply();
+      EventOutputQueue::push(params);
     }
   }
 }
