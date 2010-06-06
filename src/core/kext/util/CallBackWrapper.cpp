@@ -9,12 +9,10 @@
 #include "KeyCode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  Params_KeyboardEventCallBack* Params_KeyboardEventCallBack::Queue::item_[Params_KeyboardEventCallBack::Queue::MAXNUM];
-  IntervalChecker Params_KeyboardEventCallBack::Queue::ic_;
-  Params_KeyboardEventCallBack** Params_KeyboardEventCallBack::Queue::current_ = Params_KeyboardEventCallBack::Queue::item_;
-  Params_KeyboardEventCallBack** Params_KeyboardEventCallBack::Queue::last_ = Params_KeyboardEventCallBack::Queue::item_;
-  TimerWrapper Params_KeyboardEventCallBack::Queue::timer_;
-  bool Params_KeyboardEventCallBack::Queue::isTimerActive_;
+  Queue* CallBackWrapperQueue::queue_;
+  IntervalChecker CallBackWrapperQueue::ic_;
+  TimerWrapper CallBackWrapperQueue::timer_;
+  bool CallBackWrapperQueue::isTimerActive_;
 
   void
   Params_KeyboardEventCallBack::log(const char* message) const
@@ -88,100 +86,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   void
-  Params_KeyboardEventCallBack::Queue::initialize(IOWorkLoop& workloop)
-  {
-    for (int i = 0; i < MAXNUM; ++i) {
-      item_[i] = NULL;
-    }
-
-    ic_.begin();
-    timer_.initialize(&workloop, NULL, Params_KeyboardEventCallBack::Queue::fire);
-    isTimerActive_ = false;
-  }
-
-  void
-  Params_KeyboardEventCallBack::Queue::terminate(void)
-  {
-    for (int i = 0; i < MAXNUM; ++i) {
-      if (item_[i]) {
-        delete item_[i];
-        item_[i] = NULL;
-      }
-    }
-
-    timer_.terminate();
-  }
-
-  void
-  Params_KeyboardEventCallBack::Queue::add(const Params_KeyboardEventCallBack& p)
-  {
-    IOLockWrapper::ScopedLock lk(timer_.getlock());
-
-    bool isempty = empty();
-
-    if (*last_) {
-      delete *last_;
-      *last_ = NULL;
-    }
-
-    *last_ = Params_KeyboardEventCallBack::alloc(p.eventType, p.flags, p.key,
-                                                 p.charCode, p.charSet, p.origCharCode, p.origCharSet,
-                                                 p.keyboardType, p.repeat);
-    last_ = getnext(last_);
-
-    if (last_ == current_) {
-      IOLog("KeyRemap4MacBook --Warning-- Params_KeyboardEventCallBack::Queue was filled up. Expand MAXNUM.\n");
-    }
-
-    // ------------------------------------------------------------
-    if (isempty && ic_.getmillisec() > DELAY) {
-      fire_nolock();
-    } else {
-      if (! isTimerActive_) {
-        if (config.debug_devel) {
-          IOLog("KeyRemap4MacBook --Info-- Params_KeyboardEventCallBack::Queue enqueued ic_.getmillisec() = %d\n", ic_.getmillisec());
-        }
-        timer_.setTimeoutMS(DELAY);
-        isTimerActive_ = true;
-      }
-    }
-
-    ic_.begin();
-  }
-
-  void
-  Params_KeyboardEventCallBack::Queue::fire(OSObject* owner, IOTimerEventSource* sender)
-  {
-    IOLockWrapper::ScopedLock lk(timer_.getlock());
-    fire_nolock();
-  }
-
-  void
-  Params_KeyboardEventCallBack::Queue::fire_nolock(void)
-  {
-    isTimerActive_ = false;
-
-    if (empty()) return;
-
-    do {
-      Params_KeyboardEventCallBack* p = *current_;
-      if (! p) return;
-      p->do_apply();
-
-      current_ = getnext(current_);
-    } while (size() > MAXNUM / 2);
-
-    if (! empty()) {
-      timer_.setTimeoutMS(DELAY);
-      isTimerActive_ = true;
-    }
-  }
-
-  // ----------------------------------------------------------------------
-  void
   Params_KeyboardEventCallBack::apply(void) const
   {
-    Params_KeyboardEventCallBack::Queue::add(*this);
+    CallBackWrapperQueue::push(*this);
   }
 
   void
@@ -402,5 +309,121 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // --------------------
     FlagStatus::sticky_clear();
+  }
+
+
+  // ======================================================================
+  void
+  CallBackWrapperQueue::initialize(IOWorkLoop& workloop)
+  {
+    queue_ = new Queue();
+    ic_.begin();
+    timer_.initialize(&workloop, NULL, CallBackWrapperQueue::fire);
+    isTimerActive_ = false;
+  }
+
+  void
+  CallBackWrapperQueue::terminate(void)
+  {
+    timer_.terminate();
+
+    for (;;) {
+      CallBackWrapperQueue::Item* p = static_cast<CallBackWrapperQueue::Item*>(queue_->front());
+      if (! p) break;
+
+      queue_->pop();
+      delete p;
+    }
+  }
+
+  void
+  CallBackWrapperQueue::push(Item& p)
+  {
+    IOLockWrapper::ScopedLock lk(timer_.getlock());
+
+    bool isempty = queue_->empty();
+    queue_->push(&p);
+
+    // ------------------------------------------------------------
+    if (isempty && ic_.getmillisec() > DELAY) {
+      fire_nolock();
+    } else {
+      if (! isTimerActive_) {
+        if (config.debug_devel) {
+          IOLog("KeyRemap4MacBook --Info-- Params_KeyboardEventCallBack::Queue enqueued ic_.getmillisec() = %d\n", ic_.getmillisec());
+        }
+        timer_.setTimeoutMS(DELAY);
+        isTimerActive_ = true;
+      }
+    }
+
+    ic_.begin();
+  }
+
+  void
+  CallBackWrapperQueue::push(const Params_KeyboardEventCallBack& p)
+  {
+    Item* newp = new Item;
+    if (! newp) return;
+
+    newp->type = Item::KEYBOARD;
+    newp->params.params_KeyboardEventCallBack = Params_KeyboardEventCallBack::alloc(p.eventType, p.flags, p.key,
+                                                                                    p.charCode, p.charSet, p.origCharCode, p.origCharSet,
+                                                                                    p.keyboardType, p.repeat);
+    push(*newp);
+  }
+
+  void
+  CallBackWrapperQueue::fire(OSObject* owner, IOTimerEventSource* sender)
+  {
+    IOLockWrapper::ScopedLock lk(timer_.getlock());
+    fire_nolock();
+  }
+
+  void
+  CallBackWrapperQueue::fire_nolock(void)
+  {
+    isTimerActive_ = false;
+
+    Item* p = static_cast<Item*>(queue_->front());
+    if (! p) return;
+
+    queue_->pop();
+    ((p->params).params_KeyboardEventCallBack)->do_apply();
+    delete p;
+
+    if (! queue_->empty()) {
+      timer_.setTimeoutMS(DELAY);
+      isTimerActive_ = true;
+    }
+  }
+
+  CallBackWrapperQueue::Item::~Item(void)
+  {
+#define DELETE_PARAMS(PARAMS) { \
+    if (PARAMS) {               \
+      delete PARAMS;            \
+    }                           \
+}
+
+    switch (type) {
+      case KEYBOARD:
+        DELETE_PARAMS(params.params_KeyboardEventCallBack);
+        break;
+      case UPDATE_FLAGS:
+        DELETE_PARAMS(params.params_UpdateEventFlagsCallback);
+        break;
+      case KEYBOARD_SPECIAL:
+        DELETE_PARAMS(params.params_KeyboardSpecialEventCallback);
+        break;
+      case RELATIVE_POINTER:
+        DELETE_PARAMS(params.params_RelativePointerEventCallback);
+        break;
+      case SCROLL_POINTER:
+        DELETE_PARAMS(params.params_ScrollWheelEventCallback);
+        break;
+    }
+
+#undef DELETE_PARAMS
   }
 }
