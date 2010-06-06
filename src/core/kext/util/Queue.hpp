@@ -1,7 +1,6 @@
 #ifndef QUEUE_HPP
 #define QUEUE_HPP
 
-#include "base.hpp"
 #include "IOLockWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
