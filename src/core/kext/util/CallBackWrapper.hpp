@@ -10,7 +10,7 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   class Params_KeyboardEventCallBack {
-    friend class CallBackWrapperQueue;
+    friend class EventOutputQueue;
 
   public:
     // Use auto_ptr instead allocating in kernel stack.
@@ -32,7 +32,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ----------------------------------------
     void log(const char* message = "caught") const;
-    void apply(void) const;
 
     EventType eventType;
     Flags flags;
@@ -52,11 +51,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       charCode(cc), charSet(cs), origCharCode(occ), origCharSet(ocs),
       keyboardType(kt), repeat(r) {}
 
-    void do_apply(void) const;
+    void apply(void) const;
   };
 
   class Params_UpdateEventFlagsCallback {
-    friend class CallBackWrapperQueue;
+    friend class EventOutputQueue;
 
   public:
     // Use auto_ptr instead allocating in kernel stack.
@@ -76,7 +75,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
 
   class Params_KeyboardSpecialEventCallback {
-    friend class CallBackWrapperQueue;
+    friend class EventOutputQueue;
 
   public:
     // Use auto_ptr instead allocating in kernel stack.
@@ -116,7 +115,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
 
   class Params_RelativePointerEventCallback {
-    friend class CallBackWrapperQueue;
+    friend class EventOutputQueue;
 
   public:
     // Use auto_ptr instead allocating in kernel stack.
@@ -139,7 +138,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     Params_RelativePointerEventCallback(Buttons bt, int x, int y) : buttons(bt), dx(x), dy(y) {}
   };
   class Params_ScrollWheelEventCallback {
-    friend class CallBackWrapperQueue;
+    friend class EventOutputQueue;
 
   public:
     // Use auto_ptr instead allocating in kernel stack.
@@ -183,7 +182,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
 
   // ======================================================================
-  class CallBackWrapperQueue {
+  class EventOutputQueue {
   public:
     static void initialize(IOWorkLoop& workloop);
     static void terminate(void);
