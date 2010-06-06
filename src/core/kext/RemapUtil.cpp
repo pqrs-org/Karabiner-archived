@@ -400,8 +400,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(lastFlags_));
       if (ptr) {
-        Params_UpdateEventFlagsCallback& params = *ptr;
-        params.apply();
+        EventOutputQueue::push(*ptr);
       }
     }
     if (! lastFlags_.isOn(ModifierFlag::KEYPAD) && toFlags.isOn(ModifierFlag::KEYPAD)) {
@@ -409,8 +408,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(lastFlags_));
       if (ptr) {
-        Params_UpdateEventFlagsCallback& params = *ptr;
-        params.apply();
+        EventOutputQueue::push(*ptr);
       }
     }
 
@@ -623,15 +621,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     // ----------------------------------------
     // handle virtual keys
-    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(params.eventType,
-                                                                                   params.flags,
-                                                                                   params.key,
-                                                                                   params.charCode,
-                                                                                   params.charSet,
-                                                                                   params.origCharCode,
-                                                                                   params.origCharSet,
-                                                                                   params.keyboardType,
-                                                                                   params.repeat));
+    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(params));
     if (! ptr) return;
     Params_KeyboardEventCallBack& p = *ptr;
 
@@ -707,12 +697,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapUtil::fireConsumer(const Params_KeyboardSpecialEventCallback& params)
   {
-    Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(params.eventType,
-                                                                                                 params.flags,
-                                                                                                 params.key,
-                                                                                                 params.flavor,
-                                                                                                 params.guid,
-                                                                                                 params.repeat));
+    Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(params));
     if (! ptr) return;
 
     Params_KeyboardSpecialEventCallback& p = *ptr;
@@ -728,21 +713,21 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     FireModifiers::fire();
 
-    p.apply();
+    EventOutputQueue::push(p);
   }
 
   void
   RemapUtil::fireRelativePointer(const Params_RelativePointerEventCallback& params)
   {
     FireModifiers::fire();
-    params.apply();
+    EventOutputQueue::push(params);
   }
 
   void
   RemapUtil::fireScrollWheel(const Params_ScrollWheelEventCallback& params)
   {
     FireModifiers::fire();
-    params.apply();
+    EventOutputQueue::push(params);
   }
 
   // ----------------------------------------------------------------------

@@ -330,6 +330,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
+  // ----------------------------------------------------------------------
   void
   EventOutputQueue::push(Item& p)
   {
@@ -362,12 +363,64 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     newp->type = Item::KEYBOARD;
     // newp->params will be deleted at ~Item().
-    newp->params.params_KeyboardEventCallBack = Params_KeyboardEventCallBack::alloc(p.eventType, p.flags, p.key,
-                                                                                    p.charCode, p.charSet, p.origCharCode, p.origCharSet,
-                                                                                    p.keyboardType, p.repeat);
+    newp->params.params_KeyboardEventCallBack = Params_KeyboardEventCallBack::alloc(p);
+
     push(*newp);
   }
 
+  void
+  EventOutputQueue::push(const Params_UpdateEventFlagsCallback& p)
+  {
+    Item* newp = new Item;
+    if (! newp) return;
+
+    newp->type = Item::UPDATE_FLAGS;
+    // newp->params will be deleted at ~Item().
+    newp->params.params_UpdateEventFlagsCallback = Params_UpdateEventFlagsCallback::alloc(p);
+
+    push(*newp);
+  }
+
+  void
+  EventOutputQueue::push(const Params_KeyboardSpecialEventCallback& p)
+  {
+    Item* newp = new Item;
+    if (! newp) return;
+
+    newp->type = Item::KEYBOARD_SPECIAL;
+    // newp->params will be deleted at ~Item().
+    newp->params.params_KeyboardSpecialEventCallback = Params_KeyboardSpecialEventCallback::alloc(p);
+
+    push(*newp);
+  }
+
+  void
+  EventOutputQueue::push(const Params_RelativePointerEventCallback& p)
+  {
+    Item* newp = new Item;
+    if (! newp) return;
+
+    newp->type = Item::RELATIVE_POINTER;
+    // newp->params will be deleted at ~Item().
+    newp->params.params_RelativePointerEventCallback = Params_RelativePointerEventCallback::alloc(p);
+
+    push(*newp);
+  }
+
+  void
+  EventOutputQueue::push(const Params_ScrollWheelEventCallback& p)
+  {
+    Item* newp = new Item;
+    if (! newp) return;
+
+    newp->type = Item::SCROLL_POINTER;
+    // newp->params will be deleted at ~Item().
+    newp->params.params_ScrollWheelEventCallback = Params_ScrollWheelEventCallback::alloc(p);
+
+    push(*newp);
+  }
+
+  // ----------------------------------------------------------------------
   void
   EventOutputQueue::fire(OSObject* owner, IOTimerEventSource* sender)
   {
@@ -383,10 +436,30 @@ namespace org_pqrs_KeyRemap4MacBook {
     Item* p = static_cast<Item*>(queue_->front());
     if (! p) return;
 
+    // ----------------------------------------
     queue_->pop();
-    ((p->params).params_KeyboardEventCallBack)->apply();
+
+    switch (p->type) {
+      case Item::KEYBOARD:
+        ((p->params).params_KeyboardEventCallBack)->apply();
+        break;
+      case Item::UPDATE_FLAGS:
+        ((p->params).params_UpdateEventFlagsCallback)->apply();
+        break;
+      case Item::KEYBOARD_SPECIAL:
+        ((p->params).params_KeyboardSpecialEventCallback)->apply();
+        break;
+      case Item::RELATIVE_POINTER:
+        ((p->params).params_RelativePointerEventCallback)->apply();
+        break;
+      case Item::SCROLL_POINTER:
+        ((p->params).params_ScrollWheelEventCallback)->apply();
+        break;
+    }
+
     delete p;
 
+    // ----------------------------------------
     if (! queue_->empty()) {
       timer_.setTimeoutMS(DELAY);
       isTimerActive_ = true;

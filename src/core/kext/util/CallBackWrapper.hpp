@@ -27,6 +27,11 @@ namespace org_pqrs_KeyRemap4MacBook {
                                               CharCode(0), CharSet(0), OrigCharCode(0), OrigCharSet(0),
                                               kt, r);
     }
+    static Params_KeyboardEventCallBack* alloc(const Params_KeyboardEventCallBack& p) {
+      return new Params_KeyboardEventCallBack(p.eventType, p.flags, p.key,
+                                              p.charCode, p.charSet, p.origCharCode, p.origCharSet,
+                                              p.keyboardType, p.repeat);
+    }
 
     //~Params_KeyboardEventCallBack(void) { printf("Params_KeyboardEventCallBack released\n"); }
 
@@ -64,14 +69,18 @@ namespace org_pqrs_KeyRemap4MacBook {
     static Params_UpdateEventFlagsCallback* alloc(Flags fl) {
       return new Params_UpdateEventFlagsCallback(fl);
     }
+    static Params_UpdateEventFlagsCallback* alloc(const Params_UpdateEventFlagsCallback& p) {
+      return new Params_UpdateEventFlagsCallback(p.flags);
+    }
 
     // ----------------------------------------
     void log(const char* message = "caught") const;
-    void apply(void) const;
     Flags flags;
 
   private:
     Params_UpdateEventFlagsCallback(Flags fl) : flags(fl) {}
+
+    void apply(void) const;
   };
 
   class Params_KeyboardSpecialEventCallback {
@@ -92,11 +101,19 @@ namespace org_pqrs_KeyRemap4MacBook {
       return new Params_KeyboardSpecialEventCallback(et, fl, ckc, ckc.get(), static_cast<UInt64>(-1), r);
     }
 
+    static Params_KeyboardSpecialEventCallback* alloc(const Params_KeyboardSpecialEventCallback& p) {
+      return new Params_KeyboardSpecialEventCallback(p.eventType,
+                                                     p.flags,
+                                                     p.key,
+                                                     p.flavor,
+                                                     p.guid,
+                                                     p.repeat);
+    }
+
     //~Params_KeyboardSpecialEventCallback(void) { printf("Params_KeyboardSpecialEventCallback released\n"); }
 
     // ----------------------------------------
     void log(const char* message = "caught") const;
-    void apply(void) const;
 
     EventType eventType;
     Flags flags;
@@ -112,6 +129,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       eventType(et), flags(fl), key(ckc),
       flavor(fv), guid(g),
       repeat(r) {}
+
+    void apply(void) const;
   };
 
   class Params_RelativePointerEventCallback {
@@ -125,10 +144,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       return new Params_RelativePointerEventCallback(bt, x, y);
     }
 
+    static Params_RelativePointerEventCallback* alloc(const Params_RelativePointerEventCallback& p) {
+      return new Params_RelativePointerEventCallback(p.buttons, p.dx, p.dy);
+    }
+
     //~Params_RelativePointerEventCallback(void) { printf("Params_RelativePointerEventCallback released\n"); }
 
     void log(const char* message = "caught") const;
-    void apply(void) const;
 
     Buttons buttons;
     int dx;
@@ -136,6 +158,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   private:
     Params_RelativePointerEventCallback(Buttons bt, int x, int y) : buttons(bt), dx(x), dy(y) {}
+
+    void apply(void) const;
   };
   class Params_ScrollWheelEventCallback {
     friend class EventOutputQueue;
@@ -154,10 +178,22 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                  op);
     }
 
+    static Params_ScrollWheelEventCallback* alloc(const Params_ScrollWheelEventCallback& p) {
+      return new Params_ScrollWheelEventCallback(p.deltaAxis1,
+                                                 p.deltaAxis2,
+                                                 p.deltaAxis3,
+                                                 p.fixedDelta1,
+                                                 p.fixedDelta2,
+                                                 p.fixedDelta3,
+                                                 p.pointDelta1,
+                                                 p.pointDelta2,
+                                                 p.pointDelta3,
+                                                 p.options);
+    }
+
     //~Params_ScrollWheelEventCallback(void) { printf("Params_ScrollWheelEventCallback released\n"); }
 
     void log(const char* message = "caught") const;
-    void apply(void) const;
 
     short deltaAxis1;
     short deltaAxis2;
@@ -179,6 +215,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       fixedDelta1(fd1), fixedDelta2(fd2), fixedDelta3(fd3),
       pointDelta1(pd1), pointDelta2(pd2), pointDelta3(pd3),
       options(op) {}
+
+    void apply(void) const;
   };
 
   // ======================================================================
