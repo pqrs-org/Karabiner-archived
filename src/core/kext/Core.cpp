@@ -93,7 +93,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         KeyboardRepeat::initialize(*workLoop);
         KeyEventInputQueue::initialize(*workLoop);
         VirtualKey::initialize(*workLoop);
-        Params_KeyboardEventCallBack::Queue::initialize(*workLoop);
+        CallBackWrapperQueue::initialize(*workLoop);
       }
     }
 
@@ -107,7 +107,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       KeyboardRepeat::terminate();
       KeyEventInputQueue::terminate();
       VirtualKey::terminate();
-      Params_KeyboardEventCallBack::Queue::terminate();
+      CallBackWrapperQueue::terminate();
 
       if (workLoop) {
         workLoop->release();
