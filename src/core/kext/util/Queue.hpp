@@ -28,14 +28,22 @@ namespace org_pqrs_KeyRemap4MacBook {
     Item* back(void) { return back_; }
     bool empty(void) { return front_ == NULL; }
 
+    // ----------------------------------------
+    // *** Don't push same item twice. ***
+    // *** BAD EXAMPLE ***
+    // Queue::Item item;
+    // queue.push(&item);
+    // queue.push(&item); // broken!!!
+    //
+    // ----------------------------------------
     // You need to delete item by yourself.
     //
     // Example:
     //
-    //   queue->push(new Queue::Item);
+    //   queue.push(new Queue::Item);
     //
-    //   Queue::Item* p = queue->fron();
-    //   queue->pop();
+    //   Queue::Item* p = queue.front();
+    //   queue.pop();
     //   delete p;
     //
     void push(Item* item);
