@@ -46,7 +46,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       int sticky_count_;
     };
-    enum { MAXNUM = 16 };
+    enum { MAXNUM = 32 };
 
     static bool initialize(void);
     static void set(void);
