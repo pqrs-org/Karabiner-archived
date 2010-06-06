@@ -260,7 +260,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void fire_nolock(void);
     static void push(Item& p);
 
-    static Queue *queue_;
+    static Queue* queue_;
     static IntervalChecker ic_;
     static TimerWrapper timer_;
     static bool isTimerActive_;
