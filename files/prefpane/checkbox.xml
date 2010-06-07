@@ -4039,6 +4039,26 @@
                   <sysctl>remap.CurlyLBracket_to_UpArrow</sysctl>
                   <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_SHIFT, KeyCode::CURSOR_UP</autogen>
                 </item>
+                <item>
+                  <name>Change } to DownArrow</name>
+                  <only>FINDER</only>
+                  <sysctl>remap.CurlyRBracket_to_DArrow</sysctl>
+                  <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, VK_SHIFT, KeyCode::CURSOR_DOWN</autogen>
+                </item>
+                <item>
+                  <name>Use [ as Collapse</name>
+                  <appendix>(Change [ to LeftArrow)</appendix>
+                  <only>FINDER</only>
+                  <sysctl>remap.LBracket_to_LArrow</sysctl>
+                  <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, KeyCode::CURSOR_LEFT</autogen>
+                </item>
+                <item>
+                  <name>Use ] as Expand</name>
+                  <appendix>(Change ] to RightArrow)</appendix>
+                  <only>FINDER</only>
+                  <sysctl>remap.RBracket_to_RArrow</sysctl>
+                  <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, KeyCode::CURSOR_RIGHT</autogen>
+                </item>
               </list>
             </item>
           </list>
