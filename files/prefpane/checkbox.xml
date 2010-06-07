@@ -3951,7 +3951,7 @@
                   <name>Change Keypad 1 to Shift+F11</name>
                   <sysctl>remap.KPEqual_to_Shift_F11</sysctl>
                   <only>VIRTUALMACHINE</only>
-                  <autogen>--KeyToKey-- KeyCode::KEYPAD_1, VK_SHIFT, KeyCode::F11</autogen>
+                  <autogen>--KeyToKey-- KeyCode::KEYPAD_1, KeyCode::F11, ModifierFlag::SHIFT_L</autogen>
                 </item>
                 <item>
                   <name>Change Keypad 2 to F10</name>
@@ -3969,7 +3969,7 @@
                   <name>Change Keypad Dot to Shift+F5</name>
                   <sysctl>remap.KPDot_to_Shift_F5</sysctl>
                   <only>VIRTUALMACHINE</only>
-                  <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::F5, VK_SHIFT</autogen>
+                  <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::F5, ModifierFlag::SHIFT_L</autogen>
                 </item>
               </list>
             </item>
