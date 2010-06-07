@@ -3979,34 +3979,47 @@
           <name>Enable at only Finder</name>
           <list>
             <item>
-              <name>Change Command+R to Return (== Rename)</name>
-              <sysctl>remap.app_finder_command_R_to_return</sysctl>
-              <only>FINDER</only>
-              <autogen>--KeyToKey-- KeyCode::R, VK_COMMAND, KeyCode::RETURN</autogen>
-            </item>
-            <item>
-              <name>Change F2 to Return (== Rename)</name>
-              <sysctl>remap.app_finder_f2_to_return</sysctl>
-              <only>FINDER</only>
-              <autogen>--KeyToKey-- KeyCode::F2, KeyCode::RETURN</autogen>
-            </item>
-            <item>
-              <name>Change Forward Delete to Command_L+Delete (== Delete Files)</name>
-              <sysctl>remap.app_finder_forwarddelete2commandLdelete</sysctl>
-              <only>FINDER</only>
-              <autogen>--KeyToKey-- FROMKEYCODE_FORWARD_DELETE, KeyCode::DELETE, ModifierFlag::COMMAND_L</autogen>
-            </item>
-            <item>
-              <name>Change Return to Command+O (== Open)</name>
-              <sysctl>remap.app_finder_return2commandO</sysctl>
-              <only>FINDER</only>
-              <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::O, ModifierFlag::COMMAND_L</autogen>
-            </item>
-            <item>
-              <name>Change Enter to Command+O (== Open)</name>
-              <sysctl>remap.app_finder_enter2commandO</sysctl>
-              <only>FINDER</only>
-              <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::O, ModifierFlag::COMMAND_L</autogen>
+              <name>Windows Explorer Navigation for Finder</name>
+              <list>
+                <item>
+                  <name>Change Command+R to Return (== Rename)</name>
+                  <sysctl>remap.app_finder_command_R_to_return</sysctl>
+                  <only>FINDER</only>
+                  <autogen>--KeyToKey-- KeyCode::R, VK_COMMAND, KeyCode::RETURN</autogen>
+                </item>
+                <item>
+                  <name>Change F2 to Return (== Rename)</name>
+                  <sysctl>remap.app_finder_f2_to_return</sysctl>
+                  <only>FINDER</only>
+                  <autogen>--KeyToKey-- KeyCode::F2, KeyCode::RETURN</autogen>
+                </item>
+                <item>
+                  <name>Change Forward Delete to Command_L+Delete (== Delete Files)</name>
+                  <sysctl>remap.app_finder_forwarddelete2commandLdelete</sysctl>
+                  <only>FINDER</only>
+                  <autogen>--KeyToKey-- FROMKEYCODE_FORWARD_DELETE, KeyCode::DELETE, ModifierFlag::COMMAND_L</autogen>
+                </item>
+                <item>
+                  <name>Change Return to Command+O (== Open)</name>
+                  <appendix>(+ FN+Return to Return (== Rename))</appendix>
+                  <sysctl>remap.app_finder_return2commandO</sysctl>
+                  <only>FINDER</only>
+                  <autogen>--KeyToKey-- KeyCode::RETURN, ModifierFlag::FN, KeyCode::RETURN</autogen>
+                  <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::O, ModifierFlag::COMMAND_L</autogen>
+                </item>
+                <item>
+                  <name>Change Enter to Command+O (== Open)</name>
+                  <sysctl>remap.app_finder_enter2commandO</sysctl>
+                  <only>FINDER</only>
+                  <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::O, ModifierFlag::COMMAND_L</autogen>
+                </item>
+                <item>
+                  <name>Change Quote to UP (' to Command+Up)</name>
+                  <only>FINDER</only>
+                  <sysctl>remap.Quote_to_Ctrl_UpArrow</sysctl>
+                  <autogen>--KeyToKey-- KeyCode::QUOTE, KeyCode::CURSOR_UP, ModifierFlag::COMMAND_L</autogen>
+                </item>
+              </list>
             </item>
           </list>
         </item>
