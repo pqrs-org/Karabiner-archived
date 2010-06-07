@@ -4014,10 +4014,16 @@
                   <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::O, ModifierFlag::COMMAND_L</autogen>
                 </item>
                 <item>
-                  <name>Change Quote to UP (' to Command+Up)</name>
+                  <name>Change Quote(') to Command+Up (== Upper Directory)</name>
                   <only>FINDER</only>
                   <sysctl>remap.Quote_to_Ctrl_UpArrow</sysctl>
                   <autogen>--KeyToKey-- KeyCode::QUOTE, KeyCode::CURSOR_UP, ModifierFlag::COMMAND_L</autogen>
+                </item>
+                <item>
+                  <name>Change Semicolon(;) to Command+[ (== Back)</name>
+                  <only>FINDER</only>
+                  <sysctl>remap.Semicolon_to_Ctrl_LeftBrckt</sysctl>
+                  <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L</autogen>
                 </item>
               </list>
             </item>
