@@ -3815,6 +3815,12 @@
               <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CONTROL_R</autogen>
             </item>
             <item>
+              <name>Change Ctrl+Q to Alt+F4</name>
+              <only>VIRTUALMACHINE</only>
+              <sysctl>remap.Ctrl_Q_to_Alt_F4</sysctl>
+              <autogen>--KeyToKey-- KeyCode::Q, VK_CONTROL, KeyCode::F4, ModifierFlag::OPTION_L</autogen>
+            </item>
+            <item>
               <name>Change Command+Space to Option+Backquote(`)</name>
               <sysctl>remap.app_vm_commandspace2optionbackquote</sysctl>
               <only>VIRTUALMACHINE</only>
