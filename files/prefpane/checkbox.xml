@@ -3938,6 +3938,41 @@
                 </item>
               </list>
             </item>
+            <item>
+              <name>Use KeyPad as MS Project Build Keys</name>
+              <list>
+                <item>
+                  <name>Change Keypad 0 to F11</name>
+                  <sysctl>remap.KP0_to_F11</sysctl>
+                  <only>VIRTUALMACHINE</only>
+                  <autogen>--KeyToKey-- KeyCode::KEYPAD_0, KeyCode::F11</autogen>
+                </item>
+                <item>
+                  <name>Change Keypad 1 to Shift+F11</name>
+                  <sysctl>remap.KPEqual_to_Shift_F11</sysctl>
+                  <only>VIRTUALMACHINE</only>
+                  <autogen>--KeyToKey-- KeyCode::KEYPAD_1, VK_SHIFT, KeyCode::F11</autogen>
+                </item>
+                <item>
+                  <name>Change Keypad 2 to F10</name>
+                  <sysctl>remap.KP2_to_F10</sysctl>
+                  <only>VIRTUALMACHINE</only>
+                  <autogen>--KeyToKey-- KeyCode::KEYPAD_2, KeyCode::F10</autogen>
+                </item>
+                <item>
+                  <name>Change Keypad Enter to F5</name>
+                  <sysctl>remap.KPEqual_to_F5</sysctl>
+                  <only>VIRTUALMACHINE</only>
+                  <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::F5</autogen>
+                </item>
+                <item>
+                  <name>Change Keypad Dot to Shift+F5</name>
+                  <sysctl>remap.KPDot_to_Shift_F5</sysctl>
+                  <only>VIRTUALMACHINE</only>
+                  <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::F5, VK_SHIFT</autogen>
+                </item>
+              </list>
+            </item>
           </list>
         </item>
         <item>
