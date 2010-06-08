@@ -43,7 +43,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       // clear temporary_count_
-      FlagStatus::set();
+      if (! config.general_lazy_modifiers_with_mouse_event) {
+        FlagStatus::set();
+      }
 
       // ------------------------------------------------------------
       Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, dx, dy));
@@ -86,7 +88,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       // clear temporary_count_
-      FlagStatus::set();
+      if (! config.general_lazy_modifiers_with_mouse_event) {
+        FlagStatus::set();
+      }
 
       // ------------------------------------------------------------
       Params_ScrollWheelEventCallback::auto_ptr ptr(Params_ScrollWheelEventCallback::alloc(deltaAxis1, deltaAxis2, deltaAxis3,
