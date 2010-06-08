@@ -30,6 +30,15 @@
           <sysctl>general.hide_statusmessage</sysctl>
         </item>
         <item>
+          <name>Don't restore modifiers in the mouse event</name>
+          <appendix></appendix>
+          <appendix>For example, when you use Option+Tab to Command+Tab,</appendix>
+          <appendix>we send "Command+Click" when you did a mouse click while</appendix>
+          <appendix>pushing the Option key after you pushed Option+Tab.</appendix>
+          <appendix>"Option+Click" should be output, but this option changes this behavior.</appendix>
+          <sysctl>general.lazy_modifiers_with_mouse_event</sysctl>
+        </item>
+        <item>
           <name>Disable NumPad Hack</name>
           <appendix>(Don't change FN+JKL.. to NumPad, and other FN+key combinations)</appendix>
           <sysctl>general.disable_numpad_hack</sysctl>
@@ -2627,7 +2636,7 @@
         </item>
         <item>
           <name>Control+Tab to Command+Tab</name>
-          <appendix>*** We recommend using "Shift_L to Lazy_Shift_L" together. ***</appendix>
+          <!-- #include "include/lazy_recommendation.xml" -->
           <sysctl>remap.controlTab2commandTab</sysctl>
           <autogen>--KeyToKey-- KeyCode::TAB, VK_CONTROL, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
         </item>
@@ -2638,7 +2647,7 @@
         </item>
         <item>
           <name>Option+Tab to Command+Tab</name>
-          <appendix>*** We recommend using "Shift_L to Lazy_Shift_L" together. ***</appendix>
+          <!-- #include "include/lazy_recommendation.xml" -->
           <sysctl>remap.optionTab2commandTab</sysctl>
           <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
         </item>
