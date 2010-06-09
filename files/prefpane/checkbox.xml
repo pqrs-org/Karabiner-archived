@@ -805,6 +805,11 @@
       <name>Change Control_R Key (Right Control)</name>
       <list>
         <item>
+          <name>Control_R to Command_R</name>
+          <sysctl>remap.controlR2commandR</sysctl>
+          <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::COMMAND_R</autogen>
+        </item>
+        <item>
           <name>Control_R to Command_R (only in virtual machine, RDC)</name>
           <sysctl>remap.controlR2commandR_vm</sysctl>
           <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
