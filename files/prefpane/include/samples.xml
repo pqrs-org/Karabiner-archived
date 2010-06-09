@@ -510,6 +510,7 @@
       <appendix>Use E to Sticky ModifierFlag::EXTRA3</appendix>
       <appendix>Use R to Sticky ModifierFlag::EXTRA4</appendix>
       <appendix>Use T to Sticky ModifierFlag::EXTRA5</appendix>
+      <appendix>Use L to Shift_L (+ Sticky Shift_L)</appendix>
       <appendix></appendix>
       <appendix>EXTRA1+A to 1</appendix>
       <appendix>EXTRA2+A to 2</appendix>
@@ -531,6 +532,7 @@
       <autogen>--KeyToKey-- KeyCode::E, KeyCode::VK_STICKY_EXTRA3</autogen>
       <autogen>--KeyToKey-- KeyCode::R, KeyCode::VK_STICKY_EXTRA4</autogen>
       <autogen>--KeyToKey-- KeyCode::T, KeyCode::VK_STICKY_EXTRA5</autogen>
+      <autogen>--KeyOverlaidModifier-- KeyCode::L, KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L</autogen>
       <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA1, KeyCode::KEY_1</autogen>
       <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA2, KeyCode::KEY_2</autogen>
       <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA3, KeyCode::KEY_3</autogen>
