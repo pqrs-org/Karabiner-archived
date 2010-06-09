@@ -4575,16 +4575,31 @@
           <appendix>(behave like Control_L+A/E)</appendix>
           <sysctl>remap.pclikehomeend_emacs</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToKey-- FROMKEYCODE_HOME, KeyCode::A, ModifierFlag::CONTROL_L</autogen>
-          <autogen>--KeyToKey-- FROMKEYCODE_END, KeyCode::E, ModifierFlag::CONTROL_L</autogen>
+          <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_COMMAND, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- FROMKEYCODE_END,  VK_COMMAND, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- FROMKEYCODE_END,  VK_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- FROMKEYCODE_HOME,             KeyCode::A, ModifierFlag::CONTROL_L</autogen>
+          <autogen>--KeyToKey-- FROMKEYCODE_END,              KeyCode::E, ModifierFlag::CONTROL_L</autogen>
         </item>
         <item>
           <name>Use PC Style Home/End</name>
           <appendix>(behave like Command+Left/Right)</appendix>
           <sysctl>remap.pclikehomeend</sysctl>
-          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToKey-- FROMKEYCODE_HOME, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- FROMKEYCODE_END, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+          <block>
+            <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+            <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_COMMAND, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
+            <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
+            <autogen>--KeyToKey-- FROMKEYCODE_END,  VK_COMMAND, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
+            <autogen>--KeyToKey-- FROMKEYCODE_END,  VK_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
+            <autogen>--KeyToKey-- FROMKEYCODE_HOME,             KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L</autogen>
+            <autogen>--KeyToKey-- FROMKEYCODE_END,              KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+          </block>
+          <block>
+            <only>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</only>
+            <autogen>--KeyToKey-- FROMKEYCODE_HOME, KeyCode::A, ModifierFlag::CONTROL_L</autogen>
+            <autogen>--KeyToKey-- FROMKEYCODE_END,  KeyCode::E, ModifierFlag::CONTROL_L</autogen>
+          </block>
         </item>
         <item>
           <name>Use PC Style PageUp/PageDown</name>
