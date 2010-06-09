@@ -2283,6 +2283,11 @@
           <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::RETURN</autogen>
         </item>
         <item>
+          <name>Semicolon to Sticky Shift_L</name>
+          <sysctl>remap.semicolon2stickyshiftL</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SEMICOLON, KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L</autogen>
+        </item>
+        <item>
           <name>Swap Semicolon and Colon</name>
           <sysctl>remap.swapcolons</sysctl>
           <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_SHIFT, KeyCode::SEMICOLON</autogen>
