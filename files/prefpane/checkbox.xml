@@ -345,6 +345,12 @@
           <sysctl>remap.backquote2f8</sysctl>
           <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::F8</autogen>
         </item>
+        <item>
+          <name>Swap Command+Backquote(`) and Option+Backquote(`)</name>
+          <sysctl>remap.swap_commandbackquote_optionbackquote</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, ModifierFlag::OPTION_L,  KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L</autogen>
+        </item>
       </list>
     </item>
 
