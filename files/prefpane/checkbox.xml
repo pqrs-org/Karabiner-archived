@@ -1874,7 +1874,7 @@
               <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::F5</autogen>
             </item>
             <item>
-              <name>Change Keypad Del(Dot) Key to Shift+F5 (Stop)</name>
+              <name>Change Keypad Dot(Del) Key to Shift+F5 (Stop)</name>
               <sysctl>remap.KPDot_to_Shift_F5</sysctl>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::F5, ModifierFlag::SHIFT_L</autogen>
             </item>
