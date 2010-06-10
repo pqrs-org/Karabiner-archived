@@ -4016,7 +4016,7 @@
                   <autogen>--KeyToKey-- KeyCode::R, VK_COMMAND, KeyCode::RETURN</autogen>
                 </item>
                 <item>
-                  <name>Use F2 as Rename</name>
+                  <name>Use F2 to Rename (Use Tab to complete Rename)</name>
                   <appendix>(Change F2 to Return)</appendix>
                   <sysctl>remap.app_finder_f2_to_return</sysctl>
                   <only>FINDER</only>
@@ -4028,6 +4028,13 @@
                   <sysctl>remap.app_finder_forwarddelete2commandLdelete</sysctl>
                   <only>FINDER</only>
                   <autogen>--KeyToKey-- FROMKEYCODE_FORWARD_DELETE, KeyCode::DELETE, ModifierFlag::COMMAND_L</autogen>
+                </item>
+                <item>
+                  <name>Return Key Opens a file</name>
+                  <appendix>(use F2 to rename but caution not to use Return when done typing name or file opens)</appendix>
+                  <only>FINDER</only>
+                  <sysctl>remap.KPReturn_to_Ctrl_O</sysctl>
+                  <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::O, ModifierFlag::COMMAND_L</autogen>
                 </item>
                 <item>
                   <name>Use Return as Open</name>
@@ -4047,41 +4054,37 @@
                   <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::O, ModifierFlag::COMMAND_L</autogen>
                 </item>
                 <item>
-                  <name>Use Quote(') as Upper Directory</name>
-                  <appendix>(Change Quote(') to Command+Up)</appendix>
+                  <name>Use Quote (') to go UP a directory (' to Ctrl+Up)</name>
                   <only>FINDER</only>
                   <sysctl>remap.Quote_to_Ctrl_UpArrow</sysctl>
                   <autogen>--KeyToKey-- KeyCode::QUOTE, KeyCode::CURSOR_UP, ModifierFlag::COMMAND_L</autogen>
                 </item>
                 <item>
-                  <name>Use Semicolon(;) as Back</name>
-                  <appendix>(Change Semicolon(;) to Command+[</appendix>
+                  <name>Use Semicolon to go Back in history (; to Ctrl+[)</name>
                   <only>FINDER</only>
                   <sysctl>remap.Semicolon_to_Ctrl_LeftBrckt</sysctl>
                   <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L</autogen>
                 </item>
                 <item>
-                  <name>Change { to UpArrow</name>
+                  <name>Use { to select next file (i.e. up arrow key) ({ to Up-Arrow)</name>
                   <only>FINDER</only>
                   <sysctl>remap.CurlyLBracket_to_UpArrow</sysctl>
                   <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_SHIFT, KeyCode::CURSOR_UP</autogen>
                 </item>
                 <item>
-                  <name>Change } to DownArrow</name>
+                  <name>Use } to select previous file (i.e. down arrow key) (} to Down-Arrow)</name>
                   <only>FINDER</only>
                   <sysctl>remap.CurlyRBracket_to_DArrow</sysctl>
                   <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, VK_SHIFT, KeyCode::CURSOR_DOWN</autogen>
                 </item>
                 <item>
-                  <name>Use [ as Collapse</name>
-                  <appendix>(Change [ to LeftArrow)</appendix>
+                  <name>Use [ to collapse folder (i.e. left key) ([ to Left-Arrow)</name>
                   <only>FINDER</only>
                   <sysctl>remap.LBracket_to_LArrow</sysctl>
                   <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, KeyCode::CURSOR_LEFT</autogen>
                 </item>
                 <item>
-                  <name>Use ] as Expand</name>
-                  <appendix>(Change ] to RightArrow)</appendix>
+                  <name>Use ] to expand folder (i.e. left key) (] to Left-Arrow)</name>
                   <only>FINDER</only>
                   <sysctl>remap.RBracket_to_RArrow</sysctl>
                   <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, KeyCode::CURSOR_RIGHT</autogen>
