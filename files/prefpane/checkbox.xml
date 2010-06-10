@@ -1864,6 +1864,37 @@
           <!-- Drop unnecessary Clear -->
           <autogen>--KeyToKey-- KeyCode::PC_KEYPAD_NUMLOCK, KeyCode::VK_NONE</autogen>
         </item>
+        <item>
+          <name>Use KeyPad as MS Project Build Keys</name>
+          <appendix>Maps some of the keypad keys to standard debugger step thru cmds for Visual Studio</appendix>
+          <list>
+            <item>
+              <name>Change Keypad Enter Key to F5 (Run)</name>
+              <sysctl>remap.KPEnter_to_F5</sysctl>
+              <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::F5</autogen>
+            </item>
+            <item>
+              <name>Change Keypad Del(Dot) Key to Shift+F5 (Stop)</name>
+              <sysctl>remap.KPDot_to_Shift_F5</sysctl>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::F5, ModifierFlag::SHIFT_L</autogen>
+            </item>
+            <item>
+              <name>Change Keypad 0 to F11 (Step in)</name>
+              <sysctl>remap.KP0_to_F11</sysctl>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_0, KeyCode::F11</autogen>
+            </item>
+            <item>
+              <name>Change Keypad 1 to Shift+F11/Step out (this is intentionally the key above F11)</name>
+              <sysctl>remap.KP1_to_Shift_F11</sysctl>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_1, KeyCode::F11, ModifierFlag::SHIFT_L</autogen>
+            </item>
+            <item>
+              <name>Change Keypad 2 to F10 (Step over)</name>
+              <sysctl>remap.KP2_to_F10</sysctl>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_2, KeyCode::F10</autogen>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
 
@@ -3966,37 +3997,6 @@
                   <sysctl>remap.app_vm_commandRZ</sysctl>
                   <only>VIRTUALMACHINE</only>
                   <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::COMMAND_R, KeyCode::Z, ModifierFlag::CONTROL_L</autogen>
-                </item>
-              </list>
-            </item>
-            <item>
-              <name>Use KeyPad as MS Project Build Keys</name>
-              <appendix>Maps some of the keypad keys to standard debugger step thru cmds for Visual Studio</appendix>
-              <list>
-                <item>
-                  <name>Change Keypad Enter Key to F5 (Run)</name>
-                  <sysctl>remap.KPEnter_to_F5</sysctl>
-                  <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::F5</autogen>
-                </item>
-                <item>
-                  <name>Change Keypad Del(Dot) Key to Shift+F5 (Stop)</name>
-                  <sysctl>remap.KPDot_to_Shift_F5</sysctl>
-                  <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::F5, ModifierFlag::SHIFT_L</autogen>
-                </item>
-                <item>
-                  <name>Change Keypad 0 to F11 (Step in)</name>
-                  <sysctl>remap.KP0_to_F11</sysctl>
-                  <autogen>--KeyToKey-- KeyCode::KEYPAD_0, KeyCode::F11</autogen>
-                </item>
-                <item>
-                  <name>Change Keypad 1 to Shift+F11/Step out (this is intentionally the key above F11)</name>
-                  <sysctl>remap.KP1_to_Shift_F11</sysctl>
-                  <autogen>--KeyToKey-- KeyCode::KEYPAD_1, KeyCode::F11, ModifierFlag::SHIFT_L</autogen>
-                </item>
-                <item>
-                  <name>Change Keypad 2 to F10 (Step over)</name>
-                  <sysctl>remap.KP2_to_F10</sysctl>
-                  <autogen>--KeyToKey-- KeyCode::KEYPAD_2, KeyCode::F10</autogen>
                 </item>
               </list>
             </item>
