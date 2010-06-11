@@ -284,6 +284,17 @@
       <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, ModifierFlag::FN, PointingButton::LEFT, ModifierFlag::OPTION_L</autogen>
     </item>
 
+    <item>
+      <name>PointingButtonToKey</name>
+      <appendix>MiddleClick to Return</appendix>
+      <appendix>Option_L+RightClick to Shift_L</appendix>
+      <appendix>Command_L+RightClick to A, Shift_L+B, Control_L+C</appendix>
+      <sysctl>remap.samples_pointingbuttontokey</sysctl>
+      <autogen>--PointingButtonToKey-- PointingButton::MIDDLE, KeyCode::RETURN</autogen>
+      <autogen>--PointingButtonToKey-- PointingButton::RIGHT, ModifierFlag::OPTION_L, KeyCode::SHIFT_L</autogen>
+      <autogen>--PointingButtonToKey-- PointingButton::RIGHT, ModifierFlag::COMMAND_L, KeyCode::A, KeyCode::B, ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
+    </item>
+
     <!-- application only -->
     <item>
       <name>application</name>

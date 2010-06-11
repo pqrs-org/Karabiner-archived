@@ -281,6 +281,11 @@ def parseautogen(name, lines, autogen_index)
           code_pointing << "if (pointingbuttontopointingbutton#{autogen_index}_.remap(remapParams, #{params})) break;"
           $func[:pointing] << name
 
+        when 'PointingButtonToKey'
+          code_variable << ['RemapUtil::PointingButtonToKey', "pointingbuttontokey#{autogen_index}_"]
+          code_pointing << "if (pointingbuttontokey#{autogen_index}_.remap(remapParams, #{params})) break;"
+          $func[:pointing] << name
+
         else
           print "%%% ERROR #{type} %%%\n#{l}\n"
           exit 1
