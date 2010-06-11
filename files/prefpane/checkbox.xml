@@ -71,12 +71,12 @@
         <item>
           <name>Change FN+Escape to toggle "Pass Through Mode"</name>
           <sysctl>passthrough.fnescape</sysctl>
-          <autogen>--KeyToKey-- KeyCode::ESCAPE, ModifierFlag::FN, KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough</autogen>
+          <autogen>--KeyToKey-- KeyCode::ESCAPE, ModifierFlag::FN, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough</autogen>
         </item>
         <item>
           <name>Simultaneous Key Presses [Escape+Tab] to toggle "Pass Through Mode"</name>
           <sysctl>passthrough.escapetab</sysctl>
-          <autogen>--SimultaneousKeyPresses-- KeyCode::ESCAPE, KeyCode::TAB, KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::ESCAPE, KeyCode::TAB, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough</autogen>
         </item>
       </list>
     </item>
