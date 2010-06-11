@@ -174,14 +174,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ----------------------------------------
     Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(eventType,
                                                                                    FlagStatus::makeFlags(),
-                                                                                   KeyCode::VK_CONSUMERKEY,
+                                                                                   KeyCode::VK_PSEUDO_KEY,
                                                                                    CommonData::getcurrent_keyboardType(),
                                                                                    remapParams.params.repeat));
     if (! ptr) return false;
     Params_KeyboardEventCallBack& params = *ptr;
 
     RemapParams rp(params);
-    if (! keytokey_.remap(rp, KeyCode::VK_CONSUMERKEY, toKeyCode, toFlags)) {
+    if (! keytokey_.remap(rp, KeyCode::VK_PSEUDO_KEY, toKeyCode, toFlags)) {
       return false;
     }
 
@@ -376,6 +376,62 @@ namespace org_pqrs_KeyRemap4MacBook {
       FireModifiers::fire();
     }
 
+    return true;
+  }
+
+  bool
+  RemapUtil::PointingButtonToKey::remap(RemapPointingParams_relative& remapParams,
+                                        PointingButton fromButton, Flags fromFlags,
+                                        KeyCode toKeyCode1,  Flags toFlags1,
+                                        KeyCode toKeyCode2,  Flags toFlags2,
+                                        KeyCode toKeyCode3,  Flags toFlags3,
+                                        KeyCode toKeyCode4,  Flags toFlags4,
+                                        KeyCode toKeyCode5,  Flags toFlags5)
+  {
+    bool isButtonDown = remapParams.params.buttons.isOn(fromButton);
+    bool isFromFlagsOn = FlagStatus::makeFlags().isOn(fromFlags);
+
+    if (isButtonDown) {
+      if (isFromFlagsOn) {
+        bool result = buttontobutton_.remap(remapParams, fromButton, PointingButton::VK_KEY);
+        if (! result) return false;
+
+        active_ = true;
+      }
+    } else {
+      if (active_) {
+        bool result = buttontobutton_.remap(remapParams, fromButton, PointingButton::VK_KEY);
+        if (! result) return false;
+      }
+      active_ = false;
+    }
+
+    // ----------------------------------------
+    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(isButtonDown ? EventType::DOWN : EventType::UP,
+                                                                                   FlagStatus::makeFlags(),
+                                                                                   KeyCode::VK_PSEUDO_KEY,
+                                                                                   CommonData::getcurrent_keyboardType(),
+                                                                                   false));
+    if (! ptr) return false;
+    Params_KeyboardEventCallBack& params = *ptr;
+
+    RemapParams rp(params);
+    if (toKeyCode2 == KeyCode::VK_NONE) {
+      if (! keytokey_.remap(rp, KeyCode::VK_PSEUDO_KEY, fromFlags, toKeyCode1, toFlags1)) {
+        return false;
+      }
+    } else {
+      if (! keytokey_.remap(rp, KeyCode::VK_PSEUDO_KEY, fromFlags,
+                            toKeyCode1, toFlags1,
+                            toKeyCode2, toFlags2,
+                            toKeyCode3, toFlags3,
+                            toKeyCode4, toFlags4,
+                            toKeyCode5, toFlags5)) {
+        return false;
+      }
+    }
+
+    remapParams.drop();
     return true;
   }
 
@@ -650,7 +706,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // skip no-outputable keycodes.
     // Note: check before FireModifiers to avoid meaningless modifier event.
     if (p.key == KeyCode::VK_NONE ||
-        p.key == KeyCode::VK_CONSUMERKEY) {
+        p.key == KeyCode::VK_PSEUDO_KEY) {
       return;
     }
 
@@ -719,6 +775,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapUtil::fireRelativePointer(const Params_RelativePointerEventCallback& params)
   {
+    if (params.buttons == PointingButton::VK_NONE ||
+        params.buttons == PointingButton::VK_KEY) {
+      return;
+    }
+
     FireModifiers::fire();
     EventOutputQueue::push(params);
   }

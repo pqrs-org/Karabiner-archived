@@ -157,8 +157,8 @@ SWISS_LESS_THAN 50
 // Virtual KeyCode
 VK__BEGIN__ 1024
 VK_NONE --AUTO--
-// For ConsumerToKey
-VK_CONSUMERKEY --AUTO--
+// For ConsumerToKey, PointingButtonToKey
+VK_PSEUDO_KEY --AUTO--
 //
 VK_MODIFIER_EXTRA1 --AUTO--
 VK_MODIFIER_EXTRA2 --AUTO--

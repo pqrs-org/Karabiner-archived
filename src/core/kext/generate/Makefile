@@ -17,3 +17,9 @@ all:
 	./keyeventinputqueue.rb 3 5 >> output/include.keyeventinputqueue.hpp
 	./keyeventinputqueue.rb 4 5 >> output/include.keyeventinputqueue.hpp
 	./keyeventinputqueue.rb 5 5 >> output/include.keyeventinputqueue.hpp
+
+	./pointingbuttontokey.rb 1 5 >> output/include.pointingbuttontokey.hpp
+	./pointingbuttontokey.rb 2 5 >> output/include.pointingbuttontokey.hpp
+	./pointingbuttontokey.rb 3 5 >> output/include.pointingbuttontokey.hpp
+	./pointingbuttontokey.rb 4 5 >> output/include.pointingbuttontokey.hpp
+	./pointingbuttontokey.rb 5 5 >> output/include.pointingbuttontokey.hpp
