@@ -87,6 +87,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     class ConsumerToKey {
     public:
+      ConsumerToKey(void) : active_(false) {}
+
       bool remap(RemapConsumerParams& remapParams,
                  ConsumerKeyCode fromKeyCode, Flags fromFlags,
                  KeyCode toKeyCode,           Flags toFlags = ModifierFlag::NONE);
@@ -101,6 +103,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     private:
       RemapUtil::KeyToKey keytokey_;
       RemapUtil::ConsumerToConsumer consumertoconsumer_;
+      bool active_;
     };
 
     class PointingButtonToPointingButton {

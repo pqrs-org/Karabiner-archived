@@ -166,13 +166,27 @@ namespace org_pqrs_KeyRemap4MacBook {
                                   ConsumerKeyCode fromKeyCode, Flags fromFlags,
                                   KeyCode toKeyCode,           Flags toFlags)
   {
-    EventType eventType = remapParams.params.eventType;
+    bool isKeyDown = (remapParams.params.eventType == EventType::DOWN);
+    bool isFromFlagsOn = FlagStatus::makeFlags().isOn(fromFlags);
 
-    bool result = consumertoconsumer_.remap(remapParams, fromKeyCode, fromFlags, ConsumerKeyCode::VK_NONE);
-    if (! result) return false;
+    if (isKeyDown) {
+      if (isFromFlagsOn) {
+        bool result = consumertoconsumer_.remap(remapParams, fromKeyCode, ConsumerKeyCode::VK_NONE);
+        if (! result) return false;
+
+        active_ = true;
+      }
+    } else {
+      if (active_) {
+        bool result = consumertoconsumer_.remap(remapParams, fromKeyCode, ConsumerKeyCode::VK_NONE);
+        if (! result) return false;
+
+        active_ = false;
+      }
+    }
 
     // ----------------------------------------
-    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(eventType,
+    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(isKeyDown ? EventType::DOWN : EventType::UP,
                                                                                    FlagStatus::makeFlags(),
                                                                                    KeyCode::VK_PSEUDO_KEY,
                                                                                    CommonData::getcurrent_keyboardType(),
@@ -181,7 +195,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     Params_KeyboardEventCallBack& params = *ptr;
 
     RemapParams rp(params);
-    if (! keytokey_.remap(rp, KeyCode::VK_PSEUDO_KEY, toKeyCode, toFlags)) {
+    if (! keytokey_.remap(rp, KeyCode::VK_PSEUDO_KEY, fromFlags, toKeyCode, toFlags)) {
       return false;
     }
 
@@ -393,17 +407,18 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (isButtonDown) {
       if (isFromFlagsOn) {
-        bool result = buttontobutton_.remap(remapParams, fromButton, PointingButton::VK_KEY);
+        bool result = buttontobutton_.remap(remapParams, fromButton, PointingButton::VK_NONE);
         if (! result) return false;
 
         active_ = true;
       }
     } else {
       if (active_) {
-        bool result = buttontobutton_.remap(remapParams, fromButton, PointingButton::VK_KEY);
+        bool result = buttontobutton_.remap(remapParams, fromButton, PointingButton::VK_NONE);
         if (! result) return false;
+
+        active_ = false;
       }
-      active_ = false;
     }
 
     // ----------------------------------------
