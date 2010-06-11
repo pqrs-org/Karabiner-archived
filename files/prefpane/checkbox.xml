@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <root>
   <list>
+    <!-- #include "include/local.top.xml" -->
     <item>
       <name>General</name>
       <list>
@@ -6209,5 +6210,6 @@
       </list>
     </item>
     <!-- #include "include/samples.xml" -->
+    <!-- #include "include/local.bottom.xml" -->
   </list>
 </root>
