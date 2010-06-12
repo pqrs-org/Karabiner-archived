@@ -126,9 +126,9 @@
     <item>
       <name>ConsumerToKey</name>
       <appendix>Volume Down to A</appendix>
-      <appendix>Music Prev to Shift_L (to Modifier)</appendix>
       <appendix>Option+Volume Up to Shift_L (Key+Modifier to Modifier)</appendix>
       <appendix>Shift+Volume Up to B (with Modifier)</appendix>
+      <appendix>Volume Up to Control_L (to Modifier)</appendix>
       <appendix>Option+Volume Mute to Shift_L+C (to Key+Modifier)</appendix>
       <appendix>NumLock to A</appendix>
       <!-- Note: -->
@@ -136,9 +136,9 @@
       <!-- Therefore we cannot change NumLock to Modifier -->
       <sysctl>remap.samples_consumertokey</sysctl>
       <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, KeyCode::A</autogen>
-      <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PREV, KeyCode::SHIFT_L</autogen>
       <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, VK_OPTION, KeyCode::SHIFT_L</autogen>
       <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, VK_SHIFT, KeyCode::B</autogen>
+      <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, KeyCode::CONTROL_L</autogen>
       <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, VK_OPTION, KeyCode::C, ModifierFlag::SHIFT_L</autogen>
       <autogen>--ConsumerToKey-- ConsumerKeyCode::NUMLOCK, KeyCode::A</autogen>
     </item>
@@ -291,10 +291,14 @@
       <appendix>MiddleClick to Return</appendix>
       <appendix>Option_L+RightClick to Shift_L</appendix>
       <appendix>Command_L+RightClick to A, Shift_L+B, Control_L+C</appendix>
+      <appendix>RightClick to Control_L</appendix>
+      <appendix>Control_L+LeftClick to Space</appendix>
       <sysctl>remap.samples_pointingbuttontokey</sysctl>
       <autogen>--PointingButtonToKey-- PointingButton::MIDDLE, KeyCode::RETURN</autogen>
       <autogen>--PointingButtonToKey-- PointingButton::RIGHT, ModifierFlag::OPTION_L, KeyCode::SHIFT_L</autogen>
       <autogen>--PointingButtonToKey-- PointingButton::RIGHT, ModifierFlag::COMMAND_L, KeyCode::A, KeyCode::B, ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
+      <autogen>--PointingButtonToKey-- PointingButton::RIGHT, KeyCode::CONTROL_L</autogen>
+      <autogen>--PointingButtonToKey-- PointingButton::LEFT, ModifierFlag::CONTROL_L, KeyCode::SPACE</autogen>
     </item>
 
     <!-- application only -->
