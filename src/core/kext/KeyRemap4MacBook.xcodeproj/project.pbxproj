@@ -50,6 +50,8 @@
 		34C382D611BB3F3600EFB9A6 /* Queue.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34C382D411BB3F3600EFB9A6 /* Queue.hpp */; };
 		34C7A9A20CE45EA400C98397 /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34C7A9A10CE45EA400C98397 /* Config.cpp */; };
 		34C7A9B00CE4605B00C98397 /* Config.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34C7A9AF0CE4605B00C98397 /* Config.hpp */; };
+		34CFB93211C340B000E5E7F9 /* ButtonStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34CFB93011C340B000E5E7F9 /* ButtonStatus.cpp */; };
+		34CFB93311C340B000E5E7F9 /* ButtonStatus.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34CFB93111C340B000E5E7F9 /* ButtonStatus.hpp */; };
 		34F13A860E73E69D006EB163 /* IntervalChecker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F13A840E73E69D006EB163 /* IntervalChecker.cpp */; };
 		34F13A870E73E69D006EB163 /* IntervalChecker.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34F13A850E73E69D006EB163 /* IntervalChecker.hpp */; };
 		34F14BAE0E861FC5001C15F3 /* CallBackWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F14BAC0E861FC5001C15F3 /* CallBackWrapper.cpp */; };
@@ -109,6 +111,8 @@
 		34C382D411BB3F3600EFB9A6 /* Queue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Queue.hpp; path = util/Queue.hpp; sourceTree = "<group>"; };
 		34C7A9A10CE45EA400C98397 /* Config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Config.cpp; sourceTree = "<group>"; };
 		34C7A9AF0CE4605B00C98397 /* Config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config.hpp; sourceTree = "<group>"; };
+		34CFB93011C340B000E5E7F9 /* ButtonStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ButtonStatus.cpp; path = util/ButtonStatus.cpp; sourceTree = "<group>"; };
+		34CFB93111C340B000E5E7F9 /* ButtonStatus.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ButtonStatus.hpp; path = util/ButtonStatus.hpp; sourceTree = "<group>"; };
 		34F13A840E73E69D006EB163 /* IntervalChecker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IntervalChecker.cpp; path = util/IntervalChecker.cpp; sourceTree = "<group>"; };
 		34F13A850E73E69D006EB163 /* IntervalChecker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IntervalChecker.hpp; path = util/IntervalChecker.hpp; sourceTree = "<group>"; };
 		34F14BAC0E861FC5001C15F3 /* CallBackWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CallBackWrapper.cpp; path = util/CallBackWrapper.cpp; sourceTree = "<group>"; };
@@ -192,6 +196,8 @@
 		346B753B0E72C0A200F9A79F /* util */ = {
 			isa = PBXGroup;
 			children = (
+				34CFB93011C340B000E5E7F9 /* ButtonStatus.cpp */,
+				34CFB93111C340B000E5E7F9 /* ButtonStatus.hpp */,
 				34C382D311BB3F3600EFB9A6 /* Queue.cpp */,
 				34C382D411BB3F3600EFB9A6 /* Queue.hpp */,
 				347A27E81168C09F00EB155B /* KeyEventInputQueue.cpp */,
@@ -266,6 +272,7 @@
 				340E0BFE111489020030A382 /* KeyFloodChecker.hpp in Headers */,
 				347A27EB1168C09F00EB155B /* KeyEventInputQueue.hpp in Headers */,
 				34C382D611BB3F3600EFB9A6 /* Queue.hpp in Headers */,
+				34CFB93311C340B000E5E7F9 /* ButtonStatus.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +366,7 @@
 				340E0BFD111489020030A382 /* KeyFloodChecker.cpp in Sources */,
 				347A27EA1168C09F00EB155B /* KeyEventInputQueue.cpp in Sources */,
 				34C382D511BB3F3600EFB9A6 /* Queue.cpp in Sources */,
+				34CFB93211C340B000E5E7F9 /* ButtonStatus.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

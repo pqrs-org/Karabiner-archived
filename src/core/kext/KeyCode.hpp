@@ -202,6 +202,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ======================================================================
   class PointingButton {
   public:
+    PointingButton(unsigned int v) : value_(v) {}
     unsigned int get(void) const { return value_; }
     bool operator==(PointingButton other) const { return value_ == other.get(); }
     bool operator!=(PointingButton other) const { return ! (*this == other); }
@@ -211,7 +212,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 #include "keycode/output/include.PointingButton.hpp"
 
   private:
-    PointingButton(unsigned int v) : value_(v) {}
     unsigned int value_;
   };
   class Buttons {
