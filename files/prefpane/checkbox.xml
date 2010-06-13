@@ -212,12 +212,12 @@
             <item>
               <name>Button4 to Command+[</name>
               <sysctl>remap.pointing_button4_to_command_bracket_left</sysctl>
-              <autogen>--PointingButtonToKey-- PointingButton::BUTTON4, KeyCode::BRACKET_LEFT</autogen>
+              <autogen>--PointingButtonToKey-- PointingButton::BUTTON4, KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L</autogen>
             </item>
             <item>
               <name>Button5 to Command+]</name>
               <sysctl>remap.pointing_button5_to_command_bracket_right</sysctl>
-              <autogen>--PointingButtonToKey-- PointingButton::BUTTON5, KeyCode::BRACKET_RIGHT</autogen>
+              <autogen>--PointingButtonToKey-- PointingButton::BUTTON5, KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L</autogen>
             </item>
           </list>
         </item>
