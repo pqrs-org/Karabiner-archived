@@ -302,34 +302,27 @@ namespace org_pqrs_KeyRemap4MacBook {
     //
     // Attention: We need fire MiddleClick only at (1).
 
-    if (remapParams.params.buttons.isOn(fromButton) &&
-        FlagStatus::makeFlags().isOn(fromFlags)) {
+    if (ButtonStatus::justPressed().isOn(fromButton) && FlagStatus::makeFlags().isOn(fromFlags)) {
       active_ = true;
-
-    } else {
-      if (active_) {
-        // We handle it as a ButtonUp Event.
-        active_ = false;
-      } else {
-        return false;
-      }
+      ButtonStatus::decrease(fromButton);
+      ButtonStatus::increase(toButton);
+    } else if (ButtonStatus::justReleased().isOn(fromButton) && active_) {
+      // We need to handle ButtonUp Event, so keep active_.
+      ButtonStatus::decrease(toButton);
+      ButtonStatus::increase(fromButton);
     }
+
+    if (! active_) return false;
 
     // ----------------------------------------
     FlagStatus::temporary_decrease(fromFlags);
     FlagStatus::temporary_increase(toFlags);
 
-    Params_RelativePointerEventCallback params = remapParams.params;
+    FireRelativePointer::fire(ButtonStatus::makeButtons(), remapParams.params.dx, remapParams.params.dy);
 
-    if (active_) {
-      params.buttons.remove(fromButton);
-      params.buttons.add(toButton);
-
-      remappedButtons.add(toButton);
-    } else {
-      remappedButtons.remove(toButton);
+    if (ButtonStatus::justReleased().isOn(fromButton)) {
+      active_ = false;
     }
-    fireRelativePointer(params);
 
     remapParams.drop();
     return true;
@@ -372,20 +365,13 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (isKeyDown) {
       FlagStatus::decrease(fromFlags | fromKeyCode.getModifierFlag());
-    }
+      ButtonStatus::increase(toButton);
+      FireRelativePointer::fire();
 
-    Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(PointingButton::VK_PSEUDO_BUTTON, 0, 0));
-    if (! ptr) return false;
-    Params_RelativePointerEventCallback& params = *ptr;
+    } else {
+      ButtonStatus::decrease(toButton);
+      FireRelativePointer::fire();
 
-    if (! isKeyDown) {
-      params.buttons = PointingButton::NONE;
-    }
-
-    RemapPointingParams_relative rp(params);
-    buttontobutton_.remap(rp, PointingButton::VK_PSEUDO_BUTTON, toButton);
-
-    if (! isKeyDown) {
       FlagStatus::increase(fromFlags | fromKeyCode.getModifierFlag());
       FireModifiers::fire();
     }
@@ -402,27 +388,27 @@ namespace org_pqrs_KeyRemap4MacBook {
                                         KeyCode toKeyCode4,  Flags toFlags4,
                                         KeyCode toKeyCode5,  Flags toFlags5)
   {
-    bool isButtonDown = remapParams.params.buttons.isOn(fromButton);
-    bool isFromFlagsOn = FlagStatus::makeFlags().isOn(fromFlags);
+    if (remapParams.isremapped) return false;
 
-    if (isButtonDown) {
-      if (isFromFlagsOn) {
-        bool result = buttontobutton_.remap(remapParams, fromButton, PointingButton::VK_NONE);
-        if (! result) return false;
-
+    if (ButtonStatus::justPressed().isOn(fromButton)) {
+      if (FlagStatus::makeFlags().isOn(fromFlags)) {
+        ButtonStatus::decrease(fromButton);
         active_ = true;
+        goto doremap;
       }
-    } else {
+    } else if (ButtonStatus::justReleased().isOn(fromButton)) {
       if (active_) {
-        bool result = buttontobutton_.remap(remapParams, fromButton, PointingButton::VK_NONE);
-        if (! result) return false;
-
+        ButtonStatus::increase(fromButton);
         active_ = false;
+        goto doremap;
       }
     }
 
+    return false;
+
+  doremap:
     // ----------------------------------------
-    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(isButtonDown ? EventType::DOWN : EventType::UP,
+    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(active_ ? EventType::DOWN : EventType::UP,
                                                                                    FlagStatus::makeFlags(),
                                                                                    KeyCode::VK_PSEUDO_KEY,
                                                                                    CommonData::getcurrent_keyboardType(),
@@ -537,19 +523,15 @@ namespace org_pqrs_KeyRemap4MacBook {
       return true;
     }
 
-    if (remapParams.params.buttons.isOn(buttons)) {
+    if (ButtonStatus::makeButtons().isOn(buttons)) {
       // if the source buttons contains left button, we cancel left click for iPhoto, or some applications.
       // iPhoto store the scroll events when left button is pressed, and restore events after left button is released.
       // PointingRelativeToScroll doesn't aim it, we release the left button and do normal scroll event.
       if (! active_) {
-        if (buttons.isOn(PointingButton::LEFT)) {
-          Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(PointingButton::NONE, 0, 0));
-          if (ptr) {
-            RemapUtil::fireRelativePointer(*ptr);
-          }
-        }
+        ButtonStatus::decrease(buttons);
+        FireRelativePointer::fire();
+        ButtonStatus::increase(buttons);
 
-        begin_buttons_ = remapParams.params.buttons;
         absolute_distance_ = 0;
         begin_ic_.begin();
         buffered_delta1 = 0;
@@ -571,13 +553,11 @@ namespace org_pqrs_KeyRemap4MacBook {
         const uint32_t DISTANCE_THRESHOLD = 5;
         const uint32_t TIME_THRESHOLD = 300;
         if (absolute_distance_ <= DISTANCE_THRESHOLD && begin_ic_.getmillisec() < TIME_THRESHOLD) {
-          Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(begin_buttons_, 0, 0));
-          if (ptr) {
-            Params_RelativePointerEventCallback& params = *ptr;
-            RemapUtil::fireRelativePointer(params);
-            params.buttons = remapParams.params.buttons;
-            RemapUtil::fireRelativePointer(params);
-          }
+          // Fire by a click event.
+          ButtonStatus::increase(buttons);
+          FireRelativePointer::fire();
+          ButtonStatus::decrease(buttons);
+          FireRelativePointer::fire();
         }
 
         return true;
@@ -787,14 +767,20 @@ namespace org_pqrs_KeyRemap4MacBook {
     EventOutputQueue::push(p);
   }
 
-  void
-  RemapUtil::fireRelativePointer(const Params_RelativePointerEventCallback& params)
-  {
-    if (params.buttons == PointingButton::VK_NONE ||
-        params.buttons == PointingButton::VK_PSEUDO_BUTTON) {
-      return;
-    }
+  // --------------------
+  Buttons FireRelativePointer::lastButtons_(0);
 
+  void
+  FireRelativePointer::fire(Buttons toButtons, int dx, int dy)
+  {
+    // We do not fire event if no need.
+    if (dx == 0 && dy == 0 && toButtons == lastButtons_) return;
+
+    Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(toButtons, dx, dy));
+    if (! ptr) return;
+    Params_RelativePointerEventCallback& params = *ptr;
+
+    lastButtons_ = toButtons;
     FireModifiers::fire();
     EventOutputQueue::push(params);
   }

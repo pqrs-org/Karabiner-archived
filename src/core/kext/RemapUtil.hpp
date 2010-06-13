@@ -6,6 +6,7 @@
 #include "remap.hpp"
 #include "CommonData.hpp"
 #include "KeyCode.hpp"
+#include "util/ButtonStatus.hpp"
 #include "util/FlagStatus.hpp"
 #include "util/PressDownKeys.hpp"
 #include "util/IntervalChecker.hpp"
@@ -173,7 +174,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       bool active_;
 
-      Buttons begin_buttons_;
       unsigned int absolute_distance_;
       IntervalChecker begin_ic_;
 
@@ -192,7 +192,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void fireKey_downup(Flags flags, KeyCode key, KeyboardType keyboardType);
 
     void fireConsumer(const Params_KeyboardSpecialEventCallback& params);
-    void fireRelativePointer(const Params_RelativePointerEventCallback& params);
     void fireScrollWheel(const Params_ScrollWheelEventCallback& params);
 
     // ----------------------------------------
@@ -205,6 +204,14 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   private:
     static Flags lastFlags_;
+  };
+
+  class FireRelativePointer {
+  public:
+    static void fire(Buttons toButtons = ButtonStatus::makeButtons(), int dx = 0, int dy = 0);
+
+  private:
+    static Buttons lastButtons_;
   };
 
   // ----------------------------------------------------------------------
