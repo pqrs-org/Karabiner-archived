@@ -5,6 +5,7 @@
 #include "FlagStatus.hpp"
 #include "IOLockWrapper.hpp"
 #include "ListHookedConsumer.hpp"
+#include "NumHeldDownKeys.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace {
@@ -56,6 +57,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ------------------------------------------------------------
       // clear temporary_count_
       FlagStatus::set();
+
+      NumHeldDownKeys::set(EventType(eventType));
 
       // ------------------------------------------------------------
       Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(EventType(eventType), Flags(flags), ConsumerKeyCode(key),
