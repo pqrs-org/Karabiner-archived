@@ -9,10 +9,6 @@
 #include "VirtualKey.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  namespace {
-    Buttons remappedButtons;
-  }
-
   bool
   RemapUtil::KeyToKey::remap(RemapParams& remapParams,
                              KeyCode fromKeyCode, Flags fromFlags,
@@ -941,12 +937,5 @@ namespace org_pqrs_KeyRemap4MacBook {
       lastkeycode_ = remapParams.params.key;
     }
     return false;
-  }
-
-  // ------------------------------------------------------------
-  Buttons
-  RemapUtil::getRemappedButtons(void)
-  {
-    return remappedButtons;
   }
 }
