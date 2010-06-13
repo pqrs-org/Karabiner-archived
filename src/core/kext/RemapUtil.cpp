@@ -374,7 +374,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       FlagStatus::decrease(fromFlags | fromKeyCode.getModifierFlag());
     }
 
-    Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(PointingButton::VK_KEY, 0, 0));
+    Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(PointingButton::VK_PSEUDO_BUTTON, 0, 0));
     if (! ptr) return false;
     Params_RelativePointerEventCallback& params = *ptr;
 
@@ -383,7 +383,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     RemapPointingParams_relative rp(params);
-    buttontobutton_.remap(rp, PointingButton::VK_KEY, toButton);
+    buttontobutton_.remap(rp, PointingButton::VK_PSEUDO_BUTTON, toButton);
 
     if (! isKeyDown) {
       FlagStatus::increase(fromFlags | fromKeyCode.getModifierFlag());
@@ -791,7 +791,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   RemapUtil::fireRelativePointer(const Params_RelativePointerEventCallback& params)
   {
     if (params.buttons == PointingButton::VK_NONE ||
-        params.buttons == PointingButton::VK_KEY) {
+        params.buttons == PointingButton::VK_PSEUDO_BUTTON) {
       return;
     }
 

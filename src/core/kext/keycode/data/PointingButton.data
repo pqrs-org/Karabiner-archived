@@ -1,10 +1,10 @@
-NONE        0
-LEFT        (1 << 2)
-RIGHT       (1 << 0)
-MIDDLE      (1 << 1)
-BUTTON4     (1 << 3)
+NONE             (0)
+LEFT             (1 << 2)
+RIGHT            (1 << 0)
+MIDDLE           (1 << 1)
+BUTTON4          (1 << 3)
 // Virtual Button
-VK__BEGIN__ (1 << 10)
+VK__BEGIN__      (1 << 20)
 // For KeyToPointingButton
-VK_KEY      (1 << 11)
-VK_NONE     (1 << 12)
+VK_PSEUDO_BUTTON (1 << 21)
+VK_NONE          (1 << 22)
