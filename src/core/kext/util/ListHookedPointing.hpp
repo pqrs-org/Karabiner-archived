@@ -20,11 +20,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     OSObject* getOrig_relativePointerEventTarget(void) const { return orig_relativePointerEventTarget_; }
     OSObject* getOrig_scrollWheelEventTarget(void) const { return orig_scrollWheelEventTarget_; }
 
+    Buttons get_previousbuttons(void) const { return previousbuttons_; }
+    void set_previousbuttons(Buttons newval) { previousbuttons_ = newval; }
+
   private:
     RelativePointerEventCallback orig_relativePointerEventAction_;
     ScrollWheelEventCallback orig_scrollWheelEventAction_;
     OSObject* orig_relativePointerEventTarget_;
     OSObject* orig_scrollWheelEventTarget_;
+
+    Buttons previousbuttons_;
 
     bool initialize(IOHIDevice* d);
     bool refresh(void);
