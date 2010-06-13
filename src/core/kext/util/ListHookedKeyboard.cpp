@@ -3,10 +3,11 @@
 #include "Config.hpp"
 #include "Core.hpp"
 #include "EventWatcher.hpp"
+#include "FlagStatus.hpp"
 #include "IOLockWrapper.hpp"
 #include "KeyEventInputQueue.hpp"
 #include "ListHookedKeyboard.hpp"
-#include "RemapUtil.hpp"
+#include "NumHeldDownKeys.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace {
@@ -100,6 +101,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         // If we call FlagStatus::set(key, flags) here, dropped keys are kept as pushed status.
         // So, call FlagStatus::set(key, flags) after KeyEventInputQueue.
         FlagStatus::set();
+
+        NumHeldDownKeys::set(eventType, key, flags);
 
         // ------------------------------------------------------------
         key.normalizeKey(flags, eventType, keyboardType);

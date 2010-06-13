@@ -166,7 +166,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       RemapParams remapParams(params);
-      NumHeldDownKeys::set(remapParams);
 
       // ------------------------------------------------------------
       FlagStatus::set(params.key, params.flags);
@@ -197,7 +196,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       params.log();
 
       RemapConsumerParams remapParams(params);
-      NumHeldDownKeys::set(remapParams);
 
       // ------------------------------------------------------------
       remap_consumer(remapParams);

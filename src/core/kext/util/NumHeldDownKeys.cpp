@@ -1,3 +1,4 @@
+#include "base.hpp"
 #include "NumHeldDownKeys.hpp"
 #include "Config.hpp"
 
@@ -8,14 +9,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   NumHeldDownKeys::log(void)
   {
     if (config.debug_devel) {
-      printf("KeyRemap4MacBook NumHeldDownKeys = %d\n", num_);
+      IOLog("KeyRemap4MacBook NumHeldDownKeys = %d\n", num_);
     }
   }
 
   void
-  NumHeldDownKeys::set(const RemapParams& remapParams)
+  NumHeldDownKeys::set(EventType eventType, KeyCode key, Flags flags)
   {
-    if (remapParams.isKeyDownOrModifierDown()) {
+    if (eventType.isKeyDownOrModifierDown(key, flags)) {
       ++num_;
     } else {
       --num_;
@@ -24,11 +25,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  NumHeldDownKeys::set(const RemapConsumerParams& remapParams)
+  NumHeldDownKeys::set(EventType eventType)
   {
-    if (remapParams.params.eventType == EventType::DOWN) {
+    if (eventType == EventType::DOWN) {
       ++num_;
-    } else if (remapParams.params.eventType == EventType::UP) {
+    } else if (eventType == EventType::UP) {
       --num_;
     }
     log();
