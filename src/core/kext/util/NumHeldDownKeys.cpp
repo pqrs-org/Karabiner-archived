@@ -35,6 +35,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  NumHeldDownKeys::set(int diff) {
+    num_ += diff;
+    log();
+  }
+
+  void
   NumHeldDownKeys::reset(void)
   {
     if (config.debug_devel) {
