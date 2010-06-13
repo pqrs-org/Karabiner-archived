@@ -103,7 +103,7 @@
       return @"button7";
     case 7 :
       return @"button8";
-    default :
+    default:
       return @"other";
   }
 }
