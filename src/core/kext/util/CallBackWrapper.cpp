@@ -252,13 +252,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   Params_RelativePointerEventCallback::apply(void) const
   {
-    if (buttons.isOn(PointingButton::VK__BEGIN__)) {
-      // Invalid buttons
-      IOLog("[KeyRemap4MacBook ERROR] Params_RelativePointerEventCallback::apply invalid buttons:%d\n", buttons.get());
-      return;
-    }
-
-    // ------------------------------------------------------------
     HookedPointing* hp = ListHookedPointing::instance().get();
     if (! hp) return;
 
