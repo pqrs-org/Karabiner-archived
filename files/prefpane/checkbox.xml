@@ -4353,6 +4353,17 @@
           </list>
         </item>
         <item>
+          <name>Enable at only Gruml</name>
+          <list>
+            <item>
+              <name>Change Option_R to Enter</name>
+              <sysctl>remap.app_gruml_optionR2enter</sysctl>
+              <only>GRUML</only>
+              <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::ENTER</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Enable at only Remote Desktop Connection Client</name>
           <list>
             <item>
