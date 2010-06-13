@@ -22,18 +22,27 @@ TEST(ButtonStatus, all) {
   EXPECT_EQ(Buttons(), ButtonStatus::makeButtons());
 
   Buttons previous(0);
+  int diff = 0;
 
   // ------------------------------------------------------------
   // set
   Buttons current((1 << 4) | (1 << 11));
-  ButtonStatus::set(current, previous);
+  diff = ButtonStatus::set(current, previous);
   previous = current;
   EXPECT_EQ(Buttons(current), ButtonStatus::makeButtons());
+  EXPECT_EQ(2, diff);
+
+  current = ((1 << 4));
+  diff = ButtonStatus::set(current, previous);
+  previous = current;
+  EXPECT_EQ(Buttons(current), ButtonStatus::makeButtons());
+  EXPECT_EQ(-1, diff);
 
   current = ((1 << 4) | (1 << 8));
-  ButtonStatus::set(current, previous);
+  diff = ButtonStatus::set(current, previous);
   previous = current;
   EXPECT_EQ(Buttons(current), ButtonStatus::makeButtons());
+  EXPECT_EQ(1, diff);
 
   // ------------------------------------------------------------
   // increase & decrease

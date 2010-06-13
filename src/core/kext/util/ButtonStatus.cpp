@@ -13,12 +13,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     return true;
   }
 
-  void
+  int
   ButtonStatus::set(Buttons current, Buttons previous)
   {
+    int diff = 0;
     for (int i = 0; i < MAXNUM; ++i) {
-      item_[i].set(current, previous);
+      diff += item_[i].set(current, previous);
     }
+    return diff;
   }
 
   void
