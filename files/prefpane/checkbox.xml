@@ -190,6 +190,12 @@
           <name>Button to Key</name>
           <list>
             <item>
+              <name>LeftClick to F12 (only in MacBookPro2,1 Trackpad)</name>
+              <sysctl>remap.pointing_leftclick2f12_trackpad</sysctl>
+              <device_only>DeviceVendorID(0x5ac),DeviceProductID(0x21a)</device_only>
+              <autogen>--PointingButtonToKey-- PointingButton::LEFT, KeyCode::F12</autogen>
+            </item>
+            <item>
               <name>MiddleClick to Dashboard</name>
               <sysctl>remap.pointing_middleclick2dashboard</sysctl>
               <autogen>--PointingButtonToKey-- PointingButton::MIDDLE, KeyCode::DASHBOARD</autogen>
