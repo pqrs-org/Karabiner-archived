@@ -186,6 +186,41 @@
             </item>
           </list>
         </item>
+        <item>
+          <name>Button to Key</name>
+          <list>
+            <item>
+              <name>MiddleClick to Dashboard</name>
+              <sysctl>remap.pointing_middleclick2dashboard</sysctl>
+              <autogen>--PointingButtonToKey-- PointingButton::MIDDLE, KeyCode::DASHBOARD</autogen>
+            </item>
+            <item>
+              <name>MiddleClick to Expose</name>
+              <sysctl>remap.pointing_middleclick2expose</sysctl>
+              <autogen>--PointingButtonToKey-- PointingButton::MIDDLE, KeyCode::EXPOSE_ALL</autogen>
+            </item>
+            <item>
+              <name>MiddleClick to F8</name>
+              <sysctl>remap.pointing_middleclick2f8</sysctl>
+              <autogen>--PointingButtonToKey-- PointingButton::MIDDLE, KeyCode::F8</autogen>
+            </item>
+            <item>
+              <name>MiddleClick to Control+F4 (= Move focus to active or next window)</name>
+              <sysctl>remap.pointing_middleclick2controlF4</sysctl>
+              <autogen>--PointingButtonToKey-- PointingButton::MIDDLE, KeyCode::F4, ModifierFlag::CONTROL_L</autogen>
+            </item>
+            <item>
+              <name>Button4 to Command+[</name>
+              <sysctl>remap.pointing_button4_to_command_bracket_left</sysctl>
+              <autogen>--PointingButtonToKey-- PointingButton::BUTTON4, KeyCode::BRACKET_LEFT</autogen>
+            </item>
+            <item>
+              <name>Button5 to Command+]</name>
+              <sysctl>remap.pointing_button5_to_command_bracket_right</sysctl>
+              <autogen>--PointingButtonToKey-- PointingButton::BUTTON5, KeyCode::BRACKET_RIGHT</autogen>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
 
