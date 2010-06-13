@@ -1,4 +1,5 @@
 #include "base.hpp"
+#include "ButtonStatus.hpp"
 #include "Client.hpp"
 #include "CommonData.hpp"
 #include "Config.hpp"
@@ -62,6 +63,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       EventWatcher::initialize();
       PressDownKeys::initialize();
       FlagStatus::initialize();
+      ButtonStatus::initialize();
       KeyRemap4MacBook_client::initialize();
       CommonData::initialize();
     }
@@ -183,6 +185,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         cancelRepeat();
         EventWatcher::reset();
         FlagStatus::reset();
+        ButtonStatus::reset();
         FireModifiers::fire(FlagStatus::makeFlags());
         PressDownKeys::clear();
       }

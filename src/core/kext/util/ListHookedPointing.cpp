@@ -1,3 +1,4 @@
+#include "ButtonStatus.hpp"
 #include "CommonData.hpp"
 #include "Config.hpp"
 #include "Core.hpp"
@@ -5,6 +6,7 @@
 #include "FlagStatus.hpp"
 #include "IOLockWrapper.hpp"
 #include "ListHookedPointing.hpp"
+#include "NumHeldDownKeys.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace {
@@ -46,6 +48,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! config.general_lazy_modifiers_with_mouse_event) {
         FlagStatus::set();
       }
+      int diff = ButtonStatus::set(buttons, hp->get_previousbuttons());
+      hp->set_previousbuttons(buttons);
+      NumHeldDownKeys::set(diff);
 
       // ------------------------------------------------------------
       Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, dx, dy));
@@ -115,6 +120,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! name) return false;
 
     device_ = d;
+    previousbuttons_ = 0;
     IOLog("KeyRemap4MacBook HookedPointing::initialize name = %s, device_ = %p\n", name, device_);
 
     return refresh();
