@@ -8,6 +8,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     static void set(const RemapParams& remapParams);
     static void set(const RemapConsumerParams& remapParams);
+    static void set(int diff);
     static void reset(void);
     static bool iszero(void);
 
