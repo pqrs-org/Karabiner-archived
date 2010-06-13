@@ -2050,6 +2050,30 @@
           <autogen>--KeyToKey-- KeyCode::KEY_9, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_9</autogen>
           <autogen>--KeyToKey-- KeyCode::KEY_0, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_0</autogen>
         </item>
+        <item>
+          <name>CapsLock+1234567890 to !@#$%^&amp;*() / CapsLock+Shift+1234567890 to 1234567890</name>
+          <sysctl>remap.swap_capslock_number_and_symbol</sysctl>
+          <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::CAPSLOCK | ModifierFlag::NONE, KeyCode::KEY_1, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::CAPSLOCK | ModifierFlag::NONE, KeyCode::KEY_2, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::CAPSLOCK | ModifierFlag::NONE, KeyCode::KEY_3, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::CAPSLOCK | ModifierFlag::NONE, KeyCode::KEY_4, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_5, ModifierFlag::CAPSLOCK | ModifierFlag::NONE, KeyCode::KEY_5, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::CAPSLOCK | ModifierFlag::NONE, KeyCode::KEY_6, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_7, ModifierFlag::CAPSLOCK | ModifierFlag::NONE, KeyCode::KEY_7, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::CAPSLOCK | ModifierFlag::NONE, KeyCode::KEY_8, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::CAPSLOCK | ModifierFlag::NONE, KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::CAPSLOCK | ModifierFlag::NONE, KeyCode::KEY_0, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::CAPSLOCK | VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_1</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::CAPSLOCK | VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_2</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::CAPSLOCK | VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_3</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::CAPSLOCK | VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_4</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_5, ModifierFlag::CAPSLOCK | VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_5</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::CAPSLOCK | VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_6</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_7, ModifierFlag::CAPSLOCK | VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_7</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::CAPSLOCK | VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_8</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::CAPSLOCK | VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_9</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::CAPSLOCK | VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_0</autogen>
+        </item>
       </list>
     </item>
     <item>
