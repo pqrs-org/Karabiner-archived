@@ -102,8 +102,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         // So, call FlagStatus::set(key, flags) after KeyEventInputQueue.
         FlagStatus::set();
 
-        NumHeldDownKeys::set(eventType, key, flags);
-
         // ------------------------------------------------------------
         key.normalizeKey(flags, eventType, keyboardType);
       }
@@ -159,6 +157,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! CommonData::eventLock) return;
     IOLockWrapper::ScopedLock lk(CommonData::eventLock);
 
+    // ------------------------------------------------------------
     Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(eventType, flags, key,
                                                                                    charCode, charSet, origCharCode, origCharSet,
                                                                                    keyboardType, repeat));
@@ -168,6 +167,21 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (params.eventType.isKeyDownOrModifierDown(params.key, params.flags)) {
       EventWatcher::on();
     }
+
+    // ------------------------------------------------------------
+    // We must call NumHeldDownKeys after inputqueue.
+    // For example, when we type Command_L+S.
+    //
+    // (1) Command_L down (queued)
+    // (2) KeyCode::S down (Command_L+S)
+    // (1') dequeue Command_L down
+    // (3) Command_L up
+    // (4) KeyCode::S up
+    // (2') dequeue KeyCode::S down
+    //
+    // if NumHeldDownKeys called when (4), Command_L state is reset.
+    // Then (2') send KeyCode::S without Modifiers.
+    NumHeldDownKeys::set(eventType, key, flags);
 
     Core::remap_KeyboardEventCallback(params);
   }
