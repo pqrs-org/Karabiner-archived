@@ -20,5 +20,5 @@ MUSIC_NEXT 19
 // Virtual KeyCode
 VK__BEGIN__ 1024
 // For KeyToConsumer
-VK_KEY --AUTO--
+VK_PSEUDO_KEY --AUTO--
 VK_NONE --AUTO--
