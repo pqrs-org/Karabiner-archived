@@ -193,9 +193,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     void fireConsumer(const Params_KeyboardSpecialEventCallback& params);
     void fireScrollWheel(const Params_ScrollWheelEventCallback& params);
-
-    // ----------------------------------------
-    Buttons getRemappedButtons(void);
   }
 
   class FireModifiers {
