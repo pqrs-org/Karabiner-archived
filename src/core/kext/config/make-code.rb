@@ -330,6 +330,9 @@ def parseautogen(name, lines, autogen_index)
 
   unless code_pointing.empty? then
     result_code_pointing += "  do {\n"
+    filter.each do |f|
+      result_code_pointing += "    #{f}\n"
+    end
     code_pointing.each do |line|
       result_code_pointing += "    #{line}\n"
     end
