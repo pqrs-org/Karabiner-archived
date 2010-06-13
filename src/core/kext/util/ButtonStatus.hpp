@@ -17,16 +17,26 @@ namespace org_pqrs_KeyRemap4MacBook {
         button_ = b;
         count_ = 0;
       }
-      void set(Buttons current, Buttons previous) {
+      /**
+       * Set count_ from difference of current/previous buttons.
+       *
+       * @param current current buttons
+       * @param previous previous buttons
+       *
+       * @return button down count. (-1, 0, 1)
+       */
+      int set(Buttons current, Buttons previous) {
         bool iscurrent = current.isOn(PointingButton(button_));
         bool isprevious = previous.isOn(PointingButton(button_));
 
-        if (iscurrent == isprevious) return;
+        if (iscurrent == isprevious) return 0;
 
         if (iscurrent) {
           ++count_;
+          return 1;
         } else {
           --count_;
+          return -1;
         }
       }
 
@@ -49,7 +59,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     enum { MAXNUM = 32 };
 
     static bool initialize(void);
-    static void set(Buttons current, Buttons previous);
+    /**
+     * Set state from difference of current/previous buttons.
+     *
+     * @param current current buttons
+     * @param previous previous buttons
+     *
+     * @return button down count. (may be negative value)
+     */
+    static int set(Buttons current, Buttons previous);
     static Buttons makeButtons(void);
     static void reset(void);
 
