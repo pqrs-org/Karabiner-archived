@@ -266,13 +266,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     EventType eventType = isKeyDown ? EventType::DOWN : EventType::UP;
     Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(eventType,
                                                                                                  FlagStatus::makeFlags(),
-                                                                                                 ConsumerKeyCode::VK_KEY,
+                                                                                                 ConsumerKeyCode::VK_PSEUDO_KEY,
                                                                                                  remapParams.params.repeat));
     if (! ptr) return false;
     Params_KeyboardSpecialEventCallback& params = *ptr;
 
     RemapConsumerParams rp(params);
-    if (! consumertoconsumer_.remap(rp, ConsumerKeyCode::VK_KEY, toKeyCode, toFlags)) {
+    if (! consumertoconsumer_.remap(rp, ConsumerKeyCode::VK_PSEUDO_KEY, toKeyCode, toFlags)) {
       return false;
     }
 
@@ -754,7 +754,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // skip no-outputable keycodes.
     // Note: check before FireModifiers to avoid meaningless modifier event.
     if (p.key == ConsumerKeyCode::VK_NONE ||
-        p.key == ConsumerKeyCode::VK_KEY) {
+        p.key == ConsumerKeyCode::VK_PSEUDO_KEY) {
       return;
     }
 
