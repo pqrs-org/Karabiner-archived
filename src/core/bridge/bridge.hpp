@@ -50,6 +50,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         TEAMVIEWER,
         CHEETAH_3D,
         PASSWORD, // com.apple.securityagent
+        GRUML,
       };
       enum InputMode {
         INPUTMODE_NONE,
