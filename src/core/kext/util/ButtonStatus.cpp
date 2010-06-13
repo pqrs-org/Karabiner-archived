@@ -2,6 +2,8 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   ButtonStatus::Item ButtonStatus::item_[ButtonStatus::MAXNUM];
+  Buttons ButtonStatus::justPressed_;
+  Buttons ButtonStatus::justReleased_;
 
   // ----------------------------------------------------------------------
   bool
@@ -10,16 +12,32 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (int i = 0; i < MAXNUM; ++i) {
       item_[i].initialize(1 << i);
     }
+
+    justPressed_ = Buttons(0);
+    justReleased_ = Buttons(0);
+
     return true;
   }
 
   int
   ButtonStatus::set(Buttons current, Buttons previous)
   {
+    justPressed_ = Buttons(0);
+    justReleased_ = Buttons(0);
+
     int diff = 0;
     for (int i = 0; i < MAXNUM; ++i) {
-      diff += item_[i].set(current, previous);
+      int v = 0;
+      v = item_[i].set(current, previous);
+      if (v == 1) {
+        justPressed_.add(item_[i].button_);
+      } else if (v == -1) {
+        justReleased_.add(item_[i].button_);
+      }
+
+      diff += v;
     }
+
     return diff;
   }
 

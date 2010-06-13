@@ -30,18 +30,24 @@ TEST(ButtonStatus, all) {
   diff = ButtonStatus::set(current, previous);
   previous = current;
   EXPECT_EQ(Buttons(current), ButtonStatus::makeButtons());
+  EXPECT_EQ(Buttons(current), ButtonStatus::justPressed());
+  EXPECT_EQ(Buttons(0), ButtonStatus::justReleased());
   EXPECT_EQ(2, diff);
 
   current = ((1 << 4));
   diff = ButtonStatus::set(current, previous);
   previous = current;
   EXPECT_EQ(Buttons(current), ButtonStatus::makeButtons());
+  EXPECT_EQ(Buttons(0), ButtonStatus::justPressed());
+  EXPECT_EQ(Buttons((1 << 11)), ButtonStatus::justReleased());
   EXPECT_EQ(-1, diff);
 
   current = ((1 << 4) | (1 << 8));
   diff = ButtonStatus::set(current, previous);
   previous = current;
   EXPECT_EQ(Buttons(current), ButtonStatus::makeButtons());
+  EXPECT_EQ(Buttons((1 <<  8)), ButtonStatus::justPressed());
+  EXPECT_EQ(Buttons(0), ButtonStatus::justReleased());
   EXPECT_EQ(1, diff);
 
   // ------------------------------------------------------------
