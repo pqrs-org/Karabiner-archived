@@ -61,6 +61,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static bool initialize(void);
     /**
      * Set state from difference of current/previous buttons.
+     * The previous value is different per pointing devices, so we need to give previous value by argument.
      *
      * @param current current buttons
      * @param previous previous buttons
@@ -74,8 +75,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void increase(Buttons buttons);
     static void decrease(Buttons buttons);
 
+    static Buttons justPressed(void) { return justPressed_; }
+    static Buttons justReleased(void) { return justReleased_; }
+
   private:
     static Item item_[MAXNUM];
+    static Buttons justPressed_;
+    static Buttons justReleased_;
   };
 }
 
