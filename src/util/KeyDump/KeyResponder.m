@@ -93,6 +93,16 @@
       return @"right";
     case 2 :
       return @"middle";
+    case 3 :
+      return @"button4";
+    case 4 :
+      return @"button5";
+    case 5 :
+      return @"button6";
+    case 6 :
+      return @"button7";
+    case 7 :
+      return @"button8";
     default :
       return @"other";
   }
