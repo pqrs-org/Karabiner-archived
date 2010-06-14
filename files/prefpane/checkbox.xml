@@ -5035,6 +5035,13 @@
             <item>
               <name>Command_L to Command_L</name>
               <appendix>(+ When you type Command_L only, send EISUU)</appendix>
+              <appendix>(+ When you type Any modifiers+Command_L only, send EISUU)</appendix>
+              <sysctl>remap.jis_commandL2commandL_eisuu_ex</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, VK_MOD_ANY, KeyCode::COMMAND_L, KeyCode::JIS_EISUU</autogen>
+            </item>
+            <item>
+              <name>Command_L to Command_L</name>
+              <appendix>(+ When you type Command_L only, send EISUU)</appendix>
               <appendix>(+ When you type Command_R+Command_L only, toggle Complete Vi Mode)</appendix>
               <sysctl>remap.jis_commandL2commandL_vimode_eisuu</sysctl>
               <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, ModifierFlag::COMMAND_R, KeyCode::COMMAND_L, ModifierFlag::COMMAND_R, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
