@@ -2951,8 +2951,11 @@
         </item>
         <item>
           <name>Control+PNBF to Up/Down/Left/Right</name>
+          <appendix>(+ Control+AE to Command+Left/Right)</appendix>
           <appendix>(+ Command+Control+PNBF to Shift+Up/Down/Left/Right)</appendix>
           <appendix>(+ Command+Control+AE to Shift+Command+Left/Right)</appendix>
+          <appendix>(+ retain Control+Shift+PNBF)</appendix>
+          <appendix>(+ retain Control+Shift+AE)</appendix>
           <sysctl>option.emacsmode_controlPNBF_ex</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
           <!-- #include "include/emacsmode_controlPNBF_ex.xml" -->
@@ -3360,8 +3363,11 @@
             </item>
             <item>
               <name>Force change C-pnbf to Up/Down/Left/Right</name>
+              <appendix>(+ Control+AE to Command+Left/Right)</appendix>
               <appendix>(+ Command+Control+PNBF to Shift+Up/Down/Left/Right)</appendix>
               <appendix>(+ Command+Control+AE to Shift+Command+Left/Right)</appendix>
+              <appendix>(+ retain Control+Shift+PNBF)</appendix>
+              <appendix>(+ retain Control+Shift+AE)</appendix>
               <list>
                 <item>
                   <name>In Emacs, Terminal</name>

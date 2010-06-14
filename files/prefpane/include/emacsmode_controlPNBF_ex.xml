@@ -1,7 +1,21 @@
+<!-- retain -->
+<autogen>--KeyToKey-- KeyCode::P, VK_CONTROL | VK_SHIFT, KeyCode::P, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+<autogen>--KeyToKey-- KeyCode::N, VK_CONTROL | VK_SHIFT, KeyCode::N, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+<autogen>--KeyToKey-- KeyCode::B, VK_CONTROL | VK_SHIFT, KeyCode::B, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+<autogen>--KeyToKey-- KeyCode::F, VK_CONTROL | VK_SHIFT, KeyCode::F, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+<autogen>--KeyToKey-- KeyCode::A, VK_CONTROL | VK_SHIFT, KeyCode::A, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+<autogen>--KeyToKey-- KeyCode::E, VK_CONTROL | VK_SHIFT, KeyCode::E, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+
 <autogen>--KeyToKey-- KeyCode::P, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::SHIFT_L</autogen>
 <autogen>--KeyToKey-- KeyCode::N, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::SHIFT_L</autogen>
 <autogen>--KeyToKey-- KeyCode::B, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_LEFT,  ModifierFlag::SHIFT_L</autogen>
 <autogen>--KeyToKey-- KeyCode::F, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::A, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_LEFT,  ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::E, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::SHIFT_L</autogen>
-<!-- #include "include/emacsmode_controlPNBF.xml" -->
+<autogen>--KeyToKey-- KeyCode::A, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+<autogen>--KeyToKey-- KeyCode::E, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+
+<autogen>--KeyToKey-- KeyCode::P, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
+<autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
+<autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
+<autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
+<autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+<autogen>--KeyToKey-- KeyCode::E, VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
