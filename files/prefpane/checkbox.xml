@@ -5108,6 +5108,42 @@
               <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::JIS_KANA</autogen>
             </item>
             <item>
+              <name>Command_R to KANA</name>
+              <appendix>(+ Any modifiers+Command_R to KANA)</appendix>
+              <sysctl>remap.jis_commandR2kana_ex</sysctl>
+              <!-- ============================================================ -->
+              <!-- FULL -->
+              <autogen>--KeyToKey-- KeyCode::COMMAND_R, VK_COMMAND | VK_CONTROL | VK_OPTION | VK_SHIFT, KeyCode::JIS_KANA</autogen>
+
+              <!-- ============================================================ -->
+              <!-- -1 -->
+              <autogen>--KeyToKey-- KeyCode::COMMAND_R,              VK_CONTROL | VK_OPTION | VK_SHIFT, KeyCode::JIS_KANA</autogen>
+              <autogen>--KeyToKey-- KeyCode::COMMAND_R, VK_COMMAND |              VK_OPTION | VK_SHIFT, KeyCode::JIS_KANA</autogen>
+              <autogen>--KeyToKey-- KeyCode::COMMAND_R, VK_COMMAND | VK_CONTROL |             VK_SHIFT, KeyCode::JIS_KANA</autogen>
+              <autogen>--KeyToKey-- KeyCode::COMMAND_R, VK_COMMAND | VK_CONTROL | VK_OPTION           , KeyCode::JIS_KANA</autogen>
+
+              <!-- ============================================================ -->
+              <!-- -2 -->
+              <autogen>--KeyToKey-- KeyCode::COMMAND_R,                           VK_OPTION | VK_SHIFT, KeyCode::JIS_KANA</autogen>
+              <autogen>--KeyToKey-- KeyCode::COMMAND_R,              VK_CONTROL |             VK_SHIFT, KeyCode::JIS_KANA</autogen>
+              <autogen>--KeyToKey-- KeyCode::COMMAND_R,              VK_CONTROL | VK_OPTION           , KeyCode::JIS_KANA</autogen>
+
+              <autogen>--KeyToKey-- KeyCode::COMMAND_R, VK_COMMAND |                          VK_SHIFT, KeyCode::JIS_KANA</autogen>
+              <autogen>--KeyToKey-- KeyCode::COMMAND_R, VK_COMMAND |              VK_OPTION           , KeyCode::JIS_KANA</autogen>
+
+              <autogen>--KeyToKey-- KeyCode::COMMAND_R, VK_COMMAND | VK_CONTROL                       , KeyCode::JIS_KANA</autogen>
+
+              <!-- ============================================================ -->
+              <!-- -3 -->
+              <autogen>--KeyToKey-- KeyCode::COMMAND_R, VK_COMMAND                                    , KeyCode::JIS_KANA</autogen>
+              <autogen>--KeyToKey-- KeyCode::COMMAND_R,              VK_CONTROL                       , KeyCode::JIS_KANA</autogen>
+              <autogen>--KeyToKey-- KeyCode::COMMAND_R,                           VK_OPTION           , KeyCode::JIS_KANA</autogen>
+              <autogen>--KeyToKey-- KeyCode::COMMAND_R,                                       VK_SHIFT, KeyCode::JIS_KANA</autogen>
+
+              <!-- 0 -->
+              <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::JIS_KANA</autogen>
+            </item>
+            <item>
               <name>Command_R to Shift_L+KANA</name>
               <sysctl>remap.jis_commandR2shiftLkana</sysctl>
               <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::JIS_KANA, ModifierFlag::SHIFT_L</autogen>
