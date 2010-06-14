@@ -2950,6 +2950,14 @@
           <!-- #include "include/emacsmode_controlPNBF_nomodifiers.xml" -->
         </item>
         <item>
+          <name>Control+PNBF to Up/Down/Left/Right</name>
+          <appendix>(+ Command+Control+PNBF to Shift+Up/Down/Left/Right)</appendix>
+          <appendix>(+ Command+Control+AE to Shift+Command+Left/Right)</appendix>
+          <sysctl>option.emacsmode_controlPNBF_ex</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+          <!-- #include "include/emacsmode_controlPNBF_ex.xml" -->
+        </item>
+        <item>
           <name>Control+V to PageDown</name>
           <sysctl>option.emacsmode_controlV</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
@@ -3347,6 +3355,37 @@
                   <sysctl>option.emacsmode_force_controlPNBF_eclipse</sysctl>
                   <only>ECLIPSE</only>
                   <!-- #include "include/emacsmode_controlPNBF.xml" -->
+                </item>
+              </list>
+            </item>
+            <item>
+              <name>Force change C-pnbf to Up/Down/Left/Right</name>
+              <appendix>(+ Command+Control+PNBF to Shift+Up/Down/Left/Right)</appendix>
+              <appendix>(+ Command+Control+AE to Shift+Command+Left/Right)</appendix>
+              <list>
+                <item>
+                  <name>In Emacs, Terminal</name>
+                  <sysctl>option.emacsmode_force_controlPNBF_ex_term</sysctl>
+                  <only>EMACS, TERMINAL</only>
+                  <!-- #include "include/emacsmode_controlPNBF_ex.xml" -->
+                </item>
+                <item>
+                  <name>In X11</name>
+                  <sysctl>option.emacsmode_force_controlPNBF_ex_x11</sysctl>
+                  <only>X11</only>
+                  <!-- #include "include/emacsmode_controlPNBF_ex.xml" -->
+                </item>
+                <item>
+                  <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
+                  <sysctl>option.emacsmode_force_controlPNBF_ex_vm</sysctl>
+                  <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+                  <!-- #include "include/emacsmode_controlPNBF_ex.xml" -->
+                </item>
+                <item>
+                  <name>In Eclipse</name>
+                  <sysctl>option.emacsmode_force_controlPNBF_ex_eclipse</sysctl>
+                  <only>ECLIPSE</only>
+                  <!-- #include "include/emacsmode_controlPNBF_ex.xml" -->
                 </item>
               </list>
             </item>
