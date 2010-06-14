@@ -4356,10 +4356,10 @@
           <name>Enable at only Gruml</name>
           <list>
             <item>
-              <name>Change Option_R to Enter</name>
-              <sysctl>remap.app_gruml_optionR2enter</sysctl>
+              <name>Change Option_R to Return</name>
+              <sysctl>remap.app_gruml_optionR2return</sysctl>
               <only>GRUML</only>
-              <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::ENTER</autogen>
+              <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::RETURN</autogen>
             </item>
           </list>
         </item>
