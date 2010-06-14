@@ -64,16 +64,13 @@ def preprocess(listAutogen)
       list << autogen.gsub(/VK_MOD_CCO_L/, "ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L")
       modify = true
     elsif /VK_MOD_ANY/ =~ autogen then
+      # to reduce combination, we ignore same modifier combination such as (COMMAND_L | COMMAND_R).
       modifiers = [
-                   'ModifierFlag::COMMAND_L',
-                   'ModifierFlag::COMMAND_R',
-                   'ModifierFlag::CONTROL_L',
-                   'ModifierFlag::CONTROL_R',
+                   'VK_COMMAND',
+                   'VK_CONTROL',
                    'ModifierFlag::FN',
-                   'ModifierFlag::OPTION_L',
-                   'ModifierFlag::OPTION_R',
-                   'ModifierFlag::SHIFT_L',
-                   'ModifierFlag::SHIFT_R',
+                   'VK_OPTION',
+                   'VK_SHIFT',
                   ]
       (0 .. modifiers.length).to_a.reverse.each do |i|
         modifiers.combination(i).to_a.each do |pattern|
@@ -82,6 +79,7 @@ def preprocess(listAutogen)
           list << autogen.gsub(/VK_MOD_ANY/, pat.join(' | '))
         end
       end
+      modify = true
 
     elsif /FROMKEYCODE_(HOME|END|PAGEUP|PAGEDOWN|FORWARD_DELETE)\s*,\s*ModifierFlag::/ =~ autogen then
       key = $1
