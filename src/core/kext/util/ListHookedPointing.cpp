@@ -52,6 +52,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       hp->set_previousbuttons(buttons);
       NumHeldDownKeys::set(diff);
 
+      if (ButtonStatus::justPressed() != Buttons(0)) {
+        CommonData::setcurrent_workspacedata();
+      }
+
       // ------------------------------------------------------------
       Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, dx, dy));
       if (! ptr) return;
