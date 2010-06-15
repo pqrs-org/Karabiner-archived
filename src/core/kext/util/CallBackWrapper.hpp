@@ -263,7 +263,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     static Queue* queue_;
     static IntervalChecker ic_;
     static TimerWrapper timer_;
-    static bool isTimerActive_;
   };
 }
 
