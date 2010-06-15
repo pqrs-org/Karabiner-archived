@@ -292,11 +292,16 @@
       <appendix>Option_L+RightClick to Shift_L</appendix>
       <appendix>Command_L+RightClick to A, Shift_L+B, Control_L+C</appendix>
       <appendix>RightClick to Control_L</appendix>
+      <appendix>RightClick to Tab (if application == TERMINAL)</appendix>
       <appendix>Control_L+LeftClick to Space</appendix>
       <sysctl>remap.samples_pointingbuttontokey</sysctl>
       <autogen>--PointingButtonToKey-- PointingButton::MIDDLE, KeyCode::RETURN</autogen>
       <autogen>--PointingButtonToKey-- PointingButton::RIGHT, ModifierFlag::OPTION_L, KeyCode::SHIFT_L</autogen>
       <autogen>--PointingButtonToKey-- PointingButton::RIGHT, ModifierFlag::COMMAND_L, KeyCode::A, KeyCode::B, ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
+      <block>
+        <only>TERMINAL</only>
+        <autogen>--PointingButtonToKey-- PointingButton::RIGHT, KeyCode::TAB</autogen>
+      </block>
       <autogen>--PointingButtonToKey-- PointingButton::RIGHT, KeyCode::CONTROL_L</autogen>
       <autogen>--PointingButtonToKey-- PointingButton::LEFT, ModifierFlag::CONTROL_L, KeyCode::SPACE</autogen>
     </item>
