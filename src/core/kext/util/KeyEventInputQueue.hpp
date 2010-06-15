@@ -141,7 +141,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     static Item* current_;
     static Item* last_;
     static TimerWrapper timer_;
-    static bool isTimerActive_;
   };
 }
 

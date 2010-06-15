@@ -10,7 +10,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   KeyEventInputQueue::Item* KeyEventInputQueue::current_ = KeyEventInputQueue::item_;
   KeyEventInputQueue::Item* KeyEventInputQueue::last_ = KeyEventInputQueue::item_;
   TimerWrapper KeyEventInputQueue::timer_;
-  bool KeyEventInputQueue::isTimerActive_;
 
   namespace GeneratedCode {
 #include "../config/output/include.remapcode_simultaneouskeypresses_func.cpp"
@@ -25,7 +24,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     ic_.begin();
 
     timer_.initialize(&workloop, NULL, KeyEventInputQueue::fire);
-    isTimerActive_ = false;
 
     for (unsigned int i = 0; GeneratedCode::listRemapClass_simultaneouskeypresses[i]; ++i) {
       GeneratedCode::listRemapClass_simultaneouskeypresses[i]->initialize();
@@ -139,10 +137,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (p->delayMS == 0) {
       fire_nolock();
     } else {
-      if (! isTimerActive_) {
-        timer_.setTimeoutMS(current_->delayMS);
-        isTimerActive_ = true;
-      }
+      timer_.setTimeoutMS(current_->delayMS, false);
     }
   }
 
@@ -156,8 +151,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   KeyEventInputQueue::fire_nolock(void)
   {
-    isTimerActive_ = false;
-
     if (! current_->active) return;
 
     if (! current_->dropped) {
@@ -181,7 +174,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (current_->active && current_->delayMS > 0) {
       timer_.setTimeoutMS(current_->delayMS);
-      isTimerActive_ = true;
     }
   }
 

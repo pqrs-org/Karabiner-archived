@@ -12,7 +12,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   Queue* EventOutputQueue::queue_;
   IntervalChecker EventOutputQueue::ic_;
   TimerWrapper EventOutputQueue::timer_;
-  bool EventOutputQueue::isTimerActive_;
 
   void
   Params_KeyboardEventCallBack::log(const char* message) const
@@ -313,7 +312,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     queue_ = new Queue();
     ic_.begin();
     timer_.initialize(&workloop, NULL, EventOutputQueue::fire);
-    isTimerActive_ = false;
   }
 
   void
@@ -343,13 +341,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (isempty && ic_.getmillisec() > DELAY) {
       fire_nolock();
     } else {
-      if (! isTimerActive_) {
-        if (config.debug_devel) {
-          IOLog("KeyRemap4MacBook --Info-- Params_KeyboardEventCallBack::Queue enqueued ic_.getmillisec() = %d\n", ic_.getmillisec());
-        }
-        timer_.setTimeoutMS(DELAY);
-        isTimerActive_ = true;
+      if (config.debug_devel) {
+        IOLog("KeyRemap4MacBook --Info-- Params_KeyboardEventCallBack::Queue enqueued ic_.getmillisec() = %d\n", ic_.getmillisec());
       }
+      timer_.setTimeoutMS(DELAY, false);
     }
 
     ic_.begin();
@@ -431,8 +426,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   EventOutputQueue::fire_nolock(void)
   {
-    isTimerActive_ = false;
-
     Item* p = static_cast<Item*>(queue_->front());
     if (! p) return;
 
@@ -462,7 +455,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ----------------------------------------
     if (! queue_->empty()) {
       timer_.setTimeoutMS(DELAY);
-      isTimerActive_ = true;
     }
   }
 
