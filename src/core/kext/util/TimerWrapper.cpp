@@ -12,7 +12,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (owner == NULL) {
       owner = reinterpret_cast<OSObject*>(this);
     }
-    timer_ = IOTimerEventSource::timerEventSource(owner, func);
+    action_ = func;
+    action_owner_ = owner;
+    timer_ = IOTimerEventSource::timerEventSource(reinterpret_cast<OSObject*>(this), callback_);
 
     if (workloop_->addEventSource(timer_) != kIOReturnSuccess) {
       IOLog("[KeyRemap4MacBook ERROR] TimerWrapper addEventSource failed\n");
@@ -21,6 +23,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     lock_ = IOLockWrapper::alloc();
+    lock_active_ = IOLockWrapper::alloc();
   }
 
   void
@@ -41,14 +44,22 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     IOLockWrapper::free(lock_);
+    IOLockWrapper::free(lock_active_);
   }
 
   IOReturn
-  TimerWrapper::setTimeoutMS(UInt32 ms)
+  TimerWrapper::setTimeoutMS(UInt32 ms, bool overwrite)
   {
+    IOLockWrapper::ScopedLock lk(lock_active_);
+
     if (! timer_) {
       return kIOReturnNoResources;
     }
+    if (! overwrite && active_) {
+      return kIOReturnSuccess;
+    }
+
+    active_ = true;
     return timer_->setTimeoutMS(ms);
   }
 
@@ -58,5 +69,18 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (timer_) {
       timer_->cancelTimeout();
     }
+  }
+
+  void
+  TimerWrapper::callback_(OSObject* owner, IOTimerEventSource* sender)
+  {
+    TimerWrapper* self = reinterpret_cast<TimerWrapper*>(owner);
+    if (! self) return;
+
+    {
+      IOLockWrapper::ScopedLock lk(self->lock_active_);
+      self->active_ = false;
+    }
+    self->action_(self->action_owner_, sender);
   }
 }
