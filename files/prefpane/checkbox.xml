@@ -449,7 +449,8 @@
 
     <item>
       <name>Change CapsLock Key</name>
-      <appendix>*** Use "PCKeyboardHack" together to change CapsLock key. ***</appendix>
+      <appendix>*** Use "PCKeyboardHack" to change CapsLock key.</appendix>
+      <appendix>*** &#8594; http://pqrs.org/macosx/keyremap4macbook/extra.html</appendix>
     </item>
 
     <item>
@@ -935,7 +936,8 @@
 
     <item>
       <name>Change Eject Key</name>
-      <appendix>*** We recommend to use "NoEjectDelay" together when you change eject key. ***</appendix>
+      <appendix>*** We recommend to use "NoEjectDelay" together when you change eject key.</appendix>
+      <appendix>*** &#8594; http://pqrs.org/macosx/keyremap4macbook/noejectdelay.html</appendix>
       <list>
         <item>
           <name>Eject to Dashboard if no modifiers pressed</name>
