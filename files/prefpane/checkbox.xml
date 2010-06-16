@@ -448,6 +448,11 @@
     </item>
 
     <item>
+      <name>Change CapsLock Key</name>
+      <appendix>*** Use "PCKeyboardHack" together to change CapsLock key. ***</appendix>
+    </item>
+
+    <item>
       <name>Change Command_L Key (Left Command)</name>
       <list>
         <item>
@@ -930,7 +935,7 @@
 
     <item>
       <name>Change Eject Key</name>
-      <appendix>*** We recommend to use NoEjectDelay together when you change eject key. ***</appendix>
+      <appendix>*** We recommend to use "NoEjectDelay" together when you change eject key. ***</appendix>
       <list>
         <item>
           <name>Eject to Dashboard if no modifiers pressed</name>
