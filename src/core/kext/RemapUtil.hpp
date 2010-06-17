@@ -253,6 +253,85 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapUtil::KeyToKey keytokey_;
   };
 
+  class HoldingKeyToKey {
+  public:
+    static void initialize(IOWorkLoop& workloop);
+    static void terminate(void);
+
+    bool remap(RemapParams& remapParams, KeyCode fromKeyCode, Flags fromFlags,
+               KeyCode toKeyCode_normal,  Flags toFlags_normal,
+               KeyCode toKeyCode_holding, Flags toFlags_holding);
+
+    // no toFlags_normal
+    bool remap(RemapParams& remapParams, KeyCode fromKeyCode, Flags fromFlags,
+               KeyCode toKeyCode_normal,
+               KeyCode toKeyCode_holding, Flags toFlags_holding) {
+      return remap(remapParams, fromKeyCode, fromFlags,
+                   toKeyCode_normal,  ModifierFlag::NONE,
+                   toKeyCode_holding, toFlags_holding);
+    }
+    // no toFlags_holding
+    bool remap(RemapParams& remapParams, KeyCode fromKeyCode, Flags fromFlags,
+               KeyCode toKeyCode_normal,  Flags toFlags_normal,
+               KeyCode toKeyCode_holding) {
+      return remap(remapParams, fromKeyCode, fromFlags,
+                   toKeyCode_normal,  toFlags_normal,
+                   toKeyCode_holding, ModifierFlag::NONE);
+    }
+    // no toFlags_normal, toFlags_holding
+    bool remap(RemapParams& remapParams, KeyCode fromKeyCode, Flags fromFlags,
+               KeyCode toKeyCode_normal,
+               KeyCode toKeyCode_holding) {
+      return remap(remapParams, fromKeyCode, fromFlags,
+                   toKeyCode_normal,  ModifierFlag::NONE,
+                   toKeyCode_holding, ModifierFlag::NONE);
+    }
+
+    // no fromFlags
+    bool remap(RemapParams& remapParams, KeyCode fromKeyCode,
+               KeyCode toKeyCode_normal,  Flags toFlags_normal,
+               KeyCode toKeyCode_holding, Flags toFlags_holding) {
+      return remap(remapParams, fromKeyCode, Flags(0),
+                   toKeyCode_normal,  toFlags_normal,
+                   toKeyCode_holding, toFlags_holding);
+    }
+
+    // no fromFlags, toFlags_normal
+    bool remap(RemapParams& remapParams, KeyCode fromKeyCode,
+               KeyCode toKeyCode_normal,
+               KeyCode toKeyCode_holding, Flags toFlags_holding) {
+      return remap(remapParams, fromKeyCode, Flags(0),
+                   toKeyCode_normal,  ModifierFlag::NONE,
+                   toKeyCode_holding, toFlags_holding);
+    }
+    // no fromFlags, toFlags_holding
+    bool remap(RemapParams& remapParams, KeyCode fromKeyCode,
+               KeyCode toKeyCode_normal,  Flags toFlags_normal,
+               KeyCode toKeyCode_holding) {
+      return remap(remapParams, fromKeyCode, Flags(0),
+                   toKeyCode_normal,  toFlags_normal,
+                   toKeyCode_holding, ModifierFlag::NONE);
+    }
+    // no fromFlags, toFlags_normal, toFlags_holding
+    bool remap(RemapParams& remapParams, KeyCode fromKeyCode,
+               KeyCode toKeyCode_normal,
+               KeyCode toKeyCode_holding) {
+      return remap(remapParams, fromKeyCode, Flags(0),
+                   toKeyCode_normal,  ModifierFlag::NONE,
+                   toKeyCode_holding, ModifierFlag::NONE);
+    }
+
+  private:
+    static void fireholding(OSObject* owner, IOTimerEventSource* sender);
+
+    static TimerWrapper timer_;
+    static KeyCode toKeyCode_holding_;
+    static Flags toFlags_holding_;
+    static bool isfirenormal_;
+    static bool isfireholding_;
+    RemapUtil::KeyToKey keytokey_;
+  };
+
   // --------------------
   // ex. Ignore JIS_KANA x 2. (validate only the first once)
   class IgnoreMultipleSameKeyPress {

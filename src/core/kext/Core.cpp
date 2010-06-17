@@ -96,6 +96,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         KeyEventInputQueue::initialize(*workLoop);
         VirtualKey::initialize(*workLoop);
         EventOutputQueue::initialize(*workLoop);
+        HoldingKeyToKey::initialize(*workLoop);
       }
     }
 
@@ -110,6 +111,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       KeyEventInputQueue::terminate();
       VirtualKey::terminate();
       EventOutputQueue::terminate();
+      HoldingKeyToKey::terminate();
 
       if (workLoop) {
         workLoop->release();
