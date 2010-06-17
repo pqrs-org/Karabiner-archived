@@ -279,6 +279,11 @@ def parseautogen(name, lines, autogen_index)
           code_key << "if (modifierholdingkeytokey#{autogen_index}_.remap(remapParams, #{params})) break;"
           $func[:key] << name
 
+        when 'HoldingKeyToKey'
+          code_variable << ['HoldingKeyToKey', "holdingkeytokey#{autogen_index}_"]
+          code_key << "if (holdingkeytokey#{autogen_index}_.remap(remapParams, #{params})) break;"
+          $func[:key] << name
+
         when 'ConsumerToKey'
           code_variable << ['RemapUtil::ConsumerToKey', "consumertokey#{autogen_index}_"]
           code_consumer << "if (consumertokey#{autogen_index}_.remap(remapParams, #{params})) break;"
