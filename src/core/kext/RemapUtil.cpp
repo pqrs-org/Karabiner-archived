@@ -952,7 +952,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       isfireholding_ = false;
       toKeyCode_holding_ = toKeyCode_holding;
       toFlags_holding_ = toFlags_holding;
-      timer_.setTimeoutMS(1000);
+      timer_.setTimeoutMS(config.get_holdingkeytokey_wait());
     } else {
       timer_.cancelTimeout();
       if (! isfireholding_) {

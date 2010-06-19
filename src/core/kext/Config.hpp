@@ -32,6 +32,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     unsigned int get_simultaneouskeypresses_delay(void) const {
       return getvalue(parameter_simultaneouskeypresses_delay, 5, 1000);
     }
+    unsigned int get_holdingkeytokey_wait(void) const {
+      return getvalue(parameter_holdingkeytokey_wait, 10);
+    }
 
     // ----------------------------------------
     int debug;
