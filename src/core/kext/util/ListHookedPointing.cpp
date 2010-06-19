@@ -61,6 +61,14 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! ptr) return;
       Params_RelativePointerEventCallback& params = *ptr;
 
+      // We set EventWatcher::on only when Buttons pressed.
+      // It's cause a problem when you use the following settings. (Unexpected FN_Lock is fired).
+      //   - FN+CursorMove to ScrollWheel
+      //   - FN to FN (+ When you type FN only, send FN_Lock)
+      //
+      // But, if we call EventWatcher::on every CursorMove event, unexpected cancel occurs.
+      // It's more terrible than above problem.
+      // So, we keep to call EventWatcher::on only when Buttons pressed.
       if (ButtonStatus::justPressed() != Buttons(0)) {
         EventWatcher::on();
       }
