@@ -61,7 +61,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! ptr) return;
       Params_RelativePointerEventCallback& params = *ptr;
 
-      EventWatcher::on();
+      if (ButtonStatus::justPressed() != Buttons(0)) {
+        EventWatcher::on();
+      }
 
       Core::remap_RelativePointerEventCallback(params);
     }
@@ -109,7 +111,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! ptr) return;
       Params_ScrollWheelEventCallback& params = *ptr;
 
-      EventWatcher::on();
+      // EventWatcher::on is not necessary.
 
       Core::remap_ScrollWheelEventCallback(params);
     }
