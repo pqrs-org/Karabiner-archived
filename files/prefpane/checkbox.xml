@@ -4555,6 +4555,11 @@
               <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::DELETE</autogen>
             </item>
             <item>
+              <name>Application Key to Escape</name>
+              <sysctl>remap.pc_application2escape</sysctl>
+              <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::ESCAPE</autogen>
+            </item>
+            <item>
               <name>Application Key to Expose All</name>
               <sysctl>remap.pc_application2exposeALL</sysctl>
               <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::EXPOSE_ALL</autogen>
