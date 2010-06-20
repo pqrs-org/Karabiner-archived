@@ -4506,6 +4506,11 @@
           <name>Change PC Application Key</name>
           <list>
             <item>
+              <name>Application Key to CapsLock</name>
+              <sysctl>remap.pc_application2capslock</sysctl>
+              <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::CAPSLOCK</autogen>
+            </item>
+            <item>
               <name>Application Key to Command_L</name>
               <sysctl>remap.pc_application2commandL</sysctl>
               <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::COMMAND_L</autogen>
