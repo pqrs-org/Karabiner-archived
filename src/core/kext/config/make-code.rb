@@ -2,6 +2,7 @@
 
 require 'inc.preprocess.rb'
 require 'inc.filter.rb'
+require 'inc.remapclass.rb'
 
 $outfile = {
   :config => open('output/include.config.hpp', 'w'),
@@ -31,8 +32,7 @@ $func = {
 
 # ======================================================================
 def parseautogen(name, lines, autogen_index)
-  filter = Filter.new
-  code_key = []
+  remapclass = RemapClass.new(name, autogen_index)
   code_consumer = []
   code_pointing = []
   code_variable = []
@@ -55,126 +55,17 @@ def parseautogen(name, lines, autogen_index)
 
     # --------------------------------------------------
     if /<block>/ =~ l then
-      block_code_key, block_code_consumer, block_code_pointing, block_code_variable, autogen_index, block_simultaneouskeypresses_code, block_simultaneouskeypresses_variable = parseautogen(name, lines, autogen_index)
+      block_remapclass = parseautogen(name, lines, remapclass.autogen_index)
 
-      code_key << block_code_key unless block_code_key.empty?
-      code_consumer << block_code_consumer unless block_code_consumer.empty?
-      code_pointing << block_code_pointing unless block_code_pointing.empty?
-      code_variable += block_code_variable
-      simultaneouskeypresses_code << block_simultaneouskeypresses_code unless block_simultaneouskeypresses_code.empty?
-      simultaneouskeypresses_variable += block_simultaneouskeypresses_variable
+      remapclass += block_remapclass
+      remapclass.autogen_index = block_remapclass.autogen_index
 
     elsif /<\/block>/ =~ l then
       break
 
-    elsif filter.parse(l) then
+    elsif remapclass.parse(l) then
       # do nothing
 
-    elsif /<autogen>(.+?)<\/autogen>/ =~ l then
-      autogen = $1
-      if /^--(.+?)-- (.+)$/ =~ autogen then
-        type = $1
-        params = $2
-        autogen_index += 1
-
-        case type
-        when 'SetKeyboardType'
-          $outfile[:remapcode_keyboardtype] << "if (config.#{name} && ! config.notsave_passthrough) {\n"
-          $outfile[:remapcode_keyboardtype] << "  keyboardType = #{params}.get();\n"
-          $outfile[:remapcode_keyboardtype] << "}\n"
-
-        when 'ShowStatusMessage'
-          if (name == 'notsave_passthrough') then
-            $outfile[:remapcode_refresh_remapfunc_statusmessage] << "if (config.#{name}) {\n"
-          else
-            $outfile[:remapcode_refresh_remapfunc_statusmessage] << "if (config.#{name} && ! config.notsave_passthrough) {\n"
-          end
-          $outfile[:remapcode_refresh_remapfunc_statusmessage] << "  strlcat(statusmessage, #{params} \" \", sizeof(statusmessage));\n"
-          $outfile[:remapcode_refresh_remapfunc_statusmessage] << "  isStatusMessageVisible = true;\n"
-          $outfile[:remapcode_refresh_remapfunc_statusmessage] << "}\n"
-
-        when 'SimultaneousKeyPresses'
-          $outfile[:keycode_vk_config] << "VK_SIMULTANEOUSKEYPRESSES_#{name}_#{autogen_index} --AUTO--\n"
-          $func[:simultaneouskeypresses] << name
-          simultaneouskeypresses_variable << { :name => "remap_#{autogen_index}_", :params => "KeyCode::VK_SIMULTANEOUSKEYPRESSES_#{name}_#{autogen_index}, #{params}" }
-          simultaneouskeypresses_code << "remap_#{autogen_index}_.remap();"
-
-        when 'KeyToKey'
-          code_variable << ['RemapUtil::KeyToKey', "keytokey#{autogen_index}_"]
-          code_key << "if (keytokey#{autogen_index}_.remap(remapParams, #{params})) break;"
-          $func[:key] << name
-
-        when 'DoublePressModifier'
-          code_variable << ['DoublePressModifier', "doublepressmodifier#{autogen_index}_"]
-          code_key << "if (doublepressmodifier#{autogen_index}_.remap(remapParams, #{params})) break;"
-          $func[:key] << name
-
-        when 'IgnoreMultipleSameKeyPress'
-          code_variable << ['IgnoreMultipleSameKeyPress', "ignoremultiplesamekeypress#{autogen_index}_"]
-          code_key << "if (ignoremultiplesamekeypress#{autogen_index}_.remap(remapParams, #{params})) break;"
-          $func[:key] << name
-
-        when 'KeyToConsumer'
-          code_variable << ['RemapUtil::KeyToConsumer', "keytoconsumer#{autogen_index}_"]
-          code_key << "if (keytoconsumer#{autogen_index}_.remap(remapParams, #{params})) break;"
-          $func[:key] << name
-
-        when 'KeyToPointingButton'
-          code_variable << ['RemapUtil::KeyToPointingButton', "keytopointing#{autogen_index}_"]
-          code_key << "if (keytopointing#{autogen_index}_.remap(remapParams, #{params})) break;"
-          $func[:key] << name
-
-        when 'KeyOverlaidModifier'
-          code_variable << ['KeyOverlaidModifier', "keyoverlaidmodifier#{autogen_index}_"]
-          code_key << "if (keyoverlaidmodifier#{autogen_index}_.remap(remapParams, #{params})) break;"
-          $func[:key] << name
-
-        when 'KeyOverlaidModifierWithRepeat'
-          code_variable << ['KeyOverlaidModifier', "keyoverlaidmodifier#{autogen_index}_"]
-          code_key << "if (keyoverlaidmodifier#{autogen_index}_.remapWithRepeat(remapParams, #{params})) break;"
-          $func[:key] << name
-
-        when 'ModifierHoldingKeyToKey'
-          code_variable << ['ModifierHoldingKeyToKey', "modifierholdingkeytokey#{autogen_index}_"]
-          code_key << "if (modifierholdingkeytokey#{autogen_index}_.remap(remapParams, #{params})) break;"
-          $func[:key] << name
-
-        when 'HoldingKeyToKey'
-          code_variable << ['HoldingKeyToKey', "holdingkeytokey#{autogen_index}_"]
-          code_key << "if (holdingkeytokey#{autogen_index}_.remap(remapParams, #{params})) break;"
-          $func[:key] << name
-
-        when 'ConsumerToKey'
-          code_variable << ['RemapUtil::ConsumerToKey', "consumertokey#{autogen_index}_"]
-          code_consumer << "if (consumertokey#{autogen_index}_.remap(remapParams, #{params})) break;"
-          $func[:consumer] << name
-
-        when 'ConsumerToConsumer'
-          code_variable << ['RemapUtil::ConsumerToConsumer', "consumertoconsumer#{autogen_index}_"]
-          code_consumer << "if (consumertoconsumer#{autogen_index}_.remap(remapParams, #{params})) break;"
-          $func[:consumer] << name
-
-        when 'PointingRelativeToScroll'
-          code_variable << ['RemapUtil::PointingRelativeToScroll', "pointingrelativetoscroll#{autogen_index}_"]
-          code_pointing << "if (pointingrelativetoscroll#{autogen_index}_.remap(remapParams, #{params})) break;"
-          $func[:pointing] << name
-
-        when 'PointingButtonToPointingButton'
-          code_variable << ['RemapUtil::PointingButtonToPointingButton', "pointingbuttontopointingbutton#{autogen_index}_"]
-          code_pointing << "if (pointingbuttontopointingbutton#{autogen_index}_.remap(remapParams, #{params})) break;"
-          $func[:pointing] << name
-
-        when 'PointingButtonToKey'
-          code_variable << ['RemapUtil::PointingButtonToKey', "pointingbuttontokey#{autogen_index}_"]
-          code_pointing << "if (pointingbuttontokey#{autogen_index}_.remap(remapParams, #{params})) break;"
-          $func[:pointing] << name
-
-        else
-          print "%%% ERROR #{type} %%%\n#{l}\n"
-          exit 1
-
-        end
-      end
     elsif /<.+?>.+?<\/.+?>/ =~ l then
       print "%%% ERROR unknown command %%%\n#{l}\n"
       exit 1
@@ -182,48 +73,8 @@ def parseautogen(name, lines, autogen_index)
   end
 
   # ======================================================================
-  result_code_key = ''
-  result_code_consumer = ''
-  result_code_pointing = ''
-  result_simultaneouskeypresses_code = ''
-
-  unless code_key.empty? then
-    result_code_key += "  do {\n"
-    result_code_key += filter.to_code
-    code_key.each do |line|
-      result_code_key += "    #{line}\n"
-    end
-    result_code_key += "  } while (false);\n"
-  end
-
-  unless code_consumer.empty? then
-    result_code_consumer += "  do {\n"
-    result_code_consumer += filter.to_code
-    code_consumer.each do |line|
-      result_code_consumer += "    #{line}\n"
-    end
-    result_code_consumer += "  } while (false);\n"
-  end
-
-  unless code_pointing.empty? then
-    result_code_pointing += "  do {\n"
-    result_code_pointing += filter.to_code
-    code_pointing.each do |line|
-      result_code_pointing += "    #{line}\n"
-    end
-    result_code_pointing += "  } while (false);\n"
-  end
-
-  unless simultaneouskeypresses_variable.empty? then
-    result_simultaneouskeypresses_code += "  do {\n"
-    result_simultaneouskeypresses_code += filter.to_code
-    simultaneouskeypresses_code.each do |line|
-      result_simultaneouskeypresses_code += "    #{line}\n"
-    end
-    result_simultaneouskeypresses_code += "  } while (false);\n"
-  end
-
-  return result_code_key, result_code_consumer, result_code_pointing, code_variable, autogen_index, result_simultaneouskeypresses_code, simultaneouskeypresses_variable
+  remapclass.fixup
+  return remapclass
 end
 
 # ----------------------------------------------------------------------
@@ -278,64 +129,35 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
   lines = item.split(/\n/)
   lines = Preprocesser.new().preprocess(lines)
 
-  code_key, code_consumer, code_pointing, code_variable, autogen_index, simultaneouskeypresses_code, simultaneouskeypresses_variable = parseautogen(name, lines, 0)
+  remapclass = parseautogen(name, lines, 0)
 
   unless lines.empty? then
     print "%%% ERROR no </block> at #{name} %%%\n"
   end
 
-  next if code_key.empty? &&
-    code_consumer.empty? &&
-    code_pointing.empty? &&
-    code_variable.empty? &&
-    simultaneouskeypresses_code.empty? &&
-    simultaneouskeypresses_variable.empty?
+  $outfile[:remapcode_keyboardtype] << remapclass.code[:remap_setkeyboardtype]
+  $outfile[:remapcode_refresh_remapfunc_statusmessage] << remapclass.code[:refresh_remapfunc_statusmessage]
 
-  $outfile[:remapcode_func] << "class RemapClass_#{name} {\n"
-  $outfile[:remapcode_func] << "public:\n"
-  unless code_key.empty? then
-    $outfile[:remapcode_func] << "static void remap_key(RemapParams &remapParams) {\n"
-    $outfile[:remapcode_func] << code_key
-    $outfile[:remapcode_func] << "}\n"
-  end
-  unless code_consumer.empty? then
-    $outfile[:remapcode_func] << "static void remap_consumer(RemapConsumerParams &remapParams) {\n"
-    $outfile[:remapcode_func] << code_consumer
-    $outfile[:remapcode_func] << "}\n"
-  end
-  unless code_pointing.empty? then
-    $outfile[:remapcode_func] << "static void remap_pointing(RemapPointingParams_relative &remapParams) {\n"
-    $outfile[:remapcode_func] << code_pointing
-    $outfile[:remapcode_func] << "}\n"
-  end
-  $outfile[:remapcode_func] << "\n"
-  $outfile[:remapcode_func] << "private:\n"
-  code_variable.each do |variable|
-    $outfile[:remapcode_func] << "  static #{variable[0]} #{variable[1]};\n"
-  end
-  $outfile[:remapcode_func] << "};\n"
+  next if remapclass.empty?
 
-  code_variable.each do |variable|
-    $outfile[:remapcode_func] << "#{variable[0]} RemapClass_#{name}::#{variable[1]};\n"
-  end
-  $outfile[:remapcode_func] << "\n\n"
+  $outfile[:remapcode_func] << remapclass.to_code
 
-  unless simultaneouskeypresses_variable.empty? then
+  unless remapclass.code[:simultaneouskeypresses_variable].empty? then
     $outfile[:remapcode_simultaneouskeypresses_func] << "class RemapClass_#{name} : public KeyEventInputQueue::RemapClass {\n"
     $outfile[:remapcode_simultaneouskeypresses_func] << "public:\n"
 
     $outfile[:remapcode_simultaneouskeypresses_func] << "void initialize(void) {\n"
-    simultaneouskeypresses_variable.each do |variable|
+    remapclass.code[:simultaneouskeypresses_variable].each do |variable|
       $outfile[:remapcode_simultaneouskeypresses_func] << "  #{variable[:name]}.initialize(#{variable[:params]});\n"
     end
     $outfile[:remapcode_simultaneouskeypresses_func] << "}\n"
 
     $outfile[:remapcode_simultaneouskeypresses_func] << "void remap(void) {\n"
-    $outfile[:remapcode_simultaneouskeypresses_func] << simultaneouskeypresses_code
+    $outfile[:remapcode_simultaneouskeypresses_func] << remapclass.code[:remap_simultaneouskeypresses]
     $outfile[:remapcode_simultaneouskeypresses_func] << "}\n"
 
     $outfile[:remapcode_simultaneouskeypresses_func] << "bool handleVirtualKey(const Params_KeyboardEventCallBack& params) {\n"
-    simultaneouskeypresses_variable.each do |variable|
+    remapclass.code[:simultaneouskeypresses_variable].each do |variable|
       $outfile[:remapcode_simultaneouskeypresses_func] << "  if (#{variable[:name]}.handleVirtualKey(params)) return true;\n"
     end
     $outfile[:remapcode_simultaneouskeypresses_func] << "  return false;\n"
@@ -348,7 +170,7 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
     end
 
     $outfile[:remapcode_simultaneouskeypresses_func] << "private:\n"
-    simultaneouskeypresses_variable.each do |variable|
+    remapclass.code[:simultaneouskeypresses_variable].each do |variable|
       $outfile[:remapcode_simultaneouskeypresses_func] << "  KeyEventInputQueue::Remap #{variable[:name]};\n"
     end
     $outfile[:remapcode_simultaneouskeypresses_func] << "};\n"
