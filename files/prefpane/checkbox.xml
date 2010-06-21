@@ -88,6 +88,12 @@
           <name>CursorMove to ScrollWheel</name>
           <list>
             <item>
+              <name>We can scroll pages by moving the mouse pointer.</name>
+              <appendix>(Also, you can generate a click event if you click without moving)</appendix>
+              <sysctl>notsave.pointing_relative_to_scroll</sysctl>
+              <autogen>--PointingRelativeToScroll-- PointingButton::NONE</autogen>
+            </item>
+            <item>
               <name>RightClick+CursorMove to ScrollWheel</name>
               <sysctl>remap.pointing_relative_rightclick_to_scroll</sysctl>
               <autogen>--PointingRelativeToScroll-- PointingButton::RIGHT</autogen>

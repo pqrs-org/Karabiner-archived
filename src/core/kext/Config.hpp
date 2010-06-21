@@ -10,10 +10,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
 #include "config/output/include.config.hpp"
 
-    // Don't put notsave_pointing_relative_to_scroll in checkbox.xml.
-    // Because it is dangerous that a user changes setting.
-    int notsave_pointing_relative_to_scroll;
-
     unsigned int get_repeat_initial_wait(void) const {
       return getvalue(repeat_initial_wait, 200);
     }
