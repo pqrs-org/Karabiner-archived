@@ -114,6 +114,10 @@ TEST(FlagStatus, getLockedFlags) {
 TEST(FlagStatus, increase) {
   ASSERT_TRUE(FlagStatus::initialize());
 
+  // Do nothing with ModifierFlag::NONE.
+  FlagStatus::increase(ModifierFlag::NONE);
+  EXPECT_EQ(Flags(0), FlagStatus::makeFlags());
+
   FlagStatus::increase(ModifierFlag::SHIFT_L);
   EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), FlagStatus::makeFlags());
 
@@ -136,6 +140,10 @@ TEST(FlagStatus, decrease) {
 
 TEST(FlagStatus, temporary_increase) {
   ASSERT_TRUE(FlagStatus::initialize());
+
+  // Do nothing with ModifierFlag::NONE.
+  FlagStatus::temporary_increase(ModifierFlag::NONE);
+  EXPECT_EQ(Flags(0), FlagStatus::makeFlags());
 
   FlagStatus::increase(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L);
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
@@ -164,6 +172,10 @@ TEST(FlagStatus, temporary_decrease) {
 
 TEST(FlagStatus, lock_increase) {
   ASSERT_TRUE(FlagStatus::initialize());
+
+  // Do nothing with ModifierFlag::NONE.
+  FlagStatus::lock_increase(ModifierFlag::NONE);
+  EXPECT_EQ(Flags(0), FlagStatus::makeFlags());
 
   FlagStatus::lock_increase(ModifierFlag::COMMAND_L);
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), FlagStatus::makeFlags());
@@ -202,6 +214,10 @@ TEST(FlagStatus, lock_clear) {
 
 TEST(FlagStatus, sticky_increase) {
   ASSERT_TRUE(FlagStatus::initialize());
+
+  // Do nothing with ModifierFlag::NONE.
+  FlagStatus::sticky_increase(ModifierFlag::NONE);
+  EXPECT_EQ(Flags(0), FlagStatus::makeFlags());
 
   FlagStatus::sticky_increase(ModifierFlag::COMMAND_L | ModifierFlag::FN);
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::FN), FlagStatus::makeFlags());
