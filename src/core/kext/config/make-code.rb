@@ -1,5 +1,7 @@
 #!/usr/bin/ruby
 
+require 'inc.filter.rb'
+
 $outfile = {
   :config => open('output/include.config.hpp', 'w'),
   :config_SYSCTL => open('output/include.config_SYSCTL.cpp', 'w'),
@@ -107,7 +109,7 @@ end
 
 # ======================================================================
 def parseautogen(name, lines, autogen_index)
-  filter = []
+  filter = Filter.new
   code_key = []
   code_consumer = []
   code_pointing = []
@@ -143,72 +145,8 @@ def parseautogen(name, lines, autogen_index)
     elsif /<\/block>/ =~ l then
       break
 
-      # ================================================================================
-    elsif /<not>(.+?)<\/not>/ =~ l then
-      $1.split(/,/).each do |f|
-        filter << "if (CommonData::getcurrent_workspacedata().type == KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}) break;"
-      end
-
-    elsif /<only>(.+?)<\/only>/ =~ l then
-      tmp = []
-      $1.split(/,/).each do |f|
-        tmp << "(CommonData::getcurrent_workspacedata().type != KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip})"
-      end
-      filter << "if (#{tmp.join(' && ')}) break;"
-
-    elsif /<keyboardtype_not>(.+?)<\/keyboardtype_not>/ =~ l then
-      $1.split(/,/).each do |f|
-        filter << "if (CommonData::getcurrent_keyboardType() == KeyboardType::#{f.strip}) break;"
-      end
-
-    elsif /<keyboardtype_only>(.+?)<\/keyboardtype_only>/ =~ l then
-      tmp = []
-      $1.split(/,/).each do |f|
-        tmp << "(CommonData::getcurrent_keyboardType() != KeyboardType::#{f.strip})"
-      end
-      filter << "if (#{tmp.join(' && ')}) break;"
-
-    elsif /<device_not>(.+?)<\/device_not>/ =~ l then
-      $1.scan(/DeviceVendorID\(.+?\)\s*,\s*DeviceProductID\(.+?\)/).each do |f|
-        filter << "if (CommonData::isEqualVendorIDProductID(#{f.strip})) break;"
-      end
-
-    elsif /<device_only>(.+?)<\/device_only>/ =~ l then
-      tmp = []
-      $1.scan(/DeviceVendorID\(.+?\)\s*,\s*DeviceProductID\(.+?\)/).each do |f|
-        tmp << "(! CommonData::isEqualVendorIDProductID(#{f.strip}))"
-      end
-      filter << "if (#{tmp.join(' && ')}) break;"
-
-    elsif /<config_not>(.+?)<\/config_not>/ =~ l then
-      $1.split(/,/).each do |f|
-        f.gsub!(/\./, '_')
-        filter << "if (config.#{f.strip}) break;"
-      end
-
-    elsif /<config_only>(.+?)<\/config_only>/ =~ l then
-      tmp = []
-      $1.split(/,/).each do |f|
-        f.gsub!(/\./, '_')
-        tmp << "(! config.#{f.strip})"
-      end
-      filter << "if (#{tmp.join(' && ')}) break;"
-
-    elsif /<(inputmode|inputmodedetail)_not>(.+?)<\/(inputmode|inputmodedetail)_not>/ =~ l then
-      inputmodetype = $1
-      $2.split(/,/).each do |f|
-        filter << "if (CommonData::getcurrent_workspacedata().#{inputmodetype} == KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}) break;"
-      end
-
-    elsif /<(inputmode|inputmodedetail)_only>(.+?)<\/(inputmode|inputmodedetail)_only>/ =~ l then
-      inputmodetype = $1
-      tmp = []
-      $2.split(/,/).each do |f|
-        tmp << "(CommonData::getcurrent_workspacedata().#{inputmodetype} != KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip})"
-      end
-      filter << "if (#{tmp.join(' && ')}) break;"
-
-      # ================================================================================
+    elsif filter.parse(l) then
+      # do nothing
 
     elsif /<autogen>(.+?)<\/autogen>/ =~ l then
       autogen = $1
@@ -329,10 +267,7 @@ def parseautogen(name, lines, autogen_index)
 
   unless code_key.empty? then
     result_code_key += "  do {\n"
-    filter.each do |f|
-      result_code_key += "    #{f}\n"
-    end
-    result_code_key += "\n" unless filter.empty?
+    result_code_key += filter.to_code
     code_key.each do |line|
       result_code_key += "    #{line}\n"
     end
@@ -341,10 +276,7 @@ def parseautogen(name, lines, autogen_index)
 
   unless code_consumer.empty? then
     result_code_consumer += "  do {\n"
-    filter.each do |f|
-      result_code_consumer += "    #{f}\n"
-    end
-    result_code_consumer += "\n" unless filter.empty?
+    result_code_consumer += filter.to_code
     code_consumer.each do |line|
       result_code_consumer += "    #{line}\n"
     end
@@ -353,9 +285,7 @@ def parseautogen(name, lines, autogen_index)
 
   unless code_pointing.empty? then
     result_code_pointing += "  do {\n"
-    filter.each do |f|
-      result_code_pointing += "    #{f}\n"
-    end
+    result_code_pointing += filter.to_code
     code_pointing.each do |line|
       result_code_pointing += "    #{line}\n"
     end
@@ -364,10 +294,7 @@ def parseautogen(name, lines, autogen_index)
 
   unless simultaneouskeypresses_variable.empty? then
     result_simultaneouskeypresses_code += "  do {\n"
-    filter.each do |f|
-      result_simultaneouskeypresses_code += "    #{f}\n"
-    end
-    result_simultaneouskeypresses_code += "\n" unless filter.empty?
+    result_simultaneouskeypresses_code += filter.to_code
     simultaneouskeypresses_code.each do |line|
       result_simultaneouskeypresses_code += "    #{line}\n"
     end
