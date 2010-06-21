@@ -13,18 +13,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace GeneratedCode {
 #include "config/output/include.remapcode_func.cpp"
   }
-
-  // ----------------------------------------
-  class RemapClass_notsave_pointing_relative_to_scroll {
-  public:
-    static void remap_pointing(RemapPointingParams_relative& remapParams) {
-      prts_.remap(remapParams, PointingButton::NONE, Flags(0));
-    }
-
-  private:
-    static RemapUtil::PointingRelativeToScroll prts_;
-  };
-  RemapUtil::PointingRelativeToScroll RemapClass_notsave_pointing_relative_to_scroll::prts_;
 }
 
 // ----------------------------------------------------------------------
@@ -81,11 +69,6 @@ org_pqrs_KeyRemap4MacBook::refresh_remapfunc(void)
 
   // ------------------------------------------------------------
 #include "config/output/include.remapcode_refresh_remapfunc_pointing.cpp"
-
-  if (config.notsave_pointing_relative_to_scroll && ! config.notsave_passthrough) {
-    listRemapFunc_pointing[listRemapFunc_pointing_size] = RemapClass_notsave_pointing_relative_to_scroll::remap_pointing;
-    ++listRemapFunc_pointing_size;
-  }
 
   // ------------------------------------------------------------
   // handle StatusMessage
