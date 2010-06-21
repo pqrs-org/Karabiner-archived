@@ -8,6 +8,7 @@
 #include "KeyCode.hpp"
 #include "util/ButtonStatus.hpp"
 #include "util/FlagStatus.hpp"
+#include "util/FromKeyChecker.hpp"
 #include "util/PressDownKeys.hpp"
 #include "util/IntervalChecker.hpp"
 #include "util/EventWatcher.hpp"
@@ -24,8 +25,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     class KeyToKey {
     public:
-      KeyToKey(void) : active_(false) {}
-
       // Don't use reference for a Flags argument.
       // Because Flags is generated from a combination of ModifierFlag anytime,
       // it wastes the stack of the caller if we use a reference argument.
@@ -46,7 +45,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 #include "generate/output/include.keytokey.hpp"
 
     private:
-      bool active_;
+      FromKeyChecker fromkeychecker_;
     };
 
     class ConsumerToConsumer {

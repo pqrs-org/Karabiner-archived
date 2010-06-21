@@ -16,32 +16,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                              bool isSetKeyRepeat)
   {
     if (remapParams.isremapped) return false;
-    if (remapParams.params.key != fromKeyCode) return false;
-
-    // ------------------------------------------------------------
-    bool isKeyDown = remapParams.isKeyDownOrModifierDown();
-    if (isKeyDown) {
-      if (! FlagStatus::makeFlags().isOn(fromFlags)) return false;
-      active_ = true;
-
-    } else {
-      // When active_ is true, we converted the key at KeyDown.
-      // So we also convert the key at KeyUp.
-      //
-      // We don't check the flags in KeyUp.
-      // When we decide by flags, a problem occurs in the following situation.
-      //
-      // ex. "Shift+Delete to Forward Delete"
-      // (1) KeyDown "Delete" => "Delete"
-      // (2) KeyDown "Shift"  => "Shift"
-      // (3) KeyUp   "Delete" => "Forward Delete" *** Bad ***
-      // (4) KeyUp   "Shift"  => "Shift"
-
-      if (! active_) return false;
-      active_ = false;
-    }
-
-    // ------------------------------------------------------------
+    if (! fromkeychecker_.isFromKey(remapParams, fromKeyCode, fromFlags)) return false;
     remapParams.isremapped = true;
 
     // ------------------------------------------------------------
