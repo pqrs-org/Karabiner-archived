@@ -30,6 +30,8 @@
 		346B753E0E72C0BA00F9A79F /* FlagStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 346B753C0E72C0BA00F9A79F /* FlagStatus.cpp */; };
 		346B753F0E72C0BA00F9A79F /* FlagStatus.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 346B753D0E72C0BA00F9A79F /* FlagStatus.hpp */; };
 		3475BBFF11CEDC5F007BC76A /* FromKeyChecker.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3475BBFE11CEDC5F007BC76A /* FromKeyChecker.hpp */; };
+		3477E3BB11CFAC9D00DC05C9 /* RemapClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3477E3B911CFAC9D00DC05C9 /* RemapClass.cpp */; };
+		3477E3BC11CFAC9D00DC05C9 /* RemapClass.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3477E3BA11CFAC9D00DC05C9 /* RemapClass.hpp */; };
 		347A27EA1168C09F00EB155B /* KeyEventInputQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 347A27E81168C09F00EB155B /* KeyEventInputQueue.cpp */; };
 		347A27EB1168C09F00EB155B /* KeyEventInputQueue.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 347A27E91168C09F00EB155B /* KeyEventInputQueue.hpp */; };
 		348ED8340CE467FD00E179EC /* remap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 348ED8330CE467FD00E179EC /* remap.cpp */; };
@@ -92,6 +94,8 @@
 		346B753C0E72C0BA00F9A79F /* FlagStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FlagStatus.cpp; path = util/FlagStatus.cpp; sourceTree = "<group>"; };
 		346B753D0E72C0BA00F9A79F /* FlagStatus.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FlagStatus.hpp; path = util/FlagStatus.hpp; sourceTree = "<group>"; };
 		3475BBFE11CEDC5F007BC76A /* FromKeyChecker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FromKeyChecker.hpp; path = util/FromKeyChecker.hpp; sourceTree = "<group>"; };
+		3477E3B911CFAC9D00DC05C9 /* RemapClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RemapClass.cpp; sourceTree = "<group>"; };
+		3477E3BA11CFAC9D00DC05C9 /* RemapClass.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RemapClass.hpp; sourceTree = "<group>"; };
 		347A27E81168C09F00EB155B /* KeyEventInputQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyEventInputQueue.cpp; path = util/KeyEventInputQueue.cpp; sourceTree = "<group>"; };
 		347A27E91168C09F00EB155B /* KeyEventInputQueue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyEventInputQueue.hpp; path = util/KeyEventInputQueue.hpp; sourceTree = "<group>"; };
 		348ED8330CE467FD00E179EC /* remap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = remap.cpp; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 		247142CAFF3F8F9811CA285C /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				3477E3B911CFAC9D00DC05C9 /* RemapClass.cpp */,
+				3477E3BA11CFAC9D00DC05C9 /* RemapClass.hpp */,
 				3456837A10DA734100D7E2E6 /* VirtualKey.cpp */,
 				3456837B10DA734200D7E2E6 /* VirtualKey.hpp */,
 				34A7882E10CBD79100DF72FD /* KeyCode.cpp */,
@@ -277,6 +283,7 @@
 				34C382D611BB3F3600EFB9A6 /* Queue.hpp in Headers */,
 				34CFB93311C340B000E5E7F9 /* ButtonStatus.hpp in Headers */,
 				3475BBFF11CEDC5F007BC76A /* FromKeyChecker.hpp in Headers */,
+				3477E3BC11CFAC9D00DC05C9 /* RemapClass.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +378,7 @@
 				347A27EA1168C09F00EB155B /* KeyEventInputQueue.cpp in Sources */,
 				34C382D511BB3F3600EFB9A6 /* Queue.cpp in Sources */,
 				34CFB93211C340B000E5E7F9 /* ButtonStatus.cpp in Sources */,
+				3477E3BB11CFAC9D00DC05C9 /* RemapClass.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
