@@ -137,6 +137,7 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
 
   $outfile[:remapcode_keyboardtype] << remapclass.code[:remap_setkeyboardtype]
   $outfile[:remapcode_refresh_remapfunc_statusmessage] << remapclass.code[:refresh_remapfunc_statusmessage]
+  $outfile[:keycode_vk_config] << remapclass.code[:keycode]
 
   next if remapclass.empty?
 
