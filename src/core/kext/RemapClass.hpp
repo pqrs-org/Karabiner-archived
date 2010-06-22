@@ -15,7 +15,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
 
     RemapClass(void) : statusmessage(NULL) {}
-    virtual ~RemapClass(void);
+    virtual ~RemapClass(void) {}
 
     virtual void initialize(void) = 0;
     virtual bool enabled(EnableType type) const = 0;

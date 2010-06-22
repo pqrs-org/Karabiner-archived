@@ -4,6 +4,7 @@
 #include "CommonData.hpp"
 #include "Config.hpp"
 #include "Core.hpp"
+#include "RemapClass.hpp"
 #include "RemapUtil.hpp"
 #include "remap.hpp"
 #include "util/CallBackWrapper.hpp"
@@ -59,7 +60,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     initialize(void)
     {
       sysctl_register();
-      remapfunc_initialize();
+      RemapClassManager::initialize();
       EventWatcher::initialize();
       PressDownKeys::initialize();
       FlagStatus::initialize();
@@ -74,7 +75,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       CommonData::terminate();
       KeyRemap4MacBook_client::terminate();
       EventWatcher::terminate();
-      remapfunc_terminate();
+      RemapClassManager::terminate();
       sysctl_unregister();
     }
 
@@ -172,7 +173,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ------------------------------------------------------------
       FlagStatus::set(params.key, params.flags);
 
-      remap_core(remapParams);
+      RemapClassManager::remap_key(remapParams);
 
       // ------------------------------------------------------------
       if (! remapParams.isremapped) {
@@ -201,7 +202,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       RemapConsumerParams remapParams(params);
 
       // ------------------------------------------------------------
-      remap_consumer(remapParams);
+      RemapClassManager::remap_consumer(remapParams);
 
       // ----------------------------------------
       if (! remapParams.isremapped) {
@@ -218,7 +219,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       RemapPointingParams_relative remapParams(params);
 
-      remap_pointing_relative_core(remapParams);
+      RemapClassManager::remap_pointing(remapParams);
 
       // ------------------------------------------------------------
       if (! remapParams.isremapped) {

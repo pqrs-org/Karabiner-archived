@@ -168,33 +168,63 @@ class RemapClass
   end
 
   def to_code
-    code  = "class RemapClass_#{@name} {\n"
+    return '' if empty?
+
+    code  = "class RemapClass_#{@name} : public RemapClass {\n"
     code += "public:\n"
+
+    code += "void initialize(void) {\n"
+    code += "}\n"
+
     unless @code[:remap_key].empty? then
-      code += "static void remap_key(RemapParams &remapParams) {\n"
+      code += "void remap_key(RemapParams &remapParams) {\n"
       code += @code[:remap_key]
       code += "}\n"
     end
     unless @code[:remap_consumer].empty? then
-      code += "static void remap_consumer(RemapConsumerParams &remapParams) {\n"
+      code += "void remap_consumer(RemapConsumerParams &remapParams) {\n"
       code += @code[:remap_consumer]
       code += "}\n"
     end
     unless @code[:remap_pointing].empty? then
-      code += "static void remap_pointing(RemapPointingParams_relative &remapParams) {\n"
+      code += "void remap_pointing(RemapPointingParams_relative &remapParams) {\n"
       code += @code[:remap_pointing]
       code += "}\n"
     end
+
+    # ----------------------------------------
+    code   += "bool enabled(EnableType type) const {\n"
+    if @code[:remap_setkeyboardtype].empty? then
+      code += "if (type == ENABLE_TYPE_SETKEYBOARDTYPE) return false;\n"
+    end
+    if @code[:remap_key].empty? then
+      code += "if (type == ENABLE_TYPE_KEY) return false;\n"
+    end
+    if @code[:remap_consumer].empty? then
+      code += "if (type == ENABLE_TYPE_CONSUMER) return false;\n"
+    end
+    if @code[:remap_pointing].empty? then
+      code += "if (type == ENABLE_TYPE_POINTING) return false;\n"
+    end
+    if @code[:refresh_remapfunc_statusmessage].empty? then
+      code += "if (type == ENABLE_TYPE_STATUSMESSAGE) return false;\n"
+    end
+    if /^passthrough_/ =~ @name
+      code += "return config.#{@name};\n"
+    else
+      code += "return config.#{@name} && ! config.notsave_passthrough;\n"
+    end
+    code   += "}\n"
+
+    # ----------------------------------------
     code += "\n"
     code += "private:\n"
     @code[:variable].each do |variable|
-      code += "  static #{variable[0]} #{variable[1]};\n"
+      code += "  #{variable[0]} #{variable[1]};\n"
     end
     code += "};\n"
 
-    @code[:variable].each do |variable|
-      code += "#{variable[0]} RemapClass_#{name}::#{variable[1]};\n"
-    end
+    code += "RemapClass_#{@name} remapclass_#{@name};\n"
     code += "\n\n"
 
     code

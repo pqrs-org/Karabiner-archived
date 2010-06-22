@@ -1,11 +1,12 @@
 #include "RemapClass.hpp"
 #include "Client.hpp"
 #include "KeyboardRepeat.hpp"
+#include "RemapUtil.hpp"
+#include "util/CommonData.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapClassManager {
-    // DUMMY CODE
-    RemapClass* listRemapClass[] = { NULL };
+#include "config/output/include.remapcode_func.cpp"
 
     class Item : public Queue::Item {
     public:
@@ -53,12 +54,23 @@ namespace org_pqrs_KeyRemap4MacBook {
       lock_ = IOLockWrapper::alloc();
       statusmessage_[0] = '\0';
       lastmessage_[0] = '\0';
+
+      queue_remap_setkeyboardtype_ = new Queue();
+      queue_remap_key_ = new Queue();
+      queue_remap_consumer_ = new Queue();
+      queue_remap_pointing_ = new Queue();
     }
 
     void
     terminate(void)
     {
       cleanup_all();
+
+      delete queue_remap_setkeyboardtype_;
+      delete queue_remap_key_;
+      delete queue_remap_consumer_;
+      delete queue_remap_pointing_;
+
       IOLockWrapper::free(lock_);
     }
 
@@ -77,10 +89,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         RemapClass* p = listRemapClass[i];
         if (! listRemapClass[i]) break;
 
-        if (p->enabled(RemapClass::ENABLE_TYPE_KEY)) queue_remap_key_->push(new Item(p));
-        if (p->enabled(RemapClass::ENABLE_TYPE_CONSUMER)) queue_remap_consumer_->push(new Item(p));
-        if (p->enabled(RemapClass::ENABLE_TYPE_POINTING)) queue_remap_pointing_->push(new Item(p));
-        if (p->enabled(RemapClass::ENABLE_TYPE_SETKEYBOARDTYPE)) queue_remap_setkeyboardtype_->push(new Item(p));
+        if (p->enabled(RemapClass::ENABLE_TYPE_SETKEYBOARDTYPE) && queue_remap_setkeyboardtype_) queue_remap_setkeyboardtype_->push(new Item(p));
+        if (p->enabled(RemapClass::ENABLE_TYPE_KEY)             && queue_remap_key_)             queue_remap_key_->push(new Item(p));
+        if (p->enabled(RemapClass::ENABLE_TYPE_CONSUMER)        && queue_remap_consumer_)        queue_remap_consumer_->push(new Item(p));
+        if (p->enabled(RemapClass::ENABLE_TYPE_POINTING)        && queue_remap_pointing_)        queue_remap_pointing_->push(new Item(p));
 
         if (p->enabled(RemapClass::ENABLE_TYPE_STATUSMESSAGE)) {
           strlcat(statusmessage_, p->statusmessage, sizeof(statusmessage_));

@@ -34,7 +34,6 @@
 		3477E3BC11CFAC9D00DC05C9 /* RemapClass.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3477E3BA11CFAC9D00DC05C9 /* RemapClass.hpp */; };
 		347A27EA1168C09F00EB155B /* KeyEventInputQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 347A27E81168C09F00EB155B /* KeyEventInputQueue.cpp */; };
 		347A27EB1168C09F00EB155B /* KeyEventInputQueue.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 347A27E91168C09F00EB155B /* KeyEventInputQueue.hpp */; };
-		348ED8340CE467FD00E179EC /* remap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 348ED8330CE467FD00E179EC /* remap.cpp */; };
 		348ED8360CE4680F00E179EC /* remap.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 348ED8350CE4680F00E179EC /* remap.hpp */; };
 		348ED83A0CE4682000E179EC /* version.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 348ED8390CE4682000E179EC /* version.hpp */; };
 		348ED8470CE47D9400E179EC /* RemapUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 348ED8460CE47D9400E179EC /* RemapUtil.cpp */; };
@@ -98,7 +97,6 @@
 		3477E3BA11CFAC9D00DC05C9 /* RemapClass.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RemapClass.hpp; sourceTree = "<group>"; };
 		347A27E81168C09F00EB155B /* KeyEventInputQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyEventInputQueue.cpp; path = util/KeyEventInputQueue.cpp; sourceTree = "<group>"; };
 		347A27E91168C09F00EB155B /* KeyEventInputQueue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyEventInputQueue.hpp; path = util/KeyEventInputQueue.hpp; sourceTree = "<group>"; };
-		348ED8330CE467FD00E179EC /* remap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = remap.cpp; sourceTree = "<group>"; };
 		348ED8350CE4680F00E179EC /* remap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = remap.hpp; sourceTree = "<group>"; };
 		348ED8390CE4682000E179EC /* version.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = version.hpp; sourceTree = "<group>"; };
 		348ED8460CE47D9400E179EC /* RemapUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RemapUtil.cpp; sourceTree = "<group>"; };
@@ -194,7 +192,6 @@
 				345B06AB0DB21A88000023FD /* Client.cpp */,
 				345B06AC0DB21A88000023FD /* Client.hpp */,
 				348ED8460CE47D9400E179EC /* RemapUtil.cpp */,
-				348ED8330CE467FD00E179EC /* remap.cpp */,
 				34C7A9A10CE45EA400C98397 /* Config.cpp */,
 				346B753B0E72C0A200F9A79F /* util */,
 			);
@@ -354,7 +351,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				34C7A9A20CE45EA400C98397 /* Config.cpp in Sources */,
-				348ED8340CE467FD00E179EC /* remap.cpp in Sources */,
 				348ED8470CE47D9400E179EC /* RemapUtil.cpp in Sources */,
 				345B06AD0DB21A88000023FD /* Client.cpp in Sources */,
 				349581080E7232A5003773EC /* PressDownKeys.cpp in Sources */,
