@@ -5,8 +5,6 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace Core {
-    void initialize(void);
-    void terminate(void);
     void start(void);
     void stop(void);
 

@@ -57,31 +57,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    initialize(void)
+    start(void)
     {
-      sysctl_register();
-      RemapClassManager::initialize();
       EventWatcher::initialize();
       PressDownKeys::initialize();
       FlagStatus::initialize();
       ButtonStatus::initialize();
       KeyRemap4MacBook_client::initialize();
       CommonData::initialize();
-    }
 
-    void
-    terminate(void)
-    {
-      CommonData::terminate();
-      KeyRemap4MacBook_client::terminate();
-      EventWatcher::terminate();
-      RemapClassManager::terminate();
-      sysctl_unregister();
-    }
-
-    void
-    start(void)
-    {
       ListHookedKeyboard::instance().initialize();
       ListHookedConsumer::instance().initialize();
       ListHookedPointing::instance().initialize();
@@ -93,21 +77,27 @@ namespace org_pqrs_KeyRemap4MacBook {
         timer_refresh.initialize(workLoop, NULL, refreshHookedDevice);
         timer_refresh.setTimeoutMS(REFRESH_DEVICE_INTERVAL);
 
+        RemapClassManager::initialize(*workLoop);
         KeyboardRepeat::initialize(*workLoop);
         KeyEventInputQueue::initialize(*workLoop);
         VirtualKey::initialize(*workLoop);
         EventOutputQueue::initialize(*workLoop);
         HoldingKeyToKey::initialize(*workLoop);
       }
+
+      sysctl_register();
     }
 
     void
     stop(void)
     {
+      sysctl_unregister();
+
       timer_refresh.terminate();
       ListHookedKeyboard::instance().terminate();
       ListHookedConsumer::instance().terminate();
       ListHookedPointing::instance().terminate();
+      RemapClassManager::terminate();
       KeyboardRepeat::terminate();
       KeyEventInputQueue::terminate();
       VirtualKey::terminate();
@@ -118,6 +108,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         workLoop->release();
         workLoop = NULL;
       }
+
+      CommonData::terminate();
+      KeyRemap4MacBook_client::terminate();
+      EventWatcher::terminate();
     }
 
     // ======================================================================

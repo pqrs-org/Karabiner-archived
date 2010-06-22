@@ -21,6 +21,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     Queue* queue_remap_consumer_ = NULL;
     Queue* queue_remap_pointing_ = NULL;
     IOLock* lock_ = NULL;
+    TimerWrapper refresh_timer_;
 
     char statusmessage_[32];
     char lastmessage_[32];
@@ -47,9 +48,45 @@ namespace org_pqrs_KeyRemap4MacBook {
       cleanup(queue_remap_pointing_);
     }
 
+    static void
+    refresh_core(OSObject* owner, IOTimerEventSource* sender)
+    {
+      IOLockWrapper::ScopedLock lk(lock_);
+
+      KeyboardRepeat::cancel();
+
+      cleanup_all();
+
+      statusmessage_[0] = '\0';
+
+      for (size_t i = 0;; ++i) {
+        RemapClass* p = listRemapClass[i];
+        if (! listRemapClass[i]) break;
+
+        if (p->enabled(RemapClass::ENABLE_TYPE_SETKEYBOARDTYPE) && queue_remap_setkeyboardtype_) queue_remap_setkeyboardtype_->push(new Item(p));
+        if (p->enabled(RemapClass::ENABLE_TYPE_KEY)             && queue_remap_key_)             queue_remap_key_->push(new Item(p));
+        if (p->enabled(RemapClass::ENABLE_TYPE_CONSUMER)        && queue_remap_consumer_)        queue_remap_consumer_->push(new Item(p));
+        if (p->enabled(RemapClass::ENABLE_TYPE_POINTING)        && queue_remap_pointing_)        queue_remap_pointing_->push(new Item(p));
+
+        if (p->enabled(RemapClass::ENABLE_TYPE_STATUSMESSAGE)) {
+          if (p->statusmessage) {
+            strlcat(statusmessage_, p->statusmessage, sizeof(statusmessage_));
+            strlcat(statusmessage_, " ", sizeof(statusmessage_));
+          }
+        }
+      }
+
+      if (strcmp(statusmessage_, lastmessage_) != 0) {
+        KeyRemap4MacBook_bridge::StatusMessage::Request request(KeyRemap4MacBook_bridge::StatusMessage::MESSAGETYPE_EXTRA, statusmessage_);
+        KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_STATUS_MESSAGE, &request, sizeof(request), NULL, 0);
+        strlcpy(lastmessage_, statusmessage_, sizeof(lastmessage_));
+      }
+    }
+
     // ======================================================================
+
     void
-    initialize(void)
+    initialize(IOWorkLoop& workloop)
     {
       lock_ = IOLockWrapper::alloc();
       statusmessage_[0] = '\0';
@@ -59,12 +96,22 @@ namespace org_pqrs_KeyRemap4MacBook {
       queue_remap_key_ = new Queue();
       queue_remap_consumer_ = new Queue();
       queue_remap_pointing_ = new Queue();
+
+      for (size_t i = 0;; ++i) {
+        RemapClass* p = listRemapClass[i];
+        if (! listRemapClass[i]) break;
+        p->initialize();
+      }
+
+      refresh_timer_.initialize(&workloop, NULL, refresh_core);
     }
 
     void
     terminate(void)
     {
       cleanup_all();
+
+      refresh_timer_.terminate();
 
       delete queue_remap_setkeyboardtype_;
       delete queue_remap_key_;
@@ -77,34 +124,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     refresh(void)
     {
-      IOLockWrapper::ScopedLock lk(lock_);
-
-      KeyboardRepeat::cancel();
-
-      cleanup_all();
-
-      statusmessage_[0] = '\0';
-
-      for (unsigned int i = 0;; ++i) {
-        RemapClass* p = listRemapClass[i];
-        if (! listRemapClass[i]) break;
-
-        if (p->enabled(RemapClass::ENABLE_TYPE_SETKEYBOARDTYPE) && queue_remap_setkeyboardtype_) queue_remap_setkeyboardtype_->push(new Item(p));
-        if (p->enabled(RemapClass::ENABLE_TYPE_KEY)             && queue_remap_key_)             queue_remap_key_->push(new Item(p));
-        if (p->enabled(RemapClass::ENABLE_TYPE_CONSUMER)        && queue_remap_consumer_)        queue_remap_consumer_->push(new Item(p));
-        if (p->enabled(RemapClass::ENABLE_TYPE_POINTING)        && queue_remap_pointing_)        queue_remap_pointing_->push(new Item(p));
-
-        if (p->enabled(RemapClass::ENABLE_TYPE_STATUSMESSAGE)) {
-          strlcat(statusmessage_, p->statusmessage, sizeof(statusmessage_));
-          strlcat(statusmessage_, " ", sizeof(statusmessage_));
-        }
-      }
-
-      if (strcmp(statusmessage_, lastmessage_) != 0) {
-        KeyRemap4MacBook_bridge::StatusMessage::Request request(KeyRemap4MacBook_bridge::StatusMessage::MESSAGETYPE_EXTRA, statusmessage_);
-        KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_STATUS_MESSAGE, &request, sizeof(request), NULL, 0);
-      }
-      strlcpy(lastmessage_, statusmessage_, sizeof(lastmessage_));
+      // We use timer to prevent deadlock of lock_. (refresh may be called in the remap_key, remap_consumer, *).
+      enum {
+        DELAY = 1,
+      };
+      refresh_timer_.setTimeoutMS(DELAY);
     }
 
 // ----------------------------------------------------------------------
