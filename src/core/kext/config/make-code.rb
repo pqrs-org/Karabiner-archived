@@ -11,7 +11,7 @@ $outfile = {
   :config_unregister => open('output/include.config_unregister.cpp', 'w'),
   :config_default => open('output/include.config.default.hpp', 'w'),
   :remapcode_keyboardtype => open('output/include.remapcode_keyboardtype.hpp', 'w'),
-  :remapcode_func => open('output/include.remapcode_func.cpp', 'w'),
+  :remapclass => open('output/include.RemapClass.cpp', 'w'),
   :remapcode_vk_config => open('output/include.remapcode_vk_config.cpp', 'w'),
   :remapcode_simultaneouskeypresses_func => open('output/include.remapcode_simultaneouskeypresses_func.cpp', 'w'),
   :keycode_vk_config => open('../keycode/data/include/KeyCode.VK_GENERATED.data', 'w'),
@@ -126,7 +126,7 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
 
   next if remapclass.empty?
 
-  $outfile[:remapcode_func] << remapclass.to_code
+  $outfile[:remapclass] << remapclass.to_code
   $remapclasses << "remapclass_#{name}"
 
   unless remapclass.code[:simultaneouskeypresses_variable].empty? then
@@ -168,12 +168,12 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
   end
 end
 
-$outfile[:remapcode_func] << "RemapClass* listRemapClass[] = {\n"
+$outfile[:remapclass] << "RemapClass* listRemapClass[] = {\n"
 $remapclasses.each do |name|
-  $outfile[:remapcode_func] << "&#{name},\n"
+  $outfile[:remapclass] << "&#{name},\n"
 end
-$outfile[:remapcode_func] << "NULL,\n"
-$outfile[:remapcode_func] << "};\n"
+$outfile[:remapclass] << "NULL,\n"
+$outfile[:remapclass] << "};\n"
 
 $outfile[:remapcode_simultaneouskeypresses_func] << "KeyEventInputQueue::RemapClass* listRemapClass_simultaneouskeypresses[] = {\n"
 $func[:simultaneouskeypresses].uniq.each do |name|
