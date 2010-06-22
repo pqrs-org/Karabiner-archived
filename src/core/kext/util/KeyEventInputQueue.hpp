@@ -6,7 +6,6 @@
 #include "KeyCode.hpp"
 #include "RemapUtil.hpp"
 #include "TimerWrapper.hpp"
-#include "../config/output/include.remapcode_info.cpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace SimultaneousKeyPresses {

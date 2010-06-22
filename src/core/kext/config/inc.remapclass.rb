@@ -62,72 +62,58 @@ class RemapClass
       when 'KeyToKey'
         @code[:variable] << ['RemapUtil::KeyToKey', "keytokey#{@autogen_index}_"]
         @code[:remap_key] += "    if (keytokey#{@autogen_index}_.remap(remapParams, #{params})) break;\n"
-        $func[:key] << name
 
       when 'DoublePressModifier'
         @code[:variable] << ['DoublePressModifier', "doublepressmodifier#{@autogen_index}_"]
         @code[:remap_key] += "    if (doublepressmodifier#{@autogen_index}_.remap(remapParams, #{params})) break;\n"
-        $func[:key] << name
 
       when 'IgnoreMultipleSameKeyPress'
         @code[:variable] << ['IgnoreMultipleSameKeyPress', "ignoremultiplesamekeypress#{@autogen_index}_"]
         @code[:remap_key] += "    if (ignoremultiplesamekeypress#{@autogen_index}_.remap(remapParams, #{params})) break;\n"
-        $func[:key] << name
 
       when 'KeyToConsumer'
         @code[:variable] << ['RemapUtil::KeyToConsumer', "keytoconsumer#{@autogen_index}_"]
         @code[:remap_key] += "    if (keytoconsumer#{@autogen_index}_.remap(remapParams, #{params})) break;\n"
-        $func[:key] << name
 
       when 'KeyToPointingButton'
         @code[:variable] << ['RemapUtil::KeyToPointingButton', "keytopointing#{@autogen_index}_"]
         @code[:remap_key] += "    if (keytopointing#{@autogen_index}_.remap(remapParams, #{params})) break;\n"
-        $func[:key] << name
 
       when 'KeyOverlaidModifier'
         @code[:variable] << ['KeyOverlaidModifier', "keyoverlaidmodifier#{@autogen_index}_"]
         @code[:remap_key] += "    if (keyoverlaidmodifier#{@autogen_index}_.remap(remapParams, #{params})) break;\n"
-        $func[:key] << name
 
       when 'KeyOverlaidModifierWithRepeat'
         @code[:variable] << ['KeyOverlaidModifier', "keyoverlaidmodifier#{@autogen_index}_"]
         @code[:remap_key] += "    if (keyoverlaidmodifier#{@autogen_index}_.remapWithRepeat(remapParams, #{params})) break;\n"
-        $func[:key] << name
 
       when 'ModifierHoldingKeyToKey'
         @code[:variable] << ['ModifierHoldingKeyToKey', "modifierholdingkeytokey#{@autogen_index}_"]
         @code[:remap_key] += "    if (modifierholdingkeytokey#{@autogen_index}_.remap(remapParams, #{params})) break;\n"
-        $func[:key] << name
 
       when 'HoldingKeyToKey'
         @code[:variable] << ['HoldingKeyToKey', "holdingkeytokey#{@autogen_index}_"]
         @code[:remap_key] += "    if (holdingkeytokey#{@autogen_index}_.remap(remapParams, #{params})) break;\n"
-        $func[:key] << name
 
       when 'ConsumerToKey'
         @code[:variable] << ['RemapUtil::ConsumerToKey', "consumertokey#{@autogen_index}_"]
         @code[:remap_consumer] += "    if (consumertokey#{@autogen_index}_.remap(remapParams, #{params})) break;\n"
-        $func[:consumer] << name
 
       when 'ConsumerToConsumer'
         @code[:variable] << ['RemapUtil::ConsumerToConsumer', "consumertoconsumer#{@autogen_index}_"]
         @code[:remap_consumer] += "    if (consumertoconsumer#{@autogen_index}_.remap(remapParams, #{params})) break;\n"
-        $func[:consumer] << name
 
       when 'PointingRelativeToScroll'
         @code[:variable] << ['RemapUtil::PointingRelativeToScroll', "pointingrelativetoscroll#{@autogen_index}_"]
         @code[:remap_pointing] += "    if (pointingrelativetoscroll#{@autogen_index}_.remap(remapParams, #{params})) break;\n"
-        $func[:pointing] << name
 
       when 'PointingButtonToPointingButton'
         @code[:variable] << ['RemapUtil::PointingButtonToPointingButton', "pointingbuttontopointingbutton#{@autogen_index}_"]
         @code[:remap_pointing] << "    if (pointingbuttontopointingbutton#{@autogen_index}_.remap(remapParams, #{params})) break;\n"
-        $func[:pointing] << name
 
       when 'PointingButtonToKey'
         @code[:variable] << ['RemapUtil::PointingButtonToKey', "pointingbuttontokey#{@autogen_index}_"]
         @code[:remap_pointing] << "    if (pointingbuttontokey#{@autogen_index}_.remap(remapParams, #{params})) break;\n"
-        $func[:pointing] << name
 
       else
         print "%%% ERROR #{type} %%%\n#{l}\n"
