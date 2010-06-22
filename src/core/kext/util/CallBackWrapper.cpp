@@ -9,7 +9,7 @@
 #include "KeyCode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  Queue* EventOutputQueue::queue_;
+  Queue* EventOutputQueue::queue_ = NULL;
   IntervalChecker EventOutputQueue::ic_;
   TimerWrapper EventOutputQueue::timer_;
 
@@ -319,12 +319,15 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     timer_.terminate();
 
-    for (;;) {
-      EventOutputQueue::Item* p = static_cast<EventOutputQueue::Item*>(queue_->front());
-      if (! p) break;
+    if (queue_) {
+      for (;;) {
+        EventOutputQueue::Item* p = static_cast<EventOutputQueue::Item*>(queue_->front());
+        if (! p) break;
 
-      queue_->pop();
-      delete p;
+        queue_->pop();
+        delete p;
+      }
+      delete queue_;
     }
   }
 
@@ -333,6 +336,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   EventOutputQueue::push(Item& p)
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
+
+    if (! queue_) return;
 
     bool isempty = queue_->empty();
     queue_->push(&p);
@@ -426,6 +431,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   EventOutputQueue::fire_nolock(void)
   {
+    if (! queue_) return;
+
     Item* p = static_cast<Item*>(queue_->front());
     if (! p) return;
 
