@@ -7,10 +7,6 @@
 #include "CallBackWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  void remapfunc_initialize(void);
-  void remapfunc_terminate(void);
-  void refresh_remapfunc(void);
-
   // ----------------------------------------------------------------------
   struct RemapParams {
     RemapParams(const Params_KeyboardEventCallBack& p) :
@@ -22,7 +18,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void drop(void) { isremapped = true; }
     bool isKeyDownOrModifierDown(void) const { return params.eventType.isKeyDownOrModifierDown(params.key, params.flags); }
   };
-  void remap_core(RemapParams& remapParams);
 
   // --------------------
   struct RemapConsumerParams {
@@ -34,7 +29,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     void drop(void) { isremapped = true; }
   };
-  void remap_consumer(RemapConsumerParams& remapParams);
 
   // --------------------
   struct RemapPointingParams_relative {
@@ -46,7 +40,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     void drop(void) { isremapped = true; }
   };
-  void remap_pointing_relative_core(RemapPointingParams_relative& remapParams);
 }
 
 #endif

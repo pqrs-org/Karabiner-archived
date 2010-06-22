@@ -4,6 +4,7 @@
 #include "Config.hpp"
 #include "FlagStatus.hpp"
 #include "VirtualKey.hpp"
+#include "RemapClass.hpp"
 #include "RemapUtil.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -199,7 +200,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           *configitem = 0;
           break;
       }
-      refresh_remapfunc();
+      RemapClassManager::refresh();
     }
     return true;
   }

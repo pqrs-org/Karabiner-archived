@@ -7,6 +7,7 @@
 #include "remap.hpp"
 #include "FlagStatus.hpp"
 #include "KeyEventInputQueue.hpp"
+#include "RemapClass.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   Config config;
@@ -27,7 +28,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! error && req->newptr) {
         FlagStatus::lock_clear();
         FlagStatus::sticky_clear();
-        refresh_remapfunc();
+        RemapClassManager::refresh();
 
         // StatusMessageWindowParameter
         {

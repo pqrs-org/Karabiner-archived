@@ -29,16 +29,11 @@ $func = {
 
   :simultaneouskeypresses => [],
 }
+$remapclasses = []
 
 # ======================================================================
 def parseautogen(name, lines, autogen_index)
   remapclass = RemapClass.new(name, autogen_index)
-  code_consumer = []
-  code_pointing = []
-  code_variable = []
-
-  simultaneouskeypresses_code = []
-  simultaneouskeypresses_variable = []
 
   while true
     l = lines.shift
@@ -142,6 +137,7 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
   next if remapclass.empty?
 
   $outfile[:remapcode_func] << remapclass.to_code
+  $remapclasses << "remapclass_#{name}"
 
   unless remapclass.code[:simultaneouskeypresses_variable].empty? then
     $outfile[:remapcode_simultaneouskeypresses_func] << "class RemapClass_#{name} : public KeyEventInputQueue::RemapClass {\n"
@@ -181,6 +177,13 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
     $outfile[:remapcode_simultaneouskeypresses_func] << "\n\n"
   end
 end
+
+$outfile[:remapcode_func] << "RemapClass* listRemapClass[] = {\n"
+$remapclasses.each do |name|
+  $outfile[:remapcode_func] << "&#{name},\n"
+end
+$outfile[:remapcode_func] << "NULL,\n"
+$outfile[:remapcode_func] << "};\n"
 
 $outfile[:remapcode_info] << "#ifndef REMAPCODE_INFO\n"
 $outfile[:remapcode_info] << "#define REMAPCODE_INFO\n"
