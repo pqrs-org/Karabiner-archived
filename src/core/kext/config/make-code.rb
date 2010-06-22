@@ -23,8 +23,8 @@ $func = {
 $remapclasses = []
 
 # ======================================================================
-def parseautogen(name, lines, autogen_index)
-  remapclass = RemapClass.new(name, autogen_index)
+def parseautogen(name, lines)
+  remapclass = RemapClass.new(name)
 
   while true
     l = lines.shift
@@ -41,10 +41,9 @@ def parseautogen(name, lines, autogen_index)
 
     # --------------------------------------------------
     if /<block>/ =~ l then
-      block_remapclass = parseautogen(name, lines, remapclass.autogen_index)
+      block_remapclass = parseautogen(name, lines)
 
       remapclass += block_remapclass
-      remapclass.autogen_index = block_remapclass.autogen_index
 
     elsif /<\/block>/ =~ l then
       break
@@ -115,7 +114,7 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
   lines = item.split(/\n/)
   lines = Preprocesser.new().preprocess(lines)
 
-  remapclass = parseautogen(name, lines, 0)
+  remapclass = parseautogen(name, lines)
 
   unless lines.empty? then
     print "%%% ERROR no </block> at #{name} %%%\n"
