@@ -6,7 +6,7 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapClassManager {
-#include "config/output/include.remapcode_func.cpp"
+#include "config/output/include.RemapClass.cpp"
 
     class Item : public Queue::Item {
     public:
