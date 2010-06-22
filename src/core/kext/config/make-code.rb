@@ -12,17 +12,12 @@ $outfile = {
   :config_default => open('output/include.config.default.hpp', 'w'),
   :remapcode_keyboardtype => open('output/include.remapcode_keyboardtype.hpp', 'w'),
   :remapcode_func => open('output/include.remapcode_func.cpp', 'w'),
-  :remapcode_info => open('output/include.remapcode_info.cpp', 'w'),
   :remapcode_vk_config => open('output/include.remapcode_vk_config.cpp', 'w'),
   :remapcode_simultaneouskeypresses_func => open('output/include.remapcode_simultaneouskeypresses_func.cpp', 'w'),
   :keycode_vk_config => open('../keycode/data/include/KeyCode.VK_GENERATED.data', 'w'),
 }
 
 $func = {
-  :key => [],
-  :consumer => [],
-  :pointing => [],
-
   :simultaneouskeypresses => [],
 }
 $remapclasses = []
@@ -179,15 +174,6 @@ $remapclasses.each do |name|
 end
 $outfile[:remapcode_func] << "NULL,\n"
 $outfile[:remapcode_func] << "};\n"
-
-$outfile[:remapcode_info] << "#ifndef REMAPCODE_INFO\n"
-$outfile[:remapcode_info] << "#define REMAPCODE_INFO\n"
-$outfile[:remapcode_info] << "enum {\n"
-$outfile[:remapcode_info] << "  MAXNUM_REMAPFUNC_KEY = #{$func[:key].uniq.count},\n"
-$outfile[:remapcode_info] << "  MAXNUM_REMAPFUNC_CONSUMER = #{$func[:consumer].uniq.count},\n"
-$outfile[:remapcode_info] << "  MAXNUM_REMAPFUNC_POINTING = #{$func[:pointing].uniq.count},\n"
-$outfile[:remapcode_info] << "};\n"
-$outfile[:remapcode_info] << "#endif\n"
 
 $outfile[:remapcode_simultaneouskeypresses_func] << "KeyEventInputQueue::RemapClass* listRemapClass_simultaneouskeypresses[] = {\n"
 $func[:simultaneouskeypresses].uniq.each do |name|
