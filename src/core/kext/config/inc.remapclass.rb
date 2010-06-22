@@ -11,15 +11,16 @@ class RemapClass
     @filter = Filter.new()
 
     @code = {
+      :initialize                      => '',
       :remap_key                       => '',
       :remap_consumer                  => '',
       :remap_pointing                  => '',
       :remap_setkeyboardtype           => '',
       :remap_simultaneouskeypresses    => '',
       :keycode                         => '',
+      :statusmessage                   => '',
 
       :variable                        => [],
-      :refresh_remapfunc_statusmessage => '',
       :simultaneouskeypresses_variable => [],
     }
 
@@ -50,14 +51,7 @@ class RemapClass
         @code[:remap_setkeyboardtype] += "}\n"
 
       when 'ShowStatusMessage'
-        if (name == 'notsave_passthrough') then
-          @code[:refresh_remapfunc_statusmessage] += "if (config.#{name}) {\n"
-        else
-          @code[:refresh_remapfunc_statusmessage] += "if (config.#{name} && ! config.notsave_passthrough) {\n"
-        end
-        @code[:refresh_remapfunc_statusmessage] += "  strlcat(statusmessage, #{params} \" \", sizeof(statusmessage));\n"
-        @code[:refresh_remapfunc_statusmessage] += "  isStatusMessageVisible = true;\n"
-        @code[:refresh_remapfunc_statusmessage] += "}\n"
+        @code[:statusmessage] = "#{params};\n"
 
       when 'SimultaneousKeyPresses'
         @code[:keycode] += "VK_SIMULTANEOUSKEYPRESSES_#{name}_#{@autogen_index} --AUTO--\n"
@@ -160,7 +154,6 @@ class RemapClass
 
   def empty?
     @code.each do |k, v|
-      next if k == :refresh_remapfunc_statusmessage
       next if k == :remap_setkeyboardtype
       return false unless v.empty?
     end
@@ -174,6 +167,10 @@ class RemapClass
     code += "public:\n"
 
     code += "void initialize(void) {\n"
+    code += @code[:initialize]
+    unless @code[:statusmessage].empty? then
+      code += "statusmessage = #{@code[:statusmessage]}"
+    end
     code += "}\n"
 
     unless @code[:remap_key].empty? then
@@ -206,10 +203,11 @@ class RemapClass
     if @code[:remap_pointing].empty? then
       code += "if (type == ENABLE_TYPE_POINTING) return false;\n"
     end
-    if @code[:refresh_remapfunc_statusmessage].empty? then
+    if @code[:statusmessage].empty? then
       code += "if (type == ENABLE_TYPE_STATUSMESSAGE) return false;\n"
     end
-    if /^passthrough_/ =~ @name
+
+    if /^passthrough_/ =~ @name or @name == 'notsave_passthrough' then
       code += "return config.#{@name};\n"
     else
       code += "return config.#{@name} && ! config.notsave_passthrough;\n"

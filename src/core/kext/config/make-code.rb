@@ -13,10 +13,6 @@ $outfile = {
   :remapcode_keyboardtype => open('output/include.remapcode_keyboardtype.hpp', 'w'),
   :remapcode_func => open('output/include.remapcode_func.cpp', 'w'),
   :remapcode_info => open('output/include.remapcode_info.cpp', 'w'),
-  :remapcode_refresh_remapfunc_key => open('output/include.remapcode_refresh_remapfunc_key.cpp', 'w'),
-  :remapcode_refresh_remapfunc_consumer => open('output/include.remapcode_refresh_remapfunc_consumer.cpp', 'w'),
-  :remapcode_refresh_remapfunc_pointing => open('output/include.remapcode_refresh_remapfunc_pointing.cpp', 'w'),
-  :remapcode_refresh_remapfunc_statusmessage => open('output/include.remapcode_refresh_remapfunc_statusmessage.cpp', 'w'),
   :remapcode_vk_config => open('output/include.remapcode_vk_config.cpp', 'w'),
   :remapcode_simultaneouskeypresses_func => open('output/include.remapcode_simultaneouskeypresses_func.cpp', 'w'),
   :keycode_vk_config => open('../keycode/data/include/KeyCode.VK_GENERATED.data', 'w'),
@@ -131,7 +127,6 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
   end
 
   $outfile[:remapcode_keyboardtype] << remapclass.code[:remap_setkeyboardtype]
-  $outfile[:remapcode_refresh_remapfunc_statusmessage] << remapclass.code[:refresh_remapfunc_statusmessage]
   $outfile[:keycode_vk_config] << remapclass.code[:keycode]
 
   next if remapclass.empty?
@@ -193,49 +188,6 @@ $outfile[:remapcode_info] << "  MAXNUM_REMAPFUNC_CONSUMER = #{$func[:consumer].u
 $outfile[:remapcode_info] << "  MAXNUM_REMAPFUNC_POINTING = #{$func[:pointing].uniq.count},\n"
 $outfile[:remapcode_info] << "};\n"
 $outfile[:remapcode_info] << "#endif\n"
-
-# set higher priority to notsave.* (ex. Vi Mode)
-remapfunc_key_notsave = ''
-remapfunc_key_other = ''
-$func[:key].uniq.each do |name|
-  text = ''
-  if /^passthrough_/ =~ name then
-    text += "if (config.#{name}) {\n"
-  else
-    text += "if (config.#{name} && ! config.notsave_passthrough) {\n"
-  end
-  text += "  listRemapFunc_key[listRemapFunc_key_size] = GeneratedCode::RemapClass_#{name}::remap_key;\n"
-  text += "  ++listRemapFunc_key_size;\n"
-  text += "}\n"
-  if /^notsave_/ =~ name then
-    remapfunc_key_notsave += text
-  else
-    remapfunc_key_other += text
-  end
-end
-$outfile[:remapcode_refresh_remapfunc_key] << remapfunc_key_notsave
-$outfile[:remapcode_refresh_remapfunc_key] << remapfunc_key_other
-
-$func[:consumer].uniq.each do |name|
-  if /^passthrough_/ =~ name then
-    $outfile[:remapcode_refresh_remapfunc_consumer] << "if (config.#{name}) {\n"
-  else
-    $outfile[:remapcode_refresh_remapfunc_consumer] << "if (config.#{name} && ! config.notsave_passthrough) {\n"
-  end
-  $outfile[:remapcode_refresh_remapfunc_consumer] << "  listRemapFunc_consumer[listRemapFunc_consumer_size] = GeneratedCode::RemapClass_#{name}::remap_consumer;\n"
-  $outfile[:remapcode_refresh_remapfunc_consumer] << "  ++listRemapFunc_consumer_size;\n"
-  $outfile[:remapcode_refresh_remapfunc_consumer] << "}\n"
-end
-$func[:pointing].uniq.each do |name|
-  if /^passthrough_/ =~ name then
-    $outfile[:remapcode_refresh_remapfunc_pointing] << "if (config.#{name}) {\n"
-  else
-    $outfile[:remapcode_refresh_remapfunc_pointing] << "if (config.#{name} && ! config.notsave_passthrough) {\n"
-  end
-  $outfile[:remapcode_refresh_remapfunc_pointing] << "  listRemapFunc_pointing[listRemapFunc_pointing_size] = GeneratedCode::RemapClass_#{name}::remap_pointing;\n"
-  $outfile[:remapcode_refresh_remapfunc_pointing] << "  ++listRemapFunc_pointing_size;\n"
-  $outfile[:remapcode_refresh_remapfunc_pointing] << "}\n"
-end
 
 $outfile[:remapcode_simultaneouskeypresses_func] << "KeyEventInputQueue::RemapClass* listRemapClass_simultaneouskeypresses[] = {\n"
 $func[:simultaneouskeypresses].uniq.each do |name|

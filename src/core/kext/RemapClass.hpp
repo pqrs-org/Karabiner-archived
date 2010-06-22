@@ -29,7 +29,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
 
   namespace RemapClassManager {
-    void initialize(void);
+    void initialize(IOWorkLoop& workloop);
     void terminate(void);
     void refresh(void);
 

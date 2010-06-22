@@ -17,8 +17,6 @@ org_pqrs_driver_KeyRemap4MacBook::init(OSDictionary* dict)
   IOLog("KeyRemap4MacBook [init]\n");
 
   bool res = super::init(dict);
-  org_pqrs_KeyRemap4MacBook::Core::initialize();
-
   return res;
 }
 
@@ -26,9 +24,6 @@ void
 org_pqrs_driver_KeyRemap4MacBook::free(void)
 {
   IOLog("KeyRemap4MacBook [free]\n");
-
-  org_pqrs_KeyRemap4MacBook::Core::terminate();
-
   super::free();
 }
 
