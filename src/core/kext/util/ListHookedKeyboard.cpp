@@ -8,6 +8,7 @@
 #include "KeyEventInputQueue.hpp"
 #include "ListHookedKeyboard.hpp"
 #include "NumHeldDownKeys.hpp"
+#include "RemapClass.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace {
@@ -78,7 +79,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
         // ------------------------------------------------------------
-#include "../config/output/include.remapcode_keyboardtype.hpp"
+        RemapClassManager::remap_setkeyboardtype(keyboardType);
         CommonData::setcurrent_ts(ts);
         CommonData::setcurrent_vendorIDproductID(hk->getVendorID(), hk->getProductID());
         CommonData::setcurrent_keyboardType(keyboardType);

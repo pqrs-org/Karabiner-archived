@@ -10,7 +10,6 @@ $outfile = {
   :config_register => open('output/include.config_register.cpp', 'w'),
   :config_unregister => open('output/include.config_unregister.cpp', 'w'),
   :config_default => open('output/include.config.default.hpp', 'w'),
-  :remapcode_keyboardtype => open('output/include.remapcode_keyboardtype.hpp', 'w'),
   :remapclass => open('output/include.RemapClass.cpp', 'w'),
   :remapcode_vk_config => open('output/include.remapcode_vk_config.cpp', 'w'),
   :remapcode_simultaneouskeypresses_func => open('output/include.remapcode_simultaneouskeypresses_func.cpp', 'w'),
@@ -120,7 +119,6 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
     print "%%% ERROR no </block> at #{name} %%%\n"
   end
 
-  $outfile[:remapcode_keyboardtype] << remapclass.code[:remap_setkeyboardtype]
   $outfile[:keycode_vk_config] << remapclass.code[:keycode]
 
   next if remapclass.empty?
