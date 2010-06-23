@@ -44,9 +44,7 @@ class RemapClass
 
       case operation
       when 'SetKeyboardType'
-        @code[:remap_setkeyboardtype] += "if (config.#{name} && ! config.notsave_passthrough) {\n"
-        @code[:remap_setkeyboardtype] += "  keyboardType = #{params}.get();\n"
-        @code[:remap_setkeyboardtype] += "}\n"
+        @code[:remap_setkeyboardtype] += "keyboardType = #{params}.get();\n";
 
       when 'ShowStatusMessage'
         @code[:statusmessage] = "#{params};\n"
@@ -138,7 +136,6 @@ class RemapClass
 
   def empty?
     @code.each do |k, v|
-      next if k == :remap_setkeyboardtype
       return false unless v.empty?
     end
     return true
@@ -157,6 +154,11 @@ class RemapClass
     end
     code += "}\n"
 
+    unless @code[:remap_setkeyboardtype].empty? then
+      code += "void remap_setkeyboardtype(KeyboardType &keyboardType) {\n"
+      code += @code[:remap_setkeyboardtype]
+      code += "}\n"
+    end
     unless @code[:remap_key].empty? then
       code += "void remap_key(RemapParams &remapParams) {\n"
       code += @code[:remap_key]
