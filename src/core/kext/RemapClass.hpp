@@ -11,6 +11,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       ENABLE_TYPE_KEY,
       ENABLE_TYPE_CONSUMER,
       ENABLE_TYPE_POINTING,
+      ENABLE_TYPE_SIMULTANEOUSKEYPRESSES,
       ENABLE_TYPE_STATUSMESSAGE,
     };
 
@@ -25,6 +26,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     virtual void remap_consumer(RemapConsumerParams& remapParams) {}
     virtual void remap_pointing(RemapPointingParams_relative& remapParams) {}
 
+    virtual void remap_simultaneouskeypresses(void) {}
+    virtual bool handlevirtualkey(const Params_KeyboardEventCallBack& params) { return false; }
+
     const char* statusmessage;
   };
 
@@ -33,10 +37,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     void terminate(void);
     void refresh(void);
 
-    void remap_setkeyboardtype(KeyboardType& keyboardType);
-    void remap_key(RemapParams& remapParams);
-    void remap_consumer(RemapConsumerParams& remapParams);
-    void remap_pointing(RemapPointingParams_relative& remapParams);
+    // remap_* funtions return the number of enabled entries.
+    size_t remap_setkeyboardtype(KeyboardType& keyboardType);
+    size_t remap_key(RemapParams& remapParams);
+    size_t remap_consumer(RemapConsumerParams& remapParams);
+    size_t remap_pointing(RemapPointingParams_relative& remapParams);
+    size_t remap_simultaneouskeypresses(void);
+
+    bool handlevirtualkey(const Params_KeyboardEventCallBack& params);
   };
 }
 
