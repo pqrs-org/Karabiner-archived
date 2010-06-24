@@ -11,13 +11,9 @@ $outfile = {
   :config_unregister => open('output/include.config_unregister.cpp', 'w'),
   :config_default => open('output/include.config.default.hpp', 'w'),
   :remapclass => open('output/include.RemapClass.cpp', 'w'),
+  :remapclass_handlevirtualkey => open('output/include.RemapClass.handlevirtualkey.cpp', 'w'),
   :remapcode_vk_config => open('output/include.remapcode_vk_config.cpp', 'w'),
-  :remapcode_simultaneouskeypresses_func => open('output/include.remapcode_simultaneouskeypresses_func.cpp', 'w'),
   :keycode_vk_config => open('../keycode/data/include/KeyCode.VK_GENERATED.data', 'w'),
-}
-
-$func = {
-  :simultaneouskeypresses => [],
 }
 $remapclasses = []
 
@@ -119,50 +115,11 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
     print "%%% ERROR no </block> at #{name} %%%\n"
   end
 
-  $outfile[:keycode_vk_config] << remapclass.code[:keycode]
-
   next if remapclass.empty?
 
+  $outfile[:keycode_vk_config] << remapclass.code[:keycode]
   $outfile[:remapclass] << remapclass.to_code
   $remapclasses << "remapclass_#{name}"
-
-  unless remapclass.code[:simultaneouskeypresses_variable].empty? then
-    $outfile[:remapcode_simultaneouskeypresses_func] << "class RemapClass_#{name} : public KeyEventInputQueue::RemapClass {\n"
-    $outfile[:remapcode_simultaneouskeypresses_func] << "public:\n"
-
-    $outfile[:remapcode_simultaneouskeypresses_func] << "void initialize(void) {\n"
-    remapclass.code[:simultaneouskeypresses_variable].each do |variable|
-      $outfile[:remapcode_simultaneouskeypresses_func] << "  #{variable[:name]}.initialize(#{variable[:params]});\n"
-    end
-    $outfile[:remapcode_simultaneouskeypresses_func] << "}\n"
-
-    $outfile[:remapcode_simultaneouskeypresses_func] << "void remap(void) {\n"
-    $outfile[:remapcode_simultaneouskeypresses_func] << remapclass.code[:remap_simultaneouskeypresses]
-    $outfile[:remapcode_simultaneouskeypresses_func] << "}\n"
-
-    $outfile[:remapcode_simultaneouskeypresses_func] << "bool handleVirtualKey(const Params_KeyboardEventCallBack& params) {\n"
-    remapclass.code[:simultaneouskeypresses_variable].each do |variable|
-      $outfile[:remapcode_simultaneouskeypresses_func] << "  if (#{variable[:name]}.handleVirtualKey(params)) return true;\n"
-    end
-    $outfile[:remapcode_simultaneouskeypresses_func] << "  return false;\n"
-    $outfile[:remapcode_simultaneouskeypresses_func] << "}\n"
-
-    if /^passthrough_/ =~ name then
-      $outfile[:remapcode_simultaneouskeypresses_func] << "bool enabled(void) const { return config.#{name}; }\n"
-    else
-      $outfile[:remapcode_simultaneouskeypresses_func] << "bool enabled(void) const { return config.#{name} && ! config.notsave_passthrough; }\n"
-    end
-
-    $outfile[:remapcode_simultaneouskeypresses_func] << "private:\n"
-    remapclass.code[:simultaneouskeypresses_variable].each do |variable|
-      $outfile[:remapcode_simultaneouskeypresses_func] << "  KeyEventInputQueue::Remap #{variable[:name]};\n"
-    end
-    $outfile[:remapcode_simultaneouskeypresses_func] << "};\n"
-
-    $outfile[:remapcode_simultaneouskeypresses_func] << "RemapClass_#{name} remapclass_#{name};\n"
-
-    $outfile[:remapcode_simultaneouskeypresses_func] << "\n\n"
-  end
 end
 
 $outfile[:remapclass] << "RemapClass* listRemapClass[] = {\n"
@@ -172,12 +129,7 @@ end
 $outfile[:remapclass] << "NULL,\n"
 $outfile[:remapclass] << "};\n"
 
-$outfile[:remapcode_simultaneouskeypresses_func] << "KeyEventInputQueue::RemapClass* listRemapClass_simultaneouskeypresses[] = {\n"
-$func[:simultaneouskeypresses].uniq.each do |name|
-  $outfile[:remapcode_simultaneouskeypresses_func] << "  &remapclass_#{name},\n"
-end
-$outfile[:remapcode_simultaneouskeypresses_func] << "  NULL,\n"
-$outfile[:remapcode_simultaneouskeypresses_func] << "};\n"
+$outfile[:remapclass_handlevirtualkey] << RemapClass.get_handlevirtualkey_entry
 
 $outfile.each do |name,file|
   file.close

@@ -22,8 +22,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void initialize(IOWorkLoop& workloop);
     static void terminate(void);
 
-    static bool handleVirtualKey(const Params_KeyboardEventCallBack& params);
-
     static void add(OSObject* target,
                     EventType eventType,
                     Flags flags,
@@ -89,14 +87,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       SimultaneousKeyPresses::Option::Option option_;
 
       RemapUtil::KeyToKey keytokey_;
-    };
-
-    class RemapClass {
-    public:
-      virtual void initialize(void) = 0;
-      virtual void remap(void) = 0;
-      virtual bool handleVirtualKey(const Params_KeyboardEventCallBack& params) = 0;
-      virtual bool enabled(void) const = 0;
     };
 
   private:

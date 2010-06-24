@@ -5,23 +5,29 @@ require 'inc.filter.rb'
 
 class RemapClass
   @@index = 0
+  @@handlevirtualkey_entry = ''
+
+  def RemapClass.get_handlevirtualkey_entry
+    return @@handlevirtualkey_entry
+  end
 
   def initialize(name)
     @name = name
     @filter = Filter.new()
 
     @code = {
-      :initialize                      => '',
-      :remap_key                       => '',
-      :remap_consumer                  => '',
-      :remap_pointing                  => '',
-      :remap_setkeyboardtype           => '',
-      :remap_simultaneouskeypresses    => '',
-      :keycode                         => '',
-      :statusmessage                   => '',
-
-      :variable                        => [],
-      :simultaneouskeypresses_variable => [],
+      # functions
+      :initialize                                    => '',
+      :handlevirtualkey                              => '',
+      :remap_key                                     => '',
+      :remap_consumer                                => '',
+      :remap_pointing                                => '',
+      :remap_setkeyboardtype                         => '',
+      :remap_simultaneouskeypresses                  => '',
+      # values
+      :keycode                                       => '',
+      :statusmessage                                 => '',
+      :variable                                      => '',
     }
   end
   attr_accessor :name, :filter, :code
@@ -50,66 +56,67 @@ class RemapClass
         @code[:statusmessage] = "#{params};\n"
 
       when 'SimultaneousKeyPresses'
+        @code[:variable] += "KeyEventInputQueue::Remap value#{@@index}_;\n"
         @code[:keycode] += "VK_SIMULTANEOUSKEYPRESSES_#{name}_#{@@index} --AUTO--\n"
-        $func[:simultaneouskeypresses] << name
-        @code[:simultaneouskeypresses_variable] << { :name => "remap_#{@@index}_", :params => "KeyCode::VK_SIMULTANEOUSKEYPRESSES_#{name}_#{@@index}, #{params}" }
-        @code[:remap_simultaneouskeypresses] += "remap_#{@@index}_.remap();\n"
+        @code[:initialize] += "value#{@@index}_.initialize(KeyCode::VK_SIMULTANEOUSKEYPRESSES_#{name}_#{@@index}, #{params});\n"
+        @code[:remap_simultaneouskeypresses] += "value#{@@index}_.remap();\n"
+        @code[:handlevirtualkey] += "if (value#{@@index}_.handleVirtualKey(params)) return true;\n"
 
       when 'KeyToKey'
-        @code[:variable] << ['RemapUtil::KeyToKey', "value#{@@index}_"]
-        @code[:remap_key] += "    if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
+        @code[:variable] += "RemapUtil::KeyToKey value#{@@index}_;\n"
+        @code[:remap_key] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
 
       when 'DoublePressModifier'
-        @code[:variable] << ['DoublePressModifier', "value#{@@index}_"]
-        @code[:remap_key] += "    if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
+        @code[:variable] += "DoublePressModifier value#{@@index}_;\n"
+        @code[:remap_key] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
 
       when 'IgnoreMultipleSameKeyPress'
-        @code[:variable] << ['IgnoreMultipleSameKeyPress', "value#{@@index}_"]
-        @code[:remap_key] += "    if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
+        @code[:variable] += "IgnoreMultipleSameKeyPress value#{@@index}_;\n"
+        @code[:remap_key] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
 
       when 'KeyToConsumer'
-        @code[:variable] << ['RemapUtil::KeyToConsumer', "value#{@@index}_"]
-        @code[:remap_key] += "    if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
+        @code[:variable] += "RemapUtil::KeyToConsumer value#{@@index}_;\n"
+        @code[:remap_key] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
 
       when 'KeyToPointingButton'
-        @code[:variable] << ['RemapUtil::KeyToPointingButton', "value#{@@index}_"]
-        @code[:remap_key] += "    if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
+        @code[:variable] += "RemapUtil::KeyToPointingButton value#{@@index}_;\n"
+        @code[:remap_key] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
 
       when 'KeyOverlaidModifier'
-        @code[:variable] << ['KeyOverlaidModifier', "value#{@@index}_"]
-        @code[:remap_key] += "    if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
+        @code[:variable] += "KeyOverlaidModifier value#{@@index}_;\n"
+        @code[:remap_key] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
 
       when 'KeyOverlaidModifierWithRepeat'
-        @code[:variable] << ['KeyOverlaidModifier', "value#{@@index}_"]
-        @code[:remap_key] += "    if (value#{@@index}_.remapWithRepeat(remapParams, #{params})) break;\n"
+        @code[:variable] += "KeyOverlaidModifier value#{@@index}_;\n"
+        @code[:remap_key] += "if (value#{@@index}_.remapWithRepeat(remapParams, #{params})) break;\n"
 
       when 'ModifierHoldingKeyToKey'
-        @code[:variable] << ['ModifierHoldingKeyToKey', "value#{@@index}_"]
-        @code[:remap_key] += "    if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
+        @code[:variable] += "ModifierHoldingKeyToKey value#{@@index}_;\n"
+        @code[:remap_key] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
 
       when 'HoldingKeyToKey'
-        @code[:variable] << ['HoldingKeyToKey', "value#{@@index}_"]
-        @code[:remap_key] += "    if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
+        @code[:variable] += "HoldingKeyToKey value#{@@index}_;\n"
+        @code[:remap_key] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
 
       when 'ConsumerToKey'
-        @code[:variable] << ['RemapUtil::ConsumerToKey', "value#{@@index}_"]
-        @code[:remap_consumer] += "    if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
+        @code[:variable] += "RemapUtil::ConsumerToKey value#{@@index}_;\n"
+        @code[:remap_consumer] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
 
       when 'ConsumerToConsumer'
-        @code[:variable] << ['RemapUtil::ConsumerToConsumer', "value#{@@index}_"]
-        @code[:remap_consumer] += "    if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
+        @code[:variable] += "RemapUtil::ConsumerToConsumer value#{@@index}_;\n"
+        @code[:remap_consumer] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
 
       when 'PointingRelativeToScroll'
-        @code[:variable] << ['RemapUtil::PointingRelativeToScroll', "value#{@@index}_"]
-        @code[:remap_pointing] += "    if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
+        @code[:variable] += "RemapUtil::PointingRelativeToScroll value#{@@index}_;\n"
+        @code[:remap_pointing] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
 
       when 'PointingButtonToPointingButton'
-        @code[:variable] << ['RemapUtil::PointingButtonToPointingButton', "value#{@@index}_"]
-        @code[:remap_pointing] << "    if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
+        @code[:variable] += "RemapUtil::PointingButtonToPointingButton value#{@@index}_;\n"
+        @code[:remap_pointing] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
 
       when 'PointingButtonToKey'
-        @code[:variable] << ['RemapUtil::PointingButtonToKey', "value#{@@index}_"]
-        @code[:remap_pointing] << "    if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
+        @code[:variable] += "RemapUtil::PointingButtonToKey value#{@@index}_;\n"
+        @code[:remap_pointing] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
 
       else
         print "%%% ERROR #{type} %%%\n#{l}\n"
@@ -174,6 +181,19 @@ class RemapClass
       code += @code[:remap_pointing]
       code += "}\n"
     end
+    unless @code[:remap_simultaneouskeypresses].empty? then
+      code += "void remap_simultaneouskeypresses(void) {\n"
+      code += @code[:remap_simultaneouskeypresses]
+      code += "}\n"
+    end
+    unless @code[:handlevirtualkey].empty? then
+      code += "bool handlevirtualkey(const Params_KeyboardEventCallBack& params) {\n"
+      code += @code[:handlevirtualkey]
+      code += "return false;\n"
+      code += "}\n"
+
+      @@handlevirtualkey_entry += "if (remapclass_#{@name}.handlevirtualkey(params)) return true;\n"
+    end
 
     # ----------------------------------------
     code   += "bool enabled(EnableType type) const {\n"
@@ -189,6 +209,9 @@ class RemapClass
     if @code[:remap_pointing].empty? then
       code += "if (type == ENABLE_TYPE_POINTING) return false;\n"
     end
+    if @code[:remap_simultaneouskeypresses].empty? then
+      code += "if (type == ENABLE_TYPE_SIMULTANEOUSKEYPRESSES) return false;\n"
+    end
     if @code[:statusmessage].empty? then
       code += "if (type == ENABLE_TYPE_STATUSMESSAGE) return false;\n"
     end
@@ -203,9 +226,7 @@ class RemapClass
     # ----------------------------------------
     code += "\n"
     code += "private:\n"
-    @code[:variable].each do |variable|
-      code += "  #{variable[0]} #{variable[1]};\n"
-    end
+    code += @code[:variable]
     code += "};\n"
 
     code += "RemapClass_#{@name} remapclass_#{@name};\n"
