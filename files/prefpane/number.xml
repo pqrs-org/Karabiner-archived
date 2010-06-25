@@ -10,7 +10,7 @@
     <item>
       <name>[Key Repeat] Wait</name>
       <sysctl>repeat.wait</sysctl>
-      <default>30</default>
+      <default>83</default>
       <baseunit>ms</baseunit>
     </item>
 
