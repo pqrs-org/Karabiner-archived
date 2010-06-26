@@ -5,7 +5,6 @@
 #include "RemapClass.hpp"
 #include "RemapUtil.hpp"
 #include "util/KeyboardRepeat.hpp"
-#include "util/KeyEventInputQueue.hpp"
 #include "util/ListHookedKeyboard.hpp"
 #include "VirtualKey.hpp"
 
