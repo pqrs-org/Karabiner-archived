@@ -9,4 +9,6 @@
 #undef protected
 #undef private
 
+#define IOLOG_ERROR(fmt, ...) IOLog("KeyRemap4MacBook --Error-- " fmt "\n" __VA_ARGS__)
+
 #endif
