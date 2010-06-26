@@ -199,19 +199,51 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ----------------------------------------
     FlagStatus::temporary_decrease(d.fromKey.flags);
-    for (size_t i = 0; i < d.toKeys.size(); ++i) {
-      FlagStatus::temporary_increase(d.toKeys[i].flags);
-      Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(remapParams.params.eventType,
-                                                                                                   FlagStatus::makeFlags(),
-                                                                                                   d.toKeys[i].key,
-                                                                                                   remapParams.params.repeat));
-      if (! ptr) return false;
-      Params_KeyboardSpecialEventCallback& params = *ptr;
+    KeyboardRepeat::cancel();
 
-      KeyboardRepeat::set(params);
-      RemapUtil::fireConsumer(params);
-      FlagStatus::temporary_decrease(d.toKeys[i].flags);
+    switch (d.toKeys.size()) {
+      case 0:
+        break;
+
+      case 1:
+      {
+        FlagStatus::temporary_increase(d.toKeys[0].flags);
+        Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(remapParams.params.eventType,
+                                                                                                     FlagStatus::makeFlags(),
+                                                                                                     d.toKeys[0].key,
+                                                                                                     false));
+        if (! ptr) return false;
+        Params_KeyboardSpecialEventCallback& params = *ptr;
+
+        KeyboardRepeat::set(params);
+        RemapUtil::fireConsumer(params);
+        break;
+      }
+
+      default:
+        if (remapParams.params.eventType == EventType::DOWN) {
+          for (size_t i = 0; i < d.toKeys.size(); ++i) {
+            FlagStatus::temporary_increase(d.toKeys[i].flags);
+            Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(EventType::DOWN,
+                                                                                                         FlagStatus::makeFlags(),
+                                                                                                         d.toKeys[i].key,
+                                                                                                         false));
+            if (! ptr) return false;
+            Params_KeyboardSpecialEventCallback& params = *ptr;
+
+            RemapUtil::fireConsumer(params);
+            params.eventType = EventType::UP;
+            RemapUtil::fireConsumer(params);
+
+            KeyboardRepeat::primitive_add(EventType::DOWN, params.flags, params.key);
+            KeyboardRepeat::primitive_add(EventType::UP,   params.flags, params.key);
+
+            FlagStatus::temporary_decrease(d.toKeys[i].flags);
+          }
+        }
+        break;
     }
+
     return true;
   }
 
@@ -220,12 +252,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     const Definition& d = definition;
 
-    if (remapParams.isremapped) return false;
-    if (! fromkeychecker_.isFromKey(remapParams, d.fromKey.key, d.fromKey.flags)) return false;
-    remapParams.isremapped = true;
+    bool isKeyDown = remapParams.isKeyDownOrModifierDown();
+    bool result = keytokey_.remap(remapParams, d.fromKey.key, d.fromKey.flags, KeyCode::VK_NONE);
+    if (! result) return false;
 
     // ----------------------------------------
-    EventType eventType = remapParams.isKeyDownOrModifierDown() ? EventType::DOWN : EventType::UP;
+    EventType eventType = isKeyDown ? EventType::DOWN : EventType::UP;
     Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(eventType,
                                                                                                  FlagStatus::makeFlags(),
                                                                                                  ConsumerKeyCode::VK_PSEUDO_KEY,
