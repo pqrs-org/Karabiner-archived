@@ -56,7 +56,7 @@ class RemapClass
         @code[:statusmessage] = "#{params};\n"
 
       when 'SimultaneousKeyPresses'
-        @code[:variable] += "KeyEventInputQueue::Remap value#{@@index}_;\n"
+        @code[:variable] += "EventInputQueue::Remap value#{@@index}_;\n"
         @code[:keycode] += "VK_SIMULTANEOUSKEYPRESSES_#{name}_#{@@index} --AUTO--\n"
         @code[:initialize] += "value#{@@index}_.initialize(KeyCode::VK_SIMULTANEOUSKEYPRESSES_#{name}_#{@@index}, #{params});\n"
         @code[:remap_simultaneouskeypresses] += "value#{@@index}_.remap();\n"

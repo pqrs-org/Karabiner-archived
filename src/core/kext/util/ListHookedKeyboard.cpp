@@ -25,14 +25,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace {
     void
     hook_KeyboardEventCallback(OSObject* target,
-                               unsigned int eventType_value,
-                               unsigned int flags_value,
-                               unsigned int key_value,
-                               unsigned int charCode_value,
-                               unsigned int charSet_value,
-                               unsigned int origCharCode_value,
-                               unsigned int origCharSet_value,
-                               unsigned int keyboardType_value,
+                               unsigned int eventType,
+                               unsigned int flags,
+                               unsigned int key,
+                               unsigned int charCode,
+                               unsigned int charSet,
+                               unsigned int origCharCode,
+                               unsigned int origCharSet,
+                               unsigned int keyboardType,
                                bool repeat,
                                AbsoluteTime ts,
                                OSObject* sender,
@@ -40,14 +40,17 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       if (! CommonData::eventLock) return;
 
-      EventType eventType(eventType_value);
-      Flags flags(flags_value);
-      KeyCode key(key_value);
-      CharCode charCode(charCode_value);
-      CharSet charSet(charSet_value);
-      OrigCharCode origCharCode(origCharCode_value);
-      OrigCharSet origCharSet(origCharSet_value);
-      KeyboardType keyboardType(keyboardType_value);
+      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType(eventType),
+                                                                                     Flags(flags),
+                                                                                     KeyCode(key),
+                                                                                     CharCode(charCode),
+                                                                                     CharSet(charSet),
+                                                                                     OrigCharCode(origCharCode),
+                                                                                     OrigCharSet(origCharSet),
+                                                                                     KeyboardType(keyboardType),
+                                                                                     repeat));
+      if (! ptr) return;
+      Params_KeyboardEventCallBack& params = *ptr;
 
       {
         IOLockWrapper::ScopedLock lk(CommonData::eventLock);
@@ -74,22 +77,22 @@ namespace org_pqrs_KeyRemap4MacBook {
         // *** LCP has 6 keys (Page Up, Page Down, a 'B' key, an 'Esc' key, and volume up / down keys). ***
         // *** So, we can drop CONTROL_L and SHIFT_L without a problem. ***
         if (hk->isEqualVendorIDProductID(DeviceVendorID(0x046d), DeviceProductID(0xc515))) {
-          if (KeyCode::CONTROL_L == key) return;
-          if (KeyCode::SHIFT_L == key) return;
+          if (params.key == KeyCode::CONTROL_L) return;
+          if (params.key == KeyCode::SHIFT_L) return;
         }
 
         // ------------------------------------------------------------
-        RemapClassManager::remap_setkeyboardtype(keyboardType);
+        RemapClassManager::remap_setkeyboardtype(params.keyboardType);
         CommonData::setcurrent_ts(ts);
         CommonData::setcurrent_vendorIDproductID(hk->getVendorID(), hk->getProductID());
-        CommonData::setcurrent_keyboardType(keyboardType);
+        CommonData::setcurrent_keyboardType(params.keyboardType);
 
         // ------------------------------------------------------------
         // Because we handle the key repeat ourself, drop the key repeat by hardware.
         if (repeat) return;
 
         // ------------------------------------------------------------
-        if (eventType.isKeyDownOrModifierDown(key, flags)) {
+        if (params.eventType.isKeyDownOrModifierDown(params.key, params.flags)) {
           CommonData::setcurrent_workspacedata();
         }
 
@@ -100,19 +103,15 @@ namespace org_pqrs_KeyRemap4MacBook {
         // If SimultaneousKeyPresses is enabled, keys may be dropped.
         // For example, Shift_L+Shift_R to Space is enabled, Shift_L and Shift_R may be dropped.
         // If we call FlagStatus::set(key, flags) here, dropped keys are kept as pushed status.
-        // So, call FlagStatus::set(key, flags) after KeyEventInputQueue.
+        // So, call FlagStatus::set(key, flags) after EventInputQueue.
         FlagStatus::set();
 
         // ------------------------------------------------------------
-        key.normalizeKey(flags, eventType, keyboardType);
+        params.key.normalizeKey(params.flags, params.eventType, params.keyboardType);
       }
 
       // ------------------------------------------------------------
-      KeyEventInputQueue::add(target,
-                              eventType, flags, key,
-                              charCode, charSet, origCharCode, origCharSet,
-                              keyboardType, repeat,
-                              ts, sender, refcon);
+      EventInputQueue::push(params);
     }
 
     void
@@ -141,29 +140,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  ListHookedKeyboard::hook_KeyboardEventCallback_queued(OSObject* target,
-                                                        EventType eventType,
-                                                        Flags flags,
-                                                        KeyCode key,
-                                                        CharCode charCode,
-                                                        CharSet charSet,
-                                                        OrigCharCode origCharCode,
-                                                        OrigCharSet origCharSet,
-                                                        KeyboardType keyboardType,
-                                                        bool repeat,
-                                                        AbsoluteTime ts,
-                                                        OSObject* sender,
-                                                        void* refcon)
+  ListHookedKeyboard::hook_KeyboardEventCallback_queued(Params_KeyboardEventCallBack& params)
   {
     if (! CommonData::eventLock) return;
     IOLockWrapper::ScopedLock lk(CommonData::eventLock);
-
-    // ------------------------------------------------------------
-    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(eventType, flags, key,
-                                                                                   charCode, charSet, origCharCode, origCharSet,
-                                                                                   keyboardType, repeat));
-    if (! ptr) return;
-    Params_KeyboardEventCallBack& params = *ptr;
 
     if (params.eventType.isKeyDownOrModifierDown(params.key, params.flags)) {
       EventWatcher::on();
@@ -182,7 +162,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     //
     // if NumHeldDownKeys called when (4), Command_L state is reset.
     // Then (2') send KeyCode::S without Modifiers.
-    NumHeldDownKeys::set(eventType, key, flags);
+    NumHeldDownKeys::set(params.eventType, params.key, params.flags);
 
     Core::remap_KeyboardEventCallback(params);
   }

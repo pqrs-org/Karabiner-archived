@@ -79,7 +79,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         RemapClassManager::initialize(*workLoop);
         KeyboardRepeat::initialize(*workLoop);
-        KeyEventInputQueue::initialize(*workLoop);
+        EventInputQueue::initialize(*workLoop);
         VirtualKey::initialize(*workLoop);
         EventOutputQueue::initialize(*workLoop);
         HoldingKeyToKey::initialize(*workLoop);
@@ -99,7 +99,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       ListHookedPointing::instance().terminate();
       RemapClassManager::terminate();
       KeyboardRepeat::terminate();
-      KeyEventInputQueue::terminate();
+      EventInputQueue::terminate();
       VirtualKey::terminate();
       EventOutputQueue::terminate();
       HoldingKeyToKey::terminate();
