@@ -17,6 +17,16 @@
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapUtil {
     namespace Base {
+      class DefinitionItem_KeyCode {
+      public:
+        DefinitionItem_KeyCode(void) {}
+        DefinitionItem_KeyCode(KeyCode k) : key(k) {}
+
+        KeyCode key;
+        Flags   flags;
+      };
+      DECLARE_VECTOR(DefinitionItem_KeyCode);
+
       class DefinitionItem_ConsumerKeyCode {
       public:
         DefinitionItem_ConsumerKeyCode(void) {}
@@ -131,23 +141,62 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     class ConsumerToKey {
     public:
-      ConsumerToKey(void) : active_(false) {}
+      bool remap(RemapConsumerParams& remapParams);
 
-      bool remap(RemapConsumerParams& remapParams,
-                 ConsumerKeyCode fromKeyCode, Flags fromFlags,
-                 KeyCode toKeyCode,           Flags toFlags = ModifierFlag::NONE);
+      // ----------------------------------------
+      class Definition {
+      public:
+        // [0] => fromKey
+        // [1] => toKeys[0]
+        // [2] => toKeys[1]
+        // [3] => ...
+        Definition& add(ConsumerKeyCode newval) {
+          switch (index_) {
+            case 0:
+              fromKey.key = newval;
+              break;
+            default:
+              IOLog("[KeyRemap4MacBook ERROR] ConsumerToKey invalid Definition\n");
+              break;
+          }
+          ++index_;
+          return *this;
+        }
+        Definition& add(KeyCode newval) {
+          switch (index_) {
+            case 0:
+              IOLog("[KeyRemap4MacBook ERROR] ConsumerToKey invalid Definition\n");
+              break;
+            default:
+              toKeys.push_back(Base::DefinitionItem_KeyCode(newval));
+              break;
+          }
+          ++index_;
+          return *this;
+        }
+        Definition& add(Flags newval) {
+          switch (index_) {
+            case 0:
+              break;
+            case 1:
+              fromKey.flags = newval;
+              break;
+            default:
+              toKeys.back().flags = newval;
+              break;
+          }
+          return *this;
+        }
 
-      // no fromFlags version
-      bool remap(RemapConsumerParams& remapParams,
-                 ConsumerKeyCode fromKeyCode,
-                 KeyCode toKeyCode, Flags toFlags = ModifierFlag::NONE) {
-        return remap(remapParams, fromKeyCode, 0, toKeyCode, toFlags);
-      }
+        Base::DefinitionItem_ConsumerKeyCode fromKey;
+        Base::Vector_DefinitionItem_KeyCode toKeys;
+      private:
+        int index_;
+      } definition;
 
     private:
       RemapUtil::KeyToKey keytokey_;
-      RemapUtil::ConsumerToConsumer consumertoconsumer_;
-      bool active_;
+      FromKeyChecker fromkeychecker_;
     };
 
     class PointingButtonToPointingButton {

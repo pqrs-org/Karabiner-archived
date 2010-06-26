@@ -109,8 +109,9 @@ class RemapClass
         @code[:remap_key] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
 
       when 'ConsumerToKey'
+        append_to_code_initialize(params)
         @code[:variable] += "RemapUtil::ConsumerToKey value#{@@index}_;\n"
-        @code[:remap_consumer] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
+        @code[:remap_consumer] += "if (value#{@@index}_.remap(remapParams)) break;\n"
 
       when 'ConsumerToConsumer'
         append_to_code_initialize(params)
