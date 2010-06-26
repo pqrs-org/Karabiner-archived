@@ -12,8 +12,17 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     bool isFromKey(const RemapParams& remapParams, KeyCode fromKeyCode, Flags fromFlags) {
       if (remapParams.params.key != fromKeyCode) return false;
-
       bool isKeyDown = remapParams.isKeyDownOrModifierDown();
+      return isFromKey(isKeyDown, fromFlags);
+    }
+    bool isFromKey(const RemapConsumerParams& remapParams, ConsumerKeyCode fromKeyCode, Flags fromFlags) {
+      if (remapParams.params.key != fromKeyCode) return false;
+      bool isKeyDown = (remapParams.params.eventType == EventType::DOWN);
+      return isFromKey(isKeyDown, fromFlags);
+    }
+
+  private:
+    bool isFromKey(bool isKeyDown, Flags fromFlags) {
       if (isKeyDown) {
         if (! FlagStatus::makeFlags().isOn(fromFlags)) return false;
         active_ = true;
@@ -38,7 +47,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       return true;
     }
 
-  private:
     bool active_;
   };
 }

@@ -210,21 +210,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ------------------------------------------------------------
     if (remapParams.isremapped) return false;
-    if (remapParams.params.key != d.fromKey.key) return false;
-
-    if (remapParams.params.eventType == EventType::DOWN) {
-      // See RemapUtil::KeyToKey::remap about handling of "active_".
-      if (! FlagStatus::makeFlags().isOn(d.fromKey.flags)) return false;
-      active_ = true;
-
-    } else {
-      if (! active_) return false;
-      active_ = false;
-    }
-
-    // ------------------------------------------------------------
+    if (! fromkeychecker_.isFromKey(remapParams, d.fromKey.key, d.fromKey.flags)) return false;
     remapParams.isremapped = true;
 
+    // ----------------------------------------
     FlagStatus::temporary_decrease(d.fromKey.flags);
     for (size_t i = 0; i < d.toKeys.size(); ++i) {
       FlagStatus::temporary_increase(d.toKeys[i].flags);

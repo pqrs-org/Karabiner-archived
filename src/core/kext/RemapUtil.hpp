@@ -63,8 +63,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     class ConsumerToConsumer {
     public:
-      ConsumerToConsumer(void) : active_(false) {}
-
       bool remap(RemapConsumerParams& remapParams);
 
       // ----------------------------------------
@@ -110,7 +108,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       } definition;
 
     private:
-      bool active_;
+      FromKeyChecker fromkeychecker_;
     };
 
     class KeyToConsumer {
