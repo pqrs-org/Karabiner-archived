@@ -16,6 +16,18 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapUtil {
+    namespace Base {
+      class DefinitionItem_ConsumerKeyCode {
+      public:
+        DefinitionItem_ConsumerKeyCode(void) {}
+        DefinitionItem_ConsumerKeyCode(ConsumerKeyCode k) : key(k) {}
+
+        ConsumerKeyCode key;
+        Flags           flags;
+      };
+      DECLARE_VECTOR(DefinitionItem_ConsumerKeyCode);
+    };
+
     enum {
       // see IOHIPointing.cpp in darwin.
       POINTING_FIXED_SCALE = 65536, // (== << 16)
@@ -53,16 +65,49 @@ namespace org_pqrs_KeyRemap4MacBook {
     public:
       ConsumerToConsumer(void) : active_(false) {}
 
-      bool remap(RemapConsumerParams& remapParams,
-                 ConsumerKeyCode fromKeyCode, Flags fromFlags,
-                 ConsumerKeyCode toKeyCode,   Flags toFlags = ModifierFlag::NONE);
+      bool remap(RemapConsumerParams& remapParams);
 
-      // no fromFlags version
-      bool remap(RemapConsumerParams& remapParams,
-                 ConsumerKeyCode fromKeyCode,
-                 ConsumerKeyCode toKeyCode, Flags toFlags = ModifierFlag::NONE) {
-        return remap(remapParams, fromKeyCode, 0, toKeyCode, toFlags);
-      }
+      // ----------------------------------------
+      class Definition {
+      public:
+        Definition(void) : index_(0) {}
+
+        // [0] => fromKey
+        // [1] => toKeys[0]
+        // [2] => toKeys[1]
+        // [3] => ...
+        Definition& add(ConsumerKeyCode newval) {
+          switch (index_) {
+            case 0:
+              fromKey.key = newval;
+              break;
+            default:
+              toKeys.push_back(Base::DefinitionItem_ConsumerKeyCode(newval));
+              break;
+          }
+          ++index_;
+          return *this;
+        }
+        Definition& add(Flags newval) {
+          switch (index_) {
+            case 0:
+              break;
+            case 1:
+              fromKey.flags = newval;
+              break;
+            default:
+              toKeys.back().flags = newval;
+              break;
+          }
+          return *this;
+        }
+
+        Base::DefinitionItem_ConsumerKeyCode fromKey;
+        Base::Vector_DefinitionItem_ConsumerKeyCode toKeys;
+
+      private:
+        int index_;
+      } definition;
 
     private:
       bool active_;
