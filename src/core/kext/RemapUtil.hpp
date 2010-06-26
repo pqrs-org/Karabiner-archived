@@ -22,35 +22,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       POINTING_POINT_SCALE = 10, // (== SCROLL_WHEEL_TO_PIXEL_SCALE >> 16)
     };
 
-    namespace Base {
-      class Definition {
-      public:
-        class Item {
-        public:
-          Item(void) : key(KeyCode::VK_NONE), flags(0) {}
-          Item(KeyCode k) : key(k), flags(0) {}
-          KeyCode key;
-          Flags flags;
-        };
-
-        Definition& add(KeyCode key) {
-          v_.push_back(Item(key));
-          return *this;
-        }
-        Definition& add(Flags flags) {
-          if (v_.empty()) return *this;
-          v_.back().flags = flags;
-          return *this;
-        }
-        const Item& operator[](size_t n) { return v_[n]; }
-        size_t size(void) const { return v_.size(); }
-
-      private:
-        DECLARE_VECTOR(Item);
-        Vector_Item v_;
-      };
-    }
-
     inline unsigned int abs(int v) { return v > 0 ? v : -v; }
 
     class KeyToKey {
@@ -369,9 +340,21 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     bool remap(RemapParams& remapParams);
 
-    // [0] => { fromKeyCode, fromFlags }
-    // [1] => NONE
-    RemapUtil::Base::Definition definition;
+    // ----------------------------------------
+    class Definition {
+    public:
+      Definition& add(KeyCode newval) {
+        fromKeyCode = newval;
+        return *this;
+      }
+      Definition& add(Flags newval) {
+        fromFlags = newval;
+        return *this;
+      }
+
+      KeyCode fromKeyCode;
+      Flags   fromFlags;
+    } definition;
 
   private:
     KeyCode lastkeycode_;
