@@ -12,6 +12,7 @@
 #include "util/PressDownKeys.hpp"
 #include "util/IntervalChecker.hpp"
 #include "util/EventWatcher.hpp"
+#include "util/Vector.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapUtil {
@@ -20,6 +21,35 @@ namespace org_pqrs_KeyRemap4MacBook {
       POINTING_FIXED_SCALE = 65536, // (== << 16)
       POINTING_POINT_SCALE = 10, // (== SCROLL_WHEEL_TO_PIXEL_SCALE >> 16)
     };
+
+    namespace Base {
+      class Definition {
+      public:
+        class Item {
+        public:
+          Item(void) : key(KeyCode::VK_NONE), flags(0) {}
+          Item(KeyCode k) : key(k), flags(0) {}
+          KeyCode key;
+          Flags flags;
+        };
+
+        Definition& add(KeyCode key) {
+          v_.push_back(Item(key));
+          return *this;
+        }
+        Definition& add(Flags flags) {
+          if (v_.empty()) return *this;
+          v_.back().flags = flags;
+          return *this;
+        }
+        const Item& operator[](size_t n) { return v_[n]; }
+        size_t size(void) const { return v_.size(); }
+
+      private:
+        DECLARE_VECTOR(Item);
+        Vector_Item v_;
+      };
+    }
 
     inline unsigned int abs(int v) { return v > 0 ? v : -v; }
 
@@ -337,7 +367,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     IgnoreMultipleSameKeyPress(void) : lastkeycode_(KeyCode::VK_NONE) {};
 
-    bool remap(RemapParams& remapParams, KeyCode fromKeyCode, Flags fromFlags = 0);
+    bool remap(RemapParams& remapParams);
+
+    // [0] => { fromKeyCode, fromFlags }
+    // [1] => NONE
+    RemapUtil::Base::Definition definition;
 
   private:
     KeyCode lastkeycode_;

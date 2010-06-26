@@ -954,8 +954,13 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------
   bool
-  IgnoreMultipleSameKeyPress::remap(RemapParams& remapParams, KeyCode fromKeyCode, Flags fromFlags)
+  IgnoreMultipleSameKeyPress::remap(RemapParams& remapParams)
   {
+    if (definition.size() < 1) return false;
+    KeyCode fromKeyCode = definition[0].key;
+    Flags   fromFlags   = definition[0].flags;
+
+    // ------------------------------------------------------------
     if (remapParams.isremapped || ! FlagStatus::makeFlags().isOn(fromFlags)) {
       lastkeycode_ = KeyCode::VK_NONE;
       return false;
