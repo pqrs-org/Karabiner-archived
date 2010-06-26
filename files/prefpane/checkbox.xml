@@ -5277,8 +5277,25 @@
           </list>
         </item>
         <item>
+          <name>Change Option_L Key</name>
+          <list>
+            <item>
+              <name>Option_L to Option_L</name>
+              <appendix>(+ When you type Option_L only, send EISUU)</appendix>
+              <sysctl>remap.jis_optionL2optionL_eisuu</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_L, KeyCode::OPTION_L, KeyCode::JIS_EISUU</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Change Option_R Key</name>
           <list>
+            <item>
+              <name>Option_R to Option_R</name>
+              <appendix>(+ When you type Option_R only, send KANA)</appendix>
+              <sysctl>remap.jis_optionR2optionR_kana</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_R, KeyCode::OPTION_R, KeyCode::JIS_KANA</autogen>
+            </item>
             <item>
               <name>Option_R to EISUU</name>
               <sysctl>remap.jis_optionR2eisuu</sysctl>
