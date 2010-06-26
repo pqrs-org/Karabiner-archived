@@ -216,17 +216,16 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  RemapUtil::KeyToConsumer::remap(RemapParams& remapParams,
-                                  KeyCode fromKeyCode,       Flags fromFlags,
-                                  ConsumerKeyCode toKeyCode, Flags toFlags)
+  RemapUtil::KeyToConsumer::remap(RemapParams& remapParams)
   {
-#if 0
-    bool isKeyDown = remapParams.isKeyDownOrModifierDown();
+    const Definition& d = definition;
 
-    bool result = keytokey_.remap(remapParams, fromKeyCode, fromFlags, KeyCode::VK_NONE);
-    if (! result) return false;
+    if (remapParams.isremapped) return false;
+    if (! fromkeychecker_.isFromKey(remapParams, d.fromKey.key, d.fromKey.flags)) return false;
+    remapParams.isremapped = true;
 
-    EventType eventType = isKeyDown ? EventType::DOWN : EventType::UP;
+    // ----------------------------------------
+    EventType eventType = remapParams.isKeyDownOrModifierDown() ? EventType::DOWN : EventType::UP;
     Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(eventType,
                                                                                                  FlagStatus::makeFlags(),
                                                                                                  ConsumerKeyCode::VK_PSEUDO_KEY,
@@ -235,15 +234,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     Params_KeyboardSpecialEventCallback& params = *ptr;
 
     RemapConsumerParams rp(params);
-    if (! consumertoconsumer_.remap(rp, ConsumerKeyCode::VK_PSEUDO_KEY, toKeyCode, toFlags)) {
-      return false;
-    }
-
-    remapParams.drop();
-    return true;
-#else
-    return false;
-#endif
+    return definition.consumertoconsumer_.remap(rp);
   }
 
   bool

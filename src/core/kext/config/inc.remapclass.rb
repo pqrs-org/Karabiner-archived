@@ -85,8 +85,9 @@ class RemapClass
         @code[:remap_key] += "if (value#{@@index}_.remap(remapParams)) break;\n"
 
       when 'KeyToConsumer'
+        append_to_code_initialize(params)
         @code[:variable] += "RemapUtil::KeyToConsumer value#{@@index}_;\n"
-        @code[:remap_key] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
+        @code[:remap_key] += "if (value#{@@index}_.remap(remapParams)) break;\n"
 
       when 'KeyToPointingButton'
         @code[:variable] += "RemapUtil::KeyToPointingButton value#{@@index}_;\n"
