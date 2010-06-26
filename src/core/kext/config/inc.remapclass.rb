@@ -39,6 +39,15 @@ class RemapClass
     self
   end
 
+  def append_to_code_initialize(params)
+    @code[:initialize] += "value#{@@index}_.definition"
+    params.split(/,/).each do |p|
+      @code[:initialize] += ".add(#{p.strip})"
+    end
+    @code[:initialize] += ";\n"
+  end
+  protected :append_to_code_initialize
+
   # return true if 'line' contains autogen/filter definition.
   def parse(line)
     return true if @filter.parse(line)
@@ -71,8 +80,9 @@ class RemapClass
         @code[:remap_key] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
 
       when 'IgnoreMultipleSameKeyPress'
+        append_to_code_initialize(params)
         @code[:variable] += "IgnoreMultipleSameKeyPress value#{@@index}_;\n"
-        @code[:remap_key] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
+        @code[:remap_key] += "if (value#{@@index}_.remap(remapParams)) break;\n"
 
       when 'KeyToConsumer'
         @code[:variable] += "RemapUtil::KeyToConsumer value#{@@index}_;\n"
