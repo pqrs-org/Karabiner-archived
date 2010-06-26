@@ -4,9 +4,7 @@
 #include "Config.hpp"
 #include "version.hpp"
 #include "Client.hpp"
-#include "remap.hpp"
 #include "FlagStatus.hpp"
-#include "KeyEventInputQueue.hpp"
 #include "RemapClass.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
