@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # -*- coding: utf-8 -*-
 
-# generate KeyEventInputQueue::Remap combination.
+# generate EventInputQueue::Remap combination.
 
 num = ARGV[0].to_i
 max = ARGV[1].to_i

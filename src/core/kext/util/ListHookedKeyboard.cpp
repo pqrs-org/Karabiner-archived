@@ -5,7 +5,7 @@
 #include "EventWatcher.hpp"
 #include "FlagStatus.hpp"
 #include "IOLockWrapper.hpp"
-#include "KeyEventInputQueue.hpp"
+#include "EventInputQueue.hpp"
 #include "ListHookedKeyboard.hpp"
 #include "NumHeldDownKeys.hpp"
 #include "RemapClass.hpp"
