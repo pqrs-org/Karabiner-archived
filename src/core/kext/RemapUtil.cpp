@@ -133,29 +133,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  RemapUtil::ConsumerToKey::remap(RemapConsumerParams& remapParams,
-                                  ConsumerKeyCode fromKeyCode, Flags fromFlags,
-                                  KeyCode toKeyCode,           Flags toFlags)
+  RemapUtil::ConsumerToKey::remap(RemapConsumerParams& remapParams)
   {
 #if 0
-    bool isKeyDown = (remapParams.params.eventType == EventType::DOWN);
-    bool isFromFlagsOn = FlagStatus::makeFlags().isOn(fromFlags);
+    const Definition& d = definition;
 
-    if (isKeyDown) {
-      if (isFromFlagsOn) {
-        bool result = consumertoconsumer_.remap(remapParams, fromKeyCode, ConsumerKeyCode::VK_NONE);
-        if (! result) return false;
-
-        active_ = true;
-      }
-    } else {
-      if (active_) {
-        bool result = consumertoconsumer_.remap(remapParams, fromKeyCode, ConsumerKeyCode::VK_NONE);
-        if (! result) return false;
-
-        active_ = false;
-      }
-    }
+    if (remapParams.isremapped) return false;
+    if (! fromkeychecker_.isFromKey(remapParams, d.fromKey.key, d.fromKey.flags)) return false;
+    remapParams.isremapped = true;
 
     // ----------------------------------------
     Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(isKeyDown ? EventType::DOWN : EventType::UP,
@@ -171,7 +156,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       return false;
     }
 
-    remapParams.drop();
     return true;
 #else
     return false;
