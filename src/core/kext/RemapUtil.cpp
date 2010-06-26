@@ -240,7 +240,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
             FlagStatus::temporary_decrease(d.toKeys[i].flags);
           }
+
+          KeyboardRepeat::primitive_start();
         }
+
         break;
     }
 
@@ -253,15 +256,25 @@ namespace org_pqrs_KeyRemap4MacBook {
     const Definition& d = definition;
 
     bool isKeyDown = remapParams.isKeyDownOrModifierDown();
-    bool result = keytokey_.remap(remapParams, d.fromKey.key, d.fromKey.flags, KeyCode::VK_NONE);
-    if (! result) return false;
+
+    if (remapParams.isremapped) return false;
+    if (! fromkeychecker_.isFromKey(remapParams, d.fromKey.key, d.fromKey.flags)) return false;
+    remapParams.isremapped = true;
 
     // ----------------------------------------
-    EventType eventType = isKeyDown ? EventType::DOWN : EventType::UP;
+    EventType eventType;
+    if (isKeyDown) {
+      eventType = EventType::DOWN;
+      FlagStatus::decrease(d.fromKey.key.getModifierFlag());
+    } else {
+      eventType = EventType::UP;
+      FlagStatus::increase(d.fromKey.key.getModifierFlag());
+    }
+
     Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(eventType,
                                                                                                  FlagStatus::makeFlags(),
                                                                                                  ConsumerKeyCode::VK_PSEUDO_KEY,
-                                                                                                 remapParams.params.repeat));
+                                                                                                 false));
     if (! ptr) return false;
     Params_KeyboardSpecialEventCallback& params = *ptr;
 
