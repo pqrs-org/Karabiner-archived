@@ -18,8 +18,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.debug) return;
 
-    printf("KeyRemap4MacBook KeyboardEventCallback [%7s]: eventType %d, flags 0x%x, key %d, kbdType %d\n",
-           message, eventType.get(), flags.get(), key.get(), keyboardType.get());
+    IOLOG_DEBUG("KeyboardEventCallback [%7s]: eventType %d, flags 0x%x, key %d, kbdType %d\n",
+                message, eventType.get(), flags.get(), key.get(), keyboardType.get());
   }
 
   void
@@ -27,8 +27,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.debug) return;
 
-    printf("KeyRemap4MacBook UpdateEventFlagsCallback [%7s]: flags 0x%x\n",
-           message, flags.get());
+    IOLOG_DEBUG("UpdateEventFlagsCallback [%7s]: flags 0x%x\n",
+                message, flags.get());
   }
 
   void
@@ -36,8 +36,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.debug) return;
 
-    printf("KeyRemap4MacBook KeyboardSpecialEventCallBack [%7s]: eventType %d, flags 0x%x, key %d, flavor %d, guid %lld\n",
-           message, eventType.get(), flags.get(), key.get(), flavor, guid);
+    IOLOG_DEBUG("KeyboardSpecialEventCallBack [%7s]: eventType %d, flags 0x%x, key %d, flavor %d, guid %lld\n",
+                message, eventType.get(), flags.get(), key.get(), flavor, guid);
   }
 
   void
@@ -45,8 +45,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! config.debug_pointing) return;
 
-    printf("KeyRemap4MacBook RelativePointerEventCallBack [%7s]: buttons: %d, dx: %d, dy: %d\n",
-           message, buttons.get(), dx, dy);
+    IOLOG_DEBUG("RelativePointerEventCallBack [%7s]: buttons: %d, dx: %d, dy: %d\n",
+                message, buttons.get(), dx, dy);
   }
 
   void
@@ -55,16 +55,20 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.debug_pointing) return;
 
 #if __x86_64__
-    const char* format = "KeyRemap4MacBook ScrollWheelEventCallback [%s]: deltaAxis(%d, %d, %d), fixedDelta(%ld, %ld, %ld), pointDelta(%d,%d,%d), options: %d\n";
+    IOLOG_DEBUG("ScrollWheelEventCallback [%s]: deltaAxis(%d,%d,%d), fixedDelta(%d,%d,%d), pointDelta(%d,%d,%d), options: %d\n",
+                message,
+                deltaAxis1, deltaAxis2, deltaAxis3,
+                fixedDelta1, fixedDelta2, fixedDelta3,
+                pointDelta1, pointDelta2, pointDelta3,
+                options);
 #else
-    const char* format = "KeyRemap4MacBook ScrollWheelEventCallback [%s]: deltaAxis(%d, %d, %d), fixedDelta(%d, %d, %d), pointDelta(%d,%d,%d), options: %d\n";
+    IOLOG_DEBUG("ScrollWheelEventCallback [%s]: deltaAxis(%d,%d,%d), fixedDelta(%ld,%ld,%ld), pointDelta(%ld,%ld,%ld), options: %ld\n",
+                message,
+                deltaAxis1, deltaAxis2, deltaAxis3,
+                fixedDelta1, fixedDelta2, fixedDelta3,
+                pointDelta1, pointDelta2, pointDelta3,
+                options);
 #endif
-    printf(format,
-           message,
-           deltaAxis1, deltaAxis2, deltaAxis3,
-           fixedDelta1, fixedDelta2, fixedDelta3,
-           pointDelta1, pointDelta2, pointDelta3,
-           options);
   }
 
   namespace {
@@ -347,7 +351,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       fire_nolock();
     } else {
       if (config.debug_devel) {
-        IOLog("KeyRemap4MacBook --Info-- Params_KeyboardEventCallBack::Queue enqueued ic_.getmillisec() = %d\n", ic_.getmillisec());
+        IOLOG_INFO("Params_KeyboardEventCallBack::Queue enqueued ic_.getmillisec() = %d\n", ic_.getmillisec());
       }
       timer_.setTimeoutMS(DELAY, false);
     }
