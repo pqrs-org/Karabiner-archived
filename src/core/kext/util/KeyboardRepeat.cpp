@@ -115,6 +115,15 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  KeyboardRepeat::primitive_add(EventType eventType,
+                                Flags flags,
+                                ConsumerKeyCode key)
+  {
+    IOLockWrapper::ScopedLock lk(timer_.getlock());
+    primitive_add_nolock(eventType, flags, key);
+  }
+
+  void
   KeyboardRepeat::primitive_start_nolock(int wait)
   {
     timer_.setTimeoutMS(wait);

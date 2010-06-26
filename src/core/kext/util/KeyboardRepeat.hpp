@@ -45,7 +45,9 @@ namespace org_pqrs_KeyRemap4MacBook {
                               KeyCode key,
                               KeyboardType keyboardType);
 
-    // We don't need to provide primitive_add for consumer.
+    static void primitive_add(EventType eventType,
+                              Flags flags,
+                              ConsumerKeyCode key);
 
     static void primitive_start(int wait = config.get_repeat_initial_wait());
 

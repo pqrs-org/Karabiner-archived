@@ -116,11 +116,13 @@
       <appendix>Shift+B to Volume Mute (With Modifier)</appendix>
       <appendix>Shift_L to Volume Mute (Modifier To)</appendix>
       <appendix>C to Option_L+Volume Mute (To Key+Modifier)</appendix>
+      <appendix>D to Volume Up, Brightness Up</appendix>
       <sysctl>remap.samples_keytoconsumer</sysctl>
       <autogen>--KeyToConsumer-- KeyCode::A, ConsumerKeyCode::VOLUME_MUTE</autogen>
       <autogen>--KeyToConsumer-- KeyCode::B, VK_SHIFT, ConsumerKeyCode::VOLUME_MUTE</autogen>
       <autogen>--KeyToConsumer-- KeyCode::SHIFT_L, ConsumerKeyCode::VOLUME_MUTE</autogen>
       <autogen>--KeyToConsumer-- KeyCode::C, ConsumerKeyCode::VOLUME_MUTE, ModifierFlag::OPTION_L</autogen>
+      <autogen>--KeyToConsumer-- KeyCode::D, ConsumerKeyCode::VOLUME_UP, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
     </item>
 
     <item>

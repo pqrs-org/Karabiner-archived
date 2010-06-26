@@ -185,7 +185,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       } definition;
 
     private:
-      FromKeyChecker fromkeychecker_;
+      KeyToKey keytokey_;
     };
 
     class ConsumerToKey {
