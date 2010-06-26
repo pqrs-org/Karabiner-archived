@@ -46,19 +46,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     HookedKeyboard* get(void) { return static_cast<HookedKeyboard*>(ListHookedDevice::get()); }
     HookedKeyboard* get(const IOHIKeyboard* kbd) { return static_cast<HookedKeyboard*>(ListHookedDevice::get(kbd)); }
 
-    static void hook_KeyboardEventCallback_queued(OSObject* target,
-                                                  EventType eventType,
-                                                  Flags flags,
-                                                  KeyCode key,
-                                                  CharCode charCode,
-                                                  CharSet charSet,
-                                                  OrigCharCode origCharCode,
-                                                  OrigCharSet origCharSet,
-                                                  KeyboardType keyboardType,
-                                                  bool repeat,
-                                                  AbsoluteTime ts,
-                                                  OSObject* sender,
-                                                  void* refcon);
+    static void hook_KeyboardEventCallback_queued(Params_KeyboardEventCallBack& params);
 
   private:
     HookedKeyboard item_[MAXNUM];

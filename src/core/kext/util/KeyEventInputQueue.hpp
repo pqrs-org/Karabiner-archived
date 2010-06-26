@@ -5,6 +5,7 @@
 #include "IntervalChecker.hpp"
 #include "KeyCode.hpp"
 #include "RemapUtil.hpp"
+#include "Queue.hpp"
 #include "TimerWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -17,53 +18,32 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
   }
 
-  class KeyEventInputQueue {
+  class EventInputQueue {
   public:
     static void initialize(IOWorkLoop& workloop);
     static void terminate(void);
 
-    static void add(OSObject* target,
-                    EventType eventType,
-                    Flags flags,
-                    KeyCode key,
-                    CharCode charCode,
-                    CharSet charSet,
-                    OrigCharCode origCharCode,
-                    OrigCharSet origCharSet,
-                    KeyboardType keyboardType,
-                    bool repeat,
-                    AbsoluteTime ts,
-                    OSObject* sender,
-                    void* refcon);
+    static void push(const Params_KeyboardEventCallBack& p);
 
-    struct Item {
-      OSObject* target;
-      EventType eventType;
-      Flags flags;
-      KeyCode key;
-      CharCode charCode;
-      CharSet charSet;
-      OrigCharCode origCharCode;
-      OrigCharSet origCharSet;
-      KeyboardType keyboardType;
-      bool repeat;
-      AbsoluteTime ts;
-      OSObject* sender;
-      void* refcon;
+    class Item : public Queue::Item {
+    public:
+      Item(const Params_KeyboardEventCallBack& p, uint32_t d);
+      virtual ~Item(void);
 
-      bool active;
+      Params_KeyboardEventCallBack* params_KeyboardEventCallBack;
+
       bool dropped;
-      UInt32 delayMS;
+      uint32_t delayMS;
     };
-
     class Remap {
     public:
 #include "../generate/output/include.keyeventinputqueue.hpp"
-      void push(Item* base, bool isKeyDown);
       void remap(void);
       bool handleVirtualKey(const Params_KeyboardEventCallBack& params);
 
     private:
+      void push_remapped(const Params_KeyboardEventCallBack& baseparams, bool isKeyDown);
+
       KeyCode virtualKeyCode_;
 
       KeyCode fromKeyCode1_;
@@ -91,44 +71,16 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   private:
     enum {
-      MAXNUM = 64,
+      MIN_DELAY = 1,
     };
 
-    static Item* enqueue_(OSObject* target,
-                          EventType eventType,
-                          Flags flags,
-                          KeyCode key,
-                          CharCode charCode,
-                          CharSet charSet,
-                          OrigCharCode origCharCode,
-                          OrigCharSet origCharSet,
-                          KeyboardType keyboardType,
-                          bool repeat,
-                          AbsoluteTime ts,
-                          OSObject* sender,
-                          void* refcon);
-
+    static void enqueue_(const Params_KeyboardEventCallBack& p);
     static void fire(OSObject* owner, IOTimerEventSource* sender);
     static void fire_nolock(void);
-    static Item* getnext(Item* p) {
-      if (p >= item_ + (MAXNUM - 1)) {
-        return item_;
-      } else {
-        return p + 1;
-      }
-    }
-    static Item* getprev(Item* p) {
-      if (p <= item_) {
-        return item_ + (MAXNUM - 1);
-      } else {
-        return p - 1;
-      }
-    }
+    static void setTimer(void);
 
-    static Item item_[MAXNUM];
+    static Queue* queue_;
     static IntervalChecker ic_;
-    static Item* current_;
-    static Item* last_;
     static TimerWrapper timer_;
   };
 }
