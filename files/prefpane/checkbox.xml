@@ -5165,6 +5165,12 @@
               <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::CONTROL_L, KeyCode::JIS_EISUU</autogen>
             </item>
             <item>
+              <name>Command_L to Option_L</name>
+              <appendix>(+ When you type Command_L only, send EISUU)</appendix>
+              <sysctl>remap.jis_commandL2optionL_eisuu</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::OPTION_L, KeyCode::JIS_EISUU</autogen>
+            </item>
+            <item>
               <name>Command_L x2 to EISUU</name>
               <sysctl>remap.jis_commandL_x2_to_eisuu</sysctl>
               <autogen>--DoublePressModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::JIS_EISUU</autogen>
