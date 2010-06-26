@@ -124,20 +124,68 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     class KeyToConsumer {
     public:
-      bool remap(RemapParams& remapParams,
-                 KeyCode fromKeyCode,       Flags fromFlags,
-                 ConsumerKeyCode toKeyCode, Flags toFlags = ModifierFlag::NONE);
+      bool remap(RemapParams& remapParams);
 
-      // no fromFlags version
-      bool remap(RemapParams& remapParams,
-                 KeyCode fromKeyCode,
-                 ConsumerKeyCode toKeyCode, Flags toFlags = ModifierFlag::NONE) {
-        return remap(remapParams, fromKeyCode, 0, toKeyCode, toFlags);
-      }
+      class Definition {
+      public:
+        Definition(void) : index_(0) {}
+
+        // [0] => fromKey
+        // [1] => toKeys[0]
+        // [2] => toKeys[1]
+        // [3] => ...
+        Definition& add(KeyCode newval) {
+          switch (index_) {
+            case 0:
+              fromKey.key = newval;
+              break;
+            default:
+              IOLOG_ERROR("Invalid KeyToConsumer::Definition\n");
+              break;
+          }
+          ++index_;
+          return *this;
+        }
+        Definition& add(ConsumerKeyCode newval) {
+          switch (index_) {
+            case 0:
+              IOLOG_ERROR("Invalid KeyToConsumer::Definition\n");
+              break;
+            case 1:
+              consumertoconsumer_.definition.add(ConsumerKeyCode::VK_PSEUDO_KEY);
+              consumertoconsumer_.definition.add(fromKey.flags);
+              // pass-through
+            default:
+              consumertoconsumer_.definition.add(newval);
+              break;
+          }
+          ++index_;
+          return *this;
+        }
+        Definition& add(Flags newval) {
+          switch (index_) {
+            case 0:
+              IOLOG_ERROR("Invalid KeyToConsumer::Definition\n");
+              break;
+            case 1:
+              fromKey.flags = newval;
+              break;
+            default:
+              consumertoconsumer_.definition.add(newval);
+              break;
+          }
+          return *this;
+        }
+
+        Base::DefinitionItem_KeyCode fromKey;
+        ConsumerToConsumer consumertoconsumer_;
+
+      private:
+        int index_;
+      } definition;
 
     private:
-      RemapUtil::ConsumerToConsumer consumertoconsumer_;
-      RemapUtil::KeyToKey keytokey_;
+      FromKeyChecker fromkeychecker_;
     };
 
     class ConsumerToKey {
@@ -157,7 +205,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               fromKey.key = newval;
               break;
             default:
-              IOLog("[KeyRemap4MacBook ERROR] ConsumerToKey invalid Definition\n");
+              IOLOG_ERROR("Invalid ConsumerToKey::Definition\n");
               break;
           }
           ++index_;
@@ -166,7 +214,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         Definition& add(KeyCode newval) {
           switch (index_) {
             case 0:
-              IOLog("[KeyRemap4MacBook ERROR] ConsumerToKey invalid Definition\n");
+              IOLOG_ERROR("Invalid ConsumerToKey::Definition\n");
               break;
             default:
               toKeys.push_back(Base::DefinitionItem_KeyCode(newval));
