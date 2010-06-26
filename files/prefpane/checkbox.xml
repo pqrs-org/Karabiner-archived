@@ -6220,6 +6220,16 @@
           </list>
         </item>
         <item>
+          <name>Simultaneous Key Presses</name>
+          <list>
+            <item>
+              <name>Simultaneous Key Presses [EISUU+KANA] to toggle Vi Mode</name>
+              <sysctl>remap.vimode_toggle_eisuukana</sysctl>
+              <autogen>--SimultaneousKeyPresses-- KeyCode::JIS_EISUU, KeyCode::JIS_KANA, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Hack for the bug of Mac OS X</name>
           <list>
             <item>
