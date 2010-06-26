@@ -99,6 +99,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         Definition& add(Flags newval) {
           switch (index_) {
             case 0:
+              IOLOG_ERROR("Invalid ConsumerToConsumer::Definition");
               break;
             case 1:
               fromKey.flags = newval;
