@@ -1,4 +1,4 @@
-#include "KeyEventInputQueue.hpp"
+#include "EventInputQueue.hpp"
 #include "IOLockWrapper.hpp"
 #include "ListHookedKeyboard.hpp"
 #include "Config.hpp"

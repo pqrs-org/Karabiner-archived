@@ -1,5 +1,5 @@
-#ifndef KEYEVENTINPUTQUEUE_HPP
-#define KEYEVENTINPUTQUEUE_HPP
+#ifndef EVENTINPUTQUEUE_HPP
+#define EVENTINPUTQUEUE_HPP
 
 #include "base.hpp"
 #include "IntervalChecker.hpp"

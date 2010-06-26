@@ -3,7 +3,7 @@
 #include "KeyboardRepeat.hpp"
 #include "RemapUtil.hpp"
 #include "util/CommonData.hpp"
-#include "util/KeyEventInputQueue.hpp"
+#include "util/EventInputQueue.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapClassManager {
