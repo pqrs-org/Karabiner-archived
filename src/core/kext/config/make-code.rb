@@ -11,11 +11,9 @@ $outfile = {
   :config_unregister => open('output/include.config_unregister.cpp', 'w'),
   :config_default => open('output/include.config.default.hpp', 'w'),
   :remapclass => open('output/include.RemapClass.cpp', 'w'),
-  :remapclass_handlevirtualkey => open('output/include.RemapClass.handlevirtualkey.cpp', 'w'),
   :remapcode_vk_config => open('output/include.remapcode_vk_config.cpp', 'w'),
   :keycode_vk_config => open('../keycode/data/include/KeyCode.VK_GENERATED.data', 'w'),
 }
-$remapclasses = []
 
 # ======================================================================
 def parseautogen(name, lines)
@@ -119,18 +117,21 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
 
   $outfile[:keycode_vk_config] << remapclass.code[:keycode]
   $outfile[:remapclass] << remapclass.to_code
-  $remapclasses << "remapclass_#{name}"
 end
 
-$outfile[:remapclass] << "RemapClass* listRemapClass[] = {\n"
-$remapclasses.each do |name|
-  $outfile[:remapclass] << "&#{name},\n"
+# ======================================================================
+# put all entries
+RemapClass.get_entries.each do |key, list|
+  name = key.to_s
+  $outfile[:remapclass] << "RemapClass_#{name} listRemapClass_#{name}[] = {\n"
+  list.each do |item|
+    $outfile[:remapclass] << "#{item},\n"
+  end
+  $outfile[:remapclass] << "NULL,\n"
+  $outfile[:remapclass] << "};\n"
 end
-$outfile[:remapclass] << "NULL,\n"
-$outfile[:remapclass] << "};\n"
 
-$outfile[:remapclass_handlevirtualkey] << RemapClass.get_handlevirtualkey_entry
-
+# ======================================================================
 $outfile.each do |name,file|
   file.close
 end
