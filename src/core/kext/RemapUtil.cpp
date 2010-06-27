@@ -21,49 +21,32 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ------------------------------------------------------------
     // handle EventType & Modifiers
-    EventType newEventType = remapParams.params.eventType;
-    ModifierFlag fromModifierFlag = fromKeyCode.getModifierFlag();
+    bool isKeyDown = remapParams.isKeyDownOrModifierDown();
+    if (isKeyDown) {
+      FlagStatus::decrease(fromKeyCode.getModifierFlag());
+    } else {
+      FlagStatus::increase(fromKeyCode.getModifierFlag());
+    }
+
+    // ----------------------------------------
+    EventType newEventType = isKeyDown ? EventType::DOWN : EventType::UP;
     ModifierFlag toModifierFlag = toKeyCode.getModifierFlag();
 
     if (toModifierFlag == ModifierFlag::NONE) {
-      if (fromModifierFlag == ModifierFlag::NONE) {
-        // key2key
-
-      } else {
-        // modifier2key
-        if (remapParams.params.flags.isOn(fromModifierFlag)) {
-          FlagStatus::decrease(fromModifierFlag);
-          newEventType = EventType::DOWN;
-        } else {
-          FlagStatus::increase(fromModifierFlag);
-          newEventType = EventType::UP;
-        }
-      }
-
+      // toKey
       FlagStatus::temporary_decrease(fromFlags);
       FlagStatus::temporary_increase(toFlags);
 
     } else {
-      if (fromModifierFlag == ModifierFlag::NONE) {
-        // key2modifier
-        if (remapParams.params.eventType == EventType::DOWN) {
-          FlagStatus::increase(toFlags | toModifierFlag);
-          FlagStatus::decrease(fromFlags);
-        } else if (remapParams.params.eventType == EventType::UP) {
-          FlagStatus::decrease(toFlags | toModifierFlag);
-          FlagStatus::increase(fromFlags);
-        }
-        newEventType = EventType::MODIFY;
+      // toModifier
+      newEventType = EventType::MODIFY;
 
+      if (isKeyDown) {
+        FlagStatus::increase(toFlags | toModifierFlag);
+        FlagStatus::decrease(fromFlags);
       } else {
-        // modifier2modifier
-        if (remapParams.params.flags.isOn(fromModifierFlag)) {
-          FlagStatus::increase(toFlags | toModifierFlag);
-          FlagStatus::decrease(fromFlags | fromModifierFlag);
-        } else {
-          FlagStatus::decrease(toFlags | toModifierFlag);
-          FlagStatus::increase(fromFlags | fromModifierFlag);
-        }
+        FlagStatus::decrease(toFlags | toModifierFlag);
+        FlagStatus::increase(fromFlags);
       }
     }
 
