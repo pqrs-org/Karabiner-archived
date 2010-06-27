@@ -16,6 +16,7 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapUtil {
+    // XXX: Delete Me (move to RemapFuncBase)
     struct PairKeyFlags {
       PairKeyFlags(void) {}
       PairKeyFlags(KeyCode k) : key(k) {}
@@ -378,24 +379,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     static bool isfirenormal_;
     static bool isfireholding_;
     RemapUtil::KeyToKey keytokey_;
-  };
-
-  // --------------------
-  // ex. Ignore JIS_KANA x 2. (validate only the first once)
-  class IgnoreMultipleSameKeyPress {
-  public:
-    IgnoreMultipleSameKeyPress(void) {};
-    bool remap(RemapParams& remapParams);
-    void initialize(void);
-    void terminate(void);
-
-    // ----------------------------------------
-    void add(KeyCode newval);
-    void add(Flags newval);
-
-  private:
-    RemapUtil::PairKeyFlags fromKey_;
-    KeyCode lastkeycode_;
   };
 }
 
