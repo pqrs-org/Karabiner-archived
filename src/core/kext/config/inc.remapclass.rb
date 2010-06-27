@@ -7,6 +7,7 @@ class RemapClass
   @@index = 0
   @@entries = {
     :initialize                   => [],
+    :terminate                    => [],
     :handlevirtualkey             => [],
     :remap_setkeyboardtype        => [],
     :remap_key                    => [],
@@ -28,6 +29,7 @@ class RemapClass
     @code = {
       # functions
       :initialize                   => '',
+      :terminate                    => '',
       :handlevirtualkey             => '',
       :remap_setkeyboardtype        => '',
       :remap_key                    => '',
@@ -54,6 +56,7 @@ class RemapClass
     # If a large number of values exist, the kernel stack is wasted when the monolithic initialize function is called.
     # So, we split it.
     @code[:initialize] += "static void initialize_value#{@@index}(void) {\n"
+    @code[:initialize] += "value#{@@index}_.initialize();\n"
     params.split(/,/).each do |p|
       @code[:initialize] += "value#{@@index}_.add(#{p.strip});\n"
     end
@@ -62,6 +65,14 @@ class RemapClass
     @@entries[:initialize] << "RemapClass_#{@name}::initialize_value#{@@index}"
   end
   protected :append_to_code_initialize
+
+  def append_to_code_terminate
+    @code[:terminate] += "static void terminate_value#{@@index}(void) {\n"
+    @code[:terminate] += "value#{@@index}_.terminate();\n"
+    @code[:terminate] += "}\n"
+
+    @@entries[:terminate] << "RemapClass_#{@name}::terminate_value#{@@index}"
+  end
 
   # return true if 'line' contains autogen/filter definition.
   def parse(line)
@@ -92,6 +103,7 @@ class RemapClass
 
       when 'KeyToKey'
         append_to_code_initialize(params)
+        append_to_code_terminate
         @code[:variable] << { :index => @@index, :class => "RemapUtil::KeyToKey" }
         @code[:remap_key] += "if (value#{@@index}_.remap(remapParams)) break;\n"
 
@@ -101,11 +113,13 @@ class RemapClass
 
       when 'IgnoreMultipleSameKeyPress'
         append_to_code_initialize(params)
+        append_to_code_terminate
         @code[:variable] << { :index => @@index, :class => "IgnoreMultipleSameKeyPress" }
         @code[:remap_key] += "if (value#{@@index}_.remap(remapParams)) break;\n"
 
       when 'KeyToConsumer'
         append_to_code_initialize(params)
+        append_to_code_terminate
         @code[:variable] << { :index => @@index, :class => "RemapUtil::KeyToConsumer" }
         @code[:remap_key] += "if (value#{@@index}_.remap(remapParams)) break;\n"
 
@@ -131,11 +145,13 @@ class RemapClass
 
       when 'ConsumerToKey'
         append_to_code_initialize(params)
+        append_to_code_terminate
         @code[:variable] << { :index => @@index, :class => "RemapUtil::ConsumerToKey" }
         @code[:remap_consumer] += "if (value#{@@index}_.remap(remapParams)) break;\n"
 
       when 'ConsumerToConsumer'
         append_to_code_initialize(params)
+        append_to_code_terminate
         @code[:variable] << { :index => @@index, :class => "RemapUtil::ConsumerToConsumer" }
         @code[:remap_consumer] += "if (value#{@@index}_.remap(remapParams)) break;\n"
 
@@ -191,6 +207,7 @@ class RemapClass
 
     # ----------------------------------------------------------------------
     code += @code[:initialize]
+    code += @code[:terminate]
 
     # ----------------------------------------------------------------------
     unless @code[:remap_setkeyboardtype].empty? then

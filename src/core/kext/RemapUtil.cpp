@@ -10,6 +10,21 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   void
+  RemapUtil::KeyToKey::initialize(void)
+  {
+    toKeys_ = new Vector_PairKeyFlags();
+  }
+
+  void
+  RemapUtil::KeyToKey::terminate(void)
+  {
+    if (toKeys_) {
+      delete toKeys_;
+      toKeys_ = NULL;
+    }
+  }
+
+  void
   RemapUtil::KeyToKey::add(KeyCode newval)
   {
     switch (index_) {
@@ -17,7 +32,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         fromKey_.key = newval;
         break;
       default:
-        toKeys_.push_back(PairKeyFlags(newval));
+        if (toKeys_) {
+          toKeys_->push_back(PairKeyFlags(newval));
+        }
         break;
     }
     ++index_;
@@ -34,7 +51,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         fromKey_.flags = newval;
         break;
       default:
-        toKeys_.back().flags = newval;
+        if (toKeys_) {
+          (toKeys_->back()).flags = newval;
+        }
         break;
     }
   }
@@ -42,6 +61,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   RemapUtil::KeyToKey::remap(RemapParams& remapParams)
   {
+    if (! toKeys_) return false;
+
     if (remapParams.isremapped) return false;
     if (! fromkeychecker_.isFromKey(remapParams, fromKey_.key, fromKey_.flags)) return false;
     remapParams.isremapped = true;
@@ -56,29 +77,29 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
     KeyboardRepeat::cancel();
 
-    switch (toKeys_.size()) {
+    switch (toKeys_->size()) {
       case 0:
         break;
 
       case 1:
       {
         EventType newEventType = isKeyDown ? EventType::DOWN : EventType::UP;
-        ModifierFlag toModifierFlag = toKeys_[0].key.getModifierFlag();
+        ModifierFlag toModifierFlag = (*toKeys_)[0].key.getModifierFlag();
 
         if (toModifierFlag == ModifierFlag::NONE) {
           // toKey
           FlagStatus::temporary_decrease(fromKey_.flags);
-          FlagStatus::temporary_increase(toKeys_[0].flags);
+          FlagStatus::temporary_increase((*toKeys_)[0].flags);
 
         } else {
           // toModifier
           newEventType = EventType::MODIFY;
 
           if (isKeyDown) {
-            FlagStatus::increase(toKeys_[0].flags | toModifierFlag);
+            FlagStatus::increase((*toKeys_)[0].flags | toModifierFlag);
             FlagStatus::decrease(fromKey_.flags);
           } else {
-            FlagStatus::decrease(toKeys_[0].flags | toModifierFlag);
+            FlagStatus::decrease((*toKeys_)[0].flags | toModifierFlag);
             FlagStatus::increase(fromKey_.flags);
           }
         }
@@ -86,7 +107,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         // ----------------------------------------
         Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(newEventType,
                                                                                        FlagStatus::makeFlags(),
-                                                                                       toKeys_[0].key,
+                                                                                       (*toKeys_)[0].key,
                                                                                        remapParams.params.keyboardType,
                                                                                        remapParams.params.repeat));
         if (! ptr) return false;
@@ -100,17 +121,17 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       default:
         if (isKeyDown) {
-          for (size_t i = 0; i < toKeys_.size(); ++i) {
-            FlagStatus::temporary_increase(toKeys_[i].flags);
+          for (size_t i = 0; i < toKeys_->size(); ++i) {
+            FlagStatus::temporary_increase((*toKeys_)[i].flags);
 
             Flags f = FlagStatus::makeFlags();
             KeyboardType keyboardType = remapParams.params.keyboardType;
 
-            RemapUtil::fireKey_downup(f, toKeys_[i].key, keyboardType);
-            KeyboardRepeat::primitive_add(EventType::DOWN, f, toKeys_[i].key, keyboardType);
-            KeyboardRepeat::primitive_add(EventType::UP,   f, toKeys_[i].key, keyboardType);
+            RemapUtil::fireKey_downup(f, (*toKeys_)[i].key, keyboardType);
+            KeyboardRepeat::primitive_add(EventType::DOWN, f, (*toKeys_)[i].key, keyboardType);
+            KeyboardRepeat::primitive_add(EventType::UP,   f, (*toKeys_)[i].key, keyboardType);
 
-            FlagStatus::temporary_decrease(toKeys_[i].flags);
+            FlagStatus::temporary_decrease((*toKeys_)[i].flags);
           }
 
           KeyboardRepeat::primitive_start();
@@ -227,9 +248,79 @@ namespace org_pqrs_KeyRemap4MacBook {
     return true;
   }
 
+  void
+  RemapUtil::ConsumerToKey::initialize(void)
+  {
+    keytokey_.initialize();
+    consumertoconsumer_.initialize();
+    toKeys_ = new Vector_PairKeyFlags();
+  }
+
+  void
+  RemapUtil::ConsumerToKey::terminate(void)
+  {
+    keytokey_.terminate();
+    consumertoconsumer_.terminate();
+    if (toKeys_) {
+      delete toKeys_;
+      toKeys_ = NULL;
+    }
+  }
+
+  void
+  RemapUtil::ConsumerToKey::add(ConsumerKeyCode newval)
+  {
+    switch (index_) {
+      case 0:
+        fromKey_.key = newval;
+        consumertoconsumer_.add(newval);
+        consumertoconsumer_.add(ConsumerKeyCode::VK_NONE);
+        break;
+      default:
+        IOLOG_ERROR("Invalid ConsumerToKey::add\n");
+        break;
+    }
+    ++index_;
+  }
+
+  void
+  RemapUtil::ConsumerToKey::add(KeyCode newval)
+  {
+    switch (index_) {
+      case 0:
+        IOLOG_ERROR("Invalid ConsumerToKey::add\n");
+        break;
+      default:
+        if (toKeys_) {
+          toKeys_->push_back(PairKeyFlags(newval));
+        }
+        break;
+    }
+    ++index_;
+  }
+
+  void
+  RemapUtil::ConsumerToKey::add(Flags newval)
+  {
+    switch (index_) {
+      case 0:
+        break;
+      case 1:
+        fromKey_.flags = newval;
+        break;
+      default:
+        if (toKeys_) {
+          toKeys_->back().flags = newval;
+        }
+        break;
+    }
+  }
+
   bool
   RemapUtil::ConsumerToKey::remap(RemapConsumerParams& remapParams)
   {
+    if (! toKeys_) return false;
+
     if (! fromkeychecker_.isFromKey(remapParams, fromKey_.key, fromKey_.flags)) return false;
 
     bool result = consumertoconsumer_.remap(remapParams);
@@ -246,16 +337,68 @@ namespace org_pqrs_KeyRemap4MacBook {
     Params_KeyboardEventCallBack& params = *ptr;
 
     RemapParams rp(params);
-    if (! keytokey_.remap(rp, KeyCode::VK_PSEUDO_KEY, fromKey_.flags, toKeys_[0].key, toKeys_[0].flags)) {
+    if (! keytokey_.remap(rp, KeyCode::VK_PSEUDO_KEY, fromKey_.flags, (*toKeys_)[0].key, (*toKeys_)[0].flags)) {
       return false;
     }
 
     return true;
   }
 
+  // ======================================================================
+  void
+  RemapUtil::ConsumerToConsumer::initialize(void)
+  {
+    toKeys_ = new Vector_PairConsumerKeyFlags();
+  }
+
+  void
+  RemapUtil::ConsumerToConsumer::terminate(void)
+  {
+    if (toKeys_) {
+      delete toKeys_;
+      toKeys_ = NULL;
+    }
+  }
+
+  void
+  RemapUtil::ConsumerToConsumer::add(ConsumerKeyCode newval)
+  {
+    switch (index_) {
+      case 0:
+        fromKey_.key = newval;
+        break;
+      default:
+        if (toKeys_) {
+          toKeys_->push_back(PairConsumerKeyFlags(newval));
+        }
+        break;
+    }
+    ++index_;
+  }
+
+  void
+  RemapUtil::ConsumerToConsumer::add(Flags newval)
+  {
+    switch (index_) {
+      case 0:
+        IOLOG_ERROR("Invalid ConsumerToConsumer::add\n");
+        break;
+      case 1:
+        fromKey_.flags = newval;
+        break;
+      default:
+        if (toKeys_) {
+          toKeys_->back().flags = newval;
+        }
+        break;
+    }
+  }
+
   bool
   RemapUtil::ConsumerToConsumer::remap(RemapConsumerParams& remapParams)
   {
+    if (! toKeys_) return false;
+
     // ------------------------------------------------------------
     // NumLock Hack
     // If we change NumLock key, we need to call IOHIKeyboard::setNumLock(false).
@@ -263,8 +406,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     // And NumLock retains working status.
     if (fromKey_.key == ConsumerKeyCode::NUMLOCK) {
       bool tonumlock = false;
-      for (size_t i = 0; i < toKeys_.size(); ++i) {
-        if (toKeys_[i].key == ConsumerKeyCode::NUMLOCK) {
+      for (size_t i = 0; i < toKeys_->size(); ++i) {
+        if ((*toKeys_)[i].key == ConsumerKeyCode::NUMLOCK) {
           tonumlock = true;
         }
       }
@@ -290,16 +433,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     FlagStatus::temporary_decrease(fromKey_.flags);
     KeyboardRepeat::cancel();
 
-    switch (toKeys_.size()) {
+    switch (toKeys_->size()) {
       case 0:
         break;
 
       case 1:
       {
-        FlagStatus::temporary_increase(toKeys_[0].flags);
+        FlagStatus::temporary_increase((*toKeys_)[0].flags);
         Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(remapParams.params.eventType,
                                                                                                      FlagStatus::makeFlags(),
-                                                                                                     toKeys_[0].key,
+                                                                                                     (*toKeys_)[0].key,
                                                                                                      false));
         if (! ptr) return false;
         Params_KeyboardSpecialEventCallback& params = *ptr;
@@ -311,11 +454,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       default:
         if (remapParams.params.eventType == EventType::DOWN) {
-          for (size_t i = 0; i < toKeys_.size(); ++i) {
-            FlagStatus::temporary_increase(toKeys_[i].flags);
+          for (size_t i = 0; i < toKeys_->size(); ++i) {
+            FlagStatus::temporary_increase((*toKeys_)[i].flags);
             Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(EventType::DOWN,
                                                                                                          FlagStatus::makeFlags(),
-                                                                                                         toKeys_[i].key,
+                                                                                                         (*toKeys_)[i].key,
                                                                                                          false));
             if (! ptr) return false;
             Params_KeyboardSpecialEventCallback& params = *ptr;
@@ -327,7 +470,7 @@ namespace org_pqrs_KeyRemap4MacBook {
             KeyboardRepeat::primitive_add(EventType::DOWN, params.flags, params.key);
             KeyboardRepeat::primitive_add(EventType::UP,   params.flags, params.key);
 
-            FlagStatus::temporary_decrease(toKeys_[i].flags);
+            FlagStatus::temporary_decrease((*toKeys_)[i].flags);
           }
 
           KeyboardRepeat::primitive_start();
@@ -337,6 +480,68 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     return true;
+  }
+
+  void
+  RemapUtil::KeyToConsumer::initialize(void)
+  {
+    keytokey_.initialize();
+    consumertoconsumer_.initialize();
+  }
+
+  void
+  RemapUtil::KeyToConsumer::terminate(void)
+  {
+    keytokey_.terminate();
+    consumertoconsumer_.terminate();
+  }
+
+  void
+  RemapUtil::KeyToConsumer::add(KeyCode newval)
+  {
+    switch (index_) {
+      case 0:
+        fromKey_.key = newval;
+        break;
+      default:
+        IOLOG_ERROR("Invalid KeyToConsumer::add\n");
+        break;
+    }
+    ++index_;
+  }
+
+  void
+  RemapUtil::KeyToConsumer::add(ConsumerKeyCode newval)
+  {
+    switch (index_) {
+      case 0:
+        IOLOG_ERROR("Invalid KeyToConsumer::add\n");
+        break;
+      case 1:
+        consumertoconsumer_.add(ConsumerKeyCode::VK_PSEUDO_KEY);
+        consumertoconsumer_.add(fromKey_.flags);
+        // pass-through
+      default:
+        consumertoconsumer_.add(newval);
+        break;
+    }
+    ++index_;
+  }
+
+  void
+  RemapUtil::KeyToConsumer::add(Flags newval)
+  {
+    switch (index_) {
+      case 0:
+        IOLOG_ERROR("Invalid KeyToConsumer::add\n");
+        break;
+      case 1:
+        fromKey_.flags = newval;
+        break;
+      default:
+        consumertoconsumer_.add(newval);
+        break;
+    }
   }
 
   bool
@@ -1058,6 +1263,28 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
+  void
+  IgnoreMultipleSameKeyPress::initialize(void)
+  {
+    lastkeycode_ = KeyCode::VK_NONE;
+  }
+
+  void
+  IgnoreMultipleSameKeyPress::terminate(void)
+  {}
+
+  void
+  IgnoreMultipleSameKeyPress::add(KeyCode newval)
+  {
+    fromKey_.key = newval;
+  }
+
+  void
+  IgnoreMultipleSameKeyPress::add(Flags newval)
+  {
+    fromKey_.flags = newval;
+  }
+
   bool
   IgnoreMultipleSameKeyPress::remap(RemapParams& remapParams)
   {
