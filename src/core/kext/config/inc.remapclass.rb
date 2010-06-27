@@ -104,7 +104,7 @@ class RemapClass
       when 'KeyToKey'
         append_to_code_initialize(params)
         append_to_code_terminate
-        @code[:variable] << { :index => @@index, :class => "RemapUtil::KeyToKey" }
+        @code[:variable] << { :index => @@index, :class => "RemapFunc::KeyToKey" }
         @code[:remap_key] += "if (value#{@@index}_.remap(remapParams)) break;\n"
 
       when 'DoublePressModifier'

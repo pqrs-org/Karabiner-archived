@@ -57,6 +57,8 @@
 		34C7A9B00CE4605B00C98397 /* Config.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34C7A9AF0CE4605B00C98397 /* Config.hpp */; };
 		34CFB93211C340B000E5E7F9 /* ButtonStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34CFB93011C340B000E5E7F9 /* ButtonStatus.cpp */; };
 		34CFB93311C340B000E5E7F9 /* ButtonStatus.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34CFB93111C340B000E5E7F9 /* ButtonStatus.hpp */; };
+		34D347E611D8106C00D70815 /* KeyToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D347E411D8106C00D70815 /* KeyToKey.cpp */; };
+		34D347E711D8106C00D70815 /* KeyToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34D347E511D8106C00D70815 /* KeyToKey.hpp */; };
 		34DBD43D11D80B6F000163BE /* EventOutput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34DBD43B11D80B6F000163BE /* EventOutput.cpp */; };
 		34DBD43E11D80B6F000163BE /* EventOutput.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34DBD43C11D80B6F000163BE /* EventOutput.hpp */; };
 		34F13A860E73E69D006EB163 /* IntervalChecker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F13A840E73E69D006EB163 /* IntervalChecker.cpp */; };
@@ -125,6 +127,8 @@
 		34C7A9AF0CE4605B00C98397 /* Config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config.hpp; sourceTree = "<group>"; };
 		34CFB93011C340B000E5E7F9 /* ButtonStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ButtonStatus.cpp; path = util/ButtonStatus.cpp; sourceTree = "<group>"; };
 		34CFB93111C340B000E5E7F9 /* ButtonStatus.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ButtonStatus.hpp; path = util/ButtonStatus.hpp; sourceTree = "<group>"; };
+		34D347E411D8106C00D70815 /* KeyToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyToKey.cpp; path = RemapFunc/KeyToKey.cpp; sourceTree = "<group>"; };
+		34D347E511D8106C00D70815 /* KeyToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyToKey.hpp; path = RemapFunc/KeyToKey.hpp; sourceTree = "<group>"; };
 		34DBD43B11D80B6F000163BE /* EventOutput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventOutput.cpp; path = util/EventOutput.cpp; sourceTree = "<group>"; };
 		34DBD43C11D80B6F000163BE /* EventOutput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = EventOutput.hpp; path = util/EventOutput.hpp; sourceTree = "<group>"; };
 		34F13A840E73E69D006EB163 /* IntervalChecker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IntervalChecker.cpp; path = util/IntervalChecker.cpp; sourceTree = "<group>"; };
@@ -212,6 +216,8 @@
 		345E3EC511D79D17004B6347 /* RemapFunc */ = {
 			isa = PBXGroup;
 			children = (
+				34D347E411D8106C00D70815 /* KeyToKey.cpp */,
+				34D347E511D8106C00D70815 /* KeyToKey.hpp */,
 				345E3EC811D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp */,
 				345E3EC911D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp */,
 				345E3ECA11D79D24004B6347 /* RemapFuncBase.hpp */,
@@ -307,6 +313,7 @@
 				345E3ECC11D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp in Headers */,
 				345E3ECD11D79D24004B6347 /* RemapFuncBase.hpp in Headers */,
 				34DBD43E11D80B6F000163BE /* EventOutput.hpp in Headers */,
+				34D347E711D8106C00D70815 /* KeyToKey.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +410,7 @@
 				346EB2E411D5CDC100BBDF0E /* EventInputQueue.cpp in Sources */,
 				345E3ECB11D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp in Sources */,
 				34DBD43D11D80B6F000163BE /* EventOutput.cpp in Sources */,
+				34D347E611D8106C00D70815 /* KeyToKey.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
