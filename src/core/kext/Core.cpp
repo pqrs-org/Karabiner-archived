@@ -5,10 +5,10 @@
 #include "Config.hpp"
 #include "Core.hpp"
 #include "RemapClass.hpp"
-#include "RemapUtil.hpp"
 #include "remap.hpp"
 #include "util/CallBackWrapper.hpp"
 #include "util/EventInputQueue.hpp"
+#include "util/EventOutput.hpp"
 #include "util/KeyboardRepeat.hpp"
 #include "util/ListHookedConsumer.hpp"
 #include "util/ListHookedKeyboard.hpp"
@@ -173,7 +173,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! remapParams.isremapped) {
         params.flags = FlagStatus::makeFlags();
         KeyboardRepeat::set(params);
-        RemapUtil::fireKey(params);
+        EventOutput::FireKey::fire(params);
       }
 
       if (NumHeldDownKeys::iszero()) {
@@ -182,8 +182,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         EventWatcher::reset();
         FlagStatus::reset();
         ButtonStatus::reset();
-        FireModifiers::fire(FlagStatus::makeFlags());
-        FireRelativePointer::fire();
+        EventOutput::FireModifiers::fire(FlagStatus::makeFlags());
+        EventOutput::FireRelativePointer::fire();
         PressDownKeys::clear();
       }
     }
@@ -202,7 +202,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! remapParams.isremapped) {
         params.flags = FlagStatus::makeFlags();
         KeyboardRepeat::set(params);
-        RemapUtil::fireConsumer(params);
+        EventOutput::FireConsumer::fire(params);
       }
     }
 
@@ -217,7 +217,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       if (! remapParams.isremapped) {
-        FireRelativePointer::fire(ButtonStatus::makeButtons(), params.dx, params.dy);
+        EventOutput::FireRelativePointer::fire(ButtonStatus::makeButtons(), params.dx, params.dy);
       }
     }
 
@@ -225,7 +225,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     remap_ScrollWheelEventCallback(Params_ScrollWheelEventCallback& params)
     {
       params.log();
-      RemapUtil::fireScrollWheel(params);
+      EventOutput::FireScrollWheel::fire(params);
     }
   }
 }

@@ -1,8 +1,8 @@
 #include "CommonData.hpp"
-#include "KeyboardRepeat.hpp"
+#include "EventOutput.hpp"
 #include "IOLockWrapper.hpp"
+#include "KeyboardRepeat.hpp"
 #include "ListHookedKeyboard.hpp"
-#include "RemapUtil.hpp"
 #include "remap.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -249,7 +249,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           {
             Params_KeyboardEventCallBack* p = item_[i].params;
             if (p) {
-              RemapUtil::fireKey(*p);
+              EventOutput::FireKey::fire(*p);
             }
             break;
           }
@@ -258,7 +258,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           {
             Params_KeyboardSpecialEventCallback* p = item_[i].params_consumer;
             if (p) {
-              RemapUtil::fireConsumer(*p);
+              EventOutput::FireConsumer::fire(*p);
             }
             isconsumer = true;
             break;
