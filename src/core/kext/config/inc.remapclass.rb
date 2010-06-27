@@ -80,8 +80,9 @@ class RemapClass
         @code[:handlevirtualkey] += "if (value#{@@index}_.handleVirtualKey(params)) return true;\n"
 
       when 'KeyToKey'
+        append_to_code_initialize(params)
         @code[:variable] << { :index => @@index, :class => "RemapUtil::KeyToKey" }
-        @code[:remap_key] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
+        @code[:remap_key] += "if (value#{@@index}_.remap(remapParams)) break;\n"
 
       when 'DoublePressModifier'
         @code[:variable] << { :index => @@index, :class => "DoublePressModifier" }

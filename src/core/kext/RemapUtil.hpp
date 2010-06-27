@@ -44,6 +44,17 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     class KeyToKey {
     public:
+      KeyToKey(void) : index_(0) {}
+      bool remap(RemapParams& remapParams);
+
+      // ----------------------------------------
+      // [0] => fromKey_
+      // [1] => toKeys_[0]
+      // [2] => toKeys_[1]
+      // [3] => ...
+      void add(KeyCode newval);
+      void add(Flags newval);
+
       // Don't use reference for a Flags argument.
       // Because Flags is generated from a combination of ModifierFlag anytime,
       // it wastes the stack of the caller if we use a reference argument.
@@ -64,7 +75,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 #include "generate/output/include.keytokey.hpp"
 
     private:
+      size_t index_;
       FromKeyChecker fromkeychecker_;
+      PairKeyFlags fromKey_;
+      Vector_PairKeyFlags toKeys_;
     };
 
     class ConsumerToConsumer {
