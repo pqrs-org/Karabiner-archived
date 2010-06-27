@@ -152,7 +152,7 @@ class RemapClass
       when 'ConsumerToConsumer'
         append_to_code_initialize(params)
         append_to_code_terminate
-        @code[:variable] << { :index => @@index, :class => "RemapUtil::ConsumerToConsumer" }
+        @code[:variable] << { :index => @@index, :class => "RemapFunc::ConsumerToConsumer" }
         @code[:remap_consumer] += "if (value#{@@index}_.remap(remapParams)) break;\n"
 
       when 'PointingRelativeToScroll'

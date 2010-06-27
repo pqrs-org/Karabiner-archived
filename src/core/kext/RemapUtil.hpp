@@ -15,6 +15,7 @@
 #include "util/Vector.hpp"
 
 #include "RemapFunc/KeyToKey.hpp"
+#include "RemapFunc/ConsumerToConsumer.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapUtil {
@@ -70,28 +71,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       FromKeyChecker fromkeychecker_;
     };
 
-    class ConsumerToConsumer {
-    public:
-      ConsumerToConsumer(void) : index_(0), toKeys_(NULL) {}
-      bool remap(RemapConsumerParams& remapParams);
-      void initialize(void);
-      void terminate(void);
-
-      // ----------------------------------------
-      // [0] => fromKey_
-      // [1] => toKeys_[0]
-      // [2] => toKeys_[1]
-      // [3] => ...
-      void add(ConsumerKeyCode newval);
-      void add(Flags newval);
-
-    private:
-      size_t index_;
-      FromKeyChecker fromkeychecker_;
-      PairConsumerKeyFlags fromKey_;
-      Vector_PairConsumerKeyFlags* toKeys_;
-    };
-
     class KeyToConsumer {
     public:
       KeyToConsumer(void) : index_(0) {}
@@ -113,7 +92,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       FromKeyChecker fromkeychecker_;
       PairKeyFlags fromKey_;
       RemapFunc::KeyToKey keytokey_;
-      ConsumerToConsumer consumertoconsumer_;
+      RemapFunc::ConsumerToConsumer consumertoconsumer_;
     };
 
     class ConsumerToKey {
@@ -136,7 +115,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       FromKeyChecker fromkeychecker_;
       PairConsumerKeyFlags fromKey_;
       RemapFunc::KeyToKey keytokey_;
-      ConsumerToConsumer consumertoconsumer_;
+      RemapFunc::ConsumerToConsumer consumertoconsumer_;
     };
 
     class PointingButtonToPointingButton {

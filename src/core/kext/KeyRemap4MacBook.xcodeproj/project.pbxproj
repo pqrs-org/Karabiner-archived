@@ -29,6 +29,8 @@
 		345E3ECB11D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345E3EC811D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp */; };
 		345E3ECC11D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345E3EC911D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp */; };
 		345E3ECD11D79D24004B6347 /* RemapFuncBase.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345E3ECA11D79D24004B6347 /* RemapFuncBase.hpp */; };
+		345FD60811D819EA00FC1B86 /* ConsumerToConsumer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345FD60611D819EA00FC1B86 /* ConsumerToConsumer.cpp */; };
+		345FD60911D819EA00FC1B86 /* ConsumerToConsumer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345FD60711D819EA00FC1B86 /* ConsumerToConsumer.hpp */; };
 		3465DB6010A2E93300DFCEC5 /* IOLockWrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3465DB5F10A2E93300DFCEC5 /* IOLockWrapper.hpp */; };
 		346B753E0E72C0BA00F9A79F /* FlagStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 346B753C0E72C0BA00F9A79F /* FlagStatus.cpp */; };
 		346B753F0E72C0BA00F9A79F /* FlagStatus.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 346B753D0E72C0BA00F9A79F /* FlagStatus.hpp */; };
@@ -99,6 +101,8 @@
 		345E3EC811D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IgnoreMultipleSameKeyPress.cpp; path = RemapFunc/IgnoreMultipleSameKeyPress.cpp; sourceTree = "<group>"; };
 		345E3EC911D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IgnoreMultipleSameKeyPress.hpp; path = RemapFunc/IgnoreMultipleSameKeyPress.hpp; sourceTree = "<group>"; };
 		345E3ECA11D79D24004B6347 /* RemapFuncBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RemapFuncBase.hpp; path = RemapFunc/RemapFuncBase.hpp; sourceTree = "<group>"; };
+		345FD60611D819EA00FC1B86 /* ConsumerToConsumer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConsumerToConsumer.cpp; path = RemapFunc/ConsumerToConsumer.cpp; sourceTree = "<group>"; };
+		345FD60711D819EA00FC1B86 /* ConsumerToConsumer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ConsumerToConsumer.hpp; path = RemapFunc/ConsumerToConsumer.hpp; sourceTree = "<group>"; };
 		3465DB5F10A2E93300DFCEC5 /* IOLockWrapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IOLockWrapper.hpp; path = util/IOLockWrapper.hpp; sourceTree = "<group>"; };
 		346B753C0E72C0BA00F9A79F /* FlagStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FlagStatus.cpp; path = util/FlagStatus.cpp; sourceTree = "<group>"; };
 		346B753D0E72C0BA00F9A79F /* FlagStatus.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FlagStatus.hpp; path = util/FlagStatus.hpp; sourceTree = "<group>"; };
@@ -216,6 +220,8 @@
 		345E3EC511D79D17004B6347 /* RemapFunc */ = {
 			isa = PBXGroup;
 			children = (
+				345FD60611D819EA00FC1B86 /* ConsumerToConsumer.cpp */,
+				345FD60711D819EA00FC1B86 /* ConsumerToConsumer.hpp */,
 				34D347E411D8106C00D70815 /* KeyToKey.cpp */,
 				34D347E511D8106C00D70815 /* KeyToKey.hpp */,
 				345E3EC811D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp */,
@@ -314,6 +320,7 @@
 				345E3ECD11D79D24004B6347 /* RemapFuncBase.hpp in Headers */,
 				34DBD43E11D80B6F000163BE /* EventOutput.hpp in Headers */,
 				34D347E711D8106C00D70815 /* KeyToKey.hpp in Headers */,
+				345FD60911D819EA00FC1B86 /* ConsumerToConsumer.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +418,7 @@
 				345E3ECB11D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp in Sources */,
 				34DBD43D11D80B6F000163BE /* EventOutput.cpp in Sources */,
 				34D347E611D8106C00D70815 /* KeyToKey.cpp in Sources */,
+				345FD60811D819EA00FC1B86 /* ConsumerToConsumer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
