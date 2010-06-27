@@ -82,7 +82,7 @@ namespace {
     if (! ifs) return;
 
     while (! ifs.eof()) {
-      char line[512];
+      char line[32 * 1024];
 
       ifs.getline(line, sizeof(line));
 
