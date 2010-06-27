@@ -121,6 +121,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       default:
         if (isKeyDown) {
+          FlagStatus::temporary_decrease(fromKey_.flags);
+
           for (size_t i = 0; i < toKeys_->size(); ++i) {
             FlagStatus::temporary_increase((*toKeys_)[i].flags);
 
