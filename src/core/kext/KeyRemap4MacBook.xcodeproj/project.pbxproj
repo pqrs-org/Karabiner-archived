@@ -26,6 +26,9 @@
 		345B06AD0DB21A88000023FD /* Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345B06AB0DB21A88000023FD /* Client.cpp */; };
 		345B06AE0DB21A88000023FD /* Client.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345B06AC0DB21A88000023FD /* Client.hpp */; };
 		345B06B80DB21ABF000023FD /* bridge.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345B06B70DB21ABF000023FD /* bridge.hpp */; };
+		345E3ECB11D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345E3EC811D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp */; };
+		345E3ECC11D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345E3EC911D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp */; };
+		345E3ECD11D79D24004B6347 /* RemapFuncBase.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345E3ECA11D79D24004B6347 /* RemapFuncBase.hpp */; };
 		3465DB6010A2E93300DFCEC5 /* IOLockWrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3465DB5F10A2E93300DFCEC5 /* IOLockWrapper.hpp */; };
 		346B753E0E72C0BA00F9A79F /* FlagStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 346B753C0E72C0BA00F9A79F /* FlagStatus.cpp */; };
 		346B753F0E72C0BA00F9A79F /* FlagStatus.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 346B753D0E72C0BA00F9A79F /* FlagStatus.hpp */; };
@@ -89,6 +92,9 @@
 		345B06AB0DB21A88000023FD /* Client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Client.cpp; sourceTree = "<group>"; };
 		345B06AC0DB21A88000023FD /* Client.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Client.hpp; sourceTree = "<group>"; };
 		345B06B70DB21ABF000023FD /* bridge.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = bridge.hpp; path = ../bridge/bridge.hpp; sourceTree = SOURCE_ROOT; };
+		345E3EC811D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IgnoreMultipleSameKeyPress.cpp; path = RemapFunc/IgnoreMultipleSameKeyPress.cpp; sourceTree = "<group>"; };
+		345E3EC911D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IgnoreMultipleSameKeyPress.hpp; path = RemapFunc/IgnoreMultipleSameKeyPress.hpp; sourceTree = "<group>"; };
+		345E3ECA11D79D24004B6347 /* RemapFuncBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RemapFuncBase.hpp; path = RemapFunc/RemapFuncBase.hpp; sourceTree = "<group>"; };
 		3465DB5F10A2E93300DFCEC5 /* IOLockWrapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IOLockWrapper.hpp; path = util/IOLockWrapper.hpp; sourceTree = "<group>"; };
 		346B753C0E72C0BA00F9A79F /* FlagStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FlagStatus.cpp; path = util/FlagStatus.cpp; sourceTree = "<group>"; };
 		346B753D0E72C0BA00F9A79F /* FlagStatus.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FlagStatus.hpp; path = util/FlagStatus.hpp; sourceTree = "<group>"; };
@@ -173,6 +179,7 @@
 		247142CAFF3F8F9811CA285C /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				345E3EC511D79D17004B6347 /* RemapFunc */,
 				3477E3B911CFAC9D00DC05C9 /* RemapClass.cpp */,
 				3477E3BA11CFAC9D00DC05C9 /* RemapClass.hpp */,
 				3456837A10DA734100D7E2E6 /* VirtualKey.cpp */,
@@ -196,6 +203,16 @@
 				346B753B0E72C0A200F9A79F /* util */,
 			);
 			name = Source;
+			sourceTree = "<group>";
+		};
+		345E3EC511D79D17004B6347 /* RemapFunc */ = {
+			isa = PBXGroup;
+			children = (
+				345E3EC811D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp */,
+				345E3EC911D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp */,
+				345E3ECA11D79D24004B6347 /* RemapFuncBase.hpp */,
+			);
+			name = RemapFunc;
 			sourceTree = "<group>";
 		};
 		346B753B0E72C0A200F9A79F /* util */ = {
@@ -281,6 +298,8 @@
 				3475BBFF11CEDC5F007BC76A /* FromKeyChecker.hpp in Headers */,
 				3477E3BC11CFAC9D00DC05C9 /* RemapClass.hpp in Headers */,
 				346EB2E511D5CDC100BBDF0E /* EventInputQueue.hpp in Headers */,
+				345E3ECC11D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp in Headers */,
+				345E3ECD11D79D24004B6347 /* RemapFuncBase.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +394,7 @@
 				34CFB93211C340B000E5E7F9 /* ButtonStatus.cpp in Sources */,
 				3477E3BB11CFAC9D00DC05C9 /* RemapClass.cpp in Sources */,
 				346EB2E411D5CDC100BBDF0E /* EventInputQueue.cpp in Sources */,
+				345E3ECB11D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

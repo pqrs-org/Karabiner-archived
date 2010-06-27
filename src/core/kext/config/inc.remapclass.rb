@@ -114,7 +114,7 @@ class RemapClass
       when 'IgnoreMultipleSameKeyPress'
         append_to_code_initialize(params)
         append_to_code_terminate
-        @code[:variable] << { :index => @@index, :class => "IgnoreMultipleSameKeyPress" }
+        @code[:variable] << { :index => @@index, :class => "RemapFunc::IgnoreMultipleSameKeyPress" }
         @code[:remap_key] += "if (value#{@@index}_.remap(remapParams)) break;\n"
 
       when 'KeyToConsumer'

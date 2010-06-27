@@ -4,6 +4,7 @@
 #include "RemapUtil.hpp"
 #include "util/CommonData.hpp"
 #include "util/EventInputQueue.hpp"
+#include "RemapFunc/IgnoreMultipleSameKeyPress.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapClassManager {
