@@ -7,16 +7,31 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapClassManager {
+    typedef void (*RemapClass_initialize)(void);
+    typedef bool (*RemapClass_handlevirtualkey)(const Params_KeyboardEventCallBack& params);
+    typedef void (*RemapClass_remap_setkeyboardtype)(KeyboardType& keyboardType);
+    typedef void (*RemapClass_remap_key)(RemapParams& remapParams);
+    typedef void (*RemapClass_remap_consumer)(RemapConsumerParams& remapParams);
+    typedef void (*RemapClass_remap_pointing)(RemapPointingParams_relative& remapParams);
+    typedef void (*RemapClass_remap_simultaneouskeypresses)(void);
+    typedef const char* (*RemapClass_get_statusmessage)(void);
+    typedef bool (*RemapClass_enabled)(void);
+
 #include "config/output/include.RemapClass.cpp"
 
     class Item : public Queue::Item {
     public:
-      Item(void) : remapclass(NULL) {}
-      Item(RemapClass* rc) : remapclass(rc) {}
       virtual ~Item(void) {}
 
-      RemapClass* remapclass;
+      union {
+        RemapClass_remap_setkeyboardtype remap_setkeyboardtype;
+        RemapClass_remap_key remap_key;
+        RemapClass_remap_consumer remap_consumer;
+        RemapClass_remap_pointing remap_pointing;
+        RemapClass_remap_simultaneouskeypresses remap_simultaneouskeypresses;
+      } func;
     };
+
     Queue* queue_remap_setkeyboardtype_ = NULL;
     Queue* queue_remap_key_ = NULL;
     Queue* queue_remap_consumer_ = NULL;
@@ -63,18 +78,30 @@ namespace org_pqrs_KeyRemap4MacBook {
       statusmessage_[0] = '\0';
 
       for (size_t i = 0;; ++i) {
-        RemapClass* p = listRemapClass[i];
-        if (! listRemapClass[i]) break;
+        RemapClass_enabled enabled = listRemapClass_enabled[i];
+        if (! enabled) break;
+        if (! enabled()) continue;
 
-        if (p->enabled(RemapClass::ENABLE_TYPE_SETKEYBOARDTYPE)        && queue_remap_setkeyboardtype_)        queue_remap_setkeyboardtype_->push(new Item(p));
-        if (p->enabled(RemapClass::ENABLE_TYPE_KEY)                    && queue_remap_key_)                    queue_remap_key_->push(new Item(p));
-        if (p->enabled(RemapClass::ENABLE_TYPE_CONSUMER)               && queue_remap_consumer_)               queue_remap_consumer_->push(new Item(p));
-        if (p->enabled(RemapClass::ENABLE_TYPE_POINTING)               && queue_remap_pointing_)               queue_remap_pointing_->push(new Item(p));
-        if (p->enabled(RemapClass::ENABLE_TYPE_SIMULTANEOUSKEYPRESSES) && queue_remap_simultaneouskeypresses_) queue_remap_simultaneouskeypresses_->push(new Item(p));
+#define PUSH_REMAPCLASS(ENTRY) {                               \
+    if (listRemapClass_ ## ENTRY[i] && queue_ ## ENTRY ## _) { \
+      Item* newp = new Item();                                 \
+      (newp->func).ENTRY = listRemapClass_ ## ENTRY[i];        \
+      queue_ ## ENTRY ## _->push(newp);                        \
+    }                                                          \
+}
 
-        if (p->enabled(RemapClass::ENABLE_TYPE_STATUSMESSAGE)) {
-          if (p->statusmessage) {
-            strlcat(statusmessage_, p->statusmessage, sizeof(statusmessage_));
+        PUSH_REMAPCLASS(remap_setkeyboardtype);
+        PUSH_REMAPCLASS(remap_key);
+        PUSH_REMAPCLASS(remap_consumer);
+        PUSH_REMAPCLASS(remap_pointing);
+        PUSH_REMAPCLASS(remap_simultaneouskeypresses);
+
+#undef PUSH_REMAPCLASS
+
+        if (listRemapClass_get_statusmessage[i]) {
+          const char* msg = (listRemapClass_get_statusmessage[i])();
+          if (msg) {
+            strlcat(statusmessage_, msg, sizeof(statusmessage_));
             strlcat(statusmessage_, " ", sizeof(statusmessage_));
           }
         }
@@ -103,9 +130,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       queue_remap_simultaneouskeypresses_ = new Queue();
 
       for (size_t i = 0;; ++i) {
-        RemapClass* p = listRemapClass[i];
-        if (! listRemapClass[i]) break;
-        p->initialize();
+        RemapClass_initialize p = listRemapClass_initialize[i];
+        if (! p) break;
+        p();
       }
 
       refresh_timer_.initialize(&workloop, NULL, refresh_core);
@@ -148,8 +175,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     Item* p = static_cast<Item*>(QUEUE->front()); \
     for (;;) {                                    \
       if (! p) break;                             \
-      if (! p->remapclass) break;                 \
-      p->remapclass->FUNC(PARAMS);                \
+      if (! (p->func).FUNC) break;                \
+      (p->func).FUNC(PARAMS);                     \
       p = static_cast<Item*>(p->getnext());       \
       ++num;                                      \
     }                                             \
@@ -189,7 +216,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     handlevirtualkey(const Params_KeyboardEventCallBack& params)
     {
-#include "config/output/include.RemapClass.handlevirtualkey.cpp"
+      // We do not need a lock, because we don't refer queues.
+
+      for (size_t i = 0;; ++i) {
+        RemapClass_handlevirtualkey p = listRemapClass_handlevirtualkey[i];
+        if (! p) break;
+        if (p(params)) return true;
+      }
       return false;
     }
   }

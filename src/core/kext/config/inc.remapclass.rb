@@ -5,10 +5,20 @@ require 'inc.filter.rb'
 
 class RemapClass
   @@index = 0
-  @@handlevirtualkey_entry = ''
+  @@entries = {
+    :initialize                   => [],
+    :handlevirtualkey             => [],
+    :remap_setkeyboardtype        => [],
+    :remap_key                    => [],
+    :remap_consumer               => [],
+    :remap_pointing               => [],
+    :remap_simultaneouskeypresses => [],
+    :get_statusmessage            => [],
+    :enabled                      => [],
+  }
 
-  def RemapClass.get_handlevirtualkey_entry
-    return @@handlevirtualkey_entry
+  def RemapClass.get_entries
+    return @@entries
   end
 
   def initialize(name)
@@ -17,17 +27,17 @@ class RemapClass
 
     @code = {
       # functions
-      :initialize                                    => '',
-      :handlevirtualkey                              => '',
-      :remap_key                                     => '',
-      :remap_consumer                                => '',
-      :remap_pointing                                => '',
-      :remap_setkeyboardtype                         => '',
-      :remap_simultaneouskeypresses                  => '',
+      :initialize                   => '',
+      :handlevirtualkey             => '',
+      :remap_setkeyboardtype        => '',
+      :remap_key                    => '',
+      :remap_consumer               => '',
+      :remap_pointing               => '',
+      :remap_simultaneouskeypresses => '',
+      :get_statusmessage            => '',
       # values
-      :keycode                                       => '',
-      :statusmessage                                 => '',
-      :variable                                      => [],
+      :keycode                      => '',
+      :variable                     => [],
     }
   end
   attr_accessor :name, :filter, :code
@@ -60,7 +70,7 @@ class RemapClass
         @code[:remap_setkeyboardtype] += "keyboardType = #{params}.get();\n";
 
       when 'ShowStatusMessage'
-        @code[:statusmessage] = "#{params};\n"
+        @code[:get_statusmessage] += "return #{params};\n"
 
       when 'SimultaneousKeyPresses'
         @code[:variable] << { :index => @@index, :class => "EventInputQueue::Remap" }
@@ -162,71 +172,98 @@ class RemapClass
   def to_code
     return '' if empty?
 
-    code  = "class RemapClass_#{@name} : public RemapClass {\n"
+    classname = "RemapClass_#{@name}"
+
+    code  = "class #{classname} {\n"
     code += "public:\n"
 
-    code += "void initialize(void) {\n"
-    code += @code[:initialize]
-    unless @code[:statusmessage].empty? then
-      code += "statusmessage = #{@code[:statusmessage]}"
-    end
-    code += "}\n"
+    # ----------------------------------------------------------------------
+    unless @code[:initialize].empty? then
+      code += "static void initialize(void) {\n"
+      code += @code[:initialize]
+      code += "}\n"
 
+      @@entries[:initialize] << "#{classname}::initialize"
+    end
+
+    # ----------------------------------------------------------------------
     unless @code[:remap_setkeyboardtype].empty? then
-      code += "void remap_setkeyboardtype(KeyboardType &keyboardType) {\n"
+      code += "static void remap_setkeyboardtype(KeyboardType& keyboardType) {\n"
       code += @code[:remap_setkeyboardtype]
       code += "}\n"
+
+      @@entries[:remap_setkeyboardtype] << "#{classname}::remap_setkeyboardtype"
+    else
+      @@entries[:remap_setkeyboardtype] << "NULL"
     end
+
+    # ----------------------------------------------------------------------
     unless @code[:remap_key].empty? then
-      code += "void remap_key(RemapParams &remapParams) {\n"
+      code += "static void remap_key(RemapParams& remapParams) {\n"
       code += @code[:remap_key]
       code += "}\n"
+
+      @@entries[:remap_key] << "#{classname}::remap_key"
+    else
+      @@entries[:remap_key] << "NULL"
     end
+
+    # ----------------------------------------------------------------------
     unless @code[:remap_consumer].empty? then
-      code += "void remap_consumer(RemapConsumerParams &remapParams) {\n"
+      code += "static void remap_consumer(RemapConsumerParams& remapParams) {\n"
       code += @code[:remap_consumer]
       code += "}\n"
+
+      @@entries[:remap_consumer] << "#{classname}::remap_consumer"
+    else
+      @@entries[:remap_consumer] << "NULL"
     end
+
+    # ----------------------------------------------------------------------
     unless @code[:remap_pointing].empty? then
-      code += "void remap_pointing(RemapPointingParams_relative &remapParams) {\n"
+      code += "static void remap_pointing(RemapPointingParams_relative& remapParams) {\n"
       code += @code[:remap_pointing]
       code += "}\n"
+
+      @@entries[:remap_pointing] << "#{classname}::remap_pointing"
+    else
+      @@entries[:remap_pointing] << "NULL"
     end
+
+    # ----------------------------------------------------------------------
     unless @code[:remap_simultaneouskeypresses].empty? then
-      code += "void remap_simultaneouskeypresses(void) {\n"
+      code += "static void remap_simultaneouskeypresses(void) {\n"
       code += @code[:remap_simultaneouskeypresses]
       code += "}\n"
+
+      @@entries[:remap_simultaneouskeypresses] << "#{classname}::remap_simultaneouskeypresses"
+    else
+      @@entries[:remap_simultaneouskeypresses] << "NULL"
     end
+
+    # ----------------------------------------------------------------------
+    unless @code[:get_statusmessage].empty? then
+      code += "static const char* get_statusmessage(void) {\n"
+      code += @code[:get_statusmessage]
+      code += "}\n"
+
+      @@entries[:get_statusmessage] << "#{classname}::get_statusmessage"
+    else
+      @@entries[:get_statusmessage] << "NULL"
+    end
+
+    # ----------------------------------------------------------------------
     unless @code[:handlevirtualkey].empty? then
-      code += "bool handlevirtualkey(const Params_KeyboardEventCallBack& params) {\n"
+      code += "static bool handlevirtualkey(const Params_KeyboardEventCallBack& params) {\n"
       code += @code[:handlevirtualkey]
       code += "return false;\n"
       code += "}\n"
 
-      @@handlevirtualkey_entry += "if (remapclass_#{@name}.handlevirtualkey(params)) return true;\n"
+      @@entries[:handlevirtualkey] << "#{classname}::handlevirtualkey"
     end
 
     # ----------------------------------------
-    code   += "bool enabled(EnableType type) const {\n"
-    if @code[:remap_setkeyboardtype].empty? then
-      code += "if (type == ENABLE_TYPE_SETKEYBOARDTYPE) return false;\n"
-    end
-    if @code[:remap_key].empty? then
-      code += "if (type == ENABLE_TYPE_KEY) return false;\n"
-    end
-    if @code[:remap_consumer].empty? then
-      code += "if (type == ENABLE_TYPE_CONSUMER) return false;\n"
-    end
-    if @code[:remap_pointing].empty? then
-      code += "if (type == ENABLE_TYPE_POINTING) return false;\n"
-    end
-    if @code[:remap_simultaneouskeypresses].empty? then
-      code += "if (type == ENABLE_TYPE_SIMULTANEOUSKEYPRESSES) return false;\n"
-    end
-    if @code[:statusmessage].empty? then
-      code += "if (type == ENABLE_TYPE_STATUSMESSAGE) return false;\n"
-    end
-
+    code   += "static bool enabled(void) {\n"
     if /^passthrough_/ =~ @name or @name == 'notsave_passthrough' then
       code += "return config.#{@name};\n"
     else
@@ -234,15 +271,19 @@ class RemapClass
     end
     code   += "}\n"
 
+    @@entries[:enabled] << "#{classname}::enabled"
+
     # ----------------------------------------
     code += "\n"
     code += "private:\n"
     @code[:variable].each do |v|
-      code += "#{v[:class]} value#{v[:index]}_;\n"
+      code += "static #{v[:class]} value#{v[:index]}_;\n"
     end
     code += "};\n"
 
-    code += "RemapClass_#{@name} remapclass_#{@name};\n"
+    @code[:variable].each do |v|
+      code += "#{v[:class]} #{classname}::value#{v[:index]}_;\n"
+    end
     code += "\n\n"
 
     code
