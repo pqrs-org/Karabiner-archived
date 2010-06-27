@@ -8,6 +8,7 @@
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapClassManager {
     typedef void (*RemapClass_initialize)(void);
+    typedef void (*RemapClass_terminate)(void);
     typedef bool (*RemapClass_handlevirtualkey)(const Params_KeyboardEventCallBack& params);
     typedef void (*RemapClass_remap_setkeyboardtype)(KeyboardType& keyboardType);
     typedef void (*RemapClass_remap_key)(RemapParams& remapParams);
@@ -123,17 +124,17 @@ namespace org_pqrs_KeyRemap4MacBook {
       statusmessage_[0] = '\0';
       lastmessage_[0] = '\0';
 
-      queue_remap_setkeyboardtype_ = new Queue();
-      queue_remap_key_ = new Queue();
-      queue_remap_consumer_ = new Queue();
-      queue_remap_pointing_ = new Queue();
-      queue_remap_simultaneouskeypresses_ = new Queue();
-
       for (size_t i = 0;; ++i) {
         RemapClass_initialize p = listRemapClass_initialize[i];
         if (! p) break;
         p();
       }
+
+      queue_remap_setkeyboardtype_ = new Queue();
+      queue_remap_key_ = new Queue();
+      queue_remap_consumer_ = new Queue();
+      queue_remap_pointing_ = new Queue();
+      queue_remap_simultaneouskeypresses_ = new Queue();
 
       refresh_timer_.initialize(&workloop, NULL, refresh_core);
     }
@@ -150,6 +151,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       delete queue_remap_consumer_;
       delete queue_remap_pointing_;
       delete queue_remap_simultaneouskeypresses_;
+
+      for (size_t i = 0;; ++i) {
+        RemapClass_terminate p = listRemapClass_terminate[i];
+        if (! p) break;
+        p();
+      }
 
       IOLockWrapper::free(lock_);
     }

@@ -44,7 +44,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     class KeyToKey {
     public:
-      KeyToKey(void) : index_(0) {}
+      KeyToKey(void) : index_(0), toKeys_(NULL) {}
+      void initialize(void);
+      void terminate(void);
       bool remap(RemapParams& remapParams);
 
       // ----------------------------------------
@@ -78,100 +80,46 @@ namespace org_pqrs_KeyRemap4MacBook {
       size_t index_;
       FromKeyChecker fromkeychecker_;
       PairKeyFlags fromKey_;
-      Vector_PairKeyFlags toKeys_;
+      Vector_PairKeyFlags* toKeys_;
     };
 
     class ConsumerToConsumer {
     public:
-      ConsumerToConsumer(void) : index_(0) {}
+      ConsumerToConsumer(void) : index_(0), toKeys_(NULL) {}
       bool remap(RemapConsumerParams& remapParams);
+      void initialize(void);
+      void terminate(void);
 
       // ----------------------------------------
       // [0] => fromKey_
       // [1] => toKeys_[0]
       // [2] => toKeys_[1]
       // [3] => ...
-      void add(ConsumerKeyCode newval) {
-        switch (index_) {
-          case 0:
-            fromKey_.key = newval;
-            break;
-          default:
-            toKeys_.push_back(PairConsumerKeyFlags(newval));
-            break;
-        }
-        ++index_;
-      }
-      void add(Flags newval) {
-        switch (index_) {
-          case 0:
-            IOLOG_ERROR("Invalid ConsumerToConsumer::add\n");
-            break;
-          case 1:
-            fromKey_.flags = newval;
-            break;
-          default:
-            toKeys_.back().flags = newval;
-            break;
-        }
-      }
+      void add(ConsumerKeyCode newval);
+      void add(Flags newval);
 
     private:
       size_t index_;
       FromKeyChecker fromkeychecker_;
       PairConsumerKeyFlags fromKey_;
-      Vector_PairConsumerKeyFlags toKeys_;
+      Vector_PairConsumerKeyFlags* toKeys_;
     };
 
     class KeyToConsumer {
     public:
       KeyToConsumer(void) : index_(0) {}
       bool remap(RemapParams& remapParams);
+      void initialize(void);
+      void terminate(void);
 
       // ----------------------------------------
       // [0] => fromKey
       // [1] => toKeys[0]
       // [2] => toKeys[1]
       // [3] => ...
-      void add(KeyCode newval) {
-        switch (index_) {
-          case 0:
-            fromKey_.key = newval;
-            break;
-          default:
-            IOLOG_ERROR("Invalid KeyToConsumer::add\n");
-            break;
-        }
-        ++index_;
-      }
-      void add(ConsumerKeyCode newval) {
-        switch (index_) {
-          case 0:
-            IOLOG_ERROR("Invalid KeyToConsumer::add\n");
-            break;
-          case 1:
-            consumertoconsumer_.add(ConsumerKeyCode::VK_PSEUDO_KEY);
-            consumertoconsumer_.add(fromKey_.flags);
-            // pass-through
-          default:
-            consumertoconsumer_.add(newval);
-            break;
-        }
-        ++index_;
-      }
-      void add(Flags newval) {
-        switch (index_) {
-          case 0:
-            IOLOG_ERROR("Invalid KeyToConsumer::add\n");
-            break;
-          case 1:
-            fromKey_.flags = newval;
-            break;
-          default:
-            consumertoconsumer_.add(newval);
-            break;
-        }
-      }
+      void add(KeyCode newval);
+      void add(ConsumerKeyCode newval);
+      void add(Flags newval);
 
     private:
       size_t index_;
@@ -183,50 +131,18 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     class ConsumerToKey {
     public:
-      ConsumerToKey(void) : index_(0) {}
-
+      ConsumerToKey(void) : index_(0), toKeys_(NULL) {}
       bool remap(RemapConsumerParams& remapParams);
+      void initialize(void);
+      void terminate(void);
 
       // [0] => fromKey
       // [1] => toKeys[0]
       // [2] => toKeys[1]
       // [3] => ...
-      void add(ConsumerKeyCode newval) {
-        switch (index_) {
-          case 0:
-            fromKey_.key = newval;
-            consumertoconsumer_.add(newval);
-            consumertoconsumer_.add(ConsumerKeyCode::VK_NONE);
-            break;
-          default:
-            IOLOG_ERROR("Invalid ConsumerToKey::add\n");
-            break;
-        }
-        ++index_;
-      }
-      void add(KeyCode newval) {
-        switch (index_) {
-          case 0:
-            IOLOG_ERROR("Invalid ConsumerToKey::add\n");
-            break;
-          default:
-            toKeys_.push_back(PairKeyFlags(newval));
-            break;
-        }
-        ++index_;
-      }
-      void add(Flags newval) {
-        switch (index_) {
-          case 0:
-            break;
-          case 1:
-            fromKey_.flags = newval;
-            break;
-          default:
-            toKeys_.back().flags = newval;
-            break;
-        }
-      }
+      void add(ConsumerKeyCode newval);
+      void add(KeyCode newval);
+      void add(Flags newval);
 
     private:
       size_t index_;
@@ -236,7 +152,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       ConsumerToConsumer consumertoconsumer_;
 
       // XXX: A hack until KeyToKey being completed
-      Vector_PairKeyFlags toKeys_;
+      Vector_PairKeyFlags* toKeys_;
     };
 
     class PointingButtonToPointingButton {
@@ -468,17 +384,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ex. Ignore JIS_KANA x 2. (validate only the first once)
   class IgnoreMultipleSameKeyPress {
   public:
-    IgnoreMultipleSameKeyPress(void) : lastkeycode_(KeyCode::VK_NONE) {};
-
+    IgnoreMultipleSameKeyPress(void) {};
     bool remap(RemapParams& remapParams);
+    void initialize(void);
+    void terminate(void);
 
     // ----------------------------------------
-    void add(KeyCode newval) {
-      fromKey_.key = newval;
-    }
-    void add(Flags newval) {
-      fromKey_.flags = newval;
-    }
+    void add(KeyCode newval);
+    void add(Flags newval);
 
   private:
     RemapUtil::PairKeyFlags fromKey_;
