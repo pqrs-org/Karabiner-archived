@@ -14,6 +14,8 @@
 #include "util/EventWatcher.hpp"
 #include "util/Vector.hpp"
 
+#include "RemapFunc/KeyToKey.hpp"
+
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapUtil {
     // XXX: Delete Me (move to RemapFuncBase)
@@ -45,19 +47,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     class KeyToKey {
     public:
-      KeyToKey(void) : index_(0), toKeys_(NULL) {}
-      void initialize(void);
-      void terminate(void);
-      bool remap(RemapParams& remapParams);
-
-      // ----------------------------------------
-      // [0] => fromKey_
-      // [1] => toKeys_[0]
-      // [2] => toKeys_[1]
-      // [3] => ...
-      void add(KeyCode newval);
-      void add(Flags newval);
-
       // Don't use reference for a Flags argument.
       // Because Flags is generated from a combination of ModifierFlag anytime,
       // it wastes the stack of the caller if we use a reference argument.
@@ -78,10 +67,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 #include "generate/output/include.keytokey.hpp"
 
     private:
-      size_t index_;
       FromKeyChecker fromkeychecker_;
-      PairKeyFlags fromKey_;
-      Vector_PairKeyFlags* toKeys_;
     };
 
     class ConsumerToConsumer {
@@ -126,13 +112,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       size_t index_;
       FromKeyChecker fromkeychecker_;
       PairKeyFlags fromKey_;
-      KeyToKey keytokey_;
+      RemapFunc::KeyToKey keytokey_;
       ConsumerToConsumer consumertoconsumer_;
     };
 
     class ConsumerToKey {
     public:
-      ConsumerToKey(void) : index_(0), toKeys_(NULL) {}
+      ConsumerToKey(void) : index_(0) {}
       bool remap(RemapConsumerParams& remapParams);
       void initialize(void);
       void terminate(void);
@@ -149,11 +135,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       size_t index_;
       FromKeyChecker fromkeychecker_;
       PairConsumerKeyFlags fromKey_;
-      KeyToKey keytokey_;
+      RemapFunc::KeyToKey keytokey_;
       ConsumerToConsumer consumertoconsumer_;
-
-      // XXX: A hack until KeyToKey being completed
-      Vector_PairKeyFlags* toKeys_;
     };
 
     class PointingButtonToPointingButton {
