@@ -16,27 +16,23 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapUtil {
-    namespace Base {
-      class DefinitionItem_KeyCode {
-      public:
-        DefinitionItem_KeyCode(void) {}
-        DefinitionItem_KeyCode(KeyCode k) : key(k) {}
+    struct PairKeyFlags {
+      PairKeyFlags(void) {}
+      PairKeyFlags(KeyCode k) : key(k) {}
 
-        KeyCode key;
-        Flags   flags;
-      };
-      DECLARE_VECTOR(DefinitionItem_KeyCode);
-
-      class DefinitionItem_ConsumerKeyCode {
-      public:
-        DefinitionItem_ConsumerKeyCode(void) {}
-        DefinitionItem_ConsumerKeyCode(ConsumerKeyCode k) : key(k) {}
-
-        ConsumerKeyCode key;
-        Flags           flags;
-      };
-      DECLARE_VECTOR(DefinitionItem_ConsumerKeyCode);
+      KeyCode key;
+      Flags   flags;
     };
+    DECLARE_VECTOR(PairKeyFlags);
+
+    struct PairConsumerKeyFlags {
+      PairConsumerKeyFlags(void) {}
+      PairConsumerKeyFlags(ConsumerKeyCode k) : key(k) {}
+
+      ConsumerKeyCode key;
+      Flags           flags;
+    };
+    DECLARE_VECTOR(PairConsumerKeyFlags);
 
     enum {
       // see IOHIPointing.cpp in darwin.
@@ -73,179 +69,160 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     class ConsumerToConsumer {
     public:
+      ConsumerToConsumer(void) : index_(0) {}
       bool remap(RemapConsumerParams& remapParams);
 
       // ----------------------------------------
-      class Definition {
-      public:
-        Definition(void) : index_(0) {}
-
-        // [0] => fromKey
-        // [1] => toKeys[0]
-        // [2] => toKeys[1]
-        // [3] => ...
-        Definition& add(ConsumerKeyCode newval) {
-          switch (index_) {
-            case 0:
-              fromKey.key = newval;
-              break;
-            default:
-              toKeys.push_back(Base::DefinitionItem_ConsumerKeyCode(newval));
-              break;
-          }
-          ++index_;
-          return *this;
+      // [0] => fromKey_
+      // [1] => toKeys_[0]
+      // [2] => toKeys_[1]
+      // [3] => ...
+      void add(ConsumerKeyCode newval) {
+        switch (index_) {
+          case 0:
+            fromKey_.key = newval;
+            break;
+          default:
+            toKeys_.push_back(PairConsumerKeyFlags(newval));
+            break;
         }
-        Definition& add(Flags newval) {
-          switch (index_) {
-            case 0:
-              IOLOG_ERROR("Invalid ConsumerToConsumer::Definition\n");
-              break;
-            case 1:
-              fromKey.flags = newval;
-              break;
-            default:
-              toKeys.back().flags = newval;
-              break;
-          }
-          return *this;
+        ++index_;
+      }
+      void add(Flags newval) {
+        switch (index_) {
+          case 0:
+            IOLOG_ERROR("Invalid ConsumerToConsumer::add\n");
+            break;
+          case 1:
+            fromKey_.flags = newval;
+            break;
+          default:
+            toKeys_.back().flags = newval;
+            break;
         }
-
-        Base::DefinitionItem_ConsumerKeyCode fromKey;
-        Base::Vector_DefinitionItem_ConsumerKeyCode toKeys;
-
-      private:
-        int index_;
-      } definition;
+      }
 
     private:
+      size_t index_;
       FromKeyChecker fromkeychecker_;
+      PairConsumerKeyFlags fromKey_;
+      Vector_PairConsumerKeyFlags toKeys_;
     };
 
     class KeyToConsumer {
     public:
+      KeyToConsumer(void) : index_(0) {}
       bool remap(RemapParams& remapParams);
 
-      class Definition {
-      public:
-        Definition(void) : index_(0) {}
-
-        // [0] => fromKey
-        // [1] => toKeys[0]
-        // [2] => toKeys[1]
-        // [3] => ...
-        Definition& add(KeyCode newval) {
-          switch (index_) {
-            case 0:
-              fromKey.key = newval;
-              break;
-            default:
-              IOLOG_ERROR("Invalid KeyToConsumer::Definition\n");
-              break;
-          }
-          ++index_;
-          return *this;
+      // ----------------------------------------
+      // [0] => fromKey
+      // [1] => toKeys[0]
+      // [2] => toKeys[1]
+      // [3] => ...
+      void add(KeyCode newval) {
+        switch (index_) {
+          case 0:
+            fromKey_.key = newval;
+            break;
+          default:
+            IOLOG_ERROR("Invalid KeyToConsumer::add\n");
+            break;
         }
-        Definition& add(ConsumerKeyCode newval) {
-          switch (index_) {
-            case 0:
-              IOLOG_ERROR("Invalid KeyToConsumer::Definition\n");
-              break;
-            case 1:
-              consumertoconsumer_.definition.add(ConsumerKeyCode::VK_PSEUDO_KEY);
-              consumertoconsumer_.definition.add(fromKey.flags);
-              // pass-through
-            default:
-              consumertoconsumer_.definition.add(newval);
-              break;
-          }
-          ++index_;
-          return *this;
+        ++index_;
+      }
+      void add(ConsumerKeyCode newval) {
+        switch (index_) {
+          case 0:
+            IOLOG_ERROR("Invalid KeyToConsumer::add\n");
+            break;
+          case 1:
+            consumertoconsumer_.add(ConsumerKeyCode::VK_PSEUDO_KEY);
+            consumertoconsumer_.add(fromKey_.flags);
+            // pass-through
+          default:
+            consumertoconsumer_.add(newval);
+            break;
         }
-        Definition& add(Flags newval) {
-          switch (index_) {
-            case 0:
-              IOLOG_ERROR("Invalid KeyToConsumer::Definition\n");
-              break;
-            case 1:
-              fromKey.flags = newval;
-              break;
-            default:
-              consumertoconsumer_.definition.add(newval);
-              break;
-          }
-          return *this;
+        ++index_;
+      }
+      void add(Flags newval) {
+        switch (index_) {
+          case 0:
+            IOLOG_ERROR("Invalid KeyToConsumer::add\n");
+            break;
+          case 1:
+            fromKey_.flags = newval;
+            break;
+          default:
+            consumertoconsumer_.add(newval);
+            break;
         }
-
-        Base::DefinitionItem_KeyCode fromKey;
-        ConsumerToConsumer consumertoconsumer_;
-
-      private:
-        int index_;
-      } definition;
+      }
 
     private:
+      size_t index_;
       FromKeyChecker fromkeychecker_;
+      PairKeyFlags fromKey_;
+      KeyToKey keytokey_;
+      ConsumerToConsumer consumertoconsumer_;
     };
 
     class ConsumerToKey {
     public:
+      ConsumerToKey(void) : index_(0) {}
+
       bool remap(RemapConsumerParams& remapParams);
 
-      // ----------------------------------------
-      class Definition {
-      public:
-        // [0] => fromKey
-        // [1] => toKeys[0]
-        // [2] => toKeys[1]
-        // [3] => ...
-        Definition& add(ConsumerKeyCode newval) {
-          switch (index_) {
-            case 0:
-              fromKey.key = newval;
-              break;
-            default:
-              IOLOG_ERROR("Invalid ConsumerToKey::Definition\n");
-              break;
-          }
-          ++index_;
-          return *this;
+      // [0] => fromKey
+      // [1] => toKeys[0]
+      // [2] => toKeys[1]
+      // [3] => ...
+      void add(ConsumerKeyCode newval) {
+        switch (index_) {
+          case 0:
+            fromKey_.key = newval;
+            consumertoconsumer_.add(newval);
+            consumertoconsumer_.add(ConsumerKeyCode::VK_NONE);
+            break;
+          default:
+            IOLOG_ERROR("Invalid ConsumerToKey::add\n");
+            break;
         }
-        Definition& add(KeyCode newval) {
-          switch (index_) {
-            case 0:
-              IOLOG_ERROR("Invalid ConsumerToKey::Definition\n");
-              break;
-            default:
-              toKeys.push_back(Base::DefinitionItem_KeyCode(newval));
-              break;
-          }
-          ++index_;
-          return *this;
+        ++index_;
+      }
+      void add(KeyCode newval) {
+        switch (index_) {
+          case 0:
+            IOLOG_ERROR("Invalid ConsumerToKey::add\n");
+            break;
+          default:
+            toKeys_.push_back(PairKeyFlags(newval));
+            break;
         }
-        Definition& add(Flags newval) {
-          switch (index_) {
-            case 0:
-              break;
-            case 1:
-              fromKey.flags = newval;
-              break;
-            default:
-              toKeys.back().flags = newval;
-              break;
-          }
-          return *this;
+        ++index_;
+      }
+      void add(Flags newval) {
+        switch (index_) {
+          case 0:
+            break;
+          case 1:
+            fromKey_.flags = newval;
+            break;
+          default:
+            toKeys_.back().flags = newval;
+            break;
         }
-
-        Base::DefinitionItem_ConsumerKeyCode fromKey;
-        Base::Vector_DefinitionItem_KeyCode toKeys;
-      private:
-        int index_;
-      } definition;
+      }
 
     private:
-      RemapUtil::KeyToKey keytokey_;
+      size_t index_;
       FromKeyChecker fromkeychecker_;
+      PairConsumerKeyFlags fromKey_;
+      KeyToKey keytokey_;
+      ConsumerToConsumer consumertoconsumer_;
+
+      // XXX: A hack until KeyToKey being completed
+      Vector_PairKeyFlags toKeys_;
     };
 
     class PointingButtonToPointingButton {
@@ -482,22 +459,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool remap(RemapParams& remapParams);
 
     // ----------------------------------------
-    class Definition {
-    public:
-      Definition& add(KeyCode newval) {
-        fromKeyCode = newval;
-        return *this;
-      }
-      Definition& add(Flags newval) {
-        fromFlags = newval;
-        return *this;
-      }
-
-      KeyCode fromKeyCode;
-      Flags   fromFlags;
-    } definition;
+    void add(KeyCode newval) {
+      fromKey_.key = newval;
+    }
+    void add(Flags newval) {
+      fromKey_.flags = newval;
+    }
 
   private:
+    RemapUtil::PairKeyFlags fromKey_;
     KeyCode lastkeycode_;
   };
 }
