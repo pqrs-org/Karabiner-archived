@@ -23,14 +23,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     ConsumerToConsumer::add(ConsumerKeyCode newval)
     {
+      if (! toKeys_) return;
+
       switch (index_) {
         case 0:
           fromKey_.key = newval;
           break;
         default:
-          if (toKeys_) {
-            toKeys_->push_back(PairConsumerKeyFlags(newval));
-          }
+          toKeys_->push_back(PairConsumerKeyFlags(newval));
           break;
       }
       ++index_;
@@ -39,6 +39,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     ConsumerToConsumer::add(Flags newval)
     {
+      if (! toKeys_) return;
+
       switch (index_) {
         case 0:
           IOLOG_ERROR("Invalid ConsumerToConsumer::add\n");
@@ -47,9 +49,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           fromKey_.flags = newval;
           break;
         default:
-          if (toKeys_) {
-            toKeys_->back().flags = newval;
-          }
+          toKeys_->back().flags = newval;
           break;
       }
     }
