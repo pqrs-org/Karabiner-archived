@@ -135,47 +135,41 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   RemapUtil::ConsumerToKey::remap(RemapConsumerParams& remapParams)
   {
-#if 0
-    const Definition& d = definition;
+    if (! fromkeychecker_.isFromKey(remapParams, fromKey_.key, fromKey_.flags)) return false;
 
-    if (remapParams.isremapped) return false;
-    if (! fromkeychecker_.isFromKey(remapParams, d.fromKey.key, d.fromKey.flags)) return false;
-    remapParams.isremapped = true;
+    bool result = consumertoconsumer_.remap(remapParams);
+    if (! result) return false;
 
     // ----------------------------------------
-    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(isKeyDown ? EventType::DOWN : EventType::UP,
+    // XXX: A hack until KeyToKey being completed
+    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(remapParams.params.eventType,
                                                                                    FlagStatus::makeFlags(),
                                                                                    KeyCode::VK_PSEUDO_KEY,
                                                                                    CommonData::getcurrent_keyboardType(),
-                                                                                   remapParams.params.repeat));
+                                                                                   false));
     if (! ptr) return false;
     Params_KeyboardEventCallBack& params = *ptr;
 
     RemapParams rp(params);
-    if (! keytokey_.remap(rp, KeyCode::VK_PSEUDO_KEY, fromFlags, toKeyCode, toFlags)) {
+    if (! keytokey_.remap(rp, KeyCode::VK_PSEUDO_KEY, fromKey_.flags, toKeys_[0].key, toKeys_[0].flags)) {
       return false;
     }
 
     return true;
-#else
-    return false;
-#endif
   }
 
   bool
   RemapUtil::ConsumerToConsumer::remap(RemapConsumerParams& remapParams)
   {
-    const Definition& d = definition;
-
     // ------------------------------------------------------------
     // NumLock Hack
     // If we change NumLock key, we need to call IOHIKeyboard::setNumLock(false).
     // Unless call setNumLock, internal NumLock status of IOHIKeyboard is still active.
     // And NumLock retains working status.
-    if (d.fromKey.key == ConsumerKeyCode::NUMLOCK) {
+    if (fromKey_.key == ConsumerKeyCode::NUMLOCK) {
       bool tonumlock = false;
-      for (size_t i = 0; i < d.toKeys.size(); ++i) {
-        if (d.toKeys[i].key == ConsumerKeyCode::NUMLOCK) {
+      for (size_t i = 0; i < toKeys_.size(); ++i) {
+        if (toKeys_[i].key == ConsumerKeyCode::NUMLOCK) {
           tonumlock = true;
         }
       }
@@ -194,23 +188,23 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ------------------------------------------------------------
     if (remapParams.isremapped) return false;
-    if (! fromkeychecker_.isFromKey(remapParams, d.fromKey.key, d.fromKey.flags)) return false;
+    if (! fromkeychecker_.isFromKey(remapParams, fromKey_.key, fromKey_.flags)) return false;
     remapParams.isremapped = true;
 
     // ----------------------------------------
-    FlagStatus::temporary_decrease(d.fromKey.flags);
+    FlagStatus::temporary_decrease(fromKey_.flags);
     KeyboardRepeat::cancel();
 
-    switch (d.toKeys.size()) {
+    switch (toKeys_.size()) {
       case 0:
         break;
 
       case 1:
       {
-        FlagStatus::temporary_increase(d.toKeys[0].flags);
+        FlagStatus::temporary_increase(toKeys_[0].flags);
         Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(remapParams.params.eventType,
                                                                                                      FlagStatus::makeFlags(),
-                                                                                                     d.toKeys[0].key,
+                                                                                                     toKeys_[0].key,
                                                                                                      false));
         if (! ptr) return false;
         Params_KeyboardSpecialEventCallback& params = *ptr;
@@ -222,11 +216,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       default:
         if (remapParams.params.eventType == EventType::DOWN) {
-          for (size_t i = 0; i < d.toKeys.size(); ++i) {
-            FlagStatus::temporary_increase(d.toKeys[i].flags);
+          for (size_t i = 0; i < toKeys_.size(); ++i) {
+            FlagStatus::temporary_increase(toKeys_[i].flags);
             Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(EventType::DOWN,
                                                                                                          FlagStatus::makeFlags(),
-                                                                                                         d.toKeys[i].key,
+                                                                                                         toKeys_[i].key,
                                                                                                          false));
             if (! ptr) return false;
             Params_KeyboardSpecialEventCallback& params = *ptr;
@@ -238,7 +232,7 @@ namespace org_pqrs_KeyRemap4MacBook {
             KeyboardRepeat::primitive_add(EventType::DOWN, params.flags, params.key);
             KeyboardRepeat::primitive_add(EventType::UP,   params.flags, params.key);
 
-            FlagStatus::temporary_decrease(d.toKeys[i].flags);
+            FlagStatus::temporary_decrease(toKeys_[i].flags);
           }
 
           KeyboardRepeat::primitive_start();
@@ -253,25 +247,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   RemapUtil::KeyToConsumer::remap(RemapParams& remapParams)
   {
-    const Definition& d = definition;
+    if (! fromkeychecker_.isFromKey(remapParams, fromKey_.key, fromKey_.flags)) return false;
 
     bool isKeyDown = remapParams.isKeyDownOrModifierDown();
-
-    if (remapParams.isremapped) return false;
-    if (! fromkeychecker_.isFromKey(remapParams, d.fromKey.key, d.fromKey.flags)) return false;
-    remapParams.isremapped = true;
+    bool result = keytokey_.remap(remapParams, fromKey_.key, KeyCode::VK_NONE);
+    if (! result) return false;
 
     // ----------------------------------------
-    EventType eventType;
-    if (isKeyDown) {
-      eventType = EventType::DOWN;
-      FlagStatus::decrease(d.fromKey.key.getModifierFlag());
-    } else {
-      eventType = EventType::UP;
-      FlagStatus::increase(d.fromKey.key.getModifierFlag());
-    }
-
-    Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(eventType,
+    Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(isKeyDown ? EventType::DOWN : EventType::UP,
                                                                                                  FlagStatus::makeFlags(),
                                                                                                  ConsumerKeyCode::VK_PSEUDO_KEY,
                                                                                                  false));
@@ -279,7 +262,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     Params_KeyboardSpecialEventCallback& params = *ptr;
 
     RemapConsumerParams rp(params);
-    return definition.consumertoconsumer_.remap(rp);
+    return consumertoconsumer_.remap(rp);
   }
 
   bool
@@ -983,15 +966,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   IgnoreMultipleSameKeyPress::remap(RemapParams& remapParams)
   {
-    const Definition& d = definition;
-
-    if (remapParams.isremapped || ! FlagStatus::makeFlags().isOn(d.fromFlags)) {
+    if (remapParams.isremapped || ! FlagStatus::makeFlags().isOn(fromKey_.flags)) {
       lastkeycode_ = KeyCode::VK_NONE;
       return false;
     }
 
-    if (d.fromKeyCode == remapParams.params.key &&
-        d.fromKeyCode == lastkeycode_) {
+    if (fromKey_.key == remapParams.params.key &&
+        fromKey_.key == lastkeycode_) {
       // disable event.
       remapParams.drop();
       return true;

@@ -40,11 +40,9 @@ class RemapClass
   end
 
   def append_to_code_initialize(params)
-    @code[:initialize] += "value#{@@index}_.definition"
     params.split(/,/).each do |p|
-      @code[:initialize] += ".add(#{p.strip})"
+      @code[:initialize] += "value#{@@index}_.add(#{p.strip});\n"
     end
-    @code[:initialize] += ";\n"
   end
   protected :append_to_code_initialize
 
