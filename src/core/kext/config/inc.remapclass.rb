@@ -27,7 +27,7 @@ class RemapClass
       # values
       :keycode                                       => '',
       :statusmessage                                 => '',
-      :variable                                      => '',
+      :variable                                      => [],
     }
   end
   attr_accessor :name, :filter, :code
@@ -63,70 +63,70 @@ class RemapClass
         @code[:statusmessage] = "#{params};\n"
 
       when 'SimultaneousKeyPresses'
-        @code[:variable] += "EventInputQueue::Remap value#{@@index}_;\n"
+        @code[:variable] << { :index => @@index, :class => "EventInputQueue::Remap" }
         @code[:keycode] += "VK_SIMULTANEOUSKEYPRESSES_#{name}_#{@@index} --AUTO--\n"
         @code[:initialize] += "value#{@@index}_.initialize(KeyCode::VK_SIMULTANEOUSKEYPRESSES_#{name}_#{@@index}, #{params});\n"
         @code[:remap_simultaneouskeypresses] += "value#{@@index}_.remap();\n"
         @code[:handlevirtualkey] += "if (value#{@@index}_.handleVirtualKey(params)) return true;\n"
 
       when 'KeyToKey'
-        @code[:variable] += "RemapUtil::KeyToKey value#{@@index}_;\n"
+        @code[:variable] << { :index => @@index, :class => "RemapUtil::KeyToKey" }
         @code[:remap_key] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
 
       when 'DoublePressModifier'
-        @code[:variable] += "DoublePressModifier value#{@@index}_;\n"
+        @code[:variable] << { :index => @@index, :class => "DoublePressModifier" }
         @code[:remap_key] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
 
       when 'IgnoreMultipleSameKeyPress'
         append_to_code_initialize(params)
-        @code[:variable] += "IgnoreMultipleSameKeyPress value#{@@index}_;\n"
+        @code[:variable] << { :index => @@index, :class => "IgnoreMultipleSameKeyPress" }
         @code[:remap_key] += "if (value#{@@index}_.remap(remapParams)) break;\n"
 
       when 'KeyToConsumer'
         append_to_code_initialize(params)
-        @code[:variable] += "RemapUtil::KeyToConsumer value#{@@index}_;\n"
+        @code[:variable] << { :index => @@index, :class => "RemapUtil::KeyToConsumer" }
         @code[:remap_key] += "if (value#{@@index}_.remap(remapParams)) break;\n"
 
       when 'KeyToPointingButton'
-        @code[:variable] += "RemapUtil::KeyToPointingButton value#{@@index}_;\n"
+        @code[:variable] << { :index => @@index, :class => "RemapUtil::KeyToPointingButton" }
         @code[:remap_key] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
 
       when 'KeyOverlaidModifier'
-        @code[:variable] += "KeyOverlaidModifier value#{@@index}_;\n"
+        @code[:variable] << { :index => @@index, :class => "KeyOverlaidModifier" }
         @code[:remap_key] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
 
       when 'KeyOverlaidModifierWithRepeat'
-        @code[:variable] += "KeyOverlaidModifier value#{@@index}_;\n"
+        @code[:variable] << { :index => @@index, :class => "KeyOverlaidModifier" }
         @code[:remap_key] += "if (value#{@@index}_.remapWithRepeat(remapParams, #{params})) break;\n"
 
       when 'ModifierHoldingKeyToKey'
-        @code[:variable] += "ModifierHoldingKeyToKey value#{@@index}_;\n"
+        @code[:variable] << { :index => @@index, :class => "ModifierHoldingKeyToKey" }
         @code[:remap_key] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
 
       when 'HoldingKeyToKey'
-        @code[:variable] += "HoldingKeyToKey value#{@@index}_;\n"
+        @code[:variable] << { :index => @@index, :class => "HoldingKeyToKey" }
         @code[:remap_key] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
 
       when 'ConsumerToKey'
         append_to_code_initialize(params)
-        @code[:variable] += "RemapUtil::ConsumerToKey value#{@@index}_;\n"
+        @code[:variable] << { :index => @@index, :class => "RemapUtil::ConsumerToKey" }
         @code[:remap_consumer] += "if (value#{@@index}_.remap(remapParams)) break;\n"
 
       when 'ConsumerToConsumer'
         append_to_code_initialize(params)
-        @code[:variable] += "RemapUtil::ConsumerToConsumer value#{@@index}_;\n"
+        @code[:variable] << { :index => @@index, :class => "RemapUtil::ConsumerToConsumer" }
         @code[:remap_consumer] += "if (value#{@@index}_.remap(remapParams)) break;\n"
 
       when 'PointingRelativeToScroll'
-        @code[:variable] += "RemapUtil::PointingRelativeToScroll value#{@@index}_;\n"
+        @code[:variable] << { :index => @@index, :class => "RemapUtil::PointingRelativeToScroll" }
         @code[:remap_pointing] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
 
       when 'PointingButtonToPointingButton'
-        @code[:variable] += "RemapUtil::PointingButtonToPointingButton value#{@@index}_;\n"
+        @code[:variable] << { :index => @@index, :class => "RemapUtil::PointingButtonToPointingButton" }
         @code[:remap_pointing] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
 
       when 'PointingButtonToKey'
-        @code[:variable] += "RemapUtil::PointingButtonToKey value#{@@index}_;\n"
+        @code[:variable] << { :index => @@index, :class => "RemapUtil::PointingButtonToKey" }
         @code[:remap_pointing] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
 
       else
@@ -237,7 +237,9 @@ class RemapClass
     # ----------------------------------------
     code += "\n"
     code += "private:\n"
-    code += @code[:variable]
+    @code[:variable].each do |v|
+      code += "#{v[:class]} value#{v[:index]}_;\n"
+    end
     code += "};\n"
 
     code += "RemapClass_#{@name} remapclass_#{@name};\n"
