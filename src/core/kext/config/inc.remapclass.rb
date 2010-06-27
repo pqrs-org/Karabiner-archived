@@ -50,9 +50,16 @@ class RemapClass
   end
 
   def append_to_code_initialize(params)
+    # We split the initialize function per value.
+    # If a large number of values exist, the kernel stack is wasted when the monolithic initialize function is called.
+    # So, we split it.
+    @code[:initialize] += "static void initialize_value#{@@index}(void) {\n"
     params.split(/,/).each do |p|
       @code[:initialize] += "value#{@@index}_.add(#{p.strip});\n"
     end
+    @code[:initialize] += "}\n"
+
+    @@entries[:initialize] << "RemapClass_#{@name}::initialize_value#{@@index}"
   end
   protected :append_to_code_initialize
 
@@ -75,9 +82,13 @@ class RemapClass
       when 'SimultaneousKeyPresses'
         @code[:variable] << { :index => @@index, :class => "EventInputQueue::Remap" }
         @code[:keycode] += "VK_SIMULTANEOUSKEYPRESSES_#{name}_#{@@index} --AUTO--\n"
-        @code[:initialize] += "value#{@@index}_.initialize(KeyCode::VK_SIMULTANEOUSKEYPRESSES_#{name}_#{@@index}, #{params});\n"
         @code[:remap_simultaneouskeypresses] += "value#{@@index}_.remap();\n"
         @code[:handlevirtualkey] += "if (value#{@@index}_.handleVirtualKey(params)) return true;\n"
+
+        @code[:initialize] += "static void initialize_value#{@@index}(void) {\n"
+        @code[:initialize] += "value#{@@index}_.initialize(KeyCode::VK_SIMULTANEOUSKEYPRESSES_#{name}_#{@@index}, #{params});\n"
+        @code[:initialize] += "}\n"
+        @@entries[:initialize] << "RemapClass_#{@name}::initialize_value#{@@index}"
 
       when 'KeyToKey'
         append_to_code_initialize(params)
@@ -179,13 +190,7 @@ class RemapClass
     code += "public:\n"
 
     # ----------------------------------------------------------------------
-    unless @code[:initialize].empty? then
-      code += "static void initialize(void) {\n"
-      code += @code[:initialize]
-      code += "}\n"
-
-      @@entries[:initialize] << "#{classname}::initialize"
-    end
+    code += @code[:initialize]
 
     # ----------------------------------------------------------------------
     unless @code[:remap_setkeyboardtype].empty? then
