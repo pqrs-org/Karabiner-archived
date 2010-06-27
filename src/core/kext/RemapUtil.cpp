@@ -1,5 +1,6 @@
 #include "CommonData.hpp"
 #include "Config.hpp"
+#include "EventOutput.hpp"
 #include "FlagStatus.hpp"
 #include "KeyCode.hpp"
 #include "RemapClass.hpp"
@@ -114,7 +115,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         Params_KeyboardEventCallBack& params = *ptr;
 
         KeyboardRepeat::set(params);
-        RemapUtil::fireKey(params);
+        EventOutput::FireKey::fire(params);
 
         break;
       }
@@ -129,7 +130,7 @@ namespace org_pqrs_KeyRemap4MacBook {
             Flags f = FlagStatus::makeFlags();
             KeyboardType keyboardType = remapParams.params.keyboardType;
 
-            RemapUtil::fireKey_downup(f, (*toKeys_)[i].key, keyboardType);
+            EventOutput::FireKey::fire_downup(f, (*toKeys_)[i].key, keyboardType);
             KeyboardRepeat::primitive_add(EventType::DOWN, f, (*toKeys_)[i].key, keyboardType);
             KeyboardRepeat::primitive_add(EventType::UP,   f, (*toKeys_)[i].key, keyboardType);
 
@@ -197,7 +198,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (isSetKeyRepeat) {
       KeyboardRepeat::set(params);
     }
-    RemapUtil::fireKey(params);
+    EventOutput::FireKey::fire(params);
 
     return true;
   }
@@ -211,7 +212,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       Flags f = FlagStatus::makeFlags();
       KeyboardType keyboardType = remapParams.params.keyboardType;
 
-      RemapUtil::fireKey_downup(f, key, keyboardType);
+      EventOutput::FireKey::fire_downup(f, key, keyboardType);
       KeyboardRepeat::primitive_add(EventType::DOWN, f, key, keyboardType);
       KeyboardRepeat::primitive_add(EventType::UP, f, key, keyboardType);
 
@@ -450,7 +451,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         Params_KeyboardSpecialEventCallback& params = *ptr;
 
         KeyboardRepeat::set(params);
-        RemapUtil::fireConsumer(params);
+        EventOutput::FireConsumer::fire(params);
         break;
       }
 
@@ -465,9 +466,9 @@ namespace org_pqrs_KeyRemap4MacBook {
             if (! ptr) return false;
             Params_KeyboardSpecialEventCallback& params = *ptr;
 
-            RemapUtil::fireConsumer(params);
+            EventOutput::FireConsumer::fire(params);
             params.eventType = EventType::UP;
-            RemapUtil::fireConsumer(params);
+            EventOutput::FireConsumer::fire(params);
 
             KeyboardRepeat::primitive_add(EventType::DOWN, params.flags, params.key);
             KeyboardRepeat::primitive_add(EventType::UP,   params.flags, params.key);
@@ -601,7 +602,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     FlagStatus::temporary_decrease(fromFlags);
     FlagStatus::temporary_increase(toFlags);
 
-    FireRelativePointer::fire(ButtonStatus::makeButtons(), remapParams.params.dx, remapParams.params.dy);
+    EventOutput::FireRelativePointer::fire(ButtonStatus::makeButtons(), remapParams.params.dx, remapParams.params.dy);
 
     if (ButtonStatus::justReleased().isOn(fromButton)) {
       active_ = false;
@@ -649,14 +650,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (isKeyDown) {
       FlagStatus::decrease(fromFlags | fromKeyCode.getModifierFlag());
       ButtonStatus::increase(toButton);
-      FireRelativePointer::fire();
+      EventOutput::FireRelativePointer::fire();
 
     } else {
       ButtonStatus::decrease(toButton);
-      FireRelativePointer::fire();
+      EventOutput::FireRelativePointer::fire();
 
       FlagStatus::increase(fromFlags | fromKeyCode.getModifierFlag());
-      FireModifiers::fire();
+      EventOutput::FireModifiers::fire();
     }
 
     return true;
@@ -719,81 +720,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     return true;
   }
 
-  // --------------------
-  Flags FireModifiers::lastFlags_(0);
-
-  void
-  FireModifiers::fire(Flags toFlags, KeyboardType keyboardType)
-  {
-    // At first I handle KeyUp and handle KeyDown next.
-    // We need to end KeyDown at Command+Space to Option_L+Shift_L.
-    //
-    // When Option_L+Shift_L has a meaning (switch input language at Windows),
-    // it does not works well when the last is KeyUp of Command.
-
-    // ------------------------------------------------------------
-    // Handle KEYPAD first
-
-    // KeyUp
-    if (lastFlags_.isOn(ModifierFlag::KEYPAD) && ! toFlags.isOn(ModifierFlag::KEYPAD)) {
-      lastFlags_.remove(ModifierFlag::KEYPAD);
-
-      Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(lastFlags_));
-      if (ptr) {
-        EventOutputQueue::push(*ptr);
-      }
-    }
-    if (! lastFlags_.isOn(ModifierFlag::KEYPAD) && toFlags.isOn(ModifierFlag::KEYPAD)) {
-      lastFlags_.add(ModifierFlag::KEYPAD);
-
-      Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(lastFlags_));
-      if (ptr) {
-        EventOutputQueue::push(*ptr);
-      }
-    }
-
-    // ------------------------------------------------------------
-    // KeyUp
-    for (int i = 0;; ++i) {
-      ModifierFlag flag = FlagStatus::getFlag(i);
-      if (flag == ModifierFlag::NONE) break;
-      if (flag == ModifierFlag::EXTRA1) continue;
-      if (flag == ModifierFlag::EXTRA2) continue;
-      if (flag == ModifierFlag::EXTRA3) continue;
-      if (flag == ModifierFlag::EXTRA4) continue;
-      if (flag == ModifierFlag::EXTRA5) continue;
-
-      if (! lastFlags_.isOn(flag)) continue;
-      if (toFlags.isOn(flag)) continue;
-
-      lastFlags_.remove(flag);
-
-      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, lastFlags_, flag.getKeyCode(), keyboardType, false));
-      if (! ptr) continue;
-      EventOutputQueue::push(*ptr);
-    }
-
-    // KeyDown
-    for (int i = 0;; ++i) {
-      ModifierFlag flag = FlagStatus::getFlag(i);
-      if (flag == ModifierFlag::NONE) break;
-      if (flag == ModifierFlag::EXTRA1) continue;
-      if (flag == ModifierFlag::EXTRA2) continue;
-      if (flag == ModifierFlag::EXTRA3) continue;
-      if (flag == ModifierFlag::EXTRA4) continue;
-      if (flag == ModifierFlag::EXTRA5) continue;
-
-      if (! toFlags.isOn(flag)) continue;
-      if (lastFlags_.isOn(flag)) continue;
-
-      lastFlags_.add(flag);
-
-      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, lastFlags_, flag.getKeyCode(), keyboardType, false));
-      if (! ptr) continue;
-      EventOutputQueue::push(*ptr);
-    }
-  }
-
   // ------------------------------------------------------------
   bool
   RemapUtil::PointingRelativeToScroll::remap(RemapPointingParams_relative& remapParams, Buttons buttons, Flags fromFlags)
@@ -812,7 +738,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // PointingRelativeToScroll doesn't aim it, we release the left button and do normal scroll event.
       if (! active_) {
         ButtonStatus::decrease(buttons);
-        FireRelativePointer::fire();
+        EventOutput::FireRelativePointer::fire();
         ButtonStatus::increase(buttons);
 
         absolute_distance_ = 0;
@@ -838,9 +764,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (absolute_distance_ <= DISTANCE_THRESHOLD && begin_ic_.getmillisec() < TIME_THRESHOLD) {
           // Fire by a click event.
           ButtonStatus::increase(buttons);
-          FireRelativePointer::fire();
+          EventOutput::FireRelativePointer::fire();
           ButtonStatus::decrease(buttons);
-          FireRelativePointer::fire();
+          EventOutput::FireRelativePointer::fire();
         }
 
         return true;
@@ -944,135 +870,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     params.pointDelta1 = (delta1 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1024;
     params.pointDelta2 = (delta2 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1024;
 
-    fireScrollWheel(params);
+    EventOutput::FireScrollWheel::fire(params);
 
     absolute_distance_ += RemapUtil::abs(delta1) + RemapUtil::abs(delta2);
-  }
-
-  // ------------------------------------------------------------
-  void
-  RemapUtil::fireKey(const Params_KeyboardEventCallBack& params)
-  {
-    // ----------------------------------------
-    // handle virtual keys
-    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(params));
-    if (! ptr) return;
-    Params_KeyboardEventCallBack& p = *ptr;
-
-    if (Handle_VK_LOCK::handle(p)) return;
-    if (Handle_VK_STICKY::handle(p)) return;
-    if (Handle_VK_LAZY::handle(p)) return;
-    if (Handle_VK_CHANGE_INPUTMODE::handle(p)) return;
-    if (Handle_VK_CONFIG::handle(p)) return;
-    if (Handle_VK_JIS_TOGGLE_EISUU_KANA::handle(p)) return;
-    if (handle_VK_JIS_EISUU_x2(p)) return;
-    if (handle_VK_JIS_KANA_x2(p)) return;
-    if (handle_VK_JIS_BACKSLASH(p)) return;
-    if (handle_VK_JIS_YEN(p)) return;
-    if (Handle_VK_JIS_TEMPORARY::handle(p)) return;
-    if (RemapClassManager::handlevirtualkey(p)) return;
-    if (p.key == KeyCode::VK_MODIFIER_EXTRA1 ||
-        p.key == KeyCode::VK_MODIFIER_EXTRA2 ||
-        p.key == KeyCode::VK_MODIFIER_EXTRA3 ||
-        p.key == KeyCode::VK_MODIFIER_EXTRA4 ||
-        p.key == KeyCode::VK_MODIFIER_EXTRA5) return;
-
-    // ------------------------------------------------------------
-    p.key.reverseNormalizeKey(p.flags, p.eventType, p.keyboardType);
-    p.flags.stripEXTRA();
-
-    // skip no-outputable keycodes.
-    // Note: check before FireModifiers to avoid meaningless modifier event.
-    if (p.key == KeyCode::VK_NONE ||
-        p.key == KeyCode::VK_PSEUDO_KEY) {
-      return;
-    }
-
-    FireModifiers::fire(p.flags, p.keyboardType);
-
-    if (p.eventType == EventType::DOWN || p.eventType == EventType::UP) {
-      EventOutputQueue::push(p);
-
-      if (p.eventType == EventType::DOWN) {
-        PressDownKeys::add(p.key, p.keyboardType);
-      } else {
-        PressDownKeys::remove(p.key, p.keyboardType);
-      }
-    }
-  }
-
-  void
-  RemapUtil::fireKey_downup(Flags flags, KeyCode key, KeyboardType keyboardType)
-  {
-    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, flags, key, keyboardType, false));
-    if (! ptr) return;
-    Params_KeyboardEventCallBack& params = *ptr;
-
-    Flags f = key.getModifierFlag();
-
-    if (f != ModifierFlag::NONE) {
-      // We operate FlagStatus for the case "key == KeyCode::CAPSLOCK".
-      FlagStatus::increase(f);
-      params.flags.add(f);
-      RemapUtil::fireKey(params);
-
-      FlagStatus::decrease(f);
-      params.flags = flags;
-      RemapUtil::fireKey(params);
-
-    } else {
-      params.eventType = EventType::DOWN;
-      RemapUtil::fireKey(params);
-      params.eventType = EventType::UP;
-      RemapUtil::fireKey(params);
-    }
-  }
-
-  void
-  RemapUtil::fireConsumer(const Params_KeyboardSpecialEventCallback& params)
-  {
-    Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(params));
-    if (! ptr) return;
-
-    Params_KeyboardSpecialEventCallback& p = *ptr;
-
-    p.flags.stripEXTRA();
-
-    // skip no-outputable keycodes.
-    // Note: check before FireModifiers to avoid meaningless modifier event.
-    if (p.key == ConsumerKeyCode::VK_NONE ||
-        p.key == ConsumerKeyCode::VK_PSEUDO_KEY) {
-      return;
-    }
-
-    FireModifiers::fire();
-
-    EventOutputQueue::push(p);
-  }
-
-  // --------------------
-  Buttons FireRelativePointer::lastButtons_(0);
-
-  void
-  FireRelativePointer::fire(Buttons toButtons, int dx, int dy)
-  {
-    // We do not fire event if no need.
-    if (dx == 0 && dy == 0 && toButtons == lastButtons_) return;
-
-    Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(toButtons, dx, dy));
-    if (! ptr) return;
-    Params_RelativePointerEventCallback& params = *ptr;
-
-    lastButtons_ = toButtons;
-    FireModifiers::fire();
-    EventOutputQueue::push(params);
-  }
-
-  void
-  RemapUtil::fireScrollWheel(const Params_ScrollWheelEventCallback& params)
-  {
-    FireModifiers::fire();
-    EventOutputQueue::push(params);
   }
 
   // ----------------------------------------------------------------------
@@ -1140,11 +940,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     } else {
       if (savedIsAnyEventHappen == false) {
         if (config.parameter_keyoverlaidmodifier_timeout <= 0 || ic_.checkThreshold(config.parameter_keyoverlaidmodifier_timeout) == false) {
-          RemapUtil::fireKey_downup((fireFlags1 | savedflags_).stripNONE(), fireKeyCode1, remapParams.params.keyboardType);
-          RemapUtil::fireKey_downup((fireFlags2 | savedflags_).stripNONE(), fireKeyCode2, remapParams.params.keyboardType);
-          RemapUtil::fireKey_downup((fireFlags3 | savedflags_).stripNONE(), fireKeyCode3, remapParams.params.keyboardType);
-          RemapUtil::fireKey_downup((fireFlags4 | savedflags_).stripNONE(), fireKeyCode4, remapParams.params.keyboardType);
-          RemapUtil::fireKey_downup((fireFlags5 | savedflags_).stripNONE(), fireKeyCode5, remapParams.params.keyboardType);
+          EventOutput::FireKey::fire_downup((fireFlags1 | savedflags_).stripNONE(), fireKeyCode1, remapParams.params.keyboardType);
+          EventOutput::FireKey::fire_downup((fireFlags2 | savedflags_).stripNONE(), fireKeyCode2, remapParams.params.keyboardType);
+          EventOutput::FireKey::fire_downup((fireFlags3 | savedflags_).stripNONE(), fireKeyCode3, remapParams.params.keyboardType);
+          EventOutput::FireKey::fire_downup((fireFlags4 | savedflags_).stripNONE(), fireKeyCode4, remapParams.params.keyboardType);
+          EventOutput::FireKey::fire_downup((fireFlags5 | savedflags_).stripNONE(), fireKeyCode5, remapParams.params.keyboardType);
         }
       }
       EventWatcher::unset(isAnyEventHappen_);
@@ -1178,7 +978,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (pressCount_ >= 2) {
         pressCount_ = 0;
         Flags flags = (FlagStatus::makeFlags() | fireFlags).stripNONE();
-        RemapUtil::fireKey_downup(flags, fireKeyCode, remapParams.params.keyboardType);
+        EventOutput::FireKey::fire_downup(flags, fireKeyCode, remapParams.params.keyboardType);
       }
     }
 
@@ -1246,7 +1046,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         isfirenormal_ = true;
         ModifierFlag toKeyCodeFlag = toKeyCode_normal.getModifierFlag();
         FlagStatus::temporary_decrease(toFlags_normal | toKeyCodeFlag);
-        RemapUtil::fireKey_downup(toFlags_normal.stripNONE(), toKeyCode_normal, CommonData::getcurrent_keyboardType());
+        EventOutput::FireKey::fire_downup(toFlags_normal.stripNONE(), toKeyCode_normal, CommonData::getcurrent_keyboardType());
         FlagStatus::temporary_increase(toFlags_normal | toKeyCodeFlag);
       }
     }
@@ -1260,7 +1060,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (! isfirenormal_) {
       isfireholding_ = true;
-      RemapUtil::fireKey_downup(toFlags_holding_.stripNONE(), toKeyCode_holding_, CommonData::getcurrent_keyboardType());
+      EventOutput::FireKey::fire_downup(toFlags_holding_.stripNONE(), toKeyCode_holding_, CommonData::getcurrent_keyboardType());
     }
   }
 }

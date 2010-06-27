@@ -235,30 +235,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       int fixation_delta1;
       int fixation_delta2;
     };
-
-    // ----------------------------------------
-    void fireKey(const Params_KeyboardEventCallBack& params);
-    void fireKey_downup(Flags flags, KeyCode key, KeyboardType keyboardType);
-
-    void fireConsumer(const Params_KeyboardSpecialEventCallback& params);
-    void fireScrollWheel(const Params_ScrollWheelEventCallback& params);
   }
-
-  class FireModifiers {
-  public:
-    static void fire(Flags toFlags = FlagStatus::makeFlags(), KeyboardType keyboardType = CommonData::getcurrent_keyboardType());
-
-  private:
-    static Flags lastFlags_;
-  };
-
-  class FireRelativePointer {
-  public:
-    static void fire(Buttons toButtons = ButtonStatus::makeButtons(), int dx = 0, int dy = 0);
-
-  private:
-    static Buttons lastButtons_;
-  };
 
   // ----------------------------------------------------------------------
   // for SandS like behavior remappings (remap_space2shift, remap_enter2optionL_commandSpace, ...)

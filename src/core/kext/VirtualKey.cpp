@@ -2,10 +2,10 @@
 #include "Client.hpp"
 #include "CommonData.hpp"
 #include "Config.hpp"
+#include "EventOutput.hpp"
 #include "FlagStatus.hpp"
-#include "VirtualKey.hpp"
 #include "RemapClass.hpp"
-#include "RemapUtil.hpp"
+#include "VirtualKey.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   void
@@ -59,7 +59,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       } else {
         FlagStatus::lock_toggle(flags);
       }
-      FireModifiers::fire();
+      EventOutput::FireModifiers::fire();
     }
 
     return true;
@@ -105,7 +105,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (params.eventType == EventType::DOWN && params.repeat == false) {
       FlagStatus::sticky_toggle(flag);
-      FireModifiers::fire();
+      EventOutput::FireModifiers::fire();
     }
 
     return true;
@@ -220,7 +220,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     params.key = newkeycode_;
-    RemapUtil::fireKey(params);
+    EventOutput::FireKey::fire(params);
     return true;
   }
 
@@ -234,7 +234,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (params.eventType == EventType::DOWN) {
       for (int i = 0; i < 2; ++i) {
-        RemapUtil::fireKey_downup(params.flags, KeyCode::JIS_EISUU, params.keyboardType);
+        EventOutput::FireKey::fire_downup(params.flags, KeyCode::JIS_EISUU, params.keyboardType);
       }
     }
     return true;
@@ -247,7 +247,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (params.eventType == EventType::DOWN) {
       for (int i = 0; i < 2; ++i) {
-        RemapUtil::fireKey_downup(params.flags, KeyCode::JIS_KANA, params.keyboardType);
+        EventOutput::FireKey::fire_downup(params.flags, KeyCode::JIS_KANA, params.keyboardType);
       }
     }
     return true;
@@ -260,7 +260,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     params.key = KeyCode::BACKSLASH;
     params.keyboardType = KeyboardType::MACBOOK;
-    RemapUtil::fireKey(params);
+    EventOutput::FireKey::fire(params);
     return true;
   }
 
@@ -271,7 +271,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     params.key = KeyCode::JIS_YEN;
     params.keyboardType = KeyboardType::JIS_MACBOOK_2008;
-    RemapUtil::fireKey(params);
+    EventOutput::FireKey::fire(params);
     return true;
   }
 
@@ -422,7 +422,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! fireKeyInfo_.active) return;
     fireKeyInfo_.active = false;
-    RemapUtil::fireKey_downup(fireKeyInfo_.flags, fireKeyInfo_.key, fireKeyInfo_.keyboardType);
+    EventOutput::FireKey::fire_downup(fireKeyInfo_.flags, fireKeyInfo_.key, fireKeyInfo_.keyboardType);
   }
 
   KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail Handle_VK_JIS_TEMPORARY::savedinputmodedetail_ = KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_NONE;
