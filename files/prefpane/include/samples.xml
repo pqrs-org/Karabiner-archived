@@ -102,12 +102,14 @@
       <appendix>C to JIS_KANA,A,I,JIS_EISUU,U (Key To with Japanese)</appendix>
       <appendix>Shift_L to A,B,Control_L+B,Shift_L+C,D (Modifier To)</appendix>
       <appendix>Control+D to Shift_L+A, Control_L+F (Key+Modifier To)</appendix>
+      <appendix>E to Type "http://pqrs.org/macosx/keyremap4macbook/"</appendix>
       <sysctl>remap.samples_keytokey_combination</sysctl>
       <autogen>--KeyToKey-- KeyCode::A, KeyCode::B, KeyCode::C</autogen>
       <autogen>--KeyToKey-- KeyCode::B, KeyCode::A, KeyCode::B, KeyCode::C, ModifierFlag::SHIFT_L, KeyCode::D, KeyCode::P, ModifierFlag::CONTROL_L</autogen>
       <autogen>--KeyToKey-- KeyCode::C, KeyCode::JIS_KANA, KeyCode::A, KeyCode::I, KeyCode::JIS_EISUU, KeyCode::U</autogen>
       <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::A, KeyCode::B, KeyCode::B, ModifierFlag::CONTROL_L, KeyCode::C, ModifierFlag::SHIFT_L, KeyCode::D</autogen>
       <autogen>--KeyToKey-- KeyCode::D, VK_CONTROL, KeyCode::A, ModifierFlag::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::E, KeyCode::H, KeyCode::T, KeyCode::T, KeyCode::P, KeyCode::SEMICOLON, ModifierFlag::SHIFT_L, KeyCode::SLASH, KeyCode::SLASH, KeyCode::P, KeyCode::Q, KeyCode::R, KeyCode::S, KeyCode::DOT, KeyCode::O, KeyCode::R, KeyCode::G, KeyCode::SLASH, KeyCode::M, KeyCode::A, KeyCode::C, KeyCode::O, KeyCode::S, KeyCode::X, KeyCode::SLASH, KeyCode::K, KeyCode::E, KeyCode::Y, KeyCode::R, KeyCode::E, KeyCode::M, KeyCode::A, KeyCode::P, KeyCode::KEY_4, KeyCode::M, KeyCode::A, KeyCode::C, KeyCode::B, KeyCode::O, KeyCode::O, KeyCode::K, KeyCode::SLASH</autogen>
     </item>
 
     <item>
