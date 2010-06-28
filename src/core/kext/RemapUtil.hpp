@@ -145,17 +145,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     Flags savedflags_;
   };
 
-  // ----------------------------------------
-  // Modifier Holding + Key -> Key
-  class ModifierHoldingKeyToKey {
-  public:
-    bool remap(RemapParams& remapParams, KeyCode fromKeyCode, Flags fromFlags, KeyCode toKeyCode);
-
-  private:
-    IntervalChecker ic_;
-    RemapUtil::KeyToKey keytokey_;
-  };
-
   class HoldingKeyToKey {
   public:
     static void initialize(IOWorkLoop& workloop);

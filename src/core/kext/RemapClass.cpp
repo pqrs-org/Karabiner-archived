@@ -10,6 +10,7 @@
 #include "RemapFunc/ConsumerToKey.hpp"
 #include "RemapFunc/DoublePressModifier.hpp"
 #include "RemapFunc/IgnoreMultipleSameKeyPress.hpp"
+#include "RemapFunc/ModifierHoldingKeyToKey.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapClassManager {

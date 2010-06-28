@@ -502,24 +502,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------
-  bool
-  ModifierHoldingKeyToKey::remap(RemapParams& remapParams, KeyCode fromKeyCode, Flags fromFlags, KeyCode toKeyCode)
-  {
-    if (remapParams.isremapped || remapParams.params.key != fromKeyCode) {
-      goto nottargetkey;
-    }
-
-    if (! FlagStatus::makeFlags().isOn(fromFlags)) goto nottargetkey;
-    if (! ic_.checkThreshold(config.parameter_modifierholdingkeytokey_wait)) goto nottargetkey;
-
-    return keytokey_.remap(remapParams, fromKeyCode, fromFlags, toKeyCode);
-
-  nottargetkey:
-    ic_.begin();
-    return false;
-  }
-
-  // ----------------------------------------
   TimerWrapper HoldingKeyToKey::timer_;
   KeyCode HoldingKeyToKey::toKeyCode_holding_;
   Flags HoldingKeyToKey::toFlags_holding_;
