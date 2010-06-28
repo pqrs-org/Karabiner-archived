@@ -5,6 +5,7 @@
 #include "util/CommonData.hpp"
 #include "util/EventInputQueue.hpp"
 #include "RemapFunc/KeyToKey.hpp"
+#include "RemapFunc/KeyToConsumer.hpp"
 #include "RemapFunc/ConsumerToConsumer.hpp"
 #include "RemapFunc/IgnoreMultipleSameKeyPress.hpp"
 

@@ -101,27 +101,21 @@ class RemapClass
         @code[:initialize] += "}\n"
         @@entries[:initialize] << "RemapClass_#{@name}::initialize_value#{@@index}"
 
-      when 'KeyToKey'
+      when 'KeyToKey', 'KeyToConsumer', 'IgnoreMultipleSameKeyPress'
         append_to_code_initialize(params)
         append_to_code_terminate
-        @code[:variable] << { :index => @@index, :class => "RemapFunc::KeyToKey" }
+        @code[:variable] << { :index => @@index, :class => "RemapFunc::#{operation}" }
         @code[:remap_key] += "if (value#{@@index}_.remap(remapParams)) break;\n"
+
+      when 'ConsumerToConsumer'
+        append_to_code_initialize(params)
+        append_to_code_terminate
+        @code[:variable] << { :index => @@index, :class => "RemapFunc::ConsumerToConsumer" }
+        @code[:remap_consumer] += "if (value#{@@index}_.remap(remapParams)) break;\n"
 
       when 'DoublePressModifier'
         @code[:variable] << { :index => @@index, :class => "DoublePressModifier" }
         @code[:remap_key] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
-
-      when 'IgnoreMultipleSameKeyPress'
-        append_to_code_initialize(params)
-        append_to_code_terminate
-        @code[:variable] << { :index => @@index, :class => "RemapFunc::IgnoreMultipleSameKeyPress" }
-        @code[:remap_key] += "if (value#{@@index}_.remap(remapParams)) break;\n"
-
-      when 'KeyToConsumer'
-        append_to_code_initialize(params)
-        append_to_code_terminate
-        @code[:variable] << { :index => @@index, :class => "RemapUtil::KeyToConsumer" }
-        @code[:remap_key] += "if (value#{@@index}_.remap(remapParams)) break;\n"
 
       when 'KeyToPointingButton'
         @code[:variable] << { :index => @@index, :class => "RemapUtil::KeyToPointingButton" }
@@ -147,12 +141,6 @@ class RemapClass
         append_to_code_initialize(params)
         append_to_code_terminate
         @code[:variable] << { :index => @@index, :class => "RemapUtil::ConsumerToKey" }
-        @code[:remap_consumer] += "if (value#{@@index}_.remap(remapParams)) break;\n"
-
-      when 'ConsumerToConsumer'
-        append_to_code_initialize(params)
-        append_to_code_terminate
-        @code[:variable] << { :index => @@index, :class => "RemapFunc::ConsumerToConsumer" }
         @code[:remap_consumer] += "if (value#{@@index}_.remap(remapParams)) break;\n"
 
       when 'PointingRelativeToScroll'
