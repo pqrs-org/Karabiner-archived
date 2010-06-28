@@ -14,6 +14,8 @@
 		340E0BFE111489020030A382 /* KeyFloodChecker.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 340E0BFC111489020030A382 /* KeyFloodChecker.hpp */; };
 		3430E93310C558CA00FC2D64 /* EventWatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3430E93110C558CA00FC2D64 /* EventWatcher.cpp */; };
 		3430E93410C558CA00FC2D64 /* EventWatcher.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3430E93210C558CA00FC2D64 /* EventWatcher.hpp */; };
+		343BE53911D8347100C7C701 /* ConsumerToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 343BE53711D8347100C7C701 /* ConsumerToKey.cpp */; };
+		343BE53A11D8347100C7C701 /* ConsumerToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 343BE53811D8347100C7C701 /* ConsumerToKey.hpp */; };
 		345004AD0E7CE48F0075324B /* Core.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345004A80E7CE48F0075324B /* Core.cpp */; };
 		345004AE0E7CE48F0075324B /* Core.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345004A90E7CE48F0075324B /* Core.hpp */; };
 		345004AF0E7CE48F0075324B /* Driver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345004AA0E7CE48F0075324B /* Driver.cpp */; };
@@ -88,6 +90,8 @@
 		340E0BFC111489020030A382 /* KeyFloodChecker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyFloodChecker.hpp; path = util/KeyFloodChecker.hpp; sourceTree = "<group>"; };
 		3430E93110C558CA00FC2D64 /* EventWatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventWatcher.cpp; path = util/EventWatcher.cpp; sourceTree = "<group>"; };
 		3430E93210C558CA00FC2D64 /* EventWatcher.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = EventWatcher.hpp; path = util/EventWatcher.hpp; sourceTree = "<group>"; };
+		343BE53711D8347100C7C701 /* ConsumerToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConsumerToKey.cpp; path = RemapFunc/ConsumerToKey.cpp; sourceTree = "<group>"; };
+		343BE53811D8347100C7C701 /* ConsumerToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ConsumerToKey.hpp; path = RemapFunc/ConsumerToKey.hpp; sourceTree = "<group>"; };
 		345004A80E7CE48F0075324B /* Core.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Core.cpp; sourceTree = "<group>"; };
 		345004A90E7CE48F0075324B /* Core.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Core.hpp; sourceTree = "<group>"; };
 		345004AA0E7CE48F0075324B /* Driver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Driver.cpp; sourceTree = "<group>"; };
@@ -224,6 +228,8 @@
 		345E3EC511D79D17004B6347 /* RemapFunc */ = {
 			isa = PBXGroup;
 			children = (
+				343BE53711D8347100C7C701 /* ConsumerToKey.cpp */,
+				343BE53811D8347100C7C701 /* ConsumerToKey.hpp */,
 				347CAD9E11D82FFE00F51978 /* KeyToConsumer.cpp */,
 				347CAD9F11D82FFE00F51978 /* KeyToConsumer.hpp */,
 				345FD60611D819EA00FC1B86 /* ConsumerToConsumer.cpp */,
@@ -328,6 +334,7 @@
 				34D347E711D8106C00D70815 /* KeyToKey.hpp in Headers */,
 				345FD60911D819EA00FC1B86 /* ConsumerToConsumer.hpp in Headers */,
 				347CADA111D82FFE00F51978 /* KeyToConsumer.hpp in Headers */,
+				343BE53A11D8347100C7C701 /* ConsumerToKey.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +434,7 @@
 				34D347E611D8106C00D70815 /* KeyToKey.cpp in Sources */,
 				345FD60811D819EA00FC1B86 /* ConsumerToConsumer.cpp in Sources */,
 				347CADA011D82FFE00F51978 /* KeyToConsumer.cpp in Sources */,
+				343BE53911D8347100C7C701 /* ConsumerToKey.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

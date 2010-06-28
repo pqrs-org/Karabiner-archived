@@ -71,29 +71,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       FromKeyChecker fromkeychecker_;
     };
 
-    class ConsumerToKey {
-    public:
-      ConsumerToKey(void) : index_(0) {}
-      bool remap(RemapConsumerParams& remapParams);
-      void initialize(void);
-      void terminate(void);
-
-      // [0] => fromKey
-      // [1] => toKeys[0]
-      // [2] => toKeys[1]
-      // [3] => ...
-      void add(ConsumerKeyCode newval);
-      void add(KeyCode newval);
-      void add(Flags newval);
-
-    private:
-      size_t index_;
-      FromKeyChecker fromkeychecker_;
-      PairConsumerKeyFlags fromKey_;
-      RemapFunc::KeyToKey keytokey_;
-      RemapFunc::ConsumerToConsumer consumertoconsumer_;
-    };
-
     class PointingButtonToPointingButton {
     public:
       PointingButtonToPointingButton(void) : active_(false) {}
