@@ -107,10 +107,10 @@ class RemapClass
         @code[:variable] << { :index => @@index, :class => "RemapFunc::#{operation}" }
         @code[:remap_key] += "if (value#{@@index}_.remap(remapParams)) break;\n"
 
-      when 'ConsumerToConsumer'
+      when 'ConsumerToConsumer', 'ConsumerToKey'
         append_to_code_initialize(params)
         append_to_code_terminate
-        @code[:variable] << { :index => @@index, :class => "RemapFunc::ConsumerToConsumer" }
+        @code[:variable] << { :index => @@index, :class => "RemapFunc::#{operation}" }
         @code[:remap_consumer] += "if (value#{@@index}_.remap(remapParams)) break;\n"
 
       when 'DoublePressModifier'
@@ -136,12 +136,6 @@ class RemapClass
       when 'HoldingKeyToKey'
         @code[:variable] << { :index => @@index, :class => "HoldingKeyToKey" }
         @code[:remap_key] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
-
-      when 'ConsumerToKey'
-        append_to_code_initialize(params)
-        append_to_code_terminate
-        @code[:variable] << { :index => @@index, :class => "RemapUtil::ConsumerToKey" }
-        @code[:remap_consumer] += "if (value#{@@index}_.remap(remapParams)) break;\n"
 
       when 'PointingRelativeToScroll'
         @code[:variable] << { :index => @@index, :class => "RemapUtil::PointingRelativeToScroll" }
