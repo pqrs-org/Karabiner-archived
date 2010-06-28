@@ -207,9 +207,11 @@
       <name>DoublePressModifier</name>
       <appendix>Shift_L x2 to RETURN</appendix>
       <appendix>(A to Control_L) + (A x2 to Shift_L+RETURN)</appendix>
+      <appendix>(Shift+B to Control_L+Option_L) + (Shift+B x2 to A,S,Command_L+D)</appendix>
       <sysctl>remap.samples_doublepressmodifier</sysctl>
       <autogen>--DoublePressModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::RETURN</autogen>
       <autogen>--DoublePressModifier-- KeyCode::A, KeyCode::CONTROL_L, KeyCode::RETURN, ModifierFlag::SHIFT_L</autogen>
+      <autogen>--DoublePressModifier-- KeyCode::B, VK_SHIFT, KeyCode::CONTROL_L, ModifierFlag::OPTION_L, KeyCode::A, KeyCode::S, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
     </item>
 
     <item>
