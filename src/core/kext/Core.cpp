@@ -15,6 +15,7 @@
 #include "util/ListHookedPointing.hpp"
 #include "util/NumHeldDownKeys.hpp"
 #include "util/TimerWrapper.hpp"
+#include "RemapFunc/HoldingKeyToKey.hpp"
 #include "VirtualKey.hpp"
 
 #include <sys/errno.h>
@@ -82,7 +83,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         EventInputQueue::initialize(*workLoop);
         VirtualKey::initialize(*workLoop);
         EventOutputQueue::initialize(*workLoop);
-        HoldingKeyToKey::initialize(*workLoop);
+        RemapFunc::HoldingKeyToKey::static_initialize(*workLoop);
       }
 
       sysctl_register();
@@ -102,7 +103,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       EventInputQueue::terminate();
       VirtualKey::terminate();
       EventOutputQueue::terminate();
-      HoldingKeyToKey::terminate();
+      RemapFunc::HoldingKeyToKey::static_terminate();
 
       if (workLoop) {
         workLoop->release();

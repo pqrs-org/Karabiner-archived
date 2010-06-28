@@ -12,6 +12,8 @@
 		34012A6F0E7AED010069FE39 /* TimerWrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34012A6D0E7AED010069FE39 /* TimerWrapper.hpp */; };
 		340E0BFD111489020030A382 /* KeyFloodChecker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 340E0BFB111489020030A382 /* KeyFloodChecker.cpp */; };
 		340E0BFE111489020030A382 /* KeyFloodChecker.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 340E0BFC111489020030A382 /* KeyFloodChecker.hpp */; };
+		341272FE11D8FE0E000A62DB /* HoldingKeyToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 341272FC11D8FE0E000A62DB /* HoldingKeyToKey.cpp */; };
+		341272FF11D8FE0E000A62DB /* HoldingKeyToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 341272FD11D8FE0E000A62DB /* HoldingKeyToKey.hpp */; };
 		3430E93310C558CA00FC2D64 /* EventWatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3430E93110C558CA00FC2D64 /* EventWatcher.cpp */; };
 		3430E93410C558CA00FC2D64 /* EventWatcher.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3430E93210C558CA00FC2D64 /* EventWatcher.hpp */; };
 		343BE53911D8347100C7C701 /* ConsumerToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 343BE53711D8347100C7C701 /* ConsumerToKey.cpp */; };
@@ -92,6 +94,8 @@
 		34012A6D0E7AED010069FE39 /* TimerWrapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TimerWrapper.hpp; path = util/TimerWrapper.hpp; sourceTree = "<group>"; };
 		340E0BFB111489020030A382 /* KeyFloodChecker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyFloodChecker.cpp; path = util/KeyFloodChecker.cpp; sourceTree = "<group>"; };
 		340E0BFC111489020030A382 /* KeyFloodChecker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyFloodChecker.hpp; path = util/KeyFloodChecker.hpp; sourceTree = "<group>"; };
+		341272FC11D8FE0E000A62DB /* HoldingKeyToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HoldingKeyToKey.cpp; path = RemapFunc/HoldingKeyToKey.cpp; sourceTree = "<group>"; };
+		341272FD11D8FE0E000A62DB /* HoldingKeyToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = HoldingKeyToKey.hpp; path = RemapFunc/HoldingKeyToKey.hpp; sourceTree = "<group>"; };
 		3430E93110C558CA00FC2D64 /* EventWatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventWatcher.cpp; path = util/EventWatcher.cpp; sourceTree = "<group>"; };
 		3430E93210C558CA00FC2D64 /* EventWatcher.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = EventWatcher.hpp; path = util/EventWatcher.hpp; sourceTree = "<group>"; };
 		343BE53711D8347100C7C701 /* ConsumerToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConsumerToKey.cpp; path = RemapFunc/ConsumerToKey.cpp; sourceTree = "<group>"; };
@@ -236,6 +240,8 @@
 		345E3EC511D79D17004B6347 /* RemapFunc */ = {
 			isa = PBXGroup;
 			children = (
+				341272FC11D8FE0E000A62DB /* HoldingKeyToKey.cpp */,
+				341272FD11D8FE0E000A62DB /* HoldingKeyToKey.hpp */,
 				3486259511D868A70067A4FB /* ModifierHoldingKeyToKey.cpp */,
 				3486259611D868A70067A4FB /* ModifierHoldingKeyToKey.hpp */,
 				3443E80F11D8536B00BB28FB /* DoublePressModifier.cpp */,
@@ -349,6 +355,7 @@
 				343BE53A11D8347100C7C701 /* ConsumerToKey.hpp in Headers */,
 				3443E81211D8536B00BB28FB /* DoublePressModifier.hpp in Headers */,
 				3486259811D868A70067A4FB /* ModifierHoldingKeyToKey.hpp in Headers */,
+				341272FF11D8FE0E000A62DB /* HoldingKeyToKey.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +458,7 @@
 				343BE53911D8347100C7C701 /* ConsumerToKey.cpp in Sources */,
 				3443E81111D8536B00BB28FB /* DoublePressModifier.cpp in Sources */,
 				3486259711D868A70067A4FB /* ModifierHoldingKeyToKey.cpp in Sources */,
+				341272FE11D8FE0E000A62DB /* HoldingKeyToKey.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

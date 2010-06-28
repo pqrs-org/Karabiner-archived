@@ -9,6 +9,7 @@
 #include "RemapFunc/ConsumerToConsumer.hpp"
 #include "RemapFunc/ConsumerToKey.hpp"
 #include "RemapFunc/DoublePressModifier.hpp"
+#include "RemapFunc/HoldingKeyToKey.hpp"
 #include "RemapFunc/IgnoreMultipleSameKeyPress.hpp"
 #include "RemapFunc/ModifierHoldingKeyToKey.hpp"
 
