@@ -12,29 +12,9 @@
 #include "util/PressDownKeys.hpp"
 #include "util/IntervalChecker.hpp"
 #include "util/EventWatcher.hpp"
-#include "util/Vector.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapUtil {
-    // XXX: Delete Me (move to RemapFuncBase)
-    struct PairKeyFlags {
-      PairKeyFlags(void) {}
-      PairKeyFlags(KeyCode k) : key(k) {}
-
-      KeyCode key;
-      Flags   flags;
-    };
-    DECLARE_VECTOR(PairKeyFlags);
-
-    struct PairConsumerKeyFlags {
-      PairConsumerKeyFlags(void) {}
-      PairConsumerKeyFlags(ConsumerKeyCode k) : key(k) {}
-
-      ConsumerKeyCode key;
-      Flags           flags;
-    };
-    DECLARE_VECTOR(PairConsumerKeyFlags);
-
     enum {
       // see IOHIPointing.cpp in darwin.
       POINTING_FIXED_SCALE = 65536, // (== << 16)
@@ -43,6 +23,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     inline unsigned int abs(int v) { return v > 0 ? v : -v; }
 
+    // XXX: Delete Me. Use RemapFunc::KeyToKey instead.
     class KeyToKey {
     public:
       // Don't use reference for a Flags argument.
