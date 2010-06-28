@@ -23,16 +23,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       switch (index_) {
         case 0:
+          // pass-through (== no break)
           fromKey_.key = newval;
-        // pass-through
         case 1:
           keytokey_.add(newval);
           break;
 
         case 2:
+          // pass-through (== no break)
           keytokey_fire_.add(KeyCode::VK_PSEUDO_KEY);
           keytokey_fire_.add(fromKey_.flags);
-        // pass-through
         case 3:
           keytokey_fire_.add(newval);
           break;
@@ -49,8 +49,8 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
 
         case 1:
+          // pass-through (== no break)
           fromKey_.flags = newval;
-        // pass-through
         case 2:
           keytokey_.add(newval);
           break;
