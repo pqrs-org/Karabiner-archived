@@ -501,38 +501,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     return true;
   }
 
-  // ----------------------------------------------------------------------
-  bool
-  DoublePressModifier::remap(RemapParams& remapParams, KeyCode fromKeyCode, KeyCode toKeyCode, KeyCode fireKeyCode, Flags fireFlags)
-  {
-    if (remapParams.isremapped || remapParams.params.key != fromKeyCode) {
-      pressCount_ = 0;
-      return false;
-    }
-
-    // ----------------------------------------
-    bool isKeyDown = remapParams.isKeyDownOrModifierDown();
-
-    keytokey_.remap(remapParams, fromKeyCode, toKeyCode);
-
-    if (ic_.getmillisec() > static_cast<uint32_t>(config.parameter_doublepressmodifier_threshold)) {
-      pressCount_ = 0;
-    }
-    ic_.begin();
-
-    if (isKeyDown) {
-      ++pressCount_;
-    } else {
-      if (pressCount_ >= 2) {
-        pressCount_ = 0;
-        Flags flags = (FlagStatus::makeFlags() | fireFlags).stripNONE();
-        EventOutput::FireKey::fire_downup(flags, fireKeyCode, remapParams.params.keyboardType);
-      }
-    }
-
-    return true;
-  }
-
   // ----------------------------------------
   bool
   ModifierHoldingKeyToKey::remap(RemapParams& remapParams, KeyCode fromKeyCode, Flags fromFlags, KeyCode toKeyCode)

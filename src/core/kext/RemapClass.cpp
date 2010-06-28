@@ -8,6 +8,7 @@
 #include "RemapFunc/KeyToConsumer.hpp"
 #include "RemapFunc/ConsumerToConsumer.hpp"
 #include "RemapFunc/ConsumerToKey.hpp"
+#include "RemapFunc/DoublePressModifier.hpp"
 #include "RemapFunc/IgnoreMultipleSameKeyPress.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
