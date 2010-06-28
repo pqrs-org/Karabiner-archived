@@ -39,6 +39,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         case 0:
           IOLOG_ERROR("Invalid KeyToConsumer::add\n");
           break;
+
         case 1:
           // pass-through (== no break)
           consumertoconsumer_.add(ConsumerKeyCode::VK_PSEUDO_KEY);
