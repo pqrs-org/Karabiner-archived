@@ -146,22 +146,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
 
   // ----------------------------------------
-  // A modifier has DoublePressed key action.
-  class DoublePressModifier {
-  public:
-    DoublePressModifier(void) : pressCount_(0) {}
-
-    bool remap(RemapParams& remapParams,
-               KeyCode fromKeyCode, KeyCode toKeyCode,
-               KeyCode fireKeyCode, Flags fireFlags = ModifierFlag::NONE);
-
-  private:
-    int pressCount_;
-    IntervalChecker ic_;
-    RemapUtil::KeyToKey keytokey_;
-  };
-
-  // ----------------------------------------
   // Modifier Holding + Key -> Key
   class ModifierHoldingKeyToKey {
   public:

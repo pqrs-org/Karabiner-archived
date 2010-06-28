@@ -101,7 +101,7 @@ class RemapClass
         @code[:initialize] += "}\n"
         @@entries[:initialize] << "RemapClass_#{@name}::initialize_value#{@@index}"
 
-      when 'KeyToKey', 'KeyToConsumer', 'IgnoreMultipleSameKeyPress'
+      when 'KeyToKey', 'KeyToConsumer', 'DoublePressModifier', 'IgnoreMultipleSameKeyPress'
         append_to_code_initialize(params)
         append_to_code_terminate
         @code[:variable] << { :index => @@index, :class => "RemapFunc::#{operation}" }
@@ -112,10 +112,6 @@ class RemapClass
         append_to_code_terminate
         @code[:variable] << { :index => @@index, :class => "RemapFunc::#{operation}" }
         @code[:remap_consumer] += "if (value#{@@index}_.remap(remapParams)) break;\n"
-
-      when 'DoublePressModifier'
-        @code[:variable] << { :index => @@index, :class => "DoublePressModifier" }
-        @code[:remap_key] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
 
       when 'KeyToPointingButton'
         @code[:variable] << { :index => @@index, :class => "RemapUtil::KeyToPointingButton" }
