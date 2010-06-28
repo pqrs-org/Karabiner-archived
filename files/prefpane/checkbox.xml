@@ -1363,6 +1363,24 @@
           <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, KeyCode::F5</autogen>
         </item>
         <item>
+          <name>Volume Mute to F10</name>
+          <sysctl>remap.volumemute2f10</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, ModifierFlag::FN, KeyCode::F10</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE,                   KeyCode::F10</autogen>
+        </item>
+        <item>
+          <name>Volume Down to F11</name>
+          <sysctl>remap.volumedown2f11</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::FN, KeyCode::F11</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN,                   KeyCode::F11</autogen>
+        </item>
+        <item>
+          <name>Volume Up to F12</name>
+          <sysctl>remap.volumeup2f12</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, ModifierFlag::FN, KeyCode::F12</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP,                   KeyCode::F12</autogen>
+        </item>
+        <item>
           <name>NumLock to F6</name>
           <sysctl>remap.numlock2f6</sysctl>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::NUMLOCK, KeyCode::F6</autogen>
