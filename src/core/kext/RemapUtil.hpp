@@ -14,9 +14,6 @@
 #include "util/EventWatcher.hpp"
 #include "util/Vector.hpp"
 
-#include "RemapFunc/KeyToKey.hpp"
-#include "RemapFunc/ConsumerToConsumer.hpp"
-
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapUtil {
     // XXX: Delete Me (move to RemapFuncBase)
