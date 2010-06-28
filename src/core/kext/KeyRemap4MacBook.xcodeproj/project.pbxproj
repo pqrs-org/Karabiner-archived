@@ -45,6 +45,8 @@
 		3477E3BC11CFAC9D00DC05C9 /* RemapClass.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3477E3BA11CFAC9D00DC05C9 /* RemapClass.hpp */; };
 		347CADA011D82FFE00F51978 /* KeyToConsumer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 347CAD9E11D82FFE00F51978 /* KeyToConsumer.cpp */; };
 		347CADA111D82FFE00F51978 /* KeyToConsumer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 347CAD9F11D82FFE00F51978 /* KeyToConsumer.hpp */; };
+		3486259711D868A70067A4FB /* ModifierHoldingKeyToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3486259511D868A70067A4FB /* ModifierHoldingKeyToKey.cpp */; };
+		3486259811D868A70067A4FB /* ModifierHoldingKeyToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3486259611D868A70067A4FB /* ModifierHoldingKeyToKey.hpp */; };
 		348ED8360CE4680F00E179EC /* remap.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 348ED8350CE4680F00E179EC /* remap.hpp */; };
 		348ED83A0CE4682000E179EC /* version.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 348ED8390CE4682000E179EC /* version.hpp */; };
 		348ED8470CE47D9400E179EC /* RemapUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 348ED8460CE47D9400E179EC /* RemapUtil.cpp */; };
@@ -123,6 +125,8 @@
 		3477E3BA11CFAC9D00DC05C9 /* RemapClass.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RemapClass.hpp; sourceTree = "<group>"; };
 		347CAD9E11D82FFE00F51978 /* KeyToConsumer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyToConsumer.cpp; path = RemapFunc/KeyToConsumer.cpp; sourceTree = "<group>"; };
 		347CAD9F11D82FFE00F51978 /* KeyToConsumer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyToConsumer.hpp; path = RemapFunc/KeyToConsumer.hpp; sourceTree = "<group>"; };
+		3486259511D868A70067A4FB /* ModifierHoldingKeyToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ModifierHoldingKeyToKey.cpp; path = RemapFunc/ModifierHoldingKeyToKey.cpp; sourceTree = "<group>"; };
+		3486259611D868A70067A4FB /* ModifierHoldingKeyToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ModifierHoldingKeyToKey.hpp; path = RemapFunc/ModifierHoldingKeyToKey.hpp; sourceTree = "<group>"; };
 		348ED8350CE4680F00E179EC /* remap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = remap.hpp; sourceTree = "<group>"; };
 		348ED8390CE4682000E179EC /* version.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = version.hpp; sourceTree = "<group>"; };
 		348ED8460CE47D9400E179EC /* RemapUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RemapUtil.cpp; sourceTree = "<group>"; };
@@ -232,6 +236,8 @@
 		345E3EC511D79D17004B6347 /* RemapFunc */ = {
 			isa = PBXGroup;
 			children = (
+				3486259511D868A70067A4FB /* ModifierHoldingKeyToKey.cpp */,
+				3486259611D868A70067A4FB /* ModifierHoldingKeyToKey.hpp */,
 				3443E80F11D8536B00BB28FB /* DoublePressModifier.cpp */,
 				3443E81011D8536B00BB28FB /* DoublePressModifier.hpp */,
 				343BE53711D8347100C7C701 /* ConsumerToKey.cpp */,
@@ -342,6 +348,7 @@
 				347CADA111D82FFE00F51978 /* KeyToConsumer.hpp in Headers */,
 				343BE53A11D8347100C7C701 /* ConsumerToKey.hpp in Headers */,
 				3443E81211D8536B00BB28FB /* DoublePressModifier.hpp in Headers */,
+				3486259811D868A70067A4FB /* ModifierHoldingKeyToKey.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +450,7 @@
 				347CADA011D82FFE00F51978 /* KeyToConsumer.cpp in Sources */,
 				343BE53911D8347100C7C701 /* ConsumerToKey.cpp in Sources */,
 				3443E81111D8536B00BB28FB /* DoublePressModifier.cpp in Sources */,
+				3486259711D868A70067A4FB /* ModifierHoldingKeyToKey.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
