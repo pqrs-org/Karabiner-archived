@@ -33,7 +33,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           // pass-through (== no break)
           keytokey_fire_.add(KeyCode::VK_PSEUDO_KEY);
           keytokey_fire_.add(fromKey_.flags);
-        case 3:
+        default:
           keytokey_fire_.add(newval);
           break;
       }
