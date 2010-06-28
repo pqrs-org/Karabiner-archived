@@ -60,8 +60,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     // calc delay
     uint32_t ms = ic_.getmillisec();
     uint32_t delay = config.get_simultaneouskeypresses_delay();
-    if (delay > ms) delay = ms; // min(ms, delay)
-    if (delay < MIN_DELAY) delay = MIN_DELAY; // max(MIN_DELAY, delay)
+    if (delay > ms) delay = ms;  // min(ms, delay)
+    if (delay < MIN_DELAY) delay = MIN_DELAY;  // max(MIN_DELAY, delay)
     ic_.begin();
 
     // --------------------

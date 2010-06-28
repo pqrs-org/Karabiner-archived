@@ -13,7 +13,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       PairKeyFlags(KeyCode k) : key(k) {}
 
       KeyCode key;
-      Flags   flags;
+      Flags flags;
     };
     DECLARE_VECTOR(PairKeyFlags);
 
@@ -22,7 +22,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       PairConsumerKeyFlags(ConsumerKeyCode k) : key(k) {}
 
       ConsumerKeyCode key;
-      Flags           flags;
+      Flags flags;
     };
     DECLARE_VECTOR(PairConsumerKeyFlags);
   }

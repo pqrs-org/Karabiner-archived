@@ -43,7 +43,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         case 1:
           keytokey_.add(KeyCode::VK_PSEUDO_KEY);
           keytokey_.add(fromKey_.flags);
-          // pass-through
+        // pass-through
         default:
           keytokey_.add(newval);
           break;

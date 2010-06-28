@@ -42,7 +42,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         case 1:
           consumertoconsumer_.add(ConsumerKeyCode::VK_PSEUDO_KEY);
           consumertoconsumer_.add(fromKey_.flags);
-          // pass-through
+        // pass-through
         default:
           consumertoconsumer_.add(newval);
           break;
