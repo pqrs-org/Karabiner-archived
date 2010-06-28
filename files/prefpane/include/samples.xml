@@ -129,6 +129,7 @@
 
     <item>
       <name>ConsumerToKey</name>
+      <appendix>Command+Volume Down to A,S,Shift_L+D,Control_L+F,G</appendix>
       <appendix>Volume Down to A</appendix>
       <appendix>Option+Volume Up to Shift_L (Key+Modifier to Modifier)</appendix>
       <appendix>Shift+Volume Up to B (with Modifier)</appendix>
@@ -139,6 +140,7 @@
       <!-- NumLock is a special key. When we press "A" key with holding NumLock key, there is no key down event occurred -->
       <!-- Therefore we cannot change NumLock to Modifier -->
       <sysctl>remap.samples_consumertokey</sysctl>
+      <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, VK_COMMAND, KeyCode::A, KeyCode::S, KeyCode::D, ModifierFlag::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L, KeyCode::G</autogen>
       <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, KeyCode::A</autogen>
       <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, VK_OPTION, KeyCode::SHIFT_L</autogen>
       <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, VK_SHIFT, KeyCode::B</autogen>
