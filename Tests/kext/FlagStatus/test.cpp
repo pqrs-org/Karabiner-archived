@@ -281,3 +281,26 @@ TEST(FlagStatus, CapsLock) {
   FlagStatus::set(KeyCode::A, 0);
   EXPECT_EQ(Flags(), FlagStatus::makeFlags());
 }
+
+TEST(FlagStatus, ScopedTemporaryFlagsChanger) {
+  ASSERT_TRUE(FlagStatus::initialize());
+
+  FlagStatus::increase(ModifierFlag::SHIFT_L);
+  FlagStatus::increase(ModifierFlag::SHIFT_L);
+  FlagStatus::increase(ModifierFlag::SHIFT_L);
+  FlagStatus::increase(ModifierFlag::SHIFT_L);
+  FlagStatus::increase(ModifierFlag::SHIFT_R);
+  FlagStatus::temporary_increase(ModifierFlag::CONTROL_L);
+  FlagStatus::lock_increase(ModifierFlag::COMMAND_R);
+  FlagStatus::sticky_increase(ModifierFlag::OPTION_R);
+
+  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R | ModifierFlag::CONTROL_L | ModifierFlag::COMMAND_R | ModifierFlag::OPTION_R), FlagStatus::makeFlags());
+
+  {
+    FlagStatus::ScopedTemporaryFlagsChanger stfc(ModifierFlag::FN | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_R);
+
+    EXPECT_EQ(Flags(ModifierFlag::FN | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_R), FlagStatus::makeFlags());
+  }
+
+  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R | ModifierFlag::CONTROL_L | ModifierFlag::COMMAND_R | ModifierFlag::OPTION_R), FlagStatus::makeFlags());
+}

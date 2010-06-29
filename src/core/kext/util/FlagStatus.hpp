@@ -46,6 +46,62 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       int sticky_count_;
     };
+
+    class ScopedTemporaryFlagsChanger {
+    public:
+      ScopedTemporaryFlagsChanger(Flags toFlags) {
+        count_ = new int[MAXNUM];
+        if (! count_) return;
+
+        for (int i = 0;; ++i) {
+          count_[i] = 0;
+
+          ModifierFlag flag = getFlag(i);
+          if (flag == ModifierFlag::NONE) break;
+
+          if (toFlags.isOn(flag)) {
+            // set a flag
+            while (! makeFlags().isOn(flag)) {
+              temporary_increase(flag);
+              ++count_[i];
+            }
+
+          } else {
+            // unset a flag
+            while (makeFlags().isOn(flag)) {
+              temporary_decrease(flag);
+              --count_[i];
+            }
+          }
+        }
+      }
+      ~ScopedTemporaryFlagsChanger(void) {
+        if (! count_) return;
+
+        for (int i = 0;; ++i) {
+          ModifierFlag flag = getFlag(i);
+          if (flag == ModifierFlag::NONE) break;
+
+          if (count_[i] < 0) {
+            while (count_[i] != 0) {
+              temporary_increase(flag);
+              ++count_[i];
+            }
+          } else if (count_[i] > 0) {
+            while (count_[i] != 0) {
+              temporary_decrease(flag);
+              --count_[i];
+            }
+          }
+        }
+
+        delete[] count_;
+      }
+
+    private:
+      int* count_;
+    };
+
     enum { MAXNUM = 32 };
 
     static bool initialize(void);
