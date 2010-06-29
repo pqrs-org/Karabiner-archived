@@ -110,20 +110,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
           FlagStatus::temporary_decrease(fromKey_.flags | fromKey_.key.getModifierFlag());
 
-          Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::DOWN,
-                                                                                         FlagStatus::makeFlags(),
-                                                                                         KeyCode::VK_PSEUDO_KEY,
-                                                                                         remapParams.params.keyboardType,
-                                                                                         false));
-          if (! ptr) return false;
-          Params_KeyboardEventCallBack& params = *ptr;
-
-          RemapParams rp_down(params);
-          keytokey_normal_.remap(rp_down);
-
-          params.eventType = EventType::UP;
-          RemapParams rp_up(params);
-          keytokey_normal_.remap(rp_up);
+          keytokey_normal_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+          keytokey_normal_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
 
           FlagStatus::temporary_increase(fromKey_.flags | fromKey_.key.getModifierFlag());
         }
