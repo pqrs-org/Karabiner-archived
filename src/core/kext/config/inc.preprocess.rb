@@ -69,6 +69,11 @@ class Preprocesser
         list << autogen.gsub(/FROMKEYCODE_#{key}\s*,/, "KeyCode::#{key},")
         list << autogen.gsub(/FROMKEYCODE_#{key}\s*,/, "KeyCode::#{extrakey}, ModifierFlag::FN,")
         modify = true
+
+      elsif /--KeyOverlaidModifierWithRepeat--/ =~ autogen then
+        list << autogen.gsub(/--KeyOverlaidModifierWithRepeat--/, '--KeyOverlaidModifier-- RemapFunc::KeyOverlaidModifier::OPTION_REPEAT, ')
+        modify = true
+
       else
         list << autogen
       end

@@ -11,6 +11,7 @@
 #include "RemapFunc/DoublePressModifier.hpp"
 #include "RemapFunc/HoldingKeyToKey.hpp"
 #include "RemapFunc/IgnoreMultipleSameKeyPress.hpp"
+#include "RemapFunc/KeyOverlaidModifier.hpp"
 #include "RemapFunc/ModifierHoldingKeyToKey.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
