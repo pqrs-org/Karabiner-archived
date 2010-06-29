@@ -101,7 +101,7 @@ class RemapClass
         @code[:initialize] += "}\n"
         @@entries[:initialize] << "RemapClass_#{@name}::initialize_value#{@@index}"
 
-      when 'KeyToKey', 'KeyToConsumer', 'DoublePressModifier', 'HoldingKeyToKey', 'IgnoreMultipleSameKeyPress', 'ModifierHoldingKeyToKey'
+      when 'KeyToKey', 'KeyToConsumer', 'DoublePressModifier', 'HoldingKeyToKey', 'IgnoreMultipleSameKeyPress', 'KeyOverlaidModifier', 'ModifierHoldingKeyToKey'
         append_to_code_initialize(params)
         append_to_code_terminate
         @code[:variable] << { :index => @@index, :class => "RemapFunc::#{operation}" }
@@ -116,14 +116,6 @@ class RemapClass
       when 'KeyToPointingButton'
         @code[:variable] << { :index => @@index, :class => "RemapUtil::KeyToPointingButton" }
         @code[:remap_key] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
-
-      when 'KeyOverlaidModifier'
-        @code[:variable] << { :index => @@index, :class => "KeyOverlaidModifier" }
-        @code[:remap_key] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
-
-      when 'KeyOverlaidModifierWithRepeat'
-        @code[:variable] << { :index => @@index, :class => "KeyOverlaidModifier" }
-        @code[:remap_key] += "if (value#{@@index}_.remapWithRepeat(remapParams, #{params})) break;\n"
 
       when 'PointingRelativeToScroll'
         @code[:variable] << { :index => @@index, :class => "RemapUtil::PointingRelativeToScroll" }

@@ -129,21 +129,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       int fixation_delta2;
     };
   }
-
-  // ----------------------------------------------------------------------
-  // for SandS like behavior remappings (remap_space2shift, remap_enter2optionL_commandSpace, ...)
-  class KeyOverlaidModifier {
-  public:
-    KeyOverlaidModifier(void) : isAnyEventHappen_(false), savedflags_(0) {}
-
-#include "generate/output/include.keyoverlaidmodifier.hpp"
-
-  private:
-    bool isAnyEventHappen_;
-    IntervalChecker ic_;
-    RemapUtil::KeyToKey keytokey_;
-    Flags savedflags_;
-  };
 }
 
 #endif
