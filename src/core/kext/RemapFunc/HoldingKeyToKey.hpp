@@ -36,7 +36,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       static HoldingKeyToKey* target_;
 
       size_t index_;
-      bool   index_is_holding_;
+      bool index_is_holding_;
       Flags savedflags_;
       bool isfirenormal_;
       bool isfireholding_;
