@@ -140,7 +140,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       return true;
     }
 
-    void
+    bool
     KeyToKey::call_remap_with_VK_PSEUDO_KEY(EventType eventType)
     {
       Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(eventType,
@@ -148,11 +148,11 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                                                      KeyCode::VK_PSEUDO_KEY,
                                                                                      CommonData::getcurrent_keyboardType(),
                                                                                      false));
-      if (! ptr) return;
+      if (! ptr) return false;
       Params_KeyboardEventCallBack& params = *ptr;
 
       RemapParams rp(params);
-      remap(rp);
+      return remap(rp);
     }
   }
 }
