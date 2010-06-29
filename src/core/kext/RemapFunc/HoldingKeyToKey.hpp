@@ -37,7 +37,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       size_t index_;
       bool   index_is_holding_;
-      PairKeyFlags fromKey_;
       Flags savedflags_;
       bool isfirenormal_;
       bool isfireholding_;
