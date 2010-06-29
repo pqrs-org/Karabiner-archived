@@ -114,12 +114,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         } else {
           isfirenormal_ = true;
 
-          {
-            FlagStatus::ScopedTemporaryFlagsChanger stfc(savedflags_);
-
-            keytokey_normal_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
-            keytokey_normal_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
-          }
+          FlagStatus::ScopedTemporaryFlagsChanger stfc(savedflags_);
+          keytokey_normal_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+          keytokey_normal_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
         }
       }
       return true;
