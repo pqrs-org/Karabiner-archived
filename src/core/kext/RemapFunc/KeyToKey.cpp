@@ -1,3 +1,4 @@
+#include "CommonData.hpp"
 #include "EventOutput.hpp"
 #include "KeyToKey.hpp"
 #include "KeyboardRepeat.hpp"
@@ -137,6 +138,21 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       return true;
+    }
+
+    void
+    KeyToKey::call_remap_with_VK_PSEUDO_KEY(EventType eventType)
+    {
+      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(eventType,
+                                                                                     FlagStatus::makeFlags(),
+                                                                                     KeyCode::VK_PSEUDO_KEY,
+                                                                                     CommonData::getcurrent_keyboardType(),
+                                                                                     false));
+      if (! ptr) return;
+      Params_KeyboardEventCallBack& params = *ptr;
+
+      RemapParams rp(params);
+      remap(rp);
     }
   }
 }
