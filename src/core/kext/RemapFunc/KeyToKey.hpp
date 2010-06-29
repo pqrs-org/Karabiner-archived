@@ -23,7 +23,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ----------------------------------------
       // utility functions
-      void call_remap_with_VK_PSEUDO_KEY(EventType eventType);
+      bool call_remap_with_VK_PSEUDO_KEY(EventType eventType);
 
     private:
       size_t index_;

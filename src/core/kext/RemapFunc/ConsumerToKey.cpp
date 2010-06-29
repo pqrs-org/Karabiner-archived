@@ -75,17 +75,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool result = consumertoconsumer_.remap(remapParams);
       if (! result) return false;
 
-      // ----------------------------------------
-      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(remapParams.params.eventType,
-                                                                                     FlagStatus::makeFlags(),
-                                                                                     KeyCode::VK_PSEUDO_KEY,
-                                                                                     CommonData::getcurrent_keyboardType(),
-                                                                                     false));
-      if (! ptr) return false;
-      Params_KeyboardEventCallBack& params = *ptr;
-
-      RemapParams rp(params);
-      return keytokey_.remap(rp);
+      return keytokey_.call_remap_with_VK_PSEUDO_KEY(remapParams.params.eventType);
     }
   }
 }
