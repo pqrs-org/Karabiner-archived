@@ -40,12 +40,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       switch (index_) {
         case 0:
-          fromKey_.key = newval;
           keytokey_drop_.add(newval);
           keytokey_normal_.add(KeyCode::VK_PSEUDO_KEY);
           keytokey_holding_.add(KeyCode::VK_PSEUDO_KEY);
           break;
 
+        case 1:
+          // pass-through (== no break)
+          keytokey_drop_.add(KeyCode::VK_NONE);
         default:
           if (newval == KeyCode::VK_NONE) {
             index_is_holding_ = true;
@@ -70,7 +72,6 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
 
         case 1:
-          fromKey_.flags = newval;
           keytokey_drop_.add(newval);
           break;
 
@@ -100,15 +101,17 @@ namespace org_pqrs_KeyRemap4MacBook {
         isfirenormal_ = false;
         isfireholding_ = false;
 
-        FlagStatus::temporary_decrease(fromKey_.flags | fromKey_.key.getModifierFlag());
         savedflags_ = FlagStatus::makeFlags();
-        FlagStatus::temporary_increase(fromKey_.flags | fromKey_.key.getModifierFlag());
 
         timer_.setTimeoutMS(config.get_holdingkeytokey_wait());
 
       } else {
         timer_.cancelTimeout();
-        if (! isfireholding_) {
+
+        if (isfireholding_) {
+          keytokey_holding_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+
+        } else {
           isfirenormal_ = true;
 
           {
@@ -132,20 +135,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! target_->isfirenormal_) {
         target_->isfireholding_ = true;
 
-        Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::DOWN,
-                                                                                       FlagStatus::makeFlags(),
-                                                                                       KeyCode::VK_PSEUDO_KEY,
-                                                                                       CommonData::getcurrent_keyboardType(),
-                                                                                       false));
-        if (! ptr) return;
-        Params_KeyboardEventCallBack& params = *ptr;
-
-        RemapParams rp_down(params);
-        target_->keytokey_holding_.remap(rp_down);
-
-        params.eventType = EventType::UP;
-        RemapParams rp_up(params);
-        target_->keytokey_holding_.remap(rp_up);
+        (target_->keytokey_holding_).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
       }
     }
   }

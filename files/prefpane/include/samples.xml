@@ -199,11 +199,13 @@
       <sysctl>remap.samples_holdingkeytokey</sysctl>
       <appendix>Escape to Tab (+ Holding Escape to Space)</appendix>
       <appendix>Tab to A,S,Control_L+D,F (+ Holding Tab to Q,W,Shift_L+E,R)</appendix>
+      <appendix>Option+Shift_R to Return (+ Holding Option+Shift_R to Space)</appendix>
       <appendix>Shift+A to Option_L+B (+ Holding Shift+A to Command_L+Return)</appendix>
       <appendix>Control+B to Option_L+B,C (+ Holding Shift+B to Space)</appendix>
       <!-- Note: Use KeyCode::VK_NONE as a separator of parameters -->
       <autogen>--HoldingKeyToKey-- KeyCode::ESCAPE, KeyCode::TAB, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
       <autogen>--HoldingKeyToKey-- KeyCode::TAB, KeyCode::A, KeyCode::S, KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::F, KeyCode::VK_NONE, KeyCode::Q, KeyCode::W, KeyCode::E, ModifierFlag::SHIFT_L, KeyCode::R</autogen>
+      <autogen>--HoldingKeyToKey-- KeyCode::SHIFT_R, VK_OPTION, KeyCode::RETURN, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
       <autogen>--HoldingKeyToKey-- KeyCode::A, VK_SHIFT, KeyCode::B, ModifierFlag::OPTION_L, KeyCode::VK_NONE, KeyCode::RETURN, ModifierFlag::COMMAND_L</autogen>
       <autogen>--HoldingKeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::B, ModifierFlag::OPTION_L, KeyCode::C, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
     </item>
