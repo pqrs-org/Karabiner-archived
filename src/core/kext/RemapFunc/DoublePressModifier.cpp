@@ -84,20 +84,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (pressCount_ >= 2) {
           pressCount_ = 0;
 
-          Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::DOWN,
-                                                                                         FlagStatus::makeFlags(),
-                                                                                         KeyCode::VK_PSEUDO_KEY,
-                                                                                         remapParams.params.keyboardType,
-                                                                                         false));
-          if (! ptr) return false;
-          Params_KeyboardEventCallBack& params = *ptr;
-
-          RemapParams rp_down(params);
-          keytokey_fire_.remap(rp_down);
-
-          params.eventType = EventType::UP;
-          RemapParams rp_up(params);
-          keytokey_fire_.remap(rp_up);
+          keytokey_fire_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+          keytokey_fire_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
         }
       }
 
