@@ -127,7 +127,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
       } else {
+        timer_.cancelTimeout();
+
         if (isfirerepeat_) {
+          FlagStatus::ScopedTemporaryFlagsChanger stfc(savedflags_);
           keytokey_fire_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
 
         } else {
@@ -135,12 +138,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
           if (savedIsAnyEventHappen == false) {
             if (config.parameter_keyoverlaidmodifier_timeout <= 0 || ic_.checkThreshold(config.parameter_keyoverlaidmodifier_timeout) == false) {
-              {
-                FlagStatus::ScopedTemporaryFlagsChanger stfc(savedflags_);
+              FlagStatus::ScopedTemporaryFlagsChanger stfc(savedflags_);
 
-                keytokey_fire_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
-                keytokey_fire_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
-              }
+              keytokey_fire_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+              keytokey_fire_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
             }
           }
           EventWatcher::unset(isAnyEventHappen_);
@@ -157,9 +158,12 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       if (! target_) return;
 
+      if (target_->isAnyEventHappen_) return;
+
       if (! target_->isfirenormal_) {
         target_->isfirerepeat_ = true;
 
+        FlagStatus::ScopedTemporaryFlagsChanger stfc(target_->savedflags_);
         (target_->keytokey_fire_).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
       }
     }
