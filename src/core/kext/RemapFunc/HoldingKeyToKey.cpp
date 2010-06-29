@@ -6,8 +6,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     TimerWrapper HoldingKeyToKey::timer_;
     HoldingKeyToKey* HoldingKeyToKey::target_ = NULL;
-    bool HoldingKeyToKey::isfireholding_;
-    bool HoldingKeyToKey::isfirenormal_;
 
     void
     HoldingKeyToKey::static_initialize(IOWorkLoop& workloop)
@@ -101,6 +99,11 @@ namespace org_pqrs_KeyRemap4MacBook {
         target_ = this;
         isfirenormal_ = false;
         isfireholding_ = false;
+
+        FlagStatus::temporary_decrease(fromKey_.flags | fromKey_.key.getModifierFlag());
+        savedflags_ = FlagStatus::makeFlags();
+        FlagStatus::temporary_increase(fromKey_.flags | fromKey_.key.getModifierFlag());
+
         timer_.setTimeoutMS(config.get_holdingkeytokey_wait());
 
       } else {
@@ -108,12 +111,12 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (! isfireholding_) {
           isfirenormal_ = true;
 
-          FlagStatus::temporary_decrease(fromKey_.flags | fromKey_.key.getModifierFlag());
+          {
+            FlagStatus::ScopedTemporaryFlagsChanger stfc(savedflags_);
 
-          keytokey_normal_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
-          keytokey_normal_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
-
-          FlagStatus::temporary_increase(fromKey_.flags | fromKey_.key.getModifierFlag());
+            keytokey_normal_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+            keytokey_normal_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+          }
         }
       }
       return true;
@@ -126,8 +129,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       if (! target_) return;
 
-      if (! isfirenormal_) {
-        isfireholding_ = true;
+      if (! target_->isfirenormal_) {
+        target_->isfireholding_ = true;
 
         Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::DOWN,
                                                                                        FlagStatus::makeFlags(),

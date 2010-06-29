@@ -34,12 +34,14 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       static TimerWrapper timer_;
       static HoldingKeyToKey* target_;
-      static bool isfirenormal_;
-      static bool isfireholding_;
 
       size_t index_;
       bool   index_is_holding_;
       PairKeyFlags fromKey_;
+      Flags savedflags_;
+      bool isfirenormal_;
+      bool isfireholding_;
+
       KeyToKey keytokey_drop_;
       KeyToKey keytokey_normal_;
       KeyToKey keytokey_holding_;
