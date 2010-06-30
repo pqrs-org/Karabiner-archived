@@ -593,6 +593,12 @@
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::FN</autogen>
         </item>
         <item>
+          <name>Command_R to FN (only in virtual machine)</name>
+          <sysctl>remap.commandR2fn_vm</sysctl>
+          <only>VIRTUALMACHINE</only>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::FN</autogen>
+        </item>
+        <item>
           <name>Option_R+Command_R to FN</name>
           <sysctl>remap.optionRcommandR2fn</sysctl>
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, ModifierFlag::OPTION_R, KeyCode::FN</autogen>
@@ -2199,6 +2205,12 @@
         <item>
           <name>Option_R to Control_L</name>
           <sysctl>remap.optionR2controlL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CONTROL_L</autogen>
+        </item>
+        <item>
+          <name>Option_R to Control_L (only in virtual machine)</name>
+          <sysctl>remap.optionR2controlL_vm</sysctl>
+          <only>VIRTUALMACHINE</only>
           <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
