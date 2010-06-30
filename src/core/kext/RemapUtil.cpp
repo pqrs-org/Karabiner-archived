@@ -17,7 +17,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                              bool isSetKeyRepeat)
   {
     if (remapParams.isremapped) return false;
-    if (! fromkeychecker_.isFromKey(remapParams, fromKeyCode, fromFlags)) return false;
+    if (! fromkeychecker_.isFromKey(remapParams.params, fromKeyCode, fromFlags)) return false;
     remapParams.isremapped = true;
 
     // ------------------------------------------------------------

@@ -70,7 +70,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     KeyToConsumer::remap(RemapParams& remapParams)
     {
-      if (! fromkeychecker_.isFromKey(remapParams, fromKey_.key, fromKey_.flags)) return false;
+      if (! fromkeychecker_.isFromKey(remapParams.params, fromKey_.key, fromKey_.flags)) return false;
 
       bool isKeyDown = remapParams.isKeyDownOrModifierDown();
       bool result = keytokey_.remap(remapParams);

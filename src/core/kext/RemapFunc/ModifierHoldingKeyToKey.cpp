@@ -51,7 +51,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     ModifierHoldingKeyToKey::remap(RemapParams& remapParams)
     {
       if (remapParams.isremapped) goto nottargetkey;
-      if (! fromkeychecker_.isFromKey(remapParams, fromKey_.key, fromKey_.flags)) goto nottargetkey;
+      if (! fromkeychecker_.isFromKey(remapParams.params, fromKey_.key, fromKey_.flags)) goto nottargetkey;
       if (! ic_.checkThreshold(config.parameter_modifierholdingkeytokey_wait)) goto nottargetkey;
 
       return keytokey_.remap(remapParams);

@@ -1,7 +1,7 @@
 #ifndef FROMKEYCHECKER_HPP
 #define FROMKEYCHECKER_HPP
 
-#include "remap.hpp"
+#include "CallBackWrapper.hpp"
 #include "FlagStatus.hpp"
 #include "KeyCode.hpp"
 
@@ -10,14 +10,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     FromKeyChecker(void) : active_(false) {}
 
-    bool isFromKey(const RemapParams& remapParams, KeyCode fromKeyCode, Flags fromFlags) {
-      if (remapParams.params.key != fromKeyCode) return false;
-      bool isKeyDown = remapParams.isKeyDownOrModifierDown();
+    bool isFromKey(const Params_KeyboardEventCallBack& params, KeyCode fromKeyCode, Flags fromFlags) {
+      if (params.key != fromKeyCode) return false;
+      bool isKeyDown = params.eventType.isKeyDownOrModifierDown(params.key, params.flags);
       return isFromKey(isKeyDown, fromFlags);
     }
-    bool isFromKey(const RemapConsumerParams& remapParams, ConsumerKeyCode fromKeyCode, Flags fromFlags) {
-      if (remapParams.params.key != fromKeyCode) return false;
-      bool isKeyDown = (remapParams.params.eventType == EventType::DOWN);
+    bool isFromKey(const Params_KeyboardSpecialEventCallback& params, ConsumerKeyCode fromKeyCode, Flags fromFlags) {
+      if (params.key != fromKeyCode) return false;
+      bool isKeyDown = (params.eventType == EventType::DOWN);
       return isFromKey(isKeyDown, fromFlags);
     }
 
