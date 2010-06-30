@@ -86,7 +86,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       if (remapParams.isremapped) return false;
-      if (! fromkeychecker_.isFromKey(remapParams, fromKey_.key, fromKey_.flags)) return false;
+      if (! fromkeychecker_.isFromKey(remapParams.params, fromKey_.key, fromKey_.flags)) return false;
       remapParams.isremapped = true;
 
       // ----------------------------------------
