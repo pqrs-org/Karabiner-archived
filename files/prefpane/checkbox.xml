@@ -967,6 +967,16 @@
           <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::DASHBOARD</autogen>
         </item>
         <item>
+          <name>Eject to Expose if no modifiers pressed</name>
+          <sysctl>remap.eject2expose_withoutmodifiers</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::EXPOSE_ALL</autogen>
+        </item>
+        <item>
+          <name>Eject to Expose</name>
+          <sysctl>remap.eject2expose</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::EXPOSE_ALL</autogen>
+        </item>
+        <item>
           <name>Eject to Forward Delete</name>
           <sysctl>remap.eject2forwarddelete</sysctl>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::FORWARD_DELETE</autogen>
@@ -982,16 +992,6 @@
           <name>Eject to Forward Delete if no modifiers pressed</name>
           <sysctl>remap.eject2forwarddelete_withoutmodifiers</sysctl>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
-        </item>
-        <item>
-          <name>Eject to Expose if no modifiers pressed</name>
-          <sysctl>remap.eject2expose_withoutmodifiers</sysctl>
-          <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::EXPOSE_ALL</autogen>
-        </item>
-        <item>
-          <name>Eject to Expose</name>
-          <sysctl>remap.eject2expose</sysctl>
-          <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::EXPOSE_ALL</autogen>
         </item>
         <item>
           <name>Eject to F14</name>
