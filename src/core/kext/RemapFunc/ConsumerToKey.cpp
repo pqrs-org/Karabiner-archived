@@ -1,5 +1,4 @@
 #include "ConsumerToKey.hpp"
-#include "CommonData.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {

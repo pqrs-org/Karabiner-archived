@@ -105,7 +105,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       // ----------------------------------------
-
       switch (toButtons_->size()) {
         case 0:
           break;
