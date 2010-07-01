@@ -49,25 +49,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       FromKeyChecker fromkeychecker_;
     };
 
-    class PointingButtonToPointingButton {
-    public:
-      PointingButtonToPointingButton(void) : active_(false) {}
-
-      bool remap(RemapPointingParams_relative& remapParams,
-                 PointingButton fromButton, Flags fromFlags,
-                 PointingButton toButton,   Flags toFlags = ModifierFlag::NONE);
-
-      // no fromFlags version
-      bool remap(RemapPointingParams_relative& remapParams,
-                 PointingButton fromButton,
-                 PointingButton toButton,   Flags toFlags = ModifierFlag::NONE) {
-        return remap(remapParams, fromButton, 0, toButton, toFlags);
-      }
-
-    private:
-      bool active_;
-    };
-
     class KeyToPointingButton {
     public:
       KeyToPointingButton(void) : active_(false) {}
@@ -85,7 +66,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     private:
       bool active_;
-      PointingButtonToPointingButton buttontobutton_;
     };
 
     class PointingButtonToKey {
@@ -96,7 +76,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     private:
       KeyToKey keytokey_;
-      PointingButtonToPointingButton buttontobutton_;
       bool active_;
     };
 
