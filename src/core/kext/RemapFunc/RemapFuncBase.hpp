@@ -25,6 +25,15 @@ namespace org_pqrs_KeyRemap4MacBook {
       Flags flags;
     };
     DECLARE_VECTOR(PairConsumerKeyFlags);
+
+    struct PairPointingButtonFlags {
+      PairPointingButtonFlags(void) {}
+      PairPointingButtonFlags(PointingButton b) : button(b) {}
+
+      PointingButton button;
+      Flags flags;
+    };
+    DECLARE_VECTOR(PairPointingButtonFlags);
   }
 }
 
