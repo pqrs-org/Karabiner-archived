@@ -315,9 +315,14 @@
           <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, ModifierFlag::FN, PointingButton::LEFT, ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
-          <name>MiddleClick to Double-LeftClick</name>
+          <name>RightClick to Double-LeftClick</name>
           <sysctl>remap.samples_pointingbuttontopointingbutton_3</sysctl>
-          <autogen>--PointingButtonToPointingButton-- PointingButton::MIDDLE, PointingButton::LEFT, PointingButton::LEFT</autogen>
+          <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, PointingButton::LEFT, PointingButton::LEFT</autogen>
+        </item>
+        <item>
+          <name>RightClick to Shift_L+LeftClick, LeftClick</name>
+          <sysctl>remap.samples_pointingbuttontopointingbutton_4</sysctl>
+          <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, PointingButton::LEFT, ModifierFlag::SHIFT_L, PointingButton::LEFT</autogen>
         </item>
       </list>
     </item>
