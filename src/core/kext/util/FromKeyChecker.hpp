@@ -1,6 +1,7 @@
 #ifndef FROMKEYCHECKER_HPP
 #define FROMKEYCHECKER_HPP
 
+#include "ButtonStatus.hpp"
 #include "CallBackWrapper.hpp"
 #include "FlagStatus.hpp"
 #include "KeyCode.hpp"
@@ -20,6 +21,15 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool isKeyDown = (params.eventType == EventType::DOWN);
       return isFromKey(isKeyDown, fromFlags);
     }
+    bool isFromButton(PointingButton fromButton, Flags fromFlags) {
+      if (ButtonStatus::justPressed().isOn(fromButton)) {
+        return isFromKey(true,  fromFlags);
+      } else if (ButtonStatus::justReleased().isOn(fromButton)) {
+        return isFromKey(false, fromFlags);
+      }
+      return false;
+    }
+    bool isactive(void) const { return active_; }
 
   private:
     bool isFromKey(bool isKeyDown, Flags fromFlags) {
