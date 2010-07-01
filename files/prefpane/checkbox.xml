@@ -191,6 +191,11 @@
               <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, PointingButton::LEFT</autogen>
             </item>
             <item>
+              <name>Control+RightClick to Double-LeftClick</name>
+              <sysctl>remap.pointing_controlrightclick2doubleleftclick</sysctl>
+              <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, VK_CONTROL, PointingButton::LEFT, PointingButton::LEFT</autogen>
+            </item>
+            <item>
               <name>MiddleClick to Command+LeftClick</name>
               <sysctl>remap.pointing_middleclick2commandLeftclick</sysctl>
               <autogen>--PointingButtonToPointingButton-- PointingButton::MIDDLE, PointingButton::LEFT, ModifierFlag::COMMAND_L</autogen>
