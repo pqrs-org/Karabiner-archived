@@ -984,6 +984,11 @@
           <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
         </item>
         <item>
+          <name>Eject to Expose if no modifiers pressed</name>
+          <sysctl>remap.eject2expose_withoutmodifiers</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::EXPOSE_ALL</autogen>
+        </item>
+        <item>
           <name>Eject to Expose</name>
           <sysctl>remap.eject2expose</sysctl>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::EXPOSE_ALL</autogen>
