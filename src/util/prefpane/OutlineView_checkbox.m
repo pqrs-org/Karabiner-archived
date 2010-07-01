@@ -213,6 +213,15 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
       NSNumber* new = [[[NSNumber alloc] initWithBool:! [value boolValue]] autorelease];
       [BUNDLEPREFIX(SysctlWrapper) setSysctlInt:@"keyremap4macbook" name:name value:new sysctl_set:sysctl_set sysctl_ctl:sysctl_ctl];
     }
+  } else {
+    // expand/collapse tree
+    if ([outlineView isExpandable:item]) {
+      if ([outlineView isItemExpanded:item]) {
+        [outlineView collapseItem:item];
+      } else {
+        [outlineView expandItem:item];
+      }
+    }
   }
 }
 
