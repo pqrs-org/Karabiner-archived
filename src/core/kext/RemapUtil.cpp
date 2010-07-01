@@ -167,63 +167,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     return true;
   }
 
-  bool
-  RemapUtil::PointingButtonToKey::remap(RemapPointingParams_relative& remapParams,
-                                        PointingButton fromButton, Flags fromFlags,
-                                        KeyCode toKeyCode1,  Flags toFlags1,
-                                        KeyCode toKeyCode2,  Flags toFlags2,
-                                        KeyCode toKeyCode3,  Flags toFlags3,
-                                        KeyCode toKeyCode4,  Flags toFlags4,
-                                        KeyCode toKeyCode5,  Flags toFlags5)
-  {
-    if (remapParams.isremapped) return false;
-
-    if (ButtonStatus::justPressed().isOn(fromButton)) {
-      if (FlagStatus::makeFlags().isOn(fromFlags)) {
-        ButtonStatus::decrease(fromButton);
-        active_ = true;
-        goto doremap;
-      }
-    } else if (ButtonStatus::justReleased().isOn(fromButton)) {
-      if (active_) {
-        ButtonStatus::increase(fromButton);
-        active_ = false;
-        goto doremap;
-      }
-    }
-
-    return false;
-
-  doremap:
-    // ----------------------------------------
-    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(active_ ? EventType::DOWN : EventType::UP,
-                                                                                   FlagStatus::makeFlags(),
-                                                                                   KeyCode::VK_PSEUDO_KEY,
-                                                                                   CommonData::getcurrent_keyboardType(),
-                                                                                   false));
-    if (! ptr) return false;
-    Params_KeyboardEventCallBack& params = *ptr;
-
-    RemapParams rp(params);
-    if (toKeyCode2 == KeyCode::VK_NONE) {
-      if (! keytokey_.remap(rp, KeyCode::VK_PSEUDO_KEY, fromFlags, toKeyCode1, toFlags1)) {
-        return false;
-      }
-    } else {
-      if (! keytokey_.remap(rp, KeyCode::VK_PSEUDO_KEY, fromFlags,
-                            toKeyCode1, toFlags1,
-                            toKeyCode2, toFlags2,
-                            toKeyCode3, toFlags3,
-                            toKeyCode4, toFlags4,
-                            toKeyCode5, toFlags5)) {
-        return false;
-      }
-    }
-
-    remapParams.drop();
-    return true;
-  }
-
   // ------------------------------------------------------------
   bool
   RemapUtil::PointingRelativeToScroll::remap(RemapPointingParams_relative& remapParams, Buttons buttons, Flags fromFlags)
