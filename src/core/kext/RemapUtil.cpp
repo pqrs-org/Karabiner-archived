@@ -117,50 +117,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  RemapUtil::PointingButtonToPointingButton::remap(RemapPointingParams_relative& remapParams,
-                                                   PointingButton fromButton, Flags fromFlags,
-                                                   PointingButton toButton,   Flags toFlags)
-  {
-    if (remapParams.isremapped) return false;
-
-    // We consider it about Option_L+LeftClick to MiddleClick.
-    // LeftClick generates the following events by ButtonDown and ButtonUp.
-    //
-    // (1) buttons == PointingButton::LEFT  (ButtonDown event)
-    // (2) buttons == PointingButton::NONE  (ButtonUp event)
-    //
-    // We must cancel Option_L in both (1), (2).
-    // We use "active_" flag to detect (2), because the "buttons" has no useful information at (2).
-    //
-    // Attention: We need fire MiddleClick only at (1).
-
-    if (ButtonStatus::justPressed().isOn(fromButton) && FlagStatus::makeFlags().isOn(fromFlags)) {
-      active_ = true;
-      ButtonStatus::decrease(fromButton);
-      ButtonStatus::increase(toButton);
-    } else if (ButtonStatus::justReleased().isOn(fromButton) && active_) {
-      // We need to handle ButtonUp Event, so keep active_.
-      ButtonStatus::decrease(toButton);
-      ButtonStatus::increase(fromButton);
-    }
-
-    if (! active_) return false;
-
-    // ----------------------------------------
-    FlagStatus::temporary_decrease(fromFlags);
-    FlagStatus::temporary_increase(toFlags);
-
-    EventOutput::FireRelativePointer::fire(ButtonStatus::makeButtons(), remapParams.params.dx, remapParams.params.dy);
-
-    if (ButtonStatus::justReleased().isOn(fromButton)) {
-      active_ = false;
-    }
-
-    remapParams.drop();
-    return true;
-  }
-
-  bool
   RemapUtil::KeyToPointingButton::remap(RemapParams& remapParams, KeyCode fromKeyCode, Flags fromFlags, PointingButton toButton)
   {
     if (remapParams.isremapped) return false;
