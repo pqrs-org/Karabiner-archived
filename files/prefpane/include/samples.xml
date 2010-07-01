@@ -305,24 +305,34 @@
       <name>PointingButtonToPointingButton</name>
       <list>
         <item>
+          <name>RightClick to MiddleClick</name>
+          <sysctl>remap.samples_pointingbuttontopointingbutton_r2m</sysctl>
+          <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
+        </item>
+        <item>
           <name>Option+LeftClick to MiddleClick</name>
-          <sysctl>remap.samples_pointingbuttontopointingbutton_1</sysctl>
+          <sysctl>remap.samples_pointingbuttontopointingbutton_ol2m</sysctl>
           <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, VK_OPTION, PointingButton::MIDDLE</autogen>
         </item>
         <item>
           <name>FN+LeftClick to Option_L+LeftClick</name>
-          <sysctl>remap.samples_pointingbuttontopointingbutton_2</sysctl>
+          <sysctl>remap.samples_pointingbuttontopointingbutton_fl2ol</sysctl>
           <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, ModifierFlag::FN, PointingButton::LEFT, ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
           <name>RightClick to Double-LeftClick</name>
-          <sysctl>remap.samples_pointingbuttontopointingbutton_3</sysctl>
+          <sysctl>remap.samples_pointingbuttontopointingbutton_r2dl</sysctl>
           <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, PointingButton::LEFT, PointingButton::LEFT</autogen>
         </item>
         <item>
           <name>RightClick to Shift_L+LeftClick, LeftClick</name>
-          <sysctl>remap.samples_pointingbuttontopointingbutton_4</sysctl>
+          <sysctl>remap.samples_pointingbuttontopointingbutton_r2sll</sysctl>
           <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, PointingButton::LEFT, ModifierFlag::SHIFT_L, PointingButton::LEFT</autogen>
+        </item>
+        <item>
+          <name>Control+RightClick to Double-LeftClick</name>
+          <sysctl>remap.samples_pointingbuttontopointingbutton_cr2dl</sysctl>
+          <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, VK_CONTROL, PointingButton::LEFT, PointingButton::LEFT</autogen>
         </item>
       </list>
     </item>
