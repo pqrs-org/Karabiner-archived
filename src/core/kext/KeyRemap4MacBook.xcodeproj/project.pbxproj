@@ -20,6 +20,8 @@
 		34379D0F11DB958900CD588D /* PointingButtonToPointingButton.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34379D0D11DB958900CD588D /* PointingButtonToPointingButton.hpp */; };
 		343BE53911D8347100C7C701 /* ConsumerToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 343BE53711D8347100C7C701 /* ConsumerToKey.cpp */; };
 		343BE53A11D8347100C7C701 /* ConsumerToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 343BE53811D8347100C7C701 /* ConsumerToKey.hpp */; };
+		344034B311DD5ACA00386638 /* PointingButtonToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 344034B111DD5ACA00386638 /* PointingButtonToKey.cpp */; };
+		344034B411DD5ACA00386638 /* PointingButtonToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 344034B211DD5ACA00386638 /* PointingButtonToKey.hpp */; };
 		3443E81111D8536B00BB28FB /* DoublePressModifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3443E80F11D8536B00BB28FB /* DoublePressModifier.cpp */; };
 		3443E81211D8536B00BB28FB /* DoublePressModifier.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3443E81011D8536B00BB28FB /* DoublePressModifier.hpp */; };
 		345004AD0E7CE48F0075324B /* Core.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345004A80E7CE48F0075324B /* Core.cpp */; };
@@ -106,6 +108,8 @@
 		34379D0D11DB958900CD588D /* PointingButtonToPointingButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PointingButtonToPointingButton.hpp; path = RemapFunc/PointingButtonToPointingButton.hpp; sourceTree = "<group>"; };
 		343BE53711D8347100C7C701 /* ConsumerToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConsumerToKey.cpp; path = RemapFunc/ConsumerToKey.cpp; sourceTree = "<group>"; };
 		343BE53811D8347100C7C701 /* ConsumerToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ConsumerToKey.hpp; path = RemapFunc/ConsumerToKey.hpp; sourceTree = "<group>"; };
+		344034B111DD5ACA00386638 /* PointingButtonToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PointingButtonToKey.cpp; path = RemapFunc/PointingButtonToKey.cpp; sourceTree = "<group>"; };
+		344034B211DD5ACA00386638 /* PointingButtonToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PointingButtonToKey.hpp; path = RemapFunc/PointingButtonToKey.hpp; sourceTree = "<group>"; };
 		3443E80F11D8536B00BB28FB /* DoublePressModifier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DoublePressModifier.cpp; path = RemapFunc/DoublePressModifier.cpp; sourceTree = "<group>"; };
 		3443E81011D8536B00BB28FB /* DoublePressModifier.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DoublePressModifier.hpp; path = RemapFunc/DoublePressModifier.hpp; sourceTree = "<group>"; };
 		345004A80E7CE48F0075324B /* Core.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Core.cpp; sourceTree = "<group>"; };
@@ -248,6 +252,8 @@
 		345E3EC511D79D17004B6347 /* RemapFunc */ = {
 			isa = PBXGroup;
 			children = (
+				344034B111DD5ACA00386638 /* PointingButtonToKey.cpp */,
+				344034B211DD5ACA00386638 /* PointingButtonToKey.hpp */,
 				34379D0C11DB958900CD588D /* PointingButtonToPointingButton.cpp */,
 				34379D0D11DB958900CD588D /* PointingButtonToPointingButton.hpp */,
 				34AC5ECF11DA3BD60089BC58 /* KeyOverlaidModifier.cpp */,
@@ -370,6 +376,7 @@
 				341272FF11D8FE0E000A62DB /* HoldingKeyToKey.hpp in Headers */,
 				34AC5ED211DA3BD60089BC58 /* KeyOverlaidModifier.hpp in Headers */,
 				34379D0F11DB958900CD588D /* PointingButtonToPointingButton.hpp in Headers */,
+				344034B411DD5ACA00386638 /* PointingButtonToKey.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +482,7 @@
 				341272FE11D8FE0E000A62DB /* HoldingKeyToKey.cpp in Sources */,
 				34AC5ED111DA3BD60089BC58 /* KeyOverlaidModifier.cpp in Sources */,
 				34379D0E11DB958900CD588D /* PointingButtonToPointingButton.cpp in Sources */,
+				344034B311DD5ACA00386638 /* PointingButtonToKey.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

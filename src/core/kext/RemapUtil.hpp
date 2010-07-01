@@ -68,17 +68,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool active_;
     };
 
-    class PointingButtonToKey {
-    public:
-      PointingButtonToKey(void) : active_(false) {}
-
-#include "generate/output/include.pointingbuttontokey.hpp"
-
-    private:
-      KeyToKey keytokey_;
-      bool active_;
-    };
-
     // ----------------------------------------
     class PointingRelativeToScroll {
     public:
