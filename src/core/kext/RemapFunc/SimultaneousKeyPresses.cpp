@@ -35,7 +35,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           // pass-through (== no break)
           keytokey_.add(virtualkey_);
           keytokey_.add(fromFlags_);
-          rawToKey_ = newval;
+          toKey_raw_ = newval;
         default:
           keytokey_.add(newval);
           break;
@@ -68,7 +68,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       switch (newval) {
         case OPTION_RAW:
-          isToRawKey_ = OPTION_RAW;
+          isToRawKey_ = true;
           break;
       }
     }
@@ -163,7 +163,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       KeyCode key = virtualkey_;
       if (isToRawKey_) {
-        key = rawToKey_;
+        key = toKey_raw_;
       }
       if (key == KeyCode::VK_NONE) return;
 
