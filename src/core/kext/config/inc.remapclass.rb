@@ -100,7 +100,7 @@ class RemapClass
         @code[:keycode] += "VK_SIMULTANEOUSKEYPRESSES_#{name}_#{@@index} --AUTO--\n"
         @code[:handlevirtualkey] += "if (value#{@@index}_.handlevirtualkey(params)) return true;\n"
 
-      when 'KeyToKey', 'KeyToConsumer', 'DoublePressModifier', 'HoldingKeyToKey', 'IgnoreMultipleSameKeyPress', 'KeyOverlaidModifier', 'ModifierHoldingKeyToKey'
+      when 'KeyToKey', 'KeyToConsumer', 'KeyToPointingButton', 'DoublePressModifier', 'HoldingKeyToKey', 'IgnoreMultipleSameKeyPress', 'KeyOverlaidModifier', 'ModifierHoldingKeyToKey'
         append_to_code_initialize(params)
         append_to_code_terminate
         @code[:variable] << { :index => @@index, :class => "RemapFunc::#{operation}" }
@@ -117,10 +117,6 @@ class RemapClass
         append_to_code_terminate
         @code[:variable] << { :index => @@index, :class => "RemapFunc::#{operation}" }
         @code[:remap_pointing] += "if (value#{@@index}_.remap(remapParams)) break;\n"
-
-      when 'KeyToPointingButton'
-        @code[:variable] << { :index => @@index, :class => "RemapUtil::KeyToPointingButton" }
-        @code[:remap_key] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
 
       when 'PointingRelativeToScroll'
         @code[:variable] << { :index => @@index, :class => "RemapUtil::PointingRelativeToScroll" }
