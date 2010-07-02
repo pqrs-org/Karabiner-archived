@@ -6,6 +6,7 @@
 #include "util/EventInputQueue.hpp"
 #include "RemapFunc/KeyToKey.hpp"
 #include "RemapFunc/KeyToConsumer.hpp"
+#include "RemapFunc/KeyToPointingButton.hpp"
 #include "RemapFunc/ConsumerToConsumer.hpp"
 #include "RemapFunc/ConsumerToKey.hpp"
 #include "RemapFunc/DoublePressModifier.hpp"

@@ -278,14 +278,24 @@
     <item>
       <name>KeyToPointingButton</name>
       <appendix>A to LeftClick (Standard)</appendix>
+      <appendix>S to Double-LeftClick</appendix>
+      <appendix>D to Shift_L+LeftClick,RightClick</appendix>
       <appendix>Option_L to LeftClick (Modifier)</appendix>
+      <appendix>Shift_R to LeftClick,RightClick (Modifier)</appendix>
       <appendix>Shift+B to RightClick (Key+Modifier)</appendix>
+      <appendix>Shift+F to RightClick,MiddleClick (Key+Modifier)</appendix>
       <appendix>Shift+Control_L to RightClick (Modifier+Modifier)</appendix>
+      <appendix>Shift+Command_L to RightClick,MiddleClick (Modifier+Modifier)</appendix>
       <sysctl>remap.samples_keytopointingbutton</sysctl>
       <autogen>--KeyToPointingButton-- KeyCode::A, PointingButton::LEFT</autogen>
+      <autogen>--KeyToPointingButton-- KeyCode::S, PointingButton::LEFT, PointingButton::LEFT</autogen>
+      <autogen>--KeyToPointingButton-- KeyCode::D, PointingButton::LEFT, ModifierFlag::SHIFT_L, PointingButton::RIGHT</autogen>
       <autogen>--KeyToPointingButton-- KeyCode::OPTION_L, PointingButton::LEFT</autogen>
+      <autogen>--KeyToPointingButton-- KeyCode::SHIFT_R,  PointingButton::LEFT, PointingButton::RIGHT</autogen>
       <autogen>--KeyToPointingButton-- KeyCode::B, VK_SHIFT, PointingButton::RIGHT</autogen>
+      <autogen>--KeyToPointingButton-- KeyCode::F, VK_SHIFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
       <autogen>--KeyToPointingButton-- KeyCode::CONTROL_L, VK_SHIFT, PointingButton::RIGHT</autogen>
+      <autogen>--KeyToPointingButton-- KeyCode::COMMAND_L, VK_SHIFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
     </item>
 
     <item>
@@ -328,6 +338,11 @@
           <name>RightClick to Shift_L+LeftClick, LeftClick</name>
           <sysctl>remap.samples_pointingbuttontopointingbutton_r2sll</sysctl>
           <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, PointingButton::LEFT, ModifierFlag::SHIFT_L, PointingButton::LEFT</autogen>
+        </item>
+        <item>
+          <name>RightClick to Shift_L+LeftClick, RightClick</name>
+          <sysctl>remap.samples_pointingbuttontopointingbutton_r2slr</sysctl>
+          <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, PointingButton::LEFT, ModifierFlag::SHIFT_L, PointingButton::RIGHT</autogen>
         </item>
         <item>
           <name>Control+RightClick to Double-LeftClick</name>
