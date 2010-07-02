@@ -15,6 +15,7 @@
 #include "RemapFunc/ModifierHoldingKeyToKey.hpp"
 #include "RemapFunc/PointingButtonToKey.hpp"
 #include "RemapFunc/PointingButtonToPointingButton.hpp"
+#include "RemapFunc/SimultaneousKeyPresses.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapClassManager {
