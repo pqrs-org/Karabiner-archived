@@ -3,64 +3,9 @@
 #include "EventOutput.hpp"
 #include "FlagStatus.hpp"
 #include "KeyCode.hpp"
-#include "RemapClass.hpp"
 #include "RemapUtil.hpp"
-#include "util/KeyboardRepeat.hpp"
-#include "util/ListHookedKeyboard.hpp"
-#include "VirtualKey.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  bool
-  RemapUtil::KeyToPointingButton::remap(RemapParams& remapParams, KeyCode fromKeyCode, Flags fromFlags, PointingButton toButton)
-  {
-    if (remapParams.isremapped) return false;
-    if (remapParams.params.key != fromKeyCode) return false;
-
-    bool isKeyDown = remapParams.isKeyDownOrModifierDown();
-    if (isKeyDown) {
-      if (! FlagStatus::makeFlags().isOn(fromFlags)) return false;
-      active_ = true;
-    } else {
-      if (! active_) return false;
-      active_ = false;
-    }
-
-    // ------------------------------------------------------------
-    remapParams.isremapped = true;
-
-    // We need to call FlagStatus::decrease before mapping,
-    // and call FlagStatus::increase after a mapping.
-    //
-    // ex. Option_L+Space to Right Button
-    // (1) KeyDown Option_L
-    //      1. KeyDown Option_L
-    // (2) KeyDown Space
-    //      2. KeyUp   Option_L
-    //      3. ButtonDown Right
-    // (3) KeyUp   Space
-    //      4. ButtonUp   Right
-    //      5. KeyUp   Option_L
-    //
-    // *** To support Mouse Dragging,
-    // *** we need to use FlagStatus::decrease/increase.
-    // *** (not temporary_decrease/temporary_increase).
-
-    if (isKeyDown) {
-      FlagStatus::decrease(fromFlags | fromKeyCode.getModifierFlag());
-      ButtonStatus::increase(toButton);
-      EventOutput::FireRelativePointer::fire();
-
-    } else {
-      ButtonStatus::decrease(toButton);
-      EventOutput::FireRelativePointer::fire();
-
-      FlagStatus::increase(fromFlags | fromKeyCode.getModifierFlag());
-      EventOutput::FireModifiers::fire();
-    }
-
-    return true;
-  }
-
   // ------------------------------------------------------------
   bool
   RemapUtil::PointingRelativeToScroll::remap(RemapPointingParams_relative& remapParams, Buttons buttons, Flags fromFlags)

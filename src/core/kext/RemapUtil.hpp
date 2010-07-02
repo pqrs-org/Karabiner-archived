@@ -23,25 +23,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     inline unsigned int abs(int v) { return v > 0 ? v : -v; }
 
-    class KeyToPointingButton {
-    public:
-      KeyToPointingButton(void) : active_(false) {}
-
-      bool remap(RemapParams& remapParams,
-                 KeyCode fromKeyCode, Flags fromFlags,
-                 PointingButton toButton);
-
-      // no fromFlags version
-      bool remap(RemapParams& remapParams,
-                 KeyCode fromKeyCode,
-                 PointingButton toButton) {
-        return remap(remapParams, fromKeyCode, 0, toButton);
-      }
-
-    private:
-      bool active_;
-    };
-
     // ----------------------------------------
     class PointingRelativeToScroll {
     public:
