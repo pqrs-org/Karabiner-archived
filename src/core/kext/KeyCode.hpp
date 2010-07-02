@@ -233,10 +233,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       return (value_ & buttons.get()) == buttons.get();
     }
 
-    Buttons justPressed(Buttons previous) {
+    Buttons justPressed(Buttons previous) const {
       return value_ & ~(previous.get());
     }
-    Buttons justReleased(Buttons previous) {
+    Buttons justReleased(Buttons previous) const {
       return ~value_ & (previous.get());
     }
 
