@@ -188,13 +188,6 @@
     </item>
 
     <item>
-      <name>ModifierHoldingKeyToKey</name>
-      <appendix>Shift(Holding)+A to Return</appendix>
-      <sysctl>remap.samples_modifierholdingkeytokey</sysctl>
-      <autogen>--ModifierHoldingKeyToKey-- KeyCode::A, VK_SHIFT, KeyCode::RETURN</autogen>
-    </item>
-
-    <item>
       <name>HoldingKeyToKey</name>
       <sysctl>remap.samples_holdingkeytokey</sysctl>
       <appendix>Escape to Tab (+ Holding Escape to Space)</appendix>
