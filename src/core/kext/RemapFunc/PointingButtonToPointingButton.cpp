@@ -123,9 +123,9 @@ namespace org_pqrs_KeyRemap4MacBook {
             for (size_t i = 0; i < toButtons_->size(); ++i) {
               FlagStatus::temporary_increase((*toButtons_)[i].flags);
 
-              ButtonStatus::increase((*toButtons_)[0].button);
+              ButtonStatus::increase((*toButtons_)[i].button);
               EventOutput::FireRelativePointer::fire(ButtonStatus::makeButtons());
-              ButtonStatus::decrease((*toButtons_)[0].button);
+              ButtonStatus::decrease((*toButtons_)[i].button);
               EventOutput::FireRelativePointer::fire(ButtonStatus::makeButtons());
 
               FlagStatus::temporary_decrease((*toButtons_)[i].flags);
