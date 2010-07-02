@@ -23,32 +23,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     inline unsigned int abs(int v) { return v > 0 ? v : -v; }
 
-    // XXX: Delete Me. Use RemapFunc::KeyToKey instead.
-    class KeyToKey {
-    public:
-      // Don't use reference for a Flags argument.
-      // Because Flags is generated from a combination of ModifierFlag anytime,
-      // it wastes the stack of the caller if we use a reference argument.
-      bool remap(RemapParams& remapParams,
-                 KeyCode fromKeyCode, Flags fromFlags,
-                 KeyCode toKeyCode,   Flags toFlags = ModifierFlag::NONE,
-                 bool isSetKeyRepeat = true);
-      // no-fromFlags version.
-      bool remap(RemapParams& remapParams,
-                 KeyCode fromKeyCode,
-                 KeyCode toKeyCode, Flags toFlags = ModifierFlag::NONE,
-                 bool isSetKeyRepeat = true) {
-        return remap(remapParams, fromKeyCode, 0, toKeyCode, toFlags, isSetKeyRepeat);
-      }
-
-      // --------------------------------------------------
-      // Combination
-#include "generate/output/include.keytokey.hpp"
-
-    private:
-      FromKeyChecker fromkeychecker_;
-    };
-
     class KeyToPointingButton {
     public:
       KeyToPointingButton(void) : active_(false) {}
