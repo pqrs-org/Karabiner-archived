@@ -545,3 +545,11 @@ TEST(Buttons, isOn) {
   EXPECT_FALSE(buttons.isOn(PointingButton::RIGHT));
   EXPECT_FALSE(buttons.isOn(PointingButton::LEFT | PointingButton::RIGHT));
 }
+
+TEST(Buttons, justPressed) {
+  Buttons previous(PointingButton::LEFT | PointingButton::MIDDLE | PointingButton::BUTTON4);
+  Buttons buttons(PointingButton::RIGHT | PointingButton::MIDDLE | PointingButton::BUTTON5);
+
+  EXPECT_EQ(Buttons(PointingButton::RIGHT | PointingButton::BUTTON5), buttons.justPressed(previous));
+  EXPECT_EQ(Buttons(PointingButton::LEFT | PointingButton::BUTTON4), buttons.justReleased(previous));
+}
