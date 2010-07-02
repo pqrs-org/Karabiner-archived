@@ -79,6 +79,8 @@
 		34D347E711D8106C00D70815 /* KeyToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34D347E511D8106C00D70815 /* KeyToKey.hpp */; };
 		34DBD43D11D80B6F000163BE /* EventOutput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34DBD43B11D80B6F000163BE /* EventOutput.cpp */; };
 		34DBD43E11D80B6F000163BE /* EventOutput.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34DBD43C11D80B6F000163BE /* EventOutput.hpp */; };
+		34E04BFD11DD878D001AE230 /* SimultaneousKeyPresses.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34E04BFB11DD878D001AE230 /* SimultaneousKeyPresses.cpp */; };
+		34E04BFE11DD878D001AE230 /* SimultaneousKeyPresses.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34E04BFC11DD878D001AE230 /* SimultaneousKeyPresses.hpp */; };
 		34F13A860E73E69D006EB163 /* IntervalChecker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F13A840E73E69D006EB163 /* IntervalChecker.cpp */; };
 		34F13A870E73E69D006EB163 /* IntervalChecker.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34F13A850E73E69D006EB163 /* IntervalChecker.hpp */; };
 		34F14BAE0E861FC5001C15F3 /* CallBackWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F14BAC0E861FC5001C15F3 /* CallBackWrapper.cpp */; };
@@ -167,6 +169,8 @@
 		34D347E511D8106C00D70815 /* KeyToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyToKey.hpp; path = RemapFunc/KeyToKey.hpp; sourceTree = "<group>"; };
 		34DBD43B11D80B6F000163BE /* EventOutput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventOutput.cpp; path = util/EventOutput.cpp; sourceTree = "<group>"; };
 		34DBD43C11D80B6F000163BE /* EventOutput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = EventOutput.hpp; path = util/EventOutput.hpp; sourceTree = "<group>"; };
+		34E04BFB11DD878D001AE230 /* SimultaneousKeyPresses.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SimultaneousKeyPresses.cpp; path = RemapFunc/SimultaneousKeyPresses.cpp; sourceTree = "<group>"; };
+		34E04BFC11DD878D001AE230 /* SimultaneousKeyPresses.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SimultaneousKeyPresses.hpp; path = RemapFunc/SimultaneousKeyPresses.hpp; sourceTree = "<group>"; };
 		34F13A840E73E69D006EB163 /* IntervalChecker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IntervalChecker.cpp; path = util/IntervalChecker.cpp; sourceTree = "<group>"; };
 		34F13A850E73E69D006EB163 /* IntervalChecker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IntervalChecker.hpp; path = util/IntervalChecker.hpp; sourceTree = "<group>"; };
 		34F14BAC0E861FC5001C15F3 /* CallBackWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CallBackWrapper.cpp; path = util/CallBackWrapper.cpp; sourceTree = "<group>"; };
@@ -252,6 +256,8 @@
 		345E3EC511D79D17004B6347 /* RemapFunc */ = {
 			isa = PBXGroup;
 			children = (
+				34E04BFB11DD878D001AE230 /* SimultaneousKeyPresses.cpp */,
+				34E04BFC11DD878D001AE230 /* SimultaneousKeyPresses.hpp */,
 				344034B111DD5ACA00386638 /* PointingButtonToKey.cpp */,
 				344034B211DD5ACA00386638 /* PointingButtonToKey.hpp */,
 				34379D0C11DB958900CD588D /* PointingButtonToPointingButton.cpp */,
@@ -377,6 +383,7 @@
 				34AC5ED211DA3BD60089BC58 /* KeyOverlaidModifier.hpp in Headers */,
 				34379D0F11DB958900CD588D /* PointingButtonToPointingButton.hpp in Headers */,
 				344034B411DD5ACA00386638 /* PointingButtonToKey.hpp in Headers */,
+				34E04BFE11DD878D001AE230 /* SimultaneousKeyPresses.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +490,7 @@
 				34AC5ED111DA3BD60089BC58 /* KeyOverlaidModifier.cpp in Sources */,
 				34379D0E11DB958900CD588D /* PointingButtonToPointingButton.cpp in Sources */,
 				344034B311DD5ACA00386638 /* PointingButtonToKey.cpp in Sources */,
+				34E04BFD11DD878D001AE230 /* SimultaneousKeyPresses.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

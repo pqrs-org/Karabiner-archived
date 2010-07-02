@@ -91,15 +91,14 @@ class RemapClass
         @code[:get_statusmessage] += "return #{params};\n"
 
       when 'SimultaneousKeyPresses'
-        @code[:variable] << { :index => @@index, :class => "EventInputQueue::Remap" }
-        @code[:keycode] += "VK_SIMULTANEOUSKEYPRESSES_#{name}_#{@@index} --AUTO--\n"
+        params = "KeyCode::VK_SIMULTANEOUSKEYPRESSES_#{name}_#{@@index}, " + params
+        params.gsub!('SimultaneousKeyPresses::Option::RAW', 'RemapFunc::SimultaneousKeyPresses::OPTION_RAW')
+        append_to_code_initialize(params)
+        append_to_code_terminate
+        @code[:variable] << { :index => @@index, :class => "RemapFunc::SimultaneousKeyPresses" }
         @code[:remap_simultaneouskeypresses] += "value#{@@index}_.remap();\n"
-        @code[:handlevirtualkey] += "if (value#{@@index}_.handleVirtualKey(params)) return true;\n"
-
-        @code[:initialize] += "static void initialize_value#{@@index}(void) {\n"
-        @code[:initialize] += "value#{@@index}_.initialize(KeyCode::VK_SIMULTANEOUSKEYPRESSES_#{name}_#{@@index}, #{params});\n"
-        @code[:initialize] += "}\n"
-        @@entries[:initialize] << "RemapClass_#{@name}::initialize_value#{@@index}"
+        @code[:keycode] += "VK_SIMULTANEOUSKEYPRESSES_#{name}_#{@@index} --AUTO--\n"
+        @code[:handlevirtualkey] += "if (value#{@@index}_.handlevirtualkey(params)) return true;\n"
 
       when 'KeyToKey', 'KeyToConsumer', 'DoublePressModifier', 'HoldingKeyToKey', 'IgnoreMultipleSameKeyPress', 'KeyOverlaidModifier', 'ModifierHoldingKeyToKey'
         append_to_code_initialize(params)
