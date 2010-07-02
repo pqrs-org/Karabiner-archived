@@ -39,7 +39,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       KeyCode fromKey2_;
       Flags fromFlags_;
       bool isToRawKey_;
-      KeyCode rawToKey_;
+      KeyCode toKey_raw_;
       bool active1_;
       bool active2_;
 
