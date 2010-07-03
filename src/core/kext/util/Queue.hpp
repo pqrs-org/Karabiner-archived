@@ -26,7 +26,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     Item* front(void) { return front_; }
     Item* back(void) { return back_; }
-    bool empty(void) { return front_ == NULL; }
+    bool empty(void) const { return front_ == NULL; }
+    size_t size(void) const { return size_; }
 
     // ----------------------------------------
     // *** Don't push same item twice. ***
@@ -52,6 +53,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   private:
     Item* front_;
     Item* back_;
+    size_t size_;
 
     IOLock* lock_;
   };

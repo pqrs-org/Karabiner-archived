@@ -1,7 +1,7 @@
 #include "Queue.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  Queue::Queue(void) : front_(NULL), back_(NULL)
+  Queue::Queue(void) : front_(NULL), back_(NULL), size_(0)
   {
     lock_ = IOLockWrapper::alloc();
   }
@@ -29,6 +29,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! front_) {
       front_ = back_;
     }
+
+    ++size_;
   }
 
   void
@@ -47,5 +49,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     } else {
       back_ = NULL;
     }
+
+    --size_;
   }
 }
