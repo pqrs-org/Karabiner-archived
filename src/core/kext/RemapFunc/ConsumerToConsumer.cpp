@@ -141,5 +141,19 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       return true;
     }
+
+    bool
+    ConsumerToConsumer::call_remap_with_VK_PSEUDO_KEY(EventType eventType)
+    {
+      Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(eventType,
+                                                                                                   FlagStatus::makeFlags(),
+                                                                                                   ConsumerKeyCode::VK_PSEUDO_KEY,
+                                                                                                   false));
+      if (! ptr) return false;
+      Params_KeyboardSpecialEventCallback& params = *ptr;
+
+      RemapConsumerParams rp(params);
+      return remap(rp);
+    }
   }
 }
