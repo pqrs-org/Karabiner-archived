@@ -34,9 +34,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     IOLockWrapper::ScopedLock lk(lock_);
 
-    if (config.debug_devel) {
-      IOLog("KeyRemap4MacBook -Info- EventWatcher::on\n");
-    }
+    IOLOG_DEVEL("EventWatcher::on\n");
 
     for (int i = 0; i < MAXNUM; ++i) {
       if (item_[i]) {
@@ -57,7 +55,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         item_[i] = &b;
 
         if (i == MAXNUM - 1) {
-          IOLog("KeyRemap4MacBook --Warning-- EventWatcher was filled up. Expand MAXNUM.\n");
+          IOLOG_WARN("EventWatcher was filled up. Expand MAXNUM.\n");
         }
         return;
       }
