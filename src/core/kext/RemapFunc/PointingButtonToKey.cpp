@@ -67,7 +67,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     PointingButtonToKey::remap(RemapPointingParams_relative& remapParams)
     {
       if (remapParams.isremapped) return false;
-      if (! fromkeychecker_.isFromButton(fromButton_.button, fromButton_.flags)) return false;
+      if (! fromkeychecker_.isFromPointingButton(fromButton_.button, fromButton_.flags)) return false;
       remapParams.isremapped = true;
 
       bool isButtonDown = ButtonStatus::justPressed().isOn(fromButton_.button);

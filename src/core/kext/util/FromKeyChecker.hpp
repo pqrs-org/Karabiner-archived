@@ -21,13 +21,24 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool isKeyDown = (params.eventType == EventType::DOWN);
       return isFromKey(isKeyDown, fromFlags);
     }
-    bool isFromButton(PointingButton fromButton, Flags fromFlags) {
+    bool isFromPointingButton(PointingButton fromButton, Flags fromFlags) {
       if (ButtonStatus::justPressed().isOn(fromButton)) {
         return isFromKey(true,  fromFlags);
       } else if (ButtonStatus::justReleased().isOn(fromButton)) {
         return isFromKey(false, fromFlags);
       }
       return false;
+    }
+    bool isFromButtons(Buttons fromButtons, Flags fromFlags) {
+      if (fromButtons != 0) {
+        if (ButtonStatus::makeButtons().isOn(fromButtons)) {
+          return isFromKey(true,  fromFlags);
+        } else {
+          return isFromKey(false, fromFlags);
+        }
+      } else {
+        return FlagStatus::makeFlags().isOn(fromFlags);
+      }
     }
     bool isactive(void) const { return active_; }
 

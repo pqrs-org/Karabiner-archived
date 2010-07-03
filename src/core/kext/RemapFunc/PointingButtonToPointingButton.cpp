@@ -71,7 +71,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // (6) Command_L up
 
       if (remapParams.isremapped) return false;
-      bool isFromButton = fromkeychecker_.isFromButton(fromButton_.button, fromButton_.flags);
+      bool isFromButton = fromkeychecker_.isFromPointingButton(fromButton_.button, fromButton_.flags);
       if (! isFromButton && ! fromkeychecker_.isactive()) {
         return false;
       }
