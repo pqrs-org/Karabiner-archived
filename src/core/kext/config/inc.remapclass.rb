@@ -112,15 +112,11 @@ class RemapClass
         @code[:variable] << { :index => @@index, :class => "RemapFunc::#{operation}" }
         @code[:remap_consumer] += "if (value#{@@index}_.remap(remapParams)) break;\n"
 
-      when 'PointingButtonToPointingButton', 'PointingButtonToKey'
+      when 'PointingButtonToPointingButton', 'PointingButtonToKey', 'PointingRelativeToScroll'
         append_to_code_initialize(params)
         append_to_code_terminate
         @code[:variable] << { :index => @@index, :class => "RemapFunc::#{operation}" }
         @code[:remap_pointing] += "if (value#{@@index}_.remap(remapParams)) break;\n"
-
-      when 'PointingRelativeToScroll'
-        @code[:variable] << { :index => @@index, :class => "RemapUtil::PointingRelativeToScroll" }
-        @code[:remap_pointing] += "if (value#{@@index}_.remap(remapParams, #{params})) break;\n"
 
       else
         print "%%% ERROR #{type} %%%\n#{l}\n"
