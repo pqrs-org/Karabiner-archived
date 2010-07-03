@@ -70,7 +70,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           flags.isOn(ModifierFlag::EXTRA3) ||
           flags.isOn(ModifierFlag::EXTRA4) ||
           flags.isOn(ModifierFlag::EXTRA5)) {
-        IOLog("[KeyRemap4MacBook ERROR] CallBackWrapper::checkFlags invalid flags:0x%x\n", flags.get());
+        IOLOG_ERROR("CallBackWrapper::checkFlags invalid flags:0x%x\n", flags.get());
         return false;
       }
       return true;
@@ -83,12 +83,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (key >= KeyCode::VK__BEGIN__) {
       // Invalid keycode
-      IOLog("[KeyRemap4MacBook ERROR] Params_KeyboardEventCallBack::apply invalid key:%d\n", key.get());
+      IOLOG_ERROR("Params_KeyboardEventCallBack::apply invalid key:%d\n", key.get());
       return;
     }
     if (eventType == EventType::MODIFY && ! key.isModifier()) {
       // Invalid modifierkeycode
-      IOLog("[KeyRemap4MacBook ERROR] Params_KeyboardEventCallBack::apply invalid modifierkey:%d\n", key.get());
+      IOLOG_ERROR("Params_KeyboardEventCallBack::apply invalid modifierkey:%d\n", key.get());
       return;
     }
     if (! checkFlags(flags)) return;
@@ -211,7 +211,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (key >= ConsumerKeyCode::VK__BEGIN__) {
       // Invalid keycode
-      IOLog("[KeyRemap4MacBook ERROR] Params_KeyboardSpecialEventCallback::apply invalid key:%d\n", key.get());
+      IOLOG_ERROR("Params_KeyboardSpecialEventCallback::apply invalid key:%d\n", key.get());
       return;
     }
     if (! checkFlags(flags)) return;
@@ -340,9 +340,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (isempty && ic_.getmillisec() > DELAY) {
       fire_nolock();
     } else {
-      if (config.debug_devel) {
-        IOLOG_INFO("Params_KeyboardEventCallBack::Queue enqueued ic_.getmillisec() = %d\n", ic_.getmillisec());
-      }
+      IOLOG_DEVEL("Params_KeyboardEventCallBack::Queue enqueued ic_.getmillisec() = %d\n", ic_.getmillisec());
       timer_.setTimeoutMS(DELAY, false);
     }
 
