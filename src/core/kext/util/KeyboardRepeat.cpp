@@ -6,17 +6,13 @@
 #include "remap.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
+  Queue* KeyboardRepeat::queue_ = NULL;
   TimerWrapper KeyboardRepeat::timer_;
-  KeyboardRepeat::Item KeyboardRepeat::item_[KeyboardRepeat::MAXNUM];
 
   void
   KeyboardRepeat::initialize(IOWorkLoop& workloop)
   {
-    for (int i = 0; i < MAXNUM; ++i) {
-      item_[i].params = Params_KeyboardEventCallBack::alloc(EventType(0), Flags(0), KeyCode(0), KeyboardType(0), true);
-      item_[i].params_consumer = Params_KeyboardSpecialEventCallback::alloc(EventType(0), Flags(0), ConsumerKeyCode(0), true);
-    }
-
+    queue_ = new Queue();
     timer_.initialize(&workloop, NULL, KeyboardRepeat::fire);
   }
 
@@ -25,15 +21,44 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     timer_.terminate();
 
-    for (int i = 0; i < MAXNUM; ++i) {
-      {
-        Params_KeyboardEventCallBack* p = item_[i].params;
-        if (p) delete p;
-      }
-      {
-        Params_KeyboardSpecialEventCallback* p = item_[i].params_consumer;
-        if (p) delete p;
-      }
+    clear_queue();
+    if (queue_) {
+      delete queue_;
+    }
+  }
+
+  KeyboardRepeat::Item::~Item(void)
+  {
+#define DELETE_PARAMS(PARAMS) { \
+    if (PARAMS) {               \
+      delete PARAMS;            \
+    }                           \
+}
+
+    switch (type) {
+      case TYPE_KEYBOARD:
+        DELETE_PARAMS(params.params_KeyboardEventCallBack);
+        break;
+
+      case TYPE_CONSUMER:
+        DELETE_PARAMS(params.params_KeyboardSpecialEventCallback);
+        break;
+    }
+
+#undef DELETE_PARAMS
+  }
+
+  void
+  KeyboardRepeat::clear_queue(void)
+  {
+    if (! queue_) return;
+
+    for (;;) {
+      KeyboardRepeat::Item* p = static_cast<KeyboardRepeat::Item*>(queue_->front());
+      if (! p) break;
+
+      queue_->pop();
+      delete p;
     }
   }
 
@@ -41,9 +66,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   KeyboardRepeat::cancel_nolock(void)
   {
     timer_.cancelTimeout();
-    for (int i = 0; i < MAXNUM; ++i) {
-      item_[i].active = false;
-    }
+    clear_queue();
   }
 
   void
@@ -59,24 +82,20 @@ namespace org_pqrs_KeyRemap4MacBook {
                                        KeyCode key,
                                        KeyboardType keyboardType)
   {
+    if (! queue_) return;
     if (key == KeyCode::VK_NONE) return;
 
-    for (int i = 0; i < MAXNUM; ++i) {
-      if (! item_[i].active) {
-        Params_KeyboardEventCallBack* p = item_[i].params;
-        if (! p) return;
+    // ------------------------------------------------------------
+    Item* newp = new Item();
+    if (! newp) return;
 
-        p->eventType = eventType;
-        p->flags = flags;
-        p->key = key;
-        p->keyboardType = keyboardType;
-        item_[i].active = true;
-        item_[i].type = Item::TYPE_KEYBOARD;
-
-        return;
-      }
-    }
-    IOLog("KeyRemap4MacBook --Warning-- KeyboardRepeat::Item was filled up. Expand MAXNUM.\n");
+    newp->type = Item::TYPE_KEYBOARD;
+    newp->params.params_KeyboardEventCallBack = Params_KeyboardEventCallBack::alloc(eventType,
+                                                                                    flags,
+                                                                                    key,
+                                                                                    keyboardType,
+                                                                                    true);
+    queue_->push(newp);
   }
 
   void
@@ -84,24 +103,19 @@ namespace org_pqrs_KeyRemap4MacBook {
                                        Flags flags,
                                        ConsumerKeyCode key)
   {
+    if (! queue_) return;
     if (key == ConsumerKeyCode::VK_NONE) return;
 
-    for (int i = 0; i < MAXNUM; ++i) {
-      if (! item_[i].active) {
-        Params_KeyboardSpecialEventCallback* p = item_[i].params_consumer;
-        if (! p) return;
+    // ------------------------------------------------------------
+    Item* newp = new Item();
+    if (! newp) return;
 
-        p->eventType = eventType;
-        p->flags = flags;
-        p->key = key;
-        p->flavor = key.get();
-        item_[i].active = true;
-        item_[i].type = Item::TYPE_CONSUMER;
-
-        return;
-      }
-    }
-    IOLog("KeyRemap4MacBook --Warning-- KeyboardRepeat::Item was filled up. Expand MAXNUM.\n");
+    newp->type = Item::TYPE_CONSUMER;
+    newp->params.params_KeyboardSpecialEventCallback = Params_KeyboardSpecialEventCallback::alloc(eventType,
+                                                                                                  flags,
+                                                                                                  key,
+                                                                                                  true);
+    queue_->push(newp);
   }
 
   void
@@ -136,16 +150,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     primitive_start_nolock(wait);
   }
 
-  int
-  KeyboardRepeat::getActiveItemNum(void)
-  {
-    int num = 0;
-    for (int i = 0; i < MAXNUM; ++i) {
-      num += item_[i].active;
-    }
-    return num;
-  }
-
   void
   KeyboardRepeat::set(EventType eventType,
                       Flags flags,
@@ -155,14 +159,22 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
 
+    if (! queue_) return;
+
     if (eventType == EventType::MODIFY) {
       goto cancel;
 
     } else if (eventType == EventType::UP) {
+      // We always stop key repeat at key up when multiple keys repeat.
+      if (queue_->size() != 1) goto cancel;
+
       // We stop key repeat only when the repeating key is up.
-      if (getActiveItemNum() == 1 &&
-          key == (item_[0].params)->key) {
-        goto cancel;
+      KeyboardRepeat::Item* p = static_cast<KeyboardRepeat::Item*>(queue_->front());
+      if (p && p->type == Item::TYPE_KEYBOARD) {
+        Params_KeyboardEventCallBack* params = p->params.params_KeyboardEventCallBack;
+        if (params && key == params->key) {
+          goto cancel;
+        }
       }
 
     } else if (eventType == EventType::DOWN) {
@@ -174,7 +186,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       primitive_start_nolock(wait);
 
       if (config.debug_devel) {
-        IOLog("KeyRemap4MacBook -Info- setRepeat_keyboard key:%d flags:0x%x\n", key.get(), flags.get());
+        IOLOG_INFO("KeyboardRepeat::set key:%d flags:0x%x\n", key.get(), flags.get());
       }
 
     } else {
@@ -193,6 +205,8 @@ namespace org_pqrs_KeyRemap4MacBook {
                       ConsumerKeyCode key)
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
+
+    if (! queue_) return;
 
     if (eventType == EventType::UP) {
       goto cancel;
@@ -215,7 +229,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       primitive_start_nolock(config.get_repeat_consumer_initial_wait());
 
       if (config.debug_devel) {
-        IOLog("KeyRemap4MacBook -Info- setRepeat_keyboard consumer key:%d flags:0x%x\n", key.get(), flags.get());
+        IOLOG_INFO("KeyboardRepeat::set consumer key:%d flags:0x%x\n", key.get(), flags.get());
       }
 
     } else {
@@ -237,32 +251,40 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     IOLockWrapper::ScopedLock lk(timer_.getlock());
 
+    if (! queue_) return;
+
+    // ----------------------------------------
     bool isconsumer = false;
 
-    for (int i = 0; i < MAXNUM; ++i) {
-      if (! item_[i].active) {
-        break;
-
-      } else {
-        switch (item_[i].type) {
-          case Item::TYPE_KEYBOARD:
-          {
-            Params_KeyboardEventCallBack* p = item_[i].params;
-            if (p) {
-              EventOutput::FireKey::fire(*p);
+    for (KeyboardRepeat::Item* p = static_cast<KeyboardRepeat::Item*>(queue_->front()); p; p = static_cast<KeyboardRepeat::Item*>(p->getnext())) {
+      switch (p->type) {
+        case Item::TYPE_KEYBOARD:
+        {
+          Params_KeyboardEventCallBack* params = p->params.params_KeyboardEventCallBack;
+          if (params) {
+            if (queue_->size() == 1) {
+              params->repeat = true;
+            } else {
+              params->repeat = false;
             }
-            break;
+            EventOutput::FireKey::fire(*params);
           }
+          break;
+        }
 
-          case Item::TYPE_CONSUMER:
-          {
-            Params_KeyboardSpecialEventCallback* p = item_[i].params_consumer;
-            if (p) {
-              EventOutput::FireConsumer::fire(*p);
+        case Item::TYPE_CONSUMER:
+        {
+          Params_KeyboardSpecialEventCallback* params = p->params.params_KeyboardSpecialEventCallback;
+          if (params) {
+            if (queue_->size() == 1) {
+              params->repeat = true;
+            } else {
+              params->repeat = false;
             }
-            isconsumer = true;
-            break;
+            EventOutput::FireConsumer::fire(*params);
           }
+          isconsumer = true;
+          break;
         }
       }
     }
