@@ -215,6 +215,19 @@
     </item>
 
     <item>
+      <name>DropKeyAfterRemap</name>
+      <appendix>Drop Tab</appendix>
+      <appendix>Drop Shift+Return</appendix>
+      <appendix>Change A to Tab (== dropped)</appendix>
+      <appendix>Change B to Shift_L+Return (== dropped)</appendix>
+      <sysctl>remap.samples_dropkeyafterremap</sysctl>
+      <autogen>--DropKeyAfterRemap-- KeyCode::TAB</autogen>
+      <autogen>--DropKeyAfterRemap-- KeyCode::RETURN, VK_SHIFT</autogen>
+      <autogen>--KeyToKey-- KeyCode::A, KeyCode::TAB</autogen>
+      <autogen>--KeyToKey-- KeyCode::B, KeyCode::RETURN, ModifierFlag::SHIFT_L</autogen>
+    </item>
+
+    <item>
       <name>IgnoreMultipleSameKeyPress</name>
       <appendix>Ignore the multiple press of 'A'</appendix>
       <appendix>Ignore the multiple press of 'Shift+B' (with Modifier)</appendix>
