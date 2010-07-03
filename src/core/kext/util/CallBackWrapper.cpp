@@ -94,6 +94,24 @@ namespace org_pqrs_KeyRemap4MacBook {
     FromKeyChecker fromkeychecker_shiftR_expose;
     FromKeyChecker fromkeychecker_shiftL_dashboard;
     FromKeyChecker fromkeychecker_shiftR_dashboard;
+
+    // config.option_jis_drop_eisuukana_with_modifiers
+    FromKeyChecker fromkeychecker_commandL_jis_eisuu;
+    FromKeyChecker fromkeychecker_commandR_jis_eisuu;
+    FromKeyChecker fromkeychecker_commandL_jis_kana;
+    FromKeyChecker fromkeychecker_commandR_jis_kana;
+    FromKeyChecker fromkeychecker_controlL_jis_eisuu;
+    FromKeyChecker fromkeychecker_controlR_jis_eisuu;
+    FromKeyChecker fromkeychecker_controlL_jis_kana;
+    FromKeyChecker fromkeychecker_controlR_jis_kana;
+    FromKeyChecker fromkeychecker_optionL_jis_eisuu;
+    FromKeyChecker fromkeychecker_optionR_jis_eisuu;
+    FromKeyChecker fromkeychecker_optionL_jis_kana;
+    FromKeyChecker fromkeychecker_optionR_jis_kana;
+    FromKeyChecker fromkeychecker_shiftL_jis_eisuu;
+    FromKeyChecker fromkeychecker_shiftR_jis_eisuu;
+    FromKeyChecker fromkeychecker_shiftL_jis_kana;
+    FromKeyChecker fromkeychecker_shiftR_jis_kana;
   }
 
   void
@@ -134,10 +152,23 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (config.option_jis_drop_eisuukana_with_modifiers) {
       // Skip if EISUU,KANA with any modifiers.
-      if (key == KeyCode::JIS_EISUU || key == KeyCode::JIS_KANA) {
-        if (flags != 0) {
-          return;
-        }
+      if (fromkeychecker_commandL_jis_eisuu.isFromKey(*this, KeyCode::JIS_EISUU, ModifierFlag::COMMAND_L) ||
+          fromkeychecker_commandR_jis_eisuu.isFromKey(*this, KeyCode::JIS_EISUU, ModifierFlag::COMMAND_R) ||
+          fromkeychecker_commandL_jis_kana.isFromKey(*this,  KeyCode::JIS_KANA,  ModifierFlag::COMMAND_L) ||
+          fromkeychecker_commandR_jis_kana.isFromKey(*this,  KeyCode::JIS_KANA,  ModifierFlag::COMMAND_R) ||
+          fromkeychecker_controlL_jis_eisuu.isFromKey(*this, KeyCode::JIS_EISUU, ModifierFlag::CONTROL_L) ||
+          fromkeychecker_controlR_jis_eisuu.isFromKey(*this, KeyCode::JIS_EISUU, ModifierFlag::CONTROL_R) ||
+          fromkeychecker_controlL_jis_kana.isFromKey(*this,  KeyCode::JIS_KANA,  ModifierFlag::CONTROL_L) ||
+          fromkeychecker_controlR_jis_kana.isFromKey(*this,  KeyCode::JIS_KANA,  ModifierFlag::CONTROL_R) ||
+          fromkeychecker_optionL_jis_eisuu.isFromKey(*this,  KeyCode::JIS_EISUU, ModifierFlag::OPTION_L) ||
+          fromkeychecker_optionR_jis_eisuu.isFromKey(*this,  KeyCode::JIS_EISUU, ModifierFlag::OPTION_R) ||
+          fromkeychecker_optionL_jis_kana.isFromKey(*this,   KeyCode::JIS_KANA,  ModifierFlag::OPTION_L) ||
+          fromkeychecker_optionR_jis_kana.isFromKey(*this,   KeyCode::JIS_KANA,  ModifierFlag::OPTION_R) ||
+          fromkeychecker_shiftL_jis_eisuu.isFromKey(*this,   KeyCode::JIS_EISUU, ModifierFlag::SHIFT_L) ||
+          fromkeychecker_shiftR_jis_eisuu.isFromKey(*this,   KeyCode::JIS_EISUU, ModifierFlag::SHIFT_R) ||
+          fromkeychecker_shiftL_jis_kana.isFromKey(*this,    KeyCode::JIS_KANA,  ModifierFlag::SHIFT_L) ||
+          fromkeychecker_shiftR_jis_kana.isFromKey(*this,    KeyCode::JIS_KANA,  ModifierFlag::SHIFT_R)) {
+        return;
       }
     }
 
