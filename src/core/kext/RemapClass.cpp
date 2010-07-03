@@ -9,6 +9,7 @@
 #include "RemapFunc/ConsumerToConsumer.hpp"
 #include "RemapFunc/ConsumerToKey.hpp"
 #include "RemapFunc/DoublePressModifier.hpp"
+#include "RemapFunc/DropKeyAfterRemap.hpp"
 #include "RemapFunc/HoldingKeyToKey.hpp"
 #include "RemapFunc/IgnoreMultipleSameKeyPress.hpp"
 #include "RemapFunc/KeyOverlaidModifier.hpp"
@@ -27,6 +28,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     typedef void (*RemapClass_remap_consumer)(RemapConsumerParams& remapParams);
     typedef void (*RemapClass_remap_pointing)(RemapPointingParams_relative& remapParams);
     typedef void (*RemapClass_remap_simultaneouskeypresses)(void);
+    typedef bool (*RemapClass_remap_dropkeyafterremap)(const Params_KeyboardEventCallBack& params);
     typedef const char* (*RemapClass_get_statusmessage)(void);
     typedef bool (*RemapClass_enabled)(void);
 
@@ -230,6 +232,20 @@ namespace org_pqrs_KeyRemap4MacBook {
     remap_simultaneouskeypresses(void)
     {
       DECLARE_REMAPFUNC(queue_remap_simultaneouskeypresses_, remap_simultaneouskeypresses, );
+    }
+
+    bool
+    remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params)
+    {
+      // We do not need a lock, because we don't refer queues.
+
+      bool dropped = false;
+      for (size_t i = 0;; ++i) {
+        RemapClass_remap_dropkeyafterremap p = listRemapClass_remap_dropkeyafterremap[i];
+        if (! p) break;
+        if (p(params)) dropped = true;
+      }
+      return dropped;
     }
 
     bool
