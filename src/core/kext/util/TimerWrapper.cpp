@@ -57,7 +57,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     timer_ = IOTimerEventSource::timerEventSource(object_, callback_);
 
     if (workloop_->addEventSource(timer_) != kIOReturnSuccess) {
-      IOLog("[KeyRemap4MacBook ERROR] TimerWrapper addEventSource failed\n");
+      IOLOG_ERROR("TimerWrapper addEventSource failed\n");
       timer_->release();
       timer_ = NULL;
     }
