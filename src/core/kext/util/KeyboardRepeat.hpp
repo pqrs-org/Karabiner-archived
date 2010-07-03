@@ -3,9 +3,10 @@
 
 #include "base.hpp"
 #include "bridge.hpp"
-#include "KeyCode.hpp"
-#include "Config.hpp"
 #include "CallbackWrapper.hpp"
+#include "Config.hpp"
+#include "KeyCode.hpp"
+#include "Queue.hpp"
 #include "TimerWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -52,25 +53,25 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void primitive_start(int wait = config.get_repeat_initial_wait());
 
   private:
-    enum {
-      MAXNUM = 16,
-    };
-    struct Item {
+    class Item : public Queue::Item {
+    public:
       enum Type {
         TYPE_KEYBOARD,
         TYPE_CONSUMER,
-      };
-      Item(void) : params(NULL), params_consumer(NULL), active(false), type(TYPE_KEYBOARD) {}
+      } type;
 
-      Params_KeyboardEventCallBack* params;
-      Params_KeyboardSpecialEventCallback* params_consumer;
-      bool active;
-      Type type;
+      union {
+        Params_KeyboardEventCallBack* params_KeyboardEventCallBack;
+        Params_KeyboardSpecialEventCallback* params_KeyboardSpecialEventCallback;
+      } params;
+
+      virtual ~Item(void);
     };
 
     // ------------------------------------------------------------
     static void fire(OSObject* owner, IOTimerEventSource* sender);
 
+    static void clear_queue(void);
     static void cancel_nolock(void);
 
     static void primitive_add_nolock(EventType eventType,
@@ -82,10 +83,8 @@ namespace org_pqrs_KeyRemap4MacBook {
                                      ConsumerKeyCode key);
     static void primitive_start_nolock(int wait);
 
-    static int getActiveItemNum(void);
-
+    static Queue* queue_;
     static TimerWrapper timer_;
-    static Item item_[MAXNUM];
   };
 }
 
