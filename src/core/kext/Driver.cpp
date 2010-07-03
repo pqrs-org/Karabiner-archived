@@ -14,7 +14,7 @@ OSDefineMetaClassAndStructors(org_pqrs_driver_KeyRemap4MacBook, IOService)
 bool
 org_pqrs_driver_KeyRemap4MacBook::init(OSDictionary* dict)
 {
-  IOLog("KeyRemap4MacBook [init]\n");
+  IOLOG_INFO("init\n");
 
   bool res = super::init(dict);
   return res;
@@ -23,7 +23,7 @@ org_pqrs_driver_KeyRemap4MacBook::init(OSDictionary* dict)
 void
 org_pqrs_driver_KeyRemap4MacBook::free(void)
 {
-  IOLog("KeyRemap4MacBook [free]\n");
+  IOLOG_INFO("free\n");
   super::free();
 }
 
@@ -37,7 +37,7 @@ org_pqrs_driver_KeyRemap4MacBook::probe(IOService* provider, SInt32* score)
 bool
 org_pqrs_driver_KeyRemap4MacBook::start(IOService* provider)
 {
-  IOLog("KeyRemap4MacBook [start]\n");
+  IOLOG_INFO("start\n");
 
   bool res = super::start(provider);
   if (! res) return res;
@@ -51,7 +51,7 @@ org_pqrs_driver_KeyRemap4MacBook::start(IOService* provider)
 void
 org_pqrs_driver_KeyRemap4MacBook::stop(IOService* provider)
 {
-  IOLog("KeyRemap4MacBook [stop]\n");
+  IOLOG_INFO("stop\n");
 
   terminate_notification();
   org_pqrs_KeyRemap4MacBook::Core::stop();
@@ -69,7 +69,7 @@ org_pqrs_driver_KeyRemap4MacBook::initialize_notification(void)
                                                    org_pqrs_KeyRemap4MacBook::Core::notifierfunc_hookKeyboard,
                                                    this, NULL, 0);
   if (notifier_hookKeyboard_ == NULL) {
-    IOLog("[KeyRemap4MacBook ERROR] addNotification(gIOMatchedNotification) Keyboard\n");
+    IOLOG_ERROR("initialize_notification notifier_hookKeyboard_ == NULL\n");
     return false;
   }
 
@@ -78,7 +78,7 @@ org_pqrs_driver_KeyRemap4MacBook::initialize_notification(void)
                                                      org_pqrs_KeyRemap4MacBook::Core::notifierfunc_unhookKeyboard,
                                                      this, NULL, 0);
   if (notifier_unhookKeyboard_ == NULL) {
-    IOLog("[KeyRemap4MacBook ERROR] addNotification(gIOTerminatedNotification) Keyboard\n");
+    IOLOG_ERROR("initialize_notification notifier_unhookKeyboard_ == NULL\n");
     return false;
   }
 
@@ -88,7 +88,7 @@ org_pqrs_driver_KeyRemap4MacBook::initialize_notification(void)
                                                    org_pqrs_KeyRemap4MacBook::Core::notifierfunc_hookPointing,
                                                    this, NULL, 0);
   if (notifier_hookPointing_ == NULL) {
-    IOLog("[KeyRemap4MacBook ERROR] addNotification(gIOMatchedNotification) Pointing\n");
+    IOLOG_ERROR("initialize_notification notifier_hookPointing_ == NULL\n");
     return false;
   }
 
@@ -97,7 +97,7 @@ org_pqrs_driver_KeyRemap4MacBook::initialize_notification(void)
                                                      org_pqrs_KeyRemap4MacBook::Core::notifierfunc_unhookPointing,
                                                      this, NULL, 0);
   if (notifier_unhookPointing_ == NULL) {
-    IOLog("[KeyRemap4MacBook ERROR] addNotification(gIOTerminatedNotification) Pointing\n");
+    IOLOG_ERROR("initialize_notification notifier_unhookPointing_ == NULL\n");
     return false;
   }
 
