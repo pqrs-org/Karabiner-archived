@@ -3851,19 +3851,20 @@
         <item>
           <name>Drop Shift+[F1...F12] (Disable Slow-Expose)</name>
           <sysctl>option.drop_slowexpose</sysctl>
-          <autogen>--KeyToKey-- KeyCode::F1, VK_SHIFT, KeyCode::F1</autogen>
-          <autogen>--KeyToKey-- KeyCode::F2, VK_SHIFT, KeyCode::F2</autogen>
-          <autogen>--KeyToKey-- KeyCode::F3, VK_SHIFT, KeyCode::F3</autogen>
-          <autogen>--KeyToKey-- KeyCode::F4, VK_SHIFT, KeyCode::F4</autogen>
-          <autogen>--KeyToKey-- KeyCode::F5, VK_SHIFT, KeyCode::F5</autogen>
-          <autogen>--KeyToKey-- KeyCode::F6, VK_SHIFT, KeyCode::F6</autogen>
-          <autogen>--KeyToKey-- KeyCode::F7, VK_SHIFT, KeyCode::F7</autogen>
-          <autogen>--KeyToKey-- KeyCode::F8, VK_SHIFT, KeyCode::F8</autogen>
-          <autogen>--KeyToKey-- KeyCode::F9, VK_SHIFT, KeyCode::F9</autogen>
-          <autogen>--KeyToKey-- KeyCode::F10, VK_SHIFT, KeyCode::F10</autogen>
-          <autogen>--KeyToKey-- KeyCode::F11, VK_SHIFT, KeyCode::F11</autogen>
-          <autogen>--KeyToKey-- KeyCode::F12, VK_SHIFT, KeyCode::F12</autogen>
+          <autogen>--KeyToKey-- KeyCode::F1,         VK_SHIFT, KeyCode::F1</autogen>
+          <autogen>--KeyToKey-- KeyCode::F2,         VK_SHIFT, KeyCode::F2</autogen>
+          <autogen>--KeyToKey-- KeyCode::F3,         VK_SHIFT, KeyCode::F3</autogen>
+          <autogen>--KeyToKey-- KeyCode::F4,         VK_SHIFT, KeyCode::F4</autogen>
+          <autogen>--KeyToKey-- KeyCode::F5,         VK_SHIFT, KeyCode::F5</autogen>
+          <autogen>--KeyToKey-- KeyCode::F6,         VK_SHIFT, KeyCode::F6</autogen>
+          <autogen>--KeyToKey-- KeyCode::F7,         VK_SHIFT, KeyCode::F7</autogen>
+          <autogen>--KeyToKey-- KeyCode::F8,         VK_SHIFT, KeyCode::F8</autogen>
+          <autogen>--KeyToKey-- KeyCode::F9,         VK_SHIFT, KeyCode::F9</autogen>
+          <autogen>--KeyToKey-- KeyCode::F10,        VK_SHIFT, KeyCode::F10</autogen>
+          <autogen>--KeyToKey-- KeyCode::F11,        VK_SHIFT, KeyCode::F11</autogen>
+          <autogen>--KeyToKey-- KeyCode::F12,        VK_SHIFT, KeyCode::F12</autogen>
           <autogen>--KeyToKey-- KeyCode::EXPOSE_ALL, VK_SHIFT, KeyCode::EXPOSE_ALL</autogen>
+          <autogen>--KeyToKey-- KeyCode::DASHBOARD,  VK_SHIFT, KeyCode::DASHBOARD</autogen>
         </item>
         <item>
           <name>For Spaces</name>

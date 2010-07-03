@@ -2,6 +2,7 @@
 #include "CommonData.hpp"
 #include "Config.hpp"
 #include "FlagStatus.hpp"
+#include "FromKeyChecker.hpp"
 #include "ListHookedConsumer.hpp"
 #include "ListHookedKeyboard.hpp"
 #include "ListHookedPointing.hpp"
@@ -78,6 +79,24 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------------------------------------
+  namespace {
+    // for config.option_drop_slowexpose
+    FromKeyChecker fromkeychecker_shiftL_f8;
+    FromKeyChecker fromkeychecker_shiftR_f8;
+    FromKeyChecker fromkeychecker_shiftL_f9;
+    FromKeyChecker fromkeychecker_shiftR_f9;
+    FromKeyChecker fromkeychecker_shiftL_f10;
+    FromKeyChecker fromkeychecker_shiftR_f10;
+    FromKeyChecker fromkeychecker_shiftL_f11;
+    FromKeyChecker fromkeychecker_shiftR_f11;
+    FromKeyChecker fromkeychecker_shiftL_f12;
+    FromKeyChecker fromkeychecker_shiftR_f12;
+    FromKeyChecker fromkeychecker_shiftL_expose;
+    FromKeyChecker fromkeychecker_shiftR_expose;
+    FromKeyChecker fromkeychecker_shiftL_dashboard;
+    FromKeyChecker fromkeychecker_shiftR_dashboard;
+  }
+
   void
   Params_KeyboardEventCallBack::apply(void) const
   {
@@ -95,14 +114,22 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ------------------------------------------------------------
     if (config.option_drop_slowexpose) {
-      // Skip if Shift+F8,F9,F10,F11,F12,EXPOSE_ALL.
-      if (key == KeyCode::F8 || key == KeyCode::F9 ||
-          key == KeyCode::F10 || key == KeyCode::F11 ||
-          key == KeyCode::F12 || key == KeyCode::EXPOSE_ALL) {
-        if (flags.isOn(ModifierFlag::SHIFT_L) ||
-            flags.isOn(ModifierFlag::SHIFT_R)) {
-          return;
-        }
+      // Skip if Shift+F8,F9,F10,F11,F12,EXPOSE_ALL, DASHBOARD
+      if (fromkeychecker_shiftL_f8.isFromKey(*this,        KeyCode::F8,         ModifierFlag::SHIFT_L) ||
+          fromkeychecker_shiftR_f8.isFromKey(*this,        KeyCode::F8,         ModifierFlag::SHIFT_R) ||
+          fromkeychecker_shiftL_f9.isFromKey(*this,        KeyCode::F9,         ModifierFlag::SHIFT_L) ||
+          fromkeychecker_shiftR_f9.isFromKey(*this,        KeyCode::F9,         ModifierFlag::SHIFT_R) ||
+          fromkeychecker_shiftL_f10.isFromKey(*this,       KeyCode::F10,        ModifierFlag::SHIFT_L) ||
+          fromkeychecker_shiftR_f10.isFromKey(*this,       KeyCode::F10,        ModifierFlag::SHIFT_R) ||
+          fromkeychecker_shiftL_f11.isFromKey(*this,       KeyCode::F11,        ModifierFlag::SHIFT_L) ||
+          fromkeychecker_shiftR_f11.isFromKey(*this,       KeyCode::F11,        ModifierFlag::SHIFT_R) ||
+          fromkeychecker_shiftL_f12.isFromKey(*this,       KeyCode::F12,        ModifierFlag::SHIFT_L) ||
+          fromkeychecker_shiftR_f12.isFromKey(*this,       KeyCode::F12,        ModifierFlag::SHIFT_R) ||
+          fromkeychecker_shiftL_expose.isFromKey(*this,    KeyCode::EXPOSE_ALL, ModifierFlag::SHIFT_L) ||
+          fromkeychecker_shiftR_expose.isFromKey(*this,    KeyCode::EXPOSE_ALL, ModifierFlag::SHIFT_R) ||
+          fromkeychecker_shiftL_dashboard.isFromKey(*this, KeyCode::DASHBOARD,  ModifierFlag::SHIFT_L) ||
+          fromkeychecker_shiftR_dashboard.isFromKey(*this, KeyCode::DASHBOARD,  ModifierFlag::SHIFT_R)) {
+        return;
       }
     }
 
