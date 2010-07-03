@@ -95,6 +95,30 @@ namespace org_pqrs_KeyRemap4MacBook {
     FromKeyChecker fromkeychecker_shiftL_dashboard;
     FromKeyChecker fromkeychecker_shiftR_dashboard;
 
+    bool
+    do_config_option_drop_slowexpose(const Params_KeyboardEventCallBack& params)
+    {
+      if (! config.option_drop_slowexpose) return false;
+
+      // Skip if Shift+F8,F9,F10,F11,F12,EXPOSE_ALL, DASHBOARD
+      if (fromkeychecker_shiftL_f8.isFromKey(params,        KeyCode::F8,         ModifierFlag::SHIFT_L)) return true;
+      if (fromkeychecker_shiftR_f8.isFromKey(params,        KeyCode::F8,         ModifierFlag::SHIFT_R)) return true;
+      if (fromkeychecker_shiftL_f9.isFromKey(params,        KeyCode::F9,         ModifierFlag::SHIFT_L)) return true;
+      if (fromkeychecker_shiftR_f9.isFromKey(params,        KeyCode::F9,         ModifierFlag::SHIFT_R)) return true;
+      if (fromkeychecker_shiftL_f10.isFromKey(params,       KeyCode::F10,        ModifierFlag::SHIFT_L)) return true;
+      if (fromkeychecker_shiftR_f10.isFromKey(params,       KeyCode::F10,        ModifierFlag::SHIFT_R)) return true;
+      if (fromkeychecker_shiftL_f11.isFromKey(params,       KeyCode::F11,        ModifierFlag::SHIFT_L)) return true;
+      if (fromkeychecker_shiftR_f11.isFromKey(params,       KeyCode::F11,        ModifierFlag::SHIFT_R)) return true;
+      if (fromkeychecker_shiftL_f12.isFromKey(params,       KeyCode::F12,        ModifierFlag::SHIFT_L)) return true;
+      if (fromkeychecker_shiftR_f12.isFromKey(params,       KeyCode::F12,        ModifierFlag::SHIFT_R)) return true;
+      if (fromkeychecker_shiftL_expose.isFromKey(params,    KeyCode::EXPOSE_ALL, ModifierFlag::SHIFT_L)) return true;
+      if (fromkeychecker_shiftR_expose.isFromKey(params,    KeyCode::EXPOSE_ALL, ModifierFlag::SHIFT_R)) return true;
+      if (fromkeychecker_shiftL_dashboard.isFromKey(params, KeyCode::DASHBOARD,  ModifierFlag::SHIFT_L)) return true;
+      if (fromkeychecker_shiftR_dashboard.isFromKey(params, KeyCode::DASHBOARD,  ModifierFlag::SHIFT_R)) return true;
+
+      return false;
+    }
+
     // config.option_jis_drop_eisuukana_with_modifiers
     FromKeyChecker fromkeychecker_commandL_jis_eisuu;
     FromKeyChecker fromkeychecker_commandR_jis_eisuu;
@@ -112,6 +136,32 @@ namespace org_pqrs_KeyRemap4MacBook {
     FromKeyChecker fromkeychecker_shiftR_jis_eisuu;
     FromKeyChecker fromkeychecker_shiftL_jis_kana;
     FromKeyChecker fromkeychecker_shiftR_jis_kana;
+
+    bool
+    do_config_option_jis_drop_eisuukana_with_modifiers(const Params_KeyboardEventCallBack& params)
+    {
+      if (! config.option_jis_drop_eisuukana_with_modifiers) return false;
+
+      // Skip if EISUU,KANA with any modifiers.
+      if (fromkeychecker_commandL_jis_eisuu.isFromKey(params, KeyCode::JIS_EISUU, ModifierFlag::COMMAND_L)) return true;
+      if (fromkeychecker_commandR_jis_eisuu.isFromKey(params, KeyCode::JIS_EISUU, ModifierFlag::COMMAND_R)) return true;
+      if (fromkeychecker_commandL_jis_kana.isFromKey(params,  KeyCode::JIS_KANA,  ModifierFlag::COMMAND_L)) return true;
+      if (fromkeychecker_commandR_jis_kana.isFromKey(params,  KeyCode::JIS_KANA,  ModifierFlag::COMMAND_R)) return true;
+      if (fromkeychecker_controlL_jis_eisuu.isFromKey(params, KeyCode::JIS_EISUU, ModifierFlag::CONTROL_L)) return true;
+      if (fromkeychecker_controlR_jis_eisuu.isFromKey(params, KeyCode::JIS_EISUU, ModifierFlag::CONTROL_R)) return true;
+      if (fromkeychecker_controlL_jis_kana.isFromKey(params,  KeyCode::JIS_KANA,  ModifierFlag::CONTROL_L)) return true;
+      if (fromkeychecker_controlR_jis_kana.isFromKey(params,  KeyCode::JIS_KANA,  ModifierFlag::CONTROL_R)) return true;
+      if (fromkeychecker_optionL_jis_eisuu.isFromKey(params,  KeyCode::JIS_EISUU, ModifierFlag::OPTION_L)) return true;
+      if (fromkeychecker_optionR_jis_eisuu.isFromKey(params,  KeyCode::JIS_EISUU, ModifierFlag::OPTION_R)) return true;
+      if (fromkeychecker_optionL_jis_kana.isFromKey(params,   KeyCode::JIS_KANA,  ModifierFlag::OPTION_L)) return true;
+      if (fromkeychecker_optionR_jis_kana.isFromKey(params,   KeyCode::JIS_KANA,  ModifierFlag::OPTION_R)) return true;
+      if (fromkeychecker_shiftL_jis_eisuu.isFromKey(params,   KeyCode::JIS_EISUU, ModifierFlag::SHIFT_L)) return true;
+      if (fromkeychecker_shiftR_jis_eisuu.isFromKey(params,   KeyCode::JIS_EISUU, ModifierFlag::SHIFT_R)) return true;
+      if (fromkeychecker_shiftL_jis_kana.isFromKey(params,    KeyCode::JIS_KANA,  ModifierFlag::SHIFT_L)) return true;
+      if (fromkeychecker_shiftR_jis_kana.isFromKey(params,    KeyCode::JIS_KANA,  ModifierFlag::SHIFT_R)) return true;
+
+      return false;
+    }
   }
 
   void
@@ -130,47 +180,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! checkFlags(flags)) return;
 
     // ------------------------------------------------------------
-    if (config.option_drop_slowexpose) {
-      // Skip if Shift+F8,F9,F10,F11,F12,EXPOSE_ALL, DASHBOARD
-      if (fromkeychecker_shiftL_f8.isFromKey(*this,        KeyCode::F8,         ModifierFlag::SHIFT_L) ||
-          fromkeychecker_shiftR_f8.isFromKey(*this,        KeyCode::F8,         ModifierFlag::SHIFT_R) ||
-          fromkeychecker_shiftL_f9.isFromKey(*this,        KeyCode::F9,         ModifierFlag::SHIFT_L) ||
-          fromkeychecker_shiftR_f9.isFromKey(*this,        KeyCode::F9,         ModifierFlag::SHIFT_R) ||
-          fromkeychecker_shiftL_f10.isFromKey(*this,       KeyCode::F10,        ModifierFlag::SHIFT_L) ||
-          fromkeychecker_shiftR_f10.isFromKey(*this,       KeyCode::F10,        ModifierFlag::SHIFT_R) ||
-          fromkeychecker_shiftL_f11.isFromKey(*this,       KeyCode::F11,        ModifierFlag::SHIFT_L) ||
-          fromkeychecker_shiftR_f11.isFromKey(*this,       KeyCode::F11,        ModifierFlag::SHIFT_R) ||
-          fromkeychecker_shiftL_f12.isFromKey(*this,       KeyCode::F12,        ModifierFlag::SHIFT_L) ||
-          fromkeychecker_shiftR_f12.isFromKey(*this,       KeyCode::F12,        ModifierFlag::SHIFT_R) ||
-          fromkeychecker_shiftL_expose.isFromKey(*this,    KeyCode::EXPOSE_ALL, ModifierFlag::SHIFT_L) ||
-          fromkeychecker_shiftR_expose.isFromKey(*this,    KeyCode::EXPOSE_ALL, ModifierFlag::SHIFT_R) ||
-          fromkeychecker_shiftL_dashboard.isFromKey(*this, KeyCode::DASHBOARD,  ModifierFlag::SHIFT_L) ||
-          fromkeychecker_shiftR_dashboard.isFromKey(*this, KeyCode::DASHBOARD,  ModifierFlag::SHIFT_R)) {
-        return;
-      }
-    }
-
-    if (config.option_jis_drop_eisuukana_with_modifiers) {
-      // Skip if EISUU,KANA with any modifiers.
-      if (fromkeychecker_commandL_jis_eisuu.isFromKey(*this, KeyCode::JIS_EISUU, ModifierFlag::COMMAND_L) ||
-          fromkeychecker_commandR_jis_eisuu.isFromKey(*this, KeyCode::JIS_EISUU, ModifierFlag::COMMAND_R) ||
-          fromkeychecker_commandL_jis_kana.isFromKey(*this,  KeyCode::JIS_KANA,  ModifierFlag::COMMAND_L) ||
-          fromkeychecker_commandR_jis_kana.isFromKey(*this,  KeyCode::JIS_KANA,  ModifierFlag::COMMAND_R) ||
-          fromkeychecker_controlL_jis_eisuu.isFromKey(*this, KeyCode::JIS_EISUU, ModifierFlag::CONTROL_L) ||
-          fromkeychecker_controlR_jis_eisuu.isFromKey(*this, KeyCode::JIS_EISUU, ModifierFlag::CONTROL_R) ||
-          fromkeychecker_controlL_jis_kana.isFromKey(*this,  KeyCode::JIS_KANA,  ModifierFlag::CONTROL_L) ||
-          fromkeychecker_controlR_jis_kana.isFromKey(*this,  KeyCode::JIS_KANA,  ModifierFlag::CONTROL_R) ||
-          fromkeychecker_optionL_jis_eisuu.isFromKey(*this,  KeyCode::JIS_EISUU, ModifierFlag::OPTION_L) ||
-          fromkeychecker_optionR_jis_eisuu.isFromKey(*this,  KeyCode::JIS_EISUU, ModifierFlag::OPTION_R) ||
-          fromkeychecker_optionL_jis_kana.isFromKey(*this,   KeyCode::JIS_KANA,  ModifierFlag::OPTION_L) ||
-          fromkeychecker_optionR_jis_kana.isFromKey(*this,   KeyCode::JIS_KANA,  ModifierFlag::OPTION_R) ||
-          fromkeychecker_shiftL_jis_eisuu.isFromKey(*this,   KeyCode::JIS_EISUU, ModifierFlag::SHIFT_L) ||
-          fromkeychecker_shiftR_jis_eisuu.isFromKey(*this,   KeyCode::JIS_EISUU, ModifierFlag::SHIFT_R) ||
-          fromkeychecker_shiftL_jis_kana.isFromKey(*this,    KeyCode::JIS_KANA,  ModifierFlag::SHIFT_L) ||
-          fromkeychecker_shiftR_jis_kana.isFromKey(*this,    KeyCode::JIS_KANA,  ModifierFlag::SHIFT_R)) {
-        return;
-      }
-    }
+    if (do_config_option_drop_slowexpose(*this)) return;
+    if (do_config_option_jis_drop_eisuukana_with_modifiers(*this)) return;
 
     // ------------------------------------------------------------
     HookedKeyboard* hk = ListHookedKeyboard::instance().get();
