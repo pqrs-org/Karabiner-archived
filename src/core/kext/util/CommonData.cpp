@@ -41,13 +41,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
 
     int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_WORKSPACE_DATA, NULL, 0, &current_workspacedata_, sizeof(current_workspacedata_));
-    if (config.debug_devel) {
-      printf("KeyRemap4MacBook -Info- GetWorkspaceData: %d,%d,%d (error: %d)\n",
-             current_workspacedata_.type,
-             current_workspacedata_.inputmode,
-             current_workspacedata_.inputmodedetail,
-             error);
-    }
+    IOLOG_DEVEL("GetWorkspaceData: type:%d, inputmode:%d, inputmodedetail:%d, error:%d\n",
+                current_workspacedata_.type,
+                current_workspacedata_.inputmode,
+                current_workspacedata_.inputmodedetail,
+                error);
     if (error == 0) {
       last = current_workspacedata_;
     } else {
