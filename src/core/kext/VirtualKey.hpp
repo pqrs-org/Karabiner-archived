@@ -53,8 +53,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     static KeyCode newkeycode_;
   };
 
-  bool handle_VK_JIS_EISUU_x2(const Params_KeyboardEventCallBack& params);
-  bool handle_VK_JIS_KANA_x2(const Params_KeyboardEventCallBack& params);
   bool handle_VK_JIS_BACKSLASH(Params_KeyboardEventCallBack& params);
   bool handle_VK_JIS_YEN(Params_KeyboardEventCallBack& params);
 
