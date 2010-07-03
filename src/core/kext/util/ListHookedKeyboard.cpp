@@ -179,7 +179,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ------------------------------------------------------------
     device_ = d;
-    IOLog("KeyRemap4MacBook HookedKeyboard::initialize name = %s, device_ = %p\n", name, device_);
+    IOLOG_INFO("HookedKeyboard::initialize name:%s, device_:%p\n", name, device_);
 
     return refresh();
   }
@@ -267,7 +267,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       KeyboardEventCallback callback = reinterpret_cast<KeyboardEventCallback>(kbd->_keyboardEventAction);
       if (callback != hook_KeyboardEventCallback) {
-        IOLog("KeyRemap4MacBook HookedKeyboard::replaceEventAction (KeyboardEventCallback) (device_ = %p)\n", device_);
+        IOLOG_INFO("HookedKeyboard::replaceEventAction (KeyboardEventCallback) device_:%p\n", device_);
 
         orig_keyboardEventAction_ = callback;
         orig_keyboardEventTarget_ = kbd->_keyboardEventTarget;
@@ -280,7 +280,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       UpdateEventFlagsCallback callback = reinterpret_cast<UpdateEventFlagsCallback>(kbd->_updateEventFlagsAction);
       if (callback != hook_UpdateEventFlagsCallback) {
-        IOLog("KeyRemap4MacBook HookedKeyboard::replaceEventAction (UpdateEventFlagsCallback) (device_ = %p)\n", device_);
+        IOLOG_INFO("HookedKeyboard::replaceEventAction (UpdateEventFlagsCallback) device_:%p\n", device_);
 
         orig_updateEventFlagsAction_ = callback;
         orig_updateEventFlagsTarget_ = kbd->_updateEventFlagsTarget;
@@ -306,7 +306,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (callback != hook_KeyboardEventCallback) return false;
 
     // ----------------------------------------
-    IOLog("KeyRemap4MacBook HookedKeyboard::restoreEventAction (device_ = %p)\n", device_);
+    IOLOG_INFO("HookedKeyboard::restoreEventAction device_:%p\n", device_);
 
     kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(orig_keyboardEventAction_);
     kbd->_updateEventFlagsAction = reinterpret_cast<UpdateEventFlagsAction>(orig_updateEventFlagsAction_);
