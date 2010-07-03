@@ -47,17 +47,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         timer_refresh.setTimeoutMS(REFRESH_DEVICE_INTERVAL);
       }
-
-      // ----------------------------------------
-      void
-      cancelRepeat(void)
-      {
-        if (config.debug_devel) {
-          IOLog("KeyRemap4MacBook -Info- cancelRepeat\n");
-        }
-
-        KeyboardRepeat::cancel();
-      }
     }
 
     void
@@ -76,7 +65,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       workLoop = IOWorkLoop::workLoop();
       if (! workLoop) {
-        IOLog("[KeyRemap4MacBook ERROR] IOWorkLoop::workLoop failed\n");
+        IOLOG_ERROR("IOWorkLoop::workLoop failed\n");
       } else {
         timer_refresh.initialize(workLoop, NULL, refreshHookedDevice);
         timer_refresh.setTimeoutMS(REFRESH_DEVICE_INTERVAL);
@@ -124,7 +113,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     notifierfunc_hookKeyboard(void* target, void* refCon, IOService* newService, IONotifier* notifier)
     {
-      IOLog("KeyRemap4MacBook notifierfunc_hookKeyboard\n");
+      IOLOG_INFO("notifierfunc_hookKeyboard newService:%p\n", newService);
 
       IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, newService);
       ListHookedKeyboard::instance().append(kbd);
@@ -135,7 +124,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     notifierfunc_unhookKeyboard(void* target, void* refCon, IOService* newService, IONotifier* notifier)
     {
-      IOLog("KeyRemap4MacBook notifierfunc_unhookKeyboard\n");
+      IOLOG_INFO("notifierfunc_unhookKeyboard newService:%p\n", newService);
 
       IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, newService);
       ListHookedKeyboard::instance().terminate(kbd);
@@ -146,7 +135,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     notifierfunc_hookPointing(void* target, void* refCon, IOService* newService, IONotifier* notifier)
     {
-      IOLog("KeyRemap4MacBook notifierfunc_hookPointing\n");
+      IOLOG_INFO("notifierfunc_hookPointing newService:%p\n", newService);
 
       IOHIPointing* pointing = OSDynamicCast(IOHIPointing, newService);
       return ListHookedPointing::instance().append(pointing);
@@ -155,7 +144,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     notifierfunc_unhookPointing(void* target, void* refCon, IOService* newService, IONotifier* notifier)
     {
-      IOLog("KeyRemap4MacBook notifierfunc_unhookPointing\n");
+      IOLOG_INFO("notifierfunc_unhookPointing newService:%p\n", newService);
 
       IOHIPointing* pointing = OSDynamicCast(IOHIPointing, newService);
       return ListHookedPointing::instance().terminate(pointing);
@@ -184,7 +173,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       if (NumHeldDownKeys::iszero()) {
         NumHeldDownKeys::reset();
-        cancelRepeat();
+        KeyboardRepeat::cancel();
         EventWatcher::reset();
         FlagStatus::reset();
         ButtonStatus::reset();

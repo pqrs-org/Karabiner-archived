@@ -73,6 +73,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   KeyboardRepeat::cancel(void)
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
+    IOLOG_DEVEL("KeyboardRepeat::cancel\n");
     cancel_nolock();
   }
 
