@@ -73,6 +73,8 @@
 		34C382D611BB3F3600EFB9A6 /* Queue.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34C382D411BB3F3600EFB9A6 /* Queue.hpp */; };
 		34C7A9A20CE45EA400C98397 /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34C7A9A10CE45EA400C98397 /* Config.cpp */; };
 		34C7A9B00CE4605B00C98397 /* Config.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34C7A9AF0CE4605B00C98397 /* Config.hpp */; };
+		34C8E8D211DEEC0400E2FE41 /* PointingRelativeToScroll.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34C8E8D011DEEC0400E2FE41 /* PointingRelativeToScroll.cpp */; };
+		34C8E8D311DEEC0400E2FE41 /* PointingRelativeToScroll.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34C8E8D111DEEC0400E2FE41 /* PointingRelativeToScroll.hpp */; };
 		34CFB93211C340B000E5E7F9 /* ButtonStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34CFB93011C340B000E5E7F9 /* ButtonStatus.cpp */; };
 		34CFB93311C340B000E5E7F9 /* ButtonStatus.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34CFB93111C340B000E5E7F9 /* ButtonStatus.hpp */; };
 		34D347E611D8106C00D70815 /* KeyToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D347E411D8106C00D70815 /* KeyToKey.cpp */; };
@@ -163,6 +165,8 @@
 		34C382D411BB3F3600EFB9A6 /* Queue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Queue.hpp; path = util/Queue.hpp; sourceTree = "<group>"; };
 		34C7A9A10CE45EA400C98397 /* Config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Config.cpp; sourceTree = "<group>"; };
 		34C7A9AF0CE4605B00C98397 /* Config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config.hpp; sourceTree = "<group>"; };
+		34C8E8D011DEEC0400E2FE41 /* PointingRelativeToScroll.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PointingRelativeToScroll.cpp; path = RemapFunc/PointingRelativeToScroll.cpp; sourceTree = "<group>"; };
+		34C8E8D111DEEC0400E2FE41 /* PointingRelativeToScroll.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PointingRelativeToScroll.hpp; path = RemapFunc/PointingRelativeToScroll.hpp; sourceTree = "<group>"; };
 		34CFB93011C340B000E5E7F9 /* ButtonStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ButtonStatus.cpp; path = util/ButtonStatus.cpp; sourceTree = "<group>"; };
 		34CFB93111C340B000E5E7F9 /* ButtonStatus.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ButtonStatus.hpp; path = util/ButtonStatus.hpp; sourceTree = "<group>"; };
 		34D347E411D8106C00D70815 /* KeyToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyToKey.cpp; path = RemapFunc/KeyToKey.cpp; sourceTree = "<group>"; };
@@ -256,6 +260,8 @@
 		345E3EC511D79D17004B6347 /* RemapFunc */ = {
 			isa = PBXGroup;
 			children = (
+				34C8E8D011DEEC0400E2FE41 /* PointingRelativeToScroll.cpp */,
+				34C8E8D111DEEC0400E2FE41 /* PointingRelativeToScroll.hpp */,
 				3484E04611DE10CE00426723 /* KeyToPointingButton.cpp */,
 				3484E04711DE10CE00426723 /* KeyToPointingButton.hpp */,
 				34E04BFB11DD878D001AE230 /* SimultaneousKeyPresses.cpp */,
@@ -384,6 +390,7 @@
 				344034B411DD5ACA00386638 /* PointingButtonToKey.hpp in Headers */,
 				34E04BFE11DD878D001AE230 /* SimultaneousKeyPresses.hpp in Headers */,
 				3484E04911DE10CE00426723 /* KeyToPointingButton.hpp in Headers */,
+				34C8E8D311DEEC0400E2FE41 /* PointingRelativeToScroll.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,6 +498,7 @@
 				344034B311DD5ACA00386638 /* PointingButtonToKey.cpp in Sources */,
 				34E04BFD11DD878D001AE230 /* SimultaneousKeyPresses.cpp in Sources */,
 				3484E04811DE10CE00426723 /* KeyToPointingButton.cpp in Sources */,
+				34C8E8D211DEEC0400E2FE41 /* PointingRelativeToScroll.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
