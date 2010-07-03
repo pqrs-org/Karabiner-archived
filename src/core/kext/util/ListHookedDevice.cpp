@@ -43,7 +43,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
   finish:
-    IOLog("KeyRemap4MacBook HookedDevice::setVendorIDProductID (device = %p, vendorID_ = 0x%x, productID_ = 0x%x)\n", dev, vendorID_, productID_);
+    IOLOG_INFO("HookedDevice::setVendorIDProductID device:%p, vendorID_:0x%04x, productID_:0x%04x\n", dev, vendorID_, productID_);
   }
 
   void
@@ -97,10 +97,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
   finish:
-    IOLog("KeyRemap4MacBook HookedDevice::setDeviceType (device = %p, name = %s, deviceType_ = %d)\n",
-          dev,
-          name ? name : "null",
-          deviceType_);
+    IOLOG_INFO("HookedDevice::setDeviceType device:%p, name:%s, deviceType_:%d\n",
+               dev,
+               name ? name : "null",
+               deviceType_);
   }
 
   bool
@@ -137,7 +137,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! p) continue;
       if (p->get()) continue;
 
-      IOLog("KeyRemap4MacBook ListHookedDevice::append (device = %p, slot = %d)\n", device, i);
+      IOLOG_INFO("ListHookedDevice::append device:%p, slot:%d\n", device, i);
 
       p->setVendorIDProductID(device);
       p->setDeviceType(device);
