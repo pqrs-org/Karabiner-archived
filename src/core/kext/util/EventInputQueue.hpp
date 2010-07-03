@@ -2,9 +2,9 @@
 #define EVENTINPUTQUEUE_HPP
 
 #include "base.hpp"
+#include "CallBackWrapper.hpp"
 #include "IntervalChecker.hpp"
 #include "KeyCode.hpp"
-#include "RemapUtil.hpp"
 #include "Queue.hpp"
 #include "TimerWrapper.hpp"
 

@@ -1,6 +1,5 @@
 #include "Config.hpp"
 #include "EventWatcher.hpp"
-#include "RemapUtil.hpp"
 #include "IOLockWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
