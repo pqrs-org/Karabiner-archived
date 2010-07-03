@@ -23,8 +23,10 @@ TEST(Queue, push) {
   const int MAXITEM = 10;
 
   // ------------------------------------------------------------
+  EXPECT_EQ(static_cast<size_t>(0), queue.size());
   for (int i = 0; i < MAXITEM; ++i) {
     queue.push(new TestItem(i));
+    EXPECT_EQ(static_cast<size_t>(i + 1), queue.size());
   }
 
   for (int i = 0; i < MAXITEM; ++i) {
@@ -33,8 +35,10 @@ TEST(Queue, push) {
     EXPECT_TRUE(p != NULL);
 
     EXPECT_EQ(i, p->v());
+    EXPECT_EQ(static_cast<size_t>(MAXITEM - (i + 1)), queue.size());
     delete p;
   }
+  EXPECT_EQ(static_cast<size_t>(0), queue.size());
 
   // ------------------------------------------------------------
   // check prev/next value.
