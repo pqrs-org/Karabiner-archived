@@ -16,6 +16,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     size_t remap_pointing(RemapPointingParams_relative& remapParams);
     size_t remap_simultaneouskeypresses(void);
 
+    // return true if dropped.
+    bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params);
+
+    // return true if params.key == virtualkey.
     bool handlevirtualkey(const Params_KeyboardEventCallBack& params);
   };
 }

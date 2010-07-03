@@ -65,6 +65,8 @@
 		34AA1F361065B1EE00E9A418 /* ListHookedDevice.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34AA1F341065B1EE00E9A418 /* ListHookedDevice.hpp */; };
 		34AC5ED111DA3BD60089BC58 /* KeyOverlaidModifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34AC5ECF11DA3BD60089BC58 /* KeyOverlaidModifier.cpp */; };
 		34AC5ED211DA3BD60089BC58 /* KeyOverlaidModifier.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34AC5ED011DA3BD60089BC58 /* KeyOverlaidModifier.hpp */; };
+		34B8199511DF925500BD8E0B /* DropKeyAfterRemap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B8199311DF925500BD8E0B /* DropKeyAfterRemap.cpp */; };
+		34B8199611DF925500BD8E0B /* DropKeyAfterRemap.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B8199411DF925500BD8E0B /* DropKeyAfterRemap.hpp */; };
 		34C382D511BB3F3600EFB9A6 /* Queue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34C382D311BB3F3600EFB9A6 /* Queue.cpp */; };
 		34C382D611BB3F3600EFB9A6 /* Queue.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34C382D411BB3F3600EFB9A6 /* Queue.hpp */; };
 		34C7A9A20CE45EA400C98397 /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34C7A9A10CE45EA400C98397 /* Config.cpp */; };
@@ -153,6 +155,8 @@
 		34AA1F341065B1EE00E9A418 /* ListHookedDevice.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ListHookedDevice.hpp; path = util/ListHookedDevice.hpp; sourceTree = "<group>"; };
 		34AC5ECF11DA3BD60089BC58 /* KeyOverlaidModifier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyOverlaidModifier.cpp; path = RemapFunc/KeyOverlaidModifier.cpp; sourceTree = "<group>"; };
 		34AC5ED011DA3BD60089BC58 /* KeyOverlaidModifier.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyOverlaidModifier.hpp; path = RemapFunc/KeyOverlaidModifier.hpp; sourceTree = "<group>"; };
+		34B8199311DF925500BD8E0B /* DropKeyAfterRemap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DropKeyAfterRemap.cpp; path = RemapFunc/DropKeyAfterRemap.cpp; sourceTree = "<group>"; };
+		34B8199411DF925500BD8E0B /* DropKeyAfterRemap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DropKeyAfterRemap.hpp; path = RemapFunc/DropKeyAfterRemap.hpp; sourceTree = "<group>"; };
 		34C382D311BB3F3600EFB9A6 /* Queue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Queue.cpp; path = util/Queue.cpp; sourceTree = "<group>"; };
 		34C382D411BB3F3600EFB9A6 /* Queue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Queue.hpp; path = util/Queue.hpp; sourceTree = "<group>"; };
 		34C7A9A10CE45EA400C98397 /* Config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Config.cpp; sourceTree = "<group>"; };
@@ -250,6 +254,8 @@
 		345E3EC511D79D17004B6347 /* RemapFunc */ = {
 			isa = PBXGroup;
 			children = (
+				34B8199311DF925500BD8E0B /* DropKeyAfterRemap.cpp */,
+				34B8199411DF925500BD8E0B /* DropKeyAfterRemap.hpp */,
 				34C8E8D011DEEC0400E2FE41 /* PointingRelativeToScroll.cpp */,
 				34C8E8D111DEEC0400E2FE41 /* PointingRelativeToScroll.hpp */,
 				3484E04611DE10CE00426723 /* KeyToPointingButton.cpp */,
@@ -377,6 +383,7 @@
 				34E04BFE11DD878D001AE230 /* SimultaneousKeyPresses.hpp in Headers */,
 				3484E04911DE10CE00426723 /* KeyToPointingButton.hpp in Headers */,
 				34C8E8D311DEEC0400E2FE41 /* PointingRelativeToScroll.hpp in Headers */,
+				34B8199611DF925500BD8E0B /* DropKeyAfterRemap.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +490,7 @@
 				34E04BFD11DD878D001AE230 /* SimultaneousKeyPresses.cpp in Sources */,
 				3484E04811DE10CE00426723 /* KeyToPointingButton.cpp in Sources */,
 				34C8E8D211DEEC0400E2FE41 /* PointingRelativeToScroll.cpp in Sources */,
+				34B8199511DF925500BD8E0B /* DropKeyAfterRemap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

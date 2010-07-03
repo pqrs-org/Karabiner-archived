@@ -14,6 +14,7 @@ class RemapClass
     :remap_consumer               => [],
     :remap_pointing               => [],
     :remap_simultaneouskeypresses => [],
+    :remap_dropkeyafterremap      => [],
     :get_statusmessage            => [],
     :enabled                      => [],
   }
@@ -36,6 +37,7 @@ class RemapClass
       :remap_consumer               => '',
       :remap_pointing               => '',
       :remap_simultaneouskeypresses => '',
+      :remap_dropkeyafterremap      => '',
       :get_statusmessage            => '',
       # values
       :keycode                      => '',
@@ -86,6 +88,12 @@ class RemapClass
       case operation
       when 'SetKeyboardType'
         @code[:remap_setkeyboardtype] += "keyboardType = #{params}.get();\n";
+
+      when 'DropKeyAfterRemap'
+        append_to_code_initialize(params)
+        append_to_code_terminate
+        @code[:variable] << { :index => @@index, :class => "RemapFunc::#{operation}" }
+        @code[:remap_dropkeyafterremap] += "if (value#{@@index}_.drop(params)) return true;\n"
 
       when 'ShowStatusMessage'
         @code[:get_statusmessage] += "return #{params};\n"
@@ -224,6 +232,17 @@ class RemapClass
       @@entries[:get_statusmessage] << "#{classname}::get_statusmessage"
     else
       @@entries[:get_statusmessage] << "NULL"
+    end
+
+    # ----------------------------------------------------------------------
+    unless @code[:remap_dropkeyafterremap].empty? then
+      code += "static bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params) {\n"
+      code += "if (! enabled()) return false;\n"
+      code += @code[:remap_dropkeyafterremap]
+      code += "return false;\n"
+      code += "}\n"
+
+      @@entries[:remap_dropkeyafterremap] << "#{classname}::remap_dropkeyafterremap"
     end
 
     # ----------------------------------------------------------------------
