@@ -21,6 +21,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       void add(ConsumerKeyCode newval);
       void add(Flags newval);
 
+      // ----------------------------------------
+      // utility functions
+      bool call_remap_with_VK_PSEUDO_KEY(EventType eventType);
+
     private:
       size_t index_;
       FromKeyChecker fromkeychecker_;
