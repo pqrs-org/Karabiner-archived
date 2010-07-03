@@ -8,9 +8,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   NumHeldDownKeys::log(void)
   {
-    if (config.debug_devel) {
-      IOLog("KeyRemap4MacBook NumHeldDownKeys = %d\n", num_);
-    }
+    IOLOG_DEVEL("NumHeldDownKeys = %d\n", num_);
   }
 
   void
