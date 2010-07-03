@@ -137,6 +137,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       if (! isKeyDown) {
         FlagStatus::increase(fromKey_.flags | fromKey_.key.getModifierFlag());
+        EventOutput::FireModifiers::fire();
       }
 
       return true;
