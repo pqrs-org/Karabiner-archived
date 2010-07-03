@@ -27,7 +27,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       int error = sock_socket(PF_LOCAL, SOCK_STREAM, 0, NULL, NULL, &socket);
       if (error) {
-        printf("[KeyRemap4MacBook ERROR] sock_socket failed(%d)\n", error);
+        IOLOG_ERROR("Client::makeSocket sock_socket failed error:%d\n", error);
         return false;
       }
 
@@ -38,13 +38,13 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       error = sock_setsockopt(socket, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(struct timeval));
       if (error) {
-        printf("[KeyRemap4MacBook ERROR] sock_setsockopt failed(%d)\n", error);
+        IOLOG_ERROR("Client::makeSocket sock_setsockopt failed error:%d\n", error);
         goto error;
       }
 
       error = sock_setsockopt(socket, SOL_SOCKET, SO_SNDTIMEO, &tv, sizeof(struct timeval));
       if (error) {
-        printf("[KeyRemap4MacBook ERROR] sock_setsockopt failed(%d)\n", error);
+        IOLOG_ERROR("Client::makeSocket sock_setsockopt failed error:%d\n", error);
         goto error;
       }
 
@@ -52,7 +52,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     error:
       releaseSocket(socket);
-      printf("KeyRemap4MacBook_client makeSocket failed(%d)\n", error);
+      IOLOG_ERROR("Client::makeSocket failed error:%d\n", error);
 
       return false;
     }
@@ -66,13 +66,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (error) {
 #if 0
         // the connection failure is no problem because a server does not start at login window.
-        printf("[KeyRemap4MacBook ERROR] sock_connect failed(%d)\n", error);
+        IOLOG_ERROR("Client::connectSocket sock_connect failed error:%d\n", error);
 #endif
         return false;
       }
       error = sock_nointerrupt(socket, TRUE);
       if (error) {
-        printf("[KeyRemap4MacBook ERROR] sock_nointerrupt failed(%d)\n", error);
+        IOLOG_ERROR("Client::connectSocket sock_nointerrupt failed error:%d\n", error);
         return false;
       }
 
@@ -169,7 +169,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     error = sock_send(socket, &msg, 0, &iolen);
     if (error) {
-      printf("KeyRemap4MacBook_client::sendmsg sock_send failed(%d)\n", error);
+      IOLOG_ERROR("Client::sendmsg sock_send failed error:%d\n", error);
       result = error;
       goto finish;
     }
@@ -188,7 +188,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       error = sock_receive(socket, &msg, MSG_WAITALL, &iolen);
       if (error) {
-        printf("KeyRemap4MacBook_client::sendmsg sock_receive failed(%d)\n", error);
+        IOLOG_ERROR("Client::sendmsg sock_receive failed error:%d\n", error);
         result = error;
         goto finish;
       }
@@ -199,7 +199,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       releaseSocket(socket);
     }
     if (result) {
-      printf("KeyRemap4MacBook_client::sendmsg error result (%d)\n", result);
+      IOLOG_ERROR("Client::sendmsg error result:%d\n", result);
     }
     return result;
   }
