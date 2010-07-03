@@ -34,9 +34,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         item_[i].key = key;
         item_[i].keyboardType = keyboardType;
 
-        if (config.debug_devel) {
-          IOLog("KeyRemap4MacBook -Info- PressDownKeys::add (key = %d)\n", key.get());
-        }
+        IOLOG_DEVEL("PressDownKeys::add (key = %d)\n", key.get());
         return;
       }
     }
@@ -52,18 +50,14 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       item_[i].enable = false;
 
-      if (config.debug_devel) {
-        IOLog("KeyRemap4MacBook -Info- PressDownKeys::remove (key = %d)\n", key.get());
-      }
+      IOLOG_DEVEL("PressDownKeys::remove (key = %d)\n", key.get());
     }
   }
 
   void
   PressDownKeys::clear(void)
   {
-    if (config.debug_devel) {
-      IOLog("KeyRemap4MacBook -Info- PressDownKeys::clear\n");
-    }
+    IOLOG_DEVEL("PressDownKeys::clear\n");
 
     Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::UP, Flags(0), KeyCode(0), CommonData::getcurrent_keyboardType(), false));
     if (! ptr) return;
@@ -73,9 +67,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! item_[i].enable) continue;
       item_[i].enable = false;
 
-      if (config.debug_devel) {
-        IOLog("KeyRemap4MacBook -Info- PressDownKeys::clear (key = %d)\n", item_[i].key.get());
-      }
+      IOLOG_DEVEL("PressDownKeys::clear (key = %d)\n", item_[i].key.get());
 
       params.key = item_[i].key;
       params.keyboardType = item_[i].keyboardType;
