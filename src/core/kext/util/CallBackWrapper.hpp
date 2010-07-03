@@ -33,8 +33,6 @@ namespace org_pqrs_KeyRemap4MacBook {
                                               p.keyboardType, p.repeat);
     }
 
-    //~Params_KeyboardEventCallBack(void) { printf("Params_KeyboardEventCallBack released\n"); }
-
     // ----------------------------------------
     void log(const char* message = "caught") const;
 
@@ -110,8 +108,6 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                      p.repeat);
     }
 
-    //~Params_KeyboardSpecialEventCallback(void) { printf("Params_KeyboardSpecialEventCallback released\n"); }
-
     // ----------------------------------------
     void log(const char* message = "caught") const;
 
@@ -147,8 +143,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     static Params_RelativePointerEventCallback* alloc(const Params_RelativePointerEventCallback& p) {
       return new Params_RelativePointerEventCallback(p.buttons, p.dx, p.dy);
     }
-
-    //~Params_RelativePointerEventCallback(void) { printf("Params_RelativePointerEventCallback released\n"); }
 
     void log(const char* message = "caught") const;
 
@@ -190,8 +184,6 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                  p.pointDelta3,
                                                  p.options);
     }
-
-    //~Params_ScrollWheelEventCallback(void) { printf("Params_ScrollWheelEventCallback released\n"); }
 
     void log(const char* message = "caught") const;
 
