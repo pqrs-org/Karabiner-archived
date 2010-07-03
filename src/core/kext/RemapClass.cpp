@@ -1,7 +1,6 @@
 #include "RemapClass.hpp"
 #include "Client.hpp"
 #include "KeyboardRepeat.hpp"
-#include "RemapUtil.hpp"
 #include "util/CommonData.hpp"
 #include "util/EventInputQueue.hpp"
 #include "RemapFunc/KeyToKey.hpp"

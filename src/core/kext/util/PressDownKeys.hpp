@@ -5,7 +5,7 @@
 #include "KeyCode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  // store RemapUtil::fireKey results
+  // store EventOutput::FireKey results
   class PressDownKeys {
   public:
     static void initialize(void);

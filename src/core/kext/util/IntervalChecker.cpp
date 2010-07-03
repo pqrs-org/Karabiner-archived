@@ -1,5 +1,4 @@
 #include "IntervalChecker.hpp"
-#include "RemapUtil.hpp"
 #include <sys/systm.h>
 
 namespace org_pqrs_KeyRemap4MacBook {
