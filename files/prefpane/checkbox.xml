@@ -5257,7 +5257,7 @@
             <item>
               <name>Command_L x2 to EISUU x2 (for Kotoeri Users)</name>
               <sysctl>remap.jis_commandL_x2_to_eisuu_x2</sysctl>
-              <autogen>--DoublePressModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_JIS_EISUU_x2</autogen>
+              <autogen>--DoublePressModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::JIS_EISUU, KeyCode::JIS_EISUU</autogen>
             </item>
             <item>
               <name>Use Command_L as KANA/EISUU (toggle)</name>
@@ -5342,7 +5342,7 @@
             <item>
               <name>Command_R x2 to KANA x2 (for Kotoeri Users)</name>
               <sysctl>remap.jis_commandR_x2_to_kana_x2</sysctl>
-              <autogen>--DoublePressModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_JIS_KANA_x2</autogen>
+              <autogen>--DoublePressModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::JIS_KANA, KeyCode::JIS_KANA</autogen>
             </item>
             <item>
               <name>Use Command_R as KANA/EISUU (toggle)</name>

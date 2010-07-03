@@ -228,32 +228,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   bool
-  handle_VK_JIS_EISUU_x2(const Params_KeyboardEventCallBack& params)
-  {
-    if (params.key != KeyCode::VK_JIS_EISUU_x2) return false;
-
-    if (params.eventType == EventType::DOWN) {
-      for (int i = 0; i < 2; ++i) {
-        EventOutput::FireKey::fire_downup(params.flags, KeyCode::JIS_EISUU, params.keyboardType);
-      }
-    }
-    return true;
-  }
-
-  bool
-  handle_VK_JIS_KANA_x2(const Params_KeyboardEventCallBack& params)
-  {
-    if (params.key != KeyCode::VK_JIS_KANA_x2) return false;
-
-    if (params.eventType == EventType::DOWN) {
-      for (int i = 0; i < 2; ++i) {
-        EventOutput::FireKey::fire_downup(params.flags, KeyCode::JIS_KANA, params.keyboardType);
-      }
-    }
-    return true;
-  }
-
-  bool
   handle_VK_JIS_BACKSLASH(Params_KeyboardEventCallBack& params)
   {
     if (params.key != KeyCode::VK_JIS_BACKSLASH) return false;

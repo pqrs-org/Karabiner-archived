@@ -665,18 +665,6 @@
       <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
     </item>
     <item>
-      <name>VK_JIS_EISUU_x2</name>
-      <appendix>Use T as EISUU x2</appendix>
-      <sysctl>remap.samples_t2eisuu_x2</sysctl>
-      <autogen>--KeyToKey-- KeyCode::T, KeyCode::VK_JIS_EISUU_x2</autogen>
-    </item>
-    <item>
-      <name>VK_JIS_KANA_x2</name>
-      <appendix>Use Y as KANA x2</appendix>
-      <sysctl>remap.samples_y2kana_x2</sysctl>
-      <autogen>--KeyToKey-- KeyCode::Y, KeyCode::VK_JIS_KANA_x2</autogen>
-    </item>
-    <item>
       <name>VK_JIS_BACKSLASH</name>
       <appendix>Use A as JIS_BACKSLASH</appendix>
       <sysctl>remap.samples_a2jisbackslash</sysctl>

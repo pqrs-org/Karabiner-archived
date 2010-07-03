@@ -97,8 +97,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (Handle_VK_CHANGE_INPUTMODE::handle(p)) return;
       if (Handle_VK_CONFIG::handle(p)) return;
       if (Handle_VK_JIS_TOGGLE_EISUU_KANA::handle(p)) return;
-      if (handle_VK_JIS_EISUU_x2(p)) return;
-      if (handle_VK_JIS_KANA_x2(p)) return;
       if (handle_VK_JIS_BACKSLASH(p)) return;
       if (handle_VK_JIS_YEN(p)) return;
       if (Handle_VK_JIS_TEMPORARY::handle(p)) return;
