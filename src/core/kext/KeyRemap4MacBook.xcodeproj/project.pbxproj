@@ -10,8 +10,6 @@
 		32D94FC80562CBF700B6AF17 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
 		34012A6E0E7AED010069FE39 /* TimerWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34012A6C0E7AED010069FE39 /* TimerWrapper.cpp */; };
 		34012A6F0E7AED010069FE39 /* TimerWrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34012A6D0E7AED010069FE39 /* TimerWrapper.hpp */; };
-		340E0BFD111489020030A382 /* KeyFloodChecker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 340E0BFB111489020030A382 /* KeyFloodChecker.cpp */; };
-		340E0BFE111489020030A382 /* KeyFloodChecker.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 340E0BFC111489020030A382 /* KeyFloodChecker.hpp */; };
 		341272FE11D8FE0E000A62DB /* HoldingKeyToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 341272FC11D8FE0E000A62DB /* HoldingKeyToKey.cpp */; };
 		341272FF11D8FE0E000A62DB /* HoldingKeyToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 341272FD11D8FE0E000A62DB /* HoldingKeyToKey.hpp */; };
 		3430E93310C558CA00FC2D64 /* EventWatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3430E93110C558CA00FC2D64 /* EventWatcher.cpp */; };
@@ -100,8 +98,6 @@
 		32D94FD00562CBF700B6AF17 /* KeyRemap4MacBook.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyRemap4MacBook.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		34012A6C0E7AED010069FE39 /* TimerWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TimerWrapper.cpp; path = util/TimerWrapper.cpp; sourceTree = "<group>"; };
 		34012A6D0E7AED010069FE39 /* TimerWrapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TimerWrapper.hpp; path = util/TimerWrapper.hpp; sourceTree = "<group>"; };
-		340E0BFB111489020030A382 /* KeyFloodChecker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyFloodChecker.cpp; path = util/KeyFloodChecker.cpp; sourceTree = "<group>"; };
-		340E0BFC111489020030A382 /* KeyFloodChecker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyFloodChecker.hpp; path = util/KeyFloodChecker.hpp; sourceTree = "<group>"; };
 		341272FC11D8FE0E000A62DB /* HoldingKeyToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HoldingKeyToKey.cpp; path = RemapFunc/HoldingKeyToKey.cpp; sourceTree = "<group>"; };
 		341272FD11D8FE0E000A62DB /* HoldingKeyToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = HoldingKeyToKey.hpp; path = RemapFunc/HoldingKeyToKey.hpp; sourceTree = "<group>"; };
 		3430E93110C558CA00FC2D64 /* EventWatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventWatcher.cpp; path = util/EventWatcher.cpp; sourceTree = "<group>"; };
@@ -297,8 +293,6 @@
 				34CFB93111C340B000E5E7F9 /* ButtonStatus.hpp */,
 				34C382D311BB3F3600EFB9A6 /* Queue.cpp */,
 				34C382D411BB3F3600EFB9A6 /* Queue.hpp */,
-				340E0BFB111489020030A382 /* KeyFloodChecker.cpp */,
-				340E0BFC111489020030A382 /* KeyFloodChecker.hpp */,
 				3453149210FB44D3005EBFAF /* auto_ptr.hpp */,
 				34A7885010CBFBDC00DF72FD /* CommonData.cpp */,
 				34A7884710CBF92D00DF72FD /* CommonData.hpp */,
@@ -363,7 +357,6 @@
 				34A7884810CBF92D00DF72FD /* CommonData.hpp in Headers */,
 				3456837D10DA734200D7E2E6 /* VirtualKey.hpp in Headers */,
 				3453149310FB44D3005EBFAF /* auto_ptr.hpp in Headers */,
-				340E0BFE111489020030A382 /* KeyFloodChecker.hpp in Headers */,
 				34C382D611BB3F3600EFB9A6 /* Queue.hpp in Headers */,
 				34CFB93311C340B000E5E7F9 /* ButtonStatus.hpp in Headers */,
 				3475BBFF11CEDC5F007BC76A /* FromKeyChecker.hpp in Headers */,
@@ -472,7 +465,6 @@
 				34A7883010CBD79100DF72FD /* KeyCode.cpp in Sources */,
 				34A7885110CBFBDC00DF72FD /* CommonData.cpp in Sources */,
 				3456837C10DA734200D7E2E6 /* VirtualKey.cpp in Sources */,
-				340E0BFD111489020030A382 /* KeyFloodChecker.cpp in Sources */,
 				34C382D511BB3F3600EFB9A6 /* Queue.cpp in Sources */,
 				34CFB93211C340B000E5E7F9 /* ButtonStatus.cpp in Sources */,
 				3477E3BB11CFAC9D00DC05C9 /* RemapClass.cpp in Sources */,
