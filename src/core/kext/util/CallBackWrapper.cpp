@@ -16,58 +16,48 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   Params_KeyboardEventCallBack::log(const char* message) const
   {
-    if (! config.debug) return;
-
-    IOLOG_DEBUG("KeyboardEventCallback [%7s]: eventType %d, flags 0x%x, key %d, kbdType %d\n",
-                message, eventType.get(), flags.get(), key.get(), keyboardType.get());
+    IOLOG_DEBUG("KeyboardEventCallback [%7s]: eventType %2d, flags 0x%08x, key %4d, kbdType %3d, repeat = %d\n",
+                message, eventType.get(), flags.get(), key.get(), keyboardType.get(), repeat);
   }
 
   void
   Params_UpdateEventFlagsCallback::log(const char* message) const
   {
-    if (! config.debug) return;
-
-    IOLOG_DEBUG("UpdateEventFlagsCallback [%7s]: flags 0x%x\n",
+    IOLOG_DEBUG("UpdateEventFlagsCallback [%7s]: flags 0x%08x\n",
                 message, flags.get());
   }
 
   void
   Params_KeyboardSpecialEventCallback::log(const char* message) const
   {
-    if (! config.debug) return;
-
-    IOLOG_DEBUG("KeyboardSpecialEventCallBack [%7s]: eventType %d, flags 0x%x, key %d, flavor %d, guid %lld\n",
-                message, eventType.get(), flags.get(), key.get(), flavor, guid);
+    IOLOG_DEBUG("KeyboardSpecialEventCallBack [%7s]: eventType %2d, flags 0x%08x, key %4d, flavor %4d, guid %lld, repeat = %d\n",
+                message, eventType.get(), flags.get(), key.get(), flavor, guid, repeat);
   }
 
   void
   Params_RelativePointerEventCallback::log(const char* message) const
   {
-    if (! config.debug_pointing) return;
-
-    IOLOG_DEBUG("RelativePointerEventCallBack [%7s]: buttons: %d, dx: %d, dy: %d\n",
-                message, buttons.get(), dx, dy);
+    IOLOG_DEBUG_POINTING("RelativePointerEventCallBack [%7s]: buttons: 0x%08x, dx: %3d, dy: %3d\n",
+                         message, buttons.get(), dx, dy);
   }
 
   void
   Params_ScrollWheelEventCallback::log(const char* message) const
   {
-    if (! config.debug_pointing) return;
-
 #if __x86_64__
-    IOLOG_DEBUG("ScrollWheelEventCallback [%s]: deltaAxis(%d,%d,%d), fixedDelta(%d,%d,%d), pointDelta(%d,%d,%d), options: %d\n",
-                message,
-                deltaAxis1, deltaAxis2, deltaAxis3,
-                fixedDelta1, fixedDelta2, fixedDelta3,
-                pointDelta1, pointDelta2, pointDelta3,
-                options);
+    IOLOG_DEBUG_POINTING("ScrollWheelEventCallback [%7s]: deltaAxis(%d,%d,%d), fixedDelta(%d,%d,%d), pointDelta(%d,%d,%d), options: %d\n",
+                         message,
+                         deltaAxis1, deltaAxis2, deltaAxis3,
+                         fixedDelta1, fixedDelta2, fixedDelta3,
+                         pointDelta1, pointDelta2, pointDelta3,
+                         options);
 #else
-    IOLOG_DEBUG("ScrollWheelEventCallback [%s]: deltaAxis(%d,%d,%d), fixedDelta(%ld,%ld,%ld), pointDelta(%ld,%ld,%ld), options: %ld\n",
-                message,
-                deltaAxis1, deltaAxis2, deltaAxis3,
-                fixedDelta1, fixedDelta2, fixedDelta3,
-                pointDelta1, pointDelta2, pointDelta3,
-                options);
+    IOLOG_DEBUG_POINTING("ScrollWheelEventCallback [%7s]: deltaAxis(%d,%d,%d), fixedDelta(%ld,%ld,%ld), pointDelta(%ld,%ld,%ld), options: %ld\n",
+                         message,
+                         deltaAxis1, deltaAxis2, deltaAxis3,
+                         fixedDelta1, fixedDelta2, fixedDelta3,
+                         pointDelta1, pointDelta2, pointDelta3,
+                         options);
 #endif
   }
 
