@@ -6,7 +6,6 @@
 #include "ListHookedConsumer.hpp"
 #include "ListHookedKeyboard.hpp"
 #include "ListHookedPointing.hpp"
-#include "KeyFloodChecker.hpp"
 #include "KeyCode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -138,22 +137,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (key == KeyCode::JIS_EISUU || key == KeyCode::JIS_KANA) {
         if (flags != 0) {
           return;
-        }
-      }
-    }
-
-    if (config.option_jis_drop_frequently_eisuukana) {
-      if (key == KeyCode::JIS_EISUU || key == KeyCode::JIS_KANA) {
-        if (eventType.isKeyDownOrModifierDown(key, flags)) {
-          static KeyFloodChecker keyfloodchecker;
-          enum {
-            INTERVAL_MILLISEC = 600,
-            ALLOWED_COUNT_IN_INTERVAL = 5,
-          };
-          if (! keyfloodchecker.check(INTERVAL_MILLISEC, ALLOWED_COUNT_IN_INTERVAL)) {
-            return;
-          }
-          keyfloodchecker.add();
         }
       }
     }
