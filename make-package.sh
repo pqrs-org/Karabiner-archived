@@ -73,13 +73,13 @@ sudo chown root:admin pkgroot/Library
 echo "Exec PackageMaker"
 
 rm -rf $pkgName
-sudo $packagemaker -build \
-    -p $pkgName \
-    -f pkgroot \
-    -ds \
-    -r pkginfo/Resources \
-    -i pkginfo/Info.plist \
-    -d pkginfo/Description.plist
+sudo $packagemaker \
+    --root pkgroot \
+    --info pkginfo/Info.plist \
+    --resources pkginfo/Resources \
+    --title "KeyRemap4MacBook $version" \
+    --no-relocate \
+    --out $pkgName
 
 # --------------------------------------------------
 echo "Make Archive"
