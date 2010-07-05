@@ -18,7 +18,7 @@ static AuthorizationRef authorizationRef = nil;
 
 + (BOOL) getPrivilege
 {
-  if (! [BUNDLEPREFIX(AdminAction) setup]) return FALSE;
+  if (! [BUNDLEPREFIX (AdminAction) setup]) return FALSE;
 
   AuthorizationItem item;
 
@@ -41,7 +41,7 @@ static AuthorizationRef authorizationRef = nil;
 
 + (BOOL) execCommand:(char*)command
 {
-  if (! [BUNDLEPREFIX(AdminAction) getPrivilege]) return FALSE;
+  if (! [BUNDLEPREFIX (AdminAction) getPrivilege]) return FALSE;
 
   char* const args[] = {
     "-c",

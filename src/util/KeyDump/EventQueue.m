@@ -67,11 +67,11 @@ enum {
   for (NSUInteger i = 0; i < [queue_ count]; ++i) {
     NSDictionary* dict = [queue_ objectAtIndex:([queue_ count] - 1 - i)];
     [string appendFormat:@"eventType:%@\tcode:%@\tname:%@\tflags:%@\tmisc:%@\n",
-     [dict  objectForKey:@"eventType"],
-     [dict  objectForKey:@"code"],
-     [dict  objectForKey:@"name"],
-     [dict  objectForKey:@"flags"],
-     [dict  objectForKey:@"misc"]];
+     [dict objectForKey:@"eventType"],
+     [dict objectForKey:@"code"],
+     [dict objectForKey:@"name"],
+     [dict objectForKey:@"flags"],
+     [dict objectForKey:@"misc"]];
   }
 
   if ([string length] > 0) {

@@ -16,7 +16,7 @@
 - (NSString*) execSysctl:(NSArray*)args
 {
   NSString* path = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_ctl";
-  return [BUNDLEPREFIX(Common) getExecResult:path args:args];
+  return [BUNDLEPREFIX (Common) getExecResult:path args:args];
 }
 
 - (int) getCheckUpdate

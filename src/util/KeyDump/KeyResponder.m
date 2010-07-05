@@ -13,15 +13,15 @@
 
 - (NSString*) modifierFlagsToString:(NSUInteger)flags
 {
-  return [NSString stringWithFormat                 :@"%s%s%s%s%s%s%s%s",
-          ((flags & NSAlphaShiftKeyMask) ? "Caps "  :""),
-          ((flags & NSShiftKeyMask)      ? "Shift " :""),
-          ((flags & NSControlKeyMask)    ? "Ctrl "  :""),
-          ((flags & NSAlternateKeyMask)  ? "Opt "   :""),
-          ((flags & NSCommandKeyMask)    ? "Cmd "   :""),
+  return [NSString stringWithFormat:@"%s%s%s%s%s%s%s%s",
+          ((flags & NSAlphaShiftKeyMask) ? "Caps ":""),
+          ((flags & NSShiftKeyMask)      ? "Shift ":""),
+          ((flags & NSControlKeyMask)    ? "Ctrl ":""),
+          ((flags & NSAlternateKeyMask)  ? "Opt ":""),
+          ((flags & NSCommandKeyMask)    ? "Cmd ":""),
           ((flags & NSNumericPadKeyMask) ? "NumPad ":""),
-          ((flags & NSHelpKeyMask)       ? "Help "  :""),
-          ((flags & NSFunctionKeyMask)   ? "FN "    :"")];
+          ((flags & NSHelpKeyMask)       ? "Help ":""),
+          ((flags & NSFunctionKeyMask)   ? "FN ":"")];
 }
 
 - (NSString*) keycodeToString:(NSEvent*)event
