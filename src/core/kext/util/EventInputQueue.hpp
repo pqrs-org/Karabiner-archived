@@ -9,15 +9,6 @@
 #include "TimerWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  namespace SimultaneousKeyPresses {
-    namespace Option {
-      enum Option {
-        NORMAL,
-        RAW,
-      };
-    };
-  }
-
   namespace RemapFunc {
     class SimultaneousKeyPresses;
   }
