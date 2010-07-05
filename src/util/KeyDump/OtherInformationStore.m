@@ -20,7 +20,7 @@
 
 - (void) setVersion
 {
-  version_ = [BUNDLEPREFIX(SysctlWrapper) getString:@"keyremap4macbook.version"];
+  version_ = [BUNDLEPREFIX (SysctlWrapper) getString:@"keyremap4macbook.version"];
   [label_version_ setStringValue:version_];
 }
 

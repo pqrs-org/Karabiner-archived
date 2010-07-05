@@ -175,7 +175,7 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
   NSURL* appURL = [self appURL];
 
   UInt32 seed = 0U;
-  NSArray* currentLoginItems = [NSMakeCollectable(LSSharedFileListCopySnapshot(loginItems, &seed)) autorelease];
+  NSArray* currentLoginItems = [NSMakeCollectable (LSSharedFileListCopySnapshot(loginItems, &seed))autorelease];
   for (id itemObject in currentLoginItems) {
     LSSharedFileListItemRef item = (LSSharedFileListItemRef)itemObject;
 

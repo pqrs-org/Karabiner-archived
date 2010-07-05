@@ -13,7 +13,7 @@ static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
 /* ---------------------------------------------------------------------- */
 - (void) drawVersion
 {
-  NSString* version = [BUNDLEPREFIX(SysctlWrapper) getString:@"keyremap4macbook.version"];
+  NSString* version = [BUNDLEPREFIX (SysctlWrapper) getString:@"keyremap4macbook.version"];
   if (! version) {
     version = @"-.-.-";
   }
@@ -56,7 +56,7 @@ static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
 
 - (IBAction) toggleStatusBar:(id)sender
 {
-  [BUNDLEPREFIX(Common) getExecResult:sysctl_ctl args:[NSArray arrayWithObjects:@"toggle_statusbar", nil]];
+  [BUNDLEPREFIX (Common) getExecResult:sysctl_ctl args:[NSArray arrayWithObjects:@"toggle_statusbar", nil]];
   [self setStatusBarState];
   [self startStatusBar];
 }
@@ -64,7 +64,7 @@ static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
 /* ---------------------------------------------------------------------- */
 - (void) setCheckUpdateState
 {
-  NSString* result = [BUNDLEPREFIX(Common) getExecResult:sysctl_ctl args:[NSArray arrayWithObjects:@"checkupdate", nil]];
+  NSString* result = [BUNDLEPREFIX (Common) getExecResult:sysctl_ctl args:[NSArray arrayWithObjects:@"checkupdate", nil]];
   if (! result) return;
 
   [_popup_checkupdate selectItemAtIndex:[result intValue]];
@@ -74,14 +74,14 @@ static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
 {
   NSString* selectedIndex = [[[NSString alloc] initWithFormat:@"%d", [_popup_checkupdate indexOfSelectedItem]] autorelease];
 
-  [BUNDLEPREFIX(Common) getExecResult:sysctl_ctl args:[NSArray arrayWithObjects:@"set_checkupdate", selectedIndex, nil]];
+  [BUNDLEPREFIX (Common) getExecResult:sysctl_ctl args:[NSArray arrayWithObjects:@"set_checkupdate", selectedIndex, nil]];
   [self setCheckUpdateState];
 }
 
 /* ---------------------------------------------------------------------- */
 - (IBAction) launchUninstaller:(id)sender
 {
-  [BUNDLEPREFIX(Common) getExecResult:launchUninstallerCommand args:[NSArray arrayWithObjects:@"force", nil]];
+  [BUNDLEPREFIX (Common) getExecResult:launchUninstallerCommand args:[NSArray arrayWithObjects:@"force", nil]];
 }
 
 - (IBAction) launchEventViewer:(id)sender

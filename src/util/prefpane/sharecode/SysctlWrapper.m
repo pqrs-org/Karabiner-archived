@@ -41,7 +41,7 @@
 {
   NSString* entry = [NSString stringWithFormat:@"%@.%@", base, name];
 
-  NSNumber* old = [BUNDLEPREFIX(SysctlWrapper) getInt:entry];
+  NSNumber* old = [BUNDLEPREFIX (SysctlWrapper) getInt:entry];
   if (old == nil) return;
   if ([value isEqualToNumber:old]) return;
 

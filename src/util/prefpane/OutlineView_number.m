@@ -14,7 +14,7 @@ static NSString* sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
 {
   self = [super init];
   if (self) {
-    _xmlTreeWrapper = [[BUNDLEPREFIX(XMLTreeWrapper) alloc] init];
+    _xmlTreeWrapper = [[BUNDLEPREFIX (XMLTreeWrapper) alloc] init];
     if (_xmlTreeWrapper == nil) return nil;
     if (! [_xmlTreeWrapper load:@"/Library/org.pqrs/KeyRemap4MacBook/prefpane/number.xml"]) return nil;
   }
@@ -54,7 +54,7 @@ static NSString* sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
     if (! sysctl) return nil;
 
     NSString* entry = [NSString stringWithFormat:@"keyremap4macbook.%@", [sysctl stringValue]];
-    return [BUNDLEPREFIX(SysctlWrapper) getInt:entry];
+    return [BUNDLEPREFIX (SysctlWrapper) getInt:entry];
   }
 
   return nil;
@@ -71,7 +71,7 @@ static NSString* sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
   if (sysctl) {
     NSString* name = [sysctl stringValue];
     NSNumber* new = [[[NSNumber alloc] initWithInt:[object intValue]] autorelease];
-    [BUNDLEPREFIX(SysctlWrapper) setSysctlInt:@"keyremap4macbook" name:name value:new sysctl_set:sysctl_set sysctl_ctl:sysctl_ctl];
+    [BUNDLEPREFIX (SysctlWrapper) setSysctlInt:@"keyremap4macbook" name:name value:new sysctl_set:sysctl_set sysctl_ctl:sysctl_ctl];
   }
 }
 
