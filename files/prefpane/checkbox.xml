@@ -6500,6 +6500,11 @@
           <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::KEY_3, ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
+          <name>Backquote(`) to Backslash(\)</name>
+          <sysctl>remap.uk_backquote2backslash</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::BACKSLASH</autogen>
+        </item>
+        <item>
           <name>Backquote(`) to Section(§)</name>
           <sysctl>remap.uk_backquote2section</sysctl>
           <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::UK_SECTION</autogen>
