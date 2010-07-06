@@ -1379,14 +1379,29 @@
           <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, KeyCode::F3</autogen>
         </item>
         <item>
+          <name>Volume Mute to F4</name>
+          <sysctl>remap.volumemute2f4</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, KeyCode::F4</autogen>
+        </item>
+        <item>
           <name>Volume Down to F4</name>
           <sysctl>remap.volumedown2f4</sysctl>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, KeyCode::F4</autogen>
         </item>
         <item>
+          <name>Volume Down to F5</name>
+          <sysctl>remap.volumedown2f5</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, KeyCode::F5</autogen>
+        </item>
+        <item>
           <name>Volume Up to F5</name>
           <sysctl>remap.volumeup2f5</sysctl>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, KeyCode::F5</autogen>
+        </item>
+        <item>
+          <name>Volume Up to F6</name>
+          <sysctl>remap.volumeup2f6</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, KeyCode::F6</autogen>
         </item>
         <item>
           <name>Volume Mute to F10</name>
@@ -1574,10 +1589,20 @@
           <autogen>--KeyToConsumer-- KeyCode::F4, ConsumerKeyCode::VOLUME_DOWN</autogen>
         </item>
         <item>
+          <name>F4 to Volume Mute</name>
+          <sysctl>remap.f4_to_volumemute</sysctl>
+          <autogen>--KeyToConsumer-- KeyCode::F4, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        </item>
+        <item>
           <name>F5 to Volume Up (except virtual machine, RDC)</name>
           <sysctl>remap.f5_to_volumeup</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToConsumer-- KeyCode::F5, ConsumerKeyCode::VOLUME_UP</autogen>
+        </item>
+        <item>
+          <name>F5 to Volume Down</name>
+          <sysctl>remap.f5_to_volumedown</sysctl>
+          <autogen>--KeyToConsumer-- KeyCode::F5, ConsumerKeyCode::VOLUME_DOWN</autogen>
         </item>
         <item>
           <name>F5/F6 to Volume Up/Down 1/4</name>
@@ -1596,6 +1621,11 @@
           <sysctl>remap.f6_to_numlock</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToKey-- KeyCode::F6, KeyCode::VK_LOCK_FN</autogen>
+        </item>
+        <item>
+          <name>F6 to Volume Up</name>
+          <sysctl>remap.f6_to_volumeup</sysctl>
+          <autogen>--KeyToConsumer-- KeyCode::F6, ConsumerKeyCode::VOLUME_UP</autogen>
         </item>
         <item>
           <name>F7 to Video Mirror (except virtual machine, RDC)</name>
