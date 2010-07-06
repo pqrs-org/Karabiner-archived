@@ -5,6 +5,7 @@
 #include "FromKeyChecker.hpp"
 #include "IntervalChecker.hpp"
 #include "KeyToKey.hpp"
+#include "TimerWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
