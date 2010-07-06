@@ -115,23 +115,31 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ----------------------------------------
     queue_->pop();
 
+#define CALL_APPLY(PARAMS) { \
+    if (PARAMS) {            \
+      PARAMS->apply();       \
+    }                        \
+}
+
     switch ((p->params).type) {
       case ParamsUnion::KEYBOARD:
-        ((p->params).params.params_KeyboardEventCallBack)->apply();
+        CALL_APPLY((p->params).params.params_KeyboardEventCallBack);
         break;
       case ParamsUnion::UPDATE_FLAGS:
-        ((p->params).params.params_UpdateEventFlagsCallback)->apply();
+        CALL_APPLY((p->params).params.params_UpdateEventFlagsCallback);
         break;
       case ParamsUnion::KEYBOARD_SPECIAL:
-        ((p->params).params.params_KeyboardSpecialEventCallback)->apply();
+        CALL_APPLY((p->params).params.params_KeyboardSpecialEventCallback);
         break;
       case ParamsUnion::RELATIVE_POINTER:
-        ((p->params).params.params_RelativePointerEventCallback)->apply();
+        CALL_APPLY((p->params).params.params_RelativePointerEventCallback);
         break;
       case ParamsUnion::SCROLL_POINTER:
-        ((p->params).params.params_ScrollWheelEventCallback)->apply();
+        CALL_APPLY((p->params).params.params_ScrollWheelEventCallback);
         break;
     }
+
+#undef CALL_APPLY
 
     delete p;
 
