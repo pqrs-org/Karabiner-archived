@@ -27,27 +27,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
-  KeyboardRepeat::Item::~Item(void)
-  {
-#define DELETE_PARAMS(PARAMS) { \
-    if (PARAMS) {               \
-      delete PARAMS;            \
-    }                           \
-}
-
-    switch (type) {
-      case TYPE_KEYBOARD:
-        DELETE_PARAMS(params.params_KeyboardEventCallBack);
-        break;
-
-      case TYPE_CONSUMER:
-        DELETE_PARAMS(params.params_KeyboardSpecialEventCallback);
-        break;
-    }
-
-#undef DELETE_PARAMS
-  }
-
   void
   KeyboardRepeat::clear_queue(void)
   {
@@ -87,15 +66,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (key == KeyCode::VK_NONE) return;
 
     // ------------------------------------------------------------
-    Item* newp = new Item();
-    if (! newp) return;
+    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(eventType,
+                                                                                   flags,
+                                                                                   key,
+                                                                                   keyboardType,
+                                                                                   true));
+    if (! ptr) return;
+    Params_KeyboardEventCallBack& params = *ptr;
 
-    newp->type = Item::TYPE_KEYBOARD;
-    newp->params.params_KeyboardEventCallBack = Params_KeyboardEventCallBack::alloc(eventType,
-                                                                                    flags,
-                                                                                    key,
-                                                                                    keyboardType,
-                                                                                    true);
+    Item* newp = new Item(params);
+    if (! newp) return;
     queue_->push(newp);
   }
 
@@ -108,14 +88,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (key == ConsumerKeyCode::VK_NONE) return;
 
     // ------------------------------------------------------------
-    Item* newp = new Item();
-    if (! newp) return;
+    Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(eventType,
+                                                                                                 flags,
+                                                                                                 key,
+                                                                                                 true));
+    if (! ptr) return;
+    Params_KeyboardSpecialEventCallback& params = *ptr;
 
-    newp->type = Item::TYPE_CONSUMER;
-    newp->params.params_KeyboardSpecialEventCallback = Params_KeyboardSpecialEventCallback::alloc(eventType,
-                                                                                                  flags,
-                                                                                                  key,
-                                                                                                  true);
+    Item* newp = new Item(params);
+    if (! newp) return;
     queue_->push(newp);
   }
 
@@ -171,8 +152,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // We stop key repeat only when the repeating key is up.
       KeyboardRepeat::Item* p = static_cast<KeyboardRepeat::Item*>(queue_->front());
-      if (p && p->type == Item::TYPE_KEYBOARD) {
-        Params_KeyboardEventCallBack* params = p->params.params_KeyboardEventCallBack;
+      if (p && (p->params).type == ParamsUnion::KEYBOARD) {
+        Params_KeyboardEventCallBack* params = (p->params).params.params_KeyboardEventCallBack;
         if (params && key == params->key) {
           goto cancel;
         }
@@ -258,10 +239,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool isconsumer = false;
 
     for (KeyboardRepeat::Item* p = static_cast<KeyboardRepeat::Item*>(queue_->front()); p; p = static_cast<KeyboardRepeat::Item*>(p->getnext())) {
-      switch (p->type) {
-        case Item::TYPE_KEYBOARD:
+      switch ((p->params).type) {
+        case ParamsUnion::KEYBOARD:
         {
-          Params_KeyboardEventCallBack* params = p->params.params_KeyboardEventCallBack;
+          Params_KeyboardEventCallBack* params = (p->params).params.params_KeyboardEventCallBack;
           if (params) {
             if (queue_->size() == 1) {
               params->repeat = true;
@@ -273,9 +254,9 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
         }
 
-        case Item::TYPE_CONSUMER:
+        case ParamsUnion::KEYBOARD_SPECIAL:
         {
-          Params_KeyboardSpecialEventCallback* params = p->params.params_KeyboardSpecialEventCallback;
+          Params_KeyboardSpecialEventCallback* params = (p->params).params.params_KeyboardSpecialEventCallback;
           if (params) {
             if (queue_->size() == 1) {
               params->repeat = true;
@@ -287,6 +268,12 @@ namespace org_pqrs_KeyRemap4MacBook {
           isconsumer = true;
           break;
         }
+
+        case ParamsUnion::UPDATE_FLAGS:
+        case ParamsUnion::RELATIVE_POINTER:
+        case ParamsUnion::SCROLL_POINTER:
+          // do nothing
+          break;
       }
     }
 
