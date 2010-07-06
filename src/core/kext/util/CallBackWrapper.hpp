@@ -1,12 +1,9 @@
 #ifndef CALLBACKWRAPPER_HPP
 #define CALLBACKWRAPPER_HPP
 
+#include "auto_ptr.hpp"
 #include "base.hpp"
 #include "KeyCode.hpp"
-#include "auto_ptr.hpp"
-#include "IntervalChecker.hpp"
-#include "TimerWrapper.hpp"
-#include "Queue.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   class Params_KeyboardEventCallBack {
@@ -209,52 +206,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       options(op) {}
 
     void apply(void) const;
-  };
-
-  // ======================================================================
-  class EventOutputQueue {
-  public:
-    static void initialize(IOWorkLoop& workloop);
-    static void terminate(void);
-
-    static void push(const Params_KeyboardEventCallBack& p);
-    static void push(const Params_UpdateEventFlagsCallback& p);
-    static void push(const Params_KeyboardSpecialEventCallback& p);
-    static void push(const Params_RelativePointerEventCallback& p);
-    static void push(const Params_ScrollWheelEventCallback& p);
-
-  private:
-    enum {
-      DELAY = 1,
-    };
-    class Item : public Queue::Item {
-    public:
-      enum Type {
-        KEYBOARD,
-        UPDATE_FLAGS,
-        KEYBOARD_SPECIAL,
-        RELATIVE_POINTER,
-        SCROLL_POINTER,
-      } type;
-
-      union {
-        Params_KeyboardEventCallBack* params_KeyboardEventCallBack;
-        Params_UpdateEventFlagsCallback* params_UpdateEventFlagsCallback;
-        Params_KeyboardSpecialEventCallback* params_KeyboardSpecialEventCallback;
-        Params_RelativePointerEventCallback* params_RelativePointerEventCallback;
-        Params_ScrollWheelEventCallback* params_ScrollWheelEventCallback;
-      } params;
-
-      virtual ~Item(void);
-    };
-
-    static void fire(OSObject* owner, IOTimerEventSource* sender);
-    static void fire_nolock(void);
-    static void push(Item& p);
-
-    static Queue* queue_;
-    static IntervalChecker ic_;
-    static TimerWrapper timer_;
   };
 }
 
