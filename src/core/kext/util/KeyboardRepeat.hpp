@@ -6,6 +6,7 @@
 #include "CallbackWrapper.hpp"
 #include "Config.hpp"
 #include "KeyCode.hpp"
+#include "ParamsUnion.hpp"
 #include "Queue.hpp"
 #include "TimerWrapper.hpp"
 
@@ -55,17 +56,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   private:
     class Item : public Queue::Item {
     public:
-      enum Type {
-        TYPE_KEYBOARD,
-        TYPE_CONSUMER,
-      } type;
+      Item(const Params_KeyboardEventCallBack& p)        : params(p) {}
+      Item(const Params_KeyboardSpecialEventCallback& p) : params(p) {}
+      virtual ~Item(void) {}
 
-      union {
-        Params_KeyboardEventCallBack* params_KeyboardEventCallBack;
-        Params_KeyboardSpecialEventCallback* params_KeyboardSpecialEventCallback;
-      } params;
-
-      virtual ~Item(void);
+      ParamsUnion params;
     };
 
     // ------------------------------------------------------------
