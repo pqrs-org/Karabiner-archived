@@ -68,9 +68,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     Item* newp = new Item(p, delay);
     if (! newp) return;
 
-    newp->dropped = false;
-    newp->delayMS = delay;
-
     queue_->push(newp);
   }
 
