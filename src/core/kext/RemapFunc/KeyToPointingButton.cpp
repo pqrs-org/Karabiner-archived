@@ -1,4 +1,4 @@
-#include "EventOutput.hpp"
+#include "EventOutputQueue.hpp"
 #include "KeyToPointingButton.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -116,7 +116,7 @@ namespace org_pqrs_KeyRemap4MacBook {
             FlagStatus::decrease((*toButtons_)[0].flags);
             ButtonStatus::decrease((*toButtons_)[0].button);
           }
-          EventOutput::FireRelativePointer::fire();
+          EventOutputQueue::FireRelativePointer::fire();
           break;
 
         case 2:
@@ -125,9 +125,9 @@ namespace org_pqrs_KeyRemap4MacBook {
               FlagStatus::temporary_increase((*toButtons_)[i].flags);
 
               ButtonStatus::increase((*toButtons_)[i].button);
-              EventOutput::FireRelativePointer::fire(ButtonStatus::makeButtons());
+              EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons());
               ButtonStatus::decrease((*toButtons_)[i].button);
-              EventOutput::FireRelativePointer::fire(ButtonStatus::makeButtons());
+              EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons());
 
               FlagStatus::temporary_decrease((*toButtons_)[i].flags);
             }
@@ -137,7 +137,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       if (! isKeyDown) {
         FlagStatus::increase(fromKey_.flags | fromKey_.key.getModifierFlag());
-        EventOutput::FireModifiers::fire();
+        EventOutputQueue::FireModifiers::fire();
       }
 
       return true;

@@ -82,8 +82,6 @@
 		34CFB93311C340B000E5E7F9 /* ButtonStatus.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34CFB93111C340B000E5E7F9 /* ButtonStatus.hpp */; };
 		34D347E611D8106C00D70815 /* KeyToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D347E411D8106C00D70815 /* KeyToKey.cpp */; };
 		34D347E711D8106C00D70815 /* KeyToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34D347E511D8106C00D70815 /* KeyToKey.hpp */; };
-		34DBD43D11D80B6F000163BE /* EventOutput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34DBD43B11D80B6F000163BE /* EventOutput.cpp */; };
-		34DBD43E11D80B6F000163BE /* EventOutput.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34DBD43C11D80B6F000163BE /* EventOutput.hpp */; };
 		34E04BFD11DD878D001AE230 /* SimultaneousKeyPresses.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34E04BFB11DD878D001AE230 /* SimultaneousKeyPresses.cpp */; };
 		34E04BFE11DD878D001AE230 /* SimultaneousKeyPresses.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34E04BFC11DD878D001AE230 /* SimultaneousKeyPresses.hpp */; };
 		34F13A860E73E69D006EB163 /* IntervalChecker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F13A840E73E69D006EB163 /* IntervalChecker.cpp */; };
@@ -177,8 +175,6 @@
 		34CFB93111C340B000E5E7F9 /* ButtonStatus.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ButtonStatus.hpp; path = util/ButtonStatus.hpp; sourceTree = "<group>"; };
 		34D347E411D8106C00D70815 /* KeyToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyToKey.cpp; path = RemapFunc/KeyToKey.cpp; sourceTree = "<group>"; };
 		34D347E511D8106C00D70815 /* KeyToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyToKey.hpp; path = RemapFunc/KeyToKey.hpp; sourceTree = "<group>"; };
-		34DBD43B11D80B6F000163BE /* EventOutput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventOutput.cpp; path = util/EventOutput.cpp; sourceTree = "<group>"; };
-		34DBD43C11D80B6F000163BE /* EventOutput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = EventOutput.hpp; path = util/EventOutput.hpp; sourceTree = "<group>"; };
 		34E04BFB11DD878D001AE230 /* SimultaneousKeyPresses.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SimultaneousKeyPresses.cpp; path = RemapFunc/SimultaneousKeyPresses.cpp; sourceTree = "<group>"; };
 		34E04BFC11DD878D001AE230 /* SimultaneousKeyPresses.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SimultaneousKeyPresses.hpp; path = RemapFunc/SimultaneousKeyPresses.hpp; sourceTree = "<group>"; };
 		34F13A840E73E69D006EB163 /* IntervalChecker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IntervalChecker.cpp; path = util/IntervalChecker.cpp; sourceTree = "<group>"; };
@@ -305,8 +301,6 @@
 				3401FE0111E2E77300EBBF43 /* ParamsUnion.cpp */,
 				3401FE0211E2E77300EBBF43 /* ParamsUnion.hpp */,
 				3401FE0311E2E77300EBBF43 /* Vector.hpp */,
-				34DBD43B11D80B6F000163BE /* EventOutput.cpp */,
-				34DBD43C11D80B6F000163BE /* EventOutput.hpp */,
 				346EB2E211D5CDC100BBDF0E /* EventInputQueue.cpp */,
 				346EB2E311D5CDC100BBDF0E /* EventInputQueue.hpp */,
 				3475BBFE11CEDC5F007BC76A /* FromKeyChecker.hpp */,
@@ -385,7 +379,6 @@
 				346EB2E511D5CDC100BBDF0E /* EventInputQueue.hpp in Headers */,
 				345E3ECC11D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp in Headers */,
 				345E3ECD11D79D24004B6347 /* RemapFuncBase.hpp in Headers */,
-				34DBD43E11D80B6F000163BE /* EventOutput.hpp in Headers */,
 				34D347E711D8106C00D70815 /* KeyToKey.hpp in Headers */,
 				345FD60911D819EA00FC1B86 /* ConsumerToConsumer.hpp in Headers */,
 				347CADA111D82FFE00F51978 /* KeyToConsumer.hpp in Headers */,
@@ -495,7 +488,6 @@
 				3477E3BB11CFAC9D00DC05C9 /* RemapClass.cpp in Sources */,
 				346EB2E411D5CDC100BBDF0E /* EventInputQueue.cpp in Sources */,
 				345E3ECB11D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp in Sources */,
-				34DBD43D11D80B6F000163BE /* EventOutput.cpp in Sources */,
 				34D347E611D8106C00D70815 /* KeyToKey.cpp in Sources */,
 				345FD60811D819EA00FC1B86 /* ConsumerToConsumer.cpp in Sources */,
 				347CADA011D82FFE00F51978 /* KeyToConsumer.cpp in Sources */,

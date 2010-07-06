@@ -1,5 +1,5 @@
 #include "CommonData.hpp"
-#include "EventOutput.hpp"
+#include "EventOutputQueue.hpp"
 #include "IOLockWrapper.hpp"
 #include "KeyboardRepeat.hpp"
 #include "ListHookedKeyboard.hpp"
@@ -268,7 +268,7 @@ namespace org_pqrs_KeyRemap4MacBook {
             } else {
               params->repeat = false;
             }
-            EventOutput::FireKey::fire(*params);
+            EventOutputQueue::FireKey::fire(*params);
           }
           break;
         }
@@ -282,7 +282,7 @@ namespace org_pqrs_KeyRemap4MacBook {
             } else {
               params->repeat = false;
             }
-            EventOutput::FireConsumer::fire(*params);
+            EventOutputQueue::FireConsumer::fire(*params);
           }
           isconsumer = true;
           break;

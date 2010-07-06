@@ -1,4 +1,4 @@
-#include "EventOutput.hpp"
+#include "EventOutputQueue.hpp"
 #include "ConsumerToConsumer.hpp"
 #include "KeyboardRepeat.hpp"
 #include "ListHookedKeyboard.hpp"
@@ -108,7 +108,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           Params_KeyboardSpecialEventCallback& params = *ptr;
 
           KeyboardRepeat::set(params);
-          EventOutput::FireConsumer::fire(params);
+          EventOutputQueue::FireConsumer::fire(params);
           break;
         }
 
@@ -123,9 +123,9 @@ namespace org_pqrs_KeyRemap4MacBook {
               if (! ptr) return false;
               Params_KeyboardSpecialEventCallback& params = *ptr;
 
-              EventOutput::FireConsumer::fire(params);
+              EventOutputQueue::FireConsumer::fire(params);
               params.eventType = EventType::UP;
-              EventOutput::FireConsumer::fire(params);
+              EventOutputQueue::FireConsumer::fire(params);
 
               KeyboardRepeat::primitive_add(EventType::DOWN, params.flags, params.key);
               KeyboardRepeat::primitive_add(EventType::UP,   params.flags, params.key);

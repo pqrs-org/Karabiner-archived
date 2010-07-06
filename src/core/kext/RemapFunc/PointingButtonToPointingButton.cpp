@@ -1,4 +1,4 @@
-#include "EventOutput.hpp"
+#include "EventOutputQueue.hpp"
 #include "PointingButtonToPointingButton.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -111,22 +111,22 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         case 1:
           FlagStatus::temporary_increase((*toButtons_)[0].flags);
-          EventOutput::FireRelativePointer::fire(ButtonStatus::makeButtons(), remapParams.params.dx, remapParams.params.dy);
+          EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons(), remapParams.params.dx, remapParams.params.dy);
           FlagStatus::temporary_decrease((*toButtons_)[0].flags);
           break;
 
         case 2:
         {
           if (! isButtonDown) {
-            EventOutput::FireRelativePointer::fire(ButtonStatus::makeButtons(), remapParams.params.dx, remapParams.params.dy);
+            EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons(), remapParams.params.dx, remapParams.params.dy);
           } else {
             for (size_t i = 0; i < toButtons_->size(); ++i) {
               FlagStatus::temporary_increase((*toButtons_)[i].flags);
 
               ButtonStatus::increase((*toButtons_)[i].button);
-              EventOutput::FireRelativePointer::fire(ButtonStatus::makeButtons());
+              EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons());
               ButtonStatus::decrease((*toButtons_)[i].button);
-              EventOutput::FireRelativePointer::fire(ButtonStatus::makeButtons());
+              EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons());
 
               FlagStatus::temporary_decrease((*toButtons_)[i].flags);
             }

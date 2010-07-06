@@ -1,5 +1,5 @@
 #include "Config.hpp"
-#include "EventOutput.hpp"
+#include "EventOutputQueue.hpp"
 #include "PointingRelativeToScroll.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -43,7 +43,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         // iPhoto store the scroll events when left button is pressed, and restore events after left button is released.
         // PointingRelativeToScroll doesn't aim it, we release the left button and do normal scroll event.
         ButtonStatus::decrease(fromButtons_);
-        EventOutput::FireRelativePointer::fire();
+        EventOutputQueue::FireRelativePointer::fire();
         ButtonStatus::increase(fromButtons_);
 
         absolute_distance_ = 0;
@@ -61,9 +61,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (absolute_distance_ <= DISTANCE_THRESHOLD && begin_ic_.getmillisec() < TIME_THRESHOLD) {
           // Fire by a click event.
           ButtonStatus::increase(fromButtons_);
-          EventOutput::FireRelativePointer::fire();
+          EventOutputQueue::FireRelativePointer::fire();
           ButtonStatus::decrease(fromButtons_);
-          EventOutput::FireRelativePointer::fire();
+          EventOutputQueue::FireRelativePointer::fire();
         }
         return true;
       }
@@ -167,7 +167,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       params.pointDelta1 = (delta1 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1024;
       params.pointDelta2 = (delta2 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1024;
 
-      EventOutput::FireScrollWheel::fire(params);
+      EventOutputQueue::FireScrollWheel::fire(params);
 
       absolute_distance_ += abs(delta1) + abs(delta2);
     }

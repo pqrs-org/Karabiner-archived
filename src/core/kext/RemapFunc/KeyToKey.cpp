@@ -1,5 +1,5 @@
 #include "CommonData.hpp"
-#include "EventOutput.hpp"
+#include "EventOutputQueue.hpp"
 #include "KeyToKey.hpp"
 #include "KeyboardRepeat.hpp"
 
@@ -110,7 +110,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           Params_KeyboardEventCallBack& params = *ptr;
 
           KeyboardRepeat::set(params);
-          EventOutput::FireKey::fire(params);
+          EventOutputQueue::FireKey::fire(params);
 
           break;
         }
@@ -125,7 +125,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               Flags f = FlagStatus::makeFlags();
               KeyboardType keyboardType = remapParams.params.keyboardType;
 
-              EventOutput::FireKey::fire_downup(f, (*toKeys_)[i].key, keyboardType);
+              EventOutputQueue::FireKey::fire_downup(f, (*toKeys_)[i].key, keyboardType);
               KeyboardRepeat::primitive_add(EventType::DOWN, f, (*toKeys_)[i].key, keyboardType);
               KeyboardRepeat::primitive_add(EventType::UP,   f, (*toKeys_)[i].key, keyboardType);
 
