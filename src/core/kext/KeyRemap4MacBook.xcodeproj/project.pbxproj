@@ -10,6 +10,9 @@
 		32D94FC80562CBF700B6AF17 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
 		34012A6E0E7AED010069FE39 /* TimerWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34012A6C0E7AED010069FE39 /* TimerWrapper.cpp */; };
 		34012A6F0E7AED010069FE39 /* TimerWrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34012A6D0E7AED010069FE39 /* TimerWrapper.hpp */; };
+		3401FE0411E2E77300EBBF43 /* ParamsUnion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3401FE0111E2E77300EBBF43 /* ParamsUnion.cpp */; };
+		3401FE0511E2E77300EBBF43 /* ParamsUnion.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3401FE0211E2E77300EBBF43 /* ParamsUnion.hpp */; };
+		3401FE0611E2E77300EBBF43 /* Vector.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3401FE0311E2E77300EBBF43 /* Vector.hpp */; };
 		341272FE11D8FE0E000A62DB /* HoldingKeyToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 341272FC11D8FE0E000A62DB /* HoldingKeyToKey.cpp */; };
 		341272FF11D8FE0E000A62DB /* HoldingKeyToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 341272FD11D8FE0E000A62DB /* HoldingKeyToKey.hpp */; };
 		3430E93310C558CA00FC2D64 /* EventWatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3430E93110C558CA00FC2D64 /* EventWatcher.cpp */; };
@@ -100,6 +103,9 @@
 		32D94FD00562CBF700B6AF17 /* KeyRemap4MacBook.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyRemap4MacBook.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		34012A6C0E7AED010069FE39 /* TimerWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TimerWrapper.cpp; path = util/TimerWrapper.cpp; sourceTree = "<group>"; };
 		34012A6D0E7AED010069FE39 /* TimerWrapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TimerWrapper.hpp; path = util/TimerWrapper.hpp; sourceTree = "<group>"; };
+		3401FE0111E2E77300EBBF43 /* ParamsUnion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ParamsUnion.cpp; path = util/ParamsUnion.cpp; sourceTree = "<group>"; };
+		3401FE0211E2E77300EBBF43 /* ParamsUnion.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ParamsUnion.hpp; path = util/ParamsUnion.hpp; sourceTree = "<group>"; };
+		3401FE0311E2E77300EBBF43 /* Vector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Vector.hpp; path = util/Vector.hpp; sourceTree = "<group>"; };
 		341272FC11D8FE0E000A62DB /* HoldingKeyToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HoldingKeyToKey.cpp; path = RemapFunc/HoldingKeyToKey.cpp; sourceTree = "<group>"; };
 		341272FD11D8FE0E000A62DB /* HoldingKeyToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = HoldingKeyToKey.hpp; path = RemapFunc/HoldingKeyToKey.hpp; sourceTree = "<group>"; };
 		3430E93110C558CA00FC2D64 /* EventWatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventWatcher.cpp; path = util/EventWatcher.cpp; sourceTree = "<group>"; };
@@ -290,6 +296,9 @@
 		346B753B0E72C0A200F9A79F /* util */ = {
 			isa = PBXGroup;
 			children = (
+				3401FE0111E2E77300EBBF43 /* ParamsUnion.cpp */,
+				3401FE0211E2E77300EBBF43 /* ParamsUnion.hpp */,
+				3401FE0311E2E77300EBBF43 /* Vector.hpp */,
 				34DBD43B11D80B6F000163BE /* EventOutput.cpp */,
 				34DBD43C11D80B6F000163BE /* EventOutput.hpp */,
 				346EB2E211D5CDC100BBDF0E /* EventInputQueue.cpp */,
@@ -384,6 +393,8 @@
 				3484E04911DE10CE00426723 /* KeyToPointingButton.hpp in Headers */,
 				34C8E8D311DEEC0400E2FE41 /* PointingRelativeToScroll.hpp in Headers */,
 				34B8199611DF925500BD8E0B /* DropKeyAfterRemap.hpp in Headers */,
+				3401FE0511E2E77300EBBF43 /* ParamsUnion.hpp in Headers */,
+				3401FE0611E2E77300EBBF43 /* Vector.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,6 +502,7 @@
 				3484E04811DE10CE00426723 /* KeyToPointingButton.cpp in Sources */,
 				34C8E8D211DEEC0400E2FE41 /* PointingRelativeToScroll.cpp in Sources */,
 				34B8199511DF925500BD8E0B /* DropKeyAfterRemap.cpp in Sources */,
+				3401FE0411E2E77300EBBF43 /* ParamsUnion.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
