@@ -76,6 +76,8 @@
 		34C7A9B00CE4605B00C98397 /* Config.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34C7A9AF0CE4605B00C98397 /* Config.hpp */; };
 		34C8E8D211DEEC0400E2FE41 /* PointingRelativeToScroll.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34C8E8D011DEEC0400E2FE41 /* PointingRelativeToScroll.cpp */; };
 		34C8E8D311DEEC0400E2FE41 /* PointingRelativeToScroll.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34C8E8D111DEEC0400E2FE41 /* PointingRelativeToScroll.hpp */; };
+		34C931CC11E37E5300B81B08 /* EventOutputQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34C931CA11E37E5300B81B08 /* EventOutputQueue.cpp */; };
+		34C931CD11E37E5300B81B08 /* EventOutputQueue.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34C931CB11E37E5300B81B08 /* EventOutputQueue.hpp */; };
 		34CFB93211C340B000E5E7F9 /* ButtonStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34CFB93011C340B000E5E7F9 /* ButtonStatus.cpp */; };
 		34CFB93311C340B000E5E7F9 /* ButtonStatus.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34CFB93111C340B000E5E7F9 /* ButtonStatus.hpp */; };
 		34D347E611D8106C00D70815 /* KeyToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D347E411D8106C00D70815 /* KeyToKey.cpp */; };
@@ -169,6 +171,8 @@
 		34C7A9AF0CE4605B00C98397 /* Config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config.hpp; sourceTree = "<group>"; };
 		34C8E8D011DEEC0400E2FE41 /* PointingRelativeToScroll.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PointingRelativeToScroll.cpp; path = RemapFunc/PointingRelativeToScroll.cpp; sourceTree = "<group>"; };
 		34C8E8D111DEEC0400E2FE41 /* PointingRelativeToScroll.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PointingRelativeToScroll.hpp; path = RemapFunc/PointingRelativeToScroll.hpp; sourceTree = "<group>"; };
+		34C931CA11E37E5300B81B08 /* EventOutputQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventOutputQueue.cpp; path = util/EventOutputQueue.cpp; sourceTree = "<group>"; };
+		34C931CB11E37E5300B81B08 /* EventOutputQueue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = EventOutputQueue.hpp; path = util/EventOutputQueue.hpp; sourceTree = "<group>"; };
 		34CFB93011C340B000E5E7F9 /* ButtonStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ButtonStatus.cpp; path = util/ButtonStatus.cpp; sourceTree = "<group>"; };
 		34CFB93111C340B000E5E7F9 /* ButtonStatus.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ButtonStatus.hpp; path = util/ButtonStatus.hpp; sourceTree = "<group>"; };
 		34D347E411D8106C00D70815 /* KeyToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyToKey.cpp; path = RemapFunc/KeyToKey.cpp; sourceTree = "<group>"; };
@@ -296,6 +300,8 @@
 		346B753B0E72C0A200F9A79F /* util */ = {
 			isa = PBXGroup;
 			children = (
+				34C931CA11E37E5300B81B08 /* EventOutputQueue.cpp */,
+				34C931CB11E37E5300B81B08 /* EventOutputQueue.hpp */,
 				3401FE0111E2E77300EBBF43 /* ParamsUnion.cpp */,
 				3401FE0211E2E77300EBBF43 /* ParamsUnion.hpp */,
 				3401FE0311E2E77300EBBF43 /* Vector.hpp */,
@@ -395,6 +401,7 @@
 				34B8199611DF925500BD8E0B /* DropKeyAfterRemap.hpp in Headers */,
 				3401FE0511E2E77300EBBF43 /* ParamsUnion.hpp in Headers */,
 				3401FE0611E2E77300EBBF43 /* Vector.hpp in Headers */,
+				34C931CD11E37E5300B81B08 /* EventOutputQueue.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +510,7 @@
 				34C8E8D211DEEC0400E2FE41 /* PointingRelativeToScroll.cpp in Sources */,
 				34B8199511DF925500BD8E0B /* DropKeyAfterRemap.cpp in Sources */,
 				3401FE0411E2E77300EBBF43 /* ParamsUnion.cpp in Sources */,
+				34C931CC11E37E5300B81B08 /* EventOutputQueue.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

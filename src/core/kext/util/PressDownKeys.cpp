@@ -1,6 +1,7 @@
 #include "CallBackWrapper.hpp"
 #include "CommonData.hpp"
 #include "Config.hpp"
+#include "EventOutputQueue.hpp"
 #include "PressDownKeys.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {

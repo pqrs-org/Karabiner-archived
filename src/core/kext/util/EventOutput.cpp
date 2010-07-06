@@ -1,5 +1,6 @@
 #include "CallBackWrapper.hpp"
 #include "EventOutput.hpp"
+#include "EventOutputQueue.hpp"
 #include "RemapClass.hpp"
 #include "PressDownKeys.hpp"
 #include "VirtualKey.hpp"
