@@ -108,6 +108,12 @@ class RemapClass
         @code[:keycode] += "VK_SIMULTANEOUSKEYPRESSES_#{name}_#{@@index} --AUTO--\n"
         @code[:handlevirtualkey] += "if (value#{@@index}_.handlevirtualkey(params)) return true;\n"
 
+      when 'SimultaneousButtonPresses'
+        append_to_code_initialize(params)
+        append_to_code_terminate
+        @code[:variable] << { :index => @@index, :class => "RemapFunc::SimultaneousButtonPresses" }
+        @code[:remap_simultaneouskeypresses] += "value#{@@index}_.remap();\n"
+
       when 'KeyToKey', 'KeyToConsumer', 'KeyToPointingButton', 'DoublePressModifier', 'HoldingKeyToKey', 'IgnoreMultipleSameKeyPress', 'KeyOverlaidModifier'
         append_to_code_initialize(params)
         append_to_code_terminate

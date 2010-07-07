@@ -282,6 +282,22 @@
     </item>
 
     <item>
+      <name>SimultaneousButtonPresses</name>
+      <list>
+        <item>
+          <name>LeftClick+RightClick to MiddleClick</name>
+          <sysctl>remap.samples_simultaneousbuttonpresses_lcrc2mc</sysctl>
+          <autogen>--SimultaneousButtonPresses-- PointingButton::LEFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
+        </item>
+        <item>
+          <name>LeftClick+RightClick to Button4</name>
+          <sysctl>remap.samples_simultaneousbuttonpresses_lcrc2button4</sysctl>
+          <autogen>--SimultaneousButtonPresses-- PointingButton::LEFT, PointingButton::RIGHT, PointingButton::BUTTON4</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>KeyToPointingButton</name>
       <appendix>A to LeftClick (Standard)</appendix>
       <appendix>S to Double-LeftClick</appendix>

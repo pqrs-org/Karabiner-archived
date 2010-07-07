@@ -142,6 +142,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     enqueue_(p);
 
+    // remap keys
+    RemapClassManager::remap_simultaneouskeypresses();
+
     // if no SimultaneousKeyPresses is enabled, fire immediately.
     if (RemapClassManager::isEventInputQueueDelayEnabled()) {
       setTimer();
@@ -157,6 +160,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     enqueue_(p);
 
+    // remap keys
+    RemapClassManager::remap_simultaneouskeypresses();
+
     // if no SimultaneousKeyPresses is enabled, fire immediately.
     if (RemapClassManager::isEventInputQueueDelayEnabled()) {
       setTimer();
@@ -171,6 +177,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
 
     enqueue_(p);
+
+    // remap keys
+    RemapClassManager::remap_simultaneouskeypresses();
 
     // if no SimultaneousKeyPresses is enabled, fire immediately.
     if (RemapClassManager::isEventInputQueueDelayEnabled()) {

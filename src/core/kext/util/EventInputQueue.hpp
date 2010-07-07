@@ -11,10 +11,12 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
+    class SimultaneousButtonPresses;
     class SimultaneousKeyPresses;
   }
 
   class EventInputQueue {
+    friend class RemapFunc::SimultaneousButtonPresses;
     friend class RemapFunc::SimultaneousKeyPresses;
 
   public:
