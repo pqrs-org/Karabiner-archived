@@ -5175,6 +5175,12 @@
           <autogen>--KeyToKey-- KeyCode::U, VK_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::U</autogen>
           <autogen>--KeyToKey-- KeyCode::O, VK_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::O</autogen>
         </item>
+        <item>
+          <name>KeyPad Comma(,) to Dot(.) on "Italian Pro Input Source"</name>
+          <sysctl>remap.italian_keypadcomma2dot</sysctl>
+          <!-- ITALIAN_KEYPAD_COMMA is 0x41 (== KEYPAD_DOT) -->
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::DOT</autogen>
+        </item>
       </list>
     </item>
     <item>
