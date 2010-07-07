@@ -38,8 +38,6 @@ namespace org_pqrs_KeyRemap4MacBook {
                                OSObject* sender,
                                void* refcon)
     {
-      if (! CommonData::eventLock) return;
-
       Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType(eventType),
                                                                                      Flags(flags),
                                                                                      KeyCode(key),
@@ -53,6 +51,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       Params_KeyboardEventCallBack& params = *ptr;
 
       {
+        if (! CommonData::eventLock) return;
         IOLockWrapper::ScopedLock lk(CommonData::eventLock);
 
         IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, sender);

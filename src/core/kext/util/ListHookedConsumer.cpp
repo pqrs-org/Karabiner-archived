@@ -1,6 +1,7 @@
 #include "CommonData.hpp"
 #include "Config.hpp"
 #include "Core.hpp"
+#include "EventInputQueue.hpp"
 #include "EventWatcher.hpp"
 #include "FlagStatus.hpp"
 #include "IOLockWrapper.hpp"
@@ -32,46 +33,58 @@ namespace org_pqrs_KeyRemap4MacBook {
                                       OSObject* sender,
                                       void* refcon)
     {
-      if (! CommonData::eventLock) return;
-      IOLockWrapper::ScopedLock lk(CommonData::eventLock);
-
-      IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, sender);
-      if (! kbd) return;
-
-      HookedConsumer* hc = ListHookedConsumer::instance().get(kbd);
-      if (! hc) return;
-
-      // ------------------------------------------------------------
-      CommonData::setcurrent_ts(ts);
-      CommonData::setcurrent_vendorIDproductID(hc->getVendorID(), hc->getProductID());
-
-      // ------------------------------------------------------------
-      // Because we handle the key repeat ourself, drop the key repeat by hardware.
-      if (repeat) return;
-
-      // ------------------------------------------------------------
-      if (EventType::DOWN == eventType) {
-        CommonData::setcurrent_workspacedata();
-      }
-
-      // ------------------------------------------------------------
-      // clear temporary_count_
-      FlagStatus::set();
-
-      NumHeldDownKeys::set(EventType(eventType));
-
-      // ------------------------------------------------------------
       Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(EventType(eventType), Flags(flags), ConsumerKeyCode(key),
                                                                                                    flavor, guid, repeat));
       if (! ptr) return;
       Params_KeyboardSpecialEventCallback& params = *ptr;
 
-      if (params.eventType == EventType::DOWN) {
-        EventWatcher::on();
+      {
+        if (! CommonData::eventLock) return;
+        IOLockWrapper::ScopedLock lk(CommonData::eventLock);
+
+        IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, sender);
+        if (! kbd) return;
+
+        HookedConsumer* hc = ListHookedConsumer::instance().get(kbd);
+        if (! hc) return;
+
+        // ------------------------------------------------------------
+        CommonData::setcurrent_ts(ts);
+        CommonData::setcurrent_vendorIDproductID(hc->getVendorID(), hc->getProductID());
+
+        // ------------------------------------------------------------
+        // Because we handle the key repeat ourself, drop the key repeat by hardware.
+        if (repeat) return;
+
+        // ------------------------------------------------------------
+        if (EventType::DOWN == eventType) {
+          CommonData::setcurrent_workspacedata();
+        }
+
+        // ------------------------------------------------------------
+        // clear temporary_count_
+        FlagStatus::set();
       }
 
-      Core::remap_KeyboardSpecialEventCallback(params);
+      // ------------------------------------------------------------
+      EventInputQueue::push(params);
     }
+  }
+
+  void
+  ListHookedConsumer::hook_KeyboardSpecialEventCallback_queued(Params_KeyboardSpecialEventCallback& params)
+  {
+    if (! CommonData::eventLock) return;
+    IOLockWrapper::ScopedLock lk(CommonData::eventLock);
+
+    if (params.eventType == EventType::DOWN) {
+      EventWatcher::on();
+    }
+
+    // ------------------------------------------------------------
+    NumHeldDownKeys::set(params.eventType);
+
+    Core::remap_KeyboardSpecialEventCallback(params);
   }
 
   bool

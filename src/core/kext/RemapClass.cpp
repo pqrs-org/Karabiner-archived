@@ -57,6 +57,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     char statusmessage_[32];
     char lastmessage_[32];
+    bool isEventInputQueueDelayEnabled_ = false;
 
     // ======================================================================
     static void
@@ -127,6 +128,12 @@ namespace org_pqrs_KeyRemap4MacBook {
         KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_STATUS_MESSAGE, &request, sizeof(request), NULL, 0);
         strlcpy(lastmessage_, statusmessage_, sizeof(lastmessage_));
       }
+
+      if (queue_remap_simultaneouskeypresses_ && ! queue_remap_simultaneouskeypresses_->empty()) {
+        isEventInputQueueDelayEnabled_ = true;
+      } else {
+        isEventInputQueueDelayEnabled_ = false;
+      }
     }
 
     // ======================================================================
@@ -189,9 +196,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 #define DECLARE_REMAPFUNC(QUEUE, FUNC, PARAMS)    \
   {                                               \
     IOLockWrapper::ScopedLock lk(lock_);          \
-    size_t num = 0;                               \
                                                   \
-    if (! QUEUE) return num;                      \
+    if (! QUEUE) return;                          \
                                                   \
     Item* p = static_cast<Item*>(QUEUE->front()); \
     for (;;) {                                    \
@@ -199,36 +205,34 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! (p->func).FUNC) break;                \
       (p->func).FUNC(PARAMS);                     \
       p = static_cast<Item*>(p->getnext());       \
-      ++num;                                      \
     }                                             \
-    return num;                                   \
   }
 
-    size_t
+    void
     remap_setkeyboardtype(KeyboardType& keyboardType)
     {
       DECLARE_REMAPFUNC(queue_remap_setkeyboardtype_, remap_setkeyboardtype, keyboardType);
     }
 
-    size_t
+    void
     remap_key(RemapParams& remapParams)
     {
       DECLARE_REMAPFUNC(queue_remap_key_, remap_key, remapParams);
     }
 
-    size_t
+    void
     remap_consumer(RemapConsumerParams& remapParams)
     {
       DECLARE_REMAPFUNC(queue_remap_consumer_, remap_consumer, remapParams);
     }
 
-    size_t
+    void
     remap_pointing(RemapPointingParams_relative& remapParams)
     {
       DECLARE_REMAPFUNC(queue_remap_pointing_, remap_pointing, remapParams);
     }
 
-    size_t
+    void
     remap_simultaneouskeypresses(void)
     {
       DECLARE_REMAPFUNC(queue_remap_simultaneouskeypresses_, remap_simultaneouskeypresses, );
@@ -259,6 +263,12 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (p(params)) return true;
       }
       return false;
+    }
+
+    bool
+    isEventInputQueueDelayEnabled(void)
+    {
+      return isEventInputQueueDelayEnabled_;
     }
   }
 }
