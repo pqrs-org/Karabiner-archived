@@ -29,6 +29,8 @@
 		345004AE0E7CE48F0075324B /* Core.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345004A90E7CE48F0075324B /* Core.hpp */; };
 		345004AF0E7CE48F0075324B /* Driver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345004AA0E7CE48F0075324B /* Driver.cpp */; };
 		345004B00E7CE48F0075324B /* Driver.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345004AB0E7CE48F0075324B /* Driver.hpp */; };
+		34527BDA11E4C683006C7EE2 /* SimultaneousButtonPresses.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34527BD811E4C683006C7EE2 /* SimultaneousButtonPresses.cpp */; };
+		34527BDB11E4C683006C7EE2 /* SimultaneousButtonPresses.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34527BD911E4C683006C7EE2 /* SimultaneousButtonPresses.hpp */; };
 		3453149310FB44D3005EBFAF /* auto_ptr.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3453149210FB44D3005EBFAF /* auto_ptr.hpp */; };
 		3456837C10DA734200D7E2E6 /* VirtualKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3456837A10DA734100D7E2E6 /* VirtualKey.cpp */; };
 		3456837D10DA734200D7E2E6 /* VirtualKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3456837B10DA734200D7E2E6 /* VirtualKey.hpp */; };
@@ -122,6 +124,8 @@
 		345004A90E7CE48F0075324B /* Core.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Core.hpp; sourceTree = "<group>"; };
 		345004AA0E7CE48F0075324B /* Driver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Driver.cpp; sourceTree = "<group>"; };
 		345004AB0E7CE48F0075324B /* Driver.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Driver.hpp; sourceTree = "<group>"; };
+		34527BD811E4C683006C7EE2 /* SimultaneousButtonPresses.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SimultaneousButtonPresses.cpp; path = RemapFunc/SimultaneousButtonPresses.cpp; sourceTree = "<group>"; };
+		34527BD911E4C683006C7EE2 /* SimultaneousButtonPresses.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SimultaneousButtonPresses.hpp; path = RemapFunc/SimultaneousButtonPresses.hpp; sourceTree = "<group>"; };
 		3453149210FB44D3005EBFAF /* auto_ptr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = auto_ptr.hpp; path = util/auto_ptr.hpp; sourceTree = "<group>"; };
 		3456837A10DA734100D7E2E6 /* VirtualKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VirtualKey.cpp; sourceTree = "<group>"; };
 		3456837B10DA734200D7E2E6 /* VirtualKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = VirtualKey.hpp; sourceTree = "<group>"; };
@@ -260,6 +264,8 @@
 		345E3EC511D79D17004B6347 /* RemapFunc */ = {
 			isa = PBXGroup;
 			children = (
+				34527BD811E4C683006C7EE2 /* SimultaneousButtonPresses.cpp */,
+				34527BD911E4C683006C7EE2 /* SimultaneousButtonPresses.hpp */,
 				34B8199311DF925500BD8E0B /* DropKeyAfterRemap.cpp */,
 				34B8199411DF925500BD8E0B /* DropKeyAfterRemap.hpp */,
 				34C8E8D011DEEC0400E2FE41 /* PointingRelativeToScroll.cpp */,
@@ -395,6 +401,7 @@
 				3401FE0511E2E77300EBBF43 /* ParamsUnion.hpp in Headers */,
 				3401FE0611E2E77300EBBF43 /* Vector.hpp in Headers */,
 				34C931CD11E37E5300B81B08 /* EventOutputQueue.hpp in Headers */,
+				34527BDB11E4C683006C7EE2 /* SimultaneousButtonPresses.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +510,7 @@
 				34B8199511DF925500BD8E0B /* DropKeyAfterRemap.cpp in Sources */,
 				3401FE0411E2E77300EBBF43 /* ParamsUnion.cpp in Sources */,
 				34C931CC11E37E5300B81B08 /* EventOutputQueue.cpp in Sources */,
+				34527BDA11E4C683006C7EE2 /* SimultaneousButtonPresses.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
