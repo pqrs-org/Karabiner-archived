@@ -21,10 +21,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool isKeyDown = (params.eventType == EventType::DOWN);
       return isFromKey(isKeyDown, fromFlags);
     }
-    bool isFromPointingButton(PointingButton fromButton, Flags fromFlags) {
-      if (ButtonStatus::justPressed().isOn(fromButton)) {
+    bool isFromPointingButton(const Params_RelativePointerEventCallback& params, PointingButton fromButton, Flags fromFlags) {
+      if (params.ex_justPressed.isOn(fromButton)) {
         return isFromKey(true,  fromFlags);
-      } else if (ButtonStatus::justReleased().isOn(fromButton)) {
+      } else if (params.ex_justReleased.isOn(fromButton)) {
         return isFromKey(false, fromFlags);
       }
       return false;

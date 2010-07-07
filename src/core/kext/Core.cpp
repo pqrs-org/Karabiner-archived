@@ -208,6 +208,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       RemapPointingParams_relative remapParams(params);
 
+      ButtonStatus::set(params.ex_justPressed, params.ex_justReleased);
+
       RemapClassManager::remap_pointing(remapParams);
 
       // ------------------------------------------------------------

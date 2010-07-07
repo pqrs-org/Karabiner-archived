@@ -23,11 +23,13 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     static void push(const Params_KeyboardEventCallBack& p);
     static void push(const Params_KeyboardSpecialEventCallback& p);
+    static void push(const Params_RelativePointerEventCallback& p);
 
     class Item : public Queue::Item {
     public:
       Item(const Params_KeyboardEventCallBack& p, uint32_t d)        : params(p), dropped(false), delayMS(d) {}
       Item(const Params_KeyboardSpecialEventCallback& p, uint32_t d) : params(p), dropped(false), delayMS(d) {}
+      Item(const Params_RelativePointerEventCallback& p, uint32_t d) : params(p), dropped(false), delayMS(d) {}
       virtual ~Item(void) {}
 
       ParamsUnion params;
@@ -44,6 +46,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static uint32_t calcdelay(void);
     static void enqueue_(const Params_KeyboardEventCallBack& p);
     static void enqueue_(const Params_KeyboardSpecialEventCallback& p);
+    static void enqueue_(const Params_RelativePointerEventCallback& p);
     static void fire(OSObject* owner, IOTimerEventSource* sender);
     static void fire_nolock(void);
     static void setTimer(void);
