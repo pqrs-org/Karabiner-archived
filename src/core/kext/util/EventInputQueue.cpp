@@ -94,6 +94,19 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  EventInputQueue::enqueue_(const Params_ScrollWheelEventCallback& p)
+  {
+    if (! queue_) return;
+
+    // --------------------
+    uint32_t delay = calcdelay();
+    Item* newp = new Item(p, delay);
+    if (! newp) return;
+
+    queue_->push(newp);
+  }
+
+  void
   EventInputQueue::setTimer(void)
   {
     if (! queue_) return;
@@ -153,6 +166,21 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  EventInputQueue::push(const Params_ScrollWheelEventCallback& p)
+  {
+    IOLockWrapper::ScopedLock lk(timer_.getlock());
+
+    enqueue_(p);
+
+    // if no SimultaneousKeyPresses is enabled, fire immediately.
+    if (RemapClassManager::isEventInputQueueDelayEnabled()) {
+      setTimer();
+    } else {
+      fire_nolock();
+    }
+  }
+
+  void
   EventInputQueue::fire(OSObject* /*notuse_owner*/, IOTimerEventSource* /*notuse_sender*/)
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
@@ -185,6 +213,12 @@ namespace org_pqrs_KeyRemap4MacBook {
         case ParamsUnion::RELATIVE_POINTER:
           if ((p->params).params.params_RelativePointerEventCallback) {
             ListHookedPointing::hook_RelativePointerEventCallback_queued(*((p->params).params.params_RelativePointerEventCallback));
+          }
+          break;
+
+        case ParamsUnion::SCROLL_POINTER:
+          if ((p->params).params.params_ScrollWheelEventCallback) {
+            ListHookedPointing::hook_ScrollWheelEventCallback_queued(*((p->params).params.params_ScrollWheelEventCallback));
           }
           break;
 
