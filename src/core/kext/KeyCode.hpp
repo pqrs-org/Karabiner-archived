@@ -240,6 +240,17 @@ namespace org_pqrs_KeyRemap4MacBook {
       return ~value_ & (previous.get());
     }
 
+    // population count
+    unsigned int count(void) const {
+      unsigned int bits = value_;
+
+      bits = (bits & 0x55555555) + (bits >> 1 & 0x55555555);
+      bits = (bits & 0x33333333) + (bits >> 2 & 0x33333333);
+      bits = (bits & 0x0f0f0f0f) + (bits >> 4 & 0x0f0f0f0f);
+      bits = (bits & 0x00ff00ff) + (bits >> 8 & 0x00ff00ff);
+      return (bits & 0x0000ffff) + (bits >>16 & 0x0000ffff);
+    }
+
   private:
     unsigned int value_;
   };

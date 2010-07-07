@@ -553,3 +553,14 @@ TEST(Buttons, justPressed) {
   EXPECT_EQ(Buttons(PointingButton::RIGHT | PointingButton::BUTTON5), buttons.justPressed(previous));
   EXPECT_EQ(Buttons(PointingButton::LEFT | PointingButton::BUTTON4), buttons.justReleased(previous));
 }
+
+TEST(Buttons, count) {
+  Buttons buttons0(0);
+  EXPECT_EQ(static_cast<unsigned int>(0), buttons0.count());
+
+  Buttons buttons1(PointingButton::BUTTON4);
+  EXPECT_EQ(static_cast<unsigned int>(1), buttons1.count());
+
+  Buttons buttons3(PointingButton::RIGHT | PointingButton::MIDDLE | PointingButton::BUTTON5);
+  EXPECT_EQ(static_cast<unsigned int>(3), buttons3.count());
+}
