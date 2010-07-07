@@ -35,19 +35,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
-  EventInputQueue::Item::Item(const Params_KeyboardEventCallBack& p, uint32_t d) : dropped(false), delayMS(d)
-  {
-    params_KeyboardEventCallBack = Params_KeyboardEventCallBack::alloc(p);
-  }
-
-  EventInputQueue::Item::~Item(void)
-  {
-    if (params_KeyboardEventCallBack) {
-      delete params_KeyboardEventCallBack;
-      params_KeyboardEventCallBack = NULL;
-    }
-  }
-
   void
   EventInputQueue::enqueue_(const Params_KeyboardEventCallBack& p)
   {
@@ -116,8 +103,18 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! p) return;
     queue_->pop();
 
-    if (! p->dropped && p->params_KeyboardEventCallBack) {
-      ListHookedKeyboard::hook_KeyboardEventCallback_queued(*(p->params_KeyboardEventCallBack));
+    if (! p->dropped) {
+      switch (p->params.type) {
+        case ParamsUnion::KEYBOARD:
+          if ((p->params).params.params_KeyboardEventCallBack) {
+            ListHookedKeyboard::hook_KeyboardEventCallback_queued(*((p->params).params.params_KeyboardEventCallBack));
+          }
+          break;
+
+        default:
+          IOLOG_ERROR("EventInputQueue::fire_nolock unkown type\n");
+          break;
+      }
     }
 
     delete p;

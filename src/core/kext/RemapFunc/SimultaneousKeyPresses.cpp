@@ -85,8 +85,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         for (EventInputQueue::Item* p = static_cast<EventInputQueue::Item*>(EventInputQueue::queue_->front()); p; p = static_cast<EventInputQueue::Item*>(p->getnext())) {
           if (p->dropped) continue;
-          if (! p->params_KeyboardEventCallBack) continue;
-          Params_KeyboardEventCallBack& params = *(p->params_KeyboardEventCallBack);
+          if (p->params.type != ParamsUnion::KEYBOARD) continue;
+          if (! (p->params).params.params_KeyboardEventCallBack) continue;
+          Params_KeyboardEventCallBack& params = *((p->params).params.params_KeyboardEventCallBack);
 
           if ((params.eventType).isKeyDownOrModifierDown(params.key, params.flags)) continue;
 
@@ -121,8 +122,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       for (EventInputQueue::Item* p = static_cast<EventInputQueue::Item*>(EventInputQueue::queue_->back()); p; p = static_cast<EventInputQueue::Item*>(p->getprev())) {
         if (p->dropped) continue;
-        if (! p->params_KeyboardEventCallBack) continue;
-        Params_KeyboardEventCallBack& params = *(p->params_KeyboardEventCallBack);
+        if ((p->params).type != ParamsUnion::KEYBOARD) continue;
+        if (! (p->params).params.params_KeyboardEventCallBack) continue;
+        Params_KeyboardEventCallBack& params = *((p->params).params.params_KeyboardEventCallBack);
 
         if (params.key == fromKey1_ && ! item1) {
           item1 = p;
@@ -136,9 +138,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       if (! item1 || ! item2 || ! base) return;
 
-      Params_KeyboardEventCallBack& params1 = *(item1->params_KeyboardEventCallBack);
-      Params_KeyboardEventCallBack& params2 = *(item2->params_KeyboardEventCallBack);
-      Params_KeyboardEventCallBack& paramsbase = *(base->params_KeyboardEventCallBack);
+      Params_KeyboardEventCallBack& params1 = *((item1->params).params.params_KeyboardEventCallBack);
+      Params_KeyboardEventCallBack& params2 = *((item2->params).params.params_KeyboardEventCallBack);
+      Params_KeyboardEventCallBack& paramsbase = *((base->params).params.params_KeyboardEventCallBack);
 
       // replace first fromKeyCode1. and drop first fromKeyCode2
       if (params1.eventType.isKeyDownOrModifierDown(params1.key, params1.flags) &&

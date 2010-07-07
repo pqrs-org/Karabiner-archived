@@ -5,6 +5,7 @@
 #include "CallBackWrapper.hpp"
 #include "IntervalChecker.hpp"
 #include "KeyCode.hpp"
+#include "ParamsUnion.hpp"
 #include "Queue.hpp"
 #include "TimerWrapper.hpp"
 
@@ -24,10 +25,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     class Item : public Queue::Item {
     public:
-      Item(const Params_KeyboardEventCallBack& p, uint32_t d);
-      virtual ~Item(void);
+      Item(const Params_KeyboardEventCallBack& p, uint32_t d) : params(p), dropped(false), delayMS(d) {}
+      virtual ~Item(void) {}
 
-      Params_KeyboardEventCallBack* params_KeyboardEventCallBack;
+      ParamsUnion params;
 
       bool dropped;
       uint32_t delayMS;
