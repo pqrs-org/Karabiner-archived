@@ -21,45 +21,42 @@ TEST(ButtonStatus, all) {
 
   EXPECT_EQ(Buttons(), ButtonStatus::makeButtons());
 
-  Buttons previous(0);
-  int diff = 0;
-
   // ------------------------------------------------------------
   // set
-  Buttons current((1 << 4) | (1 << 11));
-  diff = ButtonStatus::set(current, previous);
-  previous = current;
-  EXPECT_EQ(Buttons(current), ButtonStatus::makeButtons());
-  EXPECT_EQ(Buttons(current), ButtonStatus::justPressed());
-  EXPECT_EQ(Buttons(0), ButtonStatus::justReleased());
-  EXPECT_EQ(2, diff);
+  {
+    Buttons justPressed(1 << 3);
+    Buttons justReleased(1 << 11);
+    ButtonStatus::set(justPressed, justReleased);
+    EXPECT_EQ(Buttons((1 << 3)), ButtonStatus::makeButtons());
 
-  current = ((1 << 4));
-  diff = ButtonStatus::set(current, previous);
-  previous = current;
-  EXPECT_EQ(Buttons(current), ButtonStatus::makeButtons());
-  EXPECT_EQ(Buttons(0), ButtonStatus::justPressed());
-  EXPECT_EQ(Buttons((1 << 11)), ButtonStatus::justReleased());
-  EXPECT_EQ(-1, diff);
+    justPressed = Buttons(1 << 11);
+    justReleased = Buttons(0);
+    ButtonStatus::set(justPressed, justReleased);
+    EXPECT_EQ(Buttons((1 << 3)), ButtonStatus::makeButtons());
 
-  current = ((1 << 4) | (1 << 8));
-  diff = ButtonStatus::set(current, previous);
-  previous = current;
-  EXPECT_EQ(Buttons(current), ButtonStatus::makeButtons());
-  EXPECT_EQ(Buttons((1 <<  8)), ButtonStatus::justPressed());
-  EXPECT_EQ(Buttons(0), ButtonStatus::justReleased());
-  EXPECT_EQ(1, diff);
+    justPressed = Buttons(1 << 11);
+    justReleased = Buttons(0);
+    ButtonStatus::set(justPressed, justReleased);
+    EXPECT_EQ(Buttons((1 << 3) | (1 << 11)), ButtonStatus::makeButtons());
+
+    justPressed = Buttons(0);
+    justReleased = Buttons(1 << 3);
+    ButtonStatus::set(justPressed, justReleased);
+    EXPECT_EQ(Buttons((1 << 11)), ButtonStatus::makeButtons());
+
+    justPressed = Buttons(1 << 1);
+    justReleased = Buttons(0);
+    ButtonStatus::set(justPressed, justReleased);
+    EXPECT_EQ(Buttons((1 << 1) | (1 << 11)), ButtonStatus::makeButtons());
+  }
 
   // ------------------------------------------------------------
   // increase & decrease
   ButtonStatus::increase(1 << 9);
-
-  ButtonStatus::set(current, previous);
-  previous = current;
-  EXPECT_EQ(Buttons(current | (1 << 9)), ButtonStatus::makeButtons());
+  EXPECT_EQ(Buttons((1 << 1) | (1 << 9) | (1 << 11)), ButtonStatus::makeButtons());
 
   ButtonStatus::decrease((1 << 4) | (1 << 8));
-  EXPECT_EQ(Buttons(1 << 9), ButtonStatus::makeButtons());
+  EXPECT_EQ(Buttons((1 << 1) | (1 << 9) | (1 << 11)), ButtonStatus::makeButtons());
 
   // ------------------------------------------------------------
   // reset
