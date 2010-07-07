@@ -49,6 +49,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     HookedPointing* get(const IOHIPointing* pointing) { return static_cast<HookedPointing*>(ListHookedDevice::get(pointing)); }
 
     static void hook_RelativePointerEventCallback_queued(Params_RelativePointerEventCallback& params);
+    static void hook_ScrollWheelEventCallback_queued(Params_ScrollWheelEventCallback& params);
 
   private:
     HookedPointing item_[MAXNUM];

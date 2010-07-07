@@ -85,26 +85,6 @@ namespace org_pqrs_KeyRemap4MacBook {
                                   OSObject* sender,
                                   void* refcon)
     {
-      if (! CommonData::eventLock) return;
-      IOLockWrapper::ScopedLock lk(CommonData::eventLock);
-
-      IOHIPointing* pointing = OSDynamicCast(IOHIPointing, sender);
-      if (! pointing) return;
-
-      HookedPointing* hp = ListHookedPointing::instance().get(pointing);
-      if (! hp) return;
-
-      // ------------------------------------------------------------
-      CommonData::setcurrent_ts(ts);
-      CommonData::setcurrent_vendorIDproductID(hp->getVendorID(), hp->getProductID());
-
-      // ------------------------------------------------------------
-      // clear temporary_count_
-      if (! config.general_lazy_modifiers_with_mouse_event) {
-        FlagStatus::set();
-      }
-
-      // ------------------------------------------------------------
       Params_ScrollWheelEventCallback::auto_ptr ptr(Params_ScrollWheelEventCallback::alloc(deltaAxis1, deltaAxis2, deltaAxis3,
                                                                                            fixedDelta1, fixedDelta2, fixedDelta3,
                                                                                            pointDelta1, pointDelta2, pointDelta3,
@@ -112,9 +92,29 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! ptr) return;
       Params_ScrollWheelEventCallback& params = *ptr;
 
-      // EventWatcher::on is not necessary.
+      {
+        if (! CommonData::eventLock) return;
+        IOLockWrapper::ScopedLock lk(CommonData::eventLock);
 
-      Core::remap_ScrollWheelEventCallback(params);
+        IOHIPointing* pointing = OSDynamicCast(IOHIPointing, sender);
+        if (! pointing) return;
+
+        HookedPointing* hp = ListHookedPointing::instance().get(pointing);
+        if (! hp) return;
+
+        // ------------------------------------------------------------
+        CommonData::setcurrent_ts(ts);
+        CommonData::setcurrent_vendorIDproductID(hp->getVendorID(), hp->getProductID());
+
+        // ------------------------------------------------------------
+        // clear temporary_count_
+        if (! config.general_lazy_modifiers_with_mouse_event) {
+          FlagStatus::set();
+        }
+      }
+
+      // ------------------------------------------------------------
+      EventInputQueue::push(params);
     }
   }
 
@@ -141,6 +141,17 @@ namespace org_pqrs_KeyRemap4MacBook {
     NumHeldDownKeys::set(params.ex_justPressed.count() - params.ex_justReleased.count());
 
     Core::remap_RelativePointerEventCallback(params);
+  }
+
+  void
+  ListHookedPointing::hook_ScrollWheelEventCallback_queued(Params_ScrollWheelEventCallback& params)
+  {
+    if (! CommonData::eventLock) return;
+    IOLockWrapper::ScopedLock lk(CommonData::eventLock);
+
+    // EventWatcher::on is not necessary.
+
+    Core::remap_ScrollWheelEventCallback(params);
   }
 
   bool
