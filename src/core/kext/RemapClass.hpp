@@ -9,18 +9,19 @@ namespace org_pqrs_KeyRemap4MacBook {
     void terminate(void);
     void refresh(void);
 
-    // remap_* funtions return the number of enabled entries.
-    size_t remap_setkeyboardtype(KeyboardType& keyboardType);
-    size_t remap_key(RemapParams& remapParams);
-    size_t remap_consumer(RemapConsumerParams& remapParams);
-    size_t remap_pointing(RemapPointingParams_relative& remapParams);
-    size_t remap_simultaneouskeypresses(void);
+    void remap_setkeyboardtype(KeyboardType& keyboardType);
+    void remap_key(RemapParams& remapParams);
+    void remap_consumer(RemapConsumerParams& remapParams);
+    void remap_pointing(RemapPointingParams_relative& remapParams);
+    void remap_simultaneouskeypresses(void);
 
     // return true if dropped.
     bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params);
 
     // return true if params.key == virtualkey.
     bool handlevirtualkey(const Params_KeyboardEventCallBack& params);
+
+    bool isEventInputQueueDelayEnabled(void);
   };
 }
 

@@ -37,6 +37,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     HookedConsumer* get(void) { return static_cast<HookedConsumer*>(ListHookedDevice::get()); }
     HookedConsumer* get(const IOHIKeyboard* kbd) { return static_cast<HookedConsumer*>(ListHookedDevice::get(kbd)); }
 
+    static void hook_KeyboardSpecialEventCallback_queued(Params_KeyboardSpecialEventCallback& params);
+
   private:
     HookedConsumer item_[MAXNUM];
 
