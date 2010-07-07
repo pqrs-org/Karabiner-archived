@@ -17,26 +17,12 @@ namespace org_pqrs_KeyRemap4MacBook {
         button_ = b;
         count_ = 0;
       }
-      /**
-       * Set count_ from difference of current/previous buttons.
-       *
-       * @param current current buttons
-       * @param previous previous buttons
-       *
-       * @return button down count. (-1, 0, 1)
-       */
-      int set(Buttons current, Buttons previous) {
-        bool iscurrent = current.isOn(PointingButton(button_));
-        bool isprevious = previous.isOn(PointingButton(button_));
-
-        if (iscurrent == isprevious) return 0;
-
-        if (iscurrent) {
+      void set(Buttons justPressed, Buttons justReleased) {
+        if (justPressed.isOn(button_)) {
           ++count_;
-          return 1;
-        } else {
+        }
+        if (justReleased.isOn(button_)) {
           --count_;
-          return -1;
         }
       }
 
@@ -59,29 +45,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     enum { MAXNUM = 32 };
 
     static bool initialize(void);
-    /**
-     * Set state from difference of current/previous buttons.
-     * The previous value is different per pointing devices, so we need to give previous value by argument.
-     *
-     * @param current current buttons
-     * @param previous previous buttons
-     *
-     * @return button down count. (may be negative value)
-     */
-    static int set(Buttons current, Buttons previous);
+    static void set(Buttons justPressed, Buttons justReleased);
     static Buttons makeButtons(void);
     static void reset(void);
 
     static void increase(Buttons buttons);
     static void decrease(Buttons buttons);
 
-    static Buttons justPressed(void) { return justPressed_; }
-    static Buttons justReleased(void) { return justReleased_; }
-
   private:
     static Item item_[MAXNUM];
-    static Buttons justPressed_;
-    static Buttons justReleased_;
   };
 }
 
