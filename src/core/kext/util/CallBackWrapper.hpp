@@ -133,12 +133,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     // Use auto_ptr instead allocating in kernel stack.
     DECLARE_AUTO_PTR(Params_RelativePointerEventCallback);
 
-    static Params_RelativePointerEventCallback* alloc(Buttons bt, int x, int y) {
-      return new Params_RelativePointerEventCallback(bt, x, y);
+    static Params_RelativePointerEventCallback* alloc(Buttons bt, int x, int y, Buttons pressed = Buttons(0), Buttons released = Buttons(0)) {
+      return new Params_RelativePointerEventCallback(bt, x, y, pressed, released);
     }
 
     static Params_RelativePointerEventCallback* alloc(const Params_RelativePointerEventCallback& p) {
-      return new Params_RelativePointerEventCallback(p.buttons, p.dx, p.dy);
+      return new Params_RelativePointerEventCallback(p.buttons, p.dx, p.dy, p.ex_justPressed, p.ex_justReleased);
     }
 
     void log(const char* message = "caught") const;
@@ -147,8 +147,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     int dx;
     int dy;
 
+    Buttons ex_justPressed;
+    Buttons ex_justReleased;
+
   private:
-    Params_RelativePointerEventCallback(Buttons bt, int x, int y) : buttons(bt), dx(x), dy(y) {}
+    Params_RelativePointerEventCallback(Buttons bt, int x, int y, Buttons pressed, Buttons released) : buttons(bt), dx(x), dy(y), ex_justPressed(pressed), ex_justReleased(released) {}
 
     void apply(void) const;
   };

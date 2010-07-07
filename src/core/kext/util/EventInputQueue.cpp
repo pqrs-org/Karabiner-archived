@@ -1,9 +1,10 @@
-#include "EventInputQueue.hpp"
-#include "IOLockWrapper.hpp"
-#include "ListHookedKeyboard.hpp"
-#include "ListHookedConsumer.hpp"
 #include "Config.hpp"
+#include "EventInputQueue.hpp"
 #include "FlagStatus.hpp"
+#include "IOLockWrapper.hpp"
+#include "ListHookedConsumer.hpp"
+#include "ListHookedKeyboard.hpp"
+#include "ListHookedPointing.hpp"
 #include "RemapClass.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -80,6 +81,19 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  EventInputQueue::enqueue_(const Params_RelativePointerEventCallback& p)
+  {
+    if (! queue_) return;
+
+    // --------------------
+    uint32_t delay = calcdelay();
+    Item* newp = new Item(p, delay);
+    if (! newp) return;
+
+    queue_->push(newp);
+  }
+
+  void
   EventInputQueue::setTimer(void)
   {
     if (! queue_) return;
@@ -124,6 +138,21 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  EventInputQueue::push(const Params_RelativePointerEventCallback& p)
+  {
+    IOLockWrapper::ScopedLock lk(timer_.getlock());
+
+    enqueue_(p);
+
+    // if no SimultaneousKeyPresses is enabled, fire immediately.
+    if (RemapClassManager::isEventInputQueueDelayEnabled()) {
+      setTimer();
+    } else {
+      fire_nolock();
+    }
+  }
+
+  void
   EventInputQueue::fire(OSObject* /*notuse_owner*/, IOTimerEventSource* /*notuse_sender*/)
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
@@ -150,6 +179,12 @@ namespace org_pqrs_KeyRemap4MacBook {
         case ParamsUnion::KEYBOARD_SPECIAL:
           if ((p->params).params.params_KeyboardSpecialEventCallback) {
             ListHookedConsumer::hook_KeyboardSpecialEventCallback_queued(*((p->params).params.params_KeyboardSpecialEventCallback));
+          }
+          break;
+
+        case ParamsUnion::RELATIVE_POINTER:
+          if ((p->params).params.params_RelativePointerEventCallback) {
+            ListHookedPointing::hook_RelativePointerEventCallback_queued(*((p->params).params.params_RelativePointerEventCallback));
           }
           break;
 

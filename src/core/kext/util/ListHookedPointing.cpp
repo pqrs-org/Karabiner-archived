@@ -2,6 +2,7 @@
 #include "CommonData.hpp"
 #include "Config.hpp"
 #include "Core.hpp"
+#include "EventInputQueue.hpp"
 #include "EventWatcher.hpp"
 #include "FlagStatus.hpp"
 #include "IOLockWrapper.hpp"
@@ -30,50 +31,42 @@ namespace org_pqrs_KeyRemap4MacBook {
                                       OSObject* sender,
                                       void* refcon)
     {
-      if (! CommonData::eventLock) return;
-      IOLockWrapper::ScopedLock lk(CommonData::eventLock);
-
-      IOHIPointing* pointing = OSDynamicCast(IOHIPointing, sender);
-      if (! pointing) return;
-
-      HookedPointing* hp = ListHookedPointing::instance().get(pointing);
-      if (! hp) return;
-
-      // ------------------------------------------------------------
-      CommonData::setcurrent_ts(ts);
-      CommonData::setcurrent_vendorIDproductID(hp->getVendorID(), hp->getProductID());
-
-      // ------------------------------------------------------------
-      // clear temporary_count_
-      if (! config.general_lazy_modifiers_with_mouse_event) {
-        FlagStatus::set();
-      }
-      int diff = ButtonStatus::set(buttons, hp->get_previousbuttons());
-      hp->set_previousbuttons(buttons);
-      NumHeldDownKeys::set(diff);
-
-      if (ButtonStatus::justPressed() != Buttons(0)) {
-        CommonData::setcurrent_workspacedata();
-      }
-
-      // ------------------------------------------------------------
       Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, dx, dy));
       if (! ptr) return;
       Params_RelativePointerEventCallback& params = *ptr;
 
-      // We set EventWatcher::on only when Buttons pressed.
-      // It's cause a problem when you use the following settings. (Unexpected FN_Lock is fired).
-      //   - FN+CursorMove to ScrollWheel
-      //   - FN to FN (+ When you type FN only, send FN_Lock)
-      //
-      // But, if we call EventWatcher::on every CursorMove event, unexpected cancel occurs.
-      // It's more terrible than above problem.
-      // So, we keep to call EventWatcher::on only when Buttons pressed.
-      if (ButtonStatus::justPressed() != Buttons(0)) {
-        EventWatcher::on();
+      {
+        if (! CommonData::eventLock) return;
+        IOLockWrapper::ScopedLock lk(CommonData::eventLock);
+
+        IOHIPointing* pointing = OSDynamicCast(IOHIPointing, sender);
+        if (! pointing) return;
+
+        HookedPointing* hp = ListHookedPointing::instance().get(pointing);
+        if (! hp) return;
+
+        // ------------------------------------------------------------
+        CommonData::setcurrent_ts(ts);
+        CommonData::setcurrent_vendorIDproductID(hp->getVendorID(), hp->getProductID());
+
+        // ------------------------------------------------------------
+        params.ex_justPressed = params.buttons.justPressed(hp->get_previousbuttons());
+        params.ex_justReleased = params.buttons.justReleased(hp->get_previousbuttons());
+        hp->set_previousbuttons(buttons);
+
+        if (params.ex_justPressed != Buttons(0)) {
+          CommonData::setcurrent_workspacedata();
+        }
+
+        // ------------------------------------------------------------
+        // clear temporary_count_
+        if (! config.general_lazy_modifiers_with_mouse_event) {
+          FlagStatus::set();
+        }
       }
 
-      Core::remap_RelativePointerEventCallback(params);
+      // ------------------------------------------------------------
+      EventInputQueue::push(params);
     }
 
     void
@@ -123,6 +116,31 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       Core::remap_ScrollWheelEventCallback(params);
     }
+  }
+
+  void
+  ListHookedPointing::hook_RelativePointerEventCallback_queued(Params_RelativePointerEventCallback& params)
+  {
+    if (! CommonData::eventLock) return;
+    IOLockWrapper::ScopedLock lk(CommonData::eventLock);
+
+    // ------------------------------------------------------------
+    // We set EventWatcher::on only when Buttons pressed.
+    // It's cause a problem when you use the following settings. (Unexpected FN_Lock is fired).
+    //   - FN+CursorMove to ScrollWheel
+    //   - FN to FN (+ When you type FN only, send FN_Lock)
+    //
+    // But, if we call EventWatcher::on every CursorMove event, unexpected cancel occurs.
+    // It's more terrible than above problem.
+    // So, we keep to call EventWatcher::on only when Buttons pressed.
+    if (params.ex_justPressed != Buttons(0)) {
+      EventWatcher::on();
+    }
+
+    // ------------------------------------------------------------
+    NumHeldDownKeys::set(params.ex_justPressed.count() - params.ex_justReleased.count());
+
+    Core::remap_RelativePointerEventCallback(params);
   }
 
   bool

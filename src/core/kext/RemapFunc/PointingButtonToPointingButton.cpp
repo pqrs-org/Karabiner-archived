@@ -71,7 +71,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // (6) Command_L up
 
       if (remapParams.isremapped) return false;
-      bool isFromButton = fromkeychecker_.isFromPointingButton(fromButton_.button, fromButton_.flags);
+      bool isFromButton = fromkeychecker_.isFromPointingButton(remapParams.params, fromButton_.button, fromButton_.flags);
       if (! isFromButton && ! fromkeychecker_.isactive()) {
         return false;
       }
@@ -88,7 +88,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // Attention: We need fire MiddleClick only at (1).
       FlagStatus::temporary_decrease(fromButton_.flags);
 
-      bool isButtonDown = ButtonStatus::justPressed().isOn(fromButton_.button);
+      bool isButtonDown = remapParams.params.ex_justPressed.isOn(fromButton_.button);
       if (isFromButton) {
         if (isButtonDown) {
           ButtonStatus::decrease(fromButton_.button);

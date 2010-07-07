@@ -57,7 +57,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (repeat) return;
 
         // ------------------------------------------------------------
-        if (EventType::DOWN == eventType) {
+        if (params.eventType == EventType::DOWN) {
           CommonData::setcurrent_workspacedata();
         }
 
