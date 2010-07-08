@@ -299,6 +299,14 @@
           <autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::A, PointingButton::RIGHT</autogen>
           <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, VK_SHIFT, PointingButton::MIDDLE</autogen>
         </item>
+        <item>
+          <name>ButtonToKey</name>
+          <appendix>Shift+LeftClick+RightClick to Space</appendix>
+          <appendix>LeftClick+RightClick to Return</appendix>
+          <sysctl>remap.samples_simultaneouskeypresses_buttontokey</sysctl>
+          <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, VK_SHIFT, KeyCode::SPACE</autogen>
+          <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::RETURN</autogen>
+        </item>
       </list>
     </item>
 
