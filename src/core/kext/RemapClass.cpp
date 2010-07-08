@@ -34,7 +34,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
 #include "config/output/include.RemapClass.cpp"
 
-    class Item : public Queue::Item {
+    class Item : public List::Item {
     public:
       virtual ~Item(void) {}
 
@@ -47,11 +47,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       } func;
     };
 
-    Queue* queue_remap_setkeyboardtype_ = NULL;
-    Queue* queue_remap_key_ = NULL;
-    Queue* queue_remap_consumer_ = NULL;
-    Queue* queue_remap_pointing_ = NULL;
-    Queue* queue_remap_simultaneouskeypresses_ = NULL;
+    List* queue_remap_setkeyboardtype_ = NULL;
+    List* queue_remap_key_ = NULL;
+    List* queue_remap_consumer_ = NULL;
+    List* queue_remap_pointing_ = NULL;
+    List* queue_remap_simultaneouskeypresses_ = NULL;
     IOLock* lock_ = NULL;
     TimerWrapper refresh_timer_;
 
@@ -60,32 +60,34 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool isEventInputQueueDelayEnabled_ = false;
 
     // ======================================================================
-    static void
-    cleanup(Queue* q)
+    static bool
+    queue_isnotnull(void)
     {
-      for (;;) {
-        Item* p = static_cast<Item*>(q->front());
-        if (! p) break;
-
-        q->pop();
-        delete p;
-      }
+      return queue_remap_setkeyboardtype_ &&
+             queue_remap_key_ &&
+             queue_remap_consumer_ &&
+             queue_remap_pointing_ &&
+             queue_remap_simultaneouskeypresses_;
     }
 
     static void
     cleanup_all(void)
     {
-      cleanup(queue_remap_setkeyboardtype_);
-      cleanup(queue_remap_key_);
-      cleanup(queue_remap_consumer_);
-      cleanup(queue_remap_pointing_);
-      cleanup(queue_remap_simultaneouskeypresses_);
+      if (queue_isnotnull()) {
+        queue_remap_setkeyboardtype_->clear();
+        queue_remap_key_->clear();
+        queue_remap_consumer_->clear();
+        queue_remap_pointing_->clear();
+        queue_remap_simultaneouskeypresses_->clear();
+      }
     }
 
     static void
     refresh_core(OSObject* owner, IOTimerEventSource* sender)
     {
       IOLockWrapper::ScopedLock lk(lock_);
+
+      if (! queue_isnotnull()) return;
 
       KeyboardRepeat::cancel();
 
@@ -98,12 +100,12 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (! enabled) break;
         if (! enabled()) continue;
 
-#define PUSH_REMAPCLASS(ENTRY) {                               \
-    if (listRemapClass_ ## ENTRY[i] && queue_ ## ENTRY ## _) { \
-      Item* newp = new Item();                                 \
-      (newp->func).ENTRY = listRemapClass_ ## ENTRY[i];        \
-      queue_ ## ENTRY ## _->push(newp);                        \
-    }                                                          \
+#define PUSH_REMAPCLASS(ENTRY) {                        \
+    if (listRemapClass_ ## ENTRY[i]) {                  \
+      Item* newp = new Item();                          \
+      (newp->func).ENTRY = listRemapClass_ ## ENTRY[i]; \
+      queue_ ## ENTRY ## _->push_back(newp);            \
+    }                                                   \
 }
 
         PUSH_REMAPCLASS(remap_setkeyboardtype);
@@ -129,10 +131,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         strlcpy(lastmessage_, statusmessage_, sizeof(lastmessage_));
       }
 
-      if (queue_remap_simultaneouskeypresses_ && ! queue_remap_simultaneouskeypresses_->empty()) {
-        isEventInputQueueDelayEnabled_ = true;
-      } else {
+      if (queue_remap_simultaneouskeypresses_->empty()) {
         isEventInputQueueDelayEnabled_ = false;
+      } else {
+        isEventInputQueueDelayEnabled_ = true;
       }
     }
 
@@ -151,11 +153,11 @@ namespace org_pqrs_KeyRemap4MacBook {
         p();
       }
 
-      queue_remap_setkeyboardtype_ = new Queue();
-      queue_remap_key_ = new Queue();
-      queue_remap_consumer_ = new Queue();
-      queue_remap_pointing_ = new Queue();
-      queue_remap_simultaneouskeypresses_ = new Queue();
+      queue_remap_setkeyboardtype_        = new List();
+      queue_remap_key_                    = new List();
+      queue_remap_consumer_               = new List();
+      queue_remap_pointing_               = new List();
+      queue_remap_simultaneouskeypresses_ = new List();
 
       refresh_timer_.initialize(&workloop, NULL, refresh_core);
     }
@@ -163,15 +165,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     terminate(void)
     {
-      cleanup_all();
-
       refresh_timer_.terminate();
 
-      delete queue_remap_setkeyboardtype_;
-      delete queue_remap_key_;
-      delete queue_remap_consumer_;
-      delete queue_remap_pointing_;
-      delete queue_remap_simultaneouskeypresses_;
+      if (queue_isnotnull()) {
+        delete queue_remap_setkeyboardtype_;
+        delete queue_remap_key_;
+        delete queue_remap_consumer_;
+        delete queue_remap_pointing_;
+        delete queue_remap_simultaneouskeypresses_;
+      }
 
       for (size_t i = 0;; ++i) {
         RemapClass_terminate p = listRemapClass_terminate[i];

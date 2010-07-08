@@ -8,14 +8,14 @@
 #include "RemapClass.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  Queue* EventInputQueue::queue_ = NULL;
+  List* EventInputQueue::queue_ = NULL;
   IntervalChecker EventInputQueue::ic_;
   TimerWrapper EventInputQueue::timer_;
 
   void
   EventInputQueue::initialize(IOWorkLoop& workloop)
   {
-    queue_ = new Queue();
+    queue_ = new List();
     ic_.begin();
     timer_.initialize(&workloop, NULL, EventInputQueue::fire);
   }
@@ -26,13 +26,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     timer_.terminate();
 
     if (queue_) {
-      for (;;) {
-        EventInputQueue::Item* p = static_cast<EventInputQueue::Item*>(queue_->front());
-        if (! p) break;
-
-        queue_->pop();
-        delete p;
-      }
       delete queue_;
     }
   }
@@ -58,10 +51,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // --------------------
     uint32_t delay = calcdelay();
-    Item* newp = new Item(p, delay);
-    if (! newp) return;
-
-    queue_->push(newp);
+    queue_->push_back(new Item(p, delay));
   }
 
   void
@@ -74,10 +64,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // --------------------
     uint32_t delay = calcdelay();
-    Item* newp = new Item(p, delay);
-    if (! newp) return;
-
-    queue_->push(newp);
+    queue_->push_back(new Item(p, delay));
   }
 
   void
@@ -87,10 +74,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // --------------------
     uint32_t delay = calcdelay();
-    Item* newp = new Item(p, delay);
-    if (! newp) return;
-
-    queue_->push(newp);
+    queue_->push_back(new Item(p, delay));
   }
 
   void
@@ -100,10 +84,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // --------------------
     uint32_t delay = calcdelay();
-    Item* newp = new Item(p, delay);
-    if (! newp) return;
-
-    queue_->push(newp);
+    queue_->push_back(new Item(p, delay));
   }
 
   void
@@ -203,7 +184,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     Item* p = static_cast<Item*>(queue_->front());
     if (! p) return;
-    queue_->pop();
 
     if (! p->dropped) {
       switch (p->params.type) {
@@ -237,7 +217,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
 
-    delete p;
+    queue_->pop_front();
 
     setTimer();
   }
