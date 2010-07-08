@@ -115,6 +115,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // case2) "KeyDown A", "KeyUp A", "KeyDown B". (=> don't change key)
       //
       // So, we check keys from tail.
+      if (! FlagStatus::makeFlags().isOn(fromFlags_)) return;
 
       EventInputQueue::Item* item1 = NULL;
       EventInputQueue::Item* item2 = NULL;
@@ -127,10 +128,12 @@ namespace org_pqrs_KeyRemap4MacBook {
         Params_KeyboardEventCallBack& params = *((p->params).params.params_KeyboardEventCallBack);
 
         if (params.key == fromKey1_ && ! item1) {
+          if (! params.eventType.isKeyDownOrModifierDown(params.key, params.flags)) return;
           item1 = p;
           if (! base) base = p;
         }
         if (params.key == fromKey2_ && ! item2) {
+          if (! params.eventType.isKeyDownOrModifierDown(params.key, params.flags)) return;
           item2 = p;
           if (! base) base = p;
         }
@@ -138,22 +141,16 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       if (! item1 || ! item2 || ! base) return;
 
-      Params_KeyboardEventCallBack& params1 = *((item1->params).params.params_KeyboardEventCallBack);
-      Params_KeyboardEventCallBack& params2 = *((item2->params).params.params_KeyboardEventCallBack);
       Params_KeyboardEventCallBack& paramsbase = *((base->params).params.params_KeyboardEventCallBack);
 
       // replace first fromKeyCode1. and drop first fromKeyCode2
-      if (params1.eventType.isKeyDownOrModifierDown(params1.key, params1.flags) &&
-          params2.eventType.isKeyDownOrModifierDown(params2.key, params2.flags) &&
-          FlagStatus::makeFlags().isOn(fromFlags_)) {
-        item1->dropped = true;
-        active1_ = true;
+      item1->dropped = true;
+      active1_ = true;
 
-        item2->dropped = true;
-        active2_ = true;
+      item2->dropped = true;
+      active2_ = true;
 
-        push_remapped(paramsbase, true);
-      }
+      push_remapped(paramsbase, true);
 
       return;
     }
