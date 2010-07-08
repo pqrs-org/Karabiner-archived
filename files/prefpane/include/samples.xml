@@ -268,24 +268,34 @@
 
     <item>
       <name>DropKeyAfterRemap</name>
-      <appendix>Drop Tab</appendix>
-      <appendix>Drop Shift+Return</appendix>
-      <appendix>Change A to Tab (== dropped)</appendix>
-      <appendix>Change B to Shift_L+Return (== dropped)</appendix>
-      <sysctl>remap.samples_dropkeyafterremap</sysctl>
-      <autogen>--DropKeyAfterRemap-- KeyCode::TAB</autogen>
-      <autogen>--DropKeyAfterRemap-- KeyCode::RETURN, VK_SHIFT</autogen>
-      <autogen>--KeyToKey-- KeyCode::A, KeyCode::TAB</autogen>
-      <autogen>--KeyToKey-- KeyCode::B, KeyCode::RETURN, ModifierFlag::SHIFT_L</autogen>
+      <list>
+        <item>
+          <name>Standard</name>
+          <appendix>Drop Tab</appendix>
+          <appendix>Drop Shift+Return</appendix>
+          <appendix>Change A to Tab (== dropped)</appendix>
+          <appendix>Change B to Shift_L+Return (== dropped)</appendix>
+          <sysctl>remap.samples_dropkeyafterremap</sysctl>
+          <autogen>--DropKeyAfterRemap-- KeyCode::TAB</autogen>
+          <autogen>--DropKeyAfterRemap-- KeyCode::RETURN, VK_SHIFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::TAB</autogen>
+          <autogen>--KeyToKey-- KeyCode::B, KeyCode::RETURN, ModifierFlag::SHIFT_L</autogen>
+        </item>
+      </list>
     </item>
 
     <item>
       <name>IgnoreMultipleSameKeyPress</name>
-      <appendix>Ignore the multiple press of 'A'</appendix>
-      <appendix>Ignore the multiple press of 'Shift+B' (with Modifier)</appendix>
-      <sysctl>remap.samples_ignoremultiplesamekeypress</sysctl>
-      <autogen>--IgnoreMultipleSameKeyPress-- KeyCode::A</autogen>
-      <autogen>--IgnoreMultipleSameKeyPress-- KeyCode::B, VK_SHIFT</autogen>
+      <list>
+        <item>
+          <name>Standard</name>
+          <appendix>Ignore the multiple press of 'A'</appendix>
+          <appendix>Ignore the multiple press of 'Shift+B' (with Modifier)</appendix>
+          <sysctl>remap.samples_ignoremultiplesamekeypress</sysctl>
+          <autogen>--IgnoreMultipleSameKeyPress-- KeyCode::A</autogen>
+          <autogen>--IgnoreMultipleSameKeyPress-- KeyCode::B, VK_SHIFT</autogen>
+        </item>
+      </list>
     </item>
 
     <item>
@@ -364,38 +374,48 @@
 
     <item>
       <name>KeyToPointingButton</name>
-      <appendix>A to LeftClick (Standard)</appendix>
-      <appendix>S to Double-LeftClick</appendix>
-      <appendix>D to Shift_L+LeftClick,RightClick</appendix>
-      <appendix>Option_L to LeftClick (Modifier)</appendix>
-      <appendix>Shift_R to LeftClick,RightClick (Modifier)</appendix>
-      <appendix>Shift+B to RightClick (Key+Modifier)</appendix>
-      <appendix>Shift+F to RightClick,MiddleClick (Key+Modifier)</appendix>
-      <appendix>Shift+Control_L to RightClick (Modifier+Modifier)</appendix>
-      <appendix>Shift+Command_L to RightClick,MiddleClick (Modifier+Modifier)</appendix>
-      <sysctl>remap.samples_keytopointingbutton</sysctl>
-      <autogen>--KeyToPointingButton-- KeyCode::A, PointingButton::LEFT</autogen>
-      <autogen>--KeyToPointingButton-- KeyCode::S, PointingButton::LEFT, PointingButton::LEFT</autogen>
-      <autogen>--KeyToPointingButton-- KeyCode::D, PointingButton::LEFT, ModifierFlag::SHIFT_L, PointingButton::RIGHT</autogen>
-      <autogen>--KeyToPointingButton-- KeyCode::OPTION_L, PointingButton::LEFT</autogen>
-      <autogen>--KeyToPointingButton-- KeyCode::SHIFT_R,  PointingButton::LEFT, PointingButton::RIGHT</autogen>
-      <autogen>--KeyToPointingButton-- KeyCode::B, VK_SHIFT, PointingButton::RIGHT</autogen>
-      <autogen>--KeyToPointingButton-- KeyCode::F, VK_SHIFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
-      <autogen>--KeyToPointingButton-- KeyCode::CONTROL_L, VK_SHIFT, PointingButton::RIGHT</autogen>
-      <autogen>--KeyToPointingButton-- KeyCode::COMMAND_L, VK_SHIFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
+      <list>
+        <item>
+          <name>Standard</name>
+          <appendix>A to LeftClick (Standard)</appendix>
+          <appendix>S to Double-LeftClick</appendix>
+          <appendix>D to Shift_L+LeftClick,RightClick</appendix>
+          <appendix>Option_L to LeftClick (Modifier)</appendix>
+          <appendix>Shift_R to LeftClick,RightClick (Modifier)</appendix>
+          <appendix>Shift+B to RightClick (Key+Modifier)</appendix>
+          <appendix>Shift+F to RightClick,MiddleClick (Key+Modifier)</appendix>
+          <appendix>Shift+Control_L to RightClick (Modifier+Modifier)</appendix>
+          <appendix>Shift+Command_L to RightClick,MiddleClick (Modifier+Modifier)</appendix>
+          <sysctl>remap.samples_keytopointingbutton</sysctl>
+          <autogen>--KeyToPointingButton-- KeyCode::A, PointingButton::LEFT</autogen>
+          <autogen>--KeyToPointingButton-- KeyCode::S, PointingButton::LEFT, PointingButton::LEFT</autogen>
+          <autogen>--KeyToPointingButton-- KeyCode::D, PointingButton::LEFT, ModifierFlag::SHIFT_L, PointingButton::RIGHT</autogen>
+          <autogen>--KeyToPointingButton-- KeyCode::OPTION_L, PointingButton::LEFT</autogen>
+          <autogen>--KeyToPointingButton-- KeyCode::SHIFT_R,  PointingButton::LEFT, PointingButton::RIGHT</autogen>
+          <autogen>--KeyToPointingButton-- KeyCode::B, VK_SHIFT, PointingButton::RIGHT</autogen>
+          <autogen>--KeyToPointingButton-- KeyCode::F, VK_SHIFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
+          <autogen>--KeyToPointingButton-- KeyCode::CONTROL_L, VK_SHIFT, PointingButton::RIGHT</autogen>
+          <autogen>--KeyToPointingButton-- KeyCode::COMMAND_L, VK_SHIFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
+        </item>
+      </list>
     </item>
 
     <item>
       <name>PointingRelativeToScroll</name>
-      <appendix>MiddleClick+CursorMove to ScrollWheel (One Button)</appendix>
-      <appendix>LeftClick+RightClick+CursorMove to ScrollWheel (Multi Buttons)</appendix>
-      <appendix>Option+CursorMove to ScrollWheel (Modifier)</appendix>
-      <appendix>Shift+LeftClick+CursorMove to ScrollWheel (Button+Modifier)</appendix>
-      <sysctl>remap.samples_pointingrelativetoscroll</sysctl>
-      <autogen>--PointingRelativeToScroll-- PointingButton::MIDDLE</autogen>
-      <autogen>--PointingRelativeToScroll-- PointingButton::LEFT | PointingButton::RIGHT</autogen>
-      <autogen>--PointingRelativeToScroll-- PointingButton::NONE, VK_OPTION</autogen>
-      <autogen>--PointingRelativeToScroll-- PointingButton::LEFT, VK_SHIFT</autogen>
+      <list>
+        <item>
+          <name>Standard</name>
+          <appendix>MiddleClick+CursorMove to ScrollWheel (One Button)</appendix>
+          <appendix>LeftClick+RightClick+CursorMove to ScrollWheel (Multi Buttons)</appendix>
+          <appendix>Option+CursorMove to ScrollWheel (Modifier)</appendix>
+          <appendix>Shift+LeftClick+CursorMove to ScrollWheel (Button+Modifier)</appendix>
+          <sysctl>remap.samples_pointingrelativetoscroll</sysctl>
+          <autogen>--PointingRelativeToScroll-- PointingButton::MIDDLE</autogen>
+          <autogen>--PointingRelativeToScroll-- PointingButton::LEFT | PointingButton::RIGHT</autogen>
+          <autogen>--PointingRelativeToScroll-- PointingButton::NONE, VK_OPTION</autogen>
+          <autogen>--PointingRelativeToScroll-- PointingButton::LEFT, VK_SHIFT</autogen>
+        </item>
+      </list>
     </item>
 
     <item>
@@ -441,207 +461,227 @@
 
     <item>
       <name>PointingButtonToKey</name>
-      <appendix>MiddleClick to Return</appendix>
-      <appendix>Option_L+RightClick to Shift_L</appendix>
-      <appendix>Command_L+RightClick to A, Shift_L+B, Control_L+C</appendix>
-      <appendix>RightClick to Control_L</appendix>
-      <appendix>RightClick to Tab (if application == TERMINAL)</appendix>
-      <appendix>Control_L+LeftClick to Space</appendix>
-      <sysctl>remap.samples_pointingbuttontokey</sysctl>
-      <autogen>--PointingButtonToKey-- PointingButton::MIDDLE, KeyCode::RETURN</autogen>
-      <autogen>--PointingButtonToKey-- PointingButton::RIGHT, ModifierFlag::OPTION_L, KeyCode::SHIFT_L</autogen>
-      <autogen>--PointingButtonToKey-- PointingButton::RIGHT, ModifierFlag::COMMAND_L, KeyCode::A, KeyCode::B, ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
-      <block>
-        <only>TERMINAL</only>
-        <autogen>--PointingButtonToKey-- PointingButton::RIGHT, KeyCode::TAB</autogen>
-      </block>
-      <autogen>--PointingButtonToKey-- PointingButton::RIGHT, KeyCode::CONTROL_L</autogen>
-      <autogen>--PointingButtonToKey-- PointingButton::LEFT, ModifierFlag::CONTROL_L, KeyCode::SPACE</autogen>
+      <list>
+        <item>
+          <name>Standard</name>
+          <appendix>MiddleClick to Return</appendix>
+          <appendix>Option_L+RightClick to Shift_L</appendix>
+          <appendix>Command_L+RightClick to A, Shift_L+B, Control_L+C</appendix>
+          <appendix>RightClick to Control_L</appendix>
+          <appendix>RightClick to Tab (if application == TERMINAL)</appendix>
+          <appendix>Control_L+LeftClick to Space</appendix>
+          <sysctl>remap.samples_pointingbuttontokey</sysctl>
+          <autogen>--PointingButtonToKey-- PointingButton::MIDDLE, KeyCode::RETURN</autogen>
+          <autogen>--PointingButtonToKey-- PointingButton::RIGHT, ModifierFlag::OPTION_L, KeyCode::SHIFT_L</autogen>
+          <autogen>--PointingButtonToKey-- PointingButton::RIGHT, ModifierFlag::COMMAND_L, KeyCode::A, KeyCode::B, ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
+          <block>
+            <only>TERMINAL</only>
+            <autogen>--PointingButtonToKey-- PointingButton::RIGHT, KeyCode::TAB</autogen>
+          </block>
+          <autogen>--PointingButtonToKey-- PointingButton::RIGHT, KeyCode::CONTROL_L</autogen>
+          <autogen>--PointingButtonToKey-- PointingButton::LEFT, ModifierFlag::CONTROL_L, KeyCode::SPACE</autogen>
+        </item>
+      </list>
     </item>
 
-    <!-- application only -->
     <item>
-      <name>application</name>
-      <appendix>A to B if application == TERMINAL (KeyToKey)</appendix>
-      <appendix>A to C if application != TERMINAL (KeyToKey)</appendix>
-      <appendix>Volume Mute to B if application == TERMINAL (ConsumerToKey)</appendix>
-      <appendix>Volume Mute to C if application != TERMINAL (ConsumerToKey)</appendix>
-      <sysctl>remap.samples_application</sysctl>
-      <block>
-        <only>TERMINAL</only>
-        <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
-        <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, KeyCode::B</autogen>
-      </block>
-      <block>
-        <not>TERMINAL</not>
-        <autogen>--KeyToKey-- KeyCode::A, KeyCode::C</autogen>
-        <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, KeyCode::C</autogen>
-      </block>
-    </item>
+      <name>Filters</name>
+      <list>
+        <!-- application only -->
+        <item>
+          <name>application</name>
+          <appendix>A to B if application == TERMINAL (KeyToKey)</appendix>
+          <appendix>A to C if application != TERMINAL (KeyToKey)</appendix>
+          <appendix>Volume Mute to B if application == TERMINAL (ConsumerToKey)</appendix>
+          <appendix>Volume Mute to C if application != TERMINAL (ConsumerToKey)</appendix>
+          <sysctl>remap.samples_application</sysctl>
+          <block>
+            <only>TERMINAL</only>
+            <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
+            <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, KeyCode::B</autogen>
+          </block>
+          <block>
+            <not>TERMINAL</not>
+            <autogen>--KeyToKey-- KeyCode::A, KeyCode::C</autogen>
+            <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, KeyCode::C</autogen>
+          </block>
+        </item>
 
-    <!-- KeyboardType only -->
-    <item>
-      <name>KeyboardType only</name>
-      <appendix>A to B if KeyboardType == KeyboardType::MACBOOK or MACBOOK_3_1</appendix>
-      <appendix>A to C if KeyboardType != KeyboardType::MACBOOK and MACBOOK_3_1</appendix>
-      <sysctl>remap.samples_keyboardtype</sysctl>
-      <block>
-        <keyboardtype_only>MACBOOK, MACBOOK_3_1</keyboardtype_only>
-        <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
-      </block>
-      <block>
-        <keyboardtype_not>MACBOOK,MACBOOK_3_1</keyboardtype_not>
-        <autogen>--KeyToKey-- KeyCode::A, KeyCode::C</autogen>
-      </block>
-    </item>
+        <!-- KeyboardType only -->
+        <item>
+          <name>KeyboardType only</name>
+          <appendix>A to B if KeyboardType == KeyboardType::MACBOOK or MACBOOK_3_1</appendix>
+          <appendix>A to C if KeyboardType != KeyboardType::MACBOOK and MACBOOK_3_1</appendix>
+          <sysctl>remap.samples_keyboardtype</sysctl>
+          <block>
+            <keyboardtype_only>MACBOOK, MACBOOK_3_1</keyboardtype_only>
+            <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
+          </block>
+          <block>
+            <keyboardtype_not>MACBOOK,MACBOOK_3_1</keyboardtype_not>
+            <autogen>--KeyToKey-- KeyCode::A, KeyCode::C</autogen>
+          </block>
+        </item>
 
-    <!-- Device only -->
-    <item>
-      <name>Device only</name>
-      <appendix>A to B if (VendorID,ProductID) == (0x5ac,0x21a) or (0x5ac,0x222)</appendix>
-      <appendix>A to C unless (VendorID,ProductID) == (0x5ac,0x21a) or (0x5ac,0x222)</appendix>
-      <appendix>* (0x5ac,0x21a) is MacBookPro2,1</appendix>
-      <appendix>* (0x5ac,0x222) is Apple Aluminum Keyboard (JIS)</appendix>
-      <sysctl>remap.samples_device</sysctl>
-      <block>
-        <device_only>DeviceVendorID(0x5ac),DeviceProductID(0x21a), DeviceVendorID(0x5ac),DeviceProductID(0x222)</device_only>
-        <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
-      </block>
-      <block>
-        <device_not>DeviceVendorID(0x5ac),DeviceProductID(0x21a), DeviceVendorID(0x5ac),DeviceProductID(0x222)</device_not>
-        <autogen>--KeyToKey-- KeyCode::A, KeyCode::C</autogen>
-      </block>
-    </item>
+        <!-- Device only -->
+        <item>
+          <name>Device only</name>
+          <appendix>A to B if (VendorID,ProductID) == (0x5ac,0x21a) or (0x5ac,0x222)</appendix>
+          <appendix>A to C unless (VendorID,ProductID) == (0x5ac,0x21a) or (0x5ac,0x222)</appendix>
+          <appendix>* (0x5ac,0x21a) is MacBookPro2,1</appendix>
+          <appendix>* (0x5ac,0x222) is Apple Aluminum Keyboard (JIS)</appendix>
+          <sysctl>remap.samples_device</sysctl>
+          <block>
+            <device_only>DeviceVendorID(0x5ac),DeviceProductID(0x21a), DeviceVendorID(0x5ac),DeviceProductID(0x222)</device_only>
+            <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
+          </block>
+          <block>
+            <device_not>DeviceVendorID(0x5ac),DeviceProductID(0x21a), DeviceVendorID(0x5ac),DeviceProductID(0x222)</device_not>
+            <autogen>--KeyToKey-- KeyCode::A, KeyCode::C</autogen>
+          </block>
+        </item>
 
-    <!-- Config only -->
-    <item>
-      <name>Config only</name>
-      <sysctl>remap.samples_config</sysctl>
-      <appendix>A to 1 if samples_config_mode1 == active</appendix>
-      <appendix>B to 2 if samples_config_mode1 or samples_config_mode2 == active</appendix>
-      <appendix>A to 3 if samples_config_mode1 != active</appendix>
-      <appendix>B to 4 if samples_config_mode1 and samples_config_mode2 != active</appendix>
-      <appendix>C to 5</appendix>
-      <block>
-        <config_only>option.samples_config_mode1</config_only>
-        <autogen>--KeyToKey-- KeyCode::A, KeyCode::KEY_1</autogen>
-      </block>
-      <block>
-        <config_only>option.samples_config_mode1, option.samples_config_mode2</config_only>
-        <autogen>--KeyToKey-- KeyCode::B, KeyCode::KEY_2</autogen>
-      </block>
-      <block>
-        <config_not>option.samples_config_mode1</config_not>
-        <autogen>--KeyToKey-- KeyCode::A, KeyCode::KEY_3</autogen>
-      </block>
-      <block>
-        <config_not>option.samples_config_mode1, option.samples_config_mode2</config_not>
-        <autogen>--KeyToKey-- KeyCode::B, KeyCode::KEY_4</autogen>
-      </block>
-      <block>
-        <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_5</autogen>
-      </block>
-    </item>
-    <item>
-      <name>Config only mode1</name>
-      <sysctl>option.samples_config_mode1</sysctl>
-    </item>
-    <item>
-      <name>Config only mode2</name>
-      <sysctl>option.samples_config_mode2</sysctl>
-    </item>
+        <!-- Config only -->
+        <item>
+          <name>Config only</name>
+          <list>
+            <item>
+              <name>Core</name>
+              <sysctl>remap.samples_config</sysctl>
+              <appendix>A to 1 if samples_config_mode1 == active</appendix>
+              <appendix>B to 2 if samples_config_mode1 or samples_config_mode2 == active</appendix>
+              <appendix>A to 3 if samples_config_mode1 != active</appendix>
+              <appendix>B to 4 if samples_config_mode1 and samples_config_mode2 != active</appendix>
+              <appendix>C to 5</appendix>
+              <block>
+                <config_only>option.samples_config_mode1</config_only>
+                <autogen>--KeyToKey-- KeyCode::A, KeyCode::KEY_1</autogen>
+              </block>
+              <block>
+                <config_only>option.samples_config_mode1, option.samples_config_mode2</config_only>
+                <autogen>--KeyToKey-- KeyCode::B, KeyCode::KEY_2</autogen>
+              </block>
+              <block>
+                <config_not>option.samples_config_mode1</config_not>
+                <autogen>--KeyToKey-- KeyCode::A, KeyCode::KEY_3</autogen>
+              </block>
+              <block>
+                <config_not>option.samples_config_mode1, option.samples_config_mode2</config_not>
+                <autogen>--KeyToKey-- KeyCode::B, KeyCode::KEY_4</autogen>
+              </block>
+              <block>
+                <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_5</autogen>
+              </block>
+            </item>
+            <item>
+              <name>Config only mode1</name>
+              <sysctl>option.samples_config_mode1</sysctl>
+            </item>
+            <item>
+              <name>Config only mode2</name>
+              <sysctl>option.samples_config_mode2</sysctl>
+            </item>
+          </list>
+        </item>
 
-    <!-- inputmode only -->
-    <item>
-      <name>inputmode_only (Japanese)</name>
-      <appendix>ASDFG to AIUEO if inputmode == INPUTMODE_JAPANESE</appendix>
-      <sysctl>remap.samples_jis_asdfg2aiueo</sysctl>
-      <inputmode_only>INPUTMODE_JAPANESE</inputmode_only>
-      <autogen>--KeyToKey-- KeyCode::S, KeyCode::I</autogen>
-      <autogen>--KeyToKey-- KeyCode::D, KeyCode::U</autogen>
-      <autogen>--KeyToKey-- KeyCode::F, KeyCode::E</autogen>
-      <autogen>--KeyToKey-- KeyCode::G, KeyCode::O</autogen>
-    </item>
-    <item>
-      <name>inputmode_only (Chinese Traditional)</name>
-      <appendix>A to Space if inputmode == INPUTMODE_CHINESE_TRADITIONAL</appendix>
-      <sysctl>remap.samples_tradchinese_a2space</sysctl>
-      <inputmode_only>INPUTMODE_CHINESE_TRADITIONAL</inputmode_only>
-      <autogen>--KeyToKey-- KeyCode::A, KeyCode::SPACE</autogen>
-    </item>
-    <item>
-      <name>inputmode_only (Chinese Simplified)</name>
-      <appendix>A to Space if inputmode == INPUTMODE_CHINESE_SIMPLIFIED</appendix>
-      <sysctl>remap.samples_simpchinese_a2space</sysctl>
-      <inputmode_only>INPUTMODE_CHINESE_SIMPLIFIED</inputmode_only>
-      <autogen>--KeyToKey-- KeyCode::A, KeyCode::SPACE</autogen>
-    </item>
-    <item>
-      <name>inputmode_only (Korean)</name>
-      <appendix>A to Space if inputmode == INPUTMODE_KOREAN</appendix>
-      <sysctl>remap.samples_korean_a2space</sysctl>
-      <inputmode_only>INPUTMODE_KOREAN</inputmode_only>
-      <autogen>--KeyToKey-- KeyCode::A, KeyCode::SPACE</autogen>
-    </item>
-    <item>
-      <name>inputmodedetail_only</name>
-      <appendix>ASDFG to AIUEO if inputmodedetail == INPUTMODE_DETAIL_JAPANESE_KATAKANA</appendix>
-      <sysctl>remap.samples_jis_asdfg2aiueo_katakana</sysctl>
-      <inputmodedetail_only>INPUTMODE_DETAIL_JAPANESE_KATAKANA</inputmodedetail_only>
-      <autogen>--KeyToKey-- KeyCode::S, KeyCode::I</autogen>
-      <autogen>--KeyToKey-- KeyCode::D, KeyCode::U</autogen>
-      <autogen>--KeyToKey-- KeyCode::F, KeyCode::E</autogen>
-      <autogen>--KeyToKey-- KeyCode::G, KeyCode::O</autogen>
-    </item>
+        <!-- inputmode only -->
+        <item>
+          <name>InputMode</name>
+          <list>
+            <item>
+              <name>inputmode_only (Japanese)</name>
+              <appendix>ASDFG to AIUEO if inputmode == INPUTMODE_JAPANESE</appendix>
+              <sysctl>remap.samples_jis_asdfg2aiueo</sysctl>
+              <inputmode_only>INPUTMODE_JAPANESE</inputmode_only>
+              <autogen>--KeyToKey-- KeyCode::S, KeyCode::I</autogen>
+              <autogen>--KeyToKey-- KeyCode::D, KeyCode::U</autogen>
+              <autogen>--KeyToKey-- KeyCode::F, KeyCode::E</autogen>
+              <autogen>--KeyToKey-- KeyCode::G, KeyCode::O</autogen>
+            </item>
+            <item>
+              <name>inputmode_only (Chinese Traditional)</name>
+              <appendix>A to Space if inputmode == INPUTMODE_CHINESE_TRADITIONAL</appendix>
+              <sysctl>remap.samples_tradchinese_a2space</sysctl>
+              <inputmode_only>INPUTMODE_CHINESE_TRADITIONAL</inputmode_only>
+              <autogen>--KeyToKey-- KeyCode::A, KeyCode::SPACE</autogen>
+            </item>
+            <item>
+              <name>inputmode_only (Chinese Simplified)</name>
+              <appendix>A to Space if inputmode == INPUTMODE_CHINESE_SIMPLIFIED</appendix>
+              <sysctl>remap.samples_simpchinese_a2space</sysctl>
+              <inputmode_only>INPUTMODE_CHINESE_SIMPLIFIED</inputmode_only>
+              <autogen>--KeyToKey-- KeyCode::A, KeyCode::SPACE</autogen>
+            </item>
+            <item>
+              <name>inputmode_only (Korean)</name>
+              <appendix>A to Space if inputmode == INPUTMODE_KOREAN</appendix>
+              <sysctl>remap.samples_korean_a2space</sysctl>
+              <inputmode_only>INPUTMODE_KOREAN</inputmode_only>
+              <autogen>--KeyToKey-- KeyCode::A, KeyCode::SPACE</autogen>
+            </item>
+            <item>
+              <name>inputmodedetail_only</name>
+              <appendix>ASDFG to AIUEO if inputmodedetail == INPUTMODE_DETAIL_JAPANESE_KATAKANA</appendix>
+              <sysctl>remap.samples_jis_asdfg2aiueo_katakana</sysctl>
+              <inputmodedetail_only>INPUTMODE_DETAIL_JAPANESE_KATAKANA</inputmodedetail_only>
+              <autogen>--KeyToKey-- KeyCode::S, KeyCode::I</autogen>
+              <autogen>--KeyToKey-- KeyCode::D, KeyCode::U</autogen>
+              <autogen>--KeyToKey-- KeyCode::F, KeyCode::E</autogen>
+              <autogen>--KeyToKey-- KeyCode::G, KeyCode::O</autogen>
+            </item>
+          </list>
+        </item>
 
-    <!-- block -->
-    <item>
-      <name>block sample</name>
-      <appendix>A to B if application == TERMINAL (KeyToKey)</appendix>
-      <appendix>B to D if application == TERMINAL (KeyToKey)</appendix>
-      <appendix>A to C if application != TERMINAL (KeyToKey)</appendix>
-      <appendix>B to E if application != TERMINAL (KeyToKey)</appendix>
-      <appendix>Shift+C to Y</appendix>
-      <appendix>Shift+D to Z</appendix>
-      <appendix>C to 1 if application == TERMINAL (KeyToKey), keyboardType == MACBOOK</appendix>
-      <appendix>C to 2 if application == TERMINAL (KeyToKey), keyboardType != MACBOOK</appendix>
-      <appendix>C to 3 if application != TERMINAL (KeyToKey), keyboardType == MACBOOK</appendix>
-      <appendix>C to 4 if application != TERMINAL (KeyToKey), keyboardType != MACBOOK</appendix>
-      <sysctl>remap.samples_block</sysctl>
-      <block>
-        <only>TERMINAL</only>
-        <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
-        <autogen>--KeyToKey-- KeyCode::B, KeyCode::D</autogen>
-      </block>
-      <block>
-        <not>TERMINAL</not>
-        <autogen>--KeyToKey-- KeyCode::A, KeyCode::C</autogen>
-        <autogen>--KeyToKey-- KeyCode::B, KeyCode::E</autogen>
-      </block>
-      <autogen>--KeyToKey-- KeyCode::C, VK_SHIFT, KeyCode::Y</autogen>
-      <autogen>--KeyToKey-- KeyCode::D, VK_SHIFT, KeyCode::Z</autogen>
-      <block>
-        <only>TERMINAL</only>
-        <block>
-          <keyboardtype_only>MACBOOK</keyboardtype_only>
-          <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_1</autogen>
-        </block>
-        <block>
-          <keyboardtype_not>MACBOOK</keyboardtype_not>
-          <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_2</autogen>
-        </block>
-      </block>
-      <block>
-        <not>TERMINAL</not>
-        <block>
-          <keyboardtype_only>MACBOOK</keyboardtype_only>
-          <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_3</autogen>
-        </block>
-        <block>
-          <keyboardtype_not>MACBOOK</keyboardtype_not>
-          <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_4</autogen>
-        </block>
-      </block>
+        <!-- block -->
+        <item>
+          <name>block sample</name>
+          <appendix>A to B if application == TERMINAL (KeyToKey)</appendix>
+          <appendix>B to D if application == TERMINAL (KeyToKey)</appendix>
+          <appendix>A to C if application != TERMINAL (KeyToKey)</appendix>
+          <appendix>B to E if application != TERMINAL (KeyToKey)</appendix>
+          <appendix>Shift+C to Y</appendix>
+          <appendix>Shift+D to Z</appendix>
+          <appendix>C to 1 if application == TERMINAL (KeyToKey), keyboardType == MACBOOK</appendix>
+          <appendix>C to 2 if application == TERMINAL (KeyToKey), keyboardType != MACBOOK</appendix>
+          <appendix>C to 3 if application != TERMINAL (KeyToKey), keyboardType == MACBOOK</appendix>
+          <appendix>C to 4 if application != TERMINAL (KeyToKey), keyboardType != MACBOOK</appendix>
+          <sysctl>remap.samples_block</sysctl>
+          <block>
+            <only>TERMINAL</only>
+            <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
+            <autogen>--KeyToKey-- KeyCode::B, KeyCode::D</autogen>
+          </block>
+          <block>
+            <not>TERMINAL</not>
+            <autogen>--KeyToKey-- KeyCode::A, KeyCode::C</autogen>
+            <autogen>--KeyToKey-- KeyCode::B, KeyCode::E</autogen>
+          </block>
+          <autogen>--KeyToKey-- KeyCode::C, VK_SHIFT, KeyCode::Y</autogen>
+          <autogen>--KeyToKey-- KeyCode::D, VK_SHIFT, KeyCode::Z</autogen>
+          <block>
+            <only>TERMINAL</only>
+            <block>
+              <keyboardtype_only>MACBOOK</keyboardtype_only>
+              <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_1</autogen>
+            </block>
+            <block>
+              <keyboardtype_not>MACBOOK</keyboardtype_not>
+              <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_2</autogen>
+            </block>
+          </block>
+          <block>
+            <not>TERMINAL</not>
+            <block>
+              <keyboardtype_only>MACBOOK</keyboardtype_only>
+              <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_3</autogen>
+            </block>
+            <block>
+              <keyboardtype_not>MACBOOK</keyboardtype_not>
+              <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_4</autogen>
+            </block>
+          </block>
+        </item>
+      </list>
     </item>
 
     <!-- Virtual KeyCode -->
