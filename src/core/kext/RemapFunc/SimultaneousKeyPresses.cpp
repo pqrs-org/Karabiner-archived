@@ -1,5 +1,6 @@
-#include "SimultaneousKeyPresses.hpp"
+#include "CommonData.hpp"
 #include "EventInputQueue.hpp"
+#include "SimultaneousKeyPresses.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
@@ -7,12 +8,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     SimultaneousKeyPresses::initialize(void)
     {
       keytokey_.initialize();
+      keytopointingbutton_.initialize();
+
+      toType_ = TOTYPE_NONE;
     }
 
     void
     SimultaneousKeyPresses::terminate(void)
     {
       keytokey_.terminate();
+      keytopointingbutton_.terminate();
     }
 
     void
@@ -24,11 +29,11 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
 
         case 1:
-          fromKey1_ = newval;
+          fromInfo1_.set(newval);
           break;
 
         case 2:
-          fromKey2_ = newval;
+          fromInfo2_.set(newval);
           break;
 
         case 3:
@@ -37,7 +42,47 @@ namespace org_pqrs_KeyRemap4MacBook {
           keytokey_.add(fromFlags_);
           toKey_raw_ = newval;
         default:
+          if (toType_ != TOTYPE_NONE && toType_ != TOTYPE_KEY) {
+            IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
+            break;
+          }
+          toType_ = TOTYPE_KEY;
+
           keytokey_.add(newval);
+          break;
+      }
+      ++index_;
+    }
+
+    void
+    SimultaneousKeyPresses::add(PointingButton newval)
+    {
+      switch (index_) {
+        case 0:
+          IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
+          break;
+
+        case 1:
+          fromInfo1_.set(newval);
+          break;
+
+        case 2:
+          fromInfo2_.set(newval);
+          break;
+
+        case 3:
+          // pass-through (== no break)
+          keytopointingbutton_.add(virtualkey_);
+          keytopointingbutton_.add(fromFlags_);
+          toButton_raw_ = newval;
+        default:
+          if (toType_ != TOTYPE_NONE && toType_ != TOTYPE_BUTTON) {
+            IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
+            break;
+          }
+          toType_ = TOTYPE_BUTTON;
+
+          keytopointingbutton_.add(newval);
           break;
       }
       ++index_;
@@ -58,7 +103,19 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
 
         default:
-          keytokey_.add(newval);
+          switch (toType_) {
+            case TOTYPE_NONE:
+              IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
+              break;
+
+            case TOTYPE_KEY:
+              keytokey_.add(newval);
+              break;
+
+            case TOTYPE_BUTTON:
+              keytopointingbutton_.add(newval);
+              break;
+          }
           break;
       }
     }
@@ -68,9 +125,84 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       switch (newval) {
         case OPTION_RAW:
-          isToRawKey_ = true;
+          isToRaw_ = true;
           break;
       }
+    }
+
+    EventInputQueue::Item*
+    SimultaneousKeyPresses::FromInfo::findLastItem(bool& isKeyDown, bool isIncludeDropped)
+    {
+      for (EventInputQueue::Item* p = static_cast<EventInputQueue::Item*>(EventInputQueue::queue_->back()); p; p = static_cast<EventInputQueue::Item*>(p->getprev())) {
+        if (! isIncludeDropped && p->dropped) continue;
+
+        switch (type_) {
+          case FROMTYPE_KEY:
+          {
+            if ((p->params).type != ParamsUnion::KEYBOARD) continue;
+
+            Params_KeyboardEventCallBack* params = (p->params).params.params_KeyboardEventCallBack;
+            if (! params) continue;
+
+            if (params->key != key_) continue;
+
+            isKeyDown = (params->eventType).isKeyDownOrModifierDown(params->key, params->flags);
+            return p;
+          }
+
+          case FROMTYPE_BUTTON:
+          {
+            if ((p->params).type != ParamsUnion::RELATIVE_POINTER) continue;
+
+            Params_RelativePointerEventCallback* params = (p->params).params.params_RelativePointerEventCallback;
+            if (! params) continue;
+
+            if (params->ex_justPressed.isOn(button_)) {
+              isKeyDown = true;
+              return p;
+            }
+            if (params->ex_justReleased.isOn(button_)) {
+              isKeyDown = false;
+              return p;
+            }
+            break;
+          }
+        }
+      }
+
+      return NULL;
+    }
+
+    bool
+    SimultaneousKeyPresses::FromInfo::restore(bool isFireUp)
+    {
+      // restore KeyUp/ButtonUp Event (fromInfo1_)
+      // drop    KeyUp/ButtonUp Event (fromInfo2_)
+
+      // We consider "Shift_L+Shift_R to Space".
+      // When we press keys by the following order.
+      //
+      // (1) Shift_L Down
+      // (2) Shift_L Up
+      // (3) Shift_L Down
+      // (4) Shift_R Down
+      //
+      // Fire Space at (3)+(4), and we need to change/drop Shift_L Up, Shift_R Up.
+      // But, we need to change these Up keys after (3),(4). Do not change (2).
+      // So, we change keys from tail.
+      if (! active_) return false;
+
+      // ------------------------------------------------------------
+      bool isKeyDown = false;
+      EventInputQueue::Item* item = findLastItem(isKeyDown, true);
+      if (! item) return false;
+      if (item->dropped) return false;
+
+      if (isKeyDown) return false;
+
+      item->dropped = true;
+      active_ = false;
+      return true;
     }
 
     void
@@ -79,30 +211,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! EventInputQueue::queue_) return;
 
       // ------------------------------------------------------------
-      if (active1_ || active2_) {
-        // restore KeyUp Event (fromKey1_).
-        // drop    KeyUp Event (fromKey2_).
-
-        for (EventInputQueue::Item* p = static_cast<EventInputQueue::Item*>(EventInputQueue::queue_->front()); p; p = static_cast<EventInputQueue::Item*>(p->getnext())) {
-          if (p->dropped) continue;
-          if (p->params.type != ParamsUnion::KEYBOARD) continue;
-          if (! (p->params).params.params_KeyboardEventCallBack) continue;
-          Params_KeyboardEventCallBack& params = *((p->params).params.params_KeyboardEventCallBack);
-
-          if ((params.eventType).isKeyDownOrModifierDown(params.key, params.flags)) continue;
-
-          if (active1_ && params.key == fromKey1_) {
-            push_remapped(params, false);
-
-            p->dropped = true;
-            active1_ = false;
-          }
-          if (active2_ && params.key == fromKey2_) {
-            p->dropped = true;
-            active2_ = false;
-          }
-        }
+      if (fromInfo1_.restore(true)) {
+        push_remapped(false);
       }
+      fromInfo2_.restore(false);
 
       // ------------------------------------------------------------
       // find fromKeyCode*_
@@ -117,63 +229,43 @@ namespace org_pqrs_KeyRemap4MacBook {
       // So, we check keys from tail.
       if (! FlagStatus::makeFlags().isOn(fromFlags_)) return;
 
-      EventInputQueue::Item* item1 = NULL;
-      EventInputQueue::Item* item2 = NULL;
-      EventInputQueue::Item* base = NULL; // later item of item1 or item2
+      bool isKeyDown1 = false;
+      bool isKeyDown2 = false;
+      EventInputQueue::Item* item1 = fromInfo1_.findLastItem(isKeyDown1, false);
+      EventInputQueue::Item* item2 = fromInfo2_.findLastItem(isKeyDown2, false);
 
-      for (EventInputQueue::Item* p = static_cast<EventInputQueue::Item*>(EventInputQueue::queue_->back()); p; p = static_cast<EventInputQueue::Item*>(p->getprev())) {
-        if (p->dropped) continue;
-        if ((p->params).type != ParamsUnion::KEYBOARD) continue;
-        if (! (p->params).params.params_KeyboardEventCallBack) continue;
-        Params_KeyboardEventCallBack& params = *((p->params).params.params_KeyboardEventCallBack);
+      if (isKeyDown1 && isKeyDown2) {
+        item1->dropped = true;
+        item2->dropped = true;
+        fromInfo1_.activate();
+        fromInfo2_.activate();
 
-        if (params.key == fromKey1_ && ! item1) {
-          if (! params.eventType.isKeyDownOrModifierDown(params.key, params.flags)) return;
-          item1 = p;
-          if (! base) base = p;
-        }
-        if (params.key == fromKey2_ && ! item2) {
-          if (! params.eventType.isKeyDownOrModifierDown(params.key, params.flags)) return;
-          item2 = p;
-          if (! base) base = p;
-        }
+        push_remapped(true);
       }
-
-      if (! item1 || ! item2 || ! base) return;
-
-      Params_KeyboardEventCallBack& paramsbase = *((base->params).params.params_KeyboardEventCallBack);
-
-      // replace first fromKeyCode1. and drop first fromKeyCode2
-      item1->dropped = true;
-      active1_ = true;
-
-      item2->dropped = true;
-      active2_ = true;
-
-      push_remapped(paramsbase, true);
-
-      return;
     }
 
     void
-    SimultaneousKeyPresses::push_remapped(const Params_KeyboardEventCallBack& baseparams, bool isKeyDown)
+    SimultaneousKeyPresses::push_remapped(bool isKeyDown)
     {
       EventType eventType = isKeyDown ? EventType::DOWN : EventType::UP;
 
       KeyCode key = virtualkey_;
-      if (isToRawKey_) {
+      if (isToRaw_) {
         key = toKey_raw_;
       }
       if (key == KeyCode::VK_NONE) return;
 
+      Flags flags(0);
+      if (isKeyDown) {
+        flags.add(key.getModifierFlag());
+        flags.stripNONE();
+      }
+
       // ----------------------------------------
-      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(baseparams));
+      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(eventType, flags, key, CommonData::getcurrent_keyboardType(), false));
       if (! ptr) return;
 
       Params_KeyboardEventCallBack& params = *ptr;
-      params.eventType = eventType;
-      params.key = key;
-
       EventInputQueue::enqueue_(params);
     }
 
