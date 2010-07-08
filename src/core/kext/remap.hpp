@@ -15,7 +15,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     const Params_KeyboardEventCallBack& params;
     bool isremapped;
 
-    void drop(void) { isremapped = true; }
     bool isKeyDownOrModifierDown(void) const { return params.eventType.isKeyDownOrModifierDown(params.key, params.flags); }
   };
 
@@ -26,8 +25,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     const Params_KeyboardSpecialEventCallback& params;
     bool isremapped;
-
-    void drop(void) { isremapped = true; }
   };
 
   // --------------------
@@ -37,8 +34,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     const Params_RelativePointerEventCallback& params;
     bool isremapped;
-
-    void drop(void) { isremapped = true; }
   };
 }
 
