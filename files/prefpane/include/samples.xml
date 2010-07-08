@@ -238,61 +238,66 @@
 
     <item>
       <name>SimultaneousKeyPresses</name>
-      <appendix>(A+J to Down)</appendix>
-      <appendix>(A+K to Up)</appendix>
-      <appendix>(A+S to A,S,A,J)</appendix>
-      <appendix>(A+D to A,Shift_L+S,Control_L+D,F)</appendix>
-      <appendix>(A+G to Shift_L)</appendix>
-      <appendix>(Command_R+[E+R] to Space)</appendix>
-      <appendix>(Command_R+[R+T] to Space)</appendix>
-      <appendix>(Control_L+[R+T] to Shift_L)</appendix>
-      <appendix>(R+T to Delete)</appendix>
-      <appendix>(FN+[K+L] to Space)</appendix>
-      <appendix>(Shift_L+Shift_R to Space)</appendix>
-      <appendix>(Control_L+Option_L to FN)</appendix>
-      <appendix>Return to Space</appendix>
-      <appendix>(Z+X to Return (== to Return))</appendix>
-      <appendix>(X+C to Return with Option::RAW (== to Space))</appendix>
-      <appendix>(W+E to Escape if application == TERMINAL)</appendix>
-      <appendix>(Q+W to Escape if inputmode == INPUTMODE_ROMAN)</appendix>
-      <sysctl>remap.samples_simultaneouskeypresses</sysctl>
-      <autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::A, KeyCode::CURSOR_DOWN</autogen>
-      <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::A, KeyCode::CURSOR_UP</autogen>
-      <autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::A, KeyCode::A, KeyCode::S, KeyCode::A, KeyCode::J</autogen>
-      <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::A, KeyCode::A, KeyCode::S, ModifierFlag::SHIFT_L, KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::F</autogen>
-      <autogen>--SimultaneousKeyPresses-- KeyCode::G, KeyCode::A, KeyCode::SHIFT_L</autogen>
-      <autogen>--SimultaneousKeyPresses-- KeyCode::R, KeyCode::E, ModifierFlag::COMMAND_R, KeyCode::SPACE</autogen>
-      <autogen>--SimultaneousKeyPresses-- KeyCode::T, KeyCode::R, ModifierFlag::COMMAND_R, KeyCode::SPACE</autogen>
-      <autogen>--SimultaneousKeyPresses-- KeyCode::T, KeyCode::R, ModifierFlag::CONTROL_L, KeyCode::SHIFT_L</autogen>
-      <autogen>--SimultaneousKeyPresses-- KeyCode::T, KeyCode::R, KeyCode::DELETE</autogen>
-      <autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::K, ModifierFlag::FN, KeyCode::SPACE</autogen>
-      <autogen>--SimultaneousKeyPresses-- KeyCode::SHIFT_L, KeyCode::SHIFT_R, KeyCode::SPACE</autogen>
-      <autogen>--SimultaneousKeyPresses-- KeyCode::CONTROL_L, KeyCode::OPTION_L, KeyCode::FN</autogen>
-      <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::SPACE</autogen>
-      <autogen>--SimultaneousKeyPresses-- KeyCode::X, KeyCode::Z, KeyCode::RETURN</autogen>
-      <autogen>--SimultaneousKeyPresses-- KeyCode::C, KeyCode::X, KeyCode::RETURN, SimultaneousKeyPresses::Option::RAW</autogen>
-      <block>
-        <only>TERMINAL</only>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::W, KeyCode::ESCAPE</autogen>
-      </block>
-      <block>
-        <inputmode_only>INPUTMODE_ROMAN</inputmode_only>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::Q, KeyCode::ESCAPE</autogen>
-      </block>
-    </item>
-
-    <item>
-      <name>SimultaneousButtonPresses</name>
       <list>
         <item>
-          <name>LeftClick+RightClick to MiddleClick</name>
-          <sysctl>remap.samples_simultaneousbuttonpresses_lcrc2mc</sysctl>
-          <autogen>--SimultaneousButtonPresses-- PointingButton::LEFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
+          <name>KeyToKey</name>
+          <appendix>(A+J to Down)</appendix>
+          <appendix>(A+K to Up)</appendix>
+          <appendix>(A+S to A,S,A,J)</appendix>
+          <appendix>(A+D to A,Shift_L+S,Control_L+D,F)</appendix>
+          <appendix>(A+G to Shift_L)</appendix>
+          <appendix>(Command_R+[E+R] to Space)</appendix>
+          <appendix>(Command_R+[R+T] to Space)</appendix>
+          <appendix>(Control_L+[R+T] to Shift_L)</appendix>
+          <appendix>(R+T to Delete)</appendix>
+          <appendix>(FN+[K+L] to Space)</appendix>
+          <appendix>(Shift_L+Shift_R to Space)</appendix>
+          <appendix>(Control_L+Option_L to FN)</appendix>
+          <appendix>Return to Space</appendix>
+          <appendix>(Z+X to Return (== to Return))</appendix>
+          <appendix>(X+C to Return with Option::RAW (== to Space))</appendix>
+          <appendix>(W+E to Escape if application == TERMINAL)</appendix>
+          <appendix>(Q+W to Escape if inputmode == INPUTMODE_ROMAN)</appendix>
+          <sysctl>remap.samples_simultaneouskeypresses_keytokey</sysctl>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::A, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::A, KeyCode::CURSOR_UP</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::A, KeyCode::A, KeyCode::S, KeyCode::A, KeyCode::J</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::A, KeyCode::A, KeyCode::S, ModifierFlag::SHIFT_L, KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::F</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::G, KeyCode::A, KeyCode::SHIFT_L</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::R, KeyCode::E, ModifierFlag::COMMAND_R, KeyCode::SPACE</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::T, KeyCode::R, ModifierFlag::COMMAND_R, KeyCode::SPACE</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::T, KeyCode::R, ModifierFlag::CONTROL_L, KeyCode::SHIFT_L</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::T, KeyCode::R, KeyCode::DELETE</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::K, ModifierFlag::FN, KeyCode::SPACE</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::SHIFT_L, KeyCode::SHIFT_R, KeyCode::SPACE</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::CONTROL_L, KeyCode::OPTION_L, KeyCode::FN</autogen>
+          <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::SPACE</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::X, KeyCode::Z, KeyCode::RETURN</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::C, KeyCode::X, KeyCode::RETURN, SimultaneousKeyPresses::Option::RAW</autogen>
+          <block>
+            <only>TERMINAL</only>
+            <autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::W, KeyCode::ESCAPE</autogen>
+          </block>
+          <block>
+            <inputmode_only>INPUTMODE_ROMAN</inputmode_only>
+            <autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::Q, KeyCode::ESCAPE</autogen>
+          </block>
         </item>
         <item>
-          <name>LeftClick+RightClick to Button4</name>
-          <sysctl>remap.samples_simultaneousbuttonpresses_lcrc2button4</sysctl>
-          <autogen>--SimultaneousButtonPresses-- PointingButton::LEFT, PointingButton::RIGHT, PointingButton::BUTTON4</autogen>
+          <name>ButtonToButton</name>
+          <appendix>Shift+LeftClick+RightClick to Button4</appendix>
+          <appendix>LeftClick+RightClick to MiddleClick</appendix>
+          <sysctl>remap.samples_simultaneouskeypresses_buttontobutton</sysctl>
+          <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, VK_SHIFT, PointingButton::BUTTON4</autogen>
+          <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
+        </item>
+        <item>
+          <name>KeyToButton</name>
+          <appendix>[A+S] to RightClick</appendix>
+          <appendix>Shift+[S+D] to MiddleClick</appendix>
+          <sysctl>remap.samples_simultaneouskeypresses_keytobutton</sysctl>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::A, PointingButton::RIGHT</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, VK_SHIFT, PointingButton::MIDDLE</autogen>
         </item>
       </list>
     </item>

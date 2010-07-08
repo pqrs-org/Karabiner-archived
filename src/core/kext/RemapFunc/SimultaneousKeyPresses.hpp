@@ -75,7 +75,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       bool isToRaw_;
       KeyCode toKey_raw_;
-      PointingButton toButton_raw_;
 
       KeyToKey keytokey_;
       KeyToPointingButton keytopointingbutton_;

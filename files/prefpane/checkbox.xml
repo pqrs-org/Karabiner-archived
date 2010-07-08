@@ -3848,6 +3848,11 @@
           <autogen>--SimultaneousKeyPresses-- KeyCode::C, KeyCode::X, KeyCode::ESCAPE</autogen>
         </item>
         <item>
+          <name>Simultaneous Key Presses [Z+X] to LeftClick</name>
+          <sysctl>remap.simultaneouskeypresses_zx2leftclick</sysctl>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::X, KeyCode::Z, PointingButton::LEFT</autogen>
+        </item>
+        <item>
           <name>Simultaneous Key Presses [M+N] to F13</name>
           <sysctl>remap.simultaneouskeypresses_mn2f13</sysctl>
           <autogen>--SimultaneousKeyPresses-- KeyCode::N, KeyCode::M, KeyCode::F13</autogen>
