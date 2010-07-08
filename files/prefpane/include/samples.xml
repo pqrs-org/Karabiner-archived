@@ -136,104 +136,134 @@
 
     <item>
       <name>KeyToConsumer</name>
-      <appendix>A to Volume Mute</appendix>
-      <appendix>Shift+B to Volume Mute (With Modifier)</appendix>
-      <appendix>Shift_L to Volume Mute (Modifier To)</appendix>
-      <appendix>C to Option_L+Volume Mute (To Key+Modifier)</appendix>
-      <appendix>D to Volume Up, Brightness Up</appendix>
-      <sysctl>remap.samples_keytoconsumer</sysctl>
-      <autogen>--KeyToConsumer-- KeyCode::A, ConsumerKeyCode::VOLUME_MUTE</autogen>
-      <autogen>--KeyToConsumer-- KeyCode::B, VK_SHIFT, ConsumerKeyCode::VOLUME_MUTE</autogen>
-      <autogen>--KeyToConsumer-- KeyCode::SHIFT_L, ConsumerKeyCode::VOLUME_MUTE</autogen>
-      <autogen>--KeyToConsumer-- KeyCode::C, ConsumerKeyCode::VOLUME_MUTE, ModifierFlag::OPTION_L</autogen>
-      <autogen>--KeyToConsumer-- KeyCode::D, ConsumerKeyCode::VOLUME_UP, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
+      <list>
+        <item>
+          <name>Standard</name>
+          <appendix>A to Volume Mute</appendix>
+          <appendix>Shift+B to Volume Mute (With Modifier)</appendix>
+          <appendix>Shift_L to Volume Mute (Modifier To)</appendix>
+          <appendix>C to Option_L+Volume Mute (To Key+Modifier)</appendix>
+          <appendix>D to Volume Up, Brightness Up</appendix>
+          <sysctl>remap.samples_keytoconsumer</sysctl>
+          <autogen>--KeyToConsumer-- KeyCode::A, ConsumerKeyCode::VOLUME_MUTE</autogen>
+          <autogen>--KeyToConsumer-- KeyCode::B, VK_SHIFT, ConsumerKeyCode::VOLUME_MUTE</autogen>
+          <autogen>--KeyToConsumer-- KeyCode::SHIFT_L, ConsumerKeyCode::VOLUME_MUTE</autogen>
+          <autogen>--KeyToConsumer-- KeyCode::C, ConsumerKeyCode::VOLUME_MUTE, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToConsumer-- KeyCode::D, ConsumerKeyCode::VOLUME_UP, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
+        </item>
+      </list>
     </item>
 
     <item>
       <name>ConsumerToKey</name>
-      <appendix>Command+Volume Down to A,S,Shift_L+D,Control_L+F,G</appendix>
-      <appendix>Volume Down to A</appendix>
-      <appendix>Option+Volume Up to Shift_L (Key+Modifier to Modifier)</appendix>
-      <appendix>Shift+Volume Up to B (with Modifier)</appendix>
-      <appendix>Volume Up to Control_L (to Modifier)</appendix>
-      <appendix>Option+Volume Mute to Shift_L+C (to Key+Modifier)</appendix>
-      <appendix>NumLock to A</appendix>
-      <!-- Note: -->
-      <!-- NumLock is a special key. When we press "A" key with holding NumLock key, there is no key down event occurred -->
-      <!-- Therefore we cannot change NumLock to Modifier -->
-      <sysctl>remap.samples_consumertokey</sysctl>
-      <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, VK_COMMAND, KeyCode::A, KeyCode::S, KeyCode::D, ModifierFlag::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L, KeyCode::G</autogen>
-      <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, KeyCode::A</autogen>
-      <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, VK_OPTION, KeyCode::SHIFT_L</autogen>
-      <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, VK_SHIFT, KeyCode::B</autogen>
-      <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, KeyCode::CONTROL_L</autogen>
-      <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, VK_OPTION, KeyCode::C, ModifierFlag::SHIFT_L</autogen>
-      <autogen>--ConsumerToKey-- ConsumerKeyCode::NUMLOCK, KeyCode::A</autogen>
+      <list>
+        <item>
+          <name>Standard</name>
+          <appendix>Command+Volume Down to A,S,Shift_L+D,Control_L+F,G</appendix>
+          <appendix>Volume Down to A</appendix>
+          <appendix>Option+Volume Up to Shift_L (Key+Modifier to Modifier)</appendix>
+          <appendix>Shift+Volume Up to B (with Modifier)</appendix>
+          <appendix>Volume Up to Control_L (to Modifier)</appendix>
+          <appendix>Option+Volume Mute to Shift_L+C (to Key+Modifier)</appendix>
+          <appendix>NumLock to A</appendix>
+          <!-- Note: -->
+          <!-- NumLock is a special key. When we press "A" key with holding NumLock key, there is no key down event occurred -->
+          <!-- Therefore we cannot change NumLock to Modifier -->
+          <sysctl>remap.samples_consumertokey</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, VK_COMMAND, KeyCode::A, KeyCode::S, KeyCode::D, ModifierFlag::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L, KeyCode::G</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, KeyCode::A</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, VK_OPTION, KeyCode::SHIFT_L</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, VK_SHIFT, KeyCode::B</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, KeyCode::CONTROL_L</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, VK_OPTION, KeyCode::C, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::NUMLOCK, KeyCode::A</autogen>
+        </item>
+      </list>
     </item>
 
     <item>
       <name>ConsumerToConsumer</name>
-      <appendix>Volume Down to Volume Mute</appendix>
-      <appendix>Shift+Volume Up to Volume Mute (with Modifier)</appendix>
-      <appendix>NumLock to Volume Mute</appendix>
-      <sysctl>remap.samples_consumertoconsumer</sysctl>
-      <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_DOWN, ConsumerKeyCode::VOLUME_MUTE</autogen>
-      <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_UP, VK_SHIFT, ConsumerKeyCode::VOLUME_MUTE</autogen>
-      <autogen>--ConsumerToConsumer-- ConsumerKeyCode::NUMLOCK, ConsumerKeyCode::VOLUME_MUTE</autogen>
+      <list>
+        <item>
+          <name>Standard</name>
+          <appendix>Volume Down to Volume Mute</appendix>
+          <appendix>Shift+Volume Up to Volume Mute (with Modifier)</appendix>
+          <appendix>NumLock to Volume Mute</appendix>
+          <sysctl>remap.samples_consumertoconsumer</sysctl>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_DOWN, ConsumerKeyCode::VOLUME_MUTE</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_UP, VK_SHIFT, ConsumerKeyCode::VOLUME_MUTE</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::NUMLOCK, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        </item>
+      </list>
     </item>
 
     <item>
       <name>KeyOverlaidModifier</name>
-      <appendix>A to Shift_L (When type only, send Space) (Standard)</appendix>
-      <appendix>Option_L to Shift_L (When type only, send Space) (Modifier)</appendix>
-      <appendix>Control+B to Shift_L (When type only, send Space) (Key+Modifier)</appendix>
-      <appendix>C to Shift_L (When type only, send Space) + [KeyRepeat]</appendix>
-      <appendix>Command+D to Shift_L (When type only, send Control_L+F) + [KeyRepeat]</appendix>
-      <appendix>E to KeyCode::VK_NONE</appendix>
-      <appendix>F to Shift_L (When type only, send CapsLock)</appendix>
-      <appendix>G to Shift_L (When type only, send A,B,Shift_L+C,Control_L+B)</appendix>
-      <appendix>H to Shift_L (When type only, send A,B,Shift_L+C,Control_L+B) + [KeyRepeat]</appendix>
-      <appendix>I to Shift_L (When type only, send Option_L)</appendix>
-      <appendix>Command_R to Shift_L (When type only without other modifiers, send Space)</appendix>
-      <sysctl>remap.samples_keyoverlaidmodifier</sysctl>
-      <autogen>--KeyOverlaidModifier-- KeyCode::A, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
-      <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_L, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
-      <autogen>--KeyOverlaidModifier-- KeyCode::B, VK_CONTROL, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
-      <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::C, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
-      <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::D, VK_COMMAND, KeyCode::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::E, KeyCode::VK_NONE</autogen>
-      <autogen>--KeyOverlaidModifier-- KeyCode::F, KeyCode::SHIFT_L, KeyCode::CAPSLOCK</autogen>
-      <autogen>--KeyOverlaidModifier--           KeyCode::G, KeyCode::SHIFT_L, KeyCode::A, KeyCode::B, KeyCode::C, ModifierFlag::SHIFT_L, KeyCode::B, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::H, KeyCode::SHIFT_L, KeyCode::A, KeyCode::B, KeyCode::C, ModifierFlag::SHIFT_L, KeyCode::B, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyOverlaidModifier-- KeyCode::I, KeyCode::SHIFT_L, KeyCode::OPTION_L</autogen>
-      <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+      <list>
+        <item>
+          <name>Standard</name>
+          <appendix>A to Shift_L (When type only, send Space) (Standard)</appendix>
+          <appendix>Option_L to Shift_L (When type only, send Space) (Modifier)</appendix>
+          <appendix>Control+B to Shift_L (When type only, send Space) (Key+Modifier)</appendix>
+          <appendix>C to Shift_L (When type only, send Space) + [KeyRepeat]</appendix>
+          <appendix>Command+D to Shift_L (When type only, send Control_L+F) + [KeyRepeat]</appendix>
+          <appendix>E to KeyCode::VK_NONE</appendix>
+          <appendix>F to Shift_L (When type only, send CapsLock)</appendix>
+          <appendix>G to Shift_L (When type only, send A,B,Shift_L+C,Control_L+B)</appendix>
+          <appendix>H to Shift_L (When type only, send A,B,Shift_L+C,Control_L+B) + [KeyRepeat]</appendix>
+          <appendix>I to Shift_L (When type only, send Option_L)</appendix>
+          <appendix>Command_R to Shift_L (When type only without other modifiers, send Space)</appendix>
+          <sysctl>remap.samples_keyoverlaidmodifier</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::A, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_L, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::B, VK_CONTROL, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+          <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::C, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+          <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::D, VK_COMMAND, KeyCode::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::E, KeyCode::VK_NONE</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::F, KeyCode::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+          <autogen>--KeyOverlaidModifier--           KeyCode::G, KeyCode::SHIFT_L, KeyCode::A, KeyCode::B, KeyCode::C, ModifierFlag::SHIFT_L, KeyCode::B, ModifierFlag::CONTROL_L</autogen>
+          <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::H, KeyCode::SHIFT_L, KeyCode::A, KeyCode::B, KeyCode::C, ModifierFlag::SHIFT_L, KeyCode::B, ModifierFlag::CONTROL_L</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::I, KeyCode::SHIFT_L, KeyCode::OPTION_L</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+        </item>
+      </list>
     </item>
 
     <item>
       <name>HoldingKeyToKey</name>
-      <sysctl>remap.samples_holdingkeytokey</sysctl>
-      <appendix>Escape to Tab (+ Holding Escape to Space)</appendix>
-      <appendix>Tab to A,S,Control_L+D,F (+ Holding Tab to Q,W,Shift_L+E,R)</appendix>
-      <appendix>Option+Shift_R to Return (+ Holding Option+Shift_R to Space)</appendix>
-      <appendix>Shift+A to Option_L+B (+ Holding Shift+A to Command_L+Return)</appendix>
-      <appendix>Control+B to Option_L+B,C (+ Holding Control+B to Space)</appendix>
-      <!-- Note: Use KeyCode::VK_NONE as a separator of parameters -->
-      <autogen>--HoldingKeyToKey-- KeyCode::ESCAPE, KeyCode::TAB, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
-      <autogen>--HoldingKeyToKey-- KeyCode::TAB, KeyCode::A, KeyCode::S, KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::F, KeyCode::VK_NONE, KeyCode::Q, KeyCode::W, KeyCode::E, ModifierFlag::SHIFT_L, KeyCode::R</autogen>
-      <autogen>--HoldingKeyToKey-- KeyCode::SHIFT_R, VK_OPTION, KeyCode::RETURN, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
-      <autogen>--HoldingKeyToKey-- KeyCode::A, VK_SHIFT, KeyCode::B, ModifierFlag::OPTION_L, KeyCode::VK_NONE, KeyCode::RETURN, ModifierFlag::COMMAND_L</autogen>
-      <autogen>--HoldingKeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::B, ModifierFlag::OPTION_L, KeyCode::C, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
+      <list>
+        <item>
+          <name>Standard</name>
+          <sysctl>remap.samples_holdingkeytokey</sysctl>
+          <appendix>Escape to Tab (+ Holding Escape to Space)</appendix>
+          <appendix>Tab to A,S,Control_L+D,F (+ Holding Tab to Q,W,Shift_L+E,R)</appendix>
+          <appendix>Option+Shift_R to Return (+ Holding Option+Shift_R to Space)</appendix>
+          <appendix>Shift+A to Option_L+B (+ Holding Shift+A to Command_L+Return)</appendix>
+          <appendix>Control+B to Option_L+B,C (+ Holding Control+B to Space)</appendix>
+          <!-- Note: Use KeyCode::VK_NONE as a separator of parameters -->
+          <autogen>--HoldingKeyToKey-- KeyCode::ESCAPE, KeyCode::TAB, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
+          <autogen>--HoldingKeyToKey-- KeyCode::TAB, KeyCode::A, KeyCode::S, KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::F, KeyCode::VK_NONE, KeyCode::Q, KeyCode::W, KeyCode::E, ModifierFlag::SHIFT_L, KeyCode::R</autogen>
+          <autogen>--HoldingKeyToKey-- KeyCode::SHIFT_R, VK_OPTION, KeyCode::RETURN, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
+          <autogen>--HoldingKeyToKey-- KeyCode::A, VK_SHIFT, KeyCode::B, ModifierFlag::OPTION_L, KeyCode::VK_NONE, KeyCode::RETURN, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--HoldingKeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::B, ModifierFlag::OPTION_L, KeyCode::C, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
+        </item>
+      </list>
     </item>
 
     <item>
       <name>DoublePressModifier</name>
-      <appendix>Shift_L x2 to RETURN</appendix>
-      <appendix>(A to Control_L) + (A x2 to Shift_L+RETURN)</appendix>
-      <appendix>(Shift+B to Control_L+Option_L) + (Shift+B x2 to A,S,Command_L+D)</appendix>
-      <sysctl>remap.samples_doublepressmodifier</sysctl>
-      <autogen>--DoublePressModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::RETURN</autogen>
-      <autogen>--DoublePressModifier-- KeyCode::A, KeyCode::CONTROL_L, KeyCode::RETURN, ModifierFlag::SHIFT_L</autogen>
-      <autogen>--DoublePressModifier-- KeyCode::B, VK_SHIFT, KeyCode::CONTROL_L, ModifierFlag::OPTION_L, KeyCode::A, KeyCode::S, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
+      <list>
+        <item>
+          <name>Standard</name>
+          <appendix>Shift_L x2 to RETURN</appendix>
+          <appendix>(A to Control_L) + (A x2 to Shift_L+RETURN)</appendix>
+          <appendix>(Shift+B to Control_L+Option_L) + (Shift+B x2 to A,S,Command_L+D)</appendix>
+          <sysctl>remap.samples_doublepressmodifier</sysctl>
+          <autogen>--DoublePressModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::RETURN</autogen>
+          <autogen>--DoublePressModifier-- KeyCode::A, KeyCode::CONTROL_L, KeyCode::RETURN, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--DoublePressModifier-- KeyCode::B, VK_SHIFT, KeyCode::CONTROL_L, ModifierFlag::OPTION_L, KeyCode::A, KeyCode::S, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
+        </item>
+      </list>
     </item>
 
     <item>
