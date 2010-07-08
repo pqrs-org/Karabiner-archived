@@ -48,8 +48,18 @@
 
     <item>
       <name>ShowStatusMessage</name>
-      <sysctl>remap.samples_showstatusmessage</sysctl>
-      <autogen>--ShowStatusMessage-- "Sample Message"</autogen>
+      <list>
+        <item>
+          <name>Sample1</name>
+          <sysctl>remap.samples_showstatusmessage_sample1</sysctl>
+          <autogen>--ShowStatusMessage-- "Sample1"</autogen>
+        </item>
+        <item>
+          <name>Sample2</name>
+          <sysctl>remap.samples_showstatusmessage_sample2</sysctl>
+          <autogen>--ShowStatusMessage-- "Sample2"</autogen>
+        </item>
+      </list>
     </item>
 
     <item>
