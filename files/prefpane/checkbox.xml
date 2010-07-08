@@ -207,21 +207,18 @@
           <list>
             <item>
               <name>LeftClick+RightClick to MiddleClick</name>
-              <appendix>(We can change the button once again)</appendix>
               <sysctl>remap.pointing_leftrightclick2middleclick</sysctl>
-              <autogen>--SimultaneousButtonPresses-- PointingButton::LEFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
+              <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
             </item>
             <item>
               <name>LeftClick+RightClick to Button4</name>
-              <appendix>(We can change the button once again)</appendix>
               <sysctl>remap.pointing_leftrightclick2button4</sysctl>
-              <autogen>--SimultaneousButtonPresses-- PointingButton::LEFT, PointingButton::RIGHT, PointingButton::BUTTON4</autogen>
+              <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, PointingButton::BUTTON4</autogen>
             </item>
             <item>
               <name>LeftClick+RightClick to Button5</name>
-              <appendix>(We can change the button once again)</appendix>
               <sysctl>remap.pointing_leftrightclick2button5</sysctl>
-              <autogen>--SimultaneousButtonPresses-- PointingButton::LEFT, PointingButton::RIGHT, PointingButton::BUTTON5</autogen>
+              <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, PointingButton::BUTTON5</autogen>
             </item>
           </list>
         </item>
