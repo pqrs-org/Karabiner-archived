@@ -18,7 +18,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                KeyboardType kt, bool r) {
       return new Params_KeyboardEventCallBack(et, fl, kc, cc, cs, occ, ocs, kt, r);
     }
-    static Params_KeyboardEventCallBack* alloc(EventType et, Flags fl, const KeyCode kc,
+    static Params_KeyboardEventCallBack* alloc(EventType et, Flags fl, KeyCode kc,
                                                KeyboardType kt, bool r) {
       return new Params_KeyboardEventCallBack(et, fl, kc,
                                               CharCode(0), CharSet(0), OrigCharCode(0), OrigCharSet(0),
