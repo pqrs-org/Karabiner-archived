@@ -74,7 +74,6 @@ namespace org_pqrs_KeyRemap4MacBook {
           // pass-through (== no break)
           keytopointingbutton_.add(virtualkey_);
           keytopointingbutton_.add(fromFlags_);
-          toButton_raw_ = newval;
         default:
           if (toType_ != TOTYPE_NONE && toType_ != TOTYPE_BUTTON) {
             IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
@@ -125,7 +124,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       switch (newval) {
         case OPTION_RAW:
-          isToRaw_ = true;
+          if (toType_ != TOTYPE_KEY) {
+            IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
+          } else {
+            isToRaw_ = true;
+          }
           break;
       }
     }
@@ -133,6 +136,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     EventInputQueue::Item*
     SimultaneousKeyPresses::FromInfo::findLastItem(bool& isKeyDown, bool isIncludeDropped)
     {
+      if (! EventInputQueue::queue_) return NULL;
+
       for (EventInputQueue::Item* p = static_cast<EventInputQueue::Item*>(EventInputQueue::queue_->back()); p; p = static_cast<EventInputQueue::Item*>(p->getprev())) {
         if (! isIncludeDropped && p->dropped) continue;
 
@@ -208,9 +213,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     SimultaneousKeyPresses::remap(void)
     {
-      if (! EventInputQueue::queue_) return;
-
-      // ------------------------------------------------------------
       if (fromInfo1_.restore(true)) {
         push_remapped(false);
       }
@@ -234,14 +236,15 @@ namespace org_pqrs_KeyRemap4MacBook {
       EventInputQueue::Item* item1 = fromInfo1_.findLastItem(isKeyDown1, false);
       EventInputQueue::Item* item2 = fromInfo2_.findLastItem(isKeyDown2, false);
 
-      if (isKeyDown1 && isKeyDown2) {
-        item1->dropped = true;
-        item2->dropped = true;
-        fromInfo1_.activate();
-        fromInfo2_.activate();
+      if (! item1      || ! item2 ||
+          ! isKeyDown1 || ! isKeyDown2) return;
 
-        push_remapped(true);
-      }
+      item1->dropped = true;
+      item2->dropped = true;
+      fromInfo1_.activate();
+      fromInfo2_.activate();
+
+      push_remapped(true);
     }
 
     void
@@ -273,7 +276,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     SimultaneousKeyPresses::handlevirtualkey(const Params_KeyboardEventCallBack& params)
     {
       RemapParams rp(params);
-      return keytokey_.remap(rp);
+      if (toType_ == TOTYPE_KEY) {
+        return keytokey_.remap(rp);
+      } else {
+        return keytopointingbutton_.remap(rp);
+      }
     }
   }
 }
