@@ -6,13 +6,13 @@
 #include "remap.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  Queue* KeyboardRepeat::queue_ = NULL;
+  List* KeyboardRepeat::queue_ = NULL;
   TimerWrapper KeyboardRepeat::timer_;
 
   void
   KeyboardRepeat::initialize(IOWorkLoop& workloop)
   {
-    queue_ = new Queue();
+    queue_ = new List();
     timer_.initialize(&workloop, NULL, KeyboardRepeat::fire);
   }
 
@@ -21,23 +21,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     timer_.terminate();
 
-    clear_queue();
     if (queue_) {
       delete queue_;
-    }
-  }
-
-  void
-  KeyboardRepeat::clear_queue(void)
-  {
-    if (! queue_) return;
-
-    for (;;) {
-      KeyboardRepeat::Item* p = static_cast<KeyboardRepeat::Item*>(queue_->front());
-      if (! p) break;
-
-      queue_->pop();
-      delete p;
     }
   }
 
@@ -45,7 +30,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   KeyboardRepeat::cancel_nolock(void)
   {
     timer_.cancelTimeout();
-    clear_queue();
+    if (queue_) {
+      queue_->clear();
+    }
   }
 
   void
@@ -73,10 +60,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                                                    true));
     if (! ptr) return;
     Params_KeyboardEventCallBack& params = *ptr;
-
-    Item* newp = new Item(params);
-    if (! newp) return;
-    queue_->push(newp);
+    queue_->push_back(new Item(params));
   }
 
   void
@@ -94,10 +78,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                                                                  true));
     if (! ptr) return;
     Params_KeyboardSpecialEventCallback& params = *ptr;
-
-    Item* newp = new Item(params);
-    if (! newp) return;
-    queue_->push(newp);
+    queue_->push_back(new Item(params));
   }
 
   void

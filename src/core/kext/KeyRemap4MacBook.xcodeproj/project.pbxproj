@@ -70,8 +70,8 @@
 		34AC5ED211DA3BD60089BC58 /* KeyOverlaidModifier.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34AC5ED011DA3BD60089BC58 /* KeyOverlaidModifier.hpp */; };
 		34B8199511DF925500BD8E0B /* DropKeyAfterRemap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B8199311DF925500BD8E0B /* DropKeyAfterRemap.cpp */; };
 		34B8199611DF925500BD8E0B /* DropKeyAfterRemap.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B8199411DF925500BD8E0B /* DropKeyAfterRemap.hpp */; };
-		34C382D511BB3F3600EFB9A6 /* Queue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34C382D311BB3F3600EFB9A6 /* Queue.cpp */; };
-		34C382D611BB3F3600EFB9A6 /* Queue.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34C382D411BB3F3600EFB9A6 /* Queue.hpp */; };
+		34B8CEC611E5E05C00EE89E3 /* List.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B8CEC411E5E05C00EE89E3 /* List.cpp */; };
+		34B8CEC711E5E05C00EE89E3 /* List.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B8CEC511E5E05C00EE89E3 /* List.hpp */; };
 		34C7A9A20CE45EA400C98397 /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34C7A9A10CE45EA400C98397 /* Config.cpp */; };
 		34C7A9B00CE4605B00C98397 /* Config.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34C7A9AF0CE4605B00C98397 /* Config.hpp */; };
 		34C8E8D211DEEC0400E2FE41 /* PointingRelativeToScroll.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34C8E8D011DEEC0400E2FE41 /* PointingRelativeToScroll.cpp */; };
@@ -163,8 +163,8 @@
 		34AC5ED011DA3BD60089BC58 /* KeyOverlaidModifier.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyOverlaidModifier.hpp; path = RemapFunc/KeyOverlaidModifier.hpp; sourceTree = "<group>"; };
 		34B8199311DF925500BD8E0B /* DropKeyAfterRemap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DropKeyAfterRemap.cpp; path = RemapFunc/DropKeyAfterRemap.cpp; sourceTree = "<group>"; };
 		34B8199411DF925500BD8E0B /* DropKeyAfterRemap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DropKeyAfterRemap.hpp; path = RemapFunc/DropKeyAfterRemap.hpp; sourceTree = "<group>"; };
-		34C382D311BB3F3600EFB9A6 /* Queue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Queue.cpp; path = util/Queue.cpp; sourceTree = "<group>"; };
-		34C382D411BB3F3600EFB9A6 /* Queue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Queue.hpp; path = util/Queue.hpp; sourceTree = "<group>"; };
+		34B8CEC411E5E05C00EE89E3 /* List.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = List.cpp; path = util/List.cpp; sourceTree = "<group>"; };
+		34B8CEC511E5E05C00EE89E3 /* List.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = List.hpp; path = util/List.hpp; sourceTree = "<group>"; };
 		34C7A9A10CE45EA400C98397 /* Config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Config.cpp; sourceTree = "<group>"; };
 		34C7A9AF0CE4605B00C98397 /* Config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config.hpp; sourceTree = "<group>"; };
 		34C8E8D011DEEC0400E2FE41 /* PointingRelativeToScroll.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PointingRelativeToScroll.cpp; path = RemapFunc/PointingRelativeToScroll.cpp; sourceTree = "<group>"; };
@@ -296,6 +296,8 @@
 		346B753B0E72C0A200F9A79F /* util */ = {
 			isa = PBXGroup;
 			children = (
+				34B8CEC411E5E05C00EE89E3 /* List.cpp */,
+				34B8CEC511E5E05C00EE89E3 /* List.hpp */,
 				34C931CA11E37E5300B81B08 /* EventOutputQueue.cpp */,
 				34C931CB11E37E5300B81B08 /* EventOutputQueue.hpp */,
 				3401FE0111E2E77300EBBF43 /* ParamsUnion.cpp */,
@@ -306,8 +308,6 @@
 				3475BBFE11CEDC5F007BC76A /* FromKeyChecker.hpp */,
 				34CFB93011C340B000E5E7F9 /* ButtonStatus.cpp */,
 				34CFB93111C340B000E5E7F9 /* ButtonStatus.hpp */,
-				34C382D311BB3F3600EFB9A6 /* Queue.cpp */,
-				34C382D411BB3F3600EFB9A6 /* Queue.hpp */,
 				3453149210FB44D3005EBFAF /* auto_ptr.hpp */,
 				34A7885010CBFBDC00DF72FD /* CommonData.cpp */,
 				34A7884710CBF92D00DF72FD /* CommonData.hpp */,
@@ -372,7 +372,6 @@
 				34A7884810CBF92D00DF72FD /* CommonData.hpp in Headers */,
 				3456837D10DA734200D7E2E6 /* VirtualKey.hpp in Headers */,
 				3453149310FB44D3005EBFAF /* auto_ptr.hpp in Headers */,
-				34C382D611BB3F3600EFB9A6 /* Queue.hpp in Headers */,
 				34CFB93311C340B000E5E7F9 /* ButtonStatus.hpp in Headers */,
 				3475BBFF11CEDC5F007BC76A /* FromKeyChecker.hpp in Headers */,
 				3477E3BC11CFAC9D00DC05C9 /* RemapClass.hpp in Headers */,
@@ -395,6 +394,7 @@
 				3401FE0511E2E77300EBBF43 /* ParamsUnion.hpp in Headers */,
 				3401FE0611E2E77300EBBF43 /* Vector.hpp in Headers */,
 				34C931CD11E37E5300B81B08 /* EventOutputQueue.hpp in Headers */,
+				34B8CEC711E5E05C00EE89E3 /* List.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,7 +483,6 @@
 				34A7883010CBD79100DF72FD /* KeyCode.cpp in Sources */,
 				34A7885110CBFBDC00DF72FD /* CommonData.cpp in Sources */,
 				3456837C10DA734200D7E2E6 /* VirtualKey.cpp in Sources */,
-				34C382D511BB3F3600EFB9A6 /* Queue.cpp in Sources */,
 				34CFB93211C340B000E5E7F9 /* ButtonStatus.cpp in Sources */,
 				3477E3BB11CFAC9D00DC05C9 /* RemapClass.cpp in Sources */,
 				346EB2E411D5CDC100BBDF0E /* EventInputQueue.cpp in Sources */,
@@ -503,6 +502,7 @@
 				34B8199511DF925500BD8E0B /* DropKeyAfterRemap.cpp in Sources */,
 				3401FE0411E2E77300EBBF43 /* ParamsUnion.cpp in Sources */,
 				34C931CC11E37E5300B81B08 /* EventOutputQueue.cpp in Sources */,
+				34B8CEC611E5E05C00EE89E3 /* List.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

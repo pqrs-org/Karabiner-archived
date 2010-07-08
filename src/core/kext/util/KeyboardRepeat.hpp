@@ -6,8 +6,8 @@
 #include "CallbackWrapper.hpp"
 #include "Config.hpp"
 #include "KeyCode.hpp"
+#include "List.hpp"
 #include "ParamsUnion.hpp"
-#include "Queue.hpp"
 #include "TimerWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -54,7 +54,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void primitive_start(int wait = config.get_repeat_initial_wait());
 
   private:
-    class Item : public Queue::Item {
+    class Item : public List::Item {
     public:
       Item(const Params_KeyboardEventCallBack& p)        : params(p) {}
       Item(const Params_KeyboardSpecialEventCallback& p) : params(p) {}
@@ -66,7 +66,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     static void fire(OSObject* owner, IOTimerEventSource* sender);
 
-    static void clear_queue(void);
     static void cancel_nolock(void);
 
     static void primitive_add_nolock(EventType eventType,
@@ -78,7 +77,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                                      ConsumerKeyCode key);
     static void primitive_start_nolock(int wait);
 
-    static Queue* queue_;
+    static List* queue_;
     static TimerWrapper timer_;
   };
 }

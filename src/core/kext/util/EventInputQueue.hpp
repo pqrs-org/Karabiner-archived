@@ -5,8 +5,8 @@
 #include "CallBackWrapper.hpp"
 #include "IntervalChecker.hpp"
 #include "KeyCode.hpp"
+#include "List.hpp"
 #include "ParamsUnion.hpp"
-#include "Queue.hpp"
 #include "TimerWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -28,7 +28,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void push(const Params_RelativePointerEventCallback& p);
     static void push(const Params_ScrollWheelEventCallback& p);
 
-    class Item : public Queue::Item {
+    class Item : public List::Item {
     public:
       Item(const Params_KeyboardEventCallBack& p, uint32_t d)        : params(p), dropped(false), delayMS(d) {}
       Item(const Params_KeyboardSpecialEventCallback& p, uint32_t d) : params(p), dropped(false), delayMS(d) {}
@@ -56,7 +56,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void fire_nolock(void);
     static void setTimer(void);
 
-    static Queue* queue_;
+    static List* queue_;
     static IntervalChecker ic_;
     static TimerWrapper timer_;
   };

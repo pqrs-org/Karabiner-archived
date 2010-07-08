@@ -6,8 +6,8 @@
 #include "FlagStatus.hpp"
 #include "IntervalChecker.hpp"
 #include "KeyCode.hpp"
+#include "List.hpp"
 #include "ParamsUnion.hpp"
-#include "Queue.hpp"
 #include "TimerWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -56,7 +56,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     enum {
       DELAY = 1,
     };
-    class Item : public Queue::Item {
+    class Item : public List::Item {
     public:
       Item(const Params_KeyboardEventCallBack& p)        : params(p) {}
       Item(const Params_UpdateEventFlagsCallback& p)     : params(p) {}
@@ -78,7 +78,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void push(const Params_ScrollWheelEventCallback& p);
     static void push(Item& p);
 
-    static Queue* queue_;
+    static List* queue_;
     static IntervalChecker ic_;
     static TimerWrapper timer_;
   };

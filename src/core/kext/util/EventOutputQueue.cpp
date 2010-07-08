@@ -5,14 +5,14 @@
 #include "VirtualKey.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  Queue* EventOutputQueue::queue_ = NULL;
+  List* EventOutputQueue::queue_ = NULL;
   IntervalChecker EventOutputQueue::ic_;
   TimerWrapper EventOutputQueue::timer_;
 
   void
   EventOutputQueue::initialize(IOWorkLoop& workloop)
   {
-    queue_ = new Queue();
+    queue_ = new List();
     ic_.begin();
     timer_.initialize(&workloop, NULL, EventOutputQueue::fire);
   }
@@ -23,13 +23,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     timer_.terminate();
 
     if (queue_) {
-      for (;;) {
-        EventOutputQueue::Item* p = static_cast<EventOutputQueue::Item*>(queue_->front());
-        if (! p) break;
-
-        queue_->pop();
-        delete p;
-      }
       delete queue_;
     }
   }
@@ -43,7 +36,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! queue_) return;
 
     bool isempty = queue_->empty();
-    queue_->push(&p);
+    queue_->push_back(&p);
 
     // ------------------------------------------------------------
     if (isempty && ic_.getmillisec() > DELAY) {
@@ -113,8 +106,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! p) return;
 
     // ----------------------------------------
-    queue_->pop();
-
 #define CALL_APPLY(PARAMS) { \
     if (PARAMS) {            \
       PARAMS->apply();       \
@@ -141,7 +132,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
 #undef CALL_APPLY
 
-    delete p;
+    queue_->pop_front();
 
     // ----------------------------------------
     if (! queue_->empty()) {
