@@ -11,30 +11,30 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     FromKeyChecker(void) : active_(false) {}
 
-    bool isFromKey(const Params_KeyboardEventCallBack& params, KeyCode fromKeyCode, Flags fromFlags) {
-      if (params.key != fromKeyCode) return false;
-      bool isKeyDown = params.eventType.isKeyDownOrModifierDown(params.key, params.flags);
-      return isFromKey(isKeyDown, fromFlags);
+    bool isFromKey(EventType eventType, KeyCode key, Flags flags, KeyCode fromKeyCode, Flags fromFlags) {
+      if (key != fromKeyCode) return false;
+      bool isKeyDown = eventType.isKeyDownOrModifierDown(key, flags);
+      return isFromKey(isKeyDown, flags, fromFlags);
     }
-    bool isFromKey(const Params_KeyboardSpecialEventCallback& params, ConsumerKeyCode fromKeyCode, Flags fromFlags) {
-      if (params.key != fromKeyCode) return false;
-      bool isKeyDown = (params.eventType == EventType::DOWN);
-      return isFromKey(isKeyDown, fromFlags);
+    bool isFromKey(EventType eventType, ConsumerKeyCode key, Flags flags, ConsumerKeyCode fromKeyCode, Flags fromFlags) {
+      if (key != fromKeyCode) return false;
+      bool isKeyDown = (eventType == EventType::DOWN);
+      return isFromKey(isKeyDown, flags, fromFlags);
     }
     bool isFromPointingButton(const Params_RelativePointerEventCallback& params, PointingButton fromButton, Flags fromFlags) {
       if (params.ex_justPressed.isOn(fromButton)) {
-        return isFromKey(true,  fromFlags);
+        return isFromKey(true,  FlagStatus::makeFlags(), fromFlags);
       } else if (params.ex_justReleased.isOn(fromButton)) {
-        return isFromKey(false, fromFlags);
+        return isFromKey(false, FlagStatus::makeFlags(), fromFlags);
       }
       return false;
     }
     bool isFromButtons(Buttons fromButtons, Flags fromFlags) {
       if (fromButtons != 0) {
         if (ButtonStatus::makeButtons().isOn(fromButtons)) {
-          return isFromKey(true,  fromFlags);
+          return isFromKey(true,  FlagStatus::makeFlags(), fromFlags);
         } else {
-          return isFromKey(false, fromFlags);
+          return isFromKey(false, FlagStatus::makeFlags(), fromFlags);
         }
       } else {
         return FlagStatus::makeFlags().isOn(fromFlags);
@@ -43,9 +43,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool isactive(void) const { return active_; }
 
   private:
-    bool isFromKey(bool isKeyDown, Flags fromFlags) {
+    bool isFromKey(bool isKeyDown, Flags flags, Flags fromFlags) {
       if (isKeyDown) {
-        if (! FlagStatus::makeFlags().isOn(fromFlags)) return false;
+        if (! flags.isOn(fromFlags)) return false;
         active_ = true;
 
       } else {
