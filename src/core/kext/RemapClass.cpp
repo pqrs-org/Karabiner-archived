@@ -16,7 +16,6 @@
 #include "RemapFunc/PointingButtonToKey.hpp"
 #include "RemapFunc/PointingButtonToPointingButton.hpp"
 #include "RemapFunc/PointingRelativeToScroll.hpp"
-#include "RemapFunc/SimultaneousButtonPresses.hpp"
 #include "RemapFunc/SimultaneousKeyPresses.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
