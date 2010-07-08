@@ -2,6 +2,7 @@
 #define EVENTWATCHER_HPP
 
 #include "base.hpp"
+#include "List.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   class EventWatcher {
@@ -16,10 +17,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void unset(bool& b);
 
   private:
-    enum {
-      MAXNUM = 32,
+    class Item : public List::Item {
+    public:
+      Item(bool& b) : isAnyEventHappen(b) {}
+      virtual ~Item(void) {}
+
+      bool& isAnyEventHappen;
     };
-    static bool* item_[MAXNUM];
+    static List* list_;
     static IOLock* lock_;
   };
 }
