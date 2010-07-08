@@ -3,17 +3,24 @@
   <list>
     <item>
       <name>SetKeyboardType</name>
-      <appendix>Set keyboardType = KeyboardType::MACBOOK</appendix>
-      <sysctl>remap.samples_setkeyboardtype_macbook</sysctl>
-      <autogen>--SetKeyboardType-- KeyboardType::MACBOOK</autogen>
+      <list>
+        <item>
+          <name>Set keyboardType = KeyboardType::MACBOOK</name>
+          <sysctl>remap.samples_setkeyboardtype_macbook</sysctl>
+          <autogen>--SetKeyboardType-- KeyboardType::MACBOOK</autogen>
+        </item>
+        <item>
+          <name>Set keyboardType = KeyboardType::MACBOOK_3_1</name>
+          <sysctl>remap.samples_setkeyboardtype_macbook_3_1</sysctl>
+          <autogen>--SetKeyboardType-- KeyboardType::MACBOOK_3_1</autogen>
+        </item>
+        <item>
+          <name>Set keyboardType = KeyboardType::JIS_MACBOOK_2008</name>
+          <sysctl>remap.samples_setkeyboardtype_jis_macbook_2008</sysctl>
+          <autogen>--SetKeyboardType-- KeyboardType::JIS_MACBOOK_2008</autogen>
+        </item>
+      </list>
     </item>
-    <item>
-      <name>SetKeyboardType</name>
-      <appendix>Set keyboardType = KeyboardType::MACBOOK_3_1</appendix>
-      <sysctl>remap.samples_setkeyboardtype_macbook_3_1</sysctl>
-      <autogen>--SetKeyboardType-- KeyboardType::MACBOOK_3_1</autogen>
-    </item>
-
     <item>
       <name>Pass Through Mode</name>
       <list>
