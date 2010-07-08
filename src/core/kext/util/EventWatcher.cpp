@@ -3,14 +3,14 @@
 #include "IOLockWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  bool* EventWatcher::item_[MAXNUM];
+  List* EventWatcher::list_;
   IOLock* EventWatcher::lock_;
 
   void
   EventWatcher::initialize(void)
   {
     lock_ = IOLockWrapper::alloc();
-    reset();
+    list_ = new List();
   }
 
   void
@@ -24,9 +24,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     IOLockWrapper::ScopedLock lk(lock_);
 
-    for (int i = 0; i < MAXNUM; ++i) {
-      item_[i] = NULL;
-    }
+    if (! list_) return;
+
+    list_->clear();
   }
 
   void
@@ -34,13 +34,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     IOLockWrapper::ScopedLock lk(lock_);
 
-    IOLOG_DEVEL("EventWatcher::on\n");
+    if (! list_) return;
 
-    for (int i = 0; i < MAXNUM; ++i) {
-      if (item_[i]) {
-        *(item_[i]) = true;
-        item_[i] = NULL;
-      }
+    IOLOG_DEVEL("EventWatcher::on (list_->size:%d)\n", static_cast<int>(list_->size()));
+
+    for (Item* p = static_cast<Item*>(list_->front()); p; p = static_cast<Item*>(p->getnext())) {
+      p->isAnyEventHappen = true;
     }
   }
 
@@ -49,17 +48,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     IOLockWrapper::ScopedLock lk(lock_);
 
-    b = false;
-    for (int i = 0; i < MAXNUM; ++i) {
-      if (item_[i] == NULL) {
-        item_[i] = &b;
+    if (! list_) return;
 
-        if (i == MAXNUM - 1) {
-          IOLOG_WARN("EventWatcher was filled up. Expand MAXNUM.\n");
-        }
-        return;
-      }
-    }
+    b = false;
+    list_->push_back(new Item(b));
   }
 
   void
@@ -67,9 +59,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     IOLockWrapper::ScopedLock lk(lock_);
 
-    for (int i = 0; i < MAXNUM; ++i) {
-      if (item_[i] == &b) {
-        item_[i] = NULL;
+    Item* p = static_cast<Item*>(list_->front());
+    for (;;) {
+      if (! p) break;
+
+      if (&(p->isAnyEventHappen) == &b) {
+        p = static_cast<Item*>(list_->erase(p));
+      } else {
+        p = static_cast<Item*>(p->getnext());
       }
     }
   }
