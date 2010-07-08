@@ -25,6 +25,10 @@ TEST(List, push_back) {
   const int MAXITEM = 10;
 
   // ------------------------------------------------------------
+  list.push_back(NULL);
+  EXPECT_EQ(static_cast<size_t>(0), list.size());
+
+  // ------------------------------------------------------------
   EXPECT_EQ(static_cast<size_t>(0), list.size());
   for (int i = 0; i < MAXITEM; ++i) {
     list.push_back(new TestItem(i));
@@ -74,11 +78,12 @@ TEST(List, pop_front) {
 }
 
 TEST(List, erase) {
-  List list;
   const int MAXITEM = 10;
 
   // ------------------------------------------------------------
   for (int erase_index = 0; erase_index < MAXITEM; ++erase_index) {
+    List list;
+
     EXPECT_EQ(static_cast<size_t>(0), list.size());
     for (int i = 0; i < MAXITEM; ++i) {
       list.push_back(new TestItem(i));
@@ -99,11 +104,7 @@ TEST(List, erase) {
       EXPECT_EQ(i, p->v());
       p = static_cast<TestItem*>(p->getnext());
     }
-
-    list.clear();
   }
-
-  EXPECT_EQ(0, allocatecount);
 }
 
 TEST(List, clear) {
