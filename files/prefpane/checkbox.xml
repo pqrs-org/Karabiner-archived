@@ -96,6 +96,7 @@
               <name>We can scroll pages by moving the mouse pointer.</name>
               <appendix>(Also, you can generate a click event if you click without moving)</appendix>
               <sysctl>notsave.pointing_relative_to_scroll</sysctl>
+              <vk_config>true</vk_config>
               <autogen>--PointingRelativeToScroll-- PointingButton::NONE</autogen>
             </item>
             <item>
@@ -116,7 +117,7 @@
             <item>
               <name>LeftClick+RightClick+CursorMove to ScrollWheel</name>
               <sysctl>remap.pointing_relative_LRClick_to_scroll</sysctl>
-              <autogen>--PointingRelativeToScroll-- PointingButton::LEFT | PointingButton::RIGHT</autogen>
+              <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_pointing_relative_to_scroll</autogen>
             </item>
             <item>
               <name>Control+RightClick+CursorMove to ScrollWheel</name>
@@ -163,7 +164,7 @@
           </list>
         </item>
         <item>
-          <name>Button</name>
+          <name>Button to Button</name>
           <list>
             <item>
               <name>Control+LeftClick to MiddleClick</name>

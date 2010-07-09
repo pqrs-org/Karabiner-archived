@@ -179,6 +179,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       TYPE_TOGGLE,
       TYPE_FORCE_ON,
       TYPE_FORCE_OFF,
+      TYPE_SYNC_KEYDOWNUP,
     } type = TYPE_TOGGLE;
 
 #include "config/output/include.remapcode_vk_config.cpp"
@@ -199,9 +200,19 @@ namespace org_pqrs_KeyRemap4MacBook {
         case TYPE_FORCE_OFF:
           *configitem = 0;
           break;
+        case TYPE_SYNC_KEYDOWNUP:
+          *configitem = 1;
+          break;
+      }
+      RemapClassManager::refresh();
+
+    } else if (params.eventType == EventType::UP) {
+      if (type == TYPE_SYNC_KEYDOWNUP) {
+        *configitem = 0;
       }
       RemapClassManager::refresh();
     }
+
     return true;
   }
 

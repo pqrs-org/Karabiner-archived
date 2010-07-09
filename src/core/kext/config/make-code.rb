@@ -97,10 +97,15 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
     $outfile[:remapcode_vk_config] << "  configitem = &(config.#{name});\n"
     $outfile[:remapcode_vk_config] << "  type = TYPE_FORCE_OFF;\n"
     $outfile[:remapcode_vk_config] << "}\n"
+    $outfile[:remapcode_vk_config] << "if (params.key == KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_#{name}) {\n"
+    $outfile[:remapcode_vk_config] << "  configitem = &(config.#{name});\n"
+    $outfile[:remapcode_vk_config] << "  type = TYPE_SYNC_KEYDOWNUP;\n"
+    $outfile[:remapcode_vk_config] << "}\n"
 
     $outfile[:keycode_vk_config] << "VK_CONFIG_TOGGLE_#{name} --AUTO--\n"
     $outfile[:keycode_vk_config] << "VK_CONFIG_FORCE_ON_#{name} --AUTO--\n"
     $outfile[:keycode_vk_config] << "VK_CONFIG_FORCE_OFF_#{name} --AUTO--\n"
+    $outfile[:keycode_vk_config] << "VK_CONFIG_SYNC_KEYDOWNUP_#{name} --AUTO--\n"
   end
 
   # ======================================================================
