@@ -22,12 +22,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       return isFromKey(isKeyDown, flags, fromFlags);
     }
     bool isFromPointingButton(const Params_RelativePointerEventCallback& params, PointingButton fromButton, Flags fromFlags) {
-      if (params.ex_justPressed.isOn(fromButton)) {
-        return isFromKey(true,  FlagStatus::makeFlags(), fromFlags);
-      } else if (params.ex_justReleased.isOn(fromButton)) {
-        return isFromKey(false, FlagStatus::makeFlags(), fromFlags);
-      }
-      return false;
+      if (params.ex_button != fromButton) return false;
+
+      return isFromKey(params.ex_isbuttondown, FlagStatus::makeFlags(), fromFlags);
     }
     bool isFromButtons(Buttons fromButtons, Flags fromFlags) {
       if (fromButtons != 0) {

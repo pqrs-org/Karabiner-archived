@@ -13,15 +13,16 @@ namespace org_pqrs_KeyRemap4MacBook {
       Item(void) : button_(0) {}
 
     private:
-      void initialize(unsigned int b) {
+      void initialize(PointingButton b) {
         button_ = b;
         count_ = 0;
       }
-      void set(Buttons justPressed, Buttons justReleased) {
-        if (justPressed.isOn(button_)) {
+      void set(PointingButton b, bool isbuttondown) {
+        if (button_ != b) return;
+
+        if (isbuttondown) {
           ++count_;
-        }
-        if (justReleased.isOn(button_)) {
+        } else {
           --count_;
         }
       }
@@ -45,7 +46,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     enum { MAXNUM = 32 };
 
     static bool initialize(void);
-    static void set(Buttons justPressed, Buttons justReleased);
+    static void set(PointingButton button, bool isbuttondown);
     static Buttons makeButtons(void);
     static void reset(void);
 
