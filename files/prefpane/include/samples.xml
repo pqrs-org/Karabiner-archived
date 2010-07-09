@@ -411,9 +411,14 @@
           <appendix>Shift+LeftClick+CursorMove to ScrollWheel (Button+Modifier)</appendix>
           <sysctl>remap.samples_pointingrelativetoscroll</sysctl>
           <autogen>--PointingRelativeToScroll-- PointingButton::MIDDLE</autogen>
-          <autogen>--PointingRelativeToScroll-- PointingButton::LEFT | PointingButton::RIGHT</autogen>
           <autogen>--PointingRelativeToScroll-- PointingButton::NONE, VK_OPTION</autogen>
           <autogen>--PointingRelativeToScroll-- PointingButton::LEFT, VK_SHIFT</autogen>
+        </item>
+        <item>
+          <name>SimultaneousKeyPresses</name>
+          <appendix>LeftClick+RightClick+CursorMove to ScrollWheel</appendix>
+          <sysctl>remap.samples_pointingrelativetoscroll_simultaneouskeypresses</sysctl>
+          <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_pointing_relative_to_scroll</autogen>
         </item>
       </list>
     </item>

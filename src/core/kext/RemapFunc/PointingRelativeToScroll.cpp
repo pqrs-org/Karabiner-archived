@@ -19,9 +19,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    PointingRelativeToScroll::add(Buttons newval)
+    PointingRelativeToScroll::add(PointingButton newval)
     {
-      fromButtons_ = newval;
+      fromButton_ = newval;
     }
 
     bool
@@ -30,10 +30,14 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool active = fromkeychecker_.isactive();
 
       if (remapParams.isremapped) return false;
-      if (! fromkeychecker_.isFromButtons(fromButtons_, fromFlags_)) return false;
+      if (fromButton_ == PointingButton::NONE) {
+        if (! FlagStatus::makeFlags().isOn(fromFlags_)) return false;
+      } else {
+        if (! fromkeychecker_.isFromPointingButton(remapParams.params, fromButton_, fromFlags_) && ! active) return false;
+      }
       remapParams.isremapped = true;
 
-      if (fromButtons_ == PointingButton::NONE) {
+      if (fromButton_ == PointingButton::NONE) {
         goto doremap;
       }
 
@@ -42,9 +46,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         // if the source buttons contains left button, we cancel left click for iPhoto, or some applications.
         // iPhoto store the scroll events when left button is pressed, and restore events after left button is released.
         // PointingRelativeToScroll doesn't aim it, we release the left button and do normal scroll event.
-        ButtonStatus::decrease(fromButtons_);
+        ButtonStatus::decrease(fromButton_);
         EventOutputQueue::FireRelativePointer::fire();
-        ButtonStatus::increase(fromButtons_);
+        ButtonStatus::increase(fromButton_);
 
         absolute_distance_ = 0;
         begin_ic_.begin();
@@ -60,9 +64,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         const uint32_t TIME_THRESHOLD = 300;
         if (absolute_distance_ <= DISTANCE_THRESHOLD && begin_ic_.getmillisec() < TIME_THRESHOLD) {
           // Fire by a click event.
-          ButtonStatus::increase(fromButtons_);
+          ButtonStatus::increase(fromButton_);
           EventOutputQueue::FireRelativePointer::fire();
-          ButtonStatus::decrease(fromButtons_);
+          ButtonStatus::decrease(fromButton_);
           EventOutputQueue::FireRelativePointer::fire();
         }
         return true;
