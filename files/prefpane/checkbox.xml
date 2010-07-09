@@ -115,6 +115,11 @@
               <autogen>--PointingRelativeToScroll-- PointingButton::BUTTON4</autogen>
             </item>
             <item>
+              <name>LeftClick+RightClick+CursorMove to ScrollWheel</name>
+              <sysctl>remap.pointing_relative_LRClick_to_scroll</sysctl>
+              <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_pointing_relative_to_scroll</autogen>
+            </item>
+            <item>
               <name>Control+RightClick+CursorMove to ScrollWheel</name>
               <sysctl>remap.pointing_relative_controlRightClick_to_scroll</sysctl>
               <autogen>--PointingRelativeToScroll-- PointingButton::RIGHT, VK_CONTROL</autogen>
@@ -201,11 +206,6 @@
         <item>
           <name>Simultaneous Button Presses</name>
           <list>
-            <item>
-              <name>LeftClick+RightClick+CursorMove to ScrollWheel</name>
-              <sysctl>remap.pointing_relative_LRClick_to_scroll</sysctl>
-              <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_pointing_relative_to_scroll</autogen>
-            </item>
             <item>
               <name>LeftClick+RightClick to MiddleClick</name>
               <sysctl>remap.pointing_leftrightclick2middleclick</sysctl>

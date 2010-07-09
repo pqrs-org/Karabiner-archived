@@ -18,7 +18,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // [0] => fromFlags_
       // [0] => fromButtons_
       void add(Flags newval);
-      void add(Buttons newval);
+      void add(PointingButton newval);
 
     private:
       enum {
@@ -33,7 +33,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       size_t index_;
       FromKeyChecker fromkeychecker_;
       Flags fromFlags_;
-      Buttons fromButtons_;
+      PointingButton fromButton_;
 
       // ----------
       unsigned int absolute_distance_;
