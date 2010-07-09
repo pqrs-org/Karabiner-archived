@@ -35,6 +35,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! ptr) return;
       Params_RelativePointerEventCallback& params = *ptr;
 
+      Buttons justPressed;
+      Buttons justReleased;
+
       {
         if (! CommonData::eventLock) return;
         IOLockWrapper::ScopedLock lk(CommonData::eventLock);
@@ -50,11 +53,11 @@ namespace org_pqrs_KeyRemap4MacBook {
         CommonData::setcurrent_vendorIDproductID(hp->getVendorID(), hp->getProductID());
 
         // ------------------------------------------------------------
-        params.ex_justPressed = params.buttons.justPressed(hp->get_previousbuttons());
-        params.ex_justReleased = params.buttons.justReleased(hp->get_previousbuttons());
+        justPressed = params.buttons.justPressed(hp->get_previousbuttons());
+        justReleased = params.buttons.justReleased(hp->get_previousbuttons());
         hp->set_previousbuttons(buttons);
 
-        if (params.ex_justPressed != Buttons(0)) {
+        if (justPressed != Buttons(0)) {
           CommonData::setcurrent_workspacedata();
         }
 
@@ -66,7 +69,31 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       // ------------------------------------------------------------
-      EventInputQueue::push(params);
+      // divide an event into button and cursormove events.
+      params.dx = 0;
+      params.dy = 0;
+      params.ex_button = PointingButton::NONE;
+      params.ex_isbuttondown = false;
+
+      for (int i = 0; i < ButtonStatus::MAXNUM; ++i) {
+        PointingButton btn(1 << i);
+        if (justPressed.isOn(btn)) {
+          params.ex_button = btn;
+          params.ex_isbuttondown = true;
+          EventInputQueue::push(params);
+        }
+        if (justReleased.isOn(btn)) {
+          params.ex_button = btn;
+          params.ex_isbuttondown = false;
+          EventInputQueue::push(params);
+        }
+      }
+      if (dx != 0 || dy != 0) {
+        params.dx = dx;
+        params.dy = dy;
+        params.ex_button = PointingButton::NONE;
+        EventInputQueue::push(params);
+      }
     }
 
     void
@@ -133,12 +160,18 @@ namespace org_pqrs_KeyRemap4MacBook {
     // But, if we call EventWatcher::on every CursorMove event, unexpected cancel occurs.
     // It's more terrible than above problem.
     // So, we keep to call EventWatcher::on only when Buttons pressed.
-    if (params.ex_justPressed != Buttons(0)) {
+    if (params.ex_button != PointingButton::NONE) {
       EventWatcher::on();
     }
 
     // ------------------------------------------------------------
-    NumHeldDownKeys::set(params.ex_justPressed.count() - params.ex_justReleased.count());
+    if (params.ex_button != PointingButton::NONE) {
+      if (params.ex_isbuttondown) {
+        NumHeldDownKeys::set(1);
+      } else {
+        NumHeldDownKeys::set(-1);
+      }
+    }
 
     Core::remap_RelativePointerEventCallback(params);
   }

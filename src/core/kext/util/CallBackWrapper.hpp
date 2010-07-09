@@ -133,12 +133,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     // Use auto_ptr instead allocating in kernel stack.
     DECLARE_AUTO_PTR(Params_RelativePointerEventCallback);
 
-    static Params_RelativePointerEventCallback* alloc(Buttons bt, int x, int y, Buttons pressed = Buttons(0), Buttons released = Buttons(0)) {
-      return new Params_RelativePointerEventCallback(bt, x, y, pressed, released);
+    static Params_RelativePointerEventCallback* alloc(Buttons bt, int x, int y, PointingButton ex_btn = PointingButton::NONE, bool ex_isdown = false) {
+      return new Params_RelativePointerEventCallback(bt, x, y, ex_btn, ex_isdown);
     }
 
     static Params_RelativePointerEventCallback* alloc(const Params_RelativePointerEventCallback& p) {
-      return new Params_RelativePointerEventCallback(p.buttons, p.dx, p.dy, p.ex_justPressed, p.ex_justReleased);
+      return new Params_RelativePointerEventCallback(p.buttons, p.dx, p.dy, p.ex_button, p.ex_isbuttondown);
     }
 
     void log(const char* message = "caught") const;
@@ -147,11 +147,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     int dx;
     int dy;
 
-    Buttons ex_justPressed;
-    Buttons ex_justReleased;
+    PointingButton ex_button;
+    bool ex_isbuttondown;
 
   private:
-    Params_RelativePointerEventCallback(Buttons bt, int x, int y, Buttons pressed, Buttons released) : buttons(bt), dx(x), dy(y), ex_justPressed(pressed), ex_justReleased(released) {}
+    Params_RelativePointerEventCallback(Buttons bt, int x, int y, PointingButton ex_btn, bool ex_isdown) : buttons(bt), dx(x), dy(y), ex_button(ex_btn), ex_isbuttondown(ex_isdown) {}
 
     void apply(void) const;
   };

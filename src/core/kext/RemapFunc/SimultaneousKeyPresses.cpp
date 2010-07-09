@@ -162,15 +162,10 @@ namespace org_pqrs_KeyRemap4MacBook {
             Params_RelativePointerEventCallback* params = (p->params).params.params_RelativePointerEventCallback;
             if (! params) continue;
 
-            if (params->ex_justPressed.isOn(button_)) {
-              isKeyDown = true;
-              return p;
-            }
-            if (params->ex_justReleased.isOn(button_)) {
-              isKeyDown = false;
-              return p;
-            }
-            break;
+            if (params->ex_button != button_) continue;
+
+            isKeyDown = params->ex_isbuttondown;
+            return p;
           }
         }
       }

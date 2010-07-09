@@ -70,14 +70,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! fromkeychecker_.isFromPointingButton(remapParams.params, fromButton_.button, fromButton_.flags)) return false;
       remapParams.isremapped = true;
 
-      bool isButtonDown = remapParams.params.ex_justPressed.isOn(fromButton_.button);
-      if (isButtonDown) {
+      if (remapParams.params.ex_isbuttondown) {
         ButtonStatus::decrease(fromButton_.button);
       } else {
         ButtonStatus::increase(fromButton_.button);
       }
 
-      return keytokey_.call_remap_with_VK_PSEUDO_KEY(isButtonDown ? EventType::DOWN : EventType::UP);
+      return keytokey_.call_remap_with_VK_PSEUDO_KEY(remapParams.params.ex_isbuttondown ? EventType::DOWN : EventType::UP);
     }
   }
 }

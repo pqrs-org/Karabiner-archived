@@ -8,17 +8,17 @@ namespace org_pqrs_KeyRemap4MacBook {
   ButtonStatus::initialize(void)
   {
     for (int i = 0; i < MAXNUM; ++i) {
-      item_[i].initialize(1 << i);
+      item_[i].initialize(PointingButton(1 << i));
     }
 
     return true;
   }
 
   void
-  ButtonStatus::set(Buttons justPressed, Buttons justReleased)
+  ButtonStatus::set(PointingButton button, bool isbuttondown)
   {
     for (int i = 0; i < MAXNUM; ++i) {
-      item_[i].set(justPressed, justReleased);
+      item_[i].set(button, isbuttondown);
     }
   }
 

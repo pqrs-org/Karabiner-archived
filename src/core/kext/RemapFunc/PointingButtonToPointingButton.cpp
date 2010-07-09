@@ -88,9 +88,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       // Attention: We need fire MiddleClick only at (1).
       FlagStatus::temporary_decrease(fromButton_.flags);
 
-      bool isButtonDown = remapParams.params.ex_justPressed.isOn(fromButton_.button);
       if (isFromButton) {
-        if (isButtonDown) {
+        if (remapParams.params.ex_isbuttondown) {
           ButtonStatus::decrease(fromButton_.button);
           if (toButtons_->size() == 1) {
             ButtonStatus::increase((*toButtons_)[0].button);
@@ -117,7 +116,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         case 2:
         {
-          if (! isButtonDown) {
+          if (! remapParams.params.ex_isbuttondown) {
             EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons(), remapParams.params.dx, remapParams.params.dy);
           } else {
             for (size_t i = 0; i < toButtons_->size(); ++i) {
