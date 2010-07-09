@@ -6557,6 +6557,11 @@
           <sysctl>remap.uk_section2backquote</sysctl>
           <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKQUOTE</autogen>
         </item>
+        <item>
+          <name>Section(§) to Backslash(\)</name>
+          <sysctl>remap.uk_section2backslash</sysctl>
+          <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKSLASH</autogen>
+        </item>
       </list>
     </item>
     <!-- #include "include/samples.xml" -->
