@@ -17,6 +17,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   EventWatcher::terminate(void)
   {
     IOLockWrapper::free(lock_);
+    delete list_;
   }
 
   void
