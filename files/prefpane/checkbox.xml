@@ -69,11 +69,6 @@
           <autogen>--ShowStatusMessage-- "Pass Through"</autogen>
         </item>
         <item>
-          <name>Holding Escape to toggle "Pass Through Mode"</name>
-          <sysctl>passthrough.holding_escape</sysctl>
-          <autogen>--HoldingKeyToKey-- KeyCode::ESCAPE, KeyCode::ESCAPE, KeyCode::VK_NONE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough</autogen>
-        </item>
-        <item>
           <name>Change FN+Escape to toggle "Pass Through Mode"</name>
           <sysctl>passthrough.fnescape</sysctl>
           <autogen>--KeyToKey-- KeyCode::ESCAPE, ModifierFlag::FN, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough</autogen>
@@ -82,6 +77,11 @@
           <name>Simultaneous Key Presses [Escape+Tab] to toggle "Pass Through Mode"</name>
           <sysctl>passthrough.escapetab</sysctl>
           <autogen>--SimultaneousKeyPresses-- KeyCode::ESCAPE, KeyCode::TAB, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough</autogen>
+        </item>
+        <item>
+          <name>Holding Escape to toggle "Pass Through Mode"</name>
+          <sysctl>passthrough.holding_escape</sysctl>
+          <autogen>--HoldingKeyToKey-- KeyCode::ESCAPE, KeyCode::ESCAPE, KeyCode::VK_NONE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough</autogen>
         </item>
       </list>
     </item>
