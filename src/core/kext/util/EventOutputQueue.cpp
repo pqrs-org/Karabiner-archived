@@ -257,10 +257,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (p.eventType == EventType::DOWN || p.eventType == EventType::UP) {
       EventOutputQueue::push(p);
 
-      if (p.eventType == EventType::DOWN) {
-        PressDownKeys::add(p.key, p.keyboardType);
-      } else {
-        PressDownKeys::remove(p.key, p.keyboardType);
+      if (! p.repeat) {
+        if (p.eventType == EventType::DOWN) {
+          PressDownKeys::add(p.key, p.keyboardType);
+        } else {
+          PressDownKeys::remove(p.key, p.keyboardType);
+        }
       }
     }
   }
