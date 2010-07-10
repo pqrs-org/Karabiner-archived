@@ -19,13 +19,17 @@ namespace org_pqrs_KeyRemap4MacBook {
   PressDownKeys::terminate(void)
   {
     IOLockWrapper::free(lock_);
-    delete list_;
+    if (list_) {
+      delete list_;
+    }
   }
 
   void
   PressDownKeys::add(KeyCode key, KeyboardType keyboardType)
   {
     IOLockWrapper::ScopedLock lk(lock_);
+
+    if (! list_) return;
 
     if (key == KeyCode::VK_NONE) return;
 
@@ -38,6 +42,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   PressDownKeys::remove(KeyCode key, KeyboardType keyboardType)
   {
     IOLockWrapper::ScopedLock lk(lock_);
+
+    if (! list_) return;
 
     Item* p = static_cast<Item*>(list_->front());
     for (;;) {
@@ -58,6 +64,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   PressDownKeys::clear(void)
   {
     IOLockWrapper::ScopedLock lk(lock_);
+
+    if (! list_) return;
 
     IOLOG_DEVEL("PressDownKeys::clear\n");
 
