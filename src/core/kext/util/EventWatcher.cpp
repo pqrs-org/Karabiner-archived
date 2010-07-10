@@ -17,7 +17,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   EventWatcher::terminate(void)
   {
     IOLockWrapper::free(lock_);
-    delete list_;
+    if (list_) {
+      delete list_;
+    }
   }
 
   void
@@ -59,6 +61,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   EventWatcher::unset(bool& b)
   {
     IOLockWrapper::ScopedLock lk(lock_);
+
+    if (! list_) return;
 
     Item* p = static_cast<Item*>(list_->front());
     for (;;) {
