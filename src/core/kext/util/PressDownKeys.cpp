@@ -5,74 +5,77 @@
 #include "PressDownKeys.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  PressDownKeys::Item PressDownKeys::item_[PressDownKeys::MAXNUM];
+  List* PressDownKeys::list_;
+  IOLock* PressDownKeys::lock_;
 
   void
   PressDownKeys::initialize(void)
   {
-    for (int i = 0; i < MAXNUM; ++i) {
-      item_[i].enable = false;
-    }
+    lock_ = IOLockWrapper::alloc();
+    list_ = new List();
+  }
+
+  void
+  PressDownKeys::terminate(void)
+  {
+    IOLockWrapper::free(lock_);
+    delete list_;
   }
 
   void
   PressDownKeys::add(KeyCode key, KeyboardType keyboardType)
   {
+    IOLockWrapper::ScopedLock lk(lock_);
+
     if (key == KeyCode::VK_NONE) return;
 
-    // skip if already added.
-    for (int i = 0; i < MAXNUM; ++i) {
-      if (! item_[i].enable) continue;
-      if (item_[i].key != key) continue;
-      if (item_[i].keyboardType != keyboardType) continue;
-      return;
-    }
+    list_->push_back(new Item(key, keyboardType));
 
-    // register
-    for (int i = 0; i < MAXNUM; ++i) {
-      if (! item_[i].enable) {
-        item_[i].enable = true;
-        item_[i].key = key;
-        item_[i].keyboardType = keyboardType;
-
-        IOLOG_DEVEL("PressDownKeys::add (key = %d)\n", key.get());
-        return;
-      }
-    }
+    IOLOG_DEVEL("PressDownKeys::add key:%d, keyboardType:%d\n", key.get(), keyboardType.get());
   }
 
   void
   PressDownKeys::remove(KeyCode key, KeyboardType keyboardType)
   {
-    for (int i = 0; i < MAXNUM; ++i) {
-      if (! item_[i].enable) continue;
-      if (item_[i].key != key) continue;
-      if (item_[i].keyboardType != keyboardType) continue;
+    IOLockWrapper::ScopedLock lk(lock_);
 
-      item_[i].enable = false;
+    Item* p = static_cast<Item*>(list_->front());
+    for (;;) {
+      if (! p) break;
 
-      IOLOG_DEVEL("PressDownKeys::remove (key = %d)\n", key.get());
+      if (p->key == key &&
+          p->keyboardType == keyboardType) {
+        p = static_cast<Item*>(list_->erase(p));
+      } else {
+        p = static_cast<Item*>(p->getnext());
+      }
     }
+
+    IOLOG_DEVEL("PressDownKeys::remove key:%d, keyboardType:%d\n", key.get(), keyboardType.get());
   }
 
   void
   PressDownKeys::clear(void)
   {
+    IOLockWrapper::ScopedLock lk(lock_);
+
     IOLOG_DEVEL("PressDownKeys::clear\n");
 
     Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::UP, Flags(0), KeyCode(0), CommonData::getcurrent_keyboardType(), false));
     if (! ptr) return;
     Params_KeyboardEventCallBack& params = *ptr;
 
-    for (int i = 0; i < MAXNUM; ++i) {
-      if (! item_[i].enable) continue;
-      item_[i].enable = false;
+    Item* p = static_cast<Item*>(list_->front());
+    for (;;) {
+      if (! p) break;
 
-      IOLOG_DEVEL("PressDownKeys::clear (key = %d)\n", item_[i].key.get());
-
-      params.key = item_[i].key;
-      params.keyboardType = item_[i].keyboardType;
+      params.key = p->key;
+      params.keyboardType = p->keyboardType;
       EventOutputQueue::push(params);
+
+      IOLOG_DEVEL("PressDownKeys::clear key:%d, keyboardType:%d\n", params.key.get(), params.keyboardType.get());
+
+      p = static_cast<Item*>(list_->erase(p));
     }
   }
 }

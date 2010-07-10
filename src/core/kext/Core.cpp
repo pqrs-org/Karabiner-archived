@@ -107,6 +107,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       CommonData::terminate();
       KeyRemap4MacBook_client::terminate();
       EventWatcher::terminate();
+      PressDownKeys::terminate();
     }
 
     // ======================================================================
