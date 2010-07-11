@@ -70,10 +70,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! CommonData::eventLock) return;
       IOLockWrapper::ScopedLock lk(CommonData::eventLock);
 
+      IOLockWrapper::ScopedLock lk2(ListHookedKeyboard::instance().list_lock_);
+
       IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, sender);
       if (! kbd) return;
 
-      ListHookedKeyboard::Item* hk = ListHookedKeyboard::instance().get(kbd);
+      ListHookedKeyboard::Item* hk = static_cast<ListHookedKeyboard::Item*>(ListHookedKeyboard::instance().get_nolock(kbd));
       if (! hk) return;
 
       // ------------------------------------------------------------
@@ -136,13 +138,14 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                     void* refcon)
   {
     // We don't need to get eventLock, because we do nothing here.
+    IOLockWrapper::ScopedLock lk2(ListHookedKeyboard::instance().list_lock_);
 
     // ------------------------------------------------------------
     // update device priority by calling ListHookedKeyboard::instance().get(kbd).
     IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, sender);
     if (! kbd) return;
 
-    ListHookedKeyboard::Item* hk = ListHookedKeyboard::instance().get(kbd);
+    ListHookedKeyboard::Item* hk = static_cast<ListHookedKeyboard::Item*>(ListHookedKeyboard::instance().get_nolock(kbd));
     if (! hk) return;
 
     // ------------------------------------------------------------
@@ -429,7 +432,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListHookedKeyboard::apply(const Params_KeyboardEventCallBack& params)
   {
-    ListHookedKeyboard::Item* p = get();
+    IOLockWrapper::ScopedLock lk(list_lock_);
+
+    ListHookedKeyboard::Item* p = static_cast<ListHookedKeyboard::Item*>(get_nolock());
     if (p) {
       p->apply(params);
     }
@@ -438,7 +443,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListHookedKeyboard::apply(const Params_UpdateEventFlagsCallback& params)
   {
-    ListHookedKeyboard::Item* p = get();
+    IOLockWrapper::ScopedLock lk(list_lock_);
+
+    ListHookedKeyboard::Item* p = static_cast<ListHookedKeyboard::Item*>(get_nolock());
     if (p) {
       p->apply(params);
     }

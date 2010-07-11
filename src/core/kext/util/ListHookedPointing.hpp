@@ -39,14 +39,35 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
 
     static ListHookedPointing& instance(void);
-    ListHookedPointing::Item* get(void) { return static_cast<ListHookedPointing::Item*>(ListHookedDevice::get()); }
-    ListHookedPointing::Item* get(const IOHIPointing* pointing) { return static_cast<ListHookedPointing::Item*>(ListHookedDevice::get(pointing)); }
 
     static void hook_RelativePointerEventCallback_queued(Params_RelativePointerEventCallback& params);
     static void hook_ScrollWheelEventCallback_queued(Params_ScrollWheelEventCallback& params);
 
     void apply(const Params_RelativePointerEventCallback& params);
     void apply(const Params_ScrollWheelEventCallback& params);
+
+  private:
+    static void hook_RelativePointerEventCallback(OSObject* target,
+                                                  int buttons,
+                                                  int dx,
+                                                  int dy,
+                                                  AbsoluteTime ts,
+                                                  OSObject* sender,
+                                                  void* refcon);
+    static void hook_ScrollWheelEventCallback(OSObject* target,
+                                              short deltaAxis1,
+                                              short deltaAxis2,
+                                              short deltaAxis3,
+                                              IOFixed fixedDelta1,
+                                              IOFixed fixedDelta2,
+                                              IOFixed fixedDelta3,
+                                              SInt32 pointDelta1,
+                                              SInt32 pointDelta2,
+                                              SInt32 pointDelta3,
+                                              SInt32 options,
+                                              AbsoluteTime ts,
+                                              OSObject* sender,
+                                              void* refcon);
   };
 }
 

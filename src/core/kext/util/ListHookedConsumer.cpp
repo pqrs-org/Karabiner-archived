@@ -35,55 +35,55 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------------------------------------
-  namespace {
-    void
-    hook_KeyboardSpecialEventCallback(OSObject* target,
-                                      unsigned int eventType,
-                                      unsigned int flags,
-                                      unsigned int key,
-                                      unsigned int flavor,
-                                      UInt64 guid,
-                                      bool repeat,
-                                      AbsoluteTime ts,
-                                      OSObject* sender,
-                                      void* refcon)
+  void
+  ListHookedConsumer::hook_KeyboardSpecialEventCallback(OSObject* target,
+                                                        unsigned int eventType,
+                                                        unsigned int flags,
+                                                        unsigned int key,
+                                                        unsigned int flavor,
+                                                        UInt64 guid,
+                                                        bool repeat,
+                                                        AbsoluteTime ts,
+                                                        OSObject* sender,
+                                                        void* refcon)
+  {
+    Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(EventType(eventType), Flags(flags), ConsumerKeyCode(key),
+                                                                                                 flavor, guid, repeat));
+    if (! ptr) return;
+    Params_KeyboardSpecialEventCallback& params = *ptr;
+
     {
-      Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(EventType(eventType), Flags(flags), ConsumerKeyCode(key),
-                                                                                                   flavor, guid, repeat));
-      if (! ptr) return;
-      Params_KeyboardSpecialEventCallback& params = *ptr;
+      if (! CommonData::eventLock) return;
+      IOLockWrapper::ScopedLock lk(CommonData::eventLock);
 
-      {
-        if (! CommonData::eventLock) return;
-        IOLockWrapper::ScopedLock lk(CommonData::eventLock);
+      IOLockWrapper::ScopedLock lk2(ListHookedConsumer::instance().list_lock_);
 
-        IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, sender);
-        if (! kbd) return;
+      IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, sender);
+      if (! kbd) return;
 
-        ListHookedConsumer::Item* hc = ListHookedConsumer::instance().get(kbd);
-        if (! hc) return;
+      ListHookedConsumer::Item* hc = static_cast<ListHookedConsumer::Item*>(ListHookedConsumer::instance().get_nolock(kbd));
+      if (! hc) return;
 
-        // ------------------------------------------------------------
-        CommonData::setcurrent_ts(ts);
-        CommonData::setcurrent_vendorIDproductID(hc->getVendorID(), hc->getProductID());
+      // ------------------------------------------------------------
+      CommonData::setcurrent_ts(ts);
+      CommonData::setcurrent_vendorIDproductID(hc->getVendorID(), hc->getProductID());
 
-        // ------------------------------------------------------------
-        // Because we handle the key repeat ourself, drop the key repeat by hardware.
-        if (repeat) return;
+      // ------------------------------------------------------------
+      // Because we handle the key repeat ourself, drop the key repeat by hardware.
+      if (repeat) return;
 
-        // ------------------------------------------------------------
-        if (params.eventType == EventType::DOWN) {
-          CommonData::setcurrent_workspacedata();
-        }
-
-        // ------------------------------------------------------------
-        // clear temporary_count_
-        FlagStatus::set();
+      // ------------------------------------------------------------
+      if (params.eventType == EventType::DOWN) {
+        CommonData::setcurrent_workspacedata();
       }
 
       // ------------------------------------------------------------
-      EventInputQueue::push(params);
+      // clear temporary_count_
+      FlagStatus::set();
     }
+
+    // ------------------------------------------------------------
+    EventInputQueue::push(params);
   }
 
   void
@@ -245,7 +245,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListHookedConsumer::apply(const Params_KeyboardSpecialEventCallback& params)
   {
-    ListHookedConsumer::Item* p = get();
+    IOLockWrapper::ScopedLock lk(list_lock_);
+
+    ListHookedConsumer::Item* p = static_cast<ListHookedConsumer::Item*>(get_nolock());
     if (p) {
       p->apply(params);
     }
@@ -254,7 +256,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListHookedConsumer::disableNumLock(void)
   {
-    ListHookedConsumer::Item* p = get();
+    IOLockWrapper::ScopedLock lk(list_lock_);
+
+    ListHookedConsumer::Item* p = static_cast<ListHookedConsumer::Item*>(get_nolock());
     if (p) {
       p->disableNumLock();
     }

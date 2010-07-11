@@ -39,128 +39,132 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------------------------------------
-  namespace {
-    void
-    hook_RelativePointerEventCallback(OSObject* target,
-                                      int buttons,
-                                      int dx,
-                                      int dy,
-                                      AbsoluteTime ts,
-                                      OSObject* sender,
-                                      void* refcon)
+  void
+  ListHookedPointing::hook_RelativePointerEventCallback(OSObject* target,
+                                                        int buttons,
+                                                        int dx,
+                                                        int dy,
+                                                        AbsoluteTime ts,
+                                                        OSObject* sender,
+                                                        void* refcon)
+  {
+    Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, dx, dy));
+    if (! ptr) return;
+    Params_RelativePointerEventCallback& params = *ptr;
+
+    Buttons justPressed;
+    Buttons justReleased;
+
     {
-      Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, dx, dy));
-      if (! ptr) return;
-      Params_RelativePointerEventCallback& params = *ptr;
+      if (! CommonData::eventLock) return;
+      IOLockWrapper::ScopedLock lk(CommonData::eventLock);
 
-      Buttons justPressed;
-      Buttons justReleased;
+      IOLockWrapper::ScopedLock lk2(ListHookedPointing::instance().list_lock_);
 
-      {
-        if (! CommonData::eventLock) return;
-        IOLockWrapper::ScopedLock lk(CommonData::eventLock);
+      // ------------------------------------------------------------
+      IOHIPointing* pointing = OSDynamicCast(IOHIPointing, sender);
+      if (! pointing) return;
 
-        IOHIPointing* pointing = OSDynamicCast(IOHIPointing, sender);
-        if (! pointing) return;
+      ListHookedPointing::Item* hp = static_cast<ListHookedPointing::Item*>(ListHookedPointing::instance().get_nolock(pointing));
+      if (! hp) return;
 
-        ListHookedPointing::Item* hp = ListHookedPointing::instance().get(pointing);
-        if (! hp) return;
+      // ------------------------------------------------------------
+      CommonData::setcurrent_ts(ts);
+      CommonData::setcurrent_vendorIDproductID(hp->getVendorID(), hp->getProductID());
 
-        // ------------------------------------------------------------
-        CommonData::setcurrent_ts(ts);
-        CommonData::setcurrent_vendorIDproductID(hp->getVendorID(), hp->getProductID());
+      // ------------------------------------------------------------
+      justPressed = params.buttons.justPressed(hp->get_previousbuttons());
+      justReleased = params.buttons.justReleased(hp->get_previousbuttons());
+      hp->set_previousbuttons(buttons);
 
-        // ------------------------------------------------------------
-        justPressed = params.buttons.justPressed(hp->get_previousbuttons());
-        justReleased = params.buttons.justReleased(hp->get_previousbuttons());
-        hp->set_previousbuttons(buttons);
-
-        if (justPressed != Buttons(0)) {
-          CommonData::setcurrent_workspacedata();
-        }
-
-        // ------------------------------------------------------------
-        // clear temporary_count_
-        if (! config.general_lazy_modifiers_with_mouse_event) {
-          FlagStatus::set();
-        }
+      if (justPressed != Buttons(0)) {
+        CommonData::setcurrent_workspacedata();
       }
 
       // ------------------------------------------------------------
-      // divide an event into button and cursormove events.
-      params.dx = 0;
-      params.dy = 0;
-      params.ex_button = PointingButton::NONE;
-      params.ex_isbuttondown = false;
-
-      for (int i = 0; i < ButtonStatus::MAXNUM; ++i) {
-        PointingButton btn(1 << i);
-        if (justPressed.isOn(btn)) {
-          params.ex_button = btn;
-          params.ex_isbuttondown = true;
-          EventInputQueue::push(params);
-        }
-        if (justReleased.isOn(btn)) {
-          params.ex_button = btn;
-          params.ex_isbuttondown = false;
-          EventInputQueue::push(params);
-        }
+      // clear temporary_count_
+      if (! config.general_lazy_modifiers_with_mouse_event) {
+        FlagStatus::set();
       }
-      if (dx != 0 || dy != 0) {
-        params.dx = dx;
-        params.dy = dy;
-        params.ex_button = PointingButton::NONE;
+    }
+
+    // ------------------------------------------------------------
+    // divide an event into button and cursormove events.
+    params.dx = 0;
+    params.dy = 0;
+    params.ex_button = PointingButton::NONE;
+    params.ex_isbuttondown = false;
+
+    for (int i = 0; i < ButtonStatus::MAXNUM; ++i) {
+      PointingButton btn(1 << i);
+      if (justPressed.isOn(btn)) {
+        params.ex_button = btn;
+        params.ex_isbuttondown = true;
+        EventInputQueue::push(params);
+      }
+      if (justReleased.isOn(btn)) {
+        params.ex_button = btn;
+        params.ex_isbuttondown = false;
         EventInputQueue::push(params);
       }
     }
-
-    void
-    hook_ScrollWheelEventCallback(OSObject* target,
-                                  short deltaAxis1,
-                                  short deltaAxis2,
-                                  short deltaAxis3,
-                                  IOFixed fixedDelta1,
-                                  IOFixed fixedDelta2,
-                                  IOFixed fixedDelta3,
-                                  SInt32 pointDelta1,
-                                  SInt32 pointDelta2,
-                                  SInt32 pointDelta3,
-                                  SInt32 options,
-                                  AbsoluteTime ts,
-                                  OSObject* sender,
-                                  void* refcon)
-    {
-      Params_ScrollWheelEventCallback::auto_ptr ptr(Params_ScrollWheelEventCallback::alloc(deltaAxis1, deltaAxis2, deltaAxis3,
-                                                                                           fixedDelta1, fixedDelta2, fixedDelta3,
-                                                                                           pointDelta1, pointDelta2, pointDelta3,
-                                                                                           options));
-      if (! ptr) return;
-      Params_ScrollWheelEventCallback& params = *ptr;
-
-      {
-        if (! CommonData::eventLock) return;
-        IOLockWrapper::ScopedLock lk(CommonData::eventLock);
-
-        IOHIPointing* pointing = OSDynamicCast(IOHIPointing, sender);
-        if (! pointing) return;
-
-        ListHookedPointing::Item* hp = ListHookedPointing::instance().get(pointing);
-        if (! hp) return;
-
-        // ------------------------------------------------------------
-        CommonData::setcurrent_ts(ts);
-        CommonData::setcurrent_vendorIDproductID(hp->getVendorID(), hp->getProductID());
-
-        // ------------------------------------------------------------
-        // clear temporary_count_
-        if (! config.general_lazy_modifiers_with_mouse_event) {
-          FlagStatus::set();
-        }
-      }
-
-      // ------------------------------------------------------------
+    if (dx != 0 || dy != 0) {
+      params.dx = dx;
+      params.dy = dy;
+      params.ex_button = PointingButton::NONE;
       EventInputQueue::push(params);
     }
+  }
+
+  void
+  ListHookedPointing::hook_ScrollWheelEventCallback(OSObject* target,
+                                                    short deltaAxis1,
+                                                    short deltaAxis2,
+                                                    short deltaAxis3,
+                                                    IOFixed fixedDelta1,
+                                                    IOFixed fixedDelta2,
+                                                    IOFixed fixedDelta3,
+                                                    SInt32 pointDelta1,
+                                                    SInt32 pointDelta2,
+                                                    SInt32 pointDelta3,
+                                                    SInt32 options,
+                                                    AbsoluteTime ts,
+                                                    OSObject* sender,
+                                                    void* refcon)
+  {
+    Params_ScrollWheelEventCallback::auto_ptr ptr(Params_ScrollWheelEventCallback::alloc(deltaAxis1, deltaAxis2, deltaAxis3,
+                                                                                         fixedDelta1, fixedDelta2, fixedDelta3,
+                                                                                         pointDelta1, pointDelta2, pointDelta3,
+                                                                                         options));
+    if (! ptr) return;
+    Params_ScrollWheelEventCallback& params = *ptr;
+
+    {
+      if (! CommonData::eventLock) return;
+      IOLockWrapper::ScopedLock lk(CommonData::eventLock);
+
+      IOLockWrapper::ScopedLock lk2(ListHookedPointing::instance().list_lock_);
+
+      // ------------------------------------------------------------
+      IOHIPointing* pointing = OSDynamicCast(IOHIPointing, sender);
+      if (! pointing) return;
+
+      ListHookedPointing::Item* hp = static_cast<ListHookedPointing::Item*>(ListHookedPointing::instance().get_nolock(pointing));
+      if (! hp) return;
+
+      // ------------------------------------------------------------
+      CommonData::setcurrent_ts(ts);
+      CommonData::setcurrent_vendorIDproductID(hp->getVendorID(), hp->getProductID());
+
+      // ------------------------------------------------------------
+      // clear temporary_count_
+      if (! config.general_lazy_modifiers_with_mouse_event) {
+        FlagStatus::set();
+      }
+    }
+
+    // ------------------------------------------------------------
+    EventInputQueue::push(params);
   }
 
   void
@@ -380,17 +384,18 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListHookedPointing::apply(const Params_RelativePointerEventCallback& params)
   {
+    IOLockWrapper::ScopedLock lk(list_lock_);
+
     // if all button are released, send event for all devices.
     if (params.buttons == Buttons(0) &&
         params.dx == 0 &&
         params.dy == 0) {
-      IOLockWrapper::ScopedLock lk(list_lock_);
       for (Item* p = static_cast<Item*>(list_->front()); p; p = static_cast<Item*>(p->getnext())) {
         p->apply(params);
       }
 
     } else {
-      ListHookedPointing::Item* p = get();
+      ListHookedPointing::Item* p = static_cast<ListHookedPointing::Item*>(get_nolock());
       if (p) {
         p->apply(params);
       }
@@ -400,7 +405,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListHookedPointing::apply(const Params_ScrollWheelEventCallback& params)
   {
-    ListHookedPointing::Item* p = get();
+    IOLockWrapper::ScopedLock lk(list_lock_);
+
+    ListHookedPointing::Item* p = static_cast<ListHookedPointing::Item*>(get_nolock());
     if (p) {
       p->apply(params);
     }
