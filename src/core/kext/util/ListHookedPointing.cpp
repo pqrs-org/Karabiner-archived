@@ -20,6 +20,23 @@ namespace org_pqrs_KeyRemap4MacBook {
     return listHookedPointing;
   }
 
+  ListHookedPointing::Item::Item(IOHIDevice* p) : ListHookedDevice::Item(p),
+                                                  orig_relativePointerEventAction_(NULL),
+                                                  orig_relativePointerEventTarget_(NULL),
+                                                  orig_scrollWheelEventAction_(NULL),
+                                                  orig_scrollWheelEventTarget_(NULL),
+                                                  previousbuttons_(0),
+                                                  replacerestore_lock_(NULL)
+  {
+    replacerestore_lock_ = IOLockWrapper::alloc();
+  }
+
+  ListHookedPointing::Item::~Item(void)
+  {
+    IOLockWrapper::free(replacerestore_lock_);
+    restoreEventAction();
+  }
+
   // ----------------------------------------------------------------------
   namespace {
     void
@@ -45,7 +62,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         IOHIPointing* pointing = OSDynamicCast(IOHIPointing, sender);
         if (! pointing) return;
 
-        HookedPointing* hp = ListHookedPointing::instance().get(pointing);
+        ListHookedPointing::Item* hp = ListHookedPointing::instance().get(pointing);
         if (! hp) return;
 
         // ------------------------------------------------------------
@@ -126,7 +143,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         IOHIPointing* pointing = OSDynamicCast(IOHIPointing, sender);
         if (! pointing) return;
 
-        HookedPointing* hp = ListHookedPointing::instance().get(pointing);
+        ListHookedPointing::Item* hp = ListHookedPointing::instance().get(pointing);
         if (! hp) return;
 
         // ------------------------------------------------------------
@@ -188,23 +205,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  HookedPointing::initialize(IOHIDevice* d)
+  ListHookedPointing::Item::refresh_callback(void)
   {
-    if (! d) return false;
+    if (! device_) goto restore;
 
-    const char* name = d->getName();
-    if (! name) return false;
-
-    device_ = d;
-    previousbuttons_ = 0;
-    IOLOG_INFO("HookedPointing::initialize name:%s, device_:%p\n", name, device_);
-
-    return refresh();
-  }
-
-  bool
-  HookedPointing::refresh(void)
-  {
+    // ------------------------------------------------------------
     if (! config.initialized) {
       goto restore;
     }
@@ -232,21 +237,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  HookedPointing::terminate(void)
-  {
-    bool result = restoreEventAction();
-
-    device_ = NULL;
-    orig_relativePointerEventAction_ = NULL;
-    orig_scrollWheelEventAction_ = NULL;
-    orig_relativePointerEventTarget_ = NULL;
-    orig_scrollWheelEventTarget_ = NULL;
-
-    return result;
-  }
-
-  bool
-  HookedPointing::replaceEventAction(void)
+  ListHookedPointing::Item::replaceEventAction(void)
   {
     if (! device_) return false;
 
@@ -289,7 +280,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  HookedPointing::restoreEventAction(void)
+  ListHookedPointing::Item::restoreEventAction(void)
   {
     if (! device_) return false;
 

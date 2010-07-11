@@ -3,58 +3,57 @@
 
 #include "base.hpp"
 #include "KeyCode.hpp"
+#include "List.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  class HookedDevice {
-    friend class ListHookedDevice;
-
-  public:
-    HookedDevice(void) : device_(NULL), vendorID_(0), productID_(0), deviceType_(DeviceType::UNKNOWN) {}
-
-    IOHIDevice* get(void) const { return device_; }
-    bool isEqualVendorIDProductID(DeviceVendorID vendorID, DeviceProductID productID) const;
-    DeviceVendorID getVendorID(void) const { return vendorID_; }
-    DeviceProductID getProductID(void) const { return productID_; }
-
-  protected:
-    IOHIDevice* device_;
-    DeviceVendorID vendorID_;
-    DeviceProductID productID_;
-    DeviceType::DeviceType deviceType_;
-
-    virtual bool initialize(IOHIDevice* d) = 0;
-    virtual bool refresh(void) = 0;
-    virtual bool terminate(void) = 0;
-    virtual bool isReplaced(void) const = 0;
-
-    void setVendorIDProductID(IORegistryEntry* dev);
-    void setDeviceType(IOHIDevice* dev);
-    static bool isConsumer(const char* name);
-  };
-
   class ListHookedDevice {
   public:
-    bool initialize(void);
-    bool append(IOHIDevice* device);
-    void terminate(void);
-    bool terminate(const IOHIDevice* device);
+    class Item : public List::Item {
+      friend class ListHookedDevice;
 
-    HookedDevice* get(const IOHIDevice* device);
-    HookedDevice* get(void);
-    void refresh(void);
+    public:
+      Item(IOHIDevice* d);
+      virtual ~Item(void) {};
+
+      IOHIDevice* get(void) const { return device_; }
+      bool isEqualVendorIDProductID(DeviceVendorID vendorID, DeviceProductID productID) const;
+      DeviceVendorID getVendorID(void) const { return vendorID_; }
+      DeviceProductID getProductID(void) const { return productID_; }
+
+    protected:
+      IOHIDevice* device_;
+      DeviceVendorID vendorID_;
+      DeviceProductID productID_;
+      DeviceType::DeviceType deviceType_;
+
+      virtual bool refresh_callback(void) = 0;
+      virtual bool isReplaced(void) const = 0;
+
+      void setVendorIDProductID(void);
+      void setDeviceType(void);
+      static bool isConsumer(const char* name);
+    };
+
+    bool initialize(void);
+    void terminate(void);
+
+    void push_back(ListHookedDevice::Item* newp);
+    void erase(IOHIDevice* p);
+
+    ListHookedDevice::Item* get(const IOHIDevice* device);
+    ListHookedDevice::Item* get(void);
+
+    void refresh_callback(void);
 
   protected:
-    enum {
-      MAXNUM = 16,
-    };
-    ListHookedDevice(void) : last_(NULL), lock_(NULL) {}
+    ListHookedDevice(void) : last_(NULL), list_(NULL), lock_(NULL) {}
     virtual ~ListHookedDevice(void) {}
 
   private:
-    virtual HookedDevice* getItem(int index) = 0;
-    HookedDevice* get_nolock(const IOHIDevice* device);
+    ListHookedDevice::Item* get_nolock(const IOHIDevice* device);
 
     const IOHIDevice* last_;
+    List* list_;
     IOLock* lock_;
   };
 }

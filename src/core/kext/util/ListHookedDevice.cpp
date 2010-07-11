@@ -4,25 +4,24 @@
 #include "IOLockWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  namespace {
-    void
-    reset(void)
-    {
-      NumHeldDownKeys::reset();
-    }
+  // ======================================================================
+  ListHookedDevice::Item::Item(IOHIDevice* d) : device_(d), vendorID_(0), productID_(0), deviceType_(DeviceType::UNKNOWN) {
+    setVendorIDProductID();
+    setDeviceType();
   }
 
   bool
-  HookedDevice::isEqualVendorIDProductID(DeviceVendorID vendorID, DeviceProductID productID) const
+  ListHookedDevice::Item::isEqualVendorIDProductID(DeviceVendorID vendorID, DeviceProductID productID) const
   {
     return vendorID_ == vendorID && productID_ == productID;
   }
 
   void
-  HookedDevice::setVendorIDProductID(IORegistryEntry* dev)
+  ListHookedDevice::Item::setVendorIDProductID(void)
   {
-    vendorID_ = 0;
-    productID_ = 0;
+    if (! device_) return;
+
+    IORegistryEntry* dev = device_;
 
     while (dev) {
       const OSNumber* vid = NULL;
@@ -43,19 +42,17 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
   finish:
-    IOLOG_INFO("HookedDevice::setVendorIDProductID device:%p, vendorID_:0x%04x, productID_:0x%04x\n", dev, vendorID_, productID_);
+    IOLOG_INFO("HookedDevice::setVendorIDProductID device_:%p, vendorID_:0x%04x, productID_:0x%04x\n", device_, vendorID_, productID_);
   }
 
   void
-  HookedDevice::setDeviceType(IOHIDevice* dev)
+  ListHookedDevice::Item::setDeviceType(void)
   {
+    if (! device_) return;
+
     const char* name = NULL;
 
-    deviceType_ = DeviceType::UNKNOWN;
-
-    if (! dev) goto finish;
-
-    name = dev->getName();
+    name = device_->getName();
     if (! name) goto finish;
 
     // Apple device
@@ -75,7 +72,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // At keyboard, we cannot use the KeyboardType,
       // because some external keyboard has the same KeyboardType as Apple internal keyboard.
       const OSString* productname = NULL;
-      productname = OSDynamicCast(OSString, dev->getProperty(kIOHIDProductKey));
+      productname = OSDynamicCast(OSString, device_->getProperty(kIOHIDProductKey));
       if (productname) {
         const char* pname = productname->getCStringNoCopy();
         if (pname) {
@@ -97,14 +94,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
   finish:
-    IOLOG_INFO("HookedDevice::setDeviceType device:%p, name:%s, deviceType_:%d\n",
-               dev,
+    IOLOG_INFO("HookedDevice::setDeviceType device_:%p, name:%s, deviceType_:%d\n",
+               device_,
                name ? name : "null",
                deviceType_);
   }
 
   bool
-  HookedDevice::isConsumer(const char* name)
+  ListHookedDevice::Item::isConsumer(const char* name)
   {
     if (! name) return false;
 
@@ -114,42 +111,25 @@ namespace org_pqrs_KeyRemap4MacBook {
     return false;
   }
 
-  // ----------------------------------------------------------------------
+  // ======================================================================
+  namespace {
+    void
+    reset(void)
+    {
+      NumHeldDownKeys::reset();
+    }
+  }
+
   bool
   ListHookedDevice::initialize(void)
   {
     lock_ = IOLockWrapper::alloc();
     if (! lock_) return false;
 
+    list_ = new List();
+    if (! list_) return false;
+
     return true;
-  }
-
-  bool
-  ListHookedDevice::append(IOHIDevice* device)
-  {
-    if (! lock_) return false;
-    IOLockWrapper::ScopedLock lk(lock_);
-
-    last_ = device;
-
-    for (int i = 0; i < MAXNUM; ++i) {
-      HookedDevice* p = getItem(i);
-      if (! p) continue;
-      if (p->get()) continue;
-
-      IOLOG_INFO("ListHookedDevice::append device:%p, slot:%d\n", device, i);
-
-      p->setVendorIDProductID(device);
-      p->setDeviceType(device);
-      p->initialize(device);
-
-      // Call reset whenever the device status is changed.
-      reset();
-
-      return true;
-    }
-
-    return false;
   }
 
   void
@@ -157,59 +137,62 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! lock_) return;
 
-    {
-      IOLockWrapper::ScopedLock lk(lock_);
+    IOLockWrapper::free(lock_);
 
-      last_ = NULL;
-
-      for (int i = 0; i < MAXNUM; ++i) {
-        HookedDevice* p = getItem(i);
-        if (! p) continue;
-
-        p->terminate();
-      }
+    if (list_) {
+      delete list_;
     }
 
     reset();
-
-    IOLockWrapper::free(lock_);
   }
 
-  bool
-  ListHookedDevice::terminate(const IOHIDevice* device)
+  void
+  ListHookedDevice::push_back(ListHookedDevice::Item* newp)
   {
-    if (! lock_) return false;
+    if (! lock_) return;
     IOLockWrapper::ScopedLock lk(lock_);
 
-    HookedDevice* p = get_nolock(device);
-    if (! p) return false;
+    if (! list_) return;
+    if (! newp) return;
 
-    p->terminate();
-    p->vendorID_ = 0;
-    p->productID_ = 0;
-    p->device_ = NULL;
+    last_ = newp->device_;
+    list_->push_back(newp);
 
+    // Call reset whenever the device status is changed.
     reset();
-    return true;
   }
 
-  HookedDevice*
+  void
+  ListHookedDevice::erase(IOHIDevice* p)
+  {
+    if (! lock_) return;
+    IOLockWrapper::ScopedLock lk(lock_);
+
+    if (! list_) return;
+
+    ListHookedDevice::Item* item = get(p);
+    if (! item) return;
+
+    list_->erase(item);
+    // Call reset whenever the device status is changed.
+    reset();
+  }
+
+  ListHookedDevice::Item*
   ListHookedDevice::get_nolock(const IOHIDevice* device)
   {
+    if (! list_) return NULL;
+
     last_ = device;
 
-    if (! device) return NULL;
-
-    for (int i = 0; i < MAXNUM; ++i) {
-      HookedDevice* p = getItem(i);
-      if (! p) continue;
-
-      if (p->get() == device) return p;
+    for (Item* p = static_cast<Item*>(list_->front()); p; p = static_cast<Item*>(p->getnext())) {
+      if (p->device_ == device) return p;
     }
+
     return NULL;
   }
 
-  HookedDevice*
+  ListHookedDevice::Item*
   ListHookedDevice::get(const IOHIDevice* device)
   {
     if (! lock_) return NULL;
@@ -218,46 +201,42 @@ namespace org_pqrs_KeyRemap4MacBook {
     return get_nolock(device);
   }
 
-  HookedDevice*
+  ListHookedDevice::Item*
   ListHookedDevice::get(void)
   {
     if (! lock_) return NULL;
     IOLockWrapper::ScopedLock lk(lock_);
 
+    if (! list_) return NULL;
+
     // ----------------------------------------------------------------------
     // Search a replaced device first.
-    HookedDevice* p = get_nolock(last_);
+    ListHookedDevice::Item* p = get_nolock(last_);
     if (p && p->isReplaced()) return p;
 
-    for (int i = 0; i < MAXNUM; ++i) {
-      p = getItem(i);
-      if (p && p->isReplaced()) return p;
+    for (p = static_cast<Item*>(list_->front()); p; p = static_cast<Item*>(p->getnext())) {
+      if (p->isReplaced()) return p;
     }
 
+    // --------------------
     // Search others.
     p = get_nolock(last_);
     if (p) return p;
 
-    for (int i = 0; i < MAXNUM; ++i) {
-      p = getItem(i);
-      if (p) return p;
-    }
-
-    return NULL;
+    return static_cast<Item*>(list_->back());
   }
 
   void
-  ListHookedDevice::refresh(void)
+  ListHookedDevice::refresh_callback(void)
   {
     if (! lock_) return;
     IOLockWrapper::ScopedLock lk(lock_);
 
-    for (int i = 0; i < MAXNUM; ++i) {
-      HookedDevice* p = getItem(i);
-      if (! p) continue;
+    if (! list_) return;
 
-      if (p->refresh()) {
-        // reset if any event actions are replaced.
+    for (Item* p = static_cast<Item*>(list_->front()); p; p = static_cast<Item*>(p->getnext())) {
+      if (p->refresh_callback()) {
+        // Call reset whenever the device status is changed.
         reset();
       }
     }
