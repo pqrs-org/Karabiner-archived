@@ -239,6 +239,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   ListHookedPointing::Item::replaceEventAction(void)
   {
+    IOLockWrapper::ScopedLock lk(replacerestore_lock_);
+
     if (! device_) return false;
 
     IOHIPointing* pointing = OSDynamicCast(IOHIPointing, device_);
@@ -282,6 +284,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   ListHookedPointing::Item::restoreEventAction(void)
   {
+    IOLockWrapper::ScopedLock lk(replacerestore_lock_);
+
     if (! device_) return false;
 
     IOHIPointing* pointing = OSDynamicCast(IOHIPointing, device_);
