@@ -19,6 +19,20 @@ namespace org_pqrs_KeyRemap4MacBook {
     return listHookedConsumer;
   }
 
+  ListHookedConsumer::Item::Item(IOHIDevice *p) : ListHookedDevice::Item(p),
+                                                  orig_keyboardSpecialEventAction_(NULL),
+                                                  orig_keyboardSpecialEventTarget_(NULL),
+                                                  replacerestore_lock_(NULL)
+  {
+    replacerestore_lock_ = IOLockWrapper::alloc();
+  }
+
+  ListHookedConsumer::Item::~Item(void)
+  {
+    IOLockWrapper::free(replacerestore_lock_);
+    restoreEventAction();
+  }
+
   // ----------------------------------------------------------------------
   namespace {
     void
@@ -45,7 +59,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, sender);
         if (! kbd) return;
 
-        HookedConsumer* hc = ListHookedConsumer::instance().get(kbd);
+        ListHookedConsumer::Item* hc = ListHookedConsumer::instance().get(kbd);
         if (! hc) return;
 
         // ------------------------------------------------------------
@@ -88,24 +102,18 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  HookedConsumer::initialize(IOHIDevice* d)
+  ListHookedConsumer::Item::refresh_callback(void)
   {
-    if (! d) return false;
+    if (! device_) goto restore;
 
-    const char* name = d->getName();
-    if (! name) return false;
+    {
+      const char* name = device_->getName();
+      if (! name) goto restore;
 
-    if (! HookedDevice::isConsumer(name)) return false;
+      if (! ListHookedDevice::Item::isConsumer(name)) goto restore;
+    }
 
-    device_ = d;
-    IOLOG_INFO("HookedConsumer::initialize name:%s, device:%p\n", name, device_);
-
-    return refresh();
-  }
-
-  bool
-  HookedConsumer::refresh(void)
-  {
+    // ------------------------------------------------------------
     if (! config.initialized) {
       goto restore;
     }
@@ -138,19 +146,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  HookedConsumer::terminate(void)
-  {
-    bool result = restoreEventAction();
-
-    device_ = NULL;
-    orig_keyboardSpecialEventAction_ = NULL;
-    orig_keyboardSpecialEventTarget_ = NULL;
-
-    return result;
-  }
-
-  bool
-  HookedConsumer::replaceEventAction(void)
+  ListHookedConsumer::Item::replaceEventAction(void)
   {
     if (! device_) return false;
 
@@ -172,7 +168,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  HookedConsumer::restoreEventAction(void)
+  ListHookedConsumer::Item::restoreEventAction(void)
   {
     if (! device_) return false;
 

@@ -21,6 +21,22 @@ namespace org_pqrs_KeyRemap4MacBook {
     return listHookedKeyboard;
   }
 
+  ListHookedKeyboard::Item::Item(IOHIDevice* p) : ListHookedDevice::Item(p),
+                                                  orig_keyboardEventAction_(NULL),
+                                                  orig_keyboardEventTarget_(NULL),
+                                                  orig_updateEventFlagsAction_(NULL),
+                                                  orig_updateEventFlagsTarget_(NULL),
+                                                  replacerestore_lock_(NULL)
+  {
+    replacerestore_lock_ = IOLockWrapper::alloc();
+  }
+
+  ListHookedKeyboard::Item::~Item(void)
+  {
+    IOLockWrapper::free(replacerestore_lock_);
+    restoreEventAction();
+  }
+
   // ----------------------------------------------------------------------
   namespace {
     void
@@ -57,7 +73,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, sender);
         if (! kbd) return;
 
-        HookedKeyboard* hk = ListHookedKeyboard::instance().get(kbd);
+        ListHookedKeyboard::Item* hk = ListHookedKeyboard::instance().get(kbd);
         if (! hk) return;
 
         // ------------------------------------------------------------
@@ -126,7 +142,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, sender);
       if (! kbd) return;
 
-      HookedKeyboard* hk = ListHookedKeyboard::instance().get(kbd);
+      ListHookedKeyboard::Item* hk = ListHookedKeyboard::instance().get(kbd);
       if (! hk) return;
 
       // ------------------------------------------------------------
@@ -166,26 +182,20 @@ namespace org_pqrs_KeyRemap4MacBook {
     Core::remap_KeyboardEventCallback(params);
   }
 
+  // ======================================================================
   bool
-  HookedKeyboard::initialize(IOHIDevice* d)
+  ListHookedKeyboard::Item::refresh_callback(void)
   {
-    if (! d) return false;
+    if (! device_) goto restore;
 
-    const char* name = d->getName();
-    if (! name) return false;
+    {
+      const char* name = device_->getName();
+      if (! name) goto restore;
 
-    if (HookedDevice::isConsumer(name)) return false;
+      if (ListHookedDevice::Item::isConsumer(name)) goto restore;
+    }
 
     // ------------------------------------------------------------
-    device_ = d;
-    IOLOG_INFO("HookedKeyboard::initialize name:%s, device_:%p\n", name, device_);
-
-    return refresh();
-  }
-
-  bool
-  HookedKeyboard::refresh(void)
-  {
     if (! config.initialized) {
       goto restore;
     }
@@ -239,22 +249,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  HookedKeyboard::terminate(void)
+  ListHookedKeyboard::Item::replaceEventAction(void)
   {
-    bool result = restoreEventAction();
+    IOLockWrapper::ScopedLock lk(replacerestore_lock_);
 
-    device_ = NULL;
-    orig_keyboardEventAction_ = NULL;
-    orig_keyboardEventTarget_ = NULL;
-    orig_updateEventFlagsAction_ = NULL;
-    orig_updateEventFlagsTarget_ = NULL;
-
-    return result;
-  }
-
-  bool
-  HookedKeyboard::replaceEventAction(void)
-  {
     if (! device_) return false;
 
     IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, device_);
@@ -294,8 +292,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  HookedKeyboard::restoreEventAction(void)
+  ListHookedKeyboard::Item::restoreEventAction(void)
   {
+    IOLockWrapper::ScopedLock lk(replacerestore_lock_);
+
     if (! device_) return false;
 
     IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, device_);
