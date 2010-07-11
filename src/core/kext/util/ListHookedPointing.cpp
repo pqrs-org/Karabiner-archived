@@ -48,44 +48,38 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                         OSObject* sender,
                                                         void* refcon)
   {
+    if (! CommonData::eventLock) return;
+    IOLockWrapper::ScopedLock lk(CommonData::eventLock);
+    IOLockWrapper::ScopedLock lk2(ListHookedPointing::instance().list_lock_);
+
     Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, dx, dy));
     if (! ptr) return;
     Params_RelativePointerEventCallback& params = *ptr;
 
-    Buttons justPressed;
-    Buttons justReleased;
+    // ------------------------------------------------------------
+    IOHIPointing* pointing = OSDynamicCast(IOHIPointing, sender);
+    if (! pointing) return;
 
-    {
-      if (! CommonData::eventLock) return;
-      IOLockWrapper::ScopedLock lk(CommonData::eventLock);
+    ListHookedPointing::Item* hp = static_cast<ListHookedPointing::Item*>(ListHookedPointing::instance().get_nolock(pointing));
+    if (! hp) return;
 
-      IOLockWrapper::ScopedLock lk2(ListHookedPointing::instance().list_lock_);
+    // ------------------------------------------------------------
+    CommonData::setcurrent_ts(ts);
+    CommonData::setcurrent_vendorIDproductID(hp->getVendorID(), hp->getProductID());
 
-      // ------------------------------------------------------------
-      IOHIPointing* pointing = OSDynamicCast(IOHIPointing, sender);
-      if (! pointing) return;
+    // ------------------------------------------------------------
+    Buttons justPressed = params.buttons.justPressed(hp->get_previousbuttons());
+    Buttons justReleased = params.buttons.justReleased(hp->get_previousbuttons());
+    hp->set_previousbuttons(buttons);
 
-      ListHookedPointing::Item* hp = static_cast<ListHookedPointing::Item*>(ListHookedPointing::instance().get_nolock(pointing));
-      if (! hp) return;
+    if (justPressed != Buttons(0)) {
+      CommonData::setcurrent_workspacedata();
+    }
 
-      // ------------------------------------------------------------
-      CommonData::setcurrent_ts(ts);
-      CommonData::setcurrent_vendorIDproductID(hp->getVendorID(), hp->getProductID());
-
-      // ------------------------------------------------------------
-      justPressed = params.buttons.justPressed(hp->get_previousbuttons());
-      justReleased = params.buttons.justReleased(hp->get_previousbuttons());
-      hp->set_previousbuttons(buttons);
-
-      if (justPressed != Buttons(0)) {
-        CommonData::setcurrent_workspacedata();
-      }
-
-      // ------------------------------------------------------------
-      // clear temporary_count_
-      if (! config.general_lazy_modifiers_with_mouse_event) {
-        FlagStatus::set();
-      }
+    // ------------------------------------------------------------
+    // clear temporary_count_
+    if (! config.general_lazy_modifiers_with_mouse_event) {
+      FlagStatus::set();
     }
 
     // ------------------------------------------------------------
@@ -132,6 +126,10 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                     OSObject* sender,
                                                     void* refcon)
   {
+    if (! CommonData::eventLock) return;
+    IOLockWrapper::ScopedLock lk(CommonData::eventLock);
+    IOLockWrapper::ScopedLock lk2(ListHookedPointing::instance().list_lock_);
+
     Params_ScrollWheelEventCallback::auto_ptr ptr(Params_ScrollWheelEventCallback::alloc(deltaAxis1, deltaAxis2, deltaAxis3,
                                                                                          fixedDelta1, fixedDelta2, fixedDelta3,
                                                                                          pointDelta1, pointDelta2, pointDelta3,
@@ -139,28 +137,21 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! ptr) return;
     Params_ScrollWheelEventCallback& params = *ptr;
 
-    {
-      if (! CommonData::eventLock) return;
-      IOLockWrapper::ScopedLock lk(CommonData::eventLock);
+    // ------------------------------------------------------------
+    IOHIPointing* pointing = OSDynamicCast(IOHIPointing, sender);
+    if (! pointing) return;
 
-      IOLockWrapper::ScopedLock lk2(ListHookedPointing::instance().list_lock_);
+    ListHookedPointing::Item* hp = static_cast<ListHookedPointing::Item*>(ListHookedPointing::instance().get_nolock(pointing));
+    if (! hp) return;
 
-      // ------------------------------------------------------------
-      IOHIPointing* pointing = OSDynamicCast(IOHIPointing, sender);
-      if (! pointing) return;
+    // ------------------------------------------------------------
+    CommonData::setcurrent_ts(ts);
+    CommonData::setcurrent_vendorIDproductID(hp->getVendorID(), hp->getProductID());
 
-      ListHookedPointing::Item* hp = static_cast<ListHookedPointing::Item*>(ListHookedPointing::instance().get_nolock(pointing));
-      if (! hp) return;
-
-      // ------------------------------------------------------------
-      CommonData::setcurrent_ts(ts);
-      CommonData::setcurrent_vendorIDproductID(hp->getVendorID(), hp->getProductID());
-
-      // ------------------------------------------------------------
-      // clear temporary_count_
-      if (! config.general_lazy_modifiers_with_mouse_event) {
-        FlagStatus::set();
-      }
+    // ------------------------------------------------------------
+    // clear temporary_count_
+    if (! config.general_lazy_modifiers_with_mouse_event) {
+      FlagStatus::set();
     }
 
     // ------------------------------------------------------------
