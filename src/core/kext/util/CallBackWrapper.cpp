@@ -94,7 +94,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (RemapClassManager::remap_dropkeyafterremap(*this)) return;
 
     // ------------------------------------------------------------
-    HookedKeyboard* hk = ListHookedKeyboard::instance().get();
+    ListHookedKeyboard::Item* hk = ListHookedKeyboard::instance().get();
     if (! hk) return;
 
     KeyboardEventCallback callback = hk->getOrig_keyboardEventAction();
@@ -150,7 +150,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! checkFlags(flags)) return;
 
     // ------------------------------------------------------------
-    HookedKeyboard* hk = ListHookedKeyboard::instance().get();
+    ListHookedKeyboard::Item* hk = ListHookedKeyboard::instance().get();
     if (! hk) return;
 
     UpdateEventFlagsCallback callback = hk->getOrig_updateEventFlagsAction();
@@ -179,7 +179,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! checkFlags(flags)) return;
 
     // ------------------------------------------------------------
-    HookedConsumer* hc = ListHookedConsumer::instance().get();
+    ListHookedConsumer::Item* hc = ListHookedConsumer::instance().get();
     if (! hc) return;
 
     KeyboardSpecialEventCallback callback = hc->getOrig_keyboardSpecialEventAction();
@@ -207,7 +207,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   Params_RelativePointerEventCallback::apply(void) const
   {
-    HookedPointing* hp = ListHookedPointing::instance().get();
+    ListHookedPointing::Item* hp = ListHookedPointing::instance().get();
     if (! hp) return;
 
     RelativePointerEventCallback callback = hp->getOrig_relativePointerEventAction();
@@ -234,7 +234,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   Params_ScrollWheelEventCallback::apply(void) const
   {
-    HookedPointing* hp = ListHookedPointing::instance().get();
+    ListHookedPointing::Item* hp = ListHookedPointing::instance().get();
     if (! hp) return;
 
     ScrollWheelEventCallback callback = hp->getOrig_scrollWheelEventAction();
