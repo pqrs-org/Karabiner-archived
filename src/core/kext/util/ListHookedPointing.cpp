@@ -33,6 +33,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   ListHookedPointing::Item::~Item(void)
   {
+    IOLOG_INFO("ListHookedPointing::Item::~Item()\n");
     IOLockWrapper::free(replacerestore_lock_);
     restoreEventAction();
   }
