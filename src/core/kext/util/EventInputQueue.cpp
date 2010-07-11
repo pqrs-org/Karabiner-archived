@@ -220,16 +220,50 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
         case ParamsUnion::RELATIVE_POINTER:
-          if ((p->params).params.params_RelativePointerEventCallback) {
-            ListHookedPointing::hook_RelativePointerEventCallback_queued(*((p->params).params.params_RelativePointerEventCallback));
+        {
+          Params_RelativePointerEventCallback* params = (p->params).params.params_RelativePointerEventCallback;
+          if (params) {
+            IOLockWrapper::ScopedLock lk2(CommonData::eventLock);
+
+            // ------------------------------------------------------------
+            // We set EventWatcher::on only when Buttons pressed.
+            // It's cause a problem when you use the following settings. (Unexpected FN_Lock is fired).
+            //   - FN+CursorMove to ScrollWheel
+            //   - FN to FN (+ When you type FN only, send FN_Lock)
+            //
+            // But, if we call EventWatcher::on every CursorMove event, unexpected cancel occurs.
+            // It's more terrible than above problem.
+            // So, we keep to call EventWatcher::on only when Buttons pressed.
+            if (params->ex_button != PointingButton::NONE) {
+              EventWatcher::on();
+            }
+
+            // ------------------------------------------------------------
+            if (params->ex_button != PointingButton::NONE) {
+              if (params->ex_isbuttondown) {
+                NumHeldDownKeys::set(1);
+              } else {
+                NumHeldDownKeys::set(-1);
+              }
+            }
+
+            Core::remap_RelativePointerEventCallback(*params);
           }
           break;
+        }
 
         case ParamsUnion::SCROLL_POINTER:
-          if ((p->params).params.params_ScrollWheelEventCallback) {
-            ListHookedPointing::hook_ScrollWheelEventCallback_queued(*((p->params).params.params_ScrollWheelEventCallback));
+        {
+          Params_ScrollWheelEventCallback* params = (p->params).params.params_ScrollWheelEventCallback;
+          if (params) {
+            IOLockWrapper::ScopedLock lk2(CommonData::eventLock);
+
+            // EventWatcher::on is not necessary.
+
+            Core::remap_ScrollWheelEventCallback(*params);
           }
           break;
+        }
 
         default:
           IOLOG_ERROR("%s unkown type\n", __PRETTY_FUNCTION__);
