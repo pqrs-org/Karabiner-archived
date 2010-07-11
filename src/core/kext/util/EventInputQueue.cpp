@@ -453,8 +453,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           Params_KeyboardEventCallBack* params = (p->params).params.params_KeyboardEventCallBack;
           if (params) {
-            IOLockWrapper::ScopedLock lk2(CommonData::eventLock);
-
             if ((params->eventType).isKeyDownOrModifierDown(params->key, params->flags)) {
               EventWatcher::on();
             }
@@ -483,8 +481,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           Params_KeyboardSpecialEventCallback* params = (p->params).params.params_KeyboardSpecialEventCallback;
           if (params) {
-            IOLockWrapper::ScopedLock lk2(CommonData::eventLock);
-
             if (params->eventType == EventType::DOWN) {
               EventWatcher::on();
             }
@@ -501,8 +497,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           Params_RelativePointerEventCallback* params = (p->params).params.params_RelativePointerEventCallback;
           if (params) {
-            IOLockWrapper::ScopedLock lk2(CommonData::eventLock);
-
             // ------------------------------------------------------------
             // We set EventWatcher::on only when Buttons pressed.
             // It's cause a problem when you use the following settings. (Unexpected FN_Lock is fired).
@@ -534,8 +528,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           Params_ScrollWheelEventCallback* params = (p->params).params.params_ScrollWheelEventCallback;
           if (params) {
-            IOLockWrapper::ScopedLock lk2(CommonData::eventLock);
-
             // EventWatcher::on is not necessary.
 
             Core::remap_ScrollWheelEventCallback(*params);
