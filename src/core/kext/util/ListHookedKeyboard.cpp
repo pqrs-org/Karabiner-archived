@@ -318,4 +318,116 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     return true;
   }
+
+  // ======================================================================
+  void
+  ListHookedKeyboard::Item::apply(const Params_KeyboardEventCallBack& params)
+  {
+    if (params.key >= KeyCode::VK__BEGIN__) {
+      // Invalid keycode
+      IOLOG_ERROR("ListHookedKeyboard::Item::apply invalid key:%d\n", params.key.get());
+      return;
+    }
+    if (params.eventType == EventType::MODIFY && ! params.key.isModifier()) {
+      // Invalid modifierkeycode
+      IOLOG_ERROR("ListHookedKeyboard::Item::apply invalid modifierkey:%d\n", params.key.get());
+      return;
+    }
+    if (params.flags.isVirtualModifiersOn()) {
+      IOLOG_ERROR("%s invalid flags:%d\n", __PRETTY_FUNCTION__, params.flags.get());
+      return;
+    }
+
+    // ------------------------------------------------------------
+    if (RemapClassManager::remap_dropkeyafterremap(params)) return;
+
+    // ------------------------------------------------------------
+    KeyboardEventCallback callback = orig_keyboardEventAction_;
+    if (! callback) return;
+
+    OSObject* target = orig_keyboardEventTarget_;
+    if (! target) return;
+
+    OSObject* sender = OSDynamicCast(OSObject, device_);
+    if (! sender) return;
+
+    const AbsoluteTime& ts = CommonData::getcurrent_ts();
+    OSObject* refcon = NULL;
+
+    params.log("sending");
+    callback(target, params.eventType.get(), params.flags.get(), params.key.get(),
+             params.charCode.get(), params.charSet.get(), params.origCharCode.get(), params.origCharSet.get(),
+             params.keyboardType.get(), params.repeat, ts, sender, refcon);
+
+    CommonData::setcurrent_keyboardType(params.keyboardType);
+
+    // --------------------
+    if (params.eventType == EventType::DOWN) {
+      FlagStatus::sticky_clear();
+    }
+
+    // --------------------
+    // handle CapsLock LED
+    IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, device_);
+    if (kbd) {
+      int led = kbd->getLEDStatus();
+      if (config.general_capslock_led_hack) {
+        if (led == 0) {
+          kbd->setAlphaLockFeedback(true);
+        }
+      } else {
+        if (params.flags.isOn(ModifierFlag::CAPSLOCK)) {
+          if (led == 0) {
+            kbd->setAlphaLockFeedback(true);
+          }
+        } else {
+          if (led != 0) {
+            kbd->setAlphaLockFeedback(false);
+          }
+        }
+      }
+    }
+  }
+
+  void
+  ListHookedKeyboard::Item::apply(const Params_UpdateEventFlagsCallback& params)
+  {
+    if (params.flags.isVirtualModifiersOn()) {
+      IOLOG_ERROR("%s invalid flags:%d\n", __PRETTY_FUNCTION__, params.flags.get());
+      return;
+    }
+
+    // ------------------------------------------------------------
+    UpdateEventFlagsCallback callback = orig_updateEventFlagsAction_;
+    if (! callback) return;
+
+    OSObject* target = orig_updateEventFlagsTarget_;
+    if (! target) return;
+
+    OSObject* sender = OSDynamicCast(OSObject, device_);
+    if (! sender) return;
+
+    OSObject* refcon = NULL;
+
+    params.log("sending");
+    callback(target, params.flags.get(), sender, refcon);
+  }
+
+  void
+  ListHookedKeyboard::apply(const Params_KeyboardEventCallBack& params)
+  {
+    ListHookedKeyboard::Item* p = get();
+    if (p) {
+      p->apply(params);
+    }
+  }
+
+  void
+  ListHookedKeyboard::apply(const Params_UpdateEventFlagsCallback& params)
+  {
+    ListHookedKeyboard::Item* p = get();
+    if (p) {
+      p->apply(params);
+    }
+  }
 }

@@ -2,6 +2,7 @@
 #define LISTHOOKEDKEYBOARD_HPP
 
 #include "base.hpp"
+#include "CallBackWrapper.hpp"
 #include "ListHookedDevice.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -12,13 +13,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       Item(IOHIDevice* p);
       ~Item(void);
 
-      IOHIKeyboard* get(void) const { return OSDynamicCast(IOHIKeyboard, ListHookedDevice::Item::get()); }
-
-      KeyboardEventCallback getOrig_keyboardEventAction(void) const { return orig_keyboardEventAction_; }
-      OSObject* getOrig_keyboardEventTarget(void) const { return orig_keyboardEventTarget_; }
-
-      UpdateEventFlagsCallback getOrig_updateEventFlagsAction(void) const { return orig_updateEventFlagsAction_; }
-      OSObject* getOrig_updateEventFlagsTarget(void) const { return orig_updateEventFlagsTarget_; }
+      void apply(const Params_KeyboardEventCallBack& params);
+      void apply(const Params_UpdateEventFlagsCallback& params);
 
     private:
       KeyboardEventCallback orig_keyboardEventAction_;
@@ -43,6 +39,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     ListHookedKeyboard::Item* get(const IOHIKeyboard* kbd) { return static_cast<ListHookedKeyboard::Item*>(ListHookedDevice::get(kbd)); }
 
     static void hook_KeyboardEventCallback_queued(Params_KeyboardEventCallBack& params);
+
+    void apply(const Params_KeyboardEventCallBack& params);
+    void apply(const Params_UpdateEventFlagsCallback& params);
   };
 }
 
