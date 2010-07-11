@@ -1,5 +1,6 @@
 #include "Config.hpp"
 #include "EventOutputQueue.hpp"
+#include "ListHookedConsumer.hpp"
 #include "ListHookedKeyboard.hpp"
 #include "ListHookedPointing.hpp"
 #include "PressDownKeys.hpp"
@@ -108,12 +109,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! p) return;
 
     // ----------------------------------------
-#define CALL_APPLY(PARAMS) { \
-    if (PARAMS) {            \
-      PARAMS->apply();       \
-    }                        \
-}
-
     switch ((p->params).type) {
       case ParamsUnion::KEYBOARD:
       {
@@ -132,8 +127,13 @@ namespace org_pqrs_KeyRemap4MacBook {
         break;
       }
       case ParamsUnion::KEYBOARD_SPECIAL:
-        CALL_APPLY((p->params).params.params_KeyboardSpecialEventCallback);
+      {
+        Params_KeyboardSpecialEventCallback* params = (p->params).params.params_KeyboardSpecialEventCallback;
+        if (params) {
+          ListHookedConsumer::instance().apply(*params);
+        }
         break;
+      }
       case ParamsUnion::RELATIVE_POINTER:
       {
         Params_RelativePointerEventCallback* params = (p->params).params.params_RelativePointerEventCallback;
@@ -151,8 +151,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         break;
       }
     }
-
-#undef CALL_APPLY
 
     queue_->pop_front();
 

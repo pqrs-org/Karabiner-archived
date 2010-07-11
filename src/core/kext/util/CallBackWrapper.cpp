@@ -57,43 +57,4 @@ namespace org_pqrs_KeyRemap4MacBook {
                          options);
 #endif
   }
-
-  void
-  Params_KeyboardSpecialEventCallback::apply(void) const
-  {
-    if (key >= ConsumerKeyCode::VK__BEGIN__) {
-      // Invalid keycode
-      IOLOG_ERROR("Params_KeyboardSpecialEventCallback::apply invalid key:%d\n", key.get());
-      return;
-    }
-    if (flags.isVirtualModifiersOn()) {
-      IOLOG_ERROR("%s invalid flags:%d\n", __PRETTY_FUNCTION__, flags.get());
-      return;
-    }
-
-    // ------------------------------------------------------------
-    ListHookedConsumer::Item* hc = ListHookedConsumer::instance().get();
-    if (! hc) return;
-
-    KeyboardSpecialEventCallback callback = hc->getOrig_keyboardSpecialEventAction();
-    if (! callback) return;
-
-    OSObject* target = hc->getOrig_keyboardSpecialEventTarget();
-    if (! target) return;
-
-    OSObject* sender = OSDynamicCast(OSObject, hc->get());
-    if (! sender) return;
-
-    const AbsoluteTime& ts = CommonData::getcurrent_ts();
-    OSObject* refcon = NULL;
-
-    log("sending");
-    callback(target, eventType.get(), flags.get(), key.get(),
-             flavor, guid, repeat, ts, sender, refcon);
-
-    // --------------------
-    if (eventType == EventType::DOWN) {
-      FlagStatus::sticky_clear();
-    }
-  }
 }
