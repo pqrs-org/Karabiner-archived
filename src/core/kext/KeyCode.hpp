@@ -116,8 +116,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool operator>(KeyCode other) const { return value_ > other.get(); }
     bool operator>=(KeyCode other) const { return value_ >= other.get(); }
 
-    void normalizeKey(Flags& flags, EventType eventType, KeyboardType keyboardType);
-    void reverseNormalizeKey(Flags& flags, EventType eventType, KeyboardType keyboardType);
+    static void normalizeKey(KeyCode& key, Flags& flags, EventType eventType, KeyboardType keyboardType);
+    static void reverseNormalizeKey(KeyCode& key, Flags& flags, EventType eventType, KeyboardType keyboardType);
 
     ModifierFlag getModifierFlag(void) const;
     bool isModifier(void) const { return getModifierFlag() != ModifierFlag::NONE; }

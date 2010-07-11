@@ -264,13 +264,13 @@ TEST(KeyCode, normalizeKey) {
 
     // Down
     key = it->fromKeyCode;
-    key.normalizeKey(it->fromFlags, EventType::DOWN, it->keyboardType);
+    KeyCode::normalizeKey(key, it->fromFlags, EventType::DOWN, it->keyboardType);
     EXPECT_EQ(it->toKeyCode, key);
     EXPECT_EQ(it->fromFlags, it->toFlags);
 
     // Up
     key = it->fromKeyCode;
-    key.normalizeKey(it->fromFlags, EventType::UP, it->keyboardType);
+    KeyCode::normalizeKey(key, it->fromFlags, EventType::UP, it->keyboardType);
     EXPECT_EQ(it->toKeyCode, key);
     EXPECT_EQ(it->fromFlags, it->toFlags);
   }
@@ -288,13 +288,13 @@ TEST(KeyCode, normalizeKey) {
   {
     KeyCode key = KeyCode::END;
     Flags flags = ModifierFlag::FN;
-    key.normalizeKey(flags, EventType::DOWN, KeyboardType::MACBOOK);
+    KeyCode::normalizeKey(key, flags, EventType::DOWN, KeyboardType::MACBOOK);
     EXPECT_EQ(key, KeyCode::CURSOR_RIGHT);
     EXPECT_EQ(flags, ModifierFlag::FN);
 
     key = KeyCode::END;
     flags = Flags(0);
-    key.normalizeKey(flags, EventType::UP, KeyboardType::MACBOOK);
+    KeyCode::normalizeKey(key, flags, EventType::UP, KeyboardType::MACBOOK);
     EXPECT_EQ(key, KeyCode::CURSOR_RIGHT);
     EXPECT_EQ(flags, Flags(0));
   }
@@ -311,13 +311,13 @@ TEST(KeyCode, normalizeKey) {
   {
     KeyCode key = KeyCode::CURSOR_RIGHT;
     Flags flags = Flags(ModifierFlag::CURSOR);
-    key.normalizeKey(flags, EventType::DOWN, KeyboardType::MACBOOK);
+    KeyCode::normalizeKey(key, flags, EventType::DOWN, KeyboardType::MACBOOK);
     EXPECT_EQ(key, KeyCode::CURSOR_RIGHT);
     EXPECT_EQ(flags, Flags(0));
 
     key = KeyCode::CURSOR_RIGHT;
     flags = Flags(ModifierFlag::FN | ModifierFlag::CURSOR);
-    key.normalizeKey(flags, EventType::UP, KeyboardType::MACBOOK);
+    KeyCode::normalizeKey(key, flags, EventType::UP, KeyboardType::MACBOOK);
     EXPECT_EQ(key, KeyCode::CURSOR_RIGHT);
     EXPECT_EQ(flags, ModifierFlag::FN);
   }
@@ -406,15 +406,15 @@ TEST(KeyCode, reverseNormalizeKey) {
 
     // Down
     key = it->fromKeyCode;
-    key.normalizeKey(it->fromFlags, EventType::DOWN, it->keyboardType);
-    key.reverseNormalizeKey(it->fromFlags, EventType::DOWN, it->keyboardType);
+    KeyCode::normalizeKey(key, it->fromFlags, EventType::DOWN, it->keyboardType);
+    KeyCode::reverseNormalizeKey(key, it->fromFlags, EventType::DOWN, it->keyboardType);
     EXPECT_EQ(it->toKeyCode, key);
     EXPECT_EQ(it->fromFlags, it->toFlags);
 
     // Up
     key = it->fromKeyCode;
-    key.normalizeKey(it->fromFlags, EventType::UP, it->keyboardType);
-    key.reverseNormalizeKey(it->fromFlags, EventType::UP, it->keyboardType);
+    KeyCode::normalizeKey(key, it->fromFlags, EventType::UP, it->keyboardType);
+    KeyCode::reverseNormalizeKey(key, it->fromFlags, EventType::UP, it->keyboardType);
     EXPECT_EQ(it->toKeyCode, key);
     EXPECT_EQ(it->fromFlags, it->toFlags);
   }
@@ -432,15 +432,15 @@ TEST(KeyCode, reverseNormalizeKey) {
   {
     KeyCode key = KeyCode::END;
     Flags flags = ModifierFlag::FN;
-    key.normalizeKey(flags, EventType::DOWN, KeyboardType::MACBOOK);
-    key.reverseNormalizeKey(flags, EventType::DOWN, KeyboardType::MACBOOK);
+    KeyCode::normalizeKey(key, flags, EventType::DOWN, KeyboardType::MACBOOK);
+    KeyCode::reverseNormalizeKey(key, flags, EventType::DOWN, KeyboardType::MACBOOK);
     EXPECT_EQ(key, KeyCode::END);
     EXPECT_EQ(flags, ModifierFlag::FN);
 
     key = KeyCode::END;
     flags = Flags(0);
-    key.normalizeKey(flags, EventType::UP, KeyboardType::MACBOOK);
-    key.reverseNormalizeKey(flags, EventType::UP, KeyboardType::MACBOOK);
+    KeyCode::normalizeKey(key, flags, EventType::UP, KeyboardType::MACBOOK);
+    KeyCode::reverseNormalizeKey(key, flags, EventType::UP, KeyboardType::MACBOOK);
     EXPECT_EQ(key, KeyCode::END);
     EXPECT_EQ(flags, ModifierFlag::FN);
   }
@@ -457,15 +457,15 @@ TEST(KeyCode, reverseNormalizeKey) {
   {
     KeyCode key = KeyCode::CURSOR_RIGHT;
     Flags flags = Flags(ModifierFlag::CURSOR);
-    key.normalizeKey(flags, EventType::DOWN, KeyboardType::MACBOOK);
-    key.reverseNormalizeKey(flags, EventType::DOWN, KeyboardType::MACBOOK);
+    KeyCode::normalizeKey(key, flags, EventType::DOWN, KeyboardType::MACBOOK);
+    KeyCode::reverseNormalizeKey(key, flags, EventType::DOWN, KeyboardType::MACBOOK);
     EXPECT_EQ(key, KeyCode::CURSOR_RIGHT);
     EXPECT_EQ(flags, ModifierFlag::CURSOR);
 
     key = KeyCode::CURSOR_RIGHT;
     flags = Flags(ModifierFlag::FN | ModifierFlag::CURSOR);
-    key.normalizeKey(flags, EventType::UP, KeyboardType::MACBOOK);
-    key.reverseNormalizeKey(flags, EventType::UP, KeyboardType::MACBOOK);
+    KeyCode::normalizeKey(key, flags, EventType::UP, KeyboardType::MACBOOK);
+    KeyCode::reverseNormalizeKey(key, flags, EventType::UP, KeyboardType::MACBOOK);
     EXPECT_EQ(key, KeyCode::CURSOR_RIGHT);
     EXPECT_EQ(flags, ModifierFlag::FN | ModifierFlag::CURSOR);
   }
