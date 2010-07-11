@@ -30,14 +30,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void setcurrent_workspacedata(void);
     static const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& getcurrent_workspacedata(void) { return current_workspacedata_; }
 
-    // We get the lock to save internal data (ex. FlagStatus) at
-    //   - KeyboardEventCallback
-    //   - KeyboardRepeat
-    //   - KeyboardSpecialEventCallback
-    //   - RelativePointerEventCallback
-    //   - ScrollWheelEventCallback.
-    static IOLock* eventLock;
-
   private:
     static AbsoluteTime current_ts_;
     static KeyboardType current_keyboardType_;
