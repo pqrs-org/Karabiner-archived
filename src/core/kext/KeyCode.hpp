@@ -90,6 +90,16 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
 
+    bool isVirtualModifiersOn(void) const {
+      if (isOn(ModifierFlag::NONE)) return true;
+      if (isOn(ModifierFlag::EXTRA1)) return true;
+      if (isOn(ModifierFlag::EXTRA2)) return true;
+      if (isOn(ModifierFlag::EXTRA3)) return true;
+      if (isOn(ModifierFlag::EXTRA4)) return true;
+      if (isOn(ModifierFlag::EXTRA5)) return true;
+      return false;
+    }
+
   private:
     unsigned int value_;
   };
