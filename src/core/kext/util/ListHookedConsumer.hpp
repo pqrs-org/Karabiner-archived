@@ -34,18 +34,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     void apply(const Params_KeyboardSpecialEventCallback& params);
     void disableNumLock(void);
-
-  private:
-    static void hook_KeyboardSpecialEventCallback(OSObject* target,
-                                                  unsigned int eventType,
-                                                  unsigned int flags,
-                                                  unsigned int key,
-                                                  unsigned int flavor,
-                                                  UInt64 guid,
-                                                  bool repeat,
-                                                  AbsoluteTime ts,
-                                                  OSObject* sender,
-                                                  void* refcon);
   };
 }
 

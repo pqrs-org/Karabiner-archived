@@ -1,13 +1,9 @@
-#include "ButtonStatus.hpp"
 #include "CommonData.hpp"
 #include "Config.hpp"
-#include "Core.hpp"
 #include "EventInputQueue.hpp"
-#include "EventWatcher.hpp"
 #include "FlagStatus.hpp"
 #include "IOLockWrapper.hpp"
 #include "ListHookedPointing.hpp"
-#include "NumHeldDownKeys.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace {
@@ -36,126 +32,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOLOG_INFO("ListHookedPointing::Item::~Item()\n");
     IOLockWrapper::free(replacerestore_lock_);
     restoreEventAction();
-  }
-
-  // ----------------------------------------------------------------------
-  void
-  ListHookedPointing::hook_RelativePointerEventCallback(OSObject* target,
-                                                        int buttons,
-                                                        int dx,
-                                                        int dy,
-                                                        AbsoluteTime ts,
-                                                        OSObject* sender,
-                                                        void* refcon)
-  {
-    if (! CommonData::eventLock) return;
-    IOLockWrapper::ScopedLock lk(CommonData::eventLock);
-    IOLockWrapper::ScopedLock lk2(ListHookedPointing::instance().list_lock_);
-
-    Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, dx, dy));
-    if (! ptr) return;
-    Params_RelativePointerEventCallback& params = *ptr;
-
-    // ------------------------------------------------------------
-    IOHIPointing* pointing = OSDynamicCast(IOHIPointing, sender);
-    if (! pointing) return;
-
-    ListHookedPointing::Item* hp = static_cast<ListHookedPointing::Item*>(ListHookedPointing::instance().get_nolock(pointing));
-    if (! hp) return;
-
-    // ------------------------------------------------------------
-    CommonData::setcurrent_ts(ts);
-    CommonData::setcurrent_vendorIDproductID(hp->getVendorID(), hp->getProductID());
-
-    // ------------------------------------------------------------
-    Buttons justPressed = params.buttons.justPressed(hp->get_previousbuttons());
-    Buttons justReleased = params.buttons.justReleased(hp->get_previousbuttons());
-    hp->set_previousbuttons(buttons);
-
-    if (justPressed != Buttons(0)) {
-      CommonData::setcurrent_workspacedata();
-    }
-
-    // ------------------------------------------------------------
-    // clear temporary_count_
-    if (! config.general_lazy_modifiers_with_mouse_event) {
-      FlagStatus::set();
-    }
-
-    // ------------------------------------------------------------
-    // divide an event into button and cursormove events.
-    params.dx = 0;
-    params.dy = 0;
-    params.ex_button = PointingButton::NONE;
-    params.ex_isbuttondown = false;
-
-    for (int i = 0; i < ButtonStatus::MAXNUM; ++i) {
-      PointingButton btn(1 << i);
-      if (justPressed.isOn(btn)) {
-        params.ex_button = btn;
-        params.ex_isbuttondown = true;
-        EventInputQueue::push(params);
-      }
-      if (justReleased.isOn(btn)) {
-        params.ex_button = btn;
-        params.ex_isbuttondown = false;
-        EventInputQueue::push(params);
-      }
-    }
-    if (dx != 0 || dy != 0) {
-      params.dx = dx;
-      params.dy = dy;
-      params.ex_button = PointingButton::NONE;
-      EventInputQueue::push(params);
-    }
-  }
-
-  void
-  ListHookedPointing::hook_ScrollWheelEventCallback(OSObject* target,
-                                                    short deltaAxis1,
-                                                    short deltaAxis2,
-                                                    short deltaAxis3,
-                                                    IOFixed fixedDelta1,
-                                                    IOFixed fixedDelta2,
-                                                    IOFixed fixedDelta3,
-                                                    SInt32 pointDelta1,
-                                                    SInt32 pointDelta2,
-                                                    SInt32 pointDelta3,
-                                                    SInt32 options,
-                                                    AbsoluteTime ts,
-                                                    OSObject* sender,
-                                                    void* refcon)
-  {
-    if (! CommonData::eventLock) return;
-    IOLockWrapper::ScopedLock lk(CommonData::eventLock);
-    IOLockWrapper::ScopedLock lk2(ListHookedPointing::instance().list_lock_);
-
-    Params_ScrollWheelEventCallback::auto_ptr ptr(Params_ScrollWheelEventCallback::alloc(deltaAxis1, deltaAxis2, deltaAxis3,
-                                                                                         fixedDelta1, fixedDelta2, fixedDelta3,
-                                                                                         pointDelta1, pointDelta2, pointDelta3,
-                                                                                         options));
-    if (! ptr) return;
-    Params_ScrollWheelEventCallback& params = *ptr;
-
-    // ------------------------------------------------------------
-    IOHIPointing* pointing = OSDynamicCast(IOHIPointing, sender);
-    if (! pointing) return;
-
-    ListHookedPointing::Item* hp = static_cast<ListHookedPointing::Item*>(ListHookedPointing::instance().get_nolock(pointing));
-    if (! hp) return;
-
-    // ------------------------------------------------------------
-    CommonData::setcurrent_ts(ts);
-    CommonData::setcurrent_vendorIDproductID(hp->getVendorID(), hp->getProductID());
-
-    // ------------------------------------------------------------
-    // clear temporary_count_
-    if (! config.general_lazy_modifiers_with_mouse_event) {
-      FlagStatus::set();
-    }
-
-    // ------------------------------------------------------------
-    EventInputQueue::push(params);
   }
 
   bool
@@ -206,13 +82,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       RelativePointerEventCallback callback = reinterpret_cast<RelativePointerEventCallback>(pointing->_relativePointerEventAction);
 
-      if (callback != hook_RelativePointerEventCallback) {
+      if (callback != EventInputQueue::push_RelativePointerEventCallback) {
         IOLOG_INFO("ListHookedPointing::Item::replaceEventAction (RelativePointerEventCallback) device_:%p\n", device_);
 
         orig_relativePointerEventAction_ = callback;
         orig_relativePointerEventTarget_ = pointing->_relativePointerEventTarget;
 
-        pointing->_relativePointerEventAction = reinterpret_cast<RelativePointerEventAction>(hook_RelativePointerEventCallback);
+        pointing->_relativePointerEventAction = reinterpret_cast<RelativePointerEventAction>(EventInputQueue::push_RelativePointerEventCallback);
 
         result = true;
       }
@@ -220,13 +96,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       ScrollWheelEventCallback callback = reinterpret_cast<ScrollWheelEventCallback>(pointing->_scrollWheelEventAction);
 
-      if (callback != hook_ScrollWheelEventCallback) {
+      if (callback != EventInputQueue::push_ScrollWheelEventCallback) {
         IOLOG_INFO("ListHookedPointing::Item::replaceEventAction (ScrollWheelEventCallback) device_:%p\n", device_);
 
         orig_scrollWheelEventAction_ = callback;
         orig_scrollWheelEventTarget_ = pointing->_scrollWheelEventTarget;
 
-        pointing->_scrollWheelEventAction = reinterpret_cast<ScrollWheelEventAction>(hook_ScrollWheelEventCallback);
+        pointing->_scrollWheelEventAction = reinterpret_cast<ScrollWheelEventAction>(EventInputQueue::push_ScrollWheelEventCallback);
 
         result = true;
       }
@@ -251,7 +127,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       RelativePointerEventCallback callback = reinterpret_cast<RelativePointerEventCallback>(pointing->_relativePointerEventAction);
 
-      if (callback == hook_RelativePointerEventCallback) {
+      if (callback == EventInputQueue::push_RelativePointerEventCallback) {
         IOLOG_INFO("HookedPointing::restoreEventAction (RelativePointerEventCallback) device_:%p\n", device_);
 
         pointing->_relativePointerEventAction = reinterpret_cast<RelativePointerEventAction>(orig_relativePointerEventAction_);
@@ -262,7 +138,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       ScrollWheelEventCallback callback = reinterpret_cast<ScrollWheelEventCallback>(pointing->_scrollWheelEventAction);
 
-      if (callback == hook_ScrollWheelEventCallback) {
+      if (callback == EventInputQueue::push_ScrollWheelEventCallback) {
         IOLOG_INFO("HookedPointing::restoreEventAction (ScrollWheelEventCallback) device_:%p\n", device_);
 
         pointing->_scrollWheelEventAction = reinterpret_cast<ScrollWheelEventAction>(orig_scrollWheelEventAction_);
