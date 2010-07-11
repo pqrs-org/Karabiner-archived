@@ -58,116 +58,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 #endif
   }
 
-  namespace {
-    bool
-    checkFlags(Flags flags) {
-      if (flags.isOn(ModifierFlag::NONE) ||
-          flags.isOn(ModifierFlag::EXTRA1) ||
-          flags.isOn(ModifierFlag::EXTRA2) ||
-          flags.isOn(ModifierFlag::EXTRA3) ||
-          flags.isOn(ModifierFlag::EXTRA4) ||
-          flags.isOn(ModifierFlag::EXTRA5)) {
-        IOLOG_ERROR("CallBackWrapper::checkFlags invalid flags:0x%x\n", flags.get());
-        return false;
-      }
-      return true;
-    }
-  }
-
-  // ----------------------------------------------------------------------
-  void
-  Params_KeyboardEventCallBack::apply(void) const
-  {
-    if (key >= KeyCode::VK__BEGIN__) {
-      // Invalid keycode
-      IOLOG_ERROR("Params_KeyboardEventCallBack::apply invalid key:%d\n", key.get());
-      return;
-    }
-    if (eventType == EventType::MODIFY && ! key.isModifier()) {
-      // Invalid modifierkeycode
-      IOLOG_ERROR("Params_KeyboardEventCallBack::apply invalid modifierkey:%d\n", key.get());
-      return;
-    }
-    if (! checkFlags(flags)) return;
-
-    // ------------------------------------------------------------
-    if (RemapClassManager::remap_dropkeyafterremap(*this)) return;
-
-    // ------------------------------------------------------------
-    ListHookedKeyboard::Item* hk = ListHookedKeyboard::instance().get();
-    if (! hk) return;
-
-    KeyboardEventCallback callback = hk->getOrig_keyboardEventAction();
-    if (! callback) return;
-
-    OSObject* target = hk->getOrig_keyboardEventTarget();
-    if (! target) return;
-
-    OSObject* sender = OSDynamicCast(OSObject, hk->get());
-    if (! sender) return;
-
-    const AbsoluteTime& ts = CommonData::getcurrent_ts();
-    OSObject* refcon = NULL;
-
-    log("sending");
-    callback(target, eventType.get(), flags.get(), key.get(),
-             charCode.get(), charSet.get(), origCharCode.get(), origCharSet.get(),
-             keyboardType.get(), repeat, ts, sender, refcon);
-
-    CommonData::setcurrent_keyboardType(keyboardType);
-
-    // --------------------
-    if (eventType == EventType::DOWN) {
-      FlagStatus::sticky_clear();
-    }
-
-    // --------------------
-    // handle CapsLock LED
-    IOHIKeyboard* kbd = hk->get();
-    if (kbd) {
-      int led = kbd->getLEDStatus();
-      if (config.general_capslock_led_hack) {
-        if (led == 0) {
-          kbd->setAlphaLockFeedback(true);
-        }
-      } else {
-        if (flags.isOn(ModifierFlag::CAPSLOCK)) {
-          if (led == 0) {
-            kbd->setAlphaLockFeedback(true);
-          }
-        } else {
-          if (led != 0) {
-            kbd->setAlphaLockFeedback(false);
-          }
-        }
-      }
-    }
-  }
-
-  void
-  Params_UpdateEventFlagsCallback::apply(void) const
-  {
-    if (! checkFlags(flags)) return;
-
-    // ------------------------------------------------------------
-    ListHookedKeyboard::Item* hk = ListHookedKeyboard::instance().get();
-    if (! hk) return;
-
-    UpdateEventFlagsCallback callback = hk->getOrig_updateEventFlagsAction();
-    if (! callback) return;
-
-    OSObject* target = hk->getOrig_updateEventFlagsTarget();
-    if (! target) return;
-
-    OSObject* sender = OSDynamicCast(OSObject, hk->get());
-    if (! sender) return;
-
-    OSObject* refcon = NULL;
-
-    log("sending");
-    callback(target, flags.get(), sender, refcon);
-  }
-
   void
   Params_KeyboardSpecialEventCallback::apply(void) const
   {
@@ -176,7 +66,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       IOLOG_ERROR("Params_KeyboardSpecialEventCallback::apply invalid key:%d\n", key.get());
       return;
     }
-    if (! checkFlags(flags)) return;
+    if (flags.isVirtualModifiersOn()) {
+      IOLOG_ERROR("%s invalid flags:%d\n", __PRETTY_FUNCTION__, flags.get());
+      return;
+    }
 
     // ------------------------------------------------------------
     ListHookedConsumer::Item* hc = ListHookedConsumer::instance().get();

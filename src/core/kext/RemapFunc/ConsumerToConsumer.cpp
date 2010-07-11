@@ -1,7 +1,7 @@
 #include "EventOutputQueue.hpp"
 #include "ConsumerToConsumer.hpp"
 #include "KeyboardRepeat.hpp"
-#include "ListHookedKeyboard.hpp"
+#include "ListHookedConsumer.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
@@ -72,7 +72,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
         }
         if (! tonumlock) {
-          ListHookedKeyboard::Item* hk = ListHookedKeyboard::instance().get();
+          ListHookedConsumer::Item* hk = ListHookedConsumer::instance().get();
           if (hk) {
             IOHIKeyboard* kbd = hk->get();
             if (kbd) {

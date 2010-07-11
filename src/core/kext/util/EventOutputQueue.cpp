@@ -1,5 +1,6 @@
 #include "Config.hpp"
 #include "EventOutputQueue.hpp"
+#include "ListHookedKeyboard.hpp"
 #include "ListHookedPointing.hpp"
 #include "PressDownKeys.hpp"
 #include "RemapClass.hpp"
@@ -115,11 +116,21 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     switch ((p->params).type) {
       case ParamsUnion::KEYBOARD:
-        CALL_APPLY((p->params).params.params_KeyboardEventCallBack);
+      {
+        Params_KeyboardEventCallBack* params = (p->params).params.params_KeyboardEventCallBack;
+        if (params) {
+          ListHookedKeyboard::instance().apply(*params);
+        }
         break;
+      }
       case ParamsUnion::UPDATE_FLAGS:
-        CALL_APPLY((p->params).params.params_UpdateEventFlagsCallback);
+      {
+        Params_UpdateEventFlagsCallback* params = (p->params).params.params_UpdateEventFlagsCallback;
+        if (params) {
+          ListHookedKeyboard::instance().apply(*params);
+        }
         break;
+      }
       case ParamsUnion::KEYBOARD_SPECIAL:
         CALL_APPLY((p->params).params.params_KeyboardSpecialEventCallback);
         break;
