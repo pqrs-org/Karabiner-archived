@@ -36,8 +36,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     static ListHookedKeyboard& instance(void);
 
-    static void hook_KeyboardEventCallback_queued(Params_KeyboardEventCallBack& params);
-
     void apply(const Params_KeyboardEventCallBack& params);
     void apply(const Params_UpdateEventFlagsCallback& params);
 
