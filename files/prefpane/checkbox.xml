@@ -2497,6 +2497,17 @@
     </item>
 
     <item>
+      <name>Change Right Bracket(]) Key</name>
+      <list>
+        <item>
+          <name>Right Bracket(]) to CapsLock</name>
+          <sysctl>remap.rightbracket2capslock</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, KeyCode::CAPSLOCK</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>Change Semicolon Key</name>
       <list>
         <item>
