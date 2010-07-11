@@ -69,7 +69,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     ConsumerToKey::remap(RemapConsumerParams& remapParams)
     {
-      if (! fromkeychecker_.isFromKey(remapParams.params.eventType, remapParams.params.key, FlagStatus::makeFlags(), fromKey_.key, fromKey_.flags)) return false;
+      if (! fromkeychecker_.isFromKey(remapParams.params.ex_iskeydown, remapParams.params.key, FlagStatus::makeFlags(), fromKey_.key, fromKey_.flags)) return false;
 
       bool result = consumertoconsumer_.remap(remapParams);
       if (! result) return false;

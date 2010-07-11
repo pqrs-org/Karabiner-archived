@@ -70,14 +70,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     KeyToConsumer::remap(RemapParams& remapParams)
     {
-      if (! fromkeychecker_.isFromKey(remapParams.params.eventType, remapParams.params.key, FlagStatus::makeFlags(), fromKey_.key, fromKey_.flags)) return false;
+      if (! fromkeychecker_.isFromKey(remapParams.params.ex_iskeydown, remapParams.params.key, FlagStatus::makeFlags(), fromKey_.key, fromKey_.flags)) return false;
 
-      bool isKeyDown = remapParams.isKeyDownOrModifierDown();
       bool result = keytokey_.remap(remapParams);
       if (! result) return false;
 
       // ----------------------------------------
-      return consumertoconsumer_.call_remap_with_VK_PSEUDO_KEY(isKeyDown ? EventType::DOWN : EventType::UP);
+      return consumertoconsumer_.call_remap_with_VK_PSEUDO_KEY(remapParams.params.ex_iskeydown ? EventType::DOWN : EventType::UP);
     }
   }
 }

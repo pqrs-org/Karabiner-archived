@@ -79,6 +79,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       params.key = p->key;
       params.keyboardType = p->keyboardType;
+      params.ex_iskeydown = false;
       EventOutputQueue::push(params);
 
       IOLOG_DEVEL("PressDownKeys::clear key:%d, keyboardType:%d\n", params.key.get(), params.keyboardType.get());

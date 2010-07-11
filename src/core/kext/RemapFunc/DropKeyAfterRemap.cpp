@@ -25,7 +25,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     DropKeyAfterRemap::drop(const Params_KeyboardEventCallBack& params)
     {
-      if (fromkeychecker_.isFromKey(params.eventType, params.key, params.flags, fromKey_.key, fromKey_.flags)) return true;
+      if (fromkeychecker_.isFromKey(params.ex_iskeydown, params.key, params.flags, fromKey_.key, fromKey_.flags)) return true;
       return false;
     }
   }

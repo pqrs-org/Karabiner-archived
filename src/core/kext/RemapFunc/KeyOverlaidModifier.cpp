@@ -91,7 +91,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     KeyOverlaidModifier::remap(RemapParams& remapParams)
     {
-      bool isKeyDown = remapParams.isKeyDownOrModifierDown();
       bool savedIsAnyEventHappen = isAnyEventHappen_;
 
       bool result = keytokey_.remap(remapParams);
@@ -100,7 +99,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ------------------------------------------------------------
       IOLockWrapper::ScopedLock lk(timer_.getlock());
 
-      if (isKeyDown) {
+      if (remapParams.params.ex_iskeydown) {
         EventWatcher::set(isAnyEventHappen_);
         ic_.begin();
 

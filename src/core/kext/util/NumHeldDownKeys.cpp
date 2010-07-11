@@ -12,28 +12,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  NumHeldDownKeys::set(EventType eventType, KeyCode key, Flags flags)
-  {
-    if (eventType.isKeyDownOrModifierDown(key, flags)) {
-      ++num_;
-    } else {
-      --num_;
-    }
-    log();
-  }
-
-  void
-  NumHeldDownKeys::set(EventType eventType)
-  {
-    if (eventType == EventType::DOWN) {
-      ++num_;
-    } else if (eventType == EventType::UP) {
-      --num_;
-    }
-    log();
-  }
-
-  void
   NumHeldDownKeys::set(int diff) {
     num_ += diff;
     log();

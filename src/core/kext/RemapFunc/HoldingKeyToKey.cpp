@@ -87,15 +87,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     HoldingKeyToKey::remap(RemapParams& remapParams)
     {
-      bool isKeyDown = remapParams.isKeyDownOrModifierDown();
-
       bool result = keytokey_drop_.remap(remapParams);
       if (! result) return false;
 
       // ------------------------------------------------------------
       IOLockWrapper::ScopedLock lk(timer_.getlock());
 
-      if (isKeyDown) {
+      if (remapParams.params.ex_iskeydown) {
         target_ = this;
         isfirenormal_ = false;
         isfireholding_ = false;

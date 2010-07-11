@@ -156,7 +156,7 @@ namespace org_pqrs_KeyRemap4MacBook {
              params.flavor, params.guid, params.repeat, ts, sender, refcon);
 
     // --------------------
-    if (params.eventType == EventType::DOWN) {
+    if (params.ex_iskeydown) {
       FlagStatus::sticky_clear();
     }
   }

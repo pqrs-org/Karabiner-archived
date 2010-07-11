@@ -78,7 +78,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! toButtons_) return false;
 
       if (remapParams.isremapped) return false;
-      if (! fromkeychecker_.isFromKey(remapParams.params.eventType, remapParams.params.key, FlagStatus::makeFlags(), fromKey_.key, fromKey_.flags)) return false;
+      if (! fromkeychecker_.isFromKey(remapParams.params.ex_iskeydown, remapParams.params.key, FlagStatus::makeFlags(), fromKey_.key, fromKey_.flags)) return false;
       remapParams.isremapped = true;
 
       // ------------------------------------------------------------
@@ -99,8 +99,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // *** we need to use FlagStatus::decrease/increase.
       // *** (not temporary_decrease/temporary_increase).
 
-      bool isKeyDown = remapParams.isKeyDownOrModifierDown();
-      if (isKeyDown) {
+      if (remapParams.params.ex_iskeydown) {
         FlagStatus::decrease(fromKey_.flags | fromKey_.key.getModifierFlag());
       }
 
@@ -109,7 +108,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
 
         case 1:
-          if (isKeyDown) {
+          if (remapParams.params.ex_iskeydown) {
             FlagStatus::increase((*toButtons_)[0].flags);
             ButtonStatus::increase((*toButtons_)[0].button);
           } else {
@@ -120,7 +119,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
 
         case 2:
-          if (isKeyDown) {
+          if (remapParams.params.ex_iskeydown) {
             for (size_t i = 0; i < toButtons_->size(); ++i) {
               FlagStatus::temporary_increase((*toButtons_)[i].flags);
 
@@ -135,7 +134,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
       }
 
-      if (! isKeyDown) {
+      if (! remapParams.params.ex_iskeydown) {
         FlagStatus::increase(fromKey_.flags | fromKey_.key.getModifierFlag());
         EventOutputQueue::FireModifiers::fire();
       }

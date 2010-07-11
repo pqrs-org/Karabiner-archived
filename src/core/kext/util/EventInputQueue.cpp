@@ -182,7 +182,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (repeat) return;
 
     // ------------------------------------------------------------
-    if (params.eventType.isKeyDownOrModifierDown(params.key, params.flags)) {
+    if (params.ex_iskeydown) {
       CommonData::setcurrent_workspacedata();
     }
 
@@ -280,7 +280,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (repeat) return;
 
     // ------------------------------------------------------------
-    if (params.eventType == EventType::DOWN) {
+    if (params.ex_iskeydown) {
       CommonData::setcurrent_workspacedata();
     }
 
@@ -453,7 +453,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           Params_KeyboardEventCallBack* params = (p->params).params.params_KeyboardEventCallBack;
           if (params) {
-            if ((params->eventType).isKeyDownOrModifierDown(params->key, params->flags)) {
+            if (params->ex_iskeydown) {
               EventWatcher::on();
             }
 
@@ -470,7 +470,7 @@ namespace org_pqrs_KeyRemap4MacBook {
             //
             // if NumHeldDownKeys called when (4), Command_L state is reset.
             // Then (2') send KeyCode::S without Modifiers.
-            NumHeldDownKeys::set(params->eventType, params->key, params->flags);
+            NumHeldDownKeys::set(params->ex_iskeydown ? 1 : -1);
 
             Core::remap_KeyboardEventCallback(*params);
           }
@@ -481,12 +481,12 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           Params_KeyboardSpecialEventCallback* params = (p->params).params.params_KeyboardSpecialEventCallback;
           if (params) {
-            if (params->eventType == EventType::DOWN) {
+            if (params->ex_iskeydown) {
               EventWatcher::on();
             }
 
             // ------------------------------------------------------------
-            NumHeldDownKeys::set(params->eventType);
+            NumHeldDownKeys::set(params->ex_iskeydown ? 1 : -1);
 
             Core::remap_KeyboardSpecialEventCallback(*params);
           }
@@ -512,11 +512,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
             // ------------------------------------------------------------
             if (params->ex_button != PointingButton::NONE) {
-              if (params->ex_isbuttondown) {
-                NumHeldDownKeys::set(1);
-              } else {
-                NumHeldDownKeys::set(-1);
-              }
+              NumHeldDownKeys::set(params->ex_isbuttondown ? 1 : -1);
             }
 
             Core::remap_RelativePointerEventCallback(*params);

@@ -51,7 +51,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       return false;
     }
 
-    if (params.eventType == EventType::DOWN && params.repeat == false) {
+    if (params.ex_iskeydown && params.repeat == false) {
       if (force_off) {
         FlagStatus::lock_decrease(flags);
       } else if (force_on) {
@@ -103,7 +103,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       return false;
     }
 
-    if (params.eventType == EventType::DOWN && params.repeat == false) {
+    if (params.ex_iskeydown && params.repeat == false) {
       FlagStatus::sticky_toggle(flag);
       EventOutputQueue::FireModifiers::fire();
     }
@@ -163,7 +163,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       return false;
     }
 
-    if (params.eventType == EventType::DOWN && params.repeat == false) {
+    if (params.ex_iskeydown && params.repeat == false) {
       KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_CHANGE_INPUTMODE, &request, sizeof(request), NULL, 0);
     }
     return true;
@@ -189,7 +189,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ------------------------------------------------------------
-    if (params.eventType == EventType::DOWN && params.repeat == false) {
+    if (params.ex_iskeydown && params.repeat == false) {
       switch (type) {
         case TYPE_TOGGLE:
           *configitem = ! *configitem;
@@ -222,7 +222,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (params.key != KeyCode::VK_JIS_TOGGLE_EISUU_KANA) return false;
 
-    if (params.eventType == EventType::DOWN) {
+    if (params.ex_iskeydown) {
       if (CommonData::getcurrent_workspacedata().inputmode == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE) {
         newkeycode_ = KeyCode::JIS_EISUU;
       } else {
@@ -281,7 +281,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (params.key != key) return false;
 
-    if (params.eventType == EventType::DOWN) {
+    if (params.ex_iskeydown) {
       if (savedinputmodedetail_ == KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_NONE) {
         savedinputmodedetail_ = CommonData::getcurrent_workspacedata().inputmodedetail;
         currentinputmodedetail_ = CommonData::getcurrent_workspacedata().inputmodedetail;
@@ -297,7 +297,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (params.key != KeyCode::VK_JIS_TEMPORARY_RESTORE) return false;
 
-    if (params.eventType == EventType::DOWN) {
+    if (params.ex_iskeydown) {
       if (savedinputmodedetail_ != KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_NONE) {
         firekeytoinputdetail(params, savedinputmodedetail_);
         savedinputmodedetail_ = KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_NONE;

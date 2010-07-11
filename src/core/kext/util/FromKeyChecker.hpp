@@ -11,14 +11,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     FromKeyChecker(void) : active_(false) {}
 
-    bool isFromKey(EventType eventType, KeyCode key, Flags flags, KeyCode fromKeyCode, Flags fromFlags) {
+    bool isFromKey(bool isKeyDown, KeyCode key, Flags flags, KeyCode fromKeyCode, Flags fromFlags) {
       if (key != fromKeyCode) return false;
-      bool isKeyDown = eventType.isKeyDownOrModifierDown(key, flags);
       return isFromKey(isKeyDown, flags, fromFlags);
     }
-    bool isFromKey(EventType eventType, ConsumerKeyCode key, Flags flags, ConsumerKeyCode fromKeyCode, Flags fromFlags) {
+    bool isFromKey(bool isKeyDown, ConsumerKeyCode key, Flags flags, ConsumerKeyCode fromKeyCode, Flags fromFlags) {
       if (key != fromKeyCode) return false;
-      bool isKeyDown = (eventType == EventType::DOWN);
       return isFromKey(isKeyDown, flags, fromFlags);
     }
     bool isFromPointingButton(const Params_RelativePointerEventCallback& params, PointingButton fromButton, Flags fromFlags) {
