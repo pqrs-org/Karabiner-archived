@@ -13,13 +13,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       Item(IOHIDevice* d);
       ~Item(void);
 
-      IOHIPointing* get(void) const { return OSDynamicCast(IOHIPointing, ListHookedDevice::Item::get()); }
-
-      RelativePointerEventCallback getOrig_relativePointerEventAction(void) const { return orig_relativePointerEventAction_; }
-      ScrollWheelEventCallback getOrig_scrollWheelEventAction(void) const { return orig_scrollWheelEventAction_; }
-      OSObject* getOrig_relativePointerEventTarget(void) const { return orig_relativePointerEventTarget_; }
-      OSObject* getOrig_scrollWheelEventTarget(void) const { return orig_scrollWheelEventTarget_; }
-
       Buttons get_previousbuttons(void) const { return previousbuttons_; }
       void set_previousbuttons(Buttons newval) { previousbuttons_ = newval; }
 
