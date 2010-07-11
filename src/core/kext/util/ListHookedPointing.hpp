@@ -40,9 +40,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     static ListHookedPointing& instance(void);
 
-    static void hook_RelativePointerEventCallback_queued(Params_RelativePointerEventCallback& params);
-    static void hook_ScrollWheelEventCallback_queued(Params_ScrollWheelEventCallback& params);
-
     void apply(const Params_RelativePointerEventCallback& params);
     void apply(const Params_ScrollWheelEventCallback& params);
 

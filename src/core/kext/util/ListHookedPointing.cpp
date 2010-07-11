@@ -158,48 +158,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     EventInputQueue::push(params);
   }
 
-  void
-  ListHookedPointing::hook_RelativePointerEventCallback_queued(Params_RelativePointerEventCallback& params)
-  {
-    if (! CommonData::eventLock) return;
-    IOLockWrapper::ScopedLock lk(CommonData::eventLock);
-
-    // ------------------------------------------------------------
-    // We set EventWatcher::on only when Buttons pressed.
-    // It's cause a problem when you use the following settings. (Unexpected FN_Lock is fired).
-    //   - FN+CursorMove to ScrollWheel
-    //   - FN to FN (+ When you type FN only, send FN_Lock)
-    //
-    // But, if we call EventWatcher::on every CursorMove event, unexpected cancel occurs.
-    // It's more terrible than above problem.
-    // So, we keep to call EventWatcher::on only when Buttons pressed.
-    if (params.ex_button != PointingButton::NONE) {
-      EventWatcher::on();
-    }
-
-    // ------------------------------------------------------------
-    if (params.ex_button != PointingButton::NONE) {
-      if (params.ex_isbuttondown) {
-        NumHeldDownKeys::set(1);
-      } else {
-        NumHeldDownKeys::set(-1);
-      }
-    }
-
-    Core::remap_RelativePointerEventCallback(params);
-  }
-
-  void
-  ListHookedPointing::hook_ScrollWheelEventCallback_queued(Params_ScrollWheelEventCallback& params)
-  {
-    if (! CommonData::eventLock) return;
-    IOLockWrapper::ScopedLock lk(CommonData::eventLock);
-
-    // EventWatcher::on is not necessary.
-
-    Core::remap_ScrollWheelEventCallback(params);
-  }
-
   bool
   ListHookedPointing::Item::refresh_callback(void)
   {
