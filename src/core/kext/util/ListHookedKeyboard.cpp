@@ -22,11 +22,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   ListHookedKeyboard::Item::Item(IOHIDevice* p) : ListHookedDevice::Item(p),
-                                                  orig_keyboardEventAction_(NULL),
-                                                  orig_keyboardEventTarget_(NULL),
-                                                  orig_updateEventFlagsAction_(NULL),
-                                                  orig_updateEventFlagsTarget_(NULL),
-                                                  replacerestore_lock_(NULL)
+    orig_keyboardEventAction_(NULL),
+    orig_keyboardEventTarget_(NULL),
+    orig_updateEventFlagsAction_(NULL),
+    orig_updateEventFlagsTarget_(NULL),
+    replacerestore_lock_(NULL)
   {
     replacerestore_lock_ = IOLockWrapper::alloc();
   }
@@ -39,107 +39,37 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------------------------------------
-  namespace {
-    void
-    hook_KeyboardEventCallback(OSObject* target,
-                               unsigned int eventType,
-                               unsigned int flags,
-                               unsigned int key,
-                               unsigned int charCode,
-                               unsigned int charSet,
-                               unsigned int origCharCode,
-                               unsigned int origCharSet,
-                               unsigned int keyboardType,
-                               bool repeat,
-                               AbsoluteTime ts,
-                               OSObject* sender,
-                               void* refcon)
+  void
+  ListHookedKeyboard::hook_KeyboardEventCallback(OSObject* target,
+                                                 unsigned int eventType,
+                                                 unsigned int flags,
+                                                 unsigned int key,
+                                                 unsigned int charCode,
+                                                 unsigned int charSet,
+                                                 unsigned int origCharCode,
+                                                 unsigned int origCharSet,
+                                                 unsigned int keyboardType,
+                                                 bool repeat,
+                                                 AbsoluteTime ts,
+                                                 OSObject* sender,
+                                                 void* refcon)
+  {
+    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType(eventType),
+                                                                                   Flags(flags),
+                                                                                   KeyCode(key),
+                                                                                   CharCode(charCode),
+                                                                                   CharSet(charSet),
+                                                                                   OrigCharCode(origCharCode),
+                                                                                   OrigCharSet(origCharSet),
+                                                                                   KeyboardType(keyboardType),
+                                                                                   repeat));
+    if (! ptr) return;
+    Params_KeyboardEventCallBack& params = *ptr;
+
     {
-      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType(eventType),
-                                                                                     Flags(flags),
-                                                                                     KeyCode(key),
-                                                                                     CharCode(charCode),
-                                                                                     CharSet(charSet),
-                                                                                     OrigCharCode(origCharCode),
-                                                                                     OrigCharSet(origCharSet),
-                                                                                     KeyboardType(keyboardType),
-                                                                                     repeat));
-      if (! ptr) return;
-      Params_KeyboardEventCallBack& params = *ptr;
+      if (! CommonData::eventLock) return;
+      IOLockWrapper::ScopedLock lk(CommonData::eventLock);
 
-      {
-        if (! CommonData::eventLock) return;
-        IOLockWrapper::ScopedLock lk(CommonData::eventLock);
-
-        IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, sender);
-        if (! kbd) return;
-
-        ListHookedKeyboard::Item* hk = ListHookedKeyboard::instance().get(kbd);
-        if (! hk) return;
-
-        // ------------------------------------------------------------
-        // Logitech Cordless Presenter (LCP) Hack
-        //
-        // When an LCP is first plugged in, it will send a CONTROL_L down event
-        // when the first pageup/pagedown key is pressed without sending a corresponding
-        // up event -- effectively rendering the device (and the Mac) useless until it is
-        // unplugged from the system.
-        //
-        // Similarly, when the volume keys are first pressed, a SHIFT_L down event
-        // is generated, with now up event.
-        //
-        // This code effectively throws these events away if they are received from an LCP.
-        //
-        // *** LCP has 6 keys (Page Up, Page Down, a 'B' key, an 'Esc' key, and volume up / down keys). ***
-        // *** So, we can drop CONTROL_L and SHIFT_L without a problem. ***
-        if (hk->isEqualVendorIDProductID(DeviceVendorID(0x046d), DeviceProductID(0xc515))) {
-          if (params.key == KeyCode::CONTROL_L) return;
-          if (params.key == KeyCode::SHIFT_L) return;
-        }
-
-        // ------------------------------------------------------------
-        RemapClassManager::remap_setkeyboardtype(params.keyboardType);
-        CommonData::setcurrent_ts(ts);
-        CommonData::setcurrent_vendorIDproductID(hk->getVendorID(), hk->getProductID());
-        CommonData::setcurrent_keyboardType(params.keyboardType);
-
-        // ------------------------------------------------------------
-        // Because we handle the key repeat ourself, drop the key repeat by hardware.
-        if (repeat) return;
-
-        // ------------------------------------------------------------
-        if (params.eventType.isKeyDownOrModifierDown(params.key, params.flags)) {
-          CommonData::setcurrent_workspacedata();
-        }
-
-        // ------------------------------------------------------------
-        // clear temporary_count_
-        //
-        // Don't call FlagStatus::set(key, flags) here.
-        // If SimultaneousKeyPresses is enabled, keys may be dropped.
-        // For example, Shift_L+Shift_R to Space is enabled, Shift_L and Shift_R may be dropped.
-        // If we call FlagStatus::set(key, flags) here, dropped keys are kept as pushed status.
-        // So, call FlagStatus::set(key, flags) after EventInputQueue.
-        FlagStatus::set();
-
-        // ------------------------------------------------------------
-        params.key.normalizeKey(params.flags, params.eventType, params.keyboardType);
-      }
-
-      // ------------------------------------------------------------
-      EventInputQueue::push(params);
-    }
-
-    void
-    hook_UpdateEventFlagsCallback(OSObject* target,
-                                  unsigned flags,
-                                  OSObject* sender,
-                                  void* refcon)
-    {
-      // We don't need to get eventLock, because we do nothing here.
-
-      // ------------------------------------------------------------
-      // update device priority by calling ListHookedKeyboard::instance().get(kbd).
       IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, sender);
       if (! kbd) return;
 
@@ -147,12 +77,80 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! hk) return;
 
       // ------------------------------------------------------------
-      Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(flags));
-      if (! ptr) return;
+      // Logitech Cordless Presenter (LCP) Hack
+      //
+      // When an LCP is first plugged in, it will send a CONTROL_L down event
+      // when the first pageup/pagedown key is pressed without sending a corresponding
+      // up event -- effectively rendering the device (and the Mac) useless until it is
+      // unplugged from the system.
+      //
+      // Similarly, when the volume keys are first pressed, a SHIFT_L down event
+      // is generated, with now up event.
+      //
+      // This code effectively throws these events away if they are received from an LCP.
+      //
+      // *** LCP has 6 keys (Page Up, Page Down, a 'B' key, an 'Esc' key, and volume up / down keys). ***
+      // *** So, we can drop CONTROL_L and SHIFT_L without a problem. ***
+      if (hk->isEqualVendorIDProductID(DeviceVendorID(0x046d), DeviceProductID(0xc515))) {
+        if (params.key == KeyCode::CONTROL_L) return;
+        if (params.key == KeyCode::SHIFT_L) return;
+      }
 
-      Params_UpdateEventFlagsCallback& params = *ptr;
-      params.log();
+      // ------------------------------------------------------------
+      RemapClassManager::remap_setkeyboardtype(params.keyboardType);
+      CommonData::setcurrent_ts(ts);
+      CommonData::setcurrent_vendorIDproductID(hk->getVendorID(), hk->getProductID());
+      CommonData::setcurrent_keyboardType(params.keyboardType);
+
+      // ------------------------------------------------------------
+      // Because we handle the key repeat ourself, drop the key repeat by hardware.
+      if (repeat) return;
+
+      // ------------------------------------------------------------
+      if (params.eventType.isKeyDownOrModifierDown(params.key, params.flags)) {
+        CommonData::setcurrent_workspacedata();
+      }
+
+      // ------------------------------------------------------------
+      // clear temporary_count_
+      //
+      // Don't call FlagStatus::set(key, flags) here.
+      // If SimultaneousKeyPresses is enabled, keys may be dropped.
+      // For example, Shift_L+Shift_R to Space is enabled, Shift_L and Shift_R may be dropped.
+      // If we call FlagStatus::set(key, flags) here, dropped keys are kept as pushed status.
+      // So, call FlagStatus::set(key, flags) after EventInputQueue.
+      FlagStatus::set();
+
+      // ------------------------------------------------------------
+      params.key.normalizeKey(params.flags, params.eventType, params.keyboardType);
     }
+
+    // ------------------------------------------------------------
+    EventInputQueue::push(params);
+  }
+
+  void
+  ListHookedKeyboard::hook_UpdateEventFlagsCallback(OSObject* target,
+                                                    unsigned flags,
+                                                    OSObject* sender,
+                                                    void* refcon)
+  {
+    // We don't need to get eventLock, because we do nothing here.
+
+    // ------------------------------------------------------------
+    // update device priority by calling ListHookedKeyboard::instance().get(kbd).
+    IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, sender);
+    if (! kbd) return;
+
+    ListHookedKeyboard::Item* hk = ListHookedKeyboard::instance().get(kbd);
+    if (! hk) return;
+
+    // ------------------------------------------------------------
+    Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(flags));
+    if (! ptr) return;
+
+    Params_UpdateEventFlagsCallback& params = *ptr;
+    params.log();
   }
 
   void
@@ -270,7 +268,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         orig_keyboardEventAction_ = callback;
         orig_keyboardEventTarget_ = kbd->_keyboardEventTarget;
 
-        kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(hook_KeyboardEventCallback);
+        kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(ListHookedKeyboard::hook_KeyboardEventCallback);
 
         result = true;
       }
@@ -283,7 +281,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         orig_updateEventFlagsAction_ = callback;
         orig_updateEventFlagsTarget_ = kbd->_updateEventFlagsTarget;
 
-        kbd->_updateEventFlagsAction = reinterpret_cast<UpdateEventFlagsAction>(hook_UpdateEventFlagsCallback);
+        kbd->_updateEventFlagsAction = reinterpret_cast<UpdateEventFlagsAction>(ListHookedKeyboard::hook_UpdateEventFlagsCallback);
 
         result = true;
       }
@@ -302,21 +300,36 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, device_);
     if (! kbd) return false;
 
-    KeyboardEventCallback callback = reinterpret_cast<KeyboardEventCallback>(kbd->_keyboardEventAction);
-    if (callback != hook_KeyboardEventCallback) return false;
+    bool result = false;
 
     // ----------------------------------------
-    IOLOG_INFO("HookedKeyboard::restoreEventAction device_:%p\n", device_);
+    {
+      KeyboardEventCallback callback = reinterpret_cast<KeyboardEventCallback>(kbd->_keyboardEventAction);
+      if (callback == ListHookedKeyboard::hook_KeyboardEventCallback) {
+        IOLOG_INFO("HookedKeyboard::restoreEventAction (KeyboardEventCallback) device_:%p\n", device_);
 
-    kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(orig_keyboardEventAction_);
-    kbd->_updateEventFlagsAction = reinterpret_cast<UpdateEventFlagsAction>(orig_updateEventFlagsAction_);
+        kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(orig_keyboardEventAction_);
+
+        result = true;
+      }
+    }
+    {
+      UpdateEventFlagsCallback callback = reinterpret_cast<UpdateEventFlagsCallback>(kbd->_updateEventFlagsAction);
+      if (callback == ListHookedKeyboard::hook_UpdateEventFlagsCallback) {
+        IOLOG_INFO("HookedKeyboard::restoreEventAction (UpdateEventFlagsCallback) device_:%p\n", device_);
+
+        kbd->_updateEventFlagsAction = reinterpret_cast<UpdateEventFlagsAction>(orig_updateEventFlagsAction_);
+
+        result = true;
+      }
+    }
 
     orig_keyboardEventAction_ = NULL;
     orig_keyboardEventTarget_ = NULL;
     orig_updateEventFlagsAction_ = NULL;
     orig_updateEventFlagsTarget_ = NULL;
 
-    return true;
+    return result;
   }
 
   // ======================================================================

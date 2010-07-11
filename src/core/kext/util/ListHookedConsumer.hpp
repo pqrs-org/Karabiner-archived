@@ -9,7 +9,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     class Item : public ListHookedDevice::Item {
     public:
-      Item(IOHIDevice *p);
+      Item(IOHIDevice* p);
       ~Item(void);
 
       void apply(const Params_KeyboardSpecialEventCallback& params);
