@@ -21,12 +21,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   ListHookedPointing::Item::Item(IOHIDevice* p) : ListHookedDevice::Item(p),
-                                                  orig_relativePointerEventAction_(NULL),
-                                                  orig_relativePointerEventTarget_(NULL),
-                                                  orig_scrollWheelEventAction_(NULL),
-                                                  orig_scrollWheelEventTarget_(NULL),
-                                                  previousbuttons_(0),
-                                                  replacerestore_lock_(NULL)
+    orig_relativePointerEventAction_(NULL),
+    orig_relativePointerEventTarget_(NULL),
+    orig_scrollWheelEventAction_(NULL),
+    orig_scrollWheelEventTarget_(NULL),
+    previousbuttons_(0),
+    replacerestore_lock_(NULL)
   {
     replacerestore_lock_ = IOLockWrapper::alloc();
   }

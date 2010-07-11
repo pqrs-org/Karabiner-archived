@@ -19,10 +19,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     return listHookedConsumer;
   }
 
-  ListHookedConsumer::Item::Item(IOHIDevice *p) : ListHookedDevice::Item(p),
-                                                  orig_keyboardSpecialEventAction_(NULL),
-                                                  orig_keyboardSpecialEventTarget_(NULL),
-                                                  replacerestore_lock_(NULL)
+  ListHookedConsumer::Item::Item(IOHIDevice* p) : ListHookedDevice::Item(p),
+    orig_keyboardSpecialEventAction_(NULL),
+    orig_keyboardSpecialEventTarget_(NULL),
+    replacerestore_lock_(NULL)
   {
     replacerestore_lock_ = IOLockWrapper::alloc();
   }
