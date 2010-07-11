@@ -1,10 +1,14 @@
+#include "CommonData.hpp"
 #include "Config.hpp"
+#include "Core.hpp"
 #include "EventInputQueue.hpp"
+#include "EventWatcher.hpp"
 #include "FlagStatus.hpp"
 #include "IOLockWrapper.hpp"
 #include "ListHookedConsumer.hpp"
 #include "ListHookedKeyboard.hpp"
 #include "ListHookedPointing.hpp"
+#include "NumHeldDownKeys.hpp"
 #include "RemapClass.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -168,11 +172,34 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! p->dropped) {
       switch (p->params.type) {
         case ParamsUnion::KEYBOARD:
-          if ((p->params).params.params_KeyboardEventCallBack) {
-            ListHookedKeyboard::hook_KeyboardEventCallback_queued(*((p->params).params.params_KeyboardEventCallBack));
+        {
+          Params_KeyboardEventCallBack* params = (p->params).params.params_KeyboardEventCallBack;
+          if (params) {
+            IOLockWrapper::ScopedLock lk2(CommonData::eventLock);
+
+            if ((params->eventType).isKeyDownOrModifierDown(params->key, params->flags)) {
+              EventWatcher::on();
+            }
+
+            // ------------------------------------------------------------
+            // We must call NumHeldDownKeys after inputqueue.
+            // For example, when we type Command_L+S.
+            //
+            // (1) Command_L down (queued)
+            // (2) KeyCode::S down (Command_L+S)
+            // (1') dequeue Command_L down
+            // (3) Command_L up
+            // (4) KeyCode::S up
+            // (2') dequeue KeyCode::S down
+            //
+            // if NumHeldDownKeys called when (4), Command_L state is reset.
+            // Then (2') send KeyCode::S without Modifiers.
+            NumHeldDownKeys::set(params->eventType, params->key, params->flags);
+
+            Core::remap_KeyboardEventCallback(*params);
           }
           break;
-
+        }
         case ParamsUnion::KEYBOARD_SPECIAL:
           if ((p->params).params.params_KeyboardSpecialEventCallback) {
             ListHookedConsumer::hook_KeyboardSpecialEventCallback_queued(*((p->params).params.params_KeyboardSpecialEventCallback));
@@ -192,7 +219,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
 
         default:
-          IOLOG_ERROR("EventInputQueue::fire_nolock unkown type\n");
+          IOLOG_ERROR("%s unkown type\n", __PRETTY_FUNCTION__);
           break;
       }
     }
