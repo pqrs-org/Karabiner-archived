@@ -325,4 +325,84 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     return result;
   }
+
+  // ======================================================================
+  void
+  ListHookedPointing::Item::apply(const Params_RelativePointerEventCallback& params)
+  {
+    RelativePointerEventCallback callback = orig_relativePointerEventAction_;
+    if (! callback) return;
+
+    OSObject* target = orig_relativePointerEventTarget_;
+    if (! target) return;
+
+    OSObject* sender = OSDynamicCast(OSObject, device_);
+    if (! sender) return;
+
+    const AbsoluteTime& ts = CommonData::getcurrent_ts();
+    OSObject* refcon = NULL;
+
+    params.log("sending");
+    callback(target, params.buttons.get(), params.dx, params.dy, ts, sender, refcon);
+
+    // --------------------
+    if (params.buttons != Buttons(0)) {
+      FlagStatus::sticky_clear();
+    }
+  }
+
+  void
+  ListHookedPointing::Item::apply(const Params_ScrollWheelEventCallback& params)
+  {
+    ScrollWheelEventCallback callback = orig_scrollWheelEventAction_;
+    if (! callback) return;
+
+    OSObject* target = orig_scrollWheelEventTarget_;
+    if (! target) return;
+
+    OSObject* sender = OSDynamicCast(OSObject, device_);
+    if (! sender) return;
+
+    const AbsoluteTime& ts = CommonData::getcurrent_ts();
+    OSObject* refcon = NULL;
+
+    params.log("sending");
+    callback(target,
+             params.deltaAxis1,  params.deltaAxis2,  params.deltaAxis3,
+             params.fixedDelta1, params.fixedDelta2, params.fixedDelta3,
+             params.pointDelta1, params.pointDelta2, params.pointDelta3,
+             params.options, ts, sender, refcon);
+
+    // --------------------
+    FlagStatus::sticky_clear();
+  }
+
+  void
+  ListHookedPointing::apply(const Params_RelativePointerEventCallback& params)
+  {
+    // if all button are released, send event for all devices.
+    if (params.buttons == Buttons(0) &&
+        params.dx == 0 &&
+        params.dy == 0) {
+      IOLockWrapper::ScopedLock lk(list_lock_);
+      for (Item* p = static_cast<Item*>(list_->front()); p; p = static_cast<Item*>(p->getnext())) {
+        p->apply(params);
+      }
+
+    } else {
+      ListHookedPointing::Item* p = get();
+      if (p) {
+        p->apply(params);
+      }
+    }
+  }
+
+  void
+  ListHookedPointing::apply(const Params_ScrollWheelEventCallback& params)
+  {
+    ListHookedPointing::Item* p = get();
+    if (p) {
+      p->apply(params);
+    }
+  }
 }

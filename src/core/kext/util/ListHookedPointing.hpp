@@ -2,6 +2,7 @@
 #define LISTHOOKEDPOINTING_HPP
 
 #include "base.hpp"
+#include "CallBackWrapper.hpp"
 #include "ListHookedDevice.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -21,6 +22,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       Buttons get_previousbuttons(void) const { return previousbuttons_; }
       void set_previousbuttons(Buttons newval) { previousbuttons_ = newval; }
+
+      void apply(const Params_RelativePointerEventCallback& params);
+      void apply(const Params_ScrollWheelEventCallback& params);
 
     private:
       RelativePointerEventCallback orig_relativePointerEventAction_;
@@ -47,6 +51,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     static void hook_RelativePointerEventCallback_queued(Params_RelativePointerEventCallback& params);
     static void hook_ScrollWheelEventCallback_queued(Params_ScrollWheelEventCallback& params);
+
+    void apply(const Params_RelativePointerEventCallback& params);
+    void apply(const Params_ScrollWheelEventCallback& params);
   };
 }
 

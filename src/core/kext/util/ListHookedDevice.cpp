@@ -123,8 +123,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   ListHookedDevice::initialize(void)
   {
-    lock_ = IOLockWrapper::alloc();
-    if (! lock_) return false;
+    list_lock_ = IOLockWrapper::alloc();
+    if (! list_lock_) return false;
 
     list_ = new List();
     if (! list_) return false;
@@ -135,9 +135,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListHookedDevice::terminate(void)
   {
-    if (! lock_) return;
-
-    IOLockWrapper::free(lock_);
+    IOLockWrapper::free(list_lock_);
 
     if (list_) {
       delete list_;
@@ -149,8 +147,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListHookedDevice::push_back(ListHookedDevice::Item* newp)
   {
-    if (! lock_) return;
-    IOLockWrapper::ScopedLock lk(lock_);
+    IOLockWrapper::ScopedLock lk(list_lock_);
 
     if (! list_) return;
     if (! newp) return;
@@ -165,8 +162,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListHookedDevice::erase(IOHIDevice* p)
   {
-    if (! lock_) return;
-    IOLockWrapper::ScopedLock lk(lock_);
+    IOLockWrapper::ScopedLock lk(list_lock_);
 
     if (! list_) return;
 
@@ -196,8 +192,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   ListHookedDevice::Item*
   ListHookedDevice::get(const IOHIDevice* device)
   {
-    if (! lock_) return NULL;
-    IOLockWrapper::ScopedLock lk(lock_);
+    IOLockWrapper::ScopedLock lk(list_lock_);
 
     return get_nolock(device);
   }
@@ -205,8 +200,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   ListHookedDevice::Item*
   ListHookedDevice::get(void)
   {
-    if (! lock_) return NULL;
-    IOLockWrapper::ScopedLock lk(lock_);
+    IOLockWrapper::ScopedLock lk(list_lock_);
 
     if (! list_) return NULL;
 
@@ -230,8 +224,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListHookedDevice::refresh_callback(void)
   {
-    if (! lock_) return;
-    IOLockWrapper::ScopedLock lk(lock_);
+    IOLockWrapper::ScopedLock lk(list_lock_);
 
     if (! list_) return;
 
