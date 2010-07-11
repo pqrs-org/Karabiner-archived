@@ -254,7 +254,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       RelativePointerEventCallback callback = reinterpret_cast<RelativePointerEventCallback>(pointing->_relativePointerEventAction);
 
       if (callback != hook_RelativePointerEventCallback) {
-        IOLOG_INFO("HookedPointing::replaceEventAction (RelativePointerEventCallback) device_:%p\n", device_);
+        IOLOG_INFO("ListHookedPointing::Item::replaceEventAction (RelativePointerEventCallback) device_:%p\n", device_);
 
         orig_relativePointerEventAction_ = callback;
         orig_relativePointerEventTarget_ = pointing->_relativePointerEventTarget;
@@ -268,7 +268,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       ScrollWheelEventCallback callback = reinterpret_cast<ScrollWheelEventCallback>(pointing->_scrollWheelEventAction);
 
       if (callback != hook_ScrollWheelEventCallback) {
-        IOLOG_INFO("HookedPointing::replaceEventAction (ScrollWheelEventCallback) device_:%p\n", device_);
+        IOLOG_INFO("ListHookedPointing::Item::replaceEventAction (ScrollWheelEventCallback) device_:%p\n", device_);
 
         orig_scrollWheelEventAction_ = callback;
         orig_scrollWheelEventTarget_ = pointing->_scrollWheelEventTarget;
