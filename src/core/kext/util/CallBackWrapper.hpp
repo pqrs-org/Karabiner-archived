@@ -43,13 +43,17 @@ namespace org_pqrs_KeyRemap4MacBook {
     KeyboardType keyboardType;
     bool repeat;
 
+    bool ex_iskeydown;
+
   private:
     Params_KeyboardEventCallBack(EventType et, Flags fl, KeyCode kc,
                                  CharCode cc, CharSet cs, OrigCharCode occ, OrigCharSet ocs,
                                  KeyboardType kt, bool r) :
       eventType(et), flags(fl), key(kc),
       charCode(cc), charSet(cs), origCharCode(occ), origCharSet(ocs),
-      keyboardType(kt), repeat(r) {}
+      keyboardType(kt), repeat(r) {
+      ex_iskeydown = eventType.isKeyDownOrModifierDown(key, flags);
+    }
   };
 
   class Params_UpdateEventFlagsCallback {
@@ -111,13 +115,17 @@ namespace org_pqrs_KeyRemap4MacBook {
     UInt64 guid;
     bool repeat;
 
+    bool ex_iskeydown;
+
   private:
     Params_KeyboardSpecialEventCallback(EventType et, Flags fl, ConsumerKeyCode ckc,
                                         unsigned int fv, UInt64 g,
                                         bool r) :
       eventType(et), flags(fl), key(ckc),
       flavor(fv), guid(g),
-      repeat(r) {}
+      repeat(r) {
+      ex_iskeydown = (eventType == EventType::DOWN);
+    }
   };
 
   class Params_RelativePointerEventCallback {

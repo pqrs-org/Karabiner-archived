@@ -60,13 +60,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! toKeys_) return false;
 
       if (remapParams.isremapped) return false;
-      if (! fromkeychecker_.isFromKey(remapParams.params.eventType, remapParams.params.key, FlagStatus::makeFlags(), fromKey_.key, fromKey_.flags)) return false;
+      if (! fromkeychecker_.isFromKey(remapParams.params.ex_iskeydown, remapParams.params.key, FlagStatus::makeFlags(), fromKey_.key, fromKey_.flags)) return false;
       remapParams.isremapped = true;
 
       // ------------------------------------------------------------
       // handle EventType & Modifiers
-      bool isKeyDown = remapParams.isKeyDownOrModifierDown();
-      if (isKeyDown) {
+      if (remapParams.params.ex_iskeydown) {
         FlagStatus::decrease(fromKey_.key.getModifierFlag());
       } else {
         FlagStatus::increase(fromKey_.key.getModifierFlag());
@@ -79,7 +78,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         case 1:
         {
-          EventType newEventType = isKeyDown ? EventType::DOWN : EventType::UP;
+          EventType newEventType = remapParams.params.ex_iskeydown ? EventType::DOWN : EventType::UP;
           ModifierFlag toModifierFlag = (*toKeys_)[0].key.getModifierFlag();
 
           if (toModifierFlag == ModifierFlag::NONE) {
@@ -91,7 +90,7 @@ namespace org_pqrs_KeyRemap4MacBook {
             // toModifier
             newEventType = EventType::MODIFY;
 
-            if (isKeyDown) {
+            if (remapParams.params.ex_iskeydown) {
               FlagStatus::increase((*toKeys_)[0].flags | toModifierFlag);
               FlagStatus::decrease(fromKey_.flags);
             } else {
@@ -116,7 +115,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
         default:
-          if (isKeyDown) {
+          if (remapParams.params.ex_iskeydown) {
             FlagStatus::temporary_decrease(fromKey_.flags);
 
             for (size_t i = 0; i < toKeys_->size(); ++i) {

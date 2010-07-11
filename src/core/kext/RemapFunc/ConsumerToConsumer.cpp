@@ -78,7 +78,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       if (remapParams.isremapped) return false;
-      if (! fromkeychecker_.isFromKey(remapParams.params.eventType, remapParams.params.key, FlagStatus::makeFlags(), fromKey_.key, fromKey_.flags)) return false;
+      if (! fromkeychecker_.isFromKey(remapParams.params.ex_iskeydown, remapParams.params.key, FlagStatus::makeFlags(), fromKey_.key, fromKey_.flags)) return false;
       remapParams.isremapped = true;
 
       // ----------------------------------------
@@ -105,7 +105,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
         default:
-          if (remapParams.params.eventType == EventType::DOWN) {
+          if (remapParams.params.ex_iskeydown) {
             for (size_t i = 0; i < toKeys_->size(); ++i) {
               FlagStatus::temporary_increase((*toKeys_)[i].flags);
               Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(EventType::DOWN,
@@ -117,6 +117,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
               EventOutputQueue::FireConsumer::fire(params);
               params.eventType = EventType::UP;
+              params.ex_iskeydown = false;
               EventOutputQueue::FireConsumer::fire(params);
 
               KeyboardRepeat::primitive_add(EventType::DOWN, params.flags, params.key);

@@ -229,7 +229,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     CommonData::setcurrent_keyboardType(params.keyboardType);
 
     // --------------------
-    if (params.eventType == EventType::DOWN) {
+    if (params.ex_iskeydown) {
       FlagStatus::sticky_clear();
     }
 

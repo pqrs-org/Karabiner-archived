@@ -64,8 +64,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     DoublePressModifier::remap(RemapParams& remapParams)
     {
-      bool isKeyDown = remapParams.isKeyDownOrModifierDown();
-
       bool result = keytokey_.remap(remapParams);
       if (! result) {
         pressCount_ = 0;
@@ -78,7 +76,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
       ic_.begin();
 
-      if (isKeyDown) {
+      if (remapParams.params.ex_iskeydown) {
         ++pressCount_;
       } else {
         if (pressCount_ >= 2) {

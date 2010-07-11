@@ -40,7 +40,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       // set lastkeycode_ if KeyUp.
-      if (! remapParams.isKeyDownOrModifierDown()) {
+      if (! remapParams.params.ex_iskeydown) {
         lastkeycode_ = remapParams.params.key;
       }
       return false;

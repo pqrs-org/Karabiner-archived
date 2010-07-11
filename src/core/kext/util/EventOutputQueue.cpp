@@ -308,8 +308,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     } else {
       params.eventType = EventType::DOWN;
+      params.ex_iskeydown = true;
       FireKey::fire(params);
       params.eventType = EventType::UP;
+      params.ex_iskeydown = false;
       FireKey::fire(params);
     }
   }

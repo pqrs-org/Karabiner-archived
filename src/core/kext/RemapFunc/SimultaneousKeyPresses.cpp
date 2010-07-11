@@ -151,7 +151,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
             if (params->key != key_) continue;
 
-            isKeyDown = (params->eventType).isKeyDownOrModifierDown(params->key, params->flags);
+            isKeyDown = params->ex_iskeydown;
             return p;
           }
 
