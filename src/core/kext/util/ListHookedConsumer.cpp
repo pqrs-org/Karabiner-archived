@@ -47,40 +47,38 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                         OSObject* sender,
                                                         void* refcon)
   {
+    if (! CommonData::eventLock) return;
+    IOLockWrapper::ScopedLock lk(CommonData::eventLock);
+    IOLockWrapper::ScopedLock lk2(ListHookedConsumer::instance().list_lock_);
+
     Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(EventType(eventType), Flags(flags), ConsumerKeyCode(key),
                                                                                                  flavor, guid, repeat));
     if (! ptr) return;
     Params_KeyboardSpecialEventCallback& params = *ptr;
 
-    {
-      if (! CommonData::eventLock) return;
-      IOLockWrapper::ScopedLock lk(CommonData::eventLock);
 
-      IOLockWrapper::ScopedLock lk2(ListHookedConsumer::instance().list_lock_);
+    IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, sender);
+    if (! kbd) return;
 
-      IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, sender);
-      if (! kbd) return;
+    ListHookedConsumer::Item* hc = static_cast<ListHookedConsumer::Item*>(ListHookedConsumer::instance().get_nolock(kbd));
+    if (! hc) return;
 
-      ListHookedConsumer::Item* hc = static_cast<ListHookedConsumer::Item*>(ListHookedConsumer::instance().get_nolock(kbd));
-      if (! hc) return;
+    // ------------------------------------------------------------
+    CommonData::setcurrent_ts(ts);
+    CommonData::setcurrent_vendorIDproductID(hc->getVendorID(), hc->getProductID());
 
-      // ------------------------------------------------------------
-      CommonData::setcurrent_ts(ts);
-      CommonData::setcurrent_vendorIDproductID(hc->getVendorID(), hc->getProductID());
+    // ------------------------------------------------------------
+    // Because we handle the key repeat ourself, drop the key repeat by hardware.
+    if (repeat) return;
 
-      // ------------------------------------------------------------
-      // Because we handle the key repeat ourself, drop the key repeat by hardware.
-      if (repeat) return;
-
-      // ------------------------------------------------------------
-      if (params.eventType == EventType::DOWN) {
-        CommonData::setcurrent_workspacedata();
-      }
-
-      // ------------------------------------------------------------
-      // clear temporary_count_
-      FlagStatus::set();
+    // ------------------------------------------------------------
+    if (params.eventType == EventType::DOWN) {
+      CommonData::setcurrent_workspacedata();
     }
+
+    // ------------------------------------------------------------
+    // clear temporary_count_
+    FlagStatus::set();
 
     // ------------------------------------------------------------
     EventInputQueue::push(params);

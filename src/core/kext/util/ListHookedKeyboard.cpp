@@ -54,6 +54,10 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                  OSObject* sender,
                                                  void* refcon)
   {
+    if (! CommonData::eventLock) return;
+    IOLockWrapper::ScopedLock lk(CommonData::eventLock);
+    IOLockWrapper::ScopedLock lk2(ListHookedKeyboard::instance().list_lock_);
+
     Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType(eventType),
                                                                                    Flags(flags),
                                                                                    KeyCode(key),
@@ -66,66 +70,60 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! ptr) return;
     Params_KeyboardEventCallBack& params = *ptr;
 
-    {
-      if (! CommonData::eventLock) return;
-      IOLockWrapper::ScopedLock lk(CommonData::eventLock);
 
-      IOLockWrapper::ScopedLock lk2(ListHookedKeyboard::instance().list_lock_);
+    IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, sender);
+    if (! kbd) return;
 
-      IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, sender);
-      if (! kbd) return;
+    ListHookedKeyboard::Item* hk = static_cast<ListHookedKeyboard::Item*>(ListHookedKeyboard::instance().get_nolock(kbd));
+    if (! hk) return;
 
-      ListHookedKeyboard::Item* hk = static_cast<ListHookedKeyboard::Item*>(ListHookedKeyboard::instance().get_nolock(kbd));
-      if (! hk) return;
-
-      // ------------------------------------------------------------
-      // Logitech Cordless Presenter (LCP) Hack
-      //
-      // When an LCP is first plugged in, it will send a CONTROL_L down event
-      // when the first pageup/pagedown key is pressed without sending a corresponding
-      // up event -- effectively rendering the device (and the Mac) useless until it is
-      // unplugged from the system.
-      //
-      // Similarly, when the volume keys are first pressed, a SHIFT_L down event
-      // is generated, with now up event.
-      //
-      // This code effectively throws these events away if they are received from an LCP.
-      //
-      // *** LCP has 6 keys (Page Up, Page Down, a 'B' key, an 'Esc' key, and volume up / down keys). ***
-      // *** So, we can drop CONTROL_L and SHIFT_L without a problem. ***
-      if (hk->isEqualVendorIDProductID(DeviceVendorID(0x046d), DeviceProductID(0xc515))) {
-        if (params.key == KeyCode::CONTROL_L) return;
-        if (params.key == KeyCode::SHIFT_L) return;
-      }
-
-      // ------------------------------------------------------------
-      RemapClassManager::remap_setkeyboardtype(params.keyboardType);
-      CommonData::setcurrent_ts(ts);
-      CommonData::setcurrent_vendorIDproductID(hk->getVendorID(), hk->getProductID());
-      CommonData::setcurrent_keyboardType(params.keyboardType);
-
-      // ------------------------------------------------------------
-      // Because we handle the key repeat ourself, drop the key repeat by hardware.
-      if (repeat) return;
-
-      // ------------------------------------------------------------
-      if (params.eventType.isKeyDownOrModifierDown(params.key, params.flags)) {
-        CommonData::setcurrent_workspacedata();
-      }
-
-      // ------------------------------------------------------------
-      // clear temporary_count_
-      //
-      // Don't call FlagStatus::set(key, flags) here.
-      // If SimultaneousKeyPresses is enabled, keys may be dropped.
-      // For example, Shift_L+Shift_R to Space is enabled, Shift_L and Shift_R may be dropped.
-      // If we call FlagStatus::set(key, flags) here, dropped keys are kept as pushed status.
-      // So, call FlagStatus::set(key, flags) after EventInputQueue.
-      FlagStatus::set();
-
-      // ------------------------------------------------------------
-      params.key.normalizeKey(params.flags, params.eventType, params.keyboardType);
+    // ------------------------------------------------------------
+    // Logitech Cordless Presenter (LCP) Hack
+    //
+    // When an LCP is first plugged in, it will send a CONTROL_L down event
+    // when the first pageup/pagedown key is pressed without sending a corresponding
+    // up event -- effectively rendering the device (and the Mac) useless until it is
+    // unplugged from the system.
+    //
+    // Similarly, when the volume keys are first pressed, a SHIFT_L down event
+    // is generated, with now up event.
+    //
+    // This code effectively throws these events away if they are received from an LCP.
+    //
+    // *** LCP has 6 keys (Page Up, Page Down, a 'B' key, an 'Esc' key, and volume up / down keys). ***
+    // *** So, we can drop CONTROL_L and SHIFT_L without a problem. ***
+    if (hk->isEqualVendorIDProductID(DeviceVendorID(0x046d), DeviceProductID(0xc515))) {
+      if (params.key == KeyCode::CONTROL_L) return;
+      if (params.key == KeyCode::SHIFT_L) return;
     }
+
+    // ------------------------------------------------------------
+    RemapClassManager::remap_setkeyboardtype(params.keyboardType);
+    CommonData::setcurrent_ts(ts);
+    CommonData::setcurrent_vendorIDproductID(hk->getVendorID(), hk->getProductID());
+    CommonData::setcurrent_keyboardType(params.keyboardType);
+
+    // ------------------------------------------------------------
+    // Because we handle the key repeat ourself, drop the key repeat by hardware.
+    if (repeat) return;
+
+    // ------------------------------------------------------------
+    if (params.eventType.isKeyDownOrModifierDown(params.key, params.flags)) {
+      CommonData::setcurrent_workspacedata();
+    }
+
+    // ------------------------------------------------------------
+    // clear temporary_count_
+    //
+    // Don't call FlagStatus::set(key, flags) here.
+    // If SimultaneousKeyPresses is enabled, keys may be dropped.
+    // For example, Shift_L+Shift_R to Space is enabled, Shift_L and Shift_R may be dropped.
+    // If we call FlagStatus::set(key, flags) here, dropped keys are kept as pushed status.
+    // So, call FlagStatus::set(key, flags) after EventInputQueue.
+    FlagStatus::set();
+
+    // ------------------------------------------------------------
+    params.key.normalizeKey(params.flags, params.eventType, params.keyboardType);
 
     // ------------------------------------------------------------
     EventInputQueue::push(params);
