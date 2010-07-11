@@ -200,11 +200,24 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
           break;
         }
+
         case ParamsUnion::KEYBOARD_SPECIAL:
-          if ((p->params).params.params_KeyboardSpecialEventCallback) {
-            ListHookedConsumer::hook_KeyboardSpecialEventCallback_queued(*((p->params).params.params_KeyboardSpecialEventCallback));
+        {
+          Params_KeyboardSpecialEventCallback* params = (p->params).params.params_KeyboardSpecialEventCallback;
+          if (params) {
+            IOLockWrapper::ScopedLock lk2(CommonData::eventLock);
+
+            if (params->eventType == EventType::DOWN) {
+              EventWatcher::on();
+            }
+
+            // ------------------------------------------------------------
+            NumHeldDownKeys::set(params->eventType);
+
+            Core::remap_KeyboardSpecialEventCallback(*params);
           }
           break;
+        }
 
         case ParamsUnion::RELATIVE_POINTER:
           if ((p->params).params.params_RelativePointerEventCallback) {

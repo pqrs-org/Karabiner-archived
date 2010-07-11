@@ -32,8 +32,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     static ListHookedConsumer& instance(void);
 
-    static void hook_KeyboardSpecialEventCallback_queued(Params_KeyboardSpecialEventCallback& params);
-
     void apply(const Params_KeyboardSpecialEventCallback& params);
     void disableNumLock(void);
 

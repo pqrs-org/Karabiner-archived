@@ -84,22 +84,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     EventInputQueue::push(params);
   }
 
-  void
-  ListHookedConsumer::hook_KeyboardSpecialEventCallback_queued(Params_KeyboardSpecialEventCallback& params)
-  {
-    if (! CommonData::eventLock) return;
-    IOLockWrapper::ScopedLock lk(CommonData::eventLock);
-
-    if (params.eventType == EventType::DOWN) {
-      EventWatcher::on();
-    }
-
-    // ------------------------------------------------------------
-    NumHeldDownKeys::set(params.eventType);
-
-    Core::remap_KeyboardSpecialEventCallback(params);
-  }
-
   bool
   ListHookedConsumer::Item::refresh_callback(void)
   {
