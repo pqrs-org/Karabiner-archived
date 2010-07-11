@@ -1,12 +1,9 @@
 #include "CommonData.hpp"
 #include "Config.hpp"
-#include "Core.hpp"
 #include "EventInputQueue.hpp"
-#include "EventWatcher.hpp"
 #include "FlagStatus.hpp"
 #include "IOLockWrapper.hpp"
 #include "ListHookedConsumer.hpp"
-#include "NumHeldDownKeys.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace {
@@ -35,55 +32,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------------------------------------
-  void
-  ListHookedConsumer::hook_KeyboardSpecialEventCallback(OSObject* target,
-                                                        unsigned int eventType,
-                                                        unsigned int flags,
-                                                        unsigned int key,
-                                                        unsigned int flavor,
-                                                        UInt64 guid,
-                                                        bool repeat,
-                                                        AbsoluteTime ts,
-                                                        OSObject* sender,
-                                                        void* refcon)
-  {
-    if (! CommonData::eventLock) return;
-    IOLockWrapper::ScopedLock lk(CommonData::eventLock);
-    IOLockWrapper::ScopedLock lk2(ListHookedConsumer::instance().list_lock_);
-
-    Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(EventType(eventType), Flags(flags), ConsumerKeyCode(key),
-                                                                                                 flavor, guid, repeat));
-    if (! ptr) return;
-    Params_KeyboardSpecialEventCallback& params = *ptr;
-
-
-    IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, sender);
-    if (! kbd) return;
-
-    ListHookedConsumer::Item* hc = static_cast<ListHookedConsumer::Item*>(ListHookedConsumer::instance().get_nolock(kbd));
-    if (! hc) return;
-
-    // ------------------------------------------------------------
-    CommonData::setcurrent_ts(ts);
-    CommonData::setcurrent_vendorIDproductID(hc->getVendorID(), hc->getProductID());
-
-    // ------------------------------------------------------------
-    // Because we handle the key repeat ourself, drop the key repeat by hardware.
-    if (repeat) return;
-
-    // ------------------------------------------------------------
-    if (params.eventType == EventType::DOWN) {
-      CommonData::setcurrent_workspacedata();
-    }
-
-    // ------------------------------------------------------------
-    // clear temporary_count_
-    FlagStatus::set();
-
-    // ------------------------------------------------------------
-    EventInputQueue::push(params);
-  }
-
   bool
   ListHookedConsumer::Item::refresh_callback(void)
   {
@@ -139,7 +87,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! kbd) return false;
 
     KeyboardSpecialEventCallback callback = reinterpret_cast<KeyboardSpecialEventCallback>(kbd->_keyboardSpecialEventAction);
-    if (callback == hook_KeyboardSpecialEventCallback) return false;
+    if (callback == EventInputQueue::push_KeyboardSpecialEventCallback) return false;
 
     // ------------------------------------------------------------
     IOLOG_INFO("HookedConsumer::replaceEventAction device_:%p\n", device_);
@@ -147,7 +95,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     orig_keyboardSpecialEventAction_ = callback;
     orig_keyboardSpecialEventTarget_ = kbd->_keyboardSpecialEventTarget;
 
-    kbd->_keyboardSpecialEventAction = reinterpret_cast<KeyboardSpecialEventAction>(hook_KeyboardSpecialEventCallback);
+    kbd->_keyboardSpecialEventAction = reinterpret_cast<KeyboardSpecialEventAction>(EventInputQueue::push_KeyboardSpecialEventCallback);
 
     return true;
   }
@@ -163,7 +111,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! kbd) return false;
 
     KeyboardSpecialEventCallback callback = reinterpret_cast<KeyboardSpecialEventCallback>(kbd->_keyboardSpecialEventAction);
-    if (callback != hook_KeyboardSpecialEventCallback) return false;
+    if (callback != EventInputQueue::push_KeyboardSpecialEventCallback) return false;
 
     // ----------------------------------------
     IOLOG_INFO("HookedConsumer::restoreEventAction device_:%p\n", device_);

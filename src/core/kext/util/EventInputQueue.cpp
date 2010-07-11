@@ -1,3 +1,4 @@
+#include "ButtonStatus.hpp"
 #include "CommonData.hpp"
 #include "Config.hpp"
 #include "Core.hpp"
@@ -107,12 +108,99 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
+  // ======================================================================
   void
-  EventInputQueue::push(const Params_KeyboardEventCallBack& p)
+  EventInputQueue::push_KeyboardEventCallback(OSObject* target,
+                                              unsigned int eventType,
+                                              unsigned int flags,
+                                              unsigned int key,
+                                              unsigned int charCode,
+                                              unsigned int charSet,
+                                              unsigned int origCharCode,
+                                              unsigned int origCharSet,
+                                              unsigned int keyboardType,
+                                              bool repeat,
+                                              AbsoluteTime ts,
+                                              OSObject* sender,
+                                              void* refcon)
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
 
-    enqueue_(p);
+    // ------------------------------------------------------------
+    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType(eventType),
+                                                                                   Flags(flags),
+                                                                                   KeyCode(key),
+                                                                                   CharCode(charCode),
+                                                                                   CharSet(charSet),
+                                                                                   OrigCharCode(origCharCode),
+                                                                                   OrigCharSet(origCharSet),
+                                                                                   KeyboardType(keyboardType),
+                                                                                   repeat));
+    if (! ptr) return;
+    Params_KeyboardEventCallBack& params = *ptr;
+
+    RemapClassManager::remap_setkeyboardtype(params.keyboardType);
+
+    // ------------------------------------------------------------
+    {
+      IOLockWrapper::ScopedLock lk_device(ListHookedKeyboard::instance().getListLock());
+
+      IOHIKeyboard* device = OSDynamicCast(IOHIKeyboard, sender);
+      if (! device) return;
+
+      ListHookedKeyboard::Item* item = static_cast<ListHookedKeyboard::Item*>(ListHookedKeyboard::instance().get_nolock(device));
+      if (! item) return;
+
+      // ------------------------------------------------------------
+      // Logitech Cordless Presenter (LCP) Hack
+      //
+      // When an LCP is first plugged in, it will send a CONTROL_L down event
+      // when the first pageup/pagedown key is pressed without sending a corresponding
+      // up event -- effectively rendering the device (and the Mac) useless until it is
+      // unplugged from the system.
+      //
+      // Similarly, when the volume keys are first pressed, a SHIFT_L down event
+      // is generated, with now up event.
+      //
+      // This code effectively throws these events away if they are received from an LCP.
+      //
+      // *** LCP has 6 keys (Page Up, Page Down, a 'B' key, an 'Esc' key, and volume up / down keys). ***
+      // *** So, we can drop CONTROL_L and SHIFT_L without a problem. ***
+      if (item->isEqualVendorIDProductID(DeviceVendorID(0x046d), DeviceProductID(0xc515))) {
+        if (params.key == KeyCode::CONTROL_L) return;
+        if (params.key == KeyCode::SHIFT_L) return;
+      }
+
+      // ------------------------------------------------------------
+      CommonData::setcurrent_ts(ts);
+      CommonData::setcurrent_vendorIDproductID(item->getVendorID(), item->getProductID());
+      CommonData::setcurrent_keyboardType(params.keyboardType);
+    }
+
+    // ------------------------------------------------------------
+    // Because we handle the key repeat ourself, drop the key repeat by hardware.
+    if (repeat) return;
+
+    // ------------------------------------------------------------
+    if (params.eventType.isKeyDownOrModifierDown(params.key, params.flags)) {
+      CommonData::setcurrent_workspacedata();
+    }
+
+    // ------------------------------------------------------------
+    // clear temporary_count_
+    //
+    // Don't call FlagStatus::set(key, flags) here.
+    // If SimultaneousKeyPresses is enabled, keys may be dropped.
+    // For example, Shift_L+Shift_R to Space is enabled, Shift_L and Shift_R may be dropped.
+    // If we call FlagStatus::set(key, flags) here, dropped keys are kept as pushed status.
+    // So, call FlagStatus::set(key, flags) after EventInputQueue.
+    FlagStatus::set();
+
+    // ------------------------------------------------------------
+    params.key.normalizeKey(params.flags, params.eventType, params.keyboardType);
+
+    // ------------------------------------------------------------
+    enqueue_(params);
 
     // remap keys
     RemapClassManager::remap_simultaneouskeypresses();
@@ -121,11 +209,170 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  EventInputQueue::push(const Params_KeyboardSpecialEventCallback& p)
+  EventInputQueue::push_UpdateEventFlagsCallback(OSObject* target,
+                                                 unsigned flags,
+                                                 OSObject* sender,
+                                                 void* refcon)
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
 
-    enqueue_(p);
+    // ------------------------------------------------------------
+    Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(flags));
+    if (! ptr) return;
+    Params_UpdateEventFlagsCallback& params = *ptr;
+
+    // ------------------------------------------------------------
+    // update device priority by calling ListHookedKeyboard::instance().get(kbd).
+    {
+      IOLockWrapper::ScopedLock lk_device(ListHookedKeyboard::instance().getListLock());
+
+      IOHIKeyboard* device = OSDynamicCast(IOHIKeyboard, sender);
+      if (! device) return;
+
+      ListHookedKeyboard::Item* item = static_cast<ListHookedKeyboard::Item*>(ListHookedKeyboard::instance().get_nolock(device));
+      if (! item) return;
+
+      // ------------------------------------------------------------
+      CommonData::setcurrent_vendorIDproductID(item->getVendorID(), item->getProductID());
+    }
+
+    params.log();
+    // Don't push_back for UpdateEventFlagsCallback.
+  }
+
+  // ----------------------------------------------------------------------
+  void
+  EventInputQueue::push_KeyboardSpecialEventCallback(OSObject* target,
+                                                     unsigned int eventType,
+                                                     unsigned int flags,
+                                                     unsigned int key,
+                                                     unsigned int flavor,
+                                                     UInt64 guid,
+                                                     bool repeat,
+                                                     AbsoluteTime ts,
+                                                     OSObject* sender,
+                                                     void* refcon)
+  {
+    IOLockWrapper::ScopedLock lk(timer_.getlock());
+
+    // ------------------------------------------------------------
+    Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(EventType(eventType), Flags(flags), ConsumerKeyCode(key),
+                                                                                                 flavor, guid, repeat));
+    if (! ptr) return;
+    Params_KeyboardSpecialEventCallback& params = *ptr;
+
+    // ------------------------------------------------------------
+    {
+      IOLockWrapper::ScopedLock lk_device(ListHookedKeyboard::instance().getListLock());
+
+      IOHIKeyboard* device = OSDynamicCast(IOHIKeyboard, sender);
+      if (! device) return;
+
+      ListHookedConsumer::Item* item = static_cast<ListHookedConsumer::Item*>(ListHookedConsumer::instance().get_nolock(device));
+
+      // ------------------------------------------------------------
+      CommonData::setcurrent_ts(ts);
+      CommonData::setcurrent_vendorIDproductID(item->getVendorID(), item->getProductID());
+    }
+
+    // ------------------------------------------------------------
+    // Because we handle the key repeat ourself, drop the key repeat by hardware.
+    if (repeat) return;
+
+    // ------------------------------------------------------------
+    if (params.eventType == EventType::DOWN) {
+      CommonData::setcurrent_workspacedata();
+    }
+
+    // ------------------------------------------------------------
+    // clear temporary_count_
+    FlagStatus::set();
+
+    // ------------------------------------------------------------
+    enqueue_(params);
+
+    // remap keys
+    RemapClassManager::remap_simultaneouskeypresses();
+
+    setTimer();
+  }
+
+  // ----------------------------------------------------------------------
+  void
+  EventInputQueue::push_RelativePointerEventCallback(OSObject* target,
+                                                     int buttons,
+                                                     int dx,
+                                                     int dy,
+                                                     AbsoluteTime ts,
+                                                     OSObject* sender,
+                                                     void* refcon)
+  {
+    IOLockWrapper::ScopedLock lk(timer_.getlock());
+
+    // ------------------------------------------------------------
+    Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, dx, dy));
+    if (! ptr) return;
+    Params_RelativePointerEventCallback& params = *ptr;
+
+    // ------------------------------------------------------------
+    Buttons justPressed;
+    Buttons justReleased;
+
+    {
+      IOLockWrapper::ScopedLock lk_device(ListHookedKeyboard::instance().getListLock());
+
+      IOHIPointing* device = OSDynamicCast(IOHIPointing, sender);
+      if (! device) return;
+
+      ListHookedPointing::Item* item = static_cast<ListHookedPointing::Item*>(ListHookedPointing::instance().get_nolock(device));
+      if (! item) return;
+
+      // ------------------------------------------------------------
+      CommonData::setcurrent_ts(ts);
+      CommonData::setcurrent_vendorIDproductID(item->getVendorID(), item->getProductID());
+
+      // ------------------------------------------------------------
+      justPressed = params.buttons.justPressed(item->get_previousbuttons());
+      justReleased = params.buttons.justReleased(item->get_previousbuttons());
+      item->set_previousbuttons(buttons);
+    }
+
+    if (justPressed != Buttons(0)) {
+      CommonData::setcurrent_workspacedata();
+    }
+
+    // ------------------------------------------------------------
+    // clear temporary_count_
+    if (! config.general_lazy_modifiers_with_mouse_event) {
+      FlagStatus::set();
+    }
+
+    // ------------------------------------------------------------
+    // divide an event into button and cursormove events.
+    params.dx = 0;
+    params.dy = 0;
+    params.ex_button = PointingButton::NONE;
+    params.ex_isbuttondown = false;
+
+    for (int i = 0; i < ButtonStatus::MAXNUM; ++i) {
+      PointingButton btn(1 << i);
+      if (justPressed.isOn(btn)) {
+        params.ex_button = btn;
+        params.ex_isbuttondown = true;
+        enqueue_(params);
+      }
+      if (justReleased.isOn(btn)) {
+        params.ex_button = btn;
+        params.ex_isbuttondown = false;
+        enqueue_(params);
+      }
+    }
+    if (dx != 0 || dy != 0) {
+      params.dx = dx;
+      params.dy = dy;
+      params.ex_button = PointingButton::NONE;
+      enqueue_(params);
+    }
 
     // remap keys
     RemapClassManager::remap_simultaneouskeypresses();
@@ -134,11 +381,54 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  EventInputQueue::push(const Params_RelativePointerEventCallback& p)
+  EventInputQueue::push_ScrollWheelEventCallback(OSObject* target,
+                                                 short deltaAxis1,
+                                                 short deltaAxis2,
+                                                 short deltaAxis3,
+                                                 IOFixed fixedDelta1,
+                                                 IOFixed fixedDelta2,
+                                                 IOFixed fixedDelta3,
+                                                 SInt32 pointDelta1,
+                                                 SInt32 pointDelta2,
+                                                 SInt32 pointDelta3,
+                                                 SInt32 options,
+                                                 AbsoluteTime ts,
+                                                 OSObject* sender,
+                                                 void* refcon)
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
 
-    enqueue_(p);
+    // ------------------------------------------------------------
+    Params_ScrollWheelEventCallback::auto_ptr ptr(Params_ScrollWheelEventCallback::alloc(deltaAxis1, deltaAxis2, deltaAxis3,
+                                                                                         fixedDelta1, fixedDelta2, fixedDelta3,
+                                                                                         pointDelta1, pointDelta2, pointDelta3,
+                                                                                         options));
+    if (! ptr) return;
+    Params_ScrollWheelEventCallback& params = *ptr;
+
+    // ------------------------------------------------------------
+    {
+      IOLockWrapper::ScopedLock lk_device(ListHookedKeyboard::instance().getListLock());
+
+      IOHIPointing* device = OSDynamicCast(IOHIPointing, sender);
+      if (! device) return;
+
+      ListHookedPointing::Item* item = static_cast<ListHookedPointing::Item*>(ListHookedPointing::instance().get_nolock(device));
+      if (! item) return;
+
+      // ------------------------------------------------------------
+      CommonData::setcurrent_ts(ts);
+      CommonData::setcurrent_vendorIDproductID(item->getVendorID(), item->getProductID());
+    }
+
+    // ------------------------------------------------------------
+    // clear temporary_count_
+    if (! config.general_lazy_modifiers_with_mouse_event) {
+      FlagStatus::set();
+    }
+
+    // ------------------------------------------------------------
+    enqueue_(params);
 
     // remap keys
     RemapClassManager::remap_simultaneouskeypresses();
@@ -146,19 +436,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     setTimer();
   }
 
-  void
-  EventInputQueue::push(const Params_ScrollWheelEventCallback& p)
-  {
-    IOLockWrapper::ScopedLock lk(timer_.getlock());
-
-    enqueue_(p);
-
-    // remap keys
-    RemapClassManager::remap_simultaneouskeypresses();
-
-    setTimer();
-  }
-
+  // ======================================================================
   void
   EventInputQueue::fire(OSObject* /*notuse_owner*/, IOTimerEventSource* /*notuse_sender*/)
   {
