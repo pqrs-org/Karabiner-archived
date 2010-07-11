@@ -148,6 +148,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   ListHookedConsumer::Item::replaceEventAction(void)
   {
+    IOLockWrapper::ScopedLock lk(replacerestore_lock_);
+
     if (! device_) return false;
 
     IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, device_);
@@ -170,6 +172,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   ListHookedConsumer::Item::restoreEventAction(void)
   {
+    IOLockWrapper::ScopedLock lk(replacerestore_lock_);
+
     if (! device_) return false;
 
     IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, device_);
