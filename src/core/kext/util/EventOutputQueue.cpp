@@ -1,5 +1,6 @@
 #include "Config.hpp"
 #include "EventOutputQueue.hpp"
+#include "ListHookedPointing.hpp"
 #include "PressDownKeys.hpp"
 #include "RemapClass.hpp"
 #include "VirtualKey.hpp"
@@ -123,11 +124,21 @@ namespace org_pqrs_KeyRemap4MacBook {
         CALL_APPLY((p->params).params.params_KeyboardSpecialEventCallback);
         break;
       case ParamsUnion::RELATIVE_POINTER:
-        CALL_APPLY((p->params).params.params_RelativePointerEventCallback);
+      {
+        Params_RelativePointerEventCallback* params = (p->params).params.params_RelativePointerEventCallback;
+        if (params) {
+          ListHookedPointing::instance().apply(*params);
+        }
         break;
+      }
       case ParamsUnion::SCROLL_POINTER:
-        CALL_APPLY((p->params).params.params_ScrollWheelEventCallback);
+      {
+        Params_ScrollWheelEventCallback* params = (p->params).params.params_ScrollWheelEventCallback;
+        if (params) {
+          ListHookedPointing::instance().apply(*params);
+        }
         break;
+      }
     }
 
 #undef CALL_APPLY

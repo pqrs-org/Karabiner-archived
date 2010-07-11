@@ -152,8 +152,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   private:
     Params_RelativePointerEventCallback(Buttons bt, int x, int y, PointingButton ex_btn, bool ex_isdown) : buttons(bt), dx(x), dy(y), ex_button(ex_btn), ex_isbuttondown(ex_isdown) {}
-
-    void apply(void) const;
   };
   class Params_ScrollWheelEventCallback {
     friend class EventOutputQueue;
@@ -207,8 +205,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       fixedDelta1(fd1), fixedDelta2(fd2), fixedDelta3(fd3),
       pointDelta1(pd1), pointDelta2(pd2), pointDelta3(pd3),
       options(op) {}
-
-    void apply(void) const;
   };
 }
 

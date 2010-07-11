@@ -46,15 +46,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     void refresh_callback(void);
 
   protected:
-    ListHookedDevice(void) : last_(NULL), list_(NULL), lock_(NULL) {}
+    ListHookedDevice(void) : last_(NULL), list_(NULL), list_lock_(NULL) {}
     virtual ~ListHookedDevice(void) {}
 
-  private:
+  protected:
     ListHookedDevice::Item* get_nolock(const IOHIDevice* device);
 
     const IOHIDevice* last_;
     List* list_;
-    IOLock* lock_;
+    IOLock* list_lock_;
   };
 }
 
