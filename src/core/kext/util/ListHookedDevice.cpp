@@ -170,10 +170,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (! list_) return;
 
-    ListHookedDevice::Item* item = get(p);
+    ListHookedDevice::Item* item = get_nolock(p);
     if (! item) return;
 
     list_->erase(item);
+
     // Call reset whenever the device status is changed.
     reset();
   }

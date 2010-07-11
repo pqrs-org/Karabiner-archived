@@ -29,6 +29,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   ListHookedConsumer::Item::~Item(void)
   {
+    IOLOG_INFO("ListHookedConsumer::Item::~Item()\n");
     IOLockWrapper::free(replacerestore_lock_);
     restoreEventAction();
   }
