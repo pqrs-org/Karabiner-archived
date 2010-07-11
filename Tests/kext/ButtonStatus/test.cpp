@@ -24,29 +24,22 @@ TEST(ButtonStatus, all) {
   // ------------------------------------------------------------
   // set
   {
-    Buttons justPressed(1 << 3);
-    Buttons justReleased(1 << 11);
-    ButtonStatus::set(justPressed, justReleased);
+    ButtonStatus::set((1 << 3), true);
     EXPECT_EQ(Buttons((1 << 3)), ButtonStatus::makeButtons());
 
-    justPressed = Buttons(1 << 11);
-    justReleased = Buttons(0);
-    ButtonStatus::set(justPressed, justReleased);
+    ButtonStatus::set((1 << 11), false);
     EXPECT_EQ(Buttons((1 << 3)), ButtonStatus::makeButtons());
 
-    justPressed = Buttons(1 << 11);
-    justReleased = Buttons(0);
-    ButtonStatus::set(justPressed, justReleased);
+    ButtonStatus::set((1 << 11), true);
+    EXPECT_EQ(Buttons((1 << 3)), ButtonStatus::makeButtons());
+
+    ButtonStatus::set((1 << 11), true);
     EXPECT_EQ(Buttons((1 << 3) | (1 << 11)), ButtonStatus::makeButtons());
 
-    justPressed = Buttons(0);
-    justReleased = Buttons(1 << 3);
-    ButtonStatus::set(justPressed, justReleased);
+    ButtonStatus::set((1 << 3), false);
     EXPECT_EQ(Buttons((1 << 11)), ButtonStatus::makeButtons());
 
-    justPressed = Buttons(1 << 1);
-    justReleased = Buttons(0);
-    ButtonStatus::set(justPressed, justReleased);
+    ButtonStatus::set((1 << 1), true);
     EXPECT_EQ(Buttons((1 << 1) | (1 << 11)), ButtonStatus::makeButtons());
   }
 
