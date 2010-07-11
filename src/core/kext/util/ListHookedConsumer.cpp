@@ -193,4 +193,70 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     return true;
   }
+
+  // ======================================================================
+  void
+  ListHookedConsumer::Item::apply(const Params_KeyboardSpecialEventCallback& params)
+  {
+    if (params.key >= ConsumerKeyCode::VK__BEGIN__) {
+      // Invalid keycode
+      IOLOG_ERROR("%s invalid key:%d\n", __PRETTY_FUNCTION__, params.key.get());
+      return;
+    }
+    if (params.flags.isVirtualModifiersOn()) {
+      IOLOG_ERROR("%s invalid flags:%d\n", __PRETTY_FUNCTION__, params.flags.get());
+      return;
+    }
+
+    // ------------------------------------------------------------
+    KeyboardSpecialEventCallback callback = orig_keyboardSpecialEventAction_;
+    if (! callback) return;
+
+    OSObject* target = orig_keyboardSpecialEventTarget_;
+    if (! target) return;
+
+    OSObject* sender = OSDynamicCast(OSObject, device_);
+    if (! sender) return;
+
+    const AbsoluteTime& ts = CommonData::getcurrent_ts();
+    OSObject* refcon = NULL;
+
+    params.log("sending");
+    callback(target, params.eventType.get(), params.flags.get(), params.key.get(),
+             params.flavor, params.guid, params.repeat, ts, sender, refcon);
+
+    // --------------------
+    if (params.eventType == EventType::DOWN) {
+      FlagStatus::sticky_clear();
+    }
+  }
+
+  void
+  ListHookedConsumer::Item::disableNumLock(void)
+  {
+    IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, device_);
+    if (! kbd) return;
+
+    if (kbd->numLock()) {
+      kbd->setNumLock(false);
+    }
+  }
+
+  void
+  ListHookedConsumer::apply(const Params_KeyboardSpecialEventCallback& params)
+  {
+    ListHookedConsumer::Item* p = get();
+    if (p) {
+      p->apply(params);
+    }
+  }
+
+  void
+  ListHookedConsumer::disableNumLock(void)
+  {
+    ListHookedConsumer::Item* p = get();
+    if (p) {
+      p->disableNumLock();
+    }
+  }
 }

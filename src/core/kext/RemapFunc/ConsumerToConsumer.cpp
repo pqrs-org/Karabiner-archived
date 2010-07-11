@@ -72,15 +72,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
         }
         if (! tonumlock) {
-          ListHookedConsumer::Item* hk = ListHookedConsumer::instance().get();
-          if (hk) {
-            IOHIKeyboard* kbd = hk->get();
-            if (kbd) {
-              if (kbd->numLock()) {
-                kbd->setNumLock(false);
-              }
-            }
-          }
+          ListHookedConsumer::instance().disableNumLock();
         }
       }
 

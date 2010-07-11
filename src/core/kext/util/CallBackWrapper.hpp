@@ -50,8 +50,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       eventType(et), flags(fl), key(kc),
       charCode(cc), charSet(cs), origCharCode(occ), origCharSet(ocs),
       keyboardType(kt), repeat(r) {}
-
-    void apply(void) const;
   };
 
   class Params_UpdateEventFlagsCallback {
@@ -74,8 +72,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   private:
     Params_UpdateEventFlagsCallback(Flags fl) : flags(fl) {}
-
-    void apply(void) const;
   };
 
   class Params_KeyboardSpecialEventCallback {
@@ -122,8 +118,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       eventType(et), flags(fl), key(ckc),
       flavor(fv), guid(g),
       repeat(r) {}
-
-    void apply(void) const;
   };
 
   class Params_RelativePointerEventCallback {
