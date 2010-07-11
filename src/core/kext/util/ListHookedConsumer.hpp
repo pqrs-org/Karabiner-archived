@@ -31,13 +31,23 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
 
     static ListHookedConsumer& instance(void);
-    ListHookedConsumer::Item* get(void) { return static_cast<ListHookedConsumer::Item*>(ListHookedDevice::get()); }
-    ListHookedConsumer::Item* get(const IOHIKeyboard* kbd) { return static_cast<ListHookedConsumer::Item*>(ListHookedDevice::get(kbd)); }
 
     static void hook_KeyboardSpecialEventCallback_queued(Params_KeyboardSpecialEventCallback& params);
 
     void apply(const Params_KeyboardSpecialEventCallback& params);
     void disableNumLock(void);
+
+  private:
+    static void hook_KeyboardSpecialEventCallback(OSObject* target,
+                                                  unsigned int eventType,
+                                                  unsigned int flags,
+                                                  unsigned int key,
+                                                  unsigned int flavor,
+                                                  UInt64 guid,
+                                                  bool repeat,
+                                                  AbsoluteTime ts,
+                                                  OSObject* sender,
+                                                  void* refcon);
   };
 }
 

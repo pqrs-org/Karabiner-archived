@@ -40,8 +40,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     void push_back(ListHookedDevice::Item* newp);
     void erase(IOHIDevice* p);
 
-    ListHookedDevice::Item* get(const IOHIDevice* device);
-    ListHookedDevice::Item* get(void);
+    ListHookedDevice::Item* get_nolock(const IOHIDevice* device);
+    ListHookedDevice::Item* get_nolock(void);
 
     void refresh_callback(void);
 
@@ -50,8 +50,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     virtual ~ListHookedDevice(void) {}
 
   protected:
-    ListHookedDevice::Item* get_nolock(const IOHIDevice* device);
-
     const IOHIDevice* last_;
     List* list_;
     IOLock* list_lock_;

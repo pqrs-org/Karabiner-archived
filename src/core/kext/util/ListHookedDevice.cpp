@@ -190,18 +190,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   ListHookedDevice::Item*
-  ListHookedDevice::get(const IOHIDevice* device)
+  ListHookedDevice::get_nolock(void)
   {
-    IOLockWrapper::ScopedLock lk(list_lock_);
-
-    return get_nolock(device);
-  }
-
-  ListHookedDevice::Item*
-  ListHookedDevice::get(void)
-  {
-    IOLockWrapper::ScopedLock lk(list_lock_);
-
     if (! list_) return NULL;
 
     // ----------------------------------------------------------------------

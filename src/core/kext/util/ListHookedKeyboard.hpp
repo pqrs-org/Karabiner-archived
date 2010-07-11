@@ -60,9 +60,6 @@ namespace org_pqrs_KeyRemap4MacBook {
                                               unsigned flags,
                                               OSObject* sender,
                                               void* refcon);
-
-    ListHookedKeyboard::Item* get(void) { return static_cast<ListHookedKeyboard::Item*>(ListHookedDevice::get()); }
-    ListHookedKeyboard::Item* get(const IOHIKeyboard* kbd) { return static_cast<ListHookedKeyboard::Item*>(ListHookedDevice::get(kbd)); }
   };
 }
 
