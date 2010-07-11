@@ -41,9 +41,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       {
         IOLockWrapper::ScopedLock lk(timer_refresh.getlock());
 
-        ListHookedKeyboard::instance().refresh();
-        ListHookedConsumer::instance().refresh();
-        ListHookedPointing::instance().refresh();
+        ListHookedKeyboard::instance().refresh_callback();
+        ListHookedConsumer::instance().refresh_callback();
+        ListHookedPointing::instance().refresh_callback();
 
         timer_refresh.setTimeoutMS(REFRESH_DEVICE_INTERVAL);
       }
@@ -116,9 +116,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       IOLOG_INFO("notifierfunc_hookKeyboard newService:%p\n", newService);
 
-      IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, newService);
-      ListHookedKeyboard::instance().append(kbd);
-      ListHookedConsumer::instance().append(kbd);
+      IOHIDevice* device = OSDynamicCast(IOHIDevice, newService);
+      if (! device) return false;
+      if (! OSDynamicCast(IOHIKeyboard, device)) return false;
+
+      ListHookedKeyboard::instance().push_back(new ListHookedKeyboard::Item(device));
+      ListHookedConsumer::instance().push_back(new ListHookedConsumer::Item(device));
       return true;
     }
 
@@ -127,9 +130,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       IOLOG_INFO("notifierfunc_unhookKeyboard newService:%p\n", newService);
 
-      IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, newService);
-      ListHookedKeyboard::instance().terminate(kbd);
-      ListHookedConsumer::instance().terminate(kbd);
+      IOHIDevice* device = OSDynamicCast(IOHIDevice, newService);
+      if (! device) return false;
+      if (! OSDynamicCast(IOHIKeyboard, device)) return false;
+
+      ListHookedKeyboard::instance().erase(device);
+      ListHookedConsumer::instance().erase(device);
       return true;
     }
 
@@ -138,8 +144,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       IOLOG_INFO("notifierfunc_hookPointing newService:%p\n", newService);
 
-      IOHIPointing* pointing = OSDynamicCast(IOHIPointing, newService);
-      return ListHookedPointing::instance().append(pointing);
+      IOHIDevice* device = OSDynamicCast(IOHIDevice, newService);
+      if (! device) return false;
+      if (! OSDynamicCast(IOHIPointing, device)) return false;
+
+      ListHookedPointing::instance().push_back(new ListHookedPointing::Item(device));
+      return true;
     }
 
     bool
@@ -147,8 +157,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       IOLOG_INFO("notifierfunc_unhookPointing newService:%p\n", newService);
 
-      IOHIPointing* pointing = OSDynamicCast(IOHIPointing, newService);
-      return ListHookedPointing::instance().terminate(pointing);
+      IOHIDevice* device = OSDynamicCast(IOHIDevice, newService);
+      if (! device) return false;
+      if (! OSDynamicCast(IOHIPointing, device)) return false;
+
+      ListHookedPointing::instance().erase(device);
+      return true;
     }
 
     // ======================================================================
