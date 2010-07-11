@@ -45,6 +45,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   private:
     enum {
       MIN_DELAY = 1,
+      IMMEDIATELY_DELAY = 1,
     };
 
     static uint32_t calcdelay(void);
@@ -53,7 +54,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void enqueue_(const Params_RelativePointerEventCallback& p);
     static void enqueue_(const Params_ScrollWheelEventCallback& p);
     static void fire(OSObject* owner, IOTimerEventSource* sender);
-    static void fire_nolock(void);
     static void setTimer(void);
 
     static List* queue_;

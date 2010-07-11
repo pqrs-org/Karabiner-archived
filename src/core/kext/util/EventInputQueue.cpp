@@ -33,6 +33,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   uint32_t
   EventInputQueue::calcdelay(void)
   {
+    // if no SimultaneousKeyPresses is enabled, fire immediately.
+    if (! RemapClassManager::isEventInputQueueDelayEnabled()) {
+      return IMMEDIATELY_DELAY;
+    }
+
     uint32_t ms = ic_.getmillisec();
     uint32_t delay = config.get_simultaneouskeypresses_delay();
     if (delay > ms) delay = ms;  // min(ms, delay)
@@ -108,12 +113,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // remap keys
     RemapClassManager::remap_simultaneouskeypresses();
 
-    // if no SimultaneousKeyPresses is enabled, fire immediately.
-    if (RemapClassManager::isEventInputQueueDelayEnabled()) {
-      setTimer();
-    } else {
-      fire_nolock();
-    }
+    setTimer();
   }
 
   void
@@ -126,12 +126,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // remap keys
     RemapClassManager::remap_simultaneouskeypresses();
 
-    // if no SimultaneousKeyPresses is enabled, fire immediately.
-    if (RemapClassManager::isEventInputQueueDelayEnabled()) {
-      setTimer();
-    } else {
-      fire_nolock();
-    }
+    setTimer();
   }
 
   void
@@ -144,12 +139,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // remap keys
     RemapClassManager::remap_simultaneouskeypresses();
 
-    // if no SimultaneousKeyPresses is enabled, fire immediately.
-    if (RemapClassManager::isEventInputQueueDelayEnabled()) {
-      setTimer();
-    } else {
-      fire_nolock();
-    }
+    setTimer();
   }
 
   void
@@ -162,24 +152,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     // remap keys
     RemapClassManager::remap_simultaneouskeypresses();
 
-    // if no SimultaneousKeyPresses is enabled, fire immediately.
-    if (RemapClassManager::isEventInputQueueDelayEnabled()) {
-      setTimer();
-    } else {
-      fire_nolock();
-    }
+    setTimer();
   }
 
   void
   EventInputQueue::fire(OSObject* /*notuse_owner*/, IOTimerEventSource* /*notuse_sender*/)
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
-    fire_nolock();
-  }
 
-  void
-  EventInputQueue::fire_nolock(void)
-  {
     if (! queue_) return;
 
     Item* p = static_cast<Item*>(queue_->front());
