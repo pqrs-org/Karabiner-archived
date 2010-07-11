@@ -68,7 +68,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  KeyCode::normalizeKey(Flags& flags, EventType eventType, KeyboardType keyboardType)
+  KeyCode::normalizeKey(KeyCode& key, Flags& flags, EventType eventType, KeyboardType keyboardType)
   {
     // We can drop CURSOR and KEYPAD flags, because we'll set these flags at reverseNormalizeKey.
     flags.stripCURSOR().stripKEYPAD();
@@ -76,29 +76,29 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (keyboardType == KeyboardType::POWERBOOK ||
         keyboardType == KeyboardType::POWERBOOK_G4 ||
         keyboardType == KeyboardType::POWERBOOK_G4_TI) {
-      if (*this == KeyCode::ENTER_POWERBOOK) { *this = KeyCode::ENTER; }
+      if (key == KeyCode::ENTER_POWERBOOK) { key = KeyCode::ENTER; }
     }
 
     if (! config.general_disable_numpad_hack) {
       for (unsigned int i = 0; i < sizeof(fnkeyhack) / sizeof(fnkeyhack[0]); ++i) {
-        if (fnkeyhack[i].normalize(*this, flags, eventType)) break;
+        if (fnkeyhack[i].normalize(key, flags, eventType)) break;
       }
     }
   }
 
   void
-  KeyCode::reverseNormalizeKey(Flags& flags, EventType eventType, KeyboardType keyboardType)
+  KeyCode::reverseNormalizeKey(KeyCode& key, Flags& flags, EventType eventType, KeyboardType keyboardType)
   {
     if (! config.general_disable_numpad_hack) {
       for (unsigned int i = 0; i < sizeof(fnkeyhack) / sizeof(fnkeyhack[0]); ++i) {
-        if (fnkeyhack[i].reverse(*this, flags, eventType)) break;
+        if (fnkeyhack[i].reverse(key, flags, eventType)) break;
       }
     }
 
     if (keyboardType == KeyboardType::POWERBOOK ||
         keyboardType == KeyboardType::POWERBOOK_G4 ||
         keyboardType == KeyboardType::POWERBOOK_G4_TI) {
-      if (*this == KeyCode::ENTER) { *this = KeyCode::ENTER_POWERBOOK; }
+      if (key == KeyCode::ENTER) { key = KeyCode::ENTER_POWERBOOK; }
     }
 
     // ------------------------------------------------------------
@@ -107,12 +107,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     // We add ModifierFlag::FN for Cocoa Application.
     // Cocoa Application manages the flag status inside,
     // so unless we attach FN, the flag status becomes invalid in Cocoa.
-    if (*this == KeyCode::HOME ||
-        *this == KeyCode::END ||
-        *this == KeyCode::PAGEUP ||
-        *this == KeyCode::PAGEDOWN ||
-        *this == KeyCode::FORWARD_DELETE ||
-        *this == KeyCode::HELP) {
+    if (key == KeyCode::HOME ||
+        key == KeyCode::END ||
+        key == KeyCode::PAGEUP ||
+        key == KeyCode::PAGEDOWN ||
+        key == KeyCode::FORWARD_DELETE ||
+        key == KeyCode::HELP) {
       flags.add(ModifierFlag::FN);
     }
 
@@ -121,23 +121,23 @@ namespace org_pqrs_KeyRemap4MacBook {
     flags.stripCURSOR().stripKEYPAD();
 
     // Note: KEYPAD_CLEAR, KEYPAD_COMMA have no ModifierFlag::KEYPAD bit.
-    if (*this == KeyCode::KEYPAD_0 || *this == KeyCode::KEYPAD_1 || *this == KeyCode::KEYPAD_2 ||
-        *this == KeyCode::KEYPAD_3 || *this == KeyCode::KEYPAD_4 || *this == KeyCode::KEYPAD_5 ||
-        *this == KeyCode::KEYPAD_6 || *this == KeyCode::KEYPAD_7 || *this == KeyCode::KEYPAD_8 ||
-        *this == KeyCode::KEYPAD_9 ||
-        *this == KeyCode::KEYPAD_DOT ||
-        *this == KeyCode::KEYPAD_MULTIPLY ||
-        *this == KeyCode::KEYPAD_PLUS ||
-        *this == KeyCode::KEYPAD_SLASH ||
-        *this == KeyCode::KEYPAD_MINUS ||
-        *this == KeyCode::KEYPAD_EQUAL) {
+    if (key == KeyCode::KEYPAD_0 || key == KeyCode::KEYPAD_1 || key == KeyCode::KEYPAD_2 ||
+        key == KeyCode::KEYPAD_3 || key == KeyCode::KEYPAD_4 || key == KeyCode::KEYPAD_5 ||
+        key == KeyCode::KEYPAD_6 || key == KeyCode::KEYPAD_7 || key == KeyCode::KEYPAD_8 ||
+        key == KeyCode::KEYPAD_9 ||
+        key == KeyCode::KEYPAD_DOT ||
+        key == KeyCode::KEYPAD_MULTIPLY ||
+        key == KeyCode::KEYPAD_PLUS ||
+        key == KeyCode::KEYPAD_SLASH ||
+        key == KeyCode::KEYPAD_MINUS ||
+        key == KeyCode::KEYPAD_EQUAL) {
       flags.add(ModifierFlag::KEYPAD);
     }
 
-    if (*this == KeyCode::CURSOR_UP ||
-        *this == KeyCode::CURSOR_DOWN ||
-        *this == KeyCode::CURSOR_LEFT ||
-        *this == KeyCode::CURSOR_RIGHT) {
+    if (key == KeyCode::CURSOR_UP ||
+        key == KeyCode::CURSOR_DOWN ||
+        key == KeyCode::CURSOR_LEFT ||
+        key == KeyCode::CURSOR_RIGHT) {
       flags.add(ModifierFlag::CURSOR);
     }
   }
