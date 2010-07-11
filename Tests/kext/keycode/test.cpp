@@ -132,6 +132,20 @@ TEST(Flags, isOn) {
   EXPECT_FALSE(flags.isOn(ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::NONE));
 }
 
+TEST(Flags, isVirtualModifiersOn) {
+  Flags flags = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
+  EXPECT_FALSE(flags.isVirtualModifiersOn());
+
+  flags = 0;
+  EXPECT_FALSE(flags.isVirtualModifiersOn());
+
+  flags = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R | ModifierFlag::NONE;
+  EXPECT_TRUE(flags.isVirtualModifiersOn());
+
+  flags = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R | ModifierFlag::EXTRA3;
+  EXPECT_TRUE(flags.isVirtualModifiersOn());
+}
+
 namespace {
   KeyCode keypads[][2] = {
     { KeyCode::KEYPAD_0, KeyCode::M },
