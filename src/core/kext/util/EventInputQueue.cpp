@@ -437,6 +437,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (! queue_) return;
 
+    IOLOG_DEVEL("EventInputQueue::fire queue_->size = %d\n", static_cast<int>(queue_->size()));
+
     Item* p = static_cast<Item*>(queue_->front());
     if (! p) return;
 
