@@ -221,12 +221,14 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           Params_KeyboardEventCallBack* params = (p->params).params.params_KeyboardEventCallBack;
           if (params) {
-            if (queue_->size() == 1) {
-              params->repeat = true;
-            } else {
-              params->repeat = false;
+            Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(params->eventType,
+                                                                                           params->flags,
+                                                                                           params->key,
+                                                                                           params->keyboardType,
+                                                                                           queue_->size() == 1 ? true : false));
+            if (ptr) {
+              EventOutputQueue::FireKey::fire(*ptr);
             }
-            EventOutputQueue::FireKey::fire(*params);
           }
           break;
         }
@@ -235,12 +237,13 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           Params_KeyboardSpecialEventCallback* params = (p->params).params.params_KeyboardSpecialEventCallback;
           if (params) {
-            if (queue_->size() == 1) {
-              params->repeat = true;
-            } else {
-              params->repeat = false;
+            Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(params->eventType,
+                                                                                                         params->flags,
+                                                                                                         params->key,
+                                                                                                         queue_->size() == 1 ? true : false));
+            if (ptr) {
+              EventOutputQueue::FireConsumer::fire(*ptr);
             }
-            EventOutputQueue::FireConsumer::fire(*params);
           }
           isconsumer = true;
           break;

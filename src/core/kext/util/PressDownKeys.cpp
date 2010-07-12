@@ -69,20 +69,15 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     IOLOG_DEVEL("PressDownKeys::clear\n");
 
-    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::UP, Flags(0), KeyCode(0), CommonData::getcurrent_keyboardType(), false));
-    if (! ptr) return;
-    Params_KeyboardEventCallBack& params = *ptr;
-
     Item* p = static_cast<Item*>(list_->front());
     for (;;) {
       if (! p) break;
 
-      params.key = p->key;
-      params.keyboardType = p->keyboardType;
-      params.ex_iskeydown = false;
-      EventOutputQueue::push(params);
+      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::UP, Flags(0), p->key, p->keyboardType, false));
+      if (! ptr) break;
 
-      IOLOG_DEVEL("PressDownKeys::clear key:%d, keyboardType:%d\n", params.key.get(), params.keyboardType.get());
+      EventOutputQueue::push(*ptr);
+      IOLOG_DEVEL("PressDownKeys::clear key:%d, keyboardType:%d\n", (p->key).get(), (p->keyboardType).get());
 
       p = static_cast<Item*>(list_->erase(p));
     }

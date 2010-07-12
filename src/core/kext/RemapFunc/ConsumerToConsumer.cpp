@@ -108,20 +108,22 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (remapParams.params.ex_iskeydown) {
             for (size_t i = 0; i < toKeys_->size(); ++i) {
               FlagStatus::temporary_increase((*toKeys_)[i].flags);
-              Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(EventType::DOWN,
-                                                                                                           FlagStatus::makeFlags(),
-                                                                                                           (*toKeys_)[i].key,
-                                                                                                           false));
-              if (! ptr) return false;
-              Params_KeyboardSpecialEventCallback& params = *ptr;
 
-              EventOutputQueue::FireConsumer::fire(params);
-              params.eventType = EventType::UP;
-              params.ex_iskeydown = false;
-              EventOutputQueue::FireConsumer::fire(params);
+              ConsumerKeyCode key = (*toKeys_)[i].key;
+              Flags flags = FlagStatus::makeFlags();
+              {
+                Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(EventType::DOWN, flags, key, false));
+                if (! ptr) return false;
+                EventOutputQueue::FireConsumer::fire(*ptr);
+              }
+              {
+                Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(EventType::UP, flags, key, false));
+                if (! ptr) return false;
+                EventOutputQueue::FireConsumer::fire(*ptr);
+              }
 
-              KeyboardRepeat::primitive_add(EventType::DOWN, params.flags, params.key);
-              KeyboardRepeat::primitive_add(EventType::UP,   params.flags, params.key);
+              KeyboardRepeat::primitive_add(EventType::DOWN, flags, key);
+              KeyboardRepeat::primitive_add(EventType::UP,   flags, key);
 
               FlagStatus::temporary_decrease((*toKeys_)[i].flags);
             }

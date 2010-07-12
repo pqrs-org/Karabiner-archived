@@ -241,47 +241,51 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     // ----------------------------------------
     // handle virtual keys
-    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(params));
-    if (! ptr) return;
-    Params_KeyboardEventCallBack& p = *ptr;
-
-    if (Handle_VK_LOCK::handle(p)) return;
-    if (Handle_VK_STICKY::handle(p)) return;
-    if (Handle_VK_LAZY::handle(p)) return;
-    if (Handle_VK_CHANGE_INPUTMODE::handle(p)) return;
-    if (Handle_VK_CONFIG::handle(p)) return;
-    if (Handle_VK_JIS_TOGGLE_EISUU_KANA::handle(p)) return;
-    if (handle_VK_JIS_BACKSLASH(p)) return;
-    if (handle_VK_JIS_YEN(p)) return;
-    if (Handle_VK_JIS_TEMPORARY::handle(p)) return;
-    if (RemapClassManager::handlevirtualkey(p)) return;
-    if (p.key == KeyCode::VK_MODIFIER_EXTRA1 ||
-        p.key == KeyCode::VK_MODIFIER_EXTRA2 ||
-        p.key == KeyCode::VK_MODIFIER_EXTRA3 ||
-        p.key == KeyCode::VK_MODIFIER_EXTRA4 ||
-        p.key == KeyCode::VK_MODIFIER_EXTRA5) return;
+    if (Handle_VK_LOCK::handle(params)) return;
+    if (Handle_VK_STICKY::handle(params)) return;
+    if (Handle_VK_LAZY::handle(params)) return;
+    if (Handle_VK_CHANGE_INPUTMODE::handle(params)) return;
+    if (Handle_VK_CONFIG::handle(params)) return;
+    if (Handle_VK_JIS_TOGGLE_EISUU_KANA::handle(params)) return;
+    if (handle_VK_JIS_BACKSLASH(params)) return;
+    if (handle_VK_JIS_YEN(params)) return;
+    if (Handle_VK_JIS_TEMPORARY::handle(params)) return;
+    if (RemapClassManager::handlevirtualkey(params)) return;
+    if (params.key == KeyCode::VK_MODIFIER_EXTRA1 ||
+        params.key == KeyCode::VK_MODIFIER_EXTRA2 ||
+        params.key == KeyCode::VK_MODIFIER_EXTRA3 ||
+        params.key == KeyCode::VK_MODIFIER_EXTRA4 ||
+        params.key == KeyCode::VK_MODIFIER_EXTRA5) return;
 
     // ------------------------------------------------------------
-    p.key.reverseNormalizeKey(p.flags, p.eventType, p.keyboardType);
-    p.flags.stripEXTRA();
+    KeyCode newkeycode = params.key;
+    Flags newflags = params.flags;
+
+    KeyCode::reverseNormalizeKey(newkeycode, newflags, params.eventType, params.keyboardType);
+    newflags.stripEXTRA();
 
     // skip no-outputable keycodes.
     // Note: check before FireModifiers to avoid meaningless modifier event.
-    if (p.key == KeyCode::VK_NONE ||
-        p.key == KeyCode::VK_PSEUDO_KEY) {
+    if (newkeycode == KeyCode::VK_NONE ||
+        newkeycode == KeyCode::VK_PSEUDO_KEY) {
       return;
     }
 
-    FireModifiers::fire(p.flags, p.keyboardType);
+    FireModifiers::fire(newflags, params.keyboardType);
 
-    if (p.eventType == EventType::DOWN || p.eventType == EventType::UP) {
-      EventOutputQueue::push(p);
+    if (params.eventType == EventType::DOWN || params.eventType == EventType::UP) {
+      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(params.eventType, newflags, newkeycode,
+                                                                                     params.charCode, params.charSet, params.origCharCode, params.origCharSet,
+                                                                                     params.keyboardType, params.repeat));
+      if (ptr) {
+        EventOutputQueue::push(*ptr);
+      }
 
-      if (! p.repeat) {
-        if (p.eventType == EventType::DOWN) {
-          PressDownKeys::add(p.key, p.keyboardType);
+      if (! params.repeat) {
+        if (params.eventType == EventType::DOWN) {
+          PressDownKeys::add(newkeycode, params.keyboardType);
         } else {
-          PressDownKeys::remove(p.key, p.keyboardType);
+          PressDownKeys::remove(newkeycode, params.keyboardType);
         }
       }
     }
@@ -290,29 +294,35 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   EventOutputQueue::FireKey::fire_downup(Flags flags, KeyCode key, KeyboardType keyboardType)
   {
-    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, flags, key, keyboardType, false));
-    if (! ptr) return;
-    Params_KeyboardEventCallBack& params = *ptr;
-
     Flags f = key.getModifierFlag();
 
     if (f != ModifierFlag::NONE) {
       // We operate FlagStatus for the case "key == KeyCode::CAPSLOCK".
       FlagStatus::increase(f);
-      params.flags.add(f);
-      FireKey::fire(params);
+      {
+        Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, flags | f, key, keyboardType, false));
+        if (! ptr) return;
+        FireKey::fire(*ptr);
+      }
 
       FlagStatus::decrease(f);
-      params.flags = flags;
-      FireKey::fire(params);
+      {
+        Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, flags, key, keyboardType, false));
+        if (! ptr) return;
+        FireKey::fire(*ptr);
+      }
 
     } else {
-      params.eventType = EventType::DOWN;
-      params.ex_iskeydown = true;
-      FireKey::fire(params);
-      params.eventType = EventType::UP;
-      params.ex_iskeydown = false;
-      FireKey::fire(params);
+      {
+        Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::DOWN, flags, key, keyboardType, false));
+        if (! ptr) return;
+        FireKey::fire(*ptr);
+      }
+      {
+        Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::UP, flags, key, keyboardType, false));
+        if (! ptr) return;
+        FireKey::fire(*ptr);
+      }
     }
   }
 
@@ -320,39 +330,32 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   EventOutputQueue::FireConsumer::fire(const Params_KeyboardSpecialEventCallback& params)
   {
-    Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(params));
-    if (! ptr) return;
-
-    Params_KeyboardSpecialEventCallback& p = *ptr;
-
-    p.flags.stripEXTRA();
+    Flags newflags = params.flags;
+    newflags.stripEXTRA();
 
     // skip no-outputable keycodes.
     // Note: check before FireModifiers to avoid meaningless modifier event.
-    if (p.key == ConsumerKeyCode::VK_NONE ||
-        p.key == ConsumerKeyCode::VK_PSEUDO_KEY) {
+    if (params.key == ConsumerKeyCode::VK_NONE ||
+        params.key == ConsumerKeyCode::VK_PSEUDO_KEY) {
       return;
     }
 
     FireModifiers::fire();
 
-    EventOutputQueue::push(p);
+    Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(params.eventType, newflags, params.key, params.repeat));
+    if (ptr) {
+      EventOutputQueue::push(*ptr);
+    }
   }
 
   // ======================================================================
-  Buttons EventOutputQueue::FireRelativePointer::lastButtons_(0);
-
   void
   EventOutputQueue::FireRelativePointer::fire(Buttons toButtons, int dx, int dy)
   {
-    // We do not fire event if no need.
-    if (dx == 0 && dy == 0 && toButtons == lastButtons_) return;
-
-    Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(toButtons, dx, dy));
+    Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(toButtons, dx, dy, PointingButton::NONE, false));
     if (! ptr) return;
     Params_RelativePointerEventCallback& params = *ptr;
 
-    lastButtons_ = toButtons;
     FireModifiers::fire();
     EventOutputQueue::push(params);
   }

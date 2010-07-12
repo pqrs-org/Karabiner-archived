@@ -46,15 +46,15 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------------------------------------
   class Handle_VK_JIS_TOGGLE_EISUU_KANA {
   public:
-    static bool handle(Params_KeyboardEventCallBack& params);
+    static bool handle(const Params_KeyboardEventCallBack& params);
 
   private:
     // It is necessary to save toKeyCode for KeyUp.
     static KeyCode newkeycode_;
   };
 
-  bool handle_VK_JIS_BACKSLASH(Params_KeyboardEventCallBack& params);
-  bool handle_VK_JIS_YEN(Params_KeyboardEventCallBack& params);
+  bool handle_VK_JIS_BACKSLASH(const Params_KeyboardEventCallBack& params);
+  bool handle_VK_JIS_YEN(const Params_KeyboardEventCallBack& params);
 
   // ----------------------------------------------------------------------
   class Handle_VK_JIS_TEMPORARY {
@@ -62,7 +62,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void initialize(IOWorkLoop& workloop);
     static void terminate(void);
 
-    static bool handle(Params_KeyboardEventCallBack& params);
+    static bool handle(const Params_KeyboardEventCallBack& params);
 
   private:
     enum {
