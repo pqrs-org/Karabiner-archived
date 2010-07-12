@@ -18,8 +18,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   void
   CommonData::terminate(void)
-  {
-  }
+  {}
 
   void
   CommonData::setcurrent_workspacedata(void)
