@@ -813,6 +813,12 @@
           <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_JIS_BACKSLASH</autogen>
         </item>
         <item>
+          <name>VK_JIS_YEN</name>
+          <appendix>Use A as JIS_YEN</appendix>
+          <sysctl>remap.samples_a2jisyen</sysctl>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_JIS_YEN</autogen>
+        </item>
+        <item>
           <name>VK_JIS_TEMPORARY_ROMAN</name>
           <appendix>Use A as A,VK_JIS_TEMPORARY_ROMAN,I,U</appendix>
           <appendix>Use B as VK_JIS_TEMPORARY_ROMAN,A,I,U</appendix>

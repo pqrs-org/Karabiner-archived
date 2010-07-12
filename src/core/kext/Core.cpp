@@ -177,9 +177,13 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       if (! remapParams.isremapped) {
-        params.flags = FlagStatus::makeFlags();
-        KeyboardRepeat::set(params);
-        EventOutputQueue::FireKey::fire(params);
+        Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(params.eventType, FlagStatus::makeFlags(), params.key,
+                                                                                       params.charCode, params.charSet, params.origCharCode, params.origCharSet,
+                                                                                       params.keyboardType, false));
+        if (ptr) {
+          KeyboardRepeat::set(*ptr);
+          EventOutputQueue::FireKey::fire(*ptr);
+        }
       }
 
       if (NumHeldDownKeys::iszero()) {
@@ -206,9 +210,12 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ----------------------------------------
       if (! remapParams.isremapped) {
-        params.flags = FlagStatus::makeFlags();
-        KeyboardRepeat::set(params);
-        EventOutputQueue::FireConsumer::fire(params);
+        Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(params.eventType, FlagStatus::makeFlags(), params.key,
+                                                                                                     params.flavor, params.guid, false));
+        if (ptr) {
+          KeyboardRepeat::set(*ptr);
+          EventOutputQueue::FireConsumer::fire(*ptr);
+        }
       }
     }
 

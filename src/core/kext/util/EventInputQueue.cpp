@@ -127,19 +127,25 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
 
     // ------------------------------------------------------------
+    KeyboardType newkeyboardtype(keyboardType);
+    RemapClassManager::remap_setkeyboardtype(newkeyboardtype);
+
+    KeyCode newkey(key);
+    Flags newflags(flags);
+    KeyCode::normalizeKey(newkey, newflags, EventType(eventType), newkeyboardtype);
+
+    // ------------------------------------------------------------
     Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType(eventType),
-                                                                                   Flags(flags),
-                                                                                   KeyCode(key),
+                                                                                   newflags,
+                                                                                   newkey,
                                                                                    CharCode(charCode),
                                                                                    CharSet(charSet),
                                                                                    OrigCharCode(origCharCode),
                                                                                    OrigCharSet(origCharSet),
-                                                                                   KeyboardType(keyboardType),
+                                                                                   newkeyboardtype,
                                                                                    repeat));
     if (! ptr) return;
     Params_KeyboardEventCallBack& params = *ptr;
-
-    RemapClassManager::remap_setkeyboardtype(params.keyboardType);
 
     // ------------------------------------------------------------
     {
@@ -195,9 +201,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     // If we call FlagStatus::set(key, flags) here, dropped keys are kept as pushed status.
     // So, call FlagStatus::set(key, flags) after EventInputQueue.
     FlagStatus::set();
-
-    // ------------------------------------------------------------
-    params.key.normalizeKey(params.flags, params.eventType, params.keyboardType);
 
     // ------------------------------------------------------------
     enqueue_(params);
@@ -300,7 +303,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------------------------------------
   void
   EventInputQueue::push_RelativePointerEventCallback(OSObject* target,
-                                                     int buttons,
+                                                     int buttons_raw,
                                                      int dx,
                                                      int dy,
                                                      AbsoluteTime ts,
@@ -310,11 +313,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
 
     // ------------------------------------------------------------
-    Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, dx, dy));
-    if (! ptr) return;
-    Params_RelativePointerEventCallback& params = *ptr;
-
-    // ------------------------------------------------------------
+    Buttons buttons(buttons_raw);
     Buttons justPressed;
     Buttons justReleased;
 
@@ -332,8 +331,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       CommonData::setcurrent_vendorIDproductID(item->getVendorID(), item->getProductID());
 
       // ------------------------------------------------------------
-      justPressed = params.buttons.justPressed(item->get_previousbuttons());
-      justReleased = params.buttons.justReleased(item->get_previousbuttons());
+      justPressed = buttons.justPressed(item->get_previousbuttons());
+      justReleased = buttons.justReleased(item->get_previousbuttons());
       item->set_previousbuttons(buttons);
     }
 
@@ -349,29 +348,23 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ------------------------------------------------------------
     // divide an event into button and cursormove events.
-    params.dx = 0;
-    params.dy = 0;
-    params.ex_button = PointingButton::NONE;
-    params.ex_isbuttondown = false;
-
     for (int i = 0; i < ButtonStatus::MAXNUM; ++i) {
       PointingButton btn(1 << i);
       if (justPressed.isOn(btn)) {
-        params.ex_button = btn;
-        params.ex_isbuttondown = true;
-        enqueue_(params);
+        Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, 0, 0, btn, true));
+        if (! ptr) return;
+        enqueue_(*ptr);
       }
       if (justReleased.isOn(btn)) {
-        params.ex_button = btn;
-        params.ex_isbuttondown = false;
-        enqueue_(params);
+        Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, 0, 0, btn, false));
+        if (! ptr) return;
+        enqueue_(*ptr);
       }
     }
     if (dx != 0 || dy != 0) {
-      params.dx = dx;
-      params.dy = dy;
-      params.ex_button = PointingButton::NONE;
-      enqueue_(params);
+      Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, dx, dy, PointingButton::NONE, false));
+      if (! ptr) return;
+      enqueue_(*ptr);
     }
 
     // remap keys

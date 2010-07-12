@@ -218,7 +218,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   bool
-  Handle_VK_JIS_TOGGLE_EISUU_KANA::handle(Params_KeyboardEventCallBack& params)
+  Handle_VK_JIS_TOGGLE_EISUU_KANA::handle(const Params_KeyboardEventCallBack& params)
   {
     if (params.key != KeyCode::VK_JIS_TOGGLE_EISUU_KANA) return false;
 
@@ -230,8 +230,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
 
-    params.key = newkeycode_;
-    EventOutputQueue::FireKey::fire(params);
+    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(params.eventType, params.flags, newkeycode_,
+                                                                                   params.keyboardType, params.repeat));
+    if (ptr) {
+      EventOutputQueue::FireKey::fire(*ptr);
+    }
     return true;
   }
 
@@ -239,24 +242,28 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   bool
-  handle_VK_JIS_BACKSLASH(Params_KeyboardEventCallBack& params)
+  handle_VK_JIS_BACKSLASH(const Params_KeyboardEventCallBack& params)
   {
     if (params.key != KeyCode::VK_JIS_BACKSLASH) return false;
 
-    params.key = KeyCode::BACKSLASH;
-    params.keyboardType = KeyboardType::MACBOOK;
-    EventOutputQueue::FireKey::fire(params);
+    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(params.eventType, params.flags, KeyCode::BACKSLASH,
+                                                                                   KeyboardType::MACBOOK, params.repeat));
+    if (ptr) {
+      EventOutputQueue::FireKey::fire(*ptr);
+    }
     return true;
   }
 
   bool
-  handle_VK_JIS_YEN(Params_KeyboardEventCallBack& params)
+  handle_VK_JIS_YEN(const Params_KeyboardEventCallBack& params)
   {
     if (params.key != KeyCode::VK_JIS_YEN) return false;
 
-    params.key = KeyCode::JIS_YEN;
-    params.keyboardType = KeyboardType::JIS_MACBOOK_2008;
-    EventOutputQueue::FireKey::fire(params);
+    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(params.eventType, params.flags, KeyCode::JIS_YEN,
+                                                                                   KeyboardType::JIS_MACBOOK_2008, params.repeat));
+    if (ptr) {
+      EventOutputQueue::FireKey::fire(*ptr);
+    }
     return true;
   }
 
@@ -309,7 +316,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  Handle_VK_JIS_TEMPORARY::handle(Params_KeyboardEventCallBack& params)
+  Handle_VK_JIS_TEMPORARY::handle(const Params_KeyboardEventCallBack& params)
   {
     // ------------------------------------------------------------
     if (handle_core(params,

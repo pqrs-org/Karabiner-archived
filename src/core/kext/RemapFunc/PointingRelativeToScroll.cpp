@@ -148,30 +148,35 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ----------------------------------------
       if (delta1 == 0 && delta2 == 0) return;
 
-      Params_ScrollWheelEventCallback::auto_ptr ptr(Params_ScrollWheelEventCallback::alloc(0, 0, 0,
-                                                                                           0, 0, 0,
-                                                                                           0, 0, 0,
-                                                                                           0));
-      if (! ptr) return;
-      Params_ScrollWheelEventCallback& params = *ptr;
+      short deltaAxis1;
+      short deltaAxis2;
+      IOFixed fixedDelta1;
+      IOFixed fixedDelta2;
+      SInt32 pointDelta1;
+      SInt32 pointDelta2;
 
-      params.deltaAxis1 = (delta1 * config.pointing_relative2scroll_rate) / 1024;
-      if (params.deltaAxis1 == 0 && delta1 != 0) {
-        params.deltaAxis1 = delta1 > 0 ? 1 : -1;
+      deltaAxis1 = (delta1 * config.pointing_relative2scroll_rate) / 1024;
+      if (deltaAxis1 == 0 && delta1 != 0) {
+        deltaAxis1 = delta1 > 0 ? 1 : -1;
       }
-      params.deltaAxis2 = (delta2 * config.pointing_relative2scroll_rate) / 1024;
-      if (params.deltaAxis2 == 0 && delta2 != 0) {
-        params.deltaAxis2 = delta2 > 0 ? 1 : -1;
+      deltaAxis2 = (delta2 * config.pointing_relative2scroll_rate) / 1024;
+      if (deltaAxis2 == 0 && delta2 != 0) {
+        deltaAxis2 = delta2 > 0 ? 1 : -1;
       }
 
       // ----------------------------------------
-      params.fixedDelta1 = (delta1 * config.pointing_relative2scroll_rate) * (POINTING_FIXED_SCALE / 1024);
-      params.fixedDelta2 = (delta2 * config.pointing_relative2scroll_rate) * (POINTING_FIXED_SCALE / 1024);
+      fixedDelta1 = (delta1 * config.pointing_relative2scroll_rate) * (POINTING_FIXED_SCALE / 1024);
+      fixedDelta2 = (delta2 * config.pointing_relative2scroll_rate) * (POINTING_FIXED_SCALE / 1024);
 
-      params.pointDelta1 = (delta1 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1024;
-      params.pointDelta2 = (delta2 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1024;
+      pointDelta1 = (delta1 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1024;
+      pointDelta2 = (delta2 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1024;
 
-      EventOutputQueue::FireScrollWheel::fire(params);
+      Params_ScrollWheelEventCallback::auto_ptr ptr(Params_ScrollWheelEventCallback::alloc(deltaAxis1,  deltaAxis2, 0,
+                                                                                           fixedDelta1, fixedDelta2, 0,
+                                                                                           pointDelta1, pointDelta2, 0,
+                                                                                           0));
+      if (! ptr) return;
+      EventOutputQueue::FireScrollWheel::fire(*ptr);
 
       absolute_distance_ += abs(delta1) + abs(delta2);
     }
