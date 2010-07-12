@@ -75,7 +75,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void push(const Params_KeyboardSpecialEventCallback& p);
     static void push(const Params_RelativePointerEventCallback& p);
     static void push(const Params_ScrollWheelEventCallback& p);
-    static void push(Item& p);
 
     static List* queue_;
     static TimerWrapper timer_;
