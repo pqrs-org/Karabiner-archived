@@ -8,8 +8,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   List::~List(void)
   {
-    clear();
     IOLockWrapper::free(lock_);
+    clear();
   }
 
   List::Item*
