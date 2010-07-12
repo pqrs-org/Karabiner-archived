@@ -67,7 +67,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (! list_) return;
 
-    IOLOG_DEVEL("PressDownKeys::clear\n");
+    IOLOG_DEVEL("PressDownKeys::clear list_->size = %d\n", static_cast<int>(list_->size()));
 
     Item* p = static_cast<Item*>(list_->front());
     for (;;) {
