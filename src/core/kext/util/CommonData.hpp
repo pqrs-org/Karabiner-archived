@@ -30,12 +30,19 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void setcurrent_workspacedata(void);
     static const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& getcurrent_workspacedata(void) { return current_workspacedata_; }
 
+    // for debug
+    static void increase_alloccount(void);
+    static void decrease_alloccount(void);
+
   private:
     static AbsoluteTime current_ts_;
     static KeyboardType current_keyboardType_;
     static DeviceVendorID current_deviceVendorID_;
     static DeviceProductID current_deviceProductID_;
     static KeyRemap4MacBook_bridge::GetWorkspaceData::Reply current_workspacedata_;
+
+    static int alloccount_;
+    static IOLock* alloccount_lock_;
   };
 }
 
