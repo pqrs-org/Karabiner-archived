@@ -1,7 +1,8 @@
 #include <IOKit/hid/IOHIDKeys.h>
+#include "Config.hpp"
+#include "IOLockWrapper.hpp"
 #include "ListHookedDevice.hpp"
 #include "NumHeldDownKeys.hpp"
-#include "IOLockWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   // ======================================================================
@@ -157,6 +158,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // Call reset whenever the device status is changed.
     reset();
+
+    IOLOG_DEVEL("ListHookedDevice::push_back list_->size = %d\n", static_cast<int>(list_->size()));
   }
 
   void
@@ -173,6 +176,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // Call reset whenever the device status is changed.
     reset();
+
+    IOLOG_DEVEL("ListHookedDevice::erase list_->size = %d\n", static_cast<int>(list_->size()));
   }
 
   ListHookedDevice::Item*
