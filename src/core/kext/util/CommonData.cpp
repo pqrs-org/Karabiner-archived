@@ -10,15 +10,21 @@ namespace org_pqrs_KeyRemap4MacBook {
   DeviceProductID CommonData::current_deviceProductID_;
   KeyRemap4MacBook_bridge::GetWorkspaceData::Reply CommonData::current_workspacedata_;
 
+  int CommonData::alloccount_;
+  IOLock* CommonData::alloccount_lock_;
+
   bool
   CommonData::initialize(void)
   {
+    alloccount_lock_ = IOLockWrapper::alloc();
     return true;
   }
 
   void
   CommonData::terminate(void)
-  {}
+  {
+    IOLockWrapper::free(alloccount_lock_);
+  }
 
   void
   CommonData::setcurrent_workspacedata(void)
@@ -46,5 +52,21 @@ namespace org_pqrs_KeyRemap4MacBook {
       // use last info.
       current_workspacedata_ = last;
     }
+  }
+
+  void
+  CommonData::increase_alloccount(void)
+  {
+    IOLockWrapper::ScopedLock lk(alloccount_lock_);
+    ++alloccount_;
+    IOLOG_DEVEL("CommonData::increase_alloccount alloccount_:%d\n", alloccount_);
+  }
+
+  void
+  CommonData::decrease_alloccount(void)
+  {
+    IOLockWrapper::ScopedLock lk(alloccount_lock_);
+    --alloccount_;
+    IOLOG_DEVEL("CommonData::decrease_alloccount alloccount_:%d\n", alloccount_);
   }
 }

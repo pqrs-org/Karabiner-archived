@@ -3,6 +3,7 @@
 
 #include "auto_ptr.hpp"
 #include "base.hpp"
+#include "CommonData.hpp"
 #include "KeyCode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -10,6 +11,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     friend class EventOutputQueue;
 
   public:
+    ~Params_KeyboardEventCallBack(void) {
+      CommonData::decrease_alloccount();
+    }
+
     // Use auto_ptr instead allocating in kernel stack.
     DECLARE_AUTO_PTR(Params_KeyboardEventCallBack);
 
@@ -51,13 +56,19 @@ namespace org_pqrs_KeyRemap4MacBook {
                                  KeyboardType kt, bool r) :
       eventType(et), flags(fl), key(kc),
       charCode(cc), charSet(cs), origCharCode(occ), origCharSet(ocs),
-      keyboardType(kt), repeat(r), ex_iskeydown(et.isKeyDownOrModifierDown(kc, fl)) {}
+      keyboardType(kt), repeat(r), ex_iskeydown(et.isKeyDownOrModifierDown(kc, fl)) {
+      CommonData::increase_alloccount();
+    }
   };
 
   class Params_UpdateEventFlagsCallback {
     friend class EventOutputQueue;
 
   public:
+    ~Params_UpdateEventFlagsCallback(void) {
+      CommonData::decrease_alloccount();
+    }
+
     // Use auto_ptr instead allocating in kernel stack.
     DECLARE_AUTO_PTR(Params_UpdateEventFlagsCallback);
 
@@ -73,13 +84,19 @@ namespace org_pqrs_KeyRemap4MacBook {
     const Flags flags;
 
   private:
-    Params_UpdateEventFlagsCallback(Flags fl) : flags(fl) {}
+    Params_UpdateEventFlagsCallback(Flags fl) : flags(fl) {
+      CommonData::increase_alloccount();
+    }
   };
 
   class Params_KeyboardSpecialEventCallback {
     friend class EventOutputQueue;
 
   public:
+    ~Params_KeyboardSpecialEventCallback(void) {
+      CommonData::decrease_alloccount();
+    }
+
     // Use auto_ptr instead allocating in kernel stack.
     DECLARE_AUTO_PTR(Params_KeyboardSpecialEventCallback);
 
@@ -121,13 +138,19 @@ namespace org_pqrs_KeyRemap4MacBook {
                                         bool r) :
       eventType(et), flags(fl), key(ckc),
       flavor(fv), guid(g),
-      repeat(r), ex_iskeydown(et == EventType::DOWN) {}
+      repeat(r), ex_iskeydown(et == EventType::DOWN) {
+      CommonData::increase_alloccount();
+    }
   };
 
   class Params_RelativePointerEventCallback {
     friend class EventOutputQueue;
 
   public:
+    ~Params_RelativePointerEventCallback(void) {
+      CommonData::decrease_alloccount();
+    }
+
     // Use auto_ptr instead allocating in kernel stack.
     DECLARE_AUTO_PTR(Params_RelativePointerEventCallback);
 
@@ -149,12 +172,18 @@ namespace org_pqrs_KeyRemap4MacBook {
     const bool ex_isbuttondown;
 
   private:
-    Params_RelativePointerEventCallback(Buttons bt, int x, int y, PointingButton ex_btn, bool ex_isdown) : buttons(bt), dx(x), dy(y), ex_button(ex_btn), ex_isbuttondown(ex_isdown) {}
+    Params_RelativePointerEventCallback(Buttons bt, int x, int y, PointingButton ex_btn, bool ex_isdown) : buttons(bt), dx(x), dy(y), ex_button(ex_btn), ex_isbuttondown(ex_isdown) {
+      CommonData::increase_alloccount();
+    }
   };
   class Params_ScrollWheelEventCallback {
     friend class EventOutputQueue;
 
   public:
+    ~Params_ScrollWheelEventCallback(void) {
+      CommonData::decrease_alloccount();
+    }
+
     // Use auto_ptr instead allocating in kernel stack.
     DECLARE_AUTO_PTR(Params_ScrollWheelEventCallback);
 
@@ -202,7 +231,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       deltaAxis1(da1), deltaAxis2(da2), deltaAxis3(da3),
       fixedDelta1(fd1), fixedDelta2(fd2), fixedDelta3(fd3),
       pointDelta1(pd1), pointDelta2(pd2), pointDelta3(pd3),
-      options(op) {}
+      options(op) {
+      CommonData::increase_alloccount();
+    }
   };
 }
 
