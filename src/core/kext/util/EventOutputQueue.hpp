@@ -70,7 +70,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
 
     static void fire(OSObject* owner, IOTimerEventSource* sender);
-    static void fire_nolock(void);
     static void push(const Params_KeyboardEventCallBack& p);
     static void push(const Params_UpdateEventFlagsCallback& p);
     static void push(const Params_KeyboardSpecialEventCallback& p);
@@ -79,7 +78,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void push(Item& p);
 
     static List* queue_;
-    static IntervalChecker ic_;
     static TimerWrapper timer_;
   };
 }

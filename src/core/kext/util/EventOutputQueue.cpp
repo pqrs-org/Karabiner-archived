@@ -9,14 +9,12 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   List* EventOutputQueue::queue_ = NULL;
-  IntervalChecker EventOutputQueue::ic_;
   TimerWrapper EventOutputQueue::timer_;
 
   void
   EventOutputQueue::initialize(IOWorkLoop& workloop)
   {
     queue_ = new List();
-    ic_.begin();
     timer_.initialize(&workloop, NULL, EventOutputQueue::fire);
   }
 
@@ -38,18 +36,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (! queue_) return;
 
-    bool isempty = queue_->empty();
     queue_->push_back(&p);
-
-    // ------------------------------------------------------------
-    if (isempty && ic_.getmillisec() > DELAY) {
-      fire_nolock();
-    } else {
-      IOLOG_DEVEL("Params_KeyboardEventCallBack::Queue enqueued ic_.getmillisec() = %d\n", ic_.getmillisec());
-      timer_.setTimeoutMS(DELAY, false);
-    }
-
-    ic_.begin();
+    timer_.setTimeoutMS(DELAY, false);
   }
 
   void
@@ -97,12 +85,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   EventOutputQueue::fire(OSObject* owner, IOTimerEventSource* sender)
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
-    fire_nolock();
-  }
 
-  void
-  EventOutputQueue::fire_nolock(void)
-  {
     if (! queue_) return;
 
     Item* p = static_cast<Item*>(queue_->front());
