@@ -29,56 +29,20 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------------------------------------
-  void
-  EventOutputQueue::push(Item& p)
-  {
-    IOLockWrapper::ScopedLock lk(timer_.getlock());
-
-    if (! queue_) return;
-
-    queue_->push_back(&p);
-    timer_.setTimeoutMS(DELAY, false);
-  }
-
-  void
-  EventOutputQueue::push(const Params_KeyboardEventCallBack& p)
-  {
-    Item* newp = new Item(p);
-    if (! newp) return;
-    push(*newp);
-  }
-
-  void
-  EventOutputQueue::push(const Params_UpdateEventFlagsCallback& p)
-  {
-    Item* newp = new Item(p);
-    if (! newp) return;
-    push(*newp);
-  }
-
-  void
-  EventOutputQueue::push(const Params_KeyboardSpecialEventCallback& p)
-  {
-    Item* newp = new Item(p);
-    if (! newp) return;
-    push(*newp);
-  }
-
-  void
-  EventOutputQueue::push(const Params_RelativePointerEventCallback& p)
-  {
-    Item* newp = new Item(p);
-    if (! newp) return;
-    push(*newp);
-  }
-
-  void
-  EventOutputQueue::push(const Params_ScrollWheelEventCallback& p)
-  {
-    Item* newp = new Item(p);
-    if (! newp) return;
-    push(*newp);
-  }
+#define PUSH_TO_OUTPUTQUEUE {                       \
+    IOLockWrapper::ScopedLock lk(timer_.getlock()); \
+                                                    \
+    if (! queue_) return;                           \
+                                                    \
+    queue_->push_back(new Item(p));                 \
+    timer_.setTimeoutMS(DELAY, false);              \
+}
+  void EventOutputQueue::push(const Params_KeyboardEventCallBack& p)        { PUSH_TO_OUTPUTQUEUE }
+  void EventOutputQueue::push(const Params_UpdateEventFlagsCallback& p)     { PUSH_TO_OUTPUTQUEUE }
+  void EventOutputQueue::push(const Params_KeyboardSpecialEventCallback& p) { PUSH_TO_OUTPUTQUEUE }
+  void EventOutputQueue::push(const Params_RelativePointerEventCallback& p) { PUSH_TO_OUTPUTQUEUE }
+  void EventOutputQueue::push(const Params_ScrollWheelEventCallback& p)     { PUSH_TO_OUTPUTQUEUE }
+#undef PUSH_TO_OUTPUTQUEUE
 
   // ----------------------------------------------------------------------
   void
