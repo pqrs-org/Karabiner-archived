@@ -1395,9 +1395,19 @@
           <autogen>--KeyToKey-- KeyCode::BRIGHTNESS_UP, KeyCode::F2</autogen>
         </item>
         <item>
+          <name>Expose to F3</name>
+          <sysctl>remap.expose2f3</sysctl>
+          <autogen>--KeyToKey--      KeyCode::EXPOSE_ALL,                 KeyCode::F3</autogen>
+        </item>
+        <item>
           <name>Volume Mute to F3</name>
           <sysctl>remap.volumemute2f3</sysctl>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, KeyCode::F3</autogen>
+        </item>
+        <item>
+          <name>Dashboard to F4</name>
+          <sysctl>remap.dashboard2f4</sysctl>
+          <autogen>--KeyToKey--      KeyCode::DASHBOARD,                  KeyCode::F4</autogen>
         </item>
         <item>
           <name>Volume Mute to F4</name>
