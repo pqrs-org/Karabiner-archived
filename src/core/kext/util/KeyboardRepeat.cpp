@@ -212,6 +212,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (! queue_) return;
 
+    IOLOG_DEVEL("KeyboardRepeat::fire queue_->size = %d\n", static_cast<int>(queue_->size()));
+
     // ----------------------------------------
     bool isconsumer = false;
 
