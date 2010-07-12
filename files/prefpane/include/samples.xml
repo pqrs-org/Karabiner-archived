@@ -406,7 +406,6 @@
         <item>
           <name>Standard</name>
           <appendix>MiddleClick+CursorMove to ScrollWheel (One Button)</appendix>
-          <appendix>LeftClick+RightClick+CursorMove to ScrollWheel (Multi Buttons)</appendix>
           <appendix>Option+CursorMove to ScrollWheel (Modifier)</appendix>
           <appendix>Shift+LeftClick+CursorMove to ScrollWheel (Button+Modifier)</appendix>
           <sysctl>remap.samples_pointingrelativetoscroll</sysctl>
