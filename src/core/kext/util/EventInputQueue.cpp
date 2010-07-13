@@ -124,6 +124,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                                               OSObject* sender,
                                               void* refcon)
   {
+    IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
     IOLockWrapper::ScopedLock lk(timer_.getlock());
 
     // ------------------------------------------------------------
@@ -217,6 +218,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                  OSObject* sender,
                                                  void* refcon)
   {
+    IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
     IOLockWrapper::ScopedLock lk(timer_.getlock());
 
     // ------------------------------------------------------------
@@ -256,6 +258,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                      OSObject* sender,
                                                      void* refcon)
   {
+    IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
     IOLockWrapper::ScopedLock lk(timer_.getlock());
 
     // ------------------------------------------------------------
@@ -310,6 +313,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                      OSObject* sender,
                                                      void* refcon)
   {
+    IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
     IOLockWrapper::ScopedLock lk(timer_.getlock());
 
     // ------------------------------------------------------------
@@ -389,6 +393,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                  OSObject* sender,
                                                  void* refcon)
   {
+    IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
     IOLockWrapper::ScopedLock lk(timer_.getlock());
 
     // ------------------------------------------------------------

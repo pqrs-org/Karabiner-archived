@@ -52,12 +52,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     start(void)
     {
+      CommonData::initialize();
       EventWatcher::initialize();
       PressDownKeys::initialize();
       FlagStatus::initialize();
       ButtonStatus::initialize();
       KeyRemap4MacBook_client::initialize();
-      CommonData::initialize();
 
       ListHookedKeyboard::instance().initialize();
       ListHookedConsumer::instance().initialize();
@@ -104,10 +104,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         workLoop = NULL;
       }
 
-      CommonData::terminate();
       KeyRemap4MacBook_client::terminate();
       EventWatcher::terminate();
       PressDownKeys::terminate();
+      CommonData::terminate();
     }
 
     // ======================================================================
