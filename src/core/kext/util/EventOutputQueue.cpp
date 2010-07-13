@@ -115,6 +115,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   EventOutputQueue::FireModifiers::fire(Flags toFlags, KeyboardType keyboardType)
   {
+    if (lastFlags_ == toFlags) return;
+
+    FlagStatus::ScopedTemporaryFlagsChanger stfc(lastFlags_);
+
+    IOLOG_DEVEL("EventOutputQueue::FireModifiers::fire lastFlags_:%08x toFlags:%08x\n", lastFlags_.get(), toFlags.get());
+
     // At first I handle KeyUp and handle KeyDown next.
     // We need to end KeyDown at Command+Space to Option_L+Shift_L.
     //
@@ -126,17 +132,17 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // KeyUp
     if (lastFlags_.isOn(ModifierFlag::KEYPAD) && ! toFlags.isOn(ModifierFlag::KEYPAD)) {
-      lastFlags_.remove(ModifierFlag::KEYPAD);
+      FlagStatus::temporary_decrease(ModifierFlag::KEYPAD);
 
-      Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(lastFlags_));
+      Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(FlagStatus::makeFlags()));
       if (ptr) {
         EventOutputQueue::push(*ptr);
       }
     }
     if (! lastFlags_.isOn(ModifierFlag::KEYPAD) && toFlags.isOn(ModifierFlag::KEYPAD)) {
-      lastFlags_.add(ModifierFlag::KEYPAD);
+      FlagStatus::temporary_increase(ModifierFlag::KEYPAD);
 
-      Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(lastFlags_));
+      Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(FlagStatus::makeFlags()));
       if (ptr) {
         EventOutputQueue::push(*ptr);
       }
@@ -156,9 +162,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! lastFlags_.isOn(flag)) continue;
       if (toFlags.isOn(flag)) continue;
 
-      lastFlags_.remove(flag);
+      FlagStatus::temporary_decrease(flag);
 
-      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, lastFlags_, flag.getKeyCode(), keyboardType, false));
+      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, FlagStatus::makeFlags(), flag.getKeyCode(), keyboardType, false));
       if (! ptr) continue;
       EventOutputQueue::push(*ptr);
     }
@@ -176,12 +182,14 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! toFlags.isOn(flag)) continue;
       if (lastFlags_.isOn(flag)) continue;
 
-      lastFlags_.add(flag);
+      FlagStatus::temporary_increase(flag);
 
-      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, lastFlags_, flag.getKeyCode(), keyboardType, false));
+      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, FlagStatus::makeFlags(), flag.getKeyCode(), keyboardType, false));
       if (! ptr) continue;
       EventOutputQueue::push(*ptr);
     }
+
+    lastFlags_ = toFlags;
   }
 
   // ======================================================================
