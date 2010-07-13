@@ -13,10 +13,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   int CommonData::alloccount_;
   IOLock* CommonData::alloccount_lock_;
 
+  IOLock* CommonData::event_lock_;
+
   bool
   CommonData::initialize(void)
   {
     alloccount_lock_ = IOLockWrapper::alloc();
+    event_lock_ = IOLockWrapper::alloc();
     return true;
   }
 
@@ -24,6 +27,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   CommonData::terminate(void)
   {
     IOLockWrapper::free(alloccount_lock_);
+    IOLockWrapper::free(event_lock_);
   }
 
   void
