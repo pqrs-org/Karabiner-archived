@@ -117,10 +117,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (lastFlags_ == toFlags) return;
 
-    FlagStatus::ScopedTemporaryFlagsChanger stfc(lastFlags_);
-
-    IOLOG_DEVEL("EventOutputQueue::FireModifiers::fire lastFlags_:%08x toFlags:%08x\n", lastFlags_.get(), toFlags.get());
-
     // At first I handle KeyUp and handle KeyDown next.
     // We need to end KeyDown at Command+Space to Option_L+Shift_L.
     //
@@ -132,17 +128,17 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // KeyUp
     if (lastFlags_.isOn(ModifierFlag::KEYPAD) && ! toFlags.isOn(ModifierFlag::KEYPAD)) {
-      FlagStatus::temporary_decrease(ModifierFlag::KEYPAD);
+      lastFlags_.remove(ModifierFlag::KEYPAD);
 
-      Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(FlagStatus::makeFlags()));
+      Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(lastFlags_));
       if (ptr) {
         EventOutputQueue::push(*ptr);
       }
     }
     if (! lastFlags_.isOn(ModifierFlag::KEYPAD) && toFlags.isOn(ModifierFlag::KEYPAD)) {
-      FlagStatus::temporary_increase(ModifierFlag::KEYPAD);
+      lastFlags_.add(ModifierFlag::KEYPAD);
 
-      Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(FlagStatus::makeFlags()));
+      Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(lastFlags_));
       if (ptr) {
         EventOutputQueue::push(*ptr);
       }
@@ -153,18 +149,38 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (int i = 0;; ++i) {
       ModifierFlag flag = FlagStatus::getFlag(i);
       if (flag == ModifierFlag::NONE) break;
-      if (flag == ModifierFlag::EXTRA1) continue;
-      if (flag == ModifierFlag::EXTRA2) continue;
-      if (flag == ModifierFlag::EXTRA3) continue;
-      if (flag == ModifierFlag::EXTRA4) continue;
-      if (flag == ModifierFlag::EXTRA5) continue;
+      if (Flags(flag).isVirtualModifiersOn()) continue;
 
       if (! lastFlags_.isOn(flag)) continue;
       if (toFlags.isOn(flag)) continue;
 
-      FlagStatus::temporary_decrease(flag);
+      // We consider the following case.
+      //   - lastFlags_ = ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R
+      //   - ModifierFlag::SHIFT_L is released
+      //
+      // *** NOTE ***
+      // *** ModifierFlag::SHIFT_L = 0x20002 ***
+      // *** ModifierFlag::SHIFT_R = 0x20004 ***
+      //
+      // Then, lastFlags_.remove(ModifierFlag::SHIFT_L) is invalid.
+      // We must not drop 0x20000 from lastFlags_.
+      // Do lastFlags_.remove(ModifierFlag::SHIFT_L).add(ModifierFlag::SHIFT_R)
+      Flags tmp = lastFlags_;
+      tmp.remove(flag);
+      for (int j = 0;; ++j) {
+        if (j == i) continue;
 
-      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, FlagStatus::makeFlags(), flag.getKeyCode(), keyboardType, false));
+        ModifierFlag f = FlagStatus::getFlag(j);
+        if (f == ModifierFlag::NONE) break;
+        if (Flags(f).isVirtualModifiersOn()) continue;
+
+        if (lastFlags_.isOn(f)) {
+          tmp.add(f);
+        }
+      }
+      lastFlags_ = tmp;
+
+      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, lastFlags_, flag.getKeyCode(), keyboardType, false));
       if (! ptr) continue;
       EventOutputQueue::push(*ptr);
     }
@@ -173,18 +189,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (int i = 0;; ++i) {
       ModifierFlag flag = FlagStatus::getFlag(i);
       if (flag == ModifierFlag::NONE) break;
-      if (flag == ModifierFlag::EXTRA1) continue;
-      if (flag == ModifierFlag::EXTRA2) continue;
-      if (flag == ModifierFlag::EXTRA3) continue;
-      if (flag == ModifierFlag::EXTRA4) continue;
-      if (flag == ModifierFlag::EXTRA5) continue;
+      if (Flags(flag).isVirtualModifiersOn()) continue;
 
       if (! toFlags.isOn(flag)) continue;
       if (lastFlags_.isOn(flag)) continue;
 
-      FlagStatus::temporary_increase(flag);
+      lastFlags_.add(flag);
 
-      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, FlagStatus::makeFlags(), flag.getKeyCode(), keyboardType, false));
+      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, lastFlags_, flag.getKeyCode(), keyboardType, false));
       if (! ptr) continue;
       EventOutputQueue::push(*ptr);
     }
