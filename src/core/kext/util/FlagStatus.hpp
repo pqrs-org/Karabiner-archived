@@ -59,19 +59,16 @@ namespace org_pqrs_KeyRemap4MacBook {
           ModifierFlag flag = getFlag(i);
           if (flag == ModifierFlag::NONE) break;
 
-          if (toFlags.isOn(flag)) {
-            // set a flag
-            while (! makeFlags().isOn(flag)) {
-              temporary_increase(flag);
-              ++count_[i];
-            }
+          // reset flag
+          while (makeFlags().isOn(flag)) {
+            temporary_decrease(flag);
+            --count_[i];
+          }
 
-          } else {
-            // unset a flag
-            while (makeFlags().isOn(flag)) {
-              temporary_decrease(flag);
-              --count_[i];
-            }
+          // set a flag
+          if (toFlags.isOn(flag)) {
+            temporary_increase(flag);
+            ++count_[i];
           }
         }
       }
