@@ -35,7 +35,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void decrease_alloccount(void);
 
     // We need to use EventLock to guard FlagStatus, NumHeldDownKeys, or other global variables.
-    // *** We need to lock EventLock before other locks (timer lock, list lock, etc.) to avoid the deadlock . ***
+    // (TimerWrapper use this lock to serialize timerevents, so we must not lock in timer callback.)
+    //
+    // *** We need to lock EventLock before other locks (list lock, etc.) to avoid the deadlock . ***
     static IOLock* getEventLock(void) { return event_lock_; }
 
   private:
