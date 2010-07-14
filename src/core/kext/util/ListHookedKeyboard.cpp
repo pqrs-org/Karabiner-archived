@@ -192,12 +192,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (params.key >= KeyCode::VK__BEGIN__) {
       // Invalid keycode
-      IOLOG_ERROR("ListHookedKeyboard::Item::apply invalid key:%d\n", params.key.get());
+      IOLOG_ERROR("ListHookedKeyboard::Item::apply invalid key:%d eventType:%d\n", params.key.get(), params.eventType.get());
       return;
     }
     if (params.eventType == EventType::MODIFY && ! params.key.isModifier()) {
       // Invalid modifierkeycode
-      IOLOG_ERROR("ListHookedKeyboard::Item::apply invalid modifierkey:%d\n", params.key.get());
+      IOLOG_ERROR("ListHookedKeyboard::Item::apply invalid modifierkey:%08x\n", params.key.get());
       return;
     }
     if (params.flags.isVirtualModifiersOn()) {
