@@ -1,6 +1,5 @@
 #include "EventOutputQueue.hpp"
 #include "KeyToPointingButton.hpp"
-#include "KeyboardRepeat.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
@@ -103,7 +102,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (remapParams.params.ex_iskeydown) {
         FlagStatus::decrease(fromKey_.flags | fromKey_.key.getModifierFlag());
       }
-      KeyboardRepeat::cancel();
+      // Do not cancel KeyboardRepeat here.
 
       switch (toButtons_->size()) {
         case 0:
