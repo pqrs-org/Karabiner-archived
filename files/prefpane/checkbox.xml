@@ -6614,6 +6614,13 @@
           <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKQUOTE</autogen>
         </item>
         <item>
+          <name>Section(§) to Backquote(`)</name>
+          <appendix>(except virtual machine)</appendix>
+          <sysctl>remap.uk_section2backquote_ex_vm</sysctl>
+          <not>VIRTUALMACHINE</not>
+          <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKQUOTE</autogen>
+        </item>
+        <item>
           <name>Section(§) to Backslash(\)</name>
           <sysctl>remap.uk_section2backslash</sysctl>
           <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKSLASH</autogen>
