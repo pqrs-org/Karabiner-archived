@@ -115,11 +115,6 @@
               <autogen>--PointingRelativeToScroll-- PointingButton::BUTTON4</autogen>
             </item>
             <item>
-              <name>LeftClick+RightClick+CursorMove to ScrollWheel</name>
-              <sysctl>remap.pointing_relative_LRClick_to_scroll</sysctl>
-              <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_pointing_relative_to_scroll</autogen>
-            </item>
-            <item>
               <name>Control+RightClick+CursorMove to ScrollWheel</name>
               <sysctl>remap.pointing_relative_controlRightClick_to_scroll</sysctl>
               <autogen>--PointingRelativeToScroll-- PointingButton::RIGHT, VK_CONTROL</autogen>
@@ -143,6 +138,11 @@
               <name>Option+CursorMove to ScrollWheel</name>
               <sysctl>remap.pointing_relative_option_to_scroll</sysctl>
               <autogen>--PointingRelativeToScroll-- PointingButton::NONE, VK_OPTION</autogen>
+            </item>
+            <item>
+              <name>(Simultaneous) LeftClick+RightClick+CursorMove to ScrollWheel</name>
+              <sysctl>remap.pointing_relative_LRClick_to_scroll</sysctl>
+              <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_pointing_relative_to_scroll</autogen>
             </item>
             <item>
               <name>CursorMove to ScrollWheel Option</name>
@@ -201,23 +201,18 @@
               <sysctl>remap.pointing_middleclick2commandLeftclick</sysctl>
               <autogen>--PointingButtonToPointingButton-- PointingButton::MIDDLE, PointingButton::LEFT, ModifierFlag::COMMAND_L</autogen>
             </item>
-          </list>
-        </item>
-        <item>
-          <name>Simultaneous Button Presses</name>
-          <list>
             <item>
-              <name>LeftClick+RightClick to MiddleClick</name>
+              <name>(Simultaneous) LeftClick+RightClick to MiddleClick</name>
               <sysctl>remap.pointing_leftrightclick2middleclick</sysctl>
               <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
             </item>
             <item>
-              <name>LeftClick+RightClick to Button4</name>
+              <name>(Simultaneous) LeftClick+RightClick to Button4</name>
               <sysctl>remap.pointing_leftrightclick2button4</sysctl>
               <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, PointingButton::BUTTON4</autogen>
             </item>
             <item>
-              <name>LeftClick+RightClick to Button5</name>
+              <name>(Simultaneous) LeftClick+RightClick to Button5</name>
               <sysctl>remap.pointing_leftrightclick2button5</sysctl>
               <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, PointingButton::BUTTON5</autogen>
             </item>
