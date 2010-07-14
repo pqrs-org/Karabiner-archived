@@ -18,9 +18,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     // return true if dropped.
     bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params);
 
-    // return true if params.key == virtualkey.
-    bool handlevirtualkey(const Params_KeyboardEventCallBack& params);
-
     bool isEventInputQueueDelayEnabled(void);
   };
 }

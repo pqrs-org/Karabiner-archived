@@ -8,7 +8,6 @@ class RemapClass
   @@entries = {
     :initialize                   => [],
     :terminate                    => [],
-    :handlevirtualkey             => [],
     :remap_setkeyboardtype        => [],
     :remap_key                    => [],
     :remap_consumer               => [],
@@ -31,7 +30,6 @@ class RemapClass
       # functions
       :initialize                   => '',
       :terminate                    => '',
-      :handlevirtualkey             => '',
       :remap_setkeyboardtype        => '',
       :remap_key                    => '',
       :remap_consumer               => '',
@@ -104,9 +102,9 @@ class RemapClass
         append_to_code_initialize(params)
         append_to_code_terminate
         @code[:variable] << { :index => @@index, :class => "RemapFunc::SimultaneousKeyPresses" }
+        @code[:remap_key] += "if (value#{@@index}_.remap(remapParams)) break;\n"
         @code[:remap_simultaneouskeypresses] += "value#{@@index}_.remap();\n"
         @code[:keycode] += "VK_SIMULTANEOUSKEYPRESSES_#{name}_#{@@index} --AUTO--\n"
-        @code[:handlevirtualkey] += "if (value#{@@index}_.handlevirtualkey(params)) return true;\n"
 
       when 'KeyToKey', 'KeyToConsumer', 'KeyToPointingButton', 'DoublePressModifier', 'HoldingKeyToKey', 'IgnoreMultipleSameKeyPress', 'KeyOverlaidModifier'
         append_to_code_initialize(params)
@@ -246,16 +244,6 @@ class RemapClass
     end
 
     # ----------------------------------------------------------------------
-    unless @code[:handlevirtualkey].empty? then
-      code += "static bool handlevirtualkey(const Params_KeyboardEventCallBack& params) {\n"
-      code += @code[:handlevirtualkey]
-      code += "return false;\n"
-      code += "}\n"
-
-      @@entries[:handlevirtualkey] << "#{classname}::handlevirtualkey"
-    end
-
-    # ----------------------------------------
     code   += "static bool enabled(void) {\n"
     if /^passthrough_/ =~ @name or @name == 'notsave_passthrough' then
       code += "return config.#{@name};\n"

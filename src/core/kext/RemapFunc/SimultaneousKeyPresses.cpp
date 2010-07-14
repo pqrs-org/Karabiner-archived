@@ -268,13 +268,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     bool
-    SimultaneousKeyPresses::handlevirtualkey(const Params_KeyboardEventCallBack& params)
+    SimultaneousKeyPresses::remap(RemapParams& remapParams)
     {
-      RemapParams rp(params);
       if (toType_ == TOTYPE_KEY) {
-        return keytokey_.remap(rp);
+        return keytokey_.remap(remapParams);
       } else {
-        return keytopointingbutton_.remap(rp);
+        return keytopointingbutton_.remap(remapParams);
       }
     }
   }

@@ -22,7 +22,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapClassManager {
     typedef void (*RemapClass_initialize)(void);
     typedef void (*RemapClass_terminate)(void);
-    typedef bool (*RemapClass_handlevirtualkey)(const Params_KeyboardEventCallBack& params);
     typedef void (*RemapClass_remap_setkeyboardtype)(KeyboardType& keyboardType);
     typedef void (*RemapClass_remap_key)(RemapParams& remapParams);
     typedef void (*RemapClass_remap_consumer)(RemapConsumerParams& remapParams);
@@ -252,19 +251,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (p(params)) dropped = true;
       }
       return dropped;
-    }
-
-    bool
-    handlevirtualkey(const Params_KeyboardEventCallBack& params)
-    {
-      // We do not need a lock, because we don't refer queues.
-
-      for (size_t i = 0;; ++i) {
-        RemapClass_handlevirtualkey p = listRemapClass_handlevirtualkey[i];
-        if (! p) break;
-        if (p(params)) return true;
-      }
-      return false;
     }
 
     bool
