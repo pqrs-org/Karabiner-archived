@@ -3193,6 +3193,12 @@
           <autogen>--KeyToKey-- KeyCode::W, VK_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
+          <name>Option+W to Command+C</name>
+          <sysctl>option.emacsmode_OptionWCopy</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+          <autogen>--KeyToKey-- KeyCode::W, VK_OPTION, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
           <name>Option+BF to Option+Left/Right</name>
           <sysctl>option.emacsmode_optionBF</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
@@ -3211,6 +3217,18 @@
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
           <autogen>--KeyToKey-- KeyCode::COMMA, VK_OPTION | VK_SHIFT, KeyCode::HOME, ModifierFlag::OPTION_L</autogen>
           <autogen>--KeyToKey-- KeyCode::DOT,   VK_OPTION | VK_SHIFT, KeyCode::END, ModifierFlag::OPTION_L</autogen>
+        </item>
+        <item>
+          <name>Control+/ to Command_Z</name>
+          <sysctl>option.emacsmode_controlSlash</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+          <autogen>--KeyToKey-- KeyCode::SLASH, VK_CONTROL, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
+          <name>Control+S to Command+F</name>
+          <sysctl>option.emacsmode_controlS</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+          <autogen>--KeyToKey-- KeyCode::S, VK_CONTROL, KeyCode::F, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
           <name>[ex] Control+1 to Home / Control+2 to End</name>
@@ -3581,6 +3599,13 @@
                   <autogen>--KeyToKey-- KeyCode::E, VK_CONTROL, KeyCode::END</autogen>
                 </item>
               </list>
+            </item>
+            <item>
+              <name>[Terminal] Control+/ to C-_ and Control+' to C-M-_</name>
+              <sysctl>option.emacsmode_controlSlashTerminal</sysctl>
+              <only>TERMINAL</only>
+              <autogen>--KeyToKey-- KeyCode::SLASH, VK_CONTROL, KeyCode::MINUS, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::QUOTE, VK_CONTROL, KeyCode::MINUS, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
             </item>
           </list>
         </item>
