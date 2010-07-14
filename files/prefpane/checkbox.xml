@@ -257,6 +257,21 @@
               <sysctl>remap.pointing_button5_to_command_bracket_right</sysctl>
               <autogen>--PointingButtonToKey-- PointingButton::BUTTON5, KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L</autogen>
             </item>
+            <item>
+              <name>(Simultaneous) LeftClick+RightClick to Dashboard</name>
+              <sysctl>remap.pointing_leftrightclick2dashboard</sysctl>
+              <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::DASHBOARD</autogen>
+            </item>
+            <item>
+              <name>(Simultaneous) LeftClick+RightClick to Expose</name>
+              <sysctl>remap.pointing_leftrightclick2expose</sysctl>
+              <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::EXPOSE_ALL</autogen>
+            </item>
+            <item>
+              <name>(Simultaneous) LeftClick+RightClick to F8</name>
+              <sysctl>remap.pointing_leftrightclick2f8</sysctl>
+              <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::F8</autogen>
+            </item>
           </list>
         </item>
       </list>
