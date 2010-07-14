@@ -103,7 +103,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         FlagStatus::decrease(fromKey_.flags | fromKey_.key.getModifierFlag());
       }
       // Do not cancel KeyboardRepeat here.
-
+      // Because the mouse click event must not stop the key-repeat.
+      //
+      // OmniGraffle has a function which pull a line by mouse click with pressing "C" key.
+      // If you stop key-repeat, this function fails.
       switch (toButtons_->size()) {
         case 0:
           break;
