@@ -18,8 +18,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       SimultaneousKeyPresses(void) : index_(0) {}
       void initialize(void);
       void terminate(void);
+
+      // This function changes Simultaneous key presses to KeyCode::VK_SIMULTANEOUSKEYPRESSES_xxx
       void remap(void);
-      bool handlevirtualkey(const Params_KeyboardEventCallBack& params);
+      // This function changes KeyCode::VK_SIMULTANEOUSKEYPRESSES_xxx to remapped key/pointing events.
+      bool remap(RemapParams& remapParams);
 
       // ----------------------------------------
       // [0] => virtualkey

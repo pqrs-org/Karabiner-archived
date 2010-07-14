@@ -219,7 +219,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (handle_VK_JIS_BACKSLASH(params)) return;
     if (handle_VK_JIS_YEN(params)) return;
     if (Handle_VK_JIS_TEMPORARY::handle(params)) return;
-    if (RemapClassManager::handlevirtualkey(params)) return;
     if (params.key == KeyCode::VK_MODIFIER_EXTRA1 ||
         params.key == KeyCode::VK_MODIFIER_EXTRA2 ||
         params.key == KeyCode::VK_MODIFIER_EXTRA3 ||
