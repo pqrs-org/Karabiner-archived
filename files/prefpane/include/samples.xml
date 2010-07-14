@@ -82,6 +82,7 @@
           <name>Key To XXX</name>
           <appendix>A to Shift_L+B (Key to Key+Modifier)</appendix>
           <appendix>B to Command_L+Shift_L (Key to Modifier+Modifier)</appendix>
+          <appendix>S to Shift_L+Shift_R</appendix>
           <appendix>Shift+C to Space (Key+Modifier To Key)</appendix>
           <appendix>Shift+D to Option_L (Key+Modifier To Modifier)</appendix>
           <appendix>Shift+E to Control_L+Space (Key+Modifier To Key+Modifier)</appendix>
@@ -93,6 +94,7 @@
           <sysctl>remap.samples_keytokey_key2xxx</sysctl>
           <autogen>--KeyToKey-- KeyCode::A, KeyCode::B, ModifierFlag::SHIFT_L</autogen>
           <autogen>--KeyToKey-- KeyCode::B, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::S, KeyCode::SHIFT_R, ModifierFlag::SHIFT_L</autogen>
           <autogen>--KeyToKey-- KeyCode::C, VK_SHIFT, KeyCode::SPACE</autogen>
           <autogen>--KeyToKey-- KeyCode::D, VK_SHIFT, KeyCode::OPTION_L</autogen>
           <autogen>--KeyToKey-- KeyCode::E, VK_SHIFT, KeyCode::SPACE, ModifierFlag::CONTROL_L</autogen>
