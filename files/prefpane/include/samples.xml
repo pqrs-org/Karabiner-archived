@@ -487,6 +487,12 @@
           <autogen>--PointingButtonToKey-- PointingButton::RIGHT, KeyCode::CONTROL_L</autogen>
           <autogen>--PointingButtonToKey-- PointingButton::LEFT, ModifierFlag::CONTROL_L, KeyCode::SPACE</autogen>
         </item>
+        <item>
+          <name>Standard2</name>
+          <appendix>RightClick to CapsLock,A</appendix>
+          <sysctl>remap.samples_pointingbuttontokey2</sysctl>
+          <autogen>--PointingButtonToKey-- PointingButton::RIGHT, KeyCode::CAPSLOCK, KeyCode::A</autogen>
+        </item>
       </list>
     </item>
 
