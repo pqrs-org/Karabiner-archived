@@ -159,32 +159,53 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
   if (! cell) return nil;
 
   // ------------------------------------------------------------
-  NSXMLNode* title = [_xmlTreeWrapper getNode:item xpath:@"name"];
-  if (! title) return nil;
+  // setTitle
+  NSXMLNode* attr_title = [item attributeForName:@"cache_title"];
+  if (attr_title != nil) {
+    [cell setTitle:[attr_title stringValue]];
 
-  NSMutableString* titlestring = [NSMutableString stringWithString:[title stringValue]];
+  } else {
+    NSXMLNode* title = [_xmlTreeWrapper getNode:item xpath:@"name"];
+    if (! title) return nil;
 
-  NSArray* a = [item nodesForXPath:@"appendix" error:NULL];
-  if (a) {
-    for (NSXMLNode* appendix in a) {
-      if (! appendix) break;
+    NSMutableString* titlestring = [NSMutableString stringWithString:[title stringValue]];
 
-      [titlestring appendString:@"\n  "];
-      [titlestring appendString:[appendix stringValue]];
+    NSArray* a = [item nodesForXPath:@"appendix" error:NULL];
+    if (a) {
+      for (NSXMLNode* appendix in a) {
+        if (! appendix) break;
+
+        [titlestring appendString:@"\n  "];
+        [titlestring appendString:[appendix stringValue]];
+      }
+    }
+
+    [item addAttribute:[NSXMLNode attributeWithName:@"cache_title" stringValue:titlestring]];
+
+    [cell setTitle:titlestring];
+  }
+
+  // ------------------------------------------------------------
+  // check sysctl, then setImagePosition or return value.
+  NSXMLNode* attr_sysctl = [item attributeForName:@"cache_sysctl"];
+  NSString* sysctl = nil;
+  if (attr_sysctl != nil) {
+    sysctl = [attr_sysctl stringValue];
+
+  } else {
+    NSXMLNode* node_sysctl = [_xmlTreeWrapper getNode:item xpath:@"sysctl"];
+    if (node_sysctl) {
+      sysctl = [node_sysctl stringValue];
     }
   }
 
-  [cell setTitle:titlestring];
-
-  // ------------------------------------------------------------
-  NSXMLNode* sysctl = [_xmlTreeWrapper getNode:item xpath:@"sysctl"];
-  if (! sysctl || [[sysctl stringValue] hasPrefix:@"notsave."]) {
+  if (! sysctl || [sysctl hasPrefix:@"notsave."]) {
     [cell setImagePosition:NSNoImage];
     return nil;
 
   } else {
     [cell setImagePosition:NSImageLeft];
-    NSString* entry = [NSString stringWithFormat:@"keyremap4macbook.%@", [sysctl stringValue]];
+    NSString* entry = [NSString stringWithFormat:@"keyremap4macbook.%@", sysctl];
     return [BUNDLEPREFIX (SysctlWrapper) getInt:entry];
   }
 
