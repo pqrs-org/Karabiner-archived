@@ -249,9 +249,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     // The CapsLock LED is not designed to turn it on/off frequently.
     // So, we have to use the timer to call a setAlphaLock function at appropriate frequency.
     enum {
-      CAPSLOCK_DELAY_MS = 300,
+      CAPSLOCK_LED_DELAY_MS = 100,
     };
-    capslock_led_timer_.setTimeoutMS(CAPSLOCK_DELAY_MS, false);
+    capslock_led_timer_.setTimeoutMS(CAPSLOCK_LED_DELAY_MS, false);
   }
 
   void
