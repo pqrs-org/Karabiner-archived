@@ -285,7 +285,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     IOLockWrapper::ScopedLock lk(list_lock_);
 
-    ListHookedKeyboard::Item* p = static_cast<ListHookedKeyboard::Item*>(get_nolock());
+    ListHookedKeyboard::Item* p = static_cast<ListHookedKeyboard::Item*>(get_replaced_nolock());
     if (p) {
       p->apply(params);
     }
@@ -296,7 +296,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     IOLockWrapper::ScopedLock lk(list_lock_);
 
-    ListHookedKeyboard::Item* p = static_cast<ListHookedKeyboard::Item*>(get_nolock());
+    ListHookedKeyboard::Item* p = static_cast<ListHookedKeyboard::Item*>(get_replaced_nolock());
     if (p) {
       p->apply(params);
     }
