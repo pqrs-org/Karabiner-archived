@@ -4,6 +4,7 @@
 #include "base.hpp"
 #include "CallBackWrapper.hpp"
 #include "ListHookedDevice.hpp"
+#include "TimerWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   class ListHookedKeyboard : public ListHookedDevice {
@@ -12,6 +13,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     public:
       Item(IOHIDevice* p);
       ~Item(void);
+
+      bool isReplaced(void) const { return orig_keyboardEventAction_ != NULL; }
 
       void apply(const Params_KeyboardEventCallBack& params);
       void apply(const Params_UpdateEventFlagsCallback& params);
@@ -26,7 +29,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       IOLock* replacerestore_lock_;
 
       bool refresh_callback(void);
-      bool isReplaced(void) const { return orig_keyboardEventAction_ != NULL; }
 
       /** return true if event action is replaced. */
       bool replaceEventAction(void);
@@ -34,10 +36,17 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool restoreEventAction(void);
     };
 
+    static void static_initialize(IOWorkLoop& workloop);
+    static void static_terminate(void);
+
     static ListHookedKeyboard& instance(void);
 
     void apply(const Params_KeyboardEventCallBack& params);
     void apply(const Params_UpdateEventFlagsCallback& params);
+
+  private:
+    static void setCapsLockLED_callback(OSObject* owner, IOTimerEventSource* sender);
+    static TimerWrapper capslock_led_timer_;
   };
 }
 

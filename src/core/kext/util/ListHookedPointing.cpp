@@ -216,6 +216,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         params.dx == 0 &&
         params.dy == 0) {
       for (Item* p = static_cast<Item*>(list_->front()); p; p = static_cast<Item*>(p->getnext())) {
+        if (! p->isReplaced()) continue;
+
         p->apply(params);
       }
 

@@ -12,6 +12,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       Item(IOHIDevice* p);
       ~Item(void);
 
+      bool isReplaced(void) const { return orig_keyboardSpecialEventAction_ != NULL; }
+
       void apply(const Params_KeyboardSpecialEventCallback& params);
       void disableNumLock(void);
 
@@ -22,7 +24,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       IOLock* replacerestore_lock_;
 
       bool refresh_callback(void);
-      bool isReplaced(void) const { return orig_keyboardSpecialEventAction_ != NULL; }
 
       /** return true if event action is replaced. */
       bool replaceEventAction(void);

@@ -11,6 +11,19 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace {
     ListHookedKeyboard listHookedKeyboard;
   }
+  TimerWrapper ListHookedKeyboard::capslock_led_timer_;
+
+  void
+  ListHookedKeyboard::static_initialize(IOWorkLoop& workloop)
+  {
+    capslock_led_timer_.initialize(&workloop, NULL, ListHookedKeyboard::setCapsLockLED_callback);
+  }
+
+  void
+  ListHookedKeyboard::static_terminate(void)
+  {
+    capslock_led_timer_.terminate();
+  }
 
   ListHookedKeyboard&
   ListHookedKeyboard::instance(void)
@@ -233,27 +246,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       FlagStatus::sticky_clear();
     }
 
-    // --------------------
-    // handle CapsLock LED
-    IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, device_);
-    if (kbd) {
-      int led = kbd->getLEDStatus();
-      if (config.general_capslock_led_hack) {
-        if (led == 0) {
-          kbd->setAlphaLockFeedback(true);
-        }
-      } else {
-        if (params.flags.isOn(ModifierFlag::CAPSLOCK)) {
-          if (led == 0) {
-            kbd->setAlphaLockFeedback(true);
-          }
-        } else {
-          if (led != 0) {
-            kbd->setAlphaLockFeedback(false);
-          }
-        }
-      }
-    }
+    // The CapsLock LED is not designed to turn it on/off frequently.
+    // So, we have to use the timer to call a setAlphaLock function at appropriate frequency.
+    capslock_led_timer_.setTimeoutMS(300, false);
   }
 
   void
@@ -299,6 +294,41 @@ namespace org_pqrs_KeyRemap4MacBook {
     ListHookedKeyboard::Item* p = static_cast<ListHookedKeyboard::Item*>(get_replaced_nolock());
     if (p) {
       p->apply(params);
+    }
+  }
+
+  void
+  ListHookedKeyboard::setCapsLockLED_callback(OSObject* owner, IOTimerEventSource* sender)
+  {
+    ListHookedKeyboard& self = ListHookedKeyboard::instance();
+    IOLockWrapper::ScopedLock lk(self.list_lock_);
+
+    if (! self.list_) return;
+
+    Flags flags = FlagStatus::makeFlags();
+
+    for (Item* p = static_cast<Item*>(self.list_->front()); p; p = static_cast<Item*>(p->getnext())) {
+      if (! p->isReplaced()) continue;
+
+      IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, p->get());
+      if (! kbd) continue;
+
+      int led = kbd->getLEDStatus();
+      if (config.general_capslock_led_hack) {
+        if (led == 0) {
+          kbd->setAlphaLock(true);
+        }
+      } else {
+        if (flags.isOn(ModifierFlag::CAPSLOCK)) {
+          if (led == 0) {
+            kbd->setAlphaLock(true);
+          }
+        } else {
+          if (led != 0) {
+            kbd->setAlphaLock(false);
+          }
+        }
+      }
     }
   }
 }

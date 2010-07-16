@@ -15,6 +15,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       Item(IOHIDevice* d);
       virtual ~Item(void) {};
 
+      virtual bool isReplaced(void) const = 0;
+
       IOHIDevice* get(void) const { return device_; }
       bool isEqualVendorIDProductID(DeviceVendorID vendorID, DeviceProductID productID) const;
       DeviceVendorID getVendorID(void) const { return vendorID_; }
@@ -27,7 +29,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       DeviceType::DeviceType deviceType_;
 
       virtual bool refresh_callback(void) = 0;
-      virtual bool isReplaced(void) const = 0;
 
       void setVendorIDProductID(void);
       void setDeviceType(void);
