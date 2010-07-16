@@ -248,7 +248,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // The CapsLock LED is not designed to turn it on/off frequently.
     // So, we have to use the timer to call a setAlphaLock function at appropriate frequency.
-    capslock_led_timer_.setTimeoutMS(300, false);
+    enum {
+      CAPSLOCK_DELAY_MS = 300,
+    };
+    capslock_led_timer_.setTimeoutMS(CAPSLOCK_DELAY_MS, false);
   }
 
   void
@@ -313,18 +316,17 @@ namespace org_pqrs_KeyRemap4MacBook {
       IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, p->get());
       if (! kbd) continue;
 
-      int led = kbd->getLEDStatus();
       if (config.general_capslock_led_hack) {
-        if (led == 0) {
+        if (! kbd->alphaLock()) {
           kbd->setAlphaLock(true);
         }
       } else {
         if (flags.isOn(ModifierFlag::CAPSLOCK)) {
-          if (led == 0) {
+          if (! kbd->alphaLock()) {
             kbd->setAlphaLock(true);
           }
         } else {
-          if (led != 0) {
+          if (kbd->alphaLock()) {
             kbd->setAlphaLock(false);
           }
         }
