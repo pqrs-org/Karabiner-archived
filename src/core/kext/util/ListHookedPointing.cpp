@@ -220,7 +220,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
     } else {
-      ListHookedPointing::Item* p = static_cast<ListHookedPointing::Item*>(get_nolock());
+      ListHookedPointing::Item* p = static_cast<ListHookedPointing::Item*>(get_replaced_nolock());
       if (p) {
         p->apply(params);
       }
@@ -232,7 +232,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     IOLockWrapper::ScopedLock lk(list_lock_);
 
-    ListHookedPointing::Item* p = static_cast<ListHookedPointing::Item*>(get_nolock());
+    ListHookedPointing::Item* p = static_cast<ListHookedPointing::Item*>(get_replaced_nolock());
     if (p) {
       p->apply(params);
     }

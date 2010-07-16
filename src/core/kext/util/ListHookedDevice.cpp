@@ -195,7 +195,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   ListHookedDevice::Item*
-  ListHookedDevice::get_nolock(void)
+  ListHookedDevice::get_replaced_nolock(void)
   {
     if (! list_) return NULL;
 
@@ -208,12 +208,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (p->isReplaced()) return p;
     }
 
-    // --------------------
-    // Search others.
-    p = get_nolock(last_);
-    if (p) return p;
-
-    return static_cast<Item*>(list_->back());
+    return NULL;
   }
 
   void

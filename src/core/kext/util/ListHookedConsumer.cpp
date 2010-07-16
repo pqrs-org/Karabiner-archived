@@ -177,7 +177,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     IOLockWrapper::ScopedLock lk(list_lock_);
 
-    ListHookedConsumer::Item* p = static_cast<ListHookedConsumer::Item*>(get_nolock());
+    ListHookedConsumer::Item* p = static_cast<ListHookedConsumer::Item*>(get_replaced_nolock());
     if (p) {
       p->apply(params);
     }
@@ -188,7 +188,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     IOLockWrapper::ScopedLock lk(list_lock_);
 
-    ListHookedConsumer::Item* p = static_cast<ListHookedConsumer::Item*>(get_nolock());
+    ListHookedConsumer::Item* p = static_cast<ListHookedConsumer::Item*>(get_replaced_nolock());
     if (p) {
       p->disableNumLock();
     }
