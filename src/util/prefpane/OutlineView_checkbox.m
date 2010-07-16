@@ -193,12 +193,22 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
 
 - (CGFloat) outlineView:(NSOutlineView*)outlineView heightOfRowByItem:(id)item
 {
+  NSXMLNode* attr = [item attributeForName:@"cache_height"];
+  if (attr != nil) {
+    return [[attr stringValue] floatValue];
+  }
+
   NSUInteger appendixnum = 0;
   NSArray* a = [item nodesForXPath:@"appendix" error:NULL];
   if (a) {
     appendixnum = [a count];
   }
-  return [outlineView rowHeight] * (1 + appendixnum);
+
+  CGFloat height = [outlineView rowHeight] * (1 + appendixnum);
+  NSString* heightstring = [NSString stringWithFormat:@"%f", height];
+  [item addAttribute:[NSXMLNode attributeWithName:@"cache_height" stringValue:heightstring]];
+
+  return height;
 }
 
 - (void) outlineView:(NSOutlineView*)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn*)tableColumn byItem:(id)item
