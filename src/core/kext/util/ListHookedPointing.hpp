@@ -13,6 +13,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       Item(IOHIDevice* d);
       ~Item(void);
 
+      bool isReplaced(void) const { return orig_relativePointerEventAction_ != NULL; }
+
       Buttons get_previousbuttons(void) const { return previousbuttons_; }
       void set_previousbuttons(Buttons newval) { previousbuttons_ = newval; }
 
@@ -30,7 +32,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       IOLock* replacerestore_lock_;
 
       bool refresh_callback(void);
-      bool isReplaced(void) const { return orig_relativePointerEventAction_ != NULL; }
 
       /** return true if event action is replaced. */
       bool replaceEventAction(void);

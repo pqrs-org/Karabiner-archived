@@ -77,6 +77,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         EventOutputQueue::initialize(*workLoop);
         RemapFunc::HoldingKeyToKey::static_initialize(*workLoop);
         RemapFunc::KeyOverlaidModifier::static_initialize(*workLoop);
+        ListHookedKeyboard::static_initialize(*workLoop);
       }
 
       sysctl_register();
@@ -98,6 +99,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       EventOutputQueue::terminate();
       RemapFunc::HoldingKeyToKey::static_terminate();
       RemapFunc::KeyOverlaidModifier::static_terminate();
+      ListHookedKeyboard::static_terminate();
 
       if (workLoop) {
         workLoop->release();
