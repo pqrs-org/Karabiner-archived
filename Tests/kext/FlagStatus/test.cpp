@@ -56,6 +56,9 @@ TEST(FlagStatus, makeFlags) {
   FlagStatus::set(KeyCode::CAPSLOCK, ModifierFlag::CAPSLOCK);
   EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), FlagStatus::makeFlags());
 
+  FlagStatus::set(KeyCode::CAPSLOCK, 0);
+  EXPECT_EQ(Flags(0), FlagStatus::makeFlags());
+
   FlagStatus::reset();
   FlagStatus::set(KeyCode::SHIFT_L, ModifierFlag::SHIFT_L);
   EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), FlagStatus::makeFlags());
@@ -258,16 +261,15 @@ TEST(FlagStatus, CapsLock) {
   FlagStatus::set(KeyCode::A, ModifierFlag::CAPSLOCK);
   EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), FlagStatus::makeFlags());
 
-  // reset
+  // from other keyboard
   FlagStatus::set(KeyCode::A, 0);
-  EXPECT_EQ(Flags(), FlagStatus::makeFlags());
+  EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), FlagStatus::makeFlags());
 
-  // some keyboard send key with ModifierFlag::CAPSLOCK without KeyCode::CAPSLOCK.
   FlagStatus::set(KeyCode::A, ModifierFlag::CAPSLOCK);
   EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), FlagStatus::makeFlags());
 
   // reset
-  FlagStatus::set(KeyCode::A, 0);
+  FlagStatus::set(KeyCode::CAPSLOCK, 0);
   EXPECT_EQ(Flags(), FlagStatus::makeFlags());
 
   // soft caps
@@ -276,10 +278,8 @@ TEST(FlagStatus, CapsLock) {
   EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), FlagStatus::makeFlags());
 
   // soft caps will be canceled by hardware caps
-  FlagStatus::set(KeyCode::A, ModifierFlag::CAPSLOCK);
-  EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), FlagStatus::makeFlags());
-  FlagStatus::set(KeyCode::A, 0);
-  EXPECT_EQ(Flags(), FlagStatus::makeFlags());
+  FlagStatus::set(KeyCode::CAPSLOCK, 0);
+  EXPECT_EQ(Flags(0), FlagStatus::makeFlags());
 }
 
 TEST(FlagStatus, ScopedTemporaryFlagsChanger) {
