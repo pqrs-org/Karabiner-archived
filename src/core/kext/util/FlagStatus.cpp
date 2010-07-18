@@ -17,7 +17,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     count_ = 0;
     temporary_count_ = 0;
     lock_count_ = 0;
-    original_lock_count_ = 0;
     sticky_count_ = 0;
   }
 
@@ -59,7 +58,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     temporary_count_ = 0;
 
     /*
-       preserve lock_count, original_lock_count.
+       preserve lock_count.
 
        FlagStatus::reset is called when NumHeldDownKeys == 0,
        so we need remember the status of CapsLock, NumLock, ...
