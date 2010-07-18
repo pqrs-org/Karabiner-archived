@@ -148,9 +148,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       primitive_add_nolock(eventType, flags, key, keyboardType);
       primitive_start_nolock(wait);
 
-      if (config.debug_devel) {
-        IOLOG_INFO("KeyboardRepeat::set key:%d flags:0x%x\n", key.get(), flags.get());
-      }
+      IOLOG_DEVEL("KeyboardRepeat::set key:%d flags:0x%x\n", key.get(), flags.get());
 
     } else {
       goto cancel;
@@ -191,9 +189,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       primitive_add_nolock(eventType, flags, key);
       primitive_start_nolock(config.get_repeat_consumer_initial_wait());
 
-      if (config.debug_devel) {
-        IOLOG_INFO("KeyboardRepeat::set consumer key:%d flags:0x%x\n", key.get(), flags.get());
-      }
+      IOLOG_DEVEL("KeyboardRepeat::set consumer key:%d flags:0x%x\n", key.get(), flags.get());
 
     } else {
       goto cancel;
