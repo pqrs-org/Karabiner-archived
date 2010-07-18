@@ -11,18 +11,18 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace {
     ListHookedKeyboard listHookedKeyboard;
   }
-  TimerWrapper ListHookedKeyboard::capslock_led_timer_;
+  TimerWrapper ListHookedKeyboard::setcapslock_timer_;
 
   void
   ListHookedKeyboard::static_initialize(IOWorkLoop& workloop)
   {
-    capslock_led_timer_.initialize(&workloop, NULL, ListHookedKeyboard::setCapsLockLED_callback);
+    setcapslock_timer_.initialize(&workloop, NULL, ListHookedKeyboard::setCapsLock_callback);
   }
 
   void
   ListHookedKeyboard::static_terminate(void)
   {
-    capslock_led_timer_.terminate();
+    setcapslock_timer_.terminate();
   }
 
   ListHookedKeyboard&
@@ -249,9 +249,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     // The CapsLock LED is not designed to turn it on/off frequently.
     // So, we have to use the timer to call a setAlphaLock function at appropriate frequency.
     enum {
-      CAPSLOCK_LED_DELAY_MS = 100,
+      CAPSLOCK_LED_DELAY_MS = 5,
     };
-    capslock_led_timer_.setTimeoutMS(CAPSLOCK_LED_DELAY_MS, false);
+    setcapslock_timer_.setTimeoutMS(CAPSLOCK_LED_DELAY_MS, false);
   }
 
   void
@@ -301,7 +301,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  ListHookedKeyboard::setCapsLockLED_callback(OSObject* owner, IOTimerEventSource* sender)
+  ListHookedKeyboard::setCapsLock_callback(OSObject* owner, IOTimerEventSource* sender)
   {
     ListHookedKeyboard& self = ListHookedKeyboard::instance();
     IOLockWrapper::ScopedLock lk(self.list_lock_);
@@ -316,19 +316,26 @@ namespace org_pqrs_KeyRemap4MacBook {
       IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, p->get());
       if (! kbd) continue;
 
-      if (config.general_capslock_led_hack) {
+      // We call setAlphaLock to match a state of CapsLock of the hardware with remapped CapsLock.
+      if (flags.isOn(ModifierFlag::CAPSLOCK)) {
         if (! kbd->alphaLock()) {
           kbd->setAlphaLock(true);
         }
       } else {
-        if (flags.isOn(ModifierFlag::CAPSLOCK)) {
-          if (! kbd->alphaLock()) {
-            kbd->setAlphaLock(true);
-          }
-        } else {
-          if (kbd->alphaLock()) {
-            kbd->setAlphaLock(false);
-          }
+        if (kbd->alphaLock()) {
+          kbd->setAlphaLock(false);
+        }
+      }
+
+      if (config.general_capslock_led_hack) {
+        // Set CapsLock LED always.
+        // *** Do not use setAlphaLock for this purpose. It changes the flag status of the hardware CapsLock. ***
+        enum {
+          CAPSLOCK_LED_MASK = 0x2,
+        };
+        bool isLED = (kbd->getLEDStatus() & CAPSLOCK_LED_MASK);
+        if (! isLED) {
+          kbd->setAlphaLockFeedback(true);
         }
       }
     }
