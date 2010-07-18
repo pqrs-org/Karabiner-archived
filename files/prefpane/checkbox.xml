@@ -740,6 +740,11 @@
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::PAGEUP</autogen>
         </item>
         <item>
+          <name>Command_R to Space</name>
+          <sysctl>remap.commandR2space</sysctl>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::SPACE</autogen>
+        </item>
+        <item>
           <name>Command_R to LeftClick</name>
           <sysctl>remap.commandR2leftclick</sysctl>
           <autogen>--KeyToPointingButton-- KeyCode::COMMAND_R, PointingButton::LEFT</autogen>
