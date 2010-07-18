@@ -15,6 +15,7 @@ src/core/kext/keycode/data/include/KeyCode.VK_GENERATED.data
 util/getActiveApplication/getname
 files/share/reset
 pkginfo/Info.plist$
+util/SetCapsDelay/common/Info.plist$
 src/core/kext/Info.plist$
 src/core/server/Info.plist$
 src/util/KeyDump/Info.plist$
