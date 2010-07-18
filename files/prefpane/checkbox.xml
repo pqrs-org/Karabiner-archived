@@ -1130,6 +1130,11 @@
           <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::FORWARD_DELETE</autogen>
         </item>
         <item>
+          <name>Enter to Left-Arrow</name>
+          <sysctl>remap.enter2leftarrow</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::CURSOR_LEFT</autogen>
+        </item>
+        <item>
           <name>Enter to Return</name>
           <sysctl>remap.enter2return</sysctl>
           <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::RETURN</autogen>
