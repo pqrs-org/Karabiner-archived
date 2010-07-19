@@ -258,6 +258,8 @@ TEST(FlagStatus, CapsLock) {
   FlagStatus::set(KeyCode::CAPSLOCK, ModifierFlag::CAPSLOCK);
   EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), FlagStatus::makeFlags());
 
+  FlagStatus::reset();
+
   FlagStatus::set(KeyCode::A, ModifierFlag::CAPSLOCK);
   EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), FlagStatus::makeFlags());
 
