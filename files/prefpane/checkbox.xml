@@ -3937,6 +3937,11 @@
           <autogen>--SimultaneousKeyPresses-- KeyCode::V, KeyCode::I, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
         </item>
         <item>
+          <name>Simultaneous Key Presses [Q+P] to M</name>
+          <sysctl>remap.simultaneouskeypresses_pq2m</sysctl>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::P, KeyCode::Q, KeyCode::M</autogen>
+        </item>
+        <item>
           <name>Simultaneous Key Presses [K+L] to Control_L+F4 (= Move focus to the active (or next) window)</name>
           <appendix>(+ Shift+[K+L] to EXPOSE_ALL)</appendix>
           <appendix>(+ Control+[K+L] to F8)</appendix>
