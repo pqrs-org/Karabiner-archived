@@ -1956,10 +1956,10 @@
           <autogen>--KeyToKey-- KeyCode::ENTER, ModifierFlag::VK_SHIFT, KeyCode::KEYPAD_EQUAL</autogen>
         </item>
         <item>
-          <name>Logitech N305 hack</name>
-          <sysctl>remap.logitech_n305_hack</sysctl>
+          <name>Logitech N305 hack / FILCO FKBT22MB hack</name>
           <appendix>(Enable equal, parentheses)</appendix>
           <appendix>(Drop NumLock key)</appendix>
+          <sysctl>remap.logitech_n305_hack</sysctl>
           <!--
               ============================================================
               [Device Information]
