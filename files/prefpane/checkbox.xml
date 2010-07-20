@@ -1030,6 +1030,11 @@
           <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
         </item>
         <item>
+          <name>Eject to Command+Control+Option+Shift+E</name>
+          <sysctl>remap.eject2fccosE</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::E, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+        </item>
+        <item>
           <name>Eject to F14</name>
           <sysctl>remap.eject2f14</sysctl>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::F14</autogen>
