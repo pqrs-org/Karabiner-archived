@@ -8,6 +8,12 @@
 - (void) setStatusItemTitle {
   if (! statusItem_) return;
 
+  if (! [ConfigControl isShowSettingNameInStatusBar]) {
+    [statusItem_ setTitle:@""];
+    [statusItem_ setLength:24];
+    return;
+  }
+
   NSArray* list = [ConfigControl getConfigList];
   for (id name in list) {
     if ([name length] == 0) continue;
