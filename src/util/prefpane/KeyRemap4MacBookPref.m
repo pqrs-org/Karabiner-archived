@@ -110,8 +110,8 @@ static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
 
 - (IBAction) checkUpdateNow:(id)sender
 {
-  [self terminateTargetApplication:@"org.pqrs.KeyRemap4MacBook.updater"];
-  [self terminateTargetApplication:@"org.pqrs.KeyRemap4MacBook-server"];
+  NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.updater";
+  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"check" object:observedObject userInfo:nil deliverImmediately:YES];
 
   // We wait 1sec to improve the impression that pushed the button.
   // This is useless processing, but it is surely necessary for UI.
