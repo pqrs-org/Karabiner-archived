@@ -369,7 +369,7 @@ int
 main(int argc, char** argv)
 {
   if (argc == 1) {
-    fprintf(stderr, "Usage: %s (save|load|add|delete|rename|select|list|statusbar|toggle_statusbar|checkupdate|set_checkupdate) [params]\n", argv[0]);
+    fprintf(stderr, "Usage: %s (save|load|add|delete|rename|select|list|statusbar|toggle_statusbar|statusbar_showname|toggle_statusbar_showname|checkupdate|set_checkupdate) [params]\n", argv[0]);
     return 1;
   }
 
@@ -419,6 +419,15 @@ main(int argc, char** argv)
 
   } else if (strcmp(argv[1], "toggle_statusbar") == 0) {
     CFStringRef name = CFSTR("isStatusbarEnable");
+    CFIndex value = getValue(name);
+    isSuccess = setValue(name, ! value);
+
+  } else if (strcmp(argv[1], "statusbar_showname") == 0) {
+    printf("%ld\n", getValue(CFSTR("isShowSettingNameInStatusBar")));
+    return 0;
+
+  } else if (strcmp(argv[1], "toggle_statusbar_showname") == 0) {
+    CFStringRef name = CFSTR("isShowSettingNameInStatusBar");
     CFIndex value = getValue(name);
     isSuccess = setValue(name, ! value);
 
