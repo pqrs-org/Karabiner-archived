@@ -25,8 +25,7 @@
   return [result intValue];
 }
 
-- (void) applicationDidFinishLaunching:(NSNotification*)aNotification
-{
+- (void) checkUpdate:(NSNotification*)notification {
   int checkupdate = [self getCheckUpdate];
 
   // ----------------------------------------
@@ -50,6 +49,14 @@
 
   NSLog(@"checkForUpdatesInBackground %@", [[_suupdater feedURL] absoluteString]);
   [_suupdater checkForUpdatesInBackground];
+}
+
+- (void) applicationDidFinishLaunching:(NSNotification*)aNotification
+{
+  NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.updater";
+  [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(checkUpdate:) name:@"check" object:observedObject];
+
+  [self checkUpdate:aNotification];
 }
 
 @end
