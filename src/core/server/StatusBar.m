@@ -5,31 +5,6 @@
 
 @implementation StatusBar
 
-- (void) setStatusItemTitle {
-  if (! statusItem_) return;
-
-  if (! [ConfigControl isShowSettingNameInStatusBar]) {
-    [statusItem_ setTitle:@""];
-    [statusItem_ setLength:24];
-    return;
-  }
-
-  NSArray* list = [ConfigControl getConfigList];
-  for (id name in list) {
-    if ([name length] == 0) continue;
-
-    NSString* selected = [name substringToIndex:1];
-    NSString* title = [name substringFromIndex:1];
-
-    if ([selected isEqualToString:@"+"]) {
-      NSAttributedString* attributedtitle = [[[NSAttributedString alloc] initWithString:title attributes:nil] autorelease];
-      [statusItem_ setAttributedTitle:attributedtitle];
-      [statusItem_ setLength:(24 + [attributedtitle size].width)];
-      break;
-    }
-  }
-}
-
 - (void) refresh
 {
   if (! [ConfigControl isStatusbarEnable]) {
@@ -52,7 +27,28 @@
 
       [statusItem_ setMenu:menu_];
     }
-    [self setStatusItemTitle];
+
+    // setTitle
+    if (! [ConfigControl isShowSettingNameInStatusBar]) {
+      [statusItem_ setTitle:@""];
+      [statusItem_ setLength:24];
+
+    } else {
+      NSArray* list = [ConfigControl getConfigList];
+      for (id name in list) {
+        if ([name length] == 0) continue;
+
+        NSString* selected = [name substringToIndex:1];
+        NSString* title = [name substringFromIndex:1];
+
+        if ([selected isEqualToString:@"+"]) {
+          NSAttributedString* attributedtitle = [[[NSAttributedString alloc] initWithString:title attributes:nil] autorelease];
+          [statusItem_ setAttributedTitle:attributedtitle];
+          [statusItem_ setLength:(24 + [attributedtitle size].width)];
+          break;
+        }
+      }
+    }
   }
 }
 
@@ -60,7 +56,6 @@
 {
   NSString* idx = [sender representedObject];
   [ConfigControl select:idx];
-  [self setStatusItemTitle];
 }
 
 - (void) menuNeedsUpdate:(NSMenu*)menu
