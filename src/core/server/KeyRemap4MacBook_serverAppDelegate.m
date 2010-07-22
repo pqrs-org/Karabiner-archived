@@ -52,6 +52,10 @@
   [window center];
 }
 
+- (void) statusBarItemSelected:(id)sender {
+  [statusbar_ statusBarItemSelected:sender];
+}
+
 // ------------------------------------------------------------
 - (void) observer_NSWorkspaceDidActivateApplicationNotification:(NSNotification*)notification
 {
@@ -132,6 +136,9 @@
   [self setupStatusWindow];
   [serverobjcpart_ registerStatusWindow:window label:statusmessage_ background:statusmessage_background_];
   registerServerObjcPart(serverobjcpart_);
+
+  // ------------------------------------------------------------
+  [statusbar_ refresh];
 
   // ------------------------------------------------------------
   // Kick updater
