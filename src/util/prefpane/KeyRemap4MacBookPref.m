@@ -51,7 +51,7 @@ static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
   [BUNDLEPREFIX (Common) getExecResult:sysctl_ctl args:[NSArray arrayWithObjects:@"toggle_statusbar", nil]];
   [self setStatusBarState];
 
-  NSString *observedObject = @"org.pqrs.KeyRemap4MacBook.server";
+  NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.server";
   [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"refreshStatusBar" object:observedObject userInfo:nil deliverImmediately:YES];
 }
 
