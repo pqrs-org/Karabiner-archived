@@ -2,6 +2,7 @@
 CONFIGURATION = Release
 
 all:
+	mkdir -p build/Release
 	xcodebuild -alltargets -configuration $(CONFIGURATION) build
 
 clean:
