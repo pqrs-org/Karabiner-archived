@@ -287,6 +287,11 @@ namespace {
     CFNumberRef val = CFNumberCreate(NULL, kCFNumberIntType, &index);
     CFPreferencesSetAppValue(CFSTR("selectedIndex"), val, applicationID);
 
+    // --------------------
+    CFStringRef observedObject = CFSTR("org.pqrs.KeyRemap4MacBook.server");
+    CFNotificationCenterRef center = CFNotificationCenterGetDistributedCenter();
+    CFNotificationCenterPostNotification(center, CFSTR("refreshStatusBar"), observedObject, NULL, TRUE);
+
     return true;
   }
 
@@ -423,12 +428,14 @@ main(int argc, char** argv)
     isSuccess = setValue(name, ! value);
 
   } else if (strcmp(argv[1], "statusbar_showname") == 0) {
-    CFIndex value = getValue(CFSTR("isShowSettingNameInStatusBar"), 0);
+    CFStringRef name = CFSTR("isShowSettingNameInStatusBar");
+    CFIndex value = getValue(name, 0);
     printf("%ld\n", value);
     return 0;
 
   } else if (strcmp(argv[1], "toggle_statusbar_showname") == 0) {
-    CFIndex value = getValue(CFSTR("isShowSettingNameInStatusBar"), 0);
+    CFStringRef name = CFSTR("isShowSettingNameInStatusBar");
+    CFIndex value = getValue(name, 0);
     isSuccess = setValue(name, ! value);
 
   } else if (strcmp(argv[1], "checkupdate") == 0) {
