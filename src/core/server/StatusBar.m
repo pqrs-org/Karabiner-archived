@@ -11,19 +11,22 @@
     if (statusItem_) {
       [[NSStatusBar systemStatusBar] removeStatusItem:statusItem_];
       [statusItem_ release];
+      statusItem_ = nil;
     }
 
   } else {
-    statusItem_ = [[NSStatusBar systemStatusBar] statusItemWithLength:24];
-    [statusItem_ retain];
+    if (! statusItem_) {
+      statusItem_ = [[NSStatusBar systemStatusBar] statusItemWithLength:24];
+      [statusItem_ retain];
 
-    [statusItem_ setTitle:@""];
-    [statusItem_ setToolTip:@"KeyRemap4MacBook"];
-    [statusItem_ setImage:[NSImage imageNamed:@"icon.statusbar.0"]];
-    [statusItem_ setAlternateImage:[NSImage imageNamed:@"icon.statusbar.1"]];
-    [statusItem_ setHighlightMode:YES];
+      [statusItem_ setTitle:@""];
+      [statusItem_ setToolTip:@"KeyRemap4MacBook"];
+      [statusItem_ setImage:[NSImage imageNamed:@"icon.statusbar.0"]];
+      [statusItem_ setAlternateImage:[NSImage imageNamed:@"icon.statusbar.1"]];
+      [statusItem_ setHighlightMode:YES];
 
-    [statusItem_ setMenu:menu_];
+      [statusItem_ setMenu:menu_];
+    }
   }
 }
 
