@@ -37,6 +37,12 @@ static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
 }
 
 /* ---------------------------------------------------------------------- */
+- (void) postRefreshStatusBarToServer
+{
+  NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.server";
+  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"refreshStatusBar" object:observedObject userInfo:nil deliverImmediately:YES];
+}
+
 - (void) setStatusBarState
 {
   if ([ConfigControl isStatusbarEnable]) {
@@ -50,9 +56,23 @@ static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
 {
   [BUNDLEPREFIX (Common) getExecResult:sysctl_ctl args:[NSArray arrayWithObjects:@"toggle_statusbar", nil]];
   [self setStatusBarState];
+  [self postRefreshStatusBarToServer];
+}
 
-  NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.server";
-  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"refreshStatusBar" object:observedObject userInfo:nil deliverImmediately:YES];
+- (void) setStatusBarShowNameState
+{
+  if ([ConfigControl isShowSettingNameInStatusBar]) {
+    [_checkbox_statusbar_showname setState:NSOnState];
+  } else {
+    [_checkbox_statusbar_showname setState:NSOffState];
+  }
+}
+
+- (IBAction) toggleStatusBarShowName:(id)sender
+{
+  [BUNDLEPREFIX (Common) getExecResult:sysctl_ctl args:[NSArray arrayWithObjects:@"toggle_statusbar_showname", nil]];
+  [self setStatusBarShowNameState];
+  [self postRefreshStatusBarToServer];
 }
 
 /* ---------------------------------------------------------------------- */
@@ -105,6 +125,7 @@ static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
 {
   [self drawVersion];
   [self setStatusBarState];
+  [self setStatusBarShowNameState];
   [self setCheckUpdateState];
 }
 
