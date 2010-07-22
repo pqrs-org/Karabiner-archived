@@ -1,1 +1,0 @@
-../prefpane/ConfigControl.m
