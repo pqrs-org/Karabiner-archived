@@ -4,6 +4,7 @@
 @interface ConfigControl : NSObject
 
 + (int) isStatusbarEnable;
++ (int) isShowSettingNameInStatusBar;
 
 + (NSArray*) getConfigList;
 + (void) setName:(int)index newName:(NSString*)newname;
