@@ -18,6 +18,12 @@
   return [result intValue];
 }
 
++ (int) isShowSettingNameInStatusBar
+{
+  NSString* result = [ConfigControl execSysctl:[NSArray arrayWithObjects:@"statusbar_showname", nil]];
+  return [result intValue];
+}
+
 // ----------------------------------------------------------------------
 + (NSArray*) getConfigList
 {
