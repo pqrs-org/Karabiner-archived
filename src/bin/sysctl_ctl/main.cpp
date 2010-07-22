@@ -353,12 +353,12 @@ namespace {
   }
 
   CFIndex
-  getValue(CFStringRef name)
+  getValue(CFStringRef name, CFIndex defaultvalue = 1)
   {
     Boolean isOK;
     CFIndex value = CFPreferencesGetAppIntegerValue(name, applicationID, &isOK);
     if (! isOK) {
-      value = 1;
+      value = defaultvalue;
       setValue(name, value);
     }
     return value;
@@ -423,12 +423,12 @@ main(int argc, char** argv)
     isSuccess = setValue(name, ! value);
 
   } else if (strcmp(argv[1], "statusbar_showname") == 0) {
-    printf("%ld\n", getValue(CFSTR("isShowSettingNameInStatusBar")));
+    CFIndex value = getValue(CFSTR("isShowSettingNameInStatusBar"), 0);
+    printf("%ld\n", value);
     return 0;
 
   } else if (strcmp(argv[1], "toggle_statusbar_showname") == 0) {
-    CFStringRef name = CFSTR("isShowSettingNameInStatusBar");
-    CFIndex value = getValue(name);
+    CFIndex value = getValue(CFSTR("isShowSettingNameInStatusBar"), 0);
     isSuccess = setValue(name, ! value);
 
   } else if (strcmp(argv[1], "checkupdate") == 0) {
