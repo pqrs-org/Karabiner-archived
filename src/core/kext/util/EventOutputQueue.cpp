@@ -115,6 +115,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   EventOutputQueue::FireModifiers::fire(Flags toFlags, KeyboardType keyboardType)
   {
+    toFlags.stripNONE();
+    toFlags.stripEXTRA();
+
     if (lastFlags_ == toFlags) return;
 
     // At first I handle KeyUp and handle KeyDown next.
