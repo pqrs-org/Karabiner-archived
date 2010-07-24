@@ -1001,6 +1001,11 @@
           <sysctl>remap.shiftDelete2tilde</sysctl>
           <autogen>--KeyToKey-- KeyCode::DELETE, VK_SHIFT, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
         </item>
+        <item>
+          <name>Drop Delete</name>
+          <sysctl>remap.drop_delete</sysctl>
+          <autogen>--KeyToKey-- KeyCode::DELETE, KeyCode::VK_NONE</autogen>
+        </item>
       </list>
     </item>
 
@@ -2545,6 +2550,11 @@
           <sysctl>remap.return2semicolon</sysctl>
           <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::SEMICOLON</autogen>
         </item>
+        <item>
+          <name>Drop Return</name>
+          <sysctl>remap.drop_return</sysctl>
+          <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::VK_NONE</autogen>
+        </item>
       </list>
     </item>
 
@@ -2992,6 +3002,11 @@
           <sysctl>remap.swap_commandtabcontroltab</sysctl>
           <autogen>--KeyToKey-- KeyCode::TAB, VK_CONTROL, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
+        </item>
+        <item>
+          <name>Drop Tab</name>
+          <sysctl>remap.drop_tab</sysctl>
+          <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::VK_NONE</autogen>
         </item>
       </list>
     </item>
@@ -5501,6 +5516,16 @@
           </list>
         </item>
         <item>
+          <name>Change Delete Key</name>
+          <list>
+            <item>
+              <name>Delete to KANA</name>
+              <sysctl>remap.jis_delete2kana</sysctl>
+              <autogen>--KeyToKey-- KeyCode::DELETE, KeyCode::JIS_KANA</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Change Escape Key</name>
           <list>
             <item>
@@ -5548,6 +5573,16 @@
           </list>
         </item>
         <item>
+          <name>Change Return Key</name>
+          <list>
+            <item>
+              <name>Return to KANA</name>
+              <sysctl>remap.jis_return2kana</sysctl>
+              <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::JIS_KANA</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Change Right Bracket(]) Key</name>
           <list>
             <item>
@@ -5582,6 +5617,16 @@
               <sysctl>remap.jis_shiftSpace2equal</sysctl>
               <inputmode_only>INPUTMODE_ROMAN</inputmode_only>
               <autogen>--KeyToKey-- KeyCode::SPACE, VK_SHIFT, KeyCode::EQUAL</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
+          <name>Change Tab Key</name>
+          <list>
+            <item>
+              <name>Tab to EISUU</name>
+              <sysctl>remap.jis_tab2eisuu</sysctl>
+              <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::JIS_EISUU</autogen>
             </item>
           </list>
         </item>
