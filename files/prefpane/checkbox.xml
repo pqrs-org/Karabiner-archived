@@ -527,6 +527,12 @@
           <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
+          <name>Command_L to Control_L (only in Emacs)</name>
+          <sysctl>remap.commandL2controlL_emacs</sysctl>
+          <only>EMACS</only>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
+        </item>
+        <item>
           <name>Command_L to Control_L (except Emacs)</name>
           <sysctl>remap.commandL2controlL_ex_emacs</sysctl>
           <not>EMACS</not>
@@ -541,6 +547,12 @@
           <name>Command_L to Option_L (only in virtual machine, RDC)</name>
           <sysctl>remap.commandL2optionL_vm</sysctl>
           <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
+        </item>
+        <item>
+          <name>Command_L to Option_L (only in Emacs)</name>
+          <sysctl>remap.commandL2optionL_emacs</sysctl>
+          <only>EMACS</only>
           <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
         </item>
         <item>
