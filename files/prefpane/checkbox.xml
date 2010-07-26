@@ -5033,7 +5033,7 @@
           <autogen>--KeyToKey-- KeyCode::X, VK_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
-          <name>Use PC Style Copy/Paste</name>
+          <name>Use PC Style Copy/Paste #2</name>
           <appendix>(Swap Control+C and Command_L+C)</appendix>
           <appendix>(Control+V to Command_L+V)</appendix>
           <appendix>(Control+X to Command_L+X)</appendix>
@@ -5042,6 +5042,17 @@
           <autogen>--KeyToKey-- KeyCode::V, VK_CONTROL, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- KeyCode::X, VK_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::COMMAND_L, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
+        </item>
+        <item>
+          <name>Use PC Style Copy/Paste #3</name>
+          <appendix>(Control+Insert to Command_L+C)</appendix>
+          <appendix>(Shift+Insert to Command_L+V)</appendix>
+          <appendix>(Shift+Delete to Command_L+X) (Note: "Delete" is Mac's Forward Delete)</appendix>
+          <!-- Note: sysctl name (*_2) is valid for compatibility. -->
+          <sysctl>remap.copy_paste_winstyle_2</sysctl>
+          <autogen>--KeyToKey-- KeyCode::PC_INSERT, VK_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::PC_INSERT, VK_SHIFT, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, VK_SHIFT, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
         </item>
       </list>
     </item>
