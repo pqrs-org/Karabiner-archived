@@ -2614,6 +2614,11 @@
       <name>Change Shift_L Key (Left Shift)</name>
       <list>
         <item>
+          <name>Shift_L to CapsLock</name>
+          <sysctl>remap.shiftL2capslock</sysctl>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+        </item>
+        <item>
           <name>Shift_L to Command_L</name>
           <sysctl>remap.shiftL2commandL</sysctl>
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::COMMAND_L</autogen>
