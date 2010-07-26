@@ -4796,6 +4796,11 @@
               <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::SHIFT_L</autogen>
             </item>
             <item>
+              <name>Application Key to Command_L+Backquote</name>
+              <sysctl>remap.pc_application2commandLbackquote</sysctl>
+              <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L</autogen>
+            </item>
+            <item>
               <name>Application Key to Delete</name>
               <appendix>(+ Command+Application Key to CapsLock)</appendix>
               <sysctl>remap.pc_application2delete_capslock</sysctl>
