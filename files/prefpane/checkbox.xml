@@ -3862,6 +3862,11 @@
           <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_RIGHT, KeyCode::OPTION_L, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
         </item>
         <item>
+          <name>Backquote(`) to toggle Vi Mode (if no modifiers pressed)</name>
+          <sysctl>option.vimode_turnoff_backquote</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_complete_vimode</autogen>
+        </item>
+        <item>
           <name>Command_L to Command_L</name>
           <appendix>(+ When you type Command_L only, toggle Vi Mode)</appendix>
           <sysctl>remap.vimode_toggle_commandL</sysctl>
