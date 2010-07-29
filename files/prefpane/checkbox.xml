@@ -1973,6 +1973,13 @@
           <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, ModifierFlag::VK_SHIFT, KeyCode::KEYPAD_COMMA</autogen>
         </item>
         <item>
+          <name>FN+Dot to FN+Shift+Dot</name>
+          <appendix>(Useful for some keyboard layouts such as French, Italian, etc.)</appendix>
+          <sysctl>remap.fndot2fnshiftdot</sysctl>
+          <autogen>--KeyToKey-- KeyCode::DOT,        ModifierFlag::FN, KeyCode::DOT, ModifierFlag::FN | ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, ModifierFlag::FN, KeyCode::DOT, ModifierFlag::FN | ModifierFlag::SHIFT_L</autogen>
+        </item>
+        <item>
           <name>Shift+Enter to Equal</name>
           <sysctl>remap.shift_enter2equal</sysctl>
           <autogen>--KeyToKey-- KeyCode::ENTER, ModifierFlag::VK_SHIFT, KeyCode::KEYPAD_EQUAL</autogen>
