@@ -497,6 +497,29 @@
     </item>
 
     <item>
+      <name>"NotSave" keymap overwriting</name>
+      <list>
+        <item>
+          <name>base mapping</name>
+          <appendix>A to toggle notsave.sample</appendix>
+          <appendix>B to C</appendix>
+          <appendix>(B becomes D when notsave.sample is active)</appendix>
+          <sysctl>remap.samples_notsave</sysctl>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_CONFIG_TOGGLE_notsave_sample</autogen>
+          <autogen>--KeyToKey-- KeyCode::B, KeyCode::C</autogen>
+        </item>
+        <item>
+          <name>notsave.sample</name>
+          <appendix>B to D</appendix>
+          <sysctl>notsave.sample</sysctl>
+          <vk_config>true</vk_config>
+          <autogen>--ShowStatusMessage-- "notsave.sample"</autogen>
+          <autogen>--KeyToKey-- KeyCode::B, KeyCode::D</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>Filters</name>
       <list>
         <!-- application only -->
