@@ -5,18 +5,7 @@ require 'inc.filter.rb'
 
 class RemapClass
   @@index = 0
-  @@entries = {
-    :initialize                   => [],
-    :terminate                    => [],
-    :remap_setkeyboardtype        => [],
-    :remap_key                    => [],
-    :remap_consumer               => [],
-    :remap_pointing               => [],
-    :remap_simultaneouskeypresses => [],
-    :remap_dropkeyafterremap      => [],
-    :get_statusmessage            => [],
-    :enabled                      => [],
-  }
+  @@entries = []
 
   def RemapClass.get_entries
     return @@entries
@@ -41,6 +30,20 @@ class RemapClass
       :keycode                      => '',
       :variable                     => [],
     }
+
+    @@entries << {
+      'name' => @name,
+      :initialize => [],
+      :terminate => [],
+      :remap_setkeyboardtype        => [],
+      :remap_key                    => [],
+      :remap_consumer               => [],
+      :remap_pointing               => [],
+      :remap_simultaneouskeypresses => [],
+      :remap_dropkeyafterremap      => [],
+      :get_statusmessage            => [],
+      :enabled                      => [],
+    }
   end
   attr_accessor :name, :filter, :code
 
@@ -62,7 +65,7 @@ class RemapClass
     end
     @code[:initialize] += "}\n"
 
-    @@entries[:initialize] << "RemapClass_#{@name}::initialize_value#{@@index}"
+    @@entries[-1][:initialize] << "RemapClass_#{@name}::initialize_value#{@@index}"
   end
   protected :append_to_code_initialize
 
@@ -71,7 +74,7 @@ class RemapClass
     @code[:terminate] += "value#{@@index}_.terminate();\n"
     @code[:terminate] += "}\n"
 
-    @@entries[:terminate] << "RemapClass_#{@name}::terminate_value#{@@index}"
+    @@entries[-1][:terminate] << "RemapClass_#{@name}::terminate_value#{@@index}"
   end
 
   # return true if 'line' contains autogen/filter definition.
@@ -172,9 +175,9 @@ class RemapClass
       code += @code[:remap_setkeyboardtype]
       code += "}\n"
 
-      @@entries[:remap_setkeyboardtype] << "#{classname}::remap_setkeyboardtype"
+      @@entries[-1][:remap_setkeyboardtype] << "#{classname}::remap_setkeyboardtype"
     else
-      @@entries[:remap_setkeyboardtype] << "NULL"
+      @@entries[-1][:remap_setkeyboardtype] << "NULL"
     end
 
     # ----------------------------------------------------------------------
@@ -183,9 +186,9 @@ class RemapClass
       code += @code[:remap_key]
       code += "}\n"
 
-      @@entries[:remap_key] << "#{classname}::remap_key"
+      @@entries[-1][:remap_key] << "#{classname}::remap_key"
     else
-      @@entries[:remap_key] << "NULL"
+      @@entries[-1][:remap_key] << "NULL"
     end
 
     # ----------------------------------------------------------------------
@@ -194,9 +197,9 @@ class RemapClass
       code += @code[:remap_consumer]
       code += "}\n"
 
-      @@entries[:remap_consumer] << "#{classname}::remap_consumer"
+      @@entries[-1][:remap_consumer] << "#{classname}::remap_consumer"
     else
-      @@entries[:remap_consumer] << "NULL"
+      @@entries[-1][:remap_consumer] << "NULL"
     end
 
     # ----------------------------------------------------------------------
@@ -205,9 +208,9 @@ class RemapClass
       code += @code[:remap_pointing]
       code += "}\n"
 
-      @@entries[:remap_pointing] << "#{classname}::remap_pointing"
+      @@entries[-1][:remap_pointing] << "#{classname}::remap_pointing"
     else
-      @@entries[:remap_pointing] << "NULL"
+      @@entries[-1][:remap_pointing] << "NULL"
     end
 
     # ----------------------------------------------------------------------
@@ -216,9 +219,9 @@ class RemapClass
       code += @code[:remap_simultaneouskeypresses]
       code += "}\n"
 
-      @@entries[:remap_simultaneouskeypresses] << "#{classname}::remap_simultaneouskeypresses"
+      @@entries[-1][:remap_simultaneouskeypresses] << "#{classname}::remap_simultaneouskeypresses"
     else
-      @@entries[:remap_simultaneouskeypresses] << "NULL"
+      @@entries[-1][:remap_simultaneouskeypresses] << "NULL"
     end
 
     # ----------------------------------------------------------------------
@@ -227,9 +230,9 @@ class RemapClass
       code += @code[:get_statusmessage]
       code += "}\n"
 
-      @@entries[:get_statusmessage] << "#{classname}::get_statusmessage"
+      @@entries[-1][:get_statusmessage] << "#{classname}::get_statusmessage"
     else
-      @@entries[:get_statusmessage] << "NULL"
+      @@entries[-1][:get_statusmessage] << "NULL"
     end
 
     # ----------------------------------------------------------------------
@@ -240,7 +243,7 @@ class RemapClass
       code += "return false;\n"
       code += "}\n"
 
-      @@entries[:remap_dropkeyafterremap] << "#{classname}::remap_dropkeyafterremap"
+      @@entries[-1][:remap_dropkeyafterremap] << "#{classname}::remap_dropkeyafterremap"
     end
 
     # ----------------------------------------------------------------------
@@ -252,7 +255,7 @@ class RemapClass
     end
     code   += "}\n"
 
-    @@entries[:enabled] << "#{classname}::enabled"
+    @@entries[-1][:enabled] << "#{classname}::enabled"
 
     # ----------------------------------------
     code += "\n"
