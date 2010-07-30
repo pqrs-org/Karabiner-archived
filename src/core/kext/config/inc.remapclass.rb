@@ -32,7 +32,7 @@ class RemapClass
     }
 
     @@entries << {
-      'name' => @name,
+      :name => @name,
       :initialize => [],
       :terminate => [],
       :remap_setkeyboardtype        => [],

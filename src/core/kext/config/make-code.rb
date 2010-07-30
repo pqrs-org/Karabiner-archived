@@ -126,23 +126,28 @@ end
 
 # ======================================================================
 # put all entries
-[:remap_key,
- :enabled,
+[:initialize,
+ :terminate,
+ :remap_setkeyboardtype,
+ :remap_key,
  :remap_consumer,
  :remap_pointing,
- :terminate,
  :remap_simultaneouskeypresses,
  :remap_dropkeyafterremap,
- :remap_setkeyboardtype,
- :initialize,
  :get_statusmessage,
+ :enabled,
 ].each do |key|
   name = key.to_s
   $outfile[:remapclass] << "RemapClass_#{name} listRemapClass_#{name}[] = {\n"
 
-  RemapClass.get_entries.each do |item|
-    item[key].each do |line|
-      $outfile[:remapclass] << "#{line},\n"
+  [true, false].each do |isnotsave|
+    RemapClass.get_entries.each do |item|
+      next if isnotsave && ! (/^notsave_/ =~ item[:name])
+      next if ! isnotsave && (/^notsave_/ =~ item[:name])
+
+      item[key].each do |line|
+        $outfile[:remapclass] << "#{line},\n"
+      end
     end
   end
 
