@@ -410,6 +410,11 @@
           <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::OPTION_L</autogen>
         </item>
         <item>
+          <name>Backquote(`) to Shift_L</name>
+          <sysctl>remap.backquote2shiftL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::SHIFT_L</autogen>
+        </item>
+        <item>
           <name>Backquote(`) to Delete</name>
           <sysctl>remap.backquote2delete</sysctl>
           <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::DELETE</autogen>
@@ -1050,6 +1055,11 @@
           <name>Eject to Command+Control+Option+Shift+E</name>
           <sysctl>remap.eject2fccosE</sysctl>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::E, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+        </item>
+        <item>
+          <name>Eject to F12</name>
+          <sysctl>remap.eject2f12</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::F12</autogen>
         </item>
         <item>
           <name>Eject to F14</name>
