@@ -1753,6 +1753,11 @@
           <autogen>--KeyToConsumer-- KeyCode::F10, ConsumerKeyCode::KEYBOARDLIGHT_HIGH</autogen>
         </item>
         <item>
+          <name>F10 to Volume Mute</name>
+          <sysctl>remap.f10_to_volumemute_all</sysctl>
+          <autogen>--KeyToConsumer-- KeyCode::F10, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        </item>
+        <item>
           <name>F10 to Volume Mute (except virtual machine, RDC)</name>
           <sysctl>remap.f10_to_volumemute</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
@@ -1764,6 +1769,11 @@
           <autogen>--KeyToKey-- KeyCode::F11, ModifierFlag::FN, KeyCode::F11</autogen>
         </item>
         <item>
+          <name>F11 to Volume Down</name>
+          <sysctl>remap.f11_to_volumedown_all</sysctl>
+          <autogen>--KeyToConsumer-- KeyCode::F11, ConsumerKeyCode::VOLUME_DOWN</autogen>
+        </item>
+        <item>
           <name>F11 to Volume Down (except virtual machine, RDC)</name>
           <sysctl>remap.f11_to_volumedown</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
@@ -1773,6 +1783,11 @@
           <name>F11 to display mirroring</name>
           <sysctl>remap.F11_to_mirroring</sysctl>
           <autogen>--KeyToConsumer-- KeyCode::F11, ConsumerKeyCode::VIDEO_MIRROR</autogen>
+        </item>
+        <item>
+          <name>F12 to Volume Up</name>
+          <sysctl>remap.f12_to_volumeup_all</sysctl>
+          <autogen>--KeyToConsumer-- KeyCode::F12, ConsumerKeyCode::VOLUME_UP</autogen>
         </item>
         <item>
           <name>F12 to Volume Up (except virtual machine, RDC)</name>
