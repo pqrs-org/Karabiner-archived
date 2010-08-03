@@ -1062,6 +1062,11 @@
           <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::F12</autogen>
         </item>
         <item>
+          <name>Eject to F12 (if no modifiers pressed)</name>
+          <sysctl>remap.eject2f12_withoutmodifiers</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::F12</autogen>
+        </item>
+        <item>
           <name>Eject to F14</name>
           <sysctl>remap.eject2f14</sysctl>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::F14</autogen>
