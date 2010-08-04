@@ -3931,6 +3931,12 @@
           <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_complete_vimode</autogen>
         </item>
         <item>
+          <name>Return to Command_L+Control_L</name>
+          <appendix>(+ When you type Return only, toggle Vi Mode)</appendix>
+          <sysctl>remap.vimode_toggle_return</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::RETURN, KeyCode::CONTROL_L, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
+        </item>
+        <item>
           <name>FN to FN</name>
           <appendix>(+ When you type FN only, toggle Vi Mode)</appendix>
           <sysctl>remap.vimode_toggle_fn2fn</sysctl>
@@ -4052,6 +4058,12 @@
           <appendix>(We can change the key once again)</appendix>
           <sysctl>remap.simultaneouskeypresses_kl2return</sysctl>
           <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::L, KeyCode::RETURN, SimultaneousKeyPresses::Option::RAW</autogen>
+        </item>
+        <item>
+          <name>Simultaneous Key Presses [Command_L+Command_R] to Return</name>
+          <appendix>(We can change the key once again)</appendix>
+          <sysctl>remap.simultaneouskeypresses_commandLcommandR2return</sysctl>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::COMMAND_L, KeyCode::COMMAND_R, KeyCode::RETURN, SimultaneousKeyPresses::Option::RAW</autogen>
         </item>
       </list>
     </item>
