@@ -76,6 +76,7 @@ sudo $packagemaker \
     --info pkginfo/Info.plist \
     --resources pkginfo/Resources \
     --title "KeyRemap4MacBook $version" \
+    --no-recommend \
     --no-relocate \
     --out $pkgName
 
