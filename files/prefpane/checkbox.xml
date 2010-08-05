@@ -6766,6 +6766,11 @@
           <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::KEY_3, ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
+          <name>Forward Delete to Section(§)</name>
+          <sysctl>remap.uk_forwarddelete2section</sysctl>
+          <autogen>--KeyToKey-- FROMKEYCODE_FORWARD_DELETE, KeyCode::UK_SECTION</autogen>
+        </item>
+        <item>
           <name>Section(§) to Backquote(`)</name>
           <sysctl>remap.uk_section2backquote</sysctl>
           <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKQUOTE</autogen>
@@ -6781,6 +6786,11 @@
           <name>Section(§) to Backslash(\)</name>
           <sysctl>remap.uk_section2backslash</sysctl>
           <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKSLASH</autogen>
+        </item>
+        <item>
+          <name>Section(§) to Forward Delete</name>
+          <sysctl>remap.uk_section2forwarddelete</sysctl>
+          <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::FORWARD_DELETE</autogen>
         </item>
       </list>
     </item>
