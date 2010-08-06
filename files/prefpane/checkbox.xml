@@ -6598,6 +6598,26 @@
       </list>
     </item>
     <item>
+      <name>For Korean</name>
+      <list>
+        <item>
+          <name>Remap HanEng And Hanja Key</name>
+          <list>
+            <item>
+              <name>Toggle HanEng Key(to Command_L(R)+Space)</name>
+              <sysctl>remap.ksc_haneng2commandLSpace</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::JIS_KANA, KeyCode::COMMAND_L, KeyCode::SPACE, ModifierFlag::COMMAND_R</autogen>
+            </item>
+            <item>
+              <name>Toggle Hanja Key(to Option_L(R)+Return)</name>
+              <sysctl>remap.ksc_hanja2optionLreturn</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, KeyCode::OPTION_L, KeyCode::RETURN, ModifierFlag::OPTION_R</autogen>
+            </item>
+          </list>
+        </item>
+      </list>
+    </item>
+    <item>
       <name>For Russian</name>
       <list>
         <item>
