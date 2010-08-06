@@ -401,15 +401,15 @@
         </item>
 
         <item>
-          <name>Up/Down to Left/Right (only in iPhoto)</name>
+          <name>PageUp/PageDown to Left/Right (only in iPhoto)</name>
           <appendix>(This is effective only with "Kensington K33374 Wireless Presenter with Laser Pointer")</appendix>
           <sysctl>remap.device_kensington_k33374_updown2leftright</sysctl>
           <only>IPHOTO</only>
           <!-- Kensington K33374 Hardware VendorID,ProductID == 0x047d,0x2012 -->
           <!-- Kensington Hack 0x0,0x0 -->
-          <device_only>DeviceVendorID(0x047d),DeviceProductID(0x2012), DeviceVendorID(0x0000),DeviceProductID(0x0000)</device_only>
-          <autogen>--KeyToKey-- KeyCode::CURSOR_UP,   KeyCode::CURSOR_LEFT</autogen>
-          <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, KeyCode::CURSOR_RIGHT</autogen>
+          <device_only>DeviceVendorID(0x047d),DeviceProductID(0x2012), DeviceVendorID(0x0000),DeviceProductID(0x0000), DeviceVendorID(0x5ac),DeviceProductID(0x21a)</device_only>
+          <autogen>--KeyToKey-- KeyCode::FROMKEYCODE_PAGEUP,   KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::FROMKEYCODE_PAGEDOWN, KeyCode::CURSOR_RIGHT</autogen>
         </item>
       </list>
     </item>
