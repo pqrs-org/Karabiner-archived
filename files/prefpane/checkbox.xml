@@ -6549,6 +6549,7 @@
               <!-- Shift+/ -> question (JIS_QUESION) -->
               <autogen>--KeyToKey-- KeyCode::SLASH, VK_SHIFT | ModifierFlag::NONE, KeyCode::SLASH, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
             </item>
+            <!-- #include "include/jis_oyayubishiftinput.xml" -->
             <item>
               <name>Use KAWASHIMA Special Keyboard Layout</name>
               <sysctl>remap.jis_layout_kawashima</sysctl>
