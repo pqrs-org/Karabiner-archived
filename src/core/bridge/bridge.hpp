@@ -51,6 +51,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         CHEETAH_3D,
         PASSWORD, // com.apple.securityagent
         GRUML,
+        IPHOTO,
       };
       enum InputMode {
         INPUTMODE_NONE,
