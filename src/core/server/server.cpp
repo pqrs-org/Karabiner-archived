@@ -380,6 +380,10 @@ setCurrentApplicationType(const char* applicationName)
     SET_CURRENT_APPLICATION_TYPE(GRUML);
   }
 
+  if (strcmp(applicationName, "com.apple.iPhoto") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(IPHOTO);
+  }
+
   SET_CURRENT_APPLICATION_TYPE(UNKNOWN);
 }
 
