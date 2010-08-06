@@ -383,6 +383,16 @@
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_COMMAND | ModifierFlag::NONE, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::CONTROL_L</autogen>
         </item>
+
+        <item>
+          <name>Up/Down to Left/Right (only in iPhoto)</name>
+          <appendix>(This is effective only with "Kensington K33374 Wireless Presenter with Laser Pointer")</appendix>
+          <sysctl>remap.device_kensington_k33374_updown2leftright</sysctl>
+          <only>IPHOTO</only>
+          <device_only>DeviceVendorID(0x047d),DeviceProductID(0x2012)</device_only>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_UP,   KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, KeyCode::CURSOR_RIGHT</autogen>
+        </item>
       </list>
     </item>
 
