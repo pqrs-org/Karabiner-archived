@@ -386,6 +386,14 @@
 
         <item>
           <name>Up/Down to Left/Right (only in iPhoto)</name>
+          <sysctl>remap.updown2leftright_iphoto</sysctl>
+          <only>IPHOTO</only>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_UP,   KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, KeyCode::CURSOR_RIGHT</autogen>
+        </item>
+
+        <item>
+          <name>Up/Down to Left/Right (only in iPhoto)</name>
           <appendix>(This is effective only with "Kensington K33374 Wireless Presenter with Laser Pointer")</appendix>
           <sysctl>remap.device_kensington_k33374_updown2leftright</sysctl>
           <only>IPHOTO</only>
