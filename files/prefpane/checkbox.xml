@@ -3522,6 +3522,13 @@
           <autogen>--KeyToKey-- KeyCode::KEY_2, VK_CONTROL, KeyCode::END</autogen>
         </item>
         <item>
+          <name>[ex] Control+Comma(,)/Dot(.) to Home/End</name>
+          <sysctl>option.emacsmode_ex_controlcommadot</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+          <autogen>--KeyToKey-- KeyCode::COMMA, VK_CONTROL, KeyCode::HOME</autogen>
+          <autogen>--KeyToKey-- KeyCode::DOT,   VK_CONTROL, KeyCode::END</autogen>
+        </item>
+        <item>
           <name>[ex] Control+Q to PageUp</name>
           <sysctl>option.emacsmode_ex_controlQ</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
