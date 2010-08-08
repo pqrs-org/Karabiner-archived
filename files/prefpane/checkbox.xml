@@ -281,7 +281,7 @@
       <name>Device Specific Mixed Settings</name>
       <list>
         <item>
-          <name>Swap Shift_L and CapsLock on the Mac's internal kbd</name>
+          <name>Swap Shift_L and CapsLock on the Mac's internal kbd (vid/pid: 0x05ac,0x0218)</name>
           <appendix>(*Note: I have set PCKeyboardHack to remap CapsLock to ExposeAll on all kbds*)</appendix>
           <appendix>(ExposeAll to Shift_L and Shift_L to CapsLock on the MacBook's internal keyboard)</appendix>
           <appendix>(ExposeAll back to CapsLock on other devices)</appendix>
@@ -304,7 +304,7 @@
         </item>
 
         <item>
-          <name>Command_R to Option_R on the MacBook's internal kbd</name>
+          <name>Command_R to Option_R on the MacBook's internal kbd (vid/pid: 0x05ac,0x0218)</name>
           <sysctl>remap.commandR2optionR_MacBookOnly</sysctl>
           <block>
             <device_only>DeviceVendorID(0x5ac),DeviceProductID(0x218)</device_only>
@@ -312,7 +312,7 @@
           </block>
         </item>
         <item>
-          <name>Enter to Control_R on the MacBook's internal kbd</name>
+          <name>Enter to Control_R on the MacBook's internal kbd (vid/pid: 0x05ac,0x0218)</name>
           <sysctl>remap.enter2controlR_MacBookOnly</sysctl>
           <block>
             <device_only>DeviceVendorID(0x5ac),DeviceProductID(0x218)</device_only>
@@ -320,7 +320,7 @@
           </block>
         </item>
         <item>
-          <name>Swap Shift_R and Backslash (\) on the MacBook's internal kbd</name>
+          <name>Swap Shift_R and Backslash (\) on the MacBook's internal kbd (vid/pid: 0x05ac,0x0218)</name>
           <sysctl>remap.swap_shiftRpipes_MacBookOnly</sysctl>
           <block>
             <device_only>DeviceVendorID(0x5ac),DeviceProductID(0x218)</device_only>
@@ -329,7 +329,7 @@
           </block>
         </item>
         <item>
-          <name>‘last row left-shift’ on the MacBook's internal kbd</name>
+          <name>‘last row left-shift’ on the MacBook's internal kbd (vid/pid: 0x05ac,0x0218)</name>
           <appendix>(Backquote,Z,X,C,V to Z,X,C,V,B)</appendix>
           <sysctl>remap.backquote2z_zxcv2xcvb_MacBookOnly</sysctl>
           <block>
@@ -342,7 +342,7 @@
           </block>
         </item>
         <item>
-          <name>‘Central-Return’ (B to Return) on the MacBook's internal kbd</name>
+          <name>‘Central-Return’ (B to Return) on the MacBook's internal kbd (vid/pid: 0x05ac,0x0218)</name>
           <sysctl>remap.b2return_MacBookOnly</sysctl>
           <block>
             <device_only>DeviceVendorID(0x5ac),DeviceProductID(0x218)</device_only>
@@ -350,7 +350,7 @@
           </block>
         </item>
         <item>
-          <name>‘first row right-shift’ on the MacBook's internal kbd</name>
+          <name>‘first row right-shift’ on the MacBook's internal kbd (vid/pid: 0x05ac,0x0218)</name>
           <appendix>(7,8,9,0,-,=,delete to 6,7,8,9,0,-,=)</appendix>
           <sysctl>remap.firstrowshift_MacBookOnly</sysctl>
           <block>
@@ -365,7 +365,7 @@
           </block>
         </item>
         <item>
-          <name>‘Central-Delete’ (6 to Delete) on the MacBook's internal kbd</name>
+          <name>‘Central-Delete’ (6 to Delete) on the MacBook's internal kbd (vid/pid: 0x05ac,0x0218)</name>
           <sysctl>remap.six2delete_MacBookOnly</sysctl>
           <block>
             <device_only>DeviceVendorID(0x5ac),DeviceProductID(0x218)</device_only>
