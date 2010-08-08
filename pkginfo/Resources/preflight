@@ -1,4 +1,6 @@
 #!/bin/sh
+# -*- Mode: shell-script -*-
+
 PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 
 # ----------------------------------------
@@ -25,6 +27,7 @@ startup="/Library/org.pqrs/KeyRemap4MacBook/scripts/startup.sh"
 rm -rf /Library/StartupItems/KeyRemap4MacBook
 rm -rf /Applications/KeyRemap4MacBook
 rm -rf /Library/org.pqrs/KeyRemap4MacBook
+rmdir /Library/org.pqrs 2>/dev/null
 
 rm -rf /Library/PreferencePanes/KeyRemap4MacBook.prefPane
 
