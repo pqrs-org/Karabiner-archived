@@ -1435,7 +1435,7 @@
         </item>
         <item>
           <name>ExposeAll to CapsLock or Shift_L</name>
-          <appendix>(ExposeAll to Shift_L on the MacBook's internal keyboard)</appendix>
+          <appendix>(ExposeAll to Shift_L on the MacBook's internal keyboard (vid/pid: 0x05ac,0x0218)</appendix>
           <appendix>(ExposeAll to CapsLock on other devices)</appendix>
           <sysctl>remap.expose2capslockORshiftL</sysctl>
           <block>
