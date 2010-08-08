@@ -1421,6 +1421,36 @@
     </item>
 
     <item>
+      <name>Change Expose Key</name>
+      <list>
+        <item>
+          <name>ExposeAll to CapsLock</name>
+          <sysctl>remap.expose2capslock</sysctl>
+          <autogen>--KeyToKey-- KeyCode::EXPOSE_ALL, KeyCode::CAPSLOCK</autogen>
+        </item>
+        <item>
+          <name>ExposeAll to Shift_L</name>
+          <sysctl>remap.expose2shiftL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::EXPOSE_ALL, KeyCode::SHIFT_L</autogen>
+        </item>
+        <item>
+          <name>ExposeAll to CapsLock or Shift_L</name>
+          <appendix>(ExposeAll to Shift_L on the MacBook's internal keyboard)</appendix>
+          <appendix>(ExposeAll to CapsLock on other devices)</appendix>
+          <sysctl>remap.expose2capslockORshiftL</sysctl>
+          <block>
+            <device_only>DeviceVendorID(0x5ac),DeviceProductID(0x218)</device_only>
+            <autogen>--KeyToKey-- KeyCode::EXPOSE_ALL, KeyCode::SHIFT_L</autogen>
+          </block>
+          <block>
+            <device_not>DeviceVendorID(0x5ac),DeviceProductID(0x218)</device_not>
+            <autogen>--KeyToKey-- KeyCode::EXPOSE_ALL, KeyCode::CAPSLOCK</autogen>
+          </block>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>Change FN Key</name>
       <list>
         <item>
