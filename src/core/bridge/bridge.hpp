@@ -64,6 +64,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         INPUTMODE_CANADIAN,
         INPUTMODE_AINU,
         INPUTMODE_RUSSIAN,
+        INPUTMODE_FRENCH,
+        INPUTMODE_UNKNOWN, // User Defined keylayout (example: org.unknown.keylayout.JANSI)
       };
       enum InputModeDetail {
         INPUTMODE_DETAIL_NONE,
@@ -83,6 +85,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         INPUTMODE_DETAIL_CANADIAN,
         INPUTMODE_DETAIL_AINU,
         INPUTMODE_DETAIL_RUSSIAN,
+        INPUTMODE_DETAIL_FRENCH,
+
+        INPUTMODE_DETAIL_UNKNOWN,
       };
 
       // none

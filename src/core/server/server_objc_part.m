@@ -91,8 +91,10 @@ static CFStringRef kInputSourceLanguage_canadian = CFSTR("ca");
     retval = [NSString stringWithString:inputmodeid];
   } else {
     CFStringRef lang = [self getInputSourceLanguage:ref];
-    if (lang) {
+    if (lang && CFStringGetLength(lang) > 0) {
       retval = [NSString stringWithFormat:@"org.pqrs.inputmode.%@", lang];
+    } else {
+      retval = @"org.pqrs.inputmode.unknown";
     }
   }
 
