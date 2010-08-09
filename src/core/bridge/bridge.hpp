@@ -69,7 +69,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       };
       enum InputModeDetail {
         INPUTMODE_DETAIL_NONE,
+
         INPUTMODE_DETAIL_ROMAN,
+        INPUTMODE_DETAIL_ROMAN_DVORAK,
 
         INPUTMODE_DETAIL_JAPANESE_HIRAGANA,
         INPUTMODE_DETAIL_JAPANESE_KATAKANA,
