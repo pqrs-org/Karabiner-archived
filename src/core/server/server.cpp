@@ -471,7 +471,7 @@ setCurrentInputMode(const char* inputmodeName)
              strcmp(inputmodeName, "org.pqrs.inputmode.unknown.FrenchDvorak-QwertzCmdRoman") == 0 ||
              strcmp(inputmodeName, "org.pqrs.inputmode.unknown.FrenchDvorakRoman") == 0) {
     currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_UNKNOWN;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_UNKNOWN_FRENCH_DVORAK;
+    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_UNKNOWN_BEPO;
 
   } else if (strcmp(inputmodeName, "org.pqrs.inputmode.unknown.JANSI") == 0) {
     currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_UNKNOWN;
