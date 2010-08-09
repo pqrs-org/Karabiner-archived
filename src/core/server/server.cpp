@@ -462,6 +462,21 @@ setCurrentInputMode(const char* inputmodeName)
     currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_FRENCH;
     currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_FRENCH;
 
+  } else if (strcmp(inputmodeName, "org.pqrs.inputmode.unknown.FrenchDvorak") == 0 ||
+             strcmp(inputmodeName, "org.pqrs.inputmode.unknown.FrenchDvorak-AzertyCmd") == 0 ||
+             strcmp(inputmodeName, "org.pqrs.inputmode.unknown.FrenchDvorak-AzertyCmdRoman") == 0 ||
+             strcmp(inputmodeName, "org.pqrs.inputmode.unknown.FrenchDvorak-QwertyCmd") == 0 ||
+             strcmp(inputmodeName, "org.pqrs.inputmode.unknown.FrenchDvorak-QwertyCmdRoman") == 0 ||
+             strcmp(inputmodeName, "org.pqrs.inputmode.unknown.FrenchDvorak-QwertzCmd") == 0 ||
+             strcmp(inputmodeName, "org.pqrs.inputmode.unknown.FrenchDvorak-QwertzCmdRoman") == 0 ||
+             strcmp(inputmodeName, "org.pqrs.inputmode.unknown.FrenchDvorakRoman") == 0) {
+    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_UNKNOWN;
+    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_UNKNOWN_FRENCH_DVORAK;
+
+  } else if (strcmp(inputmodeName, "org.pqrs.inputmode.unknown.JANSI") == 0) {
+    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_UNKNOWN;
+    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_UNKNOWN_JANSI;
+
   } else if (strncmp(inputmodeName, language_unknown, strlen(language_unknown)) == 0) {
     currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_UNKNOWN;
     currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_UNKNOWN;

@@ -89,6 +89,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         INPUTMODE_DETAIL_RUSSIAN,
         INPUTMODE_DETAIL_FRENCH,
 
+        INPUTMODE_DETAIL_UNKNOWN_FRENCH_DVORAK, // http://bepo.fr/wiki/Mac_OS_X
+        INPUTMODE_DETAIL_UNKNOWN_JANSI,         // http://homepage.mac.com/kenie/Projects/JANSI/
         INPUTMODE_DETAIL_UNKNOWN,
       };
 
