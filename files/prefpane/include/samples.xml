@@ -716,35 +716,35 @@
               <name>Dvorak</name>
               <list>
                 <item>
-                  <name>inputmode_only</name>
+                  <name>inputmode_only (Dvorak-*)</name>
                   <appendix>Space to Tab</appendix>
                   <sysctl>remap.samples_inputmode_dvorak</sysctl>
                   <inputmode_only>INPUTMODE_DVORAK</inputmode_only>
                   <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
                 </item>
                 <item>
-                  <name>inputmodedetail_only (Dvorak)</name>
+                  <name>inputmodedetail_only (Dvorak-normal)</name>
                   <appendix>Space to Tab</appendix>
                   <sysctl>remap.samples_inputmodedetail_dvorak</sysctl>
                   <inputmodedetail_only>INPUTMODE_DETAIL_DVORAK</inputmodedetail_only>
                   <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
                 </item>
                 <item>
-                  <name>inputmodedetail_only (Dvorak Left)</name>
+                  <name>inputmodedetail_only (Dvorak-Left)</name>
                   <appendix>Space to Tab</appendix>
                   <sysctl>remap.samples_inputmodedetail_dvorak_left</sysctl>
                   <inputmodedetail_only>INPUTMODE_DETAIL_DVORAK_LEFT</inputmodedetail_only>
                   <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
                 </item>
                 <item>
-                  <name>inputmodedetail_only (Dvorak QwertyCmd)</name>
+                  <name>inputmodedetail_only (Dvorak-QwertyCmd)</name>
                   <appendix>Space to Tab</appendix>
                   <sysctl>remap.samples_inputmodedetail_dvorak_qwertycmd</sysctl>
                   <inputmodedetail_only>INPUTMODE_DETAIL_DVORAK_QWERTYCMD</inputmodedetail_only>
                   <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
                 </item>
                 <item>
-                  <name>inputmodedetail_only (Dvorak Right)</name>
+                  <name>inputmodedetail_only (Dvorak-Right)</name>
                   <appendix>Space to Tab</appendix>
                   <sysctl>remap.samples_inputmodedetail_dvorak_right</sysctl>
                   <inputmodedetail_only>INPUTMODE_DETAIL_DVORAK_RIGHT</inputmodedetail_only>
