@@ -90,11 +90,27 @@ static CFStringRef kInputSourceLanguage_canadian = CFSTR("ca");
   if (inputmodeid) {
     retval = [NSString stringWithString:inputmodeid];
   } else {
+    // ----------------------------------------
+    // get detail string
+    NSString* detail = @"";
+
+    NSString* name = TISGetInputSourceProperty(ref, kTISPropertyInputSourceID);
+    if (name) {
+      // Examples:
+      //   name == com.apple.keylayout.US
+      //   name == com.apple.keylayout.Dvorak
+      NSRange dotrange = [name rangeOfString:@"." options:NSBackwardsSearch];
+      if (dotrange.location != NSNotFound) {
+        detail = [name substringFromIndex:dotrange.location];
+      }
+    }
+
+    // ----------------------------------------
     CFStringRef lang = [self getInputSourceLanguage:ref];
     if (lang && CFStringGetLength(lang) > 0) {
-      retval = [NSString stringWithFormat:@"org.pqrs.inputmode.%@", lang];
+      retval = [NSString stringWithFormat:@"org.pqrs.inputmode.%@%@", lang, detail];
     } else {
-      retval = @"org.pqrs.inputmode.unknown";
+      retval = [NSString stringWithFormat:@"org.pqrs.inputmode.unknown%@", detail];
     }
   }
 
