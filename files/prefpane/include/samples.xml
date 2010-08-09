@@ -773,7 +773,8 @@
                   <name>inputmodedetail_only (Japanese-Hiragana)</name>
                   <appendix>Space to Tab</appendix>
                   <sysctl>remap.samples_inputmodedetail_japanese_hiragana</sysctl>
-                  <inputmodedetail_only>INPUTMODE_DETAIL_JAPANESE_HIRAGANA</inputmodedetail_only>
+                  <!-- We need to set both INPUTMODE_DETAIL_JAPANESE_HIRAGANA and INPUTMODE_DETAIL_JAPANESE -->
+                  <inputmodedetail_only>INPUTMODE_DETAIL_JAPANESE_HIRAGANA, INPUTMODE_DETAIL_JAPANESE</inputmodedetail_only>
                   <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
                 </item>
                 <item>
