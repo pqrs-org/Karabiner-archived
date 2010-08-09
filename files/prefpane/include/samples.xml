@@ -721,6 +721,13 @@
               <inputmodedetail_only>INPUTMODE_DETAIL_UNKNOWN_JANSI</inputmodedetail_only>
               <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
             </item>
+            <item>
+              <name>inputmodedetail_only (Unknown others)</name>
+              <appendix>Space to Tab if inputmode == INPUTMODE_DETAIL_UNKNOWN</appendix>
+              <sysctl>remap.samples_inputmodedetail_unknown</sysctl>
+              <inputmodedetail_only>INPUTMODE_DETAIL_UNKNOWN</inputmodedetail_only>
+              <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+            </item>
           </list>
         </item>
 
