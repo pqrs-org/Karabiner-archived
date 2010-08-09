@@ -709,9 +709,9 @@
             </item>
             <item>
               <name>inputmodedetail_only (Unknown bépo)</name>
-              <appendix>Space to Tab if inputmode == INPUTMODE_DETAIL_UNKNOWN_FRENCH_DVORAK</appendix>
-              <sysctl>remap.samples_inputmodedetail_unknown_frenchdvorak</sysctl>
-              <inputmodedetail_only>INPUTMODE_DETAIL_UNKNOWN_FRENCH_DVORAK</inputmodedetail_only>
+              <appendix>Space to Tab if inputmode == INPUTMODE_DETAIL_UNKNOWN_BEPO</appendix>
+              <sysctl>remap.samples_inputmodedetail_unknown_bepo</sysctl>
+              <inputmodedetail_only>INPUTMODE_DETAIL_UNKNOWN_BEPO</inputmodedetail_only>
               <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
             </item>
             <item>
