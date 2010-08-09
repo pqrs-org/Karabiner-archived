@@ -625,17 +625,24 @@
           <list>
             <item>
               <name>inputmode_only (Chinese Traditional)</name>
-              <appendix>A to Space if inputmode == INPUTMODE_CHINESE_TRADITIONAL</appendix>
-              <sysctl>remap.samples_tradchinese_a2space</sysctl>
+              <appendix>Space to Tab if inputmode == INPUTMODE_CHINESE_TRADITIONAL</appendix>
+              <sysctl>remap.samples_inputmode_tradchinese</sysctl>
               <inputmode_only>INPUTMODE_CHINESE_TRADITIONAL</inputmode_only>
-              <autogen>--KeyToKey-- KeyCode::A, KeyCode::SPACE</autogen>
+              <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
             </item>
             <item>
               <name>inputmode_only (Chinese Simplified)</name>
-              <appendix>A to Space if inputmode == INPUTMODE_CHINESE_SIMPLIFIED</appendix>
-              <sysctl>remap.samples_simpchinese_a2space</sysctl>
+              <appendix>Space to Tab if inputmode == INPUTMODE_CHINESE_SIMPLIFIED</appendix>
+              <sysctl>remap.samples_inputmode_simpchinese</sysctl>
               <inputmode_only>INPUTMODE_CHINESE_SIMPLIFIED</inputmode_only>
-              <autogen>--KeyToKey-- KeyCode::A, KeyCode::SPACE</autogen>
+              <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+            </item>
+            <item>
+              <name>inputmode_only (Canadian)</name>
+              <appendix>Space to Tab if inputmode == INPUTMODE_CANADIAN</appendix>
+              <sysctl>remap.samples_inputmode_canadian</sysctl>
+              <inputmode_only>INPUTMODE_CANADIAN</inputmode_only>
+              <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
             </item>
             <item>
               <name>inputmode_only (French)</name>
@@ -646,30 +653,52 @@
             </item>
             <item>
               <name>inputmode_only (Japanese)</name>
-              <appendix>ASDFG to AIUEO if inputmode == INPUTMODE_JAPANESE</appendix>
-              <sysctl>remap.samples_jis_asdfg2aiueo</sysctl>
+              <appendix>Space to Tab if inputmode == INPUTMODE_JAPANESE</appendix>
+              <sysctl>remap.samples_inputmode_japanese</sysctl>
               <inputmode_only>INPUTMODE_JAPANESE</inputmode_only>
-              <autogen>--KeyToKey-- KeyCode::S, KeyCode::I</autogen>
-              <autogen>--KeyToKey-- KeyCode::D, KeyCode::U</autogen>
-              <autogen>--KeyToKey-- KeyCode::F, KeyCode::E</autogen>
-              <autogen>--KeyToKey-- KeyCode::G, KeyCode::O</autogen>
+              <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
             </item>
             <item>
               <name>inputmodedetail_only (Japanese)</name>
-              <appendix>ASDFG to AIUEO if inputmodedetail == INPUTMODE_DETAIL_JAPANESE_KATAKANA</appendix>
-              <sysctl>remap.samples_jis_asdfg2aiueo_katakana</sysctl>
+              <appendix>Space to Tab if inputmodedetail == INPUTMODE_DETAIL_JAPANESE_KATAKANA</appendix>
+              <sysctl>remap.samples_inputmodedetail_japanese</sysctl>
               <inputmodedetail_only>INPUTMODE_DETAIL_JAPANESE_KATAKANA</inputmodedetail_only>
-              <autogen>--KeyToKey-- KeyCode::S, KeyCode::I</autogen>
-              <autogen>--KeyToKey-- KeyCode::D, KeyCode::U</autogen>
-              <autogen>--KeyToKey-- KeyCode::F, KeyCode::E</autogen>
-              <autogen>--KeyToKey-- KeyCode::G, KeyCode::O</autogen>
+              <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
             </item>
             <item>
               <name>inputmode_only (Korean)</name>
-              <appendix>A to Space if inputmode == INPUTMODE_KOREAN</appendix>
-              <sysctl>remap.samples_korean_a2space</sysctl>
+              <appendix>Space to Tab if inputmode == INPUTMODE_KOREAN</appendix>
+              <sysctl>remap.samples_inputmode_korean</sysctl>
               <inputmode_only>INPUTMODE_KOREAN</inputmode_only>
-              <autogen>--KeyToKey-- KeyCode::A, KeyCode::SPACE</autogen>
+              <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+            </item>
+            <item>
+              <name>inputmode_only (Swedish)</name>
+              <appendix>Space to Tab if inputmode == INPUTMODE_SWEDISH</appendix>
+              <sysctl>remap.samples_inputmode_swedish</sysctl>
+              <inputmode_only>INPUTMODE_SWEDISH</inputmode_only>
+              <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+            </item>
+            <item>
+              <name>inputmode_only (Roman)</name>
+              <appendix>Space to Tab if inputmode == INPUTMODE_ROMAN</appendix>
+              <sysctl>remap.samples_inputmode_roman</sysctl>
+              <inputmode_only>INPUTMODE_ROMAN</inputmode_only>
+              <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+            </item>
+            <item>
+              <name>inputmodedetail_only (Roman)</name>
+              <appendix>Space to Tab if inputmodedetail_only == INPUTMODE_DETAIL_ROMAN_DVORAK</appendix>
+              <sysctl>remap.samples_inputmodedetail_roman</sysctl>
+              <inputmodedetail_only>INPUTMODE_DETAIL_ROMAN_DVORAK</inputmodedetail_only>
+              <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+            </item>
+            <item>
+              <name>inputmode_only (Russian)</name>
+              <appendix>Space to Tab if inputmode == INPUTMODE_RUSSIAN</appendix>
+              <sysctl>remap.samples_inputmode_russian</sysctl>
+              <inputmode_only>INPUTMODE_RUSSIAN</inputmode_only>
+              <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
             </item>
             <item>
               <name>inputmode_only (Unknown == User Defined keylayout)</name>
