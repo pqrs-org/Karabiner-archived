@@ -687,10 +687,17 @@
               <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
             </item>
             <item>
-              <name>inputmodedetail_only (Roman)</name>
+              <name>inputmodedetail_only (Roman Dvorak)</name>
               <appendix>Space to Tab if inputmodedetail_only == INPUTMODE_DETAIL_ROMAN_DVORAK</appendix>
-              <sysctl>remap.samples_inputmodedetail_roman</sysctl>
+              <sysctl>remap.samples_inputmodedetail_roman_dvorak</sysctl>
               <inputmodedetail_only>INPUTMODE_DETAIL_ROMAN_DVORAK</inputmodedetail_only>
+              <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+            </item>
+            <item>
+              <name>inputmodedetail_only (Roman others)</name>
+              <appendix>Space to Tab if inputmodedetail_only == INPUTMODE_DETAIL_ROMAN</appendix>
+              <sysctl>remap.samples_inputmodedetail_roman</sysctl>
+              <inputmodedetail_only>INPUTMODE_DETAIL_ROMAN</inputmodedetail_only>
               <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
             </item>
             <item>
