@@ -707,6 +707,20 @@
               <inputmode_only>INPUTMODE_UNKNOWN</inputmode_only>
               <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
             </item>
+            <item>
+              <name>inputmodedetail_only (Unknown bépo)</name>
+              <appendix>Space to Tab if inputmode == INPUTMODE_DETAIL_UNKNOWN_FRENCH_DVORAK</appendix>
+              <sysctl>remap.samples_inputmodedetail_unknown_frenchdvorak</sysctl>
+              <inputmodedetail_only>INPUTMODE_DETAIL_UNKNOWN_FRENCH_DVORAK</inputmodedetail_only>
+              <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+            </item>
+            <item>
+              <name>inputmodedetail_only (Unknown == JANSI)</name>
+              <appendix>Space to Tab if inputmode == INPUTMODE_DETAIL_UNKNOWN_JANSI</appendix>
+              <sysctl>remap.samples_inputmodedetail_unknown_jansi</sysctl>
+              <inputmodedetail_only>INPUTMODE_DETAIL_UNKNOWN_JANSI</inputmodedetail_only>
+              <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+            </item>
           </list>
         </item>
 
