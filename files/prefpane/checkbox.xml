@@ -61,7 +61,7 @@
       <list>
         <item>
           <!-- Pass Through Mode Core -->
-          <name>What's "Pass Through Mode".</name>
+          <name>What is Pass Through Mode?</name>
           <appendix>You can disable all settings temporarily.</appendix>
           <appendix>Turn on a setting below, and toggle "Pass Through Mode".</appendix>
           <sysctl>notsave.passthrough</sysctl>
@@ -3945,16 +3945,34 @@
           <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::COMMAND_R | VK_SHIFT, KeyCode::END</autogen>
         </item>
         <item>
+          <name>Control_L+g/G to Home/End</name>
+          <sysctl>option.vimode_control_gG</sysctl>
+          <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::CONTROL_L | ModifierFlag::NONE, KeyCode::HOME</autogen>
+          <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::CONTROL_L | VK_SHIFT, KeyCode::END</autogen>
+        </item>
+        <item>
           <name>Command_R+bf to PageUp/PageDown</name>
           <sysctl>option.vimode_bf</sysctl>
           <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::COMMAND_R, KeyCode::PAGEUP</autogen>
           <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::COMMAND_R, KeyCode::PAGEDOWN</autogen>
         </item>
         <item>
+          <name>Coltrol_L+bf to PageUp/PageDown</name>
+          <sysctl>option.vimode_control_bf</sysctl>
+          <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::CONTROL_L, KeyCode::PAGEUP</autogen>
+          <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_L, KeyCode::PAGEDOWN</autogen>
+        </item>
+        <item>
           <name>Command_R+0$ to Command+Left/Right</name>
           <sysctl>option.vimode_0dollar</sysctl>
           <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::COMMAND_R, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::COMMAND_R | VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
+          <name>Control_L+0$ to Command+Left/Right</name>
+          <sysctl>option.vimode_control_0dollar</sysctl>
+          <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::CONTROL_L, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::CONTROL_L | VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
           <name>Option_L+hjkl to Option+Left/Down/Up/Right</name>
@@ -3971,7 +3989,7 @@
       <name>Complete Vi Mode</name>
       <list>
         <item>
-          <name>What's "Complete Vi Mode".</name>
+          <name>What's Complete Vi Mode?</name>
           <appendix>You can use Vi style navigation on any applications when "Complete Vi Mode" is on.</appendix>
           <appendix>Turn on a setting below, and toggle "Complete Vi Mode".</appendix>
           <appendix></appendix>
@@ -4116,6 +4134,12 @@
           <appendix>(+ When you type Command_R only, toggle Vi Mode)</appendix>
           <sysctl>remap.vimode_toggle_commandR</sysctl>
           <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
+        </item>
+        <item>
+          <name>Control_R to Control_R</name>
+          <appendix>(+ When you type Control_R only, toggle Vi Mode)</appendix>
+          <sysctl>remap.vimode_toggle_controlR</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_R, KeyCode::CONTROL_R, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
         </item>
         <item>
           <name>Escape to turn on Vi Mode</name>
