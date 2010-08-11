@@ -434,7 +434,7 @@
       <list>
         <item>
           <name>Arrow(Down/Left/Right) to FN</name>
-          <appendix>drop Up-Arrow</appendix>
+          <appendix>Disable Up-Arrow</appendix>
           <sysctl>remap.arrow2fn</sysctl>
           <autogen>--KeyToKey-- KeyCode::CURSOR_UP, KeyCode::VK_NONE</autogen>
           <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, KeyCode::FN</autogen>
@@ -443,7 +443,7 @@
         </item>
         <item>
           <name>Arrow(Down/Left/Right) to Option_L</name>
-          <appendix>drop Up-Arrow</appendix>
+          <appendix>Disable Up-Arrow</appendix>
           <sysctl>remap.arrow2optionL</sysctl>
           <autogen>--KeyToKey-- KeyCode::CURSOR_UP, KeyCode::VK_NONE</autogen>
           <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, KeyCode::OPTION_L</autogen>
@@ -1067,7 +1067,7 @@
           <autogen>--KeyToKey-- KeyCode::CONTROL_L, ModifierFlag::FN, KeyCode::CONTROL_R</autogen>
         </item>
         <item>
-          <name>Drop Control_L</name>
+          <name>Disable Control_L</name>
           <sysctl>remap.drop_controlL</sysctl>
           <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::VK_NONE</autogen>
         </item>
@@ -1167,7 +1167,7 @@
           <autogen>--KeyToKey-- KeyCode::DELETE, VK_SHIFT, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
         </item>
         <item>
-          <name>Drop Delete</name>
+          <name>Disable Delete</name>
           <sysctl>remap.drop_delete</sysctl>
           <autogen>--KeyToKey-- KeyCode::DELETE, KeyCode::VK_NONE</autogen>
         </item>
@@ -1413,7 +1413,7 @@
           <autogen>--KeyToPointingButton-- KeyCode::ESCAPE, PointingButton::RIGHT</autogen>
         </item>
         <item>
-          <name>Drop Escape</name>
+          <name>Disable Escape</name>
           <sysctl>remap.drop_escape</sysctl>
           <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_NONE</autogen>
         </item>
@@ -2207,7 +2207,7 @@
         <item>
           <name>Logitech N305 hack / FILCO FKBT22MB hack</name>
           <appendix>(Enable equal, parentheses)</appendix>
-          <appendix>(Drop NumLock key)</appendix>
+          <appendix>(Disable NumLock key)</appendix>
           <sysctl>remap.logitech_n305_hack</sysctl>
           <!--
               ============================================================
@@ -2291,7 +2291,7 @@
           <autogen>--KeyToKey-- KeyCode::KEYPAD_0, ModifierFlag::OPTION_L | ModifierFlag::NONE, KeyCode::VK_STICKY_EXTRA4</autogen>
 
           <!-- ================================================== -->
-          <!-- Drop unnecessary Clear -->
+          <!-- Disable unnecessary Clear -->
           <autogen>--KeyToKey-- KeyCode::PC_KEYPAD_NUMLOCK, KeyCode::VK_NONE</autogen>
         </item>
         <item>
@@ -2783,7 +2783,7 @@
           <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::SEMICOLON</autogen>
         </item>
         <item>
-          <name>Drop Return</name>
+          <name>Disable Return</name>
           <sysctl>remap.drop_return</sysctl>
           <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::VK_NONE</autogen>
         </item>
@@ -2916,12 +2916,12 @@
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::FN, KeyCode::CONTROL_R</autogen>
         </item>
         <item>
-          <name>Drop Shift_L</name>
+          <name>Disable Shift_L</name>
           <sysctl>remap.drop_shiftL</sysctl>
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::VK_NONE</autogen>
         </item>
         <item>
-          <name>Drop Shift_L</name>
+          <name>Disable Shift_L</name>
           <appendix>(+ When you type Shift_L only, send FN_Lock)</appendix>
           <sysctl>remap.drop_shiftL_fn</sysctl>
           <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::VK_NONE, KeyCode::VK_LOCK_FN</autogen>
@@ -3241,7 +3241,7 @@
           <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
         </item>
         <item>
-          <name>Drop Tab</name>
+          <name>Disable Tab</name>
           <sysctl>remap.drop_tab</sysctl>
           <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::VK_NONE</autogen>
         </item>
@@ -4092,7 +4092,7 @@
         </item>
         <item>
           <name>Arrow(Down/Left/Right) to Option_L</name>
-          <appendix>drop Up-Arrow</appendix>
+          <appendix>Disable Up-Arrow</appendix>
           <appendix>(+ When you type Arrow only, toggle Vi Mode)</appendix>
           <sysctl>remap.vimode_toggle_arrow2optionL</sysctl>
           <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_UP,    KeyCode::VK_NONE,  KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
@@ -4155,7 +4155,7 @@
           <autogen>--KeyToKey-- KeyCode::V, VK_OPTION, KeyCode::VK_CONFIG_FORCE_ON_notsave_complete_vimode</autogen>
         </item>
         <item>
-          <name>Drop Shift_L</name>
+          <name>Disable Shift_L</name>
           <appendix>(+ When you type Shift_L only, toggle Vi Mode)</appendix>
           <sysctl>remap.vimode_toggle_drop_shiftL</sysctl>
           <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::VK_NONE, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
@@ -4274,7 +4274,7 @@
       <name>For Expose, Spaces</name>
       <list>
         <item>
-          <name>Disable Slow-Expose (Drop Shift+Expose, Shift+Dashboard, Shift+F8,...,Shift+F12)</name>
+          <name>Disable Slow-Expose (Disable Shift+Expose, Shift+Dashboard, Shift+F8,...,Shift+F12)</name>
           <sysctl>option.drop_slowexpose</sysctl>
           <autogen>--DropKeyAfterRemap-- KeyCode::EXPOSE_ALL, VK_SHIFT</autogen>
           <autogen>--DropKeyAfterRemap-- KeyCode::DASHBOARD,  VK_SHIFT</autogen>
@@ -5129,12 +5129,12 @@
               <autogen>--KeyToKey-- KeyCode::PC_KEYPAD_NUMLOCK, KeyCode::F11</autogen>
             </item>
             <item>
-              <name>Drop NumLock Key</name>
+              <name>Disable NumLock Key</name>
               <sysctl>remap.drop_numlock</sysctl>
               <autogen>--KeyToKey-- KeyCode::PC_KEYPAD_NUMLOCK, KeyCode::VK_NONE</autogen>
             </item>
             <item>
-              <name>Drop NumLock Key (except in TeamViewer.app)</name>
+              <name>Disable NumLock Key (except in TeamViewer.app)</name>
               <not>TEAMVIEWER</not>
               <sysctl>remap.drop_numlock_ex_teamviewer</sysctl>
               <autogen>--KeyToKey-- KeyCode::PC_KEYPAD_NUMLOCK, KeyCode::VK_NONE</autogen>
@@ -6771,7 +6771,7 @@
           <name>Hack for the bug of Mac OS X</name>
           <list>
             <item>
-              <name>Drop Command/Control/Option/Shift+EISUU, Command/Control/Option/Shift+KANA</name>
+              <name>Disable Command/Control/Option/Shift+EISUU, Command/Control/Option/Shift+KANA</name>
               <appendix>(to prevent the system hangup at Snow Leopard)</appendix>
               <sysctl>option.jis_drop_eisuukana_with_modifiers</sysctl>
               <autogen>--DropKeyAfterRemap-- KeyCode::JIS_EISUU, VK_COMMAND</autogen>
