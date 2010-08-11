@@ -6823,6 +6823,12 @@
               <sysctl>remap.vimode_toggle_eisuukana</sysctl>
               <autogen>--SimultaneousKeyPresses-- KeyCode::JIS_EISUU, KeyCode::JIS_KANA, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
             </item>
+            <item>
+              <name>Simultaneous Key Presses [EISUU+KANA] to Return</name>
+              <appendix>(We can change the key once again)</appendix>
+              <sysctl>remap.simultaneouskeypresses_eisuukana2return</sysctl>
+              <autogen>--SimultaneousKeyPresses-- KeyCode::JIS_EISUU, KeyCode::JIS_KANA, KeyCode::RETURN, SimultaneousKeyPresses::Option::RAW</autogen>
+            </item>
           </list>
         </item>
         <item>
