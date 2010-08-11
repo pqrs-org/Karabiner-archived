@@ -6011,6 +6011,17 @@
               <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::F2, ModifierFlag::CONTROL_L</autogen>
             </item>
             <item>
+              <name>EISUU to Space</name>
+              <sysctl>remap.jis_eisuu2space</sysctl>
+              <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::SPACE</autogen>
+            </item>
+            <item>
+              <name>EISUU to Space</name>
+              <appendix>(+ 英数キー長押しで通常の英数キーにする)</appendix>
+              <sysctl>remap.jis_eisuu2space_holdingeisuu2eisuu</sysctl>
+              <autogen>--HoldingKeyToKey-- KeyCode::JIS_EISUU, KeyCode::SPACE, KeyCode::VK_NONE, KeyCode::JIS_EISUU</autogen>
+            </item>
+            <item>
               <name>EISUU to Tab</name>
               <sysctl>remap.jis_eisuu2tab</sysctl>
               <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::TAB</autogen>
@@ -6029,6 +6040,11 @@
               <name>Use EISUU as KANA/EISUU (toggle)</name>
               <sysctl>remap.jis_unify_kana_to_eisuu</sysctl>
               <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
+            </item>
+            <item>
+              <name>EISUU x2 to EISUU (単発での英数キーは無視する)</name>
+              <sysctl>remap.jis_eisuu2extra5_x2eisuu</sysctl>
+              <autogen>--DoublePressModifier-- KeyCode::JIS_EISUU, KeyCode::VK_NONE, KeyCode::JIS_EISUU</autogen>
             </item>
             <item>
               <name>Ignore the multiple press of EISUU</name>
