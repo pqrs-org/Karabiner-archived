@@ -3186,6 +3186,22 @@
           <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::EXPOSE_ALL</autogen>
         </item>
         <item>
+          <name>Control+tab to Command+F1 (only in Terminal)</name>
+          <only>TERMINAL</only>
+          <sysctl>remap.ctrltab2cmdf1_onlyterminal</sysctl>
+          <autogen>--KeyToKey-- KeyCode::TAB, VK_CONTROL, KeyCode::F1, VK_COMMAND</autogen>
+        </item>
+        <item>
+          <name>Command+Tab to F5</name>
+          <sysctl>remap.commandTab2f5</sysctl>
+          <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::F5</autogen>
+        </item>
+        <item>
+          <name>Option+Tab to F5</name>
+          <sysctl>remap.optionTab2f5</sysctl>
+          <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::F5</autogen>
+        </item>
+        <item>
           <name>Command+Tab to Control+Tab (only in Firefox, Google Chrome, Opera, Safari)</name>
           <sysctl>remap.commandTab2controlTab_browser</sysctl>
           <only>FIREFOX, GOOGLE_CHROME, OPERA, SAFARI</only>
@@ -3195,11 +3211,6 @@
           <name>Command+Tab to Option+Tab</name>
           <sysctl>remap.commandTab2optionTab</sysctl>
           <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
-        </item>
-        <item>
-          <name>Command+Tab to F5</name>
-          <sysctl>remap.commandTab2f5</sysctl>
-          <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::F5</autogen>
         </item>
         <item>
           <name>Control+Tab to Command+Tab</name>
@@ -3224,11 +3235,6 @@
           <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
         </item>
         <item>
-          <name>Option+Tab to F5</name>
-          <sysctl>remap.optionTab2f5</sysctl>
-          <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::F5</autogen>
-        </item>
-        <item>
           <name>Swap Command+Tab and Option+Tab</name>
           <sysctl>remap.swap_commandtaboptiontab</sysctl>
           <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
@@ -3239,12 +3245,6 @@
           <sysctl>remap.swap_commandtabcontroltab</sysctl>
           <autogen>--KeyToKey-- KeyCode::TAB, VK_CONTROL, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
-        </item>
-        <item>
-          <name>Control+tab to Command+F1 (only in Terminal)</name>
-          <only>TERMINAL</only>
-          <sysctl>remap.ctrltab2cmdf1_onlyterminal</sysctl>
-          <autogen>--KeyToKey-- KeyCode::TAB, VK_CONTROL, KeyCode::F1, VK_COMMAND</autogen>
         </item>
         <item>
           <name>Disable Tab</name>
