@@ -2824,6 +2824,17 @@
     </item>
 
     <item>
+      <name>Change Quote(') Key</name>
+      <list>
+        <item>
+          <name>Fn+Quote(') to Backslash(\)</name>
+          <sysctl>remap.fnquote2backslash</sysctl>
+          <autogen>--KeyToKey-- KeyCode::QUOTE, ModifierFlag::FN, KeyCode::BACKSLASH</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>Change Semicolon Key</name>
       <list>
         <item>
