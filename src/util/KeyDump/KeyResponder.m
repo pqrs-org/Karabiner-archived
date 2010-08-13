@@ -21,7 +21,7 @@
           ((flags & NSCommandKeyMask)    ? "Cmd ":""),
           ((flags & NSNumericPadKeyMask) ? "NumPad ":""),
           ((flags & NSHelpKeyMask)       ? "Help ":""),
-          ((flags & NSFunctionKeyMask)   ? "FN ":"")];
+          ((flags & NSFunctionKeyMask)   ? "Fn ":"")];
 }
 
 - (NSString*) keycodeToString:(NSEvent*)event
@@ -38,7 +38,7 @@
   if (keycode == 0x3c) return @"Shift_R";
   if (keycode == 0x3d) return @"Option_R";
   if (keycode == 0x3e) return @"Control_R";
-  if (keycode == 0x3f) return @"FN";
+  if (keycode == 0x3f) return @"Fn";
 
   if (keycode == 0x7a) return @"F1";
   if (keycode == 0x78) return @"F2";
