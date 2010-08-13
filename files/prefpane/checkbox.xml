@@ -41,7 +41,7 @@
         </item>
         <item>
           <name>Disable NumPad Hack</name>
-          <appendix>(Don't change FN+JKL.. to NumPad, and other FN+key combinations)</appendix>
+          <appendix>(Don't change Fn+JKL.. to NumPad, and other Fn+key combinations)</appendix>
           <sysctl>general.disable_numpad_hack</sysctl>
         </item>
         <item>
@@ -69,7 +69,7 @@
           <autogen>--ShowStatusMessage-- "Pass Through"</autogen>
         </item>
         <item>
-          <name>Change FN+Escape to toggle "Pass Through Mode"</name>
+          <name>Change Fn+Escape to toggle "Pass Through Mode"</name>
           <sysctl>passthrough.fnescape</sysctl>
           <autogen>--KeyToKey-- KeyCode::ESCAPE, ModifierFlag::FN, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough</autogen>
         </item>
@@ -130,7 +130,7 @@
               <autogen>--PointingRelativeToScroll-- PointingButton::NONE, VK_COMMAND | VK_CONTROL</autogen>
             </item>
             <item>
-              <name>FN+CursorMove to ScrollWheel</name>
+              <name>Fn+CursorMove to ScrollWheel</name>
               <sysctl>remap.pointing_relative_fn_to_scroll</sysctl>
               <autogen>--PointingRelativeToScroll-- PointingButton::NONE, ModifierFlag::FN</autogen>
             </item>
@@ -172,12 +172,12 @@
               <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, VK_CONTROL, PointingButton::MIDDLE</autogen>
             </item>
             <item>
-              <name>FN+LeftClick to MiddleClick</name>
+              <name>Fn+LeftClick to MiddleClick</name>
               <sysctl>remap.pointing_fnLeftclick2middleclick</sysctl>
               <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, ModifierFlag::FN, PointingButton::MIDDLE</autogen>
             </item>
             <item>
-              <name>FN+LeftClick to Option_L+LeftClick</name>
+              <name>Fn+LeftClick to Option_L+LeftClick</name>
               <sysctl>remap.pointing_fnLeftclick2optionLeftclick</sysctl>
               <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, ModifierFlag::FN, PointingButton::LEFT, ModifierFlag::OPTION_L</autogen>
             </item>
@@ -433,7 +433,7 @@
       <name>Change Arrow(Up/Down/Left/Right) Key</name>
       <list>
         <item>
-          <name>Arrow(Down/Left/Right) to FN</name>
+          <name>Arrow(Down/Left/Right) to Fn</name>
           <appendix>Disable Up-Arrow</appendix>
           <sysctl>remap.arrow2fn</sysctl>
           <autogen>--KeyToKey-- KeyCode::CURSOR_UP, KeyCode::VK_NONE</autogen>
@@ -623,7 +623,7 @@
         </item>
         <item>
           <name>Backslash(\) to Delete</name>
-          <appendix>(+ FN+Backslash(\) to Backslash(\))</appendix>
+          <appendix>(+ Fn+Backslash(\) to Backslash(\))</appendix>
           <appendix>(+ retain Shift+Backslash(\))</appendix>
           <sysctl>remap.backslash2delete_retain_shiftbackslash</sysctl>
           <autogen>--KeyToKey-- KeyCode::BACKSLASH, ModifierFlag::FN, KeyCode::BACKSLASH</autogen>
@@ -637,14 +637,14 @@
         </item>
         <item>
           <name>Backslash(\) to Forward Delete</name>
-          <appendix>(+ FN+Backslash(\) to Backslash(\))</appendix>
+          <appendix>(+ Fn+Backslash(\) to Backslash(\))</appendix>
           <sysctl>remap.backslash2forwarddelete</sysctl>
           <autogen>--KeyToKey-- KeyCode::BACKSLASH, ModifierFlag::FN, KeyCode::BACKSLASH</autogen>
           <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::FORWARD_DELETE</autogen>
         </item>
         <item>
           <name>Backslash(\) to Forward Delete</name>
-          <appendix>(+ FN+Backslash(\) to Backslash(\))</appendix>
+          <appendix>(+ Fn+Backslash(\) to Backslash(\))</appendix>
           <appendix>(+ retain Shift+Backslash(\))</appendix>
           <sysctl>remap.backslash2forwarddelete_retain_shiftbackslash</sysctl>
           <autogen>--KeyToKey-- KeyCode::BACKSLASH, ModifierFlag::FN, KeyCode::BACKSLASH</autogen>
@@ -812,18 +812,18 @@
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
-          <name>Command_R to FN</name>
+          <name>Command_R to Fn</name>
           <sysctl>remap.commandR2fn</sysctl>
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::FN</autogen>
         </item>
         <item>
-          <name>Command_R to FN (only in virtual machine)</name>
+          <name>Command_R to Fn (only in virtual machine)</name>
           <sysctl>remap.commandR2fn_vm</sysctl>
           <only>VIRTUALMACHINE</only>
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::FN</autogen>
         </item>
         <item>
-          <name>Option_R+Command_R to FN</name>
+          <name>Option_R+Command_R to Fn</name>
           <sysctl>remap.optionRcommandR2fn</sysctl>
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, ModifierFlag::OPTION_R, KeyCode::FN</autogen>
         </item>
@@ -1031,18 +1031,18 @@
           <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_L, KeyCode::CONTROL_L, KeyCode::ESCAPE</autogen>
         </item>
         <item>
-          <name>Control_L to FN</name>
+          <name>Control_L to Fn</name>
           <sysctl>remap.controlL2fn</sysctl>
           <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::FN</autogen>
         </item>
         <item>
-          <name>Control_L to FN (only in virtual machine, RDC)</name>
+          <name>Control_L to Fn (only in virtual machine, RDC)</name>
           <sysctl>remap.controlL2fn_vm</sysctl>
           <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
           <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::FN</autogen>
         </item>
         <item>
-          <name>Option_L+Control_L to FN</name>
+          <name>Option_L+Control_L to Fn</name>
           <sysctl>remap.optionLcontrolL2fn</sysctl>
           <autogen>--KeyToKey-- KeyCode::CONTROL_L, ModifierFlag::OPTION_L, KeyCode::FN</autogen>
         </item>
@@ -1079,7 +1079,7 @@
           <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::ESCAPE</autogen>
         </item>
         <item>
-          <name>FN+Control_L to Control_R</name>
+          <name>Fn+Control_L to Control_R</name>
           <sysctl>remap.fncontrolL2controlR</sysctl>
           <autogen>--KeyToKey-- KeyCode::CONTROL_L, ModifierFlag::FN, KeyCode::CONTROL_R</autogen>
         </item>
@@ -1153,7 +1153,7 @@
         </item>
         <item>
           <name>Delete to Forward Delete</name>
-          <appendix>(FN+Delete to Delete)</appendix>
+          <appendix>(Fn+Delete to Delete)</appendix>
           <sysctl>remap.delete2forwarddelete_fnDelete2delete</sysctl>
           <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::FN, KeyCode::DELETE</autogen>
           <autogen>--KeyToKey-- KeyCode::DELETE, KeyCode::FORWARD_DELETE</autogen>
@@ -1218,7 +1218,7 @@
         </item>
         <item>
           <name>Eject to Forward Delete</name>
-          <appendix>(FN+Eject to Eject)</appendix>
+          <appendix>(Fn+Eject to Eject)</appendix>
           <sysctl>remap.eject2forwarddelete_retain_fnEject</sysctl>
           <autogen>--ConsumerToConsumer-- ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::FORWARD_DELETE</autogen>
@@ -1287,7 +1287,7 @@
           <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::CONTROL_R</autogen>
         </item>
         <item>
-          <name>Enter to FN</name>
+          <name>Enter to Fn</name>
           <sysctl>remap.enter2fn</sysctl>
           <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::FN</autogen>
         </item>
@@ -1420,7 +1420,7 @@
           <autogen>--KeyToKey-- KeyCode::ESCAPE, VK_CONTROL | ModifierFlag::NONE, KeyCode::F3, ModifierFlag::CONTROL_L</autogen>
         </item>
         <item>
-          <name>FN+Escape to Power</name>
+          <name>Fn+Escape to Power</name>
           <sysctl>remap.fnEscape2power</sysctl>
           <autogen>--KeyToConsumer-- KeyCode::ESCAPE, ModifierFlag::FN, ConsumerKeyCode::POWER</autogen>
         </item>
@@ -1468,16 +1468,16 @@
     </item>
 
     <item>
-      <name>Change FN Key</name>
+      <name>Change Fn Key</name>
       <list>
         <item>
-          <name>FN to Command_L</name>
+          <name>Fn to Command_L</name>
           <sysctl>remap.fn2commandL</sysctl>
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::COMMAND_L</autogen>
         </item>
         <item>
-          <name>FN to Command_L (except virtual machine, RDC)</name>
-          <appendix>(+ FN to Control_L (only in virtual machine, RDC))</appendix>
+          <name>Fn to Command_L (except virtual machine, RDC)</name>
+          <appendix>(+ Fn to Control_L (only in virtual machine, RDC))</appendix>
           <sysctl>remap.fn2commandL_fn2controlL_vm</sysctl>
           <block>
             <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
@@ -1489,50 +1489,50 @@
           </block>
         </item>
         <item>
-          <name>FN to Control_L</name>
+          <name>Fn to Control_L</name>
           <sysctl>remap.fn2controlL</sysctl>
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
-          <name>FN to Control_L (only in virtual machine, RDC)</name>
+          <name>Fn to Control_L (only in virtual machine, RDC)</name>
           <sysctl>remap.fn2controlL_vm</sysctl>
           <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
-          <name>FN to Control_L</name>
-          <appendix>(+ Command_R+FN to FN)</appendix>
+          <name>Fn to Control_L</name>
+          <appendix>(+ Command_R+Fn to Fn)</appendix>
           <sysctl>remap.fn2controlL_commandR2fn</sysctl>
           <autogen>--KeyToKey-- KeyCode::FN, ModifierFlag::COMMAND_R, KeyCode::FN</autogen>
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
-          <name>FN to Control_L</name>
-          <appendix>(+ Option_L+FN to FN)</appendix>
+          <name>Fn to Control_L</name>
+          <appendix>(+ Option_L+Fn to Fn)</appendix>
           <sysctl>remap.fn2controlL_optionL2fn</sysctl>
           <autogen>--KeyToKey-- KeyCode::FN, ModifierFlag::OPTION_L, KeyCode::FN</autogen>
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
-          <name>FN to FN</name>
-          <appendix>(+ When you type FN only, send FN_Lock)</appendix>
+          <name>Fn to Fn</name>
+          <appendix>(+ When you type Fn only, send Fn_Lock)</appendix>
           <sysctl>remap.fn2fn_fnlock</sysctl>
           <autogen>--KeyOverlaidModifier-- KeyCode::FN, KeyCode::FN, KeyCode::VK_LOCK_FN</autogen>
         </item>
         <item>
-          <name>FN to FN_Lock</name>
+          <name>Fn to Fn_Lock</name>
           <sysctl>remap.fn2fnlock</sysctl>
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::VK_LOCK_FN</autogen>
         </item>
         <item>
-          <name>FN to Option_L</name>
+          <name>Fn to Option_L</name>
           <sysctl>remap.fn2optionL</sysctl>
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::OPTION_L</autogen>
         </item>
         <item>
-          <name>FN to Option_L</name>
+          <name>Fn to Option_L</name>
           <appendix>(only in Illustrator, Photoshop, Cheetah3D)</appendix>
-          <appendix>(retain FN+F1...FN+F12)</appendix>
+          <appendix>(retain Fn+F1...Fn+F12)</appendix>
           <sysctl>remap.fn2optionL_illphoche</sysctl>
           <only>ILLUSTRATOR, PHOTOSHOP, CHEETAH_3D</only>
           <autogen>--KeyToKey-- KeyCode::BRIGHTNESS_DOWN,                      ModifierFlag::OPTION_L, KeyCode::BRIGHTNESS_DOWN</autogen>
@@ -1552,47 +1552,47 @@
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::OPTION_L</autogen>
         </item>
         <item>
-          <name>FN to Control_L+Option_L</name>
+          <name>Fn to Control_L+Option_L</name>
           <sysctl>remap.fn2controlLoptionL</sysctl>
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::OPTION_L, ModifierFlag::CONTROL_L</autogen>
         </item>
         <item>
-          <name>FN to Shift_L</name>
+          <name>Fn to Shift_L</name>
           <sysctl>remap.fn2shiftL</sysctl>
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::SHIFT_L</autogen>
         </item>
         <item>
-          <name>FN to Delete</name>
+          <name>Fn to Delete</name>
           <sysctl>remap.fn2delete</sysctl>
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::DELETE</autogen>
         </item>
         <item>
-          <name>FN to Enter</name>
+          <name>Fn to Enter</name>
           <sysctl>remap.fn2enter</sysctl>
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::ENTER</autogen>
         </item>
         <item>
-          <name>FN to Eject</name>
+          <name>Fn to Eject</name>
           <sysctl>remap.fn2eject</sysctl>
           <autogen>--KeyToConsumer-- KeyCode::FN, ConsumerKeyCode::EJECT</autogen>
         </item>
         <item>
-          <name>FN to Forward Delete</name>
+          <name>Fn to Forward Delete</name>
           <sysctl>remap.fn2forwarddelete</sysctl>
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::FORWARD_DELETE</autogen>
         </item>
         <item>
-          <name>FN to F14</name>
+          <name>Fn to F14</name>
           <sysctl>remap.fn2f14</sysctl>
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::F14</autogen>
         </item>
         <item>
-          <name>FN to Help</name>
+          <name>Fn to Help</name>
           <sysctl>remap.fn2help</sysctl>
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::HELP</autogen>
         </item>
         <item>
-          <name>FN to Tab</name>
+          <name>Fn to Tab</name>
           <sysctl>remap.fn2tab</sysctl>
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::TAB</autogen>
         </item>
@@ -1839,21 +1839,21 @@
         </item>
 
         <item>
-          <name>FN+F1..F12 to Functional</name>
-          <appendix>There is this setting for "* to FN". (ex: Control_L to FN)</appendix>
+          <name>Fn+F1..F12 to Functional</name>
+          <appendix>There is this setting for "* to Fn". (ex: Control_L to Fn)</appendix>
           <appendix></appendix>
-          <appendix>FN+F1 to Brightness Down</appendix>
-          <appendix>FN+F2 to Brightness Up</appendix>
-          <appendix>FN+F3 to Expose</appendix>
-          <appendix>FN+F4 to Dashboard</appendix>
-          <appendix>FN+F5 to Keyboard Light LOW</appendix>
-          <appendix>FN+F6 to Keyboard Light HIGH</appendix>
-          <appendix>FN+F7 to Music Prev</appendix>
-          <appendix>FN+F8 to Music Play/Pause</appendix>
-          <appendix>FN+F9 to Music Next</appendix>
-          <appendix>FN+F10 to Volume Mute</appendix>
-          <appendix>FN+F11 to Volume Down</appendix>
-          <appendix>FN+F12 to Volume Up</appendix>
+          <appendix>Fn+F1 to Brightness Down</appendix>
+          <appendix>Fn+F2 to Brightness Up</appendix>
+          <appendix>Fn+F3 to Expose</appendix>
+          <appendix>Fn+F4 to Dashboard</appendix>
+          <appendix>Fn+F5 to Keyboard Light LOW</appendix>
+          <appendix>Fn+F6 to Keyboard Light HIGH</appendix>
+          <appendix>Fn+F7 to Music Prev</appendix>
+          <appendix>Fn+F8 to Music Play/Pause</appendix>
+          <appendix>Fn+F9 to Music Next</appendix>
+          <appendix>Fn+F10 to Volume Mute</appendix>
+          <appendix>Fn+F11 to Volume Down</appendix>
+          <appendix>Fn+F12 to Volume Up</appendix>
           <!-- #include "include/caution_functionkey.xml" -->
           <sysctl>remap.fnF1_F12_to_functional</sysctl>
           <!-- #include "include/f1_f12_to_functional_withfn.xml" -->
@@ -1912,7 +1912,7 @@
           <autogen>--KeyToConsumer-- KeyCode::F6, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_UP, ModifierFlag::SHIFT_L</autogen>
         </item>
         <item>
-          <name>F6 to FN_Lock (except virtual machine, RDC)</name>
+          <name>F6 to Fn_Lock (except virtual machine, RDC)</name>
           <sysctl>remap.f6_to_numlock</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToKey-- KeyCode::F6, KeyCode::VK_LOCK_FN</autogen>
@@ -1976,7 +1976,7 @@
           <autogen>--KeyToConsumer-- KeyCode::F10, ConsumerKeyCode::VOLUME_MUTE</autogen>
         </item>
         <item>
-          <name>FN+F11 to F11</name>
+          <name>Fn+F11 to F11</name>
           <sysctl>remap.FnF11_to_f11</sysctl>
           <autogen>--KeyToKey-- KeyCode::F11, ModifierFlag::FN, KeyCode::F11</autogen>
         </item>
@@ -2008,7 +2008,7 @@
           <autogen>--KeyToConsumer-- KeyCode::F12, ConsumerKeyCode::VOLUME_UP</autogen>
         </item>
         <item>
-          <name>FN+F12 to F12</name>
+          <name>Fn+F12 to F12</name>
           <sysctl>remap.FnF12_to_f12</sysctl>
           <autogen>--KeyToKey-- KeyCode::F12, ModifierFlag::FN, KeyCode::F12</autogen>
         </item>
@@ -2042,42 +2042,42 @@
         </item>
 
         <item>
-          <name>FN+F1 to Brightness Down</name>
+          <name>Fn+F1 to Brightness Down</name>
           <sysctl>remap.fnF1_to_brightnessdown</sysctl>
           <autogen>--KeyToConsumer-- KeyCode::F1, ModifierFlag::FN, ConsumerKeyCode::BRIGHTNESS_DOWN</autogen>
         </item>
         <item>
-          <name>FN+F2 to Brightness Up</name>
+          <name>Fn+F2 to Brightness Up</name>
           <sysctl>remap.fnF2_to_brightnessup</sysctl>
           <autogen>--KeyToConsumer-- KeyCode::F2, ModifierFlag::FN, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
         </item>
         <item>
-          <name>FN+F7 to Music Prev</name>
+          <name>Fn+F7 to Music Prev</name>
           <sysctl>remap.fnF7_to_musicprev</sysctl>
           <autogen>--KeyToConsumer-- KeyCode::F7, ModifierFlag::FN, ConsumerKeyCode::MUSIC_PREV</autogen>
         </item>
         <item>
-          <name>FN+F8 to Music Play/Pause</name>
+          <name>Fn+F8 to Music Play/Pause</name>
           <sysctl>remap.fnF8_to_musicplay</sysctl>
           <autogen>--KeyToConsumer-- KeyCode::F8, ModifierFlag::FN, ConsumerKeyCode::MUSIC_PLAY</autogen>
         </item>
         <item>
-          <name>FN+F9 to Music Next</name>
+          <name>Fn+F9 to Music Next</name>
           <sysctl>remap.fnF9_to_musicplay</sysctl>
           <autogen>--KeyToConsumer-- KeyCode::F9, ModifierFlag::FN, ConsumerKeyCode::MUSIC_NEXT</autogen>
         </item>
         <item>
-          <name>FN+F10 to Volume Mute</name>
+          <name>Fn+F10 to Volume Mute</name>
           <sysctl>remap.fnF10_to_volumemute</sysctl>
           <autogen>--KeyToConsumer-- KeyCode::F10, ModifierFlag::FN, ConsumerKeyCode::VOLUME_MUTE</autogen>
         </item>
         <item>
-          <name>FN+F11 to Volume Down</name>
+          <name>Fn+F11 to Volume Down</name>
           <sysctl>remap.fnF11_to_volumedown</sysctl>
           <autogen>--KeyToConsumer-- KeyCode::F11, ModifierFlag::FN, ConsumerKeyCode::VOLUME_DOWN</autogen>
         </item>
         <item>
-          <name>FN+F12 to Volume Up</name>
+          <name>Fn+F12 to Volume Up</name>
           <sysctl>remap.fnF12_to_volumeup</sysctl>
           <autogen>--KeyToConsumer-- KeyCode::F12, ModifierFlag::FN, ConsumerKeyCode::VOLUME_UP</autogen>
         </item>
@@ -2210,7 +2210,7 @@
           <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, ModifierFlag::VK_SHIFT, KeyCode::KEYPAD_COMMA</autogen>
         </item>
         <item>
-          <name>FN+Dot to FN+Shift+Dot</name>
+          <name>Fn+Dot to Fn+Shift+Dot</name>
           <appendix>(Useful for some keyboard layouts such as French, Italian, etc.)</appendix>
           <sysctl>remap.fndot2fnshiftdot</sysctl>
           <autogen>--KeyToKey-- KeyCode::DOT,        ModifierFlag::FN, KeyCode::DOT, ModifierFlag::FN | ModifierFlag::SHIFT_L</autogen>
@@ -2232,12 +2232,12 @@
 
               The following is the output for the number one key:
               *** An unnecessary Clear key is output ***
-              eventType:keyDown code:0x47 name:Clear    flags:FN         misc:
-              eventType:keyUp   code:0x47 name:Clear    flags:FN         misc:
+              eventType:keyDown code:0x47 name:Clear    flags:Fn         misc:
+              eventType:keyUp   code:0x47 name:Clear    flags:Fn         misc:
               eventType:keyDown code:0x53 name:1        flags:NumPad     misc:
               eventType:keyUp   code:0x53 name:1        flags:NumPad     misc:
-              eventType:keyDown code:0x47 name:Clear    flags:FN         misc:
-              eventType:keyUp   code:0x47 name:Clear    flags:FN         misc:
+              eventType:keyDown code:0x47 name:Clear    flags:Fn         misc:
+              eventType:keyUp   code:0x47 name:Clear    flags:Fn         misc:
 
               Equal Symbol:
               eventType:keyMod  code:0x3a name:Option_L flags:Opt        misc:
@@ -2360,10 +2360,10 @@
           <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_NEXT,         KeyCode::F9</autogen>
         </item>
         <item>
-          <name>FN+Function Keys to Media Keys</name>
-          <appendix>FN+F7 to Music Prev</appendix>
-          <appendix>FN+F8 to Music Play/Pause</appendix>
-          <appendix>FN+F9 to Music Next</appendix>
+          <name>Fn+Function Keys to Media Keys</name>
+          <appendix>Fn+F7 to Music Prev</appendix>
+          <appendix>Fn+F8 to Music Play/Pause</appendix>
+          <appendix>Fn+F9 to Music Next</appendix>
           <sysctl>remap.FNFkeysToMediaKeys</sysctl>
           <!-- F7 - F9 -->
           <autogen>--KeyToConsumer-- KeyCode::F7, ModifierFlag::FN, ConsumerKeyCode::MUSIC_PREV</autogen>
@@ -2536,12 +2536,12 @@
           <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
-          <name>Option_L to FN</name>
+          <name>Option_L to Fn</name>
           <sysctl>remap.optionL2fn</sysctl>
           <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::FN</autogen>
         </item>
         <item>
-          <name>Control_L+Option_L to FN</name>
+          <name>Control_L+Option_L to Fn</name>
           <sysctl>remap.controlLoptionL2fn</sysctl>
           <autogen>--KeyToKey-- KeyCode::OPTION_L, ModifierFlag::CONTROL_L, KeyCode::FN</autogen>
         </item>
@@ -2616,12 +2616,12 @@
           <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CONTROL_R</autogen>
         </item>
         <item>
-          <name>Option_R to FN</name>
+          <name>Option_R to Fn</name>
           <sysctl>remap.optionR2fn</sysctl>
           <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::FN</autogen>
         </item>
         <item>
-          <name>Command_R+Option_R to FN</name>
+          <name>Command_R+Option_R to Fn</name>
           <sysctl>remap.commandRoptionR2fn</sysctl>
           <autogen>--KeyToKey-- KeyCode::OPTION_R, ModifierFlag::COMMAND_R, KeyCode::FN</autogen>
         </item>
@@ -2780,7 +2780,7 @@
           <autogen>--KeyOverlaidModifier-- KeyCode::RETURN, KeyCode::OPTION_L, KeyCode::ESCAPE</autogen>
         </item>
         <item>
-          <name>FN+Return to Option_L</name>
+          <name>Fn+Return to Option_L</name>
           <sysctl>remap.fnReturn2optionL</sysctl>
           <autogen>--KeyToKey-- KeyCode::RETURN, ModifierFlag::FN, KeyCode::OPTION_L</autogen>
         </item>
@@ -2790,7 +2790,7 @@
           <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::F4, ModifierFlag::CONTROL_L</autogen>
         </item>
         <item>
-          <name>FN+Return to Shift_L+Insert</name>
+          <name>Fn+Return to Shift_L+Insert</name>
           <sysctl>remap.fnReturn2shiftLinsert</sysctl>
           <autogen>--KeyToKey-- KeyCode::RETURN, ModifierFlag::FN, KeyCode::PC_INSERT, ModifierFlag::SHIFT_L</autogen>
         </item>
@@ -2816,7 +2816,7 @@
           <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, KeyCode::CAPSLOCK</autogen>
         </item>
         <item>
-          <name>FN+Right Bracket(]) to Backslash(\)</name>
+          <name>Fn+Right Bracket(]) to Backslash(\)</name>
           <sysctl>remap.fnrightbracket2backslash</sysctl>
           <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, ModifierFlag::FN, KeyCode::BACKSLASH</autogen>
         </item>
@@ -2894,7 +2894,7 @@
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
-          <name>Shift_L to FN</name>
+          <name>Shift_L to Fn</name>
           <sysctl>remap.shiftL2fn</sysctl>
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::FN</autogen>
         </item>
@@ -2944,7 +2944,7 @@
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_R, KeyCode::SPACE</autogen>
         </item>
         <item>
-          <name>FN+Shift_L to Control_R</name>
+          <name>Fn+Shift_L to Control_R</name>
           <sysctl>remap.fnshiftL2controlR</sysctl>
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::FN, KeyCode::CONTROL_R</autogen>
         </item>
@@ -2955,7 +2955,7 @@
         </item>
         <item>
           <name>Disable Shift_L</name>
-          <appendix>(+ When you type Shift_L only, send FN_Lock)</appendix>
+          <appendix>(+ When you type Shift_L only, send Fn_Lock)</appendix>
           <sysctl>remap.drop_shiftL_fn</sysctl>
           <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::VK_NONE, KeyCode::VK_LOCK_FN</autogen>
         </item>
@@ -2976,7 +2976,7 @@
           <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
-          <name>Shift_R to FN</name>
+          <name>Shift_R to Fn</name>
           <sysctl>remap.shiftR2fn</sysctl>
           <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::FN</autogen>
         </item>
@@ -3144,7 +3144,7 @@
         <item>
           <name>Space to Shift_L</name>
           <appendix>(+ When you type Space only, send Space)</appendix>
-          <appendix>FN+Space to Space</appendix>
+          <appendix>Fn+Space to Space</appendix>
           <sysctl>remap.space2shiftL_space_fnspace</sysctl>
           <autogen>--KeyToKey-- KeyCode::SPACE, ModifierFlag::FN, KeyCode::SPACE</autogen>
           <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
@@ -3168,12 +3168,12 @@
               <autogen>--KeyToKey-- KeyCode::SPACE, ModifierFlag::NONE, KeyCode::SPACE, ModifierFlag::OPTION_L</autogen>
             </item>
             <item>
-              <name>FN+Escape to toggle "Swap Space and Option+Space" Mode</name>
+              <name>Fn+Escape to toggle "Swap Space and Option+Space" Mode</name>
               <sysctl>remap.swap_space_optionspace_toggle_fnescape</sysctl>
               <autogen>--KeyToKey-- KeyCode::ESCAPE, ModifierFlag::FN, KeyCode::VK_CONFIG_TOGGLE_notsave_swap_space_optionspace</autogen>
             </item>
             <item>
-              <name>FN+Space to toggle "Swap Space and Option+Space" Mode</name>
+              <name>Fn+Space to toggle "Swap Space and Option+Space" Mode</name>
               <sysctl>remap.swap_space_optionspace_toggle_fnspace</sysctl>
               <autogen>--KeyToKey-- KeyCode::SPACE, ModifierFlag::FN, KeyCode::VK_CONFIG_TOGGLE_notsave_swap_space_optionspace</autogen>
             </item>
@@ -3962,7 +3962,7 @@
           <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT</autogen>
         </item>
         <item>
-          <name>FN+hjkl to Left/Down/Up/Right</name>
+          <name>Fn+hjkl to Left/Down/Up/Right</name>
           <sysctl>option.vimode_fn_hjkl</sysctl>
           <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::FN, KeyCode::CURSOR_LEFT</autogen>
           <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::FN, KeyCode::CURSOR_DOWN</autogen>
@@ -4047,7 +4047,7 @@
           <appendix>- n to Command_L+G</appendix>
           <appendix>- x to Forward Delete</appendix>
           <appendix>- Shift+x to Delete</appendix>
-          <appendix>- f to FN</appendix>
+          <appendix>- f to Fn</appendix>
           <appendix>- i to turn off Vi Mode</appendix>
           <sysctl>notsave.complete_vimode</sysctl>
           <vk_config>true</vk_config>
@@ -4202,8 +4202,8 @@
           <autogen>--KeyOverlaidModifier-- KeyCode::RETURN, KeyCode::CONTROL_L, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
         </item>
         <item>
-          <name>FN to FN</name>
-          <appendix>(+ When you type FN only, toggle Vi Mode)</appendix>
+          <name>Fn to Fn</name>
+          <appendix>(+ When you type Fn only, toggle Vi Mode)</appendix>
           <sysctl>remap.vimode_toggle_fn2fn</sysctl>
           <autogen>--KeyOverlaidModifier-- KeyCode::FN, KeyCode::FN, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
         </item>
@@ -4247,7 +4247,7 @@
           <appendix>(EXTRA1+J to Down)</appendix>
           <appendix>(EXTRA1+K to Up)</appendix>
           <appendix>(EXTRA1+L to Right)</appendix>
-          <appendix>(EXTRA1+F to FN)</appendix>
+          <appendix>(EXTRA1+F to Fn)</appendix>
           <sysctl>remap.simultaneouskeypresses_vimode_sd</sysctl>
           <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, KeyCode::VK_MODIFIER_EXTRA1</autogen>
           <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA1, KeyCode::CURSOR_LEFT</autogen>
@@ -4277,7 +4277,7 @@
           <autogen>--SimultaneousKeyPresses-- KeyCode::N, KeyCode::M, KeyCode::F13</autogen>
         </item>
         <item>
-          <name>Simultaneous Key Presses [F+N] to FN_Lock</name>
+          <name>Simultaneous Key Presses [F+N] to Fn_Lock</name>
           <sysctl>remap.simultaneouskeypresses_fn_to_fnlock</sysctl>
           <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::N, KeyCode::VK_LOCK_FN</autogen>
         </item>
@@ -4421,7 +4421,7 @@
               <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCO_L</autogen>
             </item>
             <item>
-              <name>Use FN+[123456789] for Spaces</name>
+              <name>Use Fn+[123456789] for Spaces</name>
               <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
               <sysctl>remap.spaces_special_fn</sysctl>
               <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
@@ -4435,7 +4435,7 @@
               <autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
             </item>
             <item>
-              <name>Use FN+[1234 QWER ASDF ZXCV] for Spaces (4x4)</name>
+              <name>Use Fn+[1234 QWER ASDF ZXCV] for Spaces (4x4)</name>
               <appendix>(Cmd+Ctrl+Shift+[1234 5678 90], Cmd+Ctrl+Option+Shift[12 3456])</appendix>
               <sysctl>remap.spaces_special_1234qwerasdfzxcv</sysctl>
               <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCS_L</autogen>
@@ -4456,7 +4456,7 @@
               <autogen>--KeyToKey-- KeyCode::V,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
             </item>
             <item>
-              <name>Use FN+[7890 UIOP JKL; M,./] for Spaces (4x4)</name>
+              <name>Use Fn+[7890 UIOP JKL; M,./] for Spaces (4x4)</name>
               <appendix>(Cmd+Ctrl+Shift+[1234 5678 90], Cmd+Ctrl+Option+Shift[12 3456])</appendix>
               <sysctl>remap.spaces_special_7890uiopjklm</sysctl>
               <autogen>--KeyToKey-- KeyCode::KEY_7,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCS_L</autogen>
@@ -4550,7 +4550,7 @@
               <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::CONTROL_L</autogen>
             </item>
             <item>
-              <name>Change FN+Return to Insert</name>
+              <name>Change Fn+Return to Insert</name>
               <sysctl>remap.app_vm_fnReturn2insert</sysctl>
               <only>VIRTUALMACHINE</only>
               <autogen>--KeyToKey-- KeyCode::RETURN, ModifierFlag::FN, KeyCode::HELP</autogen>
@@ -4729,9 +4729,9 @@
                 </item>
                 <item>
                   <name>Use Return as Open</name>
-                  <appendix>(+ Use FN+Return as Rename)</appendix>
+                  <appendix>(+ Use Fn+Return as Rename)</appendix>
                   <appendix>(Change Return to Command+O)</appendix>
-                  <appendix>(Change FN+Return to Return)</appendix>
+                  <appendix>(Change Fn+Return to Return)</appendix>
                   <sysctl>remap.app_finder_return2commandO</sysctl>
                   <only>FINDER</only>
                   <autogen>--KeyToKey-- KeyCode::RETURN, ModifierFlag::FN, KeyCode::RETURN</autogen>
@@ -5094,13 +5094,13 @@
               <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::CONTROL_L</autogen>
             </item>
             <item>
-              <name>Application Key to FN</name>
+              <name>Application Key to Fn</name>
               <sysctl>remap.pc_application2fn</sysctl>
               <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::FN</autogen>
             </item>
             <item>
-              <name>Application Key to FN</name>
-              <appendix>(+ When you type Application only, send FN_Lock)</appendix>
+              <name>Application Key to Fn</name>
+              <appendix>(+ When you type Application only, send Fn_Lock)</appendix>
               <sysctl>remap.pc_application2fn_fnlock</sysctl>
               <autogen>--KeyOverlaidModifier-- KeyCode::PC_APPLICATION, KeyCode::FN, KeyCode::VK_LOCK_FN</autogen>
             </item>
@@ -5502,7 +5502,7 @@
           <autogen>--KeyToKey-- KeyCode::EQUAL,        ModifierFlag::FN, KeyCode::F12</autogen>
         </item>
         <item>
-          <name>Enable FN+hjkl at HHK to Left/Down/Up/Right</name>
+          <name>Enable Fn+hjkl at HHK to Left/Down/Up/Right</name>
           <sysctl>remap.hhkmode_vi_cursor</sysctl>
           <autogen>--KeyToKey-- KeyCode::KEYPAD_MULTIPLY, KeyCode::CURSOR_LEFT</autogen>
           <autogen>--KeyToKey-- KeyCode::KEYPAD_SLASH,    KeyCode::CURSOR_DOWN</autogen>
@@ -6021,7 +6021,7 @@
               <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, KeyCode::CONTROL_L, KeyCode::JIS_EISUU</autogen>
             </item>
             <item>
-              <name>EISUU to FN</name>
+              <name>EISUU to Fn</name>
               <sysctl>remap.jis_eisuu2fn</sysctl>
               <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::FN</autogen>
             </item>
@@ -6160,7 +6160,7 @@
               <autogen>--KeyOverlaidModifier-- KeyCode::JIS_KANA, KeyCode::CONTROL_L, KeyCode::JIS_KANA</autogen>
             </item>
             <item>
-              <name>KANA to FN</name>
+              <name>KANA to Fn</name>
               <sysctl>remap.jis_kana2fn</sysctl>
               <autogen>--KeyToKey-- KeyCode::JIS_KANA, KeyCode::FN</autogen>
             </item>
