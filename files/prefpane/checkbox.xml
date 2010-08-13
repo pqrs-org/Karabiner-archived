@@ -2810,6 +2810,11 @@
           <sysctl>remap.rightbracket2capslock</sysctl>
           <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, KeyCode::CAPSLOCK</autogen>
         </item>
+        <item>
+          <name>FN+Right Bracket(]) to Backslash(\)</name>
+          <sysctl>remap.fnrightbracket2backslash</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, ModifierFlag::FN, KeyCode::BACKSLASH</autogen>
+        </item>
       </list>
     </item>
 
