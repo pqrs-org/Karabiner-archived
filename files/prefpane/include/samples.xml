@@ -88,7 +88,7 @@
           <appendix>Shift+E to Control_L+Space (Key+Modifier To Key+Modifier)</appendix>
           <appendix>Shift+F to Option_L+Shift_L (Key+Modifier To Modifier+Modifier)</appendix>
           <appendix>G to CapsLock (To CapsLock)</appendix>
-          <appendix>FN+hjkl to Left/Down/Up/Right (Key+FN to Key) (around KeyPad)</appendix>
+          <appendix>Fn+hjkl to Left/Down/Up/Right (Key+Fn to Key) (around KeyPad)</appendix>
           <appendix>1 to A (only if no Modifiers)</appendix>
           <appendix>2 to A (only if ModifierFlag == Shift_L)</appendix>
           <sysctl>remap.samples_keytokey_key2xxx</sysctl>
@@ -111,7 +111,7 @@
         <item>
           <name>Modifier To XXX</name>
           <appendix>Shift_R to Command_L+Option_L (Modifier to Modifier+Modifier)</appendix>
-          <appendix>FN+Option_L to Command_L (Modifier+Modifier To Modifier)</appendix>
+          <appendix>Fn+Option_L to Command_L (Modifier+Modifier To Modifier)</appendix>
           <sysctl>remap.samples_keytokey_modifier2xxx</sysctl>
           <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::COMMAND_L, ModifierFlag::OPTION_L</autogen>
           <autogen>--KeyToKey-- KeyCode::OPTION_L, ModifierFlag::FN, KeyCode::COMMAND_L</autogen>
@@ -316,9 +316,9 @@
           <appendix>(Command_R+[R+T] to Space)</appendix>
           <appendix>(Control_L+[R+T] to Shift_L)</appendix>
           <appendix>(R+T to Delete)</appendix>
-          <appendix>(FN+[K+L] to Space)</appendix>
+          <appendix>(Fn+[K+L] to Space)</appendix>
           <appendix>(Shift_L+Shift_R to Space)</appendix>
-          <appendix>(Control_L+Option_L to FN)</appendix>
+          <appendix>(Control_L+Option_L to Fn)</appendix>
           <appendix>Return to Space</appendix>
           <appendix>(Z+X to Return (== to Return))</appendix>
           <appendix>(X+C to Return with Option::RAW (== to Space))</appendix>
@@ -440,7 +440,7 @@
           <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, VK_OPTION, PointingButton::MIDDLE</autogen>
         </item>
         <item>
-          <name>FN+LeftClick to Option_L+LeftClick</name>
+          <name>Fn+LeftClick to Option_L+LeftClick</name>
           <sysctl>remap.samples_pointingbuttontopointingbutton_fl2ol</sysctl>
           <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, ModifierFlag::FN, PointingButton::LEFT, ModifierFlag::OPTION_L</autogen>
         </item>
@@ -931,7 +931,7 @@
         </item>
         <item>
           <name>VK_LOCK</name>
-          <appendix>Use 1 to FN_Lock</appendix>
+          <appendix>Use 1 to Fn_Lock</appendix>
           <appendix>Use 2 to Command_R_Lock</appendix>
           <appendix>Use 3 to Shift_L_Lock</appendix>
           <sysctl>remap.samples_vk_lock</sysctl>
@@ -945,7 +945,7 @@
           <appendix>Use 2 to Sticky Command_R</appendix>
           <appendix>Use 3 to Sticky Control_L</appendix>
           <appendix>Use 4 to Sticky Control_R</appendix>
-          <appendix>Use 5 to Sticky FN</appendix>
+          <appendix>Use 5 to Sticky Fn</appendix>
           <appendix>Use 6 to Sticky Option_L</appendix>
           <appendix>Use 7 to Sticky Option_R</appendix>
           <appendix>Use 8 to Sticky Shift_L</appendix>
