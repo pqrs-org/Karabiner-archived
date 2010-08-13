@@ -575,6 +575,11 @@
           <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::SHIFT_L</autogen>
         </item>
         <item>
+          <name>FN+Backquote(`) to Backslash(\)</name>
+          <sysctl>remap.fnbackquote2backslash</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, ModifierFlag::FN, KeyCode::BACKSLASH</autogen>
+        </item>
+        <item>
           <name>Backquote(`) to Delete</name>
           <sysctl>remap.backquote2delete</sysctl>
           <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::DELETE</autogen>
