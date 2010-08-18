@@ -1922,12 +1922,6 @@
           <autogen>--KeyToConsumer-- KeyCode::F6, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_UP, ModifierFlag::SHIFT_L</autogen>
         </item>
         <item>
-          <name>F6 to Fn_Lock (except virtual machine, RDC)</name>
-          <sysctl>remap.f6_to_numlock</sysctl>
-          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToKey-- KeyCode::F6, KeyCode::VK_LOCK_FN</autogen>
-        </item>
-        <item>
           <name>F6 to Virtual NumLock</name>
           <appendix>Unlike Fn_Lock, retaining cursor keys, delete key.</appendix>
           <list>
@@ -1959,11 +1953,17 @@
               <autogen>--KeyToKey-- KeyCode::DOT,       KeyCode::KEYPAD_DOT</autogen>
             </item>
             <item>
-              <name>F6 to Virtual NumLock</name>
+              <name>F6 to toggle "Virtual NumLock"</name>
               <sysctl>remap.f6_to_virtual_numlock</sysctl>
               <autogen>--KeyToKey-- KeyCode::F6, KeyCode::VK_CONFIG_TOGGLE_notsave_virtual_numlock</autogen>
             </item>
           </list>
+        </item>
+        <item>
+          <name>F6 to Fn_Lock (except virtual machine, RDC)</name>
+          <sysctl>remap.f6_to_numlock</sysctl>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <autogen>--KeyToKey-- KeyCode::F6, KeyCode::VK_LOCK_FN</autogen>
         </item>
         <item>
           <name>F6 to Volume Up</name>
