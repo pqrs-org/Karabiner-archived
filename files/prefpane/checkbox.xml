@@ -1928,6 +1928,57 @@
           <autogen>--KeyToKey-- KeyCode::F6, KeyCode::VK_LOCK_FN</autogen>
         </item>
         <item>
+          <name>F6 to Virtual NumLock</name>
+          <appendix>Unlike Fn_Lock, retaining cursor keys, delete key.</appendix>
+          <list>
+            <item>
+              <name>Virtual NumLock</name>
+              <appendix>M to 0</appendix>
+              <appendix>J to 1</appendix>
+              <appendix>K to 2</appendix>
+              <appendix>L to 3</appendix>
+              <appendix>U to 4</appendix>
+              <appendix>I to 5</appendix>
+              <appendix>O to 6</appendix>
+              <appendix>7 to 7</appendix>
+              <appendix>8 to 8</appendix>
+              <appendix>9 to 9</appendix>
+              <appendix>6 to Clear</appendix>
+              <appendix>/ to +</appendix>
+              <appendix>; to -</appendix>
+              <appendix>P to *</appendix>
+              <appendix>0 to /</appendix>
+              <appendix>- to =</appendix>
+              <appendix>. to .</appendix>
+              <sysctl>notsave.virtual_numlock</sysctl>
+              <vk_config>true</vk_config>
+              <autogen>--ShowStatusMessage-- "NumLock"</autogen>
+              <autogen>--KeyToKey-- KeyCode::M,         KeyCode::KEYPAD_0</autogen>
+              <autogen>--KeyToKey-- KeyCode::J,         KeyCode::KEYPAD_1</autogen>
+              <autogen>--KeyToKey-- KeyCode::K,         KeyCode::KEYPAD_2</autogen>
+              <autogen>--KeyToKey-- KeyCode::L,         KeyCode::KEYPAD_3</autogen>
+              <autogen>--KeyToKey-- KeyCode::U,         KeyCode::KEYPAD_4</autogen>
+              <autogen>--KeyToKey-- KeyCode::I,         KeyCode::KEYPAD_5</autogen>
+              <autogen>--KeyToKey-- KeyCode::O,         KeyCode::KEYPAD_6</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_7,     KeyCode::KEYPAD_7</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_8,     KeyCode::KEYPAD_8</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_9,     KeyCode::KEYPAD_9</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_6,     KeyCode::KEYPAD_CLEAR</autogen>
+              <autogen>--KeyToKey-- KeyCode::SLASH,     KeyCode::KEYPAD_PLUS</autogen>
+              <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::KEYPAD_MINUS</autogen>
+              <autogen>--KeyToKey-- KeyCode::P,         KeyCode::KEYPAD_MULTIPLY</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_0,     KeyCode::KEYPAD_SLASH</autogen>
+              <autogen>--KeyToKey-- KeyCode::MINUS,     KeyCode::KEYPAD_EQUAL</autogen>
+              <autogen>--KeyToKey-- KeyCode::DOT,       KeyCode::KEYPAD_DOT</autogen>
+            </item>
+            <item>
+              <name>F6 to Virtual NumLock</name>
+              <sysctl>remap.f6_to_virtual_numlock</sysctl>
+              <autogen>--KeyToKey-- KeyCode::F6, KeyCode::VK_CONFIG_TOGGLE_notsave_virtual_numlock</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>F6 to Volume Up</name>
           <sysctl>remap.f6_to_volumeup</sysctl>
           <autogen>--KeyToConsumer-- KeyCode::F6, ConsumerKeyCode::VOLUME_UP</autogen>
