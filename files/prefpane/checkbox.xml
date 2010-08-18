@@ -1933,23 +1933,10 @@
           <list>
             <item>
               <name>Virtual NumLock</name>
-              <appendix>M to 0</appendix>
-              <appendix>J to 1</appendix>
-              <appendix>K to 2</appendix>
-              <appendix>L to 3</appendix>
-              <appendix>U to 4</appendix>
-              <appendix>I to 5</appendix>
-              <appendix>O to 6</appendix>
-              <appendix>7 to 7</appendix>
-              <appendix>8 to 8</appendix>
-              <appendix>9 to 9</appendix>
-              <appendix>6 to Clear</appendix>
-              <appendix>/ to +</appendix>
-              <appendix>; to -</appendix>
-              <appendix>P to *</appendix>
-              <appendix>0 to /</appendix>
-              <appendix>- to =</appendix>
-              <appendix>. to .</appendix>
+              <appendix>6 7 8 9 0 - &#8594; Clear 7 8 9 / =</appendix>
+              <appendix>U I O P &#8594; 4 5 6 *</appendix>
+              <appendix>J K L ; &#8594; 1 2 3 -</appendix>
+              <appendix>M . / &#8594; 0 . +</appendix>
               <sysctl>notsave.virtual_numlock</sysctl>
               <vk_config>true</vk_config>
               <autogen>--ShowStatusMessage-- "NumLock"</autogen>
