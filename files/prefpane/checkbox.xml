@@ -4984,6 +4984,12 @@
               <only>EXCEL</only>
               <autogen>--KeyToKey-- KeyCode::F2, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
             </item>
+            <item>
+              <name>Change F4 to Command+T</name>
+              <sysctl>remap.app_excel_f4_to_commandLt</sysctl>
+              <only>EXCEL</only>
+              <autogen>--KeyToKey-- KeyCode::F4, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
+            </item>
           </list>
         </item>
         <item>
