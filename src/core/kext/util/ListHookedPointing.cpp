@@ -48,6 +48,11 @@ namespace org_pqrs_KeyRemap4MacBook {
         deviceType_ != DeviceType::APPLE_EXTERNAL) {
       goto restore;
     }
+    if (config.general_dont_remap_apple_pointing &&
+        isEqualVendorID(DeviceVendorID(0x05ac))) {
+      goto restore;
+    }
+
     // Logitech Cordless Presenter
     if (config.general_dont_remap_logitech_cordless_presenter &&
         isEqualVendorIDProductID(DeviceVendorID(0x046d), DeviceProductID(0xc515))) {

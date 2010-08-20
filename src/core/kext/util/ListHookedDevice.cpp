@@ -17,6 +17,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     return vendorID_ == vendorID && productID_ == productID;
   }
 
+  bool
+  ListHookedDevice::Item::isEqualVendorID(DeviceVendorID vendorID) const
+  {
+    return vendorID_ == vendorID;
+  }
+
   void
   ListHookedDevice::Item::setVendorIDProductID(void)
   {
