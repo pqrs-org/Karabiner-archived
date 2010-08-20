@@ -6,19 +6,29 @@
       <name>General</name>
       <list>
         <item>
-          <name>Don't Remap the Internal Keyboard</name>
+          <name>Don't remap an internal keyboard</name>
           <sysctl>general.dont_remap_internal</sysctl>
         </item>
         <item>
-          <name>Don't Remap the External Keyboard</name>
+          <name>Don't remap external keyboards</name>
           <sysctl>general.dont_remap_external</sysctl>
         </item>
         <item>
-          <name>Don't Remap Third Vendor's Keyboard</name>
+          <name>Don't remap Apple's keyboards</name>
+          <sysctl>general.dont_remap_apple_keyboard</sysctl>
+        </item>
+        <item>
+          <name>Don't remap Apple's pointing devices</name>
+          <sysctl>general.dont_remap_apple_pointing</sysctl>
+        </item>
+        <item>
+          <name>Don't remap keyboards which has third vendor's driver</name>
+          <appendix>(Logitech, Microsoft, Kensington, ...)</appendix>
           <sysctl>general.dont_remap_thirdvendor_keyboard</sysctl>
         </item>
         <item>
-          <name>Don't Remap Third Vendor's Pointing Device</name>
+          <name>Don't remap pointing devices which has third vendor's driver</name>
+          <appendix>(Logitech, Microsoft, Kensington, ...)</appendix>
           <sysctl>general.dont_remap_thirdvendor_pointing</sysctl>
         </item>
         <item>
