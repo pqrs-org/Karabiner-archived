@@ -798,12 +798,6 @@
       <list>
         <item>
           <name>Command_R to Command_R</name>
-          <appendix>(+ When you type Command_R only, send Command+Space)</appendix>
-          <sysctl>remap.commandR2commandR_commandSpace</sysctl>
-          <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
-        </item>
-        <item>
-          <name>Command_R to Command_R</name>
           <appendix>(+ When you type Command_R only, send Delete)</appendix>
           <sysctl>remap.commandR2commandR_delete</sysctl>
           <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::DELETE</autogen>
@@ -825,6 +819,12 @@
           <appendix>(+ When you type Command_R only, send Enter) + [KeyRepeat]</appendix>
           <sysctl>remap.commandR2commandR_enter_keyrepeat</sysctl>
           <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::ENTER</autogen>
+        </item>
+        <item>
+          <name>Command_R to Command_R</name>
+          <appendix>(+ When you type Command_R only, send Command+Space)</appendix>
+          <sysctl>remap.commandR2commandR_commandSpace</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
           <name>Command_R to Control_L</name>
@@ -2839,6 +2839,18 @@
           <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::COMMAND_L</autogen>
         </item>
         <item>
+          <name>Return to Control_L</name>
+          <appendix>(+ When you type Return only, send Return)</appendix>
+          <sysctl>remap.return2controlL_return</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::RETURN, KeyCode::CONTROL_L, KeyCode::RETURN</autogen>
+        </item>
+        <item>
+          <name>Return to Control_L</name>
+          <appendix>(+ When you type Return only, send Return) + [KeyRepeat]</appendix>
+          <sysctl>remap.return2controlL_return_keyrepeat</sysctl>
+          <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::RETURN, KeyCode::CONTROL_L, KeyCode::RETURN</autogen>
+        </item>
+        <item>
           <name>Return to Option_L</name>
           <sysctl>remap.return2optionL</sysctl>
           <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::OPTION_L</autogen>
@@ -2853,18 +2865,6 @@
           <name>Fn+Return to Option_L</name>
           <sysctl>remap.fnReturn2optionL</sysctl>
           <autogen>--KeyToKey-- KeyCode::RETURN, ModifierFlag::FN, KeyCode::OPTION_L</autogen>
-        </item>
-        <item>
-          <name>Return to Control_L</name>
-          <appendix>(+ When you type Return only, send Return)</appendix>
-          <sysctl>remap.return2controlL_return</sysctl>
-          <autogen>--KeyOverlaidModifier-- KeyCode::RETURN, KeyCode::CONTROL_L, KeyCode::RETURN</autogen>
-        </item>
-        <item>
-          <name>Return to Control_L</name>
-          <appendix>(+ When you type Return only, send Return) + [KeyRepeat]</appendix>
-          <sysctl>remap.return2controlL_return_keyrepeat</sysctl>
-          <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::RETURN, KeyCode::CONTROL_L, KeyCode::RETURN</autogen>
         </item>
         <item>
           <name>Return to Control_L+F4 (= Move focus to the active (or next) window)</name>
