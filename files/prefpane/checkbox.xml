@@ -5714,6 +5714,19 @@
           <autogen>--KeyToKey-- KeyCode::GERMAN_CIRCUMFLEX, KeyCode::GERMAN_LESS_THAN</autogen>
           <autogen>--KeyToKey-- KeyCode::GERMAN_LESS_THAN, KeyCode::GERMAN_CIRCUMFLEX</autogen>
         </item>
+        <item>
+          <name>map Developer Keyboard Layout</name>
+          <list>
+            <item>
+              <name>map square bracket to PC Layout</name>
+              <appendix>move Command_R + 8 to Option_L + 5</appendix>
+              <appendix>move Command_R + 9 to Option_L + 6</appendix>
+              <sysctl>remap.german_map_square_bracket</sysctl>
+              <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::COMMAND_R, KeyCode::KEY_5, ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::COMMAND_R, KeyCode::KEY_6, ModifierFlag::OPTION_L</autogen>
+            </item>
+          </list>
+       </item>
       </list>
     </item>
     <item>
