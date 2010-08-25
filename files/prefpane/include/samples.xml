@@ -228,6 +228,12 @@
           <autogen>--KeyOverlaidModifier-- KeyCode::I, KeyCode::SHIFT_L, KeyCode::OPTION_L</autogen>
           <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
         </item>
+        <item>
+          <name>Standard2</name>
+          <appendix>Command_R to Command_R (When type only without other modifiers, send Space)</appendix>
+          <sysctl>remap.samples_keyoverlaidmodifier2</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::COMMAND_R, KeyCode::SPACE</autogen>
+        </item>
       </list>
     </item>
 
