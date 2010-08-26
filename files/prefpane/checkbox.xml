@@ -5718,12 +5718,12 @@
           <name>Change Command+Q to @ (Option_L+L)</name>
           <list>
             <item>
-              <name>Command_L+Q</name>
+              <name>Command_L+Q to @</name>
               <sysctl>remap.german_commandLQ2optionLL</sysctl>
               <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::COMMAND_L, KeyCode::L, ModifierFlag::OPTION_L</autogen>
             </item>
             <item>
-              <name>Command_R+Q</name>
+              <name>Command_R+Q to @</name>
               <sysctl>remap.german_commandRQ2optionLL</sysctl>
               <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::COMMAND_R, KeyCode::L, ModifierFlag::OPTION_L</autogen>
             </item>
