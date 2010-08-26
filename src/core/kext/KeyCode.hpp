@@ -65,6 +65,33 @@ namespace org_pqrs_KeyRemap4MacBook {
     Flags operator|(Flags other) const { return value_ | other.get(); }
     Flags operator&(Flags other) const { return value_ & other.get(); }
 
+    static ModifierFlag getModifierFlagByIndex(unsigned int index) {
+      ModifierFlag flags[] = {
+        ModifierFlag::CAPSLOCK,
+        ModifierFlag::SHIFT_L,
+        ModifierFlag::SHIFT_R,
+        ModifierFlag::CONTROL_L,
+        ModifierFlag::CONTROL_R,
+        ModifierFlag::OPTION_L,
+        ModifierFlag::OPTION_R,
+        ModifierFlag::COMMAND_L,
+        ModifierFlag::COMMAND_R,
+        ModifierFlag::CURSOR,
+        //ModifierFlag::KEYPAD, // skip KEYPAD because CURSOR == KEYPAD.
+        ModifierFlag::FN,
+        ModifierFlag::EXTRA1,
+        ModifierFlag::EXTRA2,
+        ModifierFlag::EXTRA3,
+        ModifierFlag::EXTRA4,
+        ModifierFlag::EXTRA5,
+        ModifierFlag::NONE
+      };
+      if (index < sizeof(flags) / sizeof(flags[0])) {
+        return flags[index];
+      }
+      return ModifierFlag::NONE;
+    }
+
     Flags& add(Flags flags) { value_ |= flags.get(); return *this; }
     Flags& remove(Flags flags) { value_ &= ~flags; return *this; }
     Flags& stripFN(void)     { return remove(ModifierFlag::FN); }

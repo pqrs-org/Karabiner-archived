@@ -146,6 +146,81 @@ TEST(Flags, isVirtualModifiersOn) {
   EXPECT_TRUE(flags.isVirtualModifiersOn());
 }
 
+TEST(Flags, getModifierFlagByIndex) {
+  {
+    ModifierFlag flag = Flags::getModifierFlagByIndex(0);
+    EXPECT_EQ(flag.get(), ModifierFlag::CAPSLOCK.get());
+  }
+  {
+    ModifierFlag flag = Flags::getModifierFlagByIndex(1);
+    EXPECT_EQ(flag, ModifierFlag::SHIFT_L);
+  }
+  {
+    ModifierFlag flag = Flags::getModifierFlagByIndex(2);
+    EXPECT_EQ(flag, ModifierFlag::SHIFT_R);
+  }
+  {
+    ModifierFlag flag = Flags::getModifierFlagByIndex(3);
+    EXPECT_EQ(flag, ModifierFlag::CONTROL_L);
+  }
+  {
+    ModifierFlag flag = Flags::getModifierFlagByIndex(4);
+    EXPECT_EQ(flag, ModifierFlag::CONTROL_R);
+  }
+  {
+    ModifierFlag flag = Flags::getModifierFlagByIndex(5);
+    EXPECT_EQ(flag, ModifierFlag::OPTION_L);
+  }
+  {
+    ModifierFlag flag = Flags::getModifierFlagByIndex(6);
+    EXPECT_EQ(flag, ModifierFlag::OPTION_R);
+  }
+  {
+    ModifierFlag flag = Flags::getModifierFlagByIndex(7);
+    EXPECT_EQ(flag, ModifierFlag::COMMAND_L);
+  }
+  {
+    ModifierFlag flag = Flags::getModifierFlagByIndex(8);
+    EXPECT_EQ(flag, ModifierFlag::COMMAND_R);
+  }
+  {
+    ModifierFlag flag = Flags::getModifierFlagByIndex(9);
+    EXPECT_EQ(flag, ModifierFlag::CURSOR);
+  }
+  {
+    ModifierFlag flag = Flags::getModifierFlagByIndex(10);
+    EXPECT_EQ(flag, ModifierFlag::FN);
+  }
+  {
+    ModifierFlag flag = Flags::getModifierFlagByIndex(11);
+    EXPECT_EQ(flag, ModifierFlag::EXTRA1);
+  }
+  {
+    ModifierFlag flag = Flags::getModifierFlagByIndex(12);
+    EXPECT_EQ(flag, ModifierFlag::EXTRA2);
+  }
+  {
+    ModifierFlag flag = Flags::getModifierFlagByIndex(13);
+    EXPECT_EQ(flag, ModifierFlag::EXTRA3);
+  }
+  {
+    ModifierFlag flag = Flags::getModifierFlagByIndex(14);
+    EXPECT_EQ(flag, ModifierFlag::EXTRA4);
+  }
+  {
+    ModifierFlag flag = Flags::getModifierFlagByIndex(15);
+    EXPECT_EQ(flag, ModifierFlag::EXTRA5);
+  }
+  {
+    ModifierFlag flag = Flags::getModifierFlagByIndex(16);
+    EXPECT_EQ(flag, ModifierFlag::NONE);
+  }
+  {
+    ModifierFlag flag = Flags::getModifierFlagByIndex(17);
+    EXPECT_EQ(flag, ModifierFlag::NONE);
+  }
+}
+
 namespace {
   KeyCode keypads[][2] = {
     { KeyCode::KEYPAD_0, KeyCode::M },
