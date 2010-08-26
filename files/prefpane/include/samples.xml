@@ -122,10 +122,12 @@
           <appendix>Shift_L to Shift_L (if no other modifiers pressed)</appendix>
           <appendix>Shift_L to Command_L</appendix>
           <appendix>Shift+A to B</appendix>
+          <appendix>Shift_R to Shift_R+A (if no other modifiers pressed)</appendix>
           <sysctl>remap.samples_keytokey_modifier2xxx_2</sysctl>
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::SHIFT_L</autogen>
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::COMMAND_L</autogen>
           <autogen>--KeyToKey-- KeyCode::A, VK_SHIFT, KeyCode::B</autogen>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R | ModifierFlag::NONE, KeyCode::A, ModifierFlag::SHIFT_R</autogen>
         </item>
 
         <item>
