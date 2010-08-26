@@ -5715,6 +5715,21 @@
           <autogen>--KeyToKey-- KeyCode::GERMAN_LESS_THAN, KeyCode::GERMAN_CIRCUMFLEX</autogen>
         </item>
         <item>
+          <name>Change Command+Q to @ (Option_L+L)</name>
+          <list>
+            <item>
+              <name>Command_L+Q</name>
+              <sysctl>remap.german_commandLQ2optionLL</sysctl>
+              <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::COMMAND_L, KeyCode::L, ModifierFlag::OPTION_L</autogen>
+            </item>
+            <item>
+              <name>Command_R+Q</name>
+              <sysctl>remap.german_commandRQ2optionLL</sysctl>
+              <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::COMMAND_R, KeyCode::L, ModifierFlag::OPTION_L</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>map Developer Keyboard Layout</name>
           <list>
             <item>
