@@ -65,6 +65,30 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       // handle EventType & Modifiers
+
+      // Let's consider the following setting.
+      //   --KeyToKey-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R | ModifierFlag::NONE, KeyCode::A, ModifierFlag::SHIFT_R
+      // In this setting, we need decrease SHIFT_R only once.
+      // So, we transform values of fromKey_.
+      //
+      // [before]
+      //   fromKey_.key   : KeyCode::SHIFT_R
+      //   fromKey_.flags : ModifierFlag::SHIFT_R | ModifierFlag::NONE
+      //
+      // [after]
+      //   fromKey_.key   : KeyCode::SHIFT_R
+      //   fromKey_.flags : ModifierFlag::NONE
+      //
+      // Note: we need to apply this transformation after calling fromkeychecker_.isFromKey.
+
+      Flags fromFlags = fromKey_.flags;
+      fromFlags.remove(fromKey_.key.getModifierFlag());
+
+      if (remapParams.params.ex_iskeydown) {
+        FlagStatus::decrease(fromKey_.key.getModifierFlag());
+      } else {
+        FlagStatus::increase(fromKey_.key.getModifierFlag());
+      }
       KeyboardRepeat::cancel();
 
       switch (toKeys_->size()) {
@@ -78,14 +102,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
           if (toModifierFlag == ModifierFlag::NONE) {
             // toKey
-            FlagStatus::temporary_decrease(fromKey_.flags);
+            FlagStatus::temporary_decrease(fromFlags);
             FlagStatus::temporary_increase((*toKeys_)[0].flags);
-
-            if (remapParams.params.ex_iskeydown) {
-              FlagStatus::decrease(fromKey_.key.getModifierFlag());
-            } else {
-              FlagStatus::increase(fromKey_.key.getModifierFlag());
-            }
 
           } else {
             // toModifier
@@ -93,10 +111,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
             if (remapParams.params.ex_iskeydown) {
               FlagStatus::increase((*toKeys_)[0].flags | toModifierFlag);
-              FlagStatus::decrease(fromKey_.flags | fromKey_.key.getModifierFlag());
+              FlagStatus::decrease(fromFlags);
             } else {
               FlagStatus::decrease((*toKeys_)[0].flags | toModifierFlag);
-              FlagStatus::increase(fromKey_.flags | fromKey_.key.getModifierFlag());
+              FlagStatus::increase(fromFlags);
             }
           }
 
@@ -117,8 +135,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         default:
           if (remapParams.params.ex_iskeydown) {
-            FlagStatus::decrease(fromKey_.key.getModifierFlag());
-            FlagStatus::temporary_decrease(fromKey_.flags);
+            FlagStatus::temporary_decrease(fromFlags);
 
             for (size_t i = 0; i < toKeys_->size(); ++i) {
               FlagStatus::temporary_increase((*toKeys_)[i].flags);
@@ -134,11 +151,7 @@ namespace org_pqrs_KeyRemap4MacBook {
             }
 
             KeyboardRepeat::primitive_start();
-
-          } else {
-            FlagStatus::increase(fromKey_.key.getModifierFlag());
           }
-
           break;
       }
 
