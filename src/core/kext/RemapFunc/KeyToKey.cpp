@@ -65,11 +65,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       // handle EventType & Modifiers
-      if (remapParams.params.ex_iskeydown) {
-        FlagStatus::decrease(fromKey_.key.getModifierFlag());
-      } else {
-        FlagStatus::increase(fromKey_.key.getModifierFlag());
-      }
       KeyboardRepeat::cancel();
 
       switch (toKeys_->size()) {
@@ -86,16 +81,22 @@ namespace org_pqrs_KeyRemap4MacBook {
             FlagStatus::temporary_decrease(fromKey_.flags);
             FlagStatus::temporary_increase((*toKeys_)[0].flags);
 
+            if (remapParams.params.ex_iskeydown) {
+              FlagStatus::decrease(fromKey_.key.getModifierFlag());
+            } else {
+              FlagStatus::increase(fromKey_.key.getModifierFlag());
+            }
+
           } else {
             // toModifier
             newEventType = EventType::MODIFY;
 
             if (remapParams.params.ex_iskeydown) {
               FlagStatus::increase((*toKeys_)[0].flags | toModifierFlag);
-              FlagStatus::decrease(fromKey_.flags);
+              FlagStatus::decrease(fromKey_.flags | fromKey_.key.getModifierFlag());
             } else {
               FlagStatus::decrease((*toKeys_)[0].flags | toModifierFlag);
-              FlagStatus::increase(fromKey_.flags);
+              FlagStatus::increase(fromKey_.flags | fromKey_.key.getModifierFlag());
             }
           }
 
@@ -116,6 +117,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         default:
           if (remapParams.params.ex_iskeydown) {
+            FlagStatus::decrease(fromKey_.key.getModifierFlag());
             FlagStatus::temporary_decrease(fromKey_.flags);
 
             for (size_t i = 0; i < toKeys_->size(); ++i) {
@@ -132,7 +134,11 @@ namespace org_pqrs_KeyRemap4MacBook {
             }
 
             KeyboardRepeat::primitive_start();
+
+          } else {
+            FlagStatus::increase(fromKey_.key.getModifierFlag());
           }
+
           break;
       }
 
