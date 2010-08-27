@@ -52,9 +52,16 @@ TEST(Flags, add) {
 }
 
 TEST(Flags, remove) {
-  Flags flags = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
-  Flags removed = ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
-  EXPECT_EQ(removed, flags.remove(ModifierFlag::SHIFT_L));
+  {
+    Flags flags = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
+    Flags removed = ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
+    EXPECT_EQ(removed, flags.remove(ModifierFlag::SHIFT_L));
+  }
+  {
+    Flags flags = ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R;
+    Flags removed = ModifierFlag::SHIFT_R;
+    EXPECT_EQ(removed, flags.remove(ModifierFlag::SHIFT_L));
+  }
 }
 
 TEST(Flags, stripFN) {
