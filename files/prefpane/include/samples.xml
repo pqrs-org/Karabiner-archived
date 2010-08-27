@@ -123,11 +123,17 @@
           <appendix>Shift_L to Command_L</appendix>
           <appendix>Shift+A to B</appendix>
           <appendix>Shift_R to Shift_R+A (if no other modifiers pressed)</appendix>
+          <appendix>Command_L+Command_R to Command_L+Command_R (if no other modifiers pressed)</appendix>
+          <appendix>Command_L+Command_R+A to B</appendix>
+          <appendix>Command_R to Option_R</appendix>
           <sysctl>remap.samples_keytokey_modifier2xxx_2</sysctl>
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::SHIFT_L</autogen>
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::COMMAND_L</autogen>
           <autogen>--KeyToKey-- KeyCode::A, VK_SHIFT, KeyCode::B</autogen>
           <autogen>--KeyToKey-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R | ModifierFlag::NONE, KeyCode::A, ModifierFlag::SHIFT_R</autogen>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::COMMAND_R, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R, KeyCode::B</autogen>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
         </item>
 
         <item>
