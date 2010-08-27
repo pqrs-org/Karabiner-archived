@@ -89,31 +89,16 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   FlagStatus::initialize(void)
   {
-#define PUSH_ITEM(FLAG) {           \
-    if (i >= MAXNUM) return false;  \
-    item_[i].initialize(FLAG);      \
-    i++;                            \
-}
+    for (int i = 0;; ++i) {
+      if (i >= MAXNUM) {
+        IOLOG_ERROR("FlagStatus::initialize MAXNUM is too small. Expand it.");
+        return false;
+      }
 
-    int i = 0;
-    PUSH_ITEM(ModifierFlag::CAPSLOCK);
-    PUSH_ITEM(ModifierFlag::SHIFT_L);
-    PUSH_ITEM(ModifierFlag::SHIFT_R);
-    PUSH_ITEM(ModifierFlag::CONTROL_L);
-    PUSH_ITEM(ModifierFlag::CONTROL_R);
-    PUSH_ITEM(ModifierFlag::OPTION_L);
-    PUSH_ITEM(ModifierFlag::OPTION_R);
-    PUSH_ITEM(ModifierFlag::COMMAND_L);
-    PUSH_ITEM(ModifierFlag::COMMAND_R);
-    PUSH_ITEM(ModifierFlag::FN);
-    PUSH_ITEM(ModifierFlag::EXTRA1);
-    PUSH_ITEM(ModifierFlag::EXTRA2);
-    PUSH_ITEM(ModifierFlag::EXTRA3);
-    PUSH_ITEM(ModifierFlag::EXTRA4);
-    PUSH_ITEM(ModifierFlag::EXTRA5);
-    PUSH_ITEM(ModifierFlag::NONE);
-
-#undef PUSH_ITEM
+      ModifierFlag f = Flags::getModifierFlagByIndex(i);
+      item_[i].initialize(f);
+      if (f == ModifierFlag::NONE) break;
+    }
 
     return true;
   }
