@@ -157,31 +157,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! lastFlags_.isOn(flag)) continue;
       if (toFlags.isOn(flag)) continue;
 
-      // We consider the following case.
-      //   - lastFlags_ = ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R
-      //   - ModifierFlag::SHIFT_L is released
-      //
-      // *** NOTE ***
-      // *** ModifierFlag::SHIFT_L = 0x20002 ***
-      // *** ModifierFlag::SHIFT_R = 0x20004 ***
-      //
-      // Then, lastFlags_.remove(ModifierFlag::SHIFT_L) is invalid.
-      // We must not drop 0x20000 from lastFlags_.
-      // Do lastFlags_.remove(ModifierFlag::SHIFT_L).add(ModifierFlag::SHIFT_R)
-      Flags tmp = lastFlags_;
-      tmp.remove(flag);
-      for (int j = 0;; ++j) {
-        if (j == i) continue;
-
-        ModifierFlag f = FlagStatus::getFlag(j);
-        if (f == ModifierFlag::NONE) break;
-        if (Flags(f).isVirtualModifiersOn()) continue;
-
-        if (lastFlags_.isOn(f)) {
-          tmp.add(f);
-        }
-      }
-      lastFlags_ = tmp;
+      lastFlags_.remove(flag);
 
       Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, lastFlags_, flag.getKeyCode(), keyboardType, false));
       if (! ptr) continue;
