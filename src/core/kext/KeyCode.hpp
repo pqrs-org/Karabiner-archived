@@ -93,7 +93,23 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     Flags& add(Flags flags) { value_ |= flags.get(); return *this; }
-    Flags& remove(Flags flags) { value_ &= ~flags; return *this; }
+    Flags& remove(Flags flags) {
+      Flags old = *this;
+
+      value_ &= ~flags;
+
+      for (unsigned int i = 0;; ++i) {
+        ModifierFlag f = Flags::getModifierFlagByIndex(i);
+
+        if (! flags.isOn(f) && old.isOn(f)) {
+          value_ |= f.get();
+        }
+
+        if (f == ModifierFlag::NONE) break;
+      }
+
+      return *this;
+    }
     Flags& stripFN(void)     { return remove(ModifierFlag::FN); }
     Flags& stripCURSOR(void) { return remove(ModifierFlag::CURSOR); }
     Flags& stripKEYPAD(void) { return remove(ModifierFlag::KEYPAD); }
