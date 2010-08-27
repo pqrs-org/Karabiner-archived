@@ -84,6 +84,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         ModifierFlag::EXTRA3,
         ModifierFlag::EXTRA4,
         ModifierFlag::EXTRA5,
+        // Note: ModifierFlag::NONE must be a last item.
         ModifierFlag::NONE
       };
       if (index < sizeof(flags) / sizeof(flags[0])) {
