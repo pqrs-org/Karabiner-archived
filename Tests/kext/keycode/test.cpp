@@ -58,9 +58,18 @@ TEST(Flags, remove) {
     EXPECT_EQ(removed, flags.remove(ModifierFlag::SHIFT_L));
   }
   {
-    Flags flags = ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R;
-    Flags removed = ModifierFlag::SHIFT_R;
+    Flags flags = ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R | ModifierFlag::CURSOR | ModifierFlag::EXTRA2 | ModifierFlag::NONE;
+    Flags removed = ModifierFlag::SHIFT_R | ModifierFlag::CURSOR | ModifierFlag::EXTRA2 | ModifierFlag::NONE;
     EXPECT_EQ(removed, flags.remove(ModifierFlag::SHIFT_L));
+
+    removed = ModifierFlag::SHIFT_R | ModifierFlag::NONE;
+    EXPECT_EQ(removed, flags.remove(ModifierFlag::CURSOR | ModifierFlag::EXTRA2));
+
+    removed = 0;
+    EXPECT_EQ(removed, flags.remove(ModifierFlag::SHIFT_R | ModifierFlag::NONE));
+
+    removed = 0;
+    EXPECT_EQ(removed, flags.remove(ModifierFlag::OPTION_L | ModifierFlag::COMMAND_R));
   }
 }
 
