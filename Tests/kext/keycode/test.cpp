@@ -71,6 +71,12 @@ TEST(Flags, remove) {
     removed = 0;
     EXPECT_EQ(removed, flags.remove(ModifierFlag::OPTION_L | ModifierFlag::COMMAND_R));
   }
+  {
+    // chain
+    Flags flags = ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
+    Flags removed = ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
+    EXPECT_EQ(removed, flags.remove(ModifierFlag::SHIFT_L).remove(ModifierFlag::SHIFT_R));
+  }
 }
 
 TEST(Flags, stripFN) {
