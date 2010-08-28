@@ -6221,11 +6221,6 @@
               <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
             </item>
             <item>
-              <name>EISUU x2 to EISUU (単発での英数キーは無視する)</name>
-              <sysctl>remap.jis_eisuu2extra5_x2eisuu</sysctl>
-              <autogen>--DoublePressModifier-- KeyCode::JIS_EISUU, KeyCode::VK_NONE, KeyCode::JIS_EISUU</autogen>
-            </item>
-            <item>
               <name>Ignore the multiple press of EISUU</name>
               <sysctl>remap.jis_ignore_multiple_eisuu</sysctl>
               <autogen>--IgnoreMultipleSameKeyPress-- KeyCode::JIS_EISUU</autogen>
@@ -6946,13 +6941,20 @@
                 </item>
                 <item>
                   <name>＜ローマ字モード＞ 左シフト＝英数, 右シフト＝スペース</name>
+                  <appendix>※下の「EISUU x2 to EISUU」を同時に使うことをおすすめします</appendix>
                   <sysctl>remap.oyayubi_shift_roman_eisuu_space</sysctl>
                   <!-- #include "| sed 's|LEFT_THUMB|KeyCode::JIS_EISUU|g' include/jis_oyayubishiftinput.xml | sed 's|RIGHT_THUMB|KeyCode::SPACE|g'" -->
                 </item>
                 <item>
                   <name>＜ローマ字モード＞ 左シフト＝英数, 右シフト＝かな</name>
+                  <appendix>※下の「EISUU x2 to EISUU」を同時に使うことをおすすめします</appendix>
                   <sysctl>remap.oyayubi_shift_roman_eisuu_kana</sysctl>
                   <!-- #include "| sed 's|LEFT_THUMB|KeyCode::JIS_EISUU|g' include/jis_oyayubishiftinput.xml | sed 's|RIGHT_THUMB|KeyCode::JIS_KANA|g'" -->
+                </item>
+                <item>
+                  <name>EISUU x2 to EISUU (単発での英数キーは無視する)</name>
+                  <sysctl>remap.jis_eisuu2extra5_x2eisuu</sysctl>
+                  <autogen>--DoublePressModifier-- KeyCode::JIS_EISUU, KeyCode::VK_NONE, KeyCode::JIS_EISUU</autogen>
                 </item>
               </list>
             </item>
