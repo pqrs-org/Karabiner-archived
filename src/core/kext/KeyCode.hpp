@@ -66,31 +66,27 @@ namespace org_pqrs_KeyRemap4MacBook {
     Flags operator&(Flags other) const { return value_ & other.get(); }
 
     static ModifierFlag getModifierFlagByIndex(unsigned int index) {
-      ModifierFlag flags[] = {
-        ModifierFlag::CAPSLOCK,
-        ModifierFlag::SHIFT_L,
-        ModifierFlag::SHIFT_R,
-        ModifierFlag::CONTROL_L,
-        ModifierFlag::CONTROL_R,
-        ModifierFlag::OPTION_L,
-        ModifierFlag::OPTION_R,
-        ModifierFlag::COMMAND_L,
-        ModifierFlag::COMMAND_R,
-        ModifierFlag::CURSOR,
+      switch (index) {
+        case 0:  return ModifierFlag::CAPSLOCK;
+        case 1:  return ModifierFlag::SHIFT_L;
+        case 2:  return ModifierFlag::SHIFT_R;
+        case 3:  return ModifierFlag::CONTROL_L;
+        case 4:  return ModifierFlag::CONTROL_R;
+        case 5:  return ModifierFlag::OPTION_L;
+        case 6:  return ModifierFlag::OPTION_R;
+        case 7:  return ModifierFlag::COMMAND_L;
+        case 8:  return ModifierFlag::COMMAND_R;
+        case 9:  return ModifierFlag::CURSOR;
         //ModifierFlag::KEYPAD, // skip KEYPAD because CURSOR == KEYPAD.
-        ModifierFlag::FN,
-        ModifierFlag::EXTRA1,
-        ModifierFlag::EXTRA2,
-        ModifierFlag::EXTRA3,
-        ModifierFlag::EXTRA4,
-        ModifierFlag::EXTRA5,
+        case 10: return ModifierFlag::FN;
+        case 11: return ModifierFlag::EXTRA1;
+        case 12: return ModifierFlag::EXTRA2;
+        case 13: return ModifierFlag::EXTRA3;
+        case 14: return ModifierFlag::EXTRA4;
+        case 15: return ModifierFlag::EXTRA5;
         // Note: ModifierFlag::NONE must be a last item.
-        ModifierFlag::NONE
+        default: return ModifierFlag::NONE;
       };
-      if (index < sizeof(flags) / sizeof(flags[0])) {
-        return flags[index];
-      }
-      return ModifierFlag::NONE;
     }
 
     Flags& add(Flags flags) { value_ |= flags.get(); return *this; }
