@@ -126,8 +126,8 @@
 <autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_3, KeyCode::JIS_HAT, ModifierFlag::SHIFT_L</autogen>
 <autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_4, KeyCode::JIS_BRACKET_LEFT</autogen>
 <autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_5, KeyCode::JIS_BRACKET_RIGHT</autogen>
-<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_6, KeyCode::JIS_BRACKET_LEFT, ModifierFlag::SHIFT_L</autogen>
-<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_7, KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::SHIFT_L</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_6, KeyCode::JIS_BRACKET_LEFT, ModifierFlag::OPTION_L</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_7, KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::OPTION_L</autogen>
 <autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_8, KeyCode::KEY_8, ModifierFlag::SHIFT_L</autogen>
 <autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_9, KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
 <autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_0, KeyCode::JIS_BRACKET_LEFT</autogen>
@@ -139,8 +139,8 @@
 <autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_3, KeyCode::JIS_HAT, ModifierFlag::SHIFT_L</autogen>
 <autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_4, KeyCode::JIS_BRACKET_LEFT</autogen>
 <autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_5, KeyCode::JIS_BRACKET_RIGHT</autogen>
-<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_6, KeyCode::JIS_BRACKET_LEFT, ModifierFlag::SHIFT_L</autogen>
-<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_7, KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::SHIFT_L</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_6, KeyCode::JIS_BRACKET_LEFT, ModifierFlag::OPTION_L</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_7, KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::OPTION_L</autogen>
 <autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_8, KeyCode::KEY_8, ModifierFlag::SHIFT_L</autogen>
 <autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_9, KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
 <autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_0, KeyCode::JIS_BRACKET_LEFT</autogen>
