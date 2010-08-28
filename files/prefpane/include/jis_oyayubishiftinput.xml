@@ -38,7 +38,7 @@
 <autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::T, KeyCode::Z, KeyCode::A</autogen>
 
 <!-- 左手 下段 -->
-<autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::NONE, KeyCode::SLASH</autogen>
+<autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::NONE, KeyCode::DOT, ModifierFlag::OPTION_L</autogen>
 <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::NONE, KeyCode::H, KeyCode::I</autogen>
 <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::NONE, KeyCode::S, KeyCode::U</autogen>
 <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::NONE, KeyCode::H, KeyCode::U</autogen>
@@ -83,8 +83,7 @@
 <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::NONE, KeyCode::T, KeyCode::I</autogen>
 <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::NONE, KeyCode::K, KeyCode::U</autogen>
 <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::NONE, KeyCode::T, KeyCode::U</autogen>
-<autogen>--KeyToKey-- KeyCode::P, ModifierFlag::NONE, KeyCode::COMMA</autogen>
-<!-- ↑ホントは違うが、ローマ字での「，」は割り当てが不明。右隣のキーと同じく「、」と割り当てた。 -->
+<autogen>--KeyToKey-- KeyCode::P, ModifierFlag::NONE, KeyCode::COMMA, ModifierFlag::OPTION_L</autogen>
 <autogen>--KeyToKey-- KeyCode::JIS_ATMARK, ModifierFlag::NONE, KeyCode::COMMA</autogen>
 <!-- 右手 上段 (順親指シフト) -->
 <autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::Y, KeyCode::Y, KeyCode::O</autogen>
@@ -108,6 +107,7 @@
 <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::NONE, KeyCode::S, KeyCode::O</autogen>
 <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::NONE, KeyCode::N, KeyCode::E</autogen>
 <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::NONE, KeyCode::H, KeyCode::O</autogen>
+<autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::NONE, KeyCode::SLASH, ModifierFlag::OPTION_L</autogen>
 <!-- 右手 下段 (順親指シフト) -->
 <autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::N, KeyCode::N, KeyCode::U</autogen>
 <autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::M, KeyCode::Y, KeyCode::U</autogen>
