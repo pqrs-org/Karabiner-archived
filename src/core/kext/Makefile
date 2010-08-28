@@ -24,3 +24,7 @@ reload:
 	sudo ./scripts/unload.sh
 	sudo ./scripts/load.sh
 	@./scripts/wait.sh
+
+checkstackusage:
+	sh -c 'for f in build/KeyRemap4MacBook.build/Release/KeyRemap4MacBook.build/Objects-normal/i386/*.o; do echo $$f; otool -Vt $$f |grep esp |grep sub |grep 0x00; done; exit 0'
+	sh -c 'for f in build/KeyRemap4MacBook.build/Release/KeyRemap4MacBook.build/Objects-normal/x86_64/*.o; do echo $$f; otool -Vt $$f |grep rsp |grep sub |grep 0x00; done; exit 0'
