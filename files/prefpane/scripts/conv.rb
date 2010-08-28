@@ -16,9 +16,11 @@ open(xmlfile) do |f|
     lines.each do |l|
       if /<!--\s*#include "(.+)"\s*-->/ =~ l then
         includefile = $1
-        unless FileTest.exist?(includefile) then
-          $stderr.print "No such file: #{includefile}\n"
-          exit 1
+        unless /^\|/ =~ includefile then
+          unless FileTest.exist?(includefile) then
+            $stderr.print "No such file: #{includefile}\n"
+            exit 1
+          end
         end
 
         open(includefile) do |infile|
