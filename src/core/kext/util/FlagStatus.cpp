@@ -91,7 +91,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     for (int i = 0;; ++i) {
       if (i >= MAXNUM) {
+#ifndef FLAGSTATUS_TEST
         IOLOG_ERROR("FlagStatus::initialize MAXNUM is too small. Expand it.");
+#endif
         return false;
       }
 
