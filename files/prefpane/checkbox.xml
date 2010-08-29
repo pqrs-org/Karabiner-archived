@@ -5597,6 +5597,22 @@
           <autogen>--KeyToKey-- KeyCode::HOME,            KeyCode::CURSOR_UP</autogen>
           <autogen>--KeyToKey-- KeyCode::PAGEUP,          KeyCode::CURSOR_RIGHT</autogen>
         </item>
+        <item>
+          <name>Change Option_L+1...= to F1...F12 Keys</name>
+          <sysctl>remap.hhkmode_opt1_optEqual_to_f1_f12</sysctl>
+          <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::OPTION_L,     KeyCode::F1</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::OPTION_L,     KeyCode::F2</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::OPTION_L,     KeyCode::F3</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::OPTION_L,     KeyCode::F4</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_5, ModifierFlag::OPTION_L,     KeyCode::F5</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::OPTION_L,     KeyCode::F6</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_7, ModifierFlag::OPTION_L,     KeyCode::F7</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::OPTION_L,     KeyCode::F8</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::OPTION_L,     KeyCode::F9</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::OPTION_L,     KeyCode::F10</autogen>
+          <autogen>--KeyToKey-- KeyCode::MINUS, ModifierFlag::OPTION_L,     KeyCode::F11</autogen>
+          <autogen>--KeyToKey-- KeyCode::EQUAL, ModifierFlag::OPTION_L,     KeyCode::F12</autogen>
+        </item>
       </list>
     </item>
 
