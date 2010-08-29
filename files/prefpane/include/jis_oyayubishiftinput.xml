@@ -130,10 +130,8 @@
 <autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_7, KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::OPTION_L</autogen>
 <autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_8, KeyCode::KEY_8, ModifierFlag::SHIFT_L</autogen>
 <autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_9, KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
-<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_0, KeyCode::JIS_BRACKET_LEFT</autogen>
-<!-- ↑ホントは二重括弧 ローマ字での打ち方は不明 -->
-<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::MINUS, KeyCode::JIS_BRACKET_RIGHT</autogen>
-<!-- ↑ホントは二重括弧 ローマ字での打ち方は不明 -->
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_0, KeyCode::JIS_BRACKET_LEFT, ModifierFlag::SHIFT_L</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::MINUS, KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::SHIFT_L</autogen>
 <autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_1, KeyCode::SLASH, ModifierFlag::SHIFT_L</autogen>
 <autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_2, KeyCode::SLASH</autogen>
 <autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_3, KeyCode::JIS_HAT, ModifierFlag::SHIFT_L</autogen>
@@ -143,7 +141,5 @@
 <autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_7, KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::OPTION_L</autogen>
 <autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_8, KeyCode::KEY_8, ModifierFlag::SHIFT_L</autogen>
 <autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_9, KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
-<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_0, KeyCode::JIS_BRACKET_LEFT</autogen>
-<!-- ↑ホントは二重括弧 ローマ字での打ち方は不明 -->
-<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::MINUS, KeyCode::JIS_BRACKET_RIGHT</autogen>
-<!-- ↑ホントは二重括弧 ローマ字での打ち方は不明 -->
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_0, KeyCode::JIS_BRACKET_LEFT, ModifierFlag::SHIFT_L</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::MINUS, KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::SHIFT_L</autogen>
