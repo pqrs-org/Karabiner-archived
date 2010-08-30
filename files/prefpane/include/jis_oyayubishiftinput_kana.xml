@@ -1,0 +1,164 @@
+<inputmode_only>INPUTMODE_JAPANESE</inputmode_only>
+<!-- 左手 中段 -->
+<autogen>--KeyToKey-- KeyCode::A, ModifierFlag::NONE, KeyCode::KEY_4</autogen>
+<autogen>--KeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::D</autogen>
+<autogen>--KeyToKey-- KeyCode::D, ModifierFlag::NONE, KeyCode::W</autogen>
+<autogen>--KeyToKey-- KeyCode::F, ModifierFlag::NONE, KeyCode::JIS_COLON</autogen>
+<autogen>--KeyToKey-- KeyCode::G, ModifierFlag::NONE, KeyCode::P</autogen>
+<!-- 左手 中段 (順親指シフト) -->
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::A, KeyCode::KEY_0, ModifierFlag::SHIFT_L</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::S, KeyCode::KEY_3</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::D, KeyCode::U</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::F, KeyCode::KEY_8, ModifierFlag::SHIFT_L</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::G, KeyCode::M</autogen>
+<!-- 左手 中段 (クロス親指シフト) -->
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::A, KeyCode::KEY_4, KeyCode::JIS_ATMARK</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::S, KeyCode::D, KeyCode::JIS_ATMARK</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::D, KeyCode::W, KeyCode::JIS_ATMARK</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::F, KeyCode::JIS_COLON, KeyCode::JIS_ATMARK</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::G, KeyCode::P, KeyCode::JIS_ATMARK</autogen>
+
+<!-- 左手 上段 -->
+<autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::NONE, KeyCode::DOT, ModifierFlag::SHIFT_L</autogen>
+<autogen>--KeyToKey-- KeyCode::W, ModifierFlag::NONE, KeyCode::T</autogen>
+<autogen>--KeyToKey-- KeyCode::E, ModifierFlag::NONE, KeyCode::Q</autogen>
+<autogen>--KeyToKey-- KeyCode::R, ModifierFlag::NONE, KeyCode::B</autogen>
+<autogen>--KeyToKey-- KeyCode::T, ModifierFlag::NONE, KeyCode::X</autogen>
+<!-- 左手 上段 (順親指シフト) -->
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::Q, KeyCode::KEY_3, ModifierFlag::SHIFT_L</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::W, KeyCode::KEY_5</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::E, KeyCode::L</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::R, KeyCode::KEY_7, ModifierFlag::SHIFT_L</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::T, KeyCode::SEMICOLON</autogen>
+<!-- 左手 上段 (クロス親指シフト) -->
+<!-- Q - 対応キーなし -->
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::W, KeyCode::T, KeyCode::JIS_ATMARK</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::E, KeyCode::Q, KeyCode::JIS_ATMARK</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::R, KeyCode::B, KeyCode::JIS_ATMARK</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::T, KeyCode::X, KeyCode::JIS_ATMARK</autogen>
+
+<!-- 左手 下段 -->
+<autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::NONE, KeyCode::DOT, ModifierFlag::OPTION_L</autogen>
+<autogen>--KeyToKey-- KeyCode::X, ModifierFlag::NONE, KeyCode::V</autogen>
+<autogen>--KeyToKey-- KeyCode::C, ModifierFlag::NONE, KeyCode::R</autogen>
+<autogen>--KeyToKey-- KeyCode::V, ModifierFlag::NONE, KeyCode::KEY_2</autogen>
+<autogen>--KeyToKey-- KeyCode::B, ModifierFlag::NONE, KeyCode::JIS_HAT</autogen>
+<!-- 左手 下段 (順親指シフト) -->
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::Z, KeyCode::KEY_4, ModifierFlag::SHIFT_L</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::X, KeyCode::JIS_YEN</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::C, KeyCode::JIS_UNDERSCORE</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::V, KeyCode::KEY_7</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::B, KeyCode::E, ModifierFlag::SHIFT_L</autogen>
+<!-- 左手 下段 (クロス親指シフト) -->
+<!-- Z - 対応キーなし -->
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::X, KeyCode::V, KeyCode::JIS_ATMARK</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::C, KeyCode::R, KeyCode::JIS_ATMARK</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::V, KeyCode::KEY_2, KeyCode::JIS_ATMARK</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::B, KeyCode::JIS_HAT, KeyCode::JIS_ATMARK</autogen>
+
+
+<!-- 右手 中段 -->
+<autogen>--KeyToKey-- KeyCode::H, ModifierFlag::NONE, KeyCode::F</autogen>
+<autogen>--KeyToKey-- KeyCode::J, ModifierFlag::NONE, KeyCode::S</autogen>
+<autogen>--KeyToKey-- KeyCode::K, ModifierFlag::NONE, KeyCode::G</autogen>
+<autogen>--KeyToKey-- KeyCode::L, ModifierFlag::NONE, KeyCode::E</autogen>
+<autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::Y</autogen>
+<!-- : キーはそのまま -->
+
+<!-- 右手 中段 (順親指シフト) -->
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::H, KeyCode::N</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::J, KeyCode::KEY_6</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::K, KeyCode::K</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::L, KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::SEMICOLON, KeyCode::Z, ModifierFlag::SHIFT_L</autogen>
+<!-- : キーはそのまま -->
+<!-- 右手 中段 (クロス親指シフト) -->
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::H, KeyCode::F, KeyCode::JIS_ATMARK</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::J, KeyCode::S, KeyCode::JIS_ATMARK</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::K, KeyCode::G, KeyCode::JIS_ATMARK</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::L, KeyCode::MINUS, KeyCode::JIS_BRACKET_LEFT</autogen>
+<!-- ; - 対応キーなし -->
+
+<!-- 右手 上段 -->
+<autogen>--KeyToKey-- KeyCode::Y, ModifierFlag::NONE, KeyCode::O</autogen>
+<autogen>--KeyToKey-- KeyCode::U, ModifierFlag::NONE, KeyCode::A</autogen>
+<autogen>--KeyToKey-- KeyCode::I, ModifierFlag::NONE, KeyCode::H</autogen>
+<autogen>--KeyToKey-- KeyCode::O, ModifierFlag::NONE, KeyCode::Z</autogen>
+<autogen>--KeyToKey-- KeyCode::P, ModifierFlag::NONE, KeyCode::COMMA, ModifierFlag::OPTION_L</autogen>
+<autogen>--KeyToKey-- KeyCode::JIS_ATMARK, ModifierFlag::NONE, KeyCode::COMMA, ModifierFlag::SHIFT_L</autogen>
+<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, ModifierFlag::NONE, KeyCode::JIS_ATMARK</autogen>
+<!-- 右手 上段 (順親指シフト) -->
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::Y, KeyCode::KEY_9</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::U, KeyCode::I</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::I, KeyCode::DOT</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::O, KeyCode::J</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::P, KeyCode::KEY_5, ModifierFlag::SHIFT_L</autogen>
+<!-- @ - 対応キーなし -->
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::JIS_BRACKET_LEFT, KeyCode::JIS_BRACKET_LEFT, ModifierFlag::NONE</autogen>
+<!-- 右手 上段 (クロス親指シフト) -->
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::Y, KeyCode::F, KeyCode::JIS_BRACKET_LEFT</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::U, KeyCode::A, KeyCode::JIS_ATMARK</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::I, KeyCode::H, KeyCode::JIS_ATMARK</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::O, KeyCode::Z, KeyCode::JIS_ATMARK</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::P, KeyCode::V, KeyCode::JIS_BRACKET_LEFT</autogen>
+<!-- @ - 対応キーなし -->
+<!-- [ - 対応キーなし -->
+
+<!-- 右手 下段 -->
+<autogen>--KeyToKey-- KeyCode::N, ModifierFlag::NONE, KeyCode::SLASH</autogen>
+<autogen>--KeyToKey-- KeyCode::M, ModifierFlag::NONE, KeyCode::C</autogen>
+<autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::NONE, KeyCode::COMMA</autogen>
+<autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::NONE, KeyCode::MINUS</autogen>
+<autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::NONE, KeyCode::SLASH, ModifierFlag::SHIFT_L</autogen>
+<!-- _ - 対応キーなし -->
+<!-- 右手 下段 (順親指シフト) -->
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::N, KeyCode::KEY_1</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::M, KeyCode::KEY_8</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::COMMA, KeyCode::JIS_BRACKET_RIGHT</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::DOT, KeyCode::KEY_0</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::SLASH, KeyCode::KEY_6, ModifierFlag::SHIFT_L</autogen>
+<!-- _ - 対応キーなし -->
+<!-- 右手 下段 (クロス親指シフト) -->
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::N, KeyCode::KEY_2, KeyCode::JIS_BRACKET_LEFT</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::M, KeyCode::C, KeyCode::JIS_ATMARK</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::COMMA, KeyCode::JIS_HAT, KeyCode::JIS_BRACKET_LEFT</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::DOT, KeyCode::MINUS, KeyCode::JIS_ATMARK</autogen>
+<!-- / - 対応キーなし -->
+<!-- _ - 対応キーなし -->
+
+<!-- 上段 数字キー -->
+<autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::KEY_1, ModifierFlag::OPTION_L</autogen>
+<autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::NONE, KeyCode::KEY_2, ModifierFlag::OPTION_L</autogen>
+<autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::NONE, KeyCode::KEY_3, ModifierFlag::OPTION_L</autogen>
+<autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::NONE, KeyCode::KEY_4, ModifierFlag::OPTION_L</autogen>
+<autogen>--KeyToKey-- KeyCode::KEY_5, ModifierFlag::NONE, KeyCode::KEY_5, ModifierFlag::OPTION_L</autogen>
+<autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::NONE, KeyCode::KEY_6, ModifierFlag::OPTION_L</autogen>
+<autogen>--KeyToKey-- KeyCode::KEY_7, ModifierFlag::NONE, KeyCode::KEY_7, ModifierFlag::OPTION_L</autogen>
+<autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::NONE, KeyCode::KEY_8, ModifierFlag::OPTION_L</autogen>
+<autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::NONE, KeyCode::KEY_9, ModifierFlag::OPTION_L</autogen>
+<autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::NONE, KeyCode::KEY_0, ModifierFlag::OPTION_L</autogen>
+<autogen>--KeyToKey-- KeyCode::MINUS, ModifierFlag::NONE, KeyCode::MINUS, ModifierFlag::OPTION_L</autogen>
+<autogen>--KeyToKey-- KeyCode::JIS_HAT, ModifierFlag::NONE, KeyCode::JIS_HAT, ModifierFlag::OPTION_L</autogen>
+<autogen>--KeyToKey-- KeyCode::JIS_YEN, ModifierFlag::NONE, KeyCode::JIS_YEN, ModifierFlag::OPTION_L</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_1, KeyCode::SLASH, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_2, KeyCode::SLASH, ModifierFlag::OPTION_L</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_3, KeyCode::JIS_HAT, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_4, KeyCode::JIS_BRACKET_LEFT, ModifierFlag::SHIFT_L</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_5, KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::SHIFT_L</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_6, KeyCode::JIS_BRACKET_LEFT, ModifierFlag::OPTION_L</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_7, KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::OPTION_L</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_8, KeyCode::KEY_8, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_9, KeyCode::KEY_9, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_0, KeyCode::JIS_BRACKET_LEFT, ModifierFlag::SHIFT_L</autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::MINUS,KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::SHIFT_L</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_1, KeyCode::SLASH, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_2, KeyCode::SLASH, ModifierFlag::OPTION_L</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_3, KeyCode::JIS_HAT, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_4, KeyCode::JIS_BRACKET_LEFT, ModifierFlag::SHIFT_L</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_5, KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::SHIFT_L</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_6, KeyCode::JIS_BRACKET_LEFT, ModifierFlag::OPTION_L</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_7, KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::OPTION_L</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_8, KeyCode::KEY_8, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_9, KeyCode::KEY_9, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_0, KeyCode::JIS_BRACKET_LEFT, ModifierFlag::SHIFT_L</autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::MINUS,KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::SHIFT_L</autogen>
