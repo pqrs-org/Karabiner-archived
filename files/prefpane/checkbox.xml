@@ -1234,6 +1234,11 @@
           <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::DASHBOARD</autogen>
         </item>
         <item>
+          <name>Eject to Escape</name>
+          <sysctl>remap.eject2escape</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::ESCAPE</autogen>
+        </item>
+        <item>
           <name>Eject to Expose if no modifiers pressed</name>
           <sysctl>remap.eject2expose_withoutmodifiers</sysctl>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::EXPOSE_ALL</autogen>
@@ -1445,6 +1450,11 @@
           <name>Escape to Backquote(`)</name>
           <sysctl>remap.escape2backquote</sysctl>
           <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::BACKQUOTE</autogen>
+        </item>
+        <item>
+          <name>Escape to Eject</name>
+          <sysctl>remap.escape2eject</sysctl>
+          <autogen>--KeyToConsumer-- KeyCode::ESCAPE, ConsumerKeyCode::EJECT</autogen>
         </item>
         <item>
           <name>Control+Escape to Control_L+F3</name>
