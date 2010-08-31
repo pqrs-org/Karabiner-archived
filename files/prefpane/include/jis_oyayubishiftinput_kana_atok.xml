@@ -1,17 +1,32 @@
 <!-- 上段 数字キー -->
-<autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_1, KeyCode::CAPSLOCK</autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_2, KeyCode::CAPSLOCK</autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_3, KeyCode::CAPSLOCK</autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_4, KeyCode::CAPSLOCK</autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_5, ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_5, KeyCode::CAPSLOCK</autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_6, KeyCode::CAPSLOCK</autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_7, ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_7, KeyCode::CAPSLOCK</autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_8, KeyCode::CAPSLOCK</autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_9, KeyCode::CAPSLOCK</autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_0, KeyCode::CAPSLOCK</autogen>
-<autogen>--KeyToKey-- KeyCode::MINUS, ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::MINUS, KeyCode::CAPSLOCK</autogen>
+<autogen>--KeyToKey-- KeyCode::KEY_1,   ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_1,   KeyCode::CAPSLOCK</autogen>
+<autogen>--KeyToKey-- KeyCode::KEY_2,   ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_2,   KeyCode::CAPSLOCK</autogen>
+<autogen>--KeyToKey-- KeyCode::KEY_3,   ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_3,   KeyCode::CAPSLOCK</autogen>
+<autogen>--KeyToKey-- KeyCode::KEY_4,   ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_4,   KeyCode::CAPSLOCK</autogen>
+<autogen>--KeyToKey-- KeyCode::KEY_5,   ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_5,   KeyCode::CAPSLOCK</autogen>
+<autogen>--KeyToKey-- KeyCode::KEY_6,   ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_6,   KeyCode::CAPSLOCK</autogen>
+<autogen>--KeyToKey-- KeyCode::KEY_7,   ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_7,   KeyCode::CAPSLOCK</autogen>
+<autogen>--KeyToKey-- KeyCode::KEY_8,   ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_8,   KeyCode::CAPSLOCK</autogen>
+<autogen>--KeyToKey-- KeyCode::KEY_9,   ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_9,   KeyCode::CAPSLOCK</autogen>
+<autogen>--KeyToKey-- KeyCode::KEY_0,   ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_0,   KeyCode::CAPSLOCK</autogen>
+<autogen>--KeyToKey-- KeyCode::MINUS,   ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::MINUS,   KeyCode::CAPSLOCK</autogen>
 <autogen>--KeyToKey-- KeyCode::JIS_HAT, ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::JIS_HAT, KeyCode::CAPSLOCK</autogen>
 <autogen>--KeyToKey-- KeyCode::JIS_YEN, ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::JIS_YEN, KeyCode::CAPSLOCK</autogen>
+
+<autogen>--KeyToKey-- KeyCode::KEY_1,   VK_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_1,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+<autogen>--KeyToKey-- KeyCode::KEY_2,   VK_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_2,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+<autogen>--KeyToKey-- KeyCode::KEY_3,   VK_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_3,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+<autogen>--KeyToKey-- KeyCode::KEY_4,   VK_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_4,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+<autogen>--KeyToKey-- KeyCode::KEY_5,   VK_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_5,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+<autogen>--KeyToKey-- KeyCode::KEY_6,   VK_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_6,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+<autogen>--KeyToKey-- KeyCode::KEY_7,   VK_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_7,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+<autogen>--KeyToKey-- KeyCode::KEY_8,   VK_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_8,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+<autogen>--KeyToKey-- KeyCode::KEY_9,   VK_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_9,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+<autogen>--KeyToKey-- KeyCode::KEY_0,   VK_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_0,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+<autogen>--KeyToKey-- KeyCode::MINUS,   VK_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::MINUS,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+<autogen>--KeyToKey-- KeyCode::JIS_HAT, VK_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::JIS_HAT, ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+<autogen>--KeyToKey-- KeyCode::JIS_YEN, VK_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::JIS_YEN, ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+
 <autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_1, KeyCode::CAPSLOCK, KeyCode::SLASH, ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
 <autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_2, KeyCode::CAPSLOCK, KeyCode::SLASH, KeyCode::CAPSLOCK</autogen>
 <autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_3, KeyCode::CAPSLOCK, KeyCode::JIS_HAT, ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
@@ -23,6 +38,7 @@
 <autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_9, KeyCode::CAPSLOCK, KeyCode::KEY_9, ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
 <autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::KEY_0, KeyCode::JIS_BRACKET_LEFT, ModifierFlag::SHIFT_L</autogen>
 <autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::MINUS,KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::SHIFT_L</autogen>
+
 <autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_1, KeyCode::CAPSLOCK, KeyCode::SLASH, ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
 <autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_2, KeyCode::CAPSLOCK, KeyCode::SLASH, KeyCode::CAPSLOCK</autogen>
 <autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::KEY_3, KeyCode::CAPSLOCK, KeyCode::JIS_HAT, ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
