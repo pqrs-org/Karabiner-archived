@@ -6961,55 +6961,70 @@
               <name>Oyayubi Shift Input</name>
               <list>
                 <item>
-                  <name>＜ローマ字モード＞ 左シフト＝スペース, 右シフト＝かな</name>
-                  <sysctl>remap.oyayubi_shift_roman_space_kana</sysctl>
-                  <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::SPACE|g' -e 's|RIGHT_THUMB|KeyCode::JIS_KANA|g' include/jis_oyayubishiftinput.xml" -->
+                  <name>＜かなモード＞</name>
+                  <list>
+                    <item>
+                      <name>＜かなモード＞ 左シフト＝スペース, 右シフト＝かな</name>
+                      <sysctl>remap.oyayubi_shift_kana_space_kana</sysctl>
+                      <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::SPACE|g' -e 's|RIGHT_THUMB|KeyCode::JIS_KANA|g' include/jis_oyayubishiftinput_kana_base.xml include/jis_oyayubishiftinput_kana_kotoeri.xml" -->
+                    </item>
+                    <item>
+                      <name>＜かなモード＞ 左シフト＝英数, 右シフト＝スペース</name>
+                      <appendix>※下の「EISUU x2 to EISUU」を同時に使うことをおすすめします</appendix>
+                      <sysctl>remap.oyayubi_shift_kana_eisuu_space</sysctl>
+                      <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::JIS_EISUU|g' -e 's|RIGHT_THUMB|KeyCode::SPACE|g' include/jis_oyayubishiftinput_kana_base.xml include/jis_oyayubishiftinput_kana_kotoeri.xml" -->
+                    </item>
+                    <item>
+                      <name>＜かなモード＞ 左シフト＝英数, 右シフト＝かな</name>
+                      <appendix>※下の「EISUU x2 to EISUU」を同時に使うことをおすすめします</appendix>
+                      <sysctl>remap.oyayubi_shift_kana_eisuu_kana</sysctl>
+                      <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::JIS_EISUU|g' -e 's|RIGHT_THUMB|KeyCode::JIS_KANA|g' include/jis_oyayubishiftinput_kana_base.xml include/jis_oyayubishiftinput_kana_kotoeri.xml" -->
+                    </item>
+                  </list>
                 </item>
                 <item>
-                  <name>＜ローマ字モード＞ 左シフト＝英数, 右シフト＝スペース</name>
-                  <appendix>※下の「EISUU x2 to EISUU」を同時に使うことをおすすめします</appendix>
-                  <sysctl>remap.oyayubi_shift_roman_eisuu_space</sysctl>
-                  <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::JIS_EISUU|g' -e 's|RIGHT_THUMB|KeyCode::SPACE|g' include/jis_oyayubishiftinput.xml" -->
+                  <name>＜かなモード for ATOK＞</name>
+                  <list>
+                    <item>
+                      <name>＜かなモード for ATOK＞ 左シフト＝スペース, 右シフト＝かな</name>
+                      <sysctl>remap.oyayubi_shift_kana_atok_space_kana</sysctl>
+                      <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::SPACE|g' -e 's|RIGHT_THUMB|KeyCode::JIS_KANA|g' include/jis_oyayubishiftinput_kana_base.xml include/jis_oyayubishiftinput_kana_atok.xml" -->
+                    </item>
+                    <item>
+                      <name>＜かなモード for ATOK＞ 左シフト＝英数, 右シフト＝スペース</name>
+                      <appendix>※下の「EISUU x2 to EISUU」を同時に使うことをおすすめします</appendix>
+                      <sysctl>remap.oyayubi_shift_kana_atok_eisuu_space</sysctl>
+                      <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::JIS_EISUU|g' -e 's|RIGHT_THUMB|KeyCode::SPACE|g' include/jis_oyayubishiftinput_kana_base.xml include/jis_oyayubishiftinput_kana_atok.xml" -->
+                    </item>
+                    <item>
+                      <name>＜かなモード for ATOK＞ 左シフト＝英数, 右シフト＝かな</name>
+                      <appendix>※下の「EISUU x2 to EISUU」を同時に使うことをおすすめします</appendix>
+                      <sysctl>remap.oyayubi_shift_kana_atok_eisuu_kana</sysctl>
+                      <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::JIS_EISUU|g' -e 's|RIGHT_THUMB|KeyCode::JIS_KANA|g' include/jis_oyayubishiftinput_kana_base.xml include/jis_oyayubishiftinput_kana_atok.xml" -->
+                    </item>
+                  </list>
                 </item>
                 <item>
-                  <name>＜ローマ字モード＞ 左シフト＝英数, 右シフト＝かな</name>
-                  <appendix>※下の「EISUU x2 to EISUU」を同時に使うことをおすすめします</appendix>
-                  <sysctl>remap.oyayubi_shift_roman_eisuu_kana</sysctl>
-                  <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::JIS_EISUU|g' -e 's|RIGHT_THUMB|KeyCode::JIS_KANA|g' include/jis_oyayubishiftinput.xml" -->
-                </item>
-                <item>
-                  <name>＜かなモード＞ 左シフト＝スペース, 右シフト＝かな</name>
-                  <sysctl>remap.oyayubi_shift_kana_space_kana</sysctl>
-                  <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::SPACE|g' -e 's|RIGHT_THUMB|KeyCode::JIS_KANA|g' include/jis_oyayubishiftinput_kana_base.xml include/jis_oyayubishiftinput_kana_kotoeri.xml" -->
-                </item>
-                <item>
-                  <name>＜かなモード＞ 左シフト＝英数, 右シフト＝スペース</name>
-                  <appendix>※下の「EISUU x2 to EISUU」を同時に使うことをおすすめします</appendix>
-                  <sysctl>remap.oyayubi_shift_kana_eisuu_space</sysctl>
-                  <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::JIS_EISUU|g' -e 's|RIGHT_THUMB|KeyCode::SPACE|g' include/jis_oyayubishiftinput_kana_base.xml include/jis_oyayubishiftinput_kana_kotoeri.xml" -->
-                </item>
-                <item>
-                  <name>＜かなモード＞ 左シフト＝英数, 右シフト＝かな</name>
-                  <appendix>※下の「EISUU x2 to EISUU」を同時に使うことをおすすめします</appendix>
-                  <sysctl>remap.oyayubi_shift_kana_eisuu_kana</sysctl>
-                  <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::JIS_EISUU|g' -e 's|RIGHT_THUMB|KeyCode::JIS_KANA|g' include/jis_oyayubishiftinput_kana_base.xml include/jis_oyayubishiftinput_kana_kotoeri.xml" -->
-                </item>
-                <item>
-                  <name>＜かなモード for ATOK＞ 左シフト＝スペース, 右シフト＝かな</name>
-                  <sysctl>remap.oyayubi_shift_kana_atok_space_kana</sysctl>
-                  <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::SPACE|g' -e 's|RIGHT_THUMB|KeyCode::JIS_KANA|g' include/jis_oyayubishiftinput_kana_base.xml include/jis_oyayubishiftinput_kana_atok.xml" -->
-                </item>
-                <item>
-                  <name>＜かなモード for ATOK＞ 左シフト＝英数, 右シフト＝スペース</name>
-                  <appendix>※下の「EISUU x2 to EISUU」を同時に使うことをおすすめします</appendix>
-                  <sysctl>remap.oyayubi_shift_kana_atok_eisuu_space</sysctl>
-                  <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::JIS_EISUU|g' -e 's|RIGHT_THUMB|KeyCode::SPACE|g' include/jis_oyayubishiftinput_kana_base.xml include/jis_oyayubishiftinput_kana_atok.xml" -->
-                </item>
-                <item>
-                  <name>＜かなモード for ATOK＞ 左シフト＝英数, 右シフト＝かな</name>
-                  <appendix>※下の「EISUU x2 to EISUU」を同時に使うことをおすすめします</appendix>
-                  <sysctl>remap.oyayubi_shift_kana_atok_eisuu_kana</sysctl>
-                  <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::JIS_EISUU|g' -e 's|RIGHT_THUMB|KeyCode::JIS_KANA|g' include/jis_oyayubishiftinput_kana_base.xml include/jis_oyayubishiftinput_kana_atok.xml" -->
+                  <name>＜ローマ字モード＞</name>
+                  <list>
+                    <item>
+                      <name>＜ローマ字モード＞ 左シフト＝スペース, 右シフト＝かな</name>
+                      <sysctl>remap.oyayubi_shift_roman_space_kana</sysctl>
+                      <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::SPACE|g' -e 's|RIGHT_THUMB|KeyCode::JIS_KANA|g' include/jis_oyayubishiftinput.xml" -->
+                    </item>
+                    <item>
+                      <name>＜ローマ字モード＞ 左シフト＝英数, 右シフト＝スペース</name>
+                      <appendix>※下の「EISUU x2 to EISUU」を同時に使うことをおすすめします</appendix>
+                      <sysctl>remap.oyayubi_shift_roman_eisuu_space</sysctl>
+                      <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::JIS_EISUU|g' -e 's|RIGHT_THUMB|KeyCode::SPACE|g' include/jis_oyayubishiftinput.xml" -->
+                    </item>
+                    <item>
+                      <name>＜ローマ字モード＞ 左シフト＝英数, 右シフト＝かな</name>
+                      <appendix>※下の「EISUU x2 to EISUU」を同時に使うことをおすすめします</appendix>
+                      <sysctl>remap.oyayubi_shift_roman_eisuu_kana</sysctl>
+                      <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::JIS_EISUU|g' -e 's|RIGHT_THUMB|KeyCode::JIS_KANA|g' include/jis_oyayubishiftinput.xml" -->
+                    </item>
+                  </list>
                 </item>
                 <item>
                   <name>EISUU x2 to EISUU (単発での英数キーは無視する)</name>
