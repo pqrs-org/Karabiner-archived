@@ -2233,6 +2233,26 @@
       <name>Change Help Key</name>
       <list>
         <item>
+          <name>Change Help to Command_L</name>
+          <sysctl>remap.help2commandL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::HELP, KeyCode::COMMAND_L</autogen>
+        </item>
+        <item>
+          <name>Change Help to Control_L</name>
+          <sysctl>remap.help2controlL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::HELP, KeyCode::CONTROL_L</autogen>
+        </item>
+        <item>
+          <name>Change Help to Option_L</name>
+          <sysctl>remap.help2optionL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::HELP, KeyCode::OPTION_L</autogen>
+        </item>
+        <item>
+          <name>Change Help to Shift_L</name>
+          <sysctl>remap.help2shiftL</sysctl>
+          <autogen>--KeyToKey-- KeyCode::HELP, KeyCode::SHIFT_L</autogen>
+        </item>
+        <item>
           <name>Change Help to F13</name>
           <sysctl>remap.help2f13</sysctl>
           <autogen>--KeyToKey-- KeyCode::HELP, KeyCode::F13</autogen>
