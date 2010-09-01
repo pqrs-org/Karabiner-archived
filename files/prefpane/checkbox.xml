@@ -5255,6 +5255,11 @@
               <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::MINUS, ModifierFlag::SHIFT_L</autogen>
             </item>
             <item>
+              <name>Application Key to LeftClick</name>
+              <sysctl>remap.pc_application2leftclick</sysctl>
+              <autogen>--KeyToPointingButton-- KeyCode::PC_APPLICATION, PointingButton::LEFT</autogen>
+            </item>
+            <item>
               <name>Application Key to RightClick</name>
               <sysctl>remap.pc_application2rightclick</sysctl>
               <autogen>--KeyToPointingButton-- KeyCode::PC_APPLICATION, PointingButton::RIGHT</autogen>
