@@ -37,6 +37,11 @@
           <sysctl>general.capslock_led_hack</sysctl>
         </item>
         <item>
+          <name>Pass-Through CapsLock LED status</name>
+          <appendix>(Don't enable this when you use "XXX to CapsLock")</appendix>
+          <sysctl>general.passthrough_capslock_led_status</sysctl>
+        </item>
+        <item>
           <name>Don't show Modifier lock status on screen</name>
           <sysctl>general.hide_statusmessage</sysctl>
         </item>
