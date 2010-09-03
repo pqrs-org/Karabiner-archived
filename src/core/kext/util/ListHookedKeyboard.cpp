@@ -313,6 +313,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (! self.list_) return;
 
+    if (config.general_passthrough_capslock_led_status) return;
+
     Flags flags = FlagStatus::makeFlags();
 
     for (Item* p = static_cast<Item*>(self.list_->front()); p; p = static_cast<Item*>(p->getnext())) {
