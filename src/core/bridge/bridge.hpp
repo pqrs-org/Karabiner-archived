@@ -52,6 +52,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         PASSWORD, // com.apple.securityagent
         GRUML,
         IPHOTO,
+        STICKIES,
       };
       enum InputMode {
         INPUTMODE_NONE,

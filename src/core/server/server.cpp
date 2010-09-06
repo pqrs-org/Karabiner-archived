@@ -384,6 +384,10 @@ setCurrentApplicationType(const char* applicationName)
     SET_CURRENT_APPLICATION_TYPE(IPHOTO);
   }
 
+  if (strcmp(applicationName, "com.apple.Stickies") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(STICKIES);
+  }
+
   SET_CURRENT_APPLICATION_TYPE(UNKNOWN);
 }
 
