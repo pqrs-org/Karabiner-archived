@@ -4359,12 +4359,13 @@
           <autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::F, KeyCode::CURSOR_RIGHT</autogen>
         </item>
         <item>
-          <name>Simultaneous Key Presses [S+D] to ModifierFlag::EXTRA1</name>
-          <appendix>(EXTRA1+H to Left)</appendix>
-          <appendix>(EXTRA1+J to Down)</appendix>
-          <appendix>(EXTRA1+K to Up)</appendix>
-          <appendix>(EXTRA1+L to Right)</appendix>
-          <appendix>(EXTRA1+F to Fn)</appendix>
+          <name>Simultaneous Vi Mode</name>
+          <appendix>[S+D] to ModifierFlag::EXTRA1</appendix>
+          <appendix>- EXTRA1+H to Left</appendix>
+          <appendix>- EXTRA1+J to Down</appendix>
+          <appendix>- EXTRA1+K to Up</appendix>
+          <appendix>- EXTRA1+L to Right</appendix>
+          <appendix>- EXTRA1+F to Fn</appendix>
           <sysctl>remap.simultaneouskeypresses_vimode_sd</sysctl>
           <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, KeyCode::VK_MODIFIER_EXTRA1</autogen>
           <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA1, KeyCode::CURSOR_LEFT</autogen>
