@@ -4347,34 +4347,39 @@
       <name>Simultaneous Vi Mode</name>
       <list>
         <item>
-          <name>Base Setting</name>
+          <name>What's Simultaneous Vi Mode?</name>
           <appendix>Push S and D keys simultaneously and keep them pressing.</appendix>
           <appendix>Then you can use Vi style navigation by HJKL.</appendix>
           <appendix>(+ [S+D]+F+HJKL to Home/PageDown/PageUp/End)</appendix>
           <appendix></appendix>
-          <appendix>Simultaneous Key Presses [S+D] to ModifierFlag::EXTRA1</appendix>
-          <appendix>- EXTRA1+H to Left</appendix>
-          <appendix>- EXTRA1+J to Down</appendix>
-          <appendix>- EXTRA1+K to Up</appendix>
-          <appendix>- EXTRA1+L to Right</appendix>
-          <appendix>- EXTRA1+F to Fn</appendix>
-          <sysctl>remap.simultaneouskeypresses_vimode_sd</sysctl>
-          <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, KeyCode::VK_MODIFIER_EXTRA1</autogen>
-          <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA1, KeyCode::CURSOR_LEFT</autogen>
-          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA1, KeyCode::CURSOR_DOWN</autogen>
-          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA1, KeyCode::CURSOR_UP</autogen>
-          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA1, KeyCode::CURSOR_RIGHT</autogen>
-          <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::EXTRA1, KeyCode::FN, ModifierFlag::EXTRA1</autogen>
+          <appendix>- HJKL to Left/Down/Up/Right</appendix>
+          <appendix>- F to Fn</appendix>
+          <sysctl>notsave.simultaneouskeypresses_vimode</sysctl>
+          <vk_config>true</vk_config>
+          <autogen>--ShowStatusMessage-- "Vi Mode"</autogen>
+          <autogen>--KeyToKey-- KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
+          <autogen>--KeyToKey-- KeyCode::F, KeyCode::FN, ModifierFlag::EXTRA1</autogen>
+          <block>
+            <config_only>option.simultaneouskeypresses_vimode_mouseclick</config_only>
+            <autogen>--KeyToPointingButton-- KeyCode::U, PointingButton::LEFT</autogen>
+            <autogen>--KeyToPointingButton-- KeyCode::I, PointingButton::MIDDLE</autogen>
+            <autogen>--KeyToPointingButton-- KeyCode::O, PointingButton::RIGHT</autogen>
+          </block>
         </item>
         <item>
-          <name>Mouse Click Support</name>
-          <appendix>- EXTRA1+U to LeftClick</appendix>
-          <appendix>- EXTRA1+I to MiddleClick</appendix>
-          <appendix>- EXTRA1+O to RightClick</appendix>
-          <sysctl>remap.extra1UIOtoclick</sysctl>
-          <autogen>--KeyToPointingButton-- KeyCode::U, ModifierFlag::EXTRA1, PointingButton::LEFT,   ModifierFlag::EXTRA1</autogen>
-          <autogen>--KeyToPointingButton-- KeyCode::I, ModifierFlag::EXTRA1, PointingButton::MIDDLE, ModifierFlag::EXTRA1</autogen>
-          <autogen>--KeyToPointingButton-- KeyCode::O, ModifierFlag::EXTRA1, PointingButton::RIGHT,  ModifierFlag::EXTRA1</autogen>
+          <name>Simultaneous Key Presses [S+D] to toggle Simultaneous Vi Mode</name>
+          <sysctl>remap.simultaneouskeypresses_vimode_sd</sysctl>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode</autogen>
+        </item>
+        <item>
+          <name>[Option] Mouse Click Support</name>
+          <appendix>- U to LeftClick</appendix>
+          <appendix>- I to MiddleClick</appendix>
+          <appendix>- O to RightClick</appendix>
+          <sysctl>option.simultaneouskeypresses_vimode_mouseclick</sysctl>
         </item>
       </list>
     </item>
