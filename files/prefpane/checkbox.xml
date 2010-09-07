@@ -4360,19 +4360,34 @@
         </item>
         <item>
           <name>Simultaneous Vi Mode</name>
-          <appendix>[S+D] to ModifierFlag::EXTRA1</appendix>
-          <appendix>- EXTRA1+H to Left</appendix>
-          <appendix>- EXTRA1+J to Down</appendix>
-          <appendix>- EXTRA1+K to Up</appendix>
-          <appendix>- EXTRA1+L to Right</appendix>
-          <appendix>- EXTRA1+F to Fn</appendix>
-          <sysctl>remap.simultaneouskeypresses_vimode_sd</sysctl>
-          <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, KeyCode::VK_MODIFIER_EXTRA1</autogen>
-          <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA1, KeyCode::CURSOR_LEFT</autogen>
-          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA1, KeyCode::CURSOR_DOWN</autogen>
-          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA1, KeyCode::CURSOR_UP</autogen>
-          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA1, KeyCode::CURSOR_RIGHT</autogen>
-          <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::EXTRA1, KeyCode::FN, ModifierFlag::EXTRA1</autogen>
+          <list>
+            <item>
+              <name>Base Setting</name>
+              <appendix>[S+D] to ModifierFlag::EXTRA1</appendix>
+              <appendix>- EXTRA1+H to Left</appendix>
+              <appendix>- EXTRA1+J to Down</appendix>
+              <appendix>- EXTRA1+K to Up</appendix>
+              <appendix>- EXTRA1+L to Right</appendix>
+              <appendix>- EXTRA1+F to Fn</appendix>
+              <sysctl>remap.simultaneouskeypresses_vimode_sd</sysctl>
+              <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, KeyCode::VK_MODIFIER_EXTRA1</autogen>
+              <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA1, KeyCode::CURSOR_LEFT</autogen>
+              <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA1, KeyCode::CURSOR_DOWN</autogen>
+              <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA1, KeyCode::CURSOR_UP</autogen>
+              <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA1, KeyCode::CURSOR_RIGHT</autogen>
+              <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::EXTRA1, KeyCode::FN, ModifierFlag::EXTRA1</autogen>
+            </item>
+            <item>
+              <name>Mouse Click Support</name>
+              <appendix>- EXTRA1+U to LeftClick</appendix>
+              <appendix>- EXTRA1+I to MiddleClick</appendix>
+              <appendix>- EXTRA1+O to RightClick</appendix>
+              <sysctl>remap.extra1UIOtoclick</sysctl>
+              <autogen>--KeyToPointingButton-- KeyCode::U, ModifierFlag::EXTRA1, PointingButton::LEFT,   ModifierFlag::EXTRA1</autogen>
+              <autogen>--KeyToPointingButton-- KeyCode::I, ModifierFlag::EXTRA1, PointingButton::MIDDLE, ModifierFlag::EXTRA1</autogen>
+              <autogen>--KeyToPointingButton-- KeyCode::O, ModifierFlag::EXTRA1, PointingButton::RIGHT,  ModifierFlag::EXTRA1</autogen>
+            </item>
+          </list>
         </item>
         <item>
           <name>Mouse Keys Mode</name>
