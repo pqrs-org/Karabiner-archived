@@ -4375,6 +4375,30 @@
           <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::EXTRA1, KeyCode::FN, ModifierFlag::EXTRA1</autogen>
         </item>
         <item>
+          <name>Mouse Keys Mode</name>
+          <appendix>[9+0] to ModifierFlag::EXTRA2</appendix>
+          <appendix>- EXTRA2+Z to LeftClick</appendix>
+          <appendix>- EXTRA2+X to MiddleClick</appendix>
+          <appendix>- EXTRA2+C to RightClick</appendix>
+          <appendix>- EXTRA2+123 to KeyPad-789</appendix>
+          <appendix>- EXTRA2+QWE to KeyPad-456</appendix>
+          <appendix>- EXTRA2+ASD to KeyPad-123</appendix>
+          <sysctl>remap.simultaneouskeypresses_mouse_keys_mode_90</sysctl>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_9, KeyCode::KEY_0, KeyCode::VK_MODIFIER_EXTRA2</autogen>
+          <autogen>--KeyToPointingButton-- KeyCode::Z, ModifierFlag::EXTRA2, PointingButton::LEFT</autogen>
+          <autogen>--KeyToPointingButton-- KeyCode::X, ModifierFlag::EXTRA2, PointingButton::MIDDLE</autogen>
+          <autogen>--KeyToPointingButton-- KeyCode::C, ModifierFlag::EXTRA2, PointingButton::RIGHT</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::EXTRA2, KeyCode::KEYPAD_7</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::EXTRA2, KeyCode::KEYPAD_8</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::EXTRA2, KeyCode::KEYPAD_9</autogen>
+          <autogen>--KeyToKey-- KeyCode::Q,     ModifierFlag::EXTRA2, KeyCode::KEYPAD_4</autogen>
+          <autogen>--KeyToKey-- KeyCode::W,     ModifierFlag::EXTRA2, KeyCode::KEYPAD_5</autogen>
+          <autogen>--KeyToKey-- KeyCode::E,     ModifierFlag::EXTRA2, KeyCode::KEYPAD_6</autogen>
+          <autogen>--KeyToKey-- KeyCode::A,     ModifierFlag::EXTRA2, KeyCode::KEYPAD_1</autogen>
+          <autogen>--KeyToKey-- KeyCode::S,     ModifierFlag::EXTRA2, KeyCode::KEYPAD_2</autogen>
+          <autogen>--KeyToKey-- KeyCode::D,     ModifierFlag::EXTRA2, KeyCode::KEYPAD_3</autogen>
+        </item>
+        <item>
           <name>Simultaneous Key Presses [F+J] to Return</name>
           <sysctl>remap.simultaneouskeypresses_fj_to_return</sysctl>
           <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::J, KeyCode::RETURN</autogen>
