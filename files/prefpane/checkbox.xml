@@ -4401,27 +4401,41 @@
         </item>
         <item>
           <name>Mouse Keys Mode</name>
-          <appendix>[9+0] to ModifierFlag::EXTRA2</appendix>
-          <appendix>- EXTRA2+Z to LeftClick</appendix>
-          <appendix>- EXTRA2+X to MiddleClick</appendix>
-          <appendix>- EXTRA2+C to RightClick</appendix>
-          <appendix>- EXTRA2+123 to KeyPad-789</appendix>
-          <appendix>- EXTRA2+QWE to KeyPad-456</appendix>
-          <appendix>- EXTRA2+ASD to KeyPad-123</appendix>
-          <sysctl>remap.simultaneouskeypresses_mouse_keys_mode_90</sysctl>
-          <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_9, KeyCode::KEY_0, KeyCode::VK_MODIFIER_EXTRA2</autogen>
-          <autogen>--KeyToPointingButton-- KeyCode::Z, ModifierFlag::EXTRA2, PointingButton::LEFT,   ModifierFlag::EXTRA2</autogen>
-          <autogen>--KeyToPointingButton-- KeyCode::X, ModifierFlag::EXTRA2, PointingButton::MIDDLE, ModifierFlag::EXTRA2</autogen>
-          <autogen>--KeyToPointingButton-- KeyCode::C, ModifierFlag::EXTRA2, PointingButton::RIGHT,  ModifierFlag::EXTRA2</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::EXTRA2, KeyCode::KEYPAD_7, ModifierFlag::EXTRA2</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::EXTRA2, KeyCode::KEYPAD_8, ModifierFlag::EXTRA2</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::EXTRA2, KeyCode::KEYPAD_9, ModifierFlag::EXTRA2</autogen>
-          <autogen>--KeyToKey-- KeyCode::Q,     ModifierFlag::EXTRA2, KeyCode::KEYPAD_4, ModifierFlag::EXTRA2</autogen>
-          <autogen>--KeyToKey-- KeyCode::W,     ModifierFlag::EXTRA2, KeyCode::KEYPAD_5, ModifierFlag::EXTRA2</autogen>
-          <autogen>--KeyToKey-- KeyCode::E,     ModifierFlag::EXTRA2, KeyCode::KEYPAD_6, ModifierFlag::EXTRA2</autogen>
-          <autogen>--KeyToKey-- KeyCode::A,     ModifierFlag::EXTRA2, KeyCode::KEYPAD_1, ModifierFlag::EXTRA2</autogen>
-          <autogen>--KeyToKey-- KeyCode::S,     ModifierFlag::EXTRA2, KeyCode::KEYPAD_2, ModifierFlag::EXTRA2</autogen>
-          <autogen>--KeyToKey-- KeyCode::D,     ModifierFlag::EXTRA2, KeyCode::KEYPAD_3, ModifierFlag::EXTRA2</autogen>
+          <list>
+            <item>
+              <name>What's Mouse Keys Mode?</name>
+              <appendix>Push 9 and 0 keys simultaneously and keep them pressing.</appendix>
+              <appendix>Then you can control mouse cursor by 123/QWE/ASD keys.</appendix>
+              <appendix>(You need to enable Mouse Keys from Universal Access in System Preferences.)</appendix>
+              <appendix></appendix>
+              <appendix>- Z to LeftClick</appendix>
+              <appendix>- X to MiddleClick</appendix>
+              <appendix>- C to RightClick</appendix>
+              <appendix>- 123 to KeyPad-789</appendix>
+              <appendix>- QWE to KeyPad-456</appendix>
+              <appendix>- ASD to KeyPad-123</appendix>
+              <sysctl>notsave.simultaneouskeypresses_mouse_keys</sysctl>
+              <vk_config>true</vk_config>
+              <autogen>--ShowStatusMessage-- "Mouse Keys"</autogen>
+              <autogen>--KeyToPointingButton-- KeyCode::Z, PointingButton::LEFT</autogen>
+              <autogen>--KeyToPointingButton-- KeyCode::X, PointingButton::MIDDLE</autogen>
+              <autogen>--KeyToPointingButton-- KeyCode::C, PointingButton::RIGHT</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::KEYPAD_7</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::KEYPAD_8</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::KEYPAD_9</autogen>
+              <autogen>--KeyToKey-- KeyCode::Q,     KeyCode::KEYPAD_4</autogen>
+              <autogen>--KeyToKey-- KeyCode::W,     KeyCode::KEYPAD_5</autogen>
+              <autogen>--KeyToKey-- KeyCode::E,     KeyCode::KEYPAD_6</autogen>
+              <autogen>--KeyToKey-- KeyCode::A,     KeyCode::KEYPAD_1</autogen>
+              <autogen>--KeyToKey-- KeyCode::S,     KeyCode::KEYPAD_2</autogen>
+              <autogen>--KeyToKey-- KeyCode::D,     KeyCode::KEYPAD_3</autogen>
+            </item>
+            <item>
+              <name>Simultaneous Key Presses [9+0] to toggle Mouse Keys Mode</name>
+              <sysctl>remap.simultaneouskeypresses_mouse_keys_mode_90</sysctl>
+              <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_9, KeyCode::KEY_0, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_mouse_keys</autogen>
+            </item>
+          </list>
         </item>
         <item>
           <name>Simultaneous Key Presses [F+J] to Return</name>
