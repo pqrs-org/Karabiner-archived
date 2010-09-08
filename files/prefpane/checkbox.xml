@@ -4361,7 +4361,7 @@
           <autogen>--KeyToKey-- KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
           <autogen>--KeyToKey-- KeyCode::K, KeyCode::CURSOR_UP</autogen>
           <autogen>--KeyToKey-- KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
-          <autogen>--KeyToKey-- KeyCode::F, KeyCode::FN, ModifierFlag::EXTRA1</autogen>
+          <autogen>--KeyToKey-- KeyCode::F, KeyCode::FN</autogen>
           <block>
             <config_only>option.simultaneouskeypresses_vimode_mouseclick</config_only>
             <autogen>--KeyToPointingButton-- KeyCode::U, PointingButton::LEFT</autogen>
