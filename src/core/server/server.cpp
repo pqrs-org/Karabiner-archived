@@ -254,7 +254,8 @@ setCurrentApplicationType(const char* applicationName)
 
   if (strcmp(applicationName, "com.apple.Terminal") == 0 ||
       strcmp(applicationName, "iTerm") == 0 ||
-      strcmp(applicationName, "net.sourceforge.iTerm") == 0) {
+      strcmp(applicationName, "net.sourceforge.iTerm") == 0 ||
+      strcmp(applicationName, "com.googlecode.iterm2") == 0) {
     SET_CURRENT_APPLICATION_TYPE(TERMINAL);
   }
 
