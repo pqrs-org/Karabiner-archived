@@ -5309,6 +5309,13 @@
               <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::CONTROL_L</autogen>
             </item>
             <item>
+              <name>Application Key to Control_L</name>
+              <appendix>(+ When you type Application Key only, send CapsLock)</appendix>
+              <!-- Note: sysctl has "jis_" prefix for compatibility. -->
+              <sysctl>remap.jis_pc_application2controlL_capslock</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::PC_APPLICATION, KeyCode::CONTROL_L, KeyCode::CAPSLOCK</autogen>
+            </item>
+            <item>
               <name>Application Key to Fn</name>
               <sysctl>remap.pc_application2fn</sysctl>
               <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::FN</autogen>
@@ -5929,17 +5936,6 @@
     <item>
       <name>For Japanese</name>
       <list>
-        <item>
-          <name>Change PC Application Key</name>
-          <list>
-            <item>
-              <name>Application Key to Control_L</name>
-              <appendix>(+ When you type Application Key only, send CapsLock)</appendix>
-              <sysctl>remap.jis_pc_application2controlL_capslock</sysctl>
-              <autogen>--KeyOverlaidModifier-- KeyCode::PC_APPLICATION, KeyCode::CONTROL_L, KeyCode::CAPSLOCK</autogen>
-            </item>
-          </list>
-        </item>
         <item>
           <name>Change Backquote(`) Key</name>
           <list>
