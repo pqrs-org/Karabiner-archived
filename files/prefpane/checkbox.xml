@@ -1121,6 +1121,11 @@
           <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::ESCAPE</autogen>
         </item>
         <item>
+          <name>Control_L to Return</name>
+          <sysctl>remap.controlL2return</sysctl>
+          <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::RETURN</autogen>
+        </item>
+        <item>
           <name>Disable Control_L</name>
           <sysctl>remap.drop_controlL</sysctl>
           <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::VK_NONE</autogen>
