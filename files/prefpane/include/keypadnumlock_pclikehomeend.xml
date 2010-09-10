@@ -1,0 +1,12 @@
+<autogen>--KeyToKey-- KeyCode::KEYPAD_0, KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::KEYPAD_5, KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::KEYPAD_COMMA, KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::KEYPAD_2, KeyCode::CURSOR_DOWN</autogen>
+<autogen>--KeyToKey-- KeyCode::KEYPAD_4, KeyCode::CURSOR_LEFT</autogen>
+<autogen>--KeyToKey-- KeyCode::KEYPAD_6, KeyCode::CURSOR_RIGHT</autogen>
+<autogen>--KeyToKey-- KeyCode::KEYPAD_8, KeyCode::CURSOR_UP</autogen>
+<autogen>--KeyToKey-- KeyCode::KEYPAD_1, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+<autogen>--KeyToKey-- KeyCode::KEYPAD_3, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
+<autogen>--KeyToKey-- KeyCode::KEYPAD_7, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+<autogen>--KeyToKey-- KeyCode::KEYPAD_9, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
+<autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::FORWARD_DELETE</autogen>
