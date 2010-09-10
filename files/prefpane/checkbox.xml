@@ -5530,7 +5530,8 @@
               <block>
                 <config_only>option.keypadnumlock_vm</config_only>
                 <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-                <!-- #include "include/keypadnumlock_pclikehomeend.xml" -->
+                <!-- We use normal Home/End/PageUp/PageDown in VM -->
+                <!-- #include "include/keypadnumlock.xml" -->
               </block>
             </item>
             <item>
