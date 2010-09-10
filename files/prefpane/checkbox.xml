@@ -1318,6 +1318,11 @@
           <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::COMMAND_L</autogen>
         </item>
         <item>
+          <name>Enter to Command_R</name>
+          <sysctl>remap.enter2commandR</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::COMMAND_R</autogen>
+        </item>
+        <item>
           <name>Enter to Control_L</name>
           <sysctl>remap.enter2controlL</sysctl>
           <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::CONTROL_L</autogen>
