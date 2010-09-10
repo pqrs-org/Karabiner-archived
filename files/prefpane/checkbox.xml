@@ -5490,38 +5490,20 @@
               <sysctl>remap.keypadnumlock</sysctl>
               <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
               <vk_config>true</vk_config>
-              <autogen>--KeyToKey-- KeyCode::KEYPAD_0, KeyCode::VK_NONE</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEYPAD_5, KeyCode::VK_NONE</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEYPAD_COMMA, KeyCode::VK_NONE</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEYPAD_2, KeyCode::CURSOR_DOWN</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEYPAD_4, KeyCode::CURSOR_LEFT</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEYPAD_6, KeyCode::CURSOR_RIGHT</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEYPAD_8, KeyCode::CURSOR_UP</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEYPAD_1, KeyCode::END</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEYPAD_3, KeyCode::PAGEDOWN</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEYPAD_7, KeyCode::HOME</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEYPAD_9, KeyCode::PAGEUP</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::FORWARD_DELETE</autogen>
+              <!-- #include "include/keypadnumlock.xml" -->
             </item>
             <item>
               <name>Enable KeyPad as Arrow</name>
               <appendix>(With PC Style Home/End/PageUp/PageDown)</appendix>
+              <appendix>(- KeyPad_7 to Command_L+Left-Arrow)</appendix>
+              <appendix>(- KeyPad_1 to Command_L+Right-Arrow)</appendix>
+              <appendix>(- KeyPad_9 to Option_L+PageUp)</appendix>
+              <appendix>(- KeyPad_3 to Option_L+PageDown)</appendix>
               <appendix>(except virtual machine, RDC)</appendix>
               <sysctl>remap.keypadnumlock_pclikehomeend</sysctl>
               <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
               <vk_config>true</vk_config>
-              <autogen>--KeyToKey-- KeyCode::KEYPAD_0, KeyCode::VK_NONE</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEYPAD_5, KeyCode::VK_NONE</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEYPAD_COMMA, KeyCode::VK_NONE</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEYPAD_2, KeyCode::CURSOR_DOWN</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEYPAD_4, KeyCode::CURSOR_LEFT</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEYPAD_6, KeyCode::CURSOR_RIGHT</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEYPAD_8, KeyCode::CURSOR_UP</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEYPAD_1, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEYPAD_3, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEYPAD_7, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEYPAD_9, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::FORWARD_DELETE</autogen>
+              <!-- #include "include/keypadnumlock_pclikehomeend.xml" -->
             </item>
             <item>
               <name>Use Clear Key to toggle "KeyPad as Arrow"</name>
