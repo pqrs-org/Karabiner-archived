@@ -5640,6 +5640,17 @@
           <autogen>--KeyToKey-- KeyCode::X, VK_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
+          <name>Use PC Style Copy/Paste (except Terminal)</name>
+          <appendix>(Control+C to Command_L+C)</appendix>
+          <appendix>(Control+V to Command_L+V)</appendix>
+          <appendix>(Control+X to Command_L+X)</appendix>
+          <sysctl>remap.copy_paste_winstyle_no_term</sysctl>
+          <not>TERMINAL</not>
+          <autogen>--KeyToKey-- KeyCode::C, VK_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::V, VK_CONTROL, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::X, VK_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
           <name>Use PC Style Copy/Paste #2</name>
           <appendix>(Swap Control+C and Command_L+C)</appendix>
           <appendix>(Control+V to Command_L+V)</appendix>
@@ -5660,6 +5671,20 @@
           <autogen>--KeyToKey-- KeyCode::PC_INSERT, VK_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- KeyCode::PC_INSERT, VK_SHIFT, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, VK_SHIFT, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
+          <name>Use PC Style Undo (except Terminal)</name>
+          <appendix>(Control+Z to Command_L+Z)</appendix>
+          <sysctl>remap.undo_winstyle_no_term</sysctl>
+          <not>TERMINAL</not>
+          <autogen>--KeyToKey-- KeyCode::Z, VK_CONTROL, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
+          <name>Use PC Style Select All (except Terminal)</name>
+          <appendix>(Control+A to Command_L+A)</appendix>
+          <sysctl>remap.select_all_winstyle_no_term</sysctl>
+          <not>TERMINAL</not>
+          <autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::A, ModifierFlag::COMMAND_L</autogen>
         </item>
       </list>
     </item>
