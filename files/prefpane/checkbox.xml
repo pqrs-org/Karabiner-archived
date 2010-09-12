@@ -960,6 +960,13 @@
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
+          <name>Command_R to Command_L+Left-Arrow</name>
+          <appendix>(+ Control+Command_R, to Command_L+Up-Arrow)</appendix>
+          <sysctl>remap.commandR2fnleftarrow</sysctl>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, VK_CONTROL, KeyCode::CURSOR_UP,   ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R,             KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
           <name>Command_R to PageUp</name>
           <sysctl>remap.commandR2pageup</sysctl>
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::PAGEUP</autogen>
