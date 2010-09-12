@@ -5703,6 +5703,13 @@
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
           <autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::A, ModifierFlag::COMMAND_L</autogen>
         </item>
+        <item>
+          <name>Use PC Style Save (except Emacs, Terminal, Virtual Machine, RDC, X11, Eclipse)</name>
+          <appendix>(Control+S to Command_L+S)</appendix>
+          <sysctl>remap.save_winstyle_no_term</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+          <autogen>--KeyToKey-- KeyCode::S, VK_CONTROL, KeyCode::S, ModifierFlag::COMMAND_L</autogen>
+        </item>
       </list>
     </item>
 
