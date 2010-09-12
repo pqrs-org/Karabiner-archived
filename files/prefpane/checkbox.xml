@@ -1416,9 +1416,16 @@
           <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::RETURN</autogen>
         </item>
         <item>
-          <name>Enter to Command_L+Right-Arrow</name>
+          <name>Enter to Command_L+Right-Arrow (end-of-line)</name>
           <sysctl>remap.enter2commandLrightarrow_all</sysctl>
           <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
+          <name>Enter to Command_L+Right-Arrow (end-of-line)</name>
+          <appendix>(+ Control+Enter to Command_L+Down-Arrow) (end-of-buffer)</appendix>
+          <sysctl>remap.enter2fnrightarrow</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ENTER, VK_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::ENTER,             KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
           <name>Enter to Right-Arrow</name>
