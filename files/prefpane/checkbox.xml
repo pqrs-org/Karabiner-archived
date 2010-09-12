@@ -5690,10 +5690,10 @@
           <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, VK_SHIFT, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
-          <name>Use PC Style Undo (except Terminal)</name>
+          <name>Use PC Style Undo (except Emacs, Terminal, Virtual Machine, RDC, X11, Eclipse)</name>
           <appendix>(Control+Z to Command_L+Z)</appendix>
           <sysctl>remap.undo_winstyle_no_term</sysctl>
-          <not>TERMINAL</not>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
           <autogen>--KeyToKey-- KeyCode::Z, VK_CONTROL, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
