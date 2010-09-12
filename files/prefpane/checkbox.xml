@@ -5720,7 +5720,7 @@
         </item>
         <item>
           <name>Use PC Style New</name>
-          <appendix>(Control+S to Command_L+S)</appendix>
+          <appendix>(Control+N to Command_L+N)</appendix>
           <appendix>(Except in Terminal, VM, RDC, Emacs, X11, Eclipse)</appendix>
           <sysctl>remap.new_winstyle_no_term</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
@@ -5737,7 +5737,6 @@
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
           <autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::F, ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- KeyCode::G, VK_CONTROL, KeyCode::G, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::G, VK_CONTROL | VK_SHIFT, KeyCode::G, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
           <autogen>--KeyToKey-- KeyCode::F3, VK_CONTROL, KeyCode::G, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
           <autogen>--KeyToKey-- KeyCode::F3, KeyCode::G, ModifierFlag::COMMAND_L</autogen>
         </item>
