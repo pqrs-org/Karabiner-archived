@@ -5657,12 +5657,12 @@
           <autogen>--KeyToKey-- KeyCode::X, VK_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
-          <name>Use PC Style Copy/Paste (except Terminal)</name>
+          <name>Use PC Style Copy/Paste (except Emacs, Terminal, Virtual Machine, RDC, X11, Eclipse)</name>
           <appendix>(Control+C to Command_L+C)</appendix>
           <appendix>(Control+V to Command_L+V)</appendix>
           <appendix>(Control+X to Command_L+X)</appendix>
           <sysctl>remap.copy_paste_winstyle_no_term</sysctl>
-          <not>TERMINAL</not>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
           <autogen>--KeyToKey-- KeyCode::C, VK_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- KeyCode::V, VK_CONTROL, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- KeyCode::X, VK_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
