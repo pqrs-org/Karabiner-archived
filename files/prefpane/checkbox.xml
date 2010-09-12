@@ -960,7 +960,7 @@
         <item>
           <name>Command_R to Command_L+Left-Arrow (beginning-of-line)</name>
           <appendix>(+ Control+Command_R, to Command_L+Up-Arrow) (beginning-of-buffer)</appendix>
-          <appendix>(except virtual machine, RDC)</appendix>
+          <appendix>(Except in Virtual Machine, RDC)</appendix>
           <sysctl>remap.commandR2fnleftarrow</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, VK_CONTROL, KeyCode::CURSOR_UP,   ModifierFlag::COMMAND_L</autogen>
@@ -1425,7 +1425,7 @@
         <item>
           <name>Enter to Command_L+Right-Arrow (end-of-line)</name>
           <appendix>(+ Control+Enter to Command_L+Down-Arrow) (end-of-buffer)</appendix>
-          <appendix>(except virtual machine, RDC)</appendix>
+          <appendix>(Except in Virtual Machine, RDC)</appendix>
           <sysctl>remap.enter2fnrightarrow</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToKey-- KeyCode::ENTER, VK_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
