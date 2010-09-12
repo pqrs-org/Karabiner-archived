@@ -5697,10 +5697,10 @@
           <autogen>--KeyToKey-- KeyCode::Z, VK_CONTROL, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
-          <name>Use PC Style Select All (except Terminal)</name>
+          <name>Use PC Style Select All (except Emacs, Terminal, Virtual Machine, RDC, X11, Eclipse)</name>
           <appendix>(Control+A to Command_L+A)</appendix>
           <sysctl>remap.select_all_winstyle_no_term</sysctl>
-          <not>TERMINAL</not>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
           <autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::A, ModifierFlag::COMMAND_L</autogen>
         </item>
       </list>
