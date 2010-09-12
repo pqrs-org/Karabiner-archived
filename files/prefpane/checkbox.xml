@@ -959,15 +959,17 @@
         </item>
         <item>
           <name>Command_R to Command_L+Left-Arrow (beginning-of-line)</name>
-          <sysctl>remap.commandR2commandLleftarrow_all</sysctl>
-          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+          <appendix>(+ Control+Command_R, to Command_L+Up-Arrow) (beginning-of-buffer)</appendix>
+          <appendix>(except virtual machine, RDC)</appendix>
+          <sysctl>remap.commandR2fnleftarrow</sysctl>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, VK_CONTROL, KeyCode::CURSOR_UP,   ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R,             KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
           <name>Command_R to Command_L+Left-Arrow (beginning-of-line)</name>
-          <appendix>(+ Control+Command_R, to Command_L+Up-Arrow) (beginning-of-buffer)</appendix>
-          <sysctl>remap.commandR2fnleftarrow</sysctl>
-          <autogen>--KeyToKey-- KeyCode::COMMAND_R, VK_CONTROL, KeyCode::CURSOR_UP,   ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::COMMAND_R,             KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+          <sysctl>remap.commandR2commandLleftarrow_all</sysctl>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
           <name>Command_R to PageUp</name>
