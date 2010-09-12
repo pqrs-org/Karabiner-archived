@@ -1148,6 +1148,11 @@
           <autogen>--DoublePressModifier-- KeyCode::CONTROL_L, KeyCode::CONTROL_L, KeyCode::SPACE, ModifierFlag::CONTROL_L</autogen>
         </item>
         <item>
+          <name>Control_L to LeftClick</name>
+          <sysctl>remap.controlL2lefttclick</sysctl>
+          <autogen>--KeyToPointingButton-- KeyCode::CONTROL_L, PointingButton::LEFT</autogen>
+        </item>
+        <item>
           <name>Control_L to RightClick</name>
           <sysctl>remap.controlL2rightclick</sysctl>
           <autogen>--KeyToPointingButton-- KeyCode::CONTROL_L, PointingButton::RIGHT</autogen>
@@ -4093,6 +4098,14 @@
     <item>
       <name>Vi Mode</name>
       <list>
+        <item>
+          <name>Command_L+hjkl to Left/Down/Up/Right</name>
+          <sysctl>option.vimode_commandl_hjkl</sysctl>
+          <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::COMMAND_L, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::COMMAND_L, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::COMMAND_L, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::COMMAND_L, KeyCode::CURSOR_RIGHT</autogen>
+        </item>
         <item>
           <name>Command_R+hjkl to Left/Down/Up/Right</name>
           <sysctl>option.vimode_hjkl</sysctl>
