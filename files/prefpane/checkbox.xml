@@ -1425,7 +1425,9 @@
         <item>
           <name>Enter to Command_L+Right-Arrow (end-of-line)</name>
           <appendix>(+ Control+Enter to Command_L+Down-Arrow) (end-of-buffer)</appendix>
+          <appendix>(except virtual machine, RDC)</appendix>
           <sysctl>remap.enter2fnrightarrow</sysctl>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToKey-- KeyCode::ENTER, VK_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- KeyCode::ENTER,             KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
         </item>
