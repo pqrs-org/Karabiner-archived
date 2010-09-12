@@ -5661,10 +5661,11 @@
           <autogen>--KeyToKey-- KeyCode::X, VK_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
-          <name>Use PC Style Copy/Paste (except Emacs, Terminal, Virtual Machine, RDC, X11, Eclipse)</name>
+          <name>Use PC Style Copy/Paste</name>
           <appendix>(Control+C to Command_L+C)</appendix>
           <appendix>(Control+V to Command_L+V)</appendix>
           <appendix>(Control+X to Command_L+X)</appendix>
+          <appendix>(Except in Terminal, VM, RDC, Emacs, X11, Eclipse)</appendix>
           <sysctl>remap.copy_paste_winstyle_no_term</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
           <autogen>--KeyToKey-- KeyCode::C, VK_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
@@ -5694,25 +5695,51 @@
           <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, VK_SHIFT, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
-          <name>Use PC Style Undo (except Emacs, Terminal, Virtual Machine, RDC, X11, Eclipse)</name>
+          <name>Use PC Style Undo</name>
           <appendix>(Control+Z to Command_L+Z)</appendix>
+          <appendix>(Except in Terminal, VM, RDC, Emacs, X11, Eclipse)</appendix>
           <sysctl>remap.undo_winstyle_no_term</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
           <autogen>--KeyToKey-- KeyCode::Z, VK_CONTROL, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
-          <name>Use PC Style Select All (except Emacs, Terminal, Virtual Machine, RDC, X11, Eclipse)</name>
+          <name>Use PC Style Select All</name>
           <appendix>(Control+A to Command_L+A)</appendix>
+          <appendix>(Except in Terminal, VM, RDC, Emacs, X11, Eclipse)</appendix>
           <sysctl>remap.select_all_winstyle_no_term</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
           <autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::A, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
-          <name>Use PC Style Save (except Emacs, Terminal, Virtual Machine, RDC, X11, Eclipse)</name>
+          <name>Use PC Style Save</name>
           <appendix>(Control+S to Command_L+S)</appendix>
+          <appendix>(Except in Terminal, VM, RDC, Emacs, X11, Eclipse)</appendix>
           <sysctl>remap.save_winstyle_no_term</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
           <autogen>--KeyToKey-- KeyCode::S, VK_CONTROL, KeyCode::S, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
+          <name>Use PC Style New</name>
+          <appendix>(Control+S to Command_L+S)</appendix>
+          <appendix>(Except in Terminal, VM, RDC, Emacs, X11, Eclipse)</appendix>
+          <sysctl>remap.new_winstyle_no_term</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+          <autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::N, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
+          <name>Use PC Style Find</name>
+          <appendix>(Control+F to Command_L+F)</appendix>
+          <appendix>(Control+G to Command_L+G)</appendix>
+          <appendix>(F3 to Command_L+G)</appendix>
+          <appendix>(Control+F3 to Shift+Command_L+G)</appendix>
+          <appendix>(Except in Terminal, VM, RDC, Emacs, X11, Eclipse)</appendix>
+          <sysctl>remap.find_winstyle_no_term</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+          <autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::F, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::G, VK_CONTROL, KeyCode::G, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::G, VK_CONTROL | VK_SHIFT, KeyCode::G, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::F3, VK_CONTROL, KeyCode::G, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::F3, KeyCode::G, ModifierFlag::COMMAND_L</autogen>
         </item>
       </list>
     </item>
