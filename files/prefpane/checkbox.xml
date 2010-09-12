@@ -933,35 +933,38 @@
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::HOME</autogen>
         </item>
         <item>
-          <name>Command_R to Command_L+Left-Arrow (except virtual machine, RDC)</name>
+          <name>Command_R to Command_L+Left-Arrow (beginning-of-line)</name>
+          <appendix>(except virtual machine, RDC)</appendix>
           <sysctl>remap.commandR2commandLleftarrow</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
-          <name>Command_R to Command_L+Left-Arrow (except virtual machine, RDC)</name>
+          <name>Command_R to Command_L+Left-Arrow (beginning-of-line)</name>
           <appendix>(+ Shift+Command_R to Command_L+Shift_L+Left-Arrow,Command_L+C)</appendix>
+          <appendix>(except virtual machine, RDC)</appendix>
           <sysctl>remap.commandR2commandLleftarrow_ex</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, VK_SHIFT, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
-          <name>Command_R to Command_L+Left-Arrow (except virtual machine, RDC)</name>
+          <name>Command_R to Command_L+Left-Arrow (beginning-of-line)</name>
           <appendix>(+ Shift+Command_R to Command_L+Shift_L+Left-Arrow,Control_L+C)</appendix>
+          <appendix>(except virtual machine, RDC)</appendix>
           <sysctl>remap.commandR2commandLleftarrow_ex2</sysctl>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, VK_SHIFT, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
-          <name>Command_R to Command_L+Left-Arrow</name>
+          <name>Command_R to Command_L+Left-Arrow (beginning-of-line)</name>
           <sysctl>remap.commandR2commandLleftarrow_all</sysctl>
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
-          <name>Command_R to Command_L+Left-Arrow</name>
-          <appendix>(+ Control+Command_R, to Command_L+Up-Arrow)</appendix>
+          <name>Command_R to Command_L+Left-Arrow (beginning-of-line)</name>
+          <appendix>(+ Control+Command_R, to Command_L+Up-Arrow) (beginning-of-buffer)</appendix>
           <sysctl>remap.commandR2fnleftarrow</sysctl>
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, VK_CONTROL, KeyCode::CURSOR_UP,   ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- KeyCode::COMMAND_R,             KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
