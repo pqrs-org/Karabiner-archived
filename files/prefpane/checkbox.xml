@@ -7570,6 +7570,11 @@
           <sysctl>remap.uk_section2forwarddelete</sysctl>
           <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::FORWARD_DELETE</autogen>
         </item>
+        <item>
+          <name>Section(§) to LeftClick</name>
+          <sysctl>remap.strangekey_to_leftclick</sysctl>
+          <autogen>--KeyToPointingButton-- KeyCode::UK_SECTION, PointingButton::LEFT</autogen>
+        </item>
       </list>
     </item>
 
