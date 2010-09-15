@@ -1408,6 +1408,12 @@
           <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::END</autogen>
         </item>
         <item>
+          <name>Enter to End (only in virtual machine, RDC)</name>
+          <sysctl>remap.enter2end_vm</sysctl>
+          <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+          <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::END</autogen>
+        </item>
+        <item>
           <name>Enter to Forward Delete</name>
           <sysctl>remap.enter2forwarddelete</sysctl>
           <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::FORWARD_DELETE</autogen>
