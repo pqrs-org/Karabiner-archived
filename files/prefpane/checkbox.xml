@@ -2346,22 +2346,32 @@
           </list>
         </item>
         <item>
+          <name>Change Dot(.) Key</name>
+          <list>
+            <item>
+              <name>Dot(.) to Comma(,)</name>
+              <sysctl>remap.keypaddot2comma</sysctl>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::KEYPAD_COMMA</autogen>
+            </item>
+            <item>
+              <name>Fn+Dot to Fn+Shift+Dot</name>
+              <appendix>(Useful for some keyboard layouts such as French, Italian, etc.)</appendix>
+              <sysctl>remap.fndot2fnshiftdot</sysctl>
+              <autogen>--KeyToKey-- KeyCode::DOT,        ModifierFlag::FN, KeyCode::DOT, ModifierFlag::FN | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, ModifierFlag::FN, KeyCode::DOT, ModifierFlag::FN | ModifierFlag::SHIFT_L</autogen>
+            </item>
+            <item>
+              <name>Shift+Dot(.) to Comma</name>
+              <sysctl>remap.shift_keypad_dot2comma</sysctl>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, ModifierFlag::VK_SHIFT, KeyCode::KEYPAD_COMMA</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Keypad_0 to Shift_L</name>
           <appendix>(+ When you type Keypad_0 only, send Keypad_0) + [KeyRepeat]</appendix>
           <sysctl>remap.keypad0_2_shiftL_keypad0_keyrepeat</sysctl>
           <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::KEYPAD_0, KeyCode::SHIFT_L, KeyCode::KEYPAD_0</autogen>
-        </item>
-        <item>
-          <name>Shift+Dot to Comma</name>
-          <sysctl>remap.shift_keypad_dot2comma</sysctl>
-          <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, ModifierFlag::VK_SHIFT, KeyCode::KEYPAD_COMMA</autogen>
-        </item>
-        <item>
-          <name>Fn+Dot to Fn+Shift+Dot</name>
-          <appendix>(Useful for some keyboard layouts such as French, Italian, etc.)</appendix>
-          <sysctl>remap.fndot2fnshiftdot</sysctl>
-          <autogen>--KeyToKey-- KeyCode::DOT,        ModifierFlag::FN, KeyCode::DOT, ModifierFlag::FN | ModifierFlag::SHIFT_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, ModifierFlag::FN, KeyCode::DOT, ModifierFlag::FN | ModifierFlag::SHIFT_L</autogen>
         </item>
         <item>
           <name>Shift+Enter to Equal</name>
