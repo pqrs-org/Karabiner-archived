@@ -5746,6 +5746,13 @@
           <autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::N, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
+          <name>Use PC Style New Tab In Browser</name>
+          <appendix>(Control+T to Command_L+T)  (only in Firefox, Google Chrome, Opera, Safari)</appendix>
+          <sysctl>remap.copy_paste_winstyle_new_browser_tab</sysctl>
+          <only>FIREFOX, GOOGLE_CHROME, OPERA, SAFARI</only>
+          <autogen>--KeyToKey-- KeyCode::T, VK_CONTROL, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
           <name>Use PC Style Find</name>
           <appendix>(Control+F to Command_L+F)</appendix>
           <appendix>(Control+G to Command_L+G)</appendix>
