@@ -4420,7 +4420,7 @@
           </block>
         </item>
         <item>
-          <name>Simultaneous Key Presses [S+D] to toggle Simultaneous Vi Mode</name>
+          <name>Simultaneous Key Presses [S+D] turns on "Simultaneous Vi Mode"</name>
           <sysctl>remap.simultaneouskeypresses_vimode_sd</sysctl>
           <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode</autogen>
         </item>
@@ -7329,7 +7329,7 @@
           <name>Simultaneous Key Presses</name>
           <list>
             <item>
-              <name>Simultaneous Key Presses [EISUU+KANA] to turn on Vi Mode</name>
+              <name>Simultaneous Key Presses [EISUU+KANA] to toggle Vi Mode</name>
               <sysctl>remap.vimode_toggle_eisuukana</sysctl>
               <autogen>--SimultaneousKeyPresses-- KeyCode::JIS_EISUU, KeyCode::JIS_KANA, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
             </item>
