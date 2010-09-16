@@ -4431,8 +4431,8 @@
             <config_only>option.simultaneouskeypresses_vimode_jkli</config_only>
             <autogen>--KeyToKey-- KeyCode::J, KeyCode::CURSOR_LEFT</autogen>
             <autogen>--KeyToKey-- KeyCode::K, KeyCode::CURSOR_DOWN</autogen>
-            <autogen>--KeyToKey-- KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
             <autogen>--KeyToKey-- KeyCode::I, KeyCode::CURSOR_UP</autogen>
+            <autogen>--KeyToKey-- KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
           </block>
           <block>
             <config_only>option.simultaneouskeypresses_vimode_f_to_fn</config_only>
@@ -4455,6 +4455,16 @@
           <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode</autogen>
         </item>
         <item>
+          <name>Simultaneous Key Presses [Q+W] turns on "Simultaneous Vi Mode"</name>
+          <sysctl>remap.simultaneouskeypresses_vimode_qw</sysctl>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::Q, KeyCode::W, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode</autogen>
+        </item>
+        <item>
+          <name>Simultaneous Key Presses [W+E] turns on "Simultaneous Vi Mode"</name>
+          <sysctl>remap.simultaneouskeypresses_vimode_we</sysctl>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::E, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode</autogen>
+        </item>
+        <item>
           <name>[Option] Mouse Click Support</name>
           <appendix>- U to LeftClick</appendix>
           <appendix>- I to MiddleClick</appendix>
@@ -4472,7 +4482,7 @@
           <sysctl>option.simultaneouskeypresses_vimode_g_to_option</sysctl>
         </item>
         <item>
-          <name>[Option] Use JKLI instead of HJKL</name>
+          <name>[Option] Use JKIL instead of HJKL</name>
           <sysctl>option.simultaneouskeypresses_vimode_jkli</sysctl>
         </item>
       </list>
