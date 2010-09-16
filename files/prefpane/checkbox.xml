@@ -4431,8 +4431,8 @@
             <config_only>option.simultaneouskeypresses_vimode_jkli</config_only>
             <autogen>--KeyToKey-- KeyCode::J, KeyCode::CURSOR_LEFT</autogen>
             <autogen>--KeyToKey-- KeyCode::K, KeyCode::CURSOR_DOWN</autogen>
-            <autogen>--KeyToKey-- KeyCode::L, KeyCode::CURSOR_UP</autogen>
-            <autogen>--KeyToKey-- KeyCode::I, KeyCode::CURSOR_RIGHT</autogen>
+            <autogen>--KeyToKey-- KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
+            <autogen>--KeyToKey-- KeyCode::I, KeyCode::CURSOR_UP</autogen>
           </block>
           <block>
             <config_only>option.simultaneouskeypresses_vimode_f_to_fn</config_only>
