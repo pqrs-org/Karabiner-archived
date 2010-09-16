@@ -4462,6 +4462,16 @@
             <autogen>--KeyToPointingButton-- KeyCode::I, PointingButton::MIDDLE</autogen>
             <autogen>--KeyToPointingButton-- KeyCode::O, PointingButton::RIGHT</autogen>
           </block>
+          <block>
+            <config_only>option.simultaneouskeypresses_vimode_uk_to_shift_l</config_only>
+            <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::SHIFT_L</autogen>
+          </block>
+          <block>
+            <config_only>option.simultaneouskeypresses_vimode_xcv</config_only>
+            <autogen>--KeyToKey-- KeyCode::H, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+            <autogen>--KeyToKey-- KeyCode::U, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+            <autogen>--KeyToKey-- KeyCode::O, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+          </block>
         </item>
         <item>
           <name>Simultaneous Key Presses [S+D] turns on "Simultaneous Vi Mode"</name>
@@ -4504,6 +4514,20 @@
         <item>
           <name>[Option] Use JKIL instead of HJKL</name>
           <sysctl>option.simultaneouskeypresses_vimode_jkli</sysctl>
+        </item>
+        <item>
+          <name>[Option] H, U, O to Command_L + X, C, V</name>
+          <appendix>For Cut, Copy, Paste with H, U, O</appendix>
+          <appendix>(Use with above JKIL option)</appendix>
+          <sysctl>option.simultaneouskeypresses_vimode_xcv</sysctl>
+        </item>
+        <item>
+          <name>[Option] UK Section to Shift L</name>
+          <appendix>I have my UK Section Key set to mouse click.</appendix>
+          <appendix>It is also in the place of the Caps Lock.</appendix>
+          <appendix>It makes sense then use the mouse click to select text</appendix>
+          <appendix>and is also more comfortable when using [Q+W]</appendix>
+          <sysctl>option.simultaneouskeypresses_vimode_uk_to_shift_l</sysctl>
         </item>
       </list>
     </item>
