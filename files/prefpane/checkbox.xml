@@ -1175,6 +1175,11 @@
           <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::COMMAND_R</autogen>
         </item>
         <item>
+          <name>Control_R to Escape</name>
+          <sysctl>remap.controlR2escape</sysctl>
+          <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::ESCAPE</autogen>
+        </item>
+        <item>
           <name>Control_R to RightClick</name>
           <sysctl>remap.controlR2rightclick</sysctl>
           <autogen>--KeyToPointingButton-- KeyCode::CONTROL_R, PointingButton::RIGHT</autogen>
