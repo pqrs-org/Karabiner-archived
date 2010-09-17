@@ -4474,13 +4474,21 @@
             <autogen>--KeyToKey-- KeyCode::D, KeyCode::VK_MODIFIER_EXTRA1</autogen>
             <block>
               <config_not>option.simultaneouskeypresses_vimode_jkli</config_not>
-              <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA1, KeyCode::DELETE</autogen>
-              <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA1, KeyCode::FORWARD_DELETE</autogen>
+              <autogen>--KeyToKey-- KeyCode::H,         ModifierFlag::EXTRA1, KeyCode::DELETE</autogen>
+              <autogen>--KeyToKey-- KeyCode::L,         ModifierFlag::EXTRA1, KeyCode::FORWARD_DELETE</autogen>
+              <autogen>--KeyToKey-- KeyCode::G,         ModifierFlag::EXTRA1, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::EXTRA1, KeyCode::Z, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::K,         ModifierFlag::EXTRA1, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::J,         ModifierFlag::EXTRA1, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
             </block>
             <block>
               <config_only>option.simultaneouskeypresses_vimode_jkli</config_only>
-              <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA1, KeyCode::DELETE</autogen>
-              <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA1, KeyCode::FORWARD_DELETE</autogen>
+              <autogen>--KeyToKey-- KeyCode::J,         ModifierFlag::EXTRA1, KeyCode::DELETE</autogen>
+              <autogen>--KeyToKey-- KeyCode::L,         ModifierFlag::EXTRA1, KeyCode::FORWARD_DELETE</autogen>
+              <autogen>--KeyToKey-- KeyCode::H,         ModifierFlag::EXTRA1, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::EXTRA1, KeyCode::Z, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L </autogen>
+              <autogen>--KeyToKey-- KeyCode::I,         ModifierFlag::EXTRA1, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::K,         ModifierFlag::EXTRA1, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
             </block>
           </block>
           <block>
@@ -4517,9 +4525,21 @@
           </block>
           <block>
             <config_only>option.simultaneouskeypresses_vimode_xcv</config_only>
-            <autogen>--KeyToKey-- KeyCode::H, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+            <autogen>--KeyToKey-- KeyCode::Y, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
             <autogen>--KeyToKey-- KeyCode::U, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
             <autogen>--KeyToKey-- KeyCode::O, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+          </block>
+          <block>
+            <config_only>option.simultaneouskeypresses_vimode_return</config_only>
+            <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::RETURN</autogen>
+          </block>
+          <block>
+            <config_only>option.simultaneouskeypresses_vimode_h_to_esc</config_only>
+            <autogen>--KeyToKey-- KeyCode::H, KeyCode::ESCAPE</autogen>
+          </block>
+          <block>
+            <config_only>option.simultaneouskeypresses_vimode_s_to_shift</config_only>
+            <autogen>--KeyToKey-- KeyCode::S, KeyCode::SHIFT_L</autogen>
           </block>
         </item>
         <item>
@@ -4557,8 +4577,12 @@
         </item>
         <item>
           <name>[Option] D turns on Delete Mode</name>
-          <appendix>(= D+H to Delete)</appendix>
-          <appendix>(= D+L to Forward Delete)</appendix>
+          <appendix>- D+H to Delete</appendix>
+          <appendix>- D+L to Forward Delete</appendix>
+          <appendix>- D+G to Command+Z (Undo)</appendix>
+          <appendix>- D+; to Command+Shift+Z (Redo)</appendix>
+          <appendix>- D+J to Command+Y</appendix>
+          <appendix>- D+K to Command+D</appendix>
           <appendix>Use with [Q+W] or [W+E]</appendix>
           <sysctl>option.simultaneouskeypresses_vimode_d_to_deletemode</sysctl>
         </item>
@@ -4567,9 +4591,8 @@
           <sysctl>option.simultaneouskeypresses_vimode_jkli</sysctl>
         </item>
         <item>
-          <name>[Option] H, U, O to Command_L + X, C, V</name>
-          <appendix>For Cut, Copy, Paste with H, U, O</appendix>
-          <appendix>(Use with above JKIL option)</appendix>
+          <name>[Option] Y, U, O to Command_L + X, C, V</name>
+          <appendix>For Cut, Copy, Paste with Y, U, O</appendix>
           <sysctl>option.simultaneouskeypresses_vimode_xcv</sysctl>
         </item>
         <item>
@@ -4579,6 +4602,20 @@
           <appendix>It makes sense then use the mouse click to select text</appendix>
           <appendix>and is also more comfortable when using [Q+W]</appendix>
           <sysctl>option.simultaneouskeypresses_vimode_uk_to_shift_l</sysctl>
+        </item>
+        <item>
+          <name>[Option] ; to Return</name>
+          <sysctl>option.simultaneouskeypresses_vimode_return</sysctl>
+        </item>
+        <item>
+          <name>[Option] S to Shift_L</name>
+          <appendix>Use with [Q+W] or [W+E]</appendix>
+          <sysctl>option.simultaneouskeypresses_vimode_s_to_shift</sysctl>
+        </item>
+        <item>
+          <name>[Option] H to Esc</name>
+          <appendix>(Use with above JKIL option)</appendix>
+          <sysctl>option.simultaneouskeypresses_vimode_h_to_esc</sysctl>
         </item>
       </list>
     </item>
