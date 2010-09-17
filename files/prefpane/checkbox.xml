@@ -7653,6 +7653,16 @@
       </list>
     </item>
     <item>
+      <name>For Spanish</name>
+      <list>
+        <item>
+          <name>Option_R+4 a Ñ (Option_R+;)</name>
+          <sysctl>remap.pc_applicationoption4n</sysctl>
+          <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::OPTION_R, KeyCode::SEMICOLON, ModifierFlag::OPTION_R</autogen>
+        </item>
+      </list>
+    </item>
+    <item>
       <name>For Swedish</name>
       <list>
         <item>
