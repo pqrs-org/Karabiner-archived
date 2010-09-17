@@ -1815,15 +1815,11 @@
           <sysctl>remap.numlock2f6</sysctl>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::NUMLOCK, KeyCode::F6</autogen>
         </item>
+        <item><name>------------------------------------------------------------</name></item>
         <item>
           <name>NumLock to Music Prev</name>
           <sysctl>remap.numlock2musicprev</sysctl>
           <autogen>--ConsumerToConsumer-- ConsumerKeyCode::NUMLOCK, ConsumerKeyCode::MUSIC_PREV</autogen>
-        </item>
-        <item>
-          <name>Video Mirroring to Music Prev</name>
-          <sysctl>remap.videomirror2musicprev</sysctl>
-          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VIDEO_MIRROR, ConsumerKeyCode::MUSIC_PREV</autogen>
         </item>
         <item>
           <name>Video Mirroring to Music Play/Pause</name>
@@ -1831,22 +1827,45 @@
           <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VIDEO_MIRROR, ConsumerKeyCode::MUSIC_PLAY</autogen>
         </item>
         <item>
+          <name>Keyboard Light Off to Music Next</name>
+          <sysctl>remap.keyboardlightoff2musicnext</sysctl>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_OFF, ConsumerKeyCode::MUSIC_NEXT</autogen>
+        </item>
+        <item><name>------------------------------------------------------------</name></item>
+        <item>
+          <name>Video Mirroring to Music Prev</name>
+          <sysctl>remap.videomirror2musicprev</sysctl>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VIDEO_MIRROR, ConsumerKeyCode::MUSIC_PREV</autogen>
+        </item>
+        <item>
           <name>Keyboard Light Off to Music Play/Pause</name>
           <sysctl>remap.keyboardlightoff2musicplay</sysctl>
           <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_OFF, ConsumerKeyCode::MUSIC_PLAY</autogen>
         </item>
         <item>
-          <name>Keyboard Light OFF to Music Next</name>
-          <sysctl>remap.keyboardlightoff2musicnext</sysctl>
-          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_OFF, ConsumerKeyCode::MUSIC_NEXT</autogen>
-        </item>
-        <item>
-          <name>Keyboard Light LOW to Music Next</name>
+          <name>Keyboard Light Low to Music Next</name>
           <sysctl>remap.keyboardlightlow2musicnext</sysctl>
           <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_LOW, ConsumerKeyCode::MUSIC_NEXT</autogen>
         </item>
+        <item><name>------------------------------------------------------------</name></item>
         <item>
-          <name>Keyboard Light HIGH to Volume Mute</name>
+          <name>Keyboard Light Off to Music Prev</name>
+          <sysctl>remap.keyboardlightoff2musicprev</sysctl>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_OFF, ConsumerKeyCode::MUSIC_PREV</autogen>
+        </item>
+        <item>
+          <name>Keyboard Light Low to Music Play/Pause</name>
+          <sysctl>remap.keyboardlightlow2musicplay</sysctl>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_LOW, ConsumerKeyCode::MUSIC_PLAY</autogen>
+        </item>
+        <item>
+          <name>Keyboard Light High to Music Next</name>
+          <sysctl>remap.keyboardlighthigh2musicnext</sysctl>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_HIGH, ConsumerKeyCode::MUSIC_NEXT</autogen>
+        </item>
+        <item><name>------------------------------------------------------------</name></item>
+        <item>
+          <name>Keyboard Light High to Volume Mute</name>
           <sysctl>remap.keyboardlighthigh2volumemute</sysctl>
           <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_HIGH, ConsumerKeyCode::VOLUME_MUTE</autogen>
         </item>
@@ -4488,6 +4507,7 @@
           <sysctl>remap.simultaneouskeypresses_vimode_we</sysctl>
           <autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::E, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode</autogen>
         </item>
+        <item><name>------------------------------------------------------------</name></item>
         <item>
           <name>[Option] Mouse Click Support</name>
           <appendix>- U to LeftClick</appendix>
