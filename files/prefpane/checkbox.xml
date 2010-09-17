@@ -2127,6 +2127,22 @@
         </item>
         <item><name>------------------------------------------------------------</name></item>
         <item>
+          <name>F8 to Music Prev</name>
+          <sysctl>remap.f8_to_musicprev_all</sysctl>
+          <autogen>--KeyToConsumer-- KeyCode::F8, ConsumerKeyCode::MUSIC_PREV</autogen>
+        </item>
+        <item>
+          <name>F9 to Music Play/Pause</name>
+          <sysctl>remap.f9_to_musicplay_all</sysctl>
+          <autogen>--KeyToConsumer-- KeyCode::F9, ConsumerKeyCode::MUSIC_PLAY</autogen>
+        </item>
+        <item>
+          <name>F10 to Music Next</name>
+          <sysctl>remap.f10_to_musicnext_all</sysctl>
+          <autogen>--KeyToConsumer-- KeyCode::F10, ConsumerKeyCode::MUSIC_NEXT</autogen>
+        </item>
+        <item><name>------------------------------------------------------------</name></item>
+        <item>
           <name>F10 to Volume Mute</name>
           <sysctl>remap.f10_to_volumemute_all</sysctl>
           <autogen>--KeyToConsumer-- KeyCode::F10, ConsumerKeyCode::VOLUME_MUTE</autogen>
