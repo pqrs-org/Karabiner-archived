@@ -4558,9 +4558,9 @@
           <autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::E, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode</autogen>
         </item>
         <item>
-          <name>Simultaneous Key Presses [K+L] turns on "Simultaneous Vi Mode"</name>
-          <sysctl>remap.simultaneouskeypresses_vimode_kl</sysctl>
-          <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::L, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode</autogen>
+          <name>Simultaneous Key Presses [Command_L+Space] turns on "Simultaneous Vi Mode"</name>
+          <sysctl>remap.simultaneouskeypresses_vimode_commandLspace</sysctl>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::COMMAND_L, KeyCode::SPACE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode</autogen>
         </item>
         <item><name>------------------------------------------------------------</name></item>
         <item>
@@ -4617,7 +4617,7 @@
         </item>
         <item>
           <name>[Option] S to Shift_L</name>
-          <appendix>Use with [K+L]</appendix>
+          <appendix>Use with [Command_L+Space]</appendix>
           <appendix>// Apple's keyboard has 2-key rollover.</appendix>
           <appendix>// So, we cannot press Q+W+S or W+E+S at the same time.</appendix>
           <appendix>// If you have high-end keyboards, you can use this option with [Q+W] or [W+E]</appendix>
