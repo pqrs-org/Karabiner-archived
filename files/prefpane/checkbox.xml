@@ -4509,6 +4509,7 @@
           <name>[Option] D turns on Delete Mode</name>
           <appendix>(= D+H to Delete)</appendix>
           <appendix>(= D+L to Forward Delete)</appendix>
+          <appendix>Use with [Q+W] or [W+E]</appendix>
           <sysctl>option.simultaneouskeypresses_vimode_d_to_deletemode</sysctl>
         </item>
         <item>
