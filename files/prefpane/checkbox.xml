@@ -4557,7 +4557,16 @@
           <sysctl>remap.simultaneouskeypresses_vimode_we</sysctl>
           <autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::E, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode</autogen>
         </item>
+        <item>
+          <name>Simultaneous Key Presses [K+L] turns on "Simultaneous Vi Mode"</name>
+          <sysctl>remap.simultaneouskeypresses_vimode_kl</sysctl>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::L, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode</autogen>
+        </item>
         <item><name>------------------------------------------------------------</name></item>
+        <item>
+          <name>[Option] Use JKIL instead of HJKL</name>
+          <sysctl>option.simultaneouskeypresses_vimode_jkli</sysctl>
+        </item>
         <item>
           <name>[Option] Mouse Click Support</name>
           <appendix>- U to LeftClick</appendix>
@@ -4587,18 +4596,17 @@
           <sysctl>option.simultaneouskeypresses_vimode_d_to_deletemode</sysctl>
         </item>
         <item>
-          <name>[Option] Use JKIL instead of HJKL</name>
-          <sysctl>option.simultaneouskeypresses_vimode_jkli</sysctl>
-        </item>
-        <item>
           <name>[Option] Y, U, O to Command_L + X, C, V</name>
           <appendix>For Cut, Copy, Paste with Y, U, O</appendix>
           <sysctl>option.simultaneouskeypresses_vimode_xcv</sysctl>
         </item>
         <item>
-          <name>[Option] UK Section to Shift L</name>
-          <appendix>I have my UK Section Key set to mouse click.</appendix>
-          <appendix>It is also in the place of the Caps Lock.</appendix>
+          <name>[Option] Section(§) to Shift L</name>
+          <appendix>This option becomes more convenient by</appendix>
+          <appendix>using with "For UK Keyboard users &gt; Section(§) to LeftClick".</appendix>
+          <appendix>That changes section key to mouse click.</appendix>
+          <appendix></appendix>
+          <appendix>This is also in the place of the Caps Lock.</appendix>
           <appendix>It makes sense then use the mouse click to select text</appendix>
           <appendix>and is also more comfortable when using [Q+W]</appendix>
           <sysctl>option.simultaneouskeypresses_vimode_uk_to_shift_l</sysctl>
@@ -4609,7 +4617,10 @@
         </item>
         <item>
           <name>[Option] S to Shift_L</name>
-          <appendix>Use with [Q+W] or [W+E]</appendix>
+          <appendix>Use with [K+L]</appendix>
+          <appendix>// Apple's keyboard has 2-key rollover.</appendix>
+          <appendix>// So, we cannot press Q+W+S or W+E+S at the same time.</appendix>
+          <appendix>// If you have high-end keyboards, you can use this option with [Q+W] or [W+E]</appendix>
           <sysctl>option.simultaneouskeypresses_vimode_s_to_shift</sysctl>
         </item>
         <item>
