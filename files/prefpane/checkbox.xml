@@ -1216,6 +1216,11 @@
           <autogen>--KeyToKey-- KeyCode::DELETE, KeyCode::BACKSLASH</autogen>
         </item>
         <item>
+          <name>Delete to CapsLock</name>
+          <sysctl>remap.delete2capslock</sysctl>
+          <autogen>--KeyToKey-- KeyCode::DELETE, KeyCode::CAPSLOCK</autogen>
+        </item>
+        <item>
           <name>Command+Delete to Option_L+Delete</name>
           <sysctl>remap.commandDelete2optionLdelete</sysctl>
           <autogen>--KeyToKey-- KeyCode::DELETE, VK_COMMAND, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
