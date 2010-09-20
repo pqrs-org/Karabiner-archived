@@ -111,6 +111,15 @@
         </item>
 
         <item>
+          <name>Key To XXX(2)</name>
+          <appendix>Option+A to Command_L+Shift_L+Tab</appendix>
+          <appendix>Option+S to Command_L+Tab</appendix>
+          <sysctl>remap.samples_keytokey_key2xxx_2</sysctl>
+          <autogen>--KeyToKey-- KeyCode::A, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::S, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
+        </item>
+
+        <item>
           <name>Modifier To XXX</name>
           <appendix>Shift_R to Command_L+Option_L (Modifier to Modifier+Modifier)</appendix>
           <appendix>Fn+Option_L to Command_L (Modifier+Modifier To Modifier)</appendix>

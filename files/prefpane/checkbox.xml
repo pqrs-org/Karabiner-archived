@@ -4611,6 +4611,11 @@
             <autogen>--KeyToKey-- KeyCode::O, KeyCode::TAB</autogen>
           </block>
           <block>
+            <config_only>option.simultaneouskeypresses_vimode_uo_to_commandtab</config_only>
+            <autogen>--KeyToKey-- KeyCode::U, KeyCode::TAB, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+            <autogen>--KeyToKey-- KeyCode::O, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
+          </block>
+          <block>
             <config_only>option.simultaneouskeypresses_vimode_hsemicolon_to_optionleftright</config_only>
             <autogen>--KeyToKey-- KeyCode::H, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
             <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
@@ -4769,6 +4774,10 @@
         <item>
           <name>[Option] U, O to Tab, Shift+Tab</name>
           <sysctl>option.simultaneouskeypresses_vimode_uo_to_tab</sysctl>
+        </item>
+        <item>
+          <name>[Option] U, O to Command+Tab, Command+Shift+Tab</name>
+          <sysctl>option.simultaneouskeypresses_vimode_uo_to_commandtab</sysctl>
         </item>
         <item>
           <name>[Option] Y, P to Undo, Redo</name>
