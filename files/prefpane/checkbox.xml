@@ -5779,6 +5779,11 @@
             </item>
             <item>
               <name>Application Key to Delete</name>
+              <sysctl>remap.pc_application2delete</sysctl>
+              <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::DELETE</autogen>
+            </item>
+            <item>
+              <name>Application Key to Delete</name>
               <appendix>(+ Command+Application Key to CapsLock)</appendix>
               <sysctl>remap.pc_application2delete_capslock</sysctl>
               <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, VK_COMMAND, KeyCode::CAPSLOCK</autogen>
