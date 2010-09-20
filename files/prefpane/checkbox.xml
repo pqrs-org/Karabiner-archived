@@ -145,6 +145,11 @@
               <autogen>--PointingRelativeToScroll-- PointingButton::NONE, VK_COMMAND | VK_CONTROL</autogen>
             </item>
             <item>
+              <name>Command+CursorMove to ScrollWheel</name>
+              <sysctl>remap.pointing_relative_Control_to_scroll</sysctl>
+              <autogen>--PointingRelativeToScroll-- PointingButton::NONE, VK_COMMAND</autogen>
+            </item>
+            <item>
               <name>Fn+CursorMove to ScrollWheel</name>
               <sysctl>remap.pointing_relative_fn_to_scroll</sysctl>
               <autogen>--PointingRelativeToScroll-- PointingButton::NONE, ModifierFlag::FN</autogen>
@@ -158,6 +163,11 @@
               <name>(Simultaneous) LeftClick+RightClick+CursorMove to ScrollWheel</name>
               <sysctl>remap.pointing_relative_LRClick_to_scroll</sysctl>
               <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_pointing_relative_to_scroll</autogen>
+            </item>
+            <item>
+              <name>Space+CursorMove to ScrollWheel</name>
+              <sysctl>remap.pointing_relative_space_to_scroll</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_pointing_relative_to_scroll , KeyCode::SPACE</autogen>
             </item>
             <item>
               <name>CursorMove to ScrollWheel Option</name>
@@ -628,6 +638,11 @@
           <name>Backquote(`) to F8</name>
           <sysctl>remap.backquote2f8</sysctl>
           <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::F8</autogen>
+        </item>
+        <item>
+          <name>Backquote(`) to LeftClick</name>
+          <sysctl>remap.backquote2LeftClick</sysctl>
+          <autogen>--KeyToPointingButton-- KeyCode::BACKQUOTE, PointingButton::LEFT</autogen>
         </item>
         <item>
           <name>Swap Command+Backquote(`) and Option+Backquote(`)</name>
@@ -4470,8 +4485,34 @@
           <vk_config>true</vk_config>
           <autogen>--ShowStatusMessage-- "Vi Mode"</autogen>
           <block>
+            <config_only>option.pointing_relative_to_scroll_vi_mode</config_only>
+            <autogen>--PointingRelativeToScroll-- PointingButton::NONE</autogen>
+          </block>
+          <block>
             <config_only>option.simultaneouskeypresses_vimode_d_to_deletemode</config_only>
             <autogen>--KeyToKey-- KeyCode::D, KeyCode::VK_MODIFIER_EXTRA1</autogen>
+            <block>
+              <config_not>option.simultaneouskeypresses_vimode_jkli</config_not>
+              <autogen>--KeyToKey-- KeyCode::H,         ModifierFlag::EXTRA1, KeyCode::DELETE</autogen>
+              <autogen>--KeyToKey-- KeyCode::L,         ModifierFlag::EXTRA1, KeyCode::FORWARD_DELETE</autogen>
+              <autogen>--KeyToKey-- KeyCode::G,         ModifierFlag::EXTRA1, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::EXTRA1, KeyCode::Z, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::J,         ModifierFlag::EXTRA1, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::K,         ModifierFlag::EXTRA1, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
+            </block>
+            <block>
+              <config_only>option.simultaneouskeypresses_vimode_jkli</config_only>
+              <autogen>--KeyToKey-- KeyCode::J,         ModifierFlag::EXTRA1, KeyCode::DELETE</autogen>
+              <autogen>--KeyToKey-- KeyCode::L,         ModifierFlag::EXTRA1, KeyCode::FORWARD_DELETE</autogen>
+              <autogen>--KeyToKey-- KeyCode::U,         ModifierFlag::EXTRA1, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::O,         ModifierFlag::EXTRA1, KeyCode::Z, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L </autogen>
+              <autogen>--KeyToKey-- KeyCode::K,         ModifierFlag::EXTRA1, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::I,         ModifierFlag::EXTRA1, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
+            </block>
+          </block>
+          <block>
+            <config_only>option.simultaneouskeypresses_vimode_x_to_deletemode</config_only>
+            <autogen>--KeyToKey-- KeyCode::X, KeyCode::VK_MODIFIER_EXTRA1</autogen>
             <block>
               <config_not>option.simultaneouskeypresses_vimode_jkli</config_not>
               <autogen>--KeyToKey-- KeyCode::H,         ModifierFlag::EXTRA1, KeyCode::DELETE</autogen>
@@ -4541,6 +4582,46 @@
             <config_only>option.simultaneouskeypresses_vimode_s_to_shift</config_only>
             <autogen>--KeyToKey-- KeyCode::S, KeyCode::SHIFT_L</autogen>
           </block>
+          <block>
+            <config_only>option.simultaneouskeypresses_vimode_f_to_leftclick</config_only>
+            <autogen>--KeyToPointingButton-- KeyCode::F, PointingButton::LEFT</autogen>
+          </block>
+          <block>
+            <config_only>option.simultaneouskeypresses_vimode_uo_to_backspacedelete</config_only>
+            <autogen>--KeyToKey-- KeyCode::S, KeyCode::SHIFT_L</autogen>
+          </block>
+          <block>
+            <config_only>option.simultaneouskeypresses_vimode_yp_to_undoredo</config_only>
+            <autogen>--KeyToKey-- KeyCode::Y, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+            <autogen>--KeyToKey-- KeyCode::P, KeyCode::Z, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+          </block>
+          <block>
+            <config_only>option.simultaneouskeypresses_vimode_uo_to_backspacedelete</config_only>
+            <autogen>--KeyToKey-- KeyCode::U, KeyCode::DELETE</autogen>
+            <autogen>--KeyToKey-- KeyCode::O, KeyCode::FORWARD_DELETE</autogen>
+          </block>
+          <block>
+            <config_only>option.simultaneouskeypresses_vimode_uo_to_tab</config_only>
+            <autogen>--KeyToKey-- KeyCode::U, KeyCode::TAB, ModifierFlag::SHIFT_L</autogen>
+            <autogen>--KeyToKey-- KeyCode::O, KeyCode::TAB</autogen>
+          </block>
+          <block>
+            <config_only>option.simultaneouskeypresses_vimode_hsemicolon_to_optionleftright</config_only>
+            <autogen>--KeyToKey-- KeyCode::H, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
+            <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
+          </block>
+          <block>
+            <config_only>option.simultaneouskeypresses_vimode_quote_to_return</config_only>
+            <autogen>--KeyToKey-- KeyCode::QUOTE, KeyCode::RETURN</autogen>
+          </block>
+          <block>
+            <config_only>option.simultaneouskeypresses_vimode_g_to_esc</config_only>
+            <autogen>--KeyToKey-- KeyCode::G, KeyCode::ESCAPE</autogen>
+          </block>
+          <block>
+            <config_only>option.simultaneouskeypresses_vimode_a_to_option</config_only>
+            <autogen>--KeyToKey-- KeyCode::A, KeyCode::OPTION_L</autogen>
+          </block>
         </item>
         <item>
           <name>Simultaneous Key Presses [S+D] turns on "Simultaneous Vi Mode"</name>
@@ -4562,10 +4643,46 @@
           <sysctl>remap.simultaneouskeypresses_vimode_commandLspace</sysctl>
           <autogen>--SimultaneousKeyPresses-- KeyCode::COMMAND_L, KeyCode::SPACE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode</autogen>
         </item>
+        <item>
+          <name>Single Key Press (`) turns on "Simultaneous Vi Mode"</name>
+          <appendix>I replaced CapsLock with this keys</appendix>
+          <sysctl>remap.simultaneouskeypresses_vimode_backquote</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode</autogen>
+        </item>
+        <item>
+          <name>Single Key Press (`) toggles on "Simultaneous Vi Mode"</name>
+          <appendix>I replaced CapsLock with this keys</appendix>
+          <sysctl>remap.simultaneouskeypresses_vimode_backquote_toggle</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::VK_CONFIG_TOGGLE_notsave_simultaneouskeypresses_vimode</autogen>
+        </item>
+        <item>
+          <name>Single Key Press Uk Section turns on "Simultaneous Vi Mode"</name>
+          <appendix>I replaced CapsLock with this key</appendix>
+          <sysctl>remap.simultaneouskeypresses_vimode_uksection</sysctl>
+          <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode</autogen>
+        </item>
+        <item>
+          <name>Single Key Press Space turns on "Simultaneous Vi Mode"</name>
+          <appendix>(+ When you type Space only, send Space) + [KeyRepeat]</appendix>
+          <sysctl>remap.simultaneouskeypresses_vimode_space</sysctl>
+          <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::SPACE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode , KeyCode::SPACE</autogen>
+        </item>
+        <item>
+          <name>Single Key Press Space turns on "Simultaneous Vi Mode"</name>
+          <appendix>(+ When you type Space only, send Space)</appendix>
+          <appendix>Fn+Space to Space</appendix>
+          <sysctl>remap.simultaneouskeypresses_vimode_space_fn</sysctl>
+          <autogen>--KeyToKey-- KeyCode::SPACE, ModifierFlag::FN, KeyCode::SPACE</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode , KeyCode::SPACE</autogen>
+        </item>
         <item><name>------------------------------------------------------------</name></item>
         <item>
           <name>[Option] Use JKIL instead of HJKL</name>
           <sysctl>option.simultaneouskeypresses_vimode_jkli</sysctl>
+        </item>
+        <item>
+          <name>[Option] Scroll with mouse movement while in vi mode</name>
+          <sysctl>option.pointing_relative_to_scroll_vi_mode</sysctl>
         </item>
         <item>
           <name>[Option] Mouse Click Support</name>
@@ -4590,10 +4707,21 @@
           <appendix>- D+L to Forward Delete</appendix>
           <appendix>- D+G to Command+Z (Undo)</appendix>
           <appendix>- D+; to Command+Shift+Z (Redo)</appendix>
-          <appendix>- D+J to Command+Y</appendix>
-          <appendix>- D+K to Command+D</appendix>
-          <appendix>Use with [Q+W] or [W+E]</appendix>
+          <appendix>- D+K to Command+Y</appendix>
+          <appendix>- D+J to Command+D</appendix>
+          <appendix>Use with [Q+W], [W+E] or (`)</appendix>
           <sysctl>option.simultaneouskeypresses_vimode_d_to_deletemode</sysctl>
+        </item>
+        <item>
+          <name>[Option] X turns on Delete Mode</name>
+          <appendix>- X+H to Delete</appendix>
+          <appendix>- X+L to Forward Delete</appendix>
+          <appendix>- X+G to Command+Z (Undo)</appendix>
+          <appendix>- X+; to Command+Shift+Z (Redo)</appendix>
+          <appendix>- X+K to Command+Y</appendix>
+          <appendix>- X+J to Command+D</appendix>
+          <appendix>Use with (`)</appendix>
+          <sysctl>option.simultaneouskeypresses_vimode_x_to_deletemode</sysctl>
         </item>
         <item>
           <name>[Option] Y, U, O to Command_L + X, C, V</name>
@@ -4627,6 +4755,38 @@
           <name>[Option] H to Esc</name>
           <appendix>(Use with above JKIL option)</appendix>
           <sysctl>option.simultaneouskeypresses_vimode_h_to_esc</sysctl>
+        </item>
+        <item>
+          <name>[Option] F to LeftClick</name>
+          <sysctl>option.simultaneouskeypresses_vimode_f_to_leftclick</sysctl>
+        </item>
+        <item>
+          <name>[Option] U, O to Backspace, Delete</name>
+          <sysctl>option.simultaneouskeypresses_vimode_uo_to_backspacedelete</sysctl>
+        </item>
+        <item>
+          <name>[Option] U, O to Tab, Shift+Tab</name>
+          <sysctl>option.simultaneouskeypresses_vimode_uo_to_tab</sysctl>
+        </item>
+        <item>
+          <name>[Option] Y, P to Undo, Redo</name>
+          <sysctl>option.simultaneouskeypresses_vimode_yp_to_undoredo</sysctl>
+        </item>
+        <item>
+          <name>[Option] H, ; to Option+Left, Option+Rigth</name>
+          <sysctl>option.simultaneouskeypresses_vimode_hsemicolon_to_optionleftright</sysctl>
+        </item>
+        <item>
+          <name>[Option] ' to Return</name>
+          <sysctl>option.simultaneouskeypresses_vimode_quote_to_return</sysctl>
+        </item>
+        <item>
+          <name>[Option] G to Esc</name>
+          <sysctl>option.simultaneouskeypresses_vimode_g_to_esc</sysctl>
+        </item>
+        <item>
+          <name>[Option] A to Option_L</name>
+          <sysctl>option.simultaneouskeypresses_vimode_a_to_option</sysctl>
         </item>
       </list>
     </item>
@@ -6259,7 +6419,7 @@
               <autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::COMMAND_R, KeyCode::KEY_6, ModifierFlag::OPTION_L</autogen>
             </item>
           </list>
-       </item>
+        </item>
       </list>
     </item>
     <item>
