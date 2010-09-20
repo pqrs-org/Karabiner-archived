@@ -88,6 +88,7 @@
           <appendix>Shift+E to Control_L+Space (Key+Modifier To Key+Modifier)</appendix>
           <appendix>Shift+F to Option_L+Shift_L (Key+Modifier To Modifier+Modifier)</appendix>
           <appendix>G to CapsLock (To CapsLock)</appendix>
+          <appendix>Shift+Control+H to Option_L+Space</appendix>
           <appendix>Fn+hjkl to Left/Down/Up/Right (Key+Fn to Key) (around KeyPad)</appendix>
           <appendix>1 to A (only if no Modifiers)</appendix>
           <appendix>2 to A (only if ModifierFlag == Shift_L)</appendix>
@@ -100,6 +101,7 @@
           <autogen>--KeyToKey-- KeyCode::E, VK_SHIFT, KeyCode::SPACE, ModifierFlag::CONTROL_L</autogen>
           <autogen>--KeyToKey-- KeyCode::F, VK_SHIFT, KeyCode::SHIFT_L, ModifierFlag::OPTION_L</autogen>
           <autogen>--KeyToKey-- KeyCode::G, KeyCode::CAPSLOCK</autogen>
+          <autogen>--KeyToKey-- KeyCode::H, VK_CONTROL | VK_SHIFT, KeyCode::SPACE, ModifierFlag::OPTION_L</autogen>
           <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::FN, KeyCode::CURSOR_LEFT</autogen>
           <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::FN, KeyCode::CURSOR_DOWN</autogen>
           <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::FN, KeyCode::CURSOR_UP</autogen>
