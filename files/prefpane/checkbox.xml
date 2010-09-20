@@ -4645,19 +4645,16 @@
         </item>
         <item>
           <name>Single Key Press (`) turns on "Simultaneous Vi Mode"</name>
-          <appendix>I replaced CapsLock with this keys</appendix>
           <sysctl>remap.simultaneouskeypresses_vimode_backquote</sysctl>
           <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode</autogen>
         </item>
         <item>
           <name>Single Key Press (`) toggles on "Simultaneous Vi Mode"</name>
-          <appendix>I replaced CapsLock with this keys</appendix>
           <sysctl>remap.simultaneouskeypresses_vimode_backquote_toggle</sysctl>
           <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::VK_CONFIG_TOGGLE_notsave_simultaneouskeypresses_vimode</autogen>
         </item>
         <item>
           <name>Single Key Press Uk Section turns on "Simultaneous Vi Mode"</name>
-          <appendix>I replaced CapsLock with this key</appendix>
           <sysctl>remap.simultaneouskeypresses_vimode_uksection</sysctl>
           <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode</autogen>
         </item>
@@ -4773,7 +4770,8 @@
           <sysctl>option.simultaneouskeypresses_vimode_yp_to_undoredo</sysctl>
         </item>
         <item>
-          <name>[Option] H, ; to Option+Left, Option+Rigth</name>
+          <name>[Option] H, ; to Option+Left, Option+Right</name>
+          <appendix>(Use with above JKIL option)</appendix>
           <sysctl>option.simultaneouskeypresses_vimode_hsemicolon_to_optionleftright</sysctl>
         </item>
         <item>
