@@ -156,6 +156,8 @@
           <appendix>Control+D to Shift_L+A, Control_L+F (Key+Modifier To)</appendix>
           <appendix>E to Type "http://pqrs.org/macosx/keyremap4macbook/"</appendix>
           <appendix>F to CapsLock,A,S,D,CapsLock</appendix>
+          <appendix>H to CapsLock,A,S</appendix>
+          <appendix>G to Option_L,Shift_L,A,S</appendix>
           <sysctl>remap.samples_keytokey_combination</sysctl>
           <autogen>--KeyToKey-- KeyCode::A, KeyCode::B, KeyCode::C</autogen>
           <autogen>--KeyToKey-- KeyCode::B, KeyCode::A, KeyCode::B, KeyCode::C, ModifierFlag::SHIFT_L, KeyCode::D, KeyCode::P, ModifierFlag::CONTROL_L</autogen>
@@ -164,6 +166,8 @@
           <autogen>--KeyToKey-- KeyCode::D, VK_CONTROL, KeyCode::A, ModifierFlag::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
           <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::NONE, KeyCode::H, KeyCode::T, KeyCode::T, KeyCode::P, KeyCode::SEMICOLON, ModifierFlag::SHIFT_L, KeyCode::SLASH, KeyCode::SLASH, KeyCode::P, KeyCode::Q, KeyCode::R, KeyCode::S, KeyCode::DOT, KeyCode::O, KeyCode::R, KeyCode::G, KeyCode::SLASH, KeyCode::M, KeyCode::A, KeyCode::C, KeyCode::O, KeyCode::S, KeyCode::X, KeyCode::SLASH, KeyCode::K, KeyCode::E, KeyCode::Y, KeyCode::R, KeyCode::E, KeyCode::M, KeyCode::A, KeyCode::P, KeyCode::KEY_4, KeyCode::M, KeyCode::A, KeyCode::C, KeyCode::B, KeyCode::O, KeyCode::O, KeyCode::K, KeyCode::SLASH</autogen>
           <autogen>--KeyToKey-- KeyCode::F, KeyCode::CAPSLOCK, KeyCode::A, KeyCode::S, KeyCode::D, KeyCode::CAPSLOCK</autogen>
+          <autogen>--KeyToKey-- KeyCode::H, KeyCode::CAPSLOCK, KeyCode::A, KeyCode::S</autogen>
+          <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::SHIFT_L, KeyCode::A, KeyCode::S</autogen>
         </item>
 
         <item>

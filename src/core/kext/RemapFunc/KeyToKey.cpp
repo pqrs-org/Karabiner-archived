@@ -144,8 +144,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               KeyboardType keyboardType = remapParams.params.keyboardType;
 
               EventOutputQueue::FireKey::fire_downup(f, (*toKeys_)[i].key, keyboardType);
-              KeyboardRepeat::primitive_add(EventType::DOWN, f, (*toKeys_)[i].key, keyboardType);
-              KeyboardRepeat::primitive_add(EventType::UP,   f, (*toKeys_)[i].key, keyboardType);
+              KeyboardRepeat::primitive_add_downup(f, (*toKeys_)[i].key, keyboardType);
 
               FlagStatus::temporary_decrease((*toKeys_)[i].flags);
             }
