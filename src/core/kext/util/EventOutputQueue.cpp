@@ -241,20 +241,22 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   EventOutputQueue::FireKey::fire_downup(Flags flags, KeyCode key, KeyboardType keyboardType)
   {
-    Flags f = key.getModifierFlag();
+    ModifierFlag f = key.getModifierFlag();
 
     if (f != ModifierFlag::NONE) {
+      FlagStatus::ScopedTemporaryFlagsChanger stfc(flags);
+
       // We operate FlagStatus for the case "key == KeyCode::CAPSLOCK".
       FlagStatus::increase(f);
       {
-        Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, flags | f, key, keyboardType, false));
+        Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, FlagStatus::makeFlags(), key, keyboardType, false));
         if (! ptr) return;
         FireKey::fire(*ptr);
       }
 
       FlagStatus::decrease(f);
       {
-        Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, flags, key, keyboardType, false));
+        Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, FlagStatus::makeFlags(), key, keyboardType, false));
         if (! ptr) return;
         FireKey::fire(*ptr);
       }
