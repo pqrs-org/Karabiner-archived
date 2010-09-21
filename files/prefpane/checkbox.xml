@@ -4538,6 +4538,28 @@
             </block>
           </block>
           <block>
+            <config_only>option.simultaneouskeypresses_vimode_f_to_deletemode</config_only>
+            <autogen>--KeyToKey-- KeyCode::F, KeyCode::VK_MODIFIER_EXTRA1</autogen>
+            <block>
+              <config_not>option.simultaneouskeypresses_vimode_jkli</config_not>
+              <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA1, KeyCode::DELETE</autogen>
+              <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA1, KeyCode::FORWARD_DELETE</autogen>
+              <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::EXTRA1, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::EXTRA1, KeyCode::Z, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA1, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA1, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
+            </block>
+            <block>
+              <config_only>option.simultaneouskeypresses_vimode_jkli</config_only>
+              <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA1, KeyCode::DELETE</autogen>
+              <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA1, KeyCode::FORWARD_DELETE</autogen>
+              <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::EXTRA1, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::EXTRA1, KeyCode::Z, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA1, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::EXTRA1, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
+            </block>
+          </block>
+          <block>
             <config_not>option.simultaneouskeypresses_vimode_jkli</config_not>
             <autogen>--KeyToKey-- KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
             <autogen>--KeyToKey-- KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
@@ -4584,6 +4606,10 @@
             <autogen>--KeyToKey-- KeyCode::H, KeyCode::ESCAPE</autogen>
           </block>
           <block>
+            <config_only>option.simultaneouskeypresses_vimode_y_to_esc</config_only>
+            <autogen>--KeyToKey-- KeyCode::Y, KeyCode::ESCAPE</autogen>
+          </block>
+          <block>
             <config_only>option.simultaneouskeypresses_vimode_s_to_shift</config_only>
             <autogen>--KeyToKey-- KeyCode::S, KeyCode::SHIFT_L</autogen>
           </block>
@@ -4592,13 +4618,14 @@
             <autogen>--KeyToPointingButton-- KeyCode::F, PointingButton::LEFT</autogen>
           </block>
           <block>
-            <config_only>option.simultaneouskeypresses_vimode_uo_to_backspacedelete</config_only>
-            <autogen>--KeyToKey-- KeyCode::S, KeyCode::SHIFT_L</autogen>
-          </block>
-          <block>
             <config_only>option.simultaneouskeypresses_vimode_yp_to_undoredo</config_only>
             <autogen>--KeyToKey-- KeyCode::Y, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
             <autogen>--KeyToKey-- KeyCode::P, KeyCode::Z, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+          </block>
+          <block>
+            <config_only>option.simultaneouskeypresses_vimode_hquote_to_undoredo</config_only>
+            <autogen>--KeyToKey-- KeyCode::H, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+            <autogen>--KeyToKey-- KeyCode::QUOTE, KeyCode::Z, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
           </block>
           <block>
             <config_only>option.simultaneouskeypresses_vimode_uo_to_backspacedelete</config_only>
@@ -4631,6 +4658,61 @@
           <block>
             <config_only>option.simultaneouskeypresses_vimode_a_to_option</config_only>
             <autogen>--KeyToKey-- KeyCode::A, KeyCode::OPTION_L</autogen>
+          </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::D, KeyCode::SHIFT_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_d_to_shift</config_only>
+          </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::D, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_d_to_command_d</config_only>
+          </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::E, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_e_to_command_y</config_only>
+          </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::Y, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_y_to_command_y</config_only>
+          </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::S, KeyCode::COMMAND_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_s_to_command</config_only>
+          </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::S, KeyCode::OPTION_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_s_to_option</config_only>
+          </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::D, KeyCode::COMMAND_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_d_to_command</config_only>
+          </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::A, KeyCode::SHIFT_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_a_to_shift</config_only>
+          </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::F, KeyCode::SHIFT_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_f_to_shift</config_only>
+          </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::F, KeyCode::OPTION_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_f_to_option</config_only>
+          </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::G, KeyCode::COMMAND_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_g_to_command</config_only>
+          </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::S, KeyCode::S, ModifierFlag::CONTROL_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_s_to_control_s</config_only>
+          </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::Z, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+            <autogen>--KeyToKey-- KeyCode::X, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+            <autogen>--KeyToKey-- KeyCode::C, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+            <autogen>--KeyToKey-- KeyCode::V, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_zxcv_to_command_zxcv</config_only>
           </block>
         </item>
         <item>
@@ -4731,6 +4813,17 @@
           <sysctl>option.simultaneouskeypresses_vimode_x_to_deletemode</sysctl>
         </item>
         <item>
+          <name>[Option] F turns on Delete Mode</name>
+          <appendix>- F+H to Delete</appendix>
+          <appendix>- F+L to Forward Delete</appendix>
+          <appendix>- F+G to Command+Z (Undo)</appendix>
+          <appendix>- F+; to Command+Shift+Z (Redo)</appendix>
+          <appendix>- F+K to Command+Y</appendix>
+          <appendix>- F+J to Command+D</appendix>
+          <appendix>Use with (Space)</appendix>
+          <sysctl>option.simultaneouskeypresses_vimode_f_to_deletemode</sysctl>
+        </item>
+        <item>
           <name>[Option] Y, U, O to Command_L + X, C, V</name>
           <appendix>For Cut, Copy, Paste with Y, U, O</appendix>
           <sysctl>option.simultaneouskeypresses_vimode_xcv</sysctl>
@@ -4764,6 +4857,11 @@
           <sysctl>option.simultaneouskeypresses_vimode_h_to_esc</sysctl>
         </item>
         <item>
+          <name>[Option] Y to Esc</name>
+          <appendix>(Use with above JKIL option)</appendix>
+          <sysctl>option.simultaneouskeypresses_vimode_y_to_esc</sysctl>
+        </item>
+        <item>
           <name>[Option] F to LeftClick</name>
           <sysctl>option.simultaneouskeypresses_vimode_f_to_leftclick</sysctl>
         </item>
@@ -4784,7 +4882,12 @@
           <sysctl>option.simultaneouskeypresses_vimode_yp_to_undoredo</sysctl>
         </item>
         <item>
-          <name>[Option] H, ; to Option+Left, Option+Right</name>
+          <name>[Option] H,' to Undo, Redo</name>
+          <appendix>(Use with above JKIL option)</appendix>
+          <sysctl>option.simultaneouskeypresses_vimode_hquote_to_undoredo</sysctl>
+        </item>
+        <item>
+          <name>[Option] H, ; to Option+Left, Option+Rigth</name>
           <appendix>(Use with above JKIL option)</appendix>
           <sysctl>option.simultaneouskeypresses_vimode_hsemicolon_to_optionleftright</sysctl>
         </item>
@@ -4797,8 +4900,60 @@
           <sysctl>option.simultaneouskeypresses_vimode_g_to_esc</sysctl>
         </item>
         <item>
-          <name>[Option] A to Option_L</name>
+          <name>[Option] A to Option</name>
           <sysctl>option.simultaneouskeypresses_vimode_a_to_option</sysctl>
+        </item>
+        <item>
+          <name>[Option] D to Shift</name>
+          <sysctl>option.simultaneouskeypresses_vimode_d_to_shift</sysctl>
+        </item>
+        <item>
+          <name>[Option] D to Command+D</name>
+          <sysctl>option.simultaneouskeypresses_vimode_d_to_command_d</sysctl>
+        </item>
+        <item>
+          <name>[Option] E to Command+Y</name>
+          <sysctl>option.simultaneouskeypresses_vimode_e_to_command_y</sysctl>
+        </item>
+        <item>
+          <name>[Option] Y to Command+Y</name>
+          <sysctl>option.simultaneouskeypresses_vimode_y_to_command_y</sysctl>
+        </item>
+        <item>
+          <name>[Option] S to Command</name>
+          <sysctl>option.simultaneouskeypresses_vimode_s_to_command</sysctl>
+        </item>
+        <item>
+          <name>[Option] S to Option</name>
+          <sysctl>option.simultaneouskeypresses_vimode_s_to_option</sysctl>
+        </item>
+        <item>
+          <name>[Option] D to Command</name>
+          <sysctl>option.simultaneouskeypresses_vimode_d_to_command</sysctl>
+        </item>
+        <item>
+          <name>[Option] A to Shift</name>
+          <sysctl>option.simultaneouskeypresses_vimode_a_to_shift</sysctl>
+        </item>
+        <item>
+          <name>[Option] F to Shift</name>
+          <sysctl>option.simultaneouskeypresses_vimode_f_to_shift</sysctl>
+        </item>
+        <item>
+          <name>[Option] F to Option</name>
+          <sysctl>option.simultaneouskeypresses_vimode_f_to_option</sysctl>
+        </item>
+        <item>
+          <name>[Option] G to Command</name>
+          <sysctl>option.simultaneouskeypresses_vimode_g_to_command</sysctl>
+        </item>
+        <item>
+          <name>[Option] S to Control+S</name>
+          <sysctl>option.simultaneouskeypresses_vimode_s_to_control_s</sysctl>
+        </item>
+        <item>
+          <name>[Option] ZXCV to Command+ZXCV</name>
+          <sysctl>option.simultaneouskeypresses_vimode_zxcv_to_command_zxcv</sysctl>
         </item>
       </list>
     </item>
