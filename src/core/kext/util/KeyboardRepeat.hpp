@@ -46,6 +46,9 @@ namespace org_pqrs_KeyRemap4MacBook {
                               Flags flags,
                               KeyCode key,
                               KeyboardType keyboardType);
+    static void primitive_add_downup(Flags flags,
+                                     KeyCode key,
+                                     KeyboardType keyboardType);
 
     static void primitive_add(EventType eventType,
                               Flags flags,
@@ -56,11 +59,17 @@ namespace org_pqrs_KeyRemap4MacBook {
   private:
     class Item : public List::Item {
     public:
-      Item(const Params_KeyboardEventCallBack& p)        : params(p) {}
-      Item(const Params_KeyboardSpecialEventCallback& p) : params(p) {}
+      enum Type {
+        TYPE_NORMAL,
+        TYPE_DOWNUP,
+      };
+
+      Item(const Params_KeyboardEventCallBack& p, Type t)        : params(p), type(t) {}
+      Item(const Params_KeyboardSpecialEventCallback& p, Type t) : params(p), type(t) {}
       virtual ~Item(void) {}
 
       ParamsUnion params;
+      Type type;
     };
 
     // ------------------------------------------------------------
@@ -71,7 +80,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void primitive_add_nolock(EventType eventType,
                                      Flags flags,
                                      KeyCode key,
-                                     KeyboardType keyboardType);
+                                     KeyboardType keyboardType,
+                                     Item::Type type = Item::TYPE_NORMAL);
     static void primitive_add_nolock(EventType eventType,
                                      Flags flags,
                                      ConsumerKeyCode key);

@@ -47,7 +47,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   KeyboardRepeat::primitive_add_nolock(EventType eventType,
                                        Flags flags,
                                        KeyCode key,
-                                       KeyboardType keyboardType)
+                                       KeyboardType keyboardType,
+                                       Item::Type type)
   {
     if (! queue_) return;
     if (key == KeyCode::VK_NONE) return;
@@ -60,7 +61,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                                                    true));
     if (! ptr) return;
     Params_KeyboardEventCallBack& params = *ptr;
-    queue_->push_back(new Item(params));
+    queue_->push_back(new Item(params, type));
   }
 
   void
@@ -78,7 +79,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                                                                  true));
     if (! ptr) return;
     Params_KeyboardSpecialEventCallback& params = *ptr;
-    queue_->push_back(new Item(params));
+    queue_->push_back(new Item(params, Item::TYPE_NORMAL));
   }
 
   void
@@ -89,6 +90,15 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
     primitive_add_nolock(eventType, flags, key, keyboardType);
+  }
+
+  void
+  KeyboardRepeat::primitive_add_downup(Flags flags,
+                                       KeyCode key,
+                                       KeyboardType keyboardType)
+  {
+    IOLockWrapper::ScopedLock lk(timer_.getlock());
+    primitive_add_nolock(EventType::DOWN, flags, key, keyboardType, Item::TYPE_DOWNUP);
   }
 
   void
@@ -219,13 +229,27 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           Params_KeyboardEventCallBack* params = (p->params).params.params_KeyboardEventCallBack;
           if (params) {
-            Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(params->eventType,
-                                                                                           params->flags,
-                                                                                           params->key,
-                                                                                           params->keyboardType,
-                                                                                           queue_->size() == 1 ? true : false));
-            if (ptr) {
-              EventOutputQueue::FireKey::fire(*ptr);
+            switch (p->type) {
+              case Item::TYPE_NORMAL:
+              {
+                Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(params->eventType,
+                                                                                               params->flags,
+                                                                                               params->key,
+                                                                                               params->keyboardType,
+                                                                                               queue_->size() == 1 ? true : false));
+                if (ptr) {
+                  EventOutputQueue::FireKey::fire(*ptr);
+                }
+                break;
+              }
+
+              case Item::TYPE_DOWNUP:
+              {
+                EventOutputQueue::FireKey::fire_downup(params->flags,
+                                                       params->key,
+                                                       params->keyboardType);
+                break;
+              }
             }
           }
           break;
