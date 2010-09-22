@@ -169,8 +169,7 @@
           <appendix>Control+D to Shift_L+A, Control_L+F (Key+Modifier To)</appendix>
           <appendix>E to Type "http://pqrs.org/macosx/keyremap4macbook/"</appendix>
           <appendix>F to CapsLock,A,S,D,CapsLock</appendix>
-          <appendix>G to CapsLock,A,S</appendix>
-          <appendix>H to Option_L,Shift_L,A,S</appendix>
+          <appendix>G to Option_L,Shift_L,A,S</appendix>
           <sysctl>remap.samples_keytokey_combination</sysctl>
           <autogen>--KeyToKey-- KeyCode::A, KeyCode::B, KeyCode::C</autogen>
           <autogen>--KeyToKey-- KeyCode::B, KeyCode::A, KeyCode::B, KeyCode::C, ModifierFlag::SHIFT_L, KeyCode::D, KeyCode::P, ModifierFlag::CONTROL_L</autogen>
@@ -179,8 +178,7 @@
           <autogen>--KeyToKey-- KeyCode::D, VK_CONTROL, KeyCode::A, ModifierFlag::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
           <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::NONE, KeyCode::H, KeyCode::T, KeyCode::T, KeyCode::P, KeyCode::SEMICOLON, ModifierFlag::SHIFT_L, KeyCode::SLASH, KeyCode::SLASH, KeyCode::P, KeyCode::Q, KeyCode::R, KeyCode::S, KeyCode::DOT, KeyCode::O, KeyCode::R, KeyCode::G, KeyCode::SLASH, KeyCode::M, KeyCode::A, KeyCode::C, KeyCode::O, KeyCode::S, KeyCode::X, KeyCode::SLASH, KeyCode::K, KeyCode::E, KeyCode::Y, KeyCode::R, KeyCode::E, KeyCode::M, KeyCode::A, KeyCode::P, KeyCode::KEY_4, KeyCode::M, KeyCode::A, KeyCode::C, KeyCode::B, KeyCode::O, KeyCode::O, KeyCode::K, KeyCode::SLASH</autogen>
           <autogen>--KeyToKey-- KeyCode::F, KeyCode::CAPSLOCK, KeyCode::A, KeyCode::S, KeyCode::D, KeyCode::CAPSLOCK</autogen>
-          <autogen>--KeyToKey-- KeyCode::G, KeyCode::CAPSLOCK, KeyCode::A, KeyCode::S</autogen>
-          <autogen>--KeyToKey-- KeyCode::H, KeyCode::OPTION_L, KeyCode::SHIFT_L, KeyCode::A, KeyCode::S</autogen>
+          <autogen>--KeyToKey-- KeyCode::G, KeyCode::OPTION_L, KeyCode::SHIFT_L, KeyCode::A, KeyCode::S</autogen>
         </item>
 
         <item>
@@ -188,6 +186,15 @@
           <appendix>Shift_L to A,Shift_L+S,D (if no other modifiers pressed)</appendix>
           <sysctl>remap.samples_keytokey_combination_2</sysctl>
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::A, KeyCode::S, ModifierFlag::SHIFT_L, KeyCode::D</autogen>
+        </item>
+
+        <item>
+          <name>Combination(3)</name>
+          <appendix>A to CapsLock,A,S</appendix>
+          <appendix>// This has a issue with key repeat.</appendix>
+          <appendix>// In key repeat, CapsLock status is not changed.</appendix>
+          <sysctl>remap.samples_keytokey_combination_3</sysctl>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::CAPSLOCK, KeyCode::A, KeyCode::S</autogen>
         </item>
       </list>
     </item>
