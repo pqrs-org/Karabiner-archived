@@ -120,6 +120,19 @@
         </item>
 
         <item>
+          <name>Key To XXX(3)</name>
+          <appendix>A to CapsLock</appendix>
+          <appendix>CapsLock+S to Shift_L+1</appendix>
+          <appendix>CapsLock+O to Option_L+2</appendix>
+          <appendix>CapsLock+C to Command_L+3</appendix>
+          <sysctl>remap.samples_keytokey_key2xxx_3</sysctl>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::CAPSLOCK</autogen>
+          <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::CAPSLOCK, KeyCode::KEY_1, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::CAPSLOCK, KeyCode::KEY_2, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::CAPSLOCK, KeyCode::KEY_3, ModifierFlag::COMMAND_L</autogen>
+        </item>
+
+        <item>
           <name>Modifier To XXX</name>
           <appendix>Shift_R to Command_L+Option_L (Modifier to Modifier+Modifier)</appendix>
           <appendix>Fn+Option_L to Command_L (Modifier+Modifier To Modifier)</appendix>
