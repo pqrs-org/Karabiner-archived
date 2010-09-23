@@ -4,6 +4,20 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
+    TimerWrapper PointingRelativeToScroll::timer_;
+
+    void
+    PointingRelativeToScroll::static_initialize(IOWorkLoop& workloop)
+    {
+      timer_.initialize(&workloop, NULL, PointingRelativeToScroll::fireMomentumScroll);
+    }
+
+    void
+    PointingRelativeToScroll::static_terminate(void)
+    {
+      timer_.terminate();
+    }
+
     void
     PointingRelativeToScroll::initialize(void)
     {}
@@ -179,6 +193,14 @@ namespace org_pqrs_KeyRemap4MacBook {
       EventOutputQueue::FireScrollWheel::fire(*ptr);
 
       absolute_distance_ += abs(delta1) + abs(delta2);
+    }
+
+    void
+    PointingRelativeToScroll::fireMomentumScroll(OSObject* owner, IOTimerEventSource* sender)
+    {
+      IOLockWrapper::ScopedLock lk(timer_.getlock());
+
+      // XXX: Implement me!!!
     }
   }
 }

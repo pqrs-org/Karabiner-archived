@@ -9,6 +9,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     class PointingRelativeToScroll {
     public:
+      static void static_initialize(IOWorkLoop& workloop);
+      static void static_terminate(void);
+
       PointingRelativeToScroll(void) : index_(0) {}
       void initialize(void);
       void terminate(void);
@@ -29,6 +32,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       unsigned int abs(int v) { return v > 0 ? v : -v; }
       void toscroll(RemapPointingParams_relative& remapParams);
 
+      static void fireMomentumScroll(OSObject* owner, IOTimerEventSource* sender);
+
       // ----------
       size_t index_;
       FromKeyChecker fromkeychecker_;
@@ -47,6 +52,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       IntervalChecker fixation_begin_ic_;
       int fixation_delta1;
       int fixation_delta2;
+
+      // ----------
+      static TimerWrapper timer_;
     };
   }
 }
