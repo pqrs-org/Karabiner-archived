@@ -6,6 +6,7 @@
 #include "Client.hpp"
 #include "FlagStatus.hpp"
 #include "RemapClass.hpp"
+#include "RemapFunc/PointingRelativeToScroll.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   Config config;
@@ -27,6 +28,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         FlagStatus::lock_clear();
         FlagStatus::sticky_clear();
         RemapClassManager::refresh();
+        RemapFunc::PointingRelativeToScroll::cancelMomentumScroll();
 
         // StatusMessageWindowParameter
         {

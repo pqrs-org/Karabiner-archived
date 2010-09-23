@@ -4,6 +4,7 @@
 #include "RemapFuncBase.hpp"
 #include "FromKeyChecker.hpp"
 #include "IntervalChecker.hpp"
+#include "TimerWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
@@ -11,6 +12,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     public:
       static void static_initialize(IOWorkLoop& workloop);
       static void static_terminate(void);
+      static void cancelMomentumScroll(void);
 
       PointingRelativeToScroll(void) : index_(0) {}
       void initialize(void);
@@ -28,9 +30,12 @@ namespace org_pqrs_KeyRemap4MacBook {
         // see IOHIPointing.cpp in darwin.
         POINTING_FIXED_SCALE = 65536, // (== << 16)
         POINTING_POINT_SCALE = 10, // (== SCROLL_WHEEL_TO_PIXEL_SCALE >> 16)
+
+        MOMENTUM_INTERVAL = 10,
       };
       unsigned int abs(int v) { return v > 0 ? v : -v; }
       void toscroll(RemapPointingParams_relative& remapParams);
+      static void firescroll(int delta1, int delta2);
 
       static void fireMomentumScroll(OSObject* owner, IOTimerEventSource* sender);
 
@@ -55,6 +60,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ----------
       static TimerWrapper timer_;
+      static int momentumDelta1_;
+      static int momentumDelta2_;
     };
   }
 }

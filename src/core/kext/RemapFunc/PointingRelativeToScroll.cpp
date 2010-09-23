@@ -5,17 +5,27 @@
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     TimerWrapper PointingRelativeToScroll::timer_;
+    int PointingRelativeToScroll::momentumDelta1_;
+    int PointingRelativeToScroll::momentumDelta2_;
 
     void
     PointingRelativeToScroll::static_initialize(IOWorkLoop& workloop)
     {
       timer_.initialize(&workloop, NULL, PointingRelativeToScroll::fireMomentumScroll);
+      momentumDelta1_ = 0;
+      momentumDelta2_ = 0;
     }
 
     void
     PointingRelativeToScroll::static_terminate(void)
     {
       timer_.terminate();
+    }
+
+    void
+    PointingRelativeToScroll::cancelMomentumScroll(void)
+    {
+      timer_.cancelTimeout();
     }
 
     void
@@ -159,7 +169,17 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
       }
 
-      // ----------------------------------------
+      firescroll(delta1, delta2);
+      absolute_distance_ += abs(delta1) + abs(delta2);
+
+      momentumDelta1_ = delta1 * 16;
+      momentumDelta2_ = delta2 * 16;
+      timer_.setTimeoutMS(MOMENTUM_INTERVAL);
+    }
+
+    void
+    PointingRelativeToScroll::firescroll(int delta1, int delta2)
+    {
       if (delta1 == 0 && delta2 == 0) return;
 
       short deltaAxis1;
@@ -191,8 +211,6 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                                                            0));
       if (! ptr) return;
       EventOutputQueue::FireScrollWheel::fire(*ptr);
-
-      absolute_distance_ += abs(delta1) + abs(delta2);
     }
 
     void
@@ -200,7 +218,23 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       IOLockWrapper::ScopedLock lk(timer_.getlock());
 
-      // XXX: Implement me!!!
+      if (momentumDelta1_ == 0 && momentumDelta2_ == 0) return;
+
+      firescroll(momentumDelta1_ / 16, momentumDelta2_ / 16);
+
+      /*  */ if (momentumDelta1_ > 0) {
+        --momentumDelta1_;
+      } else if (momentumDelta1_ < 0) {
+        ++momentumDelta1_;
+      }
+
+      /*  */ if (momentumDelta2_ > 0) {
+        --momentumDelta2_;
+      } else if (momentumDelta2_ < 0) {
+        ++momentumDelta2_;
+      }
+
+      timer_.setTimeoutMS(MOMENTUM_INTERVAL);
     }
   }
 }
