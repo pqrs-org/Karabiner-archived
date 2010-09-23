@@ -178,7 +178,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       firescroll(delta1, delta2);
       absolute_distance_ += abs(delta1) + abs(delta2);
 
-      momentumCounter_ = absmax(delta1, delta2);
+      momentumCounter_ = absmin(absmax(delta1, delta2), MOMENTUM_COUNT_MAX);
       momentumDelta1_ = delta1;
       momentumDelta2_ = delta2;
       timer_.setTimeoutMS(MOMENTUM_INTERVAL);
@@ -231,7 +231,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       --momentumCounter_;
       if (momentumCounter_ < 0) {
-        momentumCounter_ = absmax(momentumDelta1_, momentumDelta2_);
+        momentumCounter_ = absmin(absmax(momentumDelta1_, momentumDelta2_), MOMENTUM_COUNT_MAX);
 
         momentumDelta1_ /= 2;
         momentumDelta2_ /= 2;
