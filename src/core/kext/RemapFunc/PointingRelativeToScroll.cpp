@@ -5,6 +5,7 @@
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     TimerWrapper PointingRelativeToScroll::timer_;
+    int PointingRelativeToScroll::momentumCounter_;
     int PointingRelativeToScroll::momentumDelta1_;
     int PointingRelativeToScroll::momentumDelta2_;
 
@@ -12,6 +13,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     PointingRelativeToScroll::static_initialize(IOWorkLoop& workloop)
     {
       timer_.initialize(&workloop, NULL, PointingRelativeToScroll::fireMomentumScroll);
+      momentumCounter_ = 0;
       momentumDelta1_ = 0;
       momentumDelta2_ = 0;
     }
@@ -99,6 +101,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     doremap:
       FlagStatus::temporary_decrease(fromFlags_);
       toscroll(remapParams);
+      // We need to call temporary_increase.
+      // Because when SimultaneousKeyPresses is enabled, temporary flags will be reset in unexpected timing.
+      // So, we need to restore temporary flags explicitly.
+      FlagStatus::temporary_increase(fromFlags_);
 
       return true;
     }
@@ -172,8 +178,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       firescroll(delta1, delta2);
       absolute_distance_ += abs(delta1) + abs(delta2);
 
-      momentumDelta1_ = delta1 * 16;
-      momentumDelta2_ = delta2 * 16;
+      momentumCounter_ = absmax(delta1, delta2);
+      momentumDelta1_ = delta1;
+      momentumDelta2_ = delta2;
       timer_.setTimeoutMS(MOMENTUM_INTERVAL);
     }
 
@@ -220,18 +227,16 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       if (momentumDelta1_ == 0 && momentumDelta2_ == 0) return;
 
-      firescroll(momentumDelta1_ / 16, momentumDelta2_ / 16);
+      firescroll(momentumDelta1_, momentumDelta2_);
 
-      /*  */ if (momentumDelta1_ > 0) {
-        --momentumDelta1_;
-      } else if (momentumDelta1_ < 0) {
-        ++momentumDelta1_;
-      }
+      --momentumCounter_;
+      if (momentumCounter_ < 0) {
+        momentumCounter_ = absmax(momentumDelta1_, momentumDelta2_);
 
-      /*  */ if (momentumDelta2_ > 0) {
-        --momentumDelta2_;
-      } else if (momentumDelta2_ < 0) {
-        ++momentumDelta2_;
+        momentumDelta1_ /= 2;
+        momentumDelta2_ /= 2;
+        if (abs(momentumDelta1_) <= 2) momentumDelta1_ = 0;
+        if (abs(momentumDelta2_) <= 2) momentumDelta2_ = 0;
       }
 
       timer_.setTimeoutMS(MOMENTUM_INTERVAL);

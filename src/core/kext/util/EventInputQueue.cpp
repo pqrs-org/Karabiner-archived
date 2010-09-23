@@ -365,11 +365,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         enqueue_(*ptr);
       }
     }
-    if (dx != 0 || dy != 0) {
-      Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, dx, dy, PointingButton::NONE, false));
-      if (! ptr) return;
-      enqueue_(*ptr);
-    }
+    Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, dx, dy, PointingButton::NONE, false));
+    if (! ptr) return;
+    enqueue_(*ptr);
 
     // remap keys
     RemapClassManager::remap_simultaneouskeypresses();
