@@ -199,6 +199,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         ButtonStatus::reset();
         EventOutputQueue::FireModifiers::fire(FlagStatus::makeFlags());
         EventOutputQueue::FireRelativePointer::fire();
+        RemapFunc::PointingRelativeToScroll::cancelMomentumScroll();
         PressDownKeys::clear();
       }
     }
