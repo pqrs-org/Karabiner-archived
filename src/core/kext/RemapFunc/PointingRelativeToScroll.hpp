@@ -31,10 +31,14 @@ namespace org_pqrs_KeyRemap4MacBook {
         POINTING_FIXED_SCALE = 65536, // (== << 16)
         POINTING_POINT_SCALE = 10, // (== SCROLL_WHEEL_TO_PIXEL_SCALE >> 16)
 
-        MOMENTUM_INTERVAL = 10,
+        MOMENTUM_INTERVAL = 50,
       };
-      unsigned int abs(int v) { return v > 0 ? v : -v; }
       void toscroll(RemapPointingParams_relative& remapParams);
+      static unsigned int abs(int v) { return v > 0 ? v : -v; }
+      static unsigned int absmax(int v1, int v2) {
+        int a1 = abs(v1); int a2 = abs(v2);
+        return (a1 > a2) ? a1 : a2;
+      }
       static void firescroll(int delta1, int delta2);
 
       static void fireMomentumScroll(OSObject* owner, IOTimerEventSource* sender);
@@ -60,6 +64,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ----------
       static TimerWrapper timer_;
+      static int momentumCounter_;
       static int momentumDelta1_;
       static int momentumDelta2_;
     };
