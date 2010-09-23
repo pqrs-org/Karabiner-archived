@@ -19,6 +19,7 @@
 #include "util/TimerWrapper.hpp"
 #include "RemapFunc/HoldingKeyToKey.hpp"
 #include "RemapFunc/KeyOverlaidModifier.hpp"
+#include "RemapFunc/PointingRelativeToScroll.hpp"
 #include "VirtualKey.hpp"
 
 #include <sys/errno.h>
@@ -77,6 +78,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         EventOutputQueue::initialize(*workLoop);
         RemapFunc::HoldingKeyToKey::static_initialize(*workLoop);
         RemapFunc::KeyOverlaidModifier::static_initialize(*workLoop);
+        RemapFunc::PointingRelativeToScroll::static_initialize(*workLoop);
         ListHookedKeyboard::static_initialize(*workLoop);
       }
 
@@ -99,6 +101,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       EventOutputQueue::terminate();
       RemapFunc::HoldingKeyToKey::static_terminate();
       RemapFunc::KeyOverlaidModifier::static_terminate();
+      RemapFunc::PointingRelativeToScroll::static_terminate();
       ListHookedKeyboard::static_terminate();
 
       if (workLoop) {
