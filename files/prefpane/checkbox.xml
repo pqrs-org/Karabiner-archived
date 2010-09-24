@@ -4642,6 +4642,11 @@
             <autogen>--KeyToKey-- KeyCode::O, KeyCode::TAB</autogen>
           </block>
           <block>
+            <config_only>option.simultaneouskeypresses_vimode_tab_to_commandtab</config_only>
+            <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::SHIFT_L, KeyCode::TAB, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+            <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
+          </block>
+          <block>
             <config_only>option.simultaneouskeypresses_vimode_uo_to_commandtab</config_only>
             <autogen>--KeyToKey-- KeyCode::U, KeyCode::TAB, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
             <autogen>--KeyToKey-- KeyCode::O, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
@@ -4696,6 +4701,10 @@
             <config_only>option.simultaneouskeypresses_vimode_a_to_shift</config_only>
           </block>
           <block>
+            <autogen>--KeyToKey-- KeyCode::F, KeyCode::COMMAND_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_f_to_command</config_only>
+          </block>
+          <block>
             <autogen>--KeyToKey-- KeyCode::F, KeyCode::SHIFT_L</autogen>
             <config_only>option.simultaneouskeypresses_vimode_f_to_shift</config_only>
           </block>
@@ -4714,6 +4723,10 @@
           <block>
             <autogen>--KeyToKey-- KeyCode::Z, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
             <autogen>--KeyToKey-- KeyCode::X, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::SLASH, KeyCode::SLASH, ModifierFlag::COMMAND_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_slash_to_command_slash</config_only>
+          </block>
             <autogen>--KeyToKey-- KeyCode::C, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
             <autogen>--KeyToKey-- KeyCode::V, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
             <config_only>option.simultaneouskeypresses_vimode_zxcv_to_command_zxcv</config_only>
@@ -4878,6 +4891,10 @@
           <sysctl>option.simultaneouskeypresses_vimode_uo_to_tab</sysctl>
         </item>
         <item>
+          <name>[Option] Tab to Command+Tab, Command+Shift+Tab</name>
+          <sysctl>option.simultaneouskeypresses_vimode_tab_to_commandtab</sysctl>
+        </item>
+        <item>
           <name>[Option] U, O to Command+Tab, Command+Shift+Tab</name>
           <sysctl>option.simultaneouskeypresses_vimode_uo_to_commandtab</sysctl>
         </item>
@@ -4944,6 +4961,10 @@
           <sysctl>option.simultaneouskeypresses_vimode_f_to_shift</sysctl>
         </item>
         <item>
+          <name>[Option] F to Command</name>
+          <sysctl>option.simultaneouskeypresses_vimode_f_to_command</sysctl>
+        </item>
+        <item>
           <name>[Option] F to Option</name>
           <sysctl>option.simultaneouskeypresses_vimode_f_to_option</sysctl>
         </item>
@@ -4954,6 +4975,10 @@
         <item>
           <name>[Option] S to Control+S</name>
           <sysctl>option.simultaneouskeypresses_vimode_s_to_control_s</sysctl>
+        </item>
+        <item>
+          <name>[Option] / to Command+/</name>
+          <sysctl>option.simultaneouskeypresses_vimode_slash_to_command_slash</sysctl>
         </item>
         <item>
           <name>[Option] ZXCV to Command+ZXCV</name>
