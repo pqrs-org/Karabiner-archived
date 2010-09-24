@@ -103,15 +103,24 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     object_->setActive(true);
-    return timer_->setTimeoutMS(ms);
+    IOReturn retval = timer_->setTimeoutMS(ms);
+    if (retval != kIOReturnSuccess) {
+      IOLOG_WARN("setTimeoutMS is failed\n");
+      object_->setActive(false);
+    }
+    return retval;
   }
 
   void
   TimerWrapper::cancelTimeout(void)
   {
+    if (! object_) return;
+    IOLockWrapper::ScopedLock lk(object_->getlock());
+
     if (timer_) {
       timer_->cancelTimeout();
     }
+    object_->setActive(false);
   }
 
   void
