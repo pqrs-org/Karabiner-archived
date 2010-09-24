@@ -78,8 +78,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         absolute_distance_ = 0;
         begin_ic_.begin();
-        buffered_delta1 = 0;
-        buffered_delta2 = 0;
+        buffered_delta1_ = 0;
+        buffered_delta2_ = 0;
 
         goto doremap;
       }
@@ -117,18 +117,25 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // buffer events in 20ms (60fps)
       const uint32_t BUFFER_MILLISEC = 20;
+      const uint32_t BUFFER_CANCEL_THRESHOLD = 100;
 
-      buffered_delta1 += -remapParams.params.dy;
-      buffered_delta2 += -remapParams.params.dx;
+      if (buffered_ic_.getmillisec() > BUFFER_CANCEL_THRESHOLD) {
+        buffered_delta1_ = 0;
+        buffered_delta2_ = 0;
+        cancelMomentumScroll();
+      }
+
+      buffered_delta1_ += -remapParams.params.dy;
+      buffered_delta2_ += -remapParams.params.dx;
 
       if (buffered_ic_.getmillisec() < BUFFER_MILLISEC) {
         return;
       }
 
-      int delta1 = buffered_delta1;
-      int delta2 = buffered_delta2;
-      buffered_delta1 = 0;
-      buffered_delta2 = 0;
+      int delta1 = buffered_delta1_;
+      int delta2 = buffered_delta2_;
+      buffered_delta1_ = 0;
+      buffered_delta2_ = 0;
       buffered_ic_.begin();
 
       // ----------------------------------------
@@ -155,32 +162,36 @@ namespace org_pqrs_KeyRemap4MacBook {
         const uint32_t FIXATION_MILLISEC = 300;
         if (fixation_ic_.getmillisec() > FIXATION_MILLISEC) {
           fixation_begin_ic_.begin();
-          fixation_delta1 = 0;
-          fixation_delta2 = 0;
+          fixation_delta1_ = 0;
+          fixation_delta2_ = 0;
         }
         fixation_ic_.begin();
 
-        if (fixation_delta1 > fixation_delta2 * 2) {
+        if (fixation_delta1_ > fixation_delta2_ * 2) {
           delta2 = 0;
         }
-        if (fixation_delta2 > fixation_delta1 * 2) {
+        if (fixation_delta2_ > fixation_delta1_ * 2) {
           delta1 = 0;
         }
 
         // Only first 1000ms performs the addition of fixation_delta1, fixation_delta2.
         const uint32_t FIXATION_EARLY_MILLISEC  = 1000;
         if (fixation_begin_ic_.getmillisec() < FIXATION_EARLY_MILLISEC) {
-          if (delta1 == 0) fixation_delta2 += abs2;
-          if (delta2 == 0) fixation_delta1 += abs1;
+          if (delta1 == 0) fixation_delta2_ += abs2;
+          if (delta2 == 0) fixation_delta1_ += abs1;
         }
       }
 
       firescroll(delta1, delta2);
       absolute_distance_ += abs(delta1) + abs(delta2);
 
+      // abs value is larger, or sign is different
+      if (abs(delta1) > abs(momentumDelta1_) || (delta1 * momentumDelta1_) < 0 ||
+          abs(delta2) > abs(momentumDelta2_) || (delta2 * momentumDelta2_) < 0) {
+        momentumDelta1_ = delta1;
+        momentumDelta2_ = delta2;
+      }
       momentumCounter_ = absmin(absmax(delta1, delta2), MOMENTUM_COUNT_MAX);
-      momentumDelta1_ = delta1;
-      momentumDelta2_ = delta2;
       timer_.setTimeoutMS(MOMENTUM_INTERVAL);
     }
 
@@ -225,18 +236,22 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       IOLockWrapper::ScopedLock lk(timer_.getlock());
 
+      if (config.option_pointing_disable_momentum_scroll) return;
       if (momentumDelta1_ == 0 && momentumDelta2_ == 0) return;
 
       firescroll(momentumDelta1_, momentumDelta2_);
 
-      --momentumCounter_;
-      if (momentumCounter_ < 0) {
-        momentumCounter_ = absmin(absmax(momentumDelta1_, momentumDelta2_), MOMENTUM_COUNT_MAX);
+      if (! config.option_pointing_endless_momentum_scroll) {
+        --momentumCounter_;
+        if (momentumCounter_ < 0) {
+          momentumCounter_ = absmin(absmax(momentumDelta1_, momentumDelta2_), MOMENTUM_COUNT_MAX);
 
-        momentumDelta1_ /= 2;
-        momentumDelta2_ /= 2;
-        if (abs(momentumDelta1_) <= 2) momentumDelta1_ = 0;
-        if (abs(momentumDelta2_) <= 2) momentumDelta2_ = 0;
+          momentumDelta1_ /= 2;
+          momentumDelta2_ /= 2;
+
+          if (abs(momentumDelta1_) <= 2) momentumDelta1_ = 0;
+          if (abs(momentumDelta2_) <= 2) momentumDelta2_ = 0;
+        }
       }
 
       timer_.setTimeoutMS(MOMENTUM_INTERVAL);

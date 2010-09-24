@@ -59,13 +59,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       IntervalChecker begin_ic_;
 
       IntervalChecker buffered_ic_;
-      int buffered_delta1;
-      int buffered_delta2;
+      int buffered_delta1_;
+      int buffered_delta2_;
 
       IntervalChecker fixation_ic_;
       IntervalChecker fixation_begin_ic_;
-      int fixation_delta1;
-      int fixation_delta2;
+      int fixation_delta1_;
+      int fixation_delta2_;
 
       // ----------
       static TimerWrapper timer_;
