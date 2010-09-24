@@ -177,12 +177,20 @@
                   <sysctl>option.pointing_enable_scrollwheel_fixation</sysctl>
                 </item>
                 <item>
-                  <name>Disable Horizontal ScrollWheel</name>
+                  <name>Disable Horizontal Scroll</name>
                   <sysctl>option.pointing_disable_horizontal_scroll</sysctl>
                 </item>
                 <item>
-                  <name>Disable Vertical ScrollWheel</name>
+                  <name>Disable Vertical Scroll</name>
                   <sysctl>option.pointing_disable_vertical_scroll</sysctl>
+                </item>
+                <item>
+                  <name>Disable Momentum Scroll</name>
+                  <sysctl>option.pointing_disable_momentum_scroll</sysctl>
+                </item>
+                <item>
+                  <name>Endless Momentum Scroll</name>
+                  <sysctl>option.pointing_endless_momentum_scroll</sysctl>
                 </item>
               </list>
             </item>
