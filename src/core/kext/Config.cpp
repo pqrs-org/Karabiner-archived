@@ -28,7 +28,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         FlagStatus::lock_clear();
         FlagStatus::sticky_clear();
         RemapClassManager::refresh();
-        RemapFunc::PointingRelativeToScroll::cancelMomentumScroll();
+        RemapFunc::PointingRelativeToScroll::cancelScroll();
 
         // StatusMessageWindowParameter
         {
