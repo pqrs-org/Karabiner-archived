@@ -31,6 +31,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         POINTING_FIXED_SCALE = 65536, // (== << 16)
         POINTING_POINT_SCALE = 10, // (== SCROLL_WHEEL_TO_PIXEL_SCALE >> 16)
 
+        DELTA_SCALE = 128,
+
         MOMENTUM_INTERVAL = 50,
         MOMENTUM_COUNT_MAX = 10,
       };

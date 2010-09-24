@@ -86,7 +86,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // last time
       if (! fromkeychecker_.isactive()) {
-        const uint32_t DISTANCE_THRESHOLD = 5;
+        const uint32_t DISTANCE_THRESHOLD = 5 * DELTA_SCALE;
         const uint32_t TIME_THRESHOLD = 300;
         if (absolute_distance_ <= DISTANCE_THRESHOLD && begin_ic_.getmillisec() < TIME_THRESHOLD) {
           // Fire by a click event.
@@ -182,6 +182,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
       }
 
+      delta1 *= DELTA_SCALE;
+      delta2 *= DELTA_SCALE;
+
       firescroll(delta1, delta2);
       absolute_distance_ += abs(delta1) + abs(delta2);
 
@@ -191,7 +194,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         momentumDelta1_ = delta1;
         momentumDelta2_ = delta2;
       }
-      momentumCounter_ = absmin(absmax(delta1, delta2), MOMENTUM_COUNT_MAX);
+      momentumCounter_ = 0;
       timer_.setTimeoutMS(MOMENTUM_INTERVAL);
     }
 
@@ -207,21 +210,14 @@ namespace org_pqrs_KeyRemap4MacBook {
       SInt32 pointDelta1;
       SInt32 pointDelta2;
 
-      deltaAxis1 = (delta1 * config.pointing_relative2scroll_rate) / 1024;
-      if (deltaAxis1 == 0 && delta1 != 0) {
-        deltaAxis1 = delta1 > 0 ? 1 : -1;
-      }
-      deltaAxis2 = (delta2 * config.pointing_relative2scroll_rate) / 1024;
-      if (deltaAxis2 == 0 && delta2 != 0) {
-        deltaAxis2 = delta2 > 0 ? 1 : -1;
-      }
+      deltaAxis1 = (delta1 * config.pointing_relative2scroll_rate) / 1024 / DELTA_SCALE;
+      deltaAxis2 = (delta2 * config.pointing_relative2scroll_rate) / 1024 / DELTA_SCALE;
 
-      // ----------------------------------------
-      fixedDelta1 = (delta1 * config.pointing_relative2scroll_rate) * (POINTING_FIXED_SCALE / 1024);
-      fixedDelta2 = (delta2 * config.pointing_relative2scroll_rate) * (POINTING_FIXED_SCALE / 1024);
+      fixedDelta1 = (delta1 * config.pointing_relative2scroll_rate) * (POINTING_FIXED_SCALE / 1024) / DELTA_SCALE;
+      fixedDelta2 = (delta2 * config.pointing_relative2scroll_rate) * (POINTING_FIXED_SCALE / 1024) / DELTA_SCALE;
 
-      pointDelta1 = (delta1 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1024;
-      pointDelta2 = (delta2 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1024;
+      pointDelta1 = (delta1 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1024 / DELTA_SCALE;
+      pointDelta2 = (delta2 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1024 / DELTA_SCALE;
 
       Params_ScrollWheelEventCallback::auto_ptr ptr(Params_ScrollWheelEventCallback::alloc(deltaAxis1,  deltaAxis2, 0,
                                                                                            fixedDelta1, fixedDelta2, 0,
@@ -239,21 +235,17 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (config.option_pointing_disable_momentum_scroll) return;
       if (momentumDelta1_ == 0 && momentumDelta2_ == 0) return;
 
-      firescroll(momentumDelta1_, momentumDelta2_);
-
       if (! config.option_pointing_endless_momentum_scroll) {
-        --momentumCounter_;
-        if (momentumCounter_ < 0) {
-          momentumCounter_ = absmin(absmax(momentumDelta1_, momentumDelta2_), MOMENTUM_COUNT_MAX);
+        ++momentumCounter_;
+        if (momentumCounter_ >= MOMENTUM_COUNT_MAX) {
+          momentumCounter_ = 0;
 
-          momentumDelta1_ /= 2;
-          momentumDelta2_ /= 2;
-
-          if (abs(momentumDelta1_) <= 2) momentumDelta1_ = 0;
-          if (abs(momentumDelta2_) <= 2) momentumDelta2_ = 0;
+          momentumDelta1_ /= 4;
+          momentumDelta2_ /= 4;
         }
       }
 
+      firescroll(momentumDelta1_, momentumDelta2_);
       timer_.setTimeoutMS(MOMENTUM_INTERVAL);
     }
   }
