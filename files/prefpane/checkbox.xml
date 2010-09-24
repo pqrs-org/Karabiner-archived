@@ -4721,12 +4721,12 @@
             <config_only>option.simultaneouskeypresses_vimode_s_to_control_s</config_only>
           </block>
           <block>
-            <autogen>--KeyToKey-- KeyCode::Z, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::X, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
-          <block>
             <autogen>--KeyToKey-- KeyCode::SLASH, KeyCode::SLASH, ModifierFlag::COMMAND_L</autogen>
             <config_only>option.simultaneouskeypresses_vimode_slash_to_command_slash</config_only>
           </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::Z, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+            <autogen>--KeyToKey-- KeyCode::X, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
             <autogen>--KeyToKey-- KeyCode::C, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
             <autogen>--KeyToKey-- KeyCode::V, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
             <config_only>option.simultaneouskeypresses_vimode_zxcv_to_command_zxcv</config_only>
@@ -4891,7 +4891,8 @@
           <sysctl>option.simultaneouskeypresses_vimode_uo_to_tab</sysctl>
         </item>
         <item>
-          <name>[Option] Tab to Command+Tab, Command+Shift+Tab</name>
+          <name>[Option] Tab to Command+Tab (Shift+Tab to Command+Shift+Tab)</name>
+          <!-- #include "include/lazy_recommendation.xml" -->
           <sysctl>option.simultaneouskeypresses_vimode_tab_to_commandtab</sysctl>
         </item>
         <item>
