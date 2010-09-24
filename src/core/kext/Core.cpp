@@ -202,7 +202,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         PressDownKeys::clear();
       }
 
-      RemapFunc::PointingRelativeToScroll::cancelMomentumScroll();
+      RemapFunc::PointingRelativeToScroll::cancelScroll();
     }
 
     void
@@ -225,7 +225,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
       }
 
-      RemapFunc::PointingRelativeToScroll::cancelMomentumScroll();
+      RemapFunc::PointingRelativeToScroll::cancelScroll();
     }
 
     void
@@ -251,7 +251,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       params.log();
       EventOutputQueue::FireScrollWheel::fire(params);
 
-      RemapFunc::PointingRelativeToScroll::cancelMomentumScroll();
+      RemapFunc::PointingRelativeToScroll::cancelScroll();
     }
   }
 }

@@ -4,6 +4,7 @@
 #include "RemapFuncBase.hpp"
 #include "FromKeyChecker.hpp"
 #include "IntervalChecker.hpp"
+#include "List.hpp"
 #include "TimerWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -12,7 +13,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     public:
       static void static_initialize(IOWorkLoop& workloop);
       static void static_terminate(void);
-      static void cancelMomentumScroll(void);
+      static void cancelScroll(void);
 
       PointingRelativeToScroll(void) : index_(0) {}
       void initialize(void);
@@ -32,10 +33,18 @@ namespace org_pqrs_KeyRemap4MacBook {
         POINTING_POINT_SCALE = 10, // (== SCROLL_WHEEL_TO_PIXEL_SCALE >> 16)
 
         DELTA_SCALE = 128,
-
-        MOMENTUM_INTERVAL = 50,
-        MOMENTUM_COUNT_MAX = 10,
+        SCROLL_INTERVAL_MS = 10,
       };
+
+      class Item : public List::Item {
+      public:
+        Item(int d1, int d2) : delta1(d1), delta2(d2) {}
+        virtual ~Item(void) {}
+
+        int delta1;
+        int delta2;
+      };
+
       void toscroll(RemapPointingParams_relative& remapParams);
       static unsigned int abs(int v) { return v > 0 ? v : -v; }
       static unsigned int absmax(int v1, int v2) {
@@ -48,7 +57,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
       static void firescroll(int delta1, int delta2);
 
-      static void fireMomentumScroll(OSObject* owner, IOTimerEventSource* sender);
+      static void callback(OSObject* owner, IOTimerEventSource* sender);
 
       // ----------
       size_t index_;
@@ -60,9 +69,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       unsigned int absolute_distance_;
       IntervalChecker begin_ic_;
 
-      IntervalChecker buffered_ic_;
-      int buffered_delta1_;
-      int buffered_delta2_;
+      IntervalChecker chained_ic_;
+      int chained_delta1_;
+      int chained_delta2_;
 
       IntervalChecker fixation_ic_;
       IntervalChecker fixation_begin_ic_;
@@ -70,10 +79,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       int fixation_delta2_;
 
       // ----------
+      static List* queue_;
+
       static TimerWrapper timer_;
-      static int momentumCounter_;
-      static int momentumDelta1_;
-      static int momentumDelta2_;
     };
   }
 }

@@ -4,33 +4,34 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
+    List* PointingRelativeToScroll::queue_ = NULL;
     TimerWrapper PointingRelativeToScroll::timer_;
-    int PointingRelativeToScroll::momentumCounter_;
-    int PointingRelativeToScroll::momentumDelta1_;
-    int PointingRelativeToScroll::momentumDelta2_;
 
     void
     PointingRelativeToScroll::static_initialize(IOWorkLoop& workloop)
     {
-      timer_.initialize(&workloop, NULL, PointingRelativeToScroll::fireMomentumScroll);
-      momentumCounter_ = 0;
-      momentumDelta1_ = 0;
-      momentumDelta2_ = 0;
+      queue_ = new List();
+      timer_.initialize(&workloop, NULL, PointingRelativeToScroll::callback);
     }
 
     void
     PointingRelativeToScroll::static_terminate(void)
     {
       timer_.terminate();
+
+      if (queue_) {
+        delete queue_;
+      }
     }
 
     void
-    PointingRelativeToScroll::cancelMomentumScroll(void)
+    PointingRelativeToScroll::cancelScroll(void)
     {
       timer_.cancelTimeout();
-      momentumCounter_ = 0;
-      momentumDelta1_ = 0;
-      momentumDelta2_ = 0;
+
+      if (queue_) {
+        queue_->clear();
+      }
     }
 
     void
@@ -80,18 +81,18 @@ namespace org_pqrs_KeyRemap4MacBook {
         ButtonStatus::increase(fromButton_);
 
         absolute_distance_ = 0;
-        begin_ic_.begin();
-        buffered_delta1_ = 0;
-        buffered_delta2_ = 0;
+        chained_ic_.begin();
+        chained_delta1_ = 0;
+        chained_delta2_ = 0;
 
         goto doremap;
       }
 
       // last time
       if (! fromkeychecker_.isactive()) {
-        cancelMomentumScroll();
+        cancelScroll();
 
-        const uint32_t DISTANCE_THRESHOLD = 5 * DELTA_SCALE;
+        const uint32_t DISTANCE_THRESHOLD = 5;
         const uint32_t TIME_THRESHOLD = 300;
         if (absolute_distance_ <= DISTANCE_THRESHOLD && begin_ic_.getmillisec() < TIME_THRESHOLD) {
           // Fire by a click event.
@@ -117,31 +118,20 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     PointingRelativeToScroll::toscroll(RemapPointingParams_relative& remapParams)
     {
+      if (! queue_) return;
+
       // ----------------------------------------
-      // Buffer processing
-
-      // buffer events in 20ms (60fps)
-      const uint32_t BUFFER_MILLISEC = 20;
-      const uint32_t BUFFER_CANCEL_THRESHOLD = 100;
-
-      if (buffered_ic_.getmillisec() > BUFFER_CANCEL_THRESHOLD) {
-        buffered_delta1_ = 0;
-        buffered_delta2_ = 0;
-        cancelMomentumScroll();
+      const uint32_t CANCEL_THRESHOLD = 100;
+      if (chained_ic_.getmillisec() > CANCEL_THRESHOLD) {
+        chained_delta1_ = 0;
+        chained_delta2_ = 0;
+        cancelScroll();
       }
 
-      buffered_delta1_ += -remapParams.params.dy;
-      buffered_delta2_ += -remapParams.params.dx;
+      int delta1 = -remapParams.params.dy;
+      int delta2 = -remapParams.params.dx;
 
-      if (buffered_ic_.getmillisec() < BUFFER_MILLISEC) {
-        return;
-      }
-
-      int delta1 = buffered_delta1_;
-      int delta2 = buffered_delta2_;
-      buffered_delta1_ = 0;
-      buffered_delta2_ = 0;
-      buffered_ic_.begin();
+      chained_ic_.begin();
 
       // ----------------------------------------
       if (config.option_pointing_disable_vertical_scroll) delta1 = 0;
@@ -187,21 +177,17 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
       }
 
-      delta1 *= DELTA_SCALE;
-      delta2 *= DELTA_SCALE;
-
-      // abs value is larger, or sign is different
-      if (abs(delta1) > abs(momentumDelta1_) || (delta1 * momentumDelta1_) < 0 ||
-          abs(delta2) > abs(momentumDelta2_) || (delta2 * momentumDelta2_) < 0) {
-        momentumDelta1_ = delta1;
-        momentumDelta2_ = delta2;
+      // ------------------------------------------------------------
+      if (abs(delta1) > abs(chained_delta1_) || delta1 * chained_delta1_ < 0 ||
+          abs(delta2) > abs(chained_delta2_) || delta2 * chained_delta2_ < 0) {
+        chained_delta1_ = delta1;
+        chained_delta2_ = delta2;
       }
 
-      firescroll(momentumDelta1_, momentumDelta2_);
-      absolute_distance_ += abs(momentumDelta1_) + abs(momentumDelta2_);
+      absolute_distance_ += abs(chained_delta1_) + abs(chained_delta2_);
+      queue_->push_back(new Item(chained_delta1_ * DELTA_SCALE, chained_delta2_ * DELTA_SCALE));
 
-      momentumCounter_ = 0;
-      timer_.setTimeoutMS(MOMENTUM_INTERVAL);
+      timer_.setTimeoutMS(SCROLL_INTERVAL_MS, false);
     }
 
     void
@@ -223,33 +209,48 @@ namespace org_pqrs_KeyRemap4MacBook {
       pointDelta1 = (delta1 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1024 / DELTA_SCALE;
       pointDelta2 = (delta2 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1024 / DELTA_SCALE;
 
+      // see IOHIDSystem/IOHIDevicePrivateKeys.h about options.
+      const int kScrollTypeContinuous_ = 0x0001;
+      int options = kScrollTypeContinuous_;
+
       Params_ScrollWheelEventCallback::auto_ptr ptr(Params_ScrollWheelEventCallback::alloc(deltaAxis1,  deltaAxis2, 0,
                                                                                            fixedDelta1, fixedDelta2, 0,
                                                                                            pointDelta1, pointDelta2, 0,
-                                                                                           0));
+                                                                                           options));
       if (! ptr) return;
       EventOutputQueue::FireScrollWheel::fire(*ptr);
     }
 
     void
-    PointingRelativeToScroll::fireMomentumScroll(OSObject* owner, IOTimerEventSource* sender)
+    PointingRelativeToScroll::callback(OSObject* owner, IOTimerEventSource* sender)
     {
       IOLockWrapper::ScopedLock lk(timer_.getlock());
 
-      if (momentumDelta1_ == 0 && momentumDelta2_ == 0) return;
+      if (! queue_) return;
 
-      ++momentumCounter_;
-      if (momentumCounter_ >= MOMENTUM_COUNT_MAX) {
-        momentumCounter_ = 0;
+      // ----------------------------------------
+      int delta1 = 0;
+      int delta2 = 0;
+      {
+        Item* p = static_cast<Item*>(queue_->front());
+        if (! p) return;
 
-        momentumDelta1_ /= 4;
-        momentumDelta2_ /= 4;
+        delta1 = p->delta1;
+        delta2 = p->delta2;
+
+        queue_->pop_front();
       }
+
+      // ----------------------------------------
+      firescroll(delta1, delta2);
 
       if (! config.option_pointing_disable_momentum_scroll) {
-        firescroll(momentumDelta1_, momentumDelta2_);
+        if (delta1 != 0 || delta2 != 0) {
+          queue_->push_back(new Item(delta1 / 2, delta2 / 2));
+        }
       }
-      timer_.setTimeoutMS(MOMENTUM_INTERVAL);
+
+      timer_.setTimeoutMS(SCROLL_INTERVAL_MS, false);
     }
   }
 }
