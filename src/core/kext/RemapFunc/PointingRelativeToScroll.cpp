@@ -81,6 +81,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         ButtonStatus::increase(fromButton_);
 
         absolute_distance_ = 0;
+        begin_ic_.begin();
         chained_ic_.begin();
         chained_delta1_ = 0;
         chained_delta2_ = 0;
