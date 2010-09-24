@@ -28,6 +28,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     PointingRelativeToScroll::cancelMomentumScroll(void)
     {
       timer_.cancelTimeout();
+      momentumCounter_ = 0;
+      momentumDelta1_ = 0;
+      momentumDelta2_ = 0;
     }
 
     void
@@ -86,6 +89,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // last time
       if (! fromkeychecker_.isactive()) {
+        cancelMomentumScroll();
+
         const uint32_t DISTANCE_THRESHOLD = 5 * DELTA_SCALE;
         const uint32_t TIME_THRESHOLD = 300;
         if (absolute_distance_ <= DISTANCE_THRESHOLD && begin_ic_.getmillisec() < TIME_THRESHOLD) {
@@ -185,15 +190,16 @@ namespace org_pqrs_KeyRemap4MacBook {
       delta1 *= DELTA_SCALE;
       delta2 *= DELTA_SCALE;
 
-      firescroll(delta1, delta2);
-      absolute_distance_ += abs(delta1) + abs(delta2);
-
       // abs value is larger, or sign is different
       if (abs(delta1) > abs(momentumDelta1_) || (delta1 * momentumDelta1_) < 0 ||
           abs(delta2) > abs(momentumDelta2_) || (delta2 * momentumDelta2_) < 0) {
         momentumDelta1_ = delta1;
         momentumDelta2_ = delta2;
       }
+
+      firescroll(momentumDelta1_, momentumDelta2_);
+      absolute_distance_ += abs(momentumDelta1_) + abs(momentumDelta2_);
+
       momentumCounter_ = 0;
       timer_.setTimeoutMS(MOMENTUM_INTERVAL);
     }
@@ -201,8 +207,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     PointingRelativeToScroll::firescroll(int delta1, int delta2)
     {
-      if (delta1 == 0 && delta2 == 0) return;
-
       short deltaAxis1;
       short deltaAxis2;
       IOFixed fixedDelta1;
@@ -232,20 +236,19 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       IOLockWrapper::ScopedLock lk(timer_.getlock());
 
-      if (config.option_pointing_disable_momentum_scroll) return;
       if (momentumDelta1_ == 0 && momentumDelta2_ == 0) return;
 
-      if (! config.option_pointing_endless_momentum_scroll) {
-        ++momentumCounter_;
-        if (momentumCounter_ >= MOMENTUM_COUNT_MAX) {
-          momentumCounter_ = 0;
+      ++momentumCounter_;
+      if (momentumCounter_ >= MOMENTUM_COUNT_MAX) {
+        momentumCounter_ = 0;
 
-          momentumDelta1_ /= 4;
-          momentumDelta2_ /= 4;
-        }
+        momentumDelta1_ /= 4;
+        momentumDelta2_ /= 4;
       }
 
-      firescroll(momentumDelta1_, momentumDelta2_);
+      if (! config.option_pointing_disable_momentum_scroll) {
+        firescroll(momentumDelta1_, momentumDelta2_);
+      }
       timer_.setTimeoutMS(MOMENTUM_INTERVAL);
     }
   }

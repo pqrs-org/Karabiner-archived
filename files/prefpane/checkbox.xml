@@ -188,10 +188,6 @@
                   <name>Disable Momentum Scroll</name>
                   <sysctl>option.pointing_disable_momentum_scroll</sysctl>
                 </item>
-                <item>
-                  <name>Endless Momentum Scroll</name>
-                  <sysctl>option.pointing_endless_momentum_scroll</sysctl>
-                </item>
               </list>
             </item>
           </list>
