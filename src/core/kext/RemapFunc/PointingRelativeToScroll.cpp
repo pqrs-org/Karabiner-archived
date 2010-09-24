@@ -179,8 +179,16 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       // ------------------------------------------------------------
-      if (abs(delta1) > abs(chained_delta1_) || delta1 * chained_delta1_ < 0 ||
-          abs(delta2) > abs(chained_delta2_) || delta2 * chained_delta2_ < 0) {
+      // when sign is different
+      if (0 > delta1 * chained_delta1_ ||
+          0 > delta2 * chained_delta2_) {
+        queue_->clear();
+        chained_delta1_ = delta1;
+        chained_delta2_ = delta2;
+
+      } else if (abs(delta1) > abs(chained_delta1_) ||
+                 abs(delta2) > abs(chained_delta2_)) {
+        // greater delta.
         chained_delta1_ = delta1;
         chained_delta2_ = delta2;
       }
