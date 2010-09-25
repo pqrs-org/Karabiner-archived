@@ -2441,7 +2441,7 @@
             <item>
               <name>Shift+Dot(.) to Comma</name>
               <sysctl>remap.shift_keypad_dot2comma</sysctl>
-              <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, ModifierFlag::VK_SHIFT, KeyCode::KEYPAD_COMMA</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, VK_SHIFT, KeyCode::KEYPAD_COMMA</autogen>
             </item>
           </list>
         </item>
@@ -2454,7 +2454,7 @@
         <item>
           <name>Shift+Enter to Equal</name>
           <sysctl>remap.shift_enter2equal</sysctl>
-          <autogen>--KeyToKey-- KeyCode::ENTER, ModifierFlag::VK_SHIFT, KeyCode::KEYPAD_EQUAL</autogen>
+          <autogen>--KeyToKey-- KeyCode::ENTER, VK_SHIFT, KeyCode::KEYPAD_EQUAL</autogen>
         </item>
         <item>
           <name>Logitech N305 hack / FILCO FKBT22MB hack</name>
