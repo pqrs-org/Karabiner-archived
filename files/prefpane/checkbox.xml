@@ -1508,6 +1508,11 @@
           <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::CAPSLOCK</autogen>
         </item>
         <item>
+          <name>Shift+Escape to CapsLock</name>
+          <sysctl>remap.shiftEscape2capslock</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ESCAPE, VK_SHIFT, KeyCode::CAPSLOCK</autogen>
+        </item>
+        <item>
           <name>Escape to Command_L</name>
           <sysctl>remap.escape2commandL</sysctl>
           <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::COMMAND_L</autogen>
