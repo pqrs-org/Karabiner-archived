@@ -1637,6 +1637,11 @@
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
+          <name>Fn to Control_R</name>
+          <sysctl>remap.fn2controlR</sysctl>
+          <autogen>--KeyToKey-- KeyCode::FN, KeyCode::CONTROL_R</autogen>
+        </item>
+        <item>
           <name>Fn to Fn</name>
           <appendix>(+ When you type Fn only, send Fn_Lock)</appendix>
           <sysctl>remap.fn2fn_fnlock</sysctl>
