@@ -3169,6 +3169,12 @@
         </item>
         <item>
           <name>Shift_L to Shift_L</name>
+          <appendix>(+ When you type shiftL only, send CapsLock)</appendix>
+          <sysctl>remap.shiftL2shiftL_capslock</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+        </item>
+        <item>
+          <name>Shift_L to Shift_L</name>
           <appendix>(+ When you type shiftL only, send Space) + [KeyRepeat]</appendix>
           <sysctl>remap.shiftL2shiftL_space_keyrepeat</sysctl>
           <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
@@ -3247,6 +3253,12 @@
           <appendix>(+ When you type Shift_R only, send Backslash)</appendix>
           <sysctl>remap.shiftR2shiftR_backslash</sysctl>
           <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::BACKSLASH</autogen>
+        </item>
+        <item>
+          <name>Shift_R to Shift_R</name>
+          <appendix>(+ When you type Shift_R only, send CapsLock)</appendix>
+          <sysctl>remap.shiftR2shiftR_capslock</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::CAPSLOCK</autogen>
         </item>
         <item>
           <name>Shift_R to Shift_R</name>
@@ -4735,6 +4747,18 @@
             <config_only>option.simultaneouskeypresses_vimode_slash_to_command_slash</config_only>
           </block>
           <block>
+            <autogen>--KeyToKey-- KeyCode::Q, KeyCode::Q, ModifierFlag::COMMAND_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_q_to_command_q</config_only>
+          </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::W, KeyCode::S, ModifierFlag::CONTROL_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_w_to_control_s</config_only>
+          </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::R, KeyCode::T, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_R_to_command_option_t</config_only>
+          </block>
+          <block>
             <autogen>--KeyToKey-- KeyCode::Z, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
             <autogen>--KeyToKey-- KeyCode::X, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
             <autogen>--KeyToKey-- KeyCode::C, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
@@ -4990,6 +5014,18 @@
         <item>
           <name>[Option] / to Command+/</name>
           <sysctl>option.simultaneouskeypresses_vimode_slash_to_command_slash</sysctl>
+        </item>
+        <item>
+          <name>[Option] Q to Command+Q</name>
+          <sysctl>option.simultaneouskeypresses_vimode_q_to_command_q</sysctl>
+        </item>
+        <item>
+          <name>[Option] W to Control+S</name>
+          <sysctl>option.simultaneouskeypresses_vimode_w_to_control_s</sysctl>
+        </item>
+        <item>
+          <name>[Option] R to Command+Option+T</name>
+          <sysctl>option.simultaneouskeypresses_vimode_R_to_command_option_t</sysctl>
         </item>
         <item>
           <name>[Option] ZXCV to Command+ZXCV</name>
