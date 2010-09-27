@@ -5773,6 +5773,8 @@
               <autogen>--KeyToKey-- KeyCode::BRIGHTNESS_UP, KeyCode::F2</autogen>
               <autogen>--KeyToKey-- KeyCode::EXPOSE_ALL, KeyCode::F3</autogen>
               <autogen>--KeyToKey-- KeyCode::DASHBOARD, KeyCode::F4</autogen>
+              <autogen>--ConsumerToKey-- ConsumerKeyCode::KEYBOARDLIGHT_LOW, KeyCode::F5</autogen>
+              <autogen>--ConsumerToKey-- ConsumerKeyCode::KEYBOARDLIGHT_HIGH, KeyCode::F6</autogen>
               <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PREV, KeyCode::F7</autogen>
               <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PLAY, KeyCode::F8</autogen>
               <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_NEXT, KeyCode::F9</autogen>
