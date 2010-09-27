@@ -8020,6 +8020,28 @@
           </list>
         </item>
         <item>
+          <name>Change Shift_L Key</name>
+          <list>
+            <item>
+              <name>Shift_L to Shift_L</name>
+              <appendix>(+ When you type Shift_L only, change inputmode to english)</appendix>
+              <sysctl>remap.russian_shiftL2shiftL_english</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
+          <name>Change Shift_R Key</name>
+          <list>
+            <item>
+              <name>Shift_R to Shift_R</name>
+              <appendix>(+ When you type Shift_R only, change inputmode to russian)</appendix>
+              <sysctl>remap.russian_shiftR2shiftR_russian</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Change Tilda(~) Key</name>
           <list>
             <item>
