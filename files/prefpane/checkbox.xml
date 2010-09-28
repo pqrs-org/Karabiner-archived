@@ -4725,6 +4725,12 @@
             <config_only>option.simultaneouskeypresses_vimode_a_to_shift</config_only>
           </block>
           <block>
+            <autogen>--KeyOverlaidModifier-- KeyCode::A, KeyCode::SHIFT_L, KeyCode::S, ModifierFlag::CONTROL_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_a_to_shift_select</config_only>
+          </block>
+          <block>
+          </block>
+          <block>
             <autogen>--KeyToKey-- KeyCode::F, KeyCode::COMMAND_L</autogen>
             <config_only>option.simultaneouskeypresses_vimode_f_to_command</config_only>
           </block>
@@ -4791,6 +4797,26 @@
           <block>
             <autogen>--KeyToKey-- KeyCode::G, KeyCode::T, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
             <config_only>option.simultaneouskeypresses_vimode_g_to_command_option_t</config_only>
+          </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::U, KeyCode::DELETE</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_u_to_delete</config_only>
+          </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::O, KeyCode::SPACE</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_o_to_space</config_only>
+          </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::S, KeyCode::S, ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L  </autogen>
+            <config_only>option.simultaneouskeypresses_vimode_s_to_shift_control_s</config_only>
+          </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::S, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_s_to_command_d</config_only>
+          </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::S, KeyCode::CONTROL_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_s_to_control</config_only>
           </block>
           <block>
             <autogen>--KeyToKey-- KeyCode::Z, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
@@ -5026,6 +5052,11 @@
           <sysctl>option.simultaneouskeypresses_vimode_a_to_shift</sysctl>
         </item>
         <item>
+          <name>[Option] A to Shift</name>
+          <appendix>(+ When you press A only send Control+S)</appendix>
+          <sysctl>option.simultaneouskeypresses_vimode_a_to_shift_select</sysctl>
+        </item>
+        <item>
           <name>[Option] F to Shift</name>
           <sysctl>option.simultaneouskeypresses_vimode_f_to_shift</sysctl>
         </item>
@@ -5092,6 +5123,26 @@
         <item>
           <name>[Option] G to Command+Option+T</name>
           <sysctl>option.simultaneouskeypresses_vimode_g_to_command_option_t</sysctl>
+        </item>
+        <item>
+          <name>[Option] U to Delete</name>
+          <sysctl>option.simultaneouskeypresses_vimode_u_to_delete</sysctl>
+        </item>
+        <item>
+          <name>[Option] O to Space</name>
+          <sysctl>option.simultaneouskeypresses_vimode_o_to_space</sysctl>
+        </item>
+        <item>
+          <name>[Option] S to Control+Shift+S</name>
+          <sysctl>option.simultaneouskeypresses_vimode_s_to_shift_control_s</sysctl>
+        </item>
+        <item>
+          <name>[Option] S to Command+D</name>
+          <sysctl>option.simultaneouskeypresses_vimode_s_to_command_d</sysctl>
+        </item>
+        <item>
+          <name>[Option] S to Control</name>
+          <sysctl>option.simultaneouskeypresses_vimode_s_to_control</sysctl>
         </item>
         <item>
           <name>[Option] ZXCV to Command+ZXCV</name>
