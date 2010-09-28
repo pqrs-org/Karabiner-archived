@@ -5346,6 +5346,28 @@
               <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::TAB</autogen>
               <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::TAB, ModifierFlag::SHIFT_L</autogen>
               <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::TAB, ModifierFlag::SHIFT_R</autogen>
+              <block>
+                <config_only>remap.cmdtab_mode_controlM</config_only>
+                <autogen>--KeyToKey-- KeyCode::M, VK_CONTROL, KeyCode::RETURN, KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode</autogen>
+              </block>
+              <block>
+                <config_only>remap.cmdtab_mode_control_bracket_left</config_only>
+                <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, KeyCode::ESCAPE, KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode</autogen>
+              </block>
+              <block>
+                <config_only>remap.cmdtab_mode_hjkl</config_only>
+                <autogen>--KeyToKey-- KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
+                <autogen>--KeyToKey-- KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
+                <autogen>--KeyToKey-- KeyCode::K, KeyCode::CURSOR_UP</autogen>
+                <autogen>--KeyToKey-- KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
+              </block>
+              <block>
+                <config_only>remap.cmdtab_mode_jkil</config_only>
+                <autogen>--KeyToKey-- KeyCode::J, KeyCode::CURSOR_LEFT</autogen>
+                <autogen>--KeyToKey-- KeyCode::K, KeyCode::CURSOR_DOWN</autogen>
+                <autogen>--KeyToKey-- KeyCode::I, KeyCode::CURSOR_UP</autogen>
+                <autogen>--KeyToKey-- KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
+              </block>
             </item>
             <item>
               <name>Simultaneous Key Presses [Tab+Q] to toggle Cmd+Tab</name>
@@ -5358,6 +5380,22 @@
                 <config_only>notsave.cmdtab_mode</config_only>
                 <autogen>--SimultaneousKeyPresses-- KeyCode::TAB, KeyCode::Q, KeyCode::ESCAPE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode, KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF</autogen>
               </block>
+            </item>
+            <item>
+              <name>[Option] Control+M to Return</name>
+              <sysctl>remap.cmdtab_mode_controlM</sysctl>
+            </item>
+            <item>
+              <name>[Option] Control+[ to Escape</name>
+              <sysctl>remap.cmdtab_mode_control_bracket_left</sysctl>
+            </item>
+            <item>
+              <name>[Option] HJKL to Arrow Keys</name>
+              <sysctl>remap.cmdtab_mode_hjkl</sysctl>
+            </item>
+            <item>
+              <name>[Option] JKIL to Arrow Keys</name>
+              <sysctl>remap.cmdtab_mode_jkil</sysctl>
             </item>
           </list>
         </item>
