@@ -4756,7 +4756,39 @@
           </block>
           <block>
             <autogen>--KeyToKey-- KeyCode::R, KeyCode::T, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
-            <config_only>option.simultaneouskeypresses_vimode_R_to_command_option_t</config_only>
+            <config_only>option.simultaneouskeypresses_vimode_r_to_command_option_t</config_only>
+          </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::W, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_w_to_command_x</config_only>
+          </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::E, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_e_to_command_c</config_only>
+          </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::R, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_r_to_command_v</config_only>
+          </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::T, KeyCode::T, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_t_to_command_option_t</config_only>
+          </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::G, KeyCode::S, ModifierFlag::CONTROL_L </autogen>
+            <config_only>option.simultaneouskeypresses_vimode_g_to_control_s</config_only>
+          </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::D, KeyCode::OPTION_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_d_to_option</config_only>
+          </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::T, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_t_to_command_d</config_only>
+          </block>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::G, KeyCode::T, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_g_to_command_option_t</config_only>
           </block>
           <block>
             <autogen>--KeyToKey-- KeyCode::Z, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
@@ -5025,7 +5057,39 @@
         </item>
         <item>
           <name>[Option] R to Command+Option+T</name>
-          <sysctl>option.simultaneouskeypresses_vimode_R_to_command_option_t</sysctl>
+          <sysctl>option.simultaneouskeypresses_vimode_r_to_command_option_t</sysctl>
+        </item>
+        <item>
+          <name>[Option] W to Command+X</name>
+          <sysctl>option.simultaneouskeypresses_vimode_w_to_command_x</sysctl>
+        </item>
+        <item>
+          <name>[Option] E to Command+C</name>
+          <sysctl>option.simultaneouskeypresses_vimode_e_to_command_c</sysctl>
+        </item>
+        <item>
+          <name>[Option] R to Command+V</name>
+          <sysctl>option.simultaneouskeypresses_vimode_r_to_command_v</sysctl>
+        </item>
+        <item>
+          <name>[Option] T to Command+Option+T</name>
+          <sysctl>option.simultaneouskeypresses_vimode_t_to_command_option_t</sysctl>
+        </item>
+        <item>
+          <name>[Option] G to Control+S</name>
+          <sysctl>option.simultaneouskeypresses_vimode_g_to_control_s</sysctl>
+        </item>
+        <item>
+          <name>[Option] D to Option</name>
+          <sysctl>option.simultaneouskeypresses_vimode_d_to_option</sysctl>
+        </item>
+        <item>
+          <name>[Option] T to Command+D</name>
+          <sysctl>option.simultaneouskeypresses_vimode_t_to_command_d</sysctl>
+        </item>
+        <item>
+          <name>[Option] G to Command+Option+T</name>
+          <sysctl>option.simultaneouskeypresses_vimode_g_to_command_option_t</sysctl>
         </item>
         <item>
           <name>[Option] ZXCV to Command+ZXCV</name>
