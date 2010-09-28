@@ -5210,6 +5210,41 @@
           </list>
         </item>
         <item>
+          <name>Cmd+Tab Mode</name>
+          <list>
+            <item>
+              <name>What's Cmd+Tab Mode?</name>
+              <appendix>This makes it easy to use Command+Tab.</appendix>
+              <appendix></appendix>
+              <appendix>- Return: decide an application.</appendix>
+              <appendix>- Escape: cancel.</appendix>
+              <appendix>- Tab: Switch application--cycle forward.</appendix>
+              <appendix>- Shift: Switch application--cycle backward.</appendix>
+              <appendix>- Arrow keys: move a selection.</appendix>
+              <sysctl>notsave.cmdtab_mode</sysctl>
+              <vk_config>true</vk_config>
+              <autogen>--ShowStatusMessage-- "Cmd+Tab"</autogen>
+              <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::RETURN, KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode</autogen>
+              <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::ESCAPE, KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode</autogen>
+              <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::TAB</autogen>
+              <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::TAB, ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::TAB, ModifierFlag::SHIFT_R</autogen>
+            </item>
+            <item>
+              <name>Simultaneous Key Presses [Tab+Q] to toggle Cmd+Tab</name>
+              <sysctl>remap.simultaneouskeypresses_cmdtab_tabq</sysctl>
+              <block>
+                <config_not>notsave.cmdtab_mode</config_not>
+                <autogen>--SimultaneousKeyPresses-- KeyCode::TAB, KeyCode::Q, KeyCode::VK_CONFIG_FORCE_ON_notsave_cmdtab_mode, KeyCode::VK_LOCK_COMMAND_L_FORCE_ON, KeyCode::TAB</autogen>
+              </block>
+              <block>
+                <config_only>notsave.cmdtab_mode</config_only>
+                <autogen>--SimultaneousKeyPresses-- KeyCode::TAB, KeyCode::Q, KeyCode::ESCAPE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode, KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF</autogen>
+              </block>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>For Spaces</name>
           <list>
             <item>
