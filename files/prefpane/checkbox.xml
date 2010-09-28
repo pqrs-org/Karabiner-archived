@@ -4301,6 +4301,8 @@
       </list>
     </item>
 
+    <!-- #include "include/ubiquitous_vim_bindings.xml" -->
+
     <item>
       <name>Complete Vi Mode</name>
       <list>

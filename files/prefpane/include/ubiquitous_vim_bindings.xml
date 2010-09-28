@@ -1,0 +1,640 @@
+<!-- 
+     Ubiquitous Vim Bindings
+     Author: Seth Milliken
+     Date:  2010-09-26 21:51:17 PDT
+-->
+<item>
+    <name>Ubiquitous Vim Bindings</name>
+    <list>
+
+        <item>
+            <name>Documentation:</name>
+            <list>
+                <item>
+                    <name>Ubiquitous Vim Bindings for Normal Mode:</name>
+
+                    <sysctl>notsave.ubiq_vimnormal</sysctl>
+                    <not>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</not>
+                    <vk_config>true</vk_config>
+                    <autogen>--ShowStatusMessage-- "Normal Mode"</autogen>
+
+                    <appendix>To enable these settings enable a binding or set of bindings to enter Normal Mode below.</appendix>
+                    <appendix></appendix>
+                    <appendix>h: Left</appendix>
+                    <appendix>j: Down</appendix>
+                    <appendix>k: Up</appendix>
+                    <appendix>l: Right</appendix>
+                    <appendix>b: Back a word (Option_L+Left)</appendix>
+                    <appendix>B: Back two words (Option_L+Left, Option_L+Left)</appendix> <!-- TODO: Can't detect WORDs, so doing next best thing. -->
+                    <appendix>e: Back to end of previous word (Option_L+Right)</appendix>
+                    <appendix>E: Back to end of previous word twice (Option_L+Right, Option_L+Right)</appendix> <!-- TODO: Can't detect WORDs, so doing next best thing. -->
+                    <appendix>w: Forward a word (Option_L+Right, Option_L+Right, Option_L+Left)</appendix>
+                    <appendix>W: Forward two words (Option_L+Right, Option_L+Right, Option_L+Right, Option_L+Left)</appendix> <!-- TODO: Can't detect WORDs, so doing next best thing. -->
+                    <appendix>Ctrl-f Move page down (Option_L+PageDown)</appendix>
+                    <appendix>Ctrl-b Move page up (Option_L+PageUp)</appendix>
+                    <appendix>Ctrl-n Down</appendix> <!-- TODO: Not always what we want, but often sufficient. -->
+                    <appendix>Ctrl-p Up</appendix> <!-- TODO: Not always what we want, but often sufficient. -->
+                    <appendix>G: Move to end of document (Command_L+Down)</appendix>
+                    <appendix>0: Move to beginning of line (Command_L+Left)</appendix>
+                    <appendix>^: Move to beginning of line (Command_L+Left,Option_L+Right, Option-L+Left) [^ == Shift+6]</appendix> <!-- TODO: Best approximation of first non-whitespace character in the line. -->
+                    <appendix>$: Move to end of line (Command_L+Right) [$ == Shift+4]</appendix>
+                    <appendix>/: Find (Command_L+f, Exit Normal Mode)</appendix>
+                    <appendix>n: Find next match (Command_L+g)</appendix>
+                    <appendix>N: Find previous match (Shift_L+Command_L+g)</appendix>
+                    <appendix>x: Forward Delete</appendix>
+                    <appendix>X: Delete</appendix>
+                    <appendix>o: Begin new line below cursor (Command_L+Right, Shift+Return, Exit Normal Mode)</appendix>
+                    <appendix>O: Begin new line above cursor (Command_L+Left, Shift+Return, Up, Exit Normal Mode)</appendix>
+                    <appendix>a: Append (Exit Normal Mode)</appendix>
+                    <appendix>A: Append at end of line (Command_L+Right, Exit Normal Mode)</appendix>
+                    <appendix>i: Insert (Exit Normal Mode)</appendix>
+                    <appendix>I: Insert at beginning of line (Command_L+Left, Exit Normal Mode)</appendix>
+                    <appendix>J: Join line (Command_L+Right, Shift_L+Forward Delete)</appendix> <!-- TODO: Can't special-case whitespace, so doing next best thing. -->
+                    <appendix>u: Undo (Command_L+z)</appendix>
+                    <appendix>U: Undo (Command_L+z)</appendix> <!-- TODO: Can't distinguish undo contexts, so doing next best thing. -->
+                    <appendix>Ctrl-r: Redo (Command_L+Shift_L+z)</appendix>
+                    <appendix>dd: Delete line (Command+CursorLeft, Shift_L+Down, Delete)</appendix>
+                    <appendix>D: Delete to end of line (Command_L+Shift_L+Right, Delete)</appendix>
+                    <appendix>H: Current line to top (Option_L+PageDown, Down, Up)</appendix> <!-- TODO: Can't navigate in visible area, so doing something with a somewhat similar effect. -->
+                    <appendix>L: Current line to bottom (Option_L+PageUp, Up, Down)</appendix> <!-- TODO: Can't navigate in visible area, so doing something with a somewhat similar effect. -->
+                    <appendix>M: Current line to middle (Option_L+PageDown, Option+PageUp)</appendix> <!-- TODO: Can't navigate in visible area, so doing something with a somewhat similar effect. -->
+                    <appendix>S: Delete line (Command_L+Left, Command_L+Shift_L+Right, Command_L-x)</appendix> <!-- FIXME: implement this. -->
+                    <appendix>yy: Yank line (Command_L+Left, Shift_L+Down, Command_L-c)</appendix>
+                    <appendix>Y: Yank line (Command_L+Left, Shift_L+Down, Command_L-c)</appendix>
+                    <appendix>p: Paste line below (Command_L+Left, Down, Command_L+v)</appendix> <!-- TODO: Can't detect context, so assuming linewise operation wanted. -->
+                    <appendix>P: Paste line above (Command_L+Left, Command_L+v)</appendix> <!-- TODO: Can't detect context, so assuming linewise operation wanted. -->
+                    <appendix>ZZ: Close Window (Command_L+w)</appendix>
+                    <appendix></appendix>
+                    <appendix>g operator-pending mode:</appendix>
+                    <appendix>gt: Next tab (Shift-L+Command_L+}) [Can vary by application.]</appendix>
+                    <appendix>gT: Previous tab (Shift-L+Command_L+{) [Can vary by application.]</appendix>
+                    <appendix>gg: Move to beginning of document (Command_L+Up)</appendix>
+                    <appendix></appendix>
+                    <appendix>C-w operator-pending mode:</appendix>
+                    <appendix>C-w, x: Close Window (Command_L+w)</appendix>
+                    <appendix>C-w, n: New Window (Command_L+n)</appendix>
+                    <appendix>C-w, w: Next Window (Command_L+`)</appendix>
+                    <appendix>C-w, j: Next Window (Command_L+`)</appendix>
+                    <appendix>C-w, l: Next Window (Command_L+`)</appendix>
+                    <appendix>C-w, h: Previous Window (Command_L+Shift_L+`)</appendix>
+                    <appendix>C-w, k: Previous Window (Command_L+Shift_L+`)</appendix>
+                    <appendix></appendix>
+                    <appendix>Non-standard behavior:</appendix>
+                    <appendix>f: FN</appendix>
+                    <appendix></appendix>
+                    <appendix>Any key (without a modifier) not defined here is a dead key.</appendix>
+                    <appendix></appendix>
+                    <appendix>Ubiquitous Vim Normal Mode is inactive in terminal applications, Firefox, emacs, vi and vim, and when the password dialog box is active.
+                    </appendix>
+
+                    <block>
+
+                        <!-- Unimplemented dead keys in Normal Mode -->
+                        <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::R, VK_SHIFT, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::C, VK_SHIFT, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::V, VK_SHIFT, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::F, VK_SHIFT, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::EQUAL, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::EQUAL, VK_SHIFT, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::DOT, VK_SHIFT, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::BACKQUOTE, VK_SHIFT, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_SHIFT, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, VK_SHIFT, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::BACKSLASH, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::BACKSLASH, VK_SHIFT, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_SHIFT, KeyCode::VK_NONE</autogen>
+                        <block>
+                            <config_not>option.vimnormal_turnoff_backquote</config_not>
+                            <autogen>--KeyToKey-- KeyCode::BACKQUOTE, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+                        </block>
+                        <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::KEY_1, VK_SHIFT, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::KEY_2, VK_SHIFT, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::KEY_3, VK_SHIFT, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::KEY_5, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::KEY_5, VK_SHIFT, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::KEY_7, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::KEY_7, VK_SHIFT, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::KEY_8, VK_SHIFT, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::KEY_9, VK_SHIFT, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::KEY_0, VK_SHIFT, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::Q, VK_SHIFT, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::QUOTE, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::QUOTE, VK_SHIFT, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::COMMA, VK_SHIFT, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::MINUS, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::MINUS, VK_SHIFT, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+                        <autogen>--KeyToKey-- KeyCode::TAB, VK_SHIFT, KeyCode::VK_NONE</autogen>
+                        <block>
+                            <config_not>notsave.g_operator_pending</config_not>
+                            <autogen>--KeyToKey-- KeyCode::T, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+                            <autogen>--KeyToKey-- KeyCode::T, VK_SHIFT, KeyCode::VK_NONE</autogen>
+                        </block>
+
+                        <!-- hjkl -->
+                        <block>
+                            <config_not>notsave.c_w_operator_pending</config_not>
+                            <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::NONE, KeyCode::CURSOR_LEFT</autogen>
+                            <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::NONE, KeyCode::CURSOR_DOWN</autogen>
+                            <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::NONE, KeyCode::CURSOR_UP</autogen>
+                            <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::NONE, KeyCode::CURSOR_RIGHT</autogen>
+                        </block>
+
+                        <!-- DELETE -->
+                        <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::NONE, KeyCode::CURSOR_LEFT</autogen>
+
+                        <!-- FN + hjkl -->
+                        <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::FN, KeyCode::HOME, ModifierFlag::OPTION_L</autogen>
+                        <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::FN, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
+                        <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::FN, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
+                        <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::FN, KeyCode::END, ModifierFlag::OPTION_L</autogen>
+
+                        <!-- H, M, L --> <!-- TODO: H and L are questionable. May be no good way to implement. -->
+                        <autogen>--KeyToKey-- KeyCode::H, VK_SHIFT, KeyCode::PAGEDOWN, ModifierFlag::NONE, KeyCode::CURSOR_DOWN, KeyCode::CURSOR_UP</autogen>
+                        <autogen>--KeyToKey-- KeyCode::L, VK_SHIFT, KeyCode::PAGEUP, ModifierFlag::NONE, KeyCode::CURSOR_UP, KeyCode::CURSOR_DOWN</autogen>
+                        <autogen>--KeyToKey-- KeyCode::M, VK_SHIFT, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
+
+                        <!-- C-f, C-b -->
+                        <autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
+                        <autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
+
+                        <!-- b, e, w, B, E, W -->
+                        <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
+                        <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::NONE, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
+                        <autogen>--KeyToKey-- KeyCode::B, VK_SHIFT, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
+                        <autogen>--KeyToKey-- KeyCode::E, VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
+                        <block>
+                            <config_not>notsave.c_w_operator_pending</config_not>
+                            <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::NONE, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
+                            <autogen>--KeyToKey-- KeyCode::W, VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
+                        </block>
+
+                        <!-- /, n, N -->
+                        <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::NONE, KeyCode::F, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                        <block>
+                            <config_not>notsave.c_w_operator_pending</config_not>
+                            <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::NONE, KeyCode::G, ModifierFlag::COMMAND_L</autogen>
+                            <autogen>--KeyToKey-- KeyCode::N, VK_SHIFT, KeyCode::G, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+                        </block>
+
+                        <!-- G -->
+                        <autogen>--KeyToKey-- KeyCode::G, VK_SHIFT, KeyCode::CURSOR_DOWN, ModifierFlag::COMMAND_L</autogen>
+
+                        <!-- x, X -->
+                        <block>
+                            <config_not>notsave.c_w_operator_pending</config_not>
+                            <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
+                        </block>
+                        <autogen>--KeyToKey-- KeyCode::X, VK_SHIFT | ModifierFlag::NONE, KeyCode::DELETE</autogen>
+
+                        <!-- u, C-r -->
+                        <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::NONE, KeyCode::Z, ModifierFlag::COMMAND_L, KeyCode::CURSOR_LEFT, KeyCode::CURSOR_RIGHT</autogen>
+                        <autogen>--KeyToKey-- KeyCode::U, VK_SHIFT, KeyCode::Z, ModifierFlag::COMMAND_L, KeyCode::CURSOR_LEFT, KeyCode::CURSOR_RIGHT</autogen>
+                        <autogen>--KeyToKey-- KeyCode::R, VK_CONTROL, KeyCode::Z, ModifierFlag::SHIFT_L | ModifierFlag::COMMAND_L</autogen>
+
+                        <!-- ZZ -->
+                        <autogen>--DoublePressModifier-- KeyCode::Z, VK_SHIFT, KeyCode::CONTROL_L, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
+
+                        <!-- f -->
+                        <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::NONE, KeyCode::FN</autogen>
+
+                        <block>
+                            <not>ADIUMX</not>
+
+                            <!-- 0, ^, $ -->
+                            <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+                            <autogen>--KeyToKey-- KeyCode::KEY_6, VK_SHIFT, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
+                            <autogen>--KeyToKey-- KeyCode::KEY_4, VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+
+                            <!-- o, O -->
+                            <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::NONE, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L, KeyCode::RETURN, ModifierFlag::SHIFT_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                            <autogen>--KeyToKey-- KeyCode::O, VK_SHIFT, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L, KeyCode::RETURN, ModifierFlag::SHIFT_L, KeyCode::CURSOR_UP, KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+
+                            <!-- a, A -->
+                            <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::NONE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                            <autogen>--KeyToKey-- KeyCode::A, VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::NONE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+
+                            <!-- J -->
+                            <autogen>--KeyToKey-- KeyCode::J, VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::NONE, KeyCode::SPACE, KeyCode::FORWARD_DELETE, ModifierFlag::SHIFT_L</autogen>
+
+                            <!-- i, I -->
+                            <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::NONE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                            <autogen>--KeyToKey-- KeyCode::I, VK_SHIFT, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::NONE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+
+                            <!-- S -->
+                            <autogen>--KeyToKey-- KeyCode::S, VK_SHIFT, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+
+                            <!-- yy, Y -->
+                            <autogen>--DoublePressModifier-- KeyCode::Y, ModifierFlag::NONE, KeyCode::VK_NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L, KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+                            <autogen>--KeyToKey-- KeyCode::Y, VK_SHIFT, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L, KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+
+                            <!-- p, P -->
+                            <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L, KeyCode::CURSOR_DOWN, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+                            <autogen>--KeyToKey-- KeyCode::P, VK_SHIFT, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+
+                            <!-- dd -->
+                            <autogen>--DoublePressModifier-- KeyCode::D, ModifierFlag::NONE, KeyCode::VK_NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L, KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L, KeyCode::DELETE</autogen>
+                            <autogen>--KeyToKey-- KeyCode::D, VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::DELETE</autogen>
+
+                            <!-- C-n, C-p -->
+                            <autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
+                            <autogen>--KeyToKey-- KeyCode::P, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
+
+                        </block>
+
+                        <!-- Adium Customization: Adium interprets Command+Left or Command+Right as Tab change commands rather than text field editor commands. -->
+                        <block>
+                            <only>ADIUMX</only>
+
+                            <!-- 0, ^, $ -->
+                            <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L</autogen>
+                            <autogen>--KeyToKey-- KeyCode::KEY_6, VK_SHIFT, KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L</autogen>
+                            <autogen>--KeyToKey-- KeyCode::KEY_4, VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::CONTROL_L</autogen>
+
+                            <!-- o, O -->
+                            <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::NONE, KeyCode::CURSOR_RIGHT, ModifierFlag::CONTROL_L, KeyCode::RETURN, ModifierFlag::OPTION_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                            <autogen>--KeyToKey-- KeyCode::O, VK_SHIFT, KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L, KeyCode::RETURN, ModifierFlag::OPTION_L, KeyCode::CURSOR_UP, KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+
+                            <!-- a, A -->
+                            <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::NONE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                            <autogen>--KeyToKey-- KeyCode::A, VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::CONTROL_L | ModifierFlag::NONE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+
+                            <!-- J -->
+                            <autogen>--KeyToKey-- KeyCode::J, VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::CONTROL_L | ModifierFlag::NONE, KeyCode::SPACE, KeyCode::FORWARD_DELETE, ModifierFlag::SHIFT_L</autogen>
+
+                            <!-- i, I -->
+                            <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::NONE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                            <autogen>--KeyToKey-- KeyCode::I, VK_SHIFT, KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L | ModifierFlag::NONE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+
+                            <!-- S -->
+                            <autogen>--KeyToKey-- KeyCode::S, VK_SHIFT, KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+
+                            <!-- yy, Y -->
+                            <autogen>--DoublePressModifier-- KeyCode::Y, ModifierFlag::NONE, KeyCode::VK_NONE, KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+                            <autogen>--KeyToKey-- KeyCode::Y, VK_SHIFT, KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+
+                            <!-- p, P -->
+                            <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+                            <autogen>--KeyToKey-- KeyCode::P, VK_SHIFT, KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+
+                            <!-- dd -->
+                            <autogen>--DoublePressModifier-- KeyCode::D, ModifierFlag::NONE, KeyCode::VK_NONE, KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L, KeyCode::DELETE</autogen>
+                            <autogen>--KeyToKey-- KeyCode::D, VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L, KeyCode::DELETE</autogen>
+
+                            <!-- C-n, C-p -->
+                            <autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_L</autogen>
+                            <autogen>--KeyToKey-- KeyCode::P, VK_CONTROL, KeyCode::CURSOR_UP, ModifierFlag::OPTION_L</autogen>
+
+                        </block>
+                    </block>
+
+                    <!-- Enter g operator pending mode. -->
+                    <block>
+                        <config_not>notsave.g_operator_pending</config_not>
+                        <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::NONE, KeyCode::VK_CONFIG_FORCE_ON_notsave_g_operator_pending</autogen>
+                    </block>
+
+                    <!-- g operator pending mode commands. -->
+                    <block>
+                        <config_only>notsave.g_operator_pending</config_only>
+                        <!-- Default gg behavior -->
+                        <block>
+                            <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::NONE, KeyCode::CURSOR_UP, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending</autogen>
+                        </block>
+
+                        <!-- Default gt, gT (tab-switch) bindings. -->
+                        <block>
+                            <not>SAFARI, SKYPE, GOOGLE_CHROME</not>
+                            <autogen>--KeyToKey-- KeyCode::T, ModifierFlag::NONE, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending</autogen>
+                            <autogen>--KeyToKey-- KeyCode::T, VK_SHIFT, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending</autogen>
+                        </block>
+
+                        <!-- Skype tab-switch customization. -->
+                        <block>
+                            <only>SKYPE</only>
+                            <autogen>--KeyToKey-- KeyCode::T, ModifierFlag::NONE, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending</autogen>
+                            <autogen>--KeyToKey-- KeyCode::T, VK_SHIFT, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending</autogen>
+                        </block>
+
+                        <!-- Safari tab-switch customization. -->
+                        <block>
+                            <only>SAFARI</only>
+                            <autogen>--KeyToKey-- KeyCode::T, ModifierFlag::NONE, KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending</autogen>
+                            <autogen>--KeyToKey-- KeyCode::T, VK_SHIFT, KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending</autogen>
+                        </block>
+
+                        <!-- Google Chrome tab-switch customization. -->
+                        <block>
+                            <only>GOOGLE_CHROME</only>
+                            <autogen>--KeyToKey-- KeyCode::T, ModifierFlag::NONE, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending</autogen>
+                            <autogen>--KeyToKey-- KeyCode::T, VK_SHIFT, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending</autogen>
+                        </block>
+                    </block>
+
+                    <!-- Enter C-w operator pending mode. -->
+                    <block>
+                        <config_not>notsave.c_w_operator_pending</config_not>
+                        <autogen>--KeyToKey-- KeyCode::W, VK_CONTROL, KeyCode::VK_CONFIG_FORCE_ON_notsave_c_w_operator_pending</autogen>
+                    </block>
+
+                    <!-- C-w operator pending mode commands. -->
+                    <block>
+                        <config_only>notsave.c_w_operator_pending</config_only>
+                        <!-- New window with C-w, n -->
+                        <autogen>--KeyToKey-- KeyCode::N, KeyCode::N, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                        <!-- Close window with C-w, x -->
+                        <autogen>--KeyToKey-- KeyCode::X, KeyCode::W, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+
+                        <!-- Switch windows with C-w, w/h/j/k/l -->
+                        <autogen>--KeyToKey-- KeyCode::W, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                        <autogen>--KeyToKey-- KeyCode::H, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                        <autogen>--KeyToKey-- KeyCode::J, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                        <autogen>--KeyToKey-- KeyCode::K, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                        <autogen>--KeyToKey-- KeyCode::L, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                    </block>
+                </item>
+            </list>
+        </item>
+
+        <item>
+            <name>Insert Mode Commands</name>
+            <list>
+                <item>
+                    <name>Enable Insert Mode Commands</name>
+                    <appendix>Ctrl-w delete preceding word (Shift+Option+Left, Delete)</appendix>
+                    <appendix>Ctrl-u delete preceding line (Shift+Command+Left, Delete)</appendix>
+                    <appendix>Ctrl-d remove an indent (Command+BracketLeft)</appendix>
+                    <appendix>Ctrl-t add an indent (Command+BracketRight)</appendix>
+                    <appendix></appendix>
+                    <appendix>These commands are available when not in Normal Mode.</appendix>
+                    <sysctl>option.ubiq_vimnormal_insert</sysctl>
+
+                    <!-- Insert Mode Commands -->
+                    <block>
+                        <config_not>notsave.ubiq_vimnormal</config_not>
+                        <config_only>option.ubiq_vimnormal_insert</config_only>
+                        <not>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</not>
+
+                        <!-- Ctrl-w -->
+                        <autogen>--KeyToKey-- KeyCode::W, VK_CONTROL, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L, KeyCode::DELETE</autogen>
+
+                        <!-- Ctrl-u -->
+                        <autogen>--KeyToKey-- KeyCode::U, VK_CONTROL, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::DELETE</autogen>
+
+                        <!-- Ctrl-d -->
+                        <autogen>--KeyToKey-- KeyCode::D, VK_CONTROL, KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L</autogen>
+
+                        <!-- Ctrl-t -->
+                        <autogen>--KeyToKey-- KeyCode::T, VK_CONTROL, KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L</autogen>
+
+                    </block>
+                </item>
+            </list>
+        </item>
+
+        <item>
+            <name>Recommended binding options to enter Normal Mode</name>
+            <list>
+
+                <item>
+                    <name>Normal Mode exit commands simultaneously force Modifier Lock off and exit any active operator pending mode.</name>
+                </item>
+
+                <item>
+                    <name>Esc toggles Normal Mode</name>
+                    <appendix>Holding Esc sends raw Esc</appendix>
+                    <appendix></appendix>
+                    <appendix>Lowering the Holding Threshold setting is recommended (200ms)</appendix>
+                    <sysctl>remap.vimnormal_escape_toggle</sysctl>
+                    <!-- Normal Mode on in mode-allowing context: Esc exits Normal Mode, holding Esc sends raw Esc. -->
+                    <block>
+                        <config_only>notsave.ubiq_vimnormal</config_only>
+                        <config_not>option.vimnormal_escape_enters_only</config_not>
+                        <not>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</not>
+                        <autogen>--HoldingKeyToKey-- KeyCode::ESCAPE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending, KeyCode::VK_NONE, KeyCode::ESCAPE</autogen>
+                    </block>
+                    <!-- Normal Mode on in mode-allowing context: Esc remains in Normal Mode, holding Esc sends raw Esc. -->
+                    <block>
+                        <config_only>notsave.ubiq_vimnormal, option.vimnormal_escape_enters_only</config_only>
+                        <not>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</not>
+                        <autogen>--HoldingKeyToKey-- KeyCode::ESCAPE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_ON_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending, KeyCode::VK_NONE, KeyCode::ESCAPE</autogen>
+                    </block>
+                    <!-- Normal Mode off in mode-allowing context: Esc enters Normal Mode, holding Esc sends raw Esc. -->
+                    <block>
+                        <config_not>notsave.ubiq_vimnormal</config_not>
+                        <not>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</not>
+                        <autogen>--HoldingKeyToKey-- KeyCode::ESCAPE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending, KeyCode::VK_NONE, KeyCode::ESCAPE</autogen>
+                    </block>
+                    <!-- Normal Mode on in mode-prohibiting context: Esc sends raw Esc and exits Normal Mode. -->
+                    <block>
+                        <config_only>notsave.ubiq_vimnormal</config_only>
+                        <only>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</only>
+                        <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending, KeyCode::ESCAPE</autogen>
+                    </block>
+                </item>
+
+                <item>
+                    <name>Esc does not exit Normal Mode.</name>
+                    <sysctl>option.vimnormal_escape_enters_only</sysctl>
+                </item>
+
+                <item>
+                    <name>Ctrl-[ toggles Normal Mode</name>
+                    <sysctl>remap.vimnormal_ctrlbracketleft_toggle</sysctl>
+                    <not>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</not>
+                    <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                </item>
+
+                <item>
+                    <name>Command_R tap toggles Normal Mode</name>
+                    <sysctl>remap.vimnormal_commandr_toggle</sysctl>
+                    <not>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</not>
+                    <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                </item>
+
+                <item>
+                    <name>Command_L tap toggles Normal Mode</name>
+                    <sysctl>remap.vimnormal_commandl_toggle</sysctl>
+                    <not>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</not>
+                    <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                </item>
+
+            </list>
+        </item>
+
+        <!-- Key Activations Mirrored from Complete Vi Mode -->
+
+        <item>
+            <name>Additional binding options to enter Normal Mode</name>
+            <list>
+                <item>
+                  <name>Simultaneous Key Presses [Command_L+Command_R] toggles Normal Mode</name>
+                  <sysctl>remap.vimnormal_toggle_commandLR</sysctl>
+                  <not>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</not>
+                  <autogen>--SimultaneousKeyPresses-- KeyCode::COMMAND_R, KeyCode::COMMAND_L, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                </item>
+                <item>
+                  <name>Arrow(Down/Left/Right) to Option_L</name>
+                  <appendix>Disable Up-Arrow</appendix>
+                  <appendix>(+ When you type Arrow only, toggles Normal Mode)</appendix>
+                  <sysctl>remap.vimnormal_toggle_arrow2optionL</sysctl>
+                  <not>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</not>
+                  <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_UP, KeyCode::VK_NONE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                  <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_DOWN, KeyCode::OPTION_L, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                  <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_LEFT, KeyCode::OPTION_L, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                  <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_RIGHT, KeyCode::OPTION_L, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                </item>
+                <item>
+                  <name>Backquote(`) toggles Normal Mode (if no modifiers pressed)</name>
+                  <sysctl>option.vimnormal_turnoff_backquote</sysctl>
+                  <not>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</not>
+                  <autogen>--KeyToKey-- KeyCode::BACKQUOTE, ModifierFlag::NONE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                </item>
+                <item>
+                  <name>Command_L to Command_L</name>
+                  <appendix>(+ When you type Command_L only, toggles Normal Mode)</appendix>
+                  <sysctl>remap.vimnormal_toggle_commandL</sysctl>
+                  <not>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</not>
+                  <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                </item>
+                <item>
+                  <name>Command_R to Command_R</name>
+                  <appendix>(+ When you type Command_R only, toggles Normal Mode)</appendix>
+                  <sysctl>remap.vimnormal_toggle_commandR</sysctl>
+                  <not>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</not>
+                  <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                </item>
+                <item>
+                  <name>Control_R to Control_R</name>
+                  <appendix>(+ When you type Control_R only, toggles Normal Mode)</appendix>
+                  <sysctl>remap.vimnormal_toggle_controlR</sysctl>
+                  <not>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</not>
+                  <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_R, KeyCode::CONTROL_R, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                </item>
+                <item>
+                  <name>Escape to turn on Normal Mode</name>
+                  <appendix>(except in Vim)</appendix>
+                  <sysctl>remap.vimnormal_turnon_escape</sysctl>
+                  <not>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</not>
+                  <not>VI</not>
+                  <config_not>notsave.ubiq_vimnormal</config_not>
+                  <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_ON_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                </item>
+                <item>
+                  <name>Escape to turn off Normal Mode</name>
+                  <appendix>(+ turn off Modifier Lock)</appendix>
+                  <sysctl>option.vimnormal_turnoff_escape</sysctl>
+                  <not>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</not>
+                  <config_only>notsave.ubiq_vimnormal</config_only>
+                  <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                </item>
+                <item>
+                  <name>Return to Command_L+Control_L</name>
+                  <appendix>(+ When you type Return only, toggles Normal Mode)</appendix>
+                  <sysctl>remap.vimnormal_toggle_return</sysctl>
+                  <not>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</not>
+                  <autogen>--KeyOverlaidModifier-- KeyCode::RETURN, KeyCode::CONTROL_L, ModifierFlag::COMMAND_L, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                </item>
+                <item>
+                  <name>Fn to Fn</name>
+                  <appendix>(+ When you type Fn only, toggles Normal Mode)</appendix>
+                  <sysctl>remap.vimnormal_toggle_fn2fn</sysctl>
+                  <not>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</not>
+                  <autogen>--KeyOverlaidModifier-- KeyCode::FN, KeyCode::FN, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                </item>
+                <item>
+                  <name>Option+V toggles Normal Mode</name>
+                  <sysctl>option.vimnormal_toggle_optionV</sysctl>
+                  <not>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</not>
+                  <autogen>--KeyToKey-- KeyCode::V, VK_OPTION, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                </item>
+                <item>
+                  <name>Option+V to turn on Normal Mode</name>
+                  <sysctl>option.vimnormal_turnon_optionV</sysctl>
+                  <not>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</not>
+                  <autogen>--KeyToKey-- KeyCode::V, VK_OPTION, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_ON_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                </item>
+                <item>
+                  <name>Disable Shift_L</name>
+                  <appendix>(+ When you type Shift_L only, toggles Normal Mode)</appendix>
+                  <sysctl>remap.vimnormal_toggle_drop_shiftL</sysctl>
+                  <not>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</not>
+                  <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::VK_NONE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
+                </item>
+          </list>
+      </item>
+
+      <!-- End Simultaneous Key Activations -->
+
+      <!-- The STICKY in these settings is to allow you to exit Normal Mode when you press the modifier keys, and still allow you to immediately use them as modifiers for the subsequent key command. -->
+      <item>
+          <name>Normal Mode Auto-deactivation with modifier combinations</name>
+          <list>
+
+              <item>
+                  <name>Disable Normal Mode on Ctrl+Shift_L key combinations</name>
+                  <sysctl>remap.vimnormal_autodeactivate_ctrl_shift</sysctl>
+                  <config_only>notsave.ubiq_vimnormal</config_only>
+                  <autogen>--KeyToKey-- KeyCode::SHIFT_L, VK_CONTROL, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending, KeyCode::VK_STICKY_CONTROL_L, KeyCode::VK_STICKY_SHIFT_L</autogen>
+                  <autogen>--KeyToKey-- KeyCode::CONTROL_L, VK_SHIFT, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending, KeyCode::VK_STICKY_CONTROL_L, KeyCode::VK_STICKY_SHIFT_L</autogen>
+              </item>
+
+              <item>
+                  <name>Disable Normal Mode on Ctrl+Command_L key combinations</name>
+                  <sysctl>remap.vimnormal_autodeactivate_ctrl_command</sysctl>
+                  <config_only>notsave.ubiq_vimnormal</config_only>
+                  <autogen>--KeyToKey-- KeyCode::COMMAND_L, VK_CONTROL, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending, KeyCode::VK_STICKY_CONTROL_L, KeyCode::VK_STICKY_COMMAND_L</autogen>
+                  <autogen>--KeyToKey-- KeyCode::CONTROL_L, VK_COMMAND, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending, KeyCode::VK_STICKY_CONTROL_L, KeyCode::VK_STICKY_COMMAND_L</autogen>
+              </item>
+
+              <item>
+                  <name>Disable Normal Mode on Command_L key combinations</name>
+                  <sysctl>remap.vimnormal_autodeactivate_command</sysctl>
+                  <config_only>notsave.ubiq_vimnormal</config_only>
+                  <autogen>--KeyToKey-- KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending, KeyCode::VK_STICKY_COMMAND_L</autogen>
+              </item>
+
+          </list>
+      </item>
+
+      <!-- Putting these here since items must have names, so we can't hide them completely. -->
+      <item>
+          <name>Operator Pending Mode Placeholders (No Settings)</name>
+          <list>
+              <item>
+                  <name>g operator pending mode placeholder</name>
+                  <sysctl>notsave.g_operator_pending</sysctl>
+                  <vk_config>true</vk_config>
+                  <autogen>--ShowStatusMessage-- "[g]"</autogen>
+              </item>
+              <item>
+                  <name>c-w operator pending mode placeholder</name>
+                  <sysctl>notsave.c_w_operator_pending</sysctl>
+                  <vk_config>true</vk_config>
+                  <autogen>--ShowStatusMessage-- "[w]"</autogen>
+              </item>
+          </list>
+      </item>
+
+    </list>
+</item> <!-- End Ubiquitous Vim Bindings -->
+
