@@ -5372,14 +5372,7 @@
             <item>
               <name>Simultaneous Key Presses [Tab+Q] to toggle Cmd+Tab</name>
               <sysctl>remap.simultaneouskeypresses_cmdtab_tabq</sysctl>
-              <block>
-                <config_not>notsave.cmdtab_mode</config_not>
-                <autogen>--SimultaneousKeyPresses-- KeyCode::TAB, KeyCode::Q, KeyCode::VK_CONFIG_FORCE_ON_notsave_cmdtab_mode, KeyCode::VK_LOCK_COMMAND_L_FORCE_ON, KeyCode::TAB</autogen>
-              </block>
-              <block>
-                <config_only>notsave.cmdtab_mode</config_only>
-                <autogen>--SimultaneousKeyPresses-- KeyCode::TAB, KeyCode::Q, KeyCode::ESCAPE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode, KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF</autogen>
-              </block>
+              <autogen>--SimultaneousKeyPresses-- KeyCode::TAB, KeyCode::Q, KeyCode::VK_CONFIG_FORCE_ON_notsave_cmdtab_mode, KeyCode::VK_LOCK_COMMAND_L_FORCE_ON, KeyCode::TAB</autogen>
             </item>
             <item>
               <name>[Option] Control+M to Return</name>
