@@ -12,7 +12,6 @@ $outfile = {
   :config_default => open('output/include.config.default.hpp', 'w'),
   :remapclass => open('output/include.RemapClass.cpp', 'w'),
   :remapcode_vk_config => open('output/include.remapcode_vk_config.cpp', 'w'),
-  :keycode_vk_config => open('../keycode/data/include/KeyCode.VK_GENERATED.data', 'w'),
 }
 
 # ======================================================================
@@ -101,11 +100,6 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
     $outfile[:remapcode_vk_config] << "  configitem = &(config.#{name});\n"
     $outfile[:remapcode_vk_config] << "  type = TYPE_SYNC_KEYDOWNUP;\n"
     $outfile[:remapcode_vk_config] << "}\n"
-
-    $outfile[:keycode_vk_config] << "VK_CONFIG_TOGGLE_#{name} --AUTO--\n"
-    $outfile[:keycode_vk_config] << "VK_CONFIG_FORCE_ON_#{name} --AUTO--\n"
-    $outfile[:keycode_vk_config] << "VK_CONFIG_FORCE_OFF_#{name} --AUTO--\n"
-    $outfile[:keycode_vk_config] << "VK_CONFIG_SYNC_KEYDOWNUP_#{name} --AUTO--\n"
   end
 
   # ======================================================================
@@ -120,7 +114,6 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
 
   next if remapclass.empty?
 
-  $outfile[:keycode_vk_config] << remapclass.code[:keycode]
   $outfile[:remapclass] << remapclass.to_code
 end
 
