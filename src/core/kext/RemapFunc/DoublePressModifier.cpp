@@ -19,44 +19,55 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    DoublePressModifier::add(KeyCode newval)
+    DoublePressModifier::add(unsigned int datatype, unsigned int newval)
     {
-      switch (index_) {
-        case 0:
-          // pass-through (== no break)
-          fromKey_.key = newval;
-        case 1:
-          keytokey_.add(newval);
-          break;
+      switch (datatype) {
+        case BRIDGE_DATATYPE_KEYCODE:
+        {
+          switch (index_) {
+            case 0:
+              // pass-through (== no break)
+              fromKey_.key = newval;
+            case 1:
+              keytokey_.add(KeyCode(newval));
+              break;
 
-        case 2:
-          // pass-through (== no break)
-          keytokey_fire_.add(KeyCode::VK_PSEUDO_KEY);
-          keytokey_fire_.add(fromKey_.flags);
+            case 2:
+              // pass-through (== no break)
+              keytokey_fire_.add(KeyCode::VK_PSEUDO_KEY);
+              keytokey_fire_.add(fromKey_.flags);
+            default:
+              keytokey_fire_.add(KeyCode(newval));
+              break;
+          }
+          ++index_;
+
+          break;
+        }
+
+        case BRIDGE_DATATYPE_FLAGS:
+        {
+          switch (index_) {
+            case 0:
+              IOLOG_ERROR("Invalid DoublePressModifier::add\n");
+              break;
+
+            case 1:
+              // pass-through (== no break)
+              fromKey_.flags = newval;
+            case 2:
+              keytokey_.add(Flags(newval));
+              break;
+
+            default:
+              keytokey_fire_.add(Flags(newval));
+              break;
+          }
+          break;
+        }
+
         default:
-          keytokey_fire_.add(newval);
-          break;
-      }
-      ++index_;
-    }
-
-    void
-    DoublePressModifier::add(Flags newval)
-    {
-      switch (index_) {
-        case 0:
-          IOLOG_ERROR("Invalid DoublePressModifier::add\n");
-          break;
-
-        case 1:
-          // pass-through (== no break)
-          fromKey_.flags = newval;
-        case 2:
-          keytokey_.add(newval);
-          break;
-
-        default:
-          keytokey_fire_.add(newval);
+          IOLOG_ERROR("DoublePressModifier::add invalid datatype:%d\n", datatype);
           break;
       }
     }

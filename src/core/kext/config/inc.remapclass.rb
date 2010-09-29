@@ -61,7 +61,7 @@ class RemapClass
     @code[:initialize] += "static void initialize_value#{@@index}(void) {\n"
     @code[:initialize] += "value#{@@index}_.initialize();\n"
     params.split(/,/).each do |p|
-      if operation == 'IgnoreMultipleSameKeyPress' then
+      if operation == 'IgnoreMultipleSameKeyPress' or operation == 'DoublePressModifier' then
         datatype = nil
         newval = []
         p.split(/\|/).each do |value|
