@@ -1,6 +1,7 @@
 #ifndef REMAPFUNCBASE_HPP
 #define REMAPFUNCBASE_HPP
 
+#include "bridge.h"
 #include "remap.hpp"
 #include "KeyCode.hpp"
 #include "FlagStatus.hpp"

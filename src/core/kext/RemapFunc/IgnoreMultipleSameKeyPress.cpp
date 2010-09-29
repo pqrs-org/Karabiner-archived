@@ -13,15 +13,20 @@ namespace org_pqrs_KeyRemap4MacBook {
     {}
 
     void
-    IgnoreMultipleSameKeyPress::add(KeyCode newval)
+    IgnoreMultipleSameKeyPress::add(unsigned int datatype, unsigned int newval)
     {
-      fromKey_.key = newval;
-    }
+      switch (datatype) {
+        case BRIDGE_DATATYPE_KEYCODE:
+          fromKey_.key = newval;
+          break;
 
-    void
-    IgnoreMultipleSameKeyPress::add(Flags newval)
-    {
-      fromKey_.flags = newval;
+        case BRIDGE_DATATYPE_FLAGS:
+          fromKey_.flags = newval;
+
+        default:
+          IOLOG_ERROR("IgnoreMultipleSameKeyPress::add invalid datatype:%d\n", datatype);
+          break;
+      }
     }
 
     bool
