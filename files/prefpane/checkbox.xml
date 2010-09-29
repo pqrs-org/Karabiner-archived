@@ -4729,9 +4729,15 @@
             <config_only>option.simultaneouskeypresses_vimode_a_to_shift_select</config_only>
           </block>
           <block>
+            <autogen>--KeyOverlaidModifier-- KeyCode::S, KeyCode::CONTROL_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_s_to_control</config_only>
           </block>
           <block>
-            <autogen>--KeyToKey-- KeyCode::F, KeyCode::COMMAND_L</autogen>
+            <autogen>--KeyOverlaidModifier-- KeyCode::D, KeyCode::OPTION_L, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+            <config_only>option.simultaneouskeypresses_vimode_d_to_option</config_only>
+          </block>
+          <block>
+            <autogen>--KeyOverlaidModifier-- KeyCode::F, KeyCode::COMMAND_L, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
             <config_only>option.simultaneouskeypresses_vimode_f_to_command</config_only>
           </block>
           <block>
@@ -4787,10 +4793,6 @@
             <config_only>option.simultaneouskeypresses_vimode_g_to_control_s</config_only>
           </block>
           <block>
-            <autogen>--KeyToKey-- KeyCode::D, KeyCode::OPTION_L</autogen>
-            <config_only>option.simultaneouskeypresses_vimode_d_to_option</config_only>
-          </block>
-          <block>
             <autogen>--KeyToKey-- KeyCode::T, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
             <config_only>option.simultaneouskeypresses_vimode_t_to_command_d</config_only>
           </block>
@@ -4813,10 +4815,6 @@
           <block>
             <autogen>--KeyToKey-- KeyCode::S, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
             <config_only>option.simultaneouskeypresses_vimode_s_to_command_d</config_only>
-          </block>
-          <block>
-            <autogen>--KeyToKey-- KeyCode::S, KeyCode::CONTROL_L</autogen>
-            <config_only>option.simultaneouskeypresses_vimode_s_to_control</config_only>
           </block>
           <block>
             <autogen>--KeyToKey-- KeyCode::Z, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
@@ -5061,7 +5059,18 @@
           <sysctl>option.simultaneouskeypresses_vimode_f_to_shift</sysctl>
         </item>
         <item>
+          <name>[Option] S to Control</name>
+          <appendix>(+ When you press S only send Command+X)</appendix>
+          <sysctl>option.simultaneouskeypresses_vimode_s_to_control</sysctl>
+        </item>
+        <item>
+          <name>[Option] D to Option</name>
+          <appendix>(+ When you press D only send Command+C)</appendix>
+          <sysctl>option.simultaneouskeypresses_vimode_d_to_option</sysctl>
+        </item>
+        <item>
           <name>[Option] F to Command</name>
+          <appendix>(+ When you press F only send Command+V)</appendix>
           <sysctl>option.simultaneouskeypresses_vimode_f_to_command</sysctl>
         </item>
         <item>
@@ -5113,10 +5122,6 @@
           <sysctl>option.simultaneouskeypresses_vimode_g_to_control_s</sysctl>
         </item>
         <item>
-          <name>[Option] D to Option</name>
-          <sysctl>option.simultaneouskeypresses_vimode_d_to_option</sysctl>
-        </item>
-        <item>
           <name>[Option] T to Command+D</name>
           <sysctl>option.simultaneouskeypresses_vimode_t_to_command_d</sysctl>
         </item>
@@ -5139,10 +5144,6 @@
         <item>
           <name>[Option] S to Command+D</name>
           <sysctl>option.simultaneouskeypresses_vimode_s_to_command_d</sysctl>
-        </item>
-        <item>
-          <name>[Option] S to Control</name>
-          <sysctl>option.simultaneouskeypresses_vimode_s_to_control</sysctl>
         </item>
         <item>
           <name>[Option] ZXCV to Command+ZXCV</name>
