@@ -6,6 +6,7 @@ require 'inc.filter.rb'
 class RemapClass
   @@index = 0
   @@entries = []
+  @@simultaneous_keycode_index = 0
 
   def RemapClass.get_entries
     return @@entries
@@ -27,7 +28,6 @@ class RemapClass
       :remap_dropkeyafterremap      => '',
       :get_statusmessage            => '',
       # values
-      :keycode                      => '',
       :variable                     => [],
     }
 
@@ -126,14 +126,14 @@ class RemapClass
         @code[:get_statusmessage] += "return #{params};\n"
 
       when 'SimultaneousKeyPresses'
-        params = "KeyCode::VK_SIMULTANEOUSKEYPRESSES_#{name}_#{@@index}, " + params
+        params = "KeyCode::VK_SIMULTANEOUSKEYPRESSES_#{@@simultaneous_keycode_index}, " + params
+        @@simultaneous_keycode_index += 1
         params.gsub!('SimultaneousKeyPresses::Option::RAW', 'RemapFunc::SimultaneousKeyPresses::OPTION_RAW')
         append_to_code_initialize(params)
         append_to_code_terminate
         @code[:variable] << { :index => @@index, :class => "RemapFunc::SimultaneousKeyPresses" }
         @code[:remap_key] += "if (value#{@@index}_.remap(remapParams)) break;\n"
         @code[:remap_simultaneouskeypresses] += "value#{@@index}_.remap();\n"
-        @code[:keycode] += "VK_SIMULTANEOUSKEYPRESSES_#{name}_#{@@index} --AUTO--\n"
 
       when 'KeyToKey', 'KeyToConsumer', 'KeyToPointingButton', 'DoublePressModifier', 'HoldingKeyToKey', 'IgnoreMultipleSameKeyPress', 'KeyOverlaidModifier'
         append_to_code_initialize(params, operation)
