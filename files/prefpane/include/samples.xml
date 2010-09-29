@@ -364,9 +364,11 @@
           <name>Standard</name>
           <appendix>Ignore the multiple press of 'A'</appendix>
           <appendix>Ignore the multiple press of 'Shift+B' (with Modifier)</appendix>
+          <appendix>Ignore the multiple press of 'Shift+Option+C' (with Modifier)</appendix>
           <sysctl>remap.samples_ignoremultiplesamekeypress</sysctl>
           <autogen>--IgnoreMultipleSameKeyPress-- KeyCode::A</autogen>
           <autogen>--IgnoreMultipleSameKeyPress-- KeyCode::B, VK_SHIFT</autogen>
+          <autogen>--IgnoreMultipleSameKeyPress-- KeyCode::C, VK_SHIFT | VK_OPTION</autogen>
         </item>
       </list>
     </item>

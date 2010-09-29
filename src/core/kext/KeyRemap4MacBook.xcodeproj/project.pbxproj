@@ -64,6 +64,7 @@
 		34A7883110CBD79100DF72FD /* KeyCode.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34A7882F10CBD79100DF72FD /* KeyCode.hpp */; };
 		34A7884810CBF92D00DF72FD /* CommonData.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34A7884710CBF92D00DF72FD /* CommonData.hpp */; };
 		34A7885110CBFBDC00DF72FD /* CommonData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A7885010CBFBDC00DF72FD /* CommonData.cpp */; };
+		34A7F15812537F0D0012B982 /* bridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A7F15712537F0D0012B982 /* bridge.h */; };
 		34AA1F351065B1EE00E9A418 /* ListHookedDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34AA1F331065B1EE00E9A418 /* ListHookedDevice.cpp */; };
 		34AA1F361065B1EE00E9A418 /* ListHookedDevice.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34AA1F341065B1EE00E9A418 /* ListHookedDevice.hpp */; };
 		34AC5ED111DA3BD60089BC58 /* KeyOverlaidModifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34AC5ECF11DA3BD60089BC58 /* KeyOverlaidModifier.cpp */; };
@@ -157,6 +158,7 @@
 		34A7882F10CBD79100DF72FD /* KeyCode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = KeyCode.hpp; sourceTree = "<group>"; };
 		34A7884710CBF92D00DF72FD /* CommonData.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CommonData.hpp; path = util/CommonData.hpp; sourceTree = "<group>"; };
 		34A7885010CBFBDC00DF72FD /* CommonData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CommonData.cpp; path = util/CommonData.cpp; sourceTree = "<group>"; };
+		34A7F15712537F0D0012B982 /* bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bridge.h; path = ../bridge/bridge.h; sourceTree = SOURCE_ROOT; };
 		34AA1F331065B1EE00E9A418 /* ListHookedDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ListHookedDevice.cpp; path = util/ListHookedDevice.cpp; sourceTree = "<group>"; };
 		34AA1F341065B1EE00E9A418 /* ListHookedDevice.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ListHookedDevice.hpp; path = util/ListHookedDevice.hpp; sourceTree = "<group>"; };
 		34AC5ECF11DA3BD60089BC58 /* KeyOverlaidModifier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyOverlaidModifier.cpp; path = RemapFunc/KeyOverlaidModifier.cpp; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 		247142CAFF3F8F9811CA285C /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				34A7F15712537F0D0012B982 /* bridge.h */,
 				345E3EC511D79D17004B6347 /* RemapFunc */,
 				3477E3B911CFAC9D00DC05C9 /* RemapClass.cpp */,
 				3477E3BA11CFAC9D00DC05C9 /* RemapClass.hpp */,
@@ -395,6 +398,7 @@
 				3401FE0611E2E77300EBBF43 /* Vector.hpp in Headers */,
 				34C931CD11E37E5300B81B08 /* EventOutputQueue.hpp in Headers */,
 				34B8CEC711E5E05C00EE89E3 /* List.hpp in Headers */,
+				34A7F15812537F0D0012B982 /* bridge.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -54,14 +54,40 @@ class RemapClass
     self
   end
 
-  def append_to_code_initialize(params)
+  def append_to_code_initialize(params, operation = nil)
     # We split the initialize function per value.
     # If a large number of values exist, the kernel stack is wasted when the monolithic initialize function is called.
     # So, we split it.
     @code[:initialize] += "static void initialize_value#{@@index}(void) {\n"
     @code[:initialize] += "value#{@@index}_.initialize();\n"
     params.split(/,/).each do |p|
-      @code[:initialize] += "value#{@@index}_.add(#{p.strip});\n"
+      if operation == 'IgnoreMultipleSameKeyPress' then
+        datatype = nil
+        newval = []
+        p.split(/\|/).each do |value|
+          value.strip!
+          next if value.empty?
+          newdatatype = nil
+          if /^KeyCode::(.+)$/ =~ value then
+            newdatatype = 'static_cast<unsigned int>(BRIDGE_DATATYPE_KEYCODE)'
+          elsif /^ModifierFlag::(.+)$/ =~ value then
+            newdatatype = 'static_cast<unsigned int>(BRIDGE_DATATYPE_FLAGS)'
+          else
+            print "[ERROR] unknown datatype #{newdatatype}\n"
+            throw :exit
+          end
+
+          if (not datatype.nil?) and (datatype != newdatatype) then
+            throw :exit
+          end
+
+          datatype = newdatatype
+          newval << "#{value}.get()" # XXX: convert to int instead of calling XXX.get().
+        end
+        @code[:initialize] += "value#{@@index}_.add(#{datatype}, #{newval.join('|')});\n"
+      else
+        @code[:initialize] += "value#{@@index}_.add(#{p.strip});\n"
+      end
     end
     @code[:initialize] += "}\n"
 
@@ -110,7 +136,7 @@ class RemapClass
         @code[:keycode] += "VK_SIMULTANEOUSKEYPRESSES_#{name}_#{@@index} --AUTO--\n"
 
       when 'KeyToKey', 'KeyToConsumer', 'KeyToPointingButton', 'DoublePressModifier', 'HoldingKeyToKey', 'IgnoreMultipleSameKeyPress', 'KeyOverlaidModifier'
-        append_to_code_initialize(params)
+        append_to_code_initialize(params, operation)
         append_to_code_terminate
         @code[:variable] << { :index => @@index, :class => "RemapFunc::#{operation}" }
         @code[:remap_key] += "if (value#{@@index}_.remap(remapParams)) break;\n"

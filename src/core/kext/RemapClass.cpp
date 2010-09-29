@@ -1,3 +1,4 @@
+#include "bridge.h"
 #include "RemapClass.hpp"
 #include "Client.hpp"
 #include "KeyboardRepeat.hpp"

@@ -15,8 +15,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ----------------------------------------
       // [0] => fromKey_
-      void add(KeyCode newval);
-      void add(Flags newval);
+      void add(unsigned int datatype, unsigned int newval);
 
     private:
       PairKeyFlags fromKey_;
