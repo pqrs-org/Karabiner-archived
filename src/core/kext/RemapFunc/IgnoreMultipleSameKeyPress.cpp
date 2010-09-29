@@ -22,6 +22,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         case BRIDGE_DATATYPE_FLAGS:
           fromKey_.flags = newval;
+          break;
 
         default:
           IOLOG_ERROR("IgnoreMultipleSameKeyPress::add invalid datatype:%d\n", datatype);
