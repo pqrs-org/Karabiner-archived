@@ -23,8 +23,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // [3] => fireKeys_[1]
       // [4] => fireKeys_[2]
       // ...
-      void add(KeyCode newval);
-      void add(Flags newval);
+      void add(unsigned int datatype, unsigned int newval);
 
     private:
       size_t index_;
