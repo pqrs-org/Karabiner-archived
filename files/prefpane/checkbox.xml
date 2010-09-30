@@ -7612,8 +7612,8 @@
               <appendix>(+ When you type Command+Shift_L only,</appendix>
               <appendix>change inputmode to "English - Ilya Birman Typography".)</appendix>
               <sysctl>remap.russian_shiftL2shiftL_english_typography</sysctl>
-              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, VK_COMMAND, KeyCode::SHIFT_L, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH_TYPOGRAPHIC</autogen>
-              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L,             KeyCode::SHIFT_L, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, VK_COMMAND, KeyCode::SHIFT_L, ModifierFlag::COMMAND_L, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH_TYPOGRAPHIC</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L,             KeyCode::SHIFT_L,                          KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
             </item>
           </list>
         </item>
@@ -7633,8 +7633,8 @@
               <appendix>(+ When you type Command+Shift_R only,</appendix>
               <appendix>change inputmode to "Russian - Ilya Birman Typography".)</appendix>
               <sysctl>remap.russian_shiftR2shiftR_russian_typography</sysctl>
-              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, VK_COMMAND, KeyCode::SHIFT_R, KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN_TYPOGRAPHIC</autogen>
-              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R,             KeyCode::SHIFT_R, KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, VK_COMMAND, KeyCode::SHIFT_R, ModifierFlag::COMMAND_L, KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN_TYPOGRAPHIC</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R,             KeyCode::SHIFT_R,                          KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN</autogen>
             </item>
           </list>
         </item>
