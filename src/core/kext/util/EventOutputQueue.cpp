@@ -192,6 +192,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (Handle_VK_LOCK::handle(params)) return;
     if (Handle_VK_STICKY::handle(params)) return;
     if (Handle_VK_LAZY::handle(params)) return;
+    if (Handle_VK_MOUSEKEY::handle(params)) return;
     if (Handle_VK_CHANGE_INPUTMODE::handle(params)) return;
     if (Handle_VK_CONFIG::handle(params)) return;
     if (Handle_VK_JIS_TOGGLE_EISUU_KANA::handle(params)) return;

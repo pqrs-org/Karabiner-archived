@@ -4212,6 +4212,20 @@
     </item>
 
     <item>
+      <name>Mouse Keys</name>
+      <list>
+        <item>
+          <name>Arrow(Up/Down/Left/Right) Keys to Mouse Keys</name>
+          <sysctl>remap.mousekeys_arrow</sysctl>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_UP,    KeyCode::VK_MOUSEKEY_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN,  KeyCode::VK_MOUSEKEY_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT,  KeyCode::VK_MOUSEKEY_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, KeyCode::VK_MOUSEKEY_RIGHT</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>Vi Mode</name>
       <list>
         <item>

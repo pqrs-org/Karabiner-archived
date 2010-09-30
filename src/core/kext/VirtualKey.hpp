@@ -11,6 +11,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     static void initialize(IOWorkLoop& workloop);
     static void terminate(void);
+    static void reset(void);
   };
 
   // ----------------------------------------------------------------------
@@ -41,6 +42,28 @@ namespace org_pqrs_KeyRemap4MacBook {
   class Handle_VK_CONFIG {
   public:
     static bool handle(const Params_KeyboardEventCallBack& params);
+  };
+
+  // ----------------------------------------------------------------------
+  class Handle_VK_MOUSEKEY {
+  public:
+    static void initialize(IOWorkLoop& workloop);
+    static void terminate(void);
+    static void reset(void);
+
+    static bool handle(const Params_KeyboardEventCallBack& params);
+
+  private:
+    enum {
+      TIMER_INTERVAL = 20,
+      SCALE_MAX = 20,
+    };
+    static void fire(OSObject* notuse_owner, IOTimerEventSource* notuse_sender);
+
+    static int dx_;
+    static int dy_;
+    static int scale_;
+    static TimerWrapper timer_;
   };
 
   // ----------------------------------------------------------------------

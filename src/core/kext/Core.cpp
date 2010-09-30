@@ -197,6 +197,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         EventWatcher::reset();
         FlagStatus::reset();
         ButtonStatus::reset();
+        VirtualKey::reset();
         EventOutputQueue::FireModifiers::fire(FlagStatus::makeFlags());
         EventOutputQueue::FireRelativePointer::fire();
         PressDownKeys::clear();
