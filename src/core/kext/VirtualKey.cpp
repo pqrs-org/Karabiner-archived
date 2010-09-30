@@ -11,13 +11,21 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   VirtualKey::initialize(IOWorkLoop& workloop)
   {
+    Handle_VK_MOUSEKEY::initialize(workloop);
     Handle_VK_JIS_TEMPORARY::initialize(workloop);
   }
 
   void
   VirtualKey::terminate(void)
   {
+    Handle_VK_MOUSEKEY::terminate();
     Handle_VK_JIS_TEMPORARY::terminate();
+  }
+
+  void
+  VirtualKey::reset(void)
+  {
+    Handle_VK_MOUSEKEY::reset();
   }
 
   // ----------------------------------------------------------------------
@@ -230,6 +238,82 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     return true;
   }
+
+  // ----------------------------------------------------------------------
+  void
+  Handle_VK_MOUSEKEY::initialize(IOWorkLoop& workloop)
+  {
+    dx_ = 0;
+    dy_ = 0;
+    scale_ = 1;
+    timer_.initialize(&workloop, NULL, Handle_VK_MOUSEKEY::fire);
+  }
+
+  void
+  Handle_VK_MOUSEKEY::terminate(void)
+  {
+    timer_.terminate();
+  }
+
+  void
+  Handle_VK_MOUSEKEY::reset(void)
+  {
+    dx_ = 0;
+    dy_ = 0;
+    scale_ = 1;
+    timer_.cancelTimeout();
+  }
+
+  bool
+  Handle_VK_MOUSEKEY::handle(const Params_KeyboardEventCallBack& params)
+  {
+    /*  */ if (params.key == KeyCode::VK_MOUSEKEY_UP) {
+      if (params.repeat == false) {
+        dy_ += params.ex_iskeydown ? -1 :  1;
+      }
+    } else if (params.key == KeyCode::VK_MOUSEKEY_DOWN) {
+      if (params.repeat == false) {
+        dy_ += params.ex_iskeydown ?  1 : -1;
+      }
+    } else if (params.key == KeyCode::VK_MOUSEKEY_LEFT) {
+      if (params.repeat == false) {
+        dx_ += params.ex_iskeydown ? -1 :  1;
+      }
+    } else if (params.key == KeyCode::VK_MOUSEKEY_RIGHT) {
+      if (params.repeat == false) {
+        dx_ += params.ex_iskeydown ?  1 : -1;
+      }
+    } else {
+      return false;
+    }
+
+    if (dx_ != 0 || dy_ != 0) {
+      timer_.setTimeoutMS(TIMER_INTERVAL, false);
+    } else {
+      reset();
+    }
+
+    return true;
+  }
+
+  void
+  Handle_VK_MOUSEKEY::fire(OSObject* notuse_owner, IOTimerEventSource* notuse_sender)
+  {
+    IOLockWrapper::ScopedLock lk(timer_.getlock());
+
+    EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons(), dx_ * scale_, dy_ * scale_);
+
+    if (scale_ < SCALE_MAX) {
+      ++scale_;
+    }
+
+    timer_.setTimeoutMS(TIMER_INTERVAL);
+  }
+
+  int Handle_VK_MOUSEKEY::dx_;
+  int Handle_VK_MOUSEKEY::dy_;
+  int Handle_VK_MOUSEKEY::scale_;
+  TimerWrapper Handle_VK_MOUSEKEY::timer_;
 
   // ----------------------------------------------------------------------
   bool
