@@ -48,7 +48,15 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     class FireScrollWheel {
     public:
+      enum {
+        // see IOHIPointing.cpp in darwin.
+        POINTING_FIXED_SCALE = 65536, // (== << 16)
+        POINTING_POINT_SCALE = 10, // (== SCROLL_WHEEL_TO_PIXEL_SCALE >> 16)
+
+        DELTA_SCALE = 128,
+      };
       static void fire(const Params_ScrollWheelEventCallback& params);
+      static void fire(int delta1, int delta2);
     };
 
     // ======================================================================

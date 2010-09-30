@@ -28,11 +28,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     private:
       enum {
-        // see IOHIPointing.cpp in darwin.
-        POINTING_FIXED_SCALE = 65536, // (== << 16)
-        POINTING_POINT_SCALE = 10, // (== SCROLL_WHEEL_TO_PIXEL_SCALE >> 16)
-
-        DELTA_SCALE = 128,
         SCROLL_INTERVAL_MS = 10,
       };
 
@@ -55,7 +50,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         int a1 = abs(v1); int a2 = abs(v2);
         return (a1 > a2) ? a2 : a1;
       }
-      static void firescroll(int delta1, int delta2);
 
       static void callback(OSObject* owner, IOTimerEventSource* sender);
 

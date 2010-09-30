@@ -194,40 +194,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       absolute_distance_ += abs(chained_delta1_) + abs(chained_delta2_);
-      queue_->push_back(new Item(chained_delta1_ * DELTA_SCALE, chained_delta2_ * DELTA_SCALE));
+      queue_->push_back(new Item(chained_delta1_ * EventOutputQueue::FireScrollWheel::DELTA_SCALE, chained_delta2_ * EventOutputQueue::FireScrollWheel::DELTA_SCALE));
 
       timer_.setTimeoutMS(SCROLL_INTERVAL_MS, false);
-    }
-
-    void
-    PointingRelativeToScroll::firescroll(int delta1, int delta2)
-    {
-      short deltaAxis1;
-      short deltaAxis2;
-      IOFixed fixedDelta1;
-      IOFixed fixedDelta2;
-      SInt32 pointDelta1;
-      SInt32 pointDelta2;
-
-      deltaAxis1 = (delta1 * config.pointing_relative2scroll_rate) / 1024 / DELTA_SCALE;
-      deltaAxis2 = (delta2 * config.pointing_relative2scroll_rate) / 1024 / DELTA_SCALE;
-
-      fixedDelta1 = (delta1 * config.pointing_relative2scroll_rate) * (POINTING_FIXED_SCALE / 1024) / DELTA_SCALE;
-      fixedDelta2 = (delta2 * config.pointing_relative2scroll_rate) * (POINTING_FIXED_SCALE / 1024) / DELTA_SCALE;
-
-      pointDelta1 = (delta1 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1024 / DELTA_SCALE;
-      pointDelta2 = (delta2 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1024 / DELTA_SCALE;
-
-      // see IOHIDSystem/IOHIDevicePrivateKeys.h about options.
-      const int kScrollTypeContinuous_ = 0x0001;
-      int options = kScrollTypeContinuous_;
-
-      Params_ScrollWheelEventCallback::auto_ptr ptr(Params_ScrollWheelEventCallback::alloc(deltaAxis1,  deltaAxis2, 0,
-                                                                                           fixedDelta1, fixedDelta2, 0,
-                                                                                           pointDelta1, pointDelta2, 0,
-                                                                                           options));
-      if (! ptr) return;
-      EventOutputQueue::FireScrollWheel::fire(*ptr);
     }
 
     void
@@ -251,7 +220,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       // ----------------------------------------
-      firescroll(delta1, delta2);
+      EventOutputQueue::FireScrollWheel::fire(delta1, delta2);
 
       if (! config.option_pointing_disable_momentum_scroll) {
         if (delta1 != 0 || delta2 != 0) {
