@@ -170,6 +170,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_CANADIAN;
     } else if (params.key == KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN) {
       request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_RUSSIAN;
+    } else if (params.key == KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN_TYPOGRAPHIC) {
+      request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_RUSSIAN_TYPOGRAPHIC;
+    } else if (params.key == KeyCode::VK_CHANGE_INPUTMODE_ENGLISH_TYPOGRAPHIC) {
+      request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_ENGLISH_TYPOGRAPHIC;
     } else {
       return false;
     }
