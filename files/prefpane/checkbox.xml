@@ -4229,22 +4229,40 @@
             <item>
               <name>What's Mouse Keys Mode?</name>
               <appendix>Push "C" and "X" keys simultaneously and keep them pressing.</appendix>
-              <appendix>Then you can control mouse cursor by HJKL keys.</appendix>
+              <appendix>Then you can control mouse cursor by HJKL keys. (and Arrow keys)</appendix>
               <appendix></appendix>
+              <appendix>- Arrow Keys to move mouse cursor</appendix>
               <appendix>- HJKL to move mouse cursor</appendix>
               <appendix>- U to LeftClick</appendix>
               <appendix>- I to MiddleClick</appendix>
               <appendix>- O to RightClick</appendix>
+              <appendix></appendix>
+              <appendix>- V to FN</appendix>
+              <appendix>- FN+Arrow Keys to scroll wheel</appendix>
+              <appendix>- FN+HJKL to scroll wheel</appendix>
               <sysctl>notsave.mousekeys_mode</sysctl>
               <vk_config>true</vk_config>
               <autogen>--ShowStatusMessage-- "Mouse Keys"</autogen>
+              <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_LEFT</autogen>
+              <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_DOWN</autogen>
+              <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_UP</autogen>
+              <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_RIGHT</autogen>
               <autogen>--KeyToKey-- KeyCode::H, KeyCode::VK_MOUSEKEY_LEFT</autogen>
               <autogen>--KeyToKey-- KeyCode::J, KeyCode::VK_MOUSEKEY_DOWN</autogen>
               <autogen>--KeyToKey-- KeyCode::K, KeyCode::VK_MOUSEKEY_UP</autogen>
               <autogen>--KeyToKey-- KeyCode::L, KeyCode::VK_MOUSEKEY_RIGHT</autogen>
+              <autogen>--KeyToKey-- KeyCode::CURSOR_UP,    ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_UP</autogen>
+              <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN,  ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_DOWN</autogen>
+              <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT,  ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_LEFT</autogen>
+              <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_RIGHT</autogen>
+              <autogen>--KeyToKey-- KeyCode::CURSOR_UP,    KeyCode::VK_MOUSEKEY_UP</autogen>
+              <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN,  KeyCode::VK_MOUSEKEY_DOWN</autogen>
+              <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT,  KeyCode::VK_MOUSEKEY_LEFT</autogen>
+              <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, KeyCode::VK_MOUSEKEY_RIGHT</autogen>
               <autogen>--KeyToPointingButton-- KeyCode::U, PointingButton::LEFT</autogen>
               <autogen>--KeyToPointingButton-- KeyCode::I, PointingButton::MIDDLE</autogen>
               <autogen>--KeyToPointingButton-- KeyCode::O, PointingButton::RIGHT</autogen>
+              <autogen>--KeyToKey-- KeyCode::V, KeyCode::FN</autogen>
             </item>
             <item>
               <name>Simultaneous Key Presses [C+X] to turn on Mouse Keys Mode</name>

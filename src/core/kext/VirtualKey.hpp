@@ -63,6 +63,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static int dx_;
     static int dy_;
     static int scale_;
+    static bool scrollmode_;
     static TimerWrapper timer_;
   };
 

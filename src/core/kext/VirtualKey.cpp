@@ -246,6 +246,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     dx_ = 0;
     dy_ = 0;
     scale_ = 1;
+    scrollmode_ = false;
     timer_.initialize(&workloop, NULL, Handle_VK_MOUSEKEY::fire);
   }
 
@@ -261,6 +262,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     dx_ = 0;
     dy_ = 0;
     scale_ = 1;
+    scrollmode_ = false;
     timer_.cancelTimeout();
   }
 
@@ -269,20 +271,37 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     /*  */ if (params.key == KeyCode::VK_MOUSEKEY_UP) {
       if (params.repeat == false) {
-        dy_ += params.ex_iskeydown ? -1 :  1;
+        if (params.ex_iskeydown) { --dy_; scrollmode_ = false; } else { ++dy_; }
       }
     } else if (params.key == KeyCode::VK_MOUSEKEY_DOWN) {
       if (params.repeat == false) {
-        dy_ += params.ex_iskeydown ?  1 : -1;
+        if (params.ex_iskeydown) { ++dy_; scrollmode_ = false; } else { --dy_; }
       }
     } else if (params.key == KeyCode::VK_MOUSEKEY_LEFT) {
       if (params.repeat == false) {
-        dx_ += params.ex_iskeydown ? -1 :  1;
+        if (params.ex_iskeydown) { --dx_; scrollmode_ = false; } else { ++dx_; }
       }
     } else if (params.key == KeyCode::VK_MOUSEKEY_RIGHT) {
       if (params.repeat == false) {
-        dx_ += params.ex_iskeydown ?  1 : -1;
+        if (params.ex_iskeydown) { ++dx_; scrollmode_ = false; } else { --dx_; }
       }
+    } else if (params.key == KeyCode::VK_MOUSEKEY_SCROLL_UP) {
+      if (params.repeat == false) {
+        if (params.ex_iskeydown) { --dy_; scrollmode_ = true; } else { ++dy_; }
+      }
+    } else if (params.key == KeyCode::VK_MOUSEKEY_SCROLL_DOWN) {
+      if (params.repeat == false) {
+        if (params.ex_iskeydown) { ++dy_; scrollmode_ = true; } else { --dy_; }
+      }
+    } else if (params.key == KeyCode::VK_MOUSEKEY_SCROLL_LEFT) {
+      if (params.repeat == false) {
+        if (params.ex_iskeydown) { --dx_; scrollmode_ = true; } else { ++dx_; }
+      }
+    } else if (params.key == KeyCode::VK_MOUSEKEY_SCROLL_RIGHT) {
+      if (params.repeat == false) {
+        if (params.ex_iskeydown) { ++dx_; scrollmode_ = true; } else { --dx_; }
+      }
+
     } else {
       return false;
     }
@@ -301,7 +320,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
 
-    EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons(), dx_ * scale_, dy_ * scale_);
+    if (! scrollmode_) {
+      EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons(), dx_ * scale_, dy_ * scale_);
+    } else {
+      int delta1 = - dy_ * scale_ * 2 * EventOutputQueue::FireScrollWheel::DELTA_SCALE;
+      int delta2 = - dx_ * scale_ * 2 * EventOutputQueue::FireScrollWheel::DELTA_SCALE;;
+      EventOutputQueue::FireScrollWheel::fire(delta1, delta2);
+    }
 
     if (scale_ < SCALE_MAX) {
       ++scale_;
@@ -313,6 +338,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   int Handle_VK_MOUSEKEY::dx_;
   int Handle_VK_MOUSEKEY::dy_;
   int Handle_VK_MOUSEKEY::scale_;
+  bool Handle_VK_MOUSEKEY::scrollmode_;
   TimerWrapper Handle_VK_MOUSEKEY::timer_;
 
   // ----------------------------------------------------------------------
