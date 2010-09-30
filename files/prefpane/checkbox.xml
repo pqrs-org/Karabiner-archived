@@ -7605,6 +7605,16 @@
               <sysctl>remap.russian_shiftL2shiftL_english</sysctl>
               <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
             </item>
+            <item>
+              <name>Shift_L to Shift_L</name>
+              <appendix>(+ When you type Shift_L only, change inputmode to english)</appendix>
+              <appendix></appendix>
+              <appendix>(+ When you type Command+Shift_L only,</appendix>
+              <appendix>change inputmode to "English - Ilya Birman Typography".)</appendix>
+              <sysctl>remap.russian_shiftL2shiftL_english_typography</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, VK_COMMAND, KeyCode::SHIFT_L, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH_TYPOGRAPHIC</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L,             KeyCode::SHIFT_L, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
+            </item>
           </list>
         </item>
         <item>
@@ -7615,6 +7625,16 @@
               <appendix>(+ When you type Shift_R only, change inputmode to russian)</appendix>
               <sysctl>remap.russian_shiftR2shiftR_russian</sysctl>
               <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN</autogen>
+            </item>
+            <item>
+              <name>Shift_R to Shift_R</name>
+              <appendix>(+ When you type Shift_R only, change inputmode to russian)</appendix>
+              <appendix></appendix>
+              <appendix>(+ When you type Command+Shift_R only,</appendix>
+              <appendix>change inputmode to "Russian - Ilya Birman Typography".)</appendix>
+              <sysctl>remap.russian_shiftR2shiftR_russian_typography</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, VK_COMMAND, KeyCode::SHIFT_R, KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN_TYPOGRAPHIC</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R,             KeyCode::SHIFT_R, KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN</autogen>
             </item>
           </list>
         </item>

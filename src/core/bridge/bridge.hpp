@@ -68,6 +68,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         INPUTMODE_FRENCH,
         INPUTMODE_BEPO, // http://bepo.fr/wiki/Mac_OS_X
         INPUTMODE_DVORAK,
+        INPUTMODE_RUSSIAN_TYPOGRAPHIC, // http://ilyabirman.ru/typography-layout/
+        INPUTMODE_ENGLISH_TYPOGRAPHIC, // http://ilyabirman.ru/typography-layout/
         INPUTMODE_UNKNOWN, // User Defined keylayout (example: org.unknown.keylayout.JANSI)
       };
       enum InputModeDetail {
@@ -106,6 +108,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         INPUTMODE_DETAIL_DVORAK_QWERTYCMD,
         INPUTMODE_DETAIL_DVORAK_RIGHT,
 
+        INPUTMODE_DETAIL_RUSSIAN_TYPOGRAPHIC,
+        INPUTMODE_DETAIL_ENGLISH_TYPOGRAPHIC,
+
         INPUTMODE_DETAIL_UNKNOWN,
       };
 
@@ -128,6 +133,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         INPUTMODE_SWEDISH,
         INPUTMODE_CANADIAN,
         INPUTMODE_RUSSIAN,
+        INPUTMODE_RUSSIAN_TYPOGRAPHIC,
+        INPUTMODE_ENGLISH_TYPOGRAPHIC,
       };
       struct Request {
         InputMode inputmode;

@@ -40,6 +40,10 @@
 
 // ======================================================================
 static CFStringRef kInputSourceLanguage_canadian = CFSTR("ca");
+static CFStringRef kInputSourceLanguage_russian = CFSTR("ru");
+// http://ilyabirman.ru/typography-layout/
+static CFStringRef kInputSourceLanguage_russian_Typographic = CFSTR("ru-Typographic");
+static CFStringRef kInputSourceLanguage_english_Typographic = CFSTR("en-Typographic");
 
 - (CFStringRef) getInputSourceLanguage:(TISInputSourceRef)source
 {
@@ -64,6 +68,15 @@ static CFStringRef kInputSourceLanguage_canadian = CFSTR("ca");
   if (name) {
     if (CFStringCompare(name, CFSTR("com.apple.keylayout.Canadian"), 0) == kCFCompareEqualTo) {
       return kInputSourceLanguage_canadian;
+    }
+    if (CFStringCompare(name, CFSTR("org.unknown.keylayout.RussianWin"), 0) == kCFCompareEqualTo) {
+      return kInputSourceLanguage_russian;
+    }
+    if (CFStringCompare(name, CFSTR("org.unknown.keylayout.Russian-IlyaBirmanTypography"), 0) == kCFCompareEqualTo) {
+      return kInputSourceLanguage_russian_Typographic;
+    }
+    if (CFStringCompare(name, CFSTR("org.unknown.keylayout.English-IlyaBirmanTypography"), 0) == kCFCompareEqualTo) {
+      return kInputSourceLanguage_english_Typographic;
     }
   }
 
@@ -275,6 +288,8 @@ void selectInputSource_german(void) { selectInputSource_language(CFSTR("de")); }
 void selectInputSource_japanese(void) { selectInputSource_language(CFSTR("ja")); }
 void selectInputSource_swedish(void) { selectInputSource_language(CFSTR("sv")); }
 void selectInputSource_russian(void) { selectInputSource_language(CFSTR("ru")); }
+void selectInputSource_russian_typographic(void) { selectInputSource_language(kInputSourceLanguage_russian_Typographic); }
+void selectInputSource_english_typographic(void) { selectInputSource_language(kInputSourceLanguage_english_Typographic); }
 
 // ------------------------------------------------------------
 void
