@@ -465,6 +465,21 @@
             <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, VK_SHIFT, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
           </block>
         </item>
+        <item>
+          <name>Swap CapsLock and Control on FILCO FKBN91ML/NB</name>
+          <appendix>// We perform it through PC Application Key.</appendix>
+          <appendix>// Set CapsLock key code to 110 by PCKeyboardHack.</appendix>
+          <sysctl>remap.swap_capslock_and_control_FKBN91ML</sysctl>
+          <block>
+            <device_only>DeviceVendorID(0x04d9),DeviceProductID(0x2011)</device_only>
+            <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::CONTROL_L</autogen>
+            <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::CAPSLOCK</autogen>
+          </block>
+          <block>
+            <device_not>DeviceVendorID(0x04d9),DeviceProductID(0x2011)</device_not>
+            <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::CAPSLOCK</autogen>
+          </block>
+        </item>
       </list>
     </item>
 
