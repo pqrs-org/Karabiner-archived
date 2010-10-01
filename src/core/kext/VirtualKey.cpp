@@ -262,8 +262,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     dx_ = 0;
     dy_ = 0;
     scale_ = 1;
-    scrollmode_ = false;
     timer_.cancelTimeout();
+
+    // Keep scrollmode_!
+    // When VK_MOUSEKEY_SCROLL_UP and VK_MOUSEKEY_SCROLL_DOWN are pressed at the same time,
+    // "reset()" is called in handle().
+    // In the above case, we need to keep "scrollmode_ = true".
   }
 
   bool
@@ -323,8 +327,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! scrollmode_) {
       EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons(), dx_ * scale_, dy_ * scale_);
     } else {
-      int delta1 = - dy_ * scale_ * 2 * EventOutputQueue::FireScrollWheel::DELTA_SCALE;
-      int delta2 = - dx_ * scale_ * 2 * EventOutputQueue::FireScrollWheel::DELTA_SCALE;;
+      int delta1 = -dy_ * scale_ * EventOutputQueue::FireScrollWheel::DELTA_SCALE;
+      int delta2 = -dx_ * scale_ * EventOutputQueue::FireScrollWheel::DELTA_SCALE;
       EventOutputQueue::FireScrollWheel::fire(delta1, delta2);
     }
 
