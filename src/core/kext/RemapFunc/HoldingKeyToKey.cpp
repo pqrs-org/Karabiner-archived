@@ -90,7 +90,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
         default:
-          IOLOG_ERROR("DoublePressModifier::add invalid datatype:%d\n", datatype);
+          IOLOG_ERROR("HoldingKeyToKey::add invalid datatype:%d\n", datatype);
           break;
       }
     }
