@@ -4320,21 +4320,23 @@
               <appendix>// Press S,D keys simultaneously while pressing Command_L or Command_R.</appendix>
               <appendix>// You can release Command key while pressing S,D keys.</appendix>
               <appendix></appendix>
-              <appendix>- F to FN (scroll wheel mode)</appendix>
+              <appendix>+ F to FN (scroll wheel mode)</appendix>
               <appendix>// F+HJKL to Scroll Wheel</appendix>
               <sysctl>remap.simultaneouskeypresses_mouse_keys_mode_commandSD</sysctl>
               <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, VK_COMMAND, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
             </item>
             <item>
               <name>Simultaneous Key Presses [D+F] to turn on Mouse Keys Mode</name>
-              <appendix>- S to FN (scroll wheel mode)</appendix>
+              <appendix></appendix>
+              <appendix>+ S to FN (scroll wheel mode)</appendix>
               <appendix>// S+HJKL to Scroll Wheel</appendix>
               <sysctl>remap.simultaneouskeypresses_mouse_keys_mode_df</sysctl>
               <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::F, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
             </item>
             <item>
               <name>Simultaneous Key Presses [X+C] to turn on Mouse Keys Mode</name>
-              <appendix>- V to FN (scroll wheel mode)</appendix>
+              <appendix></appendix>
+              <appendix>+ V to FN (scroll wheel mode)</appendix>
               <appendix>// V+HJKL to Scroll Wheel</appendix>
               <sysctl>remap.simultaneouskeypresses_mouse_keys_mode_cx</sysctl>
               <autogen>--SimultaneousKeyPresses-- KeyCode::C, KeyCode::X, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
