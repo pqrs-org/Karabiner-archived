@@ -4302,6 +4302,10 @@
                 <config_only>option.mousekeys_mode_commandR2rightclick</config_only>
                 <autogen>--KeyToPointingButton-- KeyCode::COMMAND_R, PointingButton::RIGHT</autogen>
               </block>
+              <block>
+                <config_only>option.mousekeys_mode_f2fn</config_only>
+                <autogen>--KeyToKey-- KeyCode::F, KeyCode::FN</autogen>
+              </block>
             </item>
             <item>
               <name>Simultaneous Key Presses [D+F] to turn on Mouse Keys Mode</name>
@@ -4314,6 +4318,11 @@
               <autogen>--SimultaneousKeyPresses-- KeyCode::C, KeyCode::X, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
             </item>
             <item>
+              <name>Simultaneous Key Presses Command+[S+D] to turn on Mouse Keys Mode</name>
+              <sysctl>remap.simultaneouskeypresses_mouse_keys_mode_commandSD</sysctl>
+              <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, VK_COMMAND, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
+            </item>
+            <item>
               <name>[Option] Command_L to LeftClick</name>
               <sysctl>option.mousekeys_mode_commandL2leftclick</sysctl>
             </item>
@@ -4324,6 +4333,10 @@
             <item>
               <name>[Option] Command_R to RightClick</name>
               <sysctl>option.mousekeys_mode_commandR2rightclick</sysctl>
+            </item>
+            <item>
+              <name>[Option] F to Fn (scroll wheel mode)</name>
+              <sysctl>option.mousekeys_mode_f2fn</sysctl>
             </item>
           </list>
         </item>
