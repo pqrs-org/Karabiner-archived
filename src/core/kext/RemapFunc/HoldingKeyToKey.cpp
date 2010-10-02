@@ -35,51 +35,62 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    HoldingKeyToKey::add(KeyCode newval)
+    HoldingKeyToKey::add(unsigned int datatype, unsigned int newval)
     {
-      switch (index_) {
-        case 0:
-          keytokey_drop_.add(newval);
-          keytokey_normal_.add(KeyCode::VK_PSEUDO_KEY);
-          keytokey_holding_.add(KeyCode::VK_PSEUDO_KEY);
-          break;
+      switch (datatype) {
+        case BRIDGE_DATATYPE_KEYCODE:
+        {
+          switch (index_) {
+            case 0:
+              keytokey_drop_.add(KeyCode(newval));
+              keytokey_normal_.add(KeyCode::VK_PSEUDO_KEY);
+              keytokey_holding_.add(KeyCode::VK_PSEUDO_KEY);
+              break;
 
-        case 1:
-          // pass-through (== no break)
-          keytokey_drop_.add(KeyCode::VK_NONE);
-        default:
-          if (newval == KeyCode::VK_NONE) {
-            index_is_holding_ = true;
-          } else {
-            if (index_is_holding_) {
-              keytokey_holding_.add(newval);
-            } else {
-              keytokey_normal_.add(newval);
-            }
+            case 1:
+              // pass-through (== no break)
+              keytokey_drop_.add(KeyCode::VK_NONE);
+            default:
+              if (KeyCode::VK_NONE == newval) {
+                index_is_holding_ = true;
+              } else {
+                if (index_is_holding_) {
+                  keytokey_holding_.add(KeyCode(newval));
+                } else {
+                  keytokey_normal_.add(KeyCode(newval));
+                }
+              }
+              break;
+          }
+          ++index_;
+
+          break;
+        }
+
+        case BRIDGE_DATATYPE_FLAGS:
+        {
+          switch (index_) {
+            case 0:
+              IOLOG_ERROR("Invalid HoldingKeyToKey::add\n");
+              break;
+
+            case 1:
+              keytokey_drop_.add(Flags(newval));
+              break;
+
+            default:
+              if (index_is_holding_) {
+                keytokey_holding_.add(Flags(newval));
+              } else {
+                keytokey_normal_.add(Flags(newval));
+              }
+              break;
           }
           break;
-      }
-      ++index_;
-    }
-
-    void
-    HoldingKeyToKey::add(Flags newval)
-    {
-      switch (index_) {
-        case 0:
-          IOLOG_ERROR("Invalid HoldingKeyToKey::add\n");
-          break;
-
-        case 1:
-          keytokey_drop_.add(newval);
-          break;
+        }
 
         default:
-          if (index_is_holding_) {
-            keytokey_holding_.add(newval);
-          } else {
-            keytokey_normal_.add(newval);
-          }
+          IOLOG_ERROR("DoublePressModifier::add invalid datatype:%d\n", datatype);
           break;
       }
     }
