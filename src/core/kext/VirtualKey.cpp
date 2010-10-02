@@ -247,6 +247,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     dy_ = 0;
     scale_ = 1;
     scrollmode_ = false;
+    highspeed_ = false;
+
     timer_.initialize(&workloop, NULL, Handle_VK_MOUSEKEY::fire);
   }
 
@@ -262,12 +264,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     dx_ = 0;
     dy_ = 0;
     scale_ = 1;
-    timer_.cancelTimeout();
+    scrollmode_ = false;
+    highspeed_ = false;
 
-    // Keep scrollmode_!
-    // When VK_MOUSEKEY_SCROLL_UP and VK_MOUSEKEY_SCROLL_DOWN are pressed at the same time,
-    // "reset()" is called in handle().
-    // In the above case, we need to keep "scrollmode_ = true".
+    timer_.cancelTimeout();
   }
 
   bool
@@ -289,6 +289,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (params.repeat == false) {
         if (params.ex_iskeydown) { ++dx_; scrollmode_ = false; } else { --dx_; }
       }
+
     } else if (params.key == KeyCode::VK_MOUSEKEY_SCROLL_UP) {
       if (params.repeat == false) {
         if (params.ex_iskeydown) { --dy_; scrollmode_ = true; } else { ++dy_; }
@@ -306,6 +307,11 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (params.ex_iskeydown) { ++dx_; scrollmode_ = true; } else { --dx_; }
       }
 
+    } else if (params.key == KeyCode::VK_MOUSEKEY_HIGHSPEED) {
+      if (params.repeat == false) {
+        highspeed_ = params.ex_iskeydown;
+      }
+
     } else {
       return false;
     }
@@ -313,7 +319,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (dx_ != 0 || dy_ != 0) {
       timer_.setTimeoutMS(TIMER_INTERVAL, false);
     } else {
-      reset();
+      scale_ = 1;
+
+      // keep scrollmode_ & highspeed_.
+      //
+      // When VK_MOUSEKEY_SCROLL_UP and VK_MOUSEKEY_SCROLL_DOWN are pressed at the same time,
+      // this code will be executed.
+      //
+      // In the above case, we need to keep scrollmode_, highspeed_ value.
+
+      timer_.cancelTimeout();
     }
 
     return true;
@@ -325,10 +340,17 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
 
     if (! scrollmode_) {
-      EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons(), dx_ * scale_, dy_ * scale_);
+      int s = scale_;
+      if (highspeed_) s = HIGHSPEED_RELATIVE_SCALE;
+
+      EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons(), dx_ * s, dy_ * s);
+
     } else {
-      int delta1 = -dy_ * scale_ * EventOutputQueue::FireScrollWheel::DELTA_SCALE;
-      int delta2 = -dx_ * scale_ * EventOutputQueue::FireScrollWheel::DELTA_SCALE;
+      int s = scale_;
+      if (highspeed_) s = HIGHSPEED_SCROLL_SCALE;
+
+      int delta1 = -dy_ * s * EventOutputQueue::FireScrollWheel::DELTA_SCALE;
+      int delta2 = -dx_ * s * EventOutputQueue::FireScrollWheel::DELTA_SCALE;
       EventOutputQueue::FireScrollWheel::fire(delta1, delta2);
     }
 
@@ -343,6 +365,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   int Handle_VK_MOUSEKEY::dy_;
   int Handle_VK_MOUSEKEY::scale_;
   bool Handle_VK_MOUSEKEY::scrollmode_;
+  bool Handle_VK_MOUSEKEY::highspeed_;
   TimerWrapper Handle_VK_MOUSEKEY::timer_;
 
   // ----------------------------------------------------------------------
