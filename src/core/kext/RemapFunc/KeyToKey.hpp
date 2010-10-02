@@ -3,6 +3,7 @@
 
 #include "RemapFuncBase.hpp"
 #include "FromKeyChecker.hpp"
+#include "bridge.h" // XXX: hacks for switching. Remove me.
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
@@ -18,8 +19,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       // [1] => toKeys_[0]
       // [2] => toKeys_[1]
       // [3] => ...
-      void add(KeyCode newval);
-      void add(Flags newval);
+      void add(unsigned int datatype, unsigned int newval);
+
+      // XXX: hacks for switching. Remove me.
+      void add(KeyCode newval) { add(BRIDGE_DATATYPE_KEYCODE, newval.get()); }
+      void add(Flags newval)   { add(BRIDGE_DATATYPE_FLAGS,   newval.get()); }
 
       // ----------------------------------------
       // utility functions
