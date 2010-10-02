@@ -4256,11 +4256,14 @@
               <appendix>and keep S,D keys pressing.</appendix>
               <appendix>Then you can control mouse cursor by HJKL keys. (and Arrow keys)</appendix>
               <appendix></appendix>
-              <appendix>- Arrow Keys to move mouse cursor</appendix>
               <appendix>- HJKL to move mouse cursor</appendix>
+              <appendix>- Arrow Keys to move mouse cursor</appendix>
               <appendix></appendix>
-              <appendix>- FN+Arrow Keys to scroll wheel</appendix>
-              <appendix>- FN+HJKL to scroll wheel</appendix>
+              <appendix>- F+HJKL to scroll wheel</appendix>
+              <appendix>- F+Arrow Keys to scroll wheel</appendix>
+              <appendix></appendix>
+              <appendix>- A+HJKL to high-speed movement</appendix>
+              <appendix>- A+Arrow Keys to high-speed movement</appendix>
               <sysctl>notsave.mousekeys_mode</sysctl>
               <vk_config>true</vk_config>
               <autogen>--ShowStatusMessage-- "Mouse Keys"</autogen>
@@ -4291,10 +4294,12 @@
               <block>
                 <config_only>remap.simultaneouskeypresses_mouse_keys_mode_df</config_only>
                 <autogen>--KeyToKey-- KeyCode::S, KeyCode::FN</autogen>
+                <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_MOUSEKEY_HIGHSPEED</autogen>
               </block>
               <block>
                 <config_only>remap.simultaneouskeypresses_mouse_keys_mode_cx</config_only>
                 <autogen>--KeyToKey-- KeyCode::V, KeyCode::FN</autogen>
+                <autogen>--KeyToKey-- KeyCode::Z, KeyCode::VK_MOUSEKEY_HIGHSPEED</autogen>
               </block>
               <!-- ======================================== -->
               <block>
@@ -4321,24 +4326,33 @@
               <appendix>// Press S,D keys simultaneously while pressing Command_L or Command_R.</appendix>
               <appendix>// You can release Command key while pressing S,D keys.</appendix>
               <appendix></appendix>
-              <appendix>+ F to FN (scroll wheel mode)</appendix>
-              <appendix>// F+HJKL to Scroll Wheel</appendix>
+              <appendix>+ F turns on "Scroll Wheel Mode"</appendix>
+              <appendix>// F+HJKL to scroll wheel</appendix>
+              <appendix></appendix>
+              <appendix>+ A turns on "High Speed Mode"</appendix>
+              <appendix>// A+HJKL to high-speed movement</appendix>
               <sysctl>remap.simultaneouskeypresses_mouse_keys_mode_commandSD</sysctl>
               <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, VK_COMMAND, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
             </item>
             <item>
               <name>Simultaneous Key Presses [D+F] to turn on Mouse Keys Mode</name>
               <appendix></appendix>
-              <appendix>+ S to FN (scroll wheel mode)</appendix>
-              <appendix>// S+HJKL to Scroll Wheel</appendix>
+              <appendix>+ S turns on "Scroll Wheel Mode"</appendix>
+              <appendix>// S+HJKL to scroll wheel</appendix>
+              <appendix></appendix>
+              <appendix>+ A turns on "High Speed Mode"</appendix>
+              <appendix>// A+HJKL to high-speed movement</appendix>
               <sysctl>remap.simultaneouskeypresses_mouse_keys_mode_df</sysctl>
               <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::F, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
             </item>
             <item>
               <name>Simultaneous Key Presses [X+C] to turn on Mouse Keys Mode</name>
               <appendix></appendix>
-              <appendix>+ V to FN (scroll wheel mode)</appendix>
-              <appendix>// V+HJKL to Scroll Wheel</appendix>
+              <appendix>+ V turns on "Scroll Wheel Mode"</appendix>
+              <appendix>// V+HJKL to scroll wheel</appendix>
+              <appendix></appendix>
+              <appendix>+ Z turns on "High Speed Mode"</appendix>
+              <appendix>// Z+HJKL to high-speed movement</appendix>
               <sysctl>remap.simultaneouskeypresses_mouse_keys_mode_cx</sysctl>
               <autogen>--SimultaneousKeyPresses-- KeyCode::C, KeyCode::X, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
             </item>
