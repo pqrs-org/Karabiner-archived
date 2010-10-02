@@ -480,6 +480,15 @@
             <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::CAPSLOCK</autogen>
           </block>
         </item>
+        <item>
+          <name>Swap Command_L and Option_L on FILCO FKBN91ML/NB</name>
+          <sysctl>remap.swap_commandL_and_optionL_FKBN91ML</sysctl>
+          <block>
+            <device_only>DeviceVendorID(0x04d9),DeviceProductID(0x2011)</device_only>
+            <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
+            <autogen>--KeyToKey-- KeyCode::OPTION_L,  KeyCode::COMMAND_L</autogen>
+          </block>
+        </item>
       </list>
     </item>
 
@@ -4297,7 +4306,7 @@
             <item>
               <name>Simultaneous Key Presses [D+F] to turn on Mouse Keys Mode</name>
               <sysctl>remap.simultaneouskeypresses_mouse_keys_mode_df</sysctl>
-              <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::D, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
+              <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::F, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
             </item>
             <item>
               <name>Simultaneous Key Presses [X+C] to turn on Mouse Keys Mode</name>
