@@ -27,8 +27,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // [n+1] => toKeys_holding_[0]
       // [n+2] => toKeys_holding_[1]
       // [n+3] => ...
-      void add(KeyCode newval);
-      void add(Flags newval);
+      void add(unsigned int datatype, unsigned int newval);
 
     private:
       static void fireholding(OSObject* owner, IOTimerEventSource* sender);
