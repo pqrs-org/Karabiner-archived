@@ -7,6 +7,7 @@ class RemapClass
   @@index = 0
   @@entries = []
   @@simultaneous_keycode_index = 0
+  @@keycode = {}
 
   def RemapClass.get_entries
     return @@entries
@@ -44,8 +45,24 @@ class RemapClass
       :get_statusmessage            => [],
       :enabled                      => [],
     }
+
+    load_keycode()
   end
   attr_accessor :name, :filter, :code
+
+  def load_keycode
+    return unless @@keycode.empty?
+
+    Dir.glob("../keycode/output/*.raw").each do |filepath|
+      type = File.basename(filepath, 'raw').gsub(/^include\./, '')
+      open(filepath) do |f|
+        while l = f.gets
+          next unless /^(.+?) (.+)$/ =~ l
+          @@keycode[$1] = $2
+        end
+      end
+    end
+  end
 
   def +(other)
     other.code.each do |k,v|
@@ -82,7 +99,11 @@ class RemapClass
           end
 
           datatype = newdatatype
-          newval << "#{value}.get()" # XXX: convert to int instead of calling XXX.get().
+          if @@keycode[value].nil? then
+            print "[ERROR] unknown keycode #{value}\n"
+            throw :exit
+          end
+          newval << @@keycode[value]
         end
         @code[:initialize] += "value#{@@index}_.add(#{datatype}, #{newval.join('|')});\n"
       else
