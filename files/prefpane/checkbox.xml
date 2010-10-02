@@ -4257,39 +4257,45 @@
               <appendix></appendix>
               <appendix>- Arrow Keys to move mouse cursor</appendix>
               <appendix>- HJKL to move mouse cursor</appendix>
-              <appendix>- U to LeftClick</appendix>
-              <appendix>- I to MiddleClick</appendix>
-              <appendix>- O to RightClick</appendix>
               <appendix></appendix>
-              <appendix>- S to FN (scroll wheel mode)</appendix>
               <appendix>- FN+Arrow Keys to scroll wheel</appendix>
               <appendix>- FN+HJKL to scroll wheel</appendix>
               <appendix></appendix>
-              <appendix>- V to FN (Use with [X+C])</appendix>
               <sysctl>notsave.mousekeys_mode</sysctl>
               <vk_config>true</vk_config>
               <autogen>--ShowStatusMessage-- "Mouse Keys"</autogen>
+              <!-- scroll wheel mode -->
               <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_LEFT,  ModifierFlag::FN</autogen>
               <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_DOWN,  ModifierFlag::FN</autogen>
               <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_UP,    ModifierFlag::FN</autogen>
               <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_RIGHT, ModifierFlag::FN</autogen>
-              <autogen>--KeyToKey-- KeyCode::H, KeyCode::VK_MOUSEKEY_LEFT</autogen>
-              <autogen>--KeyToKey-- KeyCode::J, KeyCode::VK_MOUSEKEY_DOWN</autogen>
-              <autogen>--KeyToKey-- KeyCode::K, KeyCode::VK_MOUSEKEY_UP</autogen>
-              <autogen>--KeyToKey-- KeyCode::L, KeyCode::VK_MOUSEKEY_RIGHT</autogen>
               <autogen>--KeyToKey-- KeyCode::CURSOR_UP,    ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_UP,    ModifierFlag::FN</autogen>
               <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN,  ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_DOWN,  ModifierFlag::FN</autogen>
               <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT,  ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_LEFT,  ModifierFlag::FN</autogen>
               <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_RIGHT, ModifierFlag::FN</autogen>
+              <!-- normal mode -->
+              <autogen>--KeyToKey-- KeyCode::H, KeyCode::VK_MOUSEKEY_LEFT</autogen>
+              <autogen>--KeyToKey-- KeyCode::J, KeyCode::VK_MOUSEKEY_DOWN</autogen>
+              <autogen>--KeyToKey-- KeyCode::K, KeyCode::VK_MOUSEKEY_UP</autogen>
+              <autogen>--KeyToKey-- KeyCode::L, KeyCode::VK_MOUSEKEY_RIGHT</autogen>
               <autogen>--KeyToKey-- KeyCode::CURSOR_UP,    KeyCode::VK_MOUSEKEY_UP</autogen>
               <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN,  KeyCode::VK_MOUSEKEY_DOWN</autogen>
               <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT,  KeyCode::VK_MOUSEKEY_LEFT</autogen>
               <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, KeyCode::VK_MOUSEKEY_RIGHT</autogen>
-              <autogen>--KeyToPointingButton-- KeyCode::U, PointingButton::LEFT</autogen>
-              <autogen>--KeyToPointingButton-- KeyCode::I, PointingButton::MIDDLE</autogen>
-              <autogen>--KeyToPointingButton-- KeyCode::O, PointingButton::RIGHT</autogen>
-              <autogen>--KeyToKey-- KeyCode::S, KeyCode::FN</autogen>
-              <autogen>--KeyToKey-- KeyCode::V, KeyCode::FN</autogen>
+              <!-- ======================================== -->
+              <block>
+                <config_only>remap.simultaneouskeypresses_mouse_keys_mode_commandSD</config_only>
+                <autogen>--KeyToKey-- KeyCode::F, KeyCode::FN</autogen>
+              </block>
+              <block>
+                <config_only>remap.simultaneouskeypresses_mouse_keys_mode_df</config_only>
+                <autogen>--KeyToKey-- KeyCode::S, KeyCode::FN</autogen>
+              </block>
+              <block>
+                <config_only>remap.simultaneouskeypresses_mouse_keys_mode_cx</config_only>
+                <autogen>--KeyToKey-- KeyCode::V, KeyCode::FN</autogen>
+              </block>
+              <!-- ======================================== -->
               <block>
                 <config_only>option.mousekeys_mode_commandL2leftclick</config_only>
                 <autogen>--KeyToPointingButton-- KeyCode::COMMAND_L, PointingButton::LEFT</autogen>
@@ -4306,21 +4312,36 @@
                 <config_only>option.mousekeys_mode_f2fn</config_only>
                 <autogen>--KeyToKey-- KeyCode::F, KeyCode::FN</autogen>
               </block>
+              <block>
+                <config_only>option.mousekeys_mode_uio2click</config_only>
+                <autogen>--KeyToPointingButton-- KeyCode::U, PointingButton::LEFT</autogen>
+                <autogen>--KeyToPointingButton-- KeyCode::I, PointingButton::MIDDLE</autogen>
+                <autogen>--KeyToPointingButton-- KeyCode::O, PointingButton::RIGHT</autogen>
+              </block>
+            </item>
+            <item>
+              <name>Simultaneous Key Presses Command+[S+D] to turn on Mouse Keys Mode</name>
+              <appendix>// Press S,D keys simultaneously while pressing Command_L or Command_R.</appendix>
+              <appendix>// You can release Command key while pressing S,D keys.</appendix>
+              <appendix></appendix>
+              <appendix>- F to FN (scroll wheel mode)</appendix>
+              <appendix>// F+HJKL to Scroll Wheel</appendix>
+              <sysctl>remap.simultaneouskeypresses_mouse_keys_mode_commandSD</sysctl>
+              <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, VK_COMMAND, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
             </item>
             <item>
               <name>Simultaneous Key Presses [D+F] to turn on Mouse Keys Mode</name>
+              <appendix>- S to FN (scroll wheel mode)</appendix>
+              <appendix>// S+HJKL to Scroll Wheel</appendix>
               <sysctl>remap.simultaneouskeypresses_mouse_keys_mode_df</sysctl>
               <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::F, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
             </item>
             <item>
               <name>Simultaneous Key Presses [X+C] to turn on Mouse Keys Mode</name>
+              <appendix>- V to FN (scroll wheel mode)</appendix>
+              <appendix>// V+HJKL to Scroll Wheel</appendix>
               <sysctl>remap.simultaneouskeypresses_mouse_keys_mode_cx</sysctl>
               <autogen>--SimultaneousKeyPresses-- KeyCode::C, KeyCode::X, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
-            </item>
-            <item>
-              <name>Simultaneous Key Presses Command+[S+D] to turn on Mouse Keys Mode</name>
-              <sysctl>remap.simultaneouskeypresses_mouse_keys_mode_commandSD</sysctl>
-              <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, VK_COMMAND, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
             </item>
             <item>
               <name>[Option] Command_L to LeftClick</name>
@@ -4337,6 +4358,13 @@
             <item>
               <name>[Option] F to Fn (scroll wheel mode)</name>
               <sysctl>option.mousekeys_mode_f2fn</sysctl>
+            </item>
+            <item>
+              <name>[Option] UIO to Click</name>
+              <appendix>- U to LeftClick</appendix>
+              <appendix>- I to MiddleClick</appendix>
+              <appendix>- O to RightClick</appendix>
+              <sysctl>option.mousekeys_mode_uio2click</sysctl>
             </item>
           </list>
         </item>
