@@ -4281,6 +4281,18 @@
               <autogen>--KeyToPointingButton-- KeyCode::O, PointingButton::RIGHT</autogen>
               <autogen>--KeyToKey-- KeyCode::S, KeyCode::FN</autogen>
               <autogen>--KeyToKey-- KeyCode::V, KeyCode::FN</autogen>
+              <block>
+                <config_only>option.mousekeys_mode_commandL2leftclick</config_only>
+                <autogen>--KeyToPointingButton-- KeyCode::COMMAND_L, PointingButton::LEFT</autogen>
+              </block>
+              <block>
+                <config_only>option.mousekeys_mode_space2middleclick</config_only>
+                <autogen>--KeyToPointingButton-- KeyCode::SPACE, PointingButton::MIDDLE</autogen>
+              </block>
+              <block>
+                <config_only>option.mousekeys_mode_commandR2rightclick</config_only>
+                <autogen>--KeyToPointingButton-- KeyCode::COMMAND_R, PointingButton::RIGHT</autogen>
+              </block>
             </item>
             <item>
               <name>Simultaneous Key Presses [D+F] to turn on Mouse Keys Mode</name>
@@ -4291,6 +4303,18 @@
               <name>Simultaneous Key Presses [X+C] to turn on Mouse Keys Mode</name>
               <sysctl>remap.simultaneouskeypresses_mouse_keys_mode_cx</sysctl>
               <autogen>--SimultaneousKeyPresses-- KeyCode::C, KeyCode::X, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
+            </item>
+            <item>
+              <name>[Option] Command_L to LeftClick</name>
+              <sysctl>option.mousekeys_mode_commandL2leftclick</sysctl>
+            </item>
+            <item>
+              <name>[Option] Space to MiddleClick</name>
+              <sysctl>option.mousekeys_mode_space2middleclick</sysctl>
+            </item>
+            <item>
+              <name>[Option] Command_R to RightClick</name>
+              <sysctl>option.mousekeys_mode_commandR2rightclick</sysctl>
             </item>
           </list>
         </item>
