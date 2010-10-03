@@ -4385,6 +4385,10 @@
             </item>
             <item>
               <name>[Option] JIS_EISUU to LeftClick</name>
+              <appendix></appendix>
+              <appendix>// If you are using Apple keyboards, this setting may be useless.</appendix>
+              <appendix>// Because Apple keyboards have a 2-key rollover problem,</appendix>
+              <appendix>// and can't recognize JIS_EISUU while pressing S,D keys.</appendix>
               <sysctl>option.mousekeys_mode_jis_eisuu2leftclick</sysctl>
             </item>
             <item>
