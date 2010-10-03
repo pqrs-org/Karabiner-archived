@@ -8,6 +8,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 #include "keycode/output/include.KeyCode.cpp"
 #include "keycode/output/include.ConsumerKeyCode.cpp"
 #include "keycode/output/include.PointingButton.cpp"
+#include "keycode/output/include.Option.cpp"
 
   // ------------------------------------------------------------
   bool

@@ -9,13 +9,9 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
+    // for SandS like behavior remappings (remap_space2shift, remap_enter2optionL_commandSpace, ...)
     class KeyOverlaidModifier {
-      // for SandS like behavior remappings (remap_space2shift, remap_enter2optionL_commandSpace, ...)
     public:
-      enum Option {
-        OPTION_REPEAT,
-      };
-
       static void static_initialize(IOWorkLoop& workloop);
       static void static_terminate(void);
 
@@ -31,9 +27,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       // [3]   => toKeys_fire_[1]
       // [4]   => toKeys_fire_[2]
       // [5]   => ...
-      void add(KeyCode newval);
-      void add(Flags newval);
-      void add(Option newval);
+      void add(unsigned int datatype, unsigned int newval);
+
+      // utility
+      void add(KeyCode newval) { add(BRIDGE_DATATYPE_KEYCODE, newval.get()); }
+      void add(Flags newval)   { add(BRIDGE_DATATYPE_FLAGS,   newval.get()); }
+      void add(Option newval)  { add(BRIDGE_DATATYPE_OPTION,  newval.get()); }
 
     private:
       static void firerepeat(OSObject* owner, IOTimerEventSource* sender);

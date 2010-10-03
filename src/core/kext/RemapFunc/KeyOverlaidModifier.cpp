@@ -35,55 +35,66 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    KeyOverlaidModifier::add(KeyCode newval)
+    KeyOverlaidModifier::add(unsigned int datatype, unsigned int newval)
     {
-      switch (index_) {
-        case 0:
-          keytokey_.add(newval);
-          keytokey_fire_.add(KeyCode::VK_PSEUDO_KEY);
-          break;
+      switch (datatype) {
+        case BRIDGE_DATATYPE_KEYCODE:
+        {
+          switch (index_) {
+            case 0:
+              keytokey_.add(KeyCode(newval));
+              keytokey_fire_.add(KeyCode::VK_PSEUDO_KEY);
+              break;
 
-        case 1:
-          toKey_.key = newval;
-          keytokey_.add(newval);
+            case 1:
+              toKey_.key = newval;
+              keytokey_.add(KeyCode(newval));
+              break;
+
+            default:
+              keytokey_fire_.add(KeyCode(newval));
+              break;
+          }
+          ++index_;
+
           break;
+        }
+
+        case BRIDGE_DATATYPE_FLAGS:
+        {
+          switch (index_) {
+            case 0:
+              IOLOG_ERROR("Invalid KeyOverlaidModifier::add\n");
+              break;
+
+            case 1:
+              keytokey_.add(Flags(newval));
+              break;
+
+            case 2:
+              toKey_.flags = newval;
+              keytokey_.add(Flags(newval));
+              break;
+
+            default:
+              keytokey_fire_.add(Flags(newval));
+              break;
+          }
+          break;
+        }
+
+        case BRIDGE_DATATYPE_OPTION:
+        {
+          if (Option::KEYOVERLAIDMODIFIER_REPEAT == newval) {
+            isRepeatEnabled_ = true;
+          } else {
+            IOLOG_ERROR("KeyOverlaidModifier::add unknown option:%d\n", newval);
+          }
+          break;
+        }
 
         default:
-          keytokey_fire_.add(newval);
-          break;
-      }
-      ++index_;
-    }
-
-    void
-    KeyOverlaidModifier::add(Flags newval)
-    {
-      switch (index_) {
-        case 0:
-          IOLOG_ERROR("Invalid KeyOverlaidModifier::add\n");
-          break;
-
-        case 1:
-          keytokey_.add(newval);
-          break;
-
-        case 2:
-          toKey_.flags = newval;
-          keytokey_.add(newval);
-          break;
-
-        default:
-          keytokey_fire_.add(newval);
-          break;
-      }
-    }
-
-    void
-    KeyOverlaidModifier::add(KeyOverlaidModifier::Option newval)
-    {
-      switch (newval) {
-        case KeyOverlaidModifier::OPTION_REPEAT:
-          isRepeatEnabled_ = true;
+          IOLOG_ERROR("KeyOverlaidModifier::add invalid datatype:%d\n", datatype);
           break;
       }
     }

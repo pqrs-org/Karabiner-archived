@@ -71,7 +71,7 @@ class Preprocesser
         modify = true
 
       elsif /--KeyOverlaidModifierWithRepeat--/ =~ autogen then
-        list << autogen.gsub(/--KeyOverlaidModifierWithRepeat--/, '--KeyOverlaidModifier-- RemapFunc::KeyOverlaidModifier::OPTION_REPEAT, ')
+        list << autogen.gsub(/--KeyOverlaidModifierWithRepeat--/, '--KeyOverlaidModifier-- Option::KEYOVERLAIDMODIFIER_REPEAT, ')
         modify = true
 
       else
