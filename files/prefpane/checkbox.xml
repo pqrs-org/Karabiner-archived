@@ -4320,6 +4320,14 @@
                 <autogen>--KeyToPointingButton-- KeyCode::I, PointingButton::MIDDLE</autogen>
                 <autogen>--KeyToPointingButton-- KeyCode::O, PointingButton::RIGHT</autogen>
               </block>
+              <block>
+                <config_only>option.mousekeys_mode_jis_eisuu2leftclick</config_only>
+                <autogen>--KeyToPointingButton-- KeyCode::JIS_EISUU, PointingButton::LEFT</autogen>
+              </block>
+              <block>
+                <config_only>option.mousekeys_mode_jis_kana2rightclick</config_only>
+                <autogen>--KeyToPointingButton-- KeyCode::JIS_KANA, PointingButton::RIGHT</autogen>
+              </block>
             </item>
             <item>
               <name>Simultaneous Key Presses Command+[S+D] to turn on Mouse Keys Mode</name>
@@ -4374,6 +4382,14 @@
               <appendix>- I to MiddleClick</appendix>
               <appendix>- O to RightClick</appendix>
               <sysctl>option.mousekeys_mode_uio2click</sysctl>
+            </item>
+            <item>
+              <name>[Option] JIS_EISUU to LeftClick</name>
+              <sysctl>option.mousekeys_mode_jis_eisuu2leftclick</sysctl>
+            </item>
+            <item>
+              <name>[Option] JIS_KANA to RightClick</name>
+              <sysctl>option.mousekeys_mode_jis_kana2rightclick</sysctl>
             </item>
           </list>
         </item>
