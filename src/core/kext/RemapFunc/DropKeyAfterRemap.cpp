@@ -11,15 +11,25 @@ namespace org_pqrs_KeyRemap4MacBook {
     {}
 
     void
-    DropKeyAfterRemap::add(KeyCode newval)
+    DropKeyAfterRemap::add(unsigned int datatype, unsigned int newval)
     {
-      fromKey_.key = newval;
-    }
+      switch (datatype) {
+        case BRIDGE_DATATYPE_KEYCODE:
+        {
+          fromKey_.key = newval;
+          break;
+        }
 
-    void
-    DropKeyAfterRemap::add(Flags newval)
-    {
-      fromKey_.flags = newval;
+        case BRIDGE_DATATYPE_FLAGS:
+        {
+          fromKey_.flags = newval;
+          break;
+        }
+
+        default:
+          IOLOG_ERROR("DropKeyAfterRemap::add invalid datatype:%d\n", datatype);
+          break;
+      }
     }
 
     bool
