@@ -19,55 +19,63 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    KeyToPointingButton::add(KeyCode newval)
+    KeyToPointingButton::add(unsigned int datatype, unsigned int newval)
     {
       if (! toButtons_) return;
 
-      switch (index_) {
-        case 0:
-          fromKey_.key = newval;
+      switch (datatype) {
+        case BRIDGE_DATATYPE_KEYCODE:
+        {
+          switch (index_) {
+            case 0:
+              fromKey_.key = newval;
+              break;
+
+            default:
+              IOLOG_ERROR("Invalid KeyToPointingButton::add\n");
+              break;
+          }
+          ++index_;
+
           break;
+        }
+
+        case BRIDGE_DATATYPE_POINTINGBUTTON:
+        {
+          switch (index_) {
+            case 0:
+              IOLOG_ERROR("Invalid KeyToPointingButton::add\n");
+              break;
+
+            default:
+              toButtons_->push_back(PairPointingButtonFlags(newval));
+              break;
+          }
+          ++index_;
+
+          break;
+        }
+
+        case BRIDGE_DATATYPE_FLAGS:
+        {
+          switch (index_) {
+            case 0:
+              IOLOG_ERROR("Invalid KeyToPointingButton::add\n");
+              break;
+
+            case 1:
+              fromKey_.flags = newval;
+              break;
+
+            default:
+              (toButtons_->back()).flags = newval;
+              break;
+          }
+          break;
+        }
 
         default:
-          IOLOG_ERROR("Invalid KeyToPointingButton::add\n");
-          break;
-      }
-      ++index_;
-    }
-
-    void
-    KeyToPointingButton::add(PointingButton newval)
-    {
-      if (! toButtons_) return;
-
-      switch (index_) {
-        case 0:
-          IOLOG_ERROR("Invalid KeyToPointingButton::add\n");
-          break;
-
-        default:
-          toButtons_->push_back(PairPointingButtonFlags(newval));
-          break;
-      }
-      ++index_;
-    }
-
-    void
-    KeyToPointingButton::add(Flags newval)
-    {
-      if (! toButtons_) return;
-
-      switch (index_) {
-        case 0:
-          IOLOG_ERROR("Invalid KeyToPointingButton::add\n");
-          break;
-
-        case 1:
-          fromKey_.flags = newval;
-          break;
-
-        default:
-          (toButtons_->back()).flags = newval;
+          IOLOG_ERROR("KeyToPointingButton::add invalid datatype:%d\n", datatype);
           break;
       }
     }

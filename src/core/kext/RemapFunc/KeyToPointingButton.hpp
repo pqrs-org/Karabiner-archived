@@ -1,6 +1,7 @@
 #ifndef KEYTOPOINTINGBUTTON_HPP
 #define KEYTOPOINTINGBUTTON_HPP
 
+#include "bridge.h"
 #include "RemapFuncBase.hpp"
 #include "FromKeyChecker.hpp"
 #include "KeyToKey.hpp"
@@ -20,9 +21,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       // [1] => toButtons_[0]
       // [2] => toButtons_[1]
       // [3] => ...
-      void add(KeyCode newval);
-      void add(PointingButton newval);
-      void add(Flags newval);
+      void add(unsigned int datatype, unsigned int newval);
+
+      // ----------------------------------------
+      // utility functions
+      void add(KeyCode newval)        { add(BRIDGE_DATATYPE_KEYCODE, newval.get()); }
+      void add(Flags newval)          { add(BRIDGE_DATATYPE_FLAGS,   newval.get()); }
+      void add(PointingButton newval) { add(BRIDGE_DATATYPE_POINTINGBUTTON, newval.get()); }
 
     private:
       size_t index_;

@@ -1,9 +1,9 @@
 #ifndef KEYTOKEY_HPP
 #define KEYTOKEY_HPP
 
+#include "bridge.h"
 #include "RemapFuncBase.hpp"
 #include "FromKeyChecker.hpp"
-#include "bridge.h"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
