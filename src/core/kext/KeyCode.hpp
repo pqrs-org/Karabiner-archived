@@ -322,6 +322,20 @@ namespace org_pqrs_KeyRemap4MacBook {
   inline Buttons operator|(PointingButton lhs, PointingButton rhs) { return lhs.get() | rhs.get(); }
 
   // ======================================================================
+  class Option {
+  public:
+    Option(unsigned int v = 0) : value_(v) {}
+    unsigned int get(void) const { return value_; }
+    bool operator==(Option other) const { return value_ == other.get(); }
+    bool operator!=(Option other) const { return ! (*this == other); }
+
+#include "keycode/output/include.Option.hpp"
+
+  private:
+    unsigned int value_;
+  };
+
+  // ======================================================================
   typedef unsigned int DeviceVendorID;
   typedef unsigned int DeviceProductID;
 
