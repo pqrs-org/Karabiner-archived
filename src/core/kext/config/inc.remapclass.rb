@@ -78,7 +78,7 @@ class RemapClass
     @code[:initialize] += "static void initialize_value#{@@index}(void) {\n"
     @code[:initialize] += "value#{@@index}_.initialize();\n"
     params.split(/,/).each do |p|
-      if operation == 'IgnoreMultipleSameKeyPress' or operation == 'DoublePressModifier' or operation == 'HoldingKeyToKey' or operation == 'KeyToKey' or operation == 'KeyToConsumer' then
+      if operation == 'IgnoreMultipleSameKeyPress' or operation == 'DoublePressModifier' or operation == 'HoldingKeyToKey' or operation == 'KeyToKey' or operation == 'KeyToConsumer' or operation == 'KeyToPointingButton' then
         datatype = nil
         newval = []
         p.split(/\|/).each do |value|
@@ -91,6 +91,8 @@ class RemapClass
             newdatatype = 'static_cast<unsigned int>(BRIDGE_DATATYPE_FLAGS)'
           elsif /^ConsumerKeyCode::(.+)$/ =~ value then
             newdatatype = 'static_cast<unsigned int>(BRIDGE_DATATYPE_CONSUMERKEYCODE)'
+          elsif /^PointingButton::(.+)$/ =~ value then
+            newdatatype = 'static_cast<unsigned int>(BRIDGE_DATATYPE_POINTINGBUTTON)'
           else
             print "[ERROR] unknown datatype #{value}\n"
             throw :exit
