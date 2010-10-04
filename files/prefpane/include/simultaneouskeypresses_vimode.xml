@@ -312,6 +312,10 @@
         <config_only>option.simultaneouskeypresses_vimode_s_to_command_d</config_only>
       </block>
       <block>
+        <autogen>--KeyToKey-- KeyCode::P, KeyCode::ESCAPE</autogen>
+        <config_only>option.simultaneouskeypresses_vimode_p_to_esc</config_only>
+      </block>
+      <block>
         <autogen>--KeyToKey-- KeyCode::Z, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
         <autogen>--KeyToKey-- KeyCode::X, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
         <autogen>--KeyToKey-- KeyCode::C, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
@@ -639,6 +643,10 @@
     <item>
       <name>[Option] S to Command+D</name>
       <sysctl>option.simultaneouskeypresses_vimode_s_to_command_d</sysctl>
+    </item>
+    <item>
+      <name>[Option] P to Esc</name>
+      <sysctl>option.simultaneouskeypresses_vimode_p_to_esc</sysctl>
     </item>
     <item>
       <name>[Option] ZXCV to Command+ZXCV</name>
