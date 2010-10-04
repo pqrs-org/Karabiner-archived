@@ -4717,6 +4717,11 @@
           <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::J, KeyCode::RETURN</autogen>
         </item>
         <item>
+          <name>Simultaneous Key Presses [F+J] to Command+Space(invoke Launchbar,Quicksilver,etc)</name>
+          <sysctl>remap.simultaneouskeypresses_fj_to_command_space</sysctl>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::J, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
           <name>Simultaneous Key Presses [X+C] to Escape</name>
           <sysctl>remap.simultaneouskeypresses_xc2escape</sysctl>
           <autogen>--SimultaneousKeyPresses-- KeyCode::C, KeyCode::X, KeyCode::ESCAPE</autogen>
@@ -4778,6 +4783,16 @@
           <appendix>(We can change the key once again)</appendix>
           <sysctl>remap.simultaneouskeypresses_kl2return</sysctl>
           <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::L, KeyCode::RETURN, SimultaneousKeyPresses::Option::RAW</autogen>
+        </item>
+        <item>
+          <name>Simultaneous Key Presses [S+D] to Esc</name>
+          <sysctl>remap.simultaneouskeypresses_sd_to_esc</sysctl>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::D, KeyCode::ESCAPE</autogen>
+        </item>
+        <item>
+          <name>Simultaneous Key Presses [Shift_L+Shift_R] to Capslock</name>
+          <sysctl>remap.simultaneouskeypresses_ss_to_capslock</sysctl>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::SHIFT_L, KeyCode::SHIFT_R, KeyCode::CAPSLOCK</autogen>
         </item>
         <item>
           <name>Simultaneous Key Presses [Command_L+Command_R] to Return</name>
