@@ -6371,6 +6371,11 @@
           <sysctl>remap.french_commandLhat2optionshift1</sysctl>
           <autogen>--KeyToKey-- KeyCode::FRENCH_HAT, ModifierFlag::COMMAND_L | ModifierFlag::NONE, KeyCode::KEY_1, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
         </item>
+        <item>
+          <name>Command_R+Circonflexe(^) to ´(Option+Shift+1)</name>
+          <sysctl>remap.french_commandRhat2optionshift1</sysctl>
+          <autogen>--KeyToKey-- KeyCode::FRENCH_HAT, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_1, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+        </item>
       </list>
     </item>
     <item>
