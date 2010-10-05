@@ -2477,6 +2477,11 @@
               <sysctl>remap.shift_keypad_dot2comma</sysctl>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, VK_SHIFT, KeyCode::KEYPAD_COMMA</autogen>
             </item>
+            <item>
+              <name>Control+Dot(.) to Command+X (Cut)</name>
+              <sysctl>remap.controlDot2commandX</sysctl>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, VK_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+            </item>
           </list>
         </item>
         <item>
@@ -2484,6 +2489,26 @@
           <appendix>(+ When you type Keypad_0 only, send Keypad_0) + [KeyRepeat]</appendix>
           <sysctl>remap.keypad0_2_shiftL_keypad0_keyrepeat</sysctl>
           <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::KEYPAD_0, KeyCode::SHIFT_L, KeyCode::KEYPAD_0</autogen>
+        </item>
+        <item>
+          <name>Control+Keypad_0 to Command+C (Copy)</name>
+          <sysctl>remap.controlkeypad0_to_commandC</sysctl>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_0, VK_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
+          <name>Shift+Keypad_0 to Command+V (Paste)</name>
+          <sysctl>remap.shiftkeypad0_to_commandV</sysctl>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_0, VK_SHIFT, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
+          <name>Control+Keypad_1 to Command+Down Arrow</name>
+          <sysctl>remap.controlkeypad1_to_commandDown</sysctl>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_1, VK_CONTROL, KeyCode::CURSOR_DOWN, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
+          <name>Control+Keypad_7 to Command+Up Arrow</name>
+          <sysctl>remap.controlkeypad7_to_commandUp</sysctl>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_7, VK_CONTROL, KeyCode::CURSOR_UP, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
           <name>Shift+Enter to Equal</name>
