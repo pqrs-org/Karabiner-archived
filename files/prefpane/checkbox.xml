@@ -3508,6 +3508,11 @@
           <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::RETURN</autogen>
         </item>
         <item>
+          <name>Command+Space to Command+Shift+Space</name>
+          <sysctl>remap.commandSpace2commandLshiftLspace</sysctl>
+          <autogen>--KeyToKey-- KeyCode::SPACE, VK_COMMAND | ModifierFlag::NONE, KeyCode::SPACE, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+        </item>
+        <item>
           <name>Shift+Space to Command_L+Space</name>
           <sysctl>remap.shiftSpace2commandLSpace</sysctl>
           <autogen>--KeyToKey-- KeyCode::SPACE, VK_SHIFT, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
