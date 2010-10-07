@@ -17,51 +17,63 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    ConsumerToKey::add(ConsumerKeyCode newval)
+    ConsumerToKey::add(unsigned int datatype, unsigned int newval)
     {
-      switch (index_) {
-        case 0:
-          fromKey_.key = newval;
-          consumertoconsumer_.add(newval);
-          consumertoconsumer_.add(ConsumerKeyCode::VK_NONE);
-          break;
-        default:
-          IOLOG_ERROR("Invalid ConsumerToKey::add\n");
-          break;
-      }
-      ++index_;
-    }
+      switch (datatype) {
+        case BRIDGE_DATATYPE_CONSUMERKEYCODE:
+        {
+          switch (index_) {
+            case 0:
+              fromKey_.key = newval;
+              consumertoconsumer_.add(ConsumerKeyCode(newval));
+              consumertoconsumer_.add(ConsumerKeyCode::VK_NONE);
+              break;
+            default:
+              IOLOG_ERROR("Invalid ConsumerToKey::add\n");
+              break;
+          }
+          ++index_;
 
-    void
-    ConsumerToKey::add(KeyCode newval)
-    {
-      switch (index_) {
-        case 0:
-          IOLOG_ERROR("Invalid ConsumerToKey::add\n");
           break;
+        }
 
-        case 1:
-          // pass-through (== no break)
-          keytokey_.add(KeyCode::VK_PSEUDO_KEY);
-          keytokey_.add(fromKey_.flags);
-        default:
-          keytokey_.add(newval);
-          break;
-      }
-      ++index_;
-    }
+        case BRIDGE_DATATYPE_KEYCODE:
+        {
+          switch (index_) {
+            case 0:
+              IOLOG_ERROR("Invalid ConsumerToKey::add\n");
+              break;
 
-    void
-    ConsumerToKey::add(Flags newval)
-    {
-      switch (index_) {
-        case 0:
+            case 1:
+              // pass-through (== no break)
+              keytokey_.add(KeyCode::VK_PSEUDO_KEY);
+              keytokey_.add(fromKey_.flags);
+            default:
+              keytokey_.add(KeyCode(newval));
+              break;
+          }
+          ++index_;
+
           break;
-        case 1:
-          fromKey_.flags = newval;
+        }
+
+        case BRIDGE_DATATYPE_FLAGS:
+        {
+          switch (index_) {
+            case 0:
+              break;
+            case 1:
+              fromKey_.flags = newval;
+              break;
+            default:
+              keytokey_.add(Flags(newval));
+              break;
+          }
           break;
+        }
+
         default:
-          keytokey_.add(newval);
+          IOLOG_ERROR("ConsumerToKey::add invalid datatype:%d\n", datatype);
           break;
       }
     }

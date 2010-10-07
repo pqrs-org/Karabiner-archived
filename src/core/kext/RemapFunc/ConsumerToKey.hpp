@@ -18,9 +18,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // [1] => toKeys[0]
       // [2] => toKeys[1]
       // [3] => ...
-      void add(ConsumerKeyCode newval);
-      void add(KeyCode newval);
-      void add(Flags newval);
+      void add(unsigned int datatype, unsigned int newval);
 
     private:
       size_t index_;
