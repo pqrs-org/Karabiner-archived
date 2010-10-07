@@ -78,43 +78,39 @@ class RemapClass
     @code[:initialize] += "static void initialize_value#{@@index}(void) {\n"
     @code[:initialize] += "value#{@@index}_.initialize();\n"
     params.split(/,/).each do |p|
-      if operation == 'IgnoreMultipleSameKeyPress' or operation == 'DoublePressModifier' or operation == 'HoldingKeyToKey' or operation == 'KeyToKey' or operation == 'KeyToConsumer' or operation == 'KeyToPointingButton' or operation == 'KeyOverlaidModifier' or operation == 'DropKeyAfterRemap' or operation == 'ConsumerToConsumer' or operation == 'ConsumerToKey' or operation == 'PointingButtonToPointingButton' or operation == 'PointingButtonToKey' or operation == 'PointingRelativeToScroll' then
-        datatype = nil
-        newval = []
-        p.split(/\|/).each do |value|
-          value.strip!
-          next if value.empty?
-          newdatatype = nil
-          if /^KeyCode::(.+)$/ =~ value then
-            newdatatype = 'static_cast<unsigned int>(BRIDGE_DATATYPE_KEYCODE)'
-          elsif /^ModifierFlag::(.+)$/ =~ value then
-            newdatatype = 'static_cast<unsigned int>(BRIDGE_DATATYPE_FLAGS)'
-          elsif /^ConsumerKeyCode::(.+)$/ =~ value then
-            newdatatype = 'static_cast<unsigned int>(BRIDGE_DATATYPE_CONSUMERKEYCODE)'
-          elsif /^PointingButton::(.+)$/ =~ value then
-            newdatatype = 'static_cast<unsigned int>(BRIDGE_DATATYPE_POINTINGBUTTON)'
-          elsif /^Option::(.+)$/ =~ value then
-            newdatatype = 'static_cast<unsigned int>(BRIDGE_DATATYPE_OPTION)'
-          else
-            print "[ERROR] unknown datatype #{value}\n"
-            throw :exit
-          end
-
-          if (not datatype.nil?) and (datatype != newdatatype) then
-            throw :exit
-          end
-
-          datatype = newdatatype
-          if @@keycode[value].nil? then
-            print "[ERROR] unknown keycode #{value}\n"
-            throw :exit
-          end
-          newval << @@keycode[value]
+      datatype = nil
+      newval = []
+      p.split(/\|/).each do |value|
+        value.strip!
+        next if value.empty?
+        newdatatype = nil
+        if /^KeyCode::(.+)$/ =~ value then
+          newdatatype = 'static_cast<unsigned int>(BRIDGE_DATATYPE_KEYCODE)'
+        elsif /^ModifierFlag::(.+)$/ =~ value then
+          newdatatype = 'static_cast<unsigned int>(BRIDGE_DATATYPE_FLAGS)'
+        elsif /^ConsumerKeyCode::(.+)$/ =~ value then
+          newdatatype = 'static_cast<unsigned int>(BRIDGE_DATATYPE_CONSUMERKEYCODE)'
+        elsif /^PointingButton::(.+)$/ =~ value then
+          newdatatype = 'static_cast<unsigned int>(BRIDGE_DATATYPE_POINTINGBUTTON)'
+        elsif /^Option::(.+)$/ =~ value then
+          newdatatype = 'static_cast<unsigned int>(BRIDGE_DATATYPE_OPTION)'
+        else
+          print "[ERROR] unknown datatype #{value}\n"
+          throw :exit
         end
-        @code[:initialize] += "value#{@@index}_.add(#{datatype}, #{newval.join('|')});\n"
-      else
-        @code[:initialize] += "value#{@@index}_.add(#{p.strip});\n"
+
+        if (not datatype.nil?) and (datatype != newdatatype) then
+          throw :exit
+        end
+
+        datatype = newdatatype
+        if @@keycode[value].nil? then
+          print "[ERROR] unknown keycode #{value}\n"
+          throw :exit
+        end
+        newval << @@keycode[value]
       end
+      @code[:initialize] += "value#{@@index}_.add(#{datatype}, #{newval.join('|')});\n"
     end
     @code[:initialize] += "}\n"
 
@@ -155,8 +151,7 @@ class RemapClass
       when 'SimultaneousKeyPresses'
         params = "KeyCode::VK_SIMULTANEOUSKEYPRESSES_#{@@simultaneous_keycode_index}, " + params
         @@simultaneous_keycode_index += 1
-        params.gsub!('SimultaneousKeyPresses::Option::RAW', 'RemapFunc::SimultaneousKeyPresses::OPTION_RAW')
-        append_to_code_initialize(params)
+        append_to_code_initialize(params, operation)
         append_to_code_terminate
         @code[:variable] << { :index => @@index, :class => "RemapFunc::SimultaneousKeyPresses" }
         @code[:remap_key] += "if (value#{@@index}_.remap(remapParams)) break;\n"

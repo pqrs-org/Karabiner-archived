@@ -74,6 +74,10 @@ class Preprocesser
         list << autogen.gsub(/--KeyOverlaidModifierWithRepeat--/, '--KeyOverlaidModifier-- Option::KEYOVERLAIDMODIFIER_REPEAT, ')
         modify = true
 
+      elsif /SimultaneousKeyPresses::Option::RAW/ =~ autogen then
+        list << autogen.gsub(/SimultaneousKeyPresses::Option::RAW/, 'Option::SIMULTANEOUSKEYPRESSES_RAW')
+        modify = true
+
       else
         list << autogen
       end

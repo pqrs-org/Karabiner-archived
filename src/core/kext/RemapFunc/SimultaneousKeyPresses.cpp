@@ -21,114 +21,126 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    SimultaneousKeyPresses::add(KeyCode newval)
+    SimultaneousKeyPresses::add(unsigned int datatype, unsigned int newval)
     {
-      switch (index_) {
-        case 0:
-          virtualkey_ = newval;
-          break;
+      switch (datatype) {
+        case BRIDGE_DATATYPE_KEYCODE:
+        {
+          switch (index_) {
+            case 0:
+              virtualkey_ = newval;
+              break;
 
-        case 1:
-          fromInfo1_.set(newval);
-          break;
+            case 1:
+              fromInfo1_.set(KeyCode(newval));
+              break;
 
-        case 2:
-          fromInfo2_.set(newval);
-          break;
+            case 2:
+              fromInfo2_.set(KeyCode(newval));
+              break;
 
-        case 3:
-          // pass-through (== no break)
-          keytokey_.add(virtualkey_);
-          keytokey_.add(fromFlags_);
-          toKey_raw_ = newval;
-        default:
-          if (toType_ != TOTYPE_NONE && toType_ != TOTYPE_KEY) {
-            IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
-            break;
+            case 3:
+              // pass-through (== no break)
+              keytokey_.add(virtualkey_);
+              keytokey_.add(fromFlags_);
+              toKey_raw_ = newval;
+            default:
+              if (toType_ != TOTYPE_NONE && toType_ != TOTYPE_KEY) {
+                IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
+                break;
+              }
+              toType_ = TOTYPE_KEY;
+
+              keytokey_.add(KeyCode(newval));
+              break;
           }
-          toType_ = TOTYPE_KEY;
+          ++index_;
 
-          keytokey_.add(newval);
           break;
-      }
-      ++index_;
-    }
+        }
 
-    void
-    SimultaneousKeyPresses::add(PointingButton newval)
-    {
-      switch (index_) {
-        case 0:
-          IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
-          break;
-
-        case 1:
-          fromInfo1_.set(newval);
-          break;
-
-        case 2:
-          fromInfo2_.set(newval);
-          break;
-
-        case 3:
-          // pass-through (== no break)
-          keytopointingbutton_.add(virtualkey_);
-          keytopointingbutton_.add(fromFlags_);
-        default:
-          if (toType_ != TOTYPE_NONE && toType_ != TOTYPE_BUTTON) {
-            IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
-            break;
-          }
-          toType_ = TOTYPE_BUTTON;
-
-          keytopointingbutton_.add(newval);
-          break;
-      }
-      ++index_;
-    }
-
-    void
-    SimultaneousKeyPresses::add(Flags newval)
-    {
-      switch (index_) {
-        case 0:
-        case 1:
-          IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
-          break;
-
-        case 2:
-        case 3:
-          fromFlags_ = newval;
-          break;
-
-        default:
-          switch (toType_) {
-            case TOTYPE_NONE:
+        case BRIDGE_DATATYPE_POINTINGBUTTON:
+        {
+          switch (index_) {
+            case 0:
               IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
               break;
 
-            case TOTYPE_KEY:
-              keytokey_.add(newval);
+            case 1:
+              fromInfo1_.set(PointingButton(newval));
               break;
 
-            case TOTYPE_BUTTON:
-              keytopointingbutton_.add(newval);
+            case 2:
+              fromInfo2_.set(PointingButton(newval));
+              break;
+
+            case 3:
+              // pass-through (== no break)
+              keytopointingbutton_.add(virtualkey_);
+              keytopointingbutton_.add(fromFlags_);
+            default:
+              if (toType_ != TOTYPE_NONE && toType_ != TOTYPE_BUTTON) {
+                IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
+                break;
+              }
+              toType_ = TOTYPE_BUTTON;
+
+              keytopointingbutton_.add(PointingButton(newval));
+              break;
+          }
+          ++index_;
+
+          break;
+        }
+
+        case BRIDGE_DATATYPE_FLAGS:
+        {
+          switch (index_) {
+            case 0:
+            case 1:
+              IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
+              break;
+
+            case 2:
+            case 3:
+              fromFlags_ = newval;
+              break;
+
+            default:
+              switch (toType_) {
+                case TOTYPE_NONE:
+                  IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
+                  break;
+
+                case TOTYPE_KEY:
+                  keytokey_.add(Flags(newval));
+                  break;
+
+                case TOTYPE_BUTTON:
+                  keytopointingbutton_.add(Flags(newval));
+                  break;
+              }
               break;
           }
           break;
-      }
-    }
+        }
 
-    void
-    SimultaneousKeyPresses::add(SimultaneousKeyPresses::Option newval)
-    {
-      switch (newval) {
-        case OPTION_RAW:
-          if (toType_ != TOTYPE_KEY) {
-            IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
+        case BRIDGE_DATATYPE_OPTION:
+        {
+          if (Option::SIMULTANEOUSKEYPRESSES_RAW == newval) {
+            if (toType_ != TOTYPE_KEY) {
+              IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
+            } else {
+              isToRaw_ = true;
+            }
           } else {
-            isToRaw_ = true;
+            IOLOG_ERROR("SimultaneousKeyPresses::add unknown option:%d\n", newval);
           }
+          break;
+        }
+
+        default:
+          IOLOG_ERROR("SimultaneousKeyPresses::add invalid datatype:%d\n", datatype);
           break;
       }
     }

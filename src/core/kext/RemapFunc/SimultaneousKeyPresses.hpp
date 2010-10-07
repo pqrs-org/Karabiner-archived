@@ -11,10 +11,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     class SimultaneousKeyPresses {
     public:
-      enum Option {
-        OPTION_RAW,
-      };
-
       SimultaneousKeyPresses(void) : index_(0) {}
       void initialize(void);
       void terminate(void);
@@ -31,10 +27,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // [3] => toKeys_[0]
       // [4] => toKeys_[1]
       // [5] => ...
-      void add(KeyCode newval);
-      void add(PointingButton newval);
-      void add(Flags newval);
-      void add(Option newval);
+      void add(unsigned int datatype, unsigned int newval);
 
     private:
       void push_remapped(bool isKeyDown);
