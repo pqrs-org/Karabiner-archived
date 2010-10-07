@@ -43,15 +43,25 @@ namespace org_pqrs_KeyRemap4MacBook {
     {}
 
     void
-    PointingRelativeToScroll::add(Flags newval)
+    PointingRelativeToScroll::add(unsigned int datatype, unsigned int newval)
     {
-      fromFlags_ = newval;
-    }
+      switch (datatype) {
+        case BRIDGE_DATATYPE_FLAGS:
+        {
+          fromFlags_ = newval;
+          break;
+        }
 
-    void
-    PointingRelativeToScroll::add(PointingButton newval)
-    {
-      fromButton_ = newval;
+        case BRIDGE_DATATYPE_POINTINGBUTTON:
+        {
+          fromButton_ = newval;
+          break;
+        }
+
+        default:
+          IOLOG_ERROR("PointingRelativeToScroll::add invalid datatype:%d\n", datatype);
+          break;
+      }
     }
 
     bool
