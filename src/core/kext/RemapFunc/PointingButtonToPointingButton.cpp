@@ -19,35 +19,44 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    PointingButtonToPointingButton::add(PointingButton newval)
+    PointingButtonToPointingButton::add(unsigned int datatype, unsigned int newval)
     {
       if (! toButtons_) return;
 
-      switch (index_) {
-        case 0:
-          fromButton_.button = newval;
-          break;
-        default:
-          toButtons_->push_back(PairPointingButtonFlags(newval));
-          break;
-      }
-      ++index_;
-    }
+      switch (datatype) {
+        case BRIDGE_DATATYPE_POINTINGBUTTON:
+        {
+          switch (index_) {
+            case 0:
+              fromButton_.button = newval;
+              break;
+            default:
+              toButtons_->push_back(PairPointingButtonFlags(newval));
+              break;
+          }
+          ++index_;
 
-    void
-    PointingButtonToPointingButton::add(Flags newval)
-    {
-      if (! toButtons_) return;
+          break;
+        }
 
-      switch (index_) {
-        case 0:
-          IOLOG_ERROR("Invalid PointingButtonToPointingButton::add\n");
+        case BRIDGE_DATATYPE_FLAGS:
+        {
+          switch (index_) {
+            case 0:
+              IOLOG_ERROR("Invalid PointingButtonToPointingButton::add\n");
+              break;
+            case 1:
+              fromButton_.flags = newval;
+              break;
+            default:
+              (toButtons_->back()).flags = newval;
+              break;
+          }
           break;
-        case 1:
-          fromButton_.flags = newval;
-          break;
+        }
+
         default:
-          (toButtons_->back()).flags = newval;
+          IOLOG_ERROR("PointingButtonToPointingButton::add invalid datatype:%d\n", datatype);
           break;
       }
     }
