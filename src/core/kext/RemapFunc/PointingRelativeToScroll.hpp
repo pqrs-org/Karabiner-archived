@@ -73,7 +73,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ----------
       static List* queue_;
-
+      static Flags currentFromFlags_;
       static TimerWrapper timer_;
     };
   }
