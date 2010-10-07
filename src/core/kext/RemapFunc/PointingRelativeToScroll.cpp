@@ -5,6 +5,7 @@
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     List* PointingRelativeToScroll::queue_ = NULL;
+    Flags PointingRelativeToScroll::currentFromFlags_ = NULL;
     TimerWrapper PointingRelativeToScroll::timer_;
 
     void
@@ -116,12 +117,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
     doremap:
-      FlagStatus::temporary_decrease(fromFlags_);
       toscroll(remapParams);
-      // We need to call temporary_increase.
-      // Because when SimultaneousKeyPresses is enabled, temporary flags will be reset in unexpected timing.
-      // So, we need to restore temporary flags explicitly.
-      FlagStatus::temporary_increase(fromFlags_);
 
       return true;
     }
@@ -206,6 +202,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       absolute_distance_ += abs(chained_delta1_) + abs(chained_delta2_);
       queue_->push_back(new Item(chained_delta1_ * EventOutputQueue::FireScrollWheel::DELTA_SCALE, chained_delta2_ * EventOutputQueue::FireScrollWheel::DELTA_SCALE));
 
+      currentFromFlags_ = fromFlags_;
       timer_.setTimeoutMS(SCROLL_INTERVAL_MS, false);
     }
 
@@ -230,8 +227,14 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       // ----------------------------------------
+      FlagStatus::temporary_decrease(currentFromFlags_);
       EventOutputQueue::FireScrollWheel::fire(delta1, delta2);
+      // We need to call temporary_increase.
+      // Because when SimultaneousKeyPresses is enabled, temporary flags will be reset in unexpected timing.
+      // So, we need to restore temporary flags explicitly.
+      FlagStatus::temporary_increase(currentFromFlags_);
 
+      // ----------------------------------------
       if (! config.option_pointing_disable_momentum_scroll) {
         if (delta1 != 0 || delta2 != 0) {
           queue_->push_back(new Item(delta1 / 2, delta2 / 2));
