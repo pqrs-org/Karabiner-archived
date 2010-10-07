@@ -23,8 +23,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ----------------------------------------
       // [0] => fromFlags_
       // [0] => fromButtons_
-      void add(Flags newval);
-      void add(PointingButton newval);
+      void add(unsigned int datatype, unsigned int newval);
 
     private:
       enum {
