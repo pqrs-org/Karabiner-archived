@@ -18,8 +18,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // [1] => toButtons_[0]
       // [2] => toButtons_[1]
       // [3] => ...
-      void add(PointingButton newval);
-      void add(Flags newval);
+      void add(unsigned int datatype, unsigned int newval);
 
     private:
       size_t index_;

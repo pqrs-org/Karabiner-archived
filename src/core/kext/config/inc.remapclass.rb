@@ -78,7 +78,7 @@ class RemapClass
     @code[:initialize] += "static void initialize_value#{@@index}(void) {\n"
     @code[:initialize] += "value#{@@index}_.initialize();\n"
     params.split(/,/).each do |p|
-      if operation == 'IgnoreMultipleSameKeyPress' or operation == 'DoublePressModifier' or operation == 'HoldingKeyToKey' or operation == 'KeyToKey' or operation == 'KeyToConsumer' or operation == 'KeyToPointingButton' or operation == 'KeyOverlaidModifier' or operation == 'DropKeyAfterRemap' or operation == 'ConsumerToConsumer' or operation == 'ConsumerToKey' then
+      if operation == 'IgnoreMultipleSameKeyPress' or operation == 'DoublePressModifier' or operation == 'HoldingKeyToKey' or operation == 'KeyToKey' or operation == 'KeyToConsumer' or operation == 'KeyToPointingButton' or operation == 'KeyOverlaidModifier' or operation == 'DropKeyAfterRemap' or operation == 'ConsumerToConsumer' or operation == 'ConsumerToKey' or operation == 'PointingButtonToPointingButton' then
         datatype = nil
         newval = []
         p.split(/\|/).each do |value|
@@ -175,7 +175,7 @@ class RemapClass
         @code[:remap_consumer] += "if (value#{@@index}_.remap(remapParams)) break;\n"
 
       when 'PointingButtonToPointingButton', 'PointingButtonToKey', 'PointingRelativeToScroll'
-        append_to_code_initialize(params)
+        append_to_code_initialize(params, operation)
         append_to_code_terminate
         @code[:variable] << { :index => @@index, :class => "RemapFunc::#{operation}" }
         @code[:remap_pointing] += "if (value#{@@index}_.remap(remapParams)) break;\n"
