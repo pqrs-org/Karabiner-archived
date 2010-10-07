@@ -21,35 +21,44 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    ConsumerToConsumer::add(ConsumerKeyCode newval)
+    ConsumerToConsumer::add(unsigned int datatype, unsigned int newval)
     {
       if (! toKeys_) return;
 
-      switch (index_) {
-        case 0:
-          fromKey_.key = newval;
-          break;
-        default:
-          toKeys_->push_back(PairConsumerKeyFlags(newval));
-          break;
-      }
-      ++index_;
-    }
+      switch (datatype) {
+        case BRIDGE_DATATYPE_CONSUMERKEYCODE:
+        {
+          switch (index_) {
+            case 0:
+              fromKey_.key = newval;
+              break;
+            default:
+              toKeys_->push_back(PairConsumerKeyFlags(newval));
+              break;
+          }
+          ++index_;
 
-    void
-    ConsumerToConsumer::add(Flags newval)
-    {
-      if (! toKeys_) return;
+          break;
+        }
 
-      switch (index_) {
-        case 0:
-          IOLOG_ERROR("Invalid ConsumerToConsumer::add\n");
+        case BRIDGE_DATATYPE_FLAGS:
+        {
+          switch (index_) {
+            case 0:
+              IOLOG_ERROR("Invalid ConsumerToConsumer::add\n");
+              break;
+            case 1:
+              fromKey_.flags = newval;
+              break;
+            default:
+              toKeys_->back().flags = newval;
+              break;
+          }
           break;
-        case 1:
-          fromKey_.flags = newval;
-          break;
+        }
+
         default:
-          toKeys_->back().flags = newval;
+          IOLOG_ERROR("ConsumerToConsumer::add invalid datatype:%d\n", datatype);
           break;
       }
     }

@@ -18,11 +18,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       // [1] => toKeys_[0]
       // [2] => toKeys_[1]
       // [3] => ...
-      void add(ConsumerKeyCode newval);
-      void add(Flags newval);
+      void add(unsigned int datatype, unsigned int newval);
 
       // ----------------------------------------
       // utility functions
+      void add(ConsumerKeyCode newval) { add(BRIDGE_DATATYPE_CONSUMERKEYCODE, newval.get()); }
+      void add(Flags newval)           { add(BRIDGE_DATATYPE_FLAGS,           newval.get()); }
+
       bool call_remap_with_VK_PSEUDO_KEY(EventType eventType);
 
     private:
