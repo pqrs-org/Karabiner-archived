@@ -4,22 +4,20 @@
 #include "KeyboardRepeat.hpp"
 #include "util/CommonData.hpp"
 #include "util/EventInputQueue.hpp"
-#include "RemapFunc/KeyToKey.hpp"
-#include "RemapFunc/KeyToConsumer.hpp"
-#include "RemapFunc/KeyToPointingButton.hpp"
-#include "RemapFunc/ConsumerToConsumer.hpp"
-#include "RemapFunc/ConsumerToKey.hpp"
-#include "RemapFunc/DoublePressModifier.hpp"
-#include "RemapFunc/DropKeyAfterRemap.hpp"
-#include "RemapFunc/HoldingKeyToKey.hpp"
-#include "RemapFunc/IgnoreMultipleSameKeyPress.hpp"
-#include "RemapFunc/KeyOverlaidModifier.hpp"
-#include "RemapFunc/PointingButtonToKey.hpp"
-#include "RemapFunc/PointingButtonToPointingButton.hpp"
-#include "RemapFunc/PointingRelativeToScroll.hpp"
-#include "RemapFunc/SimultaneousKeyPresses.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
+  void
+  RemapClass::Item::initialize(unsigned int* vec)
+  {
+    type_ = BRIDGE_DATATYPE_NONE;
+    if (! vec) return;
+  }
+
+  void
+  RemapClass::Item::terminate(void)
+  {
+  }
+
   namespace RemapClassManager {
     typedef void (*RemapClass_initialize)(void);
     typedef void (*RemapClass_terminate)(void);

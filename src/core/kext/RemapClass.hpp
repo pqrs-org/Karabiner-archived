@@ -1,9 +1,54 @@
 #ifndef REMAPCLASS_HPP
 #define REMAPCLASS_HPP
 
+#include "bridge.h"
 #include "remap.hpp"
+#include "RemapFunc/KeyToKey.hpp"
+#include "RemapFunc/KeyToConsumer.hpp"
+#include "RemapFunc/KeyToPointingButton.hpp"
+#include "RemapFunc/ConsumerToConsumer.hpp"
+#include "RemapFunc/ConsumerToKey.hpp"
+#include "RemapFunc/DoublePressModifier.hpp"
+#include "RemapFunc/DropKeyAfterRemap.hpp"
+#include "RemapFunc/HoldingKeyToKey.hpp"
+#include "RemapFunc/IgnoreMultipleSameKeyPress.hpp"
+#include "RemapFunc/KeyOverlaidModifier.hpp"
+#include "RemapFunc/PointingButtonToKey.hpp"
+#include "RemapFunc/PointingButtonToPointingButton.hpp"
+#include "RemapFunc/PointingRelativeToScroll.hpp"
+#include "RemapFunc/SimultaneousKeyPresses.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
+  class RemapClass {
+    class Item {
+      Item(void) {
+        type_ = BRIDGE_DATATYPE_NONE;
+      }
+      void initialize(unsigned int* vec);
+      void terminate(void);
+
+    private:
+      unsigned int type_;
+
+      union {
+        RemapFunc::KeyToKey* keyToKey;
+        RemapFunc::KeyToConsumer* keyToConsumer;
+        RemapFunc::KeyToPointingButton* keyToPointingButton;
+        RemapFunc::ConsumerToConsumer* consumerToConsumer;
+        RemapFunc::ConsumerToKey* consumerToKey;
+        RemapFunc::DoublePressModifier* doublePressModifier;
+        RemapFunc::DropKeyAfterRemap* dropKeyAfterRemap;
+        RemapFunc::HoldingKeyToKey* holdingKeyToKey;
+        RemapFunc::IgnoreMultipleSameKeyPress* ignoreMultipleSameKeyPress;
+        RemapFunc::KeyOverlaidModifier* keyOverlaidModifier;
+        RemapFunc::PointingButtonToKey* pointingButtonToKey;
+        RemapFunc::PointingButtonToPointingButton* pointingButtonToPointingButton;
+        RemapFunc::PointingRelativeToScroll* pointingRelativeToScroll;
+        RemapFunc::SimultaneousKeyPresses* simultaneousKeyPresses;
+      } p_;
+    };
+  };
+
   namespace RemapClassManager {
     void initialize(IOWorkLoop& workloop);
     void terminate(void);
