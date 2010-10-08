@@ -1223,6 +1223,11 @@
           <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::ESCAPE</autogen>
         </item>
         <item>
+          <name>Control_R to Fn</name>
+          <sysctl>remap.controlR2fn</sysctl>
+          <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::FN</autogen>
+        </item>
+        <item>
           <name>Control_R to RightClick</name>
           <sysctl>remap.controlR2rightclick</sysctl>
           <autogen>--KeyToPointingButton-- KeyCode::CONTROL_R, PointingButton::RIGHT</autogen>
@@ -3727,7 +3732,7 @@
         </item>
         <item>
           <name>Control+D to Forward Delete</name>
-          <appendix>(when there are not other modifiers)</appendix>
+          <appendix>(when there are no other modifiers)</appendix>
           <sysctl>option.emacsmode_controlD_nomodifiers</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
           <autogen>--KeyToKey-- KeyCode::D, VK_CONTROL | ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
@@ -3770,7 +3775,7 @@
         </item>
         <item>
           <name>Control+PNBF to Up/Down/Left/Right</name>
-          <appendix>(when there are not other modifiers)</appendix>
+          <appendix>(when there are no other modifiers)</appendix>
           <sysctl>option.emacsmode_controlPNBF_nomodifiers</sysctl>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
           <!-- #include "include/emacsmode_controlPNBF_nomodifiers.xml" -->
