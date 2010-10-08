@@ -11,6 +11,30 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     type_ = BRIDGE_REMAPTYPE_NONE;
     if (! vec) return;
+
+    // ------------------------------------------------------------
+    // handle type_.
+    type_ = vec[0];
+    switch (type_) {
+      // handle BRIDGE_REMAPTYPE_NONE as error. (see default)
+      case BRIDGE_REMAPTYPE_KEYTOKEY:                       p_.keyToKey                       = new RemapFunc::KeyToKey;                       break;
+      case BRIDGE_REMAPTYPE_KEYTOCONSUMER:                  p_.keyToConsumer                  = new RemapFunc::KeyToConsumer;                  break;
+      case BRIDGE_REMAPTYPE_KEYTOPOINTINGBUTTON:            p_.keyToPointingButton            = new RemapFunc::KeyToPointingButton;            break;
+      case BRIDGE_REMAPTYPE_CONSUMERTOCONSUMER:             p_.consumerToConsumer             = new RemapFunc::ConsumerToConsumer;             break;
+      case BRIDGE_REMAPTYPE_CONSUMERTOKEY:                  p_.consumerToKey                  = new RemapFunc::ConsumerToKey;                  break;
+      case BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER:            p_.doublePressModifier            = new RemapFunc::DoublePressModifier;            break;
+      case BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP:              p_.dropKeyAfterRemap              = new RemapFunc::DropKeyAfterRemap;              break;
+      case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:                p_.holdingKeyToKey                = new RemapFunc::HoldingKeyToKey;                break;
+      case BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS:     p_.ignoreMultipleSameKeyPress     = new RemapFunc::IgnoreMultipleSameKeyPress;     break;
+      case BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER:            p_.keyOverlaidModifier            = new RemapFunc::KeyOverlaidModifier;            break;
+      case BRIDGE_REMAPTYPE_POINTINGBUTTONTOKEY:            p_.pointingButtonToKey            = new RemapFunc::PointingButtonToKey;            break;
+      case BRIDGE_REMAPTYPE_POINTINGBUTTONTOPOINTINGBUTTON: p_.pointingButtonToPointingButton = new RemapFunc::PointingButtonToPointingButton; break;
+      case BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL:       p_.pointingRelativeToScroll       = new RemapFunc::PointingRelativeToScroll;       break;
+      case BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES:         p_.simultaneousKeyPresses         = new RemapFunc::SimultaneousKeyPresses;         break;
+      default:
+        IOLOG_ERROR("RemapClass::Item::initialize unknown type_ (%d)\n", type_);
+        break;
+    }
   }
 
   void
@@ -39,7 +63,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       case BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL:       DELETE_UNLESS_NULL(p_.pointingRelativeToScroll);       break;
       case BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES:         DELETE_UNLESS_NULL(p_.simultaneousKeyPresses);         break;
       default:
-        IOLOG_ERROR("RemapClass::Item::terminate unknown type_ (type_)\n");
+        IOLOG_ERROR("RemapClass::Item::terminate unknown type_ (%d)\n", type_);
         break;
     }
 
