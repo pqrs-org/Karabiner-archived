@@ -12,7 +12,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       bool isblocked(void);
 
-      void add(unsigned int* newval);
+      void add(int* newval);
 
     private:
       unsigned int type_;
