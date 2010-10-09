@@ -10,9 +10,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       ConfigFilter(unsigned int t);
       ~ConfigFilter(void);
 
-      bool isblocked(void);
-
       void add(int* newval);
+
+      bool isblocked(void);
 
     private:
       unsigned int type_;
