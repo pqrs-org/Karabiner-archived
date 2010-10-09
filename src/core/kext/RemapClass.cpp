@@ -83,7 +83,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapClass::Item::terminate(void)
   {
-#define DELETE_UNLESS_NULL(POINTER) { if (POINTER) { delete POINTER; } \
+#define DELETE_UNLESS_NULL(POINTER) { \
+    if (POINTER) { delete POINTER; }  \
 }
 
     switch (type_) {
@@ -115,24 +116,25 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   RemapClass::Item::remap(RemapParams& remapParams)
   {
-#define CALL_UNION_REMAP(POINTER) { if (POINTER) { return (POINTER)->remap(remapParams); } \
+#define CALL_UNION_FUNCTION(POINTER) {                     \
+    if (POINTER) { return (POINTER)->remap(remapParams); } \
 }
 
     switch (type_) {
-      case BRIDGE_REMAPTYPE_KEYTOKEY:                   CALL_UNION_REMAP(p_.keyToKey);                   break;
-      case BRIDGE_REMAPTYPE_KEYTOCONSUMER:              CALL_UNION_REMAP(p_.keyToConsumer);              break;
-      case BRIDGE_REMAPTYPE_KEYTOPOINTINGBUTTON:        CALL_UNION_REMAP(p_.keyToPointingButton);        break;
-      case BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER:        CALL_UNION_REMAP(p_.doublePressModifier);        break;
-      case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:            CALL_UNION_REMAP(p_.holdingKeyToKey);            break;
-      case BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS: CALL_UNION_REMAP(p_.ignoreMultipleSameKeyPress); break;
-      case BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER:        CALL_UNION_REMAP(p_.keyOverlaidModifier);        break;
-      case BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES:     CALL_UNION_REMAP(p_.simultaneousKeyPresses);     break;
+      case BRIDGE_REMAPTYPE_KEYTOKEY:                   CALL_UNION_FUNCTION(p_.keyToKey);                   break;
+      case BRIDGE_REMAPTYPE_KEYTOCONSUMER:              CALL_UNION_FUNCTION(p_.keyToConsumer);              break;
+      case BRIDGE_REMAPTYPE_KEYTOPOINTINGBUTTON:        CALL_UNION_FUNCTION(p_.keyToPointingButton);        break;
+      case BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER:        CALL_UNION_FUNCTION(p_.doublePressModifier);        break;
+      case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:            CALL_UNION_FUNCTION(p_.holdingKeyToKey);            break;
+      case BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS: CALL_UNION_FUNCTION(p_.ignoreMultipleSameKeyPress); break;
+      case BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER:        CALL_UNION_FUNCTION(p_.keyOverlaidModifier);        break;
+      case BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES:     CALL_UNION_FUNCTION(p_.simultaneousKeyPresses);     break;
       default:
         // do nothing. (Do not call IOLOG_ERROR)
         break;
     }
 
-#undef CALL_UNION_REMAP
+#undef CALL_UNION_FUNCTION
 
     return false;
   }
@@ -140,18 +142,60 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   RemapClass::Item::remap(RemapConsumerParams& remapParams)
   {
+#define CALL_UNION_FUNCTION(POINTER) {                     \
+    if (POINTER) { return (POINTER)->remap(remapParams); } \
+}
+
+    switch (type_) {
+      case BRIDGE_REMAPTYPE_CONSUMERTOCONSUMER: CALL_UNION_FUNCTION(p_.consumerToConsumer); break;
+      case BRIDGE_REMAPTYPE_CONSUMERTOKEY:      CALL_UNION_FUNCTION(p_.consumerToKey);      break;
+      default:
+        // do nothing. (Do not call IOLOG_ERROR)
+        break;
+    }
+
+#undef CALL_UNION_FUNCTION
+
     return false;
   }
 
   bool
   RemapClass::Item::remap(RemapPointingParams_relative& remapParams)
   {
+#define CALL_UNION_FUNCTION(POINTER) {                     \
+    if (POINTER) { return (POINTER)->remap(remapParams); } \
+}
+
+    switch (type_) {
+      case BRIDGE_REMAPTYPE_POINTINGBUTTONTOKEY:            CALL_UNION_FUNCTION(p_.pointingButtonToKey);            break;
+      case BRIDGE_REMAPTYPE_POINTINGBUTTONTOPOINTINGBUTTON: CALL_UNION_FUNCTION(p_.pointingButtonToPointingButton); break;
+      case BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL:       CALL_UNION_FUNCTION(p_.pointingRelativeToScroll);       break;
+      default:
+        // do nothing. (Do not call IOLOG_ERROR)
+        break;
+    }
+
+#undef CALL_UNION_FUNCTION
+
     return false;
   }
 
   bool
   RemapClass::Item::drop(const Params_KeyboardEventCallBack& params)
   {
+#define CALL_UNION_FUNCTION(POINTER) {               \
+    if (POINTER) { return (POINTER)->drop(params); } \
+}
+
+    switch (type_) {
+      case BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP: CALL_UNION_FUNCTION(p_.dropKeyAfterRemap); break;
+      default:
+        // do nothing. (Do not call IOLOG_ERROR)
+        break;
+    }
+
+#undef CALL_UNION_FUNCTION
+
     return false;
   }
 
