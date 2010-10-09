@@ -116,12 +116,10 @@ class RemapClass
       args << newval.join('|')
     end
 
-    @code[:initialize] += "static void initialize_value#{@@index}(void) {\n"
+    @code[:initialize] += "{\n"
     @code[:initialize] += "  const unsigned int vec[] = { #{args.join(',')} };\n"
     @code[:initialize] += "  value#{@@index}_.initialize(vec, sizeof(vec) / sizeof(vec[0]));\n"
     @code[:initialize] += "}\n"
-
-    @@entries[-1][:initialize] << "RemapClass_#{@name}::initialize_value#{@@index}"
   end
   protected :append_to_code_initialize
 
@@ -221,7 +219,11 @@ class RemapClass
     code += "public:\n"
 
     # ----------------------------------------------------------------------
+    code += "static void initialize(void) {\n"
     code += @code[:initialize]
+    code += "}\n"
+    @@entries[-1][:initialize] << "RemapClass_#{@name}::initialize"
+
     code += @code[:terminate]
 
     # ----------------------------------------------------------------------
