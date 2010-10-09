@@ -7,9 +7,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFilter {
     class ConfigFilter {
     public:
-      ConfigFilter(unsigned int t) : type_(t) {}
+      ConfigFilter(unsigned int t);
+      ~ConfigFilter(void);
 
       bool isblocked(void);
+
+      void add(unsigned int* newval);
 
     private:
       unsigned int type_;
