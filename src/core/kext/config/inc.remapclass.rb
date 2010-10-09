@@ -7,15 +7,19 @@ class RemapClass
   @@entries = []
   @@simultaneous_keycode_index = 0
   @@keycode = {}
+  @@variable_index = 0
 
   def RemapClass.get_entries
     return @@entries
   end
 
+  def RemapClass.reset_variable_index
+    @@variable_index = 0
+  end
+
   def initialize(name)
     @name = name
     @filter = Filter.new()
-    @variable_index = 0
 
     @code = {
       # functions
@@ -27,8 +31,6 @@ class RemapClass
       :remap_simultaneouskeypresses => '',
       :remap_dropkeyafterremap      => '',
       :get_statusmessage            => '',
-      # values
-      :variable                     => [],
     }
 
     @@entries << {
@@ -117,7 +119,7 @@ class RemapClass
 
     @code[:initialize] += "{\n"
     @code[:initialize] += "  const unsigned int vec[] = { #{args.join(',')} };\n"
-    @code[:initialize] += "  value_[#{@variable_index}].initialize(vec, sizeof(vec) / sizeof(vec[0]));\n"
+    @code[:initialize] += "  value_[#{@@variable_index}].initialize(vec, sizeof(vec) / sizeof(vec[0]));\n"
     @code[:initialize] += "}\n"
   end
   protected :append_to_code_initialize
@@ -136,7 +138,7 @@ class RemapClass
 
       when 'DropKeyAfterRemap'
         append_to_code_initialize(params, operation)
-        @code[:remap_dropkeyafterremap] += "if (value_[#{@variable_index}].drop(params)) return true;\n"
+        @code[:remap_dropkeyafterremap] += "if (value_[#{@@variable_index}].drop(params)) return true;\n"
 
       when 'ShowStatusMessage'
         @code[:get_statusmessage] += "return #{params};\n"
@@ -145,27 +147,27 @@ class RemapClass
         params = "KeyCode::VK_SIMULTANEOUSKEYPRESSES_#{@@simultaneous_keycode_index}, " + params
         @@simultaneous_keycode_index += 1
         append_to_code_initialize(params, operation)
-        @code[:remap_key] += "if (value_[#{@variable_index}].remap(remapParams)) break;\n"
-        @code[:remap_simultaneouskeypresses] += "value_[#{@variable_index}].remap_SimultaneousKeyPresses();\n"
+        @code[:remap_key] += "if (value_[#{@@variable_index}].remap(remapParams)) break;\n"
+        @code[:remap_simultaneouskeypresses] += "value_[#{@@variable_index}].remap_SimultaneousKeyPresses();\n"
 
       when 'KeyToKey', 'KeyToConsumer', 'KeyToPointingButton', 'DoublePressModifier', 'HoldingKeyToKey', 'IgnoreMultipleSameKeyPress', 'KeyOverlaidModifier'
         append_to_code_initialize(params, operation)
-        @code[:remap_key] += "if (value_[#{@variable_index}].remap(remapParams)) break;\n"
+        @code[:remap_key] += "if (value_[#{@@variable_index}].remap(remapParams)) break;\n"
 
       when 'ConsumerToConsumer', 'ConsumerToKey'
         append_to_code_initialize(params, operation)
-        @code[:remap_consumer] += "if (value_[#{@variable_index}].remap(remapParams)) break;\n"
+        @code[:remap_consumer] += "if (value_[#{@@variable_index}].remap(remapParams)) break;\n"
 
       when 'PointingButtonToPointingButton', 'PointingButtonToKey', 'PointingRelativeToScroll'
         append_to_code_initialize(params, operation)
-        @code[:remap_pointing] += "if (value_[#{@variable_index}].remap(remapParams)) break;\n"
+        @code[:remap_pointing] += "if (value_[#{@@variable_index}].remap(remapParams)) break;\n"
 
       else
         print "%%% ERROR #{type} %%%\n#{l}\n"
         exit 1
       end
 
-      @variable_index += 1
+      @@variable_index += 1
 
       return true
     end
@@ -304,10 +306,10 @@ class RemapClass
     # ----------------------------------------
     code += "\n"
     code += "private:\n"
-    code += "static RemapClass::Item value_[#{@variable_index}];\n"
+    code += "static RemapClass::Item value_[#{@@variable_index}];\n"
     code += "};\n"
 
-    code += "RemapClass::Item #{classname}::value_[#{@variable_index}];\n"
+    code += "RemapClass::Item #{classname}::value_[#{@@variable_index}];\n"
     code += "\n\n"
 
     code
