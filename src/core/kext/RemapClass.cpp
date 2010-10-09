@@ -7,24 +7,34 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   void
-  RemapClass::Item::initialize(unsigned int* vec, size_t length)
+  RemapClass::Item::initialize(const unsigned int* vec, size_t length)
   {
+    const unsigned int* datavec = NULL;
+    size_t loopcount = 0;
+
     type_ = BRIDGE_REMAPTYPE_NONE;
+
+    // ------------------------------------------------------------
+    // check parameters.
+    //
     if (! vec || length <= 0) {
       IOLOG_ERROR("RemapClass::Item::initialize invalid parameter.\n");
       goto error;
     }
 
-    type_ = vec[0];
+    datavec = vec + 1;
+    loopcount = (length - 1) / 2;
 
-    // ------------------------------------------------------------
-    unsigned int* datavec = vec + 1;
-    size_t loopcount = (length - 1) / 2;
     // "length - 1" must be a multiple of two.
-    if (loopcount * 2 != length) {
-      IOLOG_ERROR("RemapClass::Item::initialize invalid length.\n");
+    if (loopcount * 2 != length - 1) {
+      IOLOG_ERROR("RemapClass::Item::initialize invalid length (%d).\n", static_cast<int>(length));
       goto error;
     }
+
+    // ------------------------------------------------------------
+    // initialize values.
+    //
+    type_ = vec[0];
 
 #define INITIALIZE_UNION_VALUE(NAME, CLASS) {                            \
     p_.NAME = new CLASS;                                                 \
@@ -67,7 +77,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     return;
 
   error:
-    type_ = BRIDGE_REMAPTYPE_NONE;
+    terminate();
   }
 
   void

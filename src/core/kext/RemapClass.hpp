@@ -20,11 +20,13 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   class RemapClass {
+  public:
     class Item {
+    public:
       Item(void) {
         type_ = BRIDGE_DATATYPE_NONE;
       }
-      void initialize(unsigned int* vec, size_t length);
+      void initialize(const unsigned int* vec, size_t length);
       void terminate(void);
 
     private:
