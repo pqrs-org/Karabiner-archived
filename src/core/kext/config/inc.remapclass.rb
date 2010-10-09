@@ -124,11 +124,7 @@ class RemapClass
   protected :append_to_code_initialize
 
   def append_to_code_terminate
-    @code[:terminate] += "static void terminate_value#{@@index}(void) {\n"
     @code[:terminate] += "value#{@@index}_.terminate();\n"
-    @code[:terminate] += "}\n"
-
-    @@entries[-1][:terminate] << "RemapClass_#{@name}::terminate_value#{@@index}"
   end
 
   # return true if 'line' contains autogen/filter definition.
@@ -224,7 +220,10 @@ class RemapClass
     code += "}\n"
     @@entries[-1][:initialize] << "RemapClass_#{@name}::initialize"
 
+    code += "static void terminate(void) {\n"
     code += @code[:terminate]
+    code += "}\n"
+    @@entries[-1][:terminate] << "RemapClass_#{@name}::terminate"
 
     # ----------------------------------------------------------------------
     unless @code[:remap_setkeyboardtype].empty? then
