@@ -71,12 +71,14 @@ class RemapClass
     self
   end
 
-  def append_to_code_initialize(params, operation = nil)
+  def append_to_code_initialize(params, operation)
     # We split the initialize function per value.
     # If a large number of values exist, the kernel stack is wasted when the monolithic initialize function is called.
     # So, we split it.
-    @code[:initialize] += "static void initialize_value#{@@index}(void) {\n"
-    @code[:initialize] += "value#{@@index}_.initialize();\n"
+
+    args = []
+    args << "static_cast<unsigned int>(BRIDGE_REMAPTYPE_#{operation.upcase})"
+
     params.split(/,/).each do |p|
       datatype = nil
       newval = []
@@ -110,8 +112,13 @@ class RemapClass
         end
         newval << @@keycode[value]
       end
-      @code[:initialize] += "value#{@@index}_.add(#{datatype}, #{newval.join('|')});\n"
+      args << datatype
+      args << newval.join('|')
     end
+
+    @code[:initialize] += "static void initialize_value#{@@index}(void) {\n"
+    @code[:initialize] += "  const unsigned int vec[] = { #{args.join(',')} };\n"
+    @code[:initialize] += "  value#{@@index}_.initialize(vec, sizeof(vec) / sizeof(vec[0]));\n"
     @code[:initialize] += "}\n"
 
     @@entries[-1][:initialize] << "RemapClass_#{@name}::initialize_value#{@@index}"
@@ -155,7 +162,7 @@ class RemapClass
         append_to_code_terminate
         @code[:variable] << { :index => @@index, :class => "RemapFunc::SimultaneousKeyPresses" }
         @code[:remap_key] += "if (value#{@@index}_.remap(remapParams)) break;\n"
-        @code[:remap_simultaneouskeypresses] += "value#{@@index}_.remap();\n"
+        @code[:remap_simultaneouskeypresses] += "value#{@@index}_.remap_SimultaneousKeyPresses();\n"
 
       when 'KeyToKey', 'KeyToConsumer', 'KeyToPointingButton', 'DoublePressModifier', 'HoldingKeyToKey', 'IgnoreMultipleSameKeyPress', 'KeyOverlaidModifier'
         append_to_code_initialize(params, operation)
@@ -309,12 +316,12 @@ class RemapClass
     code += "\n"
     code += "private:\n"
     @code[:variable].each do |v|
-      code += "static #{v[:class]} value#{v[:index]}_;\n"
+      code += "static RemapClass::Item value#{v[:index]}_;\n"
     end
     code += "};\n"
 
     @code[:variable].each do |v|
-      code += "#{v[:class]} #{classname}::value#{v[:index]}_;\n"
+      code += "RemapClass::Item #{classname}::value#{v[:index]}_;\n"
     end
     code += "\n\n"
 

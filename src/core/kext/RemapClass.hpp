@@ -34,6 +34,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool remap(RemapPointingParams_relative& remapParams);
       // for DropKeyAfterRemap
       bool drop(const Params_KeyboardEventCallBack& params);
+      //
+      void remap_SimultaneousKeyPresses(void);
 
     private:
       unsigned int type_;
