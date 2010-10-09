@@ -106,6 +106,7 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
   lines = item.split(/\n/)
   lines = Preprocesser.new().preprocess(lines)
 
+  RemapClass.reset_variable_index
   remapclass = parseautogen(name, lines)
 
   unless lines.empty? then
