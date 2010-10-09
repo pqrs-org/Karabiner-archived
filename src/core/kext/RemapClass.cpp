@@ -9,9 +9,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapClass::Item::initialize(const unsigned int* vec, size_t length)
   {
-    const unsigned int* datavec = NULL;
-    size_t loopcount = 0;
-
     type_ = BRIDGE_REMAPTYPE_NONE;
 
     // ------------------------------------------------------------
@@ -19,15 +16,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     //
     if (! vec || length <= 0) {
       IOLOG_ERROR("RemapClass::Item::initialize invalid parameter.\n");
-      goto error;
-    }
-
-    datavec = vec + 1;
-    loopcount = (length - 1) / 2;
-
-    // "length - 1" must be a multiple of two.
-    if (loopcount * 2 != length - 1) {
-      IOLOG_ERROR("RemapClass::Item::initialize invalid length (%d).\n", static_cast<int>(length));
       goto error;
     }
 
@@ -42,10 +30,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       IOLOG_ERROR("RemapClass::Item::initialize failed to allocate.\n"); \
       goto error;                                                        \
     } else {                                                             \
-      for (size_t i = 0; i < loopcount; ++i) {                           \
-        unsigned int datatype = datavec[i];                              \
-        unsigned int value = datavec[i + 1];                             \
-        (POINTER)->add(datatype, value);                                 \
+      for (size_t i = 1;; i += 2) {                                      \
+        size_t datatype_index = i;                                       \
+        size_t value_index    = i + 1;                                   \
+        if (value_index >= length) break;                                \
+        (POINTER)->add(vec[datatype_index], vec[value_index]);           \
       }                                                                  \
     }                                                                    \
 }
@@ -373,7 +362,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       refresh_timer_.setTimeoutMS(DELAY);
     }
 
-// ----------------------------------------------------------------------
+    // ----------------------------------------------------------------------
 #define DECLARE_REMAPFUNC(QUEUE, FUNC, PARAMS)    \
   {                                               \
     IOLockWrapper::ScopedLock lk(lock_);          \
