@@ -30,6 +30,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       IOLOG_ERROR("RemapClass::Item::initialize failed to allocate.\n"); \
       goto error;                                                        \
     } else {                                                             \
+      (POINTER)->initialize();                                           \
       for (size_t i = 1;; i += 2) {                                      \
         size_t datatype_index = i;                                       \
         size_t value_index    = i + 1;                                   \
