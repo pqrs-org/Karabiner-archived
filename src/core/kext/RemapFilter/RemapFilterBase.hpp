@@ -5,6 +5,14 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFilter {
+    struct FilterValue {
+      FilterValue(void) : value(0) {}
+      FilterValue(unsigned int v) : value(v) {}
+
+      unsigned int value;
+    };
+    DECLARE_VECTOR(FilterValue);
+
     struct ConfigPointer {
       ConfigPointer(void) : pointer(NULL) {}
       ConfigPointer(int* p) : pointer(p) {}

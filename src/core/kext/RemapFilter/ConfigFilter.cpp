@@ -15,6 +15,14 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
 
+    void
+    ConfigFilter::add(int* newval)
+    {
+      if (! targets_) return;
+
+      targets_->push_back(newval);
+    }
+
     bool
     ConfigFilter::isblocked(void)
     {
@@ -49,14 +57,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       return false;
-    }
-
-    void
-    ConfigFilter::add(int* newval)
-    {
-      if (! targets_) return;
-
-      targets_->push_back(newval);
     }
   }
 }
