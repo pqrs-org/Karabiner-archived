@@ -4,7 +4,6 @@
 require 'inc.filter.rb'
 
 class RemapClass
-  @@index = 0
   @@entries = []
   @@simultaneous_keycode_index = 0
   @@keycode = {}
@@ -16,11 +15,11 @@ class RemapClass
   def initialize(name)
     @name = name
     @filter = Filter.new()
+    @variable_index = 0
 
     @code = {
       # functions
       :initialize                   => '',
-      :terminate                    => '',
       :remap_setkeyboardtype        => '',
       :remap_key                    => '',
       :remap_consumer               => '',
@@ -118,14 +117,10 @@ class RemapClass
 
     @code[:initialize] += "{\n"
     @code[:initialize] += "  const unsigned int vec[] = { #{args.join(',')} };\n"
-    @code[:initialize] += "  value#{@@index}_.initialize(vec, sizeof(vec) / sizeof(vec[0]));\n"
+    @code[:initialize] += "  value_[#{@variable_index}].initialize(vec, sizeof(vec) / sizeof(vec[0]));\n"
     @code[:initialize] += "}\n"
   end
   protected :append_to_code_initialize
-
-  def append_to_code_terminate
-    @code[:terminate] += "value#{@@index}_.terminate();\n"
-  end
 
   # return true if 'line' contains autogen/filter definition.
   def parse(line)
@@ -134,7 +129,6 @@ class RemapClass
     if /<autogen>--(.+?)-- (.+)<\/autogen>/ =~ line then
       operation = $1
       params = $2
-      @@index += 1
 
       case operation
       when 'SetKeyboardType'
@@ -142,9 +136,7 @@ class RemapClass
 
       when 'DropKeyAfterRemap'
         append_to_code_initialize(params, operation)
-        append_to_code_terminate
-        @code[:variable] << { :index => @@index, :class => "RemapFunc::#{operation}" }
-        @code[:remap_dropkeyafterremap] += "if (value#{@@index}_.drop(params)) return true;\n"
+        @code[:remap_dropkeyafterremap] += "if (value_[#{@variable_index}].drop(params)) return true;\n"
 
       when 'ShowStatusMessage'
         @code[:get_statusmessage] += "return #{params};\n"
@@ -153,33 +145,27 @@ class RemapClass
         params = "KeyCode::VK_SIMULTANEOUSKEYPRESSES_#{@@simultaneous_keycode_index}, " + params
         @@simultaneous_keycode_index += 1
         append_to_code_initialize(params, operation)
-        append_to_code_terminate
-        @code[:variable] << { :index => @@index, :class => "RemapFunc::SimultaneousKeyPresses" }
-        @code[:remap_key] += "if (value#{@@index}_.remap(remapParams)) break;\n"
-        @code[:remap_simultaneouskeypresses] += "value#{@@index}_.remap_SimultaneousKeyPresses();\n"
+        @code[:remap_key] += "if (value_[#{@variable_index}].remap(remapParams)) break;\n"
+        @code[:remap_simultaneouskeypresses] += "value_[#{@variable_index}].remap_SimultaneousKeyPresses();\n"
 
       when 'KeyToKey', 'KeyToConsumer', 'KeyToPointingButton', 'DoublePressModifier', 'HoldingKeyToKey', 'IgnoreMultipleSameKeyPress', 'KeyOverlaidModifier'
         append_to_code_initialize(params, operation)
-        append_to_code_terminate
-        @code[:variable] << { :index => @@index, :class => "RemapFunc::#{operation}" }
-        @code[:remap_key] += "if (value#{@@index}_.remap(remapParams)) break;\n"
+        @code[:remap_key] += "if (value_[#{@variable_index}].remap(remapParams)) break;\n"
 
       when 'ConsumerToConsumer', 'ConsumerToKey'
         append_to_code_initialize(params, operation)
-        append_to_code_terminate
-        @code[:variable] << { :index => @@index, :class => "RemapFunc::#{operation}" }
-        @code[:remap_consumer] += "if (value#{@@index}_.remap(remapParams)) break;\n"
+        @code[:remap_consumer] += "if (value_[#{@variable_index}].remap(remapParams)) break;\n"
 
       when 'PointingButtonToPointingButton', 'PointingButtonToKey', 'PointingRelativeToScroll'
         append_to_code_initialize(params, operation)
-        append_to_code_terminate
-        @code[:variable] << { :index => @@index, :class => "RemapFunc::#{operation}" }
-        @code[:remap_pointing] += "if (value#{@@index}_.remap(remapParams)) break;\n"
+        @code[:remap_pointing] += "if (value_[#{@variable_index}].remap(remapParams)) break;\n"
 
       else
         print "%%% ERROR #{type} %%%\n#{l}\n"
         exit 1
       end
+
+      @variable_index += 1
 
       return true
     end
@@ -221,7 +207,9 @@ class RemapClass
     @@entries[-1][:initialize] << "RemapClass_#{@name}::initialize"
 
     code += "static void terminate(void) {\n"
-    code += @code[:terminate]
+    code += "  for (size_t i = 0; i < sizeof(value_) / sizeof(value_[0]); ++i) {\n"
+    code += "    value_[i].terminate();\n"
+    code += "  }\n"
     code += "}\n"
     @@entries[-1][:terminate] << "RemapClass_#{@name}::terminate"
 
@@ -316,14 +304,10 @@ class RemapClass
     # ----------------------------------------
     code += "\n"
     code += "private:\n"
-    @code[:variable].each do |v|
-      code += "static RemapClass::Item value#{v[:index]}_;\n"
-    end
+    code += "static RemapClass::Item value_[#{@variable_index}];\n"
     code += "};\n"
 
-    @code[:variable].each do |v|
-      code += "RemapClass::Item #{classname}::value#{v[:index]}_;\n"
-    end
+    code += "RemapClass::Item #{classname}::value_[#{@variable_index}];\n"
     code += "\n\n"
 
     code
