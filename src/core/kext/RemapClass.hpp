@@ -24,7 +24,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     class Item {
     public:
       Item(void) {
-        type_ = BRIDGE_DATATYPE_NONE;
+        type_ = BRIDGE_REMAPTYPE_NONE;
       }
       void initialize(const unsigned int* vec, size_t length);
       void terminate(void);
