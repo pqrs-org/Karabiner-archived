@@ -12,7 +12,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     type_ = BRIDGE_REMAPTYPE_NONE;
     if (! vec || length <= 0) {
       IOLOG_ERROR("RemapClass::Item::initialize invalid parameter.\n");
-      return;
+      goto error;
     }
 
     type_ = vec[0];
@@ -23,14 +23,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     // "length - 1" must be a multiple of two.
     if (loopcount * 2 != length) {
       IOLOG_ERROR("RemapClass::Item::initialize invalid length.\n");
-      return;
+      goto error;
     }
 
 #define INITIALIZE_UNION_VALUE(NAME, CLASS) {                            \
     p_.NAME = new CLASS;                                                 \
     if (! p_.NAME) {                                                     \
       IOLOG_ERROR("RemapClass::Item::initialize failed to allocate.\n"); \
-      type_ = BRIDGE_REMAPTYPE_NONE;                                     \
+      goto error;                                                        \
     } else {                                                             \
       for (size_t i = 0; i < loopcount; ++i) {                           \
         unsigned int datatype = datavec[i];                              \
@@ -58,10 +58,16 @@ namespace org_pqrs_KeyRemap4MacBook {
       case BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES:         INITIALIZE_UNION_VALUE(simultaneousKeyPresses,         RemapFunc::SimultaneousKeyPresses);         break;
       default:
         IOLOG_ERROR("RemapClass::Item::initialize unknown type_ (%d)\n", type_);
-        return;
+        type_ = BRIDGE_REMAPTYPE_NONE;
+        goto error;
     }
 
 #undef INITIALIZE_UNION_VALUE
+
+    return;
+
+  error:
+    type_ = BRIDGE_REMAPTYPE_NONE;
   }
 
   void
