@@ -79,6 +79,9 @@
 		34C8E8D311DEEC0400E2FE41 /* PointingRelativeToScroll.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34C8E8D111DEEC0400E2FE41 /* PointingRelativeToScroll.hpp */; };
 		34C931CC11E37E5300B81B08 /* EventOutputQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34C931CA11E37E5300B81B08 /* EventOutputQueue.cpp */; };
 		34C931CD11E37E5300B81B08 /* EventOutputQueue.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34C931CB11E37E5300B81B08 /* EventOutputQueue.hpp */; };
+		34CAB8551261195200C3FFCB /* ConfigFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34CAB8521261195200C3FFCB /* ConfigFilter.cpp */; };
+		34CAB8561261195200C3FFCB /* ConfigFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34CAB8531261195200C3FFCB /* ConfigFilter.hpp */; };
+		34CAB8571261195200C3FFCB /* RemapFilterBase.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34CAB8541261195200C3FFCB /* RemapFilterBase.hpp */; };
 		34CFB93211C340B000E5E7F9 /* ButtonStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34CFB93011C340B000E5E7F9 /* ButtonStatus.cpp */; };
 		34CFB93311C340B000E5E7F9 /* ButtonStatus.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34CFB93111C340B000E5E7F9 /* ButtonStatus.hpp */; };
 		34D347E611D8106C00D70815 /* KeyToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D347E411D8106C00D70815 /* KeyToKey.cpp */; };
@@ -173,6 +176,9 @@
 		34C8E8D111DEEC0400E2FE41 /* PointingRelativeToScroll.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PointingRelativeToScroll.hpp; path = RemapFunc/PointingRelativeToScroll.hpp; sourceTree = "<group>"; };
 		34C931CA11E37E5300B81B08 /* EventOutputQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventOutputQueue.cpp; path = util/EventOutputQueue.cpp; sourceTree = "<group>"; };
 		34C931CB11E37E5300B81B08 /* EventOutputQueue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = EventOutputQueue.hpp; path = util/EventOutputQueue.hpp; sourceTree = "<group>"; };
+		34CAB8521261195200C3FFCB /* ConfigFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConfigFilter.cpp; path = RemapFilter/ConfigFilter.cpp; sourceTree = "<group>"; };
+		34CAB8531261195200C3FFCB /* ConfigFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ConfigFilter.hpp; path = RemapFilter/ConfigFilter.hpp; sourceTree = "<group>"; };
+		34CAB8541261195200C3FFCB /* RemapFilterBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RemapFilterBase.hpp; path = RemapFilter/RemapFilterBase.hpp; sourceTree = "<group>"; };
 		34CFB93011C340B000E5E7F9 /* ButtonStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ButtonStatus.cpp; path = util/ButtonStatus.cpp; sourceTree = "<group>"; };
 		34CFB93111C340B000E5E7F9 /* ButtonStatus.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ButtonStatus.hpp; path = util/ButtonStatus.hpp; sourceTree = "<group>"; };
 		34D347E411D8106C00D70815 /* KeyToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyToKey.cpp; path = RemapFunc/KeyToKey.cpp; sourceTree = "<group>"; };
@@ -236,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				34A7F15712537F0D0012B982 /* bridge.h */,
+				34CAB84F1261194100C3FFCB /* RemapFilter */,
 				345E3EC511D79D17004B6347 /* RemapFunc */,
 				3477E3B911CFAC9D00DC05C9 /* RemapClass.cpp */,
 				3477E3BA11CFAC9D00DC05C9 /* RemapClass.hpp */,
@@ -343,6 +350,16 @@
 			name = util;
 			sourceTree = "<group>";
 		};
+		34CAB84F1261194100C3FFCB /* RemapFilter */ = {
+			isa = PBXGroup;
+			children = (
+				34CAB8521261195200C3FFCB /* ConfigFilter.cpp */,
+				34CAB8531261195200C3FFCB /* ConfigFilter.hpp */,
+				34CAB8541261195200C3FFCB /* RemapFilterBase.hpp */,
+			);
+			name = RemapFilter;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -399,6 +416,8 @@
 				34C931CD11E37E5300B81B08 /* EventOutputQueue.hpp in Headers */,
 				34B8CEC711E5E05C00EE89E3 /* List.hpp in Headers */,
 				34A7F15812537F0D0012B982 /* bridge.h in Headers */,
+				34CAB8561261195200C3FFCB /* ConfigFilter.hpp in Headers */,
+				34CAB8571261195200C3FFCB /* RemapFilterBase.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +526,7 @@
 				3401FE0411E2E77300EBBF43 /* ParamsUnion.cpp in Sources */,
 				34C931CC11E37E5300B81B08 /* EventOutputQueue.cpp in Sources */,
 				34B8CEC611E5E05C00EE89E3 /* List.cpp in Sources */,
+				34CAB8551261195200C3FFCB /* ConfigFilter.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
