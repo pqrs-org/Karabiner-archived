@@ -29,6 +29,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       void initialize(const unsigned int* vec, size_t length);
       void terminate(void);
 
+      bool remap(RemapParams& remapParams);
+      bool remap(RemapConsumerParams& remapParams);
+      bool remap(RemapPointingParams_relative& remapParams);
+      // for DropKeyAfterRemap
+      bool drop(const Params_KeyboardEventCallBack& params);
+
     private:
       unsigned int type_;
 

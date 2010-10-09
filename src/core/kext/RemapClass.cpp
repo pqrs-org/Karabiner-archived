@@ -36,36 +36,36 @@ namespace org_pqrs_KeyRemap4MacBook {
     //
     type_ = vec[0];
 
-#define INITIALIZE_UNION_VALUE(NAME, CLASS) {                            \
-    p_.NAME = new CLASS;                                                 \
-    if (! p_.NAME) {                                                     \
+#define INITIALIZE_UNION_VALUE(POINTER, CLASS) {                         \
+    POINTER = new CLASS;                                                 \
+    if (! POINTER) {                                                     \
       IOLOG_ERROR("RemapClass::Item::initialize failed to allocate.\n"); \
       goto error;                                                        \
     } else {                                                             \
       for (size_t i = 0; i < loopcount; ++i) {                           \
         unsigned int datatype = datavec[i];                              \
         unsigned int value = datavec[i + 1];                             \
-        (p_.NAME)->add(datatype, value);                                 \
+        (POINTER)->add(datatype, value);                                 \
       }                                                                  \
     }                                                                    \
 }
 
     switch (type_) {
       // handle BRIDGE_REMAPTYPE_NONE as error. (see default)
-      case BRIDGE_REMAPTYPE_KEYTOKEY:                       INITIALIZE_UNION_VALUE(keyToKey,                       RemapFunc::KeyToKey);                       break;
-      case BRIDGE_REMAPTYPE_KEYTOCONSUMER:                  INITIALIZE_UNION_VALUE(keyToConsumer,                  RemapFunc::KeyToConsumer);                  break;
-      case BRIDGE_REMAPTYPE_KEYTOPOINTINGBUTTON:            INITIALIZE_UNION_VALUE(keyToPointingButton,            RemapFunc::KeyToPointingButton);            break;
-      case BRIDGE_REMAPTYPE_CONSUMERTOCONSUMER:             INITIALIZE_UNION_VALUE(consumerToConsumer,             RemapFunc::ConsumerToConsumer);             break;
-      case BRIDGE_REMAPTYPE_CONSUMERTOKEY:                  INITIALIZE_UNION_VALUE(consumerToKey,                  RemapFunc::ConsumerToKey);                  break;
-      case BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER:            INITIALIZE_UNION_VALUE(doublePressModifier,            RemapFunc::DoublePressModifier);            break;
-      case BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP:              INITIALIZE_UNION_VALUE(dropKeyAfterRemap,              RemapFunc::DropKeyAfterRemap);              break;
-      case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:                INITIALIZE_UNION_VALUE(holdingKeyToKey,                RemapFunc::HoldingKeyToKey);                break;
-      case BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS:     INITIALIZE_UNION_VALUE(ignoreMultipleSameKeyPress,     RemapFunc::IgnoreMultipleSameKeyPress);     break;
-      case BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER:            INITIALIZE_UNION_VALUE(keyOverlaidModifier,            RemapFunc::KeyOverlaidModifier);            break;
-      case BRIDGE_REMAPTYPE_POINTINGBUTTONTOKEY:            INITIALIZE_UNION_VALUE(pointingButtonToKey,            RemapFunc::PointingButtonToKey);            break;
-      case BRIDGE_REMAPTYPE_POINTINGBUTTONTOPOINTINGBUTTON: INITIALIZE_UNION_VALUE(pointingButtonToPointingButton, RemapFunc::PointingButtonToPointingButton); break;
-      case BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL:       INITIALIZE_UNION_VALUE(pointingRelativeToScroll,       RemapFunc::PointingRelativeToScroll);       break;
-      case BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES:         INITIALIZE_UNION_VALUE(simultaneousKeyPresses,         RemapFunc::SimultaneousKeyPresses);         break;
+      case BRIDGE_REMAPTYPE_KEYTOKEY:                       INITIALIZE_UNION_VALUE(p_.keyToKey,                       RemapFunc::KeyToKey);                       break;
+      case BRIDGE_REMAPTYPE_KEYTOCONSUMER:                  INITIALIZE_UNION_VALUE(p_.keyToConsumer,                  RemapFunc::KeyToConsumer);                  break;
+      case BRIDGE_REMAPTYPE_KEYTOPOINTINGBUTTON:            INITIALIZE_UNION_VALUE(p_.keyToPointingButton,            RemapFunc::KeyToPointingButton);            break;
+      case BRIDGE_REMAPTYPE_CONSUMERTOCONSUMER:             INITIALIZE_UNION_VALUE(p_.consumerToConsumer,             RemapFunc::ConsumerToConsumer);             break;
+      case BRIDGE_REMAPTYPE_CONSUMERTOKEY:                  INITIALIZE_UNION_VALUE(p_.consumerToKey,                  RemapFunc::ConsumerToKey);                  break;
+      case BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER:            INITIALIZE_UNION_VALUE(p_.doublePressModifier,            RemapFunc::DoublePressModifier);            break;
+      case BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP:              INITIALIZE_UNION_VALUE(p_.dropKeyAfterRemap,              RemapFunc::DropKeyAfterRemap);              break;
+      case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:                INITIALIZE_UNION_VALUE(p_.holdingKeyToKey,                RemapFunc::HoldingKeyToKey);                break;
+      case BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS:     INITIALIZE_UNION_VALUE(p_.ignoreMultipleSameKeyPress,     RemapFunc::IgnoreMultipleSameKeyPress);     break;
+      case BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER:            INITIALIZE_UNION_VALUE(p_.keyOverlaidModifier,            RemapFunc::KeyOverlaidModifier);            break;
+      case BRIDGE_REMAPTYPE_POINTINGBUTTONTOKEY:            INITIALIZE_UNION_VALUE(p_.pointingButtonToKey,            RemapFunc::PointingButtonToKey);            break;
+      case BRIDGE_REMAPTYPE_POINTINGBUTTONTOPOINTINGBUTTON: INITIALIZE_UNION_VALUE(p_.pointingButtonToPointingButton, RemapFunc::PointingButtonToPointingButton); break;
+      case BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL:       INITIALIZE_UNION_VALUE(p_.pointingRelativeToScroll,       RemapFunc::PointingRelativeToScroll);       break;
+      case BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES:         INITIALIZE_UNION_VALUE(p_.simultaneousKeyPresses,         RemapFunc::SimultaneousKeyPresses);         break;
       default:
         IOLOG_ERROR("RemapClass::Item::initialize unknown type_ (%d)\n", type_);
         type_ = BRIDGE_REMAPTYPE_NONE;
@@ -83,10 +83,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapClass::Item::terminate(void)
   {
-#define DELETE_UNLESS_NULL(POINTER) { \
-    if (POINTER) {                    \
-      delete POINTER;                 \
-    }                                 \
+#define DELETE_UNLESS_NULL(POINTER) { if (POINTER) { delete POINTER; } \
 }
 
     switch (type_) {
@@ -113,6 +110,49 @@ namespace org_pqrs_KeyRemap4MacBook {
 #undef DELETE_UNLESS_NULL
 
     type_ = BRIDGE_REMAPTYPE_NONE;
+  }
+
+  bool
+  RemapClass::Item::remap(RemapParams& remapParams)
+  {
+#define CALL_UNION_REMAP(POINTER) { if (POINTER) { return (POINTER)->remap(remapParams); } \
+}
+
+    switch (type_) {
+      case BRIDGE_REMAPTYPE_KEYTOKEY:                   CALL_UNION_REMAP(p_.keyToKey);                   break;
+      case BRIDGE_REMAPTYPE_KEYTOCONSUMER:              CALL_UNION_REMAP(p_.keyToConsumer);              break;
+      case BRIDGE_REMAPTYPE_KEYTOPOINTINGBUTTON:        CALL_UNION_REMAP(p_.keyToPointingButton);        break;
+      case BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER:        CALL_UNION_REMAP(p_.doublePressModifier);        break;
+      case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:            CALL_UNION_REMAP(p_.holdingKeyToKey);            break;
+      case BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS: CALL_UNION_REMAP(p_.ignoreMultipleSameKeyPress); break;
+      case BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER:        CALL_UNION_REMAP(p_.keyOverlaidModifier);        break;
+      case BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES:     CALL_UNION_REMAP(p_.simultaneousKeyPresses);     break;
+      default:
+        // do nothing. (Do not call IOLOG_ERROR)
+        break;
+    }
+
+#undef CALL_UNION_REMAP
+
+    return false;
+  }
+
+  bool
+  RemapClass::Item::remap(RemapConsumerParams& remapParams)
+  {
+    return false;
+  }
+
+  bool
+  RemapClass::Item::remap(RemapPointingParams_relative& remapParams)
+  {
+    return false;
+  }
+
+  bool
+  RemapClass::Item::drop(const Params_KeyboardEventCallBack& params)
+  {
+    return false;
   }
 
   namespace RemapClassManager {
