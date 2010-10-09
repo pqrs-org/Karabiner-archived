@@ -189,6 +189,23 @@ namespace org_pqrs_KeyRemap4MacBook {
     return false;
   }
 
+  void
+  RemapClass::Item::remap_SimultaneousKeyPresses(void)
+  {
+#define CALL_UNION_FUNCTION(POINTER) {          \
+    if (POINTER) { return (POINTER)->remap(); } \
+}
+
+    switch (type_) {
+      case BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES: CALL_UNION_FUNCTION(p_.simultaneousKeyPresses); break;
+      default:
+        // do nothing. (Do not call IOLOG_ERROR)
+        break;
+    }
+
+#undef CALL_UNION_FUNCTION
+  }
+
   namespace RemapClassManager {
     typedef void (*RemapClass_initialize)(void);
     typedef void (*RemapClass_terminate)(void);
