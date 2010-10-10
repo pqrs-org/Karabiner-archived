@@ -24,22 +24,6 @@ class Filter
       return true
     end
 
-    if /<keyboardtype_not>(.+?)<\/keyboardtype_not>/ =~ line then
-      $1.split(/,/).each do |f|
-        @array << "if (CommonData::getcurrent_keyboardType() == KeyboardType::#{f.strip}) break;"
-      end
-      return true
-    end
-
-    if /<keyboardtype_only>(.+?)<\/keyboardtype_only>/ =~ line then
-      tmp = []
-      $1.split(/,/).each do |f|
-        tmp << "(CommonData::getcurrent_keyboardType() != KeyboardType::#{f.strip})"
-      end
-      @array << "if (#{tmp.join(' && ')}) break;"
-      return true
-    end
-
     if /<device_not>(.+?)<\/device_not>/ =~ line then
       $1.scan(/DeviceVendorID\(.+?\)\s*,\s*DeviceProductID\(.+?\)/).each do |f|
         @array << "if (CommonData::isEqualVendorIDProductID(#{f.strip})) break;"
