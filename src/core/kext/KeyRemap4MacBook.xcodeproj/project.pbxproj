@@ -15,6 +15,8 @@
 		3401FE0611E2E77300EBBF43 /* Vector.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3401FE0311E2E77300EBBF43 /* Vector.hpp */; };
 		341272FE11D8FE0E000A62DB /* HoldingKeyToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 341272FC11D8FE0E000A62DB /* HoldingKeyToKey.cpp */; };
 		341272FF11D8FE0E000A62DB /* HoldingKeyToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 341272FD11D8FE0E000A62DB /* HoldingKeyToKey.hpp */; };
+		342C80541261B379007F15DA /* DeviceFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 342C80521261B379007F15DA /* DeviceFilter.cpp */; };
+		342C80551261B379007F15DA /* DeviceFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 342C80531261B379007F15DA /* DeviceFilter.hpp */; };
 		3430E93310C558CA00FC2D64 /* EventWatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3430E93110C558CA00FC2D64 /* EventWatcher.cpp */; };
 		3430E93410C558CA00FC2D64 /* EventWatcher.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3430E93210C558CA00FC2D64 /* EventWatcher.hpp */; };
 		34379D0E11DB958900CD588D /* PointingButtonToPointingButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34379D0C11DB958900CD588D /* PointingButtonToPointingButton.cpp */; };
@@ -116,6 +118,8 @@
 		3401FE0311E2E77300EBBF43 /* Vector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Vector.hpp; path = util/Vector.hpp; sourceTree = "<group>"; };
 		341272FC11D8FE0E000A62DB /* HoldingKeyToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HoldingKeyToKey.cpp; path = RemapFunc/HoldingKeyToKey.cpp; sourceTree = "<group>"; };
 		341272FD11D8FE0E000A62DB /* HoldingKeyToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = HoldingKeyToKey.hpp; path = RemapFunc/HoldingKeyToKey.hpp; sourceTree = "<group>"; };
+		342C80521261B379007F15DA /* DeviceFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DeviceFilter.cpp; path = RemapFilter/DeviceFilter.cpp; sourceTree = "<group>"; };
+		342C80531261B379007F15DA /* DeviceFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DeviceFilter.hpp; path = RemapFilter/DeviceFilter.hpp; sourceTree = "<group>"; };
 		3430E93110C558CA00FC2D64 /* EventWatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventWatcher.cpp; path = util/EventWatcher.cpp; sourceTree = "<group>"; };
 		3430E93210C558CA00FC2D64 /* EventWatcher.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = EventWatcher.hpp; path = util/EventWatcher.hpp; sourceTree = "<group>"; };
 		34379D0C11DB958900CD588D /* PointingButtonToPointingButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PointingButtonToPointingButton.cpp; path = RemapFunc/PointingButtonToPointingButton.cpp; sourceTree = "<group>"; };
@@ -361,6 +365,8 @@
 		34CAB84F1261194100C3FFCB /* RemapFilter */ = {
 			isa = PBXGroup;
 			children = (
+				342C80521261B379007F15DA /* DeviceFilter.cpp */,
+				342C80531261B379007F15DA /* DeviceFilter.hpp */,
 				34B5E8B31261960700DCFB0D /* InputModeFilter.cpp */,
 				34B5E8B41261960700DCFB0D /* InputModeFilter.hpp */,
 				34B5E8A41261284200DCFB0D /* ApplicationFilter.cpp */,
@@ -432,6 +438,7 @@
 				34CAB8571261195200C3FFCB /* RemapFilterBase.hpp in Headers */,
 				34B5E8A71261284200DCFB0D /* ApplicationFilter.hpp in Headers */,
 				34B5E8B61261960700DCFB0D /* InputModeFilter.hpp in Headers */,
+				342C80551261B379007F15DA /* DeviceFilter.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,6 +550,7 @@
 				34CAB8551261195200C3FFCB /* ConfigFilter.cpp in Sources */,
 				34B5E8A61261284200DCFB0D /* ApplicationFilter.cpp in Sources */,
 				34B5E8B51261960700DCFB0D /* InputModeFilter.cpp in Sources */,
+				342C80541261B379007F15DA /* DeviceFilter.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
