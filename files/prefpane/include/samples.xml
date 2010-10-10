@@ -923,10 +923,14 @@
           <appendix>B to E if application != TERMINAL (KeyToKey)</appendix>
           <appendix>Shift+C to Y</appendix>
           <appendix>Shift+D to Z</appendix>
-          <appendix>C to 1 if application == TERMINAL (KeyToKey), (VendorID,ProductID) == (0x5ac,0x21a) or (0x5ac,0x222)</appendix>
-          <appendix>C to 2 if application == TERMINAL (KeyToKey), (VendorID,ProductID) != (0x5ac,0x21a) and (0x5ac,0x222)</appendix>
-          <appendix>C to 3 if application != TERMINAL (KeyToKey), (VendorID,ProductID) == (0x5ac,0x21a) or (0x5ac,0x222)</appendix>
-          <appendix>C to 4 if application != TERMINAL (KeyToKey), (VendorID,ProductID) != (0x5ac,0x21a) and (0x5ac,0x222)</appendix>
+          <appendix>----------------------------------------</appendix>
+          <appendix>(VendorID,ProductID) == (0x5ac,0x21a) or (0x5ac,0x222)</appendix>
+          <appendix>- C to 1 if application == TERMINAL (KeyToKey)</appendix>
+          <appendix>- C to 3 if application != TERMINAL (KeyToKey)</appendix>
+          <appendix>----------------------------------------</appendix>
+          <appendix>(VendorID,ProductID) != (0x5ac,0x21a) and (0x5ac,0x222)</appendix>
+          <appendix>C to 2 if application == TERMINAL (KeyToKey)</appendix>
+          <appendix>C to 4 if application != TERMINAL (KeyToKey)</appendix>
           <sysctl>remap.samples_block</sysctl>
           <block>
             <only>TERMINAL</only>
