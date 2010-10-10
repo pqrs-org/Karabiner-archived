@@ -71,6 +71,8 @@
 		34AC5ED211DA3BD60089BC58 /* KeyOverlaidModifier.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34AC5ED011DA3BD60089BC58 /* KeyOverlaidModifier.hpp */; };
 		34B5E8A61261284200DCFB0D /* ApplicationFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5E8A41261284200DCFB0D /* ApplicationFilter.cpp */; };
 		34B5E8A71261284200DCFB0D /* ApplicationFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B5E8A51261284200DCFB0D /* ApplicationFilter.hpp */; };
+		34B5E8B51261960700DCFB0D /* InputModeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5E8B31261960700DCFB0D /* InputModeFilter.cpp */; };
+		34B5E8B61261960700DCFB0D /* InputModeFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B5E8B41261960700DCFB0D /* InputModeFilter.hpp */; };
 		34B8199511DF925500BD8E0B /* DropKeyAfterRemap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B8199311DF925500BD8E0B /* DropKeyAfterRemap.cpp */; };
 		34B8199611DF925500BD8E0B /* DropKeyAfterRemap.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B8199411DF925500BD8E0B /* DropKeyAfterRemap.hpp */; };
 		34B8CEC611E5E05C00EE89E3 /* List.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B8CEC411E5E05C00EE89E3 /* List.cpp */; };
@@ -170,6 +172,8 @@
 		34AC5ED011DA3BD60089BC58 /* KeyOverlaidModifier.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyOverlaidModifier.hpp; path = RemapFunc/KeyOverlaidModifier.hpp; sourceTree = "<group>"; };
 		34B5E8A41261284200DCFB0D /* ApplicationFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ApplicationFilter.cpp; path = RemapFilter/ApplicationFilter.cpp; sourceTree = "<group>"; };
 		34B5E8A51261284200DCFB0D /* ApplicationFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ApplicationFilter.hpp; path = RemapFilter/ApplicationFilter.hpp; sourceTree = "<group>"; };
+		34B5E8B31261960700DCFB0D /* InputModeFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InputModeFilter.cpp; path = RemapFilter/InputModeFilter.cpp; sourceTree = "<group>"; };
+		34B5E8B41261960700DCFB0D /* InputModeFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = InputModeFilter.hpp; path = RemapFilter/InputModeFilter.hpp; sourceTree = "<group>"; };
 		34B8199311DF925500BD8E0B /* DropKeyAfterRemap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DropKeyAfterRemap.cpp; path = RemapFunc/DropKeyAfterRemap.cpp; sourceTree = "<group>"; };
 		34B8199411DF925500BD8E0B /* DropKeyAfterRemap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DropKeyAfterRemap.hpp; path = RemapFunc/DropKeyAfterRemap.hpp; sourceTree = "<group>"; };
 		34B8CEC411E5E05C00EE89E3 /* List.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = List.cpp; path = util/List.cpp; sourceTree = "<group>"; };
@@ -357,6 +361,8 @@
 		34CAB84F1261194100C3FFCB /* RemapFilter */ = {
 			isa = PBXGroup;
 			children = (
+				34B5E8B31261960700DCFB0D /* InputModeFilter.cpp */,
+				34B5E8B41261960700DCFB0D /* InputModeFilter.hpp */,
 				34B5E8A41261284200DCFB0D /* ApplicationFilter.cpp */,
 				34B5E8A51261284200DCFB0D /* ApplicationFilter.hpp */,
 				34CAB8521261195200C3FFCB /* ConfigFilter.cpp */,
@@ -425,6 +431,7 @@
 				34CAB8561261195200C3FFCB /* ConfigFilter.hpp in Headers */,
 				34CAB8571261195200C3FFCB /* RemapFilterBase.hpp in Headers */,
 				34B5E8A71261284200DCFB0D /* ApplicationFilter.hpp in Headers */,
+				34B5E8B61261960700DCFB0D /* InputModeFilter.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,6 +542,7 @@
 				34B8CEC611E5E05C00EE89E3 /* List.cpp in Sources */,
 				34CAB8551261195200C3FFCB /* ConfigFilter.cpp in Sources */,
 				34B5E8A61261284200DCFB0D /* ApplicationFilter.cpp in Sources */,
+				34B5E8B51261960700DCFB0D /* InputModeFilter.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
