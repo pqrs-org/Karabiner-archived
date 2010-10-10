@@ -615,22 +615,6 @@
           </block>
         </item>
 
-        <!-- KeyboardType only -->
-        <item>
-          <name>KeyboardType only</name>
-          <appendix>A to B if KeyboardType == KeyboardType::MACBOOK or MACBOOK_3_1</appendix>
-          <appendix>A to C if KeyboardType != KeyboardType::MACBOOK and MACBOOK_3_1</appendix>
-          <sysctl>remap.samples_keyboardtype</sysctl>
-          <block>
-            <keyboardtype_only>MACBOOK, MACBOOK_3_1</keyboardtype_only>
-            <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
-          </block>
-          <block>
-            <keyboardtype_not>MACBOOK,MACBOOK_3_1</keyboardtype_not>
-            <autogen>--KeyToKey-- KeyCode::A, KeyCode::C</autogen>
-          </block>
-        </item>
-
         <!-- Device only -->
         <item>
           <name>Device only</name>
@@ -939,10 +923,10 @@
           <appendix>B to E if application != TERMINAL (KeyToKey)</appendix>
           <appendix>Shift+C to Y</appendix>
           <appendix>Shift+D to Z</appendix>
-          <appendix>C to 1 if application == TERMINAL (KeyToKey), keyboardType == MACBOOK</appendix>
-          <appendix>C to 2 if application == TERMINAL (KeyToKey), keyboardType != MACBOOK</appendix>
-          <appendix>C to 3 if application != TERMINAL (KeyToKey), keyboardType == MACBOOK</appendix>
-          <appendix>C to 4 if application != TERMINAL (KeyToKey), keyboardType != MACBOOK</appendix>
+          <appendix>C to 1 if application == TERMINAL (KeyToKey), (VendorID,ProductID) == (0x5ac,0x21a) or (0x5ac,0x222)</appendix>
+          <appendix>C to 2 if application == TERMINAL (KeyToKey), (VendorID,ProductID) != (0x5ac,0x21a) and (0x5ac,0x222)</appendix>
+          <appendix>C to 3 if application != TERMINAL (KeyToKey), (VendorID,ProductID) == (0x5ac,0x21a) or (0x5ac,0x222)</appendix>
+          <appendix>C to 4 if application != TERMINAL (KeyToKey), (VendorID,ProductID) != (0x5ac,0x21a) and (0x5ac,0x222)</appendix>
           <sysctl>remap.samples_block</sysctl>
           <block>
             <only>TERMINAL</only>
@@ -959,22 +943,22 @@
           <block>
             <only>TERMINAL</only>
             <block>
-              <keyboardtype_only>MACBOOK</keyboardtype_only>
+              <device_only>DeviceVendorID(0x5ac),DeviceProductID(0x21a), DeviceVendorID(0x5ac),DeviceProductID(0x222)</device_only>
               <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_1</autogen>
             </block>
             <block>
-              <keyboardtype_not>MACBOOK</keyboardtype_not>
+              <device_not>DeviceVendorID(0x5ac),DeviceProductID(0x21a), DeviceVendorID(0x5ac),DeviceProductID(0x222)</device_not>
               <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_2</autogen>
             </block>
           </block>
           <block>
             <not>TERMINAL</not>
             <block>
-              <keyboardtype_only>MACBOOK</keyboardtype_only>
+              <device_only>DeviceVendorID(0x5ac),DeviceProductID(0x21a), DeviceVendorID(0x5ac),DeviceProductID(0x222)</device_only>
               <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_3</autogen>
             </block>
             <block>
-              <keyboardtype_not>MACBOOK</keyboardtype_not>
+              <device_not>DeviceVendorID(0x5ac),DeviceProductID(0x21a), DeviceVendorID(0x5ac),DeviceProductID(0x222)</device_not>
               <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_4</autogen>
             </block>
           </block>
