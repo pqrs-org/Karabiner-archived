@@ -5,12 +5,7 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFilter {
-    struct FilterValue {
-      FilterValue(void) : value(0) {}
-      FilterValue(unsigned int v) : value(v) {}
-
-      unsigned int value;
-    };
+    typedef unsigned int FilterValue;
     DECLARE_VECTOR(FilterValue);
 
     struct DeviceFilterValue {
