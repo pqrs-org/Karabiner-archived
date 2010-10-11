@@ -17,12 +17,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
     DECLARE_VECTOR(DeviceFilterValue);
 
-    struct ConfigPointer {
-      ConfigPointer(void) : pointer(NULL) {}
-      ConfigPointer(int* p) : pointer(p) {}
-
-      int* pointer;
-    };
+    typedef int* ConfigPointer;
     DECLARE_VECTOR(ConfigPointer);
   }
 }
