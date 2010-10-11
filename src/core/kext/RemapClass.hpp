@@ -17,6 +17,11 @@
 #include "RemapFunc/PointingButtonToPointingButton.hpp"
 #include "RemapFunc/PointingRelativeToScroll.hpp"
 #include "RemapFunc/SimultaneousKeyPresses.hpp"
+#include "RemapFilter/ApplicationFilter.hpp"
+#include "RemapFilter/ConfigFilter.hpp"
+#include "RemapFilter/DeviceFilter.hpp"
+#include "RemapFilter/InputModeFilter.hpp"
+#include "RemapFilter/RemapFilterBase.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   class RemapClass {
@@ -27,6 +32,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         type_ = BRIDGE_REMAPTYPE_NONE;
       }
       void initialize_remap(const unsigned int* vec, size_t length);
+      void initialize_filter(const unsigned int* vec, size_t length);
       void terminate(void);
 
       bool remap(RemapParams& remapParams);
@@ -56,6 +62,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         RemapFunc::PointingRelativeToScroll* pointingRelativeToScroll;
         RemapFunc::SimultaneousKeyPresses* simultaneousKeyPresses;
       } p_;
+
+      class FilterUnion {
+      };
     };
   };
 

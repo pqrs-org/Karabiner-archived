@@ -28,7 +28,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       int* pointer;
     };
-    // XXX: For ConfigFilter. Remove me.
     DECLARE_VECTOR(ConfigPointer);
   }
 }
