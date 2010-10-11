@@ -10,13 +10,15 @@
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFilter {
     class FilterUnion {
-      FilterUnion(void) {
-        type_ = BRIDGE_FILTERTYPE_NONE;
-      }
-      void initialize(const unsigned int* vec, size_t length);
-      void terminate(void);
+    public:
+      FilterUnion(const unsigned int* vec, size_t length);
+      ~FilterUnion(void);
 
       bool isblocked(void);
+
+    private:
+      void initialize(const unsigned int* vec, size_t length);
+      void terminate(void);
 
       unsigned int type_;
 
