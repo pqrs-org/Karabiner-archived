@@ -71,6 +71,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  RemapClass::Item::initialize_filter(const unsigned int* vec, size_t length)
+  {
+  }
+
+  void
   RemapClass::Item::terminate(void)
   {
 #define DELETE_UNLESS_NULL(POINTER) { \
