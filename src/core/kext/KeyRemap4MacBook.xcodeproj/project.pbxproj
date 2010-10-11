@@ -92,6 +92,8 @@
 		34CFB93311C340B000E5E7F9 /* ButtonStatus.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34CFB93111C340B000E5E7F9 /* ButtonStatus.hpp */; };
 		34D347E611D8106C00D70815 /* KeyToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D347E411D8106C00D70815 /* KeyToKey.cpp */; };
 		34D347E711D8106C00D70815 /* KeyToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34D347E511D8106C00D70815 /* KeyToKey.hpp */; };
+		34DC263812629E0000354378 /* FilterUnion.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34DC263712629E0000354378 /* FilterUnion.hpp */; };
+		34DC263C1262A5A500354378 /* FilterUnion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34DC263B1262A5A500354378 /* FilterUnion.cpp */; };
 		34E04BFD11DD878D001AE230 /* SimultaneousKeyPresses.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34E04BFB11DD878D001AE230 /* SimultaneousKeyPresses.cpp */; };
 		34E04BFE11DD878D001AE230 /* SimultaneousKeyPresses.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34E04BFC11DD878D001AE230 /* SimultaneousKeyPresses.hpp */; };
 		34F13A860E73E69D006EB163 /* IntervalChecker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F13A840E73E69D006EB163 /* IntervalChecker.cpp */; };
@@ -195,6 +197,8 @@
 		34CFB93111C340B000E5E7F9 /* ButtonStatus.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ButtonStatus.hpp; path = util/ButtonStatus.hpp; sourceTree = "<group>"; };
 		34D347E411D8106C00D70815 /* KeyToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyToKey.cpp; path = RemapFunc/KeyToKey.cpp; sourceTree = "<group>"; };
 		34D347E511D8106C00D70815 /* KeyToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyToKey.hpp; path = RemapFunc/KeyToKey.hpp; sourceTree = "<group>"; };
+		34DC263712629E0000354378 /* FilterUnion.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FilterUnion.hpp; path = RemapFilter/FilterUnion.hpp; sourceTree = "<group>"; };
+		34DC263B1262A5A500354378 /* FilterUnion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FilterUnion.cpp; path = RemapFilter/FilterUnion.cpp; sourceTree = "<group>"; };
 		34E04BFB11DD878D001AE230 /* SimultaneousKeyPresses.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SimultaneousKeyPresses.cpp; path = RemapFunc/SimultaneousKeyPresses.cpp; sourceTree = "<group>"; };
 		34E04BFC11DD878D001AE230 /* SimultaneousKeyPresses.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SimultaneousKeyPresses.hpp; path = RemapFunc/SimultaneousKeyPresses.hpp; sourceTree = "<group>"; };
 		34F13A840E73E69D006EB163 /* IntervalChecker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IntervalChecker.cpp; path = util/IntervalChecker.cpp; sourceTree = "<group>"; };
@@ -365,6 +369,8 @@
 		34CAB84F1261194100C3FFCB /* RemapFilter */ = {
 			isa = PBXGroup;
 			children = (
+				34DC263B1262A5A500354378 /* FilterUnion.cpp */,
+				34DC263712629E0000354378 /* FilterUnion.hpp */,
 				342C80521261B379007F15DA /* DeviceFilter.cpp */,
 				342C80531261B379007F15DA /* DeviceFilter.hpp */,
 				34B5E8B31261960700DCFB0D /* InputModeFilter.cpp */,
@@ -439,6 +445,7 @@
 				34B5E8A71261284200DCFB0D /* ApplicationFilter.hpp in Headers */,
 				34B5E8B61261960700DCFB0D /* InputModeFilter.hpp in Headers */,
 				342C80551261B379007F15DA /* DeviceFilter.hpp in Headers */,
+				34DC263812629E0000354378 /* FilterUnion.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,6 +558,7 @@
 				34B5E8A61261284200DCFB0D /* ApplicationFilter.cpp in Sources */,
 				34B5E8B51261960700DCFB0D /* InputModeFilter.cpp in Sources */,
 				342C80541261B379007F15DA /* DeviceFilter.cpp in Sources */,
+				34DC263C1262A5A500354378 /* FilterUnion.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
