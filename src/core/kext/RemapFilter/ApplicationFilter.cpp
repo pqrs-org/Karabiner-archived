@@ -37,7 +37,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_FILTERTYPE_APPLICATION_NOT:
         {
           for (size_t i = 0; i < targets_->size(); ++i) {
-            if ((*targets_)[i].value == current) {
+            if ((*targets_)[i] == current) {
               return true;
             }
           }
@@ -47,7 +47,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_FILTERTYPE_APPLICATION_ONLY:
         {
           for (size_t i = 0; i < targets_->size(); ++i) {
-            if ((*targets_)[i].value == current) {
+            if ((*targets_)[i] == current) {
               return false;
             }
           }
