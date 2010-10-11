@@ -32,7 +32,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_FILTERTYPE_CONFIG_NOT:
         {
           for (size_t i = 0; i < targets_->size(); ++i) {
-            int* p = (*targets_)[i].pointer;
+            int* p = (*targets_)[i];
             if (p && *p) {
               return true;
             }
@@ -43,7 +43,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_FILTERTYPE_CONFIG_ONLY:
         {
           for (size_t i = 0; i < targets_->size(); ++i) {
-            int* p = (*targets_)[i].pointer;
+            int* p = (*targets_)[i];
             if (p && *p) {
               return false;
             }
