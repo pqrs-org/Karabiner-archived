@@ -26,7 +26,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       Item(void) {
         type_ = BRIDGE_REMAPTYPE_NONE;
       }
-      void initialize(const unsigned int* vec, size_t length);
+      void initialize_remap(const unsigned int* vec, size_t length);
       void terminate(void);
 
       bool remap(RemapParams& remapParams);

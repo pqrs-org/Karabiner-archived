@@ -119,7 +119,7 @@ class RemapClass
 
     @code[:initialize] += "{\n"
     @code[:initialize] += "  const unsigned int vec[] = { #{args.join(',')} };\n"
-    @code[:initialize] += "  value_[#{@@variable_index}].initialize(vec, sizeof(vec) / sizeof(vec[0]));\n"
+    @code[:initialize] += "  value_[#{@@variable_index}].initialize_remap(vec, sizeof(vec) / sizeof(vec[0]));\n"
     @code[:initialize] += "}\n"
   end
   protected :append_to_code_initialize

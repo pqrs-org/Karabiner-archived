@@ -7,7 +7,7 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   void
-  RemapClass::Item::initialize(const unsigned int* vec, size_t length)
+  RemapClass::Item::initialize_remap(const unsigned int* vec, size_t length)
   {
     type_ = BRIDGE_REMAPTYPE_NONE;
 
