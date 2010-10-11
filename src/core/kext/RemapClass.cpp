@@ -78,8 +78,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapClass::Item::terminate(void)
   {
-#define DELETE_UNLESS_NULL(POINTER) { \
-    if (POINTER) { delete POINTER; }  \
+#define DELETE_UNLESS_NULL(POINTER) {                        \
+    if (POINTER) { (POINTER)->terminate(); delete POINTER; } \
 }
 
     switch (type_) {
