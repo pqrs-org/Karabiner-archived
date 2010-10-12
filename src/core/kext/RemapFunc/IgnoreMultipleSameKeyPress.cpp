@@ -2,14 +2,12 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    void
-    IgnoreMultipleSameKeyPress::initialize(void)
+    IgnoreMultipleSameKeyPress::IgnoreMultipleSameKeyPress(void)
     {
       lastkeycode_ = KeyCode::VK_NONE;
     }
 
-    void
-    IgnoreMultipleSameKeyPress::terminate(void)
+    IgnoreMultipleSameKeyPress::~IgnoreMultipleSameKeyPress(void)
     {}
 
     void
