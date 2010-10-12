@@ -5,18 +5,15 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    void
-    ConsumerToConsumer::initialize(void)
+    ConsumerToConsumer::ConsumerToConsumer(void) : index_(0)
     {
       toKeys_ = new Vector_PairConsumerKeyFlags();
     }
 
-    void
-    ConsumerToConsumer::terminate(void)
+    ConsumerToConsumer::~ConsumerToConsumer(void)
     {
       if (toKeys_) {
         delete toKeys_;
-        toKeys_ = NULL;
       }
     }
 
