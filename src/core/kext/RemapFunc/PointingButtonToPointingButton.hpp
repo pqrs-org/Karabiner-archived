@@ -8,9 +8,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     class PointingButtonToPointingButton {
     public:
-      PointingButtonToPointingButton(void) : index_(0), toButtons_(NULL) {}
-      void initialize(void);
-      void terminate(void);
+      PointingButtonToPointingButton(void);
+      ~PointingButtonToPointingButton(void);
+
       bool remap(RemapPointingParams_relative& remapParams);
 
       // ----------------------------------------

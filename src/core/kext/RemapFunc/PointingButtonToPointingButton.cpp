@@ -3,18 +3,15 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    void
-    PointingButtonToPointingButton::initialize(void)
+    PointingButtonToPointingButton::PointingButtonToPointingButton(void) : index_(0)
     {
       toButtons_ = new Vector_PairPointingButtonFlags();
     }
 
-    void
-    PointingButtonToPointingButton::terminate(void)
+    PointingButtonToPointingButton::~PointingButtonToPointingButton(void)
     {
       if (toButtons_) {
         delete toButtons_;
-        toButtons_ = NULL;
       }
     }
 
