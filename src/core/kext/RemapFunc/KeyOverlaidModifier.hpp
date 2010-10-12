@@ -15,9 +15,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       static void static_initialize(IOWorkLoop& workloop);
       static void static_terminate(void);
 
-      KeyOverlaidModifier(void) : index_(0), isAnyEventHappen_(false), savedflags_(0), isRepeatEnabled_(false) {}
-      void initialize(void);
-      void terminate(void);
+      KeyOverlaidModifier(void);
+      ~KeyOverlaidModifier(void);
+
       bool remap(RemapParams& remapParams);
 
       // ----------------------------------------
