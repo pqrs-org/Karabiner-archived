@@ -2,18 +2,12 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    void
-    ConsumerToKey::initialize(void)
+    ConsumerToKey::ConsumerToKey(void) : index_(0)
     {
-      keytokey_.initialize();
-      consumertoconsumer_.initialize();
     }
 
-    void
-    ConsumerToKey::terminate(void)
+    ConsumerToKey::~ConsumerToKey(void)
     {
-      keytokey_.terminate();
-      consumertoconsumer_.terminate();
     }
 
     void
