@@ -3,19 +3,13 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    void
-    DoublePressModifier::initialize(void)
+    DoublePressModifier::DoublePressModifier(void) : index_(0), pressCount_(0)
     {
-      keytokey_.initialize();
-      keytokey_fire_.initialize();
       ic_.begin();
     }
 
-    void
-    DoublePressModifier::terminate(void)
+    DoublePressModifier::~DoublePressModifier(void)
     {
-      keytokey_.terminate();
-      keytokey_fire_.terminate();
     }
 
     void
