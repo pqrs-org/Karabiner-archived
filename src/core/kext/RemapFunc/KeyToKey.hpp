@@ -9,9 +9,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     class KeyToKey {
     public:
-      KeyToKey(void) : index_(0), toKeys_(NULL) {}
-      void initialize(void);
-      void terminate(void);
+      KeyToKey(void);
+      ~KeyToKey(void);
+
       bool remap(RemapParams& remapParams);
 
       // ----------------------------------------
