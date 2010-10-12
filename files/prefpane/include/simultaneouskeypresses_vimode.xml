@@ -83,6 +83,38 @@
         </block>
       </block>
       <block>
+        <config_only>option.simultaneouskeypresses_vimode_tab_to_managemode</config_only>
+        <autogen>--KeyOverlaidModifier-- KeyCode::TAB, KeyCode::COMMAND_L, ModifierFlag::EXTRA2, KeyCode::TAB</autogen>
+        <block>
+          <config_not>option.simultaneouskeypresses_vimode_jkli</config_not>
+          <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA2, KeyCode::TAB, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA2, KeyCode::TAB</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA2, KeyCode::Q</autogen>
+        </block>
+        <block>
+          <config_only>option.simultaneouskeypresses_vimode_jkli</config_only>
+          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA2, KeyCode::TAB, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA2, KeyCode::TAB</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA2, KeyCode::Q</autogen>
+        </block>
+      </block>
+      <block>
+        <config_only>option.simultaneouskeypresses_vimode_q_to_managemode</config_only>
+        <autogen>--KeyOverlaidModifier-- KeyCode::Q, KeyCode::COMMAND_L, ModifierFlag::EXTRA2, KeyCode::TAB, ModifierFlag::COMMAND_L, KeyCode::RETURN, ModifierFlag::COMMAND_L</autogen>
+        <block>
+          <config_not>option.simultaneouskeypresses_vimode_jkli</config_not>
+          <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA2, KeyCode::TAB, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA2, KeyCode::TAB</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA2, KeyCode::Q</autogen>
+        </block>
+        <block>
+          <config_only>option.simultaneouskeypresses_vimode_jkli</config_only>
+          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA2, KeyCode::TAB, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA2, KeyCode::TAB</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA2, KeyCode::Q</autogen>
+        </block>
+      </block>
+      <block>
         <config_not>option.simultaneouskeypresses_vimode_jkli</config_not>
         <autogen>--KeyToKey-- KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
         <autogen>--KeyToKey-- KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
@@ -316,6 +348,10 @@
         <config_only>option.simultaneouskeypresses_vimode_p_to_esc</config_only>
       </block>
       <block>
+        <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+        <config_only>option.simultaneouskeypresses_vimode_backquote_to_command_space</config_only>
+      </block>
+      <block>
         <autogen>--KeyToKey-- KeyCode::Z, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
         <autogen>--KeyToKey-- KeyCode::X, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
         <autogen>--KeyToKey-- KeyCode::C, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
@@ -430,6 +466,25 @@
       <appendix>- F+J to Command+D</appendix>
       <appendix>Use with (Space)</appendix>
       <sysctl>option.simultaneouskeypresses_vimode_f_to_deletemode</sysctl>
+    </item>
+    <item>
+      <name>[Option] Tab turns on Manage Mode</name>
+      <appendix>- Tab+H to Previous App</appendix>
+      <appendix>- Tab+L to Next App</appendix>
+      <appendix>- Tab+K to Quit App</appendix>
+      <appendix>- + when you press Tab only, send tab</appendix>
+      <appendix>Use with (Space)</appendix>
+      <appendix>(You need a N-Key rollover keyboard.)</appendix>
+      <sysctl>option.simultaneouskeypresses_vimode_tab_to_managemode</sysctl>
+    </item>
+    <item>
+      <name>[Option] Q turns on Manage Mode</name>
+      <appendix>- Q+H to Previous App</appendix>
+      <appendix>- Q+L to Next App</appendix>
+      <appendix>- Q+K to Quit App</appendix>
+      <appendix>- + when you press Q only, send Next App</appendix>
+      <appendix>Use with (Space)</appendix>
+      <sysctl>option.simultaneouskeypresses_vimode_q_to_managemode</sysctl>
     </item>
     <item>
       <name>[Option] Y, U, O to Command_L + X, C, V</name>
@@ -647,6 +702,10 @@
     <item>
       <name>[Option] P to Esc</name>
       <sysctl>option.simultaneouskeypresses_vimode_p_to_esc</sysctl>
+    </item>
+    <item>
+      <name>[Option] Backquote to Command+Space (Launchbar,etc..)</name>
+      <sysctl>option.simultaneouskeypresses_vimode_backquote_to_command_space</sysctl>
     </item>
     <item>
       <name>[Option] ZXCV to Command+ZXCV</name>
