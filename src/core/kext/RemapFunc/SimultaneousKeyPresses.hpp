@@ -11,9 +11,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     class SimultaneousKeyPresses {
     public:
-      SimultaneousKeyPresses(void) : index_(0) {}
-      void initialize(void);
-      void terminate(void);
+      SimultaneousKeyPresses(void);
+      ~SimultaneousKeyPresses(void);
 
       // This function changes Simultaneous key presses to KeyCode::VK_SIMULTANEOUSKEYPRESSES_xxx
       void remap(void);

@@ -4,20 +4,13 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    void
-    SimultaneousKeyPresses::initialize(void)
+    SimultaneousKeyPresses::SimultaneousKeyPresses(void) : index_(0)
     {
-      keytokey_.initialize();
-      keytopointingbutton_.initialize();
-
       toType_ = TOTYPE_NONE;
     }
 
-    void
-    SimultaneousKeyPresses::terminate(void)
+    SimultaneousKeyPresses::~SimultaneousKeyPresses(void)
     {
-      keytokey_.terminate();
-      keytopointingbutton_.terminate();
     }
 
     void
