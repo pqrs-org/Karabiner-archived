@@ -2,19 +2,11 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    void
-    KeyToConsumer::initialize(void)
-    {
-      keytokey_.initialize();
-      consumertoconsumer_.initialize();
-    }
+    KeyToConsumer::KeyToConsumer(void) : index_(0)
+    {}
 
-    void
-    KeyToConsumer::terminate(void)
-    {
-      keytokey_.terminate();
-      consumertoconsumer_.terminate();
-    }
+    KeyToConsumer::~KeyToConsumer(void)
+    {}
 
     void
     KeyToConsumer::add(unsigned int datatype, unsigned int newval)
