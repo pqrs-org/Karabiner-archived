@@ -8,9 +8,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     class DropKeyAfterRemap {
     public:
-      DropKeyAfterRemap(void) {}
-      void initialize(void);
-      void terminate(void);
+      DropKeyAfterRemap(void);
+      ~DropKeyAfterRemap(void);
+
       bool drop(const Params_KeyboardEventCallBack& params);
 
       // ----------------------------------------
@@ -18,7 +18,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       void add(unsigned int datatype, unsigned int newval);
 
     private:
-      size_t index_;
       FromKeyChecker fromkeychecker_;
       PairKeyFlags fromKey_;
     };
