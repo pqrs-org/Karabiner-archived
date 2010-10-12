@@ -9,10 +9,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     class ConsumerToKey {
     public:
-      ConsumerToKey(void) : index_(0) {}
+      ConsumerToKey(void);
+      ~ConsumerToKey(void);
+
       bool remap(RemapConsumerParams& remapParams);
-      void initialize(void);
-      void terminate(void);
 
       // [0] => fromKey
       // [1] => toKeys[0]
