@@ -9,8 +9,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     DoublePressModifier::~DoublePressModifier(void)
-    {
-    }
+    {}
 
     void
     DoublePressModifier::add(unsigned int datatype, unsigned int newval)

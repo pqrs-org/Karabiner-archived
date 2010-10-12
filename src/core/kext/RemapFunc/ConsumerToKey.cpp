@@ -3,12 +3,10 @@
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     ConsumerToKey::ConsumerToKey(void) : index_(0)
-    {
-    }
+    {}
 
     ConsumerToKey::~ConsumerToKey(void)
-    {
-    }
+    {}
 
     void
     ConsumerToKey::add(unsigned int datatype, unsigned int newval)

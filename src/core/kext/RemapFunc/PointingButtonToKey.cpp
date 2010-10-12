@@ -3,12 +3,10 @@
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     PointingButtonToKey::PointingButtonToKey(void) : index_(0)
-    {
-    }
+    {}
 
     PointingButtonToKey::~PointingButtonToKey(void)
-    {
-    }
+    {}
 
     void
     PointingButtonToKey::add(unsigned int datatype, unsigned int newval)
