@@ -19,20 +19,14 @@ namespace org_pqrs_KeyRemap4MacBook {
       timer_.terminate();
     }
 
-    void
-    KeyOverlaidModifier::initialize(void)
+    KeyOverlaidModifier::KeyOverlaidModifier(void) :
+      index_(0), isAnyEventHappen_(false), savedflags_(0), isRepeatEnabled_(false)
     {
-      keytokey_.initialize();
-      keytokey_fire_.initialize();
       ic_.begin();
     }
 
-    void
-    KeyOverlaidModifier::terminate(void)
-    {
-      keytokey_.terminate();
-      keytokey_fire_.terminate();
-    }
+    KeyOverlaidModifier::~KeyOverlaidModifier(void)
+    {}
 
     void
     KeyOverlaidModifier::add(unsigned int datatype, unsigned int newval)
