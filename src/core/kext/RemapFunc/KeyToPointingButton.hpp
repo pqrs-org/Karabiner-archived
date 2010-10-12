@@ -11,9 +11,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     class KeyToPointingButton {
     public:
-      KeyToPointingButton(void) : index_(0) {}
-      void initialize(void);
-      void terminate(void);
+      KeyToPointingButton(void);
+      ~KeyToPointingButton(void);
+
       bool remap(RemapParams& remapParams);
 
       // ----------------------------------------
