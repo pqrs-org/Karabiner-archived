@@ -35,12 +35,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
 
-    void
-    PointingRelativeToScroll::initialize(void)
+    PointingRelativeToScroll::PointingRelativeToScroll(void) : index_(0)
     {}
 
-    void
-    PointingRelativeToScroll::terminate(void)
+    PointingRelativeToScroll::~PointingRelativeToScroll(void)
     {}
 
     void

@@ -15,9 +15,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       static void static_terminate(void);
       static void cancelScroll(void);
 
-      PointingRelativeToScroll(void) : index_(0) {}
-      void initialize(void);
-      void terminate(void);
+      PointingRelativeToScroll(void);
+      ~PointingRelativeToScroll(void);
+
       bool remap(RemapPointingParams_relative& remapParams);
 
       // ----------------------------------------
