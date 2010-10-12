@@ -2,16 +2,12 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    void
-    PointingButtonToKey::initialize(void)
+    PointingButtonToKey::PointingButtonToKey(void) : index_(0)
     {
-      keytokey_.initialize();
     }
 
-    void
-    PointingButtonToKey::terminate(void)
+    PointingButtonToKey::~PointingButtonToKey(void)
     {
-      keytokey_.terminate();
     }
 
     void
