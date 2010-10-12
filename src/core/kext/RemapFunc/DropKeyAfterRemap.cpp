@@ -2,12 +2,10 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    void
-    DropKeyAfterRemap::initialize(void)
+    DropKeyAfterRemap::DropKeyAfterRemap(void)
     {}
 
-    void
-    DropKeyAfterRemap::terminate(void)
+    DropKeyAfterRemap::~DropKeyAfterRemap(void)
     {}
 
     void
