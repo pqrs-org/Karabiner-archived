@@ -11,9 +11,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     // A modifier has DoublePressed key action.
     class DoublePressModifier {
     public:
-      DoublePressModifier(void) : index_(0), pressCount_(0) {}
-      void initialize(void);
-      void terminate(void);
+      DoublePressModifier(void);
+      ~DoublePressModifier(void);
+
       bool remap(RemapParams& remapParams);
 
       // ----------------------------------------
