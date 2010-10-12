@@ -13,9 +13,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       static void static_initialize(IOWorkLoop& workloop);
       static void static_terminate(void);
 
-      HoldingKeyToKey(void) : index_(0), index_is_holding_(false) {}
-      void initialize(void);
-      void terminate(void);
+      HoldingKeyToKey(void);
+      ~HoldingKeyToKey(void);
+
       bool remap(RemapParams& remapParams);
 
       // ----------------------------------------

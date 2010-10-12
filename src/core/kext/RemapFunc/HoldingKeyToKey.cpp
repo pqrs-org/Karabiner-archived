@@ -18,21 +18,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       timer_.terminate();
     }
 
-    void
-    HoldingKeyToKey::initialize(void)
-    {
-      keytokey_drop_.initialize();
-      keytokey_normal_.initialize();
-      keytokey_holding_.initialize();
-    }
+    HoldingKeyToKey::HoldingKeyToKey(void) : index_(0), index_is_holding_(false)
+    {}
 
-    void
-    HoldingKeyToKey::terminate(void)
-    {
-      keytokey_drop_.terminate();
-      keytokey_normal_.terminate();
-      keytokey_holding_.terminate();
-    }
+    HoldingKeyToKey::~HoldingKeyToKey(void)
+    {}
 
     void
     HoldingKeyToKey::add(unsigned int datatype, unsigned int newval)
