@@ -10,8 +10,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     SimultaneousKeyPresses::~SimultaneousKeyPresses(void)
-    {
-    }
+    {}
 
     void
     SimultaneousKeyPresses::add(unsigned int datatype, unsigned int newval)
