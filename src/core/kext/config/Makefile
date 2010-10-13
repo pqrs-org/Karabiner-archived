@@ -6,6 +6,7 @@ all:
 	make -C ../../../../files/prefpane
 	/usr/bin/tidy -q -errors -xml -raw $(SYSCTL_FILE)
 	ruby ./make-keycode.rb
+	ruby ./make-configindex.rb
 	make -C ../keycode output
 	cat $(SYSCTL_FILE) | ruby ./make-code.rb
 
