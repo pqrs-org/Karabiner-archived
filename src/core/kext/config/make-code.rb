@@ -26,7 +26,7 @@ def parseautogen(name, lines)
     next if /<\/?item>/ =~ l
     next if /<name>.+?<\/name>/ =~ l
     next if /<appendix>.+?<\/appendix>/ =~ l
-    next if /<sysctl>.+?<\/sysctl>/ =~ l
+    next if /<sysctl.*?>.+?<\/sysctl>/ =~ l
     next if /<baseunit>.+?<\/baseunit>/ =~ l
     next if /<default>.+?<\/default>/ =~ l
     next if /<vk_config>.+?<\/vk_config>/ =~ l
@@ -62,7 +62,7 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
 
   name = nil
 
-  if /<sysctl>([^\.]+?)\.(.+?)<\/sysctl>/m =~ item then
+  if /<sysctl.*?>([^\.]+?)\.(.+?)<\/sysctl>/m =~ item then
     name = "#{$1}_#{$2}"
     $outfile[:config_SYSCTL] << "SYSCTL_PROC(_keyremap4macbook_#{$1}, OID_AUTO, #{$2}, CTLTYPE_INT|CTLFLAG_RW, &(config.#{name}), 0, refresh_remapfunc_handler, \"I\", \"\");\n"
     $outfile[:config_register] << "sysctl_register_oid(&sysctl__keyremap4macbook_#{name});\n"
