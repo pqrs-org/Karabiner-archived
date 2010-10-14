@@ -7,43 +7,43 @@
       <list>
         <item>
           <name>Don't remap an internal keyboard</name>
-          <sysctl>general.dont_remap_internal</sysctl>
+          <sysctl essential="true">general.dont_remap_internal</sysctl>
         </item>
         <item>
           <name>Don't remap external keyboards</name>
-          <sysctl>general.dont_remap_external</sysctl>
+          <sysctl essential="true">general.dont_remap_external</sysctl>
         </item>
         <item>
           <name>Don't remap Apple's keyboards</name>
-          <sysctl>general.dont_remap_apple_keyboard</sysctl>
+          <sysctl essential="true">general.dont_remap_apple_keyboard</sysctl>
         </item>
         <item>
           <name>Don't remap Apple's pointing devices</name>
-          <sysctl>general.dont_remap_apple_pointing</sysctl>
+          <sysctl essential="true">general.dont_remap_apple_pointing</sysctl>
         </item>
         <item>
           <name>Don't remap keyboards which has third vendor's driver</name>
           <appendix>(Logitech, Microsoft, Kensington, ...)</appendix>
-          <sysctl>general.dont_remap_thirdvendor_keyboard</sysctl>
+          <sysctl essential="true">general.dont_remap_thirdvendor_keyboard</sysctl>
         </item>
         <item>
           <name>Don't remap pointing devices which has third vendor's driver</name>
           <appendix>(Logitech, Microsoft, Kensington, ...)</appendix>
-          <sysctl>general.dont_remap_thirdvendor_pointing</sysctl>
+          <sysctl essential="true">general.dont_remap_thirdvendor_pointing</sysctl>
         </item>
         <item>
           <name>Enable CapsLock LED Hack</name>
           <appendix>(Keep LED on to prevent a delay of CapsLock at some Apple's keyboard)</appendix>
-          <sysctl>general.capslock_led_hack</sysctl>
+          <sysctl essential="true">general.capslock_led_hack</sysctl>
         </item>
         <item>
           <name>Pass-Through CapsLock LED status</name>
           <appendix>(Don't enable this when you use "XXX to CapsLock")</appendix>
-          <sysctl>general.passthrough_capslock_led_status</sysctl>
+          <sysctl essential="true">general.passthrough_capslock_led_status</sysctl>
         </item>
         <item>
           <name>Don't show Modifier lock status on screen</name>
-          <sysctl>general.hide_statusmessage</sysctl>
+          <sysctl essential="true">general.hide_statusmessage</sysctl>
         </item>
         <item>
           <name>Don't restore modifiers in the mouse event</name>
@@ -52,19 +52,19 @@
           <appendix>we send "Command+Click" when you did a mouse click while</appendix>
           <appendix>pushing the Option key after you pushed Option+Tab.</appendix>
           <appendix>"Option+Click" should be output, but this option changes this behavior.</appendix>
-          <sysctl>general.lazy_modifiers_with_mouse_event</sysctl>
+          <sysctl essential="true">general.lazy_modifiers_with_mouse_event</sysctl>
         </item>
         <item>
           <name>Disable NumPad Hack</name>
           <appendix>(Don't change Fn+JKL.. to NumPad, and other Fn+key combinations)</appendix>
-          <sysctl>general.disable_numpad_hack</sysctl>
+          <sysctl essential="true">general.disable_numpad_hack</sysctl>
         </item>
         <item>
           <name>Excluding Devices</name>
           <list>
             <item>
               <name>Don't Remap Logitech Cordless Presenter</name>
-              <sysctl>general.dont_remap_logitech_cordless_presenter</sysctl>
+              <sysctl essential="true">general.dont_remap_logitech_cordless_presenter</sysctl>
             </item>
           </list>
         </item>
