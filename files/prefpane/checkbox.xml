@@ -530,6 +530,14 @@
           <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
+          <name>Option+Arrow to Command_L+Arrow</name>
+          <sysctl>remap.optionArrow2commandLarrow</sysctl>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_UP,    VK_OPTION, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN,  VK_OPTION, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT,  VK_OPTION, KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_OPTION, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
           <name>Command_R+Arrow to PageUp/PageDown/Home/End</name>
           <sysctl>remap.commandR_arrow2PgUpDnHomeEnd</sysctl>
           <autogen>--KeyToKey-- KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_R, KeyCode::PAGEUP</autogen>
