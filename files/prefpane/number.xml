@@ -3,99 +3,99 @@
   <list>
     <item>
       <name>[Key Repeat] Initial Wait</name>
-      <sysctl>repeat.initial_wait</sysctl>
+      <sysctl essential="true">repeat.initial_wait</sysctl>
       <default>500</default>
       <baseunit>ms</baseunit>
     </item>
     <item>
       <name>[Key Repeat] Wait</name>
-      <sysctl>repeat.wait</sysctl>
+      <sysctl essential="true">repeat.wait</sysctl>
       <default>83</default>
       <baseunit>ms</baseunit>
     </item>
 
     <item>
       <name>[Functional Key Repeat] Initial Wait</name>
-      <sysctl>repeat.consumer_initial_wait</sysctl>
+      <sysctl essential="true">repeat.consumer_initial_wait</sysctl>
       <default>500</default>
       <baseunit>ms</baseunit>
     </item>
     <item>
       <name>[Functional Key Repeat] Wait</name>
-      <sysctl>repeat.consumer_wait</sysctl>
+      <sysctl essential="true">repeat.consumer_wait</sysctl>
       <default>100</default>
       <baseunit>ms</baseunit>
     </item>
 
     <item>
       <name>[Key Overlaid Modifier] Timeout</name>
-      <sysctl>parameter.keyoverlaidmodifier_timeout</sysctl>
+      <sysctl essential="true">parameter.keyoverlaidmodifier_timeout</sysctl>
       <default>1000</default>
       <baseunit>ms</baseunit>
     </item>
     <item>
       <name>[Key Overlaid Modifier's Key Repeat] Initial Wait</name>
-      <sysctl>repeat.keyoverlaidmodifier_initial_wait</sysctl>
+      <sysctl essential="true">repeat.keyoverlaidmodifier_initial_wait</sysctl>
       <default>500</default>
       <baseunit>ms</baseunit>
     </item>
 
     <item>
       <name>[Simultaneous Key Presses] Delay Threshold</name>
-      <sysctl>parameter.simultaneouskeypresses_delay</sysctl>
+      <sysctl essential="true">parameter.simultaneouskeypresses_delay</sysctl>
       <default>50</default>
       <baseunit>ms</baseunit>
     </item>
 
     <item>
       <name>[Double Press Modifier] Recognition Threshold</name>
-      <sysctl>parameter.doublepressmodifier_threshold</sysctl>
+      <sysctl essential="true">parameter.doublepressmodifier_threshold</sysctl>
       <default>500</default>
       <baseunit>ms</baseunit>
     </item>
 
     <item>
       <name>[Modifier Holding Key to Key] Holding Threshold</name>
-      <sysctl>parameter.modifierholdingkeytokey_wait</sysctl>
+      <sysctl essential="true">parameter.modifierholdingkeytokey_wait</sysctl>
       <default>1000</default>
       <baseunit>ms</baseunit>
     </item>
 
     <item>
       <name>[Holding Key to Key] Holding Threshold</name>
-      <sysctl>parameter.holdingkeytokey_wait</sysctl>
+      <sysctl essential="true">parameter.holdingkeytokey_wait</sysctl>
       <default>1000</default>
       <baseunit>ms</baseunit>
     </item>
 
     <item>
       <name>[Pointing Device] CursorMove to ScrollWheel Rate</name>
-      <sysctl>pointing.relative2scroll_rate</sysctl>
+      <sysctl essential="true">pointing.relative2scroll_rate</sysctl>
       <default>150</default>
       <baseunit>/ 1000</baseunit>
     </item>
 
     <item>
       <name>[StatusWindow] AlphaValue for Font</name>
-      <sysctl>parameter.statuswindow_alpha_font</sysctl>
+      <sysctl essential="true">parameter.statuswindow_alpha_font</sysctl>
       <default>60</default>
       <baseunit>%</baseunit>
     </item>
     <item>
       <name>[StatusWindow] AlphaValue for Background</name>
-      <sysctl>parameter.statuswindow_alpha_background</sysctl>
+      <sysctl essential="true">parameter.statuswindow_alpha_background</sysctl>
       <default>20</default>
       <baseunit>%</baseunit>
     </item>
     <item>
       <name>[StatusWindow] PosX adjustment</name>
-      <sysctl>parameter.statuswindow_posx_adjustment</sysctl>
+      <sysctl essential="true">parameter.statuswindow_posx_adjustment</sysctl>
       <default>0</default>
       <baseunit></baseunit>
     </item>
     <item>
       <name>[StatusWindow] PosY adjustment</name>
-      <sysctl>parameter.statuswindow_posy_adjustment</sysctl>
+      <sysctl essential="true">parameter.statuswindow_posy_adjustment</sysctl>
       <default>0</default>
       <baseunit></baseunit>
     </item>
