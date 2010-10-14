@@ -1,28 +1,29 @@
-#!/usr/bin/env ruby
+#!/usr/bin/ruby
+# -*- coding: undecided -*-
 
-entry = nil
-value = 0
-while l = gets
-  if /<sysctl>(.+)<\/sysctl>/ =~ l then
-    newentry = $1
+require 'rubygems'
+require 'xml/libxml'
 
-    unless entry.nil? then
-      print "#{entry} #{value}\n"
-    end
-    entry = newentry
+# ------------------------------------------------------------
+ARGV.each do |filepath|
+  parser = XML::Parser.file(filepath)
+  libxmldoc = parser.parse
+
+  libxmldoc.root.find('//sysctl').each do |node|
+    entry = node.children.map{|n| n.to_s}.join('')
+
+    # ----------------------------------------
+    default = node.parent.find_first('./default')
     value = 0
-  end
-  if /<default>(.+)<\/default>/ =~ l then
-    value = $1
-  end
-end
+    unless default.nil? then
+      value = default.children.map{|n| n.to_s}.join('')
+    end
 
-unless entry.nil? then
-  print "#{entry} #{value}\n"
+    print "#{entry} #{value}\n"
+  end
 end
 
 # static
-print "notsave.pointing_relative_to_scroll 0\n"
 print "debug 0\n"
 print "debug_pointing 0\n"
 print "debug_devel 0\n"
