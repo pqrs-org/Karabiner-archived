@@ -1585,6 +1585,11 @@
           <autogen>--KeyToConsumer-- KeyCode::ESCAPE, ModifierFlag::FN, ConsumerKeyCode::POWER</autogen>
         </item>
         <item>
+          <name>Shift+Escape to Tilda(~)</name>
+          <sysctl>remap.shiftEscape2tilda</sysctl>
+          <autogen>--KeyToKey-- KeyCode::ESCAPE, VK_SHIFT, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
+        </item>
+        <item>
           <name>Escape to RightClick</name>
           <sysctl>remap.escape2rightclick</sysctl>
           <autogen>--KeyToPointingButton-- KeyCode::ESCAPE, PointingButton::RIGHT</autogen>
