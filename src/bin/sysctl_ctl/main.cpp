@@ -86,15 +86,18 @@ namespace {
 
       ifs.getline(line, sizeof(line));
 
-      const char* sysctl_begin = "<sysctl>";
+      const char* sysctl_begin = "<sysctl";
       const char* sysctl_end = "</sysctl>";
 
-      char* begin = strstr(line, "<sysctl>");
+      char* begin = strstr(line, sysctl_begin);
       if (! begin) continue;
-      char* end = strstr(line, sysctl_end);
-      if (! end) continue;
+      begin = strstr(begin, ">");
+      if (! begin) continue;
+      begin += strlen(">");
+      if (! begin) continue;
 
-      begin += strlen(sysctl_begin);
+      char* end = strstr(begin, sysctl_end);
+      if (! end) continue;
       *end = '\0';
 
       func(begin);
