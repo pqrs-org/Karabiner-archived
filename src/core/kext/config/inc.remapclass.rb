@@ -134,7 +134,7 @@ class RemapClass
 
       case operation
       when 'SetKeyboardType'
-        @code[:remap_setkeyboardtype] += "keyboardType = #{params}.get();\n";
+        @code[:remap_setkeyboardtype] += "keyboardType = #{params}.get();\n"
 
       when 'DropKeyAfterRemap'
         append_to_code_initialize(params, operation)
