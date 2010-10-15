@@ -1272,6 +1272,11 @@
           <autogen>--KeyToKey-- KeyCode::DELETE, VK_CONTROL, KeyCode::DELETE, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
+          <name>Option+Delete to Command_L+Delete</name>
+          <sysctl>remap.optionDelete2commandLdelete</sysctl>
+          <autogen>--KeyToKey-- KeyCode::DELETE, VK_OPTION, KeyCode::DELETE, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
           <name>Delete to Forward Delete</name>
           <sysctl>remap.delete2forwarddelete</sysctl>
           <autogen>--KeyToKey-- KeyCode::DELETE, KeyCode::FORWARD_DELETE</autogen>
