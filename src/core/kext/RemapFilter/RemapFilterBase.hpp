@@ -16,9 +16,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       unsigned int productID;
     };
     DECLARE_VECTOR(DeviceFilterValue);
-
-    typedef int* ConfigPointer;
-    DECLARE_VECTOR(ConfigPointer);
   }
 }
 

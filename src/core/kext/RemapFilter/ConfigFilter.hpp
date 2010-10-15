@@ -10,13 +10,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       ConfigFilter(unsigned int t);
       ~ConfigFilter(void);
 
-      void add(int* newval);
+      void add(unsigned int newval);
 
       bool isblocked(void);
 
     private:
       unsigned int type_;
-      Vector_ConfigPointer* targets_;
+      Vector_FilterValue* targets_;
     };
   }
 }
