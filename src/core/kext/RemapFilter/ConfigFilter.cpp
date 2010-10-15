@@ -1,11 +1,12 @@
 #include "bridge.h"
 #include "ConfigFilter.hpp"
+#include "Config.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFilter {
     ConfigFilter::ConfigFilter(unsigned int t) : type_(t)
     {
-      targets_ = new Vector_ConfigPointer();
+      targets_ = new Vector_FilterValue();
     }
 
     ConfigFilter::~ConfigFilter(void)
@@ -16,7 +17,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    ConfigFilter::add(int* newval)
+    ConfigFilter::add(unsigned int newval)
     {
       if (! targets_) return;
 
@@ -32,8 +33,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_FILTERTYPE_CONFIG_NOT:
         {
           for (size_t i = 0; i < targets_->size(); ++i) {
-            int* p = (*targets_)[i];
-            if (p && *p) {
+            if (config.enabled_flags[(*targets_)[i]]) {
               return true;
             }
           }
@@ -43,8 +43,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_FILTERTYPE_CONFIG_ONLY:
         {
           for (size_t i = 0; i < targets_->size(); ++i) {
-            int* p = (*targets_)[i];
-            if (p && *p) {
+            if (config.enabled_flags[(*targets_)[i]]) {
               return false;
             }
           }
