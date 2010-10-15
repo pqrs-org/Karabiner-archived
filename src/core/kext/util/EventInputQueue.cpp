@@ -36,7 +36,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   uint32_t
-  EventInputQueue::calcdelay(void)
+  EventInputQueue::calcdelay(DelayType type)
   {
     // if no SimultaneousKeyPresses is enabled, fire immediately.
     if (! RemapClassManager::isEventInputQueueDelayEnabled()) {
@@ -44,7 +44,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     uint32_t ms = ic_.getmillisec();
-    uint32_t delay = config.get_simultaneouskeypresses_delay();
+    uint32_t delay = 0;
+    switch (type) {
+      case DELAY_TYPE_KEY:
+        delay = config.get_simultaneouskeypresses_delay();
+        break;
+      case DELAY_TYPE_POINTING_BUTTON:
+        delay = config.get_simultaneouskeypresses_pointingbutton_delay();
+        break;
+    }
     if (delay > ms) delay = ms;  // min(ms, delay)
     if (delay < MIN_DELAY) delay = MIN_DELAY;  // max(MIN_DELAY, delay)
     ic_.begin();
@@ -60,7 +68,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (p.repeat) return;
 
     // --------------------
-    uint32_t delay = calcdelay();
+    uint32_t delay = calcdelay(DELAY_TYPE_KEY);
     queue_->push_back(new Item(p, delay));
   }
 
@@ -73,7 +81,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (p.repeat) return;
 
     // --------------------
-    uint32_t delay = calcdelay();
+    uint32_t delay = calcdelay(DELAY_TYPE_KEY);
     queue_->push_back(new Item(p, delay));
   }
 
@@ -83,7 +91,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! queue_) return;
 
     // --------------------
-    uint32_t delay = calcdelay();
+    uint32_t delay = calcdelay(DELAY_TYPE_POINTING_BUTTON);
     queue_->push_back(new Item(p, delay));
   }
 
@@ -93,7 +101,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! queue_) return;
 
     // --------------------
-    uint32_t delay = calcdelay();
+    uint32_t delay = calcdelay(DELAY_TYPE_POINTING_BUTTON);
     queue_->push_back(new Item(p, delay));
   }
 

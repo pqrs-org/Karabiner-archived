@@ -48,6 +48,13 @@
     </item>
 
     <item>
+      <name>[Simultaneous PointingButton Presses] Delay Threshold</name>
+      <sysctl essential="true">parameter.simultaneouskeypresses_pointingbutton_delay</sysctl>
+      <default>50</default>
+      <baseunit>ms</baseunit>
+    </item>
+
+    <item>
       <name>[Double Press Modifier] Recognition Threshold</name>
       <sysctl essential="true">parameter.doublepressmodifier_threshold</sysctl>
       <default>500</default>
