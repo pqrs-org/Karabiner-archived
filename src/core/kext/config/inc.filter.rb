@@ -1,6 +1,8 @@
 #!/usr/bin/ruby
 # -*- coding: utf-8 -*-
 
+require 'inc.keycode.rb'
+
 class Filter
   def initialize
     @array = []
@@ -43,7 +45,7 @@ class Filter
     if /<config_not>(.+?)<\/config_not>/ =~ line then
       $1.split(/,/).each do |f|
         f.gsub!(/\./, '_')
-        @array << "if (config.#{f.strip}) break;"
+        @array << "if (config.enabled_flags[#{KeyCode.ConfigIndex(f.strip)}]) break;"
       end
       return true
     end
@@ -52,7 +54,7 @@ class Filter
       tmp = []
       $1.split(/,/).each do |f|
         f.gsub!(/\./, '_')
-        tmp << "(! config.#{f.strip})"
+        tmp << "(! config.enabled_flags[#{KeyCode.ConfigIndex(f.strip)}])"
       end
       @array << "if (#{tmp.join(' && ')}) break;"
       return true

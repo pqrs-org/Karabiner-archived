@@ -79,7 +79,7 @@
           <name>What is Pass Through Mode?</name>
           <appendix>You can disable all settings temporarily.</appendix>
           <appendix>Turn on a setting below, and toggle "Pass Through Mode".</appendix>
-          <sysctl>notsave.passthrough</sysctl>
+          <sysctl essential="true">notsave.passthrough</sysctl>
           <vk_config>true</vk_config>
           <autogen>--ShowStatusMessage-- "Pass Through"</autogen>
         </item>
@@ -174,19 +174,19 @@
               <list>
                 <item>
                   <name>Enable dynamic scrollwheel direction fixation (Horizontal/Vertical)</name>
-                  <sysctl>option.pointing_enable_scrollwheel_fixation</sysctl>
+                  <sysctl essential="true">option.pointing_enable_scrollwheel_fixation</sysctl>
                 </item>
                 <item>
                   <name>Disable Horizontal Scroll</name>
-                  <sysctl>option.pointing_disable_horizontal_scroll</sysctl>
+                  <sysctl essential="true">option.pointing_disable_horizontal_scroll</sysctl>
                 </item>
                 <item>
                   <name>Disable Vertical Scroll</name>
-                  <sysctl>option.pointing_disable_vertical_scroll</sysctl>
+                  <sysctl essential="true">option.pointing_disable_vertical_scroll</sysctl>
                 </item>
                 <item>
                   <name>Disable Momentum Scroll</name>
-                  <sysctl>option.pointing_disable_momentum_scroll</sysctl>
+                  <sysctl essential="true">option.pointing_disable_momentum_scroll</sysctl>
                 </item>
               </list>
             </item>
