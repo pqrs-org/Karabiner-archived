@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 
 require 'inc.filter.rb'
+require 'inc.keycode.rb'
 
 class RemapClass
   @@entries = []
   @@simultaneous_keycode_index = 0
-  @@keycode = {}
   @@variable_index = 0
 
   def RemapClass.get_entries
@@ -46,24 +46,8 @@ class RemapClass
       :get_statusmessage            => [],
       :enabled                      => [],
     }
-
-    load_keycode()
   end
   attr_accessor :name, :filter, :code
-
-  def load_keycode
-    return unless @@keycode.empty?
-
-    Dir.glob("../keycode/output/*.raw").each do |filepath|
-      type = File.basename(filepath, 'raw').gsub(/^include\./, '')
-      open(filepath) do |f|
-        while l = f.gets
-          next unless /^(.+?) (.+)$/ =~ l
-          @@keycode[$1] = $2
-        end
-      end
-    end
-  end
 
   def +(other)
     other.code.each do |k,v|
@@ -107,11 +91,11 @@ class RemapClass
         end
 
         datatype = newdatatype
-        if @@keycode[value].nil? then
+        if KeyCode[value].nil? then
           print "[ERROR] unknown keycode #{value}\n"
           throw :exit
         end
-        newval << @@keycode[value]
+        newval << KeyCode[value]
       end
       args << datatype
       args << newval.join('|')
