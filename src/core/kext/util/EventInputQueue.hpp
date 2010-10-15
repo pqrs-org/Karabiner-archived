@@ -98,7 +98,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       IMMEDIATELY_DELAY = 1,
     };
 
-    static uint32_t calcdelay(void);
+    enum DelayType {
+      DELAY_TYPE_KEY,
+      DELAY_TYPE_POINTING_BUTTON,
+    };
+
+    static uint32_t calcdelay(DelayType type);
 
     // ------------------------------------------------------------
     static void enqueue_(const Params_KeyboardEventCallBack& p);
