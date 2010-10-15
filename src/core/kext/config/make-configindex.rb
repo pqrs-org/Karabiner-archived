@@ -16,6 +16,7 @@ libxmldoc = parser.parse
 
 # ----------------------------------------
 libxmldoc.root.find('//sysctl').each do |node|
+  next if node['essential'] == "true"
   name = node.children.map{|n| n.to_s}.join('')
   name.gsub!(/\./, '_')
 
