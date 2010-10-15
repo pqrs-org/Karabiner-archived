@@ -168,6 +168,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     const int dx;
     const int dy;
 
+    // Hardware RelativePointerEvent will be split into ButtonEvent and PointerMove.
+    // (in EventInputQueue::push_RelativePointerEventCallback.)
+    //
+    // ex_button is justPressed/justReleased PointingButton.
+    // ex_isbuttondown indicates "pressed" or "released".
     const PointingButton ex_button;
     const bool ex_isbuttondown;
 
