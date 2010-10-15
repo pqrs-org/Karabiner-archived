@@ -1782,6 +1782,21 @@
           <sysctl>remap.forwarddelete2delete</sysctl>
           <autogen>--KeyToKey-- FROMKEYCODE_FORWARD_DELETE, KeyCode::DELETE</autogen>
         </item>
+        <item>
+          <name>Command+Forward Delete to Option_L+Forward Delete</name>
+          <sysctl>remap.commandForwardDelete2optionLforwarddelete</sysctl>
+          <autogen>--KeyToKey-- FROMKEYCODE_FORWARD_DELETE, VK_COMMAND, KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_L</autogen>
+        </item>
+        <item>
+          <name>Control+Forward Delete to Command_L+Forward Delete</name>
+          <sysctl>remap.controlForwardDelete2commandLforwarddelete</sysctl>
+          <autogen>--KeyToKey-- FROMKEYCODE_FORWARD_DELETE, VK_CONTROL, KeyCode::FORWARD_DELETE, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
+          <name>Option+Forward Delete to Command_L+Forward Delete</name>
+          <sysctl>remap.optionForwardDelete2commandLforwarddelete</sysctl>
+          <autogen>--KeyToKey-- FROMKEYCODE_FORWARD_DELETE, VK_OPTION, KeyCode::FORWARD_DELETE, ModifierFlag::COMMAND_L</autogen>
+        </item>
       </list>
     </item>
 
