@@ -3,6 +3,7 @@
 require 'inc.preprocess.rb'
 require 'inc.filter.rb'
 require 'inc.remapclass.rb'
+require 'inc.keycode.rb'
 
 $outfile = {
   :config => open('output/include.config.hpp', 'w'),
@@ -61,17 +62,29 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
   end
 
   name = nil
+  configaddress = nil
+  if /<sysctl(.*?)>([^\.]+?)\.(.+?)<\/sysctl>/m =~ item then
+    if $1.strip == 'essential="true"' then
+      essential = true
+    end
+    name = "#{$2}_#{$3}"
 
-  if /<sysctl.*?>([^\.]+?)\.(.+?)<\/sysctl>/m =~ item then
-    name = "#{$1}_#{$2}"
-    $outfile[:config_SYSCTL] << "SYSCTL_PROC(_keyremap4macbook_#{$1}, OID_AUTO, #{$2}, CTLTYPE_INT|CTLFLAG_RW, &(config.#{name}), 0, refresh_remapfunc_handler, \"I\", \"\");\n"
+    if essential then
+      configaddress = "&(config.#{name})"
+    else
+      configaddress = "&(config.enabled_flags[#{KeyCode.ConfigIndex(name)}])"
+    end
+
+    $outfile[:config_SYSCTL] << "SYSCTL_PROC(_keyremap4macbook_#{$2}, OID_AUTO, #{$3}, CTLTYPE_INT|CTLFLAG_RW, #{configaddress}, 0, refresh_remapfunc_handler, \"I\", \"\");\n"
     $outfile[:config_register] << "sysctl_register_oid(&sysctl__keyremap4macbook_#{name});\n"
     $outfile[:config_unregister] << "sysctl_unregister_oid(&sysctl__keyremap4macbook_#{name});\n"
   end
 
   next if name.nil?
 
-  $outfile[:config] << "int #{name};\n"
+  if essential then
+    $outfile[:config] << "int #{name};\n"
+  end
 
   if /<default>(.+?)<\/default>/m =~ item then
     $outfile[:config_default] << "#{name} = #{$1};\n"
@@ -85,19 +98,19 @@ $stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
 
   if /<vk_config>true<\/vk_config>/ =~ item then
     $outfile[:remapcode_vk_config] << "if (params.key == KeyCode::VK_CONFIG_TOGGLE_#{name}) {\n"
-    $outfile[:remapcode_vk_config] << "  configitem = &(config.#{name});\n"
+    $outfile[:remapcode_vk_config] << "  configitem = #{configaddress};\n"
     $outfile[:remapcode_vk_config] << "  type = TYPE_TOGGLE;\n"
     $outfile[:remapcode_vk_config] << "}\n"
     $outfile[:remapcode_vk_config] << "if (params.key == KeyCode::VK_CONFIG_FORCE_ON_#{name}) {\n"
-    $outfile[:remapcode_vk_config] << "  configitem = &(config.#{name});\n"
+    $outfile[:remapcode_vk_config] << "  configitem = #{configaddress};\n"
     $outfile[:remapcode_vk_config] << "  type = TYPE_FORCE_ON;\n"
     $outfile[:remapcode_vk_config] << "}\n"
     $outfile[:remapcode_vk_config] << "if (params.key == KeyCode::VK_CONFIG_FORCE_OFF_#{name}) {\n"
-    $outfile[:remapcode_vk_config] << "  configitem = &(config.#{name});\n"
+    $outfile[:remapcode_vk_config] << "  configitem = #{configaddress};\n"
     $outfile[:remapcode_vk_config] << "  type = TYPE_FORCE_OFF;\n"
     $outfile[:remapcode_vk_config] << "}\n"
     $outfile[:remapcode_vk_config] << "if (params.key == KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_#{name}) {\n"
-    $outfile[:remapcode_vk_config] << "  configitem = &(config.#{name});\n"
+    $outfile[:remapcode_vk_config] << "  configitem = #{configaddress};\n"
     $outfile[:remapcode_vk_config] << "  type = TYPE_SYNC_KEYDOWNUP;\n"
     $outfile[:remapcode_vk_config] << "}\n"
   end
@@ -148,6 +161,9 @@ end
   $outfile[:remapclass] << "NULL,\n"
   $outfile[:remapclass] << "};\n"
 end
+
+# ----------------------------------------
+$outfile[:config] << "int enabled_flags[#{KeyCode.count('ConfigIndex')}];\n"
 
 # ======================================================================
 $outfile.each do |name,file|

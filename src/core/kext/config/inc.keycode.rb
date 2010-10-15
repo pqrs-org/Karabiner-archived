@@ -11,15 +11,31 @@ class KeyCode
       type = File.basename(filepath, 'raw').gsub(/^include\./, '')
       open(filepath) do |f|
         while l = f.gets
-          next unless /^(.+?) (.+)$/ =~ l
-          @@keycode[$1] = $2
+          next unless /^(.+?)::(.+?) (.+)$/ =~ l
+          if @@keycode[$1].nil? then
+            @@keycode[$1] = {}
+          end
+          @@keycode[$1][$2] = $3
         end
       end
     end
   end
 
-  def KeyCode.[](key)
+  def KeyCode.v(type, key)
     load_keycode
-    @@keycode[key]
+    @@keycode[type][key]
+  end
+
+  def KeyCode.[](key)
+    a = key.split(/::/)
+    KeyCode.v(a[0], a[1])
+  end
+
+  def KeyCode.ConfigIndex(key)
+    KeyCode.v('ConfigIndex', key)
+  end
+
+  def KeyCode.count(type)
+    @@keycode[type].count
   end
 end

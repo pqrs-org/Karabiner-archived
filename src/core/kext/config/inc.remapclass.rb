@@ -278,10 +278,12 @@ class RemapClass
 
     # ----------------------------------------------------------------------
     code   += "static bool enabled(void) {\n"
-    if /^passthrough_/ =~ @name or @name == 'notsave_passthrough' then
-      code += "return config.#{@name};\n"
+    if @name == 'notsave_passthrough' then
+      code += "return config.notsave_passthrough;\n"
+    elsif /^passthrough_/ =~ @name then
+      code += "return config.enabled_flags[#{KeyCode.ConfigIndex(@name)}];\n"
     else
-      code += "return config.#{@name} && ! config.notsave_passthrough;\n"
+      code += "return config.enabled_flags[#{KeyCode.ConfigIndex(@name)}] && ! config.notsave_passthrough;\n"
     end
     code   += "}\n"
 
