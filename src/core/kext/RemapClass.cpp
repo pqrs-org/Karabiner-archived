@@ -72,12 +72,59 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapClass::Item::initialize_filter(const unsigned int* vec, size_t length)
   {
+    const unsigned int* end = NULL;
+    unsigned int total = 0;
+
     // ------------------------------------------------------------
     // check parameters.
     //
     if (! vec || length <= 0) {
       IOLOG_ERROR("RemapClass::Item::initialize_filter invalid parameter.\n");
       goto error;
+    }
+
+    // ------------------------------------------------------------
+    // initialize values.
+    //
+    end = vec + length;
+    total = vec[0];
+    vec += 1;
+
+    if (total > 0) {
+      filters_ = new RemapFilter::Vector_FilterUnionPointer();
+      if (! filters_) {
+        IOLOG_ERROR("RemapClass::Item::initialize_filter failed to allocate.\n");
+        goto error;
+      }
+
+      for (unsigned int i = 0; i < total; ++i) {
+        unsigned int size = 0;
+
+        // (1) first check
+        if (vec >= end) {
+          IOLOG_ERROR("RemapClass::Item::initialize_filter invalid data.\n");
+          goto error;
+        }
+
+        size = vec[0];
+        vec += 1;
+
+        if (vec >= end) {
+          IOLOG_ERROR("RemapClass::Item::initialize_filter invalid data.\n");
+          goto error;
+        }
+
+        RemapFilter::FilterUnion* newp = new RemapFilter::FilterUnion(vec, size);
+        if (! newp) {
+          IOLOG_ERROR("RemapClass::Item::initialize_filter failed to allocate.\n");
+          goto error;
+        }
+        filters_->push_back(newp);
+        vec += size;
+
+        // Don't check vec position here.
+        // Check vec position at (1) of next loop.
+      }
     }
 
     return;
@@ -134,6 +181,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   RemapClass::Item::remap(RemapParams& remapParams)
   {
+    if (isblocked()) return false;
+
 #define CALL_UNION_FUNCTION(POINTER) {                     \
     if (POINTER) { return (POINTER)->remap(remapParams); } \
 }
@@ -160,6 +209,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   RemapClass::Item::remap(RemapConsumerParams& remapParams)
   {
+    if (isblocked()) return false;
+
 #define CALL_UNION_FUNCTION(POINTER) {                     \
     if (POINTER) { return (POINTER)->remap(remapParams); } \
 }
@@ -180,6 +231,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   RemapClass::Item::remap(RemapPointingParams_relative& remapParams)
   {
+    if (isblocked()) return false;
+
 #define CALL_UNION_FUNCTION(POINTER) {                     \
     if (POINTER) { return (POINTER)->remap(remapParams); } \
 }
@@ -201,6 +254,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   RemapClass::Item::drop(const Params_KeyboardEventCallBack& params)
   {
+    if (isblocked()) return false;
+
 #define CALL_UNION_FUNCTION(POINTER) {               \
     if (POINTER) { return (POINTER)->drop(params); } \
 }
@@ -220,6 +275,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapClass::Item::remap_SimultaneousKeyPresses(void)
   {
+    if (isblocked()) return;
+
 #define CALL_UNION_FUNCTION(POINTER) {          \
     if (POINTER) { return (POINTER)->remap(); } \
 }
@@ -232,6 +289,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
 #undef CALL_UNION_FUNCTION
+  }
+
+  bool
+  RemapClass::Item::isblocked(void)
+  {
+    return false;
   }
 
   namespace RemapClassManager {
