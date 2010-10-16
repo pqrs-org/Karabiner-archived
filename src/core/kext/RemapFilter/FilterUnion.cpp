@@ -21,7 +21,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // check parameters.
       //
       if (! vec || length <= 0) {
-        IOLOG_ERROR("FilterUnion::FilterUnion invalid parameter.\n");
+        IOLOG_ERROR("FilterUnion::initialize invalid parameter.\n");
         goto error;
       }
 
@@ -72,7 +72,13 @@ namespace org_pqrs_KeyRemap4MacBook {
             }
           }
           break;
+
+        default:
+          IOLOG_ERROR("FilterUnion::initialize unknown type_:%d.\n", type_);
+          goto error;
       }
+
+      return;
 
     error:
       terminate();
