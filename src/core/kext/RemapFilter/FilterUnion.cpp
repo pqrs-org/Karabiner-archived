@@ -41,6 +41,26 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
           break;
 
+        case BRIDGE_FILTERTYPE_CONFIG_NOT:
+        case BRIDGE_FILTERTYPE_CONFIG_ONLY:
+          p_.configFilter = new ConfigFilter(type_);
+          if (p_.configFilter) {
+            for (size_t i = 1; i < length; ++i) {
+              (p_.configFilter)->add(vec[i]);
+            }
+          }
+          break;
+
+        case BRIDGE_FILTERTYPE_DEVICE_NOT:
+        case BRIDGE_FILTERTYPE_DEVICE_ONLY:
+          p_.deviceFilter = new DeviceFilter(type_);
+          if (p_.deviceFilter) {
+            for (size_t i = 1; i < length - 1; i += 2) {
+              (p_.deviceFilter)->add(vec[i], vec[i + 1]);
+            }
+          }
+          break;
+
         case BRIDGE_FILTERTYPE_INPUTMODE_NOT:
         case BRIDGE_FILTERTYPE_INPUTMODE_ONLY:
         case BRIDGE_FILTERTYPE_INPUTMODEDETAIL_NOT:
@@ -66,6 +86,20 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_FILTERTYPE_APPLICATION_ONLY:
           if (p_.applicationFilter) {
             delete p_.applicationFilter;
+          }
+          break;
+
+        case BRIDGE_FILTERTYPE_CONFIG_NOT:
+        case BRIDGE_FILTERTYPE_CONFIG_ONLY:
+          if (p_.configFilter) {
+            delete p_.configFilter;
+          }
+          break;
+
+        case BRIDGE_FILTERTYPE_DEVICE_NOT:
+        case BRIDGE_FILTERTYPE_DEVICE_ONLY:
+          if (p_.deviceFilter) {
+            delete p_.deviceFilter;
           }
           break;
 
