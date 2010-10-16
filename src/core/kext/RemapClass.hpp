@@ -26,6 +26,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     public:
       Item(void) {
         type_ = BRIDGE_REMAPTYPE_NONE;
+        filters_ = NULL;
       }
       void initialize_remap(const unsigned int* vec, size_t length);
       void initialize_filter(const unsigned int* vec, size_t length);
@@ -58,6 +59,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         RemapFunc::PointingRelativeToScroll* pointingRelativeToScroll;
         RemapFunc::SimultaneousKeyPresses* simultaneousKeyPresses;
       } p_;
+
+      RemapFilter::Vector_FilterUnionPointer* filters_;
     };
   };
 
