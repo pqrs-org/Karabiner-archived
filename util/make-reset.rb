@@ -10,13 +10,13 @@ ARGV.each do |filepath|
   libxmldoc = parser.parse
 
   libxmldoc.root.find('//sysctl').each do |node|
-    entry = node.children.map{|n| n.to_s}.join('')
+    entry = node.inner_xml
 
     # ----------------------------------------
     default = node.parent.find_first('./default')
     value = 0
     unless default.nil? then
-      value = default.children.map{|n| n.to_s}.join('')
+      value = default.inner_xml
     end
 
     print "#{entry} #{value}\n"
