@@ -17,8 +17,7 @@ libxmldoc = parser.parse
 libxmldoc.root.find('//vk_config').each do |node|
   list = node.parent.find('./sysctl')
   throw :exit if list.length != 1
-  name = list[0].children.map{|n| n.to_s}.join('')
-  name.gsub!(/\./, '_')
+  name = list[0].inner_xml.gsub(/\./, '_')
 
   $outfile[:keycode_vk_config] << "VK_CONFIG_TOGGLE_#{name} --AUTO--\n"
   $outfile[:keycode_vk_config] << "VK_CONFIG_FORCE_ON_#{name} --AUTO--\n"
@@ -29,7 +28,7 @@ end
 # ----------------------------------------
 index = 0
 libxmldoc.root.find('//autogen').each do |node|
-  text = node.children.map{|n| n.to_s}.join('')
+  text = node.inner_xml
   Preprocesser.new().preprocess([text]).each do |text|
     if /--SimultaneousKeyPresses--/ =~ text then
       $outfile[:keycode_vk_config] << "VK_SIMULTANEOUSKEYPRESSES_#{index} --AUTO--\n"
