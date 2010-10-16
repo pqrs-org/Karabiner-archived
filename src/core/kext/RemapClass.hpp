@@ -32,6 +32,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       void initialize_filter(const unsigned int* vec, size_t length);
       void terminate(void);
 
+      // --------------------
       bool remap(RemapParams& remapParams);
       bool remap(RemapConsumerParams& remapParams);
       bool remap(RemapPointingParams_relative& remapParams);
@@ -41,6 +42,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       void remap_SimultaneousKeyPresses(void);
 
     private:
+      bool isblocked(void);
+
       unsigned int type_;
 
       union {
