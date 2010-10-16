@@ -112,11 +112,45 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
           break;
       }
+
+      type_ = BRIDGE_FILTERTYPE_NONE;
     }
 
     bool
     FilterUnion::isblocked(void)
     {
+      switch (type_) {
+        case BRIDGE_FILTERTYPE_APPLICATION_NOT:
+        case BRIDGE_FILTERTYPE_APPLICATION_ONLY:
+          if (p_.applicationFilter) {
+            return (p_.applicationFilter)->isblocked();
+          }
+          break;
+
+        case BRIDGE_FILTERTYPE_CONFIG_NOT:
+        case BRIDGE_FILTERTYPE_CONFIG_ONLY:
+          if (p_.configFilter) {
+            return (p_.configFilter)->isblocked();
+          }
+          break;
+
+        case BRIDGE_FILTERTYPE_DEVICE_NOT:
+        case BRIDGE_FILTERTYPE_DEVICE_ONLY:
+          if (p_.deviceFilter) {
+            return (p_.deviceFilter)->isblocked();
+          }
+          break;
+
+        case BRIDGE_FILTERTYPE_INPUTMODE_NOT:
+        case BRIDGE_FILTERTYPE_INPUTMODE_ONLY:
+        case BRIDGE_FILTERTYPE_INPUTMODEDETAIL_NOT:
+        case BRIDGE_FILTERTYPE_INPUTMODEDETAIL_ONLY:
+          if (p_.inputModeFilter) {
+            return (p_.inputModeFilter)->isblocked();
+          }
+          break;
+      }
+
       return false;
     }
   }
