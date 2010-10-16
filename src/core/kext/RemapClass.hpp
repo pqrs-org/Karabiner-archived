@@ -65,12 +65,13 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       RemapFilter::Vector_FilterUnionPointer* filters_;
     };
-    DECLARE_VECTOR(Item);
+    typedef Item* ItemPointer;
+    DECLARE_VECTOR(ItemPointer);
 
     // ----------------------------------------------------------------------
     RemapClass(const unsigned int* vec, size_t length,
                const unsigned int* filter, size_t filterlength,
-               bool enable_when_passthrough);
+               unsigned int configindex, bool enable_when_passthrough);
     ~RemapClass(void);
 
     void remap_key(RemapParams& remapParams);
@@ -81,7 +82,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool enabled(void);
 
   private:
-    Vector_Item items_;
+    Vector_ItemPointer items_;
+    unsigned int configindex_;
+    bool enable_when_passthrough_;
   };
 
   // ================================================================================

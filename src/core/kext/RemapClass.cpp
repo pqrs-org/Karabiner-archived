@@ -305,6 +305,101 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------------------------------------
+  RemapClass::RemapClass(const unsigned int* vec, size_t length,
+                         const unsigned int* filter, size_t filterlength,
+                         unsigned int configindex, bool enable_when_passthrough) :
+    configindex_(configindex), enable_when_passthrough_(enable_when_passthrough)
+  {
+  }
+
+  RemapClass::~RemapClass(void)
+  {
+    for (size_t i = 0; i < items_.size(); ++i) {
+      Item* p = items_[i];
+      if (p) {
+        p->terminate();
+        delete p;
+      }
+    }
+  }
+
+  void
+  RemapClass::remap_key(RemapParams& remapParams)
+  {
+    for (size_t i = 0; i < items_.size(); ++i) {
+      Item* p = items_[i];
+      if (p) {
+        if (p->remap(remapParams)) return;
+      }
+    }
+  }
+
+  void
+  RemapClass::remap_consumer(RemapConsumerParams& remapParams)
+  {
+    for (size_t i = 0; i < items_.size(); ++i) {
+      Item* p = items_[i];
+      if (p) {
+        if (p->remap(remapParams)) return;
+      }
+    }
+  }
+
+  void
+  RemapClass::remap_pointing(RemapPointingParams_relative& remapParams)
+  {
+    for (size_t i = 0; i < items_.size(); ++i) {
+      Item* p = items_[i];
+      if (p) {
+        if (p->remap(remapParams)) return;
+      }
+    }
+  }
+
+  void
+  RemapClass::remap_simultaneouskeypresses(void)
+  {
+    for (size_t i = 0; i < items_.size(); ++i) {
+      Item* p = items_[i];
+      if (p) {
+        p->remap_SimultaneousKeyPresses();
+      }
+    }
+  }
+
+  bool
+  RemapClass::remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params)
+  {
+    if (! enabled()) return false;
+
+    for (size_t i = 0; i < items_.size(); ++i) {
+      Item* p = items_[i];
+      if (p) {
+        if (p->drop(params)) return true;
+      }
+    }
+
+    return false;
+  }
+
+  bool
+  RemapClass::enabled(void)
+  {
+    if (config.notsave_passthrough) {
+      // Pass-Through Mode
+      if (! enable_when_passthrough_) {
+        return false;
+      }
+    }
+
+    // check configindex_ range
+    if (configindex_ < 0 ||
+        configindex_ >= sizeof(config.enabled_flags) / sizeof(config.enabled_flags[0])) {
+      return false;
+    }
+
+    return config.enabled_flags[configindex_];
+  }
 
   // ================================================================================
   namespace RemapClassManager {
