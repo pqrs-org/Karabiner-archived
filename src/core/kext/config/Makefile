@@ -8,7 +8,7 @@ all:
 	ruby ./make-keycode.rb
 	ruby ./make-configindex.rb
 	make -C ../keycode output
-	cat $(SYSCTL_FILE) | ruby ./make-code.rb
+	ruby ./make-code.rb $(SYSCTL_FILE)
 
 clean:
 	rm -f output/*
