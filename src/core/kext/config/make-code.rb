@@ -1,5 +1,8 @@
 #!/usr/bin/ruby
 
+require 'rubygems'
+require 'xml/libxml'
+
 require 'inc.preprocess.rb'
 require 'inc.filter.rb'
 require 'inc.remapclass.rb'
@@ -56,80 +59,75 @@ def parseautogen(name, lines)
 end
 
 # ----------------------------------------------------------------------
-$stdin.read.scan(/<item>.+?<\/item>/m).each do |item|
-  if /.*(<item>.+?<\/item>)/m =~ item then
-    item = $1
-  end
+ARGV.each do |xmlpath|
+  lines = Preprocesser.new().preprocess(IO.readlines(xmlpath))
+  parser = XML::Parser.string(lines.join(''))
+  libxmldoc = parser.parse
 
-  name = nil
-  configaddress = nil
-  if /<sysctl(.*?)>([^\.]+?)\.(.+?)<\/sysctl>/m =~ item then
-    if $1.strip == 'essential="true"' then
-      essential = true
+  libxmldoc.root.find('//item').each do |node|
+    # ------------------------------------------------------------
+    # validate
+    if node.find('./name').length != 1 then
+      print "%%% ERROR no <name> or multiple <name> for #{node}\n"
+      exit 1
     end
-    name = "#{$2}_#{$3}"
 
-    if essential then
+    # ------------------------------------------------------------
+    sysctl_node = node.find_first('./sysctl')
+    next if sysctl_node.nil?
+
+    name = sysctl_node.inner_xml
+    sysctl_entry = name.split('.')[0]
+    sysctl_name  = name.split('.')[1]
+    name.gsub!(/\./, '_')
+
+    configaddress = nil
+    if sysctl_node['essential'] == 'true' then
       configaddress = "&(config.#{name})"
+      $outfile[:config] << "int #{name};\n"
     else
       configaddress = "&(config.enabled_flags[#{KeyCode.ConfigIndex(name)}])"
     end
-
-    $outfile[:config_SYSCTL] << "SYSCTL_PROC(_keyremap4macbook_#{$2}, OID_AUTO, #{$3}, CTLTYPE_INT|CTLFLAG_RW, #{configaddress}, 0, refresh_remapfunc_handler, \"I\", \"\");\n"
+    $outfile[:config_SYSCTL] << "SYSCTL_PROC(_keyremap4macbook_#{sysctl_entry}, OID_AUTO, #{sysctl_name}, CTLTYPE_INT|CTLFLAG_RW, #{configaddress}, 0, refresh_remapfunc_handler, \"I\", \"\");\n"
     $outfile[:config_register] << "sysctl_register_oid(&sysctl__keyremap4macbook_#{name});\n"
     $outfile[:config_unregister] << "sysctl_unregister_oid(&sysctl__keyremap4macbook_#{name});\n"
+
+    # ----------------------------------------
+    default_node = node.find_first('./default')
+    unless default_node.nil? then
+      $outfile[:config_default] << "#{name} = #{default_node.inner_xml};\n"
+    end
+
+    # ----------------------------------------
+    if node.find_first('./vk_config') then
+      $outfile[:remapcode_vk_config] << "if (params.key == KeyCode::VK_CONFIG_TOGGLE_#{name}) {\n"
+      $outfile[:remapcode_vk_config] << "  configitem = #{configaddress};\n"
+      $outfile[:remapcode_vk_config] << "  type = TYPE_TOGGLE;\n"
+      $outfile[:remapcode_vk_config] << "}\n"
+      $outfile[:remapcode_vk_config] << "if (params.key == KeyCode::VK_CONFIG_FORCE_ON_#{name}) {\n"
+      $outfile[:remapcode_vk_config] << "  configitem = #{configaddress};\n"
+      $outfile[:remapcode_vk_config] << "  type = TYPE_FORCE_ON;\n"
+      $outfile[:remapcode_vk_config] << "}\n"
+      $outfile[:remapcode_vk_config] << "if (params.key == KeyCode::VK_CONFIG_FORCE_OFF_#{name}) {\n"
+      $outfile[:remapcode_vk_config] << "  configitem = #{configaddress};\n"
+      $outfile[:remapcode_vk_config] << "  type = TYPE_FORCE_OFF;\n"
+      $outfile[:remapcode_vk_config] << "}\n"
+      $outfile[:remapcode_vk_config] << "if (params.key == KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_#{name}) {\n"
+      $outfile[:remapcode_vk_config] << "  configitem = #{configaddress};\n"
+      $outfile[:remapcode_vk_config] << "  type = TYPE_SYNC_KEYDOWNUP;\n"
+      $outfile[:remapcode_vk_config] << "}\n"
+    end
+
+    # ----------------------------------------
+    RemapClass.reset_variable_index
+    lines = node.to_s.split(/\n/)
+    remapclass = parseautogen(name, lines)
+    next if remapclass.empty?
+    $outfile[:remapclass] << remapclass.to_code
   end
-
-  next if name.nil?
-
-  if essential then
-    $outfile[:config] << "int #{name};\n"
-  end
-
-  if /<default>(.+?)<\/default>/m =~ item then
-    $outfile[:config_default] << "#{name} = #{$1};\n"
-  end
-
-  # check <name> num == 1
-  if item.scan(/<name>(.+?)<\/name>/m).size != 1 then
-    print "%%% ERROR no <name> or multiple <name> for #{name}\n"
-    exit 1
-  end
-
-  if /<vk_config>true<\/vk_config>/ =~ item then
-    $outfile[:remapcode_vk_config] << "if (params.key == KeyCode::VK_CONFIG_TOGGLE_#{name}) {\n"
-    $outfile[:remapcode_vk_config] << "  configitem = #{configaddress};\n"
-    $outfile[:remapcode_vk_config] << "  type = TYPE_TOGGLE;\n"
-    $outfile[:remapcode_vk_config] << "}\n"
-    $outfile[:remapcode_vk_config] << "if (params.key == KeyCode::VK_CONFIG_FORCE_ON_#{name}) {\n"
-    $outfile[:remapcode_vk_config] << "  configitem = #{configaddress};\n"
-    $outfile[:remapcode_vk_config] << "  type = TYPE_FORCE_ON;\n"
-    $outfile[:remapcode_vk_config] << "}\n"
-    $outfile[:remapcode_vk_config] << "if (params.key == KeyCode::VK_CONFIG_FORCE_OFF_#{name}) {\n"
-    $outfile[:remapcode_vk_config] << "  configitem = #{configaddress};\n"
-    $outfile[:remapcode_vk_config] << "  type = TYPE_FORCE_OFF;\n"
-    $outfile[:remapcode_vk_config] << "}\n"
-    $outfile[:remapcode_vk_config] << "if (params.key == KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_#{name}) {\n"
-    $outfile[:remapcode_vk_config] << "  configitem = #{configaddress};\n"
-    $outfile[:remapcode_vk_config] << "  type = TYPE_SYNC_KEYDOWNUP;\n"
-    $outfile[:remapcode_vk_config] << "}\n"
-  end
-
-  # ======================================================================
-  lines = item.split(/\n/)
-  lines = Preprocesser.new().preprocess(lines)
-
-  RemapClass.reset_variable_index
-  remapclass = parseautogen(name, lines)
-
-  unless lines.empty? then
-    print "%%% ERROR no </block> at #{name} %%%\n"
-  end
-
-  next if remapclass.empty?
-
-  $outfile[:remapclass] << remapclass.to_code
 end
+
+$outfile[:config] << "int enabled_flags[#{KeyCode.count('ConfigIndex')}];\n"
 
 # ======================================================================
 # put all entries
@@ -161,9 +159,6 @@ end
   $outfile[:remapclass] << "NULL,\n"
   $outfile[:remapclass] << "};\n"
 end
-
-# ----------------------------------------
-$outfile[:config] << "int enabled_flags[#{KeyCode.count('ConfigIndex')}];\n"
 
 # ======================================================================
 $outfile.each do |name,file|
