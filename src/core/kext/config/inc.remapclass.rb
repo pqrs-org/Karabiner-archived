@@ -19,17 +19,11 @@ class RemapClass
 
   def initialize(name)
     @name = name
-    @filter = Filter.new()
 
     @code = {
       # functions
       :initialize                   => '',
       :remap_setkeyboardtype        => '',
-      :remap_key                    => '',
-      :remap_consumer               => '',
-      :remap_pointing               => '',
-      :remap_simultaneouskeypresses => '',
-      :remap_dropkeyafterremap      => '',
       :get_statusmessage            => '',
     }
 
@@ -48,13 +42,6 @@ class RemapClass
     }
   end
   attr_accessor :name, :filter, :code
-
-  def +(other)
-    other.code.each do |k,v|
-      @code[k] += v
-    end
-    self
-  end
 
   def append_to_code_initialize(params, operation)
     # We split the initialize function per value.
@@ -108,21 +95,17 @@ class RemapClass
   end
   protected :append_to_code_initialize
 
-  # return true if 'line' contains autogen/filter definition.
-  def parse(line)
-    return true if @filter.parse(line)
-
-    if /<autogen>--(.+?)-- (.+)<\/autogen>/ =~ line then
+  def handle_autogen(autogen_node)
+    if /^--(.+?)-- (.+)/ =~ autogen_node.inner_xml.strip then
       operation = $1
       params = $2
 
       case operation
       when 'SetKeyboardType'
-        @code[:remap_setkeyboardtype] += "keyboardType = #{params}.get();\n"
+        @code[:remap_setkeyboardtype] += "keyboardType = #{params}.get(); return;\n"
 
       when 'DropKeyAfterRemap'
         append_to_code_initialize(params, operation)
-        @code[:remap_dropkeyafterremap] += "if (value_[#{@@variable_index}].drop(params)) return true;\n"
 
       when 'ShowStatusMessage'
         @code[:get_statusmessage] += "return #{params};\n"
@@ -131,20 +114,15 @@ class RemapClass
         params = "KeyCode::VK_SIMULTANEOUSKEYPRESSES_#{@@simultaneous_keycode_index}, " + params
         @@simultaneous_keycode_index += 1
         append_to_code_initialize(params, operation)
-        @code[:remap_key] += "if (value_[#{@@variable_index}].remap(remapParams)) break;\n"
-        @code[:remap_simultaneouskeypresses] += "value_[#{@@variable_index}].remap_SimultaneousKeyPresses();\n"
 
       when 'KeyToKey', 'KeyToConsumer', 'KeyToPointingButton', 'DoublePressModifier', 'HoldingKeyToKey', 'IgnoreMultipleSameKeyPress', 'KeyOverlaidModifier'
         append_to_code_initialize(params, operation)
-        @code[:remap_key] += "if (value_[#{@@variable_index}].remap(remapParams)) break;\n"
 
       when 'ConsumerToConsumer', 'ConsumerToKey'
         append_to_code_initialize(params, operation)
-        @code[:remap_consumer] += "if (value_[#{@@variable_index}].remap(remapParams)) break;\n"
 
       when 'PointingButtonToPointingButton', 'PointingButtonToKey', 'PointingRelativeToScroll'
         append_to_code_initialize(params, operation)
-        @code[:remap_pointing] += "if (value_[#{@@variable_index}].remap(remapParams)) break;\n"
 
       else
         print "%%% ERROR #{type} %%%\n#{l}\n"
@@ -152,22 +130,6 @@ class RemapClass
       end
 
       @@variable_index += 1
-
-      return true
-    end
-
-    return false
-  end
-
-  def fixup
-    [:remap_key, :remap_consumer,:remap_pointing, :remap_simultaneouskeypresses].each do |k|
-      unless @code[k].empty? then
-        c  = "do {\n"
-        c += @filter.to_code
-        c += @code[k]
-        c += "} while (false);\n"
-        @code[k] = c
-      end
     end
   end
 
@@ -178,7 +140,19 @@ class RemapClass
     return true
   end
 
-  def to_code
+  def to_code(item_node)
+    item_node.find('.//autogen').each do |autogen_node|
+      filter = Filter.new
+
+      @code[:initialize] += "{\n"
+      @code[:initialize] += "  const unsigned int vec[] = { #{filter.to_code(item_node, autogen_node)} };\n"
+      @code[:initialize] += "  value_[#{@@variable_index}].initialize_filter(vec, sizeof(vec) / sizeof(vec[0]));\n"
+      @code[:initialize] += "}\n"
+
+      handle_autogen(autogen_node)
+    end
+
+    # ----------------------------------------
     return '' if empty?
 
     classname = "RemapClass_#{@name}"
@@ -211,9 +185,11 @@ class RemapClass
     end
 
     # ----------------------------------------------------------------------
-    unless @code[:remap_key].empty? then
+    if @@variable_index > 0 then
       code += "static void remap_key(RemapParams& remapParams) {\n"
-      code += @code[:remap_key]
+      code += "  for (int i = 0; i < #{@@variable_index}; ++i) {\n"
+      code += "    if (value_[i].remap(remapParams)) return;\n"
+      code += "  }\n"
       code += "}\n"
 
       @@entries[-1][:remap_key] << "#{classname}::remap_key"
@@ -222,9 +198,11 @@ class RemapClass
     end
 
     # ----------------------------------------------------------------------
-    unless @code[:remap_consumer].empty? then
+    if @@variable_index > 0 then
       code += "static void remap_consumer(RemapConsumerParams& remapParams) {\n"
-      code += @code[:remap_consumer]
+      code += "  for (int i = 0; i < #{@@variable_index}; ++i) {\n"
+      code += "    if (value_[i].remap(remapParams)) return;\n"
+      code += "  }\n"
       code += "}\n"
 
       @@entries[-1][:remap_consumer] << "#{classname}::remap_consumer"
@@ -233,9 +211,11 @@ class RemapClass
     end
 
     # ----------------------------------------------------------------------
-    unless @code[:remap_pointing].empty? then
+    if @@variable_index > 0 then
       code += "static void remap_pointing(RemapPointingParams_relative& remapParams) {\n"
-      code += @code[:remap_pointing]
+      code += "  for (int i = 0; i < #{@@variable_index}; ++i) {\n"
+      code += "    if (value_[i].remap(remapParams)) return;\n"
+      code += "  }\n"
       code += "}\n"
 
       @@entries[-1][:remap_pointing] << "#{classname}::remap_pointing"
@@ -244,9 +224,11 @@ class RemapClass
     end
 
     # ----------------------------------------------------------------------
-    unless @code[:remap_simultaneouskeypresses].empty? then
+    if @@variable_index > 0 then
       code += "static void remap_simultaneouskeypresses(void) {\n"
-      code += @code[:remap_simultaneouskeypresses]
+      code += "  for (int i = 0; i < #{@@variable_index}; ++i) {\n"
+      code += "    value_[i].remap_SimultaneousKeyPresses();\n"
+      code += "  }\n"
       code += "}\n"
 
       @@entries[-1][:remap_simultaneouskeypresses] << "#{classname}::remap_simultaneouskeypresses"
@@ -266,11 +248,13 @@ class RemapClass
     end
 
     # ----------------------------------------------------------------------
-    unless @code[:remap_dropkeyafterremap].empty? then
+    if @@variable_index > 0 then
       code += "static bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params) {\n"
-      code += "if (! enabled()) return false;\n"
-      code += @code[:remap_dropkeyafterremap]
-      code += "return false;\n"
+      code += "  if (! enabled()) return false;\n"
+      code += "  for (int i = 0; i < #{@@variable_index}; ++i) {\n"
+      code += "    if (value_[i].drop(params)) return true;\n"
+      code += "  }\n"
+      code += "  return false;\n"
       code += "}\n"
 
       @@entries[-1][:remap_dropkeyafterremap] << "#{classname}::remap_dropkeyafterremap"

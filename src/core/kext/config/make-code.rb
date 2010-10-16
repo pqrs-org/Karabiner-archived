@@ -19,46 +19,6 @@ $outfile = {
 }
 
 # ======================================================================
-def parseautogen(name, lines)
-  remapclass = RemapClass.new(name)
-
-  while true
-    l = lines.shift
-    break if l.nil?
-
-    # --------------------------------------------------
-    next if /<\/?item>/ =~ l
-    next if /<name>.+?<\/name>/ =~ l
-    next if /<appendix>.+?<\/appendix>/ =~ l
-    next if /<sysctl.*?>.+?<\/sysctl>/ =~ l
-    next if /<baseunit>.+?<\/baseunit>/ =~ l
-    next if /<default>.+?<\/default>/ =~ l
-    next if /<vk_config>.+?<\/vk_config>/ =~ l
-
-    # --------------------------------------------------
-    if /<block>/ =~ l then
-      block_remapclass = parseautogen(name, lines)
-
-      remapclass += block_remapclass
-
-    elsif /<\/block>/ =~ l then
-      break
-
-    elsif remapclass.parse(l) then
-      # do nothing
-
-    elsif /<.+?>.+?<\/.+?>/ =~ l then
-      print "%%% ERROR unknown command %%%\n#{l}\n"
-      exit 1
-    end
-  end
-
-  # ======================================================================
-  remapclass.fixup
-  return remapclass
-end
-
-# ----------------------------------------------------------------------
 ARGV.each do |xmlpath|
   lines = Preprocesser.new().preprocess(IO.readlines(xmlpath))
   parser = XML::Parser.string(lines.join(''))
@@ -120,10 +80,8 @@ ARGV.each do |xmlpath|
 
     # ----------------------------------------
     RemapClass.reset_variable_index
-    lines = node.to_s.split(/\n/)
-    remapclass = parseautogen(name, lines)
-    next if remapclass.empty?
-    $outfile[:remapclass] << remapclass.to_code
+    remapclass = RemapClass.new(name)
+    $outfile[:remapclass] << remapclass.to_code(node)
   end
 end
 

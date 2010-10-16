@@ -5,140 +5,106 @@ require 'inc.keycode.rb'
 
 class Filter
   def initialize
-    @array = []
     @filters = []
   end
 
-  # return true if 'line' contains filter definition.
-  def parse(line)
-    if /<not>(.+?)<\/not>/ =~ line then
-      vec = []
-      vec << 'BRIDGE_FILTERTYPE_APPLICATION_NOT'
-      $1.split(/,/).each do |f|
-        @array << "if (CommonData::getcurrent_workspacedata().type == KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}) break;"
-        vec << "KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}"
-      end
-      @filters << vec
-      return true
+  def append_application(filtertype, node)
+    vec = [filtertype]
+
+    node.inner_xml.split(/,/).each do |f|
+      vec << "KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}"
     end
 
-    if /<only>(.+?)<\/only>/ =~ line then
-      vec = []
-      vec << 'BRIDGE_FILTERTYPE_APPLICATION_ONLY'
-
-      tmp = []
-      $1.split(/,/).each do |f|
-        tmp << "(CommonData::getcurrent_workspacedata().type != KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip})"
-        vec << "KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}"
-      end
-      @array << "if (#{tmp.join(' && ')}) break;"
-      @filters << vec
-      return true
-    end
-
-    if /<device_not>(.+?)<\/device_not>/ =~ line then
-      vec = []
-      vec << 'BRIDGE_FILTERTYPE_DEVICE_NOT'
-
-      $1.scan(/DeviceVendorID\(.+?\)\s*,\s*DeviceProductID\(.+?\)/).each do |f|
-        @array << "if (CommonData::isEqualVendorIDProductID(#{f.strip})) break;"
-        vec += f.strip.split(/,/)
-      end
-      @filters << vec
-      return true
-    end
-
-    if /<device_only>(.+?)<\/device_only>/ =~ line then
-      vec = []
-      vec << 'BRIDGE_FILTERTYPE_DEVICE_ONLY'
-
-      tmp = []
-      $1.scan(/DeviceVendorID\(.+?\)\s*,\s*DeviceProductID\(.+?\)/).each do |f|
-        tmp << "(! CommonData::isEqualVendorIDProductID(#{f.strip}))"
-        vec += f.strip.split(/,/)
-      end
-      @array << "if (#{tmp.join(' && ')}) break;"
-      @filters << vec
-      return true
-    end
-
-    if /<config_not>(.+?)<\/config_not>/ =~ line then
-      vec = []
-      vec << 'BRIDGE_FILTERTYPE_CONFIG_NOT'
-
-      $1.split(/,/).each do |f|
-        f.gsub!(/\./, '_')
-        @array << "if (config.enabled_flags[#{KeyCode.ConfigIndex(f.strip)}]) break;"
-
-        vec << KeyCode.ConfigIndex(f.strip)
-      end
-      @filters << vec
-      return true
-    end
-
-    if /<config_only>(.+?)<\/config_only>/ =~ line then
-      vec = []
-      vec << 'BRIDGE_FILTERTYPE_CONFIG_ONLY'
-
-      tmp = []
-      $1.split(/,/).each do |f|
-        f.gsub!(/\./, '_')
-        tmp << "(! config.enabled_flags[#{KeyCode.ConfigIndex(f.strip)}])"
-
-        vec << KeyCode.ConfigIndex(f.strip)
-      end
-      @array << "if (#{tmp.join(' && ')}) break;"
-      @filters << vec
-      return true
-    end
-
-    if /<(inputmode|inputmodedetail)_not>(.+?)<\/(inputmode|inputmodedetail)_not>/ =~ line then
-      inputmodetype = $1
-      body = $2
-
-      vec = []
-      if /<inputmode_not>/ =~ line then
-        vec << 'BRIDGE_FILTERTYPE_INPUTMODE_NOT'
-      else
-        vec << 'BRIDGE_FILTERTYPE_INPUTMODEDETAIL_NOT'
-      end
-
-      body.split(/,/).each do |f|
-        @array << "if (CommonData::getcurrent_workspacedata().#{inputmodetype} == KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}) break;"
-        vec << "KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}"
-      end
-      @filters << vec
-      return true
-    end
-
-    if /<(inputmode|inputmodedetail)_only>(.+?)<\/(inputmode|inputmodedetail)_only>/ =~ line then
-      inputmodetype = $1
-      body = $2
-
-      vec = []
-      if /<inputmode_only>/ =~ line then
-        vec << 'BRIDGE_FILTERTYPE_INPUTMODE_ONLY'
-      else
-        vec << 'BRIDGE_FILTERTYPE_INPUTMODEDETAIL_ONLY'
-      end
-
-      tmp = []
-      body.split(/,/).each do |f|
-        tmp << "(CommonData::getcurrent_workspacedata().#{inputmodetype} != KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip})"
-        vec << "KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}"
-      end
-      @array << "if (#{tmp.join(' && ')}) break;"
-      @filters << vec
-      return true
-    end
+    @filters << vec
   end
 
-  def to_code
-    code = ''
-    @array.each do |f|
-      code += "    #{f}\n"
+  def append_device(filtertype, node)
+    vec = [filtertype]
+
+    node.inner_xml.scan(/DeviceVendorID\(.+?\)\s*,\s*DeviceProductID\(.+?\)/).each do |f|
+      vec += f.strip.split(/,/)
     end
-    code += "\n" unless code.empty?
-    code
+
+    @filters << vec
+  end
+
+  def append_config(filtertype, node)
+    vec = [filtertype]
+
+    node.inner_xml.split(/,/).each do |f|
+      vec << KeyCode.ConfigIndex(f.strip.gsub(/\./, '_'))
+    end
+
+    @filters << vec
+  end
+
+  def append_inputmode(filtertype, node)
+    vec = [filtertype]
+
+    node.inner_xml.split(/,/).each do |f|
+      vec << "KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}"
+    end
+
+    @filters << vec
+  end
+
+  def to_code(item_node, autogen_node)
+    while autogen_node != item_node
+      # ----------------------------------------
+      autogen_node.parent.find('./not').each do |node|
+        append_application('BRIDGE_FILTERTYPE_APPLICATION_NOT', node)
+      end
+
+      autogen_node.parent.find('./only').each do |node|
+        append_application('BRIDGE_FILTERTYPE_APPLICATION_ONLY', node)
+      end
+
+      # ----------------------------------------
+      autogen_node.parent.find('./device_not').each do |node|
+        append_device('BRIDGE_FILTERTYPE_DEVICE_NOT', node)
+      end
+
+      autogen_node.parent.find('./device_only').each do |node|
+        append_device('BRIDGE_FILTERTYPE_DEVICE_ONLY', node)
+      end
+
+      # ----------------------------------------
+      autogen_node.parent.find('./config_not').each do |node|
+        append_config('BRIDGE_FILTERTYPE_CONFIG_NOT', node)
+      end
+
+      autogen_node.parent.find('./config_only').each do |node|
+        append_config('BRIDGE_FILTERTYPE_CONFIG_ONLY', node)
+      end
+
+      # ----------------------------------------
+      autogen_node.parent.find('./inputmode_not').each do |node|
+        append_inputmode('BRIDGE_FILTERTYPE_INPUTMODE_NOT', node)
+      end
+
+      autogen_node.parent.find('./inputmode_only').each do |node|
+        append_inputmode('BRIDGE_FILTERTYPE_INPUTMODE_ONLY', node)
+      end
+
+      autogen_node.parent.find('./inputmodedetail_not').each do |node|
+        append_inputmode('BRIDGE_FILTERTYPE_INPUTMODEDETAIL_NOT', node)
+      end
+
+      autogen_node.parent.find('./inputmodedetail_only').each do |node|
+        append_inputmode('BRIDGE_FILTERTYPE_INPUTMODEDETAIL_ONLY', node)
+      end
+
+      autogen_node = autogen_node.parent
+    end
+
+    vec = []
+    vec << @filters.count
+
+    @filters.each do |f|
+      vec << f.count
+      vec += f
+    end
+
+    vec.join(',')
   end
 end
