@@ -43,7 +43,7 @@ class RemapClass
   end
   attr_accessor :name, :filter, :code
 
-  def append_to_code_initialize(params, operation)
+  def append_to_code_initialize(params, operation, filter)
     # We split the initialize function per value.
     # If a large number of values exist, the kernel stack is wasted when the monolithic initialize function is called.
     # So, we split it.
@@ -88,14 +88,12 @@ class RemapClass
       args << newval.join('|')
     end
 
-    @code[:initialize] += "{\n"
-    @code[:initialize] += "  const unsigned int vec[] = { #{args.join(',')} };\n"
-    @code[:initialize] += "  value_[#{@@variable_index}].initialize_remap(vec, sizeof(vec) / sizeof(vec[0]));\n"
-    @code[:initialize] += "}\n"
+    @code[:initialize] += "static const unsigned int #{@name}_vec#{@@variable_index}[] = { #{args.join(',')} };\n"
+    @code[:initialize] += "static const unsigned int #{@name}_filter#{@@variable_index}[] = { #{filter} };\n"
   end
   protected :append_to_code_initialize
 
-  def handle_autogen(autogen_node)
+  def handle_autogen(autogen_node, filter)
     if /^--(.+?)-- (.+)/ =~ autogen_node.inner_xml.strip then
       operation = $1
       params = $2
@@ -105,7 +103,8 @@ class RemapClass
         @code[:remap_setkeyboardtype] += "keyboardType = #{params}.get(); return;\n"
 
       when 'DropKeyAfterRemap'
-        append_to_code_initialize(params, operation)
+        append_to_code_initialize(params, operation, filter)
+        @@variable_index += 1
 
       when 'ShowStatusMessage'
         @code[:get_statusmessage] += "return #{params};\n"
@@ -113,23 +112,25 @@ class RemapClass
       when 'SimultaneousKeyPresses'
         params = "KeyCode::VK_SIMULTANEOUSKEYPRESSES_#{@@simultaneous_keycode_index}, " + params
         @@simultaneous_keycode_index += 1
-        append_to_code_initialize(params, operation)
+        append_to_code_initialize(params, operation, filter)
+        @@variable_index += 1
 
       when 'KeyToKey', 'KeyToConsumer', 'KeyToPointingButton', 'DoublePressModifier', 'HoldingKeyToKey', 'IgnoreMultipleSameKeyPress', 'KeyOverlaidModifier'
-        append_to_code_initialize(params, operation)
+        append_to_code_initialize(params, operation, filter)
+        @@variable_index += 1
 
       when 'ConsumerToConsumer', 'ConsumerToKey'
-        append_to_code_initialize(params, operation)
+        append_to_code_initialize(params, operation, filter)
+        @@variable_index += 1
 
       when 'PointingButtonToPointingButton', 'PointingButtonToKey', 'PointingRelativeToScroll'
-        append_to_code_initialize(params, operation)
+        append_to_code_initialize(params, operation, filter)
+        @@variable_index += 1
 
       else
         print "%%% ERROR #{type} %%%\n#{l}\n"
         exit 1
       end
-
-      @@variable_index += 1
     end
   end
 
@@ -143,33 +144,52 @@ class RemapClass
   def to_code(item_node)
     item_node.find('.//autogen').each do |autogen_node|
       filter = Filter.new
-
-      @code[:initialize] += "{\n"
-      @code[:initialize] += "  const unsigned int vec[] = { #{filter.to_code(item_node, autogen_node)} };\n"
-      @code[:initialize] += "  value_[#{@@variable_index}].initialize_filter(vec, sizeof(vec) / sizeof(vec[0]));\n"
-      @code[:initialize] += "}\n"
-
-      handle_autogen(autogen_node)
+      filter = filter.to_code(item_node, autogen_node)
+      handle_autogen(autogen_node, filter)
     end
 
     # ----------------------------------------
     return '' if empty?
 
+    code = ''
+
+    code += @code[:initialize]
+    if @@variable_index > 0 then
+      code += "static const unsigned int* #{@name}_initialize_vector[] = {\n"
+      @@variable_index.times do |i|
+        code += "  #{@name}_filter#{i}, #{@name}_vec#{i},\n"
+      end
+      code += "};\n"
+      code += "static const unsigned int #{@name}_initialize_size[] = {\n"
+      @@variable_index.times do |i|
+        code += "  sizeof(#{@name}_filter#{i}) / sizeof(#{@name}_filter#{i}[0]),\n"
+        code += "  sizeof(#{@name}_vec#{i}) / sizeof(#{@name}_vec#{i}[0]),\n"
+      end
+      code += "};\n"
+    end
+
     classname = "RemapClass_#{@name}"
 
-    code  = "class #{classname} {\n"
+    code += "class #{classname} {\n"
     code += "public:\n"
 
     # ----------------------------------------------------------------------
     code += "static void initialize(void) {\n"
-    code += @code[:initialize]
+    if @@variable_index > 0 then
+      code += "  for (size_t i = 0; i < sizeof(value_) / sizeof(value_[0]); ++i) {\n"
+      code += "    value_[i].initialize_filter(#{@name}_initialize_vector[i * 2], #{@name}_initialize_size[i * 2]);\n"
+      code += "    value_[i].initialize_remap(#{@name}_initialize_vector[i * 2 + 1], #{@name}_initialize_size[i * 2 + 1]);\n"
+      code += "  }\n"
+    end
     code += "}\n"
     @@entries[-1][:initialize] << "RemapClass_#{@name}::initialize"
 
     code += "static void terminate(void) {\n"
-    code += "  for (size_t i = 0; i < sizeof(value_) / sizeof(value_[0]); ++i) {\n"
-    code += "    value_[i].terminate();\n"
-    code += "  }\n"
+    if @@variable_index > 0 then
+      code += "  for (size_t i = 0; i < sizeof(value_) / sizeof(value_[0]); ++i) {\n"
+      code += "    value_[i].terminate();\n"
+      code += "  }\n"
+    end
     code += "}\n"
     @@entries[-1][:terminate] << "RemapClass_#{@name}::terminate"
 
@@ -276,10 +296,14 @@ class RemapClass
     # ----------------------------------------
     code += "\n"
     code += "private:\n"
-    code += "static RemapClass::Item value_[#{@@variable_index}];\n"
+    if @@variable_index > 0 then
+      code += "static RemapClass::Item value_[#{@@variable_index}];\n"
+    end
     code += "};\n"
 
-    code += "RemapClass::Item #{classname}::value_[#{@@variable_index}];\n"
+    if @@variable_index > 0 then
+      code += "RemapClass::Item #{classname}::value_[#{@@variable_index}];\n"
+    end
     code += "\n\n"
 
     code
