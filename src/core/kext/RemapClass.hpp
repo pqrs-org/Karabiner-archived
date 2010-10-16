@@ -65,8 +65,26 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       RemapFilter::Vector_FilterUnionPointer* filters_;
     };
+    DECLARE_VECTOR(Item);
+
+    // ----------------------------------------------------------------------
+    RemapClass(const unsigned int* vec, size_t length,
+               const unsigned int* filter, size_t filterlength,
+               bool enable_when_passthrough);
+    ~RemapClass(void);
+
+    void remap_key(RemapParams& remapParams);
+    void remap_consumer(RemapConsumerParams& remapParams);
+    void remap_pointing(RemapPointingParams_relative& remapParams);
+    void remap_simultaneouskeypresses(void);
+    bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params);
+    bool enabled(void);
+
+  private:
+    Vector_Item items_;
   };
 
+  // ================================================================================
   namespace RemapClassManager {
     void initialize(IOWorkLoop& workloop);
     void terminate(void);

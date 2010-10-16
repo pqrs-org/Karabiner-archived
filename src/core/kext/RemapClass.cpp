@@ -304,6 +304,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     return false;
   }
 
+  // ----------------------------------------------------------------------
+
+  // ================================================================================
   namespace RemapClassManager {
     typedef void (*RemapClass_initialize)(void);
     typedef void (*RemapClass_terminate)(void);
