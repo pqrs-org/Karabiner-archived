@@ -29,6 +29,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         InputModeFilter* inputModeFilter;
       } p_;
     };
+
+    typedef FilterUnion* FilterUnionPointer;
+    DECLARE_VECTOR(FilterUnionPointer);
   }
 }
 
