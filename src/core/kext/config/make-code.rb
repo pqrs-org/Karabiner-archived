@@ -100,6 +100,7 @@ end
 
 print "\n"
 
+RemapClass.output_entries($outfile[:remapclass_initialize_vector])
 $outfile[:config] << "int enabled_flags[#{KeyCode.count('ConfigIndex')}];\n"
 
 # ======================================================================

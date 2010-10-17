@@ -7,6 +7,8 @@ require 'inc.keycode.rb'
 class RemapClass
   @@simultaneous_keycode_index = 0
   @@variable_index = 0
+  @@entries_notsave = []
+  @@entries_normal = []
 
   def RemapClass.reset_variable_index
     @@variable_index = 0
@@ -21,6 +23,12 @@ class RemapClass
       :setkeyboardtype   => nil,
       :statusmessage     => 'NULL',
     }
+
+    if /^notsave_/ =~ name then
+      @@entries_notsave << name
+    else
+      @@entries_normal << name
+    end
   end
   attr_accessor :name, :filter, :code
 
@@ -132,5 +140,29 @@ class RemapClass
     end
 
     outfile << "\n"
+  end
+
+  def RemapClass.output_entries(outfile)
+    [
+     { :name => 'initialize_vector', :type => 'unsigned int*' },
+     { :name => 'configindex', :type => 'unsigned int' },
+     { :name => 'enable_when_passthrough', :type => 'bool' },
+     { :name => 'statusmessage', :type => 'const char*' },
+     { :name => 'is_setkeyboardtype', :type => 'bool' },
+     { :name => 'setkeyboardtype', :type => 'unsigned int' },
+    ].each do |info|
+      outfile << "static const #{info[:type]} remapclass_#{info[:name]}[] = {\n"
+      [@@entries_notsave, @@entries_normal].each do |entries|
+        entries.each do |name|
+          outfile << "  remapclass_#{name}_#{info[:name]},\n"
+        end
+      end
+
+      if info[:name] == 'initialize_vector' then
+        outfile << "  NULL,\n"
+      end
+
+      outfile << "};\n"
+    end
   end
 end
