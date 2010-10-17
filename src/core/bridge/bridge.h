@@ -1,6 +1,58 @@
 #ifndef BRIDGE_H
 #define BRIDGE_H
 
+// RemapClass initialize_vector format:
+//
+// base:
+// { BRIDGE_INITIALIZE_VECTOR_FORMAT_VERSION, size_of_after, {<filter>}, [<remap>] }
+//
+// Example:
+//   {
+//     BRIDGE_INITIALIZE_VECTOR_FORMAT_VERSION,
+//     12,
+//     2,BRIDGE_FILTERTYPE_CONFIG_NOT,881,
+//     2,BRIDGE_FILTERTYPE_CONFIG_NOT,882,
+//     5,BRIDGE_REMAPTYPE_KEYTOKEY,BRIDGE_DATATYPE_KEYCODE,0,BRIDGE_DATATYPE_KEYCODE,11,
+//   };
+//
+//
+//   No filter version
+//   {
+//     BRIDGE_INITIALIZE_VECTOR_FORMAT_VERSION,
+//     6,
+//     5,BRIDGE_REMAPTYPE_KEYTOKEY,BRIDGE_DATATYPE_KEYCODE,0,BRIDGE_DATATYPE_KEYCODE,11,
+//   };
+//
+//
+//   No remap version
+//   {
+//     BRIDGE_INITIALIZE_VECTOR_FORMAT_VERSION,
+//     0,
+//   }
+//
+// --------------------
+//
+// <filter>
+//   { size_of_after, BRIDGE_FILTERTYPE_XXX, values }
+//
+// Example of <filter>:
+//   { 2,BRIDGE_FILTERTYPE_CONFIG_NOT,881 }
+//
+// --------------------
+//
+// <remap>
+//   { size_of_after, BRIDGE_REMAPTYPE_XXX, values }
+//
+// Example of <remap>:
+//   { 5,BRIDGE_REMAPTYPE_KEYTOKEY,BRIDGE_DATATYPE_KEYCODE,0,BRIDGE_DATATYPE_KEYCODE,11 };
+//
+// --------------------
+
+
+enum {
+  BRIDGE_INITIALIZE_VECTOR_FORMAT_VERSION = 1,
+};
+
 enum {
   BRIDGE_DATATYPE_NONE,
   BRIDGE_DATATYPE_KEYCODE,
