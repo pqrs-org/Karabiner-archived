@@ -79,6 +79,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params);
     const char* get_statusmessage(void);
     bool enabled(void);
+    bool is_simultaneouskeypresses(void);
 
   private:
     enum {
@@ -86,14 +87,17 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
 
     Vector_ItemPointer items_;
+    const char* statusmessage_;
     unsigned int keyboardtype_;
     bool is_setkeyboardtype_;
-    const char* statusmessage_;
     unsigned int configindex_;
     bool enable_when_passthrough_;
+    bool is_simultaneouskeypresses_;
 
     static int allocation_count;
   };
+  typedef RemapClass* RemapClassPointer;
+  DECLARE_VECTOR(RemapClassPointer);
 
   // ================================================================================
   namespace RemapClassManager {
