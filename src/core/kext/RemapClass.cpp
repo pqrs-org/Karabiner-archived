@@ -6,40 +6,41 @@
 #include "util/EventInputQueue.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  void
-  RemapClass::Item::initialize_remap(const unsigned int* vec, size_t length)
+  RemapClass::Item::Item(const unsigned int* vec, size_t length)
   {
     type_ = BRIDGE_REMAPTYPE_NONE;
+    filters_ = NULL;
 
     // ------------------------------------------------------------
     // check parameters.
     //
     if (! vec || length <= 0) {
-      IOLOG_ERROR("RemapClass::Item::initialize_remap invalid parameter.\n");
-      goto error;
+      IOLOG_ERROR("RemapClass::Item::Item invalid parameter.\n");
+      return;
     }
 
     // ------------------------------------------------------------
     // initialize values.
     //
-    type_ = vec[0];
-
-#define INITIALIZE_UNION_VALUE(POINTER, CLASS) {                               \
-    POINTER = new CLASS;                                                       \
-    if (! POINTER) {                                                           \
-      IOLOG_ERROR("RemapClass::Item::initialize_remap failed to allocate.\n"); \
-      goto error;                                                              \
-    } else {                                                                   \
-      for (size_t i = 1;; i += 2) {                                            \
-        size_t datatype_index = i;                                             \
-        size_t value_index    = i + 1;                                         \
-        if (value_index >= length) break;                                      \
-        (POINTER)->add(vec[datatype_index], vec[value_index]);                 \
-      }                                                                        \
-    }                                                                          \
+#define INITIALIZE_UNION_VALUE(POINTER, CLASS) {                   \
+    POINTER = new CLASS;                                           \
+    if (! POINTER) {                                               \
+      IOLOG_ERROR("RemapClass::Item::Item failed to allocate.\n"); \
+      return;                                                      \
+    } else {                                                       \
+      type_ = newtype;                                             \
+      for (size_t i = 1;; i += 2) {                                \
+        size_t datatype_index = i;                                 \
+        size_t value_index    = i + 1;                             \
+        if (value_index >= length) break;                          \
+        (POINTER)->add(vec[datatype_index], vec[value_index]);     \
+      }                                                            \
+    }                                                              \
 }
 
-    switch (type_) {
+    unsigned int newtype = vec[0];
+
+    switch (newtype) {
       // handle BRIDGE_REMAPTYPE_NONE as error. (see default)
       case BRIDGE_REMAPTYPE_KEYTOKEY:                       INITIALIZE_UNION_VALUE(p_.keyToKey,                       RemapFunc::KeyToKey);                       break;
       case BRIDGE_REMAPTYPE_KEYTOCONSUMER:                  INITIALIZE_UNION_VALUE(p_.keyToConsumer,                  RemapFunc::KeyToConsumer);                  break;
@@ -56,85 +57,15 @@ namespace org_pqrs_KeyRemap4MacBook {
       case BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL:       INITIALIZE_UNION_VALUE(p_.pointingRelativeToScroll,       RemapFunc::PointingRelativeToScroll);       break;
       case BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES:         INITIALIZE_UNION_VALUE(p_.simultaneousKeyPresses,         RemapFunc::SimultaneousKeyPresses);         break;
       default:
-        IOLOG_ERROR("RemapClass::Item::initialize_remap unknown type_ (%d)\n", type_);
+        IOLOG_ERROR("RemapClass::Item::Item unknown type_ (%d)\n", type_);
         type_ = BRIDGE_REMAPTYPE_NONE;
-        goto error;
+        return;
     }
 
 #undef INITIALIZE_UNION_VALUE
-
-    return;
-
-  error:
-    terminate();
   }
 
-  void
-  RemapClass::Item::initialize_filter(const unsigned int* vec, size_t length)
-  {
-    const unsigned int* end = NULL;
-    unsigned int total = 0;
-
-    // ------------------------------------------------------------
-    // check parameters.
-    //
-    if (! vec || length <= 0) {
-      IOLOG_ERROR("RemapClass::Item::initialize_filter invalid parameter.\n");
-      goto error;
-    }
-
-    // ------------------------------------------------------------
-    // initialize values.
-    //
-    end = vec + length;
-    total = vec[0];
-    vec += 1;
-
-    if (total > 0) {
-      filters_ = new RemapFilter::Vector_FilterUnionPointer();
-      if (! filters_) {
-        IOLOG_ERROR("RemapClass::Item::initialize_filter failed to allocate.\n");
-        goto error;
-      }
-
-      for (unsigned int i = 0; i < total; ++i) {
-        unsigned int size = 0;
-
-        // (1) first check
-        if (vec >= end) {
-          IOLOG_ERROR("RemapClass::Item::initialize_filter invalid data.\n");
-          goto error;
-        }
-
-        size = vec[0];
-        vec += 1;
-
-        if (vec >= end) {
-          IOLOG_ERROR("RemapClass::Item::initialize_filter invalid data.\n");
-          goto error;
-        }
-
-        RemapFilter::FilterUnion* newp = new RemapFilter::FilterUnion(vec, size);
-        if (! newp) {
-          IOLOG_ERROR("RemapClass::Item::initialize_filter failed to allocate.\n");
-          goto error;
-        }
-        filters_->push_back(newp);
-        vec += size;
-
-        // Don't check vec position here.
-        // Check vec position at (1) of next loop.
-      }
-    }
-
-    return;
-
-  error:
-    terminate();
-  }
-
-  void
-  RemapClass::Item::terminate(void)
+  RemapClass::Item::~Item(void)
   {
 #define DELETE_UNLESS_NULL(POINTER) { \
     if (POINTER) { delete POINTER; }  \
@@ -163,8 +94,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
 #undef DELETE_UNLESS_NULL
 
-    type_ = BRIDGE_REMAPTYPE_NONE;
-
     // ------------------------------------------------------------
     if (filters_) {
       for (size_t i = 0; i < filters_->size(); ++i) {
@@ -174,8 +103,39 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
       }
       delete filters_;
-      filters_ = NULL;
     }
+  }
+
+  void
+  RemapClass::Item::append_filter(const unsigned int* vec, size_t length)
+  {
+    // ------------------------------------------------------------
+    // check parameters.
+    //
+    if (! vec || length <= 0) {
+      IOLOG_ERROR("RemapClass::Item::append_filter invalid parameter.\n");
+      return;
+    }
+
+    // ------------------------------------------------------------
+    // append to filters_.
+    //
+    if (! filters_) {
+      filters_ = new RemapFilter::Vector_FilterUnionPointer();
+
+      if (! filters_) {
+        IOLOG_ERROR("RemapClass::Item::append_filter failed to allocate.\n");
+        return;
+      }
+    }
+
+    RemapFilter::FilterUnion* newp = new RemapFilter::FilterUnion(vec, length);
+    if (! newp) {
+      IOLOG_ERROR("RemapClass::Item::append_filter failed to allocate.\n");
+      return;
+    }
+
+    filters_->push_back(newp);
   }
 
   bool
@@ -305,11 +265,94 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------------------------------------
-  RemapClass::RemapClass(const unsigned int* vec, size_t length,
-                         const unsigned int* filter, size_t filterlength,
+  int RemapClass::allocation_count = 0;
+
+  RemapClass::RemapClass(const unsigned int* initialize_vector,
+                         const char* statusmessage,
+                         unsigned int keyboardtype, bool is_setkeyboardtype,
                          unsigned int configindex, bool enable_when_passthrough) :
+    statusmessage_(statusmessage),
+    keyboardtype_(keyboardtype), is_setkeyboardtype_(is_setkeyboardtype),
     configindex_(configindex), enable_when_passthrough_(enable_when_passthrough)
   {
+    // ------------------------------------------------------------
+    // check parameters.
+    //
+#define CHECK_INITIALIZE_VECTOR {                                 \
+    if (! initialize_vector) {                                    \
+      IOLOG_ERROR("RemapClass::RemapClass invalid parameter.\n"); \
+      return;                                                     \
+    }                                                             \
+}
+
+    CHECK_INITIALIZE_VECTOR;
+
+    // --------------------
+    // check version
+    unsigned int version = initialize_vector[0];
+    ++initialize_vector;
+    CHECK_INITIALIZE_VECTOR;
+
+    if (version != BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION) {
+      IOLOG_INFO("RemapClass::RemapClass version mismatch.\n");
+      return;
+    }
+
+    // ------------------------------------------------------------
+    // initialize items_ from vector
+    unsigned int total_length = initialize_vector[0];
+    ++initialize_vector;
+    CHECK_INITIALIZE_VECTOR;
+
+    if (allocation_count + total_length > MAX_ALLOCATION_COUNT) {
+      IOLOG_ERROR("RemapClass::RemapClass too many allocation_count.\n");
+      return;
+    }
+    allocation_count += total_length;
+
+    // --------------------
+    unsigned int total_tmp = 0;
+    for (;;) {
+      unsigned int size = initialize_vector[0];
+      ++initialize_vector;
+      ++total_tmp;
+      CHECK_INITIALIZE_VECTOR;
+
+      // ----------------------------------------
+      if (size > 0) {
+        unsigned int type = initialize_vector[0];
+
+        if (BRIDGE_REMAPTYPE_NONE < type && type < BRIDGE_REMAPTYPE_END) {
+          Item* newp = new Item(initialize_vector, size);
+          items_.push_back(newp);
+
+        } else if (BRIDGE_FILTERTYPE_NONE < type && type < BRIDGE_FILTERTYPE_END) {
+          if (items_.size() == 0) {
+            IOLOG_ERROR("RemapClass::RemapClass invalid filter.\n");
+            return;
+          }
+          Item* p = items_.back();
+          if (p) {
+            p->append_filter(initialize_vector, size);
+          }
+
+        } else {
+          IOLOG_ERROR("RemapClass::RemapClass unknown type:%d.\n", type);
+          return;
+        }
+
+        initialize_vector += size;
+        total_tmp += size;
+        CHECK_INITIALIZE_VECTOR;
+      }
+
+      // ----------------------------------------
+      if (total_tmp == total_length) return;
+      if (total_tmp > total_length) {
+        IOLOG_ERROR("RemapClass::RemapClass invalid initialize_vector.\n");
+        return;
+      }
+    }
   }
 
   RemapClass::~RemapClass(void)
@@ -317,9 +360,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (size_t i = 0; i < items_.size(); ++i) {
       Item* p = items_[i];
       if (p) {
-        p->terminate();
         delete p;
       }
+    }
+  }
+
+  void
+  RemapClass::remap_setkeyboardtype(KeyboardType& keyboardType)
+  {
+    if (is_setkeyboardtype_) {
+      keyboardType = keyboardtype_;
     }
   }
 
@@ -413,8 +463,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     typedef bool (*RemapClass_remap_dropkeyafterremap)(const Params_KeyboardEventCallBack& params);
     typedef const char* (*RemapClass_get_statusmessage)(void);
     typedef bool (*RemapClass_enabled)(void);
-
-#include "config/output/include.RemapClass.cpp"
 
     class Item : public List::Item {
     public:
