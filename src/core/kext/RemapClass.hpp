@@ -24,13 +24,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     class Item {
     public:
-      Item(void) {
-        type_ = BRIDGE_REMAPTYPE_NONE;
-        filters_ = NULL;
-      }
-      void initialize_remap(const unsigned int* vec, size_t length);
-      void initialize_filter(const unsigned int* vec, size_t length);
-      void terminate(void);
+      Item(const unsigned int* vec, size_t length);
+      ~Item(void);
+      void append_filter(const unsigned int* vec, size_t length);
 
       // --------------------
       bool remap(RemapParams& remapParams);
@@ -69,22 +65,34 @@ namespace org_pqrs_KeyRemap4MacBook {
     DECLARE_VECTOR(ItemPointer);
 
     // ----------------------------------------------------------------------
-    RemapClass(const unsigned int* vec, size_t length,
-               const unsigned int* filter, size_t filterlength,
+    RemapClass(const unsigned int* initialize_vector,
+               const char* statusmessage,
+               unsigned int keyboardtype, bool is_setkeyboardtype,
                unsigned int configindex, bool enable_when_passthrough);
     ~RemapClass(void);
 
+    void remap_setkeyboardtype(KeyboardType& keyboardType);
     void remap_key(RemapParams& remapParams);
     void remap_consumer(RemapConsumerParams& remapParams);
     void remap_pointing(RemapPointingParams_relative& remapParams);
     void remap_simultaneouskeypresses(void);
     bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params);
+    const char* get_statusmessage(void);
     bool enabled(void);
 
   private:
+    enum {
+      MAX_ALLOCATION_COUNT = 32 * 1024 * 1024, // 32MB
+    };
+
     Vector_ItemPointer items_;
+    unsigned int keyboardtype_;
+    bool is_setkeyboardtype_;
+    const char* statusmessage_;
     unsigned int configindex_;
     bool enable_when_passthrough_;
+
+    static int allocation_count;
   };
 
   // ================================================================================
