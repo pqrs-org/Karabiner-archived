@@ -14,7 +14,7 @@ $outfile = {
   :config_register => open('output/include.config_register.cpp', 'w'),
   :config_unregister => open('output/include.config_unregister.cpp', 'w'),
   :config_default => open('output/include.config.default.hpp', 'w'),
-  :remapclass => open('output/include.RemapClass.cpp', 'w'),
+  :remapclass_initialize_vector => open('output/include.RemapClass_initialize_vector.cpp', 'w'),
   :remapcode_vk_config => open('output/include.remapcode_vk_config.cpp', 'w'),
 }
 
@@ -24,7 +24,16 @@ ARGV.each do |xmlpath|
   parser = XML::Parser.string(lines.join(''))
   libxmldoc = parser.parse
 
+  counter = 0
+
   libxmldoc.root.find('//item').each do |node|
+    counter += 1
+    if counter > 10 then
+      $stdout.print '.'
+      $stdout.flush
+      counter = 0
+    end
+
     # ------------------------------------------------------------
     # validate
     if node.find('./name').length != 1 then
@@ -81,42 +90,13 @@ ARGV.each do |xmlpath|
     # ----------------------------------------
     RemapClass.reset_variable_index
     remapclass = RemapClass.new(name)
-    $outfile[:remapclass] << remapclass.to_code(node)
+    remapclass.to_code(node, $outfile[:remapclass_initialize_vector])
   end
 end
+
+print "\n"
 
 $outfile[:config] << "int enabled_flags[#{KeyCode.count('ConfigIndex')}];\n"
-
-# ======================================================================
-# put all entries
-[:initialize,
- :terminate,
- :remap_setkeyboardtype,
- :remap_key,
- :remap_consumer,
- :remap_pointing,
- :remap_simultaneouskeypresses,
- :remap_dropkeyafterremap,
- :get_statusmessage,
- :enabled,
-].each do |key|
-  name = key.to_s
-  $outfile[:remapclass] << "RemapClass_#{name} listRemapClass_#{name}[] = {\n"
-
-  [true, false].each do |isnotsave|
-    RemapClass.get_entries.each do |item|
-      next if isnotsave && ! (/^notsave_/ =~ item[:name])
-      next if ! isnotsave && (/^notsave_/ =~ item[:name])
-
-      item[key].each do |line|
-        $outfile[:remapclass] << "#{line},\n"
-      end
-    end
-  end
-
-  $outfile[:remapclass] << "NULL,\n"
-  $outfile[:remapclass] << "};\n"
-end
 
 # ======================================================================
 $outfile.each do |name,file|

@@ -15,7 +15,8 @@ class Filter
       vec << "KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}"
     end
 
-    @filters << vec
+    @filters << vec.count
+    @filters += vec
   end
 
   def append_device(filtertype, node)
@@ -25,7 +26,8 @@ class Filter
       vec += f.strip.split(/,/)
     end
 
-    @filters << vec
+    @filters << vec.count
+    @filters += vec
   end
 
   def append_config(filtertype, node)
@@ -35,7 +37,8 @@ class Filter
       vec << KeyCode.ConfigIndex(f.strip.gsub(/\./, '_'))
     end
 
-    @filters << vec
+    @filters << vec.count
+    @filters += vec
   end
 
   def append_inputmode(filtertype, node)
@@ -45,66 +48,44 @@ class Filter
       vec << "KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}"
     end
 
-    @filters << vec
+    @filters << vec.count
+    @filters += vec
   end
 
-  def to_code(item_node, autogen_node)
+  def to_vector(item_node, autogen_node)
     while autogen_node != item_node
-      # ----------------------------------------
-      autogen_node.parent.find('./not').each do |node|
-        append_application('BRIDGE_FILTERTYPE_APPLICATION_NOT', node)
-      end
+      autogen_node.parent.children.each do |node|
+        case node.name
+        when 'not' then
+          append_application('BRIDGE_FILTERTYPE_APPLICATION_NOT', node)
+        when 'only' then
+          append_application('BRIDGE_FILTERTYPE_APPLICATION_ONLY', node)
 
-      autogen_node.parent.find('./only').each do |node|
-        append_application('BRIDGE_FILTERTYPE_APPLICATION_ONLY', node)
-      end
+        when 'device_not' then
+          append_device('BRIDGE_FILTERTYPE_DEVICE_NOT', node)
+        when 'device_only' then
+          append_device('BRIDGE_FILTERTYPE_DEVICE_ONLY', node)
 
-      # ----------------------------------------
-      autogen_node.parent.find('./device_not').each do |node|
-        append_device('BRIDGE_FILTERTYPE_DEVICE_NOT', node)
-      end
+        when 'config_not' then
+          append_config('BRIDGE_FILTERTYPE_CONFIG_NOT', node)
+        when 'config_only' then
+          append_config('BRIDGE_FILTERTYPE_CONFIG_ONLY', node)
 
-      autogen_node.parent.find('./device_only').each do |node|
-        append_device('BRIDGE_FILTERTYPE_DEVICE_ONLY', node)
-      end
+        when 'inputmode_not' then
+          append_inputmode('BRIDGE_FILTERTYPE_INPUTMODE_NOT', node)
+        when 'inputmode_only' then
+          append_inputmode('BRIDGE_FILTERTYPE_INPUTMODE_ONLY', node)
 
-      # ----------------------------------------
-      autogen_node.parent.find('./config_not').each do |node|
-        append_config('BRIDGE_FILTERTYPE_CONFIG_NOT', node)
-      end
-
-      autogen_node.parent.find('./config_only').each do |node|
-        append_config('BRIDGE_FILTERTYPE_CONFIG_ONLY', node)
-      end
-
-      # ----------------------------------------
-      autogen_node.parent.find('./inputmode_not').each do |node|
-        append_inputmode('BRIDGE_FILTERTYPE_INPUTMODE_NOT', node)
-      end
-
-      autogen_node.parent.find('./inputmode_only').each do |node|
-        append_inputmode('BRIDGE_FILTERTYPE_INPUTMODE_ONLY', node)
-      end
-
-      autogen_node.parent.find('./inputmodedetail_not').each do |node|
-        append_inputmode('BRIDGE_FILTERTYPE_INPUTMODEDETAIL_NOT', node)
-      end
-
-      autogen_node.parent.find('./inputmodedetail_only').each do |node|
-        append_inputmode('BRIDGE_FILTERTYPE_INPUTMODEDETAIL_ONLY', node)
+        when 'inputmodedetail_not'
+          append_inputmode('BRIDGE_FILTERTYPE_INPUTMODEDETAIL_NOT', node)
+        when 'inputmodedetail_only'
+          append_inputmode('BRIDGE_FILTERTYPE_INPUTMODEDETAIL_ONLY', node)
+        end
       end
 
       autogen_node = autogen_node.parent
     end
 
-    vec = []
-    vec << @filters.count
-
-    @filters.each do |f|
-      vec << f.count
-      vec += f
-    end
-
-    vec.join(',')
+    @filters
   end
 end
