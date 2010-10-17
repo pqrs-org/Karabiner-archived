@@ -55,10 +55,6 @@ class RemapClass
         end
 
         datatype = newdatatype
-        if KeyCode[value].nil? then
-          print "[ERROR] unknown keycode #{value}\n"
-          throw :exit
-        end
         newval << KeyCode[value]
       end
       args << datatype
@@ -84,7 +80,7 @@ class RemapClass
         @code[:statusmessage] = params
 
       when 'SetKeyboardType'
-        @code[:setkeyboardtype] = KeyCode.v('KeyboardType', params)
+        @code[:setkeyboardtype] = KeyCode[params]
 
       when 'SimultaneousKeyPresses'
         params = "KeyCode::VK_SIMULTANEOUSKEYPRESSES_#{@@simultaneous_keycode_index}, " + params
@@ -112,6 +108,13 @@ class RemapClass
     end
 
     # ----------------------------------------
+    outfile << "static const unsigned int remapclass_#{@name}_configindex = #{KeyCode.ConfigIndex(@name)};\n"
+    if /^passthrough_/ =~ name then
+      outfile << "static const bool remapclass_#{@name}_enable_when_passthrough = true;\n"
+    else
+      outfile << "static const bool remapclass_#{@name}_enable_when_passthrough = false;\n"
+    end
+
     outfile << "static const unsigned int* remapclass_#{@name}_initialize_vector[] = {\n"
     outfile << "  BRIDGE_INITIALIZE_VECTOR_FORMAT_VERSION,\n"
     outfile << "  #{@code[:initialize_vector].count},\n"

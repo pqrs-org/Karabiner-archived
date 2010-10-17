@@ -51,8 +51,10 @@ ARGV.each do |xmlpath|
     name.gsub!(/\./, '_')
 
     configaddress = nil
+    essential = false
     if sysctl_node['essential'] == 'true' then
       configaddress = "&(config.#{name})"
+      essential = true
       $outfile[:config] << "int #{name};\n"
     else
       configaddress = "&(config.enabled_flags[#{KeyCode.ConfigIndex(name)}])"
@@ -88,9 +90,11 @@ ARGV.each do |xmlpath|
     end
 
     # ----------------------------------------
-    RemapClass.reset_variable_index
-    remapclass = RemapClass.new(name)
-    remapclass.to_code(node, $outfile[:remapclass_initialize_vector])
+    unless essential then
+      RemapClass.reset_variable_index
+      remapclass = RemapClass.new(name)
+      remapclass.to_code(node, $outfile[:remapclass_initialize_vector])
+    end
   end
 end
 
