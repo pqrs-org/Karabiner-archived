@@ -123,8 +123,8 @@ class RemapClass
       outfile << "static const bool remapclass_#{@name}_enable_when_passthrough = false;\n"
     end
 
-    outfile << "static const unsigned int* remapclass_#{@name}_initialize_vector[] = {\n"
-    outfile << "  BRIDGE_INITIALIZE_VECTOR_FORMAT_VERSION,\n"
+    outfile << "static const unsigned int remapclass_#{@name}_initialize_vector[] = {\n"
+    outfile << "  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION,\n"
     outfile << "  #{@code[:initialize_vector].count},\n"
     outfile << "  #{@code[:initialize_vector].join(',')}\n"
     outfile << "};\n"
@@ -157,11 +157,6 @@ class RemapClass
           outfile << "  remapclass_#{name}_#{info[:name]},\n"
         end
       end
-
-      if info[:name] == 'initialize_vector' then
-        outfile << "  NULL,\n"
-      end
-
       outfile << "};\n"
     end
   end
