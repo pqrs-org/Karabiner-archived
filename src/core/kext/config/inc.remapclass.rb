@@ -144,14 +144,14 @@ class RemapClass
 
   def RemapClass.output_entries(outfile)
     [
-     { :name => 'initialize_vector', :type => 'unsigned int*' },
-     { :name => 'configindex', :type => 'unsigned int' },
-     { :name => 'enable_when_passthrough', :type => 'bool' },
+     { :name => 'initialize_vector', :type => 'const unsigned int*' },
+     { :name => 'configindex', :type => 'const unsigned int' },
+     { :name => 'enable_when_passthrough', :type => 'const bool' },
      { :name => 'statusmessage', :type => 'const char*' },
-     { :name => 'is_setkeyboardtype', :type => 'bool' },
-     { :name => 'setkeyboardtype', :type => 'unsigned int' },
+     { :name => 'is_setkeyboardtype', :type => 'const bool' },
+     { :name => 'setkeyboardtype', :type => 'const unsigned int' },
     ].each do |info|
-      outfile << "static const #{info[:type]} remapclass_#{info[:name]}[] = {\n"
+      outfile << "static #{info[:type]} remapclass_#{info[:name]}[] = {\n"
       [@@entries_notsave, @@entries_normal].each do |entries|
         entries.each do |name|
           outfile << "  remapclass_#{name}_#{info[:name]},\n"
