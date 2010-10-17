@@ -305,6 +305,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     ++initialize_vector;
     CHECK_INITIALIZE_VECTOR;
 
+    if (total_length == 0) return;
+
     if (allocation_count + total_length > MAX_ALLOCATION_COUNT) {
       IOLOG_ERROR("RemapClass::RemapClass too many allocation_count.\n");
       return;

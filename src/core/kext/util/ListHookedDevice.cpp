@@ -101,10 +101,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
   finish:
-    IOLOG_INFO("HookedDevice::setDeviceType device_:%p, name:%s, deviceType_:%d\n",
-               device_,
-               name ? name : "null",
-               deviceType_);
+    IOLOG_DEBUG("HookedDevice::setDeviceType device_:%p, name:%s, deviceType_:%d\n",
+                device_,
+                name ? name : "null",
+                deviceType_);
   }
 
   bool
