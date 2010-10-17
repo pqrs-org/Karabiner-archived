@@ -23,7 +23,12 @@ class KeyCode
 
   def KeyCode.v(type, key)
     load_keycode
-    @@keycode[type][key]
+    value = @@keycode[type][key]
+    if value.nil?
+      $stderr.print "unknown KeyCode[#{type}][#{key}]\n"
+      throw :exit
+    end
+    value
   end
 
   def KeyCode.[](key)
