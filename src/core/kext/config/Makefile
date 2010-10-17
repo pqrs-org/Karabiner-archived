@@ -1,6 +1,10 @@
 SYSCTL_FILE = ../../../../files/prefpane/output/checkbox.xml ../../../../files/prefpane/number.xml
 
 all:
+	make prepare
+	ruby ./make-code.rb $(SYSCTL_FILE)
+
+prepare:
 	mkdir -p output
 	mkdir -p ../keycode/data/include
 	make -C ../../../../files/prefpane
@@ -8,7 +12,6 @@ all:
 	ruby ./make-keycode.rb
 	ruby ./make-configindex.rb
 	make -C ../keycode output
-	ruby ./make-code.rb $(SYSCTL_FILE)
 
 clean:
 	rm -f output/*
