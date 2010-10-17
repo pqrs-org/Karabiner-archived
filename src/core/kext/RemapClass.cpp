@@ -567,6 +567,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       refresh_timer_.terminate();
 
+      if (enabled_remapclasses_) {
+        delete enabled_remapclasses_;
+      }
+
       if (remapclasses_) {
         for (size_t i = 0; i < remapclasses_->size(); ++i) {
           RemapClass* p = (*remapclasses_)[i];
