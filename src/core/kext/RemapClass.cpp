@@ -273,7 +273,8 @@ namespace org_pqrs_KeyRemap4MacBook {
                          unsigned int configindex, bool enable_when_passthrough) :
     statusmessage_(statusmessage),
     keyboardtype_(keyboardtype), is_setkeyboardtype_(is_setkeyboardtype),
-    configindex_(configindex), enable_when_passthrough_(enable_when_passthrough)
+    configindex_(configindex), enable_when_passthrough_(enable_when_passthrough),
+    is_simultaneouskeypresses_(false)
   {
     // ------------------------------------------------------------
     // check parameters.
@@ -325,6 +326,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (BRIDGE_REMAPTYPE_NONE < type && type < BRIDGE_REMAPTYPE_END) {
           Item* newp = new Item(initialize_vector, size);
           items_.push_back(newp);
+
+          if (type == BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES) {
+            is_simultaneouskeypresses_ = true;
+          }
 
         } else if (BRIDGE_FILTERTYPE_NONE < type && type < BRIDGE_FILTERTYPE_END) {
           if (items_.size() == 0) {
@@ -432,6 +437,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     return false;
   }
 
+  const char*
+  RemapClass::get_statusmessage(void)
+  {
+    return statusmessage_;
+  }
+
   bool
   RemapClass::enabled(void)
   {
@@ -451,37 +462,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     return config.enabled_flags[configindex_];
   }
 
+  bool
+  RemapClass::is_simultaneouskeypresses(void)
+  {
+    return is_simultaneouskeypresses_;
+  }
+
   // ================================================================================
   namespace RemapClassManager {
-    typedef void (*RemapClass_initialize)(void);
-    typedef void (*RemapClass_terminate)(void);
-    typedef void (*RemapClass_remap_setkeyboardtype)(KeyboardType& keyboardType);
-    typedef void (*RemapClass_remap_key)(RemapParams& remapParams);
-    typedef void (*RemapClass_remap_consumer)(RemapConsumerParams& remapParams);
-    typedef void (*RemapClass_remap_pointing)(RemapPointingParams_relative& remapParams);
-    typedef void (*RemapClass_remap_simultaneouskeypresses)(void);
-    typedef bool (*RemapClass_remap_dropkeyafterremap)(const Params_KeyboardEventCallBack& params);
-    typedef const char* (*RemapClass_get_statusmessage)(void);
-    typedef bool (*RemapClass_enabled)(void);
+#include "config/output/include.RemapClass_initialize_vector.cpp"
 
-    class Item : public List::Item {
-    public:
-      virtual ~Item(void) {}
-
-      union {
-        RemapClass_remap_setkeyboardtype remap_setkeyboardtype;
-        RemapClass_remap_key remap_key;
-        RemapClass_remap_consumer remap_consumer;
-        RemapClass_remap_pointing remap_pointing;
-        RemapClass_remap_simultaneouskeypresses remap_simultaneouskeypresses;
-      } func;
-    };
-
-    List* queue_remap_setkeyboardtype_ = NULL;
-    List* queue_remap_key_ = NULL;
-    List* queue_remap_consumer_ = NULL;
-    List* queue_remap_pointing_ = NULL;
-    List* queue_remap_simultaneouskeypresses_ = NULL;
     IOLock* lock_ = NULL;
     TimerWrapper refresh_timer_;
 
@@ -489,68 +479,50 @@ namespace org_pqrs_KeyRemap4MacBook {
     char lastmessage_[32];
     bool isEventInputQueueDelayEnabled_ = false;
 
+    Vector_RemapClassPointer* remapclasses_ = NULL;
+    Vector_RemapClassPointer* enabled_remapclasses_ = NULL;
+
     // ======================================================================
-    static bool
-    queue_isnotnull(void)
-    {
-      return queue_remap_setkeyboardtype_ &&
-             queue_remap_key_ &&
-             queue_remap_consumer_ &&
-             queue_remap_pointing_ &&
-             queue_remap_simultaneouskeypresses_;
-    }
-
-    static void
-    cleanup_all(void)
-    {
-      if (queue_isnotnull()) {
-        queue_remap_setkeyboardtype_->clear();
-        queue_remap_key_->clear();
-        queue_remap_consumer_->clear();
-        queue_remap_pointing_->clear();
-        queue_remap_simultaneouskeypresses_->clear();
-      }
-    }
-
     static void
     refresh_core(OSObject* owner, IOTimerEventSource* sender)
     {
       IOLockWrapper::ScopedLock lk(lock_);
 
-      if (! queue_isnotnull()) return;
+      if (! remapclasses_) return;
 
+      // ----------------------------------------
+      if (enabled_remapclasses_) {
+        delete enabled_remapclasses_;
+      }
+      enabled_remapclasses_ = new Vector_RemapClassPointer();
+      if (! enabled_remapclasses_) return;
+
+      // ----------------------------------------
       KeyboardRepeat::cancel();
-
-      cleanup_all();
 
       statusmessage_[0] = '\0';
 
-      for (size_t i = 0;; ++i) {
-        RemapClass_enabled enabled = listRemapClass_enabled[i];
-        if (! enabled) break;
-        if (! enabled()) continue;
+      if (config.notsave_passthrough) {
+        strlcat(statusmessage_, "Pass Through ", sizeof(statusmessage_));
+      }
 
-#define PUSH_REMAPCLASS(ENTRY) {                        \
-    if (listRemapClass_ ## ENTRY[i]) {                  \
-      Item* newp = new Item();                          \
-      (newp->func).ENTRY = listRemapClass_ ## ENTRY[i]; \
-      queue_ ## ENTRY ## _->push_back(newp);            \
-    }                                                   \
-}
+      isEventInputQueueDelayEnabled_ = false;
 
-        PUSH_REMAPCLASS(remap_setkeyboardtype);
-        PUSH_REMAPCLASS(remap_key);
-        PUSH_REMAPCLASS(remap_consumer);
-        PUSH_REMAPCLASS(remap_pointing);
-        PUSH_REMAPCLASS(remap_simultaneouskeypresses);
+      for (size_t i = 0; i < remapclasses_->size(); ++i) {
+        RemapClass* p = (*remapclasses_)[i];
+        if (! p) continue;
 
-#undef PUSH_REMAPCLASS
+        if (p->enabled()) {
+          enabled_remapclasses_->push_back(p);
 
-        if (listRemapClass_get_statusmessage[i]) {
-          const char* msg = (listRemapClass_get_statusmessage[i])();
+          const char* msg = p->get_statusmessage();
           if (msg) {
             strlcat(statusmessage_, msg, sizeof(statusmessage_));
             strlcat(statusmessage_, " ", sizeof(statusmessage_));
+          }
+
+          if (p->is_simultaneouskeypresses()) {
+            isEventInputQueueDelayEnabled_ = true;
           }
         }
       }
@@ -559,12 +531,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         KeyRemap4MacBook_bridge::StatusMessage::Request request(KeyRemap4MacBook_bridge::StatusMessage::MESSAGETYPE_EXTRA, statusmessage_);
         KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_STATUS_MESSAGE, &request, sizeof(request), NULL, 0);
         strlcpy(lastmessage_, statusmessage_, sizeof(lastmessage_));
-      }
-
-      if (queue_remap_simultaneouskeypresses_->empty()) {
-        isEventInputQueueDelayEnabled_ = false;
-      } else {
-        isEventInputQueueDelayEnabled_ = true;
       }
     }
 
@@ -576,18 +542,22 @@ namespace org_pqrs_KeyRemap4MacBook {
       lock_ = IOLockWrapper::alloc();
       statusmessage_[0] = '\0';
       lastmessage_[0] = '\0';
+      remapclasses_ = new Vector_RemapClassPointer();
+      enabled_remapclasses_ = NULL;
 
-      for (size_t i = 0;; ++i) {
-        RemapClass_initialize p = listRemapClass_initialize[i];
-        if (! p) break;
-        p();
+      if (remapclasses_) {
+        for (size_t i = 0; i < sizeof(remapclass_initialize_vector) / sizeof(remapclass_initialize_vector[0]); ++i) {
+          RemapClass* newp = new RemapClass(remapclass_initialize_vector[i],
+                                            remapclass_statusmessage[i],
+                                            remapclass_setkeyboardtype[i],
+                                            remapclass_is_setkeyboardtype[i],
+                                            remapclass_configindex[i],
+                                            remapclass_enable_when_passthrough[i]);
+          if (newp) {
+            remapclasses_->push_back(newp);
+          }
+        }
       }
-
-      queue_remap_setkeyboardtype_        = new List();
-      queue_remap_key_                    = new List();
-      queue_remap_consumer_               = new List();
-      queue_remap_pointing_               = new List();
-      queue_remap_simultaneouskeypresses_ = new List();
 
       refresh_timer_.initialize(&workloop, NULL, refresh_core);
     }
@@ -597,18 +567,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       refresh_timer_.terminate();
 
-      if (queue_isnotnull()) {
-        delete queue_remap_setkeyboardtype_;
-        delete queue_remap_key_;
-        delete queue_remap_consumer_;
-        delete queue_remap_pointing_;
-        delete queue_remap_simultaneouskeypresses_;
-      }
-
-      for (size_t i = 0;; ++i) {
-        RemapClass_terminate p = listRemapClass_terminate[i];
-        if (! p) break;
-        p();
+      if (remapclasses_) {
+        for (size_t i = 0; i < remapclasses_->size(); ++i) {
+          RemapClass* p = (*remapclasses_)[i];
+          if (p) {
+            delete p;
+          }
+        }
+        delete remapclasses_;
       }
 
       IOLockWrapper::free(lock_);
@@ -625,64 +591,61 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ----------------------------------------------------------------------
-#define DECLARE_REMAPFUNC(QUEUE, FUNC, PARAMS)    \
-  {                                               \
-    IOLockWrapper::ScopedLock lk(lock_);          \
-                                                  \
-    if (! QUEUE) return;                          \
-                                                  \
-    Item* p = static_cast<Item*>(QUEUE->front()); \
-    for (;;) {                                    \
-      if (! p) break;                             \
-      if (! (p->func).FUNC) break;                \
-      (p->func).FUNC(PARAMS);                     \
-      p = static_cast<Item*>(p->getnext());       \
-    }                                             \
-  }
+#define CALL_REMAPCLASS_FUNC(FUNC, PARAMS) {                     \
+    IOLockWrapper::ScopedLock lk(lock_);                         \
+    for (size_t i = 0; i < enabled_remapclasses_->size(); ++i) { \
+      RemapClass* p = (*enabled_remapclasses_)[i];               \
+      if (p) p->FUNC(PARAMS);                                    \
+    }                                                            \
+}
 
     void
     remap_setkeyboardtype(KeyboardType& keyboardType)
     {
-      DECLARE_REMAPFUNC(queue_remap_setkeyboardtype_, remap_setkeyboardtype, keyboardType);
+      CALL_REMAPCLASS_FUNC(remap_setkeyboardtype, keyboardType);
     }
 
     void
     remap_key(RemapParams& remapParams)
     {
-      DECLARE_REMAPFUNC(queue_remap_key_, remap_key, remapParams);
+      CALL_REMAPCLASS_FUNC(remap_key, remapParams);
     }
 
     void
     remap_consumer(RemapConsumerParams& remapParams)
     {
-      DECLARE_REMAPFUNC(queue_remap_consumer_, remap_consumer, remapParams);
+      CALL_REMAPCLASS_FUNC(remap_consumer, remapParams);
     }
 
     void
     remap_pointing(RemapPointingParams_relative& remapParams)
     {
-      DECLARE_REMAPFUNC(queue_remap_pointing_, remap_pointing, remapParams);
+      CALL_REMAPCLASS_FUNC(remap_pointing, remapParams);
     }
 
     void
     remap_simultaneouskeypresses(void)
     {
-      DECLARE_REMAPFUNC(queue_remap_simultaneouskeypresses_, remap_simultaneouskeypresses, );
+      CALL_REMAPCLASS_FUNC(remap_simultaneouskeypresses, );
     }
 
     bool
     remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params)
     {
-      // We do not need a lock, because we don't refer queues.
+      IOLockWrapper::ScopedLock lk(lock_);
 
       bool dropped = false;
-      for (size_t i = 0;; ++i) {
-        RemapClass_remap_dropkeyafterremap p = listRemapClass_remap_dropkeyafterremap[i];
-        if (! p) break;
-        if (p(params)) dropped = true;
+      for (size_t i = 0; i < enabled_remapclasses_->size(); ++i) {
+        RemapClass* p = (*enabled_remapclasses_)[i];
+        if (p) {
+          if (p->remap_dropkeyafterremap(params)) dropped = true;
+        }
       }
+
       return dropped;
     }
+
+#undef CALL_REMAPCLASS_FUNC
 
     bool
     isEventInputQueueDelayEnabled(void)
