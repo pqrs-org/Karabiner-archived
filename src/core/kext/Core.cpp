@@ -119,7 +119,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     notifierfunc_hookKeyboard(void* target, void* refCon, IOService* newService, IONotifier* notifier)
     {
-      IOLOG_INFO("notifierfunc_hookKeyboard newService:%p\n", newService);
+      IOLOG_DEBUG("notifierfunc_hookKeyboard newService:%p\n", newService);
 
       IOHIDevice* device = OSDynamicCast(IOHIKeyboard, newService);
       if (! device) return false;
@@ -132,7 +132,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     notifierfunc_unhookKeyboard(void* target, void* refCon, IOService* newService, IONotifier* notifier)
     {
-      IOLOG_INFO("notifierfunc_unhookKeyboard newService:%p\n", newService);
+      IOLOG_DEBUG("notifierfunc_unhookKeyboard newService:%p\n", newService);
 
       IOHIDevice* device = OSDynamicCast(IOHIKeyboard, newService);
       if (! device) return false;
@@ -145,7 +145,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     notifierfunc_hookPointing(void* target, void* refCon, IOService* newService, IONotifier* notifier)
     {
-      IOLOG_INFO("notifierfunc_hookPointing newService:%p\n", newService);
+      IOLOG_DEBUG("notifierfunc_hookPointing newService:%p\n", newService);
 
       IOHIDevice* device = OSDynamicCast(IOHIPointing, newService);
       if (! device) return false;
@@ -157,7 +157,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     notifierfunc_unhookPointing(void* target, void* refCon, IOService* newService, IONotifier* notifier)
     {
-      IOLOG_INFO("notifierfunc_unhookPointing newService:%p\n", newService);
+      IOLOG_DEBUG("notifierfunc_unhookPointing newService:%p\n", newService);
 
       IOHIDevice* device = OSDynamicCast(IOHIPointing, newService);
       if (! device) return false;
