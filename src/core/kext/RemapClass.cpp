@@ -354,7 +354,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ----------------------------------------
       if (total_tmp == total_length) return;
       if (total_tmp > total_length) {
-        IOLOG_ERROR("RemapClass::RemapClass invalid initialize_vector.\n");
+        IOLOG_ERROR("RemapClass::RemapClass invalid initialize_vector. (total_length:%d, total_tmp:%d)\n", total_length, total_tmp);
         return;
       }
     }
@@ -468,6 +468,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     return is_simultaneouskeypresses_;
   }
 
+  void
+  RemapClass::log_allocation_count(void)
+  {
+    IOLOG_INFO("RemapClass allocation_count %d/%d (%d%%)\n", allocation_count, MAX_ALLOCATION_COUNT, allocation_count * 100 / MAX_ALLOCATION_COUNT);
+  }
+
   // ================================================================================
   namespace RemapClassManager {
 #include "config/output/include.RemapClass_initialize_vector.cpp"
@@ -558,6 +564,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
         }
       }
+      RemapClass::log_allocation_count();
 
       refresh_timer_.initialize(&workloop, NULL, refresh_core);
     }

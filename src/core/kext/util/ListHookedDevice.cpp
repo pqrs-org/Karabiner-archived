@@ -49,7 +49,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
   finish:
-    IOLOG_INFO("HookedDevice::setVendorIDProductID device_:%p, vendorID_:0x%04x, productID_:0x%04x\n", device_, vendorID_, productID_);
+    IOLOG_DEBUG("HookedDevice::setVendorIDProductID device_:%p, vendorID_:0x%04x, productID_:0x%04x\n", device_, vendorID_, productID_);
   }
 
   void

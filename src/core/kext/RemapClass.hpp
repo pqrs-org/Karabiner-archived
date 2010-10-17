@@ -81,9 +81,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool enabled(void);
     bool is_simultaneouskeypresses(void);
 
+    static void log_allocation_count(void);
+
   private:
     enum {
-      MAX_ALLOCATION_COUNT = 32 * 1024 * 1024, // 32MB
+      MAX_ALLOCATION_COUNT = 8 * 1024 * 1024, // 8MB
     };
 
     Vector_ItemPointer items_;

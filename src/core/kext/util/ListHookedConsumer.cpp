@@ -26,7 +26,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   ListHookedConsumer::Item::~Item(void)
   {
-    IOLOG_INFO("ListHookedConsumer::Item::~Item()\n");
+    IOLOG_DEBUG("ListHookedConsumer::Item::~Item()\n");
     IOLockWrapper::free(replacerestore_lock_);
     restoreEventAction();
   }
@@ -94,7 +94,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (callback == EventInputQueue::push_KeyboardSpecialEventCallback) return false;
 
     // ------------------------------------------------------------
-    IOLOG_INFO("HookedConsumer::replaceEventAction device_:%p\n", device_);
+    IOLOG_DEBUG("HookedConsumer::replaceEventAction device_:%p\n", device_);
 
     orig_keyboardSpecialEventAction_ = callback;
     orig_keyboardSpecialEventTarget_ = kbd->_keyboardSpecialEventTarget;
@@ -118,7 +118,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (callback != EventInputQueue::push_KeyboardSpecialEventCallback) return false;
 
     // ----------------------------------------
-    IOLOG_INFO("HookedConsumer::restoreEventAction device_:%p\n", device_);
+    IOLOG_DEBUG("HookedConsumer::restoreEventAction device_:%p\n", device_);
 
     kbd->_keyboardSpecialEventAction = reinterpret_cast<KeyboardSpecialEventAction>(orig_keyboardSpecialEventAction_);
 
