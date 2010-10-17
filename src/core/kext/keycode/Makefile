@@ -1,5 +1,5 @@
 all:
-	make -C ../config
+	make -C ../config prepare
 	make output
 
 output:
