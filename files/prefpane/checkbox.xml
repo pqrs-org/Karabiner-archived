@@ -2012,7 +2012,7 @@
     </item>
 
     <item>
-      <name>Change F1..F16 Key</name>
+      <name>Change F1..F19 Key</name>
       <list>
         <item>
           <name>F1..F12 to Functional</name>
@@ -2421,6 +2421,11 @@
           <name>F16 to Tab</name>
           <sysctl>remap.f16_to_tab</sysctl>
           <autogen>--KeyToKey-- KeyCode::F16, KeyCode::TAB</autogen>
+        </item>
+        <item>
+          <name>F19 to Quote(')</name>
+          <sysctl>remap.f19_to_quote</sysctl>
+          <autogen>--KeyToKey-- KeyCode::F19, KeyCode::QUOTE</autogen>
         </item>
       </list>
     </item>
