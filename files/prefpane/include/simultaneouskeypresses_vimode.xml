@@ -84,18 +84,20 @@
       </block>
       <block>
         <config_only>option.simultaneouskeypresses_vimode_tab_to_managemode</config_only>
-        <autogen>--KeyOverlaidModifier-- KeyCode::TAB, KeyCode::COMMAND_L, ModifierFlag::EXTRA2, KeyCode::TAB</autogen>
+        <autogen>--KeyOverlaidModifier-- KeyCode::TAB, KeyCode::COMMAND_L, ModifierFlag::EXTRA2, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
         <block>
           <config_not>option.simultaneouskeypresses_vimode_jkli</config_not>
           <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA2, KeyCode::TAB, ModifierFlag::SHIFT_L</autogen>
           <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA2, KeyCode::TAB</autogen>
-          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA2, KeyCode::Q</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA2, KeyCode::BACKQUOTE</autogen>
+          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA2, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
         </block>
         <block>
           <config_only>option.simultaneouskeypresses_vimode_jkli</config_only>
           <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA2, KeyCode::TAB, ModifierFlag::SHIFT_L</autogen>
           <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA2, KeyCode::TAB</autogen>
-          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA2, KeyCode::Q</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA2, KeyCode::BACKQUOTE</autogen>
+          <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::EXTRA2, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
         </block>
       </block>
       <block>
@@ -350,6 +352,10 @@
       <block>
         <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
         <config_only>option.simultaneouskeypresses_vimode_backquote_to_command_space</config_only>
+      </block>
+	 <block>
+        <autogen>--KeyToKey-- KeyCode::W, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
+        <config_only>option.simultaneouskeypresses_vimode_w_to_cmd_w</config_only>
       </block>
       <block>
         <autogen>--KeyToKey-- KeyCode::Z, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
@@ -706,6 +712,10 @@
     <item>
       <name>[Option] Backquote to Command+Space (Launchbar,etc..)</name>
       <sysctl>option.simultaneouskeypresses_vimode_backquote_to_command_space</sysctl>
+    </item>
+    <item>
+      <name>[Option] W to Command+W (Close Window) </name>
+      <sysctl>option.simultaneouskeypresses_vimode_w_to_cmd_w</sysctl>
     </item>
     <item>
       <name>[Option] ZXCV to Command+ZXCV</name>
