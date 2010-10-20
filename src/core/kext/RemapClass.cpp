@@ -56,6 +56,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       case BRIDGE_REMAPTYPE_POINTINGBUTTONTOPOINTINGBUTTON: INITIALIZE_UNION_VALUE(p_.pointingButtonToPointingButton, RemapFunc::PointingButtonToPointingButton); break;
       case BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL:       INITIALIZE_UNION_VALUE(p_.pointingRelativeToScroll,       RemapFunc::PointingRelativeToScroll);       break;
       case BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES:         INITIALIZE_UNION_VALUE(p_.simultaneousKeyPresses,         RemapFunc::SimultaneousKeyPresses);         break;
+      case BRIDGE_REMAPTYPE_SETKEYBOARDTYPE:                INITIALIZE_UNION_VALUE(p_.setKeyboardType,                RemapFunc::SetKeyboardType);                break;
       default:
         IOLOG_ERROR("RemapClass::Item::Item unknown type_ (%d)\n", type_);
         type_ = BRIDGE_REMAPTYPE_NONE;
@@ -87,6 +88,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       case BRIDGE_REMAPTYPE_POINTINGBUTTONTOPOINTINGBUTTON: DELETE_UNLESS_NULL(p_.pointingButtonToPointingButton); break;
       case BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL:       DELETE_UNLESS_NULL(p_.pointingRelativeToScroll);       break;
       case BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES:         DELETE_UNLESS_NULL(p_.simultaneousKeyPresses);         break;
+      case BRIDGE_REMAPTYPE_SETKEYBOARDTYPE:                DELETE_UNLESS_NULL(p_.setKeyboardType);                break;
       default:
         IOLOG_ERROR("RemapClass::Item::terminate unknown type_ (%d)\n", type_);
         break;
@@ -252,6 +254,27 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
+  RemapClass::Item::remap_setkeyboardtype(KeyboardType& keyboardType)
+  {
+    if (isblocked()) return false;
+
+#define CALL_UNION_FUNCTION(POINTER) {                      \
+    if (POINTER) { return (POINTER)->remap(keyboardType); } \
+}
+
+    switch (type_) {
+      case BRIDGE_REMAPTYPE_SETKEYBOARDTYPE: CALL_UNION_FUNCTION(p_.setKeyboardType); break;
+      default:
+        // do nothing. (Do not call IOLOG_ERROR)
+        break;
+    }
+
+#undef CALL_UNION_FUNCTION
+
+    return false;
+  }
+
+  bool
   RemapClass::Item::isblocked(void)
   {
     if (! filters_) return false;
@@ -269,10 +292,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   RemapClass::RemapClass(const unsigned int* initialize_vector,
                          const char* statusmessage,
-                         unsigned int keyboardtype, bool is_setkeyboardtype,
                          unsigned int configindex) :
     statusmessage_(statusmessage),
-    keyboardtype_(keyboardtype), is_setkeyboardtype_(is_setkeyboardtype),
     configindex_(configindex),
     is_simultaneouskeypresses_(false)
   {
@@ -375,8 +396,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapClass::remap_setkeyboardtype(KeyboardType& keyboardType)
   {
-    if (is_setkeyboardtype_) {
-      keyboardType = keyboardtype_;
+    for (size_t i = 0; i < items_.size(); ++i) {
+      Item* p = items_[i];
+      if (p) {
+        if (p->remap_setkeyboardtype(keyboardType)) return;
+      }
     }
   }
 
@@ -546,8 +570,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         for (size_t i = 0; i < sizeof(remapclass_initialize_vector) / sizeof(remapclass_initialize_vector[0]); ++i) {
           RemapClass* newp = new RemapClass(remapclass_initialize_vector[i],
                                             remapclass_statusmessage[i],
-                                            remapclass_setkeyboardtype[i],
-                                            remapclass_is_setkeyboardtype[i],
                                             remapclass_configindex[i]);
           if (newp) {
             remapclasses_->push_back(newp);

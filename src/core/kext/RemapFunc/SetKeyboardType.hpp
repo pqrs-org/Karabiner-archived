@@ -6,6 +6,7 @@
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     class SetKeyboardType {
+    public:
       SetKeyboardType(void);
       ~SetKeyboardType(void);
 
