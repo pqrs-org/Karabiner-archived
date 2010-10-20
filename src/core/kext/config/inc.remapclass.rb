@@ -20,7 +20,6 @@ class RemapClass
     @code = {
       # functions
       :initialize_vector => [],
-      :setkeyboardtype   => nil,
       :statusmessage     => 'NULL',
     }
 
@@ -51,6 +50,8 @@ class RemapClass
           newdatatype = 'BRIDGE_DATATYPE_CONSUMERKEYCODE'
         elsif /^PointingButton::(.+)$/ =~ value then
           newdatatype = 'BRIDGE_DATATYPE_POINTINGBUTTON'
+        elsif /^KeyboardType::(.+)$/ =~ value then
+          newdatatype = 'BRIDGE_DATATYPE_KEYBOARDTYPE'
         elsif /^Option::(.+)$/ =~ value then
           newdatatype = 'BRIDGE_DATATYPE_OPTION'
         else
@@ -87,9 +88,6 @@ class RemapClass
       when 'ShowStatusMessage'
         @code[:statusmessage] = params
 
-      when 'SetKeyboardType'
-        @code[:setkeyboardtype] = KeyCode[params]
-
       when 'SimultaneousKeyPresses'
         params = "KeyCode::VK_SIMULTANEOUSKEYPRESSES_#{@@simultaneous_keycode_index}, " + params
         @@simultaneous_keycode_index += 1
@@ -97,7 +95,8 @@ class RemapClass
         @@variable_index += 1
 
       when 'KeyToKey', 'KeyToConsumer', 'KeyToPointingButton', 'DoublePressModifier', 'HoldingKeyToKey', 'IgnoreMultipleSameKeyPress', 'KeyOverlaidModifier',
-        'ConsumerToConsumer', 'ConsumerToKey', 'PointingButtonToPointingButton', 'PointingButtonToKey', 'PointingRelativeToScroll', 'DropKeyAfterRemap'
+        'ConsumerToConsumer', 'ConsumerToKey', 'PointingButtonToPointingButton', 'PointingButtonToKey', 'PointingRelativeToScroll', 'DropKeyAfterRemap',
+        'SetKeyboardType'
         append_to_code_initialize_vector(params, operation, filtervec)
         @@variable_index += 1
 
@@ -132,14 +131,6 @@ class RemapClass
 
     outfile << "static const char* remapclass_#{@name}_statusmessage = #{@code[:statusmessage]};\n"
 
-    if @code[:setkeyboardtype].nil? then
-      outfile << "static const bool remapclass_#{@name}_is_setkeyboardtype = false;\n"
-      outfile << "static const unsigned int remapclass_#{@name}_setkeyboardtype = 0;\n"
-    else
-      outfile << "static const bool remapclass_#{@name}_is_setkeyboardtype = true;\n"
-      outfile << "static const unsigned int remapclass_#{@name}_setkeyboardtype = #{@code[:setkeyboardtype]};\n"
-    end
-
     outfile << "\n"
   end
 
@@ -148,8 +139,6 @@ class RemapClass
      { :name => 'initialize_vector', :type => 'const unsigned int*' },
      { :name => 'configindex', :type => 'const unsigned int' },
      { :name => 'statusmessage', :type => 'const char*' },
-     { :name => 'is_setkeyboardtype', :type => 'const bool' },
-     { :name => 'setkeyboardtype', :type => 'const unsigned int' },
     ].each do |info|
       outfile << "static #{info[:type]} remapclass_#{info[:name]}[] = {\n"
       [@@entries_notsave, @@entries_normal].each do |entries|
