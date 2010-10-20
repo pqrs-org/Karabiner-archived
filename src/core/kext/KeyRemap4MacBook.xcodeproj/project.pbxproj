@@ -52,6 +52,8 @@
 		3475BBFF11CEDC5F007BC76A /* FromKeyChecker.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3475BBFE11CEDC5F007BC76A /* FromKeyChecker.hpp */; };
 		3477E3BB11CFAC9D00DC05C9 /* RemapClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3477E3B911CFAC9D00DC05C9 /* RemapClass.cpp */; };
 		3477E3BC11CFAC9D00DC05C9 /* RemapClass.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3477E3BA11CFAC9D00DC05C9 /* RemapClass.hpp */; };
+		34794D53126F32E700655ADB /* SetKeyboardType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34794D51126F32E700655ADB /* SetKeyboardType.cpp */; };
+		34794D54126F32E700655ADB /* SetKeyboardType.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34794D52126F32E700655ADB /* SetKeyboardType.hpp */; };
 		347CADA011D82FFE00F51978 /* KeyToConsumer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 347CAD9E11D82FFE00F51978 /* KeyToConsumer.cpp */; };
 		347CADA111D82FFE00F51978 /* KeyToConsumer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 347CAD9F11D82FFE00F51978 /* KeyToConsumer.hpp */; };
 		3484E04811DE10CE00426723 /* KeyToPointingButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3484E04611DE10CE00426723 /* KeyToPointingButton.cpp */; };
@@ -157,6 +159,8 @@
 		3475BBFE11CEDC5F007BC76A /* FromKeyChecker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FromKeyChecker.hpp; path = util/FromKeyChecker.hpp; sourceTree = "<group>"; };
 		3477E3B911CFAC9D00DC05C9 /* RemapClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RemapClass.cpp; sourceTree = "<group>"; };
 		3477E3BA11CFAC9D00DC05C9 /* RemapClass.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RemapClass.hpp; sourceTree = "<group>"; };
+		34794D51126F32E700655ADB /* SetKeyboardType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SetKeyboardType.cpp; path = RemapFunc/SetKeyboardType.cpp; sourceTree = "<group>"; };
+		34794D52126F32E700655ADB /* SetKeyboardType.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SetKeyboardType.hpp; path = RemapFunc/SetKeyboardType.hpp; sourceTree = "<group>"; };
 		347CAD9E11D82FFE00F51978 /* KeyToConsumer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyToConsumer.cpp; path = RemapFunc/KeyToConsumer.cpp; sourceTree = "<group>"; };
 		347CAD9F11D82FFE00F51978 /* KeyToConsumer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyToConsumer.hpp; path = RemapFunc/KeyToConsumer.hpp; sourceTree = "<group>"; };
 		3484E04611DE10CE00426723 /* KeyToPointingButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyToPointingButton.cpp; path = RemapFunc/KeyToPointingButton.cpp; sourceTree = "<group>"; };
@@ -286,6 +290,8 @@
 		345E3EC511D79D17004B6347 /* RemapFunc */ = {
 			isa = PBXGroup;
 			children = (
+				34794D51126F32E700655ADB /* SetKeyboardType.cpp */,
+				34794D52126F32E700655ADB /* SetKeyboardType.hpp */,
 				34B8199311DF925500BD8E0B /* DropKeyAfterRemap.cpp */,
 				34B8199411DF925500BD8E0B /* DropKeyAfterRemap.hpp */,
 				34C8E8D011DEEC0400E2FE41 /* PointingRelativeToScroll.cpp */,
@@ -446,6 +452,7 @@
 				34B5E8B61261960700DCFB0D /* InputModeFilter.hpp in Headers */,
 				342C80551261B379007F15DA /* DeviceFilter.hpp in Headers */,
 				34DC263812629E0000354378 /* FilterUnion.hpp in Headers */,
+				34794D54126F32E700655ADB /* SetKeyboardType.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,6 +566,7 @@
 				34B5E8B51261960700DCFB0D /* InputModeFilter.cpp in Sources */,
 				342C80541261B379007F15DA /* DeviceFilter.cpp in Sources */,
 				34DC263C1262A5A500354378 /* FilterUnion.cpp in Sources */,
+				34794D53126F32E700655ADB /* SetKeyboardType.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
