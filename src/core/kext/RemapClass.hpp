@@ -17,6 +17,7 @@
 #include "RemapFunc/PointingButtonToPointingButton.hpp"
 #include "RemapFunc/PointingRelativeToScroll.hpp"
 #include "RemapFunc/SimultaneousKeyPresses.hpp"
+#include "RemapFunc/SetKeyboardType.hpp"
 #include "RemapFilter/FilterUnion.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -36,6 +37,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool drop(const Params_KeyboardEventCallBack& params);
       //
       void remap_SimultaneousKeyPresses(void);
+      //
+      bool remap_setkeyboardtype(KeyboardType& keyboardType);
 
     private:
       bool isblocked(void);
@@ -57,6 +60,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         RemapFunc::PointingButtonToPointingButton* pointingButtonToPointingButton;
         RemapFunc::PointingRelativeToScroll* pointingRelativeToScroll;
         RemapFunc::SimultaneousKeyPresses* simultaneousKeyPresses;
+        RemapFunc::SetKeyboardType* setKeyboardType;
       } p_;
 
       RemapFilter::Vector_FilterUnionPointer* filters_;
@@ -67,7 +71,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ----------------------------------------------------------------------
     RemapClass(const unsigned int* initialize_vector,
                const char* statusmessage,
-               unsigned int keyboardtype, bool is_setkeyboardtype,
                unsigned int configindex);
     ~RemapClass(void);
 
@@ -90,8 +93,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     Vector_ItemPointer items_;
     const char* statusmessage_;
-    unsigned int keyboardtype_;
-    bool is_setkeyboardtype_;
     unsigned int configindex_;
     bool is_simultaneouskeypresses_;
 
