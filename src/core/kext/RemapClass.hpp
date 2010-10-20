@@ -68,7 +68,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapClass(const unsigned int* initialize_vector,
                const char* statusmessage,
                unsigned int keyboardtype, bool is_setkeyboardtype,
-               unsigned int configindex, bool enable_when_passthrough);
+               unsigned int configindex);
     ~RemapClass(void);
 
     void remap_setkeyboardtype(KeyboardType& keyboardType);
@@ -93,7 +93,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     unsigned int keyboardtype_;
     bool is_setkeyboardtype_;
     unsigned int configindex_;
-    bool enable_when_passthrough_;
     bool is_simultaneouskeypresses_;
 
     static int allocation_count;

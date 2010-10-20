@@ -112,16 +112,17 @@ class RemapClass
     item_node.find('.//autogen').each do |autogen_node|
       filter = Filter.new
       filtervec = filter.to_vector(item_node, autogen_node)
+      unless /^passthrough_/ =~ @name then
+        filtervec << 2
+        filtervec << 'BRIDGE_FILTERTYPE_CONFIG_NOT'
+        filtervec << KeyCode.ConfigIndex('notsave_passthrough')
+      end
+
       handle_autogen(autogen_node, filtervec)
     end
 
     # ----------------------------------------
     outfile << "static const unsigned int remapclass_#{@name}_configindex = #{KeyCode.ConfigIndex(@name)};\n"
-    if /^passthrough_/ =~ name then
-      outfile << "static const bool remapclass_#{@name}_enable_when_passthrough = true;\n"
-    else
-      outfile << "static const bool remapclass_#{@name}_enable_when_passthrough = false;\n"
-    end
 
     outfile << "static const unsigned int remapclass_#{@name}_initialize_vector[] = {\n"
     outfile << "  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION,\n"
@@ -146,7 +147,6 @@ class RemapClass
     [
      { :name => 'initialize_vector', :type => 'const unsigned int*' },
      { :name => 'configindex', :type => 'const unsigned int' },
-     { :name => 'enable_when_passthrough', :type => 'const bool' },
      { :name => 'statusmessage', :type => 'const char*' },
      { :name => 'is_setkeyboardtype', :type => 'const bool' },
      { :name => 'setkeyboardtype', :type => 'const unsigned int' },
