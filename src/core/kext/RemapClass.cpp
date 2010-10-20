@@ -270,10 +270,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   RemapClass::RemapClass(const unsigned int* initialize_vector,
                          const char* statusmessage,
                          unsigned int keyboardtype, bool is_setkeyboardtype,
-                         unsigned int configindex, bool enable_when_passthrough) :
+                         unsigned int configindex) :
     statusmessage_(statusmessage),
     keyboardtype_(keyboardtype), is_setkeyboardtype_(is_setkeyboardtype),
-    configindex_(configindex), enable_when_passthrough_(enable_when_passthrough),
+    configindex_(configindex),
     is_simultaneouskeypresses_(false)
   {
     // ------------------------------------------------------------
@@ -448,13 +448,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   RemapClass::enabled(void)
   {
-    if (config.notsave_passthrough) {
-      // Pass-Through Mode
-      if (! enable_when_passthrough_) {
-        return false;
-      }
-    }
-
     // check configindex_ range
     if (configindex_ < 0 ||
         configindex_ >= sizeof(config.enabled_flags) / sizeof(config.enabled_flags[0])) {
@@ -510,10 +503,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       statusmessage_[0] = '\0';
 
-      if (config.notsave_passthrough) {
-        strlcat(statusmessage_, "Pass Through ", sizeof(statusmessage_));
-      }
-
       isEventInputQueueDelayEnabled_ = false;
 
       for (size_t i = 0; i < remapclasses_->size(); ++i) {
@@ -559,8 +548,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                                             remapclass_statusmessage[i],
                                             remapclass_setkeyboardtype[i],
                                             remapclass_is_setkeyboardtype[i],
-                                            remapclass_configindex[i],
-                                            remapclass_enable_when_passthrough[i]);
+                                            remapclass_configindex[i]);
           if (newp) {
             remapclasses_->push_back(newp);
           }

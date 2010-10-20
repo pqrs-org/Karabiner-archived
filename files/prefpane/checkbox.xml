@@ -79,8 +79,9 @@
           <name>What is Pass Through Mode?</name>
           <appendix>You can disable all settings temporarily.</appendix>
           <appendix>Turn on a setting below, and toggle "Pass Through Mode".</appendix>
-          <sysctl essential="true">notsave.passthrough</sysctl>
+          <sysctl>notsave.passthrough</sysctl>
           <vk_config>true</vk_config>
+          <autogen>--ShowStatusMessage-- "Pass Through"</autogen>
         </item>
         <item>
           <name>Change Fn+Escape to toggle "Pass Through Mode"</name>
