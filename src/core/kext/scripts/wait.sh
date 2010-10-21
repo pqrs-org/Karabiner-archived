@@ -1,6 +1,6 @@
 #! /bin/sh
 
-until [ "x`sysctl -n keyremap4macbook.initialized`" = "x1" ]; do
+until [ "x`sysctl -n keyremap4macbook.initialized 2>/dev/null`" = "x1" ]; do
     echo "Waiting reconfigure..."
     sleep 1
 done
