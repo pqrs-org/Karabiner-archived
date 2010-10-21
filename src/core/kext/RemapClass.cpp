@@ -291,9 +291,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   int RemapClass::allocation_count = 0;
 
   RemapClass::RemapClass(const unsigned int* initialize_vector,
-                         const char* statusmessage,
                          unsigned int configindex) :
-    statusmessage_(statusmessage),
+    statusmessage_(NULL),
     configindex_(configindex),
     is_simultaneouskeypresses_(false)
   {
@@ -364,6 +363,18 @@ namespace org_pqrs_KeyRemap4MacBook {
             p->append_filter(initialize_vector, size);
           }
 
+        } else if (type == BRIDGE_STATUSMESSAGE) {
+          if (statusmessage_) {
+            delete[] statusmessage_;
+          }
+          statusmessage_ = new char[size];
+          if (statusmessage_) {
+            for (size_t i = 0; i < size - 1; ++i) {
+              statusmessage_[i] = initialize_vector[i + 1];
+            }
+            statusmessage_[size - 1] = '\0';
+          }
+
         } else {
           IOLOG_ERROR("RemapClass::RemapClass unknown type:%d.\n", type);
           return;
@@ -390,6 +401,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (p) {
         delete p;
       }
+    }
+    if (statusmessage_) {
+      delete[] statusmessage_;
     }
   }
 
@@ -569,7 +583,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (remapclasses_) {
         for (size_t i = 0; i < sizeof(remapclass_initialize_vector) / sizeof(remapclass_initialize_vector[0]); ++i) {
           RemapClass* newp = new RemapClass(remapclass_initialize_vector[i],
-                                            remapclass_statusmessage[i],
                                             remapclass_configindex[i]);
           if (newp) {
             remapclasses_->push_back(newp);

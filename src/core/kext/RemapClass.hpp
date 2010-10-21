@@ -70,7 +70,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ----------------------------------------------------------------------
     RemapClass(const unsigned int* initialize_vector,
-               const char* statusmessage,
                unsigned int configindex);
     ~RemapClass(void);
 
@@ -92,7 +91,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
 
     Vector_ItemPointer items_;
-    const char* statusmessage_;
+    char* statusmessage_;
     unsigned int configindex_;
     bool is_simultaneouskeypresses_;
 

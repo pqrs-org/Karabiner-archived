@@ -16,12 +16,7 @@ class RemapClass
 
   def initialize(name)
     @name = name
-
-    @code = {
-      # functions
-      :initialize_vector => [],
-      :statusmessage     => 'NULL',
-    }
+    @initialize_vector = []
 
     if /^notsave_/ =~ name then
       @@entries_notsave << name
@@ -70,11 +65,11 @@ class RemapClass
       args << newval.join('|')
     end
 
-    @code[:initialize_vector] << args.count
-    @code[:initialize_vector] += args
+    @initialize_vector << args.count
+    @initialize_vector += args
 
     unless filtervec.empty? then
-      @code[:initialize_vector] += filtervec
+      @initialize_vector += filtervec
     end
   end
   protected :append_to_code_initialize_vector
@@ -86,7 +81,12 @@ class RemapClass
 
       case operation
       when 'ShowStatusMessage'
-        @code[:statusmessage] = params
+        @initialize_vector << params.length + 1
+        @initialize_vector << 'BRIDGE_STATUSMESSAGE'
+        params.each_byte do |byte|
+          @initialize_vector << byte
+        end
+        # no need filtervec
 
       when 'SimultaneousKeyPresses'
         params = "KeyCode::VK_SIMULTANEOUSKEYPRESSES_#{@@simultaneous_keycode_index}, " + params
@@ -125,11 +125,9 @@ class RemapClass
 
     outfile << "static const unsigned int remapclass_#{@name}_initialize_vector[] = {\n"
     outfile << "  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION,\n"
-    outfile << "  #{@code[:initialize_vector].count},\n"
-    outfile << "  #{@code[:initialize_vector].join(',')}\n"
+    outfile << "  #{@initialize_vector.count},\n"
+    outfile << "  #{@initialize_vector.join(',')}\n"
     outfile << "};\n"
-
-    outfile << "static const char* remapclass_#{@name}_statusmessage = #{@code[:statusmessage]};\n"
 
     outfile << "\n"
   end
@@ -138,7 +136,6 @@ class RemapClass
     [
      { :name => 'initialize_vector', :type => 'const unsigned int*' },
      { :name => 'configindex', :type => 'const unsigned int' },
-     { :name => 'statusmessage', :type => 'const char*' },
     ].each do |info|
       outfile << "static #{info[:type]} remapclass_#{info[:name]}[] = {\n"
       [@@entries_notsave, @@entries_normal].each do |entries|
