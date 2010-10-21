@@ -81,7 +81,7 @@
           <appendix>Turn on a setting below, and toggle "Pass Through Mode".</appendix>
           <sysctl>notsave.passthrough</sysctl>
           <vk_config>true</vk_config>
-          <autogen>--ShowStatusMessage-- "Pass Through"</autogen>
+          <autogen>--ShowStatusMessage-- Pass Through</autogen>
         </item>
         <item>
           <name>Change Fn+Escape to toggle "Pass Through Mode"</name>
@@ -2145,7 +2145,7 @@
               <appendix>M . / &#8594; 0 . +</appendix>
               <sysctl>notsave.virtual_numlock</sysctl>
               <vk_config>true</vk_config>
-              <autogen>--ShowStatusMessage-- "NumLock"</autogen>
+              <autogen>--ShowStatusMessage-- NumLock</autogen>
               <autogen>--KeyToKey-- KeyCode::M,         KeyCode::KEYPAD_0</autogen>
               <autogen>--KeyToKey-- KeyCode::J,         KeyCode::KEYPAD_1</autogen>
               <autogen>--KeyToKey-- KeyCode::K,         KeyCode::KEYPAD_2</autogen>
@@ -3529,7 +3529,7 @@
               <appendix>Turn on a setting below, and toggle "Swap Mode".</appendix>
               <sysctl>notsave.swap_space_optionspace</sysctl>
               <vk_config>true</vk_config>
-              <autogen>--ShowStatusMessage-- "Swap Mode"</autogen>
+              <autogen>--ShowStatusMessage-- Swap Mode</autogen>
               <autogen>--KeyToKey-- KeyCode::SPACE, VK_OPTION | ModifierFlag::NONE, KeyCode::SPACE</autogen>
               <autogen>--KeyToKey-- KeyCode::SPACE, ModifierFlag::NONE, KeyCode::SPACE, ModifierFlag::OPTION_L</autogen>
             </item>
@@ -4037,7 +4037,7 @@
               <appendix>C-x C-g to turn off Control+X Mode</appendix>
               <sysctl>notsave.emacsmode_ex_controlX_core</sysctl>
               <vk_config>true</vk_config>
-              <autogen>--ShowStatusMessage-- "C-x Mode"</autogen>
+              <autogen>--ShowStatusMessage-- C-x Mode</autogen>
               <autogen>--KeyToKey-- KeyCode::S, VK_CONTROL | ModifierFlag::NONE, KeyCode::S, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlX_core</autogen>
               <autogen>--KeyToKey-- KeyCode::C, VK_CONTROL | ModifierFlag::NONE, KeyCode::Q, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlX_core</autogen>
               <autogen>--KeyToKey-- KeyCode::F, VK_CONTROL | ModifierFlag::NONE, KeyCode::O, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlX_core</autogen>
@@ -4064,7 +4064,7 @@
               <appendix>Control+Space to turn off MarkSet</appendix>
               <sysctl>notsave.emacsmode_ex_controlSpace_core</sysctl>
               <vk_config>true</vk_config>
-              <autogen>--ShowStatusMessage-- "MarkSet"</autogen>
+              <autogen>--ShowStatusMessage-- MarkSet</autogen>
               <autogen>--KeyToKey-- KeyCode::W,     VK_CONTROL | ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::X, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlSpace_core</autogen>
               <autogen>--KeyToKey-- KeyCode::W,     VK_OPTION  | ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::C, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlSpace_core</autogen>
               <autogen>--KeyToKey-- KeyCode::G,     VK_CONTROL | ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF,                                      KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlSpace_core</autogen>
@@ -4344,7 +4344,7 @@
               <appendix>- A+Arrow Keys to high-speed movement</appendix>
               <sysctl>notsave.mousekeys_mode</sysctl>
               <vk_config>true</vk_config>
-              <autogen>--ShowStatusMessage-- "Mouse Keys"</autogen>
+              <autogen>--ShowStatusMessage-- Mouse Keys</autogen>
               <!-- scroll wheel mode -->
               <autogen>--KeyToKey-- KeyCode::H,            ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_LEFT,  ModifierFlag::FN</autogen>
               <autogen>--KeyToKey-- KeyCode::J,            ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_DOWN,  ModifierFlag::FN</autogen>
@@ -4597,7 +4597,7 @@
           <appendix>- i to turn off Vi Mode</appendix>
           <sysctl>notsave.complete_vimode</sysctl>
           <vk_config>true</vk_config>
-          <autogen>--ShowStatusMessage-- "Vi Mode"</autogen>
+          <autogen>--ShowStatusMessage-- Vi Mode</autogen>
           <block>
             <config_not>option.complete_vimode_dvorak</config_not>
             <!-- HJKL -->
@@ -4911,7 +4911,7 @@
               <appendix>- F to Move focus to active or next window (Control+F4)</appendix>
               <sysctl>notsave.expose_mode</sysctl>
               <vk_config>true</vk_config>
-              <autogen>--ShowStatusMessage-- "Expose Mode"</autogen>
+              <autogen>--ShowStatusMessage-- Expose Mode</autogen>
               <autogen>--KeyToKey-- KeyCode::S, KeyCode::F8</autogen>
               <autogen>--KeyToKey-- KeyCode::E, KeyCode::EXPOSE_ALL</autogen>
               <autogen>--KeyToKey-- KeyCode::D, KeyCode::EXPOSE_ALL, ModifierFlag::COMMAND_L</autogen>
@@ -4940,7 +4940,7 @@
               <appendix>- Arrow keys: move a selection.</appendix>
               <sysctl>notsave.cmdtab_mode</sysctl>
               <vk_config>true</vk_config>
-              <autogen>--ShowStatusMessage-- "Cmd+Tab"</autogen>
+              <autogen>--ShowStatusMessage-- Cmd+Tab</autogen>
               <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::RETURN, KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode</autogen>
               <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::ESCAPE, KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode</autogen>
               <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::TAB</autogen>

@@ -11,7 +11,7 @@
       <appendix>- HJKL to Left/Down/Up/Right</appendix>
       <sysctl>notsave.simultaneouskeypresses_vimode</sysctl>
       <vk_config>true</vk_config>
-      <autogen>--ShowStatusMessage-- "Vi Mode"</autogen>
+      <autogen>--ShowStatusMessage-- Vi Mode</autogen>
       <block>
         <config_only>option.pointing_relative_to_scroll_vi_mode</config_only>
         <autogen>--PointingRelativeToScroll-- PointingButton::NONE</autogen>

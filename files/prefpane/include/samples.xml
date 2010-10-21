@@ -37,7 +37,7 @@
           <appendix>RightClick+CursorMove to ScrollWheel</appendix>
           <appendix>Simultaneous Key Presses [D+F] to Escape</appendix>
           <sysctl>remap.samples_passthrough</sysctl>
-          <autogen>--ShowStatusMessage-- "Samples"</autogen>
+          <autogen>--ShowStatusMessage-- Samples</autogen>
           <autogen>--KeyToKey-- KeyCode::B, KeyCode::C</autogen>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, KeyCode::A</autogen>
           <autogen>--PointingRelativeToScroll-- PointingButton::RIGHT</autogen>
@@ -52,12 +52,12 @@
         <item>
           <name>Sample1</name>
           <sysctl>remap.samples_showstatusmessage_sample1</sysctl>
-          <autogen>--ShowStatusMessage-- "Sample1"</autogen>
+          <autogen>--ShowStatusMessage-- Sample1</autogen>
         </item>
         <item>
           <name>Sample2</name>
           <sysctl>remap.samples_showstatusmessage_sample2</sysctl>
-          <autogen>--ShowStatusMessage-- "Sample2"</autogen>
+          <autogen>--ShowStatusMessage-- Sample2</autogen>
         </item>
       </list>
     </item>
@@ -588,7 +588,7 @@
           <appendix>B to D</appendix>
           <sysctl>notsave.sample</sysctl>
           <vk_config>true</vk_config>
-          <autogen>--ShowStatusMessage-- "notsave.sample"</autogen>
+          <autogen>--ShowStatusMessage-- notsave.sample</autogen>
           <autogen>--KeyToKey-- KeyCode::B, KeyCode::D</autogen>
         </item>
       </list>
