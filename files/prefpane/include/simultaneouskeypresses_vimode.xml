@@ -84,7 +84,7 @@
       </block>
       <block>
         <config_only>option.simultaneouskeypresses_vimode_tab_to_managemode</config_only>
-        <autogen>--KeyOverlaidModifier-- KeyCode::TAB, KeyCode::COMMAND_L, ModifierFlag::EXTRA2, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
+        <autogen>--KeyOverlaidModifier-- KeyCode::TAB, KeyCode::COMMAND_L, ModifierFlag::EXTRA2, KeyCode::TAB, ModifierFlag::COMMAND_L, KeyCode::RETURN, ModifierFlag::COMMAND_L</autogen>
         <block>
           <config_not>option.simultaneouskeypresses_vimode_jkli</config_not>
           <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA2, KeyCode::TAB, ModifierFlag::SHIFT_L</autogen>
