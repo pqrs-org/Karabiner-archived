@@ -2419,6 +2419,11 @@
           <autogen>--KeyToKey-- KeyCode::F1, VK_CONTROL, KeyCode::F16</autogen>
         </item>
         <item>
+          <name>F11 to F4</name>
+          <sysctl>remap.f11_to_f4</sysctl>
+          <autogen>--KeyToKey-- KeyCode::F11, KeyCode::F4</autogen>
+        </item>
+        <item>
           <name>F16 to Tab</name>
           <sysctl>remap.f16_to_tab</sysctl>
           <autogen>--KeyToKey-- KeyCode::F16, KeyCode::TAB</autogen>
