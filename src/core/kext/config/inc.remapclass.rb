@@ -74,8 +74,8 @@ class RemapClass
   end
   protected :append_to_code_initialize_vector
 
-  def handle_autogen(autogen_node, filtervec)
-    if /^--(.+?)-- (.+)/ =~ autogen_node.inner_xml.strip then
+  def handle_autogen(autogen_text, filtervec)
+    if /^--(.+?)-- (.+)/ =~ autogen_text then
       operation = $1
       params = $2
 
@@ -117,7 +117,8 @@ class RemapClass
         filtervec << KeyCode.ConfigIndex('notsave_passthrough')
       end
 
-      handle_autogen(autogen_node, filtervec)
+      autogen_text = autogen_node.inner_xml.strip
+      handle_autogen(autogen_text, filtervec)
     end
 
     # ----------------------------------------
