@@ -3,7 +3,6 @@
 require 'rubygems'
 require 'xml/libxml'
 
-require 'inc.preprocess.rb'
 require 'inc.filter.rb'
 require 'inc.remapclass.rb'
 require 'inc.keycode.rb'
@@ -20,8 +19,6 @@ $outfile = {
 
 # ======================================================================
 ARGV.each do |xmlpath|
-  # lines = Preprocesser.new().preprocess(IO.readlines(xmlpath))
-  # parser = XML::Parser.string(lines.join(''))
   parser = XML::Parser.file(xmlpath)
   libxmldoc = parser.parse
 
