@@ -74,7 +74,82 @@ class RemapClass
   end
   protected :append_to_code_initialize_vector
 
+  # ------------------------------------------------------------
+  def preprocess_getextrakey(key)
+    case key
+    when 'HOME'
+      'CURSOR_LEFT'
+    when 'END'
+      'CURSOR_RIGHT'
+    when 'PAGEUP'
+      'CURSOR_UP'
+    when 'PAGEDOWN'
+      'CURSOR_DOWN'
+    when 'FORWARD_DELETE'
+      'DELETE'
+    else
+      nil
+    end
+  end
+  protected :preprocess_getextrakey
+
   def handle_autogen(autogen_text, filtervec)
+    # ------------------------------------------------------------
+    # preprocess
+    case autogen_text
+    when /VK_(COMMAND|CONTROL|SHIFT|OPTION)/ then
+      key = $1
+      handle_autogen(autogen_text.gsub(/VK_#{key}/, "ModifierFlag::#{key}_L"), filtervec)
+      handle_autogen(autogen_text.gsub(/VK_#{key}/, "ModifierFlag::#{key}_R"), filtervec)
+      return
+    when /VK_MOD_CCOS_L/ then
+      handle_autogen(autogen_text.gsub(/VK_MOD_CCOS_L/, "ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L"), filtervec)
+      return
+    when /VK_MOD_CCS_L/ then
+      handle_autogen(autogen_text.gsub(/VK_MOD_CCS_L/, "ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L"), filtervec)
+      return
+    when /VK_MOD_CCO_L/ then
+      handle_autogen(autogen_text.gsub(/VK_MOD_CCO_L/, "ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L"), filtervec)
+      return
+    when /VK_MOD_ANY/ then
+      # to reduce combination, we ignore same modifier combination such as (COMMAND_L | COMMAND_R).
+      modifiers = [
+                   'VK_COMMAND',
+                   'VK_CONTROL',
+                   'ModifierFlag::FN',
+                   'VK_OPTION',
+                   'VK_SHIFT',
+                  ]
+      (0 .. modifiers.length).to_a.reverse.each do |i|
+        modifiers.combination(i).to_a.each do |pattern|
+          pat = pattern.dup
+          pat << "ModifierFlag::NONE"
+          handle_autogen(autogen_text.gsub(/VK_MOD_ANY/, pat.join(' | ')), filtervec)
+        end
+      end
+      return
+    when /FROMKEYCODE_(HOME|END|PAGEUP|PAGEDOWN|FORWARD_DELETE)\s*,\s*ModifierFlag::/ then
+      key = $1
+      extrakey = preprocess_getextrakey(key)
+      handle_autogen(autogen_text.gsub(/FROMKEYCODE_#{key}\s*,/, "KeyCode::#{key},"), filtervec)
+      handle_autogen(autogen_text.gsub(/FROMKEYCODE_#{key}\s*,/, "KeyCode::#{extrakey}, ModifierFlag::FN |"), filtervec)
+      return
+    when /FROMKEYCODE_(HOME|END|PAGEUP|PAGEDOWN|FORWARD_DELETE)/ then
+      key = $1
+      extrakey = preprocess_getextrakey(key)
+      handle_autogen(autogen_text.gsub(/FROMKEYCODE_#{key}\s*,/, "KeyCode::#{key},"), filtervec)
+      handle_autogen(autogen_text.gsub(/FROMKEYCODE_#{key}\s*,/, "KeyCode::#{extrakey}, ModifierFlag::FN,"), filtervec)
+      return
+    when /--KeyOverlaidModifierWithRepeat--/ then
+      handle_autogen(autogen_text.gsub(/--KeyOverlaidModifierWithRepeat--/, '--KeyOverlaidModifier-- Option::KEYOVERLAIDMODIFIER_REPEAT, '), filtervec)
+      return
+    when /SimultaneousKeyPresses::Option::RAW/ then
+      handle_autogen(autogen_text.gsub(/SimultaneousKeyPresses::Option::RAW/, 'Option::SIMULTANEOUSKEYPRESSES_RAW'), filtervec)
+      return
+    end
+
+    # ------------------------------------------------------------
+    # output
     if /^--(.+?)-- (.+)/ =~ autogen_text then
       operation = $1
       params = $2
@@ -117,7 +192,7 @@ class RemapClass
         filtervec << KeyCode.ConfigIndex('notsave_passthrough')
       end
 
-      autogen_text = autogen_node.inner_xml.strip
+      autogen_text = autogen_node.inner_xml.gsub(/[\r\n]/, ' ').strip
       handle_autogen(autogen_text, filtervec)
     end
 

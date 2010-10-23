@@ -20,8 +20,9 @@ $outfile = {
 
 # ======================================================================
 ARGV.each do |xmlpath|
-  lines = Preprocesser.new().preprocess(IO.readlines(xmlpath))
-  parser = XML::Parser.string(lines.join(''))
+  # lines = Preprocesser.new().preprocess(IO.readlines(xmlpath))
+  # parser = XML::Parser.string(lines.join(''))
+  parser = XML::Parser.file(xmlpath)
   libxmldoc = parser.parse
 
   counter = 0
