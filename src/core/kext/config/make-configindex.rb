@@ -8,7 +8,6 @@ $outfile = {
 # ======================================================================
 require 'rubygems'
 require 'xml/libxml'
-require 'inc.preprocess.rb'
 
 index = 0
 parser = XML::Parser.file('../../../../files/prefpane/output/checkbox.xml')
