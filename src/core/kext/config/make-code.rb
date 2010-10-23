@@ -18,9 +18,13 @@ $outfile = {
 }
 
 # ======================================================================
+KeyCode.load_keycode
+
 ARGV.each do |xmlpath|
   parser = XML::Parser.file(xmlpath)
   libxmldoc = parser.parse
+
+  KeyCode.setup_configindex(libxmldoc.root)
 
   counter = 0
 
