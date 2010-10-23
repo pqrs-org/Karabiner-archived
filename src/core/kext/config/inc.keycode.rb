@@ -3,6 +3,7 @@
 
 class KeyCode
   @@keycode = {}
+  @@configindex = 0
 
   def KeyCode.load_keycode
     return unless @@keycode.empty?
@@ -21,8 +22,21 @@ class KeyCode
     end
   end
 
+  def KeyCode.setup_configindex(node)
+    if @@keycode['ConfigIndex'].nil? then
+      @@keycode['ConfigIndex'] = {}
+    end
+
+    node.find('//sysctl').each do |node|
+      next if node['essential'] == "true"
+      name = node.inner_xml.gsub(/\./, '_')
+
+      @@keycode['ConfigIndex'][name] = @@configindex
+      @@configindex += 1
+    end
+  end
+
   def KeyCode.v(type, key)
-    load_keycode
     value = @@keycode[type][key]
     if value.nil?
       $stderr.print "unknown KeyCode[#{type}][#{key}]\n"
