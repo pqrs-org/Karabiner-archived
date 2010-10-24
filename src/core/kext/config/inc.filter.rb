@@ -55,6 +55,7 @@ class Filter
   def to_vector(item_node, autogen_node)
     while autogen_node != item_node
       autogen_node.parent.children.each do |node|
+        next if node.nil?
         case node.name
         when 'not' then
           append_application('BRIDGE_FILTERTYPE_APPLICATION_NOT', node)

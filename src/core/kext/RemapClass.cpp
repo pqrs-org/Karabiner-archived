@@ -2,6 +2,7 @@
 #include "RemapClass.hpp"
 #include "Client.hpp"
 #include "KeyboardRepeat.hpp"
+#include "VirtualKey.hpp"
 #include "util/CommonData.hpp"
 #include "util/EventInputQueue.hpp"
 
@@ -373,6 +374,19 @@ namespace org_pqrs_KeyRemap4MacBook {
               statusmessage_[i] = initialize_vector[i + 1];
             }
             statusmessage_[size - 1] = '\0';
+          }
+
+        } else if (type == BRIDGE_VK_CONFIG) {
+          if (size == 5) {
+            unsigned int keycode_toggle         = initialize_vector[1];
+            unsigned int keycode_force_on       = initialize_vector[2];
+            unsigned int keycode_force_off      = initialize_vector[3];
+            unsigned int keycode_sync_keydownup = initialize_vector[4];
+            Handle_VK_CONFIG::add_item(configindex,
+                                       keycode_toggle,
+                                       keycode_force_on,
+                                       keycode_force_off,
+                                       keycode_sync_keydownup);
           }
 
         } else {

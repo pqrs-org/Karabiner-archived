@@ -14,7 +14,6 @@ $outfile = {
   :config_unregister => open('output/include.config_unregister.cpp', 'w'),
   :config_default => open('output/include.config.default.hpp', 'w'),
   :remapclass_initialize_vector => open('output/include.RemapClass_initialize_vector.cpp', 'w'),
-  :remapcode_vk_config => open('output/include.remapcode_vk_config.cpp', 'w'),
 }
 
 # ======================================================================
@@ -83,26 +82,6 @@ ARGV.each do |xmlpath|
     default_node = node.find_first('./default')
     unless default_node.nil? then
       $outfile[:config_default] << "#{name} = #{default_node.inner_xml};\n"
-    end
-
-    # ----------------------------------------
-    if node.find_first('./vk_config') then
-      $outfile[:remapcode_vk_config] << "if (params.key == #{KeyCode.v('KeyCode', "VK_CONFIG_TOGGLE_#{name}")}) {\n"
-      $outfile[:remapcode_vk_config] << "  configitem = #{configaddress};\n"
-      $outfile[:remapcode_vk_config] << "  type = TYPE_TOGGLE;\n"
-      $outfile[:remapcode_vk_config] << "}\n"
-      $outfile[:remapcode_vk_config] << "if (params.key == #{KeyCode.v('KeyCode', "VK_CONFIG_FORCE_ON_#{name}")}) {\n"
-      $outfile[:remapcode_vk_config] << "  configitem = #{configaddress};\n"
-      $outfile[:remapcode_vk_config] << "  type = TYPE_FORCE_ON;\n"
-      $outfile[:remapcode_vk_config] << "}\n"
-      $outfile[:remapcode_vk_config] << "if (params.key == #{KeyCode.v('KeyCode', "VK_CONFIG_FORCE_OFF_#{name}")}) {\n"
-      $outfile[:remapcode_vk_config] << "  configitem = #{configaddress};\n"
-      $outfile[:remapcode_vk_config] << "  type = TYPE_FORCE_OFF;\n"
-      $outfile[:remapcode_vk_config] << "}\n"
-      $outfile[:remapcode_vk_config] << "if (params.key == #{KeyCode.v('KeyCode', "VK_CONFIG_SYNC_KEYDOWNUP_#{name}")}) {\n"
-      $outfile[:remapcode_vk_config] << "  configitem = #{configaddress};\n"
-      $outfile[:remapcode_vk_config] << "  type = TYPE_SYNC_KEYDOWNUP;\n"
-      $outfile[:remapcode_vk_config] << "}\n"
     end
 
     # ----------------------------------------
