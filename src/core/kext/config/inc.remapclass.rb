@@ -164,7 +164,9 @@ class RemapClass
         # no need filtervec
 
       when 'SimultaneousKeyPresses'
-        params = "KeyCode::VK_SIMULTANEOUSKEYPRESSES_#{@@simultaneous_keycode_index}, " + params
+        newkeycode = "VK_SIMULTANEOUSKEYPRESSES_#{@@simultaneous_keycode_index}"
+        KeyCode.append_autoindexed('KeyCode', newkeycode)
+        params = "KeyCode::#{newkeycode}, " + params
         @@simultaneous_keycode_index += 1
         append_to_code_initialize_vector(params, operation, filtervec)
         @@variable_index += 1

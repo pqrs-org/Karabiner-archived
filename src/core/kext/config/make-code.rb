@@ -24,8 +24,22 @@ ARGV.each do |xmlpath|
   parser = XML::Parser.file(xmlpath)
   libxmldoc = parser.parse
 
+  # ------------------------------------------------------------
+  # setup KeyCode
   KeyCode.setup_configindex(libxmldoc.root)
 
+  libxmldoc.root.find('//vk_config').each do |node|
+    list = node.parent.find('./sysctl')
+    throw :exit if list.length != 1
+    name = list[0].inner_xml.gsub(/\./, '_')
+
+    KeyCode.append_autoindexed('KeyCode', "VK_CONFIG_TOGGLE_#{name}")
+    KeyCode.append_autoindexed('KeyCode', "VK_CONFIG_FORCE_ON_#{name}")
+    KeyCode.append_autoindexed('KeyCode', "VK_CONFIG_FORCE_OFF_#{name}")
+    KeyCode.append_autoindexed('KeyCode', "VK_CONFIG_SYNC_KEYDOWNUP_#{name}")
+  end
+
+  # ------------------------------------------------------------
   counter = 0
 
   libxmldoc.root.find('//item').each do |node|

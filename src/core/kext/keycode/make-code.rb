@@ -13,7 +13,7 @@ Dir.glob("*.data") do |filename|
       :raw => open("../output/include.#{classname}.raw", "w"),
     }
 
-    open("| cpp -P #{filename}") do |f|
+    open(filename) do |f|
       while l = f.gets
         if /^\/\// =~ l then
           outfile[:hpp] << l
