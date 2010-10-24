@@ -196,7 +196,7 @@ class RemapClass
 
     item_node.find('.//autogen').each do |autogen_node|
       filter = Filter.new
-      filtervec = filter.to_vector(item_node, autogen_node)
+      filtervec = filter.to_vector(autogen_node)
       unless /^passthrough_/ =~ @name then
         filtervec << 2
         filtervec << 'BRIDGE_FILTERTYPE_CONFIG_NOT'
