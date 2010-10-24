@@ -335,9 +335,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     allocation_count += total_length;
 
     // --------------------
-    Handle_VK_CONFIG::clear_items();
-
-    // --------------------
     unsigned int total_tmp = 0;
     for (;;) {
       unsigned int size = initialize_vector[0];
@@ -596,6 +593,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       lastmessage_[0] = '\0';
       remapclasses_ = new Vector_RemapClassPointer();
       enabled_remapclasses_ = NULL;
+
+      Handle_VK_CONFIG::clear_items();
 
       if (remapclasses_) {
         for (size_t i = 0; i < sizeof(remapclass_initialize_vector) / sizeof(remapclass_initialize_vector[0]); ++i) {
