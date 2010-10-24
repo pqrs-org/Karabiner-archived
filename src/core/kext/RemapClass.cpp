@@ -335,6 +335,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     allocation_count += total_length;
 
     // --------------------
+    Handle_VK_CONFIG::clear_items();
+
+    // --------------------
     unsigned int total_tmp = 0;
     for (;;) {
       unsigned int size = initialize_vector[0];

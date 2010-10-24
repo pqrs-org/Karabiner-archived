@@ -50,6 +50,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                          unsigned int keycode_force_on,
                          unsigned int keycode_force_off,
                          unsigned int keycode_sync_keydownup);
+    static void clear_items(void);
 
     static bool handle(const Params_KeyboardEventCallBack& params);
 
@@ -66,6 +67,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
     DECLARE_VECTOR(Item);
     static Vector_Item* items_;
+    static IOLock* lock_;
   };
 
   // ----------------------------------------------------------------------
