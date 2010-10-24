@@ -99,7 +99,7 @@ ARGV.each do |xmlpath|
       $outfile[:remapcode_vk_config] << "  configitem = #{configaddress};\n"
       $outfile[:remapcode_vk_config] << "  type = TYPE_FORCE_OFF;\n"
       $outfile[:remapcode_vk_config] << "}\n"
-      $outfile[:remapcode_vk_config] << "if (params.key == #{KeyCode.v('KeyCode', "VK_CONFIG_FORCE_OFF_#{name}")}) {\n"
+      $outfile[:remapcode_vk_config] << "if (params.key == #{KeyCode.v('KeyCode', "VK_CONFIG_SYNC_KEYDOWNUP_#{name}")}) {\n"
       $outfile[:remapcode_vk_config] << "  configitem = #{configaddress};\n"
       $outfile[:remapcode_vk_config] << "  type = TYPE_SYNC_KEYDOWNUP;\n"
       $outfile[:remapcode_vk_config] << "}\n"
