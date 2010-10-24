@@ -30,8 +30,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   VirtualKey::reset(void)
   {
     Handle_VK_MOUSEKEY::reset();
-
-    // Don't call Handle_VK_CONFIG::reset_items
   }
 
   // ----------------------------------------------------------------------
@@ -200,11 +198,13 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   Handle_VK_CONFIG::Vector_Item* Handle_VK_CONFIG::items_ = NULL;
+  IOLock* Handle_VK_CONFIG::lock_ = NULL;
 
   void
   Handle_VK_CONFIG::initialize(void)
   {
     items_ = new Vector_Item();
+    lock_ = IOLockWrapper::alloc();
   }
 
   void
@@ -212,6 +212,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (items_) {
       delete items_;
+    }
+    if (lock_) {
+      IOLockWrapper::free(lock_);
     }
   }
 
@@ -222,14 +225,26 @@ namespace org_pqrs_KeyRemap4MacBook {
                              unsigned int keycode_force_off,
                              unsigned int keycode_sync_keydownup)
   {
+    IOLockWrapper::ScopedLock lk(lock_);
+
     if (! items_) return;
 
     items_->push_back(Item(configindex, keycode_toggle, keycode_force_on, keycode_force_off, keycode_sync_keydownup));
   }
 
+  void
+  Handle_VK_CONFIG::clear_items(void)
+  {
+    IOLockWrapper::ScopedLock lk(lock_);
+
+    items_->clear();
+  }
+
   bool
   Handle_VK_CONFIG::handle(const Params_KeyboardEventCallBack& params)
   {
+    IOLockWrapper::ScopedLock lk(lock_);
+
     if (! items_) return false;
 
     for (size_t i = 0; i < items_->size(); ++i) {
