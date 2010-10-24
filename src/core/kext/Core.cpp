@@ -88,30 +88,34 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     stop(void)
     {
-      sysctl_unregister();
+      {
+        IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
 
-      timer_refresh.terminate();
-      RemapClassManager::terminate();
-      ListHookedKeyboard::instance().terminate();
-      ListHookedConsumer::instance().terminate();
-      ListHookedPointing::instance().terminate();
-      KeyboardRepeat::terminate();
-      EventInputQueue::terminate();
-      VirtualKey::terminate();
-      EventOutputQueue::terminate();
-      RemapFunc::HoldingKeyToKey::static_terminate();
-      RemapFunc::KeyOverlaidModifier::static_terminate();
-      RemapFunc::PointingRelativeToScroll::static_terminate();
-      ListHookedKeyboard::static_terminate();
+        sysctl_unregister();
 
-      if (workLoop) {
-        workLoop->release();
-        workLoop = NULL;
+        timer_refresh.terminate();
+        RemapClassManager::terminate();
+        ListHookedKeyboard::instance().terminate();
+        ListHookedConsumer::instance().terminate();
+        ListHookedPointing::instance().terminate();
+        KeyboardRepeat::terminate();
+        EventInputQueue::terminate();
+        VirtualKey::terminate();
+        EventOutputQueue::terminate();
+        RemapFunc::HoldingKeyToKey::static_terminate();
+        RemapFunc::KeyOverlaidModifier::static_terminate();
+        RemapFunc::PointingRelativeToScroll::static_terminate();
+        ListHookedKeyboard::static_terminate();
+
+        if (workLoop) {
+          workLoop->release();
+          workLoop = NULL;
+        }
+
+        KeyRemap4MacBook_client::terminate();
+        EventWatcher::terminate();
+        PressDownKeys::terminate();
       }
-
-      KeyRemap4MacBook_client::terminate();
-      EventWatcher::terminate();
-      PressDownKeys::terminate();
       CommonData::terminate();
     }
 
