@@ -13,6 +13,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     Handle_VK_MOUSEKEY::initialize(workloop);
     Handle_VK_JIS_TEMPORARY::initialize(workloop);
+
+    Handle_VK_CONFIG::initialize();
   }
 
   void
@@ -20,12 +22,16 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     Handle_VK_MOUSEKEY::terminate();
     Handle_VK_JIS_TEMPORARY::terminate();
+
+    Handle_VK_CONFIG::terminate();
   }
 
   void
   VirtualKey::reset(void)
   {
     Handle_VK_MOUSEKEY::reset();
+
+    // Don't call Handle_VK_CONFIG::reset_items
   }
 
   // ----------------------------------------------------------------------
@@ -193,49 +199,84 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------------------------------------
+  Handle_VK_CONFIG::Vector_Item* Handle_VK_CONFIG::items_ = NULL;
+
+  void
+  Handle_VK_CONFIG::initialize(void)
+  {
+    items_ = new Vector_Item();
+  }
+
+  void
+  Handle_VK_CONFIG::terminate(void)
+  {
+    if (items_) {
+      delete items_;
+    }
+  }
+
+  void
+  Handle_VK_CONFIG::add_item(unsigned int configindex,
+                             unsigned int keycode_toggle,
+                             unsigned int keycode_force_on,
+                             unsigned int keycode_force_off,
+                             unsigned int keycode_sync_keydownup)
+  {
+    if (! items_) return;
+
+    items_->push_back(Item(configindex, keycode_toggle, keycode_force_on, keycode_force_off, keycode_sync_keydownup));
+  }
+
   bool
   Handle_VK_CONFIG::handle(const Params_KeyboardEventCallBack& params)
   {
-    int* configitem = NULL;
+    if (! items_) return false;
 
-    enum Type {
-      TYPE_TOGGLE,
-      TYPE_FORCE_ON,
-      TYPE_FORCE_OFF,
-      TYPE_SYNC_KEYDOWNUP,
-    } type = TYPE_TOGGLE;
+    for (size_t i = 0; i < items_->size(); ++i) {
+      unsigned int configindex            = (*items_)[i].configindex;
+      unsigned int keycode_toggle         = (*items_)[i].keycode_toggle;
+      unsigned int keycode_force_on       = (*items_)[i].keycode_force_on;
+      unsigned int keycode_force_off      = (*items_)[i].keycode_force_off;
+      unsigned int keycode_sync_keydownup = (*items_)[i].keycode_sync_keydownup;
 
-#include "config/output/include.remapcode_vk_config.cpp"
+      if (configindex >= sizeof(config.enabled_flags) / sizeof(config.enabled_flags[0])) return false;
 
-    if (configitem == NULL) {
-      return false;
+      if (params.ex_iskeydown && params.repeat == false) {
+        /*  */ if (params.key == keycode_toggle) {
+          config.enabled_flags[configindex] = ! config.enabled_flags[configindex];
+          goto finish;
+
+        } else if (params.key == keycode_force_on) {
+          config.enabled_flags[configindex] = 1;
+          goto finish;
+
+        } else if (params.key == keycode_force_off) {
+          config.enabled_flags[configindex] = 0;
+          goto finish;
+
+        } else if (params.key == keycode_sync_keydownup) {
+          config.enabled_flags[configindex] = 1;
+          goto finish;
+        }
+
+      } else if (params.eventType == EventType::UP) {
+        if (params.key == keycode_toggle ||
+            params.key == keycode_force_on ||
+            params.key == keycode_force_off) {
+          return true;
+        }
+
+        if (params.key == keycode_sync_keydownup) {
+          config.enabled_flags[configindex] = 0;
+          goto finish;
+        }
+      }
     }
 
-    // ------------------------------------------------------------
-    if (params.ex_iskeydown && params.repeat == false) {
-      switch (type) {
-        case TYPE_TOGGLE:
-          *configitem = ! *configitem;
-          break;
-        case TYPE_FORCE_ON:
-          *configitem = 1;
-          break;
-        case TYPE_FORCE_OFF:
-          *configitem = 0;
-          break;
-        case TYPE_SYNC_KEYDOWNUP:
-          *configitem = 1;
-          break;
-      }
-      RemapClassManager::refresh();
+    return false;
 
-    } else if (params.eventType == EventType::UP) {
-      if (type == TYPE_SYNC_KEYDOWNUP) {
-        *configitem = 0;
-      }
-      RemapClassManager::refresh();
-    }
-
+  finish:
+    RemapClassManager::refresh();
     return true;
   }
 

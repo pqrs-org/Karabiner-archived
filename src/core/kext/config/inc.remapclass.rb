@@ -185,6 +185,15 @@ class RemapClass
   end
 
   def to_code(item_node, outfile)
+    if item_node.find_first('./vk_config') then
+      @initialize_vector << 5
+      @initialize_vector << "BRIDGE_VK_CONFIG"
+      @initialize_vector << KeyCode.v('KeyCode', "VK_CONFIG_TOGGLE_#{@name}")
+      @initialize_vector << KeyCode.v('KeyCode', "VK_CONFIG_FORCE_ON_#{@name}")
+      @initialize_vector << KeyCode.v('KeyCode', "VK_CONFIG_FORCE_OFF_#{@name}")
+      @initialize_vector << KeyCode.v('KeyCode', "VK_CONFIG_SYNC_KEYDOWNUP_#{@name}")
+    end
+
     item_node.find('.//autogen').each do |autogen_node|
       filter = Filter.new
       filtervec = filter.to_vector(item_node, autogen_node)

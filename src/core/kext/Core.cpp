@@ -71,7 +71,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         timer_refresh.initialize(workLoop, NULL, refreshHookedDevice);
         timer_refresh.setTimeoutMS(REFRESH_DEVICE_INTERVAL);
 
-        RemapClassManager::initialize(*workLoop);
         KeyboardRepeat::initialize(*workLoop);
         EventInputQueue::initialize(*workLoop);
         VirtualKey::initialize(*workLoop);
@@ -80,6 +79,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         RemapFunc::KeyOverlaidModifier::static_initialize(*workLoop);
         RemapFunc::PointingRelativeToScroll::static_initialize(*workLoop);
         ListHookedKeyboard::static_initialize(*workLoop);
+        RemapClassManager::initialize(*workLoop);
       }
 
       sysctl_register();
@@ -91,10 +91,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       sysctl_unregister();
 
       timer_refresh.terminate();
+      RemapClassManager::terminate();
       ListHookedKeyboard::instance().terminate();
       ListHookedConsumer::instance().terminate();
       ListHookedPointing::instance().terminate();
-      RemapClassManager::terminate();
       KeyboardRepeat::terminate();
       EventInputQueue::terminate();
       VirtualKey::terminate();
