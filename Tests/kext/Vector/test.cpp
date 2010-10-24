@@ -79,3 +79,20 @@ TEST(Vector, reserve) {
 
   EXPECT_TRUE(! v.empty());
 }
+
+TEST(Vector, clear) {
+  Vector_TestItem v;
+  v.reserve(1000);
+  EXPECT_EQ(static_cast<size_t>(1000), v.capacity());
+
+  v.clear();
+  EXPECT_EQ(static_cast<size_t>(0), v.capacity());
+
+  // --------------------
+  v.push_back(TestItem(1));
+  v.push_back(TestItem(2));
+  EXPECT_EQ(static_cast<size_t>(2), v.capacity());
+
+  v.clear();
+  EXPECT_EQ(static_cast<size_t>(0), v.capacity());
+}

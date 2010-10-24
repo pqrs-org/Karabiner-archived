@@ -6,7 +6,7 @@
 #define DECLARE_VECTOR(TYPENAME)                                         \
   class Vector_ ## TYPENAME {                                            \
   public:                                                                \
-    Vector_ ## TYPENAME(void) : vector_(NULL), size_(0), capacity_(0) {} \
+    Vector_ ## TYPENAME(void) : vector_(NULL), capacity_(0), size_(0) {} \
     ~Vector_ ## TYPENAME(void) {                                         \
       if (vector_) {                                                     \
         delete[] vector_;                                                \
@@ -28,6 +28,15 @@
         }                                                                \
         vector_ = p;                                                     \
       }                                                                  \
+    }                                                                    \
+                                                                         \
+    void clear(void) {                                                   \
+      if (vector_) {                                                     \
+        delete[] vector_;                                                \
+        vector_ = NULL;                                                  \
+      }                                                                  \
+      capacity_ = 0;                                                     \
+      size_ = 0;                                                         \
     }                                                                    \
                                                                          \
     Vector_ ## TYPENAME & push_back(const TYPENAME &newval) {            \
@@ -54,8 +63,8 @@
                                                                          \
   private:                                                               \
     TYPENAME* vector_;                                                   \
-    size_t size_;                                                        \
     size_t capacity_;                                                    \
+    size_t size_;                                                        \
   };
 
 #endif
