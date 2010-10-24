@@ -123,6 +123,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     notifierfunc_hookKeyboard(void* target, void* refCon, IOService* newService, IONotifier* notifier)
     {
+      IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
+
       IOLOG_DEBUG("notifierfunc_hookKeyboard newService:%p\n", newService);
 
       IOHIDevice* device = OSDynamicCast(IOHIKeyboard, newService);
@@ -136,6 +138,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     notifierfunc_unhookKeyboard(void* target, void* refCon, IOService* newService, IONotifier* notifier)
     {
+      IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
+
       IOLOG_DEBUG("notifierfunc_unhookKeyboard newService:%p\n", newService);
 
       IOHIDevice* device = OSDynamicCast(IOHIKeyboard, newService);
@@ -149,6 +153,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     notifierfunc_hookPointing(void* target, void* refCon, IOService* newService, IONotifier* notifier)
     {
+      IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
+
       IOLOG_DEBUG("notifierfunc_hookPointing newService:%p\n", newService);
 
       IOHIDevice* device = OSDynamicCast(IOHIPointing, newService);
@@ -161,6 +167,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     notifierfunc_unhookPointing(void* target, void* refCon, IOService* newService, IONotifier* notifier)
     {
+      IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
+
       IOLOG_DEBUG("notifierfunc_unhookPointing newService:%p\n", newService);
 
       IOHIDevice* device = OSDynamicCast(IOHIPointing, newService);
