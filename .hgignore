@@ -11,8 +11,6 @@ pkgroot/
 ^files/prefpane/output/checkbox\.xml$
 src/core/kext/config/output
 src/core/kext/keycode/output
-src/core/kext/keycode/data/include/KeyCode.VK_GENERATED.data
-src/core/kext/keycode/data/include/ConfigIndex.GENERATED.data
 util/getActiveApplication/getname
 files/share/reset
 pkginfo/Info.plist$
