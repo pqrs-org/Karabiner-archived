@@ -87,19 +87,19 @@ ARGV.each do |xmlpath|
 
     # ----------------------------------------
     if node.find_first('./vk_config') then
-      $outfile[:remapcode_vk_config] << "if (params.key == KeyCode::VK_CONFIG_TOGGLE_#{name}) {\n"
+      $outfile[:remapcode_vk_config] << "if (params.key == #{KeyCode.v('KeyCode', "VK_CONFIG_TOGGLE_#{name}")}) {\n"
       $outfile[:remapcode_vk_config] << "  configitem = #{configaddress};\n"
       $outfile[:remapcode_vk_config] << "  type = TYPE_TOGGLE;\n"
       $outfile[:remapcode_vk_config] << "}\n"
-      $outfile[:remapcode_vk_config] << "if (params.key == KeyCode::VK_CONFIG_FORCE_ON_#{name}) {\n"
+      $outfile[:remapcode_vk_config] << "if (params.key == #{KeyCode.v('KeyCode', "VK_CONFIG_FORCE_ON_#{name}")}) {\n"
       $outfile[:remapcode_vk_config] << "  configitem = #{configaddress};\n"
       $outfile[:remapcode_vk_config] << "  type = TYPE_FORCE_ON;\n"
       $outfile[:remapcode_vk_config] << "}\n"
-      $outfile[:remapcode_vk_config] << "if (params.key == KeyCode::VK_CONFIG_FORCE_OFF_#{name}) {\n"
+      $outfile[:remapcode_vk_config] << "if (params.key == #{KeyCode.v('KeyCode', "VK_CONFIG_FORCE_OFF_#{name}")}) {\n"
       $outfile[:remapcode_vk_config] << "  configitem = #{configaddress};\n"
       $outfile[:remapcode_vk_config] << "  type = TYPE_FORCE_OFF;\n"
       $outfile[:remapcode_vk_config] << "}\n"
-      $outfile[:remapcode_vk_config] << "if (params.key == KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_#{name}) {\n"
+      $outfile[:remapcode_vk_config] << "if (params.key == #{KeyCode.v('KeyCode', "VK_CONFIG_FORCE_OFF_#{name}")}) {\n"
       $outfile[:remapcode_vk_config] << "  configitem = #{configaddress};\n"
       $outfile[:remapcode_vk_config] << "  type = TYPE_SYNC_KEYDOWNUP;\n"
       $outfile[:remapcode_vk_config] << "}\n"
