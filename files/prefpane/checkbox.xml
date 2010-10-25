@@ -6475,6 +6475,15 @@
             </item>
           </list>
         </item>
+        <item>
+          <name>NEO Keyboard Layout Fixes</name>
+          <appendix>BACKSLASH (#) to OPTION_R</appendix>
+          <appendix></appendix>
+          <appendix>// To change CAPSLOCK to OPTION_L,</appendix>
+          <appendix>// install PCKeyboardHack and change CapsLock keycode to 58.</appendix>
+          <sysctl>remap.german_neo</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::OPTION_R</autogen>
+        </item>
       </list>
     </item>
     <item>
