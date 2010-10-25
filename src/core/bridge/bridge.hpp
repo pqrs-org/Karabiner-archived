@@ -53,6 +53,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         GRUML,
         IPHOTO,
         STICKIES,
+        LAUNCHBAR,
+        WEBIDE, // PhpStorm, WebStorm
       };
       enum InputMode {
         INPUTMODE_NONE,
