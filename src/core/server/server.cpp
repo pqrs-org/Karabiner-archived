@@ -395,6 +395,15 @@ setCurrentApplicationType(const char* applicationName)
     SET_CURRENT_APPLICATION_TYPE(STICKIES);
   }
 
+  if (strcmp(applicationName, "com.jetbrains.webide") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(WEBIDE);
+  }
+
+  if (strcmp(applicationName, "at.obdev.LaunchBar") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(LAUNCHBAR);
+  }
+
+
   SET_CURRENT_APPLICATION_TYPE(UNKNOWN);
 }
 
