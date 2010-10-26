@@ -3221,7 +3221,7 @@
           <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::RETURN</autogen>
         </item>
         <item>
-          <name>Semicolon(\) to Return (Only on WebIDE)</name>
+          <name>Semicolon to Return (Only on WebIDE)</name>
           <sysctl>remap.semicolon2return_onlywebide</sysctl>
           <only>WEBIDE</only>
           <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::RETURN</autogen>
