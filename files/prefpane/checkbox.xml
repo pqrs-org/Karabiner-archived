@@ -1595,8 +1595,8 @@
           <autogen>--KeyToConsumer-- KeyCode::ESCAPE, ModifierFlag::FN, ConsumerKeyCode::POWER</autogen>
         </item>
         <item>
-          <name>Shift+Escape to Tilda(~)</name>
-          <sysctl>remap.shiftEscape2tilda</sysctl>
+          <name>Shift+Escape to Tilde(~)</name>
+          <sysctl>remap.shiftEscape2tilde</sysctl>
           <autogen>--KeyToKey-- KeyCode::ESCAPE, VK_SHIFT, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
         </item>
         <item>
@@ -7918,12 +7918,12 @@
           </list>
         </item>
         <item>
-          <name>Change Tilda(~) Key</name>
+          <name>Change Tilde(~) Key</name>
           <list>
             <item>
-              <name>Tilda(~) to Shift_L</name>
+              <name>Tilde(~) to Shift_L</name>
               <sysctl>remap.russian_tilda2shiftL</sysctl>
-              <autogen>--KeyToKey-- KeyCode::RUSSIAN_TILDA, KeyCode::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::RUSSIAN_TILDE, KeyCode::SHIFT_L</autogen>
             </item>
           </list>
         </item>
