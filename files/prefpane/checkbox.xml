@@ -1309,6 +1309,11 @@
           <autogen>--KeyToKey-- KeyCode::DELETE, VK_SHIFT | ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
         </item>
         <item>
+          <name>Shift+Delete to Help</name>
+          <sysctl>remap.shiftdelete2help</sysctl>
+          <autogen>--KeyToKey-- KeyCode::DELETE, VK_SHIFT, KeyCode::HELP</autogen>
+        </item>
+        <item>
           <name>Shift+Delete to Tilde(~)</name>
           <sysctl>remap.shiftDelete2tilde</sysctl>
           <autogen>--KeyToKey-- KeyCode::DELETE, VK_SHIFT, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
