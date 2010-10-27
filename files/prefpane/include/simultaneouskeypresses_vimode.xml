@@ -353,9 +353,23 @@
         <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
         <config_only>option.simultaneouskeypresses_vimode_backquote_to_command_space</config_only>
       </block>
-	 <block>
+      <block>
         <autogen>--KeyToKey-- KeyCode::W, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
         <config_only>option.simultaneouskeypresses_vimode_w_to_cmd_w</config_only>
+      </block>
+      <block>
+        <autogen>--KeyToKey-- KeyCode::Y, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, KeyCode::EQUAL, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L</autogen>
+        <config_only>option.simultaneouskeypresses_vimode_y_to_menubar</config_only>
+      </block>
+      <block>
+        <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::EQUAL, KeyCode::EQUAL, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L</autogen>
+        <config_only>option.simultaneouskeypresses_vimode_backquote_to_menubar</config_only>
+      </block>
+      <block>
+        <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+        <config_only>option.simultaneouskeypresses_vimode_bracketleft_to_cmdspace</config_only>
       </block>
       <block>
         <autogen>--KeyToKey-- KeyCode::Z, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
@@ -363,6 +377,22 @@
         <autogen>--KeyToKey-- KeyCode::C, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
         <autogen>--KeyToKey-- KeyCode::V, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
         <config_only>option.simultaneouskeypresses_vimode_zxcv_to_command_zxcv</config_only>
+      </block>
+      <block>
+        <autogen>--KeyToKey-- KeyCode::E, KeyCode::E, ModifierFlag::COMMAND_L</autogen>
+        <config_only>option.simultaneouskeypresses_vimode_e_to_command_e</config_only>
+      </block>
+      <block>
+        <autogen>--KeyToKey-- KeyCode::R, KeyCode::R, ModifierFlag::COMMAND_L</autogen>
+        <config_only>option.simultaneouskeypresses_vimode_r_to_command_r</config_only>
+      </block>
+      <block>
+        <autogen>--KeyToKey-- KeyCode::T, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
+        <config_only>option.simultaneouskeypresses_vimode_t_to_command_t</config_only>
+      </block>
+      <block>
+        <autogen>--KeyToKey-- KeyCode::G, KeyCode::F, ModifierFlag::COMMAND_L</autogen>
+        <config_only>option.simultaneouskeypresses_vimode_g_to_command_f</config_only>
       </block>
     </item>
     <item>
@@ -718,8 +748,36 @@
       <sysctl>option.simultaneouskeypresses_vimode_w_to_cmd_w</sysctl>
     </item>
     <item>
+      <name>[Option] Y/[ to Command+Option+Control+`/= (Shortcuts I use to move focus to Menu Bar and Status Menus) </name>
+      <sysctl>option.simultaneouskeypresses_vimode_y_to_menubar</sysctl>
+    </item>
+    <item>
+      <name>[Option] `/= to Command+Option+Control+`/= (Shortcuts I use to move focus to Menu Bar and Status Menus) </name>
+      <sysctl>option.simultaneouskeypresses_vimode_backquote_to_menubar</sysctl>
+    </item>
+    <item>
+      <name>[ to Cmd+Space (Launchbar)</name>
+      <sysctl>option.simultaneouskeypresses_vimode_bracketleft_to_cmdspace</sysctl>
+    </item>
+    <item>
       <name>[Option] ZXCV to Command+ZXCV</name>
       <sysctl>option.simultaneouskeypresses_vimode_zxcv_to_command_zxcv</sysctl>
+    </item>
+    <item>
+      <name>E to Command+E</name>
+      <sysctl>option.simultaneouskeypresses_vimode_e_to_command_e</sysctl>
+    </item>
+    <item>
+      <name>R to Command+R</name>
+      <sysctl>option.simultaneouskeypresses_vimode_r_to_command_r</sysctl>
+    </item>
+    <item>
+      <name>T to Command+T</name>
+      <sysctl>option.simultaneouskeypresses_vimode_t_to_command_t</sysctl>
+    </item>
+    <item>
+      <name>G to Command+F</name>
+      <sysctl>option.simultaneouskeypresses_vimode_g_to_command_f</sysctl>
     </item>
   </list>
 </item>
