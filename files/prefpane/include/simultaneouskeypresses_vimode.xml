@@ -748,11 +748,13 @@
       <sysctl>option.simultaneouskeypresses_vimode_w_to_cmd_w</sysctl>
     </item>
     <item>
-      <name>[Option] Y/[ to Command+Option+Control+`/= (Shortcuts I use to move focus to Menu Bar and Status Menus) </name>
+      <name>[Option] Y/[ to Command+Option+Control+`/=</name>
+      <appendix>(It's useful using these shortcuts to move focus to Menu Bar and Status Menus)</appendix>
       <sysctl>option.simultaneouskeypresses_vimode_y_to_menubar</sysctl>
     </item>
     <item>
-      <name>[Option] `/= to Command+Option+Control+`/= (Shortcuts I use to move focus to Menu Bar and Status Menus) </name>
+      <name>[Option] §/= to Command+Option+Control+`/=</name>
+      <appendix>(It's useful using these shortcuts to move focus to Menu Bar and Status Menus)</appendix>
       <sysctl>option.simultaneouskeypresses_vimode_backquote_to_menubar</sysctl>
     </item>
     <item>
