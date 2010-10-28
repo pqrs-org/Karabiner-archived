@@ -597,6 +597,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       Handle_VK_CONFIG::clear_items();
 
       if (remapclasses_) {
+        remapclasses_->reserve(sizeof(remapclass_initialize_vector) / sizeof(remapclass_initialize_vector[0]));
         for (size_t i = 0; i < sizeof(remapclass_initialize_vector) / sizeof(remapclass_initialize_vector[0]); ++i) {
           RemapClass* newp = new RemapClass(remapclass_initialize_vector[i],
                                             remapclass_configindex[i]);
