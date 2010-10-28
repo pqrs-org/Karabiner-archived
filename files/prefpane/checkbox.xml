@@ -900,6 +900,12 @@
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
+          <name>Command_R to Control_L (only in Emacs)</name>
+          <sysctl>remap.commandR2controlL_emacs</sysctl>
+          <only>EMACS</only>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::CONTROL_L</autogen>
+        </item>
+        <item>
           <name>Command_R to Fn</name>
           <sysctl>remap.commandR2fn</sysctl>
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::FN</autogen>
@@ -3383,6 +3389,12 @@
           <appendix>(+ When you type Shift_R only, send Enter)</appendix>
           <sysctl>remap.shiftR2shiftR_enter</sysctl>
           <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::ENTER</autogen>
+        </item>
+        <item>
+          <name>Shift_R to Shift_R</name>
+          <appendix>(+ When you type Shift_R only, send Escape)</appendix>
+          <sysctl>remap.shiftR2shiftR_escape</sysctl>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::ESCAPE</autogen>
         </item>
         <item>
           <name>Shift_R to Shift_R</name>
