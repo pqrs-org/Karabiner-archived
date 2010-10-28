@@ -10,3 +10,6 @@ clean:
 	rm -f *.xcodeproj/*.mode1
 	rm -f *.xcodeproj/*.mode1v3
 	rm -f *.xcodeproj/*.pbxuser
+
+run:
+	./build/Release/KeyRemap4MacBook.app/Contents/MacOS/KeyRemap4MacBook
