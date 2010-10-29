@@ -266,8 +266,12 @@
         <config_only>option.simultaneouskeypresses_vimode_d_to_option</config_only>
       </block>
       <block>
-        <autogen>--KeyOverlaidModifier-- KeyCode::F, KeyCode::COMMAND_L, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
         <config_only>option.simultaneouskeypresses_vimode_f_to_command</config_only>
+        <autogen>--KeyOverlaidModifier-- KeyCode::F, KeyCode::COMMAND_L, ModifierFlag::EXTRA3, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+        <block>
+          <config_only>option.simultaneouskeypresses_vimode_h_to_undo</config_only>
+          <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA3, KeyCode::H, ModifierFlag::CONTROL_L</autogen>
+        </block>
       </block>
       <block>
         <autogen>--KeyToKey-- KeyCode::F, KeyCode::SHIFT_L</autogen>
@@ -393,6 +397,22 @@
       <block>
         <autogen>--KeyToKey-- KeyCode::G, KeyCode::F, ModifierFlag::COMMAND_L</autogen>
         <config_only>option.simultaneouskeypresses_vimode_g_to_command_f</config_only>
+      </block>
+      <block>
+        <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::SPACE</autogen>
+        <config_only>option.simultaneouskeypresses_vimode_semicolon_to_space</config_only>
+      </block>
+      <block>
+        <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, KeyCode::ESCAPE</autogen>
+        <config_only>option.simultaneouskeypresses_vimode_bracket_to_escape</config_only>
+      </block>
+      <block>
+        <autogen>--KeyToKey-- KeyCode::H, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+        <config_only>option.simultaneouskeypresses_vimode_h_to_undo</config_only>
+      </block>
+      <block>
+        <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::BACKSLASH, ModifierFlag::COMMAND_L</autogen>
+        <config_only>option.simultaneouskeypresses_vimode_backslash</config_only>
       </block>
     </item>
     <item>
@@ -780,6 +800,25 @@
     <item>
       <name>G to Command+F</name>
       <sysctl>option.simultaneouskeypresses_vimode_g_to_command_f</sysctl>
+    </item>
+    <item>
+      <name>Semicolon(;) to Space</name>
+      <sysctl>option.simultaneouskeypresses_vimode_semicolon_to_space</sysctl>
+    </item>
+    <item>
+      <name>Bracket([) to Escape</name>
+      <sysctl>option.simultaneouskeypresses_vimode_bracket_to_escape</sysctl>
+    </item>
+    <item>
+      <name>H to Cmd+Z</name>
+      <sysctl>option.simultaneouskeypresses_vimode_h_to_undo</sysctl>
+      <appendix>+ when combined with F send Control+Option+H</appendix>
+      <appendix>(You need to have F to Command enabled in order to the thing after + work)</appendix>
+      <appendix>(Use with above JKIL option)</appendix>
+    </item>
+    <item>
+      <name>Backslash to Command+Backslash</name>
+      <sysctl>option.simultaneouskeypresses_vimode_backslash</sysctl>
     </item>
   </list>
 </item>
