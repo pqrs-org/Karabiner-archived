@@ -133,7 +133,9 @@ namespace org_pqrs_KeyRemap4MacBook {
                                               void* refcon)
   {
     IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
+    if (! lk_eventlock) return;
     IOLockWrapper::ScopedLock lk(timer_.getlock());
+    if (! lk) return;
 
     // ------------------------------------------------------------
     KeyboardType newkeyboardtype(keyboardType);
@@ -159,6 +161,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     {
       IOLockWrapper::ScopedLock lk_device(ListHookedKeyboard::instance().getListLock());
+      if (! lk_device) return;
 
       IOHIKeyboard* device = OSDynamicCast(IOHIKeyboard, sender);
       if (! device) return;
@@ -227,7 +230,9 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                  void* refcon)
   {
     IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
+    if (! lk_eventlock) return;
     IOLockWrapper::ScopedLock lk(timer_.getlock());
+    if (! lk) return;
 
     // ------------------------------------------------------------
     Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(flags));
@@ -238,6 +243,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // update device priority by calling ListHookedKeyboard::instance().get(kbd).
     {
       IOLockWrapper::ScopedLock lk_device(ListHookedKeyboard::instance().getListLock());
+      if (! lk_device) return;
 
       IOHIKeyboard* device = OSDynamicCast(IOHIKeyboard, sender);
       if (! device) return;
@@ -267,7 +273,9 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                      void* refcon)
   {
     IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
+    if (! lk_eventlock) return;
     IOLockWrapper::ScopedLock lk(timer_.getlock());
+    if (! lk) return;
 
     // ------------------------------------------------------------
     Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(EventType(eventType), Flags(flags), ConsumerKeyCode(key),
@@ -278,6 +286,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     {
       IOLockWrapper::ScopedLock lk_device(ListHookedKeyboard::instance().getListLock());
+      if (! lk_device) return;
 
       IOHIKeyboard* device = OSDynamicCast(IOHIKeyboard, sender);
       if (! device) return;
@@ -322,7 +331,9 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                      void* refcon)
   {
     IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
+    if (! lk_eventlock) return;
     IOLockWrapper::ScopedLock lk(timer_.getlock());
+    if (! lk) return;
 
     // ------------------------------------------------------------
     Buttons buttons(buttons_raw);
@@ -331,6 +342,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     {
       IOLockWrapper::ScopedLock lk_device(ListHookedKeyboard::instance().getListLock());
+      if (! lk_device) return;
 
       IOHIPointing* device = OSDynamicCast(IOHIPointing, sender);
       if (! device) return;
@@ -400,7 +412,9 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                  void* refcon)
   {
     IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
+    if (! lk_eventlock) return;
     IOLockWrapper::ScopedLock lk(timer_.getlock());
+    if (! lk) return;
 
     // ------------------------------------------------------------
     Params_ScrollWheelEventCallback::auto_ptr ptr(Params_ScrollWheelEventCallback::alloc(deltaAxis1, deltaAxis2, deltaAxis3,
@@ -413,6 +427,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     {
       IOLockWrapper::ScopedLock lk_device(ListHookedKeyboard::instance().getListLock());
+      if (! lk_device) return;
 
       IOHIPointing* device = OSDynamicCast(IOHIPointing, sender);
       if (! device) return;
@@ -445,6 +460,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   EventInputQueue::fire(OSObject* /*notuse_owner*/, IOTimerEventSource* /*notuse_sender*/)
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
+    if (! lk) return;
 
     if (! queue_) return;
 
