@@ -88,16 +88,26 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     stop(void)
     {
+      // At first, restoreEventAction for all devices.
+      {
+        IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
+
+        timer_refresh.terminate();
+        ListHookedKeyboard::instance().terminate();
+        ListHookedConsumer::instance().terminate();
+        ListHookedPointing::instance().terminate();
+      }
+
+      // roughly sleep: waiting for finishing queued device events.
+      IOSleep(200);
+
+      // call terminate
       {
         IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
 
         sysctl_unregister();
 
-        timer_refresh.terminate();
         RemapClassManager::terminate();
-        ListHookedKeyboard::instance().terminate();
-        ListHookedConsumer::instance().terminate();
-        ListHookedPointing::instance().terminate();
         KeyboardRepeat::terminate();
         EventInputQueue::terminate();
         VirtualKey::terminate();
@@ -116,6 +126,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         EventWatcher::terminate();
         PressDownKeys::terminate();
       }
+
       CommonData::terminate();
     }
 
