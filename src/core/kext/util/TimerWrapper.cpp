@@ -71,6 +71,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     {
       IOLockWrapper::ScopedLock lk(lock_);
+      if (! lk) return;
 
       if (timer_) {
         timer_->cancelTimeout();
@@ -94,6 +95,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! object_) return kIOReturnError;
     IOLockWrapper::ScopedLock lk(object_->getlock());
+    if (! lk) return kIOReturnError;
 
     if (! timer_) {
       return kIOReturnNoResources;
@@ -116,6 +118,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! object_) return;
     IOLockWrapper::ScopedLock lk(object_->getlock());
+    if (! lk) return;
 
     if (timer_) {
       timer_->cancelTimeout();
@@ -127,12 +130,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   TimerWrapper::callback_(OSObject* owner, IOTimerEventSource* sender)
   {
     IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
+    if (! lk_eventlock) return;
 
     org_pqrs_KeyRemap4MacBook_TimerWrapperObject* object = OSDynamicCast(org_pqrs_KeyRemap4MacBook_TimerWrapperObject, owner);
     if (! object) return;
 
     {
       IOLockWrapper::ScopedLock lk(object->getlock());
+      if (! lk) return;
       object->setActive(false);
     }
     (object->getaction())(object->getowner(), sender);
