@@ -39,6 +39,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           IOLockUnlock(lock_);
         }
       }
+      bool operator!(void) const { return lock_ == NULL; }
 
     private:
       IOLock* lock_;
