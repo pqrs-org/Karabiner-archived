@@ -4,7 +4,7 @@ all:
 	mkdir -p output
 	make -C ../../../../files/prefpane
 	/usr/bin/tidy -q -errors -xml -raw $(SYSCTL_FILE)
-	make -C ../keycode output
+	make -C ../../bridge/keycode
 	ruby ./make-code.rb $(SYSCTL_FILE)
 
 clean:
