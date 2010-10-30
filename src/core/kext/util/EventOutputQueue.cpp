@@ -31,6 +31,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------------------------------------
 #define PUSH_TO_OUTPUTQUEUE {                       \
     IOLockWrapper::ScopedLock lk(timer_.getlock()); \
+    if (! lk) return;                               \
                                                     \
     if (! queue_) return;                           \
                                                     \
@@ -49,6 +50,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   EventOutputQueue::fire(OSObject* owner, IOTimerEventSource* sender)
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
+    if (! lk) return;
 
     if (! queue_) return;
 
