@@ -44,8 +44,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   ListHookedKeyboard::Item::~Item(void)
   {
     IOLOG_DEBUG("ListHookedKeyboard::Item::~Item()\n");
-    IOLockWrapper::free(replacerestore_lock_);
     restoreEventAction();
+    IOLockWrapper::free(replacerestore_lock_);
   }
 
   // ======================================================================
@@ -123,6 +123,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   ListHookedKeyboard::Item::replaceEventAction(void)
   {
     IOLockWrapper::ScopedLock lk(replacerestore_lock_);
+    if (! lk) return false;
 
     if (! device_) return false;
 
@@ -166,6 +167,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   ListHookedKeyboard::Item::restoreEventAction(void)
   {
     IOLockWrapper::ScopedLock lk(replacerestore_lock_);
+    if (! lk) return false;
 
     if (! device_) return false;
 
@@ -287,6 +289,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   ListHookedKeyboard::apply(const Params_KeyboardEventCallBack& params)
   {
     IOLockWrapper::ScopedLock lk(list_lock_);
+    if (! lk) return;
 
     ListHookedKeyboard::Item* p = static_cast<ListHookedKeyboard::Item*>(get_replaced_nolock());
     if (p) {
@@ -298,6 +301,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   ListHookedKeyboard::apply(const Params_UpdateEventFlagsCallback& params)
   {
     IOLockWrapper::ScopedLock lk(list_lock_);
+    if (! lk) return;
 
     ListHookedKeyboard::Item* p = static_cast<ListHookedKeyboard::Item*>(get_replaced_nolock());
     if (p) {
@@ -310,6 +314,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     ListHookedKeyboard& self = ListHookedKeyboard::instance();
     IOLockWrapper::ScopedLock lk(self.list_lock_);
+    if (! lk) return;
 
     if (! self.list_) return;
 
