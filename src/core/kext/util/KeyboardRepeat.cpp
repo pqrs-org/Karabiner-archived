@@ -39,6 +39,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   KeyboardRepeat::cancel(void)
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
+    if (! lk) return;
+
     IOLOG_DEVEL("KeyboardRepeat::cancel\n");
     cancel_nolock();
   }
@@ -89,6 +91,8 @@ namespace org_pqrs_KeyRemap4MacBook {
                                 KeyboardType keyboardType)
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
+    if (! lk) return;
+
     primitive_add_nolock(eventType, flags, key, keyboardType);
   }
 
@@ -98,6 +102,8 @@ namespace org_pqrs_KeyRemap4MacBook {
                                        KeyboardType keyboardType)
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
+    if (! lk) return;
+
     primitive_add_nolock(EventType::DOWN, flags, key, keyboardType, Item::TYPE_DOWNUP);
   }
 
@@ -107,6 +113,8 @@ namespace org_pqrs_KeyRemap4MacBook {
                                 ConsumerKeyCode key)
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
+    if (! lk) return;
+
     primitive_add_nolock(eventType, flags, key);
   }
 
@@ -120,6 +128,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   KeyboardRepeat::primitive_start(int wait)
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
+    if (! lk) return;
+
     primitive_start_nolock(wait);
   }
 
@@ -131,6 +141,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                       int wait)
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
+    if (! lk) return;
 
     if (! queue_) return;
 
@@ -176,6 +187,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                       ConsumerKeyCode key)
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
+    if (! lk) return;
 
     if (! queue_) return;
 
@@ -215,6 +227,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   KeyboardRepeat::fire(OSObject* owner, IOTimerEventSource* sender)
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
+    if (! lk) return;
 
     if (! queue_) return;
 
