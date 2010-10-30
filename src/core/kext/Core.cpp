@@ -68,9 +68,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! workLoop) {
         IOLOG_ERROR("IOWorkLoop::workLoop failed\n");
       } else {
-        timer_refresh.initialize(workLoop, NULL, refreshHookedDevice);
-        timer_refresh.setTimeoutMS(REFRESH_DEVICE_INTERVAL);
-
         KeyboardRepeat::initialize(*workLoop);
         EventInputQueue::initialize(*workLoop);
         VirtualKey::initialize(*workLoop);
@@ -80,6 +77,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         RemapFunc::PointingRelativeToScroll::static_initialize(*workLoop);
         ListHookedKeyboard::static_initialize(*workLoop);
         RemapClassManager::initialize(*workLoop);
+
+        timer_refresh.initialize(workLoop, NULL, refreshHookedDevice);
+        timer_refresh.setTimeoutMS(REFRESH_DEVICE_INTERVAL);
       }
 
       sysctl_register();
