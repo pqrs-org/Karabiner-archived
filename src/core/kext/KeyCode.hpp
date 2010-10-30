@@ -16,7 +16,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     bool isKeyDownOrModifierDown(KeyCode key, Flags flags) const;
 
-#include "keycode/output/include.EventType.hpp"
+#include "../bridge/keycode/output/include.EventType.hpp"
 
   private:
     unsigned int value_;
@@ -30,7 +30,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool operator==(KeyboardType other) const { return value_ == other.get(); }
     bool operator!=(KeyboardType other) const { return ! (*this == other); }
 
-#include "keycode/output/include.KeyboardType.hpp"
+#include "../bridge/keycode/output/include.KeyboardType.hpp"
 
   private:
     unsigned int value_;
@@ -47,7 +47,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     KeyCode getKeyCode(void) const;
 
-#include "keycode/output/include.ModifierFlag.hpp"
+#include "../bridge/keycode/output/include.ModifierFlag.hpp"
 
   private:
     ModifierFlag(unsigned int v) : value_(v) {}
@@ -177,7 +177,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     ModifierFlag getModifierFlag(void) const;
     bool isModifier(void) const { return getModifierFlag() != ModifierFlag::NONE; }
 
-#include "keycode/output/include.KeyCode.hpp"
+#include "../bridge/keycode/output/include.KeyCode.hpp"
 
     // When FN key and Arrow key were pushed together, another key code was sent (Home,End,PageUp,PageDown or something).
     // We need to change these Home,End,PageUp,PageDown keys to FN+Arrow key before sending key code to remapper.
@@ -258,7 +258,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool operator>(ConsumerKeyCode other) const { return value_ > other.get(); }
     bool operator>=(ConsumerKeyCode other) const { return value_ >= other.get(); }
 
-#include "keycode/output/include.ConsumerKeyCode.hpp"
+#include "../bridge/keycode/output/include.ConsumerKeyCode.hpp"
 
   private:
     unsigned int value_;
@@ -274,7 +274,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     unsigned int operator~(void) const { return ~value_; }
 
-#include "keycode/output/include.PointingButton.hpp"
+#include "../bridge/keycode/output/include.PointingButton.hpp"
 
   private:
     unsigned int value_;
@@ -329,7 +329,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool operator==(Option other) const { return value_ == other.get(); }
     bool operator!=(Option other) const { return ! (*this == other); }
 
-#include "keycode/output/include.Option.hpp"
+#include "../bridge/keycode/output/include.Option.hpp"
 
   private:
     unsigned int value_;

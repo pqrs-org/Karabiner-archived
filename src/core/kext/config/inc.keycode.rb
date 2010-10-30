@@ -9,7 +9,7 @@ class KeyCode
   def KeyCode.load_keycode
     return unless @@keycode.empty?
 
-    Dir.glob("../keycode/output/*.raw").each do |filepath|
+    Dir.glob("../../bridge/keycode/output/*.raw").each do |filepath|
       type = File.basename(filepath, 'raw').gsub(/^include\./, '')
       open(filepath) do |f|
         while l = f.gets

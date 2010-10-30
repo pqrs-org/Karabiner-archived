@@ -6,7 +6,6 @@ all:
 	$(MAKE) -C ../../../pkginfo
 	echo "char config_version[] = \"$(VERSION)\";" > version.hpp
 	$(MAKE) -C config
-	$(MAKE) -C keycode
 	xcodebuild -alltargets -configuration $(CONFIGURATION) MODULE_VERSION=$(VERSION) CURRENT_PROJECT_VERSION=$(VERSION) build
 
 buildonly:
@@ -14,7 +13,6 @@ buildonly:
 
 clean:
 	$(MAKE) -C config clean
-	$(MAKE) -C keycode clean
 	rm -rf build
 	rm -f *.xcodeproj/*.mode1
 	rm -f *.xcodeproj/*.mode1v3

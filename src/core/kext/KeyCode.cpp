@@ -2,13 +2,13 @@
 #include "Config.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-#include "keycode/output/include.EventType.cpp"
-#include "keycode/output/include.KeyboardType.cpp"
-#include "keycode/output/include.ModifierFlag.cpp"
-#include "keycode/output/include.KeyCode.cpp"
-#include "keycode/output/include.ConsumerKeyCode.cpp"
-#include "keycode/output/include.PointingButton.cpp"
-#include "keycode/output/include.Option.cpp"
+#include "../bridge/keycode/output/include.EventType.cpp"
+#include "../bridge/keycode/output/include.KeyboardType.cpp"
+#include "../bridge/keycode/output/include.ModifierFlag.cpp"
+#include "../bridge/keycode/output/include.KeyCode.cpp"
+#include "../bridge/keycode/output/include.ConsumerKeyCode.cpp"
+#include "../bridge/keycode/output/include.PointingButton.cpp"
+#include "../bridge/keycode/output/include.Option.cpp"
 
   // ------------------------------------------------------------
   bool
