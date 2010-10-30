@@ -9,17 +9,14 @@ class KeyCode
   def KeyCode.load_keycode
     return unless @@keycode.empty?
 
-    Dir.glob("../../bridge/keycode/output/*.raw").each do |filepath|
-      type = File.basename(filepath, 'raw').gsub(/^include\./, '')
-      open(filepath) do |f|
-        while l = f.gets
-          next unless /^(.+?)::(.+?) (.+)$/ =~ l
-          if @@keycode[$1].nil? then
-            @@keycode[$1] = {}
-          end
-          @@keycode[$1][$2] = $3
-          @@autoindex[$1] = $3.succ
+    open("../../bridge/keycode/output/include.keycode.raw") do |f|
+      while l = f.gets
+        next unless /^(.+?)::(.+?) (.+)$/ =~ l
+        if @@keycode[$1].nil? then
+          @@keycode[$1] = {}
         end
+        @@keycode[$1][$2] = $3
+        @@autoindex[$1] = $3.succ
       end
     end
   end

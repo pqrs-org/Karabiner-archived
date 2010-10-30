@@ -11,15 +11,12 @@ Dir.glob("*.data") do |filename|
 
     outfile = {
       :hpp => open("../output/include.#{classname}.hpp", "w"),
-      :cpp => open("../output/include.#{classname}.cpp", "w"),
-      :raw => open("../output/include.#{classname}.raw", "w"),
     }
 
     open(filename) do |f|
       while l = f.gets
         if /^\/\// =~ l then
           outfile[:hpp] << l
-          outfile[:cpp] << l
         elsif /^(.+?)\s+(.+)$/ =~ l then
           name = $1
           value = $2
@@ -30,13 +27,10 @@ Dir.glob("*.data") do |filename|
           lastvalue = value
 
           outfile[:hpp] << "static const #{classname} #{name};\n"
-          outfile[:cpp] << "const #{classname} #{classname}::#{name}(#{value});\n"
-          outfile[:raw] << "#{classname}::#{name} #{value}\n"
-          alldata << { :name => "#{classname}::#{name}", :value => value }
+          alldata << { :name => "#{classname}::#{name}", :value => value, :classname => classname }
         else
           unless l.strip.empty? then
             outfile[:hpp] << "ERROR #{l}\n"
-            outfile[:cpp] << "ERROR #{l}\n"
           end
         end
       end
@@ -65,4 +59,20 @@ plist << '</plist>'
 
 open("../output/include.keycode.plist", 'w') do |f|
   f << plist.join("\n")
+end
+
+# ----------------------------------------------------------------------
+# output cpp
+open("../output/include.keycode.cpp", 'w') do |f|
+  alldata.each do |info|
+    f << "const #{info[:classname]} #{info[:name]}(#{info[:value]});\n"
+  end
+end
+
+# ----------------------------------------------------------------------
+# output raw
+open("../output/include.keycode.raw", 'w') do |f|
+  alldata.each do |info|
+    f << "#{info[:name]} #{info[:value]}\n"
+  end
 end
