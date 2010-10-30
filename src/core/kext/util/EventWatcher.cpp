@@ -16,16 +16,20 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   EventWatcher::terminate(void)
   {
-    IOLockWrapper::free(lock_);
-    if (list_) {
-      delete list_;
+    {
+      IOLockWrapper::ScopedLock lk(lock_);
+      if (list_) {
+        delete list_;
+      }
     }
+    IOLockWrapper::free(lock_);
   }
 
   void
   EventWatcher::reset(void)
   {
     IOLockWrapper::ScopedLock lk(lock_);
+    if (! lk) return;
 
     if (! list_) return;
 
@@ -36,6 +40,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   EventWatcher::on(void)
   {
     IOLockWrapper::ScopedLock lk(lock_);
+    if (! lk) return;
 
     if (! list_) return;
 
@@ -50,6 +55,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   EventWatcher::set(bool& b)
   {
     IOLockWrapper::ScopedLock lk(lock_);
+    if (! lk) return;
 
     if (! list_) return;
 
@@ -61,6 +67,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   EventWatcher::unset(bool& b)
   {
     IOLockWrapper::ScopedLock lk(lock_);
+    if (! lk) return;
 
     if (! list_) return;
 
