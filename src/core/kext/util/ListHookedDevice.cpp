@@ -142,19 +142,23 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListHookedDevice::terminate(void)
   {
-    IOLockWrapper::free(list_lock_);
+    {
+      IOLockWrapper::ScopedLock lk(list_lock_);
 
-    if (list_) {
-      delete list_;
+      if (list_) {
+        delete list_;
+      }
+
+      reset();
     }
-
-    reset();
+    IOLockWrapper::free(list_lock_);
   }
 
   void
   ListHookedDevice::push_back(ListHookedDevice::Item* newp)
   {
     IOLockWrapper::ScopedLock lk(list_lock_);
+    if (! lk) return;
 
     if (! list_) return;
     if (! newp) return;
@@ -172,6 +176,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   ListHookedDevice::erase(IOHIDevice* p)
   {
     IOLockWrapper::ScopedLock lk(list_lock_);
+    if (! lk) return;
 
     if (! list_) return;
 
@@ -221,6 +226,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   ListHookedDevice::refresh_callback(void)
   {
     IOLockWrapper::ScopedLock lk(list_lock_);
+    if (! lk) return;
 
     if (! list_) return;
 
