@@ -36,6 +36,9 @@ Dir.glob("*.data") do |filename|
       end
     end
 
+    outfile[:hpp] << "static const #{classname} VK__AUTOINDEX__BEGIN__;\n"
+    alldata << { :name => "#{classname}::VK__AUTOINDEX__BEGIN__", :value => lastvalue.succ, :classname => classname }
+
     outfile.each do |name,file|
       file.close
     end
