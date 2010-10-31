@@ -3,7 +3,6 @@
 
 class KeyCode
   @@keycode = {}
-  @@autoindex = {}
   @@configindex = 0
 
   def KeyCode.load_keycode
@@ -16,7 +15,6 @@ class KeyCode
           @@keycode[$1] = {}
         end
         @@keycode[$1][$2] = $3
-        @@autoindex[$1] = $3.succ
       end
     end
   end
@@ -36,8 +34,8 @@ class KeyCode
   end
 
   def KeyCode.append_autoindexed(type, key)
-    @@keycode[type][key] = @@autoindex[type].dup
-    @@autoindex[type].succ!
+    @@keycode[type][key] = @@keycode[type]['VK__AUTOINDEX__BEGIN__'].dup
+    @@keycode[type]['VK__AUTOINDEX__BEGIN__'].succ!
   end
 
   def KeyCode.v(type, key)
