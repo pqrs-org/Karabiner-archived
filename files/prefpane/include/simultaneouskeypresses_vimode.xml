@@ -395,7 +395,7 @@
         <config_only>option.simultaneouskeypresses_vimode_zxcv_to_command_zxcv</config_only>
       </block>
       <block>
-        <autogen>--KeyToKey-- KeyCode::E, KeyCode::E, ModifierFlag::COMMAND_L</autogen>v
+        <autogen>--KeyToKey-- KeyCode::E, KeyCode::E, ModifierFlag::COMMAND_L</autogen>
         <config_only>option.simultaneouskeypresses_vimode_e_to_command_e</config_only>
       </block>
       <block>
