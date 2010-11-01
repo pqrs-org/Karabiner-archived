@@ -844,6 +844,7 @@
       <sysctl>option.simultaneouskeypresses_vimode_h_to_undo</sysctl>
       <appendix>+ when combined with F send Control+Option+H</appendix>
       <appendix>(You need to have F to Command enabled in order to the thing after + work)</appendix>
+      <appendix>(Use with above JKIL option)</appendix>
     </item>
     <item>
       <name>[Option] Backslash to Command+Backslash</name>
@@ -851,6 +852,7 @@
     </item>
     <item>
       <name>[Option] H to Space</name>
+      <appendix>(Use with above JKIL option)</appendix>
       <sysctl>option.simultaneouskeypresses_vimode_h_to_space</sysctl>
     </item>
     <item>
