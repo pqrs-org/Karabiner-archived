@@ -7,6 +7,8 @@ require 'inc.filter.rb'
 require 'inc.remapclass.rb'
 require 'inc.keycode.rb'
 
+GC.disable
+
 $outfile = {
   :config => open('output/include.config.hpp', 'w'),
   :config_SYSCTL => open('output/include.config_SYSCTL.cpp', 'w'),
