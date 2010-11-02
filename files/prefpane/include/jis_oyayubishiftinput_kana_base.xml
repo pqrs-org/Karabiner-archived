@@ -38,11 +38,14 @@
 <autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::T, KeyCode::X, KeyCode::JIS_ATMARK</autogen>
 
 <!-- 左手 下段 -->
-<autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::NONE, KeyCode::DOT, ModifierFlag::OPTION_L</autogen>
-<autogen>--KeyToKey-- KeyCode::X, ModifierFlag::NONE, KeyCode::V</autogen>
-<autogen>--KeyToKey-- KeyCode::C, ModifierFlag::NONE, KeyCode::R</autogen>
-<autogen>--KeyToKey-- KeyCode::V, ModifierFlag::NONE, KeyCode::KEY_2</autogen>
-<autogen>--KeyToKey-- KeyCode::B, ModifierFlag::NONE, KeyCode::JIS_HAT</autogen>
+<autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::NONE,            KeyCode::DOT, ModifierFlag::OPTION_L</autogen>
+<autogen>--KeyToKey-- KeyCode::X, ModifierFlag::NONE,            KeyCode::V</autogen>
+<autogen>--KeyToKey-- KeyCode::X, VK_SHIFT | ModifierFlag::NONE, KeyCode::V, KeyCode::JIS_BRACKET_LEFT</autogen>
+<autogen>--KeyToKey-- KeyCode::C, ModifierFlag::NONE,            KeyCode::R</autogen>
+<autogen>--KeyToKey-- KeyCode::V, ModifierFlag::NONE,            KeyCode::KEY_2</autogen>
+<autogen>--KeyToKey-- KeyCode::V, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_2, KeyCode::JIS_BRACKET_LEFT</autogen>
+<autogen>--KeyToKey-- KeyCode::B, ModifierFlag::NONE,            KeyCode::JIS_HAT</autogen>
+<autogen>--KeyToKey-- KeyCode::B, VK_SHIFT | ModifierFlag::NONE, KeyCode::JIS_HAT, KeyCode::JIS_BRACKET_LEFT</autogen>
 <!-- 左手 下段 (順親指シフト) -->
 <autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::Z, KeyCode::KEY_4, ModifierFlag::SHIFT_L</autogen>
 <autogen>--SimultaneousKeyPresses-- LEFT_THUMB, KeyCode::X, KeyCode::JIS_YEN</autogen>
@@ -58,11 +61,12 @@
 
 
 <!-- 右手 中段 -->
-<autogen>--KeyToKey-- KeyCode::H, ModifierFlag::NONE, KeyCode::F</autogen>
-<autogen>--KeyToKey-- KeyCode::J, ModifierFlag::NONE, KeyCode::S</autogen>
-<autogen>--KeyToKey-- KeyCode::K, ModifierFlag::NONE, KeyCode::G</autogen>
-<autogen>--KeyToKey-- KeyCode::L, ModifierFlag::NONE, KeyCode::E</autogen>
-<autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::Y</autogen>
+<autogen>--KeyToKey-- KeyCode::H,         ModifierFlag::NONE,            KeyCode::F</autogen>
+<autogen>--KeyToKey-- KeyCode::H,         VK_SHIFT | ModifierFlag::NONE, KeyCode::F, KeyCode::JIS_BRACKET_LEFT</autogen>
+<autogen>--KeyToKey-- KeyCode::J,         ModifierFlag::NONE,            KeyCode::S</autogen>
+<autogen>--KeyToKey-- KeyCode::K,         ModifierFlag::NONE,            KeyCode::G</autogen>
+<autogen>--KeyToKey-- KeyCode::L,         ModifierFlag::NONE,            KeyCode::E</autogen>
+<autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::NONE,            KeyCode::Y</autogen>
 <!-- : キーはそのまま -->
 
 <!-- 右手 中段 (順親指シフト) -->
@@ -105,11 +109,12 @@
 <!-- [ - 対応キーなし -->
 
 <!-- 右手 下段 -->
-<autogen>--KeyToKey-- KeyCode::N, ModifierFlag::NONE, KeyCode::SLASH</autogen>
-<autogen>--KeyToKey-- KeyCode::M, ModifierFlag::NONE, KeyCode::C</autogen>
-<autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::NONE, KeyCode::COMMA</autogen>
-<autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::NONE, KeyCode::MINUS</autogen>
-<autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::NONE, KeyCode::SLASH, ModifierFlag::SHIFT_L</autogen>
+<autogen>--KeyToKey-- KeyCode::N,     ModifierFlag::NONE,            KeyCode::SLASH</autogen>
+<autogen>--KeyToKey-- KeyCode::M,     ModifierFlag::NONE,            KeyCode::C</autogen>
+<autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::NONE,            KeyCode::COMMA</autogen>
+<autogen>--KeyToKey-- KeyCode::DOT,   ModifierFlag::NONE,            KeyCode::MINUS</autogen>
+<autogen>--KeyToKey-- KeyCode::DOT,   VK_SHIFT | ModifierFlag::NONE, KeyCode::MINUS, KeyCode::JIS_BRACKET_LEFT</autogen>
+<autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::NONE,            KeyCode::SLASH, ModifierFlag::SHIFT_L</autogen>
 <!-- _ - 対応キーなし -->
 <!-- 右手 下段 (順親指シフト) -->
 <autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::N, KeyCode::KEY_1</autogen>
