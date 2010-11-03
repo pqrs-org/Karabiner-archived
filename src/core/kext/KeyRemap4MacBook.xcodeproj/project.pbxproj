@@ -27,6 +27,8 @@
 		344034B411DD5ACA00386638 /* PointingButtonToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 344034B211DD5ACA00386638 /* PointingButtonToKey.hpp */; };
 		3443E81111D8536B00BB28FB /* DoublePressModifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3443E80F11D8536B00BB28FB /* DoublePressModifier.cpp */; };
 		3443E81211D8536B00BB28FB /* DoublePressModifier.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3443E81011D8536B00BB28FB /* DoublePressModifier.hpp */; };
+		344BB4EE12812A9F008B75F6 /* DropPointingRelativeCursorMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 344BB4EC12812A9F008B75F6 /* DropPointingRelativeCursorMove.cpp */; };
+		344BB4EF12812A9F008B75F6 /* DropPointingRelativeCursorMove.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 344BB4ED12812A9F008B75F6 /* DropPointingRelativeCursorMove.hpp */; };
 		345004AD0E7CE48F0075324B /* Core.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345004A80E7CE48F0075324B /* Core.cpp */; };
 		345004AE0E7CE48F0075324B /* Core.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345004A90E7CE48F0075324B /* Core.hpp */; };
 		345004AF0E7CE48F0075324B /* Driver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345004AA0E7CE48F0075324B /* Driver.cpp */; };
@@ -134,6 +136,8 @@
 		344034B211DD5ACA00386638 /* PointingButtonToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PointingButtonToKey.hpp; path = RemapFunc/PointingButtonToKey.hpp; sourceTree = "<group>"; };
 		3443E80F11D8536B00BB28FB /* DoublePressModifier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DoublePressModifier.cpp; path = RemapFunc/DoublePressModifier.cpp; sourceTree = "<group>"; };
 		3443E81011D8536B00BB28FB /* DoublePressModifier.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DoublePressModifier.hpp; path = RemapFunc/DoublePressModifier.hpp; sourceTree = "<group>"; };
+		344BB4EC12812A9F008B75F6 /* DropPointingRelativeCursorMove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DropPointingRelativeCursorMove.cpp; path = RemapFunc/DropPointingRelativeCursorMove.cpp; sourceTree = "<group>"; };
+		344BB4ED12812A9F008B75F6 /* DropPointingRelativeCursorMove.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DropPointingRelativeCursorMove.hpp; path = RemapFunc/DropPointingRelativeCursorMove.hpp; sourceTree = "<group>"; };
 		345004A80E7CE48F0075324B /* Core.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Core.cpp; sourceTree = "<group>"; };
 		345004A90E7CE48F0075324B /* Core.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Core.hpp; sourceTree = "<group>"; };
 		345004AA0E7CE48F0075324B /* Driver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Driver.cpp; sourceTree = "<group>"; };
@@ -290,6 +294,8 @@
 		345E3EC511D79D17004B6347 /* RemapFunc */ = {
 			isa = PBXGroup;
 			children = (
+				344BB4EC12812A9F008B75F6 /* DropPointingRelativeCursorMove.cpp */,
+				344BB4ED12812A9F008B75F6 /* DropPointingRelativeCursorMove.hpp */,
 				34794D51126F32E700655ADB /* SetKeyboardType.cpp */,
 				34794D52126F32E700655ADB /* SetKeyboardType.hpp */,
 				34B8199311DF925500BD8E0B /* DropKeyAfterRemap.cpp */,
@@ -453,6 +459,7 @@
 				342C80551261B379007F15DA /* DeviceFilter.hpp in Headers */,
 				34DC263812629E0000354378 /* FilterUnion.hpp in Headers */,
 				34794D54126F32E700655ADB /* SetKeyboardType.hpp in Headers */,
+				344BB4EF12812A9F008B75F6 /* DropPointingRelativeCursorMove.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,6 +574,7 @@
 				342C80541261B379007F15DA /* DeviceFilter.cpp in Sources */,
 				34DC263C1262A5A500354378 /* FilterUnion.cpp in Sources */,
 				34794D53126F32E700655ADB /* SetKeyboardType.cpp in Sources */,
+				344BB4EE12812A9F008B75F6 /* DropPointingRelativeCursorMove.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
