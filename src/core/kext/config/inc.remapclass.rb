@@ -150,7 +150,7 @@ class RemapClass
 
     # ------------------------------------------------------------
     # output
-    if /^--(.+?)-- (.+)/ =~ autogen_text then
+    if /^--(.+?)--(.*)/ =~ autogen_text then
       operation = $1
       params = $2
 
@@ -173,7 +173,7 @@ class RemapClass
 
       when 'KeyToKey', 'KeyToConsumer', 'KeyToPointingButton', 'DoublePressModifier', 'HoldingKeyToKey', 'IgnoreMultipleSameKeyPress', 'KeyOverlaidModifier',
         'ConsumerToConsumer', 'ConsumerToKey', 'PointingButtonToPointingButton', 'PointingButtonToKey', 'PointingRelativeToScroll', 'DropKeyAfterRemap',
-        'SetKeyboardType'
+        'SetKeyboardType', 'DropPointingRelativeCursorMove'
         append_to_code_initialize_vector(params, operation, filtervec)
         @@variable_index += 1
 
