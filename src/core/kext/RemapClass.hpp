@@ -10,6 +10,7 @@
 #include "RemapFunc/ConsumerToKey.hpp"
 #include "RemapFunc/DoublePressModifier.hpp"
 #include "RemapFunc/DropKeyAfterRemap.hpp"
+#include "RemapFunc/DropPointingRelativeCursorMove.hpp"
 #include "RemapFunc/HoldingKeyToKey.hpp"
 #include "RemapFunc/IgnoreMultipleSameKeyPress.hpp"
 #include "RemapFunc/KeyOverlaidModifier.hpp"
@@ -53,6 +54,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         RemapFunc::ConsumerToKey* consumerToKey;
         RemapFunc::DoublePressModifier* doublePressModifier;
         RemapFunc::DropKeyAfterRemap* dropKeyAfterRemap;
+        RemapFunc::DropPointingRelativeCursorMove* dropPointingRelativeCursorMove;
         RemapFunc::HoldingKeyToKey* holdingKeyToKey;
         RemapFunc::IgnoreMultipleSameKeyPress* ignoreMultipleSameKeyPress;
         RemapFunc::KeyOverlaidModifier* keyOverlaidModifier;
