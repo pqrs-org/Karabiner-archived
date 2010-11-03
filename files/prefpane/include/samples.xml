@@ -360,6 +360,27 @@
     </item>
 
     <item>
+      <name>DropPointingRelativeCursorMove</name>
+      <list>
+        <item>
+          <name>Standard</name>
+          <appendix>A to toggle DropPointingRelativeCursorMove</appendix>
+          <sysctl>remap.samples_droppointingrelativecursormove_config</sysctl>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_CONFIG_TOGGLE_remap_samples_droppointingrelativecursormove</autogen>
+        </item>
+        <item>
+          <name>Core</name>
+          <appendix>(You need enable above setting.)</appendix>
+          <sysctl>remap.samples_droppointingrelativecursormove</sysctl>
+          <vk_config>true</vk_config>
+          <config_only>remap.samples_droppointingrelativecursormove_config</config_only>
+          <autogen>--ShowStatusMessage-- DropCursorMove</autogen>
+          <autogen>--DropPointingRelativeCursorMove--</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>IgnoreMultipleSameKeyPress</name>
       <list>
         <item>
