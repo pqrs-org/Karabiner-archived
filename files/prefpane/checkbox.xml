@@ -6177,7 +6177,8 @@
         </item>
         <item>
           <name>Use PC Style New Tab In Browser</name>
-          <appendix>(Control+T to Command_L+T)  (only in Firefox, Google Chrome, Opera, Safari)</appendix>
+          <appendix>(Control+T to Command_L+T)</appendix>
+          <appendix>(only in Firefox, Google Chrome, Opera, Safari)</appendix>
           <sysctl>remap.copy_paste_winstyle_new_browser_tab</sysctl>
           <only>FIREFOX, GOOGLE_CHROME, OPERA, SAFARI</only>
           <autogen>--KeyToKey-- KeyCode::T, VK_CONTROL, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
