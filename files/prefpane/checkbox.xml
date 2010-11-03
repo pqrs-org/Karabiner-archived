@@ -6183,6 +6183,14 @@
           <autogen>--KeyToKey-- KeyCode::T, VK_CONTROL, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
+          <name>Use PC Style New Tab</name>
+          <appendix>(Control+T to Command_L+T)</appendix>
+          <appendix>(Except in Terminal, VM, RDC, Emacs, X11, Eclipse)</appendix>
+          <sysctl>remap.copy_paste_winstyle_new_tab</sysctl>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+          <autogen>--KeyToKey-- KeyCode::T, VK_CONTROL, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
           <name>Use PC Style Find</name>
           <appendix>(Control+F to Command_L+F)</appendix>
           <appendix>(Control+G to Command_L+G)</appendix>
