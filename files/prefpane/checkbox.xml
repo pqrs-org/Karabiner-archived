@@ -4506,6 +4506,12 @@
               <name>[Option] JIS_KANA to RightClick</name>
               <sysctl>option.mousekeys_mode_jis_kana2rightclick</sysctl>
             </item>
+            <item>
+              <name>[Option] Ignore Hardware CursorMove Events</name>
+              <sysctl>option.mousekeys_mode_droppointingrelativecursormove</sysctl>
+              <config_only>remap.simultaneouskeypresses_mouse_keys_mode_commandSD, remap.simultaneouskeypresses_mouse_keys_mode_df, remap.simultaneouskeypresses_mouse_keys_mode_cx</config_only>
+              <autogen>--DropPointingRelativeCursorMove--</autogen>
+            </item>
           </list>
         </item>
       </list>
