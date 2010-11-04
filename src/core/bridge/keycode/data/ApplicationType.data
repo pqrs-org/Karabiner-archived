@@ -1,0 +1,67 @@
+UNKNOWN 0
+
+// Carbon Emacs, Aquamacs, ...
+EMACS                   --AUTO--
+
+// Vim, ...
+VI                      --AUTO--
+
+// Terminal.app, iTerm.app, ...
+TERMINAL                --AUTO--
+
+// VMware, Parallels, ...
+VIRTUALMACHINE          --AUTO--
+
+// Microsoft Remote Desktop Connection, Cord, ...
+REMOTEDESKTOPCONNECTION --AUTO--
+
+X11                     --AUTO--
+FINDER                  --AUTO--
+SAFARI                  --AUTO--
+FIREFOX                 --AUTO--
+
+// iChat
+ICHAT                   --AUTO--
+
+ADIUMX                  --AUTO--
+SKYPE                   --AUTO--
+
+// Mail.app
+MAIL                    --AUTO--
+
+// TextEdit
+EDITOR                  --AUTO--
+
+PHOTOSHOP               --AUTO--
+ILLUSTRATOR             --AUTO--
+// other Adobe software
+ADOBE                   --AUTO--
+
+THUNDERBIRD             --AUTO--
+// Microsoft Excel
+EXCEL                   --AUTO--
+// Microsoft Entourage
+ENTOURAGE               --AUTO--
+
+ECLIPSE                 --AUTO--
+MACSOUP                 --AUTO--
+VIENNA                  --AUTO--
+XCODE                   --AUTO--
+OPERA                   --AUTO--
+GOOGLE_CHROME           --AUTO--
+TEAMVIEWER              --AUTO--
+CHEETAH_3D              --AUTO--
+
+// com.apple.securityagent
+PASSWORD                --AUTO--
+
+GRUML                   --AUTO--
+IPHOTO                  --AUTO--
+STICKIES                --AUTO--
+LAUNCHBAR               --AUTO--
+
+// PhpStorm, WebStorm
+WEBIDE                  --AUTO--
+
+VNC                     --AUTO--
+SCREEN_SHARING          --AUTO--

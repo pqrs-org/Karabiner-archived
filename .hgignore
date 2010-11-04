@@ -10,6 +10,7 @@ pkgroot/
 .*\.xcodeproj/.*\.pbxuser
 ^files/prefpane/output/checkbox\.xml$
 src/core/kext/config/output
+src/core/bridge/keycode/output
 util/getActiveApplication/getname
 files/share/reset
 pkginfo/Info.plist$

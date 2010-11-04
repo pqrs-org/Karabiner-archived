@@ -336,6 +336,20 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
 
   // ======================================================================
+  class ApplicationType {
+  public:
+    ApplicationType(unsigned int v = 0) : value_(v) {}
+    unsigned int get(void) const { return value_; }
+    bool operator==(Option other) const { return value_ == other.get(); }
+    bool operator!=(Option other) const { return ! (*this == other); }
+
+#include "../bridge/keycode/output/include.ApplicationType.hpp"
+
+  private:
+    unsigned int value_;
+  };
+
+  // ======================================================================
   typedef unsigned int DeviceVendorID;
   typedef unsigned int DeviceProductID;
 
