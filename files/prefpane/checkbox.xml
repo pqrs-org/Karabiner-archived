@@ -1787,6 +1787,11 @@
           <sysctl>remap.fn2tab</sysctl>
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::TAB</autogen>
         </item>
+        <item>
+          <name>Fn to LeftClick</name>
+          <sysctl>remap.fn2leftclick</sysctl>
+          <autogen>--KeyToPointingButton-- KeyCode::FN, PointingButton::LEFT</autogen>
+        </item>
       </list>
     </item>
 
