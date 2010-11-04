@@ -55,6 +55,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         STICKIES,
         LAUNCHBAR,
         WEBIDE, // PhpStorm, WebStorm
+        VNC,
+        SCREEN_SHARING,
       };
       enum InputMode {
         INPUTMODE_NONE,

@@ -5808,6 +5808,17 @@
               <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::COMMAND_L</autogen>
             </item>
             <item>
+              <name>Application Key to Command_L</name>
+              <appendix>(+ Application Key to Control_L in Terminal, Screen Sharing, MacVim,</appendix>
+              <appendix>RDC, Emacs, X11, VNC)</appendix>
+              <sysctl>remap.pc_application2commandL_controlL</sysctl>
+              <block>
+                <only>TERMINAL,SCREEN_SHARING, VI, REMOTEDESKTOPCONNECTION, EMACS, X11, VNC</only>
+                <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::CONTROL_L</autogen>
+              </block>
+              <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::COMMAND_L</autogen>
+            </item>
+            <item>
               <name>Application Key to Command_R</name>
               <sysctl>remap.pc_application2commandR_comamndLspace</sysctl>
               <appendix>(+ When you type Application only, send Command_L+Space)</appendix>
