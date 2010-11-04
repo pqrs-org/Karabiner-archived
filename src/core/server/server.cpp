@@ -403,6 +403,13 @@ setCurrentApplicationType(const char* applicationName)
     SET_CURRENT_APPLICATION_TYPE(LAUNCHBAR);
   }
 
+  if (strcmp(applicationName, "com.apple.ScreenSharing") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(SCREEN_SHARING);
+  }
+
+  if (strcmp(applicationName, "com.geekspiff.chickenofthevnc") == 0) {
+    SET_CURRENT_APPLICATION_TYPE(VNC);
+  }
 
   SET_CURRENT_APPLICATION_TYPE(UNKNOWN);
 }
