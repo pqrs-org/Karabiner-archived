@@ -68,7 +68,9 @@
   if (name) {
     // We ignore our investigation application.
     if (! [name isEqualToString:@"org.pqrs.KeyRemap4MacBook.KeyDump"]) {
-      setCurrentApplicationType([workspacedata_ getApplicationType:name]);
+      unsigned int newval = [workspacedata_ getApplicationType:name];
+      //NSLog(@"newval = %d", newval);
+      setCurrentApplicationType(newval);
     }
   }
 }
