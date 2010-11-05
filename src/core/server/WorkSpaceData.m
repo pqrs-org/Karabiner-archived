@@ -128,7 +128,7 @@
   }
 
   if ([name isEqualToString:@"com.TeamViewer.TeamViewer"]) {
-    return [keycode_ unsignedIntValue:@"ApplicationType::TeamViewer"];
+    return [keycode_ unsignedIntValue:@"ApplicationType::TEAMVIEWER"];
   }
 
   if ([name isEqualToString:@"de.wengenmayer.Cheetah3D"]) {
