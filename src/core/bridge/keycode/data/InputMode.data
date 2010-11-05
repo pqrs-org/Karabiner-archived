@@ -1,7 +1,11 @@
 INPUTMODE_NONE 0
 
+// Roman, Password, ...
 INPUTMODE_ROMAN               --AUTO--
+
+// Japanese, Japanese.*
 INPUTMODE_JAPANESE            --AUTO--
+
 INPUTMODE_CHINESE_TRADITIONAL --AUTO--
 INPUTMODE_CHINESE_SIMPLIFIED  --AUTO--
 INPUTMODE_KOREAN              --AUTO--
@@ -10,8 +14,17 @@ INPUTMODE_CANADIAN            --AUTO--
 INPUTMODE_AINU                --AUTO--
 INPUTMODE_RUSSIAN             --AUTO--
 INPUTMODE_FRENCH              --AUTO--
+
+// http://bepo.fr/wiki/Mac_OS_X
 INPUTMODE_BEPO                --AUTO--
+
 INPUTMODE_DVORAK              --AUTO--
+
+// http://ilyabirman.ru/typography-layout/
 INPUTMODE_RUSSIAN_TYPOGRAPHIC --AUTO--
+
+// http://ilyabirman.ru/typography-layout/
 INPUTMODE_ENGLISH_TYPOGRAPHIC --AUTO--
+
+// User Defined keylayout (example: org.unknown.keylayout.JANSI)
 INPUTMODE_UNKNOWN             --AUTO--
