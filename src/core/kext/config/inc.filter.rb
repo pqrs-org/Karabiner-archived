@@ -12,7 +12,7 @@ class Filter
     vec = [filtertype]
 
     node.inner_xml.split(/,/).each do |f|
-      vec << "KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}"
+      vec << KeyCode.v('ApplicationType', f.strip)
     end
 
     @filters << vec.count
