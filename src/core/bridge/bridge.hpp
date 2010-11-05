@@ -83,7 +83,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       struct Request {};
 
       struct Reply {
-        unsigned int type;
+        uint32_t type;
         InputMode inputmode;
         InputModeDetail inputmodedetail;
       };
