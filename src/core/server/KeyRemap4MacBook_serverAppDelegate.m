@@ -66,7 +66,10 @@
 {
   NSString* name = [serverobjcpart_ getActiveApplicationName];
   if (name) {
-    setCurrentApplicationType([name UTF8String]);
+    // We ignore our investigation application.
+    if (! [name isEqualToString:@"org.pqrs.KeyRemap4MacBook.KeyDump"]) {
+      setCurrentApplicationType([name UTF8String]);
+    }
   }
 }
 
