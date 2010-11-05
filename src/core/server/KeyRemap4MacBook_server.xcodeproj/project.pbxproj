@@ -13,6 +13,7 @@
 		345683B7109F2DD900125F91 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345683B4109F2DD900125F91 /* util.cpp */; };
 		34568415109F350100125F91 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34568414109F350100125F91 /* Carbon.framework */; };
 		348A6B9110A0214B00AC93FE /* server_objc_part.m in Sources */ = {isa = PBXBuildFile; fileRef = 348A6B9010A0214B00AC93FE /* server_objc_part.m */; };
+		349B509F12837E64009108FE /* include.keycode.plist in Resources */ = {isa = PBXBuildFile; fileRef = 349B509E12837E64009108FE /* include.keycode.plist */; };
 		34A06A4911F8791F0085749B /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 34A06A4811F8791F0085749B /* background.png */; };
 		34A06A4C11F8792E0085749B /* icon.statusbar.0.tif in Resources */ = {isa = PBXBuildFile; fileRef = 34A06A4A11F8792E0085749B /* icon.statusbar.0.tif */; };
 		34A06A4D11F8792E0085749B /* icon.statusbar.1.tif in Resources */ = {isa = PBXBuildFile; fileRef = 34A06A4B11F8792E0085749B /* icon.statusbar.1.tif */; };
@@ -43,6 +44,7 @@
 		34568414109F350100125F91 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		348A6B8F10A0214B00AC93FE /* server_objc_part.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = server_objc_part.h; sourceTree = "<group>"; };
 		348A6B9010A0214B00AC93FE /* server_objc_part.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = server_objc_part.m; sourceTree = "<group>"; };
+		349B509E12837E64009108FE /* include.keycode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = include.keycode.plist; path = ../bridge/keycode/output/include.keycode.plist; sourceTree = SOURCE_ROOT; };
 		34A06A4811F8791F0085749B /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = Resources/background.png; sourceTree = "<group>"; };
 		34A06A4A11F8792E0085749B /* icon.statusbar.0.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon.statusbar.0.tif; path = Resources/icon.statusbar.0.tif; sourceTree = "<group>"; };
 		34A06A4B11F8792E0085749B /* icon.statusbar.1.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon.statusbar.1.tif; path = Resources/icon.statusbar.1.tif; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				349B509E12837E64009108FE /* include.keycode.plist */,
 				34A06A4A11F8792E0085749B /* icon.statusbar.0.tif */,
 				34A06A4B11F8792E0085749B /* icon.statusbar.1.tif */,
 				34A06A4811F8791F0085749B /* background.png */,
@@ -221,6 +224,7 @@
 				34A06A4911F8791F0085749B /* background.png in Resources */,
 				34A06A4C11F8792E0085749B /* icon.statusbar.0.tif in Resources */,
 				34A06A4D11F8792E0085749B /* icon.statusbar.1.tif in Resources */,
+				349B509F12837E64009108FE /* include.keycode.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
