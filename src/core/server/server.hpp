@@ -38,7 +38,7 @@ namespace KeyRemap4MacBook_server {
 extern "C" {
 #endif
 
-void setCurrentApplicationType(const char* applicationName);
+void setCurrentApplicationType(unsigned int newval);
 void setCurrentInputMode(const char* inputmodeName);
 
 #ifdef __cplusplus

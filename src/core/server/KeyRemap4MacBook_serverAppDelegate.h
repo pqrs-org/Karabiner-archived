@@ -10,6 +10,7 @@
 #import <Cocoa/Cocoa.h>
 #import "server_objc_part.h"
 #import "StatusBar.h"
+#import "WorkSpaceData.h"
 
 @interface KeyRemap4MacBook_serverAppDelegate : NSObject <NSApplicationDelegate> {
   NSWindow* window;
@@ -17,6 +18,7 @@
   IBOutlet NSTextField* statusmessage_;
   IBOutlet NSImageView* statusmessage_background_;
   IBOutlet StatusBar* statusbar_;
+  IBOutlet WorkSpaceData* workspacedata_;
 }
 
 @property (assign) IBOutlet NSWindow* window;

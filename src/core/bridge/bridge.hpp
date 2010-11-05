@@ -122,7 +122,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       struct Request {};
 
       struct Reply {
-        ApplicationType type;
+        unsigned int type;
         InputMode inputmode;
         InputModeDetail inputmodedetail;
       };
