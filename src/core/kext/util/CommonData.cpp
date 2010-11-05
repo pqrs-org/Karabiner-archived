@@ -39,7 +39,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     //
     // We use the previous value when the error occurred.
     static KeyRemap4MacBook_bridge::GetWorkspaceData::Reply last = {
-      KeyRemap4MacBook_bridge::GetWorkspaceData::UNKNOWN,
+      0,
       KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_ROMAN,
       KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_ROMAN,
     };

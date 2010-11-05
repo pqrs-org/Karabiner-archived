@@ -19,45 +19,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
 
     namespace GetWorkspaceData {
-      enum ApplicationType {
-        UNKNOWN,
-        EMACS, // Carbon Emacs, Aquamacs, ...
-        VI, // Vim, ...
-        TERMINAL, // Terminal.app, iTerm.app, ...
-        VIRTUALMACHINE, // VMware, Parallels, ...
-        REMOTEDESKTOPCONNECTION, // Microsoft Remote Desktop Connection, Cord, ...
-        X11,
-        FINDER,
-        SAFARI,
-        FIREFOX,
-        ICHAT, // iChat
-        ADIUMX,
-        SKYPE,
-        MAIL, // Mail.app
-        EDITOR, // TextEdit
-        PHOTOSHOP,
-        ILLUSTRATOR,
-        ADOBE, // Adobe Softwares
-        THUNDERBIRD,
-        EXCEL, // Microsoft Excel
-        ENTOURAGE, // Microsoft Entourage
-        ECLIPSE,
-        MACSOUP,
-        VIENNA,
-        XCODE,
-        OPERA,
-        GOOGLE_CHROME,
-        TEAMVIEWER,
-        CHEETAH_3D,
-        PASSWORD, // com.apple.securityagent
-        GRUML,
-        IPHOTO,
-        STICKIES,
-        LAUNCHBAR,
-        WEBIDE, // PhpStorm, WebStorm
-        VNC,
-        SCREEN_SHARING,
-      };
       enum InputMode {
         INPUTMODE_NONE,
         INPUTMODE_ROMAN, // Roman, Password, ...
