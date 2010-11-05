@@ -68,7 +68,7 @@
   if (name) {
     // We ignore our investigation application.
     if (! [name isEqualToString:@"org.pqrs.KeyRemap4MacBook.KeyDump"]) {
-      setCurrentApplicationType([name UTF8String]);
+      setCurrentApplicationType([workspacedata_ getApplicationType:name]);
     }
   }
 }

@@ -136,6 +136,12 @@
 			<object class="NSCustomObject" id="882968974">
 				<string key="NSClassName">StatusBar</string>
 			</object>
+			<object class="NSCustomObject" id="647163593">
+				<string key="NSClassName">KeyCode</string>
+			</object>
+			<object class="NSCustomObject" id="718310321">
+				<string key="NSClassName">WorkSpaceData</string>
+			</object>
 			<object class="NSMenu" id="269225066">
 				<string key="NSTitle"/>
 				<object class="NSMutableArray" key="NSMenuItems">
@@ -258,6 +264,22 @@
 					</object>
 					<int key="connectionID">565</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">keycode_</string>
+						<reference key="source" ref="718310321"/>
+						<reference key="destination" ref="647163593"/>
+					</object>
+					<int key="connectionID">568</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">workspacedata_</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="718310321"/>
+					</object>
+					<int key="connectionID">569</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -379,6 +401,16 @@
 						<reference key="object" ref="412271973"/>
 						<reference key="parent" ref="269225066"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">566</int>
+						<reference key="object" ref="647163593"/>
+						<reference key="parent" ref="0"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">567</int>
+						<reference key="object" ref="718310321"/>
+						<reference key="parent" ref="0"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -404,6 +436,8 @@
 					<string>554.IBPluginDependency</string>
 					<string>555.IBPluginDependency</string>
 					<string>558.IBPluginDependency</string>
+					<string>566.IBPluginDependency</string>
+					<string>567.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -426,6 +460,8 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="unlocalizedProperties">
@@ -444,11 +480,19 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">565</int>
+			<int key="maxID">569</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<object class="IBPartialClassDescription">
+					<string key="className">KeyCode</string>
+					<string key="superclassName">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">KeyCode.h</string>
+					</object>
+				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">KeyRemap4MacBook_serverAppDelegate</string>
 					<string key="superclassName">NSObject</string>
@@ -461,6 +505,7 @@
 							<string>statusmessage_</string>
 							<string>statusmessage_background_</string>
 							<string>window</string>
+							<string>workspacedata_</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -469,6 +514,7 @@
 							<string>NSTextField</string>
 							<string>NSImageView</string>
 							<string>NSWindow</string>
+							<string>WorkSpaceData</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -480,6 +526,7 @@
 							<string>statusmessage_</string>
 							<string>statusmessage_background_</string>
 							<string>window</string>
+							<string>workspacedata_</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -502,6 +549,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">window</string>
 								<string key="candidateClassName">NSWindow</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">workspacedata_</string>
+								<string key="candidateClassName">WorkSpaceData</string>
 							</object>
 						</object>
 					</object>
@@ -574,6 +625,25 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">StatusBar.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">WorkSpaceData</string>
+					<string key="superclassName">NSObject</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">keycode_</string>
+						<string key="NS.object.0">KeyCode</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">keycode_</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">keycode_</string>
+							<string key="candidateClassName">KeyCode</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">WorkSpaceData.h</string>
 					</object>
 				</object>
 			</object>
