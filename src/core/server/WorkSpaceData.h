@@ -8,4 +8,11 @@
 
 - (unsigned int) getApplicationType:(NSString*)name;
 
+struct InputModeInfo {
+  unsigned int inputmode;
+  unsigned int inputmodedetail;
+};
+
+- (void) getInputMode:(NSString*)name output:(struct InputModeInfo*)output;
+
 @end
