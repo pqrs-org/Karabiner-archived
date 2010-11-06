@@ -84,8 +84,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       struct Reply {
         uint32_t type;
-        InputMode inputmode;
-        InputModeDetail inputmodedetail;
+        uint32_t inputmode;
+        uint32_t inputmodedetail;
       };
     }
 

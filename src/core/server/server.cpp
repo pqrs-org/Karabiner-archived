@@ -9,8 +9,8 @@
 
 namespace {
   unsigned int currentApplicationType = 0;
-  org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::InputMode currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_NONE;
-  org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_NONE;
+  unsigned int currentInputMode = 0;
+  unsigned int currentInputModeDetail = 0;
 
   Mutex mutex_currentApplicationType;
   Mutex mutex_currentInputMode;
@@ -240,150 +240,9 @@ setCurrentApplicationType(unsigned int newval)
 }
 
 void
-setCurrentInputMode(const char* inputmodeName)
+setCurrentInputMode(unsigned int inputmode, unsigned int inputmodedetail)
 {
   Mutex::ScopedLock lk(mutex_currentInputMode);
-
-  // ----------------------------------------------------------------------
-  // inputmode
-  // get data from util/DumpInputModeToConsole/dump-from-plist.sh
-  const char* tis_japanese_hiragana = "com.apple.inputmethod.Japanese.Hiragana";
-  const char* tis_japanese_katakana = "com.apple.inputmethod.Japanese.Katakana";
-  const char* tis_japanese_fullwidth_roman = "com.apple.inputmethod.Japanese.FullWidthRoman";
-  const char* tis_japanese_halfwidth_kana = "com.apple.inputmethod.Japanese.HalfWidthKana";
-  const char* tis_japanese = "com.apple.inputmethod.Japanese";
-  const char* tis_tradchinese = "com.apple.inputmethod.TCIM"; // TradChinese
-  const char* tis_simpchinese = "com.apple.inputmethod.SCIM"; // SimpChinese
-  const char* tis_korean = "com.apple.inputmethod.Korean";
-  const char* language_swedish = "org.pqrs.inputmode.sv.";
-  const char* language_canadian = "org.pqrs.inputmode.ca.";
-  const char* language_ainu = "com.apple.kotoeri.Ainu";
-  const char* language_russian = "org.pqrs.inputmode.ru.";
-  const char* language_french = "org.pqrs.inputmode.fr.";
-  const char* language_unknown = "org.pqrs.inputmode.unknown.";
-
-  if (strcmp(inputmodeName, tis_japanese_hiragana) == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_HIRAGANA;
-
-  } else if (strcmp(inputmodeName, tis_japanese_katakana) == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_KATAKANA;
-
-  } else if (strcmp(inputmodeName, tis_japanese_fullwidth_roman) == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_FULLWIDTH_ROMAN;
-
-  } else if (strcmp(inputmodeName, tis_japanese_halfwidth_kana) == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE_HALFWIDTH_KANA;
-
-  } else if (strncmp(inputmodeName, tis_japanese, strlen(tis_japanese)) == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_JAPANESE;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_JAPANESE;
-
-  } else if (strncmp(inputmodeName, tis_tradchinese, strlen(tis_tradchinese)) == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_CHINESE_TRADITIONAL;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_CHINESE_TRADITIONAL;
-
-  } else if (strncmp(inputmodeName, tis_simpchinese, strlen(tis_simpchinese)) == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_CHINESE_SIMPLIFIED;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_CHINESE_SIMPLIFIED;
-
-  } else if (strncmp(inputmodeName, tis_korean, strlen(tis_korean)) == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_KOREAN;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_KOREAN;
-
-  } else if (strncmp(inputmodeName, language_swedish, strlen(language_swedish)) == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_SWEDISH;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_SWEDISH;
-
-  } else if (strncmp(inputmodeName, language_canadian, strlen(language_canadian)) == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_CANADIAN;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_CANADIAN;
-
-  } else if (strcmp(inputmodeName, language_ainu) == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_AINU;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_AINU;
-
-  } else if (strncmp(inputmodeName, language_russian, strlen(language_russian)) == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_RUSSIAN;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_RUSSIAN;
-
-  } else if (strcmp(inputmodeName, "org.pqrs.inputmode.unknown.RussianWin") == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_RUSSIAN;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_RUSSIAN;
-
-  } else if (strcmp(inputmodeName, "org.pqrs.inputmode.unknown.Russian-IlyaBirmanTypography") == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_RUSSIAN_TYPOGRAPHIC;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_RUSSIAN_TYPOGRAPHIC;
-
-  } else if (strcmp(inputmodeName, "org.pqrs.inputmode.unknown.English-IlyaBirmanTypography") == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_ENGLISH_TYPOGRAPHIC;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_ENGLISH_TYPOGRAPHIC;
-
-  } else if (strncmp(inputmodeName, language_french, strlen(language_french)) == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_FRENCH;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_FRENCH;
-
-  } else if (strcmp(inputmodeName, "org.pqrs.inputmode.unknown.FrenchDvorak") == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_BEPO;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_BEPO;
-
-  } else if (strcmp(inputmodeName, "org.pqrs.inputmode.unknown.FrenchDvorak-AzertyCmd") == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_BEPO;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_BEPO_AZERTYCMD;
-
-  } else if (strcmp(inputmodeName, "org.pqrs.inputmode.unknown.FrenchDvorak-AzertyCmdRoman") == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_BEPO;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_BEPO_AZERTYCMDROMAN;
-
-  } else if (strcmp(inputmodeName, "org.pqrs.inputmode.unknown.FrenchDvorak-QwertyCmd") == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_BEPO;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_BEPO_QWERTYCMD;
-
-  } else if (strcmp(inputmodeName, "org.pqrs.inputmode.unknown.FrenchDvorak-QwertyCmdRoman") == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_BEPO;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_BEPO_QWERTYCMDROMAN;
-
-  } else if (strcmp(inputmodeName, "org.pqrs.inputmode.unknown.FrenchDvorak-QwertzCmd") == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_BEPO;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_BEPO_QWERTZCMD;
-
-  } else if (strcmp(inputmodeName, "org.pqrs.inputmode.unknown.FrenchDvorak-QwertzCmdRoman") == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_BEPO;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_BEPO_QWERTZCMDROMAN;
-
-  } else if (strcmp(inputmodeName, "org.pqrs.inputmode.unknown.FrenchDvorakRoman") == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_BEPO;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_BEPO_ROMAN;
-
-  } else if (strcmp(inputmodeName, "org.pqrs.inputmode.en.Dvorak") == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DVORAK;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_DVORAK;
-
-  } else if (strcmp(inputmodeName, "org.pqrs.inputmode.en.Dvorak-Left") == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DVORAK;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_DVORAK_LEFT;
-
-  } else if (strcmp(inputmodeName, "org.pqrs.inputmode.en.DVORAK-QWERTYCMD") == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DVORAK;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_DVORAK_QWERTYCMD;
-
-  } else if (strcmp(inputmodeName, "org.pqrs.inputmode.en.Dvorak-Right") == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DVORAK;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_DVORAK_RIGHT;
-
-  } else if (strcmp(inputmodeName, "org.pqrs.inputmode.unknown.JANSI") == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_ROMAN;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_ROMAN_JANSI;
-
-  } else if (strncmp(inputmodeName, language_unknown, strlen(language_unknown)) == 0) {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_UNKNOWN;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_UNKNOWN;
-
-  } else {
-    currentInputMode = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_ROMAN;
-    currentInputModeDetail = org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_ROMAN;
-  }
+  currentInputMode = inputmode;
+  currentInputModeDetail = inputmodedetail;
 }

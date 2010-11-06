@@ -80,7 +80,10 @@
 {
   NSString* name = [serverobjcpart_ getTISPropertyInputModeID];
   if (name) {
-    setCurrentInputMode([name UTF8String]);
+    unsigned int inputmode;
+    unsigned int inputmodedetail;
+    [workspacedata_ getInputMode:name output_inputmode:(&inputmode) output_inputmodedetail:(&inputmodedetail)];
+    setCurrentInputMode(inputmode, inputmodedetail);
   }
 }
 

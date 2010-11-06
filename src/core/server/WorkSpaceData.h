@@ -7,12 +7,6 @@
 }
 
 - (unsigned int) getApplicationType:(NSString*)name;
-
-struct InputModeInfo {
-  unsigned int inputmode;
-  unsigned int inputmodedetail;
-};
-
-- (void) getInputMode:(NSString*)name output:(struct InputModeInfo*)output;
+- (void) getInputMode:(NSString*)name output_inputmode:(unsigned int*)output_inputmode output_inputmodedetail:(unsigned int*)output_inputmodedetail;
 
 @end
