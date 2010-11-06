@@ -6414,14 +6414,14 @@
         <item>
           <name>Space to Option_L (when inputmode == canadian)</name>
           <sysctl>remap.canadian_space2optionL</sysctl>
-          <inputmode_only>INPUTMODE_CANADIAN</inputmode_only>
+          <inputmode_only>CANADIAN</inputmode_only>
           <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::OPTION_L</autogen>
         </item>
         <item>
           <name>Space to Option_L (when inputmode == canadian)</name>
           <appendix>(+ When you type Space only, send Space)</appendix>
           <sysctl>remap.canadian_space2optionL_space</sysctl>
-          <inputmode_only>INPUTMODE_CANADIAN</inputmode_only>
+          <inputmode_only>CANADIAN</inputmode_only>
           <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::OPTION_L, KeyCode::SPACE</autogen>
         </item>
       </list>
@@ -6861,7 +6861,7 @@
               <name>Shift+Space to Equal</name>
               <appendix>(Disable when KANA mode)</appendix>
               <sysctl>remap.jis_shiftSpace2equal</sysctl>
-              <inputmode_only>INPUTMODE_ROMAN</inputmode_only>
+              <inputmode_only>ROMAN</inputmode_only>
               <autogen>--KeyToKey-- KeyCode::SPACE, VK_SHIFT, KeyCode::EQUAL</autogen>
             </item>
           </list>
@@ -6971,7 +6971,7 @@
             <item>
               <name>EISUU to Escape (only when inputmode == roman)</name>
               <sysctl>remap.jis_eisuu2escape_onlyroman</sysctl>
-              <inputmode_only>INPUTMODE_ROMAN</inputmode_only>
+              <inputmode_only>ROMAN</inputmode_only>
               <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::ESCAPE</autogen>
             </item>
             <item>
@@ -7366,7 +7366,7 @@
             <item>
               <name>Use JIS X 6004</name>
               <sysctl>remap.jis_layout_jisx6004</sysctl>
-              <inputmodedetail_only>INPUTMODE_DETAIL_JAPANESE_HIRAGANA, INPUTMODE_DETAIL_JAPANESE, INPUTMODE_DETAIL_JAPANESE_KATAKANA, INPUTMODE_DETAIL_JAPANESE_HALFWIDTH_KANA</inputmodedetail_only>
+              <inputmodedetail_only>JAPANESE_HIRAGANA, JAPANESE, JAPANESE_KATAKANA, JAPANESE_HALFWIDTH_KANA</inputmodedetail_only>
 
               <!-- ====================================================================== -->
               <!-- Shift+Q -> small A (Shift+3) -->
@@ -7536,7 +7536,7 @@
             <item>
               <name>Use JIS X 6004 for US Keyboard</name>
               <sysctl>remap.jis_layout_jisx6004_us</sysctl>
-              <inputmodedetail_only>INPUTMODE_DETAIL_JAPANESE_HIRAGANA, INPUTMODE_DETAIL_JAPANESE, INPUTMODE_DETAIL_JAPANESE_KATAKANA, INPUTMODE_DETAIL_JAPANESE_HALFWIDTH_KANA</inputmodedetail_only>
+              <inputmodedetail_only>JAPANESE_HIRAGANA, JAPANESE, JAPANESE_KATAKANA, JAPANESE_HALFWIDTH_KANA</inputmodedetail_only>
 
               <!-- ====================================================================== -->
               <!-- Shift+Q -> small A (Shift+3) -->
@@ -7799,7 +7799,7 @@
             </item>
             <item>
               <name>Use Windows Kana-Input Layout on ASCII Keyboard</name>
-              <inputmode_not>INPUTMODE_ROMAN</inputmode_not>
+              <inputmode_not>ROMAN</inputmode_not>
               <autogen>--KeyToKey-- KeyCode::MINUS, VK_SHIFT, KeyCode::BRACKET_RIGHT, ModifierFlag::SHIFT_L</autogen>
               <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, VK_SHIFT, KeyCode::BRACKET_LEFT, ModifierFlag::SHIFT_L</autogen>
               <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_SHIFT, KeyCode::EQUAL, ModifierFlag::SHIFT_L</autogen>
@@ -7993,7 +7993,7 @@
         <item>
           <name>Space to Option_L (when inputmode == swedish)</name>
           <sysctl>remap.swedish_space2optionL_swedish</sysctl>
-          <inputmode_only>INPUTMODE_SWEDISH</inputmode_only>
+          <inputmode_only>SWEDISH</inputmode_only>
           <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::OPTION_L</autogen>
         </item>
         <item>
