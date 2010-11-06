@@ -25,6 +25,10 @@ TEST(Generic, sizeof_) {
   EXPECT_EQ(sizeof(unsigned int), sizeof(ConsumerKeyCode));
   EXPECT_EQ(sizeof(unsigned int), sizeof(PointingButton));
   EXPECT_EQ(sizeof(unsigned int), sizeof(Buttons));
+  EXPECT_EQ(sizeof(unsigned int), sizeof(Option));
+  EXPECT_EQ(sizeof(unsigned int), sizeof(ApplicationType));
+  EXPECT_EQ(sizeof(unsigned int), sizeof(InputMode));
+  EXPECT_EQ(sizeof(unsigned int), sizeof(InputModeDetail));
 }
 
 TEST(EventType, isKeyDownOrModifierDown) {
