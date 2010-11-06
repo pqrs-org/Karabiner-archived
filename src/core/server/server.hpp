@@ -39,7 +39,7 @@ extern "C" {
 #endif
 
 void setCurrentApplicationType(unsigned int newval);
-void setCurrentInputMode(const char* inputmodeName);
+void setCurrentInputMode(unsigned int inputmode, unsigned int inputmodedetail);
 
 #ifdef __cplusplus
 }
