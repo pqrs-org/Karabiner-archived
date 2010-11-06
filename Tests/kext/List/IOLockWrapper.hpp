@@ -13,6 +13,7 @@ public:
   class ScopedLock {
   public:
     ScopedLock(IOLock* p) {}
+    bool operator!(void) const { return false; }
   };
 };
 
