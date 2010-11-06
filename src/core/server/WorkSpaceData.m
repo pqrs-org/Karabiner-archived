@@ -170,4 +170,191 @@
   return [keycode_ unsignedIntValue:@"ApplicationType::UNKNOWN"];
 }
 
+- (void) getInputMode:(NSString*)name output:(struct InputModeInfo*)output
+{
+  if (! name || ! output) return;
+
+  // get data from KeyDump.app
+
+  if ([name isEqualToString:@"com.apple.inputmethod.Japanese.Hiragana"]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::JAPANESE"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::JAPANESE_HIRAGANA"];
+    return;
+  }
+
+  if ([name isEqualToString:@"com.apple.inputmethod.Japanese.Katakana"]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::JAPANESE"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::JAPANESE_KATAKANA"];
+    return;
+  }
+
+  if ([name isEqualToString:@"com.apple.inputmethod.Japanese.FullWidthRoman"]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::JAPANESE"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::JAPANESE_FULLWIDTH_ROMAN"];
+    return;
+  }
+
+  if ([name isEqualToString:@"com.apple.inputmethod.Japanese.HalfWidthKana"]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::JAPANESE"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::JAPANESE_HALFWIDTH_KANA"];
+    return;
+  }
+
+  if ([name isEqualToString:@"com.apple.inputmethod.Japanese"]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::JAPANESE"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::JAPANESE"];
+    return;
+  }
+
+  // TradChinese
+  if ([name hasPrefix:@"com.apple.inputmethod.TCIM"]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::CHINESE_TRADITIONAL"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::CHINESE_TRADITIONAL"];
+    return;
+  }
+
+  // SimpChinese
+  if ([name hasPrefix:@"com.apple.inputmethod.SCIM"]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::CHINESE_SIMPLIFIED"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::CHINESE_SIMPLIFIED"];
+    return;
+  }
+
+  if ([name hasPrefix:@"com.apple.inputmethod.Korean"]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::KOREAN"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::KOREAN"];
+    return;
+  }
+
+  if ([name hasPrefix:@"org.pqrs.inputmode.sv."]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::SWEDISH"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::SWEDISH"];
+    return;
+  }
+
+  if ([name hasPrefix:@"org.pqrs.inputmode.ca."]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::CANADIAN"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::CANADIAN"];
+    return;
+  }
+
+  if ([name isEqualToString:@"com.apple.kotoeri.Ainu"]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::AINU"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::AINU"];
+    return;
+  }
+
+  if ([name hasPrefix:@"org.pqrs.inputmode.ru."] ||
+      [name isEqualToString:@"org.pqrs.inputmode.unknown.RussianWin"]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::RUSSIAN"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::RUSSIAN"];
+    return;
+  }
+
+  if ([name isEqualToString:@"org.pqrs.inputmode.unknown.Russian-IlyaBirmanTypography"]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::RUSSIAN_TYPOGRAPHIC"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::RUSSIAN_TYPOGRAPHIC"];
+    return;
+  }
+
+  if ([name isEqualToString:@"org.pqrs.inputmode.unknown.English-IlyaBirmanTypography"]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::ENGLISH_TYPOGRAPHIC"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::ENGLISH_TYPOGRAPHIC"];
+    return;
+  }
+
+  if ([name hasPrefix:@"org.pqrs.inputmode.fr."]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::FRENCH"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::FRENCH"];
+    return;
+  }
+
+  if ([name isEqualToString:@"org.pqrs.inputmode.unknown.FrenchDvorak"]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::BEPO"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::BEPO"];
+    return;
+  }
+
+  if ([name isEqualToString:@"org.pqrs.inputmode.unknown.FrenchDvorak-AzertyCmd"]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::BEPO"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::BEPO_AZERTYCMD"];
+    return;
+  }
+
+  if ([name isEqualToString:@"org.pqrs.inputmode.unknown.FrenchDvorak-AzertyCmdRoman"]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::BEPO"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::BEPO_AZERTYCMDROMAN"];
+    return;
+  }
+
+  if ([name isEqualToString:@"org.pqrs.inputmode.unknown.FrenchDvorak-QwertyCmd"]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::BEPO"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::BEPO_QWERTYCMD"];
+    return;
+  }
+
+  if ([name isEqualToString:@"org.pqrs.inputmode.unknown.FrenchDvorak-QwertyCmdRoman"]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::BEPO"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::BEPO_QWERTYCMDROMAN"];
+    return;
+  }
+
+  if ([name isEqualToString:@"org.pqrs.inputmode.unknown.FrenchDvorak-QwertzCmd"]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::BEPO"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::BEPO_QWERTZCMD"];
+    return;
+  }
+
+  if ([name isEqualToString:@"org.pqrs.inputmode.unknown.FrenchDvorak-QwertzCmdRoman"]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::BEPO"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::BEPO_QWERTZCMDROMAN"];
+    return;
+  }
+
+  if ([name isEqualToString:@"org.pqrs.inputmode.unknown.FrenchDvorakRoman"]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::BEPO"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::BEPO_ROMAN"];
+    return;
+  }
+
+  if ([name isEqualToString:@"org.pqrs.inputmode.en.Dvorak"]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::DVORAK"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::DVORAK"];
+    return;
+  }
+
+  if ([name isEqualToString:@"org.pqrs.inputmode.en.Dvorak-Left"]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::DVORAK"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::DVORAK_LEFT"];
+    return;
+  }
+
+  if ([name isEqualToString:@"org.pqrs.inputmode.en.DVORAK-QWERTYCMD"]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::DVORAK"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::DVORAK_QWERTYCMD"];
+    return;
+  }
+
+  if ([name isEqualToString:@"org.pqrs.inputmode.en.Dvorak-Right"]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::DVORAK"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::DVORAK_RIGHT"];
+    return;
+  }
+
+  if ([name isEqualToString:@"org.pqrs.inputmode.unknown.JANSI"]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::ROMAN"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::ROMAN_JANSI"];
+    return;
+  }
+
+  if ([name hasPrefix:@"org.pqrs.inputmode.unknown."]) {
+    output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::UNKNOWN"];
+    output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::UNKNOWN"];
+    return;
+  }
+
+  output->inputmode       = [keycode_ unsignedIntValue:@"InputMode::ROMAN"];
+  output->inputmodedetail = [keycode_ unsignedIntValue:@"InputModeDetail::ROMAN"];
+}
+
 @end
