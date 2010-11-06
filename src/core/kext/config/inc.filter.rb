@@ -45,7 +45,18 @@ class Filter
     vec = [filtertype]
 
     node.inner_xml.split(/,/).each do |f|
-      vec << "KeyRemap4MacBook_bridge::GetWorkspaceData::#{f.strip}"
+      vec << KeyCode.v('InputMode', f.strip)
+    end
+
+    @filters << vec.count
+    @filters += vec
+  end
+
+  def append_inputmodedetail(filtertype, node)
+    vec = [filtertype]
+
+    node.inner_xml.split(/,/).each do |f|
+      vec << KeyCode.v('InputModeDetail', f.strip)
     end
 
     @filters << vec.count
@@ -77,9 +88,9 @@ class Filter
           append_inputmode('BRIDGE_FILTERTYPE_INPUTMODE_ONLY', node)
 
         when 'inputmodedetail_not'
-          append_inputmode('BRIDGE_FILTERTYPE_INPUTMODEDETAIL_NOT', node)
+          append_inputmodedetail('BRIDGE_FILTERTYPE_INPUTMODEDETAIL_NOT', node)
         when 'inputmodedetail_only'
-          append_inputmode('BRIDGE_FILTERTYPE_INPUTMODEDETAIL_ONLY', node)
+          append_inputmodedetail('BRIDGE_FILTERTYPE_INPUTMODEDETAIL_ONLY', node)
         end
       end
 

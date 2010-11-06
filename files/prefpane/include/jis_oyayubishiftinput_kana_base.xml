@@ -1,4 +1,4 @@
-<inputmode_only>INPUTMODE_JAPANESE</inputmode_only>
+<inputmode_only>JAPANESE</inputmode_only>
 <!-- 左手 中段 -->
 <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::NONE, KeyCode::KEY_4</autogen>
 <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::D</autogen>

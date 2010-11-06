@@ -40,8 +40,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     // We use the previous value when the error occurred.
     static KeyRemap4MacBook_bridge::GetWorkspaceData::Reply last = {
       0,
-      KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_ROMAN,
-      KeyRemap4MacBook_bridge::GetWorkspaceData::INPUTMODE_DETAIL_ROMAN,
+      0,
+      0,
     };
 
     int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_WORKSPACE_DATA, NULL, 0, &current_workspacedata_, sizeof(current_workspacedata_));

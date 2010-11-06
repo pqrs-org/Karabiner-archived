@@ -340,8 +340,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     ApplicationType(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
-    bool operator==(Option other) const { return value_ == other.get(); }
-    bool operator!=(Option other) const { return ! (*this == other); }
+    bool operator==(ApplicationType other) const { return value_ == other.get(); }
+    bool operator!=(ApplicationType other) const { return ! (*this == other); }
 
 #include "../bridge/keycode/output/include.ApplicationType.hpp"
 
@@ -354,8 +354,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     InputMode(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
-    bool operator==(Option other) const { return value_ == other.get(); }
-    bool operator!=(Option other) const { return ! (*this == other); }
+    bool operator==(InputMode other) const { return value_ == other.get(); }
+    bool operator!=(InputMode other) const { return ! (*this == other); }
 
 #include "../bridge/keycode/output/include.InputMode.hpp"
 
@@ -368,8 +368,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     InputModeDetail(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
-    bool operator==(Option other) const { return value_ == other.get(); }
-    bool operator!=(Option other) const { return ! (*this == other); }
+    bool operator==(InputModeDetail other) const { return value_ == other.get(); }
+    bool operator!=(InputModeDetail other) const { return ! (*this == other); }
 
 #include "../bridge/keycode/output/include.InputModeDetail.hpp"
 

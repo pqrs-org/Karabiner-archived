@@ -123,19 +123,19 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
     static bool handle_core(const Params_KeyboardEventCallBack& params,
                             KeyCode key,
-                            const KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail& inputmodedetail);
+                            InputModeDetail inputmodedetail);
     static bool handle_RESTORE(const Params_KeyboardEventCallBack& params);
 
     static void firekeytoinputdetail(const Params_KeyboardEventCallBack& params,
-                                     KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail inputmodedetail);
+                                     InputModeDetail inputmodedetail);
 
-    static KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail normalize(const KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail& imd);
+    static InputModeDetail normalize(InputModeDetail imd);
 
     static void fire(OSObject* notuse_owner, IOTimerEventSource* notuse_sender);
     static void fire_nolock(void);
 
-    static KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail savedinputmodedetail_;
-    static KeyRemap4MacBook_bridge::GetWorkspaceData::InputModeDetail currentinputmodedetail_;
+    static InputModeDetail savedinputmodedetail_;
+    static InputModeDetail currentinputmodedetail_;
 
     struct FireKeyInfo {
       Flags flags;
