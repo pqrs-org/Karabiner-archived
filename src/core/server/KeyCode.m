@@ -22,13 +22,41 @@
 
 - (unsigned int) unsignedIntValue:(NSString*)name
 {
+  NSNumber* number = [self numberValue:name];
+  return [number unsignedIntValue];
+}
+
+- (NSNumber*) numberValue:(NSString*)name
+{
   NSNumber* number = [dict_ objectForKey:name];
   if (number) {
-    return [number unsignedIntValue];
+    return number;
   }
 
   NSLog(@"[ERROR] KeyRemap4MacBook_server unknown KeyCode name:%@", name);
-  return 0;
+  return [NSNumber numberWithUnsignedInt:0];
+}
+
+- (void) append:(NSString*)name newvalue:(unsigned int)newvalue
+{
+  [dict_ setObject:[NSNumber numberWithUnsignedInt:newvalue] forKey:name];
+}
+
+- (void) append:(NSString*)type name:(NSString*)name
+{
+  NSString* autoindexkey = [NSString stringWithFormat:@"%@::VK__AUTOINDEX__BEGIN__", type];
+  unsigned int newvalue = [self unsignedIntValue:autoindexkey];
+  [dict_ setObject:[NSNumber numberWithUnsignedInt:(newvalue+1)] forKey:autoindexkey];
+
+  NSString* newname = [NSString stringWithFormat:@"%@::%@", type, name];
+  [self append:newname newvalue:newvalue];
+}
+
++ (NSString*) normalizeName:(NSString*)name
+{
+  NSString* trimed = [name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+  NSString* replaced = [trimed stringByReplacingOccurrencesOfString:@"." withString:@"_"];
+  return replaced;
 }
 
 @end
