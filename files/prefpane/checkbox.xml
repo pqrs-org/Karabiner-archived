@@ -416,7 +416,7 @@
           <name>Swap Command_L and Option_L on TypeMatrix 2030 kbd</name>
           <sysctl>remap.swap_commandLoptionL_TypeMatrixOnly</sysctl>
           <block>
-            <device_only>DeviceVendor::TYPEMATRIX,DeviceProductID(0x2030)</device_only>
+            <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
             <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
             <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
           </block>
@@ -425,7 +425,7 @@
           <name>Option+Tab to Command+Tab on TypeMatrix 2030 kbd</name>
           <sysctl>remap.optionTab2commandTab_TypeMatrixOnly</sysctl>
           <block>
-            <device_only>DeviceVendor::TYPEMATRIX,DeviceProductID(0x2030)</device_only>
+            <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
             <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
           </block>
         </item>
@@ -434,7 +434,7 @@
           <name>Application Key to Command_L+Backquote on TypeMatrix 2030 kbd</name>
           <sysctl>remap.pc_application2commandLbackquote_TypeMatrixOnly</sysctl>
           <block>
-            <device_only>DeviceVendor::TYPEMATRIX,DeviceProductID(0x2030)</device_only>
+            <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
             <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L</autogen>
           </block>
         </item>
@@ -446,7 +446,7 @@
           <appendix>(Shift+Delete to Command_L+X) (Note: "Delete" is Mac's Forward Delete)</appendix>
           <sysctl>remap.copy_paste_winstyle3_TypeMatrixOnly</sysctl>
           <block>
-            <device_only>DeviceVendor::TYPEMATRIX,DeviceProductID(0x2030)</device_only>
+            <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
             <autogen>--KeyToKey-- KeyCode::PC_INSERT, VK_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
             <autogen>--KeyToKey-- KeyCode::PC_INSERT, VK_SHIFT, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
             <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, VK_SHIFT, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
@@ -459,7 +459,7 @@
           <appendix>(Shift+Delete to Command_L+X) (Note: "Delete" is Mac's Forward Delete)</appendix>
           <sysctl>remap.copy_paste_winstyle3b_TypeMatrixOnly</sysctl>
           <block>
-            <device_only>DeviceVendor::TYPEMATRIX,DeviceProductID(0x2030)</device_only>
+            <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
             <autogen>--KeyToKey-- KeyCode::PC_INSERT, VK_CONTROL, KeyCode::H, ModifierFlag::COMMAND_L</autogen>
             <autogen>--KeyToKey-- KeyCode::PC_INSERT, VK_SHIFT, KeyCode::U, ModifierFlag::COMMAND_L</autogen>
             <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, VK_SHIFT, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
