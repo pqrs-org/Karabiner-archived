@@ -663,11 +663,11 @@
           <appendix>* (0x5ac,0x222) is Apple Aluminum Keyboard (JIS)</appendix>
           <sysctl>remap.samples_device</sysctl>
           <block>
-            <device_only>DeviceVendor::APPLE,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a, DeviceVendor::APPLE,DeviceProductID(0x222)</device_only>
+            <device_only>DeviceVendor::APPLE,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a, DeviceVendor::APPLE,DeviceProduct::APPLE_ALUMINUM_KEYBOARD_JIS</device_only>
             <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
           </block>
           <block>
-            <device_not>DeviceVendor::APPLE,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a, DeviceVendor::APPLE,DeviceProductID(0x222)</device_not>
+            <device_not>DeviceVendor::APPLE,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a, DeviceVendor::APPLE,DeviceProduct::APPLE_ALUMINUM_KEYBOARD_JIS</device_not>
             <autogen>--KeyToKey-- KeyCode::A, KeyCode::C</autogen>
           </block>
         </item>
@@ -986,22 +986,22 @@
           <block>
             <only>TERMINAL</only>
             <block>
-              <device_only>DeviceVendor::APPLE,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a, DeviceVendor::APPLE,DeviceProductID(0x222)</device_only>
+              <device_only>DeviceVendor::APPLE,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a, DeviceVendor::APPLE,DeviceProduct::APPLE_ALUMINUM_KEYBOARD_JIS</device_only>
               <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_1</autogen>
             </block>
             <block>
-              <device_not>DeviceVendor::APPLE,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a, DeviceVendor::APPLE,DeviceProductID(0x222)</device_not>
+              <device_not>DeviceVendor::APPLE,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a, DeviceVendor::APPLE,DeviceProduct::APPLE_ALUMINUM_KEYBOARD_JIS</device_not>
               <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_2</autogen>
             </block>
           </block>
           <block>
             <not>TERMINAL</not>
             <block>
-              <device_only>DeviceVendor::APPLE,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a, DeviceVendor::APPLE,DeviceProductID(0x222)</device_only>
+              <device_only>DeviceVendor::APPLE,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a, DeviceVendor::APPLE,DeviceProduct::APPLE_ALUMINUM_KEYBOARD_JIS</device_only>
               <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_3</autogen>
             </block>
             <block>
-              <device_not>DeviceVendor::APPLE,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a, DeviceVendor::APPLE,DeviceProductID(0x222)</device_not>
+              <device_not>DeviceVendor::APPLE,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a, DeviceVendor::APPLE,DeviceProduct::APPLE_ALUMINUM_KEYBOARD_JIS</device_not>
               <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_4</autogen>
             </block>
           </block>
