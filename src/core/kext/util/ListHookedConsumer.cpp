@@ -63,13 +63,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 #if 0
     // Apple Internal Keyboard
-    if (isEqualVendorProduct(DeviceVendor::APPLE, DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a)) {
+    if (isEqualVendorProduct(DeviceVendor::APPLE_COMPUTER, DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a)) {
       goto restore;
     }
 #endif
 #if 0
     // Apple External Keyboard
-    if (isEqualVendorProduct(DeviceVendor::APPLE, DeviceProduct::APPLE_ALUMINUM_KEYBOARD_JIS)) {
+    if (isEqualVendorProduct(DeviceVendor::APPLE_COMPUTER, DeviceProduct::APPLE_ALUMINUM_KEYBOARD_JIS)) {
       goto restore;
     }
 #endif
