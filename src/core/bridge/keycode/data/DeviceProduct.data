@@ -1,5 +1,18 @@
+// Apple
 APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218 0x0218
 APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a 0x021a
 APPLE_ALUMINUM_KEYBOARD_JIS             0x0222
+
+// TypeMatrix
 TYPEMATRIX_KEYBOARD_0x2030              0x2030
+
+// FILCO
 FKBN91ML_NB                             0x2011
+
+// Kensington
+K33374                                  0x2012
+
+// Chesen
+CHESEN_PS2_TO_USB                       0x0205
+
+PSEUDO                                  0x0000
