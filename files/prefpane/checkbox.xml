@@ -3121,7 +3121,7 @@
           <only>IPHOTO</only>
           <!-- Kensington K33374 Hardware VendorID,ProductID == 0x047d,0x2012 -->
           <!-- Kensington Hack 0x0,0x0 -->
-          <device_only>DeviceVendor::KENSINGTON,DeviceProductID(0x2012), DeviceVendorID(0x0000),DeviceProductID(0x0000)</device_only>
+          <device_only>DeviceVendor::KENSINGTON,DeviceProductID(0x2012), DeviceVendor::PSEUDO,DeviceProductID(0x0000)</device_only>
           <autogen>--KeyToKey-- FROMKEYCODE_PAGEUP,   KeyCode::CURSOR_LEFT</autogen>
           <autogen>--KeyToKey-- FROMKEYCODE_PAGEDOWN, KeyCode::CURSOR_RIGHT</autogen>
         </item>
@@ -6392,7 +6392,7 @@
           <appendix>   Original: Ctrl Alt [space bar] Alt Ctrl</appendix>
           <appendix>   Remapped: Ctrl Cmd [space bar] Cmd Alt</appendix>
           <sysctl>remap.modelMkeyboard</sysctl>
-          <device_only>DeviceVendorID(0xa81),DeviceProductID(0x205)</device_only>
+          <device_only>DeviceVendor::CHESEN,DeviceProductID(0x205)</device_only>
           <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
           <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::COMMAND_R</autogen>
           <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::OPTION_R</autogen>
