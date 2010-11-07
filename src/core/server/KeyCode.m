@@ -20,6 +20,11 @@
   [super dealloc];
 }
 
+- (NSDictionary*) dictionary
+{
+  return dict_;
+}
+
 - (unsigned int) unsignedIntValue:(NSString*)name
 {
   NSNumber* number = [self numberValue:name];
@@ -46,7 +51,7 @@
 {
   NSString* autoindexkey = [NSString stringWithFormat:@"%@::VK__AUTOINDEX__BEGIN__", type];
   unsigned int newvalue = [self unsignedIntValue:autoindexkey];
-  [dict_ setObject:[NSNumber numberWithUnsignedInt:(newvalue+1)] forKey:autoindexkey];
+  [dict_ setObject:[NSNumber numberWithUnsignedInt:(newvalue + 1)] forKey:autoindexkey];
 
   NSString* newname = [NSString stringWithFormat:@"%@::%@", type, name];
   [self append:newname newvalue:newvalue];

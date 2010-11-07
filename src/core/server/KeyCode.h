@@ -5,6 +5,9 @@
   NSMutableDictionary* dict_;
 }
 
+// for debug
+- (NSDictionary*) dictionary;
+
 - (unsigned int) unsignedIntValue:(NSString*)name;
 - (NSNumber*) numberValue:(NSString*)name;
 
