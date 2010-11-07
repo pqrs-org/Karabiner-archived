@@ -6,8 +6,8 @@
 namespace org_pqrs_KeyRemap4MacBook {
   AbsoluteTime CommonData::current_ts_;
   KeyboardType CommonData::current_keyboardType_;
-  DeviceVendorID CommonData::current_deviceVendorID_;
-  DeviceProductID CommonData::current_deviceProductID_;
+  DeviceVendor CommonData::current_deviceVendor_;
+  DeviceProduct CommonData::current_deviceProduct_;
   KeyRemap4MacBook_bridge::GetWorkspaceData::Reply CommonData::current_workspacedata_;
 
   int CommonData::alloccount_;

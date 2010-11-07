@@ -22,8 +22,8 @@ class Filter
   def append_device(filtertype, node)
     vec = [filtertype]
 
-    node.inner_xml.scan(/DeviceVendorID\(.+?\)\s*,\s*DeviceProductID\(.+?\)/).each do |f|
-      vec += f.strip.split(/,/)
+    node.inner_xml.split(/,/).each do |f|
+      vec << KeyCode[f.strip]
     end
 
     @filters << vec.count

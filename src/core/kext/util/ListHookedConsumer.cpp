@@ -49,27 +49,27 @@ namespace org_pqrs_KeyRemap4MacBook {
       goto restore;
     }
     if (config.general_dont_remap_apple_keyboard &&
-        isEqualVendorID(DeviceVendorID(0x05ac))) {
+        isEqualVendor(DeviceVendor::APPLE_COMPUTER)) {
       goto restore;
     }
     // Logitech USB Headset
-    if (isEqualVendorIDProductID(DeviceVendorID(0x046d), DeviceProductID(0x0a0b))) {
+    if (isEqualVendorProduct(DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_USB_HEADSET)) {
       goto restore;
     }
     // Logitech Cordless Presenter
     if (config.general_dont_remap_logitech_cordless_presenter &&
-        isEqualVendorIDProductID(DeviceVendorID(0x046d), DeviceProductID(0xc515))) {
+        isEqualVendorProduct(DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_CORDLESS_PRESENTER)) {
       goto restore;
     }
 #if 0
     // Apple Internal Keyboard
-    if (isEqualVendorIDProductID(DeviceVendorID(0x05ac), DeviceProductID(0x21a))) {
+    if (isEqualVendorProduct(DeviceVendor::APPLE, DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a)) {
       goto restore;
     }
 #endif
 #if 0
     // Apple External Keyboard
-    if (isEqualVendorIDProductID(DeviceProductID(0x05ac), DeviceProductID(0x0222))) {
+    if (isEqualVendorProduct(DeviceVendor::APPLE, DeviceProduct::APPLE_ALUMINUM_KEYBOARD_JIS)) {
       goto restore;
     }
 #endif

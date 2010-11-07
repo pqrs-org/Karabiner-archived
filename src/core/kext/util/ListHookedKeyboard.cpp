@@ -79,21 +79,21 @@ namespace org_pqrs_KeyRemap4MacBook {
       goto restore;
     }
     if (config.general_dont_remap_apple_keyboard &&
-        isEqualVendorID(DeviceVendorID(0x05ac))) {
+        isEqualVendor(DeviceVendor::APPLE_COMPUTER)) {
       goto restore;
     }
 
     // Logitech USB Headset
-    if (isEqualVendorIDProductID(DeviceVendorID(0x046d), DeviceProductID(0x0a0b))) {
+    if (isEqualVendorProduct(DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_USB_HEADSET)) {
       goto restore;
     }
     // Logitech Cordless Presenter
     if (config.general_dont_remap_logitech_cordless_presenter &&
-        isEqualVendorIDProductID(DeviceVendorID(0x046d), DeviceProductID(0xc515))) {
+        isEqualVendorProduct(DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_CORDLESS_PRESENTER)) {
       goto restore;
     }
     // Kensington Virtual Device (0x0, 0x0)
-    if (isEqualVendorIDProductID(DeviceVendorID(0), DeviceProductID(0))) {
+    if (isEqualVendorProduct(DeviceVendor::PSEUDO, DeviceProduct::PSEUDO)) {
       // Note: USB Overdrive also use 0x0,0x0.
       // We allow to use USB Overdrive.
       if (deviceType_ != DeviceType::USB_OVERDRIVE) {
@@ -103,12 +103,12 @@ namespace org_pqrs_KeyRemap4MacBook {
 
 #if 0
     // Apple Internal Keyboard
-    if (isEqualVendorIDProductID(DeviceVendorID(0x05ac), DeviceProductID(0x21a))) {
+    if (isEqualVendorProduct(DeviceVendor::APPLE_COMPUTER, DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a)) {
       goto restore;
     }
 
     // Apple External Keyboard
-    if (isEqualVendorIDProductID(DeviceProductID(0x05ac), DeviceProductID(0x0222))) {
+    if (isEqualVendorProduct(DeviceVendor::APPLE_COMPUTER, DeviceProduct::APPLE_ALUMINUM_KEYBOARD_JIS)) {
       goto restore;
     }
 #endif

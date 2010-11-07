@@ -17,13 +17,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void setcurrent_keyboardType(KeyboardType keyboardType) { current_keyboardType_ = keyboardType; }
     static KeyboardType getcurrent_keyboardType(void) { return current_keyboardType_; }
 
-    static void setcurrent_vendorIDproductID(DeviceVendorID vendorID, DeviceProductID productID) {
-      current_deviceVendorID_ = vendorID;
-      current_deviceProductID_ = productID;
+    static void setcurrent_vendorProduct(DeviceVendor vendor, DeviceProduct product) {
+      current_deviceVendor_ = vendor;
+      current_deviceProduct_ = product;
     }
-    static bool isEqualVendorIDProductID(DeviceVendorID vendorID, DeviceProductID productID) {
-      if (current_deviceVendorID_  != vendorID) return false;
-      if (current_deviceProductID_ != productID) return false;
+    static bool isEqualVendorProduct(DeviceVendor vendor, DeviceProduct product) {
+      if (current_deviceVendor_  != vendor) return false;
+      if (current_deviceProduct_ != product) return false;
       return true;
     }
 
@@ -43,8 +43,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   private:
     static AbsoluteTime current_ts_;
     static KeyboardType current_keyboardType_;
-    static DeviceVendorID current_deviceVendorID_;
-    static DeviceProductID current_deviceProductID_;
+    static DeviceVendor current_deviceVendor_;
+    static DeviceProduct current_deviceProduct_;
     static KeyRemap4MacBook_bridge::GetWorkspaceData::Reply current_workspacedata_;
 
     static int alloccount_;

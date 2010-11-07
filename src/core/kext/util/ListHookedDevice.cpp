@@ -6,25 +6,25 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   // ======================================================================
-  ListHookedDevice::Item::Item(IOHIDevice* d) : device_(d), vendorID_(0), productID_(0), deviceType_(DeviceType::UNKNOWN) {
-    setVendorIDProductID();
+  ListHookedDevice::Item::Item(IOHIDevice* d) : device_(d), vendor_(0), product_(0), deviceType_(DeviceType::UNKNOWN) {
+    setVendorProduct();
     setDeviceType();
   }
 
   bool
-  ListHookedDevice::Item::isEqualVendorIDProductID(DeviceVendorID vendorID, DeviceProductID productID) const
+  ListHookedDevice::Item::isEqualVendorProduct(DeviceVendor vendor, DeviceProduct product) const
   {
-    return vendorID_ == vendorID && productID_ == productID;
+    return vendor_ == vendor && product_ == product;
   }
 
   bool
-  ListHookedDevice::Item::isEqualVendorID(DeviceVendorID vendorID) const
+  ListHookedDevice::Item::isEqualVendor(DeviceVendor vendor) const
   {
-    return vendorID_ == vendorID;
+    return vendor_ == vendor;
   }
 
   void
-  ListHookedDevice::Item::setVendorIDProductID(void)
+  ListHookedDevice::Item::setVendorProduct(void)
   {
     if (! device_) return;
 
@@ -38,8 +38,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       pid = OSDynamicCast(OSNumber, dev->getProperty(kIOHIDProductIDKey));
 
       if (vid && pid) {
-        vendorID_ = vid->unsigned32BitValue();
-        productID_ = pid->unsigned32BitValue();
+        vendor_ = vid->unsigned32BitValue();
+        product_ = pid->unsigned32BitValue();
 
         goto finish;
       }
@@ -49,7 +49,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
   finish:
-    IOLOG_DEBUG("HookedDevice::setVendorIDProductID device_:%p, vendorID_:0x%04x, productID_:0x%04x\n", device_, vendorID_, productID_);
+    IOLOG_DEBUG("HookedDevice::setVendorProduct device_:%p, vendor_:0x%04x, product_:0x%04x\n", device_, vendor_.get(), product_.get());
   }
 
   void
