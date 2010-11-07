@@ -2,6 +2,7 @@
 APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218 0x0218
 APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a 0x021a
 APPLE_ALUMINUM_KEYBOARD_JIS             0x0222
+MAGIC_MOUSE                             0x030d
 
 // TypeMatrix
 TYPEMATRIX_KEYBOARD_0x2030              0x2030
@@ -14,5 +15,9 @@ K33374                                  0x2012
 
 // Chesen
 CHESEN_PS2_TO_USB                       0x0205
+
+// Logitech
+LOGITECH_CORDLESS_PRESENTER             0xc515
+LOGITECH_USB_HEADSET                    0x0a0b
 
 PSEUDO                                  0x0000

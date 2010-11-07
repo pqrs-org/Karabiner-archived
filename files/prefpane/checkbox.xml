@@ -308,7 +308,7 @@
             <item>
               <name>LeftClick to F12 (only in MacBookPro2,1 Trackpad)</name>
               <sysctl>remap.pointing_leftclick2f12_trackpad</sysctl>
-              <device_only>DeviceVendor::APPLE,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a</device_only>
+              <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a</device_only>
               <autogen>--PointingButtonToKey-- PointingButton::LEFT, KeyCode::F12</autogen>
             </item>
           </list>
@@ -326,12 +326,12 @@
           <appendix>(ExposeAll back to CapsLock on other devices)</appendix>
           <sysctl>remap.swap_shiftLcapslock_MacBookOnly</sysctl>
           <block>
-            <device_only>DeviceVendor::APPLE,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
+            <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
             <autogen>--KeyToKey-- KeyCode::EXPOSE_ALL, KeyCode::SHIFT_L</autogen>
             <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::CAPSLOCK</autogen>
           </block>
           <block>
-            <device_not>DeviceVendor::APPLE,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_not>
+            <device_not>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_not>
             <autogen>--KeyToKey-- KeyCode::EXPOSE_ALL, KeyCode::CAPSLOCK</autogen>
           </block>
         </item>
@@ -346,7 +346,7 @@
           <name>Command_R to Option_R on the MacBook's internal kbd (vid/pid: 0x05ac,0x0218)</name>
           <sysctl>remap.commandR2optionR_MacBookOnly</sysctl>
           <block>
-            <device_only>DeviceVendor::APPLE,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
+            <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
             <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
           </block>
         </item>
@@ -354,7 +354,7 @@
           <name>Enter to Control_R on the MacBook's internal kbd (vid/pid: 0x05ac,0x0218)</name>
           <sysctl>remap.enter2controlR_MacBookOnly</sysctl>
           <block>
-            <device_only>DeviceVendor::APPLE,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
+            <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
             <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::CONTROL_R</autogen>
           </block>
         </item>
@@ -362,7 +362,7 @@
           <name>Swap Shift_R and Backslash (\) on the MacBook's internal kbd (vid/pid: 0x05ac,0x0218)</name>
           <sysctl>remap.swap_shiftRpipes_MacBookOnly</sysctl>
           <block>
-            <device_only>DeviceVendor::APPLE,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
+            <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
             <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::BACKSLASH</autogen>
             <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::SHIFT_R</autogen>
           </block>
@@ -372,7 +372,7 @@
           <appendix>(Backquote,Z,X,C,V to Z,X,C,V,B)</appendix>
           <sysctl>remap.backquote2z_zxcv2xcvb_MacBookOnly</sysctl>
           <block>
-            <device_only>DeviceVendor::APPLE,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
+            <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
             <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::Z</autogen>
             <autogen>--KeyToKey-- KeyCode::Z, KeyCode::X</autogen>
             <autogen>--KeyToKey-- KeyCode::X, KeyCode::C</autogen>
@@ -384,7 +384,7 @@
           <name>‘Central-Return’ (B to Return) on the MacBook's internal kbd (vid/pid: 0x05ac,0x0218)</name>
           <sysctl>remap.b2return_MacBookOnly</sysctl>
           <block>
-            <device_only>DeviceVendor::APPLE,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
+            <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
             <autogen>--KeyToKey-- KeyCode::B, KeyCode::RETURN</autogen>
           </block>
         </item>
@@ -393,7 +393,7 @@
           <appendix>(7,8,9,0,-,=,delete to 6,7,8,9,0,-,=)</appendix>
           <sysctl>remap.firstrowshift_MacBookOnly</sysctl>
           <block>
-            <device_only>DeviceVendor::APPLE,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
+            <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
             <autogen>--KeyToKey-- KeyCode::KEY_7, KeyCode::KEY_6</autogen>
             <autogen>--KeyToKey-- KeyCode::KEY_8, KeyCode::KEY_7</autogen>
             <autogen>--KeyToKey-- KeyCode::KEY_9, KeyCode::KEY_8</autogen>
@@ -407,7 +407,7 @@
           <name>‘Central-Delete’ (6 to Delete) on the MacBook's internal kbd (vid/pid: 0x05ac,0x0218)</name>
           <sysctl>remap.six2delete_MacBookOnly</sysctl>
           <block>
-            <device_only>DeviceVendor::APPLE,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
+            <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
             <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::DELETE</autogen>
           </block>
         </item>
@@ -1642,11 +1642,11 @@
           <appendix>(ExposeAll to CapsLock on other devices)</appendix>
           <sysctl>remap.expose2capslockORshiftL</sysctl>
           <block>
-            <device_only>DeviceVendor::APPLE,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
+            <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
             <autogen>--KeyToKey-- KeyCode::EXPOSE_ALL, KeyCode::SHIFT_L</autogen>
           </block>
           <block>
-            <device_not>DeviceVendor::APPLE,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_not>
+            <device_not>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_not>
             <autogen>--KeyToKey-- KeyCode::EXPOSE_ALL, KeyCode::CAPSLOCK</autogen>
           </block>
         </item>
