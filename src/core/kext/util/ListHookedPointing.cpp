@@ -49,18 +49,18 @@ namespace org_pqrs_KeyRemap4MacBook {
       goto restore;
     }
     if (config.general_dont_remap_apple_pointing &&
-        isEqualVendorID(DeviceVendorID(0x05ac))) {
+        isEqualVendor(DeviceVendor::APPLE_COMPUTER)) {
       goto restore;
     }
 
     // Logitech Cordless Presenter
     if (config.general_dont_remap_logitech_cordless_presenter &&
-        isEqualVendorIDProductID(DeviceVendorID(0x046d), DeviceProductID(0xc515))) {
+        isEqualVendorProduct(DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_CORDLESS_PRESENTER)) {
       goto restore;
     }
 #if 0
     // Apple Magic Mouse
-    if (isEqualVendorIDProductID(DeviceVendorID(0x05ac), DeviceProductID(0x030d))) {
+    if (isEqualVendorProduct(DeviceVendor::APPLE_COMPUTER, DeviceProduct::MAGIC_MOUSE)) {
       goto restore;
     }
 #endif

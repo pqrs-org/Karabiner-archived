@@ -184,14 +184,14 @@ namespace org_pqrs_KeyRemap4MacBook {
       //
       // *** LCP has 6 keys (Page Up, Page Down, a 'B' key, an 'Esc' key, and volume up / down keys). ***
       // *** So, we can drop CONTROL_L and SHIFT_L without a problem. ***
-      if (item->isEqualVendorIDProductID(DeviceVendorID(0x046d), DeviceProductID(0xc515))) {
+      if (item->isEqualVendorProduct(DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_CORDLESS_PRESENTER)) {
         if (params.key == KeyCode::CONTROL_L) return;
         if (params.key == KeyCode::SHIFT_L) return;
       }
 
       // ------------------------------------------------------------
       CommonData::setcurrent_ts(ts);
-      CommonData::setcurrent_vendorIDproductID(item->getVendorID(), item->getProductID());
+      CommonData::setcurrent_vendorProduct(item->getVendor(), item->getProduct());
       CommonData::setcurrent_keyboardType(params.keyboardType);
     }
 
@@ -252,7 +252,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! item) return;
 
       // ------------------------------------------------------------
-      CommonData::setcurrent_vendorIDproductID(item->getVendorID(), item->getProductID());
+      CommonData::setcurrent_vendorProduct(item->getVendor(), item->getProduct());
     }
 
     params.log();
@@ -295,7 +295,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       CommonData::setcurrent_ts(ts);
-      CommonData::setcurrent_vendorIDproductID(item->getVendorID(), item->getProductID());
+      CommonData::setcurrent_vendorProduct(item->getVendor(), item->getProduct());
     }
 
     // ------------------------------------------------------------
@@ -352,7 +352,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       CommonData::setcurrent_ts(ts);
-      CommonData::setcurrent_vendorIDproductID(item->getVendorID(), item->getProductID());
+      CommonData::setcurrent_vendorProduct(item->getVendor(), item->getProduct());
 
       // ------------------------------------------------------------
       justPressed = buttons.justPressed(item->get_previousbuttons());
@@ -437,7 +437,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       CommonData::setcurrent_ts(ts);
-      CommonData::setcurrent_vendorIDproductID(item->getVendorID(), item->getProductID());
+      CommonData::setcurrent_vendorProduct(item->getVendor(), item->getProduct());
     }
 
     // ------------------------------------------------------------
