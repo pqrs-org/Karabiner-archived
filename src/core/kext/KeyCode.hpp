@@ -378,9 +378,34 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
 
   // ======================================================================
-  typedef unsigned int DeviceVendorID;
-  typedef unsigned int DeviceProductID;
+  class DeviceVendor {
+  public:
+    DeviceVendor(unsigned int v = 0) : value_(v) {}
+    unsigned int get(void) const { return value_; }
+    bool operator==(DeviceVendor other) const { return value_ == other.get(); }
+    bool operator!=(DeviceVendor other) const { return ! (*this == other); }
 
+#include "../bridge/keycode/output/include.DeviceVendor.hpp"
+
+  private:
+    unsigned int value_;
+  };
+
+  // ======================================================================
+  class DeviceProduct {
+  public:
+    DeviceProduct(unsigned int v = 0) : value_(v) {}
+    unsigned int get(void) const { return value_; }
+    bool operator==(DeviceProduct other) const { return value_ == other.get(); }
+    bool operator!=(DeviceProduct other) const { return ! (*this == other); }
+
+#include "../bridge/keycode/output/include.DeviceProduct.hpp"
+
+  private:
+    unsigned int value_;
+  };
+
+  // ======================================================================
   namespace DeviceType {
     enum DeviceType {
       UNKNOWN,

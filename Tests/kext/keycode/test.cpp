@@ -29,6 +29,8 @@ TEST(Generic, sizeof_) {
   EXPECT_EQ(sizeof(unsigned int), sizeof(ApplicationType));
   EXPECT_EQ(sizeof(unsigned int), sizeof(InputMode));
   EXPECT_EQ(sizeof(unsigned int), sizeof(InputModeDetail));
+  EXPECT_EQ(sizeof(unsigned int), sizeof(DeviceVendor));
+  EXPECT_EQ(sizeof(unsigned int), sizeof(DeviceProduct));
 }
 
 TEST(EventType, isKeyDownOrModifierDown) {
