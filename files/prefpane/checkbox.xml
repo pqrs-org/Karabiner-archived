@@ -308,7 +308,7 @@
             <item>
               <name>LeftClick to F12 (only in MacBookPro2,1 Trackpad)</name>
               <sysctl>remap.pointing_leftclick2f12_trackpad</sysctl>
-              <device_only>DeviceVendor::APPLE,DeviceProductID(0x21a)</device_only>
+              <device_only>DeviceVendor::APPLE,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a</device_only>
               <autogen>--PointingButtonToKey-- PointingButton::LEFT, KeyCode::F12</autogen>
             </item>
           </list>
