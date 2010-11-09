@@ -5,6 +5,7 @@ VERSION = `cat ../../../version`
 all:
 	$(MAKE) -C ../../../pkginfo
 	echo "char config_version[] = \"$(VERSION)\";" > version.hpp
+	$(MAKE) -C ../bridge
 	$(MAKE) -C config
 	xcodebuild -alltargets -configuration $(CONFIGURATION) MODULE_VERSION=$(VERSION) CURRENT_PROJECT_VERSION=$(VERSION) build
 

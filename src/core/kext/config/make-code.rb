@@ -90,7 +90,7 @@ end
 print "\n"
 
 RemapClass.output_entries($outfile[:remapclass_initialize_vector])
-$outfile[:config] << "static int enabled_flags[#{KeyCode.count('ConfigIndex')}];\n"
+$outfile[:config] << "#{KeyCode.count('ConfigIndex')}\n"
 
 # ======================================================================
 $outfile.each do |name,file|
