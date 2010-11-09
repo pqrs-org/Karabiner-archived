@@ -14,7 +14,6 @@ $outfile = {
   :config_SYSCTL => open('output/include.config_SYSCTL.cpp', 'w'),
   :config_register => open('output/include.config_register.cpp', 'w'),
   :config_unregister => open('output/include.config_unregister.cpp', 'w'),
-  :config_default => open('output/include.config.default.hpp', 'w'),
   :remapclass_initialize_vector => open('output/include.RemapClass_initialize_vector.cpp', 'w'),
 }
 
@@ -70,21 +69,14 @@ ARGV.each do |xmlpath|
     configaddress = nil
     essential = false
     if sysctl_node['essential'] == 'true' then
-      configaddress = "&(config.#{name})"
+      configaddress = "&(config.essential_config[BRIDGE_ESSENTIAL_CONFIG_INDEX_#{name}])"
       essential = true
-      $outfile[:config] << "int #{name};\n"
     else
       configaddress = "&(config.enabled_flags[#{KeyCode.ConfigIndex(name)}])"
     end
     $outfile[:config_SYSCTL] << "SYSCTL_PROC(_keyremap4macbook_#{sysctl_entry}, OID_AUTO, #{sysctl_name}, CTLTYPE_INT|CTLFLAG_RW, #{configaddress}, 0, refresh_remapfunc_handler, \"I\", \"\");\n"
     $outfile[:config_register] << "sysctl_register_oid(&sysctl__keyremap4macbook_#{name});\n"
     $outfile[:config_unregister] << "sysctl_unregister_oid(&sysctl__keyremap4macbook_#{name});\n"
-
-    # ----------------------------------------
-    default_node = node.find_first('./default')
-    unless default_node.nil? then
-      $outfile[:config_default] << "#{name} = #{default_node.inner_xml};\n"
-    end
 
     # ----------------------------------------
     unless essential then

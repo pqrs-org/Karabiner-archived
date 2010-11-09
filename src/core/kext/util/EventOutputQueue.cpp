@@ -330,14 +330,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     SInt32 pointDelta1;
     SInt32 pointDelta2;
 
-    deltaAxis1 = (delta1 * config.pointing_relative2scroll_rate) / 1024 / DELTA_SCALE;
-    deltaAxis2 = (delta2 * config.pointing_relative2scroll_rate) / 1024 / DELTA_SCALE;
+    int relative2scroll_rate = config.get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_pointing_relative2scroll_rate);
 
-    fixedDelta1 = (delta1 * config.pointing_relative2scroll_rate) * (POINTING_FIXED_SCALE / 1024) / DELTA_SCALE;
-    fixedDelta2 = (delta2 * config.pointing_relative2scroll_rate) * (POINTING_FIXED_SCALE / 1024) / DELTA_SCALE;
+    deltaAxis1 = (delta1 * relative2scroll_rate) / 1024 / DELTA_SCALE;
+    deltaAxis2 = (delta2 * relative2scroll_rate) / 1024 / DELTA_SCALE;
 
-    pointDelta1 = (delta1 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1024 / DELTA_SCALE;
-    pointDelta2 = (delta2 * POINTING_POINT_SCALE * config.pointing_relative2scroll_rate) / 1024 / DELTA_SCALE;
+    fixedDelta1 = (delta1 * relative2scroll_rate) * (POINTING_FIXED_SCALE / 1024) / DELTA_SCALE;
+    fixedDelta2 = (delta2 * relative2scroll_rate) * (POINTING_FIXED_SCALE / 1024) / DELTA_SCALE;
+
+    pointDelta1 = (delta1 * POINTING_POINT_SCALE * relative2scroll_rate) / 1024 / DELTA_SCALE;
+    pointDelta2 = (delta2 * POINTING_POINT_SCALE * relative2scroll_rate) / 1024 / DELTA_SCALE;
 
     // see IOHIDSystem/IOHIDevicePrivateKeys.h about options.
     const int kScrollTypeContinuous_ = 0x0001;
