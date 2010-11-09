@@ -18,6 +18,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   int Config::essential_config[BRIDGE_ESSENTIAL_CONFIG_INDEX__END__] = {
 #include "../bridge/config/output/include.bridge_essential_config_index.cpp"
   };
+  int Config::enabled_flags[
+#include "config/output/include.config.hpp"
+  ];
 
   namespace {
     int socket_path_handler SYSCTL_HANDLER_ARGS
