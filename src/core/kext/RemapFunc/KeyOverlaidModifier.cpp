@@ -127,7 +127,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           target_ = this;
           isfirenormal_ = false;
           isfirerepeat_ = false;
-          timer_.setTimeoutMS(config.get_keyoverlaidmodifier_initial_wait());
+          timer_.setTimeoutMS(Config::get_keyoverlaidmodifier_initial_wait());
         }
 
       } else {

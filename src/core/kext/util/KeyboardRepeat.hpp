@@ -28,7 +28,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                     int wait);
 
     static void set(const Params_KeyboardEventCallBack& p,
-                    int wait = config.get_repeat_initial_wait()) {
+                    int wait = Config::get_repeat_initial_wait()) {
       set(p.eventType, p.flags, p.key, p.keyboardType, wait);
     }
 
@@ -54,7 +54,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                               Flags flags,
                               ConsumerKeyCode key);
 
-    static void primitive_start(int wait = config.get_repeat_initial_wait());
+    static void primitive_start(int wait = Config::get_repeat_initial_wait());
 
   private:
     class Item : public List::Item {

@@ -47,10 +47,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     uint32_t delay = 0;
     switch (type) {
       case DELAY_TYPE_KEY:
-        delay = config.get_simultaneouskeypresses_delay();
+        delay = Config::get_simultaneouskeypresses_delay();
         break;
       case DELAY_TYPE_POINTING_BUTTON:
-        delay = config.get_simultaneouskeypresses_pointingbutton_delay();
+        delay = Config::get_simultaneouskeypresses_pointingbutton_delay();
         break;
     }
     if (delay > ms) delay = ms;  // min(ms, delay)
