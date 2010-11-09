@@ -141,7 +141,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           isfirenormal_ = true;
 
           if (savedIsAnyEventHappen == false) {
-            int timeout = config.get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_keyoverlaidmodifier_timeout);
+            int timeout = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_keyoverlaidmodifier_timeout);
             if (timeout <= 0 || ic_.checkThreshold(timeout) == false) {
               FlagStatus::ScopedTemporaryFlagsChanger stfc(savedflags_);
 

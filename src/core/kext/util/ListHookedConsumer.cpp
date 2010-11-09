@@ -48,7 +48,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.initialized) {
       goto restore;
     }
-    if (config.get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_dont_remap_apple_keyboard) &&
+    if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_dont_remap_apple_keyboard) &&
         isEqualVendor(DeviceVendor::APPLE_COMPUTER)) {
       goto restore;
     }
@@ -57,7 +57,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       goto restore;
     }
     // Logitech Cordless Presenter
-    if (config.get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_dont_remap_logitech_cordless_presenter) &&
+    if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_dont_remap_logitech_cordless_presenter) &&
         isEqualVendorProduct(DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_CORDLESS_PRESENTER)) {
       goto restore;
     }

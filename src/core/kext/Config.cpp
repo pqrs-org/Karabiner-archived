@@ -40,10 +40,10 @@ namespace org_pqrs_KeyRemap4MacBook {
           static int last_parameter_statuswindow_posx_adjustment = 0;
           static int last_parameter_statuswindow_posy_adjustment = 0;
 
-          int alpha_font       = config.get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_statuswindow_alpha_font);
-          int alpha_background = config.get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_statuswindow_alpha_background);
-          int posx_adjustment  = config.get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_statuswindow_posx_adjustment);
-          int posy_adjustment  = config.get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_statuswindow_posy_adjustment);
+          int alpha_font       = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_statuswindow_alpha_font);
+          int alpha_background = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_statuswindow_alpha_background);
+          int posx_adjustment  = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_statuswindow_posx_adjustment);
+          int posy_adjustment  = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_statuswindow_posy_adjustment);
 
           if (last_parameter_statuswindow_alpha_font       != alpha_font ||
               last_parameter_statuswindow_alpha_background != alpha_background ||

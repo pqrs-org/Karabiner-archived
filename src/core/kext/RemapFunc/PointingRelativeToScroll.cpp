@@ -139,8 +139,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       chained_ic_.begin();
 
       // ----------------------------------------
-      if (config.get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_option_pointing_disable_vertical_scroll)) delta1 = 0;
-      if (config.get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_option_pointing_disable_horizontal_scroll)) delta2 = 0;
+      if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_option_pointing_disable_vertical_scroll)) delta1 = 0;
+      if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_option_pointing_disable_horizontal_scroll)) delta2 = 0;
 
       // ----------------------------------------
       // ignore minuscule move
@@ -157,7 +157,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ----------------------------------------
       // Fixation processing
 
-      if (config.get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_option_pointing_enable_scrollwheel_fixation)) {
+      if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_option_pointing_enable_scrollwheel_fixation)) {
         // When 300ms passes from the last event, we reset a value.
         const uint32_t FIXATION_MILLISEC = 300;
         if (fixation_ic_.getmillisec() > FIXATION_MILLISEC) {
@@ -233,7 +233,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       FlagStatus::temporary_increase(currentFromFlags_);
 
       // ----------------------------------------
-      if (! config.get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_option_pointing_disable_momentum_scroll)) {
+      if (! Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_option_pointing_disable_momentum_scroll)) {
         if (delta1 != 0 || delta2 != 0) {
           queue_->push_back(new Item(delta1 / 2, delta2 / 2));
         }

@@ -330,7 +330,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     SInt32 pointDelta1;
     SInt32 pointDelta2;
 
-    int relative2scroll_rate = config.get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_pointing_relative2scroll_rate);
+    int relative2scroll_rate = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_pointing_relative2scroll_rate);
 
     deltaAxis1 = (delta1 * relative2scroll_rate) / 1024 / DELTA_SCALE;
     deltaAxis2 = (delta2 * relative2scroll_rate) / 1024 / DELTA_SCALE;
