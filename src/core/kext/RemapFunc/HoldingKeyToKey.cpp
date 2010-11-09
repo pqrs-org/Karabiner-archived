@@ -101,7 +101,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         savedflags_ = FlagStatus::makeFlags();
 
-        timer_.setTimeoutMS(config.get_holdingkeytokey_wait());
+        timer_.setTimeoutMS(Config::get_holdingkeytokey_wait());
 
       } else {
         timer_.cancelTimeout();
