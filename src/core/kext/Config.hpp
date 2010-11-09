@@ -1,38 +1,53 @@
 #ifndef CONFIG_HPP
 #define CONFIG_HPP
 
+#include "bridge.h"
+
 namespace org_pqrs_KeyRemap4MacBook {
   class Config {
   public:
-    Config() : debug(0), debug_pointing(0), debug_devel(0), initialized(0) {
-#include "config/output/include.config.default.hpp"
-    }
+    Config() : debug(0), debug_pointing(0), debug_devel(0), initialized(0) {}
 
 #include "config/output/include.config.hpp"
 
+    int get_essential_config(unsigned int index) const {
+      if (index >= BRIDGE_ESSENTIAL_CONFIG_INDEX__END__) {
+        return 0;
+      }
+      return essential_config[index];
+    }
+
     unsigned int get_repeat_initial_wait(void) const {
-      return getvalue(repeat_initial_wait, 200);
+      int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_repeat_initial_wait);
+      return getvalue(v, 200);
     }
     unsigned int get_repeat_wait(void) const {
-      return getvalue(repeat_wait, 5);
+      int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_repeat_wait);
+      return getvalue(v, 5);
     }
     unsigned int get_repeat_consumer_initial_wait(void) const {
-      return getvalue(repeat_consumer_initial_wait, 10);
+      int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_repeat_consumer_initial_wait);
+      return getvalue(v, 10);
     }
     unsigned int get_repeat_consumer_wait(void) const {
-      return getvalue(repeat_consumer_wait, 10);
+      int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_repeat_consumer_wait);
+      return getvalue(v, 10);
     }
     unsigned int get_keyoverlaidmodifier_initial_wait(void) const {
-      return getvalue(repeat_keyoverlaidmodifier_initial_wait, 200);
+      int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_repeat_keyoverlaidmodifier_initial_wait);
+      return getvalue(v, 200);
     }
     unsigned int get_simultaneouskeypresses_delay(void) const {
-      return getvalue(parameter_simultaneouskeypresses_delay, 5, 1000);
+      int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_simultaneouskeypresses_delay);
+      return getvalue(v, 5, 1000);
     }
     unsigned int get_simultaneouskeypresses_pointingbutton_delay(void) const {
-      return getvalue(parameter_simultaneouskeypresses_pointingbutton_delay, 5, 1000);
+      int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_simultaneouskeypresses_pointingbutton_delay);
+      return getvalue(v, 5, 1000);
     }
     unsigned int get_holdingkeytokey_wait(void) const {
-      return getvalue(parameter_holdingkeytokey_wait, 10);
+      int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_holdingkeytokey_wait);
+      return getvalue(v, 10);
     }
 
     // ----------------------------------------
@@ -43,6 +58,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     enum { SOCKET_PATH_MAX = 256 };
     char socket_path[SOCKET_PATH_MAX];
+
+    static int essential_config[BRIDGE_ESSENTIAL_CONFIG_INDEX__END__];
 
   private:
     unsigned int getvalue(int value, int minval) const {

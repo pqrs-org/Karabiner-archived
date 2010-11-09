@@ -65,20 +65,20 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! config.initialized) {
       goto restore;
     }
-    if (config.general_dont_remap_thirdvendor_keyboard &&
+    if (config.get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_dont_remap_thirdvendor_keyboard) &&
         deviceType_ != DeviceType::APPLE_INTERNAL &&
         deviceType_ != DeviceType::APPLE_EXTERNAL) {
       goto restore;
     }
-    if (config.general_dont_remap_internal &&
+    if (config.get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_dont_remap_internal) &&
         deviceType_ == DeviceType::APPLE_INTERNAL) {
       goto restore;
     }
-    if (config.general_dont_remap_external &&
+    if (config.get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_dont_remap_external) &&
         deviceType_ != DeviceType::APPLE_INTERNAL) {
       goto restore;
     }
-    if (config.general_dont_remap_apple_keyboard &&
+    if (config.get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_dont_remap_apple_keyboard) &&
         isEqualVendor(DeviceVendor::APPLE_COMPUTER)) {
       goto restore;
     }
@@ -88,7 +88,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       goto restore;
     }
     // Logitech Cordless Presenter
-    if (config.general_dont_remap_logitech_cordless_presenter &&
+    if (config.get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_dont_remap_logitech_cordless_presenter) &&
         isEqualVendorProduct(DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_CORDLESS_PRESENTER)) {
       goto restore;
     }
@@ -318,7 +318,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (! self.list_) return;
 
-    if (config.general_passthrough_capslock_led_status) return;
+    if (config.get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_passthrough_capslock_led_status)) return;
 
     Flags flags = FlagStatus::makeFlags();
 
@@ -339,7 +339,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
       }
 
-      if (config.general_capslock_led_hack) {
+      if (config.get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_capslock_led_hack)) {
         // Set CapsLock LED always.
         // *** Do not use setAlphaLock for this purpose. It changes the flag status of the hardware CapsLock. ***
         enum {

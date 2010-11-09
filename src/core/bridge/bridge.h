@@ -91,4 +91,8 @@ enum {
   BRIDGE_VK_CONFIG,
 };
 
+enum {
+#include "config/output/include.bridge_essential_config_index.hpp"
+};
+
 #endif

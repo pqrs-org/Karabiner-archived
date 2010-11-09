@@ -366,7 +366,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ------------------------------------------------------------
     // clear temporary_count_
-    if (! config.general_lazy_modifiers_with_mouse_event) {
+    if (! config.get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_lazy_modifiers_with_mouse_event)) {
       FlagStatus::set();
     }
 
@@ -442,7 +442,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ------------------------------------------------------------
     // clear temporary_count_
-    if (! config.general_lazy_modifiers_with_mouse_event) {
+    if (! config.get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_lazy_modifiers_with_mouse_event)) {
       FlagStatus::set();
     }
 

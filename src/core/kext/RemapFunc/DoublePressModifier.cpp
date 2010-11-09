@@ -75,7 +75,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       // ----------------------------------------
-      if (ic_.getmillisec() > static_cast<uint32_t>(config.parameter_doublepressmodifier_threshold)) {
+      if (ic_.getmillisec() > static_cast<uint32_t>(config.get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_doublepressmodifier_threshold))) {
         pressCount_ = 0;
       }
       ic_.begin();
