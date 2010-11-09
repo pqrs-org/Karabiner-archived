@@ -33,7 +33,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_FILTERTYPE_CONFIG_NOT:
         {
           for (size_t i = 0; i < targets_->size(); ++i) {
-            if (config.enabled_flags[(*targets_)[i]]) {
+            if (Config::enabled_flags[(*targets_)[i]]) {
               return true;
             }
           }
@@ -43,7 +43,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_FILTERTYPE_CONFIG_ONLY:
         {
           for (size_t i = 0; i < targets_->size(); ++i) {
-            if (config.enabled_flags[(*targets_)[i]]) {
+            if (Config::enabled_flags[(*targets_)[i]]) {
               return false;
             }
           }
