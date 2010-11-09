@@ -254,23 +254,23 @@ namespace org_pqrs_KeyRemap4MacBook {
       unsigned int keycode_force_off      = (*items_)[i].keycode_force_off;
       unsigned int keycode_sync_keydownup = (*items_)[i].keycode_sync_keydownup;
 
-      if (configindex >= sizeof(config.enabled_flags) / sizeof(config.enabled_flags[0])) return false;
+      if (configindex >= sizeof(Config::enabled_flags) / sizeof(Config::enabled_flags[0])) return false;
 
       if (params.ex_iskeydown && params.repeat == false) {
         /*  */ if (params.key == keycode_toggle) {
-          config.enabled_flags[configindex] = ! config.enabled_flags[configindex];
+          Config::enabled_flags[configindex] = ! Config::enabled_flags[configindex];
           goto finish;
 
         } else if (params.key == keycode_force_on) {
-          config.enabled_flags[configindex] = 1;
+          Config::enabled_flags[configindex] = 1;
           goto finish;
 
         } else if (params.key == keycode_force_off) {
-          config.enabled_flags[configindex] = 0;
+          Config::enabled_flags[configindex] = 0;
           goto finish;
 
         } else if (params.key == keycode_sync_keydownup) {
-          config.enabled_flags[configindex] = 1;
+          Config::enabled_flags[configindex] = 1;
           goto finish;
         }
 
@@ -282,7 +282,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
         if (params.key == keycode_sync_keydownup) {
-          config.enabled_flags[configindex] = 0;
+          Config::enabled_flags[configindex] = 0;
           goto finish;
         }
       }

@@ -505,11 +505,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     // check configindex_ range
     if (configindex_ < 0 ||
-        configindex_ >= sizeof(config.enabled_flags) / sizeof(config.enabled_flags[0])) {
+        configindex_ >= sizeof(Config::enabled_flags) / sizeof(Config::enabled_flags[0])) {
       return false;
     }
 
-    return config.enabled_flags[configindex_];
+    return Config::enabled_flags[configindex_];
   }
 
   bool

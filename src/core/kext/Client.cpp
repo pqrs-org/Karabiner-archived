@@ -101,7 +101,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! lock_) return;
     IOLockWrapper::ScopedLock lk(lock_);
 
-    if (config.socket_path[0] == '\0') {
+    if (Config::socket_path[0] == '\0') {
       sockaddr_available_ = false;
     } else {
       sockaddr_available_ = true;
@@ -109,7 +109,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       memset(&sockaddr_, 0, sizeof(sockaddr_));
       sockaddr_.sun_len = sizeof(sockaddr_);
       sockaddr_.sun_family = AF_UNIX;
-      strlcpy(sockaddr_.sun_path, config.socket_path, sizeof(sockaddr_.sun_path) - 8);
+      strlcpy(sockaddr_.sun_path, Config::socket_path, sizeof(sockaddr_.sun_path) - 8);
     }
   }
 

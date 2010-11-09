@@ -69,10 +69,10 @@ ARGV.each do |xmlpath|
     configaddress = nil
     essential = false
     if sysctl_node['essential'] == 'true' then
-      configaddress = "&(config.essential_config[BRIDGE_ESSENTIAL_CONFIG_INDEX_#{name}])"
+      configaddress = "&(Config::essential_config[BRIDGE_ESSENTIAL_CONFIG_INDEX_#{name}])"
       essential = true
     else
-      configaddress = "&(config.enabled_flags[#{KeyCode.ConfigIndex(name)}])"
+      configaddress = "&(Config::enabled_flags[#{KeyCode.ConfigIndex(name)}])"
     end
     $outfile[:config_SYSCTL] << "SYSCTL_PROC(_keyremap4macbook_#{sysctl_entry}, OID_AUTO, #{sysctl_name}, CTLTYPE_INT|CTLFLAG_RW, #{configaddress}, 0, refresh_remapfunc_handler, \"I\", \"\");\n"
     $outfile[:config_register] << "sysctl_register_oid(&sysctl__keyremap4macbook_#{name});\n"
@@ -90,7 +90,7 @@ end
 print "\n"
 
 RemapClass.output_entries($outfile[:remapclass_initialize_vector])
-$outfile[:config] << "int enabled_flags[#{KeyCode.count('ConfigIndex')}];\n"
+$outfile[:config] << "static int enabled_flags[#{KeyCode.count('ConfigIndex')}];\n"
 
 # ======================================================================
 $outfile.each do |name,file|
