@@ -74,7 +74,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (key == KeyCode::ENTER_POWERBOOK) { key = KeyCode::ENTER; }
     }
 
-    if (! config.get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_disable_numpad_hack)) {
+    if (! Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_disable_numpad_hack)) {
       for (unsigned int i = 0; i < sizeof(fnkeyhack) / sizeof(fnkeyhack[0]); ++i) {
         if (fnkeyhack[i].normalize(key, flags, eventType)) break;
       }
@@ -84,7 +84,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   KeyCode::reverseNormalizeKey(KeyCode& key, Flags& flags, EventType eventType, KeyboardType keyboardType)
   {
-    if (! config.get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_disable_numpad_hack)) {
+    if (! Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_disable_numpad_hack)) {
       for (unsigned int i = 0; i < sizeof(fnkeyhack) / sizeof(fnkeyhack[0]); ++i) {
         if (fnkeyhack[i].reverse(key, flags, eventType)) break;
       }
