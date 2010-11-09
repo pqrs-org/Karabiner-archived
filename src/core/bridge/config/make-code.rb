@@ -36,6 +36,8 @@ ARGV.each do |xmlpath|
   end
 end
 
+$outfile[:hpp].print "BRIDGE_ESSENTIAL_CONFIG_INDEX__END__ = #{configindex}\n"
+
 $outfile.each do |key,file|
   file.close
 end
