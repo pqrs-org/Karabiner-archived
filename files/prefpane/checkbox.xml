@@ -4415,7 +4415,7 @@
               <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, KeyCode::VK_MOUSEKEY_RIGHT</autogen>
               <!-- ======================================== -->
               <block>
-                <config_only>remap.simultaneouskeypresses_mouse_keys_mode_commandSD</config_only>
+                <config_only>remap.simultaneouskeypresses_mouse_keys_mode_commandSD, remap.simultaneouskeypresses_mouse_keys_mode_shiftSD</config_only>
                 <autogen>--KeyToKey-- KeyCode::F, KeyCode::FN</autogen>
                 <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_MOUSEKEY_HIGHSPEED</autogen>
               </block>
@@ -4469,6 +4469,19 @@
               <appendix>// A+HJKL to high-speed movement</appendix>
               <sysctl>remap.simultaneouskeypresses_mouse_keys_mode_commandSD</sysctl>
               <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, VK_COMMAND, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
+            </item>
+            <item>
+              <name>Simultaneous Key Presses Shift+[S+D] to turn on Mouse Keys Mode</name>
+              <appendix>// Press S,D keys simultaneously while pressing Shift_L or Shift_R.</appendix>
+              <appendix>// You can release Shift key while pressing S,D keys.</appendix>
+              <appendix></appendix>
+              <appendix>+ F turns on "Scroll Wheel Mode"</appendix>
+              <appendix>// F+HJKL to scroll wheel</appendix>
+              <appendix></appendix>
+              <appendix>+ A turns on "High Speed Mode"</appendix>
+              <appendix>// A+HJKL to high-speed movement</appendix>
+              <sysctl>remap.simultaneouskeypresses_mouse_keys_mode_shiftSD</sysctl>
+              <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, VK_SHIFT, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
             </item>
             <item>
               <name>Simultaneous Key Presses [D+F] to turn on Mouse Keys Mode</name>
@@ -4526,7 +4539,7 @@
             <item>
               <name>[Option] Ignore Hardware CursorMove Events</name>
               <sysctl>option.mousekeys_mode_droppointingrelativecursormove</sysctl>
-              <config_only>remap.simultaneouskeypresses_mouse_keys_mode_commandSD, remap.simultaneouskeypresses_mouse_keys_mode_df, remap.simultaneouskeypresses_mouse_keys_mode_cx</config_only>
+              <config_only>remap.simultaneouskeypresses_mouse_keys_mode_commandSD, remap.simultaneouskeypresses_mouse_keys_mode_shiftSD, remap.simultaneouskeypresses_mouse_keys_mode_df, remap.simultaneouskeypresses_mouse_keys_mode_cx</config_only>
               <autogen>--DropPointingRelativeCursorMove--</autogen>
             </item>
           </list>
