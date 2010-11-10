@@ -1381,7 +1381,7 @@
         </item>
         <item>
           <name>Eject to Forward Delete</name>
-          <appendix>(+ Eject to Control+D in Terminal,X11</appendix>
+          <appendix>(+ Eject to Control+D in Terminal,X11)</appendix>
           <sysctl>remap.eject2forwarddelete_term_x11</sysctl>
           <block>
             <only>TERMINAL, X11</only>
