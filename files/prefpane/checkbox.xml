@@ -7823,6 +7823,12 @@
               </list>
             </item>
             <item>
+              <name>Geta Input</name>
+              <appendix>下駄配列(qwerty,roman,ATOK)</appendix>
+              <sysctl>remap.geta_input_roman_qwerty_atok</sysctl>
+              <!-- #include "include/jis_geta.xml" -->
+            </item>
+            <item>
               <name>Use Windows Kana-Input Layout on ASCII Keyboard</name>
               <inputmode_not>ROMAN</inputmode_not>
               <autogen>--KeyToKey-- KeyCode::MINUS, VK_SHIFT, KeyCode::BRACKET_RIGHT, ModifierFlag::SHIFT_L</autogen>
