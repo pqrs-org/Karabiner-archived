@@ -10,17 +10,17 @@
 #undef private
 
 #define IOLOG_DEBUG(...) {                              \
-    if (Config::debug) {                                 \
+    if (Config::debug) {                                \
       IOLog("KeyRemap4MacBook --Debug-- " __VA_ARGS__); \
     }                                                   \
 }
 #define IOLOG_DEBUG_POINTING(...) {                     \
-    if (Config::debug_pointing) {                        \
+    if (Config::debug_pointing) {                       \
       IOLog("KeyRemap4MacBook --Debug-- " __VA_ARGS__); \
     }                                                   \
 }
 #define IOLOG_DEVEL(...) {                              \
-    if (Config::debug_devel) {                           \
+    if (Config::debug_devel) {                          \
       IOLog("KeyRemap4MacBook --Devel-- " __VA_ARGS__); \
     }                                                   \
 }
