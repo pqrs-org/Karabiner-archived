@@ -364,6 +364,33 @@
   return nil;
 }
 
+- (void) append_vk_config_to_keycode:(KeyCode*)keycode element:(NSXMLElement*)element
+{
+  NSArray* vk_config_formats = [NSArray arrayWithObjects:
+                                @"VK_CONFIG_TOGGLE_%@",
+                                @"VK_CONFIG_FORCE_ON_%@",
+                                @"VK_CONFIG_FORCE_OFF_%@",
+                                @"VK_CONFIG_SYNC_KEYDOWNUP_%@",
+                                nil];
+
+  for (NSXMLElement* e in [element elementsForName : @"sysctl"]) {
+    NSXMLNode* attr = [e attributeForName:@"vk_config"];
+
+    if (attr) {
+      for (NSString* format in vk_config_formats) {
+        [keycode append:@"KeyCode" name:[NSString stringWithFormat:format, [KeyCode normalizeName:[e stringValue]]]];
+      }
+    }
+  }
+
+  for (NSXMLElement* e in [element elementsForName : @"list"]) {
+    [self append_vk_config_to_keycode:keycode element:e];
+  }
+  for (NSXMLElement* e in [element elementsForName : @"item"]) {
+    [self append_vk_config_to_keycode:keycode element:e];
+  }
+}
+
 - (void) load {
   simultaneous_keycode_index_ = 0;
 
@@ -386,25 +413,7 @@
     NSURL* url = [NSURL fileURLWithPath:xmlpath];
     NSXMLDocument* xmldocument = [[[NSXMLDocument alloc] initWithContentsOfURL:url options:0 error:NULL] autorelease];
 
-    {
-      NSArray* nodes = [[xmldocument rootElement] nodesForXPath:@"//vk_config" error:NULL];
-
-      NSArray* vk_config_formats = [NSArray arrayWithObjects:
-                                    @"VK_CONFIG_TOGGLE_%@",
-                                    @"VK_CONFIG_FORCE_ON_%@",
-                                    @"VK_CONFIG_FORCE_OFF_%@",
-                                    @"VK_CONFIG_SYNC_KEYDOWNUP_%@",
-                                    nil];
-
-      for (NSXMLElement* n in nodes) {
-        NSArray* sysctl = [[n parent] nodesForXPath:@"./sysctl" error:NULL];
-        if ([sysctl count] > 0) {
-          for (NSString* format in vk_config_formats) {
-            [keycode append:@"KeyCode" name:[NSString stringWithFormat:format, [KeyCode normalizeName:[[sysctl objectAtIndex:0] stringValue]]]];
-          }
-        }
-      }
-    }
+    [self append_vk_config_to_keycode:keycode element:[xmldocument rootElement]];
 
     {
       NSArray* sysctl_nodes = [[xmldocument rootElement] nodesForXPath:@"//sysctl" error:NULL];
