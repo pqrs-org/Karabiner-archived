@@ -2721,6 +2721,17 @@
     </item>
 
     <item>
+      <name>Change Left Bracket([) Key</name>
+      <list>
+        <item>
+          <name>Left Bracket([) to L</name>
+          <sysctl>remap.leftbracket2l</sysctl>
+          <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, KeyCode::L</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>Change Media Keys (Play/Pause, Prev, Next)</name>
       <list>
         <item>
