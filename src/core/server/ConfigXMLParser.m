@@ -52,6 +52,8 @@
     NSUInteger count = [parent childCount];
     for (NSUInteger i = 0; i < count; ++i) {
       NSXMLNode* n = [parent childAtIndex:i];
+      if ([n kind] != NSXMLElementKind) continue;
+
       NSString* n_name = [n name];
       /*  */ if ([n_name isEqualToString:@"not"]) {
         [self append_to_filter:keycode filters:filters node:n prefix:@"ApplicationType::" filtertype:BRIDGE_FILTERTYPE_APPLICATION_NOT];
@@ -314,6 +316,7 @@
   NSUInteger count = [node childCount];
   for (NSUInteger i = 0; i < count; ++i) {
     NSXMLNode* n = [node childAtIndex:i];
+    if ([n kind] != NSXMLElementKind) continue;
 
     if ([[n name] isEqualToString:@"autogen"]) {
       NSMutableArray* filtervec = [self make_filtervec:keycode node:n];
@@ -379,7 +382,7 @@
 
 - (void) traverse_sysctl:(KeyCode*)keycode element:(NSXMLElement*)element
 {
-  for (NSXMLElement* e in [element elementsForName:@"sysctl"]) {
+  for (NSXMLElement* e in [element elementsForName : @"sysctl"]) {
     NSXMLNode* attr_essential = [e attributeForName:@"essential"];
     if (attr_essential) continue;
 
@@ -401,6 +404,13 @@
     [initialize_vector insertObject:[NSNumber numberWithUnsignedInt:BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION] atIndex:0];
 
     [array_initialize_vector_ addObject:initialize_vector];
+  }
+
+  for (NSXMLElement* e in [element elementsForName : @"list"]) {
+    [self traverse_sysctl:keycode element:e];
+  }
+  for (NSXMLElement* e in [element elementsForName : @"item"]) {
+    [self traverse_sysctl:keycode element:e];
   }
 }
 
