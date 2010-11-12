@@ -11,9 +11,8 @@
                 <item>
                     <name>Ubiquitous Vim Bindings for Normal Mode:</name>
 
-                    <sysctl>notsave.ubiq_vimnormal</sysctl>
+                    <sysctl vk_config="true">notsave.ubiq_vimnormal</sysctl>
                     <not>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</not>
-                    <vk_config>true</vk_config>
                     <autogen>--ShowStatusMessage-- Normal Mode</autogen>
 
                     <appendix>To enable these settings enable a binding or set of bindings to enter Normal Mode below.</appendix>
@@ -620,14 +619,12 @@
           <list>
               <item>
                   <name>g operator pending mode placeholder</name>
-                  <sysctl>notsave.g_operator_pending</sysctl>
-                  <vk_config>true</vk_config>
+                  <sysctl vk_config="true">notsave.g_operator_pending</sysctl>
                   <autogen>--ShowStatusMessage-- [g]</autogen>
               </item>
               <item>
                   <name>c-w operator pending mode placeholder</name>
-                  <sysctl>notsave.c_w_operator_pending</sysctl>
-                  <vk_config>true</vk_config>
+                  <sysctl vk_config="true">notsave.c_w_operator_pending</sysctl>
                   <autogen>--ShowStatusMessage-- [w]</autogen>
               </item>
           </list>

@@ -371,8 +371,7 @@
         <item>
           <name>Core</name>
           <appendix>(You need enable above setting.)</appendix>
-          <sysctl>remap.samples_droppointingrelativecursormove</sysctl>
-          <vk_config>true</vk_config>
+          <sysctl vk_config="true">remap.samples_droppointingrelativecursormove</sysctl>
           <config_only>remap.samples_droppointingrelativecursormove_config</config_only>
           <autogen>--ShowStatusMessage-- DropCursorMove</autogen>
           <autogen>--DropPointingRelativeCursorMove--</autogen>
@@ -623,8 +622,7 @@
         <item>
           <name>notsave.sample</name>
           <appendix>B to D</appendix>
-          <sysctl>notsave.sample</sysctl>
-          <vk_config>true</vk_config>
+          <sysctl vk_config="true">notsave.sample</sysctl>
           <autogen>--ShowStatusMessage-- notsave.sample</autogen>
           <autogen>--KeyToKey-- KeyCode::B, KeyCode::D</autogen>
         </item>
