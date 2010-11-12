@@ -49,6 +49,7 @@
 		345683B4109F2DD900125F91 /* util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = util.cpp; sourceTree = "<group>"; };
 		345683B8109F2F0500125F91 /* util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
 		34568414109F350100125F91 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		34597768128DBFAE003398BD /* bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bridge.h; path = ../bridge/bridge.h; sourceTree = SOURCE_ROOT; };
 		348A6B8F10A0214B00AC93FE /* server_objc_part.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = server_objc_part.h; sourceTree = "<group>"; };
 		348A6B9010A0214B00AC93FE /* server_objc_part.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = server_objc_part.m; sourceTree = "<group>"; };
 		349B509E12837E64009108FE /* include.keycode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = include.keycode.plist; path = ../bridge/keycode/output/include.keycode.plist; sourceTree = SOURCE_ROOT; };
@@ -86,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				34A06A5F11F87B3C0085749B /* sharecode */,
+				34597768128DBFAE003398BD /* bridge.h */,
 				34C15D81128DBF70005E7195 /* ConfigXMLParser.h */,
 				34C15D82128DBF70005E7195 /* ConfigXMLParser.m */,
 				3402BB6F12844CA100C1F6F3 /* KeyCode.h */,

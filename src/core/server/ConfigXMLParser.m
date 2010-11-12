@@ -260,7 +260,7 @@
 
     const char* utf8string = [params UTF8String];
     size_t length = strlen(utf8string);
-    [initialize_vector addObject:[NSNumber numberWithUnsignedInt:(length + 1)]];
+    [initialize_vector addObject:[NSNumber numberWithUnsignedLong:(length + 1)]];
     [initialize_vector addObject:[NSNumber numberWithUnsignedInt:BRIDGE_STATUSMESSAGE]];
     for (size_t i = 0; i < length; ++i) {
       [initialize_vector addObject:[NSNumber numberWithChar:utf8string[i]]];
