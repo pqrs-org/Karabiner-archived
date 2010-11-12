@@ -22,6 +22,7 @@
 		34A06A5D11F87B1F0085749B /* ConfigControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A06A5A11F87B1F0085749B /* ConfigControl.m */; };
 		34A06A5E11F87B1F0085749B /* StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A06A5C11F87B1F0085749B /* StatusBar.m */; };
 		34A06A6211F87B520085749B /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A06A6111F87B520085749B /* Common.m */; };
+		34C15D83128DBF70005E7195 /* ConfigXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C15D82128DBF70005E7195 /* ConfigXMLParser.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -61,6 +62,8 @@
 		34A06A5C11F87B1F0085749B /* StatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBar.m; sourceTree = "<group>"; };
 		34A06A6011F87B520085749B /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = ../../util/prefpane/sharecode/Common.h; sourceTree = SOURCE_ROOT; };
 		34A06A6111F87B520085749B /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Common.m; path = ../../util/prefpane/sharecode/Common.m; sourceTree = SOURCE_ROOT; };
+		34C15D81128DBF70005E7195 /* ConfigXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigXMLParser.h; sourceTree = "<group>"; };
+		34C15D82128DBF70005E7195 /* ConfigXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigXMLParser.m; sourceTree = "<group>"; };
 		34EE6DD710C218CE00D20676 /* Mutex.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Mutex.hpp; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* KeyRemap4MacBook_server.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyRemap4MacBook_server.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +86,8 @@
 			isa = PBXGroup;
 			children = (
 				34A06A5F11F87B3C0085749B /* sharecode */,
+				34C15D81128DBF70005E7195 /* ConfigXMLParser.h */,
+				34C15D82128DBF70005E7195 /* ConfigXMLParser.m */,
 				3402BB6F12844CA100C1F6F3 /* KeyCode.h */,
 				3402BB7012844CA100C1F6F3 /* KeyCode.m */,
 				3402BB4F1284415B00C1F6F3 /* WorkSpaceData.h */,
@@ -255,6 +260,7 @@
 				34A06A6211F87B520085749B /* Common.m in Sources */,
 				3402BB511284415B00C1F6F3 /* WorkSpaceData.m in Sources */,
 				3402BB7112844CA100C1F6F3 /* KeyCode.m in Sources */,
+				34C15D83128DBF70005E7195 /* ConfigXMLParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
