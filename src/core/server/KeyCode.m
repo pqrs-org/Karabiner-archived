@@ -9,6 +9,8 @@
   [super init];
 
   dict_ = [[NSMutableDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"include.keycode" ofType:@"plist"]];
+  [dict_ setObject:[NSNumber numberWithUnsignedInt:0] forKey:@"ConfigIndex::VK__AUTOINDEX__BEGIN__"];
+
   return self;
 }
 

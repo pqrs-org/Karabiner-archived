@@ -343,6 +343,68 @@
   }
 }
 
+// ======================================================================
+// initialize
+
+- (void) append_to_keycode:(KeyCode*)keycode element:(NSXMLElement*)element
+{
+  NSArray* vk_config_formats = [NSArray arrayWithObjects:
+                                @"VK_CONFIG_TOGGLE_%@",
+                                @"VK_CONFIG_FORCE_ON_%@",
+                                @"VK_CONFIG_FORCE_OFF_%@",
+                                @"VK_CONFIG_SYNC_KEYDOWNUP_%@",
+                                nil];
+
+  for (NSXMLElement* e in [element elementsForName : @"sysctl"]) {
+    NSString* name = [KeyCode normalizeName:[e stringValue]];
+
+    if ([e attributeForName:@"vk_config"]) {
+      for (NSString* format in vk_config_formats) {
+        [keycode append:@"KeyCode" name:[NSString stringWithFormat:format, name]];
+      }
+    }
+
+    if (! [e attributeForName:@"essential"]) {
+      [keycode append:@"ConfigIndex" name:name];
+    }
+  }
+
+  for (NSXMLElement* e in [element elementsForName : @"list"]) {
+    [self append_to_keycode:keycode element:e];
+  }
+  for (NSXMLElement* e in [element elementsForName : @"item"]) {
+    [self append_to_keycode:keycode element:e];
+  }
+}
+
+- (void) traverse_sysctl:(KeyCode*)keycode element:(NSXMLElement*)element
+{
+  for (NSXMLElement* e in [element elementsForName:@"sysctl"]) {
+    NSXMLNode* attr_essential = [e attributeForName:@"essential"];
+    if (attr_essential) continue;
+
+    NSMutableArray* initialize_vector = [NSMutableArray arrayWithCapacity:0];
+    NSString* name = [KeyCode normalizeName:[e stringValue]];
+
+    if ([e attributeForName:@"vk_config"]) {
+      [initialize_vector addObject:[NSNumber numberWithUnsignedInt:5]];
+      [initialize_vector addObject:[NSNumber numberWithUnsignedInt:BRIDGE_VK_CONFIG]];
+      [initialize_vector addObject:[keycode numberValue:[NSString stringWithFormat:@"KeyCode::VK_CONFIG_TOGGLE_%@", name]]];
+      [initialize_vector addObject:[keycode numberValue:[NSString stringWithFormat:@"KeyCode::VK_CONFIG_FORCE_ON_%@", name]]];
+      [initialize_vector addObject:[keycode numberValue:[NSString stringWithFormat:@"KeyCode::VK_CONFIG_FORCE_OFF_%@", name]]];
+      [initialize_vector addObject:[keycode numberValue:[NSString stringWithFormat:@"KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_%@", name]]];
+    }
+
+    [self traverse_autogen:initialize_vector keycode:keycode node:[e parent] name:name];
+
+    [initialize_vector insertObject:[NSNumber numberWithUnsignedInteger:[initialize_vector count]] atIndex:0];
+    [initialize_vector insertObject:[NSNumber numberWithUnsignedInt:BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION] atIndex:0];
+
+    [array_initialize_vector_ addObject:initialize_vector];
+  }
+}
+
+// ======================================================================
 - (NSString*) get_private_xml_path
 {
   NSFileManager* filemanager = [NSFileManager defaultManager];
@@ -362,33 +424,6 @@
   }
 
   return nil;
-}
-
-- (void) append_vk_config_to_keycode:(KeyCode*)keycode element:(NSXMLElement*)element
-{
-  NSArray* vk_config_formats = [NSArray arrayWithObjects:
-                                @"VK_CONFIG_TOGGLE_%@",
-                                @"VK_CONFIG_FORCE_ON_%@",
-                                @"VK_CONFIG_FORCE_OFF_%@",
-                                @"VK_CONFIG_SYNC_KEYDOWNUP_%@",
-                                nil];
-
-  for (NSXMLElement* e in [element elementsForName : @"sysctl"]) {
-    NSXMLNode* attr = [e attributeForName:@"vk_config"];
-
-    if (attr) {
-      for (NSString* format in vk_config_formats) {
-        [keycode append:@"KeyCode" name:[NSString stringWithFormat:format, [KeyCode normalizeName:[e stringValue]]]];
-      }
-    }
-  }
-
-  for (NSXMLElement* e in [element elementsForName : @"list"]) {
-    [self append_vk_config_to_keycode:keycode element:e];
-  }
-  for (NSXMLElement* e in [element elementsForName : @"item"]) {
-    [self append_vk_config_to_keycode:keycode element:e];
-  }
 }
 
 - (void) load {
@@ -413,46 +448,8 @@
     NSURL* url = [NSURL fileURLWithPath:xmlpath];
     NSXMLDocument* xmldocument = [[[NSXMLDocument alloc] initWithContentsOfURL:url options:0 error:NULL] autorelease];
 
-    [self append_vk_config_to_keycode:keycode element:[xmldocument rootElement]];
-
-    {
-      NSArray* sysctl_nodes = [[xmldocument rootElement] nodesForXPath:@"//sysctl" error:NULL];
-
-      unsigned int configindex = 0;
-      for (NSXMLElement* n in sysctl_nodes) {
-        NSXMLNode* attr_essential = [n attributeForName:@"essential"];
-        if (attr_essential) continue;
-
-        [keycode append:[NSString stringWithFormat:@"ConfigIndex::%@", [KeyCode normalizeName:[n stringValue]]] newvalue:configindex];
-        ++configindex;
-      }
-
-      for (NSXMLElement* n in sysctl_nodes) {
-        NSXMLNode* attr_essential = [n attributeForName:@"essential"];
-        if (attr_essential) continue;
-
-        NSMutableArray* initialize_vector = [NSMutableArray arrayWithCapacity:0];
-
-        NSString* name = [KeyCode normalizeName:[n stringValue]];
-
-        NSArray* vk_config = [[n parent] nodesForXPath:@"./vk_config" error:NULL];
-        if ([vk_config count] > 0) {
-          [initialize_vector addObject:[NSNumber numberWithUnsignedInt:5]];
-          [initialize_vector addObject:[NSNumber numberWithUnsignedInt:BRIDGE_VK_CONFIG]];
-          [initialize_vector addObject:[keycode numberValue:[NSString stringWithFormat:@"KeyCode::VK_CONFIG_TOGGLE_%@", name]]];
-          [initialize_vector addObject:[keycode numberValue:[NSString stringWithFormat:@"KeyCode::VK_CONFIG_FORCE_ON_%@", name]]];
-          [initialize_vector addObject:[keycode numberValue:[NSString stringWithFormat:@"KeyCode::VK_CONFIG_FORCE_OFF_%@", name]]];
-          [initialize_vector addObject:[keycode numberValue:[NSString stringWithFormat:@"KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_%@", name]]];
-        }
-
-        [self traverse_autogen:initialize_vector keycode:keycode node:[n parent] name:name];
-
-        [initialize_vector insertObject:[NSNumber numberWithUnsignedInteger:[initialize_vector count]] atIndex:0];
-        [initialize_vector insertObject:[NSNumber numberWithUnsignedInt:BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION] atIndex:0];
-
-        [array_initialize_vector_ addObject:initialize_vector];
-      }
-    }
+    [self append_to_keycode:keycode element:[xmldocument rootElement]];
+    [self traverse_sysctl:keycode element:[xmldocument rootElement]];
   }
 }
 
