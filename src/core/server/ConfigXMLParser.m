@@ -445,7 +445,7 @@
   }
   array_initialize_vector_ = [[NSMutableArray alloc] initWithCapacity:0];
 
-  KeyCode* keycode = [KeyCode new];
+  KeyCode* keycode = [[KeyCode new] autorelease];
 
   NSArray* paths = [NSArray arrayWithObjects:
                     @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml",
