@@ -2326,6 +2326,22 @@
         </item>
         <item><name>------------------------------------------------------------</name></item>
         <item>
+          <name>F14 to Music Prev</name>
+          <sysctl>remap.f14_to_musicprev_all</sysctl>
+          <autogen>--KeyToConsumer-- KeyCode::F14, ConsumerKeyCode::MUSIC_PREV</autogen>
+        </item>
+        <item>
+          <name>F15 to Music Play/Pause</name>
+          <sysctl>remap.f15_to_musicplay_all</sysctl>
+          <autogen>--KeyToConsumer-- KeyCode::F15, ConsumerKeyCode::MUSIC_PLAY</autogen>
+        </item>
+        <item>
+          <name>F16 to Music Next</name>
+          <sysctl>remap.f16_to_musicnext_all</sysctl>
+          <autogen>--KeyToConsumer-- KeyCode::F16, ConsumerKeyCode::MUSIC_NEXT</autogen>
+        </item>
+        <item><name>------------------------------------------------------------</name></item>
+        <item>
           <name>Fn+F11 to F11</name>
           <sysctl>remap.FnF11_to_f11</sysctl>
           <autogen>--KeyToKey-- KeyCode::F11, ModifierFlag::FN, KeyCode::F11</autogen>
