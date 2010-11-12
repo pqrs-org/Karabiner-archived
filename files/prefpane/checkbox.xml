@@ -79,8 +79,7 @@
           <name>What is Pass Through Mode?</name>
           <appendix>You can disable all settings temporarily.</appendix>
           <appendix>Turn on a setting below, and toggle "Pass Through Mode".</appendix>
-          <sysctl>notsave.passthrough</sysctl>
-          <vk_config>true</vk_config>
+          <sysctl vk_config="true">notsave.passthrough</sysctl>
           <autogen>--ShowStatusMessage-- Pass Through</autogen>
         </item>
         <item>
@@ -110,8 +109,7 @@
             <item>
               <name>We can scroll pages by moving the mouse pointer.</name>
               <appendix>(Also, you can generate a click event if you click without moving)</appendix>
-              <sysctl>notsave.pointing_relative_to_scroll</sysctl>
-              <vk_config>true</vk_config>
+              <sysctl vk_config="true">notsave.pointing_relative_to_scroll</sysctl>
               <autogen>--PointingRelativeToScroll-- PointingButton::NONE</autogen>
             </item>
             <item>
@@ -2176,8 +2174,7 @@
               <appendix>U I O P &#8594; 4 5 6 *</appendix>
               <appendix>J K L ; &#8594; 1 2 3 -</appendix>
               <appendix>M . / &#8594; 0 . +</appendix>
-              <sysctl>notsave.virtual_numlock</sysctl>
-              <vk_config>true</vk_config>
+              <sysctl vk_config="true">notsave.virtual_numlock</sysctl>
               <autogen>--ShowStatusMessage-- NumLock</autogen>
               <autogen>--KeyToKey-- KeyCode::M,         KeyCode::KEYPAD_0</autogen>
               <autogen>--KeyToKey-- KeyCode::J,         KeyCode::KEYPAD_1</autogen>
@@ -3604,8 +3601,7 @@
               <!-- Swap Mode Core -->
               <name>You can swap Space and Option+Space temporarily.</name>
               <appendix>Turn on a setting below, and toggle "Swap Mode".</appendix>
-              <sysctl>notsave.swap_space_optionspace</sysctl>
-              <vk_config>true</vk_config>
+              <sysctl vk_config="true">notsave.swap_space_optionspace</sysctl>
               <autogen>--ShowStatusMessage-- Swap Mode</autogen>
               <autogen>--KeyToKey-- KeyCode::SPACE, VK_OPTION | ModifierFlag::NONE, KeyCode::SPACE</autogen>
               <autogen>--KeyToKey-- KeyCode::SPACE, ModifierFlag::NONE, KeyCode::SPACE, ModifierFlag::OPTION_L</autogen>
@@ -4112,8 +4108,7 @@
               <appendix>C-x k to Command_L+W</appendix>
               <appendix>C-x C-c to Command_L+Q</appendix>
               <appendix>C-x C-g to turn off Control+X Mode</appendix>
-              <sysctl>notsave.emacsmode_ex_controlX_core</sysctl>
-              <vk_config>true</vk_config>
+              <sysctl vk_config="true">notsave.emacsmode_ex_controlX_core</sysctl>
               <autogen>--ShowStatusMessage-- C-x Mode</autogen>
               <autogen>--KeyToKey-- KeyCode::S, VK_CONTROL | ModifierFlag::NONE, KeyCode::S, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlX_core</autogen>
               <autogen>--KeyToKey-- KeyCode::C, VK_CONTROL | ModifierFlag::NONE, KeyCode::Q, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlX_core</autogen>
@@ -4139,8 +4134,7 @@
               <appendix>Option+W to Command_L+C</appendix>
               <appendix>Control+G to turn off MarkSet</appendix>
               <appendix>Control+Space to turn off MarkSet</appendix>
-              <sysctl>notsave.emacsmode_ex_controlSpace_core</sysctl>
-              <vk_config>true</vk_config>
+              <sysctl vk_config="true">notsave.emacsmode_ex_controlSpace_core</sysctl>
               <autogen>--ShowStatusMessage-- MarkSet</autogen>
               <autogen>--KeyToKey-- KeyCode::W,     VK_CONTROL | ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::X, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlSpace_core</autogen>
               <autogen>--KeyToKey-- KeyCode::W,     VK_OPTION  | ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::C, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlSpace_core</autogen>
@@ -4419,8 +4413,7 @@
               <appendix></appendix>
               <appendix>- A+HJKL to high-speed movement</appendix>
               <appendix>- A+Arrow Keys to high-speed movement</appendix>
-              <sysctl>notsave.mousekeys_mode</sysctl>
-              <vk_config>true</vk_config>
+              <sysctl vk_config="true">notsave.mousekeys_mode</sysctl>
               <autogen>--ShowStatusMessage-- Mouse Keys</autogen>
               <!-- scroll wheel mode -->
               <autogen>--KeyToKey-- KeyCode::H,            ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_LEFT,  ModifierFlag::FN</autogen>
@@ -4691,8 +4684,7 @@
           <appendix>- Shift+x to Delete</appendix>
           <appendix>- f to Fn</appendix>
           <appendix>- i to turn off Vi Mode</appendix>
-          <sysctl>notsave.complete_vimode</sysctl>
-          <vk_config>true</vk_config>
+          <sysctl vk_config="true">notsave.complete_vimode</sysctl>
           <autogen>--ShowStatusMessage-- Vi Mode</autogen>
           <block>
             <config_not>option.complete_vimode_dvorak</config_not>
@@ -5005,8 +4997,7 @@
               <appendix>- A to Application windows</appendix>
               <appendix>- B to Dashboard</appendix>
               <appendix>- F to Move focus to active or next window (Control+F4)</appendix>
-              <sysctl>notsave.expose_mode</sysctl>
-              <vk_config>true</vk_config>
+              <sysctl vk_config="true">notsave.expose_mode</sysctl>
               <autogen>--ShowStatusMessage-- Expose Mode</autogen>
               <autogen>--KeyToKey-- KeyCode::S, KeyCode::F8</autogen>
               <autogen>--KeyToKey-- KeyCode::E, KeyCode::EXPOSE_ALL</autogen>
@@ -5034,8 +5025,7 @@
               <appendix>- Tab: Switch application--cycle forward.</appendix>
               <appendix>- Shift: Switch application--cycle backward.</appendix>
               <appendix>- Arrow keys: move a selection.</appendix>
-              <sysctl>notsave.cmdtab_mode</sysctl>
-              <vk_config>true</vk_config>
+              <sysctl vk_config="true">notsave.cmdtab_mode</sysctl>
               <autogen>--ShowStatusMessage-- Cmd+Tab</autogen>
               <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::RETURN, KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode</autogen>
               <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::ESCAPE, KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode</autogen>
@@ -6067,8 +6057,7 @@
             <item>
               <name>Enable KeyPad as Arrow</name>
               <appendix>(except virtual machine, RDC)</appendix>
-              <sysctl>remap.keypadnumlock</sysctl>
-              <vk_config>true</vk_config>
+              <sysctl vk_config="true">remap.keypadnumlock</sysctl>
               <block>
                 <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
                 <!-- #include "include/keypadnumlock.xml" -->
@@ -6101,8 +6090,7 @@
               <appendix>(- KeyPad_9 to Option_L+PageUp)</appendix>
               <appendix>(- KeyPad_3 to Option_L+PageDown)</appendix>
               <appendix>(except virtual machine, RDC)</appendix>
-              <sysctl>remap.keypadnumlock_pclikehomeend</sysctl>
-              <vk_config>true</vk_config>
+              <sysctl vk_config="true">remap.keypadnumlock_pclikehomeend</sysctl>
               <block>
                 <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
                 <!-- #include "include/keypadnumlock_pclikehomeend.xml" -->

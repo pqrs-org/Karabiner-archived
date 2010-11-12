@@ -185,7 +185,8 @@ class RemapClass
   end
 
   def to_code(item_node, outfile)
-    if item_node.find_first('./vk_config') then
+    sysctl_node = item_node.find_first('./sysctl')
+    if sysctl_node && sysctl_node['vk_config'] == 'true' then
       @initialize_vector << 5
       @initialize_vector << "BRIDGE_VK_CONFIG"
       @initialize_vector << KeyCode.v('KeyCode', "VK_CONFIG_TOGGLE_#{@name}")
