@@ -454,10 +454,10 @@
     KeyCode* keycode = [[KeyCode new] autorelease];
 
     NSArray* paths = [NSArray arrayWithObjects:
-                                [self get_private_xml_path],
-                              @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml",
-                              @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/number.xml",
-                              nil];
+                      [self get_private_xml_path],
+                      @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml",
+                      @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/number.xml",
+                      nil];
 
     NSMutableDictionary* xmldocdict = [[[NSMutableDictionary alloc] initWithCapacity:0] autorelease];
 
@@ -497,6 +497,22 @@
     }
   }
   return count;
+}
+
+- (NSUInteger) initialize_vector_size:(unsigned int)configindex
+{
+  NSUInteger size = 0;
+  @synchronized(self) {
+    if (array_initialize_vector_) {
+      if (configindex < [array_initialize_vector_ count]) {
+        NSArray* a = [array_initialize_vector_ objectAtIndex:configindex];
+        if (a) {
+          size = [a count];
+        }
+      }
+    }
+  }
+  return size;
 }
 
 @end

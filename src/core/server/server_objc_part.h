@@ -26,6 +26,7 @@ typedef enum {
 }
 
 - (NSUInteger) getConfigCount;
+- (NSUInteger) getConfigInitializeVectorSize:(unsigned int)configindex;
 
 - (NSString*) getActiveApplicationName;
 - (NSString*) getTISPropertyInputModeID;
@@ -46,6 +47,7 @@ extern "C" {
 #endif
 
 uint32_t getConfigCount(void);
+uint32_t getConfigInitializeVectorSize(uint32_t configindex);
 
 void selectInputSource_english(void);
 void selectInputSource_french(void);

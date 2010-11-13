@@ -10,6 +10,11 @@
   return [configxmlparser_ count];
 }
 
+- (NSUInteger) getConfigInitializeVectorSize:(unsigned int)configindex
+{
+  return [configxmlparser_ initialize_vector_size:configindex];
+}
+
 - (NSString*) getActiveApplicationName
 {
   // ----------------------------------------
@@ -302,6 +307,16 @@ getConfigCount(void)
 {
   if (serverobjcpart) {
     return (uint32_t)([serverobjcpart getConfigCount]);
+  } else {
+    return 0;
+  }
+}
+
+uint32_t
+getConfigInitializeVectorSize(uint32_t configindex)
+{
+  if (serverobjcpart) {
+    return (uint32_t)([serverobjcpart getConfigInitializeVectorSize:configindex]);
   } else {
     return 0;
   }
