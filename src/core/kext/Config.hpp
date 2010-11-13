@@ -57,6 +57,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static int debug_pointing;
     static int debug_devel;
     static int initialized;
+    static int reload_xml;
 
     enum { SOCKET_PATH_MAX = 256 };
     static char socket_path[SOCKET_PATH_MAX];
