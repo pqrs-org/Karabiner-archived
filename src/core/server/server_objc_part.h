@@ -15,15 +15,17 @@ typedef enum {
 #import "ConfigXMLParser.h"
 
 @interface ServerObjcPart : NSObject {
-  ConfigXMLParser* configxmlparser_;
-
   NSWindow* statuswindow_;
   NSTextField* statuswindow_label_;
   NSImageView* statuswindow_backgroud_;
 
   NSString* statusmessage_lock_;
   NSString* statusmessage_extra_;
+
+  IBOutlet ConfigXMLParser* configxmlparser_;
 }
+
+- (NSUInteger) getConfigCount;
 
 - (NSString*) getActiveApplicationName;
 - (NSString*) getTISPropertyInputModeID;
@@ -42,6 +44,8 @@ void registerStatusWindow(NSWindow* window, NSTextField* label);
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+uint32_t getConfigCount(void);
 
 void selectInputSource_english(void);
 void selectInputSource_french(void);

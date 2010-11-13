@@ -21,6 +21,7 @@ namespace KeyRemap4MacBook_server {
     void sendReply(int sock, void* data, size_t size, uint32_t error);
     void dispatchOperator(int sock);
 
+    org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error do_GetConfigCount(org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetConfigCount::Reply& reply);
     org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error do_GetWorkspaceData(org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& reply);
     org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error do_ChangeInputMode(const org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::Request& request);
     org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error do_StatusMessage(const org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::StatusMessage::Request& request);

@@ -5,6 +5,11 @@
 
 @implementation ServerObjcPart
 
+- (NSUInteger) getConfigCount
+{
+  return [configxmlparser_ count];
+}
+
 - (NSString*) getActiveApplicationName
 {
   // ----------------------------------------
@@ -292,6 +297,16 @@ void selectInputSource_russian_typographic(void) { selectInputSource_language(kI
 void selectInputSource_english_typographic(void) { selectInputSource_language(kInputSourceLanguage_english_Typographic); }
 
 // ------------------------------------------------------------
+uint32_t
+getConfigCount(void)
+{
+  if (serverobjcpart) {
+    return (uint32_t)([serverobjcpart getConfigCount]);
+  } else {
+    return 0;
+  }
+}
+
 void
 reset_statusmessage(void)
 {
