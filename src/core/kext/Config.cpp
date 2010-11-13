@@ -13,6 +13,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   int Config::debug_pointing = 0;
   int Config::debug_devel = 0;
   int Config::initialized = 0;
+  int Config::reload_xml = 0;
   char Config::socket_path[SOCKET_PATH_MAX];
 
   int Config::essential_config[BRIDGE_ESSENTIAL_CONFIG_INDEX__END__] = {
@@ -23,6 +24,27 @@ namespace org_pqrs_KeyRemap4MacBook {
   ];
 
   namespace {
+    void do_reload_xml(void)
+    {
+      KeyRemap4MacBook_bridge::GetConfigCount::Reply reply;
+      int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_CONFIG_COUNT, NULL, 0, &reply, sizeof(reply));
+      if (! error) {
+        IOLOG_INFO("count = %d\n", reply.count);
+      }
+    }
+
+    int reload_xml_handler SYSCTL_HANDLER_ARGS
+    {
+      int error = sysctl_handle_int(oidp, oidp->oid_arg1, oidp->oid_arg2, req);
+      if (! error && req->newptr) {
+        if (Config::reload_xml) {
+          do_reload_xml();
+          Config::reload_xml = 0;
+        }
+      }
+      return error;
+    }
+
     int socket_path_handler SYSCTL_HANDLER_ARGS
     {
       int error = sysctl_handle_string(oidp, oidp->oid_arg1, oidp->oid_arg2, req);
@@ -114,6 +136,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   SYSCTL_STRING(_keyremap4macbook, OID_AUTO, version, CTLFLAG_RD, config_version, 0, "");
   SYSCTL_INT(_keyremap4macbook, OID_AUTO, initialized, CTLTYPE_INT | CTLFLAG_RW, &(Config::initialized), 0, "");
+  SYSCTL_PROC(_keyremap4macbook, OID_AUTO, reload_xml, CTLTYPE_INT | CTLFLAG_RW, &(Config::reload_xml), 0, reload_xml_handler, "I", "");
 
   // ----------------------------------------------------------------------
   void
@@ -149,6 +172,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_register_oid(&sysctl__keyremap4macbook_debug_devel);
     sysctl_register_oid(&sysctl__keyremap4macbook_version);
     sysctl_register_oid(&sysctl__keyremap4macbook_initialized);
+    sysctl_register_oid(&sysctl__keyremap4macbook_reload_xml);
   }
 
   void
@@ -174,5 +198,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_unregister_oid(&sysctl__keyremap4macbook_debug_devel);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_version);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_initialized);
+    sysctl_unregister_oid(&sysctl__keyremap4macbook_reload_xml);
   }
 }
