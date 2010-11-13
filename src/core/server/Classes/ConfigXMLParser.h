@@ -8,5 +8,6 @@
 
 - (void) load;
 - (NSUInteger) count;
+- (NSUInteger) initialize_vector_size:(unsigned int)configindex;
 
 @end

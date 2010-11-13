@@ -67,8 +67,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       IOLOG_INFO("count = %d\n", count);
-      if (count > 0) {
-        IOLOG_INFO("configinfo[0].initialize_vector_size = %d\n", configinfo[0].initialize_vector_size);
+      if (count > 100) {
+        IOLOG_INFO("configinfo[1].initialize_vector_size = %d\n", configinfo[1].initialize_vector_size);
       }
 
     finish:

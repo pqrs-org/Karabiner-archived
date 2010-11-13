@@ -196,9 +196,10 @@ KeyRemap4MacBook_server::Server::do_GetConfigInfo(int sock)
   items = new org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetConfigInfo::Reply::Item[count];
   if (! items) goto finish;
 
-  for (uint32_t i = 0; i < count; ++i) {
-    items[i].initialize_vector_size = i;
-    items[i].enabled = i;
+  for (uint32_t configindex = 0; configindex < count; ++configindex) {
+    items[configindex].initialize_vector_size = getConfigInitializeVectorSize(configindex);
+    // XXX: fix me
+    items[configindex].enabled = 0;
   }
 
   sendReply(sock, items, sizeof(items[0]) * count, 0);
