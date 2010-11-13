@@ -466,7 +466,9 @@
 
       NSURL* url = [NSURL fileURLWithPath:xmlpath];
       NSXMLDocument* xmldocument = [[[NSXMLDocument alloc] initWithContentsOfURL:url options:0 error:NULL] autorelease];
-      [xmldocdict setObject:xmldocument forKey:xmlpath];
+      if (xmldocument) {
+        [xmldocdict setObject:xmldocument forKey:xmlpath];
+      }
 
       [self append_to_keycode:keycode element:[xmldocument rootElement]];
     }

@@ -2,9 +2,9 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1060</int>
-		<string key="IBDocument.SystemVersion">10F569</string>
+		<string key="IBDocument.SystemVersion">10H574</string>
 		<string key="IBDocument.InterfaceBuilderVersion">788</string>
-		<string key="IBDocument.AppKitVersion">1038.29</string>
+		<string key="IBDocument.AppKitVersion">1038.35</string>
 		<string key="IBDocument.HIToolboxVersion">461.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -141,6 +141,9 @@
 			</object>
 			<object class="NSCustomObject" id="718310321">
 				<string key="NSClassName">WorkSpaceData</string>
+			</object>
+			<object class="NSCustomObject" id="247018677">
+				<string key="NSClassName">ConfigXMLParser</string>
 			</object>
 			<object class="NSMenu" id="269225066">
 				<string key="NSTitle"/>
@@ -280,6 +283,14 @@
 					</object>
 					<int key="connectionID">569</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">configxmlparser_</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="247018677"/>
+					</object>
+					<int key="connectionID">571</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -411,6 +422,11 @@
 						<reference key="object" ref="718310321"/>
 						<reference key="parent" ref="0"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">570</int>
+						<reference key="object" ref="247018677"/>
+						<reference key="parent" ref="0"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -438,6 +454,7 @@
 					<string>558.IBPluginDependency</string>
 					<string>566.IBPluginDependency</string>
 					<string>567.IBPluginDependency</string>
+					<string>570.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -462,6 +479,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="unlocalizedProperties">
@@ -480,17 +498,25 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">569</int>
+			<int key="maxID">571</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBPartialClassDescription">
+					<string key="className">ConfigXMLParser</string>
+					<string key="superclassName">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">Classes/ConfigXMLParser.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
 					<string key="className">KeyCode</string>
 					<string key="superclassName">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">KeyCode.h</string>
+						<string key="minorKey">Classes/KeyCode.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -500,6 +526,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>configxmlparser_</string>
 							<string>serverobjcpart_</string>
 							<string>statusbar_</string>
 							<string>statusmessage_</string>
@@ -509,6 +536,7 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>ConfigXMLParser</string>
 							<string>ServerObjcPart</string>
 							<string>StatusBar</string>
 							<string>NSTextField</string>
@@ -521,6 +549,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>configxmlparser_</string>
 							<string>serverobjcpart_</string>
 							<string>statusbar_</string>
 							<string>statusmessage_</string>
@@ -530,6 +559,10 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">configxmlparser_</string>
+								<string key="candidateClassName">ConfigXMLParser</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">serverobjcpart_</string>
 								<string key="candidateClassName">ServerObjcPart</string>
@@ -624,7 +657,7 @@
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">StatusBar.h</string>
+						<string key="minorKey">Classes/StatusBar.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -643,7 +676,7 @@
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">WorkSpaceData.h</string>
+						<string key="minorKey">Classes/WorkSpaceData.h</string>
 					</object>
 				</object>
 			</object>
