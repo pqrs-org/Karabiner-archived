@@ -111,6 +111,8 @@
 
 // ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
+  [configxmlparser_ load];
+
   [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
                                                          selector:@selector(observer_NSWorkspaceDidActivateApplicationNotification:)
                                                              name:NSWorkspaceDidActivateApplicationNotification

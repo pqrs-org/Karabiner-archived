@@ -12,8 +12,11 @@ typedef enum {
 #ifndef __cplusplus
 
 #import <Cocoa/Cocoa.h>
+#import "ConfigXMLParser.h"
 
 @interface ServerObjcPart : NSObject {
+  ConfigXMLParser* configxmlparser_;
+
   NSWindow* statuswindow_;
   NSTextField* statuswindow_label_;
   NSImageView* statuswindow_backgroud_;

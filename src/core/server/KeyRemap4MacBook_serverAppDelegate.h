@@ -11,6 +11,7 @@
 #import "server_objc_part.h"
 #import "StatusBar.h"
 #import "WorkSpaceData.h"
+#import "ConfigXMLParser.h"
 
 @interface KeyRemap4MacBook_serverAppDelegate : NSObject <NSApplicationDelegate> {
   NSWindow* window;
@@ -19,6 +20,7 @@
   IBOutlet NSImageView* statusmessage_background_;
   IBOutlet StatusBar* statusbar_;
   IBOutlet WorkSpaceData* workspacedata_;
+  IBOutlet ConfigXMLParser* configxmlparser_;
 }
 
 @property (assign) IBOutlet NSWindow* window;
