@@ -28,6 +28,29 @@ namespace org_pqrs_KeyRemap4MacBook {
       };
     }
 
+    namespace GetConfigInfo {
+      // none
+      struct Request {
+      };
+
+      struct Reply {
+        struct {
+          uint32_t initialize_vector_size;
+          uint32_t enabled;
+        } info[0];
+      };
+    }
+
+    namespace GetConfigInitializeVector {
+      struct Request {
+        uint32_t configindex;
+      };
+
+      struct Reply {
+        uint32_t initialize_vector[0];
+      };
+    }
+
     namespace GetWorkspaceData {
       // none
       struct Request {};
