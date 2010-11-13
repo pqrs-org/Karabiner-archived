@@ -24,6 +24,11 @@
 namespace org_pqrs_KeyRemap4MacBook {
   class RemapClass {
   public:
+    enum {
+      MAX_CONFIG_COUNT = 10000,
+      MAX_ALLOCATION_COUNT = 8 * 1024 * 1024, // 8MB
+    };
+
     class Item {
     public:
       Item(const unsigned int* vec, size_t length);
@@ -88,10 +93,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void log_allocation_count(void);
 
   private:
-    enum {
-      MAX_ALLOCATION_COUNT = 8 * 1024 * 1024, // 8MB
-    };
-
     Vector_ItemPointer items_;
     char* statusmessage_;
     unsigned int configindex_;

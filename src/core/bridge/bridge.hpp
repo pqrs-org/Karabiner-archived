@@ -13,6 +13,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     enum RequestType {
       REQUEST_NONE,
       REQUEST_GET_CONFIG_COUNT,
+      REQUEST_GET_CONFIG_INFO,
+      REQUEST_GET_CONFIG_INITIALIZE_VECTOR,
       REQUEST_GET_WORKSPACE_DATA,
       REQUEST_CHANGE_INPUTMODE,
       REQUEST_STATUS_MESSAGE,
@@ -29,15 +31,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     namespace GetConfigInfo {
-      // none
       struct Request {
+        Request(uint32_t c) : count(c) {}
+        uint32_t count;
       };
 
       struct Reply {
-        struct {
+        struct Item {
           uint32_t initialize_vector_size;
           uint32_t enabled;
-        } info[0];
+        } items[0];
       };
     }
 
