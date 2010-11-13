@@ -70,6 +70,12 @@ KeyRemap4MacBook_server::Server::dispatchOperator(int sock)
       break;
     }
 
+    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::REQUEST_GET_CONFIG_INFO:
+    {
+      if (! do_GetConfigInfo(sock)) goto error;
+      break;
+    }
+
     case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::REQUEST_GET_WORKSPACE_DATA:
     {
       org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::Reply reply;
@@ -116,7 +122,9 @@ KeyRemap4MacBook_server::Server::dispatchOperator(int sock)
 
       break;
     }
+
     case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::REQUEST_NONE:
+    default:
       goto error;
   }
 
@@ -165,6 +173,42 @@ KeyRemap4MacBook_server::Server::do_GetConfigCount(org_pqrs_KeyRemap4MacBook::Ke
 {
   reply.count = getConfigCount();
   return org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS;
+}
+
+bool
+KeyRemap4MacBook_server::Server::do_GetConfigInfo(int sock)
+{
+  bool retval = false;
+  uint32_t count = getConfigCount();
+  org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetConfigInfo::Reply::Item* items = NULL;
+
+  {
+    uint32_t size;
+    if (read(sock, &size, sizeof(size)) < 0) goto finish;
+
+    org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetConfigInfo::Request request(0);
+    if (size != sizeof(request)) goto finish;
+    if (read(sock, &request, sizeof(request)) < 0) goto finish;
+
+    if (request.count != count) goto finish;
+  }
+
+  items = new org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetConfigInfo::Reply::Item[count];
+  if (! items) goto finish;
+
+  for (uint32_t i = 0; i < count; ++i) {
+    items[i].initialize_vector_size = i;
+    items[i].enabled = i;
+  }
+
+  sendReply(sock, items, sizeof(items[0]) * count, 0);
+  retval = true;
+
+finish:
+  if (items) {
+    delete[] items;
+  }
+  return retval;
 }
 
 org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error

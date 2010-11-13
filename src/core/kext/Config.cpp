@@ -26,10 +26,54 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace {
     void do_reload_xml(void)
     {
-      KeyRemap4MacBook_bridge::GetConfigCount::Reply reply;
-      int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_CONFIG_COUNT, NULL, 0, &reply, sizeof(reply));
-      if (! error) {
-        IOLOG_INFO("count = %d\n", reply.count);
+      uint32_t count = 0;
+      KeyRemap4MacBook_bridge::GetConfigInfo::Reply::Item* configinfo = NULL;
+
+      // ------------------------------------------------------------
+      // get count
+      {
+        KeyRemap4MacBook_bridge::GetConfigCount::Reply reply;
+        int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_CONFIG_COUNT, NULL, 0, &reply, sizeof(reply));
+        if (error) {
+          IOLOG_ERROR("do_reload_xml GetConfigCount sendmsg failed(%d)\n", error);
+          goto finish;
+        }
+        count = reply.count;
+      }
+
+      if (count > RemapClass::MAX_CONFIG_COUNT) {
+        IOLOG_ERROR("do_reload_xml too many config count(%d)\n", count);
+        goto finish;
+      }
+
+      // ------------------------------------------------------------
+      // get configinfo
+      configinfo = new KeyRemap4MacBook_bridge::GetConfigInfo::Reply::Item[count];
+      if (! configinfo) {
+        IOLOG_ERROR("do_reload_xml allocation failed\n");
+        goto finish;
+      }
+
+      {
+        KeyRemap4MacBook_bridge::GetConfigInfo::Request request(count);
+        KeyRemap4MacBook_bridge::GetConfigInfo::Reply* reply = reinterpret_cast<KeyRemap4MacBook_bridge::GetConfigInfo::Reply*>(configinfo);
+        int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_CONFIG_INFO,
+                                                     &request, sizeof(request),
+                                                     reply, static_cast<uint32_t>(sizeof(configinfo[0]) * count));
+        if (error) {
+          IOLOG_ERROR("do_reload_xml GetConfigInfo sendmsg failed(%d)\n", error);
+          goto finish;
+        }
+      }
+
+      IOLOG_INFO("count = %d\n", count);
+      if (count > 0) {
+        IOLOG_INFO("configinfo[0].initialize_vector_size = %d\n", configinfo[0].initialize_vector_size);
+      }
+
+    finish:
+      if (configinfo) {
+        delete[] configinfo;
       }
     }
 
