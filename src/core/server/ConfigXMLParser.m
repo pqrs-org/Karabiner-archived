@@ -13,11 +13,17 @@
   return self;
 }
 
-- (void) dealloc
+- (void) clear
 {
   if (array_initialize_vector_) {
     [array_initialize_vector_ release];
+    array_initialize_vector_ = nil;
   }
+}
+
+- (void) dealloc
+{
+  [self clear];
 
   [super dealloc];
 }
@@ -146,11 +152,12 @@
         } else if ([value hasPrefix:@"Option::"]) {
           newdatatype = BRIDGE_DATATYPE_OPTION;
         } else {
-          NSLog(@"[ERROR] KeyRemap4MacBook_server unknown datatype for %@ (%@)", value, params);
+          @throw [NSException exceptionWithName : @"ConfigXMLParser" reason :[NSString stringWithFormat:@"unknown datatype: %@ (%@)", value, params] userInfo : nil];
         }
 
         if (datatype && datatype != newdatatype) {
-          NSLog(@"[ERROR] KeyRemap4MacBook_server don't connect different data type. (Example: KeyCode::A | ModifierFlag::SHIFT_L) (%@)", params);
+          // Don't connect different data type. (Example: KeyCode::A | ModifierFlag::SHIFT_L)
+          @throw [NSException exceptionWithName : @"ConfigXMLParser" reason :[NSString stringWithFormat:@"invalid connect(|): %@", params] userInfo : nil];
         }
 
         datatype = newdatatype;
@@ -439,28 +446,48 @@
 - (void) load {
   simultaneous_keycode_index_ = 0;
 
-  if (array_initialize_vector_) {
-    [array_initialize_vector_ release];
-    array_initialize_vector_ = nil;
-  }
+  [self clear];
+  // Don't use autorelease for array_initialize_vector_
   array_initialize_vector_ = [[NSMutableArray alloc] initWithCapacity:0];
 
   KeyCode* keycode = [[KeyCode new] autorelease];
 
   NSArray* paths = [NSArray arrayWithObjects:
+                    [self get_private_xml_path],
                     @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml",
                     @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/number.xml",
-                    [self get_private_xml_path], nil];
+                    nil];
 
-  for (NSString* xmlpath in paths) {
-    if (! paths) continue;
+  NSMutableDictionary* xmldocdict = [[[NSMutableDictionary alloc] initWithCapacity:0] autorelease];
 
-    NSURL* url = [NSURL fileURLWithPath:xmlpath];
-    NSXMLDocument* xmldocument = [[[NSXMLDocument alloc] initWithContentsOfURL:url options:0 error:NULL] autorelease];
+  @try {
+    for (NSString* xmlpath in paths) {
+      if (! paths) continue;
 
-    [self append_to_keycode:keycode element:[xmldocument rootElement]];
-    [self traverse_sysctl:keycode element:[xmldocument rootElement]];
+      NSURL* url = [NSURL fileURLWithPath:xmlpath];
+      NSXMLDocument* xmldocument = [[[NSXMLDocument alloc] initWithContentsOfURL:url options:0 error:NULL] autorelease];
+      [xmldocdict setObject:xmldocument forKey:xmlpath];
+
+      [self append_to_keycode:keycode element:[xmldocument rootElement]];
+    }
+
+    for (NSString* xmlpath in paths) {
+      NSXMLDocument* xmldocument = [xmldocdict objectForKey:xmlpath];
+      if (xmldocument) {
+        [self traverse_sysctl:keycode element:[xmldocument rootElement]];
+      }
+    }
+
+  } @catch (NSException* exception) {
+    NSLog(@"[ERROR] KeyRemap4MacBook_server %@ %@", [exception name], [exception reason]);
+    [self clear];
   }
+}
+
+- (NSUInteger) count
+{
+  if (! array_initialize_vector_) return 0;
+  return [array_initialize_vector_ count];
 }
 
 @end
