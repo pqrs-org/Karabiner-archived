@@ -62,6 +62,14 @@ KeyRemap4MacBook_server::Server::dispatchOperator(int sock)
   if (read(sock, &operation, sizeof(operation)) < 0) goto error;
 
   switch (operation) {
+    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::REQUEST_GET_CONFIG_COUNT:
+    {
+      org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetConfigCount::Reply reply;
+      org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error error = do_GetConfigCount(reply);
+      sendReply(sock, &reply, sizeof(reply), error);
+      break;
+    }
+
     case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::REQUEST_GET_WORKSPACE_DATA:
     {
       org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::Reply reply;
@@ -152,6 +160,13 @@ KeyRemap4MacBook_server::Server::makeSocket(void)
 }
 
 // --------------------------------------------------
+org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error
+KeyRemap4MacBook_server::Server::do_GetConfigCount(org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetConfigCount::Reply& reply)
+{
+  reply.count = getConfigCount();
+  return org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS;
+}
+
 org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error
 KeyRemap4MacBook_server::Server::do_GetWorkspaceData(org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& reply)
 {

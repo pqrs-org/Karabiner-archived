@@ -12,11 +12,21 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     enum RequestType {
       REQUEST_NONE,
+      REQUEST_GET_CONFIG_COUNT,
       REQUEST_GET_WORKSPACE_DATA,
       REQUEST_CHANGE_INPUTMODE,
       REQUEST_STATUS_MESSAGE,
       REQUEST_STATUS_MESSAGE_WINDOW_PARAMETER,
     };
+
+    namespace GetConfigCount {
+      // none
+      struct Request {};
+
+      struct Reply {
+        uint32_t count;
+      };
+    }
 
     namespace GetWorkspaceData {
       // none
