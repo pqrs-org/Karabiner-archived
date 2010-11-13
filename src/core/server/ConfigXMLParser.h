@@ -7,5 +7,6 @@
 }
 
 - (void) load;
+- (NSUInteger) count;
 
 @end

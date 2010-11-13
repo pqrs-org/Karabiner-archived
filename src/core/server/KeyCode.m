@@ -40,12 +40,14 @@
     return number;
   }
 
-  NSLog(@"[ERROR] KeyRemap4MacBook_server unknown KeyCode name:%@", name);
-  return [NSNumber numberWithUnsignedInt:0];
+  @throw [NSException exceptionWithName : @"KeyCode" reason :[NSString stringWithFormat:@"Unknown keycode: %@", name] userInfo : nil];
 }
 
 - (void) append:(NSString*)name newvalue:(unsigned int)newvalue
 {
+  if ([dict_ objectForKey:name]) {
+    @throw [NSException exceptionWithName : @"KeyCode" reason :[NSString stringWithFormat:@"Repetition addition: %@", name] userInfo : nil];
+  }
   [dict_ setObject:[NSNumber numberWithUnsignedInt:newvalue] forKey:name];
 }
 
