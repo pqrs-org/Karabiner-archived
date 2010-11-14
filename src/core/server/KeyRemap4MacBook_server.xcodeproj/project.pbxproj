@@ -24,6 +24,7 @@
 		34B893FE128E448C00BC955A /* KeyCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B893FA128E448C00BC955A /* KeyCode.m */; };
 		34B893FF128E448C00BC955A /* WorkSpaceData.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B893FC128E448C00BC955A /* WorkSpaceData.m */; };
 		34FB9592128F985A0088B235 /* PreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FB9591128F985A0088B235 /* PreferencesManager.m */; };
+		34FB9595128FCC030088B235 /* include.bridge_essential_config_index.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34FB9594128FCC030088B235 /* include.bridge_essential_config_index.plist */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -69,6 +70,7 @@
 		34EE6DD710C218CE00D20676 /* Mutex.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Mutex.hpp; sourceTree = "<group>"; };
 		34FB9590128F98510088B235 /* PreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesManager.h; path = Classes/PreferencesManager.h; sourceTree = "<group>"; };
 		34FB9591128F985A0088B235 /* PreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesManager.m; path = Classes/PreferencesManager.m; sourceTree = "<group>"; };
+		34FB9594128FCC030088B235 /* include.bridge_essential_config_index.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = include.bridge_essential_config_index.plist; path = ../bridge/config/output/include.bridge_essential_config_index.plist; sourceTree = SOURCE_ROOT; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* KeyRemap4MacBook_server.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyRemap4MacBook_server.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -168,6 +170,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				34FB9594128FCC030088B235 /* include.bridge_essential_config_index.plist */,
 				349B509E12837E64009108FE /* include.keycode.plist */,
 				34A06A4A11F8792E0085749B /* icon.statusbar.0.tif */,
 				34A06A4B11F8792E0085749B /* icon.statusbar.1.tif */,
@@ -247,6 +250,7 @@
 				34A06A4C11F8792E0085749B /* icon.statusbar.0.tif in Resources */,
 				34A06A4D11F8792E0085749B /* icon.statusbar.1.tif in Resources */,
 				349B509F12837E64009108FE /* include.keycode.plist in Resources */,
+				34FB9595128FCC030088B235 /* include.bridge_essential_config_index.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
