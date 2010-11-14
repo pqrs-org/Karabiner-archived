@@ -7,10 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "PreferencesClient.h"
 #import "Sparkle/SUUpdater.h"
 
 @interface KeyRemap4MacBookAppDelegate : NSObject <NSApplicationDelegate> {
   NSWindow* window;
+  IBOutlet PreferencesClient* preferencesclient_;
   IBOutlet SUUpdater* _suupdater;
 }
 
