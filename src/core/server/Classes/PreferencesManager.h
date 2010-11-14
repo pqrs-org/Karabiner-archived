@@ -10,5 +10,6 @@
 }
 
 - (int) value:(NSString*)name;
+- (NSArray*) essential_config;
 
 @end

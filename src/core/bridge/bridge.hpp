@@ -2,6 +2,7 @@
 #define BRIDGE_HPP
 
 #include <string.h>
+#include "bridge.h"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace KeyRemap4MacBook_bridge {
@@ -12,6 +13,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     enum RequestType {
       REQUEST_NONE,
+      REQUEST_GET_ESSENTIAL_CONFIG,
       REQUEST_GET_CONFIG_COUNT,
       REQUEST_GET_CONFIG_INFO,
       REQUEST_GET_CONFIG_INITIALIZE_VECTOR,
@@ -20,6 +22,15 @@ namespace org_pqrs_KeyRemap4MacBook {
       REQUEST_STATUS_MESSAGE,
       REQUEST_STATUS_MESSAGE_WINDOW_PARAMETER,
     };
+
+    namespace GetEssentialConfig {
+      // none
+      struct Request {};
+
+      struct Reply {
+        int32_t value[BRIDGE_ESSENTIAL_CONFIG_INDEX__END__];
+      };
+    }
 
     namespace GetConfigCount {
       // none
@@ -31,9 +42,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     namespace GetConfigInfo {
+      // none
       struct Request {
-        Request(uint32_t c) : count(c) {}
-        uint32_t count;
       };
 
       struct Reply {
