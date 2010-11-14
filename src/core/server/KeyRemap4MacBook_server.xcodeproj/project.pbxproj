@@ -18,7 +18,6 @@
 		34A06A4911F8791F0085749B /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 34A06A4811F8791F0085749B /* background.png */; };
 		34A06A4C11F8792E0085749B /* icon.statusbar.0.tif in Resources */ = {isa = PBXBuildFile; fileRef = 34A06A4A11F8792E0085749B /* icon.statusbar.0.tif */; };
 		34A06A4D11F8792E0085749B /* icon.statusbar.1.tif in Resources */ = {isa = PBXBuildFile; fileRef = 34A06A4B11F8792E0085749B /* icon.statusbar.1.tif */; };
-		34A06A5D11F87B1F0085749B /* ConfigControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A06A5A11F87B1F0085749B /* ConfigControl.m */; };
 		34A06A6211F87B520085749B /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A06A6111F87B520085749B /* Common.m */; };
 		34B893FD128E448C00BC955A /* ConfigXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B893F8128E448C00BC955A /* ConfigXMLParser.m */; };
 		34B893FE128E448C00BC955A /* KeyCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B893FA128E448C00BC955A /* KeyCode.m */; };
@@ -57,8 +56,6 @@
 		34A06A4A11F8792E0085749B /* icon.statusbar.0.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon.statusbar.0.tif; path = Resources/icon.statusbar.0.tif; sourceTree = "<group>"; };
 		34A06A4B11F8792E0085749B /* icon.statusbar.1.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon.statusbar.1.tif; path = Resources/icon.statusbar.1.tif; sourceTree = "<group>"; };
 		34A06A5811F87B1F0085749B /* bundleprefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bundleprefix.h; sourceTree = "<group>"; };
-		34A06A5911F87B1F0085749B /* ConfigControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigControl.h; sourceTree = "<group>"; };
-		34A06A5A11F87B1F0085749B /* ConfigControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigControl.m; sourceTree = "<group>"; };
 		34A06A6011F87B520085749B /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = ../../util/prefpane/sharecode/Common.h; sourceTree = SOURCE_ROOT; };
 		34A06A6111F87B520085749B /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Common.m; path = ../../util/prefpane/sharecode/Common.m; sourceTree = SOURCE_ROOT; };
 		34B893F7128E448C00BC955A /* ConfigXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfigXMLParser.h; path = Classes/ConfigXMLParser.h; sourceTree = "<group>"; };
@@ -104,8 +101,6 @@
 				34A06A5F11F87B3C0085749B /* sharecode */,
 				34597768128DBFAE003398BD /* bridge.h */,
 				34A06A5811F87B1F0085749B /* bundleprefix.h */,
-				34A06A5911F87B1F0085749B /* ConfigControl.h */,
-				34A06A5A11F87B1F0085749B /* ConfigControl.m */,
 				34EE6DD710C218CE00D20676 /* Mutex.hpp */,
 				34018E4010A02C2B00653322 /* bridge.hpp */,
 				348A6B8F10A0214B00AC93FE /* server_objc_part.h */,
@@ -266,7 +261,6 @@
 				345683B6109F2DD900125F91 /* server.cpp in Sources */,
 				345683B7109F2DD900125F91 /* util.cpp in Sources */,
 				348A6B9110A0214B00AC93FE /* server_objc_part.m in Sources */,
-				34A06A5D11F87B1F0085749B /* ConfigControl.m in Sources */,
 				34A06A6211F87B520085749B /* Common.m in Sources */,
 				34B893FD128E448C00BC955A /* ConfigXMLParser.m in Sources */,
 				34B893FE128E448C00BC955A /* KeyCode.m in Sources */,
