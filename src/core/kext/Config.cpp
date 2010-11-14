@@ -220,7 +220,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       KeyRemap4MacBook_bridge::GetEssentialConfig::Reply reply;
       int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_ESSENTIAL_CONFIG, NULL, 0, &reply, sizeof(reply));
       if (error) {
-        IOLOG_ERROR("do_reload_xml GetEssentialConfig sendmsg failed(%d)\n", error);
+        IOLOG_ERROR("do_reload_xml GetEssentialConfig sendmsg failed. (%d)\n", error);
         goto finish;
       }
       for (size_t i = 0; i < sizeof(reply.value) / sizeof(reply.value[0]); ++i) {
@@ -234,14 +234,14 @@ namespace org_pqrs_KeyRemap4MacBook {
       KeyRemap4MacBook_bridge::GetConfigCount::Reply reply;
       int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_CONFIG_COUNT, NULL, 0, &reply, sizeof(reply));
       if (error) {
-        IOLOG_ERROR("do_reload_xml GetConfigCount sendmsg failed(%d)\n", error);
+        IOLOG_ERROR("do_reload_xml GetConfigCount sendmsg failed. (%d)\n", error);
         goto finish;
       }
       count = reply.count;
     }
 
     if (count > RemapClass::MAX_CONFIG_COUNT) {
-      IOLOG_ERROR("do_reload_xml too many config count(%d)\n", count);
+      IOLOG_ERROR("do_reload_xml too many config count. (%d)\n", count);
       goto finish;
     }
 
@@ -249,7 +249,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // get configinfo
     configinfo = new KeyRemap4MacBook_bridge::GetConfigInfo::Reply::Item[count];
     if (! configinfo) {
-      IOLOG_ERROR("do_reload_xml allocation failed\n");
+      IOLOG_ERROR("do_reload_xml allocation failed.\n");
       goto finish;
     }
 
@@ -259,20 +259,38 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                    NULL, 0,
                                                    reply, static_cast<uint32_t>(sizeof(configinfo[0]) * count));
       if (error) {
-        IOLOG_ERROR("do_reload_xml GetConfigInfo sendmsg failed(%d)\n", error);
+        IOLOG_ERROR("do_reload_xml GetConfigInfo sendmsg failed. (%d)\n", error);
         goto finish;
       }
     }
 
-    IOLOG_INFO("count = %d\n", count);
-    if (count > 0) {
-      IOLOG_INFO("configinfo[1].initialize_vector_size = %d\n", configinfo[0].initialize_vector_size);
-      IOLOG_INFO("configinfo[1].enabled = %d\n", configinfo[0].enabled);
-    }
-
+    // ------------------------------------------------------------
     if (Config::reload_only_config) goto finish;
 
+    // ------------------------------------------------------------
     // get initialize_vector
+    for (uint32_t i = 0; i < count; ++i) {
+      uint32_t size = configinfo[i].initialize_vector_size;
+      uint32_t* initialize_vector = NULL;
+
+      if (size > RemapClass::MAX_INITIALIZE_VECTOR_SIZE) {
+        IOLOG_ERROR("do_reload_xml too large initialize_vector. (%d)\n", size);
+        goto finish;
+      }
+
+      initialize_vector = new uint32_t[size];
+      {
+        KeyRemap4MacBook_bridge::GetConfigInitializeVector::Request request(i);
+        KeyRemap4MacBook_bridge::GetConfigInitializeVector::Reply* reply = reinterpret_cast<KeyRemap4MacBook_bridge::GetConfigInitializeVector::Reply*>(initialize_vector);
+        int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_CONFIG_INITIALIZE_VECTOR,
+                                                     &request, sizeof(request),
+                                                     reply, static_cast<uint32_t>(sizeof(initialize_vector[0]) * size));
+        if (! error) {
+          IOLOG_INFO("%d %d", i, size);
+        }
+      }
+      delete[] initialize_vector;
+    }
 
   finish:
     if (configinfo) {
