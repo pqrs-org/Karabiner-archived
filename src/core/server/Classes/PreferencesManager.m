@@ -39,16 +39,7 @@
   }
   value_ = [[NSMutableDictionary alloc] initWithCapacity:0];
 
-  NSArray* configList = [self configlist_getConfigList];
-  if (! configList) return;
-
-  NSUInteger selectedIndex = (NSUInteger)[self configlist_selectedIndex];
-  if (selectedIndex >= [configList count]) return;
-
-  NSDictionary* configListItem = [configList objectAtIndex:selectedIndex];
-  if (! configListItem) return;
-
-  NSString* identifier = [configListItem objectForKey:@"identify"];
+  NSString* identifier = [self configlist_selectedIdentifier];
   if (! identifier) return;
 
   NSDictionary* dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
@@ -107,7 +98,18 @@
 }
 
 - (void) setValue:(int)newval forKey:(NSString*)name
-{}
+{
+  NSString* identifier = [self configlist_selectedIdentifier];
+  if (! identifier) return;
+
+  NSDictionary* dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
+  if (! dict) return;
+
+  NSMutableDictionary* md = [NSMutableDictionary dictionaryWithDictionary:dict];
+  [md setObject:[NSNumber numberWithInt:newval] forKey:name];
+
+  NSLog(@"%@", md);
+}
 
 - (NSArray*) essential_config
 {
@@ -133,6 +135,11 @@
   return [self configlist_name:[self configlist_selectedIndex]];
 }
 
+- (NSString*) configlist_selectedIdentifier
+{
+  return [self configlist_identifier:[self configlist_selectedIndex]];
+}
+
 - (NSArray*) configlist_getConfigList
 {
   return [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"];
@@ -145,17 +152,28 @@
   return [a count];
 }
 
-- (NSString*) configlist_name:(NSInteger)rowIndex
+- (NSDictionary*) configlist_dictionary:(NSInteger)rowIndex
 {
   NSArray* list = [self configlist_getConfigList];
   if (! list) return nil;
 
   if (rowIndex < 0 || (NSUInteger)(rowIndex) >= [list count]) return nil;
 
-  NSDictionary* dict = [list objectAtIndex:rowIndex];
-  if (! dict) return nil;
+  return [list objectAtIndex:rowIndex];
+}
 
+- (NSString*) configlist_name:(NSInteger)rowIndex
+{
+  NSDictionary* dict = [self configlist_dictionary:rowIndex];
+  if (! dict) return nil;
   return [dict objectForKey:@"name"];
+}
+
+- (NSString*) configlist_identifier:(NSInteger)rowIndex
+{
+  NSDictionary* dict = [self configlist_dictionary:rowIndex];
+  if (! dict) return nil;
+  return [dict objectForKey:@"identify"];
 }
 
 - (void) configlist_select:(NSInteger)newindex
