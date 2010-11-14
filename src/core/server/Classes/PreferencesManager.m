@@ -45,7 +45,7 @@
     NSArray* configList = [userdefaults arrayForKey:@"configList"];
     if (! configList) return;
 
-    NSUInteger selectedIndex = (NSUInteger)[userdefaults integerForKey:@"selectedIndex"];
+    NSUInteger selectedIndex = (NSUInteger)[userdefaults integerForKey : @"selectedIndex"];
     if (selectedIndex >= [configList count]) return;
 
     NSDictionary* configListItem = [configList objectAtIndex:selectedIndex];
