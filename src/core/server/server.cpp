@@ -82,11 +82,10 @@ KeyRemap4MacBook_server::Server::dispatchOperator(int sock)
 
     case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::REQUEST_GET_WORKSPACE_DATA:
     {
-      org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::Reply reply;
-      org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error error = do_GetWorkspaceData(reply);
-      sendReply(sock, &reply, sizeof(reply), error);
+      if (! do_GetWorkspaceData(sock)) goto error;
       break;
     }
+
     case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::REQUEST_CHANGE_INPUTMODE:
     {
       uint32_t size;
@@ -180,7 +179,7 @@ KeyRemap4MacBook_server::Server::do_GetEssentialConfig(int sock)
   int error = getEssentialConfig(reply.value, sizeof(reply.value));
   if (error) return false;
 
-  sendReply(sock, &reply, sizeof(reply), 0);
+  sendReply(sock, &reply, sizeof(reply), org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS);
   return true;
 }
 
@@ -191,7 +190,7 @@ KeyRemap4MacBook_server::Server::do_GetConfigCount(int sock)
 
   reply.count = getConfigCount();
 
-  sendReply(sock, &reply, sizeof(reply), 0);
+  sendReply(sock, &reply, sizeof(reply), org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS);
   return true;
 }
 
@@ -209,7 +208,7 @@ KeyRemap4MacBook_server::Server::do_GetConfigInfo(int sock)
     items[configindex].enabled = getConfigValue(configindex);
   }
 
-  sendReply(sock, items, sizeof(items[0]) * count, 0);
+  sendReply(sock, items, sizeof(items[0]) * count, org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS);
   retval = true;
 
 finish:
@@ -219,9 +218,11 @@ finish:
   return retval;
 }
 
-org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error
-KeyRemap4MacBook_server::Server::do_GetWorkspaceData(org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& reply)
+bool
+KeyRemap4MacBook_server::Server::do_GetWorkspaceData(int sock)
 {
+  org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::Reply reply;
+
   {
     Mutex::ScopedLock lk(mutex_currentApplicationType);
     reply.type = currentApplicationType;
@@ -232,8 +233,8 @@ KeyRemap4MacBook_server::Server::do_GetWorkspaceData(org_pqrs_KeyRemap4MacBook::
     reply.inputmodedetail = currentInputModeDetail;
   }
 
-  // ----------------------------------------------------------------------
-  return org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS;
+  sendReply(sock, &reply, sizeof(reply), org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS);
+  return true;
 }
 
 org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error
