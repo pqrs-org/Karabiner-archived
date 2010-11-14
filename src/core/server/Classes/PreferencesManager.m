@@ -69,6 +69,8 @@
   [self setDefault];
   [self loadSelectedDictionary];
 
+  essential_config_index_ = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"include.bridge_essential_config_index" ofType:@"plist"]];
+
   return self;
 }
 
