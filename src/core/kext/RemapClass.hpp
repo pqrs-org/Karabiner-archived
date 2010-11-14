@@ -108,6 +108,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapClassManager {
     void initialize(IOWorkLoop& workloop);
     void terminate(void);
+
+    void reload_xml(void);
+
+    // call after setting enable/disable status is changed.
+    // (PreferencesPane, VK_CONFIG)
     void refresh(void);
 
     void remap_setkeyboardtype(KeyboardType& keyboardType);
