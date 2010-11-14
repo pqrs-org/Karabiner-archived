@@ -70,9 +70,7 @@ KeyRemap4MacBook_server::Server::dispatchOperator(int sock)
 
     case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::REQUEST_GET_CONFIG_COUNT:
     {
-      org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetConfigCount::Reply reply;
-      org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error error = do_GetConfigCount(reply);
-      sendReply(sock, &reply, sizeof(reply), error);
+      if (! do_GetConfigCount(sock)) goto error;
       break;
     }
 
@@ -186,11 +184,15 @@ KeyRemap4MacBook_server::Server::do_GetEssentialConfig(int sock)
   return true;
 }
 
-org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error
-KeyRemap4MacBook_server::Server::do_GetConfigCount(org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetConfigCount::Reply& reply)
+bool
+KeyRemap4MacBook_server::Server::do_GetConfigCount(int sock)
 {
+  org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetConfigCount::Reply reply;
+
   reply.count = getConfigCount();
-  return org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS;
+
+  sendReply(sock, &reply, sizeof(reply), 0);
+  return true;
 }
 
 bool

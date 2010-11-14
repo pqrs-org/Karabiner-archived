@@ -26,6 +26,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     enum {
       MAX_CONFIG_COUNT = 10000,
+      MAX_INITIALIZE_VECTOR_SIZE = 1024 * 1024, // 1MB
       MAX_ALLOCATION_COUNT = 8 * 1024 * 1024, // 8MB
     };
 

@@ -56,6 +56,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     namespace GetConfigInitializeVector {
       struct Request {
+        Request(uint32_t c) : configindex(c) {}
         uint32_t configindex;
       };
 
