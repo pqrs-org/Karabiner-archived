@@ -1,4 +1,5 @@
 #import "PreferencesManager.h"
+#include <sys/time.h>
 
 @implementation PreferencesManager
 
@@ -176,7 +177,6 @@
   NSUserDefaults* userdefaults = [NSUserDefaults standardUserDefaults];
 
   [userdefaults setInteger:newindex forKey:@"selectedIndex"];
-  [userdefaults synchronize];
   [self loadSelectedDictionary];
 
   [[NSNotificationCenter defaultCenter] postNotificationName:@"PreferencesChanged" object:nil];
@@ -194,10 +194,34 @@
   if (! d) return;
 
   NSMutableDictionary* md = [NSMutableDictionary dictionaryWithDictionary:d];
+  if (! md) return;
   [md setObject:name forKey:@"name"];
 
   NSMutableArray* ma = [NSMutableArray arrayWithArray:a];
+  if (! ma) return;
   [ma replaceObjectAtIndex:rowIndex withObject:md];
+
+  [[NSUserDefaults standardUserDefaults] setObject:ma forKey:@"configList"];
+
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"PreferencesChanged" object:nil];
+}
+
+- (void) configlist_append
+{
+  NSArray* a = [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"];
+  if (! a) return;
+  NSMutableArray* ma = [NSMutableArray arrayWithArray:a];
+  if (! ma) return;
+
+  struct timeval tm;
+  gettimeofday(&tm, NULL);
+  NSString* identifier = [NSString stringWithFormat:@"config_%d_%d", tm.tv_sec, tm.tv_usec];
+
+  NSMutableDictionary* md = [NSMutableDictionary dictionaryWithCapacity:0];
+  [md setObject:@"newItem" forKey:@"name"];
+  [md setObject:identifier forKey:@"identify"];
+
+  [ma addObject:md];
 
   [[NSUserDefaults standardUserDefaults] setObject:ma forKey:@"configList"];
 
