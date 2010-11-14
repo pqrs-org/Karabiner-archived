@@ -6,7 +6,6 @@
 
 @implementation KeyRemap4MacBookPref
 
-static NSString* sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_ctl";
 static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook/extra/launchUninstaller.sh";
 
 /* ---------------------------------------------------------------------- */
@@ -67,17 +66,12 @@ static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
 /* ---------------------------------------------------------------------- */
 - (void) setCheckUpdateState
 {
-  NSString* result = [BUNDLEPREFIX (Common) getExecResult:sysctl_ctl args:[NSArray arrayWithObjects:@"checkupdate", nil]];
-  if (! result) return;
-
-  [_popup_checkupdate selectItemAtIndex:[result intValue]];
+  [_popup_checkupdate selectItemAtIndex:[[preferencesclient_ proxy] checkForUpdatesMode]];
 }
 
 - (IBAction) changeCheckUpdate:(id)sender
 {
-  NSString* selectedIndex = [[[NSString alloc] initWithFormat:@"%d", [_popup_checkupdate indexOfSelectedItem]] autorelease];
-
-  [BUNDLEPREFIX (Common) getExecResult:sysctl_ctl args:[NSArray arrayWithObjects:@"set_checkupdate", selectedIndex, nil]];
+  [[preferencesclient_ proxy] setCheckForUpdatesMode:[_popup_checkupdate indexOfSelectedItem]];
   [self setCheckUpdateState];
 }
 
