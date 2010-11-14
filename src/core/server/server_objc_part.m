@@ -15,6 +15,14 @@
   return [configxmlparser_ initialize_vector_size:configindex];
 }
 
+- (int) getConfigValue:(unsigned int)configindex
+{
+  NSString* name = [configxmlparser_ configname:configindex];
+  if (! name) return 0;
+
+  return [preferencesmanager_ value:name];
+}
+
 - (NSString*) getActiveApplicationName
 {
   // ----------------------------------------
@@ -317,6 +325,16 @@ getConfigInitializeVectorSize(uint32_t configindex)
 {
   if (serverobjcpart) {
     return (uint32_t)([serverobjcpart getConfigInitializeVectorSize:configindex]);
+  } else {
+    return 0;
+  }
+}
+
+int
+getConfigValue(uint32_t configindex)
+{
+  if (serverobjcpart) {
+    return (uint32_t)([serverobjcpart getConfigValue:configindex]);
   } else {
     return 0;
   }

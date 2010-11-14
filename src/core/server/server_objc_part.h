@@ -13,6 +13,7 @@ typedef enum {
 
 #import <Cocoa/Cocoa.h>
 #import "ConfigXMLParser.h"
+#import "PreferencesManager.h"
 
 @interface ServerObjcPart : NSObject {
   NSWindow* statuswindow_;
@@ -23,10 +24,12 @@ typedef enum {
   NSString* statusmessage_extra_;
 
   IBOutlet ConfigXMLParser* configxmlparser_;
+  IBOutlet PreferencesManager* preferencesmanager_;
 }
 
 - (NSUInteger) getConfigCount;
 - (NSUInteger) getConfigInitializeVectorSize:(unsigned int)configindex;
+- (int) getConfigValue:(unsigned int)configindex;
 
 - (NSString*) getActiveApplicationName;
 - (NSString*) getTISPropertyInputModeID;
@@ -48,6 +51,7 @@ extern "C" {
 
 uint32_t getConfigCount(void);
 uint32_t getConfigInitializeVectorSize(uint32_t configindex);
+int getConfigValue(uint32_t configindex);
 
 void selectInputSource_english(void);
 void selectInputSource_french(void);
