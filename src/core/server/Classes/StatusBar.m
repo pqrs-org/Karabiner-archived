@@ -7,7 +7,7 @@
 
 - (void) refresh
 {
-  if (! [ConfigControl isStatusbarEnable]) {
+  if (! [preferencesmanager_ isStatusbarEnable]) {
     if (statusItem_) {
       [[NSStatusBar systemStatusBar] removeStatusItem:statusItem_];
       [statusItem_ release];
