@@ -262,4 +262,26 @@
   return value ? YES : NO;
 }
 
+- (void) toggleStatusbarEnable
+{
+  if ([self isStatusbarEnable]) {
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isStatusbarEnable"];
+  } else {
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isStatusbarEnable"];
+  }
+
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"PreferencesChanged" object:nil];
+}
+
+- (void) toggleShowSettingNameInStatusBar
+{
+  if ([self isShowSettingNameInStatusBar]) {
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isShowSettingNameInStatusBar"];
+  } else {
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isShowSettingNameInStatusBar"];
+  }
+
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"PreferencesChanged" object:nil];
+}
+
 @end
