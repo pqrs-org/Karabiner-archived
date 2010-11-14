@@ -129,6 +129,26 @@
   return [[NSUserDefaults standardUserDefaults] integerForKey:@"selectedIndex"];
 }
 
+- (NSString*) selectedName
+{
+  NSString* name = nil;
+
+  @synchronized(self) {
+    NSInteger selected = [self selectedIndex];
+    NSArray* list = [self getConfigList];
+    if (list) {
+      if (0 <= selected && (NSUInteger)(selected) < [list count]) {
+        NSDictionary* dict = [list objectAtIndex:selected];
+        if (dict) {
+          name = [dict objectForKey:@"name"];
+        }
+      }
+    }
+  }
+
+  return name;
+}
+
 - (NSArray*) getConfigList
 {
   return [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"];
@@ -140,6 +160,7 @@
   if (newindex == [self selectedIndex]) return;
 
   NSArray* list = [self getConfigList];
+  if (! list) return;
   if ((NSUInteger)(newindex) >= [list count]) return;
 
   NSUserDefaults* userdefaults = [NSUserDefaults standardUserDefaults];
@@ -151,10 +172,17 @@
 
 - (BOOL) isStatusbarEnable
 {
+  // If the key does not exist, treat as YES.
   id object = [[NSUserDefaults standardUserDefaults] objectForKey:@"isStatusbarEnable"];
   if (! object) return YES;
 
   NSInteger value = [[NSUserDefaults standardUserDefaults] integerForKey:@"isStatusbarEnable"];
+  return value ? YES : NO;
+}
+
+- (BOOL) isShowSettingNameInStatusBar
+{
+  NSInteger value = [[NSUserDefaults standardUserDefaults] integerForKey:@"isShowSettingNameInStatusBar"];
   return value ? YES : NO;
 }
 

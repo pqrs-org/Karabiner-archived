@@ -29,24 +29,16 @@
     }
 
     // setTitle
-    if (! [ConfigControl isShowSettingNameInStatusBar]) {
+    if (! [preferencesmanager_ isShowSettingNameInStatusBar]) {
       [statusItem_ setTitle:@""];
       [statusItem_ setLength:24];
 
     } else {
-      NSArray* list = [ConfigControl getConfigList];
-      for (id name in list) {
-        if ([name length] == 0) continue;
-
-        NSString* selected = [name substringToIndex:1];
-        NSString* title = [name substringFromIndex:1];
-
-        if ([selected isEqualToString:@"+"]) {
-          NSAttributedString* attributedtitle = [[[NSAttributedString alloc] initWithString:title attributes:nil] autorelease];
-          [statusItem_ setAttributedTitle:attributedtitle];
-          [statusItem_ setLength:(24 + [attributedtitle size].width)];
-          break;
-        }
+      NSString* title = [preferencesmanager_ selectedName];
+      if (title) {
+        NSAttributedString* attributedtitle = [[[NSAttributedString alloc] initWithString:title attributes:nil] autorelease];
+        [statusItem_ setAttributedTitle:attributedtitle];
+        [statusItem_ setLength:(24 + [attributedtitle size].width)];
       }
     }
   }
