@@ -1,9 +1,9 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 #import <Cocoa/Cocoa.h>
-#import "KeyCode.h"
+#import "ConfigXMLParser.h"
 
 @interface WorkSpaceData : NSObject {
-  IBOutlet KeyCode* keycode_;
+  IBOutlet ConfigXMLParser* configxmlparser_;
 }
 
 - (unsigned int) getApplicationType:(NSString*)name;
