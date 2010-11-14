@@ -1,5 +1,4 @@
 #import "PreferencesManager.h"
-#import "KeyCode.h"
 
 @implementation PreferencesManager
 
