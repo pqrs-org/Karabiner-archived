@@ -5,6 +5,7 @@
 @interface PreferencesManager : NSObject {
   NSMutableDictionary* default_;
   NSMutableDictionary* value_;
+  NSArray* essential_config_index_;
   IBOutlet ConfigXMLParser* configxmlparser_;
 }
 
