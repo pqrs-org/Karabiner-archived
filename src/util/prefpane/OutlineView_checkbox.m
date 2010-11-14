@@ -1,14 +1,11 @@
 /* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
 #import "OutlineView_checkbox.h"
-#import "SysctlWrapper.h"
 #import "XMLTreeWrapper.h"
 
 @implementation org_pqrs_KeyRemap4MacBook_OutlineView_checkbox
 
 static BUNDLEPREFIX(XMLTreeWrapper) * _xmlTreeWrapper;
-static NSString* sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set";
-static NSString* sysctl_ctl = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_ctl";
 static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml";
 
 - (id) init
@@ -38,9 +35,8 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
   NSXMLNode* sysctl = [_xmlTreeWrapper getNode:node xpath:@"sysctl"];
 
   if (sysctl) {
-    NSString* entry = [NSString stringWithFormat:@"keyremap4macbook.%@", [sysctl stringValue]];
-    NSNumber* value = [BUNDLEPREFIX (SysctlWrapper) getInt:entry];
-    if ([value boolValue]) return TRUE;
+    int value = [[preferencesclient_ proxy] value:[sysctl stringValue]];
+    if (value) return TRUE;
   }
 
   return FALSE;
@@ -205,8 +201,7 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
 
   } else {
     [cell setImagePosition:NSImageLeft];
-    NSString* entry = [NSString stringWithFormat:@"keyremap4macbook.%@", sysctl];
-    return [BUNDLEPREFIX (SysctlWrapper) getInt:entry];
+    return [NSNumber numberWithInt:[[preferencesclient_ proxy] value:sysctl]];
   }
 
   return nil;
@@ -238,11 +233,9 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
   if (sysctl) {
     NSString* name = [sysctl stringValue];
     if (! [name hasPrefix:@"notsave."]) {
-      NSString* entry = [NSString stringWithFormat:@"keyremap4macbook.%@", name];
-
-      NSNumber* value = [BUNDLEPREFIX (SysctlWrapper) getInt:entry];
-      NSNumber* new = [[[NSNumber alloc] initWithBool:! [value boolValue]] autorelease];
-      [BUNDLEPREFIX (SysctlWrapper) setSysctlInt:@"keyremap4macbook" name:name value:new sysctl_set:sysctl_set sysctl_ctl:sysctl_ctl];
+      int value = [[preferencesclient_ proxy] value:name];
+      value = ! value;
+      [[preferencesclient_ proxy] setValueForName:value forName:name];
     }
   } else {
     // expand/collapse tree
