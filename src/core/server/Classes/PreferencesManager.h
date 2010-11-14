@@ -15,9 +15,11 @@
 - (NSArray*) essential_config;
 
 - (NSInteger) selectedIndex;
+- (NSString*) selectedName;
 - (NSArray*) getConfigList;
 - (void) select:(NSInteger)newindex;
 
 - (BOOL) isStatusbarEnable;
+- (BOOL) isShowSettingNameInStatusBar;
 
 @end
