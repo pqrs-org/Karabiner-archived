@@ -423,9 +423,9 @@
 
 - (void) load {
   NSArray* paths = [NSArray arrayWithObjects:
-                              [self get_private_xml_path],
-                            @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml",
-                            nil];
+                    [self get_private_xml_path],
+                    @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml",
+                    nil];
 
   NSMutableDictionary* xmldocdict = [[[NSMutableDictionary alloc] initWithCapacity:0] autorelease];
 

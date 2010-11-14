@@ -43,8 +43,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     namespace GetConfigInfo {
       // none
-      struct Request {
-      };
+      struct Request {};
 
       struct Reply {
         struct Item {
