@@ -6,16 +6,20 @@
 
 - (NSInteger) selectedIndex;
 - (NSArray*) getConfigList;
+- (NSUInteger) count;
+- (NSString*) name:(NSInteger)rowIndex;
 - (void) select:(NSInteger)newindex;
 
 - (BOOL) isStatusbarEnable;
 - (BOOL) isShowSettingNameInStatusBar;
+
+- (void) setName:(NSInteger)rowIndex name:(NSString*)name;
 @end
 
 @interface PreferencesClient : NSObject {
-  NSDistantObject* proxy;
+  id proxy;
 }
 
-@property (assign) NSDistantObject* proxy;
+@property (assign) id proxy;
 
 @end

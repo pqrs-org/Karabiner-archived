@@ -14,12 +14,17 @@
 - (int) value:(NSString*)name;
 - (NSArray*) essential_config;
 
+// --------------------------------------------------
 - (NSInteger) selectedIndex;
 - (NSString*) selectedName;
 - (NSArray*) getConfigList;
+- (NSUInteger) count;
+- (NSString*) name:(NSInteger)rowIndex;
 - (void) select:(NSInteger)newindex;
 
 - (BOOL) isStatusbarEnable;
 - (BOOL) isShowSettingNameInStatusBar;
+
+- (void) setName:(NSInteger)rowIndex name:(NSString*)name;
 
 @end
