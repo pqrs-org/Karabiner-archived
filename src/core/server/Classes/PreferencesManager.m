@@ -34,29 +34,27 @@
 // ----------------------------------------
 - (void) loadSelectedDictionary
 {
-  @synchronized(self) {
-    if (value_) {
-      [value_ release];
-    }
-    value_ = [[NSMutableDictionary alloc] initWithCapacity:0];
-
-    NSArray* configList = [self configlist_getConfigList];
-    if (! configList) return;
-
-    NSUInteger selectedIndex = (NSUInteger)[self configlist_selectedIndex];
-    if (selectedIndex >= [configList count]) return;
-
-    NSDictionary* configListItem = [configList objectAtIndex:selectedIndex];
-    if (! configListItem) return;
-
-    NSString* identifier = [configListItem objectForKey:@"identify"];
-    if (! identifier) return;
-
-    NSDictionary* dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
-    if (! dict) return;
-
-    [value_ addEntriesFromDictionary:dict];
+  if (value_) {
+    [value_ release];
   }
+  value_ = [[NSMutableDictionary alloc] initWithCapacity:0];
+
+  NSArray* configList = [self configlist_getConfigList];
+  if (! configList) return;
+
+  NSUInteger selectedIndex = (NSUInteger)[self configlist_selectedIndex];
+  if (selectedIndex >= [configList count]) return;
+
+  NSDictionary* configListItem = [configList objectAtIndex:selectedIndex];
+  if (! configListItem) return;
+
+  NSString* identifier = [configListItem objectForKey:@"identify"];
+  if (! identifier) return;
+
+  NSDictionary* dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
+  if (! dict) return;
+
+  [value_ addEntriesFromDictionary:dict];
 }
 
 - (id) init
@@ -96,30 +94,31 @@
 // ----------------------------------------------------------------------
 - (int) value:(NSString*)name
 {
-  int v = 0;
-  @synchronized(self) {
-    NSNumber* number = [value_ objectForKey:name];
-    if (! number) {
-      number = [default_ objectForKey:name];
-    }
-
-    if (number) {
-      v = [number intValue];
-    }
+  NSNumber* number = [value_ objectForKey:name];
+  if (! number) {
+    number = [default_ objectForKey:name];
   }
-  return v;
+
+  if (number) {
+    return [number intValue];
+  } else {
+    return 0;
+  }
 }
+
+- (void) setValue:(int)newval forKey:(NSString*)name
+{}
 
 - (NSArray*) essential_config
 {
   NSMutableArray* a = [[[NSMutableArray alloc] initWithCapacity:0] autorelease];
-  @synchronized(self) {
-    if (essential_config_index_) {
-      for (NSString* name in essential_config_index_) {
-        [a addObject:[NSNumber numberWithInt:[self value:name]]];
-      }
+
+  if (essential_config_index_) {
+    for (NSString* name in essential_config_index_) {
+      [a addObject:[NSNumber numberWithInt:[self value:name]]];
     }
   }
+
   return a;
 }
 
@@ -148,21 +147,15 @@
 
 - (NSString*) configlist_name:(NSInteger)rowIndex
 {
-  NSString* name = nil;
+  NSArray* list = [self configlist_getConfigList];
+  if (! list) return nil;
 
-  @synchronized(self) {
-    NSArray* list = [self configlist_getConfigList];
-    if (list) {
-      if (0 <= rowIndex && (NSUInteger)(rowIndex) < [list count]) {
-        NSDictionary* dict = [list objectAtIndex:rowIndex];
-        if (dict) {
-          name = [dict objectForKey:@"name"];
-        }
-      }
-    }
-  }
+  if (rowIndex < 0 || (NSUInteger)(rowIndex) >= [list count]) return nil;
 
-  return name;
+  NSDictionary* dict = [list objectAtIndex:rowIndex];
+  if (! dict) return nil;
+
+  return [dict objectForKey:@"name"];
 }
 
 - (void) configlist_select:(NSInteger)newindex
@@ -175,7 +168,6 @@
   if ((NSUInteger)(newindex) >= [list count]) return;
 
   NSUserDefaults* userdefaults = [NSUserDefaults standardUserDefaults];
-
   [userdefaults setInteger:newindex forKey:@"selectedIndex"];
   [self loadSelectedDictionary];
 
@@ -234,7 +226,7 @@
   if (! a) return;
 
   if (rowIndex < 0 || (NSUInteger)(rowIndex) >= [a count]) return;
-  if ([a count] <= 1) return;
+  if (rowIndex == [self configlist_selectedIndex]) return;
 
   NSMutableArray* ma = [NSMutableArray arrayWithArray:a];
   if (! ma) return;

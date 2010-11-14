@@ -12,6 +12,8 @@
 }
 
 - (int) value:(NSString*)name;
+- (void) setValue:(int)newval forKey:(NSString*)name;
+
 - (NSArray*) essential_config;
 
 // --------------------------------------------------
