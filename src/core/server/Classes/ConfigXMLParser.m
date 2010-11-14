@@ -504,6 +504,14 @@
   return [a count];
 }
 
+- (NSArray*) initialize_vector:(unsigned int)configindex
+{
+  if (! initialized_) return nil;
+  if (configindex >= [array_initialize_vector_ count]) return nil;
+
+  return [array_initialize_vector_ objectAtIndex:configindex];
+}
+
 - (unsigned int) keycode:(NSString*)name
 {
   if (! initialized_) return 0;

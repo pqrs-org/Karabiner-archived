@@ -12,6 +12,7 @@
 
 - (NSUInteger) count;
 - (NSUInteger) initialize_vector_size:(unsigned int)configindex;
+- (NSArray*) initialize_vector:(unsigned int)configindex;
 - (unsigned int) keycode:(NSString*)name;
 - (NSString*) configname:(unsigned int)configindex;
 
