@@ -7,26 +7,13 @@
 //
 
 #import "KeyRemap4MacBookAppDelegate.h"
-#import "Common.h"
 
 @implementation KeyRemap4MacBookAppDelegate
 
 @synthesize window;
 
-- (NSString*) execSysctl:(NSArray*)args
-{
-  NSString* path = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_ctl";
-  return [BUNDLEPREFIX (Common) getExecResult:path args:args];
-}
-
-- (int) getCheckUpdate
-{
-  NSString* result = [self execSysctl:[NSArray arrayWithObjects:@"checkupdate", nil]];
-  return [result intValue];
-}
-
 - (void) checkUpdate:(NSNotification*)notification {
-  int checkupdate = [self getCheckUpdate];
+  NSInteger checkupdate = [[preferencesclient_ proxy] checkForUpdatesMode];
 
   // ----------------------------------------
   // check nothing.
