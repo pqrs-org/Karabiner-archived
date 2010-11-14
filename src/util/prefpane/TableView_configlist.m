@@ -8,17 +8,17 @@
 // ======================================================================
 - (NSInteger) numberOfRowsInTableView:(NSTableView*)aTableView
 {
-  return (NSInteger)([[preferencesclient_ proxy] count]);
+  return (NSInteger)([[preferencesclient_ proxy] configlist_count]);
 }
 
 - (id) tableView:(NSTableView*)aTableView objectValueForTableColumn:(NSTableColumn*)aTableColumn row:(NSInteger)rowIndex
 {
-  return [[preferencesclient_ proxy] name:rowIndex];
+  return [[preferencesclient_ proxy] configlist_name:rowIndex];
 }
 
 - (void) tableView:(NSTableView*)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn*)aTableColumn row:(NSInteger)rowIndex
 {
-  [[preferencesclient_ proxy] setName:rowIndex name:anObject];
+  [[preferencesclient_ proxy] configlist_setName:rowIndex name:anObject];
   [view_ reloadData];
 }
 

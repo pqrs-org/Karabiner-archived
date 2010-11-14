@@ -33,7 +33,7 @@
       [statusItem_ setLength:24];
 
     } else {
-      NSString* title = [preferencesmanager_ selectedName];
+      NSString* title = [preferencesmanager_ configlist_selectedName];
       if (title) {
         NSAttributedString* attributedtitle = [[[NSAttributedString alloc] initWithString:title attributes:nil] autorelease];
         [statusItem_ setAttributedTitle:attributedtitle];
@@ -46,7 +46,7 @@
 - (void) statusBarItemSelected:(id)sender
 {
   NSNumber* idx = [sender representedObject];
-  [preferencesmanager_ select:[idx intValue]];
+  [preferencesmanager_ configlist_select:[idx intValue]];
   [self refresh];
 }
 
@@ -63,9 +63,9 @@
 
   // --------------------
   // append
-  NSArray* list = [preferencesmanager_ getConfigList];
+  NSArray* list = [preferencesmanager_ configlist_getConfigList];
   int i = 0;
-  NSInteger selectedIndex = [preferencesmanager_ selectedIndex];
+  NSInteger selectedIndex = [preferencesmanager_ configlist_selectedIndex];
   for (NSDictionary* dict in list) {
     if (! dict) continue;
 

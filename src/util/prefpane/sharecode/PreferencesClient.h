@@ -4,16 +4,16 @@
 @protocol KeyRemap4MacBookPreferencesManagerProtocol
 - (int) value:(NSString*)name;
 
-- (NSInteger) selectedIndex;
-- (NSArray*) getConfigList;
-- (NSUInteger) count;
-- (NSString*) name:(NSInteger)rowIndex;
-- (void) select:(NSInteger)newindex;
+- (NSInteger)  configlist_selectedIndex;
+- (NSString*)  configlist_selectedName;
+- (NSArray*)   configlist_getConfigList;
+- (NSUInteger) configlist_count;
+- (NSString*)  configlist_name:(NSInteger)rowIndex;
+- (void)       configlist_select:(NSInteger)newindex;
+- (void)       configlist_setName:(NSInteger)rowIndex name:(NSString*)name;
 
 - (BOOL) isStatusbarEnable;
 - (BOOL) isShowSettingNameInStatusBar;
-
-- (void) setName:(NSInteger)rowIndex name:(NSString*)name;
 @end
 
 @interface PreferencesClient : NSObject {
