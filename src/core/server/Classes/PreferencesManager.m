@@ -97,15 +97,20 @@
 
   NSMutableDictionary* md = [NSMutableDictionary dictionaryWithDictionary:dict];
 
-  NSNumber* defaultvalue = [default_ objectForKey:name];
-  if (defaultvalue && [defaultvalue intValue] == newval) {
+  int defaultvalue = 0;
+  NSNumber* defaultnumber = [default_ objectForKey:name];
+  if (defaultnumber) {
+    defaultvalue = [defaultnumber intValue];
+  }
+
+  if (newval == defaultvalue) {
     [md removeObjectForKey:name];
   } else {
     [md setObject:[NSNumber numberWithInt:newval] forKey:name];
   }
 
   [[NSUserDefaults standardUserDefaults] setObject:md forKey:identifier];
-  [[NSUserDefaults standardUserDefaults] synchronize];
+  //[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (NSArray*) essential_config
