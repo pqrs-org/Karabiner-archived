@@ -6,10 +6,11 @@
   unsigned int simultaneous_keycode_index_;
   NSMutableArray* array_initialize_vector_;
   KeyCode* keycode_;
+  BOOL initialized_;
 }
 
-- (void) load;
 - (NSUInteger) count;
 - (NSUInteger) initialize_vector_size:(unsigned int)configindex;
+- (unsigned int) keycode:(NSString*)name;
 
 @end

@@ -3,35 +3,6 @@
 
 @implementation ConfigXMLParser
 
-- (id) init
-{
-  [super init];
-
-  array_initialize_vector_ = nil;
-  keycode_ = [KeyCode new];
-
-  return self;
-}
-
-- (void) clear
-{
-  if (array_initialize_vector_) {
-    [array_initialize_vector_ release];
-    array_initialize_vector_ = nil;
-  }
-}
-
-- (void) dealloc
-{
-  [self clear];
-
-  if (keycode_) {
-    [keycode_ release];
-  }
-
-  [super dealloc];
-}
-
 // ======================================================================
 // filter
 
@@ -447,76 +418,91 @@
   return nil;
 }
 
+
 - (void) load {
-  @synchronized(self) {
-    simultaneous_keycode_index_ = 0;
+  NSArray* paths = [NSArray arrayWithObjects:
+                              [self get_private_xml_path],
+                            @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml",
+                            @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/number.xml",
+                            nil];
 
-    [self clear];
-    // Don't use autorelease for array_initialize_vector_
-    array_initialize_vector_ = [[NSMutableArray alloc] initWithCapacity:0];
+  NSMutableDictionary* xmldocdict = [[[NSMutableDictionary alloc] initWithCapacity:0] autorelease];
 
-    [keycode_ reload];
+  @try {
+    for (NSString* xmlpath in paths) {
+      if (! paths) continue;
 
-    NSArray* paths = [NSArray arrayWithObjects:
-                      [self get_private_xml_path],
-                      @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml",
-                      @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/number.xml",
-                      nil];
-
-    NSMutableDictionary* xmldocdict = [[[NSMutableDictionary alloc] initWithCapacity:0] autorelease];
-
-    @try {
-      for (NSString* xmlpath in paths) {
-        if (! paths) continue;
-
-        NSURL* url = [NSURL fileURLWithPath:xmlpath];
-        NSXMLDocument* xmldocument = [[[NSXMLDocument alloc] initWithContentsOfURL:url options:0 error:NULL] autorelease];
-        if (xmldocument) {
-          [xmldocdict setObject:xmldocument forKey:xmlpath];
-        }
-
-        [self append_to_keycode:[xmldocument rootElement]];
+      NSURL* url = [NSURL fileURLWithPath:xmlpath];
+      NSXMLDocument* xmldocument = [[[NSXMLDocument alloc] initWithContentsOfURL:url options:0 error:NULL] autorelease];
+      if (xmldocument) {
+        [xmldocdict setObject:xmldocument forKey:xmlpath];
       }
 
-      for (NSString* xmlpath in paths) {
-        NSXMLDocument* xmldocument = [xmldocdict objectForKey:xmlpath];
-        if (xmldocument) {
-          [self traverse_sysctl:[xmldocument rootElement]];
-        }
-      }
-
-    } @catch (NSException* exception) {
-      NSLog(@"[ERROR] KeyRemap4MacBook_server %@ %@", [exception name], [exception reason]);
-      [self clear];
+      [self append_to_keycode:[xmldocument rootElement]];
     }
+
+    for (NSString* xmlpath in paths) {
+      NSXMLDocument* xmldocument = [xmldocdict objectForKey:xmlpath];
+      if (xmldocument) {
+        [self traverse_sysctl:[xmldocument rootElement]];
+      }
+    }
+
+    initialized_ = YES;
+
+  } @catch (NSException* exception) {
+    NSLog(@"[ERROR] KeyRemap4MacBook_server %@ %@", [exception name], [exception reason]);
   }
 }
 
+- (id) init
+{
+  [super init];
+
+  simultaneous_keycode_index_ = 0;
+  array_initialize_vector_ = [[NSMutableArray alloc] initWithCapacity:0];
+  keycode_ = [KeyCode new];
+  initialized_ = NO;
+
+  [self load];
+
+  return self;
+}
+
+- (void) dealloc
+{
+  if (array_initialize_vector_) {
+    [array_initialize_vector_ release];
+  }
+  if (keycode_) {
+    [keycode_ release];
+  }
+
+  [super dealloc];
+}
+
+// ------------------------------------------------------------
 - (NSUInteger) count
 {
-  NSUInteger count = 0;
-  @synchronized(self) {
-    if (array_initialize_vector_) {
-      count = [array_initialize_vector_ count];
-    }
-  }
-  return count;
+  if (! initialized_) return 0;
+  return [array_initialize_vector_ count];
 }
 
 - (NSUInteger) initialize_vector_size:(unsigned int)configindex
 {
-  NSUInteger size = 0;
-  @synchronized(self) {
-    if (array_initialize_vector_) {
-      if (configindex < [array_initialize_vector_ count]) {
-        NSArray* a = [array_initialize_vector_ objectAtIndex:configindex];
-        if (a) {
-          size = [a count];
-        }
-      }
-    }
-  }
-  return size;
+  if (! initialized_) return 0;
+  if (configindex >= [array_initialize_vector_ count]) return 0;
+
+  NSArray* a = [array_initialize_vector_ objectAtIndex:configindex];
+  if (! a) return 0;
+
+  return [a count];
+}
+
+- (unsigned int) keycode:(NSString*)name
+{
+  if (! initialized_) return 0;
+  return [keycode_ unsignedIntValue:name];
 }
 
 @end
