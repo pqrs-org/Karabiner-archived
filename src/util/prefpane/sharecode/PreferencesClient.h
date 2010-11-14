@@ -12,6 +12,7 @@
 - (void)       configlist_select:(NSInteger)newindex;
 - (void)       configlist_setName:(NSInteger)rowIndex name:(NSString*)name;
 - (void)       configlist_append;
+- (void)       configlist_delete:(NSInteger)rowIndex;
 
 - (BOOL) isStatusbarEnable;
 - (BOOL) isShowSettingNameInStatusBar;

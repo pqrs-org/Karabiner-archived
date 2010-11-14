@@ -228,6 +228,24 @@
   [[NSNotificationCenter defaultCenter] postNotificationName:@"PreferencesChanged" object:nil];
 }
 
+- (void) configlist_delete:(NSInteger)rowIndex
+{
+  NSArray* a = [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"];
+  if (! a) return;
+
+  if (rowIndex < 0 || (NSUInteger)(rowIndex) >= [a count]) return;
+  if ([a count] <= 1) return;
+
+  NSMutableArray* ma = [NSMutableArray arrayWithArray:a];
+  if (! ma) return;
+
+  [ma removeObjectAtIndex:(NSUInteger)(rowIndex)];
+
+  [[NSUserDefaults standardUserDefaults] setObject:ma forKey:@"configList"];
+
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"PreferencesChanged" object:nil];
+}
+
 - (BOOL) isStatusbarEnable
 {
   // If the key does not exist, treat as YES.
