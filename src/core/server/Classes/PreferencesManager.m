@@ -35,17 +35,15 @@
 - (void) loadSelectedDictionary
 {
   @synchronized(self) {
-    NSUserDefaults* userdefaults = [NSUserDefaults standardUserDefaults];
-
     if (value_) {
       [value_ release];
     }
     value_ = [[NSMutableDictionary alloc] initWithCapacity:0];
 
-    NSArray* configList = [userdefaults arrayForKey:@"configList"];
+    NSArray* configList = [self getConfigList];
     if (! configList) return;
 
-    NSUInteger selectedIndex = (NSUInteger)[userdefaults integerForKey : @"selectedIndex"];
+    NSUInteger selectedIndex = (NSUInteger)[self selectedIndex];
     if (selectedIndex >= [configList count]) return;
 
     NSDictionary* configListItem = [configList objectAtIndex:selectedIndex];
@@ -54,7 +52,7 @@
     NSString* identifier = [configListItem objectForKey:@"identify"];
     if (! identifier) return;
 
-    NSDictionary* dict = [userdefaults dictionaryForKey:identifier];
+    NSDictionary* dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
     if (! dict) return;
 
     [value_ addEntriesFromDictionary:dict];
@@ -71,6 +69,10 @@
 
   essential_config_index_ = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"include.bridge_essential_config_index" ofType:@"plist"]];
 
+  serverconnection_ = [NSConnection new];
+  [serverconnection_ setRootObject:self];
+  [serverconnection_ registerName:@"org.pqrs.KeyRemap4MacBook"];
+
   return self;
 }
 
@@ -84,6 +86,9 @@
   }
   if (essential_config_index_) {
     [essential_config_index_ release];
+  }
+  if (serverconnection_) {
+    [serverconnection_ release];
   }
   [super dealloc];
 }
@@ -116,6 +121,32 @@
     }
   }
   return a;
+}
+
+// ----------------------------------------------------------------------
+- (NSInteger) selectedIndex
+{
+  return [[NSUserDefaults standardUserDefaults] integerForKey:@"selectedIndex"];
+}
+
+- (NSArray*) getConfigList
+{
+  return [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"];
+}
+
+- (void) select:(NSInteger)newindex
+{
+  if (newindex < 0) return;
+  if (newindex == [self selectedIndex]) return;
+
+  NSArray* list = [self getConfigList];
+  if ((NSUInteger)(newindex) >= [list count]) return;
+
+  NSUserDefaults* userdefaults = [NSUserDefaults standardUserDefaults];
+
+  [userdefaults setInteger:newindex forKey:@"selectedIndex"];
+  [userdefaults synchronize];
+  [self loadSelectedDictionary];
 }
 
 @end
