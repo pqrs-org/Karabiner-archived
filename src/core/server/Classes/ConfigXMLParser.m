@@ -369,7 +369,8 @@
     if (attr_essential) continue;
 
     NSMutableArray* initialize_vector = [NSMutableArray arrayWithCapacity:0];
-    NSString* name = [KeyCode normalizeName:[e stringValue]];
+    NSString* rawname = [e stringValue];
+    NSString* name = [KeyCode normalizeName:rawname];
 
     if ([e attributeForName:@"vk_config"]) {
       [initialize_vector addObject:[NSNumber numberWithUnsignedInt:5]];
@@ -386,6 +387,7 @@
     [initialize_vector insertObject:[NSNumber numberWithUnsignedInt:BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION] atIndex:0];
 
     [array_initialize_vector_ addObject:initialize_vector];
+    [array_config_name_ addObject:rawname];
   }
 
   for (NSXMLElement* e in [element elementsForName : @"list"]) {
@@ -460,6 +462,7 @@
 
   simultaneous_keycode_index_ = 0;
   array_initialize_vector_ = [[NSMutableArray alloc] initWithCapacity:0];
+  array_config_name_ = [[NSMutableArray alloc] initWithCapacity:0];
   keycode_ = [KeyCode new];
   initialized_ = NO;
 
@@ -472,6 +475,9 @@
 {
   if (array_initialize_vector_) {
     [array_initialize_vector_ release];
+  }
+  if (array_config_name_) {
+    [array_config_name_ release];
   }
   if (keycode_) {
     [keycode_ release];

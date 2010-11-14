@@ -3,6 +3,7 @@
 
 @implementation PreferencesManager
 
+// ----------------------------------------
 - (void) addToDefault:(NSXMLElement*)element
 {
   for (NSXMLElement* e in [element elementsForName : @"sysctl"]) {
@@ -30,12 +31,43 @@
   }
 }
 
+// ----------------------------------------
+- (void) loadSelectedDictionary
+{
+  @synchronized(self) {
+    NSUserDefaults* userdefaults = [NSUserDefaults standardUserDefaults];
+
+    if (value_) {
+      [value_ release];
+    }
+    value_ = [[NSMutableDictionary alloc] initWithCapacity:0];
+
+    NSArray* configList = [userdefaults arrayForKey:@"configList"];
+    if (! configList) return;
+
+    NSUInteger selectedIndex = (NSUInteger)[userdefaults integerForKey:@"selectedIndex"];
+    if (selectedIndex >= [configList count]) return;
+
+    NSDictionary* configListItem = [configList objectAtIndex:selectedIndex];
+    if (! configListItem) return;
+
+    NSString* identifier = [configListItem objectForKey:@"identify"];
+    if (! identifier) return;
+
+    NSDictionary* dict = [userdefaults dictionaryForKey:identifier];
+    if (! dict) return;
+
+    [value_ addEntriesFromDictionary:dict];
+  }
+}
+
 - (id) init
 {
   [super init];
 
   default_ = [[NSMutableDictionary alloc] initWithCapacity:0];
   [self setDefault];
+  [self loadSelectedDictionary];
 
   return self;
 }
@@ -45,14 +77,27 @@
   if (default_) {
     [default_ release];
   }
+  if (value_) {
+    [value_ release];
+  }
   [super dealloc];
 }
 
 // ----------------------------------------------------------------------
-- (unsigned int) value:(NSString*)name
+- (int) value:(NSString*)name
 {
-  [[NSUserDefaults standardUserDefaults] integerForKey:@"selectedIndex"];
-  return 0;
+  int v = 0;
+  @synchronized(self) {
+    NSNumber* number = [value_ objectForKey:name];
+    if (! number) {
+      number = [default_ objectForKey:name];
+    }
+
+    if (number) {
+      v = [number intValue];
+    }
+  }
+  return v;
 }
 
 @end
