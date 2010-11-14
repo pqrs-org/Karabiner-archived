@@ -30,6 +30,7 @@ typedef enum {
 - (NSArray*) getEssentialConfig;
 - (NSUInteger) getConfigCount;
 - (NSUInteger) getConfigInitializeVectorSize:(unsigned int)configindex;
+- (NSArray*) getConfigInitializeVector:(unsigned int)configindex;
 - (int) getConfigValue:(unsigned int)configindex;
 
 - (NSString*) getActiveApplicationName;
@@ -57,6 +58,11 @@ int getEssentialConfig(int32_t* value, size_t len);
 
 uint32_t getConfigCount(void);
 uint32_t getConfigInitializeVectorSize(uint32_t configindex);
+/**
+ * @return errorcode
+ */
+int getConfigInitializeVector(uint32_t* value, size_t len, uint32_t configindex);
+
 int getConfigValue(uint32_t configindex);
 
 void selectInputSource_english(void);

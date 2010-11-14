@@ -20,6 +20,11 @@
   return [configxmlparser_ initialize_vector_size:configindex];
 }
 
+- (NSArray*) getConfigInitializeVector:(unsigned int)configindex
+{
+  return [configxmlparser_ initialize_vector:configindex];
+}
+
 - (int) getConfigValue:(unsigned int)configindex
 {
   NSString* name = [configxmlparser_ configname:configindex];
@@ -352,6 +357,25 @@ getConfigInitializeVectorSize(uint32_t configindex)
   } else {
     return 0;
   }
+}
+
+int
+getConfigInitializeVector(uint32_t* value, size_t len, uint32_t configindex)
+{
+  if (! serverobjcpart) return 1;
+
+  NSArray* initialize_vector = [serverobjcpart getConfigInitializeVector:configindex];
+  if (! initialize_vector) return 1;
+
+  size_t i = 0;
+  for (NSNumber* number in initialize_vector) {
+    if (i < len) {
+      value[i] = [number unsignedIntValue];
+      ++i;
+    }
+  }
+
+  return 0;
 }
 
 int
