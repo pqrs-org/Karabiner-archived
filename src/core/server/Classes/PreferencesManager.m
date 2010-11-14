@@ -218,7 +218,7 @@
   NSString* identifier = [NSString stringWithFormat:@"config_%d_%d", tm.tv_sec, tm.tv_usec];
 
   NSMutableDictionary* md = [NSMutableDictionary dictionaryWithCapacity:0];
-  [md setObject:@"newItem" forKey:@"name"];
+  [md setObject:@"NewItem" forKey:@"name"];
   [md setObject:identifier forKey:@"identify"];
 
   [ma addObject:md];
