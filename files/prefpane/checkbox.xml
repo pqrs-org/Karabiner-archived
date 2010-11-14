@@ -5826,6 +5826,41 @@
           <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::P</autogen>
         </item>
         <item>
+          <name>Use ABCDEF Keyboard Layout</name>
+          <appendix>qwertyuiop &#8594; abcdefghij</appendix>
+          <appendix>asdfghjkl &#8594; klmnopqrs</appendix>
+          <appendix>zxcvbnm &#8594; tuvwxyz</appendix>
+          <sysctl>remap.qwerty2abcdef</sysctl>
+          <autogen>--KeyToKey-- KeyCode::Q, KeyCode::A</autogen>
+          <autogen>--KeyToKey-- KeyCode::W, KeyCode::B</autogen>
+          <autogen>--KeyToKey-- KeyCode::E, KeyCode::C</autogen>
+          <autogen>--KeyToKey-- KeyCode::R, KeyCode::D</autogen>
+          <autogen>--KeyToKey-- KeyCode::T, KeyCode::E</autogen>
+          <autogen>--KeyToKey-- KeyCode::Y, KeyCode::F</autogen>
+          <autogen>--KeyToKey-- KeyCode::U, KeyCode::G</autogen>
+          <autogen>--KeyToKey-- KeyCode::I, KeyCode::H</autogen>
+          <autogen>--KeyToKey-- KeyCode::O, KeyCode::I</autogen>
+          <autogen>--KeyToKey-- KeyCode::P, KeyCode::J</autogen>
+
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::K</autogen>
+          <autogen>--KeyToKey-- KeyCode::S, KeyCode::L</autogen>
+          <autogen>--KeyToKey-- KeyCode::D, KeyCode::M</autogen>
+          <autogen>--KeyToKey-- KeyCode::F, KeyCode::N</autogen>
+          <autogen>--KeyToKey-- KeyCode::G, KeyCode::O</autogen>
+          <autogen>--KeyToKey-- KeyCode::H, KeyCode::P</autogen>
+          <autogen>--KeyToKey-- KeyCode::J, KeyCode::Q</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, KeyCode::R</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, KeyCode::S</autogen>
+
+          <autogen>--KeyToKey-- KeyCode::Z, KeyCode::T</autogen>
+          <autogen>--KeyToKey-- KeyCode::X, KeyCode::U</autogen>
+          <autogen>--KeyToKey-- KeyCode::C, KeyCode::V</autogen>
+          <autogen>--KeyToKey-- KeyCode::V, KeyCode::W</autogen>
+          <autogen>--KeyToKey-- KeyCode::B, KeyCode::X</autogen>
+          <autogen>--KeyToKey-- KeyCode::N, KeyCode::Y</autogen>
+          <autogen>--KeyToKey-- KeyCode::M, KeyCode::Z</autogen>
+        </item>
+        <item>
           <name>Use US Keyboard Layout</name>
           <sysctl>remap.layout2us</sysctl>
           <autogen>--SetKeyboardType-- KeyboardType::MACBOOK</autogen>
