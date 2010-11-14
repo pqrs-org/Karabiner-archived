@@ -4,7 +4,6 @@
 
 @interface PreferencesManager : NSObject {
   NSMutableDictionary* default_;
-  NSMutableDictionary* value_;
   NSArray* essential_config_index_;
   NSConnection* serverconnection_;
 
@@ -12,7 +11,7 @@
 }
 
 - (int) value:(NSString*)name;
-- (void) setValue:(int)newval forKey:(NSString*)name;
+- (void) setValueForName:(int)newval forName:(NSString*)name;
 
 - (NSArray*) essential_config;
 

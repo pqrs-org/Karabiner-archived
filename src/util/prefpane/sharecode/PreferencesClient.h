@@ -3,16 +3,21 @@
 
 @protocol KeyRemap4MacBookPreferencesManagerProtocol
 - (int) value:(NSString*)name;
+- (void) setValueForName:(int)newval forName:(NSString*)name;
 
-- (NSInteger)  configlist_selectedIndex;
-- (NSString*)  configlist_selectedName;
-- (NSArray*)   configlist_getConfigList;
-- (NSUInteger) configlist_count;
-- (NSString*)  configlist_name:(NSInteger)rowIndex;
-- (void)       configlist_select:(NSInteger)newindex;
-- (void)       configlist_setName:(NSInteger)rowIndex name:(NSString*)name;
-- (void)       configlist_append;
-- (void)       configlist_delete:(NSInteger)rowIndex;
+// --------------------------------------------------
+- (NSInteger)     configlist_selectedIndex;
+- (NSString*)     configlist_selectedName;
+- (NSString*)     configlist_selectedIdentifier;
+- (NSArray*)      configlist_getConfigList;
+- (NSUInteger)    configlist_count;
+- (NSDictionary*) configlist_dictionary:(NSInteger)rowIndex;
+- (NSString*)     configlist_name:(NSInteger)rowIndex;
+- (NSString*)     configlist_identifier:(NSInteger)rowIndex;
+- (void)          configlist_select:(NSInteger)newindex;
+- (void)          configlist_setName:(NSInteger)rowIndex name:(NSString*)name;
+- (void)          configlist_append;
+- (void)          configlist_delete:(NSInteger)rowIndex;
 
 - (BOOL) isStatusbarEnable;
 - (BOOL) isShowSettingNameInStatusBar;
