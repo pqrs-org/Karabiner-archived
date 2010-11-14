@@ -1,7 +1,6 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
 #import "StatusBar.h"
-#import "ConfigControl.h"
 
 @implementation StatusBar
 
@@ -46,8 +45,9 @@
 
 - (void) statusBarItemSelected:(id)sender
 {
-  NSString* idx = [sender representedObject];
-  [ConfigControl select:idx];
+  NSNumber* idx = [sender representedObject];
+  [preferencesmanager_ select:[idx intValue]];
+  [self refresh];
 }
 
 - (void) menuNeedsUpdate:(NSMenu*)menu
@@ -63,18 +63,18 @@
 
   // --------------------
   // append
-  NSArray* list = [ConfigControl getConfigList];
+  NSArray* list = [preferencesmanager_ getConfigList];
   int i = 0;
-  for (id name in list) {
-    if ([name length] == 0) continue;
+  NSInteger selectedIndex = [preferencesmanager_ selectedIndex];
+  for (NSDictionary* dict in list) {
+    if (! dict) continue;
 
-    NSString* selected = [name substringToIndex:1];
-    NSString* title = [name substringFromIndex:1];
-
+    NSString* title = [dict objectForKey:@"name"];
     NSMenuItem* newItem = [[[NSMenuItem alloc] initWithTitle:title action:@selector(statusBarItemSelected:) keyEquivalent:@""] autorelease];
-    NSString* idx = [[[NSString alloc] initWithFormat:@"%d", i] autorelease];
-    [newItem setRepresentedObject:idx];
-    if ([selected isEqualToString:@"+"]) {
+
+    [newItem setRepresentedObject:[NSNumber numberWithInt:i]];
+
+    if (selectedIndex == i) {
       [newItem setState:NSOnState];
     } else {
       [newItem setState:NSOffState];

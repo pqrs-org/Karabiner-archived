@@ -57,10 +57,6 @@
   [statusbar_ statusBarItemSelected:sender];
 }
 
-- (void) refreshStatusBar:(NSNotification*)notification {
-  [statusbar_ refresh];
-}
-
 // ------------------------------------------------------------
 - (void) observer_NSWorkspaceDidActivateApplicationNotification:(NSNotification*)notification
 {
@@ -152,9 +148,6 @@
 
   // ------------------------------------------------------------
   [statusbar_ refresh];
-
-  NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.server";
-  [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshStatusBar:) name:@"refreshStatusBar" object:observedObject];
 
   // ------------------------------------------------------------
   // Kick updater
