@@ -58,6 +58,11 @@
 }
 
 // ------------------------------------------------------------
+- (void) observer_PreferencesChanged:(NSNotification*)notification {
+  [statusbar_ refresh];
+}
+
+// ------------------------------------------------------------
 - (void) observer_NSWorkspaceDidActivateApplicationNotification:(NSNotification*)notification
 {
   NSString* name = [serverobjcpart_ getActiveApplicationName];
@@ -148,6 +153,8 @@
 
   // ------------------------------------------------------------
   [statusbar_ refresh];
+
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_PreferencesChanged:) name:@"PreferencesChanged" object:nil];
 
   // ------------------------------------------------------------
   // Kick updater

@@ -178,6 +178,8 @@
   [userdefaults setInteger:newindex forKey:@"selectedIndex"];
   [userdefaults synchronize];
   [self loadSelectedDictionary];
+
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"PreferencesChanged" object:nil];
 }
 
 - (BOOL) isStatusbarEnable
@@ -198,6 +200,8 @@
 
 - (void) setName:(NSInteger)rowIndex name:(NSString*)name
 {
+  if ([name length] == 0) return;
+
   NSArray* a = [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"];
   if (! a) return;
   if (rowIndex < 0 || (NSUInteger)(rowIndex) >= [a count]) return;
@@ -212,6 +216,8 @@
   [ma replaceObjectAtIndex:rowIndex withObject:md];
 
   [[NSUserDefaults standardUserDefaults] setObject:ma forKey:@"configList"];
+
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"PreferencesChanged" object:nil];
 }
 
 @end
