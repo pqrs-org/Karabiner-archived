@@ -24,6 +24,7 @@ namespace KeyRemap4MacBook_server {
     bool do_GetEssentialConfig(int sock);
     bool do_GetConfigCount(int sock);
     bool do_GetConfigInfo(int sock);
+    bool do_GetConfigInitializeVector(int sock);
     bool do_GetWorkspaceData(int sock);
     org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error do_ChangeInputMode(const org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::Request& request);
     org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error do_StatusMessage(const org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::StatusMessage::Request& request);
