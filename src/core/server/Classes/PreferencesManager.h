@@ -18,4 +18,6 @@
 - (NSArray*) getConfigList;
 - (void) select:(NSInteger)newindex;
 
+- (BOOL) isStatusbarEnable;
+
 @end
