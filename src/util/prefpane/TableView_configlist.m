@@ -25,7 +25,7 @@
 // ======================================================================
 - (IBAction) add:(id)sender
 {
-  [ConfigControl add];
+  [[preferencesclient_ proxy] configlist_append];
   [view_ reloadData];
 }
 
