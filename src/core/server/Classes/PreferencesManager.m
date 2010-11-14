@@ -304,6 +304,7 @@
 - (void) setCheckForUpdatesMode:(NSInteger)newval
 {
   [[NSUserDefaults standardUserDefaults] setInteger:newval forKey:@"isCheckUpdate"];
+  //[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end
