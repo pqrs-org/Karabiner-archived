@@ -62,6 +62,12 @@ KeyRemap4MacBook_server::Server::dispatchOperator(int sock)
   if (read(sock, &operation, sizeof(operation)) < 0) goto error;
 
   switch (operation) {
+    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::REQUEST_GET_ESSENTIAL_CONFIG:
+    {
+      if (! do_GetEssentialConfig(sock)) goto error;
+      break;
+    }
+
     case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::REQUEST_GET_CONFIG_COUNT:
     {
       org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetConfigCount::Reply reply;
@@ -168,6 +174,18 @@ KeyRemap4MacBook_server::Server::makeSocket(void)
 }
 
 // --------------------------------------------------
+bool
+KeyRemap4MacBook_server::Server::do_GetEssentialConfig(int sock)
+{
+  org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetEssentialConfig::Reply reply;
+
+  int error = getEssentialConfig(reply.value, sizeof(reply.value));
+  if (error) return false;
+
+  sendReply(sock, &reply, sizeof(reply), 0);
+  return true;
+}
+
 org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error
 KeyRemap4MacBook_server::Server::do_GetConfigCount(org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetConfigCount::Reply& reply)
 {
@@ -180,20 +198,8 @@ KeyRemap4MacBook_server::Server::do_GetConfigInfo(int sock)
 {
   bool retval = false;
   uint32_t count = getConfigCount();
-  org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetConfigInfo::Reply::Item* items = NULL;
 
-  {
-    uint32_t size;
-    if (read(sock, &size, sizeof(size)) < 0) goto finish;
-
-    org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetConfigInfo::Request request(0);
-    if (size != sizeof(request)) goto finish;
-    if (read(sock, &request, sizeof(request)) < 0) goto finish;
-
-    if (request.count != count) goto finish;
-  }
-
-  items = new org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetConfigInfo::Reply::Item[count];
+  org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetConfigInfo::Reply::Item* items = new org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetConfigInfo::Reply::Item[count];
   if (! items) goto finish;
 
   for (uint32_t configindex = 0; configindex < count; ++configindex) {

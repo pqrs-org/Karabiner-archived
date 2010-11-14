@@ -5,6 +5,11 @@
 
 @implementation ServerObjcPart
 
+- (NSArray*) getEssentialConfig
+{
+  return [preferencesmanager_ essential_config];
+}
+
 - (NSUInteger) getConfigCount
 {
   return [configxmlparser_ count];
@@ -310,6 +315,25 @@ void selectInputSource_russian_typographic(void) { selectInputSource_language(kI
 void selectInputSource_english_typographic(void) { selectInputSource_language(kInputSourceLanguage_english_Typographic); }
 
 // ------------------------------------------------------------
+int
+getEssentialConfig(int32_t* value, size_t len)
+{
+  if (! serverobjcpart) return 1;
+
+  NSArray* essential_config = [serverobjcpart getEssentialConfig];
+  if (! essential_config) return 1;
+
+  size_t i = 0;
+  for (NSNumber* number in essential_config) {
+    if (i < len) {
+      value[i] = [number intValue];
+      ++i;
+    }
+  }
+
+  return 0;
+}
+
 uint32_t
 getConfigCount(void)
 {

@@ -105,4 +105,17 @@
   return v;
 }
 
+- (NSArray*) essential_config
+{
+  NSMutableArray* a = [[[NSMutableArray alloc] initWithCapacity:0] autorelease];
+  @synchronized(self) {
+    if (essential_config_index_) {
+      for (NSString* name in essential_config_index_) {
+        [a addObject:[NSNumber numberWithInt:[self value:name]]];
+      }
+    }
+  }
+  return a;
+}
+
 @end

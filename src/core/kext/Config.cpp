@@ -14,6 +14,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   int Config::debug_devel = 0;
   int Config::initialized = 0;
   int Config::reload_xml = 0;
+  int Config::reload_only_config = 0;
   char Config::socket_path[SOCKET_PATH_MAX];
 
   int Config::essential_config[BRIDGE_ESSENTIAL_CONFIG_INDEX__END__] = {
@@ -28,6 +29,20 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       uint32_t count = 0;
       KeyRemap4MacBook_bridge::GetConfigInfo::Reply::Item* configinfo = NULL;
+
+      // ------------------------------------------------------------
+      // get essential_config
+      {
+        KeyRemap4MacBook_bridge::GetEssentialConfig::Reply reply;
+        int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_ESSENTIAL_CONFIG, NULL, 0, &reply, sizeof(reply));
+        if (error) {
+          IOLOG_ERROR("do_reload_xml GetEssentialConfig sendmsg failed(%d)\n", error);
+          goto finish;
+        }
+        for (size_t i = 0; i < sizeof(reply.value) / sizeof(reply.value[0]); ++i) {
+          IOLOG_INFO("%d %d\n", static_cast<int>(i), reply.value[i]);
+        }
+      }
 
       // ------------------------------------------------------------
       // get count
@@ -55,10 +70,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       {
-        KeyRemap4MacBook_bridge::GetConfigInfo::Request request(count);
         KeyRemap4MacBook_bridge::GetConfigInfo::Reply* reply = reinterpret_cast<KeyRemap4MacBook_bridge::GetConfigInfo::Reply*>(configinfo);
         int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_CONFIG_INFO,
-                                                     &request, sizeof(request),
+                                                     NULL, 0,
                                                      reply, static_cast<uint32_t>(sizeof(configinfo[0]) * count));
         if (error) {
           IOLOG_ERROR("do_reload_xml GetConfigInfo sendmsg failed(%d)\n", error);
@@ -71,6 +85,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         IOLOG_INFO("configinfo[1].initialize_vector_size = %d\n", configinfo[0].initialize_vector_size);
         IOLOG_INFO("configinfo[1].enabled = %d\n", configinfo[0].enabled);
       }
+
+      if (Config::reload_only_config) goto finish;
+
+      // get initialize_vector
 
     finish:
       if (configinfo) {
@@ -85,6 +103,18 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (Config::reload_xml) {
           do_reload_xml();
           Config::reload_xml = 0;
+        }
+      }
+      return error;
+    }
+
+    int reload_only_config_handler SYSCTL_HANDLER_ARGS
+    {
+      int error = sysctl_handle_int(oidp, oidp->oid_arg1, oidp->oid_arg2, req);
+      if (! error && req->newptr) {
+        if (Config::reload_only_config) {
+          do_reload_xml();
+          Config::reload_only_config = 0;
         }
       }
       return error;
@@ -181,7 +211,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   SYSCTL_STRING(_keyremap4macbook, OID_AUTO, version, CTLFLAG_RD, config_version, 0, "");
   SYSCTL_INT(_keyremap4macbook, OID_AUTO, initialized, CTLTYPE_INT | CTLFLAG_RW, &(Config::initialized), 0, "");
-  SYSCTL_PROC(_keyremap4macbook, OID_AUTO, reload_xml, CTLTYPE_INT | CTLFLAG_RW, &(Config::reload_xml), 0, reload_xml_handler, "I", "");
+  SYSCTL_PROC(_keyremap4macbook, OID_AUTO, reload_xml,         CTLTYPE_INT | CTLFLAG_RW, &(Config::reload_xml),         0, reload_xml_handler,         "I", "");
+  SYSCTL_PROC(_keyremap4macbook, OID_AUTO, reload_only_config, CTLTYPE_INT | CTLFLAG_RW, &(Config::reload_only_config), 0, reload_only_config_handler, "I", "");
 
   // ----------------------------------------------------------------------
   void
@@ -218,6 +249,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_register_oid(&sysctl__keyremap4macbook_version);
     sysctl_register_oid(&sysctl__keyremap4macbook_initialized);
     sysctl_register_oid(&sysctl__keyremap4macbook_reload_xml);
+    sysctl_register_oid(&sysctl__keyremap4macbook_reload_only_config);
   }
 
   void
@@ -244,5 +276,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_unregister_oid(&sysctl__keyremap4macbook_version);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_initialized);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_reload_xml);
+    sysctl_unregister_oid(&sysctl__keyremap4macbook_reload_only_config);
   }
 }

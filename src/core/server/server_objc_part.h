@@ -27,6 +27,7 @@ typedef enum {
   IBOutlet PreferencesManager* preferencesmanager_;
 }
 
+- (NSArray*) getEssentialConfig;
 - (NSUInteger) getConfigCount;
 - (NSUInteger) getConfigInitializeVectorSize:(unsigned int)configindex;
 - (int) getConfigValue:(unsigned int)configindex;
@@ -48,6 +49,11 @@ void registerStatusWindow(NSWindow* window, NSTextField* label);
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+/**
+ * @return errorcode
+ */
+int getEssentialConfig(int32_t* value, size_t len);
 
 uint32_t getConfigCount(void);
 uint32_t getConfigInitializeVectorSize(uint32_t configindex);
