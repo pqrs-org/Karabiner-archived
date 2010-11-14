@@ -10,7 +10,7 @@
     NSXMLNode* attr_default = [e attributeForName:@"default"];
     if (! attr_default) continue;
 
-    [default_ setObject:[NSNumber numberWithInt:[[attr_default stringValue] intValue]] forKey:[KeyCode normalizeName:[e stringValue]]];
+    [default_ setObject:[NSNumber numberWithInt:[[attr_default stringValue] intValue]] forKey:[e stringValue]];
   }
 
   for (NSXMLElement* e in [element elementsForName : @"list"]) {
