@@ -8,8 +8,8 @@
 {
   [super init];
 
-  dict_ = [[NSMutableDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"include.keycode" ofType:@"plist"]];
-  [dict_ setObject:[NSNumber numberWithUnsignedInt:0] forKey:@"ConfigIndex::VK__AUTOINDEX__BEGIN__"];
+  dict_ = nil;
+  [self reload];
 
   return self;
 }
@@ -20,6 +20,16 @@
     [dict_ release];
   }
   [super dealloc];
+}
+
+- (void) reload
+{
+  if (dict_) {
+    [dict_ release];
+  }
+
+  dict_ = [[NSMutableDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"include.keycode" ofType:@"plist"]];
+  [dict_ setObject:[NSNumber numberWithUnsignedInt:0] forKey:@"ConfigIndex::VK__AUTOINDEX__BEGIN__"];
 }
 
 - (NSDictionary*) dictionary

@@ -5,6 +5,8 @@
   NSMutableDictionary* dict_;
 }
 
+- (void) reload;
+
 // for debug
 - (NSDictionary*) dictionary;
 
