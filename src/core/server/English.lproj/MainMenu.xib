@@ -180,7 +180,7 @@
 					</object>
 				</object>
 			</object>
-			<object class="NSCustomObject" id="732812355">
+			<object class="NSCustomObject" id="824001862">
 				<string key="NSClassName">PreferencesManager</string>
 			</object>
 		</object>
@@ -302,10 +302,18 @@
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">configxmlparser_</string>
-						<reference key="source" ref="732812355"/>
+						<reference key="source" ref="824001862"/>
 						<reference key="destination" ref="247018677"/>
 					</object>
 					<int key="connectionID">575</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">preferencesmanager_</string>
+						<reference key="source" ref="915593295"/>
+						<reference key="destination" ref="824001862"/>
+					</object>
+					<int key="connectionID">576</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -440,7 +448,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">574</int>
-						<reference key="object" ref="732812355"/>
+						<reference key="object" ref="824001862"/>
 						<reference key="parent" ref="0"/>
 					</object>
 				</object>
@@ -514,7 +522,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">575</int>
+			<int key="maxID">576</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -625,14 +633,35 @@
 					<string key="className">ServerObjcPart</string>
 					<string key="superclassName">NSObject</string>
 					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">configxmlparser_</string>
-						<string key="NS.object.0">ConfigXMLParser</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>configxmlparser_</string>
+							<string>preferencesmanager_</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>ConfigXMLParser</string>
+							<string>PreferencesManager</string>
+						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">configxmlparser_</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">configxmlparser_</string>
-							<string key="candidateClassName">ConfigXMLParser</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>configxmlparser_</string>
+							<string>preferencesmanager_</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">configxmlparser_</string>
+								<string key="candidateClassName">ConfigXMLParser</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">preferencesmanager_</string>
+								<string key="candidateClassName">PreferencesManager</string>
+							</object>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">

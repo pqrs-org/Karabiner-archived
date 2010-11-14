@@ -198,8 +198,7 @@ KeyRemap4MacBook_server::Server::do_GetConfigInfo(int sock)
 
   for (uint32_t configindex = 0; configindex < count; ++configindex) {
     items[configindex].initialize_vector_size = getConfigInitializeVectorSize(configindex);
-    // XXX: fix me
-    items[configindex].enabled = 0;
+    items[configindex].enabled = getConfigValue(configindex);
   }
 
   sendReply(sock, items, sizeof(items[0]) * count, 0);

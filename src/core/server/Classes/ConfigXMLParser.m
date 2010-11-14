@@ -510,4 +510,11 @@
   return [keycode_ unsignedIntValue:name];
 }
 
+- (NSString*) configname:(unsigned int)configindex
+{
+  if (! initialized_) return nil;
+  if (configindex >= [array_config_name_ count]) return 0;
+  return [array_config_name_ objectAtIndex:configindex];
+}
+
 @end
