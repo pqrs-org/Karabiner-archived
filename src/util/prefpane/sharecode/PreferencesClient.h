@@ -16,6 +16,9 @@
 
 - (BOOL) isStatusbarEnable;
 - (BOOL) isShowSettingNameInStatusBar;
+- (void) toggleStatusbarEnable;
+- (void) toggleShowSettingNameInStatusBar;
+
 @end
 
 @interface PreferencesClient : NSObject {
