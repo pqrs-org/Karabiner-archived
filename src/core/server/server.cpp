@@ -80,6 +80,12 @@ KeyRemap4MacBook_server::Server::dispatchOperator(int sock)
       break;
     }
 
+    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::REQUEST_GET_CONFIG_INITIALIZE_VECTOR:
+    {
+      if (! do_GetConfigInitializeVector(sock)) goto error;
+      break;
+    }
+
     case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::REQUEST_GET_WORKSPACE_DATA:
     {
       if (! do_GetWorkspaceData(sock)) goto error;
@@ -214,6 +220,39 @@ KeyRemap4MacBook_server::Server::do_GetConfigInfo(int sock)
 finish:
   if (items) {
     delete[] items;
+  }
+  return retval;
+}
+
+bool
+KeyRemap4MacBook_server::Server::do_GetConfigInitializeVector(int sock)
+{
+  bool retval = false;
+  uint32_t* initialize_vector = NULL;
+  uint32_t initialize_vector_size = 0;
+  org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetConfigInitializeVector::Request request(0);
+  uint32_t size = 0;
+  int error = 0;
+
+  if (read(sock, &size, sizeof(size)) < 0) goto finish;
+
+  if (size != sizeof(request)) goto finish;
+  if (read(sock, &request, sizeof(request)) < 0) goto finish;
+
+  initialize_vector_size = getConfigInitializeVectorSize(request.configindex);
+  if (initialize_vector_size == 0) goto finish;
+
+  initialize_vector = new uint32_t[initialize_vector_size];
+
+  error = getConfigInitializeVector(initialize_vector, initialize_vector_size, request.configindex);
+  if (error) goto finish;
+
+  sendReply(sock, initialize_vector, sizeof(initialize_vector[0]) * initialize_vector_size, org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS);
+  retval = true;
+
+finish:
+  if (initialize_vector) {
+    delete[] initialize_vector;
   }
   return retval;
 }
