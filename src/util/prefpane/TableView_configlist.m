@@ -1,7 +1,6 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
 #import "TableView_configlist.h"
-#import "ConfigControl.h"
 
 @implementation TableView_configlist
 
@@ -34,7 +33,7 @@
   NSInteger idx = [view_ selectedRow];
   if (idx == -1) return;
 
-  [ConfigControl delete:idx];
+  [[preferencesclient_ proxy] configlist_delete:idx];
   [view_ reloadData];
 }
 
