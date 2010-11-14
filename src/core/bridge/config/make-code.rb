@@ -24,10 +24,8 @@ ARGV.each do |xmlpath|
 
   libxmldoc.root.find('//sysctl').each do |sysctl_node|
     if sysctl_node['essential'] == 'true' then
-      name = sysctl_node.inner_xml
-      sysctl_entry = name.split('.')[0]
-      sysctl_name  = name.split('.')[1]
-      name.gsub!(/\./, '_')
+      rawname = sysctl_node.inner_xml
+      name = rawname.gsub(/\./, '_')
 
       default_node = sysctl_node.parent.find_first('./default')
       if default_node.nil? then
@@ -37,7 +35,7 @@ ARGV.each do |xmlpath|
       end
 
       $outfile[:hpp].print "BRIDGE_ESSENTIAL_CONFIG_INDEX_#{name} = #{configindex},\n"
-      $outfile[:plist].print "    <string>#{name}</string>\n"
+      $outfile[:plist].print "    <string>#{rawname}</string>\n"
       configindex += 1
     end
   end
