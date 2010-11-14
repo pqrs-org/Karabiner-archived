@@ -39,10 +39,10 @@
     }
     value_ = [[NSMutableDictionary alloc] initWithCapacity:0];
 
-    NSArray* configList = [self getConfigList];
+    NSArray* configList = [self configlist_getConfigList];
     if (! configList) return;
 
-    NSUInteger selectedIndex = (NSUInteger)[self selectedIndex];
+    NSUInteger selectedIndex = (NSUInteger)[self configlist_selectedIndex];
     if (selectedIndex >= [configList count]) return;
 
     NSDictionary* configListItem = [configList objectAtIndex:selectedIndex];
@@ -123,34 +123,34 @@
 }
 
 // ----------------------------------------------------------------------
-- (NSInteger) selectedIndex
+- (NSInteger) configlist_selectedIndex
 {
   return [[NSUserDefaults standardUserDefaults] integerForKey:@"selectedIndex"];
 }
 
-- (NSString*) selectedName
+- (NSString*) configlist_selectedName
 {
-  return [self name:[self selectedIndex]];
+  return [self configlist_name:[self configlist_selectedIndex]];
 }
 
-- (NSArray*) getConfigList
+- (NSArray*) configlist_getConfigList
 {
   return [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"];
 }
 
-- (NSUInteger) count
+- (NSUInteger) configlist_count
 {
-  NSArray* a = [self getConfigList];
+  NSArray* a = [self configlist_getConfigList];
   if (! a) return 0;
   return [a count];
 }
 
-- (NSString*) name:(NSInteger)rowIndex
+- (NSString*) configlist_name:(NSInteger)rowIndex
 {
   NSString* name = nil;
 
   @synchronized(self) {
-    NSArray* list = [self getConfigList];
+    NSArray* list = [self configlist_getConfigList];
     if (list) {
       if (0 <= rowIndex && (NSUInteger)(rowIndex) < [list count]) {
         NSDictionary* dict = [list objectAtIndex:rowIndex];
@@ -164,12 +164,12 @@
   return name;
 }
 
-- (void) select:(NSInteger)newindex
+- (void) configlist_select:(NSInteger)newindex
 {
   if (newindex < 0) return;
-  if (newindex == [self selectedIndex]) return;
+  if (newindex == [self configlist_selectedIndex]) return;
 
-  NSArray* list = [self getConfigList];
+  NSArray* list = [self configlist_getConfigList];
   if (! list) return;
   if ((NSUInteger)(newindex) >= [list count]) return;
 
@@ -182,23 +182,7 @@
   [[NSNotificationCenter defaultCenter] postNotificationName:@"PreferencesChanged" object:nil];
 }
 
-- (BOOL) isStatusbarEnable
-{
-  // If the key does not exist, treat as YES.
-  id object = [[NSUserDefaults standardUserDefaults] objectForKey:@"isStatusbarEnable"];
-  if (! object) return YES;
-
-  NSInteger value = [[NSUserDefaults standardUserDefaults] integerForKey:@"isStatusbarEnable"];
-  return value ? YES : NO;
-}
-
-- (BOOL) isShowSettingNameInStatusBar
-{
-  NSInteger value = [[NSUserDefaults standardUserDefaults] integerForKey:@"isShowSettingNameInStatusBar"];
-  return value ? YES : NO;
-}
-
-- (void) setName:(NSInteger)rowIndex name:(NSString*)name
+- (void) configlist_setName:(NSInteger)rowIndex name:(NSString*)name
 {
   if ([name length] == 0) return;
 
@@ -218,6 +202,22 @@
   [[NSUserDefaults standardUserDefaults] setObject:ma forKey:@"configList"];
 
   [[NSNotificationCenter defaultCenter] postNotificationName:@"PreferencesChanged" object:nil];
+}
+
+- (BOOL) isStatusbarEnable
+{
+  // If the key does not exist, treat as YES.
+  id object = [[NSUserDefaults standardUserDefaults] objectForKey:@"isStatusbarEnable"];
+  if (! object) return YES;
+
+  NSInteger value = [[NSUserDefaults standardUserDefaults] integerForKey:@"isStatusbarEnable"];
+  return value ? YES : NO;
+}
+
+- (BOOL) isShowSettingNameInStatusBar
+{
+  NSInteger value = [[NSUserDefaults standardUserDefaults] integerForKey:@"isShowSettingNameInStatusBar"];
+  return value ? YES : NO;
 }
 
 @end
