@@ -295,4 +295,15 @@
   [[NSNotificationCenter defaultCenter] postNotificationName:@"PreferencesChanged" object:nil];
 }
 
+// ----------------------------------------------------------------------
+- (NSInteger) checkForUpdatesMode
+{
+  return [[NSUserDefaults standardUserDefaults] integerForKey:@"isCheckUpdate"];
+}
+
+- (void) setCheckForUpdatesMode:(NSInteger)newval
+{
+  [[NSUserDefaults standardUserDefaults] setInteger:newval forKey:@"isCheckUpdate"];
+}
+
 @end
