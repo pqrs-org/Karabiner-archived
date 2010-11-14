@@ -130,14 +130,30 @@
 
 - (NSString*) selectedName
 {
+  return [self name:[self selectedIndex]];
+}
+
+- (NSArray*) getConfigList
+{
+  return [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"];
+}
+
+- (NSUInteger) count
+{
+  NSArray* a = [self getConfigList];
+  if (! a) return 0;
+  return [a count];
+}
+
+- (NSString*) name:(NSInteger)rowIndex
+{
   NSString* name = nil;
 
   @synchronized(self) {
-    NSInteger selected = [self selectedIndex];
     NSArray* list = [self getConfigList];
     if (list) {
-      if (0 <= selected && (NSUInteger)(selected) < [list count]) {
-        NSDictionary* dict = [list objectAtIndex:selected];
+      if (0 <= rowIndex && (NSUInteger)(rowIndex) < [list count]) {
+        NSDictionary* dict = [list objectAtIndex:rowIndex];
         if (dict) {
           name = [dict objectForKey:@"name"];
         }
@@ -146,11 +162,6 @@
   }
 
   return name;
-}
-
-- (NSArray*) getConfigList
-{
-  return [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"];
 }
 
 - (void) select:(NSInteger)newindex
@@ -183,6 +194,24 @@
 {
   NSInteger value = [[NSUserDefaults standardUserDefaults] integerForKey:@"isShowSettingNameInStatusBar"];
   return value ? YES : NO;
+}
+
+- (void) setName:(NSInteger)rowIndex name:(NSString*)name
+{
+  NSArray* a = [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"];
+  if (! a) return;
+  if (rowIndex < 0 || (NSUInteger)(rowIndex) >= [a count]) return;
+
+  NSDictionary* d = [a objectAtIndex:rowIndex];
+  if (! d) return;
+
+  NSMutableDictionary* md = [NSMutableDictionary dictionaryWithDictionary:d];
+  [md setObject:name forKey:@"name"];
+
+  NSMutableArray* ma = [NSMutableArray arrayWithArray:a];
+  [ma replaceObjectAtIndex:rowIndex withObject:md];
+
+  [[NSUserDefaults standardUserDefaults] setObject:ma forKey:@"configList"];
 }
 
 @end
