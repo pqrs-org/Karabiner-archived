@@ -32,29 +32,12 @@
 }
 
 // ----------------------------------------
-- (void) loadSelectedDictionary
-{
-  if (value_) {
-    [value_ release];
-  }
-  value_ = [[NSMutableDictionary alloc] initWithCapacity:0];
-
-  NSString* identifier = [self configlist_selectedIdentifier];
-  if (! identifier) return;
-
-  NSDictionary* dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
-  if (! dict) return;
-
-  [value_ addEntriesFromDictionary:dict];
-}
-
 - (id) init
 {
   [super init];
 
   default_ = [[NSMutableDictionary alloc] initWithCapacity:0];
   [self setDefault];
-  [self loadSelectedDictionary];
 
   essential_config_index_ = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"include.bridge_essential_config_index" ofType:@"plist"]];
 
@@ -70,9 +53,6 @@
   if (default_) {
     [default_ release];
   }
-  if (value_) {
-    [value_ release];
-  }
   if (essential_config_index_) {
     [essential_config_index_ release];
   }
@@ -85,7 +65,17 @@
 // ----------------------------------------------------------------------
 - (int) value:(NSString*)name
 {
-  NSNumber* number = [value_ objectForKey:name];
+  NSNumber* number = nil;
+
+  // user setting
+  NSString* identifier = [self configlist_selectedIdentifier];
+  if (identifier) {
+    NSDictionary* dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
+    if (dict) {
+      number = [dict objectForKey:name];
+    }
+  }
+  // default setting
   if (! number) {
     number = [default_ objectForKey:name];
   }
@@ -97,7 +87,7 @@
   }
 }
 
-- (void) setValue:(int)newval forKey:(NSString*)name
+- (void) setValueForName:(int)newval forName:(NSString*)name
 {
   NSString* identifier = [self configlist_selectedIdentifier];
   if (! identifier) return;
@@ -106,9 +96,16 @@
   if (! dict) return;
 
   NSMutableDictionary* md = [NSMutableDictionary dictionaryWithDictionary:dict];
-  [md setObject:[NSNumber numberWithInt:newval] forKey:name];
 
-  NSLog(@"%@", md);
+  NSNumber* defaultvalue = [default_ objectForKey:name];
+  if (defaultvalue && [defaultvalue intValue] == newval) {
+    [md removeObjectForKey:name];
+  } else {
+    [md setObject:[NSNumber numberWithInt:newval] forKey:name];
+  }
+
+  [[NSUserDefaults standardUserDefaults] setObject:md forKey:identifier];
+  [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (NSArray*) essential_config
@@ -187,7 +184,6 @@
 
   NSUserDefaults* userdefaults = [NSUserDefaults standardUserDefaults];
   [userdefaults setInteger:newindex forKey:@"selectedIndex"];
-  [self loadSelectedDictionary];
 
   [[NSNotificationCenter defaultCenter] postNotificationName:@"PreferencesChanged" object:nil];
 }
