@@ -82,6 +82,9 @@
   if (value_) {
     [value_ release];
   }
+  if (essential_config_index_) {
+    [essential_config_index_ release];
+  }
   [super dealloc];
 }
 
