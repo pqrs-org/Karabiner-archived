@@ -154,8 +154,8 @@
   id object = [[NSUserDefaults standardUserDefaults] objectForKey:@"isStatusbarEnable"];
   if (! object) return YES;
 
-  if ((NSInteger)(object) == 0) return NO;
-  return YES;
+  NSInteger value = [[NSUserDefaults standardUserDefaults] integerForKey:@"isStatusbarEnable"];
+  return value ? YES : NO;
 }
 
 @end
