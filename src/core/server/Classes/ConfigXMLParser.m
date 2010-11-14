@@ -1,5 +1,4 @@
 #import "ConfigXMLParser.h"
-#import "KeyCode.h"
 #import "bridge.h"
 
 @implementation ConfigXMLParser
@@ -9,6 +8,7 @@
   [super init];
 
   array_initialize_vector_ = nil;
+  keycode_ = [KeyCode new];
 
   return self;
 }
@@ -25,13 +25,17 @@
 {
   [self clear];
 
+  if (keycode_) {
+    [keycode_ release];
+  }
+
   [super dealloc];
 }
 
 // ======================================================================
 // filter
 
-- (void) append_to_filter:(KeyCode*)keycode filters:(NSMutableArray*)filters node:(NSXMLNode*)node prefix:(NSString*)prefix filtertype:(unsigned int)filtertype
+- (void) append_to_filter:(NSMutableArray*)filters node:(NSXMLNode*)node prefix:(NSString*)prefix filtertype:(unsigned int)filtertype
 {
   NSArray* a = [[node stringValue] componentsSeparatedByString:@","];
 
@@ -40,11 +44,11 @@
   [filters addObject:[NSNumber numberWithUnsignedInt:filtertype]];
 
   for (NSString* name in a) {
-    [filters addObject:[NSNumber numberWithUnsignedInt:[keycode unsignedIntValue:[NSString stringWithFormat:@"%@%@", prefix, [KeyCode normalizeName:name]]]]];
+    [filters addObject:[NSNumber numberWithUnsignedInt:[keycode_ unsignedIntValue:[NSString stringWithFormat:@"%@%@", prefix, [KeyCode normalizeName:name]]]]];
   }
 }
 
-- (NSMutableArray*) make_filtervec:(KeyCode*)keycode node:(NSXMLNode*)node
+- (NSMutableArray*) make_filtervec:(NSXMLNode*)node
 {
   NSMutableArray* filters = [NSMutableArray arrayWithCapacity:0];
 
@@ -62,29 +66,29 @@
 
       NSString* n_name = [n name];
       /*  */ if ([n_name isEqualToString:@"not"]) {
-        [self append_to_filter:keycode filters:filters node:n prefix:@"ApplicationType::" filtertype:BRIDGE_FILTERTYPE_APPLICATION_NOT];
+        [self append_to_filter:filters node:n prefix:@"ApplicationType::" filtertype:BRIDGE_FILTERTYPE_APPLICATION_NOT];
       } else if ([n_name isEqualToString:@"only"]) {
-        [self append_to_filter:keycode filters:filters node:n prefix:@"ApplicationType::" filtertype:BRIDGE_FILTERTYPE_APPLICATION_ONLY];
+        [self append_to_filter:filters node:n prefix:@"ApplicationType::" filtertype:BRIDGE_FILTERTYPE_APPLICATION_ONLY];
 
       } else if ([n_name isEqualToString:@"device_not"]) {
-        [self append_to_filter:keycode filters:filters node:n prefix:@"" filtertype:BRIDGE_FILTERTYPE_DEVICE_NOT];
+        [self append_to_filter:filters node:n prefix:@"" filtertype:BRIDGE_FILTERTYPE_DEVICE_NOT];
       } else if ([n_name isEqualToString:@"device_only"]) {
-        [self append_to_filter:keycode filters:filters node:n prefix:@"" filtertype:BRIDGE_FILTERTYPE_DEVICE_ONLY];
+        [self append_to_filter:filters node:n prefix:@"" filtertype:BRIDGE_FILTERTYPE_DEVICE_ONLY];
 
       } else if ([n_name isEqualToString:@"config_not"]) {
-        [self append_to_filter:keycode filters:filters node:n prefix:@"ConfigIndex::" filtertype:BRIDGE_FILTERTYPE_CONFIG_NOT];
+        [self append_to_filter:filters node:n prefix:@"ConfigIndex::" filtertype:BRIDGE_FILTERTYPE_CONFIG_NOT];
       } else if ([n_name isEqualToString:@"config_only"]) {
-        [self append_to_filter:keycode filters:filters node:n prefix:@"ConfigIndex::" filtertype:BRIDGE_FILTERTYPE_CONFIG_ONLY];
+        [self append_to_filter:filters node:n prefix:@"ConfigIndex::" filtertype:BRIDGE_FILTERTYPE_CONFIG_ONLY];
 
       } else if ([n_name isEqualToString:@"inputmode_not"]) {
-        [self append_to_filter:keycode filters:filters node:n prefix:@"InputMode::" filtertype:BRIDGE_FILTERTYPE_INPUTMODE_NOT];
+        [self append_to_filter:filters node:n prefix:@"InputMode::" filtertype:BRIDGE_FILTERTYPE_INPUTMODE_NOT];
       } else if ([n_name isEqualToString:@"inputmode_only"]) {
-        [self append_to_filter:keycode filters:filters node:n prefix:@"InputMode::" filtertype:BRIDGE_FILTERTYPE_INPUTMODE_ONLY];
+        [self append_to_filter:filters node:n prefix:@"InputMode::" filtertype:BRIDGE_FILTERTYPE_INPUTMODE_ONLY];
 
       } else if ([n_name isEqualToString:@"inputmodedetail_not"]) {
-        [self append_to_filter:keycode filters:filters node:n prefix:@"InputModeDetail::" filtertype:BRIDGE_FILTERTYPE_INPUTMODEDETAIL_NOT];
+        [self append_to_filter:filters node:n prefix:@"InputModeDetail::" filtertype:BRIDGE_FILTERTYPE_INPUTMODEDETAIL_NOT];
       } else if ([n_name isEqualToString:@"inputmodedetail_only"]) {
-        [self append_to_filter:keycode filters:filters node:n prefix:@"InputModeDetail::" filtertype:BRIDGE_FILTERTYPE_INPUTMODEDETAIL_ONLY];
+        [self append_to_filter:filters node:n prefix:@"InputModeDetail::" filtertype:BRIDGE_FILTERTYPE_INPUTMODEDETAIL_ONLY];
       }
     }
 
@@ -128,7 +132,7 @@
   return @"";
 }
 
-- (void) append_to_initialize_vector:(NSMutableArray*)initialize_vector keycode:(KeyCode*)keycode filtervec:(NSArray*)filtervec params:(NSString*)params type:(unsigned int)type
+- (void) append_to_initialize_vector:(NSMutableArray*)initialize_vector filtervec:(NSArray*)filtervec params:(NSString*)params type:(unsigned int)type
 {
   NSMutableArray* args = [NSMutableArray arrayWithCapacity:0];
   [args addObject:[NSNumber numberWithUnsignedInt:type]];
@@ -161,7 +165,7 @@
         }
 
         datatype = newdatatype;
-        newvalue |= [keycode unsignedIntValue:value];
+        newvalue |= [keycode_ unsignedIntValue:value];
       }
 
       [args addObject:[NSNumber numberWithUnsignedInt:datatype]];
@@ -177,7 +181,7 @@
   }
 }
 
-- (void) handle_autogen:(NSMutableArray*)initialize_vector keycode:(KeyCode*)keycode filtervec:(NSArray*)filtervec autogen_text:(NSString*)autogen_text
+- (void) handle_autogen:(NSMutableArray*)initialize_vector filtervec:(NSArray*)filtervec autogen_text:(NSString*)autogen_text
 {
   // ------------------------------------------------------------
   // preprocess
@@ -185,9 +189,9 @@
   for (NSString* modifier in [NSArray arrayWithObjects : @"COMMAND", @"CONTROL", @"SHIFT", @"OPTION", nil]) {
     NSString* symbol = [NSString stringWithFormat:@"VK_%@", modifier];
     if ([autogen_text rangeOfString:symbol].location != NSNotFound) {
-      [self handle_autogen:initialize_vector keycode:keycode filtervec:filtervec
+      [self handle_autogen:initialize_vector filtervec:filtervec
               autogen_text:[autogen_text stringByReplacingOccurrencesOfString:symbol withString:[NSString stringWithFormat:@"ModifierFlag::%@_L", modifier]]];
-      [self handle_autogen:initialize_vector keycode:keycode filtervec:filtervec
+      [self handle_autogen:initialize_vector filtervec:filtervec
               autogen_text:[autogen_text stringByReplacingOccurrencesOfString:symbol withString:[NSString stringWithFormat:@"ModifierFlag::%@_R", modifier]]];
       return;
     }
@@ -195,19 +199,19 @@
 
   if ([autogen_text rangeOfString:@"VK_MOD_CCOS_L"].location != NSNotFound) {
     autogen_text = [autogen_text stringByReplacingOccurrencesOfString:@"VK_MOD_CCOS_L" withString:@"ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::OPTION_L|ModifierFlag::SHIFT_L"];
-    [self handle_autogen:initialize_vector keycode:keycode filtervec:filtervec autogen_text:autogen_text];
+    [self handle_autogen:initialize_vector filtervec:filtervec autogen_text:autogen_text];
     return;
   }
 
   if ([autogen_text rangeOfString:@"VK_MOD_CCS_L"].location != NSNotFound) {
     autogen_text = [autogen_text stringByReplacingOccurrencesOfString:@"VK_MOD_CCS_L" withString:@"ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::SHIFT_L"];
-    [self handle_autogen:initialize_vector keycode:keycode filtervec:filtervec autogen_text:autogen_text];
+    [self handle_autogen:initialize_vector filtervec:filtervec autogen_text:autogen_text];
     return;
   }
 
   if ([autogen_text rangeOfString:@"VK_MOD_CCO_L"].location != NSNotFound) {
     autogen_text = [autogen_text stringByReplacingOccurrencesOfString:@"VK_MOD_CCO_L" withString:@"ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::OPTION_L"];
-    [self handle_autogen:initialize_vector keycode:keycode filtervec:filtervec autogen_text:autogen_text];
+    [self handle_autogen:initialize_vector filtervec:filtervec autogen_text:autogen_text];
     return;
   }
 
@@ -215,7 +219,7 @@
     // to reduce combination, we ignore same modifier combination such as (COMMAND_L | COMMAND_R).
     NSMutableArray* combination = [self combination:[NSArray arrayWithObjects:@"VK_COMMAND", @"VK_CONTROL", @"ModifierFlag::FN", @"VK_OPTION", @"VK_SHIFT", nil]];
     for (NSMutableArray* a in combination) {
-      [self handle_autogen:initialize_vector keycode:keycode filtervec:filtervec
+      [self handle_autogen:initialize_vector filtervec:filtervec
               autogen_text:[autogen_text stringByReplacingOccurrencesOfString:@"VK_MOD_ANY" withString:[[a arrayByAddingObject:@"ModifierFlag::NONE"] componentsJoinedByString:@"|"]]];
     }
     return;
@@ -223,20 +227,20 @@
 
   for (NSString* keyname in [NSArray arrayWithObjects : @"HOME", @"END", @"PAGEUP", @"PAGEDOWN", @"FORWARD_DELETE", nil]) {
     if ([autogen_text rangeOfString:[NSString stringWithFormat:@"FROMKEYCODE_%@,ModifierFlag::", keyname]].location != NSNotFound) {
-      [self handle_autogen:initialize_vector keycode:keycode filtervec:filtervec
+      [self handle_autogen:initialize_vector filtervec:filtervec
               autogen_text:[autogen_text stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"FROMKEYCODE_%@", keyname]
                                                                    withString:[NSString stringWithFormat:@"KeyCode::%@", keyname]]];
-      [self handle_autogen:initialize_vector keycode:keycode filtervec:filtervec
+      [self handle_autogen:initialize_vector filtervec:filtervec
               autogen_text:[autogen_text stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"FROMKEYCODE_%@,", keyname]
                                                                    withString:[NSString stringWithFormat:@"KeyCode::%@,ModifierFlag::FN|", [self getextrakey:keyname]]]];
       return;
     }
 
     if ([autogen_text rangeOfString:[NSString stringWithFormat:@"FROMKEYCODE_%@", keyname]].location != NSNotFound) {
-      [self handle_autogen:initialize_vector keycode:keycode filtervec:filtervec
+      [self handle_autogen:initialize_vector filtervec:filtervec
               autogen_text:[autogen_text stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"FROMKEYCODE_%@", keyname]
                                                                    withString:[NSString stringWithFormat:@"KeyCode::%@", keyname]]];
-      [self handle_autogen:initialize_vector keycode:keycode filtervec:filtervec
+      [self handle_autogen:initialize_vector filtervec:filtervec
               autogen_text:[autogen_text stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"FROMKEYCODE_%@", keyname]
                                                                    withString:[NSString stringWithFormat:@"KeyCode::%@,ModifierFlag::FN", [self getextrakey:keyname]]]];
       return;
@@ -244,14 +248,14 @@
   }
 
   if ([autogen_text rangeOfString:@"--KeyOverlaidModifierWithRepeat--"].location != NSNotFound) {
-    [self handle_autogen:initialize_vector keycode:keycode filtervec:filtervec
+    [self handle_autogen:initialize_vector filtervec:filtervec
             autogen_text:[autogen_text stringByReplacingOccurrencesOfString:@"--KeyOverlaidModifierWithRepeat--"
                                                                  withString:@"--KeyOverlaidModifier--Option::KEYOVERLAIDMODIFIER_REPEAT,"]];
     return;
   }
 
   if ([autogen_text rangeOfString:@"SimultaneousKeyPresses::Option::RAW"].location != NSNotFound) {
-    [self handle_autogen:initialize_vector keycode:keycode filtervec:filtervec
+    [self handle_autogen:initialize_vector filtervec:filtervec
             autogen_text:[autogen_text stringByReplacingOccurrencesOfString:@"SimultaneousKeyPresses::Option::RAW"
                                                                  withString:@"Option::SIMULTANEOUSKEYPRESSES_RAW"]];
     return;
@@ -281,11 +285,11 @@
     NSString* params = [autogen_text substringFromIndex:[@"--SimultaneousKeyPresses--" length]];
 
     NSString* newkeycode = [NSString stringWithFormat:@"VK_SIMULTANEOUSKEYPRESSES_%d", simultaneous_keycode_index_];
-    [keycode append:@"KeyCode" name:newkeycode];
+    [keycode_ append:@"KeyCode" name:newkeycode];
     ++simultaneous_keycode_index_;
 
     params = [NSString stringWithFormat:@"KeyCode::%@,%@", newkeycode, params];
-    [self append_to_initialize_vector:initialize_vector keycode:keycode filtervec:filtervec params:params type:BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES];
+    [self append_to_initialize_vector:initialize_vector filtervec:filtervec params:params type:BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES];
 
     return;
   }
@@ -313,12 +317,12 @@
   };
   for (int i = 0; info[i].symbol; ++i) {
     if ([autogen_text hasPrefix:info[i].symbol]) {
-      [self append_to_initialize_vector:initialize_vector keycode:keycode filtervec:filtervec params:[autogen_text substringFromIndex:[info[i].symbol length]] type:info[i].type];
+      [self append_to_initialize_vector:initialize_vector filtervec:filtervec params:[autogen_text substringFromIndex:[info[i].symbol length]] type:info[i].type];
     }
   }
 }
 
-- (void) traverse_autogen:(NSMutableArray*)initialize_vector keycode:(KeyCode*)keycode node:(NSXMLNode*)node name:(NSString*)name
+- (void) traverse_autogen:(NSMutableArray*)initialize_vector node:(NSXMLNode*)node name:(NSString*)name
 {
   NSUInteger count = [node childCount];
   for (NSUInteger i = 0; i < count; ++i) {
@@ -326,12 +330,12 @@
     if ([n kind] != NSXMLElementKind) continue;
 
     if ([[n name] isEqualToString:@"autogen"]) {
-      NSMutableArray* filtervec = [self make_filtervec:keycode node:n];
+      NSMutableArray* filtervec = [self make_filtervec:n];
 
       if (! [name hasPrefix:@"passthrough_"]) {
         [filtervec addObject:[NSNumber numberWithUnsignedInt:2]];
         [filtervec addObject:[NSNumber numberWithUnsignedInt:BRIDGE_FILTERTYPE_CONFIG_NOT]];
-        [filtervec addObject:[keycode numberValue:@"ConfigIndex::notsave_passthrough"]];
+        [filtervec addObject:[keycode_ numberValue:@"ConfigIndex::notsave_passthrough"]];
       }
 
       NSString* autogen_text = [n stringValue];
@@ -346,17 +350,17 @@
         autogen_text = [autogen_text stringByReplacingOccurrencesOfString:@"\n" withString:@""];
       }
 
-      [self handle_autogen:initialize_vector keycode:keycode filtervec:filtervec autogen_text:autogen_text];
+      [self handle_autogen:initialize_vector filtervec:filtervec autogen_text:autogen_text];
     }
 
-    [self traverse_autogen:initialize_vector keycode:keycode node:n name:name];
+    [self traverse_autogen:initialize_vector node:n name:name];
   }
 }
 
 // ======================================================================
 // initialize
 
-- (void) append_to_keycode:(KeyCode*)keycode element:(NSXMLElement*)element
+- (void) append_to_keycode:(NSXMLElement*)element
 {
   NSArray* vk_config_formats = [NSArray arrayWithObjects:
                                 @"VK_CONFIG_TOGGLE_%@",
@@ -370,24 +374,24 @@
 
     if ([e attributeForName:@"vk_config"]) {
       for (NSString* format in vk_config_formats) {
-        [keycode append:@"KeyCode" name:[NSString stringWithFormat:format, name]];
+        [keycode_ append:@"KeyCode" name:[NSString stringWithFormat:format, name]];
       }
     }
 
     if (! [e attributeForName:@"essential"]) {
-      [keycode append:@"ConfigIndex" name:name];
+      [keycode_ append:@"ConfigIndex" name:name];
     }
   }
 
   for (NSXMLElement* e in [element elementsForName : @"list"]) {
-    [self append_to_keycode:keycode element:e];
+    [self append_to_keycode:e];
   }
   for (NSXMLElement* e in [element elementsForName : @"item"]) {
-    [self append_to_keycode:keycode element:e];
+    [self append_to_keycode:e];
   }
 }
 
-- (void) traverse_sysctl:(KeyCode*)keycode element:(NSXMLElement*)element
+- (void) traverse_sysctl:(NSXMLElement*)element
 {
   for (NSXMLElement* e in [element elementsForName : @"sysctl"]) {
     NSXMLNode* attr_essential = [e attributeForName:@"essential"];
@@ -399,13 +403,13 @@
     if ([e attributeForName:@"vk_config"]) {
       [initialize_vector addObject:[NSNumber numberWithUnsignedInt:5]];
       [initialize_vector addObject:[NSNumber numberWithUnsignedInt:BRIDGE_VK_CONFIG]];
-      [initialize_vector addObject:[keycode numberValue:[NSString stringWithFormat:@"KeyCode::VK_CONFIG_TOGGLE_%@", name]]];
-      [initialize_vector addObject:[keycode numberValue:[NSString stringWithFormat:@"KeyCode::VK_CONFIG_FORCE_ON_%@", name]]];
-      [initialize_vector addObject:[keycode numberValue:[NSString stringWithFormat:@"KeyCode::VK_CONFIG_FORCE_OFF_%@", name]]];
-      [initialize_vector addObject:[keycode numberValue:[NSString stringWithFormat:@"KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_%@", name]]];
+      [initialize_vector addObject:[keycode_ numberValue:[NSString stringWithFormat:@"KeyCode::VK_CONFIG_TOGGLE_%@", name]]];
+      [initialize_vector addObject:[keycode_ numberValue:[NSString stringWithFormat:@"KeyCode::VK_CONFIG_FORCE_ON_%@", name]]];
+      [initialize_vector addObject:[keycode_ numberValue:[NSString stringWithFormat:@"KeyCode::VK_CONFIG_FORCE_OFF_%@", name]]];
+      [initialize_vector addObject:[keycode_ numberValue:[NSString stringWithFormat:@"KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_%@", name]]];
     }
 
-    [self traverse_autogen:initialize_vector keycode:keycode node:[e parent] name:name];
+    [self traverse_autogen:initialize_vector node:[e parent] name:name];
 
     [initialize_vector insertObject:[NSNumber numberWithUnsignedInteger:[initialize_vector count]] atIndex:0];
     [initialize_vector insertObject:[NSNumber numberWithUnsignedInt:BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION] atIndex:0];
@@ -414,10 +418,10 @@
   }
 
   for (NSXMLElement* e in [element elementsForName : @"list"]) {
-    [self traverse_sysctl:keycode element:e];
+    [self traverse_sysctl:e];
   }
   for (NSXMLElement* e in [element elementsForName : @"item"]) {
-    [self traverse_sysctl:keycode element:e];
+    [self traverse_sysctl:e];
   }
 }
 
@@ -451,7 +455,7 @@
     // Don't use autorelease for array_initialize_vector_
     array_initialize_vector_ = [[NSMutableArray alloc] initWithCapacity:0];
 
-    KeyCode* keycode = [[KeyCode new] autorelease];
+    [keycode_ reload];
 
     NSArray* paths = [NSArray arrayWithObjects:
                       [self get_private_xml_path],
@@ -471,13 +475,13 @@
           [xmldocdict setObject:xmldocument forKey:xmlpath];
         }
 
-        [self append_to_keycode:keycode element:[xmldocument rootElement]];
+        [self append_to_keycode:[xmldocument rootElement]];
       }
 
       for (NSString* xmlpath in paths) {
         NSXMLDocument* xmldocument = [xmldocdict objectForKey:xmlpath];
         if (xmldocument) {
-          [self traverse_sysctl:keycode element:[xmldocument rootElement]];
+          [self traverse_sysctl:[xmldocument rootElement]];
         }
       }
 
