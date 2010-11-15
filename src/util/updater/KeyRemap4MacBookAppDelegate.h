@@ -12,7 +12,7 @@
 
 @interface KeyRemap4MacBookAppDelegate : NSObject <NSApplicationDelegate> {
   NSWindow* window;
-  IBOutlet PreferencesClient* preferencesclient_;
+  IBOutlet org_pqrs_KeyRemap4MacBook_PreferencesClient* preferencesclient_;
   IBOutlet SUUpdater* _suupdater;
 }
 
