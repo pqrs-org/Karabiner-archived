@@ -12,8 +12,8 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="57"/>
 			<integer value="371"/>
-			<integer value="29"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -106,7 +106,7 @@
 				<string key="NSClassName">SUUpdater</string>
 			</object>
 			<object class="NSCustomObject" id="375898343">
-				<string key="NSClassName">PreferencesClient</string>
+				<string key="NSClassName">org_pqrs_KeyRemap4MacBook_PreferencesClient</string>
 			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -267,7 +267,6 @@
 					<string>371.editorWindowContentRectSynchronizationRect</string>
 					<string>371.windowTemplate.maxSize</string>
 					<string>372.IBPluginDependency</string>
-					<string>535.IBPluginDependency</string>
 					<string>56.IBPluginDependency</string>
 					<string>56.ImportedFromIB2</string>
 					<string>57.IBEditorWindowLastContentRect</string>
@@ -291,7 +290,6 @@
 					<boolean value="NO"/>
 					<string>{{33, 99}, {480, 360}}</string>
 					<string>{3.40282e+38, 3.40282e+38}</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
@@ -336,7 +334,7 @@
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>SUUpdater</string>
-							<string>PreferencesClient</string>
+							<string>org_pqrs_KeyRemap4MacBook_PreferencesClient</string>
 							<string>NSWindow</string>
 						</object>
 					</object>
@@ -356,7 +354,7 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">preferencesclient_</string>
-								<string key="candidateClassName">PreferencesClient</string>
+								<string key="candidateClassName">org_pqrs_KeyRemap4MacBook_PreferencesClient</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">window</string>
@@ -370,7 +368,7 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">PreferencesClient</string>
+					<string key="className">org_pqrs_KeyRemap4MacBook_PreferencesClient</string>
 					<string key="superclassName">NSObject</string>
 					<object class="NSMutableDictionary" key="outlets">
 						<string key="NS.key.0">proxy</string>
