@@ -219,7 +219,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  Handle_VK_CONFIG::add_item(unsigned int configindex,
+  Handle_VK_CONFIG::add_item(RemapClass* remapclass,
                              unsigned int keycode_toggle,
                              unsigned int keycode_force_on,
                              unsigned int keycode_force_off,
@@ -229,7 +229,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (! items_) return;
 
-    items_->push_back(Item(configindex, keycode_toggle, keycode_force_on, keycode_force_off, keycode_sync_keydownup));
+    items_->push_back(Item(remapclass, keycode_toggle, keycode_force_on, keycode_force_off, keycode_sync_keydownup));
   }
 
   void
@@ -248,29 +248,29 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! items_) return false;
 
     for (size_t i = 0; i < items_->size(); ++i) {
-      unsigned int configindex            = (*items_)[i].configindex;
+      RemapClass* remapclass              = (*items_)[i].remapclass;
       unsigned int keycode_toggle         = (*items_)[i].keycode_toggle;
       unsigned int keycode_force_on       = (*items_)[i].keycode_force_on;
       unsigned int keycode_force_off      = (*items_)[i].keycode_force_off;
       unsigned int keycode_sync_keydownup = (*items_)[i].keycode_sync_keydownup;
 
-      if (configindex >= sizeof(Config::enabled_flags) / sizeof(Config::enabled_flags[0])) return false;
+      if (! remapclass) return false;
 
       if (params.ex_iskeydown && params.repeat == false) {
         /*  */ if (params.key == keycode_toggle) {
-          Config::enabled_flags[configindex] = ! Config::enabled_flags[configindex];
+          remapclass->toggleEnabled();
           goto finish;
 
         } else if (params.key == keycode_force_on) {
-          Config::enabled_flags[configindex] = 1;
+          remapclass->setEnabled(true);
           goto finish;
 
         } else if (params.key == keycode_force_off) {
-          Config::enabled_flags[configindex] = 0;
+          remapclass->setEnabled(false);
           goto finish;
 
         } else if (params.key == keycode_sync_keydownup) {
-          Config::enabled_flags[configindex] = 1;
+          remapclass->setEnabled(true);
           goto finish;
         }
 
@@ -282,7 +282,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
         if (params.key == keycode_sync_keydownup) {
-          Config::enabled_flags[configindex] = 0;
+          remapclass->setEnabled(false);
           goto finish;
         }
       }

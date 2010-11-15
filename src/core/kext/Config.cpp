@@ -1,13 +1,13 @@
 #include <sys/types.h>
 #include <sys/sysctl.h>
 
-#include "Common.hpp"
 #include "Config.hpp"
 #include "version.hpp"
 #include "Client.hpp"
 #include "FlagStatus.hpp"
 #include "RemapClass.hpp"
 #include "RemapFunc/PointingRelativeToScroll.hpp"
+#include "util/CommonData.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   int Config::debug = 0;
@@ -26,7 +26,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     int reload_xml_handler SYSCTL_HANDLER_ARGS
     {
       IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
-      if (! lk_eventlock) return;
+      if (! lk_eventlock) return EAGAIN;
 
       int error = sysctl_handle_int(oidp, oidp->oid_arg1, oidp->oid_arg2, req);
       if (! error && req->newptr) {

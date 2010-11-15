@@ -294,10 +294,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------------------------------------
   int RemapClass::allocation_count = 0;
 
-  RemapClass::RemapClass(const unsigned int* initialize_vector,
-                         unsigned int configindex) :
+  RemapClass::RemapClass(const unsigned int* initialize_vector, bool enabledvalue) :
     statusmessage_(NULL),
-    configindex_(configindex),
+    enabled_(enabledvalue),
     is_simultaneouskeypresses_(false)
   {
     // ------------------------------------------------------------
@@ -385,7 +384,7 @@ namespace org_pqrs_KeyRemap4MacBook {
             unsigned int keycode_force_on       = initialize_vector[2];
             unsigned int keycode_force_off      = initialize_vector[3];
             unsigned int keycode_sync_keydownup = initialize_vector[4];
-            Handle_VK_CONFIG::add_item(configindex,
+            Handle_VK_CONFIG::add_item(this,
                                        keycode_toggle,
                                        keycode_force_on,
                                        keycode_force_off,
@@ -501,18 +500,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  RemapClass::enabled(void)
-  {
-    // check configindex_ range
-    if (configindex_ < 0 ||
-        configindex_ >= sizeof(Config::enabled_flags) / sizeof(Config::enabled_flags[0])) {
-      return false;
-    }
-
-    return Config::enabled_flags[configindex_];
-  }
-
-  bool
   RemapClass::is_simultaneouskeypresses(void)
   {
     return is_simultaneouskeypresses_;
@@ -526,8 +513,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ================================================================================
   namespace RemapClassManager {
-#include "config/output/include.RemapClass_initialize_vector.cpp"
-
     IOLock* lock_ = NULL;
     TimerWrapper refresh_timer_;
 
@@ -594,24 +579,25 @@ namespace org_pqrs_KeyRemap4MacBook {
       lock_ = IOLockWrapper::alloc();
       statusmessage_[0] = '\0';
       lastmessage_[0] = '\0';
-      remapclasses_ = new Vector_RemapClassPointer();
+      remapclasses_ = NULL;
       enabled_remapclasses_ = NULL;
 
-      Handle_VK_CONFIG::clear_items();
+      refresh_timer_.initialize(&workloop, NULL, refresh_core);
+    }
 
-      if (remapclasses_) {
-        remapclasses_->reserve(sizeof(remapclass_initialize_vector) / sizeof(remapclass_initialize_vector[0]));
-        for (size_t i = 0; i < sizeof(remapclass_initialize_vector) / sizeof(remapclass_initialize_vector[0]); ++i) {
-          RemapClass* newp = new RemapClass(remapclass_initialize_vector[i],
-                                            remapclass_configindex[i]);
-          if (newp) {
-            remapclasses_->push_back(newp);
-          }
+    static void
+    clear_remapclasses_(void)
+    {
+      if (! remapclasses_) return;
+
+      for (size_t i = 0; i < remapclasses_->size(); ++i) {
+        RemapClass* p = (*remapclasses_)[i];
+        if (p) {
+          delete p;
         }
       }
-      RemapClass::log_allocation_count();
-
-      refresh_timer_.initialize(&workloop, NULL, refresh_core);
+      delete remapclasses_;
+      remapclasses_ = NULL;
     }
 
     void
@@ -621,17 +607,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       if (enabled_remapclasses_) {
         delete enabled_remapclasses_;
+        enabled_remapclasses_ = NULL;
       }
-
-      if (remapclasses_) {
-        for (size_t i = 0; i < remapclasses_->size(); ++i) {
-          RemapClass* p = (*remapclasses_)[i];
-          if (p) {
-            delete p;
-          }
-        }
-        delete remapclasses_;
-      }
+      clear_remapclasses_();
 
       IOLockWrapper::free(lock_);
     }
@@ -641,6 +619,19 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       IOLockWrapper::ScopedLock lk(lock_);
 
+      if (remapclasses_) {
+        clear_remapclasses_();
+      }
+      remapclasses_ = new Vector_RemapClassPointer();
+
+      if (enabled_remapclasses_) {
+        delete enabled_remapclasses_;
+        enabled_remapclasses_ = NULL;
+      }
+
+      Handle_VK_CONFIG::clear_items();
+
+      // ------------------------------------------------------------
       uint32_t count = 0;
       KeyRemap4MacBook_bridge::GetConfigInfo::Reply::Item* configinfo = NULL;
 
@@ -675,6 +666,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         goto finish;
       }
 
+      // --------------------
+      remapclasses_->reserve(count);
+
       // ------------------------------------------------------------
       // get configinfo
       configinfo = new KeyRemap4MacBook_bridge::GetConfigInfo::Reply::Item[count];
@@ -695,31 +689,34 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       // ------------------------------------------------------------
-      if (Config::reload_only_config) goto finish;
+      if (! Config::reload_only_config) {
+        // get initialize_vector
+        for (uint32_t i = 0; i < count; ++i) {
+          uint32_t size = configinfo[i].initialize_vector_size;
+          uint32_t* initialize_vector = NULL;
 
-      // ------------------------------------------------------------
-      // get initialize_vector
-      for (uint32_t i = 0; i < count; ++i) {
-        uint32_t size = configinfo[i].initialize_vector_size;
-        uint32_t* initialize_vector = NULL;
-
-        if (size > RemapClass::MAX_INITIALIZE_VECTOR_SIZE) {
-          IOLOG_ERROR("do_reload_xml too large initialize_vector. (%d)\n", size);
-          goto finish;
-        }
-
-        initialize_vector = new uint32_t[size];
-        {
-          KeyRemap4MacBook_bridge::GetConfigInitializeVector::Request request(i);
-          KeyRemap4MacBook_bridge::GetConfigInitializeVector::Reply* reply = reinterpret_cast<KeyRemap4MacBook_bridge::GetConfigInitializeVector::Reply*>(initialize_vector);
-          int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_CONFIG_INITIALIZE_VECTOR,
-                                                       &request, sizeof(request),
-                                                       reply, static_cast<uint32_t>(sizeof(initialize_vector[0]) * size));
-          if (! error) {
-            IOLOG_INFO("%d %d\n", i, size);
+          if (size > RemapClass::MAX_INITIALIZE_VECTOR_SIZE) {
+            IOLOG_ERROR("do_reload_xml too large initialize_vector. (%d)\n", size);
+            goto finish;
           }
+
+          initialize_vector = new uint32_t[size];
+          {
+            KeyRemap4MacBook_bridge::GetConfigInitializeVector::Request request(i);
+            KeyRemap4MacBook_bridge::GetConfigInitializeVector::Reply* reply = reinterpret_cast<KeyRemap4MacBook_bridge::GetConfigInitializeVector::Reply*>(initialize_vector);
+            int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_CONFIG_INITIALIZE_VECTOR,
+                                                         &request, sizeof(request),
+                                                         reply, static_cast<uint32_t>(sizeof(initialize_vector[0]) * size));
+            RemapClass* newp = NULL;
+            if (! error) {
+              newp = new RemapClass(initialize_vector, configinfo[i].enabled);
+            }
+            remapclasses_->push_back(newp);
+          }
+          delete[] initialize_vector;
         }
-        delete[] initialize_vector;
+
+        RemapClass::log_allocation_count();
       }
 
     finish:
@@ -739,12 +736,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ----------------------------------------------------------------------
-#define CALL_REMAPCLASS_FUNC(FUNC, PARAMS) {                     \
-    IOLockWrapper::ScopedLock lk(lock_);                         \
-    for (size_t i = 0; i < enabled_remapclasses_->size(); ++i) { \
-      RemapClass* p = (*enabled_remapclasses_)[i];               \
-      if (p) p->FUNC(PARAMS);                                    \
-    }                                                            \
+#define CALL_REMAPCLASS_FUNC(FUNC, PARAMS) {                       \
+    IOLockWrapper::ScopedLock lk(lock_);                           \
+    if (enabled_remapclasses_) {                                   \
+      for (size_t i = 0; i < enabled_remapclasses_->size(); ++i) { \
+        RemapClass* p = (*enabled_remapclasses_)[i];               \
+        if (p) p->FUNC(PARAMS);                                    \
+      }                                                            \
+    }                                                              \
 }
 
     void
@@ -777,6 +776,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       CALL_REMAPCLASS_FUNC(remap_simultaneouskeypresses, );
     }
 
+#undef CALL_REMAPCLASS_FUNC
+
     bool
     remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params)
     {
@@ -793,12 +794,23 @@ namespace org_pqrs_KeyRemap4MacBook {
       return dropped;
     }
 
-#undef CALL_REMAPCLASS_FUNC
-
     bool
     isEventInputQueueDelayEnabled(void)
     {
       return isEventInputQueueDelayEnabled_;
+    }
+
+    bool
+    isEnabled(size_t configindex)
+    {
+      // isEnabled called in remap_key, remap_consumer, ...
+      // So, don't make ScopedLock(lock_).
+
+      if (! remapclasses_) return false;
+
+      if (configindex >= remapclasses_->size()) return false;
+
+      return (*remapclasses_)[configindex]->enabled();
     }
   }
 }
