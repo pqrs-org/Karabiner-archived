@@ -431,7 +431,7 @@
 
   @try {
     for (NSString* xmlpath in paths) {
-      if (! paths) continue;
+      if (! xmlpath) continue;
 
       NSURL* url = [NSURL fileURLWithPath:xmlpath];
       NSXMLDocument* xmldocument = [[[NSXMLDocument alloc] initWithContentsOfURL:url options:0 error:NULL] autorelease];
