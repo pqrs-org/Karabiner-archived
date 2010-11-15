@@ -65,21 +65,24 @@
 // ----------------------------------------------------------------------
 - (int) value:(NSString*)name
 {
-  NSNumber* number = nil;
-
   // user setting
   NSString* identifier = [self configlist_selectedIdentifier];
   if (identifier) {
     NSDictionary* dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
     if (dict) {
-      number = [dict objectForKey:name];
+      NSNumber* number = [dict objectForKey:name];
+      if (number) {
+        return [number intValue];
+      }
     }
   }
-  // default setting
-  if (! number) {
-    number = [default_ objectForKey:name];
-  }
 
+  return [self defaultValue:name];
+}
+
+- (int) defaultValue:(NSString*)name
+{
+  NSNumber* number = [default_ objectForKey:name];
   if (number) {
     return [number intValue];
   } else {
