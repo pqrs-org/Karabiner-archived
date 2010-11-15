@@ -29,7 +29,7 @@
 
 @end
 
-@interface PreferencesClient : NSObject {
+@interface KeyRemap4MacBookPreferencesClient : NSObject {
   id proxy;
 }
 
