@@ -58,8 +58,11 @@
 }
 
 // ------------------------------------------------------------
-- (void) observer_PreferencesChanged:(NSNotification*)notification {
+- (void) observer_ConfigListChanged:(NSNotification*)notification {
   [statusbar_ refresh];
+}
+
+- (void) observer_PreferencesChanged:(NSNotification*)notification {
 }
 
 // ------------------------------------------------------------
@@ -154,6 +157,7 @@
   // ------------------------------------------------------------
   [statusbar_ refresh];
 
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_ConfigListChanged:) name:@"ConfigListChanged" object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_PreferencesChanged:) name:@"PreferencesChanged" object:nil];
 
   // ------------------------------------------------------------

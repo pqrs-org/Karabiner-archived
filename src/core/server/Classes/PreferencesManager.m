@@ -114,6 +114,8 @@
 
   [[NSUserDefaults standardUserDefaults] setObject:md forKey:identifier];
   //[[NSUserDefaults standardUserDefaults] synchronize];
+
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"PreferencesChanged" object:nil];
 }
 
 - (NSArray*) essential_config
@@ -193,6 +195,7 @@
   NSUserDefaults* userdefaults = [NSUserDefaults standardUserDefaults];
   [userdefaults setInteger:newindex forKey:@"selectedIndex"];
 
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"ConfigListChanged" object:nil];
   [[NSNotificationCenter defaultCenter] postNotificationName:@"PreferencesChanged" object:nil];
 }
 
@@ -217,7 +220,7 @@
 
   [[NSUserDefaults standardUserDefaults] setObject:ma forKey:@"configList"];
 
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"PreferencesChanged" object:nil];
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"ConfigListChanged" object:nil];
 }
 
 - (void) configlist_append
@@ -239,7 +242,7 @@
 
   [[NSUserDefaults standardUserDefaults] setObject:ma forKey:@"configList"];
 
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"PreferencesChanged" object:nil];
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"ConfigListChanged" object:nil];
 }
 
 - (void) configlist_delete:(NSInteger)rowIndex
@@ -257,7 +260,7 @@
 
   [[NSUserDefaults standardUserDefaults] setObject:ma forKey:@"configList"];
 
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"PreferencesChanged" object:nil];
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"ConfigListChanged" object:nil];
 }
 
 - (BOOL) isStatusbarEnable
@@ -284,7 +287,7 @@
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isStatusbarEnable"];
   }
 
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"PreferencesChanged" object:nil];
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"ConfigListChanged" object:nil];
 }
 
 - (void) toggleShowSettingNameInStatusBar
@@ -295,7 +298,7 @@
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isShowSettingNameInStatusBar"];
   }
 
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"PreferencesChanged" object:nil];
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"ConfigListChanged" object:nil];
 }
 
 // ----------------------------------------------------------------------
