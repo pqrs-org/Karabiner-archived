@@ -9,7 +9,8 @@
   if (! name) return 0;
 
   if ([name isEqualToString:@"org.gnu.Emacs"] ||
-      [name isEqualToString:@"org.gnu.AquamacsEmacs"]) {
+      [name isEqualToString:@"org.gnu.AquamacsEmacs"] ||
+      [name isEqualToString:@"org.gnu.Aquamacs"]) {
     return [configxmlparser_ keycode:@"ApplicationType::EMACS"];
   }
 
