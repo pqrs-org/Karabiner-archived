@@ -417,7 +417,7 @@
     return path;
   }
 
-  return nil;
+  return @"";
 }
 
 
@@ -431,7 +431,7 @@
 
   @try {
     for (NSString* xmlpath in paths) {
-      if (! xmlpath) continue;
+      if ([xmlpath length] == 0) continue;
 
       NSURL* url = [NSURL fileURLWithPath:xmlpath];
       NSXMLDocument* xmldocument = [[[NSXMLDocument alloc] initWithContentsOfURL:url options:0 error:NULL] autorelease];
