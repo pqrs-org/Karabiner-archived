@@ -30,14 +30,6 @@ namespace {
 }
 
 void
-sysctl_reset(void)
-{
-  Mutex::ScopedLock lk(mutex_sysctl);
-
-  system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_reset terminate");
-}
-
-void
 sysctl_load(void)
 {
   Mutex::ScopedLock lk(mutex_sysctl);
@@ -65,12 +57,9 @@ sysctl_load(void)
     if (exitstatus != 0) return;
   }
 
-  exitstatus = system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_reset");
+  exitstatus = system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set reload_xml 1");
   if (exitstatus != 0) return;
 
   exitstatus = system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set initialized 1");
-  if (exitstatus != 0) return;
-
-  exitstatus = system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_ctl load");
   if (exitstatus != 0) return;
 }
