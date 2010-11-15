@@ -65,9 +65,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // XXX: move to private
     static int essential_config[BRIDGE_ESSENTIAL_CONFIG_INDEX__END__];
-    static int enabled_flags[
-#include "config/output/include.config.hpp"
-    ];
 
   private:
     static unsigned int getvalue(int value, int minval) {
