@@ -6,7 +6,7 @@
 {
   @private
   IBOutlet id view_;
-  IBOutlet KeyRemap4MacBookPreferencesClient* preferencesclient_;
+  IBOutlet org_pqrs_KeyRemap4MacBook_PreferencesClient* preferencesclient_;
 }
 
 - (IBAction) add:(id)sender;

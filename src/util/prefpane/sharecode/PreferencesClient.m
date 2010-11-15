@@ -1,6 +1,6 @@
 #import "PreferencesClient.h"
 
-@implementation KeyRemap4MacBookPreferencesClient
+@implementation org_pqrs_KeyRemap4MacBook_PreferencesClient
 
 @synthesize proxy;
 

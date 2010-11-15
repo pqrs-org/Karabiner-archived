@@ -5,7 +5,7 @@
 @interface org_pqrs_KeyRemap4MacBook_OutlineView_number : NSObject
 {
   IBOutlet id _outlineView_number;
-  IBOutlet KeyRemap4MacBookPreferencesClient* preferencesclient_;
+  IBOutlet org_pqrs_KeyRemap4MacBook_PreferencesClient* preferencesclient_;
 }
 
 @end

@@ -7,7 +7,7 @@
   IBOutlet id _outlineView_checkbox;
   IBOutlet id _searchText;
   IBOutlet id _showEnabledOnly;
-  IBOutlet KeyRemap4MacBookPreferencesClient* preferencesclient_;
+  IBOutlet org_pqrs_KeyRemap4MacBook_PreferencesClient* preferencesclient_;
 }
 
 - (IBAction) expandALL:(id)sender;
