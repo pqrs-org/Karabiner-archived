@@ -3536,6 +3536,24 @@
             </item>
           </list>
         </item>
+        <item>
+          <name>CapsLock Trick</name>
+          <list>
+            <item>
+              <name>CapsLock Trick assigns "Sticky Shift_L / CapsLock" to Shift_R.</name>
+              <sysctl vk_config="true">notsave.shiftr_capslocktrick</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftr_capslocktrick</autogen>
+            </item>
+            <item>
+              <name>Shift_R to Shift_R</name>
+              <appendix>(+ When you type Shift_R only, Sticky Shift_L)</appendix>
+              <appendix>(+ When you type Shift_R twice, Capslock)</appendix>
+              <sysctl>remap.shiftr_to_sticky_shiftr</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, ModifierFlag::EXTRA1, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftr_capslocktrick</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::VK_STICKY_SHIFT_R, KeyCode::VK_STICKY_EXTRA1 </autogen>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
 
