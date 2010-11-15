@@ -4,6 +4,7 @@
 #include "bridge.hpp"
 #include "CallbackWrapper.hpp"
 #include "KeyCode.hpp"
+#include "RemapClass.hpp"
 #include "TimerWrapper.hpp"
 #include "Vector.hpp"
 
@@ -45,7 +46,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void initialize(void);
     static void terminate(void);
 
-    static void add_item(unsigned int configindex,
+    static void add_item(RemapClass* remapclass,
                          unsigned int keycode_toggle,
                          unsigned int keycode_force_on,
                          unsigned int keycode_force_off,
@@ -57,9 +58,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   private:
     struct Item {
       Item(void) {};
-      Item(unsigned int ci, unsigned int kc_toggle, unsigned int kc_force_on, unsigned int kc_force_off, unsigned int kc_sync) :
-        configindex(ci), keycode_toggle(kc_toggle), keycode_force_on(kc_force_on), keycode_force_off(kc_force_off), keycode_sync_keydownup(kc_sync) {}
-      unsigned int configindex;
+      Item(RemapClass* p, unsigned int kc_toggle, unsigned int kc_force_on, unsigned int kc_force_off, unsigned int kc_sync) :
+        remapclass(p), keycode_toggle(kc_toggle), keycode_force_on(kc_force_on), keycode_force_off(kc_force_off), keycode_sync_keydownup(kc_sync) {}
+      RemapClass* remapclass;
       unsigned int keycode_toggle;
       unsigned int keycode_force_on;
       unsigned int keycode_force_off;
