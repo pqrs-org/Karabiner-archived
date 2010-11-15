@@ -1,7 +1,7 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 #import <Cocoa/Cocoa.h>
 
-@protocol KeyRemap4MacBookPreferencesManagerProtocol
+@protocol org_pqrs_KeyRemap4MacBook_PreferencesManagerProtocol
 - (int) value:(NSString*)name;
 - (void) setValueForName:(int)newval forName:(NSString*)name;
 
@@ -29,7 +29,7 @@
 
 @end
 
-@interface KeyRemap4MacBookPreferencesClient : NSObject {
+@interface org_pqrs_KeyRemap4MacBook_PreferencesClient : NSObject {
   id proxy;
 }
 
