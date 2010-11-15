@@ -61,6 +61,11 @@ static NSString* sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
 }
 
 // ------------------------------------------------------------
+- (void) sysctl_reset {
+  NSLog(@"XXX: Implement sysctl_reset\n");
+}
+
+// ------------------------------------------------------------
 - (void) observer_ConfigListChanged:(NSNotification*)notification {
   [statusbar_ refresh];
 }
@@ -103,7 +108,7 @@ static NSString* sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
   // Note: The console user is "real login user" or "loginwindow",
   //       when NSWorkspaceSessionDidBecomeActiveNotification, NSWorkspaceSessionDidResignActiveNotification are called.
   reset_statusmessage();
-  sysctl_reset();
+  [self sysctl_reset];
   sysctl_load();
 }
 
@@ -114,7 +119,7 @@ static NSString* sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
   // Note: The console user is "real login user" or "loginwindow",
   //       when NSWorkspaceSessionDidBecomeActiveNotification, NSWorkspaceSessionDidResignActiveNotification are called.
   reset_statusmessage();
-  sysctl_reset();
+  [self sysctl_reset];
 }
 
 // ------------------------------------------------------------
@@ -146,7 +151,7 @@ static NSString* sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
 
   // ------------------------------------------------------------
   reset_statusmessage();
-  sysctl_reset();
+  [self sysctl_reset];
   [NSThread detachNewThreadSelector:@selector(threadMain)
                            toTarget:self
                          withObject:nil];
@@ -171,7 +176,7 @@ static NSString* sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
 
 - (void) applicationWillTerminate:(NSNotification*)aNotification {
   NSLog(@"applicationWillTerminate");
-  sysctl_reset();
+  [self sysctl_reset];
 }
 
 @end

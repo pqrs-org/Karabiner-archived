@@ -722,6 +722,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                          &request, sizeof(request),
                                                          reply, static_cast<uint32_t>(sizeof(initialize_vector[0]) * size));
             RemapClass* newp = NULL;
+            IOLOG_INFO("error = %d\n", error);
             if (! error) {
               newp = new RemapClass(initialize_vector, configinfo[i].enabled);
             }
