@@ -1,6 +1,7 @@
 #include <sys/types.h>
 #include <sys/sysctl.h>
 
+#include "Common.hpp"
 #include "Config.hpp"
 #include "version.hpp"
 #include "Client.hpp"
@@ -20,13 +21,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   int Config::essential_config[BRIDGE_ESSENTIAL_CONFIG_INDEX__END__] = {
 #include "../bridge/config/output/include.bridge_essential_config_index.cpp"
   };
-  int Config::enabled_flags[
-#include "config/output/include.config.hpp"
-  ];
 
   namespace {
     int reload_xml_handler SYSCTL_HANDLER_ARGS
     {
+      IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
+      if (! lk_eventlock) return;
+
       int error = sysctl_handle_int(oidp, oidp->oid_arg1, oidp->oid_arg2, req);
       if (! error && req->newptr) {
         if (Config::reload_xml) {
@@ -130,8 +131,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   SYSCTL_DECL(_keyremap4macbook_passthrough);
   SYSCTL_NODE(_keyremap4macbook, OID_AUTO, passthrough, CTLFLAG_RW, 0, "");
 
-#include "config/output/include.config_SYSCTL.cpp"
-
   // ----------------------------------------
   SYSCTL_PROC(_keyremap4macbook, OID_AUTO, socket_path, CTLTYPE_STRING | CTLFLAG_RW, Config::socket_path, sizeof(Config::socket_path), socket_path_handler, "A", "");
   SYSCTL_INT(_keyremap4macbook, OID_AUTO, debug, CTLTYPE_INT | CTLFLAG_RW, &(Config::debug), 0, "");
@@ -168,9 +167,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_register_oid(&sysctl__keyremap4macbook_passthrough);
 
     // ----------------------------------------
-#include "config/output/include.config_register.cpp"
-
-    // ----------------------------------------
     sysctl_register_oid(&sysctl__keyremap4macbook_socket_path);
     sysctl_register_oid(&sysctl__keyremap4macbook_debug);
     sysctl_register_oid(&sysctl__keyremap4macbook_debug_pointing);
@@ -193,9 +189,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_unregister_oid(&sysctl__keyremap4macbook_pointing);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_parameter);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_passthrough);
-
-    // ----------------------------------------
-#include "config/output/include.config_unregister.cpp"
 
     // ----------------------------------------
     sysctl_unregister_oid(&sysctl__keyremap4macbook_socket_path);
