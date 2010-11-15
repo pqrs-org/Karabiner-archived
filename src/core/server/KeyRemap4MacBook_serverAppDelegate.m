@@ -8,6 +8,7 @@
 
 #import <Carbon/Carbon.h>
 #import "KeyRemap4MacBook_serverAppDelegate.h"
+#import "SysctlWrapper.h"
 #include "util.h"
 #include "server_objc_part.h"
 #include "server.hpp"
@@ -15,6 +16,8 @@
 @implementation KeyRemap4MacBook_serverAppDelegate
 
 @synthesize window;
+
+static NSString* sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set";
 
 - (void) threadMain {
   NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
@@ -63,6 +66,7 @@
 }
 
 - (void) observer_PreferencesChanged:(NSNotification*)notification {
+  [BUNDLEPREFIX (SysctlWrapper) setSysctlInt:@"keyremap4macbook" name:@"reload_only_config" value:[NSNumber numberWithInt:1] sysctl_set:sysctl_set];
 }
 
 // ------------------------------------------------------------

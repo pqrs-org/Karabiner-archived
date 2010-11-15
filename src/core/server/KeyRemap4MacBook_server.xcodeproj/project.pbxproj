@@ -22,6 +22,7 @@
 		34B893FD128E448C00BC955A /* ConfigXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B893F8128E448C00BC955A /* ConfigXMLParser.m */; };
 		34B893FE128E448C00BC955A /* KeyCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B893FA128E448C00BC955A /* KeyCode.m */; };
 		34B893FF128E448C00BC955A /* WorkSpaceData.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B893FC128E448C00BC955A /* WorkSpaceData.m */; };
+		34C57C751291C36E002BA405 /* SysctlWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C57C741291C36E002BA405 /* SysctlWrapper.m */; };
 		34FB9592128F985A0088B235 /* PreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FB9591128F985A0088B235 /* PreferencesManager.m */; };
 		34FB9595128FCC030088B235 /* include.bridge_essential_config_index.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34FB9594128FCC030088B235 /* include.bridge_essential_config_index.plist */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
@@ -64,6 +65,8 @@
 		34B893FA128E448C00BC955A /* KeyCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyCode.m; path = Classes/KeyCode.m; sourceTree = "<group>"; };
 		34B893FB128E448C00BC955A /* WorkSpaceData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkSpaceData.h; path = Classes/WorkSpaceData.h; sourceTree = "<group>"; };
 		34B893FC128E448C00BC955A /* WorkSpaceData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkSpaceData.m; path = Classes/WorkSpaceData.m; sourceTree = "<group>"; };
+		34C57C731291C36E002BA405 /* SysctlWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SysctlWrapper.h; path = ../../util/prefpane/sharecode/SysctlWrapper.h; sourceTree = SOURCE_ROOT; };
+		34C57C741291C36E002BA405 /* SysctlWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SysctlWrapper.m; path = ../../util/prefpane/sharecode/SysctlWrapper.m; sourceTree = SOURCE_ROOT; };
 		34EE6DD710C218CE00D20676 /* Mutex.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Mutex.hpp; sourceTree = "<group>"; };
 		34FB9590128F98510088B235 /* PreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesManager.h; path = Classes/PreferencesManager.h; sourceTree = "<group>"; };
 		34FB9591128F985A0088B235 /* PreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesManager.m; path = Classes/PreferencesManager.m; sourceTree = "<group>"; };
@@ -190,6 +193,8 @@
 		34A06A5F11F87B3C0085749B /* sharecode */ = {
 			isa = PBXGroup;
 			children = (
+				34C57C731291C36E002BA405 /* SysctlWrapper.h */,
+				34C57C741291C36E002BA405 /* SysctlWrapper.m */,
 				34A06A6011F87B520085749B /* Common.h */,
 				34A06A6111F87B520085749B /* Common.m */,
 			);
@@ -267,6 +272,7 @@
 				34B893FF128E448C00BC955A /* WorkSpaceData.m in Sources */,
 				348C6A2E128E4504005F516D /* StatusBar.m in Sources */,
 				34FB9592128F985A0088B235 /* PreferencesManager.m in Sources */,
+				34C57C751291C36E002BA405 /* SysctlWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
