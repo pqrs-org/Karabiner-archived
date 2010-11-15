@@ -3387,6 +3387,24 @@
           <sysctl>remap.drop_shiftL_fn</sysctl>
           <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::VK_NONE, KeyCode::VK_LOCK_FN</autogen>
         </item>
+        <item>
+          <name>CapsLock Trick</name>
+          <list>
+            <item>
+              <name>CapsLock Trick assigns "Sticky Shift_L / CapsLock" to Shift_L.</name>
+              <sysctl vk_config="true">notsave.shiftl_capslocktrick</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftl_capslocktrick</autogen>
+            </item>
+            <item>
+              <name>Shift_L to Shift_L</name>
+              <appendix>(+ When you type Shift_L only, Sticky Shift_L)</appendix>
+              <appendix>(+ When you type Shift_L twice, Capslock)</appendix>
+              <sysctl>remap.shiftl_to_sticky_shiftl</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, ModifierFlag::EXTRA1, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftl_capslocktrick</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L, KeyCode::VK_STICKY_EXTRA1 </autogen>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
 
