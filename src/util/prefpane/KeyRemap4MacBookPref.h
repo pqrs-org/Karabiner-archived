@@ -10,7 +10,7 @@
   IBOutlet id _checkbox_statusbar_showname;
   IBOutlet id _popup_checkupdate;
   IBOutlet id _label_updatechecked;
-  IBOutlet PreferencesClient* preferencesclient_;
+  IBOutlet KeyRemap4MacBookPreferencesClient* preferencesclient_;
 }
 
 - (IBAction) toggleStatusBar:(id)sender;
