@@ -619,21 +619,25 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       IOLockWrapper::ScopedLock lk(lock_);
 
-      if (remapclasses_) {
-        clear_remapclasses_();
-      }
-      remapclasses_ = new Vector_RemapClassPointer();
-
-      if (enabled_remapclasses_) {
-        delete enabled_remapclasses_;
-        enabled_remapclasses_ = NULL;
-      }
-
-      Handle_VK_CONFIG::clear_items();
-
-      // ------------------------------------------------------------
       uint32_t count = 0;
       KeyRemap4MacBook_bridge::GetConfigInfo::Reply::Item* configinfo = NULL;
+
+      // ------------------------------------------------------------
+      if (! Config::reload_only_config) {
+        if (remapclasses_) {
+          clear_remapclasses_();
+        }
+        remapclasses_ = new Vector_RemapClassPointer();
+
+        if (enabled_remapclasses_) {
+          delete enabled_remapclasses_;
+          enabled_remapclasses_ = NULL;
+        }
+
+        Handle_VK_CONFIG::clear_items();
+      }
+
+      if (! remapclasses_) goto finish;
 
       // ------------------------------------------------------------
       // get essential_config
@@ -689,7 +693,17 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       // ------------------------------------------------------------
-      if (! Config::reload_only_config) {
+      if (Config::reload_only_config) {
+        if (count != remapclasses_->size()) {
+          IOLOG_ERROR("do_reload_xml count != remapclasses_->size()\n");
+          goto finish;
+        }
+
+        for (uint32_t i = 0; i < count; ++i) {
+          (*remapclasses_)[i]->setEnabled(configinfo[i].enabled);
+        }
+
+      } else {
         // get initialize_vector
         for (uint32_t i = 0; i < count; ++i) {
           uint32_t size = configinfo[i].initialize_vector_size;
@@ -718,6 +732,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         RemapClass::log_allocation_count();
       }
+
+      refresh();
 
     finish:
       if (configinfo) {
@@ -784,10 +800,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       IOLockWrapper::ScopedLock lk(lock_);
 
       bool dropped = false;
-      for (size_t i = 0; i < enabled_remapclasses_->size(); ++i) {
-        RemapClass* p = (*enabled_remapclasses_)[i];
-        if (p) {
-          if (p->remap_dropkeyafterremap(params)) dropped = true;
+
+      if (enabled_remapclasses_) {
+        for (size_t i = 0; i < enabled_remapclasses_->size(); ++i) {
+          RemapClass* p = (*enabled_remapclasses_)[i];
+          if (p) {
+            if (p->remap_dropkeyafterremap(params)) dropped = true;
+          }
         }
       }
 
@@ -810,7 +829,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       if (configindex >= remapclasses_->size()) return false;
 
-      return (*remapclasses_)[configindex]->enabled();
+      RemapClass* p = (*remapclasses_)[configindex];
+      if (! p) return false;
+
+      return p->enabled();
     }
   }
 }
