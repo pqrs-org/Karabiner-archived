@@ -5787,6 +5787,17 @@
           </list>
         </item>
         <item>
+          <name>Enable at only Launchbar</name>
+          <list>
+            <item>
+              <name>Change Semicolon(;) to Return</name>
+              <sysctl>remap.app_launchbar_semicolon_to_return</sysctl>
+              <only>LAUNCHBAR</only>
+              <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::RETURN</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Enable at only Remote Desktop Connection Client</name>
           <list>
             <item>
