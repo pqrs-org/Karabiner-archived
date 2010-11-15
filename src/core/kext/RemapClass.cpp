@@ -358,7 +358,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         } else if (BRIDGE_FILTERTYPE_NONE < type && type < BRIDGE_FILTERTYPE_END) {
           if (items_.size() == 0) {
-            IOLOG_ERROR("RemapClass::RemapClass invalid filter.\n");
+            IOLOG_ERROR("RemapClass::RemapClass invalid filter (%d).\n", type);
             return;
           }
           Item* p = items_.back();
@@ -722,7 +722,6 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                          &request, sizeof(request),
                                                          reply, static_cast<uint32_t>(sizeof(initialize_vector[0]) * size));
             RemapClass* newp = NULL;
-            IOLOG_INFO("error = %d\n", error);
             if (! error) {
               newp = new RemapClass(initialize_vector, configinfo[i].enabled);
             }
