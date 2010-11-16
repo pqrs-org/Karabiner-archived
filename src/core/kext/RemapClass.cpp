@@ -629,11 +629,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ------------------------------------------------------------
       if (! Config::do_reload_only_config) {
         clear_xml();
+        remapclasses_ = new Vector_RemapClassPointer();
       }
 
-      remapclasses_ = new Vector_RemapClassPointer();
       if (! remapclasses_) {
-        IOLOG_ERROR("do_reload_xml allocation failed.\n");
+        IOLOG_ERROR("do_reload_xml remapclasses_ == NULL.\n");
         goto finish;
       }
 

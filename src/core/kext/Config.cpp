@@ -61,6 +61,7 @@ namespace org_pqrs_KeyRemap4MacBook {
             Config::do_reload_xml = 0;
             Config::initialized = 1;
           } else {
+            IOLOG_ERROR("RemapClassManager::reload_xml is failed.\n");
             Config::do_reload_xml = -1;
           }
         }
@@ -77,6 +78,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (RemapClassManager::reload_xml()) {
             Config::do_reload_only_config = 0;
           } else {
+            IOLOG_ERROR("RemapClassManager::reload_xml is failed.\n");
             Config::do_reload_only_config = -1;
           }
         }
