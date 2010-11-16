@@ -1410,6 +1410,11 @@
           <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::F14</autogen>
         </item>
         <item>
+          <name>Eject to F15</name>
+          <sysctl>remap.eject2f15</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::F15</autogen>
+        </item>
+        <item>
           <name>Eject to PageDown</name>
           <sysctl>remap.eject2pagedown</sysctl>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::PAGEDOWN</autogen>
