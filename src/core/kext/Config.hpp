@@ -12,11 +12,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void sysctl_register(void);
     static void sysctl_unregister(void);
 
+    static void load_essential_config_default(void);
+    static void load_essential_config(void);
+
     static int get_essential_config(unsigned int index) {
       if (index >= BRIDGE_ESSENTIAL_CONFIG_INDEX__END__) {
         return 0;
       }
-      return essential_config[index];
+      return essential_config_[index];
     }
 
     static unsigned int get_repeat_initial_wait(void) {
@@ -63,9 +66,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     enum { SOCKET_PATH_MAX = 256 };
     static char socket_path[SOCKET_PATH_MAX];
 
-    // XXX: move to private
-    static int essential_config[BRIDGE_ESSENTIAL_CONFIG_INDEX__END__];
-
   private:
     static unsigned int getvalue(int value, int minval) {
       if (value < minval) return minval;
@@ -76,6 +76,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (value > maxval) return maxval;
       return value;
     }
+
+    static int essential_config_[BRIDGE_ESSENTIAL_CONFIG_INDEX__END__];
+    static const int essential_config_default_[BRIDGE_ESSENTIAL_CONFIG_INDEX__END__];
   };
 }
 

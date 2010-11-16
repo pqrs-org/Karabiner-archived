@@ -18,7 +18,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   int Config::reload_only_config = 0;
   char Config::socket_path[SOCKET_PATH_MAX];
 
-  int Config::essential_config[BRIDGE_ESSENTIAL_CONFIG_INDEX__END__] = {
+  int Config::essential_config_[BRIDGE_ESSENTIAL_CONFIG_INDEX__END__] = {
+#include "../bridge/config/output/include.bridge_essential_config_index.cpp"
+  };
+
+  const int Config::essential_config_default_[BRIDGE_ESSENTIAL_CONFIG_INDEX__END__] = {
 #include "../bridge/config/output/include.bridge_essential_config_index.cpp"
   };
 
@@ -199,5 +203,27 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_unregister_oid(&sysctl__keyremap4macbook_initialized);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_reload_xml);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_reload_only_config);
+  }
+
+  void
+  Config::load_essential_config_default(void)
+  {
+    for (int i = 0; i < BRIDGE_ESSENTIAL_CONFIG_INDEX__END__; ++i) {
+      essential_config_[i] = essential_config_default_[i];
+    }
+  }
+
+  void
+  Config::load_essential_config(void)
+  {
+    KeyRemap4MacBook_bridge::GetEssentialConfig::Reply reply;
+    int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_ESSENTIAL_CONFIG, NULL, 0, &reply, sizeof(reply));
+    if (error) {
+      IOLOG_ERROR("do_reload_xml GetEssentialConfig sendmsg failed. (%d)\n", error);
+      return;
+    }
+    for (size_t i = 0; i < sizeof(reply.value) / sizeof(reply.value[0]); ++i) {
+      essential_config_[i] = reply.value[i];
+    }
   }
 }
