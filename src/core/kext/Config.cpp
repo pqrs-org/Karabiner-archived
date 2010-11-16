@@ -150,9 +150,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   SYSCTL_DECL(_keyremap4macbook_option);
   SYSCTL_NODE(_keyremap4macbook, OID_AUTO, option, CTLFLAG_RW, 0, "");
 
-  SYSCTL_DECL(_keyremap4macbook_notsave);
-  SYSCTL_NODE(_keyremap4macbook, OID_AUTO, notsave, CTLFLAG_RW, 0, "");
-
   SYSCTL_DECL(_keyremap4macbook_repeat);
   SYSCTL_NODE(_keyremap4macbook, OID_AUTO, repeat, CTLFLAG_RW, 0, "");
 
@@ -194,7 +191,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_register_oid(&sysctl__keyremap4macbook_general);
     sysctl_register_oid(&sysctl__keyremap4macbook_remap);
     sysctl_register_oid(&sysctl__keyremap4macbook_option);
-    sysctl_register_oid(&sysctl__keyremap4macbook_notsave);
     sysctl_register_oid(&sysctl__keyremap4macbook_repeat);
     sysctl_register_oid(&sysctl__keyremap4macbook_pointing);
     sysctl_register_oid(&sysctl__keyremap4macbook_parameter);
@@ -219,7 +215,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_unregister_oid(&sysctl__keyremap4macbook_general);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_remap);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_option);
-    sysctl_unregister_oid(&sysctl__keyremap4macbook_notsave);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_repeat);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_pointing);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_parameter);
