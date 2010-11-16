@@ -1230,6 +1230,11 @@
           <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::COMMAND_R</autogen>
         </item>
         <item>
+          <name>Control_R to Option_R</name>
+          <sysctl>remap.controlR2optionR</sysctl>
+          <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::OPTION_R</autogen>
+        </item>
+        <item>
           <name>Control_R to Escape</name>
           <sysctl>remap.controlR2escape</sysctl>
           <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::ESCAPE</autogen>
@@ -1408,6 +1413,11 @@
           <name>Eject to F14</name>
           <sysctl>remap.eject2f14</sysctl>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::F14</autogen>
+        </item>
+        <item>
+          <name>Eject to F15</name>
+          <sysctl>remap.eject2f15</sysctl>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::F15</autogen>
         </item>
         <item>
           <name>Eject to PageDown</name>
@@ -3387,6 +3397,24 @@
           <sysctl>remap.drop_shiftL_fn</sysctl>
           <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::VK_NONE, KeyCode::VK_LOCK_FN</autogen>
         </item>
+        <item>
+          <name>CapsLock Trick</name>
+          <list>
+            <item>
+              <name>CapsLock Trick assigns "Sticky Shift_L / CapsLock" to Shift_L.</name>
+              <sysctl vk_config="true">notsave.shiftl_capslocktrick</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftl_capslocktrick</autogen>
+            </item>
+            <item>
+              <name>Shift_L to Shift_L</name>
+              <appendix>(+ When you type Shift_L only, Sticky Shift_L)</appendix>
+              <appendix>(+ When you type Shift_L twice, Capslock)</appendix>
+              <sysctl>remap.shiftl_to_sticky_shiftl</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, ModifierFlag::EXTRA1, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftl_capslocktrick</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L, KeyCode::VK_STICKY_EXTRA1 </autogen>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
 
@@ -3515,6 +3543,24 @@
               <appendix>(only without other modifiers)</appendix>
               <sysctl>remap.optionRshiftR2forward</sysctl>
               <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R | ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::SHIFT_R, ModifierFlag::OPTION_R, KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_R</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
+          <name>CapsLock Trick</name>
+          <list>
+            <item>
+              <name>CapsLock Trick assigns "Sticky Shift_L / CapsLock" to Shift_R.</name>
+              <sysctl vk_config="true">notsave.shiftr_capslocktrick</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftr_capslocktrick</autogen>
+            </item>
+            <item>
+              <name>Shift_R to Shift_R</name>
+              <appendix>(+ When you type Shift_R only, Sticky Shift_L)</appendix>
+              <appendix>(+ When you type Shift_R twice, Capslock)</appendix>
+              <sysctl>remap.shiftr_to_sticky_shiftr</sysctl>
+              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, ModifierFlag::EXTRA1, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftr_capslocktrick</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::VK_STICKY_SHIFT_R, KeyCode::VK_STICKY_EXTRA1 </autogen>
             </item>
           </list>
         </item>
@@ -5751,6 +5797,17 @@
           </list>
         </item>
         <item>
+          <name>Enable at only Launchbar</name>
+          <list>
+            <item>
+              <name>Change Semicolon(;) to Return</name>
+              <sysctl>remap.app_launchbar_semicolon_to_return</sysctl>
+              <only>LAUNCHBAR</only>
+              <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::RETURN</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Enable at only Remote Desktop Connection Client</name>
           <list>
             <item>
@@ -5824,6 +5881,31 @@
           <autogen>--KeyToKey-- KeyCode::K, KeyCode::I</autogen>
           <autogen>--KeyToKey-- KeyCode::L, KeyCode::O</autogen>
           <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::P</autogen>
+        </item>
+        <item>
+          <name>Use Workman Keyboard Layout</name>
+          <sysctl>remap.qwerty2workman</sysctl>
+          <autogen>--KeyToKey-- KeyCode::W, KeyCode::D</autogen>
+          <autogen>--KeyToKey-- KeyCode::E, KeyCode::R</autogen>
+          <autogen>--KeyToKey-- KeyCode::R, KeyCode::W</autogen>
+          <autogen>--KeyToKey-- KeyCode::T, KeyCode::B</autogen>
+          <autogen>--KeyToKey-- KeyCode::Y, KeyCode::J</autogen>
+          <autogen>--KeyToKey-- KeyCode::U, KeyCode::F</autogen>
+          <autogen>--KeyToKey-- KeyCode::I, KeyCode::U</autogen>
+          <autogen>--KeyToKey-- KeyCode::O, KeyCode::P</autogen>
+          <autogen>--KeyToKey-- KeyCode::P, KeyCode::SEMICOLON</autogen>
+          <autogen>--KeyToKey-- KeyCode::D, KeyCode::H</autogen>
+          <autogen>--KeyToKey-- KeyCode::F, KeyCode::T</autogen>
+          <autogen>--KeyToKey-- KeyCode::H, KeyCode::Y</autogen>
+          <autogen>--KeyToKey-- KeyCode::J, KeyCode::N</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, KeyCode::E</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, KeyCode::O</autogen>
+          <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::I</autogen>
+          <autogen>--KeyToKey-- KeyCode::C, KeyCode::M</autogen>
+          <autogen>--KeyToKey-- KeyCode::V, KeyCode::C</autogen>
+          <autogen>--KeyToKey-- KeyCode::B, KeyCode::V</autogen>
+          <autogen>--KeyToKey-- KeyCode::N, KeyCode::K</autogen>
+          <autogen>--KeyToKey-- KeyCode::M, KeyCode::L</autogen>
         </item>
         <item>
           <name>Use ABCDEF Keyboard Layout</name>
