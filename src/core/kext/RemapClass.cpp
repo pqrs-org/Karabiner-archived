@@ -585,19 +585,26 @@ namespace org_pqrs_KeyRemap4MacBook {
       refresh_timer_.initialize(&workloop, NULL, refresh_core);
     }
 
-    static void
-    clear_remapclasses_(void)
+    void
+    clear_xml(void)
     {
-      if (! remapclasses_) return;
+      Handle_VK_CONFIG::clear_items();
 
-      for (size_t i = 0; i < remapclasses_->size(); ++i) {
-        RemapClass* p = (*remapclasses_)[i];
-        if (p) {
-          delete p;
-        }
+      if (enabled_remapclasses_) {
+        delete enabled_remapclasses_;
+        enabled_remapclasses_ = NULL;
       }
-      delete remapclasses_;
-      remapclasses_ = NULL;
+
+      if (remapclasses_) {
+        for (size_t i = 0; i < remapclasses_->size(); ++i) {
+          RemapClass* p = (*remapclasses_)[i];
+          if (p) {
+            delete p;
+          }
+        }
+        delete remapclasses_;
+        remapclasses_ = NULL;
+      }
     }
 
     void
@@ -605,11 +612,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       refresh_timer_.terminate();
 
-      if (enabled_remapclasses_) {
-        delete enabled_remapclasses_;
-        enabled_remapclasses_ = NULL;
-      }
-      clear_remapclasses_();
+      clear_xml();
 
       IOLockWrapper::free(lock_);
     }
@@ -624,17 +627,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       if (! Config::reload_only_config) {
-        if (remapclasses_) {
-          clear_remapclasses_();
-        }
-        remapclasses_ = new Vector_RemapClassPointer();
-
-        if (enabled_remapclasses_) {
-          delete enabled_remapclasses_;
-          enabled_remapclasses_ = NULL;
-        }
-
-        Handle_VK_CONFIG::clear_items();
+        clear_xml();
       }
 
       if (! remapclasses_) goto finish;
