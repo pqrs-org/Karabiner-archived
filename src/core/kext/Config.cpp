@@ -217,7 +217,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   Config::load_essential_config(void)
   {
     KeyRemap4MacBook_bridge::GetEssentialConfig::Reply reply;
-    int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_ESSENTIAL_CONFIG, NULL, 0, &reply, sizeof(reply));
+    time_t timeout_second = 3;
+    int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_ESSENTIAL_CONFIG, NULL, 0, &reply, sizeof(reply), timeout_second, 0);
     if (error) {
       IOLOG_ERROR("do_reload_xml GetEssentialConfig sendmsg failed. (%d)\n", error);
       return;
