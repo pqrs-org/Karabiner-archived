@@ -93,6 +93,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool is_simultaneouskeypresses(void);
 
     static void log_allocation_count(void);
+    static void reset_allocation_count(void);
 
   private:
     Vector_ItemPointer items_;
@@ -100,7 +101,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool enabled_;
     bool is_simultaneouskeypresses_;
 
-    static int allocation_count;
+    static int allocation_count_;
   };
   typedef RemapClass* RemapClassPointer;
   DECLARE_VECTOR(RemapClassPointer);

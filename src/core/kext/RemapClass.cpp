@@ -292,7 +292,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------------------------------------
-  int RemapClass::allocation_count = 0;
+  int RemapClass::allocation_count_ = 0;
 
   RemapClass::RemapClass(const unsigned int* initialize_vector, bool enabledvalue) :
     statusmessage_(NULL),
@@ -330,11 +330,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (total_length == 0) return;
 
-    if (allocation_count + total_length > MAX_ALLOCATION_COUNT) {
-      IOLOG_ERROR("RemapClass::RemapClass too many allocation_count.\n");
+    if (allocation_count_ + total_length > MAX_ALLOCATION_COUNT) {
+      IOLOG_ERROR("RemapClass::RemapClass too many allocation_count_.\n");
       return;
     }
-    allocation_count += total_length;
+    allocation_count_ += total_length;
 
     // --------------------
     unsigned int total_tmp = 0;
@@ -508,7 +508,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapClass::log_allocation_count(void)
   {
-    IOLOG_INFO("RemapClass allocation_count %d/%d (%d%%)\n", allocation_count, MAX_ALLOCATION_COUNT, allocation_count * 100 / MAX_ALLOCATION_COUNT);
+    IOLOG_INFO("RemapClass::allocation_count_ %d/%d (%d%%)\n", allocation_count_, MAX_ALLOCATION_COUNT, allocation_count_ * 100 / MAX_ALLOCATION_COUNT);
+  }
+
+  void
+  RemapClass::reset_allocation_count(void)
+  {
+    allocation_count_ = 0;
   }
 
   // ================================================================================
@@ -689,6 +695,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       } else {
         remapclasses_->reserve(count);
+        RemapClass::reset_allocation_count();
 
         // get initialize_vector
         for (uint32_t i = 0; i < count; ++i) {
