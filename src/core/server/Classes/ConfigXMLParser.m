@@ -386,7 +386,7 @@
     [initialize_vector insertObject:[NSNumber numberWithUnsignedInteger:[initialize_vector count]] atIndex:0];
     [initialize_vector insertObject:[NSNumber numberWithUnsignedInt:BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION] atIndex:0];
 
-    [array_initialize_vector_ addObject:initialize_vector];
+    [dict_initialize_vector_ setObject:initialize_vector forKey:[keycode_ numberValue:[NSString stringWithFormat:@"ConfigIndex::%@", name]]];
     [array_config_name_ addObject:rawname];
   }
 
@@ -461,7 +461,7 @@
   [super init];
 
   simultaneous_keycode_index_ = 0;
-  array_initialize_vector_ = [[NSMutableArray alloc] initWithCapacity:0];
+  dict_initialize_vector_ = [[NSMutableDictionary alloc] initWithCapacity:0];
   array_config_name_ = [[NSMutableArray alloc] initWithCapacity:0];
   keycode_ = [KeyCode new];
   initialized_ = NO;
@@ -473,8 +473,8 @@
 
 - (void) dealloc
 {
-  if (array_initialize_vector_) {
-    [array_initialize_vector_ release];
+  if (dict_initialize_vector_) {
+    [dict_initialize_vector_ release];
   }
   if (array_config_name_) {
     [array_config_name_ release];
@@ -490,26 +490,23 @@
 - (NSUInteger) count
 {
   if (! initialized_) return 0;
-  return [array_initialize_vector_ count];
-}
-
-- (NSUInteger) initialize_vector_size:(unsigned int)configindex
-{
-  if (! initialized_) return 0;
-  if (configindex >= [array_initialize_vector_ count]) return 0;
-
-  NSArray* a = [array_initialize_vector_ objectAtIndex:configindex];
-  if (! a) return 0;
-
-  return [a count];
+  return [dict_initialize_vector_ count];
 }
 
 - (NSArray*) initialize_vector:(unsigned int)configindex
 {
   if (! initialized_) return nil;
-  if (configindex >= [array_initialize_vector_ count]) return nil;
+  return [dict_initialize_vector_ objectForKey:[NSNumber numberWithUnsignedInt:configindex]];
+}
 
-  return [array_initialize_vector_ objectAtIndex:configindex];
+- (NSUInteger) initialize_vector_size:(unsigned int)configindex
+{
+  if (! initialized_) return 0;
+
+  NSArray* a = [self initialize_vector:configindex];
+  if (! a) return 0;
+
+  return [a count];
 }
 
 - (unsigned int) keycode:(NSString*)name
