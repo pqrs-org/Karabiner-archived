@@ -23,7 +23,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     bool
-    makeSocket(socket_t& socket)
+    makeSocket(socket_t& socket, time_t timeout_second, suseconds_t timeout_microsecond)
     {
       int error = sock_socket(PF_LOCAL, SOCK_STREAM, 0, NULL, NULL, &socket);
       if (error) {
@@ -33,8 +33,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ----------------------------------------
       struct timeval tv;
-      tv.tv_sec = KeyRemap4MacBook_client::TIMEOUT_SECOND;
-      tv.tv_usec = KeyRemap4MacBook_client::TIMEOUT_MICROSECOND;
+      tv.tv_sec = timeout_second;
+      tv.tv_usec = timeout_microsecond;
 
       error = sock_setsockopt(socket, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(struct timeval));
       if (error) {
@@ -114,7 +114,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   int
-  KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::RequestType type, void* request, uint32_t requestsize, void* reply, uint32_t replysize)
+  KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::RequestType type, void* request, uint32_t requestsize, void* reply, uint32_t replysize,
+                                   time_t timeout_second, suseconds_t timeout_microsecond)
   {
     if (! lock_) { return EIO; }
 
@@ -136,7 +137,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     socket_t socket;
     bool isMakeSocket = false;
 
-    if (! makeSocket(socket)) {
+    if (! makeSocket(socket, timeout_second, timeout_microsecond)) {
       result = EIO;
       goto finish;
     }
