@@ -617,20 +617,25 @@ namespace org_pqrs_KeyRemap4MacBook {
       IOLockWrapper::free(lock_);
     }
 
-    void
+    bool
     reload_xml(void)
     {
       IOLockWrapper::ScopedLock lk(lock_);
 
+      bool retval = false;
       uint32_t count = 0;
       KeyRemap4MacBook_bridge::GetConfigInfo::Reply::Item* configinfo = NULL;
 
       // ------------------------------------------------------------
-      if (! Config::reload_only_config) {
+      if (! Config::do_reload_only_config) {
         clear_xml();
       }
 
-      if (! remapclasses_) goto finish;
+      remapclasses_ = new Vector_RemapClassPointer();
+      if (! remapclasses_) {
+        IOLOG_ERROR("do_reload_xml allocation failed.\n");
+        goto finish;
+      }
 
       // ------------------------------------------------------------
       // get count
@@ -649,9 +654,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         IOLOG_ERROR("do_reload_xml too many config count. (%d)\n", count);
         goto finish;
       }
-
-      // --------------------
-      remapclasses_->reserve(count);
 
       // ------------------------------------------------------------
       // get configinfo
@@ -675,7 +677,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       // ------------------------------------------------------------
-      if (Config::reload_only_config) {
+      if (Config::do_reload_only_config) {
         if (count != remapclasses_->size()) {
           IOLOG_ERROR("do_reload_xml count != remapclasses_->size()\n");
           goto finish;
@@ -686,6 +688,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
       } else {
+        remapclasses_->reserve(count);
+
         // get initialize_vector
         for (uint32_t i = 0; i < count; ++i) {
           uint32_t size = configinfo[i].initialize_vector_size;
@@ -719,10 +723,13 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       refresh();
 
+      retval = true;
+
     finish:
       if (configinfo) {
         delete[] configinfo;
       }
+      return retval;
     }
 
     void
