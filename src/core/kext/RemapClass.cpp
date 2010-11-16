@@ -636,7 +636,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       // get count
       {
         KeyRemap4MacBook_bridge::GetConfigCount::Reply reply;
-        int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_CONFIG_COUNT, NULL, 0, &reply, sizeof(reply));
+        time_t timeout_second = 3;
+        int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_CONFIG_COUNT, NULL, 0, &reply, sizeof(reply), timeout_second, 0);
         if (error) {
           IOLOG_ERROR("do_reload_xml GetConfigCount sendmsg failed. (%d)\n", error);
           goto finish;
@@ -662,9 +663,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       {
         KeyRemap4MacBook_bridge::GetConfigInfo::Reply* reply = reinterpret_cast<KeyRemap4MacBook_bridge::GetConfigInfo::Reply*>(configinfo);
+        time_t timeout_second = 3;
         int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_CONFIG_INFO,
                                                      NULL, 0,
-                                                     reply, static_cast<uint32_t>(sizeof(configinfo[0]) * count));
+                                                     reply, static_cast<uint32_t>(sizeof(configinfo[0]) * count),
+                                                     timeout_second, 0);
         if (error) {
           IOLOG_ERROR("do_reload_xml GetConfigInfo sendmsg failed. (%d)\n", error);
           goto finish;
@@ -697,9 +700,11 @@ namespace org_pqrs_KeyRemap4MacBook {
           {
             KeyRemap4MacBook_bridge::GetConfigInitializeVector::Request request(i);
             KeyRemap4MacBook_bridge::GetConfigInitializeVector::Reply* reply = reinterpret_cast<KeyRemap4MacBook_bridge::GetConfigInitializeVector::Reply*>(initialize_vector);
+            time_t timeout_second = 3;
             int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_CONFIG_INITIALIZE_VECTOR,
                                                          &request, sizeof(request),
-                                                         reply, static_cast<uint32_t>(sizeof(initialize_vector[0]) * size));
+                                                         reply, static_cast<uint32_t>(sizeof(initialize_vector[0]) * size),
+                                                         timeout_second, 0);
             RemapClass* newp = NULL;
             if (! error) {
               newp = new RemapClass(initialize_vector, configinfo[i].enabled);
