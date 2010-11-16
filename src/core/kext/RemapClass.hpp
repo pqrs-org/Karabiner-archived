@@ -111,7 +111,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void terminate(void);
 
     void clear_xml(void);
-    void reload_xml(void);
+    bool reload_xml(void);
 
     // call after setting enable/disable status is changed.
     // (PreferencesPane, VK_CONFIG)
