@@ -62,7 +62,7 @@ static NSString* sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
 
 // ------------------------------------------------------------
 - (void) sysctl_reset {
-  NSLog(@"XXX: Implement sysctl_reset\n");
+  [BUNDLEPREFIX (SysctlWrapper) setSysctlInt:@"keyremap4macbook" name:@"reset" value:[NSNumber numberWithInt:1] sysctl_set:sysctl_set];
 }
 
 // ------------------------------------------------------------
