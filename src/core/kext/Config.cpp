@@ -92,47 +92,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
       return error;
     }
-
-    int refresh_remapfunc_handler SYSCTL_HANDLER_ARGS
-    {
-      int error = sysctl_handle_int(oidp, oidp->oid_arg1, oidp->oid_arg2, req);
-      if (! error && req->newptr) {
-        FlagStatus::lock_clear();
-        FlagStatus::sticky_clear();
-        RemapClassManager::refresh();
-        RemapFunc::PointingRelativeToScroll::cancelScroll();
-
-        // StatusMessageWindowParameter
-        {
-          static int last_parameter_statuswindow_alpha_font = -1;
-          static int last_parameter_statuswindow_alpha_background = -1;
-          static int last_parameter_statuswindow_posx_adjustment = 0;
-          static int last_parameter_statuswindow_posy_adjustment = 0;
-
-          int alpha_font       = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_statuswindow_alpha_font);
-          int alpha_background = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_statuswindow_alpha_background);
-          int posx_adjustment  = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_statuswindow_posx_adjustment);
-          int posy_adjustment  = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_statuswindow_posy_adjustment);
-
-          if (last_parameter_statuswindow_alpha_font       != alpha_font ||
-              last_parameter_statuswindow_alpha_background != alpha_background ||
-              last_parameter_statuswindow_posx_adjustment  != posx_adjustment ||
-              last_parameter_statuswindow_posy_adjustment  != posy_adjustment) {
-            last_parameter_statuswindow_alpha_font       = alpha_font;
-            last_parameter_statuswindow_alpha_background = alpha_background;
-            last_parameter_statuswindow_posx_adjustment  = posx_adjustment;
-            last_parameter_statuswindow_posy_adjustment  = posy_adjustment;
-
-            KeyRemap4MacBook_bridge::StatusMessageWindowParameter::Request request(alpha_font,
-                                                                                   alpha_background,
-                                                                                   posx_adjustment,
-                                                                                   posy_adjustment);
-            KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_STATUS_MESSAGE_WINDOW_PARAMETER, &request, sizeof(request), NULL, 0);
-          }
-        }
-      }
-      return 0;
-    }
   }
 
   // ----------------------------------------------------------------------
@@ -142,15 +101,15 @@ namespace org_pqrs_KeyRemap4MacBook {
   SYSCTL_NODE(, OID_AUTO, keyremap4macbook, CTLFLAG_RW, 0, "");
 
   // ----------------------------------------
-  SYSCTL_INT   (_keyremap4macbook, OID_AUTO, initialized,           CTLTYPE_INT,                 &(Config::initialized),           0,                                        "");
-  SYSCTL_INT   (_keyremap4macbook, OID_AUTO, debug,                 CTLTYPE_INT | CTLFLAG_RW,    &(Config::debug),                 0,                                        "");
-  SYSCTL_INT   (_keyremap4macbook, OID_AUTO, debug_pointing,        CTLTYPE_INT | CTLFLAG_RW,    &(Config::debug_pointing),        0,                                        "");
-  SYSCTL_INT   (_keyremap4macbook, OID_AUTO, debug_devel,           CTLTYPE_INT | CTLFLAG_RW,    &(Config::debug_devel),           0,                                        "");
+  SYSCTL_INT(_keyremap4macbook, OID_AUTO, initialized,           CTLTYPE_INT,                 &(Config::initialized),           0,                                        "");
+  SYSCTL_INT(_keyremap4macbook, OID_AUTO, debug,                 CTLTYPE_INT | CTLFLAG_RW,    &(Config::debug),                 0,                                        "");
+  SYSCTL_INT(_keyremap4macbook, OID_AUTO, debug_pointing,        CTLTYPE_INT | CTLFLAG_RW,    &(Config::debug_pointing),        0,                                        "");
+  SYSCTL_INT(_keyremap4macbook, OID_AUTO, debug_devel,           CTLTYPE_INT | CTLFLAG_RW,    &(Config::debug_devel),           0,                                        "");
   SYSCTL_STRING(_keyremap4macbook, OID_AUTO, version,               CTLFLAG_RD,                  config_version,                   0,                                        "");
-  SYSCTL_PROC  (_keyremap4macbook, OID_AUTO, do_reset,              CTLTYPE_INT | CTLFLAG_RW,    &(Config::do_reset),              0, do_reset_handler,                 "I", "");
-  SYSCTL_PROC  (_keyremap4macbook, OID_AUTO, do_reload_xml,         CTLTYPE_INT | CTLFLAG_RW,    &(Config::do_reload_xml),         0, do_reload_xml_handler,            "I", "");
-  SYSCTL_PROC  (_keyremap4macbook, OID_AUTO, do_reload_only_config, CTLTYPE_INT | CTLFLAG_RW,    &(Config::do_reload_only_config), 0, do_reload_only_config_handler,    "I", "");
-  SYSCTL_PROC  (_keyremap4macbook, OID_AUTO, socket_path,           CTLTYPE_STRING | CTLFLAG_RW, Config::socket_path, sizeof(Config::socket_path), socket_path_handler, "A", "");
+  SYSCTL_PROC(_keyremap4macbook, OID_AUTO, do_reset,              CTLTYPE_INT | CTLFLAG_RW,    &(Config::do_reset),              0, do_reset_handler,                 "I", "");
+  SYSCTL_PROC(_keyremap4macbook, OID_AUTO, do_reload_xml,         CTLTYPE_INT | CTLFLAG_RW,    &(Config::do_reload_xml),         0, do_reload_xml_handler,            "I", "");
+  SYSCTL_PROC(_keyremap4macbook, OID_AUTO, do_reload_only_config, CTLTYPE_INT | CTLFLAG_RW,    &(Config::do_reload_only_config), 0, do_reload_only_config_handler,    "I", "");
+  SYSCTL_PROC(_keyremap4macbook, OID_AUTO, socket_path,           CTLTYPE_STRING | CTLFLAG_RW, Config::socket_path, sizeof(Config::socket_path), socket_path_handler, "A", "");
 
   // ----------------------------------------------------------------------
   void
@@ -215,6 +174,42 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
     for (size_t i = 0; i < sizeof(reply.value) / sizeof(reply.value[0]); ++i) {
       essential_config_[i] = reply.value[i];
+    }
+
+    // ------------------------------------------------------------
+    // reset values
+    FlagStatus::lock_clear();
+    FlagStatus::sticky_clear();
+    RemapClassManager::refresh();
+    RemapFunc::PointingRelativeToScroll::cancelScroll();
+
+    // StatusMessageWindowParameter
+    {
+      static int last_parameter_statuswindow_alpha_font = -1;
+      static int last_parameter_statuswindow_alpha_background = -1;
+      static int last_parameter_statuswindow_posx_adjustment = 0;
+      static int last_parameter_statuswindow_posy_adjustment = 0;
+
+      int alpha_font       = essential_config_[BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_statuswindow_alpha_font];
+      int alpha_background = essential_config_[BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_statuswindow_alpha_background];
+      int posx_adjustment  = essential_config_[BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_statuswindow_posx_adjustment];
+      int posy_adjustment  = essential_config_[BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_statuswindow_posy_adjustment];
+
+      if (last_parameter_statuswindow_alpha_font       != alpha_font ||
+          last_parameter_statuswindow_alpha_background != alpha_background ||
+          last_parameter_statuswindow_posx_adjustment  != posx_adjustment ||
+          last_parameter_statuswindow_posy_adjustment  != posy_adjustment) {
+        last_parameter_statuswindow_alpha_font       = alpha_font;
+        last_parameter_statuswindow_alpha_background = alpha_background;
+        last_parameter_statuswindow_posx_adjustment  = posx_adjustment;
+        last_parameter_statuswindow_posy_adjustment  = posy_adjustment;
+
+        KeyRemap4MacBook_bridge::StatusMessageWindowParameter::Request request(alpha_font,
+                                                                               alpha_background,
+                                                                               posx_adjustment,
+                                                                               posy_adjustment);
+        KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_STATUS_MESSAGE_WINDOW_PARAMETER, &request, sizeof(request), NULL, 0);
+      }
     }
   }
 }
