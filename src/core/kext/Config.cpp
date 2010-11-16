@@ -101,15 +101,15 @@ namespace org_pqrs_KeyRemap4MacBook {
   SYSCTL_NODE(, OID_AUTO, keyremap4macbook, CTLFLAG_RW, 0, "");
 
   // ----------------------------------------
-  SYSCTL_INT(_keyremap4macbook, OID_AUTO, initialized,           CTLTYPE_INT,                 &(Config::initialized),           0,                                        "");
-  SYSCTL_INT(_keyremap4macbook, OID_AUTO, debug,                 CTLTYPE_INT | CTLFLAG_RW,    &(Config::debug),                 0,                                        "");
-  SYSCTL_INT(_keyremap4macbook, OID_AUTO, debug_pointing,        CTLTYPE_INT | CTLFLAG_RW,    &(Config::debug_pointing),        0,                                        "");
-  SYSCTL_INT(_keyremap4macbook, OID_AUTO, debug_devel,           CTLTYPE_INT | CTLFLAG_RW,    &(Config::debug_devel),           0,                                        "");
+  SYSCTL_INT(_keyremap4macbook,    OID_AUTO, initialized,           CTLTYPE_INT,                 &(Config::initialized),           0,                                        "");
+  SYSCTL_INT(_keyremap4macbook,    OID_AUTO, debug,                 CTLTYPE_INT | CTLFLAG_RW,    &(Config::debug),                 0,                                        "");
+  SYSCTL_INT(_keyremap4macbook,    OID_AUTO, debug_pointing,        CTLTYPE_INT | CTLFLAG_RW,    &(Config::debug_pointing),        0,                                        "");
+  SYSCTL_INT(_keyremap4macbook,    OID_AUTO, debug_devel,           CTLTYPE_INT | CTLFLAG_RW,    &(Config::debug_devel),           0,                                        "");
   SYSCTL_STRING(_keyremap4macbook, OID_AUTO, version,               CTLFLAG_RD,                  config_version,                   0,                                        "");
-  SYSCTL_PROC(_keyremap4macbook, OID_AUTO, do_reset,              CTLTYPE_INT | CTLFLAG_RW,    &(Config::do_reset),              0, do_reset_handler,                 "I", "");
-  SYSCTL_PROC(_keyremap4macbook, OID_AUTO, do_reload_xml,         CTLTYPE_INT | CTLFLAG_RW,    &(Config::do_reload_xml),         0, do_reload_xml_handler,            "I", "");
-  SYSCTL_PROC(_keyremap4macbook, OID_AUTO, do_reload_only_config, CTLTYPE_INT | CTLFLAG_RW,    &(Config::do_reload_only_config), 0, do_reload_only_config_handler,    "I", "");
-  SYSCTL_PROC(_keyremap4macbook, OID_AUTO, socket_path,           CTLTYPE_STRING | CTLFLAG_RW, Config::socket_path, sizeof(Config::socket_path), socket_path_handler, "A", "");
+  SYSCTL_PROC(_keyremap4macbook,   OID_AUTO, do_reset,              CTLTYPE_INT | CTLFLAG_RW,    &(Config::do_reset),              0, do_reset_handler,                 "I", "");
+  SYSCTL_PROC(_keyremap4macbook,   OID_AUTO, do_reload_xml,         CTLTYPE_INT | CTLFLAG_RW,    &(Config::do_reload_xml),         0, do_reload_xml_handler,            "I", "");
+  SYSCTL_PROC(_keyremap4macbook,   OID_AUTO, do_reload_only_config, CTLTYPE_INT | CTLFLAG_RW,    &(Config::do_reload_only_config), 0, do_reload_only_config_handler,    "I", "");
+  SYSCTL_PROC(_keyremap4macbook,   OID_AUTO, socket_path,           CTLTYPE_STRING | CTLFLAG_RW, Config::socket_path, sizeof(Config::socket_path), socket_path_handler, "A", "");
 
   // ----------------------------------------------------------------------
   void
