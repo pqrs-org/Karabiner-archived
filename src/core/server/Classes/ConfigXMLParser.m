@@ -142,10 +142,10 @@
       [args addObject:[NSNumber numberWithUnsignedInt:datatype]];
       [args addObject:[NSNumber numberWithUnsignedInt:newvalue]];
     }
-
-    [initialize_vector addObject:[NSNumber numberWithUnsignedInteger:[args count]]];
-    [initialize_vector addObjectsFromArray:args];
   }
+
+  [initialize_vector addObject:[NSNumber numberWithUnsignedInteger:[args count]]];
+  [initialize_vector addObjectsFromArray:args];
 
   if ([filtervec count] > 0) {
     [initialize_vector addObjectsFromArray:filtervec];
