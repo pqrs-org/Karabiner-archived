@@ -1230,6 +1230,11 @@
           <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::COMMAND_R</autogen>
         </item>
         <item>
+          <name>Control_R to Option_R</name>
+          <sysctl>remap.controlR2optionR</sysctl>
+          <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::OPTION_R</autogen>
+        </item>
+        <item>
           <name>Control_R to Escape</name>
           <sysctl>remap.controlR2escape</sysctl>
           <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::ESCAPE</autogen>
