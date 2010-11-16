@@ -4,7 +4,7 @@
 
 @interface ConfigXMLParser : NSObject {
   unsigned int simultaneous_keycode_index_;
-  NSMutableArray* array_initialize_vector_;
+  NSMutableDictionary* dict_initialize_vector_;
   NSMutableArray* array_config_name_;
   KeyCode* keycode_;
   BOOL initialized_;
