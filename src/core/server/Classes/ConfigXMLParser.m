@@ -331,7 +331,7 @@
 // ======================================================================
 // initialize
 
-- (void) append_to_keycode:(NSXMLElement*)element
+- (void) append_to_keycode:(NSXMLElement*)element handle_notsave:(BOOL)handle_notsave
 {
   NSArray* vk_config_formats = [NSArray arrayWithObjects:
                                 @"VK_CONFIG_TOGGLE_%@",
@@ -342,6 +342,12 @@
 
   for (NSXMLElement* e in [element elementsForName : @"sysctl"]) {
     NSString* name = [KeyCode normalizeName:[e stringValue]];
+
+    BOOL isnotsave = [name hasPrefix:@"notsave_"];
+    if ((isnotsave && ! handle_notsave) ||
+        (! isnotsave && handle_notsave)) {
+      continue;
+    }
 
     if ([e attributeForName:@"vk_config"]) {
       for (NSString* format in vk_config_formats) {
@@ -355,10 +361,10 @@
   }
 
   for (NSXMLElement* e in [element elementsForName : @"list"]) {
-    [self append_to_keycode:e];
+    [self append_to_keycode:e handle_notsave:handle_notsave];
   }
   for (NSXMLElement* e in [element elementsForName : @"item"]) {
-    [self append_to_keycode:e];
+    [self append_to_keycode:e handle_notsave:handle_notsave];
   }
 }
 
@@ -386,8 +392,9 @@
     [initialize_vector insertObject:[NSNumber numberWithUnsignedInteger:[initialize_vector count]] atIndex:0];
     [initialize_vector insertObject:[NSNumber numberWithUnsignedInt:BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION] atIndex:0];
 
-    [dict_initialize_vector_ setObject:initialize_vector forKey:[keycode_ numberValue:[NSString stringWithFormat:@"ConfigIndex::%@", name]]];
-    [array_config_name_ addObject:rawname];
+    NSNumber* configindex = [keycode_ numberValue:[NSString stringWithFormat:@"ConfigIndex::%@", name]];
+    [dict_initialize_vector_ setObject:initialize_vector forKey:configindex];
+    [dict_config_name_ setObject:rawname forKey:configindex];
   }
 
   for (NSXMLElement* e in [element elementsForName : @"list"]) {
@@ -439,7 +446,8 @@
         [xmldocdict setObject:xmldocument forKey:xmlpath];
       }
 
-      [self append_to_keycode:[xmldocument rootElement]];
+      [self append_to_keycode:[xmldocument rootElement] handle_notsave:YES];
+      [self append_to_keycode:[xmldocument rootElement] handle_notsave:NO];
     }
 
     for (NSString* xmlpath in paths) {
@@ -462,7 +470,7 @@
 
   simultaneous_keycode_index_ = 0;
   dict_initialize_vector_ = [[NSMutableDictionary alloc] initWithCapacity:0];
-  array_config_name_ = [[NSMutableArray alloc] initWithCapacity:0];
+  dict_config_name_       = [[NSMutableDictionary alloc] initWithCapacity:0];
   keycode_ = [KeyCode new];
   initialized_ = NO;
 
@@ -476,8 +484,8 @@
   if (dict_initialize_vector_) {
     [dict_initialize_vector_ release];
   }
-  if (array_config_name_) {
-    [array_config_name_ release];
+  if (dict_config_name_) {
+    [dict_config_name_ release];
   }
   if (keycode_) {
     [keycode_ release];
@@ -518,8 +526,7 @@
 - (NSString*) configname:(unsigned int)configindex
 {
   if (! initialized_) return nil;
-  if (configindex >= [array_config_name_ count]) return 0;
-  return [array_config_name_ objectAtIndex:configindex];
+  return [dict_config_name_ objectForKey:[NSNumber numberWithUnsignedInt:configindex]];
 }
 
 @end
