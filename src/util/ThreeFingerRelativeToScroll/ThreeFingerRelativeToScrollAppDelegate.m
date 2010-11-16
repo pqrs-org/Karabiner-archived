@@ -22,21 +22,21 @@ void MTUnregisterContactFrameCallback(MTDeviceRef, MTContactCallbackFunction);
 void MTDeviceStart(MTDeviceRef, int);
 void MTDeviceStop(MTDeviceRef, int);
 
-// ------------------------------------------------------------
-// Multitouch callback
-static void sysctl_set(int newvalue) {
-  char buf[512];
-  snprintf(buf, sizeof(buf), "/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set notsave.pointing_relative_to_scroll %d", newvalue);
-  system(buf);
+org_pqrs_KeyRemap4MacBook_PreferencesClient* global_preferencesclient_ = nil;
+
+static void setPreference(int newvalue) {
+  [[global_preferencesclient_ proxy] setValueForName:newvalue forName:@"notsave.pointing_relative_to_scroll"];
 }
 
+// ------------------------------------------------------------
+// Multitouch callback
 static int callback(int device, struct Finger* data, int fingers, double timestamp, int frame) {
   static int current = 0;
   int newstatus = (fingers >= 3 ? 1 : 0);
 
   if (current != newstatus) {
     current = newstatus;
-    sysctl_set(current);
+    setPreference(current);
   }
 
   return 0;
@@ -68,7 +68,7 @@ static void setcallback(BOOL isset) {
 static void observer_refresh(void* refcon, io_iterator_t iterator) {
   NSLog(@"[INFO] observer_refresh called\n");
 
-  sysctl_set(0);
+  setPreference(0);
 
   bool isfound = false;
   while (IOIteratorNext(iterator)) {
@@ -136,6 +136,7 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
 
 // ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
+  global_preferencesclient_ = preferencesclient_;
   [self setNotification];
 
   // --------------------------------------------------
@@ -153,7 +154,7 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
 - (void) applicationWillTerminate:(NSNotification*)aNotification {
   setcallback(NO);
 
-  sysctl_set(0);
+  setPreference(0);
 
   [_statusItem release];
 }

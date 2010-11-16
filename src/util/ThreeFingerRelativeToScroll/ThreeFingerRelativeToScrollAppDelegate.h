@@ -8,11 +8,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "PreferencesClient.h"
 
 @interface ThreeFingerRelativeToScrollAppDelegate : NSObject <NSApplicationDelegate> {
   NSStatusItem* _statusItem;
   IBOutlet NSMenu* _statusMenu;
   IBOutlet NSMenuItem* _startAtLoginMenuItem;
+  IBOutlet org_pqrs_KeyRemap4MacBook_PreferencesClient* preferencesclient_;
 }
 
 - (IBAction) quit:(id)sender;
