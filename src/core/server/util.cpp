@@ -57,6 +57,6 @@ sysctl_load(void)
     if (exitstatus != 0) return;
   }
 
-  exitstatus = system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set reload_xml 1");
+  exitstatus = system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set do_reload_xml 1");
   if (exitstatus != 0) return;
 }

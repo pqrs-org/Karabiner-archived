@@ -62,7 +62,7 @@ static NSString* sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
 
 // ------------------------------------------------------------
 - (void) sysctl_reset {
-  [BUNDLEPREFIX (SysctlWrapper) setSysctlInt:@"keyremap4macbook" name:@"reset" value:[NSNumber numberWithInt:1] sysctl_set:sysctl_set];
+  [BUNDLEPREFIX (SysctlWrapper) setSysctlInt:@"keyremap4macbook" name:@"do_reset" value:[NSNumber numberWithInt:1] sysctl_set:sysctl_set];
 }
 
 // ------------------------------------------------------------
@@ -71,7 +71,7 @@ static NSString* sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
 }
 
 - (void) observer_PreferencesChanged:(NSNotification*)notification {
-  [BUNDLEPREFIX (SysctlWrapper) setSysctlInt:@"keyremap4macbook" name:@"reload_only_config" value:[NSNumber numberWithInt:1] sysctl_set:sysctl_set];
+  [BUNDLEPREFIX (SysctlWrapper) setSysctlInt:@"keyremap4macbook" name:@"do_reload_only_config" value:[NSNumber numberWithInt:1] sysctl_set:sysctl_set];
 }
 
 // ------------------------------------------------------------
