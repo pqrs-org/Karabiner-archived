@@ -640,20 +640,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! remapclasses_) goto finish;
 
       // ------------------------------------------------------------
-      // get essential_config
-      {
-        KeyRemap4MacBook_bridge::GetEssentialConfig::Reply reply;
-        int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_ESSENTIAL_CONFIG, NULL, 0, &reply, sizeof(reply));
-        if (error) {
-          IOLOG_ERROR("do_reload_xml GetEssentialConfig sendmsg failed. (%d)\n", error);
-          goto finish;
-        }
-        for (size_t i = 0; i < sizeof(reply.value) / sizeof(reply.value[0]); ++i) {
-          Config::essential_config[i] = reply.value[i];
-        }
-      }
-
-      // ------------------------------------------------------------
       // get count
       {
         KeyRemap4MacBook_bridge::GetConfigCount::Reply reply;
