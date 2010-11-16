@@ -24,6 +24,27 @@
         <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::EXTRA4, KeyCode::Z, ModifierFlag::SHIFT_L | ModifierFlag::COMMAND_L</autogen>
       </block>
       <block>
+        <config_only>option.simultaneouskeypresses_vimode_g_to_history</config_only>
+        <autogen>--KeyOverlaidModifier-- KeyCode::G, KeyCode::VK_MODIFIER_EXTRA5, KeyCode::H, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA5, KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA5, KeyCode::CURSOR_RIGHT, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::EXTRA5, KeyCode::Z, ModifierFlag::CONTROL_L | ModifierFlag::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::EXTRA5, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::EXTRA5, KeyCode::Z, ModifierFlag::SHIFT_L | ModifierFlag::COMMAND_L</autogen>
+      </block>
+      <block>
+        <autogen>--KeyOverlaidModifier-- KeyCode::D, KeyCode::OPTION_L, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+        <config_only>option.simultaneouskeypresses_vimode_d_to_option</config_only>
+      </block>
+      <block>
+        <autogen>--KeyOverlaidModifier-- KeyCode::S, KeyCode::CONTROL_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L, KeyCode::TAB, ModifierFlag::SHIFT_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L, KeyCode::TAB</autogen>
+        <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::CONTROL_L, KeyCode::SPACE, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::CONTROL_L, KeyCode::SPACE</autogen>
+        <config_only>option.simultaneouskeypresses_vimode_s_to_control</config_only>
+      </block>
+      <block>
         <config_only>option.simultaneouskeypresses_vimode_d_to_deletemode</config_only>
         <autogen>--KeyToKey-- KeyCode::D, KeyCode::VK_MODIFIER_EXTRA1</autogen>
         <block>
@@ -91,7 +112,7 @@
       </block>
       <block>
         <config_only>option.simultaneouskeypresses_vimode_tab_to_managemode</config_only>
-        <autogen>--KeyOverlaidModifier-- KeyCode::TAB, KeyCode::COMMAND_L, ModifierFlag::EXTRA2, KeyCode::TAB, ModifierFlag::OPTION_L, KeyCode::RETURN</autogen>
+        <autogen>--KeyOverlaidModifier-- KeyCode::TAB, KeyCode::COMMAND_L, ModifierFlag::EXTRA2, KeyCode::TAB, ModifierFlag::OPTION_L, KeyCode::SHIFT_L</autogen>
         <block>
           <config_not>option.simultaneouskeypresses_vimode_jkli</config_not>
           <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA2, KeyCode::TAB, ModifierFlag::SHIFT_L</autogen>
@@ -188,10 +209,6 @@
         <autogen>--KeyToKey-- KeyCode::QUOTE, KeyCode::Z, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
       </block>
       <block>
-        <autogen>--KeyOverlaidModifier-- KeyCode::S, KeyCode::CONTROL_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
-        <config_only>option.simultaneouskeypresses_vimode_s_to_control</config_only>
-      </block>
-      <block>
         <config_only>option.simultaneouskeypresses_vimode_uo_to_backspacedelete</config_only>
         <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::CONTROL_L, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
         <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::CONTROL_L, KeyCode::Z, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
@@ -270,10 +287,6 @@
       <block>
         <autogen>--KeyOverlaidModifier-- KeyCode::A, KeyCode::SHIFT_L, KeyCode::S, ModifierFlag::CONTROL_L</autogen>
         <config_only>option.simultaneouskeypresses_vimode_a_to_shift_select</config_only>
-      </block>
-      <block>
-        <autogen>--KeyOverlaidModifier-- KeyCode::D, KeyCode::OPTION_L, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
-        <config_only>option.simultaneouskeypresses_vimode_d_to_option</config_only>
       </block>
       <block>
         <config_only>option.simultaneouskeypresses_vimode_f_to_command</config_only>
@@ -408,6 +421,10 @@
       <block>
         <autogen>--KeyToKey-- KeyCode::G, KeyCode::F, ModifierFlag::COMMAND_L</autogen>
         <config_only>option.simultaneouskeypresses_vimode_g_to_command_f</config_only>
+      </block>
+      <block>
+        <autogen>--KeyToKey-- KeyCode::E, KeyCode::F, ModifierFlag::COMMAND_L</autogen>
+        <config_only>option.simultaneouskeypresses_vimode_e_to_command_f</config_only>
       </block>
       <block>
         <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::SPACE</autogen>
@@ -695,6 +712,8 @@
     <item>
       <name>[Option] S to Control</name>
       <appendix>(+ When you press S only send Command+X)</appendix>
+      <appendix>(+ When you press left with S pressed, send spaceback)</appendix>
+      <appendix>(+ When you press right with S pressed, send space)</appendix>
       <sysctl>option.simultaneouskeypresses_vimode_s_to_control</sysctl>
     </item>
     <item>
@@ -831,6 +850,10 @@
       <sysctl>option.simultaneouskeypresses_vimode_g_to_command_f</sysctl>
     </item>
     <item>
+      <name>[Option] E to Command+F</name>
+      <sysctl>option.simultaneouskeypresses_vimode_e_to_command_f</sysctl>
+    </item>
+    <item>
       <name>[Option] Semicolon(;) to Space</name>
       <sysctl>option.simultaneouskeypresses_vimode_semicolon_to_space</sysctl>
     </item>
@@ -865,6 +888,10 @@
     <item>
       <name>[Option] E to History Mode</name>
       <sysctl>option.simultaneouskeypresses_vimode_e_to_history</sysctl>
+    </item>
+    <item>
+      <name>[Option] G to History Mode</name>
+      <sysctl>option.simultaneouskeypresses_vimode_g_to_history</sysctl>
     </item>
   </list>
 </item>
