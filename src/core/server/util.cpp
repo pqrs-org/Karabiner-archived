@@ -48,8 +48,7 @@ sysctl_load(void)
   int exitstatus;
 
   // We need to set socket_path first,
-  // because "sysctl_reset" and "sysctl_ctl" use socket when
-  // they set "parameter.statuswindow_alpha_font" or "parameter.statuswindow_alpha_background".
+  // because "do_reload_xml" use socket.
   const std::string socket_path = server.getSocketPath();
   if (! socket_path.empty()) {
     std::string command = std::string("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set socket_path ") + socket_path;
