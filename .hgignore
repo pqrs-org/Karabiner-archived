@@ -9,7 +9,6 @@ pkgroot/
 .*\.xcodeproj/.*\.mode1v3
 .*\.xcodeproj/.*\.pbxuser
 ^files/prefpane/output/checkbox\.xml$
-src/core/kext/config/output
 src/core/bridge/keycode/output
 src/core/bridge/config/output
 util/getActiveApplication/getname
