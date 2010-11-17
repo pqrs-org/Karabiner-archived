@@ -22,12 +22,12 @@ ARGV.each do |xmlpath|
   parser = XML::Parser.file(xmlpath)
   libxmldoc = parser.parse
 
-  libxmldoc.root.find('//sysctl').each do |sysctl_node|
-    if sysctl_node['essential'] == 'true' then
-      rawname = sysctl_node.inner_xml
+  libxmldoc.root.find('//identifier').each do |identifier_node|
+    if identifier_node['essential'] == 'true' then
+      rawname = identifier_node.inner_xml
       name = rawname.gsub(/\./, '_')
 
-      default_node = sysctl_node.parent.find_first('./default')
+      default_node = identifier_node.parent.find_first('./default')
       if default_node.nil? then
         $outfile[:cpp].print "0,\n"
       else
