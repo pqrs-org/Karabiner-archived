@@ -8,7 +8,7 @@
       <appendix>Push S and D keys simultaneously and keep them pressing.</appendix>
       <appendix>Then you can use Vi style navigation by HJKL.</appendix>
       <appendix>- HJKL to Left/Down/Up/Right</appendix>
-      <sysctl vk_config="true">notsave.simultaneouskeypresses_vimode</sysctl>
+      <identifier vk_config="true">notsave.simultaneouskeypresses_vimode</identifier>
       <autogen>--ShowStatusMessage-- Vi Mode</autogen>
       <block>
         <config_only>option.pointing_relative_to_scroll_vi_mode</config_only>
@@ -462,78 +462,78 @@
     </item>
     <item>
       <name>Simultaneous Key Presses [S+D] turns on "Simultaneous Vi Mode"</name>
-      <sysctl>remap.simultaneouskeypresses_vimode_sd</sysctl>
+      <identifier>remap.simultaneouskeypresses_vimode_sd</identifier>
       <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode</autogen>
     </item>
     <item>
       <name>Simultaneous Key Presses [Q+W] turns on "Simultaneous Vi Mode"</name>
-      <sysctl>remap.simultaneouskeypresses_vimode_qw</sysctl>
+      <identifier>remap.simultaneouskeypresses_vimode_qw</identifier>
       <autogen>--SimultaneousKeyPresses-- KeyCode::Q, KeyCode::W, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode</autogen>
     </item>
     <item>
       <name>Simultaneous Key Presses [W+E] turns on "Simultaneous Vi Mode"</name>
-      <sysctl>remap.simultaneouskeypresses_vimode_we</sysctl>
+      <identifier>remap.simultaneouskeypresses_vimode_we</identifier>
       <autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::E, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode</autogen>
     </item>
     <item>
       <name>Simultaneous Key Presses [Command_L+Space] turns on "Simultaneous Vi Mode"</name>
-      <sysctl>remap.simultaneouskeypresses_vimode_commandLspace</sysctl>
+      <identifier>remap.simultaneouskeypresses_vimode_commandLspace</identifier>
       <autogen>--SimultaneousKeyPresses-- KeyCode::COMMAND_L, KeyCode::SPACE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode</autogen>
     </item>
     <item>
       <name>Single Key Press (`) turns on "Simultaneous Vi Mode"</name>
-      <sysctl>remap.simultaneouskeypresses_vimode_backquote</sysctl>
+      <identifier>remap.simultaneouskeypresses_vimode_backquote</identifier>
       <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode</autogen>
     </item>
     <item>
       <name>Single Key Press (`) toggles on "Simultaneous Vi Mode"</name>
-      <sysctl>remap.simultaneouskeypresses_vimode_backquote_toggle</sysctl>
+      <identifier>remap.simultaneouskeypresses_vimode_backquote_toggle</identifier>
       <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::VK_CONFIG_TOGGLE_notsave_simultaneouskeypresses_vimode</autogen>
     </item>
     <item>
       <name>Single Key Press Uk Section turns on "Simultaneous Vi Mode"</name>
-      <sysctl>remap.simultaneouskeypresses_vimode_uksection</sysctl>
+      <identifier>remap.simultaneouskeypresses_vimode_uksection</identifier>
       <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode</autogen>
     </item>
     <item>
       <name>Single Key Press Space turns on "Simultaneous Vi Mode"</name>
       <appendix>(+ When you type Space only, send Space) + [KeyRepeat]</appendix>
-      <sysctl>remap.simultaneouskeypresses_vimode_space</sysctl>
+      <identifier>remap.simultaneouskeypresses_vimode_space</identifier>
       <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::SPACE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode , KeyCode::SPACE</autogen>
     </item>
     <item>
       <name>Single Key Press Space turns on "Simultaneous Vi Mode"</name>
       <appendix>(+ When you type Space only, send Space)</appendix>
       <appendix>Fn+Space to Space</appendix>
-      <sysctl>remap.simultaneouskeypresses_vimode_space_fn</sysctl>
+      <identifier>remap.simultaneouskeypresses_vimode_space_fn</identifier>
       <autogen>--KeyToKey-- KeyCode::SPACE, ModifierFlag::FN, KeyCode::SPACE</autogen>
       <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode , KeyCode::SPACE</autogen>
     </item>
     <item><name>------------------------------------------------------------</name></item>
     <item>
       <name>[Option] Use JKIL instead of HJKL</name>
-      <sysctl>option.simultaneouskeypresses_vimode_jkli</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_jkli</identifier>
     </item>
     <item>
       <name>[Option] Scroll with mouse movement while in vi mode</name>
-      <sysctl>option.pointing_relative_to_scroll_vi_mode</sysctl>
+      <identifier>option.pointing_relative_to_scroll_vi_mode</identifier>
     </item>
     <item>
       <name>[Option] Mouse Click Support</name>
       <appendix>- U to LeftClick</appendix>
       <appendix>- I to MiddleClick</appendix>
       <appendix>- O to RightClick</appendix>
-      <sysctl>option.simultaneouskeypresses_vimode_mouseclick</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_mouseclick</identifier>
     </item>
     <item>
       <name>[Option] F to FN</name>
       <appendix>(= F+HJKL to Home/PageDown/PageUp/End)</appendix>
-      <sysctl>option.simultaneouskeypresses_vimode_f_to_fn</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_f_to_fn</identifier>
     </item>
     <item>
       <name>[Option] G to Option_L</name>
       <appendix>(= G+HL to backward-word/forward-word)</appendix>
-      <sysctl>option.simultaneouskeypresses_vimode_g_to_option</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_g_to_option</identifier>
     </item>
     <item>
       <name>[Option] D turns on Delete Mode</name>
@@ -544,7 +544,7 @@
       <appendix>- D+K to Command+Y</appendix>
       <appendix>- D+J to Command+D</appendix>
       <appendix>Use with [Q+W], [W+E] or (`)</appendix>
-      <sysctl>option.simultaneouskeypresses_vimode_d_to_deletemode</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_d_to_deletemode</identifier>
     </item>
     <item>
       <name>[Option] X turns on Delete Mode</name>
@@ -555,7 +555,7 @@
       <appendix>- X+K to Command+Y</appendix>
       <appendix>- X+J to Command+D</appendix>
       <appendix>Use with (`)</appendix>
-      <sysctl>option.simultaneouskeypresses_vimode_x_to_deletemode</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_x_to_deletemode</identifier>
     </item>
     <item>
       <name>[Option] F turns on Delete Mode</name>
@@ -566,7 +566,7 @@
       <appendix>- F+K to Command+Y</appendix>
       <appendix>- F+J to Command+D</appendix>
       <appendix>Use with (Space)</appendix>
-      <sysctl>option.simultaneouskeypresses_vimode_f_to_deletemode</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_f_to_deletemode</identifier>
     </item>
     <item>
       <name>[Option] Tab turns on Manage Mode</name>
@@ -577,7 +577,7 @@
       <appendix>- + when you press Tab only, Alt+Tab+Return (Witch Previous Window/App)</appendix>
       <appendix>Use with (Space)</appendix>
       <appendix>(You need a N-Key rollover keyboard.)</appendix>
-      <sysctl>option.simultaneouskeypresses_vimode_tab_to_managemode</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_tab_to_managemode</identifier>
     </item>
     <item>
       <name>[Option] Q turns on Manage Mode</name>
@@ -586,12 +586,12 @@
       <appendix>- Q+K to Quit App</appendix>
       <appendix>- + when you press Q only, send Next App</appendix>
       <appendix>Use with (Space)</appendix>
-      <sysctl>option.simultaneouskeypresses_vimode_q_to_managemode</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_q_to_managemode</identifier>
     </item>
     <item>
       <name>[Option] Y, U, O to Command_L + X, C, V</name>
       <appendix>For Cut, Copy, Paste with Y, U, O</appendix>
-      <sysctl>option.simultaneouskeypresses_vimode_xcv</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_xcv</identifier>
     </item>
     <item>
       <name>[Option] Section(§) to Shift L</name>
@@ -601,11 +601,11 @@
       <appendix>This is also in the place of the Caps Lock.</appendix>
       <appendix>It makes sense then use the mouse click to select text</appendix>
       <appendix>and is also more comfortable when using [Q+W]</appendix>
-      <sysctl>option.simultaneouskeypresses_vimode_uk_to_shift_l</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_uk_to_shift_l</identifier>
     </item>
     <item>
       <name>[Option] ; to Return</name>
-      <sysctl>option.simultaneouskeypresses_vimode_return</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_return</identifier>
     </item>
     <item>
       <name>[Option] S to Shift_L</name>
@@ -613,285 +613,285 @@
       <appendix>// Apple's keyboard has 2-key rollover.</appendix>
       <appendix>// So, we cannot press Q+W+S or W+E+S at the same time.</appendix>
       <appendix>// If you have high-end keyboards, you can use this option with [Q+W] or [W+E]</appendix>
-      <sysctl>option.simultaneouskeypresses_vimode_s_to_shift</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_s_to_shift</identifier>
     </item>
     <item>
       <name>[Option] H to Esc</name>
       <appendix>(Use with above JKIL option)</appendix>
-      <sysctl>option.simultaneouskeypresses_vimode_h_to_esc</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_h_to_esc</identifier>
     </item>
     <item>
       <name>[Option] Y to Esc</name>
       <appendix>(Use with above JKIL option)</appendix>
-      <sysctl>option.simultaneouskeypresses_vimode_y_to_esc</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_y_to_esc</identifier>
     </item>
     <item>
       <name>[Option] F to LeftClick</name>
-      <sysctl>option.simultaneouskeypresses_vimode_f_to_leftclick</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_f_to_leftclick</identifier>
     </item>
     <item>
       <name>[Option] U, O to Tab, Shift+Tab</name>
-      <sysctl>option.simultaneouskeypresses_vimode_uo_to_tab</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_uo_to_tab</identifier>
     </item>
     <item>
       <name>[Option] Tab to Command+Tab (Shift+Tab to Command+Shift+Tab)</name>
       <!-- #include "include/lazy_recommendation.xml" -->
-      <sysctl>option.simultaneouskeypresses_vimode_tab_to_commandtab</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_tab_to_commandtab</identifier>
     </item>
     <item>
       <name>[Option] U, O to Command+Tab, Command+Shift+Tab</name>
-      <sysctl>option.simultaneouskeypresses_vimode_uo_to_commandtab</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_uo_to_commandtab</identifier>
     </item>
     <item>
       <name>[Option] Y, P to Undo, Redo</name>
-      <sysctl>option.simultaneouskeypresses_vimode_yp_to_undoredo</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_yp_to_undoredo</identifier>
     </item>
     <item>
       <name>[Option] H,' to Undo, Redo</name>
       <appendix>(Use with above JKIL option)</appendix>
-      <sysctl>option.simultaneouskeypresses_vimode_hquote_to_undoredo</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_hquote_to_undoredo</identifier>
     </item>
     <item>
       <name>[Option] H, ; to Option+Left, Option+Rigth</name>
       <appendix>(Use with above JKIL option)</appendix>
-      <sysctl>option.simultaneouskeypresses_vimode_hsemicolon_to_optionleftright</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_hsemicolon_to_optionleftright</identifier>
     </item>
     <item>
       <name>[Option] ' to Return</name>
-      <sysctl>option.simultaneouskeypresses_vimode_quote_to_return</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_quote_to_return</identifier>
     </item>
     <item>
       <name>[Option] G to Esc</name>
-      <sysctl>option.simultaneouskeypresses_vimode_g_to_esc</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_g_to_esc</identifier>
     </item>
     <item>
       <name>[Option] A to Option</name>
-      <sysctl>option.simultaneouskeypresses_vimode_a_to_option</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_a_to_option</identifier>
     </item>
     <item>
       <name>[Option] D to Shift</name>
-      <sysctl>option.simultaneouskeypresses_vimode_d_to_shift</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_d_to_shift</identifier>
     </item>
     <item>
       <name>[Option] D to Command+D</name>
-      <sysctl>option.simultaneouskeypresses_vimode_d_to_command_d</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_d_to_command_d</identifier>
     </item>
     <item>
       <name>[Option] E to Command+Y</name>
-      <sysctl>option.simultaneouskeypresses_vimode_e_to_command_y</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_e_to_command_y</identifier>
     </item>
     <item>
       <name>[Option] Y to Command+Y</name>
-      <sysctl>option.simultaneouskeypresses_vimode_y_to_command_y</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_y_to_command_y</identifier>
     </item>
     <item>
       <name>[Option] S to Command</name>
-      <sysctl>option.simultaneouskeypresses_vimode_s_to_command</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_s_to_command</identifier>
     </item>
     <item>
       <name>[Option] S to Option</name>
-      <sysctl>option.simultaneouskeypresses_vimode_s_to_option</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_s_to_option</identifier>
     </item>
     <item>
       <name>[Option] D to Command</name>
-      <sysctl>option.simultaneouskeypresses_vimode_d_to_command</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_d_to_command</identifier>
     </item>
     <item>
       <name>[Option] A to Shift</name>
-      <sysctl>option.simultaneouskeypresses_vimode_a_to_shift</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_a_to_shift</identifier>
     </item>
     <item>
       <name>[Option] A to Shift</name>
       <appendix>(+ When you press A only send Control+S)</appendix>
-      <sysctl>option.simultaneouskeypresses_vimode_a_to_shift_select</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_a_to_shift_select</identifier>
     </item>
     <item>
       <name>[Option] F to Shift</name>
-      <sysctl>option.simultaneouskeypresses_vimode_f_to_shift</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_f_to_shift</identifier>
     </item>
     <item>
       <name>[Option] S to Control</name>
       <appendix>(+ When you press S only send Command+X)</appendix>
       <appendix>(+ When you press left with S pressed, send spaceback)</appendix>
       <appendix>(+ When you press right with S pressed, send space)</appendix>
-      <sysctl>option.simultaneouskeypresses_vimode_s_to_control</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_s_to_control</identifier>
     </item>
     <item>
       <name>[Option] D to Option</name>
       <appendix>(+ When you press D only send Command+C)</appendix>
-      <sysctl>option.simultaneouskeypresses_vimode_d_to_option</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_d_to_option</identifier>
     </item>
     <item>
       <name>[Option] F to Command</name>
       <appendix>(+ When you press F only send Command+V)</appendix>
-      <sysctl>option.simultaneouskeypresses_vimode_f_to_command</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_f_to_command</identifier>
     </item>
     <item>
       <name>[Option] U/O to Backspace/Delete</name>
       <appendix>(+ When you press Control+U/O send Cmd+Z/Cmd+Shift+Z)</appendix>
-      <sysctl>option.simultaneouskeypresses_vimode_uo_to_backspacedelete</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_uo_to_backspacedelete</identifier>
     </item>
     <item>
       <name>[Option] F to Option</name>
-      <sysctl>option.simultaneouskeypresses_vimode_f_to_option</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_f_to_option</identifier>
     </item>
     <item>
       <name>[Option] G to Command</name>
-      <sysctl>option.simultaneouskeypresses_vimode_g_to_command</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_g_to_command</identifier>
     </item>
     <item>
       <name>[Option] S to Control+S</name>
-      <sysctl>option.simultaneouskeypresses_vimode_s_to_control_s</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_s_to_control_s</identifier>
     </item>
     <item>
       <name>[Option] / to Command+/</name>
-      <sysctl>option.simultaneouskeypresses_vimode_slash_to_command_slash</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_slash_to_command_slash</identifier>
     </item>
     <item>
       <name>[Option] Q to Command+Q</name>
-      <sysctl>option.simultaneouskeypresses_vimode_q_to_command_q</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_q_to_command_q</identifier>
     </item>
     <item>
       <name>[Option] W to Control+S</name>
-      <sysctl>option.simultaneouskeypresses_vimode_w_to_control_s</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_w_to_control_s</identifier>
     </item>
     <item>
       <name>[Option] R to Command+Option+T</name>
-      <sysctl>option.simultaneouskeypresses_vimode_r_to_command_option_t</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_r_to_command_option_t</identifier>
     </item>
     <item>
       <name>[Option] W to Command+X</name>
-      <sysctl>option.simultaneouskeypresses_vimode_w_to_command_x</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_w_to_command_x</identifier>
     </item>
     <item>
       <name>[Option] E to Command+C</name>
-      <sysctl>option.simultaneouskeypresses_vimode_e_to_command_c</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_e_to_command_c</identifier>
     </item>
     <item>
       <name>[Option] R to Command+V</name>
-      <sysctl>option.simultaneouskeypresses_vimode_r_to_command_v</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_r_to_command_v</identifier>
     </item>
     <item>
       <name>[Option] T to Command+Option+T</name>
-      <sysctl>option.simultaneouskeypresses_vimode_t_to_command_option_t</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_t_to_command_option_t</identifier>
     </item>
     <item>
       <name>[Option] G to Control+S</name>
-      <sysctl>option.simultaneouskeypresses_vimode_g_to_control_s</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_g_to_control_s</identifier>
     </item>
     <item>
       <name>[Option] T to Command+D</name>
-      <sysctl>option.simultaneouskeypresses_vimode_t_to_command_d</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_t_to_command_d</identifier>
     </item>
     <item>
       <name>[Option] G to Command+Option+T</name>
-      <sysctl>option.simultaneouskeypresses_vimode_g_to_command_option_t</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_g_to_command_option_t</identifier>
     </item>
     <item>
       <name>[Option] U to Delete</name>
-      <sysctl>option.simultaneouskeypresses_vimode_u_to_delete</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_u_to_delete</identifier>
     </item>
     <item>
       <name>[Option] O to Space</name>
-      <sysctl>option.simultaneouskeypresses_vimode_o_to_space</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_o_to_space</identifier>
     </item>
     <item>
       <name>[Option] S to Control+Shift+S</name>
-      <sysctl>option.simultaneouskeypresses_vimode_s_to_shift_control_s</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_s_to_shift_control_s</identifier>
     </item>
     <item>
       <name>[Option] S to Command+D</name>
-      <sysctl>option.simultaneouskeypresses_vimode_s_to_command_d</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_s_to_command_d</identifier>
     </item>
     <item>
       <name>[Option] P to Esc</name>
-      <sysctl>option.simultaneouskeypresses_vimode_p_to_esc</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_p_to_esc</identifier>
     </item>
     <item>
       <name>[Option] Backquote to Command+Space (Launchbar,etc..)</name>
-      <sysctl>option.simultaneouskeypresses_vimode_backquote_to_command_space</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_backquote_to_command_space</identifier>
     </item>
     <item>
       <name>[Option] W to Command+W (Close Window) </name>
-      <sysctl>option.simultaneouskeypresses_vimode_w_to_cmd_w</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_w_to_cmd_w</identifier>
     </item>
     <item>
       <name>[Option] Y/[ to Command+Option+Control+`/=</name>
       <appendix>(It's useful using these shortcuts to move focus to Menu Bar and Status Menus)</appendix>
-      <sysctl>option.simultaneouskeypresses_vimode_y_to_menubar</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_y_to_menubar</identifier>
     </item>
     <item>
       <name>[Option] §/= to Command+Option+Control+`/=</name>
       <appendix>(It's useful using these shortcuts to move focus to Menu Bar and Status Menus)</appendix>
-      <sysctl>option.simultaneouskeypresses_vimode_backquote_to_menubar</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_backquote_to_menubar</identifier>
     </item>
     <item>
       <name>[ to Cmd+Space (Launchbar)</name>
-      <sysctl>option.simultaneouskeypresses_vimode_bracketleft_to_cmdspace</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_bracketleft_to_cmdspace</identifier>
     </item>
     <item>
       <name>[Option] ZXCV to Command+ZXCV</name>
-      <sysctl>option.simultaneouskeypresses_vimode_zxcv_to_command_zxcv</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_zxcv_to_command_zxcv</identifier>
     </item>
     <item>
       <name>[Option] E to Command+E</name>
-      <sysctl>option.simultaneouskeypresses_vimode_e_to_command_e</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_e_to_command_e</identifier>
     </item>
     <item>
       <name>[Option] R to Command+R</name>
-      <sysctl>option.simultaneouskeypresses_vimode_r_to_command_r</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_r_to_command_r</identifier>
     </item>
     <item>
       <name>[Option] T to Command+T</name>
-      <sysctl>option.simultaneouskeypresses_vimode_t_to_command_t</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_t_to_command_t</identifier>
     </item>
     <item>
       <name>[Option] G to Command+F</name>
-      <sysctl>option.simultaneouskeypresses_vimode_g_to_command_f</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_g_to_command_f</identifier>
     </item>
     <item>
       <name>[Option] E to Command+F</name>
-      <sysctl>option.simultaneouskeypresses_vimode_e_to_command_f</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_e_to_command_f</identifier>
     </item>
     <item>
       <name>[Option] Semicolon(;) to Space</name>
-      <sysctl>option.simultaneouskeypresses_vimode_semicolon_to_space</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_semicolon_to_space</identifier>
     </item>
     <item>
       <name>[Option] Bracket([) to Escape</name>
-      <sysctl>option.simultaneouskeypresses_vimode_bracket_to_escape</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_bracket_to_escape</identifier>
     </item>
     <item>
       <name>[Option] H to Cmd+Z</name>
-      <sysctl>option.simultaneouskeypresses_vimode_h_to_undo</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_h_to_undo</identifier>
       <appendix>+ when combined with F send Control+Option+H</appendix>
       <appendix>(You need to have F to Command enabled in order to the thing after + work)</appendix>
       <appendix>(Use with above JKIL option)</appendix>
     </item>
     <item>
       <name>[Option] Backslash to Command+Backslash</name>
-      <sysctl>option.simultaneouskeypresses_vimode_backslash</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_backslash</identifier>
     </item>
     <item>
       <name>[Option] H to Space</name>
       <appendix>(Use with above JKIL option)</appendix>
-      <sysctl>option.simultaneouskeypresses_vimode_h_to_space</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_h_to_space</identifier>
     </item>
     <item>
       <name>[Option] Quote(') to Esc</name>
-      <sysctl>option.simultaneouskeypresses_vimode_quote_to_escape</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_quote_to_escape</identifier>
     </item>
     <item>
       <name>[Option] Quote(') to Space</name>
-      <sysctl>option.simultaneouskeypresses_vimode_quote_to_space</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_quote_to_space</identifier>
     </item>
     <item>
       <name>[Option] E to History Mode</name>
-      <sysctl>option.simultaneouskeypresses_vimode_e_to_history</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_e_to_history</identifier>
     </item>
     <item>
       <name>[Option] G to History Mode</name>
-      <sysctl>option.simultaneouskeypresses_vimode_g_to_history</sysctl>
+      <identifier>option.simultaneouskeypresses_vimode_g_to_history</identifier>
     </item>
   </list>
 </item>
