@@ -47,10 +47,10 @@ static BUNDLEPREFIX(XMLTreeWrapper) * _xmlTreeWrapper;
     return [node stringValue];
 
   } else if ([identifier isEqualToString:@"value"]) {
-    NSXMLNode* sysctl = [_xmlTreeWrapper getNode:item xpath:@"sysctl"];
-    if (! sysctl) return nil;
+    NSXMLNode* identifier = [_xmlTreeWrapper getNode:item xpath:@"identifier"];
+    if (! identifier) return nil;
 
-    return [NSNumber numberWithInt:[[preferencesclient_ proxy] value:[sysctl stringValue]]];
+    return [NSNumber numberWithInt:[[preferencesclient_ proxy] value:[identifier stringValue]]];
   }
 
   return nil;
@@ -63,9 +63,9 @@ static BUNDLEPREFIX(XMLTreeWrapper) * _xmlTreeWrapper;
 
 - (void) outlineView:(NSOutlineView*)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn*)tableColumn byItem:(id)item
 {
-  NSXMLNode* sysctl = [_xmlTreeWrapper getNode:item xpath:@"sysctl"];
-  if (sysctl) {
-    NSString* name = [sysctl stringValue];
+  NSXMLNode* identifier = [_xmlTreeWrapper getNode:item xpath:@"identifier"];
+  if (identifier) {
+    NSString* name = [identifier stringValue];
     [[preferencesclient_ proxy] setValueForName:[object intValue] forName:name];
   }
 }

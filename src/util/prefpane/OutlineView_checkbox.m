@@ -30,12 +30,12 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
 }
 
 /* ------------------------------------------------------------ */
-- (BOOL) filter_sysctl:(NSXMLNode*)node
+- (BOOL) filter_identifier:(NSXMLNode*)node
 {
-  NSXMLNode* sysctl = [_xmlTreeWrapper getNode:node xpath:@"sysctl"];
+  NSXMLNode* identifier = [_xmlTreeWrapper getNode:node xpath:@"identifier"];
 
-  if (sysctl) {
-    int value = [[preferencesclient_ proxy] value:[sysctl stringValue]];
+  if (identifier) {
+    int value = [[preferencesclient_ proxy] value:[identifier stringValue]];
     if (value) return TRUE;
   }
 
@@ -59,7 +59,7 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
   return FALSE;
 }
 
-- (BOOL) filter_checkChildren:(NSXMLNode*)node sysctl:(BOOL)sysctl search:(NSString*)search
+- (BOOL) filter_checkChildren:(NSXMLNode*)node identifier:(BOOL)identifier search:(NSString*)search
 {
   NSArray* a = [node nodesForXPath:@"list/item" error:NULL];
   if (a == nil) return FALSE;
@@ -67,9 +67,9 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
   for (NSXMLNode* n in a) {
     if (! n) break;
 
-    if ([self filter_checkChildren:n sysctl:sysctl search:search]) return TRUE;
-    if (sysctl) {
-      if ([self filter_sysctl:n]) return TRUE;
+    if ([self filter_checkChildren:n identifier:identifier search:search]) return TRUE;
+    if (identifier) {
+      if ([self filter_identifier:n]) return TRUE;
     }
     if (search != nil) {
       if ([self filter_search:n search:search]) return TRUE;
@@ -79,7 +79,7 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
   return FALSE;
 }
 
-- (void) filter_core:(NSXMLElement*)node sysctl:(BOOL)sysctl search:(NSString*)search
+- (void) filter_core:(NSXMLElement*)node identifier:(BOOL)identifier search:(NSString*)search
 {
   NSArray* a = [node nodesForXPath:@"list/item" error:NULL];
   if (a == nil) return;
@@ -87,16 +87,16 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
   for (NSXMLElement* n in a) {
     if (! n) break;
 
-    if (sysctl) {
-      if ([self filter_sysctl:n] || [self filter_checkChildren:n sysctl:sysctl search:search]) {
-        [self filter_core:n sysctl:sysctl search:search];
+    if (identifier) {
+      if ([self filter_identifier:n] || [self filter_checkChildren:n identifier:identifier search:search]) {
+        [self filter_core:n identifier:identifier search:search];
       } else {
         [n detach];
       }
     } else if (search) {
       if ([self filter_search:n search:search]) continue;
-      if ([self filter_checkChildren:n sysctl:sysctl search:search]) {
-        [self filter_core:n sysctl:sysctl search:search];
+      if ([self filter_checkChildren:n identifier:identifier search:search]) {
+        [self filter_core:n identifier:identifier search:search];
       } else {
         [n detach];
       }
@@ -111,7 +111,7 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
   BOOL expand = FALSE;
 
   if ([_showEnabledOnly state] == NSOnState) {
-    [self filter_core:[_xmlTreeWrapper getRoot] sysctl:TRUE search:nil];
+    [self filter_core:[_xmlTreeWrapper getRoot] identifier:TRUE search:nil];
     expand = TRUE;
   }
   if (! [[_searchText stringValue] isEqual:@""]) {
@@ -121,7 +121,7 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
 
       str = [str lowercaseString];
       if (! [str isEqual:@""]) {
-        [self filter_core:[_xmlTreeWrapper getRoot] sysctl:FALSE search:str];
+        [self filter_core:[_xmlTreeWrapper getRoot] identifier:FALSE search:str];
       }
     }
     expand = TRUE;
@@ -182,26 +182,26 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
   }
 
   // ------------------------------------------------------------
-  // check sysctl, then setImagePosition or return value.
-  NSXMLNode* attr_sysctl = [item attributeForName:@"cache_sysctl"];
-  NSString* sysctl = nil;
-  if (attr_sysctl != nil) {
-    sysctl = [attr_sysctl stringValue];
+  // check identifier, then setImagePosition or return value.
+  NSXMLNode* attr_identifier = [item attributeForName:@"cache_identifier"];
+  NSString* identifier = nil;
+  if (attr_identifier != nil) {
+    identifier = [attr_identifier stringValue];
 
   } else {
-    NSXMLNode* node_sysctl = [_xmlTreeWrapper getNode:item xpath:@"sysctl"];
-    if (node_sysctl) {
-      sysctl = [node_sysctl stringValue];
+    NSXMLNode* node_identifier = [_xmlTreeWrapper getNode:item xpath:@"identifier"];
+    if (node_identifier) {
+      identifier = [node_identifier stringValue];
     }
   }
 
-  if (! sysctl || [sysctl hasPrefix:@"notsave."]) {
+  if (! identifier || [identifier hasPrefix:@"notsave."]) {
     [cell setImagePosition:NSNoImage];
     return nil;
 
   } else {
     [cell setImagePosition:NSImageLeft];
-    return [NSNumber numberWithInt:[[preferencesclient_ proxy] value:sysctl]];
+    return [NSNumber numberWithInt:[[preferencesclient_ proxy] value:identifier]];
   }
 
   return nil;
@@ -229,9 +229,9 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
 
 - (void) outlineView:(NSOutlineView*)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn*)tableColumn byItem:(id)item
 {
-  NSXMLNode* sysctl = [_xmlTreeWrapper getNode:item xpath:@"sysctl"];
-  if (sysctl) {
-    NSString* name = [sysctl stringValue];
+  NSXMLNode* identifier = [_xmlTreeWrapper getNode:item xpath:@"identifier"];
+  if (identifier) {
+    NSString* name = [identifier stringValue];
     if (! [name hasPrefix:@"notsave."]) {
       int value = [[preferencesclient_ proxy] value:name];
       value = ! value;
