@@ -2384,6 +2384,7 @@
           <identifier>remap.fnF2_to_brightnessup</identifier>
           <autogen>--KeyToConsumer-- KeyCode::F2, ModifierFlag::FN, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
         </item>
+        <item><name>------------------------------------------------------------</name></item>
         <item>
           <name>Fn+F7 to Music Prev</name>
           <identifier>remap.fnF7_to_musicprev</identifier>
@@ -2399,6 +2400,7 @@
           <identifier>remap.fnF9_to_musicplay</identifier>
           <autogen>--KeyToConsumer-- KeyCode::F9, ModifierFlag::FN, ConsumerKeyCode::MUSIC_NEXT</autogen>
         </item>
+        <item><name>------------------------------------------------------------</name></item>
         <item>
           <name>Fn+F10 to Volume Mute</name>
           <identifier>remap.fnF10_to_volumemute</identifier>
@@ -2414,6 +2416,7 @@
           <identifier>remap.fnF12_to_volumeup</identifier>
           <autogen>--KeyToConsumer-- KeyCode::F12, ModifierFlag::FN, ConsumerKeyCode::VOLUME_UP</autogen>
         </item>
+        <item><name>------------------------------------------------------------</name></item>
 
         <item>
           <name>Change Command+F1...F12 to Functional Keys</name>
