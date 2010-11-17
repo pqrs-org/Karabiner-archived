@@ -3,106 +3,106 @@
   <list>
     <item>
       <name>[Key Repeat] Initial Wait</name>
-      <sysctl essential="true" default="500">repeat.initial_wait</sysctl>
+      <identifier essential="true" default="500">repeat.initial_wait</identifier>
       <default>500</default>
       <baseunit>ms</baseunit>
     </item>
     <item>
       <name>[Key Repeat] Wait</name>
-      <sysctl essential="true" default="83">repeat.wait</sysctl>
+      <identifier essential="true" default="83">repeat.wait</identifier>
       <default>83</default>
       <baseunit>ms</baseunit>
     </item>
 
     <item>
       <name>[Functional Key Repeat] Initial Wait</name>
-      <sysctl essential="true" default="500">repeat.consumer_initial_wait</sysctl>
+      <identifier essential="true" default="500">repeat.consumer_initial_wait</identifier>
       <default>500</default>
       <baseunit>ms</baseunit>
     </item>
     <item>
       <name>[Functional Key Repeat] Wait</name>
-      <sysctl essential="true" default="100">repeat.consumer_wait</sysctl>
+      <identifier essential="true" default="100">repeat.consumer_wait</identifier>
       <default>100</default>
       <baseunit>ms</baseunit>
     </item>
 
     <item>
       <name>[Key Overlaid Modifier] Timeout</name>
-      <sysctl essential="true" default="1000">parameter.keyoverlaidmodifier_timeout</sysctl>
+      <identifier essential="true" default="1000">parameter.keyoverlaidmodifier_timeout</identifier>
       <default>1000</default>
       <baseunit>ms</baseunit>
     </item>
     <item>
       <name>[Key Overlaid Modifier's Key Repeat] Initial Wait</name>
-      <sysctl essential="true" default="500">repeat.keyoverlaidmodifier_initial_wait</sysctl>
+      <identifier essential="true" default="500">repeat.keyoverlaidmodifier_initial_wait</identifier>
       <default>500</default>
       <baseunit>ms</baseunit>
     </item>
 
     <item>
       <name>[Simultaneous Key Presses] Delay Threshold</name>
-      <sysctl essential="true" default="50">parameter.simultaneouskeypresses_delay</sysctl>
+      <identifier essential="true" default="50">parameter.simultaneouskeypresses_delay</identifier>
       <default>50</default>
       <baseunit>ms</baseunit>
     </item>
 
     <item>
       <name>[Simultaneous PointingButton Presses] Delay Threshold</name>
-      <sysctl essential="true" default="50">parameter.simultaneouskeypresses_pointingbutton_delay</sysctl>
+      <identifier essential="true" default="50">parameter.simultaneouskeypresses_pointingbutton_delay</identifier>
       <default>50</default>
       <baseunit>ms</baseunit>
     </item>
 
     <item>
       <name>[Double Press Modifier] Recognition Threshold</name>
-      <sysctl essential="true" default="500">parameter.doublepressmodifier_threshold</sysctl>
+      <identifier essential="true" default="500">parameter.doublepressmodifier_threshold</identifier>
       <default>500</default>
       <baseunit>ms</baseunit>
     </item>
 
     <item>
       <name>[Modifier Holding Key to Key] Holding Threshold</name>
-      <sysctl essential="true" default="1000">parameter.modifierholdingkeytokey_wait</sysctl>
+      <identifier essential="true" default="1000">parameter.modifierholdingkeytokey_wait</identifier>
       <default>1000</default>
       <baseunit>ms</baseunit>
     </item>
 
     <item>
       <name>[Holding Key to Key] Holding Threshold</name>
-      <sysctl essential="true" default="1000">parameter.holdingkeytokey_wait</sysctl>
+      <identifier essential="true" default="1000">parameter.holdingkeytokey_wait</identifier>
       <default>1000</default>
       <baseunit>ms</baseunit>
     </item>
 
     <item>
       <name>[Pointing Device] CursorMove to ScrollWheel Rate</name>
-      <sysctl essential="true" default="150">pointing.relative2scroll_rate</sysctl>
+      <identifier essential="true" default="150">pointing.relative2scroll_rate</identifier>
       <default>150</default>
       <baseunit>/ 1000</baseunit>
     </item>
 
     <item>
       <name>[StatusWindow] AlphaValue for Font</name>
-      <sysctl essential="true" default="60">parameter.statuswindow_alpha_font</sysctl>
+      <identifier essential="true" default="60">parameter.statuswindow_alpha_font</identifier>
       <default>60</default>
       <baseunit>%</baseunit>
     </item>
     <item>
       <name>[StatusWindow] AlphaValue for Background</name>
-      <sysctl essential="true" default="20">parameter.statuswindow_alpha_background</sysctl>
+      <identifier essential="true" default="20">parameter.statuswindow_alpha_background</identifier>
       <default>20</default>
       <baseunit>%</baseunit>
     </item>
     <item>
       <name>[StatusWindow] PosX adjustment</name>
-      <sysctl essential="true">parameter.statuswindow_posx_adjustment</sysctl>
+      <identifier essential="true">parameter.statuswindow_posx_adjustment</identifier>
       <default>0</default>
       <baseunit></baseunit>
     </item>
     <item>
       <name>[StatusWindow] PosY adjustment</name>
-      <sysctl essential="true">parameter.statuswindow_posy_adjustment</sysctl>
+      <identifier essential="true">parameter.statuswindow_posy_adjustment</identifier>
       <default>0</default>
       <baseunit></baseunit>
     </item>
