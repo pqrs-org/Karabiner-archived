@@ -6,7 +6,7 @@
 // ----------------------------------------
 - (void) addToDefault:(NSXMLElement*)element
 {
-  for (NSXMLElement* e in [element elementsForName : @"sysctl"]) {
+  for (NSXMLElement* e in [element elementsForName : @"identifier"]) {
     NSXMLNode* attr_default = [e attributeForName:@"default"];
     if (! attr_default) continue;
 

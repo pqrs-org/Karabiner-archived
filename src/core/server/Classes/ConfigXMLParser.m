@@ -340,7 +340,7 @@
                                 @"VK_CONFIG_SYNC_KEYDOWNUP_%@",
                                 nil];
 
-  for (NSXMLElement* e in [element elementsForName : @"sysctl"]) {
+  for (NSXMLElement* e in [element elementsForName : @"identifier"]) {
     NSString* name = [KeyCode normalizeName:[e stringValue]];
 
     BOOL isnotsave = [name hasPrefix:@"notsave_"];
@@ -368,9 +368,9 @@
   }
 }
 
-- (void) traverse_sysctl:(NSXMLElement*)element
+- (void) traverse_identifier:(NSXMLElement*)element
 {
-  for (NSXMLElement* e in [element elementsForName : @"sysctl"]) {
+  for (NSXMLElement* e in [element elementsForName : @"identifier"]) {
     NSXMLNode* attr_essential = [e attributeForName:@"essential"];
     if (attr_essential) continue;
 
@@ -398,10 +398,10 @@
   }
 
   for (NSXMLElement* e in [element elementsForName : @"list"]) {
-    [self traverse_sysctl:e];
+    [self traverse_identifier:e];
   }
   for (NSXMLElement* e in [element elementsForName : @"item"]) {
-    [self traverse_sysctl:e];
+    [self traverse_identifier:e];
   }
 }
 
@@ -453,7 +453,7 @@
     for (NSString* xmlpath in paths) {
       NSXMLDocument* xmldocument = [xmldocdict objectForKey:xmlpath];
       if (xmldocument) {
-        [self traverse_sysctl:[xmldocument rootElement]];
+        [self traverse_identifier:[xmldocument rootElement]];
       }
     }
 
