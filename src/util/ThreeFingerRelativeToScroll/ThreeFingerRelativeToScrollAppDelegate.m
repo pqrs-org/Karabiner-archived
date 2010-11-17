@@ -25,7 +25,9 @@ void MTDeviceStop(MTDeviceRef, int);
 org_pqrs_KeyRemap4MacBook_PreferencesClient* global_preferencesclient_ = nil;
 
 static void setPreference(int newvalue) {
+  NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
   [[global_preferencesclient_ proxy] setValueForName:newvalue forName:@"notsave.pointing_relative_to_scroll"];
+  [pool drain];
 }
 
 // ------------------------------------------------------------
