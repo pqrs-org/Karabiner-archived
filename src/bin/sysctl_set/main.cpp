@@ -47,7 +47,9 @@ main(int argc, char** argv)
       return 1;
     }
 
-  } else {
+  } else if (strcmp(argv[1], "do_reset") == 0 ||
+             strcmp(argv[1], "do_reload_xml") == 0 ||
+             strcmp(argv[1], "do_reload_only_config") == 0) {
     int value = atoi(argv[2]);
 
     size_t oldlen = 0;
@@ -58,6 +60,9 @@ main(int argc, char** argv)
       //perror("sysctl_set");
       return 1;
     }
+  } else {
+    fprintf(stderr, "Can't change keyremap4macbook.%s by sysctl_set\n", argv[1]);
+    return 1;
   }
 
   return 0;
