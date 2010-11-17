@@ -36,11 +36,11 @@ sudo mkdir -p "pkgroot/$basedir/app"
 sudo cp -R "src/core/server/build/Release/KeyRemap4MacBook_server.app" "pkgroot/$basedir/app"
 sudo cp -R "src/util/KeyDump/build/Release/KeyDump.app" "pkgroot/$basedir/app"
 sudo cp -R "src/util/ThreeFingerRelativeToScroll/build/Release/ThreeFingerRelativeToScroll.app" "pkgroot/$basedir/app"
+sudo cp -R "src/util/cli/build/Release/KeyRemap4MacBook_cli.app" "pkgroot/$basedir/app"
 sudo cp -R "src/util/uninstaller/build/Release/uninstaller.app" "pkgroot/$basedir/app"
 sudo cp -R "src/util/updater/build/Release/KeyRemap4MacBook.app" "pkgroot/$basedir/app"
 
 sudo mkdir -p "pkgroot/$basedir/bin"
-sudo cp src/bin/sysctl_ctl/build/Release/KeyRemap4MacBook_sysctl_ctl "pkgroot/$basedir/bin"
 sudo cp src/bin/sysctl_set/build/Release/KeyRemap4MacBook_sysctl_set "pkgroot/$basedir/bin"
 
 sudo mkdir -p "pkgroot/Library/PreferencePanes"
@@ -51,10 +51,10 @@ sudo find pkgroot -type f -print0 | xargs -0 sudo chmod 644
 sudo find pkgroot -type l -print0 | xargs -0 sudo chmod -h 755
 sudo find pkgroot -name '*.sh' -print0 | xargs -0 sudo chmod 755
 sudo chmod 4755 pkgroot/$basedir/bin/KeyRemap4MacBook_sysctl_set
-sudo chmod 755 pkgroot/$basedir/bin/KeyRemap4MacBook_sysctl_ctl
 sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook_server.app/Contents/MacOS/KeyRemap4MacBook_server
 sudo chmod 755 pkgroot/$basedir/app/KeyDump.app/Contents/MacOS/KeyDump
 sudo chmod 755 pkgroot/$basedir/app/ThreeFingerRelativeToScroll.app/Contents/MacOS/ThreeFingerRelativeToScroll
+sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook_cli.app/Contents/MacOS/KeyRemap4MacBook_cli
 sudo chmod 755 pkgroot/$basedir/app/uninstaller.app/Contents/MacOS/uninstaller
 sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook.app/Contents/MacOS/KeyRemap4MacBook
 sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook.app/Contents/Frameworks/Sparkle.framework/Resources/relaunch
