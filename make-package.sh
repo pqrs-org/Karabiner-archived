@@ -19,7 +19,6 @@ basedir="/Library/org.pqrs/KeyRemap4MacBook"
 sudo mkdir -p "pkgroot/$basedir/tmp"
 sudo cp -R src/core/kext/build/Release/KeyRemap4MacBook.kext "pkgroot/$basedir"
 sudo cp -R files/scripts "pkgroot/$basedir"
-sudo cp -R files/share "pkgroot/$basedir"
 
 sudo mkdir -p "pkgroot/$basedir/prefpane"
 sudo cp files/prefpane/number.xml files/prefpane/output/checkbox.xml "pkgroot/$basedir/prefpane"
@@ -42,7 +41,6 @@ sudo cp -R "src/util/updater/build/Release/KeyRemap4MacBook.app" "pkgroot/$based
 
 sudo mkdir -p "pkgroot/$basedir/bin"
 sudo cp src/bin/sysctl_ctl/build/Release/KeyRemap4MacBook_sysctl_ctl "pkgroot/$basedir/bin"
-sudo cp src/bin/sysctl_reset/build/Release/KeyRemap4MacBook_sysctl_reset "pkgroot/$basedir/bin"
 sudo cp src/bin/sysctl_set/build/Release/KeyRemap4MacBook_sysctl_set "pkgroot/$basedir/bin"
 
 sudo mkdir -p "pkgroot/Library/PreferencePanes"
@@ -52,7 +50,6 @@ sudo find pkgroot -type d -print0 | xargs -0 sudo chmod 755
 sudo find pkgroot -type f -print0 | xargs -0 sudo chmod 644
 sudo find pkgroot -type l -print0 | xargs -0 sudo chmod -h 755
 sudo find pkgroot -name '*.sh' -print0 | xargs -0 sudo chmod 755
-sudo chmod 4755 pkgroot/$basedir/bin/KeyRemap4MacBook_sysctl_reset
 sudo chmod 4755 pkgroot/$basedir/bin/KeyRemap4MacBook_sysctl_set
 sudo chmod 755 pkgroot/$basedir/bin/KeyRemap4MacBook_sysctl_ctl
 sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook_server.app/Contents/MacOS/KeyRemap4MacBook_server
