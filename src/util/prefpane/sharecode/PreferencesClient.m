@@ -8,9 +8,21 @@
 {
   [super init];
 
-  proxy = [[NSConnection rootProxyForConnectionWithRegisteredName:@"org.pqrs.KeyRemap4MacBook" host:nil] retain];
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(observer_NSConnectionDidDieNotification:)
+                                               name:NSConnectionDidDieNotification
+                                             object:nil];
+  [self observer_NSConnectionDidDieNotification:nil];
 
   return self;
+}
+
+- (void) observer_NSConnectionDidDieNotification:(NSNotification*)notification
+{
+  if (proxy) {
+    [proxy release];
+  }
+  proxy = [[NSConnection rootProxyForConnectionWithRegisteredName:@"org.pqrs.KeyRemap4MacBook" host:nil] retain];
 }
 
 - (void) dealloc
