@@ -19,14 +19,24 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
   return self;
 }
 
-- (IBAction) expandALL:(id)sender
+- (void) dealloc
 {
-  [_outlineView_checkbox expandItem:nil expandChildren:YES];
+  if (_xmlTreeWrapper) {
+    [_xmlTreeWrapper release];
+  }
+  [super dealloc];
 }
 
-- (IBAction) collapseALL:(id)sender
+- (IBAction) reloadXML:(id)sender
 {
-  [_outlineView_checkbox collapseItem:nil collapseChildren:YES];
+  if (_xmlTreeWrapper) {
+    [_xmlTreeWrapper release];
+  }
+  _xmlTreeWrapper = [[BUNDLEPREFIX (XMLTreeWrapper) alloc] init];
+  if (_xmlTreeWrapper) {
+    [_xmlTreeWrapper load:xmlpath];
+  }
+  [_outlineView_checkbox reloadData];
 }
 
 /* ------------------------------------------------------------ */
@@ -129,7 +139,7 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
 
   [_outlineView_checkbox reloadData];
   if (expand) {
-    [self expandALL:nil];
+    [_outlineView_checkbox expandItem:nil expandChildren:YES];
   }
 }
 

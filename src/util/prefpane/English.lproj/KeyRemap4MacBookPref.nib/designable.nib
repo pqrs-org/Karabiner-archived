@@ -11,7 +11,7 @@
 			<string key="NS.object.0">788</string>
 		</object>
 		<array class="NSMutableArray" key="IBDocument.EditedObjectIDs">
-			<integer value="705"/>
+			<integer value="709"/>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -310,36 +310,16 @@
 												<reference key="NSCornerView" ref="246636842"/>
 												<bytes key="NSScrollAmts">QSAAAEEgAABBoAAAQaAAAA</bytes>
 											</object>
-											<object class="NSButton" id="822294204">
-												<reference key="NSNextResponder" ref="126432317"/>
-												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{98, 507}, {92, 32}}</string>
-												<reference key="NSSuperview" ref="126432317"/>
-												<bool key="NSEnabled">YES</bool>
-												<object class="NSButtonCell" key="NSCell" id="200895585">
-													<int key="NSCellFlags">-2080244224</int>
-													<int key="NSCellFlags2">134217728</int>
-													<string key="NSContents">collapse</string>
-													<reference key="NSSupport" ref="322818650"/>
-													<reference key="NSControlView" ref="822294204"/>
-													<int key="NSButtonFlags">-2038284033</int>
-													<int key="NSButtonFlags2">1</int>
-													<string key="NSAlternateContents"/>
-													<string key="NSKeyEquivalent"/>
-													<int key="NSPeriodicDelay">200</int>
-													<int key="NSPeriodicInterval">25</int>
-												</object>
-											</object>
 											<object class="NSButton" id="503617826">
 												<reference key="NSNextResponder" ref="126432317"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{11, 507}, {87, 32}}</string>
+												<string key="NSFrame">{{11, 507}, {106, 32}}</string>
 												<reference key="NSSuperview" ref="126432317"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="28430691">
 													<int key="NSCellFlags">67239424</int>
 													<int key="NSCellFlags2">134217728</int>
-													<string key="NSContents">expand</string>
+													<string key="NSContents">reloadXML</string>
 													<reference key="NSSupport" ref="322818650"/>
 													<reference key="NSControlView" ref="503617826"/>
 													<int key="NSButtonFlags">-2038284033</int>
@@ -1312,22 +1292,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">expandALL:</string>
-						<reference key="source" ref="28585345"/>
-						<reference key="destination" ref="503617826"/>
-					</object>
-					<int key="connectionID">579</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">collapseALL:</string>
-						<reference key="source" ref="28585345"/>
-						<reference key="destination" ref="822294204"/>
-					</object>
-					<int key="connectionID">580</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
 						<string key="label">launchUninstaller:</string>
 						<reference key="source" ref="762499249"/>
 						<reference key="destination" ref="531702529"/>
@@ -1502,6 +1466,14 @@
 					</object>
 					<int key="connectionID">797</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">reloadXML:</string>
+						<reference key="source" ref="28585345"/>
+						<reference key="destination" ref="503617826"/>
+					</object>
+					<int key="connectionID">798</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -1629,9 +1601,8 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="1011972"/>
 							<reference ref="15313487"/>
-							<reference ref="503617826"/>
-							<reference ref="822294204"/>
 							<reference ref="339829919"/>
+							<reference ref="503617826"/>
 						</array>
 						<reference key="parent" ref="44788686"/>
 					</object>
@@ -1707,19 +1678,6 @@
 						<int key="objectID">696</int>
 						<reference key="object" ref="418799078"/>
 						<reference key="parent" ref="339829919"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">577</int>
-						<reference key="object" ref="822294204"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="200895585"/>
-						</array>
-						<reference key="parent" ref="126432317"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">695</int>
-						<reference key="object" ref="200895585"/>
-						<reference key="parent" ref="822294204"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">575</int>
@@ -2144,9 +2102,9 @@
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
 				<string key="-3.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="-3.ImportedFromIB2"/>
-				<string key="12.IBEditorWindowLastContentRect">{{316, 303}, {668, 600}}</string>
+				<string key="12.IBEditorWindowLastContentRect">{{562, 329}, {668, 600}}</string>
 				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="12.IBWindowTemplateEditedContentRect">{{316, 303}, {668, 600}}</string>
+				<string key="12.IBWindowTemplateEditedContentRect">{{562, 329}, {668, 600}}</string>
 				<boolean value="YES" key="12.ImportedFromIB2"/>
 				<string key="338.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="338.ImportedFromIB2"/>
@@ -2189,8 +2147,6 @@
 				<boolean value="YES" key="520.ImportedFromIB2"/>
 				<string key="575.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="575.ImportedFromIB2"/>
-				<string key="577.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<boolean value="YES" key="577.ImportedFromIB2"/>
 				<string key="595.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="595.ImportedFromIB2"/>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2203,7 +2159,6 @@
 				<string key="692.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="693.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="694.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="695.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="696.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="697.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="698.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2272,7 +2227,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">797</int>
+			<int key="maxID">798</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2421,21 +2376,16 @@
 					<string key="className">org_pqrs_KeyRemap4MacBook_OutlineView_checkbox</string>
 					<string key="superclassName">NSObject</string>
 					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="collapseALL:">id</string>
-						<string key="expandALL:">id</string>
 						<string key="filter:">id</string>
+						<string key="reloadXML:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="collapseALL:">
-							<string key="name">collapseALL:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="expandALL:">
-							<string key="name">expandALL:</string>
-							<string key="candidateClassName">id</string>
-						</object>
 						<object class="IBActionInfo" key="filter:">
 							<string key="name">filter:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="reloadXML:">
+							<string key="name">reloadXML:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>
@@ -2510,13 +2460,13 @@
 					<string key="className">org_pqrs_KeyRemap4MacBook_PreferencesClient</string>
 					<string key="superclassName">NSObject</string>
 					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">proxy</string>
+						<string key="NS.key.0">proxy_</string>
 						<string key="NS.object.0">id</string>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">proxy</string>
+						<string key="NS.key.0">proxy_</string>
 						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">proxy</string>
+							<string key="name">proxy_</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</object>
