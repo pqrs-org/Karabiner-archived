@@ -13,7 +13,6 @@ src/core/kext/config/output
 src/core/bridge/keycode/output
 src/core/bridge/config/output
 util/getActiveApplication/getname
-files/share/reset
 pkginfo/Info.plist$
 util/SetCapsDelay/common/Info.plist$
 src/core/kext/Info.plist$
