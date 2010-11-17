@@ -825,7 +825,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       if (! remapclasses_) return false;
 
-      if (configindex >= remapclasses_->size()) return false;
+      if (configindex >= remapclasses_->size()) {
+        IOLOG_ERROR("RemapClass::isEnabled invalid configindex.\n");
+        return false;
+      }
 
       RemapClass* p = (*remapclasses_)[configindex];
       if (! p) return false;
