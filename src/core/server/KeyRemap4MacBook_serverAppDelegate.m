@@ -33,7 +33,7 @@ static NSString* sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
   NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
 
   for (;;) {
-    sysctl_load();
+    set_sysctl_do_reload_xml();
     sleep(1);
   }
 
@@ -61,7 +61,7 @@ static NSString* sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
 }
 
 // ------------------------------------------------------------
-- (void) sysctl_reset {
+- (void) set_sysctl_do_reset {
   [BUNDLEPREFIX (SysctlWrapper) setSysctlInt:@"keyremap4macbook" name:@"do_reset" value:[NSNumber numberWithInt:1] sysctl_set:sysctl_set];
 }
 
@@ -108,8 +108,8 @@ static NSString* sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
   // Note: The console user is "real login user" or "loginwindow",
   //       when NSWorkspaceSessionDidBecomeActiveNotification, NSWorkspaceSessionDidResignActiveNotification are called.
   reset_statusmessage();
-  [self sysctl_reset];
-  sysctl_load();
+  [self set_sysctl_do_reset];
+  set_sysctl_do_reload_xml();
 }
 
 - (void) observer_NSWorkspaceSessionDidResignActiveNotification:(NSNotification*)notification
@@ -119,7 +119,7 @@ static NSString* sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
   // Note: The console user is "real login user" or "loginwindow",
   //       when NSWorkspaceSessionDidBecomeActiveNotification, NSWorkspaceSessionDidResignActiveNotification are called.
   reset_statusmessage();
-  [self sysctl_reset];
+  [self set_sysctl_do_reset];
 }
 
 // ------------------------------------------------------------
@@ -151,7 +151,7 @@ static NSString* sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
 
   // ------------------------------------------------------------
   reset_statusmessage();
-  [self sysctl_reset];
+  [self set_sysctl_do_reset];
   [NSThread detachNewThreadSelector:@selector(threadMain)
                            toTarget:self
                          withObject:nil];
@@ -176,7 +176,7 @@ static NSString* sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
 
 - (void) applicationWillTerminate:(NSNotification*)aNotification {
   NSLog(@"applicationWillTerminate");
-  [self sysctl_reset];
+  [self set_sysctl_do_reset];
 }
 
 @end
