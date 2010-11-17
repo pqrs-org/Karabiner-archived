@@ -45,6 +45,28 @@
   [serverconnection_ setRootObject:self];
   [serverconnection_ registerName:@"org.pqrs.KeyRemap4MacBook"];
 
+  // ------------------------------------------------------------
+  // scan config_* and detech notsave.*
+  for (NSDictionary* dict in [self configlist_getConfigList]) {
+    if (! dict) continue;
+
+    NSString* identifier = [dict objectForKey:@"identify"];
+    if (! identifier) continue;
+
+    NSDictionary* d = [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
+    if (! d) continue;
+
+    NSMutableDictionary* md = [NSMutableDictionary dictionaryWithDictionary:d];
+
+    for (NSString* name in [md allKeys]) {
+      if ([name hasPrefix:@"notsave."]) {
+        [md removeObjectForKey:name];
+      }
+    }
+
+    [[NSUserDefaults standardUserDefaults] setObject:md forKey:identifier];
+  }
+
   return self;
 }
 
