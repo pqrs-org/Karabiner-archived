@@ -47,10 +47,10 @@ static BUNDLEPREFIX(XMLTreeWrapper) * _xmlTreeWrapper;
     return [node stringValue];
 
   } else if ([identifier isEqualToString:@"value"]) {
-    NSXMLNode* identifier = [_xmlTreeWrapper getNode:item xpath:@"identifier"];
-    if (! identifier) return nil;
+    NSXMLNode* identifier_node = [_xmlTreeWrapper getNode:item xpath:@"identifier"];
+    if (! identifier_node) return nil;
 
-    return [NSNumber numberWithInt:[[preferencesclient_ proxy] value:[identifier stringValue]]];
+    return [NSNumber numberWithInt:[[preferencesclient_ proxy] value:[identifier_node stringValue]]];
   }
 
   return nil;
