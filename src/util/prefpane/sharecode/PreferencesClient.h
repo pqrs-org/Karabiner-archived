@@ -30,11 +30,10 @@
 @end
 
 @interface org_pqrs_KeyRemap4MacBook_PreferencesClient : NSObject {
-  id proxy;
+  id proxy_;
 }
 
 - (void) observer_NSConnectionDidDieNotification:(NSNotification*)notification;
-
-@property (assign) id proxy;
+- (id) proxy;
 
 @end
