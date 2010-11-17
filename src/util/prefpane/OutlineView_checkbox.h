@@ -10,8 +10,7 @@
   IBOutlet org_pqrs_KeyRemap4MacBook_PreferencesClient* preferencesclient_;
 }
 
-- (IBAction) expandALL:(id)sender;
-- (IBAction) collapseALL:(id)sender;
+- (IBAction) reloadXML:(id)sender;
 - (IBAction) filter:(id)sender;
 
 @end
