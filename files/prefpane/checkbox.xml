@@ -2417,7 +2417,17 @@
           <autogen>--KeyToConsumer-- KeyCode::F12, ModifierFlag::FN, ConsumerKeyCode::VOLUME_UP</autogen>
         </item>
         <item><name>------------------------------------------------------------</name></item>
-
+        <item>
+          <name>Fn+F5 to PageDown</name>
+          <identifier>remap.fnF5_to_pagedown</identifier>
+          <autogen>--KeyToKey-- KeyCode::F5, ModifierFlag::FN, KeyCode::PAGEDOWN</autogen>
+        </item>
+        <item>
+          <name>Fn+F12 to PageUp</name>
+          <identifier>remap.fnF12_to_pageup</identifier>
+          <autogen>--KeyToKey-- KeyCode::F12, ModifierFlag::FN, KeyCode::PAGEUP</autogen>
+        </item>
+        <item><name>------------------------------------------------------------</name></item>
         <item>
           <name>Change Command+F1...F12 to Functional Keys</name>
           <appendix>(ex. F10 to Volume Mute, F11 to Volume Down)</appendix>
