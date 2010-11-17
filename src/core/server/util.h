@@ -12,7 +12,7 @@ extern "C" {
 int server_initialize(const char* basedirectory);
 void server_run(void);
 
-void sysctl_load(void);
+void set_sysctl_do_reload_xml(void);
 
 #ifdef __cplusplus
 }

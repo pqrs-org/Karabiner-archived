@@ -30,7 +30,7 @@ namespace {
 }
 
 void
-sysctl_load(void)
+set_sysctl_do_reload_xml(void)
 {
   Mutex::ScopedLock lk(mutex_sysctl);
 
