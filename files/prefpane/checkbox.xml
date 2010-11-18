@@ -1878,7 +1878,7 @@
           <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP,          KeyCode::F12</autogen>
         </item>
         <item>
-          <name>MacBookAir3,1 to Previous Model</name>
+          <name>MacBookAir3,1 (MacBook Air Late 2010) to Previous Model</name>
           <appendix>Music Prev(F6) to F6</appendix>
           <appendix>Music Play(F7) to Music Prev</appendix>
           <appendix>Music Next(F8) to Music Play</appendix>
