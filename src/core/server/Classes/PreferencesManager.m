@@ -335,4 +335,15 @@
   //[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+// ----------------------------------------------------------------------
+- (void) configxml_reload
+{
+  [configxmlparser_ reload];
+}
+
+- (BOOL) configxml_initialized
+{
+  return [configxmlparser_ initialized];
+}
+
 @end
