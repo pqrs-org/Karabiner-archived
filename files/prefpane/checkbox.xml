@@ -1878,6 +1878,27 @@
           <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP,          KeyCode::F12</autogen>
         </item>
         <item>
+          <name>MacBookAir3,1 to Previous Model</name>
+          <appendix>Music Prev(F6) to F6</appendix>
+          <appendix>Music Play(F7) to Music Prev</appendix>
+          <appendix>Music Next(F8) to Music Play</appendix>
+          <appendix>Volume Mute(F9) to Music Next</appendix>
+          <appendix>Volume Down(F10) to Volume Mute</appendix>
+          <appendix>Volume Up(F11) to Volume Down</appendix>
+          <appendix>Eject(F12) to Volume Up</appendix>
+          <appendix></appendix>
+          <appendix>*** We recommend to use "NoEjectDelay" together when you change eject key.</appendix>
+          <appendix>*** &#8594; http://pqrs.org/macosx/keyremap4macbook/noejectdelay.html</appendix>
+          <identifier>remap.functional2fn_air3_1_to_previous</identifier>
+          <autogen>--ConsumerToKey--      ConsumerKeyCode::MUSIC_PREV,  KeyCode::F6</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::MUSIC_PLAY,  ConsumerKeyCode::MUSIC_PREV</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::MUSIC_NEXT,  ConsumerKeyCode::MUSIC_PLAY</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::MUSIC_NEXT</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_DOWN, ConsumerKeyCode::VOLUME_MUTE</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_UP,   ConsumerKeyCode::VOLUME_DOWN</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::EJECT,       ConsumerKeyCode::VOLUME_UP</autogen>
+        </item>
+        <item>
           <name>Brightness Down to F1</name>
           <identifier>remap.brightnessdown2f1</identifier>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_DOWN, KeyCode::F1</autogen>
