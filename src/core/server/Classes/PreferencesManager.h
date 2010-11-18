@@ -38,4 +38,8 @@
 - (NSInteger) checkForUpdatesMode;
 - (void) setCheckForUpdatesMode:(NSInteger)newval;
 
+// --------------------------------------------------
+- (void) configxml_reload;
+- (BOOL) configxml_initialized;
+
 @end
