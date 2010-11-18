@@ -29,19 +29,14 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
 
 - (IBAction) reloadXML:(id)sender
 {
-  // ----------------------------------------
-  // restart server process
-  for (NSRunningApplication* application in [NSRunningApplication runningApplicationsWithBundleIdentifier:@"org.pqrs.KeyRemap4MacBook"]) {
-    [application terminate];
+  // reload xml on server process.
+  [[preferencesclient_ proxy] configxml_reload];
 
-    // wait until server is terminated.
-    int trycount = 0;
-    for (trycount = 0; trycount < 10; ++trycount) {
-      [NSThread sleepForTimeInterval:0.5];
-      if (application.terminated) break;
-    }
-
-    // server will be restarted by launchd.
+  // wait until xml reloaded.
+  int trycount = 0;
+  for (trycount = 0; trycount < 10; ++trycount) {
+    [NSThread sleepForTimeInterval:0.5];
+    if ([[preferencesclient_ proxy] configxml_initialized]) break;
   }
 
   // ----------------------------------------
@@ -52,13 +47,6 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
   _xmlTreeWrapper = [[BUNDLEPREFIX (XMLTreeWrapper) alloc] init];
   if (_xmlTreeWrapper) {
     [_xmlTreeWrapper load:xmlpath];
-  }
-
-  // wait until server will be alive.
-  int trycount = 0;
-  for (trycount = 0; trycount < 10; ++trycount) {
-    if ([preferencesclient_ proxy]) break;
-    [NSThread sleepForTimeInterval:0.5];
   }
 
   // ----------------------------------------
