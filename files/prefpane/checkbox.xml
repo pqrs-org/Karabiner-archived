@@ -2114,6 +2114,35 @@
         </item>
 
         <item>
+          <name>MacBookPro4,1 functional to MacBookPro3,1 functional</name>
+          <appendix></appendix>
+          <appendix>Fn+F1 to Brightness Down</appendix>
+          <appendix>Fn+F2 to Brightness Up</appendix>
+          <appendix>Fn+F3 to Volume Mute</appendix>
+          <appendix>Fn+F4 to Volume Down</appendix>
+          <appendix>Fn+F5 to Volume Up</appendix>
+          <appendix>Fn+F6 to NumLock</appendix>
+          <appendix>Fn+F7 to Video Mirror</appendix>
+          <appendix>Fn+F8 to Keyboard Light OFF</appendix>
+          <appendix>Fn+F9 to Keyboard Light LOW</appendix>
+          <appendix>Fn+F10 to Keyboard Light HIGH</appendix>
+          <appendix>Fn+F11 to F11</appendix>
+          <appendix>Fn+F12 to F12</appendix>
+          <!-- #include "include/caution_functionkey.xml" -->
+          <identifier>remap.fnF1_F12_to_functional_mbp31</identifier>
+          <autogen>--KeyToConsumer--      KeyCode::EXPOSE_ALL, ConsumerKeyCode::VOLUME_MUTE</autogen>
+          <autogen>--KeyToConsumer--      KeyCode::DASHBOARD,  ConsumerKeyCode::VOLUME_DOWN</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_LOW,  ConsumerKeyCode::VOLUME_UP</autogen>
+          <autogen>--ConsumerToKey--      ConsumerKeyCode::KEYBOARDLIGHT_HIGH, KeyCode::VK_LOCK_FN</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::MUSIC_PREV, ConsumerKeyCode::VIDEO_MIRROR</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::MUSIC_PLAY, ConsumerKeyCode::KEYBOARDLIGHT_OFF</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::MUSIC_NEXT, ConsumerKeyCode::KEYBOARDLIGHT_LOW</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::KEYBOARDLIGHT_HIGH</autogen>
+          <autogen>--ConsumerToKey--      ConsumerKeyCode::VOLUME_DOWN, KeyCode::F11</autogen>
+          <autogen>--ConsumerToKey--      ConsumerKeyCode::VOLUME_UP,   KeyCode::F12</autogen>
+        </item>
+
+        <item>
           <name>F1 to Brightness Down (except virtual machine, RDC)</name>
           <identifier>remap.f1_to_brightnessdown</identifier>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
