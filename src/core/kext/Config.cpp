@@ -58,7 +58,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       int error = sysctl_handle_int(oidp, oidp->oid_arg1, oidp->oid_arg2, req);
       if (! error && req->newptr) {
         if (Config::do_reload_xml == 1 && oldvalue != 1) {
-          Config::initialized = 0;
 
           Config::load_essential_config();
           if (RemapClassManager::reload_xml()) {
@@ -67,6 +66,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           } else {
             IOLOG_ERROR("RemapClassManager::reload_xml is failed.\n");
             Config::do_reload_xml = -1;
+            Config::initialized = 0;
           }
         }
       }

@@ -633,7 +633,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       KeyRemap4MacBook_bridge::GetConfigInfo::Reply::Item* configinfo = NULL;
 
       // ------------------------------------------------------------
-      if (! Config::do_reload_only_config) {
+      if (Config::do_reload_only_config != 1) {
         clear_xml();
         remapclasses_ = new Vector_RemapClassPointer();
       }
@@ -683,7 +683,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       // ------------------------------------------------------------
-      if (Config::do_reload_only_config) {
+      if (Config::do_reload_only_config == 1) {
         if (count != remapclasses_->size()) {
           IOLOG_ERROR("do_reload_xml count != remapclasses_->size()\n");
           goto finish;
