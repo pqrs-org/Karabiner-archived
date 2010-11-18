@@ -497,36 +497,58 @@
 // ------------------------------------------------------------
 - (NSUInteger) count
 {
-  if (! initialized_) return 0;
-  return [dict_initialize_vector_ count];
+  NSUInteger v = 0;
+  @synchronized(self) {
+    if (initialized_) {
+      v = [dict_initialize_vector_ count];
+    }
+  }
+  return v;
 }
 
 - (NSArray*) initialize_vector:(unsigned int)configindex
 {
-  if (! initialized_) return nil;
-  return [dict_initialize_vector_ objectForKey:[NSNumber numberWithUnsignedInt:configindex]];
+  NSArray* a = nil;
+  @synchronized(self) {
+    if (initialized_) {
+      a = [dict_initialize_vector_ objectForKey:[NSNumber numberWithUnsignedInt:configindex]];
+    }
+  }
+  return a;
 }
 
 - (NSUInteger) initialize_vector_size:(unsigned int)configindex
 {
-  if (! initialized_) return 0;
-
-  NSArray* a = [self initialize_vector:configindex];
-  if (! a) return 0;
-
-  return [a count];
+  NSUInteger v = 0;
+  @synchronized(self) {
+    NSArray* a = [self initialize_vector:configindex];
+    if (a) {
+      v = [a count];
+    }
+  }
+  return v;
 }
 
 - (unsigned int) keycode:(NSString*)name
 {
-  if (! initialized_) return 0;
-  return [keycode_ unsignedIntValue:name];
+  unsigned int v = 0;
+  @synchronized(self) {
+    if (initialized_) {
+      v = [keycode_ unsignedIntValue:name];
+    }
+  }
+  return v;
 }
 
 - (NSString*) configname:(unsigned int)configindex
 {
-  if (! initialized_) return nil;
-  return [dict_config_name_ objectForKey:[NSNumber numberWithUnsignedInt:configindex]];
+  NSString* name = nil;
+  @synchronized(self) {
+    if (initialized_) {
+      name = [dict_config_name_ objectForKey:[NSNumber numberWithUnsignedInt:configindex]];
+    }
+  }
+  return name;
 }
 
 @end
