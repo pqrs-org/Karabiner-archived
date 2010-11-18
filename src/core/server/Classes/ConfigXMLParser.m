@@ -506,6 +506,8 @@
 
     initialized_ = YES;
 
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ConfigXMLReloaded" object:nil];
+
   } @catch (NSException* exception) {
     NSLog(@"[ERROR] KeyRemap4MacBook_server %@ %@", [exception name], [exception reason]);
   }
