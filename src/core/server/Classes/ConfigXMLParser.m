@@ -428,7 +428,54 @@
 }
 
 
-- (void) load {
+- (id) init
+{
+  [super init];
+  [self reload];
+
+  return self;
+}
+
+- (void) dealloc
+{
+  if (dict_initialize_vector_) {
+    [dict_initialize_vector_ release];
+  }
+  if (dict_config_name_) {
+    [dict_config_name_ release];
+  }
+  if (keycode_) {
+    [keycode_ release];
+  }
+
+  [super dealloc];
+}
+
+// ------------------------------------------------------------
+- (BOOL) initialized {
+  return initialized_;
+}
+
+- (void) reload {
+  initialized_ = NO;
+  simultaneous_keycode_index_ = 0;
+
+  if (dict_initialize_vector_) {
+    [dict_initialize_vector_ release];
+  }
+  dict_initialize_vector_ = [[NSMutableDictionary alloc] initWithCapacity:0];
+
+  if (dict_config_name_) {
+    [dict_config_name_ release];
+  }
+  dict_config_name_       = [[NSMutableDictionary alloc] initWithCapacity:0];
+
+  if (keycode_) {
+    [keycode_ release];
+  }
+  keycode_ = [KeyCode new];
+
+  // ------------------------------------------------------------
   NSArray* paths = [NSArray arrayWithObjects:
                     [self get_private_xml_path],
                     @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml",
@@ -464,37 +511,6 @@
   }
 }
 
-- (id) init
-{
-  [super init];
-
-  simultaneous_keycode_index_ = 0;
-  dict_initialize_vector_ = [[NSMutableDictionary alloc] initWithCapacity:0];
-  dict_config_name_       = [[NSMutableDictionary alloc] initWithCapacity:0];
-  keycode_ = [KeyCode new];
-  initialized_ = NO;
-
-  [self load];
-
-  return self;
-}
-
-- (void) dealloc
-{
-  if (dict_initialize_vector_) {
-    [dict_initialize_vector_ release];
-  }
-  if (dict_config_name_) {
-    [dict_config_name_ release];
-  }
-  if (keycode_) {
-    [keycode_ release];
-  }
-
-  [super dealloc];
-}
-
-// ------------------------------------------------------------
 - (NSUInteger) count
 {
   NSUInteger v = 0;
