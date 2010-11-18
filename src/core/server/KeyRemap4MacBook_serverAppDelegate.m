@@ -66,6 +66,10 @@ static NSString* sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
 }
 
 // ------------------------------------------------------------
+- (void) observer_ConfigXMLReloaded:(NSNotification*)notification {
+  [BUNDLEPREFIX (SysctlWrapper) setSysctlInt:@"keyremap4macbook" name:@"do_reload_xml" value:[NSNumber numberWithInt:1] sysctl_set:sysctl_set];
+}
+
 - (void) observer_ConfigListChanged:(NSNotification*)notification {
   [statusbar_ refresh];
 }
@@ -166,6 +170,7 @@ static NSString* sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
   // ------------------------------------------------------------
   [statusbar_ refresh];
 
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_ConfigXMLReloaded:) name:@"ConfigXMLReloaded" object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_ConfigListChanged:) name:@"ConfigListChanged" object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_PreferencesChanged:) name:@"PreferencesChanged" object:nil];
 
