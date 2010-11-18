@@ -506,11 +506,14 @@
 
       initialized_ = YES;
 
-      [[NSNotificationCenter defaultCenter] postNotificationName:@"ConfigXMLReloaded" object:nil];
-
     } @catch (NSException* exception) {
       NSLog(@"[ERROR] KeyRemap4MacBook_server %@ %@", [exception name], [exception reason]);
     }
+  }
+
+  // We need to send a notification outside synchronized block to prevent lock.
+  if (initialized_) {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ConfigXMLReloaded" object:nil];
   }
 }
 
