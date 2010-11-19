@@ -2832,6 +2832,17 @@
           <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_NEXT,         KeyCode::F9</autogen>
         </item>
         <item>
+          <name>Media Keys to F6..F8</name>
+          <appendix>Music Prev to F6</appendix>
+          <appendix>Music Play/Pause to F7</appendix>
+          <appendix>Music Next to F8</appendix>
+          <identifier>remap.mediaKeysToFKeys_f6f8</identifier>
+          <!-- F6 - F8 -->
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PREV, KeyCode::F6</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PLAY, KeyCode::F7</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_NEXT, KeyCode::F8</autogen>
+        </item>
+        <item>
           <name>Fn+Function Keys to Media Keys</name>
           <appendix>Fn+F7 to Music Prev</appendix>
           <appendix>Fn+F8 to Music Play/Pause</appendix>
