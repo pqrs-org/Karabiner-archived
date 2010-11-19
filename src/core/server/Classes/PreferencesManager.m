@@ -346,4 +346,14 @@
   return [configxmlparser_ initialized];
 }
 
+- (NSArray*) preferencepane_checkbox
+{
+  return [configxmlparser_ preferencepane_checkbox];
+}
+
+- (NSArray*) preferencepane_number
+{
+  return [configxmlparser_ preferencepane_number];
+}
+
 @end
