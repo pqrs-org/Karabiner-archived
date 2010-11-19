@@ -3,28 +3,6 @@
 
 @implementation ConfigXMLParser
 
-// ======================================================================
-- (NSString*) get_private_xml_path
-{
-  NSFileManager* filemanager = [NSFileManager defaultManager];
-  NSArray* paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
-  NSString* path = [paths objectAtIndex:0];
-  path = [path stringByAppendingPathComponent:@"KeyRemap4MacBook"];
-  if (! [filemanager fileExistsAtPath:path]) {
-    [filemanager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:NULL];
-  }
-  if ([filemanager fileExistsAtPath:path]) {
-    path = [path stringByAppendingPathComponent:@"private.xml"];
-  }
-
-  BOOL isDirectory;
-  if ([filemanager fileExistsAtPath:path isDirectory:&isDirectory] && ! isDirectory) {
-    return path;
-  }
-
-  return @"";
-}
-
 - (id) init
 {
   [super init];
@@ -41,11 +19,11 @@
   if (dict_config_name_) {
     [dict_config_name_ release];
   }
-  if (prefpane_checkbox_) {
-    [prefpane_checkbox_ release];
+  if (preferencepane_checkbox_) {
+    [preferencepane_checkbox_ release];
   }
-  if (prefpane_number_) {
-    [prefpane_number_ release];
+  if (preferencepane_number_) {
+    [preferencepane_number_ release];
   }
   if (keycode_) {
     [keycode_ release];
@@ -56,6 +34,23 @@
 
 // ------------------------------------------------------------
 - (BOOL) initialized {
+  return initialized_;
+}
+
+- (BOOL) reload {
+  @synchronized(self) {
+    initialized_ = NO;
+    if ([self reload_autogen] &&
+        [self reload_preferencepane]) {
+      initialized_ = YES;
+    }
+  }
+
+  // We need to send a notification outside synchronized block to prevent lock.
+  if (initialized_) {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ConfigXMLReloaded" object:nil];
+  }
+
   return initialized_;
 }
 
@@ -113,6 +108,28 @@
     }
   }
   return name;
+}
+
+// ======================================================================
+- (NSString*) get_private_xml_path
+{
+  NSFileManager* filemanager = [NSFileManager defaultManager];
+  NSArray* paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+  NSString* path = [paths objectAtIndex:0];
+  path = [path stringByAppendingPathComponent:@"KeyRemap4MacBook"];
+  if (! [filemanager fileExistsAtPath:path]) {
+    [filemanager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:NULL];
+  }
+  if ([filemanager fileExistsAtPath:path]) {
+    path = [path stringByAppendingPathComponent:@"private.xml"];
+  }
+
+  BOOL isDirectory;
+  if ([filemanager fileExistsAtPath:path isDirectory:&isDirectory] && ! isDirectory) {
+    return path;
+  }
+
+  return @"";
 }
 
 @end

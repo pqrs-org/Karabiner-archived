@@ -6,13 +6,14 @@
   unsigned int simultaneous_keycode_index_;
   NSMutableDictionary* dict_initialize_vector_;
   NSMutableDictionary* dict_config_name_;
-  NSMutableArray* prefpane_checkbox_;
-  NSMutableArray* prefpane_number_;
+  NSMutableArray* preferencepane_checkbox_;
+  NSMutableArray* preferencepane_number_;
   KeyCode* keycode_;
   BOOL initialized_;
 }
 
 - (BOOL) initialized;
+- (BOOL) reload;
 - (NSUInteger) count;
 - (NSUInteger) initialize_vector_size:(unsigned int)configindex;
 - (NSArray*) initialize_vector:(unsigned int)configindex;
@@ -23,5 +24,9 @@
 @end
 
 @interface ConfigXMLParser (AutoGen)
-- (void) reload;
+- (BOOL) reload_autogen;
+@end
+
+@interface ConfigXMLParser (PreferencePane)
+- (BOOL) reload_preferencepane;
 @end
