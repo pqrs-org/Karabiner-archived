@@ -405,76 +405,62 @@
   }
 }
 
-- (void) reload {
-  @synchronized(self) {
-    initialized_ = NO;
-    simultaneous_keycode_index_ = 0;
+- (BOOL) reload_autogen {
+  BOOL retval = NO;
 
-    if (dict_initialize_vector_) {
-      [dict_initialize_vector_ release];
-    }
-    dict_initialize_vector_ = [[NSMutableDictionary alloc] initWithCapacity:0];
+  simultaneous_keycode_index_ = 0;
 
-    if (dict_config_name_) {
-      [dict_config_name_ release];
-    }
-    dict_config_name_ = [[NSMutableDictionary alloc] initWithCapacity:0];
+  if (dict_initialize_vector_) {
+    [dict_initialize_vector_ release];
+  }
+  dict_initialize_vector_ = [[NSMutableDictionary alloc] initWithCapacity:0];
 
-    if (prefpane_checkbox_) {
-      [prefpane_checkbox_ release];
-    }
-    prefpane_checkbox_ = [[NSMutableArray alloc] initWithCapacity:0];
+  if (dict_config_name_) {
+    [dict_config_name_ release];
+  }
+  dict_config_name_ = [[NSMutableDictionary alloc] initWithCapacity:0];
 
-    if (prefpane_number_) {
-      [prefpane_number_ release];
-    }
-    prefpane_number_ = [[NSMutableArray alloc] initWithCapacity:0];
+  if (keycode_) {
+    [keycode_ release];
+  }
+  keycode_ = [KeyCode new];
 
-    if (keycode_) {
-      [keycode_ release];
-    }
-    keycode_ = [KeyCode new];
+  // ------------------------------------------------------------
+  NSArray* paths = [NSArray arrayWithObjects:
+                              [self get_private_xml_path],
+                            @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml",
+                            nil];
 
-    // ------------------------------------------------------------
-    NSArray* paths = [NSArray arrayWithObjects:
-                      [self get_private_xml_path],
-                      @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml",
-                      nil];
+  NSMutableDictionary* xmldocdict = [[[NSMutableDictionary alloc] initWithCapacity:0] autorelease];
 
-    NSMutableDictionary* xmldocdict = [[[NSMutableDictionary alloc] initWithCapacity:0] autorelease];
+  @try {
+    for (NSString* xmlpath in paths) {
+      if ([xmlpath length] == 0) continue;
 
-    @try {
-      for (NSString* xmlpath in paths) {
-        if ([xmlpath length] == 0) continue;
-
-        NSURL* url = [NSURL fileURLWithPath:xmlpath];
-        NSXMLDocument* xmldocument = [[[NSXMLDocument alloc] initWithContentsOfURL:url options:0 error:NULL] autorelease];
-        if (xmldocument) {
-          [xmldocdict setObject:xmldocument forKey:xmlpath];
-        }
-
-        [self append_to_keycode:[xmldocument rootElement] handle_notsave:YES];
-        [self append_to_keycode:[xmldocument rootElement] handle_notsave:NO];
+      NSURL* url = [NSURL fileURLWithPath:xmlpath];
+      NSXMLDocument* xmldocument = [[[NSXMLDocument alloc] initWithContentsOfURL:url options:0 error:NULL] autorelease];
+      if (xmldocument) {
+        [xmldocdict setObject:xmldocument forKey:xmlpath];
       }
 
-      for (NSString* xmlpath in paths) {
-        NSXMLDocument* xmldocument = [xmldocdict objectForKey:xmlpath];
-        if (xmldocument) {
-          [self traverse_identifier:[xmldocument rootElement]];
-        }
-      }
-
-      initialized_ = YES;
-
-    } @catch (NSException* exception) {
-      NSLog(@"[ERROR] KeyRemap4MacBook_server %@ %@", [exception name], [exception reason]);
+      [self append_to_keycode:[xmldocument rootElement] handle_notsave:YES];
+      [self append_to_keycode:[xmldocument rootElement] handle_notsave:NO];
     }
+
+    for (NSString* xmlpath in paths) {
+      NSXMLDocument* xmldocument = [xmldocdict objectForKey:xmlpath];
+      if (xmldocument) {
+        [self traverse_identifier:[xmldocument rootElement]];
+      }
+    }
+
+    retval = YES;
+
+  } @catch (NSException* exception) {
+    NSLog(@"[ERROR] KeyRemap4MacBook_server %@ %@", [exception name], [exception reason]);
   }
 
-  // We need to send a notification outside synchronized block to prevent lock.
-  if (initialized_) {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ConfigXMLReloaded" object:nil];
-  }
+  return retval;
 }
 
 @end
