@@ -33,7 +33,7 @@ lines.each do |l|
   if /<appendix>(.+)<\/appendix>/ =~ l then
     print "<br />", $1
   end
-  if /<sysctl.*?>/ =~ l then
+  if /<identifier.*?>/ =~ l then
     total += 1
   end
 end
