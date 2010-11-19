@@ -56,12 +56,12 @@
   if (preferencepane_checkbox_) {
     [preferencepane_checkbox_ release];
   }
-  preferencepane_checkbox_ = [[NSMutableArray alloc] initWithCapacity:0];
+  preferencepane_checkbox_ = [NSMutableArray new];
 
   if (preferencepane_number_) {
     [preferencepane_number_ release];
   }
-  preferencepane_number_ = [[NSMutableArray alloc] initWithCapacity:0];
+  preferencepane_number_ = [NSMutableArray new];
 
   enum {
     XML_TYPE_CHECKBOX,
