@@ -6,6 +6,8 @@
   unsigned int simultaneous_keycode_index_;
   NSMutableDictionary* dict_initialize_vector_;
   NSMutableDictionary* dict_config_name_;
+  NSMutableArray* prefpane_checkbox_;
+  NSMutableArray* prefpane_number_;
   KeyCode* keycode_;
   BOOL initialized_;
 }
