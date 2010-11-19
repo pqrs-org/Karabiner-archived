@@ -127,12 +127,12 @@
         } else if ([value hasPrefix:@"Option::"]) {
           newdatatype = BRIDGE_DATATYPE_OPTION;
         } else {
-          @throw [NSException exceptionWithName : @"ConfigXMLParser" reason :[NSString stringWithFormat:@"unknown datatype: %@ (%@)", value, params] userInfo : nil];
+          @throw [NSException exceptionWithName : @"<autogen> error" reason :[NSString stringWithFormat:@"unknown datatype: %@ (%@)", value, params] userInfo : nil];
         }
 
         if (datatype && datatype != newdatatype) {
           // Don't connect different data type. (Example: KeyCode::A | ModifierFlag::SHIFT_L)
-          @throw [NSException exceptionWithName : @"ConfigXMLParser" reason :[NSString stringWithFormat:@"invalid connect(|): %@", params] userInfo : nil];
+          @throw [NSException exceptionWithName : @"<autogen> error" reason :[NSString stringWithFormat:@"invalid connect(|): %@", params] userInfo : nil];
         }
 
         datatype = newdatatype;
