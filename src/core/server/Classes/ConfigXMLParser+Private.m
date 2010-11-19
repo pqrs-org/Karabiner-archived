@@ -23,16 +23,13 @@
   return @"";
 }
 
-- (void) setErrorMessageFromNSError:(NSError*)error
+- (void) setErrorMessage:(NSException*)exception
 {
-  error_message_ = [error localizedDescription];
-  NSLog(@"%@", error_message_);
-}
+  // skip if an error was already reported.
+  if (error_message_) return;
 
-- (void) setErrorMessageFromNSString:(NSString*)string
-{
-  error_message_ = string;
-  NSLog(@"%@", error_message_);
+  error_message_ = [NSString stringWithFormat:@"%@ %@", [exception name], [exception reason]];
+  [[NSAlert alertWithMessageText:@"KeyRemap4MacBook" defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:error_message_] runModal];
 }
 
 @end

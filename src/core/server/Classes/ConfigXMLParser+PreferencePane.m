@@ -29,16 +29,17 @@
       NSError* error = nil;
       NSXMLDocument* xmldocument = [[[NSXMLDocument alloc] initWithContentsOfURL:url options:0 error:&error] autorelease];
       if (! xmldocument) {
-        [self setErrorMessageFromNSError:error];
+        @throw [NSException exceptionWithName : @"ConfigXMLParser" reason :[error localizedDescription] userInfo : nil];
       }
     }
 
     retval = YES;
 
   } @catch (NSException* exception) {
-    NSLog(@"[ERROR] KeyRemap4MacBook_server %@ %@", [exception name], [exception reason]);
+    [self setErrorMessage:exception];
   }
 
+  retval = YES;
   return retval;
 }
 

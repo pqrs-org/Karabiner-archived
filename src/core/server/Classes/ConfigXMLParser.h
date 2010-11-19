@@ -25,6 +25,5 @@
 
 @interface ConfigXMLParser (Private)
 - (NSString*) get_private_xml_path;
-- (void) setErrorMessageFromNSError:(NSError*)error;
-- (void) setErrorMessageFromNSString:(NSString*)string;
+- (void) setErrorMessage:(NSException*)exception;
 @end
