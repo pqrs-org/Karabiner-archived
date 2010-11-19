@@ -118,4 +118,26 @@
   return name;
 }
 
+- (NSArray*) preferencepane_checkbox
+{
+  NSArray* a = nil;
+  @synchronized(self) {
+    if (initialized_) {
+      a = preferencepane_checkbox_;
+    }
+  }
+  return a;
+}
+
+- (NSArray*) preferencepane_number
+{
+  NSArray* a = nil;
+  @synchronized(self) {
+    if (initialized_) {
+      a = preferencepane_number_;
+    }
+  }
+  return a;
+}
+
 @end
