@@ -413,12 +413,12 @@
   if (dict_initialize_vector_) {
     [dict_initialize_vector_ release];
   }
-  dict_initialize_vector_ = [[NSMutableDictionary alloc] initWithCapacity:0];
+  dict_initialize_vector_ = [NSMutableDictionary new];
 
   if (dict_config_name_) {
     [dict_config_name_ release];
   }
-  dict_config_name_ = [[NSMutableDictionary alloc] initWithCapacity:0];
+  dict_config_name_ = [NSMutableDictionary new];
 
   if (keycode_) {
     [keycode_ release];
@@ -431,7 +431,7 @@
                     @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml",
                     nil];
 
-  NSMutableDictionary* xmldocdict = [[[NSMutableDictionary alloc] initWithCapacity:0] autorelease];
+  NSMutableDictionary* xmldocdict = [[NSMutableDictionary new] autorelease];
 
   // --------------------
   // load XML

@@ -36,7 +36,7 @@
 {
   [super init];
 
-  default_ = [[NSMutableDictionary alloc] initWithCapacity:0];
+  default_ = [NSMutableDictionary new];
   [self setDefault];
 
   essential_config_index_ = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"include.bridge_essential_config_index" ofType:@"plist"]];
@@ -142,7 +142,7 @@
 
 - (NSArray*) essential_config
 {
-  NSMutableArray* a = [[[NSMutableArray alloc] initWithCapacity:0] autorelease];
+  NSMutableArray* a = [[NSMutableArray new] autorelease];
 
   if (essential_config_index_) {
     for (NSString* name in essential_config_index_) {
