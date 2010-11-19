@@ -457,14 +457,14 @@
   for (NSString* xmlpath in paths) {
     @try {
       NSXMLDocument* xmldocument = [xmldocdict objectForKey:xmlpath];
-      if (xmldocument) {
-        [self traverse_identifier:[xmldocument rootElement]];
+      if (! xmldocument) continue;
 
-        // Set retval to YES if only one XML file is loaded successfully.
-        // Unless we do it, all setting becomes disabled by one error.
-        // (== If private.xml is invalid, system wide checkbox.xml is not loaded in kext.)
-        retval = YES;
-      }
+      [self traverse_identifier:[xmldocument rootElement]];
+
+      // Set retval to YES if only one XML file is loaded successfully.
+      // Unless we do it, all setting becomes disabled by one error.
+      // (== If private.xml is invalid, system wide checkbox.xml is not loaded in kext.)
+      retval = YES;
 
     } @catch (NSException* exception) {
       [self setErrorMessage:exception];
