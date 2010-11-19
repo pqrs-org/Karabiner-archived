@@ -9,7 +9,7 @@ parser = XML::Parser.file(file)
 libxmldoc = parser.parse
 
 
-# <item> which has <list> must not have <sysctl>.
+# <item> which has <list> must not have <identifier>.
 #
 #
 # well-formed.
@@ -25,14 +25,14 @@ libxmldoc = parser.parse
 #
 # <item>
 #   <name>XXXX</name>
-#   <sysctl>XXXX</sysctl>
+#   <identifier>XXXX</identifier>
 #   <list>
 #   </list>
 # <item>
 #
 libxmldoc.root.find('//list').each do |node|
   node.parent.children.each do |n|
-    if n.name == 'sysctl' then
+    if n.name == 'identifier' then
       print "[ERROR]"
       p node.parent
       exit 1
