@@ -433,6 +433,9 @@
 
   NSMutableDictionary* xmldocdict = [[[NSMutableDictionary alloc] initWithCapacity:0] autorelease];
 
+  // --------------------
+  // load XML
+  //
   for (NSString* xmlpath in paths) {
     @try {
       if ([xmlpath length] == 0) continue;
@@ -442,18 +445,42 @@
       NSXMLDocument* xmldocument = [[[NSXMLDocument alloc] initWithContentsOfURL:url options:0 error:&error] autorelease];
       if (! xmldocument) {
         @throw [NSException exceptionWithName :[NSString stringWithFormat:@"%@ is invalid", xmlpath] reason :[error localizedDescription] userInfo : nil];
-
-      } else {
-        [xmldocdict setObject:xmldocument forKey:xmlpath];
-
-        [self append_to_keycode:[xmldocument rootElement] handle_notsave:YES];
-        [self append_to_keycode:[xmldocument rootElement] handle_notsave:NO];
       }
+
+      [xmldocdict setObject:xmldocument forKey:xmlpath];
+
     } @catch (NSException* exception) {
       [self setErrorMessage:exception];
     }
   }
 
+  // --------------------
+  // append_to_keycode.
+  //   1st loop: <identifier>notsave.*</identifier>
+  //   2nd loop: other <identifier>
+  //
+  int loopcount = 0;
+  for (loopcount = 0; loopcount < 2; ++loopcount) {
+    for (NSString* xmlpath in paths) {
+      @try {
+        NSXMLDocument* xmldocument = [xmldocdict objectForKey:xmlpath];
+        if (! xmldocument) continue;
+
+        if (loopcount == 0) {
+          [self append_to_keycode:[xmldocument rootElement] handle_notsave:YES];
+        } else if (loopcount == 1) {
+          [self append_to_keycode:[xmldocument rootElement] handle_notsave:NO];
+        }
+
+      } @catch (NSException* exception) {
+        [self setErrorMessage:exception];
+      }
+    }
+  }
+
+  // --------------------
+  // parse <autogen>
+  //
   for (NSString* xmlpath in paths) {
     @try {
       NSXMLDocument* xmldocument = [xmldocdict objectForKey:xmlpath];
