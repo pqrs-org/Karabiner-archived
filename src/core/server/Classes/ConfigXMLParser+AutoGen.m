@@ -438,13 +438,17 @@
       if ([xmlpath length] == 0) continue;
 
       NSURL* url = [NSURL fileURLWithPath:xmlpath];
-      NSXMLDocument* xmldocument = [[[NSXMLDocument alloc] initWithContentsOfURL:url options:0 error:NULL] autorelease];
-      if (xmldocument) {
-        [xmldocdict setObject:xmldocument forKey:xmlpath];
-      }
+      NSError* error = nil;
+      NSXMLDocument* xmldocument = [[[NSXMLDocument alloc] initWithContentsOfURL:url options:0 error:&error] autorelease];
+      if (! xmldocument) {
+        [self setErrorMessageFromNSError:error];
 
-      [self append_to_keycode:[xmldocument rootElement] handle_notsave:YES];
-      [self append_to_keycode:[xmldocument rootElement] handle_notsave:NO];
+      } else {
+        [xmldocdict setObject:xmldocument forKey:xmlpath];
+
+        [self append_to_keycode:[xmldocument rootElement] handle_notsave:YES];
+        [self append_to_keycode:[xmldocument rootElement] handle_notsave:NO];
+      }
     }
 
     for (NSString* xmlpath in paths) {
