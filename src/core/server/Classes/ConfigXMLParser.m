@@ -1,6 +1,14 @@
 #import "ConfigXMLParser.h"
 #import "bridge.h"
 
+@interface ConfigXMLParser (AutoGen)
+- (BOOL) reload_autogen;
+@end
+
+@interface ConfigXMLParser (PreferencePane)
+- (BOOL) reload_preferencepane;
+@end
+
 @implementation ConfigXMLParser
 
 - (id) init

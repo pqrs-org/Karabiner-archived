@@ -22,11 +22,3 @@
 
 - (NSString*) get_private_xml_path;
 @end
-
-@interface ConfigXMLParser (AutoGen)
-- (BOOL) reload_autogen;
-@end
-
-@interface ConfigXMLParser (PreferencePane)
-- (BOOL) reload_preferencepane;
-@end
