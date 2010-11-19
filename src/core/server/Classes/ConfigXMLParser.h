@@ -9,6 +9,7 @@
   NSMutableArray* preferencepane_checkbox_;
   NSMutableArray* preferencepane_number_;
   KeyCode* keycode_;
+  NSString* error_message_;
   BOOL initialized_;
 }
 
@@ -20,5 +21,10 @@
 - (unsigned int) keycode:(NSString*)name;
 - (NSString*) configname:(unsigned int)configindex;
 
+@end
+
+@interface ConfigXMLParser (Private)
 - (NSString*) get_private_xml_path;
+- (void) setErrorMessageFromNSError:(NSError*)error;
+- (void) setErrorMessageFromNSString:(NSString*)string;
 @end
