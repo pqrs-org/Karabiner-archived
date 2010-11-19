@@ -441,7 +441,7 @@
       NSError* error = nil;
       NSXMLDocument* xmldocument = [[[NSXMLDocument alloc] initWithContentsOfURL:url options:0 error:&error] autorelease];
       if (! xmldocument) {
-        @throw [NSException exceptionWithName : @"ConfigXMLParser" reason :[error localizedDescription] userInfo : nil];
+        @throw [NSException exceptionWithName :[NSString stringWithFormat:@"%@ is invalid", xmlpath] reason :[error localizedDescription] userInfo : nil];
 
       } else {
         [xmldocdict setObject:xmldocument forKey:xmlpath];

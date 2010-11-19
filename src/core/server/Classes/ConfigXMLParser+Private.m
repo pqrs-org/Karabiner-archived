@@ -28,8 +28,10 @@
   // skip if an error was already reported.
   if (error_message_) return;
 
-  error_message_ = [NSString stringWithFormat:@"%@ %@", [exception name], [exception reason]];
-  [[NSAlert alertWithMessageText:@"KeyRemap4MacBook" defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:error_message_] runModal];
+  error_message_ = [NSString stringWithFormat:@"%@\n\n%@", [exception name], [exception reason]];
+  [[NSAlert alertWithMessageText:@"KeyRemap4MacBook Error" defaultButton:@"Open PreferencePane" alternateButton:nil otherButton:nil informativeTextWithFormat:error_message_] runModal];
+
+  [[NSWorkspace sharedWorkspace] openFile:@"/Library/PreferencePanes/KeyRemap4MacBook.prefPane"];
 }
 
 @end
