@@ -26,17 +26,18 @@
     [dict setObject:[NSNumber numberWithUnsignedInteger:height] forKey:@"height"];
 
     // ----------------------------------------
-    NSString* identifier = @"";
     NSArray* elements_identifier = [element_item elementsForName:@"identifier"];
     if ([elements_identifier count] == 1) {
-      identifier = [[elements_identifier objectAtIndex:0] stringValue];
+      [dict setObject:[[elements_identifier objectAtIndex:0] stringValue] forKey:@"identifier"];
     } else if ([elements_identifier count] >= 2) {
       @throw [NSException exceptionWithName : @"<item> is invalid" reason :[NSString stringWithFormat:@"multiple <identifier> in one <item>.\n%@", [element_item stringValue]] userInfo : nil];
     }
-    [dict setObject:identifier forKey:@"identifier"];
 
     // ----------------------------------------
-    [dict setObject:[self traverse_item:element_item] forKey:@"children"];
+    NSArray* a = [self traverse_item:element_item];
+    if ([a count] > 0) {
+      [dict setObject:a forKey:@"children"];
+    }
 
     // ----------------------------------------
     [array addObject:dict];
@@ -62,13 +63,21 @@
   }
   preferencepane_number_ = [[NSMutableArray alloc] initWithCapacity:0];
 
+  enum {
+    XML_TYPE_CHECKBOX,
+    XML_TYPE_NUMBER,
+  };
   NSArray* paths = [NSArray arrayWithObjects:
-                    [self get_private_xml_path],
-                    @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml",
+                    [NSArray arrayWithObjects:[self get_private_xml_path],                                 [NSNumber numberWithInt:XML_TYPE_CHECKBOX], nil],
+                    [NSArray arrayWithObjects:@"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml", [NSNumber numberWithInt:XML_TYPE_CHECKBOX], nil],
+                    [NSArray arrayWithObjects:@"/Library/org.pqrs/KeyRemap4MacBook/prefpane/number.xml",   [NSNumber numberWithInt:XML_TYPE_NUMBER],   nil],
                     nil];
 
-  for (NSString* xmlpath in paths) {
+  for (NSArray* pathinfo in paths) {
     @try {
+      NSString* xmlpath = [pathinfo objectAtIndex:0];
+      NSNumber* xmltype = [pathinfo objectAtIndex:1];
+
       if ([xmlpath length] == 0) continue;
 
       NSURL* url = [NSURL fileURLWithPath:xmlpath];
@@ -78,8 +87,11 @@
         @throw [NSException exceptionWithName :[NSString stringWithFormat:@"%@ is invalid", xmlpath] reason :[error localizedDescription] userInfo : nil];
       }
 
-      NSMutableArray* list = [self traverse_item:[xmldocument rootElement]];
-      NSLog(@"%@", list);
+      if ([xmltype intValue] == XML_TYPE_CHECKBOX) {
+        [preferencepane_checkbox_ addObjectsFromArray:[self traverse_item:[xmldocument rootElement]]];
+      } else if ([xmltype intValue] == XML_TYPE_NUMBER) {
+        [preferencepane_number_   addObjectsFromArray:[self traverse_item:[xmldocument rootElement]]];
+      }
 
       // Set retval to YES if only one XML file is loaded successfully.
       // Unless we do it, all setting becomes disabled by one error.
