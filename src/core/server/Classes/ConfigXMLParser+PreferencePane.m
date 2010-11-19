@@ -21,25 +21,27 @@
                     @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml",
                     nil];
 
-  @try {
-    for (NSString* xmlpath in paths) {
+  for (NSString* xmlpath in paths) {
+    @try {
       if ([xmlpath length] == 0) continue;
 
       NSURL* url = [NSURL fileURLWithPath:xmlpath];
       NSError* error = nil;
       NSXMLDocument* xmldocument = [[[NSXMLDocument alloc] initWithContentsOfURL:url options:0 error:&error] autorelease];
       if (! xmldocument) {
-        @throw [NSException exceptionWithName : @"ConfigXMLParser" reason :[error localizedDescription] userInfo : nil];
+        @throw [NSException exceptionWithName :[NSString stringWithFormat:@"%@ is invalid", xmlpath] reason :[error localizedDescription] userInfo : nil];
       }
+
+      // Set retval to YES if only one XML file is loaded successfully.
+      // Unless we do it, all setting becomes disabled by one error.
+      // (== If private.xml is invalid, system wide checkbox.xml is not loaded in kext.)
+      retval = YES;
+
+    } @catch (NSException* exception) {
+      [self setErrorMessage:exception];
     }
-
-    retval = YES;
-
-  } @catch (NSException* exception) {
-    [self setErrorMessage:exception];
   }
 
-  retval = YES;
   return retval;
 }
 
