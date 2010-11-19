@@ -21,6 +21,9 @@
 - (unsigned int) keycode:(NSString*)name;
 - (NSString*) configname:(unsigned int)configindex;
 
+- (NSArray*) preferencepane_checkbox;
+- (NSArray*) preferencepane_number;
+
 @end
 
 @interface ConfigXMLParser (Private)
