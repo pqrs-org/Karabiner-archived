@@ -443,6 +443,12 @@
   if (dict_config_name_) {
     [dict_config_name_ release];
   }
+  if (prefpane_checkbox_) {
+    [prefpane_checkbox_ release];
+  }
+  if (prefpane_number_) {
+    [prefpane_number_ release];
+  }
   if (keycode_) {
     [keycode_ release];
   }
@@ -468,7 +474,17 @@
     if (dict_config_name_) {
       [dict_config_name_ release];
     }
-    dict_config_name_       = [[NSMutableDictionary alloc] initWithCapacity:0];
+    dict_config_name_ = [[NSMutableDictionary alloc] initWithCapacity:0];
+
+    if (prefpane_checkbox_) {
+      [prefpane_checkbox_ release];
+    }
+    prefpane_checkbox_ = [[NSMutableArray alloc] initWithCapacity:0];
+
+    if (prefpane_number_) {
+      [prefpane_number_ release];
+    }
+    prefpane_number_ = [[NSMutableArray alloc] initWithCapacity:0];
 
     if (keycode_) {
       [keycode_ release];
