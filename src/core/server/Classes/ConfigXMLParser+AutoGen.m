@@ -427,21 +427,21 @@
 
   // ------------------------------------------------------------
   NSArray* paths = [NSArray arrayWithObjects:
-                              [self get_private_xml_path],
-                            @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml",
-                            nil];
+                    [self get_private_xml_path],
+                    @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml",
+                    nil];
 
   NSMutableDictionary* xmldocdict = [[[NSMutableDictionary alloc] initWithCapacity:0] autorelease];
 
-  @try {
-    for (NSString* xmlpath in paths) {
+  for (NSString* xmlpath in paths) {
+    @try {
       if ([xmlpath length] == 0) continue;
 
       NSURL* url = [NSURL fileURLWithPath:xmlpath];
       NSError* error = nil;
       NSXMLDocument* xmldocument = [[[NSXMLDocument alloc] initWithContentsOfURL:url options:0 error:&error] autorelease];
       if (! xmldocument) {
-        [self setErrorMessageFromNSError:error];
+        @throw [NSException exceptionWithName : @"ConfigXMLParser" reason :[error localizedDescription] userInfo : nil];
 
       } else {
         [xmldocdict setObject:xmldocument forKey:xmlpath];
@@ -449,19 +449,26 @@
         [self append_to_keycode:[xmldocument rootElement] handle_notsave:YES];
         [self append_to_keycode:[xmldocument rootElement] handle_notsave:NO];
       }
+    } @catch (NSException* exception) {
+      [self setErrorMessage:exception];
     }
+  }
 
-    for (NSString* xmlpath in paths) {
+  for (NSString* xmlpath in paths) {
+    @try {
       NSXMLDocument* xmldocument = [xmldocdict objectForKey:xmlpath];
       if (xmldocument) {
         [self traverse_identifier:[xmldocument rootElement]];
+
+        // Set retval to YES if only one XML file is loaded successfully.
+        // Unless we do it, all setting becomes disabled by one error.
+        // (== If private.xml is invalid, system wide checkbox.xml is not loaded in kext.)
+        retval = YES;
       }
+
+    } @catch (NSException* exception) {
+      [self setErrorMessage:exception];
     }
-
-    retval = YES;
-
-  } @catch (NSException* exception) {
-    NSLog(@"[ERROR] KeyRemap4MacBook_server %@ %@", [exception name], [exception reason]);
   }
 
   return retval;
