@@ -26,11 +26,13 @@
 - (void) setErrorMessageFromNSError:(NSError*)error
 {
   error_message_ = [error localizedDescription];
+  NSLog(@"%@", error_message_);
 }
 
 - (void) setErrorMessageFromNSString:(NSString*)string
 {
   error_message_ = string;
+  NSLog(@"%@", error_message_);
 }
 
 @end

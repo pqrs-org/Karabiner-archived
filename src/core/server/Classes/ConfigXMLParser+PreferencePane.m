@@ -26,7 +26,7 @@
       if ([xmlpath length] == 0) continue;
 
       NSURL* url = [NSURL fileURLWithPath:xmlpath];
-      NSError* error;
+      NSError* error = nil;
       NSXMLDocument* xmldocument = [[[NSXMLDocument alloc] initWithContentsOfURL:url options:0 error:&error] autorelease];
       if (! xmldocument) {
         [self setErrorMessageFromNSError:error];
