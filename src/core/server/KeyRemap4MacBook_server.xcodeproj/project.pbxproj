@@ -10,6 +10,7 @@
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* KeyRemap4MacBook_serverAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* KeyRemap4MacBook_serverAppDelegate.m */; };
 		342917DD1296AA4100A5CB12 /* ConfigXMLParser+PreferencePane.m in Sources */ = {isa = PBXBuildFile; fileRef = 342917DB1296AA4100A5CB12 /* ConfigXMLParser+PreferencePane.m */; };
+		342917F81296AD2600A5CB12 /* ConfigXMLParser+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 342917F71296AD2600A5CB12 /* ConfigXMLParser+Private.m */; };
 		345683B6109F2DD900125F91 /* server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345683B2109F2DD900125F91 /* server.cpp */; };
 		345683B7109F2DD900125F91 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345683B4109F2DD900125F91 /* util.cpp */; };
 		34568415109F350100125F91 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34568414109F350100125F91 /* Carbon.framework */; };
@@ -45,6 +46,7 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		34018E4010A02C2B00653322 /* bridge.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = bridge.hpp; path = ../bridge/bridge.hpp; sourceTree = SOURCE_ROOT; };
 		342917DB1296AA4100A5CB12 /* ConfigXMLParser+PreferencePane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ConfigXMLParser+PreferencePane.m"; path = "Classes/ConfigXMLParser+PreferencePane.m"; sourceTree = "<group>"; };
+		342917F71296AD2600A5CB12 /* ConfigXMLParser+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ConfigXMLParser+Private.m"; path = "Classes/ConfigXMLParser+Private.m"; sourceTree = "<group>"; };
 		345683B2109F2DD900125F91 /* server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = server.cpp; sourceTree = "<group>"; };
 		345683B3109F2DD900125F91 /* server.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = server.hpp; sourceTree = "<group>"; };
 		345683B4109F2DD900125F91 /* util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = util.cpp; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				342917F71296AD2600A5CB12 /* ConfigXMLParser+Private.m */,
 				342917DB1296AA4100A5CB12 /* ConfigXMLParser+PreferencePane.m */,
 				347C48B81296673E00CCC042 /* ConfigXMLParser+AutoGen.m */,
 				34FB9591128F985A0088B235 /* PreferencesManager.m */,
@@ -281,6 +284,7 @@
 				34C57C751291C36E002BA405 /* SysctlWrapper.m in Sources */,
 				347C48B91296673E00CCC042 /* ConfigXMLParser+AutoGen.m in Sources */,
 				342917DD1296AA4100A5CB12 /* ConfigXMLParser+PreferencePane.m in Sources */,
+				342917F81296AD2600A5CB12 /* ConfigXMLParser+Private.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
