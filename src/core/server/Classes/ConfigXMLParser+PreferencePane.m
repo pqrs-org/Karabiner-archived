@@ -22,7 +22,7 @@
       ++height;
     }
     title = [title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    [dict setObject:title forKey:@"title"];
+    [dict setObject:title forKey:@"name"];
     [dict setObject:[NSNumber numberWithUnsignedInteger:height] forKey:@"height"];
 
     // ----------------------------------------
