@@ -1,6 +1,6 @@
-#import "OutlineViewDataSource.h"
+#import "OutlineView.h"
 
-@implementation org_pqrs_KeyRemap4MacBook_OutlineViewDataSource
+@implementation org_pqrs_KeyRemap4MacBook_OutlineView
 
 - (void) dealloc
 {
@@ -22,7 +22,11 @@
 
   if (datasource_) return;
 
-  datasource_ = [[preferencesclient_ proxy] performSelector:selector_];
+  if (ischeckbox_) {
+    datasource_ = [[preferencesclient_ proxy] preferencepane_checkbox];
+  } else {
+    datasource_ = [[preferencesclient_ proxy] preferencepane_number];
+  }
   if (datasource_) {
     [datasource_ retain];
   }
@@ -72,19 +76,36 @@
 
 - (id) outlineView:(NSOutlineView*)outlineView objectValueForTableColumn:(NSTableColumn*)tableColumn byItem:(id)item
 {
-  NSButtonCell* cell = [tableColumn dataCell];
-  if (! cell) return nil;
+  if (ischeckbox_) {
+    NSButtonCell* cell = [tableColumn dataCell];
+    if (! cell) return nil;
 
-  [cell setTitle:[item objectForKey:@"name"]];
-  NSString* identifier = [item objectForKey:@"identifier"];
+    [cell setTitle:[item objectForKey:@"name"]];
+    NSString* identifier = [item objectForKey:@"identifier"];
 
-  if (! identifier || [identifier hasPrefix:@"notsave."]) {
-    [cell setImagePosition:NSNoImage];
-    return nil;
+    if (! identifier || [identifier hasPrefix:@"notsave."]) {
+      [cell setImagePosition:NSNoImage];
+      return nil;
+
+    } else {
+      [cell setImagePosition:NSImageLeft];
+      return [NSNumber numberWithInt:[[preferencesclient_ proxy] value:identifier]];
+    }
 
   } else {
-    [cell setImagePosition:NSImageLeft];
-    return [NSNumber numberWithInt:[[preferencesclient_ proxy] value:identifier]];
+    NSString* columnIdentifier = [tableColumn identifier];
+
+    if ([columnIdentifier isEqualToString:@"name"] ||
+        [columnIdentifier isEqualToString:@"baseunit"] ||
+        [columnIdentifier isEqualToString:@"default"]) {
+      return [item objectForKey:columnIdentifier];
+
+    } else if ([columnIdentifier isEqualToString:@"value"]) {
+      NSString* identifier = [item objectForKey:@"identifier"];
+      if (! identifier) return nil;
+
+      return [NSNumber numberWithInt:[[preferencesclient_ proxy] value:identifier]];
+    }
   }
 
   return nil;
@@ -108,20 +129,27 @@
 {
   NSString* identifier = [item objectForKey:@"identifier"];
 
-  if (identifier) {
-    if (! [identifier hasPrefix:@"notsave."]) {
-      int value = [[preferencesclient_ proxy] value:identifier];
-      value = ! value;
-      [[preferencesclient_ proxy] setValueForName:value forName:identifier];
-    }
-  } else {
-    // expand/collapse tree
-    if ([outlineView isExpandable:item]) {
-      if ([outlineView isItemExpanded:item]) {
-        [outlineView collapseItem:item];
-      } else {
-        [outlineView expandItem:item];
+  if (ischeckbox_) {
+    if (identifier) {
+      if (! [identifier hasPrefix:@"notsave."]) {
+        int value = [[preferencesclient_ proxy] value:identifier];
+        value = ! value;
+        [[preferencesclient_ proxy] setValueForName:value forName:identifier];
       }
+    } else {
+      // expand/collapse tree
+      if ([outlineView isExpandable:item]) {
+        if ([outlineView isItemExpanded:item]) {
+          [outlineView collapseItem:item];
+        } else {
+          [outlineView expandItem:item];
+        }
+      }
+    }
+
+  } else {
+    if (identifier) {
+      [[preferencesclient_ proxy] setValueForName:[object intValue] forName:identifier];
     }
   }
 }
