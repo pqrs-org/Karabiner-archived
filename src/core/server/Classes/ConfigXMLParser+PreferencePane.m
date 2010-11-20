@@ -28,7 +28,19 @@
     // ----------------------------------------
     NSArray* elements_identifier = [element_item elementsForName:@"identifier"];
     if ([elements_identifier count] == 1) {
-      [dict setObject:[[elements_identifier objectAtIndex:0] stringValue] forKey:@"identifier"];
+      NSXMLElement* element_identifier = [elements_identifier objectAtIndex:0];
+      [dict setObject:[element_identifier stringValue] forKey:@"identifier"];
+
+      NSXMLNode* attr_default = [element_identifier attributeForName:@"default"];
+      if (attr_default) {
+        [dict setObject:[NSNumber numberWithInt:[[attr_default stringValue] intValue]] forKey:@"default"];
+      }
+
+      NSXMLNode* attr_baseunit = [element_identifier attributeForName:@"baseunit"];
+      if (attr_baseunit) {
+        [dict setObject:[attr_baseunit stringValue] forKey:@"baseunit"];
+      }
+
     } else if ([elements_identifier count] >= 2) {
       @throw [NSException exceptionWithName : @"<item> is invalid" reason :[NSString stringWithFormat:@"multiple <identifier> in one <item>.\n%@", [element_item stringValue]] userInfo : nil];
     }
