@@ -153,6 +153,14 @@
   return a;
 }
 
+- (NSDictionary*) changed
+{
+  NSString* identifier = [self configlist_selectedIdentifier];
+  if (! identifier) return nil;
+
+  return [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
+}
+
 // ----------------------------------------------------------------------
 - (NSInteger) configlist_selectedIndex
 {
