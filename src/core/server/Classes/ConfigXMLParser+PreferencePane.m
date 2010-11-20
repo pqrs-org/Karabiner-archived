@@ -3,7 +3,7 @@
 
 @implementation ConfigXMLParser (PreferencePane)
 
-- (NSMutableArray*) traverse_item:(NSXMLElement*)element_list identifier_prefix:(NSString*)identifier_prefix
+- (NSMutableArray*) traverse_item:(NSXMLElement*)element_list
 {
   NSMutableArray* array = [[NSMutableArray new] autorelease];
 
@@ -50,7 +50,7 @@
     // ----------------------------------------
     NSMutableArray* a = [[NSMutableArray new] autorelease];
     for (NSXMLElement* child_list in [element_item elementsForName : @"list"]) {
-      [a addObjectsFromArray:[self traverse_item:child_list identifier_prefix:identifier_prefix]];
+      [a addObjectsFromArray:[self traverse_item:child_list]];
     }
     if ([a count] > 0) {
       [dict setObject:a forKey:@"children"];
@@ -81,7 +81,6 @@
     @try {
       NSString* xmlpath           = [pathinfo objectAtIndex:0];
       NSNumber* xmltype           = [pathinfo objectAtIndex:1];
-      NSString* identifier_prefix = [pathinfo objectAtIndex:2];
 
       if ([xmlpath length] == 0) continue;
 
@@ -100,7 +99,7 @@
           targetarray = preferencepane_number_;
         }
         if (targetarray) {
-          [targetarray addObjectsFromArray:[self traverse_item:element_list identifier_prefix:identifier_prefix]];
+          [targetarray addObjectsFromArray:[self traverse_item:element_list]];
         }
       }
 
