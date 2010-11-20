@@ -223,10 +223,16 @@
 
 - (CGFloat) outlineView:(NSOutlineView*)outlineView heightOfRowByItem:(id)item
 {
-  NSNumber* number = [item objectForKey:@"height"];
-  if (! number) return 0;
+  NSNumber* number = [item objectForKey:@"cached_height"];
+  if (number) return [number floatValue];
 
-  return [number intValue] * [outlineView rowHeight];
+  number = [item objectForKey:@"height"];
+  if (! number) {
+    number = [NSNumber numberWithFloat:0];
+  } else {
+    number = [NSNumber numberWithDouble:([number intValue] * (CGFloat)([outlineView rowHeight]))];
+  }
+  return [number floatValue];
 }
 
 - (void) outlineView:(NSOutlineView*)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn*)tableColumn byItem:(id)item
