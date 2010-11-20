@@ -76,16 +76,7 @@
   }
   preferencepane_number_ = [NSMutableArray new];
 
-  enum {
-    XML_TYPE_CHECKBOX,
-    XML_TYPE_NUMBER,
-  };
-  NSArray* paths = [NSArray arrayWithObjects:
-                    [NSArray arrayWithObjects:[self get_private_xml_path],                                 [NSNumber numberWithInt:XML_TYPE_CHECKBOX], @"private.", nil],
-                    [NSArray arrayWithObjects:@"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml", [NSNumber numberWithInt:XML_TYPE_CHECKBOX], @"",         nil],
-                    [NSArray arrayWithObjects:@"/Library/org.pqrs/KeyRemap4MacBook/prefpane/number.xml",   [NSNumber numberWithInt:XML_TYPE_NUMBER],   @"",         nil],
-                    nil];
-
+  NSArray* paths = [self get_xml_paths];
   for (NSArray* pathinfo in paths) {
     @try {
       NSString* xmlpath           = [pathinfo objectAtIndex:0];
@@ -103,9 +94,9 @@
 
       for (NSXMLElement* element_list in [[xmldocument rootElement] elementsForName : @"list"]) {
         NSMutableArray* targetarray = nil;
-        if ([xmltype intValue] == XML_TYPE_CHECKBOX) {
+        if ([xmltype intValue] == CONFIGXMLPARSER_XML_TYPE_CHECKBOX) {
           targetarray = preferencepane_checkbox_;
-        } else if ([xmltype intValue] == XML_TYPE_NUMBER) {
+        } else if ([xmltype intValue] == CONFIGXMLPARSER_XML_TYPE_NUMBER) {
           targetarray = preferencepane_number_;
         }
         if (targetarray) {
