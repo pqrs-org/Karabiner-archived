@@ -167,7 +167,7 @@
 }
 
 /* ---------------------------------------------------------------------- */
-- (NSDictionary*) filter_core:(NSArray*)strings dictionary:(NSDictionary*)dictionary
+- (NSDictionary*) filterByString_core:(NSArray*)strings dictionary:(NSDictionary*)dictionary
 {
   // ------------------------------------------------------------
   // check children
@@ -175,7 +175,7 @@
   if (children) {
     NSMutableArray* newchildren = [[NSMutableArray new] autorelease];
     for (NSDictionary* dict in children) {
-      NSDictionary* d = [self filter_core:strings dictionary:dict];
+      NSDictionary* d = [self filterByString_core:strings dictionary:dict];
       if (d) {
         [newchildren addObject:d];
       }
@@ -215,7 +215,7 @@
 
   NSMutableArray* newdatasource = [[NSMutableArray new] autorelease];
   for (NSDictionary* dict in datasource_) {
-    NSDictionary* d = [self filter_core:strings dictionary:dict];
+    NSDictionary* d = [self filterByString_core:strings dictionary:dict];
     if (d) {
       [newdatasource addObject:d];
     }
