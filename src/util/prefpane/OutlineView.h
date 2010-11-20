@@ -6,7 +6,10 @@
   NSArray* datasource_;
   BOOL ischeckbox_;
 
+  IBOutlet id outlineview_;
   IBOutlet org_pqrs_KeyRemap4MacBook_PreferencesClient* preferencesclient_;
 }
+
+- (void) load:(BOOL)force;
 
 @end
