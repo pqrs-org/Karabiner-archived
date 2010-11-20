@@ -49,7 +49,7 @@
 
     // ----------------------------------------
     NSMutableArray* a = [[NSMutableArray new] autorelease];
-    for (NSXMLElement* child_list in [element_list elementsForName : @"list"]) {
+    for (NSXMLElement* child_list in [element_item elementsForName : @"list"]) {
       [a addObject:[self traverse_item:child_list]];
     }
     if ([a count] > 0) {
