@@ -15,6 +15,7 @@
 - (void) setValueForName:(int)newval forName:(NSString*)name;
 
 - (NSArray*) essential_config;
+- (NSDictionary*) changed;
 
 // --------------------------------------------------
 - (NSInteger)     configlist_selectedIndex;
