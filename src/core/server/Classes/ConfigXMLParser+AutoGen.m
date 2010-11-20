@@ -426,18 +426,18 @@
   keycode_ = [KeyCode new];
 
   // ------------------------------------------------------------
-  NSArray* paths = [NSArray arrayWithObjects:
-                    [self get_private_xml_path],
-                    @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml",
-                    nil];
-
   NSMutableDictionary* xmldocdict = [[NSMutableDictionary new] autorelease];
 
   // --------------------
   // load XML
   //
-  for (NSString* xmlpath in paths) {
+  NSArray* paths = [self get_xml_paths];
+  for (NSArray* pathinfo in paths) {
     @try {
+      NSString* xmlpath           = [pathinfo objectAtIndex:0];
+      NSNumber* xmltype           = [pathinfo objectAtIndex:1];
+
+      if ([xmltype intValue] != CONFIGXMLPARSER_XML_TYPE_CHECKBOX) continue;
       if ([xmlpath length] == 0) continue;
 
       NSURL* url = [NSURL fileURLWithPath:xmlpath];
@@ -461,8 +461,10 @@
   //
   int loopcount = 0;
   for (loopcount = 0; loopcount < 2; ++loopcount) {
-    for (NSString* xmlpath in paths) {
+    for (NSArray* pathinfo in paths) {
       @try {
+        NSString* xmlpath           = [pathinfo objectAtIndex:0];
+
         NSXMLDocument* xmldocument = [xmldocdict objectForKey:xmlpath];
         if (! xmldocument) continue;
 
@@ -481,8 +483,10 @@
   // --------------------
   // parse <autogen>
   //
-  for (NSString* xmlpath in paths) {
+  for (NSArray* pathinfo in paths) {
     @try {
+      NSString* xmlpath           = [pathinfo objectAtIndex:0];
+
       NSXMLDocument* xmldocument = [xmldocdict objectForKey:xmlpath];
       if (! xmldocument) continue;
 
