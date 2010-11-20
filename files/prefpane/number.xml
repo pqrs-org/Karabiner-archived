@@ -19,6 +19,8 @@
       <identifier essential="true" default="100" baseunit="ms">repeat.consumer_wait</identifier>
     </item>
 
+    <item><name>------------------------------------------------------------</name></item>
+
     <item>
       <name>[Key Overlaid Modifier] Timeout</name>
       <identifier essential="true" default="1000" baseunit="ms">parameter.keyoverlaidmodifier_timeout</identifier>
@@ -57,6 +59,8 @@
       <name>[Pointing Device] CursorMove to ScrollWheel Rate</name>
       <identifier essential="true" default="150" baseunit="/ 1000">pointing.relative2scroll_rate</identifier>
     </item>
+
+    <item><name>------------------------------------------------------------</name></item>
 
     <item>
       <name>[StatusWindow] AlphaValue for Font</name>
