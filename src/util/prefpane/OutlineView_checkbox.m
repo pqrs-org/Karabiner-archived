@@ -112,7 +112,8 @@
 
 - (IBAction) filter:(id)sender
 {
-  [self filterByString:[searchText_ stringValue]];
+  BOOL isEnabledOnly = ([showEnabledOnly_ state] == NSOnState);
+  [self filterDataSource:isEnabledOnly string:[searchText_ stringValue]];
 }
 
 @end
