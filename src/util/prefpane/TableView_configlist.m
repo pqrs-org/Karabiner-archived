@@ -2,7 +2,7 @@
 
 #import "TableView_configlist.h"
 
-@implementation TableView_configlist
+@implementation org_pqrs_KeyRemap4MacBook_TableView_configlist
 
 // ======================================================================
 - (NSInteger) numberOfRowsInTableView:(NSTableView*)aTableView

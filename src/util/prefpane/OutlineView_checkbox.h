@@ -4,9 +4,11 @@
 
 @interface org_pqrs_KeyRemap4MacBook_OutlineView_checkbox : NSObject
 {
-  IBOutlet id _outlineView_checkbox;
-  IBOutlet id _searchText;
-  IBOutlet id _showEnabledOnly;
+  NSArray* datasource_;
+
+  IBOutlet id outlineview_checkbox_;
+  IBOutlet id searchText_;
+  IBOutlet id showEnabledOnly_;
   IBOutlet org_pqrs_KeyRemap4MacBook_PreferencesClient* preferencesclient_;
 }
 

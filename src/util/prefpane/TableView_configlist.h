@@ -2,7 +2,7 @@
 #import <Cocoa/Cocoa.h>
 #import "PreferencesClient.h"
 
-@interface TableView_configlist : NSObject
+@interface org_pqrs_KeyRemap4MacBook_TableView_configlist : NSObject
 {
   @private
   IBOutlet id view_;

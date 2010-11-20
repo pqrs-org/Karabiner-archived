@@ -4,16 +4,30 @@
 
 @implementation org_pqrs_KeyRemap4MacBook_OutlineView_number
 
-- (void) load
+- (void) dealloc
 {
-  if (datasource_) return;
-  datasource_ = [[preferencesclient_ proxy] preferencepane_number];
+  if (datasource_) {
+    [datasource_ release];
+  }
+
+  [super dealloc];
 }
 
-- (id) init
+- (void) load:(BOOL)force
 {
-  self = [super init];
-  return self;
+  if (force) {
+    if (datasource_) {
+      [datasource_ release];
+      datasource_ = nil;
+    }
+  }
+
+  if (datasource_) return;
+
+  datasource_ = [[preferencesclient_ proxy] preferencepane_number];
+  if (datasource_) {
+    [datasource_ retain];
+  }
 }
 
 /* ------------------------------------------------------------ */
@@ -23,7 +37,7 @@
 
   // root object
   if (! item) {
-    [self load];
+    [self load:NO];
     a = datasource_;
 
   } else {
@@ -40,7 +54,7 @@
 
   // root object
   if (! item) {
-    [self load];
+    [self load:NO];
     a = datasource_;
 
   } else {

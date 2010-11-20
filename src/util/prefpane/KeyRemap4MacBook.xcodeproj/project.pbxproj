@@ -15,8 +15,6 @@
 		3440E96112903EC3007E2DB6 /* PreferencesClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 3440E95F12903EC3007E2DB6 /* PreferencesClient.h */; };
 		3440E96212903EC3007E2DB6 /* PreferencesClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3440E96012903EC3007E2DB6 /* PreferencesClient.m */; };
 		349FDBBF0D545C2200EED33C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 349FDBBE0D545C2200EED33C /* Security.framework */; };
-		34A482980D94ECD7002CF803 /* XMLTreeWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A482960D94ECD7002CF803 /* XMLTreeWrapper.h */; };
-		34A482990D94ECD7002CF803 /* XMLTreeWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A482970D94ECD7002CF803 /* XMLTreeWrapper.m */; };
 		34CBFDDB0D94CEC00087D9DB /* OutlineView_checkbox.h in Headers */ = {isa = PBXBuildFile; fileRef = 34CBFDD50D94CEC00087D9DB /* OutlineView_checkbox.h */; };
 		34CBFDDC0D94CEC00087D9DB /* OutlineView_checkbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CBFDD60D94CEC00087D9DB /* OutlineView_checkbox.m */; };
 		34CBFDDD0D94CEC00087D9DB /* OutlineView_number.h in Headers */ = {isa = PBXBuildFile; fileRef = 34CBFDD70D94CEC00087D9DB /* OutlineView_number.h */; };
@@ -47,8 +45,6 @@
 		3440E95F12903EC3007E2DB6 /* PreferencesClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesClient.h; path = sharecode/PreferencesClient.h; sourceTree = "<group>"; };
 		3440E96012903EC3007E2DB6 /* PreferencesClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesClient.m; path = sharecode/PreferencesClient.m; sourceTree = "<group>"; };
 		349FDBBE0D545C2200EED33C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
-		34A482960D94ECD7002CF803 /* XMLTreeWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLTreeWrapper.h; path = sharecode/XMLTreeWrapper.h; sourceTree = "<group>"; };
-		34A482970D94ECD7002CF803 /* XMLTreeWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLTreeWrapper.m; path = sharecode/XMLTreeWrapper.m; sourceTree = "<group>"; };
 		34CBFDD50D94CEC00087D9DB /* OutlineView_checkbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutlineView_checkbox.h; sourceTree = "<group>"; };
 		34CBFDD60D94CEC00087D9DB /* OutlineView_checkbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutlineView_checkbox.m; sourceTree = "<group>"; };
 		34CBFDD70D94CEC00087D9DB /* OutlineView_number.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutlineView_number.h; sourceTree = "<group>"; };
@@ -167,8 +163,6 @@
 		34275C401053FE6000EF31B9 /* sharecode */ = {
 			isa = PBXGroup;
 			children = (
-				34A482960D94ECD7002CF803 /* XMLTreeWrapper.h */,
-				34A482970D94ECD7002CF803 /* XMLTreeWrapper.m */,
 				34E409D70D54C4C1008441E7 /* SysctlWrapper.h */,
 				34E409D80D54C4C1008441E7 /* SysctlWrapper.m */,
 				34070C3B0DC89C050022A857 /* Common.h */,
@@ -189,7 +183,6 @@
 				34E409DB0D54C4C1008441E7 /* SysctlWrapper.h in Headers */,
 				34CBFDDB0D94CEC00087D9DB /* OutlineView_checkbox.h in Headers */,
 				34CBFDDD0D94CEC00087D9DB /* OutlineView_number.h in Headers */,
-				34A482980D94ECD7002CF803 /* XMLTreeWrapper.h in Headers */,
 				34070C3D0DC89C050022A857 /* Common.h in Headers */,
 				34286891112449340063E730 /* bundleprefix.h in Headers */,
 				3428689411244C7D0063E730 /* TableView_configlist.h in Headers */,
@@ -269,7 +262,6 @@
 				34E409DC0D54C4C1008441E7 /* SysctlWrapper.m in Sources */,
 				34CBFDDC0D94CEC00087D9DB /* OutlineView_checkbox.m in Sources */,
 				34CBFDDE0D94CEC00087D9DB /* OutlineView_number.m in Sources */,
-				34A482990D94ECD7002CF803 /* XMLTreeWrapper.m in Sources */,
 				34070C3E0DC89C050022A857 /* Common.m in Sources */,
 				3428689511244C7D0063E730 /* TableView_configlist.m in Sources */,
 				3440E96212903EC3007E2DB6 /* PreferencesClient.m in Sources */,
