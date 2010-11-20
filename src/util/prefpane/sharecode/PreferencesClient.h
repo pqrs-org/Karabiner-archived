@@ -34,6 +34,9 @@
 - (void) configxml_reload;
 - (BOOL) configxml_initialized;
 
+- (NSArray*) preferencepane_checkbox;
+- (NSArray*) preferencepane_number;
+
 @end
 
 @interface org_pqrs_KeyRemap4MacBook_PreferencesClient : NSObject {

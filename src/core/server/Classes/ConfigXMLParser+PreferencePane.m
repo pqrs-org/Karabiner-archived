@@ -34,6 +34,8 @@
       NSXMLNode* attr_default = [element_identifier attributeForName:@"default"];
       if (attr_default) {
         [dict setObject:[attr_default stringValue] forKey:@"default"];
+      } else {
+        [dict setObject:@"0" forKey:@"default"];
       }
 
       NSXMLNode* attr_baseunit = [element_identifier attributeForName:@"baseunit"];

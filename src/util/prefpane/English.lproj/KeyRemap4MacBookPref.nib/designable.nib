@@ -11,7 +11,7 @@
 			<string key="NS.object.0">788</string>
 		</object>
 		<array class="NSMutableArray" key="IBDocument.EditedObjectIDs">
-			<integer value="709"/>
+			<integer value="705"/>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -595,6 +595,7 @@
 												<reference key="NSHScroller" ref="572701389"/>
 												<reference key="NSContentView" ref="560413009"/>
 												<reference key="NSHeaderClipView" ref="575658362"/>
+												<reference key="NSCornerView" ref="288176493"/>
 												<bytes key="NSScrollAmts">QSAAAEEgAABBmAAAQZgAAA</bytes>
 											</object>
 										</array>
@@ -1288,14 +1289,6 @@
 					<int key="connectionID">561</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">_outlineView_number</string>
-						<reference key="source" ref="955292521"/>
-						<reference key="destination" ref="737811286"/>
-					</object>
-					<int key="connectionID">562</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">launchUninstaller:</string>
 						<reference key="source" ref="762499249"/>
@@ -1478,6 +1471,14 @@
 						<reference key="destination" ref="459450937"/>
 					</object>
 					<int key="connectionID">804</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">outlineview_number_</string>
+						<reference key="source" ref="955292521"/>
+						<reference key="destination" ref="737811286"/>
+					</object>
+					<int key="connectionID">809</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -2231,7 +2232,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">808</int>
+			<int key="maxID">809</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2434,12 +2435,12 @@
 					<string key="className">org_pqrs_KeyRemap4MacBook_OutlineView_number</string>
 					<string key="superclassName">NSObject</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="_outlineView_number">id</string>
+						<string key="outlineview_number_">id</string>
 						<string key="preferencesclient_">org_pqrs_KeyRemap4MacBook_PreferencesClient</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="_outlineView_number">
-							<string key="name">_outlineView_number</string>
+						<object class="IBToOneOutletInfo" key="outlineview_number_">
+							<string key="name">outlineview_number_</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="preferencesclient_">
