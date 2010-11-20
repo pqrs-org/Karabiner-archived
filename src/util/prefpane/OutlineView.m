@@ -101,12 +101,22 @@
 
     } else if ([columnIdentifier isEqualToString:@"baseunit"] ||
                [columnIdentifier isEqualToString:@"default"]) {
-      if (! identifier) return nil;
+      if (! identifier) {
+        return nil;
+      }
       return [item objectForKey:columnIdentifier];
 
     } else if ([columnIdentifier isEqualToString:@"value"]) {
-      if (! identifier) return nil;
-      return [NSNumber numberWithInt:[[preferencesclient_ proxy] value:identifier]];
+      NSTextFieldCell* cell = [tableColumn dataCell];
+      if (! cell) return nil;
+
+      if (! identifier) {
+        [cell setEditable:NO];
+        return nil;
+      } else {
+        [cell setEditable:YES];
+        return [NSNumber numberWithInt:[[preferencesclient_ proxy] value:identifier]];
+      }
     }
   }
 
