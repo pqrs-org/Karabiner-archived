@@ -14,6 +14,8 @@
 		3428689511244C7D0063E730 /* TableView_configlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 3428689311244C7D0063E730 /* TableView_configlist.m */; };
 		3440E96112903EC3007E2DB6 /* PreferencesClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 3440E95F12903EC3007E2DB6 /* PreferencesClient.h */; };
 		3440E96212903EC3007E2DB6 /* PreferencesClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3440E96012903EC3007E2DB6 /* PreferencesClient.m */; };
+		3445F8E21297E1B5007F3313 /* DataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 3445F8E01297E1B5007F3313 /* DataSource.h */; };
+		3445F8E31297E1B5007F3313 /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3445F8E11297E1B5007F3313 /* DataSource.m */; };
 		349FDBBF0D545C2200EED33C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 349FDBBE0D545C2200EED33C /* Security.framework */; };
 		34CBFDDB0D94CEC00087D9DB /* OutlineView_checkbox.h in Headers */ = {isa = PBXBuildFile; fileRef = 34CBFDD50D94CEC00087D9DB /* OutlineView_checkbox.h */; };
 		34CBFDDC0D94CEC00087D9DB /* OutlineView_checkbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CBFDD60D94CEC00087D9DB /* OutlineView_checkbox.m */; };
@@ -44,6 +46,8 @@
 		3428689311244C7D0063E730 /* TableView_configlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView_configlist.m; sourceTree = "<group>"; };
 		3440E95F12903EC3007E2DB6 /* PreferencesClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesClient.h; path = sharecode/PreferencesClient.h; sourceTree = "<group>"; };
 		3440E96012903EC3007E2DB6 /* PreferencesClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesClient.m; path = sharecode/PreferencesClient.m; sourceTree = "<group>"; };
+		3445F8E01297E1B5007F3313 /* DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSource.h; sourceTree = "<group>"; };
+		3445F8E11297E1B5007F3313 /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
 		349FDBBE0D545C2200EED33C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		34CBFDD50D94CEC00087D9DB /* OutlineView_checkbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutlineView_checkbox.h; sourceTree = "<group>"; };
 		34CBFDD60D94CEC00087D9DB /* OutlineView_checkbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutlineView_checkbox.m; sourceTree = "<group>"; };
@@ -110,6 +114,8 @@
 		08FB77AFFE84173DC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3445F8E01297E1B5007F3313 /* DataSource.h */,
+				3445F8E11297E1B5007F3313 /* DataSource.m */,
 				3440E95F12903EC3007E2DB6 /* PreferencesClient.h */,
 				3440E96012903EC3007E2DB6 /* PreferencesClient.m */,
 				3428689211244C7D0063E730 /* TableView_configlist.h */,
@@ -187,6 +193,7 @@
 				34286891112449340063E730 /* bundleprefix.h in Headers */,
 				3428689411244C7D0063E730 /* TableView_configlist.h in Headers */,
 				3440E96112903EC3007E2DB6 /* PreferencesClient.h in Headers */,
+				3445F8E21297E1B5007F3313 /* DataSource.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +272,7 @@
 				34070C3E0DC89C050022A857 /* Common.m in Sources */,
 				3428689511244C7D0063E730 /* TableView_configlist.m in Sources */,
 				3440E96212903EC3007E2DB6 /* PreferencesClient.m in Sources */,
+				3445F8E31297E1B5007F3313 /* DataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
