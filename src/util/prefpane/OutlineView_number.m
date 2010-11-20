@@ -1,73 +1,88 @@
 /* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
 #import "OutlineView_number.h"
-#import "XMLTreeWrapper.h"
 
 @implementation org_pqrs_KeyRemap4MacBook_OutlineView_number
 
-static BUNDLEPREFIX(XMLTreeWrapper) * _xmlTreeWrapper;
+- (void) load
+{
+  if (datasource_) return;
+  datasource_ = [[preferencesclient_ proxy] preferencepane_number];
+}
 
 - (id) init
 {
   self = [super init];
-  if (self) {
-    _xmlTreeWrapper = [[BUNDLEPREFIX (XMLTreeWrapper) alloc] init];
-    if (_xmlTreeWrapper == nil) return nil;
-    if (! [_xmlTreeWrapper load:@"/Library/org.pqrs/KeyRemap4MacBook/prefpane/number.xml"]) return nil;
-  }
   return self;
 }
 
 /* ------------------------------------------------------------ */
 - (NSUInteger) outlineView:(NSOutlineView*)outlineView numberOfChildrenOfItem:(id)item
 {
-  return [_xmlTreeWrapper numberOfChildren:item];
+  NSArray* a = nil;
+
+  // root object
+  if (! item) {
+    [self load];
+    a = datasource_;
+
+  } else {
+    a = [item objectForKey:@"children"];
+  }
+
+  if (! a) return 0;
+  return [a count];
 }
 
 - (id) outlineView:(NSOutlineView*)outlineView child:(NSUInteger)idx ofItem:(id)item
 {
-  return [_xmlTreeWrapper getChild:item index:idx];
+  NSArray* a = nil;
+
+  // root object
+  if (! item) {
+    [self load];
+    a = datasource_;
+
+  } else {
+    a = [item objectForKey:@"children"];
+  }
+
+  if (! a) return nil;
+  if (idx >= [a count]) return nil;
+  return [a objectAtIndex:idx];
 }
 
 - (BOOL) outlineView:(NSOutlineView*)outlineView isItemExpandable:(id)item
 {
-  return [_xmlTreeWrapper isItemExpandable:item];
+  NSArray* a = [item objectForKey:@"children"];
+  return a ? YES : NO;
 }
 
 - (id) outlineView:(NSOutlineView*)outlineView objectValueForTableColumn:(NSTableColumn*)tableColumn byItem:(id)item
 {
-  id identifier = [tableColumn identifier];
+  id columnIdentifier = [tableColumn identifier];
 
-  if ([identifier isEqualToString:@"name"] ||
-      [identifier isEqualToString:@"baseunit"] ||
-      [identifier isEqualToString:@"default"]) {
-    NSXMLNode* node = [_xmlTreeWrapper getNode:item xpath:identifier];
-    if (! node) return nil;
+  if ([columnIdentifier isEqualToString:@"name"] ||
+      [columnIdentifier isEqualToString:@"baseunit"] ||
+      [columnIdentifier isEqualToString:@"default"]) {
+    return [item objectForKey:columnIdentifier];
 
-    return [node stringValue];
+  } else if ([columnIdentifier isEqualToString:@"value"]) {
+    NSString* identifier = [item objectForKey:@"identifier"];
+    if (! identifier) return nil;
 
-  } else if ([identifier isEqualToString:@"value"]) {
-    NSXMLNode* identifier_node = [_xmlTreeWrapper getNode:item xpath:@"identifier"];
-    if (! identifier_node) return nil;
-
-    return [NSNumber numberWithInt:[[preferencesclient_ proxy] value:[identifier_node stringValue]]];
+    return [NSNumber numberWithInt:[[preferencesclient_ proxy] value:identifier]];
   }
 
   return nil;
 }
 
-- (BOOL) outlineView:(NSOutlineView*)outlineView shouldCollapseItem:(id)item
-{
-  return false;
-}
-
 - (void) outlineView:(NSOutlineView*)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn*)tableColumn byItem:(id)item
 {
-  NSXMLNode* identifier = [_xmlTreeWrapper getNode:item xpath:@"identifier"];
-  if (identifier) {
-    NSString* name = [identifier stringValue];
-    [[preferencesclient_ proxy] setValueForName:[object intValue] forName:name];
-  }
+  NSString* identifier = [item objectForKey:@"identifier"];
+  if (! identifier) return;
+
+  [[preferencesclient_ proxy] setValueForName:[object intValue] forName:identifier];
 }
 
 @end
