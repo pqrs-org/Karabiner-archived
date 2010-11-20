@@ -76,12 +76,13 @@
 
 - (id) outlineView:(NSOutlineView*)outlineView objectValueForTableColumn:(NSTableColumn*)tableColumn byItem:(id)item
 {
+  NSString* identifier = [item objectForKey:@"identifier"];
+
   if (ischeckbox_) {
     NSButtonCell* cell = [tableColumn dataCell];
     if (! cell) return nil;
 
     [cell setTitle:[item objectForKey:@"name"]];
-    NSString* identifier = [item objectForKey:@"identifier"];
 
     if (! identifier || [identifier hasPrefix:@"notsave."]) {
       [cell setImagePosition:NSNoImage];
@@ -95,15 +96,16 @@
   } else {
     NSString* columnIdentifier = [tableColumn identifier];
 
-    if ([columnIdentifier isEqualToString:@"name"] ||
-        [columnIdentifier isEqualToString:@"baseunit"] ||
-        [columnIdentifier isEqualToString:@"default"]) {
+    if ([columnIdentifier isEqualToString:@"name"]) {
+      return [item objectForKey:columnIdentifier];
+
+    } else if ([columnIdentifier isEqualToString:@"baseunit"] ||
+               [columnIdentifier isEqualToString:@"default"]) {
+      if (! identifier) return nil;
       return [item objectForKey:columnIdentifier];
 
     } else if ([columnIdentifier isEqualToString:@"value"]) {
-      NSString* identifier = [item objectForKey:@"identifier"];
       if (! identifier) return nil;
-
       return [NSNumber numberWithInt:[[preferencesclient_ proxy] value:identifier]];
     }
   }
