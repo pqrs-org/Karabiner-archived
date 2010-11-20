@@ -27,6 +27,10 @@
 @end
 
 @interface ConfigXMLParser (Private)
-- (NSString*) get_private_xml_path;
+enum {
+  CONFIGXMLPARSER_XML_TYPE_CHECKBOX,
+  CONFIGXMLPARSER_XML_TYPE_NUMBER,
+};
+- (NSArray*) get_xml_paths;
 - (void) setErrorMessage:(NSException*)exception;
 @end
