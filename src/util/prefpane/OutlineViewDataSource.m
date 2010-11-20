@@ -1,15 +1,6 @@
-#import "DataSource.h"
+#import "OutlineViewDataSource.h"
 
-@implementation org_pqrs_KeyRemap4MacBook_DataSource
-
-- initWithSelector:(SEL)sel preferencesclient:(org_pqrs_KeyRemap4MacBook_PreferencesClient*)client;
-{
-  [super init];
-  selector_ = sel;
-  preferencesclient_ = client;
-
-  return self;
-}
+@implementation org_pqrs_KeyRemap4MacBook_OutlineViewDataSource
 
 - (void) dealloc
 {
