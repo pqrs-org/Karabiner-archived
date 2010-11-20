@@ -26,9 +26,18 @@
 - (NSArray*) get_xml_paths
 {
   return [NSArray arrayWithObjects:
-          [NSArray arrayWithObjects:[self get_private_xml_path],                                 [NSNumber numberWithInt:CONFIGXMLPARSER_XML_TYPE_CHECKBOX], nil],
-          [NSArray arrayWithObjects:@"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml", [NSNumber numberWithInt:CONFIGXMLPARSER_XML_TYPE_CHECKBOX], nil],
-          [NSArray arrayWithObjects:@"/Library/org.pqrs/KeyRemap4MacBook/prefpane/number.xml",   [NSNumber numberWithInt:CONFIGXMLPARSER_XML_TYPE_NUMBER],   nil],
+          [NSArray arrayWithObjects:[self get_private_xml_path],
+           [NSNumber numberWithInt:CONFIGXMLPARSER_XML_TYPE_CHECKBOX],
+           [NSNumber numberWithInt:CONFIGXMLPARSER_XML_OWNER_USER],
+           nil],
+          [NSArray arrayWithObjects:@"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml",
+           [NSNumber numberWithInt:CONFIGXMLPARSER_XML_TYPE_CHECKBOX],
+           [NSNumber numberWithInt:CONFIGXMLPARSER_XML_OWNER_SYSTEM],
+           nil],
+          [NSArray arrayWithObjects:@"/Library/org.pqrs/KeyRemap4MacBook/prefpane/number.xml",
+           [NSNumber numberWithInt:CONFIGXMLPARSER_XML_TYPE_NUMBER],
+           [NSNumber numberWithInt:CONFIGXMLPARSER_XML_OWNER_SYSTEM],
+           nil],
           nil];
 }
 

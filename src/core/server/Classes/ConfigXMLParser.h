@@ -30,6 +30,8 @@
 enum {
   CONFIGXMLPARSER_XML_TYPE_CHECKBOX,
   CONFIGXMLPARSER_XML_TYPE_NUMBER,
+  CONFIGXMLPARSER_XML_OWNER_SYSTEM,
+  CONFIGXMLPARSER_XML_OWNER_USER,
 };
 - (NSArray*) get_xml_paths;
 - (void) setErrorMessage:(NSException*)exception;
