@@ -595,6 +595,7 @@
 												<reference key="NSHScroller" ref="572701389"/>
 												<reference key="NSContentView" ref="560413009"/>
 												<reference key="NSHeaderClipView" ref="575658362"/>
+												<reference key="NSCornerView" ref="288176493"/>
 												<bytes key="NSScrollAmts">QSAAAEEgAABBmAAAQZgAAA</bytes>
 											</object>
 										</array>
@@ -1233,14 +1234,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">dataSource</string>
-						<reference key="source" ref="737811286"/>
-						<reference key="destination" ref="955292521"/>
-					</object>
-					<int key="connectionID">505</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="737811286"/>
 						<reference key="destination" ref="955292521"/>
@@ -1449,14 +1442,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">outlineview_number_</string>
-						<reference key="source" ref="955292521"/>
-						<reference key="destination" ref="737811286"/>
-					</object>
-					<int key="connectionID">809</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">outlineview_checkbox_</string>
 						<reference key="source" ref="28585345"/>
 						<reference key="destination" ref="388417527"/>
@@ -1478,6 +1463,14 @@
 						<reference key="destination" ref="339829919"/>
 					</object>
 					<int key="connectionID">812</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">dataSource</string>
+						<reference key="source" ref="737811286"/>
+						<reference key="destination" ref="955292521"/>
+					</object>
+					<int key="connectionID">817</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -2231,7 +2224,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">812</int>
+			<int key="maxID">817</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2341,6 +2334,25 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
+					<string key="className">org_pqrs_KeyRemap4MacBook_OutlineView</string>
+					<string key="superclassName">NSObject</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">preferencesclient_</string>
+						<string key="NS.object.0">org_pqrs_KeyRemap4MacBook_PreferencesClient</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">preferencesclient_</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">preferencesclient_</string>
+							<string key="candidateClassName">org_pqrs_KeyRemap4MacBook_PreferencesClient</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">OutlineView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
 					<string key="className">org_pqrs_KeyRemap4MacBook_OutlineView_checkbox</string>
 					<string key="superclassName">NSObject</string>
 					<dictionary class="NSMutableDictionary" key="actions">
@@ -2396,21 +2408,7 @@
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">org_pqrs_KeyRemap4MacBook_OutlineView_number</string>
-					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="outlineview_number_">id</string>
-						<string key="preferencesclient_">org_pqrs_KeyRemap4MacBook_PreferencesClient</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="outlineview_number_">
-							<string key="name">outlineview_number_</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="preferencesclient_">
-							<string key="name">preferencesclient_</string>
-							<string key="candidateClassName">org_pqrs_KeyRemap4MacBook_PreferencesClient</string>
-						</object>
-					</dictionary>
+					<string key="superclassName">org_pqrs_KeyRemap4MacBook_OutlineView</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">OutlineView_number.h</string>
@@ -2418,7 +2416,7 @@
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">org_pqrs_KeyRemap4MacBook_OutlineView_number</string>
-					<string key="superclassName">NSObject</string>
+					<string key="superclassName">org_pqrs_KeyRemap4MacBook_OutlineView</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBUserSource</string>
 						<string key="minorKey"/>
