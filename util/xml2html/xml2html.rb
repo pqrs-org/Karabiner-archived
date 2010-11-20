@@ -22,11 +22,11 @@ def traverse(node)
       print "</li>"
 
     when 'name' then
-      print n.inner_xml
+      print n.inner_xml.strip
       print "<br/>"
 
     when 'appendix' then
-      print "&nbsp;&nbsp;#{n.inner_xml}<br/>"
+      print "&nbsp;&nbsp;#{n.inner_xml.strip}<br/>"
     end
   end
 end
