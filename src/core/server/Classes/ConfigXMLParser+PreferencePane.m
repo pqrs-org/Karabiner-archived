@@ -47,7 +47,7 @@
 
     // ----------------------------------------
     NSMutableArray* a = [[NSMutableArray new] autorelease];
-    for (NSXMLElement* child_list in [element_list elementsForName:@"list"]) {
+    for (NSXMLElement* child_list in [element_list elementsForName : @"list"]) {
       [a addObject:[self traverse_item:child_list]];
     }
     if ([a count] > 0) {
@@ -98,11 +98,11 @@
         @throw [NSException exceptionWithName :[NSString stringWithFormat:@"%@ is invalid", xmlpath] reason :[error localizedDescription] userInfo : nil];
       }
 
-      for (NSXMLElement* element_list in [[xmldocument rootElement] elementsForName:@"list"]) {
+      for (NSXMLElement* element_list in [[xmldocument rootElement] elementsForName : @"list"]) {
         if ([xmltype intValue] == XML_TYPE_CHECKBOX) {
           [preferencepane_checkbox_ addObjectsFromArray:[self traverse_item:element_list]];
         } else if ([xmltype intValue] == XML_TYPE_NUMBER) {
-          [preferencepane_number_   addObjectsFromArray:[self traverse_item:element_list]];
+          [preferencepane_number_ addObjectsFromArray:[self traverse_item:element_list]];
         }
       }
 
