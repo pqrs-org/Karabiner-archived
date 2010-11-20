@@ -1,30 +1,33 @@
 /* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
 #import "OutlineView_checkbox.h"
-#import "XMLTreeWrapper.h"
 
 @implementation org_pqrs_KeyRemap4MacBook_OutlineView_checkbox
 
-static BUNDLEPREFIX(XMLTreeWrapper) * _xmlTreeWrapper;
-static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml";
-
-- (id) init
-{
-  self = [super init];
-  if (! self) return self;
-
-  _xmlTreeWrapper = [[BUNDLEPREFIX (XMLTreeWrapper) alloc] init];
-  if (_xmlTreeWrapper == nil) return nil;
-  if (! [_xmlTreeWrapper load:xmlpath]) return nil;
-  return self;
-}
-
 - (void) dealloc
 {
-  if (_xmlTreeWrapper) {
-    [_xmlTreeWrapper release];
+  if (datasource_) {
+    [datasource_ release];
   }
+
   [super dealloc];
+}
+
+- (void) load:(BOOL)force
+{
+  if (force) {
+    if (datasource_) {
+      [datasource_ release];
+      datasource_ = nil;
+    }
+  }
+
+  if (datasource_) return;
+
+  datasource_ = [[preferencesclient_ proxy] preferencepane_checkbox];
+  if (datasource_) {
+    [datasource_ retain];
+  }
 }
 
 - (IBAction) reloadXML:(id)sender
@@ -41,19 +44,14 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
 
   // ----------------------------------------
   // update prefpane
-  if (_xmlTreeWrapper) {
-    [_xmlTreeWrapper release];
-  }
-  _xmlTreeWrapper = [[BUNDLEPREFIX (XMLTreeWrapper) alloc] init];
-  if (_xmlTreeWrapper) {
-    [_xmlTreeWrapper load:xmlpath];
-  }
+  [self load:YES];
 
   // ----------------------------------------
-  [_outlineView_checkbox reloadData];
+  [outlineview_checkbox_ reloadData];
 }
 
 /* ------------------------------------------------------------ */
+#if 0
 - (BOOL) filter_identifier:(NSXMLNode*)node
 {
   NSXMLNode* identifier = [_xmlTreeWrapper getNode:node xpath:@"identifier"];
@@ -127,9 +125,12 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
     }
   }
 }
+#endif
 
 - (IBAction) filter:(id)sender
 {
+  return;
+#if 0
   [_xmlTreeWrapper load:xmlpath];
 
   BOOL expand = FALSE;
@@ -155,22 +156,49 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
   if (expand) {
     [_outlineView_checkbox expandItem:nil expandChildren:YES];
   }
+#endif
 }
 
 /* ---------------------------------------------------------------------- */
 - (NSUInteger) outlineView:(NSOutlineView*)outlineView numberOfChildrenOfItem:(id)item
 {
-  return [_xmlTreeWrapper numberOfChildren:item];
+  NSArray* a = nil;
+
+  // root object
+  if (! item) {
+    [self load:NO];
+    a = datasource_;
+
+  } else {
+    a = [item objectForKey:@"children"];
+  }
+
+  if (! a) return 0;
+  return [a count];
 }
 
 - (id) outlineView:(NSOutlineView*)outlineView child:(NSUInteger)idx ofItem:(id)item
 {
-  return [_xmlTreeWrapper getChild:item index:idx];
+  NSArray* a = nil;
+
+  // root object
+  if (! item) {
+    [self load:NO];
+    a = datasource_;
+
+  } else {
+    a = [item objectForKey:@"children"];
+  }
+
+  if (! a) return nil;
+  if (idx >= [a count]) return nil;
+  return [a objectAtIndex:idx];
 }
 
 - (BOOL) outlineView:(NSOutlineView*)outlineView isItemExpandable:(id)item
 {
-  return [_xmlTreeWrapper isItemExpandable:item];
+  NSArray* a = [item objectForKey:@"children"];
+  return a ? YES : NO;
 }
 
 - (id) outlineView:(NSOutlineView*)outlineView objectValueForTableColumn:(NSTableColumn*)tableColumn byItem:(id)item
@@ -178,46 +206,8 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
   NSButtonCell* cell = [tableColumn dataCell];
   if (! cell) return nil;
 
-  // ------------------------------------------------------------
-  // setTitle
-  NSXMLNode* attr_title = [item attributeForName:@"cache_title"];
-  if (attr_title != nil) {
-    [cell setTitle:[attr_title stringValue]];
-
-  } else {
-    NSXMLNode* title = [_xmlTreeWrapper getNode:item xpath:@"name"];
-    if (! title) return nil;
-
-    NSMutableString* titlestring = [NSMutableString stringWithString:[title stringValue]];
-
-    NSArray* a = [item nodesForXPath:@"appendix" error:NULL];
-    if (a) {
-      for (NSXMLNode* appendix in a) {
-        if (! appendix) break;
-
-        [titlestring appendString:@"\n  "];
-        [titlestring appendString:[appendix stringValue]];
-      }
-    }
-
-    [item addAttribute:[NSXMLNode attributeWithName:@"cache_title" stringValue:titlestring]];
-
-    [cell setTitle:titlestring];
-  }
-
-  // ------------------------------------------------------------
-  // check identifier, then setImagePosition or return value.
-  NSXMLNode* attr_identifier = [item attributeForName:@"cache_identifier"];
-  NSString* identifier = nil;
-  if (attr_identifier != nil) {
-    identifier = [attr_identifier stringValue];
-
-  } else {
-    NSXMLNode* node_identifier = [_xmlTreeWrapper getNode:item xpath:@"identifier"];
-    if (node_identifier) {
-      identifier = [node_identifier stringValue];
-    }
-  }
+  [cell setTitle:[item objectForKey:@"name"]];
+  NSString* identifier = [item objectForKey:@"identifier"];
 
   if (! identifier || [identifier hasPrefix:@"notsave."]) {
     [cell setImagePosition:NSNoImage];
@@ -233,33 +223,21 @@ static NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbo
 
 - (CGFloat) outlineView:(NSOutlineView*)outlineView heightOfRowByItem:(id)item
 {
-  NSXMLNode* attr = [item attributeForName:@"cache_height"];
-  if (attr != nil) {
-    return [[attr stringValue] floatValue];
-  }
+  NSNumber* number = [item objectForKey:@"height"];
+  if (! number) return 0;
 
-  NSUInteger appendixnum = 0;
-  NSArray* a = [item nodesForXPath:@"appendix" error:NULL];
-  if (a) {
-    appendixnum = [a count];
-  }
-
-  CGFloat height = [outlineView rowHeight] * (1 + appendixnum);
-  NSString* heightstring = [NSString stringWithFormat:@"%f", height];
-  [item addAttribute:[NSXMLNode attributeWithName:@"cache_height" stringValue:heightstring]];
-
-  return height;
+  return [number intValue] * [outlineView rowHeight];
 }
 
 - (void) outlineView:(NSOutlineView*)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn*)tableColumn byItem:(id)item
 {
-  NSXMLNode* identifier = [_xmlTreeWrapper getNode:item xpath:@"identifier"];
+  NSString* identifier = [item objectForKey:@"identifier"];
+
   if (identifier) {
-    NSString* name = [identifier stringValue];
-    if (! [name hasPrefix:@"notsave."]) {
-      int value = [[preferencesclient_ proxy] value:name];
+    if (! [identifier hasPrefix:@"notsave."]) {
+      int value = [[preferencesclient_ proxy] value:identifier];
       value = ! value;
-      [[preferencesclient_ proxy] setValueForName:value forName:name];
+      [[preferencesclient_ proxy] setValueForName:value forName:identifier];
     }
   } else {
     // expand/collapse tree
