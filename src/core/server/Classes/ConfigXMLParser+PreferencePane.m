@@ -3,11 +3,11 @@
 
 @implementation ConfigXMLParser (PreferencePane)
 
-- (NSMutableArray*) traverse_item:(NSXMLElement*)element
+- (NSMutableArray*) traverse_item:(NSXMLElement*)element_list
 {
   NSMutableArray* array = [[NSMutableArray new] autorelease];
 
-  for (NSXMLElement* element_item in [element elementsForName : @"item"]) {
+  for (NSXMLElement* element_item in [element_list elementsForName : @"item"]) {
     NSMutableDictionary* dict = [[NSMutableDictionary new] autorelease];
 
     // ----------------------------------------
@@ -33,7 +33,7 @@
 
       NSXMLNode* attr_default = [element_identifier attributeForName:@"default"];
       if (attr_default) {
-        [dict setObject:[NSNumber numberWithInt:[[attr_default stringValue] intValue]] forKey:@"default"];
+        [dict setObject:[attr_default stringValue] forKey:@"default"];
       }
 
       NSXMLNode* attr_baseunit = [element_identifier attributeForName:@"baseunit"];
@@ -46,17 +46,16 @@
     }
 
     // ----------------------------------------
-    NSArray* a = [self traverse_item:element_item];
+    NSMutableArray* a = [[NSMutableArray new] autorelease];
+    for (NSXMLElement* child_list in [element_list elementsForName:@"list"]) {
+      [a addObject:[self traverse_item:child_list]];
+    }
     if ([a count] > 0) {
       [dict setObject:a forKey:@"children"];
     }
 
     // ----------------------------------------
     [array addObject:dict];
-  }
-
-  for (NSXMLElement* e in [element elementsForName : @"list"]) {
-    [array addObject:[self traverse_item:e]];
   }
 
   return array;
@@ -99,10 +98,12 @@
         @throw [NSException exceptionWithName :[NSString stringWithFormat:@"%@ is invalid", xmlpath] reason :[error localizedDescription] userInfo : nil];
       }
 
-      if ([xmltype intValue] == XML_TYPE_CHECKBOX) {
-        [preferencepane_checkbox_ addObjectsFromArray:[self traverse_item:[xmldocument rootElement]]];
-      } else if ([xmltype intValue] == XML_TYPE_NUMBER) {
-        [preferencepane_number_   addObjectsFromArray:[self traverse_item:[xmldocument rootElement]]];
+      for (NSXMLElement* element_list in [[xmldocument rootElement] elementsForName:@"list"]) {
+        if ([xmltype intValue] == XML_TYPE_CHECKBOX) {
+          [preferencepane_checkbox_ addObjectsFromArray:[self traverse_item:element_list]];
+        } else if ([xmltype intValue] == XML_TYPE_NUMBER) {
+          [preferencepane_number_   addObjectsFromArray:[self traverse_item:element_list]];
+        }
       }
 
       // Set retval to YES if only one XML file is loaded successfully.
