@@ -167,7 +167,7 @@
 }
 
 /* ---------------------------------------------------------------------- */
-- (NSDictionary*) filterByString_core:(NSArray*)strings dictionary:(NSDictionary*)dictionary
+- (NSDictionary*) filterDataSource_core:(NSDictionary*)dictionary isEnabledOnly:(BOOL)isEnabledOnly strings:(NSArray*)strings
 {
   // ------------------------------------------------------------
   // check children
@@ -175,7 +175,7 @@
   if (children) {
     NSMutableArray* newchildren = [[NSMutableArray new] autorelease];
     for (NSDictionary* dict in children) {
-      NSDictionary* d = [self filterByString_core:strings dictionary:dict];
+      NSDictionary* d = [self filterDataSource_core:dict isEnabledOnly:isEnabledOnly strings:strings];
       if (d) {
         [newchildren addObject:d];
       }
@@ -189,6 +189,17 @@
   }
 
   // ------------------------------------------------------------
+  // filter by isEnabledOnly
+  if (isEnabledOnly) {
+    NSString* identifier = [dictionary objectForKey:@"identifier"];
+    if (! identifier) {
+      return nil;
+    }
+    if (! [[preferencesclient_ proxy] value:identifier]) {
+      return nil;
+    }
+  }
+
   // check self name
   NSString* name = [dictionary objectForKey:@"name"];
   if (name) {
@@ -206,16 +217,20 @@
   return nil;
 }
 
-- (void) filterByString:(NSString*)string
+- (void) filterDataSource:(BOOL)isEnabledOnly string:(NSString*)string
 {
   [self load:YES];
   if (! datasource_) return;
 
-  NSArray* strings = [string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-
   NSMutableArray* newdatasource = [[NSMutableArray new] autorelease];
+
+  NSArray* strings = nil;
+  if (string) {
+    strings = [string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+  }
+
   for (NSDictionary* dict in datasource_) {
-    NSDictionary* d = [self filterByString_core:strings dictionary:dict];
+    NSDictionary* d = [self filterDataSource_core:dict isEnabledOnly:isEnabledOnly strings:strings];
     if (d) {
       [newdatasource addObject:d];
     }

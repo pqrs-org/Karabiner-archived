@@ -11,6 +11,6 @@
 }
 
 - (void) load:(BOOL)force;
-- (void) filterByString:(NSString*)string;
+- (void) filterDataSource:(BOOL)isEnabledOnly string:(NSString*)string;
 
 @end
