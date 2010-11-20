@@ -112,34 +112,7 @@
 
 - (IBAction) filter:(id)sender
 {
-  return;
-#if 0
-  [_xmlTreeWrapper load:xmlpath];
-
-  BOOL expand = FALSE;
-
-  if ([_showEnabledOnly state] == NSOnState) {
-    [self filter_core:[_xmlTreeWrapper getRoot] identifier:TRUE search:nil];
-    expand = TRUE;
-  }
-  if (! [[_searchText stringValue] isEqual:@""]) {
-    NSArray* a = [[_searchText stringValue] componentsSeparatedByString:@" "];
-    for (NSString* str in a) {
-      if (! str) break;
-
-      str = [str lowercaseString];
-      if (! [str isEqual:@""]) {
-        [self filter_core:[_xmlTreeWrapper getRoot] identifier:FALSE search:str];
-      }
-    }
-    expand = TRUE;
-  }
-
-  [_outlineView_checkbox reloadData];
-  if (expand) {
-    [_outlineView_checkbox expandItem:nil expandChildren:YES];
-  }
-#endif
+  [self filterByString:[searchText_ stringValue]];
 }
 
 @end

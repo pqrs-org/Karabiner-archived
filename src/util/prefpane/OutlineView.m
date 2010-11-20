@@ -166,4 +166,65 @@
   }
 }
 
+/* ---------------------------------------------------------------------- */
+- (NSDictionary*) filter_core:(NSArray*)strings dictionary:(NSDictionary*)dictionary
+{
+  // ------------------------------------------------------------
+  // check children
+  NSArray* children = [dictionary objectForKey:@"children"];
+  if (children) {
+    NSMutableArray* newchildren = [[NSMutableArray new] autorelease];
+    for (NSDictionary* dict in children) {
+      NSDictionary* d = [self filter_core:strings dictionary:dict];
+      if (d) {
+        [newchildren addObject:d];
+      }
+    }
+
+    if ([newchildren count] > 0) {
+      NSMutableDictionary* newdictionary = [NSMutableDictionary dictionaryWithDictionary:dictionary];
+      [newdictionary setObject:newchildren forKey:@"children"];
+      return newdictionary;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // check self name
+  NSString* name = [dictionary objectForKey:@"name"];
+  if (name) {
+    name = [name lowercaseString];
+    BOOL hit = YES;
+    for (NSString* s in strings) {
+      if ([s length] == 0) continue;
+      if ([name rangeOfString:s].location == NSNotFound) hit = NO;
+    }
+    if (hit) {
+      return dictionary;
+    }
+  }
+
+  return nil;
+}
+
+- (void) filterByString:(NSString*)string
+{
+  [self load:YES];
+  if (! datasource_) return;
+
+  NSArray* strings = [string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+
+  NSMutableArray* newdatasource = [[NSMutableArray new] autorelease];
+  for (NSDictionary* dict in datasource_) {
+    NSDictionary* d = [self filter_core:strings dictionary:dict];
+    if (d) {
+      [newdatasource addObject:d];
+    }
+  }
+
+  [datasource_ release];
+  datasource_ = [newdatasource retain];
+  [outlineview_ reloadData];
+  [outlineview_ expandItem:nil expandChildren:YES];
+}
+
 @end

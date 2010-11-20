@@ -11,5 +11,6 @@
 }
 
 - (void) load:(BOOL)force;
+- (void) filterByString:(NSString*)string;
 
 @end
