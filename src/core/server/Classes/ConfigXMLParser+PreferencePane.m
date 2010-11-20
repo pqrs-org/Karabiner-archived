@@ -3,7 +3,7 @@
 
 @implementation ConfigXMLParser (PreferencePane)
 
-- (NSMutableArray*) traverse_item:(NSXMLElement*)element_list
+- (NSMutableArray*) traverse_item:(NSXMLElement*)element_list identifier_prefix:(NSString*)identifier_prefix
 {
   NSMutableArray* array = [[NSMutableArray new] autorelease];
 
@@ -50,7 +50,7 @@
     // ----------------------------------------
     NSMutableArray* a = [[NSMutableArray new] autorelease];
     for (NSXMLElement* child_list in [element_item elementsForName : @"list"]) {
-      [a addObjectsFromArray:[self traverse_item:child_list]];
+      [a addObjectsFromArray:[self traverse_item:child_list identifier_prefix:identifier_prefix]];
     }
     if ([a count] > 0) {
       [dict setObject:a forKey:@"children"];
@@ -81,15 +81,16 @@
     XML_TYPE_NUMBER,
   };
   NSArray* paths = [NSArray arrayWithObjects:
-                    [NSArray arrayWithObjects:[self get_private_xml_path],                                 [NSNumber numberWithInt:XML_TYPE_CHECKBOX], nil],
-                    [NSArray arrayWithObjects:@"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml", [NSNumber numberWithInt:XML_TYPE_CHECKBOX], nil],
-                    [NSArray arrayWithObjects:@"/Library/org.pqrs/KeyRemap4MacBook/prefpane/number.xml",   [NSNumber numberWithInt:XML_TYPE_NUMBER],   nil],
+                    [NSArray arrayWithObjects:[self get_private_xml_path],                                 [NSNumber numberWithInt:XML_TYPE_CHECKBOX], @"private.", nil],
+                    [NSArray arrayWithObjects:@"/Library/org.pqrs/KeyRemap4MacBook/prefpane/checkbox.xml", [NSNumber numberWithInt:XML_TYPE_CHECKBOX], @"",         nil],
+                    [NSArray arrayWithObjects:@"/Library/org.pqrs/KeyRemap4MacBook/prefpane/number.xml",   [NSNumber numberWithInt:XML_TYPE_NUMBER],   @"",         nil],
                     nil];
 
   for (NSArray* pathinfo in paths) {
     @try {
-      NSString* xmlpath = [pathinfo objectAtIndex:0];
-      NSNumber* xmltype = [pathinfo objectAtIndex:1];
+      NSString* xmlpath           = [pathinfo objectAtIndex:0];
+      NSNumber* xmltype           = [pathinfo objectAtIndex:1];
+      NSString* identifier_prefix = [pathinfo objectAtIndex:2];
 
       if ([xmlpath length] == 0) continue;
 
@@ -101,10 +102,14 @@
       }
 
       for (NSXMLElement* element_list in [[xmldocument rootElement] elementsForName : @"list"]) {
+        NSMutableArray* targetarray = nil;
         if ([xmltype intValue] == XML_TYPE_CHECKBOX) {
-          [preferencepane_checkbox_ addObjectsFromArray:[self traverse_item:element_list]];
+          targetarray = preferencepane_checkbox_;
         } else if ([xmltype intValue] == XML_TYPE_NUMBER) {
-          [preferencepane_number_ addObjectsFromArray:[self traverse_item:element_list]];
+          targetarray = preferencepane_number_;
+        }
+        if (targetarray) {
+          [targetarray addObjectsFromArray:[self traverse_item:element_list identifier_prefix:identifier_prefix]];
         }
       }
 
