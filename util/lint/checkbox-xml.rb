@@ -1,4 +1,5 @@
 #!/usr/bin/ruby
+# -*- coding: utf-8 -*-
 
 require 'rubygems'
 require 'xml/libxml'
@@ -37,5 +38,14 @@ libxmldoc.root.find('//list').each do |node|
       p node.parent
       exit 1
     end
+  end
+end
+
+# The contents of <identifier> must not begin in "private".
+libxmldoc.root.find('//identifier').each do |node|
+  if /^private/ =~ node.inner_xml then
+    print "[ERROR] <identifier> begins in 'private'."
+    p node.parent
+    exit 1
   end
 end
