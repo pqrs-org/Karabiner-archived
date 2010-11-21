@@ -2399,6 +2399,48 @@
         </item>
         <item><name>------------------------------------------------------------</name></item>
         <item>
+          <name>MacBook Air (2010, Late) Style</name>
+          <list>
+            <item>
+              <name>F6 to Music Prev</name>
+              <identifier>remap.f6_to_musicprev_all</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F6, ConsumerKeyCode::MUSIC_PREV</autogen>
+            </item>
+            <item>
+              <name>F7 to Music Play/Pause</name>
+              <identifier>remap.f7_to_musicplay_all</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F7, ConsumerKeyCode::MUSIC_PLAY</autogen>
+            </item>
+            <item>
+              <name>F8 to Music Next</name>
+              <identifier>remap.f8_to_musicnext_all</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F8, ConsumerKeyCode::MUSIC_NEXT</autogen>
+            </item>
+
+            <item>
+              <name>F9 to Volume Mute</name>
+              <identifier>remap.f9_to_volumemute_all</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F9, ConsumerKeyCode::VOLUME_MUTE</autogen>
+            </item>
+            <item>
+              <name>F10 to Volume Down</name>
+              <identifier>remap.f10_to_volumedown_all</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F10, ConsumerKeyCode::VOLUME_DOWN</autogen>
+            </item>
+            <item>
+              <name>F11 to Volume Up</name>
+              <identifier>remap.f11_to_volumeup_all</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F11, ConsumerKeyCode::VOLUME_UP</autogen>
+            </item>
+            <item>
+              <name>F12 to Eject</name>
+              <identifier>remap.f12_to_eject_all</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F12, ConsumerKeyCode::EJECT</autogen>
+            </item>
+          </list>
+        </item>
+        <item><name>------------------------------------------------------------</name></item>
+        <item>
           <name>Fn+F11 to F11</name>
           <identifier>remap.FnF11_to_f11</identifier>
           <autogen>--KeyToKey-- KeyCode::F11, ModifierFlag::FN, KeyCode::F11</autogen>
