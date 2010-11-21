@@ -212,13 +212,11 @@
   }
 
   // check self name
-  NSString* name = [dictionary objectForKey:@"name"];
-  if (name) {
-    name = [name lowercaseString];
+  NSString* string_for_filter = [dictionary objectForKey:@"string_for_filter"];
+  if (string_for_filter) {
     BOOL hit = YES;
     for (NSString* s in strings) {
-      if ([s length] == 0) continue;
-      if ([name rangeOfString:s].location == NSNotFound) hit = NO;
+      if ([string_for_filter rangeOfString:s].location == NSNotFound) hit = NO;
     }
     if (hit) {
       return dictionary;
@@ -235,9 +233,12 @@
 
   NSMutableArray* newdatasource = [[NSMutableArray new] autorelease];
 
-  NSArray* strings = nil;
+  NSMutableArray* strings = [[NSMutableArray new] autorelease];
   if (string) {
-    strings = [string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    for (NSString* s in [string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]) {
+      if ([s length] == 0) continue;
+      [strings addObject:[s lowercaseString]];
+    }
   }
 
   for (NSDictionary* dict in datasource_) {
