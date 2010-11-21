@@ -33,15 +33,26 @@
         <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::EXTRA5, KeyCode::Z, ModifierFlag::SHIFT_L | ModifierFlag::COMMAND_L</autogen>
       </block>
       <block>
+        <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::U, KeyCode::VK_MODIFIER_EXTRA5, KeyCode::DELETE</autogen>
+        <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA5, KeyCode::FORWARD_DELETE</autogen>
+        <config_only>option.simultaneouskeypresses_vimode_u_to_delete</config_only>
+      </block>
+      <block>
+        <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::O, KeyCode::VK_MODIFIER_EXTRA5, KeyCode::SPACE</autogen>
+        <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA5, KeyCode::SPACE, KeyCode::CURSOR_LEFT</autogen>
+        <config_only>option.simultaneouskeypresses_vimode_o_to_space</config_only>
+      </block>
+      <block>
         <autogen>--KeyOverlaidModifier-- KeyCode::D, KeyCode::OPTION_L, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
         <config_only>option.simultaneouskeypresses_vimode_d_to_option</config_only>
       </block>
       <block>
+        <config_only>option.simultaneouskeypresses_vimode_launchbar_l_to_cmd_right</config_only>
+        <only>LAUNCHBAR</only>
+        <autogen>--KeyToKey-- KeyCode::L, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+      </block>
+      <block>
         <autogen>--KeyOverlaidModifier-- KeyCode::S, KeyCode::CONTROL_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L, KeyCode::TAB, ModifierFlag::SHIFT_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L, KeyCode::TAB</autogen>
-        <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::CONTROL_L, KeyCode::SPACE, KeyCode::CURSOR_LEFT</autogen>
-        <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::CONTROL_L, KeyCode::SPACE</autogen>
         <config_only>option.simultaneouskeypresses_vimode_s_to_control</config_only>
       </block>
       <block>
@@ -291,10 +302,6 @@
       <block>
         <config_only>option.simultaneouskeypresses_vimode_f_to_command</config_only>
         <autogen>--KeyOverlaidModifier-- KeyCode::F, KeyCode::COMMAND_L, ModifierFlag::EXTRA3, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
-        <block>
-          <config_only>option.simultaneouskeypresses_vimode_h_to_undo</config_only>
-          <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA3, KeyCode::H, ModifierFlag::CONTROL_L</autogen>
-        </block>
       </block>
       <block>
         <autogen>--KeyToKey-- KeyCode::F, KeyCode::SHIFT_L</autogen>
@@ -358,14 +365,6 @@
         <config_only>option.simultaneouskeypresses_vimode_g_to_command_option_t</config_only>
       </block>
       <block>
-        <autogen>--KeyToKey-- KeyCode::U, KeyCode::DELETE</autogen>
-        <config_only>option.simultaneouskeypresses_vimode_u_to_delete</config_only>
-      </block>
-      <block>
-        <autogen>--KeyToKey-- KeyCode::O, KeyCode::SPACE</autogen>
-        <config_only>option.simultaneouskeypresses_vimode_o_to_space</config_only>
-      </block>
-      <block>
         <autogen>--KeyToKey-- KeyCode::S, KeyCode::S, ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L  </autogen>
         <config_only>option.simultaneouskeypresses_vimode_s_to_shift_control_s</config_only>
       </block>
@@ -423,6 +422,10 @@
         <config_only>option.simultaneouskeypresses_vimode_g_to_command_f</config_only>
       </block>
       <block>
+        <autogen>--KeyToKey-- KeyCode::G, KeyCode::G, ModifierFlag::COMMAND_L</autogen>
+        <config_only>option.simultaneouskeypresses_vimode_g_to_command_g</config_only>
+      </block>
+      <block>
         <autogen>--KeyToKey-- KeyCode::E, KeyCode::F, ModifierFlag::COMMAND_L</autogen>
         <config_only>option.simultaneouskeypresses_vimode_e_to_command_f</config_only>
       </block>
@@ -437,6 +440,10 @@
       <block>
         <autogen>--KeyToKey-- KeyCode::H, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
         <config_only>option.simultaneouskeypresses_vimode_h_to_undo</config_only>
+      </block>
+      <block>
+        <autogen>--KeyToKey-- KeyCode::N, KeyCode::Z, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+        <config_only>option.simultaneouskeypresses_vimode_n_to_redo</config_only>
       </block>
       <block>
         <autogen>--KeyToKey-- KeyCode::BACKSLASH, ModifierFlag::SHIFT_L, KeyCode::BACKSLASH, ModifierFlag::SHIFT_L</autogen>
@@ -789,10 +796,12 @@
     </item>
     <item>
       <name>[Option] U to Delete</name>
+      <appendix>+ when you keep U pressed and press L(right) it sends Forward_Delete</appendix>
       <identifier>option.simultaneouskeypresses_vimode_u_to_delete</identifier>
     </item>
     <item>
       <name>[Option] O to Space</name>
+      <appendix>+ when you keep O pressed and press J(left) it sends Space_Back</appendix>
       <identifier>option.simultaneouskeypresses_vimode_o_to_space</identifier>
     </item>
     <item>
@@ -850,6 +859,10 @@
       <identifier>option.simultaneouskeypresses_vimode_g_to_command_f</identifier>
     </item>
     <item>
+      <name>[Option] G to Command+G</name>
+      <identifier>option.simultaneouskeypresses_vimode_g_to_command_g</identifier>
+    </item>
+    <item>
       <name>[Option] E to Command+F</name>
       <identifier>option.simultaneouskeypresses_vimode_e_to_command_f</identifier>
     </item>
@@ -864,9 +877,10 @@
     <item>
       <name>[Option] H to Cmd+Z</name>
       <identifier>option.simultaneouskeypresses_vimode_h_to_undo</identifier>
-      <appendix>+ when combined with F send Control+Option+H</appendix>
-      <appendix>(You need to have F to Command enabled in order to the thing after + work)</appendix>
-      <appendix>(Use with above JKIL option)</appendix>
+    </item>
+    <item>
+      <name>[Option] N to Cmd+Shift+Z</name>
+      <identifier>option.simultaneouskeypresses_vimode_n_to_redo</identifier>
     </item>
     <item>
       <name>[Option] Backslash to Command+Backslash</name>
@@ -892,6 +906,10 @@
     <item>
       <name>[Option] G to History Mode</name>
       <identifier>option.simultaneouskeypresses_vimode_g_to_history</identifier>
+    </item>
+    <item>
+      <name>[Option] L to Cmd+Right (Only in Launchbar)</name>
+      <identifier>option.simultaneouskeypresses_vimode_launchbar_l_to_cmd_right</identifier>
     </item>
   </list>
 </item>
