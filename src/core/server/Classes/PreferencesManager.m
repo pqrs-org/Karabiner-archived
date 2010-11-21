@@ -390,4 +390,9 @@
   return [configxmlparser_ preferencepane_number];
 }
 
+- (NSString*) preferencepane_error_message
+{
+  return [configxmlparser_ preferencepane_error_message];
+}
+
 @end

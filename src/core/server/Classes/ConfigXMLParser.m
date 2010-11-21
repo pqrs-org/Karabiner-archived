@@ -142,4 +142,9 @@
   return a;
 }
 
+- (NSString*) preferencepane_error_message
+{
+  return error_message_;
+}
+
 @end
