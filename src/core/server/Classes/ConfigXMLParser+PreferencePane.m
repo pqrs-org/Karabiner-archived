@@ -38,6 +38,13 @@
         [dict setObject:@"0" forKey:@"default"];
       }
 
+      NSXMLNode* attr_step = [element_identifier attributeForName:@"step"];
+      if (attr_step) {
+        [dict setObject:[NSNumber numberWithInt:[[attr_step stringValue] intValue]] forKey:@"step"];
+      } else {
+        [dict setObject:[NSNumber numberWithInt:1] forKey:@"step"];
+      }
+
       NSXMLNode* attr_baseunit = [element_identifier attributeForName:@"baseunit"];
       if (attr_baseunit) {
         [dict setObject:[attr_baseunit stringValue] forKey:@"baseunit"];
