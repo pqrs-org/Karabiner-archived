@@ -11,8 +11,10 @@
   if (! [filemanager fileExistsAtPath:path]) {
     [filemanager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:NULL];
   }
-  if ([filemanager fileExistsAtPath:path]) {
-    path = [path stringByAppendingPathComponent:@"private.xml"];
+
+  path = [path stringByAppendingPathComponent:@"private.xml"];
+  if (! [filemanager fileExistsAtPath:path]) {
+    [filemanager copyItemAtPath:[[NSBundle mainBundle] pathForResource:@"private" ofType:@"xml"] toPath:path error:NULL];
   }
 
   BOOL isDirectory;
