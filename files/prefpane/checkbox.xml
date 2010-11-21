@@ -3514,22 +3514,18 @@
           <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::VK_NONE, KeyCode::VK_LOCK_FN</autogen>
         </item>
         <item>
-          <name>CapsLock Trick</name>
-          <list>
-            <item>
-              <name>CapsLock Trick assigns "Sticky Shift_L / CapsLock" to Shift_L.</name>
-              <identifier vk_config="true">notsave.shiftl_capslocktrick</identifier>
-              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftl_capslocktrick</autogen>
-            </item>
-            <item>
-              <name>Shift_L to Shift_L</name>
-              <appendix>(+ When you type Shift_L only, Sticky Shift_L)</appendix>
-              <appendix>(+ When you type Shift_L twice, Capslock)</appendix>
-              <identifier>remap.shiftl_to_sticky_shiftl</identifier>
-              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, ModifierFlag::EXTRA1, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftl_capslocktrick</autogen>
-              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L, KeyCode::VK_STICKY_EXTRA1 </autogen>
-            </item>
-          </list>
+          <name></name>
+          <identifier vk_config="true">notsave.shiftl_capslocktrick</identifier>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, ModifierFlag::EXTRA2, KeyCode::SHIFT_L, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftl_capslocktrick</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::VK_STICKY_EXTRA2</autogen>
+        </item>
+        <item>
+          <name>Shift_L to Shift_L</name>
+          <appendix>(+ When you type Shift_L only, Sticky Shift_L)</appendix>
+          <appendix>(+ When you type Shift_L twice, Capslock)</appendix>
+          <identifier>remap.shiftl_to_sticky_shiftl</identifier>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, ModifierFlag::EXTRA1, KeyCode::SHIFT_L, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftl_capslocktrick</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L, KeyCode::VK_STICKY_EXTRA1</autogen>
         </item>
       </list>
     </item>
@@ -3663,22 +3659,18 @@
           </list>
         </item>
         <item>
-          <name>CapsLock Trick</name>
-          <list>
-            <item>
-              <name>CapsLock Trick assigns "Sticky Shift_L / CapsLock" to Shift_R.</name>
-              <identifier vk_config="true">notsave.shiftr_capslocktrick</identifier>
-              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftr_capslocktrick</autogen>
-            </item>
-            <item>
-              <name>Shift_R to Shift_R</name>
-              <appendix>(+ When you type Shift_R only, Sticky Shift_L)</appendix>
-              <appendix>(+ When you type Shift_R twice, Capslock)</appendix>
-              <identifier>remap.shiftr_to_sticky_shiftr</identifier>
-              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, ModifierFlag::EXTRA1, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftr_capslocktrick</autogen>
-              <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::VK_STICKY_SHIFT_R, KeyCode::VK_STICKY_EXTRA1 </autogen>
-            </item>
-          </list>
+          <name></name>
+          <identifier vk_config="true">notsave.shiftr_capslocktrick</identifier>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, ModifierFlag::EXTRA2, KeyCode::SHIFT_R, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftr_capslocktrick</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::VK_STICKY_EXTRA2</autogen>
+        </item>
+        <item>
+          <name>Shift_R to Shift_R</name>
+          <appendix>(+ When you type Shift_R only, Sticky Shift_R)</appendix>
+          <appendix>(+ When you type Shift_R twice, Capslock)</appendix>
+          <identifier>remap.shiftr_to_sticky_shiftr</identifier>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, ModifierFlag::EXTRA1, KeyCode::SHIFT_R, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftr_capslocktrick</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::VK_STICKY_SHIFT_R, KeyCode::VK_STICKY_EXTRA1</autogen>
         </item>
       </list>
     </item>
@@ -5701,6 +5693,28 @@
                   <identifier>remap.RBracket_to_RArrow</identifier>
                   <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, KeyCode::CURSOR_RIGHT</autogen>
                 </item>
+                <item>
+                  <name></name>
+                  <identifier vk_config="true">notsave.app_finder_return_accepts_rename</identifier>
+                  <only>FINDER</only>
+                  <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::RETURN, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
+                </item>
+                <item>
+                  <name>Cmd+N to new folder | Cmd+Shift+N to new window</name>
+                  <identifier>remap.app_finder_switch_new_folder_window</identifier>
+                  <only>FINDER</only>
+                  <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::N, ModifierFlag::COMMAND_L</autogen>
+                  <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::COMMAND_L, KeyCode::N, ModifierFlag::COMMAND_L |  ModifierFlag::SHIFT_L, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
+                </item>
+                <item>
+                  <name>Cmd+R to Rename | Return to Open</name>
+                  <appendix>+ if you press Return while renaming it accepts new name instead of opening</appendix>
+                  <identifier>remap.app_finder_switch_open_rename</identifier>
+                  <only>FINDER</only>
+                  <autogen>--KeyToKey-- KeyCode::R, VK_COMMAND, KeyCode::RETURN, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
+                  <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::O, ModifierFlag::COMMAND_L</autogen>
+                  <autogen>--KeyToKey-- KeyCode::N,  ModifierFlag::COMMAND_L |  ModifierFlag::SHIFT_L, KeyCode::N, ModifierFlag::COMMAND_L |  ModifierFlag::SHIFT_L, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
+                </item>
               </list>
             </item>
           </list>
@@ -5920,6 +5934,30 @@
               <identifier>remap.app_launchbar_semicolon_to_return</identifier>
               <only>LAUNCHBAR</only>
               <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::RETURN</autogen>
+            </item>
+            <item>
+              <name>Change Right to Cmd+Right</name>
+              <identifier>remap.app_launchbar_right_to_command_right</identifier>
+              <only>LAUNCHBAR</only>
+              <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+            </item>
+            <item>
+              <name>Change Cmd+D to Cmd+Shift+D</name>
+              <identifier>remap.app_launchbar_cmd_d_to_cmd_shif_d</identifier>
+              <only>LAUNCHBAR</only>
+              <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::COMMAND_L, KeyCode::D, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+            </item>
+            <item>
+              <name>Change Cmd+R to Cmd+Shift+R</name>
+              <identifier>remap.app_launchbar_cmd_r_to_cmd_shif_r</identifier>
+              <only>LAUNCHBAR</only>
+              <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::COMMAND_L, KeyCode::R, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+            </item>
+            <item>
+              <name>Change Cmd+N to Cmd+Shift+N</name>
+              <identifier>remap.app_launchbar_cmd_n_to_cmd_shif_n</identifier>
+              <only>LAUNCHBAR</only>
+              <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::COMMAND_L, KeyCode::N, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
             </item>
           </list>
         </item>
