@@ -395,4 +395,9 @@
   return [configxmlparser_ preferencepane_error_message];
 }
 
+- (NSString*) preferencepane_get_private_xml_path
+{
+  return [configxmlparser_ preferencepane_get_private_xml_path];
+}
+
 @end

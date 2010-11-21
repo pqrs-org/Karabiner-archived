@@ -147,4 +147,27 @@
   return error_message_;
 }
 
+- (NSString*) preferencepane_get_private_xml_path
+{
+  NSFileManager* filemanager = [NSFileManager defaultManager];
+  NSArray* paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+  NSString* path = [paths objectAtIndex:0];
+  path = [path stringByAppendingPathComponent:@"KeyRemap4MacBook"];
+  if (! [filemanager fileExistsAtPath:path]) {
+    [filemanager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:NULL];
+  }
+
+  path = [path stringByAppendingPathComponent:@"private.xml"];
+  if (! [filemanager fileExistsAtPath:path]) {
+    [filemanager copyItemAtPath:[[NSBundle mainBundle] pathForResource:@"private" ofType:@"xml"] toPath:path error:NULL];
+  }
+
+  BOOL isDirectory;
+  if ([filemanager fileExistsAtPath:path isDirectory:&isDirectory] && ! isDirectory) {
+    return path;
+  }
+
+  return @"";
+}
+
 @end
