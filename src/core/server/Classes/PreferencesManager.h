@@ -45,5 +45,6 @@
 
 - (NSArray*) preferencepane_checkbox;
 - (NSArray*) preferencepane_number;
+- (NSString*) preferencepane_error_message;
 
 @end
