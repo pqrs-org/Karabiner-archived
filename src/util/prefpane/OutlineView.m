@@ -50,7 +50,7 @@
   [self load:NO];
 
   // ----------------------------------------
-  if (error_message_) {
+  if (error_message_ && ischeckbox_) {
     if (! item) {
       return 1;
     }
@@ -77,7 +77,7 @@
   [self load:NO];
 
   // ----------------------------------------
-  if (error_message_) {
+  if (error_message_ && ischeckbox_) {
     if (! item && idx == 0) {
       return error_message_;
     }
@@ -102,7 +102,7 @@
 
 - (BOOL) outlineView:(NSOutlineView*)outlineView isItemExpandable:(id)item
 {
-  if (error_message_) {
+  if (error_message_ && ischeckbox_) {
     return NO;
   }
 
@@ -113,15 +113,11 @@
 
 - (id) outlineView:(NSOutlineView*)outlineView objectValueForTableColumn:(NSTableColumn*)tableColumn byItem:(id)item
 {
-  if (error_message_) {
-    if (ischeckbox_) {
-      NSButtonCell* cell = [tableColumn dataCell];
-      [cell setTitle:error_message_];
-      [cell setImagePosition:NSNoImage];
-      return nil;
-    } else {
-      return nil;
-    }
+  if (error_message_ && ischeckbox_) {
+    NSButtonCell* cell = [tableColumn dataCell];
+    [cell setTitle:error_message_];
+    [cell setImagePosition:NSNoImage];
+    return nil;
   }
 
   // ----------------------------------------
@@ -174,7 +170,7 @@
 
 - (CGFloat) outlineView:(NSOutlineView*)outlineView heightOfRowByItem:(id)item
 {
-  if (error_message_) {
+  if (error_message_ && ischeckbox_) {
     return [outlineView rowHeight] * 20;
   }
 
@@ -193,7 +189,7 @@
 
 - (void) outlineView:(NSOutlineView*)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn*)tableColumn byItem:(id)item
 {
-  if (error_message_) {
+  if (error_message_ && ischeckbox_) {
     return;
   }
 
