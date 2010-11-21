@@ -4,6 +4,7 @@
 
 @interface org_pqrs_KeyRemap4MacBook_OutlineView : NSObject {
   NSArray* datasource_;
+  NSString* error_message_;
   BOOL ischeckbox_;
 
   IBOutlet id outlineview_;
