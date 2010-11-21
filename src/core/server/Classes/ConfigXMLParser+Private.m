@@ -41,12 +41,12 @@
           nil];
 }
 
-- (void) setErrorMessage:(NSException*)exception
+- (void) setErrorMessage:(NSException*)exception xmlpath:(NSString*)xmlpath
 {
   // skip if an error was already reported.
   if (error_message_) return;
 
-  error_message_ = [NSString stringWithFormat:@"%@\n\n%@", [exception name], [exception reason]];
+  error_message_ = [NSString stringWithFormat:@"Error in %@\n\n%@\n\n%@", xmlpath, [exception name], [exception reason]];
   NSAlert* alert = [NSAlert alertWithMessageText:@"KeyRemap4MacBook Error"
                                    defaultButton:@"Close"
                                  alternateButton:@"Open PreferencePane"
