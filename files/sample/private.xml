@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<root>
+  <list>
+    <item>
+      <name>My Excel Hacks (effective only in Excel)</name>
+      <appendix>Change Command+2 to Ctrl+U</appendix>
+      <appendix>Change Control+A to Home</appendix>
+      <appendix>Change Control+E to End</appendix>
+      <identifier>private.app_excel_command2_to_ctrlu</identifier>
+      <only>EXCEL</only>
+      <autogen>--KeyToKey-- KeyCode::KEY_2, VK_COMMAND, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::HOME</autogen>
+      <autogen>--KeyToKey-- KeyCode::E, VK_CONTROL, KeyCode::END</autogen>
+    </item>
+
+    <item>
+      <name>My TrackPad LeftClick Hack</name>
+      <appendix>LeftClick to F12 (only in MacBookPro2,1 Trackpad)</appendix>
+      <identifier>private.pointing_leftclick2f12_trackpad</identifier>
+      <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a</device_only>
+      <autogen>--PointingButtonToKey-- PointingButton::LEFT, KeyCode::F12</autogen>
+    </item>
+  </list>
+</root>
