@@ -3,76 +3,76 @@
   <list>
     <item>
       <name>[Key Repeat] Initial Wait</name>
-      <identifier essential="true" default="500" stepper="100" baseunit="ms">repeat.initial_wait</identifier>
+      <identifier essential="true" default="500" step="100" baseunit="ms">repeat.initial_wait</identifier>
     </item>
     <item>
       <name>[Key Repeat] Wait</name>
-      <identifier essential="true" default="83" stepper="10" baseunit="ms">repeat.wait</identifier>
+      <identifier essential="true" default="83" step="10" baseunit="ms">repeat.wait</identifier>
     </item>
 
     <item>
       <name>[Functional Key Repeat] Initial Wait</name>
-      <identifier essential="true" default="500" stepper="100" baseunit="ms">repeat.consumer_initial_wait</identifier>
+      <identifier essential="true" default="500" step="100" baseunit="ms">repeat.consumer_initial_wait</identifier>
     </item>
     <item>
       <name>[Functional Key Repeat] Wait</name>
-      <identifier essential="true" default="100" stepper="10" baseunit="ms">repeat.consumer_wait</identifier>
+      <identifier essential="true" default="100" step="10" baseunit="ms">repeat.consumer_wait</identifier>
     </item>
 
     <item>
       <name>[Key Overlaid Modifier] Timeout</name>
-      <identifier essential="true" default="1000" stepper="100" baseunit="ms">parameter.keyoverlaidmodifier_timeout</identifier>
+      <identifier essential="true" default="1000" step="100" baseunit="ms">parameter.keyoverlaidmodifier_timeout</identifier>
     </item>
     <item>
       <name>[Key Overlaid Modifier's Key Repeat] Initial Wait</name>
-      <identifier essential="true" default="500" stepper="100" baseunit="ms">repeat.keyoverlaidmodifier_initial_wait</identifier>
+      <identifier essential="true" default="500" step="100" baseunit="ms">repeat.keyoverlaidmodifier_initial_wait</identifier>
     </item>
 
     <item>
       <name>[Simultaneous Key Presses] Delay Threshold</name>
-      <identifier essential="true" default="50" stepper="10" baseunit="ms">parameter.simultaneouskeypresses_delay</identifier>
+      <identifier essential="true" default="50" step="10" baseunit="ms">parameter.simultaneouskeypresses_delay</identifier>
     </item>
 
     <item>
       <name>[Simultaneous PointingButton Presses] Delay Threshold</name>
-      <identifier essential="true" default="50" stepper="10" baseunit="ms">parameter.simultaneouskeypresses_pointingbutton_delay</identifier>
+      <identifier essential="true" default="50" step="10" baseunit="ms">parameter.simultaneouskeypresses_pointingbutton_delay</identifier>
     </item>
 
     <item>
       <name>[Double Press Modifier] Recognition Threshold</name>
-      <identifier essential="true" default="500" stepper="100" baseunit="ms">parameter.doublepressmodifier_threshold</identifier>
+      <identifier essential="true" default="500" step="100" baseunit="ms">parameter.doublepressmodifier_threshold</identifier>
     </item>
 
     <item>
       <name>[Modifier Holding Key to Key] Holding Threshold</name>
-      <identifier essential="true" default="1000" stepper="100" baseunit="ms">parameter.modifierholdingkeytokey_wait</identifier>
+      <identifier essential="true" default="1000" step="100" baseunit="ms">parameter.modifierholdingkeytokey_wait</identifier>
     </item>
 
     <item>
       <name>[Holding Key to Key] Holding Threshold</name>
-      <identifier essential="true" default="1000" stepper="100" baseunit="ms">parameter.holdingkeytokey_wait</identifier>
+      <identifier essential="true" default="1000" step="100" baseunit="ms">parameter.holdingkeytokey_wait</identifier>
     </item>
 
     <item>
       <name>[Pointing Device] CursorMove to ScrollWheel Rate</name>
-      <identifier essential="true" default="150" stepper="10" baseunit="/ 1000">pointing.relative2scroll_rate</identifier>
+      <identifier essential="true" default="150" step="10" baseunit="/ 1000">pointing.relative2scroll_rate</identifier>
     </item>
 
     <item>
       <name>[StatusWindow] AlphaValue for Font</name>
-      <identifier essential="true" default="60" stepper="10" baseunit="%">parameter.statuswindow_alpha_font</identifier>
+      <identifier essential="true" default="60" step="10" baseunit="%">parameter.statuswindow_alpha_font</identifier>
     </item>
     <item>
       <name>[StatusWindow] AlphaValue for Background</name>
-      <identifier essential="true" default="20" stepper="10" baseunit="%">parameter.statuswindow_alpha_background</identifier>
+      <identifier essential="true" default="20" step="10" baseunit="%">parameter.statuswindow_alpha_background</identifier>
     </item>
     <item>
       <name>[StatusWindow] PosX adjustment</name>
-      <identifier essential="true" stepper="100">parameter.statuswindow_posx_adjustment</identifier>
+      <identifier essential="true" step="100">parameter.statuswindow_posx_adjustment</identifier>
     </item>
     <item>
       <name>[StatusWindow] PosY adjustment</name>
-      <identifier essential="true" stepper="100">parameter.statuswindow_posy_adjustment</identifier>
+      <identifier essential="true" step="100">parameter.statuswindow_posy_adjustment</identifier>
     </item>
   </list>
 </root>
