@@ -93,9 +93,10 @@ static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
 
 - (IBAction) openPrivateXML:(id)sender
 {
+  // Open a directory which contains private.xml.
   NSString* path = [[preferencesclient_ proxy] preferencepane_get_private_xml_path];
   if ([path length] > 0) {
-    [[NSWorkspace sharedWorkspace] openFile:path withApplication:@"TextEdit.app"];
+    [[NSWorkspace sharedWorkspace] openFile:[path stringByDeletingLastPathComponent]];
   }
 }
 
