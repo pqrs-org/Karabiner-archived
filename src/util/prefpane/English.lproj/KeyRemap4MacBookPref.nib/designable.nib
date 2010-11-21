@@ -622,7 +622,6 @@
 												<reference key="NSHScroller" ref="572701389"/>
 												<reference key="NSContentView" ref="560413009"/>
 												<reference key="NSHeaderClipView" ref="575658362"/>
-												<reference key="NSCornerView" ref="288176493"/>
 												<bytes key="NSScrollAmts">QSAAAEEgAABBkAAAQZAAAA</bytes>
 											</object>
 										</array>
@@ -1192,7 +1191,7 @@
 														<reference key="NSSuperview" ref="994222821"/>
 													</object>
 												</array>
-												<string key="NSFrame">{{12, 121}, {604, 134}}</string>
+												<string key="NSFrame">{{12, 84}, {604, 134}}</string>
 												<reference key="NSSuperview" ref="871498761"/>
 												<string key="NSOffsets">{0, 0}</string>
 												<object class="NSTextFieldCell" key="NSTitleCell">
@@ -1207,6 +1206,59 @@
 													</object>
 												</object>
 												<reference key="NSContentView" ref="307156380"/>
+												<int key="NSBorderType">1</int>
+												<int key="NSBoxType">0</int>
+												<int key="NSTitlePosition">2</int>
+												<bool key="NSTransparent">NO</bool>
+											</object>
+											<object class="NSBox" id="461294333">
+												<reference key="NSNextResponder" ref="871498761"/>
+												<int key="NSvFlags">12</int>
+												<array class="NSMutableArray" key="NSSubviews">
+													<object class="NSView" id="837527025">
+														<reference key="NSNextResponder" ref="461294333"/>
+														<int key="NSvFlags">256</int>
+														<array class="NSMutableArray" key="NSSubviews">
+															<object class="NSButton" id="160563748">
+																<reference key="NSNextResponder" ref="837527025"/>
+																<int key="NSvFlags">268</int>
+																<string key="NSFrame">{{12, 6}, {149, 32}}</string>
+																<reference key="NSSuperview" ref="837527025"/>
+																<bool key="NSEnabled">YES</bool>
+																<object class="NSButtonCell" key="NSCell" id="675692321">
+																	<int key="NSCellFlags">-2080244224</int>
+																	<int key="NSCellFlags2">134217728</int>
+																	<string key="NSContents">Open private.xml</string>
+																	<reference key="NSSupport" ref="322818650"/>
+																	<reference key="NSControlView" ref="160563748"/>
+																	<int key="NSButtonFlags">-2038284033</int>
+																	<int key="NSButtonFlags2">129</int>
+																	<string key="NSAlternateContents"/>
+																	<string key="NSKeyEquivalent"/>
+																	<int key="NSPeriodicDelay">200</int>
+																	<int key="NSPeriodicInterval">25</int>
+																</object>
+															</object>
+														</array>
+														<string key="NSFrame">{{1, 1}, {602, 44}}</string>
+														<reference key="NSSuperview" ref="461294333"/>
+													</object>
+												</array>
+												<string key="NSFrame">{{12, 244}, {604, 60}}</string>
+												<reference key="NSSuperview" ref="871498761"/>
+												<string key="NSOffsets">{0, 0}</string>
+												<object class="NSTextFieldCell" key="NSTitleCell">
+													<int key="NSCellFlags">67239424</int>
+													<int key="NSCellFlags2">0</int>
+													<string key="NSContents">Custom Setting</string>
+													<reference key="NSSupport" ref="26"/>
+													<reference key="NSBackgroundColor" ref="557412984"/>
+													<object class="NSColor" key="NSTextColor">
+														<int key="NSColorSpace">3</int>
+														<bytes key="NSWhite">MCAwLjgwMDAwMDAxMTkAA</bytes>
+													</object>
+												</object>
+												<reference key="NSContentView" ref="837527025"/>
 												<int key="NSBorderType">1</int>
 												<int key="NSBoxType">0</int>
 												<int key="NSTitlePosition">2</int>
@@ -1507,6 +1559,14 @@
 					</object>
 					<int key="connectionID">819</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">openPrivateXML:</string>
+						<reference key="source" ref="762499249"/>
+						<reference key="destination" ref="160563748"/>
+					</object>
+					<int key="connectionID">825</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -1590,6 +1650,7 @@
 							<reference ref="239011731"/>
 							<reference ref="895914296"/>
 							<reference ref="375154777"/>
+							<reference ref="461294333"/>
 							<reference ref="994222821"/>
 						</array>
 						<reference key="parent" ref="668587285"/>
@@ -2144,14 +2205,35 @@
 						<reference key="object" ref="545569903"/>
 						<reference key="parent" ref="791842684"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">826</int>
+						<reference key="object" ref="461294333"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="160563748"/>
+						</array>
+						<reference key="parent" ref="871498761"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">823</int>
+						<reference key="object" ref="160563748"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="675692321"/>
+						</array>
+						<reference key="parent" ref="461294333"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">824</int>
+						<reference key="object" ref="675692321"/>
+						<reference key="parent" ref="160563748"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
 				<string key="-3.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="-3.ImportedFromIB2"/>
-				<string key="12.IBEditorWindowLastContentRect">{{587, 86}, {668, 600}}</string>
+				<string key="12.IBEditorWindowLastContentRect">{{588, 86}, {668, 600}}</string>
 				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="12.IBWindowTemplateEditedContentRect">{{587, 86}, {668, 600}}</string>
+				<string key="12.IBWindowTemplateEditedContentRect">{{588, 86}, {668, 600}}</string>
 				<boolean value="YES" key="12.ImportedFromIB2"/>
 				<string key="338.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="338.ImportedFromIB2"/>
@@ -2270,12 +2352,15 @@
 				<string key="803.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="820.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="822.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="823.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="824.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="826.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">822</int>
+			<int key="maxID">826</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2296,6 +2381,7 @@
 						<string key="launchEventViewer:">id</string>
 						<string key="launchThreeFingerRelativeToScroll:">id</string>
 						<string key="launchUninstaller:">id</string>
+						<string key="openPrivateXML:">id</string>
 						<string key="toggleStatusBar:">id</string>
 						<string key="toggleStatusBarShowName:">id</string>
 					</dictionary>
@@ -2318,6 +2404,10 @@
 						</object>
 						<object class="IBActionInfo" key="launchUninstaller:">
 							<string key="name">launchUninstaller:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="openPrivateXML:">
+							<string key="name">openPrivateXML:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="toggleStatusBar:">

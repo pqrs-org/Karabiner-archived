@@ -17,6 +17,7 @@
 - (IBAction) toggleStatusBarShowName:(id)sender;
 - (IBAction) changeCheckUpdate:(id)sender;
 - (IBAction) launchUninstaller:(id)sender;
+- (IBAction) openPrivateXML:(id)sender;
 - (IBAction) launchEventViewer:(id)sender;
 - (IBAction) launchThreeFingerRelativeToScroll:(id)sender;
 - (IBAction) checkUpdateNow:(id)sender;
