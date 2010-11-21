@@ -246,7 +246,7 @@
 																		<bytes key="NSWhite">MC41AA</bytes>
 																	</object>
 																</object>
-																<double key="NSRowHeight">17</double>
+																<double key="NSRowHeight">16</double>
 																<int key="NSTvFlags">314572800</int>
 																<reference key="NSDelegate"/>
 																<reference key="NSDataSource"/>
@@ -309,7 +309,7 @@
 												<reference key="NSContentView" ref="465907325"/>
 												<reference key="NSHeaderClipView" ref="189098454"/>
 												<reference key="NSCornerView" ref="246636842"/>
-												<bytes key="NSScrollAmts">QSAAAEEgAABBoAAAQaAAAA</bytes>
+												<bytes key="NSScrollAmts">QSAAAEEgAABBmAAAQZgAAA</bytes>
 											</object>
 											<object class="NSButton" id="459450937">
 												<reference key="NSNextResponder" ref="126432317"/>
@@ -384,7 +384,7 @@
 																<array class="NSMutableArray" key="NSTableColumns">
 																	<object class="NSTableColumn" id="824011698">
 																		<string key="NSIdentifier">name</string>
-																		<double key="NSWidth">378</double>
+																		<double key="NSWidth">360</double>
 																		<double key="NSMinWidth">16</double>
 																		<double key="NSMaxWidth">1000</double>
 																		<object class="NSTableHeaderCell" key="NSHeaderCell">
@@ -505,6 +505,33 @@
 																		<bool key="NSIsEditable">YES</bool>
 																		<reference key="NSTableView" ref="737811286"/>
 																	</object>
+																	<object class="NSTableColumn" id="791842684">
+																		<string key="NSIdentifier">stepper</string>
+																		<double key="NSWidth">10</double>
+																		<double key="NSMinWidth">10</double>
+																		<double key="NSMaxWidth">3.4028234663852886e+38</double>
+																		<object class="NSTableHeaderCell" key="NSHeaderCell">
+																			<int key="NSCellFlags">75628096</int>
+																			<int key="NSCellFlags2">2048</int>
+																			<string key="NSContents"/>
+																			<reference key="NSSupport" ref="26"/>
+																			<reference key="NSBackgroundColor" ref="733947590"/>
+																			<reference key="NSTextColor" ref="587376091"/>
+																		</object>
+																		<object class="NSStepperCell" key="NSDataCell" id="545569903">
+																			<int key="NSCellFlags">67239424</int>
+																			<int key="NSCellFlags2">131072</int>
+																			<reference key="NSSupport" ref="26"/>
+																			<reference key="NSControlView" ref="737811286"/>
+																			<double key="NSMinValue">-1</double>
+																			<double key="NSMaxValue">1</double>
+																			<double key="NSIncrement">1</double>
+																		</object>
+																		<int key="NSResizingMask">3</int>
+																		<bool key="NSIsResizeable">YES</bool>
+																		<bool key="NSIsEditable">YES</bool>
+																		<reference key="NSTableView" ref="737811286"/>
+																	</object>
 																	<object class="NSTableColumn" id="307680860">
 																		<string key="NSIdentifier">baseunit</string>
 																		<double key="NSWidth">61</double>
@@ -534,7 +561,7 @@
 																<double key="NSIntercellSpacingHeight">2</double>
 																<reference key="NSBackgroundColor" ref="886340672"/>
 																<reference key="NSGridColor" ref="234984690"/>
-																<double key="NSRowHeight">17</double>
+																<double key="NSRowHeight">16</double>
 																<int key="NSTvFlags">314572800</int>
 																<reference key="NSDelegate"/>
 																<reference key="NSDataSource"/>
@@ -596,7 +623,7 @@
 												<reference key="NSContentView" ref="560413009"/>
 												<reference key="NSHeaderClipView" ref="575658362"/>
 												<reference key="NSCornerView" ref="288176493"/>
-												<bytes key="NSScrollAmts">QSAAAEEgAABBmAAAQZgAAA</bytes>
+												<bytes key="NSScrollAmts">QSAAAEEgAABBkAAAQZAAAA</bytes>
 											</object>
 										</array>
 										<string key="NSFrame">{{10, 33}, {622, 538}}</string>
@@ -1767,6 +1794,7 @@
 							<reference ref="922415904"/>
 							<reference ref="160181432"/>
 							<reference ref="824011698"/>
+							<reference ref="791842684"/>
 						</array>
 						<reference key="parent" ref="604566672"/>
 					</object>
@@ -2103,6 +2131,19 @@
 						<reference key="object" ref="660972910"/>
 						<reference key="parent" ref="459450937"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">820</int>
+						<reference key="object" ref="791842684"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="545569903"/>
+						</array>
+						<reference key="parent" ref="737811286"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">822</int>
+						<reference key="object" ref="545569903"/>
+						<reference key="parent" ref="791842684"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -2227,12 +2268,13 @@
 				<string key="787.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="802.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="803.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="822.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">819</int>
+			<int key="maxID">822</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2953,6 +2995,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">AppKit.framework/Headers/NSSearchFieldCell.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSStepperCell</string>
+					<string key="superclassName">NSActionCell</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSStepperCell.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

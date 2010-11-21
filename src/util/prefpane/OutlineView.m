@@ -161,7 +161,18 @@
 
   } else {
     if (identifier) {
-      [[preferencesclient_ proxy] setValueForName:[object intValue] forName:identifier];
+      NSString* columnIdentifier = [tableColumn identifier];
+      if ([columnIdentifier isEqualToString:@"value"]) {
+        [[preferencesclient_ proxy] setValueForName:[object intValue] forName:identifier];
+
+      } else if ([columnIdentifier isEqualToString:@"stepper"]) {
+        int newvalue = [[preferencesclient_ proxy] value:identifier];
+        NSNumber* step = [item objectForKey:@"step"];
+        newvalue += ([object intValue] * [step intValue]);
+        [[preferencesclient_ proxy] setValueForName:newvalue forName:identifier];
+
+        [outlineView reloadItem:item];
+      }
     }
   }
 }
