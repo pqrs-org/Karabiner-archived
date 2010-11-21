@@ -48,6 +48,8 @@
 - (BOOL) reload {
   @synchronized(self) {
     initialized_ = NO;
+    [self removeErrorMessage];
+
     if ([self reload_autogen] &&
         [self reload_preferencepane]) {
       initialized_ = YES;
