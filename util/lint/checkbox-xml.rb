@@ -40,12 +40,3 @@ libxmldoc.root.find('//list').each do |node|
     end
   end
 end
-
-# The contents of <identifier> must not begin in "private".
-libxmldoc.root.find('//identifier').each do |node|
-  if /^private/ =~ node.inner_xml then
-    print "[ERROR] <identifier> begins in 'private'."
-    p node.parent
-    exit 1
-  end
-end
