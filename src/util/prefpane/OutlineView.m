@@ -306,7 +306,12 @@
   [datasource_ release];
   datasource_ = [newdatasource retain];
   [outlineview_ reloadData];
-  [outlineview_ expandItem:nil expandChildren:YES];
+
+  if ([string length] == 0 && isEnabledOnly == NO) {
+    [outlineview_ collapseItem:nil collapseChildren:YES];
+  } else {
+    [outlineview_ expandItem:nil expandChildren:YES];
+  }
 }
 
 @end
