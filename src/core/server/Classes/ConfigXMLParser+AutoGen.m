@@ -414,7 +414,7 @@
     NSString* name = [KeyCode normalizeName:rawname];
 
     if ([identifier_dictionary objectForKey:name]) {
-      @throw [NSException exceptionWithName : @"A conflict of <identifier>." reason :[NSString stringWithFormat:@"%@ already exists. Rename it.", rawname] userInfo : nil];
+      @throw [NSException exceptionWithName : @"A conflict of <identifier>." reason :[NSString stringWithFormat:@"\"%@\" already exists. Rename it.", rawname] userInfo : nil];
     }
     [identifier_dictionary setObject:name forKey:name];
   }
