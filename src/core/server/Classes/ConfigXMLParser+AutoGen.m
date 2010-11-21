@@ -289,8 +289,11 @@
   for (int i = 0; info[i].symbol; ++i) {
     if ([autogen_text hasPrefix:info[i].symbol]) {
       [self append_to_initialize_vector:initialize_vector filtervec:filtervec params:[autogen_text substringFromIndex:[info[i].symbol length]] type:info[i].type];
+      return;
     }
   }
+
+  @throw [NSException exceptionWithName : @"<autogen> error" reason :[NSString stringWithFormat:@"unknown parameters: %@", autogen_text] userInfo : nil];
 }
 
 - (void) traverse_autogen:(NSMutableArray*)initialize_vector node:(NSXMLNode*)node name:(NSString*)name
