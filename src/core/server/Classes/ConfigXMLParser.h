@@ -34,5 +34,7 @@ enum {
   CONFIGXMLPARSER_XML_OWNER_USER,
 };
 - (NSArray*) get_xml_paths;
+
 - (void) setErrorMessage:(NSException*)exception xmlpath:(NSString*)xmlpath;
+- (void) removeErrorMessage;
 @end
