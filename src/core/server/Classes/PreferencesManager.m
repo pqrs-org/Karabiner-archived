@@ -41,9 +41,20 @@
 
   essential_config_index_ = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"include.bridge_essential_config_index" ofType:@"plist"]];
 
-  serverconnection_ = [NSConnection new];
-  [serverconnection_ setRootObject:self];
-  [serverconnection_ registerName:@"org.pqrs.KeyRemap4MacBook"];
+  // ------------------------------------------------------------
+  // initialize
+  if (! [self configlist_selectedIdentifier]) {
+    [self configlist_select:0];
+
+    if (! [self configlist_selectedIdentifier]) {
+      NSLog(@"initialize configlist");
+      // add new item
+
+      [self configlist_append];
+      [self configlist_setName:0 name:@"Default"];
+      [self configlist_select:0];
+    }
+  }
 
   // ------------------------------------------------------------
   // scan config_* and detech notsave.*
@@ -66,6 +77,11 @@
 
     [[NSUserDefaults standardUserDefaults] setObject:md forKey:identifier];
   }
+
+  // ------------------------------------------------------------
+  serverconnection_ = [NSConnection new];
+  [serverconnection_ setRootObject:self];
+  [serverconnection_ registerName:@"org.pqrs.KeyRemap4MacBook"];
 
   return self;
 }
@@ -117,10 +133,15 @@
   NSString* identifier = [self configlist_selectedIdentifier];
   if (! identifier) return;
 
-  NSDictionary* dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
-  if (! dict) return;
+  NSMutableDictionary* md = nil;
 
-  NSMutableDictionary* md = [NSMutableDictionary dictionaryWithDictionary:dict];
+  NSDictionary* dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
+  if (dict) {
+    md = [NSMutableDictionary dictionaryWithDictionary:dict];
+  } else {
+    md = [[NSMutableDictionary new] autorelease];
+  }
+  if (! md) return;
 
   int defaultvalue = 0;
   NSNumber* defaultnumber = [default_ objectForKey:name];
@@ -255,9 +276,14 @@
 
 - (void) configlist_append
 {
+  NSMutableArray* ma = nil;
+
   NSArray* a = [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"];
-  if (! a) return;
-  NSMutableArray* ma = [NSMutableArray arrayWithArray:a];
+  if (a) {
+    ma = [NSMutableArray arrayWithArray:a];
+  } else {
+    ma = [[NSMutableArray new] autorelease];
+  }
   if (! ma) return;
 
   struct timeval tm;
