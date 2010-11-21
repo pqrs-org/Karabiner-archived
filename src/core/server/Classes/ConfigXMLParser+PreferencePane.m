@@ -85,10 +85,10 @@
 
   NSArray* paths = [self get_xml_paths];
   for (NSArray* pathinfo in paths) {
-    @try {
-      NSString* xmlpath           = [pathinfo objectAtIndex:0];
-      NSNumber* xmltype           = [pathinfo objectAtIndex:1];
+    NSString* xmlpath           = [pathinfo objectAtIndex:0];
+    NSNumber* xmltype           = [pathinfo objectAtIndex:1];
 
+    @try {
       if ([xmlpath length] == 0) continue;
 
       NSURL* url = [NSURL fileURLWithPath:xmlpath];
@@ -116,7 +116,7 @@
       retval = YES;
 
     } @catch (NSException* exception) {
-      [self setErrorMessage:exception];
+      [self setErrorMessage:exception xmlpath:xmlpath];
     }
   }
 
