@@ -2,33 +2,10 @@
 
 @implementation ConfigXMLParser (Private)
 
-- (NSString*) get_private_xml_path
-{
-  NSFileManager* filemanager = [NSFileManager defaultManager];
-  NSArray* paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
-  NSString* path = [paths objectAtIndex:0];
-  path = [path stringByAppendingPathComponent:@"KeyRemap4MacBook"];
-  if (! [filemanager fileExistsAtPath:path]) {
-    [filemanager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:NULL];
-  }
-
-  path = [path stringByAppendingPathComponent:@"private.xml"];
-  if (! [filemanager fileExistsAtPath:path]) {
-    [filemanager copyItemAtPath:[[NSBundle mainBundle] pathForResource:@"private" ofType:@"xml"] toPath:path error:NULL];
-  }
-
-  BOOL isDirectory;
-  if ([filemanager fileExistsAtPath:path isDirectory:&isDirectory] && ! isDirectory) {
-    return path;
-  }
-
-  return @"";
-}
-
 - (NSArray*) get_xml_paths
 {
   return [NSArray arrayWithObjects:
-          [NSArray arrayWithObjects:[self get_private_xml_path],
+          [NSArray arrayWithObjects:[self preferencepane_get_private_xml_path],
            [NSNumber numberWithInt:CONFIGXMLPARSER_XML_TYPE_CHECKBOX],
            [NSNumber numberWithInt:CONFIGXMLPARSER_XML_OWNER_USER],
            nil],
