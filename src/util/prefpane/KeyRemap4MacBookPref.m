@@ -91,6 +91,14 @@ static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
   [[NSWorkspace sharedWorkspace] launchApplication:@"/Library/org.pqrs/KeyRemap4MacBook/app/ThreeFingerRelativeToScroll.app"];
 }
 
+- (IBAction) openPrivateXML:(id)sender
+{
+  NSString* path = [[preferencesclient_ proxy] preferencepane_get_private_xml_path];
+  if ([path length] > 0) {
+    [[NSWorkspace sharedWorkspace] openFile:path withApplication:@"TextEdit.app"];
+  }
+}
+
 - (IBAction) checkUpdateNow:(id)sender
 {
   NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.updater";
