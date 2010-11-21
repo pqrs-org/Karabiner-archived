@@ -498,8 +498,10 @@
         if (loopcount == 1 && [owner intValue] != CONFIGXMLPARSER_XML_OWNER_USER) continue;
 
         [self check_conflict_identifier:identifier_dictionary element:[xmldocument rootElement]];
+
       } @catch (NSException* exception) {
         [self setErrorMessage:exception xmlpath:xmlpath];
+        [xmldocdict removeObjectForKey:xmlpath];
       }
     }
   }
