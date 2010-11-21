@@ -3,7 +3,7 @@
 
 @implementation ConfigXMLParser (PreferencePane)
 
-- (NSMutableArray*) traverse_item:(NSXMLElement*)element_list
+- (NSMutableArray*) traverse_item:(NSXMLElement*)element_list stringForFilter:(NSString*)stringForFilter
 {
   NSMutableArray* array = [[NSMutableArray new] autorelease];
 
@@ -24,6 +24,9 @@
     title = [title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     [dict setObject:title forKey:@"name"];
     [dict setObject:[NSNumber numberWithUnsignedInteger:height] forKey:@"height"];
+
+    NSString* newStringForFilter = [NSString stringWithFormat:@"%@ %@", stringForFilter, [title lowercaseString]];
+    [dict setObject:newStringForFilter forKey:@"string_for_filter"];
 
     // ----------------------------------------
     NSArray* elements_identifier = [element_item elementsForName:@"identifier"];
@@ -57,7 +60,7 @@
     // ----------------------------------------
     NSMutableArray* a = [[NSMutableArray new] autorelease];
     for (NSXMLElement* child_list in [element_item elementsForName : @"list"]) {
-      [a addObjectsFromArray:[self traverse_item:child_list]];
+      [a addObjectsFromArray:[self traverse_item:child_list stringForFilter:newStringForFilter]];
     }
     if ([a count] > 0) {
       [dict setObject:a forKey:@"children"];
@@ -106,7 +109,7 @@
           targetarray = preferencepane_number_;
         }
         if (targetarray) {
-          [targetarray addObjectsFromArray:[self traverse_item:element_list]];
+          [targetarray addObjectsFromArray:[self traverse_item:element_list stringForFilter:@""]];
         }
       }
 
