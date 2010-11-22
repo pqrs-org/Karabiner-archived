@@ -196,6 +196,21 @@
           <identifier>remap.samples_keytokey_combination_3</identifier>
           <autogen>--KeyToKey-- KeyCode::A, KeyCode::CAPSLOCK, KeyCode::A, KeyCode::S</autogen>
         </item>
+
+        <item>
+          <name>Apply from the top sequentially.</name>
+          <appendix>1 to A</appendix>
+          <appendix>1 to B (skipped)</appendix>
+          <appendix>2 to B </appendix>
+          <appendix>2 to C (skipped)</appendix>
+          <identifier>remap.samples_keytokey_apply_from_to_top</identifier>
+          <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::A</autogen>
+          <block>
+            <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::B</autogen>
+            <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::B</autogen>
+          </block>
+          <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::C</autogen>
+        </item>
       </list>
     </item>
 
