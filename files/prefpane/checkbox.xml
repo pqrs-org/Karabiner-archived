@@ -1973,6 +1973,25 @@
         </item>
         <item><name>------------------------------------------------------------</name></item>
         <item>
+          <name>Volume Mute to F9</name>
+          <identifier>remap.volumemute2f9</identifier>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, ModifierFlag::FN, KeyCode::F9</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE,                   KeyCode::F9</autogen>
+        </item>
+        <item>
+          <name>Volume Down to F10</name>
+          <identifier>remap.volumedown2f10</identifier>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::FN, KeyCode::F10</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN,                   KeyCode::F10</autogen>
+        </item>
+        <item>
+          <name>Volume Up to F11</name>
+          <identifier>remap.volumeup2f11</identifier>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, ModifierFlag::FN, KeyCode::F11</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP,                   KeyCode::F11</autogen>
+        </item>
+        <item><name>------------------------------------------------------------</name></item>
+        <item>
           <name>NumLock to F6</name>
           <identifier>remap.numlock2f6</identifier>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::NUMLOCK, KeyCode::F6</autogen>
