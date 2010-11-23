@@ -297,17 +297,21 @@
 - (void) traverse_autogen:(NSMutableArray*)initialize_vector node:(NSXMLNode*)node name:(NSString*)name
 {
   NSUInteger count = [node childCount];
+  NSMutableArray* filtervec = nil;
+
   for (NSUInteger i = 0; i < count; ++i) {
     NSXMLNode* n = [node childAtIndex:i];
     if ([n kind] != NSXMLElementKind) continue;
 
     if ([[n name] isEqualToString:@"autogen"]) {
-      NSMutableArray* filtervec = [self make_filtervec:[n parent]];
+      if (! filtervec) {
+        filtervec = [self make_filtervec:[n parent]];
 
-      if (! [name hasPrefix:@"passthrough_"]) {
-        [filtervec addObject:[NSNumber numberWithUnsignedInt:2]];
-        [filtervec addObject:[NSNumber numberWithUnsignedInt:BRIDGE_FILTERTYPE_CONFIG_NOT]];
-        [filtervec addObject:[keycode_ numberValue:@"ConfigIndex::notsave_passthrough"]];
+        if (! [name hasPrefix:@"passthrough_"]) {
+          [filtervec addObject:[NSNumber numberWithUnsignedInt:2]];
+          [filtervec addObject:[NSNumber numberWithUnsignedInt:BRIDGE_FILTERTYPE_CONFIG_NOT]];
+          [filtervec addObject:[keycode_ numberValue:@"ConfigIndex::notsave_passthrough"]];
+        }
       }
 
       NSString* autogen_text = [n stringValue];
