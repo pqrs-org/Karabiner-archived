@@ -19,20 +19,16 @@
   }
 }
 
-- (NSMutableArray*) make_filtervec:(NSXMLNode*)node
+- (NSMutableArray*) make_filtervec:(NSXMLNode*)parent_node_of_autogen
 {
   NSMutableArray* filters = [NSMutableArray arrayWithCapacity:0];
 
   for (;;) {
-    NSString* node_name = [node name];
-    if ([node_name isEqualToString:@"item"]) break;
-    if ([node_name isEqualToString:@"root"]) break;
+    if (! parent_node_of_autogen) break;
 
-    NSXMLNode* parent = [node parent];
-
-    NSUInteger count = [parent childCount];
+    NSUInteger count = [parent_node_of_autogen childCount];
     for (NSUInteger i = 0; i < count; ++i) {
-      NSXMLNode* n = [parent childAtIndex:i];
+      NSXMLNode* n = [parent_node_of_autogen childAtIndex:i];
       if ([n kind] != NSXMLElementKind) continue;
 
       NSString* n_name = [n name];
@@ -63,7 +59,9 @@
       }
     }
 
-    node = parent;
+    if ([[parent_node_of_autogen name] isEqualToString:@"item"]) break;
+
+    parent_node_of_autogen = [parent_node_of_autogen parent];
   }
 
   return filters;
@@ -304,7 +302,7 @@
     if ([n kind] != NSXMLElementKind) continue;
 
     if ([[n name] isEqualToString:@"autogen"]) {
-      NSMutableArray* filtervec = [self make_filtervec:n];
+      NSMutableArray* filtervec = [self make_filtervec:[n parent]];
 
       if (! [name hasPrefix:@"passthrough_"]) {
         [filtervec addObject:[NSNumber numberWithUnsignedInt:2]];
