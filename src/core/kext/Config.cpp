@@ -38,8 +38,14 @@ namespace org_pqrs_KeyRemap4MacBook {
       int error = sysctl_handle_int(oidp, oidp->oid_arg1, oidp->oid_arg2, req);
       if (! error && req->newptr) {
         if (Config::do_reset == 1 && oldvalue != 1) {
+          IOLOG_INFO("Config::do_reset\n");
+
           Config::load_essential_config_default();
           RemapClassManager::clear_xml();
+
+          Config::debug = 0;
+          Config::debug_pointing = 0;
+          Config::debug_devel = 0;
 
           Config::do_reset = 0;
           Config::initialized = 0;
@@ -58,6 +64,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       int error = sysctl_handle_int(oidp, oidp->oid_arg1, oidp->oid_arg2, req);
       if (! error && req->newptr) {
         if (Config::do_reload_xml == 1 && oldvalue != 1) {
+          IOLOG_INFO("Config::do_reload_xml\n");
 
           Config::load_essential_config();
           if (RemapClassManager::reload_xml()) {
@@ -83,6 +90,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       int error = sysctl_handle_int(oidp, oidp->oid_arg1, oidp->oid_arg2, req);
       if (! error && req->newptr) {
         if (Config::do_reload_only_config == 1 && oldvalue != 1) {
+          IOLOG_INFO("Config::do_reload_only_config\n");
+
           Config::load_essential_config();
           if (RemapClassManager::reload_xml()) {
             Config::do_reload_only_config = 0;
@@ -99,6 +108,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       int error = sysctl_handle_string(oidp, oidp->oid_arg1, oidp->oid_arg2, req);
       if (! error && req->newptr) {
+        IOLOG_INFO("Config::socket_path_handler\n");
+
         KeyRemap4MacBook_client::refreshSockAddr();
       }
       return error;
