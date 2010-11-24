@@ -612,6 +612,14 @@
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_COMMAND | ModifierFlag::NONE, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::CONTROL_L</autogen>
         </item>
+        <item>
+          <name>Use FN+Up/Down to adjust brightness</name>
+          <appendix>FN+Up-Arrow to F15 (Brightness Up)</appendix>
+          <appendix>FN+Down-Arrow to F14 (Brightness Down)</appendix>
+          <identifier>remap.fnupdown_to_brightness</identifier>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_UP,   KeyCode::F15</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, KeyCode::F14</autogen>
+        </item>
       </list>
     </item>
 
