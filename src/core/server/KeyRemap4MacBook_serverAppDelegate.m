@@ -128,6 +128,16 @@ static NSString* sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
 
 // ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
+  [self setupStatusWindow];
+  [serverobjcpart_ registerStatusWindow:window label:statusmessage_ background:statusmessage_background_];
+  registerServerObjcPart(serverobjcpart_);
+
+  reset_statusmessage();
+  [self set_sysctl_do_reset];
+
+  [statusbar_ refresh];
+
+  // ------------------------------------------------------------
   [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
                                                          selector:@selector(observer_NSWorkspaceDidActivateApplicationNotification:)
                                                              name:NSWorkspaceDidActivateApplicationNotification
@@ -149,30 +159,22 @@ static NSString* sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
                                                              name:NSWorkspaceSessionDidResignActiveNotification
                                                            object:nil];
 
+  // ------------------------------
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_ConfigXMLReloaded:) name:@"ConfigXMLReloaded" object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_ConfigListChanged:) name:@"ConfigListChanged" object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_PreferencesChanged:) name:@"PreferencesChanged" object:nil];
+
   // ------------------------------------------------------------
   [self observer_NSWorkspaceDidActivateApplicationNotification:nil];
   [self observer_kTISNotifySelectedKeyboardInputSourceChanged:nil];
 
   // ------------------------------------------------------------
-  reset_statusmessage();
-  [self set_sysctl_do_reset];
   [NSThread detachNewThreadSelector:@selector(threadMain)
                            toTarget:self
                          withObject:nil];
   [NSThread detachNewThreadSelector:@selector(configThreadMain)
                            toTarget:self
                          withObject:nil];
-
-  [self setupStatusWindow];
-  [serverobjcpart_ registerStatusWindow:window label:statusmessage_ background:statusmessage_background_];
-  registerServerObjcPart(serverobjcpart_);
-
-  // ------------------------------------------------------------
-  [statusbar_ refresh];
-
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_ConfigXMLReloaded:) name:@"ConfigXMLReloaded" object:nil];
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_ConfigListChanged:) name:@"ConfigListChanged" object:nil];
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_PreferencesChanged:) name:@"PreferencesChanged" object:nil];
 
   // ------------------------------------------------------------
   // Kick updater
