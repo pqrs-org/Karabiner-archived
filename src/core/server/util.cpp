@@ -27,11 +27,33 @@ server_run(void)
 // ----------------------------------------------------------------------
 namespace {
   Mutex mutex_sysctl;
+
+  bool
+  wait_until_kext_loaded(void)
+  {
+    enum { TRY_COUNT = 60 };
+
+    for (int i = 0; i < TRY_COUNT; ++i) {
+      const char* name = "keyremap4macbook.initialized";
+      int value;
+      size_t len = sizeof(value);
+      int error = sysctlbyname(name, &value, &len, NULL, 0);
+      if (! error) return true;
+
+      sleep(1);
+    }
+    return false;
+  }
 }
 
 void
 set_sysctl_do_reload_xml(void)
 {
+  if (! wait_until_kext_loaded()) {
+    std::cerr << "[ERROR] failed to wait_until_kext_loaded" << std::endl;
+  }
+
+  // ----------------------------------------------------------------------
   Mutex::ScopedLock lk(mutex_sysctl);
 
   // --------------------------------------------------
@@ -45,17 +67,52 @@ set_sysctl_do_reload_xml(void)
   if (value != 0) return;
 
   // --------------------------------------------------
-  int exitstatus;
-
   // We need to set socket_path first,
   // because "do_reload_xml" use socket.
   const std::string socket_path = server.getSocketPath();
   if (! socket_path.empty()) {
     std::string command = std::string("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set socket_path ") + socket_path;
-    exitstatus = system(command.c_str());
-    if (exitstatus != 0) return;
+    error = system(command.c_str());
+    if (error != 0) {
+      std::cerr << "[ERROR] failed to sysctl_set socket_path" << std::endl;
+      return;
+    }
   }
 
-  exitstatus = system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set do_reload_xml 1");
-  if (exitstatus != 0) return;
+  error = system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set do_reload_xml 1");
+  if (error != 0) {
+    std::cerr << "[ERROR] failed to sysctl_set do_reload_xml 1" << std::endl;
+  }
+}
+
+void
+set_sysctl_do_reset(void)
+{
+  if (! wait_until_kext_loaded()) {
+    std::cerr << "[ERROR] failed to wait_until_kext_loaded" << std::endl;
+  }
+
+  // ----------------------------------------------------------------------
+  Mutex::ScopedLock lk(mutex_sysctl);
+
+  int error = system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set do_reset 1");
+  if (error != 0) {
+    std::cerr << "[ERROR] failed to sysctl_set do_reset 1" << std::endl;
+  }
+}
+
+void
+set_sysctl_do_reload_only_config(void)
+{
+  if (! wait_until_kext_loaded()) {
+    std::cerr << "[ERROR] failed to wait_until_kext_loaded" << std::endl;
+  }
+
+  // ----------------------------------------------------------------------
+  Mutex::ScopedLock lk(mutex_sysctl);
+
+  int error = system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set do_reload_only_config 1");
+  if (error != 0) {
+    std::cerr << "[ERROR] failed to sysctl_set do_reload_only_config 1" << std::endl;
+  }
 }
