@@ -133,9 +133,9 @@ static NSString* sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
   registerServerObjcPart(serverobjcpart_);
 
   reset_statusmessage();
-  [self set_sysctl_do_reset];
-
   [statusbar_ refresh];
+
+  [self set_sysctl_do_reset];
 
   // ------------------------------------------------------------
   [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
