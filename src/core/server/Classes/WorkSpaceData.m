@@ -100,6 +100,18 @@
     return [configxmlparser_ keycode:@"ApplicationType::EXCEL"];
   }
 
+  if ([name isEqualToString:@"com.microsoft.Powerpoint"]) {
+    return [configxmlparser_ keycode:@"ApplicationType::POWERPOINT"];
+  }
+
+  if ([name isEqualToString:@"com.microsoft.Word"]) {
+    return [configxmlparser_ keycode:@"ApplicationType::WORD"];
+  }
+
+  if ([name isEqualToString:@"com.microsoft.Outlook"]) {
+    return [configxmlparser_ keycode:@"ApplicationType::OUTLOOK"];
+  }
+
   if ([name isEqualToString:@"com.microsoft.Entourage"]) {
     return [configxmlparser_ keycode:@"ApplicationType::ENTOURAGE"];
   }
