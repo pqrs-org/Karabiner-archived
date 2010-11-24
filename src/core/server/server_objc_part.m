@@ -299,7 +299,10 @@ registerServerObjcPart(ServerObjcPart* object)
 static void
 selectInputSource_language(CFStringRef language)
 {
-  if (! serverobjcpart) return;
+  if (! serverobjcpart) {
+    NSLog(@"[WARNING] selectInputSource_language serverobjcpart == nil");
+    return;
+  }
 
   TISInputSourceRef inputsource = [serverobjcpart copySelectableInputSourceForLanguage:language];
   if (! inputsource) return;
@@ -323,10 +326,16 @@ void selectInputSource_english_typographic(void) { selectInputSource_language(kI
 int
 getEssentialConfig(int32_t* value, size_t len)
 {
-  if (! serverobjcpart) return 1;
+  if (! serverobjcpart) {
+    NSLog(@"[WARNING] getEssentialConfig serverobjcpart == nil");
+    return 1;
+  }
 
   NSArray* essential_config = [serverobjcpart getEssentialConfig];
-  if (! essential_config) return 1;
+  if (! essential_config) {
+    NSLog(@"[WARNING] getEssentialConfig essential_config == nil");
+    return 1;
+  }
 
   size_t i = 0;
   for (NSNumber* number in essential_config) {
@@ -345,6 +354,7 @@ getConfigCount(void)
   if (serverobjcpart) {
     return (uint32_t)([serverobjcpart getConfigCount]);
   } else {
+    NSLog(@"[WARNING] getConfigCount serverobjcpart == nil");
     return 0;
   }
 }
@@ -355,6 +365,7 @@ getConfigInitializeVectorSize(uint32_t configindex)
   if (serverobjcpart) {
     return (uint32_t)([serverobjcpart getConfigInitializeVectorSize:configindex]);
   } else {
+    NSLog(@"[WARNING] getConfigInitializeVectorSize serverobjcpart == nil");
     return 0;
   }
 }
@@ -362,10 +373,16 @@ getConfigInitializeVectorSize(uint32_t configindex)
 int
 getConfigInitializeVector(uint32_t* value, size_t len, uint32_t configindex)
 {
-  if (! serverobjcpart) return 1;
+  if (! serverobjcpart) {
+    NSLog(@"[WARNING] getConfigInitializeVector serverobjcpart == nil");
+    return 1;
+  }
 
   NSArray* initialize_vector = [serverobjcpart getConfigInitializeVector:configindex];
-  if (! initialize_vector) return 1;
+  if (! initialize_vector) {
+    NSLog(@"[WARNING] getConfigInitializeVector initialize_vector == nil");
+    return 1;
+  }
 
   size_t i = 0;
   for (NSNumber* number in initialize_vector) {
@@ -384,6 +401,7 @@ getConfigValue(uint32_t configindex)
   if (serverobjcpart) {
     return (uint32_t)([serverobjcpart getConfigValue:configindex]);
   } else {
+    NSLog(@"[WARNING] getConfigValue serverobjcpart == nil");
     return 0;
   }
 }
@@ -400,6 +418,8 @@ set_statusmessage(StatusMessageType type, const char* message)
 {
   if (serverobjcpart) {
     [serverobjcpart setStatusMessage:type message:message];
+  } else {
+    NSLog(@"[WARNING] set_statusmessage serverobjcpart == nil");
   }
 }
 
@@ -408,5 +428,7 @@ set_statusmessageWindowParam(uint32_t alpha_font, uint32_t alpha_background, int
 {
   if (serverobjcpart) {
     [serverobjcpart setStatusMessageWindowParam:alpha_font alpha_background:alpha_background posx_adjustment:posx_adjustment posy_adjustment:posy_adjustment];
+  } else {
+    NSLog(@"[WARNING] set_statusmessageWindowParam serverobjcpart == nil");
   }
 }
