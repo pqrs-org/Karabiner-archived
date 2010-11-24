@@ -8,7 +8,6 @@
 
 #import <Carbon/Carbon.h>
 #import "KeyRemap4MacBook_serverAppDelegate.h"
-#import "SysctlWrapper.h"
 #include "util.h"
 #include "server_objc_part.h"
 #include "server.hpp"
@@ -16,8 +15,6 @@
 @implementation KeyRemap4MacBook_serverAppDelegate
 
 @synthesize window;
-
-static NSString* sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set";
 
 - (void) threadMain {
   NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
@@ -61,13 +58,9 @@ static NSString* sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
 }
 
 // ------------------------------------------------------------
-- (void) set_sysctl_do_reset {
-  [BUNDLEPREFIX (SysctlWrapper) setSysctlInt:@"keyremap4macbook" name:@"do_reset" value:[NSNumber numberWithInt:1] sysctl_set:sysctl_set];
-}
-
-// ------------------------------------------------------------
 - (void) observer_ConfigXMLReloaded:(NSNotification*)notification {
-  [BUNDLEPREFIX (SysctlWrapper) setSysctlInt:@"keyremap4macbook" name:@"do_reload_xml" value:[NSNumber numberWithInt:1] sysctl_set:sysctl_set];
+  set_sysctl_do_reset();
+  set_sysctl_do_reload_xml();
 }
 
 - (void) observer_ConfigListChanged:(NSNotification*)notification {
@@ -75,7 +68,7 @@ static NSString* sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
 }
 
 - (void) observer_PreferencesChanged:(NSNotification*)notification {
-  [BUNDLEPREFIX (SysctlWrapper) setSysctlInt:@"keyremap4macbook" name:@"do_reload_only_config" value:[NSNumber numberWithInt:1] sysctl_set:sysctl_set];
+  set_sysctl_do_reload_only_config();
 }
 
 // ------------------------------------------------------------
@@ -112,7 +105,8 @@ static NSString* sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
   // Note: The console user is "real login user" or "loginwindow",
   //       when NSWorkspaceSessionDidBecomeActiveNotification, NSWorkspaceSessionDidResignActiveNotification are called.
   reset_statusmessage();
-  [self set_sysctl_do_reset];
+
+  set_sysctl_do_reset();
   set_sysctl_do_reload_xml();
 }
 
@@ -123,7 +117,8 @@ static NSString* sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
   // Note: The console user is "real login user" or "loginwindow",
   //       when NSWorkspaceSessionDidBecomeActiveNotification, NSWorkspaceSessionDidResignActiveNotification are called.
   reset_statusmessage();
-  [self set_sysctl_do_reset];
+
+  set_sysctl_do_reset();
 }
 
 // ------------------------------------------------------------
@@ -135,7 +130,7 @@ static NSString* sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
   reset_statusmessage();
   [statusbar_ refresh];
 
-  [self set_sysctl_do_reset];
+  set_sysctl_do_reset();
 
   // ------------------------------------------------------------
   [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
@@ -183,7 +178,7 @@ static NSString* sysctl_set = @"/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4
 
 - (void) applicationWillTerminate:(NSNotification*)aNotification {
   NSLog(@"applicationWillTerminate");
-  [self set_sysctl_do_reset];
+  set_sysctl_do_reset();
 }
 
 @end

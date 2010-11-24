@@ -22,11 +22,9 @@
 		34A06A4911F8791F0085749B /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 34A06A4811F8791F0085749B /* background.png */; };
 		34A06A4C11F8792E0085749B /* icon.statusbar.0.tif in Resources */ = {isa = PBXBuildFile; fileRef = 34A06A4A11F8792E0085749B /* icon.statusbar.0.tif */; };
 		34A06A4D11F8792E0085749B /* icon.statusbar.1.tif in Resources */ = {isa = PBXBuildFile; fileRef = 34A06A4B11F8792E0085749B /* icon.statusbar.1.tif */; };
-		34A06A6211F87B520085749B /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A06A6111F87B520085749B /* Common.m */; };
 		34B893FD128E448C00BC955A /* ConfigXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B893F8128E448C00BC955A /* ConfigXMLParser.m */; };
 		34B893FE128E448C00BC955A /* KeyCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B893FA128E448C00BC955A /* KeyCode.m */; };
 		34B893FF128E448C00BC955A /* WorkSpaceData.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B893FC128E448C00BC955A /* WorkSpaceData.m */; };
-		34C57C751291C36E002BA405 /* SysctlWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C57C741291C36E002BA405 /* SysctlWrapper.m */; };
 		34FB9592128F985A0088B235 /* PreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FB9591128F985A0088B235 /* PreferencesManager.m */; };
 		34FB9595128FCC030088B235 /* include.bridge_essential_config_index.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34FB9594128FCC030088B235 /* include.bridge_essential_config_index.plist */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
@@ -65,16 +63,12 @@
 		34A06A4A11F8792E0085749B /* icon.statusbar.0.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon.statusbar.0.tif; path = Resources/icon.statusbar.0.tif; sourceTree = "<group>"; };
 		34A06A4B11F8792E0085749B /* icon.statusbar.1.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon.statusbar.1.tif; path = Resources/icon.statusbar.1.tif; sourceTree = "<group>"; };
 		34A06A5811F87B1F0085749B /* bundleprefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bundleprefix.h; sourceTree = "<group>"; };
-		34A06A6011F87B520085749B /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = ../../util/prefpane/sharecode/Common.h; sourceTree = SOURCE_ROOT; };
-		34A06A6111F87B520085749B /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Common.m; path = ../../util/prefpane/sharecode/Common.m; sourceTree = SOURCE_ROOT; };
 		34B893F7128E448C00BC955A /* ConfigXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfigXMLParser.h; path = Classes/ConfigXMLParser.h; sourceTree = "<group>"; };
 		34B893F8128E448C00BC955A /* ConfigXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfigXMLParser.m; path = Classes/ConfigXMLParser.m; sourceTree = "<group>"; };
 		34B893F9128E448C00BC955A /* KeyCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyCode.h; path = Classes/KeyCode.h; sourceTree = "<group>"; };
 		34B893FA128E448C00BC955A /* KeyCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyCode.m; path = Classes/KeyCode.m; sourceTree = "<group>"; };
 		34B893FB128E448C00BC955A /* WorkSpaceData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkSpaceData.h; path = Classes/WorkSpaceData.h; sourceTree = "<group>"; };
 		34B893FC128E448C00BC955A /* WorkSpaceData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkSpaceData.m; path = Classes/WorkSpaceData.m; sourceTree = "<group>"; };
-		34C57C731291C36E002BA405 /* SysctlWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SysctlWrapper.h; path = ../../util/prefpane/sharecode/SysctlWrapper.h; sourceTree = SOURCE_ROOT; };
-		34C57C741291C36E002BA405 /* SysctlWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SysctlWrapper.m; path = ../../util/prefpane/sharecode/SysctlWrapper.m; sourceTree = SOURCE_ROOT; };
 		34EE6DD710C218CE00D20676 /* Mutex.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Mutex.hpp; sourceTree = "<group>"; };
 		34FB9590128F98510088B235 /* PreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesManager.h; path = Classes/PreferencesManager.h; sourceTree = "<group>"; };
 		34FB9591128F985A0088B235 /* PreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesManager.m; path = Classes/PreferencesManager.m; sourceTree = "<group>"; };
@@ -112,7 +106,6 @@
 				34B893FA128E448C00BC955A /* KeyCode.m */,
 				34B893FB128E448C00BC955A /* WorkSpaceData.h */,
 				34B893FC128E448C00BC955A /* WorkSpaceData.m */,
-				34A06A5F11F87B3C0085749B /* sharecode */,
 				34597768128DBFAE003398BD /* bridge.h */,
 				34A06A5811F87B1F0085749B /* bundleprefix.h */,
 				34EE6DD710C218CE00D20676 /* Mutex.hpp */,
@@ -202,17 +195,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		34A06A5F11F87B3C0085749B /* sharecode */ = {
-			isa = PBXGroup;
-			children = (
-				34C57C731291C36E002BA405 /* SysctlWrapper.h */,
-				34C57C741291C36E002BA405 /* SysctlWrapper.m */,
-				34A06A6011F87B520085749B /* Common.h */,
-				34A06A6111F87B520085749B /* Common.m */,
-			);
-			name = sharecode;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -279,13 +261,11 @@
 				345683B6109F2DD900125F91 /* server.cpp in Sources */,
 				345683B7109F2DD900125F91 /* util.cpp in Sources */,
 				348A6B9110A0214B00AC93FE /* server_objc_part.m in Sources */,
-				34A06A6211F87B520085749B /* Common.m in Sources */,
 				34B893FD128E448C00BC955A /* ConfigXMLParser.m in Sources */,
 				34B893FE128E448C00BC955A /* KeyCode.m in Sources */,
 				34B893FF128E448C00BC955A /* WorkSpaceData.m in Sources */,
 				348C6A2E128E4504005F516D /* StatusBar.m in Sources */,
 				34FB9592128F985A0088B235 /* PreferencesManager.m in Sources */,
-				34C57C751291C36E002BA405 /* SysctlWrapper.m in Sources */,
 				347C48B91296673E00CCC042 /* ConfigXMLParser+AutoGen.m in Sources */,
 				342917DD1296AA4100A5CB12 /* ConfigXMLParser+PreferencePane.m in Sources */,
 				342917F81296AD2600A5CB12 /* ConfigXMLParser+Private.m in Sources */,
