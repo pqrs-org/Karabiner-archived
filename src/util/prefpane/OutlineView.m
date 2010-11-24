@@ -290,7 +290,7 @@
 
   NSMutableArray* strings = [[NSMutableArray new] autorelease];
   if (string) {
-    for (NSString* s in [string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]) {
+    for (NSString* s in [string componentsSeparatedByCharactersInSet :[NSCharacterSet whitespaceCharacterSet]]) {
       if ([s length] == 0) continue;
       [strings addObject:[s lowercaseString]];
     }
