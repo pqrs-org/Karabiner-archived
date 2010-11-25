@@ -90,7 +90,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       int error = sysctl_handle_int(oidp, oidp->oid_arg1, oidp->oid_arg2, req);
       if (! error && req->newptr) {
         if (Config::do_reload_only_config == 1 && oldvalue != 1) {
-          IOLOG_INFO("Config::do_reload_only_config\n");
+          // When using ThreeFingerRelativeToScroll,
+          // Config::do_reload_only_config called by each Scroll Switching.
+          // So, suppress IOLOG_INFO in here.
+
+          // IOLOG_INFO("Config::do_reload_only_config\n");
 
           Config::load_essential_config();
           if (RemapClassManager::reload_xml()) {
