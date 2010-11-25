@@ -8,6 +8,4 @@
 + (NSString*) getString:(NSString*)name;
 + (NSNumber*) getInt:(NSString*)name;
 
-+ (void) setSysctlInt:(NSString*)base name:(NSString*)name value:(NSNumber*)value sysctl_set:(NSString*)sysctl_set;
-
 @end

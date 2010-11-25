@@ -37,17 +37,4 @@
   return [[[NSNumber alloc] initWithInt:value] autorelease];
 }
 
-+ (void) setSysctlInt:(NSString*)base name:(NSString*)name value:(NSNumber*)value sysctl_set:(NSString*)sysctl_set
-{
-  NSString* entry = [NSString stringWithFormat:@"%@.%@", base, name];
-
-  NSNumber* old = [BUNDLEPREFIX (SysctlWrapper) getInt:entry];
-  if (old == nil) return;
-  if ([value isEqualToNumber:old]) return;
-
-  NSArray* args_set = [NSArray arrayWithObjects:name, [value stringValue], nil];
-  NSTask* task_set = [NSTask launchedTaskWithLaunchPath:sysctl_set arguments:args_set];
-  [task_set waitUntilExit];
-}
-
 @end
