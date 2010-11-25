@@ -2096,6 +2096,13 @@
               <identifier>remap.power2commandL</identifier>
               <autogen>--ConsumerToKey-- ConsumerKeyCode::POWER, KeyCode::COMMAND_L</autogen>
             </item>
+            <item>
+              <name>Power to Eject</name>
+              <appendix>(+ Fn+Power to Power)</appendix>
+              <identifier>remap.power2eject_fnpower2power</identifier>
+              <autogen>--ConsumerToConsumer-- ConsumerKeyCode::POWER, ModifierFlag::FN, ConsumerKeyCode::POWER</autogen>
+              <autogen>--ConsumerToConsumer-- ConsumerKeyCode::POWER, ConsumerKeyCode::EJECT</autogen>
+            </item>
           </list>
         </item>
       </list>
