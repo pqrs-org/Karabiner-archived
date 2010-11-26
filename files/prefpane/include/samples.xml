@@ -211,6 +211,38 @@
           </block>
           <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::C</autogen>
         </item>
+
+        <item>
+          <name>Apply from the top sequentially (&lt;list&gt; and &lt;item&gt;)</name>
+          <appendix>(Turn on all settings. The settings labeled "skipped" will be ignored.)</appendix>
+          <list>
+            <item>
+              <name>1 to A</name>
+              <identifier>remap.samples_keytokey_apply_from_to_top_item1</identifier>
+              <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::A</autogen>
+            </item>
+            <item>
+              <name>list</name>
+              <list>
+                <item>
+                  <name>1 to B (skipped)</name>
+                  <identifier>remap.samples_keytokey_apply_from_to_top_item2</identifier>
+                  <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::B</autogen>
+                </item>
+                <item>
+                  <name>2 to B</name>
+                  <identifier>remap.samples_keytokey_apply_from_to_top_item3</identifier>
+                  <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::B</autogen>
+                </item>
+              </list>
+            </item>
+            <item>
+              <name>2 to C (skipped)</name>
+              <identifier>remap.samples_keytokey_apply_from_to_top_item4</identifier>
+              <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::C</autogen>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
 
