@@ -38,11 +38,31 @@ namespace org_pqrs_KeyRemap4MacBook {
     queue_->push_back(new Item(p));                 \
     timer_.setTimeoutMS(DELAY, false);              \
 }
-  void EventOutputQueue::push(const Params_KeyboardEventCallBack& p)        { PUSH_TO_OUTPUTQUEUE }
-  void EventOutputQueue::push(const Params_UpdateEventFlagsCallback& p)     { PUSH_TO_OUTPUTQUEUE }
-  void EventOutputQueue::push(const Params_KeyboardSpecialEventCallback& p) { PUSH_TO_OUTPUTQUEUE }
-  void EventOutputQueue::push(const Params_RelativePointerEventCallback& p) { PUSH_TO_OUTPUTQUEUE }
-  void EventOutputQueue::push(const Params_ScrollWheelEventCallback& p)     { PUSH_TO_OUTPUTQUEUE }
+  void EventOutputQueue::push(const Params_KeyboardEventCallBack& p) {
+    PUSH_TO_OUTPUTQUEUE;
+    if (p.eventType == EventType::DOWN) {
+      FlagStatus::sticky_clear();
+    }
+  }
+  void EventOutputQueue::push(const Params_UpdateEventFlagsCallback& p) {
+    PUSH_TO_OUTPUTQUEUE;
+  }
+  void EventOutputQueue::push(const Params_KeyboardSpecialEventCallback& p) {
+    PUSH_TO_OUTPUTQUEUE;
+    if (p.ex_iskeydown) {
+      FlagStatus::sticky_clear();
+    }
+  }
+  void EventOutputQueue::push(const Params_RelativePointerEventCallback& p) {
+    PUSH_TO_OUTPUTQUEUE;
+    if (p.buttons != Buttons(0)) {
+      FlagStatus::sticky_clear();
+    }
+  }
+  void EventOutputQueue::push(const Params_ScrollWheelEventCallback& p) {
+    PUSH_TO_OUTPUTQUEUE;
+    FlagStatus::sticky_clear();
+  }
 #undef PUSH_TO_OUTPUTQUEUE
 
   // ----------------------------------------------------------------------

@@ -248,11 +248,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     CommonData::setcurrent_keyboardType(params.keyboardType);
 
-    // --------------------
-    if (params.eventType == EventType::DOWN) {
-      FlagStatus::sticky_clear();
-    }
-
     // The CapsLock LED is not designed to turn it on/off frequently.
     // So, we have to use the timer to call a setAlphaLock function at appropriate frequency.
     enum {
