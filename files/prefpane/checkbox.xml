@@ -2759,6 +2759,18 @@
           <autogen>--KeyToKey-- KeyCode::ENTER, VK_SHIFT, KeyCode::KEYPAD_EQUAL</autogen>
         </item>
         <item>
+          <name>Keypad_0 x3 to Equal</name>
+          <appendix>(+ retaining Keypad_0)</appendix>
+          <appendix></appendix>
+          <appendix>// When you use this setting,</appendix>
+          <appendix>// open "Key Repeat" tab, and</appendix>
+          <appendix>// change "[Double Press Modifier] Recognition Threshold" to a small number.</appendix>
+          <appendix>// (For example, 50ms.)</appendix>
+          <identifier>remap.keypad0_x3_to_equal</identifier>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_0, ModifierFlag::EXTRA1, KeyCode::KEYPAD_EQUAL</autogen>
+          <autogen>--DoublePressModifier-- KeyCode::KEYPAD_0, KeyCode::KEYPAD_0, KeyCode::DELETE, KeyCode::DELETE, KeyCode::VK_STICKY_EXTRA1</autogen>
+        </item>
+        <item>
           <name>Logitech N305 hack / FILCO FKBT22MB hack</name>
           <appendix>(Enable equal, parentheses)</appendix>
           <appendix>(Disable NumLock key)</appendix>
