@@ -385,6 +385,14 @@
           <autogen>--DoublePressModifier-- KeyCode::B, VK_SHIFT, KeyCode::CONTROL_L, ModifierFlag::OPTION_L, KeyCode::A, KeyCode::S, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
           <autogen>--DoublePressModifier-- KeyCode::C, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
         </item>
+        <item>
+          <name>Extra</name>
+          <appendix>KEY_0 x3 to Equal(=)</appendix>
+          <appendix>(retain KEY_0)</appendix>
+          <identifier>remap.samples_doublepressmodifier_extra</identifier>
+          <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::EXTRA1, KeyCode::EQUAL</autogen>
+          <autogen>--DoublePressModifier-- KeyCode::KEY_0, KeyCode::KEY_0, KeyCode::DELETE, KeyCode::DELETE, KeyCode::VK_STICKY_EXTRA1</autogen>
+        </item>
       </list>
     </item>
 
@@ -1098,6 +1106,7 @@
           <appendix>Use E to Sticky ModifierFlag::EXTRA3</appendix>
           <appendix>Use R to Sticky ModifierFlag::EXTRA4</appendix>
           <appendix>Use T to Sticky ModifierFlag::EXTRA5</appendix>
+          <appendix>Use Y to Y,Sticky Shift_L</appendix>
           <appendix>Use L to Shift_L (+ Sticky Shift_L)</appendix>
           <appendix></appendix>
           <appendix>EXTRA1+A to 1</appendix>
@@ -1120,6 +1129,7 @@
           <autogen>--KeyToKey-- KeyCode::E, KeyCode::VK_STICKY_EXTRA3</autogen>
           <autogen>--KeyToKey-- KeyCode::R, KeyCode::VK_STICKY_EXTRA4</autogen>
           <autogen>--KeyToKey-- KeyCode::T, KeyCode::VK_STICKY_EXTRA5</autogen>
+          <autogen>--KeyToKey-- KeyCode::Y, KeyCode::Y, KeyCode::VK_STICKY_SHIFT_L</autogen>
           <autogen>--KeyOverlaidModifier-- KeyCode::L, KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L</autogen>
           <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA1, KeyCode::KEY_1</autogen>
           <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA2, KeyCode::KEY_2</autogen>
