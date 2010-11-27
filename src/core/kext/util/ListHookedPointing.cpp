@@ -180,11 +180,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     params.log("sending");
     callback(target, params.buttons.get(), params.dx, params.dy, ts, sender, refcon);
-
-    // --------------------
-    if (params.buttons != Buttons(0)) {
-      FlagStatus::sticky_clear();
-    }
   }
 
   void
@@ -208,9 +203,6 @@ namespace org_pqrs_KeyRemap4MacBook {
              params.fixedDelta1, params.fixedDelta2, params.fixedDelta3,
              params.pointDelta1, params.pointDelta2, params.pointDelta3,
              params.options, ts, sender, refcon);
-
-    // --------------------
-    FlagStatus::sticky_clear();
   }
 
   void

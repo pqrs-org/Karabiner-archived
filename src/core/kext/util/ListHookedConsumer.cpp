@@ -160,11 +160,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     params.log("sending");
     callback(target, params.eventType.get(), params.flags.get(), params.key.get(),
              params.flavor, params.guid, params.repeat, ts, sender, refcon);
-
-    // --------------------
-    if (params.ex_iskeydown) {
-      FlagStatus::sticky_clear();
-    }
   }
 
   void
