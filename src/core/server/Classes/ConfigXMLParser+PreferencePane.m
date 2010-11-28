@@ -21,6 +21,14 @@
       title = [title stringByAppendingString:[NSString stringWithFormat:@"  %@\n", [element_appendix stringValue]]];
       ++height;
     }
+
+    if (height == 0) {
+      @throw [NSException
+            exceptionWithName: @"<item> is invalid"
+            reason:[NSString stringWithFormat:@"At least one <name> is necessary under <item>.\n%@", [element_item XMLString]]
+            userInfo: nil];
+    }
+
     title = [title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     [dict setObject:title forKey:@"name"];
     [dict setObject:[NSNumber numberWithUnsignedInteger:height] forKey:@"height"];
