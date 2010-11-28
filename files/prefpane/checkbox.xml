@@ -614,8 +614,16 @@
         </item>
         <item>
           <name>Use FN+Up/Down to adjust brightness</name>
-          <appendix>FN+Up-Arrow to F15 (Brightness Up)</appendix>
-          <appendix>FN+Down-Arrow to F14 (Brightness Down)</appendix>
+          <appendix>FN+Up-Arrow to Brightness Up (Consumer)</appendix>
+          <appendix>FN+Down-Arrow to Brightness Down (Consumer)</appendix>
+          <identifier>remap.fnupdown_to_brightness_consumer</identifier>
+          <autogen>--KeyToConsumer-- KeyCode::CURSOR_UP,   ConsumerKeyCode::BRIGHTNESS_UP</autogen>
+          <autogen>--KeyToConsumer-- KeyCode::CURSOR_DOWN, ConsumerKeyCode::BRIGHTNESS_DOWN</autogen>
+        </item>
+        <item>
+          <name>Use FN+Up/Down to adjust brightness (Alternative)</name>
+          <appendix>FN+Up-Arrow to Brightness Up (F15)</appendix>
+          <appendix>FN+Down-Arrow to Brightness Down (F14)</appendix>
           <identifier>remap.fnupdown_to_brightness</identifier>
           <autogen>--KeyToKey-- KeyCode::CURSOR_UP,   KeyCode::F15</autogen>
           <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, KeyCode::F14</autogen>
