@@ -6851,6 +6851,11 @@
       <name>For German</name>
       <list>
         <item>
+          <name>Option+ß to Backslash(\)</name>
+          <identifier>remap.german_optionbeta2backslash</identifier>
+          <autogen>--KeyToKey-- KeyCode::MINUS, VK_OPTION, KeyCode::KEY_7, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
+        </item>
+        <item>
           <name>Quote(´) to Forward Delete</name>
           <identifier>remap.german_quote2forwarddelete</identifier>
           <autogen>--KeyToKey-- KeyCode::GERMAN_QUOTE, KeyCode::FORWARD_DELETE</autogen>
