@@ -62,7 +62,7 @@
       }
 
     } else if ([elements_identifier count] >= 2) {
-      @throw [NSException exceptionWithName : @"<item> is invalid" reason :[NSString stringWithFormat:@"multiple <identifier> in one <item>.\n%@", [element_item stringValue]] userInfo : nil];
+      @throw [NSException exceptionWithName : @"<item> is invalid" reason :[NSString stringWithFormat:@"multiple <identifier> in one <item>.\n%@", [element_item XMLString]] userInfo : nil];
     }
 
     // ----------------------------------------
