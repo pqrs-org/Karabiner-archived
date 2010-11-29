@@ -3,79 +3,86 @@
 
 @implementation ConfigXMLParser (PreferencePane)
 
-- (NSMutableArray*) traverse_item:(NSXMLElement*)element_list stringForFilter:(NSString*)stringForFilter
+- (NSMutableArray*) traverse_item:(NSXMLElement*)element stringForFilter:(NSString*)stringForFilter
 {
   NSMutableArray* array = [[NSMutableArray new] autorelease];
 
-  for (NSXMLElement* element_item in [element_list elementsForName : @"item"]) {
-    NSMutableDictionary* dict = [[NSMutableDictionary new] autorelease];
+  NSUInteger count = [element childCount];
+  for (NSUInteger i = 0; i < count; ++i) {
+    NSXMLElement* e = [self castToNSXMLElement:[element childAtIndex:i]];
+    if (! e) continue;
 
-    // ----------------------------------------
-    NSString* title = @"";
-    NSUInteger height = 0;
-    for (NSXMLElement* element_name in [element_item elementsForName : @"name"]) {
-      title = [title stringByAppendingString:[NSString stringWithFormat:@"%@\n", [element_name stringValue]]];
-      ++height;
-    }
-    for (NSXMLElement* element_appendix in [element_item elementsForName : @"appendix"]) {
-      title = [title stringByAppendingString:[NSString stringWithFormat:@"  %@\n", [element_appendix stringValue]]];
-      ++height;
-    }
+    if (! [[e name] isEqualToString:@"item"]) {
+      [array addObjectsFromArray:[self traverse_item:e stringForFilter:stringForFilter]];
 
-    if (height == 0) {
-      @throw [NSException
-            exceptionWithName: @"<item> is invalid"
-            reason:[NSString stringWithFormat:@"At least one <name> is necessary under <item>.\n%@", [element_item XMLString]]
-            userInfo: nil];
-    }
+    } else {
+      NSMutableDictionary* dict = [[NSMutableDictionary new] autorelease];
 
-    title = [title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    [dict setObject:title forKey:@"name"];
-    [dict setObject:[NSNumber numberWithUnsignedInteger:height] forKey:@"height"];
-
-    NSString* newStringForFilter = [NSString stringWithFormat:@"%@ %@", stringForFilter, [title lowercaseString]];
-    [dict setObject:newStringForFilter forKey:@"string_for_filter"];
-
-    // ----------------------------------------
-    NSArray* elements_identifier = [element_item elementsForName:@"identifier"];
-    if ([elements_identifier count] == 1) {
-      NSXMLElement* element_identifier = [elements_identifier objectAtIndex:0];
-      [dict setObject:[element_identifier stringValue] forKey:@"identifier"];
-
-      NSXMLNode* attr_default = [element_identifier attributeForName:@"default"];
-      if (attr_default) {
-        [dict setObject:[attr_default stringValue] forKey:@"default"];
-      } else {
-        [dict setObject:@"0" forKey:@"default"];
+      // ----------------------------------------
+      NSString* title = @"";
+      NSUInteger height = 0;
+      for (NSXMLElement* element_name in [e elementsForName : @"name"]) {
+        title = [title stringByAppendingString:[NSString stringWithFormat:@"%@\n", [element_name stringValue]]];
+        ++height;
+      }
+      for (NSXMLElement* element_appendix in [e elementsForName : @"appendix"]) {
+        title = [title stringByAppendingString:[NSString stringWithFormat:@"  %@\n", [element_appendix stringValue]]];
+        ++height;
       }
 
-      NSXMLNode* attr_step = [element_identifier attributeForName:@"step"];
-      if (attr_step) {
-        [dict setObject:[NSNumber numberWithInt:[[attr_step stringValue] intValue]] forKey:@"step"];
-      } else {
-        [dict setObject:[NSNumber numberWithInt:1] forKey:@"step"];
+      if (height == 0) {
+        @throw [NSException
+              exceptionWithName: @"<item> is invalid"
+              reason:[NSString stringWithFormat:@"At least one <name> is necessary under <item>.\n%@", [e XMLString]]
+              userInfo: nil];
       }
 
-      NSXMLNode* attr_baseunit = [element_identifier attributeForName:@"baseunit"];
-      if (attr_baseunit) {
-        [dict setObject:[attr_baseunit stringValue] forKey:@"baseunit"];
+      title = [title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+      [dict setObject:title forKey:@"name"];
+      [dict setObject:[NSNumber numberWithUnsignedInteger:height] forKey:@"height"];
+
+      NSString* newStringForFilter = [NSString stringWithFormat:@"%@ %@", stringForFilter, [title lowercaseString]];
+      [dict setObject:newStringForFilter forKey:@"string_for_filter"];
+
+      // ----------------------------------------
+      NSArray* elements_identifier = [e elementsForName:@"identifier"];
+      if ([elements_identifier count] == 1) {
+        NSXMLElement* element_identifier = [elements_identifier objectAtIndex:0];
+        [dict setObject:[element_identifier stringValue] forKey:@"identifier"];
+
+        NSXMLNode* attr_default = [element_identifier attributeForName:@"default"];
+        if (attr_default) {
+          [dict setObject:[attr_default stringValue] forKey:@"default"];
+        } else {
+          [dict setObject:@"0" forKey:@"default"];
+        }
+
+        NSXMLNode* attr_step = [element_identifier attributeForName:@"step"];
+        if (attr_step) {
+          [dict setObject:[NSNumber numberWithInt:[[attr_step stringValue] intValue]] forKey:@"step"];
+        } else {
+          [dict setObject:[NSNumber numberWithInt:1] forKey:@"step"];
+        }
+
+        NSXMLNode* attr_baseunit = [element_identifier attributeForName:@"baseunit"];
+        if (attr_baseunit) {
+          [dict setObject:[attr_baseunit stringValue] forKey:@"baseunit"];
+        }
+
+      } else if ([elements_identifier count] >= 2) {
+        @throw [NSException exceptionWithName : @"<item> is invalid" reason :[NSString stringWithFormat:@"multiple <identifier> in one <item>.\n%@", [e XMLString]] userInfo : nil];
       }
 
-    } else if ([elements_identifier count] >= 2) {
-      @throw [NSException exceptionWithName : @"<item> is invalid" reason :[NSString stringWithFormat:@"multiple <identifier> in one <item>.\n%@", [element_item XMLString]] userInfo : nil];
-    }
+      // ----------------------------------------
+      NSMutableArray* a = [[NSMutableArray new] autorelease];
+      [a addObjectsFromArray:[self traverse_item:e stringForFilter:newStringForFilter]];
+      if ([a count] > 0) {
+        [dict setObject:a forKey:@"children"];
+      }
 
-    // ----------------------------------------
-    NSMutableArray* a = [[NSMutableArray new] autorelease];
-    for (NSXMLElement* child_list in [element_item elementsForName : @"list"]) {
-      [a addObjectsFromArray:[self traverse_item:child_list stringForFilter:newStringForFilter]];
+      // ----------------------------------------
+      [array addObject:dict];
     }
-    if ([a count] > 0) {
-      [dict setObject:a forKey:@"children"];
-    }
-
-    // ----------------------------------------
-    [array addObject:dict];
   }
 
   return array;
@@ -109,16 +116,14 @@
         @throw [NSException exceptionWithName :[NSString stringWithFormat:@"%@ is invalid", xmlpath] reason :[error localizedDescription] userInfo : nil];
       }
 
-      for (NSXMLElement* element_list in [[xmldocument rootElement] elementsForName : @"list"]) {
-        NSMutableArray* targetarray = nil;
-        if ([xmltype intValue] == CONFIGXMLPARSER_XML_TYPE_CHECKBOX) {
-          targetarray = preferencepane_checkbox_;
-        } else if ([xmltype intValue] == CONFIGXMLPARSER_XML_TYPE_NUMBER) {
-          targetarray = preferencepane_number_;
-        }
-        if (targetarray) {
-          [targetarray addObjectsFromArray:[self traverse_item:element_list stringForFilter:@""]];
-        }
+      NSMutableArray* targetarray = nil;
+      if ([xmltype intValue] == CONFIGXMLPARSER_XML_TYPE_CHECKBOX) {
+        targetarray = preferencepane_checkbox_;
+      } else if ([xmltype intValue] == CONFIGXMLPARSER_XML_TYPE_NUMBER) {
+        targetarray = preferencepane_number_;
+      }
+      if (targetarray) {
+        [targetarray addObjectsFromArray:[self traverse_item:[xmldocument rootElement] stringForFilter:@""]];
       }
 
       // Set retval to YES if only one XML file is loaded successfully.
