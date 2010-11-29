@@ -414,20 +414,24 @@
 // check identifier
 - (void) check_conflict_identifier:(NSMutableDictionary*)identifier_dictionary element:(NSXMLElement*)element
 {
-  for (NSXMLElement* e in [element elementsForName : @"identifier"]) {
-    NSString* rawname = [e stringValue];
-    NSString* name = [KeyCode normalizeName:rawname];
+  NSUInteger count = [element childCount];
+  for (NSUInteger i = 0; i < count; ++i) {
+    NSXMLElement* e = [self castToNSXMLElement:[element childAtIndex:i]];
+    if (! e) continue;
 
-    if ([identifier_dictionary objectForKey:name]) {
-      @throw [NSException exceptionWithName : @"A conflict of <identifier>." reason :[NSString stringWithFormat:@"\"%@\" already exists. Rename it.", rawname] userInfo : nil];
+    if ([[e name] isEqualToString:@"identifier"]) {
+      NSString* rawname = [e stringValue];
+      NSString* name = [KeyCode normalizeName:rawname];
+
+      if ([identifier_dictionary objectForKey:name]) {
+        @throw [NSException
+              exceptionWithName: @"A conflict of <identifier>."
+              reason:[NSString stringWithFormat:@"\"%@\" already exists. Rename it.\n\n%@", rawname, [e XMLString]]
+              userInfo: nil];
+      }
+      [identifier_dictionary setObject:name forKey:name];
     }
-    [identifier_dictionary setObject:name forKey:name];
-  }
 
-  for (NSXMLElement* e in [element elementsForName : @"list"]) {
-    [self check_conflict_identifier:identifier_dictionary element:e];
-  }
-  for (NSXMLElement* e in [element elementsForName : @"item"]) {
     [self check_conflict_identifier:identifier_dictionary element:e];
   }
 }
@@ -462,8 +466,8 @@
   //
   NSArray* paths = [self get_xml_paths];
   for (NSArray* pathinfo in paths) {
-    NSString* xmlpath           = [pathinfo objectAtIndex:0];
-    NSNumber* xmltype           = [pathinfo objectAtIndex:1];
+    NSString* xmlpath = [pathinfo objectAtIndex:0];
+    NSNumber* xmltype = [pathinfo objectAtIndex:1];
 
     @try {
       if ([xmltype intValue] != CONFIGXMLPARSER_XML_TYPE_CHECKBOX) continue;
@@ -518,7 +522,7 @@
   //
   for (loopcount = 0; loopcount < 2; ++loopcount) {
     for (NSArray* pathinfo in paths) {
-      NSString* xmlpath           = [pathinfo objectAtIndex:0];
+      NSString* xmlpath = [pathinfo objectAtIndex:0];
 
       @try {
         NSXMLDocument* xmldocument = [xmldocdict objectForKey:xmlpath];
@@ -540,7 +544,7 @@
   // parse <autogen>
   //
   for (NSArray* pathinfo in paths) {
-    NSString* xmlpath           = [pathinfo objectAtIndex:0];
+    NSString* xmlpath = [pathinfo objectAtIndex:0];
 
     @try {
       NSXMLDocument* xmldocument = [xmldocdict objectForKey:xmlpath];
