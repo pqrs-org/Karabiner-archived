@@ -371,38 +371,40 @@
 
 - (void) traverse_identifier:(NSXMLElement*)element
 {
-  for (NSXMLElement* e in [element elementsForName : @"identifier"]) {
-    NSXMLNode* attr_essential = [e attributeForName:@"essential"];
-    if (attr_essential) continue;
+  NSUInteger count = [element childCount];
+  for (NSUInteger i = 0; i < count; ++i) {
+    NSXMLElement* e = [self castToNSXMLElement:[element childAtIndex:i]];
+    if (! e) continue;
 
-    NSMutableArray* initialize_vector = [NSMutableArray arrayWithCapacity:0];
-    NSString* rawname = [e stringValue];
-    NSString* name = [KeyCode normalizeName:rawname];
+    if (! [[e name] isEqualToString:@"identifier"]) {
+      [self traverse_identifier:e];
 
-    if ([e attributeForName:@"vk_config"]) {
-      [initialize_vector addObject:[NSNumber numberWithUnsignedInt:5]];
-      [initialize_vector addObject:[NSNumber numberWithUnsignedInt:BRIDGE_VK_CONFIG]];
-      [initialize_vector addObject:[keycode_ numberValue:[NSString stringWithFormat:@"KeyCode::VK_CONFIG_TOGGLE_%@", name]]];
-      [initialize_vector addObject:[keycode_ numberValue:[NSString stringWithFormat:@"KeyCode::VK_CONFIG_FORCE_ON_%@", name]]];
-      [initialize_vector addObject:[keycode_ numberValue:[NSString stringWithFormat:@"KeyCode::VK_CONFIG_FORCE_OFF_%@", name]]];
-      [initialize_vector addObject:[keycode_ numberValue:[NSString stringWithFormat:@"KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_%@", name]]];
+    } else {
+      NSXMLNode* attr_essential = [e attributeForName:@"essential"];
+      if (attr_essential) continue;
+
+      NSMutableArray* initialize_vector = [NSMutableArray arrayWithCapacity:0];
+      NSString* rawname = [e stringValue];
+      NSString* name = [KeyCode normalizeName:rawname];
+
+      if ([e attributeForName:@"vk_config"]) {
+        [initialize_vector addObject:[NSNumber numberWithUnsignedInt:5]];
+        [initialize_vector addObject:[NSNumber numberWithUnsignedInt:BRIDGE_VK_CONFIG]];
+        [initialize_vector addObject:[keycode_ numberValue:[NSString stringWithFormat:@"KeyCode::VK_CONFIG_TOGGLE_%@", name]]];
+        [initialize_vector addObject:[keycode_ numberValue:[NSString stringWithFormat:@"KeyCode::VK_CONFIG_FORCE_ON_%@", name]]];
+        [initialize_vector addObject:[keycode_ numberValue:[NSString stringWithFormat:@"KeyCode::VK_CONFIG_FORCE_OFF_%@", name]]];
+        [initialize_vector addObject:[keycode_ numberValue:[NSString stringWithFormat:@"KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_%@", name]]];
+      }
+
+      [self traverse_autogen:initialize_vector node:[e parent] name:name];
+
+      [initialize_vector insertObject:[NSNumber numberWithUnsignedInteger:[initialize_vector count]] atIndex:0];
+      [initialize_vector insertObject:[NSNumber numberWithUnsignedInt:BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION] atIndex:0];
+
+      NSNumber* configindex = [keycode_ numberValue:[NSString stringWithFormat:@"ConfigIndex::%@", name]];
+      [dict_initialize_vector_ setObject:initialize_vector forKey:configindex];
+      [dict_config_name_ setObject:rawname forKey:configindex];
     }
-
-    [self traverse_autogen:initialize_vector node:[e parent] name:name];
-
-    [initialize_vector insertObject:[NSNumber numberWithUnsignedInteger:[initialize_vector count]] atIndex:0];
-    [initialize_vector insertObject:[NSNumber numberWithUnsignedInt:BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION] atIndex:0];
-
-    NSNumber* configindex = [keycode_ numberValue:[NSString stringWithFormat:@"ConfigIndex::%@", name]];
-    [dict_initialize_vector_ setObject:initialize_vector forKey:configindex];
-    [dict_config_name_ setObject:rawname forKey:configindex];
-  }
-
-  for (NSXMLElement* e in [element elementsForName : @"list"]) {
-    [self traverse_identifier:e];
-  }
-  for (NSXMLElement* e in [element elementsForName : @"item"]) {
-    [self traverse_identifier:e];
   }
 }
 
