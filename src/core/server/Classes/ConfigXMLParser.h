@@ -39,4 +39,6 @@ enum {
 
 - (void) setErrorMessage:(NSException*)exception xmlpath:(NSString*)xmlpath;
 - (void) removeErrorMessage;
+
+- (NSXMLElement*) castToNSXMLElement:(NSXMLNode*)node;
 @end

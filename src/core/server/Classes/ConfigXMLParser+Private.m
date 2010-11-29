@@ -45,4 +45,10 @@
   }
 }
 
+- (NSXMLElement*) castToNSXMLElement:(NSXMLNode*)node
+{
+  if ([node kind] != NSXMLElementKind) return nil;
+  return (NSXMLElement*)(node);
+}
+
 @end
