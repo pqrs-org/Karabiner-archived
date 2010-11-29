@@ -338,38 +338,34 @@
 
 - (void) append_to_keycode:(NSXMLElement*)element handle_notsave:(BOOL)handle_notsave
 {
-  NSArray* vk_config_formats = [NSArray arrayWithObjects:
-                                @"VK_CONFIG_TOGGLE_%@",
-                                @"VK_CONFIG_FORCE_ON_%@",
-                                @"VK_CONFIG_FORCE_OFF_%@",
-                                @"VK_CONFIG_SYNC_KEYDOWNUP_%@",
-                                nil];
+  NSUInteger count = [element childCount];
+  for (NSUInteger i = 0; i < count; ++i) {
+    NSXMLElement* e = [self castToNSXMLElement:[element childAtIndex:i]];
+    if (! e) continue;
 
-  for (NSXMLElement* e in [element elementsForName : @"identifier"]) {
-    NSString* name = [KeyCode normalizeName:[e stringValue]];
+    if (! [[e name] isEqualToString:@"identifier"]) {
+      [self append_to_keycode:e handle_notsave:handle_notsave];
 
-    BOOL isnotsave = [name hasPrefix:@"notsave_"];
-    if ((isnotsave && ! handle_notsave) ||
-        (! isnotsave && handle_notsave)) {
-      continue;
-    }
+    } else {
+      NSString* name = [KeyCode normalizeName:[e stringValue]];
 
-    if ([e attributeForName:@"vk_config"]) {
-      for (NSString* format in vk_config_formats) {
-        [keycode_ append:@"KeyCode" name:[NSString stringWithFormat:format, name]];
+      BOOL isnotsave = [name hasPrefix:@"notsave_"];
+      if ((isnotsave && ! handle_notsave) ||
+          (! isnotsave && handle_notsave)) {
+        continue;
+      }
+
+      if ([e attributeForName:@"vk_config"]) {
+        [keycode_ append:@"KeyCode" name:[NSString stringWithFormat:@"VK_CONFIG_TOGGLE_%@", name]];
+        [keycode_ append:@"KeyCode" name:[NSString stringWithFormat:@"VK_CONFIG_FORCE_ON_%@", name]];
+        [keycode_ append:@"KeyCode" name:[NSString stringWithFormat:@"VK_CONFIG_FORCE_OFF_%@", name]];
+        [keycode_ append:@"KeyCode" name:[NSString stringWithFormat:@"VK_CONFIG_SYNC_KEYDOWNUP_%@", name]];
+      }
+
+      if (! [e attributeForName:@"essential"]) {
+        [keycode_ append:@"ConfigIndex" name:name];
       }
     }
-
-    if (! [e attributeForName:@"essential"]) {
-      [keycode_ append:@"ConfigIndex" name:name];
-    }
-  }
-
-  for (NSXMLElement* e in [element elementsForName : @"list"]) {
-    [self append_to_keycode:e handle_notsave:handle_notsave];
-  }
-  for (NSXMLElement* e in [element elementsForName : @"item"]) {
-    [self append_to_keycode:e handle_notsave:handle_notsave];
   }
 }
 
@@ -419,7 +415,10 @@
     NSXMLElement* e = [self castToNSXMLElement:[element childAtIndex:i]];
     if (! e) continue;
 
-    if ([[e name] isEqualToString:@"identifier"]) {
+    if (! [[e name] isEqualToString:@"identifier"]) {
+      [self check_conflict_identifier:identifier_dictionary element:e];
+
+    } else {
       NSString* rawname = [e stringValue];
       NSString* name = [KeyCode normalizeName:rawname];
 
@@ -431,8 +430,6 @@
       }
       [identifier_dictionary setObject:name forKey:name];
     }
-
-    [self check_conflict_identifier:identifier_dictionary element:e];
   }
 }
 
