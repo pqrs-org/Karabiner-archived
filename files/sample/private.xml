@@ -2,6 +2,13 @@
 <root>
   <list>
     <item>
+      <name>Swap Space and Tab</name>
+      <identifier>private.swap_space_and_tab</identifier>
+      <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+      <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::SPACE</autogen>
+    </item>
+
+    <item>
       <name>My Excel Hacks (effective only in Excel)</name>
       <appendix>Change Command+2 to Ctrl+U</appendix>
       <appendix>Change Control+A to Home</appendix>
