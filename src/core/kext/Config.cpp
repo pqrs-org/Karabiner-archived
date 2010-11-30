@@ -47,6 +47,9 @@ namespace org_pqrs_KeyRemap4MacBook {
           Config::debug_pointing = 0;
           Config::debug_devel = 0;
 
+          Config::socket_path[0] = '\0';
+          KeyRemap4MacBook_client::refreshSockAddr();
+
           Config::do_reset = 0;
           Config::initialized = 0;
         }
