@@ -31,6 +31,9 @@
 
   // ----------------------------------------
   [outlineview_ reloadData];
+
+  // ----------------------------------------
+  [self filter:nil];
 }
 
 - (IBAction) filter:(id)sender
