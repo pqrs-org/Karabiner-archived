@@ -2062,6 +2062,11 @@
         </item>
         <item><name>------------------------------------------------------------</name></item>
         <item>
+          <name>Dashboard to F8</name>
+          <identifier>remap.dashboard2f8</identifier>
+          <autogen>--KeyToKey-- KeyCode::DASHBOARD, KeyCode::F8</autogen>
+        </item>
+        <item>
           <name>Keyboard Light High to Volume Mute</name>
           <identifier>remap.keyboardlighthigh2volumemute</identifier>
           <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_HIGH, ConsumerKeyCode::VOLUME_MUTE</autogen>
