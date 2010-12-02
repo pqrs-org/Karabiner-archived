@@ -195,7 +195,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       //
       if (! EventInputQueue::queue_) return;
 
-      EventInputQueue::Item* front = static_cast<EventInputQueue::Item*>(EventInputQueue::queue_->front());
+    retry:
+
+      EventInputQueue::Item * front = static_cast<EventInputQueue::Item*>(EventInputQueue::queue_->front());
       if (! front) return;
 
       // ----------------------------------------
@@ -218,9 +220,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
         if (isAllDeactived) {
           push_remapped(false);
+          return;
         }
 
-        return;
+        goto retry;
       }
 
       // ----------------------------------------
