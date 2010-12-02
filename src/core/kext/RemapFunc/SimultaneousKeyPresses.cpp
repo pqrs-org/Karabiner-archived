@@ -24,11 +24,11 @@ namespace org_pqrs_KeyRemap4MacBook {
               break;
 
             case 1:
-              fromInfo1_.set(KeyCode(newval));
+              fromInfo_[0].set(KeyCode(newval));
               break;
 
             case 2:
-              fromInfo2_.set(KeyCode(newval));
+              fromInfo_[1].set(KeyCode(newval));
               break;
 
             case 3:
@@ -59,11 +59,11 @@ namespace org_pqrs_KeyRemap4MacBook {
               break;
 
             case 1:
-              fromInfo1_.set(PointingButton(newval));
+              fromInfo_[0].set(PointingButton(newval));
               break;
 
             case 2:
-              fromInfo2_.set(PointingButton(newval));
+              fromInfo_[1].set(PointingButton(newval));
               break;
 
             case 3:
@@ -138,7 +138,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     bool
-    SimultaneousKeyPresses::FromInfo::isTarget(bool& isKeyDown, const EventInputQueue::Item& item)
+    SimultaneousKeyPresses::FromInfo::isTarget(bool& isKeyDown, const EventInputQueue::Item& item) const
     {
       switch (type_) {
         case FROMTYPE_KEY:
@@ -171,6 +171,22 @@ namespace org_pqrs_KeyRemap4MacBook {
       return false;
     }
 
+    bool
+    SimultaneousKeyPresses::FromInfo::isTargetKeyDown(const EventInputQueue::Item& item) const
+    {
+      bool isKeyDown = false;
+      if (! isTarget(isKeyDown, item)) return false;
+      return isKeyDown;
+    }
+
+    bool
+    SimultaneousKeyPresses::FromInfo::isTargetKeyUp(const EventInputQueue::Item& item) const
+    {
+      bool isKeyDown = false;
+      if (! isTarget(isKeyDown, item)) return false;
+      return ! isKeyDown;
+    }
+
     void
     SimultaneousKeyPresses::remap(void)
     {
@@ -184,16 +200,26 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ----------------------------------------
       // fire KeyUp event if needed.
-      bool isKeyDown = false;
-      if (fromInfo1_.isActive() && fromInfo1_.isTarget(isKeyDown, *front) && ! isKeyDown) {
+      for (size_t i = 0; i < sizeof(fromInfo_) / sizeof(fromInfo_[0]); ++i) {
+        if (! fromInfo_[i].isActive()) continue;
+        if (! fromInfo_[i].isTargetKeyUp(*front)) continue;
+
+        // --------------------
         EventInputQueue::queue_->pop_front();
-        fromInfo1_.deactivate();
-        push_remapped(false);
-        return;
-      }
-      if (fromInfo2_.isActive() && fromInfo2_.isTarget(isKeyDown, *front) && ! isKeyDown) {
-        EventInputQueue::queue_->pop_front();
-        fromInfo2_.deactivate();
+        fromInfo_[i].deactivate();
+
+        // --------------------
+        // if all keys are released, fire KeyUp event.
+        bool isAllDeactived = true;
+        for (size_t j = 0; j < sizeof(fromInfo_) / sizeof(fromInfo_[0]); ++j) {
+          if (fromInfo_[j].isActive()) {
+            isAllDeactived = false;
+          }
+        }
+        if (isAllDeactived) {
+          push_remapped(false);
+        }
+
         return;
       }
 
@@ -203,16 +229,15 @@ namespace org_pqrs_KeyRemap4MacBook {
       FromInfo* frontFromInfo = NULL;
       FromInfo* pairedFromInfo = NULL;
 
-      /*  */ if (fromInfo1_.isTarget(isKeyDown, *front)) {
-        frontFromInfo  = &fromInfo1_;
-        pairedFromInfo = &fromInfo2_;
-      } else if (fromInfo2_.isTarget(isKeyDown, *front)) {
-        frontFromInfo  = &fromInfo2_;
-        pairedFromInfo = &fromInfo1_;
+      /*  */ if (fromInfo_[0].isTargetKeyDown(*front)) {
+        frontFromInfo  = fromInfo_ + 0;
+        pairedFromInfo = fromInfo_ + 1;
+      } else if (fromInfo_[1].isTargetKeyDown(*front)) {
+        frontFromInfo  = fromInfo_ + 1;
+        pairedFromInfo = fromInfo_ + 0;
       }
 
       if (! frontFromInfo || ! pairedFromInfo) return;
-      if (! isKeyDown) return;
 
       // ----------------------------------------
       for (;;) {
@@ -233,19 +258,18 @@ namespace org_pqrs_KeyRemap4MacBook {
         // If frontFromInfo is appeared before pairedFromInfo,
         // we must not handle these keys as SimultaneousKeyPresses.
         //
-        if (frontFromInfo->isTarget(isKeyDown, *front)) return;
+        if (frontFromInfo->isTargetKeyDown(*front)) return;
+        if (frontFromInfo->isTargetKeyUp(*front)) return;
 
-        if (pairedFromInfo->isTarget(isKeyDown, *front)) {
-          if (! isKeyDown) return;
-
+        if (pairedFromInfo->isTargetKeyDown(*front)) {
           // SimultaneousKeyPresses!
           EventInputQueue::queue_->erase(front);
           break;
         }
       }
 
-      fromInfo1_.activate();
-      fromInfo2_.activate();
+      fromInfo_[0].activate();
+      fromInfo_[1].activate();
 
       EventInputQueue::queue_->pop_front();
       push_remapped(true);

@@ -44,10 +44,13 @@ namespace org_pqrs_KeyRemap4MacBook {
         void activate(void)        { active_ = true; }
         void deactivate(void)      { active_ = false; }
 
-        bool isTarget(bool& isKeyDown, const EventInputQueue::Item& item);
         bool isActive(void) const { return active_; }
+        bool isTargetKeyDown(const EventInputQueue::Item& item) const;
+        bool isTargetKeyUp(const EventInputQueue::Item& item) const;
 
       private:
+        bool isTarget(bool& isKeyDown, const EventInputQueue::Item& item) const;
+
         FromType type_;
         KeyCode key_;
         PointingButton button_;
@@ -58,8 +61,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       size_t index_;
       KeyCode virtualkey_;
 
-      FromInfo fromInfo1_;
-      FromInfo fromInfo2_;
+      FromInfo fromInfo_[2];
       Flags fromFlags_;
 
       // --------------------
