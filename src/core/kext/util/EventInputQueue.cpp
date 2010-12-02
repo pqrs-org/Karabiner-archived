@@ -464,94 +464,92 @@ namespace org_pqrs_KeyRemap4MacBook {
     Item* p = static_cast<Item*>(queue_->front());
     if (! p) return;
 
-    if (! p->dropped) {
-      switch (p->params.type) {
-        case ParamsUnion::KEYBOARD:
-        {
-          Params_KeyboardEventCallBack* params = (p->params).params.params_KeyboardEventCallBack;
-          if (params) {
-            if (params->ex_iskeydown) {
-              EventWatcher::on();
-            }
-
-            // ------------------------------------------------------------
-            // We must call NumHeldDownKeys after inputqueue.
-            // For example, when we type Command_L+S.
-            //
-            // (1) Command_L down (queued)
-            // (2) KeyCode::S down (Command_L+S)
-            // (1') dequeue Command_L down
-            // (3) Command_L up
-            // (4) KeyCode::S up
-            // (2') dequeue KeyCode::S down
-            //
-            // if NumHeldDownKeys called when (4), Command_L state is reset.
-            // Then (2') send KeyCode::S without Modifiers.
-            NumHeldDownKeys::set(params->ex_iskeydown ? 1 : -1);
-
-            Core::remap_KeyboardEventCallback(*params);
+    switch (p->params.type) {
+      case ParamsUnion::KEYBOARD:
+      {
+        Params_KeyboardEventCallBack* params = (p->params).params.params_KeyboardEventCallBack;
+        if (params) {
+          if (params->ex_iskeydown) {
+            EventWatcher::on();
           }
-          break;
+
+          // ------------------------------------------------------------
+          // We must call NumHeldDownKeys after inputqueue.
+          // For example, when we type Command_L+S.
+          //
+          // (1) Command_L down (queued)
+          // (2) KeyCode::S down (Command_L+S)
+          // (1') dequeue Command_L down
+          // (3) Command_L up
+          // (4) KeyCode::S up
+          // (2') dequeue KeyCode::S down
+          //
+          // if NumHeldDownKeys called when (4), Command_L state is reset.
+          // Then (2') send KeyCode::S without Modifiers.
+          NumHeldDownKeys::set(params->ex_iskeydown ? 1 : -1);
+
+          Core::remap_KeyboardEventCallback(*params);
         }
-
-        case ParamsUnion::KEYBOARD_SPECIAL:
-        {
-          Params_KeyboardSpecialEventCallback* params = (p->params).params.params_KeyboardSpecialEventCallback;
-          if (params) {
-            if (params->ex_iskeydown) {
-              EventWatcher::on();
-            }
-
-            // ------------------------------------------------------------
-            NumHeldDownKeys::set(params->ex_iskeydown ? 1 : -1);
-
-            Core::remap_KeyboardSpecialEventCallback(*params);
-          }
-          break;
-        }
-
-        case ParamsUnion::RELATIVE_POINTER:
-        {
-          Params_RelativePointerEventCallback* params = (p->params).params.params_RelativePointerEventCallback;
-          if (params) {
-            // ------------------------------------------------------------
-            // We set EventWatcher::on only when Buttons pressed.
-            // It's cause a problem when you use the following settings. (Unexpected FN_Lock is fired).
-            //   - FN+CursorMove to ScrollWheel
-            //   - FN to FN (+ When you type FN only, send FN_Lock)
-            //
-            // But, if we call EventWatcher::on every CursorMove event, unexpected cancel occurs.
-            // It's more terrible than above problem.
-            // So, we keep to call EventWatcher::on only when Buttons pressed.
-            if (params->ex_button != PointingButton::NONE) {
-              EventWatcher::on();
-            }
-
-            // ------------------------------------------------------------
-            if (params->ex_button != PointingButton::NONE) {
-              NumHeldDownKeys::set(params->ex_isbuttondown ? 1 : -1);
-            }
-
-            Core::remap_RelativePointerEventCallback(*params);
-          }
-          break;
-        }
-
-        case ParamsUnion::SCROLL_POINTER:
-        {
-          Params_ScrollWheelEventCallback* params = (p->params).params.params_ScrollWheelEventCallback;
-          if (params) {
-            // EventWatcher::on is not necessary.
-
-            Core::remap_ScrollWheelEventCallback(*params);
-          }
-          break;
-        }
-
-        default:
-          IOLOG_ERROR("%s unkown type\n", __PRETTY_FUNCTION__);
-          break;
+        break;
       }
+
+      case ParamsUnion::KEYBOARD_SPECIAL:
+      {
+        Params_KeyboardSpecialEventCallback* params = (p->params).params.params_KeyboardSpecialEventCallback;
+        if (params) {
+          if (params->ex_iskeydown) {
+            EventWatcher::on();
+          }
+
+          // ------------------------------------------------------------
+          NumHeldDownKeys::set(params->ex_iskeydown ? 1 : -1);
+
+          Core::remap_KeyboardSpecialEventCallback(*params);
+        }
+        break;
+      }
+
+      case ParamsUnion::RELATIVE_POINTER:
+      {
+        Params_RelativePointerEventCallback* params = (p->params).params.params_RelativePointerEventCallback;
+        if (params) {
+          // ------------------------------------------------------------
+          // We set EventWatcher::on only when Buttons pressed.
+          // It's cause a problem when you use the following settings. (Unexpected FN_Lock is fired).
+          //   - FN+CursorMove to ScrollWheel
+          //   - FN to FN (+ When you type FN only, send FN_Lock)
+          //
+          // But, if we call EventWatcher::on every CursorMove event, unexpected cancel occurs.
+          // It's more terrible than above problem.
+          // So, we keep to call EventWatcher::on only when Buttons pressed.
+          if (params->ex_button != PointingButton::NONE) {
+            EventWatcher::on();
+          }
+
+          // ------------------------------------------------------------
+          if (params->ex_button != PointingButton::NONE) {
+            NumHeldDownKeys::set(params->ex_isbuttondown ? 1 : -1);
+          }
+
+          Core::remap_RelativePointerEventCallback(*params);
+        }
+        break;
+      }
+
+      case ParamsUnion::SCROLL_POINTER:
+      {
+        Params_ScrollWheelEventCallback* params = (p->params).params.params_ScrollWheelEventCallback;
+        if (params) {
+          // EventWatcher::on is not necessary.
+
+          Core::remap_ScrollWheelEventCallback(*params);
+        }
+        break;
+      }
+
+      default:
+        IOLOG_ERROR("%s unkown type\n", __PRETTY_FUNCTION__);
+        break;
     }
 
     queue_->pop_front();
