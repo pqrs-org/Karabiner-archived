@@ -50,6 +50,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     //
     // ----------------------------------------
     void push_back(Item* p);
+    void push_front(Item* p);
     void pop_front(void) { erase(front_); }
 
   private:

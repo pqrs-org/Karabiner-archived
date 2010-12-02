@@ -80,4 +80,27 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     ++size_;
   }
+
+  void
+  List::push_front(Item* p)
+  {
+    IOLockWrapper::ScopedLock lk(lock_);
+    if (! lk) return;
+
+    if (! p) return;
+
+    if (front_) {
+      front_->prev_ = p;
+    }
+    p->prev_ = NULL;
+    p->next_ = front_;
+
+    front_ = p;
+
+    if (! back_) {
+      back_ = front_;
+    }
+
+    ++size_;
+  }
 }
