@@ -45,6 +45,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         bool restore(bool isFireUp);
 
         EventInputQueue::Item* findLastItem(bool& isKeyDown, bool isIncludeDropped);
+        bool isFrontItemIsTarget(bool& isKeyDown);
 
       private:
         FromType type_;

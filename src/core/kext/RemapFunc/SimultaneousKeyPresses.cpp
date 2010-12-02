@@ -178,6 +178,44 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     bool
+    SimultaneousKeyPresses::FromInfo::isFrontItemIsTarget(bool& isKeyDown)
+    {
+      if (! EventInputQueue::queue_) return false;
+
+      EventInputQueue::Item* p = static_cast<EventInputQueue::Item*>(EventInputQueue::queue_->front());
+
+      switch (type_) {
+        case FROMTYPE_KEY:
+        {
+          if ((p->params).type != ParamsUnion::KEYBOARD) return false;
+
+          Params_KeyboardEventCallBack* params = (p->params).params.params_KeyboardEventCallBack;
+          if (! params) return false;
+
+          if (params->key != key_) return false;
+
+          isKeyDown = params->ex_iskeydown;
+          return true;
+        }
+
+        case FROMTYPE_BUTTON:
+        {
+          if ((p->params).type != ParamsUnion::RELATIVE_POINTER) return false;
+
+          Params_RelativePointerEventCallback* params = (p->params).params.params_RelativePointerEventCallback;
+          if (! params) return false;
+
+          if (params->ex_button != button_) return false;
+
+          isKeyDown = params->ex_isbuttondown;
+          return true;
+        }
+      }
+
+      return false;
+    }
+
+    bool
     SimultaneousKeyPresses::FromInfo::restore(bool isFireUp)
     {
       // restore KeyUp/ButtonUp Event (fromInfo1_)
@@ -212,6 +250,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     SimultaneousKeyPresses::remap(void)
     {
+      // ----------------------------------------
+      // we change queue_->front() only.
+      //
+      if (! EventInputQueue::queue_) return;
+
+#if 0
+      EventInputQueue::Item* front = EventInputQueue::queue_->front();
+      if (! front) return;
+#endif
+
       if (fromInfo1_.restore(true)) {
         push_remapped(false);
       }
