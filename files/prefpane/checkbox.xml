@@ -5921,6 +5921,18 @@
               <autogen>--KeyToKey-- FROMKEYCODE_HOME, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
               <autogen>--KeyToKey-- FROMKEYCODE_END, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
             </item>
+            <item>
+              <name>Change Control+T to Command+T</name>
+              <identifier>remap.app_firefox_commandT2controlT</identifier>
+              <only>FIREFOX, THUNDERBIRD</only>
+              <autogen>--KeyToKey-- KeyCode::T, VK_CONTROL, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
+            </item>
+            <item>
+              <name>Change Control+W to Command+W</name>
+              <identifier>remap.app_firefox_commandW2controlW</identifier>
+              <only>FIREFOX, THUNDERBIRD</only>
+              <autogen>--KeyToKey-- KeyCode::W, VK_CONTROL, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
+            </item>
           </list>
         </item>
         <item>
