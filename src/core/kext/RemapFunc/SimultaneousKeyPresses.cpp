@@ -195,12 +195,32 @@ namespace org_pqrs_KeyRemap4MacBook {
       //
       if (! EventInputQueue::queue_) return;
 
+      // We consider "Shift_L+Shift_R to Space".
+      // When we press keys by the following order.
+      //
+      // (1) Shift_L Down
+      // (2) Shift_R Down
+      // (3) Shift_L Up
+      // (4) Shift_R Up
+      //
+      // First remap():
+      //   (1) Shift_L Down -> to virtualkey_
+      //   (2) Shift_R Down -> removed
+      //   (3) Shift_L Up   -> no change
+      //   (4) Shift_R Up   -> no change
+      //
+      // Second remap():
+      //   (3) Shift_L Up   -> removed
+      //   (4) Shift_R Up   -> no change
+      // However, we need to remove (4) at the same time.
+      // If (4) is alive, Shift_R Up event which we don't intend is fired in EventInputQueue.
+      // So, we retry handling KeyUp event once more when we drop KeyUp event.
     retry:
 
       EventInputQueue::Item * front = static_cast<EventInputQueue::Item*>(EventInputQueue::queue_->front());
       if (! front) return;
 
-      // ----------------------------------------
+      // ------------------------------------------------------------
       // fire KeyUp event if needed.
       for (size_t i = 0; i < sizeof(fromInfo_) / sizeof(fromInfo_[0]); ++i) {
         if (! fromInfo_[i].isActive()) continue;
@@ -226,7 +246,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         goto retry;
       }
 
-      // ----------------------------------------
+      // ------------------------------------------------------------
+      // handle KeyDwon event.
       if (! FlagStatus::makeFlags().isOn(fromFlags_)) return;
 
       FromInfo* frontFromInfo = NULL;
