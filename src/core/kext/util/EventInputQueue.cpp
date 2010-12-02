@@ -217,9 +217,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     enqueue_(params);
 
-    // remap keys
-    RemapClassManager::remap_simultaneouskeypresses();
-
     setTimer();
   }
 
@@ -314,9 +311,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     enqueue_(params);
 
-    // remap keys
-    RemapClassManager::remap_simultaneouskeypresses();
-
     setTimer();
   }
 
@@ -389,9 +383,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! ptr) return;
     enqueue_(*ptr);
 
-    // remap keys
-    RemapClassManager::remap_simultaneouskeypresses();
-
     setTimer();
   }
 
@@ -449,9 +440,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     enqueue_(params);
 
-    // remap keys
-    RemapClassManager::remap_simultaneouskeypresses();
-
     setTimer();
   }
 
@@ -465,6 +453,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! queue_) return;
 
     //IOLOG_DEVEL("EventInputQueue::fire queue_->size = %d\n", static_cast<int>(queue_->size()));
+
+    RemapClassManager::remap_simultaneouskeypresses();
 
     Item* p = static_cast<Item*>(queue_->front());
     if (! p) return;
