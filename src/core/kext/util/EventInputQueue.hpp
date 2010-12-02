@@ -80,15 +80,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     class Item : public List::Item {
     public:
-      Item(const Params_KeyboardEventCallBack& p, uint32_t d)        : params(p), dropped(false), delayMS(d) {}
-      Item(const Params_KeyboardSpecialEventCallback& p, uint32_t d) : params(p), dropped(false), delayMS(d) {}
-      Item(const Params_RelativePointerEventCallback& p, uint32_t d) : params(p), dropped(false), delayMS(d) {}
-      Item(const Params_ScrollWheelEventCallback& p, uint32_t d)     : params(p), dropped(false), delayMS(d) {}
+      Item(const Params_KeyboardEventCallBack& p, uint32_t d)        : params(p), delayMS(d) {}
+      Item(const Params_KeyboardSpecialEventCallback& p, uint32_t d) : params(p), delayMS(d) {}
+      Item(const Params_RelativePointerEventCallback& p, uint32_t d) : params(p), delayMS(d) {}
+      Item(const Params_ScrollWheelEventCallback& p, uint32_t d)     : params(p), delayMS(d) {}
       virtual ~Item(void) {}
 
       ParamsUnion params;
 
-      bool dropped;
       uint32_t delayMS;
     };
 
