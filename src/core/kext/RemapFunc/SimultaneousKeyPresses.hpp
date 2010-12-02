@@ -42,10 +42,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         void set(KeyCode k)        { type_ = FROMTYPE_KEY;    key_ = k; }
         void set(PointingButton b) { type_ = FROMTYPE_BUTTON; button_ = b; }
         void activate(void)        { active_ = true; }
-        bool restore(bool isFireUp);
+        void deactivate(void)      { active_ = false; }
 
-        EventInputQueue::Item* findLastItem(bool& isKeyDown, bool isIncludeDropped);
-        bool isFrontItemIsTarget(bool& isKeyDown);
+        bool isTarget(bool& isKeyDown, const EventInputQueue::Item& item);
+        bool isActive(void) const { return active_; }
 
       private:
         FromType type_;

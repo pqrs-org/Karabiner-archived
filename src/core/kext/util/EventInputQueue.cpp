@@ -60,7 +60,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  EventInputQueue::enqueue_(const Params_KeyboardEventCallBack& p)
+  EventInputQueue::enqueue_(const Params_KeyboardEventCallBack& p, bool push_back)
   {
     if (! queue_) return;
 
@@ -69,7 +69,12 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // --------------------
     uint32_t delay = calcdelay(DELAY_TYPE_KEY);
-    queue_->push_back(new Item(p, delay));
+    Item* item = new Item(p, delay);
+    if (push_back) {
+      queue_->push_back(item);
+    } else {
+      queue_->push_front(item);
+    }
   }
 
   void

@@ -106,7 +106,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static uint32_t calcdelay(DelayType type);
 
     // ------------------------------------------------------------
-    static void enqueue_(const Params_KeyboardEventCallBack& p);
+    static void enqueue_(const Params_KeyboardEventCallBack& p, bool push_back = true);
     static void enqueue_(const Params_KeyboardSpecialEventCallback& p);
     static void enqueue_(const Params_RelativePointerEventCallback& p);
     static void enqueue_(const Params_ScrollWheelEventCallback& p);
