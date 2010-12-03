@@ -80,13 +80,18 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     class Item : public List::Item {
     public:
-      Item(const Params_KeyboardEventCallBack& p, uint32_t d)        : params(p), delayMS(d) {}
-      Item(const Params_KeyboardSpecialEventCallback& p, uint32_t d) : params(p), delayMS(d) {}
-      Item(const Params_RelativePointerEventCallback& p, uint32_t d) : params(p), delayMS(d) {}
-      Item(const Params_ScrollWheelEventCallback& p, uint32_t d)     : params(p), delayMS(d) {}
+      Item(const Params_KeyboardEventCallBack& p,        bool r, uint32_t d) :
+        params(p), retainFlagStatusTemporaryCount(r), delayMS(d) {}
+      Item(const Params_KeyboardSpecialEventCallback& p, bool r, uint32_t d) :
+        params(p), retainFlagStatusTemporaryCount(r), delayMS(d) {}
+      Item(const Params_RelativePointerEventCallback& p, bool r, uint32_t d) :
+        params(p), retainFlagStatusTemporaryCount(r), delayMS(d) {}
+      Item(const Params_ScrollWheelEventCallback& p,     bool r, uint32_t d) :
+        params(p), retainFlagStatusTemporaryCount(r), delayMS(d) {}
       virtual ~Item(void) {}
 
       ParamsUnion params;
+      bool retainFlagStatusTemporaryCount;
 
       uint32_t delayMS;
     };
@@ -105,10 +110,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     static uint32_t calcdelay(DelayType type);
 
     // ------------------------------------------------------------
-    static void enqueue_(const Params_KeyboardEventCallBack& p, bool push_back = true);
-    static void enqueue_(const Params_KeyboardSpecialEventCallback& p);
-    static void enqueue_(const Params_RelativePointerEventCallback& p);
-    static void enqueue_(const Params_ScrollWheelEventCallback& p);
+    static void enqueue_(const Params_KeyboardEventCallBack& p,        bool retainFlagStatusTemporaryCount, bool push_back = true);
+    static void enqueue_(const Params_KeyboardSpecialEventCallback& p, bool retainFlagStatusTemporaryCount);
+    static void enqueue_(const Params_RelativePointerEventCallback& p, bool retainFlagStatusTemporaryCount);
+    static void enqueue_(const Params_ScrollWheelEventCallback& p,     bool retainFlagStatusTemporaryCount);
     static void fire(OSObject* owner, IOTimerEventSource* sender);
     static void setTimer(void);
 
