@@ -60,7 +60,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  EventInputQueue::enqueue_(const Params_KeyboardEventCallBack& p, bool push_back)
+  EventInputQueue::enqueue_(const Params_KeyboardEventCallBack& p, bool retainFlagStatusTemporaryCount, bool push_back)
   {
     if (! queue_) return;
 
@@ -69,7 +69,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // --------------------
     uint32_t delay = calcdelay(DELAY_TYPE_KEY);
-    Item* item = new Item(p, delay);
+    Item* item = new Item(p, retainFlagStatusTemporaryCount, delay);
     if (push_back) {
       queue_->push_back(item);
     } else {
@@ -78,7 +78,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  EventInputQueue::enqueue_(const Params_KeyboardSpecialEventCallback& p)
+  EventInputQueue::enqueue_(const Params_KeyboardSpecialEventCallback& p, bool retainFlagStatusTemporaryCount)
   {
     if (! queue_) return;
 
@@ -87,27 +87,27 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // --------------------
     uint32_t delay = calcdelay(DELAY_TYPE_KEY);
-    queue_->push_back(new Item(p, delay));
+    queue_->push_back(new Item(p, retainFlagStatusTemporaryCount, delay));
   }
 
   void
-  EventInputQueue::enqueue_(const Params_RelativePointerEventCallback& p)
+  EventInputQueue::enqueue_(const Params_RelativePointerEventCallback& p, bool retainFlagStatusTemporaryCount)
   {
     if (! queue_) return;
 
     // --------------------
     uint32_t delay = calcdelay(DELAY_TYPE_POINTING_BUTTON);
-    queue_->push_back(new Item(p, delay));
+    queue_->push_back(new Item(p, retainFlagStatusTemporaryCount, delay));
   }
 
   void
-  EventInputQueue::enqueue_(const Params_ScrollWheelEventCallback& p)
+  EventInputQueue::enqueue_(const Params_ScrollWheelEventCallback& p, bool retainFlagStatusTemporaryCount)
   {
     if (! queue_) return;
 
     // --------------------
     uint32_t delay = calcdelay(DELAY_TYPE_POINTING_BUTTON);
-    queue_->push_back(new Item(p, delay));
+    queue_->push_back(new Item(p, retainFlagStatusTemporaryCount, delay));
   }
 
   void
@@ -210,17 +210,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ------------------------------------------------------------
-    // clear temporary_count_
-    //
-    // Don't call FlagStatus::set(key, flags) here.
-    // If SimultaneousKeyPresses is enabled, keys may be dropped.
-    // For example, Shift_L+Shift_R to Space is enabled, Shift_L and Shift_R may be dropped.
-    // If we call FlagStatus::set(key, flags) here, dropped keys are kept as pushed status.
-    // So, call FlagStatus::set(key, flags) after EventInputQueue.
-    FlagStatus::set();
-
-    // ------------------------------------------------------------
-    enqueue_(params);
+    enqueue_(params, false);
 
     setTimer();
   }
@@ -310,11 +300,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ------------------------------------------------------------
-    // clear temporary_count_
-    FlagStatus::set();
-
-    // ------------------------------------------------------------
-    enqueue_(params);
+    enqueue_(params, false);
 
     setTimer();
   }
@@ -363,11 +349,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       CommonData::setcurrent_workspacedata();
     }
 
-    // ------------------------------------------------------------
-    // clear temporary_count_
-    if (! Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_lazy_modifiers_with_mouse_event)) {
-      FlagStatus::set();
-    }
+    bool retainFlagStatusTemporaryCount = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_lazy_modifiers_with_mouse_event);
 
     // ------------------------------------------------------------
     // divide an event into button and cursormove events.
@@ -376,17 +358,17 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (justPressed.isOn(btn)) {
         Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, 0, 0, btn, true));
         if (! ptr) return;
-        enqueue_(*ptr);
+        enqueue_(*ptr, retainFlagStatusTemporaryCount);
       }
       if (justReleased.isOn(btn)) {
         Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, 0, 0, btn, false));
         if (! ptr) return;
-        enqueue_(*ptr);
+        enqueue_(*ptr, retainFlagStatusTemporaryCount);
       }
     }
     Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, dx, dy, PointingButton::NONE, false));
     if (! ptr) return;
-    enqueue_(*ptr);
+    enqueue_(*ptr, retainFlagStatusTemporaryCount);
 
     setTimer();
   }
@@ -437,13 +419,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ------------------------------------------------------------
-    // clear temporary_count_
-    if (! Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_lazy_modifiers_with_mouse_event)) {
-      FlagStatus::set();
-    }
-
-    // ------------------------------------------------------------
-    enqueue_(params);
+    bool retainFlagStatusTemporaryCount = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_lazy_modifiers_with_mouse_event);
+    enqueue_(params, retainFlagStatusTemporaryCount);
 
     setTimer();
   }
@@ -459,6 +436,22 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     //IOLOG_DEVEL("EventInputQueue::fire queue_->size = %d\n", static_cast<int>(queue_->size()));
 
+    // ------------------------------------------------------------
+    // clear temporary_count_
+    //
+    // Don't call FlagStatus::set(key, flags) here.
+    // If SimultaneousKeyPresses is enabled, keys may be dropped.
+    // For example, Shift_L+Shift_R to Space is enabled, Shift_L and Shift_R may be dropped.
+    // If we call FlagStatus::set(key, flags) here, dropped keys are kept as pushed status.
+    // So, call FlagStatus::set(key, flags) after EventInputQueue.
+    Item* front = static_cast<Item*>(queue_->front());
+    if (! front) return;
+
+    if (! front->retainFlagStatusTemporaryCount) {
+      FlagStatus::set();
+    }
+
+    // ------------------------------------------------------------
     RemapClassManager::remap_simultaneouskeypresses();
 
     Item* p = static_cast<Item*>(queue_->front());
