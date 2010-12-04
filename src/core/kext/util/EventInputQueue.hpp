@@ -80,18 +80,20 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     class Item : public List::Item {
     public:
-      Item(const Params_KeyboardEventCallBack& p,        bool r, uint32_t d) :
-        params(p), retainFlagStatusTemporaryCount(r), delayMS(d) {}
-      Item(const Params_KeyboardSpecialEventCallback& p, bool r, uint32_t d) :
-        params(p), retainFlagStatusTemporaryCount(r), delayMS(d) {}
-      Item(const Params_RelativePointerEventCallback& p, bool r, uint32_t d) :
-        params(p), retainFlagStatusTemporaryCount(r), delayMS(d) {}
-      Item(const Params_ScrollWheelEventCallback& p,     bool r, uint32_t d) :
-        params(p), retainFlagStatusTemporaryCount(r), delayMS(d) {}
+      Item(const Params_KeyboardEventCallBack& p,        bool r, DeviceVendor dv, DeviceProduct dp, uint32_t d) :
+        params(p), retainFlagStatusTemporaryCount(r), deviceVendor(dv), deviceProduct(dp), delayMS(d) {}
+      Item(const Params_KeyboardSpecialEventCallback& p, bool r, DeviceVendor dv, DeviceProduct dp, uint32_t d) :
+        params(p), retainFlagStatusTemporaryCount(r), deviceVendor(dv), deviceProduct(dp), delayMS(d) {}
+      Item(const Params_RelativePointerEventCallback& p, bool r, DeviceVendor dv, DeviceProduct dp, uint32_t d) :
+        params(p), retainFlagStatusTemporaryCount(r), deviceVendor(dv), deviceProduct(dp), delayMS(d) {}
+      Item(const Params_ScrollWheelEventCallback& p,     bool r, DeviceVendor dv, DeviceProduct dp, uint32_t d) :
+        params(p), retainFlagStatusTemporaryCount(r), deviceVendor(dv), deviceProduct(dp), delayMS(d) {}
       virtual ~Item(void) {}
 
       ParamsUnion params;
       bool retainFlagStatusTemporaryCount;
+      DeviceVendor deviceVendor;
+      DeviceProduct deviceProduct;
 
       uint32_t delayMS;
     };
@@ -110,10 +112,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     static uint32_t calcdelay(DelayType type);
 
     // ------------------------------------------------------------
-    static void enqueue_(const Params_KeyboardEventCallBack& p,        bool retainFlagStatusTemporaryCount, bool push_back);
-    static void enqueue_(const Params_KeyboardSpecialEventCallback& p, bool retainFlagStatusTemporaryCount);
-    static void enqueue_(const Params_RelativePointerEventCallback& p, bool retainFlagStatusTemporaryCount);
-    static void enqueue_(const Params_ScrollWheelEventCallback& p,     bool retainFlagStatusTemporaryCount);
+    static void enqueue_(const Params_KeyboardEventCallBack& p,        bool retainFlagStatusTemporaryCount, DeviceVendor dv, DeviceProduct dp, bool push_back);
+    static void enqueue_(const Params_KeyboardSpecialEventCallback& p, bool retainFlagStatusTemporaryCount, DeviceVendor dv, DeviceProduct dp);
+    static void enqueue_(const Params_RelativePointerEventCallback& p, bool retainFlagStatusTemporaryCount, DeviceVendor dv, DeviceProduct dp);
+    static void enqueue_(const Params_ScrollWheelEventCallback& p,     bool retainFlagStatusTemporaryCount, DeviceVendor dv, DeviceProduct dp);
     static void fire(OSObject* owner, IOTimerEventSource* sender);
     static void setTimer(void);
 
