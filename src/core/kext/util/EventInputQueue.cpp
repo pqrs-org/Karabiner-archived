@@ -60,7 +60,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  EventInputQueue::enqueue_(const Params_KeyboardEventCallBack& p, bool retainFlagStatusTemporaryCount, bool push_back)
+  EventInputQueue::enqueue_(const Params_KeyboardEventCallBack& p, bool retainFlagStatusTemporaryCount, DeviceVendor deviceVendor, DeviceProduct deviceProduct, bool push_back)
   {
     if (! queue_) return;
 
@@ -69,7 +69,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // --------------------
     uint32_t delay = calcdelay(DELAY_TYPE_KEY);
-    Item* item = new Item(p, retainFlagStatusTemporaryCount, delay);
+    Item* item = new Item(p, retainFlagStatusTemporaryCount, deviceVendor, deviceProduct, delay);
     if (push_back) {
       queue_->push_back(item);
     } else {
@@ -78,7 +78,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  EventInputQueue::enqueue_(const Params_KeyboardSpecialEventCallback& p, bool retainFlagStatusTemporaryCount)
+  EventInputQueue::enqueue_(const Params_KeyboardSpecialEventCallback& p, bool retainFlagStatusTemporaryCount, DeviceVendor deviceVendor, DeviceProduct deviceProduct)
   {
     if (! queue_) return;
 
@@ -87,27 +87,27 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // --------------------
     uint32_t delay = calcdelay(DELAY_TYPE_KEY);
-    queue_->push_back(new Item(p, retainFlagStatusTemporaryCount, delay));
+    queue_->push_back(new Item(p, retainFlagStatusTemporaryCount, deviceVendor, deviceProduct, delay));
   }
 
   void
-  EventInputQueue::enqueue_(const Params_RelativePointerEventCallback& p, bool retainFlagStatusTemporaryCount)
+  EventInputQueue::enqueue_(const Params_RelativePointerEventCallback& p, bool retainFlagStatusTemporaryCount, DeviceVendor deviceVendor, DeviceProduct deviceProduct)
   {
     if (! queue_) return;
 
     // --------------------
     uint32_t delay = calcdelay(DELAY_TYPE_POINTING_BUTTON);
-    queue_->push_back(new Item(p, retainFlagStatusTemporaryCount, delay));
+    queue_->push_back(new Item(p, retainFlagStatusTemporaryCount, deviceVendor, deviceProduct, delay));
   }
 
   void
-  EventInputQueue::enqueue_(const Params_ScrollWheelEventCallback& p, bool retainFlagStatusTemporaryCount)
+  EventInputQueue::enqueue_(const Params_ScrollWheelEventCallback& p, bool retainFlagStatusTemporaryCount, DeviceVendor deviceVendor, DeviceProduct deviceProduct)
   {
     if (! queue_) return;
 
     // --------------------
     uint32_t delay = calcdelay(DELAY_TYPE_POINTING_BUTTON);
-    queue_->push_back(new Item(p, retainFlagStatusTemporaryCount, delay));
+    queue_->push_back(new Item(p, retainFlagStatusTemporaryCount, deviceVendor, deviceProduct, delay));
   }
 
   void
@@ -164,6 +164,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     Params_KeyboardEventCallBack& params = *ptr;
 
     // ------------------------------------------------------------
+    DeviceVendor deviceVendor(0);
+    DeviceProduct deviceProduct(0);
     {
       IOLockWrapper::ScopedLock lk_device(ListHookedKeyboard::instance().getListLock());
       if (! lk_device) return;
@@ -196,7 +198,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       CommonData::setcurrent_ts(ts);
-      CommonData::setcurrent_vendorProduct(item->getVendor(), item->getProduct());
+      deviceVendor = item->getVendor();
+      deviceProduct = item->getProduct();
       CommonData::setcurrent_keyboardType(params.keyboardType);
     }
 
@@ -212,7 +215,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     bool retainFlagStatusTemporaryCount = false;
     bool push_back = true;
-    enqueue_(params, retainFlagStatusTemporaryCount, push_back);
+    enqueue_(params, retainFlagStatusTemporaryCount, deviceVendor, deviceProduct, push_back);
 
     setTimer();
   }
@@ -244,9 +247,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       ListHookedKeyboard::Item* item = static_cast<ListHookedKeyboard::Item*>(ListHookedKeyboard::instance().get_nolock(device));
       if (! item) return;
-
-      // ------------------------------------------------------------
-      CommonData::setcurrent_vendorProduct(item->getVendor(), item->getProduct());
     }
 
     params.log();
@@ -278,6 +278,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     Params_KeyboardSpecialEventCallback& params = *ptr;
 
     // ------------------------------------------------------------
+    DeviceVendor deviceVendor(0);
+    DeviceProduct deviceProduct(0);
     {
       IOLockWrapper::ScopedLock lk_device(ListHookedKeyboard::instance().getListLock());
       if (! lk_device) return;
@@ -289,7 +291,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       CommonData::setcurrent_ts(ts);
-      CommonData::setcurrent_vendorProduct(item->getVendor(), item->getProduct());
+      deviceVendor = item->getVendor();
+      deviceProduct = item->getProduct();
     }
 
     // ------------------------------------------------------------
@@ -302,7 +305,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ------------------------------------------------------------
-    enqueue_(params, false);
+    bool retainFlagStatusTemporaryCount = false;
+    enqueue_(params, retainFlagStatusTemporaryCount, deviceVendor, deviceProduct);
 
     setTimer();
   }
@@ -327,6 +331,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     Buttons justPressed;
     Buttons justReleased;
 
+    DeviceVendor deviceVendor(0);
+    DeviceProduct deviceProduct(0);
     {
       IOLockWrapper::ScopedLock lk_device(ListHookedKeyboard::instance().getListLock());
       if (! lk_device) return;
@@ -339,7 +345,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       CommonData::setcurrent_ts(ts);
-      CommonData::setcurrent_vendorProduct(item->getVendor(), item->getProduct());
+      deviceVendor = item->getVendor();
+      deviceProduct = item->getProduct();
 
       // ------------------------------------------------------------
       justPressed = buttons.justPressed(item->get_previousbuttons());
@@ -360,17 +367,17 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (justPressed.isOn(btn)) {
         Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, 0, 0, btn, true));
         if (! ptr) return;
-        enqueue_(*ptr, retainFlagStatusTemporaryCount);
+        enqueue_(*ptr, retainFlagStatusTemporaryCount, deviceVendor, deviceProduct);
       }
       if (justReleased.isOn(btn)) {
         Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, 0, 0, btn, false));
         if (! ptr) return;
-        enqueue_(*ptr, retainFlagStatusTemporaryCount);
+        enqueue_(*ptr, retainFlagStatusTemporaryCount, deviceVendor, deviceProduct);
       }
     }
     Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, dx, dy, PointingButton::NONE, false));
     if (! ptr) return;
-    enqueue_(*ptr, retainFlagStatusTemporaryCount);
+    enqueue_(*ptr, retainFlagStatusTemporaryCount, deviceVendor, deviceProduct);
 
     setTimer();
   }
@@ -405,6 +412,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     Params_ScrollWheelEventCallback& params = *ptr;
 
     // ------------------------------------------------------------
+    DeviceVendor deviceVendor(0);
+    DeviceProduct deviceProduct(0);
     {
       IOLockWrapper::ScopedLock lk_device(ListHookedKeyboard::instance().getListLock());
       if (! lk_device) return;
@@ -417,12 +426,13 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       CommonData::setcurrent_ts(ts);
-      CommonData::setcurrent_vendorProduct(item->getVendor(), item->getProduct());
+      deviceVendor = item->getVendor();
+      deviceProduct = item->getProduct();
     }
 
     // ------------------------------------------------------------
     bool retainFlagStatusTemporaryCount = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_lazy_modifiers_with_mouse_event);
-    enqueue_(params, retainFlagStatusTemporaryCount);
+    enqueue_(params, retainFlagStatusTemporaryCount, deviceVendor, deviceProduct);
 
     setTimer();
   }
@@ -439,25 +449,29 @@ namespace org_pqrs_KeyRemap4MacBook {
     //IOLOG_DEVEL("EventInputQueue::fire queue_->size = %d\n", static_cast<int>(queue_->size()));
 
     // ------------------------------------------------------------
-    // clear temporary_count_
-    //
-    // Don't call FlagStatus::set(key, flags) here.
-    // If SimultaneousKeyPresses is enabled, keys may be dropped.
-    // For example, Shift_L+Shift_R to Space is enabled, Shift_L and Shift_R may be dropped.
-    // If we call FlagStatus::set(key, flags) here, dropped keys are kept as pushed status.
-    // So, call FlagStatus::set(key, flags) after EventInputQueue.
-    Item* front = static_cast<Item*>(queue_->front());
-    if (! front) return;
+    // handle SimultaneousKeyPresses
+    do {
+      Item* front = static_cast<Item*>(queue_->front());
+      if (! front) return;
 
-    if (! front->retainFlagStatusTemporaryCount) {
-      FlagStatus::set();
-    }
+      // ------------------------------------------------------------
+      // clear temporary_count_
+      //
+      // Don't call FlagStatus::set(key, flags) here.
+      // If SimultaneousKeyPresses is enabled, keys may be dropped.
+      // For example, Shift_L+Shift_R to Space is enabled, Shift_L and Shift_R may be dropped.
+      // If we call FlagStatus::set(key, flags) here, dropped keys are kept as pushed status.
+      // So, call FlagStatus::set(key, flags) after EventInputQueue.
+      // ------------------------------------------------------------
+      if (! front->retainFlagStatusTemporaryCount) {
+        FlagStatus::set();
+      }
+
+      CommonData::setcurrent_vendorProduct(front->deviceVendor, front->deviceProduct);
+
+    } while (RemapClassManager::remap_simultaneouskeypresses());
 
     // ------------------------------------------------------------
-    while (RemapClassManager::remap_simultaneouskeypresses()) {
-      // set device and product.
-    }
-
     Item* p = static_cast<Item*>(queue_->front());
     if (! p) return;
 
