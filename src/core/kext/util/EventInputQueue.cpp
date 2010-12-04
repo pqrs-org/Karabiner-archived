@@ -205,10 +205,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       // ------------------------------------------------------------
+      // "ts & keyboardType" are not used in filters like <not>/<only>.
+      // Therefore, we can set current ts and keyboardType here.
       CommonData::setcurrent_ts(ts);
+      CommonData::setcurrent_keyboardType(params.keyboardType);
       deviceVendor = item->getVendor();
       deviceProduct = item->getProduct();
-      CommonData::setcurrent_keyboardType(params.keyboardType);
     }
 
     // ------------------------------------------------------------
