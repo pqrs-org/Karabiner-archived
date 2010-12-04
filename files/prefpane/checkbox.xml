@@ -2110,11 +2110,39 @@
               <autogen>--ConsumerToKey-- ConsumerKeyCode::POWER, KeyCode::COMMAND_L</autogen>
             </item>
             <item>
+              <name>Power to Delete</name>
+              <appendix>(+ Fn+Power to Power)</appendix>
+              <identifier>remap.power2delete</identifier>
+              <autogen>--ConsumerToConsumer-- ConsumerKeyCode::POWER, ModifierFlag::FN, ConsumerKeyCode::POWER</autogen>
+              <autogen>--ConsumerToKey-- ConsumerKeyCode::POWER, KeyCode::DELETE</autogen>
+            </item>
+            <item>
               <name>Power to Eject</name>
               <appendix>(+ Fn+Power to Power)</appendix>
               <identifier>remap.power2eject_fnpower2power</identifier>
               <autogen>--ConsumerToConsumer-- ConsumerKeyCode::POWER, ModifierFlag::FN, ConsumerKeyCode::POWER</autogen>
               <autogen>--ConsumerToConsumer-- ConsumerKeyCode::POWER, ConsumerKeyCode::EJECT</autogen>
+            </item>
+            <item>
+              <name>Power to Fn</name>
+              <appendix>(+ Fn+Power to Power)</appendix>
+              <identifier>remap.power2fn</identifier>
+              <autogen>--ConsumerToConsumer-- ConsumerKeyCode::POWER, ModifierFlag::FN, ConsumerKeyCode::POWER</autogen>
+              <autogen>--ConsumerToKey-- ConsumerKeyCode::POWER, KeyCode::FN</autogen>
+            </item>
+            <item>
+              <name>Power to Forward Delete</name>
+              <appendix>(+ Fn+Power to Power)</appendix>
+              <identifier>remap.power2forwarddelete</identifier>
+              <autogen>--ConsumerToConsumer-- ConsumerKeyCode::POWER, ModifierFlag::FN, ConsumerKeyCode::POWER</autogen>
+              <autogen>--ConsumerToKey-- ConsumerKeyCode::POWER, KeyCode::FORWARD_DELETE</autogen>
+            </item>
+            <item>
+              <name>Disable Power Key</name>
+              <appendix>(+ Fn+Power to Power)</appendix>
+              <identifier>remap.drop_power</identifier>
+              <autogen>--ConsumerToConsumer-- ConsumerKeyCode::POWER, ModifierFlag::FN, ConsumerKeyCode::POWER</autogen>
+              <autogen>--ConsumerToKey-- ConsumerKeyCode::POWER, KeyCode::VK_NONE</autogen>
             </item>
           </list>
         </item>
