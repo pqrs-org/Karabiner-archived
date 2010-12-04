@@ -327,8 +327,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       Params_KeyboardEventCallBack& params = *ptr;
       bool retainFlagStatusTemporaryCount = false;
+      bool updateWorkspaceData = false;
       bool push_back = false;
-      EventInputQueue::enqueue_(params, retainFlagStatusTemporaryCount, deviceVendor, deviceProduct, push_back);
+      EventInputQueue::enqueue_(params, retainFlagStatusTemporaryCount, updateWorkspaceData, deviceVendor, deviceProduct, push_back);
     }
 
     bool
