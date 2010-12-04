@@ -238,10 +238,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     return false;
   }
 
-  void
+  bool
   RemapClass::Item::remap_SimultaneousKeyPresses(void)
   {
-    if (isblocked()) return;
+    if (isblocked()) return false;
 
 #define CALL_UNION_FUNCTION(POINTER) {          \
     if (POINTER) { return (POINTER)->remap(); } \
@@ -255,6 +255,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
 #undef CALL_UNION_FUNCTION
+
+    return false;
   }
 
   bool
@@ -467,15 +469,17 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
-  void
+  bool
   RemapClass::remap_simultaneouskeypresses(void)
   {
     for (size_t i = 0; i < items_.size(); ++i) {
       Item* p = items_[i];
       if (p) {
-        p->remap_SimultaneousKeyPresses();
+        if (p->remap_SimultaneousKeyPresses()) return true;
       }
     }
+
+    return false;
   }
 
   bool
@@ -784,13 +788,26 @@ namespace org_pqrs_KeyRemap4MacBook {
       CALL_REMAPCLASS_FUNC(remap_pointing, remapParams);
     }
 
-    void
+#undef CALL_REMAPCLASS_FUNC
+
+    bool
     remap_simultaneouskeypresses(void)
     {
-      CALL_REMAPCLASS_FUNC(remap_simultaneouskeypresses, );
-    }
+      IOLockWrapper::ScopedLock lk(lock_);
 
-#undef CALL_REMAPCLASS_FUNC
+      bool queue_changed = false;
+
+      if (enabled_remapclasses_) {
+        for (size_t i = 0; i < enabled_remapclasses_->size(); ++i) {
+          RemapClass* p = (*enabled_remapclasses_)[i];
+          if (p) {
+            if (p->remap_simultaneouskeypresses()) queue_changed = true;
+          }
+        }
+      }
+
+      return queue_changed;
+    }
 
     bool
     remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params)

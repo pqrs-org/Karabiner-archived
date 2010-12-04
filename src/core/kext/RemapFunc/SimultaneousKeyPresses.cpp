@@ -187,13 +187,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       return ! isKeyDown;
     }
 
-    void
+    bool
     SimultaneousKeyPresses::remap(void)
     {
       // ----------------------------------------
       // we change queue_->front() only.
       //
-      if (! EventInputQueue::queue_) return;
+      if (! EventInputQueue::queue_) return false;
 
       // We consider "Shift_L+Shift_R to Space".
       // When we press keys by the following order.
@@ -215,10 +215,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       // However, we need to remove (4) at the same time.
       // If (4) is alive, Shift_R Up event which we don't intend is fired in EventInputQueue.
       // So, we retry handling KeyUp event once more when we drop KeyUp event.
-    retry:
 
       EventInputQueue::Item * front = static_cast<EventInputQueue::Item*>(EventInputQueue::queue_->front());
-      if (! front) return;
+      if (! front) return false;
 
       // ------------------------------------------------------------
       // fire KeyUp event if needed.
@@ -240,15 +239,14 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
         if (isAllDeactived) {
           push_remapped(false);
-          return;
         }
 
-        goto retry;
+        return true;
       }
 
       // ------------------------------------------------------------
       // handle KeyDwon event.
-      if (! FlagStatus::makeFlags().isOn(fromFlags_)) return;
+      if (! FlagStatus::makeFlags().isOn(fromFlags_)) return false;
 
       FromInfo* frontFromInfo = NULL;
       FromInfo* pairedFromInfo = NULL;
@@ -261,12 +259,12 @@ namespace org_pqrs_KeyRemap4MacBook {
         pairedFromInfo = fromInfo_ + 0;
       }
 
-      if (! frontFromInfo || ! pairedFromInfo) return;
+      if (! frontFromInfo || ! pairedFromInfo) return false;
 
       // ----------------------------------------
       for (;;) {
         front = static_cast<EventInputQueue::Item*>(front->getnext());
-        if (! front) return;
+        if (! front) return false;
 
         // We consider "Shift_L+Shift_R to Space".
         // When we press keys by the following order.
@@ -282,8 +280,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         // If frontFromInfo is appeared before pairedFromInfo,
         // we must not handle these keys as SimultaneousKeyPresses.
         //
-        if (frontFromInfo->isTargetKeyDown(*front)) return;
-        if (frontFromInfo->isTargetKeyUp(*front)) return;
+        if (frontFromInfo->isTargetKeyDown(*front)) return false;
+        if (frontFromInfo->isTargetKeyUp(*front)) return false;
 
         if (pairedFromInfo->isTargetKeyDown(*front)) {
           // SimultaneousKeyPresses!
@@ -297,6 +295,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       EventInputQueue::queue_->pop_front();
       push_remapped(true);
+
+      return true;
     }
 
     void

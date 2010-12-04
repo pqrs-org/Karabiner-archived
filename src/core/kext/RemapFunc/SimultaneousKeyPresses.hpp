@@ -15,7 +15,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       ~SimultaneousKeyPresses(void);
 
       // This function changes Simultaneous key presses to KeyCode::VK_SIMULTANEOUSKEYPRESSES_xxx
-      void remap(void);
+      // It returns true if EventInputQueue::queue_ is changed.
+      bool remap(void);
       // This function changes KeyCode::VK_SIMULTANEOUSKEYPRESSES_xxx to remapped key/pointing events.
       bool remap(RemapParams& remapParams);
 

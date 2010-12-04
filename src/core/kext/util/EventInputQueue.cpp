@@ -452,7 +452,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ------------------------------------------------------------
-    RemapClassManager::remap_simultaneouskeypresses();
+    while (RemapClassManager::remap_simultaneouskeypresses()) {
+      // set device and product.
+    }
 
     Item* p = static_cast<Item*>(queue_->front());
     if (! p) return;
