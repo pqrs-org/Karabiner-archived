@@ -245,7 +245,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       // ------------------------------------------------------------
-      // handle KeyDwon event.
+      // handle KeyDown event.
       if (! FlagStatus::makeFlags().isOn(fromFlags_)) return false;
 
       FromInfo* frontFromInfo = NULL;
@@ -261,7 +261,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       if (! frontFromInfo || ! pairedFromInfo) return false;
 
-      // ----------------------------------------
+      // --------------------
+      // scan items in queue_.
       for (;;) {
         front = static_cast<EventInputQueue::Item*>(front->getnext());
         if (! front) return false;
@@ -321,7 +322,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! ptr) return;
 
       Params_KeyboardEventCallBack& params = *ptr;
-      EventInputQueue::enqueue_(params, false);
+      bool retainFlagStatusTemporaryCount = false;
+      bool push_back = false;
+      EventInputQueue::enqueue_(params, retainFlagStatusTemporaryCount, push_back);
     }
 
     bool
