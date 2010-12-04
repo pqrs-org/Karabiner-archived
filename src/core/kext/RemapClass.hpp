@@ -43,7 +43,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // for DropKeyAfterRemap
       bool drop(const Params_KeyboardEventCallBack& params);
       //
-      void remap_SimultaneousKeyPresses(void);
+      bool remap_SimultaneousKeyPresses(void);
       //
       bool remap_setkeyboardtype(KeyboardType& keyboardType);
 
@@ -84,7 +84,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void remap_key(RemapParams& remapParams);
     void remap_consumer(RemapConsumerParams& remapParams);
     void remap_pointing(RemapPointingParams_relative& remapParams);
-    void remap_simultaneouskeypresses(void);
+    bool remap_simultaneouskeypresses(void);
     bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params);
     const char* get_statusmessage(void);
     bool enabled(void) const { return enabled_; }
@@ -122,7 +122,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     void remap_key(RemapParams& remapParams);
     void remap_consumer(RemapConsumerParams& remapParams);
     void remap_pointing(RemapPointingParams_relative& remapParams);
-    void remap_simultaneouskeypresses(void);
+
+    // return true if EventInputQueue::queue_ is changed.
+    bool remap_simultaneouskeypresses(void);
 
     // return true if dropped.
     bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params);
