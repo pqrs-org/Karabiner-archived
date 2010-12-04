@@ -210,7 +210,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ------------------------------------------------------------
-    enqueue_(params, false);
+    bool retainFlagStatusTemporaryCount = false;
+    bool push_back = true;
+    enqueue_(params, retainFlagStatusTemporaryCount, push_back);
 
     setTimer();
   }

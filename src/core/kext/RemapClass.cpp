@@ -472,14 +472,17 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   RemapClass::remap_simultaneouskeypresses(void)
   {
+    bool queue_changed = false;
     for (size_t i = 0; i < items_.size(); ++i) {
       Item* p = items_[i];
       if (p) {
-        if (p->remap_SimultaneousKeyPresses()) return true;
+        if (p->remap_SimultaneousKeyPresses()) {
+          queue_changed = true;
+        }
       }
     }
 
-    return false;
+    return queue_changed;
   }
 
   bool
@@ -801,7 +804,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         for (size_t i = 0; i < enabled_remapclasses_->size(); ++i) {
           RemapClass* p = (*enabled_remapclasses_)[i];
           if (p) {
-            if (p->remap_simultaneouskeypresses()) queue_changed = true;
+            if (p->remap_simultaneouskeypresses()) {
+              queue_changed = true;
+            }
           }
         }
       }
