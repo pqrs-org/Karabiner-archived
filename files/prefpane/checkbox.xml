@@ -2103,6 +2103,8 @@
         </item>
         <item>
           <name>Change Power Key</name>
+          <appendix>*** This setting does not work with MacBook Air 2010.</appendix>
+          <appendix>*** This "Power Key" is the key in the old ADB keyboard.</appendix>
           <list>
             <item>
               <name>Power to Command_L</name>
