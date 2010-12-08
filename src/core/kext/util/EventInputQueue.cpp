@@ -356,8 +356,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       item->set_previousbuttons(buttons);
     }
 
-    bool retainFlagStatusTemporaryCount = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_lazy_modifiers_with_mouse_event);
-
     // ------------------------------------------------------------
     // divide an event into button and cursormove events.
     for (int i = 0; i < ButtonStatus::MAXNUM; ++i) {
@@ -366,18 +364,21 @@ namespace org_pqrs_KeyRemap4MacBook {
         Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, 0, 0, btn, true));
         if (! ptr) return;
         bool updateWorkspaceData = true;
+        bool retainFlagStatusTemporaryCount = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_lazy_modifiers_with_mouse_event);
         enqueue_(*ptr, retainFlagStatusTemporaryCount, updateWorkspaceData, deviceVendor, deviceProduct);
       }
       if (justReleased.isOn(btn)) {
         Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, 0, 0, btn, false));
         if (! ptr) return;
         bool updateWorkspaceData = false;
+        bool retainFlagStatusTemporaryCount = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_lazy_modifiers_with_mouse_event);
         enqueue_(*ptr, retainFlagStatusTemporaryCount, updateWorkspaceData, deviceVendor, deviceProduct);
       }
     }
     Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, dx, dy, PointingButton::NONE, false));
     if (! ptr) return;
     bool updateWorkspaceData = false;
+    bool retainFlagStatusTemporaryCount = true;
     enqueue_(*ptr, retainFlagStatusTemporaryCount, updateWorkspaceData, deviceVendor, deviceProduct);
 
     setTimer();
