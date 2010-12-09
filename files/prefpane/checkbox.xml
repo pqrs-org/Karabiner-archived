@@ -4644,18 +4644,17 @@
           <list>
             <item>
               <name>What's Mouse Keys Mode?</name>
-              <appendix>Push "S" and "D" keys simultaneously while pressing Command key,</appendix>
-              <appendix>and keep S,D keys pressing.</appendix>
-              <appendix>Then you can control mouse cursor by HJKL keys. (and Arrow keys)</appendix>
-              <appendix></appendix>
+              <appendix>You can control mouse cursor by HJKL keys. (and Arrow keys)</appendix>
               <appendix>- HJKL to move mouse cursor</appendix>
               <appendix>- Arrow Keys to move mouse cursor</appendix>
               <appendix></appendix>
+              <appendix>And, control scroll wheel.</appendix>
               <appendix>- F+HJKL to scroll wheel</appendix>
               <appendix>- F+Arrow Keys to scroll wheel</appendix>
               <appendix></appendix>
-              <appendix>- A+HJKL to high-speed movement</appendix>
-              <appendix>- A+Arrow Keys to high-speed movement</appendix>
+              <appendix>You can adjust the speed, too.</appendix>
+              <appendix>- D+HJKL to high-speed movement</appendix>
+              <appendix>- D+Arrow Keys to high-speed movement</appendix>
               <identifier vk_config="true">notsave.mousekeys_mode</identifier>
               <autogen>--ShowStatusMessage-- Mouse Keys</autogen>
               <!-- scroll wheel mode -->
@@ -4677,6 +4676,11 @@
               <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT,  KeyCode::VK_MOUSEKEY_LEFT</autogen>
               <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, KeyCode::VK_MOUSEKEY_RIGHT</autogen>
               <!-- ======================================== -->
+              <block>
+                <config_only>remap.mouse_keys_mode_holding_m</config_only>
+                <autogen>--KeyToKey-- KeyCode::F, KeyCode::FN</autogen>
+                <autogen>--KeyToKey-- KeyCode::D, KeyCode::VK_MOUSEKEY_HIGHSPEED</autogen>
+              </block>
               <block>
                 <config_only>remap.simultaneouskeypresses_mouse_keys_mode_commandSD, remap.simultaneouskeypresses_mouse_keys_mode_shiftSD</config_only>
                 <autogen>--KeyToKey-- KeyCode::F, KeyCode::FN</autogen>
@@ -4706,6 +4710,12 @@
                 <autogen>--KeyToPointingButton-- KeyCode::COMMAND_R, PointingButton::RIGHT</autogen>
               </block>
               <block>
+                <config_only>option.mousekeys_mode_wer2click</config_only>
+                <autogen>--KeyToPointingButton-- KeyCode::W, PointingButton::LEFT</autogen>
+                <autogen>--KeyToPointingButton-- KeyCode::E, PointingButton::MIDDLE</autogen>
+                <autogen>--KeyToPointingButton-- KeyCode::R, PointingButton::RIGHT</autogen>
+              </block>
+              <block>
                 <config_only>option.mousekeys_mode_uio2click</config_only>
                 <autogen>--KeyToPointingButton-- KeyCode::U, PointingButton::LEFT</autogen>
                 <autogen>--KeyToPointingButton-- KeyCode::I, PointingButton::MIDDLE</autogen>
@@ -4719,6 +4729,16 @@
                 <config_only>option.mousekeys_mode_jis_kana2rightclick</config_only>
                 <autogen>--KeyToPointingButton-- KeyCode::JIS_KANA, PointingButton::RIGHT</autogen>
               </block>
+            </item>
+            <item>
+              <name>Holding "M" Key to toggle Mouse Keys Mode</name>
+              <appendix>+ F turns on "Scroll Wheel Mode"</appendix>
+              <appendix>// F+HJKL to scroll wheel</appendix>
+              <appendix></appendix>
+              <appendix>+ D turns on "High Speed Mode"</appendix>
+              <appendix>// D+HJKL to high-speed movement</appendix>
+              <identifier>remap.mouse_keys_mode_holding_m</identifier>
+              <autogen>--HoldingKeyToKey-- KeyCode::M, KeyCode::M, KeyCode::VK_NONE, KeyCode::VK_CONFIG_TOGGLE_notsave_mousekeys_mode</autogen>
             </item>
             <item>
               <name>Simultaneous Key Presses Command+[S+D] to turn on Mouse Keys Mode</name>
@@ -4779,6 +4799,13 @@
             <item>
               <name>[Option] Command_R to RightClick</name>
               <identifier>option.mousekeys_mode_commandR2rightclick</identifier>
+            </item>
+            <item>
+              <name>[Option] WER to Click</name>
+              <appendix>- W to LeftClick</appendix>
+              <appendix>- E to MiddleClick</appendix>
+              <appendix>- R to RightClick</appendix>
+              <identifier>option.mousekeys_mode_wer2click</identifier>
             </item>
             <item>
               <name>[Option] UIO to Click</name>
