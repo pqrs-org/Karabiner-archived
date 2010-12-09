@@ -30,6 +30,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       void add(unsigned int datatype, unsigned int newval);
 
     private:
+      void dokeyup(void);
       static void fireholding(OSObject* owner, IOTimerEventSource* sender);
 
       static TimerWrapper timer_;
@@ -38,6 +39,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       size_t index_;
       bool index_is_holding_;
       Flags savedflags_;
+
+      bool active_;
       bool isfirenormal_;
       bool isfireholding_;
 
