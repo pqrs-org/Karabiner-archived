@@ -4677,11 +4677,6 @@
               <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, KeyCode::VK_MOUSEKEY_RIGHT</autogen>
               <!-- ======================================== -->
               <block>
-                <config_only>remap.mouse_keys_mode_holding_m</config_only>
-                <autogen>--KeyToKey-- KeyCode::F, KeyCode::FN</autogen>
-                <autogen>--KeyToKey-- KeyCode::D, KeyCode::VK_MOUSEKEY_HIGHSPEED</autogen>
-              </block>
-              <block>
                 <config_only>remap.simultaneouskeypresses_mouse_keys_mode_commandSD, remap.simultaneouskeypresses_mouse_keys_mode_shiftSD</config_only>
                 <autogen>--KeyToKey-- KeyCode::F, KeyCode::FN</autogen>
                 <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_MOUSEKEY_HIGHSPEED</autogen>
@@ -4695,6 +4690,11 @@
                 <config_only>remap.simultaneouskeypresses_mouse_keys_mode_cx</config_only>
                 <autogen>--KeyToKey-- KeyCode::V, KeyCode::FN</autogen>
                 <autogen>--KeyToKey-- KeyCode::Z, KeyCode::VK_MOUSEKEY_HIGHSPEED</autogen>
+              </block>
+              <block>
+                <config_only>remap.mouse_keys_mode_holding_m</config_only>
+                <autogen>--KeyToKey-- KeyCode::F, KeyCode::FN</autogen>
+                <autogen>--KeyToKey-- KeyCode::D, KeyCode::VK_MOUSEKEY_HIGHSPEED</autogen>
               </block>
               <!-- ======================================== -->
               <block>
@@ -4729,16 +4729,6 @@
                 <config_only>option.mousekeys_mode_jis_kana2rightclick</config_only>
                 <autogen>--KeyToPointingButton-- KeyCode::JIS_KANA, PointingButton::RIGHT</autogen>
               </block>
-            </item>
-            <item>
-              <name>Holding "M" Key to toggle Mouse Keys Mode</name>
-              <appendix>+ F turns on "Scroll Wheel Mode"</appendix>
-              <appendix>// F+HJKL to scroll wheel</appendix>
-              <appendix></appendix>
-              <appendix>+ D turns on "High Speed Mode"</appendix>
-              <appendix>// D+HJKL to high-speed movement</appendix>
-              <identifier>remap.mouse_keys_mode_holding_m</identifier>
-              <autogen>--HoldingKeyToKey-- KeyCode::M, KeyCode::M, KeyCode::VK_NONE, KeyCode::VK_CONFIG_TOGGLE_notsave_mousekeys_mode</autogen>
             </item>
             <item>
               <name>Simultaneous Key Presses Command+[S+D] to turn on Mouse Keys Mode</name>
@@ -4787,6 +4777,16 @@
               <appendix>// Z+HJKL to high-speed movement</appendix>
               <identifier>remap.simultaneouskeypresses_mouse_keys_mode_cx</identifier>
               <autogen>--SimultaneousKeyPresses-- KeyCode::C, KeyCode::X, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
+            </item>
+            <item>
+              <name>Holding "M" Key to toggle Mouse Keys Mode</name>
+              <appendix>+ F turns on "Scroll Wheel Mode"</appendix>
+              <appendix>// F+HJKL to scroll wheel</appendix>
+              <appendix></appendix>
+              <appendix>+ D turns on "High Speed Mode"</appendix>
+              <appendix>// D+HJKL to high-speed movement</appendix>
+              <identifier>remap.mouse_keys_mode_holding_m</identifier>
+              <autogen>--HoldingKeyToKey-- KeyCode::M, KeyCode::M, KeyCode::VK_NONE, KeyCode::VK_CONFIG_TOGGLE_notsave_mousekeys_mode</autogen>
             </item>
             <item>
               <name>[Option] Command_L to LeftClick</name>
