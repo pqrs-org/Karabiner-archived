@@ -4644,7 +4644,9 @@
           <list>
             <item>
               <name>What's Mouse Keys Mode?</name>
-              <appendix>You can control mouse cursor by HJKL keys. (and Arrow keys)</appendix>
+              <appendix>Push "S" and "D" keys simultaneously while pressing Shift key,</appendix>
+              <appendix>and keep S,D keys pressing.</appendix>
+              <appendix>Then you can control mouse cursor by HJKL keys. (and Arrow keys)</appendix>
               <appendix>- HJKL to move mouse cursor</appendix>
               <appendix>- Arrow Keys to move mouse cursor</appendix>
               <appendix></appendix>
@@ -4653,8 +4655,8 @@
               <appendix>- F+Arrow Keys to scroll wheel</appendix>
               <appendix></appendix>
               <appendix>You can adjust the speed, too.</appendix>
-              <appendix>- D+HJKL to high-speed movement</appendix>
-              <appendix>- D+Arrow Keys to high-speed movement</appendix>
+              <appendix>- A+HJKL to high-speed movement</appendix>
+              <appendix>- A+Arrow Keys to high-speed movement</appendix>
               <identifier vk_config="true">notsave.mousekeys_mode</identifier>
               <autogen>--ShowStatusMessage-- Mouse Keys</autogen>
               <!-- scroll wheel mode -->
@@ -4731,19 +4733,6 @@
               </block>
             </item>
             <item>
-              <name>Simultaneous Key Presses Command+[S+D] to turn on Mouse Keys Mode</name>
-              <appendix>// Press S,D keys simultaneously while pressing Command_L or Command_R.</appendix>
-              <appendix>// You can release Command key while pressing S,D keys.</appendix>
-              <appendix></appendix>
-              <appendix>+ F turns on "Scroll Wheel Mode"</appendix>
-              <appendix>// F+HJKL to scroll wheel</appendix>
-              <appendix></appendix>
-              <appendix>+ A turns on "High Speed Mode"</appendix>
-              <appendix>// A+HJKL to high-speed movement</appendix>
-              <identifier>remap.simultaneouskeypresses_mouse_keys_mode_commandSD</identifier>
-              <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, VK_COMMAND, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
-            </item>
-            <item>
               <name>Simultaneous Key Presses Shift+[S+D] to turn on Mouse Keys Mode</name>
               <appendix>// Press S,D keys simultaneously while pressing Shift_L or Shift_R.</appendix>
               <appendix>// You can release Shift key while pressing S,D keys.</appendix>
@@ -4755,6 +4744,19 @@
               <appendix>// A+HJKL to high-speed movement</appendix>
               <identifier>remap.simultaneouskeypresses_mouse_keys_mode_shiftSD</identifier>
               <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, VK_SHIFT, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
+            </item>
+            <item>
+              <name>Simultaneous Key Presses Command+[S+D] to turn on Mouse Keys Mode</name>
+              <appendix>// Press S,D keys simultaneously while pressing Command_L or Command_R.</appendix>
+              <appendix>// You can release Command key while pressing S,D keys.</appendix>
+              <appendix></appendix>
+              <appendix>+ F turns on "Scroll Wheel Mode"</appendix>
+              <appendix>// F+HJKL to scroll wheel</appendix>
+              <appendix></appendix>
+              <appendix>+ A turns on "High Speed Mode"</appendix>
+              <appendix>// A+HJKL to high-speed movement</appendix>
+              <identifier>remap.simultaneouskeypresses_mouse_keys_mode_commandSD</identifier>
+              <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, VK_COMMAND, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
             </item>
             <item>
               <name>Simultaneous Key Presses [D+F] to turn on Mouse Keys Mode</name>
