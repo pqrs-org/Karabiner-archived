@@ -180,6 +180,18 @@
     return [configxmlparser_ keycode:@"ApplicationType::VNC"];
   }
 
+  if ([name isEqualToString:@"com.apple.iWork.Pages"]) {
+    return [configxmlparser_ keycode:@"ApplicationType::IWORK_PAGES"];
+  }
+
+  if ([name isEqualToString:@"com.apple.iWork.Numbers"]) {
+    return [configxmlparser_ keycode:@"ApplicationType::IWORK_NUMBERS"];
+  }
+
+  if ([name isEqualToString:@"com.apple.iWork.Keynote"]) {
+    return [configxmlparser_ keycode:@"ApplicationType::IWORK_KEYNOTE"];
+  }
+
   return [configxmlparser_ keycode:@"ApplicationType::UNKNOWN"];
 }
 
