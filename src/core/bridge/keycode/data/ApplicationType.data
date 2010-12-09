@@ -71,3 +71,8 @@ WEBIDE                  --AUTO--
 
 VNC                     --AUTO--
 SCREEN_SHARING          --AUTO--
+
+// iWork
+IWORK_KEYNOTE           --AUTO--
+IWORK_NUMBERS           --AUTO--
+IWORK_PAGES             --AUTO--
