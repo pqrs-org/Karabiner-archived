@@ -18,7 +18,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       timer_.terminate();
     }
 
-    HoldingKeyToKey::HoldingKeyToKey(void) : index_(0), index_is_holding_(false)
+    HoldingKeyToKey::HoldingKeyToKey(void) : index_(0), index_is_holding_(false), active_(false)
     {}
 
     HoldingKeyToKey::~HoldingKeyToKey(void)
@@ -88,14 +88,20 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     HoldingKeyToKey::remap(RemapParams& remapParams)
     {
-      bool result = keytokey_drop_.remap(remapParams);
-      if (! result) return false;
-
-      // ------------------------------------------------------------
       IOLockWrapper::ScopedLock lk(timer_.getlock());
+
+      bool result = keytokey_drop_.remap(remapParams);
+      if (! result) {
+        if (remapParams.params.ex_iskeydown) {
+          // another key is pressed.
+          dokeyup();
+        }
+        return false;
+      }
 
       if (remapParams.params.ex_iskeydown) {
         target_ = this;
+        active_ = true;
         isfirenormal_ = false;
         isfireholding_ = false;
 
@@ -104,20 +110,29 @@ namespace org_pqrs_KeyRemap4MacBook {
         timer_.setTimeoutMS(Config::get_holdingkeytokey_wait());
 
       } else {
-        timer_.cancelTimeout();
-
-        if (isfireholding_) {
-          keytokey_holding_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
-
-        } else {
-          isfirenormal_ = true;
-
-          FlagStatus::ScopedTemporaryFlagsChanger stfc(savedflags_);
-          keytokey_normal_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
-          keytokey_normal_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
-        }
+        dokeyup();
       }
       return true;
+    }
+
+    void
+    HoldingKeyToKey::dokeyup(void)
+    {
+      if (! active_) return;
+      active_ = false;
+
+      timer_.cancelTimeout();
+
+      if (isfireholding_) {
+        keytokey_holding_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+
+      } else {
+        isfirenormal_ = true;
+
+        FlagStatus::ScopedTemporaryFlagsChanger stfc(savedflags_);
+        keytokey_normal_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+        keytokey_normal_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+      }
     }
 
     void
