@@ -5025,6 +5025,11 @@
           <autogen>--SimultaneousKeyPresses-- KeyCode::COMMAND_R, KeyCode::COMMAND_L, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
         </item>
         <item>
+          <name>Holding "V" Key to toggle Vi Mode</name>
+          <identifier>remap.vimode_holding_v</identifier>
+          <autogen>--HoldingKeyToKey-- KeyCode::V, KeyCode::V, KeyCode::VK_NONE, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
+        </item>
+        <item>
           <name>Arrow(Down/Left/Right) to Option_L</name>
           <appendix>Disable Up-Arrow</appendix>
           <appendix>(+ When you type Arrow only, toggle Vi Mode)</appendix>
