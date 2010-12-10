@@ -5261,6 +5261,21 @@
           <autogen>--DropKeyAfterRemap-- KeyCode::F12,        VK_SHIFT</autogen>
         </item>
         <item>
+          <name>Holding "E" Key to Expose</name>
+          <identifier>remap.holding_e_to_expose</identifier>
+          <autogen>--HoldingKeyToKey-- KeyCode::E, ModifierFlag::NONE, KeyCode::E, KeyCode::VK_NONE, KeyCode::EXPOSE_ALL</autogen>
+        </item>
+        <item>
+          <name>Holding "S" Key to Spaces (F8)</name>
+          <identifier>remap.holding_s_to_spaces</identifier>
+          <autogen>--HoldingKeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::S, KeyCode::VK_NONE, KeyCode::F8</autogen>
+        </item>
+        <item>
+          <name>Holding "D" Key to Dashboard</name>
+          <identifier>remap.holding_d_to_dashboard</identifier>
+          <autogen>--HoldingKeyToKey-- KeyCode::D, ModifierFlag::NONE, KeyCode::D, KeyCode::VK_NONE, KeyCode::DASHBOARD</autogen>
+        </item>
+        <item>
           <name>Expose Mode</name>
           <list>
             <item>
