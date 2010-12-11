@@ -79,6 +79,25 @@
         </item>
 
         <item>
+          <name>VK_SHIFT is alias to ModifierFlag::SHIFT_L, ModifierFlag::SHIFT_R</name>
+          <appendix>--KeyToKey-- KeyCode::A, VK_SHIFT, KeyCode::B</appendix>
+          <appendix>==&gt; --KeyToKey-- KeyCode::A, ModifierFlag::SHIFT_L, KeyCode::B</appendix>
+          <appendix>==&gt; --KeyToKey-- KeyCode::A, ModifierFlag::SHIFT_R, KeyCode::B</appendix>
+          <appendix></appendix>
+          <appendix>Multiple VK_* in one definition are replaced same value.</appendix>
+          <appendix>--KeyToKey-- KeyCode::C, VK_MOD_ANY, KeyCode::D, VK_MOD_ANY, KeyCode::E</appendix>
+          <appendix>==&gt; 2 VK_MOD_ANYs are replaced to ModifierFlag::COMMAND_L</appendix>
+          <appendix>==&gt; 2 VK_MOD_ANYs are replaced to ModifierFlag::COMMAND_R</appendix>
+          <appendix>==&gt; 2 VK_MOD_ANYs are replaced to ModifierFlag::CONTROL_L</appendix>
+          <appendix>==&gt; 2 VK_MOD_ANYs are replaced to ModifierFlag::CONTROL_R</appendix>
+          <appendix>==&gt; 2 VK_MOD_ANYs are replaced to ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L</appendix>
+          <appendix>==&gt; ...</appendix>
+          <identifier>remap.samples_keytokey_vk_modifier</identifier>
+          <autogen>--KeyToKey-- KeyCode::A, VK_SHIFT, KeyCode::B</autogen>
+          <autogen>--KeyToKey-- KeyCode::C, VK_MOD_ANY, KeyCode::D, VK_MOD_ANY, KeyCode::E</autogen>
+        </item>
+
+        <item>
           <name>Key To XXX</name>
           <appendix>A to Shift_L+B (Key to Key+Modifier)</appendix>
           <appendix>B to Command_L+Shift_L (Key to Modifier+Modifier)</appendix>
