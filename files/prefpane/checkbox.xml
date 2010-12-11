@@ -7072,7 +7072,7 @@
               <appendix>(+ When you type Command_L only, send EISUU)</appendix>
               <appendix>(+ When you type Any modifiers+Command_L only, send EISUU)</appendix>
               <identifier>remap.jis_commandL2commandL_eisuu_ex</identifier>
-              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, VK_MOD_ANY, KeyCode::COMMAND_L, KeyCode::JIS_EISUU</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, VK_MOD_ANY, KeyCode::COMMAND_L, VK_MOD_ANY, KeyCode::JIS_EISUU</autogen>
             </item>
             <item>
               <name>Command_L to Command_L</name>
