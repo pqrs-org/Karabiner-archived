@@ -3975,17 +3975,6 @@
     </item>
 
     <item>
-      <name>Virtual Mouse</name>
-      <list>
-        <item>
-          <name>Control+L to RightClick</name>
-          <identifier>remap.control_l2rightclick</identifier>
-          <autogen>--KeyToPointingButton-- KeyCode::L, VK_CONTROL, PointingButton::RIGHT</autogen>
-        </item>
-      </list>
-    </item>
-
-    <item>
       <name>Diamond Cursor</name>
       <list>
         <item>
@@ -4835,6 +4824,12 @@
               <autogen>--DropPointingRelativeCursorMove--</autogen>
             </item>
           </list>
+        </item>
+
+        <item>
+          <name>Control+L to RightClick</name>
+          <identifier>remap.control_l2rightclick</identifier>
+          <autogen>--KeyToPointingButton-- KeyCode::L, VK_CONTROL, PointingButton::RIGHT</autogen>
         </item>
       </list>
     </item>
