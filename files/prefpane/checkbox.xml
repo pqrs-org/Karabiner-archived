@@ -8289,6 +8289,17 @@
                   <identifier>remap.jis_eisuu2extra5_x2eisuu</identifier>
                   <autogen>--DoublePressModifier-- KeyCode::JIS_EISUU, KeyCode::VK_NONE, KeyCode::JIS_EISUU</autogen>
                 </item>
+                <item>
+                  <name>KANA x2 to KANA (単発でのかなキーは無視する)</name>
+                  <identifier>remap.jis_kana2extra5_x2kana</identifier>
+                  <autogen>--DoublePressModifier-- KeyCode::JIS_KANA, KeyCode::VK_NONE, KeyCode::JIS_KANA</autogen>
+                </item>
+                <item>
+                  <name>KANA x2 to KANA</name>
+                  <appendix>(+ When you type KANA only, send CONTROL_L)</appendix>
+                  <identifier>remap.jis_kana2extra5_x2kana_controlL</identifier>
+                  <autogen>--DoublePressModifier-- KeyCode::JIS_KANA, KeyCode::CONTROL_L, KeyCode::JIS_KANA</autogen>
+                </item>
               </list>
             </item>
             <item>
