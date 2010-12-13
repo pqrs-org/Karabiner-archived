@@ -67,14 +67,14 @@
 }
 
 // ======================================================================
-static CFStringRef kInputSourceLanguage_canadian = CFSTR("ca");
-static CFStringRef kInputSourceLanguage_russian = CFSTR("ru");
+static NSString* kInputSourceLanguage_canadian                         = @"ca";
+static NSString* kInputSourceLanguage_russian                          = @"ru";
 // http://ilyabirman.ru/typography-layout/
-static CFStringRef kInputSourceLanguage_russian_Typographic = CFSTR("ru-Typographic");
-static CFStringRef kInputSourceLanguage_english_Typographic = CFSTR("en-Typographic");
-static CFStringRef kInputSourceLanguage_traditional_chinese_yahoo_keykey = CFSTR("zh-Hant.KeyKey");
+static NSString* kInputSourceLanguage_russian_Typographic              = @"ru-Typographic";
+static NSString* kInputSourceLanguage_english_Typographic              = @"en-Typographic";
+static NSString* kInputSourceLanguage_traditional_chinese_yahoo_keykey = @"zh-Hant.KeyKey";
 
-- (CFStringRef) getInputSourceLanguage:(TISInputSourceRef)source
+- (NSString*) getInputSourceLanguage:(TISInputSourceRef)source
 {
   // Because we cannot distinguish en and ca from kTISPropertyInputSourceLanguages,
   // we use kTISPropertyInputSourceID at first.
@@ -93,36 +93,24 @@ static CFStringRef kInputSourceLanguage_traditional_chinese_yahoo_keykey = CFSTR
   //
   //   * These two IM are Japanese input method.
 
-  CFStringRef name = TISGetInputSourceProperty(source, kTISPropertyInputSourceID);
+  NSString* name = TISGetInputSourceProperty(source, kTISPropertyInputSourceID);
   if (name) {
-    if (CFStringCompare(name, CFSTR("com.apple.keylayout.Canadian"), 0) == kCFCompareEqualTo) {
-      return kInputSourceLanguage_canadian;
-    }
-    if (CFStringCompare(name, CFSTR("org.unknown.keylayout.RussianWin"), 0) == kCFCompareEqualTo) {
-      return kInputSourceLanguage_russian;
-    }
-    if (CFStringCompare(name, CFSTR("org.unknown.keylayout.Russian-IlyaBirmanTypography"), 0) == kCFCompareEqualTo) {
-      return kInputSourceLanguage_russian_Typographic;
-    }
-    if (CFStringCompare(name, CFSTR("org.unknown.keylayout.English-IlyaBirmanTypography"), 0) == kCFCompareEqualTo) {
-      return kInputSourceLanguage_english_Typographic;
-    }
-    if (CFStringCompare(name, CFSTR("com.yahoo.inputmethod.KeyKey"), 0) == kCFCompareEqualTo) {
-      return kInputSourceLanguage_traditional_chinese_yahoo_keykey;
-    }
+    if ([name isEqualToString:@"com.apple.keylayout.Canadian"]) return kInputSourceLanguage_canadian;
+    if ([name isEqualToString:@"org.unknown.keylayout.RussianWin"]) return kInputSourceLanguage_russian;
+    if ([name isEqualToString:@"org.unknown.keylayout.Russian-IlyaBirmanTypography"]) return kInputSourceLanguage_russian_Typographic;
+    if ([name isEqualToString:@"org.unknown.keylayout.English-IlyaBirmanTypography"]) return kInputSourceLanguage_english_Typographic;
+    if ([name isEqualToString:@"com.yahoo.inputmethod.KeyKey"]) return kInputSourceLanguage_traditional_chinese_yahoo_keykey;
   }
 
-  CFArrayRef languages = TISGetInputSourceProperty(source, kTISPropertyInputSourceLanguages);
-  if (languages && CFArrayGetCount(languages) > 0) {
+  NSArray* languages = TISGetInputSourceProperty(source, kTISPropertyInputSourceLanguages);
+  if (languages && [languages count] > 0) {
     // U.S. InputSource has many languages (en, de, fr, ...),
     // so we check the first language only to detect real InputSource for French, German, etc.
-    CFStringRef lang = CFArrayGetValueAtIndex(languages, 0);
-    if (lang) {
-      return lang;
-    }
+    NSString* lang = [languages objectAtIndex:0];
+    if (lang) return lang;
   }
 
-  return NULL;
+  return nil;
 }
 
 - (NSString*) getTISPropertyInputModeID
@@ -151,8 +139,8 @@ static CFStringRef kInputSourceLanguage_traditional_chinese_yahoo_keykey = CFSTR
     }
 
     // ----------------------------------------
-    CFStringRef lang = [self getInputSourceLanguage:ref];
-    if (lang && CFStringGetLength(lang) > 0) {
+    NSString* lang = [self getInputSourceLanguage:ref];
+    if (lang && [lang length] > 0) {
       retval = [NSString stringWithFormat:@"org.pqrs.inputmode.%@%@", lang, detail];
     } else {
       retval = [NSString stringWithFormat:@"org.pqrs.inputmode.unknown%@", detail];
@@ -167,7 +155,7 @@ static CFStringRef kInputSourceLanguage_traditional_chinese_yahoo_keykey = CFSTR
 // Note:
 // TISCopyInputSourceForLanguage returns unselectable InputSource.
 // Therefore we get InputSource by ourself.
-- (TISInputSourceRef) copySelectableInputSourceForLanguage:(CFStringRef)language
+- (TISInputSourceRef) copySelectableInputSourceForLanguage:(NSString*)language
 {
   TISInputSourceRef inputsource = NULL;
   CFDictionaryRef filter = NULL;
@@ -193,10 +181,10 @@ static CFStringRef kInputSourceLanguage_traditional_chinese_yahoo_keykey = CFSTR
     TISInputSourceRef source = (TISInputSourceRef)(CFArrayGetValueAtIndex(list, i));
     if (! source) continue;
 
-    CFStringRef lang = [self getInputSourceLanguage:source];
+    NSString* lang = [self getInputSourceLanguage:source];
     if (! lang) continue;
 
-    if (CFStringCompare(language, lang, 0) == kCFCompareEqualTo) {
+    if ([language isEqualToString:lang]) {
       inputsource = source;
       CFRetain(inputsource);
       goto finish;
@@ -216,20 +204,20 @@ finish:
 // ----------------------------------------------------------------------
 - (void) selectInputSource:(unsigned int)vk_keycode
 {
-  CFStringRef language = NULL;
+  NSString* language = nil;
 
   /*  */ if (vk_keycode == [configxmlparser_ keycode:@"KeyCode::VK_CHANGE_INPUTMODE_CANADIAN"]) {
     language = kInputSourceLanguage_canadian;
   } else if (vk_keycode == [configxmlparser_ keycode:@"KeyCode::VK_CHANGE_INPUTMODE_ENGLISH"]) {
-    language = CFSTR("en");
+    language = @"en";
   } else if (vk_keycode == [configxmlparser_ keycode:@"KeyCode::VK_CHANGE_INPUTMODE_FRENCH"]) {
-    language = CFSTR("fr");
+    language = @"fr";
   } else if (vk_keycode == [configxmlparser_ keycode:@"KeyCode::VK_CHANGE_INPUTMODE_GERMAN"]) {
-    language = CFSTR("de");
+    language = @"de";
   } else if (vk_keycode == [configxmlparser_ keycode:@"KeyCode::VK_CHANGE_INPUTMODE_JAPANESE"]) {
-    language = CFSTR("ja");
+    language = @"ja";
   } else if (vk_keycode == [configxmlparser_ keycode:@"KeyCode::VK_CHANGE_INPUTMODE_SWEDISH"]) {
-    language = CFSTR("sv");
+    language = @"sv";
   } else if (vk_keycode == [configxmlparser_ keycode:@"KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN"]) {
     language = kInputSourceLanguage_russian;
   } else if (vk_keycode == [configxmlparser_ keycode:@"KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN_TYPOGRAPHIC"]) {
