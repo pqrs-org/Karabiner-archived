@@ -86,6 +86,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         INPUTMODE_RUSSIAN,
         INPUTMODE_RUSSIAN_TYPOGRAPHIC,
         INPUTMODE_ENGLISH_TYPOGRAPHIC,
+        INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY,
       };
       struct Request {
         InputMode inputmode;

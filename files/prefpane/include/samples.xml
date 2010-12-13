@@ -1173,6 +1173,7 @@
           <appendix>Use 5 to VK_CHANGE_INPUTMODE_SWEDISH</appendix>
           <appendix>Use 6 to VK_CHANGE_INPUTMODE_CANADIAN</appendix>
           <appendix>Use 7 to VK_CHANGE_INPUTMODE_RUSSIAN</appendix>
+          <appendix>Use 8 to VK_CHANGE_INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY</appendix>
           <identifier>remap.samples_vk_change_inputmode</identifier>
           <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
           <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_CHANGE_INPUTMODE_FRENCH</autogen>
@@ -1181,6 +1182,7 @@
           <autogen>--KeyToKey-- KeyCode::KEY_5, KeyCode::VK_CHANGE_INPUTMODE_SWEDISH</autogen>
           <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::VK_CHANGE_INPUTMODE_CANADIAN</autogen>
           <autogen>--KeyToKey-- KeyCode::KEY_7, KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_8, KeyCode::VK_CHANGE_INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY</autogen>
         </item>
         <item>
           <name>VK_CONFIG</name>

@@ -72,6 +72,7 @@ static CFStringRef kInputSourceLanguage_russian = CFSTR("ru");
 // http://ilyabirman.ru/typography-layout/
 static CFStringRef kInputSourceLanguage_russian_Typographic = CFSTR("ru-Typographic");
 static CFStringRef kInputSourceLanguage_english_Typographic = CFSTR("en-Typographic");
+static CFStringRef kInputSourceLanguage_traditional_chinese_yahoo_keykey = CFSTR("zh-Hant.KeyKey");
 
 - (CFStringRef) getInputSourceLanguage:(TISInputSourceRef)source
 {
@@ -105,6 +106,9 @@ static CFStringRef kInputSourceLanguage_english_Typographic = CFSTR("en-Typograp
     }
     if (CFStringCompare(name, CFSTR("org.unknown.keylayout.English-IlyaBirmanTypography"), 0) == kCFCompareEqualTo) {
       return kInputSourceLanguage_english_Typographic;
+    }
+    if (CFStringCompare(name, CFSTR("com.yahoo.inputmethod.KeyKey"), 0) == kCFCompareEqualTo) {
+      return kInputSourceLanguage_traditional_chinese_yahoo_keykey;
     }
   }
 
@@ -321,6 +325,7 @@ void selectInputSource_swedish(void) { selectInputSource_language(CFSTR("sv")); 
 void selectInputSource_russian(void) { selectInputSource_language(CFSTR("ru")); }
 void selectInputSource_russian_typographic(void) { selectInputSource_language(kInputSourceLanguage_russian_Typographic); }
 void selectInputSource_english_typographic(void) { selectInputSource_language(kInputSourceLanguage_english_Typographic); }
+void selectInputSource_traditional_chinese_yahoo_keykey(void) { selectInputSource_language(kInputSourceLanguage_traditional_chinese_yahoo_keykey); }
 
 // ------------------------------------------------------------
 int
