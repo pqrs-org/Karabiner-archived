@@ -9,7 +9,8 @@ parser = XML::Parser.file(file)
 libxmldoc = parser.parse
 
 libxmldoc.root.find('//identifier').each do |node|
-  if /^private./ =~ node.inner_xml then
+  identifier = node.inner_xml
+  if /^private./ =~ identifier or /^notsave.private/ =~ identifier then
     print "\n"
     print "[ERROR] private.* identifier is forbidden in checkbox.xml.\n"
     p node
