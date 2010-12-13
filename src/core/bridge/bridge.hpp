@@ -76,20 +76,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     namespace ChangeInputMode {
-      enum InputMode {
-        INPUTMODE_ENGLISH,
-        INPUTMODE_FRENCH,
-        INPUTMODE_GERMAN,
-        INPUTMODE_JAPANESE,
-        INPUTMODE_SWEDISH,
-        INPUTMODE_CANADIAN,
-        INPUTMODE_RUSSIAN,
-        INPUTMODE_RUSSIAN_TYPOGRAPHIC,
-        INPUTMODE_ENGLISH_TYPOGRAPHIC,
-        INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY,
-      };
       struct Request {
-        InputMode inputmode;
+        uint32_t vk_keycode;
       };
       struct Reply {};
     }
