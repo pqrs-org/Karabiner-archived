@@ -2717,6 +2717,11 @@
               <autogen>--KeyToKey-- KeyCode::KEYPAD_CLEAR, KeyCode::DELETE</autogen>
             </item>
             <item>
+              <name>Clear to Equal</name>
+              <identifier>remap.clear2equal</identifier>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_CLEAR, KeyCode::EQUAL</autogen>
+            </item>
+            <item>
               <name>Clear to Return</name>
               <identifier>remap.clear2return</identifier>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_CLEAR, KeyCode::RETURN</autogen>
