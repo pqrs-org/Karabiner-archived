@@ -214,6 +214,43 @@ finish:
 }
 
 // ----------------------------------------------------------------------
+- (void) selectInputSource:(unsigned int)vk_keycode
+{
+  CFStringRef language = NULL;
+
+  /*  */ if (vk_keycode == [configxmlparser_ keycode:@"KeyCode::VK_CHANGE_INPUTMODE_CANADIAN"]) {
+    language = kInputSourceLanguage_canadian;
+  } else if (vk_keycode == [configxmlparser_ keycode:@"KeyCode::VK_CHANGE_INPUTMODE_ENGLISH"]) {
+    language = CFSTR("en");
+  } else if (vk_keycode == [configxmlparser_ keycode:@"KeyCode::VK_CHANGE_INPUTMODE_FRENCH"]) {
+    language = CFSTR("fr");
+  } else if (vk_keycode == [configxmlparser_ keycode:@"KeyCode::VK_CHANGE_INPUTMODE_GERMAN"]) {
+    language = CFSTR("de");
+  } else if (vk_keycode == [configxmlparser_ keycode:@"KeyCode::VK_CHANGE_INPUTMODE_JAPANESE"]) {
+    language = CFSTR("ja");
+  } else if (vk_keycode == [configxmlparser_ keycode:@"KeyCode::VK_CHANGE_INPUTMODE_SWEDISH"]) {
+    language = CFSTR("sv");
+  } else if (vk_keycode == [configxmlparser_ keycode:@"KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN"]) {
+    language = kInputSourceLanguage_russian;
+  } else if (vk_keycode == [configxmlparser_ keycode:@"KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN_TYPOGRAPHIC"]) {
+    language = kInputSourceLanguage_russian_Typographic;
+  } else if (vk_keycode == [configxmlparser_ keycode:@"KeyCode::VK_CHANGE_INPUTMODE_ENGLISH_TYPOGRAPHIC"]) {
+    language = kInputSourceLanguage_english_Typographic;
+  } else if (vk_keycode == [configxmlparser_ keycode:@"KeyCode::VK_CHANGE_INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY"]) {
+    language = kInputSourceLanguage_traditional_chinese_yahoo_keykey;
+  }
+
+  if (! language) return;
+
+  // ----------------------------------------
+  TISInputSourceRef inputsource = [self copySelectableInputSourceForLanguage:language];
+  if (! inputsource) return;
+
+  TISSelectInputSource(inputsource);
+  CFRelease(inputsource);
+}
+
+// ----------------------------------------------------------------------
 - (void) registerStatusWindow:(NSWindow*)window label:(NSTextField*)label background:(NSImageView*)background
 {
   statuswindow_ = window;
@@ -300,32 +337,17 @@ registerServerObjcPart(ServerObjcPart* object)
   serverobjcpart = object;
 }
 
-static void
-selectInputSource_language(CFStringRef language)
+// ------------------------------------------------------------
+void
+selectInputSource(uint32_t vk_keycode)
 {
   if (! serverobjcpart) {
     NSLog(@"[WARNING] selectInputSource_language serverobjcpart == nil");
     return;
   }
 
-  TISInputSourceRef inputsource = [serverobjcpart copySelectableInputSourceForLanguage:language];
-  if (! inputsource) return;
-
-  TISSelectInputSource(inputsource);
-  CFRelease(inputsource);
+  [serverobjcpart selectInputSource:vk_keycode];
 }
-
-// ------------------------------------------------------------
-void selectInputSource_canadian(void) { selectInputSource_language(CFSTR("ca")); }
-void selectInputSource_english(void) { selectInputSource_language(CFSTR("en")); }
-void selectInputSource_french(void) { selectInputSource_language(CFSTR("fr")); }
-void selectInputSource_german(void) { selectInputSource_language(CFSTR("de")); }
-void selectInputSource_japanese(void) { selectInputSource_language(CFSTR("ja")); }
-void selectInputSource_swedish(void) { selectInputSource_language(CFSTR("sv")); }
-void selectInputSource_russian(void) { selectInputSource_language(CFSTR("ru")); }
-void selectInputSource_russian_typographic(void) { selectInputSource_language(kInputSourceLanguage_russian_Typographic); }
-void selectInputSource_english_typographic(void) { selectInputSource_language(kInputSourceLanguage_english_Typographic); }
-void selectInputSource_traditional_chinese_yahoo_keykey(void) { selectInputSource_language(kInputSourceLanguage_traditional_chinese_yahoo_keykey); }
 
 // ------------------------------------------------------------
 int

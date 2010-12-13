@@ -168,26 +168,17 @@ namespace org_pqrs_KeyRemap4MacBook {
   Handle_VK_CHANGE_INPUTMODE::handle(const Params_KeyboardEventCallBack& params)
   {
     KeyRemap4MacBook_bridge::ChangeInputMode::Request request;
-    if (params.key == KeyCode::VK_CHANGE_INPUTMODE_ENGLISH) {
-      request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_ENGLISH;
-    } else if (params.key == KeyCode::VK_CHANGE_INPUTMODE_FRENCH) {
-      request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_FRENCH;
-    } else if (params.key == KeyCode::VK_CHANGE_INPUTMODE_GERMAN) {
-      request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_GERMAN;
-    } else if (params.key == KeyCode::VK_CHANGE_INPUTMODE_JAPANESE) {
-      request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_JAPANESE;
-    } else if (params.key == KeyCode::VK_CHANGE_INPUTMODE_SWEDISH) {
-      request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_SWEDISH;
-    } else if (params.key == KeyCode::VK_CHANGE_INPUTMODE_CANADIAN) {
-      request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_CANADIAN;
-    } else if (params.key == KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN) {
-      request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_RUSSIAN;
-    } else if (params.key == KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN_TYPOGRAPHIC) {
-      request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_RUSSIAN_TYPOGRAPHIC;
-    } else if (params.key == KeyCode::VK_CHANGE_INPUTMODE_ENGLISH_TYPOGRAPHIC) {
-      request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_ENGLISH_TYPOGRAPHIC;
-    } else if (params.key == KeyCode::VK_CHANGE_INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY) {
-      request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY;
+    if (params.key == KeyCode::VK_CHANGE_INPUTMODE_ENGLISH ||
+        params.key == KeyCode::VK_CHANGE_INPUTMODE_FRENCH ||
+        params.key == KeyCode::VK_CHANGE_INPUTMODE_GERMAN ||
+        params.key == KeyCode::VK_CHANGE_INPUTMODE_JAPANESE ||
+        params.key == KeyCode::VK_CHANGE_INPUTMODE_SWEDISH ||
+        params.key == KeyCode::VK_CHANGE_INPUTMODE_CANADIAN ||
+        params.key == KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN ||
+        params.key == KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN_TYPOGRAPHIC ||
+        params.key == KeyCode::VK_CHANGE_INPUTMODE_ENGLISH_TYPOGRAPHIC ||
+        params.key == KeyCode::VK_CHANGE_INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY) {
+      request.vk_keycode = params.key.get();
     } else {
       return false;
     }

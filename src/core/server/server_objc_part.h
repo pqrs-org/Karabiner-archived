@@ -32,6 +32,7 @@ typedef enum {
 - (NSUInteger) getConfigInitializeVectorSize:(unsigned int)configindex;
 - (NSArray*) getConfigInitializeVector:(unsigned int)configindex;
 - (int) getConfigValue:(unsigned int)configindex;
+- (void) selectInputSource:(unsigned int)vk_keycode;
 
 - (NSString*) getActiveApplicationName;
 - (NSString*) getTISPropertyInputModeID;
@@ -65,16 +66,7 @@ int getConfigInitializeVector(uint32_t* value, size_t len, uint32_t configindex)
 
 int getConfigValue(uint32_t configindex);
 
-void selectInputSource_english(void);
-void selectInputSource_french(void);
-void selectInputSource_german(void);
-void selectInputSource_japanese(void);
-void selectInputSource_swedish(void);
-void selectInputSource_canadian(void);
-void selectInputSource_russian(void);
-void selectInputSource_russian_typographic(void);
-void selectInputSource_english_typographic(void);
-void selectInputSource_traditional_chinese_yahoo_keykey(void);
+void selectInputSource(uint32_t vk_keycode);
 
 void reset_statusmessage(void);
 void set_statusmessage(StatusMessageType type, const char* message);

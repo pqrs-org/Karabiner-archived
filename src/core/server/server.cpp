@@ -279,38 +279,7 @@ KeyRemap4MacBook_server::Server::do_GetWorkspaceData(int sock)
 org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error
 KeyRemap4MacBook_server::Server::do_ChangeInputMode(const org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::Request& request)
 {
-  switch (request.inputmode) {
-    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_ENGLISH:
-      selectInputSource_english();
-      break;
-    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_FRENCH:
-      selectInputSource_french();
-      break;
-    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_GERMAN:
-      selectInputSource_german();
-      break;
-    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_JAPANESE:
-      selectInputSource_japanese();
-      break;
-    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_SWEDISH:
-      selectInputSource_swedish();
-      break;
-    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_CANADIAN:
-      selectInputSource_canadian();
-      break;
-    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_RUSSIAN:
-      selectInputSource_russian();
-      break;
-    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_RUSSIAN_TYPOGRAPHIC:
-      selectInputSource_russian_typographic();
-      break;
-    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_ENGLISH_TYPOGRAPHIC:
-      selectInputSource_english_typographic();
-      break;
-    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY:
-      selectInputSource_traditional_chinese_yahoo_keykey();
-      break;
-  }
+  selectInputSource(request.vk_keycode);
   return org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS;
 }
 
