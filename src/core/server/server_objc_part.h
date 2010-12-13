@@ -74,6 +74,7 @@ void selectInputSource_canadian(void);
 void selectInputSource_russian(void);
 void selectInputSource_russian_typographic(void);
 void selectInputSource_english_typographic(void);
+void selectInputSource_traditional_chinese_yahoo_keykey(void);
 
 void reset_statusmessage(void);
 void set_statusmessage(StatusMessageType type, const char* message);

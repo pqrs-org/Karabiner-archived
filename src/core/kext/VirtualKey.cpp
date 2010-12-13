@@ -186,6 +186,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_RUSSIAN_TYPOGRAPHIC;
     } else if (params.key == KeyCode::VK_CHANGE_INPUTMODE_ENGLISH_TYPOGRAPHIC) {
       request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_ENGLISH_TYPOGRAPHIC;
+    } else if (params.key == KeyCode::VK_CHANGE_INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY) {
+      request.inputmode = KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY;
     } else {
       return false;
     }

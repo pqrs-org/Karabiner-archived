@@ -307,6 +307,9 @@ KeyRemap4MacBook_server::Server::do_ChangeInputMode(const org_pqrs_KeyRemap4MacB
     case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_ENGLISH_TYPOGRAPHIC:
       selectInputSource_english_typographic();
       break;
+    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY:
+      selectInputSource_traditional_chinese_yahoo_keykey();
+      break;
   }
   return org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS;
 }
