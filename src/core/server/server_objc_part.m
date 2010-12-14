@@ -5,6 +5,17 @@
 
 @implementation ServerObjcPart
 
+- (void) dealloc
+{
+  if (statusmessage_lock_) {
+    [statusmessage_lock_ release];
+  }
+  if (statusmessage_extra_) {
+    [statusmessage_extra_ release];
+  }
+  [super dealloc];
+}
+
 - (NSArray*) getEssentialConfig
 {
   return [preferencesmanager_ essential_config];
@@ -251,7 +262,7 @@ finish:
   if (! statuswindow_) return;
   if (! statuswindow_label_) return;
 
-  NSMutableString* message = [[NSMutableString alloc] init];
+  NSMutableString* message = [[NSMutableString new] autorelease];
   if (statusmessage_lock_ && [statusmessage_lock_ length] > 0) {
     [message appendString:statusmessage_lock_];
     [message appendString:@"\n"];
@@ -269,8 +280,6 @@ finish:
     // hide
     [statuswindow_ orderOut:nil];
   }
-
-  [message release];
 }
 
 - (void) setStatusMessage:(StatusMessageType)type message:(const char*)message
@@ -279,11 +288,21 @@ finish:
 
   switch (type) {
     case STATUSMESSAGETYPE_LOCK:
+      if (statusmessage_lock_) {
+        [statusmessage_lock_ release];
+      }
       statusmessage_lock_ = s;
+      [statusmessage_lock_ retain];
       break;
+
     case STATUSMESSAGETYPE_EXTRA:
+      if (statusmessage_extra_) {
+        [statusmessage_extra_ release];
+      }
       statusmessage_extra_ = s;
+      [statusmessage_extra_ retain];
       break;
+
     default:
       break;
   }
