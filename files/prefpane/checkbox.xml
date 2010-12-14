@@ -1411,6 +1411,13 @@
           </block>
         </item>
         <item>
+          <name>Eject to Option_L+Delete</name>
+          <appendix>(Fn+Eject to Eject)</appendix>
+          <identifier>remap.eject2optionaLdelete</identifier>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
+        </item>
+        <item>
           <name>Eject to Command+Control+Option+Shift+E</name>
           <identifier>remap.eject2fccosE</identifier>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::E, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
