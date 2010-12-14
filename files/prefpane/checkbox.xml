@@ -4077,9 +4077,26 @@
           <appendix>Browsing Mode is a mode to perform reading of the text effectively.</appendix>
           <appendix></appendix>
           <appendix>- Change Space to PageDown</appendix>
+          <appendix>- Change B to PageUp</appendix>
+          <appendix>- Change H to Home</appendix>
+          <appendix>- Change J to Option_L+Down</appendix>
+          <appendix>- Change K to Option_L+Up</appendix>
+          <appendix>- Change L to End</appendix>
           <identifier vk_config="true">notsave.browsingmode</identifier>
           <autogen>--ShowStatusMessage-- Browsing Mode</autogen>
           <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::PAGEDOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::B, KeyCode::PAGEUP</autogen>
+          <autogen>--KeyToKey-- KeyCode::H, KeyCode::HOME</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, KeyCode::END</autogen>
+          <autogen>--KeyToKey-- KeyCode::J, KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, KeyCode::CURSOR_UP, ModifierFlag::OPTION_L</autogen>
+        </item>
+        <item>
+          <name>Eject to toggle Browsing Mode</name>
+          <appendix>(+ Fn+Eject to Eject)</appendix>
+          <identifier>remap.eject2browsing</identifier>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::VK_CONFIG_TOGGLE_notsave_browsingmode</autogen>
         </item>
         <item>
           <name>Fn to Fn</name>
