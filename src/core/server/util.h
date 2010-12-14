@@ -10,7 +10,7 @@ extern "C" {
  * @return return 0 if failed.
  */
 int server_initialize(const char* basedirectory);
-void server_run(void);
+int server_process(void);
 
 void set_sysctl_do_reload_xml(void);
 void set_sysctl_do_reset(void);

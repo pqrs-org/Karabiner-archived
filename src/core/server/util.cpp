@@ -17,11 +17,15 @@ server_initialize(const char* basedirectory)
   return server.initialize(basedirectory);
 }
 
-void
-server_run(void)
+int
+server_process(void)
 {
-  server.doLoop();
-  std::cerr << "[ERROR] KeyRemap4MacBook_server: server.doLoop was finished for some reason." << std::endl;
+  int error = 0;
+  if (! server.process()) {
+    std::cerr << "[ERROR] KeyRemap4MacBook_server: server.doLoop was finished for some reason." << std::endl;
+    error = 1;
+  }
+  return error;
 }
 
 // ----------------------------------------------------------------------

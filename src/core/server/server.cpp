@@ -143,19 +143,17 @@ error:
   sendReply(sock, NULL, 0, org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ERROR);
 }
 
-void
-KeyRemap4MacBook_server::Server::doLoop(void)
+bool
+KeyRemap4MacBook_server::Server::process(void)
 {
-  if (listenSocket_ == -1) return;
+  if (listenSocket_ == -1) return false;
 
-  for (;;) {
-    int s = accept(listenSocket_, NULL, NULL);
-    if (s < 0) {
-      return;
-    }
-    dispatchOperator(s);
-    close(s);
-  }
+  int s = accept(listenSocket_, NULL, NULL);
+  if (s < 0) return false;
+
+  dispatchOperator(s);
+  close(s);
+  return true;
 }
 
 // --------------------------------------------------

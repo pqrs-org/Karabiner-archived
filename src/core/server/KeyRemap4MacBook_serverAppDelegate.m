@@ -17,24 +17,25 @@
 @synthesize window;
 
 - (void) threadMain {
-  NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+  for (;;) {
+    NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+    int error = server_process();
+    [pool drain];
 
-  server_run();
-
-  [pool drain];
+    if (error) break;
+  }
 
   [NSApp terminate:self];
 }
 
 - (void) configThreadMain {
-  NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
-
   for (;;) {
+    NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
     set_sysctl_do_reload_xml();
     sleep(1);
+    [pool drain];
   }
 
-  [pool drain];
   [NSThread exit];
 }
 
