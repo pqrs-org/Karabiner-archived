@@ -12,7 +12,7 @@ namespace KeyRemap4MacBook_server {
   public:
     Server(void) : listenSocket_(-1) {}
     bool initialize(const char* basedirectory);
-    void doLoop(void);
+    bool process(void);
     const std::string getSocketPath(void) { return socketpath_; }
 
   private:
