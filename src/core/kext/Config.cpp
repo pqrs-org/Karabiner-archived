@@ -193,7 +193,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   Config::load_essential_config(void)
   {
-    KeyRemap4MacBook_bridge::GetEssentialConfig::Reply reply;
+    // load_essential_config is called from one thread.
+    // So, we can use static local variable to reduce stack usage.
+    static KeyRemap4MacBook_bridge::GetEssentialConfig::Reply reply;
     time_t timeout_second = 3;
     int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_ESSENTIAL_CONFIG, NULL, 0, &reply, sizeof(reply), timeout_second, 0);
     if (error) {
