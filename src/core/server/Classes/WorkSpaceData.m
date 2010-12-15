@@ -10,7 +10,8 @@
 
   if ([name isEqualToString:@"org.gnu.Emacs"] ||
       [name isEqualToString:@"org.gnu.AquamacsEmacs"] ||
-      [name isEqualToString:@"org.gnu.Aquamacs"]) {
+      [name isEqualToString:@"org.gnu.Aquamacs"] ||
+      [name isEqualToString:@"org.pqrs.unknownapp.conkeror"]) {
     return [configxmlparser_ keycode:@"ApplicationType::EMACS"];
   }
 
