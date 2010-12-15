@@ -1,6 +1,8 @@
 #ifndef CONFIG_HPP
 #define CONFIG_HPP
 
+#include <sys/types.h>
+#include <sys/sysctl.h>
 #include "bridge.h"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -12,8 +14,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void sysctl_register(void);
     static void sysctl_unregister(void);
 
-    static void load_essential_config_default(void);
-    static void load_essential_config(void);
+    static int do_reset_handler SYSCTL_HANDLER_ARGS;
+    static int do_reload_xml_handler SYSCTL_HANDLER_ARGS;
+    static int do_reload_only_config_handler SYSCTL_HANDLER_ARGS;
+    static int socket_path_handler SYSCTL_HANDLER_ARGS;
 
     static int get_essential_config(unsigned int index) {
       if (index >= BRIDGE_ESSENTIAL_CONFIG_INDEX__END__) {
@@ -77,6 +81,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (value > maxval) return maxval;
       return value;
     }
+
+    static void load_essential_config_default(void);
+    static void load_essential_config(void);
 
     static int essential_config_[BRIDGE_ESSENTIAL_CONFIG_INDEX__END__];
     static const int essential_config_default_[BRIDGE_ESSENTIAL_CONFIG_INDEX__END__];
