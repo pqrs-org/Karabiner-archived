@@ -193,6 +193,10 @@
     return [configxmlparser_ keycode:@"ApplicationType::IWORK_KEYNOTE"];
   }
 
+  if ([name isEqualToString:@"com.luxology.modo"]) {
+    return [configxmlparser_ keycode:@"ApplicationType::MODO"];
+  }
+
   return [configxmlparser_ keycode:@"ApplicationType::UNKNOWN"];
 }
 
