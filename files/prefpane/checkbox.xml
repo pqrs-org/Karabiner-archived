@@ -7356,6 +7356,18 @@
           </list>
         </item>
         <item>
+          <name>Change Semicolon(;) Key</name>
+          <list>
+            <item>
+              <name>Semicolon to Sticky Shift_L</name>
+              <appendix>(effective only when input source is Japanese)</appendix>
+              <identifier>remap.jis_semicolon2stickyshiftL</identifier>
+              <inputmode_only>JAPANESE</inputmode_only>
+              <autogen>--KeyOverlaidModifier-- KeyCode::SEMICOLON, KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Change Space Key</name>
           <list>
             <item>
