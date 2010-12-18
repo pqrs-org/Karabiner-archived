@@ -6739,6 +6739,24 @@
           <autogen>--KeyToKey-- KeyCode::F3, VK_CONTROL, KeyCode::G, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
           <autogen>--KeyToKey-- KeyCode::F3, KeyCode::G, ModifierFlag::COMMAND_L</autogen>
         </item>
+        <item>
+          <name>Use PC Style "Change Input Method" #1</name>
+          <appendix>Flip between input modes</appendix>
+          <appendix>(Option_L+Shift_L to Command+Space)</appendix>
+          <appendix>If you want to use Option_L+Shift_L as modifier, press Shift_L first. (then press Option_L.)</appendix>
+          <identifier>remap.pcstyle_changeinputmethod1</identifier>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::OPTION_L, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
+          <name>Use PC Style "Change Input Method" #2</name>
+          <appendix>Flip between input modes</appendix>
+          <appendix>(Option+Shift_L to Command+Space)</appendix>
+          <appendix>(Option+Shift_R to Command+Shift+Space)</appendix>
+          <appendix>If you want to use Option+Shift as modifier, press Shift first. (then press Option.)</appendix>
+          <identifier>remap.pcstyle_changeinputmethod2</identifier>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_L, VK_OPTION, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_R, VK_OPTION, KeyCode::SPACE, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+        </item>
       </list>
     </item>
 
