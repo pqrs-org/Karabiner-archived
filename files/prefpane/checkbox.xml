@@ -962,6 +962,11 @@
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::SHIFT_L</autogen>
         </item>
         <item>
+          <name>Command_R to Sticky Command_R</name>
+          <identifier>remap.sticky_commandR</identifier>
+          <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_STICKY_COMMAND_R</autogen>
+        </item>
+        <item>
           <name>Command_R to Enter</name>
           <identifier>remap.commandR2enter</identifier>
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::ENTER</autogen>
