@@ -827,6 +827,11 @@
           <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::SHIFT_L</autogen>
         </item>
         <item>
+          <name>Command_L to Sticky Command_L</name>
+          <identifier>remap.sticky_commandL</identifier>
+          <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_STICKY_COMMAND_L</autogen>
+        </item>
+        <item>
           <name>Command_L to Backquote(`)</name>
           <identifier>remap.commandL2backquote</identifier>
           <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::BACKQUOTE</autogen>
