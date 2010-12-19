@@ -3612,6 +3612,11 @@
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::OPTION_L</autogen>
         </item>
         <item>
+          <name>Shift_L to Sticky Shift_L</name>
+          <identifier>remap.sticky_shiftL</identifier>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L</autogen>
+        </item>
+        <item>
           <name>Shift_L to Escape</name>
           <identifier>remap.shiftL2escape</identifier>
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::ESCAPE</autogen>
@@ -3724,6 +3729,11 @@
           <name>Shift_R to Lazy_Shift_R</name>
           <identifier>remap.shiftR2lazy_shiftR</identifier>
           <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::VK_LAZY_SHIFT_R</autogen>
+        </item>
+        <item>
+          <name>Shift_R to Sticky Shift_R</name>
+          <identifier>remap.sticky_shiftR</identifier>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::VK_STICKY_SHIFT_R</autogen>
         </item>
         <item>
           <name>Shift_R to Enter</name>
