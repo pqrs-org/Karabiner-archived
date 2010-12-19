@@ -1192,6 +1192,11 @@
           <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::SHIFT_L</autogen>
         </item>
         <item>
+          <name>Control_L to Sticky Control_L</name>
+          <identifier>remap.sticky_controlL</identifier>
+          <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_L, KeyCode::CONTROL_L, KeyCode::VK_STICKY_CONTROL_L</autogen>
+        </item>
+        <item>
           <name>Control_L to Delete</name>
           <identifier>remap.controlL2delete</identifier>
           <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::DELETE</autogen>
@@ -1259,6 +1264,11 @@
           <name>Control_R to Option_R</name>
           <identifier>remap.controlR2optionR</identifier>
           <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::OPTION_R</autogen>
+        </item>
+        <item>
+          <name>Control_R to Sticky Control_R</name>
+          <identifier>remap.sticky_controlR</identifier>
+          <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_R, KeyCode::CONTROL_R, KeyCode::VK_STICKY_CONTROL_R</autogen>
         </item>
         <item>
           <name>Control_R to Escape</name>
