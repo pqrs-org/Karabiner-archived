@@ -3214,6 +3214,11 @@
           <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::SHIFT_L</autogen>
         </item>
         <item>
+          <name>Option_L to Sticky Option_L</name>
+          <identifier>remap.sticky_optionL</identifier>
+          <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_L, KeyCode::OPTION_L, KeyCode::VK_STICKY_OPTION_L</autogen>
+        </item>
+        <item>
           <name>Option_L to Escape</name>
           <identifier>remap.optionL2escape</identifier>
           <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::ESCAPE</autogen>
@@ -3286,6 +3291,11 @@
           <name>Option_R to Option_R+Shift_L</name>
           <identifier>remap.optionR2optionRshiftL</identifier>
           <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::OPTION_R, ModifierFlag::SHIFT_L</autogen>
+        </item>
+        <item>
+          <name>Option_R to Sticky Option_R</name>
+          <identifier>remap.sticky_optionR</identifier>
+          <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_R, KeyCode::OPTION_R, KeyCode::VK_STICKY_OPTION_R</autogen>
         </item>
         <item>
           <name>Option_R to Delete</name>
