@@ -8460,6 +8460,17 @@
           </list>
         </item>
         <item>
+          <name>Kotoeri Hacks</name>
+          <list>
+            <item>
+              <name>Control+I to Control+K (Control+I でカタカナ変換)</name>
+              <identifier>remap.jis_controlItocontrolK</identifier>
+              <inputmode_only>JAPANESE</inputmode_only>
+              <autogen>--KeyToKey-- KeyCode::I, VK_CONTROL | ModifierFlag::NONE, KeyCode::K, ModifierFlag::CONTROL_L</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Hack for the bug of Mac OS X</name>
           <list>
             <item>
