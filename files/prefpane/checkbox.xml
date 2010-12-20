@@ -7821,17 +7821,23 @@
           <list>
             <item>
               <name>Control+O to KANA/EISUU (toggle)</name>
+              <appendix>(Except in Virtual Machine, RDC)</appendix>
               <identifier>remap.jis_controlO2kanaeisuu</identifier>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
               <autogen>--KeyToKey-- KeyCode::O, VK_CONTROL | ModifierFlag::NONE, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
             </item>
             <item>
               <name>Control+Backslash(\) to KANA/EISUU (toggle)</name>
+              <appendix>(Except in Virtual Machine, RDC)</appendix>
               <identifier>remap.jis_controlbackslash2kanaeisuu</identifier>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
               <autogen>--KeyToKey-- KeyCode::BACKSLASH, VK_CONTROL | ModifierFlag::NONE, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
             </item>
             <item>
               <name>Control+JIS_YEN(¥) to KANA/EISUU (toggle)</name>
+              <appendix>(Except in Virtual Machine, RDC)</appendix>
               <identifier>remap.jis_controljisyen2kanaeisuu</identifier>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
               <autogen>--KeyToKey-- KeyCode::JIS_YEN, VK_CONTROL | ModifierFlag::NONE, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
             </item>
           </list>
@@ -8464,9 +8470,19 @@
           <list>
             <item>
               <name>Control+I to Control+K (Control+I でカタカナ変換)</name>
+              <appendix>(Except in Virtual Machine, RDC)</appendix>
               <identifier>remap.jis_controlItocontrolK</identifier>
               <inputmode_only>JAPANESE</inputmode_only>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
               <autogen>--KeyToKey-- KeyCode::I, VK_CONTROL | ModifierFlag::NONE, KeyCode::K, ModifierFlag::CONTROL_L</autogen>
+            </item>
+            <item>
+              <name>Control+I to F7 (Control+I でカタカナ変換)</name>
+              <appendix>(Except in Virtual Machine, RDC)</appendix>
+              <identifier>remap.jis_controlItof7</identifier>
+              <inputmode_only>JAPANESE</inputmode_only>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+              <autogen>--KeyToKey-- KeyCode::I, VK_CONTROL | ModifierFlag::NONE, KeyCode::F7</autogen>
             </item>
           </list>
         </item>
