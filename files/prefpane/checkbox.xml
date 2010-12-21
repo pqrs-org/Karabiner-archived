@@ -7916,6 +7916,11 @@
           <name>Change Keyboard Layout</name>
           <list>
             <item>
+              <name>Use Dvorak Keyboard Layout on Japanese Keyboard</name>
+              <identifier>remap.jis_qwerty2dvorak</identifier>
+              <!-- #include "include/jis_dvorak.xml" -->
+            </item>
+            <item>
               <name>Use Japanese Keyboard as ASCII Keyboard</name>
               <identifier>remap.jis_jansi</identifier>
               <autogen>--SetKeyboardType-- KeyboardType::MACBOOK</autogen>
