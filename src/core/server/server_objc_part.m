@@ -237,6 +237,8 @@ finish:
     language = kInputSourceLanguage_english_Typographic;
   } else if (vk_keycode == [configxmlparser_ keycode:@"KeyCode::VK_CHANGE_INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY"]) {
     language = kInputSourceLanguage_traditional_chinese_yahoo_keykey;
+  } else if (vk_keycode == [configxmlparser_ keycode:@"KeyCode::VK_CHANGE_INPUTMODE_ESTONIAN"]) {
+    language = @"et";
   }
 
   if (! language) return;
