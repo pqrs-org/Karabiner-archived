@@ -177,7 +177,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         params.key == KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN ||
         params.key == KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN_TYPOGRAPHIC ||
         params.key == KeyCode::VK_CHANGE_INPUTMODE_ENGLISH_TYPOGRAPHIC ||
-        params.key == KeyCode::VK_CHANGE_INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY) {
+        params.key == KeyCode::VK_CHANGE_INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY ||
+        params.key == KeyCode::VK_CHANGE_INPUTMODE_ESTONIAN) {
       request.vk_keycode = params.key.get();
     } else {
       return false;
