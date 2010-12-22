@@ -2,7 +2,6 @@
 
 #import "KeyRemap4MacBookPref.h"
 #import "Common.h"
-#import "SysctlWrapper.h"
 
 @implementation KeyRemap4MacBookPref
 
@@ -11,7 +10,7 @@ static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
 /* ---------------------------------------------------------------------- */
 - (void) drawVersion
 {
-  NSString* version = [BUNDLEPREFIX (SysctlWrapper) getString:@"keyremap4macbook.version"];
+  NSString* version = [[preferencesclient_ proxy] preferencepane_version];
   if (! version) {
     version = @"-.-.-";
   }
