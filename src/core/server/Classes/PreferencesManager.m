@@ -400,4 +400,9 @@
   return [configxmlparser_ preferencepane_get_private_xml_path];
 }
 
+- (NSString*) preferencepane_version
+{
+  return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+}
+
 @end

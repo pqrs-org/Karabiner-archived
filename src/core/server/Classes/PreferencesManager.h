@@ -47,5 +47,6 @@
 - (NSArray*) preferencepane_number;
 - (NSString*) preferencepane_error_message;
 - (NSString*) preferencepane_get_private_xml_path;
+- (NSString*) preferencepane_version;
 
 @end
