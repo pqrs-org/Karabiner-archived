@@ -21,8 +21,6 @@
 		34CBFDDE0D94CEC00087D9DB /* OutlineView_number.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CBFDD80D94CEC00087D9DB /* OutlineView_number.m */; };
 		34DB5C081297F754006B9B05 /* OutlineView.h in Headers */ = {isa = PBXBuildFile; fileRef = 34DB5C071297F754006B9B05 /* OutlineView.h */; };
 		34DB5C171297F92B006B9B05 /* OutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DB5C161297F92B006B9B05 /* OutlineView.m */; };
-		34E409DB0D54C4C1008441E7 /* SysctlWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 34E409D70D54C4C1008441E7 /* SysctlWrapper.h */; };
-		34E409DC0D54C4C1008441E7 /* SysctlWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E409D80D54C4C1008441E7 /* SysctlWrapper.m */; };
 		8D202CEA0486D31800D8A456 /* KeyRemap4MacBook_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32DBCFA20370C41700C91783 /* KeyRemap4MacBook_Prefix.pch */; };
 		8D202CEB0486D31800D8A456 /* KeyRemap4MacBookPref.h in Headers */ = {isa = PBXBuildFile; fileRef = F506C03C013D9D7901CA16C8 /* KeyRemap4MacBookPref.h */; };
 		8D202CED0486D31800D8A456 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
@@ -53,8 +51,6 @@
 		34CBFDD80D94CEC00087D9DB /* OutlineView_number.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutlineView_number.m; sourceTree = "<group>"; };
 		34DB5C071297F754006B9B05 /* OutlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutlineView.h; sourceTree = "<group>"; };
 		34DB5C161297F92B006B9B05 /* OutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutlineView.m; sourceTree = "<group>"; };
-		34E409D70D54C4C1008441E7 /* SysctlWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SysctlWrapper.h; path = sharecode/SysctlWrapper.h; sourceTree = "<group>"; };
-		34E409D80D54C4C1008441E7 /* SysctlWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SysctlWrapper.m; path = sharecode/SysctlWrapper.m; sourceTree = "<group>"; };
 		8D202CF70486D31800D8A456 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D202CF80486D31800D8A456 /* KeyRemap4MacBook.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyRemap4MacBook.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
 		F506C035013D953901CA16C8 /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = /System/Library/Frameworks/PreferencePanes.framework; sourceTree = "<absolute>"; };
@@ -169,8 +165,6 @@
 		34275C401053FE6000EF31B9 /* sharecode */ = {
 			isa = PBXGroup;
 			children = (
-				34E409D70D54C4C1008441E7 /* SysctlWrapper.h */,
-				34E409D80D54C4C1008441E7 /* SysctlWrapper.m */,
 				34070C3B0DC89C050022A857 /* Common.h */,
 				34070C3C0DC89C050022A857 /* Common.m */,
 			);
@@ -186,7 +180,6 @@
 			files = (
 				8D202CEA0486D31800D8A456 /* KeyRemap4MacBook_Prefix.pch in Headers */,
 				8D202CEB0486D31800D8A456 /* KeyRemap4MacBookPref.h in Headers */,
-				34E409DB0D54C4C1008441E7 /* SysctlWrapper.h in Headers */,
 				34CBFDDB0D94CEC00087D9DB /* OutlineView_checkbox.h in Headers */,
 				34CBFDDD0D94CEC00087D9DB /* OutlineView_number.h in Headers */,
 				34070C3D0DC89C050022A857 /* Common.h in Headers */,
@@ -227,7 +220,14 @@
 			isa = PBXProject;
 			buildConfigurationList = 1DBD214C08BA80EA00186707 /* Build configuration list for PBXProject "KeyRemap4MacBook" */;
 			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 089C166AFE841209C02AAC07 /* KeyRemap4MacBook */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -266,7 +266,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D202CF10486D31800D8A456 /* KeyRemap4MacBookPref.m in Sources */,
-				34E409DC0D54C4C1008441E7 /* SysctlWrapper.m in Sources */,
 				34CBFDDC0D94CEC00087D9DB /* OutlineView_checkbox.m in Sources */,
 				34CBFDDE0D94CEC00087D9DB /* OutlineView_number.m in Sources */,
 				34070C3E0DC89C050022A857 /* Common.m in Sources */,
