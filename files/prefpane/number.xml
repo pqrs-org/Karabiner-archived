@@ -44,11 +44,6 @@
     </item>
 
     <item>
-      <name>[Modifier Holding Key to Key] Holding Threshold</name>
-      <identifier essential="true" default="1000" step="100" baseunit="ms">parameter.modifierholdingkeytokey_wait</identifier>
-    </item>
-
-    <item>
       <name>[Holding Key to Key] Holding Threshold</name>
       <identifier essential="true" default="200" step="50" baseunit="ms">parameter.holdingkeytokey_wait</identifier>
     </item>
