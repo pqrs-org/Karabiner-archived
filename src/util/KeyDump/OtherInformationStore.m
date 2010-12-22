@@ -1,7 +1,6 @@
 /* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
 #import "OtherInformationStore.h"
-#import "SysctlWrapper.h"
 
 @implementation OtherInformationStore
 
@@ -20,7 +19,10 @@
 
 - (void) setVersion
 {
-  version_ = [BUNDLEPREFIX (SysctlWrapper) getString:@"keyremap4macbook.version"];
+  version_ = [[preferencesclient_ proxy] preferencepane_version];
+  if (! version_) {
+    version_ = @"-.-.-";
+  }
   [label_version_ setStringValue:version_];
 }
 

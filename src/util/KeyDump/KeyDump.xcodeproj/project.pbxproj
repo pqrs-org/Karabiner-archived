@@ -10,12 +10,12 @@
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* KeyDumpAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* KeyDumpAppDelegate.m */; };
 		340B191C11237DAB00E2EF02 /* OtherInformationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 340B191B11237DAB00E2EF02 /* OtherInformationStore.m */; };
-		340B192011237DC200E2EF02 /* SysctlWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 340B191F11237DC200E2EF02 /* SysctlWrapper.m */; };
 		34412BCE10946AEF00F66D0F /* KeyDump.icns in Resources */ = {isa = PBXBuildFile; fileRef = 34412BCD10946AEF00F66D0F /* KeyDump.icns */; };
 		34412BEA10946CDB00F66D0F /* KeyResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 34412BE910946CDB00F66D0F /* KeyResponder.m */; };
 		347450D41121467A00C3F0CF /* EventQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 347450D31121467A00C3F0CF /* EventQueue.m */; };
 		349CA9FA1122EA200021BE23 /* server_objc_part.m in Sources */ = {isa = PBXBuildFile; fileRef = 349CA9F91122EA200021BE23 /* server_objc_part.m */; };
 		34C92D221122EDA100B0B4ED /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C92D211122EDA100B0B4ED /* Carbon.framework */; };
+		34F7AEAF12C2653200D28F4F /* PreferencesClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F7AEAE12C2653200D28F4F /* PreferencesClient.m */; };
 		34FBE7F010B2E8E500DD22E9 /* mousearea.png in Resources */ = {isa = PBXBuildFile; fileRef = 34FBE7EF10B2E8E500DD22E9 /* mousearea.png */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -35,8 +35,6 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		340B191A11237DAB00E2EF02 /* OtherInformationStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherInformationStore.h; sourceTree = "<group>"; };
 		340B191B11237DAB00E2EF02 /* OtherInformationStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherInformationStore.m; sourceTree = "<group>"; };
-		340B191E11237DC200E2EF02 /* SysctlWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SysctlWrapper.h; path = ../prefpane/sharecode/SysctlWrapper.h; sourceTree = SOURCE_ROOT; };
-		340B191F11237DC200E2EF02 /* SysctlWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SysctlWrapper.m; path = ../prefpane/sharecode/SysctlWrapper.m; sourceTree = SOURCE_ROOT; };
 		340B192111237DDC00E2EF02 /* bundleprefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bundleprefix.h; sourceTree = "<group>"; };
 		34412BCD10946AEF00F66D0F /* KeyDump.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = KeyDump.icns; sourceTree = "<group>"; };
 		34412BE810946CDB00F66D0F /* KeyResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyResponder.h; sourceTree = "<group>"; };
@@ -46,6 +44,8 @@
 		349CA9F81122EA200021BE23 /* server_objc_part.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = server_objc_part.h; sourceTree = "<group>"; };
 		349CA9F91122EA200021BE23 /* server_objc_part.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = server_objc_part.m; sourceTree = "<group>"; };
 		34C92D211122EDA100B0B4ED /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		34F7AEAD12C2653100D28F4F /* PreferencesClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesClient.h; path = ../prefpane/sharecode/PreferencesClient.h; sourceTree = SOURCE_ROOT; };
+		34F7AEAE12C2653200D28F4F /* PreferencesClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesClient.m; path = ../prefpane/sharecode/PreferencesClient.m; sourceTree = SOURCE_ROOT; };
 		34FBE7EF10B2E8E500DD22E9 /* mousearea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mousearea.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* KeyDump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyDump.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,8 +155,8 @@
 		340B191D11237DAE00E2EF02 /* sharecode */ = {
 			isa = PBXGroup;
 			children = (
-				340B191E11237DC200E2EF02 /* SysctlWrapper.h */,
-				340B191F11237DC200E2EF02 /* SysctlWrapper.m */,
+				34F7AEAD12C2653100D28F4F /* PreferencesClient.h */,
+				34F7AEAE12C2653200D28F4F /* PreferencesClient.m */,
 			);
 			name = sharecode;
 			sourceTree = "<group>";
@@ -189,7 +189,14 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "KeyDump" */;
 			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* KeyDump */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -224,7 +231,7 @@
 				347450D41121467A00C3F0CF /* EventQueue.m in Sources */,
 				349CA9FA1122EA200021BE23 /* server_objc_part.m in Sources */,
 				340B191C11237DAB00E2EF02 /* OtherInformationStore.m in Sources */,
-				340B192011237DC200E2EF02 /* SysctlWrapper.m in Sources */,
+				34F7AEAF12C2653200D28F4F /* PreferencesClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
