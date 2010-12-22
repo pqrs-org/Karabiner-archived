@@ -198,6 +198,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (int i = 0; item_[i].flag_ != ModifierFlag::NONE; ++i) {
       item_[i].sticky_decrease();
     }
+    updateStatusMessage();
   }
 
   void
@@ -205,22 +206,23 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
 #ifndef FLAGSTATUS_TEST
     Flags f = FlagStatus::getLockedFlags();
+    if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_show_sticky_modifier_status)) {
+      f.add(FlagStatus::getStickyFlags());
+    }
     if (f != statusMessageFlags_) {
-      KeyRemap4MacBook_bridge::StatusMessage::Request request(KeyRemap4MacBook_bridge::StatusMessage::MESSAGETYPE_MODIFIER_LOCK, "Lock: ");
+      KeyRemap4MacBook_bridge::StatusMessage::Request request(KeyRemap4MacBook_bridge::StatusMessage::MESSAGETYPE_MODIFIER_LOCK, "");
       bool isempty = true;
 
-      if (f.isOn(ModifierFlag::FN)) {
-        isempty = false;
-        strlcat(request.message, "FN ", sizeof(request.message));
-      }
-      if (f.isOn(ModifierFlag::COMMAND_L) || f.isOn(ModifierFlag::COMMAND_R)) {
-        isempty = false;
-        strlcat(request.message, "Cmd ", sizeof(request.message));
-      }
-      if (f.isOn(ModifierFlag::SHIFT_L) || f.isOn(ModifierFlag::SHIFT_R)) {
-        isempty = false;
-        strlcat(request.message, "Shift ", sizeof(request.message));
-      }
+      if (f.isOn(ModifierFlag::FN))                                           { isempty = false; strlcat(request.message, "FN ",    sizeof(request.message)); }
+      if (f.isOn(ModifierFlag::COMMAND_L) || f.isOn(ModifierFlag::COMMAND_R)) { isempty = false; strlcat(request.message, "Cmd ",   sizeof(request.message)); }
+      if (f.isOn(ModifierFlag::CONTROL_L) || f.isOn(ModifierFlag::CONTROL_R)) { isempty = false; strlcat(request.message, "Ctrl ",  sizeof(request.message)); }
+      if (f.isOn(ModifierFlag::OPTION_L) || f.isOn(ModifierFlag::OPTION_R))   { isempty = false; strlcat(request.message, "Opt ",   sizeof(request.message)); }
+      if (f.isOn(ModifierFlag::SHIFT_L) || f.isOn(ModifierFlag::SHIFT_R))     { isempty = false; strlcat(request.message, "Shift ", sizeof(request.message)); }
+      if (f.isOn(ModifierFlag::EXTRA1))                                       { isempty = false; strlcat(request.message, "Ex1 ",   sizeof(request.message)); }
+      if (f.isOn(ModifierFlag::EXTRA2))                                       { isempty = false; strlcat(request.message, "Ex2 ",   sizeof(request.message)); }
+      if (f.isOn(ModifierFlag::EXTRA3))                                       { isempty = false; strlcat(request.message, "Ex3 ",   sizeof(request.message)); }
+      if (f.isOn(ModifierFlag::EXTRA4))                                       { isempty = false; strlcat(request.message, "Ex4 ",   sizeof(request.message)); }
+      if (f.isOn(ModifierFlag::EXTRA5))                                       { isempty = false; strlcat(request.message, "Ex5 ",   sizeof(request.message)); }
 
       if (isempty) {
         request.message[0] = '\0';

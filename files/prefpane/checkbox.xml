@@ -46,6 +46,10 @@
           <identifier essential="true">general.hide_statusmessage</identifier>
         </item>
         <item>
+          <name>Show Sticky Modifier status on screen</name>
+          <identifier essential="true">general.show_sticky_modifier_status</identifier>
+        </item>
+        <item>
           <name>Don't restore modifiers in the mouse event</name>
           <appendix></appendix>
           <appendix>For example, when you use Option+Tab to Command+Tab,</appendix>
