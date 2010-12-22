@@ -116,6 +116,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // getLockedFlags returns only Virtual locks (not hardware CapsLock).
     static Flags getLockedFlags(void);
+    static Flags getStickyFlags(void);
 
     static void increase(Flags flags);
     static void decrease(Flags flags);

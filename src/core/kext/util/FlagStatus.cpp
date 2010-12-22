@@ -162,6 +162,18 @@ namespace org_pqrs_KeyRemap4MacBook {
     return f;
   }
 
+  Flags
+  FlagStatus::getStickyFlags(void)
+  {
+    Flags f(0);
+    for (int i = 0; item_[i].flag_ != ModifierFlag::NONE; ++i) {
+      if (item_[i].sticky_count_) {
+        f.add(item_[i].flag_);
+      }
+    }
+    return f;
+  }
+
   // ------------------------------------------------------------
 #define FOREACH_TO_FLAGS(METHOD) {                               \
     for (int i = 0; item_[i].flag_ != ModifierFlag::NONE; ++i) { \
