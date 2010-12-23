@@ -117,7 +117,8 @@
     return [configxmlparser_ keycode:@"ApplicationType::ENTOURAGE"];
   }
 
-  if ([name isEqualToString:@"org.eclipse.eclipse"]) {
+  if ([name isEqualToString:@"org.eclipse.eclipse"] ||
+      [name isEqualToString:@"com.springsource.sts"]) {
     return [configxmlparser_ keycode:@"ApplicationType::ECLIPSE"];
   }
 
