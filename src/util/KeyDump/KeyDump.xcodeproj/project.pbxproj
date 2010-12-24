@@ -13,7 +13,6 @@
 		34412BCE10946AEF00F66D0F /* KeyDump.icns in Resources */ = {isa = PBXBuildFile; fileRef = 34412BCD10946AEF00F66D0F /* KeyDump.icns */; };
 		34412BEA10946CDB00F66D0F /* KeyResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 34412BE910946CDB00F66D0F /* KeyResponder.m */; };
 		347450D41121467A00C3F0CF /* EventQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 347450D31121467A00C3F0CF /* EventQueue.m */; };
-		349CA9FA1122EA200021BE23 /* server_objc_part.m in Sources */ = {isa = PBXBuildFile; fileRef = 349CA9F91122EA200021BE23 /* server_objc_part.m */; };
 		34C92D221122EDA100B0B4ED /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C92D211122EDA100B0B4ED /* Carbon.framework */; };
 		34F7AEAF12C2653200D28F4F /* PreferencesClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F7AEAE12C2653200D28F4F /* PreferencesClient.m */; };
 		34FBE7F010B2E8E500DD22E9 /* mousearea.png in Resources */ = {isa = PBXBuildFile; fileRef = 34FBE7EF10B2E8E500DD22E9 /* mousearea.png */; };
@@ -35,14 +34,11 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		340B191A11237DAB00E2EF02 /* OtherInformationStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherInformationStore.h; sourceTree = "<group>"; };
 		340B191B11237DAB00E2EF02 /* OtherInformationStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherInformationStore.m; sourceTree = "<group>"; };
-		340B192111237DDC00E2EF02 /* bundleprefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bundleprefix.h; sourceTree = "<group>"; };
 		34412BCD10946AEF00F66D0F /* KeyDump.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = KeyDump.icns; sourceTree = "<group>"; };
 		34412BE810946CDB00F66D0F /* KeyResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyResponder.h; sourceTree = "<group>"; };
 		34412BE910946CDB00F66D0F /* KeyResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyResponder.m; sourceTree = "<group>"; };
 		347450D21121467A00C3F0CF /* EventQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventQueue.h; sourceTree = "<group>"; };
 		347450D31121467A00C3F0CF /* EventQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventQueue.m; sourceTree = "<group>"; };
-		349CA9F81122EA200021BE23 /* server_objc_part.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = server_objc_part.h; sourceTree = "<group>"; };
-		349CA9F91122EA200021BE23 /* server_objc_part.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = server_objc_part.m; sourceTree = "<group>"; };
 		34C92D211122EDA100B0B4ED /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		34F7AEAD12C2653100D28F4F /* PreferencesClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesClient.h; path = ../prefpane/sharecode/PreferencesClient.h; sourceTree = SOURCE_ROOT; };
 		34F7AEAE12C2653200D28F4F /* PreferencesClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesClient.m; path = ../prefpane/sharecode/PreferencesClient.m; sourceTree = SOURCE_ROOT; };
@@ -67,12 +63,9 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				340B192111237DDC00E2EF02 /* bundleprefix.h */,
 				340B191D11237DAE00E2EF02 /* sharecode */,
 				340B191A11237DAB00E2EF02 /* OtherInformationStore.h */,
 				340B191B11237DAB00E2EF02 /* OtherInformationStore.m */,
-				349CA9F81122EA200021BE23 /* server_objc_part.h */,
-				349CA9F91122EA200021BE23 /* server_objc_part.m */,
 				347450D21121467A00C3F0CF /* EventQueue.h */,
 				347450D31121467A00C3F0CF /* EventQueue.m */,
 				256AC3D80F4B6AC300CF3369 /* KeyDumpAppDelegate.h */,
@@ -229,7 +222,6 @@
 				256AC3DA0F4B6AC300CF3369 /* KeyDumpAppDelegate.m in Sources */,
 				34412BEA10946CDB00F66D0F /* KeyResponder.m in Sources */,
 				347450D41121467A00C3F0CF /* EventQueue.m in Sources */,
-				349CA9FA1122EA200021BE23 /* server_objc_part.m in Sources */,
 				340B191C11237DAB00E2EF02 /* OtherInformationStore.m in Sources */,
 				34F7AEAF12C2653200D28F4F /* PreferencesClient.m in Sources */,
 			);
