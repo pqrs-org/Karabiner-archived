@@ -70,6 +70,10 @@
       unsigned int newval = [workspacedata_ getApplicationType:name];
       //NSLog(@"newval = %d", newval);
       setCurrentApplicationType(newval);
+
+      NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.KeyDump";
+      NSDictionary* userInfo = [NSDictionary dictionaryWithObject:name forKey:@"name"];
+      [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"applicationChanged" object:observedObject userInfo:userInfo];
     }
   }
 }
@@ -83,6 +87,10 @@
     unsigned int inputmodedetail;
     [workspacedata_ getInputMode:name output_inputmode:(&inputmode) output_inputmodedetail:(&inputmodedetail)];
     setCurrentInputMode(inputmode, inputmodedetail);
+
+    NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.KeyDump";
+    NSDictionary* userInfo = [NSDictionary dictionaryWithObject:name forKey:@"name"];
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"inputSourceChanged" object:observedObject userInfo:userInfo];
   }
 }
 
