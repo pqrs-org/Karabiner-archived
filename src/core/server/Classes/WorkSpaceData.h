@@ -5,8 +5,13 @@
 @interface WorkSpaceData : NSObject {
   IBOutlet ConfigXMLParser* configxmlparser_;
 }
-
+- (NSString*) getActiveApplicationName;
 - (unsigned int) getApplicationType:(NSString*)name;
-- (void) getInputMode:(NSString*)name output_inputmode:(unsigned int*)output_inputmode output_inputmodedetail:(unsigned int*)output_inputmodedetail;
+@end
 
+
+@interface WorkSpaceData (InputSource)
+- (NSString*) getTISPropertyInputModeID;
+- (void) getInputMode:(NSString*)name output_inputmode:(unsigned int*)output_inputmode output_inputmodedetail:(unsigned int*)output_inputmodedetail;
+- (void) selectInputSource:(unsigned int)vk_keycode;
 @end

@@ -63,7 +63,7 @@
 // ------------------------------------------------------------
 - (void) observer_NSWorkspaceDidActivateApplicationNotification:(NSNotification*)notification
 {
-  NSString* name = [serverobjcpart_ getActiveApplicationName];
+  NSString* name = [workspacedata_ getActiveApplicationName];
   if (name) {
     // We ignore our investigation application.
     if (! [name isEqualToString:@"org.pqrs.KeyRemap4MacBook.KeyDump"]) {
@@ -77,7 +77,7 @@
 // ------------------------------------------------------------
 - (void) observer_kTISNotifySelectedKeyboardInputSourceChanged:(NSNotification*)notification
 {
-  NSString* name = [serverobjcpart_ getTISPropertyInputModeID];
+  NSString* name = [workspacedata_ getTISPropertyInputModeID];
   if (name) {
     unsigned int inputmode;
     unsigned int inputmodedetail;

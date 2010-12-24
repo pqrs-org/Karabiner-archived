@@ -4,6 +4,39 @@
 
 @implementation WorkSpaceData
 
+- (NSString*) getActiveApplicationName
+{
+  // ----------------------------------------
+  NSWorkspace* ws = [NSWorkspace sharedWorkspace];
+  if (! ws) return nil;
+
+  NSArray* a = [ws runningApplications];
+  if (! a) return nil;
+
+  for (NSRunningApplication* app in a) {
+    if (! app) return nil;
+
+    if ([app isActive]) {
+      NSString* nsappname = [app bundleIdentifier];
+
+      if (nsappname) {
+        return [NSString stringWithString:nsappname];
+
+      } else {
+        // We use localizedName instead of bundleIdentifier,
+        // because "MacSOUP" doesn't have bundleIdentifier.
+        // http://www.haller-berlin.de/macsoup/index.html
+        NSString* localizedName = [app localizedName];
+        if (localizedName) {
+          return [NSString stringWithFormat:@"org.pqrs.unknownapp.%@", localizedName];
+        }
+      }
+    }
+  }
+
+  return nil;
+}
+
 - (unsigned int) getApplicationType:(NSString*)name
 {
   if (! name) return 0;
@@ -199,193 +232,6 @@
   }
 
   return [configxmlparser_ keycode:@"ApplicationType::UNKNOWN"];
-}
-
-- (void) getInputMode:(NSString*)name output_inputmode:(unsigned int*)output_inputmode output_inputmodedetail:(unsigned int*)output_inputmodedetail
-{
-  if (! name || ! output_inputmode || ! output_inputmodedetail) return;
-
-  // get data from KeyDump.app
-
-  if ([name isEqualToString:@"com.apple.inputmethod.Japanese.Hiragana"]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::JAPANESE"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::JAPANESE_HIRAGANA"];
-    return;
-  }
-
-  if ([name isEqualToString:@"com.apple.inputmethod.Japanese.Katakana"]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::JAPANESE"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::JAPANESE_KATAKANA"];
-    return;
-  }
-
-  if ([name isEqualToString:@"com.apple.inputmethod.Japanese.FullWidthRoman"]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::JAPANESE"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::JAPANESE_FULLWIDTH_ROMAN"];
-    return;
-  }
-
-  if ([name isEqualToString:@"com.apple.inputmethod.Japanese.HalfWidthKana"]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::JAPANESE"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::JAPANESE_HALFWIDTH_KANA"];
-    return;
-  }
-
-  if ([name isEqualToString:@"com.apple.inputmethod.Japanese"]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::JAPANESE"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::JAPANESE"];
-    return;
-  }
-
-  // TradChinese
-  if ([name hasPrefix:@"com.apple.inputmethod.TCIM"]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::CHINESE_TRADITIONAL"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::CHINESE_TRADITIONAL"];
-    return;
-  }
-
-  // SimpChinese
-  if ([name hasPrefix:@"com.apple.inputmethod.SCIM"]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::CHINESE_SIMPLIFIED"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::CHINESE_SIMPLIFIED"];
-    return;
-  }
-
-  if ([name hasPrefix:@"com.apple.inputmethod.Korean"]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::KOREAN"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::KOREAN"];
-    return;
-  }
-
-  if ([name hasPrefix:@"org.pqrs.inputmode.sv."]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::SWEDISH"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::SWEDISH"];
-    return;
-  }
-
-  if ([name hasPrefix:@"org.pqrs.inputmode.ca."]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::CANADIAN"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::CANADIAN"];
-    return;
-  }
-
-  if ([name isEqualToString:@"com.apple.kotoeri.Ainu"]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::AINU"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::AINU"];
-    return;
-  }
-
-  if ([name hasPrefix:@"org.pqrs.inputmode.ru."] ||
-      [name isEqualToString:@"org.pqrs.inputmode.unknown.RussianWin"]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::RUSSIAN"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::RUSSIAN"];
-    return;
-  }
-
-  if ([name isEqualToString:@"org.pqrs.inputmode.unknown.Russian-IlyaBirmanTypography"]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::RUSSIAN_TYPOGRAPHIC"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::RUSSIAN_TYPOGRAPHIC"];
-    return;
-  }
-
-  if ([name isEqualToString:@"org.pqrs.inputmode.unknown.English-IlyaBirmanTypography"]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::ENGLISH_TYPOGRAPHIC"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::ENGLISH_TYPOGRAPHIC"];
-    return;
-  }
-
-  if ([name hasPrefix:@"org.pqrs.inputmode.fr."]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::FRENCH"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::FRENCH"];
-    return;
-  }
-
-  if ([name isEqualToString:@"org.pqrs.inputmode.unknown.FrenchDvorak"]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::BEPO"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::BEPO"];
-    return;
-  }
-
-  if ([name isEqualToString:@"org.pqrs.inputmode.unknown.FrenchDvorak-AzertyCmd"]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::BEPO"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::BEPO_AZERTYCMD"];
-    return;
-  }
-
-  if ([name isEqualToString:@"org.pqrs.inputmode.unknown.FrenchDvorak-AzertyCmdRoman"]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::BEPO"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::BEPO_AZERTYCMDROMAN"];
-    return;
-  }
-
-  if ([name isEqualToString:@"org.pqrs.inputmode.unknown.FrenchDvorak-QwertyCmd"]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::BEPO"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::BEPO_QWERTYCMD"];
-    return;
-  }
-
-  if ([name isEqualToString:@"org.pqrs.inputmode.unknown.FrenchDvorak-QwertyCmdRoman"]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::BEPO"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::BEPO_QWERTYCMDROMAN"];
-    return;
-  }
-
-  if ([name isEqualToString:@"org.pqrs.inputmode.unknown.FrenchDvorak-QwertzCmd"]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::BEPO"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::BEPO_QWERTZCMD"];
-    return;
-  }
-
-  if ([name isEqualToString:@"org.pqrs.inputmode.unknown.FrenchDvorak-QwertzCmdRoman"]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::BEPO"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::BEPO_QWERTZCMDROMAN"];
-    return;
-  }
-
-  if ([name isEqualToString:@"org.pqrs.inputmode.unknown.FrenchDvorakRoman"]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::BEPO"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::BEPO_ROMAN"];
-    return;
-  }
-
-  if ([name isEqualToString:@"org.pqrs.inputmode.en.Dvorak"]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::DVORAK"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::DVORAK"];
-    return;
-  }
-
-  if ([name isEqualToString:@"org.pqrs.inputmode.en.Dvorak-Left"]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::DVORAK"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::DVORAK_LEFT"];
-    return;
-  }
-
-  if ([name isEqualToString:@"org.pqrs.inputmode.en.DVORAK-QWERTYCMD"]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::DVORAK"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::DVORAK_QWERTYCMD"];
-    return;
-  }
-
-  if ([name isEqualToString:@"org.pqrs.inputmode.en.Dvorak-Right"]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::DVORAK"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::DVORAK_RIGHT"];
-    return;
-  }
-
-  if ([name isEqualToString:@"org.pqrs.inputmode.unknown.JANSI"]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::ROMAN"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::ROMAN_JANSI"];
-    return;
-  }
-
-  if ([name hasPrefix:@"org.pqrs.inputmode.unknown."]) {
-    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::UNKNOWN"];
-    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::UNKNOWN"];
-    return;
-  }
-
-  *output_inputmode       = [configxmlparser_ keycode:@"InputMode::ROMAN"];
-  *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::ROMAN"];
 }
 
 @end
