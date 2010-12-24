@@ -4,9 +4,9 @@
 #define SERVER_OBJC_PART_H
 
 typedef enum {
-  STATUSMESSAGETYPE_NONE,
   STATUSMESSAGETYPE_LOCK,
   STATUSMESSAGETYPE_EXTRA,
+  STATUSMESSAGETYPE__END__,
 } StatusMessageType;
 
 #ifndef __cplusplus

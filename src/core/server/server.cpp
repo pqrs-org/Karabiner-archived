@@ -284,7 +284,7 @@ KeyRemap4MacBook_server::Server::do_ChangeInputMode(const org_pqrs_KeyRemap4MacB
 org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error
 KeyRemap4MacBook_server::Server::do_StatusMessage(const org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::StatusMessage::Request& request)
 {
-  StatusMessageType type = STATUSMESSAGETYPE_NONE;
+  StatusMessageType type = STATUSMESSAGETYPE__END__;
 
   switch (request.type) {
     case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::StatusMessage::MESSAGETYPE_MODIFIER_LOCK:
