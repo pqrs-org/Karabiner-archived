@@ -48,7 +48,7 @@
 - (void) observer_ConfigXMLReloaded:(NSNotification*)notification {
   set_sysctl_do_reset();
   set_sysctl_do_reload_xml();
-  [statuswindow_ refreshWindowPosition];
+  [statuswindow_ refreshWindowPosition:NO];
 }
 
 - (void) observer_ConfigListChanged:(NSNotification*)notification {
@@ -57,7 +57,7 @@
 
 - (void) observer_PreferencesChanged:(NSNotification*)notification {
   set_sysctl_do_reload_only_config();
-  [statuswindow_ refreshWindowPosition];
+  [statuswindow_ refreshWindowPosition:NO];
 }
 
 // ------------------------------------------------------------
@@ -115,7 +115,7 @@
   registerServerObjcPart(serverobjcpart_);
 
   [statuswindow_ setupStatusWindow];
-  [statuswindow_ refreshWindowPosition];
+  [statuswindow_ refreshWindowPosition:YES];
   [statuswindow_ resetStatusMessage];
   [statusbar_ refresh];
 

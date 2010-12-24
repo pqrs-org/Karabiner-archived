@@ -84,13 +84,26 @@
 }
 
 // ------------------------------------------------------------
-- (void) refreshWindowPosition
+- (void) refreshWindowPosition:(BOOL)force
 {
   int alpha_font       = [preferencesmanager_ value:@"parameter.statuswindow_alpha_font"];
   int alpha_background = [preferencesmanager_ value:@"parameter.statuswindow_alpha_background"];
   int posx_adjustment  = [preferencesmanager_ value:@"parameter.statuswindow_posx_adjustment"];
   int posy_adjustment  = [preferencesmanager_ value:@"parameter.statuswindow_posy_adjustment"];
 
+  if (! force &&
+      alpha_font       == last_parameter_statuswindow_alpha_font_ &&
+      alpha_background == last_parameter_statuswindow_alpha_background_ &&
+      posx_adjustment  == last_parameter_statuswindow_posx_adjustment_ &&
+      posy_adjustment  == last_parameter_statuswindow_posy_adjustment_) {
+    return;
+  }
+  last_parameter_statuswindow_alpha_font_       = alpha_font;
+  last_parameter_statuswindow_alpha_background_ = alpha_background;
+  last_parameter_statuswindow_posx_adjustment_  = posx_adjustment;
+  last_parameter_statuswindow_posy_adjustment_  = posy_adjustment;
+
+  // ----------------------------------------------------------------------
   CGFloat af = (CGFloat)(alpha_font) / (CGFloat)(100.0);
   CGFloat ab = (CGFloat)(alpha_background) / (CGFloat)(100.0);
 
