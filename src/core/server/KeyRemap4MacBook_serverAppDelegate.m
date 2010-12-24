@@ -115,8 +115,8 @@
   registerServerObjcPart(serverobjcpart_);
 
   [statuswindow_ setupStatusWindow];
-  [statuswindow_ resetStatusMessage];
   [statuswindow_ refreshWindowPosition];
+  [statuswindow_ resetStatusMessage];
   [statusbar_ refresh];
 
   set_sysctl_do_reset();

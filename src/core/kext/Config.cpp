@@ -212,34 +212,5 @@ namespace org_pqrs_KeyRemap4MacBook {
     FlagStatus::sticky_clear();
     RemapClassManager::refresh();
     RemapFunc::PointingRelativeToScroll::cancelScroll();
-
-    // StatusMessageWindowParameter
-    {
-      static int last_parameter_statuswindow_alpha_font = -1;
-      static int last_parameter_statuswindow_alpha_background = -1;
-      static int last_parameter_statuswindow_posx_adjustment = 0;
-      static int last_parameter_statuswindow_posy_adjustment = 0;
-
-      int alpha_font       = essential_config_[BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_statuswindow_alpha_font];
-      int alpha_background = essential_config_[BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_statuswindow_alpha_background];
-      int posx_adjustment  = essential_config_[BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_statuswindow_posx_adjustment];
-      int posy_adjustment  = essential_config_[BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_statuswindow_posy_adjustment];
-
-      if (last_parameter_statuswindow_alpha_font       != alpha_font ||
-          last_parameter_statuswindow_alpha_background != alpha_background ||
-          last_parameter_statuswindow_posx_adjustment  != posx_adjustment ||
-          last_parameter_statuswindow_posy_adjustment  != posy_adjustment) {
-        last_parameter_statuswindow_alpha_font       = alpha_font;
-        last_parameter_statuswindow_alpha_background = alpha_background;
-        last_parameter_statuswindow_posx_adjustment  = posx_adjustment;
-        last_parameter_statuswindow_posy_adjustment  = posy_adjustment;
-
-        KeyRemap4MacBook_bridge::StatusMessageWindowParameter::Request request(alpha_font,
-                                                                               alpha_background,
-                                                                               posx_adjustment,
-                                                                               posy_adjustment);
-        KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_STATUS_MESSAGE_WINDOW_PARAMETER, &request, sizeof(request), NULL, 0);
-      }
-    }
   }
 }
