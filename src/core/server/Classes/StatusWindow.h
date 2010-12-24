@@ -11,7 +11,11 @@
   NSMutableArray* lines_;
 }
 
+- (void) setupStatusWindow;
+
 - (void) resetStatusMessage;
 - (void) setStatusMessage:(NSUInteger)lineIndex message:(NSString*)message;
+
+- (void) refreshWindowPosition;
 
 @end

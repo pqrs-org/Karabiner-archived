@@ -16,9 +16,8 @@
 @interface KeyRemap4MacBook_serverAppDelegate : NSObject <NSApplicationDelegate> {
   NSWindow* window;
   IBOutlet ServerObjcPart* serverobjcpart_;
-  IBOutlet NSTextField* statusmessage_;
-  IBOutlet NSImageView* statusmessage_background_;
   IBOutlet StatusBar* statusbar_;
+  IBOutlet StatusWindow* statuswindow_;
   IBOutlet WorkSpaceData* workspacedata_;
   IBOutlet ConfigXMLParser* configxmlparser_;
 }
