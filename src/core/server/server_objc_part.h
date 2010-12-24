@@ -15,11 +15,13 @@ typedef enum {
 #import "ConfigXMLParser.h"
 #import "PreferencesManager.h"
 #import "StatusWindow.h"
+#import "WorkSpaceData.h"
 
 @interface ServerObjcPart : NSObject {
   IBOutlet ConfigXMLParser* configxmlparser_;
   IBOutlet PreferencesManager* preferencesmanager_;
   IBOutlet StatusWindow* statuswindow_;
+  IBOutlet WorkSpaceData* workspacedata_;
 }
 
 - (NSArray*) getEssentialConfig;
@@ -28,11 +30,7 @@ typedef enum {
 - (NSArray*) getConfigInitializeVector:(unsigned int)configindex;
 - (int) getConfigValue:(unsigned int)configindex;
 - (void) selectInputSource:(unsigned int)vk_keycode;
-
 - (void) setStatusMessage:(StatusMessageType)type message:(const char*)message;
-
-- (NSString*) getActiveApplicationName;
-- (NSString*) getTISPropertyInputModeID;
 
 @end
 

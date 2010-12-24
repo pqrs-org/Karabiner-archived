@@ -358,6 +358,14 @@
 					</object>
 					<int key="connectionID">584</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">workspacedata_</string>
+						<reference key="source" ref="915593295"/>
+						<reference key="destination" ref="718310321"/>
+					</object>
+					<int key="connectionID">585</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -572,7 +580,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">584</int>
+			<int key="maxID">585</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -682,12 +690,14 @@
 							<string>configxmlparser_</string>
 							<string>preferencesmanager_</string>
 							<string>statuswindow_</string>
+							<string>workspacedata_</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>ConfigXMLParser</string>
 							<string>PreferencesManager</string>
 							<string>StatusWindow</string>
+							<string>WorkSpaceData</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -697,6 +707,7 @@
 							<string>configxmlparser_</string>
 							<string>preferencesmanager_</string>
 							<string>statuswindow_</string>
+							<string>workspacedata_</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -711,6 +722,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">statuswindow_</string>
 								<string key="candidateClassName">StatusWindow</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">workspacedata_</string>
+								<string key="candidateClassName">WorkSpaceData</string>
 							</object>
 						</object>
 					</object>
