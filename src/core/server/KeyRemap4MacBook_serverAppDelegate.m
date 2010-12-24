@@ -39,20 +39,6 @@
   [NSThread exit];
 }
 
-- (void) setupStatusWindow {
-  NSWindowCollectionBehavior behavior = NSWindowCollectionBehaviorCanJoinAllSpaces |
-                                        NSWindowCollectionBehaviorStationary |
-                                        NSWindowCollectionBehaviorIgnoresCycle;
-
-  [window setBackgroundColor:[NSColor clearColor]];
-  [window setOpaque:NO];
-  [window setStyleMask:NSBorderlessWindowMask];
-  [window setLevel:NSStatusWindowLevel];
-  [window setIgnoresMouseEvents:YES];
-  [window setCollectionBehavior:behavior];
-  [window center];
-}
-
 // ----------------------------------------
 - (void) statusBarItemSelected:(id)sender {
   [statusbar_ statusBarItemSelected:sender];
@@ -62,6 +48,7 @@
 - (void) observer_ConfigXMLReloaded:(NSNotification*)notification {
   set_sysctl_do_reset();
   set_sysctl_do_reload_xml();
+  [statuswindow_ refreshWindowPosition];
 }
 
 - (void) observer_ConfigListChanged:(NSNotification*)notification {
@@ -70,6 +57,7 @@
 
 - (void) observer_PreferencesChanged:(NSNotification*)notification {
   set_sysctl_do_reload_only_config();
+  [statuswindow_ refreshWindowPosition];
 }
 
 // ------------------------------------------------------------
@@ -105,7 +93,7 @@
 
   // Note: The console user is "real login user" or "loginwindow",
   //       when NSWorkspaceSessionDidBecomeActiveNotification, NSWorkspaceSessionDidResignActiveNotification are called.
-  reset_statusmessage();
+  [statuswindow_ resetStatusMessage];
 
   set_sysctl_do_reset();
   set_sysctl_do_reload_xml();
@@ -117,18 +105,18 @@
 
   // Note: The console user is "real login user" or "loginwindow",
   //       when NSWorkspaceSessionDidBecomeActiveNotification, NSWorkspaceSessionDidResignActiveNotification are called.
-  reset_statusmessage();
+  [statuswindow_ resetStatusMessage];
 
   set_sysctl_do_reset();
 }
 
 // ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
-  [self setupStatusWindow];
-  [serverobjcpart_ registerStatusWindow:window label:statusmessage_ background:statusmessage_background_];
   registerServerObjcPart(serverobjcpart_);
 
-  reset_statusmessage();
+  [statuswindow_ setupStatusWindow];
+  [statuswindow_ resetStatusMessage];
+  [statuswindow_ refreshWindowPosition];
   [statusbar_ refresh];
 
   set_sysctl_do_reset();
