@@ -19,7 +19,7 @@
 
 - (void) setVersion
 {
-  version_ = [[preferencesclient_ proxy] preferencepane_version];
+  version_ = [[client_ proxy] preferencepane_version];
   if (! version_) {
     version_ = @"-.-.-";
   }
