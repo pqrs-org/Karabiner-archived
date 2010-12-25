@@ -1,5 +1,5 @@
 #import "AppController.h"
-#import "sharecode/AdminAction.h"
+#import "AdminAction.h"
 
 @implementation AppController
 
@@ -14,7 +14,7 @@ static char uninstallCommand[] = "/Library/org.pqrs/KeyRemap4MacBook/extra/unins
 // ----------------------------------------------------------------------
 - (IBAction) uninstall:(id)sender
 {
-  BOOL result = [BUNDLEPREFIX (AdminAction) execCommand:uninstallCommand];
+  BOOL result = [AdminAction execCommand:uninstallCommand];
   if (result) {
     NSRunAlertPanel(@"Uninstaller", [NSString stringWithFormat:@"%@ is uninstalled.", appName], @"OK", nil, nil);
   } else {
