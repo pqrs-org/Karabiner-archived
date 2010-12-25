@@ -19,7 +19,6 @@
   // ----------------------------------------
   // check nothing.
   if (checkupdate == 0) {
-    NSLog(@"skip checkForUpdatesInBackground");
     return nil;
   }
 
@@ -39,7 +38,10 @@
 - (void) checkForUpdates:(BOOL)isBackground
 {
   NSString* url = [self getFeedURL];
-  if (! url) return;
+  if (! url) {
+    NSLog(@"skip checkForUpdates");
+    return;
+  }
   [suupdater_ setFeedURL:[NSURL URLWithString:url]];
 
   NSLog(@"checkForUpdates %@", url);
