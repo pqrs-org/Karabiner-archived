@@ -8,11 +8,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <IOKit/IOKitLib.h>
+#include <IOKit/IOKitLib.h>
 #import "KeyRemap4MacBookClient.h"
 
 @interface ThreeFingerRelativeToScrollAppDelegate : NSObject <NSApplicationDelegate> {
   NSStatusItem* statusItem_;
+  NSMutableArray* mtdevices_;
   IBOutlet NSMenu* statusMenu_;
   IBOutlet NSMenuItem* startAtLoginMenuItem_;
   IBOutlet org_pqrs_KeyRemap4MacBook_Client* client_;
