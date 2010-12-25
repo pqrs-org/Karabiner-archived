@@ -64,7 +64,6 @@
 		34A06A4811F8791F0085749B /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = Resources/background.png; sourceTree = "<group>"; };
 		34A06A4A11F8792E0085749B /* icon.statusbar.0.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon.statusbar.0.tif; path = Resources/icon.statusbar.0.tif; sourceTree = "<group>"; };
 		34A06A4B11F8792E0085749B /* icon.statusbar.1.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon.statusbar.1.tif; path = Resources/icon.statusbar.1.tif; sourceTree = "<group>"; };
-		34A06A5811F87B1F0085749B /* bundleprefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bundleprefix.h; sourceTree = "<group>"; };
 		34B893F7128E448C00BC955A /* ConfigXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfigXMLParser.h; path = Classes/ConfigXMLParser.h; sourceTree = "<group>"; };
 		34B893F8128E448C00BC955A /* ConfigXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfigXMLParser.m; path = Classes/ConfigXMLParser.m; sourceTree = "<group>"; };
 		34B893F9128E448C00BC955A /* KeyCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyCode.h; path = Classes/KeyCode.h; sourceTree = "<group>"; };
@@ -115,7 +114,6 @@
 				34B893FB128E448C00BC955A /* WorkSpaceData.h */,
 				34B893FC128E448C00BC955A /* WorkSpaceData.m */,
 				34597768128DBFAE003398BD /* bridge.h */,
-				34A06A5811F87B1F0085749B /* bundleprefix.h */,
 				34EE6DD710C218CE00D20676 /* Mutex.hpp */,
 				34018E4010A02C2B00653322 /* bridge.hpp */,
 				348A6B8F10A0214B00AC93FE /* server_objc_part.h */,
