@@ -13,15 +13,18 @@
 - (id) init
 {
   self = [super init];
+
   if (self) {
     mtdevices_ = [NSMutableArray new];
   }
+
   return self;
 }
 
 - (void) dealloc
 {
   [mtdevices_ release];
+
   [super dealloc];
 }
 
