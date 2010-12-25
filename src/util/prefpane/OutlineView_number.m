@@ -6,9 +6,11 @@
 
 - (id) init
 {
-  [super init];
+  self = [super init];
 
-  ischeckbox_ = NO;
+  if (self) {
+    ischeckbox_ = NO;
+  }
 
   return self;
 }
