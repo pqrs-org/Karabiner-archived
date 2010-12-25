@@ -30,15 +30,15 @@
   if (datasource_) return;
 
   if (ischeckbox_) {
-    datasource_ = [[preferencesclient_ proxy] preferencepane_checkbox];
+    datasource_ = [[client_ proxy] preferencepane_checkbox];
   } else {
-    datasource_ = [[preferencesclient_ proxy] preferencepane_number];
+    datasource_ = [[client_ proxy] preferencepane_number];
   }
   if (datasource_) {
     [datasource_ retain];
   }
 
-  error_message_ = [[preferencesclient_ proxy] preferencepane_error_message];
+  error_message_ = [[client_ proxy] preferencepane_error_message];
   if (error_message_) {
     [error_message_ retain];
   }
@@ -135,7 +135,7 @@
 
     } else {
       [cell setImagePosition:NSImageLeft];
-      return [NSNumber numberWithInt:[[preferencesclient_ proxy] value:identifier]];
+      return [NSNumber numberWithInt:[[client_ proxy] value:identifier]];
     }
 
   } else {
@@ -160,7 +160,7 @@
         return nil;
       } else {
         [cell setEditable:YES];
-        return [NSNumber numberWithInt:[[preferencesclient_ proxy] value:identifier]];
+        return [NSNumber numberWithInt:[[client_ proxy] value:identifier]];
       }
     }
   }
@@ -199,9 +199,9 @@
   if (ischeckbox_) {
     if (identifier) {
       if (! [identifier hasPrefix:@"notsave."]) {
-        int value = [[preferencesclient_ proxy] value:identifier];
+        int value = [[client_ proxy] value:identifier];
         value = ! value;
-        [[preferencesclient_ proxy] setValueForName:value forName:identifier];
+        [[client_ proxy] setValueForName:value forName:identifier];
       }
     } else {
       // expand/collapse tree
@@ -218,13 +218,13 @@
     if (identifier) {
       NSString* columnIdentifier = [tableColumn identifier];
       if ([columnIdentifier isEqualToString:@"value"]) {
-        [[preferencesclient_ proxy] setValueForName:[object intValue] forName:identifier];
+        [[client_ proxy] setValueForName:[object intValue] forName:identifier];
 
       } else if ([columnIdentifier isEqualToString:@"stepper"]) {
-        int newvalue = [[preferencesclient_ proxy] value:identifier];
+        int newvalue = [[client_ proxy] value:identifier];
         NSNumber* step = [item objectForKey:@"step"];
         newvalue += ([object intValue] * [step intValue]);
-        [[preferencesclient_ proxy] setValueForName:newvalue forName:identifier];
+        [[client_ proxy] setValueForName:newvalue forName:identifier];
 
         [outlineView reloadItem:item];
       }
@@ -261,7 +261,7 @@
     if (! identifier) {
       return nil;
     }
-    if (! [[preferencesclient_ proxy] value:identifier]) {
+    if (! [[client_ proxy] value:identifier]) {
       return nil;
     }
   }

@@ -16,13 +16,13 @@
 - (IBAction) reloadXML:(id)sender
 {
   // reload xml on server process.
-  [[preferencesclient_ proxy] configxml_reload];
+  [[client_ proxy] configxml_reload];
 
   // wait until xml reloaded.
   int trycount = 0;
   for (trycount = 0; trycount < 10; ++trycount) {
     [NSThread sleepForTimeInterval:0.5];
-    if ([[preferencesclient_ proxy] configxml_initialized]) break;
+    if ([[client_ proxy] configxml_initialized]) break;
   }
 
   // ----------------------------------------

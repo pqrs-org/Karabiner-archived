@@ -1,16 +1,13 @@
 /* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
 #import "KeyRemap4MacBookPref.h"
-#import "Common.h"
 
 @implementation KeyRemap4MacBookPref
-
-static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook/extra/launchUninstaller.sh";
 
 /* ---------------------------------------------------------------------- */
 - (void) drawVersion
 {
-  NSString* version = [[preferencesclient_ proxy] preferencepane_version];
+  NSString* version = [[client_ proxy] preferencepane_version];
   if (! version) {
     version = @"-.-.-";
   }
@@ -36,7 +33,7 @@ static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
 /* ---------------------------------------------------------------------- */
 - (void) setStatusBarState
 {
-  if ([[preferencesclient_ proxy] isStatusbarEnable]) {
+  if ([[client_ proxy] isStatusbarEnable]) {
     [_checkbox_statusbar setState:NSOnState];
   } else {
     [_checkbox_statusbar setState:NSOffState];
@@ -45,12 +42,12 @@ static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
 
 - (IBAction) toggleStatusBar:(id)sender
 {
-  [[preferencesclient_ proxy] toggleStatusbarEnable];
+  [[client_ proxy] toggleStatusbarEnable];
 }
 
 - (void) setStatusBarShowNameState
 {
-  if ([[preferencesclient_ proxy] isShowSettingNameInStatusBar]) {
+  if ([[client_ proxy] isShowSettingNameInStatusBar]) {
     [_checkbox_statusbar_showname setState:NSOnState];
   } else {
     [_checkbox_statusbar_showname setState:NSOffState];
@@ -59,25 +56,25 @@ static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
 
 - (IBAction) toggleStatusBarShowName:(id)sender
 {
-  [[preferencesclient_ proxy] toggleShowSettingNameInStatusBar];
+  [[client_ proxy] toggleShowSettingNameInStatusBar];
 }
 
 /* ---------------------------------------------------------------------- */
 - (void) setCheckUpdateState
 {
-  [_popup_checkupdate selectItemAtIndex:[[preferencesclient_ proxy] checkForUpdatesMode]];
+  [_popup_checkupdate selectItemAtIndex:[[client_ proxy] checkForUpdatesMode]];
 }
 
 - (IBAction) changeCheckUpdate:(id)sender
 {
-  [[preferencesclient_ proxy] setCheckForUpdatesMode:[_popup_checkupdate indexOfSelectedItem]];
+  [[client_ proxy] setCheckForUpdatesMode:[_popup_checkupdate indexOfSelectedItem]];
   [self setCheckUpdateState];
 }
 
 /* ---------------------------------------------------------------------- */
 - (IBAction) launchUninstaller:(id)sender
 {
-  [BUNDLEPREFIX (Common) getExecResult:launchUninstallerCommand args:[NSArray arrayWithObjects:@"force", nil]];
+  system("/Library/org.pqrs/KeyRemap4MacBook/extra/launchUninstaller.sh");
 }
 
 - (IBAction) launchEventViewer:(id)sender
@@ -93,7 +90,7 @@ static NSString* launchUninstallerCommand = @"/Library/org.pqrs/KeyRemap4MacBook
 - (IBAction) openPrivateXML:(id)sender
 {
   // Open a directory which contains private.xml.
-  NSString* path = [[preferencesclient_ proxy] preferencepane_get_private_xml_path];
+  NSString* path = [[client_ proxy] preferencepane_get_private_xml_path];
   if ([path length] > 0) {
     [[NSWorkspace sharedWorkspace] openFile:[path stringByDeletingLastPathComponent]];
   }

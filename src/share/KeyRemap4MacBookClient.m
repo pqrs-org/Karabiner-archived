@@ -1,6 +1,6 @@
-#import "PreferencesClient.h"
+#import "KeyRemap4MacBookClient.h"
 
-@implementation org_pqrs_KeyRemap4MacBook_PreferencesClient
+@implementation org_pqrs_KeyRemap4MacBook_Client
 
 - (id) init
 {
@@ -29,6 +29,9 @@
     [proxy_ release];
   }
   proxy_ = [[NSConnection rootProxyForConnectionWithRegisteredName:@"org.pqrs.KeyRemap4MacBook" host:nil] retain];
+  if (proxy_) {
+    [proxy_ setProtocolForProxy:@protocol(org_pqrs_KeyRemap4MacBook_Protocol)];
+  }
 }
 
 - (id) proxy
@@ -36,7 +39,7 @@
   if (! proxy_) {
     [self observer_NSConnectionDidDieNotification:nil];
   }
-  return proxy_;
+  return [[proxy_ retain] autorelease];
 }
 
 @end
