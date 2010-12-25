@@ -1,7 +1,7 @@
 /* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
 #import <PreferencePanes/PreferencePanes.h>
-#import "PreferencesClient.h"
+#import "KeyRemap4MacBookClient.h"
 
 @interface KeyRemap4MacBookPref : NSPreferencePane
 {
@@ -10,7 +10,7 @@
   IBOutlet id _checkbox_statusbar_showname;
   IBOutlet id _popup_checkupdate;
   IBOutlet id _label_updatechecked;
-  IBOutlet org_pqrs_KeyRemap4MacBook_PreferencesClient* preferencesclient_;
+  IBOutlet org_pqrs_KeyRemap4MacBook_Client* client_;
 }
 
 - (IBAction) toggleStatusBar:(id)sender;

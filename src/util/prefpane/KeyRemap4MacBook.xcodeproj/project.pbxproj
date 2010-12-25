@@ -7,13 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		34070C3D0DC89C050022A857 /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 34070C3B0DC89C050022A857 /* Common.h */; };
-		34070C3E0DC89C050022A857 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 34070C3C0DC89C050022A857 /* Common.m */; };
-		34286891112449340063E730 /* bundleprefix.h in Headers */ = {isa = PBXBuildFile; fileRef = 34286890112449340063E730 /* bundleprefix.h */; };
 		3428689411244C7D0063E730 /* TableView_configlist.h in Headers */ = {isa = PBXBuildFile; fileRef = 3428689211244C7D0063E730 /* TableView_configlist.h */; };
 		3428689511244C7D0063E730 /* TableView_configlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 3428689311244C7D0063E730 /* TableView_configlist.m */; };
-		3440E96112903EC3007E2DB6 /* PreferencesClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 3440E95F12903EC3007E2DB6 /* PreferencesClient.h */; };
-		3440E96212903EC3007E2DB6 /* PreferencesClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3440E96012903EC3007E2DB6 /* PreferencesClient.m */; };
 		349FDBBF0D545C2200EED33C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 349FDBBE0D545C2200EED33C /* Security.framework */; };
 		34CBFDDB0D94CEC00087D9DB /* OutlineView_checkbox.h in Headers */ = {isa = PBXBuildFile; fileRef = 34CBFDD50D94CEC00087D9DB /* OutlineView_checkbox.h */; };
 		34CBFDDC0D94CEC00087D9DB /* OutlineView_checkbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CBFDD60D94CEC00087D9DB /* OutlineView_checkbox.m */; };
@@ -21,6 +16,8 @@
 		34CBFDDE0D94CEC00087D9DB /* OutlineView_number.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CBFDD80D94CEC00087D9DB /* OutlineView_number.m */; };
 		34DB5C081297F754006B9B05 /* OutlineView.h in Headers */ = {isa = PBXBuildFile; fileRef = 34DB5C071297F754006B9B05 /* OutlineView.h */; };
 		34DB5C171297F92B006B9B05 /* OutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DB5C161297F92B006B9B05 /* OutlineView.m */; };
+		34EB7FDE12C59DF30071889D /* KeyRemap4MacBookClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 34EB7FDC12C59DF30071889D /* KeyRemap4MacBookClient.h */; };
+		34EB7FDF12C59DF30071889D /* KeyRemap4MacBookClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 34EB7FDD12C59DF30071889D /* KeyRemap4MacBookClient.m */; };
 		8D202CEA0486D31800D8A456 /* KeyRemap4MacBook_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32DBCFA20370C41700C91783 /* KeyRemap4MacBook_Prefix.pch */; };
 		8D202CEB0486D31800D8A456 /* KeyRemap4MacBookPref.h in Headers */ = {isa = PBXBuildFile; fileRef = F506C03C013D9D7901CA16C8 /* KeyRemap4MacBookPref.h */; };
 		8D202CED0486D31800D8A456 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
@@ -37,13 +34,8 @@
 		089C167FFE841241C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		32DBCFA20370C41700C91783 /* KeyRemap4MacBook_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyRemap4MacBook_Prefix.pch; sourceTree = "<group>"; };
-		34070C3B0DC89C050022A857 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = sharecode/Common.h; sourceTree = "<group>"; };
-		34070C3C0DC89C050022A857 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Common.m; path = sharecode/Common.m; sourceTree = "<group>"; };
-		34286890112449340063E730 /* bundleprefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bundleprefix.h; sourceTree = "<group>"; };
 		3428689211244C7D0063E730 /* TableView_configlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView_configlist.h; sourceTree = "<group>"; };
 		3428689311244C7D0063E730 /* TableView_configlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView_configlist.m; sourceTree = "<group>"; };
-		3440E95F12903EC3007E2DB6 /* PreferencesClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesClient.h; path = sharecode/PreferencesClient.h; sourceTree = "<group>"; };
-		3440E96012903EC3007E2DB6 /* PreferencesClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesClient.m; path = sharecode/PreferencesClient.m; sourceTree = "<group>"; };
 		349FDBBE0D545C2200EED33C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		34CBFDD50D94CEC00087D9DB /* OutlineView_checkbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutlineView_checkbox.h; sourceTree = "<group>"; };
 		34CBFDD60D94CEC00087D9DB /* OutlineView_checkbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutlineView_checkbox.m; sourceTree = "<group>"; };
@@ -51,6 +43,8 @@
 		34CBFDD80D94CEC00087D9DB /* OutlineView_number.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutlineView_number.m; sourceTree = "<group>"; };
 		34DB5C071297F754006B9B05 /* OutlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutlineView.h; sourceTree = "<group>"; };
 		34DB5C161297F92B006B9B05 /* OutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutlineView.m; sourceTree = "<group>"; };
+		34EB7FDC12C59DF30071889D /* KeyRemap4MacBookClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookClient.h; path = ../../share/KeyRemap4MacBookClient.h; sourceTree = SOURCE_ROOT; };
+		34EB7FDD12C59DF30071889D /* KeyRemap4MacBookClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyRemap4MacBookClient.m; path = ../../share/KeyRemap4MacBookClient.m; sourceTree = SOURCE_ROOT; };
 		8D202CF70486D31800D8A456 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D202CF80486D31800D8A456 /* KeyRemap4MacBook.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyRemap4MacBook.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
 		F506C035013D953901CA16C8 /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = /System/Library/Frameworks/PreferencePanes.framework; sourceTree = "<absolute>"; };
@@ -110,14 +104,12 @@
 		08FB77AFFE84173DC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				34EB7FDC12C59DF30071889D /* KeyRemap4MacBookClient.h */,
+				34EB7FDD12C59DF30071889D /* KeyRemap4MacBookClient.m */,
 				34DB5C161297F92B006B9B05 /* OutlineView.m */,
 				34DB5C071297F754006B9B05 /* OutlineView.h */,
-				3440E95F12903EC3007E2DB6 /* PreferencesClient.h */,
-				3440E96012903EC3007E2DB6 /* PreferencesClient.m */,
 				3428689211244C7D0063E730 /* TableView_configlist.h */,
 				3428689311244C7D0063E730 /* TableView_configlist.m */,
-				34286890112449340063E730 /* bundleprefix.h */,
-				34275C401053FE6000EF31B9 /* sharecode */,
 				34CBFDD50D94CEC00087D9DB /* OutlineView_checkbox.h */,
 				34CBFDD60D94CEC00087D9DB /* OutlineView_checkbox.m */,
 				34CBFDD70D94CEC00087D9DB /* OutlineView_number.h */,
@@ -162,15 +154,6 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
-		34275C401053FE6000EF31B9 /* sharecode */ = {
-			isa = PBXGroup;
-			children = (
-				34070C3B0DC89C050022A857 /* Common.h */,
-				34070C3C0DC89C050022A857 /* Common.m */,
-			);
-			name = sharecode;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -182,11 +165,9 @@
 				8D202CEB0486D31800D8A456 /* KeyRemap4MacBookPref.h in Headers */,
 				34CBFDDB0D94CEC00087D9DB /* OutlineView_checkbox.h in Headers */,
 				34CBFDDD0D94CEC00087D9DB /* OutlineView_number.h in Headers */,
-				34070C3D0DC89C050022A857 /* Common.h in Headers */,
-				34286891112449340063E730 /* bundleprefix.h in Headers */,
 				3428689411244C7D0063E730 /* TableView_configlist.h in Headers */,
-				3440E96112903EC3007E2DB6 /* PreferencesClient.h in Headers */,
 				34DB5C081297F754006B9B05 /* OutlineView.h in Headers */,
+				34EB7FDE12C59DF30071889D /* KeyRemap4MacBookClient.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,10 +249,9 @@
 				8D202CF10486D31800D8A456 /* KeyRemap4MacBookPref.m in Sources */,
 				34CBFDDC0D94CEC00087D9DB /* OutlineView_checkbox.m in Sources */,
 				34CBFDDE0D94CEC00087D9DB /* OutlineView_number.m in Sources */,
-				34070C3E0DC89C050022A857 /* Common.m in Sources */,
 				3428689511244C7D0063E730 /* TableView_configlist.m in Sources */,
-				3440E96212903EC3007E2DB6 /* PreferencesClient.m in Sources */,
 				34DB5C171297F92B006B9B05 /* OutlineView.m in Sources */,
+				34EB7FDF12C59DF30071889D /* KeyRemap4MacBookClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

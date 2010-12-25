@@ -3,12 +3,12 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1060</int>
 		<string key="IBDocument.SystemVersion">10H574</string>
-		<string key="IBDocument.InterfaceBuilderVersion">788</string>
+		<string key="IBDocument.InterfaceBuilderVersion">823</string>
 		<string key="IBDocument.AppKitVersion">1038.35</string>
 		<string key="IBDocument.HIToolboxVersion">461.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">788</string>
+			<string key="NS.object.0">823</string>
 		</object>
 		<array class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<integer value="705"/>
@@ -16,7 +16,10 @@
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 		</array>
-		<dictionary class="NSMutableDictionary" key="IBDocument.Metadata"/>
+		<object class="NSMutableDictionary" key="IBDocument.Metadata">
+			<string key="NS.key.0">PluginDependencyRecalculationVersion</string>
+			<integer value="1" key="NS.object.0"/>
+		</object>
 		<array class="NSMutableArray" key="IBDocument.RootObjects" id="182857338">
 			<object class="NSCustomObject" id="762499249">
 				<string key="NSClassName">KeyRemap4MacBookPref</string>
@@ -1298,7 +1301,7 @@
 				<string key="NSClassName">org_pqrs_KeyRemap4MacBook_TableView_configlist</string>
 			</object>
 			<object class="NSCustomObject" id="343988734">
-				<string key="NSClassName">org_pqrs_KeyRemap4MacBook_PreferencesClient</string>
+				<string key="NSClassName">org_pqrs_KeyRemap4MacBook_Client</string>
 			</object>
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -1480,38 +1483,6 @@
 					<int key="connectionID">790</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">preferencesclient_</string>
-						<reference key="source" ref="596358455"/>
-						<reference key="destination" ref="343988734"/>
-					</object>
-					<int key="connectionID">792</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">preferencesclient_</string>
-						<reference key="source" ref="955292521"/>
-						<reference key="destination" ref="343988734"/>
-					</object>
-					<int key="connectionID">794</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">preferencesclient_</string>
-						<reference key="source" ref="762499249"/>
-						<reference key="destination" ref="343988734"/>
-					</object>
-					<int key="connectionID">796</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">preferencesclient_</string>
-						<reference key="source" ref="28585345"/>
-						<reference key="destination" ref="343988734"/>
-					</object>
-					<int key="connectionID">797</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">reloadXML:</string>
 						<reference key="source" ref="28585345"/>
@@ -1566,6 +1537,38 @@
 						<reference key="destination" ref="160563748"/>
 					</object>
 					<int key="connectionID">825</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">client_</string>
+						<reference key="source" ref="28585345"/>
+						<reference key="destination" ref="343988734"/>
+					</object>
+					<int key="connectionID">827</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">client_</string>
+						<reference key="source" ref="955292521"/>
+						<reference key="destination" ref="343988734"/>
+					</object>
+					<int key="connectionID">828</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">client_</string>
+						<reference key="source" ref="596358455"/>
+						<reference key="destination" ref="343988734"/>
+					</object>
+					<int key="connectionID">829</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">client_</string>
+						<reference key="source" ref="762499249"/>
+						<reference key="destination" ref="343988734"/>
+					</object>
+					<int key="connectionID">830</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -2360,7 +2363,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">826</int>
+			<int key="maxID">830</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2425,7 +2428,7 @@
 						<string key="_label_updatechecked">id</string>
 						<string key="_popup_checkupdate">id</string>
 						<string key="_versionText">id</string>
-						<string key="preferencesclient_">org_pqrs_KeyRemap4MacBook_PreferencesClient</string>
+						<string key="client_">org_pqrs_KeyRemap4MacBook_Client</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="_checkbox_statusbar">
@@ -2448,9 +2451,9 @@
 							<string key="name">_versionText</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="preferencesclient_">
-							<string key="name">preferencesclient_</string>
-							<string key="candidateClassName">org_pqrs_KeyRemap4MacBook_PreferencesClient</string>
+						<object class="IBToOneOutletInfo" key="client_">
+							<string key="name">client_</string>
+							<string key="candidateClassName">org_pqrs_KeyRemap4MacBook_Client</string>
 						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -2475,20 +2478,39 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
+					<string key="className">org_pqrs_KeyRemap4MacBook_Client</string>
+					<string key="superclassName">NSObject</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">proxy_</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">proxy_</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">proxy_</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">../../share/KeyRemap4MacBookClient.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
 					<string key="className">org_pqrs_KeyRemap4MacBook_OutlineView</string>
 					<string key="superclassName">NSObject</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="client_">org_pqrs_KeyRemap4MacBook_Client</string>
 						<string key="outlineview_">id</string>
-						<string key="preferencesclient_">org_pqrs_KeyRemap4MacBook_PreferencesClient</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="client_">
+							<string key="name">client_</string>
+							<string key="candidateClassName">org_pqrs_KeyRemap4MacBook_Client</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="outlineview_">
 							<string key="name">outlineview_</string>
 							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="preferencesclient_">
-							<string key="name">preferencesclient_</string>
-							<string key="candidateClassName">org_pqrs_KeyRemap4MacBook_PreferencesClient</string>
 						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -2557,25 +2579,6 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">org_pqrs_KeyRemap4MacBook_PreferencesClient</string>
-					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">proxy_</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">proxy_</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">proxy_</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">sharecode/PreferencesClient.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
 					<string key="className">org_pqrs_KeyRemap4MacBook_TableView_configlist</string>
 					<string key="superclassName">NSObject</string>
 					<dictionary class="NSMutableDictionary" key="actions">
@@ -2593,13 +2596,13 @@
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="preferencesclient_">org_pqrs_KeyRemap4MacBook_PreferencesClient</string>
+						<string key="client_">org_pqrs_KeyRemap4MacBook_Client</string>
 						<string key="view_">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="preferencesclient_">
-							<string key="name">preferencesclient_</string>
-							<string key="candidateClassName">org_pqrs_KeyRemap4MacBook_PreferencesClient</string>
+						<object class="IBToOneOutletInfo" key="client_">
+							<string key="name">client_</string>
+							<string key="candidateClassName">org_pqrs_KeyRemap4MacBook_Client</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="view_">
 							<string key="name">view_</string>
