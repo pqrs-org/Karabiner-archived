@@ -14,7 +14,7 @@
 		34412BEA10946CDB00F66D0F /* KeyResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 34412BE910946CDB00F66D0F /* KeyResponder.m */; };
 		347450D41121467A00C3F0CF /* EventQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 347450D31121467A00C3F0CF /* EventQueue.m */; };
 		34C92D221122EDA100B0B4ED /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C92D211122EDA100B0B4ED /* Carbon.framework */; };
-		34F7AEAF12C2653200D28F4F /* PreferencesClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F7AEAE12C2653200D28F4F /* PreferencesClient.m */; };
+		34EB801312C5DD9E0071889D /* KeyRemap4MacBookClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 34EB801212C5DD9E0071889D /* KeyRemap4MacBookClient.m */; };
 		34FBE7F010B2E8E500DD22E9 /* mousearea.png in Resources */ = {isa = PBXBuildFile; fileRef = 34FBE7EF10B2E8E500DD22E9 /* mousearea.png */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -40,8 +40,8 @@
 		347450D21121467A00C3F0CF /* EventQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventQueue.h; sourceTree = "<group>"; };
 		347450D31121467A00C3F0CF /* EventQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventQueue.m; sourceTree = "<group>"; };
 		34C92D211122EDA100B0B4ED /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
-		34F7AEAD12C2653100D28F4F /* PreferencesClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesClient.h; path = ../prefpane/sharecode/PreferencesClient.h; sourceTree = SOURCE_ROOT; };
-		34F7AEAE12C2653200D28F4F /* PreferencesClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesClient.m; path = ../prefpane/sharecode/PreferencesClient.m; sourceTree = SOURCE_ROOT; };
+		34EB801112C5DD9E0071889D /* KeyRemap4MacBookClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookClient.h; path = ../../share/KeyRemap4MacBookClient.h; sourceTree = SOURCE_ROOT; };
+		34EB801212C5DD9E0071889D /* KeyRemap4MacBookClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyRemap4MacBookClient.m; path = ../../share/KeyRemap4MacBookClient.m; sourceTree = SOURCE_ROOT; };
 		34FBE7EF10B2E8E500DD22E9 /* mousearea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mousearea.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* KeyDump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyDump.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,7 +63,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				340B191D11237DAE00E2EF02 /* sharecode */,
+				34EB801112C5DD9E0071889D /* KeyRemap4MacBookClient.h */,
+				34EB801212C5DD9E0071889D /* KeyRemap4MacBookClient.m */,
 				340B191A11237DAB00E2EF02 /* OtherInformationStore.h */,
 				340B191B11237DAB00E2EF02 /* OtherInformationStore.m */,
 				347450D21121467A00C3F0CF /* EventQueue.h */,
@@ -145,15 +146,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		340B191D11237DAE00E2EF02 /* sharecode */ = {
-			isa = PBXGroup;
-			children = (
-				34F7AEAD12C2653100D28F4F /* PreferencesClient.h */,
-				34F7AEAE12C2653200D28F4F /* PreferencesClient.m */,
-			);
-			name = sharecode;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -223,7 +215,7 @@
 				34412BEA10946CDB00F66D0F /* KeyResponder.m in Sources */,
 				347450D41121467A00C3F0CF /* EventQueue.m in Sources */,
 				340B191C11237DAB00E2EF02 /* OtherInformationStore.m in Sources */,
-				34F7AEAF12C2653200D28F4F /* PreferencesClient.m in Sources */,
+				34EB801312C5DD9E0071889D /* KeyRemap4MacBookClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

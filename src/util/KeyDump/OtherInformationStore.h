@@ -1,6 +1,6 @@
 /* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 #import <Cocoa/Cocoa.h>
-#import "PreferencesClient.h"
+#import "KeyRemap4MacBookClient.h"
 
 @interface OtherInformationStore : NSObject
 {
@@ -12,7 +12,7 @@
   IBOutlet id label_version_;
   IBOutlet id label_applicationname_;
   IBOutlet id label_inputsourcename_;
-  IBOutlet org_pqrs_KeyRemap4MacBook_PreferencesClient* preferencesclient_;
+  IBOutlet org_pqrs_KeyRemap4MacBook_Client* client_;
 }
 
 - (void) setVersion;
