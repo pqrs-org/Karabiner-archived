@@ -11,6 +11,7 @@ enum {
 - (id) init
 {
   self = [super init];
+
   if (self) {
     queue_ = [[NSMutableArray alloc] init];
   }
