@@ -1,14 +1,14 @@
 #import "WorkSpaceData.h"
 #import <Carbon/Carbon.h>
 
-@implementation WorkSpaceData (InputMode)
-
 static NSString* kInputSourceLanguage_canadian                         = @"ca";
 static NSString* kInputSourceLanguage_russian                          = @"ru";
 // http://ilyabirman.ru/typography-layout/
 static NSString* kInputSourceLanguage_russian_Typographic              = @"ru-Typographic";
 static NSString* kInputSourceLanguage_english_Typographic              = @"en-Typographic";
 static NSString* kInputSourceLanguage_traditional_chinese_yahoo_keykey = @"zh-Hant.KeyKey";
+
+@implementation WorkSpaceData (InputMode)
 
 - (NSString*) getInputSourceLanguage:(TISInputSourceRef)source
 {
@@ -127,7 +127,7 @@ static NSString* kInputSourceLanguage_traditional_chinese_yahoo_keykey = @"zh-Ha
     }
   }
 
- finish:
+finish:
   if (filter) {
     CFRelease(filter);
   }
