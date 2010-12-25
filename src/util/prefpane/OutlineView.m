@@ -4,12 +4,8 @@
 
 - (void) dealloc
 {
-  if (datasource_) {
-    [datasource_ release];
-  }
-  if (error_message_) {
-    [error_message_ release];
-  }
+  [datasource_ release];
+  [error_message_ release];
 
   [super dealloc];
 }
