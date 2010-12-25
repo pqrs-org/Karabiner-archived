@@ -100,12 +100,6 @@
 {
   NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.updater";
   [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"check" object:observedObject userInfo:nil deliverImmediately:YES];
-
-  // We wait 1sec to improve the impression that pushed the button.
-  // This is useless processing, but it is surely necessary for UI.
-  [NSThread sleepForTimeInterval:1.0];
-
-  [_label_updatechecked setHidden:NO];
 }
 
 /* ---------------------------------------------------------------------- */
