@@ -5,6 +5,7 @@
 - (id) init
 {
   self = [super init];
+
   if (self) {
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_NSConnectionDidDieNotification:)
@@ -12,12 +13,14 @@
                                                object:nil];
     [self observer_NSConnectionDidDieNotification:nil];
   }
+
   return self;
 }
 
 - (void) dealloc
 {
   [proxy_ release];
+
   [super dealloc];
 }
 
