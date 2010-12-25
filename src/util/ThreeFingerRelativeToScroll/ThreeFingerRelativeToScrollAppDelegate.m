@@ -10,6 +10,21 @@
 
 @implementation ThreeFingerRelativeToScrollAppDelegate
 
+- (id) init
+{
+  self = [super init];
+  if (self) {
+    mtdevices_ = [NSMutableArray new];
+  }
+  return self;
+}
+
+- (void) dealloc
+{
+  [mtdevices_ release];
+  [super dealloc];
+}
+
 // ------------------------------------------------------------
 struct Finger;
 typedef void* MTDeviceRef;
@@ -22,6 +37,7 @@ void MTDeviceStart(MTDeviceRef, int);
 void MTDeviceStop(MTDeviceRef, int);
 
 org_pqrs_KeyRemap4MacBook_Client* global_client_ = nil;
+NSMutableArray* global_mtdevices_ = nil;
 
 static void setPreference(int newvalue) {
   NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
@@ -57,6 +73,12 @@ static void setcallback(BOOL isset) {
     MTDeviceRef device = [e nextObject];
     if (! device) break;
 
+    // We need retain 'device' to prevent a mysterious crash.
+    // So, we append 'device' to global_mtdevices_.
+    if ([global_mtdevices_ indexOfObject:device] == NSNotFound) {
+      [global_mtdevices_ addObject:device];
+    }
+
     if (isset) {
       MTRegisterContactFrameCallback(device, callback);
       MTDeviceStart(device, 0);
@@ -66,10 +88,8 @@ static void setcallback(BOOL isset) {
     }
   }
 
- finish:
-  if (list) {
-    [list release];
-  }
+finish:
+  [list release];
 }
 
 // ------------------------------------------------------------
@@ -102,13 +122,12 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
   // ------------------------------------------------------------
   NSMutableDictionary* subdict = [NSMutableDictionary dictionaryWithObject:@"AppleMultitouchHIDEventDriver" forKey:@"IOClass"];
   NSMutableDictionary* match = [NSMutableDictionary dictionaryWithObject:subdict forKey:@kIOPropertyMatchKey];
-  [match retain]; // for kIOTerminatedNotification
-  [match retain]; // for kIOMatchedNotification
 
   // ----------------------------------------------------------------------
   io_iterator_t it;
   kern_return_t kr;
 
+  [match retain]; // for kIOTerminatedNotification
   kr = IOServiceAddMatchingNotification(port,
                                         kIOTerminatedNotification,
                                         (CFMutableDictionaryRef)match,
@@ -117,11 +136,11 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
                                         &it);
   if (kr != kIOReturnSuccess) {
     NSLog(@"[ERROR] IOServiceAddMatchingNotification");
-    [match release];
     return;
   }
   observer_refresh(NULL, it);
 
+  [match retain]; // for kIOMatchedNotification
   kr = IOServiceAddMatchingNotification(port,
                                         kIOMatchedNotification,
                                         (CFMutableDictionaryRef)match,
@@ -146,6 +165,7 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
 // ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
   global_client_ = client_;
+  global_mtdevices_ = mtdevices_;
   [self setNotification];
 
   // --------------------------------------------------
