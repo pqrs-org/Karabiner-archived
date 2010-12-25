@@ -5,11 +5,13 @@
 
 - (id) init
 {
-  [super init];
+  self = [super init];
 
-  lines_ = [NSMutableArray new];
-  for (NSUInteger i = 0; i < STATUSMESSAGETYPE__END__; ++i) {
-    [lines_ addObject:@""];
+  if (self) {
+    lines_ = [NSMutableArray new];
+    for (NSUInteger i = 0; i < STATUSMESSAGETYPE__END__; ++i) {
+      [lines_ addObject:@""];
+    }
   }
 
   return self;
@@ -17,9 +19,8 @@
 
 - (void) dealloc
 {
-  if (lines_) {
-    [lines_ release];
-  }
+  [lines_ release];
+
   [super dealloc];
 }
 

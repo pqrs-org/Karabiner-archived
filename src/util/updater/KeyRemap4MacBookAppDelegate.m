@@ -12,14 +12,15 @@
 
 @synthesize window;
 
-- (void) checkUpdate:(NSNotification*)notification {
+- (NSString*) getFeedURL
+{
   NSInteger checkupdate = [[client_ proxy] checkForUpdatesMode];
 
   // ----------------------------------------
   // check nothing.
   if (checkupdate == 0) {
     NSLog(@"skip checkForUpdatesInBackground");
-    return;
+    return nil;
   }
 
   // ----------------------------------------
@@ -28,22 +29,38 @@
   // Once we check appcast.xml, SUFeedURL is stored in a user's preference file.
   // So that Sparkle gives priority to a preference over Info.plist,
   // we overwrite SUFeedURL here.
-  NSString* feedurl = @"http://pqrs.org/macosx/keyremap4macbook/files/appcast.xml";
   if (checkupdate == 2) {
-    feedurl = @"http://pqrs.org/macosx/keyremap4macbook/files/appcast-devel.xml";
+    return @"http://pqrs.org/macosx/keyremap4macbook/files/appcast-devel.xml";
   }
-  [suupdater_ setFeedURL:[[[NSURL alloc] initWithString:feedurl] autorelease]];
 
-  NSLog(@"checkForUpdatesInBackground %@", [[suupdater_ feedURL] absoluteString]);
-  [suupdater_ checkForUpdatesInBackground];
+  return @"http://pqrs.org/macosx/keyremap4macbook/files/appcast.xml";
+}
+
+- (void) checkForUpdates:(BOOL)isBackground
+{
+  NSString* url = [self getFeedURL];
+  if (! url) return;
+  [suupdater_ setFeedURL:[NSURL URLWithString:url]];
+
+  NSLog(@"checkForUpdates %@", url);
+  if (isBackground) {
+    [suupdater_ checkForUpdatesInBackground];
+  } else {
+    [suupdater_ checkForUpdates:nil];
+  }
+}
+
+- (void) observer_check:(NSNotification*)aNotification
+{
+  [self checkForUpdates:NO];
 }
 
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification
 {
   NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.updater";
-  [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(checkUpdate:) name:@"check" object:observedObject];
+  [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_check:) name:@"check" object:observedObject];
 
-  [self checkUpdate:aNotification];
+  [self checkForUpdates:YES];
 }
 
 @end

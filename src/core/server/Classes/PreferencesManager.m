@@ -34,69 +34,66 @@
 // ----------------------------------------
 - (id) init
 {
-  [super init];
+  self = [super init];
 
-  default_ = [NSMutableDictionary new];
-  [self setDefault];
+  if (self) {
+    default_ = [NSMutableDictionary new];
+    [self setDefault];
 
-  essential_config_index_ = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"include.bridge_essential_config_index" ofType:@"plist"]];
+    essential_config_index_ = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"include.bridge_essential_config_index" ofType:@"plist"]];
 
-  // ------------------------------------------------------------
-  // initialize
-  if (! [self configlist_selectedIdentifier]) {
-    [self configlist_select:0];
-
+    // ------------------------------------------------------------
+    // initialize
     if (! [self configlist_selectedIdentifier]) {
-      NSLog(@"initialize configlist");
-      // add new item
-
-      [self configlist_append];
-      [self configlist_setName:0 name:@"Default"];
       [self configlist_select:0];
-    }
-  }
 
-  // ------------------------------------------------------------
-  // scan config_* and detech notsave.*
-  for (NSDictionary* dict in [self configlist_getConfigList]) {
-    if (! dict) continue;
+      if (! [self configlist_selectedIdentifier]) {
+        NSLog(@"initialize configlist");
+        // add new item
 
-    NSString* identifier = [dict objectForKey:@"identify"];
-    if (! identifier) continue;
-
-    NSDictionary* d = [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
-    if (! d) continue;
-
-    NSMutableDictionary* md = [NSMutableDictionary dictionaryWithDictionary:d];
-
-    for (NSString* name in [md allKeys]) {
-      if ([name hasPrefix:@"notsave."]) {
-        [md removeObjectForKey:name];
+        [self configlist_append];
+        [self configlist_setName:0 name:@"Default"];
+        [self configlist_select:0];
       }
     }
 
-    [[NSUserDefaults standardUserDefaults] setObject:md forKey:identifier];
-  }
+    // ------------------------------------------------------------
+    // scan config_* and detech notsave.*
+    for (NSDictionary* dict in [self configlist_getConfigList]) {
+      if (! dict) continue;
 
-  // ------------------------------------------------------------
-  serverconnection_ = [NSConnection new];
-  [serverconnection_ setRootObject:self];
-  [serverconnection_ registerName:@"org.pqrs.KeyRemap4MacBook"];
+      NSString* identifier = [dict objectForKey:@"identify"];
+      if (! identifier) continue;
+
+      NSDictionary* d = [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
+      if (! d) continue;
+
+      NSMutableDictionary* md = [NSMutableDictionary dictionaryWithDictionary:d];
+
+      for (NSString* name in [md allKeys]) {
+        if ([name hasPrefix:@"notsave."]) {
+          [md removeObjectForKey:name];
+        }
+      }
+
+      [[NSUserDefaults standardUserDefaults] setObject:md forKey:identifier];
+    }
+
+    // ------------------------------------------------------------
+    serverconnection_ = [NSConnection new];
+    [serverconnection_ setRootObject:self];
+    [serverconnection_ registerName:@"org.pqrs.KeyRemap4MacBook"];
+  }
 
   return self;
 }
 
 - (void) dealloc
 {
-  if (default_) {
-    [default_ release];
-  }
-  if (essential_config_index_) {
-    [essential_config_index_ release];
-  }
-  if (serverconnection_) {
-    [serverconnection_ release];
-  }
+  [default_ release];
+  [essential_config_index_ release];
+  [serverconnection_ release];
+
   [super dealloc];
 }
 

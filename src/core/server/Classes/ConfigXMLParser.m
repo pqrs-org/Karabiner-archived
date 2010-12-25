@@ -13,29 +13,23 @@
 
 - (id) init
 {
-  [super init];
-  [self reload];
+  self = [super init];
+
+  if (self) {
+    [self reload];
+  }
 
   return self;
 }
 
 - (void) dealloc
 {
-  if (dict_initialize_vector_) {
-    [dict_initialize_vector_ release];
-  }
-  if (dict_config_name_) {
-    [dict_config_name_ release];
-  }
-  if (preferencepane_checkbox_) {
-    [preferencepane_checkbox_ release];
-  }
-  if (preferencepane_number_) {
-    [preferencepane_number_ release];
-  }
-  if (keycode_) {
-    [keycode_ release];
-  }
+  [dict_initialize_vector_ release];
+  [dict_config_name_ release];
+  [preferencepane_checkbox_ release];
+  [preferencepane_number_ release];
+  [keycode_ release];
+  [error_message_ release];
 
   [super dealloc];
 }
