@@ -7,7 +7,7 @@
 - (IBAction) copy:(id)sender
 {
   NSPasteboard* pboard = [NSPasteboard generalPasteboard];
-  NSMutableString* string = [[NSMutableString alloc] init];
+  NSMutableString* string = [[NSMutableString new] autorelease];
 
   [string appendFormat:@"version: %@\n", version_];
   [string appendFormat:@"applicationName: %@\n", applicationname_];

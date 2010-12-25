@@ -62,7 +62,7 @@ enum {
 - (IBAction) copy:(id)sender
 {
   NSPasteboard* pboard = [NSPasteboard generalPasteboard];
-  NSMutableString* string = [[NSMutableString alloc] init];
+  NSMutableString* string = [[NSMutableString new] autorelease];
 
   for (NSUInteger i = 0; i < [queue_ count]; ++i) {
     NSDictionary* dict = [queue_ objectAtIndex:([queue_ count] - 1 - i)];
