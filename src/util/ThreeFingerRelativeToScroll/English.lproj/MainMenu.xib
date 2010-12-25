@@ -95,14 +95,6 @@
 					<int key="connectionID">495</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">_statusMenu</string>
-						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="554620265"/>
-					</object>
-					<int key="connectionID">537</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">quit:</string>
 						<reference key="source" ref="976324537"/>
@@ -120,14 +112,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">_startAtLoginMenuItem</string>
-						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="869659300"/>
-					</object>
-					<int key="connectionID">542</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="554620265"/>
 						<reference key="destination" ref="976324537"/>
@@ -141,6 +125,22 @@
 						<reference key="destination" ref="862248931"/>
 					</object>
 					<int key="connectionID">546</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">startAtLoginMenuItem_</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="869659300"/>
+					</object>
+					<int key="connectionID">547</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">statusMenu_</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="554620265"/>
+					</object>
+					<int key="connectionID">548</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -247,7 +247,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">546</int>
+			<int key="maxID">548</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -291,38 +291,38 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>_startAtLoginMenuItem</string>
-							<string>_statusMenu</string>
 							<string>client_</string>
+							<string>startAtLoginMenuItem_</string>
+							<string>statusMenu_</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>org_pqrs_KeyRemap4MacBook_Client</string>
 							<string>NSMenuItem</string>
 							<string>NSMenu</string>
-							<string>org_pqrs_KeyRemap4MacBook_Client</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>_startAtLoginMenuItem</string>
-							<string>_statusMenu</string>
 							<string>client_</string>
+							<string>startAtLoginMenuItem_</string>
+							<string>statusMenu_</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
-								<string key="name">_startAtLoginMenuItem</string>
+								<string key="name">client_</string>
+								<string key="candidateClassName">org_pqrs_KeyRemap4MacBook_Client</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">startAtLoginMenuItem_</string>
 								<string key="candidateClassName">NSMenuItem</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">_statusMenu</string>
+								<string key="name">statusMenu_</string>
 								<string key="candidateClassName">NSMenu</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">client_</string>
-								<string key="candidateClassName">org_pqrs_KeyRemap4MacBook_Client</string>
 							</object>
 						</object>
 					</object>

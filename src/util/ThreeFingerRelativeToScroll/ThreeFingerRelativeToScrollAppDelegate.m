@@ -7,7 +7,6 @@
 //
 
 #import "ThreeFingerRelativeToScrollAppDelegate.h"
-#include <IOKit/IOKitLib.h>
 
 @implementation ThreeFingerRelativeToScrollAppDelegate
 
@@ -45,10 +44,10 @@ static int callback(int device, struct Finger* data, int fingers, double timesta
 }
 
 static void setcallback(BOOL isset) {
-  NSMutableArray* list = nil;
+  NSArray* list = nil;
   NSEnumerator* e = nil;
 
-  list = (NSMutableArray*)(MTDeviceCreateList());
+  list = (NSArray*)(MTDeviceCreateList());
   if (! list) goto finish;
 
   e = [list objectEnumerator];
@@ -68,7 +67,9 @@ static void setcallback(BOOL isset) {
   }
 
  finish:
-  [list release];
+  if (list) {
+    [list release];
+  }
 }
 
 // ------------------------------------------------------------
@@ -149,14 +150,14 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
 
   // --------------------------------------------------
   NSStatusBar* statusBar = [NSStatusBar systemStatusBar];
-  _statusItem = [statusBar statusItemWithLength:24];
-  [_statusItem retain];
+  statusItem_ = [statusBar statusItemWithLength:24];
+  [statusItem_ retain];
 
-  [_statusItem setTitle:@""];
-  [_statusItem setImage:[NSImage imageNamed:@"icon.statusbar.0"]];
-  [_statusItem setAlternateImage:[NSImage imageNamed:@"icon.statusbar.1"]];
-  [_statusItem setHighlightMode:YES];
-  [_statusItem setMenu:_statusMenu];
+  [statusItem_ setTitle:@""];
+  [statusItem_ setImage:[NSImage imageNamed:@"icon.statusbar.0"]];
+  [statusItem_ setAlternateImage:[NSImage imageNamed:@"icon.statusbar.1"]];
+  [statusItem_ setHighlightMode:YES];
+  [statusItem_ setMenu:statusMenu_];
 }
 
 - (void) applicationWillTerminate:(NSNotification*)aNotification {
@@ -164,7 +165,7 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
 
   setPreference(0);
 
-  [_statusItem release];
+  [statusItem_ release];
 }
 
 // ------------------------------------------------------------
@@ -251,9 +252,9 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
 
 - (void) menuNeedsUpdate:(NSMenu*)menu {
   if ([self isStartAtLogin]) {
-    [_startAtLoginMenuItem setState:NSOnState];
+    [startAtLoginMenuItem_ setState:NSOnState];
   } else {
-    [_startAtLoginMenuItem setState:NSOffState];
+    [startAtLoginMenuItem_ setState:NSOffState];
   }
 }
 
