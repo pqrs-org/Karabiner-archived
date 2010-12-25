@@ -22,11 +22,11 @@ void MTUnregisterContactFrameCallback(MTDeviceRef, MTContactCallbackFunction);
 void MTDeviceStart(MTDeviceRef, int);
 void MTDeviceStop(MTDeviceRef, int);
 
-org_pqrs_KeyRemap4MacBook_PreferencesClient* global_preferencesclient_ = nil;
+org_pqrs_KeyRemap4MacBook_Client* global_client_ = nil;
 
 static void setPreference(int newvalue) {
   NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
-  [[global_preferencesclient_ proxy] setValueForName:newvalue forName:@"notsave.pointing_relative_to_scroll"];
+  [[global_client_ proxy] setValueForName:newvalue forName:@"notsave.pointing_relative_to_scroll"];
   [pool drain];
 }
 
@@ -45,11 +45,14 @@ static int callback(int device, struct Finger* data, int fingers, double timesta
 }
 
 static void setcallback(BOOL isset) {
-  NSMutableArray* list = (NSMutableArray*)MTDeviceCreateList();
-  if (! list) return;
+  NSMutableArray* list = nil;
+  NSEnumerator* e = nil;
 
-  NSEnumerator* e = [list objectEnumerator];
-  if (! e) return;
+  list = (NSMutableArray*)(MTDeviceCreateList());
+  if (! list) goto finish;
+
+  e = [list objectEnumerator];
+  if (! e) goto finish;
 
   for (;;) {
     MTDeviceRef device = [e nextObject];
@@ -63,6 +66,9 @@ static void setcallback(BOOL isset) {
       MTDeviceStop(device, 0);
     }
   }
+
+ finish:
+  [list release];
 }
 
 // ------------------------------------------------------------
@@ -86,18 +92,17 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
 }
 
 - (void) setNotification {
-  NSMutableDictionary* match = [NSMutableDictionary dictionary];
-  NSMutableDictionary* subdict = [NSMutableDictionary dictionary];
-  [subdict setObject:@"AppleMultitouchHIDEventDriver" forKey:@"IOClass"];
-  [match setObject:subdict forKey:@kIOPropertyMatchKey];
-  [match retain]; // for kIOTerminatedNotification
-  [match retain]; // for kIOMatchedNotification
-
   IONotificationPortRef port = IONotificationPortCreate(kIOMasterPortDefault);
   if (! port) {
     NSLog(@"[ERROR] IONotificationPortCreate");
     return;
   }
+
+  // ------------------------------------------------------------
+  NSMutableDictionary* subdict = [NSMutableDictionary dictionaryWithObject:@"AppleMultitouchHIDEventDriver" forKey:@"IOClass"];
+  NSMutableDictionary* match = [NSMutableDictionary dictionaryWithObject:subdict forKey:@kIOPropertyMatchKey];
+  [match retain]; // for kIOTerminatedNotification
+  [match retain]; // for kIOMatchedNotification
 
   // ----------------------------------------------------------------------
   io_iterator_t it;
@@ -111,6 +116,7 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
                                         &it);
   if (kr != kIOReturnSuccess) {
     NSLog(@"[ERROR] IOServiceAddMatchingNotification");
+    [match release];
     return;
   }
   observer_refresh(NULL, it);
@@ -138,7 +144,7 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
 
 // ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
-  global_preferencesclient_ = preferencesclient_;
+  global_client_ = client_;
   [self setNotification];
 
   // --------------------------------------------------
