@@ -56,7 +56,7 @@
     size_t capacity(void) const { return capacity_; }                    \
     bool empty(void) const { return size_ == 0; }                        \
                                                                          \
-    TYPENAME & operator[](size_t n) { return vector_[n]; }               \
+    TYPENAME& operator[](size_t n) { return vector_[n]; }                \
     const TYPENAME& operator[](size_t n) const { return vector_[n]; }    \
     TYPENAME& front(void) { return vector_[0]; }                         \
     TYPENAME& back(void) { return vector_[size_ - 1]; }                  \
