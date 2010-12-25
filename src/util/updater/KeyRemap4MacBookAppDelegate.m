@@ -13,7 +13,7 @@
 @synthesize window;
 
 - (void) checkUpdate:(NSNotification*)notification {
-  NSInteger checkupdate = [[preferencesclient_ proxy] checkForUpdatesMode];
+  NSInteger checkupdate = [[client_ proxy] checkForUpdatesMode];
 
   // ----------------------------------------
   // check nothing.
@@ -32,10 +32,10 @@
   if (checkupdate == 2) {
     feedurl = @"http://pqrs.org/macosx/keyremap4macbook/files/appcast-devel.xml";
   }
-  [_suupdater setFeedURL:[[[NSURL alloc] initWithString:feedurl] autorelease]];
+  [suupdater_ setFeedURL:[[[NSURL alloc] initWithString:feedurl] autorelease]];
 
-  NSLog(@"checkForUpdatesInBackground %@", [[_suupdater feedURL] absoluteString]);
-  [_suupdater checkForUpdatesInBackground];
+  NSLog(@"checkForUpdatesInBackground %@", [[suupdater_ feedURL] absoluteString]);
+  [suupdater_ checkForUpdatesInBackground];
 }
 
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification
