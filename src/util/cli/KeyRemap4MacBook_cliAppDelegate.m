@@ -42,17 +42,17 @@
     NSString* command = [arguments objectAtIndex:1];
 
     /*  */ if ([command isEqualToString:@"list"]) {
-      NSArray* a = [[preferencesclient_ proxy] configlist_getConfigList];
+      NSArray* a = [[client_ proxy] configlist_getConfigList];
       for (NSDictionary* dict in a) {
         [self output:[dict objectForKey:@"name"]];
         [self output:@"\n"];
       }
 
     } else if ([command isEqualToString:@"selected"]) {
-      [self output:[NSString stringWithFormat:@"%d\n", [[preferencesclient_ proxy] configlist_selectedIndex]]];
+      [self output:[NSString stringWithFormat:@"%d\n", [[client_ proxy] configlist_selectedIndex]]];
 
     } else if ([command isEqualToString:@"changed"]) {
-      NSDictionary* dict = [[preferencesclient_ proxy] changed];
+      NSDictionary* dict = [[client_ proxy] changed];
       if (dict) {
         for (NSString* key in [dict allKeys]) {
           [self output:[NSString stringWithFormat:@"%@=%@\n", key, [dict objectForKey:key]]];
@@ -64,21 +64,21 @@
         [self usage];
       }
       NSString* value = [arguments objectAtIndex:2];
-      [[preferencesclient_ proxy] configlist_select:[value intValue]];
+      [[client_ proxy] configlist_select:[value intValue]];
 
     } else if ([command isEqualToString:@"enable"]) {
       if ([arguments count] != 3) {
         [self usage];
       }
       NSString* value = [arguments objectAtIndex:2];
-      [[preferencesclient_ proxy] setValueForName:1 forName:value];
+      [[client_ proxy] setValueForName:1 forName:value];
 
     } else if ([command isEqualToString:@"disable"]) {
       if ([arguments count] != 3) {
         [self usage];
       }
       NSString* value = [arguments objectAtIndex:2];
-      [[preferencesclient_ proxy] setValueForName:0 forName:value];
+      [[client_ proxy] setValueForName:0 forName:value];
     }
   }
 
