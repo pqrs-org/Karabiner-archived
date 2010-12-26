@@ -1025,19 +1025,34 @@
           </list>
         </item>
 
-        <!-- Modify only -->
+        <!-- Modifier only -->
         <item>
-          <name>Modify only</name>
-          <appendix>A to B if ModifierFlag == COMMAND_L or OPTION_L</appendix>
-          <appendix>A to C unless ModifierFlag == SHIFT_L or CONTROL_L</appendix>
-          <identifier>remap.samples_modify</identifier>
+          <name>Modifier only</name>
+          <appendix>A to B if (COMMAND_L or OPTION_L is pressed)</appendix>
+          <appendix>A to C unless (SHIFT_L or CONTROL_L is pressed)</appendix>
+          <appendix>B to D if ("COMMAND_L|CONTROL_L" or "COMMAND_L|OPTION_L" is pressed)</appendix>
+          <appendix>B to E unless ("COMMAND_L|SHIFT_L" or "COMMAND_L|SHIFT_R" is pressed)</appendix>
+          <appendix>C to F if ModifierFlag == Shift_L (if no other modifiers pressed)</appendix>
+          <identifier>remap.samples_modifier</identifier>
           <block>
-            <modify_only>COMMAND_L, OPTION_L</modify_only>
+            <modifier_only>ModifierFlag::COMMAND_L, ModifierFlag::OPTION_L</modifier_only>
             <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
           </block>
           <block>
-            <modify_not>SHIFT_L, CONTROL_L</modify_not>
+            <modifier_not>ModifierFlag::SHIFT_L, ModifierFlag::CONTROL_L</modifier_not>
             <autogen>--KeyToKey-- KeyCode::A, KeyCode::C</autogen>
+          </block>
+          <block>
+            <modifier_only>ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</modifier_only>
+            <autogen>--KeyToKey-- KeyCode::B, KeyCode::D</autogen>
+          </block>
+          <block>
+            <modifier_not>ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_R</modifier_not>
+            <autogen>--KeyToKey-- KeyCode::B, KeyCode::E</autogen>
+          </block>
+          <block>
+            <modifier_only>ModifierFlag::SHIFT_L | ModifierFlag::NONE</modifier_only>
+            <autogen>--KeyToKey-- KeyCode::C, KeyCode::F</autogen>
           </block>
         </item>
 

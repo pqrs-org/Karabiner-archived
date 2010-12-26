@@ -5,10 +5,10 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFilter {
-    class ModifyFilter {
+    class ModifierFilter {
     public:
-      ModifyFilter(unsigned int t);
-      ~ModifyFilter(void);
+      ModifierFilter(unsigned int t);
+      ~ModifierFilter(void);
 
       void add(unsigned int newval);
 

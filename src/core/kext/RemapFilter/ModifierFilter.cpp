@@ -2,16 +2,16 @@
 #include "bridge.h"
 #include "bridge.hpp"
 #include "FlagStatus.hpp"
-#include "ModifyFilter.hpp"
+#include "ModifierFilter.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFilter {
-    ModifyFilter::ModifyFilter(unsigned int t) : type_(t)
+    ModifierFilter::ModifierFilter(unsigned int t) : type_(t)
     {
       targets_ = new Vector_FilterValue();
     }
 
-    ModifyFilter::~ModifyFilter(void)
+    ModifierFilter::~ModifierFilter(void)
     {
       if (targets_) {
         delete targets_;
@@ -19,7 +19,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    ModifyFilter::add(unsigned int newval)
+    ModifierFilter::add(unsigned int newval)
     {
       if (! targets_) return;
 
@@ -27,25 +27,29 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     bool
-    ModifyFilter::isblocked(void)
+    ModifierFilter::isblocked(void)
     {
       if (! targets_) return false;
 
       switch (type_) {
-        case BRIDGE_FILTERTYPE_MODIFY_NOT:
+        case BRIDGE_FILTERTYPE_MODIFIER_NOT:
         {
+          Flags current = FlagStatus::makeFlags();
           for (size_t i = 0; i < targets_->size(); ++i) {
-            if (FlagStatus::makeFlags().isOn((Flags)(*targets_)[i])) {
+            Flags f((*targets_)[i]);
+            if (current.isOn(f)) {
               return true;
             }
           }
           return false;
         }
 
-        case BRIDGE_FILTERTYPE_MODIFY_ONLY:
+        case BRIDGE_FILTERTYPE_MODIFIER_ONLY:
         {
+          Flags current = FlagStatus::makeFlags();
           for (size_t i = 0; i < targets_->size(); ++i) {
-            if (FlagStatus::makeFlags().isOn((Flags)(*targets_)[i])) {
+            Flags f((*targets_)[i]);
+            if (current.isOn(f)) {
               return false;
             }
           }
@@ -53,7 +57,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
         default:
-          IOLOG_ERROR("ModifyFilter::isblocked unknown type_(%d)\n", type_);
+          IOLOG_ERROR("ModifierFilter::isblocked unknown type_(%d)\n", type_);
           break;
       }
 
