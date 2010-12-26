@@ -47,6 +47,11 @@
       } else if ([n_name isEqualToString:@"config_only"]) {
         [self append_to_filter:filters node:n prefix:@"ConfigIndex::" filtertype:BRIDGE_FILTERTYPE_CONFIG_ONLY];
 
+      } else if ([n_name isEqualToString:@"modify_not"]) {
+        [self append_to_filter:filters node:n prefix:@"ModifierFlag::" filtertype:BRIDGE_FILTERTYPE_MODIFY_NOT];
+      } else if ([n_name isEqualToString:@"modify_only"]) {
+        [self append_to_filter:filters node:n prefix:@"ModifierFlag::" filtertype:BRIDGE_FILTERTYPE_MODIFY_ONLY];
+
       } else if ([n_name isEqualToString:@"inputmode_not"]) {
         [self append_to_filter:filters node:n prefix:@"InputMode::" filtertype:BRIDGE_FILTERTYPE_INPUTMODE_NOT];
       } else if ([n_name isEqualToString:@"inputmode_only"]) {

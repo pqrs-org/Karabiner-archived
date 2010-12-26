@@ -4,6 +4,7 @@
 #include "bridge.h"
 #include "ApplicationFilter.hpp"
 #include "ConfigFilter.hpp"
+#include "ModifyFilter.hpp"
 #include "DeviceFilter.hpp"
 #include "InputModeFilter.hpp"
 
@@ -25,6 +26,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       union {
         ApplicationFilter* applicationFilter;
         ConfigFilter* configFilter;
+        ModifyFilter* modifyFilter;
         DeviceFilter* deviceFilter;
         InputModeFilter* inputModeFilter;
       } p_;
