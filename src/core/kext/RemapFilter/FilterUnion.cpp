@@ -51,12 +51,12 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
           break;
 
-        case BRIDGE_FILTERTYPE_MODIFY_NOT:
-        case BRIDGE_FILTERTYPE_MODIFY_ONLY:
-          p_.modifyFilter = new ModifyFilter(type_);
-          if (p_.modifyFilter) {
+        case BRIDGE_FILTERTYPE_MODIFIER_NOT:
+        case BRIDGE_FILTERTYPE_MODIFIER_ONLY:
+          p_.modifierFilter = new ModifierFilter(type_);
+          if (p_.modifierFilter) {
             for (size_t i = 1; i < length; ++i) {
-              (p_.modifyFilter)->add(vec[i]);
+              (p_.modifierFilter)->add(vec[i]);
             }
           }
           break;
@@ -112,10 +112,10 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
           break;
 
-        case BRIDGE_FILTERTYPE_MODIFY_NOT:
-        case BRIDGE_FILTERTYPE_MODIFY_ONLY:
-          if (p_.modifyFilter) {
-            delete p_.modifyFilter;
+        case BRIDGE_FILTERTYPE_MODIFIER_NOT:
+        case BRIDGE_FILTERTYPE_MODIFIER_ONLY:
+          if (p_.modifierFilter) {
+            delete p_.modifierFilter;
           }
           break;
 
@@ -157,10 +157,10 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
           break;
 
-        case BRIDGE_FILTERTYPE_MODIFY_NOT:
-        case BRIDGE_FILTERTYPE_MODIFY_ONLY:
-          if (p_.modifyFilter) {
-            return (p_.modifyFilter)->isblocked();
+        case BRIDGE_FILTERTYPE_MODIFIER_NOT:
+        case BRIDGE_FILTERTYPE_MODIFIER_ONLY:
+          if (p_.modifierFilter) {
+            return (p_.modifierFilter)->isblocked();
           }
           break;
 
