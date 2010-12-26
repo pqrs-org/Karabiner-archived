@@ -1032,8 +1032,9 @@
               <name>Note:</name>
               <appendix>We cannot use VK_COMMAND,VK_CONTROL,VK_OPTION,VK_SHIFT in</appendix>
               <appendix>&lt;modifier_only&gt;, &lt;modifier_not&gt;.</appendix>
+              <appendix></appendix>
               <appendix>Expand these to ModifierFlags.</appendix>
-              <appendix>(Example: &lt;modifier_only&gt;ModifierFlag::SHIFT_L, ModifierFlag::SHIFT_R&lt;/modifier_only&gt;)</appendix>
+              <appendix>Example: &lt;modifier_only&gt;ModifierFlag::SHIFT_L, ModifierFlag::SHIFT_R&lt;/modifier_only&gt;</appendix>
             </item>
             <item>
               <name>Standard</name>
