@@ -1025,50 +1025,75 @@
           </list>
         </item>
 
-        <!-- Modifier only -->
         <item>
-          <name>Modifier only</name>
-          <appendix>A to B if (Command_L or Option_L is pressed)</appendix>
-          <appendix>  // Command_L+A to Command_L+B</appendix>
-          <appendix>  // Option_L+A to Option_L+B</appendix>
-          <appendix>  // Command_L+Option_L+A to Command_L+Option_L+B</appendix>
-          <appendix>  // Command_L+Shift_L+A to Command_L+Shift_L+B</appendix>
-          <appendix></appendix>
-          <appendix>A to C unless (Shift_L or Control_L is pressed)</appendix>
-          <appendix>  // A to C</appendix>
-          <appendix>  // Shift_R+A to Shift_R+C</appendix>
-          <appendix>  // Control_L+A to Control_L+A</appendix>
-          <appendix>  // Shift_L+A to Shift_L+A</appendix>
-          <appendix>  // Shift_L+Command_R+A to Shift_L+Command_R+A</appendix>
-          <appendix></appendix>
-          <appendix>B to D if ("Control_L|Option_L" or "Command_L|Option_L" is pressed)</appendix>
-          <appendix>  // Control_L+Option_L+B to Control_L+Option_L+D</appendix>
-          <appendix>  // Command_L+Option_L+B to Command_L+Option_L+D</appendix>
-          <appendix>  // Command_L+Option_L+Shift_L+B to Command_L+Option_L+Shift_L+D</appendix>
-          <appendix></appendix>
-          <appendix>B to E unless ("COMMAND_L|SHIFT_L" or "COMMAND_L|SHIFT_R" is pressed)</appendix>
-          <appendix>C to F if ModifierFlag == Shift_L (if no other modifiers pressed)</appendix>
-          <identifier>remap.samples_modifier</identifier>
-          <block>
-            <modifier_only>ModifierFlag::COMMAND_L, ModifierFlag::OPTION_L</modifier_only>
-            <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
-          </block>
-          <block>
-            <modifier_not>ModifierFlag::SHIFT_L, ModifierFlag::CONTROL_L</modifier_not>
-            <autogen>--KeyToKey-- KeyCode::A, KeyCode::C</autogen>
-          </block>
-          <block>
-            <modifier_only>ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</modifier_only>
-            <autogen>--KeyToKey-- KeyCode::B, KeyCode::D</autogen>
-          </block>
-          <block>
-            <modifier_not>ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_R</modifier_not>
-            <autogen>--KeyToKey-- KeyCode::B, KeyCode::E</autogen>
-          </block>
-          <block>
-            <modifier_only>ModifierFlag::SHIFT_L | ModifierFlag::NONE</modifier_only>
-            <autogen>--KeyToKey-- KeyCode::C, KeyCode::F</autogen>
-          </block>
+          <name>Modifier</name>
+          <list>
+            <item>
+              <name>Note:</name>
+              <appendix>We cannot use VK_COMMAND,VK_CONTROL,VK_OPTION,VK_SHIFT in</appendix>
+              <appendix>&lt;modifier_only&gt;, &lt;modifier_not&gt;.</appendix>
+              <appendix>Expand these to ModifierFlags.</appendix>
+              <appendix>(Example: &lt;modifier_only&gt;ModifierFlag::SHIFT_L, ModifierFlag::SHIFT_R&lt;/modifier_only&gt;)</appendix>
+            </item>
+            <item>
+              <name>Standard</name>
+              <appendix>A to B if (Command_L or Option_L is pressed)</appendix>
+              <appendix>  // Command_L+A to Command_L+B</appendix>
+              <appendix>  // Option_L+A to Option_L+B</appendix>
+              <appendix>  // Command_L+Option_L+A to Command_L+Option_L+B</appendix>
+              <appendix>  // Command_L+Shift_L+A to Command_L+Shift_L+B</appendix>
+              <appendix></appendix>
+              <appendix>A to C unless (Shift_L or Control_L is pressed)</appendix>
+              <appendix>  // A to C</appendix>
+              <appendix>  // Shift_R+A to Shift_R+C</appendix>
+              <appendix>  // Control_L+A to Control_L+A</appendix>
+              <appendix>  // Shift_L+A to Shift_L+A</appendix>
+              <appendix>  // Shift_L+Command_R+A to Shift_L+Command_R+A</appendix>
+              <identifier>remap.samples_modifier_standard</identifier>
+              <block>
+                <modifier_only>ModifierFlag::COMMAND_L, ModifierFlag::OPTION_L</modifier_only>
+                <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
+              </block>
+              <block>
+                <modifier_not>ModifierFlag::SHIFT_L, ModifierFlag::CONTROL_L</modifier_not>
+                <autogen>--KeyToKey-- KeyCode::A, KeyCode::C</autogen>
+              </block>
+            </item>
+            <item>
+              <name>Combination</name>
+              <appendix>B to D if ("Control_L|Option_L" or "Command_L|Option_L" is pressed)</appendix>
+              <appendix>  // Control_L+Option_L+B to Control_L+Option_L+D</appendix>
+              <appendix>  // Command_L+Option_L+B to Command_L+Option_L+D</appendix>
+              <appendix>  // Command_L+Option_L+Shift_L+B to Command_L+Option_L+Shift_L+D</appendix>
+              <appendix></appendix>
+              <appendix>B to E unless ("COMMAND_L|SHIFT_L" or "COMMAND_L|SHIFT_R" is pressed)</appendix>
+              <appendix>  // B to E</appendix>
+              <appendix>  // Command_L+B to Command_L+E</appendix>
+              <appendix>  // Command_L+Shift_L+B to Command_L+Shift_L+B</appendix>
+              <appendix>  // Command_L+Shift_R+B to Command_L+Shift_R+B</appendix>
+              <identifier>remap.samples_modifier_combination</identifier>
+              <block>
+                <modifier_only>ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</modifier_only>
+                <autogen>--KeyToKey-- KeyCode::B, KeyCode::D</autogen>
+              </block>
+              <block>
+                <modifier_not>ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_R</modifier_not>
+                <autogen>--KeyToKey-- KeyCode::B, KeyCode::E</autogen>
+              </block>
+            </item>
+            <item>
+              <name>With ModifierFlag::NONE</name>
+              <appendix>C to F if ModifierFlag == Shift_L (if no other modifiers pressed)</appendix>
+              <appendix>  // C to C</appendix>
+              <appendix>  // Shift_L+C to F</appendix>
+              <appendix>  // Command_L+Shift_L+C to Command_L+Shift_L+C</appendix>
+              <identifier>remap.samples_modifier_with_none</identifier>
+              <block>
+                <modifier_only>ModifierFlag::SHIFT_L | ModifierFlag::NONE</modifier_only>
+                <autogen>--KeyToKey-- KeyCode::C, KeyCode::F</autogen>
+              </block>
+            </item>
+          </list>
         </item>
 
         <!-- block -->
