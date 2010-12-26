@@ -1030,7 +1030,7 @@
           <name>Modifier only</name>
           <appendix>A to B if (COMMAND_L or OPTION_L is pressed)</appendix>
           <appendix>A to C unless (SHIFT_L or CONTROL_L is pressed)</appendix>
-          <appendix>B to D if ("COMMAND_L|CONTROL_L" or "COMMAND_L|OPTION_L" is pressed)</appendix>
+          <appendix>B to D if ("CONTROL_L|OPTION_L" or "COMMAND_L|OPTION_L" is pressed)</appendix>
           <appendix>B to E unless ("COMMAND_L|SHIFT_L" or "COMMAND_L|SHIFT_R" is pressed)</appendix>
           <appendix>C to F if ModifierFlag == Shift_L (if no other modifiers pressed)</appendix>
           <identifier>remap.samples_modifier</identifier>
@@ -1043,7 +1043,7 @@
             <autogen>--KeyToKey-- KeyCode::A, KeyCode::C</autogen>
           </block>
           <block>
-            <modifier_only>ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</modifier_only>
+            <modifier_only>ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</modifier_only>
             <autogen>--KeyToKey-- KeyCode::B, KeyCode::D</autogen>
           </block>
           <block>
