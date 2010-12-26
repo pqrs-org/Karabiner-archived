@@ -1028,9 +1028,24 @@
         <!-- Modifier only -->
         <item>
           <name>Modifier only</name>
-          <appendix>A to B if (COMMAND_L or OPTION_L is pressed)</appendix>
-          <appendix>A to C unless (SHIFT_L or CONTROL_L is pressed)</appendix>
-          <appendix>B to D if ("CONTROL_L|OPTION_L" or "COMMAND_L|OPTION_L" is pressed)</appendix>
+          <appendix>A to B if (Command_L or Option_L is pressed)</appendix>
+          <appendix>  // Command_L+A to Command_L+B</appendix>
+          <appendix>  // Option_L+A to Option_L+B</appendix>
+          <appendix>  // Command_L+Option_L+A to Command_L+Option_L+B</appendix>
+          <appendix>  // Command_L+Shift_L+A to Command_L+Shift_L+B</appendix>
+          <appendix></appendix>
+          <appendix>A to C unless (Shift_L or Control_L is pressed)</appendix>
+          <appendix>  // A to C</appendix>
+          <appendix>  // Shift_R+A to Shift_R+C</appendix>
+          <appendix>  // Control_L+A to Control_L+A</appendix>
+          <appendix>  // Shift_L+A to Shift_L+A</appendix>
+          <appendix>  // Shift_L+Command_R+A to Shift_L+Command_R+A</appendix>
+          <appendix></appendix>
+          <appendix>B to D if ("Control_L|Option_L" or "Command_L|Option_L" is pressed)</appendix>
+          <appendix>  // Control_L+Option_L+B to Control_L+Option_L+D</appendix>
+          <appendix>  // Command_L+Option_L+B to Command_L+Option_L+D</appendix>
+          <appendix>  // Command_L+Option_L+Shift_L+B to Command_L+Option_L+Shift_L+D</appendix>
+          <appendix></appendix>
           <appendix>B to E unless ("COMMAND_L|SHIFT_L" or "COMMAND_L|SHIFT_R" is pressed)</appendix>
           <appendix>C to F if ModifierFlag == Shift_L (if no other modifiers pressed)</appendix>
           <identifier>remap.samples_modifier</identifier>
