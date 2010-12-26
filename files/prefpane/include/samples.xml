@@ -1038,13 +1038,13 @@
             </item>
             <item>
               <name>Standard</name>
-              <appendix>A to B if (Command_L or Option_L is pressed)</appendix>
+              <appendix>A to B if Command_L or Option_L is pressed.</appendix>
               <appendix>  // Command_L+A to Command_L+B</appendix>
               <appendix>  // Option_L+A to Option_L+B</appendix>
               <appendix>  // Command_L+Option_L+A to Command_L+Option_L+B</appendix>
               <appendix>  // Command_L+Shift_L+A to Command_L+Shift_L+B</appendix>
               <appendix></appendix>
-              <appendix>A to C unless (Shift_L or Control_L is pressed)</appendix>
+              <appendix>A to C unless Shift_L or Control_L is pressed.</appendix>
               <appendix>  // A to C</appendix>
               <appendix>  // Shift_R+A to Shift_R+C</appendix>
               <appendix>  // Control_L+A to Control_L+A</appendix>
@@ -1062,12 +1062,12 @@
             </item>
             <item>
               <name>Combination</name>
-              <appendix>B to D if ("Control_L|Option_L" or "Command_L|Option_L" is pressed)</appendix>
+              <appendix>B to D if "Control_L+Option_L" or "Command_L+Option_L" is pressed.</appendix>
               <appendix>  // Control_L+Option_L+B to Control_L+Option_L+D</appendix>
               <appendix>  // Command_L+Option_L+B to Command_L+Option_L+D</appendix>
               <appendix>  // Command_L+Option_L+Shift_L+B to Command_L+Option_L+Shift_L+D</appendix>
               <appendix></appendix>
-              <appendix>B to E unless ("COMMAND_L|SHIFT_L" or "COMMAND_L|SHIFT_R" is pressed)</appendix>
+              <appendix>B to E unless "COMMAND_L+SHIFT_L" or "COMMAND_L+SHIFT_R" is pressed.</appendix>
               <appendix>  // B to E</appendix>
               <appendix>  // Command_L+B to Command_L+E</appendix>
               <appendix>  // Command_L+Shift_L+B to Command_L+Shift_L+B</appendix>
@@ -1084,7 +1084,7 @@
             </item>
             <item>
               <name>With ModifierFlag::NONE</name>
-              <appendix>C to F if ModifierFlag == Shift_L (if no other modifiers pressed)</appendix>
+              <appendix>C to F if Shift_L is pressed. (And no other modifiers are pressed.)</appendix>
               <appendix>  // C to C</appendix>
               <appendix>  // Shift_L+C to F</appendix>
               <appendix>  // Command_L+Shift_L+C to Command_L+Shift_L+C</appendix>
