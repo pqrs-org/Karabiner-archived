@@ -18,7 +18,7 @@
     // support '|' for <modifier_only>.
     // For example: <modifier_only>ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L, ModifierFlag::COMMAND_L|ModifierFlag::OPTION_L</modifier_only>
     unsigned int value = 0;
-    for (NSString* v in [name componentsSeparatedByString:@"|"]) {
+    for (NSString* v in [name componentsSeparatedByString : @"|"]) {
       value |= [keycode_ unsignedIntValue:[NSString stringWithFormat:@"%@%@", prefix, [KeyCode normalizeName:v]]];
     }
     [filters addObject:[NSNumber numberWithUnsignedInt:value]];
