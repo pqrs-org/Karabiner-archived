@@ -15,7 +15,13 @@
   [filters addObject:[NSNumber numberWithUnsignedInt:filtertype]];
 
   for (NSString* name in a) {
-    [filters addObject:[NSNumber numberWithUnsignedInt:[keycode_ unsignedIntValue:[NSString stringWithFormat:@"%@%@", prefix, [KeyCode normalizeName:name]]]]];
+    // support '|' for <modifier_only>.
+    // For example: <modifier_only>ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L, ModifierFlag::COMMAND_L|ModifierFlag::OPTION_L</modifier_only>
+    unsigned int value = 0;
+    for (NSString* v in [name componentsSeparatedByString:@"|"]) {
+      value |= [keycode_ unsignedIntValue:[NSString stringWithFormat:@"%@%@", prefix, [KeyCode normalizeName:v]]];
+    }
+    [filters addObject:[NSNumber numberWithUnsignedInt:value]];
   }
 }
 
@@ -47,10 +53,10 @@
       } else if ([n_name isEqualToString:@"config_only"]) {
         [self append_to_filter:filters node:n prefix:@"ConfigIndex::" filtertype:BRIDGE_FILTERTYPE_CONFIG_ONLY];
 
-      } else if ([n_name isEqualToString:@"modify_not"]) {
-        [self append_to_filter:filters node:n prefix:@"ModifierFlag::" filtertype:BRIDGE_FILTERTYPE_MODIFY_NOT];
-      } else if ([n_name isEqualToString:@"modify_only"]) {
-        [self append_to_filter:filters node:n prefix:@"ModifierFlag::" filtertype:BRIDGE_FILTERTYPE_MODIFY_ONLY];
+      } else if ([n_name isEqualToString:@"modifier_not"]) {
+        [self append_to_filter:filters node:n prefix:@"" filtertype:BRIDGE_FILTERTYPE_MODIFIER_NOT];
+      } else if ([n_name isEqualToString:@"modifier_only"]) {
+        [self append_to_filter:filters node:n prefix:@"" filtertype:BRIDGE_FILTERTYPE_MODIFIER_ONLY];
 
       } else if ([n_name isEqualToString:@"inputmode_not"]) {
         [self append_to_filter:filters node:n prefix:@"InputMode::" filtertype:BRIDGE_FILTERTYPE_INPUTMODE_NOT];
