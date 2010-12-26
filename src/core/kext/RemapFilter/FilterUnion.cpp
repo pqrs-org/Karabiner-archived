@@ -51,6 +51,16 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
           break;
 
+        case BRIDGE_FILTERTYPE_MODIFY_NOT:
+        case BRIDGE_FILTERTYPE_MODIFY_ONLY:
+          p_.modifyFilter = new ModifyFilter(type_);
+          if (p_.modifyFilter) {
+            for (size_t i = 1; i < length; ++i) {
+              (p_.modifyFilter)->add(vec[i]);
+            }
+          }
+          break;
+
         case BRIDGE_FILTERTYPE_DEVICE_NOT:
         case BRIDGE_FILTERTYPE_DEVICE_ONLY:
           p_.deviceFilter = new DeviceFilter(type_);
@@ -102,6 +112,13 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
           break;
 
+        case BRIDGE_FILTERTYPE_MODIFY_NOT:
+        case BRIDGE_FILTERTYPE_MODIFY_ONLY:
+          if (p_.modifyFilter) {
+            delete p_.modifyFilter;
+          }
+          break;
+
         case BRIDGE_FILTERTYPE_DEVICE_NOT:
         case BRIDGE_FILTERTYPE_DEVICE_ONLY:
           if (p_.deviceFilter) {
@@ -137,6 +154,13 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_FILTERTYPE_CONFIG_ONLY:
           if (p_.configFilter) {
             return (p_.configFilter)->isblocked();
+          }
+          break;
+
+        case BRIDGE_FILTERTYPE_MODIFY_NOT:
+        case BRIDGE_FILTERTYPE_MODIFY_ONLY:
+          if (p_.modifyFilter) {
+            return (p_.modifyFilter)->isblocked();
           }
           break;
 

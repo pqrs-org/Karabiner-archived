@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05CB4A2C12BB4C0800737491 /* ModifyFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 05CB4A2A12BB4C0800737491 /* ModifyFilter.hpp */; };
+		05CB4A2D12BB4C0800737491 /* ModifyFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05CB4A2B12BB4C0800737491 /* ModifyFilter.cpp */; };
 		32D94FC80562CBF700B6AF17 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
 		34012A6E0E7AED010069FE39 /* TimerWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34012A6C0E7AED010069FE39 /* TimerWrapper.cpp */; };
 		34012A6F0E7AED010069FE39 /* TimerWrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34012A6D0E7AED010069FE39 /* TimerWrapper.hpp */; };
@@ -114,6 +116,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05CB4A2A12BB4C0800737491 /* ModifyFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ModifyFilter.hpp; path = RemapFilter/ModifyFilter.hpp; sourceTree = "<group>"; };
+		05CB4A2B12BB4C0800737491 /* ModifyFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ModifyFilter.cpp; path = RemapFilter/ModifyFilter.cpp; sourceTree = "<group>"; };
 		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		32D94FCF0562CBF700B6AF17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32D94FD00562CBF700B6AF17 /* KeyRemap4MacBook.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyRemap4MacBook.kext; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -384,6 +388,8 @@
 				34DC263B1262A5A500354378 /* FilterUnion.cpp */,
 				34DC263712629E0000354378 /* FilterUnion.hpp */,
 				342C80521261B379007F15DA /* DeviceFilter.cpp */,
+				05CB4A2A12BB4C0800737491 /* ModifyFilter.hpp */,
+				05CB4A2B12BB4C0800737491 /* ModifyFilter.cpp */,
 				342C80531261B379007F15DA /* DeviceFilter.hpp */,
 				34B5E8B31261960700DCFB0D /* InputModeFilter.cpp */,
 				34B5E8B41261960700DCFB0D /* InputModeFilter.hpp */,
@@ -460,6 +466,7 @@
 				34DC263812629E0000354378 /* FilterUnion.hpp in Headers */,
 				34794D54126F32E700655ADB /* SetKeyboardType.hpp in Headers */,
 				344BB4EF12812A9F008B75F6 /* DropPointingRelativeCursorMove.hpp in Headers */,
+				05CB4A2C12BB4C0800737491 /* ModifyFilter.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,6 +582,7 @@
 				34DC263C1262A5A500354378 /* FilterUnion.cpp in Sources */,
 				34794D53126F32E700655ADB /* SetKeyboardType.cpp in Sources */,
 				344BB4EE12812A9F008B75F6 /* DropPointingRelativeCursorMove.cpp in Sources */,
+				05CB4A2D12BB4C0800737491 /* ModifyFilter.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

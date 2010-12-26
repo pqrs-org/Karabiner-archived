@@ -1025,6 +1025,22 @@
           </list>
         </item>
 
+        <!-- Modify only -->
+        <item>
+          <name>Modify only</name>
+          <appendix>A to B if ModifierFlag == COMMAND_L or OPTION_L</appendix>
+          <appendix>A to C unless ModifierFlag == SHIFT_L or CONTROL_L</appendix>
+          <identifier>remap.samples_modify</identifier>
+          <block>
+            <modify_only>COMMAND_L, OPTION_L</modify_only>
+            <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
+          </block>
+          <block>
+            <modify_not>SHIFT_L, CONTROL_L</modify_not>
+            <autogen>--KeyToKey-- KeyCode::A, KeyCode::C</autogen>
+          </block>
+        </item>
+
         <!-- block -->
         <item>
           <name>block sample</name>
