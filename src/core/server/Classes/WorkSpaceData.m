@@ -231,6 +231,10 @@
     return [configxmlparser_ keycode:@"ApplicationType::MODO"];
   }
 
+  if ([name isEqualToString:@"com.blizzard.worldofwarcraft"]) {
+    return [configxmlparser_ keycode:@"ApplicationType::WORLD_OF_WARCRAFT"];
+  }
+
   return [configxmlparser_ keycode:@"ApplicationType::UNKNOWN"];
 }
 
