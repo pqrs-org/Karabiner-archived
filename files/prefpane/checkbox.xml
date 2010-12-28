@@ -8603,6 +8603,11 @@
           <name>Change Paragraph(§) Key</name>
           <list>
             <item>
+              <name>Paragraph(§) to 1</name>
+              <identifier>remap.russian_paragraph2one</identifier>
+              <autogen>--KeyToKey-- KeyCode::RUSSIAN_PARAGRAPH, KeyCode::KEY_1</autogen>
+            </item>
+            <item>
               <name>Paragraph(§) to Backquote(`)</name>
               <identifier>remap.russian_paragraph2backquote</identifier>
               <autogen>--KeyToKey-- KeyCode::RUSSIAN_PARAGRAPH, KeyCode::BACKQUOTE</autogen>
