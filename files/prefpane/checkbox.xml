@@ -6239,6 +6239,22 @@
             </item>
           </list>
         </item>
+        <item>
+          <name>Enable at only World of Warcraft</name>
+          <list>
+            <item>
+              <name>Swap Command and Option for Alt Bindings</name>
+              <appendix>Command_L to Option_L</appendix>
+              <appendix>Option_L to Command_L</appendix>
+              <identifier>remap.app_world_of_warcraft_option_command_swap</identifier>
+              <block>
+                <only>WORLD_OF_WARCRAFT</only>
+                <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+              </block>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
 
