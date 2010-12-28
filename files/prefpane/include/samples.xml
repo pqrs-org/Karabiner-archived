@@ -1173,13 +1173,102 @@
         </item>
         <item>
           <name>VK_LOCK</name>
-          <appendix>Use 1 to Fn_Lock</appendix>
-          <appendix>Use 2 to Command_R_Lock</appendix>
-          <appendix>Use 3 to Shift_L_Lock</appendix>
-          <identifier>remap.samples_vk_lock</identifier>
-          <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_LOCK_FN</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_LOCK_COMMAND_R</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::VK_LOCK_SHIFT_L</autogen>
+          <list>
+            <item>
+              <name>Normal Modifiers</name>
+              <appendix>Use 1 to Lock Command_L</appendix>
+              <appendix>Use 2 to Lock Command_R</appendix>
+              <appendix>Use 3 to Lock Control_L</appendix>
+              <appendix>Use 4 to Lock Control_R</appendix>
+              <appendix>Use 5 to Lock Fn</appendix>
+              <appendix>Use 6 to Lock Option_L</appendix>
+              <appendix>Use 7 to Lock Option_R</appendix>
+              <appendix>Use 8 to Lock Shift_L</appendix>
+              <appendix>Use 9 to Lock Shift_R</appendix>
+              <appendix>Use Q to Force Lock on Command_L</appendix>
+              <appendix>Use W to Force Lock on Command_R</appendix>
+              <appendix>Use E to Force Lock on Control_L</appendix>
+              <appendix>Use R to Force Lock on Control_R</appendix>
+              <appendix>Use T to Force Lock on Fn</appendix>
+              <appendix>Use Y to Force Lock on Option_L</appendix>
+              <appendix>Use U to Force Lock on Option_R</appendix>
+              <appendix>Use I to Force Lock on Shift_L</appendix>
+              <appendix>Use O to Force Lock on Shift_R</appendix>
+              <appendix>Use A to Force Lock off Command_L</appendix>
+              <appendix>Use S to Force Lock off Command_R</appendix>
+              <appendix>Use D to Force Lock off Control_L</appendix>
+              <appendix>Use F to Force Lock off Control_R</appendix>
+              <appendix>Use G to Force Lock off Fn</appendix>
+              <appendix>Use H to Force Lock off Option_L</appendix>
+              <appendix>Use J to Force Lock off Option_R</appendix>
+              <appendix>Use K to Force Lock off Shift_L</appendix>
+              <appendix>Use L to Force Lock off Shift_R</appendix>
+              <appendix>Use Z to Force Lock off All</appendix>
+              <identifier>remap.samples_vk_lock_normal</identifier>
+              <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_LOCK_COMMAND_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_LOCK_COMMAND_R</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::VK_LOCK_CONTROL_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_4, KeyCode::VK_LOCK_CONTROL_R</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_5, KeyCode::VK_LOCK_FN</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::VK_LOCK_OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_7, KeyCode::VK_LOCK_OPTION_R</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_8, KeyCode::VK_LOCK_SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_9, KeyCode::VK_LOCK_SHIFT_R</autogen>
+              <autogen>--KeyToKey-- KeyCode::Q,     KeyCode::VK_LOCK_COMMAND_L_FORCE_ON</autogen>
+              <autogen>--KeyToKey-- KeyCode::W,     KeyCode::VK_LOCK_COMMAND_R_FORCE_ON</autogen>
+              <autogen>--KeyToKey-- KeyCode::E,     KeyCode::VK_LOCK_CONTROL_L_FORCE_ON</autogen>
+              <autogen>--KeyToKey-- KeyCode::R,     KeyCode::VK_LOCK_CONTROL_R_FORCE_ON</autogen>
+              <autogen>--KeyToKey-- KeyCode::T,     KeyCode::VK_LOCK_FN_FORCE_ON</autogen>
+              <autogen>--KeyToKey-- KeyCode::Y,     KeyCode::VK_LOCK_OPTION_L_FORCE_ON</autogen>
+              <autogen>--KeyToKey-- KeyCode::U,     KeyCode::VK_LOCK_OPTION_R_FORCE_ON</autogen>
+              <autogen>--KeyToKey-- KeyCode::I,     KeyCode::VK_LOCK_SHIFT_L_FORCE_ON</autogen>
+              <autogen>--KeyToKey-- KeyCode::O,     KeyCode::VK_LOCK_SHIFT_R_FORCE_ON</autogen>
+              <autogen>--KeyToKey-- KeyCode::A,     KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF</autogen>
+              <autogen>--KeyToKey-- KeyCode::S,     KeyCode::VK_LOCK_COMMAND_R_FORCE_OFF</autogen>
+              <autogen>--KeyToKey-- KeyCode::D,     KeyCode::VK_LOCK_CONTROL_L_FORCE_OFF</autogen>
+              <autogen>--KeyToKey-- KeyCode::F,     KeyCode::VK_LOCK_CONTROL_R_FORCE_OFF</autogen>
+              <autogen>--KeyToKey-- KeyCode::G,     KeyCode::VK_LOCK_FN_FORCE_OFF</autogen>
+              <autogen>--KeyToKey-- KeyCode::H,     KeyCode::VK_LOCK_OPTION_L_FORCE_OFF</autogen>
+              <autogen>--KeyToKey-- KeyCode::J,     KeyCode::VK_LOCK_OPTION_R_FORCE_OFF</autogen>
+              <autogen>--KeyToKey-- KeyCode::K,     KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF</autogen>
+              <autogen>--KeyToKey-- KeyCode::L,     KeyCode::VK_LOCK_SHIFT_R_FORCE_OFF</autogen>
+              <autogen>--KeyToKey-- KeyCode::Z,     KeyCode::VK_LOCK_ALL_FORCE_OFF</autogen>
+            </item>
+            <item>
+              <name>Extra Modifiers</name>
+              <appendix>Use 1 to Lock ModifierFlag::EXTRA1</appendix>
+              <appendix>Use 2 to Lock ModifierFlag::EXTRA2</appendix>
+              <appendix>Use 3 to Lock ModifierFlag::EXTRA3</appendix>
+              <appendix>Use 4 to Lock ModifierFlag::EXTRA4</appendix>
+              <appendix>Use 5 to Lock ModifierFlag::EXTRA5</appendix>
+              <appendix>Use Q to Force Lock on ModifierFlag::EXTRA1</appendix>
+              <appendix>Use W to Force Lock on ModifierFlag::EXTRA2</appendix>
+              <appendix>Use E to Force Lock on ModifierFlag::EXTRA3</appendix>
+              <appendix>Use R to Force Lock on ModifierFlag::EXTRA4</appendix>
+              <appendix>Use T to Force Lock on ModifierFlag::EXTRA5</appendix>
+              <appendix>Use A to Force Lock off ModifierFlag::EXTRA1</appendix>
+              <appendix>Use S to Force Lock off ModifierFlag::EXTRA2</appendix>
+              <appendix>Use D to Force Lock off ModifierFlag::EXTRA3</appendix>
+              <appendix>Use F to Force Lock off ModifierFlag::EXTRA4</appendix>
+              <appendix>Use G to Force Lock off ModifierFlag::EXTRA5</appendix>
+              <identifier>remap.samples_vk_lock_extra</identifier>
+              <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_LOCK_EXTRA1</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_LOCK_EXTRA2</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::VK_LOCK_EXTRA3</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_4, KeyCode::VK_LOCK_EXTRA4</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_5, KeyCode::VK_LOCK_EXTRA5</autogen>
+              <autogen>--KeyToKey-- KeyCode::Q,     KeyCode::VK_LOCK_EXTRA1_FORCE_ON</autogen>
+              <autogen>--KeyToKey-- KeyCode::W,     KeyCode::VK_LOCK_EXTRA2_FORCE_ON</autogen>
+              <autogen>--KeyToKey-- KeyCode::E,     KeyCode::VK_LOCK_EXTRA3_FORCE_ON</autogen>
+              <autogen>--KeyToKey-- KeyCode::R,     KeyCode::VK_LOCK_EXTRA4_FORCE_ON</autogen>
+              <autogen>--KeyToKey-- KeyCode::T,     KeyCode::VK_LOCK_EXTRA5_FORCE_ON</autogen>
+              <autogen>--KeyToKey-- KeyCode::A,     KeyCode::VK_LOCK_EXTRA1_FORCE_OFF</autogen>
+              <autogen>--KeyToKey-- KeyCode::S,     KeyCode::VK_LOCK_EXTRA2_FORCE_OFF</autogen>
+              <autogen>--KeyToKey-- KeyCode::D,     KeyCode::VK_LOCK_EXTRA3_FORCE_OFF</autogen>
+              <autogen>--KeyToKey-- KeyCode::F,     KeyCode::VK_LOCK_EXTRA4_FORCE_OFF</autogen>
+              <autogen>--KeyToKey-- KeyCode::G,     KeyCode::VK_LOCK_EXTRA5_FORCE_OFF</autogen>
+            </item>
+          </list>
         </item>
         <item>
           <name>VK_STICKY</name>
