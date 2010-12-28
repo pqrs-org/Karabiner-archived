@@ -140,12 +140,15 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     ModifierFlag f = ModifierFlag::NONE;
 
-    if (params.key == KeyCode::VK_LAZY_SHIFT_L) {
-      f = ModifierFlag::SHIFT_L;
-    }
-    if (params.key == KeyCode::VK_LAZY_SHIFT_R) {
-      f = ModifierFlag::SHIFT_R;
-    }
+    /**/ if (params.key == KeyCode::VK_LAZY_COMMAND_L) { f = ModifierFlag::COMMAND_L; }
+    else if (params.key == KeyCode::VK_LAZY_COMMAND_R) { f = ModifierFlag::COMMAND_R; }
+    else if (params.key == KeyCode::VK_LAZY_CONTROL_L) { f = ModifierFlag::CONTROL_L; }
+    else if (params.key == KeyCode::VK_LAZY_CONTROL_R) { f = ModifierFlag::CONTROL_R; }
+    else if (params.key == KeyCode::VK_LAZY_FN)        { f = ModifierFlag::FN;        }
+    else if (params.key == KeyCode::VK_LAZY_OPTION_L)  { f = ModifierFlag::OPTION_L;  }
+    else if (params.key == KeyCode::VK_LAZY_OPTION_R)  { f = ModifierFlag::OPTION_R;  }
+    else if (params.key == KeyCode::VK_LAZY_SHIFT_L)   { f = ModifierFlag::SHIFT_L;   }
+    else if (params.key == KeyCode::VK_LAZY_SHIFT_R)   { f = ModifierFlag::SHIFT_R;   }
 
     if (f == ModifierFlag::NONE) return false;
 
