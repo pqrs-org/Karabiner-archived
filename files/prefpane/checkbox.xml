@@ -8464,10 +8464,10 @@
                 </item>
                 <item>
                   <name>新下駄配列（ことえり向け・ローマ字入力）</name>
-                  <identifier>remap.jis_shingeta_input_roman_qwerty_atok</identifier>
+                  <identifier>remap.jis_shingeta_input_roman_qwerty_kotoeri</identifier>
                   <inputmode_only>JAPANESE</inputmode_only>
                   <!-- #include "include/jis_shingeta_base.xml" -->
-                  <!-- #include "include/jis_shingeta_atok.xml" -->
+                  <!-- #include "include/jis_shingeta_kotoeri.xml" -->
                 </item>
                 <item>
                   <name>新下駄配列（ATOK向け・ローマ字入力）</name>
