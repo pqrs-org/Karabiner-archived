@@ -6869,6 +6869,22 @@
         </item>
 
         <item>
+          <name>Use Dvorak - Qwerty Keyboard Layout</name>
+          <appendix>(QWERTY to Dvorak)</appendix>
+          <appendix>(+ Command,Control,Option+Keys to Qwerty)</appendix>
+          <identifier>remap.qwerty2dvorak_qwerty</identifier>
+          <modifier_not>
+            ModifierFlag::COMMAND_L,
+            ModifierFlag::COMMAND_R,
+            ModifierFlag::CONTROL_L,
+            ModifierFlag::CONTROL_R,
+            ModifierFlag::OPTION_L,
+            ModifierFlag::OPTION_R
+          </modifier_not>
+          <!-- #include "include/dvorak.xml" -->
+        </item>
+
+        <item>
           <name>Use Dvorak Keyboard Layout</name>
           <appendix>(QWERTY to Dvorak, except in password dialogue boxes)</appendix>
           <identifier>remap.qwerty2dvorak_ex_password</identifier>
