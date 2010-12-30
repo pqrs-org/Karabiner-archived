@@ -171,6 +171,21 @@
 <autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::V, KeyCode::G, KeyCode::Y, KeyCode::A </autogen>
 <autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::B, KeyCode::N, KeyCode::Y, KeyCode::A </autogen>
 
+<!-- 同手同時押し -->
+<!-- RF/RG -> ・ -->
+<!-- IM によって動作が異なる -->
+<!-- HU -> ／ -->
+<!-- IM によって動作が異なる -->
+<!-- FG -> 「」 & ENTER & 左移動 -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::G, KeyCode::JIS_BRACKET_LEFT, KeyCode::JIS_BRACKET_RIGHT, KeyCode::RETURN, KeyCode::CURSOR_LEFT </autogen>
+<!-- HJ -> （） & ENTER & 左移動 -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::H, KeyCode::J, KeyCode::KEY_8, ModifierFlag::SHIFT_L, KeyCode::KEY_9, ModifierFlag::SHIFT_L, KeyCode::RETURN, KeyCode::CURSOR_LEFT </autogen>
+<!-- FV/FB -> ！ -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::V, KeyCode::KEY_1, ModifierFlag::SHIFT_L </autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::B, KeyCode::KEY_1, ModifierFlag::SHIFT_L </autogen>
+<!-- NJ -> ？ -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::N, KeyCode::J, KeyCode::SLASH, ModifierFlag::SHIFT_L </autogen>
+
 <!-- 最上段(1段目) -->
 <!-- K:ぁぃぅぇぉ -->
 <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::KEY_1, KeyCode::X, KeyCode::A </autogen>
