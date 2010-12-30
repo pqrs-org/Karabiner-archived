@@ -8480,6 +8480,34 @@
                   <name>------------------------------------------------------------</name>
                 </item>
                 <item>
+                  <name>新下駄配列（ことえり向け・ローマ字入力）</name>
+                  <appendix>Dvorakユーザー向け</appendix>
+                  <appendix>・アルファベット入力: Dvorak</appendix>
+                  <appendix>・日本語入力: 新下駄配列</appendix>
+                  <identifier>remap.jis_shingeta_input_roman_qwerty_kotoeri_for_dvorak</identifier>
+                  <block>
+                    <inputmode_only>JAPANESE</inputmode_only>
+                    <!-- #include "include/jis_shingeta_base.xml" -->
+                    <!-- #include "include/jis_shingeta_kotoeri.xml" -->
+                  </block>
+                  <block>
+                    <inputmode_only>JAPANESE</inputmode_only>
+                    <modifier_only>
+                      ModifierFlag::COMMAND_L,
+                      ModifierFlag::COMMAND_R,
+                      ModifierFlag::CONTROL_L,
+                      ModifierFlag::CONTROL_R,
+                      ModifierFlag::OPTION_L,
+                      ModifierFlag::OPTION_R
+                    </modifier_only>
+                    <!-- #include "include/jis_dvorak.xml" -->
+                  </block>
+                  <block>
+                    <inputmode_not>JAPANESE</inputmode_not>
+                    <!-- #include "include/jis_dvorak.xml" -->
+                  </block>
+                </item>
+                <item>
                   <name>新下駄配列（ATOK向け・ローマ字入力）</name>
                   <appendix>Dvorakユーザー向け</appendix>
                   <appendix>・アルファベット入力: Dvorak</appendix>
@@ -8497,7 +8525,6 @@
                       ModifierFlag::COMMAND_R,
                       ModifierFlag::CONTROL_L,
                       ModifierFlag::CONTROL_R,
-                      ModifierFlag::FN,
                       ModifierFlag::OPTION_L,
                       ModifierFlag::OPTION_R
                     </modifier_only>

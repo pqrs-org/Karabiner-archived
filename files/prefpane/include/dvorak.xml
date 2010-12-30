@@ -1,3 +1,6 @@
+<!-- If ModifierFlag::FN is pressed, retain keys to convert Fn+jkl to 123 (numpad) -->
+<modifier_not>ModifierFlag::FN</modifier_not>
+
 <autogen>--KeyToKey-- KeyCode::Q, KeyCode::QUOTE</autogen>
 <autogen>--KeyToKey-- KeyCode::W, KeyCode::COMMA</autogen>
 <autogen>--KeyToKey-- KeyCode::E, KeyCode::DOT</autogen>

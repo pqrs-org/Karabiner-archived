@@ -1,3 +1,5 @@
+<modifier_not>ModifierFlag::FN</modifier_not>
+
 <autogen>--KeyToKey-- KeyCode::KEY_2,   VK_SHIFT, KeyCode::JIS_ATMARK                 </autogen>
 <autogen>--KeyToKey-- KeyCode::KEY_6,   VK_SHIFT, KeyCode::JIS_HAT                    </autogen>
 <autogen>--KeyToKey-- KeyCode::KEY_7,   VK_SHIFT, KeyCode::KEY_6,            VK_SHIFT </autogen>
