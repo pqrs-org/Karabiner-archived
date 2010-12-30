@@ -8455,22 +8455,34 @@
               </list>
             </item>
             <item>
-              <name>Geta Input</name>
-              <appendix>下駄配列(qwerty,roman,ATOK)</appendix>
-              <identifier>remap.geta_input_roman_qwerty_atok</identifier>
-              <!-- #include "include/jis_geta.xml" -->
-            </item>
-            <item>
-              <name>Shin-Geta Input</name>
-              <appendix>新下駄配列(qwerty,roman,ATOK)</appendix>
-              <identifier>remap.jis_shingeta_input_roman_qwerty_atok</identifier>
-              <!-- #include "include/jis_shingeta_atok.xml" -->
-            </item>
-            <item>
-              <name>Shin-Geta Input for US Keyboard</name>
-              <appendix>新下駄配列(qwerty,roman,ATOK)</appendix>
-              <identifier>remap.jis_shingeta_input_roman_qwerty_atok_for_us</identifier>
-              <!-- #include "include/jis_shingeta_atok_for_us.xml" -->
+              <name>下駄・新下駄配列 (Geta, Shin-Geta Layout)</name>
+              <list>
+                <item>
+                  <name>下駄配列(qwerty,roman,ATOK)</name>
+                  <identifier>remap.geta_input_roman_qwerty_atok</identifier>
+                  <!-- #include "include/jis_geta.xml" -->
+                </item>
+                <item>
+                  <name>新下駄配列(qwerty,roman,ATOK)</name>
+                  <identifier>remap.jis_shingeta_input_roman_qwerty_atok</identifier>
+                  <!-- #include "include/jis_shingeta_atok.xml" -->
+                </item>
+                <item>
+                  <name>新下駄配列(qwerty,roman,ATOK) Dvorak</name>
+                  <identifier>remap.jis_shingeta_input_roman_qwerty_atok</identifier>
+                  <block>
+                    <!-- #include "include/jis_shingeta_atok.xml" -->
+                  </block>
+                  <block>
+                    <inputmode_only>JAPANESE</inputmode_only>
+                  </block>
+                </item>
+                <item>
+                  <name>新下駄配列(qwerty,roman,ATOK) US Keyboard 向け</name>
+                  <identifier>remap.jis_shingeta_input_roman_qwerty_atok_for_us</identifier>
+                  <!-- #include "include/jis_shingeta_atok_for_us.xml" -->
+                </item>
+              </list>
             </item>
             <item>
               <name>Use Windows Kana-Input Layout on ASCII Keyboard</name>
