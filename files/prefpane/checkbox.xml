@@ -8465,6 +8465,8 @@
                 <item>
                   <name>新下駄配列(qwerty,roman,ATOK)</name>
                   <identifier>remap.jis_shingeta_input_roman_qwerty_atok</identifier>
+                  <inputmode_only>JAPANESE</inputmode_only>
+                  <!-- #include "include/jis_shingeta_base.xml" -->
                   <!-- #include "include/jis_shingeta_atok.xml" -->
                 </item>
                 <item>
@@ -8477,6 +8479,8 @@
                   <appendix>・日本語入力: 新下駄配列</appendix>
                   <identifier>remap.jis_shingeta_input_roman_qwerty_atok_for_dvorak</identifier>
                   <block>
+                    <inputmode_only>JAPANESE</inputmode_only>
+                    <!-- #include "include/jis_shingeta_base.xml" -->
                     <!-- #include "include/jis_shingeta_atok.xml" -->
                   </block>
                   <block>
