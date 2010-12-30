@@ -8497,6 +8497,7 @@
                       ModifierFlag::COMMAND_R,
                       ModifierFlag::CONTROL_L,
                       ModifierFlag::CONTROL_R,
+                      ModifierFlag::FN,
                       ModifierFlag::OPTION_L,
                       ModifierFlag::OPTION_R
                     </modifier_only>
