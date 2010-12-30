@@ -8455,15 +8455,22 @@
               </list>
             </item>
             <item>
-              <name>下駄・新下駄配列 (Geta, Shin-Geta Layout)</name>
+              <name>下駄・新下駄配列（Geta, Shin-Geta Layout）</name>
               <list>
                 <item>
-                  <name>下駄配列(qwerty,roman,ATOK)</name>
+                  <name>下駄配列（ATOK向け・ローマ字入力）</name>
                   <identifier>remap.geta_input_roman_qwerty_atok</identifier>
                   <!-- #include "include/jis_geta.xml" -->
                 </item>
                 <item>
-                  <name>新下駄配列(qwerty,roman,ATOK)</name>
+                  <name>新下駄配列（ことえり向け・ローマ字入力）</name>
+                  <identifier>remap.jis_shingeta_input_roman_qwerty_atok</identifier>
+                  <inputmode_only>JAPANESE</inputmode_only>
+                  <!-- #include "include/jis_shingeta_base.xml" -->
+                  <!-- #include "include/jis_shingeta_atok.xml" -->
+                </item>
+                <item>
+                  <name>新下駄配列（ATOK向け・ローマ字入力）</name>
                   <identifier>remap.jis_shingeta_input_roman_qwerty_atok</identifier>
                   <inputmode_only>JAPANESE</inputmode_only>
                   <!-- #include "include/jis_shingeta_base.xml" -->
@@ -8473,7 +8480,7 @@
                   <name>------------------------------------------------------------</name>
                 </item>
                 <item>
-                  <name>新下駄配列(qwerty,roman,ATOK)</name>
+                  <name>新下駄配列（ATOK向け・ローマ字入力）</name>
                   <appendix>Dvorakユーザー向け</appendix>
                   <appendix>・アルファベット入力: Dvorak</appendix>
                   <appendix>・日本語入力: 新下駄配列</appendix>
@@ -8501,7 +8508,7 @@
                   </block>
                 </item>
                 <item>
-                  <name>新下駄配列(qwerty,roman,ATOK)</name>
+                  <name>新下駄配列（ATOK向け・ローマ字入力）</name>
                   <appendix>US Keyboard 向け</appendix>
                   <identifier>remap.jis_shingeta_input_roman_qwerty_atok_for_us</identifier>
                   <!-- #include "include/jis_shingeta_atok_for_us.xml" -->
