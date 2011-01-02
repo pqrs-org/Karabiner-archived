@@ -7795,6 +7795,18 @@
               <autogen>--KeyToKey-- KeyCode::JIS_KANA, KeyCode::OPTION_L</autogen>
             </item>
             <item>
+              <name>KANA to Option_L</name>
+              <appendix>(+ When you type KANA only, send KANA)</appendix>
+              <identifier>remap.jis_kana2optionL_kana</identifier>
+              <autogen>--KeyOverlaidModifier-- KeyCode::JIS_KANA, KeyCode::OPTION_L, KeyCode::JIS_KANA</autogen>
+            </item>
+            <item>
+              <name>KANA to Option_R</name>
+              <appendix>(+ When you type KANA only, send KANA)</appendix>
+              <identifier>remap.jis_kana2optionR_kana</identifier>
+              <autogen>--KeyOverlaidModifier-- KeyCode::JIS_KANA, KeyCode::OPTION_R, KeyCode::JIS_KANA</autogen>
+            </item>
+            <item>
               <name>KANA to Shift_L</name>
               <identifier>remap.jis_kana2shiftL</identifier>
               <autogen>--KeyToKey-- KeyCode::JIS_KANA, KeyCode::SHIFT_L</autogen>
