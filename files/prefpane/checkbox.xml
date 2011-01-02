@@ -5371,6 +5371,21 @@
           <autogen>--HoldingKeyToKey-- KeyCode::D, ModifierFlag::NONE, KeyCode::D, KeyCode::VK_NONE, KeyCode::DASHBOARD</autogen>
         </item>
         <item>
+          <name>Holding Shift+"E" Key to Expose</name>
+          <identifier>remap.holding_shift_e_to_expose</identifier>
+          <autogen>--HoldingKeyToKey-- KeyCode::E, VK_SHIFT | ModifierFlag::NONE, KeyCode::E, VK_SHIFT, KeyCode::VK_NONE, KeyCode::EXPOSE_ALL</autogen>
+        </item>
+        <item>
+          <name>Holding Shift+"S" Key to Spaces (F8)</name>
+          <identifier>remap.holding_shift_s_to_spaces</identifier>
+          <autogen>--HoldingKeyToKey-- KeyCode::S, VK_SHIFT | ModifierFlag::NONE, KeyCode::S, VK_SHIFT, KeyCode::VK_NONE, KeyCode::F8</autogen>
+        </item>
+        <item>
+          <name>Holding Shift+"D" Key to Dashboard</name>
+          <identifier>remap.holding_shift_d_to_dashboard</identifier>
+          <autogen>--HoldingKeyToKey-- KeyCode::D, VK_SHIFT | ModifierFlag::NONE, KeyCode::D, VK_SHIFT, KeyCode::VK_NONE, KeyCode::DASHBOARD</autogen>
+        </item>
+        <item>
           <name>Expose Mode</name>
           <list>
             <item>
