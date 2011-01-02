@@ -7472,6 +7472,18 @@
           </list>
         </item>
         <item>
+          <name>Change Eject Key</name>
+          <appendix>*** We recommend to use "NoEjectDelay" together when you change eject key.</appendix>
+          <appendix>*** &#8594; http://pqrs.org/macosx/keyremap4macbook/noejectdelay.html</appendix>
+          <list>
+            <item>
+              <name>Eject to EISUU,F13 (if no modifiers pressed)</name>
+              <identifier>remap.jis_eject2eisuuf13_withoutmodifiers</identifier>
+              <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::JIS_EISUU, KeyCode::F13</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Change Escape Key</name>
           <list>
             <item>
