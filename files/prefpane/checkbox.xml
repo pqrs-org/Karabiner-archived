@@ -5490,7 +5490,7 @@
               <appendix>To switch a space, Hold "ASDF"</appendix>
               <appendix>To switch a space, Hold "ZXCV"</appendix>
               <appendix></appendix>
-              <appendix>(Set Spaces setting "Command+Control+Shift+Number Keys")</appendix>
+              <appendix>(Make setting of Spaces "Command+Control+Shift+Number Keys")</appendix>
               <appendix></appendix>
               <identifier>remap.spaces_special_holding_1234qwerasdfzxcv</identifier>
               <autogen>--HoldingKeyToKey-- KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::KEY_1, KeyCode::VK_NONE, KeyCode::KEY_1, VK_MOD_CCS_L</autogen>
@@ -5509,6 +5509,52 @@
               <autogen>--HoldingKeyToKey-- KeyCode::X,     ModifierFlag::NONE, KeyCode::X,     KeyCode::VK_NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
               <autogen>--HoldingKeyToKey-- KeyCode::C,     ModifierFlag::NONE, KeyCode::C,     KeyCode::VK_NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
               <autogen>--HoldingKeyToKey-- KeyCode::V,     ModifierFlag::NONE, KeyCode::V,     KeyCode::VK_NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
+            </item>
+
+            <item>
+              <name>Holding "1234 QWER ASDF ZXCV" to switch a space (4x4)</name>
+              <appendix>To switch a space, Hold "1234"</appendix>
+              <appendix>To switch a space, Hold "QWER"</appendix>
+              <appendix>To switch a space, Hold "ASDF"</appendix>
+              <appendix>To switch a space, Hold "ZXCV"</appendix>
+              <appendix></appendix>
+              <appendix>(Make setting of Spaces "Command+Control+Shift+Number Keys")</appendix>
+              <appendix></appendix>
+              <appendix>(+ 1234567890 to !@#$%^&amp;*() / Shift+1234567890 to 1234567890)</appendix>
+              <identifier>remap.spaces_special_holding_1234qwerasdfzxcv_swap_number_and_symbol</identifier>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::KEY_1, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::KEY_1, VK_MOD_CCS_L</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_2, ModifierFlag::NONE, KeyCode::KEY_2, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::KEY_2, VK_MOD_CCS_L</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_3, ModifierFlag::NONE, KeyCode::KEY_3, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::KEY_3, VK_MOD_CCS_L</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_4, ModifierFlag::NONE, KeyCode::KEY_4, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::KEY_4, VK_MOD_CCS_L</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::Q,     ModifierFlag::NONE, KeyCode::Q,                            KeyCode::VK_NONE, KeyCode::KEY_5, VK_MOD_CCS_L</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::W,     ModifierFlag::NONE, KeyCode::W,                            KeyCode::VK_NONE, KeyCode::KEY_6, VK_MOD_CCS_L</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::E,     ModifierFlag::NONE, KeyCode::E,                            KeyCode::VK_NONE, KeyCode::KEY_7, VK_MOD_CCS_L</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::R,     ModifierFlag::NONE, KeyCode::R,                            KeyCode::VK_NONE, KeyCode::KEY_8, VK_MOD_CCS_L</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::A,     ModifierFlag::NONE, KeyCode::A,                            KeyCode::VK_NONE, KeyCode::KEY_9, VK_MOD_CCS_L</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::S,     ModifierFlag::NONE, KeyCode::S,                            KeyCode::VK_NONE, KeyCode::KEY_0, VK_MOD_CCS_L</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::D,     ModifierFlag::NONE, KeyCode::D,                            KeyCode::VK_NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::F,     ModifierFlag::NONE, KeyCode::F,                            KeyCode::VK_NONE, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::Z,     ModifierFlag::NONE, KeyCode::Z,                            KeyCode::VK_NONE, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::X,     ModifierFlag::NONE, KeyCode::X,                            KeyCode::VK_NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::C,     ModifierFlag::NONE, KeyCode::C,                            KeyCode::VK_NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::V,     ModifierFlag::NONE, KeyCode::V,                            KeyCode::VK_NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
+              <!-- KEY_1 - KEY_4 is already defined in above. -->
+              <autogen>--KeyToKey-- KeyCode::KEY_5, ModifierFlag::NONE, KeyCode::KEY_5, ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::NONE, KeyCode::KEY_6, ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_7, ModifierFlag::NONE, KeyCode::KEY_7, ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::NONE, KeyCode::KEY_8, ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::NONE, KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::NONE, KeyCode::KEY_0, ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_1, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_1</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_2, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_2</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_3, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_3</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_4, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_4</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_5, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_5</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_6, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_6</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_7, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_7</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_8, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_8</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_9, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_9</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_0, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_0</autogen>
             </item>
 
             <item>
