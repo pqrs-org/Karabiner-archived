@@ -7252,6 +7252,11 @@
           <autogen>--KeyToKey-- KeyCode::GERMAN_QUOTE, KeyCode::FORWARD_DELETE</autogen>
         </item>
         <item>
+          <name>Command+Ü to |</name>
+          <identifier>remap.german_commandU2pipe</identifier>
+          <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_COMMAND, KeyCode::KEY_7, ModifierFlag::OPTION_L</autogen>
+        </item>
+        <item>
           <name>Control+Ü to @</name>
           <identifier>remap.german_controlU2atmark</identifier>
           <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::L, ModifierFlag::OPTION_L</autogen>
