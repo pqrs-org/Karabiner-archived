@@ -7214,6 +7214,28 @@
           <identifier>remap.german_option0_to_right_brace</identifier>
           <autogen>--KeyToKey-- KeyCode::KEY_0, VK_OPTION, KeyCode::KEY_9, VK_OPTION</autogen>
         </item>
+        <item><name>------------------------------------------------------------</name></item>
+        <item>
+          <name>Control+Ö to {</name>
+          <identifier>remap.german_controlO_to_left_brace</identifier>
+          <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_CONTROL, KeyCode::KEY_8, VK_OPTION</autogen>
+        </item>
+        <item>
+          <name>Command+Ö to [</name>
+          <identifier>remap.german_commandO_to_left_bracket</identifier>
+          <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_COMMAND, KeyCode::KEY_5, VK_OPTION</autogen>
+        </item>
+        <item>
+          <name>Command+Ä to ]</name>
+          <identifier>remap.german_commandA_to_right_bracket</identifier>
+          <autogen>--KeyToKey-- KeyCode::QUOTE, VK_COMMAND, KeyCode::KEY_6, VK_OPTION</autogen>
+        </item>
+        <item>
+          <name>Control+Ä to }</name>
+          <identifier>remap.german_controlA_to_left_brace</identifier>
+          <autogen>--KeyToKey-- KeyCode::QUOTE, VK_CONTROL, KeyCode::KEY_9, VK_OPTION</autogen>
+        </item>
+        <item><name>------------------------------------------------------------</name></item>
         <item>
           <name>Option+ß to Backslash(\)</name>
           <identifier>remap.german_optionbeta2backslash</identifier>
