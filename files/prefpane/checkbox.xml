@@ -7195,6 +7195,11 @@
       <name>For German</name>
       <list>
         <item>
+          <name>Option+7 to {</name>
+          <identifier>remap.german_option7_to_left_brace</identifier>
+          <autogen>--KeyToKey-- KeyCode::KEY_7, VK_OPTION, KeyCode::KEY_8, VK_OPTION</autogen>
+        </item>
+        <item>
           <name>Option+ß to Backslash(\)</name>
           <identifier>remap.german_optionbeta2backslash</identifier>
           <autogen>--KeyToKey-- KeyCode::MINUS, VK_OPTION, KeyCode::KEY_7, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
