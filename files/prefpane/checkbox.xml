@@ -7257,6 +7257,11 @@
           <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::L, ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
+          <name>Option+Less-Than(&lt;) to |</name>
+          <identifier>remap.german_optionLessthan_to_pipe</identifier>
+          <autogen>--KeyToKey-- KeyCode::GERMAN_LESS_THAN, VK_OPTION, KeyCode::KEY_7, VK_OPTION</autogen>
+        </item>
+        <item>
           <name>Swap Circumflex(^) and Less-Than(&lt;)</name>
           <appendix>(only in virtual machine)</appendix>
           <identifier>remap.german_swap_circumflex_lessthan_vm</identifier>
