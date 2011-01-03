@@ -7210,6 +7210,11 @@
           <autogen>--KeyToKey-- KeyCode::GERMAN_QUOTE, KeyCode::FORWARD_DELETE</autogen>
         </item>
         <item>
+          <name>Control+Ü to @</name>
+          <identifier>remap.german_controlU2atmark</identifier>
+          <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::L, ModifierFlag::OPTION_L</autogen>
+        </item>
+        <item>
           <name>Swap Circumflex(^) and Less-Than(&lt;)</name>
           <appendix>(only in virtual machine)</appendix>
           <identifier>remap.german_swap_circumflex_lessthan_vm</identifier>
