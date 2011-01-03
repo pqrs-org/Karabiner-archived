@@ -7200,6 +7200,21 @@
           <autogen>--KeyToKey-- KeyCode::KEY_7, VK_OPTION, KeyCode::KEY_8, VK_OPTION</autogen>
         </item>
         <item>
+          <name>Option+8 to [</name>
+          <identifier>remap.german_option8_to_left_bracket</identifier>
+          <autogen>--KeyToKey-- KeyCode::KEY_8, VK_OPTION, KeyCode::KEY_5, VK_OPTION</autogen>
+        </item>
+        <item>
+          <name>Option+9 to ]</name>
+          <identifier>remap.german_option9_to_right_bracket</identifier>
+          <autogen>--KeyToKey-- KeyCode::KEY_9, VK_OPTION, KeyCode::KEY_6, VK_OPTION</autogen>
+        </item>
+        <item>
+          <name>Option+0 to }</name>
+          <identifier>remap.german_option0_to_right_brace</identifier>
+          <autogen>--KeyToKey-- KeyCode::KEY_0, VK_OPTION, KeyCode::KEY_9, VK_OPTION</autogen>
+        </item>
+        <item>
           <name>Option+ß to Backslash(\)</name>
           <identifier>remap.german_optionbeta2backslash</identifier>
           <autogen>--KeyToKey-- KeyCode::MINUS, VK_OPTION, KeyCode::KEY_7, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
