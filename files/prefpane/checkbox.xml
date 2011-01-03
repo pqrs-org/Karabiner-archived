@@ -3951,6 +3951,12 @@
           <autogen>--KeyOverlaidModifier-- KeyCode::TAB, KeyCode::COMMAND_L, KeyCode::EXPOSE_ALL</autogen>
         </item>
         <item>
+          <name>Tab to Command_L</name>
+          <appendix>(+ When you type Tab only, send Tab)</appendix>
+          <identifier>remap.tab2commandL_tab</identifier>
+          <autogen>--KeyOverlaidModifier-- KeyCode::TAB, KeyCode::COMMAND_L, KeyCode::TAB</autogen>
+        </item>
+        <item>
           <name>Tab to Option_L when you held down Control_L</name>
           <appendix>(+ When you type Control_L+Tab, send Control_L+Tab)</appendix>
           <identifier>remap.tab2option_withControlL</identifier>
