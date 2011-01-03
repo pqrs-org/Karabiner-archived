@@ -7200,6 +7200,11 @@
           <autogen>--KeyToKey-- KeyCode::MINUS, VK_OPTION, KeyCode::KEY_7, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
+          <name>Option+Q to @</name>
+          <identifier>remap.german_optionQ2atmark</identifier>
+          <autogen>--KeyToKey-- KeyCode::Q, VK_OPTION, KeyCode::L, VK_OPTION</autogen>
+        </item>
+        <item>
           <name>Quote(´) to Forward Delete</name>
           <identifier>remap.german_quote2forwarddelete</identifier>
           <autogen>--KeyToKey-- KeyCode::GERMAN_QUOTE, KeyCode::FORWARD_DELETE</autogen>
