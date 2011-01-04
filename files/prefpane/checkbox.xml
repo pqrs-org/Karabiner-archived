@@ -6181,6 +6181,29 @@
           </list>
         </item>
         <item>
+          <name>Enable at only Firefox</name>
+          <list>
+            <item>
+              <name>Control+K to Command+K</name>
+              <identifier>remap.app_firefox_controlK2commandK</identifier>
+              <autogen>--KeyToKey-- KeyCode::K, VK_CONTROL, KeyCode::K, ModifierFlag::COMMAND_L</autogen>
+              <only>FIREFOX</only>
+            </item>
+            <item>
+              <name>Control+L to Command+L</name>
+              <identifier>remap.app_firefox_controlL2commandL</identifier>
+              <autogen>--KeyToKey-- KeyCode::L, VK_CONTROL, KeyCode::L, ModifierFlag::COMMAND_L</autogen>
+              <only>FIREFOX</only>
+            </item>
+            <item>
+              <name>Control+T to Command+T</name>
+              <identifier>remap.app_firefox_controlT2commandT</identifier>
+              <autogen>--KeyToKey-- KeyCode::T, VK_CONTROL, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
+              <only>FIREFOX</only>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Enable at only Firefox/Thunderbird</name>
           <list>
             <item>
