@@ -7237,6 +7237,26 @@
         </item>
         <item><name>------------------------------------------------------------</name></item>
         <item>
+          <name>Control+PLUS to ~</name>
+          <identifier>remap.german_controlPlus_to_tilde</identifier>
+          <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, VK_CONTROL, KeyCode::N, VK_OPTION</autogen>
+        </item>
+        <item>
+          <name>Option+PLUS to ~</name>
+          <identifier>remap.german_optionPlus_to_tilde</identifier>
+          <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, VK_OPTION, KeyCode::N, VK_OPTION</autogen>
+        </item>
+        <item>
+          <name>Command+MINUS to Backslash(\)</name>
+          <identifier>remap.german_commandMinus_to_backslash</identifier>
+          <autogen>--KeyToKey-- KeyCode::SLASH, VK_COMMAND, KeyCode::KEY_7, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+        </item>
+        <item>
+          <name>Control+MINUS to Slash(/)</name>
+          <identifier>remap.german_controlMinus_to_slash</identifier>
+          <autogen>--KeyToKey-- KeyCode::SLASH, VK_CONTROL, KeyCode::KEY_7, ModifierFlag::SHIFT_L</autogen>
+        </item>
+        <item>
           <name>Option+ß to Backslash(\)</name>
           <identifier>remap.german_optionbeta2backslash</identifier>
           <autogen>--KeyToKey-- KeyCode::MINUS, VK_OPTION, KeyCode::KEY_7, ModifierFlag::SHIFT_L | VK_OPTION</autogen>
