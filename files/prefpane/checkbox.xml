@@ -4211,6 +4211,12 @@
           <autogen>--KeyToKey-- KeyCode::J, VK_CONTROL, KeyCode::RETURN</autogen>
         </item>
         <item>
+          <name>Control+J to Enter</name>
+          <identifier>remap.controlJ2enter</identifier>
+          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+          <autogen>--KeyToKey-- KeyCode::J, VK_CONTROL, KeyCode::ENTER</autogen>
+        </item>
+        <item>
           <name>Control+M to Return</name>
           <identifier>option.emacsmode_controlM</identifier>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
