@@ -7239,7 +7239,7 @@
         <item>
           <name>Option+ß to Backslash(\)</name>
           <identifier>remap.german_optionbeta2backslash</identifier>
-          <autogen>--KeyToKey-- KeyCode::MINUS, VK_OPTION, KeyCode::KEY_7, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::MINUS, VK_OPTION, KeyCode::KEY_7, ModifierFlag::SHIFT_L | VK_OPTION</autogen>
         </item>
         <item>
           <name>Option+Q to @</name>
