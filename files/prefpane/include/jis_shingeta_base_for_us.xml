@@ -11,7 +11,7 @@
 <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::NONE, KeyCode::K, KeyCode::O </autogen>
 <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::NONE, KeyCode::G, KeyCode::A </autogen>
 <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::NONE, KeyCode::H, KeyCode::I </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_ATMARK, ModifierFlag::NONE, KeyCode::G, KeyCode::E </autogen>
+<autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::NONE, KeyCode::G, KeyCode::E </autogen>
 <!-- 「 -->
 
 <!-- 3段目 - のとかんっくういしなBS」 -->
@@ -25,7 +25,7 @@
 <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::NONE, KeyCode::I </autogen>
 <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::NONE, KeyCode::S, KeyCode::I </autogen>
 <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::N, KeyCode::A </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_COLON, ModifierFlag::NONE, KeyCode::DELETE </autogen>
+<autogen>--KeyToKey-- KeyCode::QUOTE, ModifierFlag::NONE, KeyCode::DELETE </autogen>
 <!-- 」 -->
 
 <!-- 4段目 - すまきるつてたで。ぶ￥ -->
@@ -39,7 +39,6 @@
 <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::NONE, KeyCode::D, KeyCode::E </autogen>
 <!-- 。 -->
 <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::NONE, KeyCode::B, KeyCode::U </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, ModifierFlag::NONE, KeyCode::JIS_YEN </autogen>
 
 <!-- 中指シフト -->
 <!-- 2段目 - K:ファごふフィフェ , D:ウィぱよみウェウォ -->
@@ -55,7 +54,7 @@
 <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::I, KeyCode::Y, KeyCode::O </autogen>
 <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::O, KeyCode::M, KeyCode::I </autogen>
 <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::P, KeyCode::W, KeyCode::E </autogen>
-<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::JIS_ATMARK, KeyCode::U, KeyCode::X, KeyCode::O </autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::BRACKET_LEFT, KeyCode::U, KeyCode::X, KeyCode::O </autogen>
 
 <!-- 3段目 - K:ほじれもゆ , D:へあ[][]え -->
 <!-- K -->
@@ -177,7 +176,7 @@
 <!-- HU -> ／ -->
 <!-- IM によって動作が異なる -->
 <!-- FG -> 「」 & ENTER & 左移動 -->
-<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::G, KeyCode::JIS_ATMARK, KeyCode::JIS_BRACKET_LEFT, KeyCode::RETURN, KeyCode::CURSOR_LEFT </autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::G, KeyCode::BRACKET_LEFT, KeyCode::BRACKET_RIGHT, KeyCode::RETURN, KeyCode::CURSOR_LEFT </autogen>
 <!-- HJ -> （） & ENTER & 左移動 -->
 <autogen>--SimultaneousKeyPresses-- KeyCode::H, KeyCode::J, KeyCode::KEY_9, ModifierFlag::SHIFT_L, KeyCode::KEY_0, ModifierFlag::SHIFT_L, KeyCode::RETURN, KeyCode::CURSOR_LEFT </autogen>
 <!-- FV/FB -> ！ -->
@@ -210,13 +209,13 @@
 <autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::KEY_4, KeyCode::P, KeyCode::Y, KeyCode::O </autogen>
 <!-- D:(KEY_7から)，「」；＠ -->
 <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::KEY_7, KeyCode::COMMA, ModifierFlag::OPTION_L </autogen>
-<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::KEY_8, KeyCode::JIS_BRACKET_LEFT </autogen>
-<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::KEY_9, KeyCode::JIS_BRACKET_RIGHT </autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::KEY_8, KeyCode::BRACKET_LEFT </autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::KEY_9, KeyCode::BRACKET_RIGHT </autogen>
 <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::KEY_0, KeyCode::SEMICOLON </autogen>
-<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::MINUS, KeyCode::JIS_ATMARK </autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::MINUS, KeyCode::KEY_2, ModifierFlag::SHIFT_L </autogen>
 <!-- S:(KEY_7から)．（）：＊ -->
 <autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::KEY_7, KeyCode::DOT, ModifierFlag::OPTION_L </autogen>
-<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::KEY_8, KeyCode::KEY_8, ModifierFlag::SHIFT_L </autogen>
-<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::KEY_9, KeyCode::KEY_9, ModifierFlag::SHIFT_L </autogen>
-<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::KEY_0, KeyCode::JIS_COLON </autogen>
-<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::MINUS, KeyCode::JIS_COLON, ModifierFlag::SHIFT_L </autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::KEY_8, KeyCode::KEY_9, ModifierFlag::SHIFT_L </autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::KEY_9, KeyCode::KEY_0, ModifierFlag::SHIFT_L </autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::KEY_0, KeyCode::SEMICOLON, ModifierFlag::SHIFT_L </autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::MINUS, KeyCode::KEY_8, ModifierFlag::SHIFT_L </autogen>
