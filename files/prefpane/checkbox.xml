@@ -1855,6 +1855,11 @@
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::F14</autogen>
         </item>
         <item>
+          <name>Fn x2 to F19</name>
+          <identifier>remap.fn_x2_to_f19</identifier>
+          <autogen>--DoublePressModifier-- KeyCode::FN, KeyCode::FN, KeyCode::F19</autogen>
+        </item>
+        <item>
           <name>Fn to Help</name>
           <identifier>remap.fn2help</identifier>
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::HELP</autogen>
@@ -3641,6 +3646,11 @@
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::ESCAPE</autogen>
         </item>
         <item>
+          <name>Shift_L x2 to F18</name>
+          <identifier>remap.shiftL_x2_to_f18</identifier>
+          <autogen>--DoublePressModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::F18</autogen>
+        </item>
+        <item>
           <name>Shift_L to Space</name>
           <identifier>remap.shiftL2space</identifier>
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
@@ -3651,11 +3661,6 @@
           <identifier>remap.shiftRshiftL2space</identifier>
           <autogen>--KeyToKey-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_L, KeyCode::SPACE, ModifierFlag::SHIFT_L</autogen>
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_R, KeyCode::SPACE</autogen>
-        </item>
-        <item>
-          <name>Shift_L x2 to F18</name>
-          <identifier>remap.shiftL_x2_to_f18</identifier>
-          <autogen>--DoublePressModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::F18</autogen>
         </item>
         <item>
           <name>Disable Shift_L</name>
