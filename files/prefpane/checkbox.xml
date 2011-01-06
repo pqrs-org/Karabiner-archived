@@ -3587,6 +3587,11 @@
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
+          <name>Fn+Shift_L to Control_R</name>
+          <identifier>remap.fnshiftL2controlR</identifier>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::FN, KeyCode::CONTROL_R</autogen>
+        </item>
+        <item>
           <name>Shift_L to Fn</name>
           <identifier>remap.shiftL2fn</identifier>
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::FN</autogen>
@@ -3648,9 +3653,9 @@
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_R, KeyCode::SPACE</autogen>
         </item>
         <item>
-          <name>Fn+Shift_L to Control_R</name>
-          <identifier>remap.fnshiftL2controlR</identifier>
-          <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::FN, KeyCode::CONTROL_R</autogen>
+          <name>Shift_L x2 to F18</name>
+          <identifier>remap.shiftL_x2_to_f18</identifier>
+          <autogen>--DoublePressModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::F18</autogen>
         </item>
         <item>
           <name>Disable Shift_L</name>
