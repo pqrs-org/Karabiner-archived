@@ -59,6 +59,11 @@
           <identifier>remap.samples_showstatusmessage_sample2</identifier>
           <autogen>--ShowStatusMessage-- Sample2</autogen>
         </item>
+        <item>
+          <name>(Empty)</name>
+          <identifier>remap.samples_showstatusmessage_empty</identifier>
+          <autogen>--ShowStatusMessage--</autogen>
+        </item>
       </list>
     </item>
 
