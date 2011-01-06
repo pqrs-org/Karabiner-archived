@@ -2227,6 +2227,61 @@
             </item>
           </list>
         </item>
+        <item>
+          <name>Functionalize 2.0</name>
+          <appendix>Please use these settings with the consumer Fn keys ENABLED in System Preferences</appendix>
+          <list>
+            <item>
+              <name>ConsumerKeys to F[1-12] Mode</name>
+              <appendix>(Brightness Down to F1)</appendix>
+              <appendix>(Brightness Up to F2)</appendix>
+              <appendix>(...)</appendix>
+              <appendix>(Volume Up to F12)</appendix>
+              <identifier vk_config="true">notsave.revert_fnkeys</identifier>
+              <autogen>--ShowStatusMessage-- Fn Keys Enabled</autogen>
+              <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_DOWN,    KeyCode::F1</autogen>
+              <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_UP,      KeyCode::F2</autogen>
+              <autogen>--KeyToKey--      KeyCode::EXPOSE_ALL,                 KeyCode::F3</autogen>
+              <autogen>--KeyToKey--      KeyCode::DASHBOARD,                  KeyCode::F4</autogen>
+              <autogen>--ConsumerToKey-- ConsumerKeyCode::KEYBOARDLIGHT_LOW,  KeyCode::F5</autogen>
+              <autogen>--ConsumerToKey-- ConsumerKeyCode::KEYBOARDLIGHT_HIGH, KeyCode::F6</autogen>
+              <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PREV,         KeyCode::F7</autogen>
+              <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PLAY,         KeyCode::F8</autogen>
+              <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_NEXT,         KeyCode::F9</autogen>
+              <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE,        KeyCode::F10</autogen>
+              <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN,        KeyCode::F11</autogen>
+              <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP,          KeyCode::F12</autogen>
+            </item>
+            <item>
+              <name>Fn - Tap for Real FnLock</name>
+              <appendix>This enables FnLock and disables all consumer keys</appendix>
+              <identifier>remap.fn2fn_real_fnlock</identifier>
+              <autogen>--KeyOverlaidModifier-- KeyCode::FN, KeyCode::FN, KeyCode::VK_LOCK_FN, KeyCode::VK_CONFIG_TOGGLE_notsave_revert_fnkeys</autogen>
+            </item>
+            <item>
+              <name>Fn - Tap to Enable Fn Keys Only</name>
+              <appendix>This enables disables all consumer keys only</appendix>
+              <identifier>remap.doubletab_restore_fkeys</identifier>
+              <autogen>--KeyOverlaidModifier-- KeyCode::FN, KeyCode::FN, KeyCode::VK_CONFIG_TOGGLE_notsave_revert_fnkeys</autogen>
+            </item>
+            <item>
+              <name>Disable F[3-6] Consumer Keys and set to F[14-17],</name>
+              <appendix>when ConsumerKeys Mode is disabled.</appendix>
+              <appendix>(Expose to F14)</appendix>
+              <appendix>(Dashboard to F15)</appendix>
+              <appendix>(Keyboard Light Low to F16)</appendix>
+              <appendix>(Keyboard Light High to F17)</appendix>
+              <identifier>remap.disable_f3_thru_f6_consumer</identifier>
+              <block>
+                <config_not>notsave_revert_fnkeys</config_not>
+                <autogen>--KeyToKey--      KeyCode::EXPOSE_ALL,                 KeyCode::F14</autogen>
+                <autogen>--KeyToKey--      KeyCode::DASHBOARD,                  KeyCode::F15</autogen>
+                <autogen>--ConsumerToKey-- ConsumerKeyCode::KEYBOARDLIGHT_LOW,  KeyCode::F16</autogen>
+                <autogen>--ConsumerToKey-- ConsumerKeyCode::KEYBOARDLIGHT_HIGH, KeyCode::F17</autogen>
+              </block>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
 
