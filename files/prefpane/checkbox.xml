@@ -1842,6 +1842,22 @@
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::OPTION_L, ModifierFlag::CONTROL_L</autogen>
         </item>
         <item>
+          <name>Fn to All Modifiers Mode</name>
+          <list>
+            <item>
+              <name>FN to Shift+Control+Option+Command</name>
+              <identifier vk_config="true">notsave.fn2allmods</identifier>
+              <autogen>--ShowStatusMessage-- Fn as All Mods Enabled</autogen>
+              <autogen>--KeyToKey-- KeyCode::FN, KeyCode::COMMAND_L, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+            </item>
+            <item>
+              <name>Doubletap Left Shift to Enable Fn as Shift+Control+Option+Command</name>
+              <identifier>remap.enable_fn2allmods</identifier>
+              <autogen>--DoublePressModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::VK_CONFIG_TOGGLE_notsave_fn2allmods</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Fn to Shift_L</name>
           <identifier>remap.fn2shiftL</identifier>
           <autogen>--KeyToKey-- KeyCode::FN, KeyCode::SHIFT_L</autogen>
