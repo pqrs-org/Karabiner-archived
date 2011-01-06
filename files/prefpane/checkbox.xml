@@ -846,6 +846,11 @@
           <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_STICKY_COMMAND_L</autogen>
         </item>
         <item>
+          <name>Command_L to ModifierFlag::Extra2</name>
+          <identifier>remap.commandL2extra2</identifier>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::VK_MODIFIER_EXTRA2</autogen>
+        </item>
+        <item>
           <name>Command_L to Backquote(`)</name>
           <identifier>remap.commandL2backquote</identifier>
           <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::BACKQUOTE</autogen>
@@ -979,6 +984,11 @@
           <name>Command_R to Sticky Command_R</name>
           <identifier>remap.sticky_commandR</identifier>
           <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_STICKY_COMMAND_R</autogen>
+        </item>
+        <item>
+          <name>CommandR to ModifierFlag::Extra1</name>
+          <identifier>remap.commandR2extra1</identifier>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::VK_MODIFIER_EXTRA1</autogen>
         </item>
         <item>
           <name>Command_R to Enter</name>
