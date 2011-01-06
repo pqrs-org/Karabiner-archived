@@ -71,11 +71,9 @@
     [statuswindow_ orderFront:nil];
 
     [animation_ stopAnimation];
+    [animation_ setCurrentProgress:0];
     if ([animation_ duration] > 0) {
-      [animation_ setCurrentProgress:0];
       [animation_ startAnimation];
-    } else {
-      [animation_ setCurrentProgress:1];
     }
 
   } else {
