@@ -74,6 +74,8 @@
     [animation_ setCurrentProgress:0];
     if ([animation_ duration] > 0) {
       [animation_ startAnimation];
+    } else {
+      [statuswindow_ setAlphaValue:(CGFloat)(1.0)];
     }
 
   } else {
