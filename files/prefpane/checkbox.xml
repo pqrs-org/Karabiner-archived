@@ -50,7 +50,7 @@
           <identifier essential="true">general.show_sticky_modifier_status</identifier>
         </item>
         <item>
-          <name>Show Empty Status Message</name>
+          <name>Continue displaying empty status message</name>
           <appendix>(This setting is usable when you turn on StatusWindow fade-out feature.)</appendix>
           <identifier>general.show_empty_status_message</identifier>
           <autogen>--ShowStatusMessage--</autogen>
