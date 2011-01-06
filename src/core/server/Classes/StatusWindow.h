@@ -9,11 +9,13 @@
   IBOutlet PreferencesManager* preferencesmanager_;
 
   NSMutableArray* lines_;
+  NSViewAnimation* animation_;
 
   int last_parameter_statuswindow_alpha_font_;
   int last_parameter_statuswindow_alpha_background_;
   int last_parameter_statuswindow_posx_adjustment_;
   int last_parameter_statuswindow_posy_adjustment_;
+  int last_parameter_statuswindow_fadeout_duration_;
 }
 
 - (void) setupStatusWindow;

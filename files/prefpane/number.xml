@@ -69,5 +69,9 @@
       <name>[StatusWindow] PosY adjustment</name>
       <identifier essential="true" step="100">parameter.statuswindow_posy_adjustment</identifier>
     </item>
+    <item>
+      <name>[StatusWindow] FadeOut Duration</name>
+      <identifier essential="true" step="500" baseunit="ms">parameter.statuswindow_fadeout_duration</identifier>
+    </item>
   </list>
 </root>

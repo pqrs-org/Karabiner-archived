@@ -12,6 +12,12 @@
     for (NSUInteger i = 0; i < STATUSMESSAGETYPE__END__; ++i) {
       [lines_ addObject:@""];
     }
+
+    // ------------------------------------------------------------
+    animation_ = [NSViewAnimation new];
+    [animation_ setAnimationBlockingMode:NSAnimationNonblocking];
+    [animation_ setAnimationCurve:NSAnimationEaseIn];
+    [animation_ setDuration:0];
   }
 
   return self;
@@ -20,6 +26,7 @@
 - (void) dealloc
 {
   [lines_ release];
+  [animation_ release];
 
   [super dealloc];
 }
@@ -36,6 +43,12 @@
   [statuswindow_ setIgnoresMouseEvents:YES];
   [statuswindow_ setCollectionBehavior:behavior];
   [statuswindow_ center];
+
+  // ------------------------------------------------------------
+  NSMutableDictionary* dict = [[NSMutableDictionary new] autorelease];
+  [dict setObject:statuswindow_ forKey:NSViewAnimationTargetKey];
+  [dict setObject:NSViewAnimationFadeOutEffect forKey:NSViewAnimationEffectKey];
+  [animation_ setViewAnimations:[NSArray arrayWithObjects:dict, nil]];
 }
 
 // ------------------------------------------------------------
@@ -56,6 +69,15 @@
   if ([message length] > 0) {
     // show
     [statuswindow_ orderFront:nil];
+
+    [animation_ stopAnimation];
+    if ([animation_ duration] > 0) {
+      [animation_ setCurrentProgress:0];
+      [animation_ startAnimation];
+    } else {
+      [animation_ setCurrentProgress:1];
+    }
+
   } else {
     // hide
     [statuswindow_ orderOut:nil];
@@ -91,18 +113,21 @@
   int alpha_background = [preferencesmanager_ value:@"parameter.statuswindow_alpha_background"];
   int posx_adjustment  = [preferencesmanager_ value:@"parameter.statuswindow_posx_adjustment"];
   int posy_adjustment  = [preferencesmanager_ value:@"parameter.statuswindow_posy_adjustment"];
+  int fadeout_duration = [preferencesmanager_ value:@"parameter.statuswindow_fadeout_duration"];
 
   if (! force &&
       alpha_font       == last_parameter_statuswindow_alpha_font_ &&
       alpha_background == last_parameter_statuswindow_alpha_background_ &&
       posx_adjustment  == last_parameter_statuswindow_posx_adjustment_ &&
-      posy_adjustment  == last_parameter_statuswindow_posy_adjustment_) {
+      posy_adjustment  == last_parameter_statuswindow_posy_adjustment_ &&
+      fadeout_duration == last_parameter_statuswindow_fadeout_duration_) {
     return;
   }
   last_parameter_statuswindow_alpha_font_       = alpha_font;
   last_parameter_statuswindow_alpha_background_ = alpha_background;
   last_parameter_statuswindow_posx_adjustment_  = posx_adjustment;
   last_parameter_statuswindow_posy_adjustment_  = posy_adjustment;
+  last_parameter_statuswindow_fadeout_duration_ = fadeout_duration;
 
   // ----------------------------------------------------------------------
   CGFloat af = (CGFloat)(alpha_font) / (CGFloat)(100.0);
@@ -122,6 +147,10 @@
   frame.origin.x += posx_adjustment;
   frame.origin.y += posy_adjustment;
   [statuswindow_ setFrameOrigin:frame.origin];
+
+  NSTimeInterval duration = (NSTimeInterval)(fadeout_duration) / 1000;
+  if (duration < 0) duration = 0;
+  [animation_ setDuration:duration];
 }
 
 @end
