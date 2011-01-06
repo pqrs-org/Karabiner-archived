@@ -2229,7 +2229,8 @@
         </item>
         <item>
           <name>Functionalize 2.0</name>
-          <appendix>Please use these settings with the consumer Fn keys ENABLED in System Preferences</appendix>
+          <appendix>You need to turn "Use all F1, F2, etc. keys as standard function keys" off.</appendix>
+          <appendix>Open System Preferences &gt; Keyboard, and turn it off.</appendix>
           <list>
             <item>
               <name>ConsumerKeys to F[1-12] Mode</name>
