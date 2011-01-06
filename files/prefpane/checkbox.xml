@@ -198,6 +198,11 @@
           <name>Button to Button</name>
           <list>
             <item>
+              <name>Command+LeftClick to Mouse Button 4</name>
+              <identifier>remap.pointing_cmdLeftclick2button4</identifier>
+              <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, VK_COMMAND, PointingButton::BUTTON4</autogen>
+            </item>
+            <item>
               <name>Control+LeftClick to MiddleClick</name>
               <identifier>remap.pointing_controlLeftclick2middleclick</identifier>
               <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, VK_CONTROL, PointingButton::MIDDLE</autogen>
@@ -226,6 +231,11 @@
               <name>Control+RightClick to Double-LeftClick</name>
               <identifier>remap.pointing_controlrightclick2doubleleftclick</identifier>
               <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, VK_CONTROL, PointingButton::LEFT, PointingButton::LEFT</autogen>
+            </item>
+            <item>
+              <name>Fn+RightClick to Mouse Button 5</name>
+              <identifier>remap.pointing_fnRightclick2button5</identifier>
+              <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, ModifierFlag::FN, PointingButton::BUTTON5</autogen>
             </item>
             <item>
               <name>MiddleClick to Command+LeftClick</name>
