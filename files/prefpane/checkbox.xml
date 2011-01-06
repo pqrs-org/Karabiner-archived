@@ -1477,6 +1477,13 @@
           <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::F12</autogen>
         </item>
         <item>
+          <name>Eject to F13</name>
+          <appendix>(Fn+Eject to Eject)</appendix>
+          <identifier>remap.eject2f13</identifier>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::F13</autogen>
+        </item>
+        <item>
           <name>Eject to F14</name>
           <identifier>remap.eject2f14</identifier>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::F14</autogen>
