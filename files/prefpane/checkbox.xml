@@ -514,6 +514,15 @@
       <name>Change Arrow(Up/Down/Left/Right) Key</name>
       <list>
         <item>
+          <name>Arrow(Down/Left/Right) to Command_L</name>
+          <appendix>Disable Up-Arrow</appendix>
+          <identifier>remap.arrow2commandL</identifier>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_UP, KeyCode::VK_NONE</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, KeyCode::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, KeyCode::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, KeyCode::COMMAND_L</autogen>
+        </item>
+        <item>
           <name>Arrow(Down/Left/Right) to Fn</name>
           <appendix>Disable Up-Arrow</appendix>
           <identifier>remap.arrow2fn</identifier>
