@@ -7677,6 +7677,14 @@
               <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::CONTROL_L, KeyCode::JIS_KANA</autogen>
             </item>
             <item>
+              <name>Command_R to Option_R</name>
+              <appendix>(+ When you type Command_R only, send KANA)</appendix>
+              <appendix>(+ When you type Shift+Command_R only, send Return)</appendix>
+              <identifier>remap.jis_commandR2optionR_kana_return</identifier>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, VK_SHIFT, KeyCode::OPTION_R, VK_SHIFT, KeyCode::RETURN</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::OPTION_R, KeyCode::JIS_KANA</autogen>
+            </item>
+            <item>
               <name>Command_R x2 to KANA</name>
               <identifier>remap.jis_commandR_x2_to_kana</identifier>
               <autogen>--DoublePressModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::JIS_KANA</autogen>
