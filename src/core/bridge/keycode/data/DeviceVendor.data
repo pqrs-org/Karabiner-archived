@@ -7,3 +7,6 @@ KENSINGTON     0x047d
 PSEUDO         0x0000
 CHESEN         0x0a81
 LOGITECH       0x046d
+PFU            0x04fe
+PFU_0x0068     0x0068
+UC_TECHNOLOGY  0x0108
