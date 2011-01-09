@@ -20,4 +20,12 @@ CHESEN_PS2_TO_USB                       0x0205
 LOGITECH_CORDLESS_PRESENTER             0xc515
 LOGITECH_USB_HEADSET                    0x0a0b
 
+// PFU
+HHKB_Professional_JP_0x000d             0x000d
+HHKB_LITE2_JP_0x0472                    0x0472
+
+// UC_TECHNOLOGY
+UTRONKB                                 0x0853
+
+//
 PSEUDO                                  0x0000
