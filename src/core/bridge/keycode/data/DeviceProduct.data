@@ -28,7 +28,7 @@ HHKB_LITE2_JP_0x0472                    0x0472
 SUN_TYPE_6_KEYBOARD                     0x0005
 
 // UC_TECHNOLOGY
-UTRONKB                                 0x0853
+MICRO_TRONKB                            0x0108
 
 //
 PSEUDO                                  0x0000
