@@ -178,6 +178,11 @@
         <autogen>--KeyToKey-- KeyCode::G, KeyCode::OPTION_L</autogen>
       </block>
       <block>
+        <config_only>option.simultaneouskeypresses_vimode_commadot_to_optionleftright</config_only>
+        <autogen>--KeyToKey-- KeyCode::COMMA, KeyCode::CURSOR_LEFT,  ModifierFlag::OPTION_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::DOT,   KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
+      </block>
+      <block>
         <config_only>option.simultaneouskeypresses_vimode_brackets_to_optionleftright</config_only>
         <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT,  KeyCode::CURSOR_LEFT,  ModifierFlag::OPTION_L</autogen>
         <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
@@ -546,6 +551,10 @@
       <name>[Option] G to Option_L</name>
       <appendix>(= G+HL to backward-word/forward-word)</appendix>
       <identifier>option.simultaneouskeypresses_vimode_g_to_option</identifier>
+    </item>
+    <item>
+      <name>[Option] ,. to backward-word/forward-word</name>
+      <identifier>option.simultaneouskeypresses_vimode_commadot_to_optionleftright</identifier>
     </item>
     <item>
       <name>[Option] [] to backward-word/forward-word</name>
