@@ -7348,6 +7348,29 @@
       <name>For German</name>
       <list>
         <item>
+          <name>Adapt Option_R to PC's AltGr (1)</name>
+          <identifier>remap.german_adapt_option_r_to_pcs_altgr_1</identifier>
+          <appendix>---------------------------------------</appendix>
+          <appendix>Change Option_R+'8' to Option_R+'7' ( '{' )</appendix>
+          <appendix>Change Option_R+'9' to Option_R+'0' ( '}' )</appendix>
+          <appendix>Change Option_R+'5' to Option_R+'8' ( '[' )</appendix>
+          <appendix>Change Option_R+'6' to Option_R+'9' ( ']' )</appendix>
+          <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::OPTION_R, KeyCode::KEY_5, ModifierFlag::OPTION_R</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::OPTION_R, KeyCode::KEY_6, ModifierFlag::OPTION_R</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_7, ModifierFlag::OPTION_R, KeyCode::KEY_8, ModifierFlag::OPTION_R</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::OPTION_R, KeyCode::KEY_9, ModifierFlag::OPTION_R</autogen>
+          <appendix>---------------------------------------</appendix>
+        </item>
+        <item>
+          <name>Adapt Option_R to PC's AltGr (2)</name>
+          <identifier>remap.german_adapt_option_r_to_pcs_altgr_2</identifier>
+          <appendix>Change Option_R+'Q' to Option_R+'L' ( '@' )</appendix>
+          <appendix>Change Option_R+'+' to Option_R+'N' ( '~' )</appendix>
+          <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::OPTION_R, KeyCode::L, ModifierFlag::OPTION_R</autogen>
+          <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, ModifierFlag::OPTION_R, KeyCode::N, ModifierFlag::OPTION_R</autogen>
+        </item>
+        <item><name>------------------------------------------------------------</name></item>
+        <item>
           <name>Option+7 to {</name>
           <identifier>remap.german_option7_to_left_brace</identifier>
           <autogen>--KeyToKey-- KeyCode::KEY_7, VK_OPTION, KeyCode::KEY_8, VK_OPTION</autogen>
