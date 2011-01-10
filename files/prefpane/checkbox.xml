@@ -7351,10 +7351,10 @@
           <name>Adapt Option_R to PC's AltGr (1)</name>
           <identifier>remap.german_adapt_option_r_to_pcs_altgr_1</identifier>
           <appendix>---------------------------------------</appendix>
-          <appendix>Change Option_R+'8' to Option_R+'7' ( '{' )</appendix>
-          <appendix>Change Option_R+'9' to Option_R+'0' ( '}' )</appendix>
-          <appendix>Change Option_R+'5' to Option_R+'8' ( '[' )</appendix>
-          <appendix>Change Option_R+'6' to Option_R+'9' ( ']' )</appendix>
+          <appendix>Change Option_R+7 to {</appendix>
+          <appendix>Change Option_R+8 to [</appendix>
+          <appendix>Change Option_R+9 to ]</appendix>
+          <appendix>Change Option_R+0 to }</appendix>
           <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::OPTION_R, KeyCode::KEY_5, ModifierFlag::OPTION_R</autogen>
           <autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::OPTION_R, KeyCode::KEY_6, ModifierFlag::OPTION_R</autogen>
           <autogen>--KeyToKey-- KeyCode::KEY_7, ModifierFlag::OPTION_R, KeyCode::KEY_8, ModifierFlag::OPTION_R</autogen>
