@@ -22,7 +22,7 @@ LOGITECH_USB_HEADSET                    0x0a0b
 
 // PFU
 HHKB_Professional_JP_0x000d             0x000d
-HHKB_LITE2_JP_0x0472                    0x0472
+HHKB_LITE2_JP_0x0068                    0x0068
 
 // Sun Microsystems
 SUN_TYPE_6_KEYBOARD                     0x0005
