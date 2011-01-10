@@ -1,12 +1,13 @@
 // Note: We use "APPLE_COMPUTER" instead of "APPLE".
 // Because "APPLE" will be replaced by preprocessor, and it causes a compile-error.
-APPLE_COMPUTER 0x05ac
-TYPEMATRIX     0x1e54
-FILCO          0x04d9
-KENSINGTON     0x047d
-PSEUDO         0x0000
-CHESEN         0x0a81
-LOGITECH       0x046d
-PFU            0x04fe
-PFU_0x0068     0x0068
-UC_TECHNOLOGY  0x0108
+APPLE_COMPUTER   0x05ac
+TYPEMATRIX       0x1e54
+FILCO            0x04d9
+KENSINGTON       0x047d
+PSEUDO           0x0000
+CHESEN           0x0a81
+LOGITECH         0x046d
+PFU              0x04fe
+UC_TECHNOLOGY    0x0108
+SUN_MICROSYSTEMS 0x0430
+CHICONY_0x0472   0x0472
