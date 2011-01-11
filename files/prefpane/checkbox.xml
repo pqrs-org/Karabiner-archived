@@ -105,7 +105,7 @@
         <item>
           <name>Holding Escape to toggle "Pass Through Mode"</name>
           <identifier>passthrough.holding_escape</identifier>
-          <autogen>--HoldingKeyToKey-- KeyCode::ESCAPE, KeyCode::ESCAPE, KeyCode::VK_NONE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough</autogen>
+          <autogen>--HoldingKeyToKey-- KeyCode::ESCAPE, ModifierFlag::NONE, KeyCode::ESCAPE, KeyCode::VK_NONE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough</autogen>
         </item>
       </list>
     </item>
@@ -5013,7 +5013,7 @@
               <appendix>+ D turns on "High Speed Mode"</appendix>
               <appendix>// D+HJKL to high-speed movement</appendix>
               <identifier>remap.mouse_keys_mode_holding_m</identifier>
-              <autogen>--HoldingKeyToKey-- KeyCode::M, KeyCode::M, KeyCode::VK_NONE, KeyCode::VK_CONFIG_TOGGLE_notsave_mousekeys_mode</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::M, ModifierFlag::NONE, KeyCode::M, KeyCode::VK_NONE, KeyCode::VK_CONFIG_TOGGLE_notsave_mousekeys_mode</autogen>
             </item>
             <item>
               <name>[Option] Command_L to LeftClick</name>
@@ -5287,7 +5287,7 @@
         <item>
           <name>Holding "V" Key to toggle Vi Mode</name>
           <identifier>remap.vimode_holding_v</identifier>
-          <autogen>--HoldingKeyToKey-- KeyCode::V, KeyCode::V, KeyCode::VK_NONE, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
+          <autogen>--HoldingKeyToKey-- KeyCode::V, ModifierFlag::NONE, KeyCode::V, KeyCode::VK_NONE, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
         </item>
         <item>
           <name>Arrow(Down/Left/Right) to Option_L</name>
