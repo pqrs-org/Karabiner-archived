@@ -533,6 +533,16 @@
     </item>
     <item><name>------------------------------------------------------------</name></item>
     <item>
+      <name>[Option] F to FN</name>
+      <appendix>(= F+HJKL to Home/PageDown/PageUp/End)</appendix>
+      <identifier>option.simultaneouskeypresses_vimode_f_to_fn</identifier>
+    </item>
+    <item>
+      <name>[Option] Command_L/Command_R to backward-word/forward-word</name>
+      <identifier>option.simultaneouskeypresses_vimode_commandLR_to_optionleftright</identifier>
+    </item>
+    <item><name>------------------------------------------------------------</name></item>
+    <item>
       <name>[Option] Use JKIL instead of HJKL</name>
       <identifier>option.simultaneouskeypresses_vimode_jkli</identifier>
     </item>
@@ -548,18 +558,9 @@
       <identifier>option.simultaneouskeypresses_vimode_mouseclick</identifier>
     </item>
     <item>
-      <name>[Option] F to FN</name>
-      <appendix>(= F+HJKL to Home/PageDown/PageUp/End)</appendix>
-      <identifier>option.simultaneouskeypresses_vimode_f_to_fn</identifier>
-    </item>
-    <item>
       <name>[Option] G to Option_L</name>
       <appendix>(= G+HL to backward-word/forward-word)</appendix>
       <identifier>option.simultaneouskeypresses_vimode_g_to_option</identifier>
-    </item>
-    <item>
-      <name>[Option] Command_L/Command_R to backward-word/forward-word</name>
-      <identifier>option.simultaneouskeypresses_vimode_commandLR_to_optionleftright</identifier>
     </item>
     <item>
       <name>[Option] ,. to backward-word/forward-word</name>
