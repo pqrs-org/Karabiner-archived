@@ -140,10 +140,22 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
         default:
+          ModifierFlag lastKeyModifierFlag = (*toKeys_)[toKeys_->size() - 1].key.getModifierFlag();
+          Flags        lastKeyFlags        = (*toKeys_)[toKeys_->size() - 1].flags;
+          bool         isLastKeyModifier   = (lastKeyModifierFlag != ModifierFlag::NONE);
+
           if (remapParams.params.ex_iskeydown) {
             FlagStatus::temporary_decrease(fromFlags);
 
-            for (size_t i = 0; i < toKeys_->size(); ++i) {
+            size_t size = toKeys_->size();
+            // If the last key is modifier, we give it special treatment.
+            // - Don't fire key repeat.
+            // - Synchronous the key press status and the last modifier status.
+            if (isLastKeyModifier) {
+              --size;
+            }
+
+            for (size_t i = 0; i < size; ++i) {
               FlagStatus::temporary_increase((*toKeys_)[i].flags);
 
               Flags f = FlagStatus::makeFlags();
@@ -155,7 +167,27 @@ namespace org_pqrs_KeyRemap4MacBook {
               FlagStatus::temporary_decrease((*toKeys_)[i].flags);
             }
 
-            KeyboardRepeat::primitive_start();
+            if (isLastKeyModifier) {
+              // restore temporary flag.
+              FlagStatus::temporary_increase(fromFlags);
+
+              FlagStatus::increase(lastKeyFlags | lastKeyModifierFlag);
+              FlagStatus::decrease(fromFlags);
+              EventOutputQueue::FireModifiers::fire();
+            }
+
+            if (isLastKeyModifier) {
+              KeyboardRepeat::cancel();
+            } else {
+              KeyboardRepeat::primitive_start();
+            }
+
+          } else {
+            if (isLastKeyModifier) {
+              FlagStatus::decrease(lastKeyFlags | lastKeyModifierFlag);
+              FlagStatus::increase(fromFlags);
+              EventOutputQueue::FireModifiers::fire();
+            }
           }
           break;
       }

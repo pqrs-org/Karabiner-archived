@@ -206,18 +206,29 @@
         </item>
 
         <item>
-          <name>Combination(2)</name>
-          <appendix>Shift_L to A,Shift_L+S,D (if no other modifiers pressed)</appendix>
-          <identifier>remap.samples_keytokey_combination_2</identifier>
-          <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::A, KeyCode::S, ModifierFlag::SHIFT_L, KeyCode::D</autogen>
+          <name>Combination (2)</name>
+          <appendix>A to A,S,Shift_L (Shift_L is active while we're pressing A key)</appendix>
+          <appendix>Shift_R to A,S,Control_L (Control_L is active while we're pressing Shift_R key)</appendix>
+          <appendix>Command+B to A,S,Shift_L</appendix>
+          <identifier>remap.samples_keytokey_combination1</identifier>
+          <autogen>--KeyToKey-- KeyCode::A,             KeyCode::A, KeyCode::S, KeyCode::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_R,       KeyCode::A, KeyCode::S, KeyCode::CONTROL_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::B, VK_COMMAND, KeyCode::A, KeyCode::S, KeyCode::SHIFT_L</autogen>
         </item>
 
         <item>
           <name>Combination(3)</name>
+          <appendix>Shift_L to A,Shift_L+S,D (if no other modifiers pressed)</appendix>
+          <identifier>remap.samples_keytokey_combination_3</identifier>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::A, KeyCode::S, ModifierFlag::SHIFT_L, KeyCode::D</autogen>
+        </item>
+
+        <item>
+          <name>Combination(4)</name>
           <appendix>A to CapsLock,A,S</appendix>
           <appendix>// This has a issue with key repeat.</appendix>
           <appendix>// In key repeat, CapsLock status is not changed.</appendix>
-          <identifier>remap.samples_keytokey_combination_3</identifier>
+          <identifier>remap.samples_keytokey_combination_4</identifier>
           <autogen>--KeyToKey-- KeyCode::A, KeyCode::CAPSLOCK, KeyCode::A, KeyCode::S</autogen>
         </item>
 
