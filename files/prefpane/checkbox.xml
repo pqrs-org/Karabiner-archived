@@ -484,6 +484,19 @@
           </block>
         </item>
         <item>
+          <name>Make Cut, Copy, Paste work on TypeMatrix 2030 using Dvorak layout in MacOS X</name>
+          <appendix>Change Shift+Delete to Command_L+B (X in DV - i.e. Cut)</appendix>
+          <appendix>Change Control+Insert to Command_L+I (C in DV - i.e. Copy) </appendix>
+          <appendix>Change Shift+Insert to Command_L+. (V in DV - i.e. Paste) </appendix>
+          <identifier>remap.typematrix_winstyle_zxc_dvorak</identifier>
+          <block>
+            <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
+            <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, VK_SHIFT   | ModifierFlag::NONE, KeyCode::B,   ModifierFlag::COMMAND_L</autogen>
+            <autogen>--KeyToKey-- KeyCode::PC_INSERT,      VK_CONTROL | ModifierFlag::NONE, KeyCode::I,   ModifierFlag::COMMAND_L</autogen>
+            <autogen>--KeyToKey-- KeyCode::PC_INSERT,      VK_SHIFT   | ModifierFlag::NONE, KeyCode::DOT, ModifierFlag::COMMAND_L</autogen>
+          </block>
+        </item>
+        <item>
           <name>Swap CapsLock and Control on FILCO FKBN91ML/NB</name>
           <appendix>// We perform it through PC Application Key.</appendix>
           <appendix>// Set CapsLock key code to 110 by PCKeyboardHack.</appendix>
@@ -3382,6 +3395,11 @@
           <identifier>remap.optionR2controlL_vm</identifier>
           <only>VIRTUALMACHINE</only>
           <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CONTROL_L</autogen>
+        </item>
+        <item>
+          <name>Option_R to Control_L+Option_R</name>
+          <identifier>remap.optionR2controlLoptionR</identifier>
+          <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CONTROL_L, ModifierFlag::OPTION_R</autogen>
         </item>
         <item>
           <name>Option_R to Control_R</name>
