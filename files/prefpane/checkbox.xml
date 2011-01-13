@@ -9033,6 +9033,40 @@
               </list>
             </item>
             <item>
+              <name>Asuka Kana Hairetsu</name>
+              <appendix>飛鳥カナ配列(2010-07-13版)</appendix>
+              <list>
+                <item>
+                  <name>＜ローマ字モード＞ 左シフト＝スペース, 右シフト＝かな</name>
+                  <appendix>数字段のシフト面は未定義</appendix>
+                  <identifier>remap.jis_asuka_roman_space_kana</identifier>
+                  <inputmode_only>JAPANESE</inputmode_only>
+                  <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::SPACE|g' -e 's|RIGHT_THUMB|KeyCode::JIS_KANA|g' include/jis_asuka_roman.xml" -->
+                </item>
+                <item>
+                  <name>＜ローマ字モード＞ 左シフト＝英数, 右シフト＝スペース</name>
+                  <appendix>数字段のシフト面は未定義</appendix>
+                  <appendix>※下の「EISUU x2 to EISUU」を同時に使うことをおすすめします</appendix>
+                  <identifier>remap.jis_asuka_roman_eisuu_space</identifier>
+                  <inputmode_only>JAPANESE</inputmode_only>
+                  <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::JIS_EISUU|g' -e 's|RIGHT_THUMB|KeyCode::SPACE|g' include/jis_asuka_roman.xml" -->
+                </item>
+                <item>
+                  <name>＜ローマ字モード＞ 左シフト＝英数, 右シフト＝かな</name>
+                  <appendix>数字段のシフト面は未定義</appendix>
+                  <appendix>※下の「EISUU x2 to EISUU」を同時に使うことをおすすめします</appendix>
+                  <identifier>remap.jis_asuka_roman_eisuu_kana</identifier>
+                  <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::JIS_EISUU|g' -e 's|RIGHT_THUMB|KeyCode::JIS_KANA|g' include/jis_asuka_roman.xml" -->
+                </item>
+                <item><name>------------------------------------------------------------</name></item>
+                <item>
+                  <name>EISUU x2 to EISUU (単発での英数キーは無視する)</name>
+                  <identifier>remap.jis_asuka_eisuu2extra5_x2eisuu</identifier>
+                  <autogen>--DoublePressModifier-- KeyCode::JIS_EISUU, KeyCode::VK_NONE, KeyCode::JIS_EISUU</autogen>
+                </item>
+              </list>
+            </item>
+            <item>
               <name>Use Windows Kana-Input Layout on ASCII Keyboard</name>
               <inputmode_not>ROMAN</inputmode_not>
               <autogen>--KeyToKey-- KeyCode::MINUS, VK_SHIFT, KeyCode::BRACKET_RIGHT, ModifierFlag::SHIFT_L</autogen>
