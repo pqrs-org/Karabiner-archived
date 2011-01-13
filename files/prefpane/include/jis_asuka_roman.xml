@@ -1,0 +1,201 @@
+<!-- SpaceとKanaをモディファイアキーに(親指から先に打鍵した場合のみ連続シフト可能に) -->
+<autogen>--KeyOverlaidModifier-- LEFT_THUMB, KeyCode::VK_MODIFIER_EXTRA1, LEFT_THUMB</autogen>
+<autogen>--KeyOverlaidModifier-- RIGHT_THUMB, KeyCode::VK_MODIFIER_EXTRA2, RIGHT_THUMB</autogen>
+
+<!-- Deleteを右親指シフトの右に -->
+<autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::DELETE</autogen>
+
+<!-- シフトなし上段(「ー入び％消逃とはぽ」左) -->
+<autogen>--KeyToKey-- KeyCode::Q,                ModifierFlag::NONE, KeyCode::JIS_BRACKET_LEFT</autogen>
+<autogen>--KeyToKey-- KeyCode::W,                ModifierFlag::NONE, KeyCode::MINUS</autogen>
+<autogen>--KeyToKey-- KeyCode::E,                ModifierFlag::NONE, KeyCode::ENTER</autogen>
+<autogen>--KeyToKey-- KeyCode::R,                ModifierFlag::NONE, KeyCode::B,KeyCode::I</autogen>
+<autogen>--KeyToKey-- KeyCode::T,                ModifierFlag::NONE, KeyCode::KEY_5,ModifierFlag::SHIFT_L</autogen>
+<autogen>--KeyToKey-- KeyCode::Y,                ModifierFlag::NONE, KeyCode::DELETE</autogen>
+<autogen>--KeyToKey-- KeyCode::U,                ModifierFlag::NONE, KeyCode::ESCAPE</autogen>
+<autogen>--KeyToKey-- KeyCode::I,                ModifierFlag::NONE, KeyCode::T,KeyCode::O</autogen>
+<autogen>--KeyToKey-- KeyCode::O,                ModifierFlag::NONE, KeyCode::H,KeyCode::A</autogen>
+<autogen>--KeyToKey-- KeyCode::P,                ModifierFlag::NONE, KeyCode::P,KeyCode::O</autogen>
+<autogen>--KeyToKey-- KeyCode::JIS_ATMARK,       ModifierFlag::NONE, KeyCode::JIS_BRACKET_RIGHT</autogen>
+<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, ModifierFlag::NONE, KeyCode::CURSOR_LEFT</autogen>
+
+<!-- シフトなし中段(きしうてぎゆんいかたほ・) -->
+<autogen>--KeyToKey-- KeyCode::A,                 ModifierFlag::NONE, KeyCode::K,KeyCode::I</autogen>
+<autogen>--KeyToKey-- KeyCode::S,                 ModifierFlag::NONE, KeyCode::S,KeyCode::I</autogen>
+<autogen>--KeyToKey-- KeyCode::D,                 ModifierFlag::NONE, KeyCode::U</autogen>
+<autogen>--KeyToKey-- KeyCode::F,                 ModifierFlag::NONE, KeyCode::T,KeyCode::E</autogen>
+<autogen>--KeyToKey-- KeyCode::G,                 ModifierFlag::NONE, KeyCode::G,KeyCode::I</autogen>
+<autogen>--KeyToKey-- KeyCode::H,                 ModifierFlag::NONE, KeyCode::Y,KeyCode::U</autogen>
+<autogen>--KeyToKey-- KeyCode::J,                 ModifierFlag::NONE, KeyCode::N,KeyCode::N</autogen>
+<autogen>--KeyToKey-- KeyCode::K,                 ModifierFlag::NONE, KeyCode::I</autogen>
+<autogen>--KeyToKey-- KeyCode::L,                 ModifierFlag::NONE, KeyCode::K,KeyCode::A</autogen>
+<autogen>--KeyToKey-- KeyCode::SEMICOLON,         ModifierFlag::NONE, KeyCode::T,KeyCode::A</autogen>
+<autogen>--KeyToKey-- KeyCode::JIS_COLON,         ModifierFlag::NONE, KeyCode::H,KeyCode::O</autogen>
+<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::NONE, KeyCode::SLASH</autogen>
+
+<!-- シフトなし下段(じちにりぶゃっょゅさ下) -->
+<autogen>--KeyToKey-- KeyCode::Z,              ModifierFlag::NONE, KeyCode::J, KeyCode::I</autogen>
+<autogen>--KeyToKey-- KeyCode::X,              ModifierFlag::NONE, KeyCode::T, KeyCode::I</autogen>
+<autogen>--KeyToKey-- KeyCode::C,              ModifierFlag::NONE, KeyCode::N, KeyCode::I</autogen>
+<autogen>--KeyToKey-- KeyCode::V,              ModifierFlag::NONE, KeyCode::R, KeyCode::I</autogen>
+<autogen>--KeyToKey-- KeyCode::B,              ModifierFlag::NONE, KeyCode::B, KeyCode::U</autogen>
+<autogen>--KeyToKey-- KeyCode::N,              ModifierFlag::NONE, KeyCode::X, KeyCode::Y, KeyCode::A</autogen>
+<autogen>--KeyToKey-- KeyCode::M,              ModifierFlag::NONE, KeyCode::X, KeyCode::T, KeyCode::U</autogen>
+<autogen>--KeyToKey-- KeyCode::COMMA,          ModifierFlag::NONE, KeyCode::X, KeyCode::Y, KeyCode::O</autogen>
+<autogen>--KeyToKey-- KeyCode::DOT,            ModifierFlag::NONE, KeyCode::X, KeyCode::Y, KeyCode::U</autogen>
+<autogen>--KeyToKey-- KeyCode::SLASH,          ModifierFlag::NONE, KeyCode::S, KeyCode::A</autogen>
+<autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, ModifierFlag::NONE, KeyCode::CURSOR_DOWN</autogen>
+
+
+<!-- 左シフト上段(ぃひけぁぅヴ！よふへ）右) -->
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::Q,                ModifierFlag::NONE,                      KeyCode::X,KeyCode::I,                KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::Q,                ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::X,KeyCode::I                                             </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::W,                ModifierFlag::NONE,                      KeyCode::H,KeyCode::I,                KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::W,                ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::H,KeyCode::I                                             </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::E,                ModifierFlag::NONE,                      KeyCode::K,KeyCode::E,                KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::E,                ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::K,KeyCode::E                                             </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::R,                ModifierFlag::NONE,                      KeyCode::X,KeyCode::A,                KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::R,                ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::X,KeyCode::A                                             </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::T,                ModifierFlag::NONE,                      KeyCode::X,KeyCode::U,                KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::T,                ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::X,KeyCode::U                                             </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::Y,                ModifierFlag::NONE,                      KeyCode::V,KeyCode::U,                KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::Y,                ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::V,KeyCode::U                                             </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::U,                ModifierFlag::NONE,                      KeyCode::KEY_5,ModifierFlag::SHIFT_L, KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::U,                ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::KEY_5,ModifierFlag::SHIFT_L                              </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::I,                ModifierFlag::NONE,                      KeyCode::Y,KeyCode::O,                KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::I,                ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::Y,KeyCode::O                                             </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::O,                ModifierFlag::NONE,                      KeyCode::H,KeyCode::U,                KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::O,                ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::H,KeyCode::U                                             </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::P,                ModifierFlag::NONE,                      KeyCode::H,KeyCode::E,                KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::P,                ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::H,KeyCode::E                                             </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::JIS_ATMARK,       ModifierFlag::NONE,                      KeyCode::KEY_9,ModifierFlag::SHIFT_L, KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::JIS_ATMARK,       ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::KEY_9,ModifierFlag::SHIFT_L                              </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::JIS_BRACKET_LEFT, ModifierFlag::NONE,                      KeyCode::CURSOR_RIGHT,                KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::JIS_BRACKET_LEFT, ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::CURSOR_RIGHT                                             </autogen>
+
+<!-- 左シフト中段(だあがばぇずるすまでげ家) -->
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::A,                 ModifierFlag::NONE,                      KeyCode::D, KeyCode::A, KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::A,                 ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::D, KeyCode::A                              </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::S,                 ModifierFlag::NONE,                      KeyCode::A,             KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::S,                 ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::A                                          </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::D,                 ModifierFlag::NONE,                      KeyCode::G,KeyCode::A,  KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::D,                 ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::G,KeyCode::A                               </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::F,                 ModifierFlag::NONE,                      KeyCode::B,KeyCode::A,  KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::F,                 ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::B,KeyCode::A                               </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::G,                 ModifierFlag::NONE,                      KeyCode::X,KeyCode::E,  KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::G,                 ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::X,KeyCode::E                               </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::H,                 ModifierFlag::NONE,                      KeyCode::Z,KeyCode::U,  KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::H,                 ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::Z,KeyCode::U                               </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::J,                 ModifierFlag::NONE,                      KeyCode::R,KeyCode::U,  KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::J,                 ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::R,KeyCode::U                               </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::K,                 ModifierFlag::NONE,                      KeyCode::S,KeyCode::U,  KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::K,                 ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::S,KeyCode::U                               </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::L,                 ModifierFlag::NONE,                      KeyCode::M,KeyCode::A,  KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::L,                 ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::M,KeyCode::A                               </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::SEMICOLON,         ModifierFlag::NONE,                      KeyCode::D,KeyCode::E,  KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::SEMICOLON,         ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::D,KeyCode::E                               </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::JIS_COLON,         ModifierFlag::NONE,                      KeyCode::G,KeyCode::E,  KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::JIS_COLON,         ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::G,KeyCode::E                               </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::NONE,                      KeyCode::HOME,          KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::HOME                                       </autogen>
+
+<!-- 左シフト下段(ぜねせぴぉやえ、。？上) -->
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::Z,              ModifierFlag::NONE,                      KeyCode::Z,KeyCode::E,                KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::Z,              ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::Z,KeyCode::E                                             </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::X,              ModifierFlag::NONE,                      KeyCode::N,KeyCode::E,                KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::X,              ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::N,KeyCode::E                                             </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::C,              ModifierFlag::NONE,                      KeyCode::S,KeyCode::E,                KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::C,              ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::S,KeyCode::E                                             </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::V,              ModifierFlag::NONE,                      KeyCode::P,KeyCode::I,                KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::V,              ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::P,KeyCode::I                                             </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::B,              ModifierFlag::NONE,                      KeyCode::X,KeyCode::O,                KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::B,              ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::X,KeyCode::O                                             </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::N,              ModifierFlag::NONE,                      KeyCode::Y,KeyCode::A,                KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::N,              ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::Y,KeyCode::A                                             </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::M,              ModifierFlag::NONE,                      KeyCode::E,                           KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::M,              ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::E                                                        </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::COMMA,          ModifierFlag::NONE,                      KeyCode::COMMA,                       KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::COMMA,          ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::COMMA                                                    </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::DOT,            ModifierFlag::NONE,                      KeyCode::DOT,                         KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::DOT,            ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::DOT                                                      </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::SLASH,          ModifierFlag::NONE,                      KeyCode::SLASH,ModifierFlag::SHIFT_L, KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::SLASH,          ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::SLASH,ModifierFlag::SHIFT_L                              </autogen>
+<autogen>--SimultaneousKeyPresses-- LEFT_THUMB,KeyCode::JIS_UNDERSCORE, ModifierFlag::NONE,                      KeyCode::CURSOR_UP,                   KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+<autogen>--KeyToKey--                          KeyCode::JIS_UNDERSCORE, ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::CURSOR_UP                                                </autogen>
+
+<!-- 右シフト上段(（べれぺ〜ぢぬどめぞご前) -->
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::Q,                ModifierFlag::NONE,                      KeyCode::KEY_8,ModifierFlag::SHIFT_L,   KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::Q,                ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::KEY_8,ModifierFlag::SHIFT_L                                </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::W,                ModifierFlag::NONE,                      KeyCode::B,KeyCode::E,                  KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::W,                ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::B,KeyCode::E                                               </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::E,                ModifierFlag::NONE,                      KeyCode::R,KeyCode::E,                  KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::E,                ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::R,KeyCode::E                                               </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::R,                ModifierFlag::NONE,                      KeyCode::P,KeyCode::E,                  KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::R,                ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::P,KeyCode::E                                               </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::T,                ModifierFlag::NONE,                      KeyCode::JIS_HAT,ModifierFlag::SHIFT_L, KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::T,                ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::JIS_HAT,ModifierFlag::SHIFT_L                              </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::Y,                ModifierFlag::NONE,                      KeyCode::D,KeyCode::I,                  KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::Y,                ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::D,KeyCode::I                                               </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::U,                ModifierFlag::NONE,                      KeyCode::N,KeyCode::U,                  KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::U,                ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::N,KeyCode::U                                               </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::I,                ModifierFlag::NONE,                      KeyCode::D,KeyCode::O,                  KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::I,                ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::D,KeyCode::O                                               </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::O,                ModifierFlag::NONE,                      KeyCode::M,KeyCode::E,                  KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::O,                ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::M,KeyCode::E                                               </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::P,                ModifierFlag::NONE,                      KeyCode::Z,KeyCode::O,                  KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::P,                ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::Z,KeyCode::O                                               </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::JIS_ATMARK,       ModifierFlag::NONE,                      KeyCode::G,KeyCode::O,                  KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::JIS_ATMARK,       ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::G,KeyCode::O                                               </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::JIS_BRACKET_LEFT, ModifierFlag::NONE,                      KeyCode::PAGEUP,                        KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::JIS_BRACKET_LEFT, ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::PAGEUP                                                     </autogen>
+
+
+<!-- 右シフト中段(わおならぷづくのこそろ終) -->
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::A,                 ModifierFlag::NONE,                      KeyCode::W,KeyCode::A, KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::A,                 ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::W,KeyCode::A                              </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::S,                 ModifierFlag::NONE,                      KeyCode::O,            KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::S,                 ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::O                                         </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::D,                 ModifierFlag::NONE,                      KeyCode::N,KeyCode::A, KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::D,                 ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::N,KeyCode::A                              </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::F,                 ModifierFlag::NONE,                      KeyCode::R,KeyCode::A, KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::F,                 ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::R,KeyCode::A                              </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::G,                 ModifierFlag::NONE,                      KeyCode::P,KeyCode::U, KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::G,                 ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::P,KeyCode::U                              </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::H,                 ModifierFlag::NONE,                      KeyCode::D,KeyCode::U, KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::H,                 ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::D,KeyCode::U                              </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::J,                 ModifierFlag::NONE,                      KeyCode::K,KeyCode::U, KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::J,                 ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::K,KeyCode::U                              </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::K,                 ModifierFlag::NONE,                      KeyCode::N,KeyCode::O, KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::K,                 ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::N,KeyCode::O                              </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::L,                 ModifierFlag::NONE,                      KeyCode::K,KeyCode::O, KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::L,                 ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::K,KeyCode::O                              </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::SEMICOLON,         ModifierFlag::NONE,                      KeyCode::S,KeyCode::O, KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::SEMICOLON,         ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::S,KeyCode::O                              </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::JIS_COLON,         ModifierFlag::NONE,                      KeyCode::R,KeyCode::O, KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::JIS_COLON,         ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::R,KeyCode::O                              </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::NONE,                      KeyCode::END,          KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::END                                       </autogen>
+
+<!-- 右シフト下段(ぱぐみざ＊むをつもぼ次) -->
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::Z,              ModifierFlag::NONE,                      KeyCode::P,KeyCode::A,                    KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::Z,              ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::P,KeyCode::A                                                 </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::X,              ModifierFlag::NONE,                      KeyCode::G,KeyCode::U,                    KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::X,              ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::G,KeyCode::U                                                 </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::C,              ModifierFlag::NONE,                      KeyCode::M,KeyCode::I,                    KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::C,              ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::M,KeyCode::I                                                 </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::V,              ModifierFlag::NONE,                      KeyCode::Z,KeyCode::A,                    KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::V,              ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::Z,KeyCode::A                                                 </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::B,              ModifierFlag::NONE,                      KeyCode::JIS_COLON,ModifierFlag::SHIFT_L, KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::B,              ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::JIS_COLON,ModifierFlag::SHIFT_L                              </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::N,              ModifierFlag::NONE,                      KeyCode::M,KeyCode::U,                    KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::N,              ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::M,KeyCode::U                                                 </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::M,              ModifierFlag::NONE,                      KeyCode::W,KeyCode::O,                    KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::M,              ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::W,KeyCode::O                                                 </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::COMMA,          ModifierFlag::NONE,                      KeyCode::T,KeyCode::U,                    KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::COMMA,          ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::T,KeyCode::U                                                 </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::DOT,            ModifierFlag::NONE,                      KeyCode::M,KeyCode::O,                    KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::DOT,            ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::M,KeyCode::O                                                 </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::SLASH,          ModifierFlag::NONE,                      KeyCode::B,KeyCode::O,                    KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::SLASH,          ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::B,KeyCode::O                                                 </autogen>
+<autogen>--SimultaneousKeyPresses-- RIGHT_THUMB,KeyCode::JIS_UNDERSCORE, ModifierFlag::NONE,                      KeyCode::PAGEDOWN,                        KeyCode::VK_MODIFIER_EXTRA2 </autogen>
+<autogen>--KeyToKey--                           KeyCode::JIS_UNDERSCORE, ModifierFlag::EXTRA2|ModifierFlag::NONE, KeyCode::PAGEDOWN                                                     </autogen>
