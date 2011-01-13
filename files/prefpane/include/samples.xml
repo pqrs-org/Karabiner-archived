@@ -209,11 +209,13 @@
           <name>Combination (2)</name>
           <appendix>A to A,S,Shift_L (Shift_L is active while we're pressing A key)</appendix>
           <appendix>Shift_R to A,S,Control_L (Control_L is active while we're pressing Shift_R key)</appendix>
-          <appendix>Command+B to A,S,Shift_L</appendix>
+          <appendix>Command+B to A,S,Shift_L (Shift_L is active while we're pressing B key)</appendix>
+          <appendix>Control_L+Option_L to A,S,Shift_L (Shift_L is active while we're pressing Option_L key)</appendix>
           <identifier>remap.samples_keytokey_combination1</identifier>
-          <autogen>--KeyToKey-- KeyCode::A,             KeyCode::A, KeyCode::S, KeyCode::SHIFT_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::SHIFT_R,       KeyCode::A, KeyCode::S, KeyCode::CONTROL_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::B, VK_COMMAND, KeyCode::A, KeyCode::S, KeyCode::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::A,                                 KeyCode::A, KeyCode::S, KeyCode::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_R,                           KeyCode::A, KeyCode::S, KeyCode::CONTROL_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::B,        VK_COMMAND,              KeyCode::A, KeyCode::S, KeyCode::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::OPTION_L, ModifierFlag::CONTROL_L, KeyCode::A, KeyCode::S, KeyCode::SHIFT_L</autogen>
         </item>
 
         <item>
