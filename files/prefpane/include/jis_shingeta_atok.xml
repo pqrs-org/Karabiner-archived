@@ -1,5 +1,5 @@
 <!-- RF/RG -> ・ -->
-<autogen>--SimultaneousKeyPresses-- KeyCode::R, KeyCode::F, KeyCode::SLASH </autogen>
-<autogen>--SimultaneousKeyPresses-- KeyCode::R, KeyCode::G, KeyCode::SLASH </autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::R, KeyCode::F, KeyCode::SLASH,                         KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::R, KeyCode::G, KeyCode::SLASH,                         KeyCode::VK_NONE</autogen>
 <!-- HU -> ／ -->
-<autogen>--SimultaneousKeyPresses-- KeyCode::H, KeyCode::U, KeyCode::SLASH, ModifierFlag::OPTION_L </autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::H, KeyCode::U, KeyCode::SLASH, ModifierFlag::OPTION_L, KeyCode::VK_NONE</autogen>
