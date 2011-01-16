@@ -1,314 +1,324 @@
+<!--
+======================================================================
+全体的な注意点
+
+母音のキー（あいうえお）や記号のキーなどについては通常の KeyToKey だと、
+キーが離されるまでそのキーが解放されない。
+
+そのため KeyCode::VK_NONE を最後に加える。
+（詳しい説明は jis_asuka_roman.xml にて）
+
+-->
+
 <!-- 下駄入力(qwerty,ATOK版) -->
 <inputmode_only>JAPANESE</inputmode_only>
 
-
-
 <!-- 左手 -->
-	<!-- 単打 -->
-		<!-- 上段[ぱけこてー] -->
-		<autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::NONE, KeyCode::P, KeyCode::A</autogen>
-		<autogen>--KeyToKey-- KeyCode::W, ModifierFlag::NONE, KeyCode::K, KeyCode::E</autogen>
-		<autogen>--KeyToKey-- KeyCode::E, ModifierFlag::NONE, KeyCode::K, KeyCode::O</autogen>
-		<autogen>--KeyToKey-- KeyCode::R, ModifierFlag::NONE, KeyCode::T, KeyCode::E</autogen>
-		<autogen>--KeyToKey-- KeyCode::T, ModifierFlag::NONE, KeyCode::MINUS</autogen>
-		<!-- 中段[はかしと(を)た] -->
-		<autogen>--KeyToKey-- KeyCode::A, ModifierFlag::NONE, KeyCode::H, KeyCode::A</autogen>
-		<autogen>--KeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::K, KeyCode::A</autogen>
-		<autogen>--KeyToKey-- KeyCode::D, ModifierFlag::NONE, KeyCode::S, KeyCode::I</autogen>
-		<autogen>--KeyToKey-- KeyCode::F, ModifierFlag::NONE, KeyCode::T, KeyCode::O</autogen>
-		<autogen>--KeyToKey-- KeyCode::G, ModifierFlag::NONE, KeyCode::T, KeyCode::A</autogen>
-		<autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::F, KeyCode::W, KeyCode::O</autogen>
-		<!-- 下段[せおになさ] -->
-		<autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::NONE, KeyCode::S, KeyCode::E</autogen>
-		<autogen>--KeyToKey-- KeyCode::X, ModifierFlag::NONE, KeyCode::O</autogen>
-		<autogen>--KeyToKey-- KeyCode::C, ModifierFlag::NONE, KeyCode::N, KeyCode::I</autogen>
-		<autogen>--KeyToKey-- KeyCode::V, ModifierFlag::NONE, KeyCode::N, KeyCode::A</autogen>
-		<autogen>--KeyToKey-- KeyCode::B, ModifierFlag::NONE, KeyCode::S, KeyCode::A</autogen>
-	<!-- 清音シフト(K+) -->
-		<!-- 上段[ぁみえやぃ] -->
-			<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::Q, KeyCode::X, KeyCode::A</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::W, KeyCode::M, KeyCode::I</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::E, KeyCode::E</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::R, KeyCode::Y, KeyCode::A</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::T, KeyCode::X, KeyCode::I</autogen>
-		<!-- 中段[ろれもあよ] -->
-			<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::A, KeyCode::R, KeyCode::O</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::S, KeyCode::R, KeyCode::E</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::D, KeyCode::M, KeyCode::O</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::F, KeyCode::A</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::G, KeyCode::Y, KeyCode::O</autogen>
-		<!-- 下段[ぇ　へほぉ] -->
-			<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::Z, KeyCode::X, KeyCode::E</autogen>
-			
-			<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::C, KeyCode::H, KeyCode::E</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::V, KeyCode::H, KeyCode::O</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::B, KeyCode::X, KeyCode::O</autogen>
-	<!-- 濁音シフト(L+) -->
-		<!-- 上段[　げごでぴ] -->
-			
-			<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::W, KeyCode::G, KeyCode::E</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::E, KeyCode::G, KeyCode::O</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::R, KeyCode::D, KeyCode::E</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::T, KeyCode::P, KeyCode::I</autogen>
-		<!-- 中段[ばがじどだ] -->
-			<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::A, KeyCode::B, KeyCode::A</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::S, KeyCode::G, KeyCode::A</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::D, KeyCode::J, KeyCode::I</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::F, KeyCode::D, KeyCode::O</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::G, KeyCode::D, KeyCode::A</autogen>
-		<!-- 下段[ぜねべぼざ] -->
-			<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::Z, KeyCode::Z, KeyCode::E</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::X, KeyCode::N, KeyCode::E</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::C, KeyCode::B, KeyCode::E</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::V, KeyCode::B, KeyCode::O</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::B, KeyCode::Z, KeyCode::A</autogen>
-	<!-- 拗音シフト1 -->
-		<!-- I+ -->
-			<!-- 上段[くゎ,きぇ,すぃ,しゃ,ちゃ] -->
-				<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::Q, KeyCode::K, KeyCode::U, KeyCode::X, KeyCode::W, KeyCode::A</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::W, KeyCode::K, KeyCode::Y, KeyCode::E</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::E, KeyCode::S, KeyCode::U, KeyCode::X, KeyCode::I</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::R, KeyCode::S, KeyCode::Y, KeyCode::A</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::T, KeyCode::T, KeyCode::Y, KeyCode::A</autogen>
-			<!-- 中段[くぁ,　,　,しょ,ちょ] -->
-				<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::A, KeyCode::K, KeyCode::W, KeyCode::A</autogen>
-				
-				
-				<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::F, KeyCode::S, KeyCode::Y, KeyCode::O</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::G, KeyCode::T, KeyCode::Y, KeyCode::O</autogen>
-			<!-- 下段[くぃ,くぇ,くぉ,しゅ,ちゅ] -->
-				<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::Z, KeyCode::K, KeyCode::U, KeyCode::X, KeyCode::I</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::X, KeyCode::K, KeyCode::U, KeyCode::X, KeyCode::E</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::C, KeyCode::K, KeyCode::U, KeyCode::X, KeyCode::O</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::V, KeyCode::S, KeyCode::Y, KeyCode::U</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::B, KeyCode::T, KeyCode::Y, KeyCode::U</autogen>
-		<!-- O+(濁音) -->
-			<!-- 上段[ぐゎ,ぎぇ,ずぃ,じゃ,ぢゃ] -->
-				<autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::Q, KeyCode::G, KeyCode::U, KeyCode::X, KeyCode::W, KeyCode::A</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::W, KeyCode::G, KeyCode::Y, KeyCode::E</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::E, KeyCode::Z, KeyCode::U, KeyCode::X, KeyCode::I</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::R, KeyCode::J, KeyCode::A</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::T, KeyCode::D, KeyCode::Y, KeyCode::A</autogen>
-			<!-- 中段[ぐぁ,　,　,じょ,ぢょ] -->
-				<autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::A, KeyCode::G, KeyCode::W, KeyCode::A</autogen>
-				
-				
-				<autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::F, KeyCode::J, KeyCode::O</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::G, KeyCode::D, KeyCode::Y, KeyCode::O</autogen>
-			<!-- 下段[ぐぃ,ぐぇ,ぐぉ,じゅ,ぢゅ] -->
-				<autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::Z, KeyCode::G, KeyCode::U, KeyCode::X, KeyCode::I</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::X, KeyCode::G, KeyCode::U, KeyCode::X, KeyCode::E</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::C, KeyCode::G, KeyCode::U, KeyCode::X, KeyCode::O</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::V, KeyCode::J, KeyCode::U</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::B, KeyCode::D, KeyCode::Y, KeyCode::U</autogen>
-	<!-- 拗音シフト2(;+) -->
-		<!-- 上段[りぇ,　,　,りゃ,みゃ] -->
-			<autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, KeyCode::Q, KeyCode::R, KeyCode::Y, KeyCode::E</autogen>
-			
-			
-			<autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, KeyCode::R, KeyCode::R, KeyCode::Y, KeyCode::A</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, KeyCode::T, KeyCode::M, KeyCode::Y, KeyCode::A</autogen>
-		<!-- 中段[つぁ,　,　,りょ,みょ] -->
-			<autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, KeyCode::A, KeyCode::T, KeyCode::S, KeyCode::A</autogen>
-			
-			
-			<autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, KeyCode::F, KeyCode::R, KeyCode::Y, KeyCode::O</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, KeyCode::G, KeyCode::M, KeyCode::Y, KeyCode::O</autogen>
-		<!-- 下段[つぃ,つぇ,つぉ,りゅ,みゅ] -->
-			<autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, KeyCode::Z, KeyCode::T, KeyCode::S, KeyCode::I</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, KeyCode::X, KeyCode::T, KeyCode::S, KeyCode::E</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, KeyCode::C, KeyCode::T, KeyCode::S, KeyCode::O</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, KeyCode::V, KeyCode::R, KeyCode::Y, KeyCode::U</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, KeyCode::B, KeyCode::M, KeyCode::Y, KeyCode::U</autogen>
-	<!-- 拗音シフト3(J+) -->
-		<!-- 上段[　,　,　,しぇ,じぇ] -->
-			
-			
-			
-			<autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::R, KeyCode::S, KeyCode::Y, KeyCode::E</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::T, KeyCode::J, KeyCode::E</autogen>
-		<!-- 中段[　,　,　,　,てぃ] -->
-			
-			
-			
-			
-			<autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::G, KeyCode::T, KeyCode::H, KeyCode::I</autogen>
-		<!-- 下段[うぃ,うぇ,うぉ,ふぁ,ふぃ] -->
-			<autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::Z, KeyCode::W, KeyCode::I</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::X, KeyCode::W, KeyCode::E</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::C, KeyCode::U, KeyCode::X, KeyCode::O</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::V, KeyCode::F, KeyCode::A</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::B, KeyCode::F, KeyCode::I</autogen>
-	<!-- 拗音シフト4(@+) -->
-		<!-- 中段[ヴァ,ヴィ,ヴュ,ヴェ,ヴォ] -->
-			<autogen>--SimultaneousKeyPresses-- KeyCode::JIS_ATMARK, KeyCode::A, KeyCode::V, KeyCode::A</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::JIS_ATMARK, KeyCode::S, KeyCode::V, KeyCode::I</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::JIS_ATMARK, KeyCode::D, KeyCode::V, KeyCode::U, KeyCode::X, KeyCode::Y, KeyCode::U</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::JIS_ATMARK, KeyCode::F, KeyCode::V, KeyCode::E</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::JIS_ATMARK, KeyCode::G, KeyCode::V, KeyCode::O</autogen>
+<!-- 単打 -->
+<!-- 上段[ぱけこてー] -->
+<autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::NONE, KeyCode::P, KeyCode::A, KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::W, ModifierFlag::NONE, KeyCode::K, KeyCode::E, KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::E, ModifierFlag::NONE, KeyCode::K, KeyCode::O, KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::R, ModifierFlag::NONE, KeyCode::T, KeyCode::E, KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::T, ModifierFlag::NONE, KeyCode::MINUS,         KeyCode::VK_NONE</autogen>
+<!-- 中段[はかしと(を)た] -->
+<autogen>--KeyToKey-- KeyCode::A, ModifierFlag::NONE, KeyCode::H, KeyCode::A,       KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::K, KeyCode::A,       KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::D, ModifierFlag::NONE, KeyCode::S, KeyCode::I,       KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::F, ModifierFlag::NONE, KeyCode::T, KeyCode::O,       KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::G, ModifierFlag::NONE, KeyCode::T, KeyCode::A,       KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::F, KeyCode::W, KeyCode::O, KeyCode::VK_NONE</autogen>
+<!-- 下段[せおになさ] -->
+<autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::NONE, KeyCode::S, KeyCode::E, KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::X, ModifierFlag::NONE, KeyCode::O,             KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::C, ModifierFlag::NONE, KeyCode::N, KeyCode::I, KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::V, ModifierFlag::NONE, KeyCode::N, KeyCode::A, KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::B, ModifierFlag::NONE, KeyCode::S, KeyCode::A, KeyCode::VK_NONE</autogen>
+
+<!-- 清音シフト(K+) -->
+<!-- 上段[ぁみえやぃ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::Q, KeyCode::X, KeyCode::A, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::W, KeyCode::M, KeyCode::I, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::E, KeyCode::E,             KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::R, KeyCode::Y, KeyCode::A, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::T, KeyCode::X, KeyCode::I, KeyCode::VK_NONE</autogen>
+<!-- 中段[ろれもあよ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::A, KeyCode::R, KeyCode::O, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::S, KeyCode::R, KeyCode::E, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::D, KeyCode::M, KeyCode::O, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::F, KeyCode::A,             KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::G, KeyCode::Y, KeyCode::O, KeyCode::VK_NONE</autogen>
+<!-- 下段[ぇ　へほぉ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::Z, KeyCode::X, KeyCode::E, KeyCode::VK_NONE</autogen>
+
+<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::C, KeyCode::H, KeyCode::E, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::V, KeyCode::H, KeyCode::O, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::B, KeyCode::X, KeyCode::O, KeyCode::VK_NONE</autogen>
+<!-- 濁音シフト(L+) -->
+<!-- 上段[　げごでぴ] -->
+
+<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::W, KeyCode::G, KeyCode::E, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::E, KeyCode::G, KeyCode::O, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::R, KeyCode::D, KeyCode::E, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::T, KeyCode::P, KeyCode::I, KeyCode::VK_NONE</autogen>
+<!-- 中段[ばがじどだ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::A, KeyCode::B, KeyCode::A, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::S, KeyCode::G, KeyCode::A, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::D, KeyCode::J, KeyCode::I, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::F, KeyCode::D, KeyCode::O, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::G, KeyCode::D, KeyCode::A, KeyCode::VK_NONE</autogen>
+<!-- 下段[ぜねべぼざ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::Z, KeyCode::Z, KeyCode::E, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::X, KeyCode::N, KeyCode::E, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::C, KeyCode::B, KeyCode::E, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::V, KeyCode::B, KeyCode::O, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::B, KeyCode::Z, KeyCode::A, KeyCode::VK_NONE</autogen>
+<!-- 拗音シフト1 -->
+<!-- I+ -->
+<!-- 上段[くゎ,きぇ,すぃ,しゃ,ちゃ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::Q, KeyCode::K, KeyCode::U, KeyCode::X, KeyCode::W, KeyCode::A, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::W, KeyCode::K, KeyCode::Y, KeyCode::E,                         KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::E, KeyCode::S, KeyCode::U, KeyCode::X, KeyCode::I,             KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::R, KeyCode::S, KeyCode::Y, KeyCode::A,                         KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::T, KeyCode::T, KeyCode::Y, KeyCode::A,                         KeyCode::VK_NONE</autogen>
+
+<!-- 中段[くぁ,　,　,しょ,ちょ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::A, KeyCode::K, KeyCode::W, KeyCode::A, KeyCode::VK_NONE</autogen>
 
 
+<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::F, KeyCode::S, KeyCode::Y, KeyCode::O, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::G, KeyCode::T, KeyCode::Y, KeyCode::O, KeyCode::VK_NONE</autogen>
+<!-- 下段[くぃ,くぇ,くぉ,しゅ,ちゅ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::Z, KeyCode::K, KeyCode::U, KeyCode::X, KeyCode::I, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::X, KeyCode::K, KeyCode::U, KeyCode::X, KeyCode::E, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::C, KeyCode::K, KeyCode::U, KeyCode::X, KeyCode::O, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::V, KeyCode::S, KeyCode::Y, KeyCode::U,             KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::B, KeyCode::T, KeyCode::Y, KeyCode::U,             KeyCode::VK_NONE</autogen>
+<!-- O+(濁音) -->
+<!-- 上段[ぐゎ,ぎぇ,ずぃ,じゃ,ぢゃ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::Q, KeyCode::G, KeyCode::U, KeyCode::X, KeyCode::W, KeyCode::A, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::W, KeyCode::G, KeyCode::Y, KeyCode::E,                         KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::E, KeyCode::Z, KeyCode::U, KeyCode::X, KeyCode::I,             KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::R, KeyCode::J, KeyCode::A,                                     KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::T, KeyCode::D, KeyCode::Y, KeyCode::A,                         KeyCode::VK_NONE</autogen>
+<!-- 中段[ぐぁ,　,　,じょ,ぢょ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::A, KeyCode::G, KeyCode::W, KeyCode::A, KeyCode::VK_NONE</autogen>
+
+
+<autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::F, KeyCode::J, KeyCode::O,             KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::G, KeyCode::D, KeyCode::Y, KeyCode::O, KeyCode::VK_NONE</autogen>
+<!-- 下段[ぐぃ,ぐぇ,ぐぉ,じゅ,ぢゅ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::Z, KeyCode::G, KeyCode::U, KeyCode::X, KeyCode::I, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::X, KeyCode::G, KeyCode::U, KeyCode::X, KeyCode::E, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::C, KeyCode::G, KeyCode::U, KeyCode::X, KeyCode::O, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::V, KeyCode::J, KeyCode::U,                         KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::B, KeyCode::D, KeyCode::Y, KeyCode::U,             KeyCode::VK_NONE</autogen>
+<!-- 拗音シフト2(;+) -->
+<!-- 上段[りぇ,　,　,りゃ,みゃ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, KeyCode::Q, KeyCode::R, KeyCode::Y, KeyCode::E, KeyCode::VK_NONE</autogen>
+
+
+<autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, KeyCode::R, KeyCode::R, KeyCode::Y, KeyCode::A, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, KeyCode::T, KeyCode::M, KeyCode::Y, KeyCode::A, KeyCode::VK_NONE</autogen>
+<!-- 中段[つぁ,　,　,りょ,みょ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, KeyCode::A, KeyCode::T, KeyCode::S, KeyCode::A, KeyCode::VK_NONE</autogen>
+
+
+<autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, KeyCode::F, KeyCode::R, KeyCode::Y, KeyCode::O, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, KeyCode::G, KeyCode::M, KeyCode::Y, KeyCode::O, KeyCode::VK_NONE</autogen>
+<!-- 下段[つぃ,つぇ,つぉ,りゅ,みゅ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, KeyCode::Z, KeyCode::T, KeyCode::S, KeyCode::I, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, KeyCode::X, KeyCode::T, KeyCode::S, KeyCode::E, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, KeyCode::C, KeyCode::T, KeyCode::S, KeyCode::O, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, KeyCode::V, KeyCode::R, KeyCode::Y, KeyCode::U, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, KeyCode::B, KeyCode::M, KeyCode::Y, KeyCode::U, KeyCode::VK_NONE</autogen>
+<!-- 拗音シフト3(J+) -->
+<!-- 上段[　,　,　,しぇ,じぇ] -->
+
+
+
+<autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::R, KeyCode::S, KeyCode::Y, KeyCode::E, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::T, KeyCode::J, KeyCode::E,             KeyCode::VK_NONE</autogen>
+<!-- 中段[　,　,　,　,てぃ] -->
+
+
+
+
+<autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::G, KeyCode::T, KeyCode::H, KeyCode::I, KeyCode::VK_NONE</autogen>
+<!-- 下段[うぃ,うぇ,うぉ,ふぁ,ふぃ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::Z, KeyCode::W, KeyCode::I,             KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::X, KeyCode::W, KeyCode::E,             KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::C, KeyCode::U, KeyCode::X, KeyCode::O, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::V, KeyCode::F, KeyCode::A,             KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::B, KeyCode::F, KeyCode::I,             KeyCode::VK_NONE</autogen>
+<!-- 拗音シフト4(@+) -->
+<!-- 中段[ヴァ,ヴィ,ヴュ,ヴェ,ヴォ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::JIS_ATMARK, KeyCode::A, KeyCode::V, KeyCode::A,                                     KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::JIS_ATMARK, KeyCode::S, KeyCode::V, KeyCode::I,                                     KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::JIS_ATMARK, KeyCode::D, KeyCode::V, KeyCode::U, KeyCode::X, KeyCode::Y, KeyCode::U, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::JIS_ATMARK, KeyCode::F, KeyCode::V, KeyCode::E,                                     KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::JIS_ATMARK, KeyCode::G, KeyCode::V, KeyCode::O,                                     KeyCode::VK_NONE</autogen>
 
 <!-- 右手 -->
-	<!-- 単打 -->
-		<!-- 上段[ぽんりつづヴ] -->
-		<autogen>--KeyToKey-- KeyCode::Y, ModifierFlag::NONE, KeyCode::P, KeyCode::O</autogen>
-		<autogen>--KeyToKey-- KeyCode::U, ModifierFlag::NONE, KeyCode::N, KeyCode::N</autogen>
-		<autogen>--KeyToKey-- KeyCode::I, ModifierFlag::NONE, KeyCode::R, KeyCode::I</autogen>
-		<autogen>--KeyToKey-- KeyCode::O, ModifierFlag::NONE, KeyCode::T, KeyCode::U</autogen>
-		<autogen>--KeyToKey-- KeyCode::P, ModifierFlag::NONE, KeyCode::D, KeyCode::U</autogen>
-		<autogen>--KeyToKey-- KeyCode::JIS_ATMARK, ModifierFlag::NONE, KeyCode::V, KeyCode::U</autogen>
-		<!-- 中段[くう(を)いのきBS] -->
-		<autogen>--KeyToKey-- KeyCode::H, ModifierFlag::NONE, KeyCode::K, KeyCode::U</autogen>
-		<autogen>--KeyToKey-- KeyCode::J, ModifierFlag::NONE, KeyCode::U</autogen>
-		<autogen>--KeyToKey-- KeyCode::K, ModifierFlag::NONE, KeyCode::I</autogen>
-		<autogen>--KeyToKey-- KeyCode::L, ModifierFlag::NONE, KeyCode::N, KeyCode::O</autogen>
-		<autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::K, KeyCode::I</autogen>
-		<autogen>--KeyToKey-- KeyCode::JIS_COLON, ModifierFlag::NONE, KeyCode::DELETE</autogen>
-		<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::J, KeyCode::W, KeyCode::O</autogen>
-		<!-- 下段[っるすらち] -->
-		<autogen>--KeyToKey-- KeyCode::N, ModifierFlag::NONE, KeyCode::X, KeyCode::T, KeyCode::U</autogen>
-		<autogen>--KeyToKey-- KeyCode::M, ModifierFlag::NONE, KeyCode::R, KeyCode::U</autogen>
-		<autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::NONE, KeyCode::S, KeyCode::U</autogen>
-		<autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::NONE, KeyCode::R, KeyCode::A</autogen>
-		<autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::NONE, KeyCode::T, KeyCode::I</autogen>
-	<!-- 清音シフト(D+) -->
-		<!-- 上段[ぅぬそふゎ] -->
-			<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::Y, KeyCode::X, KeyCode::U</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::U, KeyCode::N, KeyCode::U</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::I, KeyCode::S, KeyCode::O</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::O, KeyCode::F, KeyCode::U</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::P, KeyCode::X, KeyCode::W, KeyCode::A</autogen>
-		<!-- 中段[めわ　　ゆ] -->
-			<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::H, KeyCode::M, KeyCode::E</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::J, KeyCode::W, KeyCode::A</autogen>
-			
-			
-			<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::SEMICOLON, KeyCode::Y, KeyCode::U</autogen>
-		<!-- 下段[ひむゃゅょ] -->
-			<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::N, KeyCode::H, KeyCode::I</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::M, KeyCode::M, KeyCode::U</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::COMMA, KeyCode::X, KeyCode::Y, KeyCode::A</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::DOT, KeyCode::X, KeyCode::Y, KeyCode::U</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::SLASH, KeyCode::X, KeyCode::Y, KeyCode::O</autogen>
-	<!-- 濁音シフト(S+) -->
-		<!-- 上段[　ぷぞぶ　] -->
-			
-			<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::U, KeyCode::P, KeyCode::U</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::I, KeyCode::Z, KeyCode::O</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::O, KeyCode::B, KeyCode::U</autogen>
-			
-		<!-- 中段[ぐま　　ぎ] -->
-			<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::H, KeyCode::G, KeyCode::U</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::J, KeyCode::M, KeyCode::A</autogen>
-			
-			
-			<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::SEMICOLON, KeyCode::G, KeyCode::I</autogen>
-		<!-- 下段[びぺず　ぢ] -->
-			<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::N, KeyCode::B, KeyCode::I</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::M, KeyCode::P, KeyCode::E</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::COMMA, KeyCode::Z, KeyCode::U</autogen>
-			
-			<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::SLASH, KeyCode::D, KeyCode::I</autogen>
-	<!-- 拗音シフト1 -->
-		<!-- E+ -->
-			<!-- 上段[ひゃ,きゃ] -->
-				<autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::Y, KeyCode::H, KeyCode::Y, KeyCode::A</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::U, KeyCode::K, KeyCode::Y, KeyCode::A</autogen>
-			<!-- 中段[ひょ,きょ] -->
-				<autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::H, KeyCode::H, KeyCode::Y, KeyCode::O</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::J, KeyCode::K, KeyCode::Y, KeyCode::O</autogen>
-			<!-- 下段[ひゅ,きゅ,てゃ,てゅ,てょ] -->
-				<autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::N, KeyCode::H, KeyCode::Y, KeyCode::U</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::M, KeyCode::K, KeyCode::Y, KeyCode::U</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::COMMA, KeyCode::T, KeyCode::H, KeyCode::A</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::DOT, KeyCode::T, KeyCode::H, KeyCode::U</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::SLASH, KeyCode::T, KeyCode::H, KeyCode::O</autogen>
-		<!-- W+(濁音) -->
-			<!-- 上段[びゃ,ぎゃ] -->
-				<autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::Y, KeyCode::B, KeyCode::Y, KeyCode::A</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::U, KeyCode::G, KeyCode::Y, KeyCode::A</autogen>
-			<!-- 中段[びょ,ぎょ] -->
-				<autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::H, KeyCode::B, KeyCode::Y, KeyCode::O</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::J, KeyCode::G, KeyCode::Y, KeyCode::O</autogen>
-			<!-- 下段[びゅ,ぎゅ,でゃ,でゅ,でょ] -->
-				<autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::N, KeyCode::B, KeyCode::Y, KeyCode::U</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::M, KeyCode::G, KeyCode::Y, KeyCode::U</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::COMMA, KeyCode::D, KeyCode::H, KeyCode::A</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::DOT, KeyCode::D, KeyCode::H, KeyCode::U</autogen>
-				<autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::SLASH, KeyCode::D, KeyCode::H, KeyCode::O</autogen>
-	<!-- 拗音シフト2(A+) -->
-		<!-- 上段[ぴゃ,にゃ,　,　,ぴぇ] -->
-			<autogen>--SimultaneousKeyPresses-- KeyCode::A, KeyCode::Y, KeyCode::P, KeyCode::Y, KeyCode::A</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::A, KeyCode::U, KeyCode::N, KeyCode::Y, KeyCode::A</autogen>
-			
-			
-			<autogen>--SimultaneousKeyPresses-- KeyCode::A, KeyCode::P, KeyCode::P, KeyCode::Y, KeyCode::E</autogen>
-		<!-- 中段[ぴょ,にょ] -->
-			<autogen>--SimultaneousKeyPresses-- KeyCode::A, KeyCode::H, KeyCode::P, KeyCode::Y, KeyCode::O</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::A, KeyCode::J, KeyCode::N, KeyCode::Y, KeyCode::O</autogen>
-		<!-- 下段[ぴゅ,にゅ,いぇ,にぇ,みぇ] -->
-			<autogen>--SimultaneousKeyPresses-- KeyCode::A, KeyCode::N, KeyCode::P, KeyCode::Y, KeyCode::U</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::A, KeyCode::M, KeyCode::N, KeyCode::Y, KeyCode::U</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::A, KeyCode::COMMA, KeyCode::Y, KeyCode::E</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::A, KeyCode::DOT, KeyCode::N, KeyCode::Y, KeyCode::E</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::A, KeyCode::SLASH, KeyCode::M, KeyCode::Y, KeyCode::E</autogen>
-	<!-- 拗音シフト3(F+) -->
-		<!-- 上段[ぢぇ,ちぇ] -->
-			<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::Y, KeyCode::D, KeyCode::Y, KeyCode::E</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::U, KeyCode::T, KeyCode::Y, KeyCode::E</autogen>
-		<!-- 中段[でぃ] -->
-			<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::H, KeyCode::D, KeyCode::H, KeyCode::I</autogen>
-		<!-- 下段[ふぇ,ふぉ,とぅ,どぅ,ふゅ] -->
-			<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::N, KeyCode::F, KeyCode::E</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::M, KeyCode::F, KeyCode::O</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::COMMA, KeyCode::T, KeyCode::W, KeyCode::U</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::DOT, KeyCode::D, KeyCode::W, KeyCode::U</autogen>
-			<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::SLASH, KeyCode::F, KeyCode::Y, KeyCode::U</autogen>
+<!-- 単打 -->
+<!-- 上段[ぽんりつづヴ] -->
+<autogen>--KeyToKey-- KeyCode::Y, ModifierFlag::NONE, KeyCode::P, KeyCode::O,          KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::U, ModifierFlag::NONE, KeyCode::N, KeyCode::N,          KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::I, ModifierFlag::NONE, KeyCode::R, KeyCode::I,          KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::O, ModifierFlag::NONE, KeyCode::T, KeyCode::U,          KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::P, ModifierFlag::NONE, KeyCode::D, KeyCode::U,          KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::JIS_ATMARK, ModifierFlag::NONE, KeyCode::V, KeyCode::U, KeyCode::VK_NONE</autogen>
+<!-- 中段[くう(を)いのきBS] -->
+<autogen>--KeyToKey-- KeyCode::H, ModifierFlag::NONE, KeyCode::K, KeyCode::U,         KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::J, ModifierFlag::NONE, KeyCode::U,                     KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::K, ModifierFlag::NONE, KeyCode::I,                     KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::L, ModifierFlag::NONE, KeyCode::N, KeyCode::O,         KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::K, KeyCode::I, KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::JIS_COLON, ModifierFlag::NONE, KeyCode::DELETE,        KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::J, KeyCode::W, KeyCode::O,   KeyCode::VK_NONE</autogen>
+<!-- 下段[っるすらち] -->
+<autogen>--KeyToKey-- KeyCode::N, ModifierFlag::NONE, KeyCode::X, KeyCode::T, KeyCode::U, KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::M, ModifierFlag::NONE, KeyCode::R, KeyCode::U,             KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::NONE, KeyCode::S, KeyCode::U,         KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::NONE, KeyCode::R, KeyCode::A,           KeyCode::VK_NONE</autogen>
+<autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::NONE, KeyCode::T, KeyCode::I,         KeyCode::VK_NONE</autogen>
+<!-- 清音シフト(D+) -->
+<!-- 上段[ぅぬそふゎ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::Y, KeyCode::X, KeyCode::U,             KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::U, KeyCode::N, KeyCode::U,             KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::I, KeyCode::S, KeyCode::O,             KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::O, KeyCode::F, KeyCode::U,             KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::P, KeyCode::X, KeyCode::W, KeyCode::A, KeyCode::VK_NONE</autogen>
+<!-- 中段[めわ　　ゆ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::H, KeyCode::M, KeyCode::E,         KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::J, KeyCode::W, KeyCode::A,         KeyCode::VK_NONE</autogen>
+
+
+<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::SEMICOLON, KeyCode::Y, KeyCode::U, KeyCode::VK_NONE</autogen>
+<!-- 下段[ひむゃゅょ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::N, KeyCode::H, KeyCode::I,                 KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::M, KeyCode::M, KeyCode::U,                 KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::COMMA, KeyCode::X, KeyCode::Y, KeyCode::A, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::DOT, KeyCode::X, KeyCode::Y, KeyCode::U,   KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::SLASH, KeyCode::X, KeyCode::Y, KeyCode::O, KeyCode::VK_NONE</autogen>
+<!-- 濁音シフト(S+) -->
+<!-- 上段[　ぷぞぶ　] -->
+
+<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::U, KeyCode::P, KeyCode::U, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::I, KeyCode::Z, KeyCode::O, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::O, KeyCode::B, KeyCode::U, KeyCode::VK_NONE</autogen>
+
+<!-- 中段[ぐま　　ぎ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::H, KeyCode::G, KeyCode::U,         KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::J, KeyCode::M, KeyCode::A,         KeyCode::VK_NONE</autogen>
+
+
+<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::SEMICOLON, KeyCode::G, KeyCode::I, KeyCode::VK_NONE</autogen>
+<!-- 下段[びぺず　ぢ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::N, KeyCode::B, KeyCode::I,     KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::M, KeyCode::P, KeyCode::E,     KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::COMMA, KeyCode::Z, KeyCode::U, KeyCode::VK_NONE</autogen>
+
+<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::SLASH, KeyCode::D, KeyCode::I, KeyCode::VK_NONE</autogen>
+<!-- 拗音シフト1 -->
+<!-- E+ -->
+<!-- 上段[ひゃ,きゃ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::Y, KeyCode::H, KeyCode::Y, KeyCode::A, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::U, KeyCode::K, KeyCode::Y, KeyCode::A, KeyCode::VK_NONE</autogen>
+<!-- 中段[ひょ,きょ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::H, KeyCode::H, KeyCode::Y, KeyCode::O, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::J, KeyCode::K, KeyCode::Y, KeyCode::O, KeyCode::VK_NONE</autogen>
+<!-- 下段[ひゅ,きゅ,てゃ,てゅ,てょ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::N, KeyCode::H, KeyCode::Y, KeyCode::U,     KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::M, KeyCode::K, KeyCode::Y, KeyCode::U,     KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::COMMA, KeyCode::T, KeyCode::H, KeyCode::A, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::DOT, KeyCode::T, KeyCode::H, KeyCode::U,   KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::SLASH, KeyCode::T, KeyCode::H, KeyCode::O, KeyCode::VK_NONE</autogen>
+<!-- W+(濁音) -->
+<!-- 上段[びゃ,ぎゃ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::Y, KeyCode::B, KeyCode::Y, KeyCode::A, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::U, KeyCode::G, KeyCode::Y, KeyCode::A, KeyCode::VK_NONE</autogen>
+<!-- 中段[びょ,ぎょ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::H, KeyCode::B, KeyCode::Y, KeyCode::O, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::J, KeyCode::G, KeyCode::Y, KeyCode::O, KeyCode::VK_NONE</autogen>
+<!-- 下段[びゅ,ぎゅ,でゃ,でゅ,でょ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::N, KeyCode::B, KeyCode::Y, KeyCode::U,     KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::M, KeyCode::G, KeyCode::Y, KeyCode::U,     KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::COMMA, KeyCode::D, KeyCode::H, KeyCode::A, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::DOT, KeyCode::D, KeyCode::H, KeyCode::U,   KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::SLASH, KeyCode::D, KeyCode::H, KeyCode::O, KeyCode::VK_NONE</autogen>
+<!-- 拗音シフト2(A+) -->
+<!-- 上段[ぴゃ,にゃ,　,　,ぴぇ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::A, KeyCode::Y, KeyCode::P, KeyCode::Y, KeyCode::A, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::A, KeyCode::U, KeyCode::N, KeyCode::Y, KeyCode::A, KeyCode::VK_NONE</autogen>
+
+
+<autogen>--SimultaneousKeyPresses-- KeyCode::A, KeyCode::P, KeyCode::P, KeyCode::Y, KeyCode::E, KeyCode::VK_NONE</autogen>
+<!-- 中段[ぴょ,にょ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::A, KeyCode::H, KeyCode::P, KeyCode::Y, KeyCode::O, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::A, KeyCode::J, KeyCode::N, KeyCode::Y, KeyCode::O, KeyCode::VK_NONE</autogen>
+<!-- 下段[ぴゅ,にゅ,いぇ,にぇ,みぇ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::A, KeyCode::N, KeyCode::P, KeyCode::Y, KeyCode::U,     KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::A, KeyCode::M, KeyCode::N, KeyCode::Y, KeyCode::U,     KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::A, KeyCode::COMMA, KeyCode::Y, KeyCode::E,             KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::A, KeyCode::DOT, KeyCode::N, KeyCode::Y, KeyCode::E,   KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::A, KeyCode::SLASH, KeyCode::M, KeyCode::Y, KeyCode::E, KeyCode::VK_NONE</autogen>
+<!-- 拗音シフト3(F+) -->
+<!-- 上段[ぢぇ,ちぇ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::Y, KeyCode::D, KeyCode::Y, KeyCode::E, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::U, KeyCode::T, KeyCode::Y, KeyCode::E, KeyCode::VK_NONE</autogen>
+<!-- 中段[でぃ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::H, KeyCode::D, KeyCode::H, KeyCode::I, KeyCode::VK_NONE</autogen>
+<!-- 下段[ふぇ,ふぉ,とぅ,どぅ,ふゅ] -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::N, KeyCode::F, KeyCode::E,                 KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::M, KeyCode::F, KeyCode::O,                 KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::COMMA, KeyCode::T, KeyCode::W, KeyCode::U, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::DOT, KeyCode::D, KeyCode::W, KeyCode::U,   KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::SLASH, KeyCode::F, KeyCode::Y, KeyCode::U, KeyCode::VK_NONE</autogen>
 
 <!-- 記号シフト -->
-	<!-- （　！　？　） -->
-	<autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::E, KeyCode::KEY_8, ModifierFlag::SHIFT_L</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::W, KeyCode::KEY_8, ModifierFlag::SHIFT_L</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::R, KeyCode::KEY_1, ModifierFlag::SHIFT_L</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::R, KeyCode::E, KeyCode::KEY_1, ModifierFlag::SHIFT_L</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::U, KeyCode::I, KeyCode::SLASH, ModifierFlag::SHIFT_L</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::U, KeyCode::SLASH, ModifierFlag::SHIFT_L</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::O, KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::I, KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
-	<!-- ；　?　＊　： -->
-	<autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::F, KeyCode::SEMICOLON</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::E, KeyCode::SEMICOLON</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::R, KeyCode::G, KeyCode::JIS_HAT, ModifierFlag::SHIFT_L</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::G, KeyCode::R, KeyCode::JIS_HAT, ModifierFlag::SHIFT_L</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::U, KeyCode::H, KeyCode::JIS_COLON, ModifierFlag::SHIFT_L</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::H, KeyCode::U, KeyCode::JIS_COLON, ModifierFlag::SHIFT_L</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::J, KeyCode::JIS_COLON</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::I, KeyCode::JIS_COLON</autogen>
-	<!-- 「　、　／　・　。　」 -->
-	<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::D, KeyCode::JIS_BRACKET_LEFT</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, KeyCode::JIS_BRACKET_LEFT</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::F, KeyCode::COMMA</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::D, KeyCode::COMMA</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::G, KeyCode::SLASH, ModifierFlag::OPTION_L</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::G, KeyCode::F, KeyCode::SLASH, ModifierFlag::OPTION_L</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::H, KeyCode::J, KeyCode::SLASH</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::H, KeyCode::SLASH</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::K, KeyCode::DOT</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::J, KeyCode::DOT</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::L, KeyCode::JIS_BRACKET_RIGHT</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::K, KeyCode::JIS_BRACKET_RIGHT</autogen>
-	<!-- ＠　￥ -->
-	<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::V, KeyCode::JIS_ATMARK</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::V, KeyCode::D, KeyCode::JIS_ATMARK</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::N, KeyCode::JIS_YEN</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::N, KeyCode::K, KeyCode::JIS_YEN</autogen>
-	<!-- ｛　，　．　｝ -->
-	<autogen>--SimultaneousKeyPresses-- KeyCode::X, KeyCode::C, KeyCode::JIS_BRACKET_LEFT, ModifierFlag::SHIFT_L</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::C, KeyCode::X, KeyCode::JIS_BRACKET_LEFT, ModifierFlag::SHIFT_L</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::C, KeyCode::V, KeyCode::COMMA, ModifierFlag::OPTION_L</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::V, KeyCode::C, KeyCode::COMMA, ModifierFlag::OPTION_L</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::M, KeyCode::COMMA, KeyCode::DOT, ModifierFlag::OPTION_L</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::COMMA, KeyCode::M, KeyCode::DOT, ModifierFlag::OPTION_L</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::COMMA, KeyCode::DOT, KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::SHIFT_L</autogen>
-	<autogen>--SimultaneousKeyPresses-- KeyCode::DOT, KeyCode::COMMA, KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::SHIFT_L</autogen>
+<!-- （　！　？　） -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::E, KeyCode::KEY_8, ModifierFlag::SHIFT_L,                   KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::W, KeyCode::KEY_8, ModifierFlag::SHIFT_L,                   KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::R, KeyCode::KEY_1, ModifierFlag::SHIFT_L,                   KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::R, KeyCode::E, KeyCode::KEY_1, ModifierFlag::SHIFT_L,                   KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::U, KeyCode::I, KeyCode::SLASH, ModifierFlag::SHIFT_L,                   KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::U, KeyCode::SLASH, ModifierFlag::SHIFT_L,                   KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::O, KeyCode::KEY_9, ModifierFlag::SHIFT_L,                   KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::I, KeyCode::KEY_9, ModifierFlag::SHIFT_L,                   KeyCode::VK_NONE</autogen>
+<!-- ；　?　＊　： -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::F, KeyCode::SEMICOLON,                                      KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::E, KeyCode::SEMICOLON,                                      KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::R, KeyCode::G, KeyCode::JIS_HAT, ModifierFlag::SHIFT_L,                 KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::G, KeyCode::R, KeyCode::JIS_HAT, ModifierFlag::SHIFT_L,                 KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::U, KeyCode::H, KeyCode::JIS_COLON, ModifierFlag::SHIFT_L,               KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::H, KeyCode::U, KeyCode::JIS_COLON, ModifierFlag::SHIFT_L,               KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::J, KeyCode::JIS_COLON,                                      KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::I, KeyCode::JIS_COLON,                                      KeyCode::VK_NONE</autogen>
+<!-- 「　、　／　・　。　」 -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::D, KeyCode::JIS_BRACKET_LEFT,                               KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, KeyCode::JIS_BRACKET_LEFT,                               KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::F, KeyCode::COMMA,                                          KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::D, KeyCode::COMMA,                                          KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::G, KeyCode::SLASH, ModifierFlag::OPTION_L,                  KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::G, KeyCode::F, KeyCode::SLASH, ModifierFlag::OPTION_L,                  KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::H, KeyCode::J, KeyCode::SLASH,                                          KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::H, KeyCode::SLASH,                                          KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::K, KeyCode::DOT,                                            KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::J, KeyCode::DOT,                                            KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::L, KeyCode::JIS_BRACKET_RIGHT,                              KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::K, KeyCode::JIS_BRACKET_RIGHT,                              KeyCode::VK_NONE</autogen>
+<!-- ＠　￥ -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::V, KeyCode::JIS_ATMARK,                                     KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::V, KeyCode::D, KeyCode::JIS_ATMARK,                                     KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::N, KeyCode::JIS_YEN,                                        KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::N, KeyCode::K, KeyCode::JIS_YEN,                                        KeyCode::VK_NONE</autogen>
+<!-- ｛　，　．　｝ -->
+<autogen>--SimultaneousKeyPresses-- KeyCode::X, KeyCode::C, KeyCode::JIS_BRACKET_LEFT, ModifierFlag::SHIFT_L,        KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::C, KeyCode::X, KeyCode::JIS_BRACKET_LEFT, ModifierFlag::SHIFT_L,        KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::C, KeyCode::V, KeyCode::COMMA, ModifierFlag::OPTION_L,                  KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::V, KeyCode::C, KeyCode::COMMA, ModifierFlag::OPTION_L,                  KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::M, KeyCode::COMMA, KeyCode::DOT, ModifierFlag::OPTION_L,                KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::COMMA, KeyCode::M, KeyCode::DOT, ModifierFlag::OPTION_L,                KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::COMMA, KeyCode::DOT, KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::SHIFT_L, KeyCode::VK_NONE</autogen>
+<autogen>--SimultaneousKeyPresses-- KeyCode::DOT, KeyCode::COMMA, KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::SHIFT_L, KeyCode::VK_NONE</autogen>
