@@ -4275,6 +4275,7 @@
           <appendix>Browsing Mode is a mode to perform reading of the text effectively.</appendix>
           <appendix></appendix>
           <appendix>- Change Space to PageDown</appendix>
+          <appendix>- Change Shift+Space to PageUp</appendix>
           <appendix>- Change B to PageUp</appendix>
           <appendix>- Change H to Home</appendix>
           <appendix>- Change J to Option_L+Down</appendix>
@@ -4282,6 +4283,7 @@
           <appendix>- Change L to End</appendix>
           <identifier vk_config="true">notsave.browsingmode</identifier>
           <autogen>--ShowStatusMessage-- Browsing Mode</autogen>
+          <autogen>--KeyToKey-- KeyCode::SPACE, VK_SHIFT, KeyCode::PAGEUP</autogen>
           <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::PAGEDOWN</autogen>
           <autogen>--KeyToKey-- KeyCode::B, KeyCode::PAGEUP</autogen>
           <autogen>--KeyToKey-- KeyCode::H, KeyCode::HOME</autogen>
