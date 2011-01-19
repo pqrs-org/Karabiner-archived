@@ -6522,6 +6522,58 @@
             </item>
           </list>
         </item>
+        <item>
+          <name>Quicksilver Mode</name>
+          <list>
+            <item>
+              <name>What's Quicksilver Mode?</name>
+              <appendix>This mode is designed for Quicksilver.app.</appendix>
+              <appendix>- Control+M to Return (&amp; exit mode)</appendix>
+              <appendix>- Control+I to Tab</appendix>
+              <appendix>- Control+[ to Escape (&amp; exit mode)</appendix>
+              <appendix>- Escape to Escape (&amp; exit mode)</appendix>
+              <appendix>- Return to Return (&amp; exit mode)</appendix>
+              <appendix></appendix>
+              <identifier vk_config="true">notsave.quicksilver_mode</identifier>
+              <autogen>--ShowStatusMessage-- Quicksilver</autogen>
+              <autogen>--KeyToKey-- KeyCode::M,            VK_CONTROL, KeyCode::RETURN, KeyCode::VK_CONFIG_FORCE_OFF_notsave_quicksilver_mode</autogen>
+              <autogen>--KeyToKey-- KeyCode::I,            VK_CONTROL, KeyCode::TAB</autogen>
+              <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::ESCAPE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_quicksilver_mode</autogen>
+              <autogen>--KeyToKey-- KeyCode::ESCAPE,                   KeyCode::ESCAPE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_quicksilver_mode</autogen>
+              <autogen>--KeyToKey-- KeyCode::RETURN,                   KeyCode::RETURN, KeyCode::VK_CONFIG_FORCE_OFF_notsave_quicksilver_mode</autogen>
+              <block>
+                <config_only>remap.doublecommand_to_quicksilver_mode</config_only>
+                <autogen>--DoublePressModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_quicksilver_mode</autogen>
+                <autogen>--DoublePressModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CONFIG_FORCE_OFF_notsave_quicksilver_mode</autogen>
+              </block>
+              <block>
+                <config_only>remap.doublecontrol_to_quicksilver_mode</config_only>
+                <autogen>--DoublePressModifier-- KeyCode::CONTROL_L, KeyCode::CONTROL_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_quicksilver_mode</autogen>
+                <autogen>--DoublePressModifier-- KeyCode::CONTROL_R, KeyCode::CONTROL_R, KeyCode::VK_CONFIG_FORCE_OFF_notsave_quicksilver_mode</autogen>
+              </block>
+              <block>
+                <autogen>--KeyToKey-- KeyCode::SPACE, VK_COMMAND | ModifierFlag::NONE, KeyCode::SPACE, VK_COMMAND, KeyCode::VK_CONFIG_FORCE_OFF_notsave_quicksilver_mode</autogen>
+              </block>
+            </item>
+            <item>
+              <name>Double Command to Quicksilver Mode</name>
+              <identifier>remap.doublecommand_to_quicksilver_mode</identifier>
+              <autogen>--DoublePressModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_CONFIG_FORCE_ON_notsave_quicksilver_mode</autogen>
+              <autogen>--DoublePressModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CONFIG_FORCE_ON_notsave_quicksilver_mode</autogen>
+            </item>
+            <item>
+              <name>Double Control to Quicksilver Mode</name>
+              <identifier>remap.doublecontrol_to_quicksilver_mode</identifier>
+              <autogen>--DoublePressModifier-- KeyCode::CONTROL_L, KeyCode::CONTROL_L, KeyCode::VK_CONFIG_FORCE_ON_notsave_quicksilver_mode</autogen>
+              <autogen>--DoublePressModifier-- KeyCode::CONTROL_R, KeyCode::CONTROL_R, KeyCode::VK_CONFIG_FORCE_ON_notsave_quicksilver_mode</autogen>
+            </item>
+            <item>
+              <name>Command+Space to Quicksilver Mode</name>
+              <identifier>remap.commandspace_to_quicksilver_mode</identifier>
+              <autogen>--KeyToKey-- KeyCode::SPACE, VK_COMMAND | ModifierFlag::NONE, KeyCode::SPACE, VK_COMMAND, KeyCode::VK_CONFIG_FORCE_ON_notsave_quicksilver_mode</autogen>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
 
