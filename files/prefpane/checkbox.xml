@@ -8405,6 +8405,98 @@
                 </item>
               </list>
             </item>
+            <item>
+              <name>Quicksilver Mode for Japanese</name>
+              <list>
+                <item>
+                  <name>What's Quicksilver Mode?</name>
+                  <appendix>This mode is designed for Quicksilver.app.</appendix>
+                  <appendix>- Control+M to Return (&amp; exit mode)</appendix>
+                  <appendix>- Control+I to Tab</appendix>
+                  <appendix>- Escape to Escape (&amp; exit mode)</appendix>
+                  <appendix>- Return to Return (&amp; exit mode)</appendix>
+                  <appendix></appendix>
+                  <identifier vk_config="true">notsave.jis_quicksilver_mode</identifier>
+                  <autogen>--ShowStatusMessage-- Quicksilver(J)</autogen>
+                  <block>
+                    <autogen>--KeyToKey-- KeyCode::I,            VK_CONTROL, KeyCode::TAB</autogen>
+                    <!-- ================================================== -->
+                    <block>
+                      <config_not>option.jis_quicksilver_mode_recovery_input_source</config_not>
+                      <autogen>--KeyToKey-- KeyCode::M,            VK_CONTROL, KeyCode::RETURN, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode</autogen>
+                      <autogen>--KeyToKey-- KeyCode::ESCAPE,                   KeyCode::ESCAPE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode</autogen>
+                      <autogen>--KeyToKey-- KeyCode::RETURN,                   KeyCode::RETURN, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode</autogen>
+                    </block>
+                    <block>
+                      <config_only>option.jis_quicksilver_mode_recovery_input_source</config_only>
+                      <block>
+                        <config_only>notsave.jis_quicksilver_mode_back_to_roman</config_only>
+                        <autogen>--KeyToKey-- KeyCode::M,            VK_CONTROL, KeyCode::RETURN, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode, KeyCode::JIS_EISUU</autogen>
+                        <autogen>--KeyToKey-- KeyCode::ESCAPE,                   KeyCode::ESCAPE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode, KeyCode::JIS_EISUU</autogen>
+                        <autogen>--KeyToKey-- KeyCode::RETURN,                   KeyCode::RETURN, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode, KeyCode::JIS_EISUU</autogen>
+                      </block>
+                      <block>
+                        <config_not>notsave.jis_quicksilver_mode_back_to_roman</config_not>
+                        <autogen>--KeyToKey-- KeyCode::M,            VK_CONTROL, KeyCode::RETURN, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode, KeyCode::JIS_KANA</autogen>
+                        <autogen>--KeyToKey-- KeyCode::ESCAPE,                   KeyCode::ESCAPE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode, KeyCode::JIS_KANA</autogen>
+                        <autogen>--KeyToKey-- KeyCode::RETURN,                   KeyCode::RETURN, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode, KeyCode::JIS_KANA</autogen>
+                      </block>
+                    </block>
+                    <!-- ================================================== -->
+                  </block>
+                  <block>
+                    <config_only>remap.jis_doublecontrol_to_quicksilver_mode_eisuu</config_only>
+                    <!-- ================================================== -->
+                    <block>
+                      <config_not>option.jis_quicksilver_mode_recovery_input_source</config_not>
+                      <autogen>--DoublePressModifier-- KeyCode::CONTROL_L, KeyCode::CONTROL_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode</autogen>
+                      <autogen>--DoublePressModifier-- KeyCode::CONTROL_R, KeyCode::CONTROL_R, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode</autogen>
+                    </block>
+                    <block>
+                      <config_only>option.jis_quicksilver_mode_recovery_input_source</config_only>
+                      <block>
+                        <config_only>notsave.jis_quicksilver_mode_back_to_roman</config_only>
+                        <autogen>--DoublePressModifier-- KeyCode::CONTROL_L, KeyCode::CONTROL_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode, KeyCode::JIS_EISUU</autogen>
+                        <autogen>--DoublePressModifier-- KeyCode::CONTROL_R, KeyCode::CONTROL_R, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode, KeyCode::JIS_EISUU</autogen>
+                      </block>
+                      <block>
+                        <config_not>notsave.jis_quicksilver_mode_back_to_roman</config_not>
+                        <autogen>--DoublePressModifier-- KeyCode::CONTROL_L, KeyCode::CONTROL_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode, KeyCode::JIS_KANA</autogen>
+                        <autogen>--DoublePressModifier-- KeyCode::CONTROL_R, KeyCode::CONTROL_R, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode, KeyCode::JIS_KANA</autogen>
+                      </block>
+                    </block>
+                    <!-- ================================================== -->
+                  </block>
+                </item>
+                <item>
+                  <name>Double Control to Quicksilver Mode (&amp; 入力ソースを英字にする)</name>
+                  <!-- #include "include/quicksilver_mode_doublepressmodifier_appendix.xml" -->
+                  <identifier>remap.jis_doublecontrol_to_quicksilver_mode_eisuu</identifier>
+                  <block>
+                    <inputmode_only>JAPANESE</inputmode_only>
+                    <autogen>--DoublePressModifier-- KeyCode::CONTROL_L, KeyCode::CONTROL_L,
+                      KeyCode::VK_CONFIG_FORCE_ON_notsave_jis_quicksilver_mode, KeyCode::JIS_EISUU, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode_back_to_roman</autogen>
+                    <autogen>--DoublePressModifier-- KeyCode::CONTROL_R, KeyCode::CONTROL_R,
+                      KeyCode::VK_CONFIG_FORCE_ON_notsave_jis_quicksilver_mode, KeyCode::JIS_EISUU, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode_back_to_roman</autogen>
+                  </block>
+                  <block>
+                    <inputmode_not>JAPANESE</inputmode_not>
+                    <autogen>--DoublePressModifier-- KeyCode::CONTROL_L, KeyCode::CONTROL_L,
+                      KeyCode::VK_CONFIG_FORCE_ON_notsave_jis_quicksilver_mode, KeyCode::JIS_EISUU, KeyCode::VK_CONFIG_FORCE_ON_notsave_jis_quicksilver_mode_back_to_roman</autogen>
+                    <autogen>--DoublePressModifier-- KeyCode::CONTROL_R, KeyCode::CONTROL_R,
+                      KeyCode::VK_CONFIG_FORCE_ON_notsave_jis_quicksilver_mode, KeyCode::JIS_EISUU, KeyCode::VK_CONFIG_FORCE_ON_notsave_jis_quicksilver_mode_back_to_roman</autogen>
+                  </block>
+                </item>
+                <item>
+                  <name></name>
+                  <identifier vk_config="true">notsave.jis_quicksilver_mode_back_to_roman</identifier>
+                </item>
+                <item>
+                  <name>[Option] モードから抜けるときに入力ソースを元に戻す</name>
+                  <identifier>option.jis_quicksilver_mode_recovery_input_source</identifier>
+                </item>
+              </list>
+            </item>
           </list>
         </item>
         <item>
