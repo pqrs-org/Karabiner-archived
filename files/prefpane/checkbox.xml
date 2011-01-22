@@ -7146,6 +7146,10 @@
       <name>For Dvorak Users</name>
       <list>
         <item>
+          <name>------------------------------------------------------------</name>
+          <appendix>For Dvorak Input Source</appendix>
+        </item>
+        <item>
           <name>Dvorak's Control+PNBF to Up/Down/Left/Right</name>
           <appendix>(except Emacs, Terminal, Virtual, RDC, X11, Eclipse)</appendix>
           <identifier>option.dvorak_emacsmode_controlPNBF</identifier>
@@ -7179,6 +7183,21 @@
           <!-- Dvorak:U == Qwerty:F, Dvorak:I == Qwerty:G -->
           <autogen>--KeyToKey-- KeyCode::F, KeyCode::G</autogen>
           <autogen>--KeyToKey-- KeyCode::G, KeyCode::F</autogen>
+        </item>
+
+        <item>
+          <name>Make Cut, Quit work on Mac OS X using Dvorak layout in the same position as on QWERTY</name>
+          <appendix>Change Command_L+Q to Command_L+X (X in DV - i.e. Cut) </appendix>
+          <appendix>Change Command_L+' to Command_L+Q (Q in DV - i.e. Quit) </appendix>
+          <identifier>remap.cut_quit_dvorak_as_QWERTY</identifier>
+
+          <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::COMMAND_L, KeyCode::B, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::COMMAND_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+        </item>
+
+        <item>
+          <name>------------------------------------------------------------</name>
+          <appendix>For U.S. Input Source</appendix>
         </item>
 
         <!-- ============================================================ -->
