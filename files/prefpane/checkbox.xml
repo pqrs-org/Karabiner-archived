@@ -6181,7 +6181,11 @@
                   <identifier>remap.app_finder_switch_new_folder_window</identifier>
                   <only>FINDER</only>
                   <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::N, ModifierFlag::COMMAND_L</autogen>
+                  <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_R, KeyCode::N, ModifierFlag::COMMAND_L</autogen>
+                  <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::COMMAND_R | ModifierFlag::SHIFT_R, KeyCode::N, ModifierFlag::COMMAND_L</autogen>
+                  <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::COMMAND_R | ModifierFlag::SHIFT_L, KeyCode::N, ModifierFlag::COMMAND_L</autogen>
                   <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::COMMAND_L, KeyCode::N, ModifierFlag::COMMAND_L |  ModifierFlag::SHIFT_L, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
+                  <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::COMMAND_R, KeyCode::N, ModifierFlag::COMMAND_R |  ModifierFlag::SHIFT_L, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
                 </item>
                 <item>
                   <name>Cmd+R to Rename | Return to Open</name>
@@ -6191,6 +6195,9 @@
                   <autogen>--KeyToKey-- KeyCode::R, VK_COMMAND, KeyCode::RETURN, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
                   <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::O, ModifierFlag::COMMAND_L</autogen>
                   <autogen>--KeyToKey-- KeyCode::N,  ModifierFlag::COMMAND_L |  ModifierFlag::SHIFT_L, KeyCode::N, ModifierFlag::COMMAND_L |  ModifierFlag::SHIFT_L, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
+                  <autogen>--KeyToKey-- KeyCode::N,  ModifierFlag::COMMAND_L |  ModifierFlag::SHIFT_R, KeyCode::N, ModifierFlag::COMMAND_L |  ModifierFlag::SHIFT_L, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
+                  <autogen>--KeyToKey-- KeyCode::N,  ModifierFlag::COMMAND_R |  ModifierFlag::SHIFT_L, KeyCode::N, ModifierFlag::COMMAND_L |  ModifierFlag::SHIFT_L, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
+                  <autogen>--KeyToKey-- KeyCode::N,  ModifierFlag::COMMAND_R |  ModifierFlag::SHIFT_R, KeyCode::N, ModifierFlag::COMMAND_L |  ModifierFlag::SHIFT_L, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
                 </item>
               </list>
             </item>
@@ -6458,18 +6465,21 @@
               <identifier>remap.app_launchbar_cmd_d_to_cmd_shif_d</identifier>
               <only>LAUNCHBAR</only>
               <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::COMMAND_L, KeyCode::D, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::COMMAND_R, KeyCode::D, ModifierFlag::COMMAND_R | ModifierFlag::SHIFT_R</autogen>
             </item>
             <item>
               <name>Change Cmd+R to Cmd+Shift+R</name>
               <identifier>remap.app_launchbar_cmd_r_to_cmd_shif_r</identifier>
               <only>LAUNCHBAR</only>
               <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::COMMAND_L, KeyCode::R, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::COMMAND_R, KeyCode::R, ModifierFlag::COMMAND_R | ModifierFlag::SHIFT_R</autogen>
             </item>
             <item>
               <name>Change Cmd+N to Cmd+Shift+N</name>
               <identifier>remap.app_launchbar_cmd_n_to_cmd_shif_n</identifier>
               <only>LAUNCHBAR</only>
               <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::COMMAND_L, KeyCode::N, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::COMMAND_R, KeyCode::N, ModifierFlag::COMMAND_R | ModifierFlag::SHIFT_R</autogen>
             </item>
           </list>
         </item>
