@@ -7197,8 +7197,27 @@
 
         <item>
           <name>Make Undo work on Mac OS X using Dvorak layout in the same position as on QWERTY (;)</name>
-          <appendix>Change Command_L + ; to Command_L+Z (Z in DV - i.e. Undo) </appendix>
+          <appendix>Change Command_L+; to Command_L+Z (Z in DV - i.e. Undo) </appendix>
           <identifier>remap.undo_dvorak_as_QWERTY</identifier>
+          <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::COMMAND_L, KeyCode::SLASH, ModifierFlag::COMMAND_L</autogen>
+        </item>
+
+        <item>
+          <name>Make Cut, Copy, Paste, Quit and Undo work on Mac OS X using Dvorak layout</name>
+          <appendix>in the same position as on QWERTY</appendix>
+          <appendix></appendix>
+          <appendix>Change Command_L+Q to Command_L+X (X in DV - i.e. Cut) </appendix>
+          <appendix>Change Command_L+J to Command_L+C (C in DV - i.e. Copy) </appendix>
+          <appendix>Change Command_L+K to Command_L+V (V in DV - i.e. Paste) </appendix>
+          <appendix>Change Command_L+; to Command_L+Z (Z in DV - i.e. Undo) </appendix>
+          <appendix>Change Command_L+' to Command_L+Q (Q in DV - i.e. Quit) </appendix>
+
+          <identifier>remap.cut_copy_paste_quit_undo_dvorak_as_QWERTY</identifier>
+
+          <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::COMMAND_L, KeyCode::B, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::COMMAND_L, KeyCode::I, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::COMMAND_L, KeyCode::DOT, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::COMMAND_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::COMMAND_L, KeyCode::SLASH, ModifierFlag::COMMAND_L</autogen>
         </item>
 
