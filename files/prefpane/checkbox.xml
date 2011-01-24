@@ -7196,6 +7196,13 @@
         </item>
 
         <item>
+          <name>Make Undo work on Mac OS X using Dvorak layout in the same position as on QWERTY (;)</name>
+          <appendix>Change Command_L + ; to Command_L+Z (Z in DV - i.e. Undo) </appendix>
+          <identifier>remap.undo_dvorak_as_QWERTY</identifier>
+          <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::COMMAND_L, KeyCode::SLASH, ModifierFlag::COMMAND_L</autogen>
+        </item>
+
+        <item>
           <name>------------------------------------------------------------</name>
           <appendix>For U.S. Input Source</appendix>
         </item>
