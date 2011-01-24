@@ -1,0 +1,482 @@
+<list>
+  <item>
+    <name>UpDown.DvorakJP</name>
+    <identifier>remap.jis_UpDown_DvorakJP</identifier>
+    <inputmodedetail_only>JAPANESE_HIRAGANA, JAPANESE, JAPANESE_KATAKANA, JAPANESE_FULLWIDTH_ROMAN</inputmodedetail_only>
+    <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::NONE, KeyCode::K, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::Y, ModifierFlag::NONE, KeyCode::Y, ModifierFlag::NONE, KeyCode::I, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::NONE, KeyCode::Y, ModifierFlag::NONE, KeyCode::U, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::NONE, KeyCode::Y, ModifierFlag::NONE, KeyCode::E, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::NONE, KeyCode::Y, ModifierFlag::NONE, KeyCode::O, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::NONE, KeyCode::Y, ModifierFlag::NONE, KeyCode::A, ModifierFlag::NONE</autogen>
+  </item>
+  <item>
+    <name>UpDown.Remap.Dvorak</name>
+    <identifier>remap.jis_UpDown_Remap_Dvorak</identifier>
+    <autogen>--KeyToKey-- KeyCode::F4, ModifierFlag::NONE, KeyCode::CONTROL_R, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::F5, ModifierFlag::NONE, KeyCode::SHIFT_R, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::F6, ModifierFlag::NONE, KeyCode::SPACE, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::F7, ModifierFlag::NONE, KeyCode::SHIFT_L, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::F8, ModifierFlag::NONE, KeyCode::CONTROL_L, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::F4, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::NONE, KeyCode::F5, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::NONE, KeyCode::F6, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::NONE, KeyCode::FORWARD_DELETE, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::NONE, KeyCode::VK_JIS_TOGGLE_EISUU_KANA, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::NONE, KeyCode::F7, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::MINUS, ModifierFlag::NONE, KeyCode::F8, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::EQUAL, ModifierFlag::NONE, KeyCode::F9, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::NONE, KeyCode::Z, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::NONE, KeyCode::V, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::NONE, KeyCode::W, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::NONE, KeyCode::M, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::T, ModifierFlag::NONE, KeyCode::B, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::Y, ModifierFlag::NONE, KeyCode::X, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::NONE, KeyCode::K, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::NONE, KeyCode::J, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::NONE, KeyCode::Q, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::NONE, KeyCode::SEMICOLON, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::NONE, KeyCode::S, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::N, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::NONE, KeyCode::T, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::NONE, KeyCode::H, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::NONE, KeyCode::D, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::NONE, KeyCode::I, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::NONE, KeyCode::U, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::NONE, KeyCode::E, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::NONE, KeyCode::O, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::A, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::NONE, KeyCode::L, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::NONE, KeyCode::R, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::NONE, KeyCode::C, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::NONE, KeyCode::G, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::NONE, KeyCode::F, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::NONE, KeyCode::Y, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::NONE, KeyCode::P, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::NONE, KeyCode::DOT, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::NONE, KeyCode::COMMA, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::NONE, KeyCode::QUOTE, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::SPACE, ModifierFlag::NONE, KeyCode::TAB, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, ModifierFlag::NONE, KeyCode::ESCAPE, ModifierFlag::NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::F4, VK_SHIFT, KeyCode::CONTROL_R, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::F5, VK_SHIFT, KeyCode::SHIFT_R, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::F6, VK_SHIFT, KeyCode::SPACE, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::F7, VK_SHIFT, KeyCode::SHIFT_L, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::F8, VK_SHIFT, KeyCode::CONTROL_L, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_1, VK_SHIFT, KeyCode::F4, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_2, VK_SHIFT, KeyCode::F5, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_3, VK_SHIFT, KeyCode::F6, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_4, VK_SHIFT, KeyCode::FORWARD_DELETE, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_6, VK_SHIFT, KeyCode::VK_JIS_TOGGLE_EISUU_KANA, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_0, VK_SHIFT, KeyCode::F7, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::MINUS, VK_SHIFT, KeyCode::F8, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::EQUAL, VK_SHIFT, KeyCode::F9, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::Q, VK_SHIFT, KeyCode::Z, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::W, VK_SHIFT, KeyCode::V, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::E, VK_SHIFT, KeyCode::W, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::R, VK_SHIFT, KeyCode::M, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::T, VK_SHIFT, KeyCode::B, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::Y, VK_SHIFT, KeyCode::X, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::U, VK_SHIFT, KeyCode::K, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::I, VK_SHIFT, KeyCode::J, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::O, VK_SHIFT, KeyCode::Q, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::P, VK_SHIFT, KeyCode::SEMICOLON, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::A, VK_SHIFT, KeyCode::S, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::S, VK_SHIFT, KeyCode::N, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::D, VK_SHIFT, KeyCode::T, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::F, VK_SHIFT, KeyCode::H, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::G, VK_SHIFT, KeyCode::D, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::H, VK_SHIFT, KeyCode::I, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::J, VK_SHIFT, KeyCode::U, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::K, VK_SHIFT, KeyCode::E, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::L, VK_SHIFT, KeyCode::O, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_SHIFT, KeyCode::A, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::Z, VK_SHIFT, KeyCode::L, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::X, VK_SHIFT, KeyCode::R, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::C, VK_SHIFT, KeyCode::C, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::V, VK_SHIFT, KeyCode::G, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::B, VK_SHIFT, KeyCode::F, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::N, VK_SHIFT, KeyCode::Y, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::M, VK_SHIFT, KeyCode::P, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::COMMA, VK_SHIFT, KeyCode::DOT, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::DOT, VK_SHIFT, KeyCode::COMMA, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::SLASH, VK_SHIFT, KeyCode::QUOTE, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::SPACE, VK_SHIFT, KeyCode::TAB, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_SHIFT, KeyCode::ESCAPE, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::F4, VK_CONTROL, KeyCode::CONTROL_R, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::F5, VK_CONTROL, KeyCode::SHIFT_R, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::F6, VK_CONTROL, KeyCode::SPACE, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::F7, VK_CONTROL, KeyCode::SHIFT_L, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::F8, VK_CONTROL, KeyCode::CONTROL_L, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_1, VK_CONTROL, KeyCode::F4, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_2, VK_CONTROL, KeyCode::F5, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_3, VK_CONTROL, KeyCode::F6, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_4, VK_CONTROL, KeyCode::FORWARD_DELETE, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_6, VK_CONTROL, KeyCode::VK_JIS_TOGGLE_EISUU_KANA, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_0, VK_CONTROL, KeyCode::F7, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::MINUS, VK_CONTROL, KeyCode::F8, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::EQUAL, VK_CONTROL, KeyCode::F9, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::Q, VK_CONTROL, KeyCode::Z, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::W, VK_CONTROL, KeyCode::V, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::E, VK_CONTROL, KeyCode::W, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::R, VK_CONTROL, KeyCode::M, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::T, VK_CONTROL, KeyCode::B, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::Y, VK_CONTROL, KeyCode::X, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::U, VK_CONTROL, KeyCode::K, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::I, VK_CONTROL, KeyCode::J, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::O, VK_CONTROL, KeyCode::Q, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::P, VK_CONTROL, KeyCode::SEMICOLON, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::S, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::S, VK_CONTROL, KeyCode::N, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::D, VK_CONTROL, KeyCode::T, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::H, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::G, VK_CONTROL, KeyCode::D, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::H, VK_CONTROL, KeyCode::I, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::J, VK_CONTROL, KeyCode::U, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::K, VK_CONTROL, KeyCode::E, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::L, VK_CONTROL, KeyCode::O, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_CONTROL, KeyCode::A, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::Z, VK_CONTROL, KeyCode::L, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::X, VK_CONTROL, KeyCode::R, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::C, VK_CONTROL, KeyCode::C, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::V, VK_CONTROL, KeyCode::G, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::F, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::Y, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::M, VK_CONTROL, KeyCode::P, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::COMMA, VK_CONTROL, KeyCode::DOT, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::DOT, VK_CONTROL, KeyCode::COMMA, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::SLASH, VK_CONTROL, KeyCode::QUOTE, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::TAB, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_CONTROL, KeyCode::ESCAPE, VK_CONTROL</autogen>
+    <autogen>--KeyToKey-- KeyCode::F4, VK_OPTION, KeyCode::CONTROL_R, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::F5, VK_OPTION, KeyCode::SHIFT_R, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::F6, VK_OPTION, KeyCode::SPACE, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::F7, VK_OPTION, KeyCode::SHIFT_L, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::F8, VK_OPTION, KeyCode::CONTROL_L, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_1, VK_OPTION, KeyCode::F4, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_2, VK_OPTION, KeyCode::F5, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_3, VK_OPTION, KeyCode::F6, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_4, VK_OPTION, KeyCode::FORWARD_DELETE, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_6, VK_OPTION, KeyCode::VK_JIS_TOGGLE_EISUU_KANA, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_0, VK_OPTION, KeyCode::F7, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::MINUS, VK_OPTION, KeyCode::F8, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::EQUAL, VK_OPTION, KeyCode::F9, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::Q, VK_OPTION, KeyCode::Z, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::W, VK_OPTION, KeyCode::V, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::E, VK_OPTION, KeyCode::W, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::R, VK_OPTION, KeyCode::M, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::T, VK_OPTION, KeyCode::B, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::Y, VK_OPTION, KeyCode::X, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::U, VK_OPTION, KeyCode::K, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::I, VK_OPTION, KeyCode::J, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::O, VK_OPTION, KeyCode::Q, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::P, VK_OPTION, KeyCode::SEMICOLON, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::A, VK_OPTION, KeyCode::S, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::S, VK_OPTION, KeyCode::N, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::D, VK_OPTION, KeyCode::T, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::F, VK_OPTION, KeyCode::H, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::G, VK_OPTION, KeyCode::D, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::H, VK_OPTION, KeyCode::I, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::J, VK_OPTION, KeyCode::U, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::K, VK_OPTION, KeyCode::E, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::L, VK_OPTION, KeyCode::O, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_OPTION, KeyCode::A, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::Z, VK_OPTION, KeyCode::L, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::X, VK_OPTION, KeyCode::R, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::C, VK_OPTION, KeyCode::C, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::V, VK_OPTION, KeyCode::G, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::B, VK_OPTION, KeyCode::F, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::N, VK_OPTION, KeyCode::Y, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::M, VK_OPTION, KeyCode::P, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::COMMA, VK_OPTION, KeyCode::DOT, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::DOT, VK_OPTION, KeyCode::COMMA, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::SLASH, VK_OPTION, KeyCode::QUOTE, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::SPACE, VK_OPTION, KeyCode::TAB, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_OPTION, KeyCode::ESCAPE, VK_OPTION</autogen>
+    <autogen>--KeyToKey-- KeyCode::F4, VK_COMMAND, KeyCode::CONTROL_R, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::F5, VK_COMMAND, KeyCode::SHIFT_R, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::F6, VK_COMMAND, KeyCode::SPACE, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::F7, VK_COMMAND, KeyCode::SHIFT_L, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::F8, VK_COMMAND, KeyCode::CONTROL_L, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_1, VK_COMMAND, KeyCode::F4, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_2, VK_COMMAND, KeyCode::F5, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_3, VK_COMMAND, KeyCode::F6, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_4, VK_COMMAND, KeyCode::FORWARD_DELETE, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_6, VK_COMMAND, KeyCode::VK_JIS_TOGGLE_EISUU_KANA, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_0, VK_COMMAND, KeyCode::F7, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::MINUS, VK_COMMAND, KeyCode::F8, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::EQUAL, VK_COMMAND, KeyCode::F9, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::Q, VK_COMMAND, KeyCode::Z, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::W, VK_COMMAND, KeyCode::V, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::E, VK_COMMAND, KeyCode::W, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::R, VK_COMMAND, KeyCode::M, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::T, VK_COMMAND, KeyCode::B, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::Y, VK_COMMAND, KeyCode::X, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::U, VK_COMMAND, KeyCode::K, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::I, VK_COMMAND, KeyCode::J, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::O, VK_COMMAND, KeyCode::Q, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::P, VK_COMMAND, KeyCode::SEMICOLON, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::A, VK_COMMAND, KeyCode::S, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::S, VK_COMMAND, KeyCode::N, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::D, VK_COMMAND, KeyCode::T, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::F, VK_COMMAND, KeyCode::H, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::G, VK_COMMAND, KeyCode::D, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::H, VK_COMMAND, KeyCode::I, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::J, VK_COMMAND, KeyCode::U, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::K, VK_COMMAND, KeyCode::E, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::L, VK_COMMAND, KeyCode::O, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_COMMAND, KeyCode::A, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::Z, VK_COMMAND, KeyCode::L, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::X, VK_COMMAND, KeyCode::R, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::C, VK_COMMAND, KeyCode::C, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::V, VK_COMMAND, KeyCode::G, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::B, VK_COMMAND, KeyCode::F, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::N, VK_COMMAND, KeyCode::Y, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::M, VK_COMMAND, KeyCode::P, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::COMMA, VK_COMMAND, KeyCode::DOT, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::DOT, VK_COMMAND, KeyCode::COMMA, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::SLASH, VK_COMMAND, KeyCode::QUOTE, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::TAB, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_COMMAND, KeyCode::ESCAPE, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::F4, ModifierFlag::FN, KeyCode::CONTROL_R, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::F5, ModifierFlag::FN, KeyCode::SHIFT_R, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::F6, ModifierFlag::FN, KeyCode::SPACE, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::F7, ModifierFlag::FN, KeyCode::SHIFT_L, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::F8, ModifierFlag::FN, KeyCode::CONTROL_L, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::FN, KeyCode::F4, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::FN, KeyCode::F5, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::FN, KeyCode::F6, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::FN, KeyCode::FORWARD_DELETE, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::FN, KeyCode::VK_JIS_TOGGLE_EISUU_KANA, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::FN, KeyCode::F7, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::MINUS, ModifierFlag::FN, KeyCode::F8, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::EQUAL, ModifierFlag::FN, KeyCode::F9, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::FN, KeyCode::Z, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::FN, KeyCode::V, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::FN, KeyCode::W, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::FN, KeyCode::M, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::T, ModifierFlag::FN, KeyCode::B, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::Y, ModifierFlag::FN, KeyCode::X, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::FN, KeyCode::K, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::FN, KeyCode::J, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::FN, KeyCode::Q, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::FN, KeyCode::SEMICOLON, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::FN, KeyCode::S, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::FN, KeyCode::N, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::FN, KeyCode::T, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::FN, KeyCode::H, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::FN, KeyCode::D, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::FN, KeyCode::I, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::FN, KeyCode::U, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::FN, KeyCode::E, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::FN, KeyCode::O, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::FN, KeyCode::A, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::FN, KeyCode::L, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::FN, KeyCode::R, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::FN, KeyCode::C, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::FN, KeyCode::G, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::FN, KeyCode::F, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::FN, KeyCode::Y, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::FN, KeyCode::P, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::FN, KeyCode::DOT, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::FN, KeyCode::COMMA, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::FN, KeyCode::QUOTE, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::SPACE, ModifierFlag::FN, KeyCode::TAB, ModifierFlag::FN</autogen>
+    <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, ModifierFlag::FN, KeyCode::ESCAPE, ModifierFlag::FN</autogen>
+  </item>
+  <item>
+    <name>UpDown.Extra1_symbols</name>
+    <identifier>remap.UpDown_Extra1_symbols</identifier>
+    <autogen>--KeyOverlaidModifier-- KeyCode::KEY_5, KeyCode::VK_MODIFIER_EXTRA1, KeyCode::DELETE</autogen>
+    <autogen>--KeyToKey-- KeyCode::F4, ModifierFlag::EXTRA1, KeyCode::CONTROL_R</autogen>
+    <autogen>--KeyToKey-- KeyCode::F5, ModifierFlag::EXTRA1, KeyCode::SHIFT_R</autogen>
+    <autogen>--KeyToKey-- KeyCode::F6, ModifierFlag::EXTRA1, KeyCode::SPACE</autogen>
+    <autogen>--KeyToKey-- KeyCode::F7, ModifierFlag::EXTRA1, KeyCode::SHIFT_L</autogen>
+    <autogen>--KeyToKey-- KeyCode::F8, ModifierFlag::EXTRA1, KeyCode::CONTROL_L</autogen>
+    <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::EXTRA1, KeyCode::VK_JIS_YEN</autogen>
+    <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::EXTRA1, KeyCode::KEYPAD_EQUAL</autogen>
+    <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::EXTRA1, KeyCode::KEYPAD_PLUS</autogen>
+    <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::EXTRA1, KeyCode::KEYPAD_MULTIPLY</autogen>
+    <autogen>--KeyToKey-- KeyCode::T, ModifierFlag::EXTRA1, KeyCode::BACKQUOTE, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::Y, ModifierFlag::EXTRA1, KeyCode::BACKQUOTE</autogen>
+    <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::EXTRA1, KeyCode::KEY_1, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::EXTRA1, KeyCode::KEY_6, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::EXTRA1, KeyCode::SLASH</autogen>
+    <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::EXTRA1, KeyCode::SLASH, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA1, KeyCode::DOT, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::EXTRA1, KeyCode::COMMA, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::EXTRA1, KeyCode::BRACKET_RIGHT</autogen>
+    <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::EXTRA1, KeyCode::BRACKET_LEFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::EXTRA1, KeyCode::MINUS, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA1, KeyCode::MINUS</autogen>
+    <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA1, KeyCode::BRACKET_RIGHT, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA1, KeyCode::BRACKET_LEFT, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA1, KeyCode::KEY_0, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::EXTRA1, KeyCode::KEY_9, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::EXTRA1, KeyCode::DELETE</autogen>
+    <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::EXTRA1, KeyCode::RETURN</autogen>
+    <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::EXTRA1, KeyCode::BACKSLASH, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::EXTRA1, KeyCode::KEY_7, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::EXTRA1, KeyCode::F12</autogen>
+    <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::EXTRA1, KeyCode::F11</autogen>
+    <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::EXTRA1, KeyCode::KEY_5, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::EXTRA1, KeyCode::KEY_4, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::EXTRA1, KeyCode::KEY_3, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::EXTRA1, KeyCode::KEY_2, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, ModifierFlag::EXTRA1, KeyCode::ESCAPE</autogen>
+  </item>
+  <item>
+    <name>UpDown.Extra2_manipulator</name>
+    <identifier>remap.UpDown_Extra2_manipulator</identifier>
+    <autogen>--KeyOverlaidModifier-- KeyCode::KEY_7, KeyCode::VK_MODIFIER_EXTRA2, KeyCode::RETURN</autogen>
+    <autogen>--KeyToKey-- KeyCode::F4, ModifierFlag::EXTRA2, KeyCode::CONTROL_R</autogen>
+    <autogen>--KeyToKey-- KeyCode::F5, ModifierFlag::EXTRA2, KeyCode::SHIFT_R</autogen>
+    <autogen>--KeyToKey-- KeyCode::F6, ModifierFlag::EXTRA2, KeyCode::SPACE</autogen>
+    <autogen>--KeyToKey-- KeyCode::F7, ModifierFlag::EXTRA2, KeyCode::SHIFT_L</autogen>
+    <autogen>--KeyToKey-- KeyCode::F8, ModifierFlag::EXTRA2, KeyCode::CONTROL_L</autogen>
+    <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::EXTRA2, KeyCode::F10</autogen>
+    <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::EXTRA2, KeyCode::F9</autogen>
+    <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::EXTRA2, KeyCode::F8</autogen>
+    <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::EXTRA2, KeyCode::F7</autogen>
+    <autogen>--KeyToKey-- KeyCode::T, ModifierFlag::EXTRA2, KeyCode::F6</autogen>
+    <autogen>--KeyToKey-- KeyCode::Y, ModifierFlag::EXTRA2, KeyCode::F5</autogen>
+    <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::EXTRA2, KeyCode::F4</autogen>
+    <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::EXTRA2, KeyCode::F3</autogen>
+    <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::EXTRA2, KeyCode::F2</autogen>
+    <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::EXTRA2, KeyCode::F1</autogen>
+    <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA2, KeyCode::KEY_0</autogen>
+    <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::EXTRA2, KeyCode::KEY_9</autogen>
+    <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::EXTRA2, KeyCode::KEY_8</autogen>
+    <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::EXTRA2, KeyCode::KEY_7</autogen>
+    <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::EXTRA2, KeyCode::KEY_6</autogen>
+    <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA2, KeyCode::KEY_5</autogen>
+    <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA2, KeyCode::KEY_4</autogen>
+    <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA2, KeyCode::KEY_3</autogen>
+    <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA2, KeyCode::KEY_2</autogen>
+    <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::EXTRA2, KeyCode::KEY_1</autogen>
+    <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::EXTRA2, KeyCode::PAGEDOWN</autogen>
+    <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::EXTRA2, KeyCode::PAGEUP</autogen>
+    <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::EXTRA2, KeyCode::END</autogen>
+    <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::EXTRA2, KeyCode::HOME</autogen>
+    <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::EXTRA2, KeyCode::CURSOR_UP</autogen>
+    <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::EXTRA2, KeyCode::CURSOR_DOWN</autogen>
+    <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::EXTRA2, KeyCode::CURSOR_RIGHT</autogen>
+    <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::EXTRA2, KeyCode::CURSOR_LEFT</autogen>
+  </item>
+  <item>
+    <name>UpDown.Extra3_for_left</name>
+    <identifier>remap.UpDown_Extra3_for_left</identifier>
+    <autogen>--KeyOverlaidModifier-- KeyCode::KEY_8, KeyCode::VK_MODIFIER_EXTRA3, KeyCode::SPACE</autogen>
+    <autogen>--KeyToKey-- KeyCode::F4, ModifierFlag::EXTRA3, KeyCode::CONTROL_R</autogen>
+    <autogen>--KeyToKey-- KeyCode::F5, ModifierFlag::EXTRA3, KeyCode::SHIFT_R</autogen>
+    <autogen>--KeyToKey-- KeyCode::F6, ModifierFlag::EXTRA3, KeyCode::SPACE</autogen>
+    <autogen>--KeyToKey-- KeyCode::F7, ModifierFlag::EXTRA3, KeyCode::SHIFT_L</autogen>
+    <autogen>--KeyToKey-- KeyCode::F8, ModifierFlag::EXTRA3, KeyCode::CONTROL_L</autogen>
+    <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::EXTRA3, KeyCode::SEMICOLON</autogen>
+    <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::EXTRA3, KeyCode::Q</autogen>
+    <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::EXTRA3, KeyCode::J</autogen>
+    <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::EXTRA3, KeyCode::K</autogen>
+    <autogen>--KeyToKey-- KeyCode::T, ModifierFlag::EXTRA3, KeyCode::X</autogen>
+    <autogen>--KeyToKey-- KeyCode::Y, ModifierFlag::EXTRA3, KeyCode::B</autogen>
+    <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::EXTRA3, KeyCode::M</autogen>
+    <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::EXTRA3, KeyCode::W</autogen>
+    <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::EXTRA3, KeyCode::V</autogen>
+    <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::EXTRA3, KeyCode::Z</autogen>
+    <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA3, KeyCode::A</autogen>
+    <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::EXTRA3, KeyCode::O</autogen>
+    <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::EXTRA3, KeyCode::E</autogen>
+    <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::EXTRA3, KeyCode::U</autogen>
+    <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::EXTRA3, KeyCode::I</autogen>
+    <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA3, KeyCode::D</autogen>
+    <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA3, KeyCode::H</autogen>
+    <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA3, KeyCode::T</autogen>
+    <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA3, KeyCode::N</autogen>
+    <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::EXTRA3, KeyCode::S</autogen>
+    <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::EXTRA3, KeyCode::QUOTE</autogen>
+    <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::EXTRA3, KeyCode::COMMA</autogen>
+    <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::EXTRA3, KeyCode::DOT</autogen>
+    <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::EXTRA3, KeyCode::P</autogen>
+    <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::EXTRA3, KeyCode::Y</autogen>
+    <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::EXTRA3, KeyCode::F</autogen>
+    <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::EXTRA3, KeyCode::G</autogen>
+    <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::EXTRA3, KeyCode::C</autogen>
+    <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::EXTRA3, KeyCode::R</autogen>
+    <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::EXTRA3, KeyCode::L</autogen>
+  </item>
+  <item>
+    <name>UpDown.Extra4_generic</name>
+    <identifier>remap.UpDown_Extra4_generic</identifier>
+    <autogen>--KeyOverlaidModifier-- KeyCode::BRACKET_LEFT, KeyCode::VK_MODIFIER_EXTRA4, KeyCode::DELETE</autogen>
+    <autogen>--KeyToKey-- KeyCode::F4, ModifierFlag::EXTRA4, KeyCode::CONTROL_R</autogen>
+    <autogen>--KeyToKey-- KeyCode::F5, ModifierFlag::EXTRA4, KeyCode::SHIFT_R</autogen>
+    <autogen>--KeyToKey-- KeyCode::F6, ModifierFlag::EXTRA4, KeyCode::SPACE</autogen>
+    <autogen>--KeyToKey-- KeyCode::F7, ModifierFlag::EXTRA4, KeyCode::SHIFT_L</autogen>
+    <autogen>--KeyToKey-- KeyCode::F8, ModifierFlag::EXTRA4, KeyCode::CONTROL_L</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::EXTRA4, KeyCode::F4</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::EXTRA4, KeyCode::F5</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::EXTRA4, KeyCode::F6</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::EXTRA4, KeyCode::FORWARD_DELETE</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::EXTRA4, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::EXTRA4, KeyCode::VK_MODIFIER_EXTRA3</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::EXTRA4, KeyCode::F7</autogen>
+    <autogen>--KeyToKey-- KeyCode::MINUS, ModifierFlag::EXTRA4, KeyCode::F8</autogen>
+    <autogen>--KeyToKey-- KeyCode::EQUAL, ModifierFlag::EXTRA4, KeyCode::F9</autogen>
+    <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::EXTRA4, KeyCode::Z</autogen>
+    <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::EXTRA4, KeyCode::V</autogen>
+    <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::EXTRA4, KeyCode::W</autogen>
+    <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::EXTRA4, KeyCode::M</autogen>
+    <autogen>--KeyToKey-- KeyCode::T, ModifierFlag::EXTRA4, KeyCode::B</autogen>
+    <autogen>--KeyToKey-- KeyCode::Y, ModifierFlag::EXTRA4, KeyCode::X</autogen>
+    <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::EXTRA4, KeyCode::K</autogen>
+    <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::EXTRA4, KeyCode::J</autogen>
+    <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::EXTRA4, KeyCode::Q</autogen>
+    <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::EXTRA4, KeyCode::SEMICOLON</autogen>
+    <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::EXTRA4, KeyCode::VK_MODIFIER_EXTRA4</autogen>
+    <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA4, KeyCode::S</autogen>
+    <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::EXTRA4, KeyCode::N</autogen>
+    <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::EXTRA4, KeyCode::T</autogen>
+    <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::EXTRA4, KeyCode::H</autogen>
+    <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::EXTRA4, KeyCode::D</autogen>
+    <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA4, KeyCode::I</autogen>
+    <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA4, KeyCode::U</autogen>
+    <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA4, KeyCode::E</autogen>
+    <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA4, KeyCode::O</autogen>
+    <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::EXTRA4, KeyCode::A</autogen>
+    <autogen>--KeyToKey-- KeyCode::QUOTE, ModifierFlag::EXTRA4, KeyCode::VK_MODIFIER_EXTRA5</autogen>
+    <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::EXTRA4, KeyCode::L</autogen>
+    <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::EXTRA4, KeyCode::R</autogen>
+    <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::EXTRA4, KeyCode::C</autogen>
+    <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::EXTRA4, KeyCode::G</autogen>
+    <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::EXTRA4, KeyCode::F</autogen>
+    <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::EXTRA4, KeyCode::Y</autogen>
+    <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::EXTRA4, KeyCode::P</autogen>
+    <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::EXTRA4, KeyCode::DOT</autogen>
+    <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::EXTRA4, KeyCode::COMMA</autogen>
+    <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::EXTRA4, KeyCode::QUOTE</autogen>
+    <autogen>--KeyToKey-- KeyCode::SPACE, ModifierFlag::EXTRA4, KeyCode::TAB</autogen>
+    <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, ModifierFlag::EXTRA4, KeyCode::ESCAPE</autogen>
+  </item>
+  <item>
+    <name>UpDown.Extra5_utility</name>
+    <identifier>remap.UpDown_Extra5_utility</identifier>
+    <autogen>--KeyOverlaidModifier-- KeyCode::QUOTE, KeyCode::VK_MODIFIER_EXTRA5, KeyCode::DELETE</autogen>
+    <autogen>--KeyToKey-- KeyCode::F4, ModifierFlag::EXTRA5, KeyCode::CONTROL_R</autogen>
+    <autogen>--KeyToKey-- KeyCode::F5, ModifierFlag::EXTRA5, KeyCode::SHIFT_R</autogen>
+    <autogen>--KeyToKey-- KeyCode::F6, ModifierFlag::EXTRA5, KeyCode::SPACE</autogen>
+    <autogen>--KeyToKey-- KeyCode::F7, ModifierFlag::EXTRA5, KeyCode::SHIFT_L</autogen>
+    <autogen>--KeyToKey-- KeyCode::F8, ModifierFlag::EXTRA5, KeyCode::CONTROL_L</autogen>
+    <autogen>--KeyToKey-- KeyCode::Y, ModifierFlag::EXTRA5, KeyCode::KEY_0</autogen>
+    <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::EXTRA5, KeyCode::KEY_9</autogen>
+    <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::EXTRA5, KeyCode::KEY_8</autogen>
+    <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::EXTRA5, KeyCode::KEY_7</autogen>
+    <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::EXTRA5, KeyCode::KEY_6</autogen>
+    <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA5, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
+    <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::EXTRA5, KeyCode::ESCAPE</autogen>
+    <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::EXTRA5, KeyCode::S, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::EXTRA5, KeyCode::Z, VK_COMMAND, VK_SHIFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::EXTRA5, KeyCode::V, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::EXTRA5, KeyCode::C, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::EXTRA5, KeyCode::X, VK_COMMAND</autogen>
+    <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::EXTRA5, KeyCode::Z, VK_COMMAND</autogen>
+  </item>
+</list>
