@@ -9280,7 +9280,7 @@
               <identifier>remap.jis_layout_windowskanainput</identifier>
             </item>
             <item>
-              <name>キーボード天地逆Dvorak配列</name>
+              <name>キーボード天地逆Dvorak配列（USキーボード向け）</name>
               <appendix>http://pi200k.blog35.fc2.com/?no=70</appendix>
               <!-- #include "include/jis_updown_dvorak.xml" -->
             </item>
