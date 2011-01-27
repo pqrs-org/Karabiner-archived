@@ -3928,6 +3928,11 @@
           <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::CURSOR_UP</autogen>
         </item>
         <item>
+          <name>Disable Shift_R</name>
+          <identifier>remap.drop_shiftR</identifier>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::VK_NONE</autogen>
+        </item>
+        <item>
           <name>Back/Forward in Finder, Safari, etc. Left/Right Shift in mi.</name>
           <list>
             <item>
