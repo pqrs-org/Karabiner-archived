@@ -48,7 +48,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       //
       bool remap_setkeyboardtype(KeyboardType& keyboardType);
       //
-      bool remap_forcenumlockon(IOHIKeyboard* kbd);
+      bool remap_forcenumlockon(ListHookedKeyboard::Item* item);
 
     private:
       bool isblocked(void);
@@ -85,7 +85,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     ~RemapClass(void);
 
     void remap_setkeyboardtype(KeyboardType& keyboardType);
-    void remap_forcenumlockon(IOHIKeyboard* kbd);
+    void remap_forcenumlockon(ListHookedKeyboard::Item* item);
     void remap_key(RemapParams& remapParams);
     void remap_consumer(RemapConsumerParams& remapParams);
     void remap_pointing(RemapPointingParams_relative& remapParams);
@@ -124,7 +124,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void refresh(void);
 
     void remap_setkeyboardtype(KeyboardType& keyboardType);
-    void remap_forcenumlockon(IOHIKeyboard* kbd);
+    void remap_forcenumlockon(ListHookedKeyboard::Item* item);
     void remap_key(RemapParams& remapParams);
     void remap_consumer(RemapConsumerParams& remapParams);
     void remap_pointing(RemapPointingParams_relative& remapParams);

@@ -133,6 +133,10 @@
           newdatatype = BRIDGE_DATATYPE_POINTINGBUTTON;
         } else if ([value hasPrefix:@"KeyboardType::"]) {
           newdatatype = BRIDGE_DATATYPE_KEYBOARDTYPE;
+        } else if ([value hasPrefix:@"DeviceVendor::"]) {
+          newdatatype = BRIDGE_DATATYPE_DEVICEVENDOR;
+        } else if ([value hasPrefix:@"DeviceProduct::"]) {
+          newdatatype = BRIDGE_DATATYPE_DEVICEPRODUCT;
         } else if ([value hasPrefix:@"Option::"]) {
           newdatatype = BRIDGE_DATATYPE_OPTION;
         } else {
