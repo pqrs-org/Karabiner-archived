@@ -283,12 +283,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  RemapClass::Item::remap_forcenumlockon(IOHIKeyboard* kbd)
+  RemapClass::Item::remap_forcenumlockon(ListHookedKeyboard::Item* item)
   {
     if (isblocked()) return false;
 
 #define CALL_UNION_FUNCTION(POINTER) {             \
-    if (POINTER) { return (POINTER)->remap(kbd); } \
+    if (POINTER) { return (POINTER)->remap(item); } \
 }
 
     switch (type_) {
@@ -460,12 +460,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  RemapClass::remap_forcenumlockon(IOHIKeyboard* kbd)
+  RemapClass::remap_forcenumlockon(ListHookedKeyboard::Item* item)
   {
     for (size_t i = 0; i < items_.size(); ++i) {
       Item* p = items_[i];
       if (p) {
-        if (p->remap_forcenumlockon(kbd)) return;
+        if (p->remap_forcenumlockon(item)) return;
       }
     }
   }
@@ -808,9 +808,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    remap_forcenumlockon(IOHIKeyboard* kbd)
+    remap_forcenumlockon(ListHookedKeyboard::Item* item)
     {
-      CALL_REMAPCLASS_FUNC(remap_forcenumlockon, kbd);
+      CALL_REMAPCLASS_FUNC(remap_forcenumlockon, item);
     }
 
     void
