@@ -283,6 +283,27 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
+  RemapClass::Item::remap_forcenumlockon(IOHIKeyboard* kbd)
+  {
+    if (isblocked()) return false;
+
+#define CALL_UNION_FUNCTION(POINTER) {             \
+    if (POINTER) { return (POINTER)->remap(kbd); } \
+}
+
+    switch (type_) {
+      case BRIDGE_REMAPTYPE_FORCENUMLOCKON: CALL_UNION_FUNCTION(p_.forceNumLockOn); break;
+      default:
+        // do nothing. (Do not call IOLOG_ERROR)
+        break;
+    }
+
+#undef CALL_UNION_FUNCTION
+
+    return false;
+  }
+
+  bool
   RemapClass::Item::isblocked(void)
   {
     if (! filters_) return false;
@@ -434,6 +455,17 @@ namespace org_pqrs_KeyRemap4MacBook {
       Item* p = items_[i];
       if (p) {
         if (p->remap_setkeyboardtype(keyboardType)) return;
+      }
+    }
+  }
+
+  void
+  RemapClass::remap_forcenumlockon(IOHIKeyboard* kbd)
+  {
+    for (size_t i = 0; i < items_.size(); ++i) {
+      Item* p = items_[i];
+      if (p) {
+        if (p->remap_forcenumlockon(kbd)) return;
       }
     }
   }
@@ -773,6 +805,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     remap_setkeyboardtype(KeyboardType& keyboardType)
     {
       CALL_REMAPCLASS_FUNC(remap_setkeyboardtype, keyboardType);
+    }
+
+    void
+    remap_forcenumlockon(IOHIKeyboard* kbd)
+    {
+      CALL_REMAPCLASS_FUNC(remap_forcenumlockon, kbd);
     }
 
     void
