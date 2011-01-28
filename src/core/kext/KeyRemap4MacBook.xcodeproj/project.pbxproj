@@ -27,6 +27,8 @@
 		343BE53A11D8347100C7C701 /* ConsumerToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 343BE53811D8347100C7C701 /* ConsumerToKey.hpp */; };
 		344034B311DD5ACA00386638 /* PointingButtonToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 344034B111DD5ACA00386638 /* PointingButtonToKey.cpp */; };
 		344034B411DD5ACA00386638 /* PointingButtonToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 344034B211DD5ACA00386638 /* PointingButtonToKey.hpp */; };
+		3442D9E612F3123300EF7DF8 /* ForceNumLockOn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3442D9E412F3123300EF7DF8 /* ForceNumLockOn.cpp */; };
+		3442D9E712F3123300EF7DF8 /* ForceNumLockOn.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3442D9E512F3123300EF7DF8 /* ForceNumLockOn.hpp */; };
 		3443E81111D8536B00BB28FB /* DoublePressModifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3443E80F11D8536B00BB28FB /* DoublePressModifier.cpp */; };
 		3443E81211D8536B00BB28FB /* DoublePressModifier.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3443E81011D8536B00BB28FB /* DoublePressModifier.hpp */; };
 		344BB4EE12812A9F008B75F6 /* DropPointingRelativeCursorMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 344BB4EC12812A9F008B75F6 /* DropPointingRelativeCursorMove.cpp */; };
@@ -138,6 +140,8 @@
 		343BE53811D8347100C7C701 /* ConsumerToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ConsumerToKey.hpp; path = RemapFunc/ConsumerToKey.hpp; sourceTree = "<group>"; };
 		344034B111DD5ACA00386638 /* PointingButtonToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PointingButtonToKey.cpp; path = RemapFunc/PointingButtonToKey.cpp; sourceTree = "<group>"; };
 		344034B211DD5ACA00386638 /* PointingButtonToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PointingButtonToKey.hpp; path = RemapFunc/PointingButtonToKey.hpp; sourceTree = "<group>"; };
+		3442D9E412F3123300EF7DF8 /* ForceNumLockOn.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ForceNumLockOn.cpp; path = RemapFunc/ForceNumLockOn.cpp; sourceTree = "<group>"; };
+		3442D9E512F3123300EF7DF8 /* ForceNumLockOn.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ForceNumLockOn.hpp; path = RemapFunc/ForceNumLockOn.hpp; sourceTree = "<group>"; };
 		3443E80F11D8536B00BB28FB /* DoublePressModifier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DoublePressModifier.cpp; path = RemapFunc/DoublePressModifier.cpp; sourceTree = "<group>"; };
 		3443E81011D8536B00BB28FB /* DoublePressModifier.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DoublePressModifier.hpp; path = RemapFunc/DoublePressModifier.hpp; sourceTree = "<group>"; };
 		344BB4EC12812A9F008B75F6 /* DropPointingRelativeCursorMove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DropPointingRelativeCursorMove.cpp; path = RemapFunc/DropPointingRelativeCursorMove.cpp; sourceTree = "<group>"; };
@@ -298,6 +302,8 @@
 		345E3EC511D79D17004B6347 /* RemapFunc */ = {
 			isa = PBXGroup;
 			children = (
+				3442D9E412F3123300EF7DF8 /* ForceNumLockOn.cpp */,
+				3442D9E512F3123300EF7DF8 /* ForceNumLockOn.hpp */,
 				344BB4EC12812A9F008B75F6 /* DropPointingRelativeCursorMove.cpp */,
 				344BB4ED12812A9F008B75F6 /* DropPointingRelativeCursorMove.hpp */,
 				34794D51126F32E700655ADB /* SetKeyboardType.cpp */,
@@ -467,6 +473,7 @@
 				34794D54126F32E700655ADB /* SetKeyboardType.hpp in Headers */,
 				344BB4EF12812A9F008B75F6 /* DropPointingRelativeCursorMove.hpp in Headers */,
 				05CB4A2C12BB4C0800737491 /* ModifierFilter.hpp in Headers */,
+				3442D9E712F3123300EF7DF8 /* ForceNumLockOn.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,6 +597,7 @@
 				34794D53126F32E700655ADB /* SetKeyboardType.cpp in Sources */,
 				344BB4EE12812A9F008B75F6 /* DropPointingRelativeCursorMove.cpp in Sources */,
 				05CB4A2D12BB4C0800737491 /* ModifierFilter.cpp in Sources */,
+				3442D9E612F3123300EF7DF8 /* ForceNumLockOn.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
