@@ -292,6 +292,7 @@
     { @"--PointingRelativeToScroll--",       BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL },
     { @"--DropKeyAfterRemap--",              BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP },
     { @"--SetKeyboardType--",                BRIDGE_REMAPTYPE_SETKEYBOARDTYPE },
+    { @"--ForceNumLockOn--",                 BRIDGE_REMAPTYPE_FORCENUMLOCKON },
     { @"--DropPointingRelativeCursorMove--", BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE },
     { NULL, 0 },
   };
