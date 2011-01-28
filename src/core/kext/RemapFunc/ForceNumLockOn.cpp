@@ -25,7 +25,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       //
       // As for some keypads, NumLock is off when it was connected.
       // We need to call setAlphaLock(true) to activate a device.
-      kbd->setNumLockFeedback(true);
+      if (kbd && ! kbd->numLock()) {
+        kbd->setNumLockFeedback(true);
+      }
       return false;
     }
   }

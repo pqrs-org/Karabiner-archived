@@ -205,6 +205,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       // ------------------------------------------------------------
+      // NumLock Hacks
+      //
+      // As for some keypads, NumLock is off when it was connected.
+      // We need to call setAlphaLock(true) to activate a device.
+      RemapClassManager::remap_forcenumlockon(device);
+
+      // ------------------------------------------------------------
       // "ts & keyboardType" are not used in filters like <not>/<only>.
       // Therefore, we can set current ts and keyboardType here.
       CommonData::setcurrent_ts(ts);
