@@ -19,6 +19,7 @@ CHESEN_PS2_TO_USB                       0x0205
 // Logitech
 LOGITECH_CORDLESS_PRESENTER             0xc515
 LOGITECH_USB_HEADSET                    0x0a0b
+LOGITECH_NUMBER_PAD                     0xc523
 
 // PFU
 HHKB_Professional_JP_0x000d             0x000d
