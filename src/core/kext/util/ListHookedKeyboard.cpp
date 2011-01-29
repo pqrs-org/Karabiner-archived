@@ -113,6 +113,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 #endif
 
+    // ------------------------------------------------------------
+    // NumLock Hacks
+    //
+    // As for some keypads, NumLock is off when it was connected.
+    // We need to call setAlphaLock(true) to activate a device.
+    RemapClassManager::remap_forcenumlockon(this);
+
+    // ------------------------------------------------------------
     return replaceEventAction();
 
   restore:
