@@ -3071,6 +3071,12 @@
           <autogen>--KeyToKey-- KeyCode::PC_KEYPAD_NUMLOCK, KeyCode::VK_NONE</autogen>
         </item>
         <item>
+          <name>Logitech Number Pad Hack</name>
+          <appendix>Force turn NumLock on at Logitech Number Pad (0x046d,0xc523)</appendix>
+          <identifier>remap.logitech_number_pad_hack</identifier>
+          <autogen>--ForceNumLockOn-- DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_NUMBER_PAD</autogen>
+        </item>
+        <item>
           <name>Use KeyPad as MS Project Build Keys</name>
           <appendix>Maps some of the keypad keys to standard debugger step thru cmds for Visual Studio</appendix>
           <list>
