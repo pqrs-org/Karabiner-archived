@@ -48,7 +48,9 @@ namespace org_pqrs_KeyRemap4MacBook {
               fromKey_.flags = newval;
               break;
             default:
-              (toKeys_->back()).flags = newval;
+              if (! toKeys_->empty()) {
+                (toKeys_->back()).flags = newval;
+              }
               break;
           }
           break;
