@@ -704,6 +704,17 @@
     </item>
 
     <item>
+      <name>ForceNumLockOn</name>
+      <list>
+        <item>
+          <name>Force turn NumLock on at Apple Internal Keyboard (0x05ac,0x021a)</name>
+          <identifier>remap.samples_forcenumlockon</identifier>
+          <autogen>--ForceNumLockOn-- DeviceVendor::APPLE_COMPUTER, DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>"NotSave" keymap overwriting</name>
       <list>
         <item>
