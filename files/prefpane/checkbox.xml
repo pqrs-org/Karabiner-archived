@@ -7418,6 +7418,91 @@
           <inputmode_only>CANADIAN</inputmode_only>
           <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::OPTION_L, KeyCode::SPACE</autogen>
         </item>
+        <item>
+          <name>Synchronize the sign of the keyboard and an input letter</name>
+          <appendix>using "U.S. International - PC" as Input Source on Canadian French keyboard.</appendix>
+          <appendix>(For example, change Shift+6 to ?)</appendix>
+          <identifier>remap.use_us_international_on_canadian_french_keyboard</identifier>
+          <!-- / -->
+          <autogen>--KeyToKey-- KeyCode::UK_SECTION, ModifierFlag::NONE,           KeyCode::SLASH</autogen>
+          <!-- \ -->
+          <autogen>--KeyToKey-- KeyCode::UK_SECTION, ModifierFlag::NONE|VK_SHIFT,  KeyCode::BACKSLASH</autogen>
+          <!-- | -->
+          <autogen>--KeyToKey-- KeyCode::UK_SECTION, ModifierFlag::NONE|VK_OPTION, KeyCode::BACKSLASH, ModifierFlag::SHIFT_L</autogen>
+
+          <!-- ? -->
+          <autogen>--KeyToKey-- KeyCode::KEY_6,      ModifierFlag::NONE|VK_SHIFT,  KeyCode::SLASH, VK_SHIFT</autogen>
+          <!-- { -->
+          <autogen>--KeyToKey-- KeyCode::KEY_7,      ModifierFlag::NONE|VK_OPTION, KeyCode::BRACKET_LEFT, ModifierFlag::SHIFT_L</autogen>
+          <!-- } -->
+          <autogen>--KeyToKey-- KeyCode::KEY_8,      ModifierFlag::NONE|VK_OPTION, KeyCode::BRACKET_RIGHT, ModifierFlag::SHIFT_L</autogen>
+          <!-- [ -->
+          <autogen>--KeyToKey-- KeyCode::KEY_9,      ModifierFlag::NONE|VK_OPTION, KeyCode::BRACKET_LEFT</autogen>
+          <!-- ] -->
+          <autogen>--KeyToKey-- KeyCode::KEY_0,      ModifierFlag::NONE|VK_OPTION, KeyCode::BRACKET_RIGHT</autogen>
+          <!-- ¬ -->
+          <autogen>--KeyToKey-- KeyCode::EQUAL,      ModifierFlag::NONE|VK_OPTION, KeyCode::L, ModifierFlag::OPTION_L</autogen>
+
+          <!-- ============================================================ -->
+
+          <!-- ^ (accent) -->
+          <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::NONE,           KeyCode::I, ModifierFlag::OPTION_L</autogen>
+          <!-- " (accent) -->
+          <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::NONE|VK_SHIFT,  KeyCode::U, ModifierFlag::OPTION_L</autogen>
+          <!-- ` (accent) -->
+          <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::NONE|VK_OPTION, KeyCode::BACKQUOTE, VK_OPTION</autogen>
+
+          <!-- ============================================================ -->
+
+          <!-- ° -->
+          <autogen>--KeyToKey-- KeyCode::SEMICOLON,     ModifierFlag::NONE|VK_OPTION, KeyCode::KEY_8, VK_OPTION | ModifierFlag::SHIFT_L</autogen>
+
+          <!-- ç -->
+          <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, ModifierFlag::NONE,           KeyCode::C, ModifierFlag::OPTION_L</autogen>
+          <!-- Ç -->
+          <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, ModifierFlag::NONE|VK_SHIFT,  KeyCode::C, ModifierFlag::OPTION_L | VK_SHIFT</autogen>
+          <!-- ~ -->
+          <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, ModifierFlag::NONE|VK_OPTION, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
+
+          <!-- è -->
+          <autogen>--KeyToKey-- KeyCode::QUOTE,         ModifierFlag::NONE,          KeyCode::BACKQUOTE, KeyCode::E</autogen>
+          <!-- È -->
+          <autogen>--KeyToKey-- KeyCode::QUOTE,         ModifierFlag::NONE|VK_SHIFT, KeyCode::BACKQUOTE, KeyCode::E, VK_SHIFT</autogen>
+
+          <!-- à -->
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH,     ModifierFlag::NONE, KeyCode::BACKQUOTE, KeyCode::A</autogen>
+          <!-- à -->
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH,     ModifierFlag::NONE|VK_SHIFT, KeyCode::BACKQUOTE, KeyCode::A, VK_SHIFT</autogen>
+
+          <!-- ============================================================ -->
+
+          <!-- ù -->
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, ModifierFlag::NONE,          KeyCode::BACKQUOTE, KeyCode::U</autogen>
+          <!-- Ù -->
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, ModifierFlag::NONE|VK_SHIFT, KeyCode::BACKQUOTE, KeyCode::U, VK_SHIFT</autogen>
+
+          <!-- « -->
+          <autogen>--KeyToKey-- KeyCode::Z,     ModifierFlag::NONE|VK_OPTION, KeyCode::BACKSLASH, VK_OPTION</autogen>
+
+          <!-- » -->
+          <autogen>--KeyToKey-- KeyCode::X,     ModifierFlag::NONE|VK_OPTION, KeyCode::BACKSLASH, VK_OPTION | ModifierFlag::SHIFT_L</autogen>
+
+          <!-- ' -->
+          <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::NONE|VK_SHIFT, KeyCode::BRACKET_RIGHT, ModifierFlag::OPTION_L</autogen>
+          <!-- < -->
+          <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::NONE|VK_OPTION, KeyCode::COMMA, ModifierFlag::SHIFT_L</autogen>
+
+          <!-- " -->
+          <autogen>--KeyToKey-- KeyCode::DOT,   ModifierFlag::NONE|VK_SHIFT, KeyCode::QUOTE, ModifierFlag::SHIFT_L</autogen>
+
+          <!-- > -->
+          <autogen>--KeyToKey-- KeyCode::DOT,   ModifierFlag::NONE|VK_OPTION, KeyCode::DOT, ModifierFlag::SHIFT_L</autogen>
+
+          <!-- é -->
+          <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::NONE,          KeyCode::QUOTE, KeyCode::E</autogen>
+          <!-- é -->
+          <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::NONE|VK_SHIFT, KeyCode::QUOTE, KeyCode::E, VK_SHIFT</autogen>
+        </item>
       </list>
     </item>
     <item>
