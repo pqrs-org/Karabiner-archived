@@ -53,6 +53,8 @@
       <identifier essential="true" default="150" step="10" baseunit="/ 1000">pointing.relative2scroll_rate</identifier>
     </item>
 
+    <item><name>------------------------------------------------------------</name></item>
+
     <item>
       <name>[StatusWindow] AlphaValue for Font</name>
       <identifier essential="true" default="60" step="10" baseunit="%">parameter.statuswindow_alpha_font</identifier>
@@ -72,6 +74,12 @@
     <item>
       <name>[StatusWindow] FadeOut Duration</name>
       <identifier essential="true" step="500" baseunit="ms">parameter.statuswindow_fadeout_duration</identifier>
+    </item>
+    <item>
+      <name>[StatusWindow] Note:</name>
+      <appendix>When you activate fade-out feature,</appendix>
+      <appendix>we recommend to activate the following setting together.</appendix>
+      <appendix>"General > Continue displaying empty status message"</appendix>
     </item>
   </list>
 </root>
