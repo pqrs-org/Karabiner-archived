@@ -185,6 +185,15 @@
         </item>
 
         <item>
+          <name>Modifier To XXX(3)</name>
+          <appendix>Shift_R to A</appendix>
+          <appendix>Shift_L+Shift_R to B</appendix>
+          <identifier>remap.samples_keytokey_modifier2xxx_3</identifier>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R, KeyCode::B</autogen>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::A</autogen>
+        </item>
+
+        <item>
           <name>Combination</name>
           <appendix>A to B,C (Standard)</appendix>
           <appendix>B to A,B,Shift_L+C,D,Control_L+P (Key To)</appendix>
