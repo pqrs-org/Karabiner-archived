@@ -3887,6 +3887,13 @@
           <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::VK_STICKY_SHIFT_R</autogen>
         </item>
         <item>
+          <name>Shift_R to ^ (Shift+6)</name>
+          <appendix>Shift_L+Shift_R to &amp; (Shift+7)</appendix>
+          <identifier>remap.right_shift_to_hat_amp</identifier>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R, KeyCode::KEY_7, ModifierFlag::SHIFT_R</autogen>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::KEY_6, ModifierFlag::SHIFT_R</autogen>
+        </item>
+        <item>
           <name>Shift_R to Enter</name>
           <identifier>remap.shiftR2enter</identifier>
           <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::ENTER</autogen>
