@@ -4189,6 +4189,19 @@
     </item>
 
     <item>
+      <name>Custom Shortcuts</name>
+      <list>
+        <item>
+          <name>Change Command+Q to Command+Shift+W</name>
+          <appendix>Change Command+Shift_L+Q to Command+Q</appendix>
+          <identifier>remap.commandQ2commandW_commandshiftQ2commandQ</identifier>
+          <autogen>--KeyToKey-- KeyCode::Q, VK_COMMAND | ModifierFlag::SHIFT_L, KeyCode::Q, VK_COMMAND | ModifierFlag::NONE</autogen>
+          <autogen>--KeyToKey-- KeyCode::Q, VK_COMMAND | ModifierFlag::NONE,    KeyCode::W, VK_COMMAND | ModifierFlag::SHIFT_L</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>Diamond Cursor</name>
       <list>
         <item>
