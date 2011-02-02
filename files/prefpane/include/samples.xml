@@ -188,9 +188,15 @@
           <name>Modifier To XXX(3)</name>
           <appendix>Shift_R to A</appendix>
           <appendix>Shift_L+Shift_R to B</appendix>
+          <appendix>Command_R to A</appendix>
+          <appendix>Command_L+Command_R to B</appendix>
           <identifier>remap.samples_keytokey_modifier2xxx_3</identifier>
+          <!-- including self modifier (ModifierFlag::SHIFT_R) -->
           <autogen>--KeyToKey-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R, KeyCode::B</autogen>
           <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::A</autogen>
+          <!-- excluding self modifier (ModifierFlag::COMMAND_R) -->
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_L, KeyCode::B</autogen>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::A</autogen>
         </item>
 
         <item>
