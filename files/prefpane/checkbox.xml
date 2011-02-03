@@ -7075,6 +7075,14 @@
           <autogen>--KeyToKey-- FROMKEYCODE_PAGEDOWN, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
+          <name>Use PC Style PageUp/PageDown (except in Emacs,Virtual Machine,RDC)</name>
+          <appendix>(behave like Option+PageUp/PageDown)</appendix>
+          <identifier>remap.pclikepageupdown_except_emacs</identifier>
+          <not>EMACS, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <autogen>--KeyToKey-- FROMKEYCODE_PAGEUP, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- FROMKEYCODE_PAGEDOWN, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
+        </item>
+        <item>
           <name>Use PC Style Copy/Paste</name>
           <appendix>(Control+C to Command_L+C)</appendix>
           <appendix>(Control+V to Command_L+V)</appendix>
