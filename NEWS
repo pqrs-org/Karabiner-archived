@@ -5,5 +5,5 @@ Changes since 7.0.0
       Set "[StatusWindow] FadeOut Duration" in "Key Repeat" tab to activate fade-out.
       (It's useful using "General > Continue displaying empty status message" together.)
     - Improve UI of checkForUpdate.
-    - Fixed minor bugs.
+    - Fixed some bugs.
     - Added about XXX kinds settings.
