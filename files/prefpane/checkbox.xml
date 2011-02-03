@@ -337,6 +337,16 @@
       <name>Device Specific Mixed Settings</name>
       <list>
         <item>
+          <name>Swap Command_L and Option_L on MacBook pro (vid/pid: 0x05ac,0x0236)</name>
+          <identifier>remap.swap_commandL_and_optionL_mac_book_pro_0x0236</identifier>
+          <block>
+            <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0236</device_only>
+            <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
+            <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+          </block>
+        </item>
+
+        <item>
           <name>Swap Shift_L and CapsLock on the Mac's internal kbd (vid/pid: 0x05ac,0x0218)</name>
           <appendix>(*Note: I have set PCKeyboardHack to remap CapsLock to ExposeAll on all kbds*)</appendix>
           <appendix>(ExposeAll to Shift_L and Shift_L to CapsLock on the MacBook's internal keyboard)</appendix>
