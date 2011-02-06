@@ -150,6 +150,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (! queue_) return;
 
+    if (key == KeyCode::VK_NONE) return;
+
     if (eventType == EventType::MODIFY) {
       goto cancel;
 
@@ -168,8 +170,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
     } else if (eventType == EventType::DOWN) {
-      if (key == KeyCode::VK_NONE) goto cancel;
-
       cancel_nolock();
 
       primitive_add_nolock(eventType, flags, key, keyboardType);
@@ -196,6 +196,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! lk) return;
 
     if (! queue_) return;
+
+    if (key == ConsumerKeyCode::VK_NONE) return;
 
     if (eventType == EventType::UP) {
       goto cancel;
