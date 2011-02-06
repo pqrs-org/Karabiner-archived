@@ -149,11 +149,15 @@
           <appendix>CapsLock+S to Shift_L+1</appendix>
           <appendix>CapsLock+O to Option_L+2</appendix>
           <appendix>CapsLock+C to Command_L+3</appendix>
+          <appendix></appendix>
+          <appendix>Change Shift_L key to turning CapsLock off</appendix>
+          <appendix>(retain Shift_L when CapsLock is off)</appendix>
           <identifier>remap.samples_keytokey_key2xxx_3</identifier>
-          <autogen>--KeyToKey-- KeyCode::A, KeyCode::CAPSLOCK</autogen>
-          <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::CAPSLOCK, KeyCode::KEY_1, ModifierFlag::SHIFT_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::CAPSLOCK, KeyCode::KEY_2, ModifierFlag::OPTION_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::CAPSLOCK, KeyCode::KEY_3, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::A,                               KeyCode::CAPSLOCK</autogen>
+          <autogen>--KeyToKey-- KeyCode::S,       ModifierFlag::CAPSLOCK, KeyCode::KEY_1, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::O,       ModifierFlag::CAPSLOCK, KeyCode::KEY_2, ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::C,       ModifierFlag::CAPSLOCK, KeyCode::KEY_3, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::CAPSLOCK, KeyCode::CAPSLOCK, KeyCode::VK_NONE</autogen>
         </item>
 
         <item>
