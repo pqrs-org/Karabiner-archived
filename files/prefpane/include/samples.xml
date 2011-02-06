@@ -367,6 +367,12 @@
           <autogen>--ConsumerToConsumer-- ConsumerKeyCode::NUMLOCK, ConsumerKeyCode::VOLUME_MUTE</autogen>
         </item>
         <item>
+          <name>Standard(2)</name>
+          <appendix>Volume Mute to Volume Up</appendix>
+          <identifier>remap.samples_consumertoconsumer_2</identifier>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::VOLUME_UP</autogen>
+        </item>
+        <item>
           <name>Combination</name>
           <appendix>Volume Mute to Volume Up,Brightness Up</appendix>
           <identifier>remap.samples_consumertoconsumer_combination</identifier>
