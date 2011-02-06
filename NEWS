@@ -7,3 +7,5 @@ Changes since 7.0.0
     - Improve UI of checkForUpdate.
     - Fixed some bugs.
     - Added about XXX kinds settings.
+    - Added <modifier_only>, <modifier_not> filters.
+    - Added --ForceNumLockOn-- to <autogen>.
