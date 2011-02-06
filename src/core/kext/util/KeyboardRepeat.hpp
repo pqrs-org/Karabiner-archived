@@ -13,12 +13,18 @@
 namespace org_pqrs_KeyRemap4MacBook {
   class KeyboardRepeat {
   public:
+    enum {
+      // getID() will return [0 .. MAX_KEYBOARDREPEATID] (including edge).
+      MAX_KEYBOARDREPEATID = 10000,
+    };
     KeyboardRepeat(void) {}
 
     static void initialize(IOWorkLoop& workloop);
     static void terminate(void);
 
     static void cancel(void);
+
+    static int getID(void) { return id_; }
 
     // --------------------------------------------------
     static void set(EventType eventType,
@@ -54,7 +60,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                               Flags flags,
                               ConsumerKeyCode key);
 
-    static void primitive_start(int wait = Config::get_repeat_initial_wait());
+    static int primitive_start(int wait = Config::get_repeat_initial_wait());
 
   private:
     class Item : public List::Item {
@@ -89,6 +95,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     static List* queue_;
     static TimerWrapper timer_;
+    static int id_;
   };
 }
 

@@ -5,7 +5,7 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    KeyToKey::KeyToKey(void) : index_(0)
+    KeyToKey::KeyToKey(void) : index_(0), keyboardRepeatID_(-1)
     {
       toKeys_ = new Vector_PairKeyFlags();
     }
@@ -146,6 +146,8 @@ namespace org_pqrs_KeyRemap4MacBook {
           bool         isLastKeyModifier   = (lastKeyModifierFlag != ModifierFlag::NONE);
 
           if (remapParams.params.ex_iskeydown) {
+            KeyboardRepeat::cancel();
+
             FlagStatus::temporary_decrease(fromFlags);
 
             size_t size = toKeys_->size();
@@ -180,16 +182,19 @@ namespace org_pqrs_KeyRemap4MacBook {
             if (isLastKeyModifier) {
               KeyboardRepeat::cancel();
             } else {
-              KeyboardRepeat::primitive_start();
+              keyboardRepeatID_ = KeyboardRepeat::primitive_start();
             }
 
           } else {
-            KeyboardRepeat::cancel();
-
             if (isLastKeyModifier) {
               FlagStatus::decrease(lastKeyFlags | lastKeyModifierFlag);
               FlagStatus::increase(fromFlags);
               EventOutputQueue::FireModifiers::fire();
+
+            } else {
+              if (KeyboardRepeat::getID() == keyboardRepeatID_) {
+                KeyboardRepeat::cancel();
+              }
             }
           }
           break;
