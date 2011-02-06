@@ -5,7 +5,7 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    ConsumerToConsumer::ConsumerToConsumer(void) : index_(0)
+    ConsumerToConsumer::ConsumerToConsumer(void) : index_(0), keyboardRepeatID_(-1)
     {
       toKeys_ = new Vector_PairConsumerKeyFlags();
     }
@@ -113,6 +113,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         default:
           if (remapParams.params.ex_iskeydown) {
+            KeyboardRepeat::cancel();
+
             for (size_t i = 0; i < toKeys_->size(); ++i) {
               FlagStatus::temporary_increase((*toKeys_)[i].flags);
 
@@ -135,10 +137,12 @@ namespace org_pqrs_KeyRemap4MacBook {
               FlagStatus::temporary_decrease((*toKeys_)[i].flags);
             }
 
-            KeyboardRepeat::primitive_start();
+            keyboardRepeatID_ = KeyboardRepeat::primitive_start();
 
           } else {
-            KeyboardRepeat::cancel();
+            if (KeyboardRepeat::getID() == keyboardRepeatID_) {
+              KeyboardRepeat::cancel();
+            }
           }
 
           break;

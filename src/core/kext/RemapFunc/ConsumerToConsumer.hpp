@@ -32,6 +32,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       FromKeyChecker fromkeychecker_;
       PairConsumerKeyFlags fromKey_;
       Vector_PairConsumerKeyFlags* toKeys_;
+      int keyboardRepeatID_;
     };
   }
 }

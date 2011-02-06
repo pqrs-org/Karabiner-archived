@@ -8,6 +8,7 @@
 namespace org_pqrs_KeyRemap4MacBook {
   List* KeyboardRepeat::queue_ = NULL;
   TimerWrapper KeyboardRepeat::timer_;
+  int KeyboardRepeat::id_ = 0;
 
   void
   KeyboardRepeat::initialize(IOWorkLoop& workloop)
@@ -121,16 +122,20 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   KeyboardRepeat::primitive_start_nolock(int wait)
   {
+    ++id_;
+    if (id_ > MAX_KEYBOARDREPEATID) id_ = 0;
+
     timer_.setTimeoutMS(wait);
   }
 
-  void
+  int
   KeyboardRepeat::primitive_start(int wait)
   {
     IOLockWrapper::ScopedLock lk(timer_.getlock());
-    if (! lk) return;
+    if (! lk) return -1;
 
     primitive_start_nolock(wait);
+    return id_;
   }
 
   void
@@ -149,8 +154,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       goto cancel;
 
     } else if (eventType == EventType::UP) {
-      // We always stop key repeat at key up when multiple keys repeat.
-      if (queue_->size() != 1) goto cancel;
+      // The repetition of plural keys is controlled by manual operation.
+      // So, we ignore it.
+      if (queue_->size() != 1) return;
 
       // We stop key repeat only when the repeating key is up.
       KeyboardRepeat::Item* p = static_cast<KeyboardRepeat::Item*>(queue_->front());
