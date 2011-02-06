@@ -97,7 +97,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       } else {
         FlagStatus::increase(fromKey_.key.getModifierFlag());
       }
-      KeyboardRepeat::cancel();
 
       switch (toKeys_->size()) {
         case 0:
@@ -185,6 +184,8 @@ namespace org_pqrs_KeyRemap4MacBook {
             }
 
           } else {
+            KeyboardRepeat::cancel();
+
             if (isLastKeyModifier) {
               FlagStatus::decrease(lastKeyFlags | lastKeyModifierFlag);
               FlagStatus::increase(fromFlags);

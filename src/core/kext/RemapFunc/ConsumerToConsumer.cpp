@@ -91,7 +91,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ----------------------------------------
       FlagStatus::temporary_decrease(fromKey_.flags);
-      KeyboardRepeat::cancel();
 
       switch (toKeys_->size()) {
         case 0:
@@ -137,6 +136,9 @@ namespace org_pqrs_KeyRemap4MacBook {
             }
 
             KeyboardRepeat::primitive_start();
+
+          } else {
+            KeyboardRepeat::cancel();
           }
 
           break;
