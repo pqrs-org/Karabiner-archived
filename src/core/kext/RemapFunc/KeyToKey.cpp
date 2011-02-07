@@ -142,8 +142,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         default:
           ModifierFlag lastKeyModifierFlag = (*toKeys_)[toKeys_->size() - 1].key.getModifierFlag();
-          Flags        lastKeyFlags        = (*toKeys_)[toKeys_->size() - 1].flags;
-          bool         isLastKeyModifier   = (lastKeyModifierFlag != ModifierFlag::NONE);
+          Flags lastKeyFlags               = (*toKeys_)[toKeys_->size() - 1].flags;
+          bool isLastKeyModifier           = (lastKeyModifierFlag != ModifierFlag::NONE);
 
           if (remapParams.params.ex_iskeydown) {
             KeyboardRepeat::cancel();

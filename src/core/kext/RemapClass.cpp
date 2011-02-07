@@ -287,7 +287,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (isblocked()) return false;
 
-#define CALL_UNION_FUNCTION(POINTER) {             \
+#define CALL_UNION_FUNCTION(POINTER) {              \
     if (POINTER) { return (POINTER)->remap(item); } \
 }
 
