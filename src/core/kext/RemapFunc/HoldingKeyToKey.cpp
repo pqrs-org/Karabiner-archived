@@ -18,7 +18,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       timer_.terminate();
     }
 
-    HoldingKeyToKey::HoldingKeyToKey(void) : index_(0), index_is_holding_(false), active_(false)
+    HoldingKeyToKey::HoldingKeyToKey(void) : index_(0), index_is_holding_(false), active_(false), keydowntype_(KEYDOWNTYPE_NONE)
     {}
 
     HoldingKeyToKey::~HoldingKeyToKey(void)
@@ -94,7 +94,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! result) {
         if (remapParams.params.ex_iskeydown) {
           // another key is pressed.
-          dokeyup();
+          dokeydown();
         }
         return false;
       }
@@ -102,36 +102,63 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (remapParams.params.ex_iskeydown) {
         target_ = this;
         active_ = true;
-        isfirenormal_ = false;
-        isfireholding_ = false;
+        keydowntype_ = KEYDOWNTYPE_NONE;
 
         savedflags_ = FlagStatus::makeFlags();
 
         timer_.setTimeoutMS(Config::get_holdingkeytokey_wait());
 
       } else {
+        dokeydown();
         dokeyup();
       }
       return true;
     }
 
     void
-    HoldingKeyToKey::dokeyup(void)
+    HoldingKeyToKey::dokeydown(void)
     {
       if (! active_) return;
       active_ = false;
 
       timer_.cancelTimeout();
 
-      if (isfireholding_) {
-        keytokey_holding_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+      switch (target_->keydowntype_) {
+        case KEYDOWNTYPE_NONE:
+        {
+          target_->keydowntype_ = KEYDOWNTYPE_NORMAL;
+          FlagStatus::ScopedTemporaryFlagsChanger stfc(savedflags_);
+          keytokey_normal_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+          break;
+        }
 
-      } else {
-        isfirenormal_ = true;
+        case KEYDOWNTYPE_NORMAL:
+        case KEYDOWNTYPE_HOLDING:
+          // do nothing
+          break;
+      }
+    }
 
-        FlagStatus::ScopedTemporaryFlagsChanger stfc(savedflags_);
-        keytokey_normal_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
-        keytokey_normal_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+    void
+    HoldingKeyToKey::dokeyup(void)
+    {
+      switch (target_->keydowntype_) {
+        case KEYDOWNTYPE_NORMAL:
+        {
+          target_->keydowntype_ = KEYDOWNTYPE_NONE;
+          FlagStatus::ScopedTemporaryFlagsChanger stfc(savedflags_);
+          keytokey_normal_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+          break;
+        }
+        case KEYDOWNTYPE_HOLDING:
+        {
+          target_->keydowntype_ = KEYDOWNTYPE_NONE;
+          keytokey_holding_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+          break;
+        }
+        case KEYDOWNTYPE_NONE:
+          // do nothing
+          break;
       }
     }
 
@@ -142,8 +169,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       if (! target_) return;
 
-      if (! target_->isfirenormal_) {
-        target_->isfireholding_ = true;
+      if (target_->keydowntype_ == KEYDOWNTYPE_NONE) {
+        target_->keydowntype_ = KEYDOWNTYPE_HOLDING;
 
         (target_->keytokey_holding_).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
       }

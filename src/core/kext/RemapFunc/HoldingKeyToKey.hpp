@@ -30,6 +30,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       void add(unsigned int datatype, unsigned int newval);
 
     private:
+      enum KeyDownType {
+        KEYDOWNTYPE_NONE,
+        KEYDOWNTYPE_NORMAL,
+        KEYDOWNTYPE_HOLDING,
+      };
+
+      void dokeydown(void);
       void dokeyup(void);
       static void fireholding(OSObject* owner, IOTimerEventSource* sender);
 
@@ -41,8 +48,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       Flags savedflags_;
 
       bool active_;
-      bool isfirenormal_;
-      bool isfireholding_;
+      KeyDownType keydowntype_;
 
       KeyToKey keytokey_drop_;
       KeyToKey keytokey_normal_;
