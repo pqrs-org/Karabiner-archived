@@ -55,6 +55,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     static bool handle(const Params_KeyboardEventCallBack& params);
 
+    static bool is_VK_CONFIG_SYNC_KEYDOWNUP(KeyCode keycode);
+
   private:
     struct Item {
       Item(void) {};
