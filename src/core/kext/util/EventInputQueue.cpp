@@ -492,7 +492,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
 
           // ------------------------------------------------------------
-          // We must call NumHeldDownKeys after inputqueue.
+          // We must call NumHeldDownKeys after inputqueue. (Not before queuing)
           // For example, when we type Command_L+S.
           //
           // (1) Command_L down (queued)
@@ -504,6 +504,23 @@ namespace org_pqrs_KeyRemap4MacBook {
           //
           // if NumHeldDownKeys called when (4), Command_L state is reset.
           // Then (2') send KeyCode::S without Modifiers.
+          //
+          // ------------------------------------------------------------
+          // When we press&release CapsLock, key event is fired only once.
+          // (down or up depending on the state of CapsLock)
+          // If we use Virtual CapsLock (remapped CapsLock) like "Change A to CapsLock",
+          // the NumHeldDownKeys state is increase illegally.
+          // So, we ignore Hardware CapsLock at NumHeldDownKeys.
+          //
+          // (1) Press Hardware CapsLock (EventType::DOWN is fired.)
+          // (2) Press A (EventType::DOWN is fired.)
+          // (2') (A is changed to CapsLock.)
+          // (3) Release A (EventType::UP is fired.)
+          // (3') (A is changed to CapsLock.)
+          // (4) Press Hardware CapsLock (EventType::DOWN is fired.)
+          //
+          // Both (1) and (4) fire DOWN event.
+
           if (params->key != KeyCode::CAPSLOCK) {
             NumHeldDownKeys::set(params->ex_iskeydown ? 1 : -1);
           }
