@@ -1154,7 +1154,7 @@
               <name>With ModifierFlag::NONE</name>
               <appendix>C to F if Shift_L is pressed. (And no other modifiers are pressed.)</appendix>
               <appendix>  // C to C</appendix>
-              <appendix>  // Shift_L+C to F</appendix>
+              <appendix>  // Shift_L+C to Shift_L+F</appendix>
               <appendix>  // Command_L+Shift_L+C to Command_L+Shift_L+C</appendix>
               <identifier>remap.samples_modifier_with_none</identifier>
               <block>
