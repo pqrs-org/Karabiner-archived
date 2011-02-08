@@ -504,7 +504,9 @@ namespace org_pqrs_KeyRemap4MacBook {
           //
           // if NumHeldDownKeys called when (4), Command_L state is reset.
           // Then (2') send KeyCode::S without Modifiers.
-          NumHeldDownKeys::set(params->ex_iskeydown ? 1 : -1);
+          if (params->key != KeyCode::CAPSLOCK) {
+            NumHeldDownKeys::set(params->ex_iskeydown ? 1 : -1);
+          }
 
           Core::remap_KeyboardEventCallback(*params);
         }
