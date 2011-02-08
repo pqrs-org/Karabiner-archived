@@ -3740,6 +3740,13 @@
         </item>
         <item>
           <name>Shift_L to Shift_L</name>
+          <appendix>(+ When you type Shift_L only, release CapsLock)</appendix>
+          <identifier>remap.shiftL2releasecapslock</identifier>
+          <modifier_only>ModifierFlag::CAPSLOCK</modifier_only>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::CAPSLOCK, KeyCode::VK_NONE</autogen>
+        </item>
+        <item>
+          <name>Shift_L to Shift_L</name>
           <appendix>(+ When you type shift_L only without other modifiers, send Escape)</appendix>
           <identifier>remap.shiftL2shiftL_escape</identifier>
           <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::SHIFT_L, KeyCode::ESCAPE</autogen>
@@ -3849,6 +3856,13 @@
           <name>Shift_R to Option_L</name>
           <identifier>remap.shiftR2optionL</identifier>
           <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::OPTION_L</autogen>
+        </item>
+        <item>
+          <name>Shift_R to Shift_R</name>
+          <appendix>(+ When you type Shift_R only, release CapsLock)</appendix>
+          <identifier>remap.shiftR2releasecapslock</identifier>
+          <modifier_only>ModifierFlag::CAPSLOCK</modifier_only>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::CAPSLOCK, KeyCode::VK_NONE</autogen>
         </item>
         <item>
           <name>Shift_R to Shift_R</name>
