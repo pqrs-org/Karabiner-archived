@@ -1435,11 +1435,25 @@
         </item>
         <item>
           <name>VK_CONFIG</name>
-          <appendix>Use A to toggle Complete Vi Mode</appendix>
-          <appendix>Use S to turn on Complete Vi Mode</appendix>
-          <identifier>remap.samples_vk_config</identifier>
-          <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
-          <autogen>--KeyToKey-- KeyCode::S, KeyCode::VK_CONFIG_FORCE_ON_notsave_complete_vimode</autogen>
+          <list>
+            <item>
+              <name></name>
+              <appendix>Use A to VK_CONFIG_TOGGLE</appendix>
+              <appendix>Use S to VK_CONFIG_FORCE_ON</appendix>
+              <appendix>Use D to VK_CONFIG_FORCE_OFF</appendix>
+              <appendix>Use F to VK_CONFIG_SYNC_KEYDOWNUP</appendix>
+              <identifier>remap.samples_vk_config</identifier>
+              <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_CONFIG_TOGGLE_notsave_samples_vk_config</autogen>
+              <autogen>--KeyToKey-- KeyCode::S, KeyCode::VK_CONFIG_FORCE_ON_notsave_samples_vk_config</autogen>
+              <autogen>--KeyToKey-- KeyCode::D, KeyCode::VK_CONFIG_FORCE_OFF_notsave_samples_vk_config</autogen>
+              <autogen>--KeyToKey-- KeyCode::F, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_samples_vk_config</autogen>
+            </item>
+            <item>
+              <name></name>
+              <identifier vk_config="true">notsave.samples_vk_config</identifier>
+              <autogen>--ShowStatusMessage-- VK_CONFIG</autogen>
+            </item>
+          </list>
         </item>
         <item>
           <name>VK_JIS_TOGGLE_EISUU_KANA</name>
