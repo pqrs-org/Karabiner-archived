@@ -7822,13 +7822,11 @@
           <name>左右のコマンドキー（⌘）を「英数／かな」としても使う</name>
           <appendix>（左コマンドキーを英数キーにする）</appendix>
           <appendix>（右コマンドキーをかなキーにする）</appendix>
-          <appendix></appendix>
-          <appendix>（コマンドキーの空打ちで「英数／かな」）</appendix>
-          <appendix>（他のキーと一緒に打つと通常のコマンドキーとして動作する）</appendix>
           <list>
             <item>
               <name>コマンドキーの動作を優先モード</name>
-              <appendix>（コマンドキーを離した時点で英数／かなキーを出力する）</appendix>
+              <appendix>（コマンドキーの空打ちで「英数／かな」）</appendix>
+              <appendix>（コマンドキーを押している間に他のキーを打つと通常のコマンドキーとして動作）</appendix>
               <identifier>remap.jis_command2eisuukana_prefer_command</identifier>
               <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::JIS_EISUU</autogen>
               <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::JIS_KANA</autogen>
