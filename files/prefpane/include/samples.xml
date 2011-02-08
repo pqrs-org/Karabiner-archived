@@ -1442,11 +1442,15 @@
               <appendix>Use S to VK_CONFIG_FORCE_ON</appendix>
               <appendix>Use D to VK_CONFIG_FORCE_OFF</appendix>
               <appendix>Use F to VK_CONFIG_SYNC_KEYDOWNUP</appendix>
+              <appendix>Use G to Shift_L+VK_CONFIG_SYNC_KEYDOWNUP</appendix>
+              <appendix>Use H to A,VK_CONFIG_SYNC_KEYDOWNUP</appendix>
               <identifier>remap.samples_vk_config</identifier>
               <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_CONFIG_TOGGLE_notsave_samples_vk_config</autogen>
               <autogen>--KeyToKey-- KeyCode::S, KeyCode::VK_CONFIG_FORCE_ON_notsave_samples_vk_config</autogen>
               <autogen>--KeyToKey-- KeyCode::D, KeyCode::VK_CONFIG_FORCE_OFF_notsave_samples_vk_config</autogen>
               <autogen>--KeyToKey-- KeyCode::F, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_samples_vk_config</autogen>
+              <autogen>--KeyToKey-- KeyCode::G, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_samples_vk_config, ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::H, KeyCode::A, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_samples_vk_config</autogen>
             </item>
             <item>
               <name></name>

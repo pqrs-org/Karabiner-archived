@@ -258,55 +258,60 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   Handle_VK_CONFIG::handle(const Params_KeyboardEventCallBack& params)
   {
-    IOLockWrapper::ScopedLock lk(lock_);
+    {
+      IOLockWrapper::ScopedLock lk(lock_);
 
-    if (! items_) return false;
+      if (! items_) return false;
 
-    for (size_t i = 0; i < items_->size(); ++i) {
-      RemapClass* remapclass              = (*items_)[i].remapclass;
-      unsigned int keycode_toggle         = (*items_)[i].keycode_toggle;
-      unsigned int keycode_force_on       = (*items_)[i].keycode_force_on;
-      unsigned int keycode_force_off      = (*items_)[i].keycode_force_off;
-      unsigned int keycode_sync_keydownup = (*items_)[i].keycode_sync_keydownup;
+      for (size_t i = 0; i < items_->size(); ++i) {
+        RemapClass* remapclass              = (*items_)[i].remapclass;
+        unsigned int keycode_toggle         = (*items_)[i].keycode_toggle;
+        unsigned int keycode_force_on       = (*items_)[i].keycode_force_on;
+        unsigned int keycode_force_off      = (*items_)[i].keycode_force_off;
+        unsigned int keycode_sync_keydownup = (*items_)[i].keycode_sync_keydownup;
 
-      if (! remapclass) return false;
+        if (! remapclass) return false;
 
-      if (params.ex_iskeydown && params.repeat == false) {
-        /*  */ if (params.key == keycode_toggle) {
-          remapclass->toggleEnabled();
-          goto finish;
+        if (params.ex_iskeydown && params.repeat == false) {
+          /*  */ if (params.key == keycode_toggle) {
+            remapclass->toggleEnabled();
+            goto refresh;
 
-        } else if (params.key == keycode_force_on) {
-          remapclass->setEnabled(true);
-          goto finish;
+          } else if (params.key == keycode_force_on) {
+            remapclass->setEnabled(true);
+            goto refresh;
 
-        } else if (params.key == keycode_force_off) {
-          remapclass->setEnabled(false);
-          goto finish;
+          } else if (params.key == keycode_force_off) {
+            remapclass->setEnabled(false);
+            goto refresh;
 
-        } else if (params.key == keycode_sync_keydownup) {
-          remapclass->setEnabled(true);
-          goto finish;
-        }
+          } else if (params.key == keycode_sync_keydownup) {
+            remapclass->setEnabled(true);
+            goto refresh;
+          }
 
-      } else if (params.eventType == EventType::UP) {
-        if (params.key == keycode_toggle ||
-            params.key == keycode_force_on ||
-            params.key == keycode_force_off) {
-          return true;
-        }
+        } else if (params.eventType == EventType::UP) {
+          if (params.key == keycode_toggle ||
+              params.key == keycode_force_on ||
+              params.key == keycode_force_off) {
+            goto finish;
+          }
 
-        if (params.key == keycode_sync_keydownup) {
-          remapclass->setEnabled(false);
-          goto finish;
+          if (params.key == keycode_sync_keydownup) {
+            remapclass->setEnabled(false);
+            goto refresh;
+          }
         }
       }
+
+      return false;
     }
 
-    return false;
+  refresh:
+    RemapClassManager::refresh();
 
   finish:
-    RemapClassManager::refresh();
+    EventOutputQueue::FireModifiers::fire();
     return true;
   }
 

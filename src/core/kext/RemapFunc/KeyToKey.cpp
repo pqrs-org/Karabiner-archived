@@ -2,6 +2,7 @@
 #include "EventOutputQueue.hpp"
 #include "KeyToKey.hpp"
 #include "KeyboardRepeat.hpp"
+#include "VirtualKey.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
@@ -107,14 +108,16 @@ namespace org_pqrs_KeyRemap4MacBook {
           EventType newEventType = remapParams.params.ex_iskeydown ? EventType::DOWN : EventType::UP;
           ModifierFlag toModifierFlag = (*toKeys_)[0].key.getModifierFlag();
 
-          if (toModifierFlag == ModifierFlag::NONE) {
+          if (toModifierFlag == ModifierFlag::NONE && ! Handle_VK_CONFIG::is_VK_CONFIG_SYNC_KEYDOWNUP((*toKeys_)[0].key)) {
             // toKey
             FlagStatus::temporary_decrease(fromFlags);
             FlagStatus::temporary_increase((*toKeys_)[0].flags);
 
           } else {
-            // toModifier
-            newEventType = EventType::MODIFY;
+            // toModifier or VK_CONFIG_SYNC_KEYDOWNUP_*
+            if (toModifierFlag != ModifierFlag::NONE) {
+              newEventType = EventType::MODIFY;
+            }
 
             if (remapParams.params.ex_iskeydown) {
               FlagStatus::increase((*toKeys_)[0].flags | toModifierFlag);
@@ -141,9 +144,11 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
         default:
-          ModifierFlag lastKeyModifierFlag = (*toKeys_)[toKeys_->size() - 1].key.getModifierFlag();
+          KeyCode lastKey                  = (*toKeys_)[toKeys_->size() - 1].key;
           Flags lastKeyFlags               = (*toKeys_)[toKeys_->size() - 1].flags;
+          ModifierFlag lastKeyModifierFlag = lastKey.getModifierFlag();
           bool isLastKeyModifier           = (lastKeyModifierFlag != ModifierFlag::NONE);
+          bool isLastKeyLikeModifier       = Handle_VK_CONFIG::is_VK_CONFIG_SYNC_KEYDOWNUP(lastKey);
 
           if (remapParams.params.ex_iskeydown) {
             KeyboardRepeat::cancel();
@@ -154,7 +159,7 @@ namespace org_pqrs_KeyRemap4MacBook {
             // If the last key is modifier, we give it special treatment.
             // - Don't fire key repeat.
             // - Synchronous the key press status and the last modifier status.
-            if (isLastKeyModifier) {
+            if (isLastKeyModifier || isLastKeyLikeModifier) {
               --size;
             }
 
@@ -170,26 +175,40 @@ namespace org_pqrs_KeyRemap4MacBook {
               FlagStatus::temporary_decrease((*toKeys_)[i].flags);
             }
 
-            if (isLastKeyModifier) {
+            if (isLastKeyModifier || isLastKeyLikeModifier) {
               // restore temporary flag.
               FlagStatus::temporary_increase(fromFlags);
 
               FlagStatus::increase(lastKeyFlags | lastKeyModifierFlag);
               FlagStatus::decrease(fromFlags);
               EventOutputQueue::FireModifiers::fire();
+
+              if (isLastKeyLikeModifier) {
+                Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::DOWN, FlagStatus::makeFlags(), lastKey, remapParams.params.keyboardType, false));
+                if (ptr) {
+                  EventOutputQueue::FireKey::fire(*ptr);
+                }
+              }
             }
 
-            if (isLastKeyModifier) {
+            if (isLastKeyModifier || isLastKeyLikeModifier) {
               KeyboardRepeat::cancel();
             } else {
               keyboardRepeatID_ = KeyboardRepeat::primitive_start();
             }
 
           } else {
-            if (isLastKeyModifier) {
+            if (isLastKeyModifier || isLastKeyLikeModifier) {
               FlagStatus::decrease(lastKeyFlags | lastKeyModifierFlag);
               FlagStatus::increase(fromFlags);
               EventOutputQueue::FireModifiers::fire();
+
+              if (isLastKeyLikeModifier) {
+                Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::UP, FlagStatus::makeFlags(), lastKey, remapParams.params.keyboardType, false));
+                if (ptr) {
+                  EventOutputQueue::FireKey::fire(*ptr);
+                }
+              }
 
             } else {
               if (KeyboardRepeat::getID() == keyboardRepeatID_) {
