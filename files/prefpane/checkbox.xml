@@ -7819,6 +7819,38 @@
       <name>For Japanese</name>
       <list>
         <item>
+          <name>左右のコマンドキー（⌘）を「英数／かな」としても使う</name>
+          <appendix>（左コマンドキーを英数キーにする）</appendix>
+          <appendix>（右コマンドキーをかなキーにする）</appendix>
+          <appendix></appendix>
+          <appendix>（コマンドキーの空打ちで「英数／かな」）</appendix>
+          <appendix>（他のキーと一緒に打つと通常のコマンドキーとして動作する）</appendix>
+          <list>
+            <item>
+              <name>コマンドキーの動作を優先モード</name>
+              <appendix>（コマンドキーを離した時点で英数／かなキーを出力する）</appendix>
+              <identifier>remap.jis_command2eisuukana_prefer_command</identifier>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::JIS_EISUU</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::JIS_KANA</autogen>
+            </item>
+            <item>
+              <name>------------------------------------------------------------</name>
+              <identifier vk_config="true">notsave.jis_command2eisuukana_prefer_eisuukana</identifier>
+              <autogen>--ShowStatusMessage-- Command</autogen>
+            </item>
+            <item>
+              <name>英数／かなキーの動作を優先モード</name>
+              <appendix>（基本的に英数／かなキーとして動作させる）</appendix>
+              <appendix>（コマンドキーとして動作させるにはコマンドキーを長押しする）</appendix>
+              <appendix>（長押しの時間は Key Repeat タブの [Holding Key to Key] Holding Threshold で指定します）</appendix>
+              <identifier>remap.jis_command2eisuukana_prefer_eisuukana</identifier>
+              <autogen>--HoldingKeyToKey-- KeyCode::COMMAND_L, KeyCode::JIS_EISUU, KeyCode::VK_NONE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_jis_command2eisuukana_prefer_eisuukana, ModifierFlag::COMMAND_L</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::COMMAND_R, KeyCode::JIS_KANA,  KeyCode::VK_NONE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_jis_command2eisuukana_prefer_eisuukana, ModifierFlag::COMMAND_R</autogen>
+            </item>
+          </list>
+        </item>
+
+        <item>
           <name>Change Backquote(`) Key</name>
           <list>
             <item>
