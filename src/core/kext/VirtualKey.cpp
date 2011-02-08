@@ -310,6 +310,21 @@ namespace org_pqrs_KeyRemap4MacBook {
     return true;
   }
 
+  bool
+  Handle_VK_CONFIG::is_VK_CONFIG_SYNC_KEYDOWNUP(KeyCode keycode)
+  {
+    IOLockWrapper::ScopedLock lk(lock_);
+
+    if (! items_) return false;
+
+    for (size_t i = 0; i < items_->size(); ++i) {
+      unsigned int keycode_sync_keydownup = (*items_)[i].keycode_sync_keydownup;
+      if (keycode == keycode_sync_keydownup) return true;
+    }
+
+    return false;
+  }
+
   // ----------------------------------------------------------------------
   void
   Handle_VK_MOUSEKEY::initialize(IOWorkLoop& workloop)
