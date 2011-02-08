@@ -432,12 +432,16 @@
           <appendix>Option+Shift_R to Return (+ Holding Option+Shift_R to Space)</appendix>
           <appendix>Shift+A to Option_L+B (+ Holding Shift+A to Command_L+Return)</appendix>
           <appendix>Control+B to Option_L+B,C (+ Holding Control+B to Space)</appendix>
+          <appendix>C to Space (+ Holding C to Shift_L)</appendix>
+          <appendix>D to Shift_L (+ Holding D to Option_L)</appendix>
           <!-- Note: Use KeyCode::VK_NONE as a separator of parameters -->
           <autogen>--HoldingKeyToKey-- KeyCode::ESCAPE, KeyCode::TAB, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
           <autogen>--HoldingKeyToKey-- KeyCode::TAB, KeyCode::A, KeyCode::S, KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::F, KeyCode::VK_NONE, KeyCode::Q, KeyCode::W, KeyCode::E, ModifierFlag::SHIFT_L, KeyCode::R</autogen>
           <autogen>--HoldingKeyToKey-- KeyCode::SHIFT_R, VK_OPTION, KeyCode::RETURN, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
           <autogen>--HoldingKeyToKey-- KeyCode::A, VK_SHIFT, KeyCode::B, ModifierFlag::OPTION_L, KeyCode::VK_NONE, KeyCode::RETURN, ModifierFlag::COMMAND_L</autogen>
           <autogen>--HoldingKeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::B, ModifierFlag::OPTION_L, KeyCode::C, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
+          <autogen>--HoldingKeyToKey-- KeyCode::C, KeyCode::SPACE, KeyCode::VK_NONE, KeyCode::SHIFT_L</autogen>
+          <autogen>--HoldingKeyToKey-- KeyCode::D, KeyCode::SHIFT_L, KeyCode::VK_NONE, KeyCode::OPTION_L</autogen>
         </item>
       </list>
     </item>
