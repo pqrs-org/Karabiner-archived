@@ -33,6 +33,29 @@ NSString* notificationName_lock  = @"Modifier Lock";
 }
 
 // ------------------------------------------------------------
+- (void) displayGrowlNotRunningWarning
+{
+  NSString* message = nil;
+  /*  */ if (! [GrowlApplicationBridge isGrowlInstalled]) {
+    message = @"Growl is not installed.\nPlease install Growl.";
+  } else if (! [GrowlApplicationBridge isGrowlRunning]) {
+    message = @"Growl is not running.\nPlease start Growl.";
+  }
+
+  if (message) {
+    if (! isGrowlNotRunningWarningDisplayed_) {
+      isGrowlNotRunningWarningDisplayed_ = YES;
+
+      NSAlert* alert = [NSAlert alertWithMessageText:@"KeyRemap4MacBook Warning"
+                                       defaultButton:@"Close"
+                                     alternateButton:nil
+                                         otherButton:nil
+                           informativeTextWithFormat:[NSString stringWithFormat:@"KeyRemap4MacBook uses Growl to display extra messages.\n\n%@", message]];
+      [alert runModal];
+    }
+  }
+}
+
 - (void) updateStatusMessage
 {
   NSString* message = nil;
@@ -46,6 +69,7 @@ NSString* notificationName_lock  = @"Modifier Lock";
   if (! [message isEqualToString:[lastMessages_ objectAtIndex:STATUSMESSAGETYPE_LOCK]]) {
     [lastMessages_ replaceObjectAtIndex:STATUSMESSAGETYPE_LOCK withObject:message];
 
+    [self displayGrowlNotRunningWarning];
     [GrowlApplicationBridge
       notifyWithTitle:notificationName_lock
           description:message
@@ -64,6 +88,7 @@ NSString* notificationName_lock  = @"Modifier Lock";
   if ([message length] > 0) {
     [lastMessages_ replaceObjectAtIndex:STATUSMESSAGETYPE_EXTRA withObject:message];
 
+    [self displayGrowlNotRunningWarning];
     [GrowlApplicationBridge
       notifyWithTitle:@"Enabling"
           description:message
@@ -77,6 +102,7 @@ NSString* notificationName_lock  = @"Modifier Lock";
   } else {
     message = [lastMessages_ objectAtIndex:STATUSMESSAGETYPE_EXTRA];
     if ([message length] > 0) {
+      [self displayGrowlNotRunningWarning];
       [GrowlApplicationBridge
         notifyWithTitle:@"Disabling"
             description:message
