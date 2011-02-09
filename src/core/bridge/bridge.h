@@ -44,8 +44,9 @@
 enum {
   // Version 1: initial version
   // Version 2: Added BRIDGE_DATATYPE_DEVICEVENDOR,BRIDGE_DATATYPE_DEVICEPRODUCT,BRIDGE_REMAPTYPE_FORCENUMLOCKON
+  // Version 3: Removed some essential configurations. (parameter.statuswindow_alpha_font, ...)
 
-  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 2,
+  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 3,
 };
 
 enum {
