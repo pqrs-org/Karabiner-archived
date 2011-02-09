@@ -18,6 +18,9 @@
     [animation_ setAnimationBlockingMode:NSAnimationNonblocking];
     [animation_ setAnimationCurve:NSAnimationEaseIn];
     [animation_ setDuration:0];
+
+    // ------------------------------------------------------------
+    [GrowlApplicationBridge setGrowlDelegate:self];
   }
 
   return self;
@@ -27,6 +30,7 @@
 {
   [lines_ release];
   [animation_ release];
+  [messageForGrowl_ release];
 
   [super dealloc];
 }
@@ -78,9 +82,33 @@
       [statuswindow_ setAlphaValue:(CGFloat)(1.0)];
     }
 
+    // ----------------------------------------
+    [messageForGrowl_ release];
+    messageForGrowl_ = [[NSString alloc] initWithString:message];
+
+    [GrowlApplicationBridge
+      notifyWithTitle:@"Enabling"
+          description:messageForGrowl_
+     notificationName:@"Enabled"
+             iconData:nil
+             priority:0
+             isSticky:false
+         clickContext:nil
+           identifier:@"org_pqrs_KeyRemap4MacBook"];
+
   } else {
     // hide
     [statuswindow_ orderOut:nil];
+
+    [GrowlApplicationBridge
+      notifyWithTitle:@"Disabling"
+          description:messageForGrowl_
+     notificationName:@"Disabled"
+             iconData:nil
+             priority:0
+             isSticky:false
+         clickContext:nil
+           identifier:@"org_pqrs_KeyRemap4MacBook"];
   }
 }
 
@@ -151,6 +179,32 @@
   NSTimeInterval duration = (NSTimeInterval)(fadeout_duration) / 1000;
   if (duration < 0) duration = 0;
   [animation_ setDuration:duration];
+}
+
+// ============================================================
+// Growl delegate
+- (NSDictionary*) registrationDictionaryForGrowl
+{
+  NSArray* array = [NSArray arrayWithObjects:@"Enabled", @"Disabled", nil];
+  NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                        [NSNumber numberWithInt:1],
+                        @"TicketVersion",
+                        array,
+                        @"AllNotifications",
+                        array,
+                        @"DefaultNotifications",
+                        nil];
+  return dict;
+}
+
+- (NSString*) applicationNameForGrowl
+{
+  return @"KeyRemap4MacBook";
+}
+
+- (NSData*) applicationIconDataForGrowl
+{
+  return [NSImage imageNamed:@"applicationIconDataForGrowl"];
 }
 
 @end
