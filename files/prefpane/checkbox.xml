@@ -44,22 +44,12 @@
           <name>------------------------------------------------------------</name>
         </item>
         <item>
-          <name>Use Growl instead of StatusWindow</name>
-          <identifier essential="true">general.use_growl_instead_of_statuswindow</identifier>
-        </item>
-        <item>
           <name>Don't show Modifier lock status on screen</name>
           <identifier essential="true">general.hide_statusmessage</identifier>
         </item>
         <item>
           <name>Show Sticky Modifier status on screen</name>
           <identifier essential="true">general.show_sticky_modifier_status</identifier>
-        </item>
-        <item>
-          <name>Continue displaying empty status message</name>
-          <appendix>(This setting is usable when you turn on StatusWindow fade-out feature.)</appendix>
-          <identifier>general.show_empty_status_message</identifier>
-          <autogen>--ShowStatusMessage--</autogen>
         </item>
         <item>
           <name>------------------------------------------------------------</name>
