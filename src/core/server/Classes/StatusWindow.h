@@ -7,7 +7,7 @@
   IBOutlet PreferencesManager* preferencesmanager_;
 
   NSMutableArray* lines_;
-  NSString* messageForGrowl_;
+  NSMutableArray* lastMessages_;
 }
 
 - (void) resetStatusMessage;
