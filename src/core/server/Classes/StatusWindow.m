@@ -3,14 +3,19 @@
 
 @implementation StatusWindow
 
+NSString* notificationName_extra = @"Extra Message";
+NSString* notificationName_lock  = @"Modifier Lock";
+
 - (id) init
 {
   self = [super init];
 
   if (self) {
     lines_ = [NSMutableArray new];
+    lastMessages_ = [NSMutableArray new];
     for (NSUInteger i = 0; i < STATUSMESSAGETYPE__END__; ++i) {
       [lines_ addObject:@""];
+      [lastMessages_ addObject:@""];
     }
 
     [GrowlApplicationBridge setGrowlDelegate:self];
@@ -22,7 +27,7 @@
 - (void) dealloc
 {
   [lines_ release];
-  [messageForGrowl_ release];
+  [lastMessages_ release];
 
   [super dealloc];
 }
@@ -30,44 +35,57 @@
 // ------------------------------------------------------------
 - (void) updateStatusMessage
 {
-  NSMutableString* message = [[NSMutableString new] autorelease];
+  NSString* message = nil;
 
-  for (NSUInteger i = 0; i < STATUSMESSAGETYPE__END__; ++i) {
-    NSString* s = [lines_ objectAtIndex:i];
-    if ([s length] > 0) {
-      [message appendString:s];
-      [message appendString:@"\n"];
-    }
-  }
+  // ------------------------------------------------------------
+  // STATUSMESSAGETYPE_LOCK
+  message = [lines_ objectAtIndex:STATUSMESSAGETYPE_LOCK];
 
-  if ([message length] > 0) {
-    [messageForGrowl_ release];
-    messageForGrowl_ = [[NSString alloc] initWithString:message];
+  BOOL isSticky = ([message length] > 0);
+
+  if (! [message isEqualToString:[lastMessages_ objectAtIndex:STATUSMESSAGETYPE_LOCK]]) {
+    [lastMessages_ replaceObjectAtIndex:STATUSMESSAGETYPE_LOCK withObject:message];
 
     [GrowlApplicationBridge
-        notifyWithTitle:@"Enabling"
-            description:messageForGrowl_
-       notificationName:@"Enabled"
+      notifyWithTitle:notificationName_lock
+          description:message
+      notificationName:notificationName_lock
+             iconData:nil
+             priority:0
+             isSticky:isSticky
+         clickContext:nil
+           identifier:@"org_pqrs_KeyRemap4MacBook_lock"];
+  }
+
+  // ------------------------------------------------------------
+  // STATUSMESSAGETYPE_EXTRA
+  message = [lines_ objectAtIndex:STATUSMESSAGETYPE_EXTRA];
+
+  if ([message length] > 0) {
+    [lastMessages_ replaceObjectAtIndex:STATUSMESSAGETYPE_EXTRA withObject:message];
+
+    [GrowlApplicationBridge
+      notifyWithTitle:@"Enabling"
+          description:[lastMessages_ objectAtIndex:STATUSMESSAGETYPE_EXTRA]
+     notificationName:notificationName_extra
+             iconData:nil
+             priority:0
+             isSticky:YES
+         clickContext:nil
+           identifier:@"org_pqrs_KeyRemap4MacBook_extra"];
+
+  } else {
+    if ([lastMessages_ objectAtIndex:STATUSMESSAGETYPE_EXTRA]) {
+      [GrowlApplicationBridge
+        notifyWithTitle:@"Disabling"
+            description:[lastMessages_ objectAtIndex:STATUSMESSAGETYPE_EXTRA]
+       notificationName:notificationName_extra
                iconData:nil
                priority:0
                isSticky:NO
            clickContext:nil
-             identifier:@"org_pqrs_KeyRemap4MacBook"];
-
-  } else {
-    if (! messageForGrowl_) {
-      messageForGrowl_ = [[NSString alloc] initWithString:@""];
+             identifier:@"org_pqrs_KeyRemap4MacBook_extra"];
     }
-
-    [GrowlApplicationBridge
-          notifyWithTitle:@"Disabling"
-              description:messageForGrowl_
-         notificationName:@"Disabled"
-                 iconData:nil
-                 priority:0
-                 isSticky:NO
-             clickContext:nil
-               identifier:@"org_pqrs_KeyRemap4MacBook"];
   }
 }
 
@@ -97,7 +115,7 @@
 // Growl delegate
 - (NSDictionary*) registrationDictionaryForGrowl
 {
-  NSArray* array = [NSArray arrayWithObjects:@"Enabled", @"Disabled", nil];
+  NSArray* array = [NSArray arrayWithObjects:@"Modifier Lock", @"Extra Message", nil];
   NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
                         [NSNumber numberWithInt:1],
                         @"TicketVersion",
