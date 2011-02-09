@@ -49,7 +49,7 @@ NSString* notificationName_lock  = @"Modifier Lock";
     [GrowlApplicationBridge
       notifyWithTitle:notificationName_lock
           description:message
-      notificationName:notificationName_lock
+     notificationName:notificationName_lock
              iconData:nil
              priority:0
              isSticky:isSticky
@@ -66,7 +66,7 @@ NSString* notificationName_lock  = @"Modifier Lock";
 
     [GrowlApplicationBridge
       notifyWithTitle:@"Enabling"
-          description:[lastMessages_ objectAtIndex:STATUSMESSAGETYPE_EXTRA]
+          description:message
      notificationName:notificationName_extra
              iconData:nil
              priority:0
@@ -75,16 +75,19 @@ NSString* notificationName_lock  = @"Modifier Lock";
            identifier:@"org_pqrs_KeyRemap4MacBook_extra"];
 
   } else {
-    if ([lastMessages_ objectAtIndex:STATUSMESSAGETYPE_EXTRA]) {
+    message = [lastMessages_ objectAtIndex:STATUSMESSAGETYPE_EXTRA];
+    if ([message length] > 0) {
       [GrowlApplicationBridge
         notifyWithTitle:@"Disabling"
-            description:[lastMessages_ objectAtIndex:STATUSMESSAGETYPE_EXTRA]
+            description:message
        notificationName:notificationName_extra
                iconData:nil
                priority:0
                isSticky:NO
            clickContext:nil
              identifier:@"org_pqrs_KeyRemap4MacBook_extra"];
+
+      [lastMessages_ replaceObjectAtIndex:STATUSMESSAGETYPE_EXTRA withObject:@""];
     }
   }
 }
