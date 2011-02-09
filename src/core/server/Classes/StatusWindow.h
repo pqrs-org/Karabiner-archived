@@ -8,6 +8,7 @@
 
   NSMutableArray* lines_;
   NSMutableArray* lastMessages_;
+  BOOL isGrowlNotRunningWarningDisplayed_;
 }
 
 - (void) resetStatusMessage;
