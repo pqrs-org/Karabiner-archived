@@ -1,6 +1,6 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 #import <Cocoa/Cocoa.h>
-#import <Growl-WithInstaller/Growl.h>
+#import <Growl/Growl.h>
 #import "PreferencesManager.h"
 
 @interface StatusWindow : NSObject <GrowlApplicationBridgeDelegate> {
