@@ -37,7 +37,7 @@ NSString* notificationName_lock  = @"Modifier Lock";
 {
   NSString* message = nil;
   /*  */ if (! [GrowlApplicationBridge isGrowlInstalled]) {
-    message = @"Growl is not installed.\nPlease install Growl.";
+    message = @"Growl is not installed.\nPlease install Growl and restart the system.";
   } else if (! [GrowlApplicationBridge isGrowlRunning]) {
     message = @"Growl is not running.\nPlease start Growl.";
   }
