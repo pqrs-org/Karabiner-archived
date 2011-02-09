@@ -33,7 +33,7 @@ NSString* notificationName_lock  = @"Modifier Lock";
 }
 
 // ------------------------------------------------------------
-- (void) displayGrowlNotRunningWarning
+- (BOOL) displayGrowlNotRunningWarning
 {
   NSString* message = nil;
   /*  */ if (! [GrowlApplicationBridge isGrowlInstalled]) {
@@ -53,7 +53,11 @@ NSString* notificationName_lock  = @"Modifier Lock";
                            informativeTextWithFormat:[NSString stringWithFormat:@"KeyRemap4MacBook uses Growl to display extra messages.\n\n%@", message]];
       [alert runModal];
     }
+
+    return YES;
   }
+
+  return NO;
 }
 
 - (void) updateStatusMessage
@@ -69,16 +73,17 @@ NSString* notificationName_lock  = @"Modifier Lock";
   if (! [message isEqualToString:[lastMessages_ objectAtIndex:STATUSMESSAGETYPE_LOCK]]) {
     [lastMessages_ replaceObjectAtIndex:STATUSMESSAGETYPE_LOCK withObject:message];
 
-    [self displayGrowlNotRunningWarning];
-    [GrowlApplicationBridge
-      notifyWithTitle:notificationName_lock
-          description:message
-     notificationName:notificationName_lock
-             iconData:nil
-             priority:0
-             isSticky:isSticky
-         clickContext:nil
-           identifier:@"org_pqrs_KeyRemap4MacBook_lock"];
+    if (! [self displayGrowlNotRunningWarning]) {
+      [GrowlApplicationBridge
+        notifyWithTitle:notificationName_lock
+            description:message
+        notificationName:notificationName_lock
+               iconData:nil
+               priority:0
+               isSticky:isSticky
+           clickContext:nil
+             identifier:@"org_pqrs_KeyRemap4MacBook_lock"];
+    }
   }
 
   // ------------------------------------------------------------
@@ -88,32 +93,34 @@ NSString* notificationName_lock  = @"Modifier Lock";
   if ([message length] > 0) {
     [lastMessages_ replaceObjectAtIndex:STATUSMESSAGETYPE_EXTRA withObject:message];
 
-    [self displayGrowlNotRunningWarning];
-    [GrowlApplicationBridge
-      notifyWithTitle:@"Enabling"
-          description:message
-     notificationName:notificationName_extra
-             iconData:nil
-             priority:0
-             isSticky:YES
-         clickContext:nil
-           identifier:@"org_pqrs_KeyRemap4MacBook_extra"];
+    if (! [self displayGrowlNotRunningWarning]) {
+      [GrowlApplicationBridge
+        notifyWithTitle:@"Enabling"
+            description:message
+        notificationName:notificationName_extra
+               iconData:nil
+               priority:0
+               isSticky:YES
+           clickContext:nil
+             identifier:@"org_pqrs_KeyRemap4MacBook_extra"];
+    }
 
   } else {
     message = [lastMessages_ objectAtIndex:STATUSMESSAGETYPE_EXTRA];
     if ([message length] > 0) {
-      [self displayGrowlNotRunningWarning];
-      [GrowlApplicationBridge
-        notifyWithTitle:@"Disabling"
-            description:message
-       notificationName:notificationName_extra
-               iconData:nil
-               priority:0
-               isSticky:NO
-           clickContext:nil
-             identifier:@"org_pqrs_KeyRemap4MacBook_extra"];
+      if (! [self displayGrowlNotRunningWarning]) {
+        [GrowlApplicationBridge
+          notifyWithTitle:@"Disabling"
+              description:message
+          notificationName:notificationName_extra
+                 iconData:nil
+                 priority:0
+                 isSticky:NO
+             clickContext:nil
+               identifier:@"org_pqrs_KeyRemap4MacBook_extra"];
 
-      [lastMessages_ replaceObjectAtIndex:STATUSMESSAGETYPE_EXTRA withObject:@""];
+        [lastMessages_ replaceObjectAtIndex:STATUSMESSAGETYPE_EXTRA withObject:@""];
+      }
     }
   }
 }
