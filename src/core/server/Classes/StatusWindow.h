@@ -1,8 +1,9 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 #import <Cocoa/Cocoa.h>
+#import <Growl/Growl.h>
 #import "PreferencesManager.h"
 
-@interface StatusWindow : NSObject {
+@interface StatusWindow : NSObject <GrowlApplicationBridgeDelegate> {
   IBOutlet NSWindow* statuswindow_;
   IBOutlet NSTextField* label_;
   IBOutlet NSImageView* backgroud_;
@@ -10,6 +11,7 @@
 
   NSMutableArray* lines_;
   NSViewAnimation* animation_;
+  NSString* messageForGrowl_;
 
   int last_parameter_statuswindow_alpha_font_;
   int last_parameter_statuswindow_alpha_background_;
