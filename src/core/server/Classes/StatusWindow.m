@@ -72,43 +72,54 @@
 
   if ([message length] > 0) {
     // show
-    [statuswindow_ orderFront:nil];
 
-    [animation_ stopAnimation];
-    [animation_ setCurrentProgress:0];
-    if ([animation_ duration] > 0) {
-      [animation_ startAnimation];
+    if (! [preferencesmanager_ value:@"general.use_growl_instead_of_statuswindow"]) {
+      [statuswindow_ orderFront:nil];
+
+      [animation_ stopAnimation];
+      [animation_ setCurrentProgress:0];
+      if ([animation_ duration] > 0) {
+        [animation_ startAnimation];
+      } else {
+        [statuswindow_ setAlphaValue:(CGFloat)(1.0)];
+      }
+
     } else {
-      [statuswindow_ setAlphaValue:(CGFloat)(1.0)];
+      // use Growl
+      [messageForGrowl_ release];
+      messageForGrowl_ = [[NSString alloc] initWithString:message];
+
+      [GrowlApplicationBridge
+        notifyWithTitle:@"Enabling"
+            description:messageForGrowl_
+       notificationName:@"Enabled"
+               iconData:nil
+               priority:0
+               isSticky:NO
+           clickContext:nil
+             identifier:@"org_pqrs_KeyRemap4MacBook"];
     }
-
-    // ----------------------------------------
-    [messageForGrowl_ release];
-    messageForGrowl_ = [[NSString alloc] initWithString:message];
-
-    [GrowlApplicationBridge
-      notifyWithTitle:@"Enabling"
-          description:messageForGrowl_
-     notificationName:@"Enabled"
-             iconData:nil
-             priority:0
-             isSticky:false
-         clickContext:nil
-           identifier:@"org_pqrs_KeyRemap4MacBook"];
 
   } else {
     // hide
-    [statuswindow_ orderOut:nil];
 
-    [GrowlApplicationBridge
-      notifyWithTitle:@"Disabling"
-          description:messageForGrowl_
-     notificationName:@"Disabled"
-             iconData:nil
-             priority:0
-             isSticky:false
-         clickContext:nil
-           identifier:@"org_pqrs_KeyRemap4MacBook"];
+    if (! [preferencesmanager_ value:@"general.use_growl_instead_of_statuswindow"]) {
+      [statuswindow_ orderOut:nil];
+
+    } else {
+      // use Growl
+      if (messageForGrowl_) {
+        [GrowlApplicationBridge
+          notifyWithTitle:@"Disabling"
+              description:messageForGrowl_
+         notificationName:@"Disabled"
+                 iconData:nil
+                 priority:0
+                 isSticky:NO
+             clickContext:nil
+               identifier:@"org_pqrs_KeyRemap4MacBook"];
+      }
+    }
   }
 }
 
