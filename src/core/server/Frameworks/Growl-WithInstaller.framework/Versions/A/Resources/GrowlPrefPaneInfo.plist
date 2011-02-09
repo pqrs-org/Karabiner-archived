@@ -6,19 +6,29 @@
 	<string>English</string>
 	<key>CFBundleExecutable</key>
 	<string>Growl</string>
+	<key>CFBundleIconFile</key>
+	<string>growl-icon.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.growl.growlframework</string>
+	<string>com.growl.prefpanel</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
-	<string>FMWK</string>
+	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.2.1</string>
+	<string>1.2.2b1</string>
 	<key>CFBundleSignature</key>
-	<string>GRRR</string>
+	<string>GPAN</string>
 	<key>CFBundleVersion</key>
-	<string>1.2.1</string>
+	<string>1.2.2b1</string>
+	<key>GrowlHgRevision</key>
+	<string>4670</string>
+	<key>NSMainNibFile</key>
+	<string>GrowlPref</string>
+	<key>NSPrefPaneIconFile</key>
+	<string>growl-claw32.tiff</string>
+	<key>NSPrefPaneIconLabel</key>
+	<string>Growl</string>
 	<key>NSPrincipalClass</key>
-	<string>GrowlApplicationBridge</string>
+	<string>GrowlPreferencePane</string>
 </dict>
 </plist>

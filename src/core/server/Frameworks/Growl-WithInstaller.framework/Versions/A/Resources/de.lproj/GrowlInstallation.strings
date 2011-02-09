@@ -1,0 +1,29 @@
+��<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Growl Installation Recommended</key>
+	<string>Growl Installation Empfohlen</string>
+
+	<key>Growl Update Available</key>
+	<string>Growl Update Verfügbar</string>
+
+	<key>This program displays information via Growl, a centralized notification system that enables applications to unobtrusively inform the user about potentially important information.  Growl is not currently installed; to see Growl notifications from this and other applications, you must install it.  No download is required.</key>
+	<string>Dieses Programm benutzt Growl, ein zentrales Benachrichtigungssystem, um Informationen anzuzeigen.  Growl ist momentan nicht installiert; um Growl Benachrichtigungen von dieser und anderen Anwendungen zu erhalten, muss Growl installiert werden.  Kein Download wird benötigt.</string>
+
+	<key>This program displays information via Growl, a centralized notification system that enables applications to unobtrusively inform the user about potentially important information.  A version of Growl is currently installed, but this program includes an updated version of Growl.  It is strongly recommended that you update now.  No download is required.</key>
+	<string>Dieses Programm benutzt Growl, ein zentrales Benachrichtigungssystem, um Informationen anzuzeigen.  Eine Version von Growl ist momentan installiert, aber dieses Programm enthält eine neuere Version von Growl.  Es wird dringend empfohlen, die neuere Version zu installieren.  Kein Download wird benötigt.</string>
+
+	<key>Install</key>
+	<string>Installieren</string>
+
+	<key>Update</key>
+	<string>Aktualisieren</string>
+
+	<key>Cancel</key>
+	<string>Abbrechen</string>
+
+	<key>Don't Ask Again</key>
+	<string>Nicht nochmal fragen</string>
+</dict>
+</plist>
