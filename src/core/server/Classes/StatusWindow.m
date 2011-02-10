@@ -33,6 +33,7 @@ NSString* notificationName_lock  = @"Modifier Lock";
 }
 
 // ------------------------------------------------------------
+// return YES if Growl is not running.
 - (BOOL) displayGrowlNotRunningWarning
 {
   NSString* message1 = @"KeyRemap4MacBook uses Growl to display extra messages.";
@@ -45,7 +46,9 @@ NSString* notificationName_lock  = @"Modifier Lock";
   }
   if (! message2) return NO;
 
-  NSString* message3 = @"(Activate \"General > suppress Growl warning\" in System Preference to hide this message.)";
+  NSString* message3 = @"(Activate \"General > Suppress Growl warning\" in System Preference to hide this message.)";
+
+  if ([preferencesmanager_ value:@"general.suppress_growl_warning"]) return YES;
 
   @synchronized(self) {
     if (! isGrowlNotRunningWarningDisplayed_) {
@@ -60,6 +63,7 @@ NSString* notificationName_lock  = @"Modifier Lock";
       [alert runModal];
     }
   }
+
   return YES;
 }
 
