@@ -1,9 +1,8 @@
 Changes since 7.0.0
     - Added setting to be able to use "Logitech Number Pad" which we cannot use in Mac OS X.
       Activate "Change KeyPad Key > Logitech Number Pad Hack".
-    - Added the fade-out feature to StatusWindow.
-      Set "[StatusWindow] FadeOut Duration" in "Key Repeat" tab to activate fade-out.
-      (It's useful using "General > Continue displaying empty status message" together.)
+    - Replaced StatusWindow with Growl.
+      http://pqrs.org/macosx/keyremap4macbook/img/growl.png
     - Improve UI of checkForUpdate.
     - Fixed some bugs.
     - Added about XXX kinds settings.
