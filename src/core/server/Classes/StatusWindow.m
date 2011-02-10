@@ -44,7 +44,11 @@ NSString* notificationName_lock  = @"Modifier Lock";
   } else if (! [GrowlApplicationBridge isGrowlRunning]) {
     message2 = @"* Growl is not running.\n* Please start Growl.";
   }
-  if (! message2) return NO;
+  if (! message2) {
+    // clear isGrowlNotRunningWarningDisplayed_
+    isGrowlNotRunningWarningDisplayed_ = NO;
+    return NO;
+  }
 
   NSString* message3 = @"(Activate \"General > Suppress Growl warning\" in System Preference to hide this message.)";
 
