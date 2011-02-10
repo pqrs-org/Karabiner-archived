@@ -35,14 +35,19 @@ NSString* notificationName_lock  = @"Modifier Lock";
 // ------------------------------------------------------------
 - (BOOL) displayGrowlNotRunningWarning
 {
-  NSString* message = nil;
-  /*  */ if (! [GrowlApplicationBridge isGrowlInstalled]) {
-    message = @"Growl is not installed.\nPlease install Growl and restart the system.";
-  } else if (! [GrowlApplicationBridge isGrowlRunning]) {
-    message = @"Growl is not running.\nPlease start Growl.";
-  }
+  NSString* message1 = @"KeyRemap4MacBook uses Growl to display extra messages.";
 
-  if (message) {
+  NSString* message2 = nil;
+  /*  */ if (! [GrowlApplicationBridge isGrowlInstalled]) {
+    message2 = @"* Growl is not installed.\n* Please install Growl and restart the system.";
+  } else if (! [GrowlApplicationBridge isGrowlRunning]) {
+    message2 = @"* Growl is not running.\n* Please start Growl.";
+  }
+  if (! message2) return NO;
+
+  NSString* message3 = @"(Activate \"General > suppress Growl warning\" in System Preference to hide this message.)";
+
+  @synchronized(self) {
     if (! isGrowlNotRunningWarningDisplayed_) {
       isGrowlNotRunningWarningDisplayed_ = YES;
 
@@ -50,14 +55,12 @@ NSString* notificationName_lock  = @"Modifier Lock";
                                        defaultButton:@"Close"
                                      alternateButton:nil
                                          otherButton:nil
-                           informativeTextWithFormat:[NSString stringWithFormat:@"KeyRemap4MacBook uses Growl to display extra messages.\n\n%@", message]];
+                           informativeTextWithFormat:[NSString stringWithFormat:@"%@\n\n%@\n\n%@", message1, message2, message3]];
+
       [alert runModal];
     }
-
-    return YES;
   }
-
-  return NO;
+  return YES;
 }
 
 - (void) updateStatusMessage
@@ -77,7 +80,7 @@ NSString* notificationName_lock  = @"Modifier Lock";
       [GrowlApplicationBridge
         notifyWithTitle:notificationName_lock
             description:message
-        notificationName:notificationName_lock
+       notificationName:notificationName_lock
                iconData:nil
                priority:0
                isSticky:isSticky
@@ -97,7 +100,7 @@ NSString* notificationName_lock  = @"Modifier Lock";
       [GrowlApplicationBridge
         notifyWithTitle:@"Enabling"
             description:message
-        notificationName:notificationName_extra
+       notificationName:notificationName_extra
                iconData:nil
                priority:0
                isSticky:YES
@@ -112,7 +115,7 @@ NSString* notificationName_lock  = @"Modifier Lock";
         [GrowlApplicationBridge
           notifyWithTitle:@"Disabling"
               description:message
-          notificationName:notificationName_extra
+         notificationName:notificationName_extra
                  iconData:nil
                  priority:0
                  isSticky:NO
@@ -170,7 +173,7 @@ NSString* notificationName_lock  = @"Modifier Lock";
 
 - (NSData*) applicationIconDataForGrowl
 {
-  return [NSImage imageNamed:@"applicationIconDataForGrowl"];
+  return [NSImage imageNamed:@"app.icon"];
 }
 
 @end

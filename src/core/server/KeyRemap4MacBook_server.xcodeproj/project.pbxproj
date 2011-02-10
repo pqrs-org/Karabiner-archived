@@ -10,7 +10,7 @@
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* KeyRemap4MacBook_serverAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* KeyRemap4MacBook_serverAppDelegate.m */; };
 		340A058F1302CE8B00B7E1B1 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 342FD2B81302CD8A00491C16 /* Growl.framework */; };
-		342284191302DD4400DA6EB8 /* applicationIconDataForGrowl.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 342284181302DD4400DA6EB8 /* applicationIconDataForGrowl.tiff */; };
+		342284191302DD4400DA6EB8 /* app.icon.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 342284181302DD4400DA6EB8 /* app.icon.tiff */; };
 		342917DD1296AA4100A5CB12 /* ConfigXMLParser+PreferencePane.m in Sources */ = {isa = PBXBuildFile; fileRef = 342917DB1296AA4100A5CB12 /* ConfigXMLParser+PreferencePane.m */; };
 		342917F81296AD2600A5CB12 /* ConfigXMLParser+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 342917F71296AD2600A5CB12 /* ConfigXMLParser+Private.m */; };
 		342FD2B91302CD8A00491C16 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 342FD2B81302CD8A00491C16 /* Growl.framework */; };
@@ -61,7 +61,7 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		34018E4010A02C2B00653322 /* bridge.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = bridge.hpp; path = ../bridge/bridge.hpp; sourceTree = SOURCE_ROOT; };
-		342284181302DD4400DA6EB8 /* applicationIconDataForGrowl.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = applicationIconDataForGrowl.tiff; path = Resources/applicationIconDataForGrowl.tiff; sourceTree = "<group>"; };
+		342284181302DD4400DA6EB8 /* app.icon.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = app.icon.tiff; path = Resources/app.icon.tiff; sourceTree = "<group>"; };
 		342917DB1296AA4100A5CB12 /* ConfigXMLParser+PreferencePane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ConfigXMLParser+PreferencePane.m"; path = "Classes/ConfigXMLParser+PreferencePane.m"; sourceTree = "<group>"; };
 		342917F71296AD2600A5CB12 /* ConfigXMLParser+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ConfigXMLParser+Private.m"; path = "Classes/ConfigXMLParser+Private.m"; sourceTree = "<group>"; };
 		342FD2B81302CD8A00491C16 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Frameworks/Growl.framework; sourceTree = "<group>"; };
@@ -195,7 +195,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				342284181302DD4400DA6EB8 /* applicationIconDataForGrowl.tiff */,
+				342284181302DD4400DA6EB8 /* app.icon.tiff */,
 				345248A21298F8A2005447DE /* private.xml */,
 				34FB9594128FCC030088B235 /* include.bridge_essential_config_index.plist */,
 				349B509E12837E64009108FE /* include.keycode.plist */,
@@ -277,7 +277,7 @@
 				349B509F12837E64009108FE /* include.keycode.plist in Resources */,
 				34FB9595128FCC030088B235 /* include.bridge_essential_config_index.plist in Resources */,
 				345248A31298F8A2005447DE /* private.xml in Resources */,
-				342284191302DD4400DA6EB8 /* applicationIconDataForGrowl.tiff in Resources */,
+				342284191302DD4400DA6EB8 /* app.icon.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
