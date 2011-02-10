@@ -2,7 +2,10 @@ Changes since 7.0.0
     - Added setting to be able to use "Logitech Number Pad" which we cannot use in Mac OS X.
       Activate "Change KeyPad Key > Logitech Number Pad Hack".
     - Replaced StatusWindow with Growl.
+      StatusWindow was displaying the lock state of modifiers and extra message.
+      Now, these messages are shown by Growl.
       http://pqrs.org/macosx/keyremap4macbook/img/growl.png
+      http://growl.info/
     - Improve UI of checkForUpdate.
     - Fixed some bugs.
     - Added about XXX kinds settings.
