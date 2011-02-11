@@ -52,6 +52,10 @@
     return [configxmlparser_ keycode:@"ApplicationType::VI"];
   }
 
+  if ([name hasPrefix:@"com.macromates.textmate"]) {
+    return [configxmlparser_ keycode:@"ApplicationType::TEXTMATE"];
+  }
+
   if ([name isEqualToString:@"com.apple.Terminal"]    ||
       [name isEqualToString:@"iTerm"]                 ||
       [name isEqualToString:@"net.sourceforge.iTerm"] ||
