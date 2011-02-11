@@ -6,6 +6,9 @@ EMACS                   --AUTO--
 // Vim, ...
 VI                      --AUTO--
 
+// TextMate
+TEXTMATE                --AUTO--
+
 // Terminal.app, iTerm.app, ...
 TERMINAL                --AUTO--
 
