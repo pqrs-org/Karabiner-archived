@@ -162,14 +162,18 @@ NSString* notificationName_lock  = @"Modifier Lock";
 // Growl delegate
 - (NSDictionary*) registrationDictionaryForGrowl
 {
-  NSArray* array = [NSArray arrayWithObjects:@"Modifier Lock", @"Extra Message", nil];
+  NSArray* array = [NSArray arrayWithObjects:notificationName_lock, notificationName_extra, nil];
   NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
+
                         [NSNumber numberWithInt:1],
                         @"TicketVersion",
+
                         array,
                         @"AllNotifications",
+
                         array,
                         @"DefaultNotifications",
+
                         nil];
   return dict;
 }
