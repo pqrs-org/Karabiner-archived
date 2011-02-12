@@ -3723,6 +3723,13 @@
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::CAPSLOCK</autogen>
         </item>
         <item>
+          <name>Shift_L to turn off CapsLock</name>
+          <appendix>(+ Retain Shift_L movement)</appendix>
+          <identifier>remap.shiftL2turnoffcapslock</identifier>
+          <modifier_only>ModifierFlag::CAPSLOCK</modifier_only>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::CAPSLOCK, KeyCode::SHIFT_L</autogen>
+        </item>
+        <item>
           <name>Shift_L to Command_L</name>
           <identifier>remap.shiftL2commandL</identifier>
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::COMMAND_L</autogen>
@@ -3841,6 +3848,13 @@
     <item>
       <name>Change Shift_R Key (Right Shift)</name>
       <list>
+        <item>
+          <name>Shift_R to turn off CapsLock</name>
+          <appendix>(+ Retain Shift_R movement)</appendix>
+          <identifier>remap.shiftR2turnoffcapslock</identifier>
+          <modifier_only>ModifierFlag::CAPSLOCK</modifier_only>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::CAPSLOCK, KeyCode::SHIFT_R</autogen>
+        </item>
         <item>
           <name>Shift_R to Command_L</name>
           <identifier>remap.shiftR2commandL</identifier>
