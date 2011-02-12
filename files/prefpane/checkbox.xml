@@ -6886,6 +6886,11 @@
               <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
             </item>
             <item>
+              <name>Application Key to Option_L+Space</name>
+              <identifier>remap.pc_application2optionLspace</identifier>
+              <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::SPACE, ModifierFlag::OPTION_L</autogen>
+            </item>
+            <item>
               <name>Application Key to Underscore(Shift_L+Minus)</name>
               <identifier>remap.pc_application2underscore</identifier>
               <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::MINUS, ModifierFlag::SHIFT_L</autogen>
