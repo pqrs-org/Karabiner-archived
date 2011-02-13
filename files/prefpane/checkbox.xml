@@ -2182,6 +2182,13 @@
         </item>
         <item><name>------------------------------------------------------------</name></item>
         <item>
+          <name>"Rewind/Fast-Forward" to "beginning/end of line" (Command+Left/Right-Arrow)</name>
+          <identifier>remap.musicprevnext_to_home_end</identifier>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PREV, KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_NEXT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item><name>------------------------------------------------------------</name></item>
+        <item>
           <name>Dashboard to F8</name>
           <identifier>remap.dashboard2f8</identifier>
           <autogen>--KeyToKey-- KeyCode::DASHBOARD, KeyCode::F8</autogen>
