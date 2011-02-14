@@ -14,6 +14,8 @@
 @interface KeyRemap4MacBook_multitouchextensionAppDelegate : NSObject <NSApplicationDelegate> {
   NSStatusItem* statusItem_;
   NSMutableArray* mtdevices_;
+
+  IBOutlet NSWindow* preferencesWindow_;
   IBOutlet NSMenu* statusMenu_;
   IBOutlet NSMenuItem* startAtLoginMenuItem_;
   IBOutlet org_pqrs_KeyRemap4MacBook_Client* client_;
