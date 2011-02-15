@@ -6,6 +6,7 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
+#include <IOKit/IOKitLib.h>
 #import "KeyRemap4MacBook_multitouchextensionAppDelegate.h"
 
 @implementation KeyRemap4MacBook_multitouchextensionAppDelegate
@@ -194,91 +195,6 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
 // ------------------------------------------------------------
 - (IBAction) quit:(id)sender {
   [NSApp terminate:self];
-}
-
-// ------------------------------------------------------------
-- (NSURL*) appURL {
-  return [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
-}
-
-- (LSSharedFileListItemRef) getLSSharedFileListItemRef:(LSSharedFileListRef)loginItems {
-  if (! loginItems) return NULL;
-
-  LSSharedFileListItemRef retval = NULL;
-  NSURL* appURL = [self appURL];
-
-  UInt32 seed = 0U;
-  NSArray* currentLoginItems = [NSMakeCollectable (LSSharedFileListCopySnapshot(loginItems, &seed))autorelease];
-  for (id itemObject in currentLoginItems) {
-    LSSharedFileListItemRef item = (LSSharedFileListItemRef)itemObject;
-
-    UInt32 resolutionFlags = kLSSharedFileListNoUserInteraction | kLSSharedFileListDoNotMountVolumes;
-    CFURLRef url = NULL;
-    OSStatus err = LSSharedFileListItemResolve(item, resolutionFlags, &url, NULL);
-    if (err == noErr) {
-      BOOL foundIt = CFEqual(url, appURL);
-      CFRelease(url);
-
-      if (foundIt) {
-        retval = item;
-        break;
-      }
-    }
-  }
-
-  return retval;
-}
-
-- (BOOL) isStartAtLogin {
-  LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
-  if (! loginItems) return NO;
-
-  LSSharedFileListItemRef item = [self getLSSharedFileListItemRef:loginItems];
-  CFRelease(loginItems);
-
-  return item != NULL;
-}
-
-- (void) enableStartAtLogin {
-  LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
-  if (! loginItems) return;
-
-  NSURL* appURL = [self appURL];
-  LSSharedFileListItemRef item = LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemLast, NULL, NULL, (CFURLRef)(appURL), NULL, NULL);
-  if (item) {
-    CFRelease(item);
-  }
-  CFRelease(loginItems);
-}
-
-- (void) disableStartAtLogin {
-  LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
-  if (! loginItems) return;
-
-  LSSharedFileListItemRef item = [self getLSSharedFileListItemRef:loginItems];
-  if (item) {
-    LSSharedFileListItemRemove(loginItems, item);
-  }
-  CFRelease(loginItems);
-}
-
-// ------------------------------------------------------------
-- (IBAction) setStartAtLogin:(id)sender {
-  if ([self isStartAtLogin]) {
-    [self disableStartAtLogin];
-    [sender setState:NSOffState];
-  } else {
-    [self enableStartAtLogin];
-    [sender setState:NSOnState];
-  }
-}
-
-- (void) menuNeedsUpdate:(NSMenu*)menu {
-  if ([self isStartAtLogin]) {
-    [startAtLoginMenuItem_ setState:NSOnState];
-  } else {
-    [startAtLoginMenuItem_ setState:NSOffState];
-  }
 }
 
 @end
