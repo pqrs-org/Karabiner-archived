@@ -168,6 +168,8 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
 
 // ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
+  [preferences_ load];
+
   global_client_ = client_;
   global_mtdevices_ = mtdevices_;
   [self setNotification];
