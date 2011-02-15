@@ -17,6 +17,5 @@
 }
 
 - (void) load;
-- (void) showWindow;
 
 @end
