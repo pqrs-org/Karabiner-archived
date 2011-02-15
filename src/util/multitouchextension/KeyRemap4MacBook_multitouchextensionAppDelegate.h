@@ -8,20 +8,18 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#include <IOKit/IOKitLib.h>
 #import "KeyRemap4MacBookClient.h"
+#import "PreferencesController.h"
 
 @interface KeyRemap4MacBook_multitouchextensionAppDelegate : NSObject <NSApplicationDelegate> {
   NSStatusItem* statusItem_;
   NSMutableArray* mtdevices_;
 
-  IBOutlet NSWindow* preferencesWindow_;
   IBOutlet NSMenu* statusMenu_;
-  IBOutlet NSMenuItem* startAtLoginMenuItem_;
+  IBOutlet PreferencesController* preferences_;
   IBOutlet org_pqrs_KeyRemap4MacBook_Client* client_;
 }
 
 - (IBAction) quit:(id)sender;
-- (IBAction) setStartAtLogin:(id)sender;
 
 @end
