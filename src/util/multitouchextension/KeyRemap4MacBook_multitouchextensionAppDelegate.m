@@ -9,6 +9,9 @@
 #include <IOKit/IOKitLib.h>
 #import "KeyRemap4MacBook_multitouchextensionAppDelegate.h"
 
+enum { MAX_FINGERS = 3 };
+static int current_status_[MAX_FINGERS];
+
 @implementation KeyRemap4MacBook_multitouchextensionAppDelegate
 
 - (id) init
@@ -17,6 +20,9 @@
 
   if (self) {
     mtdevices_ = [NSMutableArray new];
+    for (int i = 0; i < MAX_FINGERS; ++i) {
+      current_status_[i] = 0;
+    }
   }
 
   return self;
@@ -43,57 +49,86 @@ void MTDeviceStop(MTDeviceRef, int);
 org_pqrs_KeyRemap4MacBook_Client* global_client_ = nil;
 NSMutableArray* global_mtdevices_ = nil;
 
-static void setPreference(int newvalue) {
+static void setPreference(int fingers, int newvalue) {
   NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
-  [[global_client_ proxy] setValueForName:newvalue forName:@"notsave.pointing_relative_to_scroll"];
+  {
+    NSString* name = [[NSUserDefaults standardUserDefaults] stringForKey:[NSString stringWithFormat:@"targetSetting%d", fingers]];
+    if ([name length] > 0) {
+      [[global_client_ proxy] setValueForName:newvalue forName:name];
+    }
+  }
   [pool drain];
+}
+
+static void resetPreferences(void)
+{
+  for (int i = 0; i < MAX_FINGERS; ++i) {
+    setPreference(i + 1, 0);
+  }
 }
 
 // ------------------------------------------------------------
 // Multitouch callback
 static int callback(int device, struct Finger* data, int fingers, double timestamp, int frame) {
-  static int current = 0;
-  int newstatus = (fingers >= 3 ? 1 : 0);
+  NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+  {
+    // deactivate settings first.
+    for (int i = 0; i < MAX_FINGERS; ++i) {
+      if (current_status_[i] && fingers != i + 1) {
+        current_status_[i] = 0;
+        setPreference(i + 1, 0);
+      }
+    }
 
-  if (current != newstatus) {
-    current = newstatus;
-    setPreference(current);
+    if (fingers > 0 && current_status_[fingers - 1] == 0) {
+      current_status_[fingers - 1] = 1;
+
+      NSString* enabled = [[NSUserDefaults standardUserDefaults] stringForKey:[NSString stringWithFormat:@"targetSettingIsEnabled%d", fingers]];
+      if ([enabled isEqualToString:@"YES"]) {
+        setPreference(fingers, 1);
+      }
+    }
   }
+  [pool drain];
 
   return 0;
 }
 
 static void setcallback(BOOL isset) {
-  NSArray* list = nil;
-  NSEnumerator* e = nil;
+  NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+  {
+    NSArray* list = nil;
+    NSEnumerator* e = nil;
 
-  list = (NSArray*)(MTDeviceCreateList());
-  if (! list) goto finish;
+    list = (NSArray*)(MTDeviceCreateList());
+    if (! list) goto finish;
 
-  e = [list objectEnumerator];
-  if (! e) goto finish;
+    e = [list objectEnumerator];
+    if (! e) goto finish;
 
-  for (;;) {
-    MTDeviceRef device = [e nextObject];
-    if (! device) break;
+    for (;;) {
+      MTDeviceRef device = [e nextObject];
+      if (! device) break;
 
-    // We need retain 'device' to prevent a mysterious crash.
-    // So, we append 'device' to global_mtdevices_.
-    if ([global_mtdevices_ indexOfObject:device] == NSNotFound) {
-      [global_mtdevices_ addObject:device];
+      // We need retain 'device' to prevent a mysterious crash.
+      // So, we append 'device' to global_mtdevices_.
+      if ([global_mtdevices_ indexOfObject:device] == NSNotFound) {
+        [global_mtdevices_ addObject:device];
+      }
+
+      if (isset) {
+        MTRegisterContactFrameCallback(device, callback);
+        MTDeviceStart(device, 0);
+      } else {
+        MTUnregisterContactFrameCallback(device, callback);
+        MTDeviceStop(device, 0);
+      }
     }
 
-    if (isset) {
-      MTRegisterContactFrameCallback(device, callback);
-      MTDeviceStart(device, 0);
-    } else {
-      MTUnregisterContactFrameCallback(device, callback);
-      MTDeviceStop(device, 0);
-    }
+  finish:
+    [list release];
   }
-
-finish:
-  [list release];
+  [pool drain];
 }
 
 // ------------------------------------------------------------
@@ -101,7 +136,7 @@ finish:
 static void observer_refresh(void* refcon, io_iterator_t iterator) {
   NSLog(@"[INFO] observer_refresh called\n");
 
-  setPreference(0);
+  resetPreferences();
 
   bool isfound = false;
   while (IOIteratorNext(iterator)) {
@@ -189,7 +224,7 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
 - (void) applicationWillTerminate:(NSNotification*)aNotification {
   setcallback(NO);
 
-  setPreference(0);
+  resetPreferences();
 
   [statusItem_ release];
 }
