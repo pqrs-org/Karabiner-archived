@@ -18,4 +18,8 @@
 
 - (void) load;
 
+- (IBAction) show:(id)sender;
+- (IBAction) setStartAtLogin:(id)sender;
+- (IBAction) set:(id)sender;
+
 @end

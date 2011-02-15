@@ -74,4 +74,32 @@
   }
 }
 
+- (IBAction) show:(id)sender
+{
+  [NSApp activateIgnoringOtherApps:YES];
+  [preferencesWindow_ makeKeyAndOrderFront:nil];
+}
+
+- (IBAction) setStartAtLogin:(id)sender
+{
+  // startAtLogin
+  if ([StartAtLoginController isStartAtLogin]) {
+    [StartAtLoginController setStartAtLogin:NO];
+  } else {
+    [StartAtLoginController setStartAtLogin:YES];
+  }
+}
+
+- (IBAction) set:(id)sender
+{
+  NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+
+  [defaults setObject:([targetSettingIsEnabled1_ state] == NSOnState ? @"YES" : @"NO") forKey:@"targetSettingIsEnabled1"];
+  [defaults setObject:([targetSettingIsEnabled2_ state] == NSOnState ? @"YES" : @"NO") forKey:@"targetSettingIsEnabled2"];
+  [defaults setObject:([targetSettingIsEnabled3_ state] == NSOnState ? @"YES" : @"NO") forKey:@"targetSettingIsEnabled3"];
+  [defaults setObject:[targetSetting1_ stringValue] forKey:@"targetSetting1"];
+  [defaults setObject:[targetSetting2_ stringValue] forKey:@"targetSetting2"];
+  [defaults setObject:[targetSetting3_ stringValue] forKey:@"targetSetting3"];
+}
+
 @end

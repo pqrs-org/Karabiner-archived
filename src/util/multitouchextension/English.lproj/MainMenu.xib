@@ -87,7 +87,7 @@
 				<int key="NSWindowStyleMask">3</int>
 				<int key="NSWindowBacking">2</int>
 				<string key="NSWindowRect">{{196, 240}, {480, 270}}</string>
-				<int key="NSWTFlags">1685585920</int>
+				<int key="NSWTFlags">1685586944</int>
 				<string key="NSWindowTitle">KeyRemap4MacBook_multitouchextension</string>
 				<string key="NSWindowClass">NSWindow</string>
 				<nil key="NSViewClass"/>
@@ -102,6 +102,7 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{18, 234}, {107, 18}}</string>
 							<reference key="NSSuperview" ref="569484942"/>
+							<int key="NSTag">100</int>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="1010893051">
 								<int key="NSCellFlags">-2080244224</int>
@@ -113,6 +114,7 @@
 									<int key="NSfFlags">1044</int>
 								</object>
 								<reference key="NSControlView" ref="1038345141"/>
+								<int key="NSTag">100</int>
 								<int key="NSButtonFlags">1211912703</int>
 								<int key="NSButtonFlags2">2</int>
 								<object class="NSCustomResource" key="NSNormalImage" id="774833884">
@@ -143,6 +145,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{16, 153}, {326, 18}}</string>
 											<reference key="NSSuperview" ref="402610028"/>
+											<int key="NSTag">10</int>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSButtonCell" key="NSCell" id="195855333">
 												<int key="NSCellFlags">-2080244224</int>
@@ -197,6 +200,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{136, 128}, {290, 22}}</string>
 											<reference key="NSSuperview" ref="402610028"/>
+											<int key="NSTag">11</int>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="488685659">
 												<int key="NSCellFlags">-1804468671</int>
@@ -227,6 +231,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{136, 72}, {290, 22}}</string>
 											<reference key="NSSuperview" ref="402610028"/>
+											<int key="NSTag">21</int>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="434415226">
 												<int key="NSCellFlags">-1804468671</int>
@@ -244,6 +249,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{16, 97}, {333, 18}}</string>
 											<reference key="NSSuperview" ref="402610028"/>
+											<int key="NSTag">20</int>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSButtonCell" key="NSCell" id="469811909">
 												<int key="NSCellFlags">-2080244224</int>
@@ -266,6 +272,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{16, 39}, {342, 18}}</string>
 											<reference key="NSSuperview" ref="402610028"/>
+											<int key="NSTag">30</int>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSButtonCell" key="NSCell" id="205345068">
 												<int key="NSCellFlags">-2080244224</int>
@@ -364,6 +371,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{136, 14}, {290, 22}}</string>
 											<reference key="NSSuperview" ref="402610028"/>
+											<int key="NSTag">31</int>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="387035807">
 												<int key="NSCellFlags">-1804468671</int>
@@ -412,7 +420,7 @@
 				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
 				<string key="NSMaxSize">{1.79769e+308, 1.79769e+308}</string>
 			</object>
-			<object class="NSCustomObject" id="16362139">
+			<object class="NSCustomObject" id="864646786">
 				<string key="NSClassName">PreferencesController</string>
 			</object>
 		</object>
@@ -462,7 +470,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">preferencesWindow_</string>
-						<reference key="source" ref="16362139"/>
+						<reference key="source" ref="864646786"/>
 						<reference key="destination" ref="267839961"/>
 					</object>
 					<int key="connectionID">611</int>
@@ -470,7 +478,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">startAtLogin_</string>
-						<reference key="source" ref="16362139"/>
+						<reference key="source" ref="864646786"/>
 						<reference key="destination" ref="1038345141"/>
 					</object>
 					<int key="connectionID">612</int>
@@ -478,7 +486,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">targetSetting1_</string>
-						<reference key="source" ref="16362139"/>
+						<reference key="source" ref="864646786"/>
 						<reference key="destination" ref="5183858"/>
 					</object>
 					<int key="connectionID">613</int>
@@ -486,7 +494,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">targetSetting2_</string>
-						<reference key="source" ref="16362139"/>
+						<reference key="source" ref="864646786"/>
 						<reference key="destination" ref="481124554"/>
 					</object>
 					<int key="connectionID">614</int>
@@ -494,7 +502,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">targetSetting3_</string>
-						<reference key="source" ref="16362139"/>
+						<reference key="source" ref="864646786"/>
 						<reference key="destination" ref="523547160"/>
 					</object>
 					<int key="connectionID">615</int>
@@ -502,7 +510,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">targetSettingIsEnabled1_</string>
-						<reference key="source" ref="16362139"/>
+						<reference key="source" ref="864646786"/>
 						<reference key="destination" ref="512732755"/>
 					</object>
 					<int key="connectionID">616</int>
@@ -510,7 +518,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">targetSettingIsEnabled2_</string>
-						<reference key="source" ref="16362139"/>
+						<reference key="source" ref="864646786"/>
 						<reference key="destination" ref="22375971"/>
 					</object>
 					<int key="connectionID">617</int>
@@ -518,7 +526,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">targetSettingIsEnabled3_</string>
-						<reference key="source" ref="16362139"/>
+						<reference key="source" ref="864646786"/>
 						<reference key="destination" ref="295192331"/>
 					</object>
 					<int key="connectionID">618</int>
@@ -527,17 +535,89 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">preferences_</string>
 						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="16362139"/>
+						<reference key="destination" ref="864646786"/>
 					</object>
 					<int key="connectionID">619</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">orderFront:</string>
+						<string key="label">set:</string>
+						<reference key="source" ref="864646786"/>
+						<reference key="destination" ref="512732755"/>
+					</object>
+					<int key="connectionID">624</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">set:</string>
+						<reference key="source" ref="864646786"/>
+						<reference key="destination" ref="5183858"/>
+					</object>
+					<int key="connectionID">625</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">set:</string>
+						<reference key="source" ref="864646786"/>
+						<reference key="destination" ref="22375971"/>
+					</object>
+					<int key="connectionID">626</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">set:</string>
+						<reference key="source" ref="864646786"/>
+						<reference key="destination" ref="481124554"/>
+					</object>
+					<int key="connectionID">627</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">set:</string>
+						<reference key="source" ref="864646786"/>
+						<reference key="destination" ref="295192331"/>
+					</object>
+					<int key="connectionID">628</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">set:</string>
+						<reference key="source" ref="864646786"/>
+						<reference key="destination" ref="523547160"/>
+					</object>
+					<int key="connectionID">629</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">delegate</string>
 						<reference key="source" ref="267839961"/>
+						<reference key="destination" ref="864646786"/>
+					</object>
+					<int key="connectionID">631</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">initialFirstResponder</string>
+						<reference key="source" ref="267839961"/>
+						<reference key="destination" ref="569484942"/>
+					</object>
+					<int key="connectionID">632</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">show:</string>
+						<reference key="source" ref="864646786"/>
 						<reference key="destination" ref="869659300"/>
 					</object>
-					<int key="connectionID">621</int>
+					<int key="connectionID">633</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">setStartAtLogin:</string>
+						<reference key="source" ref="864646786"/>
+						<reference key="destination" ref="1038345141"/>
+					</object>
+					<int key="connectionID">634</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -793,7 +873,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">610</int>
-						<reference key="object" ref="16362139"/>
+						<reference key="object" ref="864646786"/>
 						<reference key="parent" ref="0"/>
 					</object>
 				</object>
@@ -855,15 +935,15 @@
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{435, 571}, {372, 53}}</string>
+					<string>{{465, 765}, {372, 53}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{541, 510}, {480, 270}}</string>
+					<string>{{672, 512}, {480, 270}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{541, 510}, {480, 270}}</string>
+					<string>{{672, 512}, {480, 270}}</string>
 					<boolean value="NO"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -947,7 +1027,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">621</int>
+			<int key="maxID">634</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1013,6 +1093,45 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">PreferencesController</string>
 					<string key="superclassName">NSObject</string>
+					<object class="NSMutableDictionary" key="actions">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>set:</string>
+							<string>setStartAtLogin:</string>
+							<string>show:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>set:</string>
+							<string>setStartAtLogin:</string>
+							<string>show:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBActionInfo">
+								<string key="name">set:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">setStartAtLogin:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">show:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+						</object>
+					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
