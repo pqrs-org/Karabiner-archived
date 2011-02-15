@@ -94,12 +94,17 @@
 {
   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
 
-  [defaults setObject:([targetSettingIsEnabled1_ state] == NSOnState ? @"YES" : @"NO") forKey:@"targetSettingIsEnabled1"];
-  [defaults setObject:([targetSettingIsEnabled2_ state] == NSOnState ? @"YES" : @"NO") forKey:@"targetSettingIsEnabled2"];
-  [defaults setObject:([targetSettingIsEnabled3_ state] == NSOnState ? @"YES" : @"NO") forKey:@"targetSettingIsEnabled3"];
+  [defaults setObject:([targetSettingIsEnabled1_ state] == NSOnState ? @"YES":@"NO") forKey:@"targetSettingIsEnabled1"];
+  [defaults setObject:([targetSettingIsEnabled2_ state] == NSOnState ? @"YES":@"NO") forKey:@"targetSettingIsEnabled2"];
+  [defaults setObject:([targetSettingIsEnabled3_ state] == NSOnState ? @"YES":@"NO") forKey:@"targetSettingIsEnabled3"];
   [defaults setObject:[targetSetting1_ stringValue] forKey:@"targetSetting1"];
   [defaults setObject:[targetSetting2_ stringValue] forKey:@"targetSetting2"];
   [defaults setObject:[targetSetting3_ stringValue] forKey:@"targetSetting3"];
+}
+
+- (void) windowWillClose:(NSNotification*)notification
+{
+  [self set:nil];
 }
 
 @end
