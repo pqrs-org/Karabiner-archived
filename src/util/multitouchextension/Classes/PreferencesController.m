@@ -74,9 +74,8 @@
   }
 }
 
-- (IBAction) show:(id)sender
+- (void) show
 {
-  [NSApp activateIgnoringOtherApps:YES];
   [preferencesWindow_ makeKeyAndOrderFront:nil];
 }
 
