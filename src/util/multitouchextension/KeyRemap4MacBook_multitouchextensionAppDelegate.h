@@ -15,11 +15,8 @@
   NSStatusItem* statusItem_;
   NSMutableArray* mtdevices_;
 
-  IBOutlet NSMenu* statusMenu_;
   IBOutlet PreferencesController* preferences_;
   IBOutlet org_pqrs_KeyRemap4MacBook_Client* client_;
 }
-
-- (IBAction) quit:(id)sender;
 
 @end
