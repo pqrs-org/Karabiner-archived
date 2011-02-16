@@ -35,7 +35,7 @@ sudo cp -R files/LaunchAgents pkgroot/Library
 sudo mkdir -p "pkgroot/$basedir/app"
 sudo cp -R "src/core/server/build/Release/KeyRemap4MacBook_server.app" "pkgroot/$basedir/app"
 sudo cp -R "src/util/KeyDump/build/Release/KeyDump.app" "pkgroot/$basedir/app"
-sudo cp -R "src/util/ThreeFingerRelativeToScroll/build/Release/ThreeFingerRelativeToScroll.app" "pkgroot/$basedir/app"
+sudo cp -R "src/util/multitouchextension/build/Release/KeyRemap4MacBook_multitouchextension.app" "pkgroot/$basedir/app"
 sudo cp -R "src/util/cli/build/Release/KeyRemap4MacBook_cli.app" "pkgroot/$basedir/app"
 sudo cp -R "src/util/uninstaller/build/Release/uninstaller.app" "pkgroot/$basedir/app"
 sudo cp -R "src/util/updater/build/Release/KeyRemap4MacBook.app" "pkgroot/$basedir/app"
@@ -53,7 +53,7 @@ sudo find pkgroot -name '*.sh' -print0 | xargs -0 sudo chmod 755
 sudo chmod 4755 pkgroot/$basedir/bin/KeyRemap4MacBook_sysctl_set
 sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook_server.app/Contents/MacOS/KeyRemap4MacBook_server
 sudo chmod 755 pkgroot/$basedir/app/KeyDump.app/Contents/MacOS/KeyDump
-sudo chmod 755 pkgroot/$basedir/app/ThreeFingerRelativeToScroll.app/Contents/MacOS/ThreeFingerRelativeToScroll
+sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook_multitouchextension.app/Contents/MacOS/KeyRemap4MacBook_multitouchextension
 sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook_cli.app/Contents/MacOS/KeyRemap4MacBook_cli
 sudo chmod 755 pkgroot/$basedir/app/uninstaller.app/Contents/MacOS/uninstaller
 sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook.app/Contents/MacOS/KeyRemap4MacBook

@@ -19,7 +19,7 @@
 - (IBAction) launchUninstaller:(id)sender;
 - (IBAction) openPrivateXML:(id)sender;
 - (IBAction) launchEventViewer:(id)sender;
-- (IBAction) launchThreeFingerRelativeToScroll:(id)sender;
+- (IBAction) launchMultiTouchExtension:(id)sender;
 - (IBAction) checkUpdateNow:(id)sender;
 - (void) mainViewDidLoad;
 
