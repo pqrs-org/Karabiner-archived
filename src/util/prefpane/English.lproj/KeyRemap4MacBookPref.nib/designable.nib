@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1060</int>
-		<string key="IBDocument.SystemVersion">10H574</string>
+		<string key="IBDocument.SystemVersion">10J567</string>
 		<string key="IBDocument.InterfaceBuilderVersion">823</string>
 		<string key="IBDocument.AppKitVersion">1038.35</string>
-		<string key="IBDocument.HIToolboxVersion">461.00</string>
+		<string key="IBDocument.HIToolboxVersion">462.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			<string key="NS.object.0">823</string>
@@ -1136,7 +1136,7 @@
 															<object class="NSButton" id="868077194">
 																<reference key="NSNextResponder" ref="307156380"/>
 																<int key="NSvFlags">268</int>
-																<string key="NSFrame">{{8, 80}, {162, 32}}</string>
+																<string key="NSFrame">{{8, 55}, {162, 32}}</string>
 																<reference key="NSSuperview" ref="307156380"/>
 																<bool key="NSEnabled">YES</bool>
 																<object class="NSButtonCell" key="NSCell" id="691228737">
@@ -1156,7 +1156,7 @@
 															<object class="NSButton" id="454071999">
 																<reference key="NSNextResponder" ref="307156380"/>
 																<int key="NSvFlags">268</int>
-																<string key="NSFrame">{{8, 31}, {380, 32}}</string>
+																<string key="NSFrame">{{8, 6}, {238, 32}}</string>
 																<reference key="NSSuperview" ref="307156380"/>
 																<bool key="NSEnabled">YES</bool>
 																<object class="NSButtonCell" key="NSCell" id="377236948">
@@ -1173,28 +1173,12 @@
 																	<int key="NSPeriodicInterval">25</int>
 																</object>
 															</object>
-															<object class="NSTextField" id="1047412017">
-																<reference key="NSNextResponder" ref="307156380"/>
-																<int key="NSvFlags">268</int>
-																<string key="NSFrame">{{31, 14}, {451, 17}}</string>
-																<reference key="NSSuperview" ref="307156380"/>
-																<bool key="NSEnabled">YES</bool>
-																<object class="NSTextFieldCell" key="NSCell" id="587980380">
-																	<int key="NSCellFlags">68288064</int>
-																	<int key="NSCellFlags2">272630784</int>
-																	<string key="NSContents">(Remap CursorMove to Scroll when 3 fingers are on your Magic Mouse)</string>
-																	<reference key="NSSupport" ref="322818650"/>
-																	<reference key="NSControlView" ref="1047412017"/>
-																	<reference key="NSBackgroundColor" ref="58023412"/>
-																	<reference key="NSTextColor" ref="367881935"/>
-																</object>
-															</object>
 														</array>
-														<string key="NSFrame">{{1, 1}, {602, 118}}</string>
+														<string key="NSFrame">{{1, 1}, {602, 93}}</string>
 														<reference key="NSSuperview" ref="994222821"/>
 													</object>
 												</array>
-												<string key="NSFrame">{{12, 84}, {604, 134}}</string>
+												<string key="NSFrame">{{12, 109}, {604, 109}}</string>
 												<reference key="NSSuperview" ref="871498761"/>
 												<string key="NSOffsets">{0, 0}</string>
 												<object class="NSTextFieldCell" key="NSTitleCell">
@@ -1968,7 +1952,6 @@
 						<reference key="object" ref="994222821"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="868077194"/>
-							<reference ref="1047412017"/>
 							<reference ref="454071999"/>
 						</array>
 						<reference key="parent" ref="871498761"/>
@@ -2152,19 +2135,6 @@
 						<reference key="parent" ref="454071999"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">783</int>
-						<reference key="object" ref="1047412017"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="587980380"/>
-						</array>
-						<reference key="parent" ref="994222821"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">784</int>
-						<reference key="object" ref="587980380"/>
-						<reference key="parent" ref="1047412017"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">786</int>
 						<reference key="object" ref="761484421"/>
 						<array class="NSMutableArray" key="children">
@@ -2344,10 +2314,11 @@
 				<string key="777.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="778.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="780.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<object class="NSAffineTransform" key="780.IBViewBoundsToFrameTransform">
+					<bytes key="NSTransformStruct">P4AAAL+AAABBAAAAwnQAAA</bytes>
+				</object>
 				<boolean value="YES" key="780.ImportedFromIB2"/>
 				<string key="781.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="783.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="784.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="786.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="786.ImportedFromIB2"/>
 				<string key="787.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
