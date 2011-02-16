@@ -5577,6 +5577,52 @@
     </item>
 
     <item>
+      <name>ThumbSense</name>
+      <list>
+        <item>
+          <name>What's ThumbSense</name>
+          <appendix>ThumbSense changes key while touching a finger in TrackPad.</appendix>
+          <appendix></appendix>
+          <appendix>F/J/Space to LeftClick</appendix>
+          <appendix>D/K to RightClick</appendix>
+          <appendix>S/L to "CursorMove to ScrollWheel"</appendix>
+          <appendix>G/H to History Back/Forward (Command+[/Command+])</appendix>
+          <appendix>W to Close Window (Command+W)</appendix>
+          <identifier>notsave.thumbsense</identifier>
+          <autogen>--ShowStatusMessage-- ThumbSense</autogen>
+          <autogen>--KeyToPointingButton-- KeyCode::F,     ModifierFlag::NONE, PointingButton::LEFT</autogen>
+          <autogen>--KeyToPointingButton-- KeyCode::J,     ModifierFlag::NONE, PointingButton::LEFT</autogen>
+          <autogen>--KeyToPointingButton-- KeyCode::SPACE, ModifierFlag::NONE, PointingButton::LEFT</autogen>
+
+          <autogen>--KeyToPointingButton-- KeyCode::D,     ModifierFlag::NONE, PointingButton::RIGHT</autogen>
+          <autogen>--KeyToPointingButton-- KeyCode::K,     ModifierFlag::NONE, PointingButton::RIGHT</autogen>
+
+          <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::VK_MODIFIER_EXTRA1</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::NONE, KeyCode::VK_MODIFIER_EXTRA1</autogen>
+          <autogen>--PointingRelativeToScroll-- PointingButton::NONE, ModifierFlag::EXTRA1</autogen>
+
+          <!-- no E definition -->
+          <!-- no T definition -->
+
+          <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::NONE, KeyCode::BRACKET_LEFT,  ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::NONE, KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L</autogen>
+
+          <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::NONE, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
+
+          <!-- no I definition -->
+          <!-- no O definition -->
+          <!-- no M definition -->
+        </item>
+        <item>
+          <name>How to use</name>
+          <appendix>(1) Launch multi-touch extension from "Misc &amp; Uninstall" tab.</appendix>
+          <appendix>(2) Click the icon in Dock to open preferences window.</appendix>
+          <appendix>(3) Enter "notsave.thumbsense" to Target setting.</appendix>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>For Expose, Spaces</name>
       <list>
         <item>
