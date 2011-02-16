@@ -52,7 +52,7 @@ NSMutableArray* global_mtdevices_ = nil;
 static void setPreference(int fingers, int newvalue) {
   NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
   {
-    NSString* name = [[NSUserDefaults standardUserDefaults] stringForKey:[NSString stringWithFormat:@"targetSetting%d", fingers]];
+    NSString* name = [PreferencesController getSettingName:fingers];
     if ([name length] > 0) {
       [[global_client_ proxy] setValueForName:newvalue forName:name];
     }
@@ -83,8 +83,7 @@ static int callback(int device, struct Finger* data, int fingers, double timesta
     if (fingers > 0 && current_status_[fingers - 1] == 0) {
       current_status_[fingers - 1] = 1;
 
-      NSString* enabled = [[NSUserDefaults standardUserDefaults] stringForKey:[NSString stringWithFormat:@"targetSettingIsEnabled%d", fingers]];
-      if ([enabled isEqualToString:@"YES"]) {
+      if ([PreferencesController isSettingEnabled:fingers]) {
         setPreference(fingers, 1);
       }
     }
