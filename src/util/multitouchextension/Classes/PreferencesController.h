@@ -20,6 +20,8 @@
 
 - (void) load;
 - (void) show;
++ (BOOL) isSettingEnabled:(NSInteger)fingers;
++ (NSString*) getSettingName:(NSInteger)fingers;
 
 - (IBAction) setStartAtLogin:(id)sender;
 - (IBAction) set:(id)sender;
