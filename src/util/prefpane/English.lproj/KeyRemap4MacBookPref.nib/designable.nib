@@ -1162,7 +1162,7 @@
 																<object class="NSButtonCell" key="NSCell" id="377236948">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">134217728</int>
-																	<string key="NSContents">launch "ThreeFingerRelativeToScroll for Magic Mouse"</string>
+																	<string key="NSContents">launch "multi-touch extension"</string>
 																	<reference key="NSSupport" ref="322818650"/>
 																	<reference key="NSControlView" ref="454071999"/>
 																	<int key="NSButtonFlags">-2038284033</int>
@@ -1460,7 +1460,7 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">launchThreeFingerRelativeToScroll:</string>
+						<string key="label">launchMultiTouchExtension:</string>
 						<reference key="source" ref="762499249"/>
 						<reference key="destination" ref="454071999"/>
 					</object>
@@ -2382,7 +2382,7 @@
 						<string key="changeCheckUpdate:">id</string>
 						<string key="checkUpdateNow:">id</string>
 						<string key="launchEventViewer:">id</string>
-						<string key="launchThreeFingerRelativeToScroll:">id</string>
+						<string key="launchMultiTouchExtension:">id</string>
 						<string key="launchUninstaller:">id</string>
 						<string key="openPrivateXML:">id</string>
 						<string key="toggleStatusBar:">id</string>
@@ -2401,8 +2401,8 @@
 							<string key="name">launchEventViewer:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="launchThreeFingerRelativeToScroll:">
-							<string key="name">launchThreeFingerRelativeToScroll:</string>
+						<object class="IBActionInfo" key="launchMultiTouchExtension:">
+							<string key="name">launchMultiTouchExtension:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="launchUninstaller:">

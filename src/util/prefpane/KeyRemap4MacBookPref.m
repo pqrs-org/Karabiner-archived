@@ -82,9 +82,9 @@
   [[NSWorkspace sharedWorkspace] launchApplication:@"/Library/org.pqrs/KeyRemap4MacBook/app/KeyDump.app"];
 }
 
-- (IBAction) launchThreeFingerRelativeToScroll:(id)sender
+- (IBAction) launchMultiTouchExtension:(id)sender
 {
-  [[NSWorkspace sharedWorkspace] launchApplication:@"/Library/org.pqrs/KeyRemap4MacBook/app/ThreeFingerRelativeToScroll.app"];
+  [[NSWorkspace sharedWorkspace] launchApplication:@"/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook_multitouchextension.app"];
 }
 
 - (IBAction) openPrivateXML:(id)sender
