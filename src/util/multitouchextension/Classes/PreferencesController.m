@@ -92,9 +92,26 @@ NSDictionary* defaults_dictionary = nil;
   }
 }
 
++ (BOOL) isSettingEnabled:(NSInteger)fingers
+{
+  return [[[NSUserDefaults standardUserDefaults] stringForKey:[NSString stringWithFormat:@"targetSettingIsEnabled%d", fingers]] isEqualToString:@"YES"];
+}
+
++ (NSString*) getSettingName:(NSInteger)fingers
+{
+  return [[NSUserDefaults standardUserDefaults] stringForKey:[NSString stringWithFormat:@"targetSetting%d", fingers]];
+}
+
 - (IBAction) set:(id)sender
 {
   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+  NSMutableArray* oldsetting = [[NSMutableArray new] autorelease];
+
+  // ------------------------------------------------------------
+  // backup old setting
+  if ([PreferencesController isSettingEnabled:1]) [oldsetting addObject:[PreferencesController getSettingName:1]];
+  if ([PreferencesController isSettingEnabled:2]) [oldsetting addObject:[PreferencesController getSettingName:2]];
+  if ([PreferencesController isSettingEnabled:3]) [oldsetting addObject:[PreferencesController getSettingName:3]];
 
   // ------------------------------------------------------------
   // restore default value if setting is empty.
@@ -115,6 +132,11 @@ NSDictionary* defaults_dictionary = nil;
   [defaults setObject:[targetSetting1_ stringValue] forKey:@"targetSetting1"];
   [defaults setObject:[targetSetting2_ stringValue] forKey:@"targetSetting2"];
   [defaults setObject:[targetSetting3_ stringValue] forKey:@"targetSetting3"];
+
+  // ------------------------------------------------------------
+  for (NSString* name in oldsetting) {
+    [[client_ proxy] setValueForName:0 forName:name];
+  }
 }
 
 - (void) windowWillClose:(NSNotification*)notification

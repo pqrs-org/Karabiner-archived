@@ -843,6 +843,14 @@
 					</object>
 					<int key="connectionID">583</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">client_</string>
+						<reference key="source" ref="823567894"/>
+						<reference key="destination" ref="631265820"/>
+					</object>
+					<int key="connectionID">584</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -1491,7 +1499,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">583</int>
+			<int key="maxID">584</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1575,6 +1583,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>client_</string>
 							<string>preferencesWindow_</string>
 							<string>startAtLogin_</string>
 							<string>targetSetting1_</string>
@@ -1586,6 +1595,7 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>org_pqrs_KeyRemap4MacBook_Client</string>
 							<string>NSWindow</string>
 							<string>NSButton</string>
 							<string>NSTextField</string>
@@ -1600,6 +1610,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>client_</string>
 							<string>preferencesWindow_</string>
 							<string>startAtLogin_</string>
 							<string>targetSetting1_</string>
@@ -1611,6 +1622,10 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">client_</string>
+								<string key="candidateClassName">org_pqrs_KeyRemap4MacBook_Client</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">preferencesWindow_</string>
 								<string key="candidateClassName">NSWindow</string>
