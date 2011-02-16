@@ -216,6 +216,10 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
   resetPreferences();
 }
 
-
+- (BOOL) applicationShouldHandleReopen:(NSApplication*)theApplication hasVisibleWindows:(BOOL)flag
+{
+  [preferences_ show];
+  return YES;
+}
 
 @end
