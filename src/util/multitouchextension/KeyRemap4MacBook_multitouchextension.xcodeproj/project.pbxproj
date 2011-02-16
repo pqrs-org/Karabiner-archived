@@ -12,8 +12,6 @@
 		343CFC87130A8C7C00BA28B9 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 343CFC86130A8C7C00BA28B9 /* PreferencesController.m */; };
 		343CFC92130A8E2500BA28B9 /* StartAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 343CFC91130A8E2500BA28B9 /* StartAtLoginController.m */; };
 		343EE7A113098F2E00953F8F /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 343EE7A013098F2E00953F8F /* IOKit.framework */; };
-		3491D5F4130987FA0060C12B /* icon.statusbar.0.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3491D5F2130987F90060C12B /* icon.statusbar.0.tif */; };
-		3491D5F5130987FA0060C12B /* icon.statusbar.1.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3491D5F3130987F90060C12B /* icon.statusbar.1.tif */; };
 		3491D60013098C1B0060C12B /* app.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3491D5FF13098C1B0060C12B /* app.icns */; };
 		349AD35113098DD400474EFD /* KeyRemap4MacBookClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 349AD35013098DD400474EFD /* KeyRemap4MacBookClient.m */; };
 		349AD37613098E7A00474EFD /* MultitouchSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 349AD37513098E7A00474EFD /* MultitouchSupport.framework */; };
@@ -38,8 +36,6 @@
 		343CFC90130A8E2500BA28B9 /* StartAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartAtLoginController.h; path = Classes/StartAtLoginController.h; sourceTree = "<group>"; };
 		343CFC91130A8E2500BA28B9 /* StartAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartAtLoginController.m; path = Classes/StartAtLoginController.m; sourceTree = "<group>"; };
 		343EE7A013098F2E00953F8F /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
-		3491D5F2130987F90060C12B /* icon.statusbar.0.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon.statusbar.0.tif; path = Resources/icon.statusbar.0.tif; sourceTree = "<group>"; };
-		3491D5F3130987F90060C12B /* icon.statusbar.1.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon.statusbar.1.tif; path = Resources/icon.statusbar.1.tif; sourceTree = "<group>"; };
 		3491D5FF13098C1B0060C12B /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = app.icns; path = Resources/app.icns; sourceTree = "<group>"; };
 		349AD34F13098DD400474EFD /* KeyRemap4MacBookClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookClient.h; path = ../../share/KeyRemap4MacBookClient.h; sourceTree = SOURCE_ROOT; };
 		349AD35013098DD400474EFD /* KeyRemap4MacBookClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyRemap4MacBookClient.m; path = ../../share/KeyRemap4MacBookClient.m; sourceTree = SOURCE_ROOT; };
@@ -128,8 +124,6 @@
 			isa = PBXGroup;
 			children = (
 				3491D5FF13098C1B0060C12B /* app.icns */,
-				3491D5F2130987F90060C12B /* icon.statusbar.0.tif */,
-				3491D5F3130987F90060C12B /* icon.statusbar.1.tif */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
@@ -200,8 +194,6 @@
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
-				3491D5F4130987FA0060C12B /* icon.statusbar.0.tif in Resources */,
-				3491D5F5130987FA0060C12B /* icon.statusbar.1.tif in Resources */,
 				3491D60013098C1B0060C12B /* app.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
