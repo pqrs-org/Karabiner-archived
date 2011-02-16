@@ -208,30 +208,14 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
   global_client_ = client_;
   global_mtdevices_ = mtdevices_;
   [self setNotification];
-
-  // --------------------------------------------------
-  NSStatusBar* statusBar = [NSStatusBar systemStatusBar];
-  statusItem_ = [statusBar statusItemWithLength:24];
-  [statusItem_ retain];
-
-  [statusItem_ setTitle:@""];
-  [statusItem_ setImage:[NSImage imageNamed:@"icon.statusbar.0"]];
-  [statusItem_ setAlternateImage:[NSImage imageNamed:@"icon.statusbar.1"]];
-  [statusItem_ setHighlightMode:YES];
-  [statusItem_ setMenu:statusMenu_];
 }
 
 - (void) applicationWillTerminate:(NSNotification*)aNotification {
   setcallback(NO);
 
   resetPreferences();
-
-  [statusItem_ release];
 }
 
-// ------------------------------------------------------------
-- (IBAction) quit:(id)sender {
-  [NSApp terminate:self];
-}
+
 
 @end
