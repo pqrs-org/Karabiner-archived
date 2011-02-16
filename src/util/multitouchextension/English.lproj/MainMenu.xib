@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="372"/>
+			<integer value="539"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1035,7 +1035,6 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="720270332"/>
 							<reference ref="815540812"/>
-							<reference ref="656227481"/>
 							<reference ref="153831006"/>
 							<reference ref="17432523"/>
 							<reference ref="152498233"/>
@@ -1044,6 +1043,7 @@
 							<reference ref="673870527"/>
 							<reference ref="699927477"/>
 							<reference ref="306103619"/>
+							<reference ref="656227481"/>
 						</object>
 						<reference key="parent" ref="439893737"/>
 					</object>
@@ -1403,7 +1403,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABDEAAAw38AAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABDEAAAwxQAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
