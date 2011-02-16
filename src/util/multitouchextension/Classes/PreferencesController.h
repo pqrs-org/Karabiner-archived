@@ -1,9 +1,11 @@
 // -*- Mode: objc -*-
 
 #import <Cocoa/Cocoa.h>
+#import "KeyRemap4MacBookClient.h"
 
 @interface PreferencesController : NSObject {
   IBOutlet NSWindow* preferencesWindow_;
+  IBOutlet org_pqrs_KeyRemap4MacBook_Client* client_;
 
   IBOutlet NSButton* startAtLogin_;
 
