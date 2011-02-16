@@ -9,7 +9,7 @@ all:
 clean:
 	$(MAKE) -C KeyDump clean
 	$(MAKE) -C cli clean
-	$(MAKE) -C multitouchextension
+	$(MAKE) -C multitouchextension clean
 	$(MAKE) -C prefpane clean
 	$(MAKE) -C uninstaller clean
 	$(MAKE) -C updater clean
