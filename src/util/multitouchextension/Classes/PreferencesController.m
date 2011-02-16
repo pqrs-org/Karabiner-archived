@@ -12,30 +12,33 @@
 
 @implementation PreferencesController
 
+NSDictionary* defaults_dictionary = nil;
+
 + (void) initialize
 {
-  NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                        @"YES",
-                        @"targetSettingIsEnabled1",
+  defaults_dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                         @"YES",
+                         @"targetSettingIsEnabled1",
 
-                        @"NO",
-                        @"targetSettingIsEnabled2",
+                         @"NO",
+                         @"targetSettingIsEnabled2",
 
-                        @"NO",
-                        @"targetSettingIsEnabled3",
+                         @"NO",
+                         @"targetSettingIsEnabled3",
 
-                        @"notsave.complete_vimode",
-                        @"targetSetting1",
+                         @"notsave.complete_vimode",
+                         @"targetSetting1",
 
-                        @"notsave.mousekeys_mode",
-                        @"targetSetting2",
+                         @"notsave.mousekeys_mode",
+                         @"targetSetting2",
 
-                        @"notsave.pointing_relative_to_scroll",
-                        @"targetSetting3",
+                         @"notsave.pointing_relative_to_scroll",
+                         @"targetSetting3",
 
-                        nil];
+                         nil];
+  [defaults_dictionary retain];
 
-  [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
+  [[NSUserDefaults standardUserDefaults] registerDefaults:defaults_dictionary];
 }
 
 - (void) load
@@ -93,6 +96,19 @@
 {
   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
 
+  // ------------------------------------------------------------
+  // restore default value if setting is empty.
+  if ([[targetSetting1_ stringValue] length] == 0) {
+    [targetSetting1_ setStringValue:[defaults_dictionary objectForKey:@"targetSetting1"]];
+  }
+  if ([[targetSetting2_ stringValue] length] == 0) {
+    [targetSetting2_ setStringValue:[defaults_dictionary objectForKey:@"targetSetting2"]];
+  }
+  if ([[targetSetting3_ stringValue] length] == 0) {
+    [targetSetting3_ setStringValue:[defaults_dictionary objectForKey:@"targetSetting3"]];
+  }
+
+  // ------------------------------------------------------------
   [defaults setObject:([targetSettingIsEnabled1_ state] == NSOnState ? @"YES":@"NO") forKey:@"targetSettingIsEnabled1"];
   [defaults setObject:([targetSettingIsEnabled2_ state] == NSOnState ? @"YES":@"NO") forKey:@"targetSettingIsEnabled2"];
   [defaults setObject:([targetSettingIsEnabled3_ state] == NSOnState ? @"YES":@"NO") forKey:@"targetSettingIsEnabled3"];
