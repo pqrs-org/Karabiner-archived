@@ -132,22 +132,27 @@ static void setcallback(BOOL isset) {
 
 // ------------------------------------------------------------
 // Notification
+static void release_iterator(io_iterator_t iterator) {
+  for (;;) {
+    io_object_t obj = IOIteratorNext(iterator);
+    if (! obj) break;
+
+    IOObjectRelease(obj);
+  }
+}
+
 static void observer_refresh(void* refcon, io_iterator_t iterator) {
   NSLog(@"[INFO] observer_refresh called\n");
 
   resetPreferences();
 
-  bool isfound = false;
-  while (IOIteratorNext(iterator)) {
-    isfound = true;
-  }
-  if (isfound) {
-    // wait for the initialization of the device
-    sleep(1);
+  release_iterator(iterator);
 
-    setcallback(NO);
-    setcallback(YES);
-  }
+  // wait for the initialization of the device
+  sleep(1);
+
+  setcallback(NO);
+  setcallback(YES);
 }
 
 - (void) setNotification {
@@ -176,7 +181,7 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
     NSLog(@"[ERROR] IOServiceAddMatchingNotification");
     return;
   }
-  observer_refresh(NULL, it);
+  release_iterator(it);
 
   [match retain]; // for kIOMatchedNotification
   kr = IOServiceAddMatchingNotification(port,
@@ -189,7 +194,7 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
     NSLog(@"[ERROR] IOServiceAddMatchingNotification");
     return;
   }
-  observer_refresh(NULL, it);
+  release_iterator(it);
 
   // ----------------------------------------------------------------------
   CFRunLoopSourceRef loopsource = IONotificationPortGetRunLoopSource(port);
@@ -206,7 +211,10 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
 
   global_client_ = client_;
   global_mtdevices_ = mtdevices_;
+
   [self setNotification];
+
+  setcallback(YES);
 }
 
 - (void) applicationWillTerminate:(NSNotification*)aNotification {
