@@ -5615,6 +5615,9 @@
         </item>
         <item>
           <name>How to use</name>
+          <appendix>Note: You need a multi-touch device to use ThumbSense.</appendix>
+          <appendix>(MacBook / Magic Mouse / Magic Trackpad)</appendix>
+          <appendix></appendix>
           <appendix>(1) Launch multi-touch extension from "Misc &amp; Uninstall" tab.</appendix>
           <appendix>(2) Click the icon in Dock to open preferences window.</appendix>
           <appendix>(3) Enter "notsave.thumbsense" to Target setting.</appendix>
