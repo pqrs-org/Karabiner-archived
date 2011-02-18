@@ -163,7 +163,7 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
   }
 
   // ------------------------------------------------------------
-  NSMutableDictionary* match = (NSMutableDictionary*)(IOServiceMatching("AppleMultitouchDevice"));
+  NSMutableDictionary* match = [(NSMutableDictionary*)(IOServiceMatching("AppleMultitouchDevice")) autorelease];
 
   // ----------------------------------------------------------------------
   io_iterator_t it;
