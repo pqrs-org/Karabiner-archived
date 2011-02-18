@@ -26,7 +26,7 @@ NSDictionary* defaults_dictionary = nil;
                          @"NO",
                          @"targetSettingIsEnabled3",
 
-                         @"notsave.complete_vimode",
+                         @"notsave.thumbsense",
                          @"targetSetting1",
 
                          @"notsave.mousekeys_mode",
