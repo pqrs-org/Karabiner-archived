@@ -97,17 +97,13 @@ static void setcallback(BOOL isset) {
   NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
   {
     NSArray* list = nil;
-    NSEnumerator* e = nil;
 
     list = (NSArray*)(MTDeviceCreateList());
     if (! list) goto finish;
 
-    e = [list objectEnumerator];
-    if (! e) goto finish;
-
-    for (;;) {
-      MTDeviceRef device = [e nextObject];
-      if (! device) break;
+    for (NSUInteger i = 0; i < [list count]; ++i) {
+      MTDeviceRef device = [list objectAtIndex:i];
+      if (! device) continue;
 
       // We need retain 'device' to prevent a mysterious crash.
       // So, we append 'device' to global_mtdevices_.
