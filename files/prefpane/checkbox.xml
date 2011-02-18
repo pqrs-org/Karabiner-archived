@@ -5622,6 +5622,35 @@
           <appendix>(2) Click the icon in Dock to open preferences window.</appendix>
           <appendix>(3) Enter "notsave.thumbsense" to Target setting.</appendix>
         </item>
+
+        <item><name>------------------------------------------------------------</name></item>
+
+        <item>
+          <name>Enhanced Copy&amp;Paste</name>
+          <appendix>You can do copy&amp;paste easily when you use mouse.</appendix>
+          <appendix>(Set "notsave.enhanced_copyandpaste" to Target setting in multi-touch extension)</appendix>
+          <appendix></appendix>
+          <appendix>X to Cut (Command+X)</appendix>
+          <appendix>C to Copy (Command+C)</appendix>
+          <appendix>V to Paste (Command+V)</appendix>
+          <appendix>G to Find Next (Command+G)</appendix>
+          <appendix>A to Select All (Command+A)</appendix>
+          <appendix>W to Close Window (Command+W)</appendix>
+          <appendix>1 to LeftClick</appendix>
+          <appendix>2 to MiddleClick</appendix>
+          <appendix>3 to RightClick</appendix>
+          <identifier>notsave.enhanced_copyandpaste</identifier>
+          <autogen>--ShowStatusMessage-- Copy&amp;Paste</autogen>
+          <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::NONE, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::NONE, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::NONE, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::G,                     KeyCode::G, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::NONE, KeyCode::A, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::NONE, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToPointingButton-- KeyCode::KEY_1, ModifierFlag::NONE, PointingButton::LEFT</autogen>
+          <autogen>--KeyToPointingButton-- KeyCode::KEY_2, ModifierFlag::NONE, PointingButton::MIDDLE</autogen>
+          <autogen>--KeyToPointingButton-- KeyCode::KEY_3, ModifierFlag::NONE, PointingButton::RIGHT</autogen>
+        </item>
       </list>
     </item>
 
