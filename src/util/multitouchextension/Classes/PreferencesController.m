@@ -29,7 +29,7 @@ NSDictionary* defaults_dictionary = nil;
                          @"notsave.thumbsense",
                          @"targetSetting1",
 
-                         @"notsave.mousekeys_mode",
+                         @"notsave.enhanced_copyandpaste",
                          @"targetSetting2",
 
                          @"notsave.pointing_relative_to_scroll",
