@@ -239,6 +239,10 @@
     return [configxmlparser_ keycode:@"ApplicationType::WORLD_OF_WARCRAFT"];
   }
 
+  if ([name hasPrefix:@"com.ctmdev.FoxTrot"]) {
+    return [configxmlparser_ keycode:@"ApplicationType::FOXTROT"];
+  }
+
   return [configxmlparser_ keycode:@"ApplicationType::UNKNOWN"];
 }
 
