@@ -163,8 +163,7 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
   }
 
   // ------------------------------------------------------------
-  NSMutableDictionary* subdict = [NSMutableDictionary dictionaryWithObject:@"AppleMultitouchHIDEventDriver" forKey:@"IOClass"];
-  NSMutableDictionary* match = [NSMutableDictionary dictionaryWithObject:subdict forKey:@kIOPropertyMatchKey];
+  NSMutableDictionary* match = (NSMutableDictionary*)(IOServiceMatching("AppleMultitouchDevice"));
 
   // ----------------------------------------------------------------------
   io_iterator_t it;
