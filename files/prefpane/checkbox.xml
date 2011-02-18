@@ -4329,6 +4329,28 @@
           <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT</autogen>
         </item>
         <item>
+          <name>Control_L+ESDF to Shift+Up/Down/Left/Right</name>
+          <appendix>+ Control_L+AG to beginning-of-line/end-of-line (Command+Shift+Left/Right)</appendix>
+          <identifier>remap.diamond_cursor_controlL_esdf_selection</identifier>
+          <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::CONTROL_L, KeyCode::CURSOR_UP,    ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN,  ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::CONTROL_L, KeyCode::CURSOR_LEFT,  ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::CURSOR_LEFT,  ModifierFlag::SHIFT_L | ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT, ModifierFlag::SHIFT_L | ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
+          <name>Control_R+ESDF to Shift+Up/Down/Left/Right</name>
+          <appendix>+ Control_R+AG to beginning-of-line/end-of-line (Command+Shift+Left/Right)</appendix>
+          <identifier>remap.diamond_cursor_controlR_esdf_selection</identifier>
+          <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::CONTROL_R, KeyCode::CURSOR_UP,    ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_R, KeyCode::CURSOR_DOWN,  ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::CONTROL_R, KeyCode::CURSOR_LEFT,  ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::CONTROL_R, KeyCode::CURSOR_LEFT,  ModifierFlag::SHIFT_L | ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT, ModifierFlag::SHIFT_L | ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
           <name>Control_L+IKJL to Up/Down/Left/Right</name>
           <identifier>option.extra_cursor_controlL_jkil</identifier>
           <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::CONTROL_L, KeyCode::CURSOR_UP</autogen>
