@@ -60,7 +60,7 @@ static void setPreference(int fingers, int newvalue) {
   [pool drain];
 }
 
-static void resetPreferences(void)
+- (void) resetPreferences
 {
   for (int i = 0; i < MAX_FINGERS; ++i) {
     setPreference(i + 1, 0);
@@ -93,42 +93,44 @@ static int callback(int device, struct Finger* data, int fingers, double timesta
   return 0;
 }
 
-static void setcallback(BOOL isset) {
-  NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
-  {
-    NSArray* list = nil;
+- (void) setcallback:(BOOL)isset {
+  @synchronized(self) {
+    NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+    {
+      NSArray* list = nil;
 
-    list = (NSArray*)(MTDeviceCreateList());
-    if (! list) goto finish;
+      list = (NSArray*)(MTDeviceCreateList());
+      if (! list) goto finish;
 
-    for (NSUInteger i = 0; i < [list count]; ++i) {
-      MTDeviceRef device = [list objectAtIndex:i];
-      if (! device) continue;
+      for (NSUInteger i = 0; i < [list count]; ++i) {
+        MTDeviceRef device = [list objectAtIndex:i];
+        if (! device) continue;
 
-      // We need retain 'device' to prevent a mysterious crash.
-      // So, we append 'device' to global_mtdevices_.
-      if ([global_mtdevices_ indexOfObject:device] == NSNotFound) {
-        [global_mtdevices_ addObject:device];
+        // We need retain 'device' to prevent a mysterious crash.
+        // So, we append 'device' to global_mtdevices_.
+        if ([global_mtdevices_ indexOfObject:device] == NSNotFound) {
+          [global_mtdevices_ addObject:device];
+        }
+
+        if (isset) {
+          MTRegisterContactFrameCallback(device, callback);
+          MTDeviceStart(device, 0);
+        } else {
+          MTUnregisterContactFrameCallback(device, callback);
+          MTDeviceStop(device, 0);
+        }
       }
 
-      if (isset) {
-        MTRegisterContactFrameCallback(device, callback);
-        MTDeviceStart(device, 0);
-      } else {
-        MTUnregisterContactFrameCallback(device, callback);
-        MTDeviceStop(device, 0);
-      }
+    finish:
+      [list release];
     }
-
-  finish:
-    [list release];
+    [pool drain];
   }
-  [pool drain];
 }
 
 // ------------------------------------------------------------
 // Notification
-static void release_iterator(io_iterator_t iterator) {
+- (void) release_iterator:(io_iterator_t)iterator {
   for (;;) {
     io_object_t obj = IOIteratorNext(iterator);
     if (! obj) break;
@@ -140,15 +142,17 @@ static void release_iterator(io_iterator_t iterator) {
 static void observer_refresh(void* refcon, io_iterator_t iterator) {
   NSLog(@"[INFO] observer_refresh called\n");
 
-  resetPreferences();
+  KeyRemap4MacBook_multitouchextensionAppDelegate* self = refcon;
 
-  release_iterator(iterator);
+  [self resetPreferences];
+
+  [self release_iterator:iterator];
 
   // wait for the initialization of the device
   sleep(1);
 
-  setcallback(NO);
-  setcallback(YES);
+  [self setcallback:NO];
+  [self setcallback:YES];
 }
 
 - (void) setNotification {
@@ -170,26 +174,26 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
                                         kIOTerminatedNotification,
                                         (CFMutableDictionaryRef)match,
                                         &observer_refresh,
-                                        NULL,
+                                        self,
                                         &it);
   if (kr != kIOReturnSuccess) {
     NSLog(@"[ERROR] IOServiceAddMatchingNotification");
     return;
   }
-  release_iterator(it);
+  [self release_iterator:it];
 
   [match retain]; // for kIOMatchedNotification
   kr = IOServiceAddMatchingNotification(port,
                                         kIOMatchedNotification,
                                         (CFMutableDictionaryRef)match,
                                         &observer_refresh,
-                                        NULL,
+                                        self,
                                         &it);
   if (kr != kIOReturnSuccess) {
     NSLog(@"[ERROR] IOServiceAddMatchingNotification");
     return;
   }
-  release_iterator(it);
+  [self release_iterator:it];
 
   // ----------------------------------------------------------------------
   CFRunLoopSourceRef loopsource = IONotificationPortGetRunLoopSource(port);
@@ -209,13 +213,13 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
 
   [self setNotification];
 
-  setcallback(YES);
+  [self setcallback:YES];
 }
 
 - (void) applicationWillTerminate:(NSNotification*)aNotification {
-  setcallback(NO);
+  [self setcallback:NO];
 
-  resetPreferences();
+  [self resetPreferences];
 }
 
 - (BOOL) applicationShouldHandleReopen:(NSApplication*)theApplication hasVisibleWindows:(BOOL)flag
