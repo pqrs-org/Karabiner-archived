@@ -205,6 +205,25 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
 }
 
 // ------------------------------------------------------------
+- (void) observer_NSWorkspaceSessionDidBecomeActiveNotification:(NSNotification*)notification
+{
+  NSLog(@"observer_NSWorkspaceSessionDidBecomeActiveNotification");
+  [self setcallback:YES];
+}
+
+- (void) observer_NSWorkspaceSessionDidResignActiveNotification:(NSNotification*)notification
+{
+  NSLog(@"observer_NSWorkspaceSessionDidResignActiveNotification");
+  [self setcallback:NO];
+}
+
+- (void) observer_NSWorkspaceDidWakeNotification:(NSNotification*)notification
+{
+  NSLog(@"observer_NSWorkspaceDidWakeNotification");
+  [self setcallback:YES];
+}
+
+// ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
   [preferences_ load];
 
@@ -212,6 +231,21 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
   global_mtdevices_ = mtdevices_;
 
   [self setNotification];
+
+  [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
+                                                         selector:@selector(observer_NSWorkspaceSessionDidBecomeActiveNotification:)
+                                                             name:NSWorkspaceSessionDidBecomeActiveNotification
+                                                           object:nil];
+
+  [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
+                                                         selector:@selector(observer_NSWorkspaceSessionDidResignActiveNotification:)
+                                                             name:NSWorkspaceSessionDidResignActiveNotification
+                                                           object:nil];
+
+  [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
+                                                         selector:@selector(observer_NSWorkspaceDidWakeNotification:)
+                                                             name:NSWorkspaceDidWakeNotification
+                                                           object:nil];
 
   [self setcallback:YES];
 }
