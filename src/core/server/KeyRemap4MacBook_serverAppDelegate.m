@@ -31,7 +31,9 @@
 - (void) configThreadMain {
   for (;;) {
     NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
-    set_sysctl_do_reload_xml();
+    if (isSessionActive_) {
+      set_sysctl_do_reload_xml();
+    }
     sleep(1);
     [pool drain];
   }
@@ -97,6 +99,8 @@
 {
   NSLog(@"observer_NSWorkspaceSessionDidBecomeActiveNotification");
 
+  isSessionActive_ = YES;
+
   // Note: The console user is "real login user" or "loginwindow",
   //       when NSWorkspaceSessionDidBecomeActiveNotification, NSWorkspaceSessionDidResignActiveNotification are called.
   [statuswindow_ resetStatusMessage];
@@ -109,6 +113,8 @@
 {
   NSLog(@"observer_NSWorkspaceSessionDidResignActiveNotification");
 
+  isSessionActive_ = NO;
+
   // Note: The console user is "real login user" or "loginwindow",
   //       when NSWorkspaceSessionDidBecomeActiveNotification, NSWorkspaceSessionDidResignActiveNotification are called.
   [statuswindow_ resetStatusMessage];
@@ -118,6 +124,7 @@
 
 // ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
+  isSessionActive_ = YES;
   registerServerObjcPart(serverobjcpart_);
 
   [statuswindow_ resetStatusMessage];
