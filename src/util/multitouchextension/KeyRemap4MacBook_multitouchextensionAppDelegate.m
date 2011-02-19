@@ -11,6 +11,7 @@
 
 enum { MAX_FINGERS = 3 };
 static int current_status_[MAX_FINGERS];
+static BOOL isSessionActive_ = NO;
 
 @implementation KeyRemap4MacBook_multitouchextensionAppDelegate
 
@@ -50,14 +51,23 @@ org_pqrs_KeyRemap4MacBook_Client* global_client_ = nil;
 NSMutableArray* global_mtdevices_ = nil;
 
 static void setPreference(int fingers, int newvalue) {
-  NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
-  {
-    NSString* name = [PreferencesController getSettingName:fingers];
-    if ([name length] > 0) {
-      [[global_client_ proxy] setValueForName:newvalue forName:name];
+  // We observe NSWorkspaceSessionDidResignActiveNotification and call [setcallback:NO] in callback function.
+  // But it does not work well!!!
+  // In inactive session, the callback function which is registered by MTRegisterContactFrameCallback is still called.
+  //
+  // So, we need to check session status by ourself.
+  // The isSessionActive_ variable synchronizes with session status of NSWorkspace.
+
+  if (isSessionActive_) {
+    NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+    {
+      NSString* name = [PreferencesController getSettingName:fingers];
+      if ([name length] > 0) {
+        [[global_client_ proxy] setValueForName:newvalue forName:name];
+      }
     }
+    [pool drain];
   }
-  [pool drain];
 }
 
 - (void) resetPreferences
@@ -208,12 +218,14 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
 - (void) observer_NSWorkspaceSessionDidBecomeActiveNotification:(NSNotification*)notification
 {
   NSLog(@"observer_NSWorkspaceSessionDidBecomeActiveNotification");
+  isSessionActive_ = YES;
   [self setcallback:YES];
 }
 
 - (void) observer_NSWorkspaceSessionDidResignActiveNotification:(NSNotification*)notification
 {
   NSLog(@"observer_NSWorkspaceSessionDidResignActiveNotification");
+  isSessionActive_ = NO;
   [self setcallback:NO];
 }
 
@@ -225,6 +237,8 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
 
 // ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
+  isSessionActive_ = YES;
+
   [preferences_ load];
 
   global_client_ = client_;
