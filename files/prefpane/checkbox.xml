@@ -1505,7 +1505,12 @@
         <item>
           <name>Eject to Command+Control+Option+Shift+E</name>
           <identifier>remap.eject2fccosE</identifier>
-          <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::E, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::E, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+        </item>
+        <item>
+          <name>Fn+Eject to Command+Control+Option+Shift+E</name>
+          <identifier>remap.fneject2fccosE</identifier>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::E, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
         </item>
         <item>
           <name>Eject to F12</name>
