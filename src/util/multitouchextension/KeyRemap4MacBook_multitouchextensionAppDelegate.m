@@ -133,6 +133,8 @@ static int callback(int device, struct Finger* data, int fingers, double timesta
 
     finish:
       [list release];
+
+      [self resetPreferences];
     }
     [pool drain];
   }
@@ -153,8 +155,6 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
   NSLog(@"[INFO] observer_refresh called\n");
 
   KeyRemap4MacBook_multitouchextensionAppDelegate* self = refcon;
-
-  [self resetPreferences];
 
   [self release_iterator:iterator];
 
@@ -266,8 +266,6 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
 
 - (void) applicationWillTerminate:(NSNotification*)aNotification {
   [self setcallback:NO];
-
-  [self resetPreferences];
 }
 
 - (BOOL) applicationShouldHandleReopen:(NSApplication*)theApplication hasVisibleWindows:(BOOL)flag
