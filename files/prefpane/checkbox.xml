@@ -4383,7 +4383,7 @@
         </item>
         <item>
           <name>Control_R+IKJL to Up/Down/Left/Right</name>
-          <appendix>+ Control_R+H/Control_L+; to beginning-of-line/end-of-line (Command+Shift+Left/Right)</appendix>
+          <appendix>+ Control_R+H/Control_R+; to beginning-of-line/end-of-line (Command+Shift+Left/Right)</appendix>
           <identifier>option.extra_cursor_controlR_jkil_hsemicolon</identifier>
           <autogen>--KeyToKey-- KeyCode::I,         ModifierFlag::CONTROL_R, KeyCode::CURSOR_UP</autogen>
           <autogen>--KeyToKey-- KeyCode::K,         ModifierFlag::CONTROL_R, KeyCode::CURSOR_DOWN</autogen>
