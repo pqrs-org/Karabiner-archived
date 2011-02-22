@@ -4281,6 +4281,7 @@
           <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::CONTROL_R, KeyCode::CURSOR_LEFT</autogen>
           <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT</autogen>
         </item>
+        <item><name>------------------------------------------------------------</name></item>
         <item>
           <name>ModifierFlag::EXTRA1+WXSD to Up/Down/Left/Right</name>
           <appendix>(+ ModifierFlag::EXTRA1+A to Command_L+Left)</appendix>
@@ -4293,6 +4294,7 @@
           <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA1, KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::EXTRA1, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
         </item>
+        <item><name>------------------------------------------------------------</name></item>
         <item>
           <name>Control_L+EXSD to Up/Down/Left/Right</name>
           <identifier>remap.diamond_cursor_controlL_exsd</identifier>
@@ -4309,6 +4311,7 @@
           <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::CONTROL_R, KeyCode::CURSOR_LEFT</autogen>
           <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT</autogen>
         </item>
+        <item><name>------------------------------------------------------------</name></item>
         <item>
           <name>Control_L+RVDF to Up/Down/Left/Right</name>
           <identifier>remap.diamond_cursor_controlL_rvdf</identifier>
@@ -4317,6 +4320,7 @@
           <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::CURSOR_LEFT</autogen>
           <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT</autogen>
         </item>
+        <item><name>------------------------------------------------------------</name></item>
         <item>
           <name>Control_L+ESDF to Up/Down/Left/Right</name>
           <identifier>remap.diamond_cursor_controlL_esdf</identifier>
@@ -4333,6 +4337,7 @@
           <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::CONTROL_R, KeyCode::CURSOR_LEFT</autogen>
           <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT</autogen>
         </item>
+        <item><name>------------------------------------------------------------</name></item>
         <item>
           <name>Control_L+ESDF to Shift+Up/Down/Left/Right</name>
           <appendix>+ Control_L+AG to beginning-of-line/end-of-line (Command+Shift+Left/Right)</appendix>
@@ -4355,6 +4360,7 @@
           <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::CONTROL_R, KeyCode::CURSOR_LEFT,  ModifierFlag::SHIFT_L | ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT, ModifierFlag::SHIFT_L | ModifierFlag::COMMAND_L</autogen>
         </item>
+        <item><name>------------------------------------------------------------</name></item>
         <item>
           <name>Control_L+IKJL to Up/Down/Left/Right</name>
           <identifier>option.extra_cursor_controlL_jkil</identifier>
@@ -4363,6 +4369,7 @@
           <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::CONTROL_L, KeyCode::CURSOR_LEFT</autogen>
           <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT</autogen>
         </item>
+        <item><name>------------------------------------------------------------</name></item>
         <item>
           <name>Control_L+IKJL to Up/Down/Left/Right</name>
           <appendix>+ Control_L+H/Control_L+; to beginning-of-line/end-of-line (Command+Shift+Left/Right)</appendix>
@@ -4385,6 +4392,7 @@
           <autogen>--KeyToKey-- KeyCode::H,         ModifierFlag::CONTROL_R, KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
         </item>
+        <item><name>------------------------------------------------------------</name></item>
         <item>
           <name>Option_L+IKJL to Up/Down/Left/Right</name>
           <identifier>option.extra_cursor_optionL_jkil</identifier>
