@@ -4,7 +4,7 @@ Changes since 7.1.0
 
 ----------------------------------------------------------------------
 = version 7.1.0 =
-    - Added setting to be able to use "Logitech Number Pad" which we cannot use in Mac OS X.
+    - Added setting to be able to use "Logitech Number Pad" which we were not able not use in Mac OS X.
       Activate "Change KeyPad Key > Logitech Number Pad Hack".
     - Replaced StatusWindow with Growl.
       StatusWindow was displaying the lock state of modifiers and extra message.
