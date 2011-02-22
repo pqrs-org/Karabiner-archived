@@ -4364,6 +4364,28 @@
           <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT</autogen>
         </item>
         <item>
+          <name>Control_L+IKJL to Up/Down/Left/Right</name>
+          <appendix>+ Control_L+H/Control_L+; to beginning-of-line/end-of-line (Command+Shift+Left/Right)</appendix>
+          <identifier>option.extra_cursor_controlL_jkil_hsemicolon</identifier>
+          <autogen>--KeyToKey-- KeyCode::I,         ModifierFlag::CONTROL_L, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::K,         ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::J,         ModifierFlag::CONTROL_L, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::L,         ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT</autogen>
+          <autogen>--KeyToKey-- KeyCode::H,         ModifierFlag::CONTROL_L, KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
+          <name>Control_R+IKJL to Up/Down/Left/Right</name>
+          <appendix>+ Control_R+H/Control_L+; to beginning-of-line/end-of-line (Command+Shift+Left/Right)</appendix>
+          <identifier>option.extra_cursor_controlR_jkil_hsemicolon</identifier>
+          <autogen>--KeyToKey-- KeyCode::I,         ModifierFlag::CONTROL_R, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::K,         ModifierFlag::CONTROL_R, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::J,         ModifierFlag::CONTROL_R, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::L,         ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT</autogen>
+          <autogen>--KeyToKey-- KeyCode::H,         ModifierFlag::CONTROL_R, KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
           <name>Option_L+IKJL to Up/Down/Left/Right</name>
           <identifier>option.extra_cursor_optionL_jkil</identifier>
           <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::OPTION_L, KeyCode::CURSOR_UP</autogen>
