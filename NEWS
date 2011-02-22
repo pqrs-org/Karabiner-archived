@@ -1,4 +1,7 @@
-Changes since 7.0.0
+Changes since 7.1.0
+
+----------------------------------------------------------------------
+= version 7.1.0 =
     - Added setting to be able to use "Logitech Number Pad" which we cannot use in Mac OS X.
       Activate "Change KeyPad Key > Logitech Number Pad Hack".
     - Replaced StatusWindow with Growl.
@@ -6,8 +9,11 @@ Changes since 7.0.0
       Now, these messages are shown by Growl.
       http://pqrs.org/macosx/keyremap4macbook/img/growl.png
       http://growl.info/
+    - Attached an application named "multi-touch extension".
+      This application activates specific setting while fingers touch the multi-touch device.
+      ThumbSense is one of the function which this application supplies.
     - Improve UI of checkForUpdate.
     - Fixed some bugs.
-    - Added about XXX kinds settings.
+    - Added about 140 kinds settings.
     - Added <modifier_only>, <modifier_not> filters.
     - Added --ForceNumLockOn-- to <autogen>.
