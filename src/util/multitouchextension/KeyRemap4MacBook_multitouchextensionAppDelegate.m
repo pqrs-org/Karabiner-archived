@@ -105,38 +105,40 @@ static int callback(int device, struct Finger* data, int fingers, double timesta
 
 - (void) setcallback:(BOOL)isset {
   @synchronized(self) {
-    NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
-    {
-      NSArray* list = nil;
+    if (isSessionActive_) {
+      NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+      {
+        NSArray* list = nil;
 
-      list = (NSArray*)(MTDeviceCreateList());
-      if (! list) goto finish;
+        list = (NSArray*)(MTDeviceCreateList());
+        if (! list) goto finish;
 
-      for (NSUInteger i = 0; i < [list count]; ++i) {
-        MTDeviceRef device = [list objectAtIndex:i];
-        if (! device) continue;
+        for (NSUInteger i = 0; i < [list count]; ++i) {
+          MTDeviceRef device = [list objectAtIndex:i];
+          if (! device) continue;
 
-        // We need retain 'device' to prevent a mysterious crash.
-        // So, we append 'device' to global_mtdevices_.
-        if ([global_mtdevices_ indexOfObject:device] == NSNotFound) {
-          [global_mtdevices_ addObject:device];
+          // We need retain 'device' to prevent a mysterious crash.
+          // So, we append 'device' to global_mtdevices_.
+          if ([global_mtdevices_ indexOfObject:device] == NSNotFound) {
+            [global_mtdevices_ addObject:device];
+          }
+
+          if (isset) {
+            MTRegisterContactFrameCallback(device, callback);
+            MTDeviceStart(device, 0);
+          } else {
+            MTUnregisterContactFrameCallback(device, callback);
+            MTDeviceStop(device, 0);
+          }
         }
 
-        if (isset) {
-          MTRegisterContactFrameCallback(device, callback);
-          MTDeviceStart(device, 0);
-        } else {
-          MTUnregisterContactFrameCallback(device, callback);
-          MTDeviceStop(device, 0);
-        }
+      finish:
+        [list release];
+
+        [self resetPreferences];
       }
-
-    finish:
-      [list release];
-
-      [self resetPreferences];
+      [pool drain];
     }
-    [pool drain];
   }
 }
 
@@ -152,8 +154,6 @@ static int callback(int device, struct Finger* data, int fingers, double timesta
 }
 
 static void observer_refresh(void* refcon, io_iterator_t iterator) {
-  NSLog(@"[INFO] observer_refresh called\n");
-
   KeyRemap4MacBook_multitouchextensionAppDelegate* self = refcon;
 
   [self release_iterator:iterator];
@@ -225,8 +225,8 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
 - (void) observer_NSWorkspaceSessionDidResignActiveNotification:(NSNotification*)notification
 {
   NSLog(@"observer_NSWorkspaceSessionDidResignActiveNotification");
-  isSessionActive_ = NO;
   [self setcallback:NO];
+  isSessionActive_ = NO;
 }
 
 - (void) observer_NSWorkspaceDidWakeNotification:(NSNotification*)notification
