@@ -231,8 +231,10 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
 
 - (void) observer_NSWorkspaceDidWakeNotification:(NSNotification*)notification
 {
-  NSLog(@"observer_NSWorkspaceDidWakeNotification");
-  [self setcallback:YES];
+  if (isSessionActive_) {
+    NSLog(@"observer_NSWorkspaceDidWakeNotification");
+    [self setcallback:YES];
+  }
 }
 
 // ------------------------------------------------------------
