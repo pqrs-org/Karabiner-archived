@@ -239,8 +239,16 @@
     return [configxmlparser_ keycode:@"ApplicationType::WORLD_OF_WARCRAFT"];
   }
 
+  // com.ctmdev.FoxTrot
+  // com.ctmdev.FoxTrotPro
   if ([name hasPrefix:@"com.ctmdev.FoxTrot"]) {
     return [configxmlparser_ keycode:@"ApplicationType::FOXTROT"];
+  }
+
+  // com.binarynights.ForkLift
+  // com.binarynights.ForkLift2
+  if ([name hasPrefix:@"com.binarynights.ForkLift"]) {
+    return [configxmlparser_ keycode:@"ApplicationType::FORKLIFT"];
   }
 
   return [configxmlparser_ keycode:@"ApplicationType::UNKNOWN"];
