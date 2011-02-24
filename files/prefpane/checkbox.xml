@@ -813,7 +813,8 @@
       <name>Change CapsLock Key</name>
       <list>
         <item>
-          <name>CapsLock is an exceptional key.</name>
+          <name>Note:</name>
+          <appendix>CapsLock is an exceptional key.</appendix>
           <appendix>Use "PCKeyboardHack" to change CapsLock key.</appendix>
           <appendix>&#8594; http://pqrs.org/macosx/keyremap4macbook/extra.html</appendix>
         </item>
@@ -1448,9 +1449,22 @@
 
     <item>
       <name>Change Eject Key</name>
-      <appendix>*** We recommend to use "NoEjectDelay" together when you change eject key.</appendix>
-      <appendix>*** &#8594; http://pqrs.org/macosx/keyremap4macbook/noejectdelay.html</appendix>
       <list>
+        <item>
+          <name>Note:</name>
+          <appendix>Eject key has a delay.</appendix>
+          <appendix>You need to press eject key for a few seconds.</appendix>
+          <appendix>We recommend you to use "NoEjectDelay" together to get rid of a delay.</appendix>
+          <appendix>&#8594; http://pqrs.org/macosx/keyremap4macbook/noejectdelay.html</appendix>
+        </item>
+        <item>
+          <name>Limitation:</name>
+          <appendix>You cannot change eject key to a modifier key (Command,Control,Fn,Option,Shift),</appendix>
+          <appendix>and eject key does not support key repeat exceptionally.</appendix>
+          <appendix></appendix>
+          <appendix>Because eject key sends keydown&amp;keyup event at the same time when you press the key.</appendix>
+          <appendix>KeyRemap4MacBook cannot know whether you're holding eject key or not.</appendix>
+        </item>
         <item>
           <name>Eject to Dashboard if no modifiers pressed</name>
           <identifier>remap.eject2dashboard_withoutmodifiers</identifier>
@@ -2033,7 +2047,7 @@
           <appendix>Volume Up(F11) to Volume Down</appendix>
           <appendix>Eject(F12) to Volume Up</appendix>
           <appendix></appendix>
-          <appendix>*** We recommend to use "NoEjectDelay" together when you change eject key.</appendix>
+          <appendix>*** We recommend you to use "NoEjectDelay" together when you change eject key.</appendix>
           <appendix>*** &#8594; http://pqrs.org/macosx/keyremap4macbook/noejectdelay.html</appendix>
           <identifier>remap.functional2fn_air3_1_to_previous</identifier>
           <autogen>--ConsumerToKey--      ConsumerKeyCode::MUSIC_PREV,  KeyCode::F6</autogen>
@@ -8236,7 +8250,7 @@
         </item>
         <item>
           <name>Change Eject Key</name>
-          <appendix>*** We recommend to use "NoEjectDelay" together when you change eject key.</appendix>
+          <appendix>*** We recommend you to use "NoEjectDelay" together when you change eject key.</appendix>
           <appendix>*** &#8594; http://pqrs.org/macosx/keyremap4macbook/noejectdelay.html</appendix>
           <list>
             <item>
