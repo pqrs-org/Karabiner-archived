@@ -811,8 +811,13 @@
 
     <item>
       <name>Change CapsLock Key</name>
-      <appendix>*** Use "PCKeyboardHack" to change CapsLock key.</appendix>
-      <appendix>*** &#8594; http://pqrs.org/macosx/keyremap4macbook/extra.html</appendix>
+      <list>
+        <item>
+          <name>CapsLock is an exceptional key.</name>
+          <appendix>Use "PCKeyboardHack" to change CapsLock key.</appendix>
+          <appendix>&#8594; http://pqrs.org/macosx/keyremap4macbook/extra.html</appendix>
+        </item>
+      </list>
     </item>
 
     <item>
