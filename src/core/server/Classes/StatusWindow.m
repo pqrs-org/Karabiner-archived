@@ -19,6 +19,7 @@ NSString* notificationName_lock  = @"Modifier Lock";
     }
 
     [GrowlApplicationBridge setGrowlDelegate:self];
+    [GrowlApplicationBridge setWillRegisterWhenGrowlIsReady:YES];
   }
 
   return self;
