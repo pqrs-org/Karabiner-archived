@@ -19,6 +19,26 @@ NSString* notificationName_lock  = @"Modifier Lock";
     }
 
     [GrowlApplicationBridge setGrowlDelegate:self];
+
+    // Workaround for Growl problem.
+    //
+    // In the following case, the notification is not displayed after Growl started either.
+    // (1) KeyRemap4MacBook is not registered with Growl.
+    // (2) Growl is not running when we call setGrowlDelegate.
+    //
+    // We need to call setWillRegisterWhenGrowlIsReady:YES to prevent the above problem.
+    // reregisterGrowlNotifications solves this problem.
+    //
+    // Note:
+    // To reproduce this problem, do the following procedures.
+    // (You need to comment out setWillRegisterWhenGrowlIsReady:YES below.)
+    //
+    // (1) Stop Growl.
+    // (2) Delete KeyRemap4MacBook entry from Growl Preferences.
+    // (3) Stop KeyRemap4MacBook_server.
+    // (4) Start KeyRemap4MacBook_server.
+    // (5) Start Growl.
+    // (6) call notifyWithTitle in KeyRemap4MacBook_server.
     [GrowlApplicationBridge setWillRegisterWhenGrowlIsReady:YES];
   }
 
