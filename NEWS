@@ -1,5 +1,6 @@
 Changes since 7.1.0
     - Improved multi-touch extension around sleep/wakeup.
+    - Fixed a minor bug.
     - Added about XXX kinds settings.
 
 ----------------------------------------------------------------------
