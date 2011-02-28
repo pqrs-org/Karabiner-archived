@@ -8360,6 +8360,13 @@
               <autogen>--KeyToKey-- KeyCode::SPACE, VK_COMMAND | ModifierFlag::NONE, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
             </item>
             <item>
+              <name>「左コマンド+スペース」を「英数」、「右コマンド+スペース」を「かな」</name>
+              <appendix>(Command_L+Space to EISUU, Command_R+Space to KANA)</appendix>
+              <identifier>remap.jis_commandLspace2eisuu_commandRspace2kana</identifier>
+              <autogen>--KeyToKey-- KeyCode::SPACE, ModifierFlag::COMMAND_L, KeyCode::JIS_EISUU</autogen>
+              <autogen>--KeyToKey-- KeyCode::SPACE, ModifierFlag::COMMAND_R, KeyCode::JIS_KANA</autogen>
+            </item>
+            <item>
               <name>Shift+Space to KANA/EISUU (toggle)</name>
               <identifier>remap.jis_shiftSpace2toggle_kana_eisuu</identifier>
               <autogen>--KeyToKey-- KeyCode::SPACE, VK_SHIFT, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
