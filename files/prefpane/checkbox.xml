@@ -4478,6 +4478,11 @@
           <identifier>remap.optionR2optionR_browsing</identifier>
           <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_R, KeyCode::OPTION_R, KeyCode::VK_CONFIG_TOGGLE_notsave_browsingmode</autogen>
         </item>
+        <item>
+          <name>RightClick to toggle Browsing Mode</name>
+          <identifier>remap.rightclick_to_browsing</identifier>
+          <autogen>--PointingButtonToKey-- PointingButton::RIGHT, KeyCode::VK_CONFIG_TOGGLE_notsave_browsingmode</autogen>
+        </item>
       </list>
     </item>
 
