@@ -10,6 +10,7 @@
 #import "KeyRemap4MacBook_multitouchextensionAppDelegate.h"
 
 enum { MAX_FINGERS = 3 };
+enum { WAIT_FOR_DEVICE_INITIALIZATION = 3 };
 static int current_status_[MAX_FINGERS];
 static BOOL isSessionActive_ = NO;
 
@@ -158,8 +159,7 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
 
   [self release_iterator:iterator];
 
-  // wait for the initialization of the device
-  sleep(1);
+  sleep(WAIT_FOR_DEVICE_INITIALIZATION);
 
   [self setcallback:NO];
   [self setcallback:YES];
@@ -233,6 +233,9 @@ static void observer_refresh(void* refcon, io_iterator_t iterator) {
 {
   if (isSessionActive_) {
     NSLog(@"observer_NSWorkspaceDidWakeNotification");
+
+    sleep(WAIT_FOR_DEVICE_INITIALIZATION);
+
     [self setcallback:YES];
   }
 }
