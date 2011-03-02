@@ -6454,6 +6454,18 @@
                 </item>
               </list>
             </item>
+            <item>
+              <name>Disable Command+L (Make Alias)</name>
+              <identifier>remap.app_finder_disable_command_l</identifier>
+              <only>FINDER</only>
+              <autogen>--HoldingKeyToKey-- KeyCode::L, VK_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+            </item>
+            <item>
+              <name>Disable Command+T (Add To Sidebar)</name>
+              <identifier>remap.app_finder_disable_command_t</identifier>
+              <only>FINDER</only>
+              <autogen>--HoldingKeyToKey-- KeyCode::T, VK_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+            </item>
           </list>
         </item>
         <item>
