@@ -251,6 +251,10 @@
     return [configxmlparser_ keycode:@"ApplicationType::FORKLIFT"];
   }
 
+  if ([name isEqualToString:@"net.limechat.LimeChat"]) {
+    return [configxmlparser_ keycode:@"ApplicationType::LIMECHAT"];
+  }
+
   return [configxmlparser_ keycode:@"ApplicationType::UNKNOWN"];
 }
 
