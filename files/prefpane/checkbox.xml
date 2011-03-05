@@ -8809,6 +8809,11 @@
               <not>VIRTUALMACHINE, X11</not>
               <autogen>--KeyToKey-- KeyCode::JIS_YEN, KeyCode::VK_JIS_BACKSLASH</autogen>
             </item>
+            <item>
+              <name>JIS Yen(¥) to Forward Delete</name>
+              <identifier>remap.jis_yen2forwarddelete</identifier>
+              <autogen>--KeyToKey-- KeyCode::JIS_YEN, KeyCode::FORWARD_DELETE</autogen>
+            </item>
           </list>
         </item>
         <item>
