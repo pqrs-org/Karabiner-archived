@@ -4351,7 +4351,8 @@
             </item>
             <item>
               <name>[Option] Switch tabs of frontmost app with u/o</name>
-              <appendix>For people who like jkli configuration and have cmd+option+left/rigth as shortcut to siwtch tabs</appendix>
+              <appendix>For people who like jkli configuration and have cmd+option+left/rigth as shortcut to</appendix>
+              <appendix>switch tabs</appendix>
               <identifier>option.tabmode_uo</identifier>
             </item>
           </list>
