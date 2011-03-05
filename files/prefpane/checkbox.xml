@@ -4287,6 +4287,75 @@
           <identifier>remap.drop_tab</identifier>
           <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::VK_NONE</autogen>
         </item>
+
+        <item>
+          <name>Tabmode</name>
+          <list>
+            <item>
+              <name>What's Tabmode?</name>
+              <appendix>It replaces the default shortcut for switching applications (cmd+tab)</appendix>
+              <appendix>While tab is pressed, use your favourite combination of left/right keys to switch between apps</appendix>
+              <identifier vk_config="true">notsave.tabmode</identifier>
+              <block>
+                <config_only>option.tabmode_jl</config_only>
+                <autogen>--KeyToKey-- KeyCode::L, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::J, KeyCode::TAB, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+              </block>
+              <block>
+                <config_only>option.tabmode_hl</config_only>
+                <autogen>--KeyToKey-- KeyCode::L, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::H, KeyCode::TAB, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+              </block>
+              <block>
+                <config_only>option.tabmode_leftright</config_only>
+                <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, KeyCode::TAB, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+              </block>
+              <block>
+                <config_only>option.tabmode_ik</config_only>
+                <autogen>--KeyToKey-- KeyCode::I, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::K, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+              </block>
+              <block>
+                <config_only>option.tabmode_uo</config_only>
+                <autogen>--KeyToKey-- KeyCode::U, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::O, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
+              </block>
+            </item>
+            <item>
+              <name>Keeping tab pressed turns on "Tab Mode"</name>
+              <appendix>(+ When you type Tab only, send Tab)</appendix>
+              <identifier>remap.tabmode</identifier>
+              <autogen>--KeyOverlaidModifier-- KeyCode::TAB, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_tabmode , KeyCode::TAB</autogen>
+            </item>
+            <item><name>------------------------------------------------------------</name></item>
+            <item>
+              <name>[Option] Switch apps with j/l</name>
+              <appendix>For people who like jkli configuration</appendix>
+              <identifier>option.tabmode_jl</identifier>
+            </item>
+            <item>
+              <name>[Option] Switch apps with h/l</name>
+              <appendix>For people who like hjkl configuration</appendix>
+              <identifier>option.tabmode_hl</identifier>
+            </item>
+            <item>
+              <name>[Option] Switch apps with left/right arrows</name>
+              <appendix>For people who like directional arrows</appendix>
+              <identifier>option.tabmode_leftright</identifier>
+            </item>
+            <item>
+              <name>[Option] Switch windows of frontmost app with i/k</name>
+              <appendix>For people who like jkli configuration and use witch app</appendix>
+              <identifier>option.tabmode_ik</identifier>
+            </item>
+            <item>
+              <name>[Option] Switch tabs of frontmost app with u/o</name>
+              <appendix>For people who like jkli configuration and have cmd+option+left/rigth as shortcut to siwtch tabs</appendix>
+              <identifier>option.tabmode_uo</identifier>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
 
