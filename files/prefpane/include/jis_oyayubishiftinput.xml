@@ -119,7 +119,14 @@
 <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::NONE, KeyCode::S, KeyCode::O,                     KeyCode::VK_NONE</autogen>
 <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::NONE, KeyCode::N, KeyCode::E,                 KeyCode::VK_NONE</autogen>
 <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::NONE, KeyCode::H, KeyCode::O,                   KeyCode::VK_NONE</autogen>
-<autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::NONE, KeyCode::SLASH, ModifierFlag::OPTION_L, KeyCode::VK_NONE</autogen>
+<block>
+  <config_not>option.jis_oyayubishiftinput_passthrough_slash</config_not>
+  <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::NONE, KeyCode::SLASH, ModifierFlag::OPTION_L, KeyCode::VK_NONE</autogen>
+</block>
+<block>
+  <config_only>option.jis_oyayubishiftinput_passthrough_slash</config_only>
+  <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::NONE, KeyCode::SLASH,                         KeyCode::VK_NONE</autogen>
+</block>
 <!-- 右手 下段 (順親指シフト) -->
 <autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::N, KeyCode::N, KeyCode::U,     KeyCode::VK_NONE</autogen>
 <autogen>--SimultaneousKeyPresses-- RIGHT_THUMB, KeyCode::M, KeyCode::Y, KeyCode::U,     KeyCode::VK_NONE</autogen>

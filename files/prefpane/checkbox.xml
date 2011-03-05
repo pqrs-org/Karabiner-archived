@@ -9570,8 +9570,28 @@
                       <identifier>remap.oyayubi_shift_roman_eisuu_kana</identifier>
                       <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::JIS_EISUU|g' -e 's|RIGHT_THUMB|KeyCode::JIS_KANA|g' include/jis_oyayubishiftinput.xml" -->
                     </item>
+                    <item><name>------------------------------------------------------------</name></item>
+                    <item>
+                      <name>スラッシュキー（/）を素通しする</name>
+                      <appendix>（スラッシュキーで÷や／が入力される場合に有効にしてください）</appendix>
+                      <identifier>option.jis_oyayubishiftinput_passthrough_slash</identifier>
+                    </item>
                   </list>
                 </item>
+                <item><name>------------------------------------------------------------</name></item>
+                <item>
+                  <name>：キーをDeleteキーにする（後退キー）</name>
+                  <identifier>remap.jis_oyayubishiftinput_backspace</identifier>
+                  <inputmode_only>JAPANESE</inputmode_only>
+                  <autogen>--KeyToKey-- KeyCode::JIS_COLON, KeyCode::DELETE</autogen>
+                </item>
+                <item>
+                  <name>］キーをEscapeキーにする（取消キー）</name>
+                  <identifier>remap.jis_oyayubishiftinput_escape</identifier>
+                  <inputmode_only>JAPANESE</inputmode_only>
+                  <autogen>--KeyToKey-- KeyCode::JIS_BRACKET_RIGHT, KeyCode::ESCAPE</autogen>
+                </item>
+                <item><name>------------------------------------------------------------</name></item>
                 <item>
                   <name>EISUU x2 to EISUU (単発での英数キーは無視する)</name>
                   <identifier>remap.jis_eisuu2extra5_x2eisuu</identifier>
