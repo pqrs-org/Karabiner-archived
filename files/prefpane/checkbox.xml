@@ -2978,27 +2978,27 @@
           </list>
         </item>
         <item>
-          <name>Change Dot(.) Key</name>
+          <name>Change KeyPad-Dot(.) Key</name>
           <list>
             <item>
-              <name>Dot(.) to Comma(,)</name>
+              <name>KeyPad-Dot(.) to Comma(,)</name>
               <identifier>remap.keypaddot2comma</identifier>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::KEYPAD_COMMA</autogen>
             </item>
             <item>
-              <name>Fn+Dot to Fn+Shift+Dot</name>
+              <name>Fn+KeyPad-Dot(.) to Fn+Shift+Dot</name>
               <appendix>(Useful for some keyboard layouts such as French, Italian, etc.)</appendix>
               <identifier>remap.fndot2fnshiftdot</identifier>
               <autogen>--KeyToKey-- KeyCode::DOT,        ModifierFlag::FN, KeyCode::DOT, ModifierFlag::FN | ModifierFlag::SHIFT_L</autogen>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, ModifierFlag::FN, KeyCode::DOT, ModifierFlag::FN | ModifierFlag::SHIFT_L</autogen>
             </item>
             <item>
-              <name>Shift+Dot(.) to Comma</name>
+              <name>Shift+KeyPad-Dot(.) to Comma</name>
               <identifier>remap.shift_keypad_dot2comma</identifier>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, VK_SHIFT, KeyCode::KEYPAD_COMMA</autogen>
             </item>
             <item>
-              <name>Control+Dot(.) to Command+X (Cut)</name>
+              <name>Control+KeyPad-Dot(.) to Command+X (Cut)</name>
               <identifier>remap.controlDot2commandX</identifier>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, VK_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
             </item>
