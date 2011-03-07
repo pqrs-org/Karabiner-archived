@@ -3030,6 +3030,31 @@
           </list>
         </item>
         <item>
+          <name>Change KeyPad-Plus(+) Key</name>
+          <list>
+            <item>
+              <name>KeyPad-Plus(+) to Command_L</name>
+              <identifier>remap.keypadplus2commandL</identifier>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_PLUS, KeyCode::COMMAND_L</autogen>
+            </item>
+            <item>
+              <name>KeyPad-Plus(+) to Control_L</name>
+              <identifier>remap.keypadplus2controlL</identifier>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_PLUS, KeyCode::CONTROL_L</autogen>
+            </item>
+            <item>
+              <name>KeyPad-Plus(+) to Option_L</name>
+              <identifier>remap.keypadplus2optionL</identifier>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_PLUS, KeyCode::OPTION_L</autogen>
+            </item>
+            <item>
+              <name>KeyPad-Plus(+) to Shift_L</name>
+              <identifier>remap.keypadplus2shiftL</identifier>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_PLUS, KeyCode::SHIFT_L</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Keypad_0 to Shift_L</name>
           <appendix>(+ When you type Keypad_0 only, send Keypad_0) + [KeyRepeat]</appendix>
           <identifier>remap.keypad0_2_shiftL_keypad0_keyrepeat</identifier>
