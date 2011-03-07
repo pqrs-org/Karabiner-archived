@@ -2963,15 +2963,15 @@
           </list>
         </item>
         <item>
-          <name>Change Comma(,) Key</name>
+          <name>Change KeyPad-Comma(,) Key</name>
           <list>
             <item>
-              <name>Comma to Shift+Comma</name>
+              <name>KeyPad-Comma(,) to Shift+Comma</name>
               <identifier>remap.keypadcomma2shiftComma</identifier>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_COMMA, KeyCode::KEYPAD_COMMA, ModifierFlag::SHIFT_L</autogen>
             </item>
             <item>
-              <name>Comma to Equal</name>
+              <name>KeyPad-Comma(,) to Equal</name>
               <identifier>remap.keypadcomma2keypadequal</identifier>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_COMMA, KeyCode::KEYPAD_EQUAL</autogen>
             </item>
