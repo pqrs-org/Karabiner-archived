@@ -7386,7 +7386,7 @@
             <autogen>--KeyToKey-- FROMKEYCODE_END,              KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
           </block>
           <block>
-            <only>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</only>
+            <only>EMACS, TERMINAL, X11, ECLIPSE</only>
             <autogen>--KeyToKey-- FROMKEYCODE_HOME, KeyCode::A, ModifierFlag::CONTROL_L</autogen>
             <autogen>--KeyToKey-- FROMKEYCODE_END,  KeyCode::E, ModifierFlag::CONTROL_L</autogen>
           </block>
