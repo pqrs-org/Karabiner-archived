@@ -1,4 +1,7 @@
-Changes since 7.1.0
+Changes since 7.2.0
+
+----------------------------------------------------------------------
+= version 7.2.0 =
     - Fixed a bug that Growl notification did not work in specific environment.
     - Fixed a bug that the default setting of checkForUpdate was "Nothing".
     - Improved multi-touch extension around sleep/wakeup.
