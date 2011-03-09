@@ -4375,13 +4375,27 @@
               </block>
               <block>
                 <config_only>option.tabmode_ik</config_only>
-                <autogen>--KeyToKey-- KeyCode::I, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L</autogen>
-                <autogen>--KeyToKey-- KeyCode::K, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::K, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::I, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
               </block>
               <block>
                 <config_only>option.tabmode_uo</config_only>
+                <block>
+                  <only>TERMINAL</only>
+                  <config_only>remap.app_term_screen_switch</config_only>
+                  <autogen>--KeyToKey-- KeyCode::U, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::P</autogen>
+                  <autogen>--KeyToKey-- KeyCode::O, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::N</autogen>
+                </block>
                 <autogen>--KeyToKey-- KeyCode::U, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::O, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
+              </block>
+              <block>
+                <config_only>option.tabmode_q</config_only>
+                <autogen>--KeyToKey-- KeyCode::Q, KeyCode::Q, ModifierFlag::COMMAND_L</autogen>
+              </block>
+              <block>
+                <config_only>option.tabmode_w</config_only>
+                <autogen>--KeyToKey-- KeyCode::W, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
               </block>
             </item>
             <item>
@@ -4402,7 +4416,7 @@
               <identifier>option.tabmode_hl</identifier>
             </item>
             <item>
-              <name>[Option] Switch apps with left/right arrows</name>
+              <name>[Option] Switch apps with left/right</name>
               <appendix>For people who like directional arrows</appendix>
               <identifier>option.tabmode_leftright</identifier>
             </item>
@@ -4416,6 +4430,14 @@
               <appendix>For people who like jkli configuration and have cmd+option+left/rigth as shortcut to</appendix>
               <appendix>switch tabs</appendix>
               <identifier>option.tabmode_uo</identifier>
+            </item>
+            <item>
+              <name>[Option] Quit application with q</name>
+              <identifier>option.tabmode_q</identifier>
+            </item>
+            <item>
+              <name>[Option] Close window with w</name>
+              <identifier>option.tabmode_w</identifier>
             </item>
           </list>
         </item>
@@ -9021,6 +9043,72 @@
                     <not>TERMINAL</not>
                     <autogen>--KeyToKey-- KeyCode::KEY_0, VK_SHIFT, KeyCode::JIS_YEN</autogen>
                   </block>
+                </item>
+                <item>
+                  <name>For Screen Users</name>
+                  <list>
+                    <item>
+                      <name>cmd+t to ctrl+a,c (create window)</name>
+                      <identifier>remap.app_term_screen_c</identifier>
+                      <only>TERMINAL</only>
+                      <autogen>--KeyToKey-- KeyCode::T, ModifierFlag::COMMAND_L, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::C</autogen>
+                      <autogen>--KeyToKey-- KeyCode::T, ModifierFlag::COMMAND_R, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::C</autogen>
+                    </item>
+                    <item>
+                      <name>cmd+w to ctrl+a,k (kill window)</name>
+                      <identifier>remap.app_term_screen_k</identifier>
+                      <only>TERMINAL</only>
+                      <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::COMMAND_L, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::K</autogen>
+                      <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::COMMAND_R, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::K</autogen>
+                    </item>
+                    <item>
+                      <name>cmd+w to ctrl+a,k,y (kill window without confirming)</name>
+                      <identifier>remap.app_term_screen_ky</identifier>
+                      <only>TERMINAL</only>
+                      <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::COMMAND_L, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::K, KeyCode::Y</autogen>
+                      <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::COMMAND_R, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::K, KeyCode::Y</autogen>
+                    </item>
+                    <item>
+                      <name>cmd+r to ctrl+a,A (rename window)</name>
+                      <identifier>remap.app_term_screen_a</identifier>
+                      <only>TERMINAL</only>
+                      <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::COMMAND_L, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::A, ModifierFlag::SHIFT_L</autogen>
+                      <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::COMMAND_R, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::A, ModifierFlag::SHIFT_L</autogen>
+                    </item>
+                    <item>
+                      <name>cmd+alt+left/right to ctrl+a,n/p (switch windows)</name>
+                      <identifier>remap.app_term_screen_switch</identifier>
+                      <only>TERMINAL</only>
+                      <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::N</autogen>
+                      <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::P</autogen>
+                    </item>
+                  </list>
+                </item>
+                <item>
+                  <name>cmd+left/right to begining/end</name>
+                  <list>
+                    <item>
+                      <name>normal (ctrl+a / ctrl+e)</name>
+                      <identifier>remap.app_term_begend</identifier>
+                      <only>TERMINAL</only>
+                      <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L, KeyCode::E, ModifierFlag::CONTROL_L</autogen>
+                      <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L, KeyCode::A, ModifierFlag::CONTROL_L</autogen>
+                    </item>
+                    <item>
+                      <name>using screen (ctrl+a,a / ctrl+e)</name>
+                      <identifier>remap.app_term_begend_screen</identifier>
+                      <only>TERMINAL</only>
+                      <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L, KeyCode::E, ModifierFlag::CONTROL_L</autogen>
+                      <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::A</autogen>
+                    </item>
+                  </list>
+                </item>
+                <item>
+                  <name>cmd+delete/fwd_delete to ctrl+w/k</name>
+                  <identifier>remap.app_term_cmddel</identifier>
+                  <only>TERMINAL</only>
+                  <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::COMMAND_L, KeyCode::W, ModifierFlag::CONTROL_L</autogen>
+                  <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, ModifierFlag::COMMAND_L, KeyCode::K, ModifierFlag::CONTROL_L</autogen>
                 </item>
               </list>
             </item>

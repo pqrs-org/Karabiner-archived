@@ -33,6 +33,12 @@
         <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::EXTRA5, KeyCode::Z, ModifierFlag::SHIFT_L | ModifierFlag::COMMAND_L</autogen>
       </block>
       <block>
+        <block>
+          <only>TERMINAL</only>
+          <config_only>remap.app_term_cmddel</config_only>
+          <autogen>--KeyOverlaidModifier-- KeyCode::U, ModifierFlag::COMMAND_L, KeyCode::VK_MODIFIER_EXTRA5, KeyCode::W, ModifierFlag::CONTROL_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA5, KeyCode::K, ModifierFlag::CONTROL_L</autogen>
+        </block>
         <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::U, KeyCode::VK_MODIFIER_EXTRA5, KeyCode::DELETE</autogen>
         <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA5, KeyCode::FORWARD_DELETE</autogen>
         <config_only>option.simultaneouskeypresses_vimode_u_to_delete</config_only>
@@ -164,6 +170,24 @@
       </block>
       <block>
         <config_only>option.simultaneouskeypresses_vimode_jkli</config_only>
+        <block>
+          <only>TERMINAL</only>
+          <config_only>remap.app_term_screen_switch</config_only>
+          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::P</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::N</autogen>          
+        </block>        
+        <block>
+          <only>TERMINAL</only>
+          <config_only>remap.app_term_begend_screen</config_only>
+          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::COMMAND_L, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::A</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::COMMAND_L, KeyCode::E, ModifierFlag::CONTROL_L</autogen>
+        </block>
+        <block>
+          <only>TERMINAL</only>
+          <config_only>remap.app_term_begend</config_only>
+          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::COMMAND_L, KeyCode::A, ModifierFlag::CONTROL_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::COMMAND_L, KeyCode::E, ModifierFlag::CONTROL_L</autogen>
+        </block>
         <autogen>--KeyToKey-- KeyCode::J, KeyCode::CURSOR_LEFT</autogen>
         <autogen>--KeyToKey-- KeyCode::K, KeyCode::CURSOR_DOWN</autogen>
         <autogen>--KeyToKey-- KeyCode::I, KeyCode::CURSOR_UP</autogen>
@@ -396,8 +420,18 @@
         <config_only>option.simultaneouskeypresses_vimode_backquote_to_command_space</config_only>
       </block>
       <block>
-        <autogen>--KeyToKey-- KeyCode::W, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
         <config_only>option.simultaneouskeypresses_vimode_w_to_cmd_w</config_only>
+        <block>
+          <only>TERMINAL</only>
+          <config_only>remap.app_term_screen_k</config_only>
+          <autogen>--KeyToKey-- KeyCode::W, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::K</autogen>
+        </block>
+        <block>
+          <only>TERMINAL</only>
+          <config_only>remap.app_term_screen_ky</config_only>
+          <autogen>--KeyToKey-- KeyCode::W, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::K, KeyCode::Y</autogen>
+        </block>        
+        <autogen>--KeyToKey-- KeyCode::W, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
       </block>
       <block>
         <autogen>--KeyToKey-- KeyCode::Y, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L</autogen>
@@ -425,12 +459,22 @@
         <config_only>option.simultaneouskeypresses_vimode_e_to_command_e</config_only>
       </block>
       <block>
+        <block>
+          <only>TERMINAL</only>
+          <config_only>remap.app_term_screen_a</config_only>
+          <autogen>--KeyToKey-- KeyCode::R, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::A, ModifierFlag::SHIFT_L</autogen>
+        </block>
         <autogen>--KeyToKey-- KeyCode::R, KeyCode::R, ModifierFlag::COMMAND_L</autogen>
         <config_only>option.simultaneouskeypresses_vimode_r_to_command_r</config_only>
       </block>
       <block>
-        <autogen>--KeyToKey-- KeyCode::T, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
         <config_only>option.simultaneouskeypresses_vimode_t_to_command_t</config_only>
+        <block>
+          <only>TERMINAL</only>
+          <config_only>remap.app_term_screen_c</config_only>
+          <autogen>--KeyToKey-- KeyCode::T, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::C</autogen>
+        </block>
+        <autogen>--KeyToKey-- KeyCode::T, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
       </block>
       <block>
         <autogen>--KeyToKey-- KeyCode::G, KeyCode::F, ModifierFlag::COMMAND_L</autogen>
