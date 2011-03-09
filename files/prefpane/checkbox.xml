@@ -7411,8 +7411,9 @@
           </list>
         </item>
         <item>
-          <name>Use PC Style Home/End</name>
-          <appendix>(behave like Control_L+A/E)</appendix>
+          <name>Use PC Style Home/End (except in Virtual Machine,RDC)</name>
+          <appendix>(Change Home to Control+A)</appendix>
+          <appendix>(Change End to Control+E)</appendix>
           <identifier>remap.pclikehomeend_emacs</identifier>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_COMMAND, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
@@ -7423,8 +7424,11 @@
           <autogen>--KeyToKey-- FROMKEYCODE_END,              KeyCode::E, ModifierFlag::CONTROL_L</autogen>
         </item>
         <item>
-          <name>Use PC Style Home/End</name>
-          <appendix>(behave like Command+Left/Right)</appendix>
+          <name>Use PC Style Home/End (except in Virtual Machine,RDC)</name>
+          <appendix>(Change Home to Command+Left)</appendix>
+          <appendix>(Change End to Command+Right)</appendix>
+          <appendix>(+ Change Home to Control+A in Emacs,Terminal,X11,Eclipse)</appendix>
+          <appendix>(+ Change End to Control+E in Emacs,Terminal,X11,Eclipse)</appendix>
           <identifier>remap.pclikehomeend</identifier>
           <block>
             <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
