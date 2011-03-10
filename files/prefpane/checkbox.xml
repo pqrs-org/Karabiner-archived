@@ -1594,6 +1594,11 @@
       <name>Change Enter Key</name>
       <list>
         <item>
+          <name>Note:</name>
+          <appendix>Enter key is a key in old MacBook and Keypads.</appendix>
+          <appendix>See "Change Return Key" section if you want to change a return key.</appendix>
+        </item>
+        <item>
           <name>Enter to Command_L</name>
           <identifier>remap.enter2commandL</identifier>
           <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::COMMAND_L</autogen>
