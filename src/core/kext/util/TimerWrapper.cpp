@@ -84,8 +84,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       workloop_ = NULL;
     }
 
-    object_->release();
-    object_ = NULL;
+    if (object_) {
+      object_->release();
+      object_ = NULL;
+    }
 
     IOLockWrapper::free(lock_);
   }
