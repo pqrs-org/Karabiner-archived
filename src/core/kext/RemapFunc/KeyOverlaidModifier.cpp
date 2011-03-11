@@ -26,7 +26,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     KeyOverlaidModifier::~KeyOverlaidModifier(void)
-    {}
+    {
+      if (target_ == this) {
+        timer_.cancelTimeout();
+        target_ = NULL;
+      }
+    }
 
     void
     KeyOverlaidModifier::add(unsigned int datatype, unsigned int newval)

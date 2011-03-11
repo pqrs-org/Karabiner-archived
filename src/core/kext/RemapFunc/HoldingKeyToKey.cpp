@@ -22,7 +22,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     {}
 
     HoldingKeyToKey::~HoldingKeyToKey(void)
-    {}
+    {
+      if (target_ == this) {
+        timer_.cancelTimeout();
+        target_ = NULL;
+      }
+    }
 
     void
     HoldingKeyToKey::add(unsigned int datatype, unsigned int newval)
