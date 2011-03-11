@@ -151,7 +151,10 @@
           <appendix>CapsLock+C to Command_L+3</appendix>
           <appendix></appendix>
           <appendix>Change Shift_L key to turning CapsLock off</appendix>
-          <appendix>(retain Shift_L when CapsLock is off)</appendix>
+          <appendix>(Retain Shift_L movement when CapsLock is off)</appendix>
+          <appendix></appendix>
+          <appendix>Change Shift_R key to turning CapsLock off</appendix>
+          <appendix>(Retain Shift_R movement at all times)</appendix>
           <identifier>remap.samples_keytokey_key2xxx_3</identifier>
           <autogen>--KeyToKey-- KeyCode::A,                               KeyCode::CAPSLOCK</autogen>
           <autogen>--KeyToKey-- KeyCode::S,       ModifierFlag::CAPSLOCK, KeyCode::KEY_1, ModifierFlag::SHIFT_L</autogen>
