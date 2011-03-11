@@ -5859,9 +5859,8 @@
           <autogen>--KeyToPointingButton-- KeyCode::D,     ModifierFlag::NONE, PointingButton::RIGHT</autogen>
           <autogen>--KeyToPointingButton-- KeyCode::K,     ModifierFlag::NONE, PointingButton::RIGHT</autogen>
 
-          <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::VK_MODIFIER_EXTRA1</autogen>
-          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::NONE, KeyCode::VK_MODIFIER_EXTRA1</autogen>
-          <autogen>--PointingRelativeToScroll-- PointingButton::NONE, ModifierFlag::EXTRA1</autogen>
+          <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_thumbsense_scroll</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::NONE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_thumbsense_scroll</autogen>
 
           <!-- no E definition -->
           <!-- no T definition -->
@@ -5883,6 +5882,9 @@
           <appendix>(1) Launch multi-touch extension from "Misc &amp; Uninstall" tab.</appendix>
           <appendix>(2) Click the icon in Dock to open preferences window.</appendix>
           <appendix>(3) Enter "notsave.thumbsense" to Target setting.</appendix>
+          <identifier vk_config="true">notsave.thumbsense_scroll</identifier>
+          <config_only>notsave.thumbsense</config_only>
+          <autogen>--PointingRelativeToScroll-- PointingButton::NONE</autogen>
         </item>
 
         <item><name>------------------------------------------------------------</name></item>
