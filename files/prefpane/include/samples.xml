@@ -1051,6 +1051,32 @@
               <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
             </item>
             <item>
+              <name>Polish</name>
+              <list>
+                <item>
+                  <name>inputmode_only (Polish-*)</name>
+                  <appendix>Space to Tab</appendix>
+                  <identifier>remap.samples_inputmode_polish</identifier>
+                  <inputmode_only>POLISH</inputmode_only>
+                  <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+                </item>
+                <item>
+                  <name>inputmodedetail_only (Polish)</name>
+                  <appendix>Space to Tab</appendix>
+                  <identifier>remap.samples_inputmodedetail_polish</identifier>
+                  <inputmodedetail_only>POLISH</inputmodedetail_only>
+                  <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+                </item>
+                <item>
+                  <name>inputmodedetail_only (Polish Pro)</name>
+                  <appendix>Space to Tab</appendix>
+                  <identifier>remap.samples_inputmodedetail_polishpro</identifier>
+                  <inputmodedetail_only>POLISH_PRO</inputmodedetail_only>
+                  <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+                </item>
+              </list>
+            </item>
+            <item>
               <name>inputmode_only (Swedish)</name>
               <appendix>Space to Tab</appendix>
               <identifier>remap.samples_inputmode_swedish</identifier>

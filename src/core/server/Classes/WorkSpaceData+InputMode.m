@@ -275,6 +275,18 @@ finish:
     return;
   }
 
+  if ([name isEqualToString:@"org.pqrs.inputmode.pl.Polish"]) {
+    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::POLISH"];
+    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::POLISH"];
+    return;
+  }
+
+  if ([name isEqualToString:@"org.pqrs.inputmode.pl.PolishPro"]) {
+    *output_inputmode       = [configxmlparser_ keycode:@"InputMode::POLISH"];
+    *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::POLISH_PRO"];
+    return;
+  }
+
   if ([name isEqualToString:@"org.pqrs.inputmode.unknown.FrenchDvorak"]) {
     *output_inputmode       = [configxmlparser_ keycode:@"InputMode::BEPO"];
     *output_inputmodedetail = [configxmlparser_ keycode:@"InputModeDetail::BEPO"];
