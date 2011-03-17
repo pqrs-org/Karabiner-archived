@@ -10061,6 +10061,11 @@
               <identifier>remap.ksc_hanja2optionLreturn</identifier>
               <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, KeyCode::OPTION_L, KeyCode::RETURN, ModifierFlag::OPTION_R</autogen>
             </item>
+            <item>
+              <name>Toggle Option_R(Alt_R) Key(to Option_L(R)+Enter)</name>
+              <identifier>remap.ksc_optionR2optionLreturn</identifier>
+              <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::ENTER, ModifierFlag::OPTION_L</autogen>
+            </item>
           </list>
         </item>
       </list>
