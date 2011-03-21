@@ -17,6 +17,9 @@ clean:
 	rm -f *.xcodeproj/*.mode1v3
 	rm -f *.xcodeproj/*.pbxuser
 
+xcode:
+	open *.xcodeproj
+
 reload:
 	sudo ./scripts/unload.sh
 	sudo ./scripts/load.sh
