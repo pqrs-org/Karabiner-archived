@@ -45,6 +45,9 @@ org_pqrs_driver_KeyRemap4MacBook::start(IOService* provider)
   org_pqrs_KeyRemap4MacBook::Core::start();
   if (! initialize_notification()) return false;
 
+  // Publish ourselves so clients can find us
+  registerService();
+
   return res;
 }
 

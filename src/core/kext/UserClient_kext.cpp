@@ -40,9 +40,15 @@ IOExternalMethodDispatch org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::metho
 bool
 org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::initWithTask(task_t owningTask, void* securityToken, UInt32 type)
 {
-  if (clientHasPrivilege(owningTask, kIOClientPrivilegeLocalUser) != KERN_SUCCESS) return false;
+  if (clientHasPrivilege(owningTask, kIOClientPrivilegeLocalUser) != KERN_SUCCESS) {
+    IOLOG_ERROR("UserClient_kext::initWithTask clientHasPrivilege failed\n");
+    return false;
+  }
 
-  if (! super::initWithTask(owningTask, securityToken, type)) return false;
+  if (! super::initWithTask(owningTask, securityToken, type)) {
+    IOLOG_ERROR("UserClient_kext::initWithTask super::initWithTask failed\n");
+    return false;
+  }
 
   task_     = owningTask;
   provider_ = NULL;
@@ -54,13 +60,19 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::initWithTask(task_t owningTask
 bool
 org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::start(IOService* provider)
 {
-  provider_ = OSDynamicCast(org_pqrs_driver_KeyRemap4MacBook_UserClient_kext, provider);
-  if (! provider_) return false;
+  provider_ = OSDynamicCast(org_pqrs_driver_KeyRemap4MacBook, provider);
+  if (! provider_) {
+    IOLOG_ERROR("UserClient_kext::start provider == NULL\n");
+    return false;
+  }
 
   // It's important not to call super::start if some previous condition
   // (like an invalid provider) would cause this function to return false.
   // I/O Kit won't call stop on an object if its start function returned false.
-  if (! super::start(provider)) return false;
+  if (! super::start(provider)) {
+    IOLOG_ERROR("UserClient_kext::start super::start failed\n");
+    return false;
+  }
 
   return true;
 }
