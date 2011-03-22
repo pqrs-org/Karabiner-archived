@@ -64,7 +64,7 @@ enum {
 struct BridgeUserClientStruct {
   uint32_t type;
   mach_vm_address_t data;
-  mach_vm_size_t size;
+  mach_vm_size_t size; // size of data
 };
 
 enum {

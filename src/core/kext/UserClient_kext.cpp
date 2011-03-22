@@ -30,7 +30,7 @@ IOExternalMethodDispatch org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::metho
     reinterpret_cast<IOExternalMethodAction>(&static_callback_notification_from_kext), // Method pointer.
     0,                                                                                 // No scalar input values.
     0,                                                                                 // No struct input value.
-    1,                                                                                 // Two scalar output values.
+    0,                                                                                 // No scalar output values.
     0                                                                                  // No struct output value.
   }
 };
@@ -196,13 +196,11 @@ IOReturn
 org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::static_callback_synchronized_communication(org_pqrs_driver_KeyRemap4MacBook_UserClient_kext* target, void* reference, IOExternalMethodArguments* arguments)
 {
   if (! target) return kIOReturnBadArgument;
-  return target->callback_synchronized_communication(static_cast<const BridgeUserClientStruct*>(arguments->structureInput),
-                                                     arguments->structureInputSize,
-                                                     &arguments->scalarOutput[0]);
+  return target->callback_synchronized_communication(static_cast<const BridgeUserClientStruct*>(arguments->structureInput), &arguments->scalarOutput[0]);
 }
 
 IOReturn
-org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_synchronized_communication(const BridgeUserClientStruct* inputdata, uint32_t inputsize, uint64_t* outputdata)
+org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_synchronized_communication(const BridgeUserClientStruct* inputdata, uint64_t* outputdata)
 {
   IOReturn result = kIOReturnSuccess;
   IOMemoryDescriptor* memorydescriptor = NULL;
@@ -244,22 +242,31 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_synchronized_communic
     goto finish;
   }
 
-#if 0
-  // this map() will create a mapping in the users (the client of this IOUserClient) address space.
-  IOMemoryMap* memorymap = memorydescriptor->map();
-  if (! memorymap) {
-    result = kIOReturnVMError;
-    IOLOG_ERROR("UserClient_kext::callback_synchronized_communication IOMemoryDescriptor::map failed\n");
-  } else {
-    mach_vm_address_t address64 = memorymap->getAddress();
-    IOLog("user64 mapped: 0x%qx\n", address64);
+  {
+    // this map() will create a mapping in the users (the client of this IOUserClient) address space.
+    IOMemoryMap* memorymap = memorydescriptor->map();
+    if (! memorymap) {
+      result = kIOReturnVMError;
+      IOLOG_ERROR("UserClient_kext::callback_synchronized_communication IOMemoryDescriptor::map failed\n");
 
-    uint32_t* buf = reinterpret_cast<uint32_t*>(address64);
-    IOLog("buf[512 * 1024]:%d\n", buf[512 * 1024]);
+    } else {
+      mach_vm_address_t address = memorymap->getAddress();
+#if 1
+      // TEST CODE
 
-    memMap->release();
-  }
+      IOLog("user64 mapped: 0x%qx\n", address);
+
+      uint32_t* p = reinterpret_cast<uint32_t*>(address);
+
+      for (uint32_t i = 0; i < inputdata->size / sizeof(uint32_t); ++i) {
+        IOLog("p[%d]:%d\n", i, p[i]);
+        p[i] = 54321;
+      }
 #endif
+
+      memorymap->release();
+    }
+  }
 
   // Done with the I/O now.
   memorydescriptor->complete(kIODirectionOutIn);
