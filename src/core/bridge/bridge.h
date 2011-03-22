@@ -53,9 +53,15 @@ enum {
 enum {
   BRIDGE_USERCLIENT_OPEN,
   BRIDGE_USERCLIENT_CLOSE,
-  BRIDGE_USERCLIENT_SEND_TO_KEXT,
+  BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION,
   BRIDGE_USERCLIENT_NOTIFICATION_FROM_KEXT,
   BRIDGE_USERCLIENT__END__,
+};
+
+struct BridgeUserClient_SendToKext {
+  uint32_t type;
+  mach_vm_address_t data;
+  mach_vm_size_t size;
 };
 
 enum {
