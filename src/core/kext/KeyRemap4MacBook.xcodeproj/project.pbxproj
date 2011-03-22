@@ -68,6 +68,8 @@
 		348ED83A0CE4682000E179EC /* version.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 348ED8390CE4682000E179EC /* version.hpp */; };
 		349581080E7232A5003773EC /* PressDownKeys.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 349581060E7232A5003773EC /* PressDownKeys.cpp */; };
 		349581090E7232A5003773EC /* PressDownKeys.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 349581070E7232A5003773EC /* PressDownKeys.hpp */; };
+		349E3C9913371CD700E7A81C /* UserClient_kext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 349E3C9713371CD700E7A81C /* UserClient_kext.cpp */; };
+		349E3C9A13371CD700E7A81C /* UserClient_kext.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 349E3C9813371CD700E7A81C /* UserClient_kext.hpp */; };
 		34A59B881065C00B0048D1E7 /* ListHookedConsumer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A59B861065C00B0048D1E7 /* ListHookedConsumer.cpp */; };
 		34A59B891065C00B0048D1E7 /* ListHookedConsumer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34A59B871065C00B0048D1E7 /* ListHookedConsumer.hpp */; };
 		34A7883010CBD79100DF72FD /* KeyCode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A7882E10CBD79100DF72FD /* KeyCode.cpp */; };
@@ -181,6 +183,8 @@
 		348ED8390CE4682000E179EC /* version.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = version.hpp; sourceTree = "<group>"; };
 		349581060E7232A5003773EC /* PressDownKeys.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PressDownKeys.cpp; path = util/PressDownKeys.cpp; sourceTree = "<group>"; };
 		349581070E7232A5003773EC /* PressDownKeys.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PressDownKeys.hpp; path = util/PressDownKeys.hpp; sourceTree = "<group>"; };
+		349E3C9713371CD700E7A81C /* UserClient_kext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserClient_kext.cpp; sourceTree = "<group>"; };
+		349E3C9813371CD700E7A81C /* UserClient_kext.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UserClient_kext.hpp; sourceTree = "<group>"; };
 		34A59B861065C00B0048D1E7 /* ListHookedConsumer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ListHookedConsumer.cpp; path = util/ListHookedConsumer.cpp; sourceTree = "<group>"; };
 		34A59B871065C00B0048D1E7 /* ListHookedConsumer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ListHookedConsumer.hpp; path = util/ListHookedConsumer.hpp; sourceTree = "<group>"; };
 		34A7882E10CBD79100DF72FD /* KeyCode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KeyCode.cpp; sourceTree = "<group>"; };
@@ -273,6 +277,8 @@
 		247142CAFF3F8F9811CA285C /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				349E3C9713371CD700E7A81C /* UserClient_kext.cpp */,
+				349E3C9813371CD700E7A81C /* UserClient_kext.hpp */,
 				34A7F15712537F0D0012B982 /* bridge.h */,
 				34CAB84F1261194100C3FFCB /* RemapFilter */,
 				345E3EC511D79D17004B6347 /* RemapFunc */,
@@ -474,6 +480,7 @@
 				344BB4EF12812A9F008B75F6 /* DropPointingRelativeCursorMove.hpp in Headers */,
 				05CB4A2C12BB4C0800737491 /* ModifierFilter.hpp in Headers */,
 				3442D9E712F3123300EF7DF8 /* ForceNumLockOn.hpp in Headers */,
+				349E3C9A13371CD700E7A81C /* UserClient_kext.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,6 +605,7 @@
 				344BB4EE12812A9F008B75F6 /* DropPointingRelativeCursorMove.cpp in Sources */,
 				05CB4A2D12BB4C0800737491 /* ModifierFilter.cpp in Sources */,
 				3442D9E612F3123300EF7DF8 /* ForceNumLockOn.cpp in Sources */,
+				349E3C9913371CD700E7A81C /* UserClient_kext.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

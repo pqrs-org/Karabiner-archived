@@ -1,6 +1,9 @@
 #ifndef BRIDGE_H
 #define BRIDGE_H
 
+#include <sys/types.h>
+#include <mach/mach_types.h>
+
 // RemapClass initialize_vector format:
 //
 // base:
@@ -58,7 +61,7 @@ enum {
   BRIDGE_USERCLIENT__END__,
 };
 
-struct BridgeUserClient_SendToKext {
+struct BridgeUserClientStruct {
   uint32_t type;
   mach_vm_address_t data;
   mach_vm_size_t size;
