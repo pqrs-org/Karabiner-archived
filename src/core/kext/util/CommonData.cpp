@@ -9,6 +9,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   DeviceVendor CommonData::current_deviceVendor_;
   DeviceProduct CommonData::current_deviceProduct_;
   KeyRemap4MacBook_bridge::GetWorkspaceData::Reply CommonData::current_workspacedata_;
+  char CommonData::statusmessage_extra_[STATUSMESSAGE_LENGTH];
+  char CommonData::statusmessage_modifier_[STATUSMESSAGE_LENGTH];
 
   int CommonData::alloccount_;
   IOLock* CommonData::alloccount_lock_;
@@ -18,6 +20,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   CommonData::initialize(void)
   {
+    statusmessage_extra_[0] = '\0';
+    statusmessage_modifier_[0] = '\0';
+
     alloccount_lock_ = IOLockWrapper::alloc();
     event_lock_ = IOLockWrapper::alloc();
     return true;

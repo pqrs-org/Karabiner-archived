@@ -47,6 +47,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     static DeviceProduct current_deviceProduct_;
     static KeyRemap4MacBook_bridge::GetWorkspaceData::Reply current_workspacedata_;
 
+    enum { STATUSMESSAGE_LENGTH = 32 };
+    static char statusmessage_extra_[STATUSMESSAGE_LENGTH];
+    static char statusmessage_modifier_[STATUSMESSAGE_LENGTH];
+
     static int alloccount_;
     static IOLock* alloccount_lock_;
 
