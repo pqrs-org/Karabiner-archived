@@ -4,6 +4,7 @@
 #include "base.hpp"
 #include "Config.hpp"
 #include "Client.hpp"
+#include "CommonData.hpp"
 #endif
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -228,6 +229,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         request.message[0] = '\0';
       }
       KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_STATUS_MESSAGE, &request, sizeof(request), NULL, 0);
+
+      CommonData::set_statusmessage_modifier(request.message);
     }
     statusMessageFlags_ = f;
 #endif

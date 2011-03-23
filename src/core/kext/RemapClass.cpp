@@ -615,6 +615,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         KeyRemap4MacBook_bridge::StatusMessage::Request request(KeyRemap4MacBook_bridge::StatusMessage::MESSAGETYPE_EXTRA, statusmessage_);
         KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_STATUS_MESSAGE, &request, sizeof(request), NULL, 0);
         strlcpy(lastmessage_, statusmessage_, sizeof(lastmessage_));
+        CommonData::set_statusmessage_extra(statusmessage_);
       }
     }
 

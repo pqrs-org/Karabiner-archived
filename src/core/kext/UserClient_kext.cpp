@@ -290,15 +290,19 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
 {
   org_pqrs_KeyRemap4MacBook::IOLockWrapper::ScopedLock lk_eventlock(org_pqrs_KeyRemap4MacBook::CommonData::getEventLock());
 
-#if 1
-  IOLOG_INFO("UserClient_kext::handle_synchronized_communication type:%d\n", type);
-#endif
-
   switch (type) {
     case BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE_EXTRA:
+    {
+      char* p = reinterpret_cast<char*>(address);
+      strlcpy(p, org_pqrs_KeyRemap4MacBook::CommonData::get_statusmessage_extra(), static_cast<size_t>(size));
       break;
+    }
     case BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE_MODIFIER:
+    {
+      char* p = reinterpret_cast<char*>(address);
+      strlcpy(p, org_pqrs_KeyRemap4MacBook::CommonData::get_statusmessage_modifier(), static_cast<size_t>(size));
       break;
+    }
     case BRIDGE_USERCLIENT_TYPE_SET_INPUTMODE:
       break;
     case BRIDGE_USERCLIENT_TYPE_SET_APPLICATION:
