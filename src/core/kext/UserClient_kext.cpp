@@ -1,4 +1,6 @@
 #include "UserClient_kext.hpp"
+#include "CommonData.hpp"
+#include "IOLockWrapper.hpp"
 
 #define super IOUserClient
 
@@ -251,19 +253,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_synchronized_communic
 
     } else {
       mach_vm_address_t address = memorymap->getAddress();
-#if 1
-      // TEST CODE
-
-      IOLog("user64 mapped: 0x%qx\n", address);
-
-      uint32_t* p = reinterpret_cast<uint32_t*>(address);
-
-      for (uint32_t i = 0; i < inputdata->size / sizeof(uint32_t); ++i) {
-        IOLog("p[%d]:%d\n", i, p[i]);
-        p[i] = 54321;
-      }
-#endif
-
+      handle_synchronized_communication(inputdata->type, address, inputdata->size);
       memorymap->release();
     }
   }
@@ -295,3 +285,23 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_notification_from_kex
 }
 
 // ------------------------------------------------------------
+void
+org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communication(uint32_t type, mach_vm_address_t address, mach_vm_size_t size)
+{
+  org_pqrs_KeyRemap4MacBook::IOLockWrapper::ScopedLock lk_eventlock(org_pqrs_KeyRemap4MacBook::CommonData::getEventLock());
+
+#if 1
+  IOLOG_INFO("UserClient_kext::handle_synchronized_communication type:%d\n", type);
+#endif
+
+  switch (type) {
+    case BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE_EXTRA:
+      break;
+    case BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE_MODIFIER:
+      break;
+    case BRIDGE_USERCLIENT_TYPE_SET_INPUTMODE:
+      break;
+    case BRIDGE_USERCLIENT_TYPE_SET_APPLICATION:
+      break;
+  }
+}
