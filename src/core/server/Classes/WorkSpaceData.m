@@ -255,6 +255,13 @@
     return [configxmlparser_ keycode:@"ApplicationType::LIMECHAT"];
   }
 
+  // com.newtek.LightWave.Modeler
+  // com.newtek.LightWave.Layout
+  // com.newtek.LightWave.Hub
+  if ([name hasPrefix:@"com.newtek.LightWave"]) {
+    return [configxmlparser_ keycode:@"ApplicationType::LIGHTWAVE"];
+  }
+
   return [configxmlparser_ keycode:@"ApplicationType::UNKNOWN"];
 }
 
