@@ -34,6 +34,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       PairKeyFlags fromKey_;
       Vector_PairKeyFlags* toKeys_;
       int keyboardRepeatID_;
+      bool isRepeatEnabled_;
     };
   }
 }

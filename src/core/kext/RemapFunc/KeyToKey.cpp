@@ -6,7 +6,7 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    KeyToKey::KeyToKey(void) : index_(0), keyboardRepeatID_(-1)
+    KeyToKey::KeyToKey(void) : index_(0), keyboardRepeatID_(-1), isRepeatEnabled_(true)
     {
       toKeys_ = new Vector_PairKeyFlags();
     }
@@ -56,6 +56,17 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
           break;
         }
+
+        case BRIDGE_DATATYPE_OPTION:
+        {
+          if (Option::NOREPEAT == newval) {
+            isRepeatEnabled_ = false;
+          } else {
+            IOLOG_ERROR("KeyToKey::add unknown option:%d\n", newval);
+          }
+          break;
+        }
+
 
         default:
           IOLOG_ERROR("KeyToKey::add invalid datatype:%d\n", datatype);
@@ -137,7 +148,11 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (! ptr) return false;
           Params_KeyboardEventCallBack& params = *ptr;
 
-          KeyboardRepeat::set(params);
+          if (remapParams.params.ex_iskeydown && ! isRepeatEnabled_) {
+            KeyboardRepeat::cancel();
+          } else {
+            KeyboardRepeat::set(params);
+          }
           EventOutputQueue::FireKey::fire(params);
 
           break;
@@ -194,7 +209,11 @@ namespace org_pqrs_KeyRemap4MacBook {
             if (isLastKeyModifier || isLastKeyLikeModifier) {
               KeyboardRepeat::cancel();
             } else {
-              keyboardRepeatID_ = KeyboardRepeat::primitive_start();
+              if (isRepeatEnabled_) {
+                keyboardRepeatID_ = KeyboardRepeat::primitive_start();
+              } else {
+                keyboardRepeatID_ = -1;
+              }
             }
 
           } else {

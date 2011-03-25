@@ -265,6 +265,17 @@
         </item>
 
         <item>
+          <name>NoRepeat</name>
+          <appendix>1 to A (with Option::NOREPEAT)</appendix>
+          <appendix>2 to A,B,C (with Option::NOREPEAT)</appendix>
+          <appendix>3 to Shift_L (with Option::NOREPEAT)</appendix>
+          <identifier>remap.samples_keytokey_norepeat</identifier>
+          <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::A, Option::NOREPEAT</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::A, KeyCode::B, KeyCode::C, Option::NOREPEAT</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::SHIFT_L, Option::NOREPEAT</autogen>
+        </item>
+
+        <item>
           <name>Apply from the top sequentially.</name>
           <appendix>1 to A</appendix>
           <appendix>1 to B (skipped)</appendix>
