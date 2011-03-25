@@ -7516,6 +7516,7 @@
         </item>
         <item>
           <name>Use PC Style Control+Up/Down/Left/Right</name>
+          <appendix>(Change Control+Arrow to Option+Arrow)</appendix>
           <appendix>(except in Virtual Machine,RDC)</appendix>
           <identifier>remap.pclikecontrolarrow_except_vm</identifier>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
