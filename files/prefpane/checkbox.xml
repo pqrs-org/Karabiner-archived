@@ -7515,9 +7515,12 @@
           <autogen>--KeyToKey-- FROMKEYCODE_PAGEDOWN, ModifierFlag::NONE, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
-          <name>Use PC Style Control+Left/Right (except in Virtual Machine,RDC)</name>
-          <identifier>remap.pclikecontrolleftright_except_vm</identifier>
+          <name>Use PC Style Control+Up/Down/Left/Right</name>
+          <appendix>(except in Virtual Machine,RDC)</appendix>
+          <identifier>remap.pclikecontrolarrow_except_vm</identifier>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_UP,     VK_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN,   VK_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::OPTION_L</autogen>
           <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT,   VK_CONTROL, KeyCode::CURSOR_LEFT,  ModifierFlag::OPTION_L</autogen>
           <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT,  VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
         </item>
