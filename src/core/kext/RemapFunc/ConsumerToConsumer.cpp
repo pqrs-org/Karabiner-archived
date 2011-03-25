@@ -5,7 +5,7 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    ConsumerToConsumer::ConsumerToConsumer(void) : index_(0), keyboardRepeatID_(-1)
+    ConsumerToConsumer::ConsumerToConsumer(void) : index_(0), keyboardRepeatID_(-1), isRepeatEnabled_(true)
     {
       toKeys_ = new Vector_PairConsumerKeyFlags();
     }
@@ -52,6 +52,16 @@ namespace org_pqrs_KeyRemap4MacBook {
                 (toKeys_->back()).flags = newval;
               }
               break;
+          }
+          break;
+        }
+
+        case BRIDGE_DATATYPE_OPTION:
+        {
+          if (Option::NOREPEAT == newval) {
+            isRepeatEnabled_ = false;
+          } else {
+            IOLOG_ERROR("ConsumerToConsumer::add unknown option:%d\n", newval);
           }
           break;
         }
@@ -106,7 +116,11 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (! ptr) return false;
           Params_KeyboardSpecialEventCallback& params = *ptr;
 
-          KeyboardRepeat::set(params);
+          if (remapParams.params.ex_iskeydown && ! isRepeatEnabled_) {
+            KeyboardRepeat::cancel();
+          } else {
+            KeyboardRepeat::set(params);
+          }
           EventOutputQueue::FireConsumer::fire(params);
           break;
         }
@@ -137,7 +151,11 @@ namespace org_pqrs_KeyRemap4MacBook {
               FlagStatus::temporary_decrease((*toKeys_)[i].flags);
             }
 
-            keyboardRepeatID_ = KeyboardRepeat::primitive_start();
+            if (isRepeatEnabled_) {
+              keyboardRepeatID_ = KeyboardRepeat::primitive_start();
+            } else {
+              keyboardRepeatID_ = -1;
+            }
 
           } else {
             if (KeyboardRepeat::getID() == keyboardRepeatID_) {

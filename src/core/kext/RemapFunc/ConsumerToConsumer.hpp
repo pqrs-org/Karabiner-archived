@@ -33,6 +33,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       PairConsumerKeyFlags fromKey_;
       Vector_PairConsumerKeyFlags* toKeys_;
       int keyboardRepeatID_;
+      bool isRepeatEnabled_;
     };
   }
 }

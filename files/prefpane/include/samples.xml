@@ -396,6 +396,14 @@
           <identifier>remap.samples_consumertoconsumer_combination</identifier>
           <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::VOLUME_UP, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
         </item>
+        <item>
+          <name>NoRepeat</name>
+          <appendix>Volume Mute to Volume Down (with NoRepeat)</appendix>
+          <appendix>Volume Down to Volume Up,Brightness Up (with NoRepeat)</appendix>
+          <identifier>remap.samples_consumertoconsumer_norepeat</identifier>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::VOLUME_DOWN, Option::NOREPEAT</autogen>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_DOWN, ConsumerKeyCode::VOLUME_UP, ConsumerKeyCode::BRIGHTNESS_UP, Option::NOREPEAT</autogen>
+        </item>
       </list>
     </item>
 

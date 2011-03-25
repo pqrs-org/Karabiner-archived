@@ -67,7 +67,6 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
         }
 
-
         default:
           IOLOG_ERROR("KeyToKey::add invalid datatype:%d\n", datatype);
           break;
