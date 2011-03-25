@@ -2560,6 +2560,12 @@
         </item>
         <item><name>------------------------------------------------------------</name></item>
         <item>
+          <name>F5 to Volume Mute</name>
+          <identifier>remap.f5_to_volumemute</identifier>
+          <autogen>--KeyToConsumer-- KeyCode::F5, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        </item>
+        <item><name>------------------------------------------------------------</name></item>
+        <item>
           <name>F6 to Virtual NumLock</name>
           <appendix>Unlike Fn_Lock, retaining cursor keys, delete key.</appendix>
           <list>
