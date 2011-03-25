@@ -18,6 +18,7 @@ public:
   virtual void stop(IOService* provider);
 
   virtual IOReturn clientClose(void);
+  virtual IOReturn clientDied(void);
 
   virtual bool didTerminate(IOService* provider, IOOptionBits options, bool* defer);
 
@@ -45,6 +46,7 @@ private:
   // ------------------------------------------------------------
   org_pqrs_driver_KeyRemap4MacBook* provider_;
   task_t task_;
+  bool dead_;
   static IOExternalMethodDispatch methods_[BRIDGE_USERCLIENT__END__];
   OSAsyncReference64 asyncref_;
 };

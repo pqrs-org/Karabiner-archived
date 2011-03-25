@@ -53,6 +53,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::initWithTask(task_t owningTask
   }
 
   task_     = owningTask;
+  dead_     = false;
   provider_ = NULL;
 
   return true;
@@ -106,6 +107,15 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::clientClose(void)
 
   // DON'T call super::clientClose, which just returns kIOReturnUnsupported.
   return kIOReturnSuccess;
+}
+
+// clientDied is called if the client user process terminates unexpectedly (crashes).
+IOReturn
+org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::clientDied(void)
+{
+  IOLOG_INFO("UserClient_kext::clientDied\n");
+  dead_ = true;
+  return super::clientDied();
 }
 
 bool
