@@ -4868,19 +4868,19 @@
           <name>[ex] Control+U to Command+Shift+Left,Command+X</name>
           <identifier>option.emacsmode_ex_controlU</identifier>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
-          <autogen>--KeyToKey-- KeyCode::U, VK_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::U, VK_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
         </item>
         <item>
           <name>[ex] Control+U to Command+Shift+Left,Delete</name>
           <identifier>option.emacsmode_ex_controlU_delete</identifier>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
-          <autogen>--KeyToKey-- KeyCode::U, VK_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::DELETE</autogen>
+          <autogen>--KeyToKey-- KeyCode::U, VK_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::DELETE, Option::NOREPEAT</autogen>
         </item>
         <item>
           <name>[ex] Control+U to Command+Shift+Left,Forward Delete</name>
           <identifier>option.emacsmode_ex_controlU_forwarddelete</identifier>
           <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
-          <autogen>--KeyToKey-- KeyCode::U, VK_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::FORWARD_DELETE</autogen>
+          <autogen>--KeyToKey-- KeyCode::U, VK_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::FORWARD_DELETE, Option::NOREPEAT</autogen>
         </item>
         <item>
           <name>[ex] Control+U to PageUp</name>
