@@ -6561,7 +6561,7 @@
                   <appendix>(use F2 to rename but caution not to use Return when done typing name or file opens)</appendix>
                   <only>FINDER</only>
                   <identifier>remap.KPReturn_to_Ctrl_O</identifier>
-                  <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::O, ModifierFlag::COMMAND_L</autogen>
+                  <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::O, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
                 </item>
                 <item>
                   <name>Use Return as Open</name>
@@ -6571,14 +6571,14 @@
                   <identifier>remap.app_finder_return2commandO</identifier>
                   <only>FINDER</only>
                   <autogen>--KeyToKey-- KeyCode::RETURN, ModifierFlag::FN, KeyCode::RETURN</autogen>
-                  <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::O, ModifierFlag::COMMAND_L</autogen>
+                  <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::O, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
                 </item>
                 <item>
                   <name>Use Enter as Open</name>
                   <appendix>(Change Enter to Command+O)</appendix>
                   <identifier>remap.app_finder_enter2commandO</identifier>
                   <only>FINDER</only>
-                  <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::O, ModifierFlag::COMMAND_L</autogen>
+                  <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::O, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
                 </item>
                 <item>
                   <name>Use Quote (') to go UP a directory (' to Ctrl+Up)</name>
@@ -6639,7 +6639,7 @@
                   <identifier>remap.app_finder_switch_open_rename</identifier>
                   <only>FINDER</only>
                   <autogen>--KeyToKey-- KeyCode::R, VK_COMMAND, KeyCode::RETURN, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
-                  <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::O, ModifierFlag::COMMAND_L</autogen>
+                  <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::O, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
                   <autogen>--KeyToKey-- KeyCode::N,  ModifierFlag::COMMAND_L |  ModifierFlag::SHIFT_L, KeyCode::N, ModifierFlag::COMMAND_L |  ModifierFlag::SHIFT_L, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
                   <autogen>--KeyToKey-- KeyCode::N,  ModifierFlag::COMMAND_L |  ModifierFlag::SHIFT_R, KeyCode::N, ModifierFlag::COMMAND_L |  ModifierFlag::SHIFT_L, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
                   <autogen>--KeyToKey-- KeyCode::N,  ModifierFlag::COMMAND_R |  ModifierFlag::SHIFT_L, KeyCode::N, ModifierFlag::COMMAND_L |  ModifierFlag::SHIFT_L, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
