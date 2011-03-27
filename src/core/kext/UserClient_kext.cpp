@@ -291,6 +291,22 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::static_callback_notification_f
 IOReturn
 org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_notification_from_kext(OSAsyncReference64 asyncReference)
 {
+  if (provider_ == NULL || isInactive()) {
+    // Return an error if we don't have a provider. This could happen if the user process
+    // called callback_notification_from_kext without calling IOServiceOpen first.
+    // Or, the user client could be in the process of being terminated and is thus inactive.
+    IOLOG_ERROR("UserClient_kext::callback_notification_from_kext kIOReturnNotAttached\n");
+    return kIOReturnNotAttached;
+  }
+
+  if (! provider_->isOpen(this)) {
+    // Return an error if we do not have the driver open. This could happen if the user process
+    // did not call callback_open before calling this function.
+    IOLOG_ERROR("UserClient_kext::callback_notification_from_kext kIOReturnNotOpen\n");
+    return kIOReturnNotOpen;
+  }
+
+  // ----------------------------------------
   bcopy(asyncReference, asyncref_, sizeof(OSAsyncReference64));
   notification_enabled_ = true;
   return kIOReturnSuccess;
