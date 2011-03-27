@@ -22,6 +22,8 @@ public:
 
   virtual bool didTerminate(IOService* provider, IOOptionBits options, bool* defer);
 
+  static void send_notification_to_userspace(uint32_t type);
+
 protected:
   virtual IOReturn externalMethod(uint32_t selector, IOExternalMethodArguments* arguments,
                                   IOExternalMethodDispatch* dispatch, OSObject* target, void* reference);
@@ -46,9 +48,9 @@ private:
   // ------------------------------------------------------------
   org_pqrs_driver_KeyRemap4MacBook* provider_;
   task_t task_;
-  bool dead_;
   static IOExternalMethodDispatch methods_[BRIDGE_USERCLIENT__END__];
-  OSAsyncReference64 asyncref_;
+  static OSAsyncReference64 asyncref_;
+  static bool notification_enabled_;
 };
 
 #endif

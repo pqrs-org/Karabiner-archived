@@ -6,6 +6,9 @@
 
 OSDefineMetaClassAndStructors(org_pqrs_driver_KeyRemap4MacBook_UserClient_kext, IOUserClient)
 
+OSAsyncReference64 org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::asyncref_;
+bool org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::notification_enabled_ = false;
+
 IOExternalMethodDispatch org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::methods_[BRIDGE_USERCLIENT__END__] = {
   { // BRIDGE_USERCLIENT_OPEN
     reinterpret_cast<IOExternalMethodAction>(&static_callback_open), // Method pointer.
@@ -53,8 +56,13 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::initWithTask(task_t owningTask
   }
 
   task_     = owningTask;
-  dead_     = false;
   provider_ = NULL;
+
+  // Don't change static values here. (For example, notification_enabled_)
+  // initWithTask is called by each IOServiceOpen.
+  //
+  // If IOService is opened, other client will be failed.
+  // Changing static values by other IOServiceOpen may destroy the current connection.
 
   return true;
 }
@@ -107,15 +115,6 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::clientClose(void)
 
   // DON'T call super::clientClose, which just returns kIOReturnUnsupported.
   return kIOReturnSuccess;
-}
-
-// clientDied is called if the client user process terminates unexpectedly (crashes).
-IOReturn
-org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::clientDied(void)
-{
-  IOLOG_INFO("UserClient_kext::clientDied\n");
-  dead_ = true;
-  return super::clientDied();
 }
 
 bool
@@ -196,6 +195,8 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_close(void)
     IOLOG_ERROR("UserClient_kext::callback_close kIOReturnNotOpen\n");
     return kIOReturnNotOpen;
   }
+
+  notification_enabled_ = false;
 
   // Make sure we're the one who opened our provider before we tell it to close.
   provider_->close(this);
@@ -291,7 +292,17 @@ IOReturn
 org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_notification_from_kext(OSAsyncReference64 asyncReference)
 {
   bcopy(asyncReference, asyncref_, sizeof(OSAsyncReference64));
+  notification_enabled_ = true;
   return kIOReturnSuccess;
+}
+
+void
+org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace(uint32_t type)
+{
+  if (notification_enabled_) {
+    io_user_reference_t args[] = { type };
+    sendAsyncResult64(asyncref_, kIOReturnSuccess, args, 1);
+  }
 }
 
 // ------------------------------------------------------------

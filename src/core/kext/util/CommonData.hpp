@@ -31,8 +31,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void setcurrent_workspacedata(void);
     static const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& getcurrent_workspacedata(void) { return current_workspacedata_; }
 
-    static void set_statusmessage_extra(const char* message)    { strlcpy(statusmessage_extra_,    message, sizeof(statusmessage_extra_)); }
-    static void set_statusmessage_modifier(const char* message) { strlcpy(statusmessage_modifier_, message, sizeof(statusmessage_modifier_)); }
+    static void set_statusmessage_extra(const char* message);
+    static void set_statusmessage_modifier(const char* message);
     static const char* get_statusmessage_extra(void)    { return statusmessage_extra_; }
     static const char* get_statusmessage_modifier(void) { return statusmessage_modifier_; }
 
