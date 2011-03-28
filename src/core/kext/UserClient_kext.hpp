@@ -43,7 +43,7 @@ private:
   IOReturn callback_notification_from_kext(OSAsyncReference64 asyncReference);
 
   // ------------------------------------------------------------
-  void handle_synchronized_communication(uint32_t type, mach_vm_address_t address, mach_vm_size_t size);
+  void handle_synchronized_communication(uint64_t type, mach_vm_address_t address, mach_vm_size_t size);
 
   // ------------------------------------------------------------
   org_pqrs_driver_KeyRemap4MacBook* provider_;

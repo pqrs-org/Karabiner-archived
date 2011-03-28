@@ -323,7 +323,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace
 
 // ------------------------------------------------------------
 void
-org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communication(uint32_t type, mach_vm_address_t address, mach_vm_size_t size)
+org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communication(uint64_t type, mach_vm_address_t address, mach_vm_size_t size)
 {
   org_pqrs_KeyRemap4MacBook::IOLockWrapper::ScopedLock lk_eventlock(org_pqrs_KeyRemap4MacBook::CommonData::getEventLock());
 

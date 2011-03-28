@@ -75,8 +75,9 @@ enum {
   BRIDGE_USERCLIENT_NOTIFICATION_STATUS_MESSAGE_UPDATED_MODIFIER,
 };
 
+// 64bit alignment.
 struct BridgeUserClientStruct {
-  uint32_t type;
+  uint64_t type;
   mach_vm_address_t data;
   mach_vm_size_t size; // size of data
 };
