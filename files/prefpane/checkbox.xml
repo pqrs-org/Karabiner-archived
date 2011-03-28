@@ -1507,6 +1507,11 @@
           <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::DASHBOARD</autogen>
         </item>
         <item>
+          <name>Eject to Control+Shift+Eject (Sleep displays)</name>
+          <identifier>remap.eject2controlshifteject</identifier>
+          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::EJECT, ModifierFlag::NONE, ConsumerKeyCode::EJECT, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+        </item>
+        <item>
           <name>Eject to Escape</name>
           <identifier>remap.eject2escape</identifier>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::ESCAPE</autogen>
