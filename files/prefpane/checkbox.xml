@@ -987,9 +987,23 @@
         </item>
         <item>
           <name>Command_R to Command_R</name>
-          <appendix>(+ When you type Command_R only, send Command+Space)</appendix>
-          <identifier>remap.commandR2commandR_commandSpace</identifier>
-          <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+          <appendix>(+ When you type Command_R only, toggle IM)</appendix>
+          <list>
+            <item>
+              <name>When you type Command_R only, send Command+Space</name>
+              <appendix>(except virtual machine, RDC)</appendix>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+              <identifier>remap.commandR2commandR_commandSpace</identifier>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+            </item>
+            <item>
+              <name>When you type Command_R only, send Option+Backquote</name>
+              <appendix>(only in virtual machine, RDC)</appendix>
+              <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+              <identifier>remap.commandR2commandR_optionBackquote_vm</identifier>
+              <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L</autogen>
+            </item>
+          </list>
         </item>
         <item>
           <name>Command_R to Control_L</name>
@@ -1659,9 +1673,23 @@
         </item>
         <item>
           <name>Enter to Option_L</name>
-          <appendix>(+ When you type Enter only, send Command+Space)</appendix>
-          <identifier>remap.enter2optionL_commandSpace</identifier>
-          <autogen>--KeyOverlaidModifier-- KeyCode::ENTER, KeyCode::OPTION_L, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+          <appendix>(+ When you type Enter only, toggle IM)</appendix>
+          <list>
+            <item>
+              <name>When you type Enter only, send Command+Space</name>
+              <appendix>(except virtual machine, RDC)</appendix>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+              <identifier>remap.enter2optionL_commandSpace</identifier>
+              <autogen>--KeyOverlaidModifier-- KeyCode::ENTER, KeyCode::OPTION_L, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+            </item>
+            <item>
+              <name>When you type Enter only, send Option+Backquote</name>
+              <appendix>(only in virtual machine, RDC)</appendix>
+              <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+              <identifier>remap.enter2optionL_optionBackquote_vm</identifier>
+              <autogen>--KeyOverlaidModifier-- KeyCode::ENTER, KeyCode::OPTION_L, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L</autogen>
+            </item>
+          </list>
         </item>
         <item>
           <name>Enter to Option_R</name>
@@ -1670,9 +1698,22 @@
         </item>
         <item>
           <name>Enter to Option_R</name>
-          <appendix>(+ When you type Enter only, send Command+Space)</appendix>
-          <identifier>remap.enter2optionR_commandSpace</identifier>
-          <autogen>--KeyOverlaidModifier-- KeyCode::ENTER, KeyCode::OPTION_R, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+          <list>
+            <item>
+              <name>When you type Enter only, send Command+Space</name>
+              <appendix>(except virtual machine, RDC)</appendix>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+              <identifier>remap.enter2optionR_commandSpace</identifier>
+              <autogen>--KeyOverlaidModifier-- KeyCode::ENTER, KeyCode::OPTION_R, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+            </item>
+            <item>
+              <name>When you type Enter only, send Option+Backquote</name>
+              <appendix>(only in virtual machine, RDC)</appendix>
+              <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+              <identifier>remap.enter2optionR_optionBackquote_vm</identifier>
+              <autogen>--KeyOverlaidModifier-- KeyCode::ENTER, KeyCode::OPTION_R, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L</autogen>
+            </item>
+          </list>
         </item>
         <item>
           <name>Enter to Command_L+Control_L</name>
@@ -3586,9 +3627,23 @@
         </item>
         <item>
           <name>Option_R to Option_R</name>
-          <appendix>(+ When you type Option_R only, send Command+Space)</appendix>
-          <identifier>remap.optionR2optionR_commandSpace</identifier>
-          <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_R, KeyCode::OPTION_R, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+          <appendix>(+ When you type Option_R only, toggle IM)</appendix>
+          <list>
+            <item>
+              <name>When you type Option_R only, send Command+Space</name>
+              <appendix>(except virtual machine, RDC)</appendix>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+              <identifier>remap.optionR2optionR_commandSpace</identifier>
+              <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_R, KeyCode::OPTION_R, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+            </item>
+            <item>
+              <name>When you type Option_R only, send Option+Backquote</name>
+              <appendix>(only in virtual machine, RDC)</appendix>
+              <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+              <identifier>remap.optionR2optionR_optionBackquote_vm</identifier>
+              <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_R, KeyCode::OPTION_R, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L</autogen>
+            </item>
+          </list>
         </item>
         <item>
           <name>Option_R to Option_R+Shift_L</name>
