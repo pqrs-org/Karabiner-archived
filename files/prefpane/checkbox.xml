@@ -8938,6 +8938,13 @@
               <identifier>remap.jis_yen2forwarddelete</identifier>
               <autogen>--KeyToKey-- KeyCode::JIS_YEN, KeyCode::FORWARD_DELETE</autogen>
             </item>
+            <item>
+              <name>JIS Yen(¥) to Forward Delete</name>
+              <appendix>(+ Shift+JIS Yen to Pipe(|))</appendix>
+              <identifier>remap.jis_yen2forwarddelete_pipe</identifier>
+              <autogen>--KeyToKey-- KeyCode::JIS_YEN, VK_SHIFT | ModifierFlag::NONE, KeyCode::JIS_YEN, VK_SHIFT</autogen>
+              <autogen>--KeyToKey-- KeyCode::JIS_YEN, KeyCode::FORWARD_DELETE</autogen>
+            </item>
           </list>
         </item>
         <item>
