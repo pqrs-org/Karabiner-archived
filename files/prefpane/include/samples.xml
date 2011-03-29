@@ -1466,7 +1466,7 @@
               <name>KeyToKey</name>
               <appendix>Change 1 to A,B,C,VK_LAZY_SHIFT_L</appendix>
               <identifier>remap.samples_vk_lazy_keytokey</identifier>
-              <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::A, KeyCode::B, KeyCode::C, KeyCode::VK_LAZY_COMMAND_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::A, KeyCode::B, KeyCode::C, KeyCode::VK_LAZY_SHIFT_L</autogen>
             </item>
           </list>
         </item>
