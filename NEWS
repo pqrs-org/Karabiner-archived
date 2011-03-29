@@ -1,5 +1,6 @@
 Changes since 7.2.0
     - Added Option::NOREPEAT at <autogen>.
+    - Improved "Lazy-Modifier (KeyCode::VK_LAZY_*)" behavior.
     - Added about XXX kinds settings.
 
 ----------------------------------------------------------------------
