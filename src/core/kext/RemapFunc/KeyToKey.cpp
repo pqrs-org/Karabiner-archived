@@ -162,7 +162,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           Flags lastKeyFlags               = (*toKeys_)[toKeys_->size() - 1].flags;
           ModifierFlag lastKeyModifierFlag = lastKey.getModifierFlag();
           bool isLastKeyModifier           = (lastKeyModifierFlag != ModifierFlag::NONE);
-          bool isLastKeyLikeModifier       = Handle_VK_CONFIG::is_VK_CONFIG_SYNC_KEYDOWNUP(lastKey);
+          bool isLastKeyLikeModifier       = (Handle_VK_CONFIG::is_VK_CONFIG_SYNC_KEYDOWNUP(lastKey) || (Handle_VK_LAZY::getModifierFlag(lastKey) != ModifierFlag::NONE));
 
           if (remapParams.params.ex_iskeydown) {
             KeyboardRepeat::cancel();
