@@ -3641,7 +3641,7 @@
               <appendix>(only in virtual machine, RDC)</appendix>
               <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
               <identifier>remap.optionR2optionR_optionBackquote_vm</identifier>
-              <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_R, KeyCode::OPTION_R, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_R, KeyCode::OPTION_R, KeyCode::BACKQUOTE, ModifierFlag::OPTION_R</autogen>
             </item>
           </list>
         </item>
