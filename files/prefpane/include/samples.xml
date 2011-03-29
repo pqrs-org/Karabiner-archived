@@ -1468,6 +1468,12 @@
               <identifier>remap.samples_vk_lazy_keytokey</identifier>
               <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::A, KeyCode::B, KeyCode::C, KeyCode::VK_LAZY_SHIFT_L</autogen>
             </item>
+            <item>
+              <name>KeyOverlaidModifier</name>
+              <appendix>Change 1 to VK_LAZY_SHIFT_L (When type only, send Space)</appendix>
+              <identifier>remap.samples_vk_lazy_keyoverlaidmodifier</identifier>
+              <autogen>--KeyOverlaidModifier-- KeyCode::KEY_1, KeyCode::VK_LAZY_SHIFT_L, KeyCode::SPACE</autogen>
+            </item>
           </list>
         </item>
         <item>
