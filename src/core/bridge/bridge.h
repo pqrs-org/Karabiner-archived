@@ -81,6 +81,9 @@ struct BridgeUserClientStruct {
   mach_vm_address_t data;
   mach_vm_size_t size; // size of data
 };
+// STATIC_ASSERT for sizeof(struct BridgeUserClientStruct).
+// We need to make this value same in kext and userspace.
+enum { STATIC_ASSERT__sizeof_BridgeUserClientStruct = 1 / (sizeof(struct BridgeUserClientStruct) == 24) };
 
 enum {
   BRIDGE_DATATYPE_NONE,
