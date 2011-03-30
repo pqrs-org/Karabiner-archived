@@ -217,16 +217,19 @@ namespace org_pqrs_KeyRemap4MacBook {
 
           } else {
             if (isLastKeyModifier || isLastKeyLikeModifier) {
-              FlagStatus::decrease(lastKeyFlags | lastKeyModifierFlag);
-              FlagStatus::increase(fromFlags);
-              EventOutputQueue::FireModifiers::fire();
-
+              // For Lazy-Modifiers (KeyCode::VK_LAZY_*),
+              // we need to handle these keys before restoring fromFlags, lastKeyFlags and lastKeyModifierFlag.
+              // The unnecessary modifier events occur unless we do it.
               if (isLastKeyLikeModifier) {
                 Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::UP, FlagStatus::makeFlags(), lastKey, remapParams.params.keyboardType, false));
                 if (ptr) {
                   EventOutputQueue::FireKey::fire(*ptr);
                 }
               }
+
+              FlagStatus::decrease(lastKeyFlags | lastKeyModifierFlag);
+              FlagStatus::increase(fromFlags);
+              EventOutputQueue::FireModifiers::fire();
 
             } else {
               if (KeyboardRepeat::getID() == keyboardRepeatID_) {
