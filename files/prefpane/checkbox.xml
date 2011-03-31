@@ -1318,6 +1318,11 @@
           <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_L, KeyCode::CONTROL_L, KeyCode::VK_STICKY_CONTROL_L</autogen>
         </item>
         <item>
+          <name>Control_L to Backquote(`)</name>
+          <identifier>remap.controlL2backquote</identifier>
+          <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::BACKQUOTE</autogen>
+        </item>
+        <item>
           <name>Control_L to Delete</name>
           <identifier>remap.controlL2delete</identifier>
           <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::DELETE</autogen>
