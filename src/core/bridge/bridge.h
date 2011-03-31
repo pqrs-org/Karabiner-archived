@@ -54,38 +54,6 @@ enum {
 };
 
 enum {
-  BRIDGE_USERCLIENT_OPEN,
-  BRIDGE_USERCLIENT_CLOSE,
-  BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION,
-  BRIDGE_USERCLIENT_NOTIFICATION_FROM_KEXT,
-  BRIDGE_USERCLIENT__END__,
-};
-
-enum {
-  BRIDGE_USERCLIENT_TYPE_NONE,
-  BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE_EXTRA,
-  BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE_MODIFIER,
-  BRIDGE_USERCLIENT_TYPE_SET_INPUTMODE,
-  BRIDGE_USERCLIENT_TYPE_SET_APPLICATION,
-};
-
-enum {
-  BRIDGE_USERCLIENT_NOTIFICATION_NONE,
-  BRIDGE_USERCLIENT_NOTIFICATION_STATUS_MESSAGE_UPDATED_EXTRA,
-  BRIDGE_USERCLIENT_NOTIFICATION_STATUS_MESSAGE_UPDATED_MODIFIER,
-};
-
-// 64bit alignment.
-struct BridgeUserClientStruct {
-  uint64_t type;
-  mach_vm_address_t data;
-  mach_vm_size_t size; // size of data
-};
-// STATIC_ASSERT for sizeof(struct BridgeUserClientStruct).
-// We need to make this value same in kext and userspace.
-enum { STATIC_ASSERT__sizeof_BridgeUserClientStruct = 1 / (sizeof(struct BridgeUserClientStruct) == 24) };
-
-enum {
   BRIDGE_DATATYPE_NONE,
   BRIDGE_DATATYPE_KEYCODE,
   BRIDGE_DATATYPE_MODIFIERFLAG,
@@ -139,5 +107,46 @@ enum {
 enum {
 #include "config/output/include.bridge_essential_config_index.hpp"
 };
+
+// ------------------------------------------------------------
+// UserClient definitions.
+enum {
+  BRIDGE_USERCLIENT_OPEN,
+  BRIDGE_USERCLIENT_CLOSE,
+  BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION,
+  BRIDGE_USERCLIENT_NOTIFICATION_FROM_KEXT,
+  BRIDGE_USERCLIENT__END__,
+};
+
+enum {
+  BRIDGE_USERCLIENT_TYPE_NONE,
+  BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE_EXTRA,
+  BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE_MODIFIER,
+  BRIDGE_USERCLIENT_TYPE_SET_INPUTMODE,
+  BRIDGE_USERCLIENT_TYPE_SET_APPLICATION,
+};
+
+enum {
+  BRIDGE_USERCLIENT_NOTIFICATION_NONE,
+  BRIDGE_USERCLIENT_NOTIFICATION_STATUS_MESSAGE_UPDATED_EXTRA,
+  BRIDGE_USERCLIENT_NOTIFICATION_STATUS_MESSAGE_UPDATED_MODIFIER,
+};
+
+// 64bit alignment.
+struct BridgeUserClientStruct {
+  uint64_t type;
+  mach_vm_address_t data;
+  mach_vm_size_t size; // size of data
+};
+// STATIC_ASSERT for sizeof(struct BridgeUserClientStruct).
+// We need to make this value same in kext and userspace.
+enum { STATIC_ASSERT__sizeof_BridgeUserClientStruct = 1 / (sizeof(struct BridgeUserClientStruct) == 24) };
+
+struct BridgeWorkSpaceData {
+  uint32_t type;
+  uint32_t inputmode;
+  uint32_t inputmodedetail;
+};
+enum { STATIC_ASSERT__sizeof_BridgeWorkSpaceData = 1 / (sizeof(struct BridgeWorkSpaceData) == 12) };
 
 #endif
