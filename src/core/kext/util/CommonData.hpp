@@ -4,6 +4,7 @@
 #include "base.hpp"
 #include "KeyCode.hpp"
 #include "bridge.hpp"
+#include "bridge.h"
 #include <string.h>
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -29,6 +30,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     static void setcurrent_workspacedata(void);
+    static void setcurrent_workspacedata(const BridgeWorkSpaceData& newval) {
+      current_workspacedata_.type            = newval.type;
+      current_workspacedata_.inputmode       = newval.inputmode;
+      current_workspacedata_.inputmodedetail = newval.inputmodedetail;
+    }
     static const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& getcurrent_workspacedata(void) { return current_workspacedata_; }
 
     static void set_statusmessage_extra(const char* message);

@@ -331,18 +331,28 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
     case BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE_EXTRA:
     {
       char* p = reinterpret_cast<char*>(address);
-      strlcpy(p, org_pqrs_KeyRemap4MacBook::CommonData::get_statusmessage_extra(), static_cast<size_t>(size));
+      if (p) {
+        strlcpy(p, org_pqrs_KeyRemap4MacBook::CommonData::get_statusmessage_extra(), static_cast<size_t>(size));
+      }
       break;
     }
     case BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE_MODIFIER:
     {
       char* p = reinterpret_cast<char*>(address);
-      strlcpy(p, org_pqrs_KeyRemap4MacBook::CommonData::get_statusmessage_modifier(), static_cast<size_t>(size));
+      if (p) {
+        strlcpy(p, org_pqrs_KeyRemap4MacBook::CommonData::get_statusmessage_modifier(), static_cast<size_t>(size));
+      }
       break;
     }
-    case BRIDGE_USERCLIENT_TYPE_SET_INPUTMODE:
+    case BRIDGE_USERCLIENT_TYPE_SET_WORKSPACEDATA:
+    {
+      if (size == sizeof(BridgeWorkSpaceData)) {
+        BridgeWorkSpaceData* p = reinterpret_cast<BridgeWorkSpaceData*>(address);
+        if (p) {
+          org_pqrs_KeyRemap4MacBook::CommonData::setcurrent_workspacedata(*p);
+        }
+      }
       break;
-    case BRIDGE_USERCLIENT_TYPE_SET_APPLICATION:
-      break;
+    }
   }
 }
