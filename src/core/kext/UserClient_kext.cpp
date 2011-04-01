@@ -264,7 +264,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_synchronized_communic
 
     } else {
       mach_vm_address_t address = memorymap->getAddress();
-      handle_synchronized_communication(inputdata->type, address, inputdata->size);
+      handle_synchronized_communication(inputdata->type, address, inputdata->size, outputdata);
       memorymap->release();
     }
   }
@@ -323,9 +323,11 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace
 
 // ------------------------------------------------------------
 void
-org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communication(uint64_t type, mach_vm_address_t address, mach_vm_size_t size)
+org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communication(uint64_t type, mach_vm_address_t address, mach_vm_size_t size, uint64_t* outputdata)
 {
   org_pqrs_KeyRemap4MacBook::IOLockWrapper::ScopedLock lk_eventlock(org_pqrs_KeyRemap4MacBook::CommonData::getEventLock());
+
+  *outputdata = 1;
 
   switch (type) {
     case BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE_EXTRA:
@@ -333,6 +335,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
       char* p = reinterpret_cast<char*>(address);
       if (p) {
         strlcpy(p, org_pqrs_KeyRemap4MacBook::CommonData::get_statusmessage_extra(), static_cast<size_t>(size));
+        *outputdata = 0;
       }
       break;
     }
@@ -341,6 +344,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
       char* p = reinterpret_cast<char*>(address);
       if (p) {
         strlcpy(p, org_pqrs_KeyRemap4MacBook::CommonData::get_statusmessage_modifier(), static_cast<size_t>(size));
+        *outputdata = 0;
       }
       break;
     }
@@ -350,6 +354,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
         BridgeWorkSpaceData* p = reinterpret_cast<BridgeWorkSpaceData*>(address);
         if (p) {
           org_pqrs_KeyRemap4MacBook::CommonData::setcurrent_workspacedata(*p);
+          *outputdata = 0;
         }
       }
       break;
