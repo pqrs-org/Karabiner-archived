@@ -22,7 +22,7 @@ public:
 
   virtual bool didTerminate(IOService* provider, IOOptionBits options, bool* defer);
 
-  static void send_notification_to_userspace(uint32_t type);
+  static void send_notification_to_userspace(uint32_t type, uint32_t data);
 
 protected:
   virtual IOReturn externalMethod(uint32_t selector, IOExternalMethodArguments* arguments,

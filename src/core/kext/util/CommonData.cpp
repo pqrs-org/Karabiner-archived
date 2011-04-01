@@ -68,14 +68,16 @@ namespace org_pqrs_KeyRemap4MacBook {
   CommonData::set_statusmessage_extra(const char* message)
   {
     strlcpy(statusmessage_extra_, message, sizeof(statusmessage_extra_));
-    org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace(BRIDGE_USERCLIENT_NOTIFICATION_STATUS_MESSAGE_UPDATED_EXTRA);
+    org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace(BRIDGE_USERCLIENT_NOTIFICATION_TYPE_STATUS_MESSAGE_UPDATED,
+                                                                                     BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE_EXTRA);
   }
 
   void
   CommonData::set_statusmessage_modifier(const char* message)
   {
     strlcpy(statusmessage_modifier_, message, sizeof(statusmessage_modifier_));
-    org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace(BRIDGE_USERCLIENT_NOTIFICATION_STATUS_MESSAGE_UPDATED_MODIFIER);
+    org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace(BRIDGE_USERCLIENT_NOTIFICATION_TYPE_STATUS_MESSAGE_UPDATED,
+                                                                                     BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE_MODIFIER);
   }
 
   void
