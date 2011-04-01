@@ -28,7 +28,7 @@ IOExternalMethodDispatch org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::metho
     reinterpret_cast<IOExternalMethodAction>(&static_callback_synchronized_communication), // Method pointer.
     0,                                                                                     // No scalar input values.
     sizeof(BridgeUserClientStruct),                                                        // The size of the input struct.
-    2,                                                                                     // Two scalar output value.
+    1,                                                                                     // One scalar output value.
     0,                                                                                     // No struct output value.
   },
   { // BRIDGE_USERCLIENT_NOTIFICATION_FROM_KEXT
@@ -317,7 +317,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace
 {
   if (notification_enabled_) {
     io_user_reference_t args[] = { type, data };
-    sendAsyncResult64(asyncref_, kIOReturnSuccess, args, 1);
+    sendAsyncResult64(asyncref_, kIOReturnSuccess, args, 2);
   }
 }
 
