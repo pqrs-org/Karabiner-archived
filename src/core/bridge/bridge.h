@@ -153,7 +153,7 @@ struct BridgeUserClientStruct {
 enum { STATIC_ASSERT__sizeof_BridgeUserClientStruct = 1 / (sizeof(struct BridgeUserClientStruct) == 24) };
 
 struct BridgeWorkSpaceData {
-  uint32_t type;
+  uint32_t applicationtype;
   uint32_t inputmode;
   uint32_t inputmodedetail;
 };

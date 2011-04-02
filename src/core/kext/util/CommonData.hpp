@@ -31,7 +31,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     static void setcurrent_workspacedata(void);
     static void setcurrent_workspacedata(const BridgeWorkSpaceData& newval) {
-      current_workspacedata_.type            = newval.type;
+      current_workspacedata_.type            = newval.applicationtype;
       current_workspacedata_.inputmode       = newval.inputmode;
       current_workspacedata_.inputmodedetail = newval.inputmodedetail;
     }

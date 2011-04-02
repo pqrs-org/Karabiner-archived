@@ -12,6 +12,7 @@
 #import "StatusBar.h"
 #import "WorkSpaceData.h"
 #import "ConfigXMLParser.h"
+#include "bridge.h"
 
 @interface KeyRemap4MacBook_serverAppDelegate : NSObject <NSApplicationDelegate> {
   NSWindow* window;
@@ -20,6 +21,8 @@
   // for IONotification
   IONotificationPortRef notifyport_;
   CFRunLoopSourceRef loopsource_;
+
+  struct BridgeWorkSpaceData bridgeworkspacedata_;
 
   IBOutlet ServerObjcPart* serverobjcpart_;
   IBOutlet StatusBar* statusbar_;

@@ -39,6 +39,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   CommonData::setcurrent_workspacedata(void)
   {
+#if 0
     // ------------------------------------------------------------
     // When we press the functional key (ex. F2) with the keyboard of the third vendor,
     // KeyRemap4MacBook_client::sendmsg returns EIO.
@@ -62,6 +63,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // use last info.
       current_workspacedata_ = last;
     }
+#endif
   }
 
   void

@@ -133,15 +133,23 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 }
 
 // ------------------------------------------------------------
+- (void) send_workspacedata_to_kext {
+  struct BridgeUserClientStruct bridgestruct;
+  bridgestruct.type = BRIDGE_USERCLIENT_TYPE_SET_WORKSPACEDATA;
+  bridgestruct.data = (uintptr_t)(&bridgeworkspacedata_);
+  bridgestruct.size = sizeof(bridgeworkspacedata_);
+
+  [UserClient_userspace synchronized_communication_with_retry:&bridgestruct];
+}
+
 - (void) observer_NSWorkspaceDidActivateApplicationNotification:(NSNotification*)notification
 {
   NSString* name = [workspacedata_ getActiveApplicationName];
   if (name) {
     // We ignore our investigation application.
     if (! [name isEqualToString:@"org.pqrs.KeyRemap4MacBook.KeyDump"]) {
-      unsigned int newval = [workspacedata_ getApplicationType:name];
-      //NSLog(@"newval = %d", newval);
-      setCurrentApplicationType(newval);
+      bridgeworkspacedata_.applicationtype = [workspacedata_ getApplicationType:name];
+      [self send_workspacedata_to_kext];
 
       NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.KeyDump";
       NSDictionary* userInfo = [NSDictionary dictionaryWithObject:name forKey:@"name"];
@@ -150,15 +158,14 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   }
 }
 
-// ------------------------------------------------------------
 - (void) observer_kTISNotifySelectedKeyboardInputSourceChanged:(NSNotification*)notification
 {
   NSString* name = [workspacedata_ getTISPropertyInputModeID];
   if (name) {
-    unsigned int inputmode;
-    unsigned int inputmodedetail;
-    [workspacedata_ getInputMode:name output_inputmode:(&inputmode) output_inputmodedetail:(&inputmodedetail)];
-    setCurrentInputMode(inputmode, inputmodedetail);
+    [workspacedata_ getInputMode:name
+                output_inputmode:(&(bridgeworkspacedata_.inputmode))
+          output_inputmodedetail:(&(bridgeworkspacedata_.inputmodedetail))];
+    [self send_workspacedata_to_kext];
 
     NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.KeyDump";
     NSDictionary* userInfo = [NSDictionary dictionaryWithObject:name forKey:@"name"];
