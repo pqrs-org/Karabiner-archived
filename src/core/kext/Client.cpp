@@ -121,16 +121,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     IOLockWrapper::ScopedLock lk(lock_);
 
-    if (type == KeyRemap4MacBook_bridge::REQUEST_STATUS_MESSAGE) {
-      if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_hide_statusmessage)) {
-        if (! request) return 0;
-        char* p = reinterpret_cast<KeyRemap4MacBook_bridge::StatusMessage::Request*>(request)->message;
-        if (p[0] != '\0') {
-          return 0;
-        }
-      }
-    }
-
     // ------------------------------------------------------------
     int result = 0;
     int error = 0;
