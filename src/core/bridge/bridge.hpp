@@ -19,8 +19,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       REQUEST_GET_CONFIG_INITIALIZE_VECTOR,
       REQUEST_GET_WORKSPACE_DATA,
       REQUEST_CHANGE_INPUTMODE,
-      REQUEST_STATUS_MESSAGE,
-      REQUEST_STATUS_MESSAGE_WINDOW_PARAMETER,
     };
 
     namespace GetEssentialConfig {
@@ -78,32 +76,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     namespace ChangeInputMode {
       struct Request {
         uint32_t vk_keycode;
-      };
-      struct Reply {};
-    }
-
-    namespace StatusMessage {
-      enum MessageType {
-        MESSAGETYPE_NONE,
-        MESSAGETYPE_MODIFIER_LOCK,
-        MESSAGETYPE_EXTRA,
-      };
-
-      struct Request {
-        Request(void) : type(MESSAGETYPE_NONE) {
-          message[0] = '\0';
-        }
-
-        Request(MessageType t, const char* m = "") : type(t) {
-          if (! m) {
-            message[0] = '\0';
-          } else {
-            strlcpy(message, m, sizeof(message));
-          }
-        }
-
-        MessageType type;
-        char message[16];
       };
       struct Reply {};
     }

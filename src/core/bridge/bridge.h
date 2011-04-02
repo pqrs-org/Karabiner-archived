@@ -140,6 +140,8 @@ enum {
 };
 // BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CHANGE_INPUT_SOURCE uses KeyCode as DATA.
 
+enum { BRIDGE_USERCLIENT_NOTIFICATION_STATUS_MESSAGE_MAXLEN = 128 };
+
 // 64bit alignment.
 struct BridgeUserClientStruct {
   uint64_t type;
