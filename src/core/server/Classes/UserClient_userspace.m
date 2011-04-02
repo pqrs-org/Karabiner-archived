@@ -1,0 +1,253 @@
+#import "UserClient_userspace.h"
+#include "bridge.h"
+
+static UserClient_userspace* global_userclient = nil;
+
+@implementation UserClient_userspace
+
+@synthesize connected;
+
+static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_t type, uint32_t data)
+{
+  switch (type) {
+    case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_STATUS_MESSAGE_UPDATED:
+    {
+      struct BridgeUserClientStruct bridgestruct;
+      char buf[512];
+
+      switch (data) {
+        case BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE_EXTRA:
+          bridgestruct.type = BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE_EXTRA;
+          break;
+        case BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE_MODIFIER:
+          bridgestruct.type = BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE_MODIFIER;
+          break;
+        default:
+          NSLog(@"[ERROR] Unknown data: %d\n", data);
+          return;
+      }
+      bridgestruct.data = (uintptr_t)(buf);
+      bridgestruct.size = sizeof(buf);
+
+      if (! [UserClient_userspace synchronized_communication_with_retry:&bridgestruct]) return;
+
+      NSLog(@"message:%s\n", buf);
+      break;
+    }
+  }
+}
+
+- (void) closeUserClient
+{
+  // ----------------------------------------
+  // call BRIDGE_USERCLIENT_CLOSE
+  if (service_ != IO_OBJECT_NULL && connect_ != IO_OBJECT_NULL) {
+    kern_return_t kernResult = IOConnectCallScalarMethod(connect_, BRIDGE_USERCLIENT_CLOSE, NULL, 0, NULL, NULL);
+    if (kernResult != KERN_SUCCESS) {
+      NSLog(@"[ERROR] IOConnectCallScalarMethod returned 0x%08x\n", kernResult);
+    }
+  }
+
+  // ----------------------------------------
+  // release previous values.
+  if (connect_ != IO_OBJECT_NULL) {
+    IOServiceClose(connect_);
+    connect_ = IO_OBJECT_NULL;
+  }
+  if (service_ != IO_OBJECT_NULL) {
+    IOObjectRelease(service_);
+    service_ = IO_OBJECT_NULL;
+  }
+}
+
+- (void) openUserClient
+{
+  io_iterator_t iterator;
+
+  kern_return_t kernResult = IOServiceGetMatchingServices(kIOMasterPortDefault, IOServiceMatching("org_pqrs_driver_KeyRemap4MacBook"), &iterator);
+  if (kernResult != KERN_SUCCESS) {
+    NSLog(@"[ERROR] IOServiceGetMatchingServices returned 0x%08x\n\n", kernResult);
+    return;
+  }
+
+  for (;;) {
+    io_service_t s = IOIteratorNext(iterator);
+    if (s == IO_OBJECT_NULL) break;
+
+    [self closeUserClient];
+
+    // ----------------------------------------
+    // setup service_
+    service_ = s;
+    kernResult = IOObjectRetain(service_);
+    if (kernResult != KERN_SUCCESS) {
+      NSLog(@"[ERROR] IOObjectRetain returned 0x%08x\n", kernResult);
+      continue;
+    }
+
+    // ----------------------------------------
+    // setup connect_
+    kernResult = IOServiceOpen(service_, mach_task_self(), 0, &connect_);
+    if (kernResult != KERN_SUCCESS) {
+      NSLog(@"[ERROR] IOServiceOpen returned 0x%08x\n", kernResult);
+      continue;
+    }
+
+    // ----------------------------------------
+    // open
+    kernResult = IOConnectCallScalarMethod(connect_, BRIDGE_USERCLIENT_OPEN, NULL, 0, NULL, NULL);
+    if (kernResult != KERN_SUCCESS) {
+      NSLog(@"[ERROR] IOConnectCallScalarMethod returned 0x%08x\n", kernResult);
+      continue;
+    }
+
+    // ----------------------------------------
+    // set notification
+    if (notifyport_) {
+      io_async_ref64_t asyncRef;
+      asyncRef[kIOAsyncCalloutFuncIndex] = (io_user_reference_t)(callback_NotificationFromKext);
+      asyncRef[kIOAsyncCalloutRefconIndex] = IO_OBJECT_NULL;
+
+      kernResult = IOConnectCallAsyncScalarMethod(connect_,
+                                                  BRIDGE_USERCLIENT_NOTIFICATION_FROM_KEXT,
+                                                  IONotificationPortGetMachPort(notifyport_),
+                                                  asyncRef,
+                                                  kOSAsyncRef64Count,
+                                                  NULL,                // input
+                                                  0,                   // inputCnt
+                                                  NULL,                // output
+                                                  NULL);               // outputCnt
+      if (kernResult != KERN_SUCCESS) {
+        NSLog(@"[ERROR] IOConnectCallAsyncScalarMethod returned 0x%08x\n", kernResult);
+        continue;
+      }
+
+      connected = YES;
+    }
+  }
+
+  IOObjectRelease(iterator);
+}
+
+- (id) init
+{
+  self = [super init];
+
+  if (self) {
+    service_ = IO_OBJECT_NULL;
+    connect_ = IO_OBJECT_NULL;
+    connected = NO;
+
+    // ----------------------------------------
+    // setup IONotification
+    notifyport_ = IONotificationPortCreate(kIOMasterPortDefault);
+    if (! notifyport_) {
+      NSLog(@"[ERROR] IONotificationPortCreate failed\n");
+
+    } else {
+      loopsource_ = IONotificationPortGetRunLoopSource(notifyport_);
+      if (! loopsource_) {
+        NSLog(@"[ERROR] IONotificationPortGetRunLoopSource failed\n");
+
+      } else {
+        CFRunLoopAddSource(CFRunLoopGetCurrent(), loopsource_, kCFRunLoopDefaultMode);
+        [self openUserClient];
+      }
+    }
+
+    if (! connected) {
+      [self closeUserClient];
+    }
+  }
+  return self;
+}
+
+- (void) dealloc
+{
+  @synchronized(self) {
+    [self closeUserClient];
+
+    if (notifyport_) {
+      if (loopsource_) {
+        CFRunLoopSourceInvalidate(loopsource_);
+      }
+      IONotificationPortDestroy(notifyport_);
+    }
+  }
+
+  [super dealloc];
+}
+
+// ======================================================================
++ (void) connect_to_kext
+{
+  @synchronized(self) {
+    if (! global_userclient) {
+      global_userclient = [self new];
+    }
+  }
+}
+
++ (void) disconnect_from_kext
+{
+  @synchronized(self) {
+    if (global_userclient) {
+      [global_userclient release];
+      global_userclient = nil;
+    }
+  }
+}
+
++ (void) refresh_connection
+{
+  @synchronized(self) {
+    [self disconnect_from_kext];
+    [self connect_to_kext];
+  }
+}
+
+- (BOOL) do_synchronized_communication:(struct BridgeUserClientStruct*)bridgestruct
+{
+  if (connect_ == IO_OBJECT_NULL) return NO;
+  if (! bridgestruct) return NO;
+
+  uint64_t output = 0;
+  uint32_t outputCnt = 1;
+  kern_return_t kernResult = IOConnectCallMethod(connect_,
+                                                 BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION,
+                                                 NULL, 0,                             // scalar input
+                                                 bridgestruct, sizeof(*bridgestruct), // struct input
+                                                 &output, &outputCnt,                 // scalar output
+                                                 NULL, NULL);                         // struct output
+  if (kernResult != KERN_SUCCESS) {
+    NSLog(@"[ERROR] IOConnectCallMethod BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION returned 0x%08x\n", kernResult);
+    return NO;
+  }
+  if (output != 0) {
+    NSLog(@"[ERROR] IOConnectCallMethod BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION output != 0 (%d)\n", output);
+    return NO;
+  }
+
+  return YES;
+}
+
++ (BOOL) synchronized_communication_with_retry:(struct BridgeUserClientStruct*)bridgestruct
+{
+  BOOL retval = NO;
+
+  @synchronized(self) {
+    if ([global_userclient do_synchronized_communication:bridgestruct]) {
+      retval = YES;
+
+    } else {
+      // retry.
+      NSLog(@"UserClient_userspace synchronized_communication_with_retry retry\n");
+      [self refresh_connection];
+      retval = [global_userclient do_synchronized_communication:bridgestruct];
+    }
+  }
+
+  return retval;
+}
+
+@end

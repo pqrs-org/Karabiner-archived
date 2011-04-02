@@ -15,6 +15,8 @@
 		342917F81296AD2600A5CB12 /* ConfigXMLParser+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 342917F71296AD2600A5CB12 /* ConfigXMLParser+Private.m */; };
 		342FD2B91302CD8A00491C16 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 342FD2B81302CD8A00491C16 /* Growl.framework */; };
 		345248A31298F8A2005447DE /* private.xml in Resources */ = {isa = PBXBuildFile; fileRef = 345248A21298F8A2005447DE /* private.xml */; };
+		345647361346A7AF00FD0C38 /* UserClient_userspace.m in Sources */ = {isa = PBXBuildFile; fileRef = 345647351346A7AF00FD0C38 /* UserClient_userspace.m */; };
+		345647421346AE1700FD0C38 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345647411346AE1700FD0C38 /* IOKit.framework */; };
 		345683B6109F2DD900125F91 /* server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345683B2109F2DD900125F91 /* server.cpp */; };
 		345683B7109F2DD900125F91 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345683B4109F2DD900125F91 /* util.cpp */; };
 		34568415109F350100125F91 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34568414109F350100125F91 /* Carbon.framework */; };
@@ -66,6 +68,9 @@
 		342917F71296AD2600A5CB12 /* ConfigXMLParser+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ConfigXMLParser+Private.m"; path = "Classes/ConfigXMLParser+Private.m"; sourceTree = "<group>"; };
 		342FD2B81302CD8A00491C16 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Frameworks/Growl.framework; sourceTree = "<group>"; };
 		345248A21298F8A2005447DE /* private.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = private.xml; path = Resources/private.xml; sourceTree = "<group>"; };
+		345647341346A7AF00FD0C38 /* UserClient_userspace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserClient_userspace.h; path = Classes/UserClient_userspace.h; sourceTree = "<group>"; };
+		345647351346A7AF00FD0C38 /* UserClient_userspace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserClient_userspace.m; path = Classes/UserClient_userspace.m; sourceTree = "<group>"; };
+		345647411346AE1700FD0C38 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		345683B2109F2DD900125F91 /* server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = server.cpp; sourceTree = "<group>"; };
 		345683B3109F2DD900125F91 /* server.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = server.hpp; sourceTree = "<group>"; };
 		345683B4109F2DD900125F91 /* util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = util.cpp; sourceTree = "<group>"; };
@@ -105,6 +110,7 @@
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				34568415109F350100125F91 /* Carbon.framework in Frameworks */,
 				342FD2B91302CD8A00491C16 /* Growl.framework in Frameworks */,
+				345647421346AE1700FD0C38 /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +120,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				345647341346A7AF00FD0C38 /* UserClient_userspace.h */,
+				345647351346A7AF00FD0C38 /* UserClient_userspace.m */,
 				34D4F83B12C45CF3001819AA /* WorkSpaceData+InputMode.m */,
 				34D4F82612C4463B001819AA /* StatusWindow.h */,
 				34D4F82712C4463B001819AA /* StatusWindow.m */,
@@ -215,6 +223,7 @@
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 				34568414109F350100125F91 /* Carbon.framework */,
+				345647411346AE1700FD0C38 /* IOKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -303,6 +312,7 @@
 				342917F81296AD2600A5CB12 /* ConfigXMLParser+Private.m in Sources */,
 				34D4F82812C4463B001819AA /* StatusWindow.m in Sources */,
 				34D4F83C12C45CF3001819AA /* WorkSpaceData+InputMode.m in Sources */,
+				345647361346A7AF00FD0C38 /* UserClient_userspace.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

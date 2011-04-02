@@ -14,6 +14,9 @@ clean:
 	rm -f *.xcodeproj/*.mode1v3
 	rm -f *.xcodeproj/*.pbxuser
 
+xcode:
+	open *.xcodeproj
+
 run:
 	-launchctl unload /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.server.plist 2>/dev/null
 	rm -f /tmp/KeyRemap4MacBook_server
