@@ -211,26 +211,21 @@ namespace org_pqrs_KeyRemap4MacBook {
       f.add(FlagStatus::getStickyFlags());
     }
     if (f != statusMessageFlags_) {
-      KeyRemap4MacBook_bridge::StatusMessage::Request request(KeyRemap4MacBook_bridge::StatusMessage::MESSAGETYPE_MODIFIER_LOCK, "");
-      bool isempty = true;
+      int index = BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE_MODIFIER;
+      CommonData::clear_statusmessage(index);
 
-      if (f.isOn(ModifierFlag::FN))                                           { isempty = false; strlcat(request.message, "FN ",    sizeof(request.message)); }
-      if (f.isOn(ModifierFlag::COMMAND_L) || f.isOn(ModifierFlag::COMMAND_R)) { isempty = false; strlcat(request.message, "Cmd ",   sizeof(request.message)); }
-      if (f.isOn(ModifierFlag::CONTROL_L) || f.isOn(ModifierFlag::CONTROL_R)) { isempty = false; strlcat(request.message, "Ctrl ",  sizeof(request.message)); }
-      if (f.isOn(ModifierFlag::OPTION_L) || f.isOn(ModifierFlag::OPTION_R))   { isempty = false; strlcat(request.message, "Opt ",   sizeof(request.message)); }
-      if (f.isOn(ModifierFlag::SHIFT_L) || f.isOn(ModifierFlag::SHIFT_R))     { isempty = false; strlcat(request.message, "Shift ", sizeof(request.message)); }
-      if (f.isOn(ModifierFlag::EXTRA1))                                       { isempty = false; strlcat(request.message, "Ex1 ",   sizeof(request.message)); }
-      if (f.isOn(ModifierFlag::EXTRA2))                                       { isempty = false; strlcat(request.message, "Ex2 ",   sizeof(request.message)); }
-      if (f.isOn(ModifierFlag::EXTRA3))                                       { isempty = false; strlcat(request.message, "Ex3 ",   sizeof(request.message)); }
-      if (f.isOn(ModifierFlag::EXTRA4))                                       { isempty = false; strlcat(request.message, "Ex4 ",   sizeof(request.message)); }
-      if (f.isOn(ModifierFlag::EXTRA5))                                       { isempty = false; strlcat(request.message, "Ex5 ",   sizeof(request.message)); }
+      if (f.isOn(ModifierFlag::FN))                                           { CommonData::append_statusmessage(index, "FN "); }
+      if (f.isOn(ModifierFlag::COMMAND_L) || f.isOn(ModifierFlag::COMMAND_R)) { CommonData::append_statusmessage(index, "Cmd "); }
+      if (f.isOn(ModifierFlag::CONTROL_L) || f.isOn(ModifierFlag::CONTROL_R)) { CommonData::append_statusmessage(index, "Ctrl "); }
+      if (f.isOn(ModifierFlag::OPTION_L) || f.isOn(ModifierFlag::OPTION_R))   { CommonData::append_statusmessage(index, "Opt "); }
+      if (f.isOn(ModifierFlag::SHIFT_L) || f.isOn(ModifierFlag::SHIFT_R))     { CommonData::append_statusmessage(index, "Shift "); }
+      if (f.isOn(ModifierFlag::EXTRA1))                                       { CommonData::append_statusmessage(index, "Ex1 "); }
+      if (f.isOn(ModifierFlag::EXTRA2))                                       { CommonData::append_statusmessage(index, "Ex2 "); }
+      if (f.isOn(ModifierFlag::EXTRA3))                                       { CommonData::append_statusmessage(index, "Ex3 "); }
+      if (f.isOn(ModifierFlag::EXTRA4))                                       { CommonData::append_statusmessage(index, "Ex4 "); }
+      if (f.isOn(ModifierFlag::EXTRA5))                                       { CommonData::append_statusmessage(index, "Ex5 "); }
 
-      if (isempty) {
-        request.message[0] = '\0';
-      }
-      KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_STATUS_MESSAGE, &request, sizeof(request), NULL, 0);
-
-      CommonData::set_statusmessage_modifier(request.message);
+      CommonData::send_notification_statusmessage(index);
     }
     statusMessageFlags_ = f;
 #endif
