@@ -13,5 +13,7 @@
 
 - (void) resetStatusMessage;
 - (void) setStatusMessage:(NSUInteger)lineIndex message:(NSString*)message;
+// TODO: Delete ME!!!
++ (StatusWindow*) getInstance;
 
 @end

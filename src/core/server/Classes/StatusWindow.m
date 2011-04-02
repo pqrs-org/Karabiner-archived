@@ -1,6 +1,8 @@
 #import "StatusWindow.h"
 #import "server_objc_part.h"
 
+static StatusWindow* global_instance = nil;
+
 @implementation StatusWindow
 
 NSString* notificationName_extra = @"Extra Message";
@@ -42,11 +44,15 @@ NSString* notificationName_lock  = @"Modifier Lock";
     [GrowlApplicationBridge setWillRegisterWhenGrowlIsReady:YES];
   }
 
+  global_instance = self;
+
   return self;
 }
 
 - (void) dealloc
 {
+  global_instance = nil;
+
   [lines_ release];
   [lastMessages_ release];
 
@@ -177,6 +183,11 @@ NSString* notificationName_lock  = @"Modifier Lock";
 {
   [lines_ replaceObjectAtIndex:lineIndex withObject:message];
   [self callUpdateStatusMessage];
+}
+
++ (StatusWindow*) getInstance
+{
+  return global_instance;
 }
 
 // ============================================================
