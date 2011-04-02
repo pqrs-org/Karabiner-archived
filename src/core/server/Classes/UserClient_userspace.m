@@ -42,7 +42,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
   // ----------------------------------------
   // call BRIDGE_USERCLIENT_CLOSE
   if (service_ != IO_OBJECT_NULL && connect_ != IO_OBJECT_NULL) {
-    // BRIDGE_USERCLIENT_CLOSE may fail. (when kext is unloaded, etc.)
+    // BRIDGE_USERCLIENT_CLOSE may be failed. (when kext is unloaded, etc.)
     // So we don't output a log message when it is failed.
     IOConnectCallScalarMethod(connect_, BRIDGE_USERCLIENT_CLOSE, NULL, 0, NULL, NULL);
   }
