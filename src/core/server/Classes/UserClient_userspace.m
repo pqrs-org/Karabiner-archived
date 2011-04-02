@@ -42,10 +42,9 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
   // ----------------------------------------
   // call BRIDGE_USERCLIENT_CLOSE
   if (service_ != IO_OBJECT_NULL && connect_ != IO_OBJECT_NULL) {
-    kern_return_t kernResult = IOConnectCallScalarMethod(connect_, BRIDGE_USERCLIENT_CLOSE, NULL, 0, NULL, NULL);
-    if (kernResult != KERN_SUCCESS) {
-      NSLog(@"[ERROR] BRIDGE_USERCLIENT_CLOSE returned 0x%08x\n", kernResult);
-    }
+    // BRIDGE_USERCLIENT_CLOSE may fail. (when kext is unloaded, etc.)
+    // So we don't output a log message when it is failed.
+    IOConnectCallScalarMethod(connect_, BRIDGE_USERCLIENT_CLOSE, NULL, 0, NULL, NULL);
   }
 
   // ----------------------------------------
