@@ -192,7 +192,11 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_close(void)
   }
 
   if (! provider_->isOpen(this)) {
+    // This error can occur in the normal usage. (by fast user switching)
+    // So we suppress the log message.
+#if 0
     IOLOG_ERROR("UserClient_kext::callback_close kIOReturnNotOpen\n");
+#endif
     return kIOReturnNotOpen;
   }
 
