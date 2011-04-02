@@ -165,16 +165,14 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 
 - (void) dealloc
 {
-  @synchronized(self) {
-    [self closeUserClient];
+  [self closeUserClient];
 
-    if (notifyport_) {
-      if (loopsource_) {
-        CFRunLoopSourceInvalidate(loopsource_);
-        CFRelease(loopsource_);
-      }
-      IONotificationPortDestroy(notifyport_);
+  if (notifyport_) {
+    if (loopsource_) {
+      CFRunLoopSourceInvalidate(loopsource_);
+      CFRelease(loopsource_);
     }
+    IONotificationPortDestroy(notifyport_);
   }
 
   [super dealloc];
@@ -202,10 +200,8 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 
 + (void) refresh_connection
 {
-  @synchronized(self) {
-    [self disconnect_from_kext];
-    [self connect_to_kext];
-  }
+  [self disconnect_from_kext];
+  [self connect_to_kext];
 }
 
 - (BOOL) do_synchronized_communication:(struct BridgeUserClientStruct*)bridgestruct

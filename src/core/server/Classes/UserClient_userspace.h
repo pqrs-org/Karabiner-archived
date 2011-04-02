@@ -13,9 +13,8 @@
 
 @property (assign) BOOL connected;
 
-+ (void) connect_to_kext;
-+ (void) disconnect_from_kext;
 + (void) refresh_connection;
++ (void) disconnect_from_kext;
 + (BOOL) synchronized_communication_with_retry:(struct BridgeUserClientStruct*)bridgestruct;
 
 @end
