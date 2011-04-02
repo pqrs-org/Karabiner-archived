@@ -9,7 +9,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   KeyboardType CommonData::current_keyboardType_;
   DeviceVendor CommonData::current_deviceVendor_;
   DeviceProduct CommonData::current_deviceProduct_;
-  KeyRemap4MacBook_bridge::GetWorkspaceData::Reply CommonData::current_workspacedata_;
+  BridgeWorkSpaceData CommonData::current_workspacedata_;
   char CommonData::statusmessage_[BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE__END__][BRIDGE_USERCLIENT_NOTIFICATION_STATUS_MESSAGE_MAXLEN];
 
   int CommonData::alloccount_;
@@ -34,36 +34,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     IOLockWrapper::free(alloccount_lock_);
     IOLockWrapper::free(event_lock_);
-  }
-
-  void
-  CommonData::setcurrent_workspacedata(void)
-  {
-#if 0
-    // ------------------------------------------------------------
-    // When we press the functional key (ex. F2) with the keyboard of the third vendor,
-    // KeyRemap4MacBook_client::sendmsg returns EIO.
-    //
-    // We use the previous value when the error occurred.
-    static KeyRemap4MacBook_bridge::GetWorkspaceData::Reply last = {
-      0,
-      0,
-      0,
-    };
-
-    int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_WORKSPACE_DATA, NULL, 0, &current_workspacedata_, sizeof(current_workspacedata_));
-    IOLOG_DEVEL("GetWorkspaceData: type:%d, inputmode:%d, inputmodedetail:%d, error:%d\n",
-                current_workspacedata_.type,
-                current_workspacedata_.inputmode,
-                current_workspacedata_.inputmodedetail,
-                error);
-    if (error == 0) {
-      last = current_workspacedata_;
-    } else {
-      // use last info.
-      current_workspacedata_ = last;
-    }
-#endif
   }
 
   void

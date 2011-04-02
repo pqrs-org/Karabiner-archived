@@ -29,13 +29,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       return true;
     }
 
-    static void setcurrent_workspacedata(void);
-    static void setcurrent_workspacedata(const BridgeWorkSpaceData& newval) {
-      current_workspacedata_.type            = newval.applicationtype;
-      current_workspacedata_.inputmode       = newval.inputmode;
-      current_workspacedata_.inputmodedetail = newval.inputmodedetail;
-    }
-    static const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& getcurrent_workspacedata(void) { return current_workspacedata_; }
+    static void setcurrent_workspacedata(const BridgeWorkSpaceData& newval) { current_workspacedata_ = newval; }
+    static const BridgeWorkSpaceData& getcurrent_workspacedata(void) { return current_workspacedata_; }
 
     static void clear_statusmessage(int index);
     static void append_statusmessage(int index, const char* message);
@@ -58,7 +53,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static KeyboardType current_keyboardType_;
     static DeviceVendor current_deviceVendor_;
     static DeviceProduct current_deviceProduct_;
-    static KeyRemap4MacBook_bridge::GetWorkspaceData::Reply current_workspacedata_;
+    static BridgeWorkSpaceData current_workspacedata_;
 
     static char statusmessage_[BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE__END__][BRIDGE_USERCLIENT_NOTIFICATION_STATUS_MESSAGE_MAXLEN];
 

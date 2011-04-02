@@ -31,7 +31,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       if (! targets_) return false;
 
-      unsigned int current = CommonData::getcurrent_workspacedata().type;
+      unsigned int current = CommonData::getcurrent_workspacedata().applicationtype;
 
       switch (type_) {
         case BRIDGE_FILTERTYPE_APPLICATION_NOT:
