@@ -35,12 +35,6 @@
   [workspacedata_ selectInputSource:vk_keycode];
 }
 
-- (void) setStatusMessage:(StatusMessageType)type message:(const char*)message
-{
-  NSString* s = [NSString stringWithCString:message encoding:NSUTF8StringEncoding];
-  [statuswindow_ setStatusMessage:type message:s];
-}
-
 @end
 
 // ======================================================================
@@ -145,15 +139,5 @@ getConfigValue(uint32_t configindex)
   } else {
     NSLog(@"[WARNING] getConfigValue serverobjcpart == nil");
     return 0;
-  }
-}
-
-void
-set_statusmessage(StatusMessageType type, const char* message)
-{
-  if (serverobjcpart) {
-    [serverobjcpart setStatusMessage:type message:message];
-  } else {
-    NSLog(@"[WARNING] set_statusmessage serverobjcpart == nil");
   }
 }
