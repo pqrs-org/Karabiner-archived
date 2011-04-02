@@ -37,10 +37,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
     static const KeyRemap4MacBook_bridge::GetWorkspaceData::Reply& getcurrent_workspacedata(void) { return current_workspacedata_; }
 
-    static void set_statusmessage_extra(const char* message);
-    static void set_statusmessage_modifier(const char* message);
-    static const char* get_statusmessage_extra(void)    { return statusmessage_extra_; }
-    static const char* get_statusmessage_modifier(void) { return statusmessage_modifier_; }
+    static void clear_statusmessage(int index);
+    static void append_statusmessage(int index, const char* message);
+    static void send_notification_statusmessage(int index);
+
+    static const char* get_statusmessage(int index) { return statusmessage_[index]; }
 
     // for debug
     static void increase_alloccount(void);
@@ -59,9 +60,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static DeviceProduct current_deviceProduct_;
     static KeyRemap4MacBook_bridge::GetWorkspaceData::Reply current_workspacedata_;
 
-    enum { STATUSMESSAGE_LENGTH = 32 };
-    static char statusmessage_extra_[STATUSMESSAGE_LENGTH];
-    static char statusmessage_modifier_[STATUSMESSAGE_LENGTH];
+    static char statusmessage_[BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE__END__][BRIDGE_USERCLIENT_NOTIFICATION_STATUS_MESSAGE_MAXLEN];
 
     static int alloccount_;
     static IOLock* alloccount_lock_;
