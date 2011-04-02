@@ -283,7 +283,9 @@ KeyRemap4MacBook_server::Server::do_StatusMessage(const org_pqrs_KeyRemap4MacBoo
     default:
       break;
   }
+#if 0
   set_statusmessage(type, request.message);
+#endif
 
   return org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS;
 }

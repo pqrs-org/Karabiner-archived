@@ -1,4 +1,5 @@
 #import "UserClient_userspace.h"
+#import "StatusWindow.h"
 #include "bridge.h"
 
 static UserClient_userspace* global_userclient = nil;
@@ -31,7 +32,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 
       if (! [UserClient_userspace synchronized_communication_with_retry:&bridgestruct]) return;
 
-      NSLog(@"message:%s\n", buf);
+      [[StatusWindow getInstance] setStatusMessage:data message:[NSString stringWithUTF8String:buf]];
       break;
     }
   }
