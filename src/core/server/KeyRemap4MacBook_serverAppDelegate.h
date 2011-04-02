@@ -16,6 +16,11 @@
 @interface KeyRemap4MacBook_serverAppDelegate : NSObject <NSApplicationDelegate> {
   NSWindow* window;
   BOOL isSessionActive_;
+
+  // for IONotification
+  IONotificationPortRef notifyport_;
+  CFRunLoopSourceRef loopsource_;
+
   IBOutlet ServerObjcPart* serverobjcpart_;
   IBOutlet StatusBar* statusbar_;
   IBOutlet StatusWindow* statuswindow_;

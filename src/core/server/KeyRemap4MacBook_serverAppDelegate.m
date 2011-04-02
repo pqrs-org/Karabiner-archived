@@ -8,6 +8,7 @@
 
 #import <Carbon/Carbon.h>
 #import "KeyRemap4MacBook_serverAppDelegate.h"
+#import "UserClient_userspace.h"
 #include "util.h"
 #include "server_objc_part.h"
 #include "server.hpp"
@@ -44,6 +45,77 @@
 // ----------------------------------------
 - (void) statusBarItemSelected:(id)sender {
   [statusbar_ statusBarItemSelected:sender];
+}
+
+// ------------------------------------------------------------
+static void observer_IONotification(void* refcon, io_iterator_t iterator) {
+  NSLog(@"observer_IONotification");
+
+  for (;;) {
+    io_object_t obj = IOIteratorNext(iterator);
+    if (! obj) break;
+
+    IOObjectRelease(obj);
+  }
+  // Do not release iterator.
+
+  // = Documentation of IOKit =
+  // - Introduction to Accessing Hardware From Applications
+  //   - Finding and Accessing Devices
+  //
+  // In the case of IOServiceAddMatchingNotification, make sure you release the iterator only if you’re also ready to stop receiving notifications:
+  // When you release the iterator you receive from IOServiceAddMatchingNotification, you also disable the notification.
+
+  [UserClient_userspace refresh_connection];
+}
+
+- (void) unregisterIONotification {
+  if (notifyport_) {
+    if (loopsource_) {
+      CFRunLoopSourceInvalidate(loopsource_);
+      loopsource_ = nil;
+    }
+    IONotificationPortDestroy(notifyport_);
+    notifyport_ = nil;
+  }
+}
+
+- (void) registerIONotification {
+  [self unregisterIONotification];
+
+  notifyport_ = IONotificationPortCreate(kIOMasterPortDefault);
+  if (! notifyport_) {
+    NSLog(@"[ERROR] IONotificationPortCreate failed\n");
+    return;
+  }
+
+  // ------------------------------------------------------------
+  NSMutableDictionary* match = [NSMutableDictionary dictionaryWithObject:@"org_pqrs_driver_KeyRemap4MacBook" forKey:@"IOMatchCategory"];
+
+  // ----------------------------------------------------------------------
+  io_iterator_t it;
+  kern_return_t kernResult;
+
+  [match retain]; // for kIOMatchedNotification
+  kernResult = IOServiceAddMatchingNotification(notifyport_,
+                                                kIOMatchedNotification,
+                                                (CFMutableDictionaryRef)(match),
+                                                &observer_IONotification,
+                                                self,
+                                                &it);
+  if (kernResult != kIOReturnSuccess) {
+    NSLog(@"[ERROR] IOServiceAddMatchingNotification failed");
+    return;
+  }
+  observer_IONotification(nil, it);
+
+  // ----------------------------------------------------------------------
+  loopsource_ = IONotificationPortGetRunLoopSource(notifyport_);
+  if (! loopsource_) {
+    NSLog(@"[ERROR] IONotificationPortGetRunLoopSource failed");
+    return;
+  }
+  CFRunLoopAddSource(CFRunLoopGetCurrent(), loopsource_, kCFRunLoopDefaultMode);
 }
 
 // ------------------------------------------------------------
@@ -131,6 +203,8 @@
   [statusbar_ refresh];
 
   set_sysctl_do_reset();
+
+  [self registerIONotification];
 
   // ------------------------------------------------------------
   [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
