@@ -23,7 +23,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
           bridgestruct.type = BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE_MODIFIER;
           break;
         default:
-          NSLog(@"[ERROR] Unknown data: %d\n", data);
+          NSLog(@"[ERROR] BRIDGE_USERCLIENT_NOTIFICATION_FROM_KEXT Unknown data: %d\n", data);
           return;
       }
       bridgestruct.data = (uintptr_t)(buf);
@@ -44,7 +44,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
   if (service_ != IO_OBJECT_NULL && connect_ != IO_OBJECT_NULL) {
     kern_return_t kernResult = IOConnectCallScalarMethod(connect_, BRIDGE_USERCLIENT_CLOSE, NULL, 0, NULL, NULL);
     if (kernResult != KERN_SUCCESS) {
-      NSLog(@"[ERROR] IOConnectCallScalarMethod returned 0x%08x\n", kernResult);
+      NSLog(@"[ERROR] BRIDGE_USERCLIENT_CLOSE returned 0x%08x\n", kernResult);
     }
   }
 
@@ -97,7 +97,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
     // open
     kernResult = IOConnectCallScalarMethod(connect_, BRIDGE_USERCLIENT_OPEN, NULL, 0, NULL, NULL);
     if (kernResult != KERN_SUCCESS) {
-      NSLog(@"[ERROR] IOConnectCallScalarMethod returned 0x%08x\n", kernResult);
+      NSLog(@"[ERROR] BRIDGE_USERCLIENT_OPEN returned 0x%08x\n", kernResult);
       continue;
     }
 
@@ -118,7 +118,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
                                                   NULL,                // output
                                                   NULL);               // outputCnt
       if (kernResult != KERN_SUCCESS) {
-        NSLog(@"[ERROR] IOConnectCallAsyncScalarMethod returned 0x%08x\n", kernResult);
+        NSLog(@"[ERROR] BRIDGE_USERCLIENT_NOTIFICATION_FROM_KEXT returned 0x%08x\n", kernResult);
         continue;
       }
 
@@ -220,11 +220,11 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
                                                  &output, &outputCnt,                 // scalar output
                                                  NULL, NULL);                         // struct output
   if (kernResult != KERN_SUCCESS) {
-    NSLog(@"[ERROR] IOConnectCallMethod BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION returned 0x%08x\n", kernResult);
+    NSLog(@"[ERROR] BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION returned 0x%08x\n", kernResult);
     return NO;
   }
   if (output != 0) {
-    NSLog(@"[ERROR] IOConnectCallMethod BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION output != 0 (%d)\n", output);
+    NSLog(@"[ERROR] BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION output != 0 (%d)\n", output);
     return NO;
   }
 
