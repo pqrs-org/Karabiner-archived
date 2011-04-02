@@ -48,10 +48,6 @@
           <identifier essential="true">general.suppress_growl_warning</identifier>
         </item>
         <item>
-          <name>Don't show Modifier lock status on screen</name>
-          <identifier essential="true">general.hide_statusmessage</identifier>
-        </item>
-        <item>
           <name>Show Sticky Modifier status on screen</name>
           <identifier essential="true">general.show_sticky_modifier_status</identifier>
         </item>
