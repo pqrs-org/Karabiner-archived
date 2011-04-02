@@ -2,7 +2,7 @@
 #import "StatusWindow.h"
 #include "bridge.h"
 
-static UserClient_userspace* global_userclient = nil;
+static UserClient_userspace* global_instance = nil;
 
 @implementation UserClient_userspace
 
@@ -182,8 +182,8 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 + (void) connect_to_kext
 {
   @synchronized(self) {
-    if (! global_userclient) {
-      global_userclient = [self new];
+    if (! global_instance) {
+      global_instance = [self new];
     }
   }
 }
@@ -191,9 +191,9 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 + (void) disconnect_from_kext
 {
   @synchronized(self) {
-    if (global_userclient) {
-      [global_userclient release];
-      global_userclient = nil;
+    if (global_instance) {
+      [global_instance release];
+      global_instance = nil;
     }
   }
 }
@@ -234,14 +234,14 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
   BOOL retval = NO;
 
   @synchronized(self) {
-    if ([global_userclient do_synchronized_communication:bridgestruct]) {
+    if ([global_instance do_synchronized_communication:bridgestruct]) {
       retval = YES;
 
     } else {
       // retry.
       NSLog(@"UserClient_userspace synchronized_communication_with_retry retry\n");
       [self refresh_connection];
-      retval = [global_userclient do_synchronized_communication:bridgestruct];
+      retval = [global_instance do_synchronized_communication:bridgestruct];
     }
   }
 
