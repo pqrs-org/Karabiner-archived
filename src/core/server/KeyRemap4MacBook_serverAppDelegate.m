@@ -179,6 +179,9 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
   set_sysctl_do_reset();
   set_sysctl_do_reload_xml();
+
+  [self registerIONotification];
+  [UserClient_userspace refresh_connection];
 }
 
 - (void) observer_NSWorkspaceSessionDidResignActiveNotification:(NSNotification*)notification
@@ -192,6 +195,9 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   [statuswindow_ resetStatusMessage];
 
   set_sysctl_do_reset();
+
+  [self unregisterIONotification];
+  [UserClient_userspace disconnect_from_kext];
 }
 
 // ------------------------------------------------------------
