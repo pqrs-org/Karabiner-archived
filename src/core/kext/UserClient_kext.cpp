@@ -331,23 +331,28 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
 
   switch (type) {
     case BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE_EXTRA:
-    {
-      char* p = reinterpret_cast<char*>(address);
-      if (p) {
-        strlcpy(p, org_pqrs_KeyRemap4MacBook::CommonData::get_statusmessage_extra(), static_cast<size_t>(size));
-        *outputdata = 0;
-      }
-      break;
-    }
     case BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE_MODIFIER:
     {
-      char* p = reinterpret_cast<char*>(address);
-      if (p) {
-        strlcpy(p, org_pqrs_KeyRemap4MacBook::CommonData::get_statusmessage_modifier(), static_cast<size_t>(size));
-        *outputdata = 0;
+      int index = BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE_NONE;
+      switch (type) {
+        case BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE_EXTRA:
+          index = BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE_EXTRA;
+          break;
+        case BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE_MODIFIER:
+          index = BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE_MODIFIER;
+          break;
+      }
+
+      if (index != BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE_NONE) {
+        char* p = reinterpret_cast<char*>(address);
+        if (p) {
+          strlcpy(p, org_pqrs_KeyRemap4MacBook::CommonData::get_statusmessage(index), static_cast<size_t>(size));
+          *outputdata = 0;
+        }
       }
       break;
     }
+
     case BRIDGE_USERCLIENT_TYPE_SET_WORKSPACEDATA:
     {
       if (size == sizeof(BridgeWorkSpaceData)) {
