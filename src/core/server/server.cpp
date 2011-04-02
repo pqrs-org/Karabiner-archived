@@ -7,15 +7,6 @@
 #include "server_objc_part.h"
 #include "Mutex.hpp"
 
-namespace {
-  unsigned int currentApplicationType = 0;
-  unsigned int currentInputMode = 0;
-  unsigned int currentInputModeDetail = 0;
-
-  Mutex mutex_currentApplicationType;
-  Mutex mutex_currentInputMode;
-}
-
 bool
 KeyRemap4MacBook_server::Server::initialize(const char* basedirectory)
 {
@@ -83,12 +74,6 @@ KeyRemap4MacBook_server::Server::dispatchOperator(int sock)
     case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::REQUEST_GET_CONFIG_INITIALIZE_VECTOR:
     {
       if (! do_GetConfigInitializeVector(sock)) goto error;
-      break;
-    }
-
-    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::REQUEST_GET_WORKSPACE_DATA:
-    {
-      if (! do_GetWorkspaceData(sock)) goto error;
       break;
     }
 
@@ -229,44 +214,9 @@ finish:
   return retval;
 }
 
-bool
-KeyRemap4MacBook_server::Server::do_GetWorkspaceData(int sock)
-{
-  org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetWorkspaceData::Reply reply;
-
-  {
-    Mutex::ScopedLock lk(mutex_currentApplicationType);
-    reply.type = currentApplicationType;
-  }
-  {
-    Mutex::ScopedLock lk(mutex_currentInputMode);
-    reply.inputmode = currentInputMode;
-    reply.inputmodedetail = currentInputModeDetail;
-  }
-
-  sendReply(sock, &reply, sizeof(reply), org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS);
-  return true;
-}
-
 org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error
 KeyRemap4MacBook_server::Server::do_ChangeInputMode(const org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::Request& request)
 {
   selectInputSource(request.vk_keycode);
   return org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS;
-}
-
-// --------------------------------------------------
-void
-setCurrentApplicationType(unsigned int newval)
-{
-  Mutex::ScopedLock lk(mutex_currentApplicationType);
-  currentApplicationType = newval;
-}
-
-void
-setCurrentInputMode(unsigned int inputmode, unsigned int inputmodedetail)
-{
-  Mutex::ScopedLock lk(mutex_currentInputMode);
-  currentInputMode = inputmode;
-  currentInputModeDetail = inputmodedetail;
 }
