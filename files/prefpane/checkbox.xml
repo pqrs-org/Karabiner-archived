@@ -3804,6 +3804,18 @@
           <identifier>remap.optionR2allF1</identifier>
           <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::F1, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
         </item>
+        <item>
+          <name>Disable Option_R, except when pressed with cursor/delete keys (Works better in Parallels)</name>
+          <appendix>Option_R+Up/Down/Left/Right Arrow Keys to PageUp/PageDown/Home/End</appendix>
+          <appendix>Option_R+Delete to Forward Delete</appendix>
+          <identifier>remap.modified_optionR_behaviours</identifier>
+          <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::VK_MODIFIER_EXTRA1</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_UP,    ModifierFlag::EXTRA1, KeyCode::PAGEUP</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN,  ModifierFlag::EXTRA1, KeyCode::PAGEDOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT,  ModifierFlag::EXTRA1, KeyCode::HOME</autogen>
+          <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, ModifierFlag::EXTRA1, KeyCode::END</autogen>
+          <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::EXTRA1, KeyCode::FORWARD_DELETE</autogen>
+        </item>
       </list>
     </item>
 
