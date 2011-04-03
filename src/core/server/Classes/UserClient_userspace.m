@@ -1,5 +1,6 @@
 #import "UserClient_userspace.h"
 #import "StatusWindow.h"
+#import "WorkSpaceData.h"
 #include "bridge.h"
 
 static UserClient_userspace* global_instance = nil;
@@ -26,6 +27,10 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
       [[StatusWindow getInstance] setStatusMessage:option message:[NSString stringWithUTF8String:buf]];
       break;
     }
+
+    case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CHANGE_INPUT_SOURCE:
+      [[WorkSpaceData getInstance] selectInputSource:option];
+      break;
   }
 }
 

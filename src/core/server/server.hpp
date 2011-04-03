@@ -25,7 +25,6 @@ namespace KeyRemap4MacBook_server {
     bool do_GetConfigCount(int sock);
     bool do_GetConfigInfo(int sock);
     bool do_GetConfigInitializeVector(int sock);
-    org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error do_ChangeInputMode(const org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::Request& request);
 
     int listenSocket_;
     std::string socketpath_;

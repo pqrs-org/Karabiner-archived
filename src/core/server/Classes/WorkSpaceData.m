@@ -2,7 +2,30 @@
 
 #import "WorkSpaceData.h"
 
+static WorkSpaceData* global_instance = nil;
+
 @implementation WorkSpaceData
+
+- (id) init
+{
+  self = [super init];
+
+  global_instance = self;
+
+  return self;
+}
+
+- (void) dealloc
+{
+  global_instance = nil;
+
+  [super dealloc];
+}
+
++ (WorkSpaceData*) getInstance
+{
+  return global_instance;
+}
 
 - (NSString*) getActiveApplicationName
 {

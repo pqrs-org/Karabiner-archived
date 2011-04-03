@@ -23,7 +23,6 @@
 - (NSUInteger) getConfigInitializeVectorSize:(unsigned int)configindex;
 - (NSArray*) getConfigInitializeVector:(unsigned int)configindex;
 - (int) getConfigValue:(unsigned int)configindex;
-- (void) selectInputSource:(unsigned int)vk_keycode;
 
 @end
 
@@ -50,8 +49,6 @@ uint32_t getConfigInitializeVectorSize(uint32_t configindex);
 int getConfigInitializeVector(uint32_t* value, size_t len, uint32_t configindex);
 
 int getConfigValue(uint32_t configindex);
-
-void selectInputSource(uint32_t vk_keycode);
 
 #ifdef __cplusplus
 }

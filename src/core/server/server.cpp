@@ -77,20 +77,6 @@ KeyRemap4MacBook_server::Server::dispatchOperator(int sock)
       break;
     }
 
-    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::REQUEST_CHANGE_INPUTMODE:
-    {
-      uint32_t size;
-      if (read(sock, &size, sizeof(size)) < 0) goto error;
-
-      org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::Request request;
-      if (size != sizeof(request)) goto error;
-      if (read(sock, &request, sizeof(request)) < 0) goto error;
-
-      do_ChangeInputMode(request);
-
-      break;
-    }
-
     case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::REQUEST_NONE:
     default:
       goto error;
@@ -212,11 +198,4 @@ finish:
     delete[] initialize_vector;
   }
   return retval;
-}
-
-org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::Error
-KeyRemap4MacBook_server::Server::do_ChangeInputMode(const org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::ChangeInputMode::Request& request)
-{
-  selectInputSource(request.vk_keycode);
-  return org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS;
 }

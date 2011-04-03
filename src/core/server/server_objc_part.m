@@ -30,11 +30,6 @@
   return [preferencesmanager_ value:name];
 }
 
-- (void) selectInputSource:(unsigned int)vk_keycode
-{
-  [workspacedata_ selectInputSource:vk_keycode];
-}
-
 @end
 
 // ======================================================================
@@ -44,18 +39,6 @@ void
 registerServerObjcPart(ServerObjcPart* object)
 {
   serverobjcpart = object;
-}
-
-// ------------------------------------------------------------
-void
-selectInputSource(uint32_t vk_keycode)
-{
-  if (! serverobjcpart) {
-    NSLog(@"[WARNING] selectInputSource_language serverobjcpart == nil");
-    return;
-  }
-
-  [serverobjcpart selectInputSource:vk_keycode];
 }
 
 // ------------------------------------------------------------

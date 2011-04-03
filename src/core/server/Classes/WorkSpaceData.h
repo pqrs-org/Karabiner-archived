@@ -7,6 +7,10 @@
 }
 - (NSString*) getActiveApplicationName;
 - (unsigned int) getApplicationType:(NSString*)name;
+
+// TODO: Delete ME!!!
++ (WorkSpaceData*) getInstance;
+
 @end
 
 
