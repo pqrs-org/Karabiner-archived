@@ -18,7 +18,6 @@ public:
   virtual void stop(IOService* provider);
 
   virtual IOReturn clientClose(void);
-  virtual IOReturn clientDied(void);
 
   virtual bool didTerminate(IOService* provider, IOOptionBits options, bool* defer);
 
