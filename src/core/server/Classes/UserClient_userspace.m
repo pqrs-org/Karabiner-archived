@@ -8,31 +8,22 @@ static UserClient_userspace* global_instance = nil;
 
 @synthesize connected;
 
-static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_t type, uint32_t data)
+static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_t type, uint32_t option)
 {
   switch (type) {
     case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_STATUS_MESSAGE_UPDATED:
     {
-      struct BridgeUserClientStruct bridgestruct;
       char buf[512];
 
-      switch (data) {
-        case BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE_EXTRA:
-          bridgestruct.type = BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE_EXTRA;
-          break;
-        case BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE_MODIFIER:
-          bridgestruct.type = BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE_MODIFIER;
-          break;
-        default:
-          NSLog(@"[ERROR] BRIDGE_USERCLIENT_NOTIFICATION_FROM_KEXT Unknown data: %d\n", data);
-          return;
-      }
-      bridgestruct.data = (uintptr_t)(buf);
-      bridgestruct.size = sizeof(buf);
+      struct BridgeUserClientStruct bridgestruct;
+      bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE;
+      bridgestruct.option = option;
+      bridgestruct.data   = (uintptr_t)(buf);
+      bridgestruct.size   = sizeof(buf);
 
       if (! [UserClient_userspace synchronized_communication_with_retry:&bridgestruct]) return;
 
-      [[StatusWindow getInstance] setStatusMessage:data message:[NSString stringWithUTF8String:buf]];
+      [[StatusWindow getInstance] setStatusMessage:option message:[NSString stringWithUTF8String:buf]];
       break;
     }
   }

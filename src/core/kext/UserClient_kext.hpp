@@ -22,7 +22,7 @@ public:
 
   virtual bool didTerminate(IOService* provider, IOOptionBits options, bool* defer);
 
-  static void send_notification_to_userspace(uint32_t type, uint32_t data);
+  static void send_notification_to_userspace(uint32_t type, uint32_t option);
 
 protected:
   virtual IOReturn externalMethod(uint32_t selector, IOExternalMethodArguments* arguments,
@@ -43,7 +43,7 @@ private:
   IOReturn callback_notification_from_kext(OSAsyncReference64 asyncReference);
 
   // ------------------------------------------------------------
-  void handle_synchronized_communication(uint64_t type, mach_vm_address_t address, mach_vm_size_t size, uint64_t* outputdata);
+  void handle_synchronized_communication(uint32_t type, uint32_t option, mach_vm_address_t address, mach_vm_size_t size, uint64_t* outputdata);
 
   // ------------------------------------------------------------
   org_pqrs_driver_KeyRemap4MacBook* provider_;

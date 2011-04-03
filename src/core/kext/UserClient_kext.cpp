@@ -268,7 +268,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_synchronized_communic
 
     } else {
       mach_vm_address_t address = memorymap->getAddress();
-      handle_synchronized_communication(inputdata->type, address, inputdata->size, outputdata);
+      handle_synchronized_communication(inputdata->type, inputdata->option, address, inputdata->size, outputdata);
       memorymap->release();
     }
   }
@@ -317,42 +317,31 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_notification_from_kex
 }
 
 void
-org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace(uint32_t type, uint32_t data)
+org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace(uint32_t type, uint32_t option)
 {
   if (notification_enabled_) {
-    io_user_reference_t args[] = { type, data };
+    io_user_reference_t args[] = { type, option };
     sendAsyncResult64(asyncref_, kIOReturnSuccess, args, 2);
   }
 }
 
 // ------------------------------------------------------------
 void
-org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communication(uint64_t type, mach_vm_address_t address, mach_vm_size_t size, uint64_t* outputdata)
+org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communication(uint32_t type, uint32_t option, mach_vm_address_t address, mach_vm_size_t size, uint64_t* outputdata)
 {
   org_pqrs_KeyRemap4MacBook::IOLockWrapper::ScopedLock lk_eventlock(org_pqrs_KeyRemap4MacBook::CommonData::getEventLock());
 
   *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_ERROR_GENERIC;
 
   switch (type) {
-    case BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE_EXTRA:
-    case BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE_MODIFIER:
+    case BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE:
     {
-      int index = BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE_NONE;
-      switch (type) {
-        case BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE_EXTRA:
-          index = BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE_EXTRA;
-          break;
-        case BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE_MODIFIER:
-          index = BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE_MODIFIER;
-          break;
-      }
+      const char* statusmessage = org_pqrs_KeyRemap4MacBook::CommonData::get_statusmessage(option);
+      char* p = reinterpret_cast<char*>(address);
 
-      if (index != BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE_NONE) {
-        char* p = reinterpret_cast<char*>(address);
-        if (p) {
-          strlcpy(p, org_pqrs_KeyRemap4MacBook::CommonData::get_statusmessage(index), static_cast<size_t>(size));
-          *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
-        }
+      if (statusmessage && p) {
+        strlcpy(p, statusmessage, static_cast<size_t>(size));
+        *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
       }
       break;
     }

@@ -211,7 +211,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       f.add(FlagStatus::getStickyFlags());
     }
     if (f != statusMessageFlags_) {
-      int index = BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE_MODIFIER;
+      int index = BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER;
       CommonData::clear_statusmessage(index);
 
       if (f.isOn(ModifierFlag::FN))                                           { CommonData::append_statusmessage(index, "FN "); }

@@ -135,9 +135,10 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 // ------------------------------------------------------------
 - (void) send_workspacedata_to_kext {
   struct BridgeUserClientStruct bridgestruct;
-  bridgestruct.type = BRIDGE_USERCLIENT_TYPE_SET_WORKSPACEDATA;
-  bridgestruct.data = (uintptr_t)(&bridgeworkspacedata_);
-  bridgestruct.size = sizeof(bridgeworkspacedata_);
+  bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_SET_WORKSPACEDATA;
+  bridgestruct.option = 0;
+  bridgestruct.data   = (uintptr_t)(&bridgeworkspacedata_);
+  bridgestruct.size   = sizeof(bridgeworkspacedata_);
 
   [UserClient_userspace synchronized_communication_with_retry:&bridgestruct];
 }

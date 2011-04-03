@@ -16,7 +16,7 @@ NSString* notificationName_lock  = @"Modifier Lock";
   if (self) {
     lines_ = [NSMutableArray new];
     lastMessages_ = [NSMutableArray new];
-    for (NSUInteger i = 0; i < BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE__END__; ++i) {
+    for (NSUInteger i = 0; i < BRIDGE_USERCLIENT_STATUS_MESSAGE__END__; ++i) {
       [lines_ addObject:@""];
       [lastMessages_ addObject:@""];
     }
@@ -105,12 +105,12 @@ NSString* notificationName_lock  = @"Modifier Lock";
 
   // ------------------------------------------------------------
   // Modifier Message
-  message = [lines_ objectAtIndex:BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE_MODIFIER];
+  message = [lines_ objectAtIndex:BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER];
 
   BOOL isSticky = ([message length] > 0);
 
-  if (! [message isEqualToString:[lastMessages_ objectAtIndex:BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE_MODIFIER]]) {
-    [lastMessages_ replaceObjectAtIndex:BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE_MODIFIER withObject:message];
+  if (! [message isEqualToString:[lastMessages_ objectAtIndex:BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER]]) {
+    [lastMessages_ replaceObjectAtIndex:BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER withObject:message];
 
     if (! [self displayGrowlNotRunningWarning]) {
       [GrowlApplicationBridge
@@ -127,10 +127,10 @@ NSString* notificationName_lock  = @"Modifier Lock";
 
   // ------------------------------------------------------------
   // Extra Message
-  message = [lines_ objectAtIndex:BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE_EXTRA];
+  message = [lines_ objectAtIndex:BRIDGE_USERCLIENT_STATUS_MESSAGE_EXTRA];
 
   if ([message length] > 0) {
-    [lastMessages_ replaceObjectAtIndex:BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE_EXTRA withObject:message];
+    [lastMessages_ replaceObjectAtIndex:BRIDGE_USERCLIENT_STATUS_MESSAGE_EXTRA withObject:message];
 
     if (! [self displayGrowlNotRunningWarning]) {
       [GrowlApplicationBridge
@@ -145,7 +145,7 @@ NSString* notificationName_lock  = @"Modifier Lock";
     }
 
   } else {
-    message = [lastMessages_ objectAtIndex:BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE_EXTRA];
+    message = [lastMessages_ objectAtIndex:BRIDGE_USERCLIENT_STATUS_MESSAGE_EXTRA];
     if ([message length] > 0) {
       if (! [self displayGrowlNotRunningWarning]) {
         [GrowlApplicationBridge
@@ -158,7 +158,7 @@ NSString* notificationName_lock  = @"Modifier Lock";
              clickContext:nil
                identifier:@"org_pqrs_KeyRemap4MacBook_extra"];
 
-        [lastMessages_ replaceObjectAtIndex:BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE_EXTRA withObject:@""];
+        [lastMessages_ replaceObjectAtIndex:BRIDGE_USERCLIENT_STATUS_MESSAGE_EXTRA withObject:@""];
       }
     }
   }
@@ -173,7 +173,7 @@ NSString* notificationName_lock  = @"Modifier Lock";
 
 - (void) resetStatusMessage
 {
-  for (NSUInteger i = 0; i < BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE__END__; ++i) {
+  for (NSUInteger i = 0; i < BRIDGE_USERCLIENT_STATUS_MESSAGE__END__; ++i) {
     [lines_ replaceObjectAtIndex:i withObject:@""];
   }
 

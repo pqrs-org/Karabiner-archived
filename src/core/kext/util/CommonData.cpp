@@ -10,7 +10,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   DeviceVendor CommonData::current_deviceVendor_;
   DeviceProduct CommonData::current_deviceProduct_;
   BridgeWorkSpaceData CommonData::current_workspacedata_;
-  char CommonData::statusmessage_[BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE__END__][BRIDGE_USERCLIENT_NOTIFICATION_STATUS_MESSAGE_MAXLEN];
+  char CommonData::statusmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__][BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];
 
   int CommonData::alloccount_;
   IOLock* CommonData::alloccount_lock_;
@@ -20,7 +20,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   CommonData::initialize(void)
   {
-    for (int i = 0; i < BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE__END__; ++i) {
+    for (int i = 0; i < BRIDGE_USERCLIENT_STATUS_MESSAGE__END__; ++i) {
       statusmessage_[i][0] = '\0';
     }
 
@@ -39,8 +39,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   CommonData::clear_statusmessage(int index)
   {
-    if (index <= BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE_NONE) return;
-    if (index >= BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE__END__) return;
+    if (index <= BRIDGE_USERCLIENT_STATUS_MESSAGE_NONE) return;
+    if (index >= BRIDGE_USERCLIENT_STATUS_MESSAGE__END__) return;
 
     statusmessage_[index][0] = '\0';
   }
@@ -48,8 +48,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   CommonData::append_statusmessage(int index, const char* message)
   {
-    if (index <= BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE_NONE) return;
-    if (index >= BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE__END__) return;
+    if (index <= BRIDGE_USERCLIENT_STATUS_MESSAGE_NONE) return;
+    if (index >= BRIDGE_USERCLIENT_STATUS_MESSAGE__END__) return;
 
     strlcat(statusmessage_[index], message, sizeof(statusmessage_[index]));
   }
@@ -57,7 +57,19 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   CommonData::send_notification_statusmessage(int index)
   {
+    if (index <= BRIDGE_USERCLIENT_STATUS_MESSAGE_NONE) return;
+    if (index >= BRIDGE_USERCLIENT_STATUS_MESSAGE__END__) return;
+
     org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace(BRIDGE_USERCLIENT_NOTIFICATION_TYPE_STATUS_MESSAGE_UPDATED, index);
+  }
+
+  const char*
+  CommonData::get_statusmessage(int index)
+  {
+    if (index <= BRIDGE_USERCLIENT_STATUS_MESSAGE_NONE) return NULL;
+    if (index >= BRIDGE_USERCLIENT_STATUS_MESSAGE__END__) return NULL;
+
+    return statusmessage_[index];
   }
 
   void

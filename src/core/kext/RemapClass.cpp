@@ -563,8 +563,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOLock* lock_ = NULL;
     TimerWrapper refresh_timer_;
 
-    char statusmessage_[BRIDGE_USERCLIENT_NOTIFICATION_STATUS_MESSAGE_MAXLEN];
-    char lastmessage_[BRIDGE_USERCLIENT_NOTIFICATION_STATUS_MESSAGE_MAXLEN];
+    char statusmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];
+    char lastmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];
     bool isEventInputQueueDelayEnabled_ = false;
 
     Vector_RemapClassPointer* remapclasses_ = NULL;
@@ -614,7 +614,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (strcmp(statusmessage_, lastmessage_) != 0) {
         strlcpy(lastmessage_, statusmessage_, sizeof(lastmessage_));
 
-        int index = BRIDGE_USERCLIENT_NOTIFICATION_DATA_STATUS_MESSAGE_EXTRA;
+        int index = BRIDGE_USERCLIENT_STATUS_MESSAGE_EXTRA;
         CommonData::clear_statusmessage(index);
         CommonData::append_statusmessage(index, statusmessage_);
         CommonData::send_notification_statusmessage(index);
