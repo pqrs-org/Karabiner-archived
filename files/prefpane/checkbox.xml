@@ -8123,6 +8123,12 @@
           <identifier>remap.french_commandRhat2optionshift1</identifier>
           <autogen>--KeyToKey-- KeyCode::FRENCH_HAT, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_1, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
         </item>
+        <item>
+          <name>Dvorak and bépo: Command_R to Option_R</name>
+          <identifier>remap.french_inputmode_dvorak_bepo_command_r_to_option_r</identifier>
+          <inputmode_only>DVORAK,BEPO</inputmode_only>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
+        </item>
       </list>
     </item>
     <item>
