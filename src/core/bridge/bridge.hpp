@@ -17,7 +17,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       REQUEST_GET_CONFIG_COUNT,
       REQUEST_GET_CONFIG_INFO,
       REQUEST_GET_CONFIG_INITIALIZE_VECTOR,
-      REQUEST_CHANGE_INPUTMODE,
     };
 
     namespace GetEssentialConfig {
@@ -59,13 +58,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       struct Reply {
         uint32_t initialize_vector[0];
       };
-    }
-
-    namespace ChangeInputMode {
-      struct Request {
-        uint32_t vk_keycode;
-      };
-      struct Reply {};
     }
   }
 }

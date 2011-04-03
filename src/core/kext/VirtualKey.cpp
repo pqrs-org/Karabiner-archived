@@ -5,6 +5,7 @@
 #include "EventOutputQueue.hpp"
 #include "FlagStatus.hpp"
 #include "RemapClass.hpp"
+#include "UserClient_kext.hpp"
 #include "VirtualKey.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -193,7 +194,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   Handle_VK_CHANGE_INPUTMODE::handle(const Params_KeyboardEventCallBack& params)
   {
-    KeyRemap4MacBook_bridge::ChangeInputMode::Request request;
     if (params.key == KeyCode::VK_CHANGE_INPUTMODE_ENGLISH ||
         params.key == KeyCode::VK_CHANGE_INPUTMODE_FRENCH ||
         params.key == KeyCode::VK_CHANGE_INPUTMODE_GERMAN ||
@@ -205,15 +205,15 @@ namespace org_pqrs_KeyRemap4MacBook {
         params.key == KeyCode::VK_CHANGE_INPUTMODE_ENGLISH_TYPOGRAPHIC ||
         params.key == KeyCode::VK_CHANGE_INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY ||
         params.key == KeyCode::VK_CHANGE_INPUTMODE_ESTONIAN) {
-      request.vk_keycode = params.key.get();
+
+      if (params.ex_iskeydown && params.repeat == false) {
+        org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace(BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CHANGE_INPUT_SOURCE, params.key.get());
+      }
+      return true;
+
     } else {
       return false;
     }
-
-    if (params.ex_iskeydown && params.repeat == false) {
-      KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_CHANGE_INPUTMODE, &request, sizeof(request), NULL, 0);
-    }
-    return true;
   }
 
   // ----------------------------------------------------------------------
