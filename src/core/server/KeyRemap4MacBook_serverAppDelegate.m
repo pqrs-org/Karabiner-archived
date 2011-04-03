@@ -73,7 +73,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   if (notifyport_) {
     if (loopsource_) {
       CFRunLoopSourceInvalidate(loopsource_);
-      CFRelease(loopsource_);
       loopsource_ = nil;
     }
     IONotificationPortDestroy(notifyport_);

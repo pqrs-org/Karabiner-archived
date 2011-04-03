@@ -170,7 +170,6 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
   if (notifyport_) {
     if (loopsource_) {
       CFRunLoopSourceInvalidate(loopsource_);
-      CFRelease(loopsource_);
     }
     IONotificationPortDestroy(notifyport_);
   }
