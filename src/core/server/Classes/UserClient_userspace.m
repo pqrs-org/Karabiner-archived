@@ -220,8 +220,8 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
     NSLog(@"[ERROR] BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION returned 0x%08x\n", kernResult);
     return NO;
   }
-  if (output != 0) {
-    NSLog(@"[ERROR] BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION output != 0 (%d)\n", output);
+  if (output != BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS) {
+    NSLog(@"[ERROR] BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION output is not SUCESS (%d)\n", output);
     return NO;
   }
 

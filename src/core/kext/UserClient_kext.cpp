@@ -331,7 +331,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
 {
   org_pqrs_KeyRemap4MacBook::IOLockWrapper::ScopedLock lk_eventlock(org_pqrs_KeyRemap4MacBook::CommonData::getEventLock());
 
-  *outputdata = 1;
+  *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_ERROR_GENERIC;
 
   switch (type) {
     case BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE_EXTRA:
@@ -351,7 +351,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
         char* p = reinterpret_cast<char*>(address);
         if (p) {
           strlcpy(p, org_pqrs_KeyRemap4MacBook::CommonData::get_statusmessage(index), static_cast<size_t>(size));
-          *outputdata = 0;
+          *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
         }
       }
       break;
@@ -363,7 +363,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
         BridgeWorkSpaceData* p = reinterpret_cast<BridgeWorkSpaceData*>(address);
         if (p) {
           org_pqrs_KeyRemap4MacBook::CommonData::setcurrent_workspacedata(*p);
-          *outputdata = 0;
+          *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
         }
       }
       break;
