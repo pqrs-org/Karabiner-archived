@@ -13,6 +13,8 @@
   BOOL initialized_;
 }
 
++ (ConfigXMLParser*) getInstance;
+
 - (BOOL) initialized;
 - (BOOL) reload;
 - (NSUInteger) count;

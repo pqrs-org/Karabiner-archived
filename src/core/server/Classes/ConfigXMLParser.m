@@ -9,7 +9,19 @@
 - (BOOL) reload_preferencepane;
 @end
 
+static ConfigXMLParser * global_instance = nil;
+
 @implementation ConfigXMLParser
+
++ (ConfigXMLParser*) getInstance
+{
+  @synchronized(self) {
+    if (! global_instance) {
+      global_instance = [ConfigXMLParser new];
+    }
+  }
+  return global_instance;
+}
 
 - (id) init
 {
