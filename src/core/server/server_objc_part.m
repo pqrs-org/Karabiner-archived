@@ -9,22 +9,22 @@
 
 - (NSUInteger) getConfigCount
 {
-  return [configxmlparser_ count];
+  return [[ConfigXMLParser getInstance] count];
 }
 
 - (NSUInteger) getConfigInitializeVectorSize:(unsigned int)configindex
 {
-  return [configxmlparser_ initialize_vector_size:configindex];
+  return [[ConfigXMLParser getInstance] initialize_vector_size:configindex];
 }
 
 - (NSArray*) getConfigInitializeVector:(unsigned int)configindex
 {
-  return [configxmlparser_ initialize_vector:configindex];
+  return [[ConfigXMLParser getInstance] initialize_vector:configindex];
 }
 
 - (int) getConfigValue:(unsigned int)configindex
 {
-  NSString* name = [configxmlparser_ configname:configindex];
+  NSString* name = [[ConfigXMLParser getInstance] configname:configindex];
   if (! name) return 0;
 
   return [preferencesmanager_ value:name];

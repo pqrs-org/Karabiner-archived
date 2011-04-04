@@ -28,7 +28,6 @@
   IBOutlet StatusBar* statusbar_;
   IBOutlet StatusWindow* statuswindow_;
   IBOutlet WorkSpaceData* workspacedata_;
-  IBOutlet ConfigXMLParser* configxmlparser_;
 }
 
 @property (assign) IBOutlet NSWindow* window;

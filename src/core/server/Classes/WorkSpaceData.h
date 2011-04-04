@@ -2,9 +2,8 @@
 #import <Cocoa/Cocoa.h>
 #import "ConfigXMLParser.h"
 
-@interface WorkSpaceData : NSObject {
-  IBOutlet ConfigXMLParser* configxmlparser_;
-}
+@interface WorkSpaceData : NSObject
+
 - (NSString*) getActiveApplicationName;
 - (unsigned int) getApplicationType:(NSString*)name;
 

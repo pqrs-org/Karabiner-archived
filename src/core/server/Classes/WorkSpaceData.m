@@ -64,26 +64,28 @@ static WorkSpaceData* global_instance = nil;
 {
   if (! name) return 0;
 
+  ConfigXMLParser* parser = [ConfigXMLParser getInstance];
+
   if ([name isEqualToString:@"org.gnu.Emacs"] ||
       [name isEqualToString:@"org.gnu.AquamacsEmacs"] ||
       [name isEqualToString:@"org.gnu.Aquamacs"] ||
       [name isEqualToString:@"org.pqrs.unknownapp.conkeror"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::EMACS"];
+    return [parser keycode:@"ApplicationType::EMACS"];
   }
 
   if ([name hasPrefix:@"org.vim."]) {
-    return [configxmlparser_ keycode:@"ApplicationType::VI"];
+    return [parser keycode:@"ApplicationType::VI"];
   }
 
   if ([name hasPrefix:@"com.macromates.textmate"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::TEXTMATE"];
+    return [parser keycode:@"ApplicationType::TEXTMATE"];
   }
 
   if ([name isEqualToString:@"com.apple.Terminal"]    ||
       [name isEqualToString:@"iTerm"]                 ||
       [name isEqualToString:@"net.sourceforge.iTerm"] ||
       [name isEqualToString:@"com.googlecode.iterm2"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::TERMINAL"];
+    return [parser keycode:@"ApplicationType::TERMINAL"];
   }
 
   if ([name isEqualToString:@"com.vmware.fusion"]             ||
@@ -93,199 +95,199 @@ static WorkSpaceData* global_instance = nil;
       [name isEqualToString:@"com.parallels.desktop.console"] ||
       [name hasPrefix:@"com.parallels.winapp."]               || // coherence
       [name isEqualToString:@"org.virtualbox.app.VirtualBoxVM"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::VIRTUALMACHINE"];
+    return [parser keycode:@"ApplicationType::VIRTUALMACHINE"];
   }
 
   if ([name isEqualToString:@"com.microsoft.rdc"] ||
       [name isEqualToString:@"net.sf.cord"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::REMOTEDESKTOPCONNECTION"];
+    return [parser keycode:@"ApplicationType::REMOTEDESKTOPCONNECTION"];
   }
 
   if ([name isEqualToString:@"org.x.X11"] ||
       [name isEqualToString:@"com.apple.x11"] ||
       [name isEqualToString:@"org.macosforge.xquartz.X11"] ||
       [name isEqualToString:@"org.macports.X11"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::X11"];
+    return [parser keycode:@"ApplicationType::X11"];
   }
 
   if ([name isEqualToString:@"com.apple.finder"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::FINDER"];
+    return [parser keycode:@"ApplicationType::FINDER"];
   }
 
   if ([name isEqualToString:@"com.apple.Safari"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::SAFARI"];
+    return [parser keycode:@"ApplicationType::SAFARI"];
   }
 
   if ([name isEqualToString:@"org.mozilla.firefox"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::FIREFOX"];
+    return [parser keycode:@"ApplicationType::FIREFOX"];
   }
 
   if ([name isEqualToString:@"org.mozilla.thunderbird"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::THUNDERBIRD"];
+    return [parser keycode:@"ApplicationType::THUNDERBIRD"];
   }
 
   if ([name isEqualToString:@"com.apple.iChat"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::ICHAT"];
+    return [parser keycode:@"ApplicationType::ICHAT"];
   }
 
   if ([name isEqualToString:@"com.adiumX.adiumX"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::ADIUMX"];
+    return [parser keycode:@"ApplicationType::ADIUMX"];
   }
 
   if ([name isEqualToString:@"com.skype.skype"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::SKYPE"];
+    return [parser keycode:@"ApplicationType::SKYPE"];
   }
 
   if ([name isEqualToString:@"com.apple.mail"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::MAIL"];
+    return [parser keycode:@"ApplicationType::MAIL"];
   }
 
   if ([name isEqualToString:@"com.apple.TextEdit"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::EDITOR"];
+    return [parser keycode:@"ApplicationType::EDITOR"];
   }
 
   if ([name isEqualToString:@"com.adobe.Photoshop"] ||
       [name isEqualToString:@"com.adobe.Photoshop.Elements"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::PHOTOSHOP"];
+    return [parser keycode:@"ApplicationType::PHOTOSHOP"];
   }
 
   if ([name isEqualToString:@"com.adobe.illustrator"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::ILLUSTRATOR"];
+    return [parser keycode:@"ApplicationType::ILLUSTRATOR"];
   }
 
   if ([name hasPrefix:@"com.adobe."]) {
-    return [configxmlparser_ keycode:@"ApplicationType::ADOBE"];
+    return [parser keycode:@"ApplicationType::ADOBE"];
   }
 
   if ([name isEqualToString:@"com.microsoft.Excel"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::EXCEL"];
+    return [parser keycode:@"ApplicationType::EXCEL"];
   }
 
   if ([name isEqualToString:@"com.microsoft.Powerpoint"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::POWERPOINT"];
+    return [parser keycode:@"ApplicationType::POWERPOINT"];
   }
 
   if ([name isEqualToString:@"com.microsoft.Word"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::WORD"];
+    return [parser keycode:@"ApplicationType::WORD"];
   }
 
   if ([name isEqualToString:@"com.microsoft.Outlook"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::OUTLOOK"];
+    return [parser keycode:@"ApplicationType::OUTLOOK"];
   }
 
   if ([name isEqualToString:@"com.microsoft.Entourage"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::ENTOURAGE"];
+    return [parser keycode:@"ApplicationType::ENTOURAGE"];
   }
 
   if ([name isEqualToString:@"org.eclipse.eclipse"] ||
       [name isEqualToString:@"com.springsource.sts"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::ECLIPSE"];
+    return [parser keycode:@"ApplicationType::ECLIPSE"];
   }
 
   if ([name isEqualToString:@"org.pqrs.unknownapp.MacSOUP"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::MACSOUP"];
+    return [parser keycode:@"ApplicationType::MACSOUP"];
   }
 
   if ([name isEqualToString:@"uk.co.opencommunity.vienna2"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::VIENNA"];
+    return [parser keycode:@"ApplicationType::VIENNA"];
   }
 
   if ([name isEqualToString:@"com.apple.Xcode"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::XCODE"];
+    return [parser keycode:@"ApplicationType::XCODE"];
   }
 
   if ([name isEqualToString:@"com.operasoftware.Opera"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::OPERA"];
+    return [parser keycode:@"ApplicationType::OPERA"];
   }
 
   if ([name isEqualToString:@"com.google.Chrome"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::GOOGLE_CHROME"];
+    return [parser keycode:@"ApplicationType::GOOGLE_CHROME"];
   }
 
   if ([name isEqualToString:@"com.TeamViewer.TeamViewer"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::TEAMVIEWER"];
+    return [parser keycode:@"ApplicationType::TEAMVIEWER"];
   }
 
   if ([name isEqualToString:@"de.wengenmayer.Cheetah3D"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::CHEETAH_3D"];
+    return [parser keycode:@"ApplicationType::CHEETAH_3D"];
   }
 
   if ([name isEqualToString:@"com.apple.securityagent"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::PASSWORD"];
+    return [parser keycode:@"ApplicationType::PASSWORD"];
   }
 
   if ([name isEqualToString:@"com.sakya.Gruml"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::GRUML"];
+    return [parser keycode:@"ApplicationType::GRUML"];
   }
 
   if ([name isEqualToString:@"com.apple.iPhoto"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::IPHOTO"];
+    return [parser keycode:@"ApplicationType::IPHOTO"];
   }
 
   if ([name isEqualToString:@"com.apple.Stickies"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::STICKIES"];
+    return [parser keycode:@"ApplicationType::STICKIES"];
   }
 
   if ([name isEqualToString:@"com.jetbrains.webide"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::WEBIDE"];
+    return [parser keycode:@"ApplicationType::WEBIDE"];
   }
 
   if ([name isEqualToString:@"at.obdev.LaunchBar"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::LAUNCHBAR"];
+    return [parser keycode:@"ApplicationType::LAUNCHBAR"];
   }
 
   if ([name isEqualToString:@"com.apple.ScreenSharing"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::SCREEN_SHARING"];
+    return [parser keycode:@"ApplicationType::SCREEN_SHARING"];
   }
 
   if ([name isEqualToString:@"com.geekspiff.chickenofthevnc"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::VNC"];
+    return [parser keycode:@"ApplicationType::VNC"];
   }
 
   if ([name isEqualToString:@"com.apple.iWork.Pages"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::IWORK_PAGES"];
+    return [parser keycode:@"ApplicationType::IWORK_PAGES"];
   }
 
   if ([name isEqualToString:@"com.apple.iWork.Numbers"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::IWORK_NUMBERS"];
+    return [parser keycode:@"ApplicationType::IWORK_NUMBERS"];
   }
 
   if ([name isEqualToString:@"com.apple.iWork.Keynote"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::IWORK_KEYNOTE"];
+    return [parser keycode:@"ApplicationType::IWORK_KEYNOTE"];
   }
 
   if ([name isEqualToString:@"com.luxology.modo"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::MODO"];
+    return [parser keycode:@"ApplicationType::MODO"];
   }
 
   if ([name isEqualToString:@"com.blizzard.worldofwarcraft"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::WORLD_OF_WARCRAFT"];
+    return [parser keycode:@"ApplicationType::WORLD_OF_WARCRAFT"];
   }
 
   // com.ctmdev.FoxTrot
   // com.ctmdev.FoxTrotPro
   if ([name hasPrefix:@"com.ctmdev.FoxTrot"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::FOXTROT"];
+    return [parser keycode:@"ApplicationType::FOXTROT"];
   }
 
   // com.binarynights.ForkLift
   // com.binarynights.ForkLift2
   if ([name hasPrefix:@"com.binarynights.ForkLift"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::FORKLIFT"];
+    return [parser keycode:@"ApplicationType::FORKLIFT"];
   }
 
   if ([name isEqualToString:@"net.limechat.LimeChat"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::LIMECHAT"];
+    return [parser keycode:@"ApplicationType::LIMECHAT"];
   }
 
   // com.newtek.LightWave.Modeler
   // com.newtek.LightWave.Layout
   // com.newtek.LightWave.Hub
   if ([name hasPrefix:@"com.newtek.LightWave"]) {
-    return [configxmlparser_ keycode:@"ApplicationType::LIGHTWAVE"];
+    return [parser keycode:@"ApplicationType::LIGHTWAVE"];
   }
 
-  return [configxmlparser_ keycode:@"ApplicationType::UNKNOWN"];
+  return [parser keycode:@"ApplicationType::UNKNOWN"];
 }
 
 @end
