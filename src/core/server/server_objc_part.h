@@ -14,7 +14,6 @@
 @interface ServerObjcPart : NSObject {
   IBOutlet PreferencesManager* preferencesmanager_;
   IBOutlet StatusWindow* statuswindow_;
-  IBOutlet WorkSpaceData* workspacedata_;
 }
 
 - (NSArray*) getEssentialConfig;
