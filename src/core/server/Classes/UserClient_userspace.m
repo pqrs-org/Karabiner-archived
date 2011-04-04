@@ -29,7 +29,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
     }
 
     case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CHANGE_INPUT_SOURCE:
-      [[WorkSpaceData getInstance] selectInputSource:option];
+      [WorkSpaceData selectInputSource:option];
       break;
   }
 }

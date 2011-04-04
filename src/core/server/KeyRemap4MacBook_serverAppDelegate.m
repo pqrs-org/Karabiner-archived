@@ -145,11 +145,11 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
 - (void) observer_NSWorkspaceDidActivateApplicationNotification:(NSNotification*)notification
 {
-  NSString* name = [workspacedata_ getActiveApplicationName];
+  NSString* name = [WorkSpaceData getActiveApplicationName];
   if (name) {
     // We ignore our investigation application.
     if (! [name isEqualToString:@"org.pqrs.KeyRemap4MacBook.KeyDump"]) {
-      bridgeworkspacedata_.applicationtype = [workspacedata_ getApplicationType:name];
+      bridgeworkspacedata_.applicationtype = [WorkSpaceData getApplicationType:name];
       [self send_workspacedata_to_kext];
 
       NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.KeyDump";
@@ -161,11 +161,11 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
 - (void) observer_kTISNotifySelectedKeyboardInputSourceChanged:(NSNotification*)notification
 {
-  NSString* name = [workspacedata_ getTISPropertyInputModeID];
+  NSString* name = [WorkSpaceData getTISPropertyInputModeID];
   if (name) {
-    [workspacedata_ getInputMode:name
-                output_inputmode:(&(bridgeworkspacedata_.inputmode))
-          output_inputmodedetail:(&(bridgeworkspacedata_.inputmodedetail))];
+    [WorkSpaceData getInputMode:name
+               output_inputmode:(&(bridgeworkspacedata_.inputmode))
+         output_inputmodedetail:(&(bridgeworkspacedata_.inputmodedetail))];
     [self send_workspacedata_to_kext];
 
     NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.KeyDump";

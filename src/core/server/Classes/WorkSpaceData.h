@@ -4,17 +4,14 @@
 
 @interface WorkSpaceData : NSObject
 
-- (NSString*) getActiveApplicationName;
-- (unsigned int) getApplicationType:(NSString*)name;
-
-// TODO: Delete ME!!!
-+ (WorkSpaceData*) getInstance;
++ (NSString*) getActiveApplicationName;
++ (unsigned int) getApplicationType:(NSString*)name;
 
 @end
 
 
 @interface WorkSpaceData (InputSource)
-- (NSString*) getTISPropertyInputModeID;
-- (void) getInputMode:(NSString*)name output_inputmode:(unsigned int*)output_inputmode output_inputmodedetail:(unsigned int*)output_inputmodedetail;
-- (void) selectInputSource:(unsigned int)vk_keycode;
++ (NSString*) getTISPropertyInputModeID;
++ (void) getInputMode:(NSString*)name output_inputmode:(unsigned int*)output_inputmode output_inputmodedetail:(unsigned int*)output_inputmodedetail;
++ (void) selectInputSource:(unsigned int)vk_keycode;
 @end

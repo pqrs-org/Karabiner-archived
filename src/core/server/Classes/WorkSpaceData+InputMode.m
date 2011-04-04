@@ -10,7 +10,7 @@ static NSString* kInputSourceLanguage_traditional_chinese_yahoo_keykey = @"zh-Ha
 
 @implementation WorkSpaceData (InputMode)
 
-- (NSString*) getInputSourceLanguage:(TISInputSourceRef)source
++ (NSString*) getInputSourceLanguage:(TISInputSourceRef)source
 {
   // Because we cannot distinguish en and ca from kTISPropertyInputSourceLanguages,
   // we use kTISPropertyInputSourceID at first.
@@ -49,7 +49,7 @@ static NSString* kInputSourceLanguage_traditional_chinese_yahoo_keykey = @"zh-Ha
   return nil;
 }
 
-- (NSString*) getTISPropertyInputModeID
++ (NSString*) getTISPropertyInputModeID
 {
   TISInputSourceRef ref = TISCopyCurrentKeyboardInputSource();
   if (! ref) return nil;
@@ -91,7 +91,7 @@ static NSString* kInputSourceLanguage_traditional_chinese_yahoo_keykey = @"zh-Ha
 // Note:
 // TISCopyInputSourceForLanguage returns unselectable InputSource.
 // Therefore we get InputSource by ourself.
-- (TISInputSourceRef) copySelectableInputSourceForLanguage:(NSString*)language
++ (TISInputSourceRef) copySelectableInputSourceForLanguage:(NSString*)language
 {
   TISInputSourceRef inputsource = NULL;
   CFDictionaryRef filter = NULL;
@@ -138,7 +138,7 @@ finish:
 }
 
 // ----------------------------------------------------------------------
-- (void) selectInputSource:(unsigned int)vk_keycode
++ (void) selectInputSource:(unsigned int)vk_keycode
 {
   NSString* language = nil;
   ConfigXMLParser* parser = [ConfigXMLParser getInstance];
@@ -177,7 +177,7 @@ finish:
   CFRelease(inputsource);
 }
 
-- (void) getInputMode:(NSString*)name output_inputmode:(unsigned int*)output_inputmode output_inputmodedetail:(unsigned int*)output_inputmodedetail
++ (void) getInputMode:(NSString*)name output_inputmode:(unsigned int*)output_inputmode output_inputmodedetail:(unsigned int*)output_inputmodedetail
 {
   if (! name || ! output_inputmode || ! output_inputmodedetail) return;
 
