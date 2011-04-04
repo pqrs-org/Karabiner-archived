@@ -183,7 +183,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
   // Note: The console user is "real login user" or "loginwindow",
   //       when NSWorkspaceSessionDidBecomeActiveNotification, NSWorkspaceSessionDidResignActiveNotification are called.
-  [statuswindow_ resetStatusMessage];
+  [[StatusWindow getInstance] resetStatusMessage];
 
   set_sysctl_do_reset();
   set_sysctl_do_reload_xml();
@@ -200,7 +200,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
   // Note: The console user is "real login user" or "loginwindow",
   //       when NSWorkspaceSessionDidBecomeActiveNotification, NSWorkspaceSessionDidResignActiveNotification are called.
-  [statuswindow_ resetStatusMessage];
+  [[StatusWindow getInstance] resetStatusMessage];
 
   set_sysctl_do_reset();
 
@@ -213,7 +213,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   isSessionActive_ = YES;
   registerServerObjcPart(serverobjcpart_);
 
-  [statuswindow_ resetStatusMessage];
+  [[StatusWindow getInstance] resetStatusMessage];
   [statusbar_ refresh];
 
   set_sysctl_do_reset();

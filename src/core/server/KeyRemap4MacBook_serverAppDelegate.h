@@ -26,7 +26,6 @@
 
   IBOutlet ServerObjcPart* serverobjcpart_;
   IBOutlet StatusBar* statusbar_;
-  IBOutlet StatusWindow* statuswindow_;
 }
 
 @property (assign) IBOutlet NSWindow* window;

@@ -11,9 +11,7 @@
 #import "StatusWindow.h"
 #import "WorkSpaceData.h"
 
-@interface ServerObjcPart : NSObject {
-  IBOutlet StatusWindow* statuswindow_;
-}
+@interface ServerObjcPart : NSObject
 
 - (NSArray*) getEssentialConfig;
 - (NSUInteger) getConfigCount;
