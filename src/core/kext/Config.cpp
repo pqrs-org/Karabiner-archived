@@ -67,7 +67,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (Config::do_reload_xml == 1 && oldvalue != 1) {
         IOLOG_INFO("Config::do_reload_xml\n");
 
-        Config::load_essential_config();
         if (RemapClassManager::reload_xml()) {
           Config::do_reload_xml = 0;
           Config::initialized = 1;
@@ -76,6 +75,12 @@ namespace org_pqrs_KeyRemap4MacBook {
           Config::do_reload_xml = -1;
           Config::initialized = 0;
         }
+
+        // ------------------------------------------------------------
+        // reset values
+        FlagStatus::lock_clear();
+        FlagStatus::sticky_clear();
+        RemapFunc::PointingRelativeToScroll::cancelScroll();
       }
     }
     return error;
@@ -98,13 +103,18 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         // IOLOG_INFO("Config::do_reload_only_config\n");
 
-        Config::load_essential_config();
         if (RemapClassManager::reload_xml()) {
           Config::do_reload_only_config = 0;
         } else {
           IOLOG_ERROR("RemapClassManager::reload_xml is failed.\n");
           Config::do_reload_only_config = -1;
         }
+
+        // ------------------------------------------------------------
+        // reset values
+        FlagStatus::lock_clear();
+        FlagStatus::sticky_clear();
+        RemapFunc::PointingRelativeToScroll::cancelScroll();
       }
     }
     return error;
@@ -191,26 +201,15 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  Config::load_essential_config(void)
+  Config::set_essential_config(const int32_t *newvalues, size_t num)
   {
-    // load_essential_config is called from one thread.
-    // So, we can use static local variable to reduce stack usage.
-    static KeyRemap4MacBook_bridge::GetEssentialConfig::Reply reply;
-    time_t timeout_second = 3;
-    int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_ESSENTIAL_CONFIG, NULL, 0, &reply, sizeof(reply), timeout_second, 0);
-    if (error) {
-      IOLOG_ERROR("do_reload_xml GetEssentialConfig sendmsg failed. (%d)\n", error);
-      return;
-    }
-    for (size_t i = 0; i < sizeof(reply.value) / sizeof(reply.value[0]); ++i) {
-      essential_config_[i] = reply.value[i];
-    }
+    if (num != BRIDGE_ESSENTIAL_CONFIG_INDEX__END__) {
+      load_essential_config_default();
 
-    // ------------------------------------------------------------
-    // reset values
-    FlagStatus::lock_clear();
-    FlagStatus::sticky_clear();
-    RemapClassManager::refresh();
-    RemapFunc::PointingRelativeToScroll::cancelScroll();
+    } else {
+      for (int i = 0; i < BRIDGE_ESSENTIAL_CONFIG_INDEX__END__; ++i) {
+        essential_config_[i] = newvalues[i];
+      }
+    }
   }
 }

@@ -1,6 +1,9 @@
 #include "UserClient_kext.hpp"
 #include "CommonData.hpp"
+#include "Config.hpp"
+#include "FlagStatus.hpp"
 #include "IOLockWrapper.hpp"
+#include "RemapFunc/PointingRelativeToScroll.hpp"
 
 #define super IOUserClient
 
@@ -334,6 +337,23 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
   *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_ERROR_GENERIC;
 
   switch (type) {
+    case BRIDGE_USERCLIENT_TYPE_SET_ESSENTIAL_CONFIG:
+    {
+      if (size != sizeof(int32_t) * BRIDGE_ESSENTIAL_CONFIG_INDEX__END__) {
+        IOLOG_ERROR("BRIDGE_USERCLIENT_TYPE_SET_ESSENTIAL_CONFIG wrong 'size' parameter\n");
+      } else {
+        const int32_t* essential_config = reinterpret_cast<int32_t*>(address);
+        org_pqrs_KeyRemap4MacBook::Config::set_essential_config(essential_config, BRIDGE_ESSENTIAL_CONFIG_INDEX__END__);
+
+        // reset values
+        org_pqrs_KeyRemap4MacBook::FlagStatus::lock_clear();
+        org_pqrs_KeyRemap4MacBook::FlagStatus::sticky_clear();
+        org_pqrs_KeyRemap4MacBook::RemapFunc::PointingRelativeToScroll::cancelScroll();
+
+        *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
+      }
+    }
+
     case BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE:
     {
       const char* statusmessage = org_pqrs_KeyRemap4MacBook::CommonData::get_statusmessage(option);
@@ -348,7 +368,9 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
 
     case BRIDGE_USERCLIENT_TYPE_SET_WORKSPACEDATA:
     {
-      if (size == sizeof(BridgeWorkSpaceData)) {
+      if (size != sizeof(BridgeWorkSpaceData)) {
+        IOLOG_ERROR("BRIDGE_USERCLIENT_TYPE_SET_ESSENTIAL_CONFIG wrong 'size' parameter\n");
+      } else {
         BridgeWorkSpaceData* p = reinterpret_cast<BridgeWorkSpaceData*>(address);
         if (p) {
           org_pqrs_KeyRemap4MacBook::CommonData::setcurrent_workspacedata(*p);

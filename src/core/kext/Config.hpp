@@ -19,6 +19,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     static int do_reload_only_config_handler SYSCTL_HANDLER_ARGS;
     static int socket_path_handler SYSCTL_HANDLER_ARGS;
 
+    static void set_essential_config(const int32_t *newvalues, size_t num);
+
     static int get_essential_config(unsigned int index) {
       if (index >= BRIDGE_ESSENTIAL_CONFIG_INDEX__END__) {
         return 0;
@@ -83,7 +85,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     static void load_essential_config_default(void);
-    static void load_essential_config(void);
 
     static int essential_config_[BRIDGE_ESSENTIAL_CONFIG_INDEX__END__];
     static const int essential_config_default_[BRIDGE_ESSENTIAL_CONFIG_INDEX__END__];
