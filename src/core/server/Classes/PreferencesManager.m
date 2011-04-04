@@ -373,32 +373,32 @@
 // ----------------------------------------------------------------------
 - (void) configxml_reload
 {
-  [configxmlparser_ reload];
+  [[ConfigXMLParser getInstance] reload];
 }
 
 - (BOOL) configxml_initialized
 {
-  return [configxmlparser_ initialized];
+  return [[ConfigXMLParser getInstance] initialized];
 }
 
 - (NSArray*) preferencepane_checkbox
 {
-  return [configxmlparser_ preferencepane_checkbox];
+  return [[ConfigXMLParser getInstance] preferencepane_checkbox];
 }
 
 - (NSArray*) preferencepane_number
 {
-  return [configxmlparser_ preferencepane_number];
+  return [[ConfigXMLParser getInstance] preferencepane_number];
 }
 
 - (NSString*) preferencepane_error_message
 {
-  return [configxmlparser_ preferencepane_error_message];
+  return [[ConfigXMLParser getInstance] preferencepane_error_message];
 }
 
 - (NSString*) preferencepane_get_private_xml_path
 {
-  return [configxmlparser_ preferencepane_get_private_xml_path];
+  return [[ConfigXMLParser getInstance] preferencepane_get_private_xml_path];
 }
 
 - (NSString*) preferencepane_version

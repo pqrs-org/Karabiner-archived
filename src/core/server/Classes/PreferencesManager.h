@@ -6,8 +6,6 @@
   NSMutableDictionary* default_;
   NSArray* essential_config_index_;
   NSConnection* serverconnection_;
-
-  IBOutlet ConfigXMLParser* configxmlparser_;
 }
 
 - (int) value:(NSString*)name;
