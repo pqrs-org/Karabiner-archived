@@ -13,7 +13,6 @@
 
 @interface ServerObjcPart : NSObject
 
-- (NSArray*) getEssentialConfig;
 - (NSUInteger) getConfigCount;
 - (NSUInteger) getConfigInitializeVectorSize:(unsigned int)configindex;
 - (NSArray*) getConfigInitializeVector:(unsigned int)configindex;
@@ -30,11 +29,6 @@ void registerServerObjcPart(ServerObjcPart* object);
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-/**
- * @return errorcode
- */
-int getEssentialConfig(int32_t* value, size_t len);
 
 uint32_t getConfigCount(void);
 uint32_t getConfigInitializeVectorSize(uint32_t configindex);

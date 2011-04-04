@@ -53,12 +53,6 @@ KeyRemap4MacBook_server::Server::dispatchOperator(int sock)
   if (read(sock, &operation, sizeof(operation)) < 0) goto error;
 
   switch (operation) {
-    case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::REQUEST_GET_ESSENTIAL_CONFIG:
-    {
-      if (! do_GetEssentialConfig(sock)) goto error;
-      break;
-    }
-
     case org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::REQUEST_GET_CONFIG_COUNT:
     {
       if (! do_GetConfigCount(sock)) goto error;
@@ -120,18 +114,6 @@ KeyRemap4MacBook_server::Server::makeSocket(void)
 }
 
 // --------------------------------------------------
-bool
-KeyRemap4MacBook_server::Server::do_GetEssentialConfig(int sock)
-{
-  org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::GetEssentialConfig::Reply reply;
-
-  int error = getEssentialConfig(reply.value, sizeof(reply.value));
-  if (error) return false;
-
-  sendReply(sock, &reply, sizeof(reply), org_pqrs_KeyRemap4MacBook::KeyRemap4MacBook_bridge::SUCCESS);
-  return true;
-}
-
 bool
 KeyRemap4MacBook_server::Server::do_GetConfigCount(int sock)
 {

@@ -2,11 +2,6 @@
 
 @implementation ServerObjcPart
 
-- (NSArray*) getEssentialConfig
-{
-  return [[PreferencesManager getInstance] essential_config];
-}
-
 - (NSUInteger) getConfigCount
 {
   return [[ConfigXMLParser getInstance] count];
@@ -42,31 +37,6 @@ registerServerObjcPart(ServerObjcPart* object)
 }
 
 // ------------------------------------------------------------
-int
-getEssentialConfig(int32_t* value, size_t len)
-{
-  if (! serverobjcpart) {
-    NSLog(@"[WARNING] getEssentialConfig serverobjcpart == nil");
-    return 1;
-  }
-
-  NSArray* essential_config = [serverobjcpart getEssentialConfig];
-  if (! essential_config) {
-    NSLog(@"[WARNING] getEssentialConfig essential_config == nil");
-    return 1;
-  }
-
-  size_t i = 0;
-  for (NSNumber* number in essential_config) {
-    if (i < len) {
-      value[i] = [number intValue];
-      ++i;
-    }
-  }
-
-  return 0;
-}
-
 uint32_t
 getConfigCount(void)
 {

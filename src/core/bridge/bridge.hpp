@@ -13,20 +13,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     enum RequestType {
       REQUEST_NONE,
-      REQUEST_GET_ESSENTIAL_CONFIG,
       REQUEST_GET_CONFIG_COUNT,
       REQUEST_GET_CONFIG_INFO,
       REQUEST_GET_CONFIG_INITIALIZE_VECTOR,
     };
-
-    namespace GetEssentialConfig {
-      // none
-      struct Request {};
-
-      struct Reply {
-        int32_t value[BRIDGE_ESSENTIAL_CONFIG_INDEX__END__];
-      };
-    }
 
     namespace GetConfigCount {
       // none

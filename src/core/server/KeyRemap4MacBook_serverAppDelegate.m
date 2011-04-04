@@ -48,6 +48,35 @@
 }
 
 // ------------------------------------------------------------
++ (void) send_essential_config_to_kext {
+  NSArray* essential_config = [[PreferencesManager getInstance] essential_config];
+  if (! essential_config) {
+    NSLog(@"[WARNING] essential_config == nil");
+    return;
+  }
+
+  int32_t value[BRIDGE_ESSENTIAL_CONFIG_INDEX__END__];
+  size_t i = 0;
+  for (NSNumber* number in essential_config) {
+    if (i >= sizeof(value) / sizeof(value[0])) {
+      NSLog(@"[WARNING] Too many items in essential_config");
+      return;
+    }
+
+    value[i] = [number intValue];
+    ++i;
+  }
+
+  struct BridgeUserClientStruct bridgestruct;
+  bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_SET_ESSENTIAL_CONFIG;
+  bridgestruct.option = 0;
+  bridgestruct.data   = (uintptr_t)(value);
+  bridgestruct.size   = sizeof(value);
+
+  [UserClient_userspace synchronized_communication_with_retry:&bridgestruct];
+}
+
+// ------------------------------------------------------------
 static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   NSLog(@"observer_IONotification");
 
@@ -67,6 +96,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   // When you release the iterator you receive from IOServiceAddMatchingNotification, you also disable the notification.
 
   [UserClient_userspace refresh_connection];
+  [KeyRemap4MacBook_serverAppDelegate send_essential_config_to_kext];
 }
 
 - (void) unregisterIONotification {
@@ -122,6 +152,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 - (void) observer_ConfigXMLReloaded:(NSNotification*)notification {
   set_sysctl_do_reset();
   set_sysctl_do_reload_xml();
+  [KeyRemap4MacBook_serverAppDelegate send_essential_config_to_kext];
 }
 
 - (void) observer_ConfigListChanged:(NSNotification*)notification {
@@ -130,6 +161,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
 - (void) observer_PreferencesChanged:(NSNotification*)notification {
   set_sysctl_do_reload_only_config();
+  [KeyRemap4MacBook_serverAppDelegate send_essential_config_to_kext];
 }
 
 // ------------------------------------------------------------
@@ -189,7 +221,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   set_sysctl_do_reload_xml();
 
   [self registerIONotification];
-  [UserClient_userspace refresh_connection];
 }
 
 - (void) observer_NSWorkspaceSessionDidResignActiveNotification:(NSNotification*)notification
