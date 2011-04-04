@@ -1,6 +1,8 @@
 #import "ConfigXMLParser.h"
 #import "bridge.h"
 
+static ConfigXMLParser* global_instance = nil;
+
 @interface ConfigXMLParser (AutoGen)
 - (BOOL) reload_autogen;
 @end
@@ -8,8 +10,6 @@
 @interface ConfigXMLParser (PreferencePane)
 - (BOOL) reload_preferencepane;
 @end
-
-static ConfigXMLParser * global_instance = nil;
 
 @implementation ConfigXMLParser
 
