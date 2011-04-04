@@ -12,7 +12,6 @@
 #import "WorkSpaceData.h"
 
 @interface ServerObjcPart : NSObject {
-  IBOutlet PreferencesManager* preferencesmanager_;
   IBOutlet StatusWindow* statuswindow_;
 }
 

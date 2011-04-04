@@ -4,7 +4,7 @@
 
 - (NSArray*) getEssentialConfig
 {
-  return [preferencesmanager_ essential_config];
+  return [[PreferencesManager getInstance] essential_config];
 }
 
 - (NSUInteger) getConfigCount
@@ -27,7 +27,7 @@
   NSString* name = [[ConfigXMLParser getInstance] configname:configindex];
   if (! name) return 0;
 
-  return [preferencesmanager_ value:name];
+  return [[PreferencesManager getInstance] value:name];
 }
 
 @end

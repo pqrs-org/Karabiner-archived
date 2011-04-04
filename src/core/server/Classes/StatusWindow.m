@@ -80,7 +80,7 @@ NSString* notificationName_lock  = @"Modifier Lock";
 
   NSString* message3 = @"(Activate \"General > Suppress Growl warning\" in System Preference to hide this message.)";
 
-  if ([preferencesmanager_ value:@"general.suppress_growl_warning"]) return YES;
+  if ([[PreferencesManager getInstance] value:@"general.suppress_growl_warning"]) return YES;
 
   @synchronized(self) {
     if (! isGrowlNotRunningWarningDisplayed_) {

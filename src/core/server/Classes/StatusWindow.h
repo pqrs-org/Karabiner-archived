@@ -4,8 +4,6 @@
 #import "PreferencesManager.h"
 
 @interface StatusWindow : NSObject <GrowlApplicationBridgeDelegate> {
-  IBOutlet PreferencesManager* preferencesmanager_;
-
   NSMutableArray* lines_;
   NSMutableArray* lastMessages_;
   BOOL isGrowlNotRunningWarningDisplayed_;
