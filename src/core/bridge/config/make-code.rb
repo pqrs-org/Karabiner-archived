@@ -27,11 +27,10 @@ ARGV.each do |xmlpath|
       rawname = identifier_node.inner_xml
       name = rawname.gsub(/\./, '_')
 
-      default_node = identifier_node.parent.find_first('./default')
-      if default_node.nil? then
+      if identifier_node['default'].nil? then
         $outfile[:cpp].print "0,\n"
       else
-        $outfile[:cpp].print "#{default_node.inner_xml},\n"
+        $outfile[:cpp].print "#{identifier_node['default']},\n"
       end
 
       $outfile[:hpp].print "BRIDGE_ESSENTIAL_CONFIG_INDEX_#{name} = #{configindex},\n"
