@@ -8,6 +8,8 @@ pkgroot/
 .*\.xcodeproj/.*\.mode1
 .*\.xcodeproj/.*\.mode1v3
 .*\.xcodeproj/.*\.pbxuser
+.*\.xcodeproj/xcuserdata/
+.*\.xcodeproj/project.xcworkspace/xcuserdata/
 ^files/prefpane/output/checkbox\.xml$
 src/core/bridge/keycode/output
 src/core/bridge/config/output
