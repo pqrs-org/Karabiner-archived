@@ -90,7 +90,7 @@
 }
 
 // ------------------------------------------------------------
-+ (void) send_essential_config_to_kext {
+- (void) send_essential_config_to_kext {
   NSArray* essential_config = [[PreferencesManager getInstance] essential_config];
   if (! essential_config) {
     NSLog(@"[WARNING] essential_config == nil");
@@ -122,6 +122,12 @@
 static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   NSLog(@"observer_IONotification");
 
+  KeyRemap4MacBook_serverAppDelegate* self = refcon;
+  if (! self) {
+    NSLog(@"[ERROR] observer_IONotification refcon == nil\n");
+    return;
+  }
+
   for (;;) {
     io_object_t obj = IOIteratorNext(iterator);
     if (! obj) break;
@@ -138,7 +144,8 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   // When you release the iterator you receive from IOServiceAddMatchingNotification, you also disable the notification.
 
   [UserClient_userspace refresh_connection];
-  [KeyRemap4MacBook_serverAppDelegate send_essential_config_to_kext];
+  [self send_essential_config_to_kext];
+  [self send_workspacedata_to_kext];
 }
 
 - (void) unregisterIONotification {
@@ -179,7 +186,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
     NSLog(@"[ERROR] IOServiceAddMatchingNotification failed");
     return;
   }
-  observer_IONotification(nil, it);
+  observer_IONotification(self, it);
 
   // ----------------------------------------------------------------------
   loopsource_ = IONotificationPortGetRunLoopSource(notifyport_);
@@ -194,7 +201,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 - (void) observer_ConfigXMLReloaded:(NSNotification*)notification {
   set_sysctl_do_reset();
   set_sysctl_do_reload_xml();
-  [KeyRemap4MacBook_serverAppDelegate send_essential_config_to_kext];
+  [self send_essential_config_to_kext];
 }
 
 - (void) observer_ConfigListChanged:(NSNotification*)notification {
@@ -203,7 +210,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
 - (void) observer_PreferencesChanged:(NSNotification*)notification {
   set_sysctl_do_reload_only_config();
-  [KeyRemap4MacBook_serverAppDelegate send_essential_config_to_kext];
+  [self send_essential_config_to_kext];
 }
 
 // ------------------------------------------------------------
