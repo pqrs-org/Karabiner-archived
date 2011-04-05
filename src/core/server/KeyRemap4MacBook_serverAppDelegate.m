@@ -48,6 +48,48 @@
 }
 
 // ------------------------------------------------------------
+- (void) send_workspacedata_to_kext {
+  struct BridgeUserClientStruct bridgestruct;
+  bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_SET_WORKSPACEDATA;
+  bridgestruct.option = 0;
+  bridgestruct.data   = (uintptr_t)(&bridgeworkspacedata_);
+  bridgestruct.size   = sizeof(bridgeworkspacedata_);
+
+  [UserClient_userspace synchronized_communication_with_retry:&bridgestruct];
+}
+
+- (void) observer_NSWorkspaceDidActivateApplicationNotification:(NSNotification*)notification
+{
+  NSString* name = [WorkSpaceData getActiveApplicationName];
+  if (name) {
+    // We ignore our investigation application.
+    if (! [name isEqualToString:@"org.pqrs.KeyRemap4MacBook.KeyDump"]) {
+      bridgeworkspacedata_.applicationtype = [WorkSpaceData getApplicationType:name];
+      [self send_workspacedata_to_kext];
+
+      NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.KeyDump";
+      NSDictionary* userInfo = [NSDictionary dictionaryWithObject:name forKey:@"name"];
+      [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"applicationChanged" object:observedObject userInfo:userInfo];
+    }
+  }
+}
+
+- (void) observer_kTISNotifySelectedKeyboardInputSourceChanged:(NSNotification*)notification
+{
+  NSString* name = [WorkSpaceData getTISPropertyInputModeID];
+  if (name) {
+    [WorkSpaceData getInputMode:name
+               output_inputmode:(&(bridgeworkspacedata_.inputmode))
+         output_inputmodedetail:(&(bridgeworkspacedata_.inputmodedetail))];
+    [self send_workspacedata_to_kext];
+
+    NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.KeyDump";
+    NSDictionary* userInfo = [NSDictionary dictionaryWithObject:name forKey:@"name"];
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"inputSourceChanged" object:observedObject userInfo:userInfo];
+  }
+}
+
+// ------------------------------------------------------------
 + (void) send_essential_config_to_kext {
   NSArray* essential_config = [[PreferencesManager getInstance] essential_config];
   if (! essential_config) {
@@ -162,48 +204,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 - (void) observer_PreferencesChanged:(NSNotification*)notification {
   set_sysctl_do_reload_only_config();
   [KeyRemap4MacBook_serverAppDelegate send_essential_config_to_kext];
-}
-
-// ------------------------------------------------------------
-- (void) send_workspacedata_to_kext {
-  struct BridgeUserClientStruct bridgestruct;
-  bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_SET_WORKSPACEDATA;
-  bridgestruct.option = 0;
-  bridgestruct.data   = (uintptr_t)(&bridgeworkspacedata_);
-  bridgestruct.size   = sizeof(bridgeworkspacedata_);
-
-  [UserClient_userspace synchronized_communication_with_retry:&bridgestruct];
-}
-
-- (void) observer_NSWorkspaceDidActivateApplicationNotification:(NSNotification*)notification
-{
-  NSString* name = [WorkSpaceData getActiveApplicationName];
-  if (name) {
-    // We ignore our investigation application.
-    if (! [name isEqualToString:@"org.pqrs.KeyRemap4MacBook.KeyDump"]) {
-      bridgeworkspacedata_.applicationtype = [WorkSpaceData getApplicationType:name];
-      [self send_workspacedata_to_kext];
-
-      NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.KeyDump";
-      NSDictionary* userInfo = [NSDictionary dictionaryWithObject:name forKey:@"name"];
-      [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"applicationChanged" object:observedObject userInfo:userInfo];
-    }
-  }
-}
-
-- (void) observer_kTISNotifySelectedKeyboardInputSourceChanged:(NSNotification*)notification
-{
-  NSString* name = [WorkSpaceData getTISPropertyInputModeID];
-  if (name) {
-    [WorkSpaceData getInputMode:name
-               output_inputmode:(&(bridgeworkspacedata_.inputmode))
-         output_inputmodedetail:(&(bridgeworkspacedata_.inputmodedetail))];
-    [self send_workspacedata_to_kext];
-
-    NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.KeyDump";
-    NSDictionary* userInfo = [NSDictionary dictionaryWithObject:name forKey:@"name"];
-    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"inputSourceChanged" object:observedObject userInfo:userInfo];
-  }
 }
 
 // ------------------------------------------------------------
