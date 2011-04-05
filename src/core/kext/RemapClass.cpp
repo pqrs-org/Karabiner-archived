@@ -435,6 +435,113 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
+  RemapClass::RemapClass(const uint32_t* const initialize_vector, uint32_t vector_size) :
+    statusmessage_(NULL),
+    enabled_(false),
+    is_simultaneouskeypresses_(false)
+  {
+    if (! initialize_vector) {
+      IOLOG_ERROR("RemapClass::RemapClass invalid parameter.\n");
+      return;
+    }
+
+    // ------------------------------------------------------------
+    // initialize items_ from vector
+    const uint32_t* p = initialize_vector;
+    uint32_t count = *p++;
+
+    if (count == 0) return;
+
+    if (allocation_count_ + count > MAX_ALLOCATION_COUNT) {
+      IOLOG_ERROR("RemapClass::RemapClass too many allocation_count_.\n");
+      return;
+    }
+    allocation_count_ += count;
+
+    // --------------------
+    for (;;) {
+      if (p >= initialize_vector + vector_size) {
+        IOLOG_ERROR("RemapClass::RemapClass vector_size mismatch.\n");
+        return;
+      }
+
+      uint32_t size = *p++;
+      if (p + size >= initialize_vector + vector_size) {
+        IOLOG_ERROR("RemapClass::RemapClass vector_size mismatch.\n");
+        return;
+      }
+
+      if (size > 0) {
+        unsigned int type = p[0];
+
+        if (BRIDGE_REMAPTYPE_NONE < type && type < BRIDGE_REMAPTYPE_END) {
+          Item* newp = new Item(p, size);
+          if (! newp) {
+            IOLOG_ERROR("RemapClass::RemapClass newp == NULL.\n");
+            return;
+          }
+          items_.push_back(newp);
+
+          if (type == BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES) {
+            is_simultaneouskeypresses_ = true;
+          }
+
+        } else if (BRIDGE_FILTERTYPE_NONE < type && type < BRIDGE_FILTERTYPE_END) {
+          if (items_.size() == 0) {
+            IOLOG_ERROR("RemapClass::RemapClass invalid filter (%d).\n", type);
+            return;
+          }
+          Item* back = items_.back();
+          if (back) {
+            back->append_filter(p, size);
+          }
+
+        } else if (type == BRIDGE_STATUSMESSAGE) {
+          if (statusmessage_) {
+            delete[] statusmessage_;
+          }
+          statusmessage_ = new char[size];
+          if (statusmessage_) {
+            for (size_t i = 0; i < size - 1; ++i) {
+              statusmessage_[i] = p[i + 1];
+            }
+            statusmessage_[size - 1] = '\0';
+          }
+
+        } else if (type == BRIDGE_VK_CONFIG) {
+          if (size != 5) {
+            IOLOG_ERROR("RemapClass::RemapClass invalid size for BRIDGE_VK_CONFIG. (%d)\n", size);
+            return;
+
+          } else {
+            unsigned int keycode_toggle         = p[1];
+            unsigned int keycode_force_on       = p[2];
+            unsigned int keycode_force_off      = p[3];
+            unsigned int keycode_sync_keydownup = p[4];
+            Handle_VK_CONFIG::add_item(this,
+                                       keycode_toggle,
+                                       keycode_force_on,
+                                       keycode_force_off,
+                                       keycode_sync_keydownup);
+          }
+
+        } else {
+          IOLOG_ERROR("RemapClass::RemapClass unknown type:%d.\n", type);
+          return;
+        }
+
+        p += size;
+      }
+
+      // ----------------------------------------
+      if (p == initialize_vector + vector_size) break;
+      if (p > initialize_vector + vector_size) {
+        IOLOG_ERROR("RemapClass::RemapClass vector_size mismatch.\n");
+        return;
+      }
+    }
+  }
+
   RemapClass::~RemapClass(void)
   {
     for (size_t i = 0; i < items_.size(); ++i) {
@@ -762,7 +869,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                          timeout_second, 0);
             RemapClass* newp = NULL;
             if (! error) {
-              newp = new RemapClass(initialize_vector, configinfo[i].enabled);
+              newp = new RemapClass(initialize_vector, static_cast<bool>(configinfo[i].enabled));
             }
             remapclasses_->push_back(newp);
           }
@@ -781,6 +888,79 @@ namespace org_pqrs_KeyRemap4MacBook {
         delete[] configinfo;
       }
       return retval;
+    }
+
+    bool
+    load_initialize_vector(const uint32_t* initialize_vector, mach_vm_size_t vector_size)
+    {
+      IOLockWrapper::ScopedLock lk(lock_);
+
+      // ------------------------------------------------------------
+      // clean previous resources and setup new resources.
+      clear_xml();
+
+      remapclasses_ = new Vector_RemapClassPointer();
+      if (! remapclasses_) {
+        IOLOG_ERROR("load_initialize_vector remapclasses_ == NULL.\n");
+        return false;
+      }
+
+      // ------------------------------------------------------------
+      // check
+      if (vector_size < 2) {
+        IOLOG_ERROR("load_initialize_vector vector_size < 2. (%d)\n", static_cast<int>(vector_size));
+        return false;
+      }
+      if (vector_size > RemapClass::MAX_INITIALIZE_VECTOR_SIZE) {
+        IOLOG_ERROR("load_initialize_vector too large vector_size. (%d)\n", static_cast<int>(vector_size));
+        return false;
+      }
+
+      const uint32_t* p = initialize_vector;
+      uint32_t version = *p++;
+      uint32_t count   = *p++;
+
+      if (version != BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION) {
+        IOLOG_ERROR("load_initialize_vector version mismatch.\n");
+        return false;
+      }
+      if (count > RemapClass::MAX_CONFIG_COUNT) {
+        IOLOG_ERROR("load_initialize_vector too many count. (%d)\n", count);
+        return false;
+      }
+
+      // ------------------------------------------------------------
+      // load
+      remapclasses_->reserve(count);
+      RemapClass::reset_allocation_count();
+
+      for (uint32_t i = 0; i < count; ++i) {
+        if (p >= initialize_vector + vector_size) {
+          IOLOG_ERROR("load_initialize_vector vector_size mismatch.\n");
+          return false;
+        }
+
+        uint32_t size = *p++;
+        if (p + size >= initialize_vector + vector_size) {
+          IOLOG_ERROR("load_initialize_vector vector_size mismatch.\n");
+          return false;
+        }
+
+        RemapClass* newp = new RemapClass(p, size);
+        if (! newp) {
+          IOLOG_ERROR("load_initialize_vector newp == NULL.\n");
+          return false;
+        }
+        p += size;
+
+        remapclasses_->push_back(newp);
+      }
+
+      RemapClass::log_allocation_count();
+
+      refresh();
+
+      return true;
     }
 
     void

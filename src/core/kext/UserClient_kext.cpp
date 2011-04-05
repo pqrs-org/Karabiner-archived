@@ -3,6 +3,7 @@
 #include "Config.hpp"
 #include "FlagStatus.hpp"
 #include "IOLockWrapper.hpp"
+#include "RemapClass.hpp"
 #include "RemapFunc/PointingRelativeToScroll.hpp"
 
 #define super IOUserClient
@@ -337,21 +338,36 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
   *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_ERROR_GENERIC;
 
   switch (type) {
+    case BRIDGE_USERCLIENT_TYPE_SET_REMAPCLASS_INITIALIZE_VECTOR:
     case BRIDGE_USERCLIENT_TYPE_SET_ESSENTIAL_CONFIG:
     {
-      if (size != sizeof(int32_t) * BRIDGE_ESSENTIAL_CONFIG_INDEX__END__) {
-        IOLOG_ERROR("BRIDGE_USERCLIENT_TYPE_SET_ESSENTIAL_CONFIG wrong 'size' parameter\n");
-      } else {
-        const int32_t* essential_config = reinterpret_cast<int32_t*>(address);
-        org_pqrs_KeyRemap4MacBook::Config::set_essential_config(essential_config, BRIDGE_ESSENTIAL_CONFIG_INDEX__END__);
+      switch (type) {
+        case BRIDGE_USERCLIENT_TYPE_SET_REMAPCLASS_INITIALIZE_VECTOR:
+        {
+          const uint32_t* initialize_vector = reinterpret_cast<uint32_t*>(address);
+          if (initialize_vector) {
+            org_pqrs_KeyRemap4MacBook::RemapClassManager::load_initialize_vector(initialize_vector, size);
+            *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
+          }
+          break;
+        }
+
+        case BRIDGE_USERCLIENT_TYPE_SET_ESSENTIAL_CONFIG:
+        {
+          const int32_t* essential_config = reinterpret_cast<int32_t*>(address);
+          if (essential_config) {
+            org_pqrs_KeyRemap4MacBook::Config::set_essential_config(essential_config, BRIDGE_ESSENTIAL_CONFIG_INDEX__END__);
+            *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
+          }
+          break;
+        }
 
         // reset values
         org_pqrs_KeyRemap4MacBook::FlagStatus::lock_clear();
         org_pqrs_KeyRemap4MacBook::FlagStatus::sticky_clear();
         org_pqrs_KeyRemap4MacBook::RemapFunc::PointingRelativeToScroll::cancelScroll();
-
-        *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
       }
+      break;
     }
 
     case BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE:

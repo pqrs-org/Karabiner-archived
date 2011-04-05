@@ -82,6 +82,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ----------------------------------------------------------------------
     RemapClass(const unsigned int* initialize_vector, bool enabledvalue);
+    RemapClass(const uint32_t* const initialize_vector, uint32_t vector_size);
     ~RemapClass(void);
 
     void remap_setkeyboardtype(KeyboardType& keyboardType);
@@ -118,6 +119,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     void clear_xml(void);
     bool reload_xml(void);
+    bool load_initialize_vector(const uint32_t* initialize_vector, mach_vm_size_t vector_size);
 
     // call after setting enable/disable status is changed.
     // (PreferencesPane, VK_CONFIG)

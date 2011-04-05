@@ -204,6 +204,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   Config::set_essential_config(const int32_t *newvalues, size_t num)
   {
     if (num != BRIDGE_ESSENTIAL_CONFIG_INDEX__END__) {
+      IOLOG_ERROR("Config::set_essential_config wrong 'num' parameter. (%d)\n", static_cast<int>(num));
       load_essential_config_default();
 
     } else {
