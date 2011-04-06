@@ -675,7 +675,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       IOLockWrapper::ScopedLock lk(lock_);
 
-      if (! remapclasses_) return;
+      if (! remapclasses_) {
+        IOLOG_ERROR("RemapClassManager::refresh_core remapclasses_ == NULL.\n");
+        return;
+      }
 
       // ----------------------------------------
       if (enabled_remapclasses_) {
@@ -957,13 +960,16 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       // ------------------------------------------------------------
+      // essential config
       const int32_t* p = config_vector;
       Config::set_essential_config(p, BRIDGE_ESSENTIAL_CONFIG_INDEX__END__);
+      // remapclasses config
       p += BRIDGE_ESSENTIAL_CONFIG_INDEX__END__;
-
       for (size_t i = 0; i < remapclasses_->size(); ++i) {
         RemapClass* rc = (*remapclasses_)[i];
-        if (rc) {
+        if (! rc) {
+          IOLOG_ERROR("%s RemapClass == NULL.\n", __FUNCTION__);
+        } else {
           rc->setEnabled(p[i]);
         }
       }

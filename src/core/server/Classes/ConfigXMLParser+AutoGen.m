@@ -416,9 +416,6 @@
 
         [self traverse_autogen:initialize_vector node:[e parent] name:name];
 
-        [initialize_vector insertObject:[NSNumber numberWithUnsignedInteger:[initialize_vector count]] atIndex:0];
-        [initialize_vector insertObject:[NSNumber numberWithUnsignedInt:BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION] atIndex:0];
-
         NSNumber* configindex = [keycode_ numberValue:[NSString stringWithFormat:@"ConfigIndex::%@", name]];
         [dict_initialize_vector_ setObject:initialize_vector forKey:configindex];
         [dict_config_name_ setObject:rawname forKey:configindex];

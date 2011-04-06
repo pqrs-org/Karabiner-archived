@@ -36,6 +36,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (Config::do_reset == 1 && oldvalue != 1) {
         IOLOG_INFO("Config::do_reset\n");
 
+#if 0
         Config::load_essential_config_default();
         RemapClassManager::clear_xml();
 
@@ -48,6 +49,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         Config::do_reset = 0;
         Config::initialized = 0;
+#endif
       }
     }
     return error;

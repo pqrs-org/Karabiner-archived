@@ -53,6 +53,7 @@ namespace {
 void
 set_sysctl_do_reload_xml(void)
 {
+  return;
   if (! wait_until_kext_loaded()) {
     std::cerr << "[ERROR] failed to wait_until_kext_loaded" << std::endl;
   }
@@ -92,6 +93,7 @@ set_sysctl_do_reload_xml(void)
 void
 set_sysctl_do_reset(void)
 {
+  return;
   if (! wait_until_kext_loaded()) {
     std::cerr << "[ERROR] failed to wait_until_kext_loaded" << std::endl;
   }
