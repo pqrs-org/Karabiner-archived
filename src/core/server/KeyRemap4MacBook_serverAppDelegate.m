@@ -93,50 +93,88 @@
 // ------------------------------------------------------------
 - (void) send_remapclasses_initialize_vector_to_kext {
   NSArray* a = [[ConfigXMLParser getInstance] remapclasses_initialize_vector];
-  if (! a) return;
-
-  size_t size = [a count] * sizeof(uint32_t);
-  uint32* data = (uint32*)(malloc(size));
-  uint32* p = data;
-  for (NSNumber* number in a) {
-    *p++ = [number unsignedIntValue];
-  }
-
-  struct BridgeUserClientStruct bridgestruct;
-  bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_SET_REMAPCLASSES_INITIALIZE_VECTOR;
-  bridgestruct.option = 0;
-  bridgestruct.data   = (uintptr_t)(data);
-  bridgestruct.size   = size;
-
-  [UserClient_userspace synchronized_communication_with_retry:&bridgestruct];
-}
-
-- (void) send_essential_config_to_kext {
-  NSArray* essential_config = [[PreferencesManager getInstance] essential_config];
-  if (! essential_config) {
-    NSLog(@"[WARNING] essential_config == nil");
+  if (! a) {
+    NSLog(@"[WARNING] remapclasses_initialize_vector == nil.");
     return;
   }
 
-  int32_t value[BRIDGE_ESSENTIAL_CONFIG_INDEX__END__];
-  size_t i = 0;
-  for (NSNumber* number in essential_config) {
-    if (i >= sizeof(value) / sizeof(value[0])) {
-      NSLog(@"[WARNING] Too many items in essential_config");
-      return;
+  size_t size = [a count] * sizeof(uint32_t);
+  uint32_t* data = (uint32_t*)(malloc(size));
+  if (! data) {
+    NSLog(@"[WARNING] malloc failed.");
+    return;
+
+  } else {
+    // --------------------
+    uint32_t* p = data;
+    for (NSNumber* number in a) {
+      *p++ = [number unsignedIntValue];
     }
 
-    value[i] = [number intValue];
-    ++i;
+    // --------------------
+    struct BridgeUserClientStruct bridgestruct;
+    bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_SET_REMAPCLASSES_INITIALIZE_VECTOR;
+    bridgestruct.option = 0;
+    bridgestruct.data   = (uintptr_t)(data);
+    bridgestruct.size   = size;
+
+    [UserClient_userspace synchronized_communication_with_retry:&bridgestruct];
+
+    free(data);
+  }
+}
+
+- (void) send_config_to_kext {
+  PreferencesManager* preferencesmanager = [PreferencesManager getInstance];
+  ConfigXMLParser*    configxmlparser    = [ConfigXMLParser    getInstance];
+
+  NSArray* essential_config = [preferencesmanager essential_config];
+  if (! essential_config) {
+    NSLog(@"[WARNING] essential_config == nil.");
+    return;
   }
 
-  struct BridgeUserClientStruct bridgestruct;
-  bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_SET_ESSENTIAL_CONFIG;
-  bridgestruct.option = 0;
-  bridgestruct.data   = (uintptr_t)(value);
-  bridgestruct.size   = sizeof(value);
+  // ------------------------------------------------------------
+  NSUInteger essential_config_count = [essential_config count];
+  NSUInteger remapclasses_count     = [configxmlparser count];
+  size_t size = (essential_config_count + remapclasses_count) * sizeof(int32_t);
+  int32_t* data = (int32_t*)(malloc(size));
+  if (! data) {
+    NSLog(@"[WARNING] malloc failed.");
+    return;
 
-  [UserClient_userspace synchronized_communication_with_retry:&bridgestruct];
+  } else {
+    int32_t* p = data;
+
+    // --------------------
+    // essential_config
+    for (NSNumber* number in essential_config) {
+      *p++ = [number intValue];
+    }
+
+    // --------------------
+    // remapclasses config
+    for (NSUInteger i = 0; i < remapclasses_count; ++i) {
+      NSString* name = [configxmlparser configname:(int)(i)];
+      if (! name) {
+        NSLog(@"[WARNING] %s name == nil.", __FUNCTION__);
+        goto finish;
+      }
+      *p++ = [preferencesmanager value:name];
+    }
+
+    // --------------------
+    struct BridgeUserClientStruct bridgestruct;
+    bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_SET_CONFIG;
+    bridgestruct.option = 0;
+    bridgestruct.data   = (uintptr_t)(data);
+    bridgestruct.size   = size;
+
+    [UserClient_userspace synchronized_communication_with_retry:&bridgestruct];
+
+  finish:
+    free(data);
+  }
 }
 
 // ------------------------------------------------------------
@@ -166,7 +204,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
   [UserClient_userspace refresh_connection];
   [self send_remapclasses_initialize_vector_to_kext];
-  [self send_essential_config_to_kext];
+  [self send_config_to_kext];
   [self send_workspacedata_to_kext];
 }
 
@@ -222,7 +260,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 // ------------------------------------------------------------
 - (void) observer_ConfigXMLReloaded:(NSNotification*)notification {
   [self send_remapclasses_initialize_vector_to_kext];
-  [self send_essential_config_to_kext];
+  [self send_config_to_kext];
   set_sysctl_do_reset();
   set_sysctl_do_reload_xml();
 }
@@ -233,7 +271,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
 - (void) observer_PreferencesChanged:(NSNotification*)notification {
   set_sysctl_do_reload_only_config();
-  [self send_essential_config_to_kext];
+  [self send_config_to_kext];
 }
 
 // ------------------------------------------------------------

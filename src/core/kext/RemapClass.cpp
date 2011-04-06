@@ -965,7 +965,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         return false;
       }
 
-      if (config_size != BRIDGE_ESSENTIAL_CONFIG_INDEX__END__ + remapclasses_->size()) {
+      if (config_size != (BRIDGE_ESSENTIAL_CONFIG_INDEX__END__ + remapclasses_->size()) * sizeof(int32_t)) {
         IOLOG_ERROR("%s config_size mismatch.\n", __FUNCTION__);
         return false;
       }
