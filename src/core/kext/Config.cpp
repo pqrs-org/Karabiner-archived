@@ -13,7 +13,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   int Config::initialized = 0;
   int Config::do_reset = 0;
   int Config::do_reload_xml = 0;
-  int Config::do_reload_only_config = 0;
   char Config::socket_path[SOCKET_PATH_MAX];
 
   int Config::essential_config_[BRIDGE_ESSENTIAL_CONFIG_INDEX__END__] = {
@@ -87,40 +86,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   int
-  Config::do_reload_only_config_handler SYSCTL_HANDLER_ARGS
-  {
-    IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
-    if (! lk_eventlock) return EAGAIN;
-
-    int oldvalue = Config::do_reload_only_config;
-
-    int error = sysctl_handle_int(oidp, oidp->oid_arg1, oidp->oid_arg2, req);
-    if (! error && req->newptr) {
-      if (Config::do_reload_only_config == 1 && oldvalue != 1) {
-        // When using KeyRemap4MacBook_multitouchextension,
-        // Config::do_reload_only_config called by each Setting Switching.
-        // So, suppress IOLOG_INFO in here.
-
-        // IOLOG_INFO("Config::do_reload_only_config\n");
-
-        if (RemapClassManager::reload_xml()) {
-          Config::do_reload_only_config = 0;
-        } else {
-          IOLOG_ERROR("RemapClassManager::reload_xml is failed.\n");
-          Config::do_reload_only_config = -1;
-        }
-
-        // ------------------------------------------------------------
-        // reset values
-        FlagStatus::lock_clear();
-        FlagStatus::sticky_clear();
-        RemapFunc::PointingRelativeToScroll::cancelScroll();
-      }
-    }
-    return error;
-  }
-
-  int
   Config::socket_path_handler SYSCTL_HANDLER_ARGS
   {
     int error = sysctl_handle_string(oidp, oidp->oid_arg1, oidp->oid_arg2, req);
@@ -146,7 +111,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   SYSCTL_STRING(_keyremap4macbook, OID_AUTO, version,               CTLFLAG_RD,                  config_version,                   0,                                        "");
   SYSCTL_PROC(_keyremap4macbook,   OID_AUTO, do_reset,              CTLTYPE_INT | CTLFLAG_RW,    &(Config::do_reset),              0, Config::do_reset_handler,                 "I", "");
   SYSCTL_PROC(_keyremap4macbook,   OID_AUTO, do_reload_xml,         CTLTYPE_INT | CTLFLAG_RW,    &(Config::do_reload_xml),         0, Config::do_reload_xml_handler,            "I", "");
-  SYSCTL_PROC(_keyremap4macbook,   OID_AUTO, do_reload_only_config, CTLTYPE_INT | CTLFLAG_RW,    &(Config::do_reload_only_config), 0, Config::do_reload_only_config_handler,    "I", "");
   SYSCTL_PROC(_keyremap4macbook,   OID_AUTO, socket_path,           CTLTYPE_STRING | CTLFLAG_RW, Config::socket_path, sizeof(Config::socket_path), Config::socket_path_handler, "A", "");
 
   // ----------------------------------------------------------------------
@@ -173,7 +137,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_register_oid(&sysctl__keyremap4macbook_initialized);
     sysctl_register_oid(&sysctl__keyremap4macbook_do_reset);
     sysctl_register_oid(&sysctl__keyremap4macbook_do_reload_xml);
-    sysctl_register_oid(&sysctl__keyremap4macbook_do_reload_only_config);
   }
 
   void
@@ -189,7 +152,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_unregister_oid(&sysctl__keyremap4macbook_initialized);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_do_reset);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_do_reload_xml);
-    sysctl_unregister_oid(&sysctl__keyremap4macbook_do_reload_only_config);
   }
 
   void

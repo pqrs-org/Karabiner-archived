@@ -776,10 +776,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       KeyRemap4MacBook_bridge::GetConfigInfo::Reply::Item* configinfo = NULL;
 
       // ------------------------------------------------------------
-      if (Config::do_reload_only_config != 1) {
-        clear_xml();
-        remapclasses_ = new Vector_RemapClassPointer();
-      }
+      clear_xml();
+      remapclasses_ = new Vector_RemapClassPointer();
 
       if (! remapclasses_) {
         IOLOG_ERROR("do_reload_xml remapclasses_ == NULL.\n");
@@ -826,50 +824,38 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       // ------------------------------------------------------------
-      if (Config::do_reload_only_config == 1) {
-        if (count != remapclasses_->size()) {
-          IOLOG_ERROR("do_reload_xml count != remapclasses_->size()\n");
+      remapclasses_->reserve(count);
+      RemapClass::reset_allocation_count();
+
+      // get initialize_vector
+      for (uint32_t i = 0; i < count; ++i) {
+        uint32_t size = configinfo[i].initialize_vector_size;
+        uint32_t* initialize_vector = NULL;
+
+        if (size > RemapClass::MAX_INITIALIZE_VECTOR_SIZE) {
+          IOLOG_ERROR("do_reload_xml too large initialize_vector. (%d)\n", size);
           goto finish;
         }
 
-        for (uint32_t i = 0; i < count; ++i) {
-          (*remapclasses_)[i]->setEnabled(configinfo[i].enabled);
-        }
-
-      } else {
-        remapclasses_->reserve(count);
-        RemapClass::reset_allocation_count();
-
-        // get initialize_vector
-        for (uint32_t i = 0; i < count; ++i) {
-          uint32_t size = configinfo[i].initialize_vector_size;
-          uint32_t* initialize_vector = NULL;
-
-          if (size > RemapClass::MAX_INITIALIZE_VECTOR_SIZE) {
-            IOLOG_ERROR("do_reload_xml too large initialize_vector. (%d)\n", size);
-            goto finish;
+        initialize_vector = new uint32_t[size];
+        {
+          KeyRemap4MacBook_bridge::GetConfigInitializeVector::Request request(i);
+          KeyRemap4MacBook_bridge::GetConfigInitializeVector::Reply* reply = reinterpret_cast<KeyRemap4MacBook_bridge::GetConfigInitializeVector::Reply*>(initialize_vector);
+          time_t timeout_second = 3;
+          int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_CONFIG_INITIALIZE_VECTOR,
+                                                       &request, sizeof(request),
+                                                       reply, static_cast<uint32_t>(sizeof(initialize_vector[0]) * size),
+                                                       timeout_second, 0);
+          RemapClass* newp = NULL;
+          if (! error) {
+            newp = new RemapClass(initialize_vector, static_cast<bool>(configinfo[i].enabled));
           }
-
-          initialize_vector = new uint32_t[size];
-          {
-            KeyRemap4MacBook_bridge::GetConfigInitializeVector::Request request(i);
-            KeyRemap4MacBook_bridge::GetConfigInitializeVector::Reply* reply = reinterpret_cast<KeyRemap4MacBook_bridge::GetConfigInitializeVector::Reply*>(initialize_vector);
-            time_t timeout_second = 3;
-            int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_CONFIG_INITIALIZE_VECTOR,
-                                                         &request, sizeof(request),
-                                                         reply, static_cast<uint32_t>(sizeof(initialize_vector[0]) * size),
-                                                         timeout_second, 0);
-            RemapClass* newp = NULL;
-            if (! error) {
-              newp = new RemapClass(initialize_vector, static_cast<bool>(configinfo[i].enabled));
-            }
-            remapclasses_->push_back(newp);
-          }
-          delete[] initialize_vector;
+          remapclasses_->push_back(newp);
         }
-
-        RemapClass::log_allocation_count();
+        delete[] initialize_vector;
       }
+
+      RemapClass::log_allocation_count();
 
       refresh();
 

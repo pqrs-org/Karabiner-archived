@@ -16,7 +16,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     static int do_reset_handler SYSCTL_HANDLER_ARGS;
     static int do_reload_xml_handler SYSCTL_HANDLER_ARGS;
-    static int do_reload_only_config_handler SYSCTL_HANDLER_ARGS;
     static int socket_path_handler SYSCTL_HANDLER_ARGS;
 
     static void set_essential_config(const int32_t *newvalues, size_t num);
@@ -68,7 +67,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     static int initialized;
     static int do_reset;
     static int do_reload_xml;
-    static int do_reload_only_config;
 
     enum { SOCKET_PATH_MAX = 256 };
     static char socket_path[SOCKET_PATH_MAX];

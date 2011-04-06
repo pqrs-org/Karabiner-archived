@@ -270,7 +270,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 }
 
 - (void) observer_PreferencesChanged:(NSNotification*)notification {
-  set_sysctl_do_reload_only_config();
   [self send_config_to_kext];
 }
 

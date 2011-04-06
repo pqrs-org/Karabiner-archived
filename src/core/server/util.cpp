@@ -104,19 +104,3 @@ set_sysctl_do_reset(void)
     std::cerr << "[ERROR] failed to sysctl_set do_reset 1" << std::endl;
   }
 }
-
-void
-set_sysctl_do_reload_only_config(void)
-{
-  if (! wait_until_kext_loaded()) {
-    std::cerr << "[ERROR] failed to wait_until_kext_loaded" << std::endl;
-  }
-
-  // ----------------------------------------------------------------------
-  Mutex::ScopedLock lk(mutex_sysctl);
-
-  int error = system("/Library/org.pqrs/KeyRemap4MacBook/bin/KeyRemap4MacBook_sysctl_set do_reload_only_config 1");
-  if (error != 0) {
-    std::cerr << "[ERROR] failed to sysctl_set do_reload_only_config 1" << std::endl;
-  }
-}
