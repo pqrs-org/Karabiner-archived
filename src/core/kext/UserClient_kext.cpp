@@ -346,7 +346,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
         {
           const uint32_t* initialize_vector = reinterpret_cast<uint32_t*>(address);
           if (initialize_vector) {
-            org_pqrs_KeyRemap4MacBook::RemapClassManager::load_initialize_vector(initialize_vector, size);
+            org_pqrs_KeyRemap4MacBook::RemapClassManager::load_remapclasses_initialize_vector(initialize_vector, size);
             *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
           }
           break;

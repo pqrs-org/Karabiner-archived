@@ -119,7 +119,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     void clear_xml(void);
     bool reload_xml(void);
-    bool load_initialize_vector(const uint32_t* initialize_vector, mach_vm_size_t vector_size);
+    bool load_remapclasses_initialize_vector(const uint32_t* const remapclasses_initialize_vector, mach_vm_size_t vector_size);
 
     // call after setting enable/disable status is changed.
     // (PreferencesPane, VK_CONFIG)

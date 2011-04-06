@@ -446,21 +446,20 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ------------------------------------------------------------
-    // initialize items_ from vector
-    const uint32_t* p = initialize_vector;
-    uint32_t count = *p++;
-
-    if (count == 0) return;
-
-    if (allocation_count_ + count > MAX_ALLOCATION_COUNT) {
+    if (allocation_count_ + vector_size > MAX_ALLOCATION_COUNT) {
       IOLOG_ERROR("RemapClass::RemapClass too many allocation_count_.\n");
       return;
     }
-    allocation_count_ += count;
+    allocation_count_ += vector_size;
 
-    // --------------------
+    // ------------------------------------------------------------
+    // initialize items_ from vector
+    const uint32_t* p = initialize_vector;
+
     for (;;) {
-      if (p >= initialize_vector + vector_size) {
+      if (p == initialize_vector + vector_size) break;
+
+      if (p > initialize_vector + vector_size) {
         IOLOG_ERROR("RemapClass::RemapClass vector_size mismatch.\n");
         return;
       }
@@ -531,13 +530,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
         p += size;
-      }
-
-      // ----------------------------------------
-      if (p == initialize_vector + vector_size) break;
-      if (p > initialize_vector + vector_size) {
-        IOLOG_ERROR("RemapClass::RemapClass vector_size mismatch.\n");
-        return;
       }
     }
   }
@@ -891,7 +883,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     bool
-    load_initialize_vector(const uint32_t* initialize_vector, mach_vm_size_t vector_size)
+    load_remapclasses_initialize_vector(const uint32_t* const remapclasses_initialize_vector, mach_vm_size_t vector_size)
     {
       IOLockWrapper::ScopedLock lk(lock_);
 
@@ -901,31 +893,31 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       remapclasses_ = new Vector_RemapClassPointer();
       if (! remapclasses_) {
-        IOLOG_ERROR("load_initialize_vector remapclasses_ == NULL.\n");
+        IOLOG_ERROR("%s remapclasses_ == NULL.\n", __FUNCTION__);
         return false;
       }
 
       // ------------------------------------------------------------
       // check
       if (vector_size < 2) {
-        IOLOG_ERROR("load_initialize_vector vector_size < 2. (%d)\n", static_cast<int>(vector_size));
+        IOLOG_ERROR("%s vector_size < 2. (%d)\n", __FUNCTION__, static_cast<int>(vector_size));
         return false;
       }
-      if (vector_size > RemapClass::MAX_INITIALIZE_VECTOR_SIZE) {
-        IOLOG_ERROR("load_initialize_vector too large vector_size. (%d)\n", static_cast<int>(vector_size));
+      if (vector_size > RemapClass::MAX_ALLOCATION_COUNT) {
+        IOLOG_ERROR("%s too large vector_size. (%d)\n", __FUNCTION__, static_cast<int>(vector_size));
         return false;
       }
 
-      const uint32_t* p = initialize_vector;
+      const uint32_t* p = remapclasses_initialize_vector;
       uint32_t version = *p++;
       uint32_t count   = *p++;
 
       if (version != BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION) {
-        IOLOG_ERROR("load_initialize_vector version mismatch.\n");
+        IOLOG_ERROR("%s version mismatch.\n", __FUNCTION__);
         return false;
       }
       if (count > RemapClass::MAX_CONFIG_COUNT) {
-        IOLOG_ERROR("load_initialize_vector too many count. (%d)\n", count);
+        IOLOG_ERROR("%s too many count. (%d)\n", __FUNCTION__, count);
         return false;
       }
 
@@ -935,20 +927,20 @@ namespace org_pqrs_KeyRemap4MacBook {
       RemapClass::reset_allocation_count();
 
       for (uint32_t i = 0; i < count; ++i) {
-        if (p >= initialize_vector + vector_size) {
-          IOLOG_ERROR("load_initialize_vector vector_size mismatch.\n");
+        if (p >= remapclasses_initialize_vector + vector_size) {
+          IOLOG_ERROR("%s vector_size mismatch.\n", __FUNCTION__);
           return false;
         }
 
         uint32_t size = *p++;
-        if (p + size >= initialize_vector + vector_size) {
-          IOLOG_ERROR("load_initialize_vector vector_size mismatch.\n");
+        if (p + size >= remapclasses_initialize_vector + vector_size) {
+          IOLOG_ERROR("%s vector_size mismatch.\n", __FUNCTION__);
           return false;
         }
 
         RemapClass* newp = new RemapClass(p, size);
         if (! newp) {
-          IOLOG_ERROR("load_initialize_vector newp == NULL.\n");
+          IOLOG_ERROR("%s newp == NULL.\n", __FUNCTION__);
           return false;
         }
         p += size;
