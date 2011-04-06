@@ -1,5 +1,4 @@
 #import "StatusWindow.h"
-#import "server_objc_part.h"
 #include "bridge.h"
 
 static StatusWindow* global_instance = nil;

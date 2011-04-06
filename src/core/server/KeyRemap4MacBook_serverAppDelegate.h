@@ -8,7 +8,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "server_objc_part.h"
 #import "StatusBar.h"
 #import "WorkSpaceData.h"
 #import "ConfigXMLParser.h"
@@ -24,7 +23,6 @@
 
   struct BridgeWorkSpaceData bridgeworkspacedata_;
 
-  IBOutlet ServerObjcPart* serverobjcpart_;
   IBOutlet StatusBar* statusbar_;
 }
 

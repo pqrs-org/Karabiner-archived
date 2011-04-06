@@ -8,40 +8,13 @@
 
 #import <Carbon/Carbon.h>
 #import "KeyRemap4MacBook_serverAppDelegate.h"
+#import "StatusWindow.h"
 #import "UserClient_userspace.h"
 #include <stdlib.h>
-#include "util.h"
-#include "server_objc_part.h"
-#include "server.hpp"
 
 @implementation KeyRemap4MacBook_serverAppDelegate
 
 @synthesize window;
-
-- (void) threadMain {
-  for (;;) {
-    NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
-    int error = server_process();
-    [pool drain];
-
-    if (error) break;
-  }
-
-  [NSApp terminate:self];
-}
-
-- (void) configThreadMain {
-  for (;;) {
-    NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
-    if (isSessionActive_) {
-      set_sysctl_do_reload_xml();
-    }
-    sleep(1);
-    [pool drain];
-  }
-
-  [NSThread exit];
-}
 
 // ----------------------------------------
 - (void) statusBarItemSelected:(id)sender {
@@ -261,8 +234,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 - (void) observer_ConfigXMLReloaded:(NSNotification*)notification {
   [self send_remapclasses_initialize_vector_to_kext];
   [self send_config_to_kext];
-  set_sysctl_do_reset();
-  set_sysctl_do_reload_xml();
 }
 
 - (void) observer_ConfigListChanged:(NSNotification*)notification {
@@ -278,14 +249,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 {
   NSLog(@"observer_NSWorkspaceSessionDidBecomeActiveNotification");
 
-  isSessionActive_ = YES;
-
-  // Note: The console user is "real login user" or "loginwindow",
-  //       when NSWorkspaceSessionDidBecomeActiveNotification, NSWorkspaceSessionDidResignActiveNotification are called.
   [[StatusWindow getInstance] resetStatusMessage];
-
-  set_sysctl_do_reset();
-  set_sysctl_do_reload_xml();
 
   [self registerIONotification];
 }
@@ -294,13 +258,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 {
   NSLog(@"observer_NSWorkspaceSessionDidResignActiveNotification");
 
-  isSessionActive_ = NO;
-
-  // Note: The console user is "real login user" or "loginwindow",
-  //       when NSWorkspaceSessionDidBecomeActiveNotification, NSWorkspaceSessionDidResignActiveNotification are called.
   [[StatusWindow getInstance] resetStatusMessage];
-
-  set_sysctl_do_reset();
 
   [self unregisterIONotification];
   [UserClient_userspace disconnect_from_kext];
@@ -308,13 +266,9 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
 // ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
-  isSessionActive_ = YES;
-  registerServerObjcPart(serverobjcpart_);
-
   [[StatusWindow getInstance] resetStatusMessage];
-  [statusbar_ refresh];
 
-  set_sysctl_do_reset();
+  [statusbar_ refresh];
 
   [self registerIONotification];
 
@@ -350,21 +304,12 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   [self observer_kTISNotifySelectedKeyboardInputSourceChanged:nil];
 
   // ------------------------------------------------------------
-  [NSThread detachNewThreadSelector:@selector(threadMain)
-                           toTarget:self
-                         withObject:nil];
-  [NSThread detachNewThreadSelector:@selector(configThreadMain)
-                           toTarget:self
-                         withObject:nil];
-
-  // ------------------------------------------------------------
   // Kick updater
   [[NSWorkspace sharedWorkspace] launchApplication:@"/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app"];
 }
 
 - (void) applicationWillTerminate:(NSNotification*)aNotification {
   NSLog(@"applicationWillTerminate");
-  set_sysctl_do_reset();
 }
 
 @end
