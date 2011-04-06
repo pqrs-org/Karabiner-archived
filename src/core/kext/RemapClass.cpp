@@ -460,13 +460,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (p == initialize_vector + vector_size) break;
 
       if (p > initialize_vector + vector_size) {
-        IOLOG_ERROR("RemapClass::RemapClass vector_size mismatch.\n");
+        IOLOG_ERROR("RemapClass::RemapClass vector_size mismatch. (vector_size:%d)\n", vector_size);
         return;
       }
 
       uint32_t size = *p++;
-      if (p + size >= initialize_vector + vector_size) {
-        IOLOG_ERROR("RemapClass::RemapClass vector_size mismatch.\n");
+      if (p + size > initialize_vector + vector_size) {
+        IOLOG_ERROR("RemapClass::RemapClass vector_size mismatch. (vector_size:%d)\n", vector_size);
         return;
       }
 
