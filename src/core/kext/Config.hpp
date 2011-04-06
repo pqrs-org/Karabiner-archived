@@ -14,7 +14,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void sysctl_register(void);
     static void sysctl_unregister(void);
 
-    static void set_essential_config(const int32_t *newvalues, size_t num);
+    static void set_essential_config(const int32_t* newvalues, size_t num);
 
     static int get_essential_config(unsigned int index) {
       if (index >= BRIDGE_ESSENTIAL_CONFIG_INDEX__END__) {
