@@ -3,7 +3,6 @@
 #ifndef FLAGSTATUS_TEST
 #include "base.hpp"
 #include "Config.hpp"
-#include "Client.hpp"
 #include "CommonData.hpp"
 #endif
 

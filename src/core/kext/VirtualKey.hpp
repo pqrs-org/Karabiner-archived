@@ -1,7 +1,6 @@
 #ifndef VIRTUALKEY_HPP
 #define VIRTUALKEY_HPP
 
-#include "bridge.hpp"
 #include "CallbackWrapper.hpp"
 #include "KeyCode.hpp"
 #include "RemapClass.hpp"

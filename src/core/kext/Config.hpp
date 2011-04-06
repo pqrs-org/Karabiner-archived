@@ -14,10 +14,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void sysctl_register(void);
     static void sysctl_unregister(void);
 
-    static int do_reset_handler SYSCTL_HANDLER_ARGS;
-    static int do_reload_xml_handler SYSCTL_HANDLER_ARGS;
-    static int socket_path_handler SYSCTL_HANDLER_ARGS;
-
     static void set_essential_config(const int32_t *newvalues, size_t num);
 
     static int get_essential_config(unsigned int index) {
@@ -65,11 +61,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     static int debug_pointing;
     static int debug_devel;
     static int initialized;
-    static int do_reset;
-    static int do_reload_xml;
-
-    enum { SOCKET_PATH_MAX = 256 };
-    static char socket_path[SOCKET_PATH_MAX];
 
   private:
     static unsigned int getvalue(int value, int minval) {

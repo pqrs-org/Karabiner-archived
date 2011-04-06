@@ -2,7 +2,6 @@
 #define KEYBOARDREPEAT_HPP
 
 #include "base.hpp"
-#include "bridge.hpp"
 #include "CallbackWrapper.hpp"
 #include "Config.hpp"
 #include "KeyCode.hpp"

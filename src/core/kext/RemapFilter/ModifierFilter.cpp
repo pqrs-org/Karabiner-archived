@@ -1,6 +1,5 @@
 #include "base.hpp"
 #include "bridge.h"
-#include "bridge.hpp"
 #include "FlagStatus.hpp"
 #include "ModifierFilter.hpp"
 

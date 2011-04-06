@@ -1,6 +1,5 @@
 #include "Config.hpp"
 #include "version.hpp"
-#include "Client.hpp"
 #include "FlagStatus.hpp"
 #include "RemapClass.hpp"
 #include "RemapFunc/PointingRelativeToScroll.hpp"
@@ -11,9 +10,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   int Config::debug_pointing = 0;
   int Config::debug_devel = 0;
   int Config::initialized = 0;
-  int Config::do_reset = 0;
-  int Config::do_reload_xml = 0;
-  char Config::socket_path[SOCKET_PATH_MAX];
 
   int Config::essential_config_[BRIDGE_ESSENTIAL_CONFIG_INDEX__END__] = {
 #include "../bridge/config/output/include.bridge_essential_config_index.cpp"
@@ -23,82 +19,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 #include "../bridge/config/output/include.bridge_essential_config_index.cpp"
   };
 
-  int
-  Config::do_reset_handler SYSCTL_HANDLER_ARGS
-  {
-    IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
-    if (! lk_eventlock) return EAGAIN;
-
-    int oldvalue = Config::do_reset;
-
-    int error = sysctl_handle_int(oidp, oidp->oid_arg1, oidp->oid_arg2, req);
-    if (! error && req->newptr) {
-      if (Config::do_reset == 1 && oldvalue != 1) {
-        IOLOG_INFO("Config::do_reset\n");
-
-#if 0
-        Config::load_essential_config_default();
-        RemapClassManager::clear_xml();
-
-        Config::debug = 0;
-        Config::debug_pointing = 0;
-        Config::debug_devel = 0;
-
-        Config::socket_path[0] = '\0';
-        KeyRemap4MacBook_client::refreshSockAddr();
-
-        Config::do_reset = 0;
-        Config::initialized = 0;
-#endif
-      }
-    }
-    return error;
-  }
-
-  int
-  Config::do_reload_xml_handler SYSCTL_HANDLER_ARGS
-  {
-    IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
-    if (! lk_eventlock) return EAGAIN;
-
-    int oldvalue = Config::do_reload_xml;
-
-    int error = sysctl_handle_int(oidp, oidp->oid_arg1, oidp->oid_arg2, req);
-    if (! error && req->newptr) {
-      if (Config::do_reload_xml == 1 && oldvalue != 1) {
-        IOLOG_INFO("Config::do_reload_xml\n");
-
-        if (RemapClassManager::reload_xml()) {
-          Config::do_reload_xml = 0;
-          Config::initialized = 1;
-        } else {
-          IOLOG_ERROR("RemapClassManager::reload_xml is failed.\n");
-          Config::do_reload_xml = -1;
-          Config::initialized = 0;
-        }
-
-        // ------------------------------------------------------------
-        // reset values
-        FlagStatus::lock_clear();
-        FlagStatus::sticky_clear();
-        RemapFunc::PointingRelativeToScroll::cancelScroll();
-      }
-    }
-    return error;
-  }
-
-  int
-  Config::socket_path_handler SYSCTL_HANDLER_ARGS
-  {
-    int error = sysctl_handle_string(oidp, oidp->oid_arg1, oidp->oid_arg2, req);
-    if (! error && req->newptr) {
-      IOLOG_INFO("Config::socket_path_handler\n");
-
-      KeyRemap4MacBook_client::refreshSockAddr();
-    }
-    return error;
-  }
-
   // ----------------------------------------------------------------------
   // SYSCTL staff
   // http://developer.apple.com/documentation/Darwin/Conceptual/KernelProgramming/boundaries/chapter_14_section_7.html#//apple_ref/doc/uid/TP30000905-CH217-TPXREF116
@@ -106,21 +26,15 @@ namespace org_pqrs_KeyRemap4MacBook {
   SYSCTL_NODE(, OID_AUTO, keyremap4macbook, CTLFLAG_RW, 0, "");
 
   // ----------------------------------------
-  SYSCTL_INT(_keyremap4macbook,    OID_AUTO, initialized,           CTLTYPE_INT,                 &(Config::initialized),           0,                                        "");
-  SYSCTL_INT(_keyremap4macbook,    OID_AUTO, debug,                 CTLTYPE_INT | CTLFLAG_RW,    &(Config::debug),                 0,                                        "");
-  SYSCTL_INT(_keyremap4macbook,    OID_AUTO, debug_pointing,        CTLTYPE_INT | CTLFLAG_RW,    &(Config::debug_pointing),        0,                                        "");
-  SYSCTL_INT(_keyremap4macbook,    OID_AUTO, debug_devel,           CTLTYPE_INT | CTLFLAG_RW,    &(Config::debug_devel),           0,                                        "");
-  SYSCTL_STRING(_keyremap4macbook, OID_AUTO, version,               CTLFLAG_RD,                  config_version,                   0,                                        "");
-  SYSCTL_PROC(_keyremap4macbook,   OID_AUTO, do_reset,              CTLTYPE_INT | CTLFLAG_RW,    &(Config::do_reset),              0, Config::do_reset_handler,                 "I", "");
-  SYSCTL_PROC(_keyremap4macbook,   OID_AUTO, do_reload_xml,         CTLTYPE_INT | CTLFLAG_RW,    &(Config::do_reload_xml),         0, Config::do_reload_xml_handler,            "I", "");
-  SYSCTL_PROC(_keyremap4macbook,   OID_AUTO, socket_path,           CTLTYPE_STRING | CTLFLAG_RW, Config::socket_path, sizeof(Config::socket_path), Config::socket_path_handler, "A", "");
+  SYSCTL_INT(_keyremap4macbook,    OID_AUTO, debug,          CTLTYPE_INT | CTLFLAG_RW, &(Config::debug),          0, "");
+  SYSCTL_INT(_keyremap4macbook,    OID_AUTO, debug_pointing, CTLTYPE_INT | CTLFLAG_RW, &(Config::debug_pointing), 0, "");
+  SYSCTL_INT(_keyremap4macbook,    OID_AUTO, debug_devel,    CTLTYPE_INT | CTLFLAG_RW, &(Config::debug_devel),    0, "");
+  SYSCTL_STRING(_keyremap4macbook, OID_AUTO, version,        CTLFLAG_RD,               config_version,            0, "");
 
   // ----------------------------------------------------------------------
   void
   Config::initialize(void)
-  {
-    socket_path[0] = '\0';
-  }
+  {}
 
   void
   Config::terminate(void)
@@ -131,14 +45,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     sysctl_register_oid(&sysctl__keyremap4macbook);
 
-    sysctl_register_oid(&sysctl__keyremap4macbook_socket_path);
     sysctl_register_oid(&sysctl__keyremap4macbook_debug);
     sysctl_register_oid(&sysctl__keyremap4macbook_debug_pointing);
     sysctl_register_oid(&sysctl__keyremap4macbook_debug_devel);
     sysctl_register_oid(&sysctl__keyremap4macbook_version);
-    sysctl_register_oid(&sysctl__keyremap4macbook_initialized);
-    sysctl_register_oid(&sysctl__keyremap4macbook_do_reset);
-    sysctl_register_oid(&sysctl__keyremap4macbook_do_reload_xml);
   }
 
   void
@@ -146,14 +56,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     sysctl_unregister_oid(&sysctl__keyremap4macbook);
 
-    sysctl_unregister_oid(&sysctl__keyremap4macbook_socket_path);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_debug);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_debug_pointing);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_debug_devel);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_version);
-    sysctl_unregister_oid(&sysctl__keyremap4macbook_initialized);
-    sysctl_unregister_oid(&sysctl__keyremap4macbook_do_reset);
-    sysctl_unregister_oid(&sysctl__keyremap4macbook_do_reload_xml);
   }
 
   void
@@ -165,7 +71,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  Config::set_essential_config(const int32_t *newvalues, size_t num)
+  Config::set_essential_config(const int32_t* newvalues, size_t num)
   {
     if (num != BRIDGE_ESSENTIAL_CONFIG_INDEX__END__) {
       IOLOG_ERROR("Config::set_essential_config wrong 'num' parameter. (%d)\n", static_cast<int>(num));

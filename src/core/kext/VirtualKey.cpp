@@ -1,5 +1,4 @@
 #include "base.hpp"
-#include "Client.hpp"
 #include "CommonData.hpp"
 #include "Config.hpp"
 #include "EventOutputQueue.hpp"

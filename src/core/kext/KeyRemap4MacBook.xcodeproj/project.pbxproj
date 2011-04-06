@@ -42,9 +42,6 @@
 		3456837D10DA734200D7E2E6 /* VirtualKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3456837B10DA734200D7E2E6 /* VirtualKey.hpp */; };
 		3459F55C10C418D700DAB1FE /* KeyboardRepeat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3459F55A10C418D700DAB1FE /* KeyboardRepeat.cpp */; };
 		3459F55D10C418D700DAB1FE /* KeyboardRepeat.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3459F55B10C418D700DAB1FE /* KeyboardRepeat.hpp */; };
-		345B06AD0DB21A88000023FD /* Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345B06AB0DB21A88000023FD /* Client.cpp */; };
-		345B06AE0DB21A88000023FD /* Client.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345B06AC0DB21A88000023FD /* Client.hpp */; };
-		345B06B80DB21ABF000023FD /* bridge.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345B06B70DB21ABF000023FD /* bridge.hpp */; };
 		345E3ECB11D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345E3EC811D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp */; };
 		345E3ECC11D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345E3EC911D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp */; };
 		345E3ECD11D79D24004B6347 /* RemapFuncBase.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345E3ECA11D79D24004B6347 /* RemapFuncBase.hpp */; };
@@ -157,9 +154,6 @@
 		3456837B10DA734200D7E2E6 /* VirtualKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = VirtualKey.hpp; sourceTree = "<group>"; };
 		3459F55A10C418D700DAB1FE /* KeyboardRepeat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyboardRepeat.cpp; path = util/KeyboardRepeat.cpp; sourceTree = "<group>"; };
 		3459F55B10C418D700DAB1FE /* KeyboardRepeat.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyboardRepeat.hpp; path = util/KeyboardRepeat.hpp; sourceTree = "<group>"; };
-		345B06AB0DB21A88000023FD /* Client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Client.cpp; sourceTree = "<group>"; };
-		345B06AC0DB21A88000023FD /* Client.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Client.hpp; sourceTree = "<group>"; };
-		345B06B70DB21ABF000023FD /* bridge.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = bridge.hpp; path = ../bridge/bridge.hpp; sourceTree = SOURCE_ROOT; };
 		345E3EC811D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IgnoreMultipleSameKeyPress.cpp; path = RemapFunc/IgnoreMultipleSameKeyPress.cpp; sourceTree = "<group>"; };
 		345E3EC911D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IgnoreMultipleSameKeyPress.hpp; path = RemapFunc/IgnoreMultipleSameKeyPress.hpp; sourceTree = "<group>"; };
 		345E3ECA11D79D24004B6347 /* RemapFuncBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RemapFuncBase.hpp; path = RemapFunc/RemapFuncBase.hpp; sourceTree = "<group>"; };
@@ -292,13 +286,10 @@
 				345004A90E7CE48F0075324B /* Core.hpp */,
 				345004AA0E7CE48F0075324B /* Driver.cpp */,
 				345004AB0E7CE48F0075324B /* Driver.hpp */,
-				345B06B70DB21ABF000023FD /* bridge.hpp */,
 				348ED8350CE4680F00E179EC /* remap.hpp */,
 				348ED8390CE4682000E179EC /* version.hpp */,
 				34FB835E0CE5DBFF00BD6A24 /* base.hpp */,
 				34C7A9AF0CE4605B00C98397 /* Config.hpp */,
-				345B06AB0DB21A88000023FD /* Client.cpp */,
-				345B06AC0DB21A88000023FD /* Client.hpp */,
 				34C7A9A10CE45EA400C98397 /* Config.cpp */,
 				346B753B0E72C0A200F9A79F /* util */,
 			);
@@ -425,8 +416,6 @@
 				348ED8360CE4680F00E179EC /* remap.hpp in Headers */,
 				348ED83A0CE4682000E179EC /* version.hpp in Headers */,
 				34FB835F0CE5DBFF00BD6A24 /* base.hpp in Headers */,
-				345B06AE0DB21A88000023FD /* Client.hpp in Headers */,
-				345B06B80DB21ABF000023FD /* bridge.hpp in Headers */,
 				349581090E7232A5003773EC /* PressDownKeys.hpp in Headers */,
 				346B753F0E72C0BA00F9A79F /* FlagStatus.hpp in Headers */,
 				34F13A870E73E69D006EB163 /* IntervalChecker.hpp in Headers */,
@@ -558,7 +547,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				34C7A9A20CE45EA400C98397 /* Config.cpp in Sources */,
-				345B06AD0DB21A88000023FD /* Client.cpp in Sources */,
 				349581080E7232A5003773EC /* PressDownKeys.cpp in Sources */,
 				346B753E0E72C0BA00F9A79F /* FlagStatus.cpp in Sources */,
 				34F13A860E73E69D006EB163 /* IntervalChecker.cpp in Sources */,

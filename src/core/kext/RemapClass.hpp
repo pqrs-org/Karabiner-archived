@@ -27,7 +27,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     enum {
       MAX_CONFIG_COUNT = 10000,
-      MAX_INITIALIZE_VECTOR_SIZE = 1024 * 1024, // 1MB
       MAX_ALLOCATION_COUNT = 8 * 1024 * 1024, // 8MB
     };
 
@@ -81,7 +80,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     DECLARE_VECTOR(ItemPointer);
 
     // ----------------------------------------------------------------------
-    RemapClass(const unsigned int* initialize_vector, bool enabledvalue);
     RemapClass(const uint32_t* const initialize_vector, uint32_t vector_size);
     ~RemapClass(void);
 
@@ -117,8 +115,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void initialize(IOWorkLoop& workloop);
     void terminate(void);
 
-    void clear_xml(void);
-    bool reload_xml(void);
     bool load_remapclasses_initialize_vector(const uint32_t* const remapclasses_initialize_vector, mach_vm_size_t vector_size);
     bool set_config(const int32_t* const config_vector, mach_vm_size_t config_size);
 

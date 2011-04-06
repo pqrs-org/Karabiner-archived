@@ -3,7 +3,6 @@
 
 #include "base.hpp"
 #include "KeyCode.hpp"
-#include "bridge.hpp"
 #include "bridge.h"
 #include <string.h>
 

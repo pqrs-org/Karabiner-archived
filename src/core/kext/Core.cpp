@@ -1,6 +1,5 @@
 #include "base.hpp"
 #include "ButtonStatus.hpp"
-#include "Client.hpp"
 #include "CommonData.hpp"
 #include "Config.hpp"
 #include "Core.hpp"
@@ -59,7 +58,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       PressDownKeys::initialize();
       FlagStatus::initialize();
       ButtonStatus::initialize();
-      KeyRemap4MacBook_client::initialize();
 
       ListHookedKeyboard::instance().initialize();
       ListHookedConsumer::instance().initialize();
@@ -124,7 +122,6 @@ namespace org_pqrs_KeyRemap4MacBook {
           workLoop = NULL;
         }
 
-        KeyRemap4MacBook_client::terminate();
         EventWatcher::terminate();
         PressDownKeys::terminate();
       }

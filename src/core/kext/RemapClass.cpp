@@ -1,6 +1,5 @@
 #include "bridge.h"
 #include "RemapClass.hpp"
-#include "Client.hpp"
 #include "KeyboardRepeat.hpp"
 #include "VirtualKey.hpp"
 #include "util/CommonData.hpp"
@@ -319,122 +318,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------------------------------------
   int RemapClass::allocation_count_ = 0;
 
-  RemapClass::RemapClass(const unsigned int* initialize_vector, bool enabledvalue) :
-    statusmessage_(NULL),
-    enabled_(enabledvalue),
-    is_simultaneouskeypresses_(false)
-  {
-    // ------------------------------------------------------------
-    // check parameters.
-    //
-#define CHECK_INITIALIZE_VECTOR {                                 \
-    if (! initialize_vector) {                                    \
-      IOLOG_ERROR("RemapClass::RemapClass invalid parameter.\n"); \
-      return;                                                     \
-    }                                                             \
-}
-
-    CHECK_INITIALIZE_VECTOR;
-
-    // --------------------
-    // check version
-    unsigned int version = initialize_vector[0];
-    ++initialize_vector;
-    CHECK_INITIALIZE_VECTOR;
-
-    if (version != BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION) {
-      IOLOG_INFO("RemapClass::RemapClass version mismatch.\n");
-      return;
-    }
-
-    // ------------------------------------------------------------
-    // initialize items_ from vector
-    unsigned int total_length = initialize_vector[0];
-    ++initialize_vector;
-    CHECK_INITIALIZE_VECTOR;
-
-    if (total_length == 0) return;
-
-    if (allocation_count_ + total_length > MAX_ALLOCATION_COUNT) {
-      IOLOG_ERROR("RemapClass::RemapClass too many allocation_count_.\n");
-      return;
-    }
-    allocation_count_ += total_length;
-
-    // --------------------
-    unsigned int total_tmp = 0;
-    for (;;) {
-      unsigned int size = initialize_vector[0];
-      ++initialize_vector;
-      ++total_tmp;
-      CHECK_INITIALIZE_VECTOR;
-
-      // ----------------------------------------
-      if (size > 0) {
-        unsigned int type = initialize_vector[0];
-
-        if (BRIDGE_REMAPTYPE_NONE < type && type < BRIDGE_REMAPTYPE_END) {
-          Item* newp = new Item(initialize_vector, size);
-          items_.push_back(newp);
-
-          if (type == BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES) {
-            is_simultaneouskeypresses_ = true;
-          }
-
-        } else if (BRIDGE_FILTERTYPE_NONE < type && type < BRIDGE_FILTERTYPE_END) {
-          if (items_.size() == 0) {
-            IOLOG_ERROR("RemapClass::RemapClass invalid filter (%d).\n", type);
-            return;
-          }
-          Item* p = items_.back();
-          if (p) {
-            p->append_filter(initialize_vector, size);
-          }
-
-        } else if (type == BRIDGE_STATUSMESSAGE) {
-          if (statusmessage_) {
-            delete[] statusmessage_;
-          }
-          statusmessage_ = new char[size];
-          if (statusmessage_) {
-            for (size_t i = 0; i < size - 1; ++i) {
-              statusmessage_[i] = initialize_vector[i + 1];
-            }
-            statusmessage_[size - 1] = '\0';
-          }
-
-        } else if (type == BRIDGE_VK_CONFIG) {
-          if (size == 5) {
-            unsigned int keycode_toggle         = initialize_vector[1];
-            unsigned int keycode_force_on       = initialize_vector[2];
-            unsigned int keycode_force_off      = initialize_vector[3];
-            unsigned int keycode_sync_keydownup = initialize_vector[4];
-            Handle_VK_CONFIG::add_item(this,
-                                       keycode_toggle,
-                                       keycode_force_on,
-                                       keycode_force_off,
-                                       keycode_sync_keydownup);
-          }
-
-        } else {
-          IOLOG_ERROR("RemapClass::RemapClass unknown type:%d.\n", type);
-          return;
-        }
-
-        initialize_vector += size;
-        total_tmp += size;
-        CHECK_INITIALIZE_VECTOR;
-      }
-
-      // ----------------------------------------
-      if (total_tmp == total_length) return;
-      if (total_tmp > total_length) {
-        IOLOG_ERROR("RemapClass::RemapClass invalid initialize_vector. (total_length:%d, total_tmp:%d)\n", total_length, total_tmp);
-        return;
-      }
-    }
-  }
-
   RemapClass::RemapClass(const uint32_t* const initialize_vector, uint32_t vector_size) :
     statusmessage_(NULL),
     enabled_(false),
@@ -737,8 +620,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       refresh_timer_.initialize(&workloop, NULL, refresh_core);
     }
 
-    void
-    clear_xml(void)
+    static void
+    clear_remapclasses(void)
     {
       Handle_VK_CONFIG::clear_items();
 
@@ -764,111 +647,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       refresh_timer_.terminate();
 
-      clear_xml();
+      clear_remapclasses();
 
       IOLockWrapper::free(lock_);
-    }
-
-    bool
-    reload_xml(void)
-    {
-      IOLockWrapper::ScopedLock lk(lock_);
-
-      bool retval = false;
-      uint32_t count = 0;
-      KeyRemap4MacBook_bridge::GetConfigInfo::Reply::Item* configinfo = NULL;
-
-      // ------------------------------------------------------------
-      clear_xml();
-      remapclasses_ = new Vector_RemapClassPointer();
-
-      if (! remapclasses_) {
-        IOLOG_ERROR("do_reload_xml remapclasses_ == NULL.\n");
-        goto finish;
-      }
-
-      // ------------------------------------------------------------
-      // get count
-      {
-        KeyRemap4MacBook_bridge::GetConfigCount::Reply reply;
-        time_t timeout_second = 3;
-        int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_CONFIG_COUNT, NULL, 0, &reply, sizeof(reply), timeout_second, 0);
-        if (error) {
-          IOLOG_ERROR("do_reload_xml GetConfigCount sendmsg failed. (%d)\n", error);
-          goto finish;
-        }
-        count = reply.count;
-      }
-
-      if (count > RemapClass::MAX_CONFIG_COUNT) {
-        IOLOG_ERROR("do_reload_xml too many config count. (%d)\n", count);
-        goto finish;
-      }
-
-      // ------------------------------------------------------------
-      // get configinfo
-      configinfo = new KeyRemap4MacBook_bridge::GetConfigInfo::Reply::Item[count];
-      if (! configinfo) {
-        IOLOG_ERROR("do_reload_xml allocation failed.\n");
-        goto finish;
-      }
-
-      {
-        KeyRemap4MacBook_bridge::GetConfigInfo::Reply* reply = reinterpret_cast<KeyRemap4MacBook_bridge::GetConfigInfo::Reply*>(configinfo);
-        time_t timeout_second = 3;
-        int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_CONFIG_INFO,
-                                                     NULL, 0,
-                                                     reply, static_cast<uint32_t>(sizeof(configinfo[0]) * count),
-                                                     timeout_second, 0);
-        if (error) {
-          IOLOG_ERROR("do_reload_xml GetConfigInfo sendmsg failed. (%d)\n", error);
-          goto finish;
-        }
-      }
-
-      // ------------------------------------------------------------
-      remapclasses_->reserve(count);
-      RemapClass::reset_allocation_count();
-
-      // get initialize_vector
-      for (uint32_t i = 0; i < count; ++i) {
-        uint32_t size = configinfo[i].initialize_vector_size;
-        uint32_t* initialize_vector = NULL;
-
-        if (size > RemapClass::MAX_INITIALIZE_VECTOR_SIZE) {
-          IOLOG_ERROR("do_reload_xml too large initialize_vector. (%d)\n", size);
-          goto finish;
-        }
-
-        initialize_vector = new uint32_t[size];
-        {
-          KeyRemap4MacBook_bridge::GetConfigInitializeVector::Request request(i);
-          KeyRemap4MacBook_bridge::GetConfigInitializeVector::Reply* reply = reinterpret_cast<KeyRemap4MacBook_bridge::GetConfigInitializeVector::Reply*>(initialize_vector);
-          time_t timeout_second = 3;
-          int error = KeyRemap4MacBook_client::sendmsg(KeyRemap4MacBook_bridge::REQUEST_GET_CONFIG_INITIALIZE_VECTOR,
-                                                       &request, sizeof(request),
-                                                       reply, static_cast<uint32_t>(sizeof(initialize_vector[0]) * size),
-                                                       timeout_second, 0);
-          RemapClass* newp = NULL;
-          if (! error) {
-            newp = new RemapClass(initialize_vector, static_cast<bool>(configinfo[i].enabled));
-          }
-          remapclasses_->push_back(newp);
-        }
-        delete[] initialize_vector;
-      }
-
-      RemapClass::log_allocation_count();
-
-      refresh();
-
-      retval = true;
-
-    finish:
-      if (configinfo) {
-        delete[] configinfo;
-      }
-      return retval;
     }
 
     bool
@@ -878,7 +659,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       // clean previous resources and setup new resources.
-      clear_xml();
+      clear_remapclasses();
 
       remapclasses_ = new Vector_RemapClassPointer();
       if (! remapclasses_) {

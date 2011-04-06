@@ -2,7 +2,6 @@
 #define REMAP_HPP
 
 #include "base.hpp"
-#include "bridge.hpp"
 #include "KeyCode.hpp"
 #include "CallBackWrapper.hpp"
 

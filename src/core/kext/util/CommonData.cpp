@@ -1,7 +1,6 @@
 #include "CommonData.hpp"
 #include "IOLockWrapper.hpp"
 #include "Config.hpp"
-#include "Client.hpp"
 #include "UserClient_kext.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
