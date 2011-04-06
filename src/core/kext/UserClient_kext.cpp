@@ -371,12 +371,13 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
           }
           break;
         }
-
-        // reset values
-        org_pqrs_KeyRemap4MacBook::FlagStatus::lock_clear();
-        org_pqrs_KeyRemap4MacBook::FlagStatus::sticky_clear();
-        org_pqrs_KeyRemap4MacBook::RemapFunc::PointingRelativeToScroll::cancelScroll();
       }
+
+      // reset values
+      org_pqrs_KeyRemap4MacBook::FlagStatus::lock_clear();
+      org_pqrs_KeyRemap4MacBook::FlagStatus::sticky_clear();
+      org_pqrs_KeyRemap4MacBook::RemapFunc::PointingRelativeToScroll::cancelScroll();
+
       break;
     }
 
