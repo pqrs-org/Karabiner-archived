@@ -40,9 +40,6 @@ sudo cp -R "src/util/cli/build/Release/KeyRemap4MacBook_cli.app" "pkgroot/$based
 sudo cp -R "src/util/uninstaller/build/Release/uninstaller.app" "pkgroot/$basedir/app"
 sudo cp -R "src/util/updater/build/Release/KeyRemap4MacBook.app" "pkgroot/$basedir/app"
 
-sudo mkdir -p "pkgroot/$basedir/bin"
-sudo cp src/bin/sysctl_set/build/Release/KeyRemap4MacBook_sysctl_set "pkgroot/$basedir/bin"
-
 sudo mkdir -p "pkgroot/Library/PreferencePanes"
 sudo cp -R "src/util/prefpane/build/Release/KeyRemap4MacBook.prefPane" "pkgroot/Library/PreferencePanes"
 
@@ -50,7 +47,6 @@ sudo find pkgroot -type d -print0 | xargs -0 sudo chmod 755
 sudo find pkgroot -type f -print0 | xargs -0 sudo chmod 644
 sudo find pkgroot -type l -print0 | xargs -0 sudo chmod -h 755
 sudo find pkgroot -name '*.sh' -print0 | xargs -0 sudo chmod 755
-sudo chmod 4755 pkgroot/$basedir/bin/KeyRemap4MacBook_sysctl_set
 sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook_server.app/Contents/MacOS/KeyRemap4MacBook_server
 sudo chmod 755 pkgroot/$basedir/app/KeyDump.app/Contents/MacOS/KeyDump
 sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook_multitouchextension.app/Contents/MacOS/KeyRemap4MacBook_multitouchextension
