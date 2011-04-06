@@ -1,6 +1,5 @@
 #include "UserClient_kext.hpp"
 #include "CommonData.hpp"
-#include "Config.hpp"
 #include "FlagStatus.hpp"
 #include "IOLockWrapper.hpp"
 #include "RemapClass.hpp"
@@ -339,25 +338,27 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
 
   switch (type) {
     case BRIDGE_USERCLIENT_TYPE_SET_REMAPCLASSES_INITIALIZE_VECTOR:
-    case BRIDGE_USERCLIENT_TYPE_SET_ESSENTIAL_CONFIG:
+    case BRIDGE_USERCLIENT_TYPE_SET_CONFIG:
     {
       switch (type) {
         case BRIDGE_USERCLIENT_TYPE_SET_REMAPCLASSES_INITIALIZE_VECTOR:
         {
           const uint32_t* initialize_vector = reinterpret_cast<uint32_t*>(address);
           if (initialize_vector) {
-            org_pqrs_KeyRemap4MacBook::RemapClassManager::load_remapclasses_initialize_vector(initialize_vector, size);
-            *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
+            if (org_pqrs_KeyRemap4MacBook::RemapClassManager::load_remapclasses_initialize_vector(initialize_vector, size)) {
+              *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
+            }
           }
           break;
         }
 
-        case BRIDGE_USERCLIENT_TYPE_SET_ESSENTIAL_CONFIG:
+        case BRIDGE_USERCLIENT_TYPE_SET_CONFIG:
         {
-          const int32_t* essential_config = reinterpret_cast<int32_t*>(address);
-          if (essential_config) {
-            org_pqrs_KeyRemap4MacBook::Config::set_essential_config(essential_config, BRIDGE_ESSENTIAL_CONFIG_INDEX__END__);
-            *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
+          const int32_t* config = reinterpret_cast<int32_t*>(address);
+          if (config) {
+            if (org_pqrs_KeyRemap4MacBook::RemapClassManager::set_config(config, size)) {
+              *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
+            }
           }
           break;
         }

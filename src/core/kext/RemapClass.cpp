@@ -950,6 +950,38 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       RemapClass::log_allocation_count();
 
+      return true;
+    }
+
+    bool
+    set_config(const int32_t* const config_vector, mach_vm_size_t config_size)
+    {
+      IOLockWrapper::ScopedLock lk(lock_);
+
+      // ------------------------------------------------------------
+      // check
+      if (! remapclasses_) {
+        IOLOG_ERROR("%s remapclasses_ == NULL.\n", __FUNCTION__);
+        return false;
+      }
+
+      if (config_size != BRIDGE_ESSENTIAL_CONFIG_INDEX__END__ + remapclasses_->size()) {
+        IOLOG_ERROR("%s config_size mismatch.\n", __FUNCTION__);
+        return false;
+      }
+
+      // ------------------------------------------------------------
+      const int32_t* p = config_vector;
+      Config::set_essential_config(p, BRIDGE_ESSENTIAL_CONFIG_INDEX__END__);
+      p += BRIDGE_ESSENTIAL_CONFIG_INDEX__END__;
+
+      for (size_t i = 0; i < remapclasses_->size(); ++i) {
+        RemapClass* rc = (*remapclasses_)[i];
+        if (rc) {
+          rc->setEnabled(p[i]);
+        }
+      }
+
       refresh();
 
       return true;
