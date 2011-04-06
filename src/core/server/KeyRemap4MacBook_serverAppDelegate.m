@@ -9,6 +9,7 @@
 #import <Carbon/Carbon.h>
 #import "KeyRemap4MacBook_serverAppDelegate.h"
 #import "UserClient_userspace.h"
+#include <stdlib.h>
 #include "util.h"
 #include "server_objc_part.h"
 #include "server.hpp"
@@ -90,6 +91,26 @@
 }
 
 // ------------------------------------------------------------
+- (void) send_remapclasses_initialize_vector_to_kext {
+  NSArray* a = [[ConfigXMLParser getInstance] remapclasses_initialize_vector];
+  if (! a) return;
+
+  size_t size = [a count] * sizeof(uint32_t);
+  uint32* data = (uint32*)(malloc(size));
+  uint32* p = data;
+  for (NSNumber* number in a) {
+    *p++ = [number unsignedIntValue];
+  }
+
+  struct BridgeUserClientStruct bridgestruct;
+  bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_SET_REMAPCLASSES_INITIALIZE_VECTOR;
+  bridgestruct.option = 0;
+  bridgestruct.data   = (uintptr_t)(data);
+  bridgestruct.size   = size;
+
+  [UserClient_userspace synchronized_communication_with_retry:&bridgestruct];
+}
+
 - (void) send_essential_config_to_kext {
   NSArray* essential_config = [[PreferencesManager getInstance] essential_config];
   if (! essential_config) {
@@ -144,6 +165,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   // When you release the iterator you receive from IOServiceAddMatchingNotification, you also disable the notification.
 
   [UserClient_userspace refresh_connection];
+  [self send_remapclasses_initialize_vector_to_kext];
   [self send_essential_config_to_kext];
   [self send_workspacedata_to_kext];
 }
@@ -199,9 +221,10 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
 // ------------------------------------------------------------
 - (void) observer_ConfigXMLReloaded:(NSNotification*)notification {
+  [self send_remapclasses_initialize_vector_to_kext];
+  [self send_essential_config_to_kext];
   set_sysctl_do_reset();
   set_sysctl_do_reload_xml();
-  [self send_essential_config_to_kext];
 }
 
 - (void) observer_ConfigListChanged:(NSNotification*)notification {

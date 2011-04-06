@@ -6,6 +6,7 @@
   unsigned int simultaneous_keycode_index_;
   NSMutableDictionary* dict_initialize_vector_;
   NSMutableDictionary* dict_config_name_;
+  NSMutableArray* remapclasses_initialize_vector_;
   NSMutableArray* preferencepane_checkbox_;
   NSMutableArray* preferencepane_number_;
   KeyCode* keycode_;
@@ -20,6 +21,7 @@
 - (NSUInteger) count;
 - (NSUInteger) initialize_vector_size:(unsigned int)configindex;
 - (NSArray*) initialize_vector:(unsigned int)configindex;
+- (NSArray*) remapclasses_initialize_vector;
 - (unsigned int) keycode:(NSString*)name;
 - (NSString*) configname:(unsigned int)configindex;
 

@@ -27,7 +27,7 @@
 
 - (NSMutableArray*) make_filtervec:(NSXMLNode*)parent_node_of_autogen
 {
-  NSMutableArray* filters = [NSMutableArray arrayWithCapacity:0];
+  NSMutableArray* filters = [[NSMutableArray new] autorelease];
 
   for (;;) {
     if (! parent_node_of_autogen) break;
@@ -84,7 +84,7 @@
 - (NSMutableArray*) combination:(NSArray*)input
 {
   if ([input count] == 0) {
-    NSMutableArray* a = [NSMutableArray arrayWithCapacity:0];
+    NSMutableArray* a = [[NSMutableArray new] autorelease];
     return [NSMutableArray arrayWithObject:a];
   }
 
@@ -114,7 +114,7 @@
 
 - (void) append_to_initialize_vector:(NSMutableArray*)initialize_vector filtervec:(NSArray*)filtervec params:(NSString*)params type:(unsigned int)type
 {
-  NSMutableArray* args = [NSMutableArray arrayWithCapacity:0];
+  NSMutableArray* args = [[NSMutableArray new] autorelease];
   [args addObject:[NSNumber numberWithUnsignedInt:type]];
 
   if ([params length] > 0) {
@@ -401,7 +401,7 @@
 
       NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
       {
-        NSMutableArray* initialize_vector = [NSMutableArray arrayWithCapacity:0];
+        NSMutableArray* initialize_vector = [[NSMutableArray new] autorelease];
         NSString* rawname = [e stringValue];
         NSString* name = [KeyCode normalizeName:rawname];
 
@@ -462,19 +462,16 @@
 
   simultaneous_keycode_index_ = 0;
 
-  if (dict_initialize_vector_) {
-    [dict_initialize_vector_ release];
-  }
+  [dict_initialize_vector_ release];
   dict_initialize_vector_ = [NSMutableDictionary new];
 
-  if (dict_config_name_) {
-    [dict_config_name_ release];
-  }
+  [dict_config_name_ release];
   dict_config_name_ = [NSMutableDictionary new];
 
-  if (keycode_) {
-    [keycode_ release];
-  }
+  [remapclasses_initialize_vector_ release];
+  remapclasses_initialize_vector_ = [NSMutableArray new];
+
+  [keycode_ release];
   keycode_ = [KeyCode new];
 
   // ------------------------------------------------------------
@@ -580,6 +577,24 @@
       [self setErrorMessage:exception xmlpath:xmlpath];
     }
   }
+
+  // --------------------
+  // make remapclasses_initialize_vector_
+  [remapclasses_initialize_vector_ addObject:[NSNumber numberWithUnsignedInt:BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION]];
+  NSUInteger total = 0;
+  NSUInteger count = [dict_initialize_vector_ count];
+  for (NSUInteger i = 0; i < count; ++i) {
+    NSArray* a = [dict_initialize_vector_ objectForKey:[NSNumber numberWithUnsignedInteger:i]];
+    if (! a) {
+      [remapclasses_initialize_vector_ addObject:[NSNumber numberWithUnsignedInt:0]];
+      total += 1;
+    } else {
+      [remapclasses_initialize_vector_ addObject:[NSNumber numberWithUnsignedInteger:[a count]]];
+      [remapclasses_initialize_vector_ addObjectsFromArray:a];
+      total += 1 + [a count];
+    }
+  }
+  [remapclasses_initialize_vector_ insertObject:[NSNumber numberWithUnsignedInteger:total] atIndex:1];
 
   return retval;
 }
