@@ -338,11 +338,11 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
   *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_ERROR_GENERIC;
 
   switch (type) {
-    case BRIDGE_USERCLIENT_TYPE_SET_REMAPCLASS_INITIALIZE_VECTOR:
+    case BRIDGE_USERCLIENT_TYPE_SET_REMAPCLASSES_INITIALIZE_VECTOR:
     case BRIDGE_USERCLIENT_TYPE_SET_ESSENTIAL_CONFIG:
     {
       switch (type) {
-        case BRIDGE_USERCLIENT_TYPE_SET_REMAPCLASS_INITIALIZE_VECTOR:
+        case BRIDGE_USERCLIENT_TYPE_SET_REMAPCLASSES_INITIALIZE_VECTOR:
         {
           const uint32_t* initialize_vector = reinterpret_cast<uint32_t*>(address);
           if (initialize_vector) {
