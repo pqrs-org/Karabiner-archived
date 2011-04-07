@@ -207,7 +207,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_close(void)
 
   notification_enabled_ = false;
 
-  org_pqrs_KeyRemap4MacBook::Config::initialized = false;
+  org_pqrs_KeyRemap4MacBook::Config::set_initialized(false);
 
   // cancel timers
   org_pqrs_KeyRemap4MacBook::KeyboardRepeat::cancel();
@@ -351,6 +351,8 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
       switch (type) {
         case BRIDGE_USERCLIENT_TYPE_SET_REMAPCLASSES_INITIALIZE_VECTOR:
         {
+          org_pqrs_KeyRemap4MacBook::Config::set_initialized(false);
+
           const uint32_t* initialize_vector = reinterpret_cast<uint32_t*>(address);
           if (initialize_vector) {
             if (org_pqrs_KeyRemap4MacBook::RemapClassManager::load_remapclasses_initialize_vector(initialize_vector, size)) {
@@ -365,7 +367,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
           const int32_t* config = reinterpret_cast<int32_t*>(address);
           if (config) {
             if (org_pqrs_KeyRemap4MacBook::RemapClassManager::set_config(config, size)) {
-              org_pqrs_KeyRemap4MacBook::Config::initialized = true;
+              org_pqrs_KeyRemap4MacBook::Config::set_initialized(true);
               *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
             }
           }

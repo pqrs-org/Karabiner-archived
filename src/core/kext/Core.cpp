@@ -53,7 +53,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     start(void)
     {
       CommonData::initialize();
-      Config::initialize();
       EventWatcher::initialize();
       PressDownKeys::initialize();
       FlagStatus::initialize();
@@ -105,7 +104,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
 
         Config::sysctl_unregister();
-        Config::terminate();
 
         RemapClassManager::terminate();
         KeyboardRepeat::terminate();

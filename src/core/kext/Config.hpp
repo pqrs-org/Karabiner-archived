@@ -8,12 +8,17 @@
 namespace org_pqrs_KeyRemap4MacBook {
   class Config {
   public:
-    static void initialize(void);
-    static void terminate(void);
-
     static void sysctl_register(void);
     static void sysctl_unregister(void);
 
+    // ----------------------------------------
+    static void set_initialized(bool newvalue);
+    static bool get_initialized(void);
+    static bool get_debug(void);
+    static bool get_debug_devel(void);
+    static bool get_debug_pointing(void);
+
+    // ----------------------------------------
     static void set_essential_config(const int32_t* newvalues, size_t num);
 
     static int get_essential_config(unsigned int index) {
@@ -55,12 +60,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_holdingkeytokey_wait);
       return getvalue(v, 10);
     }
-
-    // ----------------------------------------
-    static int debug;
-    static int debug_pointing;
-    static int debug_devel;
-    static int initialized;
 
   private:
     static unsigned int getvalue(int value, int minval) {

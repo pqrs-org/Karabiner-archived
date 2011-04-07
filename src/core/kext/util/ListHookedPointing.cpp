@@ -40,7 +40,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! device_) goto restore;
 
     // ------------------------------------------------------------
-    if (! Config::initialized) {
+    if (! Config::get_initialized()) {
       goto restore;
     }
     if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_dont_remap_thirdvendor_pointing) &&

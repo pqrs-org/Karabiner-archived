@@ -6,10 +6,12 @@
 #include "util/CommonData.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  int Config::debug = 0;
-  int Config::debug_pointing = 0;
-  int Config::debug_devel = 0;
-  int Config::initialized = 0;
+  namespace {
+    int sysctl_debug          = 0;
+    int sysctl_debug_pointing = 0;
+    int sysctl_debug_devel    = 0;
+    int sysctl_initialized    = 0;
+  }
 
   int Config::essential_config_[BRIDGE_ESSENTIAL_CONFIG_INDEX__END__] = {
 #include "../bridge/config/output/include.bridge_essential_config_index.cpp"
@@ -26,21 +28,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   SYSCTL_NODE(, OID_AUTO, keyremap4macbook, CTLFLAG_RW, 0, "");
 
   // ----------------------------------------
-  SYSCTL_INT(_keyremap4macbook,    OID_AUTO, initialized,    CTLTYPE_INT,              &(Config::initialized),    0, "");
-  SYSCTL_INT(_keyremap4macbook,    OID_AUTO, debug,          CTLTYPE_INT | CTLFLAG_RW, &(Config::debug),          0, "");
-  SYSCTL_INT(_keyremap4macbook,    OID_AUTO, debug_pointing, CTLTYPE_INT | CTLFLAG_RW, &(Config::debug_pointing), 0, "");
-  SYSCTL_INT(_keyremap4macbook,    OID_AUTO, debug_devel,    CTLTYPE_INT | CTLFLAG_RW, &(Config::debug_devel),    0, "");
-  SYSCTL_STRING(_keyremap4macbook, OID_AUTO, version,        CTLFLAG_RD,               config_version,            0, "");
+  SYSCTL_INT(_keyremap4macbook,    OID_AUTO, initialized,    CTLTYPE_INT,              &(sysctl_initialized),    0, "");
+  SYSCTL_INT(_keyremap4macbook,    OID_AUTO, debug,          CTLTYPE_INT | CTLFLAG_RW, &(sysctl_debug),          0, "");
+  SYSCTL_INT(_keyremap4macbook,    OID_AUTO, debug_pointing, CTLTYPE_INT | CTLFLAG_RW, &(sysctl_debug_pointing), 0, "");
+  SYSCTL_INT(_keyremap4macbook,    OID_AUTO, debug_devel,    CTLTYPE_INT | CTLFLAG_RW, &(sysctl_debug_devel),    0, "");
+  SYSCTL_STRING(_keyremap4macbook, OID_AUTO, version,        CTLFLAG_RD,               config_version,           0, "");
 
   // ----------------------------------------------------------------------
-  void
-  Config::initialize(void)
-  {}
-
-  void
-  Config::terminate(void)
-  {}
-
   void
   Config::sysctl_register(void)
   {
@@ -64,6 +58,17 @@ namespace org_pqrs_KeyRemap4MacBook {
     sysctl_unregister_oid(&sysctl__keyremap4macbook_debug_devel);
     sysctl_unregister_oid(&sysctl__keyremap4macbook_version);
   }
+
+  void
+  Config::set_initialized(bool newvalue)
+  {
+    sysctl_initialized = newvalue;
+  }
+
+  bool Config::get_initialized(void)    { return sysctl_initialized;    }
+  bool Config::get_debug(void)          { return sysctl_debug;          }
+  bool Config::get_debug_devel(void)    { return sysctl_debug_devel;    }
+  bool Config::get_debug_pointing(void) { return sysctl_debug_pointing; }
 
   void
   Config::load_essential_config_default(void)
