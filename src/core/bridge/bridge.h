@@ -4,53 +4,14 @@
 #include <sys/types.h>
 #include <mach/mach_types.h>
 
-// RemapClass initialize_vector format:
-//
-// base:
-// { BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION, size_of_after, {[<remap>], {<filter>}} }
-//
-// Example:
-//   {
-//     BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION,
-//     18,
-//     5,BRIDGE_REMAPTYPE_KEYTOKEY,BRIDGE_DATATYPE_KEYCODE,0,BRIDGE_DATATYPE_KEYCODE,11,
-//     2,BRIDGE_FILTERTYPE_CONFIG_NOT,881,
-//     2,BRIDGE_FILTERTYPE_CONFIG_NOT,882,
-//     5,BRIDGE_REMAPTYPE_KEYTOKEY,BRIDGE_DATATYPE_KEYCODE,1,BRIDGE_DATATYPE_KEYCODE,56,
-//   };
-//
-//
-//   No remap version
-//   {
-//     BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION,
-//     0,
-//   }
-//
-// --------------------
-//
-// <filter>
-//   { size_of_after, BRIDGE_FILTERTYPE_XXX, values }
-//
-// Example of <filter>:
-//   { 2,BRIDGE_FILTERTYPE_CONFIG_NOT,881 }
-//
-// --------------------
-//
-// <remap>
-//   { size_of_after, BRIDGE_REMAPTYPE_XXX, values }
-//
-// Example of <remap>:
-//   { 5,BRIDGE_REMAPTYPE_KEYTOKEY,BRIDGE_DATATYPE_KEYCODE,0,BRIDGE_DATATYPE_KEYCODE,11 };
-//
-// --------------------
-
 enum {
   // Version 1: initial version
   // Version 2: Added BRIDGE_DATATYPE_DEVICEVENDOR,BRIDGE_DATATYPE_DEVICEPRODUCT,BRIDGE_REMAPTYPE_FORCENUMLOCKON
   // Version 3: Removed some essential configurations. (parameter.statuswindow_alpha_font, ...)
   // Version 4: Added a essential configuration. (general.suppress_growl_warning)
+  // Version 5: Changed initialize vector format
 
-  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 4,
+  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 5,
 };
 
 enum {
@@ -165,5 +126,45 @@ struct BridgeWorkSpaceData {
   uint32_t inputmodedetail;
 };
 enum { STATIC_ASSERT__sizeof_BridgeWorkSpaceData = 1 / (sizeof(struct BridgeWorkSpaceData) == 12) };
+
+// remapclasses_initialize_vector format:
+//
+// base:
+// { BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION, the_count_of_initialize_vector, [<initialize_vector>] }
+//
+// <initialize_vector>
+//   { size, {[<remap>], {<filter>}} }
+//
+// <filter>
+//   { size, BRIDGE_FILTERTYPE_XXX, values }
+//
+// <remap>
+//   { size, BRIDGE_REMAPTYPE_XXX, values }
+//
+// --------------------
+//
+// Example of <base>:
+//   { BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION, 3, initialize_vector1, initialize_vector2, initialize_vector3 }
+//
+// Example of <initialize_vector>:
+//   {
+//     18,
+//     5,BRIDGE_REMAPTYPE_KEYTOKEY,BRIDGE_DATATYPE_KEYCODE,0,BRIDGE_DATATYPE_KEYCODE,11,
+//     2,BRIDGE_FILTERTYPE_CONFIG_NOT,881,
+//     2,BRIDGE_FILTERTYPE_CONFIG_NOT,882,
+//     5,BRIDGE_REMAPTYPE_KEYTOKEY,BRIDGE_DATATYPE_KEYCODE,1,BRIDGE_DATATYPE_KEYCODE,56,
+//   };
+//
+//   No remap version
+//   {
+//     0,
+//   }
+//
+// Example of <filter>:
+//   { 2,BRIDGE_FILTERTYPE_CONFIG_NOT,881 }
+//
+// Example of <remap>:
+//   { 5,BRIDGE_REMAPTYPE_KEYTOKEY,BRIDGE_DATATYPE_KEYCODE,0,BRIDGE_DATATYPE_KEYCODE,11 };
+//
 
 #endif
