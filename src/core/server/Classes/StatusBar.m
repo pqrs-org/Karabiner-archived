@@ -94,4 +94,10 @@
   [[NSWorkspace sharedWorkspace] launchApplication:@"/Library/org.pqrs/KeyRemap4MacBook/app/KeyDump.app"];
 }
 
+- (IBAction) checkForUpdates:(id)sender
+{
+  NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.updater";
+  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"check" object:observedObject userInfo:nil deliverImmediately:YES];
+}
+
 @end

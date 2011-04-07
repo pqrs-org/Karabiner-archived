@@ -88,6 +88,14 @@
 							<string key="NSResourceName">NSMenuMixedState</string>
 						</object>
 					</object>
+					<object class="NSMenuItem" id="974598314">
+						<reference key="NSMenu" ref="269225066"/>
+						<string key="NSTitle">Check for updates...</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="394260601"/>
+						<reference key="NSMixedImage" ref="345409186"/>
+					</object>
 					<object class="NSMenuItem" id="612725256">
 						<reference key="NSMenu" ref="269225066"/>
 						<string key="NSTitle">Launch EventViewer...</string>
@@ -166,6 +174,14 @@
 					</object>
 					<int key="connectionID">565</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">checkForUpdates:</string>
+						<reference key="source" ref="882968974"/>
+						<reference key="destination" ref="974598314"/>
+					</object>
+					<int key="connectionID">587</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -234,6 +250,7 @@
 							<reference ref="612725256"/>
 							<reference ref="668839771"/>
 							<reference ref="412271973"/>
+							<reference ref="974598314"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -250,6 +267,11 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">558</int>
 						<reference key="object" ref="412271973"/>
+						<reference key="parent" ref="269225066"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">586</int>
+						<reference key="object" ref="974598314"/>
 						<reference key="parent" ref="269225066"/>
 					</object>
 				</object>
@@ -271,6 +293,7 @@
 					<string>554.IBPluginDependency</string>
 					<string>555.IBPluginDependency</string>
 					<string>558.IBPluginDependency</string>
+					<string>586.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -283,6 +306,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{467, 929}, {329, 53}}</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -301,7 +325,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">585</int>
+			<int key="maxID">587</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -353,11 +377,13 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>checkForUpdates:</string>
 							<string>launchEventViewer:</string>
 							<string>openPreferencePane:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 						</object>
@@ -366,11 +392,16 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>checkForUpdates:</string>
 							<string>launchEventViewer:</string>
 							<string>openPreferencePane:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBActionInfo">
+								<string key="name">checkForUpdates:</string>
+								<string key="candidateClassName">id</string>
+							</object>
 							<object class="IBActionInfo">
 								<string key="name">launchEventViewer:</string>
 								<string key="candidateClassName">id</string>

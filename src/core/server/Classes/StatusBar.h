@@ -12,5 +12,6 @@
 
 - (IBAction) openPreferencePane:(id)sender;
 - (IBAction) launchEventViewer:(id)sender;
+- (IBAction) checkForUpdates:(id)sender;
 
 @end
