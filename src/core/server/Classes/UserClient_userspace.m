@@ -22,7 +22,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
       bridgestruct.data   = (uintptr_t)(buf);
       bridgestruct.size   = sizeof(buf);
 
-      if (! [UserClient_userspace synchronized_communication_with_retry:&bridgestruct]) return;
+      if (! [UserClient_userspace synchronized_communication:&bridgestruct]) return;
 
       [[StatusWindow getInstance] setStatusMessage:option message:[NSString stringWithUTF8String:buf]];
       break;
@@ -224,19 +224,13 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
   return YES;
 }
 
-+ (BOOL) synchronized_communication_with_retry:(struct BridgeUserClientStruct*)bridgestruct
++ (BOOL) synchronized_communication:(struct BridgeUserClientStruct*)bridgestruct
 {
   BOOL retval = NO;
 
   @synchronized(self) {
     if ([global_instance do_synchronized_communication:bridgestruct]) {
       retval = YES;
-
-    } else {
-      // retry.
-      NSLog(@"UserClient_userspace synchronized_communication_with_retry retry\n");
-      [self refresh_connection];
-      retval = [global_instance do_synchronized_communication:bridgestruct];
     }
   }
 

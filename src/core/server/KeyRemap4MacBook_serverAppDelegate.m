@@ -29,7 +29,7 @@
   bridgestruct.data   = (uintptr_t)(&bridgeworkspacedata_);
   bridgestruct.size   = sizeof(bridgeworkspacedata_);
 
-  [UserClient_userspace synchronized_communication_with_retry:&bridgestruct];
+  [UserClient_userspace synchronized_communication:&bridgestruct];
 }
 
 - (void) observer_NSWorkspaceDidActivateApplicationNotification:(NSNotification*)notification
@@ -91,7 +91,7 @@
     bridgestruct.data   = (uintptr_t)(data);
     bridgestruct.size   = size;
 
-    [UserClient_userspace synchronized_communication_with_retry:&bridgestruct];
+    [UserClient_userspace synchronized_communication:&bridgestruct];
 
     free(data);
   }
@@ -143,7 +143,7 @@
     bridgestruct.data   = (uintptr_t)(data);
     bridgestruct.size   = size;
 
-    [UserClient_userspace synchronized_communication_with_retry:&bridgestruct];
+    [UserClient_userspace synchronized_communication:&bridgestruct];
 
   finish:
     free(data);
