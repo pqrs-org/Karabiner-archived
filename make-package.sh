@@ -16,7 +16,7 @@ sudo rm -rf pkgroot
 sudo mkdir -p pkgroot
 
 basedir="/Library/org.pqrs/KeyRemap4MacBook"
-sudo mkdir -p "pkgroot/$basedir/tmp"
+sudo mkdir -p "pkgroot/$basedir"
 sudo cp -R src/core/kext/build/Release/KeyRemap4MacBook.kext "pkgroot/$basedir"
 sudo cp -R files/scripts "pkgroot/$basedir"
 
