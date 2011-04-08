@@ -29,24 +29,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace Core {
     namespace {
       IOWorkLoop* workLoop = NULL;
-      TimerWrapper timer_refresh;
-
-      // ------------------------------------------------------------
-      enum {
-        REFRESH_DEVICE_INTERVAL = 3000,
-      };
-
-      void
-      refreshHookedDevice(OSObject* owner, IOTimerEventSource* sender)
-      {
-        IOLockWrapper::ScopedLock lk(timer_refresh.getlock());
-
-        ListHookedKeyboard::instance().refresh_callback();
-        ListHookedConsumer::instance().refresh_callback();
-        ListHookedPointing::instance().refresh_callback();
-
-        timer_refresh.setTimeoutMS(REFRESH_DEVICE_INTERVAL);
-      }
     }
 
     void
@@ -75,9 +57,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         RemapFunc::PointingRelativeToScroll::static_initialize(*workLoop);
         ListHookedKeyboard::static_initialize(*workLoop);
         RemapClassManager::initialize(*workLoop);
-
-        timer_refresh.initialize(workLoop, NULL, refreshHookedDevice);
-        timer_refresh.setTimeoutMS(REFRESH_DEVICE_INTERVAL);
       }
 
       Config::sysctl_register();
@@ -90,7 +69,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       {
         IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
 
-        timer_refresh.terminate();
         ListHookedKeyboard::instance().terminate();
         ListHookedConsumer::instance().terminate();
         ListHookedPointing::instance().terminate();

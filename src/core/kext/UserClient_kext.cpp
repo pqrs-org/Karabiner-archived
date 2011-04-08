@@ -1,11 +1,8 @@
 #include "UserClient_kext.hpp"
 #include "CommonData.hpp"
 #include "Config.hpp"
-#include "FlagStatus.hpp"
 #include "IOLockWrapper.hpp"
-#include "KeyboardRepeat.hpp"
 #include "RemapClass.hpp"
-#include "RemapFunc/PointingRelativeToScroll.hpp"
 
 #define super IOUserClient
 
@@ -208,10 +205,6 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_close(void)
   notification_enabled_ = false;
 
   org_pqrs_KeyRemap4MacBook::Config::set_initialized(false);
-
-  // cancel timers
-  org_pqrs_KeyRemap4MacBook::KeyboardRepeat::cancel();
-  org_pqrs_KeyRemap4MacBook::RemapFunc::PointingRelativeToScroll::cancelScroll();
 
   // Make sure we're the one who opened our provider before we tell it to close.
   provider_->close(this);

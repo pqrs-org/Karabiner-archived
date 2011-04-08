@@ -4,6 +4,10 @@
 #include "RemapClass.hpp"
 #include "RemapFunc/PointingRelativeToScroll.hpp"
 #include "util/CommonData.hpp"
+#include "util/KeyboardRepeat.hpp"
+#include "util/ListHookedConsumer.hpp"
+#include "util/ListHookedKeyboard.hpp"
+#include "util/ListHookedPointing.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace {
@@ -64,16 +68,27 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     sysctl_initialized = newvalue;
 
+    // ----------------------------------------
+    // reset values
+    org_pqrs_KeyRemap4MacBook::FlagStatus::lock_clear();
+    org_pqrs_KeyRemap4MacBook::FlagStatus::sticky_clear();
+
+    // cancel timers
+    org_pqrs_KeyRemap4MacBook::KeyboardRepeat::cancel();
+    org_pqrs_KeyRemap4MacBook::RemapFunc::PointingRelativeToScroll::cancelScroll();
+
+    // refresh devices
+    ListHookedKeyboard::instance().refresh_callback();
+    ListHookedConsumer::instance().refresh_callback();
+    ListHookedPointing::instance().refresh_callback();
+
+    // ----------------------------------------
+    // reset sysctl_debug*
     if (newvalue == false) {
       sysctl_debug          = 0;
       sysctl_debug_devel    = 0;
       sysctl_debug_pointing = 0;
     }
-
-    // reset values
-    org_pqrs_KeyRemap4MacBook::FlagStatus::lock_clear();
-    org_pqrs_KeyRemap4MacBook::FlagStatus::sticky_clear();
-    org_pqrs_KeyRemap4MacBook::RemapFunc::PointingRelativeToScroll::cancelScroll();
   }
 
   bool Config::get_initialized(void)    { return sysctl_initialized;    }
