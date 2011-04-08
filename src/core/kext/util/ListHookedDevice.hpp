@@ -53,6 +53,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     ListHookedDevice(void) : last_(NULL), list_(NULL), list_lock_(NULL) {}
     virtual ~ListHookedDevice(void) {}
 
+    void refresh_nolock(void);
+
     const IOHIDevice* last_;
     List* list_;
     IOLock* list_lock_;
