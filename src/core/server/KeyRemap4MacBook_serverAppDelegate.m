@@ -201,17 +201,13 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
     return;
   }
 
-  // ------------------------------------------------------------
-  NSMutableDictionary* match = [NSMutableDictionary dictionaryWithObject:@"org_pqrs_driver_KeyRemap4MacBook" forKey:@"IOMatchCategory"];
-
   // ----------------------------------------------------------------------
   io_iterator_t it;
   kern_return_t kernResult;
 
-  [match retain]; // for kIOMatchedNotification
   kernResult = IOServiceAddMatchingNotification(notifyport_,
                                                 kIOMatchedNotification,
-                                                (CFMutableDictionaryRef)(match),
+                                                IOServiceNameMatching("org_pqrs_driver_KeyRemap4MacBook"),
                                                 &observer_IONotification,
                                                 self,
                                                 &it);
