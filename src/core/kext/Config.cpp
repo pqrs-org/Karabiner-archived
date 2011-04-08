@@ -63,6 +63,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   Config::set_initialized(bool newvalue)
   {
     sysctl_initialized = newvalue;
+
+    if (newvalue == false) {
+      sysctl_debug          = 0;
+      sysctl_debug_devel    = 0;
+      sysctl_debug_pointing = 0;
+    }
   }
 
   bool Config::get_initialized(void)    { return sysctl_initialized;    }
