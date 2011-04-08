@@ -7735,6 +7735,12 @@
           <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, VK_SHIFT, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
+          <name>Use PC Style Copy-Paste #4</name>
+          <appendix>Change Command+Insert to Command+C</appendix>
+          <identifier>remap.copy_paste_winstyle_4</identifier>
+          <autogen>--KeyToKey-- KeyCode::PC_INSERT, VK_COMMAND, KeyCode::C, VK_COMMAND</autogen>
+        </item>
+        <item>
           <name>Use PC Style Undo</name>
           <appendix>(Control+Z to Command_L+Z)</appendix>
           <appendix>(Except in Terminal, VM, RDC, Emacs, X11, Eclipse)</appendix>
