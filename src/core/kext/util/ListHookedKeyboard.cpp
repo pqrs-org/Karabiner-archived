@@ -50,7 +50,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ======================================================================
   bool
-  ListHookedKeyboard::Item::refresh_callback(void)
+  ListHookedKeyboard::Item::refresh(void)
   {
     if (! device_) goto restore;
 

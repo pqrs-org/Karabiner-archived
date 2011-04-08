@@ -29,7 +29,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       DeviceProduct product_;
       DeviceType::DeviceType deviceType_;
 
-      virtual bool refresh_callback(void) = 0;
+      virtual bool refresh(void) = 0;
 
       void setVendorProduct(void);
       void setDeviceType(void);
@@ -42,7 +42,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void push_back(ListHookedDevice::Item* newp);
     void erase(IOHIDevice* p);
 
-    void refresh_callback(void);
+    void refresh(void);
 
     // We need to call get_nolock with "ScopedLock lk(getListLock())".
     ListHookedDevice::Item* get_nolock(const IOHIDevice* device);

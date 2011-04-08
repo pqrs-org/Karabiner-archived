@@ -223,7 +223,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  ListHookedDevice::refresh_callback(void)
+  ListHookedDevice::refresh(void)
   {
     IOLockWrapper::ScopedLock lk(list_lock_);
     if (! lk) return;
@@ -231,7 +231,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! list_) return;
 
     for (Item* p = static_cast<Item*>(list_->front()); p; p = static_cast<Item*>(p->getnext())) {
-      if (p->refresh_callback()) {
+      if (p->refresh()) {
         // Call reset whenever the device status is changed.
         reset();
       }

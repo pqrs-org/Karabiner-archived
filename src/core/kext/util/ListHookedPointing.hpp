@@ -31,7 +31,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       IOLock* replacerestore_lock_;
 
-      bool refresh_callback(void);
+      bool refresh(void);
 
       /** return true if event action is replaced. */
       bool replaceEventAction(void);

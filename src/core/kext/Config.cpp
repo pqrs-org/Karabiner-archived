@@ -78,9 +78,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     org_pqrs_KeyRemap4MacBook::RemapFunc::PointingRelativeToScroll::cancelScroll();
 
     // refresh devices
-    ListHookedKeyboard::instance().refresh_callback();
-    ListHookedConsumer::instance().refresh_callback();
-    ListHookedPointing::instance().refresh_callback();
+    ListHookedKeyboard::instance().refresh();
+    ListHookedConsumer::instance().refresh();
+    ListHookedPointing::instance().refresh();
 
     // ----------------------------------------
     // reset sysctl_debug*

@@ -35,7 +35,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  ListHookedPointing::Item::refresh_callback(void)
+  ListHookedPointing::Item::refresh(void)
   {
     if (! device_) goto restore;
 
