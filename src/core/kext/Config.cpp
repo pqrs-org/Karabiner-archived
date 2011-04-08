@@ -69,6 +69,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       sysctl_debug_devel    = 0;
       sysctl_debug_pointing = 0;
     }
+
+    // reset values
+    org_pqrs_KeyRemap4MacBook::FlagStatus::lock_clear();
+    org_pqrs_KeyRemap4MacBook::FlagStatus::sticky_clear();
+    org_pqrs_KeyRemap4MacBook::RemapFunc::PointingRelativeToScroll::cancelScroll();
   }
 
   bool Config::get_initialized(void)    { return sysctl_initialized;    }

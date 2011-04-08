@@ -346,40 +346,27 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
 
   switch (type) {
     case BRIDGE_USERCLIENT_TYPE_SET_REMAPCLASSES_INITIALIZE_VECTOR:
-    case BRIDGE_USERCLIENT_TYPE_SET_CONFIG:
     {
-      switch (type) {
-        case BRIDGE_USERCLIENT_TYPE_SET_REMAPCLASSES_INITIALIZE_VECTOR:
-        {
-          org_pqrs_KeyRemap4MacBook::Config::set_initialized(false);
+      org_pqrs_KeyRemap4MacBook::Config::set_initialized(false);
 
-          const uint32_t* initialize_vector = reinterpret_cast<uint32_t*>(address);
-          if (initialize_vector) {
-            if (org_pqrs_KeyRemap4MacBook::RemapClassManager::load_remapclasses_initialize_vector(initialize_vector, size)) {
-              *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
-            }
-          }
-          break;
-        }
-
-        case BRIDGE_USERCLIENT_TYPE_SET_CONFIG:
-        {
-          const int32_t* config = reinterpret_cast<int32_t*>(address);
-          if (config) {
-            if (org_pqrs_KeyRemap4MacBook::RemapClassManager::set_config(config, size)) {
-              org_pqrs_KeyRemap4MacBook::Config::set_initialized(true);
-              *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
-            }
-          }
-          break;
+      const uint32_t* initialize_vector = reinterpret_cast<uint32_t*>(address);
+      if (initialize_vector) {
+        if (org_pqrs_KeyRemap4MacBook::RemapClassManager::load_remapclasses_initialize_vector(initialize_vector, size)) {
+          *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
         }
       }
+      break;
+    }
 
-      // reset values
-      org_pqrs_KeyRemap4MacBook::FlagStatus::lock_clear();
-      org_pqrs_KeyRemap4MacBook::FlagStatus::sticky_clear();
-      org_pqrs_KeyRemap4MacBook::RemapFunc::PointingRelativeToScroll::cancelScroll();
-
+    case BRIDGE_USERCLIENT_TYPE_SET_CONFIG:
+    {
+      const int32_t* config = reinterpret_cast<int32_t*>(address);
+      if (config) {
+        if (org_pqrs_KeyRemap4MacBook::RemapClassManager::set_config(config, size)) {
+          org_pqrs_KeyRemap4MacBook::Config::set_initialized(true);
+          *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
+        }
+      }
       break;
     }
 
