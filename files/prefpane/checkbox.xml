@@ -2481,62 +2481,6 @@
     <item>
       <name>Change F1..F19 Key</name>
       <list>
-        <item>
-          <name>F1..F12 to Functional</name>
-          <!-- #include "include/appendix_f1_f12_to_functional.xml" -->
-          <!-- #include "include/caution_functionkey.xml" -->
-          <identifier>remap.f1_f12_to_functional_all</identifier>
-          <!-- #include "include/fnF1_F12_to_function.xml" -->
-          <!-- #include "include/f1_f12_to_functional.xml" -->
-        </item>
-        <item>
-          <name>F5,F6 to Functional</name>
-          <!-- #include "include/appendix_f5_f6_to_functional.xml" -->
-          <!-- #include "include/caution_functionkey.xml" -->
-          <identifier>remap.f5_f6_to_functional_all</identifier>
-          <!-- #include "include/fnF5_F6_to_function.xml" -->
-          <!-- #include "include/f5_f6_to_functional.xml" -->
-        </item>
-
-        <item>
-          <name>F1..F12 to Functional (except virtual machine, RDC)</name>
-          <!-- #include "include/appendix_f1_f12_to_functional.xml" -->
-          <!-- #include "include/caution_functionkey.xml" -->
-          <identifier>remap.f1_f12_to_functional_ex_vm</identifier>
-          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <!-- #include "include/fnF1_F12_to_function.xml" -->
-          <!-- #include "include/f1_f12_to_functional.xml" -->
-        </item>
-        <item>
-          <name>F5,F6 to Functional (except virtual machine, RDC)</name>
-          <!-- #include "include/appendix_f5_f6_to_functional.xml" -->
-          <!-- #include "include/caution_functionkey.xml" -->
-          <identifier>remap.f5_f6_to_functional_ex_vm</identifier>
-          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <!-- #include "include/fnF5_F6_to_function.xml" -->
-          <!-- #include "include/f5_f6_to_functional.xml" -->
-        </item>
-
-        <item>
-          <name>Fn+F1..F12 to Functional</name>
-          <appendix>There is this setting for "* to Fn". (ex: Control_L to Fn)</appendix>
-          <appendix></appendix>
-          <appendix>Fn+F1 to Brightness Down</appendix>
-          <appendix>Fn+F2 to Brightness Up</appendix>
-          <appendix>Fn+F3 to Expose</appendix>
-          <appendix>Fn+F4 to Dashboard</appendix>
-          <appendix>Fn+F5 to Keyboard Light LOW</appendix>
-          <appendix>Fn+F6 to Keyboard Light HIGH</appendix>
-          <appendix>Fn+F7 to Music Prev</appendix>
-          <appendix>Fn+F8 to Music Play/Pause</appendix>
-          <appendix>Fn+F9 to Music Next</appendix>
-          <appendix>Fn+F10 to Volume Mute</appendix>
-          <appendix>Fn+F11 to Volume Down</appendix>
-          <appendix>Fn+F12 to Volume Up</appendix>
-          <!-- #include "include/caution_functionkey.xml" -->
-          <identifier>remap.fnF1_F12_to_functional</identifier>
-          <!-- #include "include/f1_f12_to_functional_withfn.xml" -->
-        </item>
 
         <item>
           <name>Macbook Air: Keyboard Preferences Configured to Standard Function Keys</name>
@@ -2636,6 +2580,63 @@
               <autogen>--KeyToConsumer-- KeyCode::F12, ConsumerKeyCode::VOLUME_UP</autogen>
             </item>
           </list>
+        </item>
+
+        <item>
+          <name>F1..F12 to Functional</name>
+          <!-- #include "include/appendix_f1_f12_to_functional.xml" -->
+          <!-- #include "include/caution_functionkey.xml" -->
+          <identifier>remap.f1_f12_to_functional_all</identifier>
+          <!-- #include "include/fnF1_F12_to_function.xml" -->
+          <!-- #include "include/f1_f12_to_functional.xml" -->
+        </item>
+        <item>
+          <name>F5,F6 to Functional</name>
+          <!-- #include "include/appendix_f5_f6_to_functional.xml" -->
+          <!-- #include "include/caution_functionkey.xml" -->
+          <identifier>remap.f5_f6_to_functional_all</identifier>
+          <!-- #include "include/fnF5_F6_to_function.xml" -->
+          <!-- #include "include/f5_f6_to_functional.xml" -->
+        </item>
+
+        <item>
+          <name>F1..F12 to Functional (except virtual machine, RDC)</name>
+          <!-- #include "include/appendix_f1_f12_to_functional.xml" -->
+          <!-- #include "include/caution_functionkey.xml" -->
+          <identifier>remap.f1_f12_to_functional_ex_vm</identifier>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <!-- #include "include/fnF1_F12_to_function.xml" -->
+          <!-- #include "include/f1_f12_to_functional.xml" -->
+        </item>
+        <item>
+          <name>F5,F6 to Functional (except virtual machine, RDC)</name>
+          <!-- #include "include/appendix_f5_f6_to_functional.xml" -->
+          <!-- #include "include/caution_functionkey.xml" -->
+          <identifier>remap.f5_f6_to_functional_ex_vm</identifier>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <!-- #include "include/fnF5_F6_to_function.xml" -->
+          <!-- #include "include/f5_f6_to_functional.xml" -->
+        </item>
+
+        <item>
+          <name>Fn+F1..F12 to Functional</name>
+          <appendix>There is this setting for "* to Fn". (ex: Control_L to Fn)</appendix>
+          <appendix></appendix>
+          <appendix>Fn+F1 to Brightness Down</appendix>
+          <appendix>Fn+F2 to Brightness Up</appendix>
+          <appendix>Fn+F3 to Expose</appendix>
+          <appendix>Fn+F4 to Dashboard</appendix>
+          <appendix>Fn+F5 to Keyboard Light LOW</appendix>
+          <appendix>Fn+F6 to Keyboard Light HIGH</appendix>
+          <appendix>Fn+F7 to Music Prev</appendix>
+          <appendix>Fn+F8 to Music Play/Pause</appendix>
+          <appendix>Fn+F9 to Music Next</appendix>
+          <appendix>Fn+F10 to Volume Mute</appendix>
+          <appendix>Fn+F11 to Volume Down</appendix>
+          <appendix>Fn+F12 to Volume Up</appendix>
+          <!-- #include "include/caution_functionkey.xml" -->
+          <identifier>remap.fnF1_F12_to_functional</identifier>
+          <!-- #include "include/f1_f12_to_functional_withfn.xml" -->
         </item>
 
         <item>
