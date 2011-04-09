@@ -1,5 +1,5 @@
 KeyRemap4MacBook
-=============
+================
 
 KeyRemap4MacBook is a powerful utility for keyboard customization.
 
