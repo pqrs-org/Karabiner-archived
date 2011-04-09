@@ -1474,6 +1474,12 @@
               <identifier>remap.samples_vk_lazy_keyoverlaidmodifier</identifier>
               <autogen>--KeyOverlaidModifier-- KeyCode::KEY_1, KeyCode::VK_LAZY_SHIFT_L, KeyCode::SPACE</autogen>
             </item>
+            <item>
+              <name>DoublePressModifier</name>
+              <appendix>Change 1 to VK_LAZY_SHIFT_L, KEY_1 x2 to Return</appendix>
+              <identifier>remap.samples_vk_lazy_doublepressmodifier</identifier>
+              <autogen>--DoublePressModifier-- KeyCode::KEY_1, KeyCode::VK_LAZY_SHIFT_L, KeyCode::RETURN</autogen>
+            </item>
           </list>
         </item>
         <item>
