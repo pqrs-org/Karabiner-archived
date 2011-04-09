@@ -27,14 +27,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   public:
     enum {
       MAX_CONFIG_COUNT = 10000,
-      MAX_ALLOCATION_COUNT = 8 * 1024 * 1024, // 8MB
+      MAX_ALLOCATION_COUNT = (8 * 1024 * 1024) / sizeof(uint32_t), // 8MB
     };
 
     class Item {
     public:
-      Item(const unsigned int* vec, size_t length);
+      Item(const uint32_t* vec, size_t length);
       ~Item(void);
-      void append_filter(const unsigned int* vec, size_t length);
+      void append_filter(const uint32_t* vec, size_t length);
 
       // --------------------
       bool remap(RemapParams& remapParams);
@@ -52,7 +52,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     private:
       bool isblocked(void);
 
-      unsigned int type_;
+      uint32_t type_;
 
       union {
         RemapFunc::KeyToKey* keyToKey;

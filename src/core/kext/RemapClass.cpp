@@ -6,7 +6,7 @@
 #include "util/EventInputQueue.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  RemapClass::Item::Item(const unsigned int* vec, size_t length)
+  RemapClass::Item::Item(const uint32_t* vec, size_t length)
   {
     type_ = BRIDGE_REMAPTYPE_NONE;
     filters_ = NULL;
