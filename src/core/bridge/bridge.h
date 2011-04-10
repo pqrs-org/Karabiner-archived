@@ -10,8 +10,9 @@ enum {
   // Version 3: Removed some essential configurations. (parameter.statuswindow_alpha_font, ...)
   // Version 4: Added a essential configuration. (general.suppress_growl_warning)
   // Version 5: Changed initialize vector format
+  // Version 6: Added VK_MOUSEKEY_BUTTON_*
 
-  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 5,
+  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 6,
 };
 
 enum {

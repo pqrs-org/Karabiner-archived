@@ -13,6 +13,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void initialize(IOWorkLoop& workloop);
     static void terminate(void);
     static void reset(void);
+
+    static bool isKeyLikeModifier(KeyCode keycode);
   };
 
   // ----------------------------------------------------------------------
@@ -81,6 +83,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void reset(void);
 
     static bool handle(const Params_KeyboardEventCallBack& params);
+    static PointingButton getPointingButton(KeyCode keycode);
 
   private:
     enum {
@@ -90,6 +93,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       HIGHSPEED_SCROLL_SCALE = 50,
     };
     static void fire(OSObject* notuse_owner, IOTimerEventSource* notuse_sender);
+
+    static bool handle_button(const Params_KeyboardEventCallBack& params);
+    static bool handle_move(const Params_KeyboardEventCallBack& params);
 
     static int dx_;
     static int dy_;

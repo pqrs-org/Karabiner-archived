@@ -116,15 +116,16 @@ namespace org_pqrs_KeyRemap4MacBook {
         case 1:
         {
           EventType newEventType = remapParams.params.ex_iskeydown ? EventType::DOWN : EventType::UP;
-          ModifierFlag toModifierFlag = (*toKeys_)[0].key.getModifierFlag();
+          KeyCode toKey = (*toKeys_)[0].key;
+          ModifierFlag toModifierFlag = toKey.getModifierFlag();
 
-          if (toModifierFlag == ModifierFlag::NONE && ! Handle_VK_CONFIG::is_VK_CONFIG_SYNC_KEYDOWNUP((*toKeys_)[0].key)) {
+          if (toModifierFlag == ModifierFlag::NONE && ! VirtualKey::isKeyLikeModifier(toKey)) {
             // toKey
             FlagStatus::temporary_decrease(fromFlags);
             FlagStatus::temporary_increase((*toKeys_)[0].flags);
 
           } else {
-            // toModifier or VK_CONFIG_SYNC_KEYDOWNUP_*
+            // toModifier or VirtualKey::isKeyLikeModifier
             if (toModifierFlag != ModifierFlag::NONE) {
               newEventType = EventType::MODIFY;
             }
@@ -141,7 +142,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           // ----------------------------------------
           Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(newEventType,
                                                                                          FlagStatus::makeFlags(),
-                                                                                         (*toKeys_)[0].key,
+                                                                                         toKey,
                                                                                          remapParams.params.keyboardType,
                                                                                          remapParams.params.repeat));
           if (! ptr) return false;
@@ -162,7 +163,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           Flags lastKeyFlags               = (*toKeys_)[toKeys_->size() - 1].flags;
           ModifierFlag lastKeyModifierFlag = lastKey.getModifierFlag();
           bool isLastKeyModifier           = (lastKeyModifierFlag != ModifierFlag::NONE);
-          bool isLastKeyLikeModifier       = (Handle_VK_CONFIG::is_VK_CONFIG_SYNC_KEYDOWNUP(lastKey) || (Handle_VK_LAZY::getModifierFlag(lastKey) != ModifierFlag::NONE));
+          bool isLastKeyLikeModifier       = VirtualKey::isKeyLikeModifier(lastKey);
 
           if (remapParams.params.ex_iskeydown) {
             KeyboardRepeat::cancel();

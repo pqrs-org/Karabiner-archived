@@ -32,6 +32,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     Handle_VK_MOUSEKEY::reset();
   }
 
+  bool
+  VirtualKey::isKeyLikeModifier(KeyCode keycode)
+  {
+    if (Handle_VK_CONFIG::is_VK_CONFIG_SYNC_KEYDOWNUP(keycode)) return true;
+    if (Handle_VK_LAZY::getModifierFlag(keycode) != ModifierFlag::NONE) return true;
+    if (Handle_VK_MOUSEKEY::getPointingButton(keycode) != PointingButton::NONE) return true;
+    return false;
+  }
+
   // ----------------------------------------------------------------------
   bool
   Handle_VK_LOCK::handle(const Params_KeyboardEventCallBack& params)
@@ -367,6 +376,49 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   bool
   Handle_VK_MOUSEKEY::handle(const Params_KeyboardEventCallBack& params)
+  {
+    if (handle_button(params)) return true;
+    if (handle_move(params)) return true;
+    return false;
+  }
+
+  PointingButton
+  Handle_VK_MOUSEKEY::getPointingButton(KeyCode keycode)
+  {
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_LEFT) return PointingButton::LEFT;
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_MIDDLE) return PointingButton::MIDDLE;
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_RIGHT) return PointingButton::RIGHT;
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON4) return PointingButton::BUTTON4;
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON5) return PointingButton::BUTTON5;
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON6) return PointingButton::BUTTON6;
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON7) return PointingButton::BUTTON7;
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON8) return PointingButton::BUTTON8;
+    return PointingButton::NONE;
+  }
+
+  bool
+  Handle_VK_MOUSEKEY::handle_button(const Params_KeyboardEventCallBack& params)
+  {
+    PointingButton button = getPointingButton(params.key);
+    if (button == PointingButton::NONE) return false;
+
+    if (params.repeat) return true;
+
+    // ----------------------------------------
+    if (params.ex_iskeydown) {
+      ButtonStatus::increase(button);
+      EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons());
+
+    } else {
+      ButtonStatus::decrease(button);
+      EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons());
+    }
+
+    return true;
+  }
+
+  bool
+  Handle_VK_MOUSEKEY::handle_move(const Params_KeyboardEventCallBack& params)
   {
     /*  */ if (params.key == KeyCode::VK_MOUSEKEY_UP) {
       if (params.repeat == false) {

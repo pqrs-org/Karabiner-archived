@@ -1465,8 +1465,12 @@
             <item>
               <name>KeyToKey</name>
               <appendix>Change 1 to A,B,C,VK_LAZY_SHIFT_L</appendix>
+              <appendix>Change 2 to Control_L+VK_LAZY_SHIFT_L</appendix>
+              <appendix>Change 3 to A,Control_L+VK_LAZY_SHIFT_L</appendix>
               <identifier>remap.samples_vk_lazy_keytokey</identifier>
               <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::A, KeyCode::B, KeyCode::C, KeyCode::VK_LAZY_SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_LAZY_SHIFT_L, ModifierFlag::CONTROL_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::A, KeyCode::VK_LAZY_SHIFT_L, ModifierFlag::CONTROL_L</autogen>
             </item>
             <item>
               <name>KeyOverlaidModifier</name>
@@ -1479,6 +1483,56 @@
               <appendix>Change 1 to VK_LAZY_SHIFT_L, KEY_1 x2 to Return</appendix>
               <identifier>remap.samples_vk_lazy_doublepressmodifier</identifier>
               <autogen>--DoublePressModifier-- KeyCode::KEY_1, KeyCode::VK_LAZY_SHIFT_L, KeyCode::RETURN</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
+          <name>VK_MOUSEKEY_*</name>
+          <list>
+            <item>
+              <name>Standard</name>
+              <appendix>Change WASD to VK_MOUSEKEY_UP/LEFT/DOWN/RIGHT</appendix>
+              <appendix>Change IJKL to VK_MOUSEKEY_SCROLL_UP/LEFT/DOWN/RIGHT</appendix>
+              <appendix>Change F to VK_MOUSEKEY_HIGHSPEED (WASD and IJKL operations become high speed)</appendix>
+              <appendix>Change 1 to VK_MOUSEKEY_BUTTON_LEFT</appendix>
+              <appendix>Change 2 to VK_MOUSEKEY_BUTTON_MIDDLE</appendix>
+              <appendix>Change 3 to VK_MOUSEKEY_BUTTON_RIGHT</appendix>
+              <appendix>Change 4 to VK_MOUSEKEY_BUTTON_BUTTON4</appendix>
+              <appendix>Change 5 to VK_MOUSEKEY_BUTTON_BUTTON5</appendix>
+              <appendix>Change 6 to VK_MOUSEKEY_BUTTON_BUTTON6</appendix>
+              <appendix>Change 7 to VK_MOUSEKEY_BUTTON_BUTTON7</appendix>
+              <appendix>Change 8 to VK_MOUSEKEY_BUTTON_BUTTON8</appendix>
+              <identifier>remap.samples_vk_mousekeys_standard</identifier>
+              <autogen>--KeyToKey-- KeyCode::W, KeyCode::VK_MOUSEKEY_UP</autogen>
+              <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_MOUSEKEY_LEFT</autogen>
+              <autogen>--KeyToKey-- KeyCode::S, KeyCode::VK_MOUSEKEY_DOWN</autogen>
+              <autogen>--KeyToKey-- KeyCode::D, KeyCode::VK_MOUSEKEY_RIGHT</autogen>
+
+              <autogen>--KeyToKey-- KeyCode::I, KeyCode::VK_MOUSEKEY_SCROLL_UP</autogen>
+              <autogen>--KeyToKey-- KeyCode::J, KeyCode::VK_MOUSEKEY_SCROLL_LEFT</autogen>
+              <autogen>--KeyToKey-- KeyCode::K, KeyCode::VK_MOUSEKEY_SCROLL_DOWN</autogen>
+              <autogen>--KeyToKey-- KeyCode::L, KeyCode::VK_MOUSEKEY_SCROLL_RIGHT</autogen>
+
+              <autogen>--KeyToKey-- KeyCode::F, KeyCode::VK_MOUSEKEY_HIGHSPEED</autogen>
+
+              <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_MOUSEKEY_BUTTON_LEFT</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_MOUSEKEY_BUTTON_MIDDLE</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::VK_MOUSEKEY_BUTTON_RIGHT</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_4, KeyCode::VK_MOUSEKEY_BUTTON_BUTTON4</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_5, KeyCode::VK_MOUSEKEY_BUTTON_BUTTON5</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::VK_MOUSEKEY_BUTTON_BUTTON6</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_7, KeyCode::VK_MOUSEKEY_BUTTON_BUTTON7</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_8, KeyCode::VK_MOUSEKEY_BUTTON_BUTTON8</autogen>
+            </item>
+            <item>
+              <name>Extra</name>
+              <appendix>Change 1 to Shift_L+VK_MOUSEKEY_BUTTON_LEFT</appendix>
+              <appendix>Change 2 to A,VK_MOUSEKEY_BUTTON_LEFT</appendix>
+              <appendix>Change 3 to A,Shift_L+VK_MOUSEKEY_BUTTON_LEFT</appendix>
+              <identifier>remap.samples_vk_mousekeys_extra</identifier>
+              <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_MOUSEKEY_BUTTON_LEFT, ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::A, KeyCode::VK_MOUSEKEY_BUTTON_LEFT</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::A, KeyCode::VK_MOUSEKEY_BUTTON_LEFT, ModifierFlag::SHIFT_L</autogen>
             </item>
           </list>
         </item>
