@@ -1526,13 +1526,46 @@
             </item>
             <item>
               <name>Extra</name>
+              <appendix>Change WASD to Shift_L+VK_MOUSEKEY_UP/LEFT/DOWN/RIGHT</appendix>
+              <appendix>Change IJKL to Shift_L+VK_MOUSEKEY_SCROLL_UP/LEFT/DOWN/RIGHT</appendix>
+              <appendix>Change F to Shift_L+VK_MOUSEKEY_HIGHSPEED</appendix>
               <appendix>Change 1 to Shift_L+VK_MOUSEKEY_BUTTON_LEFT</appendix>
               <appendix>Change 2 to A,VK_MOUSEKEY_BUTTON_LEFT</appendix>
               <appendix>Change 3 to A,Shift_L+VK_MOUSEKEY_BUTTON_LEFT</appendix>
               <identifier>remap.samples_vk_mousekeys_extra</identifier>
+              <autogen>--KeyToKey-- KeyCode::W, KeyCode::VK_MOUSEKEY_UP,    ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_MOUSEKEY_LEFT,  ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::S, KeyCode::VK_MOUSEKEY_DOWN,  ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::D, KeyCode::VK_MOUSEKEY_RIGHT, ModifierFlag::SHIFT_L</autogen>
+
+              <autogen>--KeyToKey-- KeyCode::I, KeyCode::VK_MOUSEKEY_SCROLL_UP,    ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::J, KeyCode::VK_MOUSEKEY_SCROLL_LEFT,  ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::K, KeyCode::VK_MOUSEKEY_SCROLL_DOWN,  ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::L, KeyCode::VK_MOUSEKEY_SCROLL_RIGHT, ModifierFlag::SHIFT_L</autogen>
+
+              <autogen>--KeyToKey-- KeyCode::F, KeyCode::VK_MOUSEKEY_HIGHSPEED, ModifierFlag::SHIFT_L</autogen>
+
               <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_MOUSEKEY_BUTTON_LEFT, ModifierFlag::SHIFT_L</autogen>
               <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::A, KeyCode::VK_MOUSEKEY_BUTTON_LEFT</autogen>
               <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::A, KeyCode::VK_MOUSEKEY_BUTTON_LEFT, ModifierFlag::SHIFT_L</autogen>
+            </item>
+            <item>
+              <name>Extra2</name>
+              <appendix>Change WASD to A,Shift_L+VK_MOUSEKEY_UP/LEFT/DOWN/RIGHT</appendix>
+              <appendix>Change IJKL to A,Shift_L+VK_MOUSEKEY_SCROLL_UP/LEFT/DOWN/RIGHT</appendix>
+              <appendix>Change F to A,Shift_L+VK_MOUSEKEY_HIGHSPEED</appendix>
+              <identifier>remap.samples_vk_mousekeys_extra2</identifier>
+              <autogen>--KeyToKey-- KeyCode::W, KeyCode::A, KeyCode::VK_MOUSEKEY_UP,    ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::A, KeyCode::A, KeyCode::VK_MOUSEKEY_LEFT,  ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::S, KeyCode::A, KeyCode::VK_MOUSEKEY_DOWN,  ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::D, KeyCode::A, KeyCode::VK_MOUSEKEY_RIGHT, ModifierFlag::SHIFT_L</autogen>
+
+              <autogen>--KeyToKey-- KeyCode::I, KeyCode::A, KeyCode::VK_MOUSEKEY_SCROLL_UP,    ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::J, KeyCode::A, KeyCode::VK_MOUSEKEY_SCROLL_LEFT,  ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::K, KeyCode::A, KeyCode::VK_MOUSEKEY_SCROLL_DOWN,  ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::L, KeyCode::A, KeyCode::VK_MOUSEKEY_SCROLL_RIGHT, ModifierFlag::SHIFT_L</autogen>
+
+              <autogen>--KeyToKey-- KeyCode::F, KeyCode::A, KeyCode::VK_MOUSEKEY_HIGHSPEED, ModifierFlag::SHIFT_L</autogen>
             </item>
           </list>
         </item>

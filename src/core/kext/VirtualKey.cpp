@@ -37,7 +37,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (Handle_VK_CONFIG::is_VK_CONFIG_SYNC_KEYDOWNUP(keycode)) return true;
     if (Handle_VK_LAZY::getModifierFlag(keycode) != ModifierFlag::NONE) return true;
-    if (Handle_VK_MOUSEKEY::getPointingButton(keycode) != PointingButton::NONE) return true;
+    if (Handle_VK_MOUSEKEY::is_VK_MOUSEKEY(keycode)) return true;
     return false;
   }
 
@@ -394,6 +394,22 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON7) return PointingButton::BUTTON7;
     if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON8) return PointingButton::BUTTON8;
     return PointingButton::NONE;
+  }
+
+  bool
+  Handle_VK_MOUSEKEY::is_VK_MOUSEKEY(KeyCode keycode)
+  {
+    if (getPointingButton(keycode) != PointingButton::NONE) return true;
+    if (keycode == KeyCode::VK_MOUSEKEY_UP)           return true;
+    if (keycode == KeyCode::VK_MOUSEKEY_DOWN)         return true;
+    if (keycode == KeyCode::VK_MOUSEKEY_LEFT)         return true;
+    if (keycode == KeyCode::VK_MOUSEKEY_RIGHT)        return true;
+    if (keycode == KeyCode::VK_MOUSEKEY_SCROLL_UP)    return true;
+    if (keycode == KeyCode::VK_MOUSEKEY_SCROLL_DOWN)  return true;
+    if (keycode == KeyCode::VK_MOUSEKEY_SCROLL_LEFT)  return true;
+    if (keycode == KeyCode::VK_MOUSEKEY_SCROLL_RIGHT) return true;
+    if (keycode == KeyCode::VK_MOUSEKEY_HIGHSPEED)    return true;
+    return false;
   }
 
   bool

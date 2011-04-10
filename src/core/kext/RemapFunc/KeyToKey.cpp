@@ -201,7 +201,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                 // Don't call EventOutputQueue::FireModifiers::fire here.
                 //
                 // Intentionally VK_LAZY_* stop sending MODIFY events.
-                // EventOutputQueue::FireModifiers::fire destroys this operation.
+                // EventOutputQueue::FireModifiers::fire destroys this behavior.
                 Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::DOWN, FlagStatus::makeFlags(), lastKey, remapParams.params.keyboardType, false));
                 if (ptr) {
                   EventOutputQueue::FireKey::fire(*ptr);
