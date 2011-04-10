@@ -196,13 +196,18 @@ namespace org_pqrs_KeyRemap4MacBook {
 
               FlagStatus::increase(lastKeyFlags | lastKeyModifierFlag);
               FlagStatus::decrease(fromFlags);
-              EventOutputQueue::FireModifiers::fire();
 
               if (isLastKeyLikeModifier) {
+                // Don't call EventOutputQueue::FireModifiers::fire here.
+                //
+                // Intentionally VK_LAZY_* stop sending MODIFY events.
+                // EventOutputQueue::FireModifiers::fire destroys this operation.
                 Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::DOWN, FlagStatus::makeFlags(), lastKey, remapParams.params.keyboardType, false));
                 if (ptr) {
                   EventOutputQueue::FireKey::fire(*ptr);
                 }
+              } else {
+                EventOutputQueue::FireModifiers::fire();
               }
             }
 
