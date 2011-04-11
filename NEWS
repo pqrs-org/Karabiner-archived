@@ -1,7 +1,8 @@
 Changes since 7.2.0
-    - Added Option::NOREPEAT at <autogen>.
     - Improved "Lazy-Modifier (KeyCode::VK_LAZY_*)" behavior.
     - Clean up the internal source code. The connection between kernel and userspace became more easier to understand.
+    - Added KeyCode::VK_MOUSEKEY_BUTTON_*.
+    - Added Option::NOREPEAT at <autogen>.
     - Added about XXX kinds settings.
 
 ----------------------------------------------------------------------
