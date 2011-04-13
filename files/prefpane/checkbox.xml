@@ -6081,16 +6081,36 @@
           <appendix>W to Close Window (Command+W)</appendix>
           <identifier>notsave.thumbsense</identifier>
           <autogen>--ShowStatusMessage-- ThumbSense</autogen>
-          <autogen>--KeyToPointingButton-- KeyCode::F,     ModifierFlag::NONE, PointingButton::LEFT</autogen>
-          <autogen>--KeyToPointingButton-- KeyCode::J,     ModifierFlag::NONE, PointingButton::LEFT</autogen>
-          <autogen>--KeyToPointingButton-- KeyCode::SPACE, ModifierFlag::NONE, PointingButton::LEFT</autogen>
+          <!-- ============================================================ -->
+          <!-- PointingButton -->
+          <autogen>--KeyToPointingButton-- KeyCode::F,     PointingButton::LEFT</autogen>
+          <autogen>--KeyToPointingButton-- KeyCode::J,     PointingButton::LEFT</autogen>
+          <autogen>--KeyToPointingButton-- KeyCode::SPACE, PointingButton::LEFT</autogen>
 
-          <autogen>--KeyToPointingButton-- KeyCode::D,     ModifierFlag::NONE, PointingButton::RIGHT</autogen>
-          <autogen>--KeyToPointingButton-- KeyCode::K,     ModifierFlag::NONE, PointingButton::RIGHT</autogen>
+          <autogen>--KeyToPointingButton-- KeyCode::D,     PointingButton::RIGHT</autogen>
+          <autogen>--KeyToPointingButton-- KeyCode::K,     PointingButton::RIGHT</autogen>
 
-          <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_thumbsense_scroll</autogen>
-          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::NONE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_thumbsense_scroll</autogen>
+          <!-- ============================================================ -->
+          <!-- Scroll Mode -->
+          <!--
+              We want to keep the scroll mode while pressing S key even if ThumbSense is turned off as follows.
 
+              (1) Turn ThumbSense on.
+              (2) Press S
+              (3) move pointer (=> scroll)
+              (4) Turn ThumbSense off.
+              (5) Turn ThumbSense on.
+              (6) move pointer (=> scroll)
+              (7) Release S
+
+              So, we use ModifierFlag::EXTRA1 instead of KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_*.
+              Because KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_* will be canceled when we turn ThumbSense off.
+            -->
+          <autogen>--KeyToKey-- KeyCode::S, KeyCode::VK_MODIFIER_EXTRA1</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, KeyCode::VK_MODIFIER_EXTRA1</autogen>
+          <autogen>--PointingRelativeToScroll-- PointingButton::NONE, ModifierFlag::EXTRA1</autogen>
+
+          <!-- ============================================================ -->
           <!-- no E definition -->
           <!-- no T definition -->
 
@@ -6111,9 +6131,6 @@
           <appendix>(1) Launch multi-touch extension from "Misc &amp; Uninstall" tab.</appendix>
           <appendix>(2) Click the icon in Dock to open preferences window.</appendix>
           <appendix>(3) Enter "notsave.thumbsense" to Target setting.</appendix>
-          <identifier vk_config="true">notsave.thumbsense_scroll</identifier>
-          <config_only>notsave.thumbsense</config_only>
-          <autogen>--PointingRelativeToScroll-- PointingButton::NONE</autogen>
         </item>
 
         <item><name>------------------------------------------------------------</name></item>
