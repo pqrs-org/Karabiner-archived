@@ -6074,11 +6074,12 @@
           <name>What's ThumbSense</name>
           <appendix>ThumbSense changes key while touching a finger in TrackPad.</appendix>
           <appendix></appendix>
-          <appendix>F/J/Space to LeftClick</appendix>
-          <appendix>D/K to RightClick</appendix>
-          <appendix>S/L to "CursorMove to ScrollWheel"</appendix>
-          <appendix>G/H to History Back/Forward (Command+[/Command+])</appendix>
-          <appendix>W to Close Window (Command+W)</appendix>
+          <appendix>- F/J/Space to LeftClick</appendix>
+          <appendix>- D/K to RightClick</appendix>
+          <appendix>- S/L to "CursorMove to ScrollWheel"</appendix>
+          <appendix></appendix>
+          <appendix>- G/H to History Back/Forward (Command+[/Command+])</appendix>
+          <appendix>- W to Close Window (Command+W)</appendix>
           <identifier>notsave.thumbsense</identifier>
           <autogen>--ShowStatusMessage-- ThumbSense</autogen>
           <!-- ============================================================ -->
