@@ -1,4 +1,5 @@
 Changes since 7.2.0
+    - Improved stability when using multi-touch extension together.
     - Improved "Lazy-Modifier (KeyCode::VK_LAZY_*)" behavior.
     - Clean up the internal source code. The connection between kernel and userspace became more easier to understand.
     - Added KeyCode::VK_MOUSEKEY_BUTTON_*.
