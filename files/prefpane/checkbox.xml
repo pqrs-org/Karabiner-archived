@@ -6191,32 +6191,32 @@
         <item>
           <name>Holding "E" Key to Expose</name>
           <identifier>remap.holding_e_to_expose</identifier>
-          <autogen>--HoldingKeyToKey-- KeyCode::E, ModifierFlag::NONE, KeyCode::E, KeyCode::VK_NONE, KeyCode::EXPOSE_ALL</autogen>
+          <autogen>--HoldingKeyToKey-- KeyCode::E, ModifierFlag::NONE, KeyCode::E, KeyCode::VK_NONE, KeyCode::EXPOSE_ALL, Option::NOREPEAT</autogen>
         </item>
         <item>
           <name>Holding "S" Key to Spaces (F8)</name>
           <identifier>remap.holding_s_to_spaces</identifier>
-          <autogen>--HoldingKeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::S, KeyCode::VK_NONE, KeyCode::F8</autogen>
+          <autogen>--HoldingKeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::S, KeyCode::VK_NONE, KeyCode::F8, Option::NOREPEAT</autogen>
         </item>
         <item>
           <name>Holding "D" Key to Dashboard</name>
           <identifier>remap.holding_d_to_dashboard</identifier>
-          <autogen>--HoldingKeyToKey-- KeyCode::D, ModifierFlag::NONE, KeyCode::D, KeyCode::VK_NONE, KeyCode::DASHBOARD</autogen>
+          <autogen>--HoldingKeyToKey-- KeyCode::D, ModifierFlag::NONE, KeyCode::D, KeyCode::VK_NONE, KeyCode::DASHBOARD, Option::NOREPEAT</autogen>
         </item>
         <item>
           <name>Holding Shift+"E" Key to Expose</name>
           <identifier>remap.holding_shift_e_to_expose</identifier>
-          <autogen>--HoldingKeyToKey-- KeyCode::E, VK_SHIFT | ModifierFlag::NONE, KeyCode::E, VK_SHIFT, KeyCode::VK_NONE, KeyCode::EXPOSE_ALL</autogen>
+          <autogen>--HoldingKeyToKey-- KeyCode::E, VK_SHIFT | ModifierFlag::NONE, KeyCode::E, VK_SHIFT, KeyCode::VK_NONE, KeyCode::EXPOSE_ALL, Option::NOREPEAT</autogen>
         </item>
         <item>
           <name>Holding Shift+"S" Key to Spaces (F8)</name>
           <identifier>remap.holding_shift_s_to_spaces</identifier>
-          <autogen>--HoldingKeyToKey-- KeyCode::S, VK_SHIFT | ModifierFlag::NONE, KeyCode::S, VK_SHIFT, KeyCode::VK_NONE, KeyCode::F8</autogen>
+          <autogen>--HoldingKeyToKey-- KeyCode::S, VK_SHIFT | ModifierFlag::NONE, KeyCode::S, VK_SHIFT, KeyCode::VK_NONE, KeyCode::F8, Option::NOREPEAT</autogen>
         </item>
         <item>
           <name>Holding Shift+"D" Key to Dashboard</name>
           <identifier>remap.holding_shift_d_to_dashboard</identifier>
-          <autogen>--HoldingKeyToKey-- KeyCode::D, VK_SHIFT | ModifierFlag::NONE, KeyCode::D, VK_SHIFT, KeyCode::VK_NONE, KeyCode::DASHBOARD</autogen>
+          <autogen>--HoldingKeyToKey-- KeyCode::D, VK_SHIFT | ModifierFlag::NONE, KeyCode::D, VK_SHIFT, KeyCode::VK_NONE, KeyCode::DASHBOARD, Option::NOREPEAT</autogen>
         </item>
         <item>
           <name>Expose Mode</name>
@@ -6326,22 +6326,22 @@
               <appendix>(Make setting of Spaces "Command+Control+Shift+Number Keys")</appendix>
               <appendix></appendix>
               <identifier>remap.spaces_special_holding_1234qwerasdfzxcv</identifier>
-              <autogen>--HoldingKeyToKey-- KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::KEY_1, KeyCode::VK_NONE, KeyCode::KEY_1, VK_MOD_CCS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::KEY_2, ModifierFlag::NONE, KeyCode::KEY_2, KeyCode::VK_NONE, KeyCode::KEY_2, VK_MOD_CCS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::KEY_3, ModifierFlag::NONE, KeyCode::KEY_3, KeyCode::VK_NONE, KeyCode::KEY_3, VK_MOD_CCS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::KEY_4, ModifierFlag::NONE, KeyCode::KEY_4, KeyCode::VK_NONE, KeyCode::KEY_4, VK_MOD_CCS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::Q,     ModifierFlag::NONE, KeyCode::Q,     KeyCode::VK_NONE, KeyCode::KEY_5, VK_MOD_CCS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::W,     ModifierFlag::NONE, KeyCode::W,     KeyCode::VK_NONE, KeyCode::KEY_6, VK_MOD_CCS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::E,     ModifierFlag::NONE, KeyCode::E,     KeyCode::VK_NONE, KeyCode::KEY_7, VK_MOD_CCS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::R,     ModifierFlag::NONE, KeyCode::R,     KeyCode::VK_NONE, KeyCode::KEY_8, VK_MOD_CCS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::A,     ModifierFlag::NONE, KeyCode::A,     KeyCode::VK_NONE, KeyCode::KEY_9, VK_MOD_CCS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::S,     ModifierFlag::NONE, KeyCode::S,     KeyCode::VK_NONE, KeyCode::KEY_0, VK_MOD_CCS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::D,     ModifierFlag::NONE, KeyCode::D,     KeyCode::VK_NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::F,     ModifierFlag::NONE, KeyCode::F,     KeyCode::VK_NONE, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::Z,     ModifierFlag::NONE, KeyCode::Z,     KeyCode::VK_NONE, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::X,     ModifierFlag::NONE, KeyCode::X,     KeyCode::VK_NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::C,     ModifierFlag::NONE, KeyCode::C,     KeyCode::VK_NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::V,     ModifierFlag::NONE, KeyCode::V,     KeyCode::VK_NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::KEY_1, KeyCode::VK_NONE, KeyCode::KEY_1, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_2, ModifierFlag::NONE, KeyCode::KEY_2, KeyCode::VK_NONE, KeyCode::KEY_2, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_3, ModifierFlag::NONE, KeyCode::KEY_3, KeyCode::VK_NONE, KeyCode::KEY_3, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_4, ModifierFlag::NONE, KeyCode::KEY_4, KeyCode::VK_NONE, KeyCode::KEY_4, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::Q,     ModifierFlag::NONE, KeyCode::Q,     KeyCode::VK_NONE, KeyCode::KEY_5, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::W,     ModifierFlag::NONE, KeyCode::W,     KeyCode::VK_NONE, KeyCode::KEY_6, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::E,     ModifierFlag::NONE, KeyCode::E,     KeyCode::VK_NONE, KeyCode::KEY_7, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::R,     ModifierFlag::NONE, KeyCode::R,     KeyCode::VK_NONE, KeyCode::KEY_8, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::A,     ModifierFlag::NONE, KeyCode::A,     KeyCode::VK_NONE, KeyCode::KEY_9, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::S,     ModifierFlag::NONE, KeyCode::S,     KeyCode::VK_NONE, KeyCode::KEY_0, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::D,     ModifierFlag::NONE, KeyCode::D,     KeyCode::VK_NONE, KeyCode::KEY_1, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::F,     ModifierFlag::NONE, KeyCode::F,     KeyCode::VK_NONE, KeyCode::KEY_2, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::Z,     ModifierFlag::NONE, KeyCode::Z,     KeyCode::VK_NONE, KeyCode::KEY_3, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::X,     ModifierFlag::NONE, KeyCode::X,     KeyCode::VK_NONE, KeyCode::KEY_4, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::C,     ModifierFlag::NONE, KeyCode::C,     KeyCode::VK_NONE, KeyCode::KEY_5, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::V,     ModifierFlag::NONE, KeyCode::V,     KeyCode::VK_NONE, KeyCode::KEY_6, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
             </item>
 
             <item>
@@ -6355,22 +6355,22 @@
               <appendix></appendix>
               <appendix>(+ 1234567890 to !@#$%^&amp;*() / Shift+1234567890 to 1234567890)</appendix>
               <identifier>remap.spaces_special_holding_1234qwerasdfzxcv_swap_number_and_symbol</identifier>
-              <autogen>--HoldingKeyToKey-- KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::KEY_1, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::KEY_1, VK_MOD_CCS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::KEY_2, ModifierFlag::NONE, KeyCode::KEY_2, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::KEY_2, VK_MOD_CCS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::KEY_3, ModifierFlag::NONE, KeyCode::KEY_3, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::KEY_3, VK_MOD_CCS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::KEY_4, ModifierFlag::NONE, KeyCode::KEY_4, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::KEY_4, VK_MOD_CCS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::Q,     ModifierFlag::NONE, KeyCode::Q,                            KeyCode::VK_NONE, KeyCode::KEY_5, VK_MOD_CCS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::W,     ModifierFlag::NONE, KeyCode::W,                            KeyCode::VK_NONE, KeyCode::KEY_6, VK_MOD_CCS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::E,     ModifierFlag::NONE, KeyCode::E,                            KeyCode::VK_NONE, KeyCode::KEY_7, VK_MOD_CCS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::R,     ModifierFlag::NONE, KeyCode::R,                            KeyCode::VK_NONE, KeyCode::KEY_8, VK_MOD_CCS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::A,     ModifierFlag::NONE, KeyCode::A,                            KeyCode::VK_NONE, KeyCode::KEY_9, VK_MOD_CCS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::S,     ModifierFlag::NONE, KeyCode::S,                            KeyCode::VK_NONE, KeyCode::KEY_0, VK_MOD_CCS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::D,     ModifierFlag::NONE, KeyCode::D,                            KeyCode::VK_NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::F,     ModifierFlag::NONE, KeyCode::F,                            KeyCode::VK_NONE, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::Z,     ModifierFlag::NONE, KeyCode::Z,                            KeyCode::VK_NONE, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::X,     ModifierFlag::NONE, KeyCode::X,                            KeyCode::VK_NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::C,     ModifierFlag::NONE, KeyCode::C,                            KeyCode::VK_NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-              <autogen>--HoldingKeyToKey-- KeyCode::V,     ModifierFlag::NONE, KeyCode::V,                            KeyCode::VK_NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::KEY_1, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::KEY_1, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_2, ModifierFlag::NONE, KeyCode::KEY_2, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::KEY_2, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_3, ModifierFlag::NONE, KeyCode::KEY_3, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::KEY_3, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_4, ModifierFlag::NONE, KeyCode::KEY_4, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::KEY_4, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::Q,     ModifierFlag::NONE, KeyCode::Q,                            KeyCode::VK_NONE, KeyCode::KEY_5, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::W,     ModifierFlag::NONE, KeyCode::W,                            KeyCode::VK_NONE, KeyCode::KEY_6, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::E,     ModifierFlag::NONE, KeyCode::E,                            KeyCode::VK_NONE, KeyCode::KEY_7, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::R,     ModifierFlag::NONE, KeyCode::R,                            KeyCode::VK_NONE, KeyCode::KEY_8, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::A,     ModifierFlag::NONE, KeyCode::A,                            KeyCode::VK_NONE, KeyCode::KEY_9, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::S,     ModifierFlag::NONE, KeyCode::S,                            KeyCode::VK_NONE, KeyCode::KEY_0, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::D,     ModifierFlag::NONE, KeyCode::D,                            KeyCode::VK_NONE, KeyCode::KEY_1, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::F,     ModifierFlag::NONE, KeyCode::F,                            KeyCode::VK_NONE, KeyCode::KEY_2, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::Z,     ModifierFlag::NONE, KeyCode::Z,                            KeyCode::VK_NONE, KeyCode::KEY_3, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::X,     ModifierFlag::NONE, KeyCode::X,                            KeyCode::VK_NONE, KeyCode::KEY_4, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::C,     ModifierFlag::NONE, KeyCode::C,                            KeyCode::VK_NONE, KeyCode::KEY_5, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::V,     ModifierFlag::NONE, KeyCode::V,                            KeyCode::VK_NONE, KeyCode::KEY_6, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
               <!-- KEY_1 - KEY_4 is already defined in above. -->
               <autogen>--KeyToKey-- KeyCode::KEY_5, ModifierFlag::NONE, KeyCode::KEY_5, ModifierFlag::SHIFT_L</autogen>
               <autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::NONE, KeyCode::KEY_6, ModifierFlag::SHIFT_L</autogen>
@@ -6893,13 +6893,13 @@
               <name>Disable Command+L (Make Alias)</name>
               <identifier>remap.app_finder_disable_command_l</identifier>
               <only>FINDER</only>
-              <autogen>--HoldingKeyToKey-- KeyCode::L, VK_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+              <autogen>--KeyToKey-- KeyCode::L, VK_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
             </item>
             <item>
               <name>Disable Command+T (Add To Sidebar)</name>
               <identifier>remap.app_finder_disable_command_t</identifier>
               <only>FINDER</only>
-              <autogen>--HoldingKeyToKey-- KeyCode::T, VK_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+              <autogen>--KeyToKey-- KeyCode::T, VK_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
             </item>
           </list>
         </item>
