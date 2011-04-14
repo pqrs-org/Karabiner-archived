@@ -629,6 +629,14 @@
           <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, VK_SHIFT, KeyCode::SPACE</autogen>
           <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::RETURN</autogen>
         </item>
+        <item>
+          <name>NoRepeat</name>
+          <appendix>(A+J to Down)</appendix>
+          <appendix>LeftClick+RightClick to Return</appendix>
+          <identifier>remap.samples_simultaneouskeypresses_norepeat</identifier>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::A, KeyCode::CURSOR_DOWN, Option::NOREPEAT</autogen>
+          <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::RETURN, Option::NOREPEAT</autogen>
+        </item>
       </list>
     </item>
 

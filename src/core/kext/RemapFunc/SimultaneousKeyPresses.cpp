@@ -125,6 +125,13 @@ namespace org_pqrs_KeyRemap4MacBook {
             } else {
               isToRaw_ = true;
             }
+          } else if (Option::NOREPEAT == newval) {
+            if (toType_ != TOTYPE_KEY) {
+              IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
+            } else {
+              keytokey_.add(Option(newval));
+            }
+
           } else {
             IOLOG_ERROR("SimultaneousKeyPresses::add unknown option:%d\n", newval);
           }
