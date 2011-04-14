@@ -4693,7 +4693,7 @@
           <appendix>(You can adjust the threshold time of holding by</appendix>
           <appendix>"[Holding Key to Key] Holding Threshold" in Key Repeat tab.)</appendix>
           <identifier>remap.holdcommandQ</identifier>
-          <autogen>--HoldingKeyToKey-- KeyCode::Q, VK_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE, KeyCode::Q, VK_COMMAND</autogen>
+          <autogen>--HoldingKeyToKey-- KeyCode::Q, VK_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE, KeyCode::Q, VK_COMMAND, Option::NOREPEAT</autogen>
         </item>
       </list>
     </item>

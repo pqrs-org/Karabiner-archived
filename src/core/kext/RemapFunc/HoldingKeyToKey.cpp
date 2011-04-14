@@ -63,6 +63,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
         case BRIDGE_DATATYPE_FLAGS:
+        case BRIDGE_DATATYPE_OPTION:
         {
           switch (index_) {
             case 0:
@@ -70,14 +71,14 @@ namespace org_pqrs_KeyRemap4MacBook {
               break;
 
             case 1:
-              keytokey_drop_.add(Flags(newval));
+              keytokey_drop_.add(datatype, newval);
               break;
 
             default:
               if (index_is_holding_) {
-                keytokey_holding_.add(Flags(newval));
+                keytokey_holding_.add(datatype, newval);
               } else {
-                keytokey_normal_.add(Flags(newval));
+                keytokey_normal_.add(datatype, newval);
               }
               break;
           }
