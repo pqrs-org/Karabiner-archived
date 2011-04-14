@@ -4688,6 +4688,11 @@
           <autogen>--KeyToKey-- KeyCode::Q, VK_COMMAND | ModifierFlag::SHIFT_L, KeyCode::Q, VK_COMMAND | ModifierFlag::NONE</autogen>
           <autogen>--KeyToKey-- KeyCode::Q, VK_COMMAND | ModifierFlag::NONE,    KeyCode::W, VK_COMMAND | ModifierFlag::SHIFT_L</autogen>
         </item>
+        <item>
+          <name>Hold Command+Q to Quit Application</name>
+          <identifier>remap.holdcommandQ</identifier>
+          <autogen>--HoldingKeyToKey-- KeyCode::Q, VK_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE, KeyCode::Q, VK_COMMAND</autogen>
+        </item>
       </list>
     </item>
 
