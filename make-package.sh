@@ -63,7 +63,7 @@ sudo chown root:admin pkgroot/Library
 # --------------------------------------------------
 echo "Exec PackageMaker"
 
-rm -rf $pkgName
+sudo rm -rf $pkgName
 sudo $packagemaker \
     --root pkgroot \
     --info pkginfo/Info.plist \
