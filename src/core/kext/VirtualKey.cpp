@@ -121,35 +121,21 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     ModifierFlag flag = ModifierFlag::NONE;
 
-    /*  */ if (params.key == KeyCode::VK_STICKY_COMMAND_L) {
-      flag = ModifierFlag::COMMAND_L;
-    } else if (params.key == KeyCode::VK_STICKY_COMMAND_R) {
-      flag = ModifierFlag::COMMAND_R;
-    } else if (params.key == KeyCode::VK_STICKY_CONTROL_L) {
-      flag = ModifierFlag::CONTROL_L;
-    } else if (params.key == KeyCode::VK_STICKY_CONTROL_R) {
-      flag = ModifierFlag::CONTROL_R;
-    } else if (params.key == KeyCode::VK_STICKY_FN) {
-      flag = ModifierFlag::FN;
-    } else if (params.key == KeyCode::VK_STICKY_OPTION_L) {
-      flag = ModifierFlag::OPTION_L;
-    } else if (params.key == KeyCode::VK_STICKY_OPTION_R) {
-      flag = ModifierFlag::OPTION_R;
-    } else if (params.key == KeyCode::VK_STICKY_SHIFT_L) {
-      flag = ModifierFlag::SHIFT_L;
-    } else if (params.key == KeyCode::VK_STICKY_SHIFT_R) {
-      flag = ModifierFlag::SHIFT_R;
-    } else if (params.key == KeyCode::VK_STICKY_EXTRA1) {
-      flag = ModifierFlag::EXTRA1;
-    } else if (params.key == KeyCode::VK_STICKY_EXTRA2) {
-      flag = ModifierFlag::EXTRA2;
-    } else if (params.key == KeyCode::VK_STICKY_EXTRA3) {
-      flag = ModifierFlag::EXTRA3;
-    } else if (params.key == KeyCode::VK_STICKY_EXTRA4) {
-      flag = ModifierFlag::EXTRA4;
-    } else if (params.key == KeyCode::VK_STICKY_EXTRA5) {
-      flag = ModifierFlag::EXTRA5;
-    } else {
+    /**/ if (params.key == KeyCode::VK_STICKY_COMMAND_L) { flag = ModifierFlag::COMMAND_L; }
+    else if (params.key == KeyCode::VK_STICKY_COMMAND_R) { flag = ModifierFlag::COMMAND_R; }
+    else if (params.key == KeyCode::VK_STICKY_CONTROL_L) { flag = ModifierFlag::CONTROL_L; }
+    else if (params.key == KeyCode::VK_STICKY_CONTROL_R) { flag = ModifierFlag::CONTROL_R; }
+    else if (params.key == KeyCode::VK_STICKY_FN)        { flag = ModifierFlag::FN;        }
+    else if (params.key == KeyCode::VK_STICKY_OPTION_L)  { flag = ModifierFlag::OPTION_L;  }
+    else if (params.key == KeyCode::VK_STICKY_OPTION_R)  { flag = ModifierFlag::OPTION_R;  }
+    else if (params.key == KeyCode::VK_STICKY_SHIFT_L)   { flag = ModifierFlag::SHIFT_L;   }
+    else if (params.key == KeyCode::VK_STICKY_SHIFT_R)   { flag = ModifierFlag::SHIFT_R;   }
+    else if (params.key == KeyCode::VK_STICKY_EXTRA1)    { flag = ModifierFlag::EXTRA1;    }
+    else if (params.key == KeyCode::VK_STICKY_EXTRA2)    { flag = ModifierFlag::EXTRA2;    }
+    else if (params.key == KeyCode::VK_STICKY_EXTRA3)    { flag = ModifierFlag::EXTRA3;    }
+    else if (params.key == KeyCode::VK_STICKY_EXTRA4)    { flag = ModifierFlag::EXTRA4;    }
+    else if (params.key == KeyCode::VK_STICKY_EXTRA5)    { flag = ModifierFlag::EXTRA5;    }
+    else {
       return false;
     }
 
@@ -385,14 +371,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   PointingButton
   Handle_VK_MOUSEKEY::getPointingButton(KeyCode keycode)
   {
-    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_LEFT) return PointingButton::LEFT;
-    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_MIDDLE) return PointingButton::MIDDLE;
-    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_RIGHT) return PointingButton::RIGHT;
-    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON4) return PointingButton::BUTTON4;
-    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON5) return PointingButton::BUTTON5;
-    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON6) return PointingButton::BUTTON6;
-    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON7) return PointingButton::BUTTON7;
-    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON8) return PointingButton::BUTTON8;
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_LEFT)    { return PointingButton::LEFT;    }
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_MIDDLE)  { return PointingButton::MIDDLE;  }
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_RIGHT)   { return PointingButton::RIGHT;   }
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON4) { return PointingButton::BUTTON4; }
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON5) { return PointingButton::BUTTON5; }
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON6) { return PointingButton::BUTTON6; }
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON7) { return PointingButton::BUTTON7; }
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON8) { return PointingButton::BUTTON8; }
     return PointingButton::NONE;
   }
 
@@ -400,15 +386,15 @@ namespace org_pqrs_KeyRemap4MacBook {
   Handle_VK_MOUSEKEY::is_VK_MOUSEKEY(KeyCode keycode)
   {
     if (getPointingButton(keycode) != PointingButton::NONE) return true;
-    if (keycode == KeyCode::VK_MOUSEKEY_UP)           return true;
-    if (keycode == KeyCode::VK_MOUSEKEY_DOWN)         return true;
-    if (keycode == KeyCode::VK_MOUSEKEY_LEFT)         return true;
-    if (keycode == KeyCode::VK_MOUSEKEY_RIGHT)        return true;
-    if (keycode == KeyCode::VK_MOUSEKEY_SCROLL_UP)    return true;
-    if (keycode == KeyCode::VK_MOUSEKEY_SCROLL_DOWN)  return true;
-    if (keycode == KeyCode::VK_MOUSEKEY_SCROLL_LEFT)  return true;
-    if (keycode == KeyCode::VK_MOUSEKEY_SCROLL_RIGHT) return true;
-    if (keycode == KeyCode::VK_MOUSEKEY_HIGHSPEED)    return true;
+    if (keycode == KeyCode::VK_MOUSEKEY_UP)           { return true; }
+    if (keycode == KeyCode::VK_MOUSEKEY_DOWN)         { return true; }
+    if (keycode == KeyCode::VK_MOUSEKEY_LEFT)         { return true; }
+    if (keycode == KeyCode::VK_MOUSEKEY_RIGHT)        { return true; }
+    if (keycode == KeyCode::VK_MOUSEKEY_SCROLL_UP)    { return true; }
+    if (keycode == KeyCode::VK_MOUSEKEY_SCROLL_DOWN)  { return true; }
+    if (keycode == KeyCode::VK_MOUSEKEY_SCROLL_LEFT)  { return true; }
+    if (keycode == KeyCode::VK_MOUSEKEY_SCROLL_RIGHT) { return true; }
+    if (keycode == KeyCode::VK_MOUSEKEY_HIGHSPEED)    { return true; }
     return false;
   }
 
