@@ -18,7 +18,7 @@ The functions of KeyRemap4MacBook by Developer's perspective.
 
 How to build
 ------------
-See http://pqrs.org/macosx/keyremap4macbook/source.html
+See <http://pqrs.org/macosx/keyremap4macbook/source.html>
 
 
 Main components
