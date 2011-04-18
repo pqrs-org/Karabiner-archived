@@ -886,6 +886,11 @@
           <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
+          <name>Command_L to Fn</name>
+          <identifier>remap.commandL2fn</identifier>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::FN</autogen>
+        </item>
+        <item>
           <name>Command_L to Option_L</name>
           <identifier>remap.commandL2optionL</identifier>
           <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
