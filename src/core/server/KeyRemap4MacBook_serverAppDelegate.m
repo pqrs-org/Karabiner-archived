@@ -130,10 +130,11 @@
     for (NSUInteger i = 0; i < remapclasses_count; ++i) {
       NSString* name = [configxmlparser configname:(int)(i)];
       if (! name) {
-        NSLog(@"[WARNING] %s name == nil.", __FUNCTION__);
-        goto finish;
+        NSLog(@"[WARNING] %s name == nil. private.xml has error?", __FUNCTION__);
+        *p++ = 0;
+      } else {
+        *p++ = [preferencesmanager value:name];
       }
-      *p++ = [preferencesmanager value:name];
     }
 
     // --------------------
@@ -145,7 +146,6 @@
 
     [UserClient_userspace synchronized_communication:&bridgestruct];
 
-  finish:
     free(data);
   }
 }
