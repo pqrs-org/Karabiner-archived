@@ -35,4 +35,9 @@ Sub components
 
 About event handling
 --------------------
+To prevent leakage of the input event, the conversion of the input event is done in the kernel entirely.
+
+We set a hook function in the middle of hardware driver.
+And we modify the input event in the hook function.
+
 ...
