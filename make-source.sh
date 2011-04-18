@@ -5,11 +5,10 @@ tmpdir=$(mktemp -d "/tmp/$name.XXXXXX")
 workdir="$tmpdir/$name"
 
 # copy
-rsync -a . $workdir
+rsync -a . --exclude '.git/' --exclude '.gitignore' $workdir
 
 # cleanup
 (cd $workdir; make clean)
-rm -rf $workdir/.git*
 find $workdir -name '.DS_Store' -print0 | xargs -0 rm -f
 
 # archive
