@@ -13,6 +13,7 @@
 		3489358610E279B300315CC1 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3489358110E279A700315CC1 /* Sparkle.framework */; };
 		349CF9D610E27BED00FA98E6 /* kr4mb_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 349CF9D510E27BED00FA98E6 /* kr4mb_pub.pem */; };
 		34EB817012C649930071889D /* KeyRemap4MacBookClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 34EB816F12C649930071889D /* KeyRemap4MacBookClient.m */; };
+		34F89A49135BF1080014629F /* app.icon.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 34F89A48135BF1080014629F /* app.icon.tiff */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -46,6 +47,7 @@
 		349CF9D510E27BED00FA98E6 /* kr4mb_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kr4mb_pub.pem; sourceTree = "<group>"; };
 		34EB816E12C649930071889D /* KeyRemap4MacBookClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookClient.h; path = ../../share/KeyRemap4MacBookClient.h; sourceTree = SOURCE_ROOT; };
 		34EB816F12C649930071889D /* KeyRemap4MacBookClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyRemap4MacBookClient.m; path = ../../share/KeyRemap4MacBookClient.m; sourceTree = SOURCE_ROOT; };
+		34F89A48135BF1080014629F /* app.icon.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = app.icon.tiff; path = Resources/app.icon.tiff; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* KeyRemap4MacBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyRemap4MacBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -125,6 +127,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				34F89A48135BF1080014629F /* app.icon.tiff */,
 				349CF9D510E27BED00FA98E6 /* kr4mb_pub.pem */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
@@ -204,6 +207,7 @@
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				349CF9D610E27BED00FA98E6 /* kr4mb_pub.pem in Resources */,
+				34F89A49135BF1080014629F /* app.icon.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
