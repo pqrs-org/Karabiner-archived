@@ -2,6 +2,23 @@
 
 @implementation org_pqrs_KeyRemap4MacBook_Client
 
+- (void) refresh_connection
+{
+  [proxy_ release];
+  proxy_ = [[NSConnection rootProxyForConnectionWithRegisteredName:@"org.pqrs.KeyRemap4MacBook" host:nil] retain];
+  [proxy_ setProtocolForProxy:@protocol(org_pqrs_KeyRemap4MacBook_Protocol)];
+}
+
+- (void) observer_NSConnectionDidDieNotification:(NSNotification*)notification
+{
+  [self refresh_connection];
+}
+
+- (void) observer_server_launched:(NSNotification*)notification
+{
+  [self refresh_connection];
+}
+
 - (id) init
 {
   self = [super init];
@@ -12,6 +29,9 @@
                                                  name:NSConnectionDidDieNotification
                                                object:nil];
     [self observer_NSConnectionDidDieNotification:nil];
+
+    NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.notification";
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_server_launched:) name:@"server_launched" object:observedObject];
   }
 
   return self;
@@ -22,13 +42,6 @@
   [proxy_ release];
 
   [super dealloc];
-}
-
-- (void) observer_NSConnectionDidDieNotification:(NSNotification*)notification
-{
-  [proxy_ release];
-  proxy_ = [[NSConnection rootProxyForConnectionWithRegisteredName:@"org.pqrs.KeyRemap4MacBook" host:nil] retain];
-  [proxy_ setProtocolForProxy:@protocol(org_pqrs_KeyRemap4MacBook_Protocol)];
 }
 
 - (id) proxy

@@ -46,7 +46,6 @@
   id proxy_;
 }
 
-- (void) observer_NSConnectionDidDieNotification:(NSNotification*)notification;
 - (id) proxy;
 
 @end
