@@ -4523,6 +4523,11 @@
           <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::EXPOSE_ALL</autogen>
         </item>
         <item>
+          <name>Command+Tab to Expose</name>
+          <identifier>remap.commandTab2expose</identifier>
+          <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND | ModifierFlag::NONE, KeyCode::EXPOSE_ALL</autogen>
+        </item>
+        <item>
           <name>Control+tab to Command+F1 (only in Terminal)</name>
           <only>TERMINAL</only>
           <identifier>remap.ctrltab2cmdf1_onlyterminal</identifier>
