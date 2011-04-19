@@ -2,6 +2,22 @@
 
 @implementation org_pqrs_KeyRemap4MacBook_OutlineView
 
+- (void) observer_KeyRemap4MacBookClient_connected:(NSNotification*)notification
+{
+  [outlineview_ reloadData];
+}
+
+- (id) init
+{
+  self = [super init];
+
+  if (self) {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_KeyRemap4MacBookClient_connected:) name:@"KeyRemap4MacBookClient_connected" object:nil];
+  }
+
+  return self;
+}
+
 - (void) dealloc
 {
   [datasource_ release];
@@ -176,7 +192,7 @@
 
   number = [item objectForKey:@"height"];
   if (! number) {
-    number = [NSNumber numberWithFloat:0];
+    number = [NSNumber numberWithDouble:[outlineView rowHeight]];
   } else {
     number = [NSNumber numberWithDouble:([number intValue] * (CGFloat)([outlineView rowHeight]))];
   }
