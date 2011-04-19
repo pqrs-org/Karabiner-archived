@@ -96,8 +96,8 @@
 
 - (IBAction) checkForUpdates:(id)sender
 {
-  NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.updater";
-  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"check" object:observedObject userInfo:nil deliverImmediately:YES];
+  NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.notification";
+  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"checkForUpdates" object:observedObject userInfo:nil];
 }
 
 @end

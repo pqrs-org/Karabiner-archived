@@ -52,15 +52,15 @@
   }
 }
 
-- (void) observer_check:(NSNotification*)aNotification
+- (void) observer_checkForUpdates:(NSNotification*)aNotification
 {
   [self checkForUpdates:NO];
 }
 
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification
 {
-  NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.updater";
-  [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_check:) name:@"check" object:observedObject];
+  NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.notification";
+  [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_checkForUpdates:) name:@"checkForUpdates" object:observedObject];
 
   [self checkForUpdates:YES];
 }
