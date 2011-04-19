@@ -43,8 +43,10 @@
 @end
 
 @interface org_pqrs_KeyRemap4MacBook_Client : NSObject {
-  id proxy_;
+  id proxy;
 }
+
+@property (assign) id proxy;
 
 - (id) proxy;
 
