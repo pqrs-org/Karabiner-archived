@@ -16,4 +16,4 @@ xcode:
 	open *.xcodeproj
 
 run: all
-	open ./build/Release/KeyDump.app
+	./build/Release/KeyDump.app/Contents/MacOS/KeyDump
