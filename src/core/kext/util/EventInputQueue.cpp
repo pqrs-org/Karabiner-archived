@@ -286,7 +286,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     DeviceVendor deviceVendor(0);
     DeviceProduct deviceProduct(0);
     {
-      IOLockWrapper::ScopedLock lk_device(ListHookedKeyboard::instance().getListLock());
+      IOLockWrapper::ScopedLock lk_device(ListHookedConsumer::instance().getListLock());
       if (! lk_device) return;
 
       IOHIKeyboard* device = OSDynamicCast(IOHIKeyboard, sender);
@@ -334,7 +334,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     DeviceVendor deviceVendor(0);
     DeviceProduct deviceProduct(0);
     {
-      IOLockWrapper::ScopedLock lk_device(ListHookedKeyboard::instance().getListLock());
+      IOLockWrapper::ScopedLock lk_device(ListHookedPointing::instance().getListLock());
       if (! lk_device) return;
 
       IOHIPointing* device = OSDynamicCast(IOHIPointing, sender);
@@ -412,7 +412,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     DeviceVendor deviceVendor(0);
     DeviceProduct deviceProduct(0);
     {
-      IOLockWrapper::ScopedLock lk_device(ListHookedKeyboard::instance().getListLock());
+      IOLockWrapper::ScopedLock lk_device(ListHookedPointing::instance().getListLock());
       if (! lk_device) return;
 
       IOHIPointing* device = OSDynamicCast(IOHIPointing, sender);
