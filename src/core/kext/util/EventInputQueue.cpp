@@ -371,10 +371,15 @@ namespace org_pqrs_KeyRemap4MacBook {
         enqueue_(*ptr, retainFlagStatusTemporaryCount, deviceVendor, deviceProduct);
       }
     }
-    Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, dx, dy, PointingButton::NONE, false));
-    if (! ptr) return;
-    bool retainFlagStatusTemporaryCount = true;
-    enqueue_(*ptr, retainFlagStatusTemporaryCount, deviceVendor, deviceProduct);
+    // If (dx == 0 && dy == 0), the event is either needless event or just pressing/releasing buttons event.
+    // About just pressing/releasing buttons event, we handled these in the above processes.
+    // So, we can drop (dx == 0 && dy == 0) events in here.
+    if (dx != 0 || dy != 0) {
+      Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, dx, dy, PointingButton::NONE, false));
+      if (! ptr) return;
+      bool retainFlagStatusTemporaryCount = true;
+      enqueue_(*ptr, retainFlagStatusTemporaryCount, deviceVendor, deviceProduct);
+    }
 
     setTimer();
   }
