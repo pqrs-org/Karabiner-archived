@@ -24,6 +24,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // utility functions
       void add(ConsumerKeyCode newval) { add(BRIDGE_DATATYPE_CONSUMERKEYCODE, newval.get()); }
       void add(Flags newval)           { add(BRIDGE_DATATYPE_FLAGS,           newval.get()); }
+      void add(Option newval)          { add(BRIDGE_DATATYPE_OPTION,          newval.get()); }
 
       bool call_remap_with_VK_PSEUDO_KEY(EventType eventType);
 

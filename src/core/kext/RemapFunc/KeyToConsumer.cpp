@@ -65,6 +65,16 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
         }
 
+        case BRIDGE_DATATYPE_OPTION:
+        {
+          if (Option::NOREPEAT == newval) {
+            consumertoconsumer_.add(Option(newval));
+          } else {
+            IOLOG_ERROR("KeyToConsumer::add unknown option:%d\n", newval);
+          }
+          break;
+        }
+
         default:
           IOLOG_ERROR("KeyToConsumer::add invalid datatype:%d\n", datatype);
           break;
