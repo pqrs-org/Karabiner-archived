@@ -254,8 +254,6 @@ namespace org_pqrs_KeyRemap4MacBook {
              params.charCode.get(), params.charSet.get(), params.origCharCode.get(), params.origCharSet.get(),
              params.keyboardType.get(), params.repeat, ts, sender, refcon);
 
-    CommonData::setcurrent_keyboardType(params.keyboardType);
-
     // The CapsLock LED is not designed to turn it on/off frequently.
     // So, we have to use the timer to call a setAlphaLock function at appropriate frequency.
     enum {
