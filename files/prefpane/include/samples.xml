@@ -341,6 +341,12 @@
           <autogen>--KeyToConsumer-- KeyCode::C, ConsumerKeyCode::VOLUME_MUTE, ModifierFlag::OPTION_L</autogen>
           <autogen>--KeyToConsumer-- KeyCode::D, ConsumerKeyCode::VOLUME_UP, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
         </item>
+        <item>
+          <name>NoRepeat</name>
+          <appendix>A to Volume Up (with Option::NOREPEAT)</appendix>
+          <identifier>remap.samples_keytoconsumer_norepeat</identifier>
+          <autogen>--KeyToConsumer-- KeyCode::A, ConsumerKeyCode::VOLUME_UP, Option::NOREPEAT</autogen>
+        </item>
       </list>
     </item>
 
@@ -367,6 +373,12 @@
           <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, KeyCode::CONTROL_L</autogen>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, VK_OPTION, KeyCode::C, ModifierFlag::SHIFT_L</autogen>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::NUMLOCK, KeyCode::A</autogen>
+        </item>
+        <item>
+          <name>NoRepeat</name>
+          <appendix>Volume Down to A (with Option::NOREPEAT)</appendix>
+          <identifier>remap.samples_consumertokey_norepeat</identifier>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, KeyCode::A, Option::NOREPEAT</autogen>
         </item>
       </list>
     </item>
@@ -774,6 +786,12 @@
           <appendix>RightClick to CapsLock,A</appendix>
           <identifier>remap.samples_pointingbuttontokey2</identifier>
           <autogen>--PointingButtonToKey-- PointingButton::RIGHT, KeyCode::CAPSLOCK, KeyCode::A</autogen>
+        </item>
+        <item>
+          <name>NoRepeat</name>
+          <appendix>RightClick to A (with Option::NOREPEAT)</appendix>
+          <identifier>remap.samples_pointingbuttontokey_norepeat</identifier>
+          <autogen>--PointingButtonToKey-- PointingButton::RIGHT, KeyCode::A, Option::NOREPEAT</autogen>
         </item>
       </list>
     </item>
