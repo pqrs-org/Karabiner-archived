@@ -344,8 +344,10 @@
         <item>
           <name>NoRepeat</name>
           <appendix>A to Volume Up (with Option::NOREPEAT)</appendix>
+          <appendix>S to Volume Up</appendix>
           <identifier>remap.samples_keytoconsumer_norepeat</identifier>
           <autogen>--KeyToConsumer-- KeyCode::A, ConsumerKeyCode::VOLUME_UP, Option::NOREPEAT</autogen>
+          <autogen>--KeyToConsumer-- KeyCode::S, ConsumerKeyCode::VOLUME_UP</autogen>
         </item>
       </list>
     </item>
