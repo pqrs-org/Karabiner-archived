@@ -29,11 +29,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------------------------------------
-#define PUSH_TO_OUTPUTQUEUE {                            \
-    if (! queue_) return;                                \
-                                                         \
-    queue_->push_back(new Item(p));                      \
-    fire_timer_.setTimeoutMS(DELAY, false);              \
+#define PUSH_TO_OUTPUTQUEUE {               \
+    if (! queue_) return;                   \
+                                            \
+    queue_->push_back(new Item(p));         \
+    fire_timer_.setTimeoutMS(DELAY, false); \
 }
   void EventOutputQueue::push(const Params_KeyboardEventCallBack& p) {
     PUSH_TO_OUTPUTQUEUE;
