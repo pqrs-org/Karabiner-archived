@@ -94,8 +94,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     HoldingKeyToKey::remap(RemapParams& remapParams)
     {
-      IOLockWrapper::ScopedLock lk(fireholding_timer_.getlock());
-
       bool result = keytokey_drop_.remap(remapParams);
       if (! result) {
         if (remapParams.params.ex_iskeydown) {
@@ -171,8 +169,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     HoldingKeyToKey::fireholding_timer_callback(OSObject* owner, IOTimerEventSource* sender)
     {
-      IOLockWrapper::ScopedLock lk(fireholding_timer_.getlock());
-
       if (! target_) return;
 
       if (target_->keydowntype_ == KEYDOWNTYPE_NONE) {
