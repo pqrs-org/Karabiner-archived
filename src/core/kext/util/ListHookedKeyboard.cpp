@@ -35,17 +35,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     orig_keyboardEventAction_(NULL),
     orig_keyboardEventTarget_(NULL),
     orig_updateEventFlagsAction_(NULL),
-    orig_updateEventFlagsTarget_(NULL),
-    replacerestore_lock_(NULL)
-  {
-    replacerestore_lock_ = IOLockWrapper::alloc();
-  }
+    orig_updateEventFlagsTarget_(NULL)
+  {}
 
   ListHookedKeyboard::Item::~Item(void)
   {
     IOLOG_DEBUG("ListHookedKeyboard::Item::~Item()\n");
     restoreEventAction();
-    IOLockWrapper::free(replacerestore_lock_);
   }
 
   // ======================================================================
@@ -130,9 +126,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   ListHookedKeyboard::Item::replaceEventAction(void)
   {
-    IOLockWrapper::ScopedLock lk(replacerestore_lock_);
-    if (! lk) return false;
-
     if (! device_) return false;
 
     IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, device_);
@@ -174,9 +167,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   ListHookedKeyboard::Item::restoreEventAction(void)
   {
-    IOLockWrapper::ScopedLock lk(replacerestore_lock_);
-    if (! lk) return false;
-
     if (! device_) return false;
 
     IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, device_);

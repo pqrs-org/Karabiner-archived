@@ -26,8 +26,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       UpdateEventFlagsCallback orig_updateEventFlagsAction_;
       OSObject* orig_updateEventFlagsTarget_;
 
-      IOLock* replacerestore_lock_;
-
       bool refresh(void);
 
       /** return true if event action is replaced. */
