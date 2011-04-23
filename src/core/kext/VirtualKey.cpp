@@ -212,13 +212,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   Handle_VK_CONFIG::Vector_Item* Handle_VK_CONFIG::items_ = NULL;
-  IOLock* Handle_VK_CONFIG::lock_ = NULL;
 
   void
   Handle_VK_CONFIG::initialize(void)
   {
     items_ = new Vector_Item();
-    lock_ = IOLockWrapper::alloc();
   }
 
   void
@@ -226,9 +224,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (items_) {
       delete items_;
-    }
-    if (lock_) {
-      IOLockWrapper::free(lock_);
     }
   }
 
@@ -239,8 +234,6 @@ namespace org_pqrs_KeyRemap4MacBook {
                              unsigned int keycode_force_off,
                              unsigned int keycode_sync_keydownup)
   {
-    IOLockWrapper::ScopedLock lk(lock_);
-
     if (! items_) return;
 
     items_->push_back(Item(remapclass, keycode_toggle, keycode_force_on, keycode_force_off, keycode_sync_keydownup));
@@ -249,62 +242,56 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   Handle_VK_CONFIG::clear_items(void)
   {
-    IOLockWrapper::ScopedLock lk(lock_);
-
     items_->clear();
   }
 
   bool
   Handle_VK_CONFIG::handle(const Params_KeyboardEventCallBack& params)
   {
-    {
-      IOLockWrapper::ScopedLock lk(lock_);
+    if (! items_) return false;
 
-      if (! items_) return false;
+    for (size_t i = 0; i < items_->size(); ++i) {
+      RemapClass* remapclass              = (*items_)[i].remapclass;
+      unsigned int keycode_toggle         = (*items_)[i].keycode_toggle;
+      unsigned int keycode_force_on       = (*items_)[i].keycode_force_on;
+      unsigned int keycode_force_off      = (*items_)[i].keycode_force_off;
+      unsigned int keycode_sync_keydownup = (*items_)[i].keycode_sync_keydownup;
 
-      for (size_t i = 0; i < items_->size(); ++i) {
-        RemapClass* remapclass              = (*items_)[i].remapclass;
-        unsigned int keycode_toggle         = (*items_)[i].keycode_toggle;
-        unsigned int keycode_force_on       = (*items_)[i].keycode_force_on;
-        unsigned int keycode_force_off      = (*items_)[i].keycode_force_off;
-        unsigned int keycode_sync_keydownup = (*items_)[i].keycode_sync_keydownup;
+      if (! remapclass) return false;
 
-        if (! remapclass) return false;
+      if (params.ex_iskeydown && params.repeat == false) {
+        /*  */ if (params.key == keycode_toggle) {
+          remapclass->toggleEnabled();
+          goto refresh;
 
-        if (params.ex_iskeydown && params.repeat == false) {
-          /*  */ if (params.key == keycode_toggle) {
-            remapclass->toggleEnabled();
-            goto refresh;
+        } else if (params.key == keycode_force_on) {
+          remapclass->setEnabled(true);
+          goto refresh;
 
-          } else if (params.key == keycode_force_on) {
-            remapclass->setEnabled(true);
-            goto refresh;
+        } else if (params.key == keycode_force_off) {
+          remapclass->setEnabled(false);
+          goto refresh;
 
-          } else if (params.key == keycode_force_off) {
-            remapclass->setEnabled(false);
-            goto refresh;
+        } else if (params.key == keycode_sync_keydownup) {
+          remapclass->setEnabled(true);
+          goto refresh;
+        }
 
-          } else if (params.key == keycode_sync_keydownup) {
-            remapclass->setEnabled(true);
-            goto refresh;
-          }
+      } else if (params.eventType == EventType::UP) {
+        if (params.key == keycode_toggle ||
+            params.key == keycode_force_on ||
+            params.key == keycode_force_off) {
+          goto finish;
+        }
 
-        } else if (params.eventType == EventType::UP) {
-          if (params.key == keycode_toggle ||
-              params.key == keycode_force_on ||
-              params.key == keycode_force_off) {
-            goto finish;
-          }
-
-          if (params.key == keycode_sync_keydownup) {
-            remapclass->setEnabled(false);
-            goto refresh;
-          }
+        if (params.key == keycode_sync_keydownup) {
+          remapclass->setEnabled(false);
+          goto refresh;
         }
       }
-
-      return false;
     }
+
+    return false;
 
   refresh:
     RemapClassManager::refresh();
@@ -317,8 +304,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   Handle_VK_CONFIG::is_VK_CONFIG_SYNC_KEYDOWNUP(KeyCode keycode)
   {
-    IOLockWrapper::ScopedLock lk(lock_);
-
     if (! items_) return false;
 
     for (size_t i = 0; i < items_->size(); ++i) {
@@ -486,8 +471,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   Handle_VK_MOUSEKEY::fire_timer_callback(OSObject* notuse_owner, IOTimerEventSource* notuse_sender)
   {
-    IOLockWrapper::ScopedLock lk(fire_timer_.getlock());
-
     if (! scrollmode_) {
       int s = scale_;
       if (highspeed_) s = HIGHSPEED_RELATIVE_SCALE;
@@ -644,7 +627,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     // flash keyevent
     if (fireKeyInfo_.active) {
-      IOLockWrapper::ScopedLock lk(fire_timer_.getlock());
       fire_timer_.cancelTimeout();
       fire_nolock();
     }
@@ -656,8 +638,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   Handle_VK_JIS_TEMPORARY::firekeytoinputdetail(const Params_KeyboardEventCallBack& params,
                                                 InputModeDetail inputmodedetail)
   {
-    IOLockWrapper::ScopedLock lk(fire_timer_.getlock());
-
     inputmodedetail = normalize(inputmodedetail);
     currentinputmodedetail_ = normalize(currentinputmodedetail_);
 
@@ -706,7 +686,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   Handle_VK_JIS_TEMPORARY::fire_timer_callback(OSObject* notuse_owner, IOTimerEventSource* notuse_sender)
   {
-    IOLockWrapper::ScopedLock lk(fire_timer_.getlock());
     fire_nolock();
   }
 

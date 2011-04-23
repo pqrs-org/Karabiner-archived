@@ -72,7 +72,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
     DECLARE_VECTOR(Item);
     static Vector_Item* items_;
-    static IOLock* lock_;
   };
 
   // ----------------------------------------------------------------------
