@@ -69,7 +69,7 @@ org_pqrs_driver_KeyRemap4MacBook::initialize_notification(void)
 {
   notifier_hookKeyboard_ = addMatchingNotification(gIOMatchedNotification,
                                                    serviceMatching("IOHIKeyboard"),
-                                                   org_pqrs_KeyRemap4MacBook::Core::notification_callback_hookKeyboard,
+                                                   org_pqrs_KeyRemap4MacBook::Core::IOHIKeyboard_gIOMatchedNotification_callback,
                                                    this, NULL, 0);
   if (notifier_hookKeyboard_ == NULL) {
     IOLOG_ERROR("initialize_notification notifier_hookKeyboard_ == NULL\n");
@@ -78,7 +78,7 @@ org_pqrs_driver_KeyRemap4MacBook::initialize_notification(void)
 
   notifier_unhookKeyboard_ = addMatchingNotification(gIOTerminatedNotification,
                                                      serviceMatching("IOHIKeyboard"),
-                                                     org_pqrs_KeyRemap4MacBook::Core::notification_callback_unhookKeyboard,
+                                                     org_pqrs_KeyRemap4MacBook::Core::IOHIKeyboard_gIOTerminatedNotification_callback,
                                                      this, NULL, 0);
   if (notifier_unhookKeyboard_ == NULL) {
     IOLOG_ERROR("initialize_notification notifier_unhookKeyboard_ == NULL\n");
@@ -88,7 +88,7 @@ org_pqrs_driver_KeyRemap4MacBook::initialize_notification(void)
   // ----------------------------------------
   notifier_hookPointing_ = addMatchingNotification(gIOMatchedNotification,
                                                    serviceMatching("IOHIPointing"),
-                                                   org_pqrs_KeyRemap4MacBook::Core::notification_callback_hookPointing,
+                                                   org_pqrs_KeyRemap4MacBook::Core::IOHIPointing_gIOMatchedNotification_callback,
                                                    this, NULL, 0);
   if (notifier_hookPointing_ == NULL) {
     IOLOG_ERROR("initialize_notification notifier_hookPointing_ == NULL\n");
@@ -97,7 +97,7 @@ org_pqrs_driver_KeyRemap4MacBook::initialize_notification(void)
 
   notifier_unhookPointing_ = addMatchingNotification(gIOTerminatedNotification,
                                                      serviceMatching("IOHIPointing"),
-                                                     org_pqrs_KeyRemap4MacBook::Core::notification_callback_unhookPointing,
+                                                     org_pqrs_KeyRemap4MacBook::Core::IOHIPointing_gIOTerminatedNotification_callback,
                                                      this, NULL, 0);
   if (notifier_unhookPointing_ == NULL) {
     IOLOG_ERROR("initialize_notification notifier_unhookPointing_ == NULL\n");

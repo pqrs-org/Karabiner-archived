@@ -52,7 +52,7 @@ Threads:
 
 * Timer callback
 * hooked function (EventInputQueue::push_*)
-* gIOMatchedNotification and gIOTerminatedNotification callback of input devices (Core::notification_callback_*)
+* gIOMatchedNotification and gIOTerminatedNotification callback of input devices (Core::*Notification_callback)
 * IOUserClient callback (UserClient_kext::callback_*)
 
 And we use the global lock in Core::stop to wait threads termination.

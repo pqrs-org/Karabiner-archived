@@ -9,11 +9,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     void stop(void);
 
     // ----------------------------------------------------------------------
-    bool notification_callback_hookKeyboard(void* target, void* refCon, IOService* newService, IONotifier* notifier);
-    bool notification_callback_unhookKeyboard(void* target, void* refCon, IOService* newService, IONotifier* notifier);
+    bool IOHIKeyboard_gIOMatchedNotification_callback(void* target, void* refCon, IOService* newService, IONotifier* notifier);
+    bool IOHIKeyboard_gIOTerminatedNotification_callback(void* target, void* refCon, IOService* newService, IONotifier* notifier);
 
-    bool notification_callback_hookPointing(void* target, void* refCon, IOService* newService, IONotifier* notifier);
-    bool notification_callback_unhookPointing(void* target, void* refCon, IOService* newService, IONotifier* notifier);
+    bool IOHIPointing_gIOMatchedNotification_callback(void* target, void* refCon, IOService* newService, IONotifier* notifier);
+    bool IOHIPointing_gIOTerminatedNotification_callback(void* target, void* refCon, IOService* newService, IONotifier* notifier);
 
     // ----------------------------------------------------------------------
     void remap_KeyboardEventCallback(Params_KeyboardEventCallBack& params);
