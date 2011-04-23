@@ -9,19 +9,19 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   List* EventOutputQueue::queue_ = NULL;
-  TimerWrapper EventOutputQueue::timer_;
+  TimerWrapper EventOutputQueue::fire_timer_;
 
   void
   EventOutputQueue::initialize(IOWorkLoop& workloop)
   {
     queue_ = new List();
-    timer_.initialize(&workloop, NULL, EventOutputQueue::fire);
+    fire_timer_.initialize(&workloop, NULL, EventOutputQueue::fire_timer_callback);
   }
 
   void
   EventOutputQueue::terminate(void)
   {
-    timer_.terminate();
+    fire_timer_.terminate();
 
     if (queue_) {
       delete queue_;
@@ -29,14 +29,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------------------------------------
-#define PUSH_TO_OUTPUTQUEUE {                       \
-    IOLockWrapper::ScopedLock lk(timer_.getlock()); \
-    if (! lk) return;                               \
-                                                    \
-    if (! queue_) return;                           \
-                                                    \
-    queue_->push_back(new Item(p));                 \
-    timer_.setTimeoutMS(DELAY, false);              \
+#define PUSH_TO_OUTPUTQUEUE {                            \
+    IOLockWrapper::ScopedLock lk(fire_timer_.getlock()); \
+    if (! lk) return;                                    \
+                                                         \
+    if (! queue_) return;                                \
+                                                         \
+    queue_->push_back(new Item(p));                      \
+    fire_timer_.setTimeoutMS(DELAY, false);              \
 }
   void EventOutputQueue::push(const Params_KeyboardEventCallBack& p) {
     PUSH_TO_OUTPUTQUEUE;
@@ -67,9 +67,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   void
-  EventOutputQueue::fire(OSObject* owner, IOTimerEventSource* sender)
+  EventOutputQueue::fire_timer_callback(OSObject* owner, IOTimerEventSource* sender)
   {
-    IOLockWrapper::ScopedLock lk(timer_.getlock());
+    IOLockWrapper::ScopedLock lk(fire_timer_.getlock());
     if (! lk) return;
 
     if (! queue_) return;
@@ -127,7 +127,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ----------------------------------------
     if (! queue_->empty()) {
-      timer_.setTimeoutMS(DELAY);
+      fire_timer_.setTimeoutMS(DELAY);
     }
   }
 
