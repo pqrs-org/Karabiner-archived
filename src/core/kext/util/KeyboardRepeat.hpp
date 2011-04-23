@@ -78,7 +78,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
 
     // ------------------------------------------------------------
-    static void fire(OSObject* owner, IOTimerEventSource* sender);
+    static void fire_timer_callback(OSObject* owner, IOTimerEventSource* sender);
 
     static void cancel_nolock(void);
 
@@ -93,7 +93,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void primitive_start_nolock(int wait);
 
     static List* queue_;
-    static TimerWrapper timer_;
+    static TimerWrapper fire_timer_;
     static int id_;
   };
 }
