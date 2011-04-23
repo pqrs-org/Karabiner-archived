@@ -50,7 +50,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         return (a1 > a2) ? a2 : a1;
       }
 
-      static void callback(OSObject* owner, IOTimerEventSource* sender);
+      static void timer_callback(OSObject* owner, IOTimerEventSource* sender);
 
       // ----------
       size_t index_;

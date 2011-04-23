@@ -12,7 +12,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     PointingRelativeToScroll::static_initialize(IOWorkLoop& workloop)
     {
       queue_ = new List();
-      timer_.initialize(&workloop, NULL, PointingRelativeToScroll::callback);
+      timer_.initialize(&workloop, NULL, PointingRelativeToScroll::timer_callback);
     }
 
     void
@@ -205,7 +205,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    PointingRelativeToScroll::callback(OSObject* owner, IOTimerEventSource* sender)
+    PointingRelativeToScroll::timer_callback(OSObject* owner, IOTimerEventSource* sender)
     {
       IOLockWrapper::ScopedLock lk(timer_.getlock());
 
