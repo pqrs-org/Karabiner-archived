@@ -172,41 +172,40 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     DeviceVendor deviceVendor(0);
     DeviceProduct deviceProduct(0);
-    {
-      IOHIKeyboard* device = OSDynamicCast(IOHIKeyboard, sender);
-      if (! device) return;
 
-      ListHookedKeyboard::Item* item = static_cast<ListHookedKeyboard::Item*>(ListHookedKeyboard::instance().get_nolock(device));
-      if (! item) return;
+    IOHIKeyboard* device = OSDynamicCast(IOHIKeyboard, sender);
+    if (! device) return;
 
-      // ------------------------------------------------------------
-      // Logitech Cordless Presenter (LCP) Hack
-      //
-      // When an LCP is first plugged in, it will send a CONTROL_L down event
-      // when the first pageup/pagedown key is pressed without sending a corresponding
-      // up event -- effectively rendering the device (and the Mac) useless until it is
-      // unplugged from the system.
-      //
-      // Similarly, when the volume keys are first pressed, a SHIFT_L down event
-      // is generated, with now up event.
-      //
-      // This code effectively throws these events away if they are received from an LCP.
-      //
-      // *** LCP has 6 keys (Page Up, Page Down, a 'B' key, an 'Esc' key, and volume up / down keys). ***
-      // *** So, we can drop CONTROL_L and SHIFT_L without a problem. ***
-      if (item->isEqualVendorProduct(DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_CORDLESS_PRESENTER)) {
-        if (params.key == KeyCode::CONTROL_L) return;
-        if (params.key == KeyCode::SHIFT_L) return;
-      }
+    ListHookedKeyboard::Item* item = static_cast<ListHookedKeyboard::Item*>(ListHookedKeyboard::instance().get_nolock(device));
+    if (! item) return;
 
-      // ------------------------------------------------------------
-      // "ts & keyboardType" are not used in filters like <not>/<only>.
-      // Therefore, we can set current ts and keyboardType here.
-      CommonData::setcurrent_ts(ts);
-      CommonData::setcurrent_keyboardType(params.keyboardType);
-      deviceVendor = item->getVendor();
-      deviceProduct = item->getProduct();
+    // ------------------------------------------------------------
+    // Logitech Cordless Presenter (LCP) Hack
+    //
+    // When an LCP is first plugged in, it will send a CONTROL_L down event
+    // when the first pageup/pagedown key is pressed without sending a corresponding
+    // up event -- effectively rendering the device (and the Mac) useless until it is
+    // unplugged from the system.
+    //
+    // Similarly, when the volume keys are first pressed, a SHIFT_L down event
+    // is generated, with now up event.
+    //
+    // This code effectively throws these events away if they are received from an LCP.
+    //
+    // *** LCP has 6 keys (Page Up, Page Down, a 'B' key, an 'Esc' key, and volume up / down keys). ***
+    // *** So, we can drop CONTROL_L and SHIFT_L without a problem. ***
+    if (item->isEqualVendorProduct(DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_CORDLESS_PRESENTER)) {
+      if (params.key == KeyCode::CONTROL_L) return;
+      if (params.key == KeyCode::SHIFT_L) return;
     }
+
+    // ------------------------------------------------------------
+    // "ts & keyboardType" are not used in filters like <not>/<only>.
+    // Therefore, we can set current ts and keyboardType here.
+    CommonData::setcurrent_ts(ts);
+    CommonData::setcurrent_keyboardType(params.keyboardType);
+    deviceVendor = item->getVendor();
+    deviceProduct = item->getProduct();
 
     // ------------------------------------------------------------
     // Because we handle the key repeat ourself, drop the key repeat by hardware.
@@ -236,13 +235,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ------------------------------------------------------------
     // update device priority by calling ListHookedKeyboard::instance().get(kbd).
-    {
-      IOHIKeyboard* device = OSDynamicCast(IOHIKeyboard, sender);
-      if (! device) return;
+    IOHIKeyboard* device = OSDynamicCast(IOHIKeyboard, sender);
+    if (! device) return;
 
-      ListHookedKeyboard::Item* item = static_cast<ListHookedKeyboard::Item*>(ListHookedKeyboard::instance().get_nolock(device));
-      if (! item) return;
-    }
+    ListHookedKeyboard::Item* item = static_cast<ListHookedKeyboard::Item*>(ListHookedKeyboard::instance().get_nolock(device));
+    if (! item) return;
 
     params.log();
     // Don't push_back for UpdateEventFlagsCallback.
@@ -273,17 +270,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     DeviceVendor deviceVendor(0);
     DeviceProduct deviceProduct(0);
-    {
-      IOHIKeyboard* device = OSDynamicCast(IOHIKeyboard, sender);
-      if (! device) return;
 
-      ListHookedConsumer::Item* item = static_cast<ListHookedConsumer::Item*>(ListHookedConsumer::instance().get_nolock(device));
+    IOHIKeyboard* device = OSDynamicCast(IOHIKeyboard, sender);
+    if (! device) return;
 
-      // ------------------------------------------------------------
-      CommonData::setcurrent_ts(ts);
-      deviceVendor = item->getVendor();
-      deviceProduct = item->getProduct();
-    }
+    ListHookedConsumer::Item* item = static_cast<ListHookedConsumer::Item*>(ListHookedConsumer::instance().get_nolock(device));
+
+    // ------------------------------------------------------------
+    CommonData::setcurrent_ts(ts);
+    deviceVendor = item->getVendor();
+    deviceProduct = item->getProduct();
 
     // ------------------------------------------------------------
     // Because we handle the key repeat ourself, drop the key repeat by hardware.
@@ -316,23 +312,22 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     DeviceVendor deviceVendor(0);
     DeviceProduct deviceProduct(0);
-    {
-      IOHIPointing* device = OSDynamicCast(IOHIPointing, sender);
-      if (! device) return;
 
-      ListHookedPointing::Item* item = static_cast<ListHookedPointing::Item*>(ListHookedPointing::instance().get_nolock(device));
-      if (! item) return;
+    IOHIPointing* device = OSDynamicCast(IOHIPointing, sender);
+    if (! device) return;
 
-      // ------------------------------------------------------------
-      CommonData::setcurrent_ts(ts);
-      deviceVendor = item->getVendor();
-      deviceProduct = item->getProduct();
+    ListHookedPointing::Item* item = static_cast<ListHookedPointing::Item*>(ListHookedPointing::instance().get_nolock(device));
+    if (! item) return;
 
-      // ------------------------------------------------------------
-      justPressed = buttons.justPressed(item->get_previousbuttons());
-      justReleased = buttons.justReleased(item->get_previousbuttons());
-      item->set_previousbuttons(buttons);
-    }
+    // ------------------------------------------------------------
+    CommonData::setcurrent_ts(ts);
+    deviceVendor = item->getVendor();
+    deviceProduct = item->getProduct();
+
+    // ------------------------------------------------------------
+    justPressed = buttons.justPressed(item->get_previousbuttons());
+    justReleased = buttons.justReleased(item->get_previousbuttons());
+    item->set_previousbuttons(buttons);
 
     // ------------------------------------------------------------
     // divide an event into button and cursormove events.
@@ -394,18 +389,17 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     DeviceVendor deviceVendor(0);
     DeviceProduct deviceProduct(0);
-    {
-      IOHIPointing* device = OSDynamicCast(IOHIPointing, sender);
-      if (! device) return;
 
-      ListHookedPointing::Item* item = static_cast<ListHookedPointing::Item*>(ListHookedPointing::instance().get_nolock(device));
-      if (! item) return;
+    IOHIPointing* device = OSDynamicCast(IOHIPointing, sender);
+    if (! device) return;
 
-      // ------------------------------------------------------------
-      CommonData::setcurrent_ts(ts);
-      deviceVendor = item->getVendor();
-      deviceProduct = item->getProduct();
-    }
+    ListHookedPointing::Item* item = static_cast<ListHookedPointing::Item*>(ListHookedPointing::instance().get_nolock(device));
+    if (! item) return;
+
+    // ------------------------------------------------------------
+    CommonData::setcurrent_ts(ts);
+    deviceVendor = item->getVendor();
+    deviceProduct = item->getProduct();
 
     // ------------------------------------------------------------
     bool retainFlagStatusTemporaryCount = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_lazy_modifiers_with_mouse_event);
