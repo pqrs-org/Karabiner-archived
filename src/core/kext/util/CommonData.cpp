@@ -74,9 +74,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   CommonData::increase_alloccount(void)
   {
-    IOLockWrapper::ScopedLock lk(alloccount_lock_);
-    if (! lk) return;
-
     ++alloccount_;
     if (alloccount_ > 1024) {
       IOLOG_WARN("alloccount_ > 1024\n");
@@ -87,9 +84,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   CommonData::decrease_alloccount(void)
   {
-    IOLockWrapper::ScopedLock lk(alloccount_lock_);
-    if (! lk) return;
-
     --alloccount_;
     //IOLOG_DEVEL("CommonData::decrease_alloccount alloccount_:%d\n", alloccount_);
   }

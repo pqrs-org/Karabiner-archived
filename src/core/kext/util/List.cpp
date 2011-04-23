@@ -2,14 +2,11 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   List::List(void) : front_(NULL), back_(NULL), size_(0)
-  {
-    lock_ = IOLockWrapper::alloc();
-  }
+  {}
 
   List::~List(void)
   {
     clear();
-    IOLockWrapper::free(lock_);
   }
 
   List::Item*
@@ -41,18 +38,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   List::Item*
   List::erase(Item* p)
   {
-    IOLockWrapper::ScopedLock lk(lock_);
-    if (! lk) return NULL;
-
     return erase_nolock(p);
   }
 
   void
   List::clear(void)
   {
-    IOLockWrapper::ScopedLock lk(lock_);
-    if (! lk) return;
-
     while (front_) {
       erase_nolock(front_);
     }
@@ -61,9 +52,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   List::push_back(Item* p)
   {
-    IOLockWrapper::ScopedLock lk(lock_);
-    if (! lk) return;
-
     if (! p) return;
 
     if (back_) {
@@ -84,9 +72,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   List::push_front(Item* p)
   {
-    IOLockWrapper::ScopedLock lk(lock_);
-    if (! lk) return;
-
     if (! p) return;
 
     if (front_) {

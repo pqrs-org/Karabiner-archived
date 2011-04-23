@@ -4,33 +4,24 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   List* EventWatcher::list_;
-  IOLock* EventWatcher::lock_;
 
   void
   EventWatcher::initialize(void)
   {
-    lock_ = IOLockWrapper::alloc();
     list_ = new List();
   }
 
   void
   EventWatcher::terminate(void)
   {
-    {
-      IOLockWrapper::ScopedLock lk(lock_);
-      if (list_) {
-        delete list_;
-      }
+    if (list_) {
+      delete list_;
     }
-    IOLockWrapper::free(lock_);
   }
 
   void
   EventWatcher::reset(void)
   {
-    IOLockWrapper::ScopedLock lk(lock_);
-    if (! lk) return;
-
     if (! list_) return;
 
     list_->clear();
@@ -39,9 +30,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   EventWatcher::on(void)
   {
-    IOLockWrapper::ScopedLock lk(lock_);
-    if (! lk) return;
-
     if (! list_) return;
 
     IOLOG_DEVEL("EventWatcher::on (list_->size:%d)\n", static_cast<int>(list_->size()));
@@ -54,9 +42,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   EventWatcher::set(bool& b)
   {
-    IOLockWrapper::ScopedLock lk(lock_);
-    if (! lk) return;
-
     if (! list_) return;
 
     b = false;
@@ -66,9 +51,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   EventWatcher::unset(bool& b)
   {
-    IOLockWrapper::ScopedLock lk(lock_);
-    if (! lk) return;
-
     if (! list_) return;
 
     Item* p = static_cast<Item*>(list_->front());

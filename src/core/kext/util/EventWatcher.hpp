@@ -25,7 +25,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool& isAnyEventHappen;
     };
     static List* list_;
-    static IOLock* lock_;
   };
 }
 

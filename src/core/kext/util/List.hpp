@@ -59,8 +59,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     Item* front_;
     Item* back_;
     size_t size_;
-
-    IOLock* lock_;
   };
 }
 

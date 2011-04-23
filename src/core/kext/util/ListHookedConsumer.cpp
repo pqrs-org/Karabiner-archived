@@ -18,17 +18,13 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   ListHookedConsumer::Item::Item(IOHIDevice* p) : ListHookedDevice::Item(p),
     orig_keyboardSpecialEventAction_(NULL),
-    orig_keyboardSpecialEventTarget_(NULL),
-    replacerestore_lock_(NULL)
-  {
-    replacerestore_lock_ = IOLockWrapper::alloc();
-  }
+    orig_keyboardSpecialEventTarget_(NULL)
+  {}
 
   ListHookedConsumer::Item::~Item(void)
   {
     IOLOG_DEBUG("ListHookedConsumer::Item::~Item()\n");
     restoreEventAction();
-    IOLockWrapper::free(replacerestore_lock_);
   }
 
   // ----------------------------------------------------------------------
@@ -83,9 +79,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   ListHookedConsumer::Item::replaceEventAction(void)
   {
-    IOLockWrapper::ScopedLock lk(replacerestore_lock_);
-    if (! lk) return false;
-
     if (! device_) return false;
 
     IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, device_);
@@ -108,9 +101,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   ListHookedConsumer::Item::restoreEventAction(void)
   {
-    IOLockWrapper::ScopedLock lk(replacerestore_lock_);
-    if (! lk) return false;
-
     if (! device_) return false;
 
     IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, device_);
@@ -176,9 +166,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListHookedConsumer::apply(const Params_KeyboardSpecialEventCallback& params)
   {
-    IOLockWrapper::ScopedLock lk(list_lock_);
-    if (! lk) return;
-
     ListHookedConsumer::Item* p = static_cast<ListHookedConsumer::Item*>(get_replaced_nolock());
     if (p) {
       p->apply(params);
@@ -188,9 +175,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListHookedConsumer::disableNumLock(void)
   {
-    IOLockWrapper::ScopedLock lk(list_lock_);
-    if (! lk) return;
-
     ListHookedConsumer::Item* p = static_cast<ListHookedConsumer::Item*>(get_replaced_nolock());
     if (p) {
       p->disableNumLock();

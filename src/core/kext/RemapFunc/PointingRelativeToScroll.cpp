@@ -207,8 +207,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     PointingRelativeToScroll::timer_callback(OSObject* owner, IOTimerEventSource* sender)
     {
-      IOLockWrapper::ScopedLock lk(timer_.getlock());
-
       if (! queue_) return;
 
       // ----------------------------------------

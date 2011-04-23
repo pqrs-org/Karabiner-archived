@@ -21,8 +21,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       KeyboardSpecialEventCallback orig_keyboardSpecialEventAction_;
       OSObject* orig_keyboardSpecialEventTarget_;
 
-      IOLock* replacerestore_lock_;
-
       bool refresh(void);
 
       /** return true if event action is replaced. */
