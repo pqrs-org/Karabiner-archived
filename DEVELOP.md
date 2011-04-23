@@ -41,3 +41,18 @@ We set a hook function in the middle of hardware driver.
 And we modify the input event in the hook function.
 
 ...
+
+
+Threads and Lock
+----------------
+We use a global lock to guard the status of modifier flags, the status of buttons, and other global variables.
+All threads use this global lock. The only one thread runs at the same time.
+
+Threads:
+
+* Timer callback
+* hooked function (EventInputQueue::push_*)
+* gIOMatchedNotification and gIOTerminatedNotification callback of input devices (Core::notification_callback_*)
+* IOUserClient callback (UserClient_kext::callback_*)
+
+And we use the global lock in Core::stop to wait threads termination.
