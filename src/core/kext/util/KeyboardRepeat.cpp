@@ -39,9 +39,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   KeyboardRepeat::cancel(void)
   {
-    IOLockWrapper::ScopedLock lk(fire_timer_.getlock());
-    if (! lk) return;
-
     IOLOG_DEVEL("KeyboardRepeat::cancel\n");
     cancel_nolock();
   }
@@ -91,9 +88,6 @@ namespace org_pqrs_KeyRemap4MacBook {
                                 KeyCode key,
                                 KeyboardType keyboardType)
   {
-    IOLockWrapper::ScopedLock lk(fire_timer_.getlock());
-    if (! lk) return;
-
     primitive_add_nolock(eventType, flags, key, keyboardType);
   }
 
@@ -102,9 +96,6 @@ namespace org_pqrs_KeyRemap4MacBook {
                                        KeyCode key,
                                        KeyboardType keyboardType)
   {
-    IOLockWrapper::ScopedLock lk(fire_timer_.getlock());
-    if (! lk) return;
-
     primitive_add_nolock(EventType::DOWN, flags, key, keyboardType, Item::TYPE_DOWNUP);
   }
 
@@ -113,9 +104,6 @@ namespace org_pqrs_KeyRemap4MacBook {
                                 Flags flags,
                                 ConsumerKeyCode key)
   {
-    IOLockWrapper::ScopedLock lk(fire_timer_.getlock());
-    if (! lk) return;
-
     primitive_add_nolock(eventType, flags, key);
   }
 
@@ -131,9 +119,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   int
   KeyboardRepeat::primitive_start(int wait)
   {
-    IOLockWrapper::ScopedLock lk(fire_timer_.getlock());
-    if (! lk) return -1;
-
     primitive_start_nolock(wait);
     return id_;
   }
@@ -145,9 +130,6 @@ namespace org_pqrs_KeyRemap4MacBook {
                       KeyboardType keyboardType,
                       int wait)
   {
-    IOLockWrapper::ScopedLock lk(fire_timer_.getlock());
-    if (! lk) return;
-
     if (! queue_) return;
 
     if (key == KeyCode::VK_NONE) return;
@@ -192,9 +174,6 @@ namespace org_pqrs_KeyRemap4MacBook {
                       Flags flags,
                       ConsumerKeyCode key)
   {
-    IOLockWrapper::ScopedLock lk(fire_timer_.getlock());
-    if (! lk) return;
-
     if (! queue_) return;
 
     if (key == ConsumerKeyCode::VK_NONE) return;
@@ -234,9 +213,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   KeyboardRepeat::fire_timer_callback(OSObject* owner, IOTimerEventSource* sender)
   {
-    IOLockWrapper::ScopedLock lk(fire_timer_.getlock());
-    if (! lk) return;
-
     if (! queue_) return;
 
     IOLOG_DEVEL("KeyboardRepeat::fire queue_->size = %d\n", static_cast<int>(queue_->size()));
