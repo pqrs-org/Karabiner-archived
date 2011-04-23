@@ -16,7 +16,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListHookedKeyboard::static_initialize(IOWorkLoop& workloop)
   {
-    setcapslock_timer_.initialize(&workloop, NULL, ListHookedKeyboard::setCapsLock_callback);
+    setcapslock_timer_.initialize(&workloop, NULL, ListHookedKeyboard::setcapslock_timer_callback);
   }
 
   void
@@ -311,7 +311,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  ListHookedKeyboard::setCapsLock_callback(OSObject* owner, IOTimerEventSource* sender)
+  ListHookedKeyboard::setcapslock_timer_callback(OSObject* owner, IOTimerEventSource* sender)
   {
     ListHookedKeyboard& self = ListHookedKeyboard::instance();
     IOLockWrapper::ScopedLock lk(self.list_lock_);

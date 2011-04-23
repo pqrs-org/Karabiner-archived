@@ -45,7 +45,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void apply(const Params_UpdateEventFlagsCallback& params);
 
   private:
-    static void setCapsLock_callback(OSObject* owner, IOTimerEventSource* sender);
+    static void setcapslock_timer_callback(OSObject* owner, IOTimerEventSource* sender);
     static TimerWrapper setcapslock_timer_;
   };
 }
