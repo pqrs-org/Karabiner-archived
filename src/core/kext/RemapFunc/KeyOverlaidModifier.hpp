@@ -35,9 +35,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       void add(Option newval)  { add(BRIDGE_DATATYPE_OPTION,  newval.get()); }
 
     private:
-      static void firerepeat(OSObject* owner, IOTimerEventSource* sender);
+      static void firerepeat_timer_callback(OSObject* owner, IOTimerEventSource* sender);
 
-      static TimerWrapper timer_;
+      static TimerWrapper firerepeat_timer_;
       static KeyOverlaidModifier* target_;
 
       size_t index_;

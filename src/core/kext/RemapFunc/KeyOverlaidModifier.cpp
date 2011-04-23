@@ -5,19 +5,19 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    TimerWrapper KeyOverlaidModifier::timer_;
+    TimerWrapper KeyOverlaidModifier::firerepeat_timer_;
     KeyOverlaidModifier* KeyOverlaidModifier::target_ = NULL;
 
     void
     KeyOverlaidModifier::static_initialize(IOWorkLoop& workloop)
     {
-      timer_.initialize(&workloop, NULL, KeyOverlaidModifier::firerepeat);
+      firerepeat_timer_.initialize(&workloop, NULL, KeyOverlaidModifier::firerepeat_timer_callback);
     }
 
     void
     KeyOverlaidModifier::static_terminate(void)
     {
-      timer_.terminate();
+      firerepeat_timer_.terminate();
     }
 
     KeyOverlaidModifier::KeyOverlaidModifier(void) :
@@ -29,7 +29,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     KeyOverlaidModifier::~KeyOverlaidModifier(void)
     {
       if (target_ == this) {
-        timer_.cancelTimeout();
+        firerepeat_timer_.cancelTimeout();
         target_ = NULL;
       }
     }
@@ -108,7 +108,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! result) return false;
 
       // ------------------------------------------------------------
-      IOLockWrapper::ScopedLock lk(timer_.getlock());
+      IOLockWrapper::ScopedLock lk(firerepeat_timer_.getlock());
 
       if (remapParams.params.ex_iskeydown) {
         EventWatcher::set(isAnyEventHappen_);
@@ -133,11 +133,11 @@ namespace org_pqrs_KeyRemap4MacBook {
           target_ = this;
           isfirenormal_ = false;
           isfirerepeat_ = false;
-          timer_.setTimeoutMS(Config::get_keyoverlaidmodifier_initial_wait());
+          firerepeat_timer_.setTimeoutMS(Config::get_keyoverlaidmodifier_initial_wait());
         }
 
       } else {
-        timer_.cancelTimeout();
+        firerepeat_timer_.cancelTimeout();
 
         if (isfirerepeat_) {
           FlagStatus::ScopedTemporaryFlagsChanger stfc(savedflags_);
@@ -163,9 +163,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    KeyOverlaidModifier::firerepeat(OSObject* owner, IOTimerEventSource* sender)
+    KeyOverlaidModifier::firerepeat_timer_callback(OSObject* owner, IOTimerEventSource* sender)
     {
-      IOLockWrapper::ScopedLock lk(timer_.getlock());
+      IOLockWrapper::ScopedLock lk(firerepeat_timer_.getlock());
 
       if (! target_) return;
 
