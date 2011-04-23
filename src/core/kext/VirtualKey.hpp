@@ -92,7 +92,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       HIGHSPEED_RELATIVE_SCALE = 50,
       HIGHSPEED_SCROLL_SCALE = 50,
     };
-    static void fire(OSObject* notuse_owner, IOTimerEventSource* notuse_sender);
+    static void fire_timer_callback(OSObject* notuse_owner, IOTimerEventSource* notuse_sender);
 
     static bool handle_button(const Params_KeyboardEventCallBack& params);
     static bool handle_move(const Params_KeyboardEventCallBack& params);
@@ -103,7 +103,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static int scale_;
     static bool highspeed_;
     static bool scrollmode_;
-    static TimerWrapper timer_;
+    static TimerWrapper fire_timer_;
   };
 
   // ----------------------------------------------------------------------
@@ -141,7 +141,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     static InputModeDetail normalize(InputModeDetail imd);
 
-    static void fire(OSObject* notuse_owner, IOTimerEventSource* notuse_sender);
+    static void fire_timer_callback(OSObject* notuse_owner, IOTimerEventSource* notuse_sender);
     static void fire_nolock(void);
 
     static InputModeDetail savedinputmodedetail_;
@@ -154,7 +154,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool active;
     };
     static FireKeyInfo fireKeyInfo_;
-    static TimerWrapper timer_;
+    static TimerWrapper fire_timer_;
   };
 }
 

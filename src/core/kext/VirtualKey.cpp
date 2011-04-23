@@ -339,13 +339,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     scrollmode_ = false;
     highspeed_ = false;
 
-    timer_.initialize(&workloop, NULL, Handle_VK_MOUSEKEY::fire);
+    fire_timer_.initialize(&workloop, NULL, Handle_VK_MOUSEKEY::fire_timer_callback);
   }
 
   void
   Handle_VK_MOUSEKEY::terminate(void)
   {
-    timer_.terminate();
+    fire_timer_.terminate();
   }
 
   void
@@ -357,7 +357,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     scrollmode_ = false;
     highspeed_ = false;
 
-    timer_.cancelTimeout();
+    fire_timer_.cancelTimeout();
   }
 
   bool
@@ -466,7 +466,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     if (dx_ != 0 || dy_ != 0) {
-      timer_.setTimeoutMS(TIMER_INTERVAL, false);
+      fire_timer_.setTimeoutMS(TIMER_INTERVAL, false);
     } else {
       scale_ = 1;
 
@@ -477,16 +477,16 @@ namespace org_pqrs_KeyRemap4MacBook {
       //
       // In the above case, we need to keep scrollmode_, highspeed_ value.
 
-      timer_.cancelTimeout();
+      fire_timer_.cancelTimeout();
     }
 
     return true;
   }
 
   void
-  Handle_VK_MOUSEKEY::fire(OSObject* notuse_owner, IOTimerEventSource* notuse_sender)
+  Handle_VK_MOUSEKEY::fire_timer_callback(OSObject* notuse_owner, IOTimerEventSource* notuse_sender)
   {
-    IOLockWrapper::ScopedLock lk(timer_.getlock());
+    IOLockWrapper::ScopedLock lk(fire_timer_.getlock());
 
     if (! scrollmode_) {
       int s = scale_;
@@ -507,7 +507,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       ++scale_;
     }
 
-    timer_.setTimeoutMS(TIMER_INTERVAL);
+    fire_timer_.setTimeoutMS(TIMER_INTERVAL);
   }
 
   int Handle_VK_MOUSEKEY::dx_;
@@ -515,7 +515,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   int Handle_VK_MOUSEKEY::scale_;
   bool Handle_VK_MOUSEKEY::scrollmode_;
   bool Handle_VK_MOUSEKEY::highspeed_;
-  TimerWrapper Handle_VK_MOUSEKEY::timer_;
+  TimerWrapper Handle_VK_MOUSEKEY::fire_timer_;
 
   // ----------------------------------------------------------------------
   bool
@@ -572,14 +572,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   Handle_VK_JIS_TEMPORARY::initialize(IOWorkLoop& workloop)
   {
-    timer_.initialize(&workloop, NULL, Handle_VK_JIS_TEMPORARY::fire);
+    fire_timer_.initialize(&workloop, NULL, Handle_VK_JIS_TEMPORARY::fire_timer_callback);
     fireKeyInfo_.active = false;
   }
 
   void
   Handle_VK_JIS_TEMPORARY::terminate(void)
   {
-    timer_.terminate();
+    fire_timer_.terminate();
   }
 
   bool
@@ -644,8 +644,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     // flash keyevent
     if (fireKeyInfo_.active) {
-      IOLockWrapper::ScopedLock lk(timer_.getlock());
-      timer_.cancelTimeout();
+      IOLockWrapper::ScopedLock lk(fire_timer_.getlock());
+      fire_timer_.cancelTimeout();
       fire_nolock();
     }
 
@@ -656,7 +656,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   Handle_VK_JIS_TEMPORARY::firekeytoinputdetail(const Params_KeyboardEventCallBack& params,
                                                 InputModeDetail inputmodedetail)
   {
-    IOLockWrapper::ScopedLock lk(timer_.getlock());
+    IOLockWrapper::ScopedLock lk(fire_timer_.getlock());
 
     inputmodedetail = normalize(inputmodedetail);
     currentinputmodedetail_ = normalize(currentinputmodedetail_);
@@ -691,7 +691,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     fireKeyInfo_.keyboardType = params.keyboardType;
     fireKeyInfo_.active = true;
 
-    timer_.setTimeoutMS(KEYEVENT_DELAY_MS);
+    fire_timer_.setTimeoutMS(KEYEVENT_DELAY_MS);
   }
 
   InputModeDetail
@@ -704,9 +704,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  Handle_VK_JIS_TEMPORARY::fire(OSObject* notuse_owner, IOTimerEventSource* notuse_sender)
+  Handle_VK_JIS_TEMPORARY::fire_timer_callback(OSObject* notuse_owner, IOTimerEventSource* notuse_sender)
   {
-    IOLockWrapper::ScopedLock lk(timer_.getlock());
+    IOLockWrapper::ScopedLock lk(fire_timer_.getlock());
     fire_nolock();
   }
 
@@ -721,5 +721,5 @@ namespace org_pqrs_KeyRemap4MacBook {
   InputModeDetail Handle_VK_JIS_TEMPORARY::savedinputmodedetail_(0);
   InputModeDetail Handle_VK_JIS_TEMPORARY::currentinputmodedetail_(0);
   Handle_VK_JIS_TEMPORARY::FireKeyInfo Handle_VK_JIS_TEMPORARY::fireKeyInfo_;
-  TimerWrapper Handle_VK_JIS_TEMPORARY::timer_;
+  TimerWrapper Handle_VK_JIS_TEMPORARY::fire_timer_;
 }
