@@ -15,20 +15,20 @@
 namespace org_pqrs_KeyRemap4MacBook {
   List* EventInputQueue::queue_ = NULL;
   IntervalChecker EventInputQueue::ic_;
-  TimerWrapper EventInputQueue::timer_;
+  TimerWrapper EventInputQueue::fire_timer_;
 
   void
   EventInputQueue::initialize(IOWorkLoop& workloop)
   {
     queue_ = new List();
     ic_.begin();
-    timer_.initialize(&workloop, NULL, EventInputQueue::fire);
+    fire_timer_.initialize(&workloop, NULL, EventInputQueue::fire_timer_callback);
   }
 
   void
   EventInputQueue::terminate(void)
   {
-    timer_.terminate();
+    fire_timer_.terminate();
 
     if (queue_) {
       delete queue_;
@@ -125,7 +125,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     Item* front = static_cast<Item*>(queue_->front());
     if (front) {
-      timer_.setTimeoutMS(front->delayMS, false);
+      fire_timer_.setTimeoutMS(front->delayMS, false);
     }
   }
 
@@ -147,7 +147,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
     if (! lk_eventlock) return;
-    IOLockWrapper::ScopedLock lk(timer_.getlock());
+    IOLockWrapper::ScopedLock lk(fire_timer_.getlock());
     if (! lk) return;
 
     // ------------------------------------------------------------
@@ -233,7 +233,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
     if (! lk_eventlock) return;
-    IOLockWrapper::ScopedLock lk(timer_.getlock());
+    IOLockWrapper::ScopedLock lk(fire_timer_.getlock());
     if (! lk) return;
 
     // ------------------------------------------------------------
@@ -273,7 +273,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
     if (! lk_eventlock) return;
-    IOLockWrapper::ScopedLock lk(timer_.getlock());
+    IOLockWrapper::ScopedLock lk(fire_timer_.getlock());
     if (! lk) return;
 
     // ------------------------------------------------------------
@@ -323,7 +323,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
     if (! lk_eventlock) return;
-    IOLockWrapper::ScopedLock lk(timer_.getlock());
+    IOLockWrapper::ScopedLock lk(fire_timer_.getlock());
     if (! lk) return;
 
     // ------------------------------------------------------------
@@ -402,7 +402,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
     if (! lk_eventlock) return;
-    IOLockWrapper::ScopedLock lk(timer_.getlock());
+    IOLockWrapper::ScopedLock lk(fire_timer_.getlock());
     if (! lk) return;
 
     // ------------------------------------------------------------
@@ -441,9 +441,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ======================================================================
   void
-  EventInputQueue::fire(OSObject* /*notuse_owner*/, IOTimerEventSource* /*notuse_sender*/)
+  EventInputQueue::fire_timer_callback(OSObject* /*notuse_owner*/, IOTimerEventSource* /*notuse_sender*/)
   {
-    IOLockWrapper::ScopedLock lk(timer_.getlock());
+    IOLockWrapper::ScopedLock lk(fire_timer_.getlock());
     if (! lk) return;
 
     if (! queue_) return;

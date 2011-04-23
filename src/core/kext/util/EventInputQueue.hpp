@@ -116,12 +116,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void enqueue_(const Params_KeyboardSpecialEventCallback& p, bool retainFlagStatusTemporaryCount, DeviceVendor dv, DeviceProduct dp);
     static void enqueue_(const Params_RelativePointerEventCallback& p, bool retainFlagStatusTemporaryCount, DeviceVendor dv, DeviceProduct dp);
     static void enqueue_(const Params_ScrollWheelEventCallback& p,     bool retainFlagStatusTemporaryCount, DeviceVendor dv, DeviceProduct dp);
-    static void fire(OSObject* owner, IOTimerEventSource* sender);
+    static void fire_timer_callback(OSObject* owner, IOTimerEventSource* sender);
     static void setTimer(void);
 
     static List* queue_;
     static IntervalChecker ic_;
-    static TimerWrapper timer_;
+    static TimerWrapper fire_timer_;
   };
 }
 
