@@ -38,9 +38,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       void dokeydown(void);
       void dokeyup(void);
-      static void fireholding(OSObject* owner, IOTimerEventSource* sender);
+      static void fireholding_timer_callback(OSObject* owner, IOTimerEventSource* sender);
 
-      static TimerWrapper timer_;
+      static TimerWrapper fireholding_timer_;
       static HoldingKeyToKey* target_;
 
       size_t index_;

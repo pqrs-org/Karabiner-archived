@@ -3,19 +3,19 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    TimerWrapper HoldingKeyToKey::timer_;
+    TimerWrapper HoldingKeyToKey::fireholding_timer_;
     HoldingKeyToKey* HoldingKeyToKey::target_ = NULL;
 
     void
     HoldingKeyToKey::static_initialize(IOWorkLoop& workloop)
     {
-      timer_.initialize(&workloop, NULL, HoldingKeyToKey::fireholding);
+      fireholding_timer_.initialize(&workloop, NULL, HoldingKeyToKey::fireholding_timer_callback);
     }
 
     void
     HoldingKeyToKey::static_terminate(void)
     {
-      timer_.terminate();
+      fireholding_timer_.terminate();
     }
 
     HoldingKeyToKey::HoldingKeyToKey(void) : index_(0), index_is_holding_(false), active_(false), keydowntype_(KEYDOWNTYPE_NONE)
@@ -24,7 +24,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     HoldingKeyToKey::~HoldingKeyToKey(void)
     {
       if (target_ == this) {
-        timer_.cancelTimeout();
+        fireholding_timer_.cancelTimeout();
         target_ = NULL;
       }
     }
@@ -94,7 +94,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     HoldingKeyToKey::remap(RemapParams& remapParams)
     {
-      IOLockWrapper::ScopedLock lk(timer_.getlock());
+      IOLockWrapper::ScopedLock lk(fireholding_timer_.getlock());
 
       bool result = keytokey_drop_.remap(remapParams);
       if (! result) {
@@ -112,7 +112,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         savedflags_ = FlagStatus::makeFlags();
 
-        timer_.setTimeoutMS(Config::get_holdingkeytokey_wait());
+        fireholding_timer_.setTimeoutMS(Config::get_holdingkeytokey_wait());
 
       } else {
         dokeydown();
@@ -127,7 +127,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! active_) return;
       active_ = false;
 
-      timer_.cancelTimeout();
+      fireholding_timer_.cancelTimeout();
 
       switch (target_->keydowntype_) {
         case KEYDOWNTYPE_NONE:
@@ -169,9 +169,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    HoldingKeyToKey::fireholding(OSObject* owner, IOTimerEventSource* sender)
+    HoldingKeyToKey::fireholding_timer_callback(OSObject* owner, IOTimerEventSource* sender)
     {
-      IOLockWrapper::ScopedLock lk(timer_.getlock());
+      IOLockWrapper::ScopedLock lk(fireholding_timer_.getlock());
 
       if (! target_) return;
 
