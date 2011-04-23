@@ -50,7 +50,7 @@ All threads use this global lock. The only one thread runs at the same time.
 
 Threads:
 
-* Timer callback
+* Timer callback (*_timer_callback)
 * hooked function (EventInputQueue::push_*)
 * gIOMatchedNotification and gIOTerminatedNotification callback of input devices (Core::*Notification_callback)
 * IOUserClient callback (UserClient_kext::callback_*)

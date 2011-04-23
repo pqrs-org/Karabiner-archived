@@ -554,7 +554,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ======================================================================
     static void
-    refresh_core(OSObject* owner, IOTimerEventSource* sender)
+    refresh_timer_callback(OSObject* owner, IOTimerEventSource* sender)
     {
       IOLockWrapper::ScopedLock lk(lock_);
 
@@ -617,7 +617,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       remapclasses_ = NULL;
       enabled_remapclasses_ = NULL;
 
-      refresh_timer_.initialize(&workloop, NULL, refresh_core);
+      refresh_timer_.initialize(&workloop, NULL, refresh_timer_callback);
     }
 
     static void
