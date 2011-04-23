@@ -542,7 +542,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ================================================================================
   namespace RemapClassManager {
-    IOLock* lock_ = NULL;
     TimerWrapper refresh_timer_;
 
     char statusmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];
@@ -556,8 +555,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void
     refresh_timer_callback(OSObject* owner, IOTimerEventSource* sender)
     {
-      IOLockWrapper::ScopedLock lk(lock_);
-
       if (! remapclasses_) {
         IOLOG_ERROR("RemapClassManager::refresh_core remapclasses_ == NULL.\n");
         return;
@@ -611,7 +608,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     initialize(IOWorkLoop& workloop)
     {
-      lock_ = IOLockWrapper::alloc();
       statusmessage_[0] = '\0';
       lastmessage_[0] = '\0';
       remapclasses_ = NULL;
@@ -648,15 +644,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       refresh_timer_.terminate();
 
       clear_remapclasses();
-
-      IOLockWrapper::free(lock_);
     }
 
     bool
     load_remapclasses_initialize_vector(const uint32_t* const remapclasses_initialize_vector, mach_vm_size_t vector_size)
     {
-      IOLockWrapper::ScopedLock lk(lock_);
-
       // ------------------------------------------------------------
       // clean previous resources and setup new resources.
       clear_remapclasses();
@@ -726,8 +718,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     set_config(const int32_t* const config_vector, mach_vm_size_t config_size)
     {
-      IOLockWrapper::ScopedLock lk(lock_);
-
       // ------------------------------------------------------------
       // check
       if (! remapclasses_) {
@@ -772,7 +762,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ----------------------------------------------------------------------
 #define CALL_REMAPCLASS_FUNC(FUNC, PARAMS) {                       \
-    IOLockWrapper::ScopedLock lk(lock_);                           \
     if (enabled_remapclasses_) {                                   \
       for (size_t i = 0; i < enabled_remapclasses_->size(); ++i) { \
         RemapClass* p = (*enabled_remapclasses_)[i];               \
@@ -816,8 +805,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     remap_simultaneouskeypresses(void)
     {
-      IOLockWrapper::ScopedLock lk(lock_);
-
       bool queue_changed = false;
 
       if (enabled_remapclasses_) {
@@ -837,8 +824,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params)
     {
-      IOLockWrapper::ScopedLock lk(lock_);
-
       bool dropped = false;
 
       if (enabled_remapclasses_) {
@@ -862,9 +847,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     isEnabled(size_t configindex)
     {
-      // isEnabled called in remap_key, remap_consumer, ...
-      // So, don't make ScopedLock(lock_).
-
       if (! remapclasses_) return false;
 
       if (configindex >= remapclasses_->size()) {
