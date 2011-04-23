@@ -108,8 +108,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! result) return false;
 
       // ------------------------------------------------------------
-      IOLockWrapper::ScopedLock lk(firerepeat_timer_.getlock());
-
       if (remapParams.params.ex_iskeydown) {
         EventWatcher::set(isAnyEventHappen_);
         ic_.begin();
@@ -165,8 +163,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     KeyOverlaidModifier::firerepeat_timer_callback(OSObject* owner, IOTimerEventSource* sender)
     {
-      IOLockWrapper::ScopedLock lk(firerepeat_timer_.getlock());
-
       if (! target_) return;
 
       if (target_->isAnyEventHappen_) return;
