@@ -628,7 +628,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // flash keyevent
     if (fireKeyInfo_.active) {
       fire_timer_.cancelTimeout();
-      fire_nolock();
+      fire();
     }
 
     return false;
@@ -686,11 +686,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   Handle_VK_JIS_TEMPORARY::fire_timer_callback(OSObject* notuse_owner, IOTimerEventSource* notuse_sender)
   {
-    fire_nolock();
+    fire();
   }
 
   void
-  Handle_VK_JIS_TEMPORARY::fire_nolock(void)
+  Handle_VK_JIS_TEMPORARY::fire(void)
   {
     if (! fireKeyInfo_.active) return;
     fireKeyInfo_.active = false;

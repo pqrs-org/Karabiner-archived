@@ -141,7 +141,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static InputModeDetail normalize(InputModeDetail imd);
 
     static void fire_timer_callback(OSObject* notuse_owner, IOTimerEventSource* notuse_sender);
-    static void fire_nolock(void);
+    static void fire(void);
 
     static InputModeDetail savedinputmodedetail_;
     static InputModeDetail currentinputmodedetail_;
