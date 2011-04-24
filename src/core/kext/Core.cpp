@@ -10,7 +10,6 @@
 #include "util/EventOutputQueue.hpp"
 #include "util/EventWatcher.hpp"
 #include "util/GlobalLock.hpp"
-#include "util/IOLockWrapper.hpp"
 #include "util/KeyboardRepeat.hpp"
 #include "util/ListHookedConsumer.hpp"
 #include "util/ListHookedKeyboard.hpp"
@@ -70,7 +69,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       // At first, restoreEventAction for all devices.
       {
-        IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
+        GlobalLock::ScopedLock lk;
 
         ListHookedKeyboard::instance().terminate();
         ListHookedConsumer::instance().terminate();
@@ -82,7 +81,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // call terminate
       {
-        IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
+        GlobalLock::ScopedLock lk;
 
         Config::sysctl_unregister();
 
@@ -113,7 +112,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     IOHIKeyboard_gIOMatchedNotification_callback(void* target, void* refCon, IOService* newService, IONotifier* notifier)
     {
-      IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
+      GlobalLock::ScopedLock lk;
+      if (! lk) return false;
 
       IOLOG_DEBUG("%s newService:%p\n", __FUNCTION__, newService);
 
@@ -128,7 +128,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     IOHIKeyboard_gIOTerminatedNotification_callback(void* target, void* refCon, IOService* newService, IONotifier* notifier)
     {
-      IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
+      GlobalLock::ScopedLock lk;
+      if (! lk) return false;
 
       IOLOG_DEBUG("%s newService:%p\n", __FUNCTION__, newService);
 
@@ -143,7 +144,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     IOHIPointing_gIOMatchedNotification_callback(void* target, void* refCon, IOService* newService, IONotifier* notifier)
     {
-      IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
+      GlobalLock::ScopedLock lk;
+      if (! lk) return false;
 
       IOLOG_DEBUG("%s newService:%p\n", __FUNCTION__, newService);
 
@@ -157,7 +159,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     IOHIPointing_gIOTerminatedNotification_callback(void* target, void* refCon, IOService* newService, IONotifier* notifier)
     {
-      IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
+      GlobalLock::ScopedLock lk;
+      if (! lk) return false;
 
       IOLOG_DEBUG("%s newService:%p\n", __FUNCTION__, newService);
 
