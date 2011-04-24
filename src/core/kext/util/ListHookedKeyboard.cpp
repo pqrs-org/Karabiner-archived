@@ -3,7 +3,6 @@
 #include "Config.hpp"
 #include "EventInputQueue.hpp"
 #include "FlagStatus.hpp"
-#include "IOLockWrapper.hpp"
 #include "ListHookedKeyboard.hpp"
 #include "RemapClass.hpp"
 

@@ -2,7 +2,6 @@
 #define TIMERWRAPPER_HPP
 
 #include "base.hpp"
-#include "IOLockWrapper.hpp"
 
 class org_pqrs_KeyRemap4MacBook_TimerWrapperObject : public OSObject {
   OSDeclareDefaultStructors(org_pqrs_KeyRemap4MacBook_TimerWrapperObject);

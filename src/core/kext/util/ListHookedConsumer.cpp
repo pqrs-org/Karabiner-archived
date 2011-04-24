@@ -2,7 +2,6 @@
 #include "Config.hpp"
 #include "EventInputQueue.hpp"
 #include "FlagStatus.hpp"
-#include "IOLockWrapper.hpp"
 #include "ListHookedConsumer.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {

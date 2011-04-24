@@ -1,6 +1,5 @@
 #include "CommonData.hpp"
 #include "EventOutputQueue.hpp"
-#include "IOLockWrapper.hpp"
 #include "KeyboardRepeat.hpp"
 #include "ListHookedKeyboard.hpp"
 #include "remap.hpp"

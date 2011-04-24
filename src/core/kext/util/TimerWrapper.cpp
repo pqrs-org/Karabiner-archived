@@ -1,4 +1,5 @@
 #include "CommonData.hpp"
+#include "IOLockWrapper.hpp"
 #include "TimerWrapper.hpp"
 
 #define super    OSObject

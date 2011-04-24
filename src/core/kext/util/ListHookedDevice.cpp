@@ -1,6 +1,5 @@
 #include <IOKit/hid/IOHIDKeys.h>
 #include "Config.hpp"
-#include "IOLockWrapper.hpp"
 #include "ListHookedDevice.hpp"
 #include "NumHeldDownKeys.hpp"
 

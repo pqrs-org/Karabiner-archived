@@ -9,6 +9,7 @@
 #include "util/EventInputQueue.hpp"
 #include "util/EventOutputQueue.hpp"
 #include "util/EventWatcher.hpp"
+#include "util/IOLockWrapper.hpp"
 #include "util/KeyboardRepeat.hpp"
 #include "util/ListHookedConsumer.hpp"
 #include "util/ListHookedKeyboard.hpp"

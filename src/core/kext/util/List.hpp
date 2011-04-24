@@ -1,7 +1,8 @@
 #ifndef LIST_HPP
 #define LIST_HPP
 
-#include "IOLockWrapper.hpp"
+#include <sys/types.h>
+#include <string.h>
 
 namespace org_pqrs_KeyRemap4MacBook {
   class List {
