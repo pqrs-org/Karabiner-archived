@@ -40,12 +40,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void increase_alloccount(void);
     static void decrease_alloccount(void);
 
-    // We need to use EventLock to guard FlagStatus, NumHeldDownKeys, or other global variables.
-    // (TimerWrapper use this lock to serialize timerevents, so we must not lock in timer callback.)
-    //
-    // *** We need to lock EventLock before other locks (list lock, etc.) to avoid the deadlock . ***
-    static IOLock* getEventLock(void) { return event_lock_; }
-
   private:
     static AbsoluteTime current_ts_;
     static KeyboardType current_keyboardType_;
@@ -56,7 +50,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     static char statusmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__][BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];
 
     static int alloccount_;
-    static IOLock* event_lock_;
   };
 }
 

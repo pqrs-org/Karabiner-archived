@@ -12,8 +12,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   int CommonData::alloccount_;
 
-  IOLock* CommonData::event_lock_;
-
   bool
   CommonData::initialize(void)
   {
