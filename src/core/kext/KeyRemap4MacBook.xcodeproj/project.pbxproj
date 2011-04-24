@@ -47,7 +47,6 @@
 		345E3ECD11D79D24004B6347 /* RemapFuncBase.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345E3ECA11D79D24004B6347 /* RemapFuncBase.hpp */; };
 		345FD60811D819EA00FC1B86 /* ConsumerToConsumer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345FD60611D819EA00FC1B86 /* ConsumerToConsumer.cpp */; };
 		345FD60911D819EA00FC1B86 /* ConsumerToConsumer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345FD60711D819EA00FC1B86 /* ConsumerToConsumer.hpp */; };
-		3465DB6010A2E93300DFCEC5 /* IOLockWrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3465DB5F10A2E93300DFCEC5 /* IOLockWrapper.hpp */; };
 		346B753E0E72C0BA00F9A79F /* FlagStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 346B753C0E72C0BA00F9A79F /* FlagStatus.cpp */; };
 		346B753F0E72C0BA00F9A79F /* FlagStatus.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 346B753D0E72C0BA00F9A79F /* FlagStatus.hpp */; };
 		346EB2E411D5CDC100BBDF0E /* EventInputQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 346EB2E211D5CDC100BBDF0E /* EventInputQueue.cpp */; };
@@ -161,7 +160,6 @@
 		345E3ECA11D79D24004B6347 /* RemapFuncBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RemapFuncBase.hpp; path = RemapFunc/RemapFuncBase.hpp; sourceTree = "<group>"; };
 		345FD60611D819EA00FC1B86 /* ConsumerToConsumer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConsumerToConsumer.cpp; path = RemapFunc/ConsumerToConsumer.cpp; sourceTree = "<group>"; };
 		345FD60711D819EA00FC1B86 /* ConsumerToConsumer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ConsumerToConsumer.hpp; path = RemapFunc/ConsumerToConsumer.hpp; sourceTree = "<group>"; };
-		3465DB5F10A2E93300DFCEC5 /* IOLockWrapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IOLockWrapper.hpp; path = util/IOLockWrapper.hpp; sourceTree = "<group>"; };
 		346B753C0E72C0BA00F9A79F /* FlagStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FlagStatus.cpp; path = util/FlagStatus.cpp; sourceTree = "<group>"; };
 		346B753D0E72C0BA00F9A79F /* FlagStatus.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FlagStatus.hpp; path = util/FlagStatus.hpp; sourceTree = "<group>"; };
 		346EB2E211D5CDC100BBDF0E /* EventInputQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventInputQueue.cpp; path = util/EventInputQueue.cpp; sourceTree = "<group>"; };
@@ -370,7 +368,6 @@
 				3430E93210C558CA00FC2D64 /* EventWatcher.hpp */,
 				3459F55A10C418D700DAB1FE /* KeyboardRepeat.cpp */,
 				3459F55B10C418D700DAB1FE /* KeyboardRepeat.hpp */,
-				3465DB5F10A2E93300DFCEC5 /* IOLockWrapper.hpp */,
 				34F14BBE0E867884001C15F3 /* NumHeldDownKeys.cpp */,
 				34F14BBF0E867884001C15F3 /* NumHeldDownKeys.hpp */,
 				34F14BB60E862109001C15F3 /* ListHookedPointing.cpp */,
@@ -434,7 +431,6 @@
 				34F14BC10E867884001C15F3 /* NumHeldDownKeys.hpp in Headers */,
 				34AA1F361065B1EE00E9A418 /* ListHookedDevice.hpp in Headers */,
 				34A59B891065C00B0048D1E7 /* ListHookedConsumer.hpp in Headers */,
-				3465DB6010A2E93300DFCEC5 /* IOLockWrapper.hpp in Headers */,
 				3459F55D10C418D700DAB1FE /* KeyboardRepeat.hpp in Headers */,
 				3430E93410C558CA00FC2D64 /* EventWatcher.hpp in Headers */,
 				34A7883110CBD79100DF72FD /* KeyCode.hpp in Headers */,
