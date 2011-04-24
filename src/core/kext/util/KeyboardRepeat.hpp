@@ -47,10 +47,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // --------------------------------------------------
     // primitive operations.
-    static void primitive_add(EventType eventType,
-                              Flags flags,
-                              KeyCode key,
-                              KeyboardType keyboardType);
     static void primitive_add_downup(Flags flags,
                                      KeyCode key,
                                      KeyboardType keyboardType);
@@ -80,15 +76,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     static void fire_timer_callback(OSObject* owner, IOTimerEventSource* sender);
 
-    static void primitive_add_nolock(EventType eventType,
-                                     Flags flags,
-                                     KeyCode key,
-                                     KeyboardType keyboardType,
-                                     Item::Type type = Item::TYPE_NORMAL);
-    static void primitive_add_nolock(EventType eventType,
-                                     Flags flags,
-                                     ConsumerKeyCode key);
-    static void primitive_start_nolock(int wait);
+    static void primitive_add(EventType eventType,
+                              Flags flags,
+                              KeyCode key,
+                              KeyboardType keyboardType,
+                              Item::Type type);
 
     static List* queue_;
     static TimerWrapper fire_timer_;

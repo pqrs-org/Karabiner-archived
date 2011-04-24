@@ -36,11 +36,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  KeyboardRepeat::primitive_add_nolock(EventType eventType,
-                                       Flags flags,
-                                       KeyCode key,
-                                       KeyboardType keyboardType,
-                                       Item::Type type)
+  KeyboardRepeat::primitive_add(EventType eventType,
+                                Flags flags,
+                                KeyCode key,
+                                KeyboardType keyboardType,
+                                Item::Type type)
   {
     if (! queue_) return;
     if (key == KeyCode::VK_NONE) return;
@@ -57,9 +57,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  KeyboardRepeat::primitive_add_nolock(EventType eventType,
-                                       Flags flags,
-                                       ConsumerKeyCode key)
+  KeyboardRepeat::primitive_add(EventType eventType,
+                                Flags flags,
+                                ConsumerKeyCode key)
   {
     if (! queue_) return;
     if (key == ConsumerKeyCode::VK_NONE) return;
@@ -75,43 +75,21 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  KeyboardRepeat::primitive_add(EventType eventType,
-                                Flags flags,
-                                KeyCode key,
-                                KeyboardType keyboardType)
-  {
-    primitive_add_nolock(eventType, flags, key, keyboardType);
-  }
-
-  void
   KeyboardRepeat::primitive_add_downup(Flags flags,
                                        KeyCode key,
                                        KeyboardType keyboardType)
   {
-    primitive_add_nolock(EventType::DOWN, flags, key, keyboardType, Item::TYPE_DOWNUP);
-  }
-
-  void
-  KeyboardRepeat::primitive_add(EventType eventType,
-                                Flags flags,
-                                ConsumerKeyCode key)
-  {
-    primitive_add_nolock(eventType, flags, key);
-  }
-
-  void
-  KeyboardRepeat::primitive_start_nolock(int wait)
-  {
-    ++id_;
-    if (id_ > MAX_KEYBOARDREPEATID) id_ = 0;
-
-    fire_timer_.setTimeoutMS(wait);
+    primitive_add(EventType::DOWN, flags, key, keyboardType, Item::TYPE_DOWNUP);
   }
 
   int
   KeyboardRepeat::primitive_start(int wait)
   {
-    primitive_start_nolock(wait);
+    ++id_;
+    if (id_ > MAX_KEYBOARDREPEATID) id_ = 0;
+
+    fire_timer_.setTimeoutMS(wait);
+
     return id_;
   }
 
@@ -146,8 +124,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     } else if (eventType == EventType::DOWN) {
       cancel();
 
-      primitive_add_nolock(eventType, flags, key, keyboardType);
-      primitive_start_nolock(wait);
+      primitive_add(eventType, flags, key, keyboardType, Item::TYPE_NORMAL);
+      primitive_start(wait);
 
       IOLOG_DEVEL("KeyboardRepeat::set key:%d flags:0x%x\n", key.get(), flags.get());
 
@@ -187,8 +165,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       cancel();
 
-      primitive_add_nolock(eventType, flags, key);
-      primitive_start_nolock(Config::get_repeat_consumer_initial_wait());
+      primitive_add(eventType, flags, key);
+      primitive_start(Config::get_repeat_consumer_initial_wait());
 
       IOLOG_DEVEL("KeyboardRepeat::set consumer key:%d flags:0x%x\n", key.get(), flags.get());
 
