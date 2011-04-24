@@ -1,5 +1,5 @@
 #include "CommonData.hpp"
-#include "IOLockWrapper.hpp"
+#include "GlobalLock.hpp"
 #include "TimerWrapper.hpp"
 
 #define super    OSObject
@@ -117,8 +117,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   TimerWrapper::callback_(OSObject* owner, IOTimerEventSource* sender)
   {
-    IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
-    if (! lk_eventlock) return;
+    GlobalLock::ScopedLock lk;
+    if (! lk) return;
 
     org_pqrs_KeyRemap4MacBook_TimerWrapperObject* object = OSDynamicCast(org_pqrs_KeyRemap4MacBook_TimerWrapperObject, owner);
     if (! object) return;

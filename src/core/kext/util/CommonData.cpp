@@ -1,5 +1,4 @@
 #include "CommonData.hpp"
-#include "IOLockWrapper.hpp"
 #include "Config.hpp"
 #include "UserClient_kext.hpp"
 
@@ -22,15 +21,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       statusmessage_[i][0] = '\0';
     }
 
-    event_lock_ = IOLockWrapper::alloc();
     return true;
   }
 
   void
   CommonData::terminate(void)
-  {
-    IOLockWrapper::free(event_lock_);
-  }
+  {}
 
   void
   CommonData::clear_statusmessage(int index)

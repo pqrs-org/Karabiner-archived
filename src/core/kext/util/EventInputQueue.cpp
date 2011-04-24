@@ -5,7 +5,7 @@
 #include "EventInputQueue.hpp"
 #include "EventWatcher.hpp"
 #include "FlagStatus.hpp"
-#include "IOLockWrapper.hpp"
+#include "GlobalLock.hpp"
 #include "ListHookedConsumer.hpp"
 #include "ListHookedKeyboard.hpp"
 #include "ListHookedPointing.hpp"
@@ -145,8 +145,8 @@ namespace org_pqrs_KeyRemap4MacBook {
                                               OSObject* sender,
                                               void* refcon)
   {
-    IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
-    if (! lk_eventlock) return;
+    GlobalLock::ScopedLock lk;
+    if (! lk) return;
 
     // ------------------------------------------------------------
     KeyboardType newkeyboardtype(keyboardType);
@@ -225,8 +225,8 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                  OSObject* sender,
                                                  void* refcon)
   {
-    IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
-    if (! lk_eventlock) return;
+    GlobalLock::ScopedLock lk;
+    if (! lk) return;
 
     // ------------------------------------------------------------
     Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(flags));
@@ -258,8 +258,8 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                      OSObject* sender,
                                                      void* refcon)
   {
-    IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
-    if (! lk_eventlock) return;
+    GlobalLock::ScopedLock lk;
+    if (! lk) return;
 
     // ------------------------------------------------------------
     Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(EventType(eventType), Flags(flags), ConsumerKeyCode(key),
@@ -302,8 +302,8 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                      OSObject* sender,
                                                      void* refcon)
   {
-    IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
-    if (! lk_eventlock) return;
+    GlobalLock::ScopedLock lk;
+    if (! lk) return;
 
     // ------------------------------------------------------------
     Buttons buttons(buttons_raw);
@@ -375,8 +375,8 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                  OSObject* sender,
                                                  void* refcon)
   {
-    IOLockWrapper::ScopedLock lk_eventlock(CommonData::getEventLock());
-    if (! lk_eventlock) return;
+    GlobalLock::ScopedLock lk;
+    if (! lk) return;
 
     // ------------------------------------------------------------
     Params_ScrollWheelEventCallback::auto_ptr ptr(Params_ScrollWheelEventCallback::alloc(deltaAxis1, deltaAxis2, deltaAxis3,
