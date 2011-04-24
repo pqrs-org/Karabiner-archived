@@ -1,8 +1,8 @@
 #include "UserClient_kext.hpp"
 #include "CommonData.hpp"
 #include "Config.hpp"
-#include "IOLockWrapper.hpp"
 #include "RemapClass.hpp"
+#include "util/GlobalLock.hpp"
 
 #define super IOUserClient
 
@@ -157,8 +157,8 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::static_callback_open(org_pqrs_
 IOReturn
 org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_open(void)
 {
-  org_pqrs_KeyRemap4MacBook::IOLockWrapper::ScopedLock lk_eventlock(org_pqrs_KeyRemap4MacBook::CommonData::getEventLock());
-  if (! lk_eventlock) return kIOReturnCannotLock;
+  org_pqrs_KeyRemap4MacBook::GlobalLock::ScopedLock lk;
+  if (! lk) return kIOReturnCannotLock;
 
   if (provider_ == NULL || isInactive()) {
     // Return an error if we don't have a provider. This could happen if the user process
@@ -189,8 +189,8 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::static_callback_close(org_pqrs
 IOReturn
 org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_close(void)
 {
-  org_pqrs_KeyRemap4MacBook::IOLockWrapper::ScopedLock lk_eventlock(org_pqrs_KeyRemap4MacBook::CommonData::getEventLock());
-  if (! lk_eventlock) return kIOReturnCannotLock;
+  org_pqrs_KeyRemap4MacBook::GlobalLock::ScopedLock lk;
+  if (! lk) return kIOReturnCannotLock;
 
   if (! provider_) {
     // Return an error if we don't have a provider. This could happen if the user process
@@ -229,8 +229,8 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::static_callback_synchronized_c
 IOReturn
 org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_synchronized_communication(const BridgeUserClientStruct* inputdata, uint64_t* outputdata)
 {
-  org_pqrs_KeyRemap4MacBook::IOLockWrapper::ScopedLock lk_eventlock(org_pqrs_KeyRemap4MacBook::CommonData::getEventLock());
-  if (! lk_eventlock) return kIOReturnCannotLock;
+  org_pqrs_KeyRemap4MacBook::GlobalLock::ScopedLock lk;
+  if (! lk) return kIOReturnCannotLock;
 
   IOReturn result = kIOReturnSuccess;
   IOMemoryDescriptor* memorydescriptor = NULL;
@@ -308,8 +308,8 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::static_callback_notification_f
 IOReturn
 org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_notification_from_kext(OSAsyncReference64 asyncReference)
 {
-  org_pqrs_KeyRemap4MacBook::IOLockWrapper::ScopedLock lk_eventlock(org_pqrs_KeyRemap4MacBook::CommonData::getEventLock());
-  if (! lk_eventlock) return kIOReturnCannotLock;
+  org_pqrs_KeyRemap4MacBook::GlobalLock::ScopedLock lk;
+  if (! lk) return kIOReturnCannotLock;
 
   if (provider_ == NULL || isInactive()) {
     // Return an error if we don't have a provider. This could happen if the user process
