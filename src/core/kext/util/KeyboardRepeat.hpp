@@ -80,8 +80,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     static void fire_timer_callback(OSObject* owner, IOTimerEventSource* sender);
 
-    static void cancel_nolock(void);
-
     static void primitive_add_nolock(EventType eventType,
                                      Flags flags,
                                      KeyCode key,

@@ -27,19 +27,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  KeyboardRepeat::cancel_nolock(void)
+  KeyboardRepeat::cancel(void)
   {
     fire_timer_.cancelTimeout();
     if (queue_) {
       queue_->clear();
     }
-  }
-
-  void
-  KeyboardRepeat::cancel(void)
-  {
-    IOLOG_DEVEL("KeyboardRepeat::cancel\n");
-    cancel_nolock();
   }
 
   void
@@ -151,7 +144,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
     } else if (eventType == EventType::DOWN) {
-      cancel_nolock();
+      cancel();
 
       primitive_add_nolock(eventType, flags, key, keyboardType);
       primitive_start_nolock(wait);
@@ -165,7 +158,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     return;
 
   cancel:
-    cancel_nolock();
+    cancel();
   }
 
   void
@@ -192,7 +185,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         goto cancel;
       }
 
-      cancel_nolock();
+      cancel();
 
       primitive_add_nolock(eventType, flags, key);
       primitive_start_nolock(Config::get_repeat_consumer_initial_wait());
@@ -206,7 +199,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     return;
 
   cancel:
-    cancel_nolock();
+    cancel();
   }
 
   void
