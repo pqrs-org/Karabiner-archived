@@ -6,34 +6,24 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   List* PressDownKeys::list_;
-  IOLock* PressDownKeys::lock_;
 
   void
   PressDownKeys::initialize(void)
   {
-    lock_ = IOLockWrapper::alloc();
     list_ = new List();
   }
 
   void
   PressDownKeys::terminate(void)
   {
-    {
-      IOLockWrapper::ScopedLock lk(lock_);
-
-      if (list_) {
-        delete list_;
-      }
+    if (list_) {
+      delete list_;
     }
-    IOLockWrapper::free(lock_);
   }
 
   void
   PressDownKeys::add(KeyCode key, KeyboardType keyboardType)
   {
-    IOLockWrapper::ScopedLock lk(lock_);
-    if (! lk) return;
-
     if (! list_) return;
 
     if (key == KeyCode::VK_NONE) return;
@@ -46,9 +36,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   PressDownKeys::remove(KeyCode key, KeyboardType keyboardType)
   {
-    IOLockWrapper::ScopedLock lk(lock_);
-    if (! lk) return;
-
     if (! list_) return;
 
     Item* p = static_cast<Item*>(list_->front());
@@ -69,9 +56,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   PressDownKeys::clear(void)
   {
-    IOLockWrapper::ScopedLock lk(lock_);
-    if (! lk) return;
-
     if (! list_) return;
 
     IOLOG_DEVEL("PressDownKeys::clear list_->size = %d\n", static_cast<int>(list_->size()));
