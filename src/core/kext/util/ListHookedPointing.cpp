@@ -22,8 +22,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     orig_scrollWheelEventAction_(NULL),
     orig_scrollWheelEventTarget_(NULL),
     previousbuttons_(0)
-  {
-  }
+  {}
 
   ListHookedPointing::Item::~Item(void)
   {
