@@ -64,7 +64,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   void
-  EventOutputQueue::fire_timer_callback(OSObject* owner, IOTimerEventSource* sender)
+  EventOutputQueue::fire_timer_callback(OSObject* /* owner */, IOTimerEventSource* /* sender */)
   {
     if (! queue_) return;
 

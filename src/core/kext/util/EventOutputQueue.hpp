@@ -77,7 +77,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       ParamsUnion params;
     };
 
-    static void fire_timer_callback(OSObject* owner, IOTimerEventSource* sender);
+    static void fire_timer_callback(OSObject* /* owner */, IOTimerEventSource* /* sender */);
     static void push(const Params_KeyboardEventCallBack& p);
     static void push(const Params_UpdateEventFlagsCallback& p);
     static void push(const Params_KeyboardSpecialEventCallback& p);
