@@ -3,6 +3,7 @@
 #include "Config.hpp"
 #include "EventInputQueue.hpp"
 #include "FlagStatus.hpp"
+#include "GlobalLock.hpp"
 #include "ListHookedKeyboard.hpp"
 #include "RemapClass.hpp"
 
@@ -239,9 +240,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     OSObject* refcon = NULL;
 
     params.log("sending");
-    callback(target, params.eventType.get(), params.flags.get(), params.key.get(),
-             params.charCode.get(), params.charSet.get(), params.origCharCode.get(), params.origCharSet.get(),
-             params.keyboardType.get(), params.repeat, ts, sender, refcon);
+    {
+      GlobalLock::ScopedUnlock lk;
+      callback(target, params.eventType.get(), params.flags.get(), params.key.get(),
+               params.charCode.get(), params.charSet.get(), params.origCharCode.get(), params.origCharSet.get(),
+               params.keyboardType.get(), params.repeat, ts, sender, refcon);
+    }
 
     // The CapsLock LED is not designed to turn it on/off frequently.
     // So, we have to use the timer to call a setAlphaLock function at appropriate frequency.
@@ -272,7 +276,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     OSObject* refcon = NULL;
 
     params.log("sending");
-    callback(target, params.flags.get(), sender, refcon);
+    {
+      GlobalLock::ScopedUnlock lk;
+      callback(target, params.flags.get(), sender, refcon);
+    }
   }
 
   void
