@@ -2,6 +2,7 @@
 #include "Config.hpp"
 #include "EventInputQueue.hpp"
 #include "FlagStatus.hpp"
+#include "GlobalLock.hpp"
 #include "ListHookedConsumer.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -147,8 +148,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     OSObject* refcon = NULL;
 
     params.log("sending");
-    callback(target, params.eventType.get(), params.flags.get(), params.key.get(),
-             params.flavor, params.guid, params.repeat, ts, sender, refcon);
+    {
+      GlobalLock::ScopedUnlock lk;
+      callback(target, params.eventType.get(), params.flags.get(), params.key.get(),
+               params.flavor, params.guid, params.repeat, ts, sender, refcon);
+    }
   }
 
   void
