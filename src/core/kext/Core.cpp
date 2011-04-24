@@ -67,45 +67,38 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     stop(void)
     {
-      // At first, restoreEventAction for all devices.
-      {
-        GlobalLock::ScopedLock lk;
+      // Destroy global lock.
+      // Then, all callbacks and hooked functions become inactive.
+      GlobalLock::terminate();
 
-        ListHookedKeyboard::instance().terminate();
-        ListHookedConsumer::instance().terminate();
-        ListHookedPointing::instance().terminate();
-      }
+      // ------------------------------------------------------------
+      ListHookedKeyboard::instance().terminate();
+      ListHookedConsumer::instance().terminate();
+      ListHookedPointing::instance().terminate();
 
-      // roughly sleep: waiting for finishing queued device events.
-      IOSleep(200);
-
+      // ------------------------------------------------------------
       // call terminate
-      {
-        GlobalLock::ScopedLock lk;
+      Config::sysctl_unregister();
 
-        Config::sysctl_unregister();
+      RemapClassManager::terminate();
+      KeyboardRepeat::terminate();
+      EventInputQueue::terminate();
+      VirtualKey::terminate();
+      EventOutputQueue::terminate();
+      RemapFunc::HoldingKeyToKey::static_terminate();
+      RemapFunc::KeyOverlaidModifier::static_terminate();
+      RemapFunc::PointingRelativeToScroll::static_terminate();
+      ListHookedKeyboard::static_terminate();
 
-        RemapClassManager::terminate();
-        KeyboardRepeat::terminate();
-        EventInputQueue::terminate();
-        VirtualKey::terminate();
-        EventOutputQueue::terminate();
-        RemapFunc::HoldingKeyToKey::static_terminate();
-        RemapFunc::KeyOverlaidModifier::static_terminate();
-        RemapFunc::PointingRelativeToScroll::static_terminate();
-        ListHookedKeyboard::static_terminate();
-
-        if (workLoop) {
-          workLoop->release();
-          workLoop = NULL;
-        }
-
-        EventWatcher::terminate();
-        PressDownKeys::terminate();
+      if (workLoop) {
+        workLoop->release();
+        workLoop = NULL;
       }
+
+      EventWatcher::terminate();
+      PressDownKeys::terminate();
 
       CommonData::terminate();
-      GlobalLock::terminate();
     }
 
     // ======================================================================
