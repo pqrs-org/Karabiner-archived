@@ -130,9 +130,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   ListHookedDevice::initialize(void)
   {
-    list_lock_ = IOLockWrapper::alloc();
-    if (! list_lock_) return false;
-
     list_ = new List();
     if (! list_) return false;
 
@@ -142,24 +139,16 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListHookedDevice::terminate(void)
   {
-    {
-      IOLockWrapper::ScopedLock lk(list_lock_);
-
-      if (list_) {
-        delete list_;
-      }
-
-      reset();
+    if (list_) {
+      delete list_;
     }
-    IOLockWrapper::free(list_lock_);
+
+    reset();
   }
 
   void
   ListHookedDevice::push_back(ListHookedDevice::Item* newp)
   {
-    IOLockWrapper::ScopedLock lk(list_lock_);
-    if (! lk) return;
-
     if (! list_) return;
     if (! newp) return;
 
@@ -177,9 +166,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListHookedDevice::erase(IOHIDevice* p)
   {
-    IOLockWrapper::ScopedLock lk(list_lock_);
-    if (! lk) return;
-
     if (! list_) return;
 
     ListHookedDevice::Item* item = get_nolock(p);
@@ -242,8 +228,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListHookedDevice::refresh(void)
   {
-    IOLockWrapper::ScopedLock lk(list_lock_);
-    if (! lk) return;
     refresh_nolock();
   }
 }

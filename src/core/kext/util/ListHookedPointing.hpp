@@ -29,8 +29,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       Buttons previousbuttons_;
 
-      IOLock* replacerestore_lock_;
-
       bool refresh(void);
 
       /** return true if event action is replaced. */

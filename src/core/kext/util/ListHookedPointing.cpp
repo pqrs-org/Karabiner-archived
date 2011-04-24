@@ -21,17 +21,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     orig_relativePointerEventTarget_(NULL),
     orig_scrollWheelEventAction_(NULL),
     orig_scrollWheelEventTarget_(NULL),
-    previousbuttons_(0),
-    replacerestore_lock_(NULL)
+    previousbuttons_(0)
   {
-    replacerestore_lock_ = IOLockWrapper::alloc();
   }
 
   ListHookedPointing::Item::~Item(void)
   {
     IOLOG_DEBUG("ListHookedPointing::Item::~Item()\n");
     restoreEventAction();
-    IOLockWrapper::free(replacerestore_lock_);
   }
 
   bool
@@ -74,9 +71,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   ListHookedPointing::Item::replaceEventAction(void)
   {
-    IOLockWrapper::ScopedLock lk(replacerestore_lock_);
-    if (! lk) return false;
-
     if (! device_) return false;
 
     IOHIPointing* pointing = OSDynamicCast(IOHIPointing, device_);
@@ -120,9 +114,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   ListHookedPointing::Item::restoreEventAction(void)
   {
-    IOLockWrapper::ScopedLock lk(replacerestore_lock_);
-    if (! lk) return false;
-
     if (! device_) return false;
 
     IOHIPointing* pointing = OSDynamicCast(IOHIPointing, device_);
@@ -208,9 +199,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListHookedPointing::apply(const Params_RelativePointerEventCallback& params)
   {
-    IOLockWrapper::ScopedLock lk(list_lock_);
-    if (! lk) return;
-
     // if all button are released, send event for all devices.
     if (params.buttons == Buttons(0) &&
         params.dx == 0 &&
@@ -232,9 +220,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListHookedPointing::apply(const Params_ScrollWheelEventCallback& params)
   {
-    IOLockWrapper::ScopedLock lk(list_lock_);
-    if (! lk) return;
-
     ListHookedPointing::Item* p = static_cast<ListHookedPointing::Item*>(get_replaced_nolock());
     if (p) {
       p->apply(params);

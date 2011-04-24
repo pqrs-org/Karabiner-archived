@@ -279,9 +279,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListHookedKeyboard::apply(const Params_KeyboardEventCallBack& params)
   {
-    IOLockWrapper::ScopedLock lk(list_lock_);
-    if (! lk) return;
-
     ListHookedKeyboard::Item* p = static_cast<ListHookedKeyboard::Item*>(get_replaced_nolock());
     if (p) {
       p->apply(params);
@@ -291,9 +288,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListHookedKeyboard::apply(const Params_UpdateEventFlagsCallback& params)
   {
-    IOLockWrapper::ScopedLock lk(list_lock_);
-    if (! lk) return;
-
     ListHookedKeyboard::Item* p = static_cast<ListHookedKeyboard::Item*>(get_replaced_nolock());
     if (p) {
       p->apply(params);
@@ -304,8 +298,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   ListHookedKeyboard::setcapslock_timer_callback(OSObject* owner, IOTimerEventSource* sender)
   {
     ListHookedKeyboard& self = ListHookedKeyboard::instance();
-    IOLockWrapper::ScopedLock lk(self.list_lock_);
-    if (! lk) return;
 
     if (! self.list_) return;
 

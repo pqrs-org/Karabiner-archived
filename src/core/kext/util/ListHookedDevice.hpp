@@ -44,20 +44,17 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     void refresh(void);
 
-    // We need to call get_nolock with "ScopedLock lk(getListLock())".
     ListHookedDevice::Item* get_nolock(const IOHIDevice* device);
     ListHookedDevice::Item* get_replaced_nolock(void);
-    IOLock* getListLock(void) { return list_lock_; }
 
   protected:
-    ListHookedDevice(void) : last_(NULL), list_(NULL), list_lock_(NULL) {}
+    ListHookedDevice(void) : last_(NULL), list_(NULL) {}
     virtual ~ListHookedDevice(void) {}
 
     void refresh_nolock(void);
 
     const IOHIDevice* last_;
     List* list_;
-    IOLock* list_lock_;
   };
 }
 
