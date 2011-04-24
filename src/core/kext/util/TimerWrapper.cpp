@@ -25,7 +25,6 @@ org_pqrs_KeyRemap4MacBook_TimerWrapperObject::init(OSObject* owner, IOTimerEvent
 
   owner_ = owner;
   action_ = action;
-  lock_ = org_pqrs_KeyRemap4MacBook::IOLockWrapper::alloc();
   active_ = false;
 
   return true;
@@ -34,7 +33,6 @@ org_pqrs_KeyRemap4MacBook_TimerWrapperObject::init(OSObject* owner, IOTimerEvent
 void
 org_pqrs_KeyRemap4MacBook_TimerWrapperObject::free(void)
 {
-  org_pqrs_KeyRemap4MacBook::IOLockWrapper::free(lock_);
   super::free();
   return;
 }
@@ -62,42 +60,31 @@ namespace org_pqrs_KeyRemap4MacBook {
       timer_->release();
       timer_ = NULL;
     }
-
-    lock_ = IOLockWrapper::alloc();
   }
 
   void
   TimerWrapper::terminate(void)
   {
-    {
-      IOLockWrapper::ScopedLock lk(lock_);
-      if (! lk) return;
-
-      if (timer_) {
-        timer_->cancelTimeout();
-        if (workloop_) {
-          workloop_->removeEventSource(timer_);
-        }
-        timer_->release();
-        timer_ = NULL;
+    if (timer_) {
+      timer_->cancelTimeout();
+      if (workloop_) {
+        workloop_->removeEventSource(timer_);
       }
-      workloop_ = NULL;
+      timer_->release();
+      timer_ = NULL;
     }
+    workloop_ = NULL;
 
     if (object_) {
       object_->release();
       object_ = NULL;
     }
-
-    IOLockWrapper::free(lock_);
   }
 
   IOReturn
   TimerWrapper::setTimeoutMS(UInt32 ms, bool overwrite)
   {
     if (! object_) return kIOReturnError;
-    IOLockWrapper::ScopedLock lk(object_->getlock());
-    if (! lk) return kIOReturnError;
 
     if (! timer_) {
       return kIOReturnNoResources;
@@ -119,8 +106,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   TimerWrapper::cancelTimeout(void)
   {
     if (! object_) return;
-    IOLockWrapper::ScopedLock lk(object_->getlock());
-    if (! lk) return;
 
     if (timer_) {
       timer_->cancelTimeout();
@@ -137,11 +122,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     org_pqrs_KeyRemap4MacBook_TimerWrapperObject* object = OSDynamicCast(org_pqrs_KeyRemap4MacBook_TimerWrapperObject, owner);
     if (! object) return;
 
-    {
-      IOLockWrapper::ScopedLock lk(object->getlock());
-      if (! lk) return;
-      object->setActive(false);
-    }
+    object->setActive(false);
     (object->getaction())(object->getowner(), sender);
   }
 }
