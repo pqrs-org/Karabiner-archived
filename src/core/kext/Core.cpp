@@ -9,6 +9,7 @@
 #include "util/EventInputQueue.hpp"
 #include "util/EventOutputQueue.hpp"
 #include "util/EventWatcher.hpp"
+#include "util/GlobalLock.hpp"
 #include "util/IOLockWrapper.hpp"
 #include "util/KeyboardRepeat.hpp"
 #include "util/ListHookedConsumer.hpp"
@@ -35,6 +36,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     start(void)
     {
+      GlobalLock::initialize();
       CommonData::initialize();
       EventWatcher::initialize();
       PressDownKeys::initialize();
@@ -104,6 +106,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       CommonData::terminate();
+      GlobalLock::terminate();
     }
 
     // ======================================================================

@@ -95,6 +95,8 @@
 		34CAB8551261195200C3FFCB /* ConfigFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34CAB8521261195200C3FFCB /* ConfigFilter.cpp */; };
 		34CAB8561261195200C3FFCB /* ConfigFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34CAB8531261195200C3FFCB /* ConfigFilter.hpp */; };
 		34CAB8571261195200C3FFCB /* RemapFilterBase.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34CAB8541261195200C3FFCB /* RemapFilterBase.hpp */; };
+		34CF0FDF1363EC2400B5D950 /* GlobalLock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34CF0FDD1363EC2400B5D950 /* GlobalLock.cpp */; };
+		34CF0FE01363EC2400B5D950 /* GlobalLock.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34CF0FDE1363EC2400B5D950 /* GlobalLock.hpp */; };
 		34CFB93211C340B000E5E7F9 /* ButtonStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34CFB93011C340B000E5E7F9 /* ButtonStatus.cpp */; };
 		34CFB93311C340B000E5E7F9 /* ButtonStatus.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34CFB93111C340B000E5E7F9 /* ButtonStatus.hpp */; };
 		34D347E611D8106C00D70815 /* KeyToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D347E411D8106C00D70815 /* KeyToKey.cpp */; };
@@ -207,6 +209,8 @@
 		34CAB8521261195200C3FFCB /* ConfigFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConfigFilter.cpp; path = RemapFilter/ConfigFilter.cpp; sourceTree = "<group>"; };
 		34CAB8531261195200C3FFCB /* ConfigFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ConfigFilter.hpp; path = RemapFilter/ConfigFilter.hpp; sourceTree = "<group>"; };
 		34CAB8541261195200C3FFCB /* RemapFilterBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RemapFilterBase.hpp; path = RemapFilter/RemapFilterBase.hpp; sourceTree = "<group>"; };
+		34CF0FDD1363EC2400B5D950 /* GlobalLock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GlobalLock.cpp; path = util/GlobalLock.cpp; sourceTree = "<group>"; };
+		34CF0FDE1363EC2400B5D950 /* GlobalLock.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GlobalLock.hpp; path = util/GlobalLock.hpp; sourceTree = "<group>"; };
 		34CFB93011C340B000E5E7F9 /* ButtonStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ButtonStatus.cpp; path = util/ButtonStatus.cpp; sourceTree = "<group>"; };
 		34CFB93111C340B000E5E7F9 /* ButtonStatus.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ButtonStatus.hpp; path = util/ButtonStatus.hpp; sourceTree = "<group>"; };
 		34D347E411D8106C00D70815 /* KeyToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyToKey.cpp; path = RemapFunc/KeyToKey.cpp; sourceTree = "<group>"; };
@@ -341,6 +345,8 @@
 		346B753B0E72C0A200F9A79F /* util */ = {
 			isa = PBXGroup;
 			children = (
+				34CF0FDD1363EC2400B5D950 /* GlobalLock.cpp */,
+				34CF0FDE1363EC2400B5D950 /* GlobalLock.hpp */,
 				34B8CEC411E5E05C00EE89E3 /* List.cpp */,
 				34B8CEC511E5E05C00EE89E3 /* List.hpp */,
 				34C931CA11E37E5300B81B08 /* EventOutputQueue.cpp */,
@@ -470,6 +476,7 @@
 				05CB4A2C12BB4C0800737491 /* ModifierFilter.hpp in Headers */,
 				3442D9E712F3123300EF7DF8 /* ForceNumLockOn.hpp in Headers */,
 				349E3C9A13371CD700E7A81C /* UserClient_kext.hpp in Headers */,
+				34CF0FE01363EC2400B5D950 /* GlobalLock.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,6 +601,7 @@
 				05CB4A2D12BB4C0800737491 /* ModifierFilter.cpp in Sources */,
 				3442D9E612F3123300EF7DF8 /* ForceNumLockOn.cpp in Sources */,
 				349E3C9913371CD700E7A81C /* UserClient_kext.cpp in Sources */,
+				34CF0FDF1363EC2400B5D950 /* GlobalLock.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
