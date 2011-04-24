@@ -285,7 +285,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListHookedKeyboard::apply(const Params_KeyboardEventCallBack& params)
   {
-    ListHookedKeyboard::Item* p = static_cast<ListHookedKeyboard::Item*>(get_replaced_nolock());
+    ListHookedKeyboard::Item* p = static_cast<ListHookedKeyboard::Item*>(get_replaced());
     if (p) {
       p->apply(params);
     }
@@ -294,7 +294,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListHookedKeyboard::apply(const Params_UpdateEventFlagsCallback& params)
   {
-    ListHookedKeyboard::Item* p = static_cast<ListHookedKeyboard::Item*>(get_replaced_nolock());
+    ListHookedKeyboard::Item* p = static_cast<ListHookedKeyboard::Item*>(get_replaced());
     if (p) {
       p->apply(params);
     }

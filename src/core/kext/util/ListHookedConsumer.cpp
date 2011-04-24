@@ -169,7 +169,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListHookedConsumer::apply(const Params_KeyboardSpecialEventCallback& params)
   {
-    ListHookedConsumer::Item* p = static_cast<ListHookedConsumer::Item*>(get_replaced_nolock());
+    ListHookedConsumer::Item* p = static_cast<ListHookedConsumer::Item*>(get_replaced());
     if (p) {
       p->apply(params);
     }
@@ -178,7 +178,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListHookedConsumer::disableNumLock(void)
   {
-    ListHookedConsumer::Item* p = static_cast<ListHookedConsumer::Item*>(get_replaced_nolock());
+    ListHookedConsumer::Item* p = static_cast<ListHookedConsumer::Item*>(get_replaced());
     if (p) {
       p->disableNumLock();
     }

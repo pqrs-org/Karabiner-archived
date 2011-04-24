@@ -159,7 +159,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     IOLOG_DEVEL("ListHookedDevice::push_back list_->size = %d\n", static_cast<int>(list_->size()));
 
-    refresh_nolock();
+    refresh();
   }
 
   void
@@ -167,7 +167,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! list_) return;
 
-    ListHookedDevice::Item* item = get_nolock(p);
+    ListHookedDevice::Item* item = get(p);
     if (! item) return;
 
     list_->erase(item);
@@ -177,11 +177,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     IOLOG_DEVEL("ListHookedDevice::erase list_->size = %d\n", static_cast<int>(list_->size()));
 
-    refresh_nolock();
+    refresh();
   }
 
   ListHookedDevice::Item*
-  ListHookedDevice::get_nolock(const IOHIDevice* device)
+  ListHookedDevice::get(const IOHIDevice* device)
   {
     if (! list_) return NULL;
 
@@ -195,13 +195,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   ListHookedDevice::Item*
-  ListHookedDevice::get_replaced_nolock(void)
+  ListHookedDevice::get_replaced(void)
   {
     if (! list_) return NULL;
 
     // ----------------------------------------------------------------------
     // Search a replaced device first.
-    ListHookedDevice::Item* p = get_nolock(last_);
+    ListHookedDevice::Item* p = get(last_);
     if (p && p->isReplaced()) return p;
 
     for (p = static_cast<Item*>(list_->front()); p; p = static_cast<Item*>(p->getnext())) {
@@ -212,7 +212,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  ListHookedDevice::refresh_nolock(void)
+  ListHookedDevice::refresh(void)
   {
     if (! list_) return;
 
@@ -222,11 +222,5 @@ namespace org_pqrs_KeyRemap4MacBook {
         reset();
       }
     }
-  }
-
-  void
-  ListHookedDevice::refresh(void)
-  {
-    refresh_nolock();
   }
 }

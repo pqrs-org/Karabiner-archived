@@ -176,7 +176,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOHIKeyboard* device = OSDynamicCast(IOHIKeyboard, sender);
     if (! device) return;
 
-    ListHookedKeyboard::Item* item = static_cast<ListHookedKeyboard::Item*>(ListHookedKeyboard::instance().get_nolock(device));
+    ListHookedKeyboard::Item* item = static_cast<ListHookedKeyboard::Item*>(ListHookedKeyboard::instance().get(device));
     if (! item) return;
 
     // ------------------------------------------------------------
@@ -238,7 +238,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOHIKeyboard* device = OSDynamicCast(IOHIKeyboard, sender);
     if (! device) return;
 
-    ListHookedKeyboard::Item* item = static_cast<ListHookedKeyboard::Item*>(ListHookedKeyboard::instance().get_nolock(device));
+    ListHookedKeyboard::Item* item = static_cast<ListHookedKeyboard::Item*>(ListHookedKeyboard::instance().get(device));
     if (! item) return;
 
     params.log();
@@ -274,7 +274,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOHIKeyboard* device = OSDynamicCast(IOHIKeyboard, sender);
     if (! device) return;
 
-    ListHookedConsumer::Item* item = static_cast<ListHookedConsumer::Item*>(ListHookedConsumer::instance().get_nolock(device));
+    ListHookedConsumer::Item* item = static_cast<ListHookedConsumer::Item*>(ListHookedConsumer::instance().get(device));
 
     // ------------------------------------------------------------
     CommonData::setcurrent_ts(ts);
@@ -316,7 +316,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOHIPointing* device = OSDynamicCast(IOHIPointing, sender);
     if (! device) return;
 
-    ListHookedPointing::Item* item = static_cast<ListHookedPointing::Item*>(ListHookedPointing::instance().get_nolock(device));
+    ListHookedPointing::Item* item = static_cast<ListHookedPointing::Item*>(ListHookedPointing::instance().get(device));
     if (! item) return;
 
     // ------------------------------------------------------------
@@ -393,7 +393,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOHIPointing* device = OSDynamicCast(IOHIPointing, sender);
     if (! device) return;
 
-    ListHookedPointing::Item* item = static_cast<ListHookedPointing::Item*>(ListHookedPointing::instance().get_nolock(device));
+    ListHookedPointing::Item* item = static_cast<ListHookedPointing::Item*>(ListHookedPointing::instance().get(device));
     if (! item) return;
 
     // ------------------------------------------------------------

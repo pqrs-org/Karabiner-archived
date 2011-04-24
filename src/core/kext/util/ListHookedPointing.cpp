@@ -215,7 +215,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
     } else {
-      ListHookedPointing::Item* p = static_cast<ListHookedPointing::Item*>(get_replaced_nolock());
+      ListHookedPointing::Item* p = static_cast<ListHookedPointing::Item*>(get_replaced());
       if (p) {
         p->apply(params);
       }
@@ -225,7 +225,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListHookedPointing::apply(const Params_ScrollWheelEventCallback& params)
   {
-    ListHookedPointing::Item* p = static_cast<ListHookedPointing::Item*>(get_replaced_nolock());
+    ListHookedPointing::Item* p = static_cast<ListHookedPointing::Item*>(get_replaced());
     if (p) {
       p->apply(params);
     }

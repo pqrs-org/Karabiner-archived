@@ -44,14 +44,12 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     void refresh(void);
 
-    ListHookedDevice::Item* get_nolock(const IOHIDevice* device);
-    ListHookedDevice::Item* get_replaced_nolock(void);
+    ListHookedDevice::Item* get(const IOHIDevice* device);
+    ListHookedDevice::Item* get_replaced(void);
 
   protected:
     ListHookedDevice(void) : last_(NULL), list_(NULL) {}
     virtual ~ListHookedDevice(void) {}
-
-    void refresh_nolock(void);
 
     const IOHIDevice* last_;
     List* list_;
