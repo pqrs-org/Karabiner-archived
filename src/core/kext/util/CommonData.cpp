@@ -12,7 +12,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   char CommonData::statusmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__][BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];
 
   int CommonData::alloccount_;
-  IOLock* CommonData::alloccount_lock_;
 
   IOLock* CommonData::event_lock_;
 
@@ -23,7 +22,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       statusmessage_[i][0] = '\0';
     }
 
-    alloccount_lock_ = IOLockWrapper::alloc();
     event_lock_ = IOLockWrapper::alloc();
     return true;
   }
@@ -31,7 +29,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   CommonData::terminate(void)
   {
-    IOLockWrapper::free(alloccount_lock_);
     IOLockWrapper::free(event_lock_);
   }
 

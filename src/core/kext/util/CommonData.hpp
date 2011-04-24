@@ -56,8 +56,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     static char statusmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__][BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];
 
     static int alloccount_;
-    static IOLock* alloccount_lock_;
-
     static IOLock* event_lock_;
   };
 }
