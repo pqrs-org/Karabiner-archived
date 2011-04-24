@@ -2,6 +2,7 @@
 #include "Config.hpp"
 #include "EventInputQueue.hpp"
 #include "FlagStatus.hpp"
+#include "GlobalLock.hpp"
 #include "ListHookedPointing.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -168,7 +169,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     OSObject* refcon = NULL;
 
     params.log("sending");
-    callback(target, params.buttons.get(), params.dx, params.dy, ts, sender, refcon);
+    {
+      GlobalLock::ScopedUnlock lk;
+      callback(target, params.buttons.get(), params.dx, params.dy, ts, sender, refcon);
+    }
   }
 
   void
@@ -187,11 +191,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     OSObject* refcon = NULL;
 
     params.log("sending");
-    callback(target,
-             params.deltaAxis1,  params.deltaAxis2,  params.deltaAxis3,
-             params.fixedDelta1, params.fixedDelta2, params.fixedDelta3,
-             params.pointDelta1, params.pointDelta2, params.pointDelta3,
-             params.options, ts, sender, refcon);
+    {
+      GlobalLock::ScopedUnlock lk;
+      callback(target,
+               params.deltaAxis1,  params.deltaAxis2,  params.deltaAxis3,
+               params.fixedDelta1, params.fixedDelta2, params.fixedDelta3,
+               params.pointDelta1, params.pointDelta2, params.pointDelta3,
+               params.options, ts, sender, refcon);
+    }
   }
 
   void
