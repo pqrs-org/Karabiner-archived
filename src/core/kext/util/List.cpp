@@ -10,7 +10,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   List::Item*
-  List::erase_nolock(Item* p)
+  List::erase(Item* p)
   {
     if (! p) return NULL;
 
@@ -35,17 +35,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     return next;
   }
 
-  List::Item*
-  List::erase(Item* p)
-  {
-    return erase_nolock(p);
-  }
-
   void
   List::clear(void)
   {
     while (front_) {
-      erase_nolock(front_);
+      erase(front_);
     }
   }
 
