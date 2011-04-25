@@ -170,6 +170,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     params.log("sending");
     {
+      // We need to unlock the global lock while we are calling the callback function.
+      // For more information, See ListHookedKeyboard::Item::apply(const Params_KeyboardEventCallBack& params)
       GlobalLock::ScopedUnlock lk;
       callback(target, params.buttons.get(), params.dx, params.dy, ts, sender, refcon);
     }
@@ -192,6 +194,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     params.log("sending");
     {
+      // We need to unlock the global lock while we are calling the callback function.
+      // For more information, See ListHookedKeyboard::Item::apply(const Params_KeyboardEventCallBack& params)
       GlobalLock::ScopedUnlock lk;
       callback(target,
                params.deltaAxis1,  params.deltaAxis2,  params.deltaAxis3,

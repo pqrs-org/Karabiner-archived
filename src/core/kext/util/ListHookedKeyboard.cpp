@@ -241,6 +241,12 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     params.log("sending");
     {
+      // We need to unlock the global lock while we are calling the callback function.
+      //
+      // When Sticky Keys (in Universal Access) is activated,
+      // Apple driver calls EventInputQueue::push_* recursively.
+      //
+      // If we don't unlock the global lock, deadlock is occured.
       GlobalLock::ScopedUnlock lk;
       callback(target, params.eventType.get(), params.flags.get(), params.key.get(),
                params.charCode.get(), params.charSet.get(), params.origCharCode.get(), params.origCharSet.get(),
@@ -277,6 +283,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     params.log("sending");
     {
+      // We need to unlock the global lock while we are calling the callback function.
+      // For more information, See ListHookedKeyboard::Item::apply(const Params_KeyboardEventCallBack& params)
       GlobalLock::ScopedUnlock lk;
       callback(target, params.flags.get(), sender, refcon);
     }
