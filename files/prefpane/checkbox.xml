@@ -1309,6 +1309,12 @@
           <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::OPTION_L</autogen>
         </item>
         <item>
+          <name>Control_L to Option_L (only in virtual machine, RDC)</name>
+          <identifier>remap.controlL2optionL_vm</identifier>
+          <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+          <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::OPTION_L</autogen>
+        </item>
+        <item>
           <name>Control_L to Shift_L</name>
           <identifier>remap.controlL2shiftL</identifier>
           <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::SHIFT_L</autogen>
@@ -1390,6 +1396,12 @@
         <item>
           <name>Control_R to Option_R</name>
           <identifier>remap.controlR2optionR</identifier>
+          <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::OPTION_R</autogen>
+        </item>
+        <item>
+          <name>Control_R to Option_R (only in virtual machine, RDC)</name>
+          <identifier>remap.controlR2optionR_vm</identifier>
+          <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
           <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::OPTION_R</autogen>
         </item>
         <item>
@@ -3665,6 +3677,12 @@
           <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
+          <name>Option_L to Control_L (only in virtual machine, RDC)</name>
+          <identifier>remap.optionL2controlL_vm</identifier>
+          <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+          <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::CONTROL_L</autogen>
+        </item>
+        <item>
           <name>Option_L to Fn</name>
           <identifier>remap.optionL2fn</identifier>
           <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::FN</autogen>
@@ -3757,6 +3775,12 @@
           <name>Option_R to Control_R (only in Emacs, Terminal, X11)</name>
           <identifier>remap.optionR2controlR_etx</identifier>
           <only>EMACS, TERMINAL, X11</only>
+          <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CONTROL_R</autogen>
+        </item>
+        <item>
+          <name>Option_R to Control_R (only in virtual machine, RDC)</name>
+          <identifier>remap.optionR2controlR_vm</identifier>
+          <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
           <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CONTROL_R</autogen>
         </item>
         <item>
