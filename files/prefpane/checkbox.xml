@@ -6999,6 +6999,12 @@
                   <only>TERMINAL</only>
                   <autogen>--KeyToKey-- KeyCode::SLASH, VK_CONTROL | VK_SHIFT, KeyCode::DELETE</autogen>
                 </item>
+                <item>
+                  <name>Control+Slash(/) to Control+Underscore(_)</name>
+                  <identifier>remap.app_term_controlslash2controlshiftunderscore</identifier>
+                  <only>TERMINAL</only>
+                  <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::CONTROL_L, KeyCode::MINUS, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+                </item>
               </list>
             </item>
             <item>
