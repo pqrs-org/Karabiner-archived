@@ -6115,7 +6115,7 @@
           <name>What's ThumbSense</name>
           <appendix>ThumbSense changes key while touching a finger in TrackPad.</appendix>
           <appendix></appendix>
-          <appendix>- F/J/Space to LeftClick</appendix>
+          <appendix>- F/J to LeftClick</appendix>
           <appendix>- D/K to RightClick</appendix>
           <appendix>- S/L to "CursorMove to ScrollWheel"</appendix>
           <appendix></appendix>
@@ -6127,7 +6127,10 @@
           <!-- PointingButton -->
           <autogen>--KeyToPointingButton-- KeyCode::F,     PointingButton::LEFT</autogen>
           <autogen>--KeyToPointingButton-- KeyCode::J,     PointingButton::LEFT</autogen>
-          <autogen>--KeyToPointingButton-- KeyCode::SPACE, PointingButton::LEFT</autogen>
+          <block>
+            <config_only>option.thumbsense_space2leftclick</config_only>
+            <autogen>--KeyToPointingButton-- KeyCode::SPACE, PointingButton::LEFT</autogen>
+          </block>
 
           <autogen>--KeyToPointingButton-- KeyCode::D,     PointingButton::RIGHT</autogen>
           <autogen>--KeyToPointingButton-- KeyCode::K,     PointingButton::RIGHT</autogen>
@@ -6173,6 +6176,10 @@
           <appendix>(1) Launch multi-touch extension from "Misc &amp; Uninstall" tab.</appendix>
           <appendix>(2) Click the icon in Dock to open preferences window.</appendix>
           <appendix>(3) Enter "notsave.thumbsense" to Target setting.</appendix>
+        </item>
+        <item>
+          <name>[Option] Use Space as LeftClick in ThumbSense</name>
+          <identifier>option.thumbsense_space2leftclick</identifier>
         </item>
 
         <item><name>------------------------------------------------------------</name></item>
