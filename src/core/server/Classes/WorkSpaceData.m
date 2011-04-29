@@ -217,7 +217,10 @@
     return [parser keycode:@"ApplicationType::SCREEN_SHARING"];
   }
 
-  if ([name isEqualToString:@"com.geekspiff.chickenofthevnc"]) {
+  // JollysFastVNC Home http://www.jinx.de/JollysFastVNC.html
+  // de.jinx.JollysFastVNC, de.jinx.JollysFastVNC.Home, ...
+  if ([name isEqualToString:@"com.geekspiff.chickenofthevnc"] ||
+      [name hasPrefix:@"de.jinx.JollysFastVNC"]) {
     return [parser keycode:@"ApplicationType::VNC"];
   }
 
