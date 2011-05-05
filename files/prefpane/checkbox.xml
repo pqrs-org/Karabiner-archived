@@ -1528,7 +1528,7 @@
           <appendix>Eject key has a delay.</appendix>
           <appendix>You need to press eject key for a few seconds.</appendix>
           <appendix>We recommend you to use "NoEjectDelay" together to get rid of a delay.</appendix>
-          <appendix>&#8594; http://pqrs.org/macosx/keyremap4macbook/noejectdelay.html</appendix>
+          <appendix>&#8594; http://pqrs.org/macosx/keyremap4macbook/extra.html</appendix>
         </item>
         <item>
           <name>Limitation:</name>
@@ -2190,7 +2190,7 @@
           <appendix>Eject(F12) to Volume Up</appendix>
           <appendix></appendix>
           <appendix>*** We recommend you to use "NoEjectDelay" together when you change eject key.</appendix>
-          <appendix>*** &#8594; http://pqrs.org/macosx/keyremap4macbook/noejectdelay.html</appendix>
+          <appendix>*** &#8594; http://pqrs.org/macosx/keyremap4macbook/extra.html</appendix>
           <identifier>remap.functional2fn_air3_1_to_previous</identifier>
           <autogen>--ConsumerToKey--      ConsumerKeyCode::MUSIC_PREV,  KeyCode::F6</autogen>
           <autogen>--ConsumerToConsumer-- ConsumerKeyCode::MUSIC_PLAY,  ConsumerKeyCode::MUSIC_PREV</autogen>
@@ -6656,7 +6656,7 @@
               <name>Eject to Forward Delete</name>
               <appendix>(Fn+Eject to Eject)</appendix>
               <appendix>*** We recommend you to use "NoEjectDelay" together when you change eject key.</appendix>
-              <appendix>*** &#8594; http://pqrs.org/macosx/keyremap4macbook/noejectdelay.html</appendix>
+              <appendix>*** &#8594; http://pqrs.org/macosx/keyremap4macbook/extra.html</appendix>
               <identifier>remap.app_vm_eject2forwarddelete</identifier>
               <only>VIRTUALMACHINE</only>
               <autogen>--ConsumerToConsumer-- ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
@@ -8791,7 +8791,7 @@
         <item>
           <name>Change Eject Key</name>
           <appendix>*** We recommend you to use "NoEjectDelay" together when you change eject key.</appendix>
-          <appendix>*** &#8594; http://pqrs.org/macosx/keyremap4macbook/noejectdelay.html</appendix>
+          <appendix>*** &#8594; http://pqrs.org/macosx/keyremap4macbook/extra.html</appendix>
           <list>
             <item>
               <name>Eject to EISUU,F13 (if no modifiers pressed)</name>
