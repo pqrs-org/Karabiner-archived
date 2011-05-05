@@ -180,6 +180,14 @@
               <name>CursorMove to ScrollWheel Option</name>
               <list>
                 <item>
+                  <name>Reverse Vertical Scrolling</name>
+                  <identifier essential="true">option.pointing_reverse_vertical_scrolling</identifier>
+                </item>
+                <item>
+                  <name>Reverse Horizontal Scrolling</name>
+                  <identifier essential="true">option.pointing_reverse_horizontal_scrolling</identifier>
+                </item>
+                <item>
                   <name>Enable dynamic scrollwheel direction fixation (Horizontal/Vertical)</name>
                   <identifier essential="true">option.pointing_enable_scrollwheel_fixation</identifier>
                 </item>

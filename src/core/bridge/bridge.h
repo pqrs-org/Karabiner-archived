@@ -11,8 +11,9 @@ enum {
   // Version 4: Added a essential configuration. (general.suppress_growl_warning)
   // Version 5: Changed initialize vector format
   // Version 6: Added VK_MOUSEKEY_BUTTON_*
+  // Version 7: Added essential configurations. (option.pointing_reverse_*_scroll)
 
-  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 6,
+  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 7,
 };
 
 enum {

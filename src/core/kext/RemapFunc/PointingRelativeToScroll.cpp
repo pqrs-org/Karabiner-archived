@@ -224,7 +224,17 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ----------------------------------------
       FlagStatus::temporary_decrease(currentFromFlags_);
-      EventOutputQueue::FireScrollWheel::fire(delta1, delta2);
+      {
+        int d1 = delta1;
+        int d2 = delta2;
+        if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_option_pointing_reverse_vertical_scrolling)) {
+          d1 = - d1;
+        }
+        if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_option_pointing_reverse_horizontal_scrolling)) {
+          d2 = - d2;
+        }
+        EventOutputQueue::FireScrollWheel::fire(d1, d2);
+      }
       // We need to call temporary_increase.
       // Because normal cursor move event don't restore temporary_count_.
       // (See EventInputQueue::push_RelativePointerEventCallback.)
