@@ -10,6 +10,7 @@
 		3428689411244C7D0063E730 /* TableView_configlist.h in Headers */ = {isa = PBXBuildFile; fileRef = 3428689211244C7D0063E730 /* TableView_configlist.h */; };
 		3428689511244C7D0063E730 /* TableView_configlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 3428689311244C7D0063E730 /* TableView_configlist.m */; };
 		349FDBBF0D545C2200EED33C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 349FDBBE0D545C2200EED33C /* Security.framework */; };
+		34B2A66D1374623000694134 /* KeyRemap4MacBookKeys.h in Headers */ = {isa = PBXBuildFile; fileRef = 34B2A66C1374623000694134 /* KeyRemap4MacBookKeys.h */; };
 		34CBFDDB0D94CEC00087D9DB /* OutlineView_checkbox.h in Headers */ = {isa = PBXBuildFile; fileRef = 34CBFDD50D94CEC00087D9DB /* OutlineView_checkbox.h */; };
 		34CBFDDC0D94CEC00087D9DB /* OutlineView_checkbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CBFDD60D94CEC00087D9DB /* OutlineView_checkbox.m */; };
 		34CBFDDD0D94CEC00087D9DB /* OutlineView_number.h in Headers */ = {isa = PBXBuildFile; fileRef = 34CBFDD70D94CEC00087D9DB /* OutlineView_number.h */; };
@@ -37,6 +38,7 @@
 		3428689211244C7D0063E730 /* TableView_configlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView_configlist.h; sourceTree = "<group>"; };
 		3428689311244C7D0063E730 /* TableView_configlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView_configlist.m; sourceTree = "<group>"; };
 		349FDBBE0D545C2200EED33C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
+		34B2A66C1374623000694134 /* KeyRemap4MacBookKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookKeys.h; path = ../../share/KeyRemap4MacBookKeys.h; sourceTree = "<group>"; };
 		34CBFDD50D94CEC00087D9DB /* OutlineView_checkbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutlineView_checkbox.h; sourceTree = "<group>"; };
 		34CBFDD60D94CEC00087D9DB /* OutlineView_checkbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutlineView_checkbox.m; sourceTree = "<group>"; };
 		34CBFDD70D94CEC00087D9DB /* OutlineView_number.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutlineView_number.h; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 		08FB77AFFE84173DC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				34B2A66C1374623000694134 /* KeyRemap4MacBookKeys.h */,
 				34EB7FDC12C59DF30071889D /* KeyRemap4MacBookClient.h */,
 				34EB7FDD12C59DF30071889D /* KeyRemap4MacBookClient.m */,
 				34DB5C161297F92B006B9B05 /* OutlineView.m */,
@@ -168,6 +171,7 @@
 				3428689411244C7D0063E730 /* TableView_configlist.h in Headers */,
 				34DB5C081297F754006B9B05 /* OutlineView.h in Headers */,
 				34EB7FDE12C59DF30071889D /* KeyRemap4MacBookClient.h in Headers */,
+				34B2A66D1374623000694134 /* KeyRemap4MacBookKeys.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

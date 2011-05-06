@@ -45,6 +45,7 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		3489358110E279A700315CC1 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = "<group>"; };
 		349CF9D510E27BED00FA98E6 /* kr4mb_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kr4mb_pub.pem; sourceTree = "<group>"; };
+		34B2A664137461DC00694134 /* KeyRemap4MacBookKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookKeys.h; path = ../../share/KeyRemap4MacBookKeys.h; sourceTree = "<group>"; };
 		34EB816E12C649930071889D /* KeyRemap4MacBookClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookClient.h; path = ../../share/KeyRemap4MacBookClient.h; sourceTree = SOURCE_ROOT; };
 		34EB816F12C649930071889D /* KeyRemap4MacBookClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyRemap4MacBookClient.m; path = ../../share/KeyRemap4MacBookClient.m; sourceTree = SOURCE_ROOT; };
 		34F89A48135BF1080014629F /* app.icon.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = app.icon.tiff; path = Resources/app.icon.tiff; sourceTree = "<group>"; };
@@ -68,6 +69,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				34B2A664137461DC00694134 /* KeyRemap4MacBookKeys.h */,
 				34EB816E12C649930071889D /* KeyRemap4MacBookClient.h */,
 				34EB816F12C649930071889D /* KeyRemap4MacBookClient.m */,
 				349CF9BA10E27B6800FA98E6 /* sharecode */,

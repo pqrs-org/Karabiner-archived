@@ -1,4 +1,5 @@
 #import "KeyRemap4MacBookClient.h"
+#import "KeyRemap4MacBookKeys.h"
 
 @implementation org_pqrs_KeyRemap4MacBook_Client
 
@@ -20,6 +21,7 @@
 
 - (void) observer_server_launched:(NSNotification*)notification
 {
+  NSLog(@"observer_server_launched called");
   [self refresh_connection];
 }
 
@@ -33,8 +35,10 @@
                                                  name:NSConnectionDidDieNotification
                                                object:nil];
 
-    NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.notification";
-    [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_server_launched:) name:@"server_launched" object:observedObject];
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self
+                                                        selector:@selector(observer_server_launched:)
+                                                            name:kKeyRemap4MacBookServerLaunchedNotification
+                                                          object:kKeyRemap4MacBookNotificationKey];
 
     [self refresh_connection];
   }

@@ -1,6 +1,7 @@
 /* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
 #import "KeyRemap4MacBookPref.h"
+#import "KeyRemap4MacBookKeys.h"
 
 @implementation KeyRemap4MacBookPref
 
@@ -98,8 +99,7 @@
 
 - (IBAction) checkUpdateNow:(id)sender
 {
-  NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.notification";
-  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"checkForUpdates" object:observedObject userInfo:nil];
+  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookCheckForUpdatesNotification object:kKeyRemap4MacBookNotificationKey];
 }
 
 /* ---------------------------------------------------------------------- */
