@@ -19,9 +19,9 @@
   [self refresh_connection];
 }
 
-- (void) observer_server_launched:(NSNotification*)notification
+- (void) observer_serverLaunched:(NSNotification*)notification
 {
-  NSLog(@"observer_server_launched called");
+  NSLog(@"observer_serverLaunched called");
   [self refresh_connection];
 }
 
@@ -36,7 +36,7 @@
                                                object:nil];
 
     [[NSDistributedNotificationCenter defaultCenter] addObserver:self
-                                                        selector:@selector(observer_server_launched:)
+                                                        selector:@selector(observer_serverLaunched:)
                                                             name:kKeyRemap4MacBookServerLaunchedNotification
                                                           object:kKeyRemap4MacBookNotificationKey];
 
