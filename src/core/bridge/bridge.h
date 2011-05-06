@@ -8,12 +8,13 @@ enum {
   // Version 1: initial version
   // Version 2: Added BRIDGE_DATATYPE_DEVICEVENDOR,BRIDGE_DATATYPE_DEVICEPRODUCT,BRIDGE_REMAPTYPE_FORCENUMLOCKON
   // Version 3: Removed some essential configurations. (parameter.statuswindow_alpha_font, ...)
-  // Version 4: Added a essential configuration. (general.suppress_growl_warning)
+  // Version 4: Added an essential configuration. (general.suppress_growl_warning)
   // Version 5: Changed initialize vector format
   // Version 6: Added VK_MOUSEKEY_BUTTON_*
   // Version 7: Added essential configurations. (option.pointing_reverse_*_scroll)
+  // Version 8: Removed an essential configuration. (general.show_sticky_modifier_status)
 
-  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 7,
+  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 8,
 };
 
 enum {
