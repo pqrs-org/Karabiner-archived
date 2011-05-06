@@ -128,8 +128,8 @@ NSString* notificationName_modifier_sticky = @"Sticky Modifier Keys";
       if (! [self displayGrowlNotRunningWarning]) {
         NSString* name = nil;
         switch (idx) {
-        case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK:   name = notificationName_modifier_lock;   break;
-        case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY: name = notificationName_modifier_sticky; break;
+          case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK:   name = notificationName_modifier_lock;   break;
+          case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY: name = notificationName_modifier_sticky; break;
         }
 
         [GrowlApplicationBridge
