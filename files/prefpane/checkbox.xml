@@ -174,7 +174,7 @@
             <item>
               <name>Space+CursorMove to ScrollWheel</name>
               <identifier>remap.pointing_relative_space_to_scroll</identifier>
-              <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_pointing_relative_to_scroll , KeyCode::SPACE</autogen>
+              <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_pointing_relative_to_scroll, KeyCode::SPACE</autogen>
             </item>
             <item>
               <name>CursorMove to ScrollWheel Option</name>
