@@ -1,4 +1,5 @@
 #import "PreferencesManager.h"
+#import "KeyRemap4MacBookKeys.h"
 #include <sys/time.h>
 
 static PreferencesManager* global_instance = nil;
@@ -96,8 +97,7 @@ static PreferencesManager* global_instance = nil;
     [serverconnection_ setRootObject:self];
     [serverconnection_ registerName:@"org.pqrs.KeyRemap4MacBook.server"];
 
-    NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.notification";
-    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"server_launched" object:observedObject];
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookServerLaunchedNotification object:kKeyRemap4MacBookNotificationKey];
   }
 
   return self;

@@ -75,6 +75,7 @@
 		349B509E12837E64009108FE /* include.keycode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = include.keycode.plist; path = ../bridge/keycode/output/include.keycode.plist; sourceTree = SOURCE_ROOT; };
 		34A06A4A11F8792E0085749B /* icon.statusbar.0.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon.statusbar.0.tif; path = Resources/icon.statusbar.0.tif; sourceTree = "<group>"; };
 		34A06A4B11F8792E0085749B /* icon.statusbar.1.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon.statusbar.1.tif; path = Resources/icon.statusbar.1.tif; sourceTree = "<group>"; };
+		34B2A65A13745B6000694134 /* KeyRemap4MacBookKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookKeys.h; path = ../../share/KeyRemap4MacBookKeys.h; sourceTree = "<group>"; };
 		34B893F7128E448C00BC955A /* ConfigXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfigXMLParser.h; path = Classes/ConfigXMLParser.h; sourceTree = "<group>"; };
 		34B893F8128E448C00BC955A /* ConfigXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfigXMLParser.m; path = Classes/ConfigXMLParser.m; sourceTree = "<group>"; };
 		34B893F9128E448C00BC955A /* KeyCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyCode.h; path = Classes/KeyCode.h; sourceTree = "<group>"; };
@@ -109,6 +110,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				34B2A65A13745B6000694134 /* KeyRemap4MacBookKeys.h */,
 				345647341346A7AF00FD0C38 /* UserClient_userspace.h */,
 				345647351346A7AF00FD0C38 /* UserClient_userspace.m */,
 				34D4F83B12C45CF3001819AA /* WorkSpaceData+InputMode.m */,
