@@ -5,8 +5,9 @@ static StatusWindow* global_instance = nil;
 
 @implementation StatusWindow
 
-NSString* notificationName_extra = @"Extra Message";
-NSString* notificationName_lock  = @"Modifier Lock";
+NSString* notificationName_extra           = @"Extra Message";
+NSString* notificationName_modifier_lock   = @"Locked Modifier Keys";
+NSString* notificationName_modifier_sticky = @"Sticky Modifier Keys";
 
 + (StatusWindow*) getInstance
 {
@@ -111,23 +112,36 @@ NSString* notificationName_lock  = @"Modifier Lock";
 
   // ------------------------------------------------------------
   // Modifier Message
-  message = [lines_ objectAtIndex:BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER];
+  int indexes[] = {
+    BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK,
+    BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY,
+  };
+  for (size_t i = 0; i < sizeof(indexes) / sizeof(indexes[0]); ++i) {
+    int idx = indexes[i];
+    message = [lines_ objectAtIndex:idx];
 
-  BOOL isSticky = ([message length] > 0);
+    BOOL isSticky = ([message length] > 0);
 
-  if (! [message isEqualToString:[lastMessages_ objectAtIndex:BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER]]) {
-    [lastMessages_ replaceObjectAtIndex:BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER withObject:message];
+    if (! [message isEqualToString:[lastMessages_ objectAtIndex:idx]]) {
+      [lastMessages_ replaceObjectAtIndex:idx withObject:message];
 
-    if (! [self displayGrowlNotRunningWarning]) {
-      [GrowlApplicationBridge
-        notifyWithTitle:notificationName_lock
-            description:message
-       notificationName:notificationName_lock
-               iconData:nil
-               priority:0
-               isSticky:isSticky
-           clickContext:nil
-             identifier:@"org_pqrs_KeyRemap4MacBook_lock"];
+      if (! [self displayGrowlNotRunningWarning]) {
+        NSString* name = nil;
+        switch (idx) {
+        case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK:   name = notificationName_modifier_lock;   break;
+        case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY: name = notificationName_modifier_sticky; break;
+        }
+
+        [GrowlApplicationBridge
+          notifyWithTitle:name
+              description:message
+         notificationName:name
+                 iconData:nil
+                 priority:0
+                 isSticky:isSticky
+             clickContext:nil
+               identifier:[NSString stringWithFormat:@"org_pqrs_KeyRemap4MacBook_modifier_%d", idx]];
+      }
     }
   }
 
@@ -196,7 +210,7 @@ NSString* notificationName_lock  = @"Modifier Lock";
 // Growl delegate
 - (NSDictionary*) registrationDictionaryForGrowl
 {
-  NSArray* array = [NSArray arrayWithObjects:notificationName_lock, notificationName_extra, nil];
+  NSArray* array = [NSArray arrayWithObjects:notificationName_modifier_lock, notificationName_modifier_sticky, notificationName_extra, nil];
   NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
 
                         [NSNumber numberWithInt:1],
