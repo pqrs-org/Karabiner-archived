@@ -1,8 +1,9 @@
 #import "OutlineView.h"
+#import "KeyRemap4MacBookKeys.h"
 
 @implementation org_pqrs_KeyRemap4MacBook_OutlineView
 
-- (void) observer_KeyRemap4MacBookClient_connected:(NSNotification*)notification
+- (void) observer_preferencesChanged:(NSNotification*)notification
 {
   [outlineview_ reloadData];
 }
@@ -12,7 +13,10 @@
   self = [super init];
 
   if (self) {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_KeyRemap4MacBookClient_connected:) name:@"KeyRemap4MacBookClient_connected" object:nil];
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self
+                                                        selector:@selector(observer_preferencesChanged:)
+                                                            name:kKeyRemap4MacBookPreferencesChangedNotification
+                                                          object:kKeyRemap4MacBookNotificationKey];
   }
 
   return self;

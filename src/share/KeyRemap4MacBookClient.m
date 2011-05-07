@@ -10,8 +10,6 @@
   [proxy release];
   proxy = [[NSConnection rootProxyForConnectionWithRegisteredName:@"org.pqrs.KeyRemap4MacBook.server" host:nil] retain];
   [proxy setProtocolForProxy:@protocol(org_pqrs_KeyRemap4MacBook_Protocol)];
-
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"KeyRemap4MacBookClient_connected" object:nil];
 }
 
 - (void) observer_NSConnectionDidDieNotification:(NSNotification*)notification
