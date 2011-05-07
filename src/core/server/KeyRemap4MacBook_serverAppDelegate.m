@@ -307,8 +307,4 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   [[NSWorkspace sharedWorkspace] launchApplication:@"/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app"];
 }
 
-- (void) applicationWillTerminate:(NSNotification*)aNotification {
-  NSLog(@"applicationWillTerminate");
-}
-
 @end
