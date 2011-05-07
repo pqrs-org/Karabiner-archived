@@ -8,7 +8,7 @@
     <array>
       <string>/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook_server.app/Contents/MacOS/KeyRemap4MacBook_server</string>
     </array>
-    <key>OnDemand</key>
-    <false/>
+    <key>KeepAlive</key>
+    <true/>
   </dict>
 </plist>
