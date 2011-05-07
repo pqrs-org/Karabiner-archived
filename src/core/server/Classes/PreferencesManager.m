@@ -170,7 +170,7 @@ static PreferencesManager* global_instance = nil;
   [[NSUserDefaults standardUserDefaults] setObject:md forKey:identifier];
   //[[NSUserDefaults standardUserDefaults] synchronize];
 
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"PreferencesChanged" object:nil];
+  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookPreferencesChangedNotification object:kKeyRemap4MacBookNotificationKey];
 }
 
 - (NSArray*) essential_config
@@ -259,7 +259,7 @@ static PreferencesManager* global_instance = nil;
   [userdefaults setInteger:newindex forKey:@"selectedIndex"];
 
   [[NSNotificationCenter defaultCenter] postNotificationName:@"ConfigListChanged" object:nil];
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"PreferencesChanged" object:nil];
+  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookPreferencesChangedNotification object:kKeyRemap4MacBookNotificationKey];
 }
 
 - (void) configlist_setName:(NSInteger)rowIndex name:(NSString*)name

@@ -8,6 +8,7 @@
 
 #import <Carbon/Carbon.h>
 #import "KeyRemap4MacBook_serverAppDelegate.h"
+#import "KeyRemap4MacBookKeys.h"
 #import "StatusWindow.h"
 #import "UserClient_userspace.h"
 #include <stdlib.h>
@@ -293,7 +294,11 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   // ------------------------------
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_ConfigXMLReloaded:) name:@"ConfigXMLReloaded" object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_ConfigListChanged:) name:@"ConfigListChanged" object:nil];
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_PreferencesChanged:) name:@"PreferencesChanged" object:nil];
+
+  [[NSDistributedNotificationCenter defaultCenter] addObserver:self
+                                                      selector:@selector(observer_PreferencesChanged:)
+                                                          name:kKeyRemap4MacBookPreferencesChangedNotification
+                                                        object:kKeyRemap4MacBookNotificationKey];
 
   // ------------------------------------------------------------
   [self observer_NSWorkspaceDidActivateApplicationNotification:nil];
