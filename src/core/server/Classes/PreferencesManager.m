@@ -95,7 +95,7 @@ static PreferencesManager* global_instance = nil;
     // ------------------------------------------------------------
     serverconnection_ = [NSConnection new];
     [serverconnection_ setRootObject:self];
-    [serverconnection_ registerName:@"org.pqrs.KeyRemap4MacBook.server"];
+    [serverconnection_ registerName:kKeyRemap4MacBookConnectionName];
 
     [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookServerLaunchedNotification object:kKeyRemap4MacBookNotificationKey];
   }

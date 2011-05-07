@@ -6,3 +6,5 @@
 #define kKeyRemap4MacBookServerLaunchedNotification     @"serverLaunched"
 #define kKeyRemap4MacBookPreferencesChangedNotification @"preferencesChanged"
 #define kKeyRemap4MacBookCheckForUpdatesNotification    @"checkForUpdates"
+
+#define kKeyRemap4MacBookConnectionName                 @"org.pqrs.KeyRemap4MacBook.server"

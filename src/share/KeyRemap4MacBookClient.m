@@ -8,7 +8,7 @@
 - (void) refresh_connection
 {
   [proxy release];
-  proxy = [[NSConnection rootProxyForConnectionWithRegisteredName:@"org.pqrs.KeyRemap4MacBook.server" host:nil] retain];
+  proxy = [[NSConnection rootProxyForConnectionWithRegisteredName:kKeyRemap4MacBookConnectionName host:nil] retain];
   [proxy setProtocolForProxy:@protocol(org_pqrs_KeyRemap4MacBook_Protocol)];
 }
 
