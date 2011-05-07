@@ -10,6 +10,7 @@
   IBOutlet id _checkbox_statusbar_showname;
   IBOutlet id _popup_checkupdate;
   IBOutlet id _label_updatechecked;
+  IBOutlet NSButton* checkbox_showEnabledOnly_;
   IBOutlet org_pqrs_KeyRemap4MacBook_Client* client_;
 }
 

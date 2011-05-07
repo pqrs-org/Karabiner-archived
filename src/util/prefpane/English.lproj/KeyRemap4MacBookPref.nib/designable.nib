@@ -1574,6 +1574,14 @@
 					</object>
 					<int key="connectionID">830</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">checkbox_showEnabledOnly_</string>
+						<reference key="source" ref="762499249"/>
+						<reference key="destination" ref="339829919"/>
+					</object>
+					<int key="connectionID">831</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -2356,7 +2364,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">830</int>
+			<int key="maxID">831</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2413,6 +2421,7 @@
 						<string key="_label_updatechecked">id</string>
 						<string key="_popup_checkupdate">id</string>
 						<string key="_versionText">id</string>
+						<string key="checkbox_showEnabledOnly_">NSButton</string>
 						<string key="client_">org_pqrs_KeyRemap4MacBook_Client</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -2435,6 +2444,10 @@
 						<object class="IBToOneOutletInfo" key="_versionText">
 							<string key="name">_versionText</string>
 							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="checkbox_showEnabledOnly_">
+							<string key="name">checkbox_showEnabledOnly_</string>
+							<string key="candidateClassName">NSButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="client_">
 							<string key="name">client_</string>

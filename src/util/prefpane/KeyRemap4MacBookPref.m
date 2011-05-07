@@ -15,20 +15,10 @@
   [_versionText setStringValue:version];
 }
 
-- (void) terminateTargetApplication:(NSString*)bundleidentifier
+- (void) drawEnabledCount
 {
-  NSArray* list = [[NSWorkspace sharedWorkspace] runningApplications];
-
-  for (NSRunningApplication* app in list) {
-    if (! app) continue;
-
-    NSString* bi = [app bundleIdentifier];
-    if (! bi) continue;
-
-    if ([bi isEqualToString:bundleidentifier]) {
-      [app terminate];
-    }
-  }
+  int count = [[client_ proxy] preferencepane_enabled_count];
+  [checkbox_showEnabledOnly_ setTitle:[NSString stringWithFormat:@"show enabled only (%d %@)", count, count >= 2 ? @"items":@"item"]];
 }
 
 /* ---------------------------------------------------------------------- */
@@ -103,12 +93,23 @@
 }
 
 /* ---------------------------------------------------------------------- */
+- (void) observer_preferencesChanged:(NSNotification*)notification
+{
+  [self drawEnabledCount];
+}
+
 - (void) mainViewDidLoad
 {
   [self drawVersion];
+  [self drawEnabledCount];
   [self setStatusBarState];
   [self setStatusBarShowNameState];
   [self setCheckUpdateState];
+
+  [[NSDistributedNotificationCenter defaultCenter] addObserver:self
+                                                      selector:@selector(observer_preferencesChanged:)
+                                                          name:kKeyRemap4MacBookPreferencesChangedNotification
+                                                        object:kKeyRemap4MacBookNotificationKey];
 }
 
 @end
