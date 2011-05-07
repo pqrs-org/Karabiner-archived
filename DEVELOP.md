@@ -35,7 +35,7 @@ Sub components
 
 About event handling (kext)
 ---------------------------
-To prevent leakage of the input event, the conversion of the input event is done in the kernel entirely.
+To prevent leakage of the input event, the modification of the input event is perfomed inside kernel entirely.
 
 We set a hook function in the middle of hardware driver.
 And we modify the input event in the hook function.
