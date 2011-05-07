@@ -406,6 +406,33 @@ static PreferencesManager* global_instance = nil;
   return [[ConfigXMLParser getInstance] preferencepane_number];
 }
 
+- (int) enabled_count:(NSArray*)checkbox changed:(NSDictionary*)changed
+{
+  int count = 0;
+
+  if (checkbox) {
+    for (NSDictionary* dict in checkbox) {
+      NSString* identifier = [dict objectForKey:@"identifier"];
+      if (identifier) {
+        if ([[changed objectForKey:identifier] intValue] != 0) {
+          ++count;
+        }
+      }
+
+      count += [self enabled_count:[dict objectForKey:@"children"] changed:changed];
+    }
+  }
+
+  return count;
+}
+
+- (int) preferencepane_enabled_count
+{
+  NSArray* checkbox = [[ConfigXMLParser getInstance] preferencepane_checkbox];
+  NSDictionary* changed = [self changed];
+  return [self enabled_count:checkbox changed:changed];
+}
+
 - (NSString*) preferencepane_error_message
 {
   return [[ConfigXMLParser getInstance] preferencepane_error_message];
