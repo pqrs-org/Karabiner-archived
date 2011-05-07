@@ -42,9 +42,8 @@
       bridgeworkspacedata_.applicationtype = [WorkSpaceData getApplicationType:name];
       [self send_workspacedata_to_kext];
 
-      NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.KeyDump";
       NSDictionary* userInfo = [NSDictionary dictionaryWithObject:name forKey:@"name"];
-      [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"applicationChanged" object:observedObject userInfo:userInfo];
+      [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookApplicationChangedNotification object:kKeyRemap4MacBookNotificationKey userInfo:userInfo];
     }
   }
 }
@@ -58,9 +57,8 @@
          output_inputmodedetail:(&(bridgeworkspacedata_.inputmodedetail))];
     [self send_workspacedata_to_kext];
 
-    NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.KeyDump";
     NSDictionary* userInfo = [NSDictionary dictionaryWithObject:name forKey:@"name"];
-    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"inputSourceChanged" object:observedObject userInfo:userInfo];
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookInputSourceChangedNotification object:kKeyRemap4MacBookNotificationKey userInfo:userInfo];
   }
 }
 

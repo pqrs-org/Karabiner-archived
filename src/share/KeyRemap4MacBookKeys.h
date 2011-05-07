@@ -7,4 +7,10 @@
 #define kKeyRemap4MacBookPreferencesChangedNotification @"preferencesChanged"
 #define kKeyRemap4MacBookCheckForUpdatesNotification    @"checkForUpdates"
 
+// for KeyDump.app
+#define kKeyRemap4MacBookApplicationChangedNotification @"applicationChanged"
+#define kKeyRemap4MacBookInputSourceChangedNotification @"inputSourceChanged"
+
+// ------------------------------------------------------------
+// for NSConnection
 #define kKeyRemap4MacBookConnectionName                 @"org.pqrs.KeyRemap4MacBook.server"
