@@ -391,11 +391,6 @@ static PreferencesManager* global_instance = nil;
   [[ConfigXMLParser getInstance] reload];
 }
 
-- (BOOL) configxml_initialized
-{
-  return [[ConfigXMLParser getInstance] initialized];
-}
-
 - (NSArray*) preferencepane_checkbox
 {
   return [[ConfigXMLParser getInstance] preferencepane_checkbox];
