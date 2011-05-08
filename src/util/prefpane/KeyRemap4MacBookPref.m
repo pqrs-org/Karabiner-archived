@@ -98,6 +98,13 @@
   [self drawEnabledCount];
 }
 
+- (void) observer_configXMLReloaded:(NSNotification*)notification
+{
+  // If activated preferences in private.xml were vanished, the count is changed.
+  // So, we need to call drawEnabledCount at configXMLReloaded notification.
+  [self drawEnabledCount];
+}
+
 - (void) mainViewDidLoad
 {
   [self drawVersion];
@@ -109,6 +116,11 @@
   [[NSDistributedNotificationCenter defaultCenter] addObserver:self
                                                       selector:@selector(observer_preferencesChanged:)
                                                           name:kKeyRemap4MacBookPreferencesChangedNotification
+                                                        object:kKeyRemap4MacBookNotificationKey];
+
+  [[NSDistributedNotificationCenter defaultCenter] addObserver:self
+                                                      selector:@selector(observer_configXMLReloaded:)
+                                                          name:kKeyRemap4MacBookConfigXMLReloadedNotification
                                                         object:kKeyRemap4MacBookNotificationKey];
 }
 
