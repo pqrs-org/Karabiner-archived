@@ -237,4 +237,9 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
   return retval;
 }
 
++ (BOOL) connected
+{
+  return [global_instance connected];
+}
+
 @end
