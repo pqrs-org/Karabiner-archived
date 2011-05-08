@@ -231,10 +231,27 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   [self setcallback:YES];
 }
 
+- (void) registerWakeNotification
+{
+  [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
+                                                         selector:@selector(observer_NSWorkspaceDidWakeNotification:)
+                                                             name:NSWorkspaceDidWakeNotification
+                                                           object:nil];
+}
+
+- (void) unregisterWakeNotification
+{
+  [[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self
+                                                                name:NSWorkspaceDidWakeNotification
+                                                              object:nil];
+}
+
+// ----------------------------------------
 - (void) observer_NSWorkspaceSessionDidBecomeActiveNotification:(NSNotification*)notification
 {
   NSLog(@"observer_NSWorkspaceSessionDidBecomeActiveNotification");
   [self registerIONotification];
+  [self registerWakeNotification];
   [self setcallback:YES];
 }
 
@@ -242,6 +259,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 {
   NSLog(@"observer_NSWorkspaceSessionDidResignActiveNotification");
   [self unregisterIONotification];
+  [self unregisterWakeNotification];
   [self setcallback:NO];
 }
 
@@ -252,6 +270,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   global_client_ = client_;
 
   [self registerIONotification];
+  [self registerWakeNotification];
 
   [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
                                                          selector:@selector(observer_NSWorkspaceSessionDidBecomeActiveNotification:)
@@ -261,11 +280,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
                                                          selector:@selector(observer_NSWorkspaceSessionDidResignActiveNotification:)
                                                              name:NSWorkspaceSessionDidResignActiveNotification
-                                                           object:nil];
-
-  [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
-                                                         selector:@selector(observer_NSWorkspaceDidWakeNotification:)
-                                                             name:NSWorkspaceDidWakeNotification
                                                            object:nil];
 
   [self setcallback:YES];
