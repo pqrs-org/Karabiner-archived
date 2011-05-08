@@ -198,7 +198,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         params.key == KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN_TYPOGRAPHIC ||
         params.key == KeyCode::VK_CHANGE_INPUTMODE_ENGLISH_TYPOGRAPHIC ||
         params.key == KeyCode::VK_CHANGE_INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY ||
-        params.key == KeyCode::VK_CHANGE_INPUTMODE_ESTONIAN) {
+        params.key == KeyCode::VK_CHANGE_INPUTMODE_ESTONIAN ||
+        params.key == KeyCode::VK_CHANGE_INPUTMODE_FINNISH) {
 
       if (params.ex_iskeydown && params.repeat == false) {
         org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace(BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CHANGE_INPUT_SOURCE, params.key.get());
