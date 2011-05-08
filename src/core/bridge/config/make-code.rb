@@ -2,6 +2,7 @@
 
 require 'rubygems'
 require 'xml/libxml'
+require "#{File.dirname(__FILE__)}/../lib/converter.rb"
 
 GC.disable
 
@@ -52,12 +53,5 @@ end
 # ------------------------------------------------------------
 # move tmpfile if needed.
 $outfile.each do |key,file|
-  tmpfilepath    = file.path
-  targetfilepath = file.path.gsub(/\.tmp$/, '')
-
-  if (! FileTest.exist?(targetfilepath)) or (IO.read(tmpfilepath) != IO.read(targetfilepath)) then
-    File.rename(tmpfilepath, targetfilepath)
-  else
-    File.unlink(tmpfilepath)
-  end
+  KeyRemap4MacBookBridge::Converter.update_file_if_needed(file.path)
 end
