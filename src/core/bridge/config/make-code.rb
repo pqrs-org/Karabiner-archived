@@ -48,10 +48,5 @@ $outfile[:plist].print "</plist>\n"
 
 $outfile.each do |key,file|
   file.close
-end
-
-# ------------------------------------------------------------
-# move tmpfile if needed.
-$outfile.each do |key,file|
   KeyRemap4MacBookBridge::Converter.update_file_if_needed(file.path)
 end
