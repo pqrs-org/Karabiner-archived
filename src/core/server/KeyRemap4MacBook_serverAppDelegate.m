@@ -300,8 +300,12 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
                                                            object:nil];
 
   // ------------------------------
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_ConfigXMLReloaded:) name:@"ConfigXMLReloaded" object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_ConfigListChanged:) name:@"ConfigListChanged" object:nil];
+
+  [[NSDistributedNotificationCenter defaultCenter] addObserver:self
+                                                      selector:@selector(observer_ConfigXMLReloaded:)
+                                                          name:kKeyRemap4MacBookConfigXMLReloadedNotification
+                                                        object:kKeyRemap4MacBookNotificationKey];
 
   [[NSDistributedNotificationCenter defaultCenter] addObserver:self
                                                       selector:@selector(observer_PreferencesChanged:)
