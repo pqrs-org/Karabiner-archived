@@ -174,7 +174,17 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   // In the case of IOServiceAddMatchingNotification, make sure you release the iterator only if you’re also ready to stop receiving notifications:
   // When you release the iterator you receive from IOServiceAddMatchingNotification, you also disable the notification.
 
-  [UserClient_userspace refresh_connection];
+  // ------------------------------------------------------------
+  // [UserClient_userspace refresh_connection] may fail by kIOReturnExclusiveAccess
+  // when NSWorkspaceSessionDidBecomeActiveNotification.
+  // So, we retry the connection some times.
+  for (int retrycount = 0; retrycount < 10; ++retrycount) {
+    [UserClient_userspace refresh_connection];
+    if ([UserClient_userspace connected]) break;
+
+    [NSThread sleepForTimeInterval:0.5];
+  }
+
   [self send_remapclasses_initialize_vector_to_kext];
   [self send_config_to_kext];
   [self send_workspacedata_to_kext];
