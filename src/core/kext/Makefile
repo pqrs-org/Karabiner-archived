@@ -8,9 +8,6 @@ all:
 	$(MAKE) -C ../bridge
 	xcodebuild -alltargets -configuration $(CONFIGURATION) MODULE_VERSION=$(VERSION) CURRENT_PROJECT_VERSION=$(VERSION) build
 
-buildonly:
-	xcodebuild -alltargets -configuration $(CONFIGURATION) MODULE_VERSION=$(VERSION) CURRENT_PROJECT_VERSION=$(VERSION) build
-
 clean:
 	rm -rf build
 	rm -f Info.plist
