@@ -1,4 +1,5 @@
 #import "KeyRemap4MacBookClient.h"
+#import "KeyRemap4MacBookKeys.h"
 
 @implementation org_pqrs_KeyRemap4MacBook_Client
 
@@ -7,10 +8,8 @@
 - (void) refresh_connection
 {
   [proxy release];
-  proxy = [[NSConnection rootProxyForConnectionWithRegisteredName:@"org.pqrs.KeyRemap4MacBook.server" host:nil] retain];
+  proxy = [[NSConnection rootProxyForConnectionWithRegisteredName:kKeyRemap4MacBookConnectionName host:nil] retain];
   [proxy setProtocolForProxy:@protocol(org_pqrs_KeyRemap4MacBook_Protocol)];
-
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"KeyRemap4MacBookClient_connected" object:nil];
 }
 
 - (void) observer_NSConnectionDidDieNotification:(NSNotification*)notification
@@ -18,8 +17,9 @@
   [self refresh_connection];
 }
 
-- (void) observer_server_launched:(NSNotification*)notification
+- (void) observer_serverLaunched:(NSNotification*)notification
 {
+  NSLog(@"observer_serverLaunched called");
   [self refresh_connection];
 }
 
@@ -33,8 +33,10 @@
                                                  name:NSConnectionDidDieNotification
                                                object:nil];
 
-    NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.notification";
-    [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_server_launched:) name:@"server_launched" object:observedObject];
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self
+                                                        selector:@selector(observer_serverLaunched:)
+                                                            name:kKeyRemap4MacBookServerLaunchedNotification
+                                                          object:kKeyRemap4MacBookNotificationKey];
 
     [self refresh_connection];
   }

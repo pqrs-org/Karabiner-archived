@@ -32,10 +32,6 @@
     name = @"---";
   }
 
-  if ([name isEqualToString:@"org.pqrs.KeyRemap4MacBook.KeyDump"]) {
-    return;
-  }
-
   applicationname_ = name;
   [label_applicationname_ setStringValue:name];
 }

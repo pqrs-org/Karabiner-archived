@@ -1,4 +1,5 @@
 #import "PreferencesManager.h"
+#import "KeyRemap4MacBookKeys.h"
 #include <sys/time.h>
 
 static PreferencesManager* global_instance = nil;
@@ -94,10 +95,9 @@ static PreferencesManager* global_instance = nil;
     // ------------------------------------------------------------
     serverconnection_ = [NSConnection new];
     [serverconnection_ setRootObject:self];
-    [serverconnection_ registerName:@"org.pqrs.KeyRemap4MacBook.server"];
+    [serverconnection_ registerName:kKeyRemap4MacBookConnectionName];
 
-    NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.notification";
-    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"server_launched" object:observedObject];
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookServerLaunchedNotification object:kKeyRemap4MacBookNotificationKey];
   }
 
   return self;
@@ -170,7 +170,7 @@ static PreferencesManager* global_instance = nil;
   [[NSUserDefaults standardUserDefaults] setObject:md forKey:identifier];
   //[[NSUserDefaults standardUserDefaults] synchronize];
 
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"PreferencesChanged" object:nil];
+  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookPreferencesChangedNotification object:kKeyRemap4MacBookNotificationKey];
 }
 
 - (NSArray*) essential_config
@@ -259,7 +259,7 @@ static PreferencesManager* global_instance = nil;
   [userdefaults setInteger:newindex forKey:@"selectedIndex"];
 
   [[NSNotificationCenter defaultCenter] postNotificationName:@"ConfigListChanged" object:nil];
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"PreferencesChanged" object:nil];
+  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookPreferencesChangedNotification object:kKeyRemap4MacBookNotificationKey];
 }
 
 - (void) configlist_setName:(NSInteger)rowIndex name:(NSString*)name
@@ -404,6 +404,33 @@ static PreferencesManager* global_instance = nil;
 - (NSArray*) preferencepane_number
 {
   return [[ConfigXMLParser getInstance] preferencepane_number];
+}
+
+- (int) enabled_count:(NSArray*)checkbox changed:(NSDictionary*)changed
+{
+  int count = 0;
+
+  if (checkbox) {
+    for (NSDictionary* dict in checkbox) {
+      NSString* identifier = [dict objectForKey:@"identifier"];
+      if (identifier) {
+        if ([[changed objectForKey:identifier] intValue] != 0) {
+          ++count;
+        }
+      }
+
+      count += [self enabled_count:[dict objectForKey:@"children"] changed:changed];
+    }
+  }
+
+  return count;
+}
+
+- (int) preferencepane_enabled_count
+{
+  NSArray* checkbox = [[ConfigXMLParser getInstance] preferencepane_checkbox];
+  NSDictionary* changed = [self changed];
+  return [self enabled_count:checkbox changed:changed];
 }
 
 - (NSString*) preferencepane_error_message

@@ -8,6 +8,7 @@
 
 #import <Carbon/Carbon.h>
 #import "KeyRemap4MacBook_serverAppDelegate.h"
+#import "KeyRemap4MacBookKeys.h"
 #import "StatusWindow.h"
 #import "UserClient_userspace.h"
 #include <stdlib.h>
@@ -41,9 +42,8 @@
       bridgeworkspacedata_.applicationtype = [WorkSpaceData getApplicationType:name];
       [self send_workspacedata_to_kext];
 
-      NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.KeyDump";
       NSDictionary* userInfo = [NSDictionary dictionaryWithObject:name forKey:@"name"];
-      [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"applicationChanged" object:observedObject userInfo:userInfo];
+      [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookApplicationChangedNotification object:kKeyRemap4MacBookNotificationKey userInfo:userInfo];
     }
   }
 }
@@ -57,9 +57,8 @@
          output_inputmodedetail:(&(bridgeworkspacedata_.inputmodedetail))];
     [self send_workspacedata_to_kext];
 
-    NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.KeyDump";
     NSDictionary* userInfo = [NSDictionary dictionaryWithObject:name forKey:@"name"];
-    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"inputSourceChanged" object:observedObject userInfo:userInfo];
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookInputSourceChangedNotification object:kKeyRemap4MacBookNotificationKey userInfo:userInfo];
   }
 }
 
@@ -293,7 +292,11 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   // ------------------------------
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_ConfigXMLReloaded:) name:@"ConfigXMLReloaded" object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_ConfigListChanged:) name:@"ConfigListChanged" object:nil];
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_PreferencesChanged:) name:@"PreferencesChanged" object:nil];
+
+  [[NSDistributedNotificationCenter defaultCenter] addObserver:self
+                                                      selector:@selector(observer_PreferencesChanged:)
+                                                          name:kKeyRemap4MacBookPreferencesChangedNotification
+                                                        object:kKeyRemap4MacBookNotificationKey];
 
   // ------------------------------------------------------------
   [self observer_NSWorkspaceDidActivateApplicationNotification:nil];
@@ -302,10 +305,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   // ------------------------------------------------------------
   // Kick updater
   [[NSWorkspace sharedWorkspace] launchApplication:@"/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app"];
-}
-
-- (void) applicationWillTerminate:(NSNotification*)aNotification {
-  NSLog(@"applicationWillTerminate");
 }
 
 @end

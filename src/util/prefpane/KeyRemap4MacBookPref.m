@@ -1,6 +1,7 @@
 /* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
 #import "KeyRemap4MacBookPref.h"
+#import "KeyRemap4MacBookKeys.h"
 
 @implementation KeyRemap4MacBookPref
 
@@ -14,20 +15,10 @@
   [_versionText setStringValue:version];
 }
 
-- (void) terminateTargetApplication:(NSString*)bundleidentifier
+- (void) drawEnabledCount
 {
-  NSArray* list = [[NSWorkspace sharedWorkspace] runningApplications];
-
-  for (NSRunningApplication* app in list) {
-    if (! app) continue;
-
-    NSString* bi = [app bundleIdentifier];
-    if (! bi) continue;
-
-    if ([bi isEqualToString:bundleidentifier]) {
-      [app terminate];
-    }
-  }
+  int count = [[client_ proxy] preferencepane_enabled_count];
+  [checkbox_showEnabledOnly_ setTitle:[NSString stringWithFormat:@"show enabled only (%d %@)", count, count >= 2 ? @"items":@"item"]];
 }
 
 /* ---------------------------------------------------------------------- */
@@ -98,17 +89,27 @@
 
 - (IBAction) checkUpdateNow:(id)sender
 {
-  NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.notification";
-  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"checkForUpdates" object:observedObject userInfo:nil];
+  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookCheckForUpdatesNotification object:kKeyRemap4MacBookNotificationKey];
 }
 
 /* ---------------------------------------------------------------------- */
+- (void) observer_preferencesChanged:(NSNotification*)notification
+{
+  [self drawEnabledCount];
+}
+
 - (void) mainViewDidLoad
 {
   [self drawVersion];
+  [self drawEnabledCount];
   [self setStatusBarState];
   [self setStatusBarShowNameState];
   [self setCheckUpdateState];
+
+  [[NSDistributedNotificationCenter defaultCenter] addObserver:self
+                                                      selector:@selector(observer_preferencesChanged:)
+                                                          name:kKeyRemap4MacBookPreferencesChangedNotification
+                                                        object:kKeyRemap4MacBookNotificationKey];
 }
 
 @end

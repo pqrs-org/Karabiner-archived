@@ -1,6 +1,7 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
 #import "StatusBar.h"
+#import "KeyRemap4MacBookKeys.h"
 
 @implementation StatusBar
 
@@ -96,8 +97,7 @@
 
 - (IBAction) checkForUpdates:(id)sender
 {
-  NSString* observedObject = @"org.pqrs.KeyRemap4MacBook.notification";
-  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"checkForUpdates" object:observedObject userInfo:nil];
+  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookCheckForUpdatesNotification object:kKeyRemap4MacBookNotificationKey];
 }
 
 @end

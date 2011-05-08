@@ -8,6 +8,7 @@ build:
 	mkdir -p files/share
 
 clean:
+	$(MAKE) -C pkginfo clean
 	$(MAKE) -C src clean
 	$(MAKE) -C util clean
 	$(MAKE) -C Tests clean

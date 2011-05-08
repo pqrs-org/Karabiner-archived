@@ -2,6 +2,7 @@
 #define FLAGSTATUS_HPP
 
 #include "KeyCode.hpp"
+#include "bridge.h"
 
 namespace org_pqrs_KeyRemap4MacBook {
   class FlagStatus {
@@ -137,7 +138,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   private:
     static void updateStatusMessage(void);
 
-    static Flags statusMessageFlags_;
+    static Flags statusMessageFlags_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__];
     static Item item_[MAXNUM];
   };
 }

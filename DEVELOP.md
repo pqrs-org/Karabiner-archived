@@ -33,9 +33,9 @@ Sub components
 * KeyRemap4MacBook.prefPane (PreferencePane)
 
 
-About event handling
---------------------
-To prevent leakage of the input event, the conversion of the input event is done in the kernel entirely.
+About event handling (kext)
+---------------------------
+To prevent leakage of the input event, the modification of the input event is perfomed inside kernel entirely.
 
 We set a hook function in the middle of hardware driver.
 And we modify the input event in the hook function.
@@ -43,8 +43,8 @@ And we modify the input event in the hook function.
 ...
 
 
-Threads and Lock
-----------------
+Threads and Lock (kext)
+-----------------------
 We use a global lock to guard the status of modifier flags, the status of buttons, and other global variables.
 All threads use this global lock. The only one thread runs at the same time.
 
