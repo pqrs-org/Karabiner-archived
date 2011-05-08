@@ -148,7 +148,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
   [self release_iterator:iterator];
 
-  [self setcallback:NO];
   [self setcallback:YES];
 }
 
