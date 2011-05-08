@@ -206,7 +206,7 @@
   if (number) return [number floatValue];
 
   number = [item objectForKey:@"height"];
-  if (! number) {
+  if (! number || [number intValue] == 0) {
     number = [NSNumber numberWithDouble:[outlineView rowHeight]];
   } else {
     number = [NSNumber numberWithDouble:([number intValue] * (CGFloat)([outlineView rowHeight]))];
