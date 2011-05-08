@@ -61,7 +61,6 @@
 		3484E04811DE10CE00426723 /* KeyToPointingButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3484E04611DE10CE00426723 /* KeyToPointingButton.cpp */; };
 		3484E04911DE10CE00426723 /* KeyToPointingButton.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3484E04711DE10CE00426723 /* KeyToPointingButton.hpp */; };
 		348ED8360CE4680F00E179EC /* remap.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 348ED8350CE4680F00E179EC /* remap.hpp */; };
-		348ED83A0CE4682000E179EC /* version.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 348ED8390CE4682000E179EC /* version.hpp */; };
 		349581080E7232A5003773EC /* PressDownKeys.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 349581060E7232A5003773EC /* PressDownKeys.cpp */; };
 		349581090E7232A5003773EC /* PressDownKeys.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 349581070E7232A5003773EC /* PressDownKeys.hpp */; };
 		349E3C9913371CD700E7A81C /* UserClient_kext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 349E3C9713371CD700E7A81C /* UserClient_kext.cpp */; };
@@ -174,7 +173,6 @@
 		3484E04611DE10CE00426723 /* KeyToPointingButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyToPointingButton.cpp; path = RemapFunc/KeyToPointingButton.cpp; sourceTree = "<group>"; };
 		3484E04711DE10CE00426723 /* KeyToPointingButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyToPointingButton.hpp; path = RemapFunc/KeyToPointingButton.hpp; sourceTree = "<group>"; };
 		348ED8350CE4680F00E179EC /* remap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = remap.hpp; sourceTree = "<group>"; };
-		348ED8390CE4682000E179EC /* version.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = version.hpp; sourceTree = "<group>"; };
 		349581060E7232A5003773EC /* PressDownKeys.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PressDownKeys.cpp; path = util/PressDownKeys.cpp; sourceTree = "<group>"; };
 		349581070E7232A5003773EC /* PressDownKeys.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PressDownKeys.hpp; path = util/PressDownKeys.hpp; sourceTree = "<group>"; };
 		349E3C9713371CD700E7A81C /* UserClient_kext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserClient_kext.cpp; sourceTree = "<group>"; };
@@ -289,7 +287,6 @@
 				345004AA0E7CE48F0075324B /* Driver.cpp */,
 				345004AB0E7CE48F0075324B /* Driver.hpp */,
 				348ED8350CE4680F00E179EC /* remap.hpp */,
-				348ED8390CE4682000E179EC /* version.hpp */,
 				34FB835E0CE5DBFF00BD6A24 /* base.hpp */,
 				34C7A9AF0CE4605B00C98397 /* Config.hpp */,
 				34C7A9A10CE45EA400C98397 /* Config.cpp */,
@@ -417,7 +414,6 @@
 			files = (
 				34C7A9B00CE4605B00C98397 /* Config.hpp in Headers */,
 				348ED8360CE4680F00E179EC /* remap.hpp in Headers */,
-				348ED83A0CE4682000E179EC /* version.hpp in Headers */,
 				34FB835F0CE5DBFF00BD6A24 /* base.hpp in Headers */,
 				349581090E7232A5003773EC /* PressDownKeys.hpp in Headers */,
 				346B753F0E72C0BA00F9A79F /* FlagStatus.hpp in Headers */,
