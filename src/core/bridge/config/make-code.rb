@@ -5,10 +5,11 @@ require 'xml/libxml'
 
 GC.disable
 
+# output to tmpfile
 $outfile = {
-  :hpp   => open('output/include.bridge_essential_config_index.hpp', 'w'),
-  :cpp   => open('output/include.bridge_essential_config_index.cpp', 'w'),
-  :plist => open('output/include.bridge_essential_config_index.plist', 'w'),
+  :hpp   => open('output/include.bridge_essential_config_index.hpp.tmp', 'w'),
+  :cpp   => open('output/include.bridge_essential_config_index.cpp.tmp', 'w'),
+  :plist => open('output/include.bridge_essential_config_index.plist.tmp', 'w'),
 }
 
 configindex = 0
@@ -46,4 +47,17 @@ $outfile[:plist].print "</plist>\n"
 
 $outfile.each do |key,file|
   file.close
+end
+
+# ------------------------------------------------------------
+# move tmpfile if needed.
+$outfile.each do |key,file|
+  tmpfilepath    = file.path
+  targetfilepath = file.path.gsub(/\.tmp$/, '')
+
+  if (! FileTest.exist?(targetfilepath)) or (IO.read(tmpfilepath) != IO.read(targetfilepath)) then
+    File.rename(tmpfilepath, targetfilepath)
+  else
+    File.unlink(tmpfilepath)
+  end
 end
