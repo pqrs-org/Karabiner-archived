@@ -2,6 +2,7 @@ Changes since 7.2.0
     - Improved stability when using Sticky Keys in Universal Access.
     - Improved stability when using multi-touch extension together.
     - Improved "Lazy-Modifier (KeyCode::VK_LAZY_*)" behavior.
+    - Some minor improvements.
     - Clean up the internal source code. The connection between kernel and userspace became more easier to understand.
     - Added KeyCode::VK_MOUSEKEY_BUTTON_*.
     - Added Option::NOREPEAT at <autogen>.

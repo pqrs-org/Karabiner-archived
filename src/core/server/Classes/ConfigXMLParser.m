@@ -1,4 +1,5 @@
 #import "ConfigXMLParser.h"
+#import "KeyRemap4MacBookKeys.h"
 #import "bridge.h"
 
 static ConfigXMLParser* global_instance = nil;
@@ -65,7 +66,7 @@ static ConfigXMLParser* global_instance = nil;
 
   // We need to send a notification outside synchronized block to prevent lock.
   if (initialized_) {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ConfigXMLReloaded" object:nil];
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookConfigXMLReloadedNotification object:kKeyRemap4MacBookNotificationKey];
   }
 
   return initialized_;

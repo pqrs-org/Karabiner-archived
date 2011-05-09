@@ -267,6 +267,10 @@
     return [parser keycode:@"ApplicationType::LIGHTWAVE"];
   }
 
+  if ([name isEqualToString:@"org.libreoffice.script"]) {
+    return [parser keycode:@"ApplicationType::LIBRAOFFICE"];
+  }
+
   return [parser keycode:@"ApplicationType::UNKNOWN"];
 }
 
