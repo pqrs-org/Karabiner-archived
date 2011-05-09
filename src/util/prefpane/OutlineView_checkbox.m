@@ -15,27 +15,16 @@
   return self;
 }
 
+- (void) observer_configXMLReloaded:(NSNotification*)notification
+{
+  [super observer_configXMLReloaded:notification];
+
+  [self filter:nil];
+}
+
 - (IBAction) reloadXML:(id)sender
 {
-  // reload xml on server process.
   [[client_ proxy] configxml_reload];
-
-  // wait until xml reloaded.
-  int trycount = 0;
-  for (trycount = 0; trycount < 10; ++trycount) {
-    [NSThread sleepForTimeInterval:0.5];
-    if ([[client_ proxy] configxml_initialized]) break;
-  }
-
-  // ----------------------------------------
-  // update prefpane
-  [self load:YES];
-
-  // ----------------------------------------
-  [outlineview_ reloadData];
-
-  // ----------------------------------------
-  [self filter:nil];
 }
 
 - (IBAction) filter:(id)sender

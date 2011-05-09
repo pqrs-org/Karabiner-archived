@@ -2,6 +2,7 @@
 *.pkg/
 *.zip
 *.o
+*.tmp
 a.out
 pkgroot/
 build/
@@ -22,4 +23,3 @@ src/util/multitouchextension/Info.plist
 src/util/prefpane/Info.plist
 src/util/uninstaller/Info.plist
 src/util/updater/Info.plist
-src/core/kext/version.hpp

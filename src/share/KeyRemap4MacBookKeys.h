@@ -5,6 +5,7 @@
 #define kKeyRemap4MacBookNotificationKey                @"org.pqrs.KeyRemap4MacBook.notification"
 #define kKeyRemap4MacBookServerLaunchedNotification     @"serverLaunched"
 #define kKeyRemap4MacBookPreferencesChangedNotification @"preferencesChanged"
+#define kKeyRemap4MacBookConfigXMLReloadedNotification  @"configXMLReloaded"
 #define kKeyRemap4MacBookCheckForUpdatesNotification    @"checkForUpdates"
 
 // for KeyDump.app

@@ -165,6 +165,8 @@ finish:
     language = kInputSourceLanguage_traditional_chinese_yahoo_keykey;
   } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_ESTONIAN"]) {
     language = @"et";
+  } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_FINNISH"]) {
+    language = @"fi";
   }
 
   if (! language) return;
@@ -237,6 +239,12 @@ finish:
   if ([name hasPrefix:@"org.pqrs.inputmode.sv."]) {
     *output_inputmode       = [parser keycode:@"InputMode::SWEDISH"];
     *output_inputmodedetail = [parser keycode:@"InputModeDetail::SWEDISH"];
+    return;
+  }
+
+  if ([name hasPrefix:@"org.pqrs.inputmode.fi."]) {
+    *output_inputmode       = [parser keycode:@"InputMode::FINNISH"];
+    *output_inputmodedetail = [parser keycode:@"InputModeDetail::FINNISH"];
     return;
   }
 

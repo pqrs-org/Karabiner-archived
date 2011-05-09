@@ -16,5 +16,6 @@
 + (void) refresh_connection;
 + (void) disconnect_from_kext;
 + (BOOL) synchronized_communication:(struct BridgeUserClientStruct*)bridgestruct;
++ (BOOL) connected;
 
 @end

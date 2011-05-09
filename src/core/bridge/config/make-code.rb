@@ -2,13 +2,15 @@
 
 require 'rubygems'
 require 'xml/libxml'
+require "#{File.dirname(__FILE__)}/../lib/converter.rb"
 
 GC.disable
 
+# output to tmpfile
 $outfile = {
-  :hpp   => open('output/include.bridge_essential_config_index.hpp', 'w'),
-  :cpp   => open('output/include.bridge_essential_config_index.cpp', 'w'),
-  :plist => open('output/include.bridge_essential_config_index.plist', 'w'),
+  :hpp   => open('output/include.bridge_essential_config_index.hpp.tmp', 'w'),
+  :cpp   => open('output/include.bridge_essential_config_index.cpp.tmp', 'w'),
+  :plist => open('output/include.bridge_essential_config_index.plist.tmp', 'w'),
 }
 
 configindex = 0
@@ -46,4 +48,5 @@ $outfile[:plist].print "</plist>\n"
 
 $outfile.each do |key,file|
   file.close
+  KeyRemap4MacBookBridge::Converter.update_file_if_needed(file.path)
 end

@@ -12,8 +12,9 @@
 #import "PreferencesController.h"
 
 @interface KeyRemap4MacBook_multitouchextensionAppDelegate : NSObject <NSApplicationDelegate> {
-  NSStatusItem* statusItem_;
-  NSMutableArray* mtdevices_;
+  NSArray* mtdevices_;
+  IONotificationPortRef notifyport_;
+  CFRunLoopSourceRef loopsource_;
 
   IBOutlet PreferencesController* preferences_;
   IBOutlet org_pqrs_KeyRemap4MacBook_Client* client_;

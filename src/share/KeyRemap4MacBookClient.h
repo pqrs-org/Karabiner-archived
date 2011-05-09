@@ -32,7 +32,6 @@
 - (void) setCheckForUpdatesMode:(NSInteger)newval;
 
 - (void) configxml_reload;
-- (BOOL) configxml_initialized;
 
 - (NSArray*) preferencepane_checkbox;
 - (NSArray*) preferencepane_number;

@@ -8,6 +8,12 @@
   [outlineview_ reloadData];
 }
 
+- (void) observer_configXMLReloaded:(NSNotification*)notification
+{
+  [self load:YES];
+  [outlineview_ reloadData];
+}
+
 - (id) init
 {
   self = [super init];
@@ -16,6 +22,11 @@
     [[NSDistributedNotificationCenter defaultCenter] addObserver:self
                                                         selector:@selector(observer_preferencesChanged:)
                                                             name:kKeyRemap4MacBookPreferencesChangedNotification
+                                                          object:kKeyRemap4MacBookNotificationKey];
+
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self
+                                                        selector:@selector(observer_configXMLReloaded:)
+                                                            name:kKeyRemap4MacBookConfigXMLReloadedNotification
                                                           object:kKeyRemap4MacBookNotificationKey];
   }
 
@@ -195,7 +206,7 @@
   if (number) return [number floatValue];
 
   number = [item objectForKey:@"height"];
-  if (! number) {
+  if (! number || [number intValue] == 0) {
     number = [NSNumber numberWithDouble:[outlineView rowHeight]];
   } else {
     number = [NSNumber numberWithDouble:([number intValue] * (CGFloat)([outlineView rowHeight]))];

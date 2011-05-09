@@ -1,5 +1,7 @@
 #!/usr/bin/ruby
 
+require "#{File.dirname(__FILE__)}/../lib/converter.rb"
+
 Dir.chdir("data")
 
 alldata = []
@@ -10,7 +12,7 @@ Dir.glob("*.data") do |filename|
     lastvalue = 0
 
     outfile = {
-      :hpp => open("../output/include.#{classname}.hpp", "w"),
+      :hpp => open("../output/include.#{classname}.hpp.tmp", "w"),
     }
 
     open(filename) do |f|
@@ -41,6 +43,7 @@ Dir.glob("*.data") do |filename|
 
     outfile.each do |name,file|
       file.close
+      KeyRemap4MacBookBridge::Converter.update_file_if_needed(file.path)
     end
   end
 end
@@ -60,22 +63,28 @@ end
 plist << '  </dict>'
 plist << '</plist>'
 
-open("../output/include.keycode.plist", 'w') do |f|
+filepath = "../output/include.keycode.plist.tmp"
+open(filepath, 'w') do |f|
   f << plist.join("\n")
 end
+KeyRemap4MacBookBridge::Converter.update_file_if_needed(filepath)
 
 # ----------------------------------------------------------------------
 # output cpp
-open("../output/include.keycode.cpp", 'w') do |f|
+filepath = "../output/include.keycode.cpp.tmp"
+open(filepath, 'w') do |f|
   alldata.each do |info|
     f << "const #{info[:classname]} #{info[:name]}(#{info[:value]});\n"
   end
 end
+KeyRemap4MacBookBridge::Converter.update_file_if_needed(filepath)
 
 # ----------------------------------------------------------------------
 # output raw
-open("../output/include.keycode.raw", 'w') do |f|
+filepath = "../output/include.keycode.raw.tmp"
+open(filepath, 'w') do |f|
   alldata.each do |info|
     f << "#{info[:name]} #{info[:value]}\n"
   end
 end
+KeyRemap4MacBookBridge::Converter.update_file_if_needed(filepath)
