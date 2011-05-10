@@ -100,3 +100,6 @@ LIGHTWAVE               --AUTO--
 
 // http://www.libreoffice.org/
 LIBREOFFICE             --AUTO--
+
+// http://videolan.org/vlc/
+VLC                     --AUTO--
