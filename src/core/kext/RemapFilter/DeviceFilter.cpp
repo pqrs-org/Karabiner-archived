@@ -32,37 +32,23 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       switch (type_) {
         case BRIDGE_FILTERTYPE_DEVICE_NOT:
-        {
-          for (size_t i = 0; i < targets_->size(); ++i) {
-            DeviceFilterValue& v = (*targets_)[i];
-            if (DeviceProduct::ANY == v.productID) {
-              if (CommonData::isEqualVendor(v.vendorID)) {
-                return true;
-              }
-            } else {
-              if (CommonData::isEqualVendorProduct(v.vendorID, v.productID)) {
-                return true;
-              }
-            }
-          }
-          return false;
-        }
-
         case BRIDGE_FILTERTYPE_DEVICE_ONLY:
         {
+          bool isnot = (type_ == BRIDGE_FILTERTYPE_DEVICE_NOT);
+
           for (size_t i = 0; i < targets_->size(); ++i) {
             DeviceFilterValue& v = (*targets_)[i];
             if (DeviceProduct::ANY == v.productID) {
               if (CommonData::isEqualVendor(v.vendorID)) {
-                return false;
+                return isnot ? true : false;
               }
             } else {
               if (CommonData::isEqualVendorProduct(v.vendorID, v.productID)) {
-                return false;
+                return isnot ? true : false;
               }
             }
           }
-          return true;
+          return isnot ? false : true;
         }
 
         default:
