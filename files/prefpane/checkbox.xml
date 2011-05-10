@@ -5129,8 +5129,14 @@
         <item>
           <name>[ex] Control+U to Command+Shift+Left,Command+X</name>
           <identifier>option.emacsmode_ex_controlU</identifier>
-          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
-          <autogen>--KeyToKey-- KeyCode::U, VK_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
+          <block>
+            <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE, DICTIONARY</not>
+            <autogen>--KeyToKey-- KeyCode::U, VK_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
+          </block>
+          <block>
+            <only>DICTIONARY</only>
+            <autogen>--KeyToKey-- KeyCode::U, VK_CONTROL | ModifierFlag::NONE, KeyCode::A, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
+          </block>
         </item>
         <item>
           <name>[ex] Control+U to Command+Shift+Left,Delete</name>
