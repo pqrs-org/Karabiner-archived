@@ -279,6 +279,10 @@
     return [parser keycode:@"ApplicationType::ITUNES"];
   }
 
+  if ([name isEqualToString:@"com.apple.Dictionary"]) {
+    return [parser keycode:@"ApplicationType::DICTIONARY"];
+  }
+
   return [parser keycode:@"ApplicationType::UNKNOWN"];
 }
 
