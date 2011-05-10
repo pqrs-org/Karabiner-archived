@@ -271,6 +271,10 @@
     return [parser keycode:@"ApplicationType::LIBREOFFICE"];
   }
 
+  if ([name isEqualToString:@"org.videolan.vlc"]) {
+    return [parser keycode:@"ApplicationType::VLC"];
+  }
+
   return [parser keycode:@"ApplicationType::UNKNOWN"];
 }
 
