@@ -7298,6 +7298,18 @@
           </list>
         </item>
         <item>
+          <name>Enable at only Skype</name>
+          <list>
+            <item>
+              <name>Prevent accidental close of chat windows (Ignore Command+W and require Command+Shift+W to send Command+W</name>
+              <identifier>remap.app_skype_command_shift_w_to_close</identifier>
+              <only>SKYPE</only>
+              <autogen>--KeyToKey-- KeyCode::W, VK_COMMAND | VK_SHIFT, KeyCode::W, VK_COMMAND</autogen>
+              <autogen>--KeyToKey-- KeyCode::W, VK_COMMAND | ModifierFlag::NONE</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Quicksilver Mode</name>
           <list>
             <item>
