@@ -5047,14 +5047,26 @@
         <item>
           <name>Control+K to Command+Shift+Right,Forward Delete</name>
           <identifier>option.emacsmode_controlK_ex</identifier>
-          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
-          <autogen>--KeyToKey-- KeyCode::K, VK_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::FORWARD_DELETE</autogen>
+          <block>
+            <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE, DICTIONARY</not>
+            <autogen>--KeyToKey-- KeyCode::K, VK_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::FORWARD_DELETE</autogen>
+          </block>
+          <block>
+            <only>DICTIONARY</only>
+            <autogen>--KeyToKey-- KeyCode::K, VK_CONTROL | ModifierFlag::NONE, KeyCode::E, VK_CONTROL | ModifierFlag::SHIFT_L, KeyCode::FORWARD_DELETE</autogen>
+          </block>
         </item>
         <item>
           <name>Control+K to Command+Shift+Right,Command+X</name>
           <identifier>option.emacsmode_controlK</identifier>
-          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
-          <autogen>--KeyToKey-- KeyCode::K, VK_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+          <block>
+            <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE, DICTIONARY</not>
+            <autogen>--KeyToKey-- KeyCode::K, VK_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+          </block>
+          <block>
+            <only>DICTIONARY</only>
+            <autogen>--KeyToKey-- KeyCode::K, VK_CONTROL | ModifierFlag::NONE, KeyCode::E, VK_CONTROL | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+          </block>
         </item>
         <item>
           <name>Control+W to Command+X</name>
