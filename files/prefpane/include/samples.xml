@@ -926,6 +926,7 @@
         </item>
 
         <!-- inputmode only -->
+        <!-- inputmode not -->
         <item>
           <name>InputMode</name>
           <list>
@@ -1083,11 +1084,26 @@
                   <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
                 </item>
                 <item>
+                  <name>inputmode_not (Japanese-*)</name>
+                  <appendix>Space to Tab</appendix>
+                  <identifier>remap.samples_inputmode_not_japanese</identifier>
+                  <inputmode_not>JAPANESE</inputmode_not>
+                  <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+                </item>
+                <item>
                   <name>inputmodedetail_only (Japanese-Hiragana)</name>
                   <appendix>Space to Tab</appendix>
                   <identifier>remap.samples_inputmodedetail_japanese_hiragana</identifier>
                   <!-- We need to set both JAPANESE_HIRAGANA and JAPANESE -->
                   <inputmodedetail_only>JAPANESE_HIRAGANA, JAPANESE</inputmodedetail_only>
+                  <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+                </item>
+                <item>
+                  <name>inputmodedetail_not (Japanese-Hiragana)</name>
+                  <appendix>Space to Tab</appendix>
+                  <identifier>remap.samples_inputmodedetail_not_japanese_hiragana</identifier>
+                  <!-- We need to set both JAPANESE_HIRAGANA and JAPANESE -->
+                  <inputmodedetail_not>JAPANESE_HIRAGANA, JAPANESE</inputmodedetail_not>
                   <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
                 </item>
                 <item>
