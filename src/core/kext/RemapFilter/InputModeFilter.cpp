@@ -46,24 +46,17 @@ namespace org_pqrs_KeyRemap4MacBook {
       switch (type_) {
         case BRIDGE_FILTERTYPE_INPUTMODE_NOT:
         case BRIDGE_FILTERTYPE_INPUTMODEDETAIL_NOT:
-        {
-          for (size_t i = 0; i < targets_->size(); ++i) {
-            if ((*targets_)[i] == current) {
-              return true;
-            }
-          }
-          return false;
-        }
-
         case BRIDGE_FILTERTYPE_INPUTMODE_ONLY:
         case BRIDGE_FILTERTYPE_INPUTMODEDETAIL_ONLY:
         {
+          bool isnot = (type_ == BRIDGE_FILTERTYPE_INPUTMODE_NOT || type_ == BRIDGE_FILTERTYPE_INPUTMODEDETAIL_NOT);
+
           for (size_t i = 0; i < targets_->size(); ++i) {
             if ((*targets_)[i] == current) {
-              return false;
+              return isnot ? true : false;
             }
           }
-          return true;
+          return isnot ? false : true;
         }
 
         default:
