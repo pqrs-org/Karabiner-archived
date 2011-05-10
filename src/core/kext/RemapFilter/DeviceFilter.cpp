@@ -35,8 +35,14 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           for (size_t i = 0; i < targets_->size(); ++i) {
             DeviceFilterValue& v = (*targets_)[i];
-            if (CommonData::isEqualVendorProduct(v.vendorID, v.productID)) {
-              return true;
+            if (DeviceProduct::ANY == v.productID) {
+              if (CommonData::isEqualVendor(v.vendorID)) {
+                return true;
+              }
+            } else {
+              if (CommonData::isEqualVendorProduct(v.vendorID, v.productID)) {
+                return true;
+              }
             }
           }
           return false;
@@ -46,8 +52,14 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           for (size_t i = 0; i < targets_->size(); ++i) {
             DeviceFilterValue& v = (*targets_)[i];
-            if (CommonData::isEqualVendorProduct(v.vendorID, v.productID)) {
-              return false;
+            if (DeviceProduct::ANY == v.productID) {
+              if (CommonData::isEqualVendor(v.vendorID)) {
+                return false;
+              }
+            } else {
+              if (CommonData::isEqualVendorProduct(v.vendorID, v.productID)) {
+                return false;
+              }
             }
           }
           return true;
