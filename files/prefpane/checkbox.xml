@@ -7312,6 +7312,7 @@
               <name>Hold Command+W to Close Conversation</name>
               <appendix>(You can adjust the threshold time of holding by</appendix>
               <appendix>"[Holding Key to Key] Holding Threshold" in Key Repeat tab.)</appendix>
+              <only>SKYPE</only>
               <identifier>remap.app_skype_holdcommandW</identifier>
               <autogen>--HoldingKeyToKey-- KeyCode::W, VK_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE, KeyCode::W, VK_COMMAND, Option::NOREPEAT</autogen>
             </item>
