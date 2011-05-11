@@ -32,27 +32,18 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       switch (type_) {
         case BRIDGE_FILTERTYPE_MODIFIER_NOT:
-        {
-          Flags current = FlagStatus::makeFlags();
-          for (size_t i = 0; i < targets_->size(); ++i) {
-            Flags f((*targets_)[i]);
-            if (current.isOn(f)) {
-              return true;
-            }
-          }
-          return false;
-        }
-
         case BRIDGE_FILTERTYPE_MODIFIER_ONLY:
         {
+          bool isnot = (type_ == BRIDGE_FILTERTYPE_MODIFIER_NOT);
+
           Flags current = FlagStatus::makeFlags();
           for (size_t i = 0; i < targets_->size(); ++i) {
             Flags f((*targets_)[i]);
             if (current.isOn(f)) {
-              return false;
+              return isnot ? true : false;
             }
           }
-          return true;
+          return isnot ? false : true;
         }
 
         default:

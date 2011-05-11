@@ -32,23 +32,16 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       switch (type_) {
         case BRIDGE_FILTERTYPE_CONFIG_NOT:
-        {
-          for (size_t i = 0; i < targets_->size(); ++i) {
-            if (RemapClassManager::isEnabled((*targets_)[i])) {
-              return true;
-            }
-          }
-          return false;
-        }
-
         case BRIDGE_FILTERTYPE_CONFIG_ONLY:
         {
+          bool isnot = (type_ == BRIDGE_FILTERTYPE_CONFIG_NOT);
+
           for (size_t i = 0; i < targets_->size(); ++i) {
             if (RemapClassManager::isEnabled((*targets_)[i])) {
-              return false;
+              return isnot ? true : false;
             }
           }
-          return true;
+          return isnot ? false : true;
         }
 
         default:
