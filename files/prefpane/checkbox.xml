@@ -7366,6 +7366,18 @@
           </list>
         </item>
         <item>
+          <name>Enable at only Dictionary</name>
+          <list>
+            <item>
+              <name>Do not let Dictionary.app quit on Command+W</name>
+              <identifier>remap.app_dictionary_command_w_to_unfocus</identifier>
+              <only>DICTIONARY</only>
+              <!-- Fn is a dummy key to force Command modifier to be released so that the switcher window will not appear -->
+              <autogen>--KeyToKey-- KeyCode::W, VK_COMMAND, KeyCode::TAB, VK_COMMAND, KeyCode::FN</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Quicksilver Mode</name>
           <list>
             <item>
