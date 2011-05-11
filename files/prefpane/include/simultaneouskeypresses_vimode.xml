@@ -852,14 +852,11 @@
     <item>
       <name>[Option] A to Shift</name>
       <identifier>option.simultaneouskeypresses_vimode_a_to_shift</identifier>
-    </item>
-    
+    </item> 
     <item>
       <name>[Option] F to Shift</name>
       <identifier>option.simultaneouskeypresses_vimode_f_to_shift</identifier>
-    </item>
-    
-    
+    </item>    
     <item>
       <name>[Option] U/O to Backspace/Delete</name>
       <appendix>(+ When you press Control+U/O send Cmd+Z/Cmd+Shift+Z)</appendix>
@@ -917,8 +914,7 @@
     <item>
       <name>[Option] G to Command+Option+T</name>
       <identifier>option.simultaneouskeypresses_vimode_g_to_command_option_t</identifier>
-    </item>
-    
+    </item> 
     <item>
       <name>[Option] S to Control+Shift+S</name>
       <identifier>option.simultaneouskeypresses_vimode_s_to_shift_control_s</identifier>
@@ -934,8 +930,7 @@
     <item>
       <name>[Option] Backquote to Command+Space (Launchbar,etc..)</name>
       <identifier>option.simultaneouskeypresses_vimode_backquote_to_command_space</identifier>
-    </item>
-    
+    </item>  
     <item>
       <name>[Option] Y/[ to Command+Option+Control+U/[</name>
       <appendix>(It's useful using these shortcuts to move focus to Menu Bar and Status Menus)</appendix>
@@ -957,8 +952,7 @@
     <item>
       <name>[Option] E to Command+E</name>
       <identifier>option.simultaneouskeypresses_vimode_e_to_command_e</identifier>
-    </item>
-    
+    </item>  
     <item>
       <name>[Option] G to Command+F</name>
       <identifier>option.simultaneouskeypresses_vimode_g_to_command_f</identifier>
@@ -975,14 +969,11 @@
       <name>[Option] Bracket([) to Escape</name>
       <identifier>option.simultaneouskeypresses_vimode_bracket_to_escape</identifier>
     </item>
-    
-    
     <item>
       <name>[Option] H to Space</name>
       <appendix>(Use with above JKIL option)</appendix>
       <identifier>option.simultaneouskeypresses_vimode_h_to_space</identifier>
-    </item>
-    
+    </item>    
     <item>
       <name>[Option] Quote(') to Space</name>
       <identifier>option.simultaneouskeypresses_vimode_quote_to_space</identifier>
