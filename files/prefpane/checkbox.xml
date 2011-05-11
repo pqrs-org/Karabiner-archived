@@ -7106,6 +7106,29 @@
               <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_SHIFT | ModifierFlag::NONE, KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L | VK_SHIFT</autogen>
               <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT,  VK_SHIFT | ModifierFlag::NONE, KeyCode::BRACKET_LEFT,  ModifierFlag::COMMAND_L | VK_SHIFT</autogen>
             </item>
+            <item>
+              <name>Enable meta keys movement (command/option + left,right,delete,backspace)</name>
+              <appendix>- cmd+left to ctrl+a (move to beginning of line)</appendix>
+              <appendix>- cmd+right to ctrl+e (move to end of line)</appendix>
+              <appendix>- option+left to esc+b (move backward one word)</appendix>
+              <appendix>- option+right to esc+f (move forward one word)</appendix>
+              <appendix>- cmd+backspace to ctrl+u (delete to the beginning of the line)</appendix>
+              <appendix>- cmd+delete to ctrl+k (delete to the end of the line)</appendix>
+              <appendix>- option+backspace to ctrl+w (delete to the beginning of the word)</appendix>
+              <appendix>- option+delete to esc+d (delete to the end of the word)</appendix>
+              <appendix>- delete to ctrl+d (delete forwards)</appendix>
+              <identifier>remap.app_term_meta_movement</identifier>
+              <only>TERMINAL</only>
+              <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L, KeyCode::A, ModifierFlag::CONTROL_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L, KeyCode::E, ModifierFlag::CONTROL_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L, KeyCode::ESCAPE, KeyCode::B</autogen>
+              <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L, KeyCode::ESCAPE, KeyCode::F</autogen>
+              <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::COMMAND_L, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, ModifierFlag::COMMAND_L, KeyCode::K, ModifierFlag::CONTROL_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::OPTION_L, KeyCode::W, ModifierFlag::CONTROL_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_L, KeyCode::ESCAPE, KeyCode::D</autogen>              
+              <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, KeyCode::D, ModifierFlag::CONTROL_L</autogen>
+            </item>
           </list>
         </item>
         <item>
