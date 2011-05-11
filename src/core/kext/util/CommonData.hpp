@@ -22,6 +22,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       current_deviceVendor_ = vendor;
       current_deviceProduct_ = product;
     }
+    static bool isEqualVendor(DeviceVendor vendor) {
+      if (current_deviceVendor_  != vendor) return false;
+      return true;
+    }
     static bool isEqualVendorProduct(DeviceVendor vendor, DeviceProduct product) {
       if (current_deviceVendor_  != vendor) return false;
       if (current_deviceProduct_ != product) return false;
