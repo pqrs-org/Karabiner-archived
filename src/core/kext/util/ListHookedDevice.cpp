@@ -43,19 +43,23 @@ namespace org_pqrs_KeyRemap4MacBook {
         goto finish;
 
       } else {
-        // kIOHIDManufacturerKey == "Manufacturer"
-        // kIOHIDProductKey == "Product"
         // ApplePS2Keyboard does not have ProductID,
         // so we check for Manufacturer and Product strings
-        const OSString* manufacturer = OSDynamicCast(OSString, dev->getProperty(kIOHIDManufacturerKey));
-        const OSString* product      = OSDynamicCast(OSString, dev->getProperty(kIOHIDProductKey));
+        const char* name = dev->getName();
 
-        if (manufacturer && product) {
-          if (manufacturer->isEqualTo("Apple") &&
-              product->isEqualTo("Keyboard")) {
-            vendor_ = DeviceVendor::APPLE_COMPUTER;
-            product_ = DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218;
-            goto finish;
+        if (name && strcmp(name, "ApplePS2Keyboard") == 0) {
+          // kIOHIDManufacturerKey == "Manufacturer"
+          // kIOHIDProductKey == "Product"
+          const OSString* manufacturer = OSDynamicCast(OSString, dev->getProperty(kIOHIDManufacturerKey));
+          const OSString* product      = OSDynamicCast(OSString, dev->getProperty(kIOHIDProductKey));
+
+          if (manufacturer && product) {
+            if (manufacturer->isEqualTo("Apple") &&
+                product->isEqualTo("Keyboard")) {
+              vendor_ = DeviceVendor::APPLE_COMPUTER;
+              product_ = DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218;
+              goto finish;
+            }
           }
         }
       }
