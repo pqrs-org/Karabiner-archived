@@ -4694,7 +4694,7 @@
             </item>
             <item>
               <name>[Option] Switch windows of frontmost app with i/k</name>
-              <appendix>For people who like jkli configuration and use witch app</appendix>
+              <appendix>For people who like jkli configuration</appendix>
               <identifier>option.tabmode_ik</identifier>
             </item>
             <item>
