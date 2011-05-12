@@ -528,6 +528,16 @@
       </block>
     </item>
     <item>
+      <name>Simultaneous Key Presses [S+D] turns on "Simultaneous Vi Mode"</name>
+      <identifier>remap.simultaneouskeypresses_vimode_sd</identifier>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode</autogen>
+    </item>
+    <item>
+      <name>[Option] F to FN</name>
+      <appendix>(= F+HJKL to Home/PageDown/PageUp/End)</appendix>
+      <identifier>option.simultaneouskeypresses_vimode_f_to_fn</identifier>
+    </item>
+    <item>
       <name>Suggested use (by @aristidesfl)</name>
       <item>
         <name>Single Key Press Space turns on "Simultaneous Vi Mode"</name>
@@ -605,11 +615,7 @@
         <identifier>option.simultaneouskeypresses_vimode_quote_to_escape</identifier>
       </item>
     </item>
-    <item>
-      <name>Simultaneous Key Presses [S+D] turns on "Simultaneous Vi Mode"</name>
-      <identifier>remap.simultaneouskeypresses_vimode_sd</identifier>
-      <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode</autogen>
-    </item>
+    <item><name>------------------------------------------------------------</name></item>
     <item>
       <name>Simultaneous Key Presses [Q+W] turns on "Simultaneous Vi Mode"</name>
       <identifier>remap.simultaneouskeypresses_vimode_qw</identifier>
@@ -654,17 +660,6 @@
       <autogen>--KeyToKey-- KeyCode::SPACE, ModifierFlag::FN, KeyCode::SPACE</autogen>
       <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode , KeyCode::SPACE</autogen>
     </item>
-    <item><name>------------------------------------------------------------</name></item>
-    <item>
-      <name>[Option] F to FN</name>
-      <appendix>(= F+HJKL to Home/PageDown/PageUp/End)</appendix>
-      <identifier>option.simultaneouskeypresses_vimode_f_to_fn</identifier>
-    </item>
-    <item>
-      <name>[Option] Command_L/Command_R to backward-word/forward-word</name>
-      <identifier>option.simultaneouskeypresses_vimode_commandLR_to_optionleftright</identifier>
-    </item>
-    <item><name>------------------------------------------------------------</name></item>
     <item>
       <name>[Option] Scroll with mouse movement while in vi mode</name>
       <identifier>option.pointing_relative_to_scroll_vi_mode</identifier>
@@ -688,6 +683,10 @@
     <item>
       <name>[Option] [] to backward-word/forward-word</name>
       <identifier>option.simultaneouskeypresses_vimode_brackets_to_optionleftright</identifier>
+    </item>
+    <item>
+      <name>[Option] Command_L/Command_R to backward-word/forward-word</name>
+      <identifier>option.simultaneouskeypresses_vimode_commandLR_to_optionleftright</identifier>
     </item>
     <item>
       <name>[Option] D turns on Delete Mode</name>
