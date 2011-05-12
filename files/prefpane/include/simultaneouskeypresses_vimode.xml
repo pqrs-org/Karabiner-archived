@@ -175,8 +175,8 @@
           <only>TERMINAL</only>
           <config_only>remap.app_term_screen_switch</config_only>
           <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::P</autogen>
-          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::N</autogen>          
-        </block>        
+          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::N</autogen>
+        </block>
         <block>
           <only>TERMINAL</only>
           <config_only>remap.app_term_begend_screen</config_only>
@@ -431,7 +431,7 @@
           <only>TERMINAL</only>
           <config_only>remap.app_term_screen_ky</config_only>
           <autogen>--KeyToKey-- KeyCode::W, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::K, KeyCode::Y</autogen>
-        </block>        
+        </block>
         <autogen>--KeyToKey-- KeyCode::W, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
       </block>
       <block>
@@ -562,14 +562,14 @@
         <appendix>(+ When you press F only send Command+V)</appendix>
         <identifier>option.simultaneouskeypresses_vimode_f_to_command</identifier>
       </item>
-        <item>
+      <item>
         <name>[Option] / to Command+/</name>
         <identifier>option.simultaneouskeypresses_vimode_slash_to_command_slash</identifier>
       </item>
       <item>
         <name>[Option] U/O to Delete/Space</name>
         <appendix>+ when you keep U pressed and press O it sends Forward_Delete</appendix>
-        <appendix>+ when you keep O pressed and press U it sends Space+Left</appendix>        
+        <appendix>+ when you keep O pressed and press U it sends Space+Left</appendix>
         <identifier>option.simultaneouskeypresses_vimode_u_o_to_delete_space</identifier>
       </item>
       <item>
@@ -849,11 +849,11 @@
     <item>
       <name>[Option] A to Shift</name>
       <identifier>option.simultaneouskeypresses_vimode_a_to_shift</identifier>
-    </item> 
+    </item>
     <item>
       <name>[Option] F to Shift</name>
       <identifier>option.simultaneouskeypresses_vimode_f_to_shift</identifier>
-    </item>    
+    </item>
     <item>
       <name>[Option] U/O to Backspace/Delete</name>
       <appendix>(+ When you press Control+U/O send Cmd+Z/Cmd+Shift+Z)</appendix>
@@ -871,7 +871,7 @@
       <name>[Option] S to Control+S</name>
       <identifier>option.simultaneouskeypresses_vimode_s_to_control_s</identifier>
     </item>
-    
+
     <item>
       <name>[Option] Q to Command+Q</name>
       <identifier>option.simultaneouskeypresses_vimode_q_to_command_q</identifier>
@@ -911,7 +911,7 @@
     <item>
       <name>[Option] G to Command+Option+T</name>
       <identifier>option.simultaneouskeypresses_vimode_g_to_command_option_t</identifier>
-    </item> 
+    </item>
     <item>
       <name>[Option] S to Control+Shift+S</name>
       <identifier>option.simultaneouskeypresses_vimode_s_to_shift_control_s</identifier>
@@ -927,7 +927,7 @@
     <item>
       <name>[Option] Backquote to Command+Space (Launchbar,etc..)</name>
       <identifier>option.simultaneouskeypresses_vimode_backquote_to_command_space</identifier>
-    </item>  
+    </item>
     <item>
       <name>[Option] Y/[ to Command+Option+Control+U/[</name>
       <appendix>(It's useful using these shortcuts to move focus to Menu Bar and Status Menus)</appendix>
@@ -949,7 +949,7 @@
     <item>
       <name>[Option] E to Command+E</name>
       <identifier>option.simultaneouskeypresses_vimode_e_to_command_e</identifier>
-    </item>  
+    </item>
     <item>
       <name>[Option] G to Command+F</name>
       <identifier>option.simultaneouskeypresses_vimode_g_to_command_f</identifier>
@@ -970,7 +970,7 @@
       <name>[Option] H to Space</name>
       <appendix>(Use with above JKIL option)</appendix>
       <identifier>option.simultaneouskeypresses_vimode_h_to_space</identifier>
-    </item>    
+    </item>
     <item>
       <name>[Option] Quote(') to Space</name>
       <identifier>option.simultaneouskeypresses_vimode_quote_to_space</identifier>
