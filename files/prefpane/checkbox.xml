@@ -7126,7 +7126,7 @@
               <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::COMMAND_L, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
               <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, ModifierFlag::COMMAND_L, KeyCode::K, ModifierFlag::CONTROL_L</autogen>
               <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::OPTION_L, KeyCode::W, ModifierFlag::CONTROL_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_L, KeyCode::ESCAPE, KeyCode::D</autogen>              
+              <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_L, KeyCode::ESCAPE, KeyCode::D</autogen>
               <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, KeyCode::D, ModifierFlag::CONTROL_L</autogen>
             </item>
           </list>
