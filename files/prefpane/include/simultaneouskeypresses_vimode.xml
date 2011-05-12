@@ -33,12 +33,13 @@
         <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::EXTRA5, KeyCode::Z, ModifierFlag::SHIFT_L | ModifierFlag::COMMAND_L</autogen>
       </block>
       <block>
-        <block>
-          <only>TERMINAL</only>
-          <config_only>remap.app_term_cmddel</config_only>
-          <autogen>--KeyOverlaidModifier-- KeyCode::U, ModifierFlag::COMMAND_L, KeyCode::VK_MODIFIER_EXTRA5, KeyCode::W, ModifierFlag::CONTROL_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA5, KeyCode::K, ModifierFlag::CONTROL_L</autogen>
-        </block>
+        <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::EXTRA5, KeyCode::SPACE, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::EXTRA5, KeyCode::FORWARD_DELETE</autogen>
+        <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::U, KeyCode::VK_MODIFIER_EXTRA5, KeyCode::DELETE</autogen>
+        <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::O, KeyCode::VK_MODIFIER_EXTRA5, KeyCode::SPACE</autogen>
+        <config_only>option.simultaneouskeypresses_vimode_u_o_to_delete_space</config_only>
+      </block>
+      <block>
         <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::U, KeyCode::VK_MODIFIER_EXTRA5, KeyCode::DELETE</autogen>
         <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA5, KeyCode::FORWARD_DELETE</autogen>
         <config_only>option.simultaneouskeypresses_vimode_u_to_delete</config_only>
@@ -566,14 +567,10 @@
         <identifier>option.simultaneouskeypresses_vimode_slash_to_command_slash</identifier>
       </item>
       <item>
-        <name>[Option] U to Delete</name>
-        <appendix>+ when you keep U pressed and press L(right) it sends Forward_Delete</appendix>
-        <identifier>option.simultaneouskeypresses_vimode_u_to_delete</identifier>
-      </item>
-      <item>
-        <name>[Option] O to Space</name>
-        <appendix>+ when you keep O pressed and press J(left) it sends Space_Back</appendix>
-        <identifier>option.simultaneouskeypresses_vimode_o_to_space</identifier>
+        <name>[Option] U/O to Delete/Space</name>
+        <appendix>+ when you keep U pressed and press O it sends Forward_Delete</appendix>
+        <appendix>+ when you keep O pressed and press U it sends Space+Left</appendix>        
+        <identifier>option.simultaneouskeypresses_vimode_u_o_to_delete_space</identifier>
       </item>
       <item>
         <name>[Option] W to Command+W (Close Window) </name>
@@ -989,6 +986,16 @@
     <item>
       <name>[Option] L to Cmd+Right (Only in Launchbar)</name>
       <identifier>option.simultaneouskeypresses_vimode_launchbar_l_to_cmd_right</identifier>
+    </item>
+    <item>
+      <name>[Option] U to Delete</name>
+      <appendix>+ when you keep U pressed and press L(right) it sends Forward_Delete</appendix>
+      <identifier>option.simultaneouskeypresses_vimode_u_to_delete</identifier>
+    </item>
+    <item>
+      <name>[Option] O to Space</name>
+      <appendix>+ when you keep O pressed and press J(left) it sends Space_Back</appendix>
+      <identifier>option.simultaneouskeypresses_vimode_o_to_space</identifier>
     </item>
   </list>
 </item>
