@@ -282,7 +282,7 @@
   if ([name isEqualToString:@"com.apple.Dictionary"]) {
     return [parser keycode:@"ApplicationType::DICTIONARY"];
   }
-  
+
   if ([name isEqualToString:@"com.apple.Preview"]) {
     return [parser keycode:@"ApplicationType::PREVIEW"];
   }
