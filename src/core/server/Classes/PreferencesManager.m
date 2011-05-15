@@ -319,7 +319,9 @@ static PreferencesManager* global_instance = nil;
   if (! a) return;
 
   if (rowIndex < 0 || (NSUInteger)(rowIndex) >= [a count]) return;
-  if (rowIndex == [self configlist_selectedIndex]) return;
+
+  NSInteger selectedIndex = [self configlist_selectedIndex];
+  if (rowIndex == selectedIndex) return;
 
   NSMutableArray* ma = [NSMutableArray arrayWithArray:a];
   if (! ma) return;
@@ -327,6 +329,17 @@ static PreferencesManager* global_instance = nil;
   [ma removeObjectAtIndex:(NSUInteger)(rowIndex)];
 
   [[NSUserDefaults standardUserDefaults] setObject:ma forKey:@"configList"];
+
+  // When Item2 is deleted in the following condition,
+  // we need to decrease selected index 2->1.
+  //
+  // - Item1
+  // - Item2
+  // - Item3 [selected]
+  //
+  if (rowIndex < selectedIndex) {
+    [self configlist_select:(selectedIndex - 1)];
+  }
 
   [[NSNotificationCenter defaultCenter] postNotificationName:@"ConfigListChanged" object:nil];
 }

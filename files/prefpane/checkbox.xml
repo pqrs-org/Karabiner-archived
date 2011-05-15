@@ -45,6 +45,10 @@
         </item>
         <item>
           <name>Suppress Growl warning</name>
+          <appendix>This option suppresses the warnings: "Growl is not installed", "Growl is not running"</appendix>
+          <appendix></appendix>
+          <appendix>If you want to suppress the Growl notification itself,</appendix>
+          <appendix>disable the notification of KeyRemap4MacBook from Growl Preferences.</appendix>
           <identifier essential="true">general.suppress_growl_warning</identifier>
         </item>
         <item>
@@ -4694,7 +4698,7 @@
             </item>
             <item>
               <name>[Option] Switch windows of frontmost app with i/k</name>
-              <appendix>For people who like jkli configuration and use witch app</appendix>
+              <appendix>For people who like jkli configuration</appendix>
               <identifier>option.tabmode_ik</identifier>
             </item>
             <item>
@@ -7106,6 +7110,29 @@
               <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_SHIFT | ModifierFlag::NONE, KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L | VK_SHIFT</autogen>
               <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT,  VK_SHIFT | ModifierFlag::NONE, KeyCode::BRACKET_LEFT,  ModifierFlag::COMMAND_L | VK_SHIFT</autogen>
             </item>
+            <item>
+              <name>Enable meta keys movement (command/option + left,right,delete,backspace)</name>
+              <appendix>- cmd+left to ctrl+a (move to beginning of line)</appendix>
+              <appendix>- cmd+right to ctrl+e (move to end of line)</appendix>
+              <appendix>- option+left to esc+b (move backward one word)</appendix>
+              <appendix>- option+right to esc+f (move forward one word)</appendix>
+              <appendix>- cmd+backspace to ctrl+u (delete to the beginning of the line)</appendix>
+              <appendix>- cmd+delete to ctrl+k (delete to the end of the line)</appendix>
+              <appendix>- option+backspace to ctrl+w (delete to the beginning of the word)</appendix>
+              <appendix>- option+delete to esc+d (delete to the end of the word)</appendix>
+              <appendix>- delete to ctrl+d (delete forwards)</appendix>
+              <identifier>remap.app_term_meta_movement</identifier>
+              <only>TERMINAL</only>
+              <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L, KeyCode::A, ModifierFlag::CONTROL_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L, KeyCode::E, ModifierFlag::CONTROL_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L, KeyCode::ESCAPE, KeyCode::B</autogen>
+              <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L, KeyCode::ESCAPE, KeyCode::F</autogen>
+              <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::COMMAND_L, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, ModifierFlag::COMMAND_L, KeyCode::K, ModifierFlag::CONTROL_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::OPTION_L, KeyCode::W, ModifierFlag::CONTROL_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_L, KeyCode::ESCAPE, KeyCode::D</autogen>
+              <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, KeyCode::D, ModifierFlag::CONTROL_L</autogen>
+            </item>
           </list>
         </item>
         <item>
@@ -7372,8 +7399,7 @@
               <name>Do not let Dictionary.app quit on Command+W</name>
               <identifier>remap.app_dictionary_command_w_to_unfocus</identifier>
               <only>DICTIONARY</only>
-              <!-- Fn is a dummy key to force Command modifier to be released so that the switcher window will not appear -->
-              <autogen>--KeyToKey-- KeyCode::W, VK_COMMAND, KeyCode::TAB, VK_COMMAND, KeyCode::FN</autogen>
+              <autogen>--KeyToKey-- KeyCode::W, VK_COMMAND | ModifierFlag::NONE, KeyCode::TAB, VK_COMMAND, KeyCode::RETURN, Option::NOREPEAT</autogen>
             </item>
           </list>
         </item>
