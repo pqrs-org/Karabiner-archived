@@ -283,6 +283,10 @@
     return [parser keycode:@"ApplicationType::DICTIONARY"];
   }
 
+  if ([name isEqualToString:@"com.apple.Preview"]) {
+    return [parser keycode:@"ApplicationType::PREVIEW"];
+  }
+
   return [parser keycode:@"ApplicationType::UNKNOWN"];
 }
 

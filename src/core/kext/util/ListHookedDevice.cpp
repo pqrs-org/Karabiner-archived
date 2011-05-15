@@ -41,6 +41,27 @@ namespace org_pqrs_KeyRemap4MacBook {
         product_ = pid->unsigned32BitValue();
 
         goto finish;
+
+      } else {
+        // ApplePS2Keyboard does not have ProductID,
+        // so we check for Manufacturer and Product strings
+        const char* name = dev->getName();
+
+        if (name && strcmp(name, "ApplePS2Keyboard") == 0) {
+          // kIOHIDManufacturerKey == "Manufacturer"
+          // kIOHIDProductKey == "Product"
+          const OSString* manufacturer = OSDynamicCast(OSString, dev->getProperty(kIOHIDManufacturerKey));
+          const OSString* product      = OSDynamicCast(OSString, dev->getProperty(kIOHIDProductKey));
+
+          if (manufacturer && product) {
+            if (manufacturer->isEqualTo("Apple") &&
+                product->isEqualTo("Keyboard")) {
+              vendor_ = DeviceVendor::APPLE_COMPUTER;
+              product_ = DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218;
+              goto finish;
+            }
+          }
+        }
       }
 
       // check parent property.
@@ -66,6 +87,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         strcmp(name, "AppleADBKeyboard")      == 0 ||
         strcmp(name, "IOHIDConsumer")         == 0 ||
         strcmp(name, "IOHIDPointing")         == 0 ||
+        strcmp(name, "ApplePS2Mouse")         == 0 ||
+        strcmp(name, "ApplePS2Trackpad")      == 0 ||
         strcmp(name, "AppleUSBGrIIITrackpad") == 0 ||
         strcmp(name, "AppleADBMouseType4")    == 0) {
 
@@ -89,6 +112,11 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
       }
 
+      goto finish;
+    }
+
+    if (strcmp(name, "ApplePS2Keyboard") == 0) {
+      deviceType_ = DeviceType::APPLE_INTERNAL;
       goto finish;
     }
 
