@@ -687,6 +687,32 @@
           <autogen>--KeyToKey-- KeyCode::CURSOR_UP,   KeyCode::F15</autogen>
           <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, KeyCode::F14</autogen>
         </item>
+
+        <item>
+          <name>The workaround for broken up and down keys</name>
+          <list>
+            <item>
+              <name>Change Shift+Cursor Left to Cursor Up</name>
+              <identifier>remap.shiftleft2up</identifier>
+              <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_SHIFT, KeyCode::CURSOR_UP</autogen>
+            </item>
+            <item>
+              <name>Change Shift+Cursor Right to Cursor Down</name>
+              <identifier>remap.shiftright2down</identifier>
+              <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_SHIFT, KeyCode::CURSOR_DOWN</autogen>
+            </item>
+            <item>
+              <name>Change Command+Cursor Left to PageUp</name>
+              <identifier>remap.commandleft2pageup</identifier>
+              <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_COMMAND, KeyCode::PAGEUP</autogen>
+            </item>
+            <item>
+              <name>Change Command+Cursor Right to PageDown</name>
+              <identifier>remap.commandright2pagedown</identifier>
+              <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_COMMAND, KeyCode::PAGEDOWN</autogen>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
 
