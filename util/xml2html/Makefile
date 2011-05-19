@@ -1,2 +1,2 @@
 all:
-	./xml2html.rb
+	@./xml2html.rb

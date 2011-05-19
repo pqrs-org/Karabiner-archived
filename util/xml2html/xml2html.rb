@@ -8,11 +8,24 @@ file = "%s/../../files/prefpane/output/checkbox.xml" % File.dirname($0)
 parser = XML::Parser.file(file)
 libxmldoc = parser.parse
 
+version = IO.read('../../version')
+
+total = libxmldoc.find('//identifier').count
+print "SUBJECT Version #{version.strip} (Total: #{total} prefs)\n"
+print "RAW\n"
+
+$first = true
+
 def traverse(node)
   node.children.each do |n|
     case n.name
     when 'list' then
-      print "<ul>"
+      if $first then
+        print '<ul id="collapser">'
+        $first = false
+      else
+        print '<ul>'
+      end
       traverse(n)
       print "</ul>\n"
 
@@ -32,7 +45,4 @@ def traverse(node)
 end
 
 traverse(libxmldoc.root)
-print "\n\n"
-
-total = libxmldoc.find('//identifier').count
-print "total: #{total}\n"
+print "/RAW\n"
