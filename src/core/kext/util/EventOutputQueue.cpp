@@ -136,26 +136,36 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (lastFlags_ == toFlags) return;
 
-    // At first I handle KeyUp and handle KeyDown next.
+    // ------------------------------------------------------------
+    // At first we handle KeyUp events and handle KeyDown events next.
     // We need to end KeyDown at Command+Space to Option_L+Shift_L.
     //
     // When Option_L+Shift_L has a meaning (switch input language at Windows),
     // it does not works well when the last is KeyUp of Command.
 
     // ------------------------------------------------------------
-    // Handle KEYPAD first
+    // About ModifierFlag::CURSOR (UpdateEventFlags) handling:
+    //
+    // We need to treat ModifierFlag::CURSOR specially.
+    //
+    // When we activated "Control+Right to Option+Right" and pressed Control+Right,
+    // the following events are happened.
+    //
+    // ----------------------+----------------------------------------------------------------------
+    // (1) Press Control_L   | eventType:keyMod  code:0x3b name:Control_L flags:               misc:
+    // (2) Press Right       | eventType:keyMod  code:0x3a name:Option_L  flags:Opt            misc:
+    //                       | eventType:keyDown code:0x7c name:Right     flags:Opt NumPad Fn  misc:
+    // (3) Release Right     | eventType:keyUp   code:0x7c name:Right     flags:Opt NumPad Fn  misc:
+    // (4) Release Control_L | eventType:keyMod  code:0x3a name:Option_L  flags:               misc:
+    // ----------------------+----------------------------------------------------------------------
+    //
+    // We need to treat "ModifierFlag::CURSOR Down" event after other modifiers.
+    // We need to treat "ModifierFlag::CURSOR Up" event before other modifiers.
+    // If not, unnecessary ModifierFlag::CURSOR is added on keyMod events.
 
-    // KeyUp
-    if (lastFlags_.isOn(ModifierFlag::KEYPAD) && ! toFlags.isOn(ModifierFlag::KEYPAD)) {
-      lastFlags_.remove(ModifierFlag::KEYPAD);
-
-      Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(lastFlags_));
-      if (ptr) {
-        EventOutputQueue::push(*ptr);
-      }
-    }
-    if (! lastFlags_.isOn(ModifierFlag::KEYPAD) && toFlags.isOn(ModifierFlag::KEYPAD)) {
-      lastFlags_.add(ModifierFlag::KEYPAD);
+    // ModifierFlag::CURSOR (Up)
+    if (lastFlags_.isOn(ModifierFlag::CURSOR) && ! toFlags.isOn(ModifierFlag::CURSOR)) {
+      lastFlags_.remove(ModifierFlag::CURSOR);
 
       Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(lastFlags_));
       if (ptr) {
@@ -168,6 +178,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (int i = 0;; ++i) {
       ModifierFlag flag = FlagStatus::getFlag(i);
       if (flag == ModifierFlag::NONE) break;
+      if (flag == ModifierFlag::CURSOR) continue;
       if (Flags(flag).isVirtualModifiersOn()) continue;
 
       if (! lastFlags_.isOn(flag)) continue;
@@ -184,6 +195,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (int i = 0;; ++i) {
       ModifierFlag flag = FlagStatus::getFlag(i);
       if (flag == ModifierFlag::NONE) break;
+      if (flag == ModifierFlag::CURSOR) continue;
       if (Flags(flag).isVirtualModifiersOn()) continue;
 
       if (! toFlags.isOn(flag)) continue;
@@ -194,6 +206,17 @@ namespace org_pqrs_KeyRemap4MacBook {
       Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, lastFlags_, flag.getKeyCode(), keyboardType, false));
       if (! ptr) continue;
       EventOutputQueue::push(*ptr);
+    }
+
+    // ------------------------------------------------------------
+    // ModifierFlag::CURSOR (Down)
+    if (! lastFlags_.isOn(ModifierFlag::CURSOR) && toFlags.isOn(ModifierFlag::CURSOR)) {
+      lastFlags_.add(ModifierFlag::CURSOR);
+
+      Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(lastFlags_));
+      if (ptr) {
+        EventOutputQueue::push(*ptr);
+      }
     }
 
     lastFlags_ = toFlags;
