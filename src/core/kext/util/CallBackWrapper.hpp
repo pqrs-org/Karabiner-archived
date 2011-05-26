@@ -36,7 +36,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ----------------------------------------
-    void log(const char* message = "caught") const;
+    static void log(bool isCaught, EventType eventType, Flags flags, KeyCode key, KeyboardType keyboardType, bool repeat);
 
     const EventType eventType;
     const Flags flags;
@@ -80,7 +80,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ----------------------------------------
-    void log(const char* message = "caught") const;
+    static void log(bool isCaught, Flags flags);
     const Flags flags;
 
   private:
@@ -121,7 +121,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ----------------------------------------
-    void log(const char* message = "caught") const;
+    static void log(bool isCaught, EventType eventType, Flags flags, ConsumerKeyCode key, unsigned int flavor, UInt64 guid, bool repeat);
 
     const EventType eventType;
     const Flags flags;
@@ -162,7 +162,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       return new Params_RelativePointerEventCallback(p.buttons, p.dx, p.dy, p.ex_button, p.ex_isbuttondown);
     }
 
-    void log(const char* message = "caught") const;
+    static void log(bool isCaught, Buttons buttons, int dx, int dy);
 
     const Buttons buttons;
     const int dx;
@@ -215,7 +215,17 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                  p.options);
     }
 
-    void log(const char* message = "caught") const;
+    static void log(bool isCaught,
+                    short deltaAxis1,
+                    short deltaAxis2,
+                    short deltaAxis3,
+                    IOFixed fixedDelta1,
+                    IOFixed fixedDelta2,
+                    IOFixed fixedDelta3,
+                    SInt32 pointDelta1,
+                    SInt32 pointDelta2,
+                    SInt32 pointDelta3,
+                    SInt32 options);
 
     const short deltaAxis1;
     const short deltaAxis2;

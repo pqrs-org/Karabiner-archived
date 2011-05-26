@@ -168,9 +168,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     remap_KeyboardEventCallback(Params_KeyboardEventCallBack& params)
     {
-      params.log();
-
-      // ------------------------------------------------------------
       RemapParams remapParams(params);
 
       // ------------------------------------------------------------
@@ -207,8 +204,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     remap_KeyboardSpecialEventCallback(Params_KeyboardSpecialEventCallback& params)
     {
-      params.log();
-
       RemapConsumerParams remapParams(params);
 
       // ------------------------------------------------------------
@@ -230,8 +225,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     remap_RelativePointerEventCallback(Params_RelativePointerEventCallback& params)
     {
-      params.log();
-
       RemapPointingParams_relative remapParams(params);
 
       ButtonStatus::set(params.ex_button, params.ex_isbuttondown);
@@ -247,7 +240,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     remap_ScrollWheelEventCallback(Params_ScrollWheelEventCallback& params)
     {
-      params.log();
       EventOutputQueue::FireScrollWheel::fire(params);
 
       RemapFunc::PointingRelativeToScroll::cancelScroll();
