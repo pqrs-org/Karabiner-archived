@@ -9463,10 +9463,10 @@
           <list>
             <item>
               <name>enthumble</name>
-              <appendix>・英数キーをコマンドキーに変更。（英数キーの空打ちで英数キーとして動作）</appendix>
-              <appendix>・英数キー（コマンドキー）を押しながら「スペースキー」で「リターン」</appendix>
-              <appendix>・英数キー（コマンドキー）を押しながら「かなキー」で「エスケープ」</appendix>
-              <appendix>・英数キー（コマンドキー）を押しながら「右コマンドキー」で「エスケープ」</appendix>
+              <appendix>・英数キーを左コマンドキーに変更。（英数キーの空打ちで英数キーとして動作）</appendix>
+              <appendix>・英数キー（左コマンドキー）を押しながら「スペースキー」で「リターン」</appendix>
+              <appendix>・英数キー（左コマンドキー）を押しながら「かなキー」で「エスケープ」</appendix>
+              <appendix>・英数キー（左コマンドキー）を押しながら「右コマンドキー」で「エスケープ」</appendix>
               <identifier>remap.jis_enthumble</identifier>
               <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU,
                 KeyCode::COMMAND_L, KeyCode::JIS_EISUU</autogen>
