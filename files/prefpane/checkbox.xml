@@ -9459,6 +9459,28 @@
           </list>
         </item>
         <item>
+          <name>enthumble (http://www.enthumble.com/)</name>
+          <list>
+            <item>
+              <name>enthumble</name>
+              <appendix>・英数キーをコマンドキーに変更。（英数キーの空打ちで英数キーとして動作）</appendix>
+              <appendix>・英数キー（コマンドキー）を押しながら「スペースキー」で「リターン」</appendix>
+              <appendix>・英数キー（コマンドキー）を押しながら「かなキー」で「エスケープ」</appendix>
+              <appendix>・英数キー（コマンドキー）を押しながら「右コマンドキー」で「エスケープ」</appendix>
+              <identifier>remap.jis_enthumble</identifier>
+              <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU,
+                KeyCode::COMMAND_L, KeyCode::JIS_EISUU</autogen>
+              <autogen>--KeyToKey--KeyCode::SPACE,ModifierFlag::COMMAND_L,
+                KeyCode::RETURN</autogen>
+              <autogen>--KeyToKey--KeyCode::JIS_KANA,ModifierFlag::COMMAND_L,
+                KeyCode::ESCAPE</autogen>
+              <autogen>--KeyToKey--KeyCode::COMMAND_R,ModifierFlag::COMMAND_L,
+                KeyCode::ESCAPE</autogen>
+            </item>
+          </list>
+        </item>
+
+        <item>
           <name>For Unix Users</name>
           <list>
             <item>
