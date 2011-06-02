@@ -287,6 +287,10 @@
     return [parser keycode:@"ApplicationType::PREVIEW"];
   }
 
+  if ([name isEqualToString:@"com.oracle.SQLDeveloper"]) {
+    return [parser keycode:@"ApplicationType::ORACLE_SQL_DEVELOPER"];
+  }
+
   return [parser keycode:@"ApplicationType::UNKNOWN"];
 }
 
