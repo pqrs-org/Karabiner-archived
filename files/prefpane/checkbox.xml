@@ -4677,6 +4677,12 @@
               </block>
               <block>
                 <config_only>option.tabmode_ik</config_only>
+                <block>
+                  <only>VIRTUALMACHINE</only>
+                  <config_only>option.tabmode_ikvm</config_only>
+                  <autogen>--KeyToKey-- KeyCode::K, KeyCode::UK_SECTION, ModifierFlag::COMMAND_L</autogen>
+                  <autogen>--KeyToKey-- KeyCode::I, KeyCode::UK_SECTION, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+                </block>
                 <autogen>--KeyToKey-- KeyCode::K, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::I, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
               </block>
@@ -4726,6 +4732,11 @@
               <name>[Option] Switch windows of frontmost app with i/k</name>
               <appendix>For people who like jkli configuration</appendix>
               <identifier>option.tabmode_ik</identifier>
+            </item>
+            <item>
+              <name>[Option] Send Uk Section instead of Backquote when on virtual machine</name>
+              <appendix>For people who use the previous option, vmware and an international keyboard</appendix>
+              <identifier>option.tabmode_ikvm</identifier>
             </item>
             <item>
               <name>[Option] Switch tabs of frontmost app with u/o</name>
