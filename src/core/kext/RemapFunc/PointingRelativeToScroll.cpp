@@ -1,5 +1,6 @@
 #include "Config.hpp"
 #include "EventOutputQueue.hpp"
+#include "EventWatcher.hpp"
 #include "PointingRelativeToScroll.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -115,6 +116,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
     doremap:
+      // We need to call EventWatcher::on here.
+      // See the comments in EventInputQueue::fire_timer_callback.
+      EventWatcher::on();
       toscroll(remapParams);
 
       return true;

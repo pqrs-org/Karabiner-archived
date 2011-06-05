@@ -527,13 +527,23 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (params) {
           // ------------------------------------------------------------
           // We set EventWatcher::on only when Buttons pressed.
-          // It's cause a problem when you use the following settings. (Unexpected FN_Lock is fired).
-          //   - FN+CursorMove to ScrollWheel
-          //   - FN to FN (+ When you type FN only, send FN_Lock)
+
+          // ------------------------------
+          // About PointingRelativeToScroll:
+          //
+          // If PointingRelativeToScroll is applied, we should call EventWatcher::on. (== canceling KeyOverlaidModifier)
+          // When the following settings are activated,
+          // Fn_Lock should not be fired if the RelativePointerEvent is happened.
+          //
+          // - Fn+CursorMove to ScrollWheel
+          // - Fn to Fn (+ When you type Fn only, send Fn_Lock)
           //
           // But, if we call EventWatcher::on every CursorMove event, unexpected cancel occurs.
           // It's more terrible than above problem.
-          // So, we keep to call EventWatcher::on only when Buttons pressed.
+          //
+          // Therefore, we call EventWatcher::on in PointingRelativeToScroll::remap.
+          // So we don't need to call EventWatcher::on unless just buttons are pressed or released.
+
           if (params->ex_button != PointingButton::NONE) {
             EventWatcher::on();
           }
