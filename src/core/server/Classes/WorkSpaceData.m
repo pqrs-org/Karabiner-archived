@@ -173,7 +173,8 @@
     return [parser keycode:@"ApplicationType::XCODE"];
   }
 
-  if ([name isEqualToString:@"com.operasoftware.Opera"]) {
+  if ([name isEqualToString:@"com.operasoftware.Opera"] ||
+      [name isEqualToString:@"com.operasoftware.OperaNext"]) {
     return [parser keycode:@"ApplicationType::OPERA"];
   }
 
