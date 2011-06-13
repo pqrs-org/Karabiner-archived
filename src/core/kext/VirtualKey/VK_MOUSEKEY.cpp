@@ -4,7 +4,13 @@
 #include "VK_MOUSEKEY.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  // ----------------------------------------------------------------------
+  int VirtualKey::VK_MOUSEKEY::dx_;
+  int VirtualKey::VK_MOUSEKEY::dy_;
+  int VirtualKey::VK_MOUSEKEY::scale_;
+  bool VirtualKey::VK_MOUSEKEY::scrollmode_;
+  bool VirtualKey::VK_MOUSEKEY::highspeed_;
+  TimerWrapper VirtualKey::VK_MOUSEKEY::fire_timer_;
+
   void
   VirtualKey::VK_MOUSEKEY::initialize(IOWorkLoop& workloop)
   {
@@ -182,11 +188,4 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     fire_timer_.setTimeoutMS(TIMER_INTERVAL);
   }
-
-  int VirtualKey::VK_MOUSEKEY::dx_;
-  int VirtualKey::VK_MOUSEKEY::dy_;
-  int VirtualKey::VK_MOUSEKEY::scale_;
-  bool VirtualKey::VK_MOUSEKEY::scrollmode_;
-  bool VirtualKey::VK_MOUSEKEY::highspeed_;
-  TimerWrapper VirtualKey::VK_MOUSEKEY::fire_timer_;
 }

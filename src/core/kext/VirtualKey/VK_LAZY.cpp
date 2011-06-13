@@ -4,7 +4,6 @@
 #include "VK_LAZY.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  // ----------------------------------------------------------------------
   bool
   VirtualKey::VK_LAZY::handle(const Params_KeyboardEventCallBack& params)
   {

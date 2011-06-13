@@ -4,7 +4,8 @@
 #include "VK_JIS_TOGGLE_EISUU_KANA.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  // ----------------------------------------------------------------------
+  KeyCode VirtualKey::VK_JIS_TOGGLE_EISUU_KANA::newkeycode_;
+
   bool
   VirtualKey::VK_JIS_TOGGLE_EISUU_KANA::handle(const Params_KeyboardEventCallBack& params)
   {
@@ -25,6 +26,4 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
     return true;
   }
-
-  KeyCode VirtualKey::VK_JIS_TOGGLE_EISUU_KANA::newkeycode_;
 }
