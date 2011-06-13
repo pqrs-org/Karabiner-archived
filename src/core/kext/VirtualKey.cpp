@@ -41,19 +41,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ----------------------------------------------------------------------
   bool
-  handle_VK_JIS_BACKSLASH(const Params_KeyboardEventCallBack& params)
-  {
-    if (params.key != KeyCode::VK_JIS_BACKSLASH) return false;
-
-    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(params.eventType, params.flags, KeyCode::BACKSLASH,
-                                                                                   KeyboardType::MACBOOK, params.repeat));
-    if (ptr) {
-      EventOutputQueue::FireKey::fire(*ptr);
-    }
-    return true;
-  }
-
-  bool
   handle_VK_JIS_YEN(const Params_KeyboardEventCallBack& params)
   {
     if (params.key != KeyCode::VK_JIS_YEN) return false;

@@ -12,6 +12,7 @@
 #include "VirtualKey/VK_LOCK.hpp"
 #include "VirtualKey/VK_MOUSEKEY.hpp"
 #include "VirtualKey/VK_STICKY.hpp"
+#include "VirtualKey/VK_JIS_BACKSLASH.hpp"
 #include "VirtualKey/VK_JIS_TOGGLE_EISUU_KANA.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -24,7 +25,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
 
   // ----------------------------------------------------------------------
-  bool handle_VK_JIS_BACKSLASH(const Params_KeyboardEventCallBack& params);
   bool handle_VK_JIS_YEN(const Params_KeyboardEventCallBack& params);
 
   // ----------------------------------------------------------------------
