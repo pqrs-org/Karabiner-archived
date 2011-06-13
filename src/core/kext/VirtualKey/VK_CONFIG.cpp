@@ -1,7 +1,6 @@
 #include "base.hpp"
 #include "EventOutputQueue.hpp"
 #include "FlagStatus.hpp"
-#include "RemapClass.hpp"
 #include "VK_CONFIG.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {

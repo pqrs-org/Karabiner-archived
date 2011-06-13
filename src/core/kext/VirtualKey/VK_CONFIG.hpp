@@ -1,6 +1,8 @@
 #ifndef VIRTUALKEY_VK_CONFIG_HPP
 #define VIRTUALKEY_VK_CONFIG_HPP
 
+#include "RemapClass.hpp"
+
 namespace org_pqrs_KeyRemap4MacBook {
   namespace VirtualKey {
     class VK_CONFIG {
