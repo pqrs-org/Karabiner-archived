@@ -12,6 +12,7 @@
 #include "VirtualKey/VK_LOCK.hpp"
 #include "VirtualKey/VK_MOUSEKEY.hpp"
 #include "VirtualKey/VK_STICKY.hpp"
+#include "VirtualKey/VK_JIS_TOGGLE_EISUU_KANA.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace VirtualKey {
@@ -23,15 +24,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
 
   // ----------------------------------------------------------------------
-  class Handle_VK_JIS_TOGGLE_EISUU_KANA {
-  public:
-    static bool handle(const Params_KeyboardEventCallBack& params);
-
-  private:
-    // It is necessary to save toKeyCode for KeyUp.
-    static KeyCode newkeycode_;
-  };
-
   bool handle_VK_JIS_BACKSLASH(const Params_KeyboardEventCallBack& params);
   bool handle_VK_JIS_YEN(const Params_KeyboardEventCallBack& params);
 
