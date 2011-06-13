@@ -4,6 +4,11 @@
 #include "VK_JIS_TEMPORARY.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
+  InputModeDetail VirtualKey::VK_JIS_TEMPORARY::savedinputmodedetail_(0);
+  InputModeDetail VirtualKey::VK_JIS_TEMPORARY::currentinputmodedetail_(0);
+  VirtualKey::VK_JIS_TEMPORARY::FireKeyInfo VirtualKey::VK_JIS_TEMPORARY::fireKeyInfo_;
+  TimerWrapper VirtualKey::VK_JIS_TEMPORARY::fire_timer_;
+
   void
   VirtualKey::VK_JIS_TEMPORARY::initialize(IOWorkLoop& workloop)
   {
@@ -148,9 +153,4 @@ namespace org_pqrs_KeyRemap4MacBook {
     fireKeyInfo_.active = false;
     EventOutputQueue::FireKey::fire_downup(fireKeyInfo_.flags, fireKeyInfo_.key, fireKeyInfo_.keyboardType);
   }
-
-  InputModeDetail VirtualKey::VK_JIS_TEMPORARY::savedinputmodedetail_(0);
-  InputModeDetail VirtualKey::VK_JIS_TEMPORARY::currentinputmodedetail_(0);
-  VirtualKey::VK_JIS_TEMPORARY::FireKeyInfo VirtualKey::VK_JIS_TEMPORARY::fireKeyInfo_;
-  TimerWrapper VirtualKey::VK_JIS_TEMPORARY::fire_timer_;
 }
