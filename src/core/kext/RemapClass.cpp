@@ -400,11 +400,11 @@ namespace org_pqrs_KeyRemap4MacBook {
             unsigned int keycode_force_on       = p[2];
             unsigned int keycode_force_off      = p[3];
             unsigned int keycode_sync_keydownup = p[4];
-            Handle_VK_CONFIG::add_item(this,
-                                       keycode_toggle,
-                                       keycode_force_on,
-                                       keycode_force_off,
-                                       keycode_sync_keydownup);
+            VirtualKey::VK_CONFIG::add_item(this,
+                                            keycode_toggle,
+                                            keycode_force_on,
+                                            keycode_force_off,
+                                            keycode_sync_keydownup);
           }
 
         } else {
@@ -619,7 +619,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void
     clear_remapclasses(void)
     {
-      Handle_VK_CONFIG::clear_items();
+      VirtualKey::VK_CONFIG::clear_items();
 
       if (enabled_remapclasses_) {
         delete enabled_remapclasses_;

@@ -3,7 +3,6 @@
 #include "Config.hpp"
 #include "EventOutputQueue.hpp"
 #include "FlagStatus.hpp"
-#include "RemapClass.hpp"
 #include "VirtualKey.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -13,7 +12,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     Handle_VK_MOUSEKEY::initialize(workloop);
     Handle_VK_JIS_TEMPORARY::initialize(workloop);
 
-    Handle_VK_CONFIG::initialize();
+    VirtualKey::VK_CONFIG::initialize();
   }
 
   void
@@ -22,7 +21,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     Handle_VK_MOUSEKEY::terminate();
     Handle_VK_JIS_TEMPORARY::terminate();
 
-    Handle_VK_CONFIG::terminate();
+    VirtualKey::VK_CONFIG::terminate();
   }
 
   void
@@ -34,113 +33,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   VirtualKey::isKeyLikeModifier(KeyCode keycode)
   {
-    if (Handle_VK_CONFIG::is_VK_CONFIG_SYNC_KEYDOWNUP(keycode)) return true;
+    if (VirtualKey::VK_CONFIG::is_VK_CONFIG_SYNC_KEYDOWNUP(keycode)) return true;
     if (VirtualKey::VK_LAZY::getModifierFlag(keycode) != ModifierFlag::NONE) return true;
     if (Handle_VK_MOUSEKEY::is_VK_MOUSEKEY(keycode)) return true;
-    return false;
-  }
-
-  // ----------------------------------------------------------------------
-  Handle_VK_CONFIG::Vector_Item* Handle_VK_CONFIG::items_ = NULL;
-
-  void
-  Handle_VK_CONFIG::initialize(void)
-  {
-    items_ = new Vector_Item();
-  }
-
-  void
-  Handle_VK_CONFIG::terminate(void)
-  {
-    if (items_) {
-      delete items_;
-    }
-  }
-
-  void
-  Handle_VK_CONFIG::add_item(RemapClass* remapclass,
-                             unsigned int keycode_toggle,
-                             unsigned int keycode_force_on,
-                             unsigned int keycode_force_off,
-                             unsigned int keycode_sync_keydownup)
-  {
-    if (! items_) return;
-
-    items_->push_back(Item(remapclass, keycode_toggle, keycode_force_on, keycode_force_off, keycode_sync_keydownup));
-  }
-
-  void
-  Handle_VK_CONFIG::clear_items(void)
-  {
-    items_->clear();
-  }
-
-  bool
-  Handle_VK_CONFIG::handle(const Params_KeyboardEventCallBack& params)
-  {
-    if (! items_) return false;
-
-    for (size_t i = 0; i < items_->size(); ++i) {
-      RemapClass* remapclass              = (*items_)[i].remapclass;
-      unsigned int keycode_toggle         = (*items_)[i].keycode_toggle;
-      unsigned int keycode_force_on       = (*items_)[i].keycode_force_on;
-      unsigned int keycode_force_off      = (*items_)[i].keycode_force_off;
-      unsigned int keycode_sync_keydownup = (*items_)[i].keycode_sync_keydownup;
-
-      if (! remapclass) return false;
-
-      if (params.ex_iskeydown && params.repeat == false) {
-        /*  */ if (params.key == keycode_toggle) {
-          remapclass->toggleEnabled();
-          goto refresh;
-
-        } else if (params.key == keycode_force_on) {
-          remapclass->setEnabled(true);
-          goto refresh;
-
-        } else if (params.key == keycode_force_off) {
-          remapclass->setEnabled(false);
-          goto refresh;
-
-        } else if (params.key == keycode_sync_keydownup) {
-          remapclass->setEnabled(true);
-          goto refresh;
-        }
-
-      } else if (params.eventType == EventType::UP) {
-        if (params.key == keycode_toggle ||
-            params.key == keycode_force_on ||
-            params.key == keycode_force_off) {
-          goto finish;
-        }
-
-        if (params.key == keycode_sync_keydownup) {
-          remapclass->setEnabled(false);
-          goto refresh;
-        }
-      }
-    }
-
-    return false;
-
-  refresh:
-    RemapClassManager::refresh();
-
-  finish:
-    EventOutputQueue::FireModifiers::fire();
-    return true;
-  }
-
-  bool
-  Handle_VK_CONFIG::is_VK_CONFIG_SYNC_KEYDOWNUP(KeyCode keycode)
-  {
-    if (! items_) return false;
-
-    for (size_t i = 0; i < items_->size(); ++i) {
-      unsigned int keycode_sync_keydownup = (*items_)[i].keycode_sync_keydownup;
-      if (keycode == keycode_sync_keydownup) return true;
-    }
-
     return false;
   }
 
