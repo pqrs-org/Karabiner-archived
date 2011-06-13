@@ -7,6 +7,7 @@
 #include "TimerWrapper.hpp"
 #include "Vector.hpp"
 #include "VirtualKey/VK_LOCK.hpp"
+#include "VirtualKey/VK_STICKY.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace VirtualKey {
@@ -15,12 +16,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void reset(void);
 
     bool isKeyLikeModifier(KeyCode keycode);
-  };
-
-  // ----------------------------------------------------------------------
-  class Handle_VK_STICKY {
-  public:
-    static bool handle(const Params_KeyboardEventCallBack& params);
   };
 
   // ----------------------------------------------------------------------
