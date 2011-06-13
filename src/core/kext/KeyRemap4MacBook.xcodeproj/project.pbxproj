@@ -94,6 +94,8 @@
 		34B464F413A65AED00470265 /* VK_JIS_BACKSLASH.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B464F213A65AED00470265 /* VK_JIS_BACKSLASH.hpp */; };
 		34B464F713A65B6600470265 /* VK_JIS_YEN.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B464F513A65B6600470265 /* VK_JIS_YEN.cpp */; };
 		34B464F813A65B6600470265 /* VK_JIS_YEN.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B464F613A65B6600470265 /* VK_JIS_YEN.hpp */; };
+		34B464FB13A65CE000470265 /* VK_JIS_TEMPORARY.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B464F913A65CE000470265 /* VK_JIS_TEMPORARY.cpp */; };
+		34B464FC13A65CE000470265 /* VK_JIS_TEMPORARY.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B464FA13A65CE000470265 /* VK_JIS_TEMPORARY.hpp */; };
 		34B5E8A61261284200DCFB0D /* ApplicationFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5E8A41261284200DCFB0D /* ApplicationFilter.cpp */; };
 		34B5E8A71261284200DCFB0D /* ApplicationFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B5E8A51261284200DCFB0D /* ApplicationFilter.hpp */; };
 		34B5E8B51261960700DCFB0D /* InputModeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5E8B31261960700DCFB0D /* InputModeFilter.cpp */; };
@@ -224,6 +226,8 @@
 		34B464F213A65AED00470265 /* VK_JIS_BACKSLASH.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_JIS_BACKSLASH.hpp; path = VirtualKey/VK_JIS_BACKSLASH.hpp; sourceTree = "<group>"; };
 		34B464F513A65B6600470265 /* VK_JIS_YEN.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_JIS_YEN.cpp; path = VirtualKey/VK_JIS_YEN.cpp; sourceTree = "<group>"; };
 		34B464F613A65B6600470265 /* VK_JIS_YEN.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_JIS_YEN.hpp; path = VirtualKey/VK_JIS_YEN.hpp; sourceTree = "<group>"; };
+		34B464F913A65CE000470265 /* VK_JIS_TEMPORARY.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_JIS_TEMPORARY.cpp; path = VirtualKey/VK_JIS_TEMPORARY.cpp; sourceTree = "<group>"; };
+		34B464FA13A65CE000470265 /* VK_JIS_TEMPORARY.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_JIS_TEMPORARY.hpp; path = VirtualKey/VK_JIS_TEMPORARY.hpp; sourceTree = "<group>"; };
 		34B5E8A41261284200DCFB0D /* ApplicationFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ApplicationFilter.cpp; path = RemapFilter/ApplicationFilter.cpp; sourceTree = "<group>"; };
 		34B5E8A51261284200DCFB0D /* ApplicationFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ApplicationFilter.hpp; path = RemapFilter/ApplicationFilter.hpp; sourceTree = "<group>"; };
 		34B5E8B31261960700DCFB0D /* InputModeFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InputModeFilter.cpp; path = RemapFilter/InputModeFilter.cpp; sourceTree = "<group>"; };
@@ -425,24 +429,26 @@
 		34B464CC13A6513700470265 /* VirtualKey */ = {
 			isa = PBXGroup;
 			children = (
-				34B464F513A65B6600470265 /* VK_JIS_YEN.cpp */,
-				34B464F613A65B6600470265 /* VK_JIS_YEN.hpp */,
-				34B464F113A65AED00470265 /* VK_JIS_BACKSLASH.cpp */,
-				34B464F213A65AED00470265 /* VK_JIS_BACKSLASH.hpp */,
-				34B464ED13A659CD00470265 /* VK_JIS_TOGGLE_EISUU_KANA.cpp */,
-				34B464EE13A659CD00470265 /* VK_JIS_TOGGLE_EISUU_KANA.hpp */,
-				34B464E913A6587400470265 /* VK_MOUSEKEY.cpp */,
-				34B464EA13A6587400470265 /* VK_MOUSEKEY.hpp */,
 				34B464E513A6563B00470265 /* VK_CONFIG.cpp */,
 				34B464E613A6563B00470265 /* VK_CONFIG.hpp */,
 				34B464E113A654E600470265 /* VK_CHANGE_INPUTMODE.cpp */,
 				34B464E213A654E600470265 /* VK_CHANGE_INPUTMODE.hpp */,
 				34B464DD13A6538A00470265 /* VK_LAZY.cpp */,
 				34B464DE13A6538A00470265 /* VK_LAZY.hpp */,
-				34B464D813A652CF00470265 /* VK_STICKY.cpp */,
-				34B464D913A652CF00470265 /* VK_STICKY.hpp */,
 				34B464CE13A6515200470265 /* VK_LOCK.cpp */,
 				34B464CF13A6515200470265 /* VK_LOCK.hpp */,
+				34B464E913A6587400470265 /* VK_MOUSEKEY.cpp */,
+				34B464EA13A6587400470265 /* VK_MOUSEKEY.hpp */,
+				34B464D813A652CF00470265 /* VK_STICKY.cpp */,
+				34B464D913A652CF00470265 /* VK_STICKY.hpp */,
+				34B464F113A65AED00470265 /* VK_JIS_BACKSLASH.cpp */,
+				34B464F213A65AED00470265 /* VK_JIS_BACKSLASH.hpp */,
+				34B464F913A65CE000470265 /* VK_JIS_TEMPORARY.cpp */,
+				34B464FA13A65CE000470265 /* VK_JIS_TEMPORARY.hpp */,
+				34B464ED13A659CD00470265 /* VK_JIS_TOGGLE_EISUU_KANA.cpp */,
+				34B464EE13A659CD00470265 /* VK_JIS_TOGGLE_EISUU_KANA.hpp */,
+				34B464F513A65B6600470265 /* VK_JIS_YEN.cpp */,
+				34B464F613A65B6600470265 /* VK_JIS_YEN.hpp */,
 			);
 			name = VirtualKey;
 			sourceTree = "<group>";
@@ -540,6 +546,7 @@
 				34B464F013A659CD00470265 /* VK_JIS_TOGGLE_EISUU_KANA.hpp in Headers */,
 				34B464F413A65AED00470265 /* VK_JIS_BACKSLASH.hpp in Headers */,
 				34B464F813A65B6600470265 /* VK_JIS_YEN.hpp in Headers */,
+				34B464FC13A65CE000470265 /* VK_JIS_TEMPORARY.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -674,6 +681,7 @@
 				34B464EF13A659CD00470265 /* VK_JIS_TOGGLE_EISUU_KANA.cpp in Sources */,
 				34B464F313A65AED00470265 /* VK_JIS_BACKSLASH.cpp in Sources */,
 				34B464F713A65B6600470265 /* VK_JIS_YEN.cpp in Sources */,
+				34B464FB13A65CE000470265 /* VK_JIS_TEMPORARY.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
