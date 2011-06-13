@@ -1,7 +1,7 @@
 #include "bridge.h"
 #include "RemapClass.hpp"
 #include "KeyboardRepeat.hpp"
-#include "VirtualKey.hpp"
+#include "VirtualKey/VK_CONFIG.hpp"
 #include "util/CommonData.hpp"
 #include "util/EventInputQueue.hpp"
 
