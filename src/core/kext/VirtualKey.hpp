@@ -10,6 +10,7 @@
 #include "VirtualKey/VK_STICKY.hpp"
 #include "VirtualKey/VK_LAZY.hpp"
 #include "VirtualKey/VK_CHANGE_INPUTMODE.hpp"
+#include "VirtualKey/VK_CONFIG.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace VirtualKey {
@@ -18,38 +19,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void reset(void);
 
     bool isKeyLikeModifier(KeyCode keycode);
-  };
-
-  // ----------------------------------------------------------------------
-  class Handle_VK_CONFIG {
-  public:
-    static void initialize(void);
-    static void terminate(void);
-
-    static void add_item(RemapClass* remapclass,
-                         unsigned int keycode_toggle,
-                         unsigned int keycode_force_on,
-                         unsigned int keycode_force_off,
-                         unsigned int keycode_sync_keydownup);
-    static void clear_items(void);
-
-    static bool handle(const Params_KeyboardEventCallBack& params);
-
-    static bool is_VK_CONFIG_SYNC_KEYDOWNUP(KeyCode keycode);
-
-  private:
-    struct Item {
-      Item(void) {};
-      Item(RemapClass* p, unsigned int kc_toggle, unsigned int kc_force_on, unsigned int kc_force_off, unsigned int kc_sync) :
-        remapclass(p), keycode_toggle(kc_toggle), keycode_force_on(kc_force_on), keycode_force_off(kc_force_off), keycode_sync_keydownup(kc_sync) {}
-      RemapClass* remapclass;
-      unsigned int keycode_toggle;
-      unsigned int keycode_force_on;
-      unsigned int keycode_force_off;
-      unsigned int keycode_sync_keydownup;
-    };
-    DECLARE_VECTOR(Item);
-    static Vector_Item* items_;
   };
 
   // ----------------------------------------------------------------------
