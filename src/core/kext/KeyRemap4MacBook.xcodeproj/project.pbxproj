@@ -90,6 +90,8 @@
 		34B464EC13A6587400470265 /* VK_MOUSEKEY.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B464EA13A6587400470265 /* VK_MOUSEKEY.hpp */; };
 		34B464EF13A659CD00470265 /* VK_JIS_TOGGLE_EISUU_KANA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B464ED13A659CD00470265 /* VK_JIS_TOGGLE_EISUU_KANA.cpp */; };
 		34B464F013A659CD00470265 /* VK_JIS_TOGGLE_EISUU_KANA.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B464EE13A659CD00470265 /* VK_JIS_TOGGLE_EISUU_KANA.hpp */; };
+		34B464F313A65AED00470265 /* VK_JIS_BACKSLASH.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B464F113A65AED00470265 /* VK_JIS_BACKSLASH.cpp */; };
+		34B464F413A65AED00470265 /* VK_JIS_BACKSLASH.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B464F213A65AED00470265 /* VK_JIS_BACKSLASH.hpp */; };
 		34B5E8A61261284200DCFB0D /* ApplicationFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5E8A41261284200DCFB0D /* ApplicationFilter.cpp */; };
 		34B5E8A71261284200DCFB0D /* ApplicationFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B5E8A51261284200DCFB0D /* ApplicationFilter.hpp */; };
 		34B5E8B51261960700DCFB0D /* InputModeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5E8B31261960700DCFB0D /* InputModeFilter.cpp */; };
@@ -216,6 +218,8 @@
 		34B464EA13A6587400470265 /* VK_MOUSEKEY.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_MOUSEKEY.hpp; path = VirtualKey/VK_MOUSEKEY.hpp; sourceTree = "<group>"; };
 		34B464ED13A659CD00470265 /* VK_JIS_TOGGLE_EISUU_KANA.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_JIS_TOGGLE_EISUU_KANA.cpp; path = VirtualKey/VK_JIS_TOGGLE_EISUU_KANA.cpp; sourceTree = "<group>"; };
 		34B464EE13A659CD00470265 /* VK_JIS_TOGGLE_EISUU_KANA.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_JIS_TOGGLE_EISUU_KANA.hpp; path = VirtualKey/VK_JIS_TOGGLE_EISUU_KANA.hpp; sourceTree = "<group>"; };
+		34B464F113A65AED00470265 /* VK_JIS_BACKSLASH.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_JIS_BACKSLASH.cpp; path = VirtualKey/VK_JIS_BACKSLASH.cpp; sourceTree = "<group>"; };
+		34B464F213A65AED00470265 /* VK_JIS_BACKSLASH.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_JIS_BACKSLASH.hpp; path = VirtualKey/VK_JIS_BACKSLASH.hpp; sourceTree = "<group>"; };
 		34B5E8A41261284200DCFB0D /* ApplicationFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ApplicationFilter.cpp; path = RemapFilter/ApplicationFilter.cpp; sourceTree = "<group>"; };
 		34B5E8A51261284200DCFB0D /* ApplicationFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ApplicationFilter.hpp; path = RemapFilter/ApplicationFilter.hpp; sourceTree = "<group>"; };
 		34B5E8B31261960700DCFB0D /* InputModeFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InputModeFilter.cpp; path = RemapFilter/InputModeFilter.cpp; sourceTree = "<group>"; };
@@ -417,6 +421,8 @@
 		34B464CC13A6513700470265 /* VirtualKey */ = {
 			isa = PBXGroup;
 			children = (
+				34B464F113A65AED00470265 /* VK_JIS_BACKSLASH.cpp */,
+				34B464F213A65AED00470265 /* VK_JIS_BACKSLASH.hpp */,
 				34B464ED13A659CD00470265 /* VK_JIS_TOGGLE_EISUU_KANA.cpp */,
 				34B464EE13A659CD00470265 /* VK_JIS_TOGGLE_EISUU_KANA.hpp */,
 				34B464E913A6587400470265 /* VK_MOUSEKEY.cpp */,
@@ -526,6 +532,7 @@
 				34B464E813A6563B00470265 /* VK_CONFIG.hpp in Headers */,
 				34B464EC13A6587400470265 /* VK_MOUSEKEY.hpp in Headers */,
 				34B464F013A659CD00470265 /* VK_JIS_TOGGLE_EISUU_KANA.hpp in Headers */,
+				34B464F413A65AED00470265 /* VK_JIS_BACKSLASH.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -658,6 +665,7 @@
 				34B464E713A6563B00470265 /* VK_CONFIG.cpp in Sources */,
 				34B464EB13A6587400470265 /* VK_MOUSEKEY.cpp in Sources */,
 				34B464EF13A659CD00470265 /* VK_JIS_TOGGLE_EISUU_KANA.cpp in Sources */,
+				34B464F313A65AED00470265 /* VK_JIS_BACKSLASH.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

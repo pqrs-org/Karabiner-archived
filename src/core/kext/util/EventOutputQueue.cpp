@@ -235,7 +235,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (VirtualKey::VK_CHANGE_INPUTMODE::handle(params)) return;
     if (VirtualKey::VK_CONFIG::handle(params)) return;
     if (VirtualKey::VK_JIS_TOGGLE_EISUU_KANA::handle(params)) return;
-    if (handle_VK_JIS_BACKSLASH(params)) return;
+    if (VirtualKey::VK_JIS_BACKSLASH::handle(params)) return;
     if (handle_VK_JIS_YEN(params)) return;
     if (Handle_VK_JIS_TEMPORARY::handle(params)) return;
     if (params.key == KeyCode::VK_MODIFIER_EXTRA1 ||
