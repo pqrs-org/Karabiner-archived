@@ -6,21 +6,15 @@
 #include "RemapClass.hpp"
 #include "TimerWrapper.hpp"
 #include "Vector.hpp"
+#include "VirtualKey/VK_LOCK.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  class VirtualKey {
-  public:
-    static void initialize(IOWorkLoop& workloop);
-    static void terminate(void);
-    static void reset(void);
+  namespace VirtualKey {
+    void initialize(IOWorkLoop& workloop);
+    void terminate(void);
+    void reset(void);
 
-    static bool isKeyLikeModifier(KeyCode keycode);
-  };
-
-  // ----------------------------------------------------------------------
-  class Handle_VK_LOCK {
-  public:
-    static bool handle(const Params_KeyboardEventCallBack& params);
+    bool isKeyLikeModifier(KeyCode keycode);
   };
 
   // ----------------------------------------------------------------------

@@ -76,6 +76,8 @@
 		34AA1F361065B1EE00E9A418 /* ListHookedDevice.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34AA1F341065B1EE00E9A418 /* ListHookedDevice.hpp */; };
 		34AC5ED111DA3BD60089BC58 /* KeyOverlaidModifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34AC5ECF11DA3BD60089BC58 /* KeyOverlaidModifier.cpp */; };
 		34AC5ED211DA3BD60089BC58 /* KeyOverlaidModifier.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34AC5ED011DA3BD60089BC58 /* KeyOverlaidModifier.hpp */; };
+		34B464D013A6515200470265 /* VK_LOCK.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B464CE13A6515200470265 /* VK_LOCK.cpp */; };
+		34B464D113A6515200470265 /* VK_LOCK.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B464CF13A6515200470265 /* VK_LOCK.hpp */; };
 		34B5E8A61261284200DCFB0D /* ApplicationFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5E8A41261284200DCFB0D /* ApplicationFilter.cpp */; };
 		34B5E8A71261284200DCFB0D /* ApplicationFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B5E8A51261284200DCFB0D /* ApplicationFilter.hpp */; };
 		34B5E8B51261960700DCFB0D /* InputModeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5E8B31261960700DCFB0D /* InputModeFilter.cpp */; };
@@ -188,6 +190,8 @@
 		34AA1F341065B1EE00E9A418 /* ListHookedDevice.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ListHookedDevice.hpp; path = util/ListHookedDevice.hpp; sourceTree = "<group>"; };
 		34AC5ECF11DA3BD60089BC58 /* KeyOverlaidModifier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyOverlaidModifier.cpp; path = RemapFunc/KeyOverlaidModifier.cpp; sourceTree = "<group>"; };
 		34AC5ED011DA3BD60089BC58 /* KeyOverlaidModifier.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyOverlaidModifier.hpp; path = RemapFunc/KeyOverlaidModifier.hpp; sourceTree = "<group>"; };
+		34B464CE13A6515200470265 /* VK_LOCK.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_LOCK.cpp; path = VirtualKey/VK_LOCK.cpp; sourceTree = "<group>"; };
+		34B464CF13A6515200470265 /* VK_LOCK.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_LOCK.hpp; path = VirtualKey/VK_LOCK.hpp; sourceTree = "<group>"; };
 		34B5E8A41261284200DCFB0D /* ApplicationFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ApplicationFilter.cpp; path = RemapFilter/ApplicationFilter.cpp; sourceTree = "<group>"; };
 		34B5E8A51261284200DCFB0D /* ApplicationFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ApplicationFilter.hpp; path = RemapFilter/ApplicationFilter.hpp; sourceTree = "<group>"; };
 		34B5E8B31261960700DCFB0D /* InputModeFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InputModeFilter.cpp; path = RemapFilter/InputModeFilter.cpp; sourceTree = "<group>"; };
@@ -271,6 +275,7 @@
 		247142CAFF3F8F9811CA285C /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				34B464CC13A6513700470265 /* VirtualKey */,
 				349E3C9713371CD700E7A81C /* UserClient_kext.cpp */,
 				349E3C9813371CD700E7A81C /* UserClient_kext.hpp */,
 				34A7F15712537F0D0012B982 /* bridge.h */,
@@ -385,6 +390,15 @@
 			name = util;
 			sourceTree = "<group>";
 		};
+		34B464CC13A6513700470265 /* VirtualKey */ = {
+			isa = PBXGroup;
+			children = (
+				34B464CE13A6515200470265 /* VK_LOCK.cpp */,
+				34B464CF13A6515200470265 /* VK_LOCK.hpp */,
+			);
+			name = VirtualKey;
+			sourceTree = "<group>";
+		};
 		34CAB84F1261194100C3FFCB /* RemapFilter */ = {
 			isa = PBXGroup;
 			children = (
@@ -469,6 +483,7 @@
 				3442D9E712F3123300EF7DF8 /* ForceNumLockOn.hpp in Headers */,
 				349E3C9A13371CD700E7A81C /* UserClient_kext.hpp in Headers */,
 				34CF0FE01363EC2400B5D950 /* GlobalLock.hpp in Headers */,
+				34B464D113A6515200470265 /* VK_LOCK.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,6 +609,7 @@
 				3442D9E612F3123300EF7DF8 /* ForceNumLockOn.cpp in Sources */,
 				349E3C9913371CD700E7A81C /* UserClient_kext.cpp in Sources */,
 				34CF0FDF1363EC2400B5D950 /* GlobalLock.cpp in Sources */,
+				34B464D013A6515200470265 /* VK_LOCK.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
