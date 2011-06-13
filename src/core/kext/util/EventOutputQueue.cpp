@@ -228,7 +228,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     // ----------------------------------------
     // handle virtual keys
-    if (Handle_VK_LOCK::handle(params)) return;
+    if (VirtualKey::VK_LOCK::handle(params)) return;
     if (Handle_VK_STICKY::handle(params)) return;
     if (Handle_VK_LAZY::handle(params)) return;
     if (Handle_VK_MOUSEKEY::handle(params)) return;
