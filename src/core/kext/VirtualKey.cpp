@@ -4,6 +4,16 @@
 #include "EventOutputQueue.hpp"
 #include "FlagStatus.hpp"
 #include "VirtualKey.hpp"
+#include "VirtualKey/VK_CHANGE_INPUTMODE.hpp"
+#include "VirtualKey/VK_CONFIG.hpp"
+#include "VirtualKey/VK_LAZY.hpp"
+#include "VirtualKey/VK_LOCK.hpp"
+#include "VirtualKey/VK_MOUSEKEY.hpp"
+#include "VirtualKey/VK_STICKY.hpp"
+#include "VirtualKey/VK_JIS_BACKSLASH.hpp"
+#include "VirtualKey/VK_JIS_TEMPORARY.hpp"
+#include "VirtualKey/VK_JIS_TOGGLE_EISUU_KANA.hpp"
+#include "VirtualKey/VK_JIS_YEN.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   void
@@ -28,6 +38,22 @@ namespace org_pqrs_KeyRemap4MacBook {
   VirtualKey::reset(void)
   {
     VirtualKey::VK_MOUSEKEY::reset();
+  }
+
+  bool
+  VirtualKey::handle(const Params_KeyboardEventCallBack& params)
+  {
+    if (VirtualKey::VK_CHANGE_INPUTMODE::handle(params))      { return true; }
+    if (VirtualKey::VK_CONFIG::handle(params))                { return true; }
+    if (VirtualKey::VK_LAZY::handle(params))                  { return true; }
+    if (VirtualKey::VK_LOCK::handle(params))                  { return true; }
+    if (VirtualKey::VK_MOUSEKEY::handle(params))              { return true; }
+    if (VirtualKey::VK_STICKY::handle(params))                { return true; }
+    if (VirtualKey::VK_JIS_BACKSLASH::handle(params))         { return true; }
+    if (VirtualKey::VK_JIS_TEMPORARY::handle(params))         { return true; }
+    if (VirtualKey::VK_JIS_TOGGLE_EISUU_KANA::handle(params)) { return true; }
+    if (VirtualKey::VK_JIS_YEN::handle(params))               { return true; }
+    return false;
   }
 
   bool

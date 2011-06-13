@@ -226,18 +226,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   EventOutputQueue::FireKey::fire(const Params_KeyboardEventCallBack& params)
   {
+    if (VirtualKey::handle(params)) return;
+
     // ----------------------------------------
-    // handle virtual keys
-    if (VirtualKey::VK_LOCK::handle(params)) return;
-    if (VirtualKey::VK_STICKY::handle(params)) return;
-    if (VirtualKey::VK_LAZY::handle(params)) return;
-    if (VirtualKey::VK_MOUSEKEY::handle(params)) return;
-    if (VirtualKey::VK_CHANGE_INPUTMODE::handle(params)) return;
-    if (VirtualKey::VK_CONFIG::handle(params)) return;
-    if (VirtualKey::VK_JIS_TOGGLE_EISUU_KANA::handle(params)) return;
-    if (VirtualKey::VK_JIS_BACKSLASH::handle(params)) return;
-    if (VirtualKey::VK_JIS_YEN::handle(params)) return;
-    if (VirtualKey::VK_JIS_TEMPORARY::handle(params)) return;
     if (params.key == KeyCode::VK_MODIFIER_EXTRA1 ||
         params.key == KeyCode::VK_MODIFIER_EXTRA2 ||
         params.key == KeyCode::VK_MODIFIER_EXTRA3 ||

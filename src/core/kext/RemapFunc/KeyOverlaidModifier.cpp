@@ -1,7 +1,7 @@
 #include "Config.hpp"
 #include "EventWatcher.hpp"
 #include "KeyOverlaidModifier.hpp"
-#include "VirtualKey.hpp"
+#include "../VirtualKey/VK_LAZY.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
