@@ -9,6 +9,7 @@
 #include "VirtualKey/VK_LOCK.hpp"
 #include "VirtualKey/VK_STICKY.hpp"
 #include "VirtualKey/VK_LAZY.hpp"
+#include "VirtualKey/VK_CHANGE_INPUTMODE.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace VirtualKey {
@@ -17,12 +18,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void reset(void);
 
     bool isKeyLikeModifier(KeyCode keycode);
-  };
-
-  // ----------------------------------------------------------------------
-  class Handle_VK_CHANGE_INPUTMODE {
-  public:
-    static bool handle(const Params_KeyboardEventCallBack& params);
   };
 
   // ----------------------------------------------------------------------
