@@ -122,9 +122,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         // (3) KeyUp   Command_L
         // (4) KeyUp   Space        fire Command_L+Space
 
-        FlagStatus::temporary_decrease(toKey_.flags | toKey_.key.getModifierFlag() | Handle_VK_LAZY::getModifierFlag(toKey_.key));
+        FlagStatus::temporary_decrease(toKey_.flags | toKey_.key.getModifierFlag() | VirtualKey::VK_LAZY::getModifierFlag(toKey_.key));
         savedflags_ = FlagStatus::makeFlags();
-        FlagStatus::temporary_increase(toKey_.flags | toKey_.key.getModifierFlag() | Handle_VK_LAZY::getModifierFlag(toKey_.key));
+        FlagStatus::temporary_increase(toKey_.flags | toKey_.key.getModifierFlag() | VirtualKey::VK_LAZY::getModifierFlag(toKey_.key));
 
         // ----------------------------------------
         if (isRepeatEnabled_) {

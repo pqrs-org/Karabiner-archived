@@ -80,6 +80,8 @@
 		34B464D113A6515200470265 /* VK_LOCK.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B464CF13A6515200470265 /* VK_LOCK.hpp */; };
 		34B464DA13A652CF00470265 /* VK_STICKY.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B464D813A652CF00470265 /* VK_STICKY.cpp */; };
 		34B464DB13A652CF00470265 /* VK_STICKY.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B464D913A652CF00470265 /* VK_STICKY.hpp */; };
+		34B464DF13A6538A00470265 /* VK_LAZY.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B464DD13A6538A00470265 /* VK_LAZY.cpp */; };
+		34B464E013A6538A00470265 /* VK_LAZY.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B464DE13A6538A00470265 /* VK_LAZY.hpp */; };
 		34B5E8A61261284200DCFB0D /* ApplicationFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5E8A41261284200DCFB0D /* ApplicationFilter.cpp */; };
 		34B5E8A71261284200DCFB0D /* ApplicationFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B5E8A51261284200DCFB0D /* ApplicationFilter.hpp */; };
 		34B5E8B51261960700DCFB0D /* InputModeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5E8B31261960700DCFB0D /* InputModeFilter.cpp */; };
@@ -196,6 +198,8 @@
 		34B464CF13A6515200470265 /* VK_LOCK.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_LOCK.hpp; path = VirtualKey/VK_LOCK.hpp; sourceTree = "<group>"; };
 		34B464D813A652CF00470265 /* VK_STICKY.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_STICKY.cpp; path = VirtualKey/VK_STICKY.cpp; sourceTree = "<group>"; };
 		34B464D913A652CF00470265 /* VK_STICKY.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_STICKY.hpp; path = VirtualKey/VK_STICKY.hpp; sourceTree = "<group>"; };
+		34B464DD13A6538A00470265 /* VK_LAZY.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_LAZY.cpp; path = VirtualKey/VK_LAZY.cpp; sourceTree = "<group>"; };
+		34B464DE13A6538A00470265 /* VK_LAZY.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_LAZY.hpp; path = VirtualKey/VK_LAZY.hpp; sourceTree = "<group>"; };
 		34B5E8A41261284200DCFB0D /* ApplicationFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ApplicationFilter.cpp; path = RemapFilter/ApplicationFilter.cpp; sourceTree = "<group>"; };
 		34B5E8A51261284200DCFB0D /* ApplicationFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ApplicationFilter.hpp; path = RemapFilter/ApplicationFilter.hpp; sourceTree = "<group>"; };
 		34B5E8B31261960700DCFB0D /* InputModeFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InputModeFilter.cpp; path = RemapFilter/InputModeFilter.cpp; sourceTree = "<group>"; };
@@ -397,6 +401,8 @@
 		34B464CC13A6513700470265 /* VirtualKey */ = {
 			isa = PBXGroup;
 			children = (
+				34B464DD13A6538A00470265 /* VK_LAZY.cpp */,
+				34B464DE13A6538A00470265 /* VK_LAZY.hpp */,
 				34B464D813A652CF00470265 /* VK_STICKY.cpp */,
 				34B464D913A652CF00470265 /* VK_STICKY.hpp */,
 				34B464CE13A6515200470265 /* VK_LOCK.cpp */,
@@ -491,6 +497,7 @@
 				34CF0FE01363EC2400B5D950 /* GlobalLock.hpp in Headers */,
 				34B464D113A6515200470265 /* VK_LOCK.hpp in Headers */,
 				34B464DB13A652CF00470265 /* VK_STICKY.hpp in Headers */,
+				34B464E013A6538A00470265 /* VK_LAZY.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -618,6 +625,7 @@
 				34CF0FDF1363EC2400B5D950 /* GlobalLock.cpp in Sources */,
 				34B464D013A6515200470265 /* VK_LOCK.cpp in Sources */,
 				34B464DA13A652CF00470265 /* VK_STICKY.cpp in Sources */,
+				34B464DF13A6538A00470265 /* VK_LAZY.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
