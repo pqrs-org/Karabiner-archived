@@ -40,20 +40,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------------------------------------
-  bool
-  handle_VK_JIS_YEN(const Params_KeyboardEventCallBack& params)
-  {
-    if (params.key != KeyCode::VK_JIS_YEN) return false;
-
-    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(params.eventType, params.flags, KeyCode::JIS_YEN,
-                                                                                   KeyboardType::JIS_MACBOOK_2008, params.repeat));
-    if (ptr) {
-      EventOutputQueue::FireKey::fire(*ptr);
-    }
-    return true;
-  }
-
-  // ----------------------------------------------------------------------
   void
   Handle_VK_JIS_TEMPORARY::initialize(IOWorkLoop& workloop)
   {

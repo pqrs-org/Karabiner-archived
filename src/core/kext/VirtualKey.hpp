@@ -14,6 +14,7 @@
 #include "VirtualKey/VK_STICKY.hpp"
 #include "VirtualKey/VK_JIS_BACKSLASH.hpp"
 #include "VirtualKey/VK_JIS_TOGGLE_EISUU_KANA.hpp"
+#include "VirtualKey/VK_JIS_YEN.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace VirtualKey {
@@ -23,9 +24,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     bool isKeyLikeModifier(KeyCode keycode);
   };
-
-  // ----------------------------------------------------------------------
-  bool handle_VK_JIS_YEN(const Params_KeyboardEventCallBack& params);
 
   // ----------------------------------------------------------------------
   class Handle_VK_JIS_TEMPORARY {
