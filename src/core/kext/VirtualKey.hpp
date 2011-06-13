@@ -8,6 +8,7 @@
 #include "Vector.hpp"
 #include "VirtualKey/VK_LOCK.hpp"
 #include "VirtualKey/VK_STICKY.hpp"
+#include "VirtualKey/VK_LAZY.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace VirtualKey {
@@ -16,13 +17,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void reset(void);
 
     bool isKeyLikeModifier(KeyCode keycode);
-  };
-
-  // ----------------------------------------------------------------------
-  class Handle_VK_LAZY {
-  public:
-    static bool handle(const Params_KeyboardEventCallBack& params);
-    static ModifierFlag getModifierFlag(KeyCode keycode);
   };
 
   // ----------------------------------------------------------------------

@@ -36,46 +36,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   VirtualKey::isKeyLikeModifier(KeyCode keycode)
   {
     if (Handle_VK_CONFIG::is_VK_CONFIG_SYNC_KEYDOWNUP(keycode)) return true;
-    if (Handle_VK_LAZY::getModifierFlag(keycode) != ModifierFlag::NONE) return true;
+    if (VirtualKey::VK_LAZY::getModifierFlag(keycode) != ModifierFlag::NONE) return true;
     if (Handle_VK_MOUSEKEY::is_VK_MOUSEKEY(keycode)) return true;
     return false;
-  }
-
-  // ----------------------------------------------------------------------
-  bool
-  Handle_VK_LAZY::handle(const Params_KeyboardEventCallBack& params)
-  {
-    ModifierFlag f = getModifierFlag(params.key);
-    if (f == ModifierFlag::NONE) return false;
-
-    // ----------------------------------------
-    if (params.repeat) return true;
-
-    if (params.eventType == EventType::DOWN) {
-      FlagStatus::increase(f);
-    } else if (params.eventType == EventType::UP) {
-      FlagStatus::decrease(f);
-    } else {
-      IOLOG_ERROR("Handle_VK_LAZY invalid EventType.\n");
-    }
-
-    return true;
-  }
-
-  ModifierFlag
-  Handle_VK_LAZY::getModifierFlag(KeyCode keycode)
-  {
-    /**/ if (keycode == KeyCode::VK_LAZY_COMMAND_L) { return ModifierFlag::COMMAND_L; }
-    else if (keycode == KeyCode::VK_LAZY_COMMAND_R) { return ModifierFlag::COMMAND_R; }
-    else if (keycode == KeyCode::VK_LAZY_CONTROL_L) { return ModifierFlag::CONTROL_L; }
-    else if (keycode == KeyCode::VK_LAZY_CONTROL_R) { return ModifierFlag::CONTROL_R; }
-    else if (keycode == KeyCode::VK_LAZY_FN)        { return ModifierFlag::FN;        }
-    else if (keycode == KeyCode::VK_LAZY_OPTION_L)  { return ModifierFlag::OPTION_L;  }
-    else if (keycode == KeyCode::VK_LAZY_OPTION_R)  { return ModifierFlag::OPTION_R;  }
-    else if (keycode == KeyCode::VK_LAZY_SHIFT_L)   { return ModifierFlag::SHIFT_L;   }
-    else if (keycode == KeyCode::VK_LAZY_SHIFT_R)   { return ModifierFlag::SHIFT_R;   }
-
-    return ModifierFlag::NONE;
   }
 
   // ----------------------------------------------------------------------
