@@ -9768,15 +9768,15 @@
                 </item>
                 <item>
                   <name>Use Dvorak Keyboard Layout on Japanese Keyboard</name>
-                  <appendix>(effective only when Input Source is Roman)</appendix>
+                  <appendix>(英数入力のときだけDvorak配列にする)</appendix>
                   <identifier>remap.jis_qwerty2dvorak_roman_only</identifier>
                   <inputmode_only>ROMAN</inputmode_only>
                   <!-- #include "include/jis_dvorak.xml" -->
                 </item>
                 <item>
                   <name>Use Dvorak Keyboard Layout on Japanese Keyboard</name>
-                  <appendix>(effective only when Input Source is Roman)</appendix>
-                  <appendix>(+ Command,Control,Option+Keys to Qwerty)</appendix>
+                  <appendix>(英数入力のときだけDvorak配列にする)</appendix>
+                  <appendix>(Command,Control,Optionを押したときはQwerty配列のまま)</appendix>
                   <identifier>remap.jis_qwerty2dvorak_roman_only_qwerty</identifier>
                   <inputmode_only>ROMAN</inputmode_only>
                   <modifier_not>
