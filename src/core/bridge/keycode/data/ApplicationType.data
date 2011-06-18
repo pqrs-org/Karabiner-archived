@@ -113,3 +113,6 @@ PREVIEW                 --AUTO--
 
 // Oracle SQL Developer
 ORACLE_SQL_DEVELOPER    --AUTO--
+
+// com.apple.systempreferences
+SYSTEM_PREFERENCES      --AUTO--

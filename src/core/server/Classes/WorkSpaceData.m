@@ -292,6 +292,10 @@
     return [parser keycode:@"ApplicationType::ORACLE_SQL_DEVELOPER"];
   }
 
+  if ([name isEqualToString:@"com.apple.systempreferences"]) {
+    return [parser keycode:@"ApplicationType::SYSTEM_PREFERENCES"];
+  }
+
   return [parser keycode:@"ApplicationType::UNKNOWN"];
 }
 
