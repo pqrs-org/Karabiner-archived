@@ -13,8 +13,9 @@ enum {
   // Version 6: Added VK_MOUSEKEY_BUTTON_*
   // Version 7: Added essential configurations. (option.pointing_reverse_*_scroll)
   // Version 8: Removed an essential configuration. (general.show_sticky_modifier_status)
+  // Version 9: Added VK_STICKY_*_FORCE_ON, VK_STICKY_*_FORCE_OFF.
 
-  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 8,
+  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 9,
 };
 
 enum {
