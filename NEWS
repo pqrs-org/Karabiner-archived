@@ -1,4 +1,5 @@
 Changes since 7.3.0
+    - Added KeyCode::VK_STICKY_*_FORCE_ON, KeyCode::VK_STICKY_*_FORCE_OFF.
     - Some minor improvements.
     - Added about XXX kinds settings.
 
