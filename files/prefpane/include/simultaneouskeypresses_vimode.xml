@@ -555,6 +555,13 @@
         <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode , KeyCode::SPACE</autogen>
       </item>
       <item>
+        <name>Single Key Press Space turns on "Simultaneous Vi Mode"</name>
+        <appendix>(With initial delay to prevent accidental activation of writing text)</appendix>
+        <appendix>(You have to adjust the Holding Key to Key Threshold on the Key Repeat Tab)</appendix>
+        <identifier>remap.simultaneouskeypresses_vimode_space_no_repeat_delay</identifier>
+        <autogen>--HoldingKeyToKey-- KeyCode::SPACE, KeyCode::SPACE, KeyCode::VK_NONE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode</autogen>
+      </item>      
+      <item>
         <name>[Option] Use JKIL instead of HJKL</name>
         <identifier>option.simultaneouskeypresses_vimode_jkli</identifier>
       </item>
