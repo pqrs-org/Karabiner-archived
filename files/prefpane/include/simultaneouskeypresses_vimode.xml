@@ -341,7 +341,7 @@
       </block>
       <block>
         <config_only>option.simultaneouskeypresses_vimode_f_to_command</config_only>
-        <autogen>--KeyOverlaidModifier-- KeyCode::F, KeyCode::COMMAND_L, ModifierFlag::EXTRA3, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+        <autogen>--KeyOverlaidModifier-- KeyCode::F, KeyCode::COMMAND_L, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
       </block>
       <block>
         <autogen>--KeyToKey-- KeyCode::F, KeyCode::SHIFT_L</autogen>
@@ -577,9 +577,9 @@
         <identifier>option.simultaneouskeypresses_vimode_slash_to_command_slash</identifier>
       </item>
       <item>
-        <name>[Option] U/O to Delete/Space</name>
-        <appendix>+ when you keep U pressed and press O it sends Forward_Delete</appendix>
-        <appendix>+ when you keep O pressed and press U it sends Space+Left</appendix>
+        <name>[Option] U/O to Backspace/Space</name>
+        <appendix>+ when you keep U pressed and press O it sends Delete</appendix>
+        <appendix>+ when you keep O pressed and press U it sends Spaceback(space+left)</appendix>
         <identifier>option.simultaneouskeypresses_vimode_u_o_to_delete_space</identifier>
       </item>
       <item>
