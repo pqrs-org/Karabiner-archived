@@ -33,6 +33,16 @@
         <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::EXTRA5, KeyCode::Z, ModifierFlag::SHIFT_L | ModifierFlag::COMMAND_L</autogen>
       </block>
       <block>
+        <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::EXTRA4, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L, KeyCode::RETURN, KeyCode::CURSOR_UP</autogen>
+        <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::O, ModifierFlag::COMMAND_L, KeyCode::VK_MODIFIER_EXTRA4, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L, KeyCode::RETURN</autogen>
+        <config_only>option.simultaneouskeypresses_vimode_u_o_to_delete_space_newline</config_only>
+      </block>
+      <block>
+        <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::EXTRA3, KeyCode::TAB, ModifierFlag::SHIFT_L</autogen>
+        <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::O, ModifierFlag::OPTION_L, KeyCode::VK_MODIFIER_EXTRA3, KeyCode::TAB</autogen>
+        <config_only>option.simultaneouskeypresses_vimode_u_o_to_delete_space_tab</config_only>
+      </block>
+      <block>
         <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::EXTRA5, KeyCode::SPACE, KeyCode::CURSOR_LEFT</autogen>
         <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::EXTRA5, KeyCode::FORWARD_DELETE</autogen>
         <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::U, KeyCode::VK_MODIFIER_EXTRA5, KeyCode::DELETE</autogen>
@@ -581,6 +591,16 @@
         <appendix>+ when you keep U pressed and press O it sends Delete</appendix>
         <appendix>+ when you keep O pressed and press U it sends Spaceback(space+left)</appendix>
         <identifier>option.simultaneouskeypresses_vimode_u_o_to_delete_space</identifier>
+      </item>
+      <item>
+        <name>[Option] Option+O to Tab</name>
+        <appendix>+ when you keep O pressed and press U it sends Shift+Tab</appendix>
+        <identifier>option.simultaneouskeypresses_vimode_u_o_to_delete_space_tab</identifier>
+      </item>
+      <item>
+        <name>[Option] Command+O to New Empty Line</name>
+        <appendix>+ when you keep O pressed and press U it send Empty line above</appendix>
+        <identifier>option.simultaneouskeypresses_vimode_u_o_to_delete_space_newline</identifier>
       </item>
       <item>
         <name>[Option] W to Command+W (Close Window) </name>
