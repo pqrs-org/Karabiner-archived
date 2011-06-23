@@ -3573,6 +3573,30 @@
       <name>Change Num Key (1...0)</name>
       <list>
         <item>
+          <name>Fn+Number to KeyPad</name>
+          <appendix>Fn+1,Fn+2,...,Fn+9,Fn+0 to KeyPad Numbers</appendix>
+          <appendix>Fn+Symbols (.+-=/) to KeyPad Symbols</appendix>
+          <appendix>Fn+Shift+Delete to KeyPad Clear</appendix>
+          <identifier>remap.fnnumber2keypad</identifier>
+          <autogen>--KeyToKey-- KeyCode::KEY_1,  ModifierFlag::FN,            KeyCode::KEYPAD_1</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_2,  ModifierFlag::FN,            KeyCode::KEYPAD_2</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_3,  ModifierFlag::FN,            KeyCode::KEYPAD_3</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_4,  ModifierFlag::FN,            KeyCode::KEYPAD_4</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_5,  ModifierFlag::FN,            KeyCode::KEYPAD_5</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_6,  ModifierFlag::FN,            KeyCode::KEYPAD_6</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_7,  ModifierFlag::FN,            KeyCode::KEYPAD_7</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_8,  ModifierFlag::FN | VK_SHIFT, KeyCode::KEYPAD_MULTIPLY</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_8,  ModifierFlag::FN,            KeyCode::KEYPAD_8</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_9,  ModifierFlag::FN,            KeyCode::KEYPAD_9</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_0,  ModifierFlag::FN,            KeyCode::KEYPAD_0</autogen>
+          <autogen>--KeyToKey-- KeyCode::MINUS,  ModifierFlag::FN,            KeyCode::KEYPAD_MINUS</autogen>
+          <autogen>--KeyToKey-- KeyCode::DOT,    ModifierFlag::FN,            KeyCode::KEYPAD_DOT</autogen>
+          <autogen>--KeyToKey-- KeyCode::SLASH,  ModifierFlag::FN,            KeyCode::KEYPAD_SLASH</autogen>
+          <autogen>--KeyToKey-- KeyCode::EQUAL,  ModifierFlag::FN | VK_SHIFT, KeyCode::KEYPAD_PLUS</autogen>
+          <autogen>--KeyToKey-- KeyCode::EQUAL,  ModifierFlag::FN,            KeyCode::KEYPAD_EQUAL</autogen>
+          <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::FN | VK_SHIFT, KeyCode::KEYPAD_CLEAR</autogen>
+        </item>
+        <item>
           <name>Num Key (1234567890-=) to F1...F12</name>
           <list>
             <item>
