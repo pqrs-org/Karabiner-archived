@@ -4703,6 +4703,8 @@
               <autogen>--KeyToKey-- KeyCode::F, KeyCode::VK_MODIFIER_EXTRA1</autogen>                            
               <block>
                 <config_only>option.tabmode_jl</config_only>
+                <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA1, KeyCode::L, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA1, KeyCode::Q, ModifierFlag::COMMAND_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::L, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::J, KeyCode::TAB, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
               </block>
@@ -4770,8 +4772,10 @@
             </item>
             <item><name>------------------------------------------------------------</name></item>
             <item>
-              <name>[Option] Switch apps with j/l</name>
+              <name>[Option] Switch apps with J/L</name>
               <appendix>For people who like jkli configuration</appendix>
+              <appendix>+(Having F pressed, J sends Command+Q (Quit application))</appendix>
+              <appendix>+(Having F pressed, L sends Command+Option+L (Evoke launchbar))</appendix>
               <identifier>option.tabmode_jl</identifier>
             </item>
             <item>
