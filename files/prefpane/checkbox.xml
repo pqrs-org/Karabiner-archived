@@ -4669,6 +4669,7 @@
               <name>What's Tabmode?</name>
               <appendix>It replaces the default shortcut for switching applications (cmd+tab)</appendix>
               <appendix>While tab is pressed, use your favourite combination of left/right keys to switch between apps</appendix>
+              <appendix>It has evolved into a window manager shortcut, capable of managing windows, tabs, spaces and split views</appendix>
               <identifier vk_config="true">notsave.tabmode</identifier>
               <block>
                 <config_only>option.tabmode_jl</config_only>
