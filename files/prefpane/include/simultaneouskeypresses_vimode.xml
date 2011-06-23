@@ -354,6 +354,10 @@
         <autogen>--KeyOverlaidModifier-- KeyCode::F, KeyCode::COMMAND_L, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
       </block>
       <block>
+        <config_only>option.simultaneouskeypresses_vimode_g_to_duplicate</config_only>
+        <autogen>--KeyToKey-- KeyCode::G, KeyCode::D, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+      </block>
+      <block>
         <autogen>--KeyToKey-- KeyCode::F, KeyCode::SHIFT_L</autogen>
         <config_only>option.simultaneouskeypresses_vimode_f_to_shift</config_only>
       </block>
@@ -581,6 +585,11 @@
         <name>[Option] F to Command</name>
         <appendix>(+ When you press F only send Command+V)</appendix>
         <identifier>option.simultaneouskeypresses_vimode_f_to_command</identifier>
+      </item>
+      <item>
+        <name>[Option] G to Control+Shift+D</name>
+        <appendix> (Duplicate line in Texmate)</appendix>        
+        <identifier>option.simultaneouskeypresses_vimode_g_to_duplicate</identifier>
       </item>
       <item>
         <name>[Option] / to Command+/</name>
