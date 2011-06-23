@@ -4724,6 +4724,8 @@
                   <autogen>--KeyToKey-- KeyCode::K, KeyCode::UK_SECTION, ModifierFlag::COMMAND_L</autogen>
                   <autogen>--KeyToKey-- KeyCode::I, KeyCode::UK_SECTION, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
                 </block>
+                <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA1, KeyCode::N, ModifierFlag::COMMAND_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::EXTRA1, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::K, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::I, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
               </block>
@@ -4785,6 +4787,7 @@
             <item>
               <name>[Option] Switch windows of frontmost app with i/k</name>
               <appendix>For people who like jkli configuration</appendix>
+              <appendix>+(Having F pressed, K/I send Command+(N/W) (New/Close Window))</appendix>                             
               <identifier>option.tabmode_ik</identifier>
             </item>
             <item>
