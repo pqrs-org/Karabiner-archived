@@ -4721,13 +4721,13 @@
                 <block>
                   <only>VIRTUALMACHINE</only>
                   <config_only>option.tabmode_ikvm</config_only>
-                  <autogen>--KeyToKey-- KeyCode::K, KeyCode::UK_SECTION, ModifierFlag::COMMAND_L</autogen>
-                  <autogen>--KeyToKey-- KeyCode::I, KeyCode::UK_SECTION, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+                  <autogen>--KeyToKey-- KeyCode::I, KeyCode::UK_SECTION, ModifierFlag::COMMAND_L</autogen>
+                  <autogen>--KeyToKey-- KeyCode::K, KeyCode::UK_SECTION, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
                 </block>
                 <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA1, KeyCode::N, ModifierFlag::COMMAND_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::EXTRA1, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
-                <autogen>--KeyToKey-- KeyCode::K, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L</autogen>
-                <autogen>--KeyToKey-- KeyCode::I, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::I, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::K, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
               </block>
               <block>
                 <config_only>option.tabmode_uo</config_only>
