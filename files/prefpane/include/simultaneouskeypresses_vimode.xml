@@ -597,7 +597,7 @@
       </item>
       <item>
         <name>[Option] G to Control+Shift+D</name>
-        <appendix>(Duplicate line in Texmate)</appendix>        
+        <appendix>(Duplicate line in Texmate)</appendix>
         <identifier>option.simultaneouskeypresses_vimode_g_to_duplicate</identifier>
       </item>
       <item>
