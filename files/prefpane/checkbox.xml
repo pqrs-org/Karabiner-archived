@@ -4696,11 +4696,12 @@
           <list>
             <item>
               <name>What's Tabmode?</name>
-              <appendix>It replaces the default shortcut for switching applications (cmd+tab)</appendix>
-              <appendix>While tab is pressed, use your favourite combination of left/right keys to switch between apps</appendix>
-              <appendix>It has evolved into a window manager shortcut, capable of managing windows, tabs, spaces and split views</appendix>
+              <appendix>It replaces the default shortcut for switching applications. (cmd+tab)</appendix>
+              <appendix>While tab is pressed, use your favourite combination of left/right keys to switch between apps.</appendix>
+              <appendix>It has evolved into a window manager shortcut, capable of managing windows, tabs,</appendix>
+              <appendix>spaces and split views.</appendix>
               <identifier vk_config="true">notsave.tabmode</identifier>
-              <autogen>--KeyToKey-- KeyCode::F, KeyCode::VK_MODIFIER_EXTRA1</autogen>                            
+              <autogen>--KeyToKey-- KeyCode::F, KeyCode::VK_MODIFIER_EXTRA1</autogen>
               <block>
                 <config_only>option.tabmode_jl</config_only>
                 <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA1, KeyCode::L, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
@@ -4740,7 +4741,7 @@
                   <autogen>--KeyToKey-- KeyCode::O, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::N</autogen>
                 </block>
                 <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::EXTRA1, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
-                <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::EXTRA1, KeyCode::T, ModifierFlag::COMMAND_L</autogen>                
+                <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::EXTRA1, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::U, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::O, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
               </block>
@@ -4756,16 +4757,16 @@
                 <config_only>option.tabmode_switchviews</config_only>
                 <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::EXTRA1, KeyCode::H, ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::EXTRA1, KeyCode::V, ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L</autogen>
-                <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::EXTRA1, KeyCode::W, ModifierFlag::COMMAND_L</autogen>                
-                <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA1, KeyCode::W, ModifierFlag::COMMAND_L</autogen>                                
+                <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::EXTRA1, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA1, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::B, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::N, KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::M, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-                <autogen>--KeyToKey-- KeyCode::H, KeyCode::CURSOR_UP, ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>                                                
+                <autogen>--KeyToKey-- KeyCode::H, KeyCode::CURSOR_UP, ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
               </block>
               <block>
                 <name>[Option] Y to Command+W</name>
-                <autogen>--KeyToKey-- KeyCode::Y, KeyCode::W, ModifierFlag::COMMAND_L</autogen>                
+                <autogen>--KeyToKey-- KeyCode::Y, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
                 <config_only>option.tabmode_y_to_w</config_only>
               </block>
               <block>
@@ -4782,7 +4783,7 @@
                 <name>[Option] ; to Command+Option+L</name>
                 <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::L, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
                 <config_only>option.tabmode_semicolon_to_launchbar</config_only>
-              </block>              
+              </block>
             </item>
             <item>
               <name>Keeping tab pressed turns on "Tab Mode"</name>
@@ -4811,7 +4812,7 @@
             <item>
               <name>[Option] Switch windows of frontmost app with i/k</name>
               <appendix>For people who like jkli configuration</appendix>
-              <appendix>+(Having F pressed, K/I send Command+(N/W) (New/Close Window))</appendix>                             
+              <appendix>+(Having F pressed, K/I send Command+(N/W) (New/Close Window))</appendix>
               <identifier>option.tabmode_ik</identifier>
             </item>
             <item>
@@ -4821,7 +4822,7 @@
             </item>
             <item>
               <name>[Option] Switch tabs of frontmost app with U/O</name>
-              <appendix>+(Create/delete tab pressing U/O while having F pressed)</appendix>              
+              <appendix>+(Create/delete tab pressing U/O while having F pressed)</appendix>
               <appendix>For people who like jkli configuration and have cmd+option+left/rigth as shortcut to</appendix>
               <appendix>switch tabs</appendix>
               <identifier>option.tabmode_uo</identifier>
@@ -4838,7 +4839,7 @@
               <name>[Option] bnmh to (left/down/right/up)+Ctrl+Optn+Shift+</name>
               <appendix>Shortcuts used to switch split panes it apps like iTerm2 and others</appendix>
               <appendix>+(Having F pressed, N/M send (H/V)+Command+Option (Split Horiz/Vert))</appendix>
-              <appendix>+(Having F pressed, B/H send Command+W (Close))</appendix>               
+              <appendix>+(Having F pressed, B/H send Command+W (Close))</appendix>
               <identifier>option.tabmode_switchviews</identifier>
             </item>
             <item>
