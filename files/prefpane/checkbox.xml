@@ -10925,7 +10925,7 @@
           <autogen>--KeyToKey-- KeyCode::QUOTE, VK_SHIFT, KeyCode::KEY_2, ModifierFlag::SHIFT_L</autogen>
         </item>
         <item>
-          <name>Section(§) to Option_L+3 (#), Shift+Section(§) to Tilde(~)</name>
+          <name>Section(§) to Option_L+3 (Hash #), Shift+Section(§) to Tilde(~)</name>
           <identifier>remap.uk_section2hash</identifier>
           <autogen>--KeyToKey-- KeyCode::UK_SECTION, VK_SHIFT, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
           <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::KEY_3, ModifierFlag::OPTION_L</autogen>
@@ -10946,7 +10946,7 @@
           <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::SHIFT_L</autogen>
         </item>
         <item>
-          <name>Backslash(\) to Option_L+3 (#), Shift+Backslash(\) to Tilde(~)</name>
+          <name>Backslash(\) to Option_L+3 (Hash #), Shift+Backslash(\) to Tilde(~)</name>
           <identifier>remap.uk_backslash2hash</identifier>
           <autogen>--KeyToKey-- KeyCode::BACKSLASH, VK_SHIFT, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
           <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::KEY_3, ModifierFlag::OPTION_L</autogen>
