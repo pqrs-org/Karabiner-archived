@@ -102,6 +102,63 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     KeyOverlaidModifier::remap(RemapParams& remapParams)
     {
+      // ======================================================================
+      // About initial modifier wait.
+      //
+      // For fast typing, we provide "initial modifier wait".
+      // For example, let's consider "Space to Shift (when type only, send Space)".
+      //
+      //
+      // ---------+------------------------------------------------
+      // Received | Press                            Release
+      // Events   | Space                             Space
+      // ---------+   |                                 |
+      // Time     |   +-------+-------------------------+--------->
+      // ---------+           |                         |
+      // Sending  |      Shift Down                Shift Up
+      // Events   |                                Space Down
+      //          |                                Space Up
+      // ---------+
+      //          |   <------->
+      //          |   initial modifier wait
+      // ---------+------------------------------------------------
+      //
+      //
+      // ======================================================================
+      // If other keys are pressed while "initial modifier wait",
+      // we don't apply modifier these keys.
+      // In the following case, we send only Space and Tab. (not Shift).
+      //
+      //
+      // Press        Press     Release            Release
+      // Space         Tab        Tab               Space
+      //   |            |          |                  |
+      //   +------------+----------+------------------+--------->
+      //                |          |
+      //           Space Down   Tab Up
+      //           Space Up
+      //             Tab Down
+      //
+      //   <--------------------------------->
+      //       initial modifier wait
+      //
+      //
+      // ======================================================================
+      // And if Space is released while "initial modifier wait",
+      // we don't send modifier event.
+      //
+      //
+      // Press        Release
+      // Space         Space
+      //   |             |
+      //   +-------------+--------------------------------------->
+      //                 |
+      //            Space Down
+      //            Space Up
+      //
+      //   <--------------------------------->
+      //       initial modifier wait
+
       bool savedIsAnyEventHappen = isAnyEventHappen_;
 
       bool result = keytokey_.remap(remapParams);
