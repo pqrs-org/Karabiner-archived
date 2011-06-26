@@ -529,25 +529,25 @@
         <name>[Option] A to Shift</name>
         <appendix>(+ When you press A only send Control+S)</appendix>
         <identifier>option.simultaneouskeypresses_vimode_a_to_shift_select</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::A, ModifierFlag::EXTRA1, KeyCode::SHIFT_L, KeyCode::S, ModifierFlag::CONTROL_L</autogen>        
+        <autogen>--KeyOverlaidModifier-- KeyCode::A, ModifierFlag::EXTRA1, KeyCode::SHIFT_L, ModifierFlag::EXTRA1, KeyCode::S, ModifierFlag::CONTROL_L</autogen>        
       </item>
       <item>
         <name>[Option] S to Control</name>
         <appendix>(+ When you press S only send Command+X)</appendix>
         <identifier>option.simultaneouskeypresses_vimode_s_to_control</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::S, ModifierFlag::EXTRA1, KeyCode::CONTROL_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>        
+        <autogen>--KeyOverlaidModifier-- KeyCode::S, ModifierFlag::EXTRA1, KeyCode::CONTROL_L, ModifierFlag::EXTRA1, KeyCode::X, ModifierFlag::COMMAND_L</autogen>        
       </item>
       <item>
         <name>[Option] D to Option</name>
         <appendix>(+ When you press D only send Command+C)</appendix>
         <identifier>option.simultaneouskeypresses_vimode_d_to_option</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::D, ModifierFlag::EXTRA1, KeyCode::OPTION_L, KeyCode::C, ModifierFlag::COMMAND_L</autogen>        
+        <autogen>--KeyOverlaidModifier-- KeyCode::D, ModifierFlag::EXTRA1, KeyCode::OPTION_L, ModifierFlag::EXTRA1, KeyCode::C, ModifierFlag::COMMAND_L</autogen>        
       </item>
       <item>
         <name>[Option] F to Command</name>
         <appendix>(+ When you press F only send Command+V)</appendix>
         <identifier>option.simultaneouskeypresses_vimode_f_to_command</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::F, ModifierFlag::EXTRA1, KeyCode::COMMAND_L, KeyCode::V, ModifierFlag::COMMAND_L</autogen>        
+        <autogen>--KeyOverlaidModifier-- KeyCode::F, ModifierFlag::EXTRA1, KeyCode::COMMAND_L, ModifierFlag::EXTRA1, KeyCode::V, ModifierFlag::COMMAND_L</autogen>        
       </item>
       <item>
         <name>[Option] G to Control+Shift+D</name>
