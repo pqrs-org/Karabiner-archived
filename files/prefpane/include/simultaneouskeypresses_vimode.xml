@@ -33,7 +33,7 @@
         <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::EXTRA5, KeyCode::Z, ModifierFlag::SHIFT_L | ModifierFlag::COMMAND_L</autogen>
       </block>
       <block>
-        <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::EXTRA3, KeyCode::TAB, ModifierFlag::SHIFT_L</autogen>kr
+        <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::EXTRA3, KeyCode::TAB, ModifierFlag::SHIFT_L</autogen>
         <config_only>option.simultaneouskeypresses_vimode_u_o_to_delete_space_tab</config_only>
       </block>
       <block>
