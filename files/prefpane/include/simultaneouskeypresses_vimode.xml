@@ -83,68 +83,68 @@
       </block>
       <block>
         <config_only>option.simultaneouskeypresses_vimode_d_to_deletemode</config_only>
-        <autogen>--KeyToKey-- KeyCode::D, KeyCode::VK_MODIFIER_EXTRA1</autogen>
+        <autogen>--KeyToKey-- KeyCode::D, KeyCode::VK_MODIFIER_EXTRA2</autogen>
         <block>
           <config_not>option.simultaneouskeypresses_vimode_jkli</config_not>
-          <autogen>--KeyToKey-- KeyCode::H,         ModifierFlag::EXTRA1, KeyCode::DELETE</autogen>
-          <autogen>--KeyToKey-- KeyCode::L,         ModifierFlag::EXTRA1, KeyCode::FORWARD_DELETE</autogen>
-          <autogen>--KeyToKey-- KeyCode::G,         ModifierFlag::EXTRA1, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::EXTRA1, KeyCode::Z, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::J,         ModifierFlag::EXTRA1, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::K,         ModifierFlag::EXTRA1, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::H,         ModifierFlag::EXTRA2, KeyCode::DELETE</autogen>
+          <autogen>--KeyToKey-- KeyCode::L,         ModifierFlag::EXTRA2, KeyCode::FORWARD_DELETE</autogen>
+          <autogen>--KeyToKey-- KeyCode::G,         ModifierFlag::EXTRA2, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::EXTRA2, KeyCode::Z, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::J,         ModifierFlag::EXTRA2, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::K,         ModifierFlag::EXTRA2, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
         </block>
         <block>
           <config_only>option.simultaneouskeypresses_vimode_jkli</config_only>
-          <autogen>--KeyToKey-- KeyCode::J,         ModifierFlag::EXTRA1, KeyCode::DELETE</autogen>
-          <autogen>--KeyToKey-- KeyCode::L,         ModifierFlag::EXTRA1, KeyCode::FORWARD_DELETE</autogen>
-          <autogen>--KeyToKey-- KeyCode::U,         ModifierFlag::EXTRA1, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::O,         ModifierFlag::EXTRA1, KeyCode::Z, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L </autogen>
-          <autogen>--KeyToKey-- KeyCode::K,         ModifierFlag::EXTRA1, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::I,         ModifierFlag::EXTRA1, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::J,         ModifierFlag::EXTRA2, KeyCode::DELETE</autogen>
+          <autogen>--KeyToKey-- KeyCode::L,         ModifierFlag::EXTRA2, KeyCode::FORWARD_DELETE</autogen>
+          <autogen>--KeyToKey-- KeyCode::U,         ModifierFlag::EXTRA2, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::O,         ModifierFlag::EXTRA2, KeyCode::Z, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L </autogen>
+          <autogen>--KeyToKey-- KeyCode::K,         ModifierFlag::EXTRA2, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::I,         ModifierFlag::EXTRA2, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
         </block>
       </block>
       <block>
         <config_only>option.simultaneouskeypresses_vimode_x_to_deletemode</config_only>
-        <autogen>--KeyToKey-- KeyCode::X, KeyCode::VK_MODIFIER_EXTRA1</autogen>
+        <autogen>--KeyToKey-- KeyCode::X, KeyCode::VK_MODIFIER_EXTRA2</autogen>
         <block>
           <config_not>option.simultaneouskeypresses_vimode_jkli</config_not>
-          <autogen>--KeyToKey-- KeyCode::H,         ModifierFlag::EXTRA1, KeyCode::DELETE</autogen>
-          <autogen>--KeyToKey-- KeyCode::L,         ModifierFlag::EXTRA1, KeyCode::FORWARD_DELETE</autogen>
-          <autogen>--KeyToKey-- KeyCode::G,         ModifierFlag::EXTRA1, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::EXTRA1, KeyCode::Z, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::K,         ModifierFlag::EXTRA1, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::J,         ModifierFlag::EXTRA1, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::H,         ModifierFlag::EXTRA2, KeyCode::DELETE</autogen>
+          <autogen>--KeyToKey-- KeyCode::L,         ModifierFlag::EXTRA2, KeyCode::FORWARD_DELETE</autogen>
+          <autogen>--KeyToKey-- KeyCode::G,         ModifierFlag::EXTRA2, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::EXTRA2, KeyCode::Z, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::K,         ModifierFlag::EXTRA2, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::J,         ModifierFlag::EXTRA2, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
         </block>
         <block>
           <config_only>option.simultaneouskeypresses_vimode_jkli</config_only>
-          <autogen>--KeyToKey-- KeyCode::J,         ModifierFlag::EXTRA1, KeyCode::DELETE</autogen>
-          <autogen>--KeyToKey-- KeyCode::L,         ModifierFlag::EXTRA1, KeyCode::FORWARD_DELETE</autogen>
-          <autogen>--KeyToKey-- KeyCode::H,         ModifierFlag::EXTRA1, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::EXTRA1, KeyCode::Z, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L </autogen>
-          <autogen>--KeyToKey-- KeyCode::I,         ModifierFlag::EXTRA1, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::K,         ModifierFlag::EXTRA1, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::J,         ModifierFlag::EXTRA2, KeyCode::DELETE</autogen>
+          <autogen>--KeyToKey-- KeyCode::L,         ModifierFlag::EXTRA2, KeyCode::FORWARD_DELETE</autogen>
+          <autogen>--KeyToKey-- KeyCode::H,         ModifierFlag::EXTRA2, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::EXTRA2, KeyCode::Z, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L </autogen>
+          <autogen>--KeyToKey-- KeyCode::I,         ModifierFlag::EXTRA2, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::K,         ModifierFlag::EXTRA2, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
         </block>
       </block>
       <block>
         <config_only>option.simultaneouskeypresses_vimode_f_to_deletemode</config_only>
-        <autogen>--KeyToKey-- KeyCode::F, KeyCode::VK_MODIFIER_EXTRA1</autogen>
+        <autogen>--KeyToKey-- KeyCode::F, KeyCode::VK_MODIFIER_EXTRA2</autogen>
         <block>
           <config_not>option.simultaneouskeypresses_vimode_jkli</config_not>
-          <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA1, KeyCode::DELETE</autogen>
-          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA1, KeyCode::FORWARD_DELETE</autogen>
-          <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::EXTRA1, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::EXTRA1, KeyCode::Z, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA1, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA1, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA2, KeyCode::DELETE</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA2, KeyCode::FORWARD_DELETE</autogen>
+          <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::EXTRA2, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::EXTRA2, KeyCode::Z, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA2, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA2, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
         </block>
         <block>
           <config_only>option.simultaneouskeypresses_vimode_jkli</config_only>
-          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA1, KeyCode::DELETE</autogen>
-          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA1, KeyCode::FORWARD_DELETE</autogen>
-          <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::EXTRA1, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::EXTRA1, KeyCode::Z, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA1, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::EXTRA1, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA2, KeyCode::DELETE</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA2, KeyCode::FORWARD_DELETE</autogen>
+          <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::EXTRA2, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::EXTRA2, KeyCode::Z, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA2, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::EXTRA2, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
         </block>
       </block>
       <block>
