@@ -1,7 +1,7 @@
 #ifndef FORCENUMLOCKON_HPP
 #define FORCENUMLOCKON_HPP
 
-#include "RemapFuncBase.hpp"
+#include "RemapFuncClasses.hpp"
 #include "ListHookedKeyboard.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {

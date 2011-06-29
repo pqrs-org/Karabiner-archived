@@ -2,7 +2,7 @@
 #define KEYTOKEY_HPP
 
 #include "bridge.h"
-#include "RemapFuncBase.hpp"
+#include "RemapFuncClasses.hpp"
 #include "FromKeyChecker.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {

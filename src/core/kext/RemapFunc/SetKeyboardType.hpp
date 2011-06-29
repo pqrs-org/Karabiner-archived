@@ -1,7 +1,7 @@
 #ifndef SETKEYBOARDTYPE_HPP
 #define SETKEYBOARDTYPE_HPP
 
-#include "RemapFuncBase.hpp"
+#include "RemapFuncClasses.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {

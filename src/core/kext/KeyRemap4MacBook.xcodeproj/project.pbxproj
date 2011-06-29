@@ -17,6 +17,7 @@
 		3401FE0611E2E77300EBBF43 /* Vector.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3401FE0311E2E77300EBBF43 /* Vector.hpp */; };
 		341272FE11D8FE0E000A62DB /* HoldingKeyToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 341272FC11D8FE0E000A62DB /* HoldingKeyToKey.cpp */; };
 		341272FF11D8FE0E000A62DB /* HoldingKeyToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 341272FD11D8FE0E000A62DB /* HoldingKeyToKey.hpp */; };
+		342BB27D13BB6A9900E18FDD /* RemapFuncClasses.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 342BB27C13BB6A9900E18FDD /* RemapFuncClasses.hpp */; };
 		342C80541261B379007F15DA /* DeviceFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 342C80521261B379007F15DA /* DeviceFilter.cpp */; };
 		342C80551261B379007F15DA /* DeviceFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 342C80531261B379007F15DA /* DeviceFilter.hpp */; };
 		3430E93310C558CA00FC2D64 /* EventWatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3430E93110C558CA00FC2D64 /* EventWatcher.cpp */; };
@@ -44,7 +45,6 @@
 		3459F55D10C418D700DAB1FE /* KeyboardRepeat.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3459F55B10C418D700DAB1FE /* KeyboardRepeat.hpp */; };
 		345E3ECB11D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345E3EC811D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp */; };
 		345E3ECC11D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345E3EC911D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp */; };
-		345E3ECD11D79D24004B6347 /* RemapFuncBase.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345E3ECA11D79D24004B6347 /* RemapFuncBase.hpp */; };
 		345FD60811D819EA00FC1B86 /* ConsumerToConsumer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345FD60611D819EA00FC1B86 /* ConsumerToConsumer.cpp */; };
 		345FD60911D819EA00FC1B86 /* ConsumerToConsumer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345FD60711D819EA00FC1B86 /* ConsumerToConsumer.hpp */; };
 		346B753E0E72C0BA00F9A79F /* FlagStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 346B753C0E72C0BA00F9A79F /* FlagStatus.cpp */; };
@@ -149,6 +149,7 @@
 		3401FE0311E2E77300EBBF43 /* Vector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Vector.hpp; path = util/Vector.hpp; sourceTree = "<group>"; };
 		341272FC11D8FE0E000A62DB /* HoldingKeyToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HoldingKeyToKey.cpp; path = RemapFunc/HoldingKeyToKey.cpp; sourceTree = "<group>"; };
 		341272FD11D8FE0E000A62DB /* HoldingKeyToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = HoldingKeyToKey.hpp; path = RemapFunc/HoldingKeyToKey.hpp; sourceTree = "<group>"; };
+		342BB27C13BB6A9900E18FDD /* RemapFuncClasses.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RemapFuncClasses.hpp; path = RemapFunc/common/RemapFuncClasses.hpp; sourceTree = "<group>"; };
 		342C80521261B379007F15DA /* DeviceFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DeviceFilter.cpp; path = RemapFilter/DeviceFilter.cpp; sourceTree = "<group>"; };
 		342C80531261B379007F15DA /* DeviceFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DeviceFilter.hpp; path = RemapFilter/DeviceFilter.hpp; sourceTree = "<group>"; };
 		3430E93110C558CA00FC2D64 /* EventWatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventWatcher.cpp; path = util/EventWatcher.cpp; sourceTree = "<group>"; };
@@ -176,7 +177,6 @@
 		3459F55B10C418D700DAB1FE /* KeyboardRepeat.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyboardRepeat.hpp; path = util/KeyboardRepeat.hpp; sourceTree = "<group>"; };
 		345E3EC811D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IgnoreMultipleSameKeyPress.cpp; path = RemapFunc/IgnoreMultipleSameKeyPress.cpp; sourceTree = "<group>"; };
 		345E3EC911D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IgnoreMultipleSameKeyPress.hpp; path = RemapFunc/IgnoreMultipleSameKeyPress.hpp; sourceTree = "<group>"; };
-		345E3ECA11D79D24004B6347 /* RemapFuncBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RemapFuncBase.hpp; path = RemapFunc/RemapFuncBase.hpp; sourceTree = "<group>"; };
 		345FD60611D819EA00FC1B86 /* ConsumerToConsumer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConsumerToConsumer.cpp; path = RemapFunc/ConsumerToConsumer.cpp; sourceTree = "<group>"; };
 		345FD60711D819EA00FC1B86 /* ConsumerToConsumer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ConsumerToConsumer.hpp; path = RemapFunc/ConsumerToConsumer.hpp; sourceTree = "<group>"; };
 		346B753C0E72C0BA00F9A79F /* FlagStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FlagStatus.cpp; path = util/FlagStatus.cpp; sourceTree = "<group>"; };
@@ -336,9 +336,18 @@
 			name = Source;
 			sourceTree = "<group>";
 		};
+		342BB27A13BB6A7400E18FDD /* common */ = {
+			isa = PBXGroup;
+			children = (
+				342BB27C13BB6A9900E18FDD /* RemapFuncClasses.hpp */,
+			);
+			name = common;
+			sourceTree = "<group>";
+		};
 		345E3EC511D79D17004B6347 /* RemapFunc */ = {
 			isa = PBXGroup;
 			children = (
+				342BB27A13BB6A7400E18FDD /* common */,
 				3442D9E412F3123300EF7DF8 /* ForceNumLockOn.cpp */,
 				3442D9E512F3123300EF7DF8 /* ForceNumLockOn.hpp */,
 				344BB4EC12812A9F008B75F6 /* DropPointingRelativeCursorMove.cpp */,
@@ -373,7 +382,6 @@
 				34D347E511D8106C00D70815 /* KeyToKey.hpp */,
 				345E3EC811D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp */,
 				345E3EC911D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp */,
-				345E3ECA11D79D24004B6347 /* RemapFuncBase.hpp */,
 			);
 			name = RemapFunc;
 			sourceTree = "<group>";
@@ -506,7 +514,6 @@
 				3477E3BC11CFAC9D00DC05C9 /* RemapClass.hpp in Headers */,
 				346EB2E511D5CDC100BBDF0E /* EventInputQueue.hpp in Headers */,
 				345E3ECC11D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp in Headers */,
-				345E3ECD11D79D24004B6347 /* RemapFuncBase.hpp in Headers */,
 				34D347E711D8106C00D70815 /* KeyToKey.hpp in Headers */,
 				345FD60911D819EA00FC1B86 /* ConsumerToConsumer.hpp in Headers */,
 				347CADA111D82FFE00F51978 /* KeyToConsumer.hpp in Headers */,
@@ -547,6 +554,7 @@
 				34B464F413A65AED00470265 /* VK_JIS_BACKSLASH.hpp in Headers */,
 				34B464F813A65B6600470265 /* VK_JIS_YEN.hpp in Headers */,
 				34B464FC13A65CE000470265 /* VK_JIS_TEMPORARY.hpp in Headers */,
+				342BB27D13BB6A9900E18FDD /* RemapFuncClasses.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

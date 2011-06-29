@@ -1,7 +1,7 @@
 #ifndef POINTINGRELATIVETOSCROLL_HPP
 #define POINTINGRELATIVETOSCROLL_HPP
 
-#include "RemapFuncBase.hpp"
+#include "RemapFuncClasses.hpp"
 #include "FromKeyChecker.hpp"
 #include "IntervalChecker.hpp"
 #include "List.hpp"

@@ -1,7 +1,7 @@
 #ifndef POINTINGBUTTONTOKEY_HPP
 #define POINTINGBUTTONTOKEY_HPP
 
-#include "RemapFuncBase.hpp"
+#include "RemapFuncClasses.hpp"
 #include "FromKeyChecker.hpp"
 #include "KeyToKey.hpp"
 
