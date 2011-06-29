@@ -1,7 +1,7 @@
 #ifndef HOLDINGKEYTOKEY_HPP
 #define HOLDINGKEYTOKEY_HPP
 
-#include "RemapFuncBase.hpp"
+#include "RemapFuncClasses.hpp"
 #include "FromKeyChecker.hpp"
 #include "KeyToKey.hpp"
 #include "TimerWrapper.hpp"

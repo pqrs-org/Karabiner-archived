@@ -1,7 +1,7 @@
 #ifndef CONSUMERTOCONSUMER_HPP
 #define CONSUMERTOCONSUMER_HPP
 
-#include "RemapFuncBase.hpp"
+#include "RemapFuncClasses.hpp"
 #include "FromKeyChecker.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {

@@ -2,7 +2,7 @@
 #define KEYTOPOINTINGBUTTON_HPP
 
 #include "bridge.h"
-#include "RemapFuncBase.hpp"
+#include "RemapFuncClasses.hpp"
 #include "FromKeyChecker.hpp"
 #include "KeyToKey.hpp"
 #include "PointingButtonToPointingButton.hpp"

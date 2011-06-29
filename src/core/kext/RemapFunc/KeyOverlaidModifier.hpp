@@ -1,7 +1,7 @@
 #ifndef KEYOVERLAIDMODIFIER_HPP
 #define KEYOVERLAIDMODIFIER_HPP
 
-#include "RemapFuncBase.hpp"
+#include "RemapFuncClasses.hpp"
 #include "FromKeyChecker.hpp"
 #include "IntervalChecker.hpp"
 #include "KeyToKey.hpp"
