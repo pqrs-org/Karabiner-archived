@@ -1583,6 +1583,11 @@
           <appendix>KeyRemap4MacBook cannot know whether you're holding eject key or not.</appendix>
         </item>
         <item>
+          <name>Eject to Option+Backquote(`)</name>
+          <identifier>remap.eject_to_option_backquote</identifier>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L</autogen>
+        </item>
+        <item>
           <name>Eject to Dashboard if no modifiers pressed</name>
           <identifier>remap.eject2dashboard_withoutmodifiers</identifier>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::DASHBOARD</autogen>
@@ -2389,6 +2394,17 @@
           <name>Keyboard Light High to Music Next</name>
           <identifier>remap.keyboardlighthigh2musicnext</identifier>
           <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_HIGH, ConsumerKeyCode::MUSIC_NEXT</autogen>
+        </item>
+        <item><name>------------------------------------------------------------</name></item>
+        <item>
+          <name>Keyboard Light Low to Tab Left ( Command+{ )</name>
+          <identifier>remap.light_low_to_tab_left</identifier>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::KEYBOARDLIGHT_LOW, KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+        </item>
+        <item>
+          <name>Keyboard Light High to Tab Right ( Command+} )</name>
+          <identifier>remap.light_high_to_tab_right</identifier>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::KEYBOARDLIGHT_HIGH, KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
         </item>
         <item><name>------------------------------------------------------------</name></item>
         <item>
