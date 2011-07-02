@@ -6560,8 +6560,10 @@
               <appendix>To switch a space, Hold "ASDF"</appendix>
               <appendix>To switch a space, Hold "ZXCV"</appendix>
               <appendix></appendix>
-              <appendix>(Make setting of Spaces "Command+Control+Shift+Number Keys")</appendix>
-              <appendix></appendix>
+              <appendix>*** Change the configuration of Spaces to use this setting. ***</appendix>
+              <appendix>(1) Open "Spaces Preferences".</appendix>
+              <appendix>(2) Change "To switch directly to a space" configuration to</appendix>
+              <appendix>    "Command+Control+Shift+Number Keys".</appendix>
               <identifier>remap.spaces_special_holding_1234qwerasdfzxcv</identifier>
               <autogen>--HoldingKeyToKey-- KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::KEY_1, KeyCode::VK_NONE, KeyCode::KEY_1, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
               <autogen>--HoldingKeyToKey-- KeyCode::KEY_2, ModifierFlag::NONE, KeyCode::KEY_2, KeyCode::VK_NONE, KeyCode::KEY_2, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
@@ -6588,9 +6590,12 @@
               <appendix>To switch a space, Hold "ASDF"</appendix>
               <appendix>To switch a space, Hold "ZXCV"</appendix>
               <appendix></appendix>
-              <appendix>(Make setting of Spaces "Command+Control+Shift+Number Keys")</appendix>
-              <appendix></appendix>
               <appendix>(+ 1234567890 to !@#$%^&amp;*() / Shift+1234567890 to 1234567890)</appendix>
+              <appendix></appendix>
+              <appendix>*** Change the configuration of Spaces to use this setting. ***</appendix>
+              <appendix>(1) Open "Spaces Preferences".</appendix>
+              <appendix>(2) Change "To switch directly to a space" configuration to</appendix>
+              <appendix>    "Command+Control+Shift+Number Keys".</appendix>
               <identifier>remap.spaces_special_holding_1234qwerasdfzxcv_swap_number_and_symbol</identifier>
               <autogen>--HoldingKeyToKey-- KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::KEY_1, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::KEY_1, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
               <autogen>--HoldingKeyToKey-- KeyCode::KEY_2, ModifierFlag::NONE, KeyCode::KEY_2, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::KEY_2, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
