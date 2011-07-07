@@ -30,71 +30,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    DependingPressingPeriodKeyToKey::add(unsigned int datatype, unsigned int newval)
+    DependingPressingPeriodKeyToKey::add(KeyToKeyType::Value type, unsigned int datatype, unsigned int newval)
     {
-      switch (datatype) {
-        case BRIDGE_DATATYPE_KEYCODE:
-        {
-          switch (index_) {
-            case 0:
-              keytokey_drop_.add(KeyCode(newval));
-              keytokey_normal_.add(KeyCode::VK_PSEUDO_KEY);
-              keytokey_holding_.add(KeyCode::VK_PSEUDO_KEY);
-              break;
-
-            case 1:
-              // pass-through (== no break)
-              keytokey_drop_.add(KeyCode::VK_NONE);
-            default:
-              if (KeyCode::VK_NONE == newval) {
-                index_is_holding_ = true;
-              } else {
-                if (index_is_holding_) {
-                  keytokey_holding_.add(KeyCode(newval));
-                } else {
-                  keytokey_normal_.add(KeyCode(newval));
-                }
-              }
-              break;
-          }
-          ++index_;
-
-          break;
-        }
-
-        case BRIDGE_DATATYPE_FLAGS:
-        case BRIDGE_DATATYPE_OPTION:
-        {
-          switch (index_) {
-            case 0:
-              IOLOG_ERROR("Invalid DependingPressingPeriodKeyToKey::add\n");
-              break;
-
-            case 1:
-              keytokey_drop_.add(datatype, newval);
-              break;
-
-            default:
-              if (index_is_holding_) {
-                keytokey_holding_.add(datatype, newval);
-              } else {
-                keytokey_normal_.add(datatype, newval);
-              }
-              break;
-          }
-          break;
-        }
-
-        default:
-          IOLOG_ERROR("DependingPressingPeriodKeyToKey::add invalid datatype:%d\n", datatype);
-          break;
-      }
+      if (type == KeyToKeyType::END_) return;
+      keytokey_[type].add(datatype, newval);
     }
 
     bool
     DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams)
     {
-      bool result = keytokey_drop_.remap(remapParams);
+      bool result = keytokey_[KeyToKeyType::FROM].remap(remapParams);
       if (! result) {
         if (remapParams.params.ex_iskeydown) {
           // another key is pressed.
@@ -132,7 +77,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           target_->keydowntype_ = KEYDOWNTYPE_NORMAL;
           FlagStatus::ScopedTemporaryFlagsChanger stfc(savedflags_);
-          keytokey_normal_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+          keytokey_[KeyToKeyType::SHORT_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
           break;
         }
 
@@ -151,13 +96,13 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           target_->keydowntype_ = KEYDOWNTYPE_NONE;
           FlagStatus::ScopedTemporaryFlagsChanger stfc(savedflags_);
-          keytokey_normal_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+          keytokey_[KeyToKeyType::SHORT_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::UP);
           break;
         }
         case KEYDOWNTYPE_HOLDING:
         {
           target_->keydowntype_ = KEYDOWNTYPE_NONE;
-          keytokey_holding_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+          keytokey_[KeyToKeyType::LONG_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::UP);
           break;
         }
         case KEYDOWNTYPE_NONE:
@@ -174,7 +119,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (target_->keydowntype_ == KEYDOWNTYPE_NONE) {
         target_->keydowntype_ = KEYDOWNTYPE_HOLDING;
 
-        (target_->keytokey_holding_).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+        (target_->keytokey_[KeyToKeyType::LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
       }
     }
   }
