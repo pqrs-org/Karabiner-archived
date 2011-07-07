@@ -6476,12 +6476,26 @@
               <autogen>--KeyToKey-- KeyCode::D, KeyCode::EXPOSE_ALL, ModifierFlag::COMMAND_L</autogen>
               <autogen>--KeyToKey-- KeyCode::A, KeyCode::EXPOSE_ALL, ModifierFlag::CONTROL_L</autogen>
               <autogen>--KeyToKey-- KeyCode::B, KeyCode::DASHBOARD</autogen>
-              <autogen>--KeyToKey-- KeyCode::F, KeyCode::F4, ModifierFlag::CONTROL_L</autogen>
+
+              <block>
+                <config_only>option.expose_mode_f_to_optiontab</config_only>
+                <autogen>--KeyToKey-- KeyCode::F, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
+              </block>
+              <block>
+                <config_not>option.expose_mode_f_to_optiontab</config_not>
+                <autogen>--KeyToKey-- KeyCode::F, KeyCode::F4, ModifierFlag::CONTROL_L</autogen>
+              </block>
             </item>
             <item>
               <name>Simultaneous Key Presses [K+L] to toggle Expose Mode</name>
               <identifier>remap.simultaneouskeypresses_expose_kl</identifier>
               <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::L, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_expose_mode</autogen>
+            </item>
+            <item>
+              <name>[Option] Change "F" key behavior to "Option+Tab"</name>
+              <appendix>(Changing the shortcut of "Move focus" to "Option+Tab" from "Control+F4" is</appendix>
+              <appendix>a well workaround for a problem that Emacs.app grabs Control+F4 from system.)</appendix>
+              <identifier>option.expose_mode_f_to_optiontab</identifier>
             </item>
           </list>
         </item>
