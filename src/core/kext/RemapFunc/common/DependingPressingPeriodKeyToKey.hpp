@@ -83,6 +83,17 @@ namespace org_pqrs_KeyRemap4MacBook {
           PRESSING_TARGET_KEY_ONLY, // (4) in above description.
         };
       };
+      class KeyToKeyType {
+      public:
+        enum Value {
+          FROM,
+          SHORT_PERIOD,
+          LONG_PERIOD,
+          LONG_LONG_PERIOD,
+          PRESSING_TARGET_KEY_ONLY,
+          END_,
+        };
+      };
 
       static void static_initialize(IOWorkLoop& workloop);
       static void static_terminate(void);
@@ -101,7 +112,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // [n+1] => toKeys_holding_[0]
       // [n+2] => toKeys_holding_[1]
       // [n+3] => ...
-      void add(unsigned int datatype, unsigned int newval);
+      void add(KeyToKeyType::Value type, unsigned int datatype, unsigned int newval);
 
     private:
       enum KeyDownType {
@@ -124,9 +135,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool active_;
       KeyDownType keydowntype_;
 
-      KeyToKey keytokey_drop_;
-      KeyToKey keytokey_normal_;
-      KeyToKey keytokey_holding_;
+      KeyToKey keytokey_[KeyToKeyType::END_];
     };
   }
 }
