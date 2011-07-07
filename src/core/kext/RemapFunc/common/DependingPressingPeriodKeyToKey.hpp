@@ -73,6 +73,17 @@ namespace org_pqrs_KeyRemap4MacBook {
     //
     class DependingPressingPeriodKeyToKey {
     public:
+      class PeriodType {
+      public:
+        enum Value {
+          NONE,
+          SHORT_PERIOD,             // (1) in above description.
+          LONG_PERIOD,              // (2) in above description.
+          LONG_LONG_PERIOD,         // (3) in above description.
+          PRESSING_TARGET_KEY_ONLY, // (4) in above description.
+        };
+      };
+
       static void static_initialize(IOWorkLoop& workloop);
       static void static_terminate(void);
 
