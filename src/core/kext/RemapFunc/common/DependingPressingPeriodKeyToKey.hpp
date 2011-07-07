@@ -73,16 +73,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     //
     class DependingPressingPeriodKeyToKey {
     public:
-      class PeriodType {
-      public:
-        enum Value {
-          NONE,
-          SHORT_PERIOD,             // (1) in above description.
-          LONG_PERIOD,              // (2) in above description.
-          LONG_LONG_PERIOD,         // (3) in above description.
-          PRESSING_TARGET_KEY_ONLY, // (4) in above description.
-        };
-      };
       class KeyToKeyType {
       public:
         enum Value {
@@ -95,6 +85,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         };
       };
 
+      // ----------------------------------------
       static void static_initialize(IOWorkLoop& workloop);
       static void static_terminate(void);
 
@@ -103,22 +94,17 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       bool remap(RemapParams& remapParams);
 
-      // ----------------------------------------
-      // [0]   => fromKey_
-      // [1]   => toKeys_normal_[0]
-      // [2]   => toKeys_normal_[1]
-      // [3]   => ...
-      // [n]   => KeyCode::VK_NONE
-      // [n+1] => toKeys_holding_[0]
-      // [n+2] => toKeys_holding_[1]
-      // [n+3] => ...
       void add(KeyToKeyType::Value type, unsigned int datatype, unsigned int newval);
 
     private:
-      enum KeyDownType {
-        KEYDOWNTYPE_NONE,
-        KEYDOWNTYPE_NORMAL,
-        KEYDOWNTYPE_HOLDING,
+      class PeriodType {
+      public:
+        enum Value {
+          NONE,
+          SHORT_PERIOD,             // (1) in above description.
+          LONG_PERIOD,              // (2) in above description.
+          LONG_LONG_PERIOD,         // (3) in above description.
+        };
       };
 
       void dokeydown(void);
@@ -129,11 +115,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       static DependingPressingPeriodKeyToKey* target_;
 
       size_t index_;
-      bool index_is_holding_;
       Flags savedflags_;
 
       bool active_;
-      KeyDownType keydowntype_;
+      PeriodType::Value periodtype_;
 
       KeyToKey keytokey_[KeyToKeyType::END_];
     };

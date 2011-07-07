@@ -18,7 +18,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       fireholding_timer_.terminate();
     }
 
-    DependingPressingPeriodKeyToKey::DependingPressingPeriodKeyToKey(void) : index_(0), index_is_holding_(false), active_(false), keydowntype_(KEYDOWNTYPE_NONE)
+    DependingPressingPeriodKeyToKey::DependingPressingPeriodKeyToKey(void) :
+      index_(0), active_(false), periodtype_(PeriodType::NONE)
     {}
 
     DependingPressingPeriodKeyToKey::~DependingPressingPeriodKeyToKey(void)
@@ -51,7 +52,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (remapParams.params.ex_iskeydown) {
         target_ = this;
         active_ = true;
-        keydowntype_ = KEYDOWNTYPE_NONE;
+        periodtype_ = PeriodType::NONE;
 
         savedflags_ = FlagStatus::makeFlags();
 
@@ -72,17 +73,18 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       fireholding_timer_.cancelTimeout();
 
-      switch (target_->keydowntype_) {
-        case KEYDOWNTYPE_NONE:
+      switch (target_->periodtype_) {
+        case PeriodType::NONE:
         {
-          target_->keydowntype_ = KEYDOWNTYPE_NORMAL;
+          target_->periodtype_ = PeriodType::SHORT_PERIOD;
           FlagStatus::ScopedTemporaryFlagsChanger stfc(savedflags_);
           keytokey_[KeyToKeyType::SHORT_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
           break;
         }
 
-        case KEYDOWNTYPE_NORMAL:
-        case KEYDOWNTYPE_HOLDING:
+        case PeriodType::SHORT_PERIOD:
+        case PeriodType::LONG_PERIOD:
+        case PeriodType::LONG_LONG_PERIOD:
           // do nothing
           break;
       }
@@ -91,21 +93,27 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     DependingPressingPeriodKeyToKey::dokeyup(void)
     {
-      switch (target_->keydowntype_) {
-        case KEYDOWNTYPE_NORMAL:
+      switch (target_->periodtype_) {
+        case PeriodType::SHORT_PERIOD:
         {
-          target_->keydowntype_ = KEYDOWNTYPE_NONE;
+          target_->periodtype_ = PeriodType::NONE;
           FlagStatus::ScopedTemporaryFlagsChanger stfc(savedflags_);
           keytokey_[KeyToKeyType::SHORT_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::UP);
           break;
         }
-        case KEYDOWNTYPE_HOLDING:
+        case PeriodType::LONG_PERIOD:
         {
-          target_->keydowntype_ = KEYDOWNTYPE_NONE;
+          target_->periodtype_ = PeriodType::NONE;
           keytokey_[KeyToKeyType::LONG_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::UP);
           break;
         }
-        case KEYDOWNTYPE_NONE:
+        case PeriodType::LONG_LONG_PERIOD:
+        {
+          target_->periodtype_ = PeriodType::NONE;
+          keytokey_[KeyToKeyType::LONG_LONG_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+          break;
+        }
+        case PeriodType::NONE:
           // do nothing
           break;
       }
@@ -116,8 +124,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       if (! target_) return;
 
-      if (target_->keydowntype_ == KEYDOWNTYPE_NONE) {
-        target_->keydowntype_ = KEYDOWNTYPE_HOLDING;
+      if (target_->periodtype_ == PeriodType::NONE) {
+        target_->periodtype_ = PeriodType::LONG_PERIOD;
 
         (target_->keytokey_[KeyToKeyType::LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
       }
