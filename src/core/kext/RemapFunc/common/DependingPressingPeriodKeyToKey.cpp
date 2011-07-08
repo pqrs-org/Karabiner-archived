@@ -3,29 +3,29 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    TimerWrapper DependingPressingPeriodKeyToKey::fireholding_timer_;
+    TimerWrapper DependingPressingPeriodKeyToKey::fire_timer_;
     DependingPressingPeriodKeyToKey* DependingPressingPeriodKeyToKey::target_ = NULL;
 
     void
     DependingPressingPeriodKeyToKey::static_initialize(IOWorkLoop& workloop)
     {
-      fireholding_timer_.initialize(&workloop, NULL, DependingPressingPeriodKeyToKey::fireholding_timer_callback);
+      fire_timer_.initialize(&workloop, NULL, DependingPressingPeriodKeyToKey::fire_timer_callback);
     }
 
     void
     DependingPressingPeriodKeyToKey::static_terminate(void)
     {
-      fireholding_timer_.terminate();
+      fire_timer_.terminate();
     }
 
     DependingPressingPeriodKeyToKey::DependingPressingPeriodKeyToKey(void) :
-      index_(0), active_(false), periodtype_(PeriodType::NONE)
+      active_(false), periodtype_(PeriodType::NONE)
     {}
 
     DependingPressingPeriodKeyToKey::~DependingPressingPeriodKeyToKey(void)
     {
       if (target_ == this) {
-        fireholding_timer_.cancelTimeout();
+        fire_timer_.cancelTimeout();
         target_ = NULL;
       }
     }
@@ -56,7 +56,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         savedflags_ = FlagStatus::makeFlags();
 
-        fireholding_timer_.setTimeoutMS(Config::get_holdingkeytokey_wait());
+        fire_timer_.setTimeoutMS(Config::get_holdingkeytokey_wait());
 
       } else {
         dokeydown();
@@ -71,7 +71,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! active_) return;
       active_ = false;
 
-      fireholding_timer_.cancelTimeout();
+      fire_timer_.cancelTimeout();
 
       switch (target_->periodtype_) {
         case PeriodType::NONE:
@@ -120,7 +120,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    DependingPressingPeriodKeyToKey::fireholding_timer_callback(OSObject* owner, IOTimerEventSource* sender)
+    DependingPressingPeriodKeyToKey::fire_timer_callback(OSObject* owner, IOTimerEventSource* sender)
     {
       if (! target_) return;
 

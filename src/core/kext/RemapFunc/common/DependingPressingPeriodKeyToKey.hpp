@@ -109,12 +109,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       void dokeydown(void);
       void dokeyup(void);
-      static void fireholding_timer_callback(OSObject* owner, IOTimerEventSource* sender);
+      static void fire_timer_callback(OSObject* owner, IOTimerEventSource* sender);
 
-      static TimerWrapper fireholding_timer_;
+      static TimerWrapper fire_timer_;
       static DependingPressingPeriodKeyToKey* target_;
 
-      size_t index_;
       Flags savedflags_;
 
       bool active_;
