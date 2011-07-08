@@ -2,17 +2,12 @@
 #define HOLDINGKEYTOKEY_HPP
 
 #include "RemapFuncClasses.hpp"
-#include "FromKeyChecker.hpp"
-#include "KeyToKey.hpp"
-#include "TimerWrapper.hpp"
+#include "DependingPressingPeriodKeyToKey.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     class HoldingKeyToKey {
     public:
-      static void static_initialize(IOWorkLoop& workloop);
-      static void static_terminate(void);
-
       HoldingKeyToKey(void);
       ~HoldingKeyToKey(void);
 
@@ -30,29 +25,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       void add(unsigned int datatype, unsigned int newval);
 
     private:
-      enum KeyDownType {
-        KEYDOWNTYPE_NONE,
-        KEYDOWNTYPE_NORMAL,
-        KEYDOWNTYPE_HOLDING,
-      };
-
-      void dokeydown(void);
-      void dokeyup(void);
-      static void fireholding_timer_callback(OSObject* owner, IOTimerEventSource* sender);
-
-      static TimerWrapper fireholding_timer_;
-      static HoldingKeyToKey* target_;
-
       size_t index_;
       bool index_is_holding_;
-      Flags savedflags_;
 
-      bool active_;
-      KeyDownType keydowntype_;
-
-      KeyToKey keytokey_drop_;
-      KeyToKey keytokey_normal_;
-      KeyToKey keytokey_holding_;
+      DependingPressingPeriodKeyToKey dppkeytokey_;
     };
   }
 }
