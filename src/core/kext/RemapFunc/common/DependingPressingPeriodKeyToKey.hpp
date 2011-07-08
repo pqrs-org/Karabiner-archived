@@ -106,6 +106,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool remap(RemapParams& remapParams);
 
       void add(KeyToKeyType::Value type, unsigned int datatype, unsigned int newval);
+      void add(KeyToKeyType::Value type, KeyCode newval) { add(type, BRIDGE_DATATYPE_KEYCODE, newval.get()); }
+      void add(KeyToKeyType::Value type, Flags newval)   { add(type, BRIDGE_DATATYPE_FLAGS,   newval.get()); }
+      void add(KeyToKeyType::Value type, Option newval)  { add(type, BRIDGE_DATATYPE_OPTION,  newval.get()); }
 
       void setPeriodMS(PeriodType::Value type, unsigned int newval);
 
