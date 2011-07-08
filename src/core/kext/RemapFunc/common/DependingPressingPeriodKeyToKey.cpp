@@ -141,10 +141,33 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       if (! target_) return;
 
-      if (target_->periodtype_ == PeriodType::NONE) {
-        target_->periodtype_ = PeriodType::LONG_PERIOD;
+      switch (target_->periodtype_) {
+        case PeriodType::NONE:
+        {
+          target_->periodtype_ = PeriodType::LONG_PERIOD;
 
-        (target_->keytokey_[KeyToKeyType::LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+          (target_->keytokey_[KeyToKeyType::LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+
+          if (target_->periodMS_[PeriodType::LONG_PERIOD] > 0) {
+            fire_timer_.setTimeoutMS(target_->periodMS_[PeriodType::LONG_PERIOD]);
+          }
+          break;
+        }
+
+        case PeriodType::LONG_PERIOD:
+        {
+          target_->periodtype_ = PeriodType::LONG_LONG_PERIOD;
+
+          (target_->keytokey_[KeyToKeyType::LONG_LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+          break;
+        }
+
+        case PeriodType::SHORT_PERIOD:
+        case PeriodType::LONG_LONG_PERIOD:
+        case PeriodType::PRESSING_TARGET_KEY_ONLY:
+        case PeriodType::END_:
+          // do nothing
+          break;
       }
     }
   }
