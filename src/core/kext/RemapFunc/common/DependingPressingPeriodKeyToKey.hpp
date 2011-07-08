@@ -84,6 +84,17 @@ namespace org_pqrs_KeyRemap4MacBook {
           END_,
         };
       };
+      class PeriodType {
+      public:
+        enum Value {
+          NONE,
+          SHORT_PERIOD,             // (1) in above description.
+          LONG_PERIOD,              // (2) in above description.
+          LONG_LONG_PERIOD,         // (3) in above description.
+          PRESSING_TARGET_KEY_ONLY, // (4) in above description.
+          END_,
+        };
+      };
 
       // ----------------------------------------
       static void static_initialize(IOWorkLoop& workloop);
@@ -96,17 +107,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       void add(KeyToKeyType::Value type, unsigned int datatype, unsigned int newval);
 
-    private:
-      class PeriodType {
-      public:
-        enum Value {
-          NONE,
-          SHORT_PERIOD,             // (1) in above description.
-          LONG_PERIOD,              // (2) in above description.
-          LONG_LONG_PERIOD,         // (3) in above description.
-        };
-      };
+      void setPeriodMS(PeriodType::Value type, unsigned int newval);
 
+    private:
       void dokeydown(void);
       void dokeyup(void);
       static void fire_timer_callback(OSObject* owner, IOTimerEventSource* sender);
@@ -120,6 +123,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       PeriodType::Value periodtype_;
 
       KeyToKey keytokey_[KeyToKeyType::END_];
+      unsigned int periodMS_[PeriodType::END_];
     };
   }
 }
