@@ -474,6 +474,7 @@
           <appendix>Control+B to Option_L+B,C (+ Holding Control+B to Space)</appendix>
           <appendix>C to Space (+ Holding C to Shift_L)</appendix>
           <appendix>D to Shift_L (+ Holding D to Option_L)</appendix>
+          <appendix>Shift+E to Control_L (+ Holding Shift+E to Option_L)</appendix>
           <!-- Note: Use KeyCode::VK_NONE as a separator of parameters -->
           <autogen>--HoldingKeyToKey-- KeyCode::ESCAPE, KeyCode::TAB, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
           <autogen>--HoldingKeyToKey-- KeyCode::TAB, KeyCode::A, KeyCode::S, KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::F, KeyCode::VK_NONE, KeyCode::Q, KeyCode::W, KeyCode::E, ModifierFlag::SHIFT_L, KeyCode::R</autogen>
@@ -482,6 +483,7 @@
           <autogen>--HoldingKeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::B, ModifierFlag::OPTION_L, KeyCode::C, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
           <autogen>--HoldingKeyToKey-- KeyCode::C, KeyCode::SPACE, KeyCode::VK_NONE, KeyCode::SHIFT_L</autogen>
           <autogen>--HoldingKeyToKey-- KeyCode::D, KeyCode::SHIFT_L, KeyCode::VK_NONE, KeyCode::OPTION_L</autogen>
+          <autogen>--HoldingKeyToKey-- KeyCode::E, VK_SHIFT, KeyCode::CONTROL_L, KeyCode::VK_NONE, KeyCode::OPTION_L</autogen>
         </item>
         <item>
           <name>NoRepeat</name>
