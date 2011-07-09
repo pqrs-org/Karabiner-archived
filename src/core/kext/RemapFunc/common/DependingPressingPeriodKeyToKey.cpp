@@ -1,4 +1,5 @@
 #include "Config.hpp"
+#include "EventWatcher.hpp"
 #include "DependingPressingPeriodKeyToKey.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -112,10 +113,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       fire_timer_.cancelTimeout();
 
-      switch (target_->periodtype_) {
+      switch (periodtype_) {
         case PeriodType::NONE:
         {
-          target_->periodtype_ = PeriodType::SHORT_PERIOD;
+          periodtype_ = PeriodType::SHORT_PERIOD;
           FlagStatus::ScopedTemporaryFlagsChanger stfc(savedflags_);
           keytokey_[KeyToKeyType::SHORT_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
           break;
@@ -133,23 +134,34 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     DependingPressingPeriodKeyToKey::dokeyup(void)
     {
-      switch (target_->periodtype_) {
+      switch (periodtype_) {
         case PeriodType::SHORT_PERIOD:
         {
-          target_->periodtype_ = PeriodType::NONE;
+          periodtype_ = PeriodType::NONE;
           FlagStatus::ScopedTemporaryFlagsChanger stfc(savedflags_);
           keytokey_[KeyToKeyType::SHORT_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::UP);
           break;
         }
         case PeriodType::LONG_PERIOD:
         {
-          target_->periodtype_ = PeriodType::NONE;
+          periodtype_ = PeriodType::NONE;
           keytokey_[KeyToKeyType::LONG_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+
+          // ----------------------------------------
+          // handle PRESSING_TARGET_KEY_ONLY
+          if (periodMS_.enabled(PeriodMS::Type::PRESSING_TARGET_KEY_ONLY)) {
+            if (! isAnyEventHappen_ &&
+                ic_.getmillisec() < periodMS_.get(PeriodMS::Type::PRESSING_TARGET_KEY_ONLY)) {
+              keytokey_[KeyToKeyType::PRESSING_TARGET_KEY_ONLY].call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+              keytokey_[KeyToKeyType::PRESSING_TARGET_KEY_ONLY].call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+            }
+          }
+
           break;
         }
         case PeriodType::LONG_LONG_PERIOD:
         {
-          target_->periodtype_ = PeriodType::NONE;
+          periodtype_ = PeriodType::NONE;
           keytokey_[KeyToKeyType::LONG_LONG_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::UP);
           break;
         }
@@ -158,6 +170,8 @@ namespace org_pqrs_KeyRemap4MacBook {
           // do nothing
           break;
       }
+
+      EventWatcher::unset(isAnyEventHappen_);
     }
 
     void
@@ -171,6 +185,9 @@ namespace org_pqrs_KeyRemap4MacBook {
           target_->periodtype_ = PeriodType::LONG_PERIOD;
 
           (target_->keytokey_[KeyToKeyType::LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+
+          EventWatcher::set(target_->isAnyEventHappen_);
+          (target_->ic_).begin();
 
           if (target_->periodMS_.enabled(PeriodMS::Type::LONG_LONG_PERIOD)) {
             fire_timer_.setTimeoutMS(target_->periodMS_.get(PeriodMS::Type::LONG_LONG_PERIOD));
