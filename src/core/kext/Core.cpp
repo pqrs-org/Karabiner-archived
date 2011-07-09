@@ -18,7 +18,6 @@
 #include "util/PressDownKeys.hpp"
 #include "util/TimerWrapper.hpp"
 #include "RemapFunc/common/DependingPressingPeriodKeyToKey.hpp"
-#include "RemapFunc/KeyOverlaidModifier.hpp"
 #include "RemapFunc/PointingRelativeToScroll.hpp"
 #include "VirtualKey.hpp"
 
@@ -55,7 +54,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         VirtualKey::initialize(*workLoop);
         EventOutputQueue::initialize(*workLoop);
         RemapFunc::DependingPressingPeriodKeyToKey::static_initialize(*workLoop);
-        RemapFunc::KeyOverlaidModifier::static_initialize(*workLoop);
         RemapFunc::PointingRelativeToScroll::static_initialize(*workLoop);
         ListHookedKeyboard::static_initialize(*workLoop);
         RemapClassManager::initialize(*workLoop);
@@ -86,7 +84,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       VirtualKey::terminate();
       EventOutputQueue::terminate();
       RemapFunc::DependingPressingPeriodKeyToKey::static_terminate();
-      RemapFunc::KeyOverlaidModifier::static_terminate();
       RemapFunc::PointingRelativeToScroll::static_terminate();
       ListHookedKeyboard::static_terminate();
 

@@ -2,19 +2,13 @@
 #define KEYOVERLAIDMODIFIER_HPP
 
 #include "RemapFuncClasses.hpp"
-#include "FromKeyChecker.hpp"
-#include "IntervalChecker.hpp"
-#include "KeyToKey.hpp"
-#include "TimerWrapper.hpp"
+#include "DependingPressingPeriodKeyToKey.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     // for SandS like behavior remappings (remap_space2shift, remap_enter2optionL_commandSpace, ...)
     class KeyOverlaidModifier {
     public:
-      static void static_initialize(IOWorkLoop& workloop);
-      static void static_terminate(void);
-
       KeyOverlaidModifier(void);
       ~KeyOverlaidModifier(void);
 
@@ -35,22 +29,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       void add(Option newval)  { add(BRIDGE_DATATYPE_OPTION,  newval.get()); }
 
     private:
-      static void firerepeat_timer_callback(OSObject* owner, IOTimerEventSource* sender);
-
-      static TimerWrapper firerepeat_timer_;
-      static KeyOverlaidModifier* target_;
-
       size_t index_;
-      bool isAnyEventHappen_;
-      PairKeyFlags toKey_;
-      Flags savedflags_;
-      IntervalChecker ic_;
-      bool isRepeatEnabled_;
-      bool isfirenormal_;
-      bool isfirerepeat_;
 
-      KeyToKey keytokey_;
-      KeyToKey keytokey_fire_;
+      DependingPressingPeriodKeyToKey dppkeytokey_;
     };
   }
 }
