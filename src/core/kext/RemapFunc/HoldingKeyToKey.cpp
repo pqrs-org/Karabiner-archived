@@ -5,7 +5,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     HoldingKeyToKey::HoldingKeyToKey(void) : index_(0), index_is_holding_(false)
     {
-      dppkeytokey_.setPeriodMS(DependingPressingPeriodKeyToKey::PeriodType::SHORT_PERIOD, Config::get_holdingkeytokey_wait());
+      dppkeytokey_.setPeriodMS(DependingPressingPeriodKeyToKey::PeriodMS::Type::SHORT_PERIOD,
+                               Config::get_holdingkeytokey_wait());
     }
 
     HoldingKeyToKey::~HoldingKeyToKey(void)
