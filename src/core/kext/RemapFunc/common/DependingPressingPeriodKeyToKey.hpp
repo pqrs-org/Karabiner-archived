@@ -5,6 +5,7 @@
 #include "FromKeyChecker.hpp"
 #include "KeyToKey.hpp"
 #include "TimerWrapper.hpp"
+#include "IntervalChecker.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
@@ -84,16 +85,29 @@ namespace org_pqrs_KeyRemap4MacBook {
           END_,
         };
       };
-      class PeriodType {
+      class PeriodMS {
       public:
-        enum Value {
-          NONE,
-          SHORT_PERIOD,             // (1) in above description.
-          LONG_PERIOD,              // (2) in above description.
-          LONG_LONG_PERIOD,         // (3) in above description.
-          PRESSING_TARGET_KEY_ONLY, // (4) in above description.
-          END_,
+        class Type {
+        public:
+          enum Value {
+            NONE,
+            SHORT_PERIOD,             // (A) in above description.
+            LONG_LONG_PERIOD,         // (B) in above description.
+            PRESSING_TARGET_KEY_ONLY, // (C) in above description.
+            END_,
+          };
         };
+
+        PeriodMS(void);
+
+        unsigned int get(Type::Value type);
+        void set(Type::Value type, unsigned int newval);
+
+        bool enabled(Type::Value type);
+
+      private:
+        unsigned int values_[Type::END_];
+        bool enabled_[Type::END_];
       };
 
       // ----------------------------------------
@@ -110,9 +124,20 @@ namespace org_pqrs_KeyRemap4MacBook {
       void add(KeyToKeyType::Value type, Flags newval)   { add(type, BRIDGE_DATATYPE_FLAGS,   newval.get()); }
       void add(KeyToKeyType::Value type, Option newval)  { add(type, BRIDGE_DATATYPE_OPTION,  newval.get()); }
 
-      void setPeriodMS(PeriodType::Value type, unsigned int newval);
+      void setPeriodMS(PeriodMS::Type::Value type, unsigned int newval) { periodMS_.set(type, newval); }
 
     private:
+      class PeriodType {
+      public:
+        enum Value {
+          NONE,
+          SHORT_PERIOD,             // (1) in above description.
+          LONG_PERIOD,              // (2) in above description.
+          LONG_LONG_PERIOD,         // (3) in above description.
+          END_,
+        };
+      };
+
       void dokeydown(void);
       void dokeyup(void);
       static void fire_timer_callback(OSObject* owner, IOTimerEventSource* sender);
@@ -126,7 +151,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       PeriodType::Value periodtype_;
 
       KeyToKey keytokey_[KeyToKeyType::END_];
-      unsigned int periodMS_[PeriodType::END_];
+      PeriodMS periodMS_;
+
+      bool isAnyEventHappen_;
+      IntervalChecker ic_;
     };
   }
 }

@@ -6,6 +6,45 @@ namespace org_pqrs_KeyRemap4MacBook {
     TimerWrapper DependingPressingPeriodKeyToKey::fire_timer_;
     DependingPressingPeriodKeyToKey* DependingPressingPeriodKeyToKey::target_ = NULL;
 
+    DependingPressingPeriodKeyToKey::PeriodMS::PeriodMS(void)
+    {
+      for (int i = 0; i < Type::END_; ++i) {
+        values_[i] = 0;
+        enabled_[i] = false;
+      }
+    }
+
+    unsigned int
+    DependingPressingPeriodKeyToKey::PeriodMS::get(PeriodMS::Type::Value type)
+    {
+      if (type == Type::END_) {
+        IOLOG_ERROR("Invalid DependingPressingPeriodKeyToKey::PeriodMS::get\n");
+        return 0;
+      }
+      return values_[type];
+    }
+
+    void
+    DependingPressingPeriodKeyToKey::PeriodMS::set(PeriodMS::Type::Value type, unsigned int newval)
+    {
+      if (type == Type::END_) return;
+
+      if (newval == 0) newval = 1;
+      values_[type] = newval;
+      enabled_[type] = true;
+    }
+
+    bool
+    DependingPressingPeriodKeyToKey::PeriodMS::enabled(PeriodMS::Type::Value type)
+    {
+      if (type == Type::END_) {
+        IOLOG_ERROR("Invalid DependingPressingPeriodKeyToKey::PeriodMS::enabled\n");
+        return false;
+      }
+      return enabled_[type];
+    }
+
+    // ======================================================================
     void
     DependingPressingPeriodKeyToKey::static_initialize(IOWorkLoop& workloop)
     {
@@ -20,11 +59,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     DependingPressingPeriodKeyToKey::DependingPressingPeriodKeyToKey(void) :
       active_(false), periodtype_(PeriodType::NONE)
-    {
-      for (int i = 0; i < PeriodType::END_; ++i) {
-        periodMS_[i] = 0;
-      }
-    }
+    {}
 
     DependingPressingPeriodKeyToKey::~DependingPressingPeriodKeyToKey(void)
     {
@@ -39,15 +74,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       if (type == KeyToKeyType::END_) return;
       keytokey_[type].add(datatype, newval);
-    }
-
-    void
-    DependingPressingPeriodKeyToKey::setPeriodMS(PeriodType::Value type, unsigned int newval)
-    {
-      if (type == PeriodType::END_) return;
-
-      if (newval == 0) newval = 1;
-      periodMS_[type] = newval;
     }
 
     bool
@@ -69,7 +95,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         savedflags_ = FlagStatus::makeFlags();
 
-        fire_timer_.setTimeoutMS(periodMS_[PeriodType::SHORT_PERIOD]);
+        fire_timer_.setTimeoutMS(periodMS_.get(PeriodMS::Type::SHORT_PERIOD));
 
       } else {
         dokeydown();
@@ -98,7 +124,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         case PeriodType::SHORT_PERIOD:
         case PeriodType::LONG_PERIOD:
         case PeriodType::LONG_LONG_PERIOD:
-        case PeriodType::PRESSING_TARGET_KEY_ONLY:
         case PeriodType::END_:
           // do nothing
           break;
@@ -129,7 +154,6 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
         }
         case PeriodType::NONE:
-        case PeriodType::PRESSING_TARGET_KEY_ONLY:
         case PeriodType::END_:
           // do nothing
           break;
@@ -148,8 +172,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
           (target_->keytokey_[KeyToKeyType::LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
 
-          if (target_->periodMS_[PeriodType::LONG_PERIOD] > 0) {
-            fire_timer_.setTimeoutMS(target_->periodMS_[PeriodType::LONG_PERIOD]);
+          if (target_->periodMS_.enabled(PeriodMS::Type::LONG_LONG_PERIOD)) {
+            fire_timer_.setTimeoutMS(target_->periodMS_.get(PeriodMS::Type::LONG_LONG_PERIOD));
           }
           break;
         }
@@ -164,7 +188,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         case PeriodType::SHORT_PERIOD:
         case PeriodType::LONG_LONG_PERIOD:
-        case PeriodType::PRESSING_TARGET_KEY_ONLY:
         case PeriodType::END_:
           // do nothing
           break;
