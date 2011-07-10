@@ -117,6 +117,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams)
     {
+      Flags flags = FlagStatus::makeFlags();
+
       bool result = keytokey_[KeyToKeyType::FROM].remap(remapParams);
       if (! result) {
         if (remapParams.params.ex_iskeydown) {
@@ -131,7 +133,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         active_ = true;
         periodtype_ = PeriodType::NONE;
 
-        savedflags_ = FlagStatus::makeFlags();
+        savedflags_ = flags;
 
         fire_timer_.setTimeoutMS(periodMS_.get(PeriodMS::Type::SHORT_PERIOD));
 
