@@ -87,27 +87,33 @@ namespace org_pqrs_KeyRemap4MacBook {
       };
       class PeriodMS {
       public:
-        class Type {
+        class Mode {
         public:
           enum Value {
             NONE,
+            HOLDING_KEY_TO_KEY,
+            KEY_OVERLAID_MODIFIER,
+            KEY_OVERLAID_MODIFIER_WITH_REPEAT,
+          };
+        };
+        class Type {
+        public:
+          enum Value {
             SHORT_PERIOD,             // (A) in above description.
             LONG_LONG_PERIOD,         // (B) in above description.
             PRESSING_TARGET_KEY_ONLY, // (C) in above description.
-            END_,
           };
         };
 
         PeriodMS(void);
 
-        unsigned int get(Type::Value type);
-        void set(Type::Value type, unsigned int newval);
+        void set(Mode::Value newval);
 
+        unsigned int get(Type::Value type);
         bool enabled(Type::Value type);
 
       private:
-        unsigned int values_[Type::END_];
-        bool enabled_[Type::END_];
+        Mode::Value mode_;
       };
 
       // ----------------------------------------
@@ -124,7 +130,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       void add(KeyToKeyType::Value type, Flags newval)   { add(type, BRIDGE_DATATYPE_FLAGS,   newval.get()); }
       void add(KeyToKeyType::Value type, Option newval)  { add(type, BRIDGE_DATATYPE_OPTION,  newval.get()); }
 
-      void setPeriodMS(PeriodMS::Type::Value type, unsigned int newval) { periodMS_.set(type, newval); }
+      void setPeriodMS(PeriodMS::Mode::Value newval) { periodMS_.set(newval); }
 
     private:
       class PeriodType {
