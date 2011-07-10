@@ -7,42 +7,79 @@ namespace org_pqrs_KeyRemap4MacBook {
     TimerWrapper DependingPressingPeriodKeyToKey::fire_timer_;
     DependingPressingPeriodKeyToKey* DependingPressingPeriodKeyToKey::target_ = NULL;
 
-    DependingPressingPeriodKeyToKey::PeriodMS::PeriodMS(void)
+    DependingPressingPeriodKeyToKey::PeriodMS::PeriodMS(void) : mode_(Mode::NONE)
+    {}
+
+    void
+    DependingPressingPeriodKeyToKey::PeriodMS::set(PeriodMS::Mode::Value newval)
     {
-      for (int i = 0; i < Type::END_; ++i) {
-        values_[i] = 0;
-        enabled_[i] = false;
-      }
+      mode_ = newval;
     }
 
     unsigned int
     DependingPressingPeriodKeyToKey::PeriodMS::get(PeriodMS::Type::Value type)
     {
-      if (type == Type::END_) {
-        IOLOG_ERROR("Invalid DependingPressingPeriodKeyToKey::PeriodMS::get\n");
-        return 0;
+      switch (mode_) {
+        case Mode::HOLDING_KEY_TO_KEY:
+          switch (type) {
+            case Type::SHORT_PERIOD:             return Config::get_holdingkeytokey_wait();
+            case Type::LONG_LONG_PERIOD:         return 0;
+            case Type::PRESSING_TARGET_KEY_ONLY: return 0;
+          }
+
+        case Mode::KEY_OVERLAID_MODIFIER:
+          switch (type) {
+            case Type::SHORT_PERIOD:             return Config::get_keyoverlaidmodifier_initial_modifier_wait();
+            case Type::LONG_LONG_PERIOD:         return 0;
+            case Type::PRESSING_TARGET_KEY_ONLY: return Config::get_keyoverlaidmodifier_timeout();
+          }
+
+        case Mode::KEY_OVERLAID_MODIFIER_WITH_REPEAT:
+          switch (type) {
+            case Type::SHORT_PERIOD:             return Config::get_keyoverlaidmodifier_initial_modifier_wait();
+            case Type::LONG_LONG_PERIOD:         return Config::get_keyoverlaidmodifier_initial_wait();
+            case Type::PRESSING_TARGET_KEY_ONLY: return Config::get_keyoverlaidmodifier_timeout();
+          }
+
+        case Mode::NONE:
+          IOLOG_ERROR("Invalid DependingPressingPeriodKeyToKey::PeriodMS::get\n");
+          return 0;
       }
-      return values_[type];
-    }
 
-    void
-    DependingPressingPeriodKeyToKey::PeriodMS::set(PeriodMS::Type::Value type, unsigned int newval)
-    {
-      if (type == Type::END_) return;
-
-      if (newval == 0) newval = 1;
-      values_[type] = newval;
-      enabled_[type] = true;
+      return 0;
     }
 
     bool
     DependingPressingPeriodKeyToKey::PeriodMS::enabled(PeriodMS::Type::Value type)
     {
-      if (type == Type::END_) {
-        IOLOG_ERROR("Invalid DependingPressingPeriodKeyToKey::PeriodMS::enabled\n");
-        return false;
+      switch (mode_) {
+        case Mode::HOLDING_KEY_TO_KEY:
+          switch (type) {
+            case Type::SHORT_PERIOD:             return true;
+            case Type::LONG_LONG_PERIOD:         return false;
+            case Type::PRESSING_TARGET_KEY_ONLY: return false;
+          }
+
+        case Mode::KEY_OVERLAID_MODIFIER:
+          switch (type) {
+            case Type::SHORT_PERIOD:             return true;
+            case Type::LONG_LONG_PERIOD:         return false;
+            case Type::PRESSING_TARGET_KEY_ONLY: return true;
+          }
+
+        case Mode::KEY_OVERLAID_MODIFIER_WITH_REPEAT:
+          switch (type) {
+            case Type::SHORT_PERIOD:             return true;
+            case Type::LONG_LONG_PERIOD:         return true;
+            case Type::PRESSING_TARGET_KEY_ONLY: return true;
+          }
+
+        case Mode::NONE:
+          IOLOG_ERROR("Invalid DependingPressingPeriodKeyToKey::PeriodMS::enabled\n");
+          return false;
       }
-      return enabled_[type];
+
+      return false;
     }
 
     // ======================================================================

@@ -7,10 +7,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     KeyOverlaidModifier::KeyOverlaidModifier(void) : index_(0)
     {
-      dppkeytokey_.setPeriodMS(DependingPressingPeriodKeyToKey::PeriodMS::Type::SHORT_PERIOD,
-                               Config::get_keyoverlaidmodifier_initial_modifier_wait());
-      dppkeytokey_.setPeriodMS(DependingPressingPeriodKeyToKey::PeriodMS::Type::PRESSING_TARGET_KEY_ONLY,
-                               Config::get_keyoverlaidmodifier_timeout());
+      dppkeytokey_.setPeriodMS(DependingPressingPeriodKeyToKey::PeriodMS::Mode::KEY_OVERLAID_MODIFIER);
     }
 
     KeyOverlaidModifier::~KeyOverlaidModifier(void)
@@ -74,8 +71,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_DATATYPE_OPTION:
         {
           if (Option::KEYOVERLAIDMODIFIER_REPEAT == newval) {
-            dppkeytokey_.setPeriodMS(DependingPressingPeriodKeyToKey::PeriodMS::Type::LONG_LONG_PERIOD,
-                                     Config::get_keyoverlaidmodifier_initial_wait());
+            dppkeytokey_.setPeriodMS(DependingPressingPeriodKeyToKey::PeriodMS::Mode::KEY_OVERLAID_MODIFIER_WITH_REPEAT);
           } else {
             IOLOG_ERROR("KeyOverlaidModifier::add unknown option:%d\n", newval);
           }
