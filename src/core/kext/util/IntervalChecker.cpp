@@ -18,10 +18,4 @@ namespace org_pqrs_KeyRemap4MacBook {
     uint32_t interval = static_cast<int>(s - secs_) * 1000 + static_cast<int>(m - microsecs_) / 1000;
     return interval;
   }
-
-  bool
-  IntervalChecker::checkThreshold(uint32_t millisec)
-  {
-    return getmillisec() >= millisec;
-  }
 }
