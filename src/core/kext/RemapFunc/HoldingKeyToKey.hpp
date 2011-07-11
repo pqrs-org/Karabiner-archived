@@ -27,6 +27,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     private:
       size_t index_;
       bool index_is_holding_;
+      ModifierFlag fromKeyFlag_;
 
       DependingPressingPeriodKeyToKey dppkeytokey_;
     };
