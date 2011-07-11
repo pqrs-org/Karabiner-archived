@@ -246,6 +246,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         case PeriodType::LONG_PERIOD:
         {
           target_->periodtype_ = PeriodType::LONG_LONG_PERIOD;
+          (target_->keytokey_[KeyToKeyType::LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::UP);
 
           FlagStatus::ScopedTemporaryFlagsChanger stfc(target_->savedflags_);
           (target_->keytokey_[KeyToKeyType::LONG_LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
