@@ -78,10 +78,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       public:
         enum Value {
           FROM,
-          SHORT_PERIOD,
-          LONG_PERIOD,
-          LONG_LONG_PERIOD,
-          PRESSING_TARGET_KEY_ONLY,
+          SHORT_PERIOD,             // (1) in above description.
+          LONG_PERIOD,              // (2) in above description.
+          LONG_LONG_PERIOD,         // (3) in above description.
+          PRESSING_TARGET_KEY_ONLY, // (4) in above description.
           END_,
         };
       };
@@ -183,7 +183,6 @@ namespace org_pqrs_KeyRemap4MacBook {
           SHORT_PERIOD,             // (1) in above description.
           LONG_PERIOD,              // (2) in above description.
           LONG_LONG_PERIOD,         // (3) in above description.
-          END_,
         };
       };
 

@@ -168,7 +168,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         case PeriodType::SHORT_PERIOD:
         case PeriodType::LONG_PERIOD:
         case PeriodType::LONG_LONG_PERIOD:
-        case PeriodType::END_:
           // do nothing
           break;
       }
@@ -212,7 +211,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
         case PeriodType::NONE:
-        case PeriodType::END_:
           // do nothing
           break;
       }
@@ -256,7 +254,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         case PeriodType::SHORT_PERIOD:
         case PeriodType::LONG_LONG_PERIOD:
-        case PeriodType::END_:
           // do nothing
           break;
       }
