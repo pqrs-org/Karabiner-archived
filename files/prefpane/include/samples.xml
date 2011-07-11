@@ -488,6 +488,14 @@
           <autogen>--HoldingKeyToKey-- KeyCode::E, VK_SHIFT, KeyCode::CONTROL_L, KeyCode::VK_NONE, KeyCode::OPTION_L</autogen>
         </item>
         <item>
+          <name>with ModifierFlag::NONE</name>
+          <appendix>Escape to Tab (without any modifiers) (+ Holding Escape to Space)</appendix>
+          <appendix>Shift_R to Return (without other modifiers) (+ Holding Shift_R to Space)</appendix>
+          <identifier>remap.samples_holdingkeytokey_modifierflag_none</identifier>
+          <autogen>--HoldingKeyToKey-- KeyCode::ESCAPE, ModifierFlag::NONE, KeyCode::TAB, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
+          <autogen>--HoldingKeyToKey-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R | ModifierFlag::NONE, KeyCode::RETURN, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
+        </item>
+        <item>
           <name>NoRepeat</name>
           <appendix>Escape to Tab (+ Holding Escape to Space)</appendix>
           <identifier>remap.samples_holdingkeytokey_norepeat</identifier>
