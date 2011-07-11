@@ -19,8 +19,6 @@
 - (BOOL) initialized;
 - (BOOL) reload;
 - (NSUInteger) count;
-- (NSUInteger) initialize_vector_size:(unsigned int)configindex;
-- (NSArray*) initialize_vector:(unsigned int)configindex;
 - (NSArray*) remapclasses_initialize_vector;
 - (unsigned int) keycode:(NSString*)name;
 - (NSString*) configname:(unsigned int)configindex;
