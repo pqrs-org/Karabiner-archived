@@ -1056,6 +1056,11 @@
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
+          <name>Option_R+Command_R to Control_L</name>
+          <identifier>remap.optionRcommandR2controlL</identifier>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, ModifierFlag::OPTION_R, KeyCode::CONTROL_L</autogen>
+        </item>
+        <item>
           <name>Command_R to Control_R (only in virtual machine, RDC)</name>
           <identifier>remap.commandR2controlR_vm</identifier>
           <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
