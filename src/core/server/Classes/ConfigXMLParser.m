@@ -83,17 +83,6 @@ static ConfigXMLParser* global_instance = nil;
   return v;
 }
 
-- (NSArray*) initialize_vector:(unsigned int)configindex
-{
-  NSArray* a = nil;
-  @synchronized(self) {
-    if (initialized_) {
-      a = [dict_initialize_vector_ objectForKey:[NSNumber numberWithUnsignedInt:configindex]];
-    }
-  }
-  return a;
-}
-
 - (NSArray*) remapclasses_initialize_vector
 {
   NSArray* a = nil;
@@ -104,18 +93,6 @@ static ConfigXMLParser* global_instance = nil;
     }
   }
   return a;
-}
-
-- (NSUInteger) initialize_vector_size:(unsigned int)configindex
-{
-  NSUInteger v = 0;
-  @synchronized(self) {
-    NSArray* a = [self initialize_vector:configindex];
-    if (a) {
-      v = [a count];
-    }
-  }
-  return v;
 }
 
 - (unsigned int) keycode:(NSString*)name
