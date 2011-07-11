@@ -125,6 +125,49 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       bool remap(RemapParams& remapParams);
 
+      // About trick of KeyToKeyType::FROM's ModifierFlag.
+      // Let's consider the following KeyOverlaidModifier.
+      //
+      // --KeyOverlaidModifier-- KeyCode::A, ModifierFlag::SHIFT_L, KeyCode::CONTROL_L, KeyCode::SPACE
+      //
+      // We separate the keys to KeyToKeyType::*.
+      //
+      // ------------------------------------------------------------
+      // "KeyCode::A, ModifierFlag::SHIFT_L" -> KeyToKeyType::FROM
+      // "KeyCode::CONTROL_L"                -> KeyToKeyType::LONG_PERIO
+      // "KeyCode::SPACE"                    -> KeyToKeyType::SHORT_PERIOD,
+      //                                        KeyToKeyType::PRESSING_TARGET_KEY_ONLY
+      // --------------------
+      // ** KeyToKeyType::FROM **
+      //   KeyCode::A, ModifierFlag::SHIFT_L to KeyCode::VK_NONE
+      //
+      // ** KeyToKeyType::LONG_PERIO **
+      //   KeyCode::VK_PSEUDO_KEY            to KeyCode::CONTROL_L
+      //
+      // ** KeyToKeyType::SHORT_PERIOD **
+      //   KeyCode::VK_PSEUDO_KEY            to KeyCode::SPACE
+      // ------------------------------------------------------------
+      //
+      //
+      // However, in this case, ModifierFlag::SHIFT_L of KeyToKeyType::FROM is temporary flags
+      // because toKey of KeyToKeyType::FROM is VK_NONE (== not modifier).
+      // So, ModifierFlag::SHIFT_L will be restored if other keys are pressed.
+      //
+      // Therefore, we use a trick around KeyToKeyType::FROM's ModifierFlag.
+      //
+      // --------------------
+      // ** KeyToKeyType::FROM **
+      //   KeyCode::A,             ModifierFlag::SHIFT_L to KeyCode::VK_NONE
+      //
+      // ** KeyToKeyType::LONG_PERIO **
+      //   KeyCode::VK_PSEUDO_KEY, ModifierFlag::SHIFT_L to KeyCode::CONTROL_L
+      //
+      // ** KeyToKeyType::SHORT_PERIOD **
+      //   KeyCode::VK_PSEUDO_KEY, ModifierFlag::SHIFT_L to KeyCode::SPACE
+      // ------------------------------------------------------------
+      //
+      // Then, ModifierFlag::SHIFT_L is treated properly.
+      //
       void add(KeyToKeyType::Value type, unsigned int datatype, unsigned int newval);
       void add(KeyToKeyType::Value type, KeyCode newval) { add(type, BRIDGE_DATATYPE_KEYCODE, newval.get()); }
       void add(KeyToKeyType::Value type, Flags newval)   { add(type, BRIDGE_DATATYPE_FLAGS,   newval.get()); }
