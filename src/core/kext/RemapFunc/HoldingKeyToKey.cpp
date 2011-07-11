@@ -2,7 +2,7 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    HoldingKeyToKey::HoldingKeyToKey(void) : index_(0), index_is_holding_(false)
+    HoldingKeyToKey::HoldingKeyToKey(void) : index_(0), index_is_holding_(false), fromKeyFlag_(ModifierFlag::NONE)
     {
       dppkeytokey_.setPeriodMS(DependingPressingPeriodKeyToKey::PeriodMS::Mode::HOLDING_KEY_TO_KEY);
     }
@@ -21,6 +21,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::FROM,         datatype, newval);
               dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD, KeyCode::VK_PSEUDO_KEY);
               dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD,  KeyCode::VK_PSEUDO_KEY);
+              fromKeyFlag_ = KeyCode(newval).getModifierFlag();
               break;
 
             case 1:
@@ -53,8 +54,25 @@ namespace org_pqrs_KeyRemap4MacBook {
 
             case 1:
               dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::FROM,         datatype, newval);
-              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD, datatype, newval);
-              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD,  datatype, newval);
+
+              switch (datatype) {
+                case BRIDGE_DATATYPE_FLAGS:
+                {
+                  Flags flags(newval);
+                  if (fromKeyFlag_ != ModifierFlag::NONE) {
+                    flags.remove(fromKeyFlag_);
+                  }
+                  dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD, flags);
+                  dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD,  flags);
+                  break;
+                }
+                case BRIDGE_DATATYPE_OPTION:
+                {
+                  dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD, datatype, newval);
+                  dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD,  datatype, newval);
+                  break;
+                }
+              }
               break;
 
             default:
