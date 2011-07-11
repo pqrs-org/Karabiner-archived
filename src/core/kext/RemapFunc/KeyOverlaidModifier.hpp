@@ -30,6 +30,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     private:
       size_t index_;
+      ModifierFlag toKeyFlag_;
 
       DependingPressingPeriodKeyToKey dppkeytokey_;
     };
