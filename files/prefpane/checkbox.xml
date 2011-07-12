@@ -8479,6 +8479,25 @@
     </item>
 
     <item>
+      <name>For ISO Keyboard Users</name>
+      <list>
+        <item>
+          <name>Note:</name>
+          <appendix>Settings which depend on the language are located under "For XXXX".</appendix>
+          <appendix>Please look "For XXXX" together such as "For Canadian", "For Finnish",...</appendix>
+        </item>
+        <item>
+          <name>Swap the Tilda(~) key with Section (§)</name>
+          <appendix>§ to `</appendix>
+          <appendix>± to ~</appendix>
+          <identifier>remap.swap_iso_keys</identifier>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE,  KeyCode::UK_SECTION</autogen>
+          <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKQUOTE</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>For Canadian</name>
       <list>
         <item>
