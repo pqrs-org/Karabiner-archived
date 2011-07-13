@@ -6201,6 +6201,7 @@
     </item>
 
     <!-- #include "include/simultaneouskeypresses_vimode.xml" -->
+    <!-- #include "include/homerow_mode.xml" -->
 
     <item>
       <name>Simultaneous Key Presses</name>
