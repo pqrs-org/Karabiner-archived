@@ -64,36 +64,18 @@
 
 // ------------------------------------------------------------
 - (void) send_remapclasses_initialize_vector_to_kext {
-  NSArray* a = [[ConfigXMLParser getInstance] remapclasses_initialize_vector];
-  if (! a) {
-    NSLog(@"[WARNING] remapclasses_initialize_vector == nil.");
-    return;
-  }
+  RemapClassesInitializeVector* vector = [[ConfigXMLParser getInstance] remapclasses_initialize_vector];
+  uint32_t* p = [vector rawValue];
+  size_t size = [vector size] * sizeof(uint32_t);
 
-  size_t size = [a count] * sizeof(uint32_t);
-  uint32_t* data = (uint32_t*)(malloc(size));
-  if (! data) {
-    NSLog(@"[WARNING] malloc failed.");
-    return;
+  // --------------------
+  struct BridgeUserClientStruct bridgestruct;
+  bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_SET_REMAPCLASSES_INITIALIZE_VECTOR;
+  bridgestruct.option = 0;
+  bridgestruct.data   = (uintptr_t)(p);
+  bridgestruct.size   = size;
 
-  } else {
-    // --------------------
-    uint32_t* p = data;
-    for (NSNumber* number in a) {
-      *p++ = [number unsignedIntValue];
-    }
-
-    // --------------------
-    struct BridgeUserClientStruct bridgestruct;
-    bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_SET_REMAPCLASSES_INITIALIZE_VECTOR;
-    bridgestruct.option = 0;
-    bridgestruct.data   = (uintptr_t)(data);
-    bridgestruct.size   = size;
-
-    [UserClient_userspace synchronized_communication:&bridgestruct];
-
-    free(data);
-  }
+  [UserClient_userspace synchronized_communication:&bridgestruct];
 }
 
 - (void) send_config_to_kext {
