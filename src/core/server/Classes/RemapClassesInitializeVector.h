@@ -5,6 +5,8 @@
   // We store the vector as uint32_t raw value for memory usage and performance.
   // (We don't use NSMutableArray.)
   uint32_t* data_;
+
+  // capacity_ and size_ are count of items. (== not allocated memory size.)
   size_t capacity_;
   size_t size_;
   BOOL freezed_;

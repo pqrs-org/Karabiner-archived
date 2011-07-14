@@ -466,7 +466,7 @@
   dict_config_name_ = [NSMutableDictionary new];
 
   [remapclasses_initialize_vector_ release];
-  remapclasses_initialize_vector_ = [NSMutableArray new];
+  remapclasses_initialize_vector_ = [RemapClassesInitializeVector new];
 
   [keycode_ release];
   keycode_ = [KeyCode new];
@@ -578,18 +578,12 @@
   // --------------------
   // make remapclasses_initialize_vector_
   NSUInteger count = [dict_initialize_vector_ count];
-  [remapclasses_initialize_vector_ addObject:[NSNumber numberWithUnsignedInt:BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION]];
-  [remapclasses_initialize_vector_ addObject:[NSNumber numberWithUnsignedInteger:count]];
 
   for (NSUInteger i = 0; i < count; ++i) {
     NSArray* a = [dict_initialize_vector_ objectForKey:[NSNumber numberWithUnsignedInteger:i]];
-    if (! a) {
-      [remapclasses_initialize_vector_ addObject:[NSNumber numberWithUnsignedInt:0]];
-    } else {
-      [remapclasses_initialize_vector_ addObject:[NSNumber numberWithUnsignedInteger:[a count]]];
-      [remapclasses_initialize_vector_ addObjectsFromArray:a];
-    }
+    [remapclasses_initialize_vector_ addVector:a];
   }
+  [remapclasses_initialize_vector_ setFreezed];
 
   return retval;
 }

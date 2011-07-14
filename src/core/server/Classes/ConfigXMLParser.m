@@ -83,16 +83,16 @@ static ConfigXMLParser* global_instance = nil;
   return v;
 }
 
-- (NSArray*) remapclasses_initialize_vector
+- (RemapClassesInitializeVector*) remapclasses_initialize_vector
 {
-  NSArray* a = nil;
+  RemapClassesInitializeVector* v = nil;
   @synchronized(self) {
     if (initialized_) {
-      a = remapclasses_initialize_vector_;
-      [[a retain] autorelease];
+      v = remapclasses_initialize_vector_;
+      [[v retain] autorelease];
     }
   }
-  return a;
+  return v;
 }
 
 - (unsigned int) keycode:(NSString*)name

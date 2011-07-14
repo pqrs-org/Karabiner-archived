@@ -4,7 +4,7 @@
 @implementation RemapClassesInitializeVector
 
 enum {
-  MEMORY_BLOCK_SIZE = 1024 * 1024, // 1MB
+  CAPACITY_UNIT_COUNT = 1024 * 128,
   INDEX_OF_FORMAT_VERSION = 0,
   INDEX_OF_COUNT = 1,
 };
@@ -14,8 +14,15 @@ enum {
   self = [super init];
 
   if (self) {
-    capacity_ = MEMORY_BLOCK_SIZE;
-    data_ = (uint32_t*)(malloc(capacity_));
+    capacity_ = CAPACITY_UNIT_COUNT;
+    data_ = (uint32_t*)(malloc(capacity_ * sizeof(uint32_t)));
+    if (! data_) {
+      @throw [NSException
+            exceptionWithName: @"malloc is failed"
+            reason:[NSString stringWithFormat:@"capacity_:%d", capacity_]
+            userInfo: nil];
+    }
+
     size_ = 0;
     freezed_ = NO;
 
@@ -51,14 +58,14 @@ enum {
   NSUInteger newcount = [vector count] + 1;
 
   while (size_ + newcount > capacity_) {
-    data_ = (uint32_t*)(realloc(data_, capacity_ + MEMORY_BLOCK_SIZE));
+    data_ = (uint32_t*)(realloc(data_, (capacity_ + CAPACITY_UNIT_COUNT) * sizeof(uint32_t)));
     if (! data_) {
       @throw [NSException
             exceptionWithName: @"realloc is failed"
             reason:[NSString stringWithFormat:@"capacity_:%d, newcount:%d", capacity_, newcount]
             userInfo: nil];
     }
-    capacity_ += MEMORY_BLOCK_SIZE;
+    capacity_ += CAPACITY_UNIT_COUNT;
   }
 
   // ----------------------------------------
