@@ -8,6 +8,7 @@
   NSMutableDictionary* dict_initialize_vector_;
   NSMutableDictionary* dict_config_name_;
   RemapClassesInitializeVector* remapclasses_initialize_vector_;
+  NSUInteger count_;
   NSMutableArray* preferencepane_checkbox_;
   NSMutableArray* preferencepane_number_;
   KeyCode* keycode_;
