@@ -26,7 +26,9 @@ enum {
             userInfo: nil];
     }
     data_[INDEX_OF_FORMAT_VERSION] = BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION;
+    ++size_;
     data_[INDEX_OF_COUNT] = 0;
+    ++size_;
   }
 
   return self;
@@ -93,7 +95,12 @@ enum {
 
 - (size_t) size
 {
-  if (! freezed_) return 0;
+  if (! freezed_) {
+    @throw [NSException
+          exceptionWithName: @"[RemapClassesInitializeVector size] is failed"
+          reason: @"[RemapClassesInitializeVector size] is called before freeze"
+          userInfo: nil];
+  }
   return size_;
 }
 
