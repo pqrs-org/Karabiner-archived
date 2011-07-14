@@ -50,7 +50,12 @@ enum {
 
   while (size_ + newcount > capacity_) {
     data_ = (uint32_t*)(realloc(data_, capacity_ + MEMORY_BLOCK_SIZE));
-    if (! data_) return;
+    if (! data_) {
+      @throw [NSException
+            exceptionWithName: @"realloc is failed"
+            reason:[NSString stringWithFormat:@"capacity_:%d, newcount:%d", capacity_, newcount]
+            userInfo: nil];
+    }
     capacity_ += MEMORY_BLOCK_SIZE;
   }
 
