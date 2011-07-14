@@ -468,6 +468,8 @@
   [remapclasses_initialize_vector_ release];
   remapclasses_initialize_vector_ = [RemapClassesInitializeVector new];
 
+  count_ = 0;
+
   [keycode_ release];
   keycode_ = [KeyCode new];
 
@@ -578,12 +580,14 @@
   // --------------------
   // make remapclasses_initialize_vector_
   NSUInteger count = [dict_initialize_vector_ count];
-
   for (NSUInteger i = 0; i < count; ++i) {
     NSArray* a = [dict_initialize_vector_ objectForKey:[NSNumber numberWithUnsignedInteger:i]];
     [remapclasses_initialize_vector_ addVector:a];
+    ++count_;
   }
   [remapclasses_initialize_vector_ setFreezed];
+  [dict_initialize_vector_ release];
+  dict_initialize_vector_ = nil;
 
   return retval;
 }
