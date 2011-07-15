@@ -4,7 +4,7 @@
 @implementation RemapClassesInitializeVector
 
 enum {
-  CAPACITY_UNIT_COUNT = 1024 * 128,
+  CAPACITY_UNIT_COUNT = 1024 * 32,
   INDEX_OF_FORMAT_VERSION = 0,
   INDEX_OF_COUNT = 1,
 };
@@ -51,11 +51,11 @@ enum {
   [super dealloc];
 }
 
-- (void) addVector:(NSArray*)vector
+- (void) addVector:(NSArray*)vector configindex:(uint32_t)configindex
 {
   // ----------------------------------------
   // realloc if needed
-  NSUInteger newcount = [vector count] + 1;
+  NSUInteger newcount = [vector count] + 2; // +2 == size,configindex
 
   while (size_ + newcount > capacity_) {
     data_ = (uint32_t*)(realloc(data_, (capacity_ + CAPACITY_UNIT_COUNT) * sizeof(uint32_t)));
@@ -76,7 +76,9 @@ enum {
   // append to data_
   uint32_t* p = data_ + size_;
 
-  *p++ = (uint32_t)([vector count]);
+  *p++ = (uint32_t)([vector count] + 1); // +1 == configindex
+  *p++ = configindex;
+
   for (NSNumber* number in vector) {
     *p++ = [number unsignedIntValue];
   }

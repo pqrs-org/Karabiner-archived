@@ -15,8 +15,9 @@ enum {
   // Version 8: Removed an essential configuration. (general.show_sticky_modifier_status)
   // Version 9: Added VK_STICKY_*_FORCE_ON, VK_STICKY_*_FORCE_OFF.
   // Version 10: Added an essential configuration. (parameter.keyoverlaidmodifier_initial_modifier_wait)
+  // Version 11: Changed initialize vector format (added configindex)
 
-  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 10,
+  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 11,
 };
 
 enum {
@@ -139,7 +140,7 @@ enum { STATIC_ASSERT__sizeof_BridgeWorkSpaceData = 1 / (sizeof(struct BridgeWork
 // { BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION, the_count_of_initialize_vector, [<initialize_vector>] }
 //
 // <initialize_vector>
-//   { size, {[<remap>], {<filter>}} }
+//   { size, configindex, {[<remap>], {<filter>}} }
 //
 // <filter>
 //   { size, BRIDGE_FILTERTYPE_XXX, values }
@@ -154,7 +155,8 @@ enum { STATIC_ASSERT__sizeof_BridgeWorkSpaceData = 1 / (sizeof(struct BridgeWork
 //
 // Example of <initialize_vector>:
 //   {
-//     18,
+//     19,
+//     1044,
 //     5,BRIDGE_REMAPTYPE_KEYTOKEY,BRIDGE_DATATYPE_KEYCODE,0,BRIDGE_DATATYPE_KEYCODE,11,
 //     2,BRIDGE_FILTERTYPE_CONFIG_NOT,881,
 //     2,BRIDGE_FILTERTYPE_CONFIG_NOT,882,
@@ -163,7 +165,8 @@ enum { STATIC_ASSERT__sizeof_BridgeWorkSpaceData = 1 / (sizeof(struct BridgeWork
 //
 //   No remap version
 //   {
-//     0,
+//     1,
+//     2321,
 //   }
 //
 // Example of <filter>:

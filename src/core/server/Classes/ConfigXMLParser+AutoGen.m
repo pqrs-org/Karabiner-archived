@@ -582,7 +582,7 @@
   NSUInteger count = [dict_initialize_vector_ count];
   for (NSUInteger i = 0; i < count; ++i) {
     NSArray* a = [dict_initialize_vector_ objectForKey:[NSNumber numberWithUnsignedInteger:i]];
-    [remapclasses_initialize_vector_ addVector:a];
+    [remapclasses_initialize_vector_ addVector:a configindex:(uint32_t)(i)];
     ++count_;
   }
   [remapclasses_initialize_vector_ setFreezed];
