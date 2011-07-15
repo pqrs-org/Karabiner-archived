@@ -417,8 +417,9 @@
         [self traverse_autogen:initialize_vector node:[e parent] name:name];
 
         NSNumber* configindex = [keycode_ numberValue:[NSString stringWithFormat:@"ConfigIndex::%@", name]];
-        [dict_initialize_vector_ setObject:initialize_vector forKey:configindex];
+        [remapclasses_initialize_vector_ addVector:initialize_vector configindex:[configindex unsignedIntValue]];
         [dict_config_name_ setObject:rawname forKey:configindex];
+        ++count_;
       }
       [pool drain];
     }
@@ -458,9 +459,6 @@
   BOOL retval = NO;
 
   simultaneous_keycode_index_ = 0;
-
-  [dict_initialize_vector_ release];
-  dict_initialize_vector_ = [NSMutableDictionary new];
 
   [dict_config_name_ release];
   dict_config_name_ = [NSMutableDictionary new];
@@ -578,16 +576,8 @@
   }
 
   // --------------------
-  // make remapclasses_initialize_vector_
-  NSUInteger count = [dict_initialize_vector_ count];
-  for (NSUInteger i = 0; i < count; ++i) {
-    NSArray* a = [dict_initialize_vector_ objectForKey:[NSNumber numberWithUnsignedInteger:i]];
-    [remapclasses_initialize_vector_ addVector:a configindex:(uint32_t)(i)];
-    ++count_;
-  }
+  // Freeze remapclasses_initialize_vector_.
   [remapclasses_initialize_vector_ setFreezed];
-  [dict_initialize_vector_ release];
-  dict_initialize_vector_ = nil;
 
   return retval;
 }

@@ -37,7 +37,6 @@ static ConfigXMLParser* global_instance = nil;
 
 - (void) dealloc
 {
-  [dict_initialize_vector_ release];
   [dict_config_name_ release];
   [remapclasses_initialize_vector_ release];
   [preferencepane_checkbox_ release];
