@@ -5,7 +5,6 @@
 
 @interface ConfigXMLParser : NSObject {
   unsigned int simultaneous_keycode_index_;
-  NSMutableDictionary* dict_initialize_vector_;
   NSMutableDictionary* dict_config_name_;
   RemapClassesInitializeVector* remapclasses_initialize_vector_;
   NSUInteger count_;
