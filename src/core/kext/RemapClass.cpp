@@ -656,63 +656,85 @@ namespace org_pqrs_KeyRemap4MacBook {
       remapclasses_ = new Vector_RemapClassPointer();
       if (! remapclasses_) {
         IOLOG_ERROR("%s remapclasses_ == NULL.\n", __FUNCTION__);
-        return false;
+        goto error;
       }
 
       // ------------------------------------------------------------
       // check
       if (vector_size < 2) {
         IOLOG_ERROR("%s vector_size < 2. (%d)\n", __FUNCTION__, static_cast<int>(vector_size));
-        return false;
+        goto error;
       }
       if (vector_size > RemapClass::MAX_ALLOCATION_COUNT) {
         IOLOG_ERROR("%s too large vector_size. (%d)\n", __FUNCTION__, static_cast<int>(vector_size));
-        return false;
+        goto error;
       }
 
-      const uint32_t* p = remapclasses_initialize_vector;
-      uint32_t version = *p++;
-      uint32_t count   = *p++;
+      {
+        const uint32_t* p = remapclasses_initialize_vector;
+        uint32_t version = *p++;
+        uint32_t count   = *p++;
 
-      if (version != BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION) {
-        IOLOG_ERROR("%s version mismatch.\n", __FUNCTION__);
-        return false;
-      }
-      if (count > RemapClass::MAX_CONFIG_COUNT) {
-        IOLOG_ERROR("%s too many count. (%d)\n", __FUNCTION__, count);
-        return false;
-      }
-
-      // ------------------------------------------------------------
-      // load
-      remapclasses_->reserve(count);
-      RemapClass::reset_allocation_count();
-
-      for (uint32_t i = 0; i < count; ++i) {
-        if (p >= remapclasses_initialize_vector + vector_size) {
-          IOLOG_ERROR("%s vector_size mismatch.\n", __FUNCTION__);
-          return false;
+        if (version != BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION) {
+          IOLOG_ERROR("%s version mismatch.\n", __FUNCTION__);
+          goto error;
+        }
+        if (count > RemapClass::MAX_CONFIG_COUNT) {
+          IOLOG_ERROR("%s too many count. (%d)\n", __FUNCTION__, count);
+          goto error;
         }
 
-        uint32_t size = *p++;
-        if (p + size >= remapclasses_initialize_vector + vector_size) {
-          IOLOG_ERROR("%s vector_size mismatch.\n", __FUNCTION__);
-          return false;
+        // ------------------------------------------------------------
+        // load
+        remapclasses_->reserve(count);
+        RemapClass::reset_allocation_count();
+
+        // (1) Setting NULL to all items.
+        for (uint32_t i = 0; i < count; ++i) {
+          remapclasses_->push_back(NULL);
         }
 
-        RemapClass* newp = new RemapClass(p, size);
-        if (! newp) {
-          IOLOG_ERROR("%s newp == NULL.\n", __FUNCTION__);
-          return false;
-        }
-        p += size;
+        // (2) Setting RemapClass* to items.
+        for (uint32_t i = 0; i < count; ++i) {
+          if (p >= remapclasses_initialize_vector + vector_size) {
+            IOLOG_ERROR("%s vector_size mismatch.\n", __FUNCTION__);
+            goto error;
+          }
 
-        remapclasses_->push_back(newp);
+          uint32_t size = *p++;
+          if (p + size >= remapclasses_initialize_vector + vector_size) {
+            IOLOG_ERROR("%s vector_size mismatch.\n", __FUNCTION__);
+            goto error;
+          }
+
+          RemapClass* newp = new RemapClass(p, size);
+          if (! newp) {
+            IOLOG_ERROR("%s newp == NULL.\n", __FUNCTION__);
+            goto error;
+          }
+          p += size;
+
+          if (i < remapclasses_->size()) {
+            (*remapclasses_)[i] = newp;
+          }
+        }
+
+        // (3) Making sure that is not NULL for all items.
+        for (uint32_t i = 0; i < remapclasses_->size(); ++i) {
+          if (! (*remapclasses_)[i]) {
+            IOLOG_ERROR("%s (*remapclasses_)[i] == NULL.\n", __FUNCTION__);
+            goto error;
+          }
+        }
       }
 
       RemapClass::log_allocation_count();
 
       return true;
+
+    error:
+      clear_remapclasses();
+      return false;
     }
 
     bool
