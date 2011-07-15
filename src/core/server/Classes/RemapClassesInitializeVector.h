@@ -12,7 +12,7 @@
   BOOL freezed_;
 }
 
-- (void) addVector:(NSArray*)vector;
+- (void) addVector:(NSArray*)vector configindex:(uint32_t)configindex;
 
 - (void) setFreezed;
 - (BOOL) freezed;

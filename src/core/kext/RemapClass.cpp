@@ -706,6 +706,13 @@ namespace org_pqrs_KeyRemap4MacBook {
             IOLOG_ERROR("%s vector_size mismatch.\n", __FUNCTION__);
             goto error;
           }
+          if (size == 0) {
+            IOLOG_ERROR("%s size == 0.\n", __FUNCTION__);
+            goto error;
+          }
+
+          uint32_t configindex = *p++;
+          --size;
 
           RemapClass* newp = new RemapClass(p, size);
           if (! newp) {
@@ -714,9 +721,12 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
           p += size;
 
-          if (i < remapclasses_->size()) {
-            (*remapclasses_)[i] = newp;
+          if (configindex >= remapclasses_->size()) {
+            IOLOG_ERROR("%s invalid configindex %d (remapclasses_->size() == %d).\n", __FUNCTION__,
+                        configindex, static_cast<int>(remapclasses_->size()));
+            goto error;
           }
+          (*remapclasses_)[configindex] = newp;
         }
 
         // (3) Making sure that is not NULL for all items.
