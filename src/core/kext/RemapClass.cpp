@@ -656,7 +656,19 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       // ------------------------------------------------------------
-      // check
+      // Validate vector_size
+
+      // "vector_size" is byte of remapclasses_initialize_vector. (!= count of items.)
+      // Confirming vector_size is a multiple of sizeof(uint32_t).
+      if ((vector_size % sizeof(uint32_t)) != 0) {
+        IOLOG_ERROR("%s (vector_size %% sizeof(uint32_t)) != 0. (%d)\n", __FUNCTION__, static_cast<int>(vector_size));
+        goto error;
+      }
+
+      // change vector_size to num of uint32_t.
+      vector_size /= sizeof(uint32_t);
+      // Then, we can treat "remapclasses_initialize_vector + vector_size" as valid.
+
       if (vector_size < 2) {
         IOLOG_ERROR("%s vector_size < 2. (%d)\n", __FUNCTION__, static_cast<int>(vector_size));
         goto error;
@@ -666,6 +678,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         goto error;
       }
 
+      // ------------------------------------------------------------
       {
         const uint32_t* p = remapclasses_initialize_vector;
         uint32_t version = *p++;
@@ -698,8 +711,9 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
 
           uint32_t size = *p++;
-          if (p + size >= remapclasses_initialize_vector + vector_size) {
-            IOLOG_ERROR("%s vector_size mismatch.\n", __FUNCTION__);
+          if (p + size > remapclasses_initialize_vector + vector_size) {
+            IOLOG_ERROR("%s vector_size mismatch. (vector_size:%d, size:%d)\n", __FUNCTION__,
+                        static_cast<int>(vector_size), size);
             goto error;
           }
           if (size == 0) {
