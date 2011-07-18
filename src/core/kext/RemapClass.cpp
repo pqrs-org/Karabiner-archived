@@ -144,13 +144,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     filters_->push_back(newp);
   }
 
-  bool
+  void
   RemapClass::Item::remap(RemapParams& remapParams)
   {
-    if (isblocked()) return false;
+    if (isblocked()) return;
 
-#define CALL_UNION_FUNCTION(POINTER) {                     \
-    if (POINTER) { return (POINTER)->remap(remapParams); } \
+#define CALL_UNION_FUNCTION(POINTER) {              \
+    if (POINTER) { (POINTER)->remap(remapParams); } \
 }
 
     switch (type_) {
@@ -168,17 +168,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
 #undef CALL_UNION_FUNCTION
-
-    return false;
   }
 
-  bool
+  void
   RemapClass::Item::remap(RemapConsumerParams& remapParams)
   {
-    if (isblocked()) return false;
+    if (isblocked()) return;
 
-#define CALL_UNION_FUNCTION(POINTER) {                     \
-    if (POINTER) { return (POINTER)->remap(remapParams); } \
+#define CALL_UNION_FUNCTION(POINTER) {              \
+    if (POINTER) { (POINTER)->remap(remapParams); } \
 }
 
     switch (type_) {
@@ -190,17 +188,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
 #undef CALL_UNION_FUNCTION
-
-    return false;
   }
 
-  bool
+  void
   RemapClass::Item::remap(RemapPointingParams_relative& remapParams)
   {
-    if (isblocked()) return false;
+    if (isblocked()) return;
 
-#define CALL_UNION_FUNCTION(POINTER) {                     \
-    if (POINTER) { return (POINTER)->remap(remapParams); } \
+#define CALL_UNION_FUNCTION(POINTER) {              \
+    if (POINTER) { (POINTER)->remap(remapParams); } \
 }
 
     switch (type_) {
@@ -214,8 +210,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
 #undef CALL_UNION_FUNCTION
-
-    return false;
   }
 
   bool
@@ -260,13 +254,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     return false;
   }
 
-  bool
+  void
   RemapClass::Item::remap_setkeyboardtype(KeyboardType& keyboardType)
   {
-    if (isblocked()) return false;
+    if (isblocked()) return;
 
-#define CALL_UNION_FUNCTION(POINTER) {                      \
-    if (POINTER) { return (POINTER)->remap(keyboardType); } \
+#define CALL_UNION_FUNCTION(POINTER) {               \
+    if (POINTER) { (POINTER)->remap(keyboardType); } \
 }
 
     switch (type_) {
@@ -277,17 +271,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
 #undef CALL_UNION_FUNCTION
-
-    return false;
   }
 
-  bool
+  void
   RemapClass::Item::remap_forcenumlockon(ListHookedKeyboard::Item* item)
   {
-    if (isblocked()) return false;
+    if (isblocked()) return;
 
-#define CALL_UNION_FUNCTION(POINTER) {              \
-    if (POINTER) { return (POINTER)->remap(item); } \
+#define CALL_UNION_FUNCTION(POINTER) {       \
+    if (POINTER) { (POINTER)->remap(item); } \
 }
 
     switch (type_) {
@@ -298,8 +290,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
 #undef CALL_UNION_FUNCTION
-
-    return false;
   }
 
   bool
@@ -436,7 +426,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (size_t i = 0; i < items_.size(); ++i) {
       Item* p = items_[i];
       if (p) {
-        if (p->remap_setkeyboardtype(keyboardType)) return;
+        p->remap_setkeyboardtype(keyboardType);
       }
     }
   }
@@ -447,7 +437,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (size_t i = 0; i < items_.size(); ++i) {
       Item* p = items_[i];
       if (p) {
-        if (p->remap_forcenumlockon(item)) return;
+        p->remap_forcenumlockon(item);
       }
     }
   }
@@ -458,7 +448,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (size_t i = 0; i < items_.size(); ++i) {
       Item* p = items_[i];
       if (p) {
-        if (p->remap(remapParams)) return;
+        // DependingPressingPeriodKeyToKey watches another key status.
+        // Therefore, we need to call 'p->remap(remapParams)' for all items.
+        p->remap(remapParams);
       }
     }
   }
@@ -469,7 +461,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (size_t i = 0; i < items_.size(); ++i) {
       Item* p = items_[i];
       if (p) {
-        if (p->remap(remapParams)) return;
+        p->remap(remapParams);
       }
     }
   }
@@ -480,7 +472,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (size_t i = 0; i < items_.size(); ++i) {
       Item* p = items_[i];
       if (p) {
-        if (p->remap(remapParams)) return;
+        p->remap(remapParams);
       }
     }
   }
@@ -504,16 +496,20 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   RemapClass::remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params)
   {
-    if (! enabled()) return false;
+    bool dropped = false;
 
-    for (size_t i = 0; i < items_.size(); ++i) {
-      Item* p = items_[i];
-      if (p) {
-        if (p->drop(params)) return true;
+    if (enabled()) {
+      for (size_t i = 0; i < items_.size(); ++i) {
+        Item* p = items_[i];
+        if (p) {
+          if (p->drop(params)) {
+            dropped = true;
+          }
+        }
       }
     }
 
-    return false;
+    return dropped;
   }
 
   const char*
