@@ -1,4 +1,5 @@
 #include "ForceNumLockOn.hpp"
+#include "GlobalLock.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
@@ -55,8 +56,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       // As for some keypads, NumLock is off when it was connected.
       // We need to call setAlphaLock(true) to activate a device.
       IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, item->get());
-      if (kbd && ! kbd->numLock()) {
-        kbd->setNumLockFeedback(true);
+      if (kbd) {
+        GlobalLock::ScopedUnlock lk;
+        if (! kbd->numLock()) {
+          kbd->setNumLockFeedback(true);
+        }
       }
 
       return false;
