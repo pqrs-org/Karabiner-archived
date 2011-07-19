@@ -164,6 +164,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, device_);
     if (! kbd) return;
 
+    GlobalLock::ScopedUnlock lk;
     if (kbd->numLock()) {
       kbd->setNumLock(false);
     }
