@@ -15,7 +15,6 @@
 
 @interface KeyRemap4MacBook_serverAppDelegate : NSObject <NSApplicationDelegate> {
   NSWindow* window;
-  BOOL isSessionActive_;
 
   // for IONotification
   IONotificationPortRef notifyport_;
