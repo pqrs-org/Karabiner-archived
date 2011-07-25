@@ -1,48 +1,47 @@
 #!/usr/bin/ruby
 
-require 'rubygems'
-require 'xml/libxml'
-
 system('make -C ../../files/prefpane > /dev/null')
 file = "%s/../../files/prefpane/output/checkbox.xml" % File.dirname($0)
-parser = XML::Parser.file(file)
-libxmldoc = parser.parse
+xml = File.read(file)
 
 version = IO.read('../../version')
 
-total = libxmldoc.find('//identifier').count
+total = xml.scan(/<identifier(\s.*?)?>(.+?)<\/identifier>/m).count
 print "SUBJECT Version #{version.strip} (Total: #{total} prefs)\n"
 print "RAW\n"
 
 $first = true
 
-def traverse(node)
-  node.children.each do |n|
-    case n.name
-    when 'list' then
-      if $first then
-        print '<ul id="collapser">'
-        $first = false
-      else
-        print '<ul>'
-      end
-      traverse(n)
-      print "</ul>\n"
+xml.scan(/<(.+?)>([^<]*)/m).each do |matches|
+  name = matches[0]
+  body = matches[1]
 
-    when 'item' then
-      print "<li>"
-      traverse(n)
-      print "</li>"
-
-    when 'name' then
-      print n.inner_xml.strip
-      print "<br/>"
-
-    when 'appendix' then
-      print "&nbsp;&nbsp;#{n.inner_xml.strip}<br/>"
+  case name
+  when 'list'
+    if $first then
+      print '<ul id="collapser">'
+      $first = false
+    else
+      print '<ul>'
     end
+
+  when '/list'
+    print "</ul>\n"
+
+  when 'item'
+    print '<li>'
+
+  when '/item'
+    print '</li>'
+
+  when 'name'
+    print body
+    print "<br/>"
+
+  when 'appendix'
+    print "&nbsp;&nbsp;#{body}<br/>"
+
   end
 end
 
-traverse(libxmldoc.root)
 print "/RAW\n"
