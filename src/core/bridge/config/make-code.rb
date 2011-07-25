@@ -1,10 +1,6 @@
 #!/usr/bin/ruby
 
-require 'rubygems'
-require 'xml/libxml'
 require "#{File.dirname(__FILE__)}/../lib/converter.rb"
-
-GC.disable
 
 # output to tmpfile
 $outfile = {
@@ -21,22 +17,22 @@ $outfile[:plist].print '<plist version="1.0">' + "\n"
 $outfile[:plist].print '  <array>' + "\n"
 
 ARGV.each do |xmlpath|
-  parser = XML::Parser.file(xmlpath)
-  libxmldoc = parser.parse
+  xml = File.read(xmlpath)
 
-  libxmldoc.root.find('//identifier').each do |identifier_node|
-    if identifier_node['essential'] == 'true' then
-      rawname = identifier_node.inner_xml
-      name = rawname.gsub(/\./, '_')
+  xml.scan(/<identifier(\s.*?)?>(.+?)<\/identifier>/m).each do |matches|
+    identifier = matches[1].strip
+    attr = matches[0]
+    if /\sessential=['"]true['"]/ =~ attr then
+      name = identifier.gsub(/\./, '_')
 
-      if identifier_node['default'].nil? then
+      unless /\sdefault=['"](.+?)['"]/ =~ attr then
         $outfile[:cpp].print "0,\n"
       else
-        $outfile[:cpp].print "#{identifier_node['default']},\n"
+        $outfile[:cpp].print "#{$1},\n"
       end
 
       $outfile[:hpp].print "BRIDGE_ESSENTIAL_CONFIG_INDEX_#{name} = #{configindex},\n"
-      $outfile[:plist].print "    <string>#{rawname}</string>\n"
+      $outfile[:plist].print "    <string>#{identifier}</string>\n"
       configindex += 1
     end
   end
