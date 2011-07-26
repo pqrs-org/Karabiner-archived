@@ -2,6 +2,8 @@
 
 basedir=`dirname $0`
 
+############################################################
+# xcodeproj
 for f in `find $basedir/../../* -name 'project.pbxproj'`; do
     echo "Check $f"
 
@@ -11,4 +13,10 @@ for f in `find $basedir/../../* -name 'project.pbxproj'`; do
     else
         "$basedir/xcodeproj.rb" < $f || exit 1
     fi
+done
+
+############################################################
+# Info.plist.tmpl
+for f in `find $basedir/../../* -name 'Info.plist.tmpl'`; do
+    "$basedir/plist.rb" < $f || exit 1
 done
