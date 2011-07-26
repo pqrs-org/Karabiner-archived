@@ -27,6 +27,9 @@ for f in `find $basedir/../../* -name 'Info.plist.tmpl'`; do
         kext/Info.plist.tmpl)
             "$basedir/plist.rb" CFBundleIconFile < $f || exit 1
             ;;
+        prefpane/Info.plist.tmpl)
+            "$basedir/plist.rb" CFBundleIconFile < $f || exit 1
+            ;;
         *)
             "$basedir/plist.rb" < $f || exit 1
             ;;
