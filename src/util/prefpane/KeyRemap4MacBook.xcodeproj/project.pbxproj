@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3428689411244C7D0063E730 /* TableView_configlist.h in Headers */ = {isa = PBXBuildFile; fileRef = 3428689211244C7D0063E730 /* TableView_configlist.h */; };
 		3428689511244C7D0063E730 /* TableView_configlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 3428689311244C7D0063E730 /* TableView_configlist.m */; };
+		343BB0D713E056FC0037A81F /* app.icns in Resources */ = {isa = PBXBuildFile; fileRef = 343BB0D613E056FC0037A81F /* app.icns */; };
 		349FDBBF0D545C2200EED33C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 349FDBBE0D545C2200EED33C /* Security.framework */; };
 		34B2A66D1374623000694134 /* KeyRemap4MacBookKeys.h in Headers */ = {isa = PBXBuildFile; fileRef = 34B2A66C1374623000694134 /* KeyRemap4MacBookKeys.h */; };
 		34CBFDDB0D94CEC00087D9DB /* OutlineView_checkbox.h in Headers */ = {isa = PBXBuildFile; fileRef = 34CBFDD50D94CEC00087D9DB /* OutlineView_checkbox.h */; };
@@ -22,7 +23,6 @@
 		8D202CEA0486D31800D8A456 /* KeyRemap4MacBook_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32DBCFA20370C41700C91783 /* KeyRemap4MacBook_Prefix.pch */; };
 		8D202CEB0486D31800D8A456 /* KeyRemap4MacBookPref.h in Headers */ = {isa = PBXBuildFile; fileRef = F506C03C013D9D7901CA16C8 /* KeyRemap4MacBookPref.h */; };
 		8D202CED0486D31800D8A456 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
-		8D202CEE0486D31800D8A456 /* KeyRemap4MacBookPref.tiff in Resources */ = {isa = PBXBuildFile; fileRef = F506C040013D9D8001CA16C8 /* KeyRemap4MacBookPref.tiff */; };
 		8D202CEF0486D31800D8A456 /* KeyRemap4MacBookPref.nib in Resources */ = {isa = PBXBuildFile; fileRef = F506C042013D9D8C01CA16C8 /* KeyRemap4MacBookPref.nib */; };
 		8D202CF10486D31800D8A456 /* KeyRemap4MacBookPref.m in Sources */ = {isa = PBXBuildFile; fileRef = F506C03D013D9D7901CA16C8 /* KeyRemap4MacBookPref.m */; };
 		8D202CF30486D31800D8A456 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
@@ -37,6 +37,7 @@
 		32DBCFA20370C41700C91783 /* KeyRemap4MacBook_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyRemap4MacBook_Prefix.pch; sourceTree = "<group>"; };
 		3428689211244C7D0063E730 /* TableView_configlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView_configlist.h; sourceTree = "<group>"; };
 		3428689311244C7D0063E730 /* TableView_configlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView_configlist.m; sourceTree = "<group>"; };
+		343BB0D613E056FC0037A81F /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = app.icns; path = ../../share/Resources/app.icns; sourceTree = "<group>"; };
 		349FDBBE0D545C2200EED33C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		34B2A66C1374623000694134 /* KeyRemap4MacBookKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookKeys.h; path = ../../share/KeyRemap4MacBookKeys.h; sourceTree = "<group>"; };
 		34CBFDD50D94CEC00087D9DB /* OutlineView_checkbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutlineView_checkbox.h; sourceTree = "<group>"; };
@@ -52,7 +53,6 @@
 		F506C035013D953901CA16C8 /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = /System/Library/Frameworks/PreferencePanes.framework; sourceTree = "<absolute>"; };
 		F506C03C013D9D7901CA16C8 /* KeyRemap4MacBookPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyRemap4MacBookPref.h; sourceTree = "<group>"; };
 		F506C03D013D9D7901CA16C8 /* KeyRemap4MacBookPref.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyRemap4MacBookPref.m; sourceTree = "<group>"; };
-		F506C040013D9D8001CA16C8 /* KeyRemap4MacBookPref.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = KeyRemap4MacBookPref.tiff; sourceTree = "<group>"; };
 		F506C043013D9D8C01CA16C8 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/KeyRemap4MacBookPref.nib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,9 +95,9 @@
 		089C167CFE841241C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				343BB0D613E056FC0037A81F /* app.icns */,
 				8D202CF70486D31800D8A456 /* Info.plist */,
 				089C167DFE841241C02AAC07 /* InfoPlist.strings */,
-				F506C040013D9D8001CA16C8 /* KeyRemap4MacBookPref.tiff */,
 				F506C042013D9D8C01CA16C8 /* KeyRemap4MacBookPref.nib */,
 			);
 			name = Resources;
@@ -231,8 +231,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D202CED0486D31800D8A456 /* InfoPlist.strings in Resources */,
-				8D202CEE0486D31800D8A456 /* KeyRemap4MacBookPref.tiff in Resources */,
 				8D202CEF0486D31800D8A456 /* KeyRemap4MacBookPref.nib in Resources */,
+				343BB0D713E056FC0037A81F /* app.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
