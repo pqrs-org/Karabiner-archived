@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		344DC4D813DF8F1B0046E1F1 /* app.icon.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 344DC4D713DF8F1B0046E1F1 /* app.icon.tiff */; };
 		348CC2F01054083800FA2DE0 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 348CC2EF1054083800FA2DE0 /* Security.framework */; };
 		349B4CFE0DE2B371007CC17E /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 349B4CFD0DE2B371007CC17E /* AppController.m */; };
 		34EB814412C6490E0071889D /* AdminAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 34EB814312C6490E0071889D /* AdminAction.m */; };
@@ -25,6 +26,7 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* uninstaller_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uninstaller_Prefix.pch; sourceTree = "<group>"; };
+		344DC4D713DF8F1B0046E1F1 /* app.icon.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = app.icon.tiff; path = Resources/app.icon.tiff; sourceTree = "<group>"; };
 		348CC2EF1054083800FA2DE0 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		349B4CFC0DE2B371007CC17E /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		349B4CFD0DE2B371007CC17E /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				344DC4D713DF8F1B0046E1F1 /* app.icon.tiff */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
@@ -180,6 +183,7 @@
 			files = (
 				8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */,
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+				344DC4D813DF8F1B0046E1F1 /* app.icon.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
