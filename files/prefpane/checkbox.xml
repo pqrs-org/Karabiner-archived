@@ -2276,6 +2276,11 @@
           <identifier>remap.dashboard2f4</identifier>
           <autogen>--KeyToKey--      KeyCode::DASHBOARD,                  KeyCode::F4</autogen>
         </item>
+        <item>
+          <name>Dashboard to Launchpad</name>
+          <identifier>remap.dashboard2launchpad</identifier>
+          <autogen>--KeyToKey-- KeyCode::DASHBOARD, KeyCode::LAUNCHPAD</autogen>
+        </item>
         <item><name>------------------------------------------------------------</name></item>
         <item>
           <name>Volume Mute to F3</name>
@@ -2785,6 +2790,12 @@
           <identifier>remap.f5_to_volumeup</identifier>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToConsumer-- KeyCode::F5, ConsumerKeyCode::VOLUME_UP</autogen>
+        </item>
+        <item><name>------------------------------------------------------------</name></item>
+        <item>
+          <name>F4 to Launchpad</name>
+          <identifier>remap.f4_to_launchpad</identifier>
+          <autogen>--KeyToKey-- KeyCode::F4, KeyCode::LAUNCHPAD</autogen>
         </item>
         <item><name>------------------------------------------------------------</name></item>
         <item>
