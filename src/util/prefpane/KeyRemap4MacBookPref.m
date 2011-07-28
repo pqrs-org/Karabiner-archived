@@ -128,7 +128,7 @@
   //
   // However, calling launchctl in Terminal.app is not familiar for everyone.
   // Therefore, we call launchctl at prefpane.
-  system("/bin/launchctl load -w /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.server.plist");
+  system("/bin/launchctl load -w /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.server.plist 2> /dev/null");
 }
 
 @end
