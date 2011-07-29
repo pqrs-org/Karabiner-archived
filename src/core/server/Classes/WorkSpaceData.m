@@ -296,6 +296,10 @@
     return [parser keycode:@"ApplicationType::SYSTEM_PREFERENCES"];
   }
 
+  if ([name isEqualToString:@"com.citrix.ICAClient"]) {
+    return [parser keycode:@"ApplicationType::CITRIX_ONLINE_PLUG_IN"];
+  }
+
   return [parser keycode:@"ApplicationType::UNKNOWN"];
 }
 
