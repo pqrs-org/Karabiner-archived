@@ -11067,6 +11067,13 @@
           <autogen>--KeyToKey-- KeyCode::SWISS_SECTION, KeyCode::SWISS_LESS_THAN</autogen>
           <autogen>--KeyToKey-- KeyCode::SWISS_LESS_THAN, KeyCode::SWISS_SECTION</autogen>
         </item>
+        <item>
+          <name>Change Section(§) to SHIFT+PC_INSERT</name>
+          <appendix>(Citrix Online Plug-in for Mac)</appendix>
+          <identifier>remap.swiss_section_insert_citrix</identifier>
+          <only>CITRIX_ONLINE_PLUG_IN</only>
+          <autogen>--KeyToKey-- KeyCode::SWISS_SECTION, KeyCode::PC_INSERT, VK_SHIFT</autogen>
+        </item>
       </list>
     </item>
 
