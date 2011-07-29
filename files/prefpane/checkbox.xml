@@ -8945,6 +8945,25 @@
           <identifier>remap.german_neo</identifier>
           <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::OPTION_R</autogen>
         </item>
+        <item>
+          <name>Umlaute 4 Programmierung umschreiben</name>
+          <appendix>ä to ae</appendix>
+          <appendix>ö to oe</appendix>
+          <appendix>ü to ue</appendix>
+          <identifier>remap.german_a_to_ae</identifier>
+          <!-- ä to ae -->
+          <autogen>--KeyToKey-- KeyCode::QUOTE,           KeyCode::A,           KeyCode::E</autogen>
+          <!-- Ä to AE -->
+          <autogen>--KeyToKey-- KeyCode::QUOTE, VK_SHIFT, KeyCode::A, VK_SHIFT, KeyCode::E, VK_SHIFT</autogen>
+          <!-- ö to oe -->
+          <autogen>--KeyToKey-- KeyCode::SEMICOLON,           KeyCode::O,           KeyCode::E</autogen>
+          <!-- Ö to OE -->
+          <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_SHIFT, KeyCode::O, VK_SHIFT, KeyCode::E, VK_SHIFT</autogen>
+          <!-- ü to ue -->
+          <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT,           KeyCode::U,           KeyCode::E</autogen>
+          <!-- Ü to UE -->
+          <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_SHIFT, KeyCode::U, VK_SHIFT, KeyCode::E, VK_SHIFT</autogen>
+        </item>
       </list>
     </item>
     <item>
