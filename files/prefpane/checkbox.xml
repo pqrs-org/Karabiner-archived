@@ -2005,7 +2005,9 @@
           <name>Functional Keys to F1..F12</name>
           <appendix>Brightness Down to F1</appendix>
           <appendix>Brightness Up to F2</appendix>
+          <appendix>Mission Control to F3</appendix>
           <appendix>Expose to F3</appendix>
+          <appendix>Launchpad to F4</appendix>
           <appendix>Dashboard to F4</appendix>
           <appendix>Keyboard Light LOW to F5</appendix>
           <appendix>Keyboard Light HIGH to F6</appendix>
@@ -2025,6 +2027,7 @@
           <!-- F3 - F12 -->
           <autogen>--KeyToKey--      KeyCode::EXPOSE_ALL,                 KeyCode::F3</autogen>
           <autogen>--KeyToKey--      KeyCode::DASHBOARD,                  KeyCode::F4</autogen>
+          <autogen>--KeyToKey--      KeyCode::LAUNCHPAD,                  KeyCode::F4</autogen>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::KEYBOARDLIGHT_LOW,  KeyCode::F5</autogen>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::KEYBOARDLIGHT_HIGH, KeyCode::F6</autogen>
           <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PREV,         KeyCode::F7</autogen>
