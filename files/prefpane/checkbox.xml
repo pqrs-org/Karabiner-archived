@@ -519,29 +519,35 @@
             </item>
           </list>
         </item>
+
         <item>
-          <name>Swap CapsLock and Control on FILCO FKBN91ML/NB</name>
-          <appendix>// We perform it through PC Application Key.</appendix>
-          <appendix>// Set CapsLock key code to 110 by PCKeyboardHack.</appendix>
-          <identifier>remap.swap_capslock_and_control_FKBN91ML</identifier>
-          <block>
-            <device_only>DeviceVendor::FILCO,DeviceProduct::FKBN91ML_NB</device_only>
-            <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::CONTROL_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::CAPSLOCK</autogen>
-          </block>
-          <block>
-            <device_not>DeviceVendor::FILCO,DeviceProduct::FKBN91ML_NB</device_not>
-            <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::CAPSLOCK</autogen>
-          </block>
-        </item>
-        <item>
-          <name>Swap Command_L and Option_L on FILCO FKBN91ML/NB</name>
-          <identifier>remap.swap_commandL_and_optionL_FKBN91ML</identifier>
-          <block>
-            <device_only>DeviceVendor::FILCO,DeviceProduct::FKBN91ML_NB</device_only>
-            <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::OPTION_L,  KeyCode::COMMAND_L</autogen>
-          </block>
+          <name>For FILCO FKBN91ML/NB</name>
+          <list>
+            <item>
+              <name>Swap CapsLock and Control on FILCO FKBN91ML/NB</name>
+              <appendix>// We perform it through PC Application Key.</appendix>
+              <appendix>// Set CapsLock key code to 110 by PCKeyboardHack.</appendix>
+              <identifier>remap.swap_capslock_and_control_FKBN91ML</identifier>
+              <block>
+                <device_only>DeviceVendor::FILCO,DeviceProduct::FKBN91ML_NB</device_only>
+                <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::CONTROL_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::CAPSLOCK</autogen>
+              </block>
+              <block>
+                <device_not>DeviceVendor::FILCO,DeviceProduct::FKBN91ML_NB</device_not>
+                <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::CAPSLOCK</autogen>
+              </block>
+            </item>
+            <item>
+              <name>Swap Command_L and Option_L on FILCO FKBN91ML/NB</name>
+              <identifier>remap.swap_commandL_and_optionL_FKBN91ML</identifier>
+              <block>
+                <device_only>DeviceVendor::FILCO,DeviceProduct::FKBN91ML_NB</device_only>
+                <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::OPTION_L,  KeyCode::COMMAND_L</autogen>
+              </block>
+            </item>
+          </list>
         </item>
       </list>
     </item>
