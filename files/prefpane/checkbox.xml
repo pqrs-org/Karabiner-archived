@@ -2431,6 +2431,55 @@
         </item>
 
         <item>
+          <name>Fn+F1..F12 to Functional Keys (Brightness Adjust, Music Control, etc)</name>
+          <appendix>(Use these settings if you activated "XXX to Fn")</appendix>
+          <list>
+            <item>
+              <name>Fn+F1,F2 to Brightness Adjust</name>
+              <appendix>Fn+F1 to Brightness Down</appendix>
+              <appendix>Fn+F2 to Brightness Up</appendix>
+              <identifier>remap.fn_fkeys_to_consumer_f1</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F1, ModifierFlag::FN, ConsumerKeyCode::BRIGHTNESS_DOWN</autogen>
+              <autogen>--KeyToConsumer-- KeyCode::F2, ModifierFlag::FN, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
+            </item>
+            <item>
+              <name>Fn+F3,F4 to Mission Control/Launchpad</name>
+              <appendix>For Lion users</appendix>
+              <identifier>remap.fn_fkeys_to_consumer_f3_lion</identifier>
+              <autogen>--KeyToKey-- KeyCode::F3, ModifierFlag::FN, KeyCode::MISSION_CONTROL</autogen>
+              <autogen>--KeyToKey-- KeyCode::F4, ModifierFlag::FN, KeyCode::LAUNCHPAD</autogen>
+            </item>
+            <item>
+              <name>Fn+F3,F4 to Expose/Dashboard</name>
+              <appendix>For Snow Leopard users</appendix>
+              <identifier>remap.fn_fkeys_to_consumer_f3_snow</identifier>
+              <autogen>--KeyToKey-- KeyCode::F3, ModifierFlag::FN, KeyCode::EXPOSE_ALL</autogen>
+              <autogen>--KeyToKey-- KeyCode::F4, ModifierFlag::FN, KeyCode::DASHBOARD</autogen>
+            </item>
+            <item>
+              <name>Fn+F7,F8,F9 to Music Controls</name>
+              <appendix>Fn+F7 to Music Prev</appendix>
+              <appendix>Fn+F8 to Music Play/Pause</appendix>
+              <appendix>Fn+F9 to Music Next</appendix>
+              <identifier>remap.fn_fkeys_to_consumer_f7</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F7, ModifierFlag::FN, ConsumerKeyCode::MUSIC_PREV</autogen>
+              <autogen>--KeyToConsumer-- KeyCode::F8, ModifierFlag::FN, ConsumerKeyCode::MUSIC_PLAY</autogen>
+              <autogen>--KeyToConsumer-- KeyCode::F9, ModifierFlag::FN, ConsumerKeyCode::MUSIC_NEXT</autogen>
+            </item>
+            <item>
+              <name>Fn+F10,F11,F12 to Speaker Controls</name>
+              <appendix>Fn+F10 to Mute</appendix>
+              <appendix>Fn+F11 to Volume Down</appendix>
+              <appendix>Fn+F12 to Volume Up</appendix>
+              <identifier>remap.fn_fkeys_to_consumer_f10</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F10, ModifierFlag::FN, ConsumerKeyCode::VOLUME_MUTE</autogen>
+              <autogen>--KeyToConsumer-- KeyCode::F11, ModifierFlag::FN, ConsumerKeyCode::VOLUME_DOWN</autogen>
+              <autogen>--KeyToConsumer-- KeyCode::F12, ModifierFlag::FN, ConsumerKeyCode::VOLUME_UP</autogen>
+            </item>
+          </list>
+        </item>
+
+        <item>
           <name>Separately settings</name>
           <list>
             <item>
