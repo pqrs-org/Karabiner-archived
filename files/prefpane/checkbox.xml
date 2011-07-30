@@ -448,70 +448,76 @@
         </item>
 
         <item>
-          <name>Swap Command_L and Option_L on TypeMatrix 2030 kbd</name>
-          <identifier>remap.swap_commandLoptionL_TypeMatrixOnly</identifier>
-          <block>
-            <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
-            <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
-          </block>
-        </item>
-        <item>
-          <name>Option+Tab to Command+Tab on TypeMatrix 2030 kbd</name>
-          <identifier>remap.optionTab2commandTab_TypeMatrixOnly</identifier>
-          <block>
-            <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
-            <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
-          </block>
-        </item>
+          <name>For TypeMatrix 2030</name>
+          <list>
+            <item>
+              <name>Swap Command_L and Option_L on TypeMatrix 2030 kbd</name>
+              <identifier>remap.swap_commandLoptionL_TypeMatrixOnly</identifier>
+              <block>
+                <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
+                <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+              </block>
+            </item>
+            <item>
+              <name>Option+Tab to Command+Tab on TypeMatrix 2030 kbd</name>
+              <identifier>remap.optionTab2commandTab_TypeMatrixOnly</identifier>
+              <block>
+                <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
+                <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
+              </block>
+            </item>
 
-        <item>
-          <name>Application Key to Command_L+Backquote on TypeMatrix 2030 kbd</name>
-          <identifier>remap.pc_application2commandLbackquote_TypeMatrixOnly</identifier>
-          <block>
-            <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
-            <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L</autogen>
-          </block>
-        </item>
+            <item>
+              <name>Application Key to Command_L+Backquote on TypeMatrix 2030 kbd</name>
+              <identifier>remap.pc_application2commandLbackquote_TypeMatrixOnly</identifier>
+              <block>
+                <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
+                <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L</autogen>
+              </block>
+            </item>
 
-        <item>
-          <name>Use PC Style Copy/Paste #3 on TypeMatrix 2030 kbd</name>
-          <appendix>(Control+Insert to Command_L+C)</appendix>
-          <appendix>(Shift+Insert to Command_L+V)</appendix>
-          <appendix>(Shift+Delete to Command_L+X) (Note: "Delete" is Mac's Forward Delete)</appendix>
-          <identifier>remap.copy_paste_winstyle3_TypeMatrixOnly</identifier>
-          <block>
-            <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
-            <autogen>--KeyToKey-- KeyCode::PC_INSERT, VK_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::PC_INSERT, VK_SHIFT, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, VK_SHIFT, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
-          </block>
-        </item>
-        <item>
-          <name>Use PC Style Copy/Paste #3bis (for bépo / french dvorak) on TypeMatrix 2030 kbd</name>
-          <appendix>(Control+Insert to Command_L+C)</appendix>
-          <appendix>(Shift+Insert to Command_L+V)</appendix>
-          <appendix>(Shift+Delete to Command_L+X) (Note: "Delete" is Mac's Forward Delete)</appendix>
-          <identifier>remap.copy_paste_winstyle3b_TypeMatrixOnly</identifier>
-          <block>
-            <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
-            <autogen>--KeyToKey-- KeyCode::PC_INSERT, VK_CONTROL, KeyCode::H, ModifierFlag::COMMAND_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::PC_INSERT, VK_SHIFT, KeyCode::U, ModifierFlag::COMMAND_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, VK_SHIFT, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
-          </block>
-        </item>
-        <item>
-          <name>Make Cut, Copy, Paste work on TypeMatrix 2030 using Dvorak layout in MacOS X</name>
-          <appendix>Change Shift+Delete to Command_L+B (X in DV - i.e. Cut)</appendix>
-          <appendix>Change Control+Insert to Command_L+I (C in DV - i.e. Copy) </appendix>
-          <appendix>Change Shift+Insert to Command_L+. (V in DV - i.e. Paste) </appendix>
-          <identifier>remap.typematrix_winstyle_zxc_dvorak</identifier>
-          <block>
-            <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
-            <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, VK_SHIFT   | ModifierFlag::NONE, KeyCode::B,   ModifierFlag::COMMAND_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::PC_INSERT,      VK_CONTROL | ModifierFlag::NONE, KeyCode::I,   ModifierFlag::COMMAND_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::PC_INSERT,      VK_SHIFT   | ModifierFlag::NONE, KeyCode::DOT, ModifierFlag::COMMAND_L</autogen>
-          </block>
+            <item>
+              <name>Use PC Style Copy/Paste #3 on TypeMatrix 2030 kbd</name>
+              <appendix>(Control+Insert to Command_L+C)</appendix>
+              <appendix>(Shift+Insert to Command_L+V)</appendix>
+              <appendix>(Shift+Delete to Command_L+X) (Note: "Delete" is Mac's Forward Delete)</appendix>
+              <identifier>remap.copy_paste_winstyle3_TypeMatrixOnly</identifier>
+              <block>
+                <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
+                <autogen>--KeyToKey-- KeyCode::PC_INSERT, VK_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::PC_INSERT, VK_SHIFT, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, VK_SHIFT, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+              </block>
+            </item>
+            <item>
+              <name>Use PC Style Copy/Paste #3bis (for bépo / french dvorak) on TypeMatrix 2030 kbd</name>
+              <appendix>(Control+Insert to Command_L+C)</appendix>
+              <appendix>(Shift+Insert to Command_L+V)</appendix>
+              <appendix>(Shift+Delete to Command_L+X) (Note: "Delete" is Mac's Forward Delete)</appendix>
+              <identifier>remap.copy_paste_winstyle3b_TypeMatrixOnly</identifier>
+              <block>
+                <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
+                <autogen>--KeyToKey-- KeyCode::PC_INSERT, VK_CONTROL, KeyCode::H, ModifierFlag::COMMAND_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::PC_INSERT, VK_SHIFT, KeyCode::U, ModifierFlag::COMMAND_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, VK_SHIFT, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+              </block>
+            </item>
+
+            <item>
+              <name>Make Cut, Copy, Paste work on TypeMatrix 2030 using Dvorak layout in MacOS X</name>
+              <appendix>Change Shift+Delete to Command_L+B (X in DV - i.e. Cut)</appendix>
+              <appendix>Change Control+Insert to Command_L+I (C in DV - i.e. Copy) </appendix>
+              <appendix>Change Shift+Insert to Command_L+. (V in DV - i.e. Paste) </appendix>
+              <identifier>remap.typematrix_winstyle_zxc_dvorak</identifier>
+              <block>
+                <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
+                <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, VK_SHIFT   | ModifierFlag::NONE, KeyCode::B,   ModifierFlag::COMMAND_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::PC_INSERT,      VK_CONTROL | ModifierFlag::NONE, KeyCode::I,   ModifierFlag::COMMAND_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::PC_INSERT,      VK_SHIFT   | ModifierFlag::NONE, KeyCode::DOT, ModifierFlag::COMMAND_L</autogen>
+              </block>
+            </item>
+          </list>
         </item>
         <item>
           <name>Swap CapsLock and Control on FILCO FKBN91ML/NB</name>
