@@ -2002,6 +2002,11 @@
       <name>Change Functional Key (Brightness, Volume, ....)</name>
       <list>
         <item>
+          <name>Dashboard to Launchpad</name>
+          <identifier>remap.dashboard2launchpad</identifier>
+          <autogen>--KeyToKey-- KeyCode::DASHBOARD, KeyCode::LAUNCHPAD</autogen>
+        </item>
+        <item>
           <name>Functional Keys to F1..F12</name>
           <appendix>Brightness Down to F1</appendix>
           <appendix>Brightness Up to F2</appendix>
@@ -2082,11 +2087,6 @@
               <name>Dashboard to F4</name>
               <identifier>remap.dashboard2f4</identifier>
               <autogen>--KeyToKey--      KeyCode::DASHBOARD,                  KeyCode::F4</autogen>
-            </item>
-            <item>
-              <name>Dashboard to Launchpad</name>
-              <identifier>remap.dashboard2launchpad</identifier>
-              <autogen>--KeyToKey-- KeyCode::DASHBOARD, KeyCode::LAUNCHPAD</autogen>
             </item>
             <item><name>------------------------------------------------------------</name></item>
             <item>
