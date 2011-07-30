@@ -2500,543 +2500,548 @@
         </item>
 
         <item>
-          <name>F1..F12 to Functional</name>
-          <!-- #include "include/appendix_f1_f12_to_functional.xml" -->
-          <!-- #include "include/caution_functionkey.xml" -->
-          <identifier>remap.f1_f12_to_functional_all</identifier>
-          <!-- #include "include/fnF1_F12_to_function.xml" -->
-          <!-- #include "include/f1_f12_to_functional.xml" -->
-        </item>
-        <item>
-          <name>F5,F6 to Functional</name>
-          <!-- #include "include/appendix_f5_f6_to_functional.xml" -->
-          <!-- #include "include/caution_functionkey.xml" -->
-          <identifier>remap.f5_f6_to_functional_all</identifier>
-          <!-- #include "include/fnF5_F6_to_function.xml" -->
-          <!-- #include "include/f5_f6_to_functional.xml" -->
-        </item>
-
-        <item>
-          <name>F1..F12 to Functional (except virtual machine, RDC)</name>
-          <!-- #include "include/appendix_f1_f12_to_functional.xml" -->
-          <!-- #include "include/caution_functionkey.xml" -->
-          <identifier>remap.f1_f12_to_functional_ex_vm</identifier>
-          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <!-- #include "include/fnF1_F12_to_function.xml" -->
-          <!-- #include "include/f1_f12_to_functional.xml" -->
-        </item>
-        <item>
-          <name>F5,F6 to Functional (except virtual machine, RDC)</name>
-          <!-- #include "include/appendix_f5_f6_to_functional.xml" -->
-          <!-- #include "include/caution_functionkey.xml" -->
-          <identifier>remap.f5_f6_to_functional_ex_vm</identifier>
-          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <!-- #include "include/fnF5_F6_to_function.xml" -->
-          <!-- #include "include/f5_f6_to_functional.xml" -->
-        </item>
-
-        <item>
-          <name>Fn+F1..F12 to Functional</name>
-          <appendix>There is this setting for "* to Fn". (ex: Control_L to Fn)</appendix>
-          <appendix></appendix>
-          <appendix>Fn+F1 to Brightness Down</appendix>
-          <appendix>Fn+F2 to Brightness Up</appendix>
-          <appendix>Fn+F3 to Expose</appendix>
-          <appendix>Fn+F4 to Dashboard</appendix>
-          <appendix>Fn+F5 to Keyboard Light LOW</appendix>
-          <appendix>Fn+F6 to Keyboard Light HIGH</appendix>
-          <appendix>Fn+F7 to Music Prev</appendix>
-          <appendix>Fn+F8 to Music Play/Pause</appendix>
-          <appendix>Fn+F9 to Music Next</appendix>
-          <appendix>Fn+F10 to Volume Mute</appendix>
-          <appendix>Fn+F11 to Volume Down</appendix>
-          <appendix>Fn+F12 to Volume Up</appendix>
-          <!-- #include "include/caution_functionkey.xml" -->
-          <identifier>remap.fnF1_F12_to_functional</identifier>
-          <!-- #include "include/f1_f12_to_functional_withfn.xml" -->
-        </item>
-
-        <item>
-          <name>MacBookPro4,1 functional to MacBookPro3,1 functional</name>
-          <appendix></appendix>
-          <appendix>Fn+F1 to Brightness Down</appendix>
-          <appendix>Fn+F2 to Brightness Up</appendix>
-          <appendix>Fn+F3 to Volume Mute</appendix>
-          <appendix>Fn+F4 to Volume Down</appendix>
-          <appendix>Fn+F5 to Volume Up</appendix>
-          <appendix>Fn+F6 to NumLock</appendix>
-          <appendix>Fn+F7 to Video Mirror</appendix>
-          <appendix>Fn+F8 to Keyboard Light OFF</appendix>
-          <appendix>Fn+F9 to Keyboard Light LOW</appendix>
-          <appendix>Fn+F10 to Keyboard Light HIGH</appendix>
-          <appendix>Fn+F11 to F11</appendix>
-          <appendix>Fn+F12 to F12</appendix>
-          <!-- #include "include/caution_functionkey.xml" -->
-          <identifier>remap.fnF1_F12_to_functional_mbp31</identifier>
-          <autogen>--KeyToConsumer--      KeyCode::EXPOSE_ALL, ConsumerKeyCode::VOLUME_MUTE</autogen>
-          <autogen>--KeyToConsumer--      KeyCode::DASHBOARD,  ConsumerKeyCode::VOLUME_DOWN</autogen>
-          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_LOW,  ConsumerKeyCode::VOLUME_UP</autogen>
-          <autogen>--ConsumerToKey--      ConsumerKeyCode::KEYBOARDLIGHT_HIGH, KeyCode::VK_LOCK_FN</autogen>
-          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::MUSIC_PREV, ConsumerKeyCode::VIDEO_MIRROR</autogen>
-          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::MUSIC_PLAY, ConsumerKeyCode::KEYBOARDLIGHT_OFF</autogen>
-          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::MUSIC_NEXT, ConsumerKeyCode::KEYBOARDLIGHT_LOW</autogen>
-          <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::KEYBOARDLIGHT_HIGH</autogen>
-          <autogen>--ConsumerToKey--      ConsumerKeyCode::VOLUME_DOWN, KeyCode::F11</autogen>
-          <autogen>--ConsumerToKey--      ConsumerKeyCode::VOLUME_UP,   KeyCode::F12</autogen>
-        </item>
-
-        <item>
-          <name>F1 to Brightness Down (except virtual machine, RDC)</name>
-          <identifier>remap.f1_to_brightnessdown</identifier>
-          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToConsumer-- KeyCode::F1, ConsumerKeyCode::BRIGHTNESS_DOWN</autogen>
-        </item>
-        <item>
-          <name>F2 to Brightness Up (except virtual machine, RDC)</name>
-          <identifier>remap.f2_to_brightnessup</identifier>
-          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToConsumer-- KeyCode::F2, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
-        </item>
-        <item><name>------------------------------------------------------------</name></item>
-        <item>
-          <name>F3 to Volume Mute (except virtual machine, RDC)</name>
-          <identifier>remap.f3_to_volumemute</identifier>
-          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToConsumer-- KeyCode::F3, ConsumerKeyCode::VOLUME_MUTE</autogen>
-        </item>
-        <item>
-          <name>F4 to Volume Down (except virtual machine, RDC)</name>
-          <identifier>remap.f4_to_volumedown</identifier>
-          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToConsumer-- KeyCode::F4, ConsumerKeyCode::VOLUME_DOWN</autogen>
-        </item>
-        <item>
-          <name>F5 to Volume Up (except virtual machine, RDC)</name>
-          <identifier>remap.f5_to_volumeup</identifier>
-          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToConsumer-- KeyCode::F5, ConsumerKeyCode::VOLUME_UP</autogen>
-        </item>
-        <item><name>------------------------------------------------------------</name></item>
-        <item>
-          <name>F4 to Launchpad</name>
-          <identifier>remap.f4_to_launchpad</identifier>
-          <autogen>--KeyToKey-- KeyCode::F4, KeyCode::LAUNCHPAD</autogen>
-        </item>
-        <item><name>------------------------------------------------------------</name></item>
-        <item>
-          <name>F4 to Volume Mute</name>
-          <identifier>remap.f4_to_volumemute</identifier>
-          <autogen>--KeyToConsumer-- KeyCode::F4, ConsumerKeyCode::VOLUME_MUTE</autogen>
-        </item>
-        <item>
-          <name>F5 to Volume Down</name>
-          <identifier>remap.f5_to_volumedown</identifier>
-          <autogen>--KeyToConsumer-- KeyCode::F5, ConsumerKeyCode::VOLUME_DOWN</autogen>
-        </item>
-        <item>
-          <name>F6 to Volume Up</name>
-          <identifier>remap.f6_to_volumeup</identifier>
-          <autogen>--KeyToConsumer-- KeyCode::F6, ConsumerKeyCode::VOLUME_UP</autogen>
-        </item>
-        <item><name>------------------------------------------------------------</name></item>
-        <item>
-          <name>F5/F6 to Volume Down/Up 1/4</name>
-          <identifier>remap.f5f6_to_volumedownup_quarter</identifier>
-          <autogen>--KeyToConsumer-- KeyCode::F5, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
-          <autogen>--KeyToConsumer-- KeyCode::F6, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_UP, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
-        </item>
-        <item>
-          <name>F5 to Volume Down 1/4</name>
-          <identifier>remap.f5_to_volumedown_quarter</identifier>
-          <autogen>--KeyToConsumer-- KeyCode::F5, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
-        </item>
-        <item>
-          <name>F6 to Volume Up 1/4</name>
-          <identifier>remap.f6_to_volumeup_quarter</identifier>
-          <autogen>--KeyToConsumer-- KeyCode::F6, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_UP, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
-        </item>
-        <item>
-          <name>F5/F6 to Volume Down/Up without click</name>
-          <identifier>remap.f5f6_to_voldownup_woclick</identifier>
-          <autogen>--KeyToConsumer-- KeyCode::F5, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::SHIFT_L</autogen>
-          <autogen>--KeyToConsumer-- KeyCode::F6, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_UP, ModifierFlag::SHIFT_L</autogen>
-        </item>
-        <item><name>------------------------------------------------------------</name></item>
-        <item>
-          <name>F5 to Volume Mute</name>
-          <identifier>remap.f5_to_volumemute</identifier>
-          <autogen>--KeyToConsumer-- KeyCode::F5, ConsumerKeyCode::VOLUME_MUTE</autogen>
-        </item>
-        <item><name>------------------------------------------------------------</name></item>
-        <item>
-          <name>F6 to Virtual NumLock</name>
-          <appendix>Unlike Fn_Lock, retaining cursor keys, delete key.</appendix>
+          <name>Separately settings</name>
           <list>
             <item>
-              <name>Virtual NumLock</name>
-              <appendix>6 7 8 9 0 - &#8594; Clear 7 8 9 / =</appendix>
-              <appendix>U I O P &#8594; 4 5 6 *</appendix>
-              <appendix>J K L ; &#8594; 1 2 3 -</appendix>
-              <appendix>M . / &#8594; 0 . +</appendix>
-              <identifier vk_config="true">notsave.virtual_numlock</identifier>
-              <autogen>--ShowStatusMessage-- NumLock</autogen>
-              <autogen>--KeyToKey-- KeyCode::M,         KeyCode::KEYPAD_0</autogen>
-              <autogen>--KeyToKey-- KeyCode::J,         KeyCode::KEYPAD_1</autogen>
-              <autogen>--KeyToKey-- KeyCode::K,         KeyCode::KEYPAD_2</autogen>
-              <autogen>--KeyToKey-- KeyCode::L,         KeyCode::KEYPAD_3</autogen>
-              <autogen>--KeyToKey-- KeyCode::U,         KeyCode::KEYPAD_4</autogen>
-              <autogen>--KeyToKey-- KeyCode::I,         KeyCode::KEYPAD_5</autogen>
-              <autogen>--KeyToKey-- KeyCode::O,         KeyCode::KEYPAD_6</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_7,     KeyCode::KEYPAD_7</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_8,     KeyCode::KEYPAD_8</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_9,     KeyCode::KEYPAD_9</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_6,     KeyCode::KEYPAD_CLEAR</autogen>
-              <autogen>--KeyToKey-- KeyCode::SLASH,     KeyCode::KEYPAD_PLUS</autogen>
-              <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::KEYPAD_MINUS</autogen>
-              <autogen>--KeyToKey-- KeyCode::P,         KeyCode::KEYPAD_MULTIPLY</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_0,     KeyCode::KEYPAD_SLASH</autogen>
-              <autogen>--KeyToKey-- KeyCode::MINUS,     KeyCode::KEYPAD_EQUAL</autogen>
-              <autogen>--KeyToKey-- KeyCode::DOT,       KeyCode::KEYPAD_DOT</autogen>
+              <name>F1..F12 to Functional</name>
+              <!-- #include "include/appendix_f1_f12_to_functional.xml" -->
+              <!-- #include "include/caution_functionkey.xml" -->
+              <identifier>remap.f1_f12_to_functional_all</identifier>
+              <!-- #include "include/fnF1_F12_to_function.xml" -->
+              <!-- #include "include/f1_f12_to_functional.xml" -->
             </item>
             <item>
-              <name>F6 to toggle "Virtual NumLock"</name>
-              <identifier>remap.f6_to_virtual_numlock</identifier>
-              <autogen>--KeyToKey-- KeyCode::F6, KeyCode::VK_CONFIG_TOGGLE_notsave_virtual_numlock</autogen>
-            </item>
-          </list>
-        </item>
-        <item>
-          <name>F6 to Fn_Lock (except virtual machine, RDC)</name>
-          <identifier>remap.f6_to_numlock</identifier>
-          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToKey-- KeyCode::F6, KeyCode::VK_LOCK_FN</autogen>
-        </item>
-        <item><name>------------------------------------------------------------</name></item>
-        <item>
-          <name>F7 to Video Mirror (except virtual machine, RDC)</name>
-          <identifier>remap.f7_to_videomirror</identifier>
-          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToConsumer-- KeyCode::F7, ConsumerKeyCode::VIDEO_MIRROR</autogen>
-        </item>
-        <item>
-          <name>F8 to Keyboard Light Off (except virtual machine, RDC)</name>
-          <identifier>remap.f8_to_keyboardlightoff</identifier>
-          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToConsumer-- KeyCode::F8, ConsumerKeyCode::KEYBOARDLIGHT_OFF</autogen>
-        </item>
-        <item>
-          <name>F9 to Keyboard Light LOW (except virtual machine, RDC)</name>
-          <identifier>remap.f9_to_keyboardlightlow</identifier>
-          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToConsumer-- KeyCode::F9, ConsumerKeyCode::KEYBOARDLIGHT_LOW</autogen>
-        </item>
-        <item>
-          <name>F10 to Keyboard Light HIGH (except virtual machine, RDC)</name>
-          <identifier>remap.f10_to_keyboardlighthigh</identifier>
-          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToConsumer-- KeyCode::F10, ConsumerKeyCode::KEYBOARDLIGHT_HIGH</autogen>
-        </item>
-        <item><name>------------------------------------------------------------</name></item>
-        <item>
-          <name>F7 to Music Prev (except virtual machine, RDC)</name>
-          <identifier>remap.f7_to_musicprev</identifier>
-          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToConsumer-- KeyCode::F7, ConsumerKeyCode::MUSIC_PREV</autogen>
-        </item>
-        <item>
-          <name>F8 to Music Play/Pause (except virtual machine, RDC)</name>
-          <identifier>remap.f8_to_musicplay</identifier>
-          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToConsumer-- KeyCode::F8, ConsumerKeyCode::MUSIC_PLAY</autogen>
-        </item>
-        <item>
-          <name>F9 to Music Next (except virtual machine, RDC)</name>
-          <identifier>remap.f9_to_musicplay</identifier>
-          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToConsumer-- KeyCode::F9, ConsumerKeyCode::MUSIC_NEXT</autogen>
-        </item>
-        <item><name>------------------------------------------------------------</name></item>
-        <item>
-          <name>F8 to Music Prev</name>
-          <identifier>remap.f8_to_musicprev_all</identifier>
-          <autogen>--KeyToConsumer-- KeyCode::F8, ConsumerKeyCode::MUSIC_PREV</autogen>
-        </item>
-        <item>
-          <name>F9 to Music Play/Pause</name>
-          <identifier>remap.f9_to_musicplay_all</identifier>
-          <autogen>--KeyToConsumer-- KeyCode::F9, ConsumerKeyCode::MUSIC_PLAY</autogen>
-        </item>
-        <item>
-          <name>F10 to Music Next</name>
-          <identifier>remap.f10_to_musicnext_all</identifier>
-          <autogen>--KeyToConsumer-- KeyCode::F10, ConsumerKeyCode::MUSIC_NEXT</autogen>
-        </item>
-        <item><name>------------------------------------------------------------</name></item>
-        <item>
-          <name>F10 to Volume Mute</name>
-          <identifier>remap.f10_to_volumemute_all</identifier>
-          <autogen>--KeyToConsumer-- KeyCode::F10, ConsumerKeyCode::VOLUME_MUTE</autogen>
-        </item>
-        <item>
-          <name>F11 to Volume Down</name>
-          <identifier>remap.f11_to_volumedown_all</identifier>
-          <autogen>--KeyToConsumer-- KeyCode::F11, ConsumerKeyCode::VOLUME_DOWN</autogen>
-        </item>
-        <item>
-          <name>F12 to Volume Up</name>
-          <identifier>remap.f12_to_volumeup_all</identifier>
-          <autogen>--KeyToConsumer-- KeyCode::F12, ConsumerKeyCode::VOLUME_UP</autogen>
-        </item>
-        <item><name>------------------------------------------------------------</name></item>
-        <item>
-          <name>F10 to Volume Mute (except virtual machine, RDC)</name>
-          <identifier>remap.f10_to_volumemute</identifier>
-          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToConsumer-- KeyCode::F10, ConsumerKeyCode::VOLUME_MUTE</autogen>
-        </item>
-        <item>
-          <name>F11 to Volume Down (except virtual machine, RDC)</name>
-          <identifier>remap.f11_to_volumedown</identifier>
-          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToConsumer-- KeyCode::F11, ConsumerKeyCode::VOLUME_DOWN</autogen>
-        </item>
-        <item>
-          <name>F12 to Volume Up (except virtual machine, RDC)</name>
-          <identifier>remap.f12_to_volumeup</identifier>
-          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToConsumer-- KeyCode::F12, ConsumerKeyCode::VOLUME_UP</autogen>
-        </item>
-        <item><name>------------------------------------------------------------</name></item>
-        <item>
-          <name>F13 to Volume Mute (except virtual machine, RDC)</name>
-          <identifier>remap.f13_to_volumemute</identifier>
-          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToConsumer-- KeyCode::F13, ConsumerKeyCode::VOLUME_MUTE</autogen>
-        </item>
-        <item>
-          <name>F14 to Volume Down (except virtual machine, RDC)</name>
-          <identifier>remap.f14_to_volumedown</identifier>
-          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToConsumer-- KeyCode::F14, ConsumerKeyCode::VOLUME_DOWN</autogen>
-        </item>
-        <item>
-          <name>F15 to Volume Up (except virtual machine, RDC)</name>
-          <identifier>remap.f15_to_volumeup</identifier>
-          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToConsumer-- KeyCode::F15, ConsumerKeyCode::VOLUME_UP</autogen>
-        </item>
-        <item><name>------------------------------------------------------------</name></item>
-        <item>
-          <name>F14 to Music Prev</name>
-          <identifier>remap.f14_to_musicprev_all</identifier>
-          <autogen>--KeyToConsumer-- KeyCode::F14, ConsumerKeyCode::MUSIC_PREV</autogen>
-        </item>
-        <item>
-          <name>F15 to Music Play/Pause</name>
-          <identifier>remap.f15_to_musicplay_all</identifier>
-          <autogen>--KeyToConsumer-- KeyCode::F15, ConsumerKeyCode::MUSIC_PLAY</autogen>
-        </item>
-        <item>
-          <name>F16 to Music Next</name>
-          <identifier>remap.f16_to_musicnext_all</identifier>
-          <autogen>--KeyToConsumer-- KeyCode::F16, ConsumerKeyCode::MUSIC_NEXT</autogen>
-        </item>
-        <item><name>------------------------------------------------------------</name></item>
-        <item>
-          <name>MacBook Air (2010, Late) Style</name>
-          <list>
-            <item>
-              <name>F6 to Music Prev</name>
-              <identifier>remap.f6_to_musicprev_all</identifier>
-              <autogen>--KeyToConsumer-- KeyCode::F6, ConsumerKeyCode::MUSIC_PREV</autogen>
-            </item>
-            <item>
-              <name>F7 to Music Play/Pause</name>
-              <identifier>remap.f7_to_musicplay_all</identifier>
-              <autogen>--KeyToConsumer-- KeyCode::F7, ConsumerKeyCode::MUSIC_PLAY</autogen>
-            </item>
-            <item>
-              <name>F8 to Music Next</name>
-              <identifier>remap.f8_to_musicnext_all</identifier>
-              <autogen>--KeyToConsumer-- KeyCode::F8, ConsumerKeyCode::MUSIC_NEXT</autogen>
+              <name>F5,F6 to Functional</name>
+              <!-- #include "include/appendix_f5_f6_to_functional.xml" -->
+              <!-- #include "include/caution_functionkey.xml" -->
+              <identifier>remap.f5_f6_to_functional_all</identifier>
+              <!-- #include "include/fnF5_F6_to_function.xml" -->
+              <!-- #include "include/f5_f6_to_functional.xml" -->
             </item>
 
             <item>
-              <name>F9 to Volume Mute</name>
-              <identifier>remap.f9_to_volumemute_all</identifier>
-              <autogen>--KeyToConsumer-- KeyCode::F9, ConsumerKeyCode::VOLUME_MUTE</autogen>
+              <name>F1..F12 to Functional (except virtual machine, RDC)</name>
+              <!-- #include "include/appendix_f1_f12_to_functional.xml" -->
+              <!-- #include "include/caution_functionkey.xml" -->
+              <identifier>remap.f1_f12_to_functional_ex_vm</identifier>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+              <!-- #include "include/fnF1_F12_to_function.xml" -->
+              <!-- #include "include/f1_f12_to_functional.xml" -->
             </item>
             <item>
-              <name>F10 to Volume Down</name>
-              <identifier>remap.f10_to_volumedown_all</identifier>
-              <autogen>--KeyToConsumer-- KeyCode::F10, ConsumerKeyCode::VOLUME_DOWN</autogen>
+              <name>F5,F6 to Functional (except virtual machine, RDC)</name>
+              <!-- #include "include/appendix_f5_f6_to_functional.xml" -->
+              <!-- #include "include/caution_functionkey.xml" -->
+              <identifier>remap.f5_f6_to_functional_ex_vm</identifier>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+              <!-- #include "include/fnF5_F6_to_function.xml" -->
+              <!-- #include "include/f5_f6_to_functional.xml" -->
             </item>
-            <item>
-              <name>F11 to Volume Up</name>
-              <identifier>remap.f11_to_volumeup_all</identifier>
-              <autogen>--KeyToConsumer-- KeyCode::F11, ConsumerKeyCode::VOLUME_UP</autogen>
-            </item>
-            <item>
-              <name>F12 to Eject</name>
-              <identifier>remap.f12_to_eject_all</identifier>
-              <autogen>--KeyToConsumer-- KeyCode::F12, ConsumerKeyCode::EJECT</autogen>
-            </item>
-          </list>
-        </item>
-        <item><name>------------------------------------------------------------</name></item>
-        <item>
-          <name>Fn+F11 to F11</name>
-          <identifier>remap.FnF11_to_f11</identifier>
-          <autogen>--KeyToKey-- KeyCode::F11, ModifierFlag::FN, KeyCode::F11</autogen>
-        </item>
-        <item>
-          <name>Fn+F12 to F12</name>
-          <identifier>remap.FnF12_to_f12</identifier>
-          <autogen>--KeyToKey-- KeyCode::F12, ModifierFlag::FN, KeyCode::F12</autogen>
-        </item>
-        <item>
-          <name>F11 to display mirroring</name>
-          <identifier>remap.F11_to_mirroring</identifier>
-          <autogen>--KeyToConsumer-- KeyCode::F11, ConsumerKeyCode::VIDEO_MIRROR</autogen>
-        </item>
-        <item>
-          <name>F12 to Forward Delete</name>
-          <identifier>remap.f12_to_forwarddelete</identifier>
-          <autogen>--KeyToKey-- KeyCode::F12, KeyCode::FORWARD_DELETE</autogen>
-        </item>
-        <item>
-          <name>F12 to Expose</name>
-          <identifier>remap.F12_to_expose</identifier>
-          <autogen>--KeyToKey-- KeyCode::F12, KeyCode::EXPOSE_ALL</autogen>
-        </item>
-        <item><name>------------------------------------------------------------</name></item>
-        <item>
-          <name>Fn+F1 to Brightness Down</name>
-          <identifier>remap.fnF1_to_brightnessdown</identifier>
-          <autogen>--KeyToConsumer-- KeyCode::F1, ModifierFlag::FN, ConsumerKeyCode::BRIGHTNESS_DOWN</autogen>
-        </item>
-        <item>
-          <name>Fn+F2 to Brightness Up</name>
-          <identifier>remap.fnF2_to_brightnessup</identifier>
-          <autogen>--KeyToConsumer-- KeyCode::F2, ModifierFlag::FN, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
-        </item>
-        <item><name>------------------------------------------------------------</name></item>
-        <item>
-          <name>Fn+F7 to Music Prev</name>
-          <identifier>remap.fnF7_to_musicprev</identifier>
-          <autogen>--KeyToConsumer-- KeyCode::F7, ModifierFlag::FN, ConsumerKeyCode::MUSIC_PREV</autogen>
-        </item>
-        <item>
-          <name>Fn+F8 to Music Play/Pause</name>
-          <identifier>remap.fnF8_to_musicplay</identifier>
-          <autogen>--KeyToConsumer-- KeyCode::F8, ModifierFlag::FN, ConsumerKeyCode::MUSIC_PLAY</autogen>
-        </item>
-        <item>
-          <name>Fn+F9 to Music Next</name>
-          <identifier>remap.fnF9_to_musicplay</identifier>
-          <autogen>--KeyToConsumer-- KeyCode::F9, ModifierFlag::FN, ConsumerKeyCode::MUSIC_NEXT</autogen>
-        </item>
-        <item><name>------------------------------------------------------------</name></item>
-        <item>
-          <name>Fn+F10 to Volume Mute</name>
-          <identifier>remap.fnF10_to_volumemute</identifier>
-          <autogen>--KeyToConsumer-- KeyCode::F10, ModifierFlag::FN, ConsumerKeyCode::VOLUME_MUTE</autogen>
-        </item>
-        <item>
-          <name>Fn+F11 to Volume Down</name>
-          <identifier>remap.fnF11_to_volumedown</identifier>
-          <autogen>--KeyToConsumer-- KeyCode::F11, ModifierFlag::FN, ConsumerKeyCode::VOLUME_DOWN</autogen>
-        </item>
-        <item>
-          <name>Fn+F12 to Volume Up</name>
-          <identifier>remap.fnF12_to_volumeup</identifier>
-          <autogen>--KeyToConsumer-- KeyCode::F12, ModifierFlag::FN, ConsumerKeyCode::VOLUME_UP</autogen>
-        </item>
-        <item><name>------------------------------------------------------------</name></item>
-        <item>
-          <name>Fn+F5 to PageDown</name>
-          <identifier>remap.fnF5_to_pagedown</identifier>
-          <autogen>--KeyToKey-- KeyCode::F5, ModifierFlag::FN, KeyCode::PAGEDOWN</autogen>
-        </item>
-        <item>
-          <name>Fn+F12 to PageUp</name>
-          <identifier>remap.fnF12_to_pageup</identifier>
-          <autogen>--KeyToKey-- KeyCode::F12, ModifierFlag::FN, KeyCode::PAGEUP</autogen>
-        </item>
-        <item><name>------------------------------------------------------------</name></item>
-        <item>
-          <name>Change Command+F1...F12 to Functional Keys</name>
-          <appendix>(ex. F10 to Volume Mute, F11 to Volume Down)</appendix>
-          <identifier>remap.command_f1_f12_to_functional</identifier>
-          <autogen>--KeyToKey-- KeyCode::F1,       VK_COMMAND, KeyCode::BRIGHTNESS_DOWN</autogen>
-          <autogen>--KeyToKey-- KeyCode::F2,       VK_COMMAND, KeyCode::BRIGHTNESS_UP</autogen>
-          <autogen>--KeyToKey-- KeyCode::F3,       VK_COMMAND, KeyCode::EXPOSE_ALL</autogen>
-          <autogen>--KeyToKey-- KeyCode::F4,       VK_COMMAND, KeyCode::DASHBOARD</autogen>
-          <autogen>--KeyToConsumer-- KeyCode::F7,  VK_COMMAND, ConsumerKeyCode::MUSIC_PREV</autogen>
-          <autogen>--KeyToConsumer-- KeyCode::F8,  VK_COMMAND, ConsumerKeyCode::MUSIC_PLAY</autogen>
-          <autogen>--KeyToConsumer-- KeyCode::F9,  VK_COMMAND, ConsumerKeyCode::MUSIC_NEXT</autogen>
-          <autogen>--KeyToConsumer-- KeyCode::F10, VK_COMMAND, ConsumerKeyCode::VOLUME_MUTE</autogen>
-          <autogen>--KeyToConsumer-- KeyCode::F11, VK_COMMAND, ConsumerKeyCode::VOLUME_DOWN</autogen>
-          <autogen>--KeyToConsumer-- KeyCode::F12, VK_COMMAND, ConsumerKeyCode::VOLUME_UP</autogen>
-        </item>
 
-        <item>
-          <name>Change F1...F12 to Functional Keys (except Terminal)</name>
-          <appendix>(ex. F10 to Volume Mute, F11 to Volume Down)</appendix>
-          <identifier>remap.f1_f12_to_functional</identifier>
-          <not>TERMINAL</not>
-          <!-- #include "include/f1_f12_to_functional_withfn.xml" -->
-        </item>
-
-        <item>
-          <name>Force change F1..F12 in VMware, Parallels, RDC</name>
-          <list>
             <item>
-              <name>F1 to Brightness Down</name>
-              <identifier>remap.f1_to_brightnessdown_force</identifier>
+              <name>Fn+F1..F12 to Functional</name>
+              <appendix>There is this setting for "* to Fn". (ex: Control_L to Fn)</appendix>
+              <appendix></appendix>
+              <appendix>Fn+F1 to Brightness Down</appendix>
+              <appendix>Fn+F2 to Brightness Up</appendix>
+              <appendix>Fn+F3 to Expose</appendix>
+              <appendix>Fn+F4 to Dashboard</appendix>
+              <appendix>Fn+F5 to Keyboard Light LOW</appendix>
+              <appendix>Fn+F6 to Keyboard Light HIGH</appendix>
+              <appendix>Fn+F7 to Music Prev</appendix>
+              <appendix>Fn+F8 to Music Play/Pause</appendix>
+              <appendix>Fn+F9 to Music Next</appendix>
+              <appendix>Fn+F10 to Volume Mute</appendix>
+              <appendix>Fn+F11 to Volume Down</appendix>
+              <appendix>Fn+F12 to Volume Up</appendix>
+              <!-- #include "include/caution_functionkey.xml" -->
+              <identifier>remap.fnF1_F12_to_functional</identifier>
+              <!-- #include "include/f1_f12_to_functional_withfn.xml" -->
+            </item>
+
+            <item>
+              <name>MacBookPro4,1 functional to MacBookPro3,1 functional</name>
+              <appendix></appendix>
+              <appendix>Fn+F1 to Brightness Down</appendix>
+              <appendix>Fn+F2 to Brightness Up</appendix>
+              <appendix>Fn+F3 to Volume Mute</appendix>
+              <appendix>Fn+F4 to Volume Down</appendix>
+              <appendix>Fn+F5 to Volume Up</appendix>
+              <appendix>Fn+F6 to NumLock</appendix>
+              <appendix>Fn+F7 to Video Mirror</appendix>
+              <appendix>Fn+F8 to Keyboard Light OFF</appendix>
+              <appendix>Fn+F9 to Keyboard Light LOW</appendix>
+              <appendix>Fn+F10 to Keyboard Light HIGH</appendix>
+              <appendix>Fn+F11 to F11</appendix>
+              <appendix>Fn+F12 to F12</appendix>
+              <!-- #include "include/caution_functionkey.xml" -->
+              <identifier>remap.fnF1_F12_to_functional_mbp31</identifier>
+              <autogen>--KeyToConsumer--      KeyCode::EXPOSE_ALL, ConsumerKeyCode::VOLUME_MUTE</autogen>
+              <autogen>--KeyToConsumer--      KeyCode::DASHBOARD,  ConsumerKeyCode::VOLUME_DOWN</autogen>
+              <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_LOW,  ConsumerKeyCode::VOLUME_UP</autogen>
+              <autogen>--ConsumerToKey--      ConsumerKeyCode::KEYBOARDLIGHT_HIGH, KeyCode::VK_LOCK_FN</autogen>
+              <autogen>--ConsumerToConsumer-- ConsumerKeyCode::MUSIC_PREV, ConsumerKeyCode::VIDEO_MIRROR</autogen>
+              <autogen>--ConsumerToConsumer-- ConsumerKeyCode::MUSIC_PLAY, ConsumerKeyCode::KEYBOARDLIGHT_OFF</autogen>
+              <autogen>--ConsumerToConsumer-- ConsumerKeyCode::MUSIC_NEXT, ConsumerKeyCode::KEYBOARDLIGHT_LOW</autogen>
+              <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::KEYBOARDLIGHT_HIGH</autogen>
+              <autogen>--ConsumerToKey--      ConsumerKeyCode::VOLUME_DOWN, KeyCode::F11</autogen>
+              <autogen>--ConsumerToKey--      ConsumerKeyCode::VOLUME_UP,   KeyCode::F12</autogen>
+            </item>
+
+            <item>
+              <name>F1 to Brightness Down (except virtual machine, RDC)</name>
+              <identifier>remap.f1_to_brightnessdown</identifier>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
               <autogen>--KeyToConsumer-- KeyCode::F1, ConsumerKeyCode::BRIGHTNESS_DOWN</autogen>
             </item>
             <item>
-              <name>F2 to Brightness Up</name>
-              <identifier>remap.f2_to_brightnessup_force</identifier>
+              <name>F2 to Brightness Up (except virtual machine, RDC)</name>
+              <identifier>remap.f2_to_brightnessup</identifier>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
               <autogen>--KeyToConsumer-- KeyCode::F2, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
             </item>
+            <item><name>------------------------------------------------------------</name></item>
             <item>
-              <name>F3 to Volume Mute</name>
-              <identifier>remap.f3_to_volumemute_force</identifier>
+              <name>F3 to Volume Mute (except virtual machine, RDC)</name>
+              <identifier>remap.f3_to_volumemute</identifier>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
               <autogen>--KeyToConsumer-- KeyCode::F3, ConsumerKeyCode::VOLUME_MUTE</autogen>
             </item>
             <item>
-              <name>F4 to Volume Down</name>
-              <identifier>remap.f4_to_volumedown_force</identifier>
+              <name>F4 to Volume Down (except virtual machine, RDC)</name>
+              <identifier>remap.f4_to_volumedown</identifier>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
               <autogen>--KeyToConsumer-- KeyCode::F4, ConsumerKeyCode::VOLUME_DOWN</autogen>
             </item>
             <item>
-              <name>F5 to Volume Up</name>
-              <identifier>remap.f5_to_volumeup_force</identifier>
+              <name>F5 to Volume Up (except virtual machine, RDC)</name>
+              <identifier>remap.f5_to_volumeup</identifier>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
               <autogen>--KeyToConsumer-- KeyCode::F5, ConsumerKeyCode::VOLUME_UP</autogen>
             </item>
+            <item><name>------------------------------------------------------------</name></item>
+            <item>
+              <name>F4 to Launchpad</name>
+              <identifier>remap.f4_to_launchpad</identifier>
+              <autogen>--KeyToKey-- KeyCode::F4, KeyCode::LAUNCHPAD</autogen>
+            </item>
+            <item><name>------------------------------------------------------------</name></item>
+            <item>
+              <name>F4 to Volume Mute</name>
+              <identifier>remap.f4_to_volumemute</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F4, ConsumerKeyCode::VOLUME_MUTE</autogen>
+            </item>
+            <item>
+              <name>F5 to Volume Down</name>
+              <identifier>remap.f5_to_volumedown</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F5, ConsumerKeyCode::VOLUME_DOWN</autogen>
+            </item>
+            <item>
+              <name>F6 to Volume Up</name>
+              <identifier>remap.f6_to_volumeup</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F6, ConsumerKeyCode::VOLUME_UP</autogen>
+            </item>
+            <item><name>------------------------------------------------------------</name></item>
+            <item>
+              <name>F5/F6 to Volume Down/Up 1/4</name>
+              <identifier>remap.f5f6_to_volumedownup_quarter</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F5, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
+              <autogen>--KeyToConsumer-- KeyCode::F6, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_UP, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
+            </item>
+            <item>
+              <name>F5 to Volume Down 1/4</name>
+              <identifier>remap.f5_to_volumedown_quarter</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F5, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
+            </item>
+            <item>
+              <name>F6 to Volume Up 1/4</name>
+              <identifier>remap.f6_to_volumeup_quarter</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F6, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_UP, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
+            </item>
+            <item>
+              <name>F5/F6 to Volume Down/Up without click</name>
+              <identifier>remap.f5f6_to_voldownup_woclick</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F5, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToConsumer-- KeyCode::F6, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_UP, ModifierFlag::SHIFT_L</autogen>
+            </item>
+            <item><name>------------------------------------------------------------</name></item>
+            <item>
+              <name>F5 to Volume Mute</name>
+              <identifier>remap.f5_to_volumemute</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F5, ConsumerKeyCode::VOLUME_MUTE</autogen>
+            </item>
+            <item><name>------------------------------------------------------------</name></item>
+            <item>
+              <name>F6 to Virtual NumLock</name>
+              <appendix>Unlike Fn_Lock, retaining cursor keys, delete key.</appendix>
+              <list>
+                <item>
+                  <name>Virtual NumLock</name>
+                  <appendix>6 7 8 9 0 - &#8594; Clear 7 8 9 / =</appendix>
+                  <appendix>U I O P &#8594; 4 5 6 *</appendix>
+                  <appendix>J K L ; &#8594; 1 2 3 -</appendix>
+                  <appendix>M . / &#8594; 0 . +</appendix>
+                  <identifier vk_config="true">notsave.virtual_numlock</identifier>
+                  <autogen>--ShowStatusMessage-- NumLock</autogen>
+                  <autogen>--KeyToKey-- KeyCode::M,         KeyCode::KEYPAD_0</autogen>
+                  <autogen>--KeyToKey-- KeyCode::J,         KeyCode::KEYPAD_1</autogen>
+                  <autogen>--KeyToKey-- KeyCode::K,         KeyCode::KEYPAD_2</autogen>
+                  <autogen>--KeyToKey-- KeyCode::L,         KeyCode::KEYPAD_3</autogen>
+                  <autogen>--KeyToKey-- KeyCode::U,         KeyCode::KEYPAD_4</autogen>
+                  <autogen>--KeyToKey-- KeyCode::I,         KeyCode::KEYPAD_5</autogen>
+                  <autogen>--KeyToKey-- KeyCode::O,         KeyCode::KEYPAD_6</autogen>
+                  <autogen>--KeyToKey-- KeyCode::KEY_7,     KeyCode::KEYPAD_7</autogen>
+                  <autogen>--KeyToKey-- KeyCode::KEY_8,     KeyCode::KEYPAD_8</autogen>
+                  <autogen>--KeyToKey-- KeyCode::KEY_9,     KeyCode::KEYPAD_9</autogen>
+                  <autogen>--KeyToKey-- KeyCode::KEY_6,     KeyCode::KEYPAD_CLEAR</autogen>
+                  <autogen>--KeyToKey-- KeyCode::SLASH,     KeyCode::KEYPAD_PLUS</autogen>
+                  <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::KEYPAD_MINUS</autogen>
+                  <autogen>--KeyToKey-- KeyCode::P,         KeyCode::KEYPAD_MULTIPLY</autogen>
+                  <autogen>--KeyToKey-- KeyCode::KEY_0,     KeyCode::KEYPAD_SLASH</autogen>
+                  <autogen>--KeyToKey-- KeyCode::MINUS,     KeyCode::KEYPAD_EQUAL</autogen>
+                  <autogen>--KeyToKey-- KeyCode::DOT,       KeyCode::KEYPAD_DOT</autogen>
+                </item>
+                <item>
+                  <name>F6 to toggle "Virtual NumLock"</name>
+                  <identifier>remap.f6_to_virtual_numlock</identifier>
+                  <autogen>--KeyToKey-- KeyCode::F6, KeyCode::VK_CONFIG_TOGGLE_notsave_virtual_numlock</autogen>
+                </item>
+              </list>
+            </item>
+            <item>
+              <name>F6 to Fn_Lock (except virtual machine, RDC)</name>
+              <identifier>remap.f6_to_numlock</identifier>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+              <autogen>--KeyToKey-- KeyCode::F6, KeyCode::VK_LOCK_FN</autogen>
+            </item>
+            <item><name>------------------------------------------------------------</name></item>
+            <item>
+              <name>F7 to Video Mirror (except virtual machine, RDC)</name>
+              <identifier>remap.f7_to_videomirror</identifier>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+              <autogen>--KeyToConsumer-- KeyCode::F7, ConsumerKeyCode::VIDEO_MIRROR</autogen>
+            </item>
+            <item>
+              <name>F8 to Keyboard Light Off (except virtual machine, RDC)</name>
+              <identifier>remap.f8_to_keyboardlightoff</identifier>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+              <autogen>--KeyToConsumer-- KeyCode::F8, ConsumerKeyCode::KEYBOARDLIGHT_OFF</autogen>
+            </item>
+            <item>
+              <name>F9 to Keyboard Light LOW (except virtual machine, RDC)</name>
+              <identifier>remap.f9_to_keyboardlightlow</identifier>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+              <autogen>--KeyToConsumer-- KeyCode::F9, ConsumerKeyCode::KEYBOARDLIGHT_LOW</autogen>
+            </item>
+            <item>
+              <name>F10 to Keyboard Light HIGH (except virtual machine, RDC)</name>
+              <identifier>remap.f10_to_keyboardlighthigh</identifier>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+              <autogen>--KeyToConsumer-- KeyCode::F10, ConsumerKeyCode::KEYBOARDLIGHT_HIGH</autogen>
+            </item>
+            <item><name>------------------------------------------------------------</name></item>
+            <item>
+              <name>F7 to Music Prev (except virtual machine, RDC)</name>
+              <identifier>remap.f7_to_musicprev</identifier>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+              <autogen>--KeyToConsumer-- KeyCode::F7, ConsumerKeyCode::MUSIC_PREV</autogen>
+            </item>
+            <item>
+              <name>F8 to Music Play/Pause (except virtual machine, RDC)</name>
+              <identifier>remap.f8_to_musicplay</identifier>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+              <autogen>--KeyToConsumer-- KeyCode::F8, ConsumerKeyCode::MUSIC_PLAY</autogen>
+            </item>
+            <item>
+              <name>F9 to Music Next (except virtual machine, RDC)</name>
+              <identifier>remap.f9_to_musicplay</identifier>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+              <autogen>--KeyToConsumer-- KeyCode::F9, ConsumerKeyCode::MUSIC_NEXT</autogen>
+            </item>
+            <item><name>------------------------------------------------------------</name></item>
+            <item>
+              <name>F8 to Music Prev</name>
+              <identifier>remap.f8_to_musicprev_all</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F8, ConsumerKeyCode::MUSIC_PREV</autogen>
+            </item>
+            <item>
+              <name>F9 to Music Play/Pause</name>
+              <identifier>remap.f9_to_musicplay_all</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F9, ConsumerKeyCode::MUSIC_PLAY</autogen>
+            </item>
+            <item>
+              <name>F10 to Music Next</name>
+              <identifier>remap.f10_to_musicnext_all</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F10, ConsumerKeyCode::MUSIC_NEXT</autogen>
+            </item>
+            <item><name>------------------------------------------------------------</name></item>
+            <item>
+              <name>F10 to Volume Mute</name>
+              <identifier>remap.f10_to_volumemute_all</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F10, ConsumerKeyCode::VOLUME_MUTE</autogen>
+            </item>
+            <item>
+              <name>F11 to Volume Down</name>
+              <identifier>remap.f11_to_volumedown_all</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F11, ConsumerKeyCode::VOLUME_DOWN</autogen>
+            </item>
+            <item>
+              <name>F12 to Volume Up</name>
+              <identifier>remap.f12_to_volumeup_all</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F12, ConsumerKeyCode::VOLUME_UP</autogen>
+            </item>
+            <item><name>------------------------------------------------------------</name></item>
+            <item>
+              <name>F10 to Volume Mute (except virtual machine, RDC)</name>
+              <identifier>remap.f10_to_volumemute</identifier>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+              <autogen>--KeyToConsumer-- KeyCode::F10, ConsumerKeyCode::VOLUME_MUTE</autogen>
+            </item>
+            <item>
+              <name>F11 to Volume Down (except virtual machine, RDC)</name>
+              <identifier>remap.f11_to_volumedown</identifier>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+              <autogen>--KeyToConsumer-- KeyCode::F11, ConsumerKeyCode::VOLUME_DOWN</autogen>
+            </item>
+            <item>
+              <name>F12 to Volume Up (except virtual machine, RDC)</name>
+              <identifier>remap.f12_to_volumeup</identifier>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+              <autogen>--KeyToConsumer-- KeyCode::F12, ConsumerKeyCode::VOLUME_UP</autogen>
+            </item>
+            <item><name>------------------------------------------------------------</name></item>
+            <item>
+              <name>F13 to Volume Mute (except virtual machine, RDC)</name>
+              <identifier>remap.f13_to_volumemute</identifier>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+              <autogen>--KeyToConsumer-- KeyCode::F13, ConsumerKeyCode::VOLUME_MUTE</autogen>
+            </item>
+            <item>
+              <name>F14 to Volume Down (except virtual machine, RDC)</name>
+              <identifier>remap.f14_to_volumedown</identifier>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+              <autogen>--KeyToConsumer-- KeyCode::F14, ConsumerKeyCode::VOLUME_DOWN</autogen>
+            </item>
+            <item>
+              <name>F15 to Volume Up (except virtual machine, RDC)</name>
+              <identifier>remap.f15_to_volumeup</identifier>
+              <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+              <autogen>--KeyToConsumer-- KeyCode::F15, ConsumerKeyCode::VOLUME_UP</autogen>
+            </item>
+            <item><name>------------------------------------------------------------</name></item>
+            <item>
+              <name>F14 to Music Prev</name>
+              <identifier>remap.f14_to_musicprev_all</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F14, ConsumerKeyCode::MUSIC_PREV</autogen>
+            </item>
+            <item>
+              <name>F15 to Music Play/Pause</name>
+              <identifier>remap.f15_to_musicplay_all</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F15, ConsumerKeyCode::MUSIC_PLAY</autogen>
+            </item>
+            <item>
+              <name>F16 to Music Next</name>
+              <identifier>remap.f16_to_musicnext_all</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F16, ConsumerKeyCode::MUSIC_NEXT</autogen>
+            </item>
+            <item><name>------------------------------------------------------------</name></item>
+            <item>
+              <name>MacBook Air (2010, Late) Style</name>
+              <list>
+                <item>
+                  <name>F6 to Music Prev</name>
+                  <identifier>remap.f6_to_musicprev_all</identifier>
+                  <autogen>--KeyToConsumer-- KeyCode::F6, ConsumerKeyCode::MUSIC_PREV</autogen>
+                </item>
+                <item>
+                  <name>F7 to Music Play/Pause</name>
+                  <identifier>remap.f7_to_musicplay_all</identifier>
+                  <autogen>--KeyToConsumer-- KeyCode::F7, ConsumerKeyCode::MUSIC_PLAY</autogen>
+                </item>
+                <item>
+                  <name>F8 to Music Next</name>
+                  <identifier>remap.f8_to_musicnext_all</identifier>
+                  <autogen>--KeyToConsumer-- KeyCode::F8, ConsumerKeyCode::MUSIC_NEXT</autogen>
+                </item>
+
+                <item>
+                  <name>F9 to Volume Mute</name>
+                  <identifier>remap.f9_to_volumemute_all</identifier>
+                  <autogen>--KeyToConsumer-- KeyCode::F9, ConsumerKeyCode::VOLUME_MUTE</autogen>
+                </item>
+                <item>
+                  <name>F10 to Volume Down</name>
+                  <identifier>remap.f10_to_volumedown_all</identifier>
+                  <autogen>--KeyToConsumer-- KeyCode::F10, ConsumerKeyCode::VOLUME_DOWN</autogen>
+                </item>
+                <item>
+                  <name>F11 to Volume Up</name>
+                  <identifier>remap.f11_to_volumeup_all</identifier>
+                  <autogen>--KeyToConsumer-- KeyCode::F11, ConsumerKeyCode::VOLUME_UP</autogen>
+                </item>
+                <item>
+                  <name>F12 to Eject</name>
+                  <identifier>remap.f12_to_eject_all</identifier>
+                  <autogen>--KeyToConsumer-- KeyCode::F12, ConsumerKeyCode::EJECT</autogen>
+                </item>
+              </list>
+            </item>
+            <item><name>------------------------------------------------------------</name></item>
+            <item>
+              <name>Fn+F11 to F11</name>
+              <identifier>remap.FnF11_to_f11</identifier>
+              <autogen>--KeyToKey-- KeyCode::F11, ModifierFlag::FN, KeyCode::F11</autogen>
+            </item>
+            <item>
+              <name>Fn+F12 to F12</name>
+              <identifier>remap.FnF12_to_f12</identifier>
+              <autogen>--KeyToKey-- KeyCode::F12, ModifierFlag::FN, KeyCode::F12</autogen>
+            </item>
+            <item>
+              <name>F11 to display mirroring</name>
+              <identifier>remap.F11_to_mirroring</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F11, ConsumerKeyCode::VIDEO_MIRROR</autogen>
+            </item>
+            <item>
+              <name>F12 to Forward Delete</name>
+              <identifier>remap.f12_to_forwarddelete</identifier>
+              <autogen>--KeyToKey-- KeyCode::F12, KeyCode::FORWARD_DELETE</autogen>
+            </item>
+            <item>
+              <name>F12 to Expose</name>
+              <identifier>remap.F12_to_expose</identifier>
+              <autogen>--KeyToKey-- KeyCode::F12, KeyCode::EXPOSE_ALL</autogen>
+            </item>
+            <item><name>------------------------------------------------------------</name></item>
+            <item>
+              <name>Fn+F1 to Brightness Down</name>
+              <identifier>remap.fnF1_to_brightnessdown</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F1, ModifierFlag::FN, ConsumerKeyCode::BRIGHTNESS_DOWN</autogen>
+            </item>
+            <item>
+              <name>Fn+F2 to Brightness Up</name>
+              <identifier>remap.fnF2_to_brightnessup</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F2, ModifierFlag::FN, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
+            </item>
+            <item><name>------------------------------------------------------------</name></item>
+            <item>
+              <name>Fn+F7 to Music Prev</name>
+              <identifier>remap.fnF7_to_musicprev</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F7, ModifierFlag::FN, ConsumerKeyCode::MUSIC_PREV</autogen>
+            </item>
+            <item>
+              <name>Fn+F8 to Music Play/Pause</name>
+              <identifier>remap.fnF8_to_musicplay</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F8, ModifierFlag::FN, ConsumerKeyCode::MUSIC_PLAY</autogen>
+            </item>
+            <item>
+              <name>Fn+F9 to Music Next</name>
+              <identifier>remap.fnF9_to_musicplay</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F9, ModifierFlag::FN, ConsumerKeyCode::MUSIC_NEXT</autogen>
+            </item>
+            <item><name>------------------------------------------------------------</name></item>
+            <item>
+              <name>Fn+F10 to Volume Mute</name>
+              <identifier>remap.fnF10_to_volumemute</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F10, ModifierFlag::FN, ConsumerKeyCode::VOLUME_MUTE</autogen>
+            </item>
+            <item>
+              <name>Fn+F11 to Volume Down</name>
+              <identifier>remap.fnF11_to_volumedown</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F11, ModifierFlag::FN, ConsumerKeyCode::VOLUME_DOWN</autogen>
+            </item>
+            <item>
+              <name>Fn+F12 to Volume Up</name>
+              <identifier>remap.fnF12_to_volumeup</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::F12, ModifierFlag::FN, ConsumerKeyCode::VOLUME_UP</autogen>
+            </item>
+            <item><name>------------------------------------------------------------</name></item>
+            <item>
+              <name>Fn+F5 to PageDown</name>
+              <identifier>remap.fnF5_to_pagedown</identifier>
+              <autogen>--KeyToKey-- KeyCode::F5, ModifierFlag::FN, KeyCode::PAGEDOWN</autogen>
+            </item>
+            <item>
+              <name>Fn+F12 to PageUp</name>
+              <identifier>remap.fnF12_to_pageup</identifier>
+              <autogen>--KeyToKey-- KeyCode::F12, ModifierFlag::FN, KeyCode::PAGEUP</autogen>
+            </item>
+            <item><name>------------------------------------------------------------</name></item>
+            <item>
+              <name>Change Command+F1...F12 to Functional Keys</name>
+              <appendix>(ex. F10 to Volume Mute, F11 to Volume Down)</appendix>
+              <identifier>remap.command_f1_f12_to_functional</identifier>
+              <autogen>--KeyToKey-- KeyCode::F1,       VK_COMMAND, KeyCode::BRIGHTNESS_DOWN</autogen>
+              <autogen>--KeyToKey-- KeyCode::F2,       VK_COMMAND, KeyCode::BRIGHTNESS_UP</autogen>
+              <autogen>--KeyToKey-- KeyCode::F3,       VK_COMMAND, KeyCode::EXPOSE_ALL</autogen>
+              <autogen>--KeyToKey-- KeyCode::F4,       VK_COMMAND, KeyCode::DASHBOARD</autogen>
+              <autogen>--KeyToConsumer-- KeyCode::F7,  VK_COMMAND, ConsumerKeyCode::MUSIC_PREV</autogen>
+              <autogen>--KeyToConsumer-- KeyCode::F8,  VK_COMMAND, ConsumerKeyCode::MUSIC_PLAY</autogen>
+              <autogen>--KeyToConsumer-- KeyCode::F9,  VK_COMMAND, ConsumerKeyCode::MUSIC_NEXT</autogen>
+              <autogen>--KeyToConsumer-- KeyCode::F10, VK_COMMAND, ConsumerKeyCode::VOLUME_MUTE</autogen>
+              <autogen>--KeyToConsumer-- KeyCode::F11, VK_COMMAND, ConsumerKeyCode::VOLUME_DOWN</autogen>
+              <autogen>--KeyToConsumer-- KeyCode::F12, VK_COMMAND, ConsumerKeyCode::VOLUME_UP</autogen>
+            </item>
+
+            <item>
+              <name>Change F1...F12 to Functional Keys (except Terminal)</name>
+              <appendix>(ex. F10 to Volume Mute, F11 to Volume Down)</appendix>
+              <identifier>remap.f1_f12_to_functional</identifier>
+              <not>TERMINAL</not>
+              <!-- #include "include/f1_f12_to_functional_withfn.xml" -->
+            </item>
+
+            <item>
+              <name>Force change F1..F12 in VMware, Parallels, RDC</name>
+              <list>
+                <item>
+                  <name>F1 to Brightness Down</name>
+                  <identifier>remap.f1_to_brightnessdown_force</identifier>
+                  <autogen>--KeyToConsumer-- KeyCode::F1, ConsumerKeyCode::BRIGHTNESS_DOWN</autogen>
+                </item>
+                <item>
+                  <name>F2 to Brightness Up</name>
+                  <identifier>remap.f2_to_brightnessup_force</identifier>
+                  <autogen>--KeyToConsumer-- KeyCode::F2, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
+                </item>
+                <item>
+                  <name>F3 to Volume Mute</name>
+                  <identifier>remap.f3_to_volumemute_force</identifier>
+                  <autogen>--KeyToConsumer-- KeyCode::F3, ConsumerKeyCode::VOLUME_MUTE</autogen>
+                </item>
+                <item>
+                  <name>F4 to Volume Down</name>
+                  <identifier>remap.f4_to_volumedown_force</identifier>
+                  <autogen>--KeyToConsumer-- KeyCode::F4, ConsumerKeyCode::VOLUME_DOWN</autogen>
+                </item>
+                <item>
+                  <name>F5 to Volume Up</name>
+                  <identifier>remap.f5_to_volumeup_force</identifier>
+                  <autogen>--KeyToConsumer-- KeyCode::F5, ConsumerKeyCode::VOLUME_UP</autogen>
+                </item>
+              </list>
+            </item>
+            <item>
+              <name>Control+F1 to F16</name>
+              <identifier>remap.controlF1toF16</identifier>
+              <autogen>--KeyToKey-- KeyCode::F1, VK_CONTROL, KeyCode::F16</autogen>
+            </item>
+            <item>
+              <name>F11 to F4</name>
+              <identifier>remap.f11_to_f4</identifier>
+              <autogen>--KeyToKey-- KeyCode::F11, KeyCode::F4</autogen>
+            </item>
+            <item>
+              <name>F16 to Tab</name>
+              <identifier>remap.f16_to_tab</identifier>
+              <autogen>--KeyToKey-- KeyCode::F16, KeyCode::TAB</autogen>
+            </item>
+            <item>
+              <name>F19 to Quote(')</name>
+              <identifier>remap.f19_to_quote</identifier>
+              <autogen>--KeyToKey-- KeyCode::F19, KeyCode::QUOTE</autogen>
+            </item>
           </list>
-        </item>
-        <item>
-          <name>Control+F1 to F16</name>
-          <identifier>remap.controlF1toF16</identifier>
-          <autogen>--KeyToKey-- KeyCode::F1, VK_CONTROL, KeyCode::F16</autogen>
-        </item>
-        <item>
-          <name>F11 to F4</name>
-          <identifier>remap.f11_to_f4</identifier>
-          <autogen>--KeyToKey-- KeyCode::F11, KeyCode::F4</autogen>
-        </item>
-        <item>
-          <name>F16 to Tab</name>
-          <identifier>remap.f16_to_tab</identifier>
-          <autogen>--KeyToKey-- KeyCode::F16, KeyCode::TAB</autogen>
-        </item>
-        <item>
-          <name>F19 to Quote(')</name>
-          <identifier>remap.f19_to_quote</identifier>
-          <autogen>--KeyToKey-- KeyCode::F19, KeyCode::QUOTE</autogen>
         </item>
       </list>
     </item>
