@@ -2011,8 +2011,8 @@
           <list>
             <item>
               <name>Brightness Adjust to F1,F2</name>
-              <appendix>Brightness Down to F1</appendix>
-              <appendix>Brightness Up to F2</appendix>
+              <appendix>* Brightness Down to F1</appendix>
+              <appendix>* Brightness Up to F2</appendix>
               <identifier>remap.consumer_to_fkeys_f1</identifier>
               <!-- F1 -->
               <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_DOWN, KeyCode::F1</autogen>
@@ -2032,17 +2032,17 @@
             </item>
             <item>
               <name>Keyboard Backlight Adjust to F5,F6</name>
-              <appendix>Keyboard Backlight Low to F5</appendix>
-              <appendix>Keyboard Backlight High to F6</appendix>
+              <appendix>* Keyboard Backlight Low to F5</appendix>
+              <appendix>* Keyboard Backlight High to F6</appendix>
               <identifier>remap.consumer_to_fkeys_f5</identifier>
               <autogen>--ConsumerToKey-- ConsumerKeyCode::KEYBOARDLIGHT_LOW,  KeyCode::F5</autogen>
               <autogen>--ConsumerToKey-- ConsumerKeyCode::KEYBOARDLIGHT_HIGH, KeyCode::F6</autogen>
             </item>
             <item>
               <name>Music Controls to F7,F8,F9</name>
-              <appendix>Music Prev to F7</appendix>
-              <appendix>Music Play/Pause to F8</appendix>
-              <appendix>Music Next to F9</appendix>
+              <appendix>* Music Prev to F7</appendix>
+              <appendix>* Music Play/Pause to F8</appendix>
+              <appendix>* Music Next to F9</appendix>
               <identifier>remap.consumer_to_fkeys_f7</identifier>
               <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PREV,         KeyCode::F7</autogen>
               <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PLAY,         KeyCode::F8</autogen>
@@ -2050,9 +2050,9 @@
             </item>
             <item>
               <name>Speaker Controls to F10,F11,F12</name>
-              <appendix>Volume Mute to F10</appendix>
-              <appendix>Volume Down to F11</appendix>
-              <appendix>Volume Up to F12</appendix>
+              <appendix>* Volume Mute to F10</appendix>
+              <appendix>* Volume Down to F11</appendix>
+              <appendix>* Volume Up to F12</appendix>
               <identifier>remap.consumer_to_fkeys_f10</identifier>
               <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE,        KeyCode::F10</autogen>
               <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN,        KeyCode::F11</autogen>
