@@ -143,7 +143,10 @@ static PreferencesManager* global_instance = nil;
 - (void) setValueForName:(int)newval forName:(NSString*)name
 {
   NSString* identifier = [self configlist_selectedIdentifier];
-  if (! identifier) return;
+  if (! identifier) {
+    NSLog(@"[ERROR] %s identifier == nil", __FUNCTION__);
+    return;
+  }
 
   NSMutableDictionary* md = nil;
 
@@ -153,7 +156,10 @@ static PreferencesManager* global_instance = nil;
   } else {
     md = [[NSMutableDictionary new] autorelease];
   }
-  if (! md) return;
+  if (! md) {
+    NSLog(@"[ERROR] %s md == nil", __FUNCTION__);
+    return;
+  }
 
   int defaultvalue = 0;
   NSNumber* defaultnumber = [default_ objectForKey:name];
