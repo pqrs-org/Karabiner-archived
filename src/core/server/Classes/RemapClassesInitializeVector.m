@@ -25,6 +25,8 @@ enum {
 
     size_ = 0;
     freezed_ = NO;
+    dict_configindex_ = [NSMutableDictionary new];
+    max_configindex_ = 0;
 
     if (capacity_ <= INDEX_OF_COUNT) {
       @throw [NSException
@@ -47,6 +49,8 @@ enum {
     free(data_);
     data_ = NULL;
   }
+
+  [dict_configindex_ release];
 
   [super dealloc];
 }
@@ -84,10 +88,25 @@ enum {
   }
 
   size_ += newcount;
+
+  // ----------------------------------------
+  if (configindex > max_configindex_) {
+    max_configindex_ = configindex;
+  }
+  [dict_configindex_ setObject:[NSNumber numberWithBool:YES] forKey:[NSNumber numberWithUnsignedInt:configindex]];
 }
 
 - (void) setFreezed
 {
+  // ----------------------------------------
+  // fill configindex
+  for (uint32_t i = 0; i <= max_configindex_; ++i) {
+    if (! [dict_configindex_ objectForKey:[NSNumber numberWithUnsignedInt:i]]) {
+      [self addVector:[[NSArray new] autorelease] configindex:i];
+    }
+  }
+
+  // ----------------------------------------
   freezed_ = YES;
 }
 
@@ -111,6 +130,17 @@ enum {
           userInfo: nil];
   }
   return size_;
+}
+
+- (uint32_t) countOfVectors
+{
+  if (! freezed_) {
+    @throw [NSException
+          exceptionWithName: @"[RemapClassesInitializeVector countOfVectors] is failed"
+          reason: @"[RemapClassesInitializeVector countOfVectors] is called before freeze"
+          userInfo: nil];
+  }
+  return data_[INDEX_OF_COUNT];
 }
 
 @end

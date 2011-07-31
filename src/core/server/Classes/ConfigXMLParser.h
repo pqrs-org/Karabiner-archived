@@ -7,7 +7,6 @@
   unsigned int simultaneous_keycode_index_;
   NSMutableDictionary* dict_config_name_;
   RemapClassesInitializeVector* remapclasses_initialize_vector_;
-  NSUInteger count_;
   NSMutableArray* preferencepane_checkbox_;
   NSMutableArray* preferencepane_number_;
   KeyCode* keycode_;
