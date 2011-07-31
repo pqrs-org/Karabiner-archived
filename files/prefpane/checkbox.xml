@@ -2061,6 +2061,61 @@
           </list>
         </item>
         <item>
+          <name>Fn+Functional Keys to F1..F12</name>
+          <appendix>(Use these settings if you activated "XXX to Fn")</appendix>
+          <list>
+            <item>
+              <name>Fn+Brightness Adjust to F1,F2</name>
+              <appendix>* Fn+Brightness Down to F1</appendix>
+              <appendix>* Fn+Brightness Up to F2</appendix>
+              <identifier>remap.fn_consumer_to_fkeys_f1</identifier>
+              <!-- F1 -->
+              <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_DOWN, ModifierFlag::FN, KeyCode::F1</autogen>
+              <autogen>--KeyToKey--      KeyCode::BRIGHTNESS_DOWN,         ModifierFlag::FN, KeyCode::F1</autogen>
+              <!-- F2 -->
+              <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_UP,   ModifierFlag::FN, KeyCode::F2</autogen>
+              <autogen>--KeyToKey--      KeyCode::BRIGHTNESS_UP,           ModifierFlag::FN, KeyCode::F2</autogen>
+            </item>
+            <item>
+              <name>Fn+Mission Control/Launchpad to F3,F4</name>
+              <appendix>(And Fn+Expose and Fn+Dashboard to F3,F4)</appendix>
+              <identifier>remap.fn_consumer_to_fkeys_f3</identifier>
+              <!-- F3 - F12 -->
+              <autogen>--KeyToKey--      KeyCode::EXPOSE_ALL, ModifierFlag::FN, KeyCode::F3</autogen>
+              <autogen>--KeyToKey--      KeyCode::DASHBOARD,  ModifierFlag::FN, KeyCode::F4</autogen>
+              <autogen>--KeyToKey--      KeyCode::LAUNCHPAD,  ModifierFlag::FN, KeyCode::F4</autogen>
+            </item>
+            <item>
+              <name>Fn+Keyboard Backlight Adjust to F5,F6</name>
+              <appendix>* Fn+Keyboard Backlight Low to F5</appendix>
+              <appendix>* Fn+Keyboard Backlight High to F6</appendix>
+              <identifier>remap.fn_consumer_to_fkeys_f5</identifier>
+              <autogen>--ConsumerToKey-- ConsumerKeyCode::KEYBOARDLIGHT_LOW,  ModifierFlag::FN, KeyCode::F5</autogen>
+              <autogen>--ConsumerToKey-- ConsumerKeyCode::KEYBOARDLIGHT_HIGH, ModifierFlag::FN, KeyCode::F6</autogen>
+            </item>
+            <item>
+              <name>Fn+Music Controls to F7,F8,F9</name>
+              <appendix>* Fn+Music Prev to F7</appendix>
+              <appendix>* Fn+Music Play/Pause to F8</appendix>
+              <appendix>* Fn+Music Next to F9</appendix>
+              <identifier>remap.fn_consumer_to_fkeys_f7</identifier>
+              <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PREV, ModifierFlag::FN, KeyCode::F7</autogen>
+              <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PLAY, ModifierFlag::FN, KeyCode::F8</autogen>
+              <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_NEXT, ModifierFlag::FN, KeyCode::F9</autogen>
+            </item>
+            <item>
+              <name>Fn+Speaker Controls to F10,F11,F12</name>
+              <appendix>* Fn+Volume Mute to F10</appendix>
+              <appendix>* Fn+Volume Down to F11</appendix>
+              <appendix>* Fn+Volume Up to F12</appendix>
+              <identifier>remap.fn_consumer_to_fkeys_f10</identifier>
+              <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, ModifierFlag::FN, KeyCode::F10</autogen>
+              <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::FN, KeyCode::F11</autogen>
+              <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP,   ModifierFlag::FN, KeyCode::F12</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Separately settings</name>
           <list>
             <item>
