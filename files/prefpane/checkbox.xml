@@ -2373,6 +2373,44 @@
               <autogen>--ConsumerToConsumer-- ConsumerKeyCode::EJECT,       ConsumerKeyCode::VOLUME_UP</autogen>
             </item>
             <item>
+              <name>Change Media Keys (Play/Pause, Prev, Next)</name>
+              <list>
+                <item>
+                  <name>Media Keys to F7..F9</name>
+                  <appendix>Music Prev to F7</appendix>
+                  <appendix>Music Play/Pause to F8</appendix>
+                  <appendix>Music Next to F9</appendix>
+                  <identifier>remap.mediaKeysToFKeys</identifier>
+                  <!-- F7 - F9 -->
+                  <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PREV,         KeyCode::F7</autogen>
+                  <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PLAY,         KeyCode::F8</autogen>
+                  <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_NEXT,         KeyCode::F9</autogen>
+                </item>
+                <item>
+                  <name>Media Keys to F6..F8</name>
+                  <appendix>Music Prev to F6</appendix>
+                  <appendix>Music Play/Pause to F7</appendix>
+                  <appendix>Music Next to F8</appendix>
+                  <identifier>remap.mediaKeysToFKeys_f6f8</identifier>
+                  <!-- F6 - F8 -->
+                  <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PREV, KeyCode::F6</autogen>
+                  <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PLAY, KeyCode::F7</autogen>
+                  <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_NEXT, KeyCode::F8</autogen>
+                </item>
+                <item>
+                  <name>Fn+Function Keys to Media Keys</name>
+                  <appendix>Fn+F7 to Music Prev</appendix>
+                  <appendix>Fn+F8 to Music Play/Pause</appendix>
+                  <appendix>Fn+F9 to Music Next</appendix>
+                  <identifier>remap.FNFkeysToMediaKeys</identifier>
+                  <!-- F7 - F9 -->
+                  <autogen>--KeyToConsumer-- KeyCode::F7, ModifierFlag::FN, ConsumerKeyCode::MUSIC_PREV</autogen>
+                  <autogen>--KeyToConsumer-- KeyCode::F8, ModifierFlag::FN, ConsumerKeyCode::MUSIC_PLAY</autogen>
+                  <autogen>--KeyToConsumer-- KeyCode::F9, ModifierFlag::FN, ConsumerKeyCode::MUSIC_NEXT</autogen>
+                </item>
+              </list>
+            </item>
+            <item>
               <name>Functionalize 2.0</name>
               <appendix>You need to turn "Use all F1, F2, etc. keys as standard function keys" off.</appendix>
               <appendix>Open System Preferences &gt; Keyboard, and turn it off.</appendix>
@@ -3546,45 +3584,6 @@
           <name>Left Bracket([) to L</name>
           <identifier>remap.leftbracket2l</identifier>
           <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, KeyCode::L</autogen>
-        </item>
-      </list>
-    </item>
-
-    <item>
-      <name>Change Media Keys (Play/Pause, Prev, Next)</name>
-      <list>
-        <item>
-          <name>Media Keys to F7..F9</name>
-          <appendix>Music Prev to F7</appendix>
-          <appendix>Music Play/Pause to F8</appendix>
-          <appendix>Music Next to F9</appendix>
-          <identifier>remap.mediaKeysToFKeys</identifier>
-          <!-- F7 - F9 -->
-          <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PREV,         KeyCode::F7</autogen>
-          <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PLAY,         KeyCode::F8</autogen>
-          <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_NEXT,         KeyCode::F9</autogen>
-        </item>
-        <item>
-          <name>Media Keys to F6..F8</name>
-          <appendix>Music Prev to F6</appendix>
-          <appendix>Music Play/Pause to F7</appendix>
-          <appendix>Music Next to F8</appendix>
-          <identifier>remap.mediaKeysToFKeys_f6f8</identifier>
-          <!-- F6 - F8 -->
-          <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PREV, KeyCode::F6</autogen>
-          <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PLAY, KeyCode::F7</autogen>
-          <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_NEXT, KeyCode::F8</autogen>
-        </item>
-        <item>
-          <name>Fn+Function Keys to Media Keys</name>
-          <appendix>Fn+F7 to Music Prev</appendix>
-          <appendix>Fn+F8 to Music Play/Pause</appendix>
-          <appendix>Fn+F9 to Music Next</appendix>
-          <identifier>remap.FNFkeysToMediaKeys</identifier>
-          <!-- F7 - F9 -->
-          <autogen>--KeyToConsumer-- KeyCode::F7, ModifierFlag::FN, ConsumerKeyCode::MUSIC_PREV</autogen>
-          <autogen>--KeyToConsumer-- KeyCode::F8, ModifierFlag::FN, ConsumerKeyCode::MUSIC_PLAY</autogen>
-          <autogen>--KeyToConsumer-- KeyCode::F9, ModifierFlag::FN, ConsumerKeyCode::MUSIC_NEXT</autogen>
         </item>
       </list>
     </item>
