@@ -93,11 +93,10 @@ NSString* notificationName_modifier_sticky = @"Sticky Modifier Keys";
     if (! isGrowlNotRunningWarningDisplayed_) {
       isGrowlNotRunningWarningDisplayed_ = YES;
 
-      NSAlert* alert = [NSAlert alertWithMessageText:@"KeyRemap4MacBook Warning"
-                                       defaultButton:@"Close"
-                                     alternateButton:nil
-                                         otherButton:nil
-                           informativeTextWithFormat:[NSString stringWithFormat:@"%@\n\n%@\n\n%@", message1, message2, message3]];
+      NSAlert* alert = [[NSAlert new] autorelease];
+      [alert setMessageText:@"KeyRemap4MacBook Warning"];
+      [alert addButtonWithTitle:@"Close"];
+      [alert setInformativeText:[NSString stringWithFormat:@"%@\n\n%@\n\n%@", message1, message2, message3]];
 
       [alert runModal];
     }
