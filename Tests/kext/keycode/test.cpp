@@ -456,7 +456,7 @@ TEST(KeyCode, reverseNormalizeKey) {
   // PAGEUP (without FN)
   for (size_t i = 0; i < sizeof(cursors) / sizeof(cursors[0]); ++i) {
     vec.push_back(NormalizeItem(cursors[i][0], ModifierFlag::SHIFT_L,
-                                cursors[i][0], ModifierFlag::SHIFT_L | ModifierFlag::FN, KeyboardType::MACBOOK));
+                                cursors[i][0], ModifierFlag::SHIFT_L, KeyboardType::MACBOOK));
   }
 
   // ENTER (without FN)
@@ -465,7 +465,7 @@ TEST(KeyCode, reverseNormalizeKey) {
 
   // FORWARD_DELETE (without FN)
   vec.push_back(NormalizeItem(KeyCode::FORWARD_DELETE, ModifierFlag::SHIFT_L,
-                              KeyCode::FORWARD_DELETE, ModifierFlag::SHIFT_L | ModifierFlag::FN, KeyboardType::MACBOOK));
+                              KeyCode::FORWARD_DELETE, ModifierFlag::SHIFT_L, KeyboardType::MACBOOK));
 
   // CURSOR (without FN)
   for (size_t i = 0; i < sizeof(cursors) / sizeof(cursors[0]); ++i) {
@@ -545,7 +545,7 @@ TEST(KeyCode, reverseNormalizeKey) {
     KeyCode::normalizeKey(key, flags, EventType::UP, KeyboardType::MACBOOK);
     KeyCode::reverseNormalizeKey(key, flags, EventType::UP, KeyboardType::MACBOOK);
     EXPECT_EQ(key, KeyCode::END);
-    EXPECT_EQ(flags, ModifierFlag::FN);
+    EXPECT_EQ(flags, 0);
   }
 
   // Test case for the following key sequence.
