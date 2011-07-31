@@ -97,19 +97,20 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ------------------------------------------------------------
-    // set ModifierFlag::FN
+    // Don't add ModifierFlag::FN automatically for F-keys, PageUp/PageDown/Home/End and Forward Delete.
     //
-    // We add ModifierFlag::FN for Cocoa Application.
-    // Cocoa Application manages the flag status inside,
-    // so unless we attach FN, the flag status becomes invalid in Cocoa.
-    if (key == KeyCode::HOME ||
-        key == KeyCode::END ||
-        key == KeyCode::PAGEUP ||
-        key == KeyCode::PAGEDOWN ||
-        key == KeyCode::FORWARD_DELETE ||
-        key == KeyCode::HELP) {
-      flags.add(ModifierFlag::FN);
-    }
+    // PageUp/PageDown/Home/End and Forward Delete are entered by fn+arrow, fn+delete normally,
+    // And, from Cocoa Application, F-keys and PageUp,... keys have Fn modifier
+    // even if Fn key is not pressed actually.
+    // So, it's natural adding ModifierFlag::FN to these keys.
+    // However, there is a reason we must not add ModifierFlag::FN to there keys.
+    //
+    // Mission Control may have "fn" as shortcut key.
+    // If we add ModifierFlag::FN here,
+    // "XXX to PageUp" launches Mission Control because Mission Control recognizes fn key was pressed.
+    //
+    // It's not intended behavior from users.
+    // Therefore, we don't add ModifierFlag::FN for these keys.
 
     // ------------------------------------------------------------
     // set ModifierFlag::KEYPAD, ModifierFlag::CURSOR
