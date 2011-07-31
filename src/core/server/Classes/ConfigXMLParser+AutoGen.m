@@ -417,8 +417,9 @@
         [self traverse_autogen:initialize_vector node:[e parent] name:name];
 
         NSNumber* configindex = [keycode_ numberValue:[NSString stringWithFormat:@"ConfigIndex::%@", name]];
-        [dict_initialize_vector_ setObject:initialize_vector forKey:configindex];
+        [remapclasses_initialize_vector_ addVector:initialize_vector configindex:[configindex unsignedIntValue]];
         [dict_config_name_ setObject:rawname forKey:configindex];
+        ++count_;
       }
       [pool drain];
     }
@@ -459,14 +460,13 @@
 
   simultaneous_keycode_index_ = 0;
 
-  [dict_initialize_vector_ release];
-  dict_initialize_vector_ = [NSMutableDictionary new];
-
   [dict_config_name_ release];
   dict_config_name_ = [NSMutableDictionary new];
 
   [remapclasses_initialize_vector_ release];
-  remapclasses_initialize_vector_ = [NSMutableArray new];
+  remapclasses_initialize_vector_ = [RemapClassesInitializeVector new];
+
+  count_ = 0;
 
   [keycode_ release];
   keycode_ = [KeyCode new];
@@ -576,20 +576,8 @@
   }
 
   // --------------------
-  // make remapclasses_initialize_vector_
-  NSUInteger count = [dict_initialize_vector_ count];
-  [remapclasses_initialize_vector_ addObject:[NSNumber numberWithUnsignedInt:BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION]];
-  [remapclasses_initialize_vector_ addObject:[NSNumber numberWithUnsignedInteger:count]];
-
-  for (NSUInteger i = 0; i < count; ++i) {
-    NSArray* a = [dict_initialize_vector_ objectForKey:[NSNumber numberWithUnsignedInteger:i]];
-    if (! a) {
-      [remapclasses_initialize_vector_ addObject:[NSNumber numberWithUnsignedInt:0]];
-    } else {
-      [remapclasses_initialize_vector_ addObject:[NSNumber numberWithUnsignedInteger:[a count]]];
-      [remapclasses_initialize_vector_ addObjectsFromArray:a];
-    }
-  }
+  // Freeze remapclasses_initialize_vector_.
+  [remapclasses_initialize_vector_ setFreezed];
 
   return retval;
 }

@@ -20,6 +20,10 @@
     </item>
 
     <item>
+      <name>[Key Overlaid Modifier] Initial Modifier Wait</name>
+      <identifier essential="true" default="0" step="10" baseunit="ms">parameter.keyoverlaidmodifier_initial_modifier_wait</identifier>
+    </item>
+    <item>
       <name>[Key Overlaid Modifier] Timeout</name>
       <identifier essential="true" default="1000" step="100" baseunit="ms">parameter.keyoverlaidmodifier_timeout</identifier>
     </item>

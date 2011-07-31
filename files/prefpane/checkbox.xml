@@ -687,6 +687,32 @@
           <autogen>--KeyToKey-- KeyCode::CURSOR_UP,   KeyCode::F15</autogen>
           <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, KeyCode::F14</autogen>
         </item>
+
+        <item>
+          <name>The workaround for broken up and down keys</name>
+          <list>
+            <item>
+              <name>Change Shift+Cursor Left to Cursor Up</name>
+              <identifier>remap.shiftleft2up</identifier>
+              <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_SHIFT, KeyCode::CURSOR_UP</autogen>
+            </item>
+            <item>
+              <name>Change Shift+Cursor Right to Cursor Down</name>
+              <identifier>remap.shiftright2down</identifier>
+              <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_SHIFT, KeyCode::CURSOR_DOWN</autogen>
+            </item>
+            <item>
+              <name>Change Command+Cursor Left to PageUp</name>
+              <identifier>remap.commandleft2pageup</identifier>
+              <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_COMMAND, KeyCode::PAGEUP</autogen>
+            </item>
+            <item>
+              <name>Change Command+Cursor Right to PageDown</name>
+              <identifier>remap.commandright2pagedown</identifier>
+              <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_COMMAND, KeyCode::PAGEDOWN</autogen>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
 
@@ -747,6 +773,16 @@
           <name>Backquote(`) to F8</name>
           <identifier>remap.backquote2f8</identifier>
           <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::F8</autogen>
+        </item>
+        <item>
+          <name>Backquote(`) to Cmd+Option+L</name>
+          <identifier>remap.backquote2cmdoptionl</identifier>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::L, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
+        </item>
+        <item>
+          <name>Backquote(`) to Cmd+Space</name>
+          <identifier>remap.backquote2cmdspace</identifier>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
           <name>Backquote(`) to LeftClick</name>
@@ -1018,6 +1054,11 @@
           <name>Command_R to Control_L</name>
           <identifier>remap.commandR2controlL</identifier>
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::CONTROL_L</autogen>
+        </item>
+        <item>
+          <name>Option_R+Command_R to Control_L</name>
+          <identifier>remap.optionRcommandR2controlL</identifier>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, ModifierFlag::OPTION_R, KeyCode::CONTROL_L</autogen>
         </item>
         <item>
           <name>Command_R to Control_R (only in virtual machine, RDC)</name>
@@ -1545,6 +1586,11 @@
           <appendix></appendix>
           <appendix>Because eject key sends keydown&amp;keyup event at the same time when you press the key.</appendix>
           <appendix>KeyRemap4MacBook cannot know whether you're holding eject key or not.</appendix>
+        </item>
+        <item>
+          <name>Eject to Option+Backquote(`)</name>
+          <identifier>remap.eject_to_option_backquote</identifier>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
           <name>Eject to Dashboard if no modifiers pressed</name>
@@ -2230,6 +2276,11 @@
           <identifier>remap.dashboard2f4</identifier>
           <autogen>--KeyToKey--      KeyCode::DASHBOARD,                  KeyCode::F4</autogen>
         </item>
+        <item>
+          <name>Dashboard to Launchpad</name>
+          <identifier>remap.dashboard2launchpad</identifier>
+          <autogen>--KeyToKey-- KeyCode::DASHBOARD, KeyCode::LAUNCHPAD</autogen>
+        </item>
         <item><name>------------------------------------------------------------</name></item>
         <item>
           <name>Volume Mute to F3</name>
@@ -2353,6 +2404,17 @@
           <name>Keyboard Light High to Music Next</name>
           <identifier>remap.keyboardlighthigh2musicnext</identifier>
           <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_HIGH, ConsumerKeyCode::MUSIC_NEXT</autogen>
+        </item>
+        <item><name>------------------------------------------------------------</name></item>
+        <item>
+          <name>Keyboard Light Low to Tab Left ( Command+{ )</name>
+          <identifier>remap.light_low_to_tab_left</identifier>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::KEYBOARDLIGHT_LOW, KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+        </item>
+        <item>
+          <name>Keyboard Light High to Tab Right ( Command+} )</name>
+          <identifier>remap.light_high_to_tab_right</identifier>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::KEYBOARDLIGHT_HIGH, KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
         </item>
         <item><name>------------------------------------------------------------</name></item>
         <item>
@@ -2728,6 +2790,12 @@
           <identifier>remap.f5_to_volumeup</identifier>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>--KeyToConsumer-- KeyCode::F5, ConsumerKeyCode::VOLUME_UP</autogen>
+        </item>
+        <item><name>------------------------------------------------------------</name></item>
+        <item>
+          <name>F4 to Launchpad</name>
+          <identifier>remap.f4_to_launchpad</identifier>
+          <autogen>--KeyToKey-- KeyCode::F4, KeyCode::LAUNCHPAD</autogen>
         </item>
         <item><name>------------------------------------------------------------</name></item>
         <item>
@@ -3537,83 +3605,112 @@
       <name>Change Num Key (1...0)</name>
       <list>
         <item>
-          <name>Holding Shift+1 to F1</name>
-          <identifier>remap.holding_shiftL1_to_f1</identifier>
-          <autogen>--HoldingKeyToKey-- KeyCode::KEY_1, VK_SHIFT, KeyCode::KEY_1, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::F1</autogen>
+          <name>Fn+Number to KeyPad</name>
+          <appendix>Fn+1,Fn+2,...,Fn+9,Fn+0 to KeyPad Numbers</appendix>
+          <appendix>Fn+Symbols (.+-=/) to KeyPad Symbols</appendix>
+          <appendix>Fn+Shift+Delete to KeyPad Clear</appendix>
+          <identifier>remap.fnnumber2keypad</identifier>
+          <autogen>--KeyToKey-- KeyCode::KEY_1,  ModifierFlag::FN,            KeyCode::KEYPAD_1</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_2,  ModifierFlag::FN,            KeyCode::KEYPAD_2</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_3,  ModifierFlag::FN,            KeyCode::KEYPAD_3</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_4,  ModifierFlag::FN,            KeyCode::KEYPAD_4</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_5,  ModifierFlag::FN,            KeyCode::KEYPAD_5</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_6,  ModifierFlag::FN,            KeyCode::KEYPAD_6</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_7,  ModifierFlag::FN,            KeyCode::KEYPAD_7</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_8,  ModifierFlag::FN | VK_SHIFT, KeyCode::KEYPAD_MULTIPLY</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_8,  ModifierFlag::FN,            KeyCode::KEYPAD_8</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_9,  ModifierFlag::FN,            KeyCode::KEYPAD_9</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_0,  ModifierFlag::FN,            KeyCode::KEYPAD_0</autogen>
+          <autogen>--KeyToKey-- KeyCode::MINUS,  ModifierFlag::FN,            KeyCode::KEYPAD_MINUS</autogen>
+          <autogen>--KeyToKey-- KeyCode::DOT,    ModifierFlag::FN,            KeyCode::KEYPAD_DOT</autogen>
+          <autogen>--KeyToKey-- KeyCode::SLASH,  ModifierFlag::FN,            KeyCode::KEYPAD_SLASH</autogen>
+          <autogen>--KeyToKey-- KeyCode::EQUAL,  ModifierFlag::FN | VK_SHIFT, KeyCode::KEYPAD_PLUS</autogen>
+          <autogen>--KeyToKey-- KeyCode::EQUAL,  ModifierFlag::FN,            KeyCode::KEYPAD_EQUAL</autogen>
+          <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::FN | VK_SHIFT, KeyCode::KEYPAD_CLEAR</autogen>
         </item>
         <item>
-          <name>Holding Shift+2 to F2</name>
-          <identifier>remap.holding_shiftL2_to_f2</identifier>
-          <autogen>--HoldingKeyToKey-- KeyCode::KEY_2, VK_SHIFT, KeyCode::KEY_2, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::F2</autogen>
-        </item>
-        <item>
-          <name>Holding Shift+3 to F3</name>
-          <identifier>remap.holding_shiftL3_to_f3</identifier>
-          <autogen>--HoldingKeyToKey-- KeyCode::KEY_3, VK_SHIFT, KeyCode::KEY_3, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::F3</autogen>
-        </item>
-        <item>
-          <name>Holding Shift+4 to F4</name>
-          <identifier>remap.holding_shiftL4_to_f4</identifier>
-          <autogen>--HoldingKeyToKey-- KeyCode::KEY_4, VK_SHIFT, KeyCode::KEY_4, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::F4</autogen>
-        </item>
-        <item>
-          <name>Holding Shift+5 to F5</name>
-          <identifier>remap.holding_shiftL5_to_f5</identifier>
-          <autogen>--HoldingKeyToKey-- KeyCode::KEY_5, VK_SHIFT, KeyCode::KEY_5, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::F5</autogen>
-        </item>
-        <item>
-          <name>Holding Shift+6 to F6</name>
-          <identifier>remap.holding_shiftL6_to_f6</identifier>
-          <autogen>--HoldingKeyToKey-- KeyCode::KEY_6, VK_SHIFT, KeyCode::KEY_6, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::F6</autogen>
-        </item>
-        <item>
-          <name>Holding Shift+7 to F7</name>
-          <identifier>remap.holding_shiftL7_to_f7</identifier>
-          <autogen>--HoldingKeyToKey-- KeyCode::KEY_7, VK_SHIFT, KeyCode::KEY_7, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::F7</autogen>
-        </item>
-        <item>
-          <name>Holding Shift+8 to F8</name>
-          <identifier>remap.holding_shiftL8_to_f8</identifier>
-          <autogen>--HoldingKeyToKey-- KeyCode::KEY_8, VK_SHIFT, KeyCode::KEY_8, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::F8</autogen>
-        </item>
-        <item>
-          <name>Holding Shift+9 to F9</name>
-          <identifier>remap.holding_shiftL9_to_f9</identifier>
-          <autogen>--HoldingKeyToKey-- KeyCode::KEY_9, VK_SHIFT, KeyCode::KEY_9, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::F9</autogen>
-        </item>
-        <item>
-          <name>Holding Shift+0 to F10</name>
-          <identifier>remap.holding_shiftL0_to_f10</identifier>
-          <autogen>--HoldingKeyToKey-- KeyCode::KEY_0, VK_SHIFT, KeyCode::KEY_0, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::F10</autogen>
-        </item>
+          <name>Num Key (1234567890-=) to F1...F12</name>
+          <list>
+            <item>
+              <name>Holding Command+1,2,3,4,... to F1,F2,F3,...,F12</name>
+              <appendix>Holding Command+1 to F1</appendix>
+              <appendix>Holding Command+2 to F2</appendix>
+              <appendix>Holding Command+3 to F3</appendix>
+              <appendix>Holding Command+4 to F4</appendix>
+              <appendix>Holding Command+5 to F5</appendix>
+              <appendix>Holding Command+6 to F6</appendix>
+              <appendix>Holding Command+7 to F7</appendix>
+              <appendix>Holding Command+8 to F8</appendix>
+              <appendix>Holding Command+9 to F9</appendix>
+              <appendix>Holding Command+10 to F10</appendix>
+              <appendix>Holding Command+- to F11</appendix>
+              <appendix>Holding Command+= to F12</appendix>
+              <identifier>remap.holding_command_num_to_function</identifier>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_1, VK_COMMAND, KeyCode::KEY_1, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F1</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_2, VK_COMMAND, KeyCode::KEY_2, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F2</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_3, VK_COMMAND, KeyCode::KEY_3, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F3</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_4, VK_COMMAND, KeyCode::KEY_4, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F4</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_5, VK_COMMAND, KeyCode::KEY_5, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F5</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_6, VK_COMMAND, KeyCode::KEY_6, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F6</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_7, VK_COMMAND, KeyCode::KEY_7, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F7</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_8, VK_COMMAND, KeyCode::KEY_8, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F8</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_9, VK_COMMAND, KeyCode::KEY_9, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F9</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_0, VK_COMMAND, KeyCode::KEY_0, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F10</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::MINUS, VK_COMMAND, KeyCode::MINUS, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F11</autogen>
+              <autogen>--HoldingKeyToKey-- KeyCode::EQUAL, VK_COMMAND, KeyCode::EQUAL, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F12</autogen>
+            </item>
 
-        <item>
-          <name>Holding Command+1,2,3,4,... to F1,F2,F3,...,F12</name>
-          <appendix>Holding Command+1 to F1</appendix>
-          <appendix>Holding Command+2 to F2</appendix>
-          <appendix>Holding Command+3 to F3</appendix>
-          <appendix>Holding Command+4 to F4</appendix>
-          <appendix>Holding Command+5 to F5</appendix>
-          <appendix>Holding Command+6 to F6</appendix>
-          <appendix>Holding Command+7 to F7</appendix>
-          <appendix>Holding Command+8 to F8</appendix>
-          <appendix>Holding Command+9 to F9</appendix>
-          <appendix>Holding Command+10 to F10</appendix>
-          <appendix>Holding Command+- to F11</appendix>
-          <appendix>Holding Command+= to F12</appendix>
-          <identifier>remap.holding_command_num_to_function</identifier>
-          <autogen>--HoldingKeyToKey-- KeyCode::KEY_1, VK_COMMAND, KeyCode::KEY_1, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F1</autogen>
-          <autogen>--HoldingKeyToKey-- KeyCode::KEY_2, VK_COMMAND, KeyCode::KEY_2, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F2</autogen>
-          <autogen>--HoldingKeyToKey-- KeyCode::KEY_3, VK_COMMAND, KeyCode::KEY_3, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F3</autogen>
-          <autogen>--HoldingKeyToKey-- KeyCode::KEY_4, VK_COMMAND, KeyCode::KEY_4, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F4</autogen>
-          <autogen>--HoldingKeyToKey-- KeyCode::KEY_5, VK_COMMAND, KeyCode::KEY_5, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F5</autogen>
-          <autogen>--HoldingKeyToKey-- KeyCode::KEY_6, VK_COMMAND, KeyCode::KEY_6, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F6</autogen>
-          <autogen>--HoldingKeyToKey-- KeyCode::KEY_7, VK_COMMAND, KeyCode::KEY_7, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F7</autogen>
-          <autogen>--HoldingKeyToKey-- KeyCode::KEY_8, VK_COMMAND, KeyCode::KEY_8, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F8</autogen>
-          <autogen>--HoldingKeyToKey-- KeyCode::KEY_9, VK_COMMAND, KeyCode::KEY_9, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F9</autogen>
-          <autogen>--HoldingKeyToKey-- KeyCode::KEY_0, VK_COMMAND, KeyCode::KEY_0, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F10</autogen>
-          <autogen>--HoldingKeyToKey-- KeyCode::MINUS, VK_COMMAND, KeyCode::MINUS, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F11</autogen>
-          <autogen>--HoldingKeyToKey-- KeyCode::EQUAL, VK_COMMAND, KeyCode::EQUAL, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F12</autogen>
+            <item>
+              <name>Holding Shift+1 to F1</name>
+              <identifier>remap.holding_shiftL1_to_f1</identifier>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_1, VK_SHIFT, KeyCode::KEY_1, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::F1</autogen>
+            </item>
+            <item>
+              <name>Holding Shift+2 to F2</name>
+              <identifier>remap.holding_shiftL2_to_f2</identifier>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_2, VK_SHIFT, KeyCode::KEY_2, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::F2</autogen>
+            </item>
+            <item>
+              <name>Holding Shift+3 to F3</name>
+              <identifier>remap.holding_shiftL3_to_f3</identifier>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_3, VK_SHIFT, KeyCode::KEY_3, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::F3</autogen>
+            </item>
+            <item>
+              <name>Holding Shift+4 to F4</name>
+              <identifier>remap.holding_shiftL4_to_f4</identifier>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_4, VK_SHIFT, KeyCode::KEY_4, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::F4</autogen>
+            </item>
+            <item>
+              <name>Holding Shift+5 to F5</name>
+              <identifier>remap.holding_shiftL5_to_f5</identifier>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_5, VK_SHIFT, KeyCode::KEY_5, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::F5</autogen>
+            </item>
+            <item>
+              <name>Holding Shift+6 to F6</name>
+              <identifier>remap.holding_shiftL6_to_f6</identifier>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_6, VK_SHIFT, KeyCode::KEY_6, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::F6</autogen>
+            </item>
+            <item>
+              <name>Holding Shift+7 to F7</name>
+              <identifier>remap.holding_shiftL7_to_f7</identifier>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_7, VK_SHIFT, KeyCode::KEY_7, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::F7</autogen>
+            </item>
+            <item>
+              <name>Holding Shift+8 to F8</name>
+              <identifier>remap.holding_shiftL8_to_f8</identifier>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_8, VK_SHIFT, KeyCode::KEY_8, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::F8</autogen>
+            </item>
+            <item>
+              <name>Holding Shift+9 to F9</name>
+              <identifier>remap.holding_shiftL9_to_f9</identifier>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_9, VK_SHIFT, KeyCode::KEY_9, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::F9</autogen>
+            </item>
+            <item>
+              <name>Holding Shift+0 to F10</name>
+              <identifier>remap.holding_shiftL0_to_f10</identifier>
+              <autogen>--HoldingKeyToKey-- KeyCode::KEY_0, VK_SHIFT, KeyCode::KEY_0, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::F10</autogen>
+            </item>
+          </list>
         </item>
         <item>
           <name>1234567890 to !@#$%^&amp;*() / Shift+1234567890 to 1234567890</name>
@@ -4631,11 +4728,16 @@
           <list>
             <item>
               <name>What's Tabmode?</name>
-              <appendix>It replaces the default shortcut for switching applications (cmd+tab)</appendix>
-              <appendix>While tab is pressed, use your favourite combination of left/right keys to switch between apps</appendix>
+              <appendix>It replaces the default shortcut for switching applications. (cmd+tab)</appendix>
+              <appendix>While tab is pressed, use your favourite combination of left/right keys to switch between apps.</appendix>
+              <appendix>It has evolved into a window manager shortcut, capable of managing windows, tabs,</appendix>
+              <appendix>spaces and split views.</appendix>
               <identifier vk_config="true">notsave.tabmode</identifier>
+              <autogen>--KeyToKey-- KeyCode::F, KeyCode::VK_MODIFIER_EXTRA1</autogen>
               <block>
                 <config_only>option.tabmode_jl</config_only>
+                <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA1, KeyCode::L, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA1, KeyCode::Q, ModifierFlag::COMMAND_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::L, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::J, KeyCode::TAB, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
               </block>
@@ -4651,8 +4753,16 @@
               </block>
               <block>
                 <config_only>option.tabmode_ik</config_only>
-                <autogen>--KeyToKey-- KeyCode::K, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L</autogen>
-                <autogen>--KeyToKey-- KeyCode::I, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+                <block>
+                  <only>VIRTUALMACHINE</only>
+                  <config_only>option.tabmode_ikvm</config_only>
+                  <autogen>--KeyToKey-- KeyCode::I, KeyCode::UK_SECTION, ModifierFlag::COMMAND_L</autogen>
+                  <autogen>--KeyToKey-- KeyCode::K, KeyCode::UK_SECTION, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+                </block>
+                <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA1, KeyCode::N, ModifierFlag::COMMAND_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::EXTRA1, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::I, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::K, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
               </block>
               <block>
                 <config_only>option.tabmode_uo</config_only>
@@ -4662,6 +4772,8 @@
                   <autogen>--KeyToKey-- KeyCode::U, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::P</autogen>
                   <autogen>--KeyToKey-- KeyCode::O, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::N</autogen>
                 </block>
+                <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::EXTRA1, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::EXTRA1, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::U, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::O, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
               </block>
@@ -4673,6 +4785,37 @@
                 <config_only>option.tabmode_w</config_only>
                 <autogen>--KeyToKey-- KeyCode::W, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
               </block>
+              <block>
+                <config_only>option.tabmode_switchviews</config_only>
+                <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::EXTRA1, KeyCode::H, ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::EXTRA1, KeyCode::V, ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::EXTRA1, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA1, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::B, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::N, KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::M, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::H, KeyCode::CURSOR_UP, ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+              </block>
+              <block>
+                <name>[Option] Y to Command+W</name>
+                <autogen>--KeyToKey-- KeyCode::Y, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
+                <config_only>option.tabmode_y_to_w</config_only>
+              </block>
+              <block>
+                <name>[Option] P to Command+T</name>
+                <autogen>--KeyToKey-- KeyCode::P, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
+                <config_only>option.tabmode_p_to_t</config_only>
+              </block>
+              <block>
+                <name>[Option] ' to Command+Q</name>
+                <autogen>--KeyToKey-- KeyCode::QUOTE, KeyCode::Q, ModifierFlag::COMMAND_L</autogen>
+                <config_only>option.tabmode_quote_to_q</config_only>
+              </block>
+              <block>
+                <name>[Option] ; to Command+Option+L</name>
+                <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::L, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
+                <config_only>option.tabmode_semicolon_to_launchbar</config_only>
+              </block>
             </item>
             <item>
               <name>Keeping tab pressed turns on "Tab Mode"</name>
@@ -4682,8 +4825,10 @@
             </item>
             <item><name>------------------------------------------------------------</name></item>
             <item>
-              <name>[Option] Switch apps with j/l</name>
+              <name>[Option] Switch apps with J/L</name>
               <appendix>For people who like jkli configuration</appendix>
+              <appendix>+(Having F pressed, J sends Command+Q (Quit application))</appendix>
+              <appendix>+(Having F pressed, L sends Command+Option+L (Evoke launchbar))</appendix>
               <identifier>option.tabmode_jl</identifier>
             </item>
             <item>
@@ -4699,10 +4844,17 @@
             <item>
               <name>[Option] Switch windows of frontmost app with i/k</name>
               <appendix>For people who like jkli configuration</appendix>
+              <appendix>+(Having F pressed, K/I send Command+(N/W) (New/Close Window))</appendix>
               <identifier>option.tabmode_ik</identifier>
             </item>
             <item>
-              <name>[Option] Switch tabs of frontmost app with u/o</name>
+              <name>[Option] Send Uk Section instead of Backquote when on virtual machine</name>
+              <appendix>For people who use the previous option, vmware and an international keyboard</appendix>
+              <identifier>option.tabmode_ikvm</identifier>
+            </item>
+            <item>
+              <name>[Option] Switch tabs of frontmost app with U/O</name>
+              <appendix>+(Create/delete tab pressing U/O while having F pressed)</appendix>
               <appendix>For people who like jkli configuration and have cmd+option+left/rigth as shortcut to</appendix>
               <appendix>switch tabs</appendix>
               <identifier>option.tabmode_uo</identifier>
@@ -4715,11 +4867,33 @@
               <name>[Option] Close window with w</name>
               <identifier>option.tabmode_w</identifier>
             </item>
+            <item>
+              <name>[Option] bnmh to (left/down/right/up)+Ctrl+Optn+Shift+</name>
+              <appendix>Shortcuts used to switch split panes it apps like iTerm2 and others</appendix>
+              <appendix>+(Having F pressed, N/M send (H/V)+Command+Option (Split Horiz/Vert))</appendix>
+              <appendix>+(Having F pressed, B/H send Command+W (Close))</appendix>
+              <identifier>option.tabmode_switchviews</identifier>
+            </item>
+            <item>
+              <name>[Option] Y to Command+W</name>
+              <identifier>option.tabmode_y_to_w</identifier>
+            </item>
+            <item>
+              <name>[Option] P to Command+T</name>
+              <identifier>option.tabmode_p_to_t</identifier>
+            </item>
+            <item>
+              <name>[Option] ' to Command+Q</name>
+              <identifier>option.tabmode_quote_to_q</identifier>
+            </item>
+            <item>
+              <name>[Option] ; to Command+Option+L</name>
+              <identifier>option.tabmode_semicolon_to_launchbar</identifier>
+            </item>
           </list>
         </item>
       </list>
     </item>
-
     <item>
       <name>Custom Shortcuts</name>
       <list>
@@ -6038,6 +6212,7 @@
     </item>
 
     <!-- #include "include/simultaneouskeypresses_vimode.xml" -->
+    <!-- #include "include/homerow_mode.xml" -->
 
     <item>
       <name>Simultaneous Key Presses</name>
@@ -6318,12 +6493,26 @@
               <autogen>--KeyToKey-- KeyCode::D, KeyCode::EXPOSE_ALL, ModifierFlag::COMMAND_L</autogen>
               <autogen>--KeyToKey-- KeyCode::A, KeyCode::EXPOSE_ALL, ModifierFlag::CONTROL_L</autogen>
               <autogen>--KeyToKey-- KeyCode::B, KeyCode::DASHBOARD</autogen>
-              <autogen>--KeyToKey-- KeyCode::F, KeyCode::F4, ModifierFlag::CONTROL_L</autogen>
+
+              <block>
+                <config_only>option.expose_mode_f_to_optiontab</config_only>
+                <autogen>--KeyToKey-- KeyCode::F, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
+              </block>
+              <block>
+                <config_not>option.expose_mode_f_to_optiontab</config_not>
+                <autogen>--KeyToKey-- KeyCode::F, KeyCode::F4, ModifierFlag::CONTROL_L</autogen>
+              </block>
             </item>
             <item>
               <name>Simultaneous Key Presses [K+L] to toggle Expose Mode</name>
               <identifier>remap.simultaneouskeypresses_expose_kl</identifier>
               <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::L, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_expose_mode</autogen>
+            </item>
+            <item>
+              <name>[Option] Change "F" key behavior to "Option+Tab"</name>
+              <appendix>(Changing the shortcut of "Move focus" to "Option+Tab" from "Control+F4" is</appendix>
+              <appendix>a well workaround for a problem that Emacs.app grabs Control+F4 from system.)</appendix>
+              <identifier>option.expose_mode_f_to_optiontab</identifier>
             </item>
           </list>
         </item>
@@ -6402,8 +6591,10 @@
               <appendix>To switch a space, Hold "ASDF"</appendix>
               <appendix>To switch a space, Hold "ZXCV"</appendix>
               <appendix></appendix>
-              <appendix>(Make setting of Spaces "Command+Control+Shift+Number Keys")</appendix>
-              <appendix></appendix>
+              <appendix>*** Change the configuration of Spaces to use this setting. ***</appendix>
+              <appendix>(1) Open "Spaces Preferences".</appendix>
+              <appendix>(2) Change "To switch directly to a space" configuration to</appendix>
+              <appendix>    "Command+Control+Shift+Number Keys".</appendix>
               <identifier>remap.spaces_special_holding_1234qwerasdfzxcv</identifier>
               <autogen>--HoldingKeyToKey-- KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::KEY_1, KeyCode::VK_NONE, KeyCode::KEY_1, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
               <autogen>--HoldingKeyToKey-- KeyCode::KEY_2, ModifierFlag::NONE, KeyCode::KEY_2, KeyCode::VK_NONE, KeyCode::KEY_2, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
@@ -6430,9 +6621,12 @@
               <appendix>To switch a space, Hold "ASDF"</appendix>
               <appendix>To switch a space, Hold "ZXCV"</appendix>
               <appendix></appendix>
-              <appendix>(Make setting of Spaces "Command+Control+Shift+Number Keys")</appendix>
-              <appendix></appendix>
               <appendix>(+ 1234567890 to !@#$%^&amp;*() / Shift+1234567890 to 1234567890)</appendix>
+              <appendix></appendix>
+              <appendix>*** Change the configuration of Spaces to use this setting. ***</appendix>
+              <appendix>(1) Open "Spaces Preferences".</appendix>
+              <appendix>(2) Change "To switch directly to a space" configuration to</appendix>
+              <appendix>    "Command+Control+Shift+Number Keys".</appendix>
               <identifier>remap.spaces_special_holding_1234qwerasdfzxcv_swap_number_and_symbol</identifier>
               <autogen>--HoldingKeyToKey-- KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::KEY_1, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::KEY_1, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
               <autogen>--HoldingKeyToKey-- KeyCode::KEY_2, ModifierFlag::NONE, KeyCode::KEY_2, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::KEY_2, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
@@ -8297,6 +8491,104 @@
     </item>
 
     <item>
+      <name>For International English Keyboard and ISO Keyboard Users</name>
+      <list>
+        <item>
+          <name>Improve ISO Keyboard Layout</name>
+          <appendix>( '\' to additional Enter, '§' to '`' and '`' to '\' )</appendix>
+          <identifier>remap.uk_saneuklayout</identifier>
+          <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKQUOTE</autogen>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::BACKSLASH</autogen>
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::ENTER</autogen>
+        </item>
+        <item>
+          <name>Improve ISO Keyboard Layout (Option 2)</name>
+          <appendix>( '§' to '`' and '`' to '\' )</appendix>
+          <identifier>remap.uk_saneuklayout2</identifier>
+          <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKQUOTE</autogen>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::BACKSLASH</autogen>
+        </item>
+        <item>
+          <name>Swap @ and double-quote(")</name>
+          <identifier>remap.uk_swap_at_doublequote</identifier>
+          <autogen>--KeyToKey-- KeyCode::KEY_2, VK_SHIFT, KeyCode::QUOTE, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::QUOTE, VK_SHIFT, KeyCode::KEY_2, ModifierFlag::SHIFT_L</autogen>
+        </item>
+        <item>
+          <name>Swap the Tilda(~) key with Section (§)</name>
+          <identifier>remap.iso_swap_tilda_section</identifier>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE,  KeyCode::UK_SECTION</autogen>
+          <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKQUOTE</autogen>
+        </item>
+        <item>
+          <name>Make Shift_R the Backslash (\)  and Backslash (\) into an extra Enter</name>
+          <identifier>remap.iso_better_enter</identifier>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::BACKSLASH</autogen>
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::ENTER</autogen>
+        </item>
+        <item>
+          <name>Backquote(`) to Backslash(\)</name>
+          <identifier>remap.uk_backquote2backslash</identifier>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::BACKSLASH</autogen>
+        </item>
+        <item>
+          <name>Backquote(`) to Section(§)</name>
+          <identifier>remap.uk_backquote2section</identifier>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::UK_SECTION</autogen>
+        </item>
+        <item>
+          <name>Backquote(`) to Shift_L</name>
+          <identifier>remap.uk_backquote2shiftL</identifier>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::SHIFT_L</autogen>
+        </item>
+        <item>
+          <name>Backslash(\) to Option_L+3 (Hash #), Shift+Backslash(\) to Tilde(~)</name>
+          <identifier>remap.uk_backslash2hash</identifier>
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH, VK_SHIFT, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::KEY_3, ModifierFlag::OPTION_L</autogen>
+        </item>
+        <item>
+          <name>Forward Delete to Section(§)</name>
+          <identifier>remap.uk_forwarddelete2section</identifier>
+          <autogen>--KeyToKey-- FROMKEYCODE_FORWARD_DELETE, KeyCode::UK_SECTION</autogen>
+        </item>
+        <item>
+          <name>Section(§) to Option_L+3 (Hash #), Shift+Section(§) to Tilde(~)</name>
+          <identifier>remap.uk_section2hash</identifier>
+          <autogen>--KeyToKey-- KeyCode::UK_SECTION, VK_SHIFT, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::KEY_3, ModifierFlag::OPTION_L</autogen>
+        </item>
+        <item>
+          <name>Section(§) to Backquote(`)</name>
+          <identifier>remap.uk_section2backquote</identifier>
+          <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKQUOTE</autogen>
+        </item>
+        <item>
+          <name>Section(§) to Backquote(`)</name>
+          <appendix>(except virtual machine)</appendix>
+          <identifier>remap.uk_section2backquote_ex_vm</identifier>
+          <not>VIRTUALMACHINE</not>
+          <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKQUOTE</autogen>
+        </item>
+        <item>
+          <name>Section(§) to Backslash(\)</name>
+          <identifier>remap.uk_section2backslash</identifier>
+          <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKSLASH</autogen>
+        </item>
+        <item>
+          <name>Section(§) to Forward Delete</name>
+          <identifier>remap.uk_section2forwarddelete</identifier>
+          <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::FORWARD_DELETE</autogen>
+        </item>
+        <item>
+          <name>Section(§) to LeftClick</name>
+          <identifier>remap.strangekey_to_leftclick</identifier>
+          <autogen>--KeyToPointingButton-- KeyCode::UK_SECTION, PointingButton::LEFT</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>For Canadian</name>
       <list>
         <item>
@@ -8652,6 +8944,25 @@
           <appendix>// install PCKeyboardHack and change CapsLock keycode to 58.</appendix>
           <identifier>remap.german_neo</identifier>
           <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::OPTION_R</autogen>
+        </item>
+        <item>
+          <name>Umlaute 4 Programmierung umschreiben</name>
+          <appendix>ä to ae</appendix>
+          <appendix>ö to oe</appendix>
+          <appendix>ü to ue</appendix>
+          <identifier>remap.german_a_to_ae</identifier>
+          <!-- ä to ae -->
+          <autogen>--KeyToKey-- KeyCode::QUOTE,           KeyCode::A,           KeyCode::E</autogen>
+          <!-- Ä to AE -->
+          <autogen>--KeyToKey-- KeyCode::QUOTE, VK_SHIFT, KeyCode::A, VK_SHIFT, KeyCode::E, VK_SHIFT</autogen>
+          <!-- ö to oe -->
+          <autogen>--KeyToKey-- KeyCode::SEMICOLON,           KeyCode::O,           KeyCode::E</autogen>
+          <!-- Ö to OE -->
+          <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_SHIFT, KeyCode::O, VK_SHIFT, KeyCode::E, VK_SHIFT</autogen>
+          <!-- ü to ue -->
+          <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT,           KeyCode::U,           KeyCode::E</autogen>
+          <!-- Ü to UE -->
+          <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_SHIFT, KeyCode::U, VK_SHIFT, KeyCode::E, VK_SHIFT</autogen>
         </item>
       </list>
     </item>
@@ -9433,6 +9744,28 @@
           </list>
         </item>
         <item>
+          <name>enthumble (http://www.enthumble.com/)</name>
+          <list>
+            <item>
+              <name>enthumble</name>
+              <appendix>・英数キーを左コマンドキーに変更。（英数キーの空打ちで英数キーとして動作）</appendix>
+              <appendix>・英数キー（左コマンドキー）を押しながら「スペースキー」で「リターン」</appendix>
+              <appendix>・英数キー（左コマンドキー）を押しながら「かなキー」で「エスケープ」</appendix>
+              <appendix>・英数キー（左コマンドキー）を押しながら「右コマンドキー」で「エスケープ」</appendix>
+              <identifier>remap.jis_enthumble</identifier>
+              <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU,
+                KeyCode::COMMAND_L, KeyCode::JIS_EISUU</autogen>
+              <autogen>--KeyToKey--KeyCode::SPACE,ModifierFlag::COMMAND_L,
+                KeyCode::RETURN</autogen>
+              <autogen>--KeyToKey--KeyCode::JIS_KANA,ModifierFlag::COMMAND_L,
+                KeyCode::ESCAPE</autogen>
+              <autogen>--KeyToKey--KeyCode::COMMAND_R,ModifierFlag::COMMAND_L,
+                KeyCode::ESCAPE</autogen>
+            </item>
+          </list>
+        </item>
+
+        <item>
           <name>For Unix Users</name>
           <list>
             <item>
@@ -9699,15 +10032,15 @@
                 </item>
                 <item>
                   <name>Use Dvorak Keyboard Layout on Japanese Keyboard</name>
-                  <appendix>(effective only when Input Source is Roman)</appendix>
+                  <appendix>(英数入力のときだけDvorak配列にする)</appendix>
                   <identifier>remap.jis_qwerty2dvorak_roman_only</identifier>
                   <inputmode_only>ROMAN</inputmode_only>
                   <!-- #include "include/jis_dvorak.xml" -->
                 </item>
                 <item>
                   <name>Use Dvorak Keyboard Layout on Japanese Keyboard</name>
-                  <appendix>(effective only when Input Source is Roman)</appendix>
-                  <appendix>(+ Command,Control,Option+Keys to Qwerty)</appendix>
+                  <appendix>(英数入力のときだけDvorak配列にする)</appendix>
+                  <appendix>(Command,Control,Optionを押したときはQwerty配列のまま)</appendix>
                   <identifier>remap.jis_qwerty2dvorak_roman_only_qwerty</identifier>
                   <inputmode_only>ROMAN</inputmode_only>
                   <modifier_not>
@@ -10734,90 +11067,12 @@
           <autogen>--KeyToKey-- KeyCode::SWISS_SECTION, KeyCode::SWISS_LESS_THAN</autogen>
           <autogen>--KeyToKey-- KeyCode::SWISS_LESS_THAN, KeyCode::SWISS_SECTION</autogen>
         </item>
-      </list>
-    </item>
-    <item>
-      <name>For UK Keyboard users</name>
-      <list>
         <item>
-          <name>Improve UK Keyboard Layout</name>
-          <appendix>( '\' to additional Enter, '§' to '`' and '`' to '\' )</appendix>
-          <identifier>remap.uk_saneuklayout</identifier>
-          <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKQUOTE</autogen>
-          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::BACKSLASH</autogen>
-          <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::ENTER</autogen>
-        </item>
-        <item>
-          <name>Improve UK Keyboard Layout (Option 2)</name>
-          <appendix>( '§' to '`' and '`' to '\' )</appendix>
-          <identifier>remap.uk_saneuklayout2</identifier>
-          <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKQUOTE</autogen>
-          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::BACKSLASH</autogen>
-        </item>
-        <item>
-          <name>Swap @ and double-quote(")</name>
-          <identifier>remap.uk_swap_at_doublequote</identifier>
-          <autogen>--KeyToKey-- KeyCode::KEY_2, VK_SHIFT, KeyCode::QUOTE, ModifierFlag::SHIFT_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::QUOTE, VK_SHIFT, KeyCode::KEY_2, ModifierFlag::SHIFT_L</autogen>
-        </item>
-        <item>
-          <name>Section(§) to Option_L+3 (#), Shift+Section(§) to Tilde(~)</name>
-          <identifier>remap.uk_section2hash</identifier>
-          <autogen>--KeyToKey-- KeyCode::UK_SECTION, VK_SHIFT, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::KEY_3, ModifierFlag::OPTION_L</autogen>
-        </item>
-        <item>
-          <name>Backquote(`) to Backslash(\)</name>
-          <identifier>remap.uk_backquote2backslash</identifier>
-          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::BACKSLASH</autogen>
-        </item>
-        <item>
-          <name>Backquote(`) to Section(§)</name>
-          <identifier>remap.uk_backquote2section</identifier>
-          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::UK_SECTION</autogen>
-        </item>
-        <item>
-          <name>Backquote(`) to Shift_L</name>
-          <identifier>remap.uk_backquote2shiftL</identifier>
-          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::SHIFT_L</autogen>
-        </item>
-        <item>
-          <name>Backslash(\) to Option_L+3 (#), Shift+Backslash(\) to Tilde(~)</name>
-          <identifier>remap.uk_backslash2hash</identifier>
-          <autogen>--KeyToKey-- KeyCode::BACKSLASH, VK_SHIFT, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::KEY_3, ModifierFlag::OPTION_L</autogen>
-        </item>
-        <item>
-          <name>Forward Delete to Section(§)</name>
-          <identifier>remap.uk_forwarddelete2section</identifier>
-          <autogen>--KeyToKey-- FROMKEYCODE_FORWARD_DELETE, KeyCode::UK_SECTION</autogen>
-        </item>
-        <item>
-          <name>Section(§) to Backquote(`)</name>
-          <identifier>remap.uk_section2backquote</identifier>
-          <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKQUOTE</autogen>
-        </item>
-        <item>
-          <name>Section(§) to Backquote(`)</name>
-          <appendix>(except virtual machine)</appendix>
-          <identifier>remap.uk_section2backquote_ex_vm</identifier>
-          <not>VIRTUALMACHINE</not>
-          <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKQUOTE</autogen>
-        </item>
-        <item>
-          <name>Section(§) to Backslash(\)</name>
-          <identifier>remap.uk_section2backslash</identifier>
-          <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKSLASH</autogen>
-        </item>
-        <item>
-          <name>Section(§) to Forward Delete</name>
-          <identifier>remap.uk_section2forwarddelete</identifier>
-          <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::FORWARD_DELETE</autogen>
-        </item>
-        <item>
-          <name>Section(§) to LeftClick</name>
-          <identifier>remap.strangekey_to_leftclick</identifier>
-          <autogen>--KeyToPointingButton-- KeyCode::UK_SECTION, PointingButton::LEFT</autogen>
+          <name>Change Section(§) to SHIFT+PC_INSERT</name>
+          <appendix>(only in Citrix Online Plug-in for Mac)</appendix>
+          <identifier>remap.swiss_section_insert_citrix</identifier>
+          <only>CITRIX_ONLINE_PLUG_IN</only>
+          <autogen>--KeyToKey-- KeyCode::SWISS_SECTION, KeyCode::PC_INSERT, ModifierFlag::SHIFT_L</autogen>
         </item>
       </list>
     </item>

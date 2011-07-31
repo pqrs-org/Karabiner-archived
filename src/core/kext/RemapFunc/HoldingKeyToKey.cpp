@@ -1,33 +1,14 @@
-#include "Config.hpp"
 #include "HoldingKeyToKey.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    TimerWrapper HoldingKeyToKey::fireholding_timer_;
-    HoldingKeyToKey* HoldingKeyToKey::target_ = NULL;
-
-    void
-    HoldingKeyToKey::static_initialize(IOWorkLoop& workloop)
+    HoldingKeyToKey::HoldingKeyToKey(void) : index_(0), index_is_holding_(false), fromKeyFlag_(ModifierFlag::NONE)
     {
-      fireholding_timer_.initialize(&workloop, NULL, HoldingKeyToKey::fireholding_timer_callback);
+      dppkeytokey_.setPeriodMS(DependingPressingPeriodKeyToKey::PeriodMS::Mode::HOLDING_KEY_TO_KEY);
     }
-
-    void
-    HoldingKeyToKey::static_terminate(void)
-    {
-      fireholding_timer_.terminate();
-    }
-
-    HoldingKeyToKey::HoldingKeyToKey(void) : index_(0), index_is_holding_(false), active_(false), keydowntype_(KEYDOWNTYPE_NONE)
-    {}
 
     HoldingKeyToKey::~HoldingKeyToKey(void)
-    {
-      if (target_ == this) {
-        fireholding_timer_.cancelTimeout();
-        target_ = NULL;
-      }
-    }
+    {}
 
     void
     HoldingKeyToKey::add(unsigned int datatype, unsigned int newval)
@@ -37,22 +18,23 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           switch (index_) {
             case 0:
-              keytokey_drop_.add(KeyCode(newval));
-              keytokey_normal_.add(KeyCode::VK_PSEUDO_KEY);
-              keytokey_holding_.add(KeyCode::VK_PSEUDO_KEY);
+              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::FROM,         datatype, newval);
+              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD, KeyCode::VK_PSEUDO_KEY);
+              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD,  KeyCode::VK_PSEUDO_KEY);
+              fromKeyFlag_ = KeyCode(newval).getModifierFlag();
               break;
 
             case 1:
               // pass-through (== no break)
-              keytokey_drop_.add(KeyCode::VK_NONE);
+              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::FROM, KeyCode::VK_NONE);
             default:
               if (KeyCode::VK_NONE == newval) {
                 index_is_holding_ = true;
               } else {
                 if (index_is_holding_) {
-                  keytokey_holding_.add(KeyCode(newval));
+                  dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD,  KeyCode(newval));
                 } else {
-                  keytokey_normal_.add(KeyCode(newval));
+                  dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD, KeyCode(newval));
                 }
               }
               break;
@@ -71,14 +53,33 @@ namespace org_pqrs_KeyRemap4MacBook {
               break;
 
             case 1:
-              keytokey_drop_.add(datatype, newval);
+              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::FROM,         datatype, newval);
+
+              switch (datatype) {
+                case BRIDGE_DATATYPE_FLAGS:
+                {
+                  Flags flags(newval);
+                  if (fromKeyFlag_ != ModifierFlag::NONE) {
+                    flags.remove(fromKeyFlag_);
+                  }
+                  dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD, flags);
+                  dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD,  flags);
+                  break;
+                }
+                case BRIDGE_DATATYPE_OPTION:
+                {
+                  dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD, datatype, newval);
+                  dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD,  datatype, newval);
+                  break;
+                }
+              }
               break;
 
             default:
               if (index_is_holding_) {
-                keytokey_holding_.add(datatype, newval);
+                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD, datatype, newval);
               } else {
-                keytokey_normal_.add(datatype, newval);
+                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD, datatype, newval);
               }
               break;
           }
@@ -94,88 +95,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     HoldingKeyToKey::remap(RemapParams& remapParams)
     {
-      bool result = keytokey_drop_.remap(remapParams);
-      if (! result) {
-        if (remapParams.params.ex_iskeydown) {
-          // another key is pressed.
-          dokeydown();
-        }
-        return false;
-      }
-
-      if (remapParams.params.ex_iskeydown) {
-        target_ = this;
-        active_ = true;
-        keydowntype_ = KEYDOWNTYPE_NONE;
-
-        savedflags_ = FlagStatus::makeFlags();
-
-        fireholding_timer_.setTimeoutMS(Config::get_holdingkeytokey_wait());
-
-      } else {
-        dokeydown();
-        dokeyup();
-      }
-      return true;
-    }
-
-    void
-    HoldingKeyToKey::dokeydown(void)
-    {
-      if (! active_) return;
-      active_ = false;
-
-      fireholding_timer_.cancelTimeout();
-
-      switch (target_->keydowntype_) {
-        case KEYDOWNTYPE_NONE:
-        {
-          target_->keydowntype_ = KEYDOWNTYPE_NORMAL;
-          FlagStatus::ScopedTemporaryFlagsChanger stfc(savedflags_);
-          keytokey_normal_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
-          break;
-        }
-
-        case KEYDOWNTYPE_NORMAL:
-        case KEYDOWNTYPE_HOLDING:
-          // do nothing
-          break;
-      }
-    }
-
-    void
-    HoldingKeyToKey::dokeyup(void)
-    {
-      switch (target_->keydowntype_) {
-        case KEYDOWNTYPE_NORMAL:
-        {
-          target_->keydowntype_ = KEYDOWNTYPE_NONE;
-          FlagStatus::ScopedTemporaryFlagsChanger stfc(savedflags_);
-          keytokey_normal_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
-          break;
-        }
-        case KEYDOWNTYPE_HOLDING:
-        {
-          target_->keydowntype_ = KEYDOWNTYPE_NONE;
-          keytokey_holding_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
-          break;
-        }
-        case KEYDOWNTYPE_NONE:
-          // do nothing
-          break;
-      }
-    }
-
-    void
-    HoldingKeyToKey::fireholding_timer_callback(OSObject* owner, IOTimerEventSource* sender)
-    {
-      if (! target_) return;
-
-      if (target_->keydowntype_ == KEYDOWNTYPE_NONE) {
-        target_->keydowntype_ = KEYDOWNTYPE_HOLDING;
-
-        (target_->keytokey_holding_).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
-      }
+      return dppkeytokey_.remap(remapParams);
     }
   }
 }

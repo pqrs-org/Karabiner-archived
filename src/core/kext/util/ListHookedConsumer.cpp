@@ -147,7 +147,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     const AbsoluteTime& ts = CommonData::getcurrent_ts();
     OSObject* refcon = NULL;
 
-    params.log("sending");
+    Params_KeyboardSpecialEventCallback::log(false, params.eventType, params.flags, params.key,
+                                             params.flavor, params.guid, params.repeat);
     {
       // We need to unlock the global lock while we are calling the callback function.
       // For more information, See ListHookedKeyboard::Item::apply(const Params_KeyboardEventCallBack& params)
@@ -163,6 +164,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, device_);
     if (! kbd) return;
 
+    GlobalLock::ScopedUnlock lk;
     if (kbd->numLock()) {
       kbd->setNumLock(false);
     }

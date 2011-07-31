@@ -168,7 +168,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     const AbsoluteTime& ts = CommonData::getcurrent_ts();
     OSObject* refcon = NULL;
 
-    params.log("sending");
+    Params_RelativePointerEventCallback::log(false, params.buttons, params.dx, params.dy);
     {
       // We need to unlock the global lock while we are calling the callback function.
       // For more information, See ListHookedKeyboard::Item::apply(const Params_KeyboardEventCallBack& params)
@@ -192,7 +192,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     const AbsoluteTime& ts = CommonData::getcurrent_ts();
     OSObject* refcon = NULL;
 
-    params.log("sending");
+    Params_ScrollWheelEventCallback::log(false,
+                                         params.deltaAxis1,  params.deltaAxis2,  params.deltaAxis3,
+                                         params.fixedDelta1, params.fixedDelta2, params.fixedDelta3,
+                                         params.pointDelta1, params.pointDelta2, params.pointDelta3,
+                                         params.options);
     {
       // We need to unlock the global lock while we are calling the callback function.
       // For more information, See ListHookedKeyboard::Item::apply(const Params_KeyboardEventCallBack& params)

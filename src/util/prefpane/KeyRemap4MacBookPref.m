@@ -122,6 +122,13 @@
                                                       selector:@selector(observer_configXMLReloaded:)
                                                           name:kKeyRemap4MacBookConfigXMLReloadedNotification
                                                         object:kKeyRemap4MacBookNotificationKey];
+
+  // For some reason, launchd does not start KeyRemap4MacBook_server permanently.
+  // (And we can recover it by reloading plist.)
+  //
+  // However, calling launchctl in Terminal.app is not familiar for everyone.
+  // Therefore, we call launchctl at prefpane.
+  system("/bin/launchctl load -w /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.server.plist 2> /dev/null");
 }
 
 @end

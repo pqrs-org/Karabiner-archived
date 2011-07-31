@@ -1,7 +1,7 @@
 #ifndef DROPKEYAFTERREMAP_HPP
 #define DROPKEYAFTERREMAP_HPP
 
-#include "RemapFuncBase.hpp"
+#include "RemapFuncClasses.hpp"
 #include "FromKeyChecker.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {

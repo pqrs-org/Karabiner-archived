@@ -1,7 +1,7 @@
 #ifndef CONSUMERTOKEY_HPP
 #define CONSUMERTOKEY_HPP
 
-#include "RemapFuncBase.hpp"
+#include "RemapFuncClasses.hpp"
 #include "KeyToKey.hpp"
 #include "ConsumerToConsumer.hpp"
 

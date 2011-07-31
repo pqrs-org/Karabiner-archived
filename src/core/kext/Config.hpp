@@ -44,9 +44,17 @@ namespace org_pqrs_KeyRemap4MacBook {
       int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_repeat_consumer_wait);
       return getvalue(v, 10);
     }
+    static unsigned int get_keyoverlaidmodifier_initial_modifier_wait(void) {
+      int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_keyoverlaidmodifier_initial_modifier_wait);
+      return getvalue(v, 1);
+    }
     static unsigned int get_keyoverlaidmodifier_initial_wait(void) {
       int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_repeat_keyoverlaidmodifier_initial_wait);
       return getvalue(v, 200);
+    }
+    static unsigned int get_keyoverlaidmodifier_timeout(void) {
+      int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_keyoverlaidmodifier_timeout);
+      return getvalue(v, 0);
     }
     static unsigned int get_simultaneouskeypresses_delay(void) {
       int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_simultaneouskeypresses_delay);

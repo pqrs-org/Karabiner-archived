@@ -37,17 +37,17 @@ namespace org_pqrs_KeyRemap4MacBook {
       void append_filter(const uint32_t* vec, size_t length);
 
       // --------------------
-      bool remap(RemapParams& remapParams);
-      bool remap(RemapConsumerParams& remapParams);
-      bool remap(RemapPointingParams_relative& remapParams);
+      void remap(RemapParams& remapParams);
+      void remap(RemapConsumerParams& remapParams);
+      void remap(RemapPointingParams_relative& remapParams);
       // for DropKeyAfterRemap
       bool drop(const Params_KeyboardEventCallBack& params);
       //
       bool remap_SimultaneousKeyPresses(void);
       //
-      bool remap_setkeyboardtype(KeyboardType& keyboardType);
+      void remap_setkeyboardtype(KeyboardType& keyboardType);
       //
-      bool remap_forcenumlockon(ListHookedKeyboard::Item* item);
+      void remap_forcenumlockon(ListHookedKeyboard::Item* item);
 
     private:
       bool isblocked(void);
