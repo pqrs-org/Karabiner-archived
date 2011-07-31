@@ -26,11 +26,13 @@
   if (error_message_) return;
 
   error_message_ = [[NSString stringWithFormat:@"Error in %@\n\n%@\n\n%@", xmlpath, [exception name], [exception reason]] retain];
-  NSAlert* alert = [NSAlert alertWithMessageText:@"KeyRemap4MacBook Error"
-                                   defaultButton:@"Close"
-                                 alternateButton:@"Open PreferencePane"
-                                     otherButton:nil
-                       informativeTextWithFormat:error_message_];
+
+  NSAlert* alert = [[NSAlert new] autorelease];
+  [alert setMessageText:@"KeyRemap4MacBook Error"];
+  [alert addButtonWithTitle:@"Close"];
+  [alert addButtonWithTitle:@"Open PreferencePane"];
+  [alert setInformativeText:error_message_];
+
   NSInteger response = [alert runModal];
   if (response == NSAlertAlternateReturn) {
     [[NSWorkspace sharedWorkspace] openFile:@"/Library/PreferencePanes/KeyRemap4MacBook.prefPane"];
