@@ -43,6 +43,15 @@ And we modify the input event in the hook function.
 ...
 
 
+The sequence of event handling
+------------------------------
+1. Device sends the input event.
+1. Modify the input event by PCKeyboardHack.
+1. Modify the input event by "System Preferences > Keyboard > Modifier Keys..."
+1. Modify the input event by KeyRemap4MacBook.
+1. Send the input event to Applications.
+
+
 Threads and Lock (kext)
 -----------------------
 We use a global lock to guard the status of modifier flags, the status of buttons, and other global variables.

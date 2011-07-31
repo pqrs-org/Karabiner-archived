@@ -77,6 +77,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       if (! toKeys_) return false;
 
+      if (remapParams.isremapped) return false;
+      if (! fromkeychecker_.isFromKey(remapParams.params.ex_iskeydown, remapParams.params.key, FlagStatus::makeFlags(), fromKey_.key, fromKey_.flags)) return false;
+      remapParams.isremapped = true;
+
       // ------------------------------------------------------------
       // NumLock Hack
       // If we change NumLock key, we need to call IOHIKeyboard::setNumLock(false).
@@ -93,11 +97,6 @@ namespace org_pqrs_KeyRemap4MacBook {
           ListHookedConsumer::instance().disableNumLock();
         }
       }
-
-      // ------------------------------------------------------------
-      if (remapParams.isremapped) return false;
-      if (! fromkeychecker_.isFromKey(remapParams.params.ex_iskeydown, remapParams.params.key, FlagStatus::makeFlags(), fromKey_.key, fromKey_.flags)) return false;
-      remapParams.isremapped = true;
 
       // ----------------------------------------
       FlagStatus::temporary_decrease(fromKey_.flags);

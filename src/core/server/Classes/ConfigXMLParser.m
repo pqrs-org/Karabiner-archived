@@ -37,7 +37,6 @@ static ConfigXMLParser* global_instance = nil;
 
 - (void) dealloc
 {
-  [dict_initialize_vector_ release];
   [dict_config_name_ release];
   [remapclasses_initialize_vector_ release];
   [preferencepane_checkbox_ release];
@@ -77,42 +76,19 @@ static ConfigXMLParser* global_instance = nil;
   NSUInteger v = 0;
   @synchronized(self) {
     if (initialized_) {
-      v = [dict_initialize_vector_ count];
+      v = count_;
     }
   }
   return v;
 }
 
-- (NSArray*) initialize_vector:(unsigned int)configindex
+- (RemapClassesInitializeVector*) remapclasses_initialize_vector
 {
-  NSArray* a = nil;
+  RemapClassesInitializeVector* v = nil;
   @synchronized(self) {
     if (initialized_) {
-      a = [dict_initialize_vector_ objectForKey:[NSNumber numberWithUnsignedInt:configindex]];
-    }
-  }
-  return a;
-}
-
-- (NSArray*) remapclasses_initialize_vector
-{
-  NSArray* a = nil;
-  @synchronized(self) {
-    if (initialized_) {
-      a = remapclasses_initialize_vector_;
-      [[a retain] autorelease];
-    }
-  }
-  return a;
-}
-
-- (NSUInteger) initialize_vector_size:(unsigned int)configindex
-{
-  NSUInteger v = 0;
-  @synchronized(self) {
-    NSArray* a = [self initialize_vector:configindex];
-    if (a) {
-      v = [a count];
+      v = remapclasses_initialize_vector_;
+      [[v retain] autorelease];
     }
   }
   return v;

@@ -1,7 +1,7 @@
 #include "bridge.h"
 #include "RemapClass.hpp"
 #include "KeyboardRepeat.hpp"
-#include "VirtualKey.hpp"
+#include "VirtualKey/VK_CONFIG.hpp"
 #include "util/CommonData.hpp"
 #include "util/EventInputQueue.hpp"
 
@@ -144,13 +144,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     filters_->push_back(newp);
   }
 
-  bool
+  void
   RemapClass::Item::remap(RemapParams& remapParams)
   {
-    if (isblocked()) return false;
+    if (isblocked()) return;
 
-#define CALL_UNION_FUNCTION(POINTER) {                     \
-    if (POINTER) { return (POINTER)->remap(remapParams); } \
+#define CALL_UNION_FUNCTION(POINTER) {              \
+    if (POINTER) { (POINTER)->remap(remapParams); } \
 }
 
     switch (type_) {
@@ -168,17 +168,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
 #undef CALL_UNION_FUNCTION
-
-    return false;
   }
 
-  bool
+  void
   RemapClass::Item::remap(RemapConsumerParams& remapParams)
   {
-    if (isblocked()) return false;
+    if (isblocked()) return;
 
-#define CALL_UNION_FUNCTION(POINTER) {                     \
-    if (POINTER) { return (POINTER)->remap(remapParams); } \
+#define CALL_UNION_FUNCTION(POINTER) {              \
+    if (POINTER) { (POINTER)->remap(remapParams); } \
 }
 
     switch (type_) {
@@ -190,17 +188,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
 #undef CALL_UNION_FUNCTION
-
-    return false;
   }
 
-  bool
+  void
   RemapClass::Item::remap(RemapPointingParams_relative& remapParams)
   {
-    if (isblocked()) return false;
+    if (isblocked()) return;
 
-#define CALL_UNION_FUNCTION(POINTER) {                     \
-    if (POINTER) { return (POINTER)->remap(remapParams); } \
+#define CALL_UNION_FUNCTION(POINTER) {              \
+    if (POINTER) { (POINTER)->remap(remapParams); } \
 }
 
     switch (type_) {
@@ -214,8 +210,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
 #undef CALL_UNION_FUNCTION
-
-    return false;
   }
 
   bool
@@ -260,13 +254,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     return false;
   }
 
-  bool
+  void
   RemapClass::Item::remap_setkeyboardtype(KeyboardType& keyboardType)
   {
-    if (isblocked()) return false;
+    if (isblocked()) return;
 
-#define CALL_UNION_FUNCTION(POINTER) {                      \
-    if (POINTER) { return (POINTER)->remap(keyboardType); } \
+#define CALL_UNION_FUNCTION(POINTER) {               \
+    if (POINTER) { (POINTER)->remap(keyboardType); } \
 }
 
     switch (type_) {
@@ -277,17 +271,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
 #undef CALL_UNION_FUNCTION
-
-    return false;
   }
 
-  bool
+  void
   RemapClass::Item::remap_forcenumlockon(ListHookedKeyboard::Item* item)
   {
-    if (isblocked()) return false;
+    if (isblocked()) return;
 
-#define CALL_UNION_FUNCTION(POINTER) {              \
-    if (POINTER) { return (POINTER)->remap(item); } \
+#define CALL_UNION_FUNCTION(POINTER) {       \
+    if (POINTER) { (POINTER)->remap(item); } \
 }
 
     switch (type_) {
@@ -298,8 +290,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
 #undef CALL_UNION_FUNCTION
-
-    return false;
   }
 
   bool
@@ -400,11 +390,11 @@ namespace org_pqrs_KeyRemap4MacBook {
             unsigned int keycode_force_on       = p[2];
             unsigned int keycode_force_off      = p[3];
             unsigned int keycode_sync_keydownup = p[4];
-            Handle_VK_CONFIG::add_item(this,
-                                       keycode_toggle,
-                                       keycode_force_on,
-                                       keycode_force_off,
-                                       keycode_sync_keydownup);
+            VirtualKey::VK_CONFIG::add_item(this,
+                                            keycode_toggle,
+                                            keycode_force_on,
+                                            keycode_force_off,
+                                            keycode_sync_keydownup);
           }
 
         } else {
@@ -436,7 +426,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (size_t i = 0; i < items_.size(); ++i) {
       Item* p = items_[i];
       if (p) {
-        if (p->remap_setkeyboardtype(keyboardType)) return;
+        p->remap_setkeyboardtype(keyboardType);
       }
     }
   }
@@ -447,7 +437,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (size_t i = 0; i < items_.size(); ++i) {
       Item* p = items_[i];
       if (p) {
-        if (p->remap_forcenumlockon(item)) return;
+        p->remap_forcenumlockon(item);
       }
     }
   }
@@ -458,7 +448,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (size_t i = 0; i < items_.size(); ++i) {
       Item* p = items_[i];
       if (p) {
-        if (p->remap(remapParams)) return;
+        // DependingPressingPeriodKeyToKey watches another key status.
+        // Therefore, we need to call 'p->remap(remapParams)' for all items.
+        p->remap(remapParams);
       }
     }
   }
@@ -469,7 +461,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (size_t i = 0; i < items_.size(); ++i) {
       Item* p = items_[i];
       if (p) {
-        if (p->remap(remapParams)) return;
+        p->remap(remapParams);
       }
     }
   }
@@ -480,7 +472,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (size_t i = 0; i < items_.size(); ++i) {
       Item* p = items_[i];
       if (p) {
-        if (p->remap(remapParams)) return;
+        p->remap(remapParams);
       }
     }
   }
@@ -504,16 +496,20 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   RemapClass::remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params)
   {
-    if (! enabled()) return false;
+    bool dropped = false;
 
-    for (size_t i = 0; i < items_.size(); ++i) {
-      Item* p = items_[i];
-      if (p) {
-        if (p->drop(params)) return true;
+    if (enabled()) {
+      for (size_t i = 0; i < items_.size(); ++i) {
+        Item* p = items_[i];
+        if (p) {
+          if (p->drop(params)) {
+            dropped = true;
+          }
+        }
       }
     }
 
-    return false;
+    return dropped;
   }
 
   const char*
@@ -619,7 +615,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void
     clear_remapclasses(void)
     {
-      Handle_VK_CONFIG::clear_items();
+      VirtualKey::VK_CONFIG::clear_items();
 
       if (enabled_remapclasses_) {
         delete enabled_remapclasses_;
@@ -656,63 +652,109 @@ namespace org_pqrs_KeyRemap4MacBook {
       remapclasses_ = new Vector_RemapClassPointer();
       if (! remapclasses_) {
         IOLOG_ERROR("%s remapclasses_ == NULL.\n", __FUNCTION__);
-        return false;
+        goto error;
       }
 
       // ------------------------------------------------------------
-      // check
+      // Validate vector_size
+
+      // "vector_size" is byte of remapclasses_initialize_vector. (!= count of items.)
+      // Confirming vector_size is a multiple of sizeof(uint32_t).
+      if ((vector_size % sizeof(uint32_t)) != 0) {
+        IOLOG_ERROR("%s (vector_size %% sizeof(uint32_t)) != 0. (%d)\n", __FUNCTION__, static_cast<int>(vector_size));
+        goto error;
+      }
+
+      // change vector_size to num of uint32_t.
+      vector_size /= sizeof(uint32_t);
+      // Then, we can treat "remapclasses_initialize_vector + vector_size" as valid.
+
       if (vector_size < 2) {
         IOLOG_ERROR("%s vector_size < 2. (%d)\n", __FUNCTION__, static_cast<int>(vector_size));
-        return false;
+        goto error;
       }
       if (vector_size > RemapClass::MAX_ALLOCATION_COUNT) {
         IOLOG_ERROR("%s too large vector_size. (%d)\n", __FUNCTION__, static_cast<int>(vector_size));
-        return false;
-      }
-
-      const uint32_t* p = remapclasses_initialize_vector;
-      uint32_t version = *p++;
-      uint32_t count   = *p++;
-
-      if (version != BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION) {
-        IOLOG_ERROR("%s version mismatch.\n", __FUNCTION__);
-        return false;
-      }
-      if (count > RemapClass::MAX_CONFIG_COUNT) {
-        IOLOG_ERROR("%s too many count. (%d)\n", __FUNCTION__, count);
-        return false;
+        goto error;
       }
 
       // ------------------------------------------------------------
-      // load
-      remapclasses_->reserve(count);
-      RemapClass::reset_allocation_count();
+      {
+        const uint32_t* p = remapclasses_initialize_vector;
+        uint32_t version = *p++;
+        uint32_t count   = *p++;
 
-      for (uint32_t i = 0; i < count; ++i) {
-        if (p >= remapclasses_initialize_vector + vector_size) {
-          IOLOG_ERROR("%s vector_size mismatch.\n", __FUNCTION__);
-          return false;
+        if (version != BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION) {
+          IOLOG_ERROR("%s version mismatch.\n", __FUNCTION__);
+          goto error;
+        }
+        if (count > RemapClass::MAX_CONFIG_COUNT) {
+          IOLOG_ERROR("%s too many count. (%d)\n", __FUNCTION__, count);
+          goto error;
         }
 
-        uint32_t size = *p++;
-        if (p + size >= remapclasses_initialize_vector + vector_size) {
-          IOLOG_ERROR("%s vector_size mismatch.\n", __FUNCTION__);
-          return false;
+        // ------------------------------------------------------------
+        // load
+        remapclasses_->reserve(count);
+        RemapClass::reset_allocation_count();
+
+        // (1) Setting NULL to all items.
+        for (uint32_t i = 0; i < count; ++i) {
+          remapclasses_->push_back(NULL);
         }
 
-        RemapClass* newp = new RemapClass(p, size);
-        if (! newp) {
-          IOLOG_ERROR("%s newp == NULL.\n", __FUNCTION__);
-          return false;
-        }
-        p += size;
+        // (2) Setting RemapClass* to items.
+        for (uint32_t i = 0; i < count; ++i) {
+          if (p >= remapclasses_initialize_vector + vector_size) {
+            IOLOG_ERROR("%s vector_size mismatch.\n", __FUNCTION__);
+            goto error;
+          }
 
-        remapclasses_->push_back(newp);
+          uint32_t size = *p++;
+          if (p + size > remapclasses_initialize_vector + vector_size) {
+            IOLOG_ERROR("%s vector_size mismatch. (vector_size:%d, size:%d)\n", __FUNCTION__,
+                        static_cast<int>(vector_size), size);
+            goto error;
+          }
+          if (size == 0) {
+            IOLOG_ERROR("%s size == 0.\n", __FUNCTION__);
+            goto error;
+          }
+
+          uint32_t configindex = *p++;
+          --size;
+
+          RemapClass* newp = new RemapClass(p, size);
+          if (! newp) {
+            IOLOG_ERROR("%s newp == NULL.\n", __FUNCTION__);
+            goto error;
+          }
+          p += size;
+
+          if (configindex >= remapclasses_->size()) {
+            IOLOG_ERROR("%s invalid configindex %d (remapclasses_->size() == %d).\n", __FUNCTION__,
+                        configindex, static_cast<int>(remapclasses_->size()));
+            goto error;
+          }
+          (*remapclasses_)[configindex] = newp;
+        }
+
+        // (3) Making sure that is not NULL for all items.
+        for (uint32_t i = 0; i < remapclasses_->size(); ++i) {
+          if (! (*remapclasses_)[i]) {
+            IOLOG_ERROR("%s (*remapclasses_)[i] == NULL.\n", __FUNCTION__);
+            goto error;
+          }
+        }
       }
 
       RemapClass::log_allocation_count();
 
       return true;
+
+    error:
+      clear_remapclasses();
+      return false;
     }
 
     bool

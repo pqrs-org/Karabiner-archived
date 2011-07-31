@@ -148,6 +148,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     GlobalLock::ScopedLock lk;
     if (! lk) return;
 
+    Params_KeyboardEventCallBack::log(true, EventType(eventType), Flags(flags), KeyCode(key), KeyboardType(keyboardType), repeat);
+
     // ------------------------------------------------------------
     KeyboardType newkeyboardtype(keyboardType);
     RemapClassManager::remap_setkeyboardtype(newkeyboardtype);
@@ -200,6 +202,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ------------------------------------------------------------
+    // NumLock Hacks
+    //
+    // As for some keypads, NumLock is off when it was connected.
+    // We need to call setAlphaLock(true) to activate a device.
+    RemapClassManager::remap_forcenumlockon(item);
+
+    // ------------------------------------------------------------
     // "ts & keyboardType" are not used in filters like <not>/<only>.
     // Therefore, we can set current ts and keyboardType here.
     CommonData::setcurrent_ts(ts);
@@ -228,10 +237,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     GlobalLock::ScopedLock lk;
     if (! lk) return;
 
-    // ------------------------------------------------------------
-    Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(flags));
-    if (! ptr) return;
-    Params_UpdateEventFlagsCallback& params = *ptr;
+    Params_UpdateEventFlagsCallback::log(true, Flags(flags));
 
     // ------------------------------------------------------------
     // update device priority by calling ListHookedKeyboard::instance().get(kbd).
@@ -241,7 +247,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     ListHookedKeyboard::Item* item = static_cast<ListHookedKeyboard::Item*>(ListHookedKeyboard::instance().get(device));
     if (! item) return;
 
-    params.log();
     // Don't push_back for UpdateEventFlagsCallback.
   }
 
@@ -260,6 +265,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     GlobalLock::ScopedLock lk;
     if (! lk) return;
+
+    Params_KeyboardSpecialEventCallback::log(true, EventType(eventType), Flags(flags), ConsumerKeyCode(key), flavor, guid, repeat);
 
     // ------------------------------------------------------------
     Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(EventType(eventType), Flags(flags), ConsumerKeyCode(key),
@@ -304,6 +311,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     GlobalLock::ScopedLock lk;
     if (! lk) return;
+
+    Params_RelativePointerEventCallback::log(true, Buttons(buttons_raw), dx, dy);
 
     // ------------------------------------------------------------
     Buttons buttons(buttons_raw);
@@ -377,6 +386,18 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     GlobalLock::ScopedLock lk;
     if (! lk) return;
+
+    Params_ScrollWheelEventCallback::log(true,
+                                         deltaAxis1,
+                                         deltaAxis2,
+                                         deltaAxis3,
+                                         fixedDelta1,
+                                         fixedDelta2,
+                                         fixedDelta3,
+                                         pointDelta1,
+                                         pointDelta2,
+                                         pointDelta3,
+                                         options);
 
     // ------------------------------------------------------------
     Params_ScrollWheelEventCallback::auto_ptr ptr(Params_ScrollWheelEventCallback::alloc(deltaAxis1, deltaAxis2, deltaAxis3,
@@ -513,13 +534,23 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (params) {
           // ------------------------------------------------------------
           // We set EventWatcher::on only when Buttons pressed.
-          // It's cause a problem when you use the following settings. (Unexpected FN_Lock is fired).
-          //   - FN+CursorMove to ScrollWheel
-          //   - FN to FN (+ When you type FN only, send FN_Lock)
+
+          // ------------------------------
+          // About PointingRelativeToScroll:
+          //
+          // If PointingRelativeToScroll is applied, we should call EventWatcher::on. (== canceling KeyOverlaidModifier)
+          // When the following settings are activated,
+          // Fn_Lock should not be fired if the RelativePointerEvent is happened.
+          //
+          // - Fn+CursorMove to ScrollWheel
+          // - Fn to Fn (+ When you type Fn only, send Fn_Lock)
           //
           // But, if we call EventWatcher::on every CursorMove event, unexpected cancel occurs.
           // It's more terrible than above problem.
-          // So, we keep to call EventWatcher::on only when Buttons pressed.
+          //
+          // Therefore, we call EventWatcher::on in PointingRelativeToScroll::remap.
+          // So we don't need to call EventWatcher::on unless just buttons are pressed or released.
+
           if (params->ex_button != PointingButton::NONE) {
             EventWatcher::on();
           }

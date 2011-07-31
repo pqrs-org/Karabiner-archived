@@ -1,3 +1,11 @@
+Changes since 7.3.0
+    - Clean up "Simultaneous Vi Mode".
+      (and split some options into "Home Row Arrow and Modifier Mode".)
+    - Added KeyCode::VK_STICKY_*_FORCE_ON, KeyCode::VK_STICKY_*_FORCE_OFF.
+    - Some minor improvements.
+    - Added about XXX kinds settings.
+
+----------------------------------------------------------------------
 = version 7.3.0 =
     - Improved stability when using Sticky Keys in Universal Access.
     - Improved stability when using multi-touch extension together.

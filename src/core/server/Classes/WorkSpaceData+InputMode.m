@@ -297,6 +297,18 @@ finish:
     return;
   }
 
+  if ([name isEqualToString:@"org.pqrs.inputmode.es.Spanish"]) {
+    *output_inputmode       = [parser keycode:@"InputMode::SPANISH"];
+    *output_inputmodedetail = [parser keycode:@"InputModeDetail::SPANISH"];
+    return;
+  }
+
+  if ([name isEqualToString:@"org.pqrs.inputmode.es.Spanish-ISO"]) {
+    *output_inputmode       = [parser keycode:@"InputMode::SPANISH"];
+    *output_inputmodedetail = [parser keycode:@"InputModeDetail::SPANISH_ISO"];
+    return;
+  }
+
   if ([name isEqualToString:@"org.pqrs.inputmode.unknown.FrenchDvorak"]) {
     *output_inputmode       = [parser keycode:@"InputMode::BEPO"];
     *output_inputmodedetail = [parser keycode:@"InputModeDetail::BEPO"];

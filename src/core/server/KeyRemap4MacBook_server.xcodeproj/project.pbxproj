@@ -10,10 +10,10 @@
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* KeyRemap4MacBook_serverAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* KeyRemap4MacBook_serverAppDelegate.m */; };
 		340A058F1302CE8B00B7E1B1 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 342FD2B81302CD8A00491C16 /* Growl.framework */; };
-		342284191302DD4400DA6EB8 /* app.icon.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 342284181302DD4400DA6EB8 /* app.icon.tiff */; };
 		342917DD1296AA4100A5CB12 /* ConfigXMLParser+PreferencePane.m in Sources */ = {isa = PBXBuildFile; fileRef = 342917DB1296AA4100A5CB12 /* ConfigXMLParser+PreferencePane.m */; };
 		342917F81296AD2600A5CB12 /* ConfigXMLParser+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 342917F71296AD2600A5CB12 /* ConfigXMLParser+Private.m */; };
 		342FD2B91302CD8A00491C16 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 342FD2B81302CD8A00491C16 /* Growl.framework */; };
+		343BB0CA13E055B10037A81F /* app.icns in Resources */ = {isa = PBXBuildFile; fileRef = 343BB0C913E055B10037A81F /* app.icns */; };
 		345248A31298F8A2005447DE /* private.xml in Resources */ = {isa = PBXBuildFile; fileRef = 345248A21298F8A2005447DE /* private.xml */; };
 		345647361346A7AF00FD0C38 /* UserClient_userspace.m in Sources */ = {isa = PBXBuildFile; fileRef = 345647351346A7AF00FD0C38 /* UserClient_userspace.m */; };
 		345647421346AE1700FD0C38 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345647411346AE1700FD0C38 /* IOKit.framework */; };
@@ -26,6 +26,7 @@
 		34B893FD128E448C00BC955A /* ConfigXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B893F8128E448C00BC955A /* ConfigXMLParser.m */; };
 		34B893FE128E448C00BC955A /* KeyCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B893FA128E448C00BC955A /* KeyCode.m */; };
 		34B893FF128E448C00BC955A /* WorkSpaceData.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B893FC128E448C00BC955A /* WorkSpaceData.m */; };
+		34C12EC513CB462E0028090B /* RemapClassesInitializeVector.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C12EC413CB462E0028090B /* RemapClassesInitializeVector.m */; };
 		34D4F82812C4463B001819AA /* StatusWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D4F82712C4463B001819AA /* StatusWindow.m */; };
 		34D4F83C12C45CF3001819AA /* WorkSpaceData+InputMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D4F83B12C45CF3001819AA /* WorkSpaceData+InputMode.m */; };
 		34FB9592128F985A0088B235 /* PreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FB9591128F985A0088B235 /* PreferencesManager.m */; };
@@ -59,10 +60,10 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		342284181302DD4400DA6EB8 /* app.icon.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = app.icon.tiff; path = Resources/app.icon.tiff; sourceTree = "<group>"; };
 		342917DB1296AA4100A5CB12 /* ConfigXMLParser+PreferencePane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ConfigXMLParser+PreferencePane.m"; path = "Classes/ConfigXMLParser+PreferencePane.m"; sourceTree = "<group>"; };
 		342917F71296AD2600A5CB12 /* ConfigXMLParser+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ConfigXMLParser+Private.m"; path = "Classes/ConfigXMLParser+Private.m"; sourceTree = "<group>"; };
 		342FD2B81302CD8A00491C16 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Frameworks/Growl.framework; sourceTree = "<group>"; };
+		343BB0C913E055B10037A81F /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = app.icns; path = ../../share/Resources/app.icns; sourceTree = "<group>"; };
 		345248A21298F8A2005447DE /* private.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = private.xml; path = Resources/private.xml; sourceTree = "<group>"; };
 		345647341346A7AF00FD0C38 /* UserClient_userspace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserClient_userspace.h; path = Classes/UserClient_userspace.h; sourceTree = "<group>"; };
 		345647351346A7AF00FD0C38 /* UserClient_userspace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserClient_userspace.m; path = Classes/UserClient_userspace.m; sourceTree = "<group>"; };
@@ -82,6 +83,8 @@
 		34B893FA128E448C00BC955A /* KeyCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyCode.m; path = Classes/KeyCode.m; sourceTree = "<group>"; };
 		34B893FB128E448C00BC955A /* WorkSpaceData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkSpaceData.h; path = Classes/WorkSpaceData.h; sourceTree = "<group>"; };
 		34B893FC128E448C00BC955A /* WorkSpaceData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkSpaceData.m; path = Classes/WorkSpaceData.m; sourceTree = "<group>"; };
+		34C12EC313CB462E0028090B /* RemapClassesInitializeVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RemapClassesInitializeVector.h; path = Classes/RemapClassesInitializeVector.h; sourceTree = "<group>"; };
+		34C12EC413CB462E0028090B /* RemapClassesInitializeVector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RemapClassesInitializeVector.m; path = Classes/RemapClassesInitializeVector.m; sourceTree = "<group>"; };
 		34D4F82612C4463B001819AA /* StatusWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusWindow.h; path = Classes/StatusWindow.h; sourceTree = "<group>"; };
 		34D4F82712C4463B001819AA /* StatusWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusWindow.m; path = Classes/StatusWindow.m; sourceTree = "<group>"; };
 		34D4F83B12C45CF3001819AA /* WorkSpaceData+InputMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "WorkSpaceData+InputMode.m"; path = "Classes/WorkSpaceData+InputMode.m"; sourceTree = "<group>"; };
@@ -110,6 +113,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				34C12EC313CB462E0028090B /* RemapClassesInitializeVector.h */,
+				34C12EC413CB462E0028090B /* RemapClassesInitializeVector.m */,
 				34B2A65A13745B6000694134 /* KeyRemap4MacBookKeys.h */,
 				345647341346A7AF00FD0C38 /* UserClient_userspace.h */,
 				345647351346A7AF00FD0C38 /* UserClient_userspace.m */,
@@ -186,7 +191,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				342284181302DD4400DA6EB8 /* app.icon.tiff */,
+				343BB0C913E055B10037A81F /* app.icns */,
 				345248A21298F8A2005447DE /* private.xml */,
 				34FB9594128FCC030088B235 /* include.bridge_essential_config_index.plist */,
 				349B509E12837E64009108FE /* include.keycode.plist */,
@@ -238,6 +243,9 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0410;
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "KeyRemap4MacBook_server" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -269,7 +277,7 @@
 				349B509F12837E64009108FE /* include.keycode.plist in Resources */,
 				34FB9595128FCC030088B235 /* include.bridge_essential_config_index.plist in Resources */,
 				345248A31298F8A2005447DE /* private.xml in Resources */,
-				342284191302DD4400DA6EB8 /* app.icon.tiff in Resources */,
+				343BB0CA13E055B10037A81F /* app.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +301,7 @@
 				34D4F82812C4463B001819AA /* StatusWindow.m in Sources */,
 				34D4F83C12C45CF3001819AA /* WorkSpaceData+InputMode.m in Sources */,
 				345647361346A7AF00FD0C38 /* UserClient_userspace.m in Sources */,
+				34C12EC513CB462E0028090B /* RemapClassesInitializeVector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,7 +365,6 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				PREBINDING = NO;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx10.6;
 				VALID_ARCHS = "i386 x86_64";

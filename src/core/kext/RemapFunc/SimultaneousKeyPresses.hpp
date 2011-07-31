@@ -1,7 +1,7 @@
 #ifndef SIMULTANEOUSKEYPRESSES_HPP
 #define SIMULTANEOUSKEYPRESSES_HPP
 
-#include "RemapFuncBase.hpp"
+#include "RemapFuncClasses.hpp"
 #include "EventInputQueue.hpp"
 #include "FromKeyChecker.hpp"
 #include "KeyToKey.hpp"

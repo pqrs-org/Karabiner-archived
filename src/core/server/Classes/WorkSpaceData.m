@@ -173,7 +173,8 @@
     return [parser keycode:@"ApplicationType::XCODE"];
   }
 
-  if ([name isEqualToString:@"com.operasoftware.Opera"]) {
+  if ([name isEqualToString:@"com.operasoftware.Opera"] ||
+      [name isEqualToString:@"com.operasoftware.OperaNext"]) {
     return [parser keycode:@"ApplicationType::OPERA"];
   }
 
@@ -285,6 +286,18 @@
 
   if ([name isEqualToString:@"com.apple.Preview"]) {
     return [parser keycode:@"ApplicationType::PREVIEW"];
+  }
+
+  if ([name isEqualToString:@"com.oracle.SQLDeveloper"]) {
+    return [parser keycode:@"ApplicationType::ORACLE_SQL_DEVELOPER"];
+  }
+
+  if ([name isEqualToString:@"com.apple.systempreferences"]) {
+    return [parser keycode:@"ApplicationType::SYSTEM_PREFERENCES"];
+  }
+
+  if ([name isEqualToString:@"com.citrix.ICAClient"]) {
+    return [parser keycode:@"ApplicationType::CITRIX_ONLINE_PLUG_IN"];
   }
 
   return [parser keycode:@"ApplicationType::UNKNOWN"];

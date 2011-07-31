@@ -70,7 +70,7 @@ static void setPreference(int fingers, int newvalue) {
 static int callback(int device, struct Finger* data, int fingers, double timestamp, int frame) {
   NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
   {
-    // deactivate settings first.
+    // deactivating settings first.
     for (int i = 0; i < MAX_FINGERS; ++i) {
       if (current_status_[i] && fingers != i + 1) {
         current_status_[i] = 0;
@@ -78,12 +78,23 @@ static int callback(int device, struct Finger* data, int fingers, double timesta
       }
     }
 
-    if (fingers > 0 && current_status_[fingers - 1] == 0) {
+    // activating setting.
+    //
+    // Note: Set current_status_ only if the targeted setting is enabled.
+    // If not, unintentional deactivation is called in above.
+    //
+    // - one finger: disabled
+    // - two fingers: enabled
+    //
+    // In this case,
+    // we must not call "setPreference" if only one finger is touched/released on multi-touch device.
+    // If we don't check [PreferencesController isSettingEnabled],
+    // setPreference is called in above when we release one finger from device.
+    //
+    if (fingers > 0 && current_status_[fingers - 1] == 0 &&
+        [PreferencesController isSettingEnabled:fingers]) {
       current_status_[fingers - 1] = 1;
-
-      if ([PreferencesController isSettingEnabled:fingers]) {
-        setPreference(fingers, 1);
-      }
+      setPreference(fingers, 1);
     }
   }
   [pool drain];
