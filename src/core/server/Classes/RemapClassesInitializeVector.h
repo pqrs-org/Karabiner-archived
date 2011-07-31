@@ -10,6 +10,10 @@
   size_t capacity_;
   size_t size_;
   BOOL freezed_;
+
+  // hash of "configindex => BOOL"
+  NSMutableDictionary* dict_configindex_;
+  uint32_t max_configindex_;
 }
 
 - (void) addVector:(NSArray*)vector configindex:(uint32_t)configindex;
@@ -18,5 +22,6 @@
 - (BOOL) freezed;
 - (uint32_t*) rawValue;
 - (size_t) size;
+- (uint32_t) countOfVectors;
 
 @end

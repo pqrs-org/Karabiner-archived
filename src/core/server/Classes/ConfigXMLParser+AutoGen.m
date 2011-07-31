@@ -419,7 +419,6 @@
         NSNumber* configindex = [keycode_ numberValue:[NSString stringWithFormat:@"ConfigIndex::%@", name]];
         [remapclasses_initialize_vector_ addVector:initialize_vector configindex:[configindex unsignedIntValue]];
         [dict_config_name_ setObject:rawname forKey:configindex];
-        ++count_;
       }
       [pool drain];
     }
@@ -465,8 +464,6 @@
 
   [remapclasses_initialize_vector_ release];
   remapclasses_initialize_vector_ = [RemapClassesInitializeVector new];
-
-  count_ = 0;
 
   [keycode_ release];
   keycode_ = [KeyCode new];

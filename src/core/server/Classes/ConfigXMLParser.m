@@ -76,7 +76,7 @@ static ConfigXMLParser* global_instance = nil;
   NSUInteger v = 0;
   @synchronized(self) {
     if (initialized_) {
-      v = count_;
+      v = [remapclasses_initialize_vector_ countOfVectors];
     }
   }
   return v;
