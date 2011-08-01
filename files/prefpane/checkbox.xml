@@ -8693,6 +8693,20 @@
         </item>
 
         <item>
+          <name>For Magic Mouse (vid/pid: 0x05ac,0x030d)</name>
+          <list>
+            <item>
+              <name>Disable ScrollWheel</name>
+              <identifier>remap.dropscrollwheel_0x05ac_0x030d</identifier>
+              <block>
+                <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::MAGIC_MOUSE</device_only>
+                <autogen>--DropScrollWheel--</autogen>
+              </block>
+            </item>
+          </list>
+        </item>
+
+        <item>
           <name>For TypeMatrix 2030</name>
           <list>
             <item>
