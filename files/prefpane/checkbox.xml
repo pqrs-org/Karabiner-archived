@@ -2007,6 +2007,11 @@
           <autogen>--KeyToKey-- KeyCode::DASHBOARD, KeyCode::LAUNCHPAD</autogen>
         </item>
         <item>
+          <name>Launchpad to Dashboard</name>
+          <identifier>remap.launchpad2dashboard</identifier>
+          <autogen>--KeyToKey-- KeyCode::LAUNCHPAD, KeyCode::DASHBOARD</autogen>
+        </item>
+        <item>
           <name>Functional Keys to F1..F12</name>
           <list>
             <item>
