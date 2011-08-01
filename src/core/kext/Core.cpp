@@ -237,9 +237,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     remap_ScrollWheelEventCallback(Params_ScrollWheelEventCallback& params)
     {
-      EventOutputQueue::FireScrollWheel::fire(params);
+      RemapPointingParams_scroll remapParams(params);
 
-      RemapFunc::PointingRelativeToScroll::cancelScroll();
+      RemapClassManager::remap_pointing_scroll(remapParams);
+
+      if (! remapParams.isremapped) {
+        EventOutputQueue::FireScrollWheel::fire(params);
+        RemapFunc::PointingRelativeToScroll::cancelScroll();
+      }
     }
   }
 }

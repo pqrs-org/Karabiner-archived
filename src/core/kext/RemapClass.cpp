@@ -50,6 +50,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       case BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER:            INITIALIZE_UNION_VALUE(p_.doublePressModifier,            RemapFunc::DoublePressModifier);            break;
       case BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP:              INITIALIZE_UNION_VALUE(p_.dropKeyAfterRemap,              RemapFunc::DropKeyAfterRemap);              break;
       case BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE: INITIALIZE_UNION_VALUE(p_.dropPointingRelativeCursorMove, RemapFunc::DropPointingRelativeCursorMove); break;
+      case BRIDGE_REMAPTYPE_DROPSCROLLWHEEL:                INITIALIZE_UNION_VALUE(p_.dropScrollWheel,                RemapFunc::DropScrollWheel); break;
       case BRIDGE_REMAPTYPE_FORCENUMLOCKON:                 INITIALIZE_UNION_VALUE(p_.forceNumLockOn,                 RemapFunc::ForceNumLockOn);                 break;
       case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:                INITIALIZE_UNION_VALUE(p_.holdingKeyToKey,                RemapFunc::HoldingKeyToKey);                break;
       case BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS:     INITIALIZE_UNION_VALUE(p_.ignoreMultipleSameKeyPress,     RemapFunc::IgnoreMultipleSameKeyPress);     break;
@@ -84,6 +85,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       case BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER:            DELETE_UNLESS_NULL(p_.doublePressModifier);            break;
       case BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP:              DELETE_UNLESS_NULL(p_.dropKeyAfterRemap);              break;
       case BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE: DELETE_UNLESS_NULL(p_.dropPointingRelativeCursorMove); break;
+      case BRIDGE_REMAPTYPE_DROPSCROLLWHEEL:                DELETE_UNLESS_NULL(p_.dropScrollWheel);                break;
       case BRIDGE_REMAPTYPE_FORCENUMLOCKON:                 DELETE_UNLESS_NULL(p_.forceNumLockOn);                 break;
       case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:                DELETE_UNLESS_NULL(p_.holdingKeyToKey);                break;
       case BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS:     DELETE_UNLESS_NULL(p_.ignoreMultipleSameKeyPress);     break;
@@ -204,6 +206,25 @@ namespace org_pqrs_KeyRemap4MacBook {
       case BRIDGE_REMAPTYPE_POINTINGBUTTONTOKEY:            CALL_UNION_FUNCTION(p_.pointingButtonToKey);            break;
       case BRIDGE_REMAPTYPE_POINTINGBUTTONTOPOINTINGBUTTON: CALL_UNION_FUNCTION(p_.pointingButtonToPointingButton); break;
       case BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL:       CALL_UNION_FUNCTION(p_.pointingRelativeToScroll);       break;
+      default:
+        // do nothing. (Do not call IOLOG_ERROR)
+        break;
+    }
+
+#undef CALL_UNION_FUNCTION
+  }
+
+  void
+  RemapClass::Item::remap(RemapPointingParams_scroll& remapParams)
+  {
+    if (isblocked()) return;
+
+#define CALL_UNION_FUNCTION(POINTER) {              \
+    if (POINTER) { (POINTER)->remap(remapParams); } \
+}
+
+    switch (type_) {
+      case BRIDGE_REMAPTYPE_DROPSCROLLWHEEL: CALL_UNION_FUNCTION(p_.dropScrollWheel); break;
       default:
         // do nothing. (Do not call IOLOG_ERROR)
         break;
@@ -468,6 +489,17 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   void
   RemapClass::remap_pointing(RemapPointingParams_relative& remapParams)
+  {
+    for (size_t i = 0; i < items_.size(); ++i) {
+      Item* p = items_[i];
+      if (p) {
+        p->remap(remapParams);
+      }
+    }
+  }
+
+  void
+  RemapClass::remap_pointing_scroll(RemapPointingParams_scroll& remapParams)
   {
     for (size_t i = 0; i < items_.size(); ++i) {
       Item* p = items_[i];
@@ -840,6 +872,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     remap_pointing(RemapPointingParams_relative& remapParams)
     {
       CALL_REMAPCLASS_FUNC(remap_pointing, remapParams);
+    }
+
+    void
+    remap_pointing_scroll(RemapPointingParams_scroll& remapParams)
+    {
+      CALL_REMAPCLASS_FUNC(remap_pointing_scroll, remapParams);
     }
 
 #undef CALL_REMAPCLASS_FUNC

@@ -298,6 +298,7 @@
     { @"--SetKeyboardType--",                BRIDGE_REMAPTYPE_SETKEYBOARDTYPE },
     { @"--ForceNumLockOn--",                 BRIDGE_REMAPTYPE_FORCENUMLOCKON },
     { @"--DropPointingRelativeCursorMove--", BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE },
+    { @"--DropScrollWheel--",                BRIDGE_REMAPTYPE_DROPSCROLLWHEEL },
     { NULL, 0 },
   };
   for (int i = 0; info[i].symbol; ++i) {
