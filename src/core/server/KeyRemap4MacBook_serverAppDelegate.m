@@ -43,7 +43,13 @@
       [self send_workspacedata_to_kext];
 
       NSDictionary* userInfo = [NSDictionary dictionaryWithObject:name forKey:@"name"];
-      [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookApplicationChangedNotification object:kKeyRemap4MacBookNotificationKey userInfo:userInfo];
+
+      // In Mac OS X 10.7, NSDistributedNotificationCenter is suspended after calling [NSAlert runModal].
+      // So, we need to call postNotificationName with deliverImmediately:YES.
+      [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookApplicationChangedNotification
+                                                                     object:kKeyRemap4MacBookNotificationKey
+                                                                   userInfo:userInfo
+                                                         deliverImmediately:YES];
     }
   }
 }
@@ -58,7 +64,13 @@
     [self send_workspacedata_to_kext];
 
     NSDictionary* userInfo = [NSDictionary dictionaryWithObject:name forKey:@"name"];
-    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookInputSourceChangedNotification object:kKeyRemap4MacBookNotificationKey userInfo:userInfo];
+
+    // In Mac OS X 10.7, NSDistributedNotificationCenter is suspended after calling [NSAlert runModal].
+    // So, we need to call postNotificationName with deliverImmediately:YES.
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookInputSourceChangedNotification
+                                                                   object:kKeyRemap4MacBookNotificationKey
+                                                                 userInfo:userInfo
+                                                       deliverImmediately:YES];
   }
 }
 

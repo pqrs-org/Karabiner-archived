@@ -97,7 +97,12 @@
 
 - (IBAction) checkForUpdates:(id)sender
 {
-  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookCheckForUpdatesNotification object:kKeyRemap4MacBookNotificationKey];
+  // In Mac OS X 10.7, NSDistributedNotificationCenter is suspended after calling [NSAlert runModal].
+  // So, we need to call postNotificationName with deliverImmediately:YES.
+  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookCheckForUpdatesNotification
+                                                                 object:kKeyRemap4MacBookNotificationKey
+                                                               userInfo:nil
+                                                     deliverImmediately:YES];
 }
 
 @end

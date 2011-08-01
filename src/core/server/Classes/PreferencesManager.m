@@ -97,7 +97,12 @@ static PreferencesManager* global_instance = nil;
     [serverconnection_ setRootObject:self];
     [serverconnection_ registerName:kKeyRemap4MacBookConnectionName];
 
-    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookServerLaunchedNotification object:kKeyRemap4MacBookNotificationKey];
+    // In Mac OS X 10.7, NSDistributedNotificationCenter is suspended after calling [NSAlert runModal].
+    // So, we need to call postNotificationName with deliverImmediately:YES.
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookServerLaunchedNotification
+                                                                   object:kKeyRemap4MacBookNotificationKey
+                                                                 userInfo:nil
+                                                       deliverImmediately:YES];
   }
 
   return self;
@@ -176,7 +181,12 @@ static PreferencesManager* global_instance = nil;
   [[NSUserDefaults standardUserDefaults] setObject:md forKey:identifier];
   //[[NSUserDefaults standardUserDefaults] synchronize];
 
-  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookPreferencesChangedNotification object:kKeyRemap4MacBookNotificationKey];
+  // In Mac OS X 10.7, NSDistributedNotificationCenter is suspended after calling [NSAlert runModal].
+  // So, we need to call postNotificationName with deliverImmediately:YES.
+  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookPreferencesChangedNotification
+                                                                 object:kKeyRemap4MacBookNotificationKey
+                                                               userInfo:nil
+                                                     deliverImmediately:YES];
 }
 
 - (NSArray*) essential_config
@@ -265,7 +275,13 @@ static PreferencesManager* global_instance = nil;
   [userdefaults setInteger:newindex forKey:@"selectedIndex"];
 
   [[NSNotificationCenter defaultCenter] postNotificationName:@"ConfigListChanged" object:nil];
-  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookPreferencesChangedNotification object:kKeyRemap4MacBookNotificationKey];
+
+  // In Mac OS X 10.7, NSDistributedNotificationCenter is suspended after calling [NSAlert runModal].
+  // So, we need to call postNotificationName with deliverImmediately:YES.
+  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookPreferencesChangedNotification
+                                                                 object:kKeyRemap4MacBookNotificationKey
+                                                               userInfo:nil
+                                                     deliverImmediately:YES];
 }
 
 - (void) configlist_setName:(NSInteger)rowIndex name:(NSString*)name
