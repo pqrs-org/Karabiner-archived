@@ -2,6 +2,8 @@ Changes since 7.3.0
     - Clean up "Simultaneous Vi Mode".
       (and split some options into "Home Row Arrow and Modifier Mode".)
     - Added KeyCode::VK_STICKY_*_FORCE_ON, KeyCode::VK_STICKY_*_FORCE_OFF.
+    - Added --DropScrollWheel--.
+    - Some improvements on Mac OS X 10.7 (Lion).
     - Some minor improvements.
     - Added about XXX kinds settings.
 
