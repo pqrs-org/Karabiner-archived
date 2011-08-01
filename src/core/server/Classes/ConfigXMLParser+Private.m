@@ -20,13 +20,7 @@
           nil];
 }
 
-- (void) setErrorMessage:(NSException*)exception xmlpath:(NSString*)xmlpath
-{
-  // skip if an error was already reported.
-  if (error_message_) return;
-
-  error_message_ = [[NSString stringWithFormat:@"Error in %@\n\n%@\n\n%@", xmlpath, [exception name], [exception reason]] retain];
-
+- (void) showAlert {
   NSAlert* alert = [[NSAlert new] autorelease];
   [alert setMessageText:@"KeyRemap4MacBook Error"];
   [alert addButtonWithTitle:@"Close"];
@@ -34,9 +28,21 @@
   [alert setInformativeText:error_message_];
 
   NSInteger response = [alert runModal];
-  if (response == NSAlertAlternateReturn) {
+  if (response == NSAlertSecondButtonReturn) {
     [[NSWorkspace sharedWorkspace] openFile:@"/Library/PreferencePanes/KeyRemap4MacBook.prefPane"];
   }
+}
+
+- (void) setErrorMessage:(NSException*)exception xmlpath:(NSString*)xmlpath
+{
+  // skip if an error was already reported.
+  if (error_message_) return;
+
+  error_message_ = [[NSString stringWithFormat:@"Error in %@\n\n%@\n\n%@", xmlpath, [exception name], [exception reason]] retain];
+
+  [self performSelectorOnMainThread:@selector(showAlert)
+                         withObject:nil
+                      waitUntilDone:YES];
 }
 
 - (void) removeErrorMessage

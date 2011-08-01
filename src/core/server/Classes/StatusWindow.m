@@ -98,7 +98,9 @@ NSString* notificationName_modifier_sticky = @"Sticky Modifier Keys";
       [alert addButtonWithTitle:@"Close"];
       [alert setInformativeText:[NSString stringWithFormat:@"%@\n\n%@\n\n%@", message1, message2, message3]];
 
-      [alert runModal];
+      [alert performSelectorOnMainThread:@selector(runModal)
+                              withObject:nil
+                           waitUntilDone:YES];
     }
   }
 
