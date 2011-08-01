@@ -32,6 +32,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     const Params_RelativePointerEventCallback& params;
     bool isremapped;
   };
+
+  // --------------------
+  struct RemapPointingParams_scroll {
+    RemapPointingParams_scroll(const Params_ScrollWheelEventCallback& p) :
+      params(p), isremapped(false) {}
+
+    const Params_ScrollWheelEventCallback& params;
+    bool isremapped;
+  };
 }
 
 #endif

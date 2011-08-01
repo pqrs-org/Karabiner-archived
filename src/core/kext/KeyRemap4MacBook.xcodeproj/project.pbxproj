@@ -15,6 +15,8 @@
 		3401FE0411E2E77300EBBF43 /* ParamsUnion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3401FE0111E2E77300EBBF43 /* ParamsUnion.cpp */; };
 		3401FE0511E2E77300EBBF43 /* ParamsUnion.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3401FE0211E2E77300EBBF43 /* ParamsUnion.hpp */; };
 		3401FE0611E2E77300EBBF43 /* Vector.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3401FE0311E2E77300EBBF43 /* Vector.hpp */; };
+		3405382213E6ED7E009DF83F /* DropScrollWheel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3405382013E6ED7E009DF83F /* DropScrollWheel.cpp */; };
+		3405382313E6ED7E009DF83F /* DropScrollWheel.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3405382113E6ED7E009DF83F /* DropScrollWheel.hpp */; };
 		340800D713BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 340800D513BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.cpp */; };
 		340800D813BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 340800D613BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.hpp */; };
 		341272FE11D8FE0E000A62DB /* HoldingKeyToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 341272FC11D8FE0E000A62DB /* HoldingKeyToKey.cpp */; };
@@ -149,6 +151,8 @@
 		3401FE0111E2E77300EBBF43 /* ParamsUnion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ParamsUnion.cpp; path = util/ParamsUnion.cpp; sourceTree = "<group>"; };
 		3401FE0211E2E77300EBBF43 /* ParamsUnion.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ParamsUnion.hpp; path = util/ParamsUnion.hpp; sourceTree = "<group>"; };
 		3401FE0311E2E77300EBBF43 /* Vector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Vector.hpp; path = util/Vector.hpp; sourceTree = "<group>"; };
+		3405382013E6ED7E009DF83F /* DropScrollWheel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DropScrollWheel.cpp; path = RemapFunc/DropScrollWheel.cpp; sourceTree = "<group>"; };
+		3405382113E6ED7E009DF83F /* DropScrollWheel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DropScrollWheel.hpp; path = RemapFunc/DropScrollWheel.hpp; sourceTree = "<group>"; };
 		340800D513BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DependingPressingPeriodKeyToKey.cpp; path = RemapFunc/common/DependingPressingPeriodKeyToKey.cpp; sourceTree = "<group>"; };
 		340800D613BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DependingPressingPeriodKeyToKey.hpp; path = RemapFunc/common/DependingPressingPeriodKeyToKey.hpp; sourceTree = "<group>"; };
 		341272FC11D8FE0E000A62DB /* HoldingKeyToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HoldingKeyToKey.cpp; path = RemapFunc/HoldingKeyToKey.cpp; sourceTree = "<group>"; };
@@ -358,6 +362,8 @@
 				3442D9E512F3123300EF7DF8 /* ForceNumLockOn.hpp */,
 				344BB4EC12812A9F008B75F6 /* DropPointingRelativeCursorMove.cpp */,
 				344BB4ED12812A9F008B75F6 /* DropPointingRelativeCursorMove.hpp */,
+				3405382013E6ED7E009DF83F /* DropScrollWheel.cpp */,
+				3405382113E6ED7E009DF83F /* DropScrollWheel.hpp */,
 				34794D51126F32E700655ADB /* SetKeyboardType.cpp */,
 				34794D52126F32E700655ADB /* SetKeyboardType.hpp */,
 				34B8199311DF925500BD8E0B /* DropKeyAfterRemap.cpp */,
@@ -562,6 +568,7 @@
 				34B464FC13A65CE000470265 /* VK_JIS_TEMPORARY.hpp in Headers */,
 				342BB27D13BB6A9900E18FDD /* RemapFuncClasses.hpp in Headers */,
 				340800D813BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.hpp in Headers */,
+				3405382313E6ED7E009DF83F /* DropScrollWheel.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -701,6 +708,7 @@
 				34B464F713A65B6600470265 /* VK_JIS_YEN.cpp in Sources */,
 				34B464FB13A65CE000470265 /* VK_JIS_TEMPORARY.cpp in Sources */,
 				340800D713BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.cpp in Sources */,
+				3405382213E6ED7E009DF83F /* DropScrollWheel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
