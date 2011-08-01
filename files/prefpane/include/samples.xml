@@ -569,6 +569,18 @@
     </item>
 
     <item>
+      <name>DropScrollWheel</name>
+      <list>
+        <item>
+          <appendix>Drop ScrollWheel at Emacs</appendix>
+          <identifier>remap.samples_dropscrollwheel</identifier>
+          <only>EMACS</only>
+          <autogen>--DropScrollWheel--</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>IgnoreMultipleSameKeyPress</name>
       <list>
         <item>
