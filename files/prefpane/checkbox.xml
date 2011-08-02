@@ -21,6 +21,11 @@
           <identifier essential="true">general.dont_remap_apple_pointing</identifier>
         </item>
         <item>
+          <name>Don't remap non-Apple's keyboards</name>
+          <appendix>(For example: Generic USB keyboard)</appendix>
+          <identifier essential="true">general.dont_remap_non_apple_keyboard</identifier>
+        </item>
+        <item>
           <name>Don't remap keyboards which has third vendor's driver</name>
           <appendix>(Logitech, Microsoft, Kensington, ...)</appendix>
           <identifier essential="true">general.dont_remap_thirdvendor_keyboard</identifier>
