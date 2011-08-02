@@ -78,6 +78,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         isEqualVendor(DeviceVendor::APPLE_COMPUTER)) {
       goto restore;
     }
+    if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_dont_remap_non_apple_keyboard) &&
+        ! isEqualVendor(DeviceVendor::APPLE_COMPUTER)) {
+      goto restore;
+    }
 
     // Logitech USB Headset
     if (isEqualVendorProduct(DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_USB_HEADSET)) {
