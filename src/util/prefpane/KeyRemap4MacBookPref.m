@@ -2,6 +2,7 @@
 
 #import "KeyRemap4MacBookPref.h"
 #import "KeyRemap4MacBookKeys.h"
+#import "KeyRemap4MacBookNSDistributedNotificationCenter.h"
 
 @implementation KeyRemap4MacBookPref
 
@@ -89,12 +90,7 @@
 
 - (IBAction) checkUpdateNow:(id)sender
 {
-  // In Mac OS X 10.7, NSDistributedNotificationCenter is suspended after calling [NSAlert runModal].
-  // So, we need to call postNotificationName with deliverImmediately:YES.
-  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookCheckForUpdatesNotification
-                                                                 object:kKeyRemap4MacBookNotificationKey
-                                                               userInfo:nil
-                                                     deliverImmediately:YES];
+  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookCheckForUpdatesNotification userInfo:nil];
 }
 
 /* ---------------------------------------------------------------------- */
@@ -118,15 +114,13 @@
   [self setStatusBarShowNameState];
   [self setCheckUpdateState];
 
-  [[NSDistributedNotificationCenter defaultCenter] addObserver:self
-                                                      selector:@selector(observer_preferencesChanged:)
-                                                          name:kKeyRemap4MacBookPreferencesChangedNotification
-                                                        object:kKeyRemap4MacBookNotificationKey];
+  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
+                                                                selector:@selector(observer_preferencesChanged:)
+                                                                    name:kKeyRemap4MacBookPreferencesChangedNotification];
 
-  [[NSDistributedNotificationCenter defaultCenter] addObserver:self
-                                                      selector:@selector(observer_configXMLReloaded:)
-                                                          name:kKeyRemap4MacBookConfigXMLReloadedNotification
-                                                        object:kKeyRemap4MacBookNotificationKey];
+  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
+                                                                selector:@selector(observer_configXMLReloaded:)
+                                                                    name:kKeyRemap4MacBookConfigXMLReloadedNotification];
 
   // For some reason, launchd does not start KeyRemap4MacBook_server permanently.
   // (And we can recover it by reloading plist.)

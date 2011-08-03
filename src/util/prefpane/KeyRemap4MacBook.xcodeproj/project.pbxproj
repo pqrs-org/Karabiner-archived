@@ -16,6 +16,8 @@
 		34CBFDDC0D94CEC00087D9DB /* OutlineView_checkbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CBFDD60D94CEC00087D9DB /* OutlineView_checkbox.m */; };
 		34CBFDDD0D94CEC00087D9DB /* OutlineView_number.h in Headers */ = {isa = PBXBuildFile; fileRef = 34CBFDD70D94CEC00087D9DB /* OutlineView_number.h */; };
 		34CBFDDE0D94CEC00087D9DB /* OutlineView_number.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CBFDD80D94CEC00087D9DB /* OutlineView_number.m */; };
+		34CC23F313E9A3E600CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 34CC23F113E9A3E600CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.h */; };
+		34CC23F413E9A3E600CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CC23F213E9A3E600CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m */; };
 		34DB5C081297F754006B9B05 /* OutlineView.h in Headers */ = {isa = PBXBuildFile; fileRef = 34DB5C071297F754006B9B05 /* OutlineView.h */; };
 		34DB5C171297F92B006B9B05 /* OutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DB5C161297F92B006B9B05 /* OutlineView.m */; };
 		34EB7FDE12C59DF30071889D /* KeyRemap4MacBookClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 34EB7FDC12C59DF30071889D /* KeyRemap4MacBookClient.h */; };
@@ -44,6 +46,8 @@
 		34CBFDD60D94CEC00087D9DB /* OutlineView_checkbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutlineView_checkbox.m; sourceTree = "<group>"; };
 		34CBFDD70D94CEC00087D9DB /* OutlineView_number.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutlineView_number.h; sourceTree = "<group>"; };
 		34CBFDD80D94CEC00087D9DB /* OutlineView_number.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutlineView_number.m; sourceTree = "<group>"; };
+		34CC23F113E9A3E600CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookNSDistributedNotificationCenter.h; path = ../../share/KeyRemap4MacBookNSDistributedNotificationCenter.h; sourceTree = "<group>"; };
+		34CC23F213E9A3E600CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyRemap4MacBookNSDistributedNotificationCenter.m; path = ../../share/KeyRemap4MacBookNSDistributedNotificationCenter.m; sourceTree = "<group>"; };
 		34DB5C071297F754006B9B05 /* OutlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutlineView.h; sourceTree = "<group>"; };
 		34DB5C161297F92B006B9B05 /* OutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutlineView.m; sourceTree = "<group>"; };
 		34EB7FDC12C59DF30071889D /* KeyRemap4MacBookClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookClient.h; path = ../../share/KeyRemap4MacBookClient.h; sourceTree = SOURCE_ROOT; };
@@ -109,6 +113,8 @@
 				34B2A66C1374623000694134 /* KeyRemap4MacBookKeys.h */,
 				34EB7FDC12C59DF30071889D /* KeyRemap4MacBookClient.h */,
 				34EB7FDD12C59DF30071889D /* KeyRemap4MacBookClient.m */,
+				34CC23F113E9A3E600CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.h */,
+				34CC23F213E9A3E600CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m */,
 				34DB5C161297F92B006B9B05 /* OutlineView.m */,
 				34DB5C071297F754006B9B05 /* OutlineView.h */,
 				3428689211244C7D0063E730 /* TableView_configlist.h */,
@@ -172,6 +178,7 @@
 				34DB5C081297F754006B9B05 /* OutlineView.h in Headers */,
 				34EB7FDE12C59DF30071889D /* KeyRemap4MacBookClient.h in Headers */,
 				34B2A66D1374623000694134 /* KeyRemap4MacBookKeys.h in Headers */,
+				34CC23F313E9A3E600CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +266,7 @@
 				3428689511244C7D0063E730 /* TableView_configlist.m in Sources */,
 				34DB5C171297F92B006B9B05 /* OutlineView.m in Sources */,
 				34EB7FDF12C59DF30071889D /* KeyRemap4MacBookClient.m in Sources */,
+				34CC23F413E9A3E600CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
