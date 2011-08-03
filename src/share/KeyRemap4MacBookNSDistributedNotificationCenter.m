@@ -5,13 +5,21 @@
 
 + (void) addObserver:(id)notificationObserver selector:(SEL)notificationSelector name:(NSString*)notificationName
 {
+  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:notificationObserver
+                                                                selector:notificationSelector
+                                                                    name:notificationName
+                                                                  object:kKeyRemap4MacBookNotificationKey];
+}
+
++ (void) addObserver:(id)notificationObserver selector:(SEL)notificationSelector name:(NSString*)notificationName object:(NSString*)notificationSender
+{
   // In Mac OS X 10.7, NSDistributedNotificationCenter is suspended after calling [NSAlert runModal].
   // So, we need to set suspendedDeliveryBehavior to NSNotificationSuspensionBehaviorDeliverImmediately.
 
   [[NSDistributedNotificationCenter defaultCenter] addObserver:notificationObserver
                                                       selector:notificationSelector
                                                           name:notificationName
-                                                        object:kKeyRemap4MacBookNotificationKey
+                                                        object:notificationSender
                                             suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
 }
 
