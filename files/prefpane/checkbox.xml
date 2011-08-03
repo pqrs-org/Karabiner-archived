@@ -2041,9 +2041,9 @@
               <autogen>--KeyToKey--      KeyCode::LAUNCHPAD,  KeyCode::F4</autogen>
             </item>
             <item>
-              <name>Keyboard Backlight Adjust to F5,F6</name>
-              <appendix>* Keyboard Backlight Low to F5</appendix>
-              <appendix>* Keyboard Backlight High to F6</appendix>
+              <name>Keyboard Backlit Adjust to F5,F6</name>
+              <appendix>* Keyboard Backlit Low to F5</appendix>
+              <appendix>* Keyboard Backlit High to F6</appendix>
               <identifier>remap.consumer_to_fkeys_f5</identifier>
               <autogen>--ConsumerToKey-- ConsumerKeyCode::KEYBOARDLIGHT_LOW,  KeyCode::F5</autogen>
               <autogen>--ConsumerToKey-- ConsumerKeyCode::KEYBOARDLIGHT_HIGH, KeyCode::F6</autogen>
@@ -2096,9 +2096,9 @@
               <autogen>--KeyToKey--      KeyCode::LAUNCHPAD,  ModifierFlag::FN, KeyCode::F4</autogen>
             </item>
             <item>
-              <name>Fn+Keyboard Backlight Adjust to F5,F6</name>
-              <appendix>* Fn+Keyboard Backlight Low to F5</appendix>
-              <appendix>* Fn+Keyboard Backlight High to F6</appendix>
+              <name>Fn+Keyboard Backlit Adjust to F5,F6</name>
+              <appendix>* Fn+Keyboard Backlit Low to F5</appendix>
+              <appendix>* Fn+Keyboard Backlit High to F6</appendix>
               <identifier>remap.fn_consumer_to_fkeys_f5</identifier>
               <autogen>--ConsumerToKey-- ConsumerKeyCode::KEYBOARDLIGHT_LOW,  ModifierFlag::FN, KeyCode::F5</autogen>
               <autogen>--ConsumerToKey-- ConsumerKeyCode::KEYBOARDLIGHT_HIGH, ModifierFlag::FN, KeyCode::F6</autogen>
@@ -2575,9 +2575,9 @@
               <autogen>--KeyToKey-- KeyCode::F4, KeyCode::DASHBOARD</autogen>
             </item>
             <item>
-              <name>F5,F6 to Keyboard Backlight Adjust</name>
-              <appendix>F5 to Keyboard Backlight Low</appendix>
-              <appendix>F6 to Keyboard Backlight High</appendix>
+              <name>F5,F6 to Keyboard Backlit Adjust</name>
+              <appendix>F5 to Keyboard Backlit Low</appendix>
+              <appendix>F6 to Keyboard Backlit High</appendix>
               <identifier>remap.fkeys_to_consumer_f5</identifier>
               <autogen>--KeyToConsumer-- KeyCode::F5, ConsumerKeyCode::KEYBOARDLIGHT_LOW</autogen>
               <autogen>--KeyToConsumer-- KeyCode::F6, ConsumerKeyCode::KEYBOARDLIGHT_HIGH</autogen>
@@ -2632,9 +2632,9 @@
               <autogen>--KeyToKey-- KeyCode::F4, ModifierFlag::FN, KeyCode::DASHBOARD</autogen>
             </item>
             <item>
-              <name>Fn+F5,F6 to Keyboard Backlight Adjust</name>
-              <appendix>Fn+F5 to Keyboard Backlight Low</appendix>
-              <appendix>Fn+F6 to Keyboard Backlight High</appendix>
+              <name>Fn+F5,F6 to Keyboard Backlit Adjust</name>
+              <appendix>Fn+F5 to Keyboard Backlit Low</appendix>
+              <appendix>Fn+F6 to Keyboard Backlit High</appendix>
               <identifier>remap.fn_fkeys_to_consumer_f5</identifier>
               <autogen>--KeyToConsumer-- KeyCode::F5, ModifierFlag::FN, ConsumerKeyCode::KEYBOARDLIGHT_LOW</autogen>
               <autogen>--KeyToConsumer-- KeyCode::F6, ModifierFlag::FN, ConsumerKeyCode::KEYBOARDLIGHT_HIGH</autogen>
