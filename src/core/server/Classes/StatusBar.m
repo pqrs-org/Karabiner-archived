@@ -2,6 +2,7 @@
 
 #import "StatusBar.h"
 #import "KeyRemap4MacBookKeys.h"
+#import "KeyRemap4MacBookNSDistributedNotificationCenter.h"
 
 @implementation StatusBar
 
@@ -97,12 +98,7 @@
 
 - (IBAction) checkForUpdates:(id)sender
 {
-  // In Mac OS X 10.7, NSDistributedNotificationCenter is suspended after calling [NSAlert runModal].
-  // So, we need to call postNotificationName with deliverImmediately:YES.
-  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookCheckForUpdatesNotification
-                                                                 object:kKeyRemap4MacBookNotificationKey
-                                                               userInfo:nil
-                                                     deliverImmediately:YES];
+  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookCheckForUpdatesNotification userInfo:nil];
 }
 
 @end

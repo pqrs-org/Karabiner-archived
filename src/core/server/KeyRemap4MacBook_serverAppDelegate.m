@@ -9,6 +9,7 @@
 #import <Carbon/Carbon.h>
 #import "KeyRemap4MacBook_serverAppDelegate.h"
 #import "KeyRemap4MacBookKeys.h"
+#import "KeyRemap4MacBookNSDistributedNotificationCenter.h"
 #import "StatusWindow.h"
 #import "UserClient_userspace.h"
 #include <stdlib.h>
@@ -44,12 +45,7 @@
 
       NSDictionary* userInfo = [NSDictionary dictionaryWithObject:name forKey:@"name"];
 
-      // In Mac OS X 10.7, NSDistributedNotificationCenter is suspended after calling [NSAlert runModal].
-      // So, we need to call postNotificationName with deliverImmediately:YES.
-      [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookApplicationChangedNotification
-                                                                     object:kKeyRemap4MacBookNotificationKey
-                                                                   userInfo:userInfo
-                                                         deliverImmediately:YES];
+      [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookApplicationChangedNotification userInfo:userInfo];
     }
   }
 }
@@ -65,12 +61,7 @@
 
     NSDictionary* userInfo = [NSDictionary dictionaryWithObject:name forKey:@"name"];
 
-    // In Mac OS X 10.7, NSDistributedNotificationCenter is suspended after calling [NSAlert runModal].
-    // So, we need to call postNotificationName with deliverImmediately:YES.
-    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookInputSourceChangedNotification
-                                                                   object:kKeyRemap4MacBookNotificationKey
-                                                                 userInfo:userInfo
-                                                       deliverImmediately:YES];
+    [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookInputSourceChangedNotification userInfo:userInfo];
   }
 }
 
@@ -277,10 +268,10 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
                                                              name:NSWorkspaceDidActivateApplicationNotification
                                                            object:nil];
 
-  [[NSDistributedNotificationCenter defaultCenter] addObserver:self
-                                                      selector:@selector(observer_kTISNotifySelectedKeyboardInputSourceChanged:)
-                                                          name:(NSString*)(kTISNotifySelectedKeyboardInputSourceChanged)
-                                                        object:nil];
+  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
+                                                                selector:@selector(observer_kTISNotifySelectedKeyboardInputSourceChanged:)
+                                                                    name:(NSString*)(kTISNotifySelectedKeyboardInputSourceChanged)
+                                                                  object:nil];
 
   // ------------------------------
   [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
@@ -296,15 +287,13 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   // ------------------------------
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_ConfigListChanged:) name:@"ConfigListChanged" object:nil];
 
-  [[NSDistributedNotificationCenter defaultCenter] addObserver:self
-                                                      selector:@selector(observer_ConfigXMLReloaded:)
-                                                          name:kKeyRemap4MacBookConfigXMLReloadedNotification
-                                                        object:kKeyRemap4MacBookNotificationKey];
+  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
+                                                                selector:@selector(observer_ConfigXMLReloaded:)
+                                                                    name:kKeyRemap4MacBookConfigXMLReloadedNotification];
 
-  [[NSDistributedNotificationCenter defaultCenter] addObserver:self
-                                                      selector:@selector(observer_PreferencesChanged:)
-                                                          name:kKeyRemap4MacBookPreferencesChangedNotification
-                                                        object:kKeyRemap4MacBookNotificationKey];
+  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
+                                                                selector:@selector(observer_PreferencesChanged:)
+                                                                    name:kKeyRemap4MacBookPreferencesChangedNotification];
 
   // ------------------------------------------------------------
   [self observer_NSWorkspaceDidActivateApplicationNotification:nil];
