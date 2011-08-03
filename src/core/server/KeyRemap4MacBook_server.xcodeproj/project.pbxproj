@@ -27,6 +27,7 @@
 		34B893FE128E448C00BC955A /* KeyCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B893FA128E448C00BC955A /* KeyCode.m */; };
 		34B893FF128E448C00BC955A /* WorkSpaceData.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B893FC128E448C00BC955A /* WorkSpaceData.m */; };
 		34C12EC513CB462E0028090B /* RemapClassesInitializeVector.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C12EC413CB462E0028090B /* RemapClassesInitializeVector.m */; };
+		34CC23DC13E99C3800CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CC23DB13E99C3800CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m */; };
 		34D4F82812C4463B001819AA /* StatusWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D4F82712C4463B001819AA /* StatusWindow.m */; };
 		34D4F83C12C45CF3001819AA /* WorkSpaceData+InputMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D4F83B12C45CF3001819AA /* WorkSpaceData+InputMode.m */; };
 		34FB9592128F985A0088B235 /* PreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FB9591128F985A0088B235 /* PreferencesManager.m */; };
@@ -85,6 +86,8 @@
 		34B893FC128E448C00BC955A /* WorkSpaceData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkSpaceData.m; path = Classes/WorkSpaceData.m; sourceTree = "<group>"; };
 		34C12EC313CB462E0028090B /* RemapClassesInitializeVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RemapClassesInitializeVector.h; path = Classes/RemapClassesInitializeVector.h; sourceTree = "<group>"; };
 		34C12EC413CB462E0028090B /* RemapClassesInitializeVector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RemapClassesInitializeVector.m; path = Classes/RemapClassesInitializeVector.m; sourceTree = "<group>"; };
+		34CC23DA13E99C3800CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookNSDistributedNotificationCenter.h; path = ../../share/KeyRemap4MacBookNSDistributedNotificationCenter.h; sourceTree = "<group>"; };
+		34CC23DB13E99C3800CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyRemap4MacBookNSDistributedNotificationCenter.m; path = ../../share/KeyRemap4MacBookNSDistributedNotificationCenter.m; sourceTree = "<group>"; };
 		34D4F82612C4463B001819AA /* StatusWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusWindow.h; path = Classes/StatusWindow.h; sourceTree = "<group>"; };
 		34D4F82712C4463B001819AA /* StatusWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusWindow.m; path = Classes/StatusWindow.m; sourceTree = "<group>"; };
 		34D4F83B12C45CF3001819AA /* WorkSpaceData+InputMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "WorkSpaceData+InputMode.m"; path = "Classes/WorkSpaceData+InputMode.m"; sourceTree = "<group>"; };
@@ -115,6 +118,8 @@
 			children = (
 				34C12EC313CB462E0028090B /* RemapClassesInitializeVector.h */,
 				34C12EC413CB462E0028090B /* RemapClassesInitializeVector.m */,
+				34CC23DA13E99C3800CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.h */,
+				34CC23DB13E99C3800CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m */,
 				34B2A65A13745B6000694134 /* KeyRemap4MacBookKeys.h */,
 				345647341346A7AF00FD0C38 /* UserClient_userspace.h */,
 				345647351346A7AF00FD0C38 /* UserClient_userspace.m */,
@@ -302,6 +307,7 @@
 				34D4F83C12C45CF3001819AA /* WorkSpaceData+InputMode.m in Sources */,
 				345647361346A7AF00FD0C38 /* UserClient_userspace.m in Sources */,
 				34C12EC513CB462E0028090B /* RemapClassesInitializeVector.m in Sources */,
+				34CC23DC13E99C3800CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

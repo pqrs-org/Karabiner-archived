@@ -1,5 +1,6 @@
 #import "ConfigXMLParser.h"
 #import "KeyRemap4MacBookKeys.h"
+#import "KeyRemap4MacBookNSDistributedNotificationCenter.h"
 #import "bridge.h"
 
 static ConfigXMLParser* global_instance = nil;
@@ -65,12 +66,7 @@ static ConfigXMLParser* global_instance = nil;
 
   // We need to send a notification outside synchronized block to prevent lock.
   if (initialized_) {
-    // In Mac OS X 10.7, NSDistributedNotificationCenter is suspended after calling [NSAlert runModal].
-    // So, we need to call postNotificationName with deliverImmediately:YES.
-    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookConfigXMLReloadedNotification
-                                                                   object:kKeyRemap4MacBookNotificationKey
-                                                                 userInfo:nil
-                                                       deliverImmediately:YES];
+    [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookConfigXMLReloadedNotification userInfo:nil];
   }
 
   return initialized_;
