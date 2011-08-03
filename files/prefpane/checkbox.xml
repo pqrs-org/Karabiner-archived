@@ -2146,9 +2146,19 @@
               <autogen>--KeyToKey--      KeyCode::EXPOSE_ALL,                 KeyCode::F3</autogen>
             </item>
             <item>
+              <name>Mission Control to Eject</name>
+              <identifier>remap.missioncontrol_to_eject</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::MISSION_CONTROL, ConsumerKeyCode::EJECT</autogen>
+            </item>
+            <item>
               <name>Dashboard to F4</name>
               <identifier>remap.dashboard2f4</identifier>
               <autogen>--KeyToKey--      KeyCode::DASHBOARD,                  KeyCode::F4</autogen>
+            </item>
+            <item>
+              <name>Launchpad to Eject</name>
+              <identifier>remap.launchpad_to_eject</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::LAUNCHPAD, ConsumerKeyCode::EJECT</autogen>
             </item>
             <item><name>------------------------------------------------------------</name></item>
             <item>
