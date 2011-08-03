@@ -1,5 +1,6 @@
 #import "OutlineView.h"
 #import "KeyRemap4MacBookKeys.h"
+#import "KeyRemap4MacBookNSDistributedNotificationCenter.h"
 
 @implementation org_pqrs_KeyRemap4MacBook_OutlineView
 
@@ -19,15 +20,13 @@
   self = [super init];
 
   if (self) {
-    [[NSDistributedNotificationCenter defaultCenter] addObserver:self
-                                                        selector:@selector(observer_preferencesChanged:)
-                                                            name:kKeyRemap4MacBookPreferencesChangedNotification
-                                                          object:kKeyRemap4MacBookNotificationKey];
+    [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
+                                                                  selector:@selector(observer_preferencesChanged:)
+                                                                      name:kKeyRemap4MacBookPreferencesChangedNotification];
 
-    [[NSDistributedNotificationCenter defaultCenter] addObserver:self
-                                                        selector:@selector(observer_configXMLReloaded:)
-                                                            name:kKeyRemap4MacBookConfigXMLReloadedNotification
-                                                          object:kKeyRemap4MacBookNotificationKey];
+    [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
+                                                                  selector:@selector(observer_configXMLReloaded:)
+                                                                      name:kKeyRemap4MacBookConfigXMLReloadedNotification];
   }
 
   return self;
