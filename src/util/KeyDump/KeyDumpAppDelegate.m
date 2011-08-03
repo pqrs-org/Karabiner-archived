@@ -7,6 +7,7 @@
 
 #import "KeyDumpAppDelegate.h"
 #import "KeyRemap4MacBookKeys.h"
+#import "KeyRemap4MacBookNSDistributedNotificationCenter.h"
 #import <Carbon/Carbon.h>
 
 @implementation KeyDumpAppDelegate
@@ -33,15 +34,13 @@
   [otherinformationstore_ setApplicationName:nil];
   [otherinformationstore_ setInputSourceName:nil];
 
-  [[NSDistributedNotificationCenter defaultCenter] addObserver:self
-                                                      selector:@selector(observer_applicationChanged:)
-                                                          name:kKeyRemap4MacBookApplicationChangedNotification
-                                                        object:kKeyRemap4MacBookNotificationKey];
+  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
+                                                                selector:@selector(observer_applicationChanged:)
+                                                                    name:kKeyRemap4MacBookApplicationChangedNotification];
 
-  [[NSDistributedNotificationCenter defaultCenter] addObserver:self
-                                                      selector:@selector(observer_inputSourceChanged:)
-                                                          name:kKeyRemap4MacBookInputSourceChangedNotification
-                                                        object:kKeyRemap4MacBookNotificationKey];
+  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
+                                                                selector:@selector(observer_inputSourceChanged:)
+                                                                    name:kKeyRemap4MacBookInputSourceChangedNotification];
 }
 
 - (BOOL) applicationShouldTerminateAfterLastWindowClosed:(NSApplication*)theApplication {
