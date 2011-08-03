@@ -10001,9 +10001,9 @@
           <list>
             <item>
               <name>JIS Yen(¥) to Backslash(\)</name>
-              <appendix>(except virtual machine, X11)</appendix>
+              <appendix>(except virtual machine, X11, RDC)</appendix>
               <identifier>remap.jis_yen2backslash</identifier>
-              <not>VIRTUALMACHINE, X11</not>
+              <not>VIRTUALMACHINE, X11, REMOTEDESKTOPCONNECTION</not>
               <autogen>--KeyToKey-- KeyCode::JIS_YEN, KeyCode::VK_JIS_BACKSLASH</autogen>
             </item>
             <item>
