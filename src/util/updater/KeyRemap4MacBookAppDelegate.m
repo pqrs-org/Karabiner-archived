@@ -8,6 +8,7 @@
 
 #import "KeyRemap4MacBookAppDelegate.h"
 #import "KeyRemap4MacBookKeys.h"
+#import "KeyRemap4MacBookNSDistributedNotificationCenter.h"
 
 @implementation KeyRemap4MacBookAppDelegate
 
@@ -60,10 +61,9 @@
 
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification
 {
-  [[NSDistributedNotificationCenter defaultCenter] addObserver:self
-                                                      selector:@selector(observer_checkForUpdates:)
-                                                          name:kKeyRemap4MacBookCheckForUpdatesNotification
-                                                        object:kKeyRemap4MacBookNotificationKey];
+  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
+                                                                selector:@selector(observer_checkForUpdates:)
+                                                                    name:kKeyRemap4MacBookCheckForUpdatesNotification];
 
   [self checkForUpdates:YES];
 }
