@@ -390,7 +390,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
       if (size != sizeof(BridgeWorkSpaceData)) {
         IOLOG_ERROR("BRIDGE_USERCLIENT_TYPE_SET_ESSENTIAL_CONFIG wrong 'size' parameter\n");
       } else {
-        BridgeWorkSpaceData* p = reinterpret_cast<BridgeWorkSpaceData*>(address);
+        const BridgeWorkSpaceData* p = reinterpret_cast<const BridgeWorkSpaceData*>(address);
         if (p) {
           org_pqrs_KeyRemap4MacBook::CommonData::setcurrent_workspacedata(*p);
           *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
