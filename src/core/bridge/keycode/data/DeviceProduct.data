@@ -44,6 +44,9 @@ SUN_TYPE_6_KEYBOARD                     0x0005
 // UC_TECHNOLOGY
 MICRO_TRONKB                            0x0108
 
+// MICROSOFT
+MICROSOFT_NATURAL_ERGONOMIC_4000        0x00db
+
 //
 PSEUDO                                  0x0000
 ANY                                     0x0000
