@@ -43,6 +43,8 @@ SUN_TYPE_6_KEYBOARD                     0x0005
 
 // UC_TECHNOLOGY
 MICRO_TRONKB                            0x0108
+MICRO_TRONKB_JIS                        0x0107
+MICRO_TRONKB_TRON                       0x0108
 
 // MICROSOFT
 MICROSOFT_NATURAL_ERGONOMIC_4000        0x00db
