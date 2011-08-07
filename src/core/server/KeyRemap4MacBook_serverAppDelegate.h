@@ -8,6 +8,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "Sparkle/SUUpdater.h"
 #import "StatusBar.h"
 #import "WorkSpaceData.h"
 #import "ConfigXMLParser.h"
@@ -22,6 +23,7 @@
 
   struct BridgeWorkSpaceData bridgeworkspacedata_;
 
+  IBOutlet SUUpdater* suupdater_;
   IBOutlet StatusBar* statusbar_;
 }
 
