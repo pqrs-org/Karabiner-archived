@@ -102,7 +102,7 @@
 		34FB9591128F985A0088B235 /* PreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesManager.m; path = Classes/PreferencesManager.m; sourceTree = "<group>"; };
 		34FB9594128FCC030088B235 /* include.bridge_essential_config_index.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = include.bridge_essential_config_index.plist; path = ../bridge/config/output/include.bridge_essential_config_index.plist; sourceTree = SOURCE_ROOT; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* KeyRemap4MacBook_server.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyRemap4MacBook_server.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107320486CEB800E47090 /* KeyRemap4MacBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyRemap4MacBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,7 +175,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D1107320486CEB800E47090 /* KeyRemap4MacBook_server.app */,
+				8D1107320486CEB800E47090 /* KeyRemap4MacBook.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -250,7 +250,7 @@
 			name = KeyRemap4MacBook_server;
 			productInstallPath = "$(HOME)/Applications";
 			productName = KeyRemap4MacBook_server;
-			productReference = 8D1107320486CEB800E47090 /* KeyRemap4MacBook_server.app */;
+			productReference = 8D1107320486CEB800E47090 /* KeyRemap4MacBook.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -358,7 +358,7 @@
 				GCC_PREFIX_HEADER = KeyRemap4MacBook_server_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = KeyRemap4MacBook_server;
+				PRODUCT_NAME = KeyRemap4MacBook;
 			};
 			name = Release;
 		};

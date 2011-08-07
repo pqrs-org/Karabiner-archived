@@ -24,12 +24,11 @@ See <http://pqrs.org/macosx/keyremap4macbook/source.html>
 Main components
 ---------------
 * KeyRemap4MacBook.kext (Kernel Extension)
-* KeyRemap4MacBook_server.app (Userspace Application)
+* KeyRemap4MacBook.app (Userspace Application)
 
 
 Sub components
 --------------
-* KeyRemap4MacBook.app (Updater)
 * KeyRemap4MacBook.prefPane (PreferencePane)
 
 

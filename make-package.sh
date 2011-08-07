@@ -33,7 +33,7 @@ sudo cp -R files/LaunchDaemons pkgroot/Library
 sudo cp -R files/LaunchAgents pkgroot/Library
 
 sudo mkdir -p "pkgroot/$basedir/app"
-sudo cp -R "src/core/server/build/Release/KeyRemap4MacBook_server.app" "pkgroot/$basedir/app"
+sudo cp -R "src/core/server/build/Release/KeyRemap4MacBook.app" "pkgroot/$basedir/app"
 sudo cp -R "src/util/KeyDump/build/Release/KeyDump.app" "pkgroot/$basedir/app"
 sudo cp -R "src/util/multitouchextension/build/Release/KeyRemap4MacBook_multitouchextension.app" "pkgroot/$basedir/app"
 sudo cp -R "src/util/cli/build/Release/KeyRemap4MacBook_cli.app" "pkgroot/$basedir/app"
