@@ -38,7 +38,6 @@ sudo cp -R "src/util/KeyDump/build/Release/KeyDump.app" "pkgroot/$basedir/app"
 sudo cp -R "src/util/multitouchextension/build/Release/KeyRemap4MacBook_multitouchextension.app" "pkgroot/$basedir/app"
 sudo cp -R "src/util/cli/build/Release/KeyRemap4MacBook_cli.app" "pkgroot/$basedir/app"
 sudo cp -R "src/util/uninstaller/build/Release/uninstaller.app" "pkgroot/$basedir/app"
-sudo cp -R "src/util/updater/build/Release/KeyRemap4MacBook.app" "pkgroot/$basedir/app"
 
 sudo mkdir -p "pkgroot/Library/PreferencePanes"
 sudo cp -R "src/util/prefpane/build/Release/KeyRemap4MacBook.prefPane" "pkgroot/Library/PreferencePanes"
@@ -52,9 +51,8 @@ sudo chmod 755 pkgroot/$basedir/app/KeyDump.app/Contents/MacOS/KeyDump
 sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook_multitouchextension.app/Contents/MacOS/KeyRemap4MacBook_multitouchextension
 sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook_cli.app/Contents/MacOS/KeyRemap4MacBook_cli
 sudo chmod 755 pkgroot/$basedir/app/uninstaller.app/Contents/MacOS/uninstaller
-sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook.app/Contents/MacOS/KeyRemap4MacBook
-sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook.app/Contents/Frameworks/Sparkle.framework/Resources/relaunch
-sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook.app/Contents/Frameworks/Sparkle.framework/Versions/Current/Sparkle
+sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook_server.app/Contents/Frameworks/Sparkle.framework/Resources/relaunch
+sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook_server.app/Contents/Frameworks/Sparkle.framework/Versions/Current/Sparkle
 sudo chown -R root:wheel pkgroot
 
 sudo chmod 1775 pkgroot/Library
