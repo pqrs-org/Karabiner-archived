@@ -255,6 +255,52 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 }
 
 // ------------------------------------------------------------
+- (NSString*) getFeedURL
+{
+  NSInteger checkupdate = [[PreferencesManager getInstance] checkForUpdatesMode];
+
+  // ----------------------------------------
+  // check nothing.
+  if (checkupdate == 0) {
+    return nil;
+  }
+
+  // ----------------------------------------
+  // check beta & stable releases.
+
+  // Once we check appcast.xml, SUFeedURL is stored in a user's preference file.
+  // So that Sparkle gives priority to a preference over Info.plist,
+  // we overwrite SUFeedURL here.
+  if (checkupdate == 2) {
+    return @"http://pqrs.org/macosx/keyremap4macbook/files/appcast-devel.xml";
+  }
+
+  return @"http://pqrs.org/macosx/keyremap4macbook/files/appcast.xml";
+}
+
+- (void) checkForUpdates:(BOOL)isBackground
+{
+  NSString* url = [self getFeedURL];
+  if (! url) {
+    NSLog(@"skip checkForUpdates");
+    return;
+  }
+  [suupdater_ setFeedURL:[NSURL URLWithString:url]];
+
+  NSLog(@"checkForUpdates %@", url);
+  if (isBackground) {
+    [suupdater_ checkForUpdatesInBackground];
+  } else {
+    [suupdater_ checkForUpdates:nil];
+  }
+}
+
+- (void) observer_checkForUpdates:(NSNotification*)aNotification
+{
+  [self checkForUpdates:NO];
+}
+
+// ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
   [[StatusWindow getInstance] resetStatusMessage];
 
@@ -296,12 +342,14 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
                                                                     name:kKeyRemap4MacBookPreferencesChangedNotification];
 
   // ------------------------------------------------------------
-  [self observer_NSWorkspaceDidActivateApplicationNotification:nil];
-  [self observer_kTISNotifySelectedKeyboardInputSourceChanged:nil];
+  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
+                                                                selector:@selector(observer_checkForUpdates:)
+                                                                    name:kKeyRemap4MacBookCheckForUpdatesNotification];
 
   // ------------------------------------------------------------
-  // Kick updater
-  [[NSWorkspace sharedWorkspace] launchApplication:@"/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app"];
+  [self observer_NSWorkspaceDidActivateApplicationNotification:nil];
+  [self observer_kTISNotifySelectedKeyboardInputSourceChanged:nil];
+  [self checkForUpdates:YES];
 }
 
 @end

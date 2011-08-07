@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* KeyRemap4MacBook_serverAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* KeyRemap4MacBook_serverAppDelegate.m */; };
-		340A058F1302CE8B00B7E1B1 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 342FD2B81302CD8A00491C16 /* Growl.framework */; };
+		340A058F1302CE8B00B7E1B1 /* Growl.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 342FD2B81302CD8A00491C16 /* Growl.framework */; };
 		342917DD1296AA4100A5CB12 /* ConfigXMLParser+PreferencePane.m in Sources */ = {isa = PBXBuildFile; fileRef = 342917DB1296AA4100A5CB12 /* ConfigXMLParser+PreferencePane.m */; };
 		342917F81296AD2600A5CB12 /* ConfigXMLParser+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 342917F71296AD2600A5CB12 /* ConfigXMLParser+Private.m */; };
 		342FD2B91302CD8A00491C16 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 342FD2B81302CD8A00491C16 /* Growl.framework */; };
@@ -18,6 +18,9 @@
 		345647361346A7AF00FD0C38 /* UserClient_userspace.m in Sources */ = {isa = PBXBuildFile; fileRef = 345647351346A7AF00FD0C38 /* UserClient_userspace.m */; };
 		345647421346AE1700FD0C38 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345647411346AE1700FD0C38 /* IOKit.framework */; };
 		34568415109F350100125F91 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34568414109F350100125F91 /* Carbon.framework */; };
+		347828F613EE5F3400D50AB1 /* kr4mb_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 347828F513EE5F3400D50AB1 /* kr4mb_pub.pem */; };
+		347828F913EE5F6500D50AB1 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 347828F813EE5F6500D50AB1 /* Sparkle.framework */; };
+		347828FA13EE5F6700D50AB1 /* Sparkle.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 347828F813EE5F6500D50AB1 /* Sparkle.framework */; };
 		347C48B91296673E00CCC042 /* ConfigXMLParser+AutoGen.m in Sources */ = {isa = PBXBuildFile; fileRef = 347C48B81296673E00CCC042 /* ConfigXMLParser+AutoGen.m */; };
 		348C6A2E128E4504005F516D /* StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 348C6A2D128E4504005F516D /* StatusBar.m */; };
 		349B509F12837E64009108FE /* include.keycode.plist in Resources */ = {isa = PBXBuildFile; fileRef = 349B509E12837E64009108FE /* include.keycode.plist */; };
@@ -38,14 +41,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		340A05911302CE8E00B7E1B1 /* CopyFiles */ = {
+		340A05911302CE8E00B7E1B1 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				340A058F1302CE8B00B7E1B1 /* Growl.framework in CopyFiles */,
+				340A058F1302CE8B00B7E1B1 /* Growl.framework in Copy Files */,
+				347828FA13EE5F6700D50AB1 /* Sparkle.framework in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -71,6 +76,8 @@
 		345647411346AE1700FD0C38 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		34568414109F350100125F91 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		34597768128DBFAE003398BD /* bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bridge.h; path = ../bridge/bridge.h; sourceTree = SOURCE_ROOT; };
+		347828F513EE5F3400D50AB1 /* kr4mb_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = kr4mb_pub.pem; path = Resources/kr4mb_pub.pem; sourceTree = "<group>"; };
+		347828F813EE5F6500D50AB1 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = "<group>"; };
 		347C48B81296673E00CCC042 /* ConfigXMLParser+AutoGen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ConfigXMLParser+AutoGen.m"; path = "Classes/ConfigXMLParser+AutoGen.m"; sourceTree = "<group>"; };
 		348C6A2C128E4504005F516D /* StatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusBar.h; path = Classes/StatusBar.h; sourceTree = "<group>"; };
 		348C6A2D128E4504005F516D /* StatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusBar.m; path = Classes/StatusBar.m; sourceTree = "<group>"; };
@@ -107,6 +114,7 @@
 				34568415109F350100125F91 /* Carbon.framework in Frameworks */,
 				342FD2B91302CD8A00491C16 /* Growl.framework in Frameworks */,
 				345647421346AE1700FD0C38 /* IOKit.framework in Frameworks */,
+				347828F913EE5F6500D50AB1 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +204,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				347828F513EE5F3400D50AB1 /* kr4mb_pub.pem */,
 				343BB0C913E055B10037A81F /* app.icns */,
 				345248A21298F8A2005447DE /* private.xml */,
 				34FB9594128FCC030088B235 /* include.bridge_essential_config_index.plist */,
@@ -212,6 +221,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				347828F813EE5F6500D50AB1 /* Sparkle.framework */,
 				342FD2B81302CD8A00491C16 /* Growl.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
@@ -228,7 +238,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "KeyRemap4MacBook_server" */;
 			buildPhases = (
-				340A05911302CE8E00B7E1B1 /* CopyFiles */,
+				340A05911302CE8E00B7E1B1 /* Copy Files */,
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
@@ -283,6 +293,7 @@
 				34FB9595128FCC030088B235 /* include.bridge_essential_config_index.plist in Resources */,
 				345248A31298F8A2005447DE /* private.xml in Resources */,
 				343BB0CA13E055B10037A81F /* app.icns in Resources */,
+				347828F613EE5F3400D50AB1 /* kr4mb_pub.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
