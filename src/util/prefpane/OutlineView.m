@@ -250,6 +250,14 @@
         int newvalue = [[client_ proxy] value:identifier];
         NSNumber* step = [item objectForKey:@"step"];
         newvalue += ([object intValue] * [step intValue]);
+
+        // confirm range
+        if (newvalue < 0) {
+          newvalue = 0;
+        } else if (newvalue > 1073741824) { // 2^30
+          newvalue = 1073741824;
+        }
+
         [[client_ proxy] setValueForName:newvalue forName:identifier];
 
         [outlineView reloadItem:item];
