@@ -49,10 +49,10 @@ NSString* notificationName_modifier_sticky = @"Sticky Modifier Keys";
     //
     // (1) Stop Growl.
     // (2) Delete KeyRemap4MacBook entry from Growl Preferences.
-    // (3) Stop KeyRemap4MacBook_server.
-    // (4) Start KeyRemap4MacBook_server.
+    // (3) Stop KeyRemap4MacBook server process.
+    // (4) Start KeyRemap4MacBook server process.
     // (5) Start Growl.
-    // (6) call notifyWithTitle in KeyRemap4MacBook_server.
+    // (6) call notifyWithTitle in KeyRemap4MacBook server process.
     [GrowlApplicationBridge setWillRegisterWhenGrowlIsReady:YES];
   }
 

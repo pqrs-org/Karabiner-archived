@@ -20,4 +20,4 @@ xcode:
 
 run:
 	-launchctl unload /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.server.plist 2>/dev/null
-	./build/Release/KeyRemap4MacBook_server.app/Contents/MacOS/KeyRemap4MacBook_server
+	./build/Release/KeyRemap4MacBook.app/Contents/MacOS/KeyRemap4MacBook

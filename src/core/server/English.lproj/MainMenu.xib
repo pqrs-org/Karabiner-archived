@@ -45,7 +45,7 @@
 				<int key="NSWindowBacking">2</int>
 				<string key="NSWindowRect">{{335, 582}, {552, 168}}</string>
 				<int key="NSWTFlags">1954026496</int>
-				<string key="NSWindowTitle">KeyRemap4MacBook_server</string>
+				<string key="NSWindowTitle">KeyRemap4MacBook</string>
 				<string key="NSWindowClass">NSWindow</string>
 				<nil key="NSViewClass"/>
 				<nil key="NSUserInterfaceItemIdentifier"/>
