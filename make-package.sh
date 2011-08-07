@@ -46,13 +46,11 @@ sudo find pkgroot -type d -print0 | xargs -0 sudo chmod 755
 sudo find pkgroot -type f -print0 | xargs -0 sudo chmod 644
 sudo find pkgroot -type l -print0 | xargs -0 sudo chmod -h 755
 sudo find pkgroot -name '*.sh' -print0 | xargs -0 sudo chmod 755
-sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook_server.app/Contents/MacOS/KeyRemap4MacBook_server
-sudo chmod 755 pkgroot/$basedir/app/KeyDump.app/Contents/MacOS/KeyDump
-sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook_multitouchextension.app/Contents/MacOS/KeyRemap4MacBook_multitouchextension
-sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook_cli.app/Contents/MacOS/KeyRemap4MacBook_cli
-sudo chmod 755 pkgroot/$basedir/app/uninstaller.app/Contents/MacOS/uninstaller
-sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook_server.app/Contents/Frameworks/Sparkle.framework/Resources/relaunch
-sudo chmod 755 pkgroot/$basedir/app/KeyRemap4MacBook_server.app/Contents/Frameworks/Sparkle.framework/Versions/Current/Sparkle
+for file in `sudo find pkgroot -type f`; do
+    if ./pkginfo/is-mach-o.sh "$file"; then
+        sudo chmod 755 "$file"
+    fi
+done
 sudo chown -R root:wheel pkgroot
 
 sudo chmod 1775 pkgroot/Library
