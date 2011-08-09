@@ -322,26 +322,30 @@ namespace org_pqrs_KeyRemap4MacBook {
       IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, p->get());
       if (! kbd) continue;
 
-      // We call setAlphaLock to match a state of CapsLock of the hardware with remapped CapsLock.
-      if (flags.isOn(ModifierFlag::CAPSLOCK)) {
-        if (! kbd->alphaLock()) {
-          kbd->setAlphaLock(true);
-        }
-      } else {
-        if (kbd->alphaLock()) {
-          kbd->setAlphaLock(false);
-        }
-      }
+      {
+        GlobalLock::ScopedUnlock lk;
 
-      if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_capslock_led_hack)) {
-        // Set CapsLock LED always.
-        // *** Do not use setAlphaLock for this purpose. It changes the flag status of the hardware CapsLock. ***
-        enum {
-          CAPSLOCK_LED_MASK = 0x2,
-        };
-        bool isLED = (kbd->getLEDStatus() & CAPSLOCK_LED_MASK);
-        if (! isLED) {
-          kbd->setAlphaLockFeedback(true);
+        // We call setAlphaLock to match a state of CapsLock of the hardware with remapped CapsLock.
+        if (flags.isOn(ModifierFlag::CAPSLOCK)) {
+          if (! kbd->alphaLock()) {
+            kbd->setAlphaLock(true);
+          }
+        } else {
+          if (kbd->alphaLock()) {
+            kbd->setAlphaLock(false);
+          }
+        }
+
+        if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_capslock_led_hack)) {
+          // Set CapsLock LED always.
+          // *** Do not use setAlphaLock for this purpose. It changes the flag status of the hardware CapsLock. ***
+          enum {
+            CAPSLOCK_LED_MASK = 0x2,
+          };
+          bool isLED = (kbd->getLEDStatus() & CAPSLOCK_LED_MASK);
+          if (! isLED) {
+            kbd->setAlphaLockFeedback(true);
+          }
         }
       }
     }
