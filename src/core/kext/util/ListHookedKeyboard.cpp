@@ -335,18 +335,6 @@ namespace org_pqrs_KeyRemap4MacBook {
             kbd->setAlphaLock(false);
           }
         }
-
-        if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_capslock_led_hack)) {
-          // Set CapsLock LED always.
-          // *** Do not use setAlphaLock for this purpose. It changes the flag status of the hardware CapsLock. ***
-          enum {
-            CAPSLOCK_LED_MASK = 0x2,
-          };
-          bool isLED = (kbd->getLEDStatus() & CAPSLOCK_LED_MASK);
-          if (! isLED) {
-            kbd->setAlphaLockFeedback(true);
-          }
-        }
       }
     }
   }

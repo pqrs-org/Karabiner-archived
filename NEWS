@@ -1,4 +1,8 @@
 Changes since 7.3.0
+    - Removed "General > Enable CapsLock LED Hack".
+      If you're using this setting for PCKeyboardHack,
+      use "No Action" configuration instead.
+      http://pqrs.org/macosx/keyremap4macbook/extra.html#t1p1
     - Clean up "Simultaneous Vi Mode".
       (and split some options into "Home Row Arrow and Modifier Mode".)
     - Added KeyCode::VK_STICKY_*_FORCE_ON, KeyCode::VK_STICKY_*_FORCE_OFF.

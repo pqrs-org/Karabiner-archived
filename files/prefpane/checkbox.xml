@@ -5,6 +5,17 @@
       <name>General</name>
       <list>
         <item>
+          <name>Suppress Growl warning</name>
+          <appendix>This option suppresses the warnings: "Growl is not installed", "Growl is not running"</appendix>
+          <appendix></appendix>
+          <appendix>If you want to suppress the Growl notification itself,</appendix>
+          <appendix>disable the notification of KeyRemap4MacBook from Growl Preferences.</appendix>
+          <identifier essential="true">general.suppress_growl_warning</identifier>
+        </item>
+        <item>
+          <name>------------------------------------------------------------</name>
+        </item>
+        <item>
           <name>Don't remap an internal keyboard</name>
           <identifier essential="true">general.dont_remap_internal</identifier>
         </item>
@@ -36,25 +47,21 @@
           <identifier essential="true">general.dont_remap_thirdvendor_pointing</identifier>
         </item>
         <item>
-          <name>Enable CapsLock LED Hack</name>
-          <appendix>(Keep LED on to prevent a delay of CapsLock at some Apple's keyboard)</appendix>
-          <identifier essential="true">general.capslock_led_hack</identifier>
-        </item>
-        <item>
-          <name>Pass-Through CapsLock LED status</name>
-          <appendix>(Don't enable this when you use "XXX to CapsLock")</appendix>
-          <identifier essential="true">general.passthrough_capslock_led_status</identifier>
+          <name>Excluding Devices</name>
+          <list>
+            <item>
+              <name>Don't Remap Logitech Cordless Presenter</name>
+              <identifier essential="true">general.dont_remap_logitech_cordless_presenter</identifier>
+            </item>
+          </list>
         </item>
         <item>
           <name>------------------------------------------------------------</name>
         </item>
         <item>
-          <name>Suppress Growl warning</name>
-          <appendix>This option suppresses the warnings: "Growl is not installed", "Growl is not running"</appendix>
-          <appendix></appendix>
-          <appendix>If you want to suppress the Growl notification itself,</appendix>
-          <appendix>disable the notification of KeyRemap4MacBook from Growl Preferences.</appendix>
-          <identifier essential="true">general.suppress_growl_warning</identifier>
+          <name>Pass-Through CapsLock LED status</name>
+          <appendix>(Don't enable this when you use "XXX to CapsLock")</appendix>
+          <identifier essential="true">general.passthrough_capslock_led_status</identifier>
         </item>
         <item>
           <name>------------------------------------------------------------</name>
@@ -69,18 +76,12 @@
           <identifier essential="true">general.lazy_modifiers_with_mouse_event</identifier>
         </item>
         <item>
+          <name>------------------------------------------------------------</name>
+        </item>
+        <item>
           <name>Disable NumPad Hack</name>
           <appendix>(Don't change Fn+JKL.. to NumPad, and other Fn+key combinations)</appendix>
           <identifier essential="true">general.disable_numpad_hack</identifier>
-        </item>
-        <item>
-          <name>Excluding Devices</name>
-          <list>
-            <item>
-              <name>Don't Remap Logitech Cordless Presenter</name>
-              <identifier essential="true">general.dont_remap_logitech_cordless_presenter</identifier>
-            </item>
-          </list>
         </item>
       </list>
     </item>
