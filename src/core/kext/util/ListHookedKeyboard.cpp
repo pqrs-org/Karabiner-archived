@@ -319,6 +319,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (Item* p = static_cast<Item*>(self.list_->front()); p; p = static_cast<Item*>(p->getnext())) {
       if (! p->isReplaced()) continue;
 
+      // Don't call setAlphaLock on devices which have non-Apple driver.
+      if (p->getDeviceType() != DeviceType::APPLE_INTERNAL &&
+          p->getDeviceType() != DeviceType::APPLE_EXTERNAL) {
+        continue;
+      }
+
       IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, p->get());
       if (! kbd) continue;
 
