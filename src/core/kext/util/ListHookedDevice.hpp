@@ -22,6 +22,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool isEqualVendor(DeviceVendor vendor) const;
       DeviceVendor getVendor(void) const { return vendor_; }
       DeviceProduct getProduct(void) const { return product_; }
+      DeviceType::DeviceType getDeviceType(void) { return deviceType_; }
 
     protected:
       IOHIDevice* device_;
