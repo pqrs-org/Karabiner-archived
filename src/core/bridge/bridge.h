@@ -17,9 +17,10 @@ enum {
   // Version 10: Added an essential configuration. (parameter.keyoverlaidmodifier_initial_modifier_wait)
   // Version 11: Changed initialize vector format (added configindex)
   // Version 12: Added BRIDGE_REMAPTYPE_DROPSCROLLWHEEL
-  // Version 10: Added an essential configuration. (general.dont_remap_non_apple_keyboard)
+  // Version 13: Added an essential configuration. (general.dont_remap_non_apple_keyboard)
+  // Version 14: Removed an essential configuration. (general.capslock_led_hack)
 
-  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 13,
+  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 14,
 };
 
 enum {
