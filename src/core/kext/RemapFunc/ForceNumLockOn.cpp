@@ -54,12 +54,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       // NumLock Hacks
       //
       // As for some keypads, NumLock is off when it was connected.
-      // We need to call setAlphaLock(true) to activate a device.
+      // We need to call setNumLock(true) to activate a device.
       IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, item->get());
       if (kbd) {
         GlobalLock::ScopedUnlock lk;
         if (! kbd->numLock()) {
-          kbd->setNumLockFeedback(true);
+          kbd->setNumLock(true);
         }
       }
 
