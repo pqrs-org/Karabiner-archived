@@ -300,6 +300,10 @@
     return [parser keycode:@"ApplicationType::CITRIX_ONLINE_PLUG_IN"];
   }
 
+  if ([name isEqualToString:@"net.mame.mameosx"]) {
+    return [parser keycode:@"ApplicationType::MAME"];
+  }
+
   return [parser keycode:@"ApplicationType::UNKNOWN"];
 }
 
