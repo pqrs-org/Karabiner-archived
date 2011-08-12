@@ -24,10 +24,8 @@
           ((flags & NSFunctionKeyMask)   ? "Fn ":"")];
 }
 
-- (NSString*) keycodeToString:(NSEvent*)event
+- (NSString*) specialKeycodeToString:(unsigned short)keycode
 {
-  unsigned short keycode = [event keyCode];
-
   if (keycode == 0x35) return @"Escape";
   if (keycode == 0x36) return @"Command_R";
   if (keycode == 0x37) return @"Command_L";
@@ -81,7 +79,66 @@
   if (keycode == 0x6e) return @"Application";
   if (keycode == 0x75) return @"ForwardDelete";
 
-  return [event charactersIgnoringModifiers];
+  return nil;
+}
+
+- (NSString*) keycodeToString:(NSEvent*)event
+{
+  unsigned short keycode = [event keyCode];
+
+  NSString* string = [self specialKeycodeToString:keycode];
+  if (string) return string;
+
+  // --------------------
+  // Difference of "characters" and "charactersIgnoringModifiers".
+  //
+  // [NSEvent characters]
+  //   Option+z => Ω
+  //
+  // [NSEvent charactersIgnoringModifiers]
+  //   Option+z => z
+  //
+  // We prefer "Shift+Option+z" style than "Shift+Ω".
+  // Therefore we use charactersIgnoringModifiers here.
+  //
+  // --------------------
+  // However, there is a problem.
+  // When we use "Dvorak - Qwerty ⌘" as Input Source,
+  // charactersIgnoringModifiers returns ';'.
+  // It's wrong. Input Source does not change Command+z.
+  // So, we need to use 'characters' in this case.
+  //
+  // [NSEvent characters]
+  //    Command+z => z
+  // [NSEvent charactersIgnoringModifierss]
+  //    Command+z => ;
+  //
+  //
+  // --------------------
+  // But, we cannot use these properly without information about current Input Source.
+  // And this information cannot get by program.
+  //
+  // So, we use charactersIgnoringModifierss here and
+  // display the result of 'characters' in the 'misc' field.
+
+  @try {
+    return [event charactersIgnoringModifiers];
+  } @catch (NSException* exception) {}
+  return @"";
+}
+
+- (NSString*) charactersToString:(NSEvent*)event
+{
+  unsigned short keycode = [event keyCode];
+
+  // We ignore special characters.
+  NSString* string = [self specialKeycodeToString:keycode];
+  if (string) return @"";
+
+  @try {
+    return [event characters];
+  } @catch (NSException* exception) {}
+  return @"";
 }
 
 - (NSString*) buttonToString:(NSEvent*)event
@@ -114,7 +171,7 @@
                code:[NSString stringWithFormat:@"0x%x", [event keyCode]]
                name:[self keycodeToString:event]
               flags:[self modifierFlagsToString:[event modifierFlags]]
-               misc:@""];
+               misc:[NSString stringWithFormat:@"characters:%@", [self charactersToString:event]]];
 }
 
 - (void) outputMouseEvent:(NSEvent*)event eventType:(NSString*)eventType
