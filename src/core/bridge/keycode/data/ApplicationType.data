@@ -118,3 +118,6 @@ ORACLE_SQL_DEVELOPER    --AUTO--
 SYSTEM_PREFERENCES      --AUTO--
 
 CITRIX_ONLINE_PLUG_IN   --AUTO--
+
+// net.mame.mameosx
+MAME                    --AUTO--
