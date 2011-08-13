@@ -3889,6 +3889,12 @@
           <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_L, KeyCode::OPTION_L, KeyCode::END</autogen>
         </item>
         <item>
+          <name>Option_L to Option_L</name>
+          <appendix>(+ When you type Option_L only, send Control+F2 (Move focus to the menu bar))</appendix>
+          <identifier>remap.optionL2optionL_controlF2</identifier>
+          <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_L, KeyCode::OPTION_L, KeyCode::F2, ModifierFlag::CONTROL_L</autogen>
+        </item>
+        <item>
           <name>Option_L to Option_R</name>
           <identifier>remap.optionL2optionR</identifier>
           <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::OPTION_R</autogen>
@@ -3976,6 +3982,12 @@
           <name>Command_R+Option_R to Fn</name>
           <identifier>remap.commandRoptionR2fn</identifier>
           <autogen>--KeyToKey-- KeyCode::OPTION_R, ModifierFlag::COMMAND_R, KeyCode::FN</autogen>
+        </item>
+        <item>
+          <name>Option_R to Option_R</name>
+          <appendix>(+ When you type Option_R only, send Control+F2 (Move focus to the menu bar))</appendix>
+          <identifier>remap.optionR2optionR_controlF2</identifier>
+          <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_R, KeyCode::OPTION_R, KeyCode::F2, ModifierFlag::CONTROL_L</autogen>
         </item>
         <item>
           <name>Option_R to Option_R</name>
