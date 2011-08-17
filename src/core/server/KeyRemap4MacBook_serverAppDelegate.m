@@ -50,19 +50,25 @@
   }
 }
 
-- (void) observer_kTISNotifySelectedKeyboardInputSourceChanged:(NSNotification*)notification
+- (void) distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:(NSNotification*)notification
 {
-  NSString* name = [WorkSpaceData getTISPropertyInputModeID];
-  if (name) {
-    [WorkSpaceData getInputMode:name
-               output_inputmode:(&(bridgeworkspacedata_.inputmode))
-         output_inputmodedetail:(&(bridgeworkspacedata_.inputmodedetail))];
-    [self send_workspacedata_to_kext];
+  // [NSAutoreleasePool drain] is never called from NSDistributedNotificationCenter.
+  // Therefore, we need to make own NSAutoreleasePool.
+  NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+  {
+    NSString* name = [WorkSpaceData getTISPropertyInputModeID];
+    if (name) {
+      [WorkSpaceData getInputMode:name
+                 output_inputmode:(&(bridgeworkspacedata_.inputmode))
+           output_inputmodedetail:(&(bridgeworkspacedata_.inputmodedetail))];
+      [self send_workspacedata_to_kext];
 
-    NSDictionary* userInfo = [NSDictionary dictionaryWithObject:name forKey:@"name"];
+      NSDictionary* userInfo = [NSDictionary dictionaryWithObject:name forKey:@"name"];
 
-    [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookInputSourceChangedNotification userInfo:userInfo];
+      [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookInputSourceChangedNotification userInfo:userInfo];
+    }
   }
+  [pool drain];
 }
 
 // ------------------------------------------------------------
@@ -221,17 +227,35 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 }
 
 // ------------------------------------------------------------
-- (void) observer_ConfigXMLReloaded:(NSNotification*)notification {
-  [self send_remapclasses_initialize_vector_to_kext];
-  [self send_config_to_kext];
+- (void) distributedObserver_ConfigXMLReloaded:(NSNotification*)notification {
+  // [NSAutoreleasePool drain] is never called from NSDistributedNotificationCenter.
+  // Therefore, we need to make own NSAutoreleasePool.
+  NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+  {
+    [self send_remapclasses_initialize_vector_to_kext];
+    [self send_config_to_kext];
+  }
+  [pool drain];
 }
 
-- (void) observer_ConfigListChanged:(NSNotification*)notification {
-  [statusbar_ refresh];
+- (void) distributedObserver_ConfigListChanged:(NSNotification*)notification {
+  // [NSAutoreleasePool drain] is never called from NSDistributedNotificationCenter.
+  // Therefore, we need to make own NSAutoreleasePool.
+  NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+  {
+    [statusbar_ refresh];
+  }
+  [pool drain];
 }
 
-- (void) observer_PreferencesChanged:(NSNotification*)notification {
-  [self send_config_to_kext];
+- (void) distributedObserver_PreferencesChanged:(NSNotification*)notification {
+  // [NSAutoreleasePool drain] is never called from NSDistributedNotificationCenter.
+  // Therefore, we need to make own NSAutoreleasePool.
+  NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+  {
+    [self send_config_to_kext];
+  }
+  [pool drain];
 }
 
 // ------------------------------------------------------------
@@ -315,7 +339,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
                                                            object:nil];
 
   [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
-                                                                selector:@selector(observer_kTISNotifySelectedKeyboardInputSourceChanged:)
+                                                                selector:@selector(distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:)
                                                                     name:(NSString*)(kTISNotifySelectedKeyboardInputSourceChanged)
                                                                   object:nil];
 
@@ -334,21 +358,21 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_ConfigListChanged:) name:@"ConfigListChanged" object:nil];
 
   [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
-                                                                selector:@selector(observer_ConfigXMLReloaded:)
+                                                                selector:@selector(distributedObserver_ConfigXMLReloaded:)
                                                                     name:kKeyRemap4MacBookConfigXMLReloadedNotification];
 
   [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
-                                                                selector:@selector(observer_PreferencesChanged:)
+                                                                selector:@selector(distributedObserver_PreferencesChanged:)
                                                                     name:kKeyRemap4MacBookPreferencesChangedNotification];
 
   // ------------------------------------------------------------
   [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
-                                                                selector:@selector(observer_checkForUpdates:)
+                                                                selector:@selector(distributedObserver_checkForUpdates:)
                                                                     name:kKeyRemap4MacBookCheckForUpdatesNotification];
 
   // ------------------------------------------------------------
   [self observer_NSWorkspaceDidActivateApplicationNotification:nil];
-  [self observer_kTISNotifySelectedKeyboardInputSourceChanged:nil];
+  [self distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:nil];
   [self checkForUpdates:YES];
 }
 
