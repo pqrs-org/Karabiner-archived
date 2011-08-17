@@ -4,15 +4,27 @@
 
 @implementation org_pqrs_KeyRemap4MacBook_OutlineView
 
-- (void) observer_preferencesChanged:(NSNotification*)notification
+- (void) distributedObserver_preferencesChanged:(NSNotification*)notification
 {
-  [outlineview_ reloadData];
+  // [NSAutoreleasePool drain] is never called from NSDistributedNotificationCenter.
+  // Therefore, we need to make own NSAutoreleasePool.
+  NSAutoreleasePool* pool = [NSAutoreleasePool new];
+  {
+    [outlineview_ reloadData];
+  }
+  [pool drain];
 }
 
-- (void) observer_configXMLReloaded:(NSNotification*)notification
+- (void) distributedObserver_configXMLReloaded:(NSNotification*)notification
 {
-  [self load:YES];
-  [outlineview_ reloadData];
+  // [NSAutoreleasePool drain] is never called from NSDistributedNotificationCenter.
+  // Therefore, we need to make own NSAutoreleasePool.
+  NSAutoreleasePool* pool = [NSAutoreleasePool new];
+  {
+    [self load:YES];
+    [outlineview_ reloadData];
+  }
+  [pool drain];
 }
 
 - (id) init
@@ -21,11 +33,11 @@
 
   if (self) {
     [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
-                                                                  selector:@selector(observer_preferencesChanged:)
+                                                                  selector:@selector(distributedObserver_preferencesChanged:)
                                                                       name:kKeyRemap4MacBookPreferencesChangedNotification];
 
     [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
-                                                                  selector:@selector(observer_configXMLReloaded:)
+                                                                  selector:@selector(distributedObserver_configXMLReloaded:)
                                                                       name:kKeyRemap4MacBookConfigXMLReloadedNotification];
   }
 

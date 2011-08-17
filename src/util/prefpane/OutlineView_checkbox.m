@@ -15,11 +15,17 @@
   return self;
 }
 
-- (void) observer_configXMLReloaded:(NSNotification*)notification
+- (void) distributedObserver_configXMLReloaded:(NSNotification*)notification
 {
-  [super observer_configXMLReloaded:notification];
+  // [NSAutoreleasePool drain] is never called from NSDistributedNotificationCenter.
+  // Therefore, we need to make own NSAutoreleasePool.
+  NSAutoreleasePool* pool = [NSAutoreleasePool new];
+  {
+    [super distributedObserver_configXMLReloaded:notification];
 
-  [self filter:nil];
+    [self filter:nil];
+  }
+  [pool drain];
 }
 
 - (IBAction) reloadXML:(id)sender
