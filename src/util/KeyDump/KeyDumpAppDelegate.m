@@ -15,15 +15,27 @@
 @synthesize window;
 
 // ------------------------------------------------------------
-- (void) observer_applicationChanged:(NSNotification*)notification
+- (void) distributedObserver_applicationChanged:(NSNotification*)notification
 {
-  [otherinformationstore_ setApplicationName:[[notification userInfo] objectForKey:@"name"]];
+  // [NSAutoreleasePool drain] is never called from NSDistributedNotificationCenter.
+  // Therefore, we need to make own NSAutoreleasePool.
+  NSAutoreleasePool* pool = [NSAutoreleasePool new];
+  {
+    [otherinformationstore_ setApplicationName:[[notification userInfo] objectForKey:@"name"]];
+  }
+  [pool drain];
 }
 
 // ------------------------------------------------------------
-- (void) observer_inputSourceChanged:(NSNotification*)notification
+- (void) distributedObserver_inputSourceChanged:(NSNotification*)notification
 {
-  [otherinformationstore_ setInputSourceName:[[notification userInfo] objectForKey:@"name"]];
+  // [NSAutoreleasePool drain] is never called from NSDistributedNotificationCenter.
+  // Therefore, we need to make own NSAutoreleasePool.
+  NSAutoreleasePool* pool = [NSAutoreleasePool new];
+  {
+    [otherinformationstore_ setInputSourceName:[[notification userInfo] objectForKey:@"name"]];
+  }
+  [pool drain];
 }
 
 // ------------------------------------------------------------
@@ -35,11 +47,11 @@
   [otherinformationstore_ setInputSourceName:nil];
 
   [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
-                                                                selector:@selector(observer_applicationChanged:)
+                                                                selector:@selector(distributedObserver_applicationChanged:)
                                                                     name:kKeyRemap4MacBookApplicationChangedNotification];
 
   [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
-                                                                selector:@selector(observer_inputSourceChanged:)
+                                                                selector:@selector(distributedObserver_inputSourceChanged:)
                                                                     name:kKeyRemap4MacBookInputSourceChangedNotification];
 }
 
