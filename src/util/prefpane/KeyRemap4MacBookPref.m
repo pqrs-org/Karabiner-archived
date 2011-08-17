@@ -94,16 +94,28 @@
 }
 
 /* ---------------------------------------------------------------------- */
-- (void) observer_preferencesChanged:(NSNotification*)notification
+- (void) distributedObserver_preferencesChanged:(NSNotification*)notification
 {
-  [self drawEnabledCount];
+  // [NSAutoreleasePool drain] is never called from NSDistributedNotificationCenter.
+  // Therefore, we need to make own NSAutoreleasePool.
+  NSAutoreleasePool* pool = [NSAutoreleasePool new];
+  {
+    [self drawEnabledCount];
+  }
+  [pool drain];
 }
 
-- (void) observer_configXMLReloaded:(NSNotification*)notification
+- (void) distributedObserver_configXMLReloaded:(NSNotification*)notification
 {
-  // If activated preferences in private.xml were vanished, the count is changed.
-  // So, we need to call drawEnabledCount at configXMLReloaded notification.
-  [self drawEnabledCount];
+  // [NSAutoreleasePool drain] is never called from NSDistributedNotificationCenter.
+  // Therefore, we need to make own NSAutoreleasePool.
+  NSAutoreleasePool* pool = [NSAutoreleasePool new];
+  {
+    // If activated preferences in private.xml were vanished, the count is changed.
+    // So, we need to call drawEnabledCount at configXMLReloaded notification.
+    [self drawEnabledCount];
+  }
+  [pool drain];
 }
 
 - (void) mainViewDidLoad
@@ -115,11 +127,11 @@
   [self setCheckUpdateState];
 
   [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
-                                                                selector:@selector(observer_preferencesChanged:)
+                                                                selector:@selector(distributedObserver_preferencesChanged:)
                                                                     name:kKeyRemap4MacBookPreferencesChangedNotification];
 
   [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
-                                                                selector:@selector(observer_configXMLReloaded:)
+                                                                selector:@selector(distributedObserver_configXMLReloaded:)
                                                                     name:kKeyRemap4MacBookConfigXMLReloadedNotification];
 
   // For some reason, launchd does not start KeyRemap4MacBook server process permanently.
