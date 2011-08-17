@@ -18,10 +18,16 @@
   [self refresh_connection];
 }
 
-- (void) observer_serverLaunched:(NSNotification*)notification
+- (void) distributedObserver_serverLaunched:(NSNotification*)notification
 {
-  NSLog(@"observer_serverLaunched called");
-  [self refresh_connection];
+  // [NSAutoreleasePool drain] is never called from NSDistributedNotificationCenter.
+  // Therefore, we need to make own NSAutoreleasePool.
+  NSAutoreleasePool* pool = [NSAutoreleasePool new];
+  {
+    NSLog(@"distributedObserver_serverLaunched called");
+    [self refresh_connection];
+  }
+  [pool drain];
 }
 
 - (id) init
@@ -35,7 +41,7 @@
                                                object:nil];
 
     [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
-                                                                  selector:@selector(observer_serverLaunched:)
+                                                                  selector:@selector(distributedObserver_serverLaunched:)
                                                                       name:kKeyRemap4MacBookServerLaunchedNotification];
 
     [self refresh_connection];
