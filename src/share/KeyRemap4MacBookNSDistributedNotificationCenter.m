@@ -25,9 +25,16 @@
 
 + (void) removeObserver:(id)notificationObserver name:(NSString*)notificationName
 {
+  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter removeObserver:notificationObserver
+                                                                       name:notificationName
+                                                                     object:kKeyRemap4MacBookNotificationKey];
+}
+
++ (void) removeObserver:(id)notificationObserver name:(NSString*)notificationName object:(NSString*)notificationSender
+{
   [[NSDistributedNotificationCenter defaultCenter] removeObserver:notificationObserver
                                                              name:notificationName
-                                                           object:kKeyRemap4MacBookNotificationKey];
+                                                           object:notificationSender];
 }
 
 + (void) postNotificationName:(NSString*)notificationName userInfo:(NSDictionary*)userInfo
