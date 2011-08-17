@@ -379,6 +379,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 - (void) dealloc
 {
   [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter removeObserver:self];
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
 
   [super dealloc];
 }

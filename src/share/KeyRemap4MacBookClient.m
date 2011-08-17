@@ -54,6 +54,7 @@
 {
   // Call removeObserver first because observer may refresh connection.
   [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter removeObserver:self];
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
 
   [proxy release];
 
