@@ -142,4 +142,11 @@
   system("/bin/launchctl load -w /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.server.plist 2> /dev/null");
 }
 
+- (void) dealloc
+{
+  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter removeObserver:self];
+
+  [super dealloc];
+}
+
 @end

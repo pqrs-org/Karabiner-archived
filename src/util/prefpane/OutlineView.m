@@ -46,6 +46,8 @@
 
 - (void) dealloc
 {
+  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter removeObserver:self];
+
   [datasource_ release];
   [error_message_ release];
 
