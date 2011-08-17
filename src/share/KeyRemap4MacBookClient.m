@@ -52,6 +52,9 @@
 
 - (void) dealloc
 {
+  // Call removeObserver first because observer may refresh connection.
+  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter removeObserver:self];
+
   [proxy release];
 
   [super dealloc];

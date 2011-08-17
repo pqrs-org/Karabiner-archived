@@ -59,4 +59,11 @@
   return YES;
 }
 
+- (void) dealloc
+{
+  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter removeObserver:self];
+
+  [super dealloc];
+}
+
 @end

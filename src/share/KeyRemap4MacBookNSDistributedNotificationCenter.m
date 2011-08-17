@@ -23,6 +23,11 @@
                                             suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
 }
 
++ (void) removeObserver:(id)notificationObserver
+{
+  [[NSDistributedNotificationCenter defaultCenter] removeObserver:notificationObserver];
+}
+
 + (void) removeObserver:(id)notificationObserver name:(NSString*)notificationName
 {
   [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter removeObserver:notificationObserver
