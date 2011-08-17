@@ -48,7 +48,7 @@ void MTDeviceStop(MTDeviceRef, int);
 org_pqrs_KeyRemap4MacBook_Client* global_client_ = nil;
 
 static void setPreference(int fingers, int newvalue) {
-  NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+  NSAutoreleasePool* pool = [NSAutoreleasePool new];
   {
     NSString* name = [PreferencesController getSettingName:fingers];
     if ([name length] > 0) {
@@ -68,7 +68,7 @@ static void setPreference(int fingers, int newvalue) {
 // ------------------------------------------------------------
 // Multitouch callback
 static int callback(int device, struct Finger* data, int fingers, double timestamp, int frame) {
-  NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+  NSAutoreleasePool* pool = [NSAutoreleasePool new];
   {
     // deactivating settings first.
     for (int i = 0; i < MAX_FINGERS; ++i) {
@@ -104,7 +104,7 @@ static int callback(int device, struct Finger* data, int fingers, double timesta
 
 - (void) setcallback:(BOOL)isset {
   @synchronized(self) {
-    NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+    NSAutoreleasePool* pool = [NSAutoreleasePool new];
     {
       // ------------------------------------------------------------
       // unset callback (even if isset is YES.)

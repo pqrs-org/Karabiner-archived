@@ -54,7 +54,7 @@
 {
   // [NSAutoreleasePool drain] is never called from NSDistributedNotificationCenter.
   // Therefore, we need to make own NSAutoreleasePool.
-  NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+  NSAutoreleasePool* pool = [NSAutoreleasePool new];
   {
     NSString* name = [WorkSpaceData getTISPropertyInputModeID];
     if (name) {
@@ -230,7 +230,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 - (void) distributedObserver_ConfigXMLReloaded:(NSNotification*)notification {
   // [NSAutoreleasePool drain] is never called from NSDistributedNotificationCenter.
   // Therefore, we need to make own NSAutoreleasePool.
-  NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+  NSAutoreleasePool* pool = [NSAutoreleasePool new];
   {
     [self send_remapclasses_initialize_vector_to_kext];
     [self send_config_to_kext];
@@ -241,7 +241,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 - (void) distributedObserver_ConfigListChanged:(NSNotification*)notification {
   // [NSAutoreleasePool drain] is never called from NSDistributedNotificationCenter.
   // Therefore, we need to make own NSAutoreleasePool.
-  NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+  NSAutoreleasePool* pool = [NSAutoreleasePool new];
   {
     [statusbar_ refresh];
   }
@@ -251,7 +251,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 - (void) distributedObserver_PreferencesChanged:(NSNotification*)notification {
   // [NSAutoreleasePool drain] is never called from NSDistributedNotificationCenter.
   // Therefore, we need to make own NSAutoreleasePool.
-  NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+  NSAutoreleasePool* pool = [NSAutoreleasePool new];
   {
     [self send_config_to_kext];
   }
