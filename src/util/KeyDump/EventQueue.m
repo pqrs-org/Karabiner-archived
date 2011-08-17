@@ -13,10 +13,17 @@ enum {
   self = [super init];
 
   if (self) {
-    queue_ = [[NSMutableArray alloc] init];
+    queue_ = [NSMutableArray new];
   }
 
   return self;
+}
+
+- (void) dealloc
+{
+  [queue_ release];
+
+  [super dealloc];
 }
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView*)aTableView

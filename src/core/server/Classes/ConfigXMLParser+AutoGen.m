@@ -400,7 +400,7 @@
       NSXMLNode* attr_essential = [e attributeForName:@"essential"];
       if (attr_essential) continue;
 
-      NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+      NSAutoreleasePool* pool = [NSAutoreleasePool new];
       {
         NSMutableArray* initialize_vector = [[NSMutableArray new] autorelease];
         NSString* rawname = [e stringValue];
