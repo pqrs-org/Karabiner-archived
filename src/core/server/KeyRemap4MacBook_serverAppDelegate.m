@@ -238,14 +238,8 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   [pool drain];
 }
 
-- (void) distributedObserver_ConfigListChanged:(NSNotification*)notification {
-  // [NSAutoreleasePool drain] is never called from NSDistributedNotificationCenter.
-  // Therefore, we need to make own NSAutoreleasePool.
-  NSAutoreleasePool* pool = [NSAutoreleasePool new];
-  {
-    [statusbar_ refresh];
-  }
-  [pool drain];
+- (void) observer_ConfigListChanged:(NSNotification*)notification {
+  [statusbar_ refresh];
 }
 
 - (void) distributedObserver_PreferencesChanged:(NSNotification*)notification {
@@ -319,9 +313,15 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   }
 }
 
-- (void) observer_checkForUpdates:(NSNotification*)aNotification
+- (void) distributedObserver_checkForUpdates:(NSNotification*)aNotification
 {
-  [self checkForUpdates:NO];
+  // [NSAutoreleasePool drain] is never called from NSDistributedNotificationCenter.
+  // Therefore, we need to make own NSAutoreleasePool.
+  NSAutoreleasePool* pool = [NSAutoreleasePool new];
+  {
+    [self checkForUpdates:NO];
+  }
+  [pool drain];
 }
 
 // ------------------------------------------------------------
