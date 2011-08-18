@@ -4125,6 +4125,13 @@
           <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, ModifierFlag::EXTRA1, KeyCode::END</autogen>
           <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::EXTRA1, KeyCode::FORWARD_DELETE</autogen>
         </item>
+        <item>
+          <name>Option_R to RightClick</name>
+          <appendix>Fn+Option_R preserves Right Option</appendix>
+          <identifier>remap.option_r_to_right_click</identifier>
+          <autogen>--KeyToKey-- KeyCode::OPTION_R, ModifierFlag::FN, KeyCode::OPTION_R</autogen>
+          <autogen>--KeyToPointingButton-- KeyCode::OPTION_R, PointingButton::RIGHT</autogen>
+        </item>
       </list>
     </item>
 
