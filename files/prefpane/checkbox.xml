@@ -4399,6 +4399,11 @@
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_R, KeyCode::SPACE</autogen>
         </item>
         <item>
+          <name>Shift_L to Tab</name>
+          <identifier>remap.shiftL2tab</identifier>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::TAB</autogen>
+        </item>
+        <item>
           <name>Disable Shift_L</name>
           <identifier>remap.drop_shiftL</identifier>
           <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::VK_NONE</autogen>
@@ -4743,6 +4748,11 @@
           <appendix>(+ When you type Control_L+Tab, send Control_L+Tab)</appendix>
           <identifier>remap.tab2option_withControlL</identifier>
           <autogen>--KeyOverlaidModifier-- KeyCode::TAB, ModifierFlag::CONTROL_L, KeyCode::OPTION_L, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
+        </item>
+        <item>
+          <name>Tab to Shift_L</name>
+          <identifier>remap.tab2shiftL</identifier>
+          <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::SHIFT_L</autogen>
         </item>
         <item>
           <name>Tab to Expose All</name>
