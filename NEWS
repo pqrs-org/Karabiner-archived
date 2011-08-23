@@ -1,4 +1,8 @@
-Changes since 7.3.0
+Changes since 7.4.0
+    - Added about XXX kinds settings.
+
+----------------------------------------------------------------------
+= version 7.4.0 =
     - Some improvements on Mac OS X 10.7 (Lion).
     - Removed "General > Enable CapsLock LED Hack".
       If you're using this setting for PCKeyboardHack,
