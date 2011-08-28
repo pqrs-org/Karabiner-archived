@@ -623,6 +623,28 @@ TEST(KeyCode, isModifier) {
   EXPECT_EQ(false, KeyCode(KeyCode::VK_NONE).isModifier());
 }
 
+TEST(ConsumerKeyCode, isRepeatable) {
+  EXPECT_EQ(true,  ConsumerKeyCode::BRIGHTNESS_DOWN.isRepeatable());
+  EXPECT_EQ(true,  ConsumerKeyCode::BRIGHTNESS_UP.isRepeatable());
+
+  EXPECT_EQ(false, ConsumerKeyCode::KEYBOARDLIGHT_OFF.isRepeatable());
+  EXPECT_EQ(true,  ConsumerKeyCode::KEYBOARDLIGHT_LOW.isRepeatable());
+  EXPECT_EQ(true,  ConsumerKeyCode::KEYBOARDLIGHT_HIGH.isRepeatable());
+
+  EXPECT_EQ(true,  ConsumerKeyCode::MUSIC_PREV.isRepeatable());
+  EXPECT_EQ(false, ConsumerKeyCode::MUSIC_PLAY.isRepeatable());
+  EXPECT_EQ(true,  ConsumerKeyCode::MUSIC_NEXT.isRepeatable());
+
+  EXPECT_EQ(false, ConsumerKeyCode::VOLUME_MUTE.isRepeatable());
+  EXPECT_EQ(true,  ConsumerKeyCode::VOLUME_DOWN.isRepeatable());
+  EXPECT_EQ(true,  ConsumerKeyCode::VOLUME_UP.isRepeatable());
+
+  EXPECT_EQ(false, ConsumerKeyCode::EJECT.isRepeatable());
+  EXPECT_EQ(false, ConsumerKeyCode::POWER.isRepeatable());
+  EXPECT_EQ(false, ConsumerKeyCode::NUMLOCK.isRepeatable());
+  EXPECT_EQ(false, ConsumerKeyCode::VIDEO_MIRROR.isRepeatable());
+}
+
 TEST(Buttons, add) {
   Buttons buttons;
   buttons.add(PointingButton::LEFT);
