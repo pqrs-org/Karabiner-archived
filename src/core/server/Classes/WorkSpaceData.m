@@ -245,6 +245,10 @@
     return [parser keycode:@"ApplicationType::WORLD_OF_WARCRAFT"];
   }
 
+  if ([name isEqualToString:@"com.blizzard.starcraft2"]) {
+    return [parser keycode:@"ApplicationType::STARCRAFT2"];
+  }
+
   // com.ctmdev.FoxTrot
   // com.ctmdev.FoxTrotPro
   if ([name hasPrefix:@"com.ctmdev.FoxTrot"]) {
