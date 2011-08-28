@@ -1814,6 +1814,14 @@
               <autogen>--KeyToKey-- KeyCode::Q,     KeyCode::VK_CONSUMERKEY_EJECT</autogen>
               <autogen>--KeyToKey-- KeyCode::W,     KeyCode::VK_CONSUMERKEY_POWER</autogen>
             </item>
+            <item>
+              <name>Combination with key repeat</name>
+              <appendix>Use 1 to VK_CONSUMERKEY_BRIGHTNESS_DOWN, Space</appendix>
+              <appendix>Use 2 to VK_CONSUMERKEY_BRIGHTNESS_UP, Space</appendix>
+              <identifier>remap.samples_vk_consumerkey_combination</identifier>
+              <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_CONSUMERKEY_BRIGHTNESS_DOWN, KeyCode::SPACE</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_CONSUMERKEY_BRIGHTNESS_UP, KeyCode::SPACE</autogen>
+            </item>
           </list>
         </item>
         <item>
