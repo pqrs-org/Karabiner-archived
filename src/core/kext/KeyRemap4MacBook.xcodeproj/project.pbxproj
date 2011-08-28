@@ -60,6 +60,8 @@
 		3477E3BC11CFAC9D00DC05C9 /* RemapClass.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3477E3BA11CFAC9D00DC05C9 /* RemapClass.hpp */; };
 		34794D53126F32E700655ADB /* SetKeyboardType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34794D51126F32E700655ADB /* SetKeyboardType.cpp */; };
 		34794D54126F32E700655ADB /* SetKeyboardType.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34794D52126F32E700655ADB /* SetKeyboardType.hpp */; };
+		34799527140A70B600B85E42 /* VK_CONSUMERKEY.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34799525140A70B600B85E42 /* VK_CONSUMERKEY.cpp */; };
+		34799528140A70B600B85E42 /* VK_CONSUMERKEY.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34799526140A70B600B85E42 /* VK_CONSUMERKEY.hpp */; };
 		347CADA011D82FFE00F51978 /* KeyToConsumer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 347CAD9E11D82FFE00F51978 /* KeyToConsumer.cpp */; };
 		347CADA111D82FFE00F51978 /* KeyToConsumer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 347CAD9F11D82FFE00F51978 /* KeyToConsumer.hpp */; };
 		3484E04811DE10CE00426723 /* KeyToPointingButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3484E04611DE10CE00426723 /* KeyToPointingButton.cpp */; };
@@ -196,6 +198,8 @@
 		3477E3BA11CFAC9D00DC05C9 /* RemapClass.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RemapClass.hpp; sourceTree = "<group>"; };
 		34794D51126F32E700655ADB /* SetKeyboardType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SetKeyboardType.cpp; path = RemapFunc/SetKeyboardType.cpp; sourceTree = "<group>"; };
 		34794D52126F32E700655ADB /* SetKeyboardType.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SetKeyboardType.hpp; path = RemapFunc/SetKeyboardType.hpp; sourceTree = "<group>"; };
+		34799525140A70B600B85E42 /* VK_CONSUMERKEY.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_CONSUMERKEY.cpp; path = VirtualKey/VK_CONSUMERKEY.cpp; sourceTree = "<group>"; };
+		34799526140A70B600B85E42 /* VK_CONSUMERKEY.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_CONSUMERKEY.hpp; path = VirtualKey/VK_CONSUMERKEY.hpp; sourceTree = "<group>"; };
 		347CAD9E11D82FFE00F51978 /* KeyToConsumer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyToConsumer.cpp; path = RemapFunc/KeyToConsumer.cpp; sourceTree = "<group>"; };
 		347CAD9F11D82FFE00F51978 /* KeyToConsumer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyToConsumer.hpp; path = RemapFunc/KeyToConsumer.hpp; sourceTree = "<group>"; };
 		3484E04611DE10CE00426723 /* KeyToPointingButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyToPointingButton.cpp; path = RemapFunc/KeyToPointingButton.cpp; sourceTree = "<group>"; };
@@ -453,6 +457,8 @@
 				34B464E613A6563B00470265 /* VK_CONFIG.hpp */,
 				34B464E113A654E600470265 /* VK_CHANGE_INPUTMODE.cpp */,
 				34B464E213A654E600470265 /* VK_CHANGE_INPUTMODE.hpp */,
+				34799525140A70B600B85E42 /* VK_CONSUMERKEY.cpp */,
+				34799526140A70B600B85E42 /* VK_CONSUMERKEY.hpp */,
 				34B464DD13A6538A00470265 /* VK_LAZY.cpp */,
 				34B464DE13A6538A00470265 /* VK_LAZY.hpp */,
 				34B464CE13A6515200470265 /* VK_LOCK.cpp */,
@@ -569,6 +575,7 @@
 				342BB27D13BB6A9900E18FDD /* RemapFuncClasses.hpp in Headers */,
 				340800D813BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.hpp in Headers */,
 				3405382313E6ED7E009DF83F /* DropScrollWheel.hpp in Headers */,
+				34799528140A70B600B85E42 /* VK_CONSUMERKEY.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,6 +716,7 @@
 				34B464FB13A65CE000470265 /* VK_JIS_TEMPORARY.cpp in Sources */,
 				340800D713BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.cpp in Sources */,
 				3405382213E6ED7E009DF83F /* DropScrollWheel.cpp in Sources */,
+				34799527140A70B600B85E42 /* VK_CONSUMERKEY.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
