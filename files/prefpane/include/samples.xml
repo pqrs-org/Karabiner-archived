@@ -1785,31 +1785,36 @@
         </item>
         <item>
           <name>VK_CONSUMERKEY</name>
-          <appendix>Use 1 to VK_CONSUMERKEY_BRIGHTNESS_DOWN</appendix>
-          <appendix>Use 2 to VK_CONSUMERKEY_BRIGHTNESS_UP</appendix>
-          <appendix>Use 3 to VK_CONSUMERKEY_KEYBOARDLIGHT_LOW</appendix>
-          <appendix>Use 4 to VK_CONSUMERKEY_KEYBOARDLIGHT_HIGH</appendix>
-          <appendix>Use 5 to VK_CONSUMERKEY_MUSIC_PREV</appendix>
-          <appendix>Use 6 to VK_CONSUMERKEY_MUSIC_PLAY</appendix>
-          <appendix>Use 7 to VK_CONSUMERKEY_MUSIC_NEXT</appendix>
-          <appendix>Use 8 to VK_CONSUMERKEY_VOLUME_MUTE</appendix>
-          <appendix>Use 9 to VK_CONSUMERKEY_VOLUME_DOWN</appendix>
-          <appendix>Use 0 to VK_CONSUMERKEY_VOLUME_UP</appendix>
-          <appendix>Use q to VK_CONSUMERKEY_EJECT</appendix>
-          <appendix>Use w to VK_CONSUMERKEY_POWER</appendix>
-          <identifier>remap.samples_vk_consumerkey</identifier>
-          <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_CONSUMERKEY_BRIGHTNESS_DOWN</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_CONSUMERKEY_BRIGHTNESS_UP</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::VK_CONSUMERKEY_KEYBOARDLIGHT_LOW</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_4, KeyCode::VK_CONSUMERKEY_KEYBOARDLIGHT_HIGH</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_5, KeyCode::VK_CONSUMERKEY_MUSIC_PREV</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::VK_CONSUMERKEY_MUSIC_PLAY</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_7, KeyCode::VK_CONSUMERKEY_MUSIC_NEXT</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_8, KeyCode::VK_CONSUMERKEY_VOLUME_MUTE</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_9, KeyCode::VK_CONSUMERKEY_VOLUME_DOWN</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_0, KeyCode::VK_CONSUMERKEY_VOLUME_UP</autogen>
-          <autogen>--KeyToKey-- KeyCode::Q,     KeyCode::VK_CONSUMERKEY_EJECT</autogen>
-          <autogen>--KeyToKey-- KeyCode::W,     KeyCode::VK_CONSUMERKEY_POWER</autogen>
+          <list>
+            <item>
+              <name>Standard</name>
+              <appendix>Use 1 to VK_CONSUMERKEY_BRIGHTNESS_DOWN</appendix>
+              <appendix>Use 2 to VK_CONSUMERKEY_BRIGHTNESS_UP</appendix>
+              <appendix>Use 3 to VK_CONSUMERKEY_KEYBOARDLIGHT_LOW</appendix>
+              <appendix>Use 4 to VK_CONSUMERKEY_KEYBOARDLIGHT_HIGH</appendix>
+              <appendix>Use 5 to VK_CONSUMERKEY_MUSIC_PREV</appendix>
+              <appendix>Use 6 to VK_CONSUMERKEY_MUSIC_PLAY</appendix>
+              <appendix>Use 7 to VK_CONSUMERKEY_MUSIC_NEXT</appendix>
+              <appendix>Use 8 to VK_CONSUMERKEY_VOLUME_MUTE</appendix>
+              <appendix>Use 9 to VK_CONSUMERKEY_VOLUME_DOWN</appendix>
+              <appendix>Use 0 to VK_CONSUMERKEY_VOLUME_UP</appendix>
+              <appendix>Use q to VK_CONSUMERKEY_EJECT</appendix>
+              <appendix>Use w to VK_CONSUMERKEY_POWER</appendix>
+              <identifier>remap.samples_vk_consumerkey</identifier>
+              <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_CONSUMERKEY_BRIGHTNESS_DOWN</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_CONSUMERKEY_BRIGHTNESS_UP</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::VK_CONSUMERKEY_KEYBOARDLIGHT_LOW</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_4, KeyCode::VK_CONSUMERKEY_KEYBOARDLIGHT_HIGH</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_5, KeyCode::VK_CONSUMERKEY_MUSIC_PREV</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::VK_CONSUMERKEY_MUSIC_PLAY</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_7, KeyCode::VK_CONSUMERKEY_MUSIC_NEXT</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_8, KeyCode::VK_CONSUMERKEY_VOLUME_MUTE</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_9, KeyCode::VK_CONSUMERKEY_VOLUME_DOWN</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_0, KeyCode::VK_CONSUMERKEY_VOLUME_UP</autogen>
+              <autogen>--KeyToKey-- KeyCode::Q,     KeyCode::VK_CONSUMERKEY_EJECT</autogen>
+              <autogen>--KeyToKey-- KeyCode::W,     KeyCode::VK_CONSUMERKEY_POWER</autogen>
+            </item>
+          </list>
         </item>
         <item>
           <name>VK_JIS_TOGGLE_EISUU_KANA</name>
