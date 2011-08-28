@@ -24,7 +24,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     VirtualKey::VK_JIS_TEMPORARY::initialize(workloop);
 
     VirtualKey::VK_CONFIG::initialize();
-    VirtualKey::VK_CONSUMERKEY::initialize();
   }
 
   void
@@ -34,7 +33,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     VirtualKey::VK_JIS_TEMPORARY::terminate();
 
     VirtualKey::VK_CONFIG::terminate();
-    VirtualKey::VK_CONSUMERKEY::terminate();
   }
 
   void
