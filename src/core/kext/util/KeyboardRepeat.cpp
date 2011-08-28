@@ -152,14 +152,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       goto cancel;
 
     } else if (eventType == EventType::DOWN) {
-      if (key != ConsumerKeyCode::BRIGHTNESS_DOWN &&
-          key != ConsumerKeyCode::BRIGHTNESS_UP &&
-          key != ConsumerKeyCode::KEYBOARDLIGHT_LOW &&
-          key != ConsumerKeyCode::KEYBOARDLIGHT_HIGH &&
-          key != ConsumerKeyCode::MUSIC_PREV &&
-          key != ConsumerKeyCode::MUSIC_NEXT &&
-          key != ConsumerKeyCode::VOLUME_DOWN &&
-          key != ConsumerKeyCode::VOLUME_UP) {
+      if (! key.isRepeatable()) {
         goto cancel;
       }
 

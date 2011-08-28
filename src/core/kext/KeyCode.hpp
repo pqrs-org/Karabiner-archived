@@ -258,6 +258,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool operator>(ConsumerKeyCode other) const { return value_ > other.get(); }
     bool operator>=(ConsumerKeyCode other) const { return value_ >= other.get(); }
 
+    bool isRepeatable(void) const;
+
 #include "../bridge/keycode/output/include.ConsumerKeyCode.hpp"
 
   private:

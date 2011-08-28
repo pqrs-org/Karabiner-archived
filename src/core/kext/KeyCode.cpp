@@ -180,4 +180,19 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     return ModifierFlag::NONE;
   }
+
+  bool
+  ConsumerKeyCode::isRepeatable(void) const
+  {
+    if (*this == ConsumerKeyCode::BRIGHTNESS_DOWN)    { return true; }
+    if (*this == ConsumerKeyCode::BRIGHTNESS_UP)      { return true; }
+    if (*this == ConsumerKeyCode::KEYBOARDLIGHT_LOW)  { return true; }
+    if (*this == ConsumerKeyCode::KEYBOARDLIGHT_HIGH) { return true; }
+    if (*this == ConsumerKeyCode::MUSIC_PREV)         { return true; }
+    if (*this == ConsumerKeyCode::MUSIC_NEXT)         { return true; }
+    if (*this == ConsumerKeyCode::VOLUME_DOWN)        { return true; }
+    if (*this == ConsumerKeyCode::VOLUME_UP)          { return true; }
+
+    return false;
+  }
 }
