@@ -19,8 +19,9 @@ enum {
   // Version 12: Added BRIDGE_REMAPTYPE_DROPSCROLLWHEEL
   // Version 13: Added an essential configuration. (general.dont_remap_non_apple_keyboard)
   // Version 14: Removed an essential configuration. (general.capslock_led_hack)
+  // Version 15: Added VK_CONSUMERKEY_*.
 
-  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 14,
+  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 15,
 };
 
 enum {

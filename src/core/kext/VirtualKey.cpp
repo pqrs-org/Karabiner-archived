@@ -6,6 +6,7 @@
 #include "VirtualKey.hpp"
 #include "VirtualKey/VK_CHANGE_INPUTMODE.hpp"
 #include "VirtualKey/VK_CONFIG.hpp"
+#include "VirtualKey/VK_CONSUMERKEY.hpp"
 #include "VirtualKey/VK_LAZY.hpp"
 #include "VirtualKey/VK_LOCK.hpp"
 #include "VirtualKey/VK_MOUSEKEY.hpp"
@@ -23,6 +24,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     VirtualKey::VK_JIS_TEMPORARY::initialize(workloop);
 
     VirtualKey::VK_CONFIG::initialize();
+    VirtualKey::VK_CONSUMERKEY::initialize();
   }
 
   void
@@ -32,6 +34,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     VirtualKey::VK_JIS_TEMPORARY::terminate();
 
     VirtualKey::VK_CONFIG::terminate();
+    VirtualKey::VK_CONSUMERKEY::terminate();
   }
 
   void
@@ -45,6 +48,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (VirtualKey::VK_CHANGE_INPUTMODE::handle(params))      { return true; }
     if (VirtualKey::VK_CONFIG::handle(params))                { return true; }
+    if (VirtualKey::VK_CONSUMERKEY::handle(params))           { return true; }
     if (VirtualKey::VK_LAZY::handle(params))                  { return true; }
     if (VirtualKey::VK_LOCK::handle(params))                  { return true; }
     if (VirtualKey::VK_MOUSEKEY::handle(params))              { return true; }
