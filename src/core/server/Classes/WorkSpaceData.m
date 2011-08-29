@@ -308,6 +308,10 @@
     return [parser keycode:@"ApplicationType::MAME"];
   }
 
+  if ([name isEqualToString:@"org.blenderfoundation.blender"]) {
+    return [parser keycode:@"ApplicationType::BLENDER"];
+  }
+
   return [parser keycode:@"ApplicationType::UNKNOWN"];
 }
 

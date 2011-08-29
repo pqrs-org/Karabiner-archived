@@ -124,3 +124,6 @@ CITRIX_ONLINE_PLUG_IN   --AUTO--
 
 // net.mame.mameosx
 MAME                    --AUTO--
+
+// org.blenderfoundation.blender
+BLENDER                 --AUTO--
