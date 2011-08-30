@@ -3412,6 +3412,12 @@
           <name>Change KeyPad-Dot(.) Key</name>
           <list>
             <item>
+              <name>Swap Dot and Shift+Dot</name>
+              <identifier>remap.swap_dot_and_shiftdot</identifier>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEYPAD_DOT</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT,            ModifierFlag::NONE, KeyCode::KEYPAD_DOT, ModifierFlag::SHIFT_L</autogen>
+            </item>
+            <item>
               <name>KeyPad-Dot(.) to Comma(,)</name>
               <identifier>remap.keypaddot2comma</identifier>
               <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::KEYPAD_COMMA</autogen>
