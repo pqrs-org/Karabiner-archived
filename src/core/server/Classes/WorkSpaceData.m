@@ -312,6 +312,10 @@
     return [parser keycode:@"ApplicationType::BLENDER"];
   }
 
+  if ([name isEqualToString:@"com.acrylic.Pulp"]) {
+    return [parser keycode:@"ApplicationType::PULP"];
+  }
+
   return [parser keycode:@"ApplicationType::UNKNOWN"];
 }
 

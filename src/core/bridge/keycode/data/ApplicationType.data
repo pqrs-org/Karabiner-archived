@@ -127,3 +127,6 @@ MAME                    --AUTO--
 
 // org.blenderfoundation.blender
 BLENDER                 --AUTO--
+
+// com.acrylic.Pulp
+PULP                    --AUTO--
