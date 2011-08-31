@@ -336,12 +336,6 @@
               <identifier>remap.pointing_leftrightclick2f8</identifier>
               <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::F8</autogen>
             </item>
-            <item>
-              <name>LeftClick to F12 (only in MacBookPro2,1 Trackpad)</name>
-              <identifier>remap.pointing_leftclick2f12_trackpad</identifier>
-              <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a</device_only>
-              <autogen>--PointingButtonToKey-- PointingButton::LEFT, KeyCode::F12</autogen>
-            </item>
           </list>
         </item>
       </list>
