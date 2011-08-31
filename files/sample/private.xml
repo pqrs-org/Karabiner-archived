@@ -22,10 +22,10 @@
 
     <item>
       <name>My TrackPad LeftClick Hack</name>
-      <appendix>LeftClick to F12 (only in MacBookPro2,1 Trackpad)</appendix>
+      <appendix>Command+LeftClick to F12 (only in MacBookPro2,1 Trackpad)</appendix>
       <identifier>private.pointing_leftclick2f12_trackpad</identifier>
       <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a</device_only>
-      <autogen>--PointingButtonToKey-- PointingButton::LEFT, KeyCode::F12</autogen>
+      <autogen>--PointingButtonToKey-- PointingButton::LEFT, VK_COMMAND, KeyCode::F12</autogen>
     </item>
   </list>
 </root>
