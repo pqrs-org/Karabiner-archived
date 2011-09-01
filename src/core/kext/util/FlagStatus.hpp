@@ -31,6 +31,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       void decrease(void);
       void temporary_increase(void) { ++temporary_count_; }
       void temporary_decrease(void) { --temporary_count_; }
+      void temporary_strip(void) {
+        while (makeFlag() != 0) {
+          --temporary_count_;
+        }
+      }
       void lock_increase(void) { lock_count_ = 1; }
       void lock_decrease(void) { lock_count_ = 0; }
       void lock_toggle(void)   { lock_count_ = ! lock_count_; }
@@ -123,6 +128,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void decrease(Flags flags);
     static void temporary_increase(Flags flags);
     static void temporary_decrease(Flags flags);
+    static void temporary_strip(Flags flags);
     static void lock_increase(Flags flags);
     static void lock_decrease(Flags flags);
     static void lock_toggle(Flags flags);
