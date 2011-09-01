@@ -316,6 +316,10 @@
     return [parser keycode:@"ApplicationType::PULP"];
   }
 
+  if ([name isEqualToString:@"com.rsa.securid.softwaretoken"]) {
+    return [parser keycode:@"ApplicationType::RSA_SECURID_SOFTWARE_TOKEN"];
+  }
+
   return [parser keycode:@"ApplicationType::UNKNOWN"];
 }
 
