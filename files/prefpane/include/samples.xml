@@ -597,6 +597,26 @@
     </item>
 
     <item>
+      <name>StripModifierFromScrollWheel</name>
+      <list>
+        <item>
+          <name>Standard</name>
+          <appendix>Shift_L+ScrollWheel to ScrollWheel (strip Shift)</appendix>
+          <appendix>Option+ScrollWheel to ScrollWheel (strip Option)</appendix>
+          <identifier>remap.samples_stripmodifierfromscrollwheel</identifier>
+          <autogen>--StripModifierFromScrollWheel-- ModifierFlag::SHIFT_L</autogen>
+          <autogen>--StripModifierFromScrollWheel-- VK_OPTION</autogen>
+        </item>
+        <item>
+          <name>VK_MOD_ANY</name>
+          <appendix>Any Modifiers+ScrollWheel to ScrollWheel (strip Any Modifiers)</appendix>
+          <identifier>remap.samples_stripmodifierfromscrollwheel_any</identifier>
+          <autogen>--StripModifierFromScrollWheel-- VK_MOD_ANY</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>SimultaneousKeyPresses</name>
       <list>
         <item>
