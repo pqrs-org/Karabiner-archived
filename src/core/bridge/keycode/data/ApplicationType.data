@@ -130,3 +130,6 @@ BLENDER                 --AUTO--
 
 // com.acrylic.Pulp
 PULP                    --AUTO--
+
+// com.rsa.securid.softwaretoken
+RSA_SECURID_SOFTWARE_TOKEN --AUTO--
