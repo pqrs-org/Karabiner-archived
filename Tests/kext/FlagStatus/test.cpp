@@ -189,6 +189,17 @@ TEST(FlagStatus, temporary_strip) {
   // ------------------------------------------------------------
   ASSERT_TRUE(FlagStatus::initialize());
 
+  FlagStatus::decrease(ModifierFlag::COMMAND_L);
+  FlagStatus::temporary_strip(ModifierFlag::COMMAND_L);
+  EXPECT_EQ(Flags(0), FlagStatus::makeFlags());
+
+  FlagStatus::increase(ModifierFlag::COMMAND_L);
+  EXPECT_EQ(Flags(0), FlagStatus::makeFlags());
+}
+
+TEST(FlagStatus, temporary_strip_count) {
+  ASSERT_TRUE(FlagStatus::initialize());
+
   FlagStatus::increase(ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R | ModifierFlag::CONTROL_L);
   FlagStatus::lock_increase(ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R | ModifierFlag::CONTROL_L);
   FlagStatus::sticky_increase(ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R | ModifierFlag::CONTROL_L);
@@ -201,8 +212,9 @@ TEST(FlagStatus, temporary_strip) {
   // Therefore, calling temporary_increase turns on modifier.
   FlagStatus::temporary_increase(ModifierFlag::COMMAND_R);
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R | ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
+}
 
-  // ------------------------------------------------------------
+TEST(FlagStatus, temporary_strip_reset) {
   ASSERT_TRUE(FlagStatus::initialize());
 
   FlagStatus::increase(ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R | ModifierFlag::CONTROL_L);
