@@ -320,6 +320,10 @@
     return [parser keycode:@"ApplicationType::RSA_SECURID_SOFTWARE_TOKEN"];
   }
 
+  if ([name isEqualToString:@"com.alfredapp.Alfred"]) {
+    return [parser keycode:@"ApplicationType::ALFRED"];
+  }
+
   return [parser keycode:@"ApplicationType::UNKNOWN"];
 }
 
