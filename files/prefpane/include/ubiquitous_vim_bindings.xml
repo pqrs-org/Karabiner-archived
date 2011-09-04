@@ -139,8 +139,11 @@
             <autogen>--KeyToKey-- KeyCode::COMMA, VK_SHIFT, KeyCode::VK_NONE</autogen>
             <autogen>--KeyToKey-- KeyCode::MINUS, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
             <autogen>--KeyToKey-- KeyCode::MINUS, VK_SHIFT, KeyCode::VK_NONE</autogen>
-            <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
-            <autogen>--KeyToKey-- KeyCode::TAB, VK_SHIFT, KeyCode::VK_NONE</autogen>
+            <block>
+              <config_not>option.ubiquitous_vim_bindings_enable_tab</config_not>
+              <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+              <autogen>--KeyToKey-- KeyCode::TAB, VK_SHIFT, KeyCode::VK_NONE</autogen>
+            </block>
             <block>
               <config_not>notsave.g_operator_pending</config_not>
               <autogen>--KeyToKey-- KeyCode::T, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
@@ -610,6 +613,16 @@
           <autogen>--KeyToKey-- KeyCode::COMMAND_L, ModifierFlag::COMMAND_L, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending, KeyCode::VK_STICKY_COMMAND_L</autogen>
         </item>
 
+      </list>
+    </item>
+
+    <item>
+      <name>Activate dead keys</name>
+      <list>
+        <item>
+          <name>Enable Tab key</name>
+          <identifier>option.ubiquitous_vim_bindings_enable_tab</identifier>
+        </item>
       </list>
     </item>
 
