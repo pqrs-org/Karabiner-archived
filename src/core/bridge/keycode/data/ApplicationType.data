@@ -137,4 +137,10 @@ RSA_SECURID_SOFTWARE_TOKEN --AUTO--
 // com.alfredapp.Alfred
 ALFRED                  --AUTO--
 
-TWEETDECK		--AUTO--
+TWEETDECK				--AUTO--
+
+// com.secretgeometry.Cathode
+CATHODE					--AUTO--
+
+// org.kronenberg.WineBottler_PSPad
+PSPAD					--AUTO--
