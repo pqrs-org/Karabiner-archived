@@ -324,6 +324,10 @@
     return [parser keycode:@"ApplicationType::ALFRED"];
   }
 
+  if ([name isEqualToString:@"TweetDeckFast.FFF259DC0CE2657847BBB4AFF0E62062EFC56543.1"]) {
+    return [parser keycode:@"ApplicationType::TWEETDECK"];
+  }
+
   return [parser keycode:@"ApplicationType::UNKNOWN"];
 }
 
