@@ -327,6 +327,14 @@
   if ([name isEqualToString:@"TweetDeckFast.FFF259DC0CE2657847BBB4AFF0E62062EFC56543.1"]) {
     return [parser keycode:@"ApplicationType::TWEETDECK"];
   }
+  
+  if ([name isEqualToString:@"com.secretgeometry.Cathode"]) {
+    return [parser keycode:@"ApplicationType::CATHODE"];
+  }
+  
+  if ([name isEqualToString:@"org.kronenberg.WineBottler_PSPad"]) {
+    return [parser keycode:@"ApplicationType::PSPAD"];
+  }
 
   return [parser keycode:@"ApplicationType::UNKNOWN"];
 }
