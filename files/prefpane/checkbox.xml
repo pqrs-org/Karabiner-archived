@@ -9172,7 +9172,7 @@
           <appendix>Control_R (AltGr) + A = ~ ... Control_R (AltGr) + Q = \</appendix>
           <appendix>Control_R (AltGr) + , = &lt; ... Control_R (AltGr) + . = &gt;</appendix>
           <appendix>Control_R (AltGr) + - = * ... "key under esc" to ;</appendix>
-          <identifier>private.czech_win_shortcuts</identifier>
+          <identifier>remap.czech_win_shortcuts</identifier>
           <not>X11</not>
           <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::CONTROL_R, KeyCode::DOT, ModifierFlag::OPTION_R</autogen>
           <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::CONTROL_R, KeyCode::COMMA, ModifierFlag::OPTION_R</autogen>
