@@ -304,6 +304,10 @@
     return [parser keycode:@"ApplicationType::CITRIX_ONLINE_PLUG_IN"];
   }
 
+  if ([name isEqualToString:@"com.citrix.XenAppViewer"]) {
+    return [parser keycode:@"ApplicationType::CITRIX_XEN_APP_VIEWER"];
+  }
+
   if ([name isEqualToString:@"net.mame.mameosx"]) {
     return [parser keycode:@"ApplicationType::MAME"];
   }
@@ -334,6 +338,10 @@
 
   if ([name isEqualToString:@"org.kronenberg.WineBottler_PSPad"]) {
     return [parser keycode:@"ApplicationType::PSPAD"];
+  }
+
+  if ([name isEqualToString:@"com.sap.platin"]) {
+    return [parser keycode:@"ApplicationType::SAP"];
   }
 
   return [parser keycode:@"ApplicationType::UNKNOWN"];
