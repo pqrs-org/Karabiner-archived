@@ -7859,6 +7859,7 @@
         <item>
           <name>Use Colemak Keyboard Layout</name>
           <identifier>remap.qwerty2colemak</identifier>
+          <!-- #include "include/keypad_redefinition.xml" -->
           <autogen>--KeyToKey-- KeyCode::E, KeyCode::F</autogen>
           <autogen>--KeyToKey-- KeyCode::R, KeyCode::P</autogen>
           <autogen>--KeyToKey-- KeyCode::T, KeyCode::G</autogen>
@@ -7880,6 +7881,7 @@
         <item>
           <name>Use QWERF Keyboard Layout</name>
           <identifier>remap.qwerty2qwerf</identifier>
+          <!-- #include "include/keypad_redefinition.xml" -->
           <autogen>--KeyToKey-- KeyCode::T, KeyCode::F</autogen>
           <autogen>--KeyToKey-- KeyCode::Y, KeyCode::J</autogen>
           <autogen>--KeyToKey-- KeyCode::U, KeyCode::Y</autogen>
@@ -7895,6 +7897,7 @@
         <item>
           <name>Use Workman Keyboard Layout</name>
           <identifier>remap.qwerty2workman</identifier>
+          <!-- #include "include/keypad_redefinition.xml" -->
           <autogen>--KeyToKey-- KeyCode::W, KeyCode::D</autogen>
           <autogen>--KeyToKey-- KeyCode::E, KeyCode::R</autogen>
           <autogen>--KeyToKey-- KeyCode::R, KeyCode::W</autogen>
@@ -7923,6 +7926,7 @@
           <appendix>asdfghjkl &#8594; klmnopqrs</appendix>
           <appendix>zxcvbnm &#8594; tuvwxyz</appendix>
           <identifier>remap.qwerty2abcdef</identifier>
+          <!-- #include "include/keypad_redefinition.xml" -->
           <autogen>--KeyToKey-- KeyCode::Q, KeyCode::A</autogen>
           <autogen>--KeyToKey-- KeyCode::W, KeyCode::B</autogen>
           <autogen>--KeyToKey-- KeyCode::E, KeyCode::C</autogen>
