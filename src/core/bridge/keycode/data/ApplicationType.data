@@ -120,7 +120,11 @@ ORACLE_SQL_DEVELOPER    --AUTO--
 // com.apple.systempreferences
 SYSTEM_PREFERENCES      --AUTO--
 
+// com.citrix.ICAClient
 CITRIX_ONLINE_PLUG_IN   --AUTO--
+
+// com.citrix.XenAppViewer
+CITRIX_XEN_APP_VIEWER   --AUTO--
 
 // net.mame.mameosx
 MAME                    --AUTO--
@@ -137,10 +141,13 @@ RSA_SECURID_SOFTWARE_TOKEN --AUTO--
 // com.alfredapp.Alfred
 ALFRED                  --AUTO--
 
-TWEETDECK				--AUTO--
+TWEETDECK               --AUTO--
 
 // com.secretgeometry.Cathode
-CATHODE					--AUTO--
+CATHODE                 --AUTO--
 
 // org.kronenberg.WineBottler_PSPad
-PSPAD					--AUTO--
+PSPAD                   --AUTO--
+
+// com.sap.platin
+SAP                     --AUTO--
