@@ -7577,6 +7577,12 @@
               <autogen>--KeyToKey-- KeyCode::RETURN, VK_COMMAND, KeyCode::RETURN, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
             </item>
             <item>
+              <name>Change Brightness Up to Ctrl+U</name>
+              <identifier>remap.app_excel_brightnessup_to_ctrlu</identifier>
+              <only>EXCEL</only>
+              <autogen>--ConsumerKeyCode-- ConsumerKeyCode::BRIGHTNESS_UP, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
+            </item>
+            <item>
               <name>Change F2 to Ctrl+U</name>
               <identifier>remap.app_excel_f2_to_ctrlu</identifier>
               <only>EXCEL</only>
