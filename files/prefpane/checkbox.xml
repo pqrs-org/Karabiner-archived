@@ -7576,38 +7576,43 @@
               <autogen>--KeyToKey-- KeyCode::M, VK_CONTROL, KeyCode::RETURN</autogen>
               <autogen>--KeyToKey-- KeyCode::RETURN, VK_COMMAND, KeyCode::RETURN, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
             </item>
-            <item><name>------------------------------------------------------------</name></item>
             <item>
-              <name>Change Brightness Up to Ctrl+U</name>
-              <identifier>remap.app_excel_brightnessup_to_ctrlu</identifier>
-              <only>EXCEL</only>
-              <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_UP, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
-              <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_UP,                    ModifierFlag::NONE, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
-            </item>
-            <item>
-              <name>Change F2 to Ctrl+U</name>
-              <identifier>remap.app_excel_f2_to_ctrlu</identifier>
-              <only>EXCEL</only>
-              <autogen>--KeyToKey-- KeyCode::F2, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::F2,                    ModifierFlag::NONE, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
-            </item>
-            <item><name>------------------------------------------------------------</name></item>
-            <item>
-              <name>Change Launchpad to Command+T</name>
-              <appendix>(+ Change Dashboard to Command+T)</appendix>
-              <identifier>remap.app_excel_launchpad_to_commandLt</identifier>
-              <only>EXCEL</only>
-              <autogen>--KeyToKey-- KeyCode::LAUNCHPAD, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::LAUNCHPAD,                    ModifierFlag::NONE, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::DASHBOARD, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::DASHBOARD,                    ModifierFlag::NONE, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
-            </item>
-            <item>
-              <name>Change F4 to Command+T</name>
-              <identifier>remap.app_excel_f4_to_commandLt</identifier>
-              <only>EXCEL</only>
-              <autogen>--KeyToKey-- KeyCode::F4, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::F4,                    ModifierFlag::NONE, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
+              <name>Windows-like operation</name>
+              <list>
+                <item><name>F2 key------------------------------------------------------------</name></item>
+                <item>
+                  <name>Change Brightness Up to Ctrl+U</name>
+                  <identifier>remap.app_excel_brightnessup_to_ctrlu</identifier>
+                  <only>EXCEL</only>
+                  <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_UP, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
+                  <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_UP,                    ModifierFlag::NONE, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
+                </item>
+                <item>
+                  <name>Change F2 to Ctrl+U</name>
+                  <identifier>remap.app_excel_f2_to_ctrlu</identifier>
+                  <only>EXCEL</only>
+                  <autogen>--KeyToKey-- KeyCode::F2, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
+                  <autogen>--KeyToKey-- KeyCode::F2,                    ModifierFlag::NONE, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
+                </item>
+                <item><name>F4 key------------------------------------------------------------</name></item>
+                <item>
+                  <name>Change Launchpad to Command+T</name>
+                  <appendix>(+ Change Dashboard to Command+T)</appendix>
+                  <identifier>remap.app_excel_launchpad_to_commandLt</identifier>
+                  <only>EXCEL</only>
+                  <autogen>--KeyToKey-- KeyCode::LAUNCHPAD, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
+                  <autogen>--KeyToKey-- KeyCode::LAUNCHPAD,                    ModifierFlag::NONE, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
+                  <autogen>--KeyToKey-- KeyCode::DASHBOARD, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
+                  <autogen>--KeyToKey-- KeyCode::DASHBOARD,                    ModifierFlag::NONE, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
+                </item>
+                <item>
+                  <name>Change F4 to Command+T</name>
+                  <identifier>remap.app_excel_f4_to_commandLt</identifier>
+                  <only>EXCEL</only>
+                  <autogen>--KeyToKey-- KeyCode::F4, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
+                  <autogen>--KeyToKey-- KeyCode::F4,                    ModifierFlag::NONE, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
+                </item>
+              </list>
             </item>
           </list>
         </item>
