@@ -59,8 +59,8 @@ rm -rf $pkgName
 # Note: Don't add --no-recommend option.
 # It breaks /Library permission.
 # (It overwrites /Library permission with pkgroot/Library permission.)
-# - Mac OS X 10.5: /Library is 1775
-# - Mac OS X 10.6: /Library is 0755
+# - Mac OS X 10.6: /Library is 1775
+# - Mac OS X 10.7: /Library is 0755
 $packagemaker \
     --root pkgroot \
     --info pkginfo/Info.plist \
