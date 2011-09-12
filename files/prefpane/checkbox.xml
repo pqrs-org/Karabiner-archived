@@ -7612,6 +7612,14 @@
                   <autogen>--KeyToKey-- KeyCode::F4, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
                   <autogen>--KeyToKey-- KeyCode::F4,                    ModifierFlag::NONE, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
                 </item>
+                <item><name>Others------------------------------------------------------------</name></item>
+                <item>
+                  <name>Control+Shift+Plus (Insert Row)</name>
+                  <appendix>(Change Control+Shift+Plus to Control+i)</appendix>
+                  <identifier>remap.app_excel_control_shift_plus</identifier>
+                  <only>EXCEL</only>
+                  <autogen>--KeyToKey-- KeyCode::EQUAL, VK_CONTROL | VK_SHIFT | ModifierFlag::NONE, KeyCode::I, VK_CONTROL</autogen>
+                </item>
               </list>
             </item>
           </list>
