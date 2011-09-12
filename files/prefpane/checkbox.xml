@@ -7313,6 +7313,12 @@
               </list>
             </item>
             <item>
+              <name>Disable Command+D (Duplicate)</name>
+              <identifier>remap.app_finder_disable_command_d</identifier>
+              <only>FINDER</only>
+              <autogen>--KeyToKey-- KeyCode::D, VK_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+            </item>
+            <item>
               <name>Disable Command+L (Make Alias)</name>
               <identifier>remap.app_finder_disable_command_l</identifier>
               <only>FINDER</only>
