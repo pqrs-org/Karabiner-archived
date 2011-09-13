@@ -9064,6 +9064,11 @@
           <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::KEY_3, ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
+          <name>Section(§) to Command_L</name>
+          <identifier>remap.section_to_command_l</identifier>
+          <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::COMMAND_L</autogen>
+        </item>
+        <item>
           <name>Section(§) to Backquote(`)</name>
           <identifier>remap.uk_section2backquote</identifier>
           <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKQUOTE</autogen>
