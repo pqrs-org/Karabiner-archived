@@ -8500,8 +8500,8 @@
           <appendix>Disable Cmd+Q, remap Alt/Cmd+F4 to Cmd+Q</appendix>
           <identifier>remap.pcstyle_altf4</identifier>
           <autogen>--KeyToKey-- KeyCode::F4, VK_COMMAND, KeyCode::Q, VK_COMMAND</autogen>
-          <autogen>--KeyToKey-- KeyCode::F4, VK_OPTION, KeyCode::Q, VK_COMMAND</autogen>
-          <autogen>--KeyOverlaidModifier-- KeyCode::Q, VK_COMMAND, KeyCode::VK_NONE</autogen>
+          <autogen>--KeyToKey-- KeyCode::F4, VK_OPTION,  KeyCode::Q, VK_COMMAND</autogen>
+          <autogen>--KeyToKey-- KeyCode::Q,  VK_COMMAND, KeyCode::VK_NONE</autogen>
         </item>
       </list>
     </item>
