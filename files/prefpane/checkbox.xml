@@ -3973,6 +3973,11 @@
       <name>Change Option_R Key (Right Option)</name>
       <list>
         <item>
+          <name>Option_R to CapsLock</name>
+          <identifier>remap.optionR2capslock</identifier>
+          <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CAPSLOCK</autogen>
+        </item>
+        <item>
           <name>Option_R to Command_L</name>
           <identifier>remap.optionR2commandL</identifier>
           <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::COMMAND_L</autogen>
