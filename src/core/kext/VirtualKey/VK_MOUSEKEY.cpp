@@ -52,14 +52,22 @@ namespace org_pqrs_KeyRemap4MacBook {
   PointingButton
   VirtualKey::VK_MOUSEKEY::getPointingButton(KeyCode keycode)
   {
-    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_LEFT)    { return PointingButton::LEFT;    }
-    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_MIDDLE)  { return PointingButton::MIDDLE;  }
-    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_RIGHT)   { return PointingButton::RIGHT;   }
-    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON4) { return PointingButton::BUTTON4; }
-    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON5) { return PointingButton::BUTTON5; }
-    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON6) { return PointingButton::BUTTON6; }
-    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON7) { return PointingButton::BUTTON7; }
-    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON8) { return PointingButton::BUTTON8; }
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_LEFT)     { return PointingButton::LEFT;     }
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_MIDDLE)   { return PointingButton::MIDDLE;   }
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_RIGHT)    { return PointingButton::RIGHT;    }
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON4)  { return PointingButton::BUTTON4;  }
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON5)  { return PointingButton::BUTTON5;  }
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON6)  { return PointingButton::BUTTON6;  }
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON7)  { return PointingButton::BUTTON7;  }
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON8)  { return PointingButton::BUTTON8;  }
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON9)  { return PointingButton::BUTTON9;  }
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON10) { return PointingButton::BUTTON10; }
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON11) { return PointingButton::BUTTON11; }
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON12) { return PointingButton::BUTTON12; }
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON13) { return PointingButton::BUTTON13; }
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON14) { return PointingButton::BUTTON14; }
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON15) { return PointingButton::BUTTON15; }
+    if (keycode == KeyCode::VK_MOUSEKEY_BUTTON_BUTTON16) { return PointingButton::BUTTON16; }
     return PointingButton::NONE;
   }
 
