@@ -143,26 +143,12 @@
 
 - (NSString*) buttonToString:(NSEvent*)event
 {
-  switch ([event buttonNumber]) {
-    case 0 :
-      return @"left";
-    case 1 :
-      return @"right";
-    case 2 :
-      return @"middle";
-    case 3 :
-      return @"button4";
-    case 4 :
-      return @"button5";
-    case 5 :
-      return @"button6";
-    case 6 :
-      return @"button7";
-    case 7 :
-      return @"button8";
-    default:
-      return @"other";
-  }
+  NSInteger number = [event buttonNumber];
+  if (number == 0) return @"left";
+  if (number == 1) return @"right";
+  if (number == 2) return @"middle";
+
+  return [NSString stringWithFormat:@"button%d", number + 1];
 }
 
 - (void) outputKeyEvent:(NSEvent*)event eventType:(NSString*)eventType
