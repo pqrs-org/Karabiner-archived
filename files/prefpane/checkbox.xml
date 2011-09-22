@@ -8600,6 +8600,18 @@
         </item>
 
         <item>
+          <name>Use Dvorak-Qwerty⌘</name>
+          <appendix>(QWERTY to Dvorak)</appendix>
+          <appendix>(+ Command+Keys to Qwerty)</appendix>
+          <identifier>remap.dvorak2qwerty_qwertycommand</identifier>
+          <modifier_not>
+            ModifierFlag::COMMAND_L,
+            ModifierFlag::COMMAND_R
+          </modifier_not>
+          <!-- #include "include/dvorak.xml" -->
+        </item>
+
+        <item>
           <name>Use Dvorak - Qwerty Keyboard Layout</name>
           <appendix>(QWERTY to Dvorak)</appendix>
           <appendix>(+ Command,Control,Option+Keys to Qwerty)</appendix>
