@@ -3887,6 +3887,11 @@
       <name>Change Option_L Key (Left Option)</name>
       <list>
         <item>
+          <name>Option_L to CapsLock</name>
+          <identifier>remap.optionL2capslock</identifier>
+          <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::CAPSLOCK</autogen>
+        </item>
+        <item>
           <name>Option_L to Command_L</name>
           <identifier>remap.optionL2commandL</identifier>
           <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
