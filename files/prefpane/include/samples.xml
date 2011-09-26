@@ -276,6 +276,23 @@
         </item>
 
         <item>
+          <name>BeforeKeyDown, AfterKeyUp</name>
+          <appendix>1 to A (BeforeKeyDown Return, AfterKeyUp Tab)</appendix>
+          <appendix>Shift_R to A (BeforeKeyDown Control+B,C AfterKeyUp Option+D,E)</appendix>
+          <identifier>remap.samples_keytokey_beforekeydown</identifier>
+          <autogen>--KeyToKey--
+            KeyCode::KEY_1, KeyCode::A,
+            Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::RETURN,
+            Option::KEYTOKEY_AFTER_KEYUP, KeyCode::TAB
+          </autogen>
+          <autogen>--KeyToKey--
+            KeyCode::SHIFT_R, KeyCode::A,
+            Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::B, ModifierFlag::CONTROL_L, KeyCode::C,
+            Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::D, ModifierFlag::OPTION_L,  KeyCode::E
+          </autogen>
+        </item>
+
+        <item>
           <name>Apply from the top sequentially.</name>
           <appendix>1 to A</appendix>
           <appendix>1 to B (skipped)</appendix>
