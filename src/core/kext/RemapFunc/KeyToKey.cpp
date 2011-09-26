@@ -8,7 +8,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     KeyToKey::KeyToKey(void) : index_(0), keyboardRepeatID_(-1), isRepeatEnabled_(true)
     {
-      toKeys_ = new Vector_PairKeyFlags();
+      toKeys_     = new Vector_PairKeyFlags();
+      beforeKeys_ = new Vector_PairKeyFlags();
+      afterKeys_  = new Vector_PairKeyFlags();
+      currentVectorPointer_ = toKeys_;
     }
 
     KeyToKey::~KeyToKey(void)
@@ -16,12 +19,21 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (toKeys_) {
         delete toKeys_;
       }
+      if (beforeKeys_) {
+        delete beforeKeys_;
+      }
+      if (afterKeys_) {
+        delete afterKeys_;
+      }
     }
 
     void
     KeyToKey::add(unsigned int datatype, unsigned int newval)
     {
-      if (! toKeys_) return;
+      if (! toKeys_)               { return; }
+      if (! beforeKeys_)           { return; }
+      if (! afterKeys_)            { return; }
+      if (! currentVectorPointer_) { return; }
 
       switch (datatype) {
         case BRIDGE_DATATYPE_KEYCODE:
@@ -31,7 +43,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               fromKey_.key = newval;
               break;
             default:
-              toKeys_->push_back(PairKeyFlags(newval));
+              currentVectorPointer_->push_back(PairKeyFlags(newval));
               break;
           }
           ++index_;
@@ -49,8 +61,8 @@ namespace org_pqrs_KeyRemap4MacBook {
               fromKey_.flags = newval;
               break;
             default:
-              if (! toKeys_->empty()) {
-                (toKeys_->back()).flags = newval;
+              if (! currentVectorPointer_->empty()) {
+                (currentVectorPointer_->back()).flags = newval;
               }
               break;
           }
@@ -61,6 +73,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           if (Option::NOREPEAT == newval) {
             isRepeatEnabled_ = false;
+          } else if (Option::KEYTOKEY_BEFORE_KEYDOWN == newval) {
+            currentVectorPointer_ = beforeKeys_;
+          } else if (Option::KEYTOKEY_AFTER_KEYUP == newval) {
+            currentVectorPointer_ = afterKeys_;
           } else {
             IOLOG_ERROR("KeyToKey::add unknown option:%d\n", newval);
           }
@@ -76,7 +92,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     KeyToKey::remap(RemapParams& remapParams)
     {
-      if (! toKeys_) return false;
+      if (! toKeys_)     { return false; }
+      if (! beforeKeys_) { return false; }
+      if (! afterKeys_)  { return false; }
 
       if (remapParams.isremapped) return false;
       if (! fromkeychecker_.isFromKey(remapParams.params.ex_iskeydown, remapParams.params.key, FlagStatus::makeFlags(), fromKey_.key, fromKey_.flags)) return false;
@@ -109,6 +127,23 @@ namespace org_pqrs_KeyRemap4MacBook {
         FlagStatus::increase(fromKey_.key.getModifierFlag());
       }
 
+      // ----------------------------------------
+      // Handle beforeKeys_
+      if (remapParams.params.ex_iskeydown) {
+        for (size_t i = 0; i < beforeKeys_->size(); ++i) {
+          FlagStatus::temporary_increase((*beforeKeys_)[i].flags);
+
+          Flags f = FlagStatus::makeFlags();
+          KeyboardType keyboardType = remapParams.params.keyboardType;
+
+          EventOutputQueue::FireKey::fire_downup(f, (*beforeKeys_)[i].key, keyboardType);
+
+          FlagStatus::temporary_decrease((*beforeKeys_)[i].flags);
+        }
+      }
+
+      // ----------------------------------------
+      // Handle toKeys_
       switch (toKeys_->size()) {
         case 0:
           break;
@@ -244,6 +279,21 @@ namespace org_pqrs_KeyRemap4MacBook {
             }
           }
           break;
+      }
+
+      // ----------------------------------------
+      // Handle afterKeys_
+      if (! remapParams.params.ex_iskeydown) {
+        for (size_t i = 0; i < afterKeys_->size(); ++i) {
+          FlagStatus::temporary_increase((*afterKeys_)[i].flags);
+
+          Flags f = FlagStatus::makeFlags();
+          KeyboardType keyboardType = remapParams.params.keyboardType;
+
+          EventOutputQueue::FireKey::fire_downup(f, (*afterKeys_)[i].key, keyboardType);
+
+          FlagStatus::temporary_decrease((*afterKeys_)[i].flags);
+        }
       }
 
       return true;

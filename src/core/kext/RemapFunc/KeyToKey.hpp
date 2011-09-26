@@ -34,6 +34,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       FromKeyChecker fromkeychecker_;
       PairKeyFlags fromKey_;
       Vector_PairKeyFlags* toKeys_;
+      Vector_PairKeyFlags* beforeKeys_;
+      Vector_PairKeyFlags* afterKeys_;
+      // Pointer to toKeys_ or beforeKeys_ or afterKeys_.
+      Vector_PairKeyFlags* currentVectorPointer_;
       int keyboardRepeatID_;
       bool isRepeatEnabled_;
     };
