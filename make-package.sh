@@ -16,31 +16,32 @@ rm -rf pkgroot
 mkdir -p pkgroot
 
 basedir="/Library/org.pqrs/KeyRemap4MacBook"
-mkdir -p "pkgroot/$basedir"
-cp -R src/core/kext/build/Release/KeyRemap4MacBook.kext "pkgroot/$basedir"
-cp -R files/scripts "pkgroot/$basedir"
 
-mkdir -p "pkgroot/$basedir/prefpane"
+mkdir -p                                                "pkgroot/$basedir"
+cp -R src/core/kext/build/Release/KeyRemap4MacBook.kext "pkgroot/$basedir"
+cp -R files/scripts                                     "pkgroot/$basedir"
+
+mkdir -p                                                        "pkgroot/$basedir/prefpane"
 cp files/prefpane/number.xml files/prefpane/output/checkbox.xml "pkgroot/$basedir/prefpane"
 
-mkdir -p "pkgroot/$basedir/extra"
-cp -R pkginfo/Resources/preflight "pkgroot/$basedir/extra/uninstall_core.sh"
+mkdir -p                               "pkgroot/$basedir/extra"
+cp -R pkginfo/Resources/preflight      "pkgroot/$basedir/extra/uninstall_core.sh"
 cp -R files/extra/launchUninstaller.sh "pkgroot/$basedir/extra/"
-cp -R files/extra/setpermissions.sh "pkgroot/$basedir/extra/"
-cp -R files/extra/uninstall.sh "pkgroot/$basedir/extra/"
+cp -R files/extra/setpermissions.sh    "pkgroot/$basedir/extra/"
+cp -R files/extra/uninstall.sh         "pkgroot/$basedir/extra/"
 
-mkdir -p "pkgroot/Library"
-cp -R files/LaunchDaemons pkgroot/Library
-cp -R files/LaunchAgents pkgroot/Library
+mkdir -p                  "pkgroot/Library"
+cp -R files/LaunchDaemons "pkgroot/Library"
+cp -R files/LaunchAgents  "pkgroot/Library"
 
-mkdir -p "pkgroot/$basedir/app"
-cp -R "src/core/server/build/Release/KeyRemap4MacBook.app" "pkgroot/$basedir/app"
-cp -R "src/util/KeyDump/build/Release/KeyDump.app" "pkgroot/$basedir/app"
+mkdir -p                                                                                    "pkgroot/$basedir/app"
+cp -R "src/core/server/build/Release/KeyRemap4MacBook.app"                                  "pkgroot/$basedir/app"
+cp -R "src/util/KeyDump/build/Release/KeyDump.app"                                          "pkgroot/$basedir/app"
 cp -R "src/util/multitouchextension/build/Release/KeyRemap4MacBook_multitouchextension.app" "pkgroot/$basedir/app"
-cp -R "src/util/cli/build/Release/KeyRemap4MacBook_cli.app" "pkgroot/$basedir/app"
-cp -R "src/util/uninstaller/build/Release/uninstaller.app" "pkgroot/$basedir/app"
+cp -R "src/util/cli/build/Release/KeyRemap4MacBook_cli.app"                                 "pkgroot/$basedir/app"
+cp -R "src/util/uninstaller/build/Release/uninstaller.app"                                  "pkgroot/$basedir/app"
 
-mkdir -p "pkgroot/Library/PreferencePanes"
+mkdir -p                                                          "pkgroot/Library/PreferencePanes"
 cp -R "src/util/prefpane/build/Release/KeyRemap4MacBook.prefPane" "pkgroot/Library/PreferencePanes"
 
 # Setting file permissions.
