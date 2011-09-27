@@ -279,6 +279,12 @@
           <name>BeforeKeyDown, AfterKeyUp</name>
           <appendix>1 to A (BeforeKeyDown Return, AfterKeyUp Tab)</appendix>
           <appendix>Shift_R to A (BeforeKeyDown Control+B,C AfterKeyUp Option+D,E)</appendix>
+          <appendix></appendix>
+          <appendix>Control_L+2 to Control+Option+A</appendix>
+          <appendix>(BeforeKeyDown Shift+B,C AfterKeyUp Option+D,E,Control+F)</appendix>
+          <appendix></appendix>
+          <appendix>Control_L+Shift_L to A,B</appendix>
+          <appendix>(BeforeKeyDown C AfterKeyUp D)</appendix>
           <identifier>remap.samples_keytokey_beforekeydown</identifier>
           <autogen>--KeyToKey--
             KeyCode::KEY_1, KeyCode::A,
@@ -289,6 +295,16 @@
             KeyCode::SHIFT_R, KeyCode::A,
             Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::B, ModifierFlag::CONTROL_L, KeyCode::C,
             Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::D, ModifierFlag::OPTION_L,  KeyCode::E
+          </autogen>
+          <autogen>--KeyToKey--
+            KeyCode::KEY_2, ModifierFlag::CONTROL_L, KeyCode::A, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L,
+            Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::B, ModifierFlag::SHIFT_R,  KeyCode::C,
+            Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::D, ModifierFlag::OPTION_L, KeyCode::E, KeyCode::F, ModifierFlag::CONTROL_L
+          </autogen>
+          <autogen>--KeyToKey--
+            KeyCode::SHIFT_L, ModifierFlag::CONTROL_L, KeyCode::A, KeyCode::B,
+            Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::C,
+            Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::D
           </autogen>
         </item>
 
