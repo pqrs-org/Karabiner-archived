@@ -1,6 +1,20 @@
 #!/bin/sh
 PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 
+# ------------------------------------------------------------
+# set file permissions
+for f in \
+    /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.server.plist \
+    /Library/LaunchDaemons/org.pqrs.KeyRemap4MacBook.load.plist \
+    /Library/PreferencePanes/KeyRemap4MacBook.prefPane \
+    /Library/org.pqrs \
+    ; do
+    echo "set file permissions: $f"
+    sh "`dirname $0`/scripts/setpermissions.sh" "$f"
+done
+
+# ------------------------------------------------------------
+# load kext
 startup="/Library/org.pqrs/KeyRemap4MacBook/scripts/startup.sh"
 [ -f "$startup" ] && "$startup" quickstart
 
