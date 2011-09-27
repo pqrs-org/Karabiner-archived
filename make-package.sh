@@ -42,14 +42,7 @@ cp -R "src/util/uninstaller/build/Release/uninstaller.app" "pkgroot/$basedir/app
 mkdir -p "pkgroot/Library/PreferencePanes"
 cp -R "src/util/prefpane/build/Release/KeyRemap4MacBook.prefPane" "pkgroot/Library/PreferencePanes"
 
-find pkgroot -type d -print0 | xargs -0 chmod 755
-find pkgroot -type f -print0 | xargs -0 chmod 644
-find pkgroot -name '*.sh' -print0 | xargs -0 chmod 755
-for file in `find pkgroot -type f`; do
-    if ./pkginfo/is-mach-o.sh "$file"; then
-        chmod 755 "$file"
-    fi
-done
+sh "pkginfo/Resources/scripts/setpermissions.sh" pkgroot
 
 # --------------------------------------------------
 echo "Exec PackageMaker"
