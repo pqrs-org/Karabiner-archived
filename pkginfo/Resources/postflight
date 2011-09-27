@@ -10,7 +10,7 @@ for f in \
     /Library/org.pqrs \
     ; do
     echo "set file permissions: $f"
-    sh "`dirname $0`/scripts/setpermissions.sh" "$f"
+    sh /Library/org.pqrs/KeyRemap4MacBook/extra/setpermissions.sh "$f"
 done
 
 # ------------------------------------------------------------

@@ -26,6 +26,7 @@ cp files/prefpane/number.xml files/prefpane/output/checkbox.xml "pkgroot/$basedi
 mkdir -p "pkgroot/$basedir/extra"
 cp -R pkginfo/Resources/preflight "pkgroot/$basedir/extra/uninstall_core.sh"
 cp -R files/extra/launchUninstaller.sh "pkgroot/$basedir/extra/"
+cp -R files/extra/setpermissions.sh "pkgroot/$basedir/extra/"
 cp -R files/extra/uninstall.sh "pkgroot/$basedir/extra/"
 
 mkdir -p "pkgroot/Library"
@@ -56,7 +57,7 @@ cp -R "src/util/prefpane/build/Release/KeyRemap4MacBook.prefPane" "pkgroot/Libra
 #   Then, we need to repair file permissions in postflight script.
 #   Please also see postflight.
 #
-sh "pkginfo/Resources/scripts/setpermissions.sh" pkgroot
+sh "files/extra/setpermissions.sh" pkgroot
 
 # --------------------------------------------------
 echo "Exec PackageMaker"
