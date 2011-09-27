@@ -2,6 +2,7 @@ Changes since 7.4.0
     - Added --StripModifierFromScrollWheel--.
     - Added Option::KEYTOKEY_BEFORE_KEYDOWN, Option::KEYTOKEY_AFTER_KEYUP.
     - Added KeyCode::VK_CONSUMERKEY_*.
+    - Some minor improvements.
     - Added about XXX kinds settings.
 
 ----------------------------------------------------------------------
