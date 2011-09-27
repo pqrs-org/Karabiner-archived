@@ -130,6 +130,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ----------------------------------------
       // Handle beforeKeys_
       if (remapParams.params.ex_iskeydown) {
+        FlagStatus::temporary_decrease(fromFlags);
+
         for (size_t i = 0; i < beforeKeys_->size(); ++i) {
           FlagStatus::temporary_increase((*beforeKeys_)[i].flags);
 
@@ -140,6 +142,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
           FlagStatus::temporary_decrease((*beforeKeys_)[i].flags);
         }
+
+        FlagStatus::temporary_increase(fromFlags);
       }
 
       // ----------------------------------------
@@ -284,6 +288,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ----------------------------------------
       // Handle afterKeys_
       if (! remapParams.params.ex_iskeydown) {
+        // clear temporary flags.
+        FlagStatus::set();
+
+        FlagStatus::temporary_decrease(fromFlags);
+
         for (size_t i = 0; i < afterKeys_->size(); ++i) {
           FlagStatus::temporary_increase((*afterKeys_)[i].flags);
 
@@ -294,6 +303,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
           FlagStatus::temporary_decrease((*afterKeys_)[i].flags);
         }
+
+        FlagStatus::temporary_increase(fromFlags);
       }
 
       return true;
