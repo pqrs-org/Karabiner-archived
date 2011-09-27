@@ -42,6 +42,20 @@ cp -R "src/util/uninstaller/build/Release/uninstaller.app" "pkgroot/$basedir/app
 mkdir -p "pkgroot/Library/PreferencePanes"
 cp -R "src/util/prefpane/build/Release/KeyRemap4MacBook.prefPane" "pkgroot/Library/PreferencePanes"
 
+# Setting file permissions.
+#
+# Note:
+#   If target files are already exists in system disk,
+#   PackageMaker uses their permissions.
+#
+#   For example:
+#     If /Library/org.pqrs permission is 0777 by accidental reasons,
+#     the directory permission will be 0777 in Archive.bom
+#     even if we set this directory permission to 0755 by setpermissions.sh.
+#
+#   Then, we need to repair file permissions in postflight script.
+#   Please also see postflight.
+#
 sh "pkginfo/Resources/scripts/setpermissions.sh" pkgroot
 
 # --------------------------------------------------
