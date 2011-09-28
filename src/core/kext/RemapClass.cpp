@@ -9,6 +9,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   RemapClass::Item::Item(const uint32_t* vec, size_t length)
   {
     type_ = BRIDGE_REMAPTYPE_NONE;
+    active_ = false;
     filters_ = NULL;
 
     // ------------------------------------------------------------
@@ -151,10 +152,23 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapClass::Item::remap(RemapParams& remapParams)
   {
-    if (isblocked()) return;
+    if (remapParams.params.ex_iskeydown) {
+      if (isblocked()) return;
+    } else {
+      // We ignore filters_ if active_ is set at KeyDown.
+      if (isblocked() && ! active_) return;
+    }
 
-#define CALL_UNION_FUNCTION(POINTER) {              \
-    if (POINTER) { (POINTER)->remap(remapParams); } \
+#define CALL_UNION_FUNCTION(POINTER) {         \
+    if (POINTER) {                             \
+      if ((POINTER)->remap(remapParams)) {     \
+        if (remapParams.params.ex_iskeydown) { \
+          active_ = true;                      \
+        } else {                               \
+          active_ = false;                     \
+        }                                      \
+      }                                        \
+    }                                          \
 }
 
     switch (type_) {
@@ -177,10 +191,23 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapClass::Item::remap(RemapConsumerParams& remapParams)
   {
-    if (isblocked()) return;
+    if (remapParams.params.ex_iskeydown) {
+      if (isblocked()) return;
+    } else {
+      // We ignore filters_ if active_ is set at KeyDown.
+      if (isblocked() && ! active_) return;
+    }
 
-#define CALL_UNION_FUNCTION(POINTER) {              \
-    if (POINTER) { (POINTER)->remap(remapParams); } \
+#define CALL_UNION_FUNCTION(POINTER) {         \
+    if (POINTER) {                             \
+      if ((POINTER)->remap(remapParams)) {     \
+        if (remapParams.params.ex_iskeydown) { \
+          active_ = true;                      \
+        } else {                               \
+          active_ = false;                     \
+        }                                      \
+      }                                        \
+    }                                          \
 }
 
     switch (type_) {
@@ -197,10 +224,23 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapClass::Item::remap(RemapPointingParams_relative& remapParams)
   {
-    if (isblocked()) return;
+    if (remapParams.params.ex_isbuttondown) {
+      if (isblocked()) return;
+    } else {
+      // We ignore filters_ if active_ is set at ButtonDown.
+      if (isblocked() && ! active_) return;
+    }
 
-#define CALL_UNION_FUNCTION(POINTER) {              \
-    if (POINTER) { (POINTER)->remap(remapParams); } \
+#define CALL_UNION_FUNCTION(POINTER) {            \
+    if (POINTER) {                                \
+      if ((POINTER)->remap(remapParams)) {        \
+        if (remapParams.params.ex_isbuttondown) { \
+          active_ = true;                         \
+        } else {                                  \
+          active_ = false;                        \
+        }                                         \
+      }                                           \
+    }                                             \
 }
 
     switch (type_) {
