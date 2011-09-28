@@ -9927,6 +9927,15 @@
               <inputmode_only>JAPANESE</inputmode_only>
               <autogen>--KeyOverlaidModifier-- KeyCode::SEMICOLON, KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L</autogen>
             </item>
+            <item>
+              <name>セミコロン(;)は常に半角</name>
+              <identifier>remap.jis_semicolon_roman</identifier>
+              <inputmode_only>JAPANESE</inputmode_only>
+              <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::SEMICOLON,
+                Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::JIS_EISUU,
+                Option::KEYTOKEY_AFTER_KEYUP, KeyCode::JIS_KANA
+              </autogen>
+            </item>
           </list>
         </item>
         <item>
