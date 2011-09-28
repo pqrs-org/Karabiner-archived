@@ -57,6 +57,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       uint32_t type_;
 
+      // true if remapped at KeyDown.
+      bool active_;
+
       union {
         RemapFunc::KeyToKey* keyToKey;
         RemapFunc::KeyToConsumer* keyToConsumer;
