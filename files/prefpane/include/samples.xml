@@ -1019,8 +1019,8 @@
             <item>
               <name>With KEYTOKEY_BEFORE_KEYDOWN, KEYTOKEY_AFTER_KEYUP</name>
               <appendix>Space to Tab (And Before A, After B)</appendix>
-              <appendix>If you type Space key, sequence of "A,Tab,B" is fired.</appendix>
-              <identifier>option.samples_config_before_keydown</identifier>
+              <appendix>(If you type Space key, a sequence of "A,Tab,B" is fired.)</appendix>
+              <identifier>remap.samples_config_before_keydown</identifier>
 
               <config_not>option.samples_config_mode1</config_not>
               <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB,
@@ -1232,6 +1232,15 @@
                   <identifier>remap.samples_inputmodedetail_japanese_halfwidth_kana</identifier>
                   <inputmodedetail_only>JAPANESE_HALFWIDTH_KANA</inputmodedetail_only>
                   <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+                </item>
+                <item>
+                  <name>Enforce roman input at semicolon(;).</name>
+                  <identifier>remap.samples_inputmode_semicolon</identifier>
+                  <inputmode_only>JAPANESE</inputmode_only>
+                  <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::SEMICOLON,
+                    Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::JIS_EISUU,
+                    Option::KEYTOKEY_AFTER_KEYUP, KeyCode::JIS_KANA
+                  </autogen>
                 </item>
               </list>
             </item>
