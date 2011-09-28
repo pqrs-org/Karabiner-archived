@@ -1009,11 +1009,24 @@
             </item>
             <item>
               <name>Config only mode1</name>
-              <identifier>option.samples_config_mode1</identifier>
+              <identifier vk_config="true">option.samples_config_mode1</identifier>
             </item>
             <item>
               <name>Config only mode2</name>
               <identifier>option.samples_config_mode2</identifier>
+            </item>
+            <item><name>----------------------------------------</name></item>
+            <item>
+              <name>With KEYTOKEY_BEFORE_KEYDOWN, KEYTOKEY_AFTER_KEYUP</name>
+              <appendix>Space to Tab (And Before A, After B)</appendix>
+              <appendix>If you type Space key, sequence of "A,Tab,B" is fired.</appendix>
+              <identifier>option.samples_config_before_keydown</identifier>
+
+              <config_not>option.samples_config_mode1</config_not>
+              <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB,
+                Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::VK_CONFIG_FORCE_ON_option_samples_config_mode1, KeyCode::A,
+                Option::KEYTOKEY_AFTER_KEYUP, KeyCode::VK_CONFIG_FORCE_OFF_option_samples_config_mode1, KeyCode::B
+              </autogen>
             </item>
           </list>
         </item>
