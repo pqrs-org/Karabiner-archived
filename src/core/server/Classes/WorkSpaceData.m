@@ -344,6 +344,10 @@
     return [parser keycode:@"ApplicationType::SAP"];
   }
 
+  if ([name isEqualToString:@"com.omzsoftware.newsrackmac"]) {
+    return [parser keycode:@"ApplicationType::NEWSRACK"];
+  }
+
   return [parser keycode:@"ApplicationType::UNKNOWN"];
 }
 
