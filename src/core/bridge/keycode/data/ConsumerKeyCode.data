@@ -9,6 +9,10 @@ MUSIC_PREV 20
 MUSIC_PLAY 16
 MUSIC_NEXT 19
 
+// Kinesis Freestyle USB keyboard sends 18,17 at music prev,music next.
+MUSIC_PREV_18 18
+MUSIC_NEXT_17 17
+
 VOLUME_MUTE 7
 VOLUME_DOWN 1
 VOLUME_UP 0
