@@ -1846,8 +1846,9 @@
           <appendix>Use 8 to VK_CHANGE_INPUTMODE_RUSSIAN_TYPOGRAPHIC</appendix>
           <appendix>Use 9 to VK_CHANGE_INPUTMODE_ENGLISH_TYPOGRAPHIC</appendix>
           <appendix>Use 0 to VK_CHANGE_INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY</appendix>
-          <appendix>Use q to VK_CHANGE_INPUTMODE_ESTONIAN</appendix>
-          <appendix>Use w to VK_CHANGE_INPUTMODE_FINNISH</appendix>
+          <appendix>Use Q to VK_CHANGE_INPUTMODE_ESTONIAN</appendix>
+          <appendix>Use W to VK_CHANGE_INPUTMODE_FINNISH</appendix>
+          <appendix>Use E to VK_CHANGE_INPUTMODE_THAI</appendix>
           <identifier>remap.samples_vk_change_inputmode</identifier>
           <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
           <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_CHANGE_INPUTMODE_FRENCH</autogen>
@@ -1861,6 +1862,7 @@
           <autogen>--KeyToKey-- KeyCode::KEY_0, KeyCode::VK_CHANGE_INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY</autogen>
           <autogen>--KeyToKey-- KeyCode::Q,     KeyCode::VK_CHANGE_INPUTMODE_ESTONIAN</autogen>
           <autogen>--KeyToKey-- KeyCode::W,     KeyCode::VK_CHANGE_INPUTMODE_FINNISH</autogen>
+          <autogen>--KeyToKey-- KeyCode::E,     KeyCode::VK_CHANGE_INPUTMODE_THAI</autogen>
         </item>
         <item>
           <name>VK_CONFIG</name>
