@@ -167,6 +167,8 @@ finish:
     language = @"et";
   } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_FINNISH"]) {
     language = @"fi";
+  } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_THAI"]) {
+    language = @"th";
   }
 
   if (! language) return;
