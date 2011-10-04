@@ -33,6 +33,7 @@ LOGITECH_R400                           0xc52d
 LOGITECH_R800                           0xc52d
 LOGITECH_G700                           0xc06b
 LOGITECH_DINOVO_EDGE_0xb309             0xb309
+LOGITECH_UNIFYING_0xc52b                0xc52b
 
 // PFU
 HHKB_Professional_JP_0x000d             0x000d
