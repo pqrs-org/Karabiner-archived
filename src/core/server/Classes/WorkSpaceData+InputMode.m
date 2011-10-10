@@ -225,6 +225,12 @@ finish:
     return;
   }
 
+  if ([name isEqualToString:@"org.pqrs.inputmode.zh-Hant.KeyKey.KeyKey"]) {
+    *output_inputmode       = [parser keycode:@"InputMode::CHINESE_TRADITIONAL"];
+    *output_inputmodedetail = [parser keycode:@"InputModeDetail::CHINESE_TRADITIONAL_YAHOO_KEYKEY"];
+    return;
+  }
+
   // SimpChinese
   if ([name hasPrefix:@"com.apple.inputmethod.SCIM"]) {
     *output_inputmode       = [parser keycode:@"InputMode::CHINESE_SIMPLIFIED"];
