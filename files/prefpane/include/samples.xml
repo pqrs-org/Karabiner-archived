@@ -1112,6 +1112,13 @@
               <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
             </item>
             <item>
+              <name>inputmodedetail_only (Chinese Traditional Yahoo! KeyKey)</name>
+              <appendix>Space to Tab</appendix>
+              <identifier>remap.samples_inputmode_tradchinese_yahoo_keykey</identifier>
+              <inputmodedetail_only>CHINESE_TRADITIONAL_YAHOO_KEYKEY</inputmodedetail_only>
+              <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+            </item>
+            <item>
               <name>inputmode_only (Chinese Simplified-*)</name>
               <appendix>Space to Tab</appendix>
               <identifier>remap.samples_inputmode_simpchinese</identifier>
@@ -1315,6 +1322,13 @@
               <appendix>Space to Tab</appendix>
               <identifier>remap.samples_inputmode_russian</identifier>
               <inputmode_only>RUSSIAN</inputmode_only>
+              <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+            </item>
+            <item>
+              <name>inputmode_only (Thai)</name>
+              <appendix>Space to Tab</appendix>
+              <identifier>remap.samples_inputmode_thai</identifier>
+              <inputmode_only>THAI</inputmode_only>
               <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
             </item>
             <item>
