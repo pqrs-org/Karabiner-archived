@@ -317,6 +317,12 @@ finish:
     return;
   }
 
+  if ([name isEqualToString:@"org.pqrs.inputmode.th.Thai"]) {
+    *output_inputmode       = [parser keycode:@"InputMode::THAI"];
+    *output_inputmodedetail = [parser keycode:@"InputModeDetail::THAI"];
+    return;
+  }
+
   if ([name isEqualToString:@"org.pqrs.inputmode.unknown.FrenchDvorak"]) {
     *output_inputmode       = [parser keycode:@"InputMode::BEPO"];
     *output_inputmodedetail = [parser keycode:@"InputModeDetail::BEPO"];
