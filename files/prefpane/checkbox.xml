@@ -6378,6 +6378,19 @@
       <name>Simultaneous Key Presses</name>
       <list>
         <item>
+          <name>Two cursors to diagonal</name>
+          <appendix>Simultaneous arrow keys presses to Home/End/PageUp/PageDown</appendix>
+          <appendix>(Up+Left to Home)</appendix>
+          <appendix>(Up+Right to PageUp)</appendix>
+          <appendix>(Down+Left to End)</appendix>
+          <appendix>(Down+Right to PageDown)</appendix>
+          <identifier>remap.simcursor_to_diagonal_cursor</identifier>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::CURSOR_UP, KeyCode::CURSOR_LEFT, KeyCode::HOME</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::CURSOR_UP, KeyCode::CURSOR_RIGHT, KeyCode::PAGEUP</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::CURSOR_DOWN, KeyCode::CURSOR_LEFT, KeyCode::END</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::CURSOR_DOWN, KeyCode::CURSOR_RIGHT, KeyCode::PAGEDOWN</autogen>
+        </item>
+        <item>
           <name>Simultaneous Key Presses [F+HJKL] to Left/Down/Up/Right</name>
           <appendix>(F+H to Left)</appendix>
           <appendix>(F+J to Down)</appendix>
