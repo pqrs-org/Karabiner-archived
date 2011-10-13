@@ -74,10 +74,13 @@ NSString* notificationName_modifier_sticky = @"Sticky Modifier Keys";
   NSString* message1 = @"KeyRemap4MacBook uses Growl to display extra messages.";
 
   NSString* message2 = nil;
-  /*  */ if (! [GrowlApplicationBridge isGrowlInstalled]) {
-    message2 = @"* Growl is not installed.\n* Please install Growl and restart the system.";
-  } else if (! [GrowlApplicationBridge isGrowlRunning]) {
-    message2 = @"* Growl is not running.\n* Please start Growl.";
+
+  // If user uses Growl-1.3 and we use Growl SDK 1.2.2,
+  // isGrowlInstalled returns NO even if Growl is installed.
+  // Therefore, *DO NOT* call isGrowlInstalled here.
+
+  if (! [GrowlApplicationBridge isGrowlRunning]) {
+    message2 = @"* Growl is not running.\n* Please install or start Growl.";
   }
   if (! message2) {
     // clear isGrowlNotRunningWarningDisplayed_
