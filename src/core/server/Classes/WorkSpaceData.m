@@ -42,7 +42,11 @@
   if (! name) return 0;
 
   ConfigXMLParser* parser = [ConfigXMLParser getInstance];
-  return [parser keycode:[parser appdef_getApplicationType:name]];
+
+  NSString* applicationType = [parser appdef_getApplicationType:name];
+  if (! applicationType) return 0;
+
+  return [parser keycode:applicationType];
 }
 
 @end
