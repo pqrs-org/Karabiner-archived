@@ -175,7 +175,7 @@ static ConfigXMLParser* global_instance = nil;
 
 - (NSString*) appdef_getApplicationType:(NSString*)bundleIdentifier
 {
-  NSString* applicationType = @"ApplicationType::UNKNOWN";
+  NSString* applicationType = nil;
   @synchronized(self) {
     if (initialized_) {
       for (ConfigXMLParserAppDefData* data in appdefdata_) {
