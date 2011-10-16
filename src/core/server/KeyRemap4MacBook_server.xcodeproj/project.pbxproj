@@ -18,6 +18,7 @@
 		345647361346A7AF00FD0C38 /* UserClient_userspace.m in Sources */ = {isa = PBXBuildFile; fileRef = 345647351346A7AF00FD0C38 /* UserClient_userspace.m */; };
 		345647421346AE1700FD0C38 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345647411346AE1700FD0C38 /* IOKit.framework */; };
 		34568415109F350100125F91 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34568414109F350100125F91 /* Carbon.framework */; };
+		345D3BCA144B2FAD00198252 /* ConfigXMLParser+AppDef.m in Sources */ = {isa = PBXBuildFile; fileRef = 345D3BC9144B2FAD00198252 /* ConfigXMLParser+AppDef.m */; };
 		347828F613EE5F3400D50AB1 /* kr4mb_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 347828F513EE5F3400D50AB1 /* kr4mb_pub.pem */; };
 		347828F913EE5F6500D50AB1 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 347828F813EE5F6500D50AB1 /* Sparkle.framework */; };
 		347828FA13EE5F6700D50AB1 /* Sparkle.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 347828F813EE5F6500D50AB1 /* Sparkle.framework */; };
@@ -77,6 +78,7 @@
 		345647411346AE1700FD0C38 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		34568414109F350100125F91 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		34597768128DBFAE003398BD /* bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bridge.h; path = ../bridge/bridge.h; sourceTree = SOURCE_ROOT; };
+		345D3BC9144B2FAD00198252 /* ConfigXMLParser+AppDef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ConfigXMLParser+AppDef.m"; path = "Classes/ConfigXMLParser+AppDef.m"; sourceTree = "<group>"; };
 		347828F513EE5F3400D50AB1 /* kr4mb_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = kr4mb_pub.pem; path = Resources/kr4mb_pub.pem; sourceTree = "<group>"; };
 		347828F813EE5F6500D50AB1 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = "<group>"; };
 		347C48B81296673E00CCC042 /* ConfigXMLParser+AutoGen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ConfigXMLParser+AutoGen.m"; path = "Classes/ConfigXMLParser+AutoGen.m"; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				345D3BC9144B2FAD00198252 /* ConfigXMLParser+AppDef.m */,
 				34C12EC313CB462E0028090B /* RemapClassesInitializeVector.h */,
 				34C12EC413CB462E0028090B /* RemapClassesInitializeVector.m */,
 				34CC23DA13E99C3800CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.h */,
@@ -323,6 +326,7 @@
 				345647361346A7AF00FD0C38 /* UserClient_userspace.m in Sources */,
 				34C12EC513CB462E0028090B /* RemapClassesInitializeVector.m in Sources */,
 				34CC23DC13E99C3800CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m in Sources */,
+				345D3BCA144B2FAD00198252 /* ConfigXMLParser+AppDef.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

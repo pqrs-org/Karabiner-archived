@@ -1,6 +1,7 @@
 Changes since 7.4.0
     - Support Growl-1.3 on notifications.
       http://pqrs.org/macosx/keyremap4macbook/document.html#t4
+    - Dynamic ApplicationType definition feature has been added.
     - Added --StripModifierFromScrollWheel--.
     - Added Option::KEYTOKEY_BEFORE_KEYDOWN, Option::KEYTOKEY_AFTER_KEYUP.
     - Added KeyCode::VK_CONSUMERKEY_*.

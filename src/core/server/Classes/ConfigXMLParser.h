@@ -9,6 +9,7 @@
   RemapClassesInitializeVector* remapclasses_initialize_vector_;
   NSMutableArray* preferencepane_checkbox_;
   NSMutableArray* preferencepane_number_;
+  NSMutableArray* appdefdata_;
   KeyCode* keycode_;
   NSString* error_message_;
   BOOL initialized_;
@@ -27,6 +28,23 @@
 - (NSArray*) preferencepane_number;
 - (NSString*) preferencepane_error_message;
 - (NSString*) preferencepane_get_private_xml_path;
+
+- (NSString*) appdef_getApplicationType:(NSString*)bundleIdentifier;
+
+@end
+
+@interface ConfigXMLParserAppDefData : NSObject {
+  NSString* name_;
+  NSMutableArray* rules_equal_;
+  NSMutableArray* rules_prefix_;
+}
+
+@property (assign, readonly) NSString* name;
+
+- (void) setName:(NSString*)newname;
+- (void) addEqualRule:(NSString*)identifier;
+- (void) addPrefixRule:(NSString*)identifier;
+- (NSString*) getApplicationType:(NSString*)bundleIdentifier;
 
 @end
 

@@ -13,6 +13,10 @@ static ConfigXMLParser* global_instance = nil;
 - (BOOL) reload_preferencepane;
 @end
 
+@interface ConfigXMLParser (AppDef)
+- (BOOL) reload_appdef;
+@end
+
 @implementation ConfigXMLParser
 
 + (ConfigXMLParser*) getInstance
@@ -42,6 +46,7 @@ static ConfigXMLParser* global_instance = nil;
   [remapclasses_initialize_vector_ release];
   [preferencepane_checkbox_ release];
   [preferencepane_number_ release];
+  [appdefdata_ release];
   [keycode_ release];
   [error_message_ release];
 
@@ -59,7 +64,8 @@ static ConfigXMLParser* global_instance = nil;
     [self removeErrorMessage];
 
     if ([self reload_autogen] &&
-        [self reload_preferencepane]) {
+        [self reload_preferencepane] &&
+        [self reload_appdef]) {
       initialized_ = YES;
     }
   }
@@ -165,6 +171,23 @@ static ConfigXMLParser* global_instance = nil;
   }
 
   return @"";
+}
+
+- (NSString*) appdef_getApplicationType:(NSString*)bundleIdentifier
+{
+  NSString* applicationType = @"ApplicationType::UNKNOWN";
+  @synchronized(self) {
+    if (initialized_) {
+      for (ConfigXMLParserAppDefData* data in appdefdata_) {
+        NSString* s = [data getApplicationType:bundleIdentifier];
+        if (s) {
+          applicationType = s;
+          break;
+        }
+      }
+    }
+  }
+  return applicationType;
 }
 
 @end
