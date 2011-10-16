@@ -62,7 +62,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
        FlagStatus::reset is called when NumHeldDownKeys == 0,
        so we need remember the status of CapsLock.
-    */
+     */
   }
 
   void
