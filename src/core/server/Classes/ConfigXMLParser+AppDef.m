@@ -21,6 +21,8 @@
   [name_ release];
   [rules_equal_ release];
   [rules_prefix_ release];
+
+  [super dealloc];
 }
 
 - (void) setName:(NSString*)newname;
