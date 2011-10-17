@@ -63,9 +63,13 @@ static ConfigXMLParser* global_instance = nil;
     initialized_ = NO;
     [self removeErrorMessage];
 
-    if ([self reload_autogen] &&
-        [self reload_preferencepane] &&
-        [self reload_appdef]) {
+    [keycode_ release];
+    keycode_ = [KeyCode new];
+
+    // Reload appdef before loading autogen because autogen uses appdef data.
+    if ([self reload_appdef] &&
+        [self reload_autogen] &&
+        [self reload_preferencepane]) {
       initialized_ = YES;
     }
   }
