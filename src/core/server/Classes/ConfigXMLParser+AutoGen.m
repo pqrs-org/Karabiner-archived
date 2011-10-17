@@ -467,9 +467,6 @@
   [remapclasses_initialize_vector_ release];
   remapclasses_initialize_vector_ = [RemapClassesInitializeVector new];
 
-  [keycode_ release];
-  keycode_ = [KeyCode new];
-
   // ------------------------------------------------------------
   NSMutableDictionary* xmldocdict = [[NSMutableDictionary new] autorelease];
 

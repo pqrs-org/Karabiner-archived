@@ -44,6 +44,15 @@
   @throw [NSException exceptionWithName : @"KeyCode" reason :[NSString stringWithFormat:@"Unknown keycode: %@", name] userInfo : nil];
 }
 
+- (BOOL) isExists:(NSString*)name
+{
+  if ([dict_ objectForKey:name]) {
+    return YES;
+  } else {
+    return NO;
+  }
+}
+
 - (void) append:(NSString*)name newvalue:(unsigned int)newvalue
 {
   if ([dict_ objectForKey:name]) {

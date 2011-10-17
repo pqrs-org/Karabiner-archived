@@ -117,6 +117,11 @@ found:
       ConfigXMLParserAppDefData* newdata = [self parse_appdef:e];
       if (newdata) {
         [appdefdata_ addObject:newdata];
+
+        // Adding to keycode_ if needed.
+        if (! [keycode_ isExists:[NSString stringWithFormat:@"ApplicationType::%@", newdata.name]]) {
+          [keycode_ append:@"ApplicationType" name:newdata.name];
+        }
       }
     }
   }

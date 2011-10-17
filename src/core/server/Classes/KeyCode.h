@@ -10,6 +10,7 @@
 
 - (unsigned int) unsignedIntValue:(NSString*)name;
 - (NSNumber*) numberValue:(NSString*)name;
+- (BOOL) isExists:(NSString*)name;
 
 - (void) append:(NSString*)name newvalue:(unsigned int)newvalue;
 - (void) append:(NSString*)type name:(NSString*)name;
