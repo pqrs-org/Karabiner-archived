@@ -366,4 +366,9 @@
     <equal>com.omzsoftware.newsrackmac</equal>
   </appdef>
 
+  <appdef>
+    <appname>APTANA_STUDIO</appname>
+    <equal>com.aptana.studio3</equal>
+  </appdef>
+
 </root>
