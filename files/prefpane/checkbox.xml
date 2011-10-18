@@ -8123,6 +8123,11 @@
               <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::ESCAPE</autogen>
             </item>
             <item>
+              <name>Application Key to Eject</name>
+              <identifier>remap.pc_application2eject</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::PC_APPLICATION, ConsumerKeyCode::EJECT</autogen>
+            </item>
+            <item>
               <name>Application Key to Expose All</name>
               <identifier>remap.pc_application2exposeALL</identifier>
               <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::EXPOSE_ALL</autogen>
