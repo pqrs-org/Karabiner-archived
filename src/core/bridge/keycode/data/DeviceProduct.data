@@ -1,56 +1,12 @@
+// These items are needed in kernel extension.
+// Please define DeviceProduct by deviceproductdef.xml if it is not needed in kext.
+
 // Apple
 APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218 0x0218
-APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a 0x021a
-APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0220 0x0220
-APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0223 0x0223
-APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0236 0x0236
-APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0237 0x0237
-APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0245 0x0245
-APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0249 0x0249
-APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x024d 0x024d
-APPLE_EXTERNAL_KEYBOARD_0x0221          0x0221
-APPLE_EXTERNAL_KEYBOARD_0x022c          0x022c
-APPLE_ALUMINUM_KEYBOARD_JIS             0x0222
-MAGIC_MOUSE                             0x030d
-
-// TypeMatrix
-TYPEMATRIX_KEYBOARD_0x2030              0x2030
-
-// FILCO
-FKBN91ML_NB                             0x2011
-
-// Kensington
-K33374                                  0x2012
-
-// Chesen
-CHESEN_PS2_TO_USB                       0x0205
 
 // Logitech
 LOGITECH_CORDLESS_PRESENTER             0xc515
 LOGITECH_USB_HEADSET                    0x0a0b
-LOGITECH_NUMBER_PAD                     0xc523
-LOGITECH_R400                           0xc52d
-LOGITECH_R800                           0xc52d
-LOGITECH_G700                           0xc06b
-LOGITECH_DINOVO_EDGE_0xb309             0xb309
-LOGITECH_UNIFYING_0xc52b                0xc52b
-
-// PFU
-HHKB_Professional_JP_0x000d             0x000d
-
-// CHICONY_0x0472
-HHKB_LITE2_JP_0x0068                    0x0068
-
-// Sun Microsystems
-SUN_TYPE_6_KEYBOARD                     0x0005
-
-// UC_TECHNOLOGY
-MICRO_TRONKB                            0x0108
-MICRO_TRONKB_JIS                        0x0107
-MICRO_TRONKB_TRON                       0x0108
-
-// MICROSOFT
-MICROSOFT_NATURAL_ERGONOMIC_4000        0x00db
 
 //
 PSEUDO                                  0x0000

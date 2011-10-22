@@ -48,6 +48,19 @@
 
 @end
 
+@interface ConfigXMLParserDeviceDefData : NSObject {
+  NSString* name_;
+  NSInteger value_;
+}
+
+@property (assign, readonly) NSString* name;
+
+- (void) setName:(NSString*)newname;
+- (void) setValue:(NSInteger)newvalue;
+- (NSInteger) value;
+
+@end
+
 @interface ConfigXMLParser (Private)
 enum {
   CONFIGXMLPARSER_XML_TYPE_CHECKBOX,

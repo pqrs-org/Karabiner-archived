@@ -14,6 +14,8 @@
 		342917F81296AD2600A5CB12 /* ConfigXMLParser+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 342917F71296AD2600A5CB12 /* ConfigXMLParser+Private.m */; };
 		342FD2B91302CD8A00491C16 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 342FD2B81302CD8A00491C16 /* Growl.framework */; };
 		343BB0CA13E055B10037A81F /* app.icns in Resources */ = {isa = PBXBuildFile; fileRef = 343BB0C913E055B10037A81F /* app.icns */; };
+		3451A55114532D400030EAD7 /* deviceproductdef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3451A54F14532D400030EAD7 /* deviceproductdef.xml */; };
+		3451A55214532D400030EAD7 /* devicevendordef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3451A55014532D400030EAD7 /* devicevendordef.xml */; };
 		345248A31298F8A2005447DE /* private.xml in Resources */ = {isa = PBXBuildFile; fileRef = 345248A21298F8A2005447DE /* private.xml */; };
 		345647361346A7AF00FD0C38 /* UserClient_userspace.m in Sources */ = {isa = PBXBuildFile; fileRef = 345647351346A7AF00FD0C38 /* UserClient_userspace.m */; };
 		345647421346AE1700FD0C38 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345647411346AE1700FD0C38 /* IOKit.framework */; };
@@ -37,6 +39,7 @@
 		34D4F83C12C45CF3001819AA /* WorkSpaceData+InputMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D4F83B12C45CF3001819AA /* WorkSpaceData+InputMode.m */; };
 		34FB9592128F985A0088B235 /* PreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FB9591128F985A0088B235 /* PreferencesManager.m */; };
 		34FB9595128FCC030088B235 /* include.bridge_essential_config_index.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34FB9594128FCC030088B235 /* include.bridge_essential_config_index.plist */; };
+		34FD0958145325BC00CDFFDC /* ConfigXMLParser+DeviceDef.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FD0957145325BC00CDFFDC /* ConfigXMLParser+DeviceDef.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -72,6 +75,8 @@
 		342917F71296AD2600A5CB12 /* ConfigXMLParser+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ConfigXMLParser+Private.m"; path = "Classes/ConfigXMLParser+Private.m"; sourceTree = "<group>"; };
 		342FD2B81302CD8A00491C16 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Frameworks/Growl.framework; sourceTree = "<group>"; };
 		343BB0C913E055B10037A81F /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = app.icns; path = ../../share/Resources/app.icns; sourceTree = "<group>"; };
+		3451A54F14532D400030EAD7 /* deviceproductdef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = deviceproductdef.xml; path = Resources/deviceproductdef.xml; sourceTree = "<group>"; };
+		3451A55014532D400030EAD7 /* devicevendordef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = devicevendordef.xml; path = Resources/devicevendordef.xml; sourceTree = "<group>"; };
 		345248A21298F8A2005447DE /* private.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = private.xml; path = Resources/private.xml; sourceTree = "<group>"; };
 		345647341346A7AF00FD0C38 /* UserClient_userspace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserClient_userspace.h; path = Classes/UserClient_userspace.h; sourceTree = "<group>"; };
 		345647351346A7AF00FD0C38 /* UserClient_userspace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserClient_userspace.m; path = Classes/UserClient_userspace.m; sourceTree = "<group>"; };
@@ -105,6 +110,7 @@
 		34FB9590128F98510088B235 /* PreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesManager.h; path = Classes/PreferencesManager.h; sourceTree = "<group>"; };
 		34FB9591128F985A0088B235 /* PreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesManager.m; path = Classes/PreferencesManager.m; sourceTree = "<group>"; };
 		34FB9594128FCC030088B235 /* include.bridge_essential_config_index.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = include.bridge_essential_config_index.plist; path = ../bridge/config/output/include.bridge_essential_config_index.plist; sourceTree = SOURCE_ROOT; };
+		34FD0957145325BC00CDFFDC /* ConfigXMLParser+DeviceDef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ConfigXMLParser+DeviceDef.m"; path = "Classes/ConfigXMLParser+DeviceDef.m"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* KeyRemap4MacBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyRemap4MacBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -128,6 +134,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				34FD0957145325BC00CDFFDC /* ConfigXMLParser+DeviceDef.m */,
 				345D3BC9144B2FAD00198252 /* ConfigXMLParser+AppDef.m */,
 				34C12EC313CB462E0028090B /* RemapClassesInitializeVector.h */,
 				34C12EC413CB462E0028090B /* RemapClassesInitializeVector.m */,
@@ -209,6 +216,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3451A54F14532D400030EAD7 /* deviceproductdef.xml */,
+				3451A55014532D400030EAD7 /* devicevendordef.xml */,
 				34A83BCE144B1EAA00AE5687 /* appdef.xml */,
 				347828F513EE5F3400D50AB1 /* kr4mb_pub.pem */,
 				343BB0C913E055B10037A81F /* app.icns */,
@@ -301,6 +310,8 @@
 				343BB0CA13E055B10037A81F /* app.icns in Resources */,
 				347828F613EE5F3400D50AB1 /* kr4mb_pub.pem in Resources */,
 				34A83BCF144B1EAA00AE5687 /* appdef.xml in Resources */,
+				3451A55114532D400030EAD7 /* deviceproductdef.xml in Resources */,
+				3451A55214532D400030EAD7 /* devicevendordef.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +338,7 @@
 				34C12EC513CB462E0028090B /* RemapClassesInitializeVector.m in Sources */,
 				34CC23DC13E99C3800CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m in Sources */,
 				345D3BCA144B2FAD00198252 /* ConfigXMLParser+AppDef.m in Sources */,
+				34FD0958145325BC00CDFFDC /* ConfigXMLParser+DeviceDef.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
