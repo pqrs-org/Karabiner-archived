@@ -100,6 +100,8 @@ found:
     }
   }
 
+  if (! newdata.name) return nil;
+
   return newdata;
 }
 
