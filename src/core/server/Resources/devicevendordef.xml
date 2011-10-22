@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<root>
+  <devicevendordef>
+    <vendorname>APPLE_COMPUTER</vendorname>
+    <vendorid>0x05ac</vendorid>
+  </devicevendordef>
+
+  <devicevendordef>
+    <vendorname>TYPEMATRIX</vendorname>
+    <vendorid>0x1e54</vendorid>
+  </devicevendordef>
+
+  <devicevendordef>
+    <vendorname>FILCO</vendorname>
+    <vendorid>0x04d9</vendorid>
+  </devicevendordef>
+
+  <devicevendordef>
+    <vendorname>KENSINGTON</vendorname>
+    <vendorid>0x047d</vendorid>
+  </devicevendordef>
+
+  <devicevendordef>
+    <vendorname>PSEUDO</vendorname>
+    <vendorid>0x0000</vendorid>
+  </devicevendordef>
+
+  <devicevendordef>
+    <vendorname>CHESEN</vendorname>
+    <vendorid>0x0a81</vendorid>
+  </devicevendordef>
+
+  <devicevendordef>
+    <vendorname>LOGITECH</vendorname>
+    <vendorid>0x046d</vendorid>
+  </devicevendordef>
+
+  <devicevendordef>
+    <vendorname>PFU</vendorname>
+    <vendorid>0x04fe</vendorid>
+  </devicevendordef>
+
+  <devicevendordef>
+    <vendorname>UC_TECHNOLOGY</vendorname>
+    <vendorid>0x0853</vendorid>
+  </devicevendordef>
+
+  <devicevendordef>
+    <vendorname>SUN_MICROSYSTEMS</vendorname>
+    <vendorid>0x0430</vendorid>
+  </devicevendordef>
+
+  <devicevendordef>
+    <vendorname>CHICONY_0x0472</vendorname>
+    <vendorid>0x0472</vendorid>
+  </devicevendordef>
+
+  <devicevendordef>
+    <vendorname>MICROSOFT</vendorname>
+    <vendorid>0x045e</vendorid>
+  </devicevendordef>
+</root>
