@@ -54,12 +54,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         isEqualVendorProduct(DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_CORDLESS_PRESENTER)) {
       goto restore;
     }
-#if 0
-    // Apple Magic Mouse
-    if (isEqualVendorProduct(DeviceVendor::APPLE_COMPUTER, DeviceProduct::MAGIC_MOUSE)) {
-      goto restore;
-    }
-#endif
 
     return replaceEventAction();
 
