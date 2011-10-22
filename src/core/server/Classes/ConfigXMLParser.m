@@ -17,6 +17,10 @@ static ConfigXMLParser* global_instance = nil;
 - (BOOL) reload_appdef;
 @end
 
+@interface ConfigXMLParser (DeviceDef)
+- (BOOL) reload_devicedef;
+@end
+
 @implementation ConfigXMLParser
 
 + (ConfigXMLParser*) getInstance
@@ -66,8 +70,9 @@ static ConfigXMLParser* global_instance = nil;
     [keycode_ release];
     keycode_ = [KeyCode new];
 
-    // Reload appdef before loading autogen because autogen uses appdef data.
+    // Reload appdef and devicedef before loading autogen because autogen uses appdef and devicedef data.
     if ([self reload_appdef] &&
+        [self reload_devicedef] &&
         [self reload_autogen] &&
         [self reload_preferencepane]) {
       initialized_ = YES;
