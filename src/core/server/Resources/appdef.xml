@@ -157,6 +157,7 @@
   <appdef>
     <appname>XCODE</appname>
     <equal>com.apple.Xcode</equal>
+    <equal>com.apple.dt.Xcode</equal>
   </appdef>
 
   <appdef>
