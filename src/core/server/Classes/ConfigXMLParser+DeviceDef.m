@@ -98,8 +98,6 @@
       if (type) {
         ConfigXMLParserDeviceDefData* newdata = [self parse_devicedef:e];
         if (newdata) {
-          [appdefdata_ addObject:newdata];
-
           // Adding to keycode_ if needed.
           NSString* keycodename = [NSString stringWithFormat:@"%@::%@", type, newdata.name];
           if (! [keycode_ isExists:keycodename]) {
