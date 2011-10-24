@@ -28,7 +28,7 @@
   </item>
 
   <!-- ============================================================ -->
-  <!-- appdef example -->
+  <!-- An example of appdef -->
   <appdef>
     <appname>SAMPLEAPP</appname>
     <equal>org.pqrs.sampleapp</equal>
@@ -42,7 +42,7 @@
   </item>
 
   <!-- ============================================================ -->
-  <!-- devicevendordef,deviceproductdef example -->
+  <!-- An example of devicevendordef,deviceproductdef -->
   <devicevendordef>
     <vendorname>HEWLETT_PACKARD</vendorname>
     <vendorid>0x03f0</vendorid>
@@ -50,7 +50,7 @@
 
   <deviceproductdef>
     <vendorname>MY_HP_KEYBOARD</vendorname>
-    <vendorid>0x0224</vendorid>
+    <productid>0x0224</productid>
   </deviceproductdef>
 
   <item>
