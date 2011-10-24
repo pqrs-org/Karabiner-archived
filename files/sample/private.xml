@@ -49,7 +49,7 @@
   </devicevendordef>
 
   <deviceproductdef>
-    <vendorname>MY_HP_KEYBOARD</vendorname>
+    <productname>MY_HP_KEYBOARD</productname>
     <productid>0x0224</productid>
   </deviceproductdef>
 
