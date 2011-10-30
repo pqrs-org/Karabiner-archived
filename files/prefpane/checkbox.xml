@@ -6,7 +6,7 @@
       <list>
         <item>
           <name>Suppress Growl warning</name>
-          <appendix>This option suppresses the warnings: "Growl is not installed", "Growl is not running"</appendix>
+          <appendix>This option suppresses the warning: "Growl is not running"</appendix>
           <appendix></appendix>
           <appendix>If you want to suppress the Growl notification itself,</appendix>
           <appendix>disable the notification of KeyRemap4MacBook from Growl Preferences.</appendix>
