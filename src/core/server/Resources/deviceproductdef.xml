@@ -61,6 +61,16 @@
   </deviceproductdef>
 
   <deviceproductdef>
+    <productname>APPLE_WIRELESS_KEYBOARD_0x022d</productname>
+    <productid>0x022d</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>APPLE_WIRELESS_TRACKPAD_0x030e</productname>
+    <productid>0x030e</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
     <productname>MAGIC_MOUSE</productname>
     <productid>0x030d</productid>
   </deviceproductdef>
