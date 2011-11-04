@@ -9012,6 +9012,20 @@
         </item>
 
         <item>
+          <name>For Targus Bluetooth Presenter</name>
+          <list>
+            <item>
+              <name>Fix Targus Bluetooth Presenter</name>
+              <appendix>Map shift-up to up and shift-down to down</appendix>
+              <identifier>remap.targus_bluetooth_presenter_fix</identifier>
+              <device_only>DeviceVendor::TARGUS,DeviceProduct::TARGUS_BLUETOOTH_PRESENTER</device_only>
+              <autogen>--KeyToKey-- KeyCode::CURSOR_UP, VK_SHIFT, KeyCode::CURSOR_UP</autogen>
+              <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, VK_SHIFT, KeyCode::CURSOR_DOWN</autogen>
+            </item>
+          </list>
+        </item>
+
+        <item>
           <name>For FILCO FKBN91ML/NB</name>
           <list>
             <item>
