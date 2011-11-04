@@ -168,6 +168,15 @@
         </item>
 
         <item>
+          <name>Key To XXX(4)</name>
+          <appendix>A to Shift_L</appendix>
+          <appendix>Shift_L+A to B</appendix>
+          <identifier>remap.samples_keytokey_key2xxx_4</identifier>
+          <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::SHIFT_L, KeyCode::B</autogen>
+          <autogen>--KeyToKey-- KeyCode::A,                        KeyCode::SHIFT_L</autogen>
+        </item>
+
+        <item>
           <name>Modifier To XXX</name>
           <appendix>Shift_R to Command_L+Option_L (Modifier to Modifier+Modifier)</appendix>
           <appendix>Fn+Option_L to Command_L (Modifier+Modifier To Modifier)</appendix>
