@@ -59,4 +59,9 @@
     <vendorname>MICROSOFT</vendorname>
     <vendorid>0x045e</vendorid>
   </devicevendordef>
+
+  <devicevendordef>
+    <vendorname>TARGUS</vendorname>
+    <vendorid>0x1048</vendorid>
+  </devicevendordef>
 </root>
