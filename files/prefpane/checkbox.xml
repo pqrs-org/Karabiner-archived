@@ -11459,24 +11459,35 @@
               <appendix>1段目: X-EQ/ YGRWP</appendix>
               <appendix>2段目: AIUFO HJKST</appendix>
               <appendix>3段目: ,.CVL NMDBZ</appendix>
-              <identifier>remap.jis_layout_aiu</identifier>
-              <inputmodedetail_only>
-                JAPANESE,
-                JAPANESE_HIRAGANA,
-                JAPANESE_KATAKANA,
-                JAPANESE_HALFWIDTH_KANA,
-                AINU
-              </inputmodedetail_only>
-              <modifier_not>
-                ModifierFlag::COMMAND_L,
-                ModifierFlag::COMMAND_R,
-                ModifierFlag::CONTROL_L,
-                ModifierFlag::CONTROL_R,
-                ModifierFlag::FN,
-                ModifierFlag::OPTION_L,
-                ModifierFlag::OPTION_R
-              </modifier_not>
-              <!-- #include "include/jis_layout_aiu.xml" -->
+              <list>
+                <item>
+                  <name>日本語入力のときだけAIU配列にする</name>
+                  <appendix>（Command+CなどのショートカットはQWERTY配列のまま）</appendix>
+                  <identifier>remap.jis_layout_aiu</identifier>
+                  <inputmodedetail_only>
+                    JAPANESE,
+                    JAPANESE_HIRAGANA,
+                    JAPANESE_KATAKANA,
+                    JAPANESE_HALFWIDTH_KANA,
+                    AINU
+                  </inputmodedetail_only>
+                  <modifier_not>
+                    ModifierFlag::COMMAND_L,
+                    ModifierFlag::COMMAND_R,
+                    ModifierFlag::CONTROL_L,
+                    ModifierFlag::CONTROL_R,
+                    ModifierFlag::FN,
+                    ModifierFlag::OPTION_L,
+                    ModifierFlag::OPTION_R
+                  </modifier_not>
+                  <!-- #include "include/jis_layout_aiu.xml" -->
+                </item>
+                <item>
+                  <name>いつでもAIU配列</name>
+                  <identifier>remap.jis_layout_aiu_anytime</identifier>
+                  <!-- #include "include/jis_layout_aiu.xml" -->
+                </item>
+              </list>
             </item>
           </list>
         </item>
