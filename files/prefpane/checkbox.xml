@@ -633,6 +633,13 @@
       <name>Change Backslash(\) Key</name>
       <list>
         <item>
+          <name>Backslash(\) to Fn</name>
+          <appendix>(+ Fn+Backslash(\) to Backslash(\))</appendix>
+          <identifier>remap.backslash_to_fn</identifier>
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH, ModifierFlag::FN, KeyCode::BACKSLASH</autogen>
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH,                   KeyCode::FN</autogen>
+        </item>
+        <item>
           <name>Backslash(\) to Delete</name>
           <identifier>remap.backslash2delete</identifier>
           <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::DELETE</autogen>
