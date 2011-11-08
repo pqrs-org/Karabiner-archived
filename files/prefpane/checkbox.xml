@@ -24,6 +24,10 @@
           <identifier essential="true">general.dont_remap_external</identifier>
         </item>
         <item>
+          <name>Don't remap any pointing devices</name>
+          <identifier essential="true">general.dont_remap_any_pointing</identifier>
+        </item>
+        <item>
           <name>Don't remap Apple's keyboards</name>
           <identifier essential="true">general.dont_remap_apple_keyboard</identifier>
         </item>
