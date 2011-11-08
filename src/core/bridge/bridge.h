@@ -22,8 +22,9 @@ enum {
   // Version 15: Added VK_CONSUMERKEY_*.
   // Version 16: Added BRIDGE_REMAPTYPE_STRIPMODIFIERFROMSCROLLWHEEL.
   // Version 17: Added VK_MOUSEKEY_BUTTON_BUTTON9 - VK_MOUSEKEY_BUTTON_BUTTON16
+  // Version 18: Added an essential configuration. (general.dont_remap_any_pointing)
 
-  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 17,
+  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 18,
 };
 
 enum {
