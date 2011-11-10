@@ -120,6 +120,22 @@ static NSString* kInputSourceLanguage_traditional_chinese_yahoo_keykey = @"zh-Ha
     NSString* lang = [self getInputSourceLanguage:source];
     if (! lang) continue;
 
+    // ----------------------------------------
+    // Skip if sourceID is follows.
+    // - com.apple.PressAndHold
+    // - com.apple.CharacterPaletteIM
+    // - com.apple.KeyboardViewer
+    // - or others which have "com.apple." prefix and
+    //      don't have "com.apple.keylayout." prefix.
+    NSString* sourceID = TISGetInputSourceProperty(source, kTISPropertyInputSourceID);
+    if (sourceID) {
+      if ([sourceID hasPrefix:@"com.apple."] &&
+          ! [sourceID hasPrefix:@"com.apple.keylayout."]) {
+        continue;
+      }
+    }
+
+    // ----------------------------------------
     if ([language isEqualToString:lang]) {
       inputsource = source;
       CFRetain(inputsource);
