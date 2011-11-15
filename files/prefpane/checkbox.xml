@@ -8241,6 +8241,16 @@
           <name>Change PC PrintScreen Key, ScrollLock Key, Pause/Break Key</name>
           <list>
             <item>
+              <name>Right-hand function key block to system volume controls</name>
+              <appendix>* PrintScreen to Volume Down</appendix>
+              <appendix>* ScrollLock to Volume Up</appendix>
+              <appendix>* Pause/Break to Volume Mute</appendix>
+              <identifier>remap.pc_printscreen_scrolllock_pause_to_volume_controls</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::PC_PRINTSCREEN, ConsumerKeyCode::VOLUME_DOWN</autogen>
+              <autogen>--KeyToConsumer-- KeyCode::PC_SCROLLLOCK,  ConsumerKeyCode::VOLUME_UP</autogen>
+              <autogen>--KeyToConsumer-- KeyCode::PC_PAUSE,       ConsumerKeyCode::VOLUME_MUTE</autogen>
+            </item>
+            <item>
               <name>PrintScreen Key to Eject</name>
               <identifier>remap.pc_printscreen2eject</identifier>
               <autogen>--KeyToConsumer-- KeyCode::PC_PRINTSCREEN, ConsumerKeyCode::EJECT</autogen>
