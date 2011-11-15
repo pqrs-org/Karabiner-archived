@@ -2800,6 +2800,17 @@
                 </item>
                 <item><name>------------------------------------------------------------</name></item>
                 <item>
+                  <name>F5, F6, and F7 to iTunes music controls</name>
+                  <appendix>* F5 to Music Prev</appendix>
+                  <appendix>* F6 to Music Play/Pause</appendix>
+                  <appendix>* F7 to Music Next</appendix>
+                  <identifier>remap.f5_f7_to_musiccontrols</identifier>
+                  <autogen>--KeyToConsumer-- KeyCode::F5, ConsumerKeyCode::MUSIC_PREV</autogen>
+                  <autogen>--KeyToConsumer-- KeyCode::F6, ConsumerKeyCode::MUSIC_PLAY</autogen>
+                  <autogen>--KeyToConsumer-- KeyCode::F7, ConsumerKeyCode::MUSIC_NEXT</autogen>
+                </item>
+                <item><name>------------------------------------------------------------</name></item>
+                <item>
                   <name>F6 to Virtual NumLock</name>
                   <appendix>Unlike Fn_Lock, retaining cursor keys, delete key.</appendix>
                   <list>
