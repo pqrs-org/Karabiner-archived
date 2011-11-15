@@ -8238,22 +8238,7 @@
           </list>
         </item>
         <item>
-          <name>Change PC Pause/Break Key</name>
-          <list>
-            <item>
-              <name>Pause/Break Key to Eject</name>
-              <identifier>remap.pc_pause2eject</identifier>
-              <autogen>--KeyToConsumer-- KeyCode::PC_PAUSE, ConsumerKeyCode::EJECT</autogen>
-            </item>
-            <item>
-              <name>Pause/Break Key to Power</name>
-              <identifier>remap.pc_pause2power</identifier>
-              <autogen>--KeyToConsumer-- KeyCode::PC_PAUSE, ConsumerKeyCode::POWER</autogen>
-            </item>
-          </list>
-        </item>
-        <item>
-          <name>Change PC PrintScreen Key</name>
+          <name>Change PC PrintScreen Key, ScrollLock Key, Pause/Break Key</name>
           <list>
             <item>
               <name>PrintScreen Key to Eject</name>
@@ -8265,15 +8250,20 @@
               <identifier>remap.pc_printscreen2f12</identifier>
               <autogen>--KeyToKey-- KeyCode::PC_PRINTSCREEN, KeyCode::F12</autogen>
             </item>
-          </list>
-        </item>
-        <item>
-          <name>Change PC ScrollLock Key</name>
-          <list>
             <item>
               <name>ScrollLock Key to F13</name>
               <identifier>remap.pc_scrolllock2f13</identifier>
               <autogen>--KeyToKey-- KeyCode::PC_SCROLLLOCK, KeyCode::F13</autogen>
+            </item>
+            <item>
+              <name>Pause/Break Key to Eject</name>
+              <identifier>remap.pc_pause2eject</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::PC_PAUSE, ConsumerKeyCode::EJECT</autogen>
+            </item>
+            <item>
+              <name>Pause/Break Key to Power</name>
+              <identifier>remap.pc_pause2power</identifier>
+              <autogen>--KeyToConsumer-- KeyCode::PC_PAUSE, ConsumerKeyCode::POWER</autogen>
             </item>
           </list>
         </item>
