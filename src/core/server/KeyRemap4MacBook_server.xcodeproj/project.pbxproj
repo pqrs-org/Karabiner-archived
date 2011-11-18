@@ -25,6 +25,7 @@
 		347828F913EE5F6500D50AB1 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 347828F813EE5F6500D50AB1 /* Sparkle.framework */; };
 		347828FA13EE5F6700D50AB1 /* Sparkle.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 347828F813EE5F6500D50AB1 /* Sparkle.framework */; };
 		347C48B91296673E00CCC042 /* ConfigXMLParser+AutoGen.m in Sources */ = {isa = PBXBuildFile; fileRef = 347C48B81296673E00CCC042 /* ConfigXMLParser+AutoGen.m */; };
+		34881D431476B64B0010D418 /* replacedef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34881D421476B64B0010D418 /* replacedef.xml */; };
 		348C6A2E128E4504005F516D /* StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 348C6A2D128E4504005F516D /* StatusBar.m */; };
 		349B509F12837E64009108FE /* include.keycode.plist in Resources */ = {isa = PBXBuildFile; fileRef = 349B509E12837E64009108FE /* include.keycode.plist */; };
 		34A06A4C11F8792E0085749B /* icon.statusbar.0.tif in Resources */ = {isa = PBXBuildFile; fileRef = 34A06A4A11F8792E0085749B /* icon.statusbar.0.tif */; };
@@ -87,6 +88,7 @@
 		347828F513EE5F3400D50AB1 /* kr4mb_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = kr4mb_pub.pem; path = Resources/kr4mb_pub.pem; sourceTree = "<group>"; };
 		347828F813EE5F6500D50AB1 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = "<group>"; };
 		347C48B81296673E00CCC042 /* ConfigXMLParser+AutoGen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ConfigXMLParser+AutoGen.m"; path = "Classes/ConfigXMLParser+AutoGen.m"; sourceTree = "<group>"; };
+		34881D421476B64B0010D418 /* replacedef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = replacedef.xml; path = Resources/replacedef.xml; sourceTree = "<group>"; };
 		348C6A2C128E4504005F516D /* StatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusBar.h; path = Classes/StatusBar.h; sourceTree = "<group>"; };
 		348C6A2D128E4504005F516D /* StatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusBar.m; path = Classes/StatusBar.m; sourceTree = "<group>"; };
 		349B509E12837E64009108FE /* include.keycode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = include.keycode.plist; path = ../bridge/keycode/output/include.keycode.plist; sourceTree = SOURCE_ROOT; };
@@ -216,6 +218,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				34881D421476B64B0010D418 /* replacedef.xml */,
 				3451A54F14532D400030EAD7 /* deviceproductdef.xml */,
 				3451A55014532D400030EAD7 /* devicevendordef.xml */,
 				34A83BCE144B1EAA00AE5687 /* appdef.xml */,
@@ -312,6 +315,7 @@
 				34A83BCF144B1EAA00AE5687 /* appdef.xml in Resources */,
 				3451A55114532D400030EAD7 /* deviceproductdef.xml in Resources */,
 				3451A55214532D400030EAD7 /* devicevendordef.xml in Resources */,
+				34881D431476B64B0010D418 /* replacedef.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
