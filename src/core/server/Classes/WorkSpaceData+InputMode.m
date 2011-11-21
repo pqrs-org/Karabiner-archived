@@ -339,6 +339,12 @@ finish:
     return;
   }
 
+  if ([name isEqualToString:@"org.pqrs.inputmode.de.German"]) {
+    *output_inputmode       = [parser keycode:@"InputMode::GERMAN"];
+    *output_inputmodedetail = [parser keycode:@"InputModeDetail::GERMAN"];
+    return;
+  }
+
   if ([name isEqualToString:@"org.pqrs.inputmode.unknown.FrenchDvorak"]) {
     *output_inputmode       = [parser keycode:@"InputMode::BEPO"];
     *output_inputmodedetail = [parser keycode:@"InputModeDetail::BEPO"];

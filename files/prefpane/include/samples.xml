@@ -1341,6 +1341,13 @@
               <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
             </item>
             <item>
+              <name>inputmode_only (German)</name>
+              <appendix>Space to Tab</appendix>
+              <identifier>remap.samples_inputmode_german</identifier>
+              <inputmode_only>GERMAN</inputmode_only>
+              <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+            </item>
+            <item>
               <name>inputmode_only (Unknown == User Defined keylayout)</name>
               <appendix>Space to Tab</appendix>
               <identifier>remap.samples_inputmode_unknown</identifier>
