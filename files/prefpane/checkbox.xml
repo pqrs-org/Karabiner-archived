@@ -11707,6 +11707,19 @@
             </item>
           </list>
         </item>
+
+        <item>
+          <name>Change Option_R+,(≤) to Comma(,) Key for Russian</name>
+          <identifier>remap.change_option_r_plus_comma_to_comma_for_russian</identifier>
+          <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::OPTION_R,
+            KeyCode::KEY_6, VK_SHIFT</autogen>
+        </item>
+        <item>
+          <name>Change Option_R+.(≥) to Dot(.) Key for Russian</name>
+          <identifier>remap.change_option_r_plus_dot_to_dot_for_russian</identifier>
+          <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::OPTION_R,
+            KeyCode::KEY_7, VK_SHIFT</autogen>
+        </item>
       </list>
     </item>
     <item>
