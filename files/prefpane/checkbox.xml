@@ -7396,6 +7396,7 @@
             <item>
               <name>Change Command_L to Option_L</name>
               <appendix>(Pass-Through Tab and Backquote)</appendix>
+              <!-- #include "include/lazy_recommendation.xml" -->
               <identifier>remap.app_term_commandL2optionL_except_tab</identifier>
               <only>TERMINAL</only>
               <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::OPTION_L, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
