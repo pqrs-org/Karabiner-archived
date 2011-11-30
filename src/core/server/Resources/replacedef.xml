@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<root>
-
-  <replacedef>
-    <replacename>UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS</replacename>
-    <replacevalue>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</replacevalue>
-  </replacedef>
-
-</root>

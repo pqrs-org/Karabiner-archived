@@ -9,6 +9,7 @@
   RemapClassesInitializeVector* remapclasses_initialize_vector_;
   NSMutableArray* preferencepane_checkbox_;
   NSMutableArray* preferencepane_number_;
+  NSMutableDictionary* replacement_;
   NSMutableArray* appdefdata_;
   KeyCode* keycode_;
   NSString* error_message_;
