@@ -109,6 +109,12 @@
   </appdef>
 
   <appdef>
+    <appname>DREAMWEAVER</appname>
+    <!-- com.adobe.dreamweaver-11.5 -->
+    <prefix>com.adobe.dreamweaver</prefix>
+  </appdef>
+
+  <appdef>
     <appname>ADOBE</appname>
     <prefix>com.adobe.</prefix>
   </appdef>
@@ -372,4 +378,8 @@
     <equal>com.aptana.studio3</equal>
   </appdef>
 
+  <appdef>
+    <appname>BLUEFISH</appname>
+    <equal>nl.openoffice.bluefish</equal>
+  </appdef>
 </root>
