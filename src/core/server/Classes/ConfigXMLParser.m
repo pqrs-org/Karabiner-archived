@@ -13,6 +13,10 @@ static ConfigXMLParser* global_instance = nil;
 - (BOOL) reload_preferencepane;
 @end
 
+@interface ConfigXMLParser (ReplacementDef)
+- (BOOL) reload_replacementdef;
+@end
+
 @interface ConfigXMLParser (AppDef)
 - (BOOL) reload_appdef;
 @end
@@ -50,6 +54,7 @@ static ConfigXMLParser* global_instance = nil;
   [remapclasses_initialize_vector_ release];
   [preferencepane_checkbox_ release];
   [preferencepane_number_ release];
+  [replacement_ release];
   [appdefdata_ release];
   [keycode_ release];
   [error_message_ release];
@@ -70,8 +75,10 @@ static ConfigXMLParser* global_instance = nil;
     [keycode_ release];
     keycode_ = [KeyCode new];
 
-    // Reload appdef and devicedef before loading autogen because autogen uses appdef and devicedef data.
-    if ([self reload_appdef] &&
+    // Reload replacementdef at first because replacementdef is used in appdef,devicedef and autogen.
+    // Then reload appdef and devicedef before loading autogen because autogen uses appdef and devicedef data.
+    if ([self reload_replacementdef] &&
+        [self reload_appdef] &&
         [self reload_devicedef] &&
         [self reload_autogen] &&
         [self reload_preferencepane]) {
