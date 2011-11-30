@@ -64,8 +64,11 @@
   }
 }
 
-- (BOOL) reload_replacement {
+- (BOOL) reload_replacementdef {
   BOOL retval = NO;
+
+  [replacement_ release];
+  replacement_ = [NSMutableDictionary new];
 
   NSArray* paths = [NSArray arrayWithObjects:
                     [self preferencepane_get_private_xml_path],
