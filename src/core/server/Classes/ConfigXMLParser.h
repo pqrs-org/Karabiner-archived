@@ -34,6 +34,13 @@
 
 @end
 
+@interface ConfigXMLParser (ReplacementDef)
+
+- (BOOL) reload_replacementdef;
+- (NSXMLDocument*) documentWithPathApplyingReplacement:(NSString*)filepath error:(NSError**)error;
+
+@end
+
 @interface ConfigXMLParserAppDefData : NSObject {
   NSString* name_;
   NSMutableArray* rules_equal_;
@@ -75,4 +82,7 @@ enum {
 - (void) removeErrorMessage;
 
 - (NSXMLElement*) castToNSXMLElement:(NSXMLNode*)node;
+
+- (NSString*) trim:(NSString*)string;
+
 @end
