@@ -109,7 +109,7 @@
 
   for (NSString* name in replacement_) {
     NSString* value = [replacement_ objectForKey:name];
-    NSString* replacementtarget = [NSString stringWithFormat:@"ReplacementTarget::%@", name];
+    NSString* replacementtarget = [NSString stringWithFormat:@"#{%@}", name];
     xmlstring = [xmlstring stringByReplacingOccurrencesOfString:replacementtarget withString:value];
   }
 
