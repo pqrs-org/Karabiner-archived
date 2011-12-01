@@ -13,10 +13,6 @@ static ConfigXMLParser* global_instance = nil;
 - (BOOL) reload_preferencepane;
 @end
 
-@interface ConfigXMLParser (ReplacementDef)
-- (BOOL) reload_replacementdef;
-@end
-
 @interface ConfigXMLParser (AppDef)
 - (BOOL) reload_appdef;
 @end
