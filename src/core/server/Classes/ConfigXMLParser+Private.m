@@ -59,4 +59,9 @@
   return (NSXMLElement*)(node);
 }
 
+- (NSString*) trim:(NSString*)string
+{
+  return [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
 @end
