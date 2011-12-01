@@ -28,11 +28,12 @@
     if (! e) continue;
 
     NSString* name = [e name];
+    NSString* stringValue = [self trim:[e stringValue]];
 
     if ([name isEqualToString:@"replacementname"]) {
-      newdata.name = [e stringValue];
+      newdata.name = stringValue;
     } else if ([name isEqualToString:@"replacementvalue"]) {
-      newdata.value = [e stringValue];
+      newdata.value = stringValue;
     }
   }
 
@@ -98,6 +99,21 @@
   }
 
   return retval;
+}
+
+- (NSXMLDocument*) documentWithPathApplyingReplacement:(NSString*)filepath error:(NSError**)error {
+  NSString* xmlstring = [NSString stringWithContentsOfFile:filepath
+                                                  encoding:NSUTF8StringEncoding
+                                                     error:error];
+  if (! xmlstring) return nil;
+
+  for (NSString* name in replacement_) {
+    NSString* value = [replacement_ objectForKey:name];
+    NSString* replacementtarget = [NSString stringWithFormat:@"ReplacementTarget::%@", name];
+    xmlstring = [xmlstring stringByReplacingOccurrencesOfString:replacementtarget withString:value];
+  }
+
+  return [[[NSXMLDocument alloc] initWithXMLString:xmlstring options:0 error:error] autorelease];
 }
 
 @end
