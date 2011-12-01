@@ -144,9 +144,8 @@ found:
     @try {
       if ([xmlpath length] == 0) continue;
 
-      NSURL* url = [NSURL fileURLWithPath:xmlpath];
       NSError* error = nil;
-      NSXMLDocument* xmldocument = [[[NSXMLDocument alloc] initWithContentsOfURL:url options:0 error:&error] autorelease];
+      NSXMLDocument* xmldocument = [self documentWithPathApplyingReplacement:xmlpath error:&error];
       if (! xmldocument) {
         @throw [NSException exceptionWithName :[NSString stringWithFormat:@"%@ is invalid", xmlpath] reason :[error localizedDescription] userInfo : nil];
       }
