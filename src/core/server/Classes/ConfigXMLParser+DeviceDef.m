@@ -52,14 +52,15 @@
     if (! e) continue;
 
     NSString* name = [e name];
+    NSString* stringValue = [self trim:[e stringValue]];
 
     if ([name isEqualToString:@"vendorname"] ||
         [name isEqualToString:@"productname"]) {
-      [newdata setName:[e stringValue]];
+      [newdata setName:stringValue];
 
     } else if ([name isEqualToString:@"vendorid"] ||
                [name isEqualToString:@"productid"]) {
-      NSScanner* scanner = [NSScanner scannerWithString:[e stringValue]];
+      NSScanner* scanner = [NSScanner scannerWithString:stringValue];
       unsigned int hexvalue = 0;
       NSInteger integervalue = 0;
       if ([scanner scanHexInt:&hexvalue]) {
@@ -68,7 +69,7 @@
         [newdata setValue:integervalue];
       } else {
         @throw [NSException exceptionWithName :[NSString stringWithFormat:@"<%@> error", name]
-                reason :[NSString stringWithFormat:@"%@ is invalid value for <%@>", [e stringValue], name]
+                reason :[NSString stringWithFormat:@"%@ is invalid value for <%@>", stringValue, name]
                 userInfo : nil];
       }
     }
