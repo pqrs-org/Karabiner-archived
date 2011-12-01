@@ -78,7 +78,7 @@ found:
     NSString* name = [e name];
 
     if ([name isEqualToString:@"appname"]) {
-      NSString* appname = [e stringValue];
+      NSString* appname = [self trim:[e stringValue]];
 
       // Skip if appname is already registered.
       if (appname) {
@@ -93,10 +93,10 @@ found:
       [newdata setName:appname];
 
     } else if ([name isEqualToString:@"equal"]) {
-      [newdata addEqualRule:[e stringValue]];
+      [newdata addEqualRule:[self trim:[e stringValue]]];
 
     } else if ([name isEqualToString:@"prefix"]) {
-      [newdata addPrefixRule:[e stringValue]];
+      [newdata addPrefixRule:[self trim:[e stringValue]]];
     }
   }
 
