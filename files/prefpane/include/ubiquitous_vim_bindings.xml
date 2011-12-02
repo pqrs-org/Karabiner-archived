@@ -153,24 +153,24 @@
             <!-- hjkl -->
             <block>
               <config_not>notsave.c_w_operator_pending</config_not>
-              <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::NONE, KeyCode::CURSOR_LEFT</autogen>
-              <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::NONE, KeyCode::CURSOR_DOWN</autogen>
-              <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::NONE, KeyCode::CURSOR_UP</autogen>
-              <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::NONE, KeyCode::CURSOR_RIGHT</autogen>
+              <autogen>--KeyToKey-- #{VI_H}, ModifierFlag::NONE, KeyCode::CURSOR_LEFT</autogen>
+              <autogen>--KeyToKey-- #{VK_J}, ModifierFlag::NONE, KeyCode::CURSOR_DOWN</autogen>
+              <autogen>--KeyToKey-- #{VK_K}, ModifierFlag::NONE, KeyCode::CURSOR_UP</autogen>
+              <autogen>--KeyToKey-- #{VK_L}, ModifierFlag::NONE, KeyCode::CURSOR_RIGHT</autogen>
             </block>
 
             <!-- DELETE -->
             <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::NONE, KeyCode::CURSOR_LEFT</autogen>
 
             <!-- FN + hjkl -->
-            <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::FN, KeyCode::HOME, ModifierFlag::OPTION_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::FN, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::FN, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::FN, KeyCode::END, ModifierFlag::OPTION_L</autogen>
+            <autogen>--KeyToKey-- #{VI_H}, ModifierFlag::FN, KeyCode::HOME, ModifierFlag::OPTION_L</autogen>
+            <autogen>--KeyToKey-- #{VI_J}, ModifierFlag::FN, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
+            <autogen>--KeyToKey-- #{VI_K}, ModifierFlag::FN, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
+            <autogen>--KeyToKey-- #{VI_L}, ModifierFlag::FN, KeyCode::END, ModifierFlag::OPTION_L</autogen>
 
             <!-- H, M, L --> <!-- TODO: H and L are questionable. May be no good way to implement. -->
-            <autogen>--KeyToKey-- KeyCode::H, VK_SHIFT, KeyCode::PAGEDOWN, ModifierFlag::NONE, KeyCode::CURSOR_DOWN, KeyCode::CURSOR_UP</autogen>
-            <autogen>--KeyToKey-- KeyCode::L, VK_SHIFT, KeyCode::PAGEUP, ModifierFlag::NONE, KeyCode::CURSOR_UP, KeyCode::CURSOR_DOWN</autogen>
+            <autogen>--KeyToKey-- #{VI_H}, VK_SHIFT, KeyCode::PAGEDOWN, ModifierFlag::NONE, KeyCode::CURSOR_DOWN, KeyCode::CURSOR_UP</autogen>
+            <autogen>--KeyToKey-- #{VI_L}, VK_SHIFT, KeyCode::PAGEUP, ModifierFlag::NONE, KeyCode::CURSOR_UP, KeyCode::CURSOR_DOWN</autogen>
             <autogen>--KeyToKey-- KeyCode::M, VK_SHIFT, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
 
             <!-- C-f, C-b -->
