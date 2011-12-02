@@ -41,7 +41,7 @@
     return number;
   }
 
-  @throw [NSException exceptionWithName : @"KeyCode" reason :[NSString stringWithFormat:@"Unknown keycode: %@", name] userInfo : nil];
+  @throw [NSException exceptionWithName :[NSString stringWithFormat:@"Unknown data: %@", name] reason : @"" userInfo : nil];
 }
 
 - (BOOL) isExists:(NSString*)name
@@ -56,7 +56,7 @@
 - (void) append:(NSString*)name newvalue:(unsigned int)newvalue
 {
   if ([dict_ objectForKey:name]) {
-    @throw [NSException exceptionWithName : @"KeyCode" reason :[NSString stringWithFormat:@"Repetition addition: %@", name] userInfo : nil];
+    @throw [NSException exceptionWithName :[NSString stringWithFormat:@"Repetition addition: %@", name] reason : @"" userInfo : nil];
   }
   [dict_ setObject:[NSNumber numberWithUnsignedInt:newvalue] forKey:name];
 }
