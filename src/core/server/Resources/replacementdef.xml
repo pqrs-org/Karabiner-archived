@@ -6,4 +6,25 @@
     <replacementvalue>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</replacementvalue>
   </replacementdef>
 
+  <!-- ============================================================ -->
+  <replacementdef>
+    <replacementname>VI_H</replacementname>
+    <replacementvalue>KeyCode::H</replacementvalue>
+  </replacementdef>
+
+  <replacementdef>
+    <replacementname>VI_J</replacementname>
+    <replacementvalue>KeyCode::J</replacementvalue>
+  </replacementdef>
+
+  <replacementdef>
+    <replacementname>VI_K</replacementname>
+    <replacementvalue>KeyCode::K</replacementvalue>
+  </replacementdef>
+
+  <replacementdef>
+    <replacementname>VI_L</replacementname>
+    <replacementvalue>KeyCode::L</replacementvalue>
+  </replacementdef>
+
 </root>
