@@ -11,6 +11,7 @@
 		34973D071488E2A300C563CC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34973D061488E2A300C563CC /* Cocoa.framework */; };
 		34973D111488E2A300C563CC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 34973D0F1488E2A300C563CC /* InfoPlist.strings */; };
 		34973D141488E2A300C563CC /* KeyRemap4MacBookTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 34973D131488E2A300C563CC /* KeyRemap4MacBookTest.m */; };
+		34FA9FE61488E56D00ECCC0F /* NSString+HashBraces.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FA9FE51488E56D00ECCC0F /* NSString+HashBraces.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,8 @@
 		34973D121488E2A300C563CC /* KeyRemap4MacBookTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyRemap4MacBookTest.h; sourceTree = "<group>"; };
 		34973D131488E2A300C563CC /* KeyRemap4MacBookTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyRemap4MacBookTest.m; sourceTree = "<group>"; };
 		34973D151488E2A300C563CC /* KeyRemap4MacBookTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KeyRemap4MacBookTest-Prefix.pch"; sourceTree = "<group>"; };
+		34FA9FE41488E56D00ECCC0F /* NSString+HashBraces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+HashBraces.h"; path = "../../../src/core/server/Classes/NSString+HashBraces.h"; sourceTree = "<group>"; };
+		34FA9FE51488E56D00ECCC0F /* NSString+HashBraces.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+HashBraces.m"; path = "../../../src/core/server/Classes/NSString+HashBraces.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +85,8 @@
 			children = (
 				34973D121488E2A300C563CC /* KeyRemap4MacBookTest.h */,
 				34973D131488E2A300C563CC /* KeyRemap4MacBookTest.m */,
+				34FA9FE41488E56D00ECCC0F /* NSString+HashBraces.h */,
+				34FA9FE51488E56D00ECCC0F /* NSString+HashBraces.m */,
 				34973D0D1488E2A300C563CC /* Supporting Files */,
 			);
 			path = KeyRemap4MacBookTest;
@@ -176,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				34973D141488E2A300C563CC /* KeyRemap4MacBookTest.m in Sources */,
+				34FA9FE61488E56D00ECCC0F /* NSString+HashBraces.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +289,7 @@
 				34973D181488E2A300C563CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
