@@ -2,6 +2,7 @@
 CONFIGURATION = Release
 
 all:
+	make -C ../../files/prefpane
 	xcodebuild -alltargets -configuration $(CONFIGURATION) build
 
 clean:

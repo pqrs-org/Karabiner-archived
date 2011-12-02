@@ -73,6 +73,16 @@
     NSString* actual = [string stringByReplacingHashBracesOccurrencesOfDictionary:replacementDictionary];
     STAssertEqualObjects(actual, expect, @"looped replacing");
   }
+
+  // performance test
+  {
+    NSString* string = [NSString stringWithContentsOfFile:@"../../files/prefpane/output/checkbox.xml"];
+    NSMutableDictionary* dict = [NSMutableDictionary new];
+    for (int i = 0; i < 1000; ++i) {
+      [dict setObject:[NSString stringWithFormat:@"VALUE%d", i] forKey:[NSString stringWithFormat:@"#{NAME%d}", i]];
+    }
+    [string stringByReplacingHashBracesOccurrencesOfDictionary:dict];
+  }
 }
 
 @end
