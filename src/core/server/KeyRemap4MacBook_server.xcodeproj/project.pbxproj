@@ -37,6 +37,7 @@
 		34CC23DC13E99C3800CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CC23DB13E99C3800CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m */; };
 		34D4F82812C4463B001819AA /* StatusWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D4F82712C4463B001819AA /* StatusWindow.m */; };
 		34D4F83C12C45CF3001819AA /* WorkSpaceData+InputMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D4F83B12C45CF3001819AA /* WorkSpaceData+InputMode.m */; };
+		34FB00DD14891EDF00037920 /* NSString+HashBraces.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FB00DC14891EDF00037920 /* NSString+HashBraces.m */; };
 		34FB9592128F985A0088B235 /* PreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FB9591128F985A0088B235 /* PreferencesManager.m */; };
 		34FB9595128FCC030088B235 /* include.bridge_essential_config_index.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34FB9594128FCC030088B235 /* include.bridge_essential_config_index.plist */; };
 		34FD0958145325BC00CDFFDC /* ConfigXMLParser+DeviceDef.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FD0957145325BC00CDFFDC /* ConfigXMLParser+DeviceDef.m */; };
@@ -109,6 +110,8 @@
 		34D4F82612C4463B001819AA /* StatusWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusWindow.h; path = Classes/StatusWindow.h; sourceTree = "<group>"; };
 		34D4F82712C4463B001819AA /* StatusWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusWindow.m; path = Classes/StatusWindow.m; sourceTree = "<group>"; };
 		34D4F83B12C45CF3001819AA /* WorkSpaceData+InputMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "WorkSpaceData+InputMode.m"; path = "Classes/WorkSpaceData+InputMode.m"; sourceTree = "<group>"; };
+		34FB00DB14891EDF00037920 /* NSString+HashBraces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+HashBraces.h"; path = "Classes/NSString+HashBraces.h"; sourceTree = "<group>"; };
+		34FB00DC14891EDF00037920 /* NSString+HashBraces.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+HashBraces.m"; path = "Classes/NSString+HashBraces.m"; sourceTree = "<group>"; };
 		34FB9590128F98510088B235 /* PreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesManager.h; path = Classes/PreferencesManager.h; sourceTree = "<group>"; };
 		34FB9591128F985A0088B235 /* PreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesManager.m; path = Classes/PreferencesManager.m; sourceTree = "<group>"; };
 		34FB9594128FCC030088B235 /* include.bridge_essential_config_index.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = include.bridge_essential_config_index.plist; path = ../bridge/config/output/include.bridge_essential_config_index.plist; sourceTree = SOURCE_ROOT; };
@@ -138,6 +141,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				34FB00DB14891EDF00037920 /* NSString+HashBraces.h */,
+				34FB00DC14891EDF00037920 /* NSString+HashBraces.m */,
 				34FEAE4E148695CF0042D507 /* ConfigXMLParser+ReplacementDef.m */,
 				34FD0957145325BC00CDFFDC /* ConfigXMLParser+DeviceDef.m */,
 				345D3BC9144B2FAD00198252 /* ConfigXMLParser+AppDef.m */,
@@ -347,6 +352,7 @@
 				345D3BCA144B2FAD00198252 /* ConfigXMLParser+AppDef.m in Sources */,
 				34FD0958145325BC00CDFFDC /* ConfigXMLParser+DeviceDef.m in Sources */,
 				34FEAE4F148695CF0042D507 /* ConfigXMLParser+ReplacementDef.m in Sources */,
+				34FB00DD14891EDF00037920 /* NSString+HashBraces.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

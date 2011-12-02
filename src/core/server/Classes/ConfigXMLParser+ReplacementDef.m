@@ -1,4 +1,5 @@
 #import "ConfigXMLParser.h"
+#import "NSString+HashBraces.h"
 
 @interface ConfigXMLParserReplacementDefData : NSObject {
   NSString* name;
@@ -31,7 +32,7 @@
     NSString* stringValue = [self trim:[e stringValue]];
 
     if ([name isEqualToString:@"replacementname"]) {
-      newdata.name = stringValue;
+      newdata.name = [NSString stringWithFormat:@"#{%@}", stringValue];
     } else if ([name isEqualToString:@"replacementvalue"]) {
       newdata.value = stringValue;
     }
@@ -107,11 +108,7 @@
                                                      error:error];
   if (! xmlstring) return nil;
 
-  for (NSString* name in replacement_) {
-    NSString* value = [replacement_ objectForKey:name];
-    NSString* replacementtarget = [NSString stringWithFormat:@"#{%@}", name];
-    xmlstring = [xmlstring stringByReplacingOccurrencesOfString:replacementtarget withString:value];
-  }
+  xmlstring = [xmlstring stringByReplacingHashBracesOccurrencesOfDictionary:replacement_];
 
   return [[[NSXMLDocument alloc] initWithXMLString:xmlstring options:0 error:error] autorelease];
 }
