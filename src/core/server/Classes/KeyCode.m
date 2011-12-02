@@ -56,7 +56,7 @@
 - (void) append:(NSString*)name newvalue:(unsigned int)newvalue
 {
   if ([dict_ objectForKey:name]) {
-    @throw [NSException exceptionWithName :[NSString stringWithFormat:@"Repetition addition: %@", name] reason : @"" userInfo : nil];
+    @throw [NSException exceptionWithName :[NSString stringWithFormat:@"Repetitional definition: %@", name] reason : @"" userInfo : nil];
   }
   [dict_ setObject:[NSNumber numberWithUnsignedInt:newvalue] forKey:name];
 }
