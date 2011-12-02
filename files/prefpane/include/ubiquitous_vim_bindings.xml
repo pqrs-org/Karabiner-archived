@@ -154,9 +154,9 @@
             <block>
               <config_not>notsave.c_w_operator_pending</config_not>
               <autogen>--KeyToKey-- #{VI_H}, ModifierFlag::NONE, KeyCode::CURSOR_LEFT</autogen>
-              <autogen>--KeyToKey-- #{VK_J}, ModifierFlag::NONE, KeyCode::CURSOR_DOWN</autogen>
-              <autogen>--KeyToKey-- #{VK_K}, ModifierFlag::NONE, KeyCode::CURSOR_UP</autogen>
-              <autogen>--KeyToKey-- #{VK_L}, ModifierFlag::NONE, KeyCode::CURSOR_RIGHT</autogen>
+              <autogen>--KeyToKey-- #{VI_J}, ModifierFlag::NONE, KeyCode::CURSOR_DOWN</autogen>
+              <autogen>--KeyToKey-- #{VI_K}, ModifierFlag::NONE, KeyCode::CURSOR_UP</autogen>
+              <autogen>--KeyToKey-- #{VI_L}, ModifierFlag::NONE, KeyCode::CURSOR_RIGHT</autogen>
             </block>
 
             <!-- DELETE -->
