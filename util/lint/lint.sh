@@ -5,6 +5,11 @@ basedir=`dirname $0`
 ############################################################
 # xcodeproj
 for f in `find $basedir/../../* -name 'project.pbxproj'`; do
+    if [ "$(basename $(dirname $f))" = "KeyRemap4MacBookTest.xcodeproj" ]; then
+        echo "Skip $f"
+        continue
+    fi
+
     echo "Check $f"
 
     if [ "$(basename $(dirname $(dirname $f)))/$(basename $(dirname $f))" = "prefpane/KeyRemap4MacBook.xcodeproj" ]; then
