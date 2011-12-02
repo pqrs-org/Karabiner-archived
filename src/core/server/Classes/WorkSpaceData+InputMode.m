@@ -345,6 +345,12 @@ finish:
     return;
   }
 
+  if ([name isEqualToString:@"org.pqrs.inputmode.sl.Slovenian"]) {
+    *output_inputmode       = [parser keycode:@"InputMode::SLOVENIAN"];
+    *output_inputmodedetail = [parser keycode:@"InputModeDetail::SLOVENIAN"];
+    return;
+  }
+
   if ([name isEqualToString:@"org.pqrs.inputmode.unknown.FrenchDvorak"]) {
     *output_inputmode       = [parser keycode:@"InputMode::BEPO"];
     *output_inputmodedetail = [parser keycode:@"InputModeDetail::BEPO"];
