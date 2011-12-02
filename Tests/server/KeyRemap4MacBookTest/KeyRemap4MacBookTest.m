@@ -7,6 +7,7 @@
 //
 
 #import "KeyRemap4MacBookTest.h"
+#import "NSString+HashBraces.h"
 
 @implementation KeyRemap4MacBookTest
 
@@ -24,9 +25,54 @@
   [super tearDown];
 }
 
-- (void) testExample
+- (void) testNSStringstringByReplacingHashBracesOccurrencesOfDictionary
 {
-  STFail(@"Unit tests are not implemented yet in KeyRemap4MacBookTest");
+  NSDictionary* replacementDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                         @"AAAAAAAA", @"#{AAA}",
+                                         @"XXXXXX", @"#{XXX}",              // same length
+                                         @"Y", @"#{YYY}",
+                                         @"", @"#{ZZZ}",
+                                         @"#{LOOP}", @"#{LOOP}",
+                                         nil];
+  // no replacing
+  {
+    NSString* string = @"hello world.";
+    NSString* expect = string;
+    NSString* actual = [string stringByReplacingHashBracesOccurrencesOfDictionary:replacementDictionary];
+    STAssertEqualObjects(actual, expect, @"no replacing");
+  }
+
+  // normal replacing
+  {
+    NSString* string = @"#{AAA} #{XXX} #{YYY} #{ZZZ}";
+    NSString* expect = @"AAAAAAAA XXXXXX Y ";
+    NSString* actual = [string stringByReplacingHashBracesOccurrencesOfDictionary:replacementDictionary];
+    STAssertEqualObjects(actual, expect, @"normal replacing");
+  }
+
+  // unknown replacing
+  {
+    NSString* string = @"#{AAA} #{UNKNOWN} #{YYY} #{ZZZ}";
+    NSString* expect = @"AAAAAAAA #{UNKNOWN} Y ";
+    NSString* actual = [string stringByReplacingHashBracesOccurrencesOfDictionary:replacementDictionary];
+    STAssertEqualObjects(actual, expect, @"unknown replacing");
+  }
+
+  // no space replacing
+  {
+    NSString* string = @"#{AAA}#{XXX}#{YYY}#{ZZZ}#{ZZZ}#{XXX}";
+    NSString* expect = @"AAAAAAAAXXXXXXYXXXXXX";
+    NSString* actual = [string stringByReplacingHashBracesOccurrencesOfDictionary:replacementDictionary];
+    STAssertEqualObjects(actual, expect, @"no space replacing");
+  }
+
+  // looped replacing
+  {
+    NSString* string = @"#{LOOP}";
+    NSString* expect = @"#{LOOP}";
+    NSString* actual = [string stringByReplacingHashBracesOccurrencesOfDictionary:replacementDictionary];
+    STAssertEqualObjects(actual, expect, @"looped replacing");
+  }
 }
 
 @end

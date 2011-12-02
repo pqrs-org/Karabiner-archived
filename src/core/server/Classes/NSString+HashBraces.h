@@ -3,6 +3,6 @@
 
 @interface NSString (HashBraces)
 
-- (NSString*) stringByReplacingHashBracesOccurrencesOfDictionary:(NSDictionary*)replacementDictionary options:(NSStringCompareOptions)options;
+- (NSString*) stringByReplacingHashBracesOccurrencesOfDictionary:(NSDictionary*)replacementDictionary;
 
 @end
