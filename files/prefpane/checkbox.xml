@@ -7536,6 +7536,42 @@
               <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_L, KeyCode::ESCAPE, KeyCode::D</autogen>
               <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, KeyCode::D, ModifierFlag::CONTROL_L</autogen>
             </item>
+            <item>
+              <name>Extra settings</name>
+              <list>
+                <item>
+                  <name>Change Control_L to Option_L in Terminal</name>
+                  <appendix>(Change Option_L+Tab to Command+Tab)</appendix>
+                  <appendix>(Change Option_L+Backquote to Command+Backquote)</appendix>
+                  <appendix>(Change Option_L+Arrow to Control+Arrow)</appendix>
+                  <appendix></appendix>
+                  <appendix>This setting is useful when you exchange Control+Tab and Command+Tab.</appendix>
+                  <!--#include "include/lazy_recommendation.xml" -->
+                  <identifier>remap.app_term_controlL2optionL_except_tab</identifier>
+                  <only>TERMINAL</only>
+                  <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::OPTION_L</autogen>
+
+                  <autogen>--KeyToKey--
+                    KeyCode::TAB,          ModifierFlag::OPTION_L,
+                    KeyCode::TAB,          ModifierFlag::COMMAND_L</autogen>
+                  <autogen>--KeyToKey--
+                    KeyCode::BACKQUOTE,    ModifierFlag::OPTION_L,
+                    KeyCode::BACKQUOTE,    ModifierFlag::COMMAND_L</autogen>
+                  <autogen>--KeyToKey--
+                    KeyCode::CURSOR_LEFT,  ModifierFlag::OPTION_L,
+                    KeyCode::CURSOR_LEFT,  ModifierFlag::CONTROL_L</autogen>
+                  <autogen>--KeyToKey--
+                    KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L,
+                    KeyCode::CURSOR_RIGHT, ModifierFlag::CONTROL_L</autogen>
+                  <autogen>--KeyToKey--
+                    KeyCode::CURSOR_UP,    ModifierFlag::OPTION_L,
+                    KeyCode::CURSOR_UP,    ModifierFlag::CONTROL_L</autogen>
+                  <autogen>--KeyToKey--
+                    KeyCode::CURSOR_DOWN,  ModifierFlag::OPTION_L,
+                    KeyCode::CURSOR_DOWN,  ModifierFlag::CONTROL_L</autogen>
+                </item>
+              </list>
+            </item>
           </list>
         </item>
         <item>
