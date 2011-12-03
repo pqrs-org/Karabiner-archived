@@ -32,7 +32,8 @@
                                          @"XXXXXX", @"#{XXX}",              // same length
                                          @"Y", @"#{YYY}",
                                          @"", @"#{ZZZ}",
-                                         @"#{LOOP}", @"#{LOOP}",
+                                         @"#{LOOP1}", @"#{LOOP1}",
+                                         @"   #{LOOP2}   ", @"#{LOOP2}",
                                          nil];
   // no replacing
   {
@@ -68,8 +69,8 @@
 
   // looped replacing
   {
-    NSString* string = @"#{LOOP}";
-    NSString* expect = @"#{LOOP}";
+    NSString* string = @"#{LOOP1}#{LOOP2}";
+    NSString* expect = @"#{LOOP1}   #{LOOP2}   ";
     NSString* actual = [string stringByReplacingHashBracesOccurrencesOfDictionary:replacementDictionary];
     STAssertEqualObjects(actual, expect, @"looped replacing");
   }
