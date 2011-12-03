@@ -45,12 +45,8 @@
         string = [string stringByReplacingCharactersInRange:replacementRange
                                                  withString:replacementString];
 
-        // Setting next searchRange.location to replacementBegin.location for when replacementString is empty.
-        // But, we need to avoid infinity replacing loop.
-        // If replacementString is begun with "#{", we skip it from next searchRange.
-        if (! [replacementString hasPrefix:@"#{"]) {
-          searchRange.location = replacementBegin.location;
-        }
+        // Skip replaced string from next searchRange.location.
+        searchRange.location = replacementBegin.location + [replacementString length];
         break;
       }
     }
