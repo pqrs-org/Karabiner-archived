@@ -8355,6 +8355,7 @@
           <appendix>(Change End to Control+E)</appendix>
           <identifier>remap.pclikehomeend_emacs</identifier>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <!--#include "include/pcstyle_homeend_exception.xml" -->
           <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_COMMAND, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- FROMKEYCODE_END,  VK_COMMAND, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
@@ -8369,6 +8370,7 @@
           <appendix>(+ Change Home to Control+A in Emacs,Terminal,X11,Eclipse)</appendix>
           <appendix>(+ Change End to Control+E in Emacs,Terminal,X11,Eclipse)</appendix>
           <identifier>remap.pclikehomeend</identifier>
+          <!--#include "include/pcstyle_homeend_exception.xml" -->
           <block>
             <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
             <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_COMMAND, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
