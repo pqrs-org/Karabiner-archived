@@ -9665,6 +9665,46 @@
           <!-- Ü to UE -->
           <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_SHIFT, KeyCode::U, VK_SHIFT, KeyCode::E, VK_SHIFT</autogen>
         </item>
+        <item>
+          <name>German Umlaute on US Keyboard Layout</name>
+          <appendix>Change Option_R+; to ö</appendix>
+          <appendix>Change Option_R+' to ä</appendix>
+          <appendix>Change Option_R+[ to ü</appendix>
+          <appendix>Change Option_R+- to ß</appendix>
+          <identifier>remap.org.openhort.german_umlaute_on_en_US</identifier>
+
+          <autogen>--KeyToKey--
+            KeyCode::SEMICOLON, ModifierFlag::OPTION_R | VK_SHIFT | ModifierFlag::NONE,
+            KeyCode::U, ModifierFlag::OPTION_R, KeyCode::O, VK_SHIFT
+          </autogen>
+          <autogen>--KeyToKey--
+            KeyCode::SEMICOLON, ModifierFlag::OPTION_R | ModifierFlag::NONE,
+            KeyCode::U, ModifierFlag::OPTION_R, KeyCode::O
+          </autogen>
+
+          <autogen>--KeyToKey--
+            KeyCode::QUOTE, ModifierFlag::OPTION_R | VK_SHIFT | ModifierFlag::NONE,
+            KeyCode::U, ModifierFlag::OPTION_R, KeyCode::A, VK_SHIFT
+          </autogen>
+          <autogen>--KeyToKey--
+            KeyCode::QUOTE, ModifierFlag::OPTION_R | ModifierFlag::NONE,
+            KeyCode::U, ModifierFlag::OPTION_R, KeyCode::A
+          </autogen>
+
+          <autogen>--KeyToKey--
+            KeyCode::BRACKET_LEFT, ModifierFlag::OPTION_R | VK_SHIFT | ModifierFlag::NONE,
+            KeyCode::U, ModifierFlag::OPTION_R, KeyCode::U, VK_SHIFT
+          </autogen>
+          <autogen>--KeyToKey--
+            KeyCode::BRACKET_LEFT, ModifierFlag::OPTION_R | ModifierFlag::NONE,
+            KeyCode::U, ModifierFlag::OPTION_R, KeyCode::U
+          </autogen>
+
+          <autogen>--KeyToKey--
+            KeyCode::MINUS, ModifierFlag::OPTION_R | ModifierFlag::NONE,
+            KeyCode::S, ModifierFlag::OPTION_R
+          </autogen>
+        </item>
       </list>
     </item>
     <item>
