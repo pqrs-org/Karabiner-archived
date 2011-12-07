@@ -9259,6 +9259,17 @@
     </item>
 
     <item>
+      <name>For Belgian</name>
+      <list>
+        <item>
+          <name>Change KeyPad Comma(,) to Dot(.)</name>
+          <identifier>remap.belgian_keypad_comma_to_dot</identifier>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::KEYPAD_DOT, ModifierFlag::SHIFT_L</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>For Canadian</name>
       <list>
         <item>
