@@ -64,4 +64,9 @@
     <vendorname>TARGUS</vendorname>
     <vendorid>0x1048</vendorid>
   </devicevendordef>
+
+  <devicevendordef>
+    <vendorname>Unicomp_Inc</vendorname>
+    <vendorid>0x17f6</vendorid>
+  </devicevendordef>
 </root>
