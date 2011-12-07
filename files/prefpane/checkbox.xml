@@ -8762,86 +8762,6 @@
     </item>
 
     <item>
-      <name>For HHK (Happy Hacking Keyboard) Users</name>
-      <list>
-        <item>
-          <name>Enable HHK compatible Arrow Key Mode</name>
-          <identifier>remap.hhkmode</identifier>
-          <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::FN, KeyCode::CURSOR_UP</autogen>
-          <autogen>--KeyToKey-- KeyCode::SEMICOLON,    ModifierFlag::FN, KeyCode::CURSOR_LEFT</autogen>
-          <autogen>--KeyToKey-- KeyCode::QUOTE,        ModifierFlag::FN, KeyCode::CURSOR_RIGHT</autogen>
-          <autogen>--KeyToKey-- KeyCode::SLASH,        ModifierFlag::FN, KeyCode::CURSOR_DOWN</autogen>
-          <autogen>--KeyToKey-- KeyCode::L,            ModifierFlag::FN, KeyCode::PAGEUP</autogen>
-          <autogen>--KeyToKey-- KeyCode::DOT,          ModifierFlag::FN, KeyCode::PAGEDOWN</autogen>
-          <autogen>--KeyToKey-- KeyCode::K,            ModifierFlag::FN, KeyCode::HOME</autogen>
-          <autogen>--KeyToKey-- KeyCode::COMMA,        ModifierFlag::FN, KeyCode::END</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_1,        ModifierFlag::FN, KeyCode::F1</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_2,        ModifierFlag::FN, KeyCode::F2</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_3,        ModifierFlag::FN, KeyCode::F3</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_4,        ModifierFlag::FN, KeyCode::F4</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_5,        ModifierFlag::FN, KeyCode::F5</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_6,        ModifierFlag::FN, KeyCode::F6</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_7,        ModifierFlag::FN, KeyCode::F7</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_8,        ModifierFlag::FN, KeyCode::F8</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_9,        ModifierFlag::FN, KeyCode::F9</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_0,        ModifierFlag::FN, KeyCode::F10</autogen>
-          <autogen>--KeyToKey-- KeyCode::MINUS,        ModifierFlag::FN, KeyCode::F11</autogen>
-          <autogen>--KeyToKey-- KeyCode::EQUAL,        ModifierFlag::FN, KeyCode::F12</autogen>
-        </item>
-        <item>
-          <name>Enable Fn+hjkl at HHK to Left/Down/Up/Right</name>
-          <identifier>remap.hhkmode_vi_cursor</identifier>
-          <autogen>--KeyToKey-- KeyCode::KEYPAD_MULTIPLY, KeyCode::CURSOR_LEFT</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEYPAD_SLASH,    KeyCode::CURSOR_DOWN</autogen>
-          <autogen>--KeyToKey-- KeyCode::HOME,            KeyCode::CURSOR_UP</autogen>
-          <autogen>--KeyToKey-- KeyCode::PAGEUP,          KeyCode::CURSOR_RIGHT</autogen>
-        </item>
-        <item>
-          <name>Change Option_L+1...= to F1...F12 Keys</name>
-          <identifier>remap.hhkmode_opt1_optEqual_to_f1_f12</identifier>
-          <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::OPTION_L,     KeyCode::F1</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::OPTION_L,     KeyCode::F2</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::OPTION_L,     KeyCode::F3</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::OPTION_L,     KeyCode::F4</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_5, ModifierFlag::OPTION_L,     KeyCode::F5</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::OPTION_L,     KeyCode::F6</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_7, ModifierFlag::OPTION_L,     KeyCode::F7</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::OPTION_L,     KeyCode::F8</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::OPTION_L,     KeyCode::F9</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::OPTION_L,     KeyCode::F10</autogen>
-          <autogen>--KeyToKey-- KeyCode::MINUS, ModifierFlag::OPTION_L,     KeyCode::F11</autogen>
-          <autogen>--KeyToKey-- KeyCode::EQUAL, ModifierFlag::OPTION_L,     KeyCode::F12</autogen>
-        </item>
-      </list>
-    </item>
-
-    <item>
-      <name>For IBM Model M Keyboard Users</name>
-      <list>
-        <item>
-          <name>Change IBM Model M Keyboard</name>
-          <appendix>(with PS2-to-USB adapters (Chesen Electronics Corp))</appendix>
-          <appendix>Bottom row of Model M keyboard:</appendix>
-          <appendix>   Original: Ctrl Alt [space bar] Alt Ctrl</appendix>
-          <appendix>   Remapped: Ctrl Cmd [space bar] Cmd Alt</appendix>
-          <identifier>remap.modelMkeyboard</identifier>
-          <device_only>DeviceVendor::CHESEN,DeviceProduct::CHESEN_PS2_TO_USB</device_only>
-          <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::COMMAND_R</autogen>
-          <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::OPTION_R</autogen>
-        </item>
-        <item>
-          <name>Swap Start (aka Command) and Alt keys on Windows keyboard</name>
-          <identifier>remap.windows4mac</identifier>
-          <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::COMMAND_R</autogen>
-          <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
-        </item>
-      </list>
-    </item>
-
-    <item>
       <name>Device Specific Mixed Settings</name>
       <list>
         <item>
@@ -9068,6 +8988,86 @@
                 <autogen>--KeyToKey-- KeyCode::PC_INSERT,      VK_CONTROL | ModifierFlag::NONE, KeyCode::I,   ModifierFlag::COMMAND_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::PC_INSERT,      VK_SHIFT   | ModifierFlag::NONE, KeyCode::DOT, ModifierFlag::COMMAND_L</autogen>
               </block>
+            </item>
+          </list>
+        </item>
+
+        <item>
+          <name>For IBM Model M Keyboard</name>
+          <list>
+            <item>
+              <name>Change IBM Model M Keyboard</name>
+              <appendix>(with PS2-to-USB adapters (Chesen Electronics Corp))</appendix>
+              <appendix>Bottom row of Model M keyboard:</appendix>
+              <appendix>   Original: Ctrl Alt [space bar] Alt Ctrl</appendix>
+              <appendix>   Remapped: Ctrl Cmd [space bar] Cmd Alt</appendix>
+              <identifier>remap.modelMkeyboard</identifier>
+              <device_only>DeviceVendor::CHESEN,DeviceProduct::CHESEN_PS2_TO_USB</device_only>
+              <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::COMMAND_R</autogen>
+              <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::OPTION_R</autogen>
+            </item>
+            <item>
+              <name>Swap Start (aka Command) and Alt keys on Windows keyboard</name>
+              <identifier>remap.windows4mac</identifier>
+              <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::COMMAND_R</autogen>
+              <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
+            </item>
+          </list>
+        </item>
+
+        <item>
+          <name>For HHK (Happy Hacking Keyboard) Users</name>
+          <list>
+            <item>
+              <name>Enable HHK compatible Arrow Key Mode</name>
+              <identifier>remap.hhkmode</identifier>
+              <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::FN, KeyCode::CURSOR_UP</autogen>
+              <autogen>--KeyToKey-- KeyCode::SEMICOLON,    ModifierFlag::FN, KeyCode::CURSOR_LEFT</autogen>
+              <autogen>--KeyToKey-- KeyCode::QUOTE,        ModifierFlag::FN, KeyCode::CURSOR_RIGHT</autogen>
+              <autogen>--KeyToKey-- KeyCode::SLASH,        ModifierFlag::FN, KeyCode::CURSOR_DOWN</autogen>
+              <autogen>--KeyToKey-- KeyCode::L,            ModifierFlag::FN, KeyCode::PAGEUP</autogen>
+              <autogen>--KeyToKey-- KeyCode::DOT,          ModifierFlag::FN, KeyCode::PAGEDOWN</autogen>
+              <autogen>--KeyToKey-- KeyCode::K,            ModifierFlag::FN, KeyCode::HOME</autogen>
+              <autogen>--KeyToKey-- KeyCode::COMMA,        ModifierFlag::FN, KeyCode::END</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_1,        ModifierFlag::FN, KeyCode::F1</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_2,        ModifierFlag::FN, KeyCode::F2</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_3,        ModifierFlag::FN, KeyCode::F3</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_4,        ModifierFlag::FN, KeyCode::F4</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_5,        ModifierFlag::FN, KeyCode::F5</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_6,        ModifierFlag::FN, KeyCode::F6</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_7,        ModifierFlag::FN, KeyCode::F7</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_8,        ModifierFlag::FN, KeyCode::F8</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_9,        ModifierFlag::FN, KeyCode::F9</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_0,        ModifierFlag::FN, KeyCode::F10</autogen>
+              <autogen>--KeyToKey-- KeyCode::MINUS,        ModifierFlag::FN, KeyCode::F11</autogen>
+              <autogen>--KeyToKey-- KeyCode::EQUAL,        ModifierFlag::FN, KeyCode::F12</autogen>
+            </item>
+            <item>
+              <name>Enable Fn+hjkl at HHK to Left/Down/Up/Right</name>
+              <identifier>remap.hhkmode_vi_cursor</identifier>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_MULTIPLY, KeyCode::CURSOR_LEFT</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEYPAD_SLASH,    KeyCode::CURSOR_DOWN</autogen>
+              <autogen>--KeyToKey-- KeyCode::HOME,            KeyCode::CURSOR_UP</autogen>
+              <autogen>--KeyToKey-- KeyCode::PAGEUP,          KeyCode::CURSOR_RIGHT</autogen>
+            </item>
+            <item>
+              <name>Change Option_L+1...= to F1...F12 Keys</name>
+              <identifier>remap.hhkmode_opt1_optEqual_to_f1_f12</identifier>
+              <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::OPTION_L,     KeyCode::F1</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::OPTION_L,     KeyCode::F2</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::OPTION_L,     KeyCode::F3</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::OPTION_L,     KeyCode::F4</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_5, ModifierFlag::OPTION_L,     KeyCode::F5</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::OPTION_L,     KeyCode::F6</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_7, ModifierFlag::OPTION_L,     KeyCode::F7</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::OPTION_L,     KeyCode::F8</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::OPTION_L,     KeyCode::F9</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::OPTION_L,     KeyCode::F10</autogen>
+              <autogen>--KeyToKey-- KeyCode::MINUS, ModifierFlag::OPTION_L,     KeyCode::F11</autogen>
+              <autogen>--KeyToKey-- KeyCode::EQUAL, ModifierFlag::OPTION_L,     KeyCode::F12</autogen>
             </item>
           </list>
         </item>
