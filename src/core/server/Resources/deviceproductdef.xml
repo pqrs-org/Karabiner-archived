@@ -176,6 +176,11 @@
   </deviceproductdef>
 
   <deviceproductdef>
+    <productname>Unicomp_SpaceSaver_M_Keyboard</productname>
+    <productid>0x0804</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
     <productname>PSEUDO</productname>
     <productid>0x0000</productid>
   </deviceproductdef>
