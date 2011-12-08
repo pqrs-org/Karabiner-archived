@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 <root>
-
   <appdef>
     <appname>EMACS</appname>
     <equal>org.gnu.Emacs</equal>
