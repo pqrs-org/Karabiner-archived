@@ -69,4 +69,9 @@
     <vendorname>Unicomp_Inc</vendorname>
     <vendorid>0x17f6</vendorid>
   </devicevendordef>
+
+  <devicevendordef>
+    <vendorname>Chic_Technology_Corp</vendorname>
+    <vendorid>0x05fe</vendorid>
+  </devicevendordef>
 </root>
