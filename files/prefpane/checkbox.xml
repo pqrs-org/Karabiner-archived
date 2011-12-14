@@ -343,32 +343,47 @@
           </list>
         </item>
         <item>
-          <name>Strip Modifiers from ScrollWheel</name>
+          <name>Change Modifiers on ScrollWheel</name>
           <list>
             <item>
-              <name>Command+ScrollWheel to ScrollWheel (strip Command)</name>
-              <identifier>remap.pointing_strip_command</identifier>
-              <autogen>--StripModifierFromScrollWheel-- VK_COMMAND</autogen>
+              <name>Change Control+ScrollWheel to Command+ScrollWheel</name>
+              <identifier>remap.pointing_control_scrollwheel_to_command_scrollwheel</identifier>
+              <autogen>--ScrollWheelToScrollWheel-- VK_CONTROL, ModifierFlag::COMMAND_L</autogen>
             </item>
             <item>
-              <name>Control+ScrollWheel to ScrollWheel (strip Control)</name>
-              <identifier>remap.pointing_strip_control</identifier>
-              <autogen>--StripModifierFromScrollWheel-- VK_CONTROL</autogen>
+              <name>Change Command+ScrollWheel to Control+ScrollWheel</name>
+              <identifier>remap.pointing_command_scrollwheel_to_control_scrollwheel</identifier>
+              <autogen>--ScrollWheelToScrollWheel-- VK_COMMAND, ModifierFlag::CONTROL_L</autogen>
             </item>
             <item>
-              <name>Option+ScrollWheel to ScrollWheel (strip Option)</name>
-              <identifier>remap.pointing_strip_option</identifier>
-              <autogen>--StripModifierFromScrollWheel-- VK_OPTION</autogen>
-            </item>
-            <item>
-              <name>Shift+ScrollWheel to ScrollWheel (strip Shift)</name>
-              <identifier>remap.pointing_strip_shift</identifier>
-              <autogen>--StripModifierFromScrollWheel-- VK_SHIFT</autogen>
-            </item>
-            <item>
-              <name>Strip any modifiers from ScrollWheel</name>
-              <identifier>remap.pointing_strip_any</identifier>
-              <autogen>--StripModifierFromScrollWheel-- VK_MOD_ANY</autogen>
+              <name>Strip Modifiers</name>
+              <list>
+                <item>
+                  <name>Command+ScrollWheel to ScrollWheel (strip Command)</name>
+                  <identifier>remap.pointing_strip_command</identifier>
+                  <autogen>--StripModifierFromScrollWheel-- VK_COMMAND</autogen>
+                </item>
+                <item>
+                  <name>Control+ScrollWheel to ScrollWheel (strip Control)</name>
+                  <identifier>remap.pointing_strip_control</identifier>
+                  <autogen>--StripModifierFromScrollWheel-- VK_CONTROL</autogen>
+                </item>
+                <item>
+                  <name>Option+ScrollWheel to ScrollWheel (strip Option)</name>
+                  <identifier>remap.pointing_strip_option</identifier>
+                  <autogen>--StripModifierFromScrollWheel-- VK_OPTION</autogen>
+                </item>
+                <item>
+                  <name>Shift+ScrollWheel to ScrollWheel (strip Shift)</name>
+                  <identifier>remap.pointing_strip_shift</identifier>
+                  <autogen>--StripModifierFromScrollWheel-- VK_SHIFT</autogen>
+                </item>
+                <item>
+                  <name>Strip any modifiers from ScrollWheel</name>
+                  <identifier>remap.pointing_strip_any</identifier>
+                  <autogen>--StripModifierFromScrollWheel-- VK_MOD_ANY</autogen>
+                </item>
+              </list>
             </item>
           </list>
         </item>
