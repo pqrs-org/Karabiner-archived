@@ -1,21 +1,23 @@
-#ifndef STRIPMODIFIERFROMSCROLLWHEEL_HPP
-#define STRIPMODIFIERFROMSCROLLWHEEL_HPP
+#ifndef SCROLLWHEELTOSCROLLWHEEL_HPP
+#define SCROLLWHEELTOSCROLLWHEEL_HPP
 
 #include "RemapFuncClasses.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    class StripModifierFromScrollWheel {
+    class ScrollWheelToScrollWheel {
     public:
-      StripModifierFromScrollWheel(void);
-      ~StripModifierFromScrollWheel(void);
+      ScrollWheelToScrollWheel(void);
+      ~ScrollWheelToScrollWheel(void);
 
       bool remap(RemapPointingParams_scroll& remapParams);
 
       void add(unsigned int datatype, unsigned int newval);
 
     private:
-      Flags flags_;
+      size_t index_;
+      Flags fromFlags_;
+      Flags toFlags_;
     };
   }
 }
