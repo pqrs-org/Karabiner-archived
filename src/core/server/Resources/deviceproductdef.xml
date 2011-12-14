@@ -181,6 +181,11 @@
   </deviceproductdef>
 
   <deviceproductdef>
+    <productname>Chic_Keypad</productname>
+    <productid>0x1010</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
     <productname>PSEUDO</productname>
     <productid>0x0000</productid>
   </deviceproductdef>
