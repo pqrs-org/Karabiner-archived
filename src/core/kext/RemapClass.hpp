@@ -21,7 +21,7 @@
 #include "RemapFunc/PointingRelativeToScroll.hpp"
 #include "RemapFunc/SimultaneousKeyPresses.hpp"
 #include "RemapFunc/SetKeyboardType.hpp"
-#include "RemapFunc/StripModifierFromScrollWheel.hpp"
+#include "RemapFunc/ScrollWheelToScrollWheel.hpp"
 #include "RemapFilter/FilterUnion.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -79,7 +79,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         RemapFunc::PointingRelativeToScroll* pointingRelativeToScroll;
         RemapFunc::SimultaneousKeyPresses* simultaneousKeyPresses;
         RemapFunc::SetKeyboardType* setKeyboardType;
-        RemapFunc::StripModifierFromScrollWheel* stripModifierFromScrollWheel;
+        RemapFunc::ScrollWheelToScrollWheel* scrollWheelToScrollWheel;
       } p_;
 
       RemapFilter::Vector_FilterUnionPointer* filters_;

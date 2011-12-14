@@ -238,6 +238,14 @@
     return;
   }
 
+  if ([autogen_text rangeOfString:@"--StripModifierFromScrollWheel--"].location != NSNotFound) {
+    [self handle_autogen:initialize_vector filtervec:filtervec
+            autogen_text:[NSString stringWithFormat:@"%@,ModifierFlag::NONE",
+                   [autogen_text stringByReplacingOccurrencesOfString:@"--StripModifierFromScrollWheel--"
+                                                           withString:@"--ScrollWheelToScrollWheel--"]]];
+    return;
+  }
+
   if ([autogen_text rangeOfString:@"SimultaneousKeyPresses::Option::RAW"].location != NSNotFound) {
     [self handle_autogen:initialize_vector filtervec:filtervec
             autogen_text:[autogen_text stringByReplacingOccurrencesOfString:@"SimultaneousKeyPresses::Option::RAW"
@@ -299,7 +307,7 @@
     { @"--ForceNumLockOn--",                 BRIDGE_REMAPTYPE_FORCENUMLOCKON },
     { @"--DropPointingRelativeCursorMove--", BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE },
     { @"--DropScrollWheel--",                BRIDGE_REMAPTYPE_DROPSCROLLWHEEL },
-    { @"--StripModifierFromScrollWheel--",   BRIDGE_REMAPTYPE_STRIPMODIFIERFROMSCROLLWHEEL },
+    { @"--ScrollWheelToScrollWheel--",       BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL },
     { NULL, 0 },
   };
   for (int i = 0; info[i].symbol; ++i) {
