@@ -659,6 +659,18 @@
     </item>
 
     <item>
+      <name>ScrollWheelToScrollWheel</name>
+      <list>
+        <item>
+          <name>Standard</name>
+          <appendix>Shift_L+ScrollWheel to Control_L+ScrollWheel</appendix>
+          <identifier>remap.samples_ScrollWheelToScrollWheel</identifier>
+          <autogen>--ScrollWheelToScrollWheel-- ModifierFlag::SHIFT_L, ModifierFlag::CONTROL_L</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>SimultaneousKeyPresses</name>
       <list>
         <item>
