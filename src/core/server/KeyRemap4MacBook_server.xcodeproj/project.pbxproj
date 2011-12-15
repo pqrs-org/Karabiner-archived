@@ -37,6 +37,7 @@
 		34CC23DC13E99C3800CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CC23DB13E99C3800CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m */; };
 		34D4F82812C4463B001819AA /* StatusWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D4F82712C4463B001819AA /* StatusWindow.m */; };
 		34D4F83C12C45CF3001819AA /* WorkSpaceData+InputMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D4F83B12C45CF3001819AA /* WorkSpaceData+InputMode.m */; };
+		34F37D54149A2E7800D4694B /* languagedef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34F37D53149A2E7800D4694B /* languagedef.xml */; };
 		34FB00DD14891EDF00037920 /* NSString+HashBraces.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FB00DC14891EDF00037920 /* NSString+HashBraces.m */; };
 		34FB9592128F985A0088B235 /* PreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FB9591128F985A0088B235 /* PreferencesManager.m */; };
 		34FB9595128FCC030088B235 /* include.bridge_essential_config_index.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34FB9594128FCC030088B235 /* include.bridge_essential_config_index.plist */; };
@@ -110,6 +111,7 @@
 		34D4F82612C4463B001819AA /* StatusWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusWindow.h; path = Classes/StatusWindow.h; sourceTree = "<group>"; };
 		34D4F82712C4463B001819AA /* StatusWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusWindow.m; path = Classes/StatusWindow.m; sourceTree = "<group>"; };
 		34D4F83B12C45CF3001819AA /* WorkSpaceData+InputMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "WorkSpaceData+InputMode.m"; path = "Classes/WorkSpaceData+InputMode.m"; sourceTree = "<group>"; };
+		34F37D53149A2E7800D4694B /* languagedef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = languagedef.xml; path = Resources/languagedef.xml; sourceTree = "<group>"; };
 		34FB00DB14891EDF00037920 /* NSString+HashBraces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+HashBraces.h"; path = "Classes/NSString+HashBraces.h"; sourceTree = "<group>"; };
 		34FB00DC14891EDF00037920 /* NSString+HashBraces.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+HashBraces.m"; path = "Classes/NSString+HashBraces.m"; sourceTree = "<group>"; };
 		34FB9590128F98510088B235 /* PreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesManager.h; path = Classes/PreferencesManager.h; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				34F37D53149A2E7800D4694B /* languagedef.xml */,
 				34FEAE4C148695AE0042D507 /* replacementdef.xml */,
 				3451A54F14532D400030EAD7 /* deviceproductdef.xml */,
 				3451A55014532D400030EAD7 /* devicevendordef.xml */,
@@ -324,6 +327,7 @@
 				3451A55114532D400030EAD7 /* deviceproductdef.xml in Resources */,
 				3451A55214532D400030EAD7 /* devicevendordef.xml in Resources */,
 				34FEAE4D148695AE0042D507 /* replacementdef.xml in Resources */,
+				34F37D54149A2E7800D4694B /* languagedef.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
