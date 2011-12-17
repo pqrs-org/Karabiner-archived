@@ -123,6 +123,10 @@
         <autogen>--KeyToKey-- KeyCode::QUOTE, KeyCode::ESCAPE</autogen>
         <config_only>option.homerow_mode_quote_to_escape</config_only>
       </block>
+      <block>
+        <autogen>--KeyToKey-- KeyCode::Y, KeyCode::DELETE, ModifierFlag::COMMAND_L</autogen>
+        <config_only>option.homerow_mode_y_to_command_delete</config_only>
+      </block>
 
       <block>
         <config_not>remap.homerow_mode_space_no_repeat</config_not>
@@ -242,6 +246,10 @@
     <item>
       <name>[Option] Quote(') to Esc</name>
       <identifier>option.homerow_mode_quote_to_escape</identifier>
+    </item>
+    <item>
+      <name>[Option] Y to Command + Delete</name>
+      <identifier>option.homerow_mode_y_to_command_delete</identifier>
     </item>
   </list>
 </item>
