@@ -25,8 +25,9 @@ enum {
   // Version 18: Added an essential configuration. (general.dont_remap_any_pointing)
   // Version 19: Added BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL.
   //             (And removed BRIDGE_REMAPTYPE_STRIPMODIFIERFROMSCROLLWHEEL.)
+  // Version 20: Added an essential configuration. (general.dont_remap_non_apple_pointing)
 
-  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 19,
+  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 20,
 };
 
 enum {
