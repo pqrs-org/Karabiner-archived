@@ -1,11 +1,27 @@
 <?xml version="1.0"?>
 <root>
+  <!-- ============================================================ -->
+  <!-- kTISPropertyInputSourceID -->
+
   <languagedef>
     <languagename>CANADIAN</languagename>
     <inputsourceid_equal>com.apple.keylayout.Canadian</inputsourceid_equal>
   </languagedef>
 
+  <languagedef>
+    <languagename>BEPO</languagename>
+    <inputsourceid_equal>org.pqrs.inputmode.unknown.FrenchDvorak</inputsourceid_equal>
+  </languagedef>
+
+  <languagedef>
+    <languagename>BEPO</languagename>
+    <languagedetail>BEPO_AZERTYCMD</languagedetail>
+    <inputsourceid_equal>org.pqrs.inputmode.unknown.FrenchDvorak-AzertyCmd</inputsourceid_equal>
+  </languagedef>
+
   <!-- ============================================================ -->
+  <!-- kTISPropertyInputModeID -->
+
   <!-- Japanese -->
   <languagedef>
     <languagename>JAPANESE</languagename>
@@ -34,6 +50,13 @@
   <languagedef>
     <languagename>JAPANESE</languagename>
     <inputmodeid_equal>com.apple.inputmethod.Japanese</inputmodeid_equal>
+  </languagedef>
+
+  <!-- ============================================================ -->
+  <!-- BCP 47 -->
+  <languagedef>
+    <languagename>FRENCH</languagename>
+    <bcp47>fr</bcp47>
   </languagedef>
 
 </root>
