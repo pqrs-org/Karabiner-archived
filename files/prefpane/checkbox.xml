@@ -4937,9 +4937,13 @@
               <identifier vk_config="true">notsave.tabmode</identifier>
               <autogen>--KeyToKey-- KeyCode::F, KeyCode::VK_MODIFIER_EXTRA1</autogen>
               <block>
+                <name>[Option] ; to Command+Option+L</name>
+                <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA1, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L| ModifierFlag::CONTROL_L</autogen>
+                <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA1, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L| ModifierFlag::CONTROL_L</autogen>
+                <config_only>option.tabmode_g_j_l_to_changespaces</config_only>
+              </block>              
+              <block>
                 <config_only>option.tabmode_jl</config_only>
-                <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA1, KeyCode::L, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
-                <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA1, KeyCode::Q, ModifierFlag::COMMAND_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::L, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::J, KeyCode::TAB, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
               </block>
@@ -4961,8 +4965,6 @@
                   <autogen>--KeyToKey-- KeyCode::I, KeyCode::UK_SECTION, ModifierFlag::COMMAND_L</autogen>
                   <autogen>--KeyToKey-- KeyCode::K, KeyCode::UK_SECTION, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
                 </block>
-                <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA1, KeyCode::N, ModifierFlag::COMMAND_L</autogen>
-                <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::EXTRA1, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::I, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::K, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
               </block>
@@ -4974,8 +4976,6 @@
                   <autogen>--KeyToKey-- KeyCode::U, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::P</autogen>
                   <autogen>--KeyToKey-- KeyCode::O, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::N</autogen>
                 </block>
-                <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::EXTRA1, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
-                <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::EXTRA1, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::U, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::O, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
               </block>
@@ -4989,10 +4989,6 @@
               </block>
               <block>
                 <config_only>option.tabmode_switchviews</config_only>
-                <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::EXTRA1, KeyCode::H, ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L</autogen>
-                <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::EXTRA1, KeyCode::V, ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L</autogen>
-                <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::EXTRA1, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
-                <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA1, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::B, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::N, KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::M, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
@@ -5029,8 +5025,6 @@
             <item>
               <name>[Option] Switch apps with J/L</name>
               <appendix>For people who like jkli configuration</appendix>
-              <appendix>+(Having F pressed, J sends Command+Q (Quit application))</appendix>
-              <appendix>+(Having F pressed, L sends Command+Option+L (Evoke launchbar))</appendix>
               <identifier>option.tabmode_jl</identifier>
             </item>
             <item>
@@ -5056,7 +5050,6 @@
             </item>
             <item>
               <name>[Option] Switch tabs of frontmost app with U/O</name>
-              <appendix>+(Create/delete tab pressing U/O while having F pressed)</appendix>
               <appendix>For people who like jkli configuration and have cmd+option+left/rigth as shortcut to</appendix>
               <appendix>switch tabs</appendix>
               <identifier>option.tabmode_uo</identifier>
@@ -5072,8 +5065,6 @@
             <item>
               <name>[Option] bnmh to (left/down/right/up)+Ctrl+Optn+Shift+</name>
               <appendix>Shortcuts used to switch split panes it apps like iTerm2 and others</appendix>
-              <appendix>+(Having F pressed, N/M send (H/V)+Command+Option (Split Horiz/Vert))</appendix>
-              <appendix>+(Having F pressed, B/H send Command+W (Close))</appendix>
               <identifier>option.tabmode_switchviews</identifier>
             </item>
             <item>
@@ -5091,6 +5082,11 @@
             <item>
               <name>[Option] ; to Command+Option+L</name>
               <identifier>option.tabmode_semicolon_to_launchbar</identifier>
+            </item>
+            <item>
+              <name>[Option] F+J/L to Command+Option+Control+Left/Right</name>
+              <appendix>(Using this to change spaces)</appendix>
+              <identifier>option.tabmode_g_j_l_to_changespaces</identifier>
             </item>
           </list>
         </item>
