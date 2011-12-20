@@ -4941,7 +4941,7 @@
                 <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA1, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L| ModifierFlag::CONTROL_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA1, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L| ModifierFlag::CONTROL_L</autogen>
                 <config_only>option.tabmode_g_j_l_to_changespaces</config_only>
-              </block>              
+              </block>
               <block>
                 <config_only>option.tabmode_jl</config_only>
                 <autogen>--KeyToKey-- KeyCode::L, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
