@@ -9760,6 +9760,12 @@
       <name>For Italian</name>
       <list>
         <item>
+          <name>Exchange Backslash(\) and Less-Than(&lt;)</name>
+          <identifier>remap.italian_exchange_backslash_less_than</identifier>
+          <autogen>--KeyToKey-- KeyCode::ITALIAN_BACKSLASH, KeyCode::ITALIAN_LESS_THAN</autogen>
+          <autogen>--KeyToKey-- KeyCode::ITALIAN_LESS_THAN, KeyCode::ITALIAN_BACKSLASH</autogen>
+        </item>
+        <item>
           <name>Option+AEIUO to àèìùò on "Italian Input Source"</name>
           <identifier>remap.italian_optionAEIUO_grave_italian</identifier>
           <autogen>--KeyToKey-- KeyCode::A, VK_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::A</autogen>
