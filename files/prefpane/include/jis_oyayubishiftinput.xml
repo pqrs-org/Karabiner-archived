@@ -10,6 +10,8 @@
 
 -->
 
+#{JAPANESE_OYAYUBISHIFT_EXTRA}
+
 <inputmode_only>JAPANESE</inputmode_only>
 <!-- 左手 中段 -->
 <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::NONE, KeyCode::U,             KeyCode::VK_NONE</autogen>
