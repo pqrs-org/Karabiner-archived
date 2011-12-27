@@ -8429,7 +8429,7 @@
           <block>
             <!-- Control+Shift+A/E do not work in springpadit.com. -->
             <!-- Therefore we need to change Shift+Home/End to Command+Shift+Left/Right. -->
-            <only>SAFARI,FIREFOX,GOOGLE_CHROME,OPERA</only>
+            <only>SAFARI,FIREFOX,THUNDERBIRD,GOOGLE_CHROME,OPERA</only>
             <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_SHIFT | ModifierFlag::NONE,
               KeyCode::CURSOR_LEFT,   ModifierFlag::COMMAND_L | VK_SHIFT</autogen>
             <autogen>--KeyToKey-- FROMKEYCODE_END,  VK_SHIFT | ModifierFlag::NONE,
