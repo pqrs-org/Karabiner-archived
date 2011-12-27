@@ -8426,6 +8426,15 @@
           <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- FROMKEYCODE_END,  VK_COMMAND, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- FROMKEYCODE_END,  VK_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
+          <block>
+            <!-- Control+Shift+A/E do not work in springpadit.com. -->
+            <!-- Therefore we need to change Shift+Home/End to Command+Shift+Left/Right. -->
+            <only>SAFARI,FIREFOX,GOOGLE_CHROME,OPERA</only>
+            <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_SHIFT | ModifierFlag::NONE,
+              KeyCode::CURSOR_LEFT,   ModifierFlag::COMMAND_L | VK_SHIFT</autogen>
+            <autogen>--KeyToKey-- FROMKEYCODE_END,  VK_SHIFT | ModifierFlag::NONE,
+              KeyCode::CURSOR_RIGHT,  ModifierFlag::COMMAND_L | VK_SHIFT</autogen>
+          </block>
           <autogen>--KeyToKey-- FROMKEYCODE_HOME,             KeyCode::A, ModifierFlag::CONTROL_L</autogen>
           <autogen>--KeyToKey-- FROMKEYCODE_END,              KeyCode::E, ModifierFlag::CONTROL_L</autogen>
         </item>
