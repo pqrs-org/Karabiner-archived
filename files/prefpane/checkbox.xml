@@ -5113,6 +5113,14 @@
           <identifier>remap.holdcommandQ</identifier>
           <autogen>--HoldingKeyToKey-- KeyCode::Q, VK_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE, KeyCode::Q, VK_COMMAND, Option::NOREPEAT</autogen>
         </item>
+        <item>
+          <name>Press Command+Q twice to Quit Application</name>
+          <identifier>remap.doublepresscommandQ</identifier>
+          <autogen>--DoublePressModifier-- KeyCode::Q, VK_COMMAND | ModifierFlag::NONE,
+            KeyCode::VK_NONE,
+            KeyCode::Q, VK_COMMAND
+          </autogen>
+        </item>
       </list>
     </item>
 
