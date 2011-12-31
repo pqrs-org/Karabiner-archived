@@ -2386,7 +2386,6 @@
                 </item>
                 <item>
                   <name>Volume Mute/Down/Up without click</name>
-                  <appendix>(This option does not work properly since Mac OS X 10.7.)</appendix>
                   <identifier>remap.voldownup_to_voldownup_woclick</identifier>
                   <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_MUTE,                    ModifierFlag::NONE, ConsumerKeyCode::VOLUME_MUTE, ModifierFlag::SHIFT_L</autogen>
                   <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_MUTE, ModifierFlag::FN | ModifierFlag::NONE, ConsumerKeyCode::VOLUME_MUTE, ModifierFlag::SHIFT_L</autogen>
