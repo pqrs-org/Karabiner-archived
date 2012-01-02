@@ -175,6 +175,11 @@ static ConfigXMLParser* global_instance = nil;
   path = [path stringByAppendingPathComponent:@"private.xml"];
   if (! [filemanager fileExistsAtPath:path]) {
     [filemanager copyItemAtPath:[[NSBundle mainBundle] pathForResource:@"private" ofType:@"xml"] toPath:path error:NULL];
+
+    // copyItemAtPath does not change mtime of file. (mtime of destination file == mtime of source file.)
+    // Therefore, we need to set mtime to current time.
+    [filemanager setAttributes:[NSDictionary dictionaryWithObject:[NSDate date] forKey:NSFileModificationDate]
+                  ofItemAtPath:path error:NULL];
   }
 
   BOOL isDirectory;
