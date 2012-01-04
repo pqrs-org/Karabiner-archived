@@ -1431,6 +1431,11 @@
           <autogen>--KeyToKey-- KeyCode::DELETE, VK_SHIFT, KeyCode::BACKSLASH, ModifierFlag::SHIFT_L</autogen>
         </item>
         <item>
+          <name>Delete to Return</name>
+          <identifier>remap.delete_to_return</identifier>
+          <autogen>--KeyToKey-- KeyCode::DELETE, KeyCode::RETURN</autogen>
+        </item>
+        <item>
           <name>Shift+Delete to Tilde(~)</name>
           <identifier>remap.shiftDelete2tilde</identifier>
           <autogen>--KeyToKey-- KeyCode::DELETE, VK_SHIFT, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
@@ -4294,6 +4299,11 @@
           <name>Fn+Return to Option_L</name>
           <identifier>remap.fnReturn2optionL</identifier>
           <autogen>--KeyToKey-- KeyCode::RETURN, ModifierFlag::FN, KeyCode::OPTION_L</autogen>
+        </item>
+        <item>
+          <name>Return to Delete</name>
+          <identifier>remap.return_to_delete</identifier>
+          <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::DELETE</autogen>
         </item>
         <item>
           <name>Return to Control_L+F4 (= Move focus to the active (or next) window)</name>
