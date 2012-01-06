@@ -1,0 +1,11 @@
+NONE        --AUTO--
+
+UP          --AUTO--
+DOWN        --AUTO--
+LEFT        --AUTO--
+RIGHT       --AUTO--
+
+DIAGONAL_NE --AUTO--
+DIAGONAL_NW --AUTO--
+DIAGONAL_SE --AUTO--
+DIAGONAL_SW --AUTO--

@@ -324,6 +324,62 @@ namespace org_pqrs_KeyRemap4MacBook {
   inline Buttons operator|(PointingButton lhs, PointingButton rhs) { return lhs.get() | rhs.get(); }
 
   // ======================================================================
+  class ScrollWheel {
+  public:
+    ScrollWheel(unsigned int v = 0) : value_(v) {}
+    unsigned int get(void) const { return value_; }
+    bool operator==(ScrollWheel other) const { return value_ == other.get(); }
+    bool operator!=(ScrollWheel other) const { return ! (*this == other); }
+
+#include "../bridge/keycode/output/include.ScrollWheel.hpp"
+
+    static ScrollWheel getScrollWheelFromDelta(int fixedDelta1, int fixedDelta2) {
+      // Example of delta:
+      //   UP:    fixedDelta(106285,0,0)
+      //   DOWN:  fixedDelta(-87489,0,0)
+      //   LEFT:  fixedDelta(0,33195,0)
+      //   RIGHT: fixedDelta(0,-49241,0)
+      //
+      //   DIAGONAL_NE: fixedDelta(43238,-50580,0)
+
+      if (fixedDelta1 == 0 && fixedDelta2 == 0) return ScrollWheel::NONE;
+
+      int abs_vertical   = fixedDelta1 > 0 ? fixedDelta1 : -fixedDelta1;
+      int abs_horizontal = fixedDelta2 > 0 ? fixedDelta2 : -fixedDelta2;
+
+      // We need to check abs_vertical == 0 for the case (abs_horizontal == 1 && abs_vertical == 0).
+      if (abs_vertical == 0 || abs_horizontal / 2 > abs_vertical) {
+        // LEFT or RIGHT
+        if (fixedDelta2 > 0) {
+          return ScrollWheel::LEFT;
+        } else {
+          return ScrollWheel::RIGHT;
+        }
+      }
+      if (abs_horizontal == 0 || abs_vertical / 2 > abs_horizontal) {
+        // UP or DOWN
+        if (fixedDelta1 > 0) {
+          return ScrollWheel::UP;
+        } else {
+          return ScrollWheel::DOWN;
+        }
+      }
+
+      // DIAGONAL
+      if (fixedDelta1 > 0 && fixedDelta2 > 0) return ScrollWheel::DIAGONAL_NW;
+      if (fixedDelta1 > 0 && fixedDelta2 < 0) return ScrollWheel::DIAGONAL_NE;
+      if (fixedDelta1 < 0 && fixedDelta2 > 0) return ScrollWheel::DIAGONAL_SW;
+      if (fixedDelta1 < 0 && fixedDelta2 < 0) return ScrollWheel::DIAGONAL_SE;
+
+      // Never reach.
+      return ScrollWheel::NONE;
+    }
+
+  private:
+    unsigned int value_;
+  };
+
+  // ======================================================================
   class Option {
   public:
     Option(unsigned int v = 0) : value_(v) {}
