@@ -131,6 +131,8 @@
           newdatatype = BRIDGE_DATATYPE_CONSUMERKEYCODE;
         } else if ([value hasPrefix:@"PointingButton::"]) {
           newdatatype = BRIDGE_DATATYPE_POINTINGBUTTON;
+        } else if ([value hasPrefix:@"ScrollWheel::"]) {
+          newdatatype = BRIDGE_DATATYPE_SCROLLWHEEL;
         } else if ([value hasPrefix:@"KeyboardType::"]) {
           newdatatype = BRIDGE_DATATYPE_KEYBOARDTYPE;
         } else if ([value hasPrefix:@"DeviceVendor::"]) {
@@ -308,6 +310,7 @@
     { @"--DropPointingRelativeCursorMove--", BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE },
     { @"--DropScrollWheel--",                BRIDGE_REMAPTYPE_DROPSCROLLWHEEL },
     { @"--ScrollWheelToScrollWheel--",       BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL },
+    { @"--ScrollWheelToKey--",               BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY },
     { NULL, 0 },
   };
   for (int i = 0; info[i].symbol; ++i) {
