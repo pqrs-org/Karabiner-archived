@@ -61,7 +61,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       case BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL:       INITIALIZE_UNION_VALUE(p_.pointingRelativeToScroll,       RemapFunc::PointingRelativeToScroll);       break;
       case BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES:         INITIALIZE_UNION_VALUE(p_.simultaneousKeyPresses,         RemapFunc::SimultaneousKeyPresses);         break;
       case BRIDGE_REMAPTYPE_SETKEYBOARDTYPE:                INITIALIZE_UNION_VALUE(p_.setKeyboardType,                RemapFunc::SetKeyboardType);                break;
-      case BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL:       INITIALIZE_UNION_VALUE(p_.scrollWheelToScrollWheel,       RemapFunc::ScrollWheelToScrollWheel);   break;
+      case BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL:       INITIALIZE_UNION_VALUE(p_.scrollWheelToScrollWheel,       RemapFunc::ScrollWheelToScrollWheel);       break;
+      case BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY:               INITIALIZE_UNION_VALUE(p_.scrollWheelToKey,               RemapFunc::ScrollWheelToKey);               break;
       default:
         IOLOG_ERROR("RemapClass::Item::Item unknown type_ (%d)\n", type_);
         type_ = BRIDGE_REMAPTYPE_NONE;
@@ -98,6 +99,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       case BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES:         DELETE_UNLESS_NULL(p_.simultaneousKeyPresses);         break;
       case BRIDGE_REMAPTYPE_SETKEYBOARDTYPE:                DELETE_UNLESS_NULL(p_.setKeyboardType);                break;
       case BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL:       DELETE_UNLESS_NULL(p_.scrollWheelToScrollWheel);       break;
+      case BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY:               DELETE_UNLESS_NULL(p_.scrollWheelToKey);               break;
       default:
         IOLOG_ERROR("RemapClass::Item::terminate unknown type_ (%d)\n", type_);
         break;
@@ -268,6 +270,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     switch (type_) {
       case BRIDGE_REMAPTYPE_DROPSCROLLWHEEL:          CALL_UNION_FUNCTION(p_.dropScrollWheel);          break;
       case BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL: CALL_UNION_FUNCTION(p_.scrollWheelToScrollWheel); break;
+      case BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY:         CALL_UNION_FUNCTION(p_.scrollWheelToKey);         break;
       default:
         // do nothing. (Do not call IOLOG_ERROR)
         break;
