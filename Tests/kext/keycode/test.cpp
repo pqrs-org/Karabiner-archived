@@ -719,8 +719,6 @@ TEST(ScrollWheel, getScrollWheelFromDelta) {
   EXPECT_EQ(ScrollWheel::LEFT, ScrollWheel::getScrollWheelFromDelta(3, 10));
   EXPECT_EQ(ScrollWheel::RIGHT, ScrollWheel::getScrollWheelFromDelta(3, -10));
 
-  EXPECT_EQ(ScrollWheel::DIAGONAL_NW, ScrollWheel::getScrollWheelFromDelta(10, 8));
-  EXPECT_EQ(ScrollWheel::DIAGONAL_SW, ScrollWheel::getScrollWheelFromDelta(-10, 8));
-  EXPECT_EQ(ScrollWheel::DIAGONAL_NE, ScrollWheel::getScrollWheelFromDelta(8, -10));
-  EXPECT_EQ(ScrollWheel::DIAGONAL_SE, ScrollWheel::getScrollWheelFromDelta(-8, -10));
+  EXPECT_EQ(ScrollWheel::UP, ScrollWheel::getScrollWheelFromDelta(10, 10));
+  EXPECT_EQ(ScrollWheel::DOWN, ScrollWheel::getScrollWheelFromDelta(-10, -10));
 }
