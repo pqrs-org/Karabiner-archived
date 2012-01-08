@@ -98,10 +98,12 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       remapParams.isremapped = true;
 
-      keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
-      keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+      if (! isLastEventRemapped_ || ic_.getmillisec() > 500) {
+        keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+        keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
 
-      ic_.begin();
+        ic_.begin();
+      }
       isLastEventRemapped_ = true;
 
       return true;
