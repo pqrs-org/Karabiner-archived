@@ -5,7 +5,23 @@ DOWN        --AUTO--
 LEFT        --AUTO--
 RIGHT       --AUTO--
 
-DIAGONAL_NE --AUTO--
-DIAGONAL_NW --AUTO--
-DIAGONAL_SE --AUTO--
-DIAGONAL_SW --AUTO--
+// Trackpad and Magic Mouse sends following events when we move finger diagonally.
+//   deltaAxis(-1,1,0), fixedDelta(-20762,23778,0), pointDelta(-3,3,0)
+//   deltaAxis(-1,1,0), fixedDelta(-19385,23991,0), pointDelta(-2,3,0)
+//   deltaAxis(0,1,0),  fixedDelta(0,44986,0),      pointDelta(-3,3,0)
+//   ...
+//
+// There are some non-diagonal events.
+// Therefore, if we identify the diagonal events,
+// the physical pure diagonal events are detected as SW,SW,SW,Left,Left,SW,...
+//
+// This result is not intended.
+// We don't want to recognize these events as normal Up/Down/Left/Right event.
+//
+// However, it's difficult to recognize events properly.
+// So, we give up detecting diagonal events.
+//
+// DIAGONAL_NE --AUTO--
+// DIAGONAL_NW --AUTO--
+// DIAGONAL_SE --AUTO--
+// DIAGONAL_SW --AUTO--
