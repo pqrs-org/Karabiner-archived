@@ -3,6 +3,7 @@
 
 #include "RemapFuncClasses.hpp"
 #include "KeyToKey.hpp"
+#include "IntervalChecker.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
@@ -19,6 +20,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       size_t index_;
       Flags fromFlags_;
       ScrollWheel fromScrollWheel_;
+      IntervalChecker ic_;
+      bool isLastEventRemapped_;
 
       KeyToKey keytokey_;
     };

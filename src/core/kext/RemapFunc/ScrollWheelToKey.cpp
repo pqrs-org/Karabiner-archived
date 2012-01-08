@@ -2,8 +2,10 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    ScrollWheelToKey::ScrollWheelToKey(void) : index_(0)
-    {}
+    ScrollWheelToKey::ScrollWheelToKey(void) : index_(0), isLastEventRemapped_(false)
+    {
+      ic_.begin();
+    }
 
     ScrollWheelToKey::~ScrollWheelToKey(void)
     {}
@@ -72,19 +74,41 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     ScrollWheelToKey::remap(RemapPointingParams_scroll& remapParams)
     {
-      if (remapParams.isremapped) return false;
-      if (! FlagStatus::makeFlags().isOn(fromFlags_)) return false;
+      ScrollWheel scrollwheel = ScrollWheel::NONE;
 
-      ScrollWheel scrollwheel = ScrollWheel::getScrollWheelFromDelta(remapParams.params.fixedDelta1,
-                                                                     remapParams.params.fixedDelta2);
-      if (scrollwheel != fromScrollWheel_) return false;
+      if (remapParams.isremapped) goto notchange;
+      if (! FlagStatus::makeFlags().isOn(fromFlags_)) goto notchange;
+
+      scrollwheel = ScrollWheel::getScrollWheelFromDelta(remapParams.params.fixedDelta1,
+                                                         remapParams.params.fixedDelta2);
+      if (scrollwheel == ScrollWheel::NONE) {
+        // Devices which has momentum scroll (Trackpad, Magic Mouse) sends null scroll event such as
+        // "deltaAxis(0,0,0), fixedDelta(0,0,0), pointDelta(0,0,0)".
+        // We need to ignore this null scroll events if it is related to remapped scroll event.
+        if (isLastEventRemapped_) {
+          remapParams.isremapped = true;
+          return true;
+
+        } else {
+          goto notchange;
+        }
+      }
+
+      if (scrollwheel != fromScrollWheel_) goto notchange;
 
       remapParams.isremapped = true;
 
       keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
       keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
 
+      ic_.begin();
+      isLastEventRemapped_ = true;
+
       return true;
+
+    notchange:
+      isLastEventRemapped_ = false;
+      return false;
     }
   }
 }
