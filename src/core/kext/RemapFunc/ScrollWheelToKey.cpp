@@ -1,3 +1,4 @@
+#include "Config.hpp"
 #include "ScrollWheelToKey.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -98,7 +99,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       remapParams.isremapped = true;
 
-      if (! isLastEventRemapped_ || ic_.getmillisec() > 500) {
+      if (! isLastEventRemapped_ ||
+          ic_.getmillisec() > static_cast<uint32_t>(Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_scrollwheeltokey_keyrepeat_wait))) {
         keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
         keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
 
