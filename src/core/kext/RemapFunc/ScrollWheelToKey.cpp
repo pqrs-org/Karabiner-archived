@@ -3,9 +3,10 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    ScrollWheelToKey::ScrollWheelToKey(void) : index_(0), isLastEventRemapped_(false)
+    ScrollWheelToKey::ScrollWheelToKey(void) : index_(0), isLastEventRemapped_(false), firstEventOfContinuousScrollWheelEvents_(ScrollWheel::NONE)
     {
-      ic_.begin();
+      continuousScrollEvent_ic_.begin();
+      keyrepeat_ic_.begin();
     }
 
     ScrollWheelToKey::~ScrollWheelToKey(void)
@@ -77,35 +78,46 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       ScrollWheel scrollwheel = ScrollWheel::NONE;
 
+      // We treat all continuous scrollwheel events are same as the first event of continuous scrollwheel events.
+      //
+      // Because Trackpad and Magic Mouse sends following events when we move finger diagonally.
+      //   deltaAxis(-1,1,0), fixedDelta(-20762,23778,0), pointDelta(-3,3,0)
+      //   deltaAxis(-1,1,0), fixedDelta(-19385,23991,0), pointDelta(-2,3,0)
+      //   deltaAxis(0,1,0),  fixedDelta(0,44986,0),      pointDelta(-3,3,0)
+      //   ...
+      //
+      // There are some non-diagonal events.
+      // But we want to treat them as diagonal events.
+      // Therefore, we remember the first event and replace following events by it.
+
+      if (continuousScrollEvent_ic_.getmillisec() < CONTINUOUS_SCROLLWHEEL_EVENT_THRESHOLD &&
+          firstEventOfContinuousScrollWheelEvents_ != ScrollWheel::NONE) {
+        // continuous scrollwheel event.
+        scrollwheel = firstEventOfContinuousScrollWheelEvents_;
+
+      } else {
+        scrollwheel = ScrollWheel::getScrollWheelFromDelta(remapParams.params.fixedDelta1,
+                                                           remapParams.params.fixedDelta2);
+        firstEventOfContinuousScrollWheelEvents_ = scrollwheel;
+      }
+      continuousScrollEvent_ic_.begin();
+
+      // ------------------------------------------------------------
       if (remapParams.isremapped) goto notchange;
       if (! FlagStatus::makeFlags().isOn(fromFlags_)) goto notchange;
-
-      scrollwheel = ScrollWheel::getScrollWheelFromDelta(remapParams.params.fixedDelta1,
-                                                         remapParams.params.fixedDelta2);
-      if (scrollwheel == ScrollWheel::NONE) {
-        // Devices which has momentum scroll (Trackpad, Magic Mouse) sends null scroll event such as
-        // "deltaAxis(0,0,0), fixedDelta(0,0,0), pointDelta(0,0,0)".
-        // We need to ignore this null scroll events if it is related to remapped scroll event.
-        if (isLastEventRemapped_) {
-          remapParams.isremapped = true;
-          return true;
-
-        } else {
-          goto notchange;
-        }
-      }
 
       if (scrollwheel != fromScrollWheel_) goto notchange;
 
       remapParams.isremapped = true;
 
       if (! isLastEventRemapped_ ||
-          ic_.getmillisec() > static_cast<uint32_t>(Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_scrollwheeltokey_keyrepeat_wait))) {
+          keyrepeat_ic_.getmillisec() > static_cast<uint32_t>(Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_scrollwheeltokey_keyrepeat_wait))) {
         keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
         keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
 
-        ic_.begin();
+        keyrepeat_ic_.begin();
       }
+
       isLastEventRemapped_ = true;
 
       return true;
