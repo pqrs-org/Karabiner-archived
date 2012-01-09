@@ -347,14 +347,16 @@ namespace org_pqrs_KeyRemap4MacBook {
       int abs_vertical   = fixedDelta1 > 0 ? fixedDelta1 : -fixedDelta1;
       int abs_horizontal = fixedDelta2 > 0 ? fixedDelta2 : -fixedDelta2;
 
-      if (abs_horizontal > abs_vertical) {
+      // We need to check abs_vertical == 0 for the case (abs_horizontal == 1 && abs_vertical == 0).
+      if (abs_vertical == 0 || abs_horizontal / 2 > abs_vertical) {
         // LEFT or RIGHT
         if (fixedDelta2 > 0) {
           return ScrollWheel::LEFT;
         } else {
           return ScrollWheel::RIGHT;
         }
-      } else {
+      }
+      if (abs_horizontal == 0 || abs_vertical / 2 > abs_horizontal) {
         // UP or DOWN
         if (fixedDelta1 > 0) {
           return ScrollWheel::UP;
@@ -362,6 +364,12 @@ namespace org_pqrs_KeyRemap4MacBook {
           return ScrollWheel::DOWN;
         }
       }
+
+      // DIAGONAL
+      if (fixedDelta1 > 0 && fixedDelta2 > 0) return ScrollWheel::DIAGONAL_NW;
+      if (fixedDelta1 > 0 && fixedDelta2 < 0) return ScrollWheel::DIAGONAL_NE;
+      if (fixedDelta1 < 0 && fixedDelta2 > 0) return ScrollWheel::DIAGONAL_SW;
+      if (fixedDelta1 < 0 && fixedDelta2 < 0) return ScrollWheel::DIAGONAL_SE;
 
       // Never reach.
       return ScrollWheel::NONE;
