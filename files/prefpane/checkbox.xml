@@ -348,6 +348,29 @@
           </list>
         </item>
         <item>
+          <name>Change ScrollWheel</name>
+          <list>
+            <item>
+              <name>Fn+ScrollWheel to Brightness Control</name>
+              <appendix>(Fn+ScrollWheel Up to Brightness Up</appendix>
+              <appendix>(Fn+ScrollWheel Down to Brightness Down</appendix>
+              <identifier>remap.fn_scroll_to_brightness_control</identifier>
+              <autogen>--ScrollWheelToKey-- ScrollWheel::UP, ModifierFlag::FN | ModifierFlag::NONE,
+                KeyCode::VK_CONSUMERKEY_BRIGHTNESS_UP</autogen>
+              <autogen>--ScrollWheelToKey-- ScrollWheel::DOWN, ModifierFlag::FN | ModifierFlag::NONE,
+                KeyCode::VK_CONSUMERKEY_BRIGHTNESS_DOWN</autogen>
+            </item>
+            <item>
+              <name>Tilt Wheel to Back/Forward (Command+[, Command+])</name>
+              <identifier>remap.tilt_to_back_forward</identifier>
+              <autogen>--ScrollWheelToKey-- ScrollWheel::LEFT, ModifierFlag::NONE,
+                KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L</autogen>
+              <autogen>--ScrollWheelToKey-- ScrollWheel::RIGHT, ModifierFlag::NONE,
+                KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Change Modifiers on ScrollWheel</name>
           <list>
             <item>
@@ -6693,6 +6716,16 @@
           <name>Holding Shift+"D" Key to Dashboard</name>
           <identifier>remap.holding_shift_d_to_dashboard</identifier>
           <autogen>--HoldingKeyToKey-- KeyCode::D, VK_SHIFT | ModifierFlag::NONE, KeyCode::D, VK_SHIFT, KeyCode::VK_NONE, KeyCode::DASHBOARD, Option::NOREPEAT</autogen>
+        </item>
+        <item>
+          <name>Control+Scroll (Left/Right) to Move a space</name>
+          <appendix>(Change Control+Left Scroll to Control+Left Arrow)</appendix>
+          <appendix>(Change Control+Right Scroll to Control+Right Arrow)</appendix>
+          <identifier>remap.controlscroll_to_controlarrow</identifier>
+          <autogen>--ScrollWheelToKey-- ScrollWheel::LEFT,  VK_CONTROL | ModifierFlag::NONE,
+            KeyCode::CURSOR_LEFT,  VK_CONTROL</autogen>
+          <autogen>--ScrollWheelToKey-- ScrollWheel::RIGHT, VK_CONTROL | ModifierFlag::NONE,
+            KeyCode::CURSOR_RIGHT, VK_CONTROL</autogen>
         </item>
         <item>
           <name>Expose Mode</name>
