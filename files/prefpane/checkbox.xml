@@ -7415,7 +7415,8 @@
                 </item>
                 <item>
                   <name>Cmd+R to Rename | Return to Open</name>
-                  <appendix>+ if you press Return while renaming it accepts new name instead of opening</appendix>
+                  <appendix>+ if you press Return while renaming (via Cmd+R) it accepts new name</appendix>
+                  <appendix>  instead of opening.</appendix>
                   <identifier>remap.app_finder_switch_open_rename</identifier>
                   <only>FINDER</only>
                   <autogen>--KeyToKey-- KeyCode::R, VK_COMMAND, KeyCode::RETURN, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
