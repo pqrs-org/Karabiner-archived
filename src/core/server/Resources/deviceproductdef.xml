@@ -186,6 +186,11 @@
   </deviceproductdef>
 
   <deviceproductdef>
+    <productname>Truly_Ergonomic_Computer_Keyboard_0x030c</productname>
+    <productid>0x030c</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
     <productname>PSEUDO</productname>
     <productid>0x0000</productid>
   </deviceproductdef>
