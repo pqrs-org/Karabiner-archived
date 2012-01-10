@@ -26,9 +26,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       ScrollWheel fromScrollWheel_;
 
       IntervalChecker continuousScrollEvent_ic_;
+      ScrollWheel firstScrollWheelEvent_;
+      bool isContinuousScrollEventRemapped_;
+
       IntervalChecker keyrepeat_ic_;
-      ScrollWheel firstEventOfContinuousScrollWheelEvents_;
-      bool isLastEventRemapped_;
 
       KeyToKey keytokey_;
     };

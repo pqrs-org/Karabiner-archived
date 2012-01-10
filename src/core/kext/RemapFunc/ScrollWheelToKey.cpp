@@ -3,7 +3,10 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    ScrollWheelToKey::ScrollWheelToKey(void) : index_(0), isLastEventRemapped_(false), firstEventOfContinuousScrollWheelEvents_(ScrollWheel::NONE)
+    ScrollWheelToKey::ScrollWheelToKey(void) :
+      index_(0),
+      firstScrollWheelEvent_(ScrollWheel::NONE),
+      isContinuousScrollEventRemapped_(false)
     {
       continuousScrollEvent_ic_.begin();
       keyrepeat_ic_.begin();
@@ -76,55 +79,50 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     ScrollWheelToKey::remap(RemapPointingParams_scroll& remapParams)
     {
-      ScrollWheel scrollwheel = ScrollWheel::NONE;
-
-      // We treat all continuous scrollwheel events are same as the first event of continuous scrollwheel events.
-      //
-      // Because Trackpad and Magic Mouse sends following events when we move finger diagonally.
-      //   deltaAxis(-1,1,0), fixedDelta(-20762,23778,0), pointDelta(-3,3,0)
-      //   deltaAxis(-1,1,0), fixedDelta(-19385,23991,0), pointDelta(-2,3,0)
-      //   deltaAxis(0,1,0),  fixedDelta(0,44986,0),      pointDelta(-3,3,0)
-      //   ...
-      //
-      // There are some non-diagonal events.
-      // But we want to treat them as diagonal events.
-      // Therefore, we remember the first event and replace following events by it.
-
-      if (continuousScrollEvent_ic_.getmillisec() < CONTINUOUS_SCROLLWHEEL_EVENT_THRESHOLD &&
-          firstEventOfContinuousScrollWheelEvents_ != ScrollWheel::NONE) {
-        // continuous scrollwheel event.
-        scrollwheel = firstEventOfContinuousScrollWheelEvents_;
-
-      } else {
-        scrollwheel = ScrollWheel::getScrollWheelFromDelta(remapParams.params.fixedDelta1,
-                                                           remapParams.params.fixedDelta2);
-        firstEventOfContinuousScrollWheelEvents_ = scrollwheel;
-      }
+      // ------------------------------------------------------------
+      // We treat the first event of continuous events.
+      // Ignore following events if the first event is remapped, otherwise pass through them.
+      int millisec = continuousScrollEvent_ic_.getmillisec();
       continuousScrollEvent_ic_.begin();
 
-      // ------------------------------------------------------------
-      if (remapParams.isremapped) goto notchange;
-      if (! FlagStatus::makeFlags().isOn(fromFlags_)) goto notchange;
+      if (millisec < CONTINUOUS_SCROLLWHEEL_EVENT_THRESHOLD && firstScrollWheelEvent_ != ScrollWheel::NONE) {
+        if (isContinuousScrollEventRemapped_) {
+          remapParams.isremapped = true;
+          return true;
+        } else {
+          return false;
+        }
+      }
 
-      if (scrollwheel != fromScrollWheel_) goto notchange;
+      // ------------------------------------------------------------
+      // Handling the first event of continuous events.
+      isContinuousScrollEventRemapped_ = false;
+
+      // --------------------
+      // Ignore first null event.
+      firstScrollWheelEvent_ = ScrollWheel::getScrollWheelFromDelta(remapParams.params.fixedDelta1,
+                                                                    remapParams.params.fixedDelta2);
+      if (firstScrollWheelEvent_ == ScrollWheel::NONE) {
+        return false;
+      }
+
+      // --------------------
+      if (remapParams.isremapped) return false;
+      if (! FlagStatus::makeFlags().isOn(fromFlags_)) return false;
+
+      if (fromScrollWheel_ != firstScrollWheelEvent_) return false;
 
       remapParams.isremapped = true;
+      isContinuousScrollEventRemapped_ = true;
 
-      if (! isLastEventRemapped_ ||
-          keyrepeat_ic_.getmillisec() > static_cast<uint32_t>(Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_scrollwheeltokey_keyrepeat_wait))) {
+      if (keyrepeat_ic_.getmillisec() > static_cast<uint32_t>(Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_scrollwheeltokey_keyrepeat_wait))) {
         keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
         keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
 
         keyrepeat_ic_.begin();
       }
 
-      isLastEventRemapped_ = true;
-
       return true;
-
-    notchange:
-      isLastEventRemapped_ = false;
-      return false;
     }
   }
 }
