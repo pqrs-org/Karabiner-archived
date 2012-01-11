@@ -360,14 +360,6 @@
               <autogen>--ScrollWheelToKey-- ScrollWheel::DOWN, ModifierFlag::FN | ModifierFlag::NONE,
                 KeyCode::VK_CONSUMERKEY_BRIGHTNESS_DOWN</autogen>
             </item>
-            <item>
-              <name>Tilt Wheel to Back/Forward (Command+[, Command+])</name>
-              <identifier>remap.tilt_to_back_forward</identifier>
-              <autogen>--ScrollWheelToKey-- ScrollWheel::LEFT, ModifierFlag::NONE,
-                KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L</autogen>
-              <autogen>--ScrollWheelToKey-- ScrollWheel::RIGHT, ModifierFlag::NONE,
-                KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L</autogen>
-            </item>
           </list>
         </item>
         <item>
@@ -9009,6 +9001,21 @@
                 <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::MAGIC_MOUSE</device_only>
                 <autogen>--DropScrollWheel--</autogen>
               </block>
+            </item>
+          </list>
+        </item>
+
+        <item>
+          <name>For Logitech Devices</name>
+          <list>
+            <item>
+              <name>Tilt Wheel to Back/Forward (Command+[, Command+]) on Logitech MX620</name>
+              <identifier>remap.tilt_to_back_forward</identifier>
+              <device_only>DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_MX620</device_only>
+              <autogen>--ScrollWheelToKey-- ScrollWheel::LEFT, ModifierFlag::NONE,
+                KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L</autogen>
+              <autogen>--ScrollWheelToKey-- ScrollWheel::RIGHT, ModifierFlag::NONE,
+                KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L</autogen>
             </item>
           </list>
         </item>
