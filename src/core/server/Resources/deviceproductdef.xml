@@ -136,6 +136,11 @@
   </deviceproductdef>
 
   <deviceproductdef>
+    <productname>LOGITECH_MX620</productname>
+    <productid>0xc521</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
     <productname>HHKB_Professional_JP_0x000d</productname>
     <productid>0x000d</productid>
   </deviceproductdef>
