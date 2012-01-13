@@ -630,6 +630,11 @@
           <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::ESCAPE</autogen>
         </item>
         <item>
+          <name>Fn+Backquote(`) to Enter</name>
+          <identifier>remap.fnbackquote2enter</identifier>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, ModifierFlag::FN, KeyCode::ENTER</autogen>
+        </item>
+        <item>
           <name>Backquote(`) to Escape if no modifiers pressed</name>
           <identifier>remap.backquote2escape_withoutmodifiers</identifier>
           <autogen>--KeyToKey-- KeyCode::BACKQUOTE, ModifierFlag::NONE, KeyCode::ESCAPE</autogen>
