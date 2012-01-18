@@ -30,14 +30,14 @@
   <!-- ============================================================ -->
   <!-- An example of appdef -->
   <appdef>
-    <appname>SAMPLEAPP</appname>
-    <equal>org.pqrs.sampleapp</equal>
+    <appname>APPSTORE</appname>
+    <equal>com.apple.appstore</equal>
   </appdef>
 
   <item>
-    <name>Space to Tab in org.pqrs.sampleapp</name>
+    <name>Space to Tab on App Store.app</name>
     <identifier>private.appdef</identifier>
-    <only>SAMPLEAPP</only>
+    <only>APPSTORE</only>
     <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
   </item>
 
