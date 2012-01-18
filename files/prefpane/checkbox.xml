@@ -7324,6 +7324,14 @@
                   <only>FINDER</only>
                   <autogen>--KeyToKey-- KeyCode::R, VK_COMMAND, KeyCode::RETURN</autogen>
                 </item>
+                <item><name>F2 key------------------------------------------------------------</name></item>
+                <item>
+                  <name>Use Brightness Up to Rename (Use Tab to complete Rename)</name>
+                  <appendix>(Change Brightness Up to Return)</appendix>
+                  <identifier>remap.app_finder_brightness_up_to_return</identifier>
+                  <only>FINDER</only>
+                  <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_UP, KeyCode::RETURN</autogen>
+                </item>
                 <item>
                   <name>Use F2 to Rename (Use Tab to complete Rename)</name>
                   <appendix>(Change F2 to Return)</appendix>
@@ -7331,6 +7339,7 @@
                   <only>FINDER</only>
                   <autogen>--KeyToKey-- KeyCode::F2, KeyCode::RETURN</autogen>
                 </item>
+                <item><name>------------------------------------------------------------------</name></item>
                 <item>
                   <name>Use Forward Delete as Delete Files</name>
                   <appendix>(Change Forward Delete to Command_L+Delete)</appendix>
@@ -7356,11 +7365,14 @@
                   <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::O, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
                 </item>
                 <item>
-                  <name>Use Enter as Open</name>
+                  <name>Use Enter (Fn+Return) as Open</name>
                   <appendix>(Change Enter to Command+O)</appendix>
                   <identifier>remap.app_finder_enter2commandO</identifier>
                   <only>FINDER</only>
-                  <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::O, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
+                  <autogen>--KeyToKey-- KeyCode::ENTER,
+                    KeyCode::O, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
+                  <autogen>--KeyToKey-- KeyCode::RETURN, ModifierFlag::FN,
+                    KeyCode::O, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
                 </item>
                 <item>
                   <name>Use Quote (') to go UP a directory (' to Ctrl+Up)</name>
