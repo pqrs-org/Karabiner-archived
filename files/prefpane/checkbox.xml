@@ -4511,8 +4511,7 @@
         <item>
           <name></name>
           <identifier vk_config="true">notsave.shiftl_capslocktrick</identifier>
-          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, ModifierFlag::EXTRA2, KeyCode::SHIFT_L, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftl_capslocktrick</autogen>
-          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::VK_STICKY_EXTRA2</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftl_capslocktrick</autogen>
         </item>
         <item>
           <name>Shift_L to Shift_L</name>
@@ -4687,8 +4686,7 @@
         <item>
           <name></name>
           <identifier vk_config="true">notsave.shiftr_capslocktrick</identifier>
-          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, ModifierFlag::EXTRA2, KeyCode::SHIFT_R, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftr_capslocktrick</autogen>
-          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::VK_STICKY_EXTRA2</autogen>
+          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftr_capslocktrick</autogen>
         </item>
         <item>
           <name>Shift_R to Shift_R</name>
