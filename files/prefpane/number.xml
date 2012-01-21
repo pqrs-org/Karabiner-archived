@@ -56,5 +56,10 @@
       <name>[Pointing Device] CursorMove to ScrollWheel Rate</name>
       <identifier essential="true" default="150" step="10" baseunit="/ 1000">pointing.relative2scroll_rate</identifier>
     </item>
+
+    <item>
+      <name>[ScrollWheelToKey] Key Repeat Wait</name>
+      <identifier essential="true" default="500" step="100" baseunit="ms">parameter.scrollwheeltokey_keyrepeat_wait</identifier>
+    </item>
   </list>
 </root>

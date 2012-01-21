@@ -348,6 +348,21 @@
           </list>
         </item>
         <item>
+          <name>Change ScrollWheel</name>
+          <list>
+            <item>
+              <name>Fn+ScrollWheel to Brightness Control</name>
+              <appendix>(Fn+ScrollWheel Up to Brightness Up</appendix>
+              <appendix>(Fn+ScrollWheel Down to Brightness Down</appendix>
+              <identifier>remap.fn_scroll_to_brightness_control</identifier>
+              <autogen>--ScrollWheelToKey-- ScrollWheel::UP, ModifierFlag::FN | ModifierFlag::NONE,
+                KeyCode::VK_CONSUMERKEY_BRIGHTNESS_UP</autogen>
+              <autogen>--ScrollWheelToKey-- ScrollWheel::DOWN, ModifierFlag::FN | ModifierFlag::NONE,
+                KeyCode::VK_CONSUMERKEY_BRIGHTNESS_DOWN</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
           <name>Change Modifiers on ScrollWheel</name>
           <list>
             <item>
@@ -613,6 +628,16 @@
           <name>Backquote(`) to Escape</name>
           <identifier>remap.backquote2escape</identifier>
           <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::ESCAPE</autogen>
+        </item>
+        <item>
+          <name>Control+Backquote(`) to Escape</name>
+          <identifier>remap.controlbackquote_to_escape</identifier>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, VK_CONTROL, KeyCode::ESCAPE</autogen>
+        </item>
+        <item>
+          <name>Fn+Backquote(`) to Fn+Enter</name>
+          <identifier>remap.fnbackquote2fnenter</identifier>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, ModifierFlag::FN, KeyCode::ENTER, ModifierFlag::FN</autogen>
         </item>
         <item>
           <name>Backquote(`) to Escape if no modifiers pressed</name>
@@ -1429,6 +1454,11 @@
           <name>Shift+Delete to Pipe(|)</name>
           <identifier>remap.shiftDelete2pipe</identifier>
           <autogen>--KeyToKey-- KeyCode::DELETE, VK_SHIFT, KeyCode::BACKSLASH, ModifierFlag::SHIFT_L</autogen>
+        </item>
+        <item>
+          <name>Delete to Return</name>
+          <identifier>remap.delete_to_return</identifier>
+          <autogen>--KeyToKey-- KeyCode::DELETE, KeyCode::RETURN</autogen>
         </item>
         <item>
           <name>Shift+Delete to Tilde(~)</name>
@@ -2792,17 +2822,20 @@
                 <item><name>------------------------------------------------------------</name></item>
                 <item>
                   <name>F5/F6 to Volume Down/Up 1/4</name>
+                  <appendix>(This option does not work properly since Mac OS X 10.7.)</appendix>
                   <identifier>remap.f5f6_to_volumedownup_quarter</identifier>
                   <autogen>--KeyToConsumer-- KeyCode::F5, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
                   <autogen>--KeyToConsumer-- KeyCode::F6, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_UP, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
                 </item>
                 <item>
                   <name>F5 to Volume Down 1/4</name>
+                  <appendix>(This option does not work properly since Mac OS X 10.7.)</appendix>
                   <identifier>remap.f5_to_volumedown_quarter</identifier>
                   <autogen>--KeyToConsumer-- KeyCode::F5, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
                 </item>
                 <item>
                   <name>F6 to Volume Up 1/4</name>
+                  <appendix>(This option does not work properly since Mac OS X 10.7.)</appendix>
                   <identifier>remap.f6_to_volumeup_quarter</identifier>
                   <autogen>--KeyToConsumer-- KeyCode::F6, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_UP, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
                 </item>
@@ -4293,6 +4326,11 @@
           <autogen>--KeyToKey-- KeyCode::RETURN, ModifierFlag::FN, KeyCode::OPTION_L</autogen>
         </item>
         <item>
+          <name>Return to Delete</name>
+          <identifier>remap.return_to_delete</identifier>
+          <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::DELETE</autogen>
+        </item>
+        <item>
           <name>Return to Control_L+F4 (= Move focus to the active (or next) window)</name>
           <identifier>remap.return2controlLf4</identifier>
           <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::F4, ModifierFlag::CONTROL_L</autogen>
@@ -4939,7 +4977,7 @@
                 <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA1, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L| ModifierFlag::CONTROL_L</autogen>
                 <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA1, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L| ModifierFlag::CONTROL_L</autogen>
                 <config_only>option.tabmode_g_j_l_to_changespaces</config_only>
-              </block>              
+              </block>
               <block>
                 <config_only>option.tabmode_jl</config_only>
                 <autogen>--KeyToKey-- KeyCode::L, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
@@ -5106,6 +5144,14 @@
           <appendix>"[Holding Key to Key] Holding Threshold" in Key Repeat tab.)</appendix>
           <identifier>remap.holdcommandQ</identifier>
           <autogen>--HoldingKeyToKey-- KeyCode::Q, VK_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE, KeyCode::Q, VK_COMMAND, Option::NOREPEAT</autogen>
+        </item>
+        <item>
+          <name>Press Command+Q twice to Quit Application</name>
+          <identifier>remap.doublepresscommandQ</identifier>
+          <autogen>--DoublePressModifier-- KeyCode::Q, VK_COMMAND | ModifierFlag::NONE,
+            KeyCode::VK_NONE,
+            KeyCode::Q, VK_COMMAND
+          </autogen>
         </item>
       </list>
     </item>
@@ -6638,7 +6684,7 @@
     </item>
 
     <item>
-      <name>For Expose, Spaces</name>
+      <name>For Mission Control, Dashboard</name>
       <list>
         <item>
           <name>Disable Slow-Expose (Disable Shift+Expose, Shift+Dashboard, Shift+F8,...,Shift+F12)</name>
@@ -6652,14 +6698,9 @@
           <autogen>--DropKeyAfterRemap-- KeyCode::F12,        VK_SHIFT</autogen>
         </item>
         <item>
-          <name>Holding "E" Key to Expose</name>
+          <name>Holding "E" Key to Mission Control (Expose)</name>
           <identifier>remap.holding_e_to_expose</identifier>
           <autogen>--HoldingKeyToKey-- KeyCode::E, ModifierFlag::NONE, KeyCode::E, KeyCode::VK_NONE, KeyCode::EXPOSE_ALL, Option::NOREPEAT</autogen>
-        </item>
-        <item>
-          <name>Holding "S" Key to Spaces (F8)</name>
-          <identifier>remap.holding_s_to_spaces</identifier>
-          <autogen>--HoldingKeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::S, KeyCode::VK_NONE, KeyCode::F8, Option::NOREPEAT</autogen>
         </item>
         <item>
           <name>Holding "D" Key to Dashboard</name>
@@ -6667,19 +6708,24 @@
           <autogen>--HoldingKeyToKey-- KeyCode::D, ModifierFlag::NONE, KeyCode::D, KeyCode::VK_NONE, KeyCode::DASHBOARD, Option::NOREPEAT</autogen>
         </item>
         <item>
-          <name>Holding Shift+"E" Key to Expose</name>
+          <name>Holding Shift+"E" Key to Mission Control (Expose)</name>
           <identifier>remap.holding_shift_e_to_expose</identifier>
           <autogen>--HoldingKeyToKey-- KeyCode::E, VK_SHIFT | ModifierFlag::NONE, KeyCode::E, VK_SHIFT, KeyCode::VK_NONE, KeyCode::EXPOSE_ALL, Option::NOREPEAT</autogen>
-        </item>
-        <item>
-          <name>Holding Shift+"S" Key to Spaces (F8)</name>
-          <identifier>remap.holding_shift_s_to_spaces</identifier>
-          <autogen>--HoldingKeyToKey-- KeyCode::S, VK_SHIFT | ModifierFlag::NONE, KeyCode::S, VK_SHIFT, KeyCode::VK_NONE, KeyCode::F8, Option::NOREPEAT</autogen>
         </item>
         <item>
           <name>Holding Shift+"D" Key to Dashboard</name>
           <identifier>remap.holding_shift_d_to_dashboard</identifier>
           <autogen>--HoldingKeyToKey-- KeyCode::D, VK_SHIFT | ModifierFlag::NONE, KeyCode::D, VK_SHIFT, KeyCode::VK_NONE, KeyCode::DASHBOARD, Option::NOREPEAT</autogen>
+        </item>
+        <item>
+          <name>Control+Scroll (Left/Right) to Move a space</name>
+          <appendix>(Change Control+Left Scroll to Control+Left Arrow)</appendix>
+          <appendix>(Change Control+Right Scroll to Control+Right Arrow)</appendix>
+          <identifier>remap.controlscroll_to_controlarrow</identifier>
+          <autogen>--ScrollWheelToKey-- ScrollWheel::LEFT,  VK_CONTROL | ModifierFlag::NONE,
+            KeyCode::CURSOR_LEFT,  VK_CONTROL</autogen>
+          <autogen>--ScrollWheelToKey-- ScrollWheel::RIGHT, VK_CONTROL | ModifierFlag::NONE,
+            KeyCode::CURSOR_RIGHT, VK_CONTROL</autogen>
         </item>
         <item>
           <name>Expose Mode</name>
@@ -6793,6 +6839,16 @@
         <item>
           <name>For Spaces</name>
           <list>
+            <item>
+              <name>Holding "S" Key to Spaces (F8)</name>
+              <identifier>remap.holding_s_to_spaces</identifier>
+              <autogen>--HoldingKeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::S, KeyCode::VK_NONE, KeyCode::F8, Option::NOREPEAT</autogen>
+            </item>
+            <item>
+              <name>Holding Shift+"S" Key to Spaces (F8)</name>
+              <identifier>remap.holding_shift_s_to_spaces</identifier>
+              <autogen>--HoldingKeyToKey-- KeyCode::S, VK_SHIFT | ModifierFlag::NONE, KeyCode::S, VK_SHIFT, KeyCode::VK_NONE, KeyCode::F8, Option::NOREPEAT</autogen>
+            </item>
             <item>
               <name>Holding "1234 QWER ASDF ZXCV" to switch a space (4x4)</name>
               <appendix>To switch a space, Hold "1234"</appendix>
@@ -7266,6 +7322,14 @@
                   <only>FINDER</only>
                   <autogen>--KeyToKey-- KeyCode::R, VK_COMMAND, KeyCode::RETURN</autogen>
                 </item>
+                <item><name>F2 key------------------------------------------------------------</name></item>
+                <item>
+                  <name>Use Brightness Up to Rename (Use Tab to complete Rename)</name>
+                  <appendix>(Change Brightness Up to Return)</appendix>
+                  <identifier>remap.app_finder_brightness_up_to_return</identifier>
+                  <only>FINDER</only>
+                  <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_UP, KeyCode::RETURN</autogen>
+                </item>
                 <item>
                   <name>Use F2 to Rename (Use Tab to complete Rename)</name>
                   <appendix>(Change F2 to Return)</appendix>
@@ -7273,6 +7337,7 @@
                   <only>FINDER</only>
                   <autogen>--KeyToKey-- KeyCode::F2, KeyCode::RETURN</autogen>
                 </item>
+                <item><name>------------------------------------------------------------------</name></item>
                 <item>
                   <name>Use Forward Delete as Delete Files</name>
                   <appendix>(Change Forward Delete to Command_L+Delete)</appendix>
@@ -7298,11 +7363,14 @@
                   <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::O, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
                 </item>
                 <item>
-                  <name>Use Enter as Open</name>
+                  <name>Use Enter (Fn+Return) as Open</name>
                   <appendix>(Change Enter to Command+O)</appendix>
                   <identifier>remap.app_finder_enter2commandO</identifier>
                   <only>FINDER</only>
-                  <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::O, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
+                  <autogen>--KeyToKey-- KeyCode::ENTER,
+                    KeyCode::O, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
+                  <autogen>--KeyToKey-- KeyCode::RETURN, ModifierFlag::FN,
+                    KeyCode::O, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
                 </item>
                 <item>
                   <name>Use Quote (') to go UP a directory (' to Ctrl+Up)</name>
@@ -7359,7 +7427,8 @@
                 </item>
                 <item>
                   <name>Cmd+R to Rename | Return to Open</name>
-                  <appendix>+ if you press Return while renaming it accepts new name instead of opening</appendix>
+                  <appendix>+ if you press Return while renaming (via Cmd+R) it accepts new name</appendix>
+                  <appendix>  instead of opening.</appendix>
                   <identifier>remap.app_finder_switch_open_rename</identifier>
                   <only>FINDER</only>
                   <autogen>--KeyToKey-- KeyCode::R, VK_COMMAND, KeyCode::RETURN, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
@@ -7596,6 +7665,20 @@
               <identifier>remap.app_adobe_commandTab2controlLTab</identifier>
               <only>ADOBE, PHOTOSHOP, ILLUSTRATOR</only>
               <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
+            </item>
+          </list>
+        </item>
+        <item>
+          <name>Enable at only Safari</name>
+          <list>
+            <item>
+              <name>Firefox-like hotkey (Control+PgUp/PgDown) to switch tabs in Safari</name>
+              <identifier>remap.firefox_style_tab_switching_in_safari</identifier>
+              <only>SAFARI</only>
+              <autogen>--KeyToKey-- FROMKEYCODE_PAGEDOWN, VK_CONTROL | ModifierFlag::NONE,
+                KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
+              <autogen>--KeyToKey-- FROMKEYCODE_PAGEUP,   VK_CONTROL | ModifierFlag::NONE,
+                KeyCode::TAB, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
             </item>
           </list>
         </item>
@@ -8410,6 +8493,15 @@
           <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- FROMKEYCODE_END,  VK_COMMAND, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- FROMKEYCODE_END,  VK_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
+          <block>
+            <!-- Control+Shift+A/E do not work in springpadit.com. -->
+            <!-- Therefore we need to change Shift+Home/End to Command+Shift+Left/Right. -->
+            <only>SAFARI,FIREFOX,THUNDERBIRD,GOOGLE_CHROME,OPERA</only>
+            <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_SHIFT | ModifierFlag::NONE,
+              KeyCode::CURSOR_LEFT,   ModifierFlag::COMMAND_L | VK_SHIFT</autogen>
+            <autogen>--KeyToKey-- FROMKEYCODE_END,  VK_SHIFT | ModifierFlag::NONE,
+              KeyCode::CURSOR_RIGHT,  ModifierFlag::COMMAND_L | VK_SHIFT</autogen>
+          </block>
           <autogen>--KeyToKey-- FROMKEYCODE_HOME,             KeyCode::A, ModifierFlag::CONTROL_L</autogen>
           <autogen>--KeyToKey-- FROMKEYCODE_END,              KeyCode::E, ModifierFlag::CONTROL_L</autogen>
         </item>
@@ -8929,6 +9021,21 @@
                 <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::MAGIC_MOUSE</device_only>
                 <autogen>--DropScrollWheel--</autogen>
               </block>
+            </item>
+          </list>
+        </item>
+
+        <item>
+          <name>For Logitech Devices</name>
+          <list>
+            <item>
+              <name>Tilt Wheel to Back/Forward (Command+[, Command+]) on Logitech MX620</name>
+              <identifier>remap.tilt_to_back_forward</identifier>
+              <device_only>DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_MX620</device_only>
+              <autogen>--ScrollWheelToKey-- ScrollWheel::LEFT, ModifierFlag::NONE,
+                KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L</autogen>
+              <autogen>--ScrollWheelToKey-- ScrollWheel::RIGHT, ModifierFlag::NONE,
+                KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L</autogen>
             </item>
           </list>
         </item>
@@ -9757,6 +9864,12 @@
     <item>
       <name>For Italian</name>
       <list>
+        <item>
+          <name>Exchange Backslash(\) and Less-Than(&lt;)</name>
+          <identifier>remap.italian_exchange_backslash_less_than</identifier>
+          <autogen>--KeyToKey-- KeyCode::ITALIAN_BACKSLASH, KeyCode::ITALIAN_LESS_THAN</autogen>
+          <autogen>--KeyToKey-- KeyCode::ITALIAN_LESS_THAN, KeyCode::ITALIAN_BACKSLASH</autogen>
+        </item>
         <item>
           <name>Option+AEIUO to àèìùò on "Italian Input Source"</name>
           <identifier>remap.italian_optionAEIUO_grave_italian</identifier>

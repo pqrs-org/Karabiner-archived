@@ -136,6 +136,11 @@
   </deviceproductdef>
 
   <deviceproductdef>
+    <productname>LOGITECH_MX620</productname>
+    <productid>0xc521</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
     <productname>HHKB_Professional_JP_0x000d</productname>
     <productid>0x000d</productid>
   </deviceproductdef>
@@ -183,6 +188,11 @@
   <deviceproductdef>
     <productname>Chic_Keypad</productname>
     <productid>0x1010</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>Truly_Ergonomic_Computer_Keyboard_0x030c</productname>
+    <productid>0x030c</productid>
   </deviceproductdef>
 
   <deviceproductdef>
