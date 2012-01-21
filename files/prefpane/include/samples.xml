@@ -671,6 +671,25 @@
     </item>
 
     <item>
+      <name>ScrollWheelToKey</name>
+      <list>
+        <item>
+          <name>Standard</name>
+          <appendix>ScrollWheel to Left/Right</appendix>
+          <appendix>Shift+ScrollWheel to Option+Up/Down/Left/Right</appendix>
+          <identifier>remap.samples_ScrollWheelToKey</identifier>
+          <autogen>--ScrollWheelToKey-- ScrollWheel::LEFT,  ModifierFlag::NONE, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--ScrollWheelToKey-- ScrollWheel::RIGHT, ModifierFlag::NONE, KeyCode::CURSOR_RIGHT</autogen>
+
+          <autogen>--ScrollWheelToKey-- ScrollWheel::UP,    VK_SHIFT, KeyCode::CURSOR_UP,    ModifierFlag::OPTION_L</autogen>
+          <autogen>--ScrollWheelToKey-- ScrollWheel::DOWN,  VK_SHIFT, KeyCode::CURSOR_DOWN,  ModifierFlag::OPTION_L</autogen>
+          <autogen>--ScrollWheelToKey-- ScrollWheel::LEFT,  VK_SHIFT, KeyCode::CURSOR_LEFT,  ModifierFlag::OPTION_L</autogen>
+          <autogen>--ScrollWheelToKey-- ScrollWheel::RIGHT, VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>SimultaneousKeyPresses</name>
       <list>
         <item>

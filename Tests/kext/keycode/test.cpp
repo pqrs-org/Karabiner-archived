@@ -15,6 +15,7 @@ std::ostream& operator<<(std::ostream& os, const KeyCode& v) { return os << v.ge
 std::ostream& operator<<(std::ostream& os, const ConsumerKeyCode& v) { return os << v.get(); }
 std::ostream& operator<<(std::ostream& os, const PointingButton& v) { return os << v.get(); }
 std::ostream& operator<<(std::ostream& os, const Buttons& v) { return os << v.get(); }
+std::ostream& operator<<(std::ostream& os, const ScrollWheel& v) { return os << v.get(); }
 
 TEST(Generic, sizeof_) {
   EXPECT_EQ(sizeof(unsigned int), sizeof(EventType));
@@ -25,6 +26,7 @@ TEST(Generic, sizeof_) {
   EXPECT_EQ(sizeof(unsigned int), sizeof(ConsumerKeyCode));
   EXPECT_EQ(sizeof(unsigned int), sizeof(PointingButton));
   EXPECT_EQ(sizeof(unsigned int), sizeof(Buttons));
+  EXPECT_EQ(sizeof(unsigned int), sizeof(ScrollWheel));
   EXPECT_EQ(sizeof(unsigned int), sizeof(Option));
   EXPECT_EQ(sizeof(unsigned int), sizeof(ApplicationType));
   EXPECT_EQ(sizeof(unsigned int), sizeof(InputMode));
@@ -702,4 +704,21 @@ TEST(Buttons, count) {
 
   Buttons buttons3(PointingButton::RIGHT | PointingButton::MIDDLE | PointingButton::BUTTON5);
   EXPECT_EQ(static_cast<unsigned int>(3), buttons3.count());
+}
+
+TEST(ScrollWheel, getScrollWheelFromDelta) {
+  EXPECT_EQ(ScrollWheel::NONE, ScrollWheel::getScrollWheelFromDelta(0, 0));
+
+  EXPECT_EQ(ScrollWheel::UP, ScrollWheel::getScrollWheelFromDelta(1, 0));
+  EXPECT_EQ(ScrollWheel::DOWN, ScrollWheel::getScrollWheelFromDelta(-1, 0));
+  EXPECT_EQ(ScrollWheel::LEFT, ScrollWheel::getScrollWheelFromDelta(0, 1));
+  EXPECT_EQ(ScrollWheel::RIGHT, ScrollWheel::getScrollWheelFromDelta(0, -1));
+
+  EXPECT_EQ(ScrollWheel::UP, ScrollWheel::getScrollWheelFromDelta(10, 3));
+  EXPECT_EQ(ScrollWheel::DOWN, ScrollWheel::getScrollWheelFromDelta(-10, 3));
+  EXPECT_EQ(ScrollWheel::LEFT, ScrollWheel::getScrollWheelFromDelta(3, 10));
+  EXPECT_EQ(ScrollWheel::RIGHT, ScrollWheel::getScrollWheelFromDelta(3, -10));
+
+  EXPECT_EQ(ScrollWheel::UP, ScrollWheel::getScrollWheelFromDelta(10, 10));
+  EXPECT_EQ(ScrollWheel::DOWN, ScrollWheel::getScrollWheelFromDelta(-10, -10));
 }

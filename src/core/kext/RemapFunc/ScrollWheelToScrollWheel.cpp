@@ -25,6 +25,8 @@ namespace org_pqrs_KeyRemap4MacBook {
               break;
           }
           ++index_;
+
+          break;
         }
 
         default:

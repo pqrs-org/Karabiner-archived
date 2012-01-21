@@ -74,4 +74,14 @@
     <vendorname>Chic_Technology_Corp</vendorname>
     <vendorid>0x05fe</vendorid>
   </devicevendordef>
+
+  <devicevendordef>
+    <vendorname>Tenx_Technology_Inc</vendorname>
+    <vendorid>0x1130</vendorid>
+  </devicevendordef>
+
+  <devicevendordef>
+    <vendorname>Megawin_Technology_Co_Ltd</vendorname>
+    <vendorid>0x0e6a</vendorid>
+  </devicevendordef>
 </root>

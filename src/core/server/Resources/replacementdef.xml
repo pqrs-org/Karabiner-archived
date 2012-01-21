@@ -5,6 +5,11 @@
     <replacementvalue>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</replacementvalue>
   </replacementdef>
 
+  <replacementdef>
+    <replacementname>JAPANESE_OYAYUBISHIFT_EXTRA</replacementname>
+    <replacementvalue></replacementvalue>
+  </replacementdef>
+
   <!-- ============================================================ -->
   <replacementdef>
     <replacementname>VI_H</replacementname>

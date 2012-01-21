@@ -1,0 +1,20 @@
+NONE        --AUTO--
+
+UP          --AUTO--
+DOWN        --AUTO--
+LEFT        --AUTO--
+RIGHT       --AUTO--
+
+// We don't treat diagonal events.
+//
+// When we move finger diagonal on Trackpad, too various events are fired.
+// For example, when we move finger to northwest,
+// there are NW events, pure Up events, pure Left events and null events in scroll event sequences.
+//
+// It's too difficult to treat them properly.
+// (== We sometimes treat them pure Up event or pure Left event.)
+//
+// DIAGONAL_NE --AUTO--
+// DIAGONAL_NW --AUTO--
+// DIAGONAL_SE --AUTO--
+// DIAGONAL_SW --AUTO--
