@@ -4240,6 +4240,18 @@
           <identifier>remap.optionR2allF1</identifier>
           <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::F1, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
         </item>
+
+        <item>
+          <name>Change Input Source while pressing right option key.</name>
+          <appendix>(Sending Command+Space when pressing/releasing right option key.)</appendix>
+          <identifier>remap.option_r_language_switch</identifier>
+          <!-- Hack: Sending Command_L key event after send Command+Space to release Command key -->
+          <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::VK_NONE,
+            Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::SPACE, ModifierFlag::COMMAND_L, KeyCode::COMMAND_L,
+            Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::SPACE, ModifierFlag::COMMAND_L, KeyCode::COMMAND_L
+          </autogen>
+        </item>
+
         <item>
           <name>Disable Option_R, except when pressed with cursor/delete keys (Works better in Parallels)</name>
           <appendix>Option_R+Up/Down/Left/Right Arrow Keys to PageUp/PageDown/Home/End</appendix>
