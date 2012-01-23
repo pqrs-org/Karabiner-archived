@@ -294,6 +294,9 @@
           <appendix></appendix>
           <appendix>Control_L+Shift_L to A,B</appendix>
           <appendix>(BeforeKeyDown C AfterKeyUp D)</appendix>
+          <appendix></appendix>
+          <appendix>Change Input Source while pressing right option key.</appendix>
+          <appendix>(Sending Command+Space when pressing/releasing right option key.)</appendix>
           <identifier>remap.samples_keytokey_beforekeydown</identifier>
           <autogen>--KeyToKey--
             KeyCode::KEY_1, KeyCode::A,
@@ -314,6 +317,11 @@
             KeyCode::SHIFT_L, ModifierFlag::CONTROL_L, KeyCode::A, KeyCode::B,
             Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::C,
             Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::D
+          </autogen>
+          <!-- Hack: Sending Command_L key event after send Command+Space to release Command key -->
+          <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::VK_NONE,
+            Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::SPACE, ModifierFlag::COMMAND_L, KeyCode::COMMAND_L,
+            Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::SPACE, ModifierFlag::COMMAND_L, KeyCode::COMMAND_L
           </autogen>
         </item>
 
