@@ -33,6 +33,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (queue_) {
       queue_->clear();
     }
+
+    // Increase id_ at cancel for DependingPressingPeriodKeyToKey to detect keyboardRepeat canceling.
+    succID();
   }
 
   void
@@ -85,12 +88,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   int
   KeyboardRepeat::primitive_start(int wait)
   {
-    ++id_;
-    if (id_ > MAX_KEYBOARDREPEATID) id_ = 0;
-
     fire_timer_.setTimeoutMS(wait);
 
-    return id_;
+    return succID();
   }
 
   void
