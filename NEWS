@@ -3,6 +3,7 @@ Changes since 7.5.0
     - Added --ScrollWheelToKey--.
     - Added --ScrollWheelToScrollWheel--.
     - Improved KeyCode::VK_CHANGE_INPUTMODE_* behavior.
+    - Some minor improvements.
 
 ----------------------------------------------------------------------
 = version 7.5.0 =
