@@ -11,6 +11,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     ParamsUnion(const Params_KeyboardSpecialEventCallback& p);
     ParamsUnion(const Params_RelativePointerEventCallback& p);
     ParamsUnion(const Params_ScrollWheelEventCallback& p);
+    ParamsUnion(const Params_Wait& p);
     ~ParamsUnion(void);
 
     enum Type {
@@ -19,6 +20,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       KEYBOARD_SPECIAL,
       RELATIVE_POINTER,
       SCROLL_POINTER,
+      WAIT,
     } type;
 
     union {
@@ -27,6 +29,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       Params_KeyboardSpecialEventCallback* params_KeyboardSpecialEventCallback;
       Params_RelativePointerEventCallback* params_RelativePointerEventCallback;
       Params_ScrollWheelEventCallback* params_ScrollWheelEventCallback;
+      Params_Wait* params_Wait;
     } params;
   };
 }

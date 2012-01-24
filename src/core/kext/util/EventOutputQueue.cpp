@@ -73,6 +73,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     Item* p = static_cast<Item*>(queue_->front());
     if (! p) return;
 
+    int delay = DELAY;
+
     // ----------------------------------------
     switch ((p->params).type) {
       case ParamsUnion::KEYBOARD:
@@ -115,13 +117,21 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
         break;
       }
+      case ParamsUnion::WAIT:
+      {
+        Params_Wait* params = (p->params).params.params_Wait;
+        if (params) {
+          delay = params->milliseconds;
+        }
+        break;
+      }
     }
 
     queue_->pop_front();
 
     // ----------------------------------------
     if (! queue_->empty()) {
-      fire_timer_.setTimeoutMS(DELAY);
+      fire_timer_.setTimeoutMS(delay);
     }
   }
 

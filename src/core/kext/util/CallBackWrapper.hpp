@@ -250,6 +250,34 @@ namespace org_pqrs_KeyRemap4MacBook {
       CommonData::increase_alloccount();
     }
   };
+
+  // This params is virtual parameter for EventOutputQueue.
+  // Hardware does not send this event.
+  class Params_Wait {
+    friend class EventOutputQueue;
+
+  public:
+    ~Params_Wait(void) {
+      CommonData::decrease_alloccount();
+    }
+
+    // Use auto_ptr instead allocating in kernel stack.
+    DECLARE_AUTO_PTR(Params_Wait);
+
+    static Params_Wait* alloc(int ms) {
+      return new Params_Wait(ms);
+    }
+    static Params_Wait* alloc(const Params_Wait& p) {
+      return new Params_Wait(p.milliseconds);
+    }
+
+    const int milliseconds;
+
+  private:
+    Params_Wait(int ms) : milliseconds(ms) {
+      CommonData::increase_alloccount();
+    }
+  };
 }
 
 #endif
