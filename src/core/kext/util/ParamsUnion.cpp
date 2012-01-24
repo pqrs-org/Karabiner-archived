@@ -26,6 +26,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     params.params_ScrollWheelEventCallback = Params_ScrollWheelEventCallback::alloc(p);
   }
 
+  ParamsUnion::ParamsUnion(const Params_Wait& p) : type(WAIT)
+  {
+    params.params_Wait = Params_Wait::alloc(p);
+  }
+
   ParamsUnion::~ParamsUnion(void)
   {
 #define DELETE_PARAMS(PARAMS) { \
@@ -49,6 +54,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         break;
       case SCROLL_POINTER:
         DELETE_PARAMS(params.params_ScrollWheelEventCallback);
+        break;
+      case WAIT:
+        DELETE_PARAMS(params.params_Wait);
         break;
       default:
         IOLOG_ERROR("ParamsUnion::~ParamsUnion() unknown type\n");
