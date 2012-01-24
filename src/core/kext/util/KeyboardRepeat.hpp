@@ -82,6 +82,12 @@ namespace org_pqrs_KeyRemap4MacBook {
                               KeyboardType keyboardType,
                               Item::Type type);
 
+    static int succID(void) {
+      ++id_;
+      if (id_ > MAX_KEYBOARDREPEATID) id_ = 0;
+      return id_;
+    }
+
     static List* queue_;
     static TimerWrapper fire_timer_;
     static int id_;
