@@ -1550,6 +1550,18 @@
           <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::EXTRA5, KeyCode::C</autogen>
         </item>
         <item>
+          <name>VK_WAIT</name>
+          <appendix>Change KEY_1 to A,B,&lt;wait10ms&gt;,C</appendix>
+          <appendix>Change KEY_2 to A,B,&lt;wait50ms&gt;,C</appendix>
+          <appendix>Change KEY_3 to A,B,&lt;wait100ms&gt;,C</appendix>
+          <appendix>Change KEY_4 to A,B,&lt;wait500ms&gt;,C</appendix>
+          <identifier>remap.samples_vk_wait</identifier>
+          <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::A, KeyCode::B, KeyCode::VK_WAIT_10MS,  KeyCode::C</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::A, KeyCode::B, KeyCode::VK_WAIT_50MS,  KeyCode::C</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::A, KeyCode::B, KeyCode::VK_WAIT_100MS, KeyCode::C</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_4, KeyCode::A, KeyCode::B, KeyCode::VK_WAIT_500MS, KeyCode::C</autogen>
+        </item>
+        <item>
           <name>VK_LOCK</name>
           <list>
             <item>
