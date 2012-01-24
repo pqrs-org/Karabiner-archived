@@ -1,6 +1,7 @@
 #include "Config.hpp"
 #include "EventWatcher.hpp"
 #include "DependingPressingPeriodKeyToKey.hpp"
+#include "KeyboardRepeat.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
@@ -96,7 +97,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     DependingPressingPeriodKeyToKey::DependingPressingPeriodKeyToKey(void) :
-      active_(false), periodtype_(PeriodType::NONE)
+      active_(false), periodtype_(PeriodType::NONE), keyboardRepeatID_(0)
     {}
 
     DependingPressingPeriodKeyToKey::~DependingPressingPeriodKeyToKey(void)
@@ -230,6 +231,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
           FlagStatus::ScopedTemporaryFlagsChanger stfc(target_->savedflags_);
           (target_->keytokey_[KeyToKeyType::LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+          target_->keyboardRepeatID_ = KeyboardRepeat::getID();
 
           EventWatcher::set(target_->isAnyEventHappen_);
           (target_->ic_).begin();
@@ -243,11 +245,21 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         case PeriodType::LONG_PERIOD:
         {
-          target_->periodtype_ = PeriodType::LONG_LONG_PERIOD;
+          // If keyboard repeat is canceled while pressing LONG_PERIOD key,
+          // we cancel LONG_LONG_PERIOD event.
+          bool isKeyboardRepeatCanceled = (target_->keyboardRepeatID_ != KeyboardRepeat::getID());
+
           (target_->keytokey_[KeyToKeyType::LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::UP);
 
-          FlagStatus::ScopedTemporaryFlagsChanger stfc(target_->savedflags_);
-          (target_->keytokey_[KeyToKeyType::LONG_LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+          if (isKeyboardRepeatCanceled) {
+            target_->periodtype_ = PeriodType::NONE;
+
+          } else {
+            target_->periodtype_ = PeriodType::LONG_LONG_PERIOD;
+
+            FlagStatus::ScopedTemporaryFlagsChanger stfc(target_->savedflags_);
+            (target_->keytokey_[KeyToKeyType::LONG_LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+          }
 
           break;
         }

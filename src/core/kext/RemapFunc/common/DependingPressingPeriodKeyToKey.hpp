@@ -203,6 +203,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       bool isAnyEventHappen_;
       IntervalChecker ic_;
+      int keyboardRepeatID_;
     };
   }
 }
