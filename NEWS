@@ -2,6 +2,7 @@ Changes since 7.5.0
     - Added <replacementdef>. You can replace preset settings behavior by this.
     - Added --ScrollWheelToKey--.
     - Added --ScrollWheelToScrollWheel--.
+    - Added KeyCode::VK_WAIT_*.
     - Improved KeyCode::VK_CHANGE_INPUTMODE_* behavior.
     - Some minor improvements.
 
