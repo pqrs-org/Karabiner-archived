@@ -59,6 +59,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       static void fire(int delta1, int delta2);
     };
 
+    class FireWait {
+    public:
+      static void fire(const Params_Wait& params);
+    };
+
     // ======================================================================
   private:
     enum {
@@ -71,6 +76,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       Item(const Params_KeyboardSpecialEventCallback& p) : params(p) {}
       Item(const Params_RelativePointerEventCallback& p) : params(p) {}
       Item(const Params_ScrollWheelEventCallback& p)     : params(p) {}
+      Item(const Params_Wait& p)                         : params(p) {}
 
       virtual ~Item(void) {}
 
@@ -83,6 +89,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void push(const Params_KeyboardSpecialEventCallback& p);
     static void push(const Params_RelativePointerEventCallback& p);
     static void push(const Params_ScrollWheelEventCallback& p);
+    static void push(const Params_Wait& p);
 
     static List* queue_;
     static TimerWrapper fire_timer_;

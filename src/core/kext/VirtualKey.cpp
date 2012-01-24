@@ -11,6 +11,7 @@
 #include "VirtualKey/VK_LOCK.hpp"
 #include "VirtualKey/VK_MOUSEKEY.hpp"
 #include "VirtualKey/VK_STICKY.hpp"
+#include "VirtualKey/VK_WAIT.hpp"
 #include "VirtualKey/VK_JIS_BACKSLASH.hpp"
 #include "VirtualKey/VK_JIS_TEMPORARY.hpp"
 #include "VirtualKey/VK_JIS_TOGGLE_EISUU_KANA.hpp"
@@ -51,6 +52,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (VirtualKey::VK_LOCK::handle(params))                  { return true; }
     if (VirtualKey::VK_MOUSEKEY::handle(params))              { return true; }
     if (VirtualKey::VK_STICKY::handle(params))                { return true; }
+    if (VirtualKey::VK_WAIT::handle(params))                  { return true; }
     if (VirtualKey::VK_JIS_BACKSLASH::handle(params))         { return true; }
     if (VirtualKey::VK_JIS_TEMPORARY::handle(params))         { return true; }
     if (VirtualKey::VK_JIS_TOGGLE_EISUU_KANA::handle(params)) { return true; }

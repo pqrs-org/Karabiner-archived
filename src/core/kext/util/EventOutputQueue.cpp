@@ -60,6 +60,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     PUSH_TO_OUTPUTQUEUE;
     FlagStatus::sticky_clear();
   }
+  void EventOutputQueue::push(const Params_Wait& p) {
+    PUSH_TO_OUTPUTQUEUE;
+  }
 #undef PUSH_TO_OUTPUTQUEUE
 
   // ----------------------------------------------------------------------
@@ -389,5 +392,12 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                                                          options));
     if (! ptr) return;
     EventOutputQueue::FireScrollWheel::fire(*ptr);
+  }
+
+  // ======================================================================
+  void
+  EventOutputQueue::FireWait::fire(const Params_Wait& params)
+  {
+    EventOutputQueue::push(params);
   }
 }

@@ -27,8 +27,9 @@ enum {
   //             (And removed BRIDGE_REMAPTYPE_STRIPMODIFIERFROMSCROLLWHEEL.)
   // Version 20: Added an essential configuration. (general.dont_remap_non_apple_pointing)
   // Version 21: Added ScrollWheel::*.
+  // Version 22: Added KeyCode::VK_WAIT_*.
 
-  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 21,
+  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 22,
 };
 
 enum {
