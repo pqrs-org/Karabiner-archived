@@ -28,8 +28,9 @@ enum {
   // Version 20: Added an essential configuration. (general.dont_remap_non_apple_pointing)
   // Version 21: Added ScrollWheel::*.
   // Version 22: Added KeyCode::VK_WAIT_*.
+  // Version 23: Removed KeyCode::VK_WAIT_500MS
 
-  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 22,
+  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 23,
 };
 
 enum {
