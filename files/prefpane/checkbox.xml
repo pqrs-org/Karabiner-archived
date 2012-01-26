@@ -3038,6 +3038,22 @@
                 </item>
                 <item><name>------------------------------------------------------------</name></item>
                 <item>
+                  <name>F16 to Music Prev</name>
+                  <identifier>remap.f16_to_musicprev</identifier>
+                  <autogen>--KeyToConsumer-- KeyCode::F16, ConsumerKeyCode::MUSIC_PREV</autogen>
+                </item>
+                <item>
+                  <name>F17 to Music Play/Pause</name>
+                  <identifier>remap.f17_to_musicplay</identifier>
+                  <autogen>--KeyToConsumer-- KeyCode::F17, ConsumerKeyCode::MUSIC_PLAY</autogen>
+                </item>
+                <item>
+                  <name>F18 to Music Next</name>
+                  <identifier>remap.f18_to_musicnext</identifier>
+                  <autogen>--KeyToConsumer-- KeyCode::F18, ConsumerKeyCode::MUSIC_NEXT</autogen>
+                </item>
+                <item><name>------------------------------------------------------------</name></item>
+                <item>
                   <name>MacBook Air (2010, Late) Style</name>
                   <list>
                     <item>
