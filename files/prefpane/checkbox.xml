@@ -4431,6 +4431,16 @@
           <identifier>remap.fnquote2backslash</identifier>
           <autogen>--KeyToKey-- KeyCode::QUOTE, ModifierFlag::FN, KeyCode::BACKSLASH</autogen>
         </item>
+        <item>
+          <name>Swap Quote and Shift+Quote</name>
+          <identifier>remap.swap_quote_and_shiftquote</identifier>
+          <autogen>--KeyToKey-- KeyCode::QUOTE, ModifierFlag::NONE,
+            KeyCode::QUOTE, ModifierFlag::SHIFT_L
+          </autogen>
+          <autogen>--KeyToKey-- KeyCode::QUOTE, VK_SHIFT | ModifierFlag::NONE,
+            KeyCode::QUOTE
+          </autogen>
+        </item>
       </list>
     </item>
 
