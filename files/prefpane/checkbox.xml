@@ -3003,6 +3003,22 @@
                 </item>
                 <item><name>------------------------------------------------------------</name></item>
                 <item>
+                  <name>F13 to Volume Mute</name>
+                  <identifier>remap.f13_to_volumemute_all</identifier>
+                  <autogen>--KeyToConsumer-- KeyCode::F13, ConsumerKeyCode::VOLUME_MUTE</autogen>
+                </item>
+                <item>
+                  <name>F14 to Volume Down</name>
+                  <identifier>remap.f14_to_volumedown_all</identifier>
+                  <autogen>--KeyToConsumer-- KeyCode::F14, ConsumerKeyCode::VOLUME_DOWN</autogen>
+                </item>
+                <item>
+                  <name>F15 to Volume Up</name>
+                  <identifier>remap.f15_to_volumeup_all</identifier>
+                  <autogen>--KeyToConsumer-- KeyCode::F15, ConsumerKeyCode::VOLUME_UP</autogen>
+                </item>
+                <item><name>------------------------------------------------------------</name></item>
+                <item>
                   <name>F13 to Volume Mute (except virtual machine, RDC)</name>
                   <identifier>remap.f13_to_volumemute</identifier>
                   <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
