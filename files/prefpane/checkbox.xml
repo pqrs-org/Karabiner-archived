@@ -740,6 +740,22 @@
       <name>Change Bracket([,]) Keys</name>
       <list>
         <item>
+          <name>Swap Bracket([]) and Shift+Bracket({})</name>
+          <identifier>remap.swap_bracket_and_shiftbracket</identifier>
+          <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::NONE,
+            KeyCode::BRACKET_LEFT, ModifierFlag::SHIFT_L
+          </autogen>
+          <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, ModifierFlag::NONE,
+            KeyCode::BRACKET_RIGHT, ModifierFlag::SHIFT_L
+          </autogen>
+          <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_SHIFT | ModifierFlag::NONE,
+            KeyCode::BRACKET_LEFT
+          </autogen>
+          <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, VK_SHIFT | ModifierFlag::NONE,
+            KeyCode::BRACKET_RIGHT
+          </autogen>
+        </item>
+        <item>
           <name>Left Bracket([) to L</name>
           <identifier>remap.leftbracket2l</identifier>
           <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, KeyCode::L</autogen>
