@@ -737,6 +737,17 @@
     </item>
 
     <item>
+      <name>Change Bracket([,]) Keys</name>
+      <list>
+        <item>
+          <name>Left Bracket([) to L</name>
+          <identifier>remap.leftbracket2l</identifier>
+          <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, KeyCode::L</autogen>
+        </item>
+      </list>
+    </item>
+
+    <item>
       <name>Change CapsLock Key</name>
       <list>
         <item>
@@ -3803,17 +3814,6 @@
               <autogen>--KeyToKey-- KeyCode::KEYPAD_2, KeyCode::F10</autogen>
             </item>
           </list>
-        </item>
-      </list>
-    </item>
-
-    <item>
-      <name>Change Left Bracket([) Key</name>
-      <list>
-        <item>
-          <name>Left Bracket([) to L</name>
-          <identifier>remap.leftbracket2l</identifier>
-          <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, KeyCode::L</autogen>
         </item>
       </list>
     </item>
