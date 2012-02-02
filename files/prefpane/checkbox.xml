@@ -6565,6 +6565,60 @@
           <autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::F, KeyCode::CURSOR_RIGHT</autogen>
         </item>
         <item>
+          <name>5, 6, 7 for Escape and Delete</name>
+          <list>
+            <item>
+              <name>5+6 for Escape</name>
+              <identifier>remap.key5_plus_key6_for_esc</identifier>
+              <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_5, KeyCode::KEY_6, KeyCode::ESCAPE</autogen>
+            </item>
+            <item>
+              <name>6+7 for Escape</name>
+              <identifier>remap.key6_plus_key7_for_esc</identifier>
+              <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_6, KeyCode::KEY_7, KeyCode::ESCAPE</autogen>
+            </item>
+            <item>
+              <name>6+7 for Delete</name>
+              <identifier>remap.key6_plus_key7_for_delete</identifier>
+              <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_6, KeyCode::KEY_7, KeyCode::DELETE</autogen>
+            </item>
+            <item>
+              <name>5+7 for Delete</name>
+              <identifier>remap.key5_plus_key7_for_delete</identifier>
+              <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_5, KeyCode::KEY_7, KeyCode::DELETE</autogen>
+            </item>
+            <item>
+              <name>5+7 for Forward Delete</name>
+              <identifier>remap.key5_plus_key7_for_forward_delete</identifier>
+              <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_5, KeyCode::KEY_7, KeyCode::FORWARD_DELETE</autogen>
+            </item>
+          </list>
+        </item>
+
+        <item>
+          <name>H, J, K for Return, Delete, Tab </name>
+          <list>
+            <item>
+              <name>H+J for Delete</name>
+              <identifier>remap.h_plus_j_for_delete</identifier>
+              <autogen>--SimultaneousKeyPresses-- KeyCode::H, KeyCode::J, KeyCode::DELETE</autogen>
+            </item>
+
+            <item>
+              <name>J+K for Return</name>
+              <identifier>remap.j_plus_k_for_return</identifier>
+              <autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::K, KeyCode::RETURN</autogen>
+            </item>
+
+            <item>
+              <name>H+K for Tab</name>
+              <identifier>remap.h_plus_k_for_tab</identifier>
+              <autogen>--SimultaneousKeyPresses-- KeyCode::H, KeyCode::K, KeyCode::TAB</autogen>
+            </item>
+          </list>
+        </item>
+
+        <item>
           <name>Simultaneous Key Presses [F+J] to Return</name>
           <identifier>remap.simultaneouskeypresses_fj_to_return</identifier>
           <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::J, KeyCode::RETURN</autogen>
@@ -10495,6 +10549,49 @@
               <identifier>remap.jis_ignore_multiple_eisuu</identifier>
               <autogen>--IgnoreMultipleSameKeyPress-- KeyCode::JIS_EISUU</autogen>
             </item>
+            <item>
+              <name>EISUU symbol mode</name>
+              <appendix>(+ When you type EISUU only, send EISUU)</appendix>
+              <identifier>remap.eisuu_symbol</identifier>
+              <appendix>EISUU + WER for Shift + 123</appendix>
+              <appendix>EISUU + SDF for Shift + 456</appendix>
+              <appendix>EISUU + XCV for Shift + 789</appendix>
+              <autogen>--KeyOverlaidModifier--
+                KeyCode::JIS_EISUU,
+                KeyCode::VK_MODIFIER_EXTRA2, KeyCode::JIS_EISUU
+              </autogen>
+              <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::EXTRA2, KeyCode::KEY_1, ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::EXTRA2, KeyCode::KEY_2, ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::EXTRA2, KeyCode::KEY_3, ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::EXTRA2, KeyCode::KEY_4, ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::EXTRA2, KeyCode::KEY_5, ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::EXTRA2, KeyCode::KEY_6, ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::EXTRA2, KeyCode::KEY_7, ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::EXTRA2, KeyCode::KEY_8, ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::EXTRA2, KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
+            </item>
+            <item>
+              <name>EISUU symbol mode (For Dvorak right user)</name>
+              <appendix>(+ When you type EISUU only, send EISUU)</appendix>
+              <identifier>remap.eisuu_symbol_dvorak_right</identifier>
+              <appendix>EISUU + WER for Shift + 123</appendix>
+              <appendix>EISUU + SDF for Shift + 456</appendix>
+              <appendix>EISUU + XCVB for Shift + 7890</appendix>
+              <autogen>--KeyOverlaidModifier--
+                KeyCode::JIS_EISUU,
+                KeyCode::VK_MODIFIER_EXTRA2, KeyCode::JIS_EISUU
+              </autogen>
+              <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::EXTRA2, KeyCode::KEY_1, ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::EXTRA2, KeyCode::KEY_2, ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::EXTRA2, KeyCode::KEY_3, ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::EXTRA2, KeyCode::KEY_4, ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::EXTRA2, KeyCode::Q,     ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::EXTRA2, KeyCode::W,     ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::EXTRA2, KeyCode::A,     ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::EXTRA2, KeyCode::S,     ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::EXTRA2, KeyCode::Z,     ModifierFlag::SHIFT_L</autogen>
+              <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::EXTRA2, KeyCode::X,     ModifierFlag::SHIFT_L</autogen>
+            </item>
           </list>
         </item>
         <item>
@@ -10617,6 +10714,33 @@
               <name>Ignore the multiple press of KANA</name>
               <identifier>remap.jis_ignore_multiple_kana</identifier>
               <autogen>--IgnoreMultipleSameKeyPress-- KeyCode::JIS_KANA</autogen>
+            </item>
+            <item>
+              <name>KANA 10-key mode</name>
+              <appendix>(+ When you type KANA only, send KANA)</appendix>
+              <identifier>remap.kana_10key</identifier>
+              <appendix>KANA + YUIOP for 0123=</appendix>
+              <appendix>KANA + HJKL; for +456*</appendix>
+              <appendix>KANA + NM,./ for -789/</appendix>
+              <autogen>--KeyOverlaidModifier--
+                KeyCode::JIS_KANA,
+                KeyCode::VK_MODIFIER_EXTRA1, KeyCode::JIS_KANA
+              </autogen>
+              <autogen>--KeyToKey-- KeyCode::U,         ModifierFlag::EXTRA1, KeyCode::KEYPAD_1       </autogen>
+              <autogen>--KeyToKey-- KeyCode::I,         ModifierFlag::EXTRA1, KeyCode::KEYPAD_2       </autogen>
+              <autogen>--KeyToKey-- KeyCode::O,         ModifierFlag::EXTRA1, KeyCode::KEYPAD_3       </autogen>
+              <autogen>--KeyToKey-- KeyCode::J,         ModifierFlag::EXTRA1, KeyCode::KEYPAD_4       </autogen>
+              <autogen>--KeyToKey-- KeyCode::K,         ModifierFlag::EXTRA1, KeyCode::KEYPAD_5       </autogen>
+              <autogen>--KeyToKey-- KeyCode::L,         ModifierFlag::EXTRA1, KeyCode::KEYPAD_6       </autogen>
+              <autogen>--KeyToKey-- KeyCode::M,         ModifierFlag::EXTRA1, KeyCode::KEYPAD_7       </autogen>
+              <autogen>--KeyToKey-- KeyCode::COMMA,     ModifierFlag::EXTRA1, KeyCode::KEYPAD_8       </autogen>
+              <autogen>--KeyToKey-- KeyCode::DOT,       ModifierFlag::EXTRA1, KeyCode::KEYPAD_9       </autogen>
+              <autogen>--KeyToKey-- KeyCode::Y,         ModifierFlag::EXTRA1, KeyCode::KEYPAD_0       </autogen>
+              <autogen>--KeyToKey-- KeyCode::H,         ModifierFlag::EXTRA1, KeyCode::KEYPAD_PLUS    </autogen>
+              <autogen>--KeyToKey-- KeyCode::N,         ModifierFlag::EXTRA1, KeyCode::KEYPAD_MINUS   </autogen>
+              <autogen>--KeyToKey-- KeyCode::P,         ModifierFlag::EXTRA1, KeyCode::KEYPAD_EQUAL   </autogen>
+              <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::EXTRA1, KeyCode::KEYPAD_MULTIPLY</autogen>
+              <autogen>--KeyToKey-- KeyCode::SLASH,     ModifierFlag::EXTRA1, KeyCode::KEYPAD_SLASH   </autogen>
             </item>
           </list>
         </item>
@@ -11845,6 +11969,52 @@
               <appendix>(We can change the key once again)</appendix>
               <identifier>remap.simultaneouskeypresses_eisuukana2return</identifier>
               <autogen>--SimultaneousKeyPresses-- KeyCode::JIS_EISUU, KeyCode::JIS_KANA, KeyCode::RETURN, SimultaneousKeyPresses::Option::RAW</autogen>
+            </item>
+            <item>
+              <name>(7), 8, 9, 0 for IME</name>
+              <list>
+                <item>
+                  <name>8+9 for Shift+Left</name>
+                  <identifier>remap.key8_plus_key9_for_shift_left</identifier>
+                  <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_8, KeyCode::KEY_9,
+                    KeyCode::CURSOR_LEFT, ModifierFlag::SHIFT_L</autogen>
+                </item>
+
+                <item>
+                  <name>9+0 for Shift+Right</name>
+                  <identifier>remap.key9_plus_key0_for_shift_right</identifier>
+                  <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_9, KeyCode::KEY_0,
+                    KeyCode::CURSOR_RIGHT, ModifierFlag::SHIFT_L</autogen>
+                </item>
+
+                <item>
+                  <name>8+0 for Right</name>
+                  <identifier>remap.key8_plus_key0_for_right</identifier>
+                  <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_8, KeyCode::KEY_0, KeyCode::CURSOR_RIGHT</autogen>
+                </item>
+
+                <item>
+                  <name>7+9 for Left</name>
+                  <identifier>remap.key7_plus_key9_for_right</identifier>
+                  <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_7, KeyCode::KEY_9, KeyCode::CURSOR_LEFT</autogen>
+                </item>
+
+                <item>
+                  <name>Optional Cursors</name>
+                  <list>
+                    <item>
+                      <name>Y+U for Up</name>
+                      <identifier>remap.u_plus_u</identifier>
+                      <autogen>--SimultaneousKeyPresses-- KeyCode::Y, KeyCode::U, KeyCode::CURSOR_UP</autogen>
+                    </item>
+                    <item>
+                      <name>N+M for Down</name>
+                      <identifier>remap.n_plus_m_for_right</identifier>
+                      <autogen>--SimultaneousKeyPresses-- KeyCode::N, KeyCode::M, KeyCode::CURSOR_DOWN</autogen>
+                    </item>
+                  </list>
+                </item>
+              </list>
             </item>
           </list>
         </item>
