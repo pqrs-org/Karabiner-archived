@@ -9711,6 +9711,15 @@
           <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::KEYPAD_DOT, ModifierFlag::SHIFT_L</autogen>
         </item>
         <item>
+          <name>Swap $ and € on French</name>
+          <identifier>remap.french_swap_dollar_and_euro</identifier>
+          <inputmode_only>FRENCH</inputmode_only>
+          <autogen>--KeyToKey-- KeyCode::FRENCH_DOLLAR, ModifierFlag::NONE,
+            KeyCode::FRENCH_DOLLAR, ModifierFlag::OPTION_R</autogen>
+          <autogen>--KeyToKey-- KeyCode::FRENCH_DOLLAR, VK_OPTION | ModifierFlag::NONE,
+            KeyCode::FRENCH_DOLLAR</autogen>
+        </item>
+        <item>
           <name>Shift_L to Shift_L</name>
           <appendix>(+ When you type Shift_L only, send Backslash)</appendix>
           <identifier>remap.french_shiftL2shiftL_backslash</identifier>
