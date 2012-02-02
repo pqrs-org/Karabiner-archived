@@ -9705,6 +9705,12 @@
       <name>For French</name>
       <list>
         <item>
+          <name>Change KeyPad Comma(,) to Dot(.)</name>
+          <identifier>remap.french_keypad_comma_to_dot</identifier>
+          <inputmode_only>FRENCH</inputmode_only>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::KEYPAD_DOT, ModifierFlag::SHIFT_L</autogen>
+        </item>
+        <item>
           <name>Shift_L to Shift_L</name>
           <appendix>(+ When you type Shift_L only, send Backslash)</appendix>
           <identifier>remap.french_shiftL2shiftL_backslash</identifier>
