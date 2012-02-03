@@ -277,6 +277,11 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
   [preferences_ load];
 
+  if (! [[NSUserDefaults standardUserDefaults] boolForKey:@"hideDockIcon"]) {
+    ProcessSerialNumber psn = { 0, kCurrentProcess };
+    TransformProcessType(&psn, kProcessTransformToForegroundApplication);
+  }
+
   global_client_ = client_;
 
   [self registerIONotification];
