@@ -277,7 +277,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
   [preferences_ load];
 
-  if (! [[NSUserDefaults standardUserDefaults] boolForKey:@"hideDockIcon"]) {
+  if (! [PreferencesController isHideIconInDock]) {
     ProcessSerialNumber psn = { 0, kCurrentProcess };
     TransformProcessType(&psn, kProcessTransformToForegroundApplication);
   }
