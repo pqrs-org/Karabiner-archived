@@ -75,6 +75,12 @@ NSDictionary* defaults_dictionary = nil;
   } else {
     [startAtLogin_ setState:NSOffState];
   }
+
+  if ([PreferencesController isHideIconInDock]) {
+    [hideIconInDock_ setState:NSOnState];
+  } else {
+    [hideIconInDock_ setState:NSOffState];
+  }
 }
 
 - (void) show
@@ -90,6 +96,24 @@ NSDictionary* defaults_dictionary = nil;
   } else {
     [StartAtLoginController setStartAtLogin:YES];
   }
+}
+
+- (IBAction) setHideIconInDock:(id)sender
+{
+  NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+  NSString* key = @"hideIconInDock";
+
+  if ([defaults boolForKey:key]) {
+    [defaults setBool:NO forKey:key];
+  } else {
+    [defaults setBool:YES forKey:key];
+  }
+}
+
++ (BOOL) isHideIconInDock
+{
+  // Default value is NO.
+  return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideIconInDock"];
 }
 
 + (BOOL) isSettingEnabled:(NSInteger)fingers
