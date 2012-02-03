@@ -103,10 +103,10 @@ NSDictionary* defaults_dictionary = nil;
   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
   NSString* key = @"hideIconInDock";
 
-  if ([defaults boolForKey:key]) {
-    [defaults setBool:NO forKey:key];
-  } else {
+  if ([hideIconInDock_ state] == NSOnState) {
     [defaults setBool:YES forKey:key];
+  } else {
+    [defaults setBool:NO forKey:key];
   }
 }
 
