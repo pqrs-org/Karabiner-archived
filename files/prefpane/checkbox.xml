@@ -5520,7 +5520,7 @@
         <item>
           <name>Command+V to PageUp</name>
           <identifier>option.emacsmode_commandV</identifier>
-          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+          <!-- Do not use "not filter" on changing Command+XXX -->
           <autogen>--KeyToKey-- KeyCode::V, VK_COMMAND, KeyCode::PAGEUP</autogen>
         </item>
         <item>
@@ -5696,7 +5696,7 @@
         <item>
           <name>[ex] Command+W to Command+C</name>
           <identifier>option.emacsmode_ex_commandW</identifier>
-          <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+          <!-- Do not use "not filter" on changing Command+XXX -->
           <autogen>--KeyToKey-- KeyCode::W, VK_COMMAND, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
@@ -5708,7 +5708,7 @@
             <autogen>--KeyToKey-- KeyCode::W, VK_COMMAND, KeyCode::X, ModifierFlag::CONTROL_L, KeyCode::M, ModifierFlag::CONTROL_L, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
           </block>
           <block>
-            <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE, XCODE</not>
+            <!-- Do not use "not filter" on changing Command+XXX -->
             <autogen>--KeyToKey-- KeyCode::W, VK_COMMAND, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
           </block>
         </item>
