@@ -1493,6 +1493,11 @@
           <autogen>--KeyToKey-- KeyCode::DELETE, VK_SHIFT, KeyCode::BACKSLASH, ModifierFlag::SHIFT_L</autogen>
         </item>
         <item>
+          <name>Delete to Quote(')</name>
+          <identifier>remap.delete_to_quote</identifier>
+          <autogen>--KeyToKey-- KeyCode::DELETE, KeyCode::QUOTE</autogen>
+        </item>
+        <item>
           <name>Delete to Return</name>
           <identifier>remap.delete_to_return</identifier>
           <autogen>--KeyToKey-- KeyCode::DELETE, KeyCode::RETURN</autogen>
@@ -4430,6 +4435,11 @@
           <name>Fn+Quote(') to Backslash(\)</name>
           <identifier>remap.fnquote2backslash</identifier>
           <autogen>--KeyToKey-- KeyCode::QUOTE, ModifierFlag::FN, KeyCode::BACKSLASH</autogen>
+        </item>
+        <item>
+          <name>Quote(') to Delete</name>
+          <identifier>remap.quote_to_delete</identifier>
+          <autogen>--KeyToKey-- KeyCode::QUOTE, KeyCode::DELETE</autogen>
         </item>
         <item>
           <name>Swap Quote and Shift+Quote</name>
