@@ -1414,6 +1414,11 @@
           <identifier>remap.controlR2rightclick</identifier>
           <autogen>--KeyToPointingButton-- KeyCode::CONTROL_R, PointingButton::RIGHT</autogen>
         </item>
+        <item>
+          <name>Control_R to Shift_R</name>
+          <identifier>remap.controlR2shiftR</identifier>
+          <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::SHIFT_R</autogen>
+        </item>
       </list>
     </item>
 
@@ -1501,6 +1506,11 @@
           <name>Delete to Return</name>
           <identifier>remap.delete_to_return</identifier>
           <autogen>--KeyToKey-- KeyCode::DELETE, KeyCode::RETURN</autogen>
+        </item>
+        <item>
+          <name>Delete to Tab</name>
+          <identifier>remap.delete_to_tab</identifier>
+          <autogen>--KeyToKey-- KeyCode::DELETE, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>Shift+Delete to Tilde(~)</name>
@@ -4962,6 +4972,11 @@
           <appendix>(+ When you type Tab only, send Tab)</appendix>
           <identifier>remap.tab2commandL_tab</identifier>
           <autogen>--KeyOverlaidModifier-- KeyCode::TAB, KeyCode::COMMAND_L, KeyCode::TAB</autogen>
+        </item>
+        <item>
+          <name>Tab to Delete</name>
+          <identifier>remap.tab2delete</identifier>
+          <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::DELETE</autogen>
         </item>
         <item>
           <name>Tab to Option_L when you held down Control_L</name>
@@ -10626,6 +10641,11 @@
               <name>KANA to Command_L</name>
               <identifier>remap.jis_kana2commandL</identifier>
               <autogen>--KeyToKey-- KeyCode::JIS_KANA, KeyCode::COMMAND_L</autogen>
+            </item>
+            <item>
+              <name>KANA to Command_R</name>
+              <identifier>remap.jis_kana2commandR</identifier>
+              <autogen>--KeyToKey-- KeyCode::JIS_KANA, KeyCode::COMMAND_R</autogen>
             </item>
             <item>
               <name>KANA to Command_R</name>
