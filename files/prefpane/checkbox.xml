@@ -9931,6 +9931,12 @@
         </item>
         <item>
           <name>Swap Circumflex(^) and Less-Than(&lt;)</name>
+          <identifier>remap.german_swap_circumflex_lessthan</identifier>
+          <autogen>--KeyToKey-- KeyCode::GERMAN_CIRCUMFLEX, KeyCode::GERMAN_LESS_THAN</autogen>
+          <autogen>--KeyToKey-- KeyCode::GERMAN_LESS_THAN, KeyCode::GERMAN_CIRCUMFLEX</autogen>
+        </item>
+        <item>
+          <name>Swap Circumflex(^) and Less-Than(&lt;)</name>
           <appendix>(only in virtual machine)</appendix>
           <identifier>remap.german_swap_circumflex_lessthan_vm</identifier>
           <only>VIRTUALMACHINE</only>
