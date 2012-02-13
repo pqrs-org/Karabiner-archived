@@ -351,6 +351,12 @@ finish:
     return;
   }
 
+  if ([name hasPrefix:@"org.pqrs.inputmode.cs."]) {
+    *output_inputmode       = [parser keycode:@"InputMode::CZECH"];
+    *output_inputmodedetail = [parser keycode:@"InputModeDetail::CZECH"];
+    return;
+  }
+
   if ([name isEqualToString:@"org.pqrs.inputmode.unknown.FrenchDvorak"]) {
     *output_inputmode       = [parser keycode:@"InputMode::BEPO"];
     *output_inputmodedetail = [parser keycode:@"InputModeDetail::BEPO"];
