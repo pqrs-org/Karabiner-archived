@@ -213,8 +213,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 }
 
     switch (type_) {
-      case BRIDGE_REMAPTYPE_CONSUMERTOCONSUMER: CALL_UNION_FUNCTION(p_.consumerToConsumer); break;
-      case BRIDGE_REMAPTYPE_CONSUMERTOKEY:      CALL_UNION_FUNCTION(p_.consumerToKey);      break;
+      case BRIDGE_REMAPTYPE_CONSUMERTOCONSUMER:  CALL_UNION_FUNCTION(p_.consumerToConsumer);  break;
+      case BRIDGE_REMAPTYPE_CONSUMERTOKEY:       CALL_UNION_FUNCTION(p_.consumerToKey);       break;
+      case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:     CALL_UNION_FUNCTION(p_.holdingKeyToKey);     break;
+      case BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER: CALL_UNION_FUNCTION(p_.keyOverlaidModifier); break;
       default:
         // do nothing. (Do not call IOLOG_ERROR)
         break;
@@ -250,6 +252,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       case BRIDGE_REMAPTYPE_POINTINGBUTTONTOKEY:            CALL_UNION_FUNCTION(p_.pointingButtonToKey);            break;
       case BRIDGE_REMAPTYPE_POINTINGBUTTONTOPOINTINGBUTTON: CALL_UNION_FUNCTION(p_.pointingButtonToPointingButton); break;
       case BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL:       CALL_UNION_FUNCTION(p_.pointingRelativeToScroll);       break;
+      case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:                CALL_UNION_FUNCTION(p_.holdingKeyToKey);                break;
+      case BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER:            CALL_UNION_FUNCTION(p_.keyOverlaidModifier);            break;
       default:
         // do nothing. (Do not call IOLOG_ERROR)
         break;
@@ -271,6 +275,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       case BRIDGE_REMAPTYPE_DROPSCROLLWHEEL:          CALL_UNION_FUNCTION(p_.dropScrollWheel);          break;
       case BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL: CALL_UNION_FUNCTION(p_.scrollWheelToScrollWheel); break;
       case BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY:         CALL_UNION_FUNCTION(p_.scrollWheelToKey);         break;
+      case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:          CALL_UNION_FUNCTION(p_.holdingKeyToKey);          break;
+      case BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER:      CALL_UNION_FUNCTION(p_.keyOverlaidModifier);      break;
       default:
         // do nothing. (Do not call IOLOG_ERROR)
         break;
