@@ -569,7 +569,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       {
         Params_ScrollWheelEventCallback* params = (p->params).params.params_ScrollWheelEventCallback;
         if (params) {
-          // EventWatcher::on is not necessary.
+          // When "Space to Command (+ When you type Space only, send Space)" is activated,
+          // user press Space and scroll wheel to input Command+ScrollWheel.
+          // Then release Space, user don't intend to send Space.
+          // So, we need to set EventWatcher::on here.
+          EventWatcher::on();
 
           Core::remap_ScrollWheelEventCallback(*params);
         }
