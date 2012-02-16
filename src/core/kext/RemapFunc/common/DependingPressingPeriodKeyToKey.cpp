@@ -145,6 +145,34 @@ namespace org_pqrs_KeyRemap4MacBook {
       return true;
     }
 
+    bool
+    DependingPressingPeriodKeyToKey::remap(RemapConsumerParams& remapParams)
+    {
+      // We treat this event as another key has been pressed.
+      if (remapParams.params.ex_iskeydown) {
+        dokeydown();
+      }
+      return false;
+    }
+
+    bool
+    DependingPressingPeriodKeyToKey::remap(RemapPointingParams_relative& remapParams)
+    {
+      // We treat this event as another key has been pressed.
+      if (remapParams.params.ex_isbuttondown) {
+        dokeydown();
+      }
+      return false;
+    }
+
+    bool
+    DependingPressingPeriodKeyToKey::remap(RemapPointingParams_scroll& remapParams)
+    {
+      // We treat this event as another key has been pressed.
+      dokeydown();
+      return false;
+    }
+
     void
     DependingPressingPeriodKeyToKey::dokeydown(void)
     {
