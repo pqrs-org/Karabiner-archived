@@ -46,6 +46,11 @@
   </devicevendordef>
 
   <devicevendordef>
+    <vendorname>FUJITSU</vendorname>
+    <vendorid>0x0430</vendorid>
+  </devicevendordef>
+
+  <devicevendordef>
     <vendorname>SUN_MICROSYSTEMS</vendorname>
     <vendorid>0x0430</vendorid>
   </devicevendordef>
