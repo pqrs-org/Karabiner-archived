@@ -2,7 +2,7 @@
 
 version=$(cat version)
 
-packagemaker=/Developer/Applications/Utilities/PackageMaker.app/Contents/MacOS/PackageMaker
+packagemaker=/Applications/Utilities/PackageMaker.app/Contents/MacOS/PackageMaker
 pkgName="KeyRemap4MacBook.pkg"
 archiveName="KeyRemap4MacBook-${version}.pkg.zip"
 
@@ -84,9 +84,3 @@ echo "Make Archive"
 zip -X -r $archiveName $pkgName
 rm -rf $pkgName
 chmod 644 $archiveName
-unzip $archiveName
-
-# --------------------------------------------------
-echo "Cleanup"
-rm -rf pkgroot
-make -C src clean
