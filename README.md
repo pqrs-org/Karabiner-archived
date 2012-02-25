@@ -30,18 +30,16 @@ Requirements:
 Please install PackageMaker.app in /Applications/Utilities.
 (PackageMaker.app is included in Auxiliary Tools for Xcode.)
 
-### Step1
+### Step1: Getting source code
 
-Getting source code.
 Execute a following command in Terminal.app.
 
 <pre>
 git clone --depth 10 https://github.com/tekezo/KeyRemap4MacBook.git
 </pre>
 
-### Step2
+### Step2: Building a package
 
-Building a package.
 Execute a following command in Terminal.app.
 
 <pre>
