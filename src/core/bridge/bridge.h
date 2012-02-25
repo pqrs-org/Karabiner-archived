@@ -29,8 +29,9 @@ enum {
   // Version 21: Added ScrollWheel::*.
   // Version 22: Added KeyCode::VK_WAIT_*.
   // Version 23: Removed KeyCode::VK_WAIT_500MS
+  // Version 24: Added KeyCode::VK_CHANGE_INPUTMODE_*.
 
-  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 23,
+  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 24,
 };
 
 enum {

@@ -1949,6 +1949,9 @@
           <appendix>Use Q to VK_CHANGE_INPUTMODE_ESTONIAN</appendix>
           <appendix>Use W to VK_CHANGE_INPUTMODE_FINNISH</appendix>
           <appendix>Use E to VK_CHANGE_INPUTMODE_THAI</appendix>
+          <appendix>Use R to VK_CHANGE_INPUTSOURCE_DVORAK</appendix>
+          <appendix>Use T to VK_CHANGE_INPUTSOURCE_DVORAK_DEVANAGARI_PAUL</appendix>
+          <appendix>Use Y to VK_CHANGE_INPUTSOURCE_COLEMAK</appendix>
           <identifier>remap.samples_vk_change_inputmode</identifier>
           <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
           <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_CHANGE_INPUTMODE_FRENCH</autogen>
@@ -1963,6 +1966,9 @@
           <autogen>--KeyToKey-- KeyCode::Q,     KeyCode::VK_CHANGE_INPUTMODE_ESTONIAN</autogen>
           <autogen>--KeyToKey-- KeyCode::W,     KeyCode::VK_CHANGE_INPUTMODE_FINNISH</autogen>
           <autogen>--KeyToKey-- KeyCode::E,     KeyCode::VK_CHANGE_INPUTMODE_THAI</autogen>
+          <autogen>--KeyToKey-- KeyCode::R,     KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK</autogen>
+          <autogen>--KeyToKey-- KeyCode::T,     KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK_DEVANAGARI_PAUL</autogen>
+          <autogen>--KeyToKey-- KeyCode::Y,     KeyCode::VK_CHANGE_INPUTSOURCE_COLEMAK</autogen>
         </item>
         <item>
           <name>VK_CONFIG</name>

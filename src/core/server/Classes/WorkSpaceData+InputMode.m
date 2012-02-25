@@ -154,47 +154,119 @@ finish:
 }
 
 // ----------------------------------------------------------------------
-+ (void) selectInputSource:(unsigned int)vk_keycode
++ (TISInputSourceRef) copySelectableInputSourceForInputSourceID:(NSString*)inputSourceID
 {
-  NSString* language = nil;
-  ConfigXMLParser* parser = [ConfigXMLParser getInstance];
+  TISInputSourceRef inputsource = NULL;
+  CFDictionaryRef filter = NULL;
+  CFArrayRef list = NULL;
 
-  /*  */ if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_CANADIAN"]) {
-    language = kInputSourceLanguage_canadian;
-  } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_ENGLISH"]) {
-    language = @"en";
-  } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_FRENCH"]) {
-    language = @"fr";
-  } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_GERMAN"]) {
-    language = @"de";
-  } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_JAPANESE"]) {
-    language = @"ja";
-  } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_SWEDISH"]) {
-    language = @"sv";
-  } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN"]) {
-    language = kInputSourceLanguage_russian;
-  } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN_TYPOGRAPHIC"]) {
-    language = kInputSourceLanguage_russian_Typographic;
-  } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_ENGLISH_TYPOGRAPHIC"]) {
-    language = kInputSourceLanguage_english_Typographic;
-  } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY"]) {
-    language = kInputSourceLanguage_traditional_chinese_yahoo_keykey;
-  } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_ESTONIAN"]) {
-    language = @"et";
-  } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_FINNISH"]) {
-    language = @"fi";
-  } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_THAI"]) {
-    language = @"th";
+  if (! inputSourceID) goto finish;
+
+  // ------------------------------------------------------------
+  const void* keys[] = {
+    kTISPropertyInputSourceIsSelectCapable,
+  };
+  const void* values[] = {
+    kCFBooleanTrue,
+  };
+
+  filter = CFDictionaryCreate(NULL, keys, values, 1, NULL, NULL);
+  if (! filter) goto finish;
+
+  list = TISCreateInputSourceList(filter, false);
+  if (! list) goto finish;
+
+  for (int i = 0; i < CFArrayGetCount(list); ++i) {
+    TISInputSourceRef source = (TISInputSourceRef)(CFArrayGetValueAtIndex(list, i));
+    if (! source) continue;
+
+    if ([inputSourceID isEqualToString:TISGetInputSourceProperty(source, kTISPropertyInputSourceID)]) {
+      inputsource = source;
+      CFRetain(inputsource);
+      goto finish;
+    }
   }
 
-  if (! language) return;
+finish:
+  if (filter) {
+    CFRelease(filter);
+  }
+  if (list) {
+    CFRelease(list);
+  }
+  return inputsource;
+}
 
-  // ----------------------------------------
-  TISInputSourceRef inputsource = [self copySelectableInputSourceForLanguage:language];
-  if (! inputsource) return;
+// ----------------------------------------------------------------------
++ (void) selectInputSource:(unsigned int)vk_keycode
+{
+  ConfigXMLParser* parser = [ConfigXMLParser getInstance];
 
-  TISSelectInputSource(inputsource);
-  CFRelease(inputsource);
+  // ------------------------------------------------------------
+  // Select from Language
+  {
+    NSString* language = nil;
+
+    /*  */ if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_CANADIAN"]) {
+      language = kInputSourceLanguage_canadian;
+    } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_ENGLISH"]) {
+      language = @"en";
+    } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_FRENCH"]) {
+      language = @"fr";
+    } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_GERMAN"]) {
+      language = @"de";
+    } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_JAPANESE"]) {
+      language = @"ja";
+    } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_SWEDISH"]) {
+      language = @"sv";
+    } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN"]) {
+      language = kInputSourceLanguage_russian;
+    } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN_TYPOGRAPHIC"]) {
+      language = kInputSourceLanguage_russian_Typographic;
+    } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_ENGLISH_TYPOGRAPHIC"]) {
+      language = kInputSourceLanguage_english_Typographic;
+    } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY"]) {
+      language = kInputSourceLanguage_traditional_chinese_yahoo_keykey;
+    } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_ESTONIAN"]) {
+      language = @"et";
+    } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_FINNISH"]) {
+      language = @"fi";
+    } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTMODE_THAI"]) {
+      language = @"th";
+    }
+
+    if (language) {
+      TISInputSourceRef inputsource = [self copySelectableInputSourceForLanguage:language];
+      if (! inputsource) return;
+
+      TISSelectInputSource(inputsource);
+      CFRelease(inputsource);
+      return;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // Select from InputSourceID
+  {
+    NSString* inputSourceID = nil;
+
+    /*  */ if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK"]) {
+      inputSourceID = @"com.apple.keylayout.Dvorak";
+    } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK_DEVANAGARI_PAUL"]) {
+      inputSourceID = @"com.apple.keylayout.DvorakDevanagariPaul";
+    } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTSOURCE_COLEMAK"]) {
+      inputSourceID = @"com.apple.keylayout.Colemak";
+    }
+
+    if (inputSourceID) {
+      TISInputSourceRef inputsource = [self copySelectableInputSourceForInputSourceID:inputSourceID];
+      if (! inputsource) return;
+
+      TISSelectInputSource(inputsource);
+      CFRelease(inputsource);
+      return;
+    }
+  }
 }
 
 + (void) getInputMode:(NSString*)name output_inputmode:(unsigned int*)output_inputmode output_inputmodedetail:(unsigned int*)output_inputmodedetail
