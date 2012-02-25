@@ -268,7 +268,9 @@ finish:
     /*  */ if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK"]) {
       inputSourceID = @"com.apple.keylayout.Dvorak";
     } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK_DEVANAGARI_PAUL"]) {
-      inputSourceID = @"com.apple.keylayout.DvorakDevanagariPaul";
+      inputSourceID = @"org.unknown.keylayout.DvorakDevanagariPaul";
+    } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK_TRANSLIT_NEW"]) {
+      inputSourceID = @"org.unknown.keylayout.DvorakTranslitNew";
     } else if (vk_keycode == [parser keycode:@"KeyCode::VK_CHANGE_INPUTSOURCE_COLEMAK"]) {
       inputSourceID = @"com.apple.keylayout.Colemak";
     }

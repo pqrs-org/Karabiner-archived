@@ -23,6 +23,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         params.key == KeyCode::VK_CHANGE_INPUTMODE_THAI ||
         params.key == KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK ||
         params.key == KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK_DEVANAGARI_PAUL ||
+        params.key == KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK_TRANSLIT_NEW ||
         params.key == KeyCode::VK_CHANGE_INPUTSOURCE_COLEMAK) {
 
       if (params.ex_iskeydown && params.repeat == false) {
