@@ -63,8 +63,9 @@
            output_inputmodedetail:(&(bridgeworkspacedata_.inputmodedetail))];
       [self send_workspacedata_to_kext];
 
-      NSDictionary* userInfo = [NSDictionary dictionaryWithObject:name forKey:@"name"];
-
+      NSMutableDictionary* userInfo = [[NSMutableDictionary new] autorelease];
+      [userInfo setObject:[WorkSpaceData getTISPropertyInputSourceID] forKey:@"inputSourceID"];
+      [userInfo setObject:name forKey:@"inputModeID"];
       [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookInputSourceChangedNotification userInfo:userInfo];
     }
   }
