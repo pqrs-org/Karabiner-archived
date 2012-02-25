@@ -12,6 +12,7 @@
   [string appendFormat:@"version: %@\n", version_];
   [string appendFormat:@"applicationName: %@\n", applicationname_];
   [string appendFormat:@"inputsourceName: %@\n", inputsourcename_];
+  [string appendFormat:@"inputmodeName: %@\n", inputmodename_];
 
   [pboard clearContents];
   [pboard writeObjects:[NSArray arrayWithObject:string]];
@@ -44,6 +45,16 @@
 
   inputsourcename_ = name;
   [label_inputsourcename_ setStringValue:name];
+}
+
+- (void) setInputModeName:(NSString*)name
+{
+  if (! name) {
+    name = @"---";
+  }
+
+  inputmodename_ = name;
+  [label_inputmodename_ setStringValue:name];
 }
 
 @end

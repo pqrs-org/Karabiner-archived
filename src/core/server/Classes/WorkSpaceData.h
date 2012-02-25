@@ -11,6 +11,7 @@
 
 
 @interface WorkSpaceData (InputSource)
++ (NSString*) getTISPropertyInputSourceID;
 + (NSString*) getTISPropertyInputModeID;
 + (void) getInputMode:(NSString*)name output_inputmode:(unsigned int*)output_inputmode output_inputmodedetail:(unsigned int*)output_inputmodedetail;
 + (void) selectInputSource:(unsigned int)vk_keycode;

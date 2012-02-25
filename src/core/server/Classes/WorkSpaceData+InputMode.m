@@ -49,6 +49,21 @@ static NSString* kInputSourceLanguage_traditional_chinese_yahoo_keykey = @"zh-Ha
   return nil;
 }
 
++ (NSString*) getTISPropertyInputSourceID
+{
+  TISInputSourceRef ref = TISCopyCurrentKeyboardInputSource();
+  if (! ref) return nil;
+
+  NSString* retval = nil;
+  NSString* inputsourceid = TISGetInputSourceProperty(ref, kTISPropertyInputSourceID);
+  if (inputsourceid) {
+    retval = [NSString stringWithString:inputsourceid];
+  }
+
+  CFRelease(ref);
+  return retval;
+}
+
 + (NSString*) getTISPropertyInputModeID
 {
   TISInputSourceRef ref = TISCopyCurrentKeyboardInputSource();

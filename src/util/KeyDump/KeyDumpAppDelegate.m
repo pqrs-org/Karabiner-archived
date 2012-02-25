@@ -33,7 +33,8 @@
   // Therefore, we need to make own NSAutoreleasePool.
   NSAutoreleasePool* pool = [NSAutoreleasePool new];
   {
-    [otherinformationstore_ setInputSourceName:[[notification userInfo] objectForKey:@"name"]];
+    [otherinformationstore_ setInputSourceName:[[notification userInfo] objectForKey:@"inputSourceID"]];
+    [otherinformationstore_ setInputModeName:[[notification userInfo] objectForKey:@"inputModeID"]];
   }
   [pool drain];
 }
@@ -45,6 +46,7 @@
   [otherinformationstore_ setVersion];
   [otherinformationstore_ setApplicationName:nil];
   [otherinformationstore_ setInputSourceName:nil];
+  [otherinformationstore_ setInputModeName:nil];
 
   [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
                                                                 selector:@selector(distributedObserver_applicationChanged:)

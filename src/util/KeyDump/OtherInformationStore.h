@@ -8,16 +8,19 @@
   NSString* version_;
   NSString* applicationname_;
   NSString* inputsourcename_;
+  NSString* inputmodename_;
 
   IBOutlet id label_version_;
   IBOutlet id label_applicationname_;
   IBOutlet id label_inputsourcename_;
+  IBOutlet id label_inputmodename_;
   IBOutlet org_pqrs_KeyRemap4MacBook_Client* client_;
 }
 
 - (void) setVersion;
 - (void) setApplicationName:(NSString*)name;
 - (void) setInputSourceName:(NSString*)name;
+- (void) setInputModeName:(NSString*)name;
 
 - (IBAction) copy:(id)sender;
 
