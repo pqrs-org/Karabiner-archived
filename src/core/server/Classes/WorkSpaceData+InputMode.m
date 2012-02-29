@@ -452,6 +452,12 @@ finish:
     return;
   }
 
+  if ([name hasPrefix:@"org.pqrs.inputmode.bg."]) {
+    *output_inputmode       = [parser keycode:@"InputMode::BULGARIAN"];
+    *output_inputmodedetail = [parser keycode:@"InputModeDetail::BULGARIAN"];
+    return;
+  }
+
   if ([name isEqualToString:@"org.pqrs.inputmode.unknown.FrenchDvorak"]) {
     *output_inputmode       = [parser keycode:@"InputMode::BEPO"];
     *output_inputmodedetail = [parser keycode:@"InputModeDetail::BEPO"];
