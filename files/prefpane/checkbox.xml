@@ -4955,6 +4955,14 @@
           <identifier>remap.controlSpace2optionLEnter</identifier>
           <autogen>--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::ENTER, ModifierFlag::OPTION_L</autogen>
         </item>
+        <item>
+          <name>Non-Breaking Space to Normal Space</name>
+          <appendix>(Option+Space to Space)</appendix>
+          <appendix>(Option+Shift+Space to Space)</appendix>
+          <identifier>remap.option_space_to_space</identifier>
+          <autogen>--KeyToKey-- KeyCode::SPACE, VK_OPTION | ModifierFlag::NONE, KeyCode::SPACE</autogen>
+          <autogen>--KeyToKey-- KeyCode::SPACE, VK_OPTION | VK_SHIFT | ModifierFlag::NONE, KeyCode::SPACE</autogen>
+        </item>
       </list>
     </item>
 
