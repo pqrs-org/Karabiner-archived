@@ -5057,6 +5057,18 @@
           <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
         </item>
         <item>
+          <name>Change Command+Tab to Command+Tab+Option</name>
+          <appendix>(Bring app to foreground when you've switched app by Command+Tab.)</appendix>
+          <identifier>remap.command_tab_to_command_tab_option</identifier>
+          <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND,
+            KeyCode::TAB, VK_COMMAND,
+            KeyCode::VK_STICKY_OPTION_R_FORCE_ON, VK_COMMAND</autogen>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::COMMAND_L,
+            Option::KEYTOKEY_AFTER_KEYUP, KeyCode::VK_WAIT_100MS, KeyCode::VK_STICKY_OPTION_R_FORCE_OFF</autogen>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::COMMAND_R,
+            Option::KEYTOKEY_AFTER_KEYUP, KeyCode::VK_WAIT_100MS, KeyCode::VK_STICKY_OPTION_R_FORCE_OFF</autogen>
+        </item>
+        <item>
           <name>Swap Command+Tab and Option+Tab</name>
           <identifier>remap.swap_commandtaboptiontab</identifier>
           <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
