@@ -8835,6 +8835,13 @@
           <autogen>--KeyToKey-- KeyCode::F3, KeyCode::G, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
+          <name>Use PC Style Delete-Last-Word</name>
+          <name>(Control+Delete to Option+Delete)</name>
+          <identifier>remap.control_delete_to_option_delete_winstyle</identifier>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <autogen>--KeyToKey-- KeyCode::DELETE, VK_CONTROL, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
+        </item>
+        <item>
           <name>Use PC Style "Change Input Method" #1</name>
           <appendix>Flip between input modes</appendix>
           <appendix>(Option_L+Shift_L to Command+Space)</appendix>
