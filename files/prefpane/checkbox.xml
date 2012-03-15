@@ -9449,6 +9449,29 @@
             </item>
           </list>
         </item>
+
+        <item>
+          <name>For Sun Type6 keyboard</name>
+          <list>
+            <item>
+              <name>Exchange ^ and greater key on Sun Type6 keyboard </name>
+              <identifier>remap.sun.greaterkey</identifier>
+              <device_only>DeviceVendor::FUJITSU, DeviceProduct::SUN_TYPE_6_KEYBOARD</device_only>
+              <!-- The order is important -->
+              <autogen>--KeyToKey--
+                KeyCode::GERMAN_CIRCUMFLEX, ModifierFlag::OPTION_R | ModifierFlag::NONE,
+                KeyCode::KEY_7, ModifierFlag::OPTION_R
+              </autogen>
+              <autogen>--KeyToKey--
+                KeyCode::GERMAN_CIRCUMFLEX, ModifierFlag::OPTION_L | ModifierFlag::NONE,
+                KeyCode::KEY_7, ModifierFlag::OPTION_L
+              </autogen>
+
+              <autogen>--KeyToKey-- KeyCode::GERMAN_CIRCUMFLEX, KeyCode::GERMAN_LESS_THAN</autogen>
+              <autogen>--KeyToKey-- KeyCode::GERMAN_LESS_THAN, KeyCode::GERMAN_CIRCUMFLEX</autogen>
+            </item>
+          </list>
+        </item>
       </list>
     </item>
 
