@@ -1400,6 +1400,11 @@
           <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_R, KeyCode::CONTROL_R, KeyCode::VK_STICKY_CONTROL_R</autogen>
         </item>
         <item>
+          <name>Control_R to Enter</name>
+          <identifier>remap.controlR_to_enter</identifier>
+          <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::ENTER</autogen>
+        </item>
+        <item>
           <name>Control_R x2 to Enter</name>
           <identifier>remap.controlRx2_to_enter</identifier>
           <autogen>--DoublePressModifier-- KeyCode::CONTROL_R, KeyCode::CONTROL_R, KeyCode::ENTER</autogen>
