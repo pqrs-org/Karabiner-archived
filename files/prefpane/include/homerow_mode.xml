@@ -54,7 +54,7 @@
 
       <block>
         <config_only>option.homerow_mode_g_to_duplicate</config_only>
-        <autogen>--KeyToKey-- KeyCode::G, KeyCode::D, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+        <autogen>--KeyOverlaidModifier-- KeyCode::G, KeyCode::VK_LAZY_COMMAND_L, ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L, KeyCode::D, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
       </block>
 
       <block>
@@ -191,8 +191,8 @@
       <autogen>--KeyOverlaidModifier-- KeyCode::F, ModifierFlag::EXTRA1, KeyCode::VK_LAZY_COMMAND_L, ModifierFlag::EXTRA1, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
-      <name>[Option] G to Control+Shift+D</name>
-      <appendix>(Duplicate line in Texmate)</appendix>
+      <name>[Option] G to Command+Option+Control+Shift</name>
+      <appendix> + when you press G only send Control+Shift+D (Duplicate line in Texmate)</appendix>
       <identifier>option.homerow_mode_g_to_duplicate</identifier>
     </item>
     <item>
