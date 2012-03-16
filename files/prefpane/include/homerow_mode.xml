@@ -48,7 +48,6 @@
 
       <block>
         <config_only>option.homerow_mode_return</config_only>
-        <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::SHIFT_L, KeyCode::SEMICOLON, ModifierFlag::SHIFT_L</autogen>
         <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::RETURN</autogen>
       </block>
 
@@ -58,7 +57,6 @@
       </block>
 
       <block>
-        <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::SHIFT_L, KeyCode::SLASH, ModifierFlag::SHIFT_L</autogen>
         <autogen>--KeyToKey-- KeyCode::SLASH, KeyCode::SLASH, ModifierFlag::COMMAND_L</autogen>
         <config_only>option.homerow_mode_slash_to_command_slash</config_only>
       </block>
@@ -113,13 +111,11 @@
       </block>
 
       <block>
-        <autogen>--KeyToKey-- KeyCode::BACKSLASH, ModifierFlag::SHIFT_L, KeyCode::BACKSLASH, ModifierFlag::SHIFT_L</autogen>
         <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::BACKSLASH, ModifierFlag::COMMAND_L</autogen>
         <config_only>option.homerow_mode_backslash</config_only>
       </block>
 
       <block>
-        <autogen>--KeyToKey-- KeyCode::QUOTE, ModifierFlag::SHIFT_L, KeyCode::QUOTE, ModifierFlag::SHIFT_L</autogen>
         <autogen>--KeyToKey-- KeyCode::QUOTE, KeyCode::ESCAPE</autogen>
         <config_only>option.homerow_mode_quote_to_escape</config_only>
       </block>
