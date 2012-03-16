@@ -48,17 +48,15 @@
 
       <block>
         <config_only>option.homerow_mode_return</config_only>
-        <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::SHIFT_L, KeyCode::SEMICOLON, ModifierFlag::SHIFT_L</autogen>
         <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::RETURN</autogen>
       </block>
 
       <block>
         <config_only>option.homerow_mode_g_to_duplicate</config_only>
-        <autogen>--KeyToKey-- KeyCode::G, KeyCode::D, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+        <autogen>--KeyOverlaidModifier-- KeyCode::G, KeyCode::VK_LAZY_COMMAND_L, ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L, KeyCode::D, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
       </block>
 
       <block>
-        <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::SHIFT_L, KeyCode::SLASH, ModifierFlag::SHIFT_L</autogen>
         <autogen>--KeyToKey-- KeyCode::SLASH, KeyCode::SLASH, ModifierFlag::COMMAND_L</autogen>
         <config_only>option.homerow_mode_slash_to_command_slash</config_only>
       </block>
@@ -113,13 +111,11 @@
       </block>
 
       <block>
-        <autogen>--KeyToKey-- KeyCode::BACKSLASH, ModifierFlag::SHIFT_L, KeyCode::BACKSLASH, ModifierFlag::SHIFT_L</autogen>
         <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::BACKSLASH, ModifierFlag::COMMAND_L</autogen>
         <config_only>option.homerow_mode_backslash</config_only>
       </block>
 
       <block>
-        <autogen>--KeyToKey-- KeyCode::QUOTE, ModifierFlag::SHIFT_L, KeyCode::QUOTE, ModifierFlag::SHIFT_L</autogen>
         <autogen>--KeyToKey-- KeyCode::QUOTE, KeyCode::ESCAPE</autogen>
         <config_only>option.homerow_mode_quote_to_escape</config_only>
       </block>
@@ -191,8 +187,8 @@
       <autogen>--KeyOverlaidModifier-- KeyCode::F, ModifierFlag::EXTRA1, KeyCode::VK_LAZY_COMMAND_L, ModifierFlag::EXTRA1, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
-      <name>[Option] G to Control+Shift+D</name>
-      <appendix>(Duplicate line in Texmate)</appendix>
+      <name>[Option] G to Command+Option+Control+Shift</name>
+      <appendix> + when you press G only send Control+Shift+D (Duplicate line in Texmate)</appendix>
       <identifier>option.homerow_mode_g_to_duplicate</identifier>
     </item>
     <item>
