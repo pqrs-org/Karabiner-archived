@@ -12,7 +12,7 @@
           <name>Ubiquitous Vim Bindings for Normal Mode:</name>
 
           <identifier vk_config="true">notsave.ubiq_vimnormal</identifier>
-          <not>#{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
           <autogen>--ShowStatusMessage-- Normal Mode</autogen>
 
           <appendix>To enable these settings enable a binding or set of bindings to enter Normal Mode below.</appendix>
@@ -153,24 +153,24 @@
             <!-- hjkl -->
             <block>
               <config_not>notsave.c_w_operator_pending</config_not>
-              <autogen>--KeyToKey-- #{VI_H}, ModifierFlag::NONE, KeyCode::CURSOR_LEFT</autogen>
-              <autogen>--KeyToKey-- #{VI_J}, ModifierFlag::NONE, KeyCode::CURSOR_DOWN</autogen>
-              <autogen>--KeyToKey-- #{VI_K}, ModifierFlag::NONE, KeyCode::CURSOR_UP</autogen>
-              <autogen>--KeyToKey-- #{VI_L}, ModifierFlag::NONE, KeyCode::CURSOR_RIGHT</autogen>
+              <autogen>--KeyToKey-- {{VI_H}}, ModifierFlag::NONE, KeyCode::CURSOR_LEFT</autogen>
+              <autogen>--KeyToKey-- {{VI_J}}, ModifierFlag::NONE, KeyCode::CURSOR_DOWN</autogen>
+              <autogen>--KeyToKey-- {{VI_K}}, ModifierFlag::NONE, KeyCode::CURSOR_UP</autogen>
+              <autogen>--KeyToKey-- {{VI_L}}, ModifierFlag::NONE, KeyCode::CURSOR_RIGHT</autogen>
             </block>
 
             <!-- DELETE -->
             <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::NONE, KeyCode::CURSOR_LEFT</autogen>
 
             <!-- FN + hjkl -->
-            <autogen>--KeyToKey-- #{VI_H}, ModifierFlag::FN, KeyCode::HOME, ModifierFlag::OPTION_L</autogen>
-            <autogen>--KeyToKey-- #{VI_J}, ModifierFlag::FN, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
-            <autogen>--KeyToKey-- #{VI_K}, ModifierFlag::FN, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
-            <autogen>--KeyToKey-- #{VI_L}, ModifierFlag::FN, KeyCode::END, ModifierFlag::OPTION_L</autogen>
+            <autogen>--KeyToKey-- {{VI_H}}, ModifierFlag::FN, KeyCode::HOME, ModifierFlag::OPTION_L</autogen>
+            <autogen>--KeyToKey-- {{VI_J}}, ModifierFlag::FN, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
+            <autogen>--KeyToKey-- {{VI_K}}, ModifierFlag::FN, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
+            <autogen>--KeyToKey-- {{VI_L}}, ModifierFlag::FN, KeyCode::END, ModifierFlag::OPTION_L</autogen>
 
             <!-- H, M, L --> <!-- TODO: H and L are questionable. May be no good way to implement. -->
-            <autogen>--KeyToKey-- #{VI_H}, VK_SHIFT, KeyCode::PAGEDOWN, ModifierFlag::NONE, KeyCode::CURSOR_DOWN, KeyCode::CURSOR_UP</autogen>
-            <autogen>--KeyToKey-- #{VI_L}, VK_SHIFT, KeyCode::PAGEUP, ModifierFlag::NONE, KeyCode::CURSOR_UP, KeyCode::CURSOR_DOWN</autogen>
+            <autogen>--KeyToKey-- {{VI_H}}, VK_SHIFT, KeyCode::PAGEDOWN, ModifierFlag::NONE, KeyCode::CURSOR_DOWN, KeyCode::CURSOR_UP</autogen>
+            <autogen>--KeyToKey-- {{VI_L}}, VK_SHIFT, KeyCode::PAGEUP, ModifierFlag::NONE, KeyCode::CURSOR_UP, KeyCode::CURSOR_DOWN</autogen>
             <autogen>--KeyToKey-- KeyCode::M, VK_SHIFT, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
 
             <!-- C-f, C-b -->
@@ -392,7 +392,7 @@
           <block>
             <config_not>notsave.ubiq_vimnormal</config_not>
             <config_only>option.ubiq_vimnormal_insert</config_only>
-            <not>#{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}</not>
+            <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
 
             <!-- Ctrl-w -->
             <autogen>--KeyToKey-- KeyCode::W, VK_CONTROL, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L, KeyCode::DELETE</autogen>
@@ -429,19 +429,19 @@
           <block>
             <config_only>notsave.ubiq_vimnormal</config_only>
             <config_not>option.vimnormal_escape_enters_only</config_not>
-            <not>#{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}</not>
+            <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
             <autogen>--HoldingKeyToKey-- KeyCode::ESCAPE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending, KeyCode::VK_NONE, KeyCode::ESCAPE</autogen>
           </block>
           <!-- Normal Mode on in mode-allowing context: Esc remains in Normal Mode, holding Esc sends raw Esc. -->
           <block>
             <config_only>notsave.ubiq_vimnormal, option.vimnormal_escape_enters_only</config_only>
-            <not>#{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}</not>
+            <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
             <autogen>--HoldingKeyToKey-- KeyCode::ESCAPE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_ON_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending, KeyCode::VK_NONE, KeyCode::ESCAPE</autogen>
           </block>
           <!-- Normal Mode off in mode-allowing context: Esc enters Normal Mode, holding Esc sends raw Esc. -->
           <block>
             <config_not>notsave.ubiq_vimnormal</config_not>
-            <not>#{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}</not>
+            <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
             <autogen>--HoldingKeyToKey-- KeyCode::ESCAPE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_ON_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending, KeyCode::VK_NONE, KeyCode::ESCAPE</autogen>
           </block>
           <!-- Normal Mode on in mode-prohibiting context: Esc sends raw Esc and exits Normal Mode. -->
@@ -460,21 +460,21 @@
         <item>
           <name>Ctrl-[ toggles Normal Mode</name>
           <identifier>remap.vimnormal_ctrlbracketleft_toggle</identifier>
-          <not>#{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
           <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
         </item>
 
         <item>
           <name>Command_R tap toggles Normal Mode</name>
           <identifier>remap.vimnormal_commandr_toggle</identifier>
-          <not>#{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
           <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
         </item>
 
         <item>
           <name>Command_L tap toggles Normal Mode</name>
           <identifier>remap.vimnormal_commandl_toggle</identifier>
-          <not>#{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
           <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
         </item>
 
@@ -489,7 +489,7 @@
         <item>
           <name>Simultaneous Key Presses [Command_L+Command_R] toggles Normal Mode</name>
           <identifier>remap.vimnormal_toggle_commandLR</identifier>
-          <not>#{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
           <autogen>--SimultaneousKeyPresses-- KeyCode::COMMAND_R, KeyCode::COMMAND_L, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
         </item>
         <item>
@@ -497,7 +497,7 @@
           <appendix>Disable Up-Arrow</appendix>
           <appendix>(+ When you type Arrow only, toggles Normal Mode)</appendix>
           <identifier>remap.vimnormal_toggle_arrow2optionL</identifier>
-          <not>#{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
           <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_UP, KeyCode::VK_NONE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
           <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_DOWN, KeyCode::OPTION_L, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
           <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_LEFT, KeyCode::OPTION_L, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
@@ -506,35 +506,35 @@
         <item>
           <name>Backquote(`) toggles Normal Mode (if no modifiers pressed)</name>
           <identifier>option.vimnormal_turnoff_backquote</identifier>
-          <not>#{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
           <autogen>--KeyToKey-- KeyCode::BACKQUOTE, ModifierFlag::NONE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
         </item>
         <item>
           <name>Command_L to Command_L</name>
           <appendix>(+ When you type Command_L only, toggles Normal Mode)</appendix>
           <identifier>remap.vimnormal_toggle_commandL</identifier>
-          <not>#{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
           <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
         </item>
         <item>
           <name>Command_R to Command_R</name>
           <appendix>(+ When you type Command_R only, toggles Normal Mode)</appendix>
           <identifier>remap.vimnormal_toggle_commandR</identifier>
-          <not>#{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
           <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
         </item>
         <item>
           <name>Control_R to Control_R</name>
           <appendix>(+ When you type Control_R only, toggles Normal Mode)</appendix>
           <identifier>remap.vimnormal_toggle_controlR</identifier>
-          <not>#{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
           <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_R, KeyCode::CONTROL_R, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
         </item>
         <item>
           <name>Escape to turn on Normal Mode</name>
           <appendix>(except in Vim)</appendix>
           <identifier>remap.vimnormal_turnon_escape</identifier>
-          <not>#{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
           <config_not>notsave.ubiq_vimnormal</config_not>
           <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_ON_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
         </item>
@@ -542,7 +542,7 @@
           <name>Escape to turn off Normal Mode</name>
           <appendix>(+ turn off Modifier Lock)</appendix>
           <identifier>option.vimnormal_turnoff_escape</identifier>
-          <not>#{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
           <config_only>notsave.ubiq_vimnormal</config_only>
           <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
         </item>
@@ -550,33 +550,33 @@
           <name>Return to Command_L+Control_L</name>
           <appendix>(+ When you type Return only, toggles Normal Mode)</appendix>
           <identifier>remap.vimnormal_toggle_return</identifier>
-          <not>#{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
           <autogen>--KeyOverlaidModifier-- KeyCode::RETURN, KeyCode::CONTROL_L, ModifierFlag::COMMAND_L, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
         </item>
         <item>
           <name>Fn to Fn</name>
           <appendix>(+ When you type Fn only, toggles Normal Mode)</appendix>
           <identifier>remap.vimnormal_toggle_fn2fn</identifier>
-          <not>#{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
           <autogen>--KeyOverlaidModifier-- KeyCode::FN, KeyCode::FN, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
         </item>
         <item>
           <name>Option+V toggles Normal Mode</name>
           <identifier>option.vimnormal_toggle_optionV</identifier>
-          <not>#{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
           <autogen>--KeyToKey-- KeyCode::V, VK_OPTION, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
         </item>
         <item>
           <name>Option+V to turn on Normal Mode</name>
           <identifier>option.vimnormal_turnon_optionV</identifier>
-          <not>#{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
           <autogen>--KeyToKey-- KeyCode::V, VK_OPTION, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_ON_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
         </item>
         <item>
           <name>Disable Shift_L</name>
           <appendix>(+ When you type Shift_L only, toggles Normal Mode)</appendix>
           <identifier>remap.vimnormal_toggle_drop_shiftL</identifier>
-          <not>#{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
           <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::VK_NONE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal, KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending, KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending</autogen>
         </item>
       </list>
