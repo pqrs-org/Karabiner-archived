@@ -32,7 +32,7 @@
     NSString* stringValue = [self trim:[e stringValue]];
 
     if ([name isEqualToString:@"replacementname"]) {
-      newdata.name = [NSString stringWithFormat:@"#{%@}", stringValue];
+      newdata.name = [NSString stringWithFormat:@"{{%@}}", stringValue];
     } else if ([name isEqualToString:@"replacementvalue"]) {
       newdata.value = stringValue;
     }
