@@ -8,10 +8,10 @@
       <appendix>- HJKL to Left/Down/Up/Right</appendix>
       <identifier vk_config="true">notsave.simultaneouskeypresses_vimode</identifier>
       <autogen>--ShowStatusMessage-- Vi Mode</autogen>
-      <autogen>--KeyToKey-- #{VI_H}, KeyCode::CURSOR_LEFT</autogen>
-      <autogen>--KeyToKey-- #{VI_J}, KeyCode::CURSOR_DOWN</autogen>
-      <autogen>--KeyToKey-- #{VI_K}, KeyCode::CURSOR_UP</autogen>
-      <autogen>--KeyToKey-- #{VI_L}, KeyCode::CURSOR_RIGHT</autogen>
+      <autogen>--KeyToKey-- {{VI_H}}, KeyCode::CURSOR_LEFT</autogen>
+      <autogen>--KeyToKey-- {{VI_J}}, KeyCode::CURSOR_DOWN</autogen>
+      <autogen>--KeyToKey-- {{VI_K}}, KeyCode::CURSOR_UP</autogen>
+      <autogen>--KeyToKey-- {{VI_L}}, KeyCode::CURSOR_RIGHT</autogen>
       <block>
         <config_only>option.pointing_relative_to_scroll_vi_mode</config_only>
         <autogen>--PointingRelativeToScroll-- PointingButton::NONE</autogen>

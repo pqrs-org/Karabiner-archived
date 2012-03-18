@@ -6100,19 +6100,19 @@
               <identifier vk_config="true">notsave.mousekeys_mode</identifier>
               <autogen>--ShowStatusMessage-- Mouse Keys</autogen>
               <!-- scroll wheel mode -->
-              <autogen>--KeyToKey-- #{VI_H},               ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_LEFT,  ModifierFlag::FN</autogen>
-              <autogen>--KeyToKey-- #{VI_J},               ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_DOWN,  ModifierFlag::FN</autogen>
-              <autogen>--KeyToKey-- #{VI_K},               ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_UP,    ModifierFlag::FN</autogen>
-              <autogen>--KeyToKey-- #{VI_L},               ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_RIGHT, ModifierFlag::FN</autogen>
+              <autogen>--KeyToKey-- {{VI_H}},               ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_LEFT,  ModifierFlag::FN</autogen>
+              <autogen>--KeyToKey-- {{VI_J}},               ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_DOWN,  ModifierFlag::FN</autogen>
+              <autogen>--KeyToKey-- {{VI_K}},               ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_UP,    ModifierFlag::FN</autogen>
+              <autogen>--KeyToKey-- {{VI_L}},               ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_RIGHT, ModifierFlag::FN</autogen>
               <autogen>--KeyToKey-- KeyCode::CURSOR_UP,    ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_UP,    ModifierFlag::FN</autogen>
               <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN,  ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_DOWN,  ModifierFlag::FN</autogen>
               <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT,  ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_LEFT,  ModifierFlag::FN</autogen>
               <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_RIGHT, ModifierFlag::FN</autogen>
               <!-- normal mode -->
-              <autogen>--KeyToKey-- #{VI_H},    KeyCode::VK_MOUSEKEY_LEFT</autogen>
-              <autogen>--KeyToKey-- #{VI_J},    KeyCode::VK_MOUSEKEY_DOWN</autogen>
-              <autogen>--KeyToKey-- #{VI_K},    KeyCode::VK_MOUSEKEY_UP</autogen>
-              <autogen>--KeyToKey-- #{VI_L},    KeyCode::VK_MOUSEKEY_RIGHT</autogen>
+              <autogen>--KeyToKey-- {{VI_H}},    KeyCode::VK_MOUSEKEY_LEFT</autogen>
+              <autogen>--KeyToKey-- {{VI_J}},    KeyCode::VK_MOUSEKEY_DOWN</autogen>
+              <autogen>--KeyToKey-- {{VI_K}},    KeyCode::VK_MOUSEKEY_UP</autogen>
+              <autogen>--KeyToKey-- {{VI_L}},    KeyCode::VK_MOUSEKEY_RIGHT</autogen>
               <autogen>--KeyToKey-- KeyCode::CURSOR_UP,    KeyCode::VK_MOUSEKEY_UP</autogen>
               <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN,  KeyCode::VK_MOUSEKEY_DOWN</autogen>
               <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT,  KeyCode::VK_MOUSEKEY_LEFT</autogen>
