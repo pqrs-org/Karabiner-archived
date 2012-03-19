@@ -1,0 +1,225 @@
+<item>
+  <name>Nicola on Kinesis (Romaji)</name>
+  <list>
+    <item>
+      <name>Enable Nicola on Kinesis (Romaji)</name>
+      <identifier>remap.jis_enable_nicola_on_kinesis_romaji</identifier>
+      <inputmode_only>JAPANESE</inputmode_only>
+
+      <autogen>--SimultaneousKeyPresses-- KeyCode::BACKSLASH, KeyCode::DELETE, KeyCode::VK_NONE</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::BACKSLASH, KeyCode::SPACE, KeyCode::VK_NONE</autogen>
+
+      <autogen>--SimultaneousKeyPresses-- KeyCode::BACKQUOTE, KeyCode::DELETE, KeyCode::VK_NONE</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::BACKQUOTE, KeyCode::SPACE, KeyCode::VK_NONE</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::NONE, KeyCode::U</autogen>
+      <autogen>--KeyToKey-- KeyCode::A, VK_SHIFT, KeyCode::U</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::A, KeyCode::DELETE, KeyCode::W, KeyCode::O</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::A, KeyCode::SPACE, KeyCode::V, KeyCode::U</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::S, KeyCode::I</autogen>
+      <autogen>--KeyToKey-- KeyCode::S, VK_SHIFT, KeyCode::S, KeyCode::I</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::DELETE, KeyCode::A</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::SPACE, KeyCode::J, KeyCode::I</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::NONE, KeyCode::T, KeyCode::E</autogen>
+      <autogen>--KeyToKey-- KeyCode::D, VK_SHIFT, KeyCode::T, KeyCode::E</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::DELETE, KeyCode::N, KeyCode::A</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::SPACE, KeyCode::D, KeyCode::E</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::NONE, KeyCode::K, KeyCode::E</autogen>
+      <autogen>--KeyToKey-- KeyCode::F, VK_SHIFT, KeyCode::K, KeyCode::E</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::DELETE, KeyCode::X, KeyCode::Y, KeyCode::U</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::SPACE, KeyCode::G, KeyCode::E</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::NONE, KeyCode::H, KeyCode::A</autogen>
+      <autogen>--KeyToKey-- KeyCode::H, VK_SHIFT, KeyCode::P, KeyCode::A</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::H, KeyCode::DELETE, KeyCode::B, KeyCode::A</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::H, KeyCode::SPACE, KeyCode::M, KeyCode::I</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::NONE, KeyCode::S, KeyCode::E</autogen>
+      <autogen>--KeyToKey-- KeyCode::G, VK_SHIFT, KeyCode::S, KeyCode::E</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::G, KeyCode::DELETE, KeyCode::M, KeyCode::O</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::G, KeyCode::SPACE, KeyCode::Z, KeyCode::E</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::NONE, KeyCode::DOT, ModifierFlag::OPTION_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::Z, VK_SHIFT, KeyCode::DOT, ModifierFlag::OPTION_L</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::Z, KeyCode::DELETE, KeyCode::X, KeyCode::U</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::Z, KeyCode::SPACE, KeyCode::VK_NONE</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::NONE, KeyCode::H, KeyCode::I</autogen>
+      <autogen>--KeyToKey-- KeyCode::X, VK_SHIFT, KeyCode::P, KeyCode::I</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::X, KeyCode::DELETE, KeyCode::MINUS</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::X, KeyCode::SPACE, KeyCode::B, KeyCode::I</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::NONE, KeyCode::S, KeyCode::U</autogen>
+      <autogen>--KeyToKey-- KeyCode::C, VK_SHIFT, KeyCode::S, KeyCode::U</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::C, KeyCode::DELETE, KeyCode::R, KeyCode::O</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::C, KeyCode::SPACE, KeyCode::Z, KeyCode::U</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::NONE, KeyCode::H, KeyCode::U</autogen>
+      <autogen>--KeyToKey-- KeyCode::V, VK_SHIFT, KeyCode::P, KeyCode::U</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::V, KeyCode::DELETE, KeyCode::Y, KeyCode::A</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::V, KeyCode::SPACE, KeyCode::B, KeyCode::U</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::NONE, KeyCode::H, KeyCode::E</autogen>
+      <autogen>--KeyToKey-- KeyCode::B, VK_SHIFT, KeyCode::P, KeyCode::E</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::B, KeyCode::DELETE, KeyCode::X, KeyCode::I</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::B, KeyCode::SPACE, KeyCode::B, KeyCode::E</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::NONE, KeyCode::DOT</autogen>
+      <autogen>--KeyToKey-- KeyCode::Q, VK_SHIFT, KeyCode::DOT</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::Q, KeyCode::DELETE, KeyCode::X, KeyCode::A</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::Q, KeyCode::SPACE, KeyCode::VK_NONE</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::NONE, KeyCode::K, KeyCode::A</autogen>
+      <autogen>--KeyToKey-- KeyCode::W, VK_SHIFT, KeyCode::K, KeyCode::A</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::DELETE, KeyCode::E</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::SPACE, KeyCode::G, KeyCode::A</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::NONE, KeyCode::T, KeyCode::A</autogen>
+      <autogen>--KeyToKey-- KeyCode::E, VK_SHIFT, KeyCode::T, KeyCode::A</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::DELETE, KeyCode::R, KeyCode::I</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::SPACE, KeyCode::D, KeyCode::A</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::NONE, KeyCode::K, KeyCode::O</autogen>
+      <autogen>--KeyToKey-- KeyCode::R, VK_SHIFT, KeyCode::K, KeyCode::O</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::R, KeyCode::DELETE, KeyCode::X, KeyCode::Y, KeyCode::A</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::R, KeyCode::SPACE, KeyCode::G, KeyCode::O</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::Y, ModifierFlag::NONE, KeyCode::R, KeyCode::A</autogen>
+      <autogen>--KeyToKey-- KeyCode::Y, VK_SHIFT, KeyCode::R, KeyCode::A</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::Y, KeyCode::DELETE, KeyCode::P, KeyCode::A</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::Y, KeyCode::SPACE, KeyCode::Y, KeyCode::O</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::T, ModifierFlag::NONE, KeyCode::S, KeyCode::A</autogen>
+      <autogen>--KeyToKey-- KeyCode::T, VK_SHIFT, KeyCode::S, KeyCode::A</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::T, KeyCode::DELETE, KeyCode::R, KeyCode::E</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::T, KeyCode::SPACE, KeyCode::Z, KeyCode::A</autogen>
+
+      <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_1, KeyCode::DELETE, KeyCode::SLASH, VK_SHIFT</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_1, KeyCode::SPACE, KeyCode:: SLASH, VK_SHIFT</autogen>
+
+      <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_2, KeyCode::DELETE, KeyCode::SLASH</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_2, KeyCode::SPACE, KeyCode::SLASH</autogen>
+
+      <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_3, KeyCode::DELETE, KeyCode::BACKQUOTE, VK_SHIFT</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_3, KeyCode::SPACE, KeyCode::BACKQUOTE, VK_SHIFT</autogen>
+
+      <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_4, KeyCode::DELETE, KeyCode::BRACKET_LEFT</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_4, KeyCode::SPACE, KeyCode::BRACKET_LEFT</autogen>
+
+      <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_6, KeyCode::DELETE, KeyCode::BRACKET_LEFT, ModifierFlag::OPTION_L</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_6, KeyCode::SPACE, KeyCode::BRACKET_LEFT, ModifierFlag::OPTION_L</autogen>
+
+      <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_5, KeyCode::DELETE, KeyCode::BRACKET_RIGHT</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_5, KeyCode::SPACE, KeyCode::BRACKET_RIGHT</autogen>
+
+      <autogen>--SimultaneousKeyPresses-- KeyCode::EQUAL, KeyCode::DELETE, KeyCode::VK_NONE</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::EQUAL, KeyCode::SPACE, KeyCode::VK_NONE</autogen>
+
+      <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_9, KeyCode::DELETE, KeyCode::KEY_0, VK_SHIFT</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_9, KeyCode::SPACE, KeyCode::KEY_0, VK_SHIFT</autogen>
+
+      <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_7, KeyCode::DELETE, KeyCode::BRACKET_RIGHT, ModifierFlag::OPTION_L</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_7, KeyCode::SPACE, KeyCode::BRACKET_RIGHT, ModifierFlag::OPTION_L</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::MINUS, ModifierFlag::NONE, KeyCode::MINUS, ModifierFlag::OPTION_L</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::MINUS, KeyCode::DELETE, KeyCode::VK_NONE</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::MINUS, KeyCode::SPACE, KeyCode::VK_NONE</autogen>
+
+      <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_8, KeyCode::DELETE, KeyCode::KEY_9, VK_SHIFT</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_8, KeyCode::SPACE, KeyCode::KEY_9, VK_SHIFT</autogen>
+
+      <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_0, KeyCode::DELETE, KeyCode::COMMA</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_0, KeyCode::SPACE, KeyCode::COMMA</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::NONE, KeyCode::T, KeyCode::U</autogen>
+      <autogen>--KeyToKey-- KeyCode::O, VK_SHIFT, KeyCode::T, KeyCode::U</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::DELETE, KeyCode::D, KeyCode::U</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::SPACE, KeyCode::M, KeyCode::A</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::NONE, KeyCode::T, KeyCode::I</autogen>
+      <autogen>--KeyToKey-- KeyCode::U, VK_SHIFT, KeyCode::T, KeyCode::I</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::U, KeyCode::DELETE, KeyCode::D, KeyCode::I</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::U, KeyCode::SPACE, KeyCode::N, KeyCode::I</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::NONE, KeyCode::K, KeyCode::U</autogen>
+      <autogen>--KeyToKey-- KeyCode::I, VK_SHIFT, KeyCode::K, KeyCode::U</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::DELETE, KeyCode::G, KeyCode::U</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::SPACE, KeyCode::R, KeyCode::U</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::NONE, KeyCode::COMMA, ModifierFlag::OPTION_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::P, VK_SHIFT, KeyCode::COMMA, ModifierFlag::OPTION_L</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::P, KeyCode::DELETE, KeyCode::P, KeyCode::I</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::P, KeyCode::SPACE, KeyCode::X, KeyCode::E</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::NONE, KeyCode::I</autogen>
+      <autogen>--KeyToKey-- KeyCode::L, VK_SHIFT, KeyCode::I</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::DELETE, KeyCode::P, KeyCode::O</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::SPACE, KeyCode::X, KeyCode::Y, KeyCode::O</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::NONE, KeyCode::T, KeyCode::O</autogen>
+      <autogen>--KeyToKey-- KeyCode::J, VK_SHIFT, KeyCode::T, KeyCode::O</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::DELETE, KeyCode::D, KeyCode::O</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::SPACE, KeyCode::O</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::NONE, KeyCode::K, KeyCode::I</autogen>
+      <autogen>--KeyToKey-- KeyCode::K, VK_SHIFT, KeyCode::K, KeyCode::I</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::DELETE, KeyCode::G, KeyCode::I</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::SPACE, KeyCode::N, KeyCode::O</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::NONE, KeyCode::SLASH, ModifierFlag::OPTION_L</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::SLASH, KeyCode::DELETE, KeyCode::SLASH</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::SLASH, KeyCode::SPACE, KeyCode::X, KeyCode::O</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::NONE, KeyCode::M, KeyCode::E</autogen>
+      <autogen>--KeyToKey-- KeyCode::N, VK_SHIFT, KeyCode::M, KeyCode::E</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::N, KeyCode::DELETE, KeyCode::P, KeyCode::U</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::N, KeyCode::SPACE, KeyCode::N, KeyCode::U</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::NONE, KeyCode::S, KeyCode::O</autogen>
+      <autogen>--KeyToKey-- KeyCode::M, VK_SHIFT, KeyCode::S, KeyCode::O</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::M, KeyCode::DELETE, KeyCode::Z, KeyCode::O</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::M, KeyCode::SPACE, KeyCode::Y, KeyCode::U</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::NONE, KeyCode::H, KeyCode::O</autogen>
+      <autogen>--KeyToKey-- KeyCode::DOT, VK_SHIFT, KeyCode::P, KeyCode::O</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::DOT, KeyCode::DELETE, KeyCode::B, KeyCode::O</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::DOT, KeyCode::SPACE, KeyCode::W, KeyCode::A</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::N, KeyCode::N</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, KeyCode::DELETE, KeyCode::SEMICOLON </autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, KeyCode::SPACE, KeyCode::X, KeyCode::T, KeyCode::U</autogen>
+
+      <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::NONE, KeyCode::N, KeyCode::E</autogen>
+      <autogen>--KeyToKey-- KeyCode::COMMA, VK_SHIFT, KeyCode::N, KeyCode::E</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::COMMA, KeyCode::DELETE, KeyCode::P, KeyCode::E</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::COMMA, KeyCode::SPACE, KeyCode::M, KeyCode::U</autogen>
+
+      <autogen>--SimultaneousKeyPresses-- KeyCode::BRACKET_LEFT, KeyCode::DELETE, KeyCode::VK_NONE</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::BRACKET_LEFT, KeyCode::SPACE, KeyCode::VK_NONE</autogen>
+
+      <autogen>--SimultaneousKeyPresses-- KeyCode::BRACKET_RIGHT, KeyCode::DELETE, KeyCode::VK_NONE</autogen>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::BRACKET_RIGHT, KeyCode::SPACE, KeyCode::VK_NONE</autogen>
+    </item>
+    <item>
+      <name>Disable Backs Space</name>
+      <identifier>option.jis_nicola_on_kinesis_disable_back_space</identifier>
+      <inputmode_only>JAPANESE</inputmode_only>
+      <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+    </item>
+    <item>
+      <name>Quote to Back Space</name>
+      <identifier>option.jis_nicola_on_kinesis_quote_to_back_space</identifier>
+      <inputmode_only>JAPANESE</inputmode_only>
+      <autogen>--KeyToKey-- KeyCode::QUOTE, ModifierFlag::NONE, KeyCode::DELETE</autogen>
+    </item>
+    <item>
+      <name>Backslash to ESC</name>
+      <identifier>option.jis_nicola_on_kinesis_backslash_to_esc</identifier>
+      <inputmode_only>JAPANESE</inputmode_only>
+      <autogen>--KeyToKey-- KeyCode::BACKSLASH, ModifierFlag::NONE, KeyCode::ESCAPE</autogen>
+    </item>
+  </list>
+</item>
