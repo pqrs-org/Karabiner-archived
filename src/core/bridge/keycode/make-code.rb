@@ -29,7 +29,12 @@ Dir.glob("*.data") do |filename|
           lastvalue = value
 
           outfile[:hpp] << "static const #{classname} #{name};\n"
-          alldata << { :name => "#{classname}::#{name}", :value => value, :classname => classname }
+          alldata << {
+            :name      => "#{classname}::#{name}",
+            :value     => value,
+            :classname => classname,
+            :nameonly  => name,
+          }
         else
           unless l.strip.empty? then
             outfile[:hpp] << "ERROR #{l}\n"
@@ -39,7 +44,12 @@ Dir.glob("*.data") do |filename|
     end
 
     outfile[:hpp] << "static const #{classname} VK__AUTOINDEX__BEGIN__;\n"
-    alldata << { :name => "#{classname}::VK__AUTOINDEX__BEGIN__", :value => lastvalue.succ, :classname => classname }
+    alldata << {
+      :name      => "#{classname}::VK__AUTOINDEX__BEGIN__",
+      :value     => lastvalue.succ,
+      :classname => classname,
+      :nameonly  => "VK__AUTOINDEX__BEGIN__",
+    }
 
     outfile.each do |name,file|
       file.close
@@ -96,7 +106,7 @@ open(filepath, 'w') do |f|
   f << "<?xml version=\"1.0\"?>\n"
   f << "<root>\n"
   alldata.each do |info|
-    f << "  <item name=\"#{info[:name]}\" value=\"#{info[:value]}\" />\n"
+    f << "  <item type=\"#{info[:classname]}\" name=\"#{info[:nameonly]}\" value=\"#{info[:value]}\" />\n"
   end
   f << "</root>\n"
 end
