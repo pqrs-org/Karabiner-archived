@@ -88,3 +88,17 @@ open(filepath, 'w') do |f|
   end
 end
 KeyRemap4MacBookBridge::Converter.update_file_if_needed(filepath)
+
+# ----------------------------------------------------------------------
+# output xml
+filepath = "../output/symbolmap.xml.tmp"
+open(filepath, 'w') do |f|
+  f << "<?xml version=\"1.0\"?>\n"
+  f << "<root>\n"
+  alldata.each do |info|
+    f << "  <item name=\"#{info[:name]}\" value=\"#{info[:value]}\" />\n"
+  end
+  f << "</root>\n"
+end
+
+KeyRemap4MacBookBridge::Converter.update_file_if_needed(filepath)
