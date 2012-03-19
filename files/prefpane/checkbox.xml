@@ -11845,6 +11845,7 @@
                 </item>
               </list>
             </item>
+            <!-- #include "include/jis_enable_nicola_on_kinesis_romaji.xml" -->
             <item>
               <name>下駄・新下駄配列（Geta, Shin-Geta Layout）</name>
               <list>
