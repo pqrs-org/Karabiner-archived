@@ -1,15 +1,5 @@
 <?xml version="1.0"?>
 <root>
-  <replacementdef>
-    <replacementname>UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS</replacementname>
-    <replacementvalue>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</replacementvalue>
-  </replacementdef>
-
-  <replacementdef>
-    <replacementname>JAPANESE_OYAYUBISHIFT_EXTRA</replacementname>
-    <replacementvalue></replacementvalue>
-  </replacementdef>
-
   <!-- ============================================================ -->
   <replacementdef>
     <replacementname>VI_H</replacementname>
@@ -30,4 +20,16 @@
     <replacementname>VI_L</replacementname>
     <replacementvalue>KeyCode::L</replacementvalue>
   </replacementdef>
+
+  <!-- ============================================================ -->
+  <replacementdef>
+    <replacementname>UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS</replacementname>
+    <replacementvalue>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</replacementvalue>
+  </replacementdef>
+
+  <replacementdef>
+    <replacementname>JAPANESE_OYAYUBISHIFT_EXTRA</replacementname>
+    <replacementvalue></replacementvalue>
+  </replacementdef>
+
 </root>
