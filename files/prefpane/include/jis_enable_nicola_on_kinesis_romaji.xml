@@ -1,508 +1,572 @@
 <item>
-  <name>Nicola on Kinesis (Kana)</name>
+  <name>Nicola on Kinesis</name>
+  <!-- Version 0.3 coded by IDEGUTI Masaya -->
+  <!-- 22/3/2012 -->
+
   <list>
     <item>
-      <name>International Key to Voiced Sound Symbol (Shift+International to Semi Voiced Sound Symbol)</name>
-      <identifier>remap.jis_international_to_voiced_sound_symbol</identifier>
+      <name>Enable Nicola on Kinesis (Kana-Kawasemi)</name>
+      <identifier>enable_nicola_on_kinesis_kana_kawasemi</identifier>
       <inputmode_only>JAPANESE</inputmode_only>
-      <autogen>--KeyToKey-- KeyCode::UK_SECTION, ModifierFlag::NONE, KeyCode::BRACKET_LEFT</autogen>
-      <autogen>--KeyToKey-- KeyCode::UK_SECTION, VK_SHIFT, KeyCode::EQUAL</autogen>
-    </item>
-    <item>
-      <name>Quote to Back Space</name>
-      <identifier>remap.jis_nicola_on_kinesis_quote_to_back_space_kana</identifier>
-      <inputmode_only>JAPANESE</inputmode_only>
-      <autogen>--KeyToKey-- KeyCode::QUOTE, ModifierFlag::NONE, KeyCode::DELETE</autogen>
-      <autogen>--SimultaneousKeyPresses-- KeyCode::QUOTE, KeyCode::DELETE, KeyCode::QUOTE, ModifierFlag::CONTROL_L</autogen>
-    </item>
-    <item>
-      <name>Disable Back Space</name>
-      <identifier>remap.jis_nicola_on_kinesis_disable_back_space_kana</identifier>
-      <inputmode_only>JAPANESE</inputmode_only>
-      <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
-    </item>
-    <item>
-      <name>Backslash to ESC</name>
-      <identifier>remap.jis_nicola_on_kinesis_backslash_to_esc_kana</identifier>
-      <inputmode_only>JAPANESE</inputmode_only>
-      <autogen>--KeyToKey-- KeyCode::BACKSLASH, ModifierFlag::NONE, KeyCode::ESCAPE</autogen>
-      <autogen>--SimultaneousKeyPresses-- KeyCode::BACKSLASH, KeyCode::DELETE, KeyCode::BACKSLASH, ModifierFlag::CONTROL_L</autogen>
-    </item>
-    <item>
-      <name>Enable Nicola on Kinesis (Kana)</name>
-      <identifier>remap.jis_enable_nicola_on_kinesis_kana</identifier>
-      <inputmode_only>JAPANESE</inputmode_only>
+      <config_not>enable_nicola_on_kinesis_romaji</config_not>
 
-      <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_OPTION, KeyCode::SEMICOLON, ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L</autogen>
+      <block>
+        <config_only>nicola_kinesis_enter_numerals_with_numeric_keys</config_only>
+        <autogen>--KeyToKey-- KeyCode::KEY_1, VK_CONTROL, KeyCode::KEY_1</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_2, VK_CONTROL, KeyCode::KEY_2</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_3, VK_CONTROL, KeyCode::KEY_3</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_4, VK_CONTROL, KeyCode::KEY_4</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_6, VK_CONTROL, KeyCode::KEY_6</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_5, VK_CONTROL, KeyCode::KEY_5</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_9, VK_CONTROL, KeyCode::KEY_9</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_7, VK_CONTROL, KeyCode::KEY_7</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_8, VK_CONTROL, KeyCode::KEY_8</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_0, VK_CONTROL, KeyCode::KEY_0</autogen>
+      </block>
+
+      <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_OPTION, KeyCode::SEMICOLON, VK_OPTION | VK_CONTROL</autogen>
 
       <block>
         <modifier_not>ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R, ModifierFlag::OPTION_L, ModifierFlag::OPTION_R, ModifierFlag::CONTROL_L, ModifierFlag::CONTROL_R</modifier_not>
 
-        <autogen>--KeyToKey-- KeyCode::BACKSLASH, ModifierFlag::NONE, KeyCode::BACKSLASH, ModifierFlag::CONTROL_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::BACKSLASH, VK_SHIFT, KeyCode::BACKSLASH, VK_SHIFT | ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::BACKSLASH, KeyCode::DELETE, KeyCode::VK_NONE</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::BACKSLASH, KeyCode::SPACE, KeyCode::VK_NONE</autogen>
+        <block>
+          <config_only>nicola_kinesis_international_to_voiced_sound_symbol</config_only>
+          <autogen>--KeyToKey-- KeyCode::UK_SECTION, ModifierFlag::NONE, KeyCode::BRACKET_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::UK_SECTION, VK_SHIFT, KeyCode::EQUAL</autogen>
+        </block>
 
-        <autogen>--SimultaneousKeyPresses-- KeyCode::BACKQUOTE, KeyCode::DELETE, KeyCode::VK_NONE</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::BACKQUOTE, KeyCode::SPACE, KeyCode::VK_NONE</autogen>
+        <block>
+          <config_only>nicola_kinesis_backslash_to_esc</config_only>
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH, ModifierFlag::NONE, KeyCode::ESCAPE</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::BACKSLASH, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::BACKSLASH, VK_CONTROL</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::BACKSLASH, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::BACKSLASH, VK_CONTROL | VK_OPTION</autogen>
+        </block>
+        <autogen>--KeyToKey-- KeyCode::BACKSLASH, ModifierFlag::NONE, KeyCode::BACKSLASH, VK_CONTROL</autogen>
+        <autogen>--KeyToKey-- KeyCode::BACKSLASH, VK_SHIFT, KeyCode::BACKSLASH, VK_SHIFT | VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::BACKSLASH, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::BACKSLASH, VK_CONTROL | VK_OPTION</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::BACKSLASH, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::VK_NONE</autogen>
+
+        <autogen>--SimultaneousKeyPresses-- KeyCode::BACKQUOTE, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::VK_NONE</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::BACKQUOTE, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::VK_NONE</autogen>
 
         <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::NONE, KeyCode::KEY_4</autogen>
         <autogen>--KeyToKey-- KeyCode::A, VK_SHIFT, KeyCode::KEY_4</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::A, KeyCode::DELETE, KeyCode::KEY_0, VK_SHIFT</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::A, KeyCode::SPACE, KeyCode::KEY_4, KeyCode::BRACKET_LEFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::A, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::KEY_0, VK_SHIFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::A, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::KEY_4, KeyCode::BRACKET_LEFT</autogen>
 
         <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::D</autogen>
         <autogen>--KeyToKey-- KeyCode::S, VK_SHIFT, KeyCode::D</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::DELETE, KeyCode::KEY_3</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::SPACE, KeyCode::D, KeyCode::BRACKET_LEFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::S, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::KEY_3</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::S, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::D, KeyCode::BRACKET_LEFT</autogen>
 
         <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::NONE, KeyCode::W</autogen>
         <autogen>--KeyToKey-- KeyCode::D, VK_SHIFT, KeyCode::W</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::DELETE, KeyCode::U</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::SPACE, KeyCode::W, KeyCode::BRACKET_LEFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::D, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::U</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::D, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::W, KeyCode::BRACKET_LEFT</autogen>
 
         <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::NONE, KeyCode::QUOTE</autogen>
         <autogen>--KeyToKey-- KeyCode::F, VK_SHIFT, KeyCode::QUOTE</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::DELETE, KeyCode::KEY_8, VK_SHIFT</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::SPACE, KeyCode::QUOTE, KeyCode::BRACKET_LEFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::F, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::KEY_8, VK_SHIFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::F, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::QUOTE, KeyCode::BRACKET_LEFT</autogen>
 
         <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::NONE, KeyCode::F</autogen>
         <autogen>--KeyToKey-- KeyCode::H, VK_SHIFT, KeyCode::F, KeyCode::EQUAL</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::H, KeyCode::DELETE, KeyCode::F, KeyCode::BRACKET_LEFT</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::H, KeyCode::SPACE, KeyCode::N</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::H, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::F, KeyCode::BRACKET_LEFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::H, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::N</autogen>
 
         <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::NONE, KeyCode::P</autogen>
         <autogen>--KeyToKey-- KeyCode::G, VK_SHIFT, KeyCode::P</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::G, KeyCode::DELETE, KeyCode::M</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::G, KeyCode::SPACE, KeyCode::P, KeyCode::BRACKET_LEFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::G, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::M</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::G, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::P, KeyCode::BRACKET_LEFT</autogen>
 
-        <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::NONE, KeyCode::DOT, ModifierFlag::CONTROL_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::Z, VK_SHIFT, KeyCode::DOT, ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::Z, KeyCode::DELETE, KeyCode::KEY_4, VK_SHIFT</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::Z, KeyCode::SPACE, KeyCode::VK_NONE</autogen>
+        <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::NONE, KeyCode::DOT, VK_CONTROL</autogen>
+        <autogen>--KeyToKey-- KeyCode::Z, VK_SHIFT, KeyCode::DOT, VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::Z, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::KEY_4, VK_SHIFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::Z, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::VK_NONE</autogen>
 
         <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::NONE, KeyCode::V</autogen>
         <autogen>--KeyToKey-- KeyCode::X, VK_SHIFT, KeyCode::V, KeyCode::EQUAL</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::X, KeyCode::DELETE, KeyCode::BRACKET_RIGHT, VK_SHIFT</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::X, KeyCode::SPACE, KeyCode::V, KeyCode::BRACKET_LEFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::X, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::BRACKET_RIGHT, VK_SHIFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::X, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::V, KeyCode::BRACKET_LEFT</autogen>
 
         <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::NONE, KeyCode::R</autogen>
         <autogen>--KeyToKey-- KeyCode::C, VK_SHIFT, KeyCode::R</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::C, KeyCode::DELETE, KeyCode::QUOTE, VK_SHIFT</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::C, KeyCode::SPACE, KeyCode::R, KeyCode::BRACKET_LEFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::C, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::QUOTE, VK_SHIFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::C, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::R, KeyCode::BRACKET_LEFT</autogen>
 
         <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::NONE, KeyCode::KEY_2</autogen>
         <autogen>--KeyToKey-- KeyCode::V, VK_SHIFT, KeyCode::KEY_2, KeyCode::EQUAL</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::V, KeyCode::DELETE, KeyCode::KEY_7</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::V, KeyCode::SPACE, KeyCode::KEY_2, KeyCode::BRACKET_LEFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::V, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::KEY_7</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::V, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::KEY_2, KeyCode::BRACKET_LEFT</autogen>
 
         <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::NONE, KeyCode::BACKSLASH</autogen>
         <autogen>--KeyToKey-- KeyCode::B, VK_SHIFT, KeyCode::BACKSLASH, KeyCode::EQUAL</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::B, KeyCode::DELETE, KeyCode::E, VK_SHIFT</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::B, KeyCode::SPACE, KeyCode::BACKSLASH, KeyCode::BRACKET_LEFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::B, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::E, VK_SHIFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::B, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::BACKSLASH, KeyCode::BRACKET_LEFT</autogen>
 
         <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::NONE, KeyCode::DOT, VK_SHIFT</autogen>
         <autogen>--KeyToKey-- KeyCode::Q, VK_SHIFT, KeyCode::DOT, VK_SHIFT</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::Q, KeyCode::DELETE, KeyCode::KEY_3, VK_SHIFT</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::Q, KeyCode::SPACE, KeyCode::VK_NONE</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::Q, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::KEY_3, VK_SHIFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::Q, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::VK_NONE</autogen>
 
         <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::NONE, KeyCode::T</autogen>
         <autogen>--KeyToKey-- KeyCode::W, VK_SHIFT, KeyCode::T</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::DELETE, KeyCode::KEY_5</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::SPACE, KeyCode::T, KeyCode::BRACKET_LEFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::W, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::KEY_5</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::W, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::T, KeyCode::BRACKET_LEFT</autogen>
 
         <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::NONE, KeyCode::Q</autogen>
         <autogen>--KeyToKey-- KeyCode::E, VK_SHIFT, KeyCode::Q</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::DELETE, KeyCode::L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::SPACE, KeyCode::Q, KeyCode::BRACKET_LEFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::E, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::L</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::E, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::Q, KeyCode::BRACKET_LEFT</autogen>
 
         <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::NONE, KeyCode::B</autogen>
         <autogen>--KeyToKey-- KeyCode::R, VK_SHIFT, KeyCode::B</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::R, KeyCode::DELETE, KeyCode::KEY_7, VK_SHIFT</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::R, KeyCode::SPACE, KeyCode::B, KeyCode::BRACKET_LEFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::R, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::KEY_7, VK_SHIFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::R, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::B, KeyCode::BRACKET_LEFT</autogen>
 
         <autogen>--KeyToKey-- KeyCode::Y, ModifierFlag::NONE, KeyCode::O</autogen>
         <autogen>--KeyToKey-- KeyCode::Y, VK_SHIFT, KeyCode::O</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::Y, KeyCode::DELETE, KeyCode::F, KeyCode::EQUAL</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::Y, KeyCode::SPACE, KeyCode::KEY_9</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::Y, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::F, KeyCode::EQUAL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::Y, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::KEY_9</autogen>
 
         <autogen>--KeyToKey-- KeyCode::T, ModifierFlag::NONE, KeyCode::X</autogen>
         <autogen>--KeyToKey-- KeyCode::T, VK_SHIFT, KeyCode::X</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::T, KeyCode::DELETE, KeyCode::SEMICOLON</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::T, KeyCode::SPACE, KeyCode::X, KeyCode::BRACKET_LEFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::T, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::SEMICOLON</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::T, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::X, KeyCode::BRACKET_LEFT</autogen>
 
-        <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::KEY_1, ModifierFlag::CONTROL_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_1, VK_SHIFT, KeyCode::KEY_1, VK_SHIFT | ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_1, KeyCode::DELETE, KeyCode::SLASH, VK_SHIFT | ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_1, KeyCode::SPACE, KeyCode::SLASH, VK_SHIFT | ModifierFlag::CONTROL_L</autogen>
+        <block>
+          <config_only>nicola_kinesis_enter_numerals_with_numeric_keys</config_only>
+          <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::KEY_1, VK_CONTROL</autogen>
+        </block>
+        <autogen>--KeyToKey-- KeyCode::KEY_1, VK_SHIFT, KeyCode::KEY_1, VK_SHIFT | VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_1, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::SLASH, VK_SHIFT | VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_1, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::SLASH, VK_SHIFT | VK_CONTROL</autogen>
 
-        <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::NONE, KeyCode::KEY_2, ModifierFlag::CONTROL_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_2, VK_SHIFT, KeyCode::KEY_2, VK_SHIFT | ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_2, KeyCode::DELETE, KeyCode::SLASH, ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_2, KeyCode::SPACE, KeyCode::SLASH, ModifierFlag::CONTROL_L</autogen>
+        <block>
+          <config_only>nicola_kinesis_enter_numerals_with_numeric_keys</config_only>
+          <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::NONE, KeyCode::KEY_2, VK_CONTROL</autogen>
+        </block>
+        <autogen>--KeyToKey-- KeyCode::KEY_2, VK_SHIFT, KeyCode::KEY_2, VK_SHIFT | VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_2, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::SLASH, VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_2, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::SLASH, VK_CONTROL</autogen>
 
-        <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::NONE, KeyCode::KEY_3, ModifierFlag::CONTROL_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_3, VK_SHIFT, KeyCode::KEY_3, VK_SHIFT | ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_3, KeyCode::DELETE, KeyCode::BACKQUOTE, VK_SHIFT</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_3, KeyCode::SPACE, KeyCode::BACKQUOTE, VK_SHIFT</autogen>
+        <block>
+          <config_only>nicola_kinesis_enter_numerals_with_numeric_keys</config_only>
+          <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::NONE, KeyCode::KEY_3, VK_CONTROL</autogen>
+        </block>
+        <autogen>--KeyToKey-- KeyCode::KEY_3, VK_SHIFT, KeyCode::KEY_3, VK_SHIFT | VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_3, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::BACKQUOTE, VK_SHIFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_3, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::BACKQUOTE, VK_SHIFT</autogen>
 
-        <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::NONE, KeyCode::KEY_4, ModifierFlag::CONTROL_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_4, VK_SHIFT, KeyCode::KEY_4, VK_SHIFT | ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_4, KeyCode::DELETE, KeyCode::EQUAL, VK_SHIFT</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_4, KeyCode::SPACE, KeyCode::EQUAL, VK_SHIFT</autogen>
+        <block>
+          <config_only>nicola_kinesis_enter_numerals_with_numeric_keys</config_only>
+          <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::NONE, KeyCode::KEY_4, VK_CONTROL</autogen>
+        </block>
+        <autogen>--KeyToKey-- KeyCode::KEY_4, VK_SHIFT, KeyCode::KEY_4, VK_SHIFT | VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_4, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::EQUAL, VK_SHIFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_4, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::EQUAL, VK_SHIFT</autogen>
 
-        <autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::NONE, KeyCode::KEY_6, ModifierFlag::CONTROL_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_6, VK_SHIFT, KeyCode::KEY_6, VK_SHIFT | ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_6, KeyCode::DELETE, KeyCode::BRACKET_LEFT, ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_6, KeyCode::SPACE, KeyCode::BRACKET_LEFT, ModifierFlag::CONTROL_L</autogen>
+        <block>
+          <config_only>nicola_kinesis_enter_numerals_with_numeric_keys</config_only>
+          <autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::NONE, KeyCode::KEY_6, VK_CONTROL</autogen>
+        </block>
+        <autogen>--KeyToKey-- KeyCode::KEY_6, VK_SHIFT, KeyCode::KEY_6, VK_SHIFT | VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_6, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::BRACKET_LEFT, VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_6, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::BRACKET_LEFT, VK_CONTROL</autogen>
 
-        <autogen>--KeyToKey-- KeyCode::KEY_5, ModifierFlag::NONE, KeyCode::KEY_5, ModifierFlag::CONTROL_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_5, VK_SHIFT, KeyCode::KEY_5, VK_SHIFT | ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_5, KeyCode::DELETE, KeyCode::BRACKET_LEFT, VK_SHIFT</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_5, KeyCode::SPACE, KeyCode::BRACKET_LEFT, VK_SHIFT</autogen>
+        <block>
+          <config_only>nicola_kinesis_enter_numerals_with_numeric_keys</config_only>
+          <autogen>--KeyToKey-- KeyCode::KEY_5, ModifierFlag::NONE, KeyCode::KEY_5, VK_CONTROL</autogen>
+        </block>
+        <autogen>--KeyToKey-- KeyCode::KEY_5, VK_SHIFT, KeyCode::KEY_5, VK_SHIFT | VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_5, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::BRACKET_LEFT, VK_SHIFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_5, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::BRACKET_LEFT, VK_SHIFT</autogen>
 
-        <autogen>--KeyToKey-- KeyCode::EQUAL, ModifierFlag::NONE, KeyCode::EQUAL, ModifierFlag::CONTROL_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::EQUAL, VK_SHIFT, KeyCode::EQUAL, VK_SHIFT | ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::EQUAL, KeyCode::DELETE, KeyCode::VK_NONE</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::EQUAL, KeyCode::SPACE, KeyCode::VK_NONE</autogen>
+        <autogen>--KeyToKey-- KeyCode::EQUAL, ModifierFlag::NONE, KeyCode::EQUAL, VK_CONTROL</autogen>
+        <autogen>--KeyToKey-- KeyCode::EQUAL, VK_SHIFT, KeyCode::EQUAL, VK_SHIFT | VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::EQUAL, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::VK_NONE</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::EQUAL, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::VK_NONE</autogen>
 
-        <autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::NONE, KeyCode::KEY_9, ModifierFlag::CONTROL_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_9, VK_SHIFT, KeyCode::KEY_9, VK_SHIFT | ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_9, KeyCode::DELETE, KeyCode::KEY_0, VK_SHIFT | ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_9, KeyCode::SPACE, KeyCode::KEY_0, VK_SHIFT | ModifierFlag::CONTROL_L</autogen>
+        <block>
+          <config_only>nicola_kinesis_enter_numerals_with_numeric_keys</config_only>
+          <autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::NONE, KeyCode::KEY_9, VK_CONTROL</autogen>
+        </block>
+        <autogen>--KeyToKey-- KeyCode::KEY_9, VK_SHIFT, KeyCode::KEY_9, VK_SHIFT | VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_9, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::KEY_0, VK_SHIFT | VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_9, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::KEY_0, VK_SHIFT | VK_CONTROL</autogen>
 
-        <autogen>--KeyToKey-- KeyCode::KEY_7, ModifierFlag::NONE, KeyCode::KEY_7, ModifierFlag::CONTROL_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_7, VK_SHIFT, KeyCode::KEY_7, VK_SHIFT | ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_7, KeyCode::DELETE, KeyCode::BRACKET_RIGHT, ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_7, KeyCode::SPACE, KeyCode::BRACKET_RIGHT, ModifierFlag::CONTROL_L</autogen>
+        <block>
+          <config_only>nicola_kinesis_enter_numerals_with_numeric_keys</config_only>
+          <autogen>--KeyToKey-- KeyCode::KEY_7, ModifierFlag::NONE, KeyCode::KEY_7, VK_CONTROL</autogen>
+        </block>
+        <autogen>--KeyToKey-- KeyCode::KEY_7, VK_SHIFT, KeyCode::KEY_7, VK_SHIFT | VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_7, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::BRACKET_RIGHT, VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_7, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::BRACKET_RIGHT, VK_CONTROL</autogen>
 
-        <autogen>--KeyToKey-- KeyCode::MINUS, ModifierFlag::NONE, KeyCode::MINUS, ModifierFlag::CONTROL_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::MINUS, VK_SHIFT, KeyCode::MINUS, VK_SHIFT | ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::MINUS, KeyCode::DELETE, KeyCode::VK_NONE</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::MINUS, KeyCode::SPACE, KeyCode::VK_NONE</autogen>
+        <autogen>--KeyToKey-- KeyCode::MINUS, ModifierFlag::NONE, KeyCode::MINUS, VK_CONTROL</autogen>
+        <autogen>--KeyToKey-- KeyCode::MINUS, VK_SHIFT, KeyCode::MINUS, VK_SHIFT | VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::MINUS, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::VK_NONE</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::MINUS, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::VK_NONE</autogen>
 
-        <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::NONE, KeyCode::KEY_8, ModifierFlag::CONTROL_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_8, VK_SHIFT, KeyCode::KEY_8, VK_SHIFT | ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_8, KeyCode::DELETE, KeyCode::KEY_9, VK_SHIFT | ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_8, KeyCode::SPACE, KeyCode::KEY_9, VK_SHIFT | ModifierFlag::CONTROL_L</autogen>
+        <block>
+          <config_only>nicola_kinesis_enter_numerals_with_numeric_keys</config_only>
+          <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::NONE, KeyCode::KEY_8, VK_CONTROL</autogen>
+        </block>
+        <autogen>--KeyToKey-- KeyCode::KEY_8, VK_SHIFT, KeyCode::KEY_8, VK_SHIFT | VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_8, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::KEY_9, VK_SHIFT | VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_8, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::KEY_9, VK_SHIFT | VK_CONTROL</autogen>
 
-        <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::NONE, KeyCode::KEY_0, ModifierFlag::CONTROL_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_0, VK_SHIFT, KeyCode::KEY_0, VK_SHIFT | ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_0, KeyCode::DELETE, KeyCode::COMMA, VK_SHIFT</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_0, KeyCode::SPACE, KeyCode::COMMA, VK_SHIFT</autogen>
+        <block>
+          <config_only>nicola_kinesis_enter_numerals_with_numeric_keys</config_only>
+          <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::NONE, KeyCode::KEY_0, VK_CONTROL</autogen>
+        </block>
+        <autogen>--KeyToKey-- KeyCode::KEY_0, VK_SHIFT, KeyCode::KEY_0, VK_SHIFT | VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_0, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::COMMA, VK_SHIFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_0, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::COMMA, VK_SHIFT</autogen>
 
         <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::NONE, KeyCode::Z</autogen>
         <autogen>--KeyToKey-- KeyCode::O, VK_SHIFT, KeyCode::Z</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::DELETE, KeyCode::Z, KeyCode::BRACKET_LEFT</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::SPACE, KeyCode::J</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::O, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::Z, KeyCode::BRACKET_LEFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::O, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::J</autogen>
 
         <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::NONE, KeyCode::A</autogen>
         <autogen>--KeyToKey-- KeyCode::U, VK_SHIFT, KeyCode::A</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::U, KeyCode::DELETE, KeyCode::A, KeyCode::BRACKET_LEFT</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::U, KeyCode::SPACE, KeyCode::I</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::U, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::A, KeyCode::BRACKET_LEFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::U, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::I</autogen>
 
         <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::NONE, KeyCode::H</autogen>
         <autogen>--KeyToKey-- KeyCode::I, VK_SHIFT, KeyCode::H</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::DELETE, KeyCode::H, KeyCode::BRACKET_LEFT</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::SPACE, KeyCode::DOT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::I, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::H, KeyCode::BRACKET_LEFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::I, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::DOT</autogen>
 
-        <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::NONE, KeyCode::COMMA, ModifierFlag::CONTROL_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::P, VK_SHIFT, KeyCode::COMMA, ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::P, KeyCode::DELETE, KeyCode::V, KeyCode::EQUAL</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::P, KeyCode::SPACE, KeyCode::KEY_5, VK_SHIFT</autogen>
+        <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::NONE, KeyCode::COMMA, VK_CONTROL</autogen>
+        <autogen>--KeyToKey-- KeyCode::P, VK_SHIFT, KeyCode::COMMA, VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::P, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::V, KeyCode::EQUAL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::P, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::KEY_5, VK_SHIFT</autogen>
 
         <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::NONE, KeyCode::E</autogen>
         <autogen>--KeyToKey-- KeyCode::L, VK_SHIFT, KeyCode::E</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::DELETE, KeyCode::MINUS, KeyCode::EQUAL</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::SPACE, KeyCode::KEY_9, VK_SHIFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::L, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::MINUS, KeyCode::EQUAL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::L, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::KEY_9, VK_SHIFT</autogen>
 
         <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::NONE, KeyCode::S</autogen>
         <autogen>--KeyToKey-- KeyCode::J, VK_SHIFT, KeyCode::S</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::DELETE, KeyCode::S, KeyCode::BRACKET_LEFT</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::SPACE, KeyCode::KEY_6</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::J, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::S, KeyCode::BRACKET_LEFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::J, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::KEY_6</autogen>
 
         <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::NONE, KeyCode::G</autogen>
         <autogen>--KeyToKey-- KeyCode::K, VK_SHIFT, KeyCode::G</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::DELETE, KeyCode::G, KeyCode::BRACKET_LEFT</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::SPACE, KeyCode::K</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::K, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::G, KeyCode::BRACKET_LEFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::K, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::K</autogen>
 
         <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::NONE, KeyCode::SLASH, VK_SHIFT</autogen>
-        <autogen>--KeyToKey-- KeyCode::SLASH, VK_SHIFT, KeyCode::SLASH, VK_SHIFT | ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::SLASH, KeyCode::DELETE, KeyCode::SLASH, ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::SLASH, KeyCode::SPACE, KeyCode::KEY_6, VK_SHIFT</autogen>
+        <autogen>--KeyToKey-- KeyCode::SLASH, VK_SHIFT, KeyCode::SLASH, VK_SHIFT | VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::SLASH, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::SLASH, VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::SLASH, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::KEY_6, VK_SHIFT</autogen>
 
         <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::NONE, KeyCode::SLASH</autogen>
         <autogen>--KeyToKey-- KeyCode::N, VK_SHIFT, KeyCode::SLASH</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::N, KeyCode::DELETE, KeyCode::KEY_2, KeyCode::EQUAL</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::N, KeyCode::SPACE, KeyCode::KEY_1</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::N, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::KEY_2, KeyCode::EQUAL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::N, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::KEY_1</autogen>
 
         <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::NONE, KeyCode::C</autogen>
         <autogen>--KeyToKey-- KeyCode::M, VK_SHIFT, KeyCode::C</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::M, KeyCode::DELETE, KeyCode::C, KeyCode::BRACKET_LEFT</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::M, KeyCode::SPACE, KeyCode::KEY_8</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::M, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::C, KeyCode::BRACKET_LEFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::M, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::KEY_8</autogen>
 
         <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::NONE, KeyCode::MINUS</autogen>
         <autogen>--KeyToKey-- KeyCode::DOT, VK_SHIFT, KeyCode::MINUS, KeyCode::EQUAL</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::DOT, KeyCode::DELETE, KeyCode::MINUS, KeyCode::BRACKET_LEFT</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::DOT, KeyCode::SPACE, KeyCode::KEY_0</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::DOT, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::MINUS, KeyCode::BRACKET_LEFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::DOT, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::KEY_0</autogen>
 
         <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::Y</autogen>
-        <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_SHIFT, KeyCode::SEMICOLON, VK_SHIFT | ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, KeyCode::DELETE, KeyCode::SEMICOLON, ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, KeyCode::SPACE, KeyCode::Z, VK_SHIFT</autogen>
+        <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_SHIFT, KeyCode::SEMICOLON, VK_SHIFT | VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::SEMICOLON, VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::Z, VK_SHIFT</autogen>
 
         <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::NONE, KeyCode::COMMA</autogen>
-        <autogen>--KeyToKey-- KeyCode::COMMA, VK_SHIFT, KeyCode::COMMA, VK_SHIFT | ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::COMMA, KeyCode::DELETE, KeyCode::BACKSLASH, KeyCode::EQUAL</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::COMMA, KeyCode::SPACE, KeyCode::BRACKET_RIGHT</autogen>
+        <autogen>--KeyToKey-- KeyCode::COMMA, VK_SHIFT, KeyCode::COMMA, VK_SHIFT | VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::COMMA, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::BACKSLASH, KeyCode::EQUAL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::COMMA, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::BRACKET_RIGHT</autogen>
 
         <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::NONE, KeyCode::EQUAL, VK_SHIFT</autogen>
-        <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_SHIFT, KeyCode::BRACKET_LEFT, VK_SHIFT | ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::BRACKET_LEFT, KeyCode::DELETE, KeyCode::VK_NONE</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::BRACKET_LEFT, KeyCode::SPACE, KeyCode::VK_NONE</autogen>
+        <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_SHIFT, KeyCode::BRACKET_LEFT, VK_SHIFT | VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::BRACKET_LEFT, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::BRACKET_LEFT, VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::BRACKET_LEFT, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::VK_NONE</autogen>
 
         <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, ModifierFlag::NONE, KeyCode::BRACKET_LEFT, VK_SHIFT</autogen>
-        <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, VK_SHIFT, KeyCode::BRACKET_RIGHT, VK_SHIFT | ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::BRACKET_RIGHT, KeyCode::DELETE, KeyCode::VK_NONE</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::BRACKET_RIGHT, KeyCode::SPACE, KeyCode::VK_NONE</autogen>
+        <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, VK_SHIFT, KeyCode::BRACKET_RIGHT, VK_SHIFT | VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::BRACKET_RIGHT, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::BRACKET_RIGHT, VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::BRACKET_RIGHT, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::VK_NONE</autogen>
 
-        <autogen>--KeyToKey-- KeyCode::QUOTE, ModifierFlag::NONE, KeyCode::QUOTE, ModifierFlag::CONTROL_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::QUOTE, VK_SHIFT, KeyCode::QUOTE, VK_SHIFT | ModifierFlag::CONTROL_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::QUOTE, KeyCode::DELETE, KeyCode::VK_NONE</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::QUOTE, KeyCode::SPACE, KeyCode::VK_NONE</autogen>
+        <block>
+          <config_only>nicola_kinesis_quote_to_back_space</config_only>
+          <autogen>--KeyToKey-- KeyCode::QUOTE, ModifierFlag::NONE, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::QUOTE, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::QUOTE, VK_CONTROL</autogen>
+          <block>
+            <config_only>nicola_kinesis_disabel_back_space</config_only>
+            <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+          </block>
+        </block>
+        <autogen>--KeyToKey-- KeyCode::QUOTE, ModifierFlag::NONE, KeyCode::QUOTE, VK_CONTROL</autogen>
+        <autogen>--KeyToKey-- KeyCode::QUOTE, VK_SHIFT, KeyCode::QUOTE, VK_SHIFT | VK_CONTROL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::QUOTE, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::VK_NONE</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::QUOTE, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::VK_NONE</autogen>
       </block>
     </item>
-  </list>
-</item>
-<item>
-  <name>Nicola on Kinesis (Romaji)</name>
-  <list>
-    <item>
-      <name>Quote to Back Space</name>
-      <identifier>remap.jis_nicola_on_kinesis_quote_to_back_space_romaji</identifier>
-      <inputmode_only>JAPANESE</inputmode_only>
-      <autogen>--KeyToKey-- KeyCode::QUOTE, ModifierFlag::NONE, KeyCode::DELETE</autogen>
-      <autogen>--SimultaneousKeyPresses-- KeyCode::QUOTE, KeyCode::DELETE, KeyCode::QUOTE, ModifierFlag::OPTION_L</autogen>
-    </item>
-    <item>
-      <name>Disable Back Space</name>
-      <identifier>remap.jis_nicola_on_kinesis_disable_back_space_romaji</identifier>
-      <inputmode_only>JAPANESE</inputmode_only>
-      <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
-    </item>
-    <item>
-      <name>Backslash to ESC</name>
-      <identifier>remap.jis_nicola_on_kinesis_backslash_to_esc_romaji</identifier>
-      <inputmode_only>JAPANESE</inputmode_only>
-      <autogen>--KeyToKey-- KeyCode::BACKSLASH, ModifierFlag::NONE, KeyCode::ESCAPE</autogen>
-      <autogen>--SimultaneousKeyPresses-- KeyCode::BACKSLASH, KeyCode::DELETE, KeyCode::BACKSLASH</autogen>
-    </item>
+
     <item>
       <name>Enable Nicola on Kinesis (Romaji)</name>
-      <identifier>remap.jis_enable_nicola_on_kinesis_romaji</identifier>
+      <identifier>enable_nicola_on_kinesis_romaji</identifier>
       <inputmode_only>JAPANESE</inputmode_only>
+      <config_not>enable_nicola_on_kinesis_kana_kawasemi</config_not>
+
       <block>
         <modifier_not>ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R, ModifierFlag::OPTION_L, ModifierFlag::OPTION_R, ModifierFlag::CONTROL_L, ModifierFlag::CONTROL_R</modifier_not>
 
-        <autogen>--SimultaneousKeyPresses-- KeyCode::BACKSLASH, KeyCode::DELETE, KeyCode::BACKSLASH, ModifierFlag::OPTION_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::BACKSLASH, KeyCode::SPACE, KeyCode::VK_NONE</autogen>
+        <block>
+          <config_only>nicola_kinesis_backslash_to_esc</config_only>
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH, ModifierFlag::NONE, KeyCode::ESCAPE</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::BACKSLASH, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::BACKSLASH</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::BACKSLASH, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::BACKSLASH, VK_OPTION</autogen>
+        </block>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::BACKSLASH, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::BACKSLASH, VK_OPTION</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::BACKSLASH, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::VK_NONE</autogen>
 
-        <autogen>--SimultaneousKeyPresses-- KeyCode::BACKQUOTE, KeyCode::DELETE, KeyCode::VK_NONE</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::BACKQUOTE, KeyCode::SPACE, KeyCode::VK_NONE</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::BACKQUOTE, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::VK_NONE</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::BACKQUOTE, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::VK_NONE</autogen>
 
         <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::NONE, KeyCode::U</autogen>
         <autogen>--KeyToKey-- KeyCode::A, VK_SHIFT, KeyCode::U</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::A, KeyCode::DELETE, KeyCode::W, KeyCode::O</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::A, KeyCode::SPACE, KeyCode::V, KeyCode::U</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::A, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::W, KeyCode::O</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::A, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::V, KeyCode::U</autogen>
 
         <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::S, KeyCode::I</autogen>
         <autogen>--KeyToKey-- KeyCode::S, VK_SHIFT, KeyCode::S, KeyCode::I</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::DELETE, KeyCode::A</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::SPACE, KeyCode::J, KeyCode::I</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::S, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::A</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::S, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::J, KeyCode::I</autogen>
 
         <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::NONE, KeyCode::T, KeyCode::E</autogen>
         <autogen>--KeyToKey-- KeyCode::D, VK_SHIFT, KeyCode::T, KeyCode::E</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::DELETE, KeyCode::N, KeyCode::A</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::SPACE, KeyCode::D, KeyCode::E</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::D, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::N, KeyCode::A</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::D, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::D, KeyCode::E</autogen>
 
         <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::NONE, KeyCode::K, KeyCode::E</autogen>
         <autogen>--KeyToKey-- KeyCode::F, VK_SHIFT, KeyCode::K, KeyCode::E</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::DELETE, KeyCode::X, KeyCode::Y, KeyCode::U</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::SPACE, KeyCode::G, KeyCode::E</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::F, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::X, KeyCode::Y, KeyCode::U</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::F, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::G, KeyCode::E</autogen>
 
         <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::NONE, KeyCode::H, KeyCode::A</autogen>
         <autogen>--KeyToKey-- KeyCode::H, VK_SHIFT, KeyCode::P, KeyCode::A</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::H, KeyCode::DELETE, KeyCode::B, KeyCode::A</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::H, KeyCode::SPACE, KeyCode::M, KeyCode::I</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::H, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::B, KeyCode::A</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::H, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::M, KeyCode::I</autogen>
 
         <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::NONE, KeyCode::S, KeyCode::E</autogen>
         <autogen>--KeyToKey-- KeyCode::G, VK_SHIFT, KeyCode::S, KeyCode::E</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::G, KeyCode::DELETE, KeyCode::M, KeyCode::O</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::G, KeyCode::SPACE, KeyCode::Z, KeyCode::E</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::G, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::M, KeyCode::O</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::G, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::Z, KeyCode::E</autogen>
 
-        <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::NONE, KeyCode::DOT, ModifierFlag::OPTION_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::Z, VK_SHIFT, KeyCode::DOT, ModifierFlag::OPTION_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::Z, KeyCode::DELETE, KeyCode::X, KeyCode::U</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::Z, KeyCode::SPACE, KeyCode::VK_NONE</autogen>
+        <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::NONE, KeyCode::DOT, VK_OPTION</autogen>
+        <autogen>--KeyToKey-- KeyCode::Z, VK_SHIFT, KeyCode::DOT, VK_OPTION</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::Z, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::X, KeyCode::U</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::Z, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::VK_NONE</autogen>
 
         <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::NONE, KeyCode::H, KeyCode::I</autogen>
         <autogen>--KeyToKey-- KeyCode::X, VK_SHIFT, KeyCode::P, KeyCode::I</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::X, KeyCode::DELETE, KeyCode::MINUS</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::X, KeyCode::SPACE, KeyCode::B, KeyCode::I</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::X, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::MINUS</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::X, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::B, KeyCode::I</autogen>
 
         <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::NONE, KeyCode::S, KeyCode::U</autogen>
         <autogen>--KeyToKey-- KeyCode::C, VK_SHIFT, KeyCode::S, KeyCode::U</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::C, KeyCode::DELETE, KeyCode::R, KeyCode::O</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::C, KeyCode::SPACE, KeyCode::Z, KeyCode::U</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::C, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::R, KeyCode::O</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::C, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::Z, KeyCode::U</autogen>
 
         <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::NONE, KeyCode::H, KeyCode::U</autogen>
         <autogen>--KeyToKey-- KeyCode::V, VK_SHIFT, KeyCode::P, KeyCode::U</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::V, KeyCode::DELETE, KeyCode::Y, KeyCode::A</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::V, KeyCode::SPACE, KeyCode::B, KeyCode::U</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::V, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::Y, KeyCode::A</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::V, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::B, KeyCode::U</autogen>
 
         <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::NONE, KeyCode::H, KeyCode::E</autogen>
         <autogen>--KeyToKey-- KeyCode::B, VK_SHIFT, KeyCode::P, KeyCode::E</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::B, KeyCode::DELETE, KeyCode::X, KeyCode::I</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::B, KeyCode::SPACE, KeyCode::B, KeyCode::E</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::B, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::X, KeyCode::I</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::B, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::B, KeyCode::E</autogen>
 
         <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::NONE, KeyCode::DOT</autogen>
         <autogen>--KeyToKey-- KeyCode::Q, VK_SHIFT, KeyCode::DOT</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::Q, KeyCode::DELETE, KeyCode::X, KeyCode::A</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::Q, KeyCode::SPACE, KeyCode::VK_NONE</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::Q, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::X, KeyCode::A</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::Q, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::VK_NONE</autogen>
 
         <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::NONE, KeyCode::K, KeyCode::A</autogen>
         <autogen>--KeyToKey-- KeyCode::W, VK_SHIFT, KeyCode::K, KeyCode::A</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::DELETE, KeyCode::E</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::SPACE, KeyCode::G, KeyCode::A</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::W, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::E</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::W, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::G, KeyCode::A</autogen>
 
         <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::NONE, KeyCode::T, KeyCode::A</autogen>
         <autogen>--KeyToKey-- KeyCode::E, VK_SHIFT, KeyCode::T, KeyCode::A</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::DELETE, KeyCode::R, KeyCode::I</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::SPACE, KeyCode::D, KeyCode::A</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::E, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::R, KeyCode::I</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::E, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::D, KeyCode::A</autogen>
 
         <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::NONE, KeyCode::K, KeyCode::O</autogen>
         <autogen>--KeyToKey-- KeyCode::R, VK_SHIFT, KeyCode::K, KeyCode::O</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::R, KeyCode::DELETE, KeyCode::X, KeyCode::Y, KeyCode::A</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::R, KeyCode::SPACE, KeyCode::G, KeyCode::O</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::R, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::X, KeyCode::Y, KeyCode::A</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::R, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::G, KeyCode::O</autogen>
 
         <autogen>--KeyToKey-- KeyCode::Y, ModifierFlag::NONE, KeyCode::R, KeyCode::A</autogen>
         <autogen>--KeyToKey-- KeyCode::Y, VK_SHIFT, KeyCode::R, KeyCode::A</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::Y, KeyCode::DELETE, KeyCode::P, KeyCode::A</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::Y, KeyCode::SPACE, KeyCode::Y, KeyCode::O</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::Y, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::P, KeyCode::A</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::Y, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::Y, KeyCode::O</autogen>
 
         <autogen>--KeyToKey-- KeyCode::T, ModifierFlag::NONE, KeyCode::S, KeyCode::A</autogen>
         <autogen>--KeyToKey-- KeyCode::T, VK_SHIFT, KeyCode::S, KeyCode::A</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::T, KeyCode::DELETE, KeyCode::R, KeyCode::E</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::T, KeyCode::SPACE, KeyCode::Z, KeyCode::A</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::T, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::R, KeyCode::E</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::T, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::Z, KeyCode::A</autogen>
 
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_1, KeyCode::DELETE, KeyCode::SLASH, VK_SHIFT</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_1, KeyCode::SPACE, KeyCode:: SLASH, VK_SHIFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_1, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::SLASH, VK_SHIFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_1, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode:: SLASH, VK_SHIFT</autogen>
 
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_2, KeyCode::DELETE, KeyCode::SLASH</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_2, KeyCode::SPACE, KeyCode::SLASH</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_2, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::SLASH, VK_OPTION</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_2, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::SLASH, VK_OPTION</autogen>
 
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_3, KeyCode::DELETE, KeyCode::BACKQUOTE, VK_SHIFT</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_3, KeyCode::SPACE, KeyCode::BACKQUOTE, VK_SHIFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_3, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::BACKQUOTE, VK_SHIFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_3, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::BACKQUOTE, VK_SHIFT</autogen>
 
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_4, KeyCode::DELETE, KeyCode::BRACKET_LEFT</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_4, KeyCode::SPACE, KeyCode::BRACKET_LEFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_4, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::BRACKET_LEFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_4, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::BRACKET_LEFT</autogen>
 
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_6, KeyCode::DELETE, KeyCode::BRACKET_LEFT, ModifierFlag::OPTION_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_6, KeyCode::SPACE, KeyCode::BRACKET_LEFT, ModifierFlag::OPTION_L</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_6, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::BRACKET_LEFT, VK_OPTION</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_6, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::BRACKET_LEFT, VK_OPTION</autogen>
 
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_5, KeyCode::DELETE, KeyCode::BRACKET_RIGHT</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_5, KeyCode::SPACE, KeyCode::BRACKET_RIGHT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_5, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::BRACKET_RIGHT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_5, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::BRACKET_RIGHT</autogen>
 
-        <autogen>--SimultaneousKeyPresses-- KeyCode::EQUAL, KeyCode::DELETE, KeyCode::VK_NONE</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::EQUAL, KeyCode::SPACE, KeyCode::VK_NONE</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::EQUAL, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::VK_NONE</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::EQUAL, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::VK_NONE</autogen>
 
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_9, KeyCode::DELETE, KeyCode::KEY_0, VK_SHIFT</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_9, KeyCode::SPACE, KeyCode::KEY_0, VK_SHIFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_9, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::KEY_0, VK_SHIFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_9, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::KEY_0, VK_SHIFT</autogen>
 
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_7, KeyCode::DELETE, KeyCode::BRACKET_RIGHT, ModifierFlag::OPTION_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_7, KeyCode::SPACE, KeyCode::BRACKET_RIGHT, ModifierFlag::OPTION_L</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_7, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::BRACKET_RIGHT, VK_OPTION</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_7, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::BRACKET_RIGHT, VK_OPTION</autogen>
 
-        <autogen>--KeyToKey-- KeyCode::MINUS, ModifierFlag::NONE, KeyCode::MINUS, ModifierFlag::OPTION_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::MINUS, KeyCode::DELETE, KeyCode::VK_NONE</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::MINUS, KeyCode::SPACE, KeyCode::VK_NONE</autogen>
+        <autogen>--KeyToKey-- KeyCode::MINUS, ModifierFlag::NONE, KeyCode::MINUS, VK_OPTION</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::MINUS, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::VK_NONE</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::MINUS, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::VK_NONE</autogen>
 
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_8, KeyCode::DELETE, KeyCode::KEY_9, VK_SHIFT</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_8, KeyCode::SPACE, KeyCode::KEY_9, VK_SHIFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_8, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::KEY_9, VK_SHIFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_8, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::KEY_9, VK_SHIFT</autogen>
 
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_0, KeyCode::DELETE, KeyCode::COMMA</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_0, KeyCode::SPACE, KeyCode::COMMA</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_0, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::COMMA</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_0, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::COMMA</autogen>
 
         <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::NONE, KeyCode::T, KeyCode::U</autogen>
         <autogen>--KeyToKey-- KeyCode::O, VK_SHIFT, KeyCode::T, KeyCode::U</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::DELETE, KeyCode::D, KeyCode::U</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::O, KeyCode::SPACE, KeyCode::M, KeyCode::A</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::O, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::D, KeyCode::U</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::O, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::M, KeyCode::A</autogen>
 
         <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::NONE, KeyCode::T, KeyCode::I</autogen>
         <autogen>--KeyToKey-- KeyCode::U, VK_SHIFT, KeyCode::T, KeyCode::I</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::U, KeyCode::DELETE, KeyCode::D, KeyCode::I</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::U, KeyCode::SPACE, KeyCode::N, KeyCode::I</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::U, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::D, KeyCode::I</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::U, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::N, KeyCode::I</autogen>
 
         <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::NONE, KeyCode::K, KeyCode::U</autogen>
         <autogen>--KeyToKey-- KeyCode::I, VK_SHIFT, KeyCode::K, KeyCode::U</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::DELETE, KeyCode::G, KeyCode::U</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::I, KeyCode::SPACE, KeyCode::R, KeyCode::U</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::I, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::G, KeyCode::U</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::I, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::R, KeyCode::U</autogen>
 
-        <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::NONE, KeyCode::COMMA, ModifierFlag::OPTION_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::P, VK_SHIFT, KeyCode::COMMA, ModifierFlag::OPTION_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::P, KeyCode::DELETE, KeyCode::P, KeyCode::I</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::P, KeyCode::SPACE, KeyCode::X, KeyCode::E</autogen>
+        <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::NONE, KeyCode::COMMA, VK_OPTION</autogen>
+        <autogen>--KeyToKey-- KeyCode::P, VK_SHIFT, KeyCode::COMMA, VK_OPTION</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::P, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::P, KeyCode::I</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::P, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::X, KeyCode::E</autogen>
 
         <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::NONE, KeyCode::I</autogen>
         <autogen>--KeyToKey-- KeyCode::L, VK_SHIFT, KeyCode::I</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::DELETE, KeyCode::P, KeyCode::O</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::SPACE, KeyCode::X, KeyCode::Y, KeyCode::O</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::L, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::P, KeyCode::O</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::L, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::X, KeyCode::Y, KeyCode::O</autogen>
 
         <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::NONE, KeyCode::T, KeyCode::O</autogen>
         <autogen>--KeyToKey-- KeyCode::J, VK_SHIFT, KeyCode::T, KeyCode::O</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::DELETE, KeyCode::D, KeyCode::O</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::SPACE, KeyCode::O</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::J, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::D, KeyCode::O</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::J, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::O</autogen>
 
         <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::NONE, KeyCode::K, KeyCode::I</autogen>
         <autogen>--KeyToKey-- KeyCode::K, VK_SHIFT, KeyCode::K, KeyCode::I</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::DELETE, KeyCode::G, KeyCode::I</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::SPACE, KeyCode::N, KeyCode::O</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::K, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::G, KeyCode::I</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::K, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::N, KeyCode::O</autogen>
 
-        <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::NONE, KeyCode::SLASH, ModifierFlag::OPTION_L</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::SLASH, KeyCode::DELETE, KeyCode::SLASH</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::SLASH, KeyCode::SPACE, KeyCode::X, KeyCode::O</autogen>
+        <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::NONE, KeyCode::SLASH</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::SLASH, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::SLASH, VK_OPTION</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::SLASH, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::X, KeyCode::O</autogen>
 
         <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::NONE, KeyCode::M, KeyCode::E</autogen>
         <autogen>--KeyToKey-- KeyCode::N, VK_SHIFT, KeyCode::M, KeyCode::E</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::N, KeyCode::DELETE, KeyCode::P, KeyCode::U</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::N, KeyCode::SPACE, KeyCode::N, KeyCode::U</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::N, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::P, KeyCode::U</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::N, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::N, KeyCode::U</autogen>
 
         <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::NONE, KeyCode::S, KeyCode::O</autogen>
         <autogen>--KeyToKey-- KeyCode::M, VK_SHIFT, KeyCode::S, KeyCode::O</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::M, KeyCode::DELETE, KeyCode::Z, KeyCode::O</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::M, KeyCode::SPACE, KeyCode::Y, KeyCode::U</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::M, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::Z, KeyCode::O</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::M, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::Y, KeyCode::U</autogen>
 
         <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::NONE, KeyCode::H, KeyCode::O</autogen>
         <autogen>--KeyToKey-- KeyCode::DOT, VK_SHIFT, KeyCode::P, KeyCode::O</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::DOT, KeyCode::DELETE, KeyCode::B, KeyCode::O</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::DOT, KeyCode::SPACE, KeyCode::W, KeyCode::A</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::DOT, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::B, KeyCode::O</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::DOT, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::W, KeyCode::A</autogen>
 
         <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::N, KeyCode::N</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, KeyCode::DELETE, KeyCode::SEMICOLON </autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, KeyCode::SPACE, KeyCode::X, KeyCode::T, KeyCode::U</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::SEMICOLON </autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::SEMICOLON, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::X, KeyCode::T, KeyCode::U</autogen>
 
         <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::NONE, KeyCode::N, KeyCode::E</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::COMMA, KeyCode::DELETE, KeyCode::P, KeyCode::E</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::COMMA, KeyCode::SPACE, KeyCode::M, KeyCode::U</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::COMMA, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::P, KeyCode::E</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::COMMA, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::M, KeyCode::U</autogen>
 
-        <autogen>--SimultaneousKeyPresses-- KeyCode::BRACKET_LEFT, KeyCode::DELETE, KeyCode::VK_NONE</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::BRACKET_LEFT, KeyCode::SPACE, KeyCode::VK_NONE</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::BRACKET_LEFT, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::BRACKET_LEFT, VK_OPTION</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::BRACKET_LEFT, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::BRACKET_LEFT, VK_SHIFT | VK_OPTION</autogen>
 
-        <autogen>--SimultaneousKeyPresses-- KeyCode::BRACKET_RIGHT, KeyCode::DELETE, KeyCode::VK_NONE</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::BRACKET_RIGHT, KeyCode::SPACE, KeyCode::VK_NONE</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::BRACKET_RIGHT, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::BRACKET_RIGHT, VK_OPTION</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::BRACKET_RIGHT, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::BRACKET_RIGHT, VK_SHIFT | VK_OPTION</autogen>
 
-        <autogen>--SimultaneousKeyPresses-- KeyCode::QUOTE, KeyCode::DELETE, KeyCode::VK_NONE</autogen>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::QUOTE, KeyCode::SPACE, KeyCode::VK_NONE</autogen>
+        <block>
+          <config_only>nicola_kinesis_quote_to_back_space</config_only>
+          <autogen>--KeyToKey-- KeyCode::QUOTE, ModifierFlag::NONE, KeyCode::DELETE</autogen>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::QUOTE, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::QUOTE</autogen>
+          <block>
+            <config_only>nicola_kinesis_disabel_back_space</config_only>
+            <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+          </block>
+        </block>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::QUOTE, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::VK_NONE</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::QUOTE, {{JAPANESE_NICOLA_KINESIS_THUMB_RIGHT}}, KeyCode::VK_NONE</autogen>
+
       </block>
+    </item>
+
+    <item>
+      <name>Quote to Back Space</name>
+      <identifier>nicola_kinesis_quote_to_back_space</identifier>
+    </item>
+
+    <item>
+      <name>Disable Back Space</name>
+      <appendix>(Works only when "Quote to Back Space" is enabled)</appendix>
+      <identifier>nicola_kinesis_disabel_back_space</identifier>
+    </item>
+
+    <item>
+      <name>Backslash to ESC</name>
+      <identifier>nicola_kinesis_backslash_to_esc</identifier>
+    </item>
+
+    <item>
+      <name>Enter Numerals with Numeric Keys</name>
+      <appendix>(Works only in kana mode)</appendix>
+      <identifier>nicola_kinesis_enter_numerals_with_numeric_keys</identifier>
+    </item>
+
+    <item>
+      <name>International Key to Voiced Sound Symbol</name>
+      <appendix>(Works only in kana mode)</appendix>
+      <identifier>nicola_kinesis_international_to_voiced_sound_symbol</identifier>
     </item>
   </list>
 </item>
