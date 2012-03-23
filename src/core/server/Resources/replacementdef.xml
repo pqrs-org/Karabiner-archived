@@ -32,4 +32,12 @@
     <replacementvalue></replacementvalue>
   </replacementdef>
 
+  <replacementdef>
+    <replacementname>JAPANESE_NICOLA_KINESIS_THUMB_LEFT</replacementname>
+    <replacementvalue>KeyCode::DELETE</replacementvalue>
+  </replacementdef>
+  <replacementdef>
+    <replacementname>JAPANESE_NICOLA_KINESIS_THUMB_RIGHT</replacementname>
+    <replacementvalue>KeyCode::SPACE</replacementvalue>
+  </replacementdef>
 </root>
