@@ -106,7 +106,7 @@ open(filepath, 'w') do |f|
   f << "<?xml version=\"1.0\"?>\n"
   f << "<root>\n"
   alldata.each do |info|
-    f << "  <item type=\"#{info[:classname]}\" name=\"#{info[:nameonly]}\" value=\"#{info[:value]}\" />\n"
+    f << "  <symbolmap type=\"#{info[:classname]}\" name=\"#{info[:nameonly]}\" value=\"#{info[:value]}\" />\n"
   end
   f << "</root>\n"
 end
