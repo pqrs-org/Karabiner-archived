@@ -101,12 +101,12 @@ KeyRemap4MacBookBridge::Converter.update_file_if_needed(filepath)
 
 # ----------------------------------------------------------------------
 # output xml
-filepath = "../output/symbolmap.xml.tmp"
+filepath = "../output/symbol_map.xml.tmp"
 open(filepath, 'w') do |f|
   f << "<?xml version=\"1.0\"?>\n"
   f << "<root>\n"
   alldata.each do |info|
-    f << "  <symbolmap type=\"#{info[:classname]}\" name=\"#{info[:nameonly]}\" value=\"#{info[:value]}\" />\n"
+    f << "  <symbol_map type=\"#{info[:classname]}\" name=\"#{info[:nameonly]}\" value=\"#{info[:value]}\" />\n"
   end
   f << "</root>\n"
 end
