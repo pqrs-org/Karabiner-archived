@@ -1,7 +1,7 @@
 <item>
-  <name>Nicola on Kinesis</name>
-  <!-- Version 0.3 coded by IDEGUTI Masaya -->
-  <!-- 22/3/2012 -->
+  <name>Nicola on Kinesis (http://hws3.spaaqs.ne.jp/layla/Nicola_on_Kinesis/)</name>
+  <!-- Version 0.4 coded by IDEGUTI Masaya -->
+  <!-- 3/31/2012 -->
 
   <list>
     <item>
@@ -304,7 +304,7 @@
           <autogen>--KeyToKey-- KeyCode::QUOTE, ModifierFlag::NONE, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}</autogen>
           <autogen>--SimultaneousKeyPresses-- KeyCode::QUOTE, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::QUOTE, VK_CONTROL</autogen>
           <block>
-            <config_only>nicola_kinesis_disabel_back_space</config_only>
+            <config_only>nicola_kinesis_disable_back_space</config_only>
             <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
           </block>
         </block>
@@ -531,7 +531,7 @@
           <autogen>--KeyToKey-- KeyCode::QUOTE, ModifierFlag::NONE, KeyCode::DELETE</autogen>
           <autogen>--SimultaneousKeyPresses-- KeyCode::QUOTE, {{JAPANESE_NICOLA_KINESIS_THUMB_LEFT}}, KeyCode::QUOTE</autogen>
           <block>
-            <config_only>nicola_kinesis_disabel_back_space</config_only>
+            <config_only>nicola_kinesis_disable_back_space</config_only>
             <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
           </block>
         </block>
@@ -542,6 +542,10 @@
     </item>
 
     <item>
+      <name>----------------------------------------</name>
+    </item>
+
+    <item>
       <name>Quote to Back Space</name>
       <identifier>nicola_kinesis_quote_to_back_space</identifier>
     </item>
@@ -549,7 +553,7 @@
     <item>
       <name>Disable Back Space</name>
       <appendix>(Works only when "Quote to Back Space" is enabled)</appendix>
-      <identifier>nicola_kinesis_disabel_back_space</identifier>
+      <identifier>nicola_kinesis_disable_back_space</identifier>
     </item>
 
     <item>
@@ -567,6 +571,86 @@
       <name>International Key to Voiced Sound Symbol</name>
       <appendix>(Works only in kana mode)</appendix>
       <identifier>nicola_kinesis_international_to_voiced_sound_symbol</identifier>
+    </item>
+  </list>
+</item>
+
+<item>
+  <name>For Kinesis Contoured Keyboards</name>
+  <!-- Version 0.1 coded by IDEGUTI Masaya -->
+  <!-- 3/31/2012 -->
+
+  <list>
+    <item>
+      <name>These settings work regardless of the input mode.</name>
+      <identifier vk_config="true">notsave.kinesis_holding_back_space_to_option</identifier>
+      <autogen>--ShowStatusMessage-- Back Space to Option</autogen>
+    </item>
+
+    <item>
+      <name>----------------------------------------</name>
+      <identifier vk_config="true">notsave.kinesis_holding_back_space_to_control</identifier>
+      <autogen>--ShowStatusMessage-- Back Space to Control</autogen>
+    </item>
+
+    <item>
+      <name>Holding Back Space to Option</name>
+      <identifier>remap.kinesis_holding_back_space_to_option</identifier>
+      <config_not>remap.kinesis_holding_back_space_to_control</config_not>
+      <block>
+        <inputmode_only>JAPANESE</inputmode_only>
+        <block>
+          <config_only>nicola_kinesis_quote_to_back_space</config_only>
+          <block>
+            <config_only>nicola_kinesis_disable_back_space</config_only>
+            <autogen>--HoldingKeyToKey-- KeyCode::DELETE, KeyCode::VK_NONE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_kinesis_holding_back_space_to_option, ModifierFlag::OPTION_L</autogen>
+          </block>
+        </block>
+      </block>
+      <autogen>--HoldingKeyToKey-- KeyCode::DELETE, KeyCode::DELETE, KeyCode::VK_NONE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_kinesis_holding_back_space_to_option, ModifierFlag::OPTION_L</autogen>
+    </item>
+
+    <item>
+      <name>Holding Back Space to Control</name>
+      <identifier>remap.kinesis_holding_back_space_to_control</identifier>
+      <config_not>remap.kinesis_holding_back_space_to_option</config_not>
+      <block>
+        <inputmode_only>JAPANESE</inputmode_only>
+        <block>
+          <config_only>nicola_kinesis_quote_to_back_space</config_only>
+          <block>
+            <config_only>nicola_kinesis_disable_back_space</config_only>
+            <autogen>--HoldingKeyToKey-- KeyCode::DELETE, KeyCode::VK_NONE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_kinesis_holding_back_space_to_control, ModifierFlag::CONTROL_L</autogen>
+          </block>
+        </block>
+      </block>
+      <autogen>--HoldingKeyToKey-- KeyCode::DELETE, KeyCode::DELETE, KeyCode::VK_NONE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_kinesis_holding_back_space_to_control, ModifierFlag::CONTROL_L</autogen>
+    </item>
+
+    <item>
+      <name>----------------------------------------</name>
+      <identifier vk_config="true">notsave.kinesis_holding_space_to_option</identifier>
+      <autogen>--ShowStatusMessage-- Space to Option</autogen>
+    </item>
+
+    <item>
+      <name>Holding Space to Option</name>
+      <identifier>remap.kinesis_holding_space_to_option</identifier>
+      <config_not>remap.kinesis_holding_space_to_control</config_not>
+      <autogen>--HoldingKeyToKey-- KeyCode::SPACE, KeyCode::SPACE, KeyCode::VK_NONE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_kinesis_holding_space_to_option, ModifierFlag::OPTION_L</autogen>
+    </item>
+
+    <item>
+      <name>Holding Space to Control</name>
+      <identifier>remap.kinesis_holding_space_to_control</identifier>
+      <config_not>remap.kinesis_holding_space_to_option</config_not>
+      <autogen>--HoldingKeyToKey-- KeyCode::SPACE, KeyCode::SPACE, KeyCode::VK_NONE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_kinesis_holding_space_to_control, ModifierFlag::CONTROL_L</autogen>
+    </item>
+
+    <item>
+      <name>----------------------------------------</name>
+      <identifier vk_config="true">notsave.kinesis_holding_space_to_control</identifier>
+      <autogen>--ShowStatusMessage-- Space to Control</autogen>
     </item>
   </list>
 </item>

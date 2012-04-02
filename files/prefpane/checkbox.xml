@@ -11845,7 +11845,12 @@
                 </item>
               </list>
             </item>
-            <!-- #include "include/japanese_nicola_on_kinesis.xml" -->
+            <item>
+              <name>NICOLA on Kinesis</name>
+              <list>
+                <!-- #include "include/japanese_nicola_on_kinesis.xml" -->
+              </list>
+            </item>
             <item>
               <name>下駄・新下駄配列（Geta, Shin-Geta Layout）</name>
               <list>
