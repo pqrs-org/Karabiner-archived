@@ -9877,6 +9877,47 @@
           <inputmode_only>DVORAK,BEPO</inputmode_only>
           <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
         </item>
+        <item>
+          <name>French PC keyboard layout</name>
+          <appendix>Change 6 to -</appendix>
+          <appendix>Change 8 to _</appendix>
+          <appendix>...</appendix>
+          <identifier>remap.pc_french_keyboard_layout</identifier>
+          <!-- KEY_6 to '-' -->
+          <autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::NONE, KeyCode::EQUAL</autogen>
+          <!-- KEY_8 to '_' -->
+          <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::NONE, KeyCode::EQUAL, ModifierFlag::SHIFT_R</autogen>
+          <!-- EQUAL to '=' -->
+          <autogen>--KeyToKey-- KeyCode::EQUAL, ModifierFlag::NONE, KeyCode::SLASH, ModifierFlag::NONE</autogen>
+          <!-- EQUAL + Right Shift to '+' -->
+          <autogen>--KeyToKey-- KeyCode::EQUAL, ModifierFlag::SHIFT_R, KeyCode::SLASH, ModifierFlag::SHIFT_R</autogen>
+          <!-- ExclamationMark(SLASH) to '!' -->
+          <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::NONE, KeyCode::KEY_8, ModifierFlag::NONE</autogen>
+          <!-- MultiplySign(BackSlash) to '*' -->
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH, ModifierFlag::NONE, KeyCode::KEYPAD_MULTIPLY, ModifierFlag::NONE</autogen>
+          <!-- KEY_2 + AltGr to '~' -->
+          <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::OPTION_R, KeyCode::N, ModifierFlag::OPTION_R</autogen>
+          <!-- KEY_3 + AltGr to '#' -->
+          <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::OPTION_R, KeyCode::UK_SECTION, ModifierFlag::SHIFT_R</autogen>
+          <!-- KEY_4 + AltGr to '{' -->
+          <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::OPTION_R, KeyCode::KEY_5, ModifierFlag::OPTION_R</autogen>
+          <!-- KEY_5 + AltGr to '[' -->
+          <autogen>--KeyToKey-- KeyCode::KEY_5, ModifierFlag::OPTION_R, KeyCode::KEY_5, ModifierFlag::OPTION_R | ModifierFlag::SHIFT_R</autogen>
+          <!-- KEY_6 + AltGr to '|' -->
+          <autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::OPTION_R, KeyCode::L, ModifierFlag::OPTION_R | ModifierFlag::SHIFT_R</autogen>
+          <!-- KEY_7 + AltGr to '`' -->
+          <autogen>--KeyToKey-- KeyCode::KEY_7, ModifierFlag::OPTION_R, KeyCode::BACKSLASH</autogen>
+          <!-- KEY_8 + AltGr to '\' -->
+          <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::OPTION_R, KeyCode::DOT, ModifierFlag::OPTION_R | ModifierFlag::SHIFT_R</autogen>
+          <!-- KEY_0 + AltGr to '@' -->
+          <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::OPTION_R, KeyCode::UK_SECTION, ModifierFlag::NONE</autogen>
+          <!-- MINUS + AltGr to ']' -->
+          <autogen>--KeyToKey-- KeyCode::MINUS, ModifierFlag::OPTION_R, KeyCode::MINUS, ModifierFlag::OPTION_R | ModifierFlag::SHIFT_R</autogen>
+          <!-- EQUAL + AltGr to '}' -->
+          <autogen>--KeyToKey-- KeyCode::EQUAL, ModifierFlag::OPTION_R, KeyCode::MINUS, ModifierFlag::OPTION_R</autogen>
+          <!-- KEYPAD_DOT to '.' -->
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, ModifierFlag::NONE, KeyCode::COMMA, ModifierFlag::SHIFT_R</autogen>
+        </item>
       </list>
     </item>
     <item>
