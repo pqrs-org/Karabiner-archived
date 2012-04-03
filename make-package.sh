@@ -4,7 +4,7 @@ version=$(cat version)
 
 packagemaker=/Applications/Utilities/PackageMaker.app/Contents/MacOS/PackageMaker
 pkgName="KeyRemap4MacBook.pkg"
-archiveName="KeyRemap4MacBook-${version}.pkg.zip"
+archiveName="KeyRemap4MacBook-${version}"
 
 make clean build || exit $?
 
@@ -63,7 +63,8 @@ sh "files/extra/setpermissions.sh" pkgroot
 # --------------------------------------------------
 echo "Exec PackageMaker"
 
-rm -rf $pkgName
+rm -rf $archiveName/$pkgName
+mkdir $archiveName
 
 # Note: Don't add --no-recommend option.
 # It breaks /Library permission.
@@ -76,11 +77,12 @@ $packagemaker \
     --resources pkginfo/Resources \
     --title "KeyRemap4MacBook $version" \
     --no-relocate \
-    --out $pkgName
+    --out $archiveName/$pkgName
 
 # --------------------------------------------------
 echo "Make Archive"
 
-zip -X -r $archiveName $pkgName
-rm -rf $pkgName
-chmod 644 $archiveName
+rm -f $archiveName.dmg
+hdiutil create -nospotlight $archiveName.dmg -srcfolder $archiveName
+rm -rf $archiveName
+chmod 644 $archiveName.dmg
