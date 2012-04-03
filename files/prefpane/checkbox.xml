@@ -7809,6 +7809,20 @@
               <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, KeyCode::D, ModifierFlag::CONTROL_L</autogen>
             </item>
             <item>
+              <name>Meta Modifier Key</name>
+              <appendix>Sending escape key event before pressed keys</appendix>
+              <appendix>when you press keys with holding Meta Modifier Key.</appendix>
+              <list>
+                <item>
+                  <name>PC Application Key to Meta Modifier Key in Terminal</name>
+                  <only>TERMINAL</only>
+                  <identifier>remap.app_term_append_escape_for_keys</identifier>
+                  <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::VK_MODIFIER_EXTRA1</autogen>
+                  <!--#include "include/append_escape_for_keys.xml" -->
+                </item>
+              </list>
+            </item>
+            <item>
               <name>Extra settings</name>
               <list>
                 <item>
