@@ -82,6 +82,10 @@ $packagemaker \
 # --------------------------------------------------
 echo "Make Archive"
 
+# Note:
+# Some third vendor archiver fails to extract zip archive.
+# Therefore, we use dmg instead of zip.
+
 rm -f $archiveName.dmg
 hdiutil create -nospotlight $archiveName.dmg -srcfolder $archiveName
 rm -rf $archiveName
