@@ -50,7 +50,8 @@
           <appendix>u: Undo (Command_L+z)</appendix>
           <appendix>U: Undo (Command_L+z)</appendix> <!-- TODO: Can't distinguish undo contexts, so doing next best thing. -->
           <appendix>Ctrl-r: Redo (Command_L+Shift_L+z)</appendix>
-          <appendix>dd: Delete line (Command+CursorLeft, Shift_L+Down, Delete)</appendix>
+          <appendix>dd: Delete line (Command+CursorLeft, Shift_L+Down, Command+X)</appendix>
+          <appendix>dw: Delete word</appendix>
           <appendix>D: Delete to end of line (Command_L+Shift_L+Right, Delete)</appendix>
           <appendix>H: Current line to top (Option_L+PageDown, Down, Up)</appendix> <!-- TODO: Can't navigate in visible area, so doing something with a somewhat similar effect. -->
           <appendix>L: Current line to bottom (Option_L+PageUp, Up, Down)</appendix> <!-- TODO: Can't navigate in visible area, so doing something with a somewhat similar effect. -->
@@ -431,15 +432,7 @@
                 KeyCode::V, ModifierFlag::COMMAND_L
               </autogen>
 
-              <!-- dd -->
-              <autogen>
-                --DoublePressModifier--
-                KeyCode::D, ModifierFlag::NONE,
-                KeyCode::VK_NONE,
-                KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
-                KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L,
-                KeyCode::DELETE
-              </autogen>
+              <!-- D -->
               <autogen>
                 --KeyToKey--
                 KeyCode::D, VK_SHIFT,
@@ -597,15 +590,7 @@
                 KeyCode::V, ModifierFlag::COMMAND_L
               </autogen>
 
-              <!-- dd -->
-              <autogen>
-                --DoublePressModifier--
-                KeyCode::D, ModifierFlag::NONE,
-                KeyCode::VK_NONE,
-                KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L,
-                KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L,
-                KeyCode::DELETE
-              </autogen>
+              <!-- D -->
               <autogen>
                 --KeyToKey--
                 KeyCode::D, VK_SHIFT,
@@ -626,6 +611,16 @@
               </autogen>
 
             </block>
+          </block>
+
+          <!-- Enter d operator pending mode. -->
+          <block>
+            <config_not>notsave.d_operator_pending</config_not>
+            <autogen>
+              --KeyToKey--
+              KeyCode::D, ModifierFlag::NONE,
+              KeyCode::VK_CONFIG_FORCE_ON_notsave_d_operator_pending
+            </autogen>
           </block>
 
           <!-- Enter g operator pending mode. -->
@@ -1232,7 +1227,29 @@
           <name>d operator pending mode placeholder</name>
           <identifier vk_config="true">notsave.d_operator_pending</identifier>
           <autogen>--ShowStatusMessage-- [d]</autogen>
+
+          <!-- dd -->
+          <autogen>
+            --KeyToKey--
+            KeyCode::D, ModifierFlag::NONE,
+            KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
+            KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L,
+            KeyCode::X, ModifierFlag::COMMAND_L,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending
+          </autogen>
+
+          <!-- dw -->
+          <autogen>
+            --KeyToKey--
+            KeyCode::W, ModifierFlag::NONE,
+            KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
+            KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
+            KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
+            KeyCode::X, ModifierFlag::COMMAND_L,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending
+          </autogen>
         </item>
+
         <item>
           <name>g operator pending mode placeholder</name>
           <identifier vk_config="true">notsave.g_operator_pending</identifier>
