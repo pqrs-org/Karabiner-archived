@@ -410,10 +410,7 @@
               KeyCode::SLASH, ModifierFlag::NONE,
               KeyCode::F, ModifierFlag::COMMAND_L,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+              <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
             </autogen>
             <block>
               <config_not>notsave.c_w_operator_pending</config_not>
@@ -500,10 +497,7 @@
                 KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L,
                 KeyCode::RETURN, ModifierFlag::SHIFT_L,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+                <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
               </autogen>
               <autogen>
                 --KeyToKey--
@@ -512,10 +506,7 @@
                 KeyCode::RETURN, ModifierFlag::SHIFT_L,
                 KeyCode::CURSOR_UP,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+                <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
               </autogen>
 
               <!-- a, A -->
@@ -523,20 +514,14 @@
                 --KeyToKey--
                 KeyCode::A, ModifierFlag::NONE,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+                <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
               </autogen>
               <autogen>
                 --KeyToKey--
                 KeyCode::A, VK_SHIFT,
                 KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::NONE,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+                <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
               </autogen>
 
               <!-- J -->
@@ -553,20 +538,14 @@
                 --KeyToKey--
                 KeyCode::I, ModifierFlag::NONE,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+                <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
               </autogen>
               <autogen>
                 --KeyToKey--
                 KeyCode::I, VK_SHIFT,
                 KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::NONE,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+                <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
               </autogen>
 
               <!-- S -->
@@ -577,9 +556,7 @@
                 KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
                 KeyCode::X, ModifierFlag::COMMAND_L,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+                <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
               </autogen>
 
               <!-- yy, Y -->
@@ -664,10 +641,7 @@
                 KeyCode::CURSOR_RIGHT, ModifierFlag::CONTROL_L,
                 KeyCode::RETURN, ModifierFlag::OPTION_L,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+                <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
               </autogen>
               <autogen>
                 --KeyToKey--
@@ -676,10 +650,7 @@
                 KeyCode::RETURN, ModifierFlag::OPTION_L,
                 KeyCode::CURSOR_UP,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+                <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
               </autogen>
 
               <!-- a, A -->
@@ -687,20 +658,14 @@
                 --KeyToKey--
                 KeyCode::A, ModifierFlag::NONE,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+                <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
               </autogen>
               <autogen>
                 --KeyToKey--
                 KeyCode::A, VK_SHIFT,
                 KeyCode::CURSOR_RIGHT, ModifierFlag::CONTROL_L | ModifierFlag::NONE,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+                <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
               </autogen>
 
               <!-- J -->
@@ -717,20 +682,14 @@
                 --KeyToKey--
                 KeyCode::I, ModifierFlag::NONE,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+                <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
               </autogen>
               <autogen>
                 --KeyToKey--
                 KeyCode::I, VK_SHIFT,
                 KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L | ModifierFlag::NONE,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+                <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
               </autogen>
 
               <!-- S -->
@@ -741,10 +700,7 @@
                 KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L,
                 KeyCode::X, ModifierFlag::COMMAND_L,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+                <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
               </autogen>
 
               <!-- yy, Y -->
@@ -974,10 +930,8 @@
               KeyCode::ESCAPE,
               KeyCode::VK_LOCK_ALL_FORCE_OFF,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending,
+              <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
+              ,
               KeyCode::VK_NONE,
               KeyCode::ESCAPE
             </autogen>
@@ -991,10 +945,8 @@
               KeyCode::ESCAPE,
               KeyCode::VK_LOCK_ALL_FORCE_OFF,
               KeyCode::VK_CONFIG_FORCE_ON_notsave_ubiq_vimnormal,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending,
+              <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
+              ,
               KeyCode::VK_NONE,
               KeyCode::ESCAPE
             </autogen>
@@ -1008,10 +960,8 @@
               KeyCode::ESCAPE,
               KeyCode::VK_LOCK_ALL_FORCE_OFF,
               KeyCode::VK_CONFIG_FORCE_ON_notsave_ubiq_vimnormal,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending,
+              <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
+              ,
               KeyCode::VK_NONE,
               KeyCode::ESCAPE
             </autogen>
@@ -1025,10 +975,8 @@
               KeyCode::ESCAPE,
               KeyCode::VK_LOCK_ALL_FORCE_OFF,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending,
+              <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
+              ,
               KeyCode::ESCAPE
             </autogen>
           </block>
@@ -1048,10 +996,7 @@
             KeyCode::BRACKET_LEFT, VK_CONTROL,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
           </autogen>
         </item>
 
@@ -1065,10 +1010,7 @@
             KeyCode::COMMAND_R,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
           </autogen>
         </item>
 
@@ -1082,10 +1024,7 @@
             KeyCode::COMMAND_L,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
           </autogen>
         </item>
 
@@ -1107,10 +1046,7 @@
             KeyCode::COMMAND_L,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
           </autogen>
         </item>
         <item>
@@ -1125,10 +1061,7 @@
             KeyCode::VK_NONE,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
           </autogen>
           <autogen>
             --KeyOverlaidModifier--
@@ -1136,10 +1069,7 @@
             KeyCode::OPTION_L,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
           </autogen>
           <autogen>
             --KeyOverlaidModifier--
@@ -1147,10 +1077,7 @@
             KeyCode::OPTION_L,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
           </autogen>
           <autogen>
             --KeyOverlaidModifier--
@@ -1158,10 +1085,7 @@
             KeyCode::OPTION_L,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
           </autogen>
         </item>
         <item>
@@ -1173,10 +1097,7 @@
             KeyCode::BACKQUOTE, ModifierFlag::NONE,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
           </autogen>
         </item>
         <item>
@@ -1190,10 +1111,7 @@
             KeyCode::COMMAND_L,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
           </autogen>
         </item>
         <item>
@@ -1207,10 +1125,7 @@
             KeyCode::COMMAND_R,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
           </autogen>
         </item>
         <item>
@@ -1224,10 +1139,7 @@
             KeyCode::CONTROL_R,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
           </autogen>
         </item>
         <item>
@@ -1241,10 +1153,7 @@
             KeyCode::ESCAPE,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_FORCE_ON_notsave_ubiq_vimnormal,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
           </autogen>
         </item>
         <item>
@@ -1259,10 +1168,7 @@
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
           </autogen>
         </item>
         <item>
@@ -1276,10 +1182,7 @@
             KeyCode::CONTROL_L, ModifierFlag::COMMAND_L,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
           </autogen>
         </item>
         <item>
@@ -1293,10 +1196,7 @@
             KeyCode::FN,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
           </autogen>
         </item>
         <item>
@@ -1308,10 +1208,7 @@
             KeyCode::V, VK_OPTION,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
           </autogen>
         </item>
         <item>
@@ -1323,10 +1220,7 @@
             KeyCode::V, VK_OPTION,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_FORCE_ON_notsave_ubiq_vimnormal,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
           </autogen>
         </item>
         <item>
@@ -1340,10 +1234,7 @@
             KeyCode::VK_NONE,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
+            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
           </autogen>
         </item>
       </list>
@@ -1365,10 +1256,8 @@
             KeyCode::SHIFT_L, VK_CONTROL,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending,
+            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
+            ,
             KeyCode::VK_STICKY_CONTROL_L,
             KeyCode::VK_STICKY_SHIFT_L
           </autogen>
@@ -1377,10 +1266,8 @@
             KeyCode::CONTROL_L, VK_SHIFT,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending,
+            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
+            ,
             KeyCode::VK_STICKY_CONTROL_L,
             KeyCode::VK_STICKY_SHIFT_L
           </autogen>
@@ -1395,10 +1282,8 @@
             KeyCode::COMMAND_L, VK_CONTROL,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending,
+            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
+            ,
             KeyCode::VK_STICKY_CONTROL_L,
             KeyCode::VK_STICKY_COMMAND_L
           </autogen>
@@ -1407,10 +1292,8 @@
             KeyCode::CONTROL_L, VK_COMMAND,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending,
+            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
+            ,
             KeyCode::VK_STICKY_CONTROL_L,
             KeyCode::VK_STICKY_COMMAND_L
           </autogen>
@@ -1425,10 +1308,8 @@
             KeyCode::COMMAND_L, ModifierFlag::COMMAND_L,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending,
+            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
+            ,
             KeyCode::VK_STICKY_COMMAND_L
           </autogen>
         </item>
