@@ -234,6 +234,7 @@
               KeyCode::SLASH, ModifierFlag::NONE,
               KeyCode::F, ModifierFlag::COMMAND_L,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+              KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
             </autogen>
@@ -322,6 +323,7 @@
                 KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L,
                 KeyCode::RETURN, ModifierFlag::SHIFT_L,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+                KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
               </autogen>
@@ -332,6 +334,7 @@
                 KeyCode::RETURN, ModifierFlag::SHIFT_L,
                 KeyCode::CURSOR_UP,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+                KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
               </autogen>
@@ -341,6 +344,7 @@
                 --KeyToKey--
                 KeyCode::A, ModifierFlag::NONE,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+                KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
               </autogen>
@@ -349,6 +353,7 @@
                 KeyCode::A, VK_SHIFT,
                 KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::NONE,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+                KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
               </autogen>
@@ -367,6 +372,7 @@
                 --KeyToKey--
                 KeyCode::I, ModifierFlag::NONE,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+                KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
               </autogen>
@@ -375,6 +381,7 @@
                 KeyCode::I, VK_SHIFT,
                 KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::NONE,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+                KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
               </autogen>
@@ -387,6 +394,7 @@
                 KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
                 KeyCode::X, ModifierFlag::COMMAND_L,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+                KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
               </autogen>
@@ -481,6 +489,7 @@
                 KeyCode::CURSOR_RIGHT, ModifierFlag::CONTROL_L,
                 KeyCode::RETURN, ModifierFlag::OPTION_L,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+                KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
               </autogen>
@@ -491,6 +500,7 @@
                 KeyCode::RETURN, ModifierFlag::OPTION_L,
                 KeyCode::CURSOR_UP,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+                KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
               </autogen>
@@ -500,6 +510,7 @@
                 --KeyToKey--
                 KeyCode::A, ModifierFlag::NONE,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+                KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
               </autogen>
@@ -508,6 +519,7 @@
                 KeyCode::A, VK_SHIFT,
                 KeyCode::CURSOR_RIGHT, ModifierFlag::CONTROL_L | ModifierFlag::NONE,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+                KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
               </autogen>
@@ -526,6 +538,7 @@
                 --KeyToKey--
                 KeyCode::I, ModifierFlag::NONE,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+                KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
               </autogen>
@@ -534,6 +547,7 @@
                 KeyCode::I, VK_SHIFT,
                 KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L | ModifierFlag::NONE,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+                KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
               </autogen>
@@ -546,6 +560,7 @@
                 KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L,
                 KeyCode::X, ModifierFlag::COMMAND_L,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+                KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
                 KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
               </autogen>
@@ -621,88 +636,6 @@
               KeyCode::G, ModifierFlag::NONE,
               KeyCode::VK_CONFIG_FORCE_ON_notsave_g_operator_pending
             </autogen>
-          </block>
-
-          <!-- g operator pending mode commands. -->
-          <block>
-            <config_only>notsave.g_operator_pending</config_only>
-            <!-- Default gg behavior -->
-            <block>
-              <autogen>
-                --KeyToKey--
-                KeyCode::G, ModifierFlag::NONE,
-                KeyCode::CURSOR_UP, ModifierFlag::COMMAND_L,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
-              </autogen>
-            </block>
-
-            <!-- Default gt, gT (tab-switch) bindings. -->
-            <block>
-              <not>SAFARI, SKYPE, GOOGLE_CHROME</not>
-              <autogen>
-                --KeyToKey--
-                KeyCode::T, ModifierFlag::NONE,
-                KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
-              </autogen>
-              <autogen>
-                --KeyToKey--
-                KeyCode::T, VK_SHIFT,
-                KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
-              </autogen>
-            </block>
-
-            <!-- Skype tab-switch customization. -->
-            <block>
-              <only>SKYPE</only>
-              <autogen>
-                --KeyToKey--
-                KeyCode::T, ModifierFlag::NONE,
-                KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
-              </autogen>
-              <autogen>
-                --KeyToKey--
-                KeyCode::T, VK_SHIFT,
-                KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
-              </autogen>
-            </block>
-
-            <!-- Safari tab-switch customization. -->
-            <block>
-              <only>SAFARI</only>
-              <autogen>
-                --KeyToKey--
-                KeyCode::T, ModifierFlag::NONE,
-                KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
-              </autogen>
-              <autogen>
-                --KeyToKey--
-                KeyCode::T, VK_SHIFT,
-                KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
-              </autogen>
-            </block>
-
-            <!-- Google Chrome tab-switch customization. -->
-            <block>
-              <only>GOOGLE_CHROME</only>
-              <autogen>
-                --KeyToKey--
-                KeyCode::T, ModifierFlag::NONE,
-                KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
-              </autogen>
-              <autogen>
-                --KeyToKey--
-                KeyCode::T, VK_SHIFT,
-                KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L,
-                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
-              </autogen>
-            </block>
           </block>
 
           <!-- Enter C-w operator pending mode. -->
@@ -847,6 +780,7 @@
               KeyCode::ESCAPE,
               KeyCode::VK_LOCK_ALL_FORCE_OFF,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+              KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending,
               KeyCode::VK_NONE,
@@ -862,6 +796,7 @@
               KeyCode::ESCAPE,
               KeyCode::VK_LOCK_ALL_FORCE_OFF,
               KeyCode::VK_CONFIG_FORCE_ON_notsave_ubiq_vimnormal,
+              KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending,
               KeyCode::VK_NONE,
@@ -877,6 +812,7 @@
               KeyCode::ESCAPE,
               KeyCode::VK_LOCK_ALL_FORCE_OFF,
               KeyCode::VK_CONFIG_FORCE_ON_notsave_ubiq_vimnormal,
+              KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending,
               KeyCode::VK_NONE,
@@ -892,6 +828,7 @@
               KeyCode::ESCAPE,
               KeyCode::VK_LOCK_ALL_FORCE_OFF,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+              KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending,
               KeyCode::ESCAPE
@@ -913,6 +850,7 @@
             KeyCode::BRACKET_LEFT, VK_CONTROL,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
           </autogen>
@@ -928,6 +866,7 @@
             KeyCode::COMMAND_R,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
           </autogen>
@@ -943,6 +882,7 @@
             KeyCode::COMMAND_L,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
           </autogen>
@@ -966,6 +906,7 @@
             KeyCode::COMMAND_L,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
           </autogen>
@@ -982,6 +923,7 @@
             KeyCode::VK_NONE,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
           </autogen>
@@ -991,6 +933,7 @@
             KeyCode::OPTION_L,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
           </autogen>
@@ -1000,6 +943,7 @@
             KeyCode::OPTION_L,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
           </autogen>
@@ -1009,6 +953,7 @@
             KeyCode::OPTION_L,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
           </autogen>
@@ -1022,6 +967,7 @@
             KeyCode::BACKQUOTE, ModifierFlag::NONE,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
           </autogen>
@@ -1037,6 +983,7 @@
             KeyCode::COMMAND_L,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
           </autogen>
@@ -1052,6 +999,7 @@
             KeyCode::COMMAND_R,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
           </autogen>
@@ -1067,6 +1015,7 @@
             KeyCode::CONTROL_R,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
           </autogen>
@@ -1082,6 +1031,7 @@
             KeyCode::ESCAPE,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_FORCE_ON_notsave_ubiq_vimnormal,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
           </autogen>
@@ -1098,6 +1048,7 @@
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
           </autogen>
@@ -1113,6 +1064,7 @@
             KeyCode::CONTROL_L, ModifierFlag::COMMAND_L,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
           </autogen>
@@ -1128,6 +1080,7 @@
             KeyCode::FN,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
           </autogen>
@@ -1141,6 +1094,7 @@
             KeyCode::V, VK_OPTION,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
           </autogen>
@@ -1154,6 +1108,7 @@
             KeyCode::V, VK_OPTION,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_FORCE_ON_notsave_ubiq_vimnormal,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
           </autogen>
@@ -1169,6 +1124,7 @@
             KeyCode::VK_NONE,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
           </autogen>
@@ -1192,6 +1148,7 @@
             KeyCode::SHIFT_L, VK_CONTROL,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending,
             KeyCode::VK_STICKY_CONTROL_L,
@@ -1202,6 +1159,7 @@
             KeyCode::CONTROL_L, VK_SHIFT,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending,
             KeyCode::VK_STICKY_CONTROL_L,
@@ -1218,6 +1176,7 @@
             KeyCode::COMMAND_L, VK_CONTROL,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending,
             KeyCode::VK_STICKY_CONTROL_L,
@@ -1228,6 +1187,7 @@
             KeyCode::CONTROL_L, VK_COMMAND,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending,
             KeyCode::VK_STICKY_CONTROL_L,
@@ -1244,6 +1204,7 @@
             KeyCode::COMMAND_L, ModifierFlag::COMMAND_L,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending,
             KeyCode::VK_STICKY_COMMAND_L
@@ -1268,9 +1229,90 @@
       <name>Operator Pending Mode Placeholders (No Settings)</name>
       <list>
         <item>
+          <name>d operator pending mode placeholder</name>
+          <identifier vk_config="true">notsave.d_operator_pending</identifier>
+          <autogen>--ShowStatusMessage-- [d]</autogen>
+        </item>
+        <item>
           <name>g operator pending mode placeholder</name>
           <identifier vk_config="true">notsave.g_operator_pending</identifier>
           <autogen>--ShowStatusMessage-- [g]</autogen>
+
+          <!-- Default gg behavior -->
+          <autogen>
+            --KeyToKey--
+            KeyCode::G, ModifierFlag::NONE,
+            KeyCode::CURSOR_UP, ModifierFlag::COMMAND_L,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
+          </autogen>
+
+          <!-- Default gt, gT (tab-switch) bindings. -->
+          <block>
+            <not>SAFARI, SKYPE, GOOGLE_CHROME</not>
+            <autogen>
+              --KeyToKey--
+              KeyCode::T, ModifierFlag::NONE,
+              KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L,
+              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
+            </autogen>
+            <autogen>
+              --KeyToKey--
+              KeyCode::T, VK_SHIFT,
+              KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
+              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
+            </autogen>
+          </block>
+
+          <!-- Skype tab-switch customization. -->
+          <block>
+            <only>SKYPE</only>
+            <autogen>
+              --KeyToKey--
+              KeyCode::T, ModifierFlag::NONE,
+              KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
+              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
+            </autogen>
+            <autogen>
+              --KeyToKey--
+              KeyCode::T, VK_SHIFT,
+              KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
+              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
+            </autogen>
+          </block>
+
+          <!-- Safari tab-switch customization. -->
+          <block>
+            <only>SAFARI</only>
+            <autogen>
+              --KeyToKey--
+              KeyCode::T, ModifierFlag::NONE,
+              KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
+              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
+            </autogen>
+            <autogen>
+              --KeyToKey--
+              KeyCode::T, VK_SHIFT,
+              KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
+              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
+            </autogen>
+          </block>
+
+          <!-- Google Chrome tab-switch customization. -->
+          <block>
+            <only>GOOGLE_CHROME</only>
+            <autogen>
+              --KeyToKey--
+              KeyCode::T, ModifierFlag::NONE,
+              KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L,
+              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
+            </autogen>
+            <autogen>
+              --KeyToKey--
+              KeyCode::T, VK_SHIFT,
+              KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L,
+              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
+            </autogen>
+          </block>
         </item>
         <item>
           <name>c-w operator pending mode placeholder</name>
