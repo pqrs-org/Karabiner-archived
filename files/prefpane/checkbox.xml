@@ -11855,6 +11855,21 @@
                       <identifier>remap.oyayubi_shift_roman_eisuu_kana</identifier>
                       <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::JIS_EISUU|g' -e 's|RIGHT_THUMB|KeyCode::JIS_KANA|g' include/jis_oyayubishiftinput.xml" -->
                     </item>
+                    <item>
+                      <name>＜ローマ字モード＞ 左シフト＝スペース, 右シフト＝右コマンド</name>
+                      <identifier>remap.oyayubi_shift_roman_space_command_r</identifier>
+                      <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::SPACE|g' -e 's|RIGHT_THUMB|KeyCode::COMMAND_R|g' include/jis_oyayubishiftinput.xml" -->
+                    </item>
+                    <item>
+                      <name>＜ローマ字モード＞ 左シフト＝左コマンド, 右シフト＝スペース</name>
+                      <identifier>remap.oyayubi_shift_roman_command_l_space</identifier>
+                      <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::COMMAND_L|g' -e 's|RIGHT_THUMB|KeyCode::SPACE|g' include/jis_oyayubishiftinput.xml" -->
+                    </item>
+                    <item>
+                      <name>＜ローマ字モード＞ 左シフト＝左コマンド, 右シフト＝右コマンド</name>
+                      <identifier>remap.oyayubi_shift_roman_command_l_command_r</identifier>
+                      <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::COMMAND_L|g' -e 's|RIGHT_THUMB|KeyCode::COMMAND_R|g' include/jis_oyayubishiftinput.xml" -->
+                    </item>
                     <item><name>------------------------------------------------------------</name></item>
                     <item>
                       <name>スラッシュキー（/）を素通しする</name>
