@@ -4,3 +4,4 @@ all:
 
 install: all
 	sudo cp number.xml output/checkbox.xml /Library/org.pqrs/KeyRemap4MacBook/prefpane
+	sudo cp number.xml output/checkbox.xml /Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app/Contents/Resources
