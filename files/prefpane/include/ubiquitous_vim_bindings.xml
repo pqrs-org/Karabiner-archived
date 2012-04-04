@@ -99,7 +99,8 @@
             KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
             KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L,
             KeyCode::X, ModifierFlag::COMMAND_L,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
           </autogen>
 
           <!-- ce -->
@@ -108,7 +109,8 @@
             KeyCode::C, ModifierFlag::NONE,
             KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
             KeyCode::X, ModifierFlag::COMMAND_L,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
           </autogen>
 
           <!-- cw -->
@@ -119,7 +121,8 @@
             KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
             KeyCode::CURSOR_LEFT,  ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
             KeyCode::X, ModifierFlag::COMMAND_L,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
           </autogen>
         </item>
 
