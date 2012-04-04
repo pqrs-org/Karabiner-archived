@@ -46,9 +46,11 @@
           <appendix>U: Undo (Command_L+z)</appendix> <!-- TODO: Can't distinguish undo contexts, so doing next best thing. -->
           <appendix>Ctrl-r: Redo (Command_L+Shift_L+z)</appendix>
           <appendix>cc: Delete line and insert</appendix>
+          <appendix>cb: Delete backward-word and insert</appendix>
           <appendix>ce: Delete word and insert</appendix>
           <appendix>cw: Delete word and insert</appendix>
           <appendix>dd: Delete line (Command+CursorLeft, Shift_L+Down, Command+X)</appendix>
+          <appendix>db: Delete backward-word</appendix>
           <appendix>de: Delete word</appendix>
           <appendix>dw: Delete word</appendix>
           <appendix>D: Delete to end of line (Command_L+Shift_L+Right, Delete)</appendix>
@@ -83,189 +85,189 @@
           <appendix></appendix>
           <appendix>Ubiquitous Vim Normal Mode is inactive in terminal applications, Firefox, emacs, vi and vim, and when the password dialog box is active.
           </appendix>
-        </item>
-
-        <!-- ============================================================ -->
-        <!-- c operator pending -->
-        <item>
-          <name></name>
-          <identifier vk_config="true">notsave.c_operator_pending</identifier>
-          <autogen>--ShowStatusMessage-- [c]</autogen>
-
-          <!-- cc -->
-          <autogen>
-            --KeyToKey--
-            KeyCode::C, ModifierFlag::NONE,
-            KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
-            KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L,
-            KeyCode::X, ModifierFlag::COMMAND_L,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
-            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
-          </autogen>
-
-          <!-- ce -->
-          <autogen>
-            --KeyToKey--
-            KeyCode::C, ModifierFlag::NONE,
-            KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
-            KeyCode::X, ModifierFlag::COMMAND_L,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
-            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
-          </autogen>
-
-          <!-- cw -->
-          <autogen>
-            --KeyToKey--
-            KeyCode::C, ModifierFlag::NONE,
-            KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
-            KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
-            KeyCode::CURSOR_LEFT,  ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
-            KeyCode::X, ModifierFlag::COMMAND_L,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
-            <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
-          </autogen>
-        </item>
-
-        <!-- ============================================================ -->
-        <!-- d operator pending -->
-        <item>
-          <name></name>
-          <identifier vk_config="true">notsave.d_operator_pending</identifier>
-          <autogen>--ShowStatusMessage-- [d]</autogen>
-
-          <!-- dd -->
-          <autogen>
-            --KeyToKey--
-            KeyCode::D, ModifierFlag::NONE,
-            KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
-            KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L,
-            KeyCode::X, ModifierFlag::COMMAND_L,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending
-          </autogen>
-
-          <!-- de -->
-          <autogen>
-            --KeyToKey--
-            KeyCode::E, ModifierFlag::NONE,
-            KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
-            KeyCode::X, ModifierFlag::COMMAND_L,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending
-          </autogen>
-
-          <!-- dw -->
-          <autogen>
-            --KeyToKey--
-            KeyCode::W, ModifierFlag::NONE,
-            KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
-            KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
-            KeyCode::CURSOR_LEFT,  ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
-            KeyCode::X, ModifierFlag::COMMAND_L,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending
-          </autogen>
-        </item>
-
-        <!-- ============================================================ -->
-        <!-- g operator pending -->
-        <item>
-          <name></name>
-          <identifier vk_config="true">notsave.g_operator_pending</identifier>
-          <autogen>--ShowStatusMessage-- [g]</autogen>
-
-          <!-- Default gg behavior -->
-          <autogen>
-            --KeyToKey--
-            KeyCode::G, ModifierFlag::NONE,
-            KeyCode::CURSOR_UP, ModifierFlag::COMMAND_L,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
-          </autogen>
-
-          <!-- Default gt, gT (tab-switch) bindings. -->
-          <block>
-            <not>SAFARI, SKYPE, GOOGLE_CHROME</not>
-            <autogen>
-              --KeyToKey--
-              KeyCode::T, ModifierFlag::NONE,
-              KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
-            </autogen>
-            <autogen>
-              --KeyToKey--
-              KeyCode::T, VK_SHIFT,
-              KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
-            </autogen>
-          </block>
-
-          <!-- Skype tab-switch customization. -->
-          <block>
-            <only>SKYPE</only>
-            <autogen>
-              --KeyToKey--
-              KeyCode::T, ModifierFlag::NONE,
-              KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
-            </autogen>
-            <autogen>
-              --KeyToKey--
-              KeyCode::T, VK_SHIFT,
-              KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
-            </autogen>
-          </block>
-
-          <!-- Safari tab-switch customization. -->
-          <block>
-            <only>SAFARI</only>
-            <autogen>
-              --KeyToKey--
-              KeyCode::T, ModifierFlag::NONE,
-              KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
-            </autogen>
-            <autogen>
-              --KeyToKey--
-              KeyCode::T, VK_SHIFT,
-              KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
-            </autogen>
-          </block>
-
-          <!-- Google Chrome tab-switch customization. -->
-          <block>
-            <only>GOOGLE_CHROME</only>
-            <autogen>
-              --KeyToKey--
-              KeyCode::T, ModifierFlag::NONE,
-              KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
-            </autogen>
-            <autogen>
-              --KeyToKey--
-              KeyCode::T, VK_SHIFT,
-              KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
-            </autogen>
-          </block>
-        </item>
-
-        <!-- ============================================================ -->
-        <!-- control+w operator pending -->
-        <item>
-          <name></name>
-          <identifier vk_config="true">notsave.c_w_operator_pending</identifier>
-          <autogen>--ShowStatusMessage-- [w]</autogen>
-        </item>
-
-        <!-- ============================================================ -->
-        <item>
-          <name></name>
 
           <identifier vk_config="true">notsave.ubiq_vimnormal</identifier>
           <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
           <autogen>--ShowStatusMessage-- Normal Mode</autogen>
 
-          <block>
+          <!-- ============================================================ -->
+          <!-- c operator pending -->
 
+          <block>
+            <config_only>notsave.c_operator_pending</config_only>
+
+            <!-- cc -->
+            <autogen>
+              --KeyToKey--
+              KeyCode::C, ModifierFlag::NONE,
+              KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
+              KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L,
+              KeyCode::X, ModifierFlag::COMMAND_L,
+              KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+              <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
+            </autogen>
+
+            <!-- cb -->
+            <autogen>
+              --KeyToKey--
+              KeyCode::B, ModifierFlag::NONE,
+              KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
+              KeyCode::X, ModifierFlag::COMMAND_L,
+              KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+              <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
+            </autogen>
+
+            <!-- ce -->
+            <autogen>
+              --KeyToKey--
+              KeyCode::E, ModifierFlag::NONE,
+              KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
+              KeyCode::X, ModifierFlag::COMMAND_L,
+              KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+              <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
+            </autogen>
+
+            <!-- cw -->
+            <autogen>
+              --KeyToKey--
+              KeyCode::W, ModifierFlag::NONE,
+              KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
+              KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
+              KeyCode::CURSOR_LEFT,  ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
+              KeyCode::X, ModifierFlag::COMMAND_L,
+              KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+              <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
+            </autogen>
+          </block>
+
+          <!-- ============================================================ -->
+          <!-- d operator pending -->
+          <block>
+            <config_only>notsave.d_operator_pending</config_only>
+
+            <!-- dd -->
+            <autogen>
+              --KeyToKey--
+              KeyCode::D, ModifierFlag::NONE,
+              KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
+              KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L,
+              KeyCode::X, ModifierFlag::COMMAND_L,
+              KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending
+            </autogen>
+
+            <!-- db -->
+            <autogen>
+              --KeyToKey--
+              KeyCode::B, ModifierFlag::NONE,
+              KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
+              KeyCode::X, ModifierFlag::COMMAND_L,
+              KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending
+            </autogen>
+
+            <!-- de -->
+            <autogen>
+              --KeyToKey--
+              KeyCode::E, ModifierFlag::NONE,
+              KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
+              KeyCode::X, ModifierFlag::COMMAND_L,
+              KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending
+            </autogen>
+
+            <!-- dw -->
+            <autogen>
+              --KeyToKey--
+              KeyCode::W, ModifierFlag::NONE,
+              KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
+              KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
+              KeyCode::CURSOR_LEFT,  ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
+              KeyCode::X, ModifierFlag::COMMAND_L,
+              KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending
+            </autogen>
+          </block>
+
+          <!-- ============================================================ -->
+          <!-- g operator pending -->
+          <block>
+            <config_only>notsave.g_operator_pending</config_only>
+
+            <!-- Default gg behavior -->
+            <autogen>
+              --KeyToKey--
+              KeyCode::G, ModifierFlag::NONE,
+              KeyCode::CURSOR_UP, ModifierFlag::COMMAND_L,
+              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
+            </autogen>
+
+            <!-- Default gt, gT (tab-switch) bindings. -->
+            <block>
+              <not>SAFARI, SKYPE, GOOGLE_CHROME</not>
+              <autogen>
+                --KeyToKey--
+                KeyCode::T, ModifierFlag::NONE,
+                KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L,
+                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
+              </autogen>
+              <autogen>
+                --KeyToKey--
+                KeyCode::T, VK_SHIFT,
+                KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
+                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
+              </autogen>
+            </block>
+
+            <!-- Skype tab-switch customization. -->
+            <block>
+              <only>SKYPE</only>
+              <autogen>
+                --KeyToKey--
+                KeyCode::T, ModifierFlag::NONE,
+                KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
+                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
+              </autogen>
+              <autogen>
+                --KeyToKey--
+                KeyCode::T, VK_SHIFT,
+                KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
+                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
+              </autogen>
+            </block>
+
+            <!-- Safari tab-switch customization. -->
+            <block>
+              <only>SAFARI</only>
+              <autogen>
+                --KeyToKey--
+                KeyCode::T, ModifierFlag::NONE,
+                KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
+                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
+              </autogen>
+              <autogen>
+                --KeyToKey--
+                KeyCode::T, VK_SHIFT,
+                KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
+                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
+              </autogen>
+            </block>
+
+            <!-- Google Chrome tab-switch customization. -->
+            <block>
+              <only>GOOGLE_CHROME</only>
+              <autogen>
+                --KeyToKey--
+                KeyCode::T, ModifierFlag::NONE,
+                KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L,
+                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
+              </autogen>
+              <autogen>
+                --KeyToKey--
+                KeyCode::T, VK_SHIFT,
+                KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L,
+                KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
+              </autogen>
+            </block>
+          </block>
+
+          <block>
             <!-- Unimplemented dead keys in Normal Mode -->
             <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
             <autogen>--KeyToKey-- KeyCode::R, VK_SHIFT, KeyCode::VK_NONE</autogen>
@@ -1333,6 +1335,28 @@
     <!-- Putting these here since items must have names, so we can't hide them completely. -->
     <item>
       <name>Operator Pending Mode Placeholders (No Settings)</name>
+      <list>
+        <item>
+          <name></name>
+          <identifier vk_config="true">notsave.c_operator_pending</identifier>
+          <autogen>--ShowStatusMessage-- [c]</autogen>
+        </item>
+        <item>
+          <name></name>
+          <identifier vk_config="true">notsave.d_operator_pending</identifier>
+          <autogen>--ShowStatusMessage-- [d]</autogen>
+        </item>
+        <item>
+          <name></name>
+          <identifier vk_config="true">notsave.g_operator_pending</identifier>
+          <autogen>--ShowStatusMessage-- [g]</autogen>
+        </item>
+        <item>
+          <name></name>
+          <identifier vk_config="true">notsave.c_w_operator_pending</identifier>
+          <autogen>--ShowStatusMessage-- [w]</autogen>
+        </item>
+      </list>
     </item>
 
   </list>
