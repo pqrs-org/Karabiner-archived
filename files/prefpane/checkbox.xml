@@ -729,6 +729,11 @@
           <autogen>--KeyToKey-- KeyCode::BACKSLASH, ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
         </item>
         <item>
+          <name>Fn+Backslash(\) to Home</name>
+          <identifier>remap.fn_backslash_to_home</identifier>
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH, ModifierFlag::FN, KeyCode::HOME</autogen>
+        </item>
+        <item>
           <name>Backslash(\) to Return</name>
           <identifier>remap.backslash2return</identifier>
           <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::RETURN</autogen>
