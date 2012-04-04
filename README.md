@@ -26,9 +26,12 @@ Requirements:
 * Xcode 4.3+
 * Command Line Tools for Xcode
 * Auxiliary Tools for Xcode
+* Boost 1.49.0+ (header-only) http://www.boost.org/
 
-Please install PackageMaker.app in /Applications/Utilities.
+Please install PackageMaker.app into /Applications/Utilities.
 (PackageMaker.app is included in Auxiliary Tools for Xcode.)
+
+Please install Boost into /usr/local/include/boost.
 
 ### Step1: Getting source code
 
