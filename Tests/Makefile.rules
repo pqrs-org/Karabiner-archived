@@ -1,3 +1,5 @@
+all: run
+
 run: a.out
 	@./a.out
 
