@@ -17,3 +17,6 @@ clean:
 
 xcode:
 	open *.xcodeproj
+
+dump_data:
+	@./build/Release/dump_xml_compiler_result.app/Contents/MacOS/dump_xml_compiler_result
