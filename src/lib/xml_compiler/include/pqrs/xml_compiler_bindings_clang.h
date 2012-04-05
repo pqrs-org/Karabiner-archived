@@ -16,6 +16,9 @@ void pqrs_xml_compiler_reload(struct pqrs_xml_compiler* p);
 const char* pqrs_xml_compiler_get_error_message(const struct pqrs_xml_compiler* p);
 int pqrs_xml_compiler_get_error_count(const struct pqrs_xml_compiler* p);
 
+const uint32_t* pqrs_xml_compiler_get_remapclasses_initialize_vector_data(const struct pqrs_xml_compiler* p);
+size_t pqrs_xml_compiler_get_remapclasses_initialize_vector_size(const struct pqrs_xml_compiler* p);
+
 #ifdef __cplusplus
 }
 #endif

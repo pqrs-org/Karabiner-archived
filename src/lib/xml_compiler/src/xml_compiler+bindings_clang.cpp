@@ -57,3 +57,23 @@ pqrs_xml_compiler_get_error_count(const struct pqrs_xml_compiler* p)
 
   return p->xml_compiler_ptr->get_error_count();
 }
+
+const uint32_t*
+pqrs_xml_compiler_get_remapclasses_initialize_vector_data(const struct pqrs_xml_compiler* p)
+{
+  if (! p) return NULL;
+  if (! p->xml_compiler_ptr) return NULL;
+
+  auto v = (p->xml_compiler_ptr->get_remapclasses_initialize_vector()).get();
+  return &(v[0]);
+}
+
+size_t
+pqrs_xml_compiler_get_remapclasses_initialize_vector_size(const struct pqrs_xml_compiler* p)
+{
+  if (! p) return NULL;
+  if (! p->xml_compiler_ptr) return NULL;
+
+  auto v = (p->xml_compiler_ptr->get_remapclasses_initialize_vector()).get();
+  return v.size();
+}
