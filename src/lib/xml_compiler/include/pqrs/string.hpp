@@ -26,10 +26,13 @@ namespace pqrs {
     boost::optional<uint32_t> to_uint32_t(const boost::optional<std::string>& string);
 
     // split
-    enum split_option {
-      none,
-      trim,
-      remove_empty_strings,
+    class split_option {
+    public:
+      enum value {
+        none,
+        trim,
+        remove_empty_strings,
+      };
     };
     void split_by_comma(std::vector<std::string>& v,
                         std::string string,
