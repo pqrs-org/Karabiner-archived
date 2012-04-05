@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<root>
+  <replacementdef>
+    <replacementname>DEVICEPRODUCTDEF_REPLACEMENT</replacementname>
+    <replacementvalue>
+      <![CDATA[
+        <deviceproductdef>
+          <productname>APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</productname>
+          <!--
+          <productid>0x0218</productid>
+          -->
+          <productid></productid>
+        </deviceproductdef>
+      ]]>
+    </replacementvalue>
+  </replacementdef>
+</root>

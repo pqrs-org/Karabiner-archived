@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+<root>
+  {{ DEVICEPRODUCTDEF_REPLACEMENT }}
+
+  <deviceproductdef>
+    <productname>APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</productname>
+    <productid>0x0218</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a</productname>
+    <productid>0x021a</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0220</productname>
+    <productid>0x0220</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0223</productname>
+    <productid>0x0223</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0236</productname>
+    <productid>0x0236</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0237</productname>
+    <productid>0x0237</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0245</productname>
+    <productid>0x0245</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0249</productname>
+    <productid>0x0249</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x024d</productname>
+    <productid>0x024d</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>APPLE_EXTERNAL_KEYBOARD_0x0221</productname>
+    <productid>0x0221</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>APPLE_EXTERNAL_KEYBOARD_0x022c</productname>
+    <productid>0x022c</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>APPLE_ALUMINUM_KEYBOARD_JIS</productname>
+    <productid>0x0222</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>APPLE_WIRELESS_KEYBOARD_0x022d</productname>
+    <productid>0x022d</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>APPLE_WIRELESS_TRACKPAD_0x030e</productname>
+    <productid>0x030e</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>MAGIC_MOUSE</productname>
+    <productid>0x030d</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>TYPEMATRIX_KEYBOARD_0x2030</productname>
+    <productid>0x2030</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>FKBN91ML_NB</productname>
+    <productid>0x2011</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>K33374</productname>
+    <productid>0x2012</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>CHESEN_PS2_TO_USB</productname>
+    <productid>0x0205</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>LOGITECH_CORDLESS_PRESENTER</productname>
+    <productid>0xc515</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>LOGITECH_USB_HEADSET</productname>
+    <productid>0x0a0b</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>LOGITECH_NUMBER_PAD</productname>
+    <productid>0xc523</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>LOGITECH_R400</productname>
+    <productid>0xc52d</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>LOGITECH_R800</productname>
+    <productid>0xc52d</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>LOGITECH_G700</productname>
+    <productid>0xc06b</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>LOGITECH_DINOVO_EDGE_0xb309</productname>
+    <productid>0xb309</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>LOGITECH_UNIFYING_0xc52b</productname>
+    <productid>0xc52b</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>LOGITECH_MX620</productname>
+    <productid>0xc521</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>HHKB_Professional_JP_0x000d</productname>
+    <productid>0x000d</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>HHKB_LITE2_JP_0x0068</productname>
+    <productid>0x0068</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>SUN_TYPE_6_KEYBOARD</productname>
+    <productid>0x0005</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>MICRO_TRONKB</productname>
+    <productid>0x0108</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>MICRO_TRONKB_JIS</productname>
+    <productid>0x0107</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>MICRO_TRONKB_TRON</productname>
+    <productid>0x0108</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>MICROSOFT_NATURAL_ERGONOMIC_4000</productname>
+    <productid>0x00db</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>TARGUS_BLUETOOTH_PRESENTER</productname>
+    <productid>0x07d1</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>Unicomp_SpaceSaver_M_Keyboard</productname>
+    <productid>0x0804</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>Chic_Keypad</productname>
+    <productid>0x1010</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>Truly_Ergonomic_Computer_Keyboard_0x030c</productname>
+    <productid>0x030c</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>PSEUDO</productname>
+    <productid>0x0000</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>ANY</productname>
+    <productid>0x0000</productid>
+  </deviceproductdef>
+</root>

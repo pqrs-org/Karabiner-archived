@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<root>
+  <replacementdef>
+    <replacementname>APPDEF_REPLACEMENT</replacementname>
+    <replacementvalue>
+      <![CDATA[
+        <appdef>
+          <appname></appname>
+          <equal>org.gnu.Emacs</equal>
+        </appdef>
+      ]]>
+    </replacementvalue>
+  </replacementdef>
+</root>

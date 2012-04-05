@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<root>
+  {{ APPDEF_REPLACEMENT }}
+
+  <appdef>
+    <appname>EMACS</appname>
+    <equal>org.gnu.Emacs</equal>
+    <equal>org.gnu.AquamacsEmacs</equal>
+    <equal>org.gnu.Aquamacs</equal>
+    <equal>org.pqrs.unknownapp.conkeror</equal>
+  </appdef>
+
+  <appdef>
+    <appname>VI</appname>
+    <prefix>org.vim.</prefix>
+  </appdef>
+</root>

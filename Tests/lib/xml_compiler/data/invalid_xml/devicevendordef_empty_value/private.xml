@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<root>
+  <replacementdef>
+    <replacementname>DEVICEVENDORDEF_REPLACEMENT</replacementname>
+    <replacementvalue>
+      <![CDATA[
+        <devicevendordef>
+          <vendorname>APPLE_COMPUTER</vendorname>
+          -->
+          <!--
+          <vendorid>0x05ac</vendorid>
+          -->
+          <vendorid></vendorid>
+        </devicevendordef>
+      ]]>
+    </replacementvalue>
+  </replacementdef>
+</root>

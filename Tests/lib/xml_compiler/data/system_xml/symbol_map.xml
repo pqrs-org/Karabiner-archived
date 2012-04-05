@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<root>
+  {{ SYMBOL_MAP_REPLACEMENT }}
+  <symbol_map type="ApplicationType" name="UNKNOWN" value="0" />
+  <symbol_map type="ApplicationType" name="VK__AUTOINDEX__BEGIN__" value="1" />
+  <symbol_map type="ConsumerKeyCode" name="BRIGHTNESS_DOWN" value="3" />
+  <symbol_map type="ConsumerKeyCode" name="BRIGHTNESS_UP" value="2" />
+  <symbol_map type="ConsumerKeyCode" name="BRIGHTNESS_UP" value="22" /> <!-- dup -->
+  <symbol_map type="ConsumerKeyCode" name="VOLUME_MUTE" value="7" />
+  <symbol_map type="ConsumerKeyCode" name="VOLUME_DOWN" value="1" />
+  <symbol_map type="ConsumerKeyCode" name="VOLUME_UP" value="0" />
+  <symbol_map type="ConsumerKeyCode" name="VK__AUTOINDEX__BEGIN__" value="1027" />
+  <symbol_map type="DeviceProduct" name="APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218" value="0x0218" />
+  <symbol_map type="DeviceProduct" name="PSEUDO" value="0x0000" />
+  <symbol_map type="DeviceProduct" name="ANY" value="0x0000" />
+  <symbol_map type="DeviceProduct" name="VK__AUTOINDEX__BEGIN__" value="0x0001" />
+  <symbol_map type="DeviceVendor" name="APPLE_COMPUTER" value="0x05ac" />
+  <symbol_map type="DeviceVendor" name="PSEUDO" value="0x0000" />
+  <symbol_map type="DeviceVendor" name="LOGITECH" value="0x046d" />
+  <symbol_map type="DeviceVendor" name="VK__AUTOINDEX__BEGIN__" value="0x046e" />
+  <symbol_map type="EventType" name="DOWN" value="10" />
+  <symbol_map type="EventType" name="UP" value="11" />
+  <symbol_map type="EventType" name="MODIFY" value="12" />
+  <symbol_map type="EventType" name="VK__AUTOINDEX__BEGIN__" value="13" />
+  <symbol_map type="InputMode" name="NONE" value="0" />
+  <symbol_map type="InputMode" name="ROMAN" value="1" />
+  <symbol_map type="InputMode" name="UNKNOWN" value="24" />
+  <symbol_map type="InputMode" name="VK__AUTOINDEX__BEGIN__" value="25" />
+  <symbol_map type="InputModeDetail" name="NONE" value="0" />
+  <symbol_map type="InputModeDetail" name="ROMAN" value="1" />
+  <symbol_map type="InputModeDetail" name="UNKNOWN" value="42" />
+  <symbol_map type="InputModeDetail" name="VK__AUTOINDEX__BEGIN__" value="43" />
+  <symbol_map type="KeyboardType" name="MACBOOK" value="37" />
+  <symbol_map type="KeyboardType" name="MACBOOK_COREDUO" value="38" />
+  <symbol_map type="KeyboardType" name="MACBOOK_3_1" value="44" />
+  <symbol_map type="KeyboardType" name="POWERBOOK_G4_TI" value="201" />
+  <symbol_map type="KeyboardType" name="VK__AUTOINDEX__BEGIN__" value="41" />
+  <symbol_map type="KeyCode" name="RETURN" value="36" />
+  <symbol_map type="KeyCode" name="TAB" value="48" />
+  <symbol_map type="KeyCode" name="SPACE" value="49" />
+  <symbol_map type="KeyCode" name="VK__AUTOINDEX__BEGIN__" value="1191" />
+  <symbol_map type="ModifierFlag" name="CAPSLOCK" value="0x10000" />
+  <symbol_map type="ModifierFlag" name="SHIFT_L" value="0x20002" />
+  <symbol_map type="ModifierFlag" name="SHIFT_R" value="0x20004" />
+  <symbol_map type="ModifierFlag" name="NONE" value="0x20000000" />
+  <symbol_map type="ModifierFlag" name="VK__AUTOINDEX__BEGIN__" value="0x20000001" />
+  <symbol_map type="Option" name="KEYOVERLAIDMODIFIER_REPEAT" value="1" />
+  <symbol_map type="Option" name="SIMULTANEOUSKEYPRESSES_RAW" value="2" />
+  <symbol_map type="Option" name="NOREPEAT" value="3" />
+  <symbol_map type="Option" name="KEYTOKEY_BEFORE_KEYDOWN" value="4" />
+  <symbol_map type="Option" name="KEYTOKEY_AFTER_KEYUP" value="5" />
+  <symbol_map type="Option" name="VK__AUTOINDEX__BEGIN__" value="6" />
+  <symbol_map type="PointingButton" name="NONE" value="0x00000000" />
+  <symbol_map type="PointingButton" name="RIGHT" value="0x00000001" />
+  <symbol_map type="PointingButton" name="MIDDLE" value="0x00000002" />
+  <symbol_map type="PointingButton" name="LEFT" value="0x00000004" />
+  <symbol_map type="PointingButton" name="VK__AUTOINDEX__BEGIN__" value="0x00008001" />
+  <symbol_map type="ScrollWheel" name="NONE" value="1" />
+  <symbol_map type="ScrollWheel" name="UP" value="2" />
+  <symbol_map type="ScrollWheel" name="DOWN" value="3" />
+  <symbol_map type="ScrollWheel" name="LEFT" value="4" />
+  <symbol_map type="ScrollWheel" name="RIGHT" value="5" />
+  <symbol_map type="ScrollWheel" name="VK__AUTOINDEX__BEGIN__" value="6" />
+</root>
