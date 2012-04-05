@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Swap Space and Tab</name>
+    <identifier>private.swap_space_and_tab</identifier>
+    <autogen>--KeyToKey2-- KeyCode::SPACE, VK_SHIFT, KeyCode::TAB</autogen>
+    <autogen>--KeyToKey2-- KeyCode::TAB, VK_SHIFT, KeyCode::SPACE</autogen>
+  </item>
+</root>

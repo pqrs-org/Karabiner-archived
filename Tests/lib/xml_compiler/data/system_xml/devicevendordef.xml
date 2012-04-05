@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<root>
+  {{ DEVICEVENDORDEF_REPLACEMENT }}
+
+  <devicevendordef>
+    <vendorname>APPLE_COMPUTER</vendorname>
+    <vendorid>0x05ac</vendorid>
+  </devicevendordef>
+
+  <devicevendordef>
+    <vendorname>TYPEMATRIX</vendorname>
+    <vendorid>0x1e54</vendorid>
+  </devicevendordef>
+
+</root>

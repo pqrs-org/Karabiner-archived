@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<root>
+  <!-- ============================================================ -->
+  <!-- kTISPropertyInputSourceID -->
+
+  <languagedef>
+    <languagename>CANADIAN</languagename>
+    <inputsourceid_equal>com.apple.keylayout.Canadian</inputsourceid_equal>
+  </languagedef>
+
+  <languagedef>
+    <languagename>BEPO</languagename>
+    <inputsourceid_equal>org.pqrs.inputmode.unknown.FrenchDvorak</inputsourceid_equal>
+  </languagedef>
+
+  <languagedef>
+    <languagename>BEPO</languagename>
+    <languagedetail>BEPO_AZERTYCMD</languagedetail>
+    <inputsourceid_equal>org.pqrs.inputmode.unknown.FrenchDvorak-AzertyCmd</inputsourceid_equal>
+  </languagedef>
+
+  <!-- ============================================================ -->
+  <!-- kTISPropertyInputModeID -->
+
+  <!-- Japanese -->
+  <languagedef>
+    <languagename>JAPANESE</languagename>
+    <languagedetail>JAPANESE_HIRAGANA</languagedetail>
+    <inputmodeid_equal>com.apple.inputmethod.Japanese.Hiragana</inputmodeid_equal>
+  </languagedef>
+
+  <languagedef>
+    <languagename>JAPANESE</languagename>
+    <languagedetail>JAPANESE_KATAKANA</languagedetail>
+    <inputmodeid_equal>com.apple.inputmethod.Japanese.Katakana</inputmodeid_equal>
+  </languagedef>
+
+  <languagedef>
+    <languagename>JAPANESE</languagename>
+    <languagedetail>JAPANESE_FULLWIDTH_ROMAN</languagedetail>
+    <inputmodeid_equal>com.apple.inputmethod.Japanese.FullWidthRoman</inputmodeid_equal>
+  </languagedef>
+
+  <languagedef>
+    <languagename>JAPANESE</languagename>
+    <languagedetail>JAPANESE_HALFWIDTH_KANA</languagedetail>
+    <inputmodeid_equal>com.apple.inputmethod.Japanese.HalfWidthKana</inputmodeid_equal>
+  </languagedef>
+
+  <languagedef>
+    <languagename>JAPANESE</languagename>
+    <inputmodeid_equal>com.apple.inputmethod.Japanese</inputmodeid_equal>
+  </languagedef>
+
+  <!-- ============================================================ -->
+  <!-- BCP 47 -->
+  <languagedef>
+    <languagename>FRENCH</languagename>
+    <bcp47>fr</bcp47>
+  </languagedef>
+
+</root>

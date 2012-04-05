@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<root>
+
+  <!-- ============================================================ -->
+  <!-- symbol_map -->
+  <symbol_map type="KeyCode" name="MY_LANG_KEY" value="123" />
+
+  <!-- ============================================================ -->
+  <!-- appdef -->
+
+  <appdef>
+    <appname>  APPSTORE  </appname>
+    <equal>  com.apple.appstore  </equal>
+  </appdef>
+
+  <!-- overwrite system value -->
+  <appdef>
+    <appname>TERMINAL</appname>
+    <equal>com.example.terminal</equal>
+  </appdef>
+
+  <!-- ============================================================ -->
+  <!-- devicevendordef, deviceproductdef -->
+
+  <devicevendordef>
+    <vendorname>  HEWLETT_PACKARD  </vendorname>
+    <vendorid>  0x03f0  </vendorid>
+  </devicevendordef>
+
+  <deviceproductdef>
+    <productname>  MY_HP_KEYBOARD  </productname>
+    <productid>  0x0224  </productid>
+  </deviceproductdef>
+
+  <!-- overwrite system value -->
+  <devicevendordef>
+    <vendorname>APPLE_INC</vendorname>
+    <vendorid>0x05ac</vendorid>
+  </devicevendordef>
+
+  <!-- overwrite system value -->
+  <deviceproductdef>
+    <productname>MAGIC_MOUSE</productname>
+    <productid>0x030d</productid>
+  </deviceproductdef>
+
+  <!-- ============================================================ -->
+  <!-- replacementdef -->
+
+  <replacementdef>
+    <replacementname>MY_REPLACEMENT</replacementname>
+    <replacementvalue>----------sample replacement----------------------------------------</replacementvalue>
+  </replacementdef>
+
+  <replacementdef>
+    <replacementname>JAPANESE_OYAYUBISHIFT_EXTRA</replacementname>
+    <replacementvalue>
+      <![CDATA[
+<not>REMOTEDESKTOPCONNECTION,VIRTUALMACHINE</not>
+]]>
+    </replacementvalue>
+  </replacementdef>
+
+  <replacementdef>
+    <replacementname>MY_XML</replacementname>
+    <replacementvalue>
+      <![CDATA[
+        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+      ]]>
+    </replacementvalue>
+  </replacementdef>
+
+  <item>
+    <name>{{MY_REPLACEMENT}}</name>
+    <identifier>private.replacement</identifier>
+    {{MY_XML}}
+  </item>
+
+  <!-- ============================================================ -->
+  <item>
+    <name>Swap Space and Tab</name>
+    <identifier>private.swap_space_and_tab</identifier>
+    <only>APPSTORE</only>
+    <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+    <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::SPACE</autogen>
+  </item>
+</root>

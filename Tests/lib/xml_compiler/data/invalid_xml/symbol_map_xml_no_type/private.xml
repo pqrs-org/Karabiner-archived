@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<root>
+  <replacementdef>
+    <replacementname>SYMBOL_MAP_REPLACEMENT</replacementname>
+    <replacementvalue>
+      <![CDATA[
+        <symbol_map                        name="BRIGHTNESS_UP"   value="2" /> <!-- no type -->
+      ]]>
+    </replacementvalue>
+  </replacementdef>
+</root>
