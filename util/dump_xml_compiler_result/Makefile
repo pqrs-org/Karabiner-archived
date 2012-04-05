@@ -1,11 +1,19 @@
-CXXFLAGS += -I../../src/lib/xml_compiler/include -std=c++11
+#CONFIGURATION = Debug
+CONFIGURATION = Release
 
-SOURCES=$(wildcard *.cpp)
-OBJECTS=$(patsubst %.cpp,%.o,$(SOURCES))
-
-all: $(OBJECTS)
-	$(CXX) $(CXXFLAGS) -o dump_xml_compiler_result $(SOURCES) $(LDFLAGS) \
-	../../src/lib/xml_compiler/build/Release/libxml_compiler.a
+all:
+	$(MAKE) -C ../../pkginfo
+	$(MAKE) -C ../../src/lib/xml_compiler
+	xcodebuild -alltargets -configuration $(CONFIGURATION) build
 
 clean:
-	rm -f *.o a.out
+	rm -rf build
+	rm -f Info.plist
+	rm -f *.xcodeproj/*.mode1
+	rm -f *.xcodeproj/*.mode1v3
+	rm -f *.xcodeproj/*.pbxuser
+	rm -rf *.xcodeproj/xcuserdata
+	rm -rf *.xcodeproj/project.xcworkspace/xcuserdata
+
+xcode:
+	open *.xcodeproj
