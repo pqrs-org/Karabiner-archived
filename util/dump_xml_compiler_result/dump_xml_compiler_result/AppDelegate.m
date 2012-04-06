@@ -92,6 +92,14 @@ static int total_identifier_count_ = 0;
     const pqrs_xml_compiler_preferences_number_node_tree* node_tree =
       pqrs_xml_compiler_get_preferences_number_node_tree_root(pqrs_xml_compiler);
     [self dump_number:node_tree];
+
+  } else if ([[arguments objectAtIndex:1] isEqualToString:@"dump_identifier_except_essential"]) {
+    for (int i = 0;; ++i) {
+      const char* identifier = pqrs_xml_compiler_get_identifier(pqrs_xml_compiler, i);
+      if (! identifier) break;
+
+      printf("%s\n", identifier);
+    }
   }
 
   fflush(stdout);
