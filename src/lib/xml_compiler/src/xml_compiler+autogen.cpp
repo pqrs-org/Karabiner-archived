@@ -397,7 +397,7 @@ namespace pqrs {
     }
 
     static struct {
-      const char* symbol;
+      const std::string symbol;
       uint32_t type;
     } info[] = {
       { "--KeyToKey--",                       BRIDGE_REMAPTYPE_KEYTOKEY },
@@ -422,7 +422,7 @@ namespace pqrs {
     };
     for (auto& it : info) {
       if (boost::starts_with(autogen, it.symbol)) {
-        std::string params = autogen.substr(strlen(it.symbol));
+        std::string params = autogen.substr(it.symbol.length());
         boost::trim(params);
 
         add_to_initialize_vector(params, it.type, filter_vector, initialize_vector);
