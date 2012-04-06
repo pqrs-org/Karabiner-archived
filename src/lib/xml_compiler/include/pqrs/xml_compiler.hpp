@@ -43,6 +43,7 @@ namespace pqrs {
     }
 
     boost::optional<const std::string&> get_identifier(int config_index) const;
+    uint32_t get_appid(const std::string& application_identifier) const;
 
     static void normalize_identifier(std::string& identifier);
 

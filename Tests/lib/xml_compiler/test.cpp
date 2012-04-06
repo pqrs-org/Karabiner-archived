@@ -11,6 +11,8 @@ TEST(pqrs_xml_compiler, reload)
   EXPECT_EQ(0, xml_compiler.get_error_count());
   EXPECT_EQ(boost::optional<uint32_t>(123), xml_compiler.get_symbol_map_value("KeyCode::MY_LANG_KEY"));
   EXPECT_EQ(boost::optional<uint32_t>(2), xml_compiler.get_symbol_map_value("ConsumerKeyCode::BRIGHTNESS_UP"));
+  EXPECT_EQ(boost::optional<uint32_t>(4), xml_compiler.get_symbol_map_value("ApplicationType::VI"));
+  EXPECT_EQ(static_cast<uint32_t>(4), xml_compiler.get_appid("org.vim.MacVim"));
 }
 
 TEST(pqrs_xml_compiler, reload_bindings_clang)
