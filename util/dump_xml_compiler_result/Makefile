@@ -27,3 +27,6 @@ dump_tree:
 
 dump_number:
 	@./build/Release/dump_xml_compiler_result.app/Contents/MacOS/dump_xml_compiler_result dump_number
+
+dump_identifier_except_essential:
+	@./build/Release/dump_xml_compiler_result.app/Contents/MacOS/dump_xml_compiler_result dump_identifier_except_essential
