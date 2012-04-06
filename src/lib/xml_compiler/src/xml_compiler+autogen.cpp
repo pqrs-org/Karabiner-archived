@@ -396,7 +396,7 @@ namespace pqrs {
       }
     }
 
-    static struct {
+    static const struct {
       const std::string symbol;
       uint32_t type;
     } info[] = {
@@ -446,35 +446,39 @@ namespace pqrs {
     vector.push_back(type);
 
     std::vector<std::string> args;
+    std::vector<std::string> values;
     pqrs::string::split_by_comma(args, params);
     for (auto& a : args) {
       unsigned int datatype = 0;
       unsigned int newvalue = 0;
 
-      std::vector<std::string> values;
+      values.clear();
       pqrs::string::split_by_pipe(values, a);
 
       for (auto& v : values) {
-        unsigned int newdatatype = 0;
-        /*  */ if (boost::starts_with(v, "KeyCode::")) {
-          newdatatype = BRIDGE_DATATYPE_KEYCODE;
-        } else if (boost::starts_with(v, "ModifierFlag::")) {
-          newdatatype = BRIDGE_DATATYPE_FLAGS;
-        } else if (boost::starts_with(v, "ConsumerKeyCode::")) {
-          newdatatype = BRIDGE_DATATYPE_CONSUMERKEYCODE;
-        } else if (boost::starts_with(v, "PointingButton::")) {
-          newdatatype = BRIDGE_DATATYPE_POINTINGBUTTON;
-        } else if (boost::starts_with(v, "ScrollWheel::")) {
-          newdatatype = BRIDGE_DATATYPE_SCROLLWHEEL;
-        } else if (boost::starts_with(v, "KeyboardType::")) {
-          newdatatype = BRIDGE_DATATYPE_KEYBOARDTYPE;
-        } else if (boost::starts_with(v, "DeviceVendor::")) {
-          newdatatype = BRIDGE_DATATYPE_DEVICEVENDOR;
-        } else if (boost::starts_with(v, "DeviceProduct::")) {
-          newdatatype = BRIDGE_DATATYPE_DEVICEPRODUCT;
-        } else if (boost::starts_with(v, "Option::")) {
-          newdatatype = BRIDGE_DATATYPE_OPTION;
-        } else {
+        unsigned int newdatatype = BRIDGE_DATATYPE_NONE;
+
+        static const struct {
+          const std::string type;
+          unsigned int datatype;
+        } info[] = {
+          { "KeyCode::",         BRIDGE_DATATYPE_KEYCODE         },
+          { "ModifierFlag::",    BRIDGE_DATATYPE_FLAGS           },
+          { "ConsumerKeyCode::", BRIDGE_DATATYPE_CONSUMERKEYCODE },
+          { "PointingButton::",  BRIDGE_DATATYPE_POINTINGBUTTON  },
+          { "ScrollWheel::",     BRIDGE_DATATYPE_SCROLLWHEEL     },
+          { "KeyboardType::",    BRIDGE_DATATYPE_KEYBOARDTYPE    },
+          { "DeviceVendor::",    BRIDGE_DATATYPE_DEVICEVENDOR    },
+          { "DeviceProduct::",   BRIDGE_DATATYPE_DEVICEPRODUCT   },
+          { "Option::",          BRIDGE_DATATYPE_OPTION          },
+        };
+        for (auto& it : info) {
+          if (boost::starts_with(v, it.type)) {
+            newdatatype = it.datatype;
+            break;
+          }
+        }
+        if (newdatatype == BRIDGE_DATATYPE_NONE) {
           throw xml_compiler_runtime_error("Unknown symbol:\n\n" + v);
         }
 
