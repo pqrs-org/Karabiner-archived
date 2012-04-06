@@ -21,3 +21,6 @@ xcode:
 
 dump_data:
 	@./build/Release/dump_xml_compiler_result.app/Contents/MacOS/dump_xml_compiler_result
+
+dump_tree:
+	@./build/Release/dump_xml_compiler_result.app/Contents/MacOS/dump_xml_compiler_result dump_tree
