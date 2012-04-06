@@ -42,6 +42,8 @@ namespace pqrs {
       symbol_map_.dump();
     }
 
+    boost::optional<const std::string&> get_identifier(int config_index) const;
+
     static void normalize_identifier(std::string& identifier);
 
     // ============================================================
@@ -123,7 +125,7 @@ namespace pqrs {
       remapclasses_initialize_vector(void);
       void clear(void);
       const std::vector<uint32_t>& get(void) const;
-      void add(const std::vector<uint32_t>& v, uint32_t configindex, const std::string& identifier);
+      void add(const std::vector<uint32_t>& v, uint32_t config_index, const std::string& identifier);
       void freeze(void);
 
     private:
@@ -133,8 +135,8 @@ namespace pqrs {
       };
 
       std::vector<uint32_t> data_;
-      std::tr1::unordered_map<uint32_t, bool> is_configindex_added_;
-      uint32_t max_configindex_;
+      std::tr1::unordered_map<uint32_t, bool> is_config_index_added_;
+      uint32_t max_config_index_;
       bool freezed_;
     };
 
@@ -194,7 +196,7 @@ namespace pqrs {
 
       int get_default_value(void) const { return default_value_; }
       int get_step(void) const { return step_; }
-      const std::string get_base_unit(void) const { return base_unit_; }
+      const std::string& get_base_unit(void) const { return base_unit_; }
 
     private:
       int default_value_;
@@ -253,10 +255,10 @@ namespace pqrs {
     void traverse_devicedef_(const boost::property_tree::ptree& pt);
 
     void reload_autogen_(void);
-    bool valid_identifier_(const std::string identifier, const std::string parent_tag_name);
-    void add_configindex_and_keycode_to_symbol_map_(const boost::property_tree::ptree& pt,
-                                                    const std::string& parent_tag_name,
-                                                    bool handle_notsave);
+    bool valid_identifier_(const std::string& identifier, const std::string& parent_tag_name);
+    void add_config_index_and_keycode_to_symbol_map_(const boost::property_tree::ptree& pt,
+                                                     const std::string& parent_tag_name,
+                                                     bool handle_notsave);
     void traverse_identifier_(const boost::property_tree::ptree& pt,
                               const std::string& parent_tag_name);
     void traverse_autogen_(const boost::property_tree::ptree& pt,
@@ -282,7 +284,7 @@ namespace pqrs {
 
     symbol_map symbol_map_;
     pqrs::string::replacement replacement_;
-    std::tr1::unordered_map<uint32_t, std::string> confignamemap_;
+    std::tr1::unordered_map<uint32_t, std::string> identifier_map_;
     remapclasses_initialize_vector remapclasses_initialize_vector_;
     uint32_t simultaneous_keycode_index_;
 

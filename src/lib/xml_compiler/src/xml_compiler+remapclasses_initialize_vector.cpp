@@ -15,9 +15,9 @@ namespace pqrs {
     data_[INDEX_OF_FORMAT_VERSION] = BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION;
     data_[INDEX_OF_COUNT] = 0;
 
-    is_configindex_added_.clear();
+    is_config_index_added_.clear();
 
-    max_configindex_ = 0;
+    max_config_index_ = 0;
     freezed_ = false;
   }
 
@@ -32,13 +32,13 @@ namespace pqrs {
 
   void
   xml_compiler::remapclasses_initialize_vector::add(const std::vector<uint32_t>& v,
-                                                    uint32_t configindex,
+                                                    uint32_t config_index,
                                                     const std::string& raw_identifier)
   {
     if (freezed_) {
       throw xml_compiler_logic_error("remapclasses_initialize_vector is freezed.");
     }
-    if (is_configindex_added_.find(configindex) != is_configindex_added_.end()) {
+    if (is_config_index_added_.find(config_index) != is_config_index_added_.end()) {
       throw xml_compiler_runtime_error(boost::format("Duplicated identifier:\n"
                                                      "\n"
                                                      "<identifier>%1%</identifier>") %
@@ -46,18 +46,18 @@ namespace pqrs {
     }
 
     // size
-    data_.push_back(v.size() + 1); // +1 == configindex
-    // configindex
-    data_.push_back(configindex);
+    data_.push_back(v.size() + 1); // +1 == config_index
+    // config_index
+    data_.push_back(config_index);
     // data
     pqrs::vector::push_back(data_, v);
 
     ++(data_[INDEX_OF_COUNT]);
 
-    if (configindex > max_configindex_) {
-      max_configindex_ = configindex;
+    if (config_index > max_config_index_) {
+      max_config_index_ = config_index;
     }
-    is_configindex_added_[configindex] = true;
+    is_config_index_added_[config_index] = true;
   }
 
   void
@@ -67,8 +67,8 @@ namespace pqrs {
       throw xml_compiler_logic_error("remapclasses_initialize_vector is already freezed.");
     }
 
-    for (uint32_t i = 0; i < max_configindex_; ++i) {
-      if (is_configindex_added_.find(i) == is_configindex_added_.end()) {
+    for (uint32_t i = 0; i < max_config_index_; ++i) {
+      if (is_config_index_added_.find(i) == is_config_index_added_.end()) {
         std::vector<uint32_t> v;
         add(v, i, "");
       }
