@@ -79,6 +79,15 @@ pqrs_xml_compiler_get_identifier(const pqrs_xml_compiler* p, int config_index)
   return v->c_str();
 }
 
+uint32_t
+pqrs_xml_compiler_get_appid(const pqrs_xml_compiler* p, const char* application_identifier)
+{
+  const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
+  if (! xml_compiler) return 0;
+
+  return xml_compiler->get_appid(application_identifier);
+}
+
 // ------------------------------------------------------------
 const uint32_t*
 pqrs_xml_compiler_get_remapclasses_initialize_vector_data(const pqrs_xml_compiler* p)
