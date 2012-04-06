@@ -1,4 +1,4 @@
-#include "pqrs/bridge.h"
+#include "bridge.h"
 #include "pqrs/vector.hpp"
 #include "pqrs/xml_compiler.hpp"
 
