@@ -16,16 +16,31 @@ namespace pqrs {
   public:
     class remapclasses_initialize_vector;
 
-    xml_compiler(const std::string& system_xml_directory, const std::string& private_xml_directory);
+    xml_compiler(const std::string& system_xml_directory, const std::string& private_xml_directory) :
+      system_xml_directory_(system_xml_directory),
+      private_xml_directory_(private_xml_directory),
+      error_count_(0)
+    {}
 
     void reload(void);
-    const remapclasses_initialize_vector& get_remapclasses_initialize_vector(void) const;
 
-    const std::string& get_error_message(void) const;
-    int get_error_count(void) const;
+    const remapclasses_initialize_vector& get_remapclasses_initialize_vector(void) const {
+      return remapclasses_initialize_vector_;
+    }
 
-    boost::optional<uint32_t> get_symbol_map_value(const std::string& name) const;
-    void dump_symbol_map(void) const;
+    const std::string& get_error_message(void) const {
+      return error_message_;
+    }
+    size_t get_error_count(void) const {
+      return error_count_;
+    }
+
+    boost::optional<uint32_t> get_symbol_map_value(const std::string& name) const {
+      return symbol_map_.get_optional(name);
+    }
+    void dump_symbol_map(void) const {
+      symbol_map_.dump();
+    }
 
     static void normalize_identifier(std::string& identifier);
 
@@ -199,6 +214,7 @@ namespace pqrs {
 
       void clear(void);
       void traverse_item(const boost::property_tree::ptree& pt);
+      const preferences_node_tree_ptrs_ptr& get_children(void) const { return children_; }
 
     private:
       T node_;
@@ -208,6 +224,13 @@ namespace pqrs {
       // * children_ is mostly empty.
       preferences_node_tree_ptrs_ptr children_;
     };
+
+    const preferences_node_tree<preferences_checkbox_node>& get_preferences_checkbox_node_tree(void) const {
+      return preferences_checkbox_node_tree_;
+    }
+    const preferences_node_tree<preferences_number_node>& get_preferences_number_node_tree(void) const {
+      return preferences_number_node_tree_;
+    }
 
   private:
     typedef std::tr1::shared_ptr<boost::property_tree::ptree> ptree_ptr;
@@ -254,7 +277,7 @@ namespace pqrs {
     const std::string private_xml_directory_;
 
     std::string error_message_;
-    int error_count_;
+    size_t error_count_;
 
     symbol_map symbol_map_;
     pqrs::string::replacement replacement_;

@@ -15,7 +15,7 @@ TEST(pqrs_xml_compiler, reload)
 
 TEST(pqrs_xml_compiler, reload_bindings_clang)
 {
-  struct pqrs_xml_compiler* p = NULL;
+  pqrs_xml_compiler* p = NULL;
   EXPECT_EQ(0, pqrs_xml_compiler_initialize(&p, "data/system_xml", "data/private_xml"));
   pqrs_xml_compiler_reload(p);
   pqrs_xml_compiler_terminate(&p);

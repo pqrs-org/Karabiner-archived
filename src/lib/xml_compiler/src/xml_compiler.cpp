@@ -7,12 +7,6 @@
 #include "pqrs/xml_compiler.hpp"
 
 namespace pqrs {
-  xml_compiler::xml_compiler(const std::string& system_xml_directory, const std::string& private_xml_directory) :
-    system_xml_directory_(system_xml_directory),
-    private_xml_directory_(private_xml_directory),
-    error_count_(0)
-  {}
-
   void
   xml_compiler::reload(void)
   {
@@ -25,36 +19,6 @@ namespace pqrs {
     reload_devicedef_();
     reload_autogen_();
     reload_preferences_();
-  }
-
-  const xml_compiler::remapclasses_initialize_vector&
-  xml_compiler::get_remapclasses_initialize_vector(void) const
-  {
-    return remapclasses_initialize_vector_;
-  }
-
-  const std::string&
-  xml_compiler::get_error_message(void) const
-  {
-    return error_message_;
-  }
-
-  int
-  xml_compiler::get_error_count(void) const
-  {
-    return error_count_;
-  }
-
-  boost::optional<uint32_t>
-  xml_compiler::get_symbol_map_value(const std::string& name) const
-  {
-    return symbol_map_.get_optional(name);
-  }
-
-  void
-  xml_compiler::dump_symbol_map(void) const
-  {
-    symbol_map_.dump();
   }
 
   void
