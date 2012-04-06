@@ -140,14 +140,14 @@ namespace pqrs {
             initialize_vector.push_back(5); // count
             initialize_vector.push_back(BRIDGE_VK_CONFIG);
 
-            const char* names[] = {
+            static const std::string names[] = {
               "VK_CONFIG_TOGGLE_",
               "VK_CONFIG_FORCE_ON_",
               "VK_CONFIG_FORCE_OFF_",
               "VK_CONFIG_SYNC_KEYDOWNUP_",
             };
             for (auto& n : names) {
-              initialize_vector.push_back(symbol_map_.get("KeyCode", std::string(n) + identifier));
+              initialize_vector.push_back(symbol_map_.get("KeyCode", n + identifier));
             }
           }
 
