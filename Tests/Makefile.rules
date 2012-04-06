@@ -3,5 +3,5 @@ all: run
 run: a.out
 	@./a.out
 
-clean:
+clean::
 	rm -f *.o a.out

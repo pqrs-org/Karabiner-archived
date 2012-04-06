@@ -1,14 +1,9 @@
 #include "pqrs/xml_compiler.hpp"
 #include "pqrs/xml_compiler_bindings_clang.h"
 
-typedef std::tr1::shared_ptr<pqrs::xml_compiler> xml_compiler_ptr;
-
-struct pqrs_xml_compiler {
-  xml_compiler_ptr xml_compiler_ptr;
-};
-
+// ------------------------------------------------------------
 int
-pqrs_xml_compiler_initialize(struct pqrs_xml_compiler** out,
+pqrs_xml_compiler_initialize(pqrs_xml_compiler** out,
                              const char* system_xml_directory,
                              const char* private_xml_directory)
 {
@@ -16,64 +11,104 @@ pqrs_xml_compiler_initialize(struct pqrs_xml_compiler** out,
   // return if already initialized.
   if (*out) return -1;
 
-  *out = new pqrs_xml_compiler();
-  (*out)->xml_compiler_ptr = xml_compiler_ptr(new pqrs::xml_compiler(system_xml_directory, private_xml_directory));
+  *out = reinterpret_cast<pqrs_xml_compiler*>(new pqrs::xml_compiler(system_xml_directory, private_xml_directory));
 
   return 0;
 }
 
 void
-pqrs_xml_compiler_terminate(struct pqrs_xml_compiler** out)
+pqrs_xml_compiler_terminate(pqrs_xml_compiler** out)
 {
   if (out && *out) {
-    delete *out;
+    delete reinterpret_cast<pqrs::xml_compiler*>(*out);
     *out = NULL;
   }
 }
 
+// ------------------------------------------------------------
 void
-pqrs_xml_compiler_reload(struct pqrs_xml_compiler* p)
+pqrs_xml_compiler_reload(pqrs_xml_compiler* p)
 {
-  if (! p) return;
-  if (! p->xml_compiler_ptr) return;
+  pqrs::xml_compiler* xml_compiler = reinterpret_cast<pqrs::xml_compiler*>(p);
+  if (! xml_compiler) return;
 
-  p->xml_compiler_ptr->reload();
+  xml_compiler->reload();
 }
 
 const char*
-pqrs_xml_compiler_get_error_message(const struct pqrs_xml_compiler* p)
+pqrs_xml_compiler_get_error_message(const pqrs_xml_compiler* p)
 {
-  if (! p) return NULL;
-  if (! p->xml_compiler_ptr) return NULL;
+  const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
+  if (! xml_compiler) return NULL;
 
-  return (p->xml_compiler_ptr->get_error_message()).c_str();
+  return (xml_compiler->get_error_message()).c_str();
 }
 
-int
-pqrs_xml_compiler_get_error_count(const struct pqrs_xml_compiler* p)
+size_t
+pqrs_xml_compiler_get_error_count(const pqrs_xml_compiler* p)
 {
-  if (! p) return NULL;
-  if (! p->xml_compiler_ptr) return NULL;
+  const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
+  if (! xml_compiler) return 0;
 
-  return p->xml_compiler_ptr->get_error_count();
+  return xml_compiler->get_error_count();
 }
 
+// ------------------------------------------------------------
 const uint32_t*
-pqrs_xml_compiler_get_remapclasses_initialize_vector_data(const struct pqrs_xml_compiler* p)
+pqrs_xml_compiler_get_remapclasses_initialize_vector_data(const pqrs_xml_compiler* p)
 {
-  if (! p) return NULL;
-  if (! p->xml_compiler_ptr) return NULL;
+  const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
+  if (! xml_compiler) return NULL;
 
-  auto v = (p->xml_compiler_ptr->get_remapclasses_initialize_vector()).get();
+  auto v = (xml_compiler->get_remapclasses_initialize_vector()).get();
   return &(v[0]);
 }
 
 size_t
-pqrs_xml_compiler_get_remapclasses_initialize_vector_size(const struct pqrs_xml_compiler* p)
+pqrs_xml_compiler_get_remapclasses_initialize_vector_size(const pqrs_xml_compiler* p)
 {
-  if (! p) return NULL;
-  if (! p->xml_compiler_ptr) return NULL;
+  const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
+  if (! xml_compiler) return 0;
 
-  auto v = (p->xml_compiler_ptr->get_remapclasses_initialize_vector()).get();
+  auto v = (xml_compiler->get_remapclasses_initialize_vector()).get();
   return v.size();
+}
+
+// ------------------------------------------------------------
+const pqrs_xml_compiler_preferences_checkbox_node_tree*
+pqrs_xml_compiler_get_preferences_checkbox_node_tree_root(const pqrs_xml_compiler* p)
+{
+  const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
+  if (! xml_compiler) return NULL;
+
+  // ----------------------------------------
+  return reinterpret_cast<const pqrs_xml_compiler_preferences_checkbox_node_tree*>((xml_compiler->get_preferences_checkbox_node_tree()).get_children().get());
+}
+
+size_t
+pqrs_xml_compiler_get_preferences_checkbox_node_tree_children_count(const pqrs_xml_compiler_preferences_checkbox_node_tree* p)
+{
+  auto node_tree = reinterpret_cast<const pqrs::xml_compiler::preferences_node_tree<pqrs::xml_compiler::preferences_checkbox_node>*>(p);
+  if (! node_tree) return 0;
+
+  // ----------------------------------------
+  auto children = node_tree->get_children();
+  if (! children) return 0;
+  return children->size();
+}
+
+const pqrs_xml_compiler_preferences_checkbox_node_tree*
+pqrs_xml_compiler_get_preferences_checkbox_node_tree_child(const pqrs_xml_compiler_preferences_checkbox_node_tree* p,
+                                                           size_t index)
+{
+  auto node_tree = reinterpret_cast<const pqrs::xml_compiler::preferences_node_tree<pqrs::xml_compiler::preferences_checkbox_node>*>(p);
+  if (! node_tree) return 0;
+
+  // ----------------------------------------
+  auto children = node_tree->get_children();
+  if (! children) return NULL;
+  if (index >= children->size()) return NULL;
+
+  auto child = (*children)[index];
+  return reinterpret_cast<pqrs_xml_compiler_preferences_checkbox_node_tree*>(child.get());
 }

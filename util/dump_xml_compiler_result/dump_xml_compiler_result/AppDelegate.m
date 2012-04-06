@@ -11,7 +11,7 @@
   NSString* path = [paths objectAtIndex:0];
   path = [path stringByAppendingPathComponent:@"KeyRemap4MacBook"];
 
-  struct pqrs_xml_compiler* p = NULL;
+  pqrs_xml_compiler* p = NULL;
   int error = pqrs_xml_compiler_initialize(&p,
                                            "/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app/Contents/Resources",
                                            [path UTF8String]);

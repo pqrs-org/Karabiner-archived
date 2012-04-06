@@ -14,6 +14,7 @@ clean:
 	rm -f *.xcodeproj/*.pbxuser
 	rm -rf *.xcodeproj/xcuserdata
 	rm -rf *.xcodeproj/project.xcworkspace/xcuserdata
+	make -C ../../src/lib/xml_compiler clean
 
 xcode:
 	open *.xcodeproj
