@@ -28,6 +28,7 @@
 		347C48B91296673E00CCC042 /* ConfigXMLParser+AutoGen.m in Sources */ = {isa = PBXBuildFile; fileRef = 347C48B81296673E00CCC042 /* ConfigXMLParser+AutoGen.m */; };
 		34848260152F526B00A9A3BE /* libxml_compiler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3484825F152F526B00A9A3BE /* libxml_compiler.a */; };
 		34848263152F527100A9A3BE /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34848262152F527100A9A3BE /* libstdc++.dylib */; };
+		34848266152F54B700A9A3BE /* XMLCompiler.m in Sources */ = {isa = PBXBuildFile; fileRef = 34848265152F54B700A9A3BE /* XMLCompiler.m */; };
 		348C6A2E128E4504005F516D /* StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 348C6A2D128E4504005F516D /* StatusBar.m */; };
 		349B509F12837E64009108FE /* include.keycode.plist in Resources */ = {isa = PBXBuildFile; fileRef = 349B509E12837E64009108FE /* include.keycode.plist */; };
 		34A06A4C11F8792E0085749B /* icon.statusbar.0.tif in Resources */ = {isa = PBXBuildFile; fileRef = 34A06A4A11F8792E0085749B /* icon.statusbar.0.tif */; };
@@ -97,6 +98,8 @@
 		347C48B81296673E00CCC042 /* ConfigXMLParser+AutoGen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ConfigXMLParser+AutoGen.m"; path = "Classes/ConfigXMLParser+AutoGen.m"; sourceTree = "<group>"; };
 		3484825F152F526B00A9A3BE /* libxml_compiler.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libxml_compiler.a; path = ../../lib/xml_compiler/build/Release/libxml_compiler.a; sourceTree = "<group>"; };
 		34848262152F527100A9A3BE /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/gcc/i686-apple-darwin10/4.0.1/libstdc++.dylib"; sourceTree = SDKROOT; };
+		34848264152F533500A9A3BE /* XMLCompiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLCompiler.h; path = Classes/XMLCompiler.h; sourceTree = "<group>"; };
+		34848265152F54B700A9A3BE /* XMLCompiler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLCompiler.m; path = Classes/XMLCompiler.m; sourceTree = "<group>"; };
 		348C6A2C128E4504005F516D /* StatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusBar.h; path = Classes/StatusBar.h; sourceTree = "<group>"; };
 		348C6A2D128E4504005F516D /* StatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusBar.m; path = Classes/StatusBar.m; sourceTree = "<group>"; };
 		349B509E12837E64009108FE /* include.keycode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = include.keycode.plist; path = ../bridge/keycode/output/include.keycode.plist; sourceTree = SOURCE_ROOT; };
@@ -151,6 +154,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				34848265152F54B700A9A3BE /* XMLCompiler.m */,
+				34848264152F533500A9A3BE /* XMLCompiler.h */,
 				34FB00DB14891EDF00037920 /* NSString+HashBraces.h */,
 				34FB00DC14891EDF00037920 /* NSString+HashBraces.m */,
 				34FEAE4E148695CF0042D507 /* ConfigXMLParser+ReplacementDef.m */,
@@ -369,6 +374,7 @@
 				34FD0958145325BC00CDFFDC /* ConfigXMLParser+DeviceDef.m in Sources */,
 				34FEAE4F148695CF0042D507 /* ConfigXMLParser+ReplacementDef.m in Sources */,
 				34FB00DD14891EDF00037920 /* NSString+HashBraces.m in Sources */,
+				34848266152F54B700A9A3BE /* XMLCompiler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +444,7 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = ../../lib/xml_compiler/include;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx10.6;
 				VALID_ARCHS = "i386 x86_64";
