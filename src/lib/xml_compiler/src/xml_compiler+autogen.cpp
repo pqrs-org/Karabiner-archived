@@ -2,8 +2,8 @@
 #include <exception>
 #include <boost/algorithm/string.hpp>
 #include <boost/lexical_cast.hpp>
+#include "bridge.h"
 #include "pqrs/xml_compiler.hpp"
-#include "pqrs/bridge.h"
 #include "pqrs/string.hpp"
 #include "pqrs/vector.hpp"
 
