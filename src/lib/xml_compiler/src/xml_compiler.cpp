@@ -97,6 +97,28 @@ namespace pqrs {
     return it->second;
   }
 
+  uint32_t
+  xml_compiler::get_appid(const std::string& application_identifier) const
+  {
+    for (auto& it : app_) {
+      if (! it) continue;
+
+      if (it->is_rules_matched(application_identifier)) {
+        auto name = it->get_name();
+        if (! name) goto notfound;
+
+        auto v = symbol_map_.get_optional(std::string("ApplicationType::") + *name);
+        if (! v) goto notfound;
+
+        return *v;
+      }
+    }
+
+  notfound:
+    // return ApplicationType::UNKNOWN (== 0)
+    return 0;
+  }
+
   void
   xml_compiler::normalize_identifier(std::string& identifier)
   {

@@ -52,6 +52,7 @@ namespace pqrs {
         }
 
         symbol_map_.add("ApplicationType", *(newappdef->get_name()));
+        app_.push_back(newappdef);
       }
     }
   }
@@ -81,7 +82,7 @@ namespace pqrs {
       }
     }
     for (auto& r : rules_prefix_) {
-      if (identifier.compare(0, r.length(), r)) {
+      if (boost::starts_with(identifier, r)) {
         return true;
       }
     }
