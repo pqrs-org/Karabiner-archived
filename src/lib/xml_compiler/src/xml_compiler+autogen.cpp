@@ -280,30 +280,54 @@ namespace pqrs {
 
     // FROMKEYCODE_HOME, FROMKEYCODE_END, ...
     {
-      const char* keys[][2] = {
-        { "HOME",           "CURSOR_LEFT"  },
-        { "END",            "CURSOR_RIGHT" },
-        { "PAGEUP",         "CURSOR_UP"    },
-        { "PAGEDOWN",       "CURSOR_DOWN"  },
-        { "FORWARD_DELETE", "DELETE"       },
+      struct preprocess_info {
+        std::string fromkeycode;                   // FROMKEYCODE_HOME
+        std::string fromkeycode_with_modifierflag; // FROMKEYCODE_HOME,ModifierFlag::
+        std::string fromkeycode_with_comma;        // FROMKEYCODE_HOME,
+        std::string keycode;                       // KeyCode::HOME
+        std::string other_keycode_with_fn_pipe;    // KeyCode::CURSOR_LEFT,ModifierFlag::FN|
+        std::string other_keycode_with_fn;         // KeyCode::CURSOR_LEFT,ModifierFlag::FN
       };
-      for (auto& k : keys) {
-        std::string fromkeycode = std::string("FROMKEYCODE_") + k[0];
-        if (autogen.find(fromkeycode + ",ModifierFlag::") != std::string::npos) {
-          handle_autogen(boost::replace_all_copy(autogen, fromkeycode, std::string("KeyCode::") + k[0]),
+      static std::vector<preprocess_info> info;
+      // initialize info
+      if (info.empty()) {
+        const char* keys[][2] = {
+          { "HOME",           "CURSOR_LEFT"  },
+          { "END",            "CURSOR_RIGHT" },
+          { "PAGEUP",         "CURSOR_UP"    },
+          { "PAGEDOWN",       "CURSOR_DOWN"  },
+          { "FORWARD_DELETE", "DELETE"       },
+        };
+        for (auto& k : keys) {
+          preprocess_info i;
+          i.fromkeycode                   = std::string("FROMKEYCODE_") + k[0];
+          i.fromkeycode_with_modifierflag = std::string("FROMKEYCODE_") + k[0] + ",ModifierFlag::";
+          i.fromkeycode_with_comma        = std::string("FROMKEYCODE_") + k[0] + ",";
+          i.keycode                       = std::string("KeyCode::") + k[0];
+          i.other_keycode_with_fn_pipe    = std::string("KeyCode::") + k[1] + ",ModifierFlag::FN|";
+          i.other_keycode_with_fn         = std::string("KeyCode::") + k[1] + ",ModifierFlag::FN";
+          info.push_back(i);
+        }
+      }
+
+      for (auto& it : info) {
+        // FROMKEYCODE_HOME,ModifierFlag::
+        if (autogen.find(it.fromkeycode_with_modifierflag) != std::string::npos) {
+          // FROMKEYCODE_HOME -> KeyCode::HOME
+          handle_autogen(boost::replace_all_copy(autogen, it.fromkeycode, it.keycode),
                          raw_autogen, filter_vector, initialize_vector);
-          handle_autogen(boost::replace_all_copy(autogen,
-                                                 fromkeycode + ",",
-                                                 std::string("KeyCode::") + k[1] + ",ModifierFlag::FN|"),
+          // FROMKEYCODE_HOME, -> KeyCode::CURSOR_LEFT,ModifierFlag::FN|
+          handle_autogen(boost::replace_all_copy(autogen, it.fromkeycode_with_comma, it.other_keycode_with_fn_pipe),
                          raw_autogen, filter_vector, initialize_vector);
           return;
         }
-        if (autogen.find(fromkeycode) != std::string::npos) {
-          handle_autogen(boost::replace_all_copy(autogen, fromkeycode, std::string("KeyCode::") + k[0]),
+        // FROMKEYCODE_HOME (without ModifierFlag)
+        if (autogen.find(it.fromkeycode) != std::string::npos) {
+          // FROMKEYCODE_HOME -> KeyCode::HOME
+          handle_autogen(boost::replace_all_copy(autogen, it.fromkeycode, it.keycode),
                          raw_autogen, filter_vector, initialize_vector);
-          handle_autogen(boost::replace_all_copy(autogen,
-                                                 fromkeycode,
-                                                 std::string("KeyCode::") + k[1] + ",ModifierFlag::FN"),
+          // FROMKEYCODE_HOME -> KeyCode::CURSOR_LEFT,ModifierFlag::FN
+          handle_autogen(boost::replace_all_copy(autogen, it.fromkeycode, it.other_keycode_with_fn),
                          raw_autogen, filter_vector, initialize_vector);
           return;
         }
