@@ -255,8 +255,11 @@ namespace pqrs {
     if (autogen.find("VK_MOD_ANY") != std::string::npos) {
       // to reduce combination, we ignore same modifier combination such as (COMMAND_L | COMMAND_R).
       const char* seeds[] = { "VK_COMMAND", "VK_CONTROL", "ModifierFlag::FN", "VK_OPTION", "VK_SHIFT" };
-      std::vector<std::tr1::shared_ptr<std::vector<std::string> > > combination;
-      pqrs::vector::make_combination(combination, seeds, sizeof(seeds) / sizeof(seeds[0]));
+      // Making combination at the first time. (reuse it since 2nd time.)
+      static std::vector<std::tr1::shared_ptr<std::vector<std::string> > > combination;
+      if (combination.empty()) {
+        pqrs::vector::make_combination(combination, seeds, sizeof(seeds) / sizeof(seeds[0]));
+      }
 
       for (auto& v : combination) {
         handle_autogen(boost::replace_all_copy(autogen, "VK_MOD_ANY", boost::join(*v, "|") + "|ModifierFlag::NONE"),
