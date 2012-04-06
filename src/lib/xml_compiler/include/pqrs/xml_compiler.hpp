@@ -214,6 +214,7 @@ namespace pqrs {
 
       void clear(void);
       void traverse_item(const boost::property_tree::ptree& pt);
+      const T& get_node(void) const { return node_; }
       const preferences_node_tree_ptrs_ptr& get_children(void) const { return children_; }
 
     private:
