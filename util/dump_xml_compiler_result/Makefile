@@ -24,3 +24,6 @@ dump_data:
 
 dump_tree:
 	@./build/Release/dump_xml_compiler_result.app/Contents/MacOS/dump_xml_compiler_result dump_tree
+
+dump_number:
+	@./build/Release/dump_xml_compiler_result.app/Contents/MacOS/dump_xml_compiler_result dump_number
