@@ -263,11 +263,11 @@ namespace pqrs {
 
     // VK_MOD_ANY
     if (autogen.find("VK_MOD_ANY") != std::string::npos) {
-      // to reduce combination, we ignore same modifier combination such as (COMMAND_L | COMMAND_R).
-      const char* seeds[] = { "VK_COMMAND", "VK_CONTROL", "ModifierFlag::FN", "VK_OPTION", "VK_SHIFT" };
       // Making combination at the first time. (reuse it since 2nd time.)
       static std::vector<std::tr1::shared_ptr<std::vector<std::string> > > combination;
       if (combination.empty()) {
+        // to reduce combination, we ignore same modifier combination such as (COMMAND_L | COMMAND_R).
+        const char* seeds[] = { "VK_COMMAND", "VK_CONTROL", "ModifierFlag::FN", "VK_OPTION", "VK_SHIFT" };
         pqrs::vector::make_combination(combination, seeds, sizeof(seeds) / sizeof(seeds[0]));
       }
 
@@ -340,9 +340,9 @@ namespace pqrs {
     //
 
     {
-      const char* symbol = "--ShowStatusMessage--";
+      static const std::string symbol("--ShowStatusMessage--");
       if (boost::starts_with(autogen, symbol)) {
-        std::string params = autogen.substr(strlen(symbol));
+        std::string params = autogen.substr(symbol.length());
         boost::trim(params);
 
         size_t length = params.size();
@@ -356,9 +356,9 @@ namespace pqrs {
     }
 
     {
-      const char* symbol = "--SimultaneousKeyPresses--";
+      static const std::string symbol("--SimultaneousKeyPresses--");
       if (boost::starts_with(autogen, symbol)) {
-        std::string params = autogen.substr(strlen(symbol));
+        std::string params = autogen.substr(symbol.length());
         boost::trim(params);
 
         std::string newkeycode = std::string("VK_SIMULTANEOUSKEYPRESSES_") +
