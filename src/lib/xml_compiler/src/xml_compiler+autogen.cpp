@@ -221,13 +221,20 @@ namespace pqrs {
 
     // VK_COMMAND, VK_CONTROL, VK_SHIFT, VK_OPTION
     {
-      const char* keys[] = { "COMMAND", "CONTROL", "SHIFT", "OPTION" };
-      for (auto& k : keys) {
-        std::string vk = std::string("VK_") + k;
-        if (autogen.find(vk) != std::string::npos) {
-          const char* suffix[] = { "_L", "_R" };
-          for (auto& s : suffix) {
-            handle_autogen(boost::replace_all_copy(autogen, vk, std::string("ModifierFlag::") + k + s),
+      static const struct {
+        const char* vk;
+        const char* flags[2];
+      } info[] = {
+        { "VK_COMMAND", { "ModifierFlag::COMMAND_L", "ModifierFlag::COMMAND_R" } },
+        { "VK_CONTROL", { "ModifierFlag::CONTROL_L", "ModifierFlag::CONTROL_R" } },
+        { "VK_SHIFT",   { "ModifierFlag::SHIFT_L",   "ModifierFlag::SHIFT_R"   } },
+        { "VK_OPTION",  { "ModifierFlag::OPTION_L",  "ModifierFlag::OPTION_R"  } },
+      };
+
+      for (auto& it : info) {
+        if (autogen.find(it.vk) != std::string::npos) {
+          for (auto& f : it.flags) {
+            handle_autogen(boost::replace_all_copy(autogen, it.vk, f),
                            raw_autogen, filter_vector, initialize_vector);
           }
           return;
