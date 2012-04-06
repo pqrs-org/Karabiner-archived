@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include "pqrs/xml_compiler_bindings_clang.h"
 #include "pqrs/xml_compiler.hpp"
-#include "pqrs/bridge.h"
+#include "bridge.h"
 
 TEST(pqrs_xml_compiler, reload)
 {
