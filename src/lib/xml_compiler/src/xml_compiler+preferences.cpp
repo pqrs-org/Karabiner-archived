@@ -3,26 +3,28 @@
 
 namespace pqrs {
   xml_compiler::preferences_node::preferences_node(void) :
-    name_line_count_(0)
+    name_line_count_(1)
   {}
 
   bool
   xml_compiler::preferences_node::handle_name_and_appendix(const boost::property_tree::ptree::value_type& it)
   {
     if (it.first == "name") {
+      if (! name_.empty()) {
+        name_ += "\n";
+        ++name_line_count_;
+      }
       name_ += boost::trim_copy(it.second.data());
-      name_ += "\n";
-
-      ++name_line_count_;
 
       return true;
 
     } else if (it.first == "appendix") {
+      if (! name_.empty()) {
+        name_ += "\n";
+        ++name_line_count_;
+      }
       name_ += "  ";
       name_ += boost::trim_copy(it.second.data());
-      name_ += "\n";
-
-      ++name_line_count_;
 
       return true;
     }
