@@ -4,6 +4,7 @@ CONFIGURATION = Release
 all:
 	$(MAKE) -C ../../../pkginfo
 	$(MAKE) -C ../bridge
+	$(MAKE) -C ../../lib/xml_compiler
 	xcodebuild -alltargets -configuration $(CONFIGURATION) build
 
 clean:
@@ -14,6 +15,7 @@ clean:
 	rm -f *.xcodeproj/*.pbxuser
 	rm -rf *.xcodeproj/xcuserdata
 	rm -rf *.xcodeproj/project.xcworkspace/xcuserdata
+	$(MAKE) -C ../../lib/xml_compiler clean
 
 xcode:
 	open *.xcodeproj

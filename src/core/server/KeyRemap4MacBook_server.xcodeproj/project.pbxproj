@@ -26,6 +26,8 @@
 		347828F913EE5F6500D50AB1 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 347828F813EE5F6500D50AB1 /* Sparkle.framework */; };
 		347828FA13EE5F6700D50AB1 /* Sparkle.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 347828F813EE5F6500D50AB1 /* Sparkle.framework */; };
 		347C48B91296673E00CCC042 /* ConfigXMLParser+AutoGen.m in Sources */ = {isa = PBXBuildFile; fileRef = 347C48B81296673E00CCC042 /* ConfigXMLParser+AutoGen.m */; };
+		34848260152F526B00A9A3BE /* libxml_compiler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3484825F152F526B00A9A3BE /* libxml_compiler.a */; };
+		34848263152F527100A9A3BE /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34848262152F527100A9A3BE /* libstdc++.dylib */; };
 		348C6A2E128E4504005F516D /* StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 348C6A2D128E4504005F516D /* StatusBar.m */; };
 		349B509F12837E64009108FE /* include.keycode.plist in Resources */ = {isa = PBXBuildFile; fileRef = 349B509E12837E64009108FE /* include.keycode.plist */; };
 		34A06A4C11F8792E0085749B /* icon.statusbar.0.tif in Resources */ = {isa = PBXBuildFile; fileRef = 34A06A4A11F8792E0085749B /* icon.statusbar.0.tif */; };
@@ -93,6 +95,8 @@
 		347828F513EE5F3400D50AB1 /* kr4mb_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = kr4mb_pub.pem; path = Resources/kr4mb_pub.pem; sourceTree = "<group>"; };
 		347828F813EE5F6500D50AB1 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = "<group>"; };
 		347C48B81296673E00CCC042 /* ConfigXMLParser+AutoGen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ConfigXMLParser+AutoGen.m"; path = "Classes/ConfigXMLParser+AutoGen.m"; sourceTree = "<group>"; };
+		3484825F152F526B00A9A3BE /* libxml_compiler.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libxml_compiler.a; path = ../../lib/xml_compiler/build/Release/libxml_compiler.a; sourceTree = "<group>"; };
+		34848262152F527100A9A3BE /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/gcc/i686-apple-darwin10/4.0.1/libstdc++.dylib"; sourceTree = SDKROOT; };
 		348C6A2C128E4504005F516D /* StatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusBar.h; path = Classes/StatusBar.h; sourceTree = "<group>"; };
 		348C6A2D128E4504005F516D /* StatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusBar.m; path = Classes/StatusBar.m; sourceTree = "<group>"; };
 		349B509E12837E64009108FE /* include.keycode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = include.keycode.plist; path = ../bridge/keycode/output/include.keycode.plist; sourceTree = SOURCE_ROOT; };
@@ -131,6 +135,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34848263152F527100A9A3BE /* libstdc++.dylib in Frameworks */,
+				34848260152F526B00A9A3BE /* libxml_compiler.a in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				34568415109F350100125F91 /* Carbon.framework in Frameworks */,
 				342FD2B91302CD8A00491C16 /* Growl.framework in Frameworks */,
@@ -209,6 +215,8 @@
 		29B97314FDCFA39411CA2CEA /* KeyRemap4MacBook_server */ = {
 			isa = PBXGroup;
 			children = (
+				34848262152F527100A9A3BE /* libstdc++.dylib */,
+				3484825F152F526B00A9A3BE /* libxml_compiler.a */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -400,6 +408,11 @@
 				GCC_PREFIX_HEADER = KeyRemap4MacBook_server_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../lib/xml_compiler/build/Release\"",
+					"\"$(SDKROOT)/usr/lib/gcc/i686-apple-darwin10/4.0.1\"",
+				);
 				PRODUCT_NAME = KeyRemap4MacBook;
 			};
 			name = Release;
