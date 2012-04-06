@@ -11,7 +11,7 @@ namespace pqrs {
   void
   xml_compiler::reload_autogen_(void)
   {
-    confignamemap_.clear();
+    identifier_map_.clear();
     remapclasses_initialize_vector_.clear();
     simultaneous_keycode_index_ = 0;
 
@@ -25,17 +25,17 @@ namespace pqrs {
     read_xmls_(pt_ptrs, xml_file_path_ptrs);
 
     // ----------------------------------------
-    // add_configindex_and_keycode_to_symbol_map_
+    // add_config_index_and_keycode_to_symbol_map_
     //   1st loop: <identifier>notsave.*</identifier>
     //   2nd loop: other <identifier>
     //
     // We need to assign higher priority to notsave.* settings.
-    // So, adding configindex by 2steps.
+    // So, adding config_index by 2steps.
     for (auto& pt_ptr : pt_ptrs) {
-      add_configindex_and_keycode_to_symbol_map_(*pt_ptr, "", true);
+      add_config_index_and_keycode_to_symbol_map_(*pt_ptr, "", true);
     }
     for (auto& pt_ptr : pt_ptrs) {
-      add_configindex_and_keycode_to_symbol_map_(*pt_ptr, "", false);
+      add_config_index_and_keycode_to_symbol_map_(*pt_ptr, "", false);
     }
 
     // ----------------------------------------
@@ -47,7 +47,7 @@ namespace pqrs {
   }
 
   bool
-  xml_compiler::valid_identifier_(const std::string identifier, const std::string parent_tag_name)
+  xml_compiler::valid_identifier_(const std::string& identifier, const std::string& parent_tag_name)
   {
     if (identifier.empty()) {
       set_error_message_("Empty <identifier>.");
@@ -66,13 +66,13 @@ namespace pqrs {
   }
 
   void
-  xml_compiler::add_configindex_and_keycode_to_symbol_map_(const boost::property_tree::ptree& pt,
-                                                           const std::string& parent_tag_name,
-                                                           bool handle_notsave)
+  xml_compiler::add_config_index_and_keycode_to_symbol_map_(const boost::property_tree::ptree& pt,
+                                                            const std::string& parent_tag_name,
+                                                            bool handle_notsave)
   {
     for (auto& it : pt) {
       if (it.first != "identifier") {
-        add_configindex_and_keycode_to_symbol_map_(it.second, it.first, handle_notsave);
+        add_config_index_and_keycode_to_symbol_map_(it.second, it.first, handle_notsave);
       } else {
         auto identifier = boost::trim_copy(it.second.data());
         if (! valid_identifier_(identifier, parent_tag_name)) {
@@ -154,9 +154,9 @@ namespace pqrs {
           filter_vector fv;
           traverse_autogen_(pt, identifier, fv, initialize_vector);
 
-          uint32_t configindex = symbol_map_.get("ConfigIndex", identifier);
-          remapclasses_initialize_vector_.add(initialize_vector, configindex, raw_identifier);
-          confignamemap_[configindex] = raw_identifier;
+          uint32_t config_index = symbol_map_.get("ConfigIndex", identifier);
+          remapclasses_initialize_vector_.add(initialize_vector, config_index, raw_identifier);
+          identifier_map_[config_index] = raw_identifier;
         }
 
       } catch (std::exception& e) {

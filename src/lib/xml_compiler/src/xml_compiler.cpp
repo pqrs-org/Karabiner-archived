@@ -87,6 +87,16 @@ namespace pqrs {
     set_error_message_(message.str());
   }
 
+  boost::optional<const std::string&>
+  xml_compiler::get_identifier(int config_index) const
+  {
+    auto it = identifier_map_.find(config_index);
+    if (it == identifier_map_.end()) {
+      return boost::none;
+    }
+    return it->second;
+  }
+
   void
   xml_compiler::normalize_identifier(std::string& identifier)
   {

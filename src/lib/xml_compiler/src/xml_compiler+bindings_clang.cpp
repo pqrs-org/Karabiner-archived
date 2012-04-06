@@ -35,6 +35,7 @@ pqrs_xml_compiler_reload(pqrs_xml_compiler* p)
   xml_compiler->reload();
 }
 
+// ------------------------------------------------------------
 const char*
 pqrs_xml_compiler_get_error_message(const pqrs_xml_compiler* p)
 {
@@ -51,6 +52,31 @@ pqrs_xml_compiler_get_error_count(const pqrs_xml_compiler* p)
   if (! xml_compiler) return 0;
 
   return xml_compiler->get_error_count();
+}
+
+// ------------------------------------------------------------
+uint32_t
+pqrs_xml_compiler_get_symbol_map_value(const pqrs_xml_compiler* p, const char* name)
+{
+  const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
+  if (! xml_compiler) return 0;
+
+  auto v = xml_compiler->get_symbol_map_value(name);
+  if (! v) return 0;
+
+  return *v;
+}
+
+const char*
+pqrs_xml_compiler_get_identifier(const pqrs_xml_compiler* p, int config_index)
+{
+  const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
+  if (! xml_compiler) return NULL;
+
+  auto v = xml_compiler->get_identifier(config_index);
+  if (! v) return NULL;
+
+  return v->c_str();
 }
 
 // ------------------------------------------------------------

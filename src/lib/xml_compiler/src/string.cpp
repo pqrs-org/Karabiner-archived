@@ -227,7 +227,7 @@ namespace pqrs {
 
     // ============================================================
     static void
-    split(std::vector<std::string>& v, std::string string, int flags, const char* delimiter)
+    split(std::vector<std::string>& v, const std::string& string, int flags, const char* delimiter)
     {
       v.clear();
       boost::split(v, string, boost::is_any_of(delimiter));
@@ -243,13 +243,13 @@ namespace pqrs {
     }
 
     void
-    split_by_comma(std::vector<std::string>& v, std::string string, int flags)
+    split_by_comma(std::vector<std::string>& v, const std::string& string, int flags)
     {
       split(v, string, flags, ",");
     }
 
     void
-    split_by_pipe(std::vector<std::string>& v, std::string string, int flags)
+    split_by_pipe(std::vector<std::string>& v, const std::string& string, int flags)
     {
       split(v, string, flags, "|");
     }
