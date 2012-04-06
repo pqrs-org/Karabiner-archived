@@ -39,6 +39,27 @@ static int total_identifier_count_ = 0;
   }
 }
 
+- (void) dump_number:(const pqrs_xml_compiler_preferences_number_node_tree*)node_tree
+{
+  if (node_tree) {
+    size_t size = pqrs_xml_compiler_get_preferences_number_node_tree_children_count(node_tree);
+    if (size > 0) {
+      for (size_t i = 0; i < size; ++i) {
+        const pqrs_xml_compiler_preferences_number_node_tree* child =
+          pqrs_xml_compiler_get_preferences_number_node_tree_child(node_tree, i);
+        printf("%s\n", pqrs_xml_compiler_get_preferences_number_node_tree_name(child));
+
+        printf("  default_value:%d\n", pqrs_xml_compiler_get_preferences_number_node_tree_default_value(child));
+        printf("           step:%d\n", pqrs_xml_compiler_get_preferences_number_node_tree_step(child));
+        printf("      base_unit:%s\n", pqrs_xml_compiler_get_preferences_number_node_tree_base_unit(child));
+        printf("\n");
+
+        [self dump_number:child];
+      }
+    }
+  }
+}
+
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification
 {
   pqrs_xml_compiler* pqrs_xml_compiler = NULL;
@@ -66,6 +87,11 @@ static int total_identifier_count_ = 0;
     [self dump_tree:node_tree];
 
     printf("Total items: %d\n", total_identifier_count_);
+
+  } else if ([[arguments objectAtIndex:1] isEqualToString:@"dump_number"]) {
+    const pqrs_xml_compiler_preferences_number_node_tree* node_tree =
+      pqrs_xml_compiler_get_preferences_number_node_tree_root(pqrs_xml_compiler);
+    [self dump_number:node_tree];
   }
 
   fflush(stdout);
