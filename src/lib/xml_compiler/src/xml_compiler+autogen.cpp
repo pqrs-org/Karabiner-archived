@@ -222,8 +222,8 @@ namespace pqrs {
     // VK_COMMAND, VK_CONTROL, VK_SHIFT, VK_OPTION
     {
       static const struct {
-        const char* vk;
-        const char* flags[2];
+        const std::string vk;
+        const std::string flags[2];
       } info[] = {
         { "VK_COMMAND", { "ModifierFlag::COMMAND_L", "ModifierFlag::COMMAND_R" } },
         { "VK_CONTROL", { "ModifierFlag::CONTROL_L", "ModifierFlag::CONTROL_R" } },
@@ -244,14 +244,17 @@ namespace pqrs {
 
     // VK_MOD_*
     {
-      const char* keys[][2] = {
+      static const struct {
+        const std::string vk;
+        const std::string flag;
+      } info[] = {
         { "VK_MOD_CCOS_L", "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::OPTION_L|ModifierFlag::SHIFT_L" },
         { "VK_MOD_CCS_L",  "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::SHIFT_L" },
         { "VK_MOD_CCO_L",  "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::OPTION_L" },
       };
-      for (auto& k : keys) {
-        if (autogen.find(k[0]) != std::string::npos) {
-          handle_autogen(boost::replace_all_copy(autogen, k[0], k[1]),
+      for (auto& it : info) {
+        if (autogen.find(it.vk) != std::string::npos) {
+          handle_autogen(boost::replace_all_copy(autogen, it.vk, it.flag),
                          raw_autogen, filter_vector, initialize_vector);
           return;
         }
