@@ -11,7 +11,6 @@
 #import "Sparkle/SUUpdater.h"
 #import "StatusBar.h"
 #import "WorkSpaceData.h"
-#import "ConfigXMLParser.h"
 #include "bridge.h"
 
 @interface KeyRemap4MacBook_serverAppDelegate : NSObject <NSApplicationDelegate> {

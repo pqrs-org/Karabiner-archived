@@ -19,6 +19,7 @@
 
 - (size_t) remapclasses_initialize_vector_size;
 - (const uint32_t*) remapclasses_initialize_vector_data;
+- (uint32_t) remapclasses_initialize_vector_config_count;
 
 - (uint32_t) keycode:(NSString*)name;
 - (NSString*) identifier:(uint32_t)config_index;

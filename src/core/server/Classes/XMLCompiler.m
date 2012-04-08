@@ -253,6 +253,17 @@ static XMLCompiler* global_instance = nil;
   return v;
 }
 
+- (uint32_t) remapclasses_initialize_vector_config_count
+{
+  uint32_t v = 0;
+  @synchronized(self) {
+    if (initialized_) {
+      v = pqrs_xml_compiler_get_remapclasses_initialize_vector_config_count(pqrs_xml_compiler_);
+    }
+  }
+  return v;
+}
+
 - (uint32_t) keycode:(NSString*)name
 {
   uint32_t v = 0;

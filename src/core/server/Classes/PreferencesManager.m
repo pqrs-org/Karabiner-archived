@@ -1,4 +1,5 @@
 #import "PreferencesManager.h"
+#import "XMLCompiler.h"
 #import "KeyRemap4MacBookKeys.h"
 #import "KeyRemap4MacBookNSDistributedNotificationCenter.h"
 #include <sys/time.h>
@@ -409,17 +410,17 @@ static PreferencesManager* global_instance = nil;
 // ----------------------------------------------------------------------
 - (void) configxml_reload
 {
-  [[ConfigXMLParser getInstance] reload];
+  [[XMLCompiler getInstance] reload];
 }
 
 - (NSArray*) preferencepane_checkbox
 {
-  return [[ConfigXMLParser getInstance] preferencepane_checkbox];
+  return [[XMLCompiler getInstance] preferencepane_checkbox];
 }
 
 - (NSArray*) preferencepane_number
 {
-  return [[ConfigXMLParser getInstance] preferencepane_number];
+  return [[XMLCompiler getInstance] preferencepane_number];
 }
 
 - (int) enabled_count:(NSArray*)checkbox changed:(NSDictionary*)changed
@@ -444,19 +445,19 @@ static PreferencesManager* global_instance = nil;
 
 - (int) preferencepane_enabled_count
 {
-  NSArray* checkbox = [[ConfigXMLParser getInstance] preferencepane_checkbox];
+  NSArray* checkbox = [[XMLCompiler getInstance] preferencepane_checkbox];
   NSDictionary* changed = [self changed];
   return [self enabled_count:checkbox changed:changed];
 }
 
 - (NSString*) preferencepane_error_message
 {
-  return [[ConfigXMLParser getInstance] preferencepane_error_message];
+  return [[XMLCompiler getInstance] preferencepane_error_message];
 }
 
 - (NSString*) preferencepane_get_private_xml_path
 {
-  return [[ConfigXMLParser getInstance] preferencepane_get_private_xml_path];
+  return [XMLCompiler get_private_xml_path];
 }
 
 - (NSString*) preferencepane_version

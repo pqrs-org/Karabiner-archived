@@ -12,6 +12,8 @@
 #import "KeyRemap4MacBookNSDistributedNotificationCenter.h"
 #import "StatusWindow.h"
 #import "UserClient_userspace.h"
+#import "XMLCompiler.h"
+#import "ConfigXMLParser.h"
 #include <stdlib.h>
 
 @implementation KeyRemap4MacBook_serverAppDelegate
@@ -74,9 +76,26 @@
 
 // ------------------------------------------------------------
 - (void) send_remapclasses_initialize_vector_to_kext {
-  RemapClassesInitializeVector* vector = [[ConfigXMLParser getInstance] remapclasses_initialize_vector];
-  uint32_t* p = [vector rawValue];
-  size_t size = [vector size] * sizeof(uint32_t);
+  const uint32_t* p = [[XMLCompiler getInstance] remapclasses_initialize_vector_data];
+  size_t size = [[XMLCompiler getInstance] remapclasses_initialize_vector_size] * sizeof(uint32_t);
+
+  {
+    NSLog(@"Checking old-style...");
+
+    RemapClassesInitializeVector* vector2 = [[ConfigXMLParser getInstance] remapclasses_initialize_vector];
+    uint32_t* p2 = [vector2 rawValue];
+    size_t size2 = [vector2 size] * sizeof(uint32_t);
+
+    if (size != size2) {
+      NSLog(@"ERROR size(%ld) != size2(%ld)", size, size2);
+    }
+    for (size_t i = 0; i < size / sizeof(uint32_t); ++i) {
+      if (p[i] != p2[i]) {
+        NSLog(@"ERROR remapclasses_initialize_vector is differ.");
+        break;
+      }
+    }
+  }
 
   // --------------------
   struct BridgeUserClientStruct bridgestruct;
@@ -90,7 +109,7 @@
 
 - (void) send_config_to_kext {
   PreferencesManager* preferencesmanager = [PreferencesManager getInstance];
-  ConfigXMLParser*    configxmlparser    = [ConfigXMLParser    getInstance];
+  XMLCompiler*        xml_compiler       = [XMLCompiler        getInstance];
 
   NSArray* essential_config = [preferencesmanager essential_config];
   if (! essential_config) {
@@ -100,7 +119,7 @@
 
   // ------------------------------------------------------------
   NSUInteger essential_config_count = [essential_config count];
-  NSUInteger remapclasses_count     = [configxmlparser count];
+  NSUInteger remapclasses_count     = [xml_compiler remapclasses_initialize_vector_config_count];
   size_t size = (essential_config_count + remapclasses_count) * sizeof(int32_t);
   int32_t* data = (int32_t*)(malloc(size));
   if (! data) {
@@ -119,7 +138,7 @@
     // --------------------
     // remapclasses config
     for (NSUInteger i = 0; i < remapclasses_count; ++i) {
-      NSString* name = [configxmlparser configname:(int)(i)];
+      NSString* name = [xml_compiler identifier:(int)(i)];
       if (! name) {
         NSLog(@"[WARNING] %s name == nil. private.xml has error?", __FUNCTION__);
         *p++ = 0;
