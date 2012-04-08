@@ -21,9 +21,6 @@ mkdir -p                                                "pkgroot/$basedir"
 cp -R src/core/kext/build/Release/KeyRemap4MacBook.kext "pkgroot/$basedir"
 cp -R files/scripts                                     "pkgroot/$basedir"
 
-mkdir -p                                                        "pkgroot/$basedir/prefpane"
-cp files/prefpane/number.xml files/prefpane/output/checkbox.xml "pkgroot/$basedir/prefpane"
-
 mkdir -p                               "pkgroot/$basedir/extra"
 cp -R pkginfo/Resources/preflight      "pkgroot/$basedir/extra/uninstall_core.sh"
 cp -R files/extra/launchUninstaller.sh "pkgroot/$basedir/extra/"
