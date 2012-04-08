@@ -38,8 +38,7 @@ static PreferencesManager* global_instance = nil;
 
 - (void) setDefault
 {
-  NSString* xmlpath = @"/Library/org.pqrs/KeyRemap4MacBook/prefpane/number.xml";
-  NSURL* xmlurl = [NSURL fileURLWithPath:xmlpath];
+  NSURL* xmlurl = [[NSBundle mainBundle] URLForResource:@"number" withExtension:@"xml"];
   NSXMLDocument* xmldocument = [[[NSXMLDocument alloc] initWithContentsOfURL:xmlurl options:0 error:NULL] autorelease];
   if (xmldocument) {
     [self addToDefault:[xmldocument rootElement]];
@@ -176,7 +175,7 @@ static PreferencesManager* global_instance = nil;
   }
 
   [[NSUserDefaults standardUserDefaults] setObject:md forKey:identifier];
-  //[[NSUserDefaults standardUserDefaults] synchronize];
+  // [[NSUserDefaults standardUserDefaults] synchronize];
 
   [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookPreferencesChangedNotification userInfo:nil];
 }
@@ -404,7 +403,7 @@ static PreferencesManager* global_instance = nil;
 - (void) setCheckForUpdatesMode:(NSInteger)newval
 {
   [[NSUserDefaults standardUserDefaults] setInteger:newval forKey:@"isCheckUpdate"];
-  //[[NSUserDefaults standardUserDefaults] synchronize];
+  // [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 // ----------------------------------------------------------------------

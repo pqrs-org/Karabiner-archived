@@ -29,7 +29,6 @@
 		349B509F12837E64009108FE /* include.keycode.plist in Resources */ = {isa = PBXBuildFile; fileRef = 349B509E12837E64009108FE /* include.keycode.plist */; };
 		34A06A4C11F8792E0085749B /* icon.statusbar.0.tif in Resources */ = {isa = PBXBuildFile; fileRef = 34A06A4A11F8792E0085749B /* icon.statusbar.0.tif */; };
 		34A06A4D11F8792E0085749B /* icon.statusbar.1.tif in Resources */ = {isa = PBXBuildFile; fileRef = 34A06A4B11F8792E0085749B /* icon.statusbar.1.tif */; };
-		34A61190153170740003894B /* number.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34A6118F153170740003894B /* number.xml */; };
 		34A611931531707E0003894B /* checkbox.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34A611921531707E0003894B /* checkbox.xml */; };
 		34A83BCF144B1EAA00AE5687 /* appdef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34A83BCE144B1EAA00AE5687 /* appdef.xml */; };
 		34B893FE128E448C00BC955A /* KeyCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B893FA128E448C00BC955A /* KeyCode.m */; };
@@ -37,6 +36,7 @@
 		34CC23DC13E99C3800CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CC23DB13E99C3800CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m */; };
 		34D4F82812C4463B001819AA /* StatusWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D4F82712C4463B001819AA /* StatusWindow.m */; };
 		34D4F83C12C45CF3001819AA /* WorkSpaceData+InputMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D4F83B12C45CF3001819AA /* WorkSpaceData+InputMode.m */; };
+		34D590271531983100160DFC /* number.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34D590261531983100160DFC /* number.xml */; };
 		34F37D54149A2E7800D4694B /* languagedef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34F37D53149A2E7800D4694B /* languagedef.xml */; };
 		34FB9592128F985A0088B235 /* PreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FB9591128F985A0088B235 /* PreferencesManager.m */; };
 		34FB9595128FCC030088B235 /* include.bridge_essential_config_index.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34FB9594128FCC030088B235 /* include.bridge_essential_config_index.plist */; };
@@ -94,7 +94,6 @@
 		349B509E12837E64009108FE /* include.keycode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = include.keycode.plist; path = ../bridge/keycode/output/include.keycode.plist; sourceTree = SOURCE_ROOT; };
 		34A06A4A11F8792E0085749B /* icon.statusbar.0.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon.statusbar.0.tif; path = Resources/icon.statusbar.0.tif; sourceTree = "<group>"; };
 		34A06A4B11F8792E0085749B /* icon.statusbar.1.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon.statusbar.1.tif; path = Resources/icon.statusbar.1.tif; sourceTree = "<group>"; };
-		34A6118F153170740003894B /* number.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = number.xml; path = ../../../files/prefpane/number.xml; sourceTree = "<group>"; };
 		34A611921531707E0003894B /* checkbox.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = checkbox.xml; path = ../../../files/prefpane/output/checkbox.xml; sourceTree = "<group>"; };
 		34A83BCE144B1EAA00AE5687 /* appdef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = appdef.xml; path = Resources/appdef.xml; sourceTree = "<group>"; };
 		34B2A65A13745B6000694134 /* KeyRemap4MacBookKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookKeys.h; path = ../../share/KeyRemap4MacBookKeys.h; sourceTree = "<group>"; };
@@ -107,6 +106,7 @@
 		34D4F82612C4463B001819AA /* StatusWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusWindow.h; path = Classes/StatusWindow.h; sourceTree = "<group>"; };
 		34D4F82712C4463B001819AA /* StatusWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusWindow.m; path = Classes/StatusWindow.m; sourceTree = "<group>"; };
 		34D4F83B12C45CF3001819AA /* WorkSpaceData+InputMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "WorkSpaceData+InputMode.m"; path = "Classes/WorkSpaceData+InputMode.m"; sourceTree = "<group>"; };
+		34D590261531983100160DFC /* number.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = number.xml; path = Resources/number.xml; sourceTree = "<group>"; };
 		34F37D53149A2E7800D4694B /* languagedef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = languagedef.xml; path = Resources/languagedef.xml; sourceTree = "<group>"; };
 		34FB9590128F98510088B235 /* PreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesManager.h; path = Classes/PreferencesManager.h; sourceTree = "<group>"; };
 		34FB9591128F985A0088B235 /* PreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesManager.m; path = Classes/PreferencesManager.m; sourceTree = "<group>"; };
@@ -214,8 +214,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				34D590261531983100160DFC /* number.xml */,
 				34A611921531707E0003894B /* checkbox.xml */,
-				34A6118F153170740003894B /* number.xml */,
 				343A17D81529A5B400F2E968 /* symbol_map.xml */,
 				34F37D53149A2E7800D4694B /* languagedef.xml */,
 				34FEAE4C148695AE0042D507 /* replacementdef.xml */,
@@ -318,8 +318,8 @@
 				34FEAE4D148695AE0042D507 /* replacementdef.xml in Resources */,
 				34F37D54149A2E7800D4694B /* languagedef.xml in Resources */,
 				343A17D91529A5B400F2E968 /* symbol_map.xml in Resources */,
-				34A61190153170740003894B /* number.xml in Resources */,
 				34A611931531707E0003894B /* checkbox.xml in Resources */,
+				34D590271531983100160DFC /* number.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

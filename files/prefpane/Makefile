@@ -3,5 +3,4 @@ all:
 	./scripts/lint.rb
 
 install: all
-	sudo install -m 644 number.xml output/checkbox.xml /Library/org.pqrs/KeyRemap4MacBook/prefpane
-	sudo install -m 644 number.xml output/checkbox.xml /Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app/Contents/Resources
+	sudo install -m 644 output/checkbox.xml /Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app/Contents/Resources
