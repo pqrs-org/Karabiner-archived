@@ -13,7 +13,6 @@
 #import "StatusWindow.h"
 #import "UserClient_userspace.h"
 #import "XMLCompiler.h"
-#import "ConfigXMLParser.h"
 #include <stdlib.h>
 
 @implementation KeyRemap4MacBook_serverAppDelegate
@@ -78,24 +77,6 @@
 - (void) send_remapclasses_initialize_vector_to_kext {
   const uint32_t* p = [[XMLCompiler getInstance] remapclasses_initialize_vector_data];
   size_t size = [[XMLCompiler getInstance] remapclasses_initialize_vector_size] * sizeof(uint32_t);
-
-  {
-    NSLog(@"Checking old-style...");
-
-    RemapClassesInitializeVector* vector2 = [[ConfigXMLParser getInstance] remapclasses_initialize_vector];
-    uint32_t* p2 = [vector2 rawValue];
-    size_t size2 = [vector2 size] * sizeof(uint32_t);
-
-    if (size != size2) {
-      NSLog(@"ERROR size(%ld) != size2(%ld)", size, size2);
-    }
-    for (size_t i = 0; i < size / sizeof(uint32_t); ++i) {
-      if (p[i] != p2[i]) {
-        NSLog(@"ERROR remapclasses_initialize_vector is differ.");
-        break;
-      }
-    }
-  }
 
   // --------------------
   struct BridgeUserClientStruct bridgestruct;
