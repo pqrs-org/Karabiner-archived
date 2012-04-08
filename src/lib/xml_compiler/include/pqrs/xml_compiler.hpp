@@ -126,13 +126,14 @@ namespace pqrs {
       remapclasses_initialize_vector(void);
       void clear(void);
       const std::vector<uint32_t>& get(void) const;
+      uint32_t get_config_count(void) const;
       void add(const std::vector<uint32_t>& v, uint32_t config_index, const std::string& identifier);
       void freeze(void);
 
     private:
       enum {
         INDEX_OF_FORMAT_VERSION = 0,
-        INDEX_OF_COUNT = 1,
+        INDEX_OF_CONFIG_COUNT = 1,
       };
 
       std::vector<uint32_t> data_;

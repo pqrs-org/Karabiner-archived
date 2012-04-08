@@ -13,7 +13,7 @@ namespace pqrs {
   {
     data_.resize(2);
     data_[INDEX_OF_FORMAT_VERSION] = BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION;
-    data_[INDEX_OF_COUNT] = 0;
+    data_[INDEX_OF_CONFIG_COUNT] = 0;
 
     is_config_index_added_.clear();
 
@@ -28,6 +28,15 @@ namespace pqrs {
       throw xml_compiler_logic_error("remapclasses_initialize_vector is not freezed.");
     }
     return data_;
+  }
+
+  uint32_t
+  xml_compiler::remapclasses_initialize_vector::get_config_count(void) const
+  {
+    if (! freezed_) {
+      throw xml_compiler_logic_error("remapclasses_initialize_vector is not freezed.");
+    }
+    return data_[INDEX_OF_CONFIG_COUNT];
   }
 
   void
@@ -52,7 +61,7 @@ namespace pqrs {
     // data
     pqrs::vector::push_back(data_, v);
 
-    ++(data_[INDEX_OF_COUNT]);
+    ++(data_[INDEX_OF_CONFIG_COUNT]);
 
     if (config_index > max_config_index_) {
       max_config_index_ = config_index;

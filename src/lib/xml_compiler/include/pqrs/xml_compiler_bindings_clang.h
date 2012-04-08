@@ -30,6 +30,7 @@ uint32_t pqrs_xml_compiler_get_appid(const pqrs_xml_compiler* p, const char* app
 // ------------------------------------------------------------
 const uint32_t* pqrs_xml_compiler_get_remapclasses_initialize_vector_data(const pqrs_xml_compiler* p);
 size_t pqrs_xml_compiler_get_remapclasses_initialize_vector_size(const pqrs_xml_compiler* p);
+uint32_t pqrs_xml_compiler_get_remapclasses_initialize_vector_config_count(const pqrs_xml_compiler* p);
 
 // ------------------------------------------------------------
 const pqrs_xml_compiler_preferences_checkbox_node_tree*
