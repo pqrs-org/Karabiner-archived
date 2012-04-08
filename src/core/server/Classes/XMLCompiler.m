@@ -291,22 +291,37 @@ static XMLCompiler* global_instance = nil;
 
 - (NSArray*) preferencepane_checkbox
 {
-  return nil;
+  NSArray* a = nil;
+  @synchronized(self) {
+    if (initialized_) {
+      a = preferencepane_checkbox_;
+    }
+  }
+  return a;
 }
 
 - (NSArray*) preferencepane_number;
 {
-  return nil;
+  NSArray* a = nil;
+  @synchronized(self) {
+    if (initialized_) {
+      a = preferencepane_number_;
+    }
+  }
+  return a;
 }
 
 - (NSString*) preferencepane_error_message;
 {
-  return nil;
-}
+  if (pqrs_xml_compiler_get_error_count(pqrs_xml_compiler_) == 0) {
+    return nil;
+  }
+  const char* error_message = pqrs_xml_compiler_get_error_message(pqrs_xml_compiler_);
+  if (! error_message) {
+    return nil;
+  }
 
-- (NSString*) preferencepane_get_private_xml_path;
-{
-  return nil;
+  return [NSString stringWithUTF8String:error_message];
 }
 
 @end
