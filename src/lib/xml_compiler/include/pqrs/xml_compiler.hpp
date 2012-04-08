@@ -181,7 +181,7 @@ namespace pqrs {
       preferences_checkbox_node(void);
       preferences_checkbox_node(const preferences_checkbox_node& parent_node);
 
-      bool handle_item_child(const boost::property_tree::ptree::value_type& it);
+      void handle_item_child(const boost::property_tree::ptree::value_type& it);
 
       const std::string& get_name_for_filter(void) const { return name_for_filter_; }
 
@@ -194,7 +194,7 @@ namespace pqrs {
       preferences_number_node(void);
       preferences_number_node(const preferences_number_node& parent_node);
 
-      bool handle_item_child(const boost::property_tree::ptree::value_type& it);
+      void handle_item_child(const boost::property_tree::ptree::value_type& it);
 
       int get_default_value(void) const { return default_value_; }
       int get_step(void) const { return step_; }

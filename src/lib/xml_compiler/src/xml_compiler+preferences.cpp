@@ -39,20 +39,16 @@ namespace pqrs {
     name_for_filter_(parent.name_for_filter_ + " ")
   {}
 
-  bool
+  void
   xml_compiler::preferences_checkbox_node::handle_item_child(const boost::property_tree::ptree::value_type& it)
   {
     if (preferences_node::handle_name_and_appendix(it)) {
       name_for_filter_ += boost::algorithm::to_lower_copy(boost::trim_copy(it.second.data()));
       name_for_filter_ += " ";
 
-      return true;
-    }
-    if (it.first == "identifier") {
+    } else if (it.first == "identifier") {
       identifier_ = boost::trim_copy(it.second.data());
-      return true;
     }
-    return false;
   }
 
   xml_compiler::preferences_number_node::preferences_number_node(void) :
@@ -64,12 +60,13 @@ namespace pqrs {
     preferences_number_node()
   {}
 
-  bool
+  void
   xml_compiler::preferences_number_node::handle_item_child(const boost::property_tree::ptree::value_type& it)
   {
     if (preferences_node::handle_name_and_appendix(it)) {
-      return true;
+      return;
     }
+
     if (it.first == "identifier") {
       identifier_ = boost::trim_copy(it.second.data());
 
@@ -100,11 +97,7 @@ namespace pqrs {
           base_unit_ = boost::trim_copy(*value);
         }
       }
-
-      return true;
     }
-
-    return false;
   }
 
   template <class T>
@@ -128,11 +121,9 @@ namespace pqrs {
         preferences_node_tree_ptr ptr(new preferences_node_tree(node_));
 
         for (auto& child : it.second) {
-          if ((ptr->node_).handle_item_child(child)) {
-            continue;
-          }
-          ptr->traverse_item(child.second);
+          (ptr->node_).handle_item_child(child);
         }
+        ptr->traverse_item(it.second);
 
         if (! children_) {
           children_ = preferences_node_tree_ptrs_ptr(new preferences_node_tree_ptrs());
