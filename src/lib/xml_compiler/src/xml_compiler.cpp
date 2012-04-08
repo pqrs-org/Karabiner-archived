@@ -13,12 +13,16 @@ namespace pqrs {
     error_message_.clear();
     error_count_ = 0;
 
-    reload_replacementdef_();
-    reload_symbol_map_();
-    reload_appdef_();
-    reload_devicedef_();
-    reload_autogen_();
-    reload_preferences_();
+    try {
+      reload_replacementdef_();
+      reload_symbol_map_();
+      reload_appdef_();
+      reload_devicedef_();
+      reload_autogen_();
+      reload_preferences_();
+    } catch (std::exception& e) {
+      set_error_message_(e.what());
+    }
   }
 
   void
