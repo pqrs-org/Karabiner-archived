@@ -109,6 +109,15 @@ pqrs_xml_compiler_get_remapclasses_initialize_vector_size(const pqrs_xml_compile
   return v.size();
 }
 
+uint32_t
+pqrs_xml_compiler_get_remapclasses_initialize_vector_config_count(const pqrs_xml_compiler* p)
+{
+  const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
+  if (! xml_compiler) return 0;
+
+  return (xml_compiler->get_remapclasses_initialize_vector()).get_config_count();
+}
+
 // ------------------------------------------------------------
 const pqrs_xml_compiler_preferences_checkbox_node_tree*
 pqrs_xml_compiler_get_preferences_checkbox_node_tree_root(const pqrs_xml_compiler* p)
