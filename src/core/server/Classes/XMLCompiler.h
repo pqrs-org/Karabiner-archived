@@ -5,7 +5,6 @@
 @interface XMLCompiler : NSObject
 {
   pqrs_xml_compiler* pqrs_xml_compiler_;
-  BOOL initialized_;
 
   NSMutableArray* preferencepane_checkbox_;
   NSMutableArray* preferencepane_number_;
@@ -14,8 +13,7 @@
 + (XMLCompiler*) getInstance;
 + (NSString*) get_private_xml_path;
 
-- (BOOL) initialized;
-- (BOOL) reload;
+- (void) reload;
 
 - (size_t) remapclasses_initialize_vector_size;
 - (const uint32_t*) remapclasses_initialize_vector_data;

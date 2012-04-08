@@ -10,6 +10,19 @@ static XMLCompiler* global_instance = nil;
 // ------------------------------------------------------------
 // private methods
 
+- (void) showAlert {
+  NSAlert* alert = [[NSAlert new] autorelease];
+  [alert setMessageText:@"KeyRemap4MacBook Error"];
+  [alert addButtonWithTitle:@"Close"];
+  [alert addButtonWithTitle:@"Open PreferencePane"];
+  [alert setInformativeText:[self preferencepane_error_message]];
+
+  NSInteger response = [alert runModal];
+  if (response == NSAlertSecondButtonReturn) {
+    [[NSWorkspace sharedWorkspace] openFile:@"/Library/PreferencePanes/KeyRemap4MacBook.prefPane"];
+  }
+}
+
 + (NSMutableArray*) build_preferencepane_checkbox:(const pqrs_xml_compiler_preferences_checkbox_node_tree*)node_tree
 {
   if (! node_tree) return nil;
@@ -189,150 +202,116 @@ static XMLCompiler* global_instance = nil;
   [super dealloc];
 }
 
-- (BOOL) initialized {
-  return initialized_;
-}
-
-- (BOOL) reload {
+- (void) reload {
   @synchronized(self) {
-    initialized_ = NO;
-
     pqrs_xml_compiler_reload(pqrs_xml_compiler_);
-    if (! pqrs_xml_compiler_get_error_count(pqrs_xml_compiler_)) {
-      initialized_ = YES;
 
-      // build preferencepane_checkbox_
-      {
-        const pqrs_xml_compiler_preferences_checkbox_node_tree* node_tree =
-          pqrs_xml_compiler_get_preferences_checkbox_node_tree_root(pqrs_xml_compiler_);
+    // build preferencepane_checkbox_
+    {
+      const pqrs_xml_compiler_preferences_checkbox_node_tree* node_tree =
+        pqrs_xml_compiler_get_preferences_checkbox_node_tree_root(pqrs_xml_compiler_);
 
-        [preferencepane_checkbox_ release];
-        preferencepane_checkbox_ = [XMLCompiler build_preferencepane_checkbox:node_tree];
-        [preferencepane_checkbox_ retain];
-      }
+      [preferencepane_checkbox_ release];
+      preferencepane_checkbox_ = [XMLCompiler build_preferencepane_checkbox:node_tree];
+      [preferencepane_checkbox_ retain];
+    }
 
-      // build preferencepane_number_
-      {
-        const pqrs_xml_compiler_preferences_number_node_tree* node_tree =
-          pqrs_xml_compiler_get_preferences_number_node_tree_root(pqrs_xml_compiler_);
+    // build preferencepane_number_
+    {
+      const pqrs_xml_compiler_preferences_number_node_tree* node_tree =
+        pqrs_xml_compiler_get_preferences_number_node_tree_root(pqrs_xml_compiler_);
 
-        [preferencepane_number_ release];
-        preferencepane_number_ = [XMLCompiler build_preferencepane_number:node_tree];
-        [preferencepane_number_ retain];
-      }
+      [preferencepane_number_ release];
+      preferencepane_number_ = [XMLCompiler build_preferencepane_number:node_tree];
+      [preferencepane_number_ retain];
     }
   }
 
-  // We need to send a notification outside synchronized block to prevent lock.
-  if (initialized_) {
-    [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookConfigXMLReloadedNotification userInfo:nil];
+  if (pqrs_xml_compiler_get_error_count(pqrs_xml_compiler_) > 0) {
+    [self performSelectorOnMainThread:@selector(showAlert)
+                           withObject:nil
+                        waitUntilDone:NO];
   }
 
-  return initialized_;
+  // We need to send a notification outside synchronized block to prevent lock.
+  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookConfigXMLReloadedNotification userInfo:nil];
 }
 
 - (size_t) remapclasses_initialize_vector_size
 {
-  NSUInteger v = 0;
   @synchronized(self) {
-    if (initialized_) {
-      v = pqrs_xml_compiler_get_remapclasses_initialize_vector_size(pqrs_xml_compiler_);
-    }
+    return pqrs_xml_compiler_get_remapclasses_initialize_vector_size(pqrs_xml_compiler_);
   }
-  return v;
 }
 
 - (const uint32_t*) remapclasses_initialize_vector_data
 {
-  const uint32_t* v = nil;
   @synchronized(self) {
-    if (initialized_) {
-      v = pqrs_xml_compiler_get_remapclasses_initialize_vector_data(pqrs_xml_compiler_);
-    }
+    return pqrs_xml_compiler_get_remapclasses_initialize_vector_data(pqrs_xml_compiler_);
   }
-  return v;
 }
 
 - (uint32_t) remapclasses_initialize_vector_config_count
 {
-  uint32_t v = 0;
   @synchronized(self) {
-    if (initialized_) {
-      v = pqrs_xml_compiler_get_remapclasses_initialize_vector_config_count(pqrs_xml_compiler_);
-    }
+    return pqrs_xml_compiler_get_remapclasses_initialize_vector_config_count(pqrs_xml_compiler_);
   }
-  return v;
 }
 
 - (uint32_t) keycode:(NSString*)name
 {
-  uint32_t v = 0;
   @synchronized(self) {
-    if (initialized_) {
-      v = pqrs_xml_compiler_get_symbol_map_value(pqrs_xml_compiler_, [name UTF8String]);
-    }
+    return pqrs_xml_compiler_get_symbol_map_value(pqrs_xml_compiler_, [name UTF8String]);
   }
-  return v;
 }
 
 - (NSString*) identifier:(uint32_t)config_index
 {
-  NSString* v = nil;
   @synchronized(self) {
-    if (initialized_) {
-      const char* p = pqrs_xml_compiler_get_identifier(pqrs_xml_compiler_, config_index);
-      if (p) {
-        v = [NSString stringWithUTF8String:p];
-      }
-    }
+    const char* p = pqrs_xml_compiler_get_identifier(pqrs_xml_compiler_, config_index);
+    if (! p) return nil;
+
+    return [NSString stringWithUTF8String:p];
   }
-  return v;
 }
 
 - (uint32_t) appid:(NSString*)bundleIdentifier
 {
-  uint32_t v = 0;
   @synchronized(self) {
-    if (initialized_) {
-      v = pqrs_xml_compiler_get_appid(pqrs_xml_compiler_, [bundleIdentifier UTF8String]);
-    }
+    return pqrs_xml_compiler_get_appid(pqrs_xml_compiler_, [bundleIdentifier UTF8String]);
   }
-  return v;
 }
 
 - (NSArray*) preferencepane_checkbox
 {
-  NSArray* a = nil;
   @synchronized(self) {
-    if (initialized_) {
-      a = preferencepane_checkbox_;
-    }
+    return preferencepane_checkbox_;
   }
-  return a;
 }
 
 - (NSArray*) preferencepane_number;
 {
-  NSArray* a = nil;
   @synchronized(self) {
-    if (initialized_) {
-      a = preferencepane_number_;
-    }
+    return preferencepane_number_;
   }
-  return a;
 }
 
 - (NSString*) preferencepane_error_message;
 {
-  if (pqrs_xml_compiler_get_error_count(pqrs_xml_compiler_) == 0) {
-    return nil;
-  }
-  const char* error_message = pqrs_xml_compiler_get_error_message(pqrs_xml_compiler_);
-  if (! error_message) {
-    return nil;
-  }
+  @synchronized(self) {
+    if (pqrs_xml_compiler_get_error_count(pqrs_xml_compiler_) == 0) {
+      return nil;
+    }
+    const char* error_message = pqrs_xml_compiler_get_error_message(pqrs_xml_compiler_);
+    if (! error_message) {
+      return nil;
+    }
 
-  return [NSString stringWithUTF8String:error_message];
+    return [NSString stringWithFormat:@"Error in XML.\n%s\n%s\n%s",
+            "----------------------------------------",
+            error_message,
+            "----------------------------------------"];
+  }
 }
 
 @end
