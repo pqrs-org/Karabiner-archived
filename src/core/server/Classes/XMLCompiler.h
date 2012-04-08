@@ -6,6 +6,9 @@
 {
   pqrs_xml_compiler* pqrs_xml_compiler_;
   BOOL initialized_;
+
+  NSMutableArray* preferencepane_checkbox_;
+  NSMutableArray* preferencepane_number_;
 }
 
 + (XMLCompiler*) getInstance;

@@ -7,6 +7,122 @@ static XMLCompiler* global_instance = nil;
 
 @implementation XMLCompiler
 
+// ------------------------------------------------------------
+// private methods
+
++ (NSMutableArray*) build_preferencepane_checkbox:(const pqrs_xml_compiler_preferences_checkbox_node_tree*)node_tree
+{
+  if (! node_tree) return nil;
+
+  size_t size = pqrs_xml_compiler_get_preferences_checkbox_node_tree_children_count(node_tree);
+  if (size == 0) return nil;
+
+  NSMutableArray* array = [[NSMutableArray new] autorelease];
+
+  for (size_t i = 0; i < size; ++i) {
+    const pqrs_xml_compiler_preferences_checkbox_node_tree* child =
+      pqrs_xml_compiler_get_preferences_checkbox_node_tree_child(node_tree, i);
+    if (! child) continue;
+
+    // ----------------------------------------
+    // making dictionary
+    NSMutableDictionary* dict = [[NSMutableDictionary new] autorelease];
+
+    {
+      const char* name = pqrs_xml_compiler_get_preferences_checkbox_node_tree_name(child);
+      if (name) {
+        [dict setObject:[NSString stringWithUTF8String:name] forKey:@"name"];
+      }
+    }
+    {
+      int name_line_count = pqrs_xml_compiler_get_preferences_checkbox_node_tree_name_line_count(child);
+      [dict setObject:[NSNumber numberWithUnsignedInteger:name_line_count] forKey:@"height"];
+    }
+    {
+      const char* identifier = pqrs_xml_compiler_get_preferences_checkbox_node_tree_identifier(child);
+      if (identifier) {
+        [dict setObject:[NSString stringWithUTF8String:identifier] forKey:@"identifier"];
+      }
+    }
+    {
+      const char* name_for_filter = pqrs_xml_compiler_get_preferences_checkbox_node_tree_name_for_filter(child);
+      if (name_for_filter) {
+        [dict setObject:[NSString stringWithUTF8String:name_for_filter] forKey:@"string_for_filter"];
+      }
+    }
+
+    NSMutableArray* a = [self build_preferencepane_checkbox:child];
+    if (a) {
+      [dict setObject:a forKey:@"children"];
+    }
+
+    [array addObject:dict];
+  }
+
+  return array;
+}
+
++ (NSMutableArray*) build_preferencepane_number:(const pqrs_xml_compiler_preferences_number_node_tree*)node_tree
+{
+  if (! node_tree) return nil;
+
+  size_t size = pqrs_xml_compiler_get_preferences_number_node_tree_children_count(node_tree);
+  if (size == 0) return nil;
+
+  NSMutableArray* array = [[NSMutableArray new] autorelease];
+
+  for (size_t i = 0; i < size; ++i) {
+    const pqrs_xml_compiler_preferences_number_node_tree* child =
+      pqrs_xml_compiler_get_preferences_number_node_tree_child(node_tree, i);
+    if (! child) continue;
+
+    // ----------------------------------------
+    // making dictionary
+    NSMutableDictionary* dict = [[NSMutableDictionary new] autorelease];
+
+    {
+      const char* name = pqrs_xml_compiler_get_preferences_number_node_tree_name(child);
+      if (name) {
+        [dict setObject:[NSString stringWithUTF8String:name] forKey:@"name"];
+      }
+    }
+    {
+      int name_line_count = pqrs_xml_compiler_get_preferences_number_node_tree_name_line_count(child);
+      [dict setObject:[NSNumber numberWithUnsignedInteger:name_line_count] forKey:@"height"];
+    }
+    {
+      const char* identifier = pqrs_xml_compiler_get_preferences_number_node_tree_identifier(child);
+      if (identifier) {
+        [dict setObject:[NSString stringWithUTF8String:identifier] forKey:@"identifier"];
+      }
+    }
+    {
+      int default_value = pqrs_xml_compiler_get_preferences_number_node_tree_default_value(child);
+      [dict setObject:[NSNumber numberWithUnsignedInteger:default_value] forKey:@"default"];
+    }
+    {
+      int step = pqrs_xml_compiler_get_preferences_number_node_tree_step(child);
+      [dict setObject:[NSNumber numberWithUnsignedInteger:step] forKey:@"step"];
+    }
+    {
+      const char* base_unit = pqrs_xml_compiler_get_preferences_number_node_tree_base_unit(child);
+      if (base_unit) {
+        [dict setObject:[NSString stringWithUTF8String:base_unit] forKey:@"baseunit"];
+      }
+    }
+
+    NSMutableArray* a = [self build_preferencepane_number:child];
+    if (a) {
+      [dict setObject:a forKey:@"children"];
+    }
+
+    [array addObject:dict];
+  }
+
+  return array;
+}
+
+// ------------------------------------------------------------
 + (XMLCompiler*) getInstance
 {
   @synchronized(self) {
@@ -67,6 +183,8 @@ static XMLCompiler* global_instance = nil;
 - (void) dealloc
 {
   pqrs_xml_compiler_terminate(&pqrs_xml_compiler_);
+  [preferencepane_checkbox_ release];
+  [preferencepane_number_ release];
 
   [super dealloc];
 }
@@ -82,6 +200,26 @@ static XMLCompiler* global_instance = nil;
     pqrs_xml_compiler_reload(pqrs_xml_compiler_);
     if (! pqrs_xml_compiler_get_error_count(pqrs_xml_compiler_)) {
       initialized_ = YES;
+
+      // build preferencepane_checkbox_
+      {
+        const pqrs_xml_compiler_preferences_checkbox_node_tree* node_tree =
+          pqrs_xml_compiler_get_preferences_checkbox_node_tree_root(pqrs_xml_compiler_);
+
+        [preferencepane_checkbox_ release];
+        preferencepane_checkbox_ = [XMLCompiler build_preferencepane_checkbox:node_tree];
+        [preferencepane_checkbox_ retain];
+      }
+
+      // build preferencepane_number_
+      {
+        const pqrs_xml_compiler_preferences_number_node_tree* node_tree =
+          pqrs_xml_compiler_get_preferences_number_node_tree_root(pqrs_xml_compiler_);
+
+        [preferencepane_number_ release];
+        preferencepane_number_ = [XMLCompiler build_preferencepane_number:node_tree];
+        [preferencepane_number_ retain];
+      }
     }
   }
 
