@@ -31,7 +31,6 @@
 		34A06A4D11F8792E0085749B /* icon.statusbar.1.tif in Resources */ = {isa = PBXBuildFile; fileRef = 34A06A4B11F8792E0085749B /* icon.statusbar.1.tif */; };
 		34A611931531707E0003894B /* checkbox.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34A611921531707E0003894B /* checkbox.xml */; };
 		34A83BCF144B1EAA00AE5687 /* appdef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34A83BCE144B1EAA00AE5687 /* appdef.xml */; };
-		34B893FE128E448C00BC955A /* KeyCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B893FA128E448C00BC955A /* KeyCode.m */; };
 		34B893FF128E448C00BC955A /* WorkSpaceData.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B893FC128E448C00BC955A /* WorkSpaceData.m */; };
 		34CC23DC13E99C3800CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CC23DB13E99C3800CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m */; };
 		34D4F82812C4463B001819AA /* StatusWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D4F82712C4463B001819AA /* StatusWindow.m */; };
@@ -97,8 +96,6 @@
 		34A611921531707E0003894B /* checkbox.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = checkbox.xml; path = ../../../files/prefpane/output/checkbox.xml; sourceTree = "<group>"; };
 		34A83BCE144B1EAA00AE5687 /* appdef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = appdef.xml; path = Resources/appdef.xml; sourceTree = "<group>"; };
 		34B2A65A13745B6000694134 /* KeyRemap4MacBookKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookKeys.h; path = ../../share/KeyRemap4MacBookKeys.h; sourceTree = "<group>"; };
-		34B893F9128E448C00BC955A /* KeyCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyCode.h; path = Classes/KeyCode.h; sourceTree = "<group>"; };
-		34B893FA128E448C00BC955A /* KeyCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyCode.m; path = Classes/KeyCode.m; sourceTree = "<group>"; };
 		34B893FB128E448C00BC955A /* WorkSpaceData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkSpaceData.h; path = Classes/WorkSpaceData.h; sourceTree = "<group>"; };
 		34B893FC128E448C00BC955A /* WorkSpaceData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkSpaceData.m; path = Classes/WorkSpaceData.m; sourceTree = "<group>"; };
 		34CC23DA13E99C3800CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookNSDistributedNotificationCenter.h; path = ../../share/KeyRemap4MacBookNSDistributedNotificationCenter.h; sourceTree = "<group>"; };
@@ -151,8 +148,6 @@
 				34FB9590128F98510088B235 /* PreferencesManager.h */,
 				348C6A2C128E4504005F516D /* StatusBar.h */,
 				348C6A2D128E4504005F516D /* StatusBar.m */,
-				34B893F9128E448C00BC955A /* KeyCode.h */,
-				34B893FA128E448C00BC955A /* KeyCode.m */,
 				34B893FB128E448C00BC955A /* WorkSpaceData.h */,
 				34B893FC128E448C00BC955A /* WorkSpaceData.m */,
 				34597768128DBFAE003398BD /* bridge.h */,
@@ -332,7 +327,6 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				256AC3DA0F4B6AC300CF3369 /* KeyRemap4MacBook_serverAppDelegate.m in Sources */,
-				34B893FE128E448C00BC955A /* KeyCode.m in Sources */,
 				34B893FF128E448C00BC955A /* WorkSpaceData.m in Sources */,
 				348C6A2E128E4504005F516D /* StatusBar.m in Sources */,
 				34FB9592128F985A0088B235 /* PreferencesManager.m in Sources */,
