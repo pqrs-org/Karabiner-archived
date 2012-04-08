@@ -1,4 +1,4 @@
-SYSCTL_FILE = ../../../../files/prefpane/number.xml ../../../../files/prefpane/output/checkbox.xml
+SYSCTL_FILE = ../../server/Resources/number.xml ../../../../files/prefpane/output/checkbox.xml
 
 all:
 	mkdir -p output
