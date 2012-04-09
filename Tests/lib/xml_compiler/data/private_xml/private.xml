@@ -27,16 +27,31 @@
   <!-- ============================================================ -->
   <!-- devicevendordef, deviceproductdef -->
 
+  <!-- ==================== -->
   <devicevendordef>
     <vendorname>  HEWLETT_PACKARD  </vendorname>
     <vendorid>  0x03f0  </vendorid>
   </devicevendordef>
 
+  <!-- Definition is ignored if name is already exists. -->
+  <devicevendordef>
+    <vendorname>  HEWLETT_PACKARD  </vendorname>
+    <vendorid>  0x1234  </vendorid>
+  </devicevendordef>
+
+  <!-- ==================== -->
   <deviceproductdef>
     <productname>  MY_HP_KEYBOARD  </productname>
     <productid>  0x0224  </productid>
   </deviceproductdef>
 
+  <!-- Definition is ignored if name is already exists. -->
+  <deviceproductdef>
+    <productname>  MY_HP_KEYBOARD  </productname>
+    <productid>  0x9876  </productid>
+  </deviceproductdef>
+
+  <!-- ==================== -->
   <!-- overwrite system value -->
   <devicevendordef>
     <vendorname>APPLE_COMPUTER</vendorname>
