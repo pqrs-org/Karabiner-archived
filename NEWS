@@ -4,6 +4,7 @@ Changes since 7.5.0
     - Added --ScrollWheelToScrollWheel--.
     - Added KeyCode::VK_WAIT_*.
     - Improved KeyCode::VK_CHANGE_INPUTMODE_* behavior.
+    - Improved XML processing engine. (XML reloading is 2x faster.)
     - Some minor improvements.
 
 ----------------------------------------------------------------------
