@@ -24,7 +24,7 @@
   <!-- ============================================================ -->
   <replacementdef>
     <replacementname>EMACS_MODE_EXCEPTION_APPS</replacementname>
-    <replacementvalue>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</replacementvalue>
+    <replacementvalue>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE, VI</replacementvalue>
   </replacementdef>
 
   <replacementdef>
