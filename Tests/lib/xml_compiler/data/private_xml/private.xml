@@ -15,8 +15,13 @@
 
   <!-- overwrite system value -->
   <appdef>
-    <appname>TERMINAL</appname>
-    <equal>com.example.terminal</equal>
+    <appname>TERMINAL_APPLE</appname>
+    <equal>com.apple.Terminal</equal>
+  </appdef>
+
+  <appdef>
+    <appname>EMACS</appname>
+    <equal>org.gnu.Emacs</equal>
   </appdef>
 
   <!-- ============================================================ -->

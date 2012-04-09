@@ -14,4 +14,12 @@
     <appname>VI</appname>
     <prefix>org.vim.</prefix>
   </appdef>
+
+  <appdef>
+    <appname>TERMINAL</appname>
+    <equal>com.apple.Terminal</equal>
+    <equal>iTerm</equal>
+    <equal>net.sourceforge.iTerm</equal>
+    <equal>com.googlecode.iterm2</equal>
+  </appdef>
 </root>
