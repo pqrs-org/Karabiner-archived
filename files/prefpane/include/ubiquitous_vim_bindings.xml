@@ -45,18 +45,21 @@
           <appendix>u: Undo (Command_L+z)</appendix>
           <appendix>U: Undo (Command_L+z)</appendix> <!-- TODO: Can't distinguish undo contexts, so doing next best thing. -->
           <appendix>Ctrl-r: Redo (Command_L+Shift_L+z)</appendix>
-          <appendix>cc: Delete line and insert</appendix>
-          <appendix>cb: Delete backward-word and insert</appendix>
-          <appendix>ce: Delete word and insert</appendix>
-          <appendix>cw: Delete word and insert</appendix>
+          <appendix>cc: Change line</appendix>
+          <appendix>cb: Change backward-word</appendix>
+          <appendix>ce: Change word</appendix>
+          <appendix>cw: Change word</appendix>
+          <appendix>c$: Change text to the end of line</appendix>
           <appendix>dd: Delete line (Command+CursorLeft, Shift_L+Down, Command+X)</appendix>
           <appendix>db: Delete backward-word</appendix>
           <appendix>de: Delete word</appendix>
           <appendix>dw: Delete word</appendix>
+          <appendix>d$: Delete to end of line</appendix>
           <appendix>D: Delete to end of line (Command_L+Shift_L+Right, Delete)</appendix>
           <appendix>H: Current line to top (Option_L+PageDown, Down, Up)</appendix> <!-- TODO: Can't navigate in visible area, so doing something with a somewhat similar effect. -->
           <appendix>L: Current line to bottom (Option_L+PageUp, Up, Down)</appendix> <!-- TODO: Can't navigate in visible area, so doing something with a somewhat similar effect. -->
           <appendix>M: Current line to middle (Option_L+PageDown, Option+PageUp)</appendix> <!-- TODO: Can't navigate in visible area, so doing something with a somewhat similar effect. -->
+          <appendix>s: delete character at cursor and subsitute text</appendix>
           <appendix>S: Delete line (Command_L+Left, Command_L+Shift_L+Right, Command_L-x)</appendix> <!-- FIXME: implement this. -->
           <appendix>yy: Yank line (Command_L+Left, Shift_L+Down, Command_L-c)</appendix>
           <appendix>Y: Yank line (Command_L+Left, Shift_L+Down, Command_L-c)</appendix>
@@ -138,6 +141,16 @@
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
               <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
             </autogen>
+
+            <!-- c$ -->
+            <autogen>
+              --KeyToKey--
+              KeyCode::KEY_4, VK_SHIFT | ModifierFlag::NONE,
+              KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
+              KeyCode::X, ModifierFlag::COMMAND_L,
+              KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+              <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
+            </autogen>
           </block>
 
           <!-- ============================================================ -->
@@ -180,6 +193,15 @@
               KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
               KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
               KeyCode::CURSOR_LEFT,  ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
+              KeyCode::X, ModifierFlag::COMMAND_L,
+              KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending
+            </autogen>
+
+            <!-- d$ -->
+            <autogen>
+              --KeyToKey--
+              KeyCode::KEY_4, VK_SHIFT | ModifierFlag::NONE,
+              KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
               KeyCode::X, ModifierFlag::COMMAND_L,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending
             </autogen>
@@ -312,7 +334,6 @@
             <autogen>--KeyToKey-- KeyCode::KEY_0, VK_SHIFT, KeyCode::VK_NONE</autogen>
             <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
             <autogen>--KeyToKey-- KeyCode::Q, VK_SHIFT, KeyCode::VK_NONE</autogen>
-            <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
             <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
             <autogen>--KeyToKey-- KeyCode::QUOTE, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
             <autogen>--KeyToKey-- KeyCode::QUOTE, VK_SHIFT, KeyCode::VK_NONE</autogen>
@@ -553,6 +574,19 @@
                 <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
               </autogen>
 
+              <!-- s -->
+              <autogen>
+                --KeyToKey--
+                KeyCode::S, ModifierFlag::NONE,
+                <!-- select one char -->
+                KeyCode::CURSOR_RIGHT, ModifierFlag::SHIFT_L,
+                <!-- cut -->
+                KeyCode::X, ModifierFlag::COMMAND_L,
+                <!-- to insert mode -->
+                KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+                <!-- #include "include/ubiquitous_vim_bindings_cancel_operator_pending.xml" -->
+              </autogen>
+
               <!-- S -->
               <autogen>
                 --KeyToKey--
@@ -601,7 +635,7 @@
                 --KeyToKey--
                 KeyCode::D, VK_SHIFT,
                 KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
-                KeyCode::DELETE
+                KeyCode::X, ModifierFlag::COMMAND_L
               </autogen>
 
               <!-- C-n, C-p -->
