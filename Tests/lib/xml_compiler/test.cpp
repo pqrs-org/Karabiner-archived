@@ -27,6 +27,9 @@ TEST(pqrs_xml_compiler, reload)
             xml_compiler.get_appid("org.gnu.Emacs"));
   EXPECT_EQ(xml_compiler.get_symbol_map_value("ApplicationType::EMACS"),
             xml_compiler.get_appid("org.gnu.AquamacsEmacs"));
+
+  EXPECT_EQ(boost::optional<uint32_t>(0x03f0), xml_compiler.get_symbol_map_value("DeviceVendor::HEWLETT_PACKARD"));
+  EXPECT_EQ(boost::optional<uint32_t>(0x0224), xml_compiler.get_symbol_map_value("DeviceProduct::MY_HP_KEYBOARD"));
 }
 
 TEST(pqrs_xml_compiler, reload_bindings_clang)
