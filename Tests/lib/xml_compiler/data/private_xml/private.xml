@@ -39,7 +39,7 @@
 
   <!-- overwrite system value -->
   <devicevendordef>
-    <vendorname>APPLE_INC</vendorname>
+    <vendorname>APPLE_COMPUTER</vendorname>
     <vendorid>0x05ac</vendorid>
   </devicevendordef>
 
