@@ -11,8 +11,22 @@ TEST(pqrs_xml_compiler, reload)
   EXPECT_EQ(0, xml_compiler.get_error_count());
   EXPECT_EQ(boost::optional<uint32_t>(123), xml_compiler.get_symbol_map_value("KeyCode::MY_LANG_KEY"));
   EXPECT_EQ(boost::optional<uint32_t>(2), xml_compiler.get_symbol_map_value("ConsumerKeyCode::BRIGHTNESS_UP"));
-  EXPECT_EQ(boost::optional<uint32_t>(4), xml_compiler.get_symbol_map_value("ApplicationType::VI"));
-  EXPECT_EQ(static_cast<uint32_t>(4), xml_compiler.get_appid("org.vim.MacVim"));
+
+  EXPECT_EQ(boost::optional<uint32_t>(5), xml_compiler.get_symbol_map_value("ApplicationType::VI"));
+  EXPECT_EQ(xml_compiler.get_symbol_map_value("ApplicationType::VI"),
+            xml_compiler.get_appid("org.vim.MacVim"));
+
+  // com.apple.Terminal is overwritten by private.xml.
+  EXPECT_EQ(xml_compiler.get_symbol_map_value("ApplicationType::TERMINAL_APPLE"),
+            xml_compiler.get_appid("com.apple.Terminal"));
+  EXPECT_EQ(xml_compiler.get_symbol_map_value("ApplicationType::TERMINAL"),
+            xml_compiler.get_appid("com.googlecode.iterm2"));
+
+  // org.gnu.Emacs is overwritten by private.xml.
+  EXPECT_EQ(xml_compiler.get_symbol_map_value("ApplicationType::EMACS"),
+            xml_compiler.get_appid("org.gnu.Emacs"));
+  EXPECT_EQ(xml_compiler.get_symbol_map_value("ApplicationType::EMACS"),
+            xml_compiler.get_appid("org.gnu.AquamacsEmacs"));
 }
 
 TEST(pqrs_xml_compiler, reload_bindings_clang)
