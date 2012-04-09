@@ -23,6 +23,11 @@
 
   <!-- ============================================================ -->
   <replacementdef>
+    <replacementname>EMACS_MODE_EXCEPTION_APPS</replacementname>
+    <replacementvalue>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</replacementvalue>
+  </replacementdef>
+
+  <replacementdef>
     <replacementname>UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS</replacementname>
     <replacementvalue>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</replacementvalue>
   </replacementdef>
