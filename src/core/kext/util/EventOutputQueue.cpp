@@ -71,7 +71,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! queue_) return;
 
-    //IOLOG_DEVEL("EventOutputQueue::fire queue_->size = %d\n", static_cast<int>(queue_->size()));
+    // IOLOG_DEVEL("EventOutputQueue::fire queue_->size = %d\n", static_cast<int>(queue_->size()));
 
     Item* p = static_cast<Item*>(queue_->front());
     if (! p) return;
@@ -342,15 +342,32 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ======================================================================
+  Buttons EventOutputQueue::FireRelativePointer::lastButtons_(0);
+
   void
   EventOutputQueue::FireRelativePointer::fire(Buttons toButtons, int dx, int dy)
   {
-    Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(toButtons, dx, dy, PointingButton::NONE, false));
-    if (! ptr) return;
-    Params_RelativePointerEventCallback& params = *ptr;
-
     FireModifiers::fire();
-    EventOutputQueue::push(params);
+
+    // Sending button event
+    if (lastButtons_ != toButtons) {
+      lastButtons_ = toButtons;
+
+      Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(toButtons, 0, 0, PointingButton::NONE, false));
+      if (! ptr) return;
+      Params_RelativePointerEventCallback& params = *ptr;
+
+      EventOutputQueue::push(params);
+    }
+
+    // Sending cursor
+    if (dx != 0 || dy != 0) {
+      Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(toButtons, dx, dy, PointingButton::NONE, false));
+      if (! ptr) return;
+      Params_RelativePointerEventCallback& params = *ptr;
+
+      EventOutputQueue::push(params);
+    }
   }
 
   // ======================================================================
