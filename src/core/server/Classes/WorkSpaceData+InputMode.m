@@ -3,6 +3,7 @@
 #import <Carbon/Carbon.h>
 
 static NSString* kInputSourceLanguage_canadian                         = @"ca";
+static NSString* kInputSourceLanguage_swiss                            = @"ch";
 static NSString* kInputSourceLanguage_russian                          = @"ru";
 // http://ilyabirman.ru/typography-layout/
 static NSString* kInputSourceLanguage_russian_Typographic              = @"ru-Typographic";
@@ -33,6 +34,7 @@ static NSString* kInputSourceLanguage_traditional_chinese_yahoo_keykey = @"zh-Ha
   NSString* name = TISGetInputSourceProperty(source, kTISPropertyInputSourceID);
   if (name) {
     if ([name isEqualToString:@"com.apple.keylayout.Canadian"]) return kInputSourceLanguage_canadian;
+    if ([name hasPrefix:@"com.apple.keylayout.Swiss"]) return kInputSourceLanguage_swiss;
     if ([name isEqualToString:@"org.unknown.keylayout.RussianWin"]) return kInputSourceLanguage_russian;
     if ([name isEqualToString:@"org.unknown.keylayout.Russian-IlyaBirmanTypography"]) return kInputSourceLanguage_russian_Typographic;
     if ([name isEqualToString:@"org.unknown.keylayout.English-IlyaBirmanTypography"]) return kInputSourceLanguage_english_Typographic;
@@ -365,6 +367,24 @@ finish:
   if ([name hasPrefix:@"org.pqrs.inputmode.ca."]) {
     *output_inputmode       = [xml_compiler keycode:@"InputMode::CANADIAN"];
     *output_inputmodedetail = [xml_compiler keycode:@"InputModeDetail::CANADIAN"];
+    return;
+  }
+
+  if ([name isEqualToString:@"org.pqrs.inputmode.ch.SwissFrench"]) {
+    *output_inputmode       = [xml_compiler keycode:@"InputMode::SWISS"];
+    *output_inputmodedetail = [xml_compiler keycode:@"InputModeDetail::SWISS_FRENCH"];
+    return;
+  }
+
+  if ([name isEqualToString:@"org.pqrs.inputmode.ch.SwissGerman"]) {
+    *output_inputmode       = [xml_compiler keycode:@"InputMode::SWISS"];
+    *output_inputmodedetail = [xml_compiler keycode:@"InputModeDetail::SWISS_GERMAN"];
+    return;
+  }
+
+  if ([name hasPrefix:@"org.pqrs.inputmode.ch."]) {
+    *output_inputmode       = [xml_compiler keycode:@"InputMode::SWISS"];
+    *output_inputmodedetail = [xml_compiler keycode:@"InputModeDetail::SWISS"];
     return;
   }
 
