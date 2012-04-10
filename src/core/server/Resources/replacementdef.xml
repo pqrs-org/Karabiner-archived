@@ -23,7 +23,7 @@
 
   <!-- ============================================================ -->
   <replacementdef>
-    <replacementname>EMACS_MODE_EXCEPTION_APPS</replacementname>
+    <replacementname>EMACS_MODE_IGNORE_APPS</replacementname>
     <replacementvalue>
       ECLIPSE,
       EMACS,
@@ -36,7 +36,7 @@
   </replacementdef>
 
   <replacementdef>
-    <replacementname>UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS</replacementname>
+    <replacementname>UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS</replacementname>
     <replacementvalue>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</replacementvalue>
   </replacementdef>
 

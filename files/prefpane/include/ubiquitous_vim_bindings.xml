@@ -90,7 +90,7 @@
           </appendix>
 
           <identifier vk_config="true">notsave.ubiq_vimnormal</identifier>
-          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
           <autogen>--ShowStatusMessage-- Normal Mode</autogen>
 
           <!-- ============================================================ -->
@@ -908,7 +908,7 @@
           <block>
             <config_not>notsave.ubiq_vimnormal</config_not>
             <config_only>option.ubiq_vimnormal_insert</config_only>
-            <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
+            <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
 
             <!-- Ctrl-w -->
             <autogen>
@@ -963,7 +963,7 @@
           <block>
             <config_only>notsave.ubiq_vimnormal</config_only>
             <config_not>option.vimnormal_escape_enters_only</config_not>
-            <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
+            <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
             <autogen>
               --HoldingKeyToKey--
               KeyCode::ESCAPE,
@@ -978,7 +978,7 @@
           <!-- Normal Mode on in mode-allowing context: Esc remains in Normal Mode, holding Esc sends raw Esc. -->
           <block>
             <config_only>notsave.ubiq_vimnormal, option.vimnormal_escape_enters_only</config_only>
-            <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
+            <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
             <autogen>
               --HoldingKeyToKey--
               KeyCode::ESCAPE,
@@ -993,7 +993,7 @@
           <!-- Normal Mode off in mode-allowing context: Esc enters Normal Mode, holding Esc sends raw Esc. -->
           <block>
             <config_not>notsave.ubiq_vimnormal</config_not>
-            <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
+            <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
             <autogen>
               --HoldingKeyToKey--
               KeyCode::ESCAPE,
@@ -1029,7 +1029,7 @@
         <item>
           <name>Ctrl-[ toggles Normal Mode</name>
           <identifier>remap.vimnormal_ctrlbracketleft_toggle</identifier>
-          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
           <autogen>
             --KeyToKey--
             KeyCode::BRACKET_LEFT, VK_CONTROL,
@@ -1042,7 +1042,7 @@
         <item>
           <name>Command_R tap toggles Normal Mode</name>
           <identifier>remap.vimnormal_commandr_toggle</identifier>
-          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
           <autogen>
             --KeyOverlaidModifier--
             KeyCode::COMMAND_R,
@@ -1056,7 +1056,7 @@
         <item>
           <name>Command_L tap toggles Normal Mode</name>
           <identifier>remap.vimnormal_commandl_toggle</identifier>
-          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
           <autogen>
             --KeyOverlaidModifier--
             KeyCode::COMMAND_L,
@@ -1078,7 +1078,7 @@
         <item>
           <name>Simultaneous Key Presses [Command_L+Command_R] toggles Normal Mode</name>
           <identifier>remap.vimnormal_toggle_commandLR</identifier>
-          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
           <autogen>
             --SimultaneousKeyPresses--
             KeyCode::COMMAND_R,
@@ -1093,7 +1093,7 @@
           <appendix>Disable Up-Arrow</appendix>
           <appendix>(+ When you type Arrow only, toggles Normal Mode)</appendix>
           <identifier>remap.vimnormal_toggle_arrow2optionL</identifier>
-          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
           <autogen>
             --KeyOverlaidModifier--
             KeyCode::CURSOR_UP,
@@ -1130,7 +1130,7 @@
         <item>
           <name>Backquote(`) toggles Normal Mode (if no modifiers pressed)</name>
           <identifier>option.vimnormal_turnoff_backquote</identifier>
-          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
           <autogen>
             --KeyToKey--
             KeyCode::BACKQUOTE, ModifierFlag::NONE,
@@ -1143,7 +1143,7 @@
           <name>Command_L to Command_L</name>
           <appendix>(+ When you type Command_L only, toggles Normal Mode)</appendix>
           <identifier>remap.vimnormal_toggle_commandL</identifier>
-          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
           <autogen>
             --KeyOverlaidModifier--
             KeyCode::COMMAND_L,
@@ -1157,7 +1157,7 @@
           <name>Command_R to Command_R</name>
           <appendix>(+ When you type Command_R only, toggles Normal Mode)</appendix>
           <identifier>remap.vimnormal_toggle_commandR</identifier>
-          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
           <autogen>
             --KeyOverlaidModifier--
             KeyCode::COMMAND_R,
@@ -1171,7 +1171,7 @@
           <name>Control_R to Control_R</name>
           <appendix>(+ When you type Control_R only, toggles Normal Mode)</appendix>
           <identifier>remap.vimnormal_toggle_controlR</identifier>
-          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
           <autogen>
             --KeyOverlaidModifier--
             KeyCode::CONTROL_R,
@@ -1185,7 +1185,7 @@
           <name>Escape to turn on Normal Mode</name>
           <appendix>(except in Vim)</appendix>
           <identifier>remap.vimnormal_turnon_escape</identifier>
-          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
           <config_not>notsave.ubiq_vimnormal</config_not>
           <autogen>
             --KeyToKey--
@@ -1199,7 +1199,7 @@
           <name>Escape to turn off Normal Mode</name>
           <appendix>(+ turn off Modifier Lock)</appendix>
           <identifier>option.vimnormal_turnoff_escape</identifier>
-          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
           <config_only>notsave.ubiq_vimnormal</config_only>
           <autogen>
             --KeyToKey--
@@ -1214,7 +1214,7 @@
           <name>Return to Command_L+Control_L</name>
           <appendix>(+ When you type Return only, toggles Normal Mode)</appendix>
           <identifier>remap.vimnormal_toggle_return</identifier>
-          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
           <autogen>
             --KeyOverlaidModifier--
             KeyCode::RETURN,
@@ -1228,7 +1228,7 @@
           <name>Fn to Fn</name>
           <appendix>(+ When you type Fn only, toggles Normal Mode)</appendix>
           <identifier>remap.vimnormal_toggle_fn2fn</identifier>
-          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
           <autogen>
             --KeyOverlaidModifier--
             KeyCode::FN,
@@ -1241,7 +1241,7 @@
         <item>
           <name>Option+V toggles Normal Mode</name>
           <identifier>option.vimnormal_toggle_optionV</identifier>
-          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
           <autogen>
             --KeyToKey--
             KeyCode::V, VK_OPTION,
@@ -1253,7 +1253,7 @@
         <item>
           <name>Option+V to turn on Normal Mode</name>
           <identifier>option.vimnormal_turnon_optionV</identifier>
-          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
           <autogen>
             --KeyToKey--
             KeyCode::V, VK_OPTION,
@@ -1266,7 +1266,7 @@
           <name>Disable Shift_L</name>
           <appendix>(+ When you type Shift_L only, toggles Normal Mode)</appendix>
           <identifier>remap.vimnormal_toggle_drop_shiftL</identifier>
-          <not>{{UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS}}</not>
+          <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
           <autogen>
             --KeyOverlaidModifier--
             KeyCode::SHIFT_L,
