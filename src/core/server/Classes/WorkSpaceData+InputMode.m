@@ -388,6 +388,12 @@ finish:
     return;
   }
 
+  if ([name hasPrefix:@"org.pqrs.inputmode.hr."]) {
+    *output_inputmode       = [xml_compiler keycode:@"InputMode::CROATIAN"];
+    *output_inputmodedetail = [xml_compiler keycode:@"InputModeDetail::CROATIAN"];
+    return;
+  }
+
   if ([name isEqualToString:@"com.apple.kotoeri.Ainu"]) {
     *output_inputmode       = [xml_compiler keycode:@"InputMode::AINU"];
     *output_inputmodedetail = [xml_compiler keycode:@"InputModeDetail::AINU"];
