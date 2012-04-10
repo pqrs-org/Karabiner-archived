@@ -364,6 +364,8 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
   std::string xml("<?xml version=\"1.0\"?>"
                   "<item>"
                   "  <only>APP1,APP3</only>"
+                  "  <only><!-- empty --></only>"
+                  "  <only>,,</only>"
                   "  <not><!-- XXX --->APP2</not>"
                   "  <identifier>sample</identifier>"
                   "  <device_only>DeviceVendor::VENDOR1, DeviceProduct::PRODUCT1, </device_only>"
@@ -392,6 +394,10 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
     expected.push_back(BRIDGE_FILTERTYPE_APPLICATION_ONLY);
     expected.push_back(1); // APP1
     expected.push_back(3); // APP3
+
+    // <only><!-- empty --></only>"
+    // <only>,,</only>"
+    // ***IGNORED***
 
     // <not>APP2</not>
     expected.push_back(2); // count

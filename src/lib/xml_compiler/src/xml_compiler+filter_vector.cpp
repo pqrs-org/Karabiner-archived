@@ -64,6 +64,7 @@ namespace pqrs {
   {
     std::vector<std::string> values;
     pqrs::string::split_by_comma(values, string);
+    if (values.empty()) return;
 
     data_.push_back(values.size() + 1); // +1 == filter_type
     data_.push_back(filter_type);
