@@ -12561,6 +12561,18 @@
           <only>CITRIX_ONLINE_PLUG_IN</only>
           <autogen>--KeyToKey-- KeyCode::SWISS_SECTION, KeyCode::PC_INSERT, ModifierFlag::SHIFT_L</autogen>
         </item>
+        <item>
+          <name>Change AltGr+2 to @</name>
+          <appendix>(When Input Source is Swiss French or Swiss German)</appendix>
+          <identifier>remap.altgr_2_to_atmark</identifier>
+          <inputmode_only>SWISS</inputmode_only>
+          <autogen>
+            --KeyToKey--
+            KeyCode::KEY_2, VK_OPTION | ModifierFlag::NONE,
+            <!-- @ == option+g -->
+            KeyCode::G, VK_OPTION
+          </autogen>
+        </item>
       </list>
     </item>
 
