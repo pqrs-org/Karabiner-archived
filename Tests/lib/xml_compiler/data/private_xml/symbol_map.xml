@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<root>
+  <!-- ============================================================ -->
+  <!-- symbol_map -->
+  <symbol_map type="KeyCode" name="MY_LANG_KEY" value="123" />
+</root>

@@ -217,7 +217,7 @@ namespace pqrs {
       preferences_node_tree(const T& parent_node) : node_(parent_node) {}
 
       void clear(void);
-      void traverse_item(const boost::property_tree::ptree& pt);
+      void traverse_item(const boost::property_tree::ptree& pt, xml_compiler& xml_compiler);
       const T& get_node(void) const { return node_; }
       const preferences_node_tree_ptrs_ptr& get_children(void) const { return children_; }
 
@@ -239,13 +239,17 @@ namespace pqrs {
 
   private:
     typedef std::tr1::shared_ptr<boost::property_tree::ptree> ptree_ptr;
+    static void read_xml_(ptree_ptr& out,
+                         const std::string& file_path,
+                          const pqrs::string::replacement& replacement);
     void read_xmls_(std::vector<ptree_ptr>& pt_ptrs, const std::vector<xml_file_path_ptr>& xml_file_path_ptrs);
+    void extract_include_(ptree_ptr& out, const boost::property_tree::ptree::value_type& it);
 
     void set_error_message_(const std::string& message);
     void set_error_message_(const boost::format& message);
 
     void reload_replacementdef_(void);
-    void traverse_replacementdef_(const boost::property_tree::ptree& pt);
+    void traverse_replacementdef_(const boost::property_tree::ptree& pt, pqrs::string::replacement& replacement);
 
     void reload_symbol_map_(void);
     void traverse_symbol_map_(const boost::property_tree::ptree& pt);

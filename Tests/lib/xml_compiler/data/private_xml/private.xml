@@ -1,9 +1,26 @@
 <?xml version="1.0"?>
 <root>
+  <!-- ============================================================ -->
+  <!-- include -->
+  <include path="include.xml">
+    <replacementdef>
+      <replacementname>MY_INCLUDE_TEST</replacementname>
+      <replacementvalue>123</replacementvalue>
+    </replacementdef>
+  </include>
+
+  <replacementdef>
+    <replacementname>MY_INCLUDE_TEST</replacementname>
+    <replacementvalue>456</replacementvalue>
+  </replacementdef>
+
+  <!-- MY_INCLUDE_TEST must be 456 -->
+  <symbol_map type="KeyCode" name="MY_INCLUDE_TEST" value="{{ MY_INCLUDE_TEST }}" />
 
   <!-- ============================================================ -->
   <!-- symbol_map -->
-  <symbol_map type="KeyCode" name="MY_LANG_KEY" value="123" />
+
+  <include path="symbol_map.xml" />
 
   <!-- ============================================================ -->
   <!-- appdef -->

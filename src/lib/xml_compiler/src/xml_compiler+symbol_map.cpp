@@ -106,6 +106,17 @@ namespace pqrs {
   xml_compiler::traverse_symbol_map_(const boost::property_tree::ptree& pt)
   {
     for (auto& it : pt) {
+      // extract include
+      {
+        ptree_ptr pt_ptr;
+        extract_include_(pt_ptr, it);
+        if (pt_ptr) {
+          traverse_symbol_map_(*pt_ptr);
+          continue;
+        }
+      }
+
+      // ------------------------------------------------------------
       if (it.first != "symbol_map") {
         traverse_symbol_map_(it.second);
 

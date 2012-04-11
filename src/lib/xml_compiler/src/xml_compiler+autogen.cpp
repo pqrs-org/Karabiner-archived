@@ -118,6 +118,17 @@ namespace pqrs {
   {
     for (auto& it : pt) {
       try {
+        // extract include
+        {
+          ptree_ptr pt_ptr;
+          extract_include_(pt_ptr, it);
+          if (pt_ptr) {
+            traverse_identifier_(*pt_ptr, parent_tag_name);
+            continue;
+          }
+        }
+
+        // ------------------------------------------------------------
         if (it.first != "identifier") {
           traverse_identifier_(it.second, it.first);
 
@@ -187,6 +198,17 @@ namespace pqrs {
     // ----------------------------------------
     for (auto& it : pt) {
       try {
+        // extract include
+        {
+          ptree_ptr pt_ptr;
+          extract_include_(pt_ptr, it);
+          if (pt_ptr) {
+            traverse_autogen_(*pt_ptr, identifier, fv, initialize_vector);
+            continue;
+          }
+        }
+
+        // ------------------------------------------------------------
         if (it.first != "autogen") {
           traverse_autogen_(it.second, identifier, fv, initialize_vector);
 

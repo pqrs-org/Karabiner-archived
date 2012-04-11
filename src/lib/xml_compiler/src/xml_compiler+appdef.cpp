@@ -26,6 +26,17 @@ namespace pqrs {
   xml_compiler::traverse_appdef_(const boost::property_tree::ptree& pt)
   {
     for (auto& it : pt) {
+      // extract include
+      {
+        ptree_ptr pt_ptr;
+        extract_include_(pt_ptr, it);
+        if (pt_ptr) {
+          traverse_appdef_(*pt_ptr);
+          continue;
+        }
+      }
+
+      // ------------------------------------------------------------
       if (it.first != "appdef") {
         traverse_appdef_(it.second);
       } else {

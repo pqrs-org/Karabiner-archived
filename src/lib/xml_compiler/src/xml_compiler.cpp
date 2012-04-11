@@ -26,13 +26,33 @@ namespace pqrs {
   }
 
   void
+  xml_compiler::read_xml_(ptree_ptr& out,
+                          const std::string& file_path,
+                          const pqrs::string::replacement& replacement)
+  {
+    out.reset(new boost::property_tree::ptree());
+
+    std::string xml;
+    if (replacement.empty()) {
+      pqrs::string::string_from_file(xml, file_path.c_str());
+    } else {
+      pqrs::string::string_by_replacing_double_curly_braces_from_file(xml, file_path.c_str(), replacement);
+    }
+    std::stringstream istream(xml, std::stringstream::in);
+
+    int flags = boost::property_tree::xml_parser::no_comments;
+
+    boost::property_tree::read_xml(istream, *out, flags);
+  }
+
+  void
   xml_compiler::read_xmls_(std::vector<ptree_ptr>& pt_ptrs, const std::vector<xml_file_path_ptr>& xml_file_path_ptrs)
   {
     pt_ptrs.clear();
 
     for (auto& path_ptr : xml_file_path_ptrs) {
       try {
-        ptree_ptr pt_ptr(new boost::property_tree::ptree());
+        ptree_ptr pt_ptr;
 
         std::string path;
         switch (path_ptr->get_base_directory()) {
@@ -46,18 +66,10 @@ namespace pqrs {
         path += "/";
         path += path_ptr->get_relative_path();
 
-        int flags = boost::property_tree::xml_parser::no_comments;
-
-        std::string xml;
-        if (replacement_.empty()) {
-          pqrs::string::string_from_file(xml, path.c_str());
-        } else {
-          pqrs::string::string_by_replacing_double_curly_braces_from_file(xml, path.c_str(), replacement_);
+        read_xml_(pt_ptr, path, replacement_);
+        if (pt_ptr) {
+          pt_ptrs.push_back(pt_ptr);
         }
-        std::stringstream istream(xml, std::stringstream::in);
-        boost::property_tree::read_xml(istream, *pt_ptr, flags);
-
-        pt_ptrs.push_back(pt_ptr);
 
       } catch (std::exception& e) {
         std::string what = e.what();
@@ -127,5 +139,39 @@ namespace pqrs {
   xml_compiler::normalize_identifier(std::string& identifier)
   {
     boost::replace_all(identifier, ".", "_");
+  }
+
+  void
+  xml_compiler::extract_include_(ptree_ptr& out,
+                                 const boost::property_tree::ptree::value_type& it)
+  {
+    out.reset();
+
+    if (it.first != "include") return;
+
+    out.reset(new boost::property_tree::ptree());
+
+    // ----------------------------------------
+    // file_path
+    auto path = it.second.get_optional<std::string>("<xmlattr>.path");
+    if (! path) return;
+
+    if (! boost::starts_with("/", *path)) {
+      path = private_xml_directory_ + "/" + *path;
+    }
+
+    // ----------------------------------------
+    // replacement
+    pqrs::string::replacement r;
+    traverse_replacementdef_(it.second, r);
+
+    for (auto& i : replacement_) {
+      if (r.find(i.first) == r.end()) {
+        r[i.first] = i.second;
+      }
+    }
+
+    // ----------------------------------------
+    read_xml_(out, *path, r);
   }
 }
