@@ -84,9 +84,9 @@ namespace pqrs {
 
   // ============================================================
   void
-  xml_compiler::reload_symbol_map_(void)
+  xml_compiler::reload_symbol_map_(symbol_map& symbol_map) const
   {
-    symbol_map_.clear();
+    symbol_map.clear();
 
     std::vector<xml_file_path_ptr> xml_file_path_ptrs;
     xml_file_path_ptrs.push_back(
@@ -98,12 +98,13 @@ namespace pqrs {
     read_xmls_(pt_ptrs, xml_file_path_ptrs);
 
     for (auto& pt_ptr : pt_ptrs) {
-      traverse_symbol_map_(*pt_ptr);
+      traverse_symbol_map_(*pt_ptr, symbol_map);
     }
   }
 
   void
-  xml_compiler::traverse_symbol_map_(const boost::property_tree::ptree& pt)
+  xml_compiler::traverse_symbol_map_(const boost::property_tree::ptree& pt,
+                                     symbol_map& symbol_map) const
   {
     for (auto& it : pt) {
       // extract include
@@ -111,14 +112,14 @@ namespace pqrs {
         ptree_ptr pt_ptr;
         extract_include_(pt_ptr, it);
         if (pt_ptr) {
-          traverse_symbol_map_(*pt_ptr);
+          traverse_symbol_map_(*pt_ptr, symbol_map);
           continue;
         }
       }
 
       // ------------------------------------------------------------
       if (it.first != "symbol_map") {
-        traverse_symbol_map_(it.second);
+        traverse_symbol_map_(it.second, symbol_map);
 
       } else {
         std::vector<boost::optional<std::string> > vector;
@@ -155,7 +156,7 @@ namespace pqrs {
           continue;
         }
 
-        symbol_map_.add(*(vector[0]), *(vector[1]), *value);
+        symbol_map.add(*(vector[0]), *(vector[1]), *value);
       }
     }
   }
