@@ -111,11 +111,23 @@ namespace pqrs {
 
   template <class T>
   void
-  xml_compiler::preferences_node_tree<T>::traverse_item(const boost::property_tree::ptree& pt)
+  xml_compiler::preferences_node_tree<T>::traverse_item(const boost::property_tree::ptree& pt,
+                                                        xml_compiler& xml_compiler)
   {
     for (auto& it : pt) {
+      // extract include
+      {
+        ptree_ptr pt_ptr;
+        xml_compiler.extract_include_(pt_ptr, it);
+        if (pt_ptr) {
+          traverse_item(*pt_ptr, xml_compiler);
+          continue;
+        }
+      }
+
+      // ------------------------------------------------------------
       if (it.first != "item") {
-        traverse_item(it.second);
+        traverse_item(it.second, xml_compiler);
 
       } else {
         preferences_node_tree_ptr ptr(new preferences_node_tree(node_));
@@ -123,7 +135,7 @@ namespace pqrs {
         for (auto& child : it.second) {
           (ptr->node_).handle_item_child(child);
         }
-        ptr->traverse_item(it.second);
+        ptr->traverse_item(it.second, xml_compiler);
 
         if (! children_) {
           children_ = preferences_node_tree_ptrs_ptr(new preferences_node_tree_ptrs());
@@ -151,7 +163,7 @@ namespace pqrs {
       read_xmls_(pt_ptrs, xml_file_path_ptrs);
 
       for (auto& pt_ptr : pt_ptrs) {
-        preferences_checkbox_node_tree_.traverse_item(*pt_ptr);
+        preferences_checkbox_node_tree_.traverse_item(*pt_ptr, *this);
       }
     }
 
@@ -165,7 +177,7 @@ namespace pqrs {
       read_xmls_(pt_ptrs, xml_file_path_ptrs);
 
       for (auto& pt_ptr : pt_ptrs) {
-        preferences_number_node_tree_.traverse_item(*pt_ptr);
+        preferences_number_node_tree_.traverse_item(*pt_ptr, *this);
       }
     }
   }

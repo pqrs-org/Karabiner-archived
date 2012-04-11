@@ -17,16 +17,28 @@ namespace pqrs {
     read_xmls_(pt_ptrs, xml_file_path_ptrs);
 
     for (auto& pt_ptr : pt_ptrs) {
-      traverse_replacementdef_(*pt_ptr);
+      traverse_replacementdef_(*pt_ptr, replacement_);
     }
   }
 
   void
-  xml_compiler::traverse_replacementdef_(const boost::property_tree::ptree& pt)
+  xml_compiler::traverse_replacementdef_(const boost::property_tree::ptree& pt,
+                                         pqrs::string::replacement& replacement)
   {
     for (auto& it : pt) {
+      // extract include
+      {
+        ptree_ptr pt_ptr;
+        extract_include_(pt_ptr, it);
+        if (pt_ptr) {
+          traverse_replacementdef_(*pt_ptr, replacement);
+          continue;
+        }
+      }
+
+      // ------------------------------------------------------------
       if (it.first != "replacementdef") {
-        traverse_replacementdef_(it.second);
+        traverse_replacementdef_(it.second, replacement);
       } else {
         boost::optional<std::string> name;
         boost::optional<std::string> value;
@@ -60,8 +72,8 @@ namespace pqrs {
 
         // --------------------------------------------------
         // Adding to replacement_ if name is not found.
-        if (replacement_.find(*name) == replacement_.end()) {
-          replacement_[*name] = *value;
+        if (replacement.find(*name) == replacement.end()) {
+          replacement[*name] = *value;
         }
       }
     }

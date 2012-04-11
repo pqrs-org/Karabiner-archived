@@ -26,6 +26,17 @@ namespace pqrs {
   xml_compiler::traverse_devicedef_(const boost::property_tree::ptree& pt)
   {
     for (auto& it : pt) {
+      // extract include
+      {
+        ptree_ptr pt_ptr;
+        extract_include_(pt_ptr, it);
+        if (pt_ptr) {
+          traverse_devicedef_(*pt_ptr);
+          continue;
+        }
+      }
+
+      // ------------------------------------------------------------
       if (it.first != "devicevendordef" &&
           it.first != "deviceproductdef") {
         traverse_devicedef_(it.second);
