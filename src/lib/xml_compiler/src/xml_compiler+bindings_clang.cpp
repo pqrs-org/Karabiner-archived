@@ -42,7 +42,7 @@ pqrs_xml_compiler_get_error_message(const pqrs_xml_compiler* p)
   const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
   if (! xml_compiler) return NULL;
 
-  return (xml_compiler->get_error_message()).c_str();
+  return (xml_compiler->get_error_information()).get_message().c_str();
 }
 
 size_t
@@ -51,7 +51,7 @@ pqrs_xml_compiler_get_error_count(const pqrs_xml_compiler* p)
   const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
   if (! xml_compiler) return 0;
 
-  return xml_compiler->get_error_count();
+  return (xml_compiler->get_error_information()).get_count();
 }
 
 // ------------------------------------------------------------

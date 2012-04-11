@@ -10,8 +10,7 @@ namespace pqrs {
   void
   xml_compiler::reload(void)
   {
-    error_message_.clear();
-    error_count_ = 0;
+    error_information_.clear();
 
     try {
       reload_replacementdef_();
@@ -21,7 +20,7 @@ namespace pqrs {
       reload_autogen_();
       reload_preferences_();
     } catch (std::exception& e) {
-      set_error_message_(e.what());
+      error_information_.set(e.what());
     }
   }
 
@@ -83,24 +82,9 @@ namespace pqrs {
         // So, we change "unspecified file" to file name by ourself.
         boost::replace_first(what, "<unspecified file>", std::string("<") + path_ptr->get_relative_path() + ">");
 
-        set_error_message_(what);
+        error_information_.set(what);
       }
     }
-  }
-
-  void
-  xml_compiler::set_error_message_(const std::string& message)
-  {
-    if (error_message_.empty()) {
-      error_message_ = message;
-    }
-    ++error_count_;
-  }
-
-  void
-  xml_compiler::set_error_message_(const boost::format& message)
-  {
-    set_error_message_(message.str());
   }
 
   boost::optional<const std::string&>

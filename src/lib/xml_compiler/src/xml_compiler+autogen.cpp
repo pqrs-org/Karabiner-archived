@@ -50,15 +50,15 @@ namespace pqrs {
   xml_compiler::valid_identifier_(const std::string& identifier, const std::string& parent_tag_name)
   {
     if (identifier.empty()) {
-      set_error_message_("Empty <identifier>.");
+      error_information_.set("Empty <identifier>.");
       return false;
     }
 
     if (parent_tag_name != "item") {
-      set_error_message_(boost::format("<identifier> must be placed directly under <item>:\n"
-                                       "\n"
-                                       "<identifier>%1%</identifier>") %
-                         identifier);
+      error_information_.set(boost::format("<identifier> must be placed directly under <item>:\n"
+                                           "\n"
+                                           "<identifier>%1%</identifier>") %
+                             identifier);
       return false;
     }
 
@@ -171,7 +171,7 @@ namespace pqrs {
         }
 
       } catch (std::exception& e) {
-        set_error_message_(e.what());
+        error_information_.set(e.what());
       }
     }
   }
@@ -226,7 +226,7 @@ namespace pqrs {
         }
 
       } catch (std::exception& e) {
-        set_error_message_(e.what());
+        error_information_.set(e.what());
       }
     }
   }

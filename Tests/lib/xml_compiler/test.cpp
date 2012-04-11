@@ -8,7 +8,7 @@ TEST(pqrs_xml_compiler, reload)
 {
   pqrs::xml_compiler xml_compiler("data/system_xml", "data/private_xml");
   xml_compiler.reload();
-  EXPECT_EQ(0, xml_compiler.get_error_count());
+  EXPECT_EQ(0, xml_compiler.get_error_information().get_count());
   EXPECT_EQ(boost::optional<uint32_t>(456), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST"));
   EXPECT_EQ(boost::optional<uint32_t>(123), xml_compiler.get_symbol_map_value("KeyCode::MY_LANG_KEY"));
   EXPECT_EQ(boost::optional<uint32_t>(2), xml_compiler.get_symbol_map_value("ConsumerKeyCode::BRIGHTNESS_UP"));
@@ -48,7 +48,7 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/broken_xml");
     xml_compiler.reload();
-    EXPECT_EQ("<private.xml>(4): expected element name", xml_compiler.get_error_message());
+    EXPECT_EQ("<private.xml>(4): expected element name", xml_compiler.get_error_information().get_message());
     EXPECT_EQ(boost::optional<uint32_t>(2), xml_compiler.get_symbol_map_value("ConsumerKeyCode::BRIGHTNESS_UP"));
   }
 
@@ -60,14 +60,14 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
     const char* message = "Duplicated identifier:\n"
                           "\n"
                           "<identifier>private.swap_space_and_tab</identifier>";
-    EXPECT_EQ(message, xml_compiler.get_error_message());
-    EXPECT_EQ(1, xml_compiler.get_error_count());
+    EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/empty_identifier");
     xml_compiler.reload();
-    EXPECT_EQ("Empty <identifier>.", xml_compiler.get_error_message());
-    EXPECT_EQ(3, xml_compiler.get_error_count());
+    EXPECT_EQ("Empty <identifier>.", xml_compiler.get_error_information().get_message());
+    EXPECT_EQ(3, xml_compiler.get_error_information().get_count());
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/invalid_identifier_place");
@@ -75,8 +75,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
     const char* message = "<identifier> must be placed directly under <item>:\n"
                           "\n"
                           "<identifier>private.swap_space_and_tab</identifier>";
-    EXPECT_EQ(message, xml_compiler.get_error_message());
-    EXPECT_EQ(3, xml_compiler.get_error_count());
+    EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
+    EXPECT_EQ(3, xml_compiler.get_error_information().get_count());
   }
 
   // ------------------------------------------------------------
@@ -87,8 +87,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
     const char* message = "Invalid <autogen>:\n"
                           "\n"
                           "<autogen>--KeyToKey2-- KeyCode::SPACE, VK_SHIFT, KeyCode::TAB</autogen>";
-    EXPECT_EQ(message, xml_compiler.get_error_message());
-    EXPECT_EQ(2, xml_compiler.get_error_count());
+    EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
+    EXPECT_EQ(2, xml_compiler.get_error_information().get_count());
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/autogen_invalid_pipe_type");
@@ -96,8 +96,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
     const char* message = "Cannot connect(|) except ModifierFlag and PointingButton:\n"
                           "\n"
                           "KeyCode::SPACE|KeyCode::TAB";
-    EXPECT_EQ(message, xml_compiler.get_error_message());
-    EXPECT_EQ(2, xml_compiler.get_error_count());
+    EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
+    EXPECT_EQ(2, xml_compiler.get_error_information().get_count());
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/autogen_invalid_pipe_different_type");
@@ -105,8 +105,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
     const char* message = "Cannot connect(|) between different types:\n"
                           "\n"
                           "ModifierFlag::SHIFT_L|PointingButton::LEFT";
-    EXPECT_EQ(message, xml_compiler.get_error_message());
-    EXPECT_EQ(2, xml_compiler.get_error_count());
+    EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
+    EXPECT_EQ(2, xml_compiler.get_error_information().get_count());
   }
 
   // ------------------------------------------------------------
@@ -114,8 +114,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/unknown_symbol_map");
     xml_compiler.reload();
-    EXPECT_EQ("Unknown symbol:\n\nKeyCode::MY_UNKNOWN_KEY", xml_compiler.get_error_message());
-    EXPECT_EQ(2, xml_compiler.get_error_count());
+    EXPECT_EQ("Unknown symbol:\n\nKeyCode::MY_UNKNOWN_KEY", xml_compiler.get_error_information().get_message());
+    EXPECT_EQ(2, xml_compiler.get_error_information().get_count());
   }
 
   // ------------------------------------------------------------
@@ -123,8 +123,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/unknown_data_type");
     xml_compiler.reload();
-    EXPECT_EQ("Unknown symbol:\n\nKeyCode2::SPACE", xml_compiler.get_error_message());
-    EXPECT_EQ(2, xml_compiler.get_error_count());
+    EXPECT_EQ("Unknown symbol:\n\nKeyCode2::SPACE", xml_compiler.get_error_information().get_message());
+    EXPECT_EQ(2, xml_compiler.get_error_information().get_count());
   }
 
   // ------------------------------------------------------------
@@ -132,32 +132,32 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
   {
     pqrs::xml_compiler xml_compiler("data/invalid_xml/replacementdef_no_name", "data/private_xml");
     xml_compiler.reload();
-    EXPECT_EQ("No <replacementname> within <replacementdef>.", xml_compiler.get_error_message());
-    EXPECT_EQ(1, xml_compiler.get_error_count());
+    EXPECT_EQ("No <replacementname> within <replacementdef>.", xml_compiler.get_error_information().get_message());
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
   {
     pqrs::xml_compiler xml_compiler("data/invalid_xml/replacementdef_empty_name", "data/private_xml");
     xml_compiler.reload();
-    EXPECT_EQ("Empty <replacementname> within <replacementdef>.", xml_compiler.get_error_message());
-    EXPECT_EQ(1, xml_compiler.get_error_count());
+    EXPECT_EQ("Empty <replacementname> within <replacementdef>.", xml_compiler.get_error_information().get_message());
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
   {
     pqrs::xml_compiler xml_compiler("data/invalid_xml/replacementdef_invalid_name1", "data/private_xml");
     xml_compiler.reload();
-    EXPECT_EQ("Do not use '{{' and '}}' within <replacementname>:\n\nVI{{_J", xml_compiler.get_error_message());
-    EXPECT_EQ(1, xml_compiler.get_error_count());
+    EXPECT_EQ("Do not use '{{' and '}}' within <replacementname>:\n\nVI{{_J", xml_compiler.get_error_information().get_message());
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
   {
     pqrs::xml_compiler xml_compiler("data/invalid_xml/replacementdef_invalid_name2", "data/private_xml");
     xml_compiler.reload();
-    EXPECT_EQ("Do not use '{{' and '}}' within <replacementname>:\n\nVI_}}J", xml_compiler.get_error_message());
-    EXPECT_EQ(1, xml_compiler.get_error_count());
+    EXPECT_EQ("Do not use '{{' and '}}' within <replacementname>:\n\nVI_}}J", xml_compiler.get_error_information().get_message());
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
   {
     pqrs::xml_compiler xml_compiler("data/invalid_xml/replacementdef_no_value", "data/private_xml");
     xml_compiler.reload();
-    EXPECT_EQ("No <replacementvalue> within <replacementdef>:\n\nVI_J", xml_compiler.get_error_message());
-    EXPECT_EQ(1, xml_compiler.get_error_count());
+    EXPECT_EQ("No <replacementvalue> within <replacementdef>:\n\nVI_J", xml_compiler.get_error_information().get_message());
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
 
   // ------------------------------------------------------------
@@ -165,38 +165,38 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/symbol_map_xml_no_type");
     xml_compiler.reload();
-    EXPECT_EQ("No 'type' Attribute within <symbol_map>.", xml_compiler.get_error_message());
-    EXPECT_EQ(1, xml_compiler.get_error_count());
+    EXPECT_EQ("No 'type' Attribute within <symbol_map>.", xml_compiler.get_error_information().get_message());
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/symbol_map_xml_empty_type");
     xml_compiler.reload();
-    EXPECT_EQ("Empty 'type' Attribute within <symbol_map>.", xml_compiler.get_error_message());
-    EXPECT_EQ(1, xml_compiler.get_error_count());
+    EXPECT_EQ("Empty 'type' Attribute within <symbol_map>.", xml_compiler.get_error_information().get_message());
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/symbol_map_xml_no_name");
     xml_compiler.reload();
-    EXPECT_EQ("No 'name' Attribute within <symbol_map>.", xml_compiler.get_error_message());
-    EXPECT_EQ(1, xml_compiler.get_error_count());
+    EXPECT_EQ("No 'name' Attribute within <symbol_map>.", xml_compiler.get_error_information().get_message());
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/symbol_map_xml_empty_name");
     xml_compiler.reload();
-    EXPECT_EQ("Empty 'name' Attribute within <symbol_map>.", xml_compiler.get_error_message());
-    EXPECT_EQ(1, xml_compiler.get_error_count());
+    EXPECT_EQ("Empty 'name' Attribute within <symbol_map>.", xml_compiler.get_error_information().get_message());
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/symbol_map_xml_no_value");
     xml_compiler.reload();
-    EXPECT_EQ("No 'value' Attribute within <symbol_map>.", xml_compiler.get_error_message());
-    EXPECT_EQ(1, xml_compiler.get_error_count());
+    EXPECT_EQ("No 'value' Attribute within <symbol_map>.", xml_compiler.get_error_information().get_message());
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/symbol_map_xml_empty_value");
     xml_compiler.reload();
-    EXPECT_EQ("Empty 'value' Attribute within <symbol_map>.", xml_compiler.get_error_message());
-    EXPECT_EQ(1, xml_compiler.get_error_count());
+    EXPECT_EQ("Empty 'value' Attribute within <symbol_map>.", xml_compiler.get_error_information().get_message());
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/symbol_map_xml_invalid_value");
@@ -204,8 +204,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
     const char* message = "Invalid 'value' Attribute within <symbol_map>:\n"
                           "\n"
                           "<symbol_map type=\"ConsumerKeyCode\" name=\"BRIGHTNESS_UP\" value=\"XXX\" />";
-    EXPECT_EQ(message, xml_compiler.get_error_message());
-    EXPECT_EQ(1, xml_compiler.get_error_count());
+    EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
 
   // ------------------------------------------------------------
@@ -213,14 +213,14 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/appdef_no_name");
     xml_compiler.reload();
-    EXPECT_EQ("No <appname> within <appdef>.", std::string(xml_compiler.get_error_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_count());
+    EXPECT_EQ("No <appname> within <appdef>.", std::string(xml_compiler.get_error_information().get_message()));
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/appdef_empty_name");
     xml_compiler.reload();
-    EXPECT_EQ("Empty <appname> within <appdef>.", std::string(xml_compiler.get_error_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_count());
+    EXPECT_EQ("Empty <appname> within <appdef>.", std::string(xml_compiler.get_error_information().get_message()));
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
 
   // ------------------------------------------------------------
@@ -228,26 +228,26 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/devicevendordef_no_name");
     xml_compiler.reload();
-    EXPECT_EQ("No <vendorname> within <devicevendordef>.", std::string(xml_compiler.get_error_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_count());
+    EXPECT_EQ("No <vendorname> within <devicevendordef>.", std::string(xml_compiler.get_error_information().get_message()));
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/devicevendordef_empty_name");
     xml_compiler.reload();
-    EXPECT_EQ("Empty <vendorname> within <devicevendordef>.", std::string(xml_compiler.get_error_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_count());
+    EXPECT_EQ("Empty <vendorname> within <devicevendordef>.", std::string(xml_compiler.get_error_information().get_message()));
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/devicevendordef_no_value");
     xml_compiler.reload();
-    EXPECT_EQ("No <vendorid> within <devicevendordef>.", std::string(xml_compiler.get_error_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_count());
+    EXPECT_EQ("No <vendorid> within <devicevendordef>.", std::string(xml_compiler.get_error_information().get_message()));
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/devicevendordef_empty_value");
     xml_compiler.reload();
-    EXPECT_EQ("Empty <vendorid> within <devicevendordef>.", std::string(xml_compiler.get_error_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_count());
+    EXPECT_EQ("Empty <vendorid> within <devicevendordef>.", std::string(xml_compiler.get_error_information().get_message()));
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/devicevendordef_invalid_value");
@@ -255,8 +255,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
     const char* message = "Invalid <vendorid> within <devicevendordef>:\n"
                           "\n"
                           "<vendorid>XXX</vendorid>";
-    EXPECT_EQ(message, std::string(xml_compiler.get_error_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_count());
+    EXPECT_EQ(message, std::string(xml_compiler.get_error_information().get_message()));
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
 
   // ------------------------------------------------------------
@@ -264,26 +264,26 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/deviceproductdef_no_name");
     xml_compiler.reload();
-    EXPECT_EQ("No <productname> within <deviceproductdef>.", std::string(xml_compiler.get_error_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_count());
+    EXPECT_EQ("No <productname> within <deviceproductdef>.", std::string(xml_compiler.get_error_information().get_message()));
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/deviceproductdef_empty_name");
     xml_compiler.reload();
-    EXPECT_EQ("Empty <productname> within <deviceproductdef>.", std::string(xml_compiler.get_error_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_count());
+    EXPECT_EQ("Empty <productname> within <deviceproductdef>.", std::string(xml_compiler.get_error_information().get_message()));
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/deviceproductdef_no_value");
     xml_compiler.reload();
-    EXPECT_EQ("No <productid> within <deviceproductdef>.", std::string(xml_compiler.get_error_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_count());
+    EXPECT_EQ("No <productid> within <deviceproductdef>.", std::string(xml_compiler.get_error_information().get_message()));
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/deviceproductdef_empty_value");
     xml_compiler.reload();
-    EXPECT_EQ("Empty <productid> within <deviceproductdef>.", std::string(xml_compiler.get_error_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_count());
+    EXPECT_EQ("Empty <productid> within <deviceproductdef>.", std::string(xml_compiler.get_error_information().get_message()));
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/deviceproductdef_invalid_value");
@@ -291,8 +291,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
     const char* message = "Invalid <productid> within <deviceproductdef>:\n"
                           "\n"
                           "<productid>XXX</productid>";
-    EXPECT_EQ(message, std::string(xml_compiler.get_error_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_count());
+    EXPECT_EQ(message, std::string(xml_compiler.get_error_information().get_message()));
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
 }
 

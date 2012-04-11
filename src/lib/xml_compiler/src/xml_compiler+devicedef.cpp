@@ -74,29 +74,29 @@ namespace pqrs {
         // ----------------------------------------
         // Validation
         if (! name) {
-          set_error_message_(std::string("No <") + name_tag_name + "> within <" + it.first + ">.");
+          error_information_.set(std::string("No <") + name_tag_name + "> within <" + it.first + ">.");
           continue;
         }
 
         if (name->empty()) {
-          set_error_message_(std::string("Empty <") + name_tag_name + "> within <" + it.first + ">.");
+          error_information_.set(std::string("Empty <") + name_tag_name + "> within <" + it.first + ">.");
           continue;
         }
 
         if (! value) {
-          set_error_message_(std::string("No <") + value_tag_name + "> within <" + it.first + ">.");
+          error_information_.set(std::string("No <") + value_tag_name + "> within <" + it.first + ">.");
           continue;
         }
 
         if (value->empty()) {
-          set_error_message_(std::string("Empty <") + value_tag_name + "> within <" + it.first + ">.");
+          error_information_.set(std::string("Empty <") + value_tag_name + "> within <" + it.first + ">.");
           continue;
         }
 
         auto v = pqrs::string::to_uint32_t(value);
         if (! v) {
-          set_error_message_(std::string("Invalid <") + value_tag_name + "> within <" + it.first + ">:\n\n<" +
-                             value_tag_name + ">" + *value + "</" + value_tag_name + ">");
+          error_information_.set(std::string("Invalid <") + value_tag_name + "> within <" + it.first + ">:\n\n<" +
+                                 value_tag_name + ">" + *value + "</" + value_tag_name + ">");
           continue;
         }
 
