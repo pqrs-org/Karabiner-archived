@@ -4,7 +4,7 @@
 
 namespace pqrs {
   void
-  xml_compiler::reload_devicedef_(void)
+  xml_compiler::reload_devicedef_(symbol_map& symbol_map) const
   {
     std::vector<xml_file_path_ptr> xml_file_path_ptrs;
     xml_file_path_ptrs.push_back(
@@ -18,12 +18,13 @@ namespace pqrs {
     read_xmls_(pt_ptrs, xml_file_path_ptrs);
 
     for (auto& pt_ptr : pt_ptrs) {
-      traverse_devicedef_(*pt_ptr);
+      traverse_devicedef_(*pt_ptr, symbol_map);
     }
   }
 
   void
-  xml_compiler::traverse_devicedef_(const boost::property_tree::ptree& pt)
+  xml_compiler::traverse_devicedef_(const boost::property_tree::ptree& pt,
+                                    symbol_map& symbol_map) const
   {
     for (auto& it : pt) {
       // extract include
@@ -31,7 +32,7 @@ namespace pqrs {
         ptree_ptr pt_ptr;
         extract_include_(pt_ptr, it);
         if (pt_ptr) {
-          traverse_devicedef_(*pt_ptr);
+          traverse_devicedef_(*pt_ptr, symbol_map);
           continue;
         }
       }
@@ -39,7 +40,7 @@ namespace pqrs {
       // ------------------------------------------------------------
       if (it.first != "devicevendordef" &&
           it.first != "deviceproductdef") {
-        traverse_devicedef_(it.second);
+        traverse_devicedef_(it.second, symbol_map);
       } else {
         std::string type;
         const char* name_tag_name = NULL;
@@ -101,7 +102,7 @@ namespace pqrs {
         }
 
         // ----------------------------------------
-        symbol_map_.add(type, *name, *v);
+        symbol_map.add(type, *name, *v);
       }
     }
   }
