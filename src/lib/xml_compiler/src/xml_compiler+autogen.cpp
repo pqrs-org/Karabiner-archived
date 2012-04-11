@@ -71,6 +71,16 @@ namespace pqrs {
                                                             bool handle_notsave)
   {
     for (auto& it : pt) {
+      // extract include
+      {
+        ptree_ptr pt_ptr;
+        extract_include_(pt_ptr, it);
+        if (pt_ptr) {
+          add_config_index_and_keycode_to_symbol_map_(*pt_ptr, parent_tag_name, handle_notsave);
+          continue;
+        }
+      }
+
       if (it.first != "identifier") {
         add_config_index_and_keycode_to_symbol_map_(it.second, it.first, handle_notsave);
       } else {
