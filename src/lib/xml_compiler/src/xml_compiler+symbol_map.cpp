@@ -132,11 +132,11 @@ namespace pqrs {
 
           auto v = it.second.get_optional<std::string>(attr);
           if (! v) {
-            set_error_message_(std::string("No '") + attrname + "' Attribute within <symbol_map>.");
+            error_information_.set(std::string("No '") + attrname + "' Attribute within <symbol_map>.");
             break;
           }
           if (v->empty()) {
-            set_error_message_(std::string("Empty '") + attrname + "' Attribute within <symbol_map>.");
+            error_information_.set(std::string("Empty '") + attrname + "' Attribute within <symbol_map>.");
             continue;
           }
           vector.push_back(v);
@@ -148,10 +148,10 @@ namespace pqrs {
 
         auto value = pqrs::string::to_uint32_t(vector[2]);
         if (! value) {
-          set_error_message_(boost::format("Invalid 'value' Attribute within <symbol_map>:\n"
-                                           "\n"
-                                           "<symbol_map type=\"%1%\" name=\"%2%\" value=\"%3%\" />") %
-                             *(vector[0]) % *(vector[1]) % *(vector[2]));
+          error_information_.set(boost::format("Invalid 'value' Attribute within <symbol_map>:\n"
+                                               "\n"
+                                               "<symbol_map type=\"%1%\" name=\"%2%\" value=\"%3%\" />") %
+                                 *(vector[0]) % *(vector[1]) % *(vector[2]));
           continue;
         }
 

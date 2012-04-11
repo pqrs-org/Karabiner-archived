@@ -15,11 +15,11 @@ namespace pqrs {
   class xml_compiler {
   public:
     class remapclasses_initialize_vector;
+    class error_information;
 
     xml_compiler(const std::string& system_xml_directory, const std::string& private_xml_directory) :
       system_xml_directory_(system_xml_directory),
-      private_xml_directory_(private_xml_directory),
-      error_count_(0)
+      private_xml_directory_(private_xml_directory)
     {}
 
     void reload(void);
@@ -28,11 +28,8 @@ namespace pqrs {
       return remapclasses_initialize_vector_;
     }
 
-    const std::string& get_error_message(void) const {
-      return error_message_;
-    }
-    size_t get_error_count(void) const {
-      return error_count_;
+    const error_information& get_error_information(void) const {
+      return error_information_;
     }
 
     boost::optional<uint32_t> get_symbol_map_value(const std::string& name) const {
@@ -57,6 +54,34 @@ namespace pqrs {
     public:
       xml_compiler_logic_error(const std::string& what) : std::logic_error(what) {}
       xml_compiler_logic_error(const boost::format& what) : std::logic_error(what.str()) {}
+    };
+
+    // ============================================================
+    class error_information {
+    public:
+      error_information(void) : count_(0) {}
+
+      const std::string& get_message(void) const { return message_; }
+      size_t get_count(void)               const { return count_; }
+
+      void set(const std::string& message) {
+        if (message_.empty()) {
+          message_ = message;
+        }
+        ++count_;
+      }
+      void set(const boost::format& message) {
+        set(message.str());
+      }
+
+      void clear(void) {
+        message_.clear();
+        count_ = 0;
+      }
+
+    private:
+      std::string message_;
+      size_t count_;
     };
 
     // ============================================================
@@ -240,13 +265,10 @@ namespace pqrs {
   private:
     typedef std::tr1::shared_ptr<boost::property_tree::ptree> ptree_ptr;
     static void read_xml_(ptree_ptr& out,
-                         const std::string& file_path,
+                          const std::string& file_path,
                           const pqrs::string::replacement& replacement);
     void read_xmls_(std::vector<ptree_ptr>& pt_ptrs, const std::vector<xml_file_path_ptr>& xml_file_path_ptrs);
     void extract_include_(ptree_ptr& out, const boost::property_tree::ptree::value_type& it);
-
-    void set_error_message_(const std::string& message);
-    void set_error_message_(const boost::format& message);
 
     void reload_replacementdef_(void);
     void traverse_replacementdef_(const boost::property_tree::ptree& pt, pqrs::string::replacement& replacement);
@@ -285,8 +307,7 @@ namespace pqrs {
     const std::string system_xml_directory_;
     const std::string private_xml_directory_;
 
-    std::string error_message_;
-    size_t error_count_;
+    error_information error_information_;
 
     symbol_map symbol_map_;
     pqrs::string::replacement replacement_;
