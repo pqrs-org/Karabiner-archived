@@ -9,7 +9,8 @@ TEST(pqrs_xml_compiler, reload)
   pqrs::xml_compiler xml_compiler("data/system_xml", "data/private_xml");
   xml_compiler.reload();
   EXPECT_EQ(0, xml_compiler.get_error_information().get_count());
-  EXPECT_EQ(boost::optional<uint32_t>(456), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST"));
+  EXPECT_EQ(boost::optional<uint32_t>(123), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST_123"));
+  EXPECT_EQ(boost::optional<uint32_t>(456), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST_456"));
   EXPECT_EQ(boost::optional<uint32_t>(123), xml_compiler.get_symbol_map_value("KeyCode::MY_LANG_KEY"));
   EXPECT_EQ(boost::optional<uint32_t>(2), xml_compiler.get_symbol_map_value("ConsumerKeyCode::BRIGHTNESS_UP"));
 
