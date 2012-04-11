@@ -13,7 +13,7 @@ namespace pqrs {
     error_information_.clear();
 
     try {
-      reload_replacementdef_();
+      reload_replacementdef_(replacement_);
       reload_symbol_map_();
       reload_appdef_();
       reload_devicedef_();
@@ -27,7 +27,7 @@ namespace pqrs {
   void
   xml_compiler::read_xml_(ptree_ptr& out,
                           const std::string& file_path,
-                          const pqrs::string::replacement& replacement)
+                          const pqrs::string::replacement& replacement) const
   {
     out.reset(new boost::property_tree::ptree());
 
@@ -45,7 +45,8 @@ namespace pqrs {
   }
 
   void
-  xml_compiler::read_xmls_(std::vector<ptree_ptr>& pt_ptrs, const std::vector<xml_file_path_ptr>& xml_file_path_ptrs)
+  xml_compiler::read_xmls_(std::vector<ptree_ptr>& pt_ptrs,
+                           const std::vector<xml_file_path_ptr>& xml_file_path_ptrs) const
   {
     pt_ptrs.clear();
 
@@ -127,7 +128,7 @@ namespace pqrs {
 
   void
   xml_compiler::extract_include_(ptree_ptr& out,
-                                 const boost::property_tree::ptree::value_type& it)
+                                 const boost::property_tree::ptree::value_type& it) const
   {
     out.reset();
 

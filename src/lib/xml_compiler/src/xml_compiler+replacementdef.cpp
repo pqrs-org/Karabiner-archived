@@ -3,9 +3,9 @@
 
 namespace pqrs {
   void
-  xml_compiler::reload_replacementdef_(void)
+  xml_compiler::reload_replacementdef_(pqrs::string::replacement& replacement) const
   {
-    replacement_.clear();
+    replacement.clear();
 
     std::vector<xml_file_path_ptr> xml_file_path_ptrs;
     xml_file_path_ptrs.push_back(
@@ -17,13 +17,13 @@ namespace pqrs {
     read_xmls_(pt_ptrs, xml_file_path_ptrs);
 
     for (auto& pt_ptr : pt_ptrs) {
-      traverse_replacementdef_(*pt_ptr, replacement_);
+      traverse_replacementdef_(*pt_ptr, replacement);
     }
   }
 
   void
   xml_compiler::traverse_replacementdef_(const boost::property_tree::ptree& pt,
-                                         pqrs::string::replacement& replacement)
+                                         pqrs::string::replacement& replacement) const
   {
     for (auto& it : pt) {
       // extract include
