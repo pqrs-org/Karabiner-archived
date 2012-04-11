@@ -102,6 +102,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (keycode == KeyCode::VK_MOUSEKEY_DOWN)         { return true; }
     if (keycode == KeyCode::VK_MOUSEKEY_LEFT)         { return true; }
     if (keycode == KeyCode::VK_MOUSEKEY_RIGHT)        { return true; }
+    if (keycode == KeyCode::VK_MOUSEKEY_DIAGONAL_NE)  { return true; }
+    if (keycode == KeyCode::VK_MOUSEKEY_DIAGONAL_NW)  { return true; }
+    if (keycode == KeyCode::VK_MOUSEKEY_DIAGONAL_SE)  { return true; }
+    if (keycode == KeyCode::VK_MOUSEKEY_DIAGONAL_SW)  { return true; }
     if (keycode == KeyCode::VK_MOUSEKEY_SCROLL_UP)    { return true; }
     if (keycode == KeyCode::VK_MOUSEKEY_SCROLL_DOWN)  { return true; }
     if (keycode == KeyCode::VK_MOUSEKEY_SCROLL_LEFT)  { return true; }
@@ -152,6 +156,23 @@ namespace org_pqrs_KeyRemap4MacBook {
     } else if (params.key == KeyCode::VK_MOUSEKEY_RIGHT) {
       if (params.repeat == false) {
         if (params.ex_iskeydown) { ++dx_; scrollmode_ = false; } else { --dx_; }
+      }
+
+    } else if (params.key == KeyCode::VK_MOUSEKEY_DIAGONAL_NE) {
+      if (params.repeat == false) {
+        if (params.ex_iskeydown) { ++dx_; --dy_; scrollmode_ = false; } else { --dx_; ++dy_; }
+      }
+    } else if (params.key == KeyCode::VK_MOUSEKEY_DIAGONAL_NW) {
+      if (params.repeat == false) {
+        if (params.ex_iskeydown) { --dx_; --dy_; scrollmode_ = false; } else { ++dx_; ++dy_; }
+      }
+    } else if (params.key == KeyCode::VK_MOUSEKEY_DIAGONAL_SE) {
+      if (params.repeat == false) {
+        if (params.ex_iskeydown) { ++dx_; ++dy_; scrollmode_ = false; } else { --dx_; --dy_; }
+      }
+    } else if (params.key == KeyCode::VK_MOUSEKEY_DIAGONAL_SW) {
+      if (params.repeat == false) {
+        if (params.ex_iskeydown) { --dx_; ++dy_; scrollmode_ = false; } else { ++dx_; --dy_; }
       }
 
     } else if (params.key == KeyCode::VK_MOUSEKEY_SCROLL_UP) {
