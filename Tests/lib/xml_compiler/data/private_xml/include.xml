@@ -1,4 +1,11 @@
 <?xml version="1.0"?>
 <root>
   <symbol_map type="KeyCode" name="MY_INCLUDE_TEST_123" value="{{ MY_INCLUDE_TEST }}" />
+
+  <item>
+    <name>Swap Space and Tab</name>
+    <identifier>private.include_test</identifier>
+    <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+    <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::SPACE</autogen>
+  </item>
 </root>
