@@ -278,8 +278,9 @@ namespace pqrs {
     void traverse_replacementdef_(const boost::property_tree::ptree& pt,
                                   pqrs::string::replacement& replacement) const;
 
-    void reload_symbol_map_(void);
-    void traverse_symbol_map_(const boost::property_tree::ptree& pt);
+    void reload_symbol_map_(symbol_map& symbol_map) const;
+    void traverse_symbol_map_(const boost::property_tree::ptree& pt,
+                              symbol_map& symbol_map) const;
 
     void reload_appdef_(void);
     void traverse_appdef_(const boost::property_tree::ptree& pt);

@@ -14,7 +14,7 @@ namespace pqrs {
 
     try {
       reload_replacementdef_(replacement_);
-      reload_symbol_map_();
+      reload_symbol_map_(symbol_map_);
       reload_appdef_();
       reload_devicedef_();
       reload_autogen_();
