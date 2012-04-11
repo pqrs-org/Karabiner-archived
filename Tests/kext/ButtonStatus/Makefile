@@ -1,5 +1,5 @@
 include ../../Makefile.common
-CXXFLAGS += -DFLAGSTATUS_TEST
+CXXFLAGS += -DBUTTONSTATUS_TEST -I../bridge
 
 a.out: $(SOURCES)
 	$(MAKE) -C ../bridge
