@@ -264,14 +264,18 @@ namespace pqrs {
 
   private:
     typedef std::tr1::shared_ptr<boost::property_tree::ptree> ptree_ptr;
-    static void read_xml_(ptree_ptr& out,
-                          const std::string& file_path,
-                          const pqrs::string::replacement& replacement);
-    void read_xmls_(std::vector<ptree_ptr>& pt_ptrs, const std::vector<xml_file_path_ptr>& xml_file_path_ptrs);
-    void extract_include_(ptree_ptr& out, const boost::property_tree::ptree::value_type& it);
+    void read_xml_(ptree_ptr& out,
+                   const std::string& file_path,
+                   const pqrs::string::replacement& replacement) const;
+    void read_xmls_(std::vector<ptree_ptr>& pt_ptrs,
+                    const std::vector<xml_file_path_ptr>& xml_file_path_ptrs) const;
 
-    void reload_replacementdef_(void);
-    void traverse_replacementdef_(const boost::property_tree::ptree& pt, pqrs::string::replacement& replacement);
+    void extract_include_(ptree_ptr& out,
+                          const boost::property_tree::ptree::value_type& it) const;
+
+    void reload_replacementdef_(pqrs::string::replacement& replacement) const;
+    void traverse_replacementdef_(const boost::property_tree::ptree& pt,
+                                  pqrs::string::replacement& replacement) const;
 
     void reload_symbol_map_(void);
     void traverse_symbol_map_(const boost::property_tree::ptree& pt);
@@ -307,7 +311,7 @@ namespace pqrs {
     const std::string system_xml_directory_;
     const std::string private_xml_directory_;
 
-    error_information error_information_;
+    mutable error_information error_information_;
 
     symbol_map symbol_map_;
     pqrs::string::replacement replacement_;
