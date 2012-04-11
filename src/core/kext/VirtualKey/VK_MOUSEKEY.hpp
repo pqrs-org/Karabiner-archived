@@ -10,7 +10,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       static void reset(void);
 
       static bool handle(const Params_KeyboardEventCallBack& params);
-      static bool is_VK_MOUSEKEY(KeyCode keycode);
+      static bool isKeyLikeModifier(KeyCode keycode);
 
     private:
       enum {
@@ -23,7 +23,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       static bool handle_button(const Params_KeyboardEventCallBack& params);
       static bool handle_move(const Params_KeyboardEventCallBack& params);
+      static bool handle_lock_button(const Params_KeyboardEventCallBack& params);
       static PointingButton getPointingButton(KeyCode keycode);
+      static PointingButton getPointingButtonFromLockKey(KeyCode keycode);
 
       static int dx_;
       static int dy_;

@@ -55,4 +55,14 @@ TEST(ButtonStatus, all) {
   // reset
   ButtonStatus::reset();
   EXPECT_EQ(Buttons(), ButtonStatus::makeButtons());
+
+  // ------------------------------------------------------------
+  // lock
+  ButtonStatus::lock_increase((1 << 1) | (1 << 3));
+  ButtonStatus::increase(1 << 5);
+  EXPECT_EQ(Buttons((1 << 1) | (1 << 3) | (1 << 5)), ButtonStatus::makeButtons());
+  ButtonStatus::reset();
+  EXPECT_EQ(Buttons((1 << 1) | (1 << 3)), ButtonStatus::makeButtons());
+  ButtonStatus::lock_clear();
+  EXPECT_EQ(Buttons(), ButtonStatus::makeButtons());
 }

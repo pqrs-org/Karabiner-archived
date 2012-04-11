@@ -5,9 +5,10 @@ static StatusWindow* global_instance = nil;
 
 @implementation StatusWindow
 
-NSString* notificationName_extra           = @"Extra Message";
-NSString* notificationName_modifier_lock   = @"Locked Modifier Keys";
-NSString* notificationName_modifier_sticky = @"Sticky Modifier Keys";
+NSString* notificationName_extra                = @"Extra Message";
+NSString* notificationName_modifier_lock        = @"Locked Modifier Keys";
+NSString* notificationName_modifier_sticky      = @"Sticky Modifier Keys";
+NSString* notificationName_pointing_button_lock = @"Locked Pointing Buttons";
 
 + (StatusWindow*) getInstance
 {
@@ -119,6 +120,7 @@ NSString* notificationName_modifier_sticky = @"Sticky Modifier Keys";
   int indexes[] = {
     BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK,
     BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY,
+    BRIDGE_USERCLIENT_STATUS_MESSAGE_POINTING_BUTTON_LOCK,
   };
   for (size_t i = 0; i < sizeof(indexes) / sizeof(indexes[0]); ++i) {
     int idx = indexes[i];
@@ -134,6 +136,7 @@ NSString* notificationName_modifier_sticky = @"Sticky Modifier Keys";
         switch (idx) {
           case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK:   name = notificationName_modifier_lock;   break;
           case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY: name = notificationName_modifier_sticky; break;
+          case BRIDGE_USERCLIENT_STATUS_MESSAGE_POINTING_BUTTON_LOCK: name = notificationName_pointing_button_lock; break;
         }
 
         [GrowlApplicationBridge
@@ -214,7 +217,10 @@ NSString* notificationName_modifier_sticky = @"Sticky Modifier Keys";
 // Growl delegate
 - (NSDictionary*) registrationDictionaryForGrowl
 {
-  NSArray* array = [NSArray arrayWithObjects:notificationName_modifier_lock, notificationName_modifier_sticky, notificationName_extra, nil];
+  NSArray* array = [NSArray arrayWithObjects:notificationName_modifier_lock,
+                            notificationName_modifier_sticky,
+                            notificationName_pointing_button_lock,
+                            notificationName_extra, nil];
   NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
 
                         [NSNumber numberWithInt:1],
