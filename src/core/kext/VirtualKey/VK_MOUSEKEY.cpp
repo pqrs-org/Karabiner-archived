@@ -46,6 +46,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (handle_button(params)) return true;
     if (handle_move(params)) return true;
+    if (handle_lock_button(params)) return true;
     return false;
   }
 
@@ -71,8 +72,30 @@ namespace org_pqrs_KeyRemap4MacBook {
     return PointingButton::NONE;
   }
 
+  PointingButton
+  VirtualKey::VK_MOUSEKEY::getPointingButtonFromLockKey(KeyCode keycode)
+  {
+    if (keycode == KeyCode::VK_MOUSEKEY_LOCK_BUTTON_LEFT)     { return PointingButton::LEFT;     }
+    if (keycode == KeyCode::VK_MOUSEKEY_LOCK_BUTTON_MIDDLE)   { return PointingButton::MIDDLE;   }
+    if (keycode == KeyCode::VK_MOUSEKEY_LOCK_BUTTON_RIGHT)    { return PointingButton::RIGHT;    }
+    if (keycode == KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON4)  { return PointingButton::BUTTON4;  }
+    if (keycode == KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON5)  { return PointingButton::BUTTON5;  }
+    if (keycode == KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON6)  { return PointingButton::BUTTON6;  }
+    if (keycode == KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON7)  { return PointingButton::BUTTON7;  }
+    if (keycode == KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON8)  { return PointingButton::BUTTON8;  }
+    if (keycode == KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON9)  { return PointingButton::BUTTON9;  }
+    if (keycode == KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON10) { return PointingButton::BUTTON10; }
+    if (keycode == KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON11) { return PointingButton::BUTTON11; }
+    if (keycode == KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON12) { return PointingButton::BUTTON12; }
+    if (keycode == KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON13) { return PointingButton::BUTTON13; }
+    if (keycode == KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON14) { return PointingButton::BUTTON14; }
+    if (keycode == KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON15) { return PointingButton::BUTTON15; }
+    if (keycode == KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON16) { return PointingButton::BUTTON16; }
+    return PointingButton::NONE;
+  }
+
   bool
-  VirtualKey::VK_MOUSEKEY::is_VK_MOUSEKEY(KeyCode keycode)
+  VirtualKey::VK_MOUSEKEY::isKeyLikeModifier(KeyCode keycode)
   {
     if (getPointingButton(keycode) != PointingButton::NONE) return true;
     if (keycode == KeyCode::VK_MOUSEKEY_UP)           { return true; }
@@ -84,6 +107,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (keycode == KeyCode::VK_MOUSEKEY_SCROLL_LEFT)  { return true; }
     if (keycode == KeyCode::VK_MOUSEKEY_SCROLL_RIGHT) { return true; }
     if (keycode == KeyCode::VK_MOUSEKEY_HIGHSPEED)    { return true; }
+
+    // VK_MOUSEKEY_LOCK_BUTTON_* is not like modifier.
+
     return false;
   }
 
@@ -167,6 +193,29 @@ namespace org_pqrs_KeyRemap4MacBook {
       // In the above case, we need to keep scrollmode_, highspeed_ value.
 
       fire_timer_.cancelTimeout();
+    }
+
+    return true;
+  }
+
+  bool
+  VirtualKey::VK_MOUSEKEY::handle_lock_button(const Params_KeyboardEventCallBack& params)
+  {
+    if (params.key == KeyCode::VK_MOUSEKEY_LOCK_BUTTON_ALL_FORCE_OFF) {
+      ButtonStatus::lock_clear();
+      return true;
+    }
+
+    // ------------------------------------------------------------
+    PointingButton button = getPointingButtonFromLockKey(params.key);
+    if (button == PointingButton::NONE) return false;
+
+    if (params.repeat) return true;
+
+    // ----------------------------------------
+    if (params.ex_iskeydown) {
+      ButtonStatus::lock_toggle(button);
+      EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons());
     }
 
     return true;

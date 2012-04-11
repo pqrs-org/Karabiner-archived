@@ -1911,6 +1911,44 @@
               <autogen>--KeyToKey-- KeyCode::COMMA, KeyCode::VK_MOUSEKEY_BUTTON_BUTTON16</autogen>
             </item>
             <item>
+              <name>Lock</name>
+              <appendix>Change 1 to VK_MOUSEKEY_LOCK_BUTTON_LEFT</appendix>
+              <appendix>Change 2 to VK_MOUSEKEY_LOCK_BUTTON_MIDDLE</appendix>
+              <appendix>Change 3 to VK_MOUSEKEY_LOCK_BUTTON_RIGHT</appendix>
+              <appendix>Change 4 to VK_MOUSEKEY_LOCK_BUTTON_BUTTON4</appendix>
+              <appendix>Change 5 to VK_MOUSEKEY_LOCK_BUTTON_BUTTON5</appendix>
+              <appendix>Change 6 to VK_MOUSEKEY_LOCK_BUTTON_BUTTON6</appendix>
+              <appendix>Change 7 to VK_MOUSEKEY_LOCK_BUTTON_BUTTON7</appendix>
+              <appendix>Change 8 to VK_MOUSEKEY_LOCK_BUTTON_BUTTON8</appendix>
+              <appendix>Change Z to VK_MOUSEKEY_LOCK_BUTTON_BUTTON9</appendix>
+              <appendix>Change X to VK_MOUSEKEY_LOCK_BUTTON_BUTTON10</appendix>
+              <appendix>Change C to VK_MOUSEKEY_LOCK_BUTTON_BUTTON11</appendix>
+              <appendix>Change V to VK_MOUSEKEY_LOCK_BUTTON_BUTTON12</appendix>
+              <appendix>Change B to VK_MOUSEKEY_LOCK_BUTTON_BUTTON13</appendix>
+              <appendix>Change N to VK_MOUSEKEY_LOCK_BUTTON_BUTTON14</appendix>
+              <appendix>Change M to VK_MOUSEKEY_LOCK_BUTTON_BUTTON15</appendix>
+              <appendix>Change , to VK_MOUSEKEY_LOCK_BUTTON_BUTTON16</appendix>
+              <appendix>Change . to VK_MOUSEKEY_LOCK_BUTTON_ALL_FORCE_OFF</appendix>
+              <identifier>remap.samples_vk_mousekeys_lock</identifier>
+              <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_LEFT</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_MIDDLE</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_RIGHT</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_4, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON4</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_5, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON5</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON6</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_7, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON7</autogen>
+              <autogen>--KeyToKey-- KeyCode::KEY_8, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON8</autogen>
+              <autogen>--KeyToKey-- KeyCode::Z,     KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON9</autogen>
+              <autogen>--KeyToKey-- KeyCode::X,     KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON10</autogen>
+              <autogen>--KeyToKey-- KeyCode::C,     KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON11</autogen>
+              <autogen>--KeyToKey-- KeyCode::V,     KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON12</autogen>
+              <autogen>--KeyToKey-- KeyCode::B,     KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON13</autogen>
+              <autogen>--KeyToKey-- KeyCode::N,     KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON14</autogen>
+              <autogen>--KeyToKey-- KeyCode::M,     KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON15</autogen>
+              <autogen>--KeyToKey-- KeyCode::COMMA, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON16</autogen>
+              <autogen>--KeyToKey-- KeyCode::DOT,   KeyCode::VK_MOUSEKEY_LOCK_BUTTON_ALL_FORCE_OFF</autogen>
+            </item>
+            <item>
               <name>Extra</name>
               <appendix>Change WASD to Shift_L+VK_MOUSEKEY_UP/LEFT/DOWN/RIGHT</appendix>
               <appendix>Change IJKL to Shift_L+VK_MOUSEKEY_SCROLL_UP/LEFT/DOWN/RIGHT</appendix>
