@@ -26,22 +26,41 @@ namespace pqrs {
 
   void
   xml_compiler::read_xml_(ptree_ptr& out,
-                          const std::string& file_path,
+                          const std::string& base_diretory,
+                          const std::string& relative_file_path,
                           const pqrs::string::replacement& replacement) const
   {
-    out.reset(new boost::property_tree::ptree());
+    try {
+      out.reset(new boost::property_tree::ptree());
 
-    std::string xml;
-    if (replacement.empty()) {
-      pqrs::string::string_from_file(xml, file_path.c_str());
-    } else {
-      pqrs::string::string_by_replacing_double_curly_braces_from_file(xml, file_path.c_str(), replacement);
+      std::string path = base_diretory + "/" + relative_file_path;
+
+      std::string xml;
+      if (replacement.empty()) {
+        pqrs::string::string_from_file(xml, path.c_str());
+      } else {
+        pqrs::string::string_by_replacing_double_curly_braces_from_file(xml, path.c_str(), replacement);
+      }
+      std::stringstream istream(xml, std::stringstream::in);
+
+      int flags = boost::property_tree::xml_parser::no_comments;
+
+      boost::property_tree::read_xml(istream, *out, flags);
+
+    } catch (std::exception& e) {
+      std::string what = e.what();
+
+      // Hack:
+      // boost::property_tree::read_xml throw exception with filename.
+      // But, when we call read_xml with stream, the filename becomes "unspecified file" as follow.
+      //
+      // <unspecified file>(4): expected element name
+      //
+      // So, we change "unspecified file" to file name by ourself.
+      boost::replace_first(what, "<unspecified file>", std::string("<") + relative_file_path + ">");
+
+      error_information_.set(what);
     }
-    std::stringstream istream(xml, std::stringstream::in);
-
-    int flags = boost::property_tree::xml_parser::no_comments;
-
-    boost::property_tree::read_xml(istream, *out, flags);
   }
 
   void
@@ -51,39 +70,25 @@ namespace pqrs {
     pt_ptrs.clear();
 
     for (auto& path_ptr : xml_file_path_ptrs) {
-      try {
-        ptree_ptr pt_ptr;
+      ptree_ptr pt_ptr;
 
-        std::string path;
-        switch (path_ptr->get_base_directory()) {
-          case xml_file_path::base_directory::system_xml:
-            path += system_xml_directory_;
-            break;
-          case xml_file_path::base_directory::private_xml:
-            path += private_xml_directory_;
-            break;
-        }
-        path += "/";
-        path += path_ptr->get_relative_path();
+      switch (path_ptr->get_base_directory()) {
+        case xml_file_path::base_directory::system_xml:
+          read_xml_(pt_ptr,
+                    system_xml_directory_,
+                    path_ptr->get_relative_path(),
+                    replacement_);
+          break;
+        case xml_file_path::base_directory::private_xml:
+          read_xml_(pt_ptr,
+                    private_xml_directory_,
+                    path_ptr->get_relative_path(),
+                    replacement_);
+          break;
+      }
 
-        read_xml_(pt_ptr, path, replacement_);
-        if (pt_ptr) {
-          pt_ptrs.push_back(pt_ptr);
-        }
-
-      } catch (std::exception& e) {
-        std::string what = e.what();
-
-        // Hack:
-        // boost::property_tree::read_xml throw exception with filename.
-        // But, when we call read_xml with stream, the filename becomes "unspecified file" as follow.
-        //
-        // <unspecified file>(4): expected element name
-        //
-        // So, we change "unspecified file" to file name by ourself.
-        boost::replace_first(what, "<unspecified file>", std::string("<") + path_ptr->get_relative_path() + ">");
-
-        error_information_.set(what);
+      if (pt_ptr) {
+        pt_ptrs.push_back(pt_ptr);
       }
     }
   }
@@ -137,15 +142,6 @@ namespace pqrs {
     out.reset(new boost::property_tree::ptree());
 
     // ----------------------------------------
-    // file_path
-    auto path = it.second.get_optional<std::string>("<xmlattr>.path");
-    if (! path) return;
-
-    if (! boost::starts_with("/", *path)) {
-      path = private_xml_directory_ + "/" + *path;
-    }
-
-    // ----------------------------------------
     // replacement
     pqrs::string::replacement r;
     traverse_replacementdef_(it.second, r);
@@ -157,6 +153,19 @@ namespace pqrs {
     }
 
     // ----------------------------------------
-    read_xml_(out, *path, r);
+    {
+      auto path = it.second.get_optional<std::string>("<xmlattr>.path");
+      if (path) {
+        read_xml_(out, private_xml_directory_, *path, r);
+        return;
+      }
+    }
+    {
+      auto path = it.second.get_optional<std::string>("<xmlattr>.system_xml_path");
+      if (path) {
+        read_xml_(out, system_xml_directory_, *path, r);
+        return;
+      }
+    }
   }
 }

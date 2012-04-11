@@ -265,7 +265,8 @@ namespace pqrs {
   private:
     typedef std::tr1::shared_ptr<boost::property_tree::ptree> ptree_ptr;
     void read_xml_(ptree_ptr& out,
-                   const std::string& file_path,
+                   const std::string& base_diretory,
+                   const std::string& relative_file_path,
                    const pqrs::string::replacement& replacement) const;
     void read_xmls_(std::vector<ptree_ptr>& pt_ptrs,
                     const std::vector<xml_file_path_ptr>& xml_file_path_ptrs) const;
