@@ -1,8 +1,6 @@
 #include "FlagStatus.hpp"
 
 #ifndef FLAGSTATUS_TEST
-#include "base.hpp"
-#include "Config.hpp"
 #include "CommonData.hpp"
 #endif
 
