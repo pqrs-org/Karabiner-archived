@@ -218,9 +218,9 @@ NSString* notificationName_pointing_button_lock = @"Locked Pointing Buttons";
 - (NSDictionary*) registrationDictionaryForGrowl
 {
   NSArray* array = [NSArray arrayWithObjects:notificationName_modifier_lock,
-                            notificationName_modifier_sticky,
-                            notificationName_pointing_button_lock,
-                            notificationName_extra, nil];
+                    notificationName_modifier_sticky,
+                    notificationName_pointing_button_lock,
+                    notificationName_extra, nil];
   NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
 
                         [NSNumber numberWithInt:1],
