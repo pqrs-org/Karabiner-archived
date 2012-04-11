@@ -282,11 +282,15 @@ namespace pqrs {
     void traverse_symbol_map_(const boost::property_tree::ptree& pt,
                               symbol_map& symbol_map) const;
 
-    void reload_appdef_(void);
-    void traverse_appdef_(const boost::property_tree::ptree& pt);
+    void reload_appdef_(symbol_map& symbol_map,
+                        std::vector<std::tr1::shared_ptr<appdef> >& app) const;
+    void traverse_appdef_(const boost::property_tree::ptree& pt,
+                          symbol_map& symbol_map,
+                          std::vector<std::tr1::shared_ptr<appdef> >& app) const;
 
-    void reload_devicedef_(void);
-    void traverse_devicedef_(const boost::property_tree::ptree& pt);
+    void reload_devicedef_(symbol_map& symbol_map) const;
+    void traverse_devicedef_(const boost::property_tree::ptree& pt,
+                             symbol_map& symbol_map) const;
 
     void reload_autogen_(void);
     bool valid_identifier_(const std::string& identifier, const std::string& parent_tag_name);

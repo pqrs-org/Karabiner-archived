@@ -4,9 +4,10 @@
 
 namespace pqrs {
   void
-  xml_compiler::reload_appdef_(void)
+  xml_compiler::reload_appdef_(symbol_map& symbol_map,
+                               std::vector<std::tr1::shared_ptr<appdef> >& app) const
   {
-    app_.clear();
+    app.clear();
 
     std::vector<xml_file_path_ptr> xml_file_path_ptrs;
     xml_file_path_ptrs.push_back(
@@ -18,12 +19,14 @@ namespace pqrs {
     read_xmls_(pt_ptrs, xml_file_path_ptrs);
 
     for (auto& pt_ptr : pt_ptrs) {
-      traverse_appdef_(*pt_ptr);
+      traverse_appdef_(*pt_ptr, symbol_map, app);
     }
   }
 
   void
-  xml_compiler::traverse_appdef_(const boost::property_tree::ptree& pt)
+  xml_compiler::traverse_appdef_(const boost::property_tree::ptree& pt,
+                                 symbol_map& symbol_map,
+                                 std::vector<std::tr1::shared_ptr<appdef> >& app) const
   {
     for (auto& it : pt) {
       // extract include
@@ -31,16 +34,16 @@ namespace pqrs {
         ptree_ptr pt_ptr;
         extract_include_(pt_ptr, it);
         if (pt_ptr) {
-          traverse_appdef_(*pt_ptr);
+          traverse_appdef_(*pt_ptr, symbol_map, app);
           continue;
         }
       }
 
       // ------------------------------------------------------------
       if (it.first != "appdef") {
-        traverse_appdef_(it.second);
+        traverse_appdef_(it.second, symbol_map, app);
       } else {
-        std::tr1::shared_ptr<appdef> newappdef(new appdef);
+        std::tr1::shared_ptr<appdef> newappdef(new appdef());
         if (! newappdef) continue;
 
         for (auto& child : it.second) {
@@ -62,8 +65,8 @@ namespace pqrs {
           continue;
         }
 
-        symbol_map_.add("ApplicationType", *(newappdef->get_name()));
-        app_.push_back(newappdef);
+        symbol_map.add("ApplicationType", *(newappdef->get_name()));
+        app.push_back(newappdef);
       }
     }
   }
