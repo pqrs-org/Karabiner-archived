@@ -1,7 +1,0 @@
-//
-// Prefix header for all source files of the 'dump_xml_compiler_result' target in the 'dump_xml_compiler_result' project
-//
-
-#ifdef __OBJC__
-    #import <Cocoa/Cocoa.h>
-#endif
