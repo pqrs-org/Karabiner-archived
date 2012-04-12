@@ -8736,6 +8736,20 @@
           </list>
         </item>
         <item>
+          <name>Use PC Style KeyPad Layout on Apple KeyPad</name>
+          <appendix>(Change = to /)</appendix>
+          <appendix>(Change / to *)</appendix>
+          <appendix>(Change * to -)</appendix>
+          <appendix>(Change - to +)</appendix>
+          <appendix>(Change + to =)</appendix>
+          <identifier>remap.pc_style_keypad</identifier>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_EQUAL,    KeyCode::KEYPAD_SLASH</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_SLASH,    KeyCode::KEYPAD_MULTIPLY</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_MULTIPLY, KeyCode::KEYPAD_MINUS</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_MINUS,    KeyCode::KEYPAD_PLUS</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEYPAD_PLUS,     KeyCode::KEYPAD_EQUAL</autogen>
+        </item>
+        <item>
           <name>Use PC Style Home/End (except in Virtual Machine,RDC)</name>
           <appendix>(Change Home to Control+A)</appendix>
           <appendix>(Change End to Control+E)</appendix>
