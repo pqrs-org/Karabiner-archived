@@ -31,6 +31,9 @@ mkdir -p                  "pkgroot/Library"
 cp -R files/LaunchDaemons "pkgroot/Library"
 cp -R files/LaunchAgents  "pkgroot/Library"
 
+mkdir -p                                                                        "pkgroot/$basedir/bin"
+cp -R "src/bin/dump_xml_compiler_result/build/Release/dump_xml_compiler_result" "pkgroot/$basedir/bin"
+
 mkdir -p                                                                                    "pkgroot/$basedir/app"
 cp -R "src/core/server/build/Release/KeyRemap4MacBook.app"                                  "pkgroot/$basedir/app"
 cp -R "src/util/KeyDump/build/Release/KeyDump.app"                                          "pkgroot/$basedir/app"
