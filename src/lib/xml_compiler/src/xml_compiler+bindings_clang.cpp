@@ -157,8 +157,7 @@ pqrs_xml_compiler_get_preferences_checkbox_node_tree_child(const pqrs_xml_compil
   if (! children) return NULL;
   if (index >= children->size()) return NULL;
 
-  auto& child = (*children)[index];
-  return reinterpret_cast<pqrs_xml_compiler_preferences_checkbox_node_tree*>(child.get());
+  return reinterpret_cast<pqrs_xml_compiler_preferences_checkbox_node_tree*>(((*children)[index]).get());
 }
 
 const char*
@@ -239,8 +238,7 @@ pqrs_xml_compiler_get_preferences_number_node_tree_child(const pqrs_xml_compiler
   if (! children) return NULL;
   if (index >= children->size()) return NULL;
 
-  auto& child = (*children)[index];
-  return reinterpret_cast<pqrs_xml_compiler_preferences_number_node_tree*>(child.get());
+  return reinterpret_cast<pqrs_xml_compiler_preferences_number_node_tree*>(((*children)[index]).get());
 }
 
 const char*
