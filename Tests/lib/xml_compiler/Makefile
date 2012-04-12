@@ -1,6 +1,6 @@
 include ../../Makefile.common
 
-CXXFLAGS += -I../../../src/lib/xml_compiler/include -I../../../src/core/bridge -std=c++11
+CXXFLAGS += -I../../../src/lib/xml_compiler/include -I../../../src/core/bridge -std=c++11 -fvisibility=hidden
 
 include ../../Makefile.rules
 
