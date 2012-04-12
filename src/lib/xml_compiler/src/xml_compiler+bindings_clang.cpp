@@ -157,7 +157,7 @@ pqrs_xml_compiler_get_preferences_checkbox_node_tree_child(const pqrs_xml_compil
   if (! children) return NULL;
   if (index >= children->size()) return NULL;
 
-  auto child = (*children)[index];
+  auto& child = (*children)[index];
   return reinterpret_cast<pqrs_xml_compiler_preferences_checkbox_node_tree*>(child.get());
 }
 
@@ -194,7 +194,7 @@ pqrs_xml_compiler_get_preferences_checkbox_node_tree_identifier(const pqrs_xml_c
   auto node_tree = cast_to_preferences_checkbox_node_tree(p);
   if (! node_tree) return NULL;
 
-  auto identifier = (node_tree->get_node()).get_identifier();
+  auto& identifier = (node_tree->get_node()).get_identifier();
   if (identifier.empty()) return NULL;
 
   return identifier.c_str();
@@ -239,7 +239,7 @@ pqrs_xml_compiler_get_preferences_number_node_tree_child(const pqrs_xml_compiler
   if (! children) return NULL;
   if (index >= children->size()) return NULL;
 
-  auto child = (*children)[index];
+  auto& child = (*children)[index];
   return reinterpret_cast<pqrs_xml_compiler_preferences_number_node_tree*>(child.get());
 }
 
@@ -267,7 +267,7 @@ pqrs_xml_compiler_get_preferences_number_node_tree_identifier(const pqrs_xml_com
   auto node_tree = cast_to_preferences_number_node_tree(p);
   if (! node_tree) return NULL;
 
-  auto identifier = (node_tree->get_node()).get_identifier();
+  auto& identifier = (node_tree->get_node()).get_identifier();
   if (identifier.empty()) return NULL;
 
   return identifier.c_str();
@@ -297,7 +297,7 @@ pqrs_xml_compiler_get_preferences_number_node_tree_base_unit(const pqrs_xml_comp
   auto node_tree = cast_to_preferences_number_node_tree(p);
   if (! node_tree) return NULL;
 
-  auto base_unit = (node_tree->get_node()).get_base_unit();
+  auto& base_unit = (node_tree->get_node()).get_base_unit();
   if (base_unit.empty()) return NULL;
 
   return base_unit.c_str();
