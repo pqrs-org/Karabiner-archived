@@ -23,8 +23,12 @@ namespace pqrs {
         symbol_map_loader loader(*this, symbol_map_);
         loader.reload();
       }
+      // app
+      {
+        app_loader loader(*this, symbol_map_, app_vector_);
+        loader.reload();
+      }
 
-      reload_appdef_(symbol_map_, app_);
       reload_devicedef_(symbol_map_);
       reload_autogen_();
       reload_preferences_();
@@ -115,7 +119,7 @@ namespace pqrs {
   uint32_t
   xml_compiler::get_appid(const std::string& application_identifier) const
   {
-    for (auto& it : app_) {
+    for (auto& it : app_vector_) {
       if (! it) continue;
 
       if (it->is_rules_matched(application_identifier)) {
