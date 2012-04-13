@@ -14,6 +14,7 @@
 namespace pqrs {
   class xml_compiler {
   public:
+#include "pqrs/xml_compiler/detail/error_information.hpp"
 #include "pqrs/xml_compiler/detail/replacement.hpp"
 #include "pqrs/xml_compiler/detail/symbol_map.hpp"
 #include "pqrs/xml_compiler/detail/app.hpp"
@@ -22,7 +23,6 @@ namespace pqrs {
 #include "pqrs/xml_compiler/detail/filter_vector.hpp"
 
     class remapclasses_initialize_vector;
-    class error_information;
 
     xml_compiler(const std::string& system_xml_directory, const std::string& private_xml_directory) :
       system_xml_directory_(system_xml_directory),
@@ -61,34 +61,6 @@ namespace pqrs {
     public:
       xml_compiler_logic_error(const std::string& what) : std::logic_error(what) {}
       xml_compiler_logic_error(const boost::format& what) : std::logic_error(what.str()) {}
-    };
-
-    // ============================================================
-    class error_information {
-    public:
-      error_information(void) : count_(0) {}
-
-      const std::string& get_message(void) const { return message_; }
-      size_t get_count(void)               const { return count_; }
-
-      void set(const std::string& message) {
-        if (message_.empty()) {
-          message_ = message;
-        }
-        ++count_;
-      }
-      void set(const boost::format& message) {
-        set(message.str());
-      }
-
-      void clear(void) {
-        message_.clear();
-        count_ = 0;
-      }
-
-    private:
-      std::string message_;
-      size_t count_;
     };
 
     // ============================================================
