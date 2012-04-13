@@ -16,6 +16,7 @@ namespace pqrs {
   public:
 #include "pqrs/xml_compiler/detail/exception.hpp"
 #include "pqrs/xml_compiler/detail/error_information.hpp"
+#include "pqrs/xml_compiler/detail/xml_file_path.hpp"
 #include "pqrs/xml_compiler/detail/replacement.hpp"
 #include "pqrs/xml_compiler/detail/symbol_map.hpp"
 #include "pqrs/xml_compiler/detail/app.hpp"
@@ -51,31 +52,6 @@ namespace pqrs {
     uint32_t get_appid(const std::string& application_identifier) const;
 
     static void normalize_identifier(std::string& identifier);
-
-    // ============================================================
-    class xml_file_path {
-    public:
-      class base_directory {
-      public:
-        enum type {
-          system_xml,
-          private_xml,
-        };
-      };
-
-      xml_file_path(base_directory::type base_directory_type, const std::string& relative_path) :
-        base_directory_type_(base_directory_type),
-        relative_path_(relative_path)
-      {}
-
-      base_directory::type get_base_directory(void) const { return base_directory_type_; }
-      const std::string& get_relative_path(void) const { return relative_path_; }
-
-    private:
-      base_directory::type base_directory_type_;
-      const std::string relative_path_;
-    };
-    typedef std::tr1::shared_ptr<xml_file_path> xml_file_path_ptr;
 
     // ============================================================
     class remapclasses_initialize_vector {
