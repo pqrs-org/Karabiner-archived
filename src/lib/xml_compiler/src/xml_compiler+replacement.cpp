@@ -3,9 +3,9 @@
 
 namespace pqrs {
   void
-  xml_compiler::reload_replacementdef_(pqrs::string::replacement& replacement) const
+  xml_compiler::replacement_loader::reload(void) const
   {
-    replacement.clear();
+    replacement_.clear();
 
     std::vector<xml_file_path_ptr> xml_file_path_ptrs;
     xml_file_path_ptrs.push_back(
@@ -14,31 +14,36 @@ namespace pqrs {
       xml_file_path_ptr(new xml_file_path(xml_file_path::base_directory::system_xml,  "replacementdef.xml")));
 
     std::vector<ptree_ptr> pt_ptrs;
-    read_xmls_(pt_ptrs, xml_file_path_ptrs);
+    xml_compiler_.read_xmls_(pt_ptrs, xml_file_path_ptrs);
 
     for (auto& pt_ptr : pt_ptrs) {
-      traverse_replacementdef_(*pt_ptr, replacement);
+      if (! pt_ptr->empty()) {
+        traverse(*pt_ptr);
+      }
     }
   }
 
   void
-  xml_compiler::traverse_replacementdef_(const boost::property_tree::ptree& pt,
-                                         pqrs::string::replacement& replacement) const
+  xml_compiler::replacement_loader::traverse(const boost::property_tree::ptree& pt) const
   {
     for (auto& it : pt) {
       // extract include
       {
         ptree_ptr pt_ptr;
-        extract_include_(pt_ptr, it);
+        xml_compiler_.extract_include_(pt_ptr, it);
         if (pt_ptr) {
-          traverse_replacementdef_(*pt_ptr, replacement);
+          if (! pt_ptr->empty()) {
+            traverse(*pt_ptr);
+          }
           continue;
         }
       }
 
       // ------------------------------------------------------------
       if (it.first != "replacementdef") {
-        traverse_replacementdef_(it.second, replacement);
+        if (! it.second.empty()) {
+          traverse(it.second);
+        }
       } else {
         boost::optional<std::string> name;
         boost::optional<std::string> value;
@@ -53,27 +58,27 @@ namespace pqrs {
         // --------------------------------------------------
         // Validation
         if (! name) {
-          error_information_.set("No <replacementname> within <replacementdef>.");
+          xml_compiler_.error_information_.set("No <replacementname> within <replacementdef>.");
           continue;
         }
         if (name->empty()) {
-          error_information_.set("Empty <replacementname> within <replacementdef>.");
+          xml_compiler_.error_information_.set("Empty <replacementname> within <replacementdef>.");
           continue;
         }
         if (name->find_first_of("{{") != std::string::npos ||
             name->find_first_of("}}") != std::string::npos) {
-          error_information_.set(std::string("Do not use '{{' and '}}' within <replacementname>:\n\n") + *name);
+          xml_compiler_.error_information_.set(std::string("Do not use '{{' and '}}' within <replacementname>:\n\n") + *name);
         }
 
         if (! value) {
-          error_information_.set(std::string("No <replacementvalue> within <replacementdef>:\n\n") + *name);
+          xml_compiler_.error_information_.set(std::string("No <replacementvalue> within <replacementdef>:\n\n") + *name);
           continue;
         }
 
         // --------------------------------------------------
         // Adding to replacement_ if name is not found.
-        if (replacement.find(*name) == replacement.end()) {
-          replacement[*name] = *value;
+        if (replacement_.find(*name) == replacement_.end()) {
+          replacement_[*name] = *value;
         }
       }
     }

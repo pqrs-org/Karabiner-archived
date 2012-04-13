@@ -17,7 +17,7 @@
 		340D31C8152CB8EF00C88AC5 /* xml_compiler+filter_vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 340D31BC152CB8EF00C88AC5 /* xml_compiler+filter_vector.cpp */; };
 		340D31C9152CB8EF00C88AC5 /* xml_compiler+preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 340D31BD152CB8EF00C88AC5 /* xml_compiler+preferences.cpp */; };
 		340D31CA152CB8EF00C88AC5 /* xml_compiler+remapclasses_initialize_vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 340D31BE152CB8EF00C88AC5 /* xml_compiler+remapclasses_initialize_vector.cpp */; };
-		340D31CB152CB8EF00C88AC5 /* xml_compiler+replacementdef.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 340D31BF152CB8EF00C88AC5 /* xml_compiler+replacementdef.cpp */; };
+		340D31CB152CB8EF00C88AC5 /* xml_compiler+replacement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 340D31BF152CB8EF00C88AC5 /* xml_compiler+replacement.cpp */; };
 		340D31CC152CB8EF00C88AC5 /* xml_compiler+symbol_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 340D31C0152CB8EF00C88AC5 /* xml_compiler+symbol_map.cpp */; };
 /* End PBXBuildFile section */
 
@@ -32,7 +32,7 @@
 		340D31BC152CB8EF00C88AC5 /* xml_compiler+filter_vector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "xml_compiler+filter_vector.cpp"; path = "src/xml_compiler+filter_vector.cpp"; sourceTree = "<group>"; };
 		340D31BD152CB8EF00C88AC5 /* xml_compiler+preferences.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "xml_compiler+preferences.cpp"; path = "src/xml_compiler+preferences.cpp"; sourceTree = "<group>"; };
 		340D31BE152CB8EF00C88AC5 /* xml_compiler+remapclasses_initialize_vector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "xml_compiler+remapclasses_initialize_vector.cpp"; path = "src/xml_compiler+remapclasses_initialize_vector.cpp"; sourceTree = "<group>"; };
-		340D31BF152CB8EF00C88AC5 /* xml_compiler+replacementdef.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "xml_compiler+replacementdef.cpp"; path = "src/xml_compiler+replacementdef.cpp"; sourceTree = "<group>"; };
+		340D31BF152CB8EF00C88AC5 /* xml_compiler+replacement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "xml_compiler+replacement.cpp"; path = "src/xml_compiler+replacement.cpp"; sourceTree = "<group>"; };
 		340D31C0152CB8EF00C88AC5 /* xml_compiler+symbol_map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "xml_compiler+symbol_map.cpp"; path = "src/xml_compiler+symbol_map.cpp"; sourceTree = "<group>"; };
 		34F271B3152CB80700BD77AB /* libxml_compiler.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libxml_compiler.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -61,7 +61,7 @@
 				340D31BC152CB8EF00C88AC5 /* xml_compiler+filter_vector.cpp */,
 				340D31BD152CB8EF00C88AC5 /* xml_compiler+preferences.cpp */,
 				340D31BE152CB8EF00C88AC5 /* xml_compiler+remapclasses_initialize_vector.cpp */,
-				340D31BF152CB8EF00C88AC5 /* xml_compiler+replacementdef.cpp */,
+				340D31BF152CB8EF00C88AC5 /* xml_compiler+replacement.cpp */,
 				340D31C0152CB8EF00C88AC5 /* xml_compiler+symbol_map.cpp */,
 			);
 			name = Sources;
@@ -153,7 +153,7 @@
 				340D31C8152CB8EF00C88AC5 /* xml_compiler+filter_vector.cpp in Sources */,
 				340D31C9152CB8EF00C88AC5 /* xml_compiler+preferences.cpp in Sources */,
 				340D31CA152CB8EF00C88AC5 /* xml_compiler+remapclasses_initialize_vector.cpp in Sources */,
-				340D31CB152CB8EF00C88AC5 /* xml_compiler+replacementdef.cpp in Sources */,
+				340D31CB152CB8EF00C88AC5 /* xml_compiler+replacement.cpp in Sources */,
 				340D31CC152CB8EF00C88AC5 /* xml_compiler+symbol_map.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
