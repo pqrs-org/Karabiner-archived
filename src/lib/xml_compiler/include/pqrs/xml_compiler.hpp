@@ -112,6 +112,7 @@ namespace pqrs {
 #include "pqrs/xml_compiler/detail/replacement.hpp"
 #include "pqrs/xml_compiler/detail/symbol_map.hpp"
 #include "pqrs/xml_compiler/detail/app.hpp"
+#include "pqrs/xml_compiler/detail/device.hpp"
 
     // ============================================================
     class remapclasses_initialize_vector {
@@ -241,10 +242,6 @@ namespace pqrs {
 
     void extract_include_(ptree_ptr& out,
                           const boost::property_tree::ptree::value_type& it) const;
-
-    void reload_devicedef_(symbol_map& symbol_map) const;
-    void traverse_devicedef_(const boost::property_tree::ptree& pt,
-                             symbol_map& symbol_map) const;
 
     void reload_autogen_(void);
     bool valid_identifier_(const std::string& identifier, const std::string& parent_tag_name);
