@@ -84,9 +84,9 @@ namespace pqrs {
 
   // ============================================================
   void
-  xml_compiler::reload_symbol_map_(symbol_map& symbol_map) const
+  xml_compiler::symbol_map_loader::reload(void) const
   {
-    symbol_map.clear();
+    symbol_map_.clear();
 
     std::vector<xml_file_path_ptr> xml_file_path_ptrs;
     xml_file_path_ptrs.push_back(
@@ -95,31 +95,30 @@ namespace pqrs {
       xml_file_path_ptr(new xml_file_path(xml_file_path::base_directory::system_xml,  "symbol_map.xml")));
 
     std::vector<ptree_ptr> pt_ptrs;
-    read_xmls_(pt_ptrs, xml_file_path_ptrs);
+    xml_compiler_.read_xmls_(pt_ptrs, xml_file_path_ptrs);
 
     for (auto& pt_ptr : pt_ptrs) {
-      traverse_symbol_map_(*pt_ptr, symbol_map);
+      traverse_(*pt_ptr);
     }
   }
 
   void
-  xml_compiler::traverse_symbol_map_(const boost::property_tree::ptree& pt,
-                                     symbol_map& symbol_map) const
+  xml_compiler::symbol_map_loader::traverse_(const boost::property_tree::ptree& pt) const
   {
     for (auto& it : pt) {
       // extract include
       {
         ptree_ptr pt_ptr;
-        extract_include_(pt_ptr, it);
+        xml_compiler_.extract_include_(pt_ptr, it);
         if (pt_ptr) {
-          traverse_symbol_map_(*pt_ptr, symbol_map);
+          traverse_(*pt_ptr);
           continue;
         }
       }
 
       // ------------------------------------------------------------
       if (it.first != "symbol_map") {
-        traverse_symbol_map_(it.second, symbol_map);
+        traverse_(it.second);
 
       } else {
         std::vector<boost::optional<std::string> > vector;
@@ -133,11 +132,11 @@ namespace pqrs {
 
           auto v = it.second.get_optional<std::string>(attr);
           if (! v) {
-            error_information_.set(std::string("No '") + attrname + "' Attribute within <symbol_map>.");
+            xml_compiler_.error_information_.set(std::string("No '") + attrname + "' Attribute within <symbol_map>.");
             break;
           }
           if (v->empty()) {
-            error_information_.set(std::string("Empty '") + attrname + "' Attribute within <symbol_map>.");
+            xml_compiler_.error_information_.set(std::string("Empty '") + attrname + "' Attribute within <symbol_map>.");
             continue;
           }
           vector.push_back(v);
@@ -149,14 +148,14 @@ namespace pqrs {
 
         auto value = pqrs::string::to_uint32_t(vector[2]);
         if (! value) {
-          error_information_.set(boost::format("Invalid 'value' Attribute within <symbol_map>:\n"
-                                               "\n"
-                                               "<symbol_map type=\"%1%\" name=\"%2%\" value=\"%3%\" />") %
-                                 *(vector[0]) % *(vector[1]) % *(vector[2]));
+          xml_compiler_.error_information_.set(boost::format("Invalid 'value' Attribute within <symbol_map>:\n"
+                                                             "\n"
+                                                             "<symbol_map type=\"%1%\" name=\"%2%\" value=\"%3%\" />") %
+                                               *(vector[0]) % *(vector[1]) % *(vector[2]));
           continue;
         }
 
-        symbol_map.add(*(vector[0]), *(vector[1]), *value);
+        symbol_map_.add(*(vector[0]), *(vector[1]), *value);
       }
     }
   }

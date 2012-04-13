@@ -14,7 +14,12 @@ namespace pqrs {
 
     try {
       reload_replacementdef_(replacement_);
-      reload_symbol_map_(symbol_map_);
+
+      {
+        symbol_map_loader loader(*this, symbol_map_);
+        loader.reload();
+      }
+
       reload_appdef_(symbol_map_, app_);
       reload_devicedef_(symbol_map_);
       reload_autogen_();
