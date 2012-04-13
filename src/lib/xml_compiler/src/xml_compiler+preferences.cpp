@@ -112,7 +112,7 @@ namespace pqrs {
   template <class T>
   void
   xml_compiler::preferences_node_tree<T>::traverse_item(const boost::property_tree::ptree& pt,
-                                                        xml_compiler& xml_compiler)
+                                                        const xml_compiler& xml_compiler)
   {
     for (auto& it : pt) {
       // extract include

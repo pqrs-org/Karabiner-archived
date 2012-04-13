@@ -137,7 +137,7 @@ namespace pqrs {
       void set_name(const std::string& v) { name_ = v; }
       void add_rule_equal(const std::string& v);
       void add_rule_prefix(const std::string& v);
-      bool is_rules_matched(const std::string& identifier);
+      bool is_rules_matched(const std::string& identifier) const;
 
     private:
       boost::optional<std::string> name_;
@@ -242,7 +242,7 @@ namespace pqrs {
       preferences_node_tree(const T& parent_node) : node_(parent_node) {}
 
       void clear(void);
-      void traverse_item(const boost::property_tree::ptree& pt, xml_compiler& xml_compiler);
+      void traverse_item(const boost::property_tree::ptree& pt, const xml_compiler& xml_compiler);
       const T& get_node(void) const { return node_; }
       const preferences_node_tree_ptrs_ptr& get_children(void) const { return children_; }
 
@@ -310,7 +310,7 @@ namespace pqrs {
     void add_to_initialize_vector(const std::string& params,
                                   uint32_t type,
                                   const filter_vector& filter_vector,
-                                  std::vector<uint32_t>& initialize_vector);
+                                  std::vector<uint32_t>& initialize_vector) const;
 
     void reload_preferences_(void);
 

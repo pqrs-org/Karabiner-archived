@@ -88,7 +88,7 @@ namespace pqrs {
   }
 
   bool
-  xml_compiler::appdef::is_rules_matched(const std::string& identifier)
+  xml_compiler::appdef::is_rules_matched(const std::string& identifier) const
   {
     for (auto& r : rules_equal_) {
       if (identifier == r) {

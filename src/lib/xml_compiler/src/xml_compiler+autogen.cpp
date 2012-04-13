@@ -472,7 +472,7 @@ namespace pqrs {
   xml_compiler::add_to_initialize_vector(const std::string& params,
                                          uint32_t type,
                                          const filter_vector& filter_vector,
-                                         std::vector<uint32_t>& initialize_vector)
+                                         std::vector<uint32_t>& initialize_vector) const
   {
     std::vector<uint32_t> vector;
     vector.push_back(type);
