@@ -4,9 +4,6 @@
 #include "pqrs/xml_compiler.hpp"
 
 namespace pqrs {
-  xml_compiler::filter_vector::filter_vector(void)
-  {}
-
   xml_compiler::filter_vector::filter_vector(const symbol_map& symbol_map, const boost::property_tree::ptree& pt)
   {
     for (auto& it : pt) {
@@ -36,24 +33,6 @@ namespace pqrs {
         add(symbol_map, BRIDGE_FILTERTYPE_INPUTMODEDETAIL_ONLY, "InputModeDetail::", it.second.data());
       }
     }
-  }
-
-  std::vector<uint32_t>&
-  xml_compiler::filter_vector::get(void)
-  {
-    return data_;
-  }
-
-  const std::vector<uint32_t>&
-  xml_compiler::filter_vector::get(void) const
-  {
-    return data_;
-  }
-
-  bool
-  xml_compiler::filter_vector::empty(void) const
-  {
-    return data_.empty();
   }
 
   void
