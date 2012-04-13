@@ -28,8 +28,12 @@ namespace pqrs {
         app_loader loader(*this, symbol_map_, app_vector_);
         loader.reload();
       }
+      // device
+      {
+        device_loader loader(*this, symbol_map_);
+        loader.reload();
+      }
 
-      reload_devicedef_(symbol_map_);
       reload_autogen_();
       reload_preferences_();
     } catch (std::exception& e) {

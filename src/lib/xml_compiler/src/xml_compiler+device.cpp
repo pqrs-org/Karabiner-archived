@@ -4,7 +4,7 @@
 
 namespace pqrs {
   void
-  xml_compiler::reload_devicedef_(symbol_map& symbol_map) const
+  xml_compiler::device_loader::reload(void) const
   {
     std::vector<xml_file_path_ptr> xml_file_path_ptrs;
     xml_file_path_ptrs.push_back(
@@ -15,24 +15,27 @@ namespace pqrs {
       xml_file_path_ptr(new xml_file_path(xml_file_path::base_directory::system_xml,  "deviceproductdef.xml")));
 
     std::vector<ptree_ptr> pt_ptrs;
-    read_xmls_(pt_ptrs, xml_file_path_ptrs);
+    xml_compiler_.read_xmls_(pt_ptrs, xml_file_path_ptrs);
 
     for (auto& pt_ptr : pt_ptrs) {
-      traverse_devicedef_(*pt_ptr, symbol_map);
+      if (! pt_ptr->empty()) {
+        traverse_(*pt_ptr);
+      }
     }
   }
 
   void
-  xml_compiler::traverse_devicedef_(const boost::property_tree::ptree& pt,
-                                    symbol_map& symbol_map) const
+  xml_compiler::device_loader::traverse_(const boost::property_tree::ptree& pt) const
   {
     for (auto& it : pt) {
       // extract include
       {
         ptree_ptr pt_ptr;
-        extract_include_(pt_ptr, it);
+        xml_compiler_.extract_include_(pt_ptr, it);
         if (pt_ptr) {
-          traverse_devicedef_(*pt_ptr, symbol_map);
+          if (! pt_ptr->empty()) {
+            traverse_(*pt_ptr);
+          }
           continue;
         }
       }
@@ -40,7 +43,9 @@ namespace pqrs {
       // ------------------------------------------------------------
       if (it.first != "devicevendordef" &&
           it.first != "deviceproductdef") {
-        traverse_devicedef_(it.second, symbol_map);
+        if (! it.second.empty()) {
+          traverse_(it.second);
+        }
       } else {
         std::string type;
         const char* name_tag_name = NULL;
@@ -75,34 +80,34 @@ namespace pqrs {
         // ----------------------------------------
         // Validation
         if (! name) {
-          error_information_.set(std::string("No <") + name_tag_name + "> within <" + it.first + ">.");
+          xml_compiler_.error_information_.set(std::string("No <") + name_tag_name + "> within <" + it.first + ">.");
           continue;
         }
 
         if (name->empty()) {
-          error_information_.set(std::string("Empty <") + name_tag_name + "> within <" + it.first + ">.");
+          xml_compiler_.error_information_.set(std::string("Empty <") + name_tag_name + "> within <" + it.first + ">.");
           continue;
         }
 
         if (! value) {
-          error_information_.set(std::string("No <") + value_tag_name + "> within <" + it.first + ">.");
+          xml_compiler_.error_information_.set(std::string("No <") + value_tag_name + "> within <" + it.first + ">.");
           continue;
         }
 
         if (value->empty()) {
-          error_information_.set(std::string("Empty <") + value_tag_name + "> within <" + it.first + ">.");
+          xml_compiler_.error_information_.set(std::string("Empty <") + value_tag_name + "> within <" + it.first + ">.");
           continue;
         }
 
         auto v = pqrs::string::to_uint32_t(value);
         if (! v) {
-          error_information_.set(std::string("Invalid <") + value_tag_name + "> within <" + it.first + ">:\n\n<" +
-                                 value_tag_name + ">" + *value + "</" + value_tag_name + ">");
+          xml_compiler_.error_information_.set(std::string("Invalid <") + value_tag_name + "> within <" + it.first + ">:\n\n<" +
+                                               value_tag_name + ">" + *value + "</" + value_tag_name + ">");
           continue;
         }
 
         // ----------------------------------------
-        symbol_map.add(type, *name, *v);
+        symbol_map_.add(type, *name, *v);
       }
     }
   }
