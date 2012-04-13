@@ -14,6 +14,7 @@
 namespace pqrs {
   class xml_compiler {
   public:
+#include "pqrs/xml_compiler/detail/exception.hpp"
 #include "pqrs/xml_compiler/detail/error_information.hpp"
 #include "pqrs/xml_compiler/detail/replacement.hpp"
 #include "pqrs/xml_compiler/detail/symbol_map.hpp"
@@ -50,18 +51,6 @@ namespace pqrs {
     uint32_t get_appid(const std::string& application_identifier) const;
 
     static void normalize_identifier(std::string& identifier);
-
-    // ============================================================
-    class xml_compiler_runtime_error : public std::runtime_error {
-    public:
-      xml_compiler_runtime_error(const std::string& what) : std::runtime_error(what) {}
-      xml_compiler_runtime_error(const boost::format& what) : std::runtime_error(what.str()) {}
-    };
-    class xml_compiler_logic_error : public std::logic_error {
-    public:
-      xml_compiler_logic_error(const std::string& what) : std::logic_error(what) {}
-      xml_compiler_logic_error(const boost::format& what) : std::logic_error(what.str()) {}
-    };
 
     // ============================================================
     class xml_file_path {
