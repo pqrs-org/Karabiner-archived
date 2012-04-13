@@ -109,6 +109,7 @@ namespace pqrs {
     };
     typedef std::tr1::shared_ptr<xml_file_path> xml_file_path_ptr;
 
+#include "pqrs/xml_compiler/detail/replacement.hpp"
 #include "pqrs/xml_compiler/detail/symbol_map.hpp"
 
     // ============================================================
@@ -255,10 +256,6 @@ namespace pqrs {
     void extract_include_(ptree_ptr& out,
                           const boost::property_tree::ptree::value_type& it) const;
 
-    void reload_replacementdef_(pqrs::string::replacement& replacement) const;
-    void traverse_replacementdef_(const boost::property_tree::ptree& pt,
-                                  pqrs::string::replacement& replacement) const;
-
     void reload_appdef_(symbol_map& symbol_map,
                         std::vector<std::tr1::shared_ptr<appdef> >& app) const;
     void traverse_appdef_(const boost::property_tree::ptree& pt,
@@ -296,8 +293,8 @@ namespace pqrs {
 
     mutable error_information error_information_;
 
-    symbol_map symbol_map_;
     pqrs::string::replacement replacement_;
+    symbol_map symbol_map_;
     std::tr1::unordered_map<uint32_t, std::string> identifier_map_;
     remapclasses_initialize_vector remapclasses_initialize_vector_;
     uint32_t simultaneous_keycode_index_;

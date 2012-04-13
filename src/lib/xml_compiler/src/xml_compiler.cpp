@@ -13,8 +13,12 @@ namespace pqrs {
     error_information_.clear();
 
     try {
-      reload_replacementdef_(replacement_);
-
+      // replacement
+      {
+        replacement_loader loader(*this, replacement_);
+        loader.reload();
+      }
+      // symbol_map
       {
         symbol_map_loader loader(*this, symbol_map_);
         loader.reload();
@@ -149,7 +153,8 @@ namespace pqrs {
     // ----------------------------------------
     // replacement
     pqrs::string::replacement r;
-    traverse_replacementdef_(it.second, r);
+    replacement_loader loader(*this, r);
+    loader.traverse(it.second);
 
     for (auto& i : replacement_) {
       if (r.find(i.first) == r.end()) {

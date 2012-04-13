@@ -98,7 +98,9 @@ namespace pqrs {
     xml_compiler_.read_xmls_(pt_ptrs, xml_file_path_ptrs);
 
     for (auto& pt_ptr : pt_ptrs) {
-      traverse_(*pt_ptr);
+      if (! pt_ptr->empty()) {
+        traverse_(*pt_ptr);
+      }
     }
   }
 
@@ -111,14 +113,18 @@ namespace pqrs {
         ptree_ptr pt_ptr;
         xml_compiler_.extract_include_(pt_ptr, it);
         if (pt_ptr) {
-          traverse_(*pt_ptr);
+          if (! pt_ptr->empty()) {
+            traverse_(*pt_ptr);
+          }
           continue;
         }
       }
 
       // ------------------------------------------------------------
       if (it.first != "symbol_map") {
-        traverse_(it.second);
+        if (! it.second.empty()) {
+          traverse_(it.second);
+        }
 
       } else {
         std::vector<boost::optional<std::string> > vector;
