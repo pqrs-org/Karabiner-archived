@@ -73,28 +73,12 @@ end
 plist << '  </dict>'
 plist << '</plist>'
 
-filepath = "../output/include.keycode.plist.tmp"
-open(filepath, 'w') do |f|
-  f << plist.join("\n")
-end
-KeyRemap4MacBookBridge::Converter.update_file_if_needed(filepath)
-
 # ----------------------------------------------------------------------
 # output cpp
 filepath = "../output/include.keycode.cpp.tmp"
 open(filepath, 'w') do |f|
   alldata.each do |info|
     f << "const #{info[:classname]} #{info[:name]}(#{info[:value]});\n"
-  end
-end
-KeyRemap4MacBookBridge::Converter.update_file_if_needed(filepath)
-
-# ----------------------------------------------------------------------
-# output raw
-filepath = "../output/include.keycode.raw.tmp"
-open(filepath, 'w') do |f|
-  alldata.each do |info|
-    f << "#{info[:name]} #{info[:value]}\n"
   end
 end
 KeyRemap4MacBookBridge::Converter.update_file_if_needed(filepath)
