@@ -114,6 +114,7 @@ namespace pqrs {
 #include "pqrs/xml_compiler/detail/app.hpp"
 #include "pqrs/xml_compiler/detail/device.hpp"
 #include "pqrs/xml_compiler/detail/preferences_node.hpp"
+#include "pqrs/xml_compiler/detail/filter_vector.hpp"
 
     // ============================================================
     class remapclasses_initialize_vector {
@@ -135,21 +136,6 @@ namespace pqrs {
       std::tr1::unordered_map<uint32_t, bool> is_config_index_added_;
       uint32_t max_config_index_;
       bool freezed_;
-    };
-
-    // ============================================================
-    class filter_vector {
-    public:
-      filter_vector(void);
-      filter_vector(const symbol_map& symbol_map, const boost::property_tree::ptree& pt);
-      std::vector<uint32_t>& get(void);
-      const std::vector<uint32_t>& get(void) const;
-      bool empty(void) const;
-
-    private:
-      void add(const symbol_map& symbol_map, uint32_t filter_type, const std::string& type, const std::string& string);
-
-      std::vector<uint32_t> data_;
     };
 
     // ============================================================
