@@ -111,21 +111,7 @@ namespace pqrs {
 
 #include "pqrs/xml_compiler/detail/replacement.hpp"
 #include "pqrs/xml_compiler/detail/symbol_map.hpp"
-
-    // ============================================================
-    class appdef {
-    public:
-      const boost::optional<std::string>& get_name(void) const { return name_; }
-      void set_name(const std::string& v) { name_ = v; }
-      void add_rule_equal(const std::string& v);
-      void add_rule_prefix(const std::string& v);
-      bool is_rules_matched(const std::string& identifier) const;
-
-    private:
-      boost::optional<std::string> name_;
-      std::vector<std::string> rules_equal_;
-      std::vector<std::string> rules_prefix_;
-    };
+#include "pqrs/xml_compiler/detail/app.hpp"
 
     // ============================================================
     class remapclasses_initialize_vector {
@@ -256,12 +242,6 @@ namespace pqrs {
     void extract_include_(ptree_ptr& out,
                           const boost::property_tree::ptree::value_type& it) const;
 
-    void reload_appdef_(symbol_map& symbol_map,
-                        std::vector<std::tr1::shared_ptr<appdef> >& app) const;
-    void traverse_appdef_(const boost::property_tree::ptree& pt,
-                          symbol_map& symbol_map,
-                          std::vector<std::tr1::shared_ptr<appdef> >& app) const;
-
     void reload_devicedef_(symbol_map& symbol_map) const;
     void traverse_devicedef_(const boost::property_tree::ptree& pt,
                              symbol_map& symbol_map) const;
@@ -299,7 +279,7 @@ namespace pqrs {
     remapclasses_initialize_vector remapclasses_initialize_vector_;
     uint32_t simultaneous_keycode_index_;
 
-    std::vector<std::tr1::shared_ptr<appdef> > app_;
+    std::vector<std::tr1::shared_ptr<app> > app_vector_;
 
     preferences_node_tree<preferences_checkbox_node> preferences_checkbox_node_tree_;
     preferences_node_tree<preferences_number_node> preferences_number_node_tree_;

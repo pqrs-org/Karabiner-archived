@@ -10,7 +10,7 @@
 		340D31C1152CB8EF00C88AC5 /* string.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 340D31B5152CB8EF00C88AC5 /* string.cpp */; };
 		340D31C2152CB8EF00C88AC5 /* vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 340D31B6152CB8EF00C88AC5 /* vector.cpp */; };
 		340D31C3152CB8EF00C88AC5 /* xml_compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 340D31B7152CB8EF00C88AC5 /* xml_compiler.cpp */; };
-		340D31C4152CB8EF00C88AC5 /* xml_compiler+appdef.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 340D31B8152CB8EF00C88AC5 /* xml_compiler+appdef.cpp */; };
+		340D31C4152CB8EF00C88AC5 /* xml_compiler+app.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 340D31B8152CB8EF00C88AC5 /* xml_compiler+app.cpp */; };
 		340D31C5152CB8EF00C88AC5 /* xml_compiler+autogen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 340D31B9152CB8EF00C88AC5 /* xml_compiler+autogen.cpp */; };
 		340D31C6152CB8EF00C88AC5 /* xml_compiler+bindings_clang.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 340D31BA152CB8EF00C88AC5 /* xml_compiler+bindings_clang.cpp */; };
 		340D31C7152CB8EF00C88AC5 /* xml_compiler+devicedef.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 340D31BB152CB8EF00C88AC5 /* xml_compiler+devicedef.cpp */; };
@@ -25,7 +25,7 @@
 		340D31B5152CB8EF00C88AC5 /* string.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = string.cpp; path = src/string.cpp; sourceTree = "<group>"; };
 		340D31B6152CB8EF00C88AC5 /* vector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = vector.cpp; path = src/vector.cpp; sourceTree = "<group>"; };
 		340D31B7152CB8EF00C88AC5 /* xml_compiler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xml_compiler.cpp; path = src/xml_compiler.cpp; sourceTree = "<group>"; };
-		340D31B8152CB8EF00C88AC5 /* xml_compiler+appdef.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "xml_compiler+appdef.cpp"; path = "src/xml_compiler+appdef.cpp"; sourceTree = "<group>"; };
+		340D31B8152CB8EF00C88AC5 /* xml_compiler+app.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "xml_compiler+app.cpp"; path = "src/xml_compiler+app.cpp"; sourceTree = "<group>"; };
 		340D31B9152CB8EF00C88AC5 /* xml_compiler+autogen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "xml_compiler+autogen.cpp"; path = "src/xml_compiler+autogen.cpp"; sourceTree = "<group>"; };
 		340D31BA152CB8EF00C88AC5 /* xml_compiler+bindings_clang.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "xml_compiler+bindings_clang.cpp"; path = "src/xml_compiler+bindings_clang.cpp"; sourceTree = "<group>"; };
 		340D31BB152CB8EF00C88AC5 /* xml_compiler+devicedef.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "xml_compiler+devicedef.cpp"; path = "src/xml_compiler+devicedef.cpp"; sourceTree = "<group>"; };
@@ -54,7 +54,7 @@
 				340D31B5152CB8EF00C88AC5 /* string.cpp */,
 				340D31B6152CB8EF00C88AC5 /* vector.cpp */,
 				340D31B7152CB8EF00C88AC5 /* xml_compiler.cpp */,
-				340D31B8152CB8EF00C88AC5 /* xml_compiler+appdef.cpp */,
+				340D31B8152CB8EF00C88AC5 /* xml_compiler+app.cpp */,
 				340D31B9152CB8EF00C88AC5 /* xml_compiler+autogen.cpp */,
 				340D31BA152CB8EF00C88AC5 /* xml_compiler+bindings_clang.cpp */,
 				340D31BB152CB8EF00C88AC5 /* xml_compiler+devicedef.cpp */,
@@ -146,7 +146,7 @@
 				340D31C1152CB8EF00C88AC5 /* string.cpp in Sources */,
 				340D31C2152CB8EF00C88AC5 /* vector.cpp in Sources */,
 				340D31C3152CB8EF00C88AC5 /* xml_compiler.cpp in Sources */,
-				340D31C4152CB8EF00C88AC5 /* xml_compiler+appdef.cpp in Sources */,
+				340D31C4152CB8EF00C88AC5 /* xml_compiler+app.cpp in Sources */,
 				340D31C5152CB8EF00C88AC5 /* xml_compiler+autogen.cpp in Sources */,
 				340D31C6152CB8EF00C88AC5 /* xml_compiler+bindings_clang.cpp in Sources */,
 				340D31C7152CB8EF00C88AC5 /* xml_compiler+devicedef.cpp in Sources */,
