@@ -14,6 +14,13 @@
 namespace pqrs {
   class xml_compiler {
   public:
+#include "pqrs/xml_compiler/detail/replacement.hpp"
+#include "pqrs/xml_compiler/detail/symbol_map.hpp"
+#include "pqrs/xml_compiler/detail/app.hpp"
+#include "pqrs/xml_compiler/detail/device.hpp"
+#include "pqrs/xml_compiler/detail/preferences_node.hpp"
+#include "pqrs/xml_compiler/detail/filter_vector.hpp"
+
     class remapclasses_initialize_vector;
     class error_information;
 
@@ -108,13 +115,6 @@ namespace pqrs {
       const std::string relative_path_;
     };
     typedef std::tr1::shared_ptr<xml_file_path> xml_file_path_ptr;
-
-#include "pqrs/xml_compiler/detail/replacement.hpp"
-#include "pqrs/xml_compiler/detail/symbol_map.hpp"
-#include "pqrs/xml_compiler/detail/app.hpp"
-#include "pqrs/xml_compiler/detail/device.hpp"
-#include "pqrs/xml_compiler/detail/preferences_node.hpp"
-#include "pqrs/xml_compiler/detail/filter_vector.hpp"
 
     // ============================================================
     class remapclasses_initialize_vector {
