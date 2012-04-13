@@ -65,7 +65,7 @@ namespace pqrs {
           value_tag_name = "productid";
 
         } else {
-          throw xml_compiler_logic_error("unknown type in traverse_devicedef_");
+          throw xml_compiler_logic_error("unknown type in device_loader::traverse_");
         }
 
         // ----------------------------------------

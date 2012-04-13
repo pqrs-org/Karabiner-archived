@@ -35,7 +35,15 @@ namespace pqrs {
       }
 
       reload_autogen_();
-      reload_preferences_();
+
+      // preferences_node
+      {
+        preferences_node_loader loader(*this,
+                                       preferences_checkbox_node_tree_,
+                                       preferences_number_node_tree_);
+        loader.reload();
+      }
+
     } catch (std::exception& e) {
       error_information_.set(e.what());
     }
@@ -161,8 +169,10 @@ namespace pqrs {
     // ----------------------------------------
     // replacement
     pqrs::string::replacement r;
-    replacement_loader loader(*this, r);
-    loader.traverse(it.second);
+    if (! it.second.empty()) {
+      replacement_loader loader(*this, r);
+      loader.traverse(it.second);
+    }
 
     for (auto& i : replacement_) {
       if (r.find(i.first) == r.end()) {

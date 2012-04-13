@@ -120,14 +120,18 @@ namespace pqrs {
         ptree_ptr pt_ptr;
         xml_compiler.extract_include_(pt_ptr, it);
         if (pt_ptr) {
-          traverse_item(*pt_ptr, xml_compiler);
+          if (! pt_ptr->empty()) {
+            traverse_item(*pt_ptr, xml_compiler);
+          }
           continue;
         }
       }
 
       // ------------------------------------------------------------
       if (it.first != "item") {
-        traverse_item(it.second, xml_compiler);
+        if (! it.second.empty()) {
+          traverse_item(it.second, xml_compiler);
+        }
 
       } else {
         preferences_node_tree_ptr ptr(new preferences_node_tree(node_));
@@ -135,7 +139,9 @@ namespace pqrs {
         for (auto& child : it.second) {
           (ptr->node_).handle_item_child(child);
         }
-        ptr->traverse_item(it.second, xml_compiler);
+        if (! it.second.empty()) {
+          ptr->traverse_item(it.second, xml_compiler);
+        }
 
         if (! children_) {
           children_ = preferences_node_tree_ptrs_ptr(new preferences_node_tree_ptrs());
@@ -146,7 +152,7 @@ namespace pqrs {
   }
 
   void
-  xml_compiler::reload_preferences_(void)
+  xml_compiler::preferences_node_loader::reload(void) const
   {
     preferences_checkbox_node_tree_.clear();
     preferences_number_node_tree_.clear();
@@ -160,10 +166,12 @@ namespace pqrs {
         xml_file_path_ptr(new xml_file_path(xml_file_path::base_directory::system_xml,  "checkbox.xml")));
 
       std::vector<ptree_ptr> pt_ptrs;
-      read_xmls_(pt_ptrs, xml_file_path_ptrs);
+      xml_compiler_.read_xmls_(pt_ptrs, xml_file_path_ptrs);
 
       for (auto& pt_ptr : pt_ptrs) {
-        preferences_checkbox_node_tree_.traverse_item(*pt_ptr, *this);
+        if (! pt_ptr->empty()) {
+          preferences_checkbox_node_tree_.traverse_item(*pt_ptr, xml_compiler_);
+        }
       }
     }
 
@@ -174,10 +182,12 @@ namespace pqrs {
         xml_file_path_ptr(new xml_file_path(xml_file_path::base_directory::system_xml, "number.xml")));
 
       std::vector<ptree_ptr> pt_ptrs;
-      read_xmls_(pt_ptrs, xml_file_path_ptrs);
+      xml_compiler_.read_xmls_(pt_ptrs, xml_file_path_ptrs);
 
       for (auto& pt_ptr : pt_ptrs) {
-        preferences_number_node_tree_.traverse_item(*pt_ptr, *this);
+        if (! pt_ptr->empty()) {
+          preferences_number_node_tree_.traverse_item(*pt_ptr, xml_compiler_);
+        }
       }
     }
   }
