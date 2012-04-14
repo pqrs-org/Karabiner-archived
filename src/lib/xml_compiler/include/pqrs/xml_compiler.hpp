@@ -25,6 +25,7 @@ namespace pqrs {
 #include "pqrs/xml_compiler/detail/config_index.hpp"
 #include "pqrs/xml_compiler/detail/filter_vector.hpp"
 #include "pqrs/xml_compiler/detail/remapclasses_initialize_vector.hpp"
+#include "pqrs/xml_compiler/detail/loader_wrapper.hpp"
 
     xml_compiler(const std::string& system_xml_directory, const std::string& private_xml_directory) :
       system_xml_directory_(system_xml_directory),

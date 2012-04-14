@@ -60,15 +60,7 @@ namespace pqrs {
           loader.traverse(*private_xml_ptree_ptr);
         }
 
-        // symbol_map.xml
-        {
-          ptree_ptr ptree_ptr;
-          read_xml_(ptree_ptr,
-                    xml_file_path(xml_file_path::base_directory::system_xml,  "symbol_map.xml"));
-          if (ptree_ptr) {
-            loader.traverse(*ptree_ptr);
-          }
-        }
+        loader_wrapper<symbol_map_loader>::traverse_system_xml(*this, loader, "symbol_map.xml");
       }
 
       // app
@@ -79,20 +71,19 @@ namespace pqrs {
           loader.traverse(*private_xml_ptree_ptr);
         }
 
-        // appdef.xml
-        {
-          ptree_ptr ptree_ptr;
-          read_xml_(ptree_ptr,
-                    xml_file_path(xml_file_path::base_directory::system_xml,  "appdef.xml"));
-          if (ptree_ptr) {
-            loader.traverse(*ptree_ptr);
-          }
-        }
+        loader_wrapper<app_loader>::traverse_system_xml(*this, loader, "appdef.xml");
       }
+
       // device
       {
         device_loader loader(*this, symbol_map_);
-        loader.reload();
+
+        if (private_xml_ptree_ptr) {
+          loader.traverse(*private_xml_ptree_ptr);
+        }
+
+        loader_wrapper<device_loader>::traverse_system_xml(*this, loader, "devicevendordef.xml");
+        loader_wrapper<device_loader>::traverse_system_xml(*this, loader, "deviceproductdef.xml");
       }
 
       reload_autogen_();
