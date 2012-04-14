@@ -18,13 +18,13 @@ namespace pqrs {
 
     for (auto& pt_ptr : pt_ptrs) {
       if (! pt_ptr->empty()) {
-        traverse(*pt_ptr);
+        traverse_(*pt_ptr);
       }
     }
   }
 
   void
-  xml_compiler::replacement_loader::traverse(const boost::property_tree::ptree& pt) const
+  xml_compiler::replacement_loader::traverse_(const boost::property_tree::ptree& pt) const
   {
     for (auto& it : pt) {
       // extract include
@@ -33,7 +33,7 @@ namespace pqrs {
         xml_compiler_.extract_include_(pt_ptr, it);
         if (pt_ptr) {
           if (! pt_ptr->empty()) {
-            traverse(*pt_ptr);
+            traverse_(*pt_ptr);
           }
           continue;
         }
@@ -42,7 +42,7 @@ namespace pqrs {
       // ------------------------------------------------------------
       if (it.first != "replacementdef") {
         if (! it.second.empty()) {
-          traverse(it.second);
+          traverse_(it.second);
         }
       } else {
         boost::optional<std::string> name;

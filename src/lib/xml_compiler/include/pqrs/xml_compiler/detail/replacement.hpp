@@ -9,9 +9,12 @@ public:
   {}
 
   void reload(void) const;
-  void traverse(const boost::property_tree::ptree& pt) const;
+  void traverse(const boost::property_tree::ptree& pt) const {
+    traverse_(pt);
+  }
 
 private:
+  void traverse_(const boost::property_tree::ptree& pt) const;
 
   const xml_compiler& xml_compiler_;
   pqrs::string::replacement& replacement_;
