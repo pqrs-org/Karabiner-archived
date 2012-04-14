@@ -107,11 +107,10 @@ namespace pqrs {
 
     pqrs::string::replacement replacement_;
     symbol_map symbol_map_;
+    std::vector<std::tr1::shared_ptr<app> > app_vector_;
     std::tr1::unordered_map<uint32_t, std::string> identifier_map_;
     remapclasses_initialize_vector remapclasses_initialize_vector_;
     uint32_t simultaneous_keycode_index_;
-
-    std::vector<std::tr1::shared_ptr<app> > app_vector_;
 
     preferences_node_tree<preferences_checkbox_node> preferences_checkbox_node_tree_;
     preferences_node_tree<preferences_number_node> preferences_number_node_tree_;
