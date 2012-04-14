@@ -131,6 +131,6 @@ namespace pqrs {
   void
   xml_compiler::preferences_node_loader::traverse_number(const boost::property_tree::ptree& pt)
   {
-    preferences_checkbox_node_tree_.traverse_item(pt, xml_compiler_);
+    preferences_number_node_tree_.traverse_item(pt, xml_compiler_);
   }
 }
