@@ -23,8 +23,7 @@ namespace pqrs {
 #include "pqrs/xml_compiler/detail/device.hpp"
 #include "pqrs/xml_compiler/detail/preferences_node.hpp"
 #include "pqrs/xml_compiler/detail/filter_vector.hpp"
-
-    class remapclasses_initialize_vector;
+#include "pqrs/xml_compiler/detail/remapclasses_initialize_vector.hpp"
 
     xml_compiler(const std::string& system_xml_directory, const std::string& private_xml_directory) :
       system_xml_directory_(system_xml_directory),
@@ -53,29 +52,6 @@ namespace pqrs {
 
     static void normalize_identifier(std::string& identifier);
 
-    // ============================================================
-    class remapclasses_initialize_vector {
-    public:
-      remapclasses_initialize_vector(void);
-      void clear(void);
-      const std::vector<uint32_t>& get(void) const;
-      uint32_t get_config_count(void) const;
-      void add(const std::vector<uint32_t>& v, uint32_t config_index, const std::string& identifier);
-      void freeze(void);
-
-    private:
-      enum {
-        INDEX_OF_FORMAT_VERSION = 0,
-        INDEX_OF_CONFIG_COUNT = 1,
-      };
-
-      std::vector<uint32_t> data_;
-      std::tr1::unordered_map<uint32_t, bool> is_config_index_added_;
-      uint32_t max_config_index_;
-      bool freezed_;
-    };
-
-    // ============================================================
     const preferences_node_tree<preferences_checkbox_node>& get_preferences_checkbox_node_tree(void) const {
       return preferences_checkbox_node_tree_;
     }
