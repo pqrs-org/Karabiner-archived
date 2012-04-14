@@ -3,28 +3,7 @@
 
 namespace pqrs {
   void
-  xml_compiler::replacement_loader::reload(void) const
-  {
-    replacement_.clear();
-
-    std::vector<xml_file_path_ptr> xml_file_path_ptrs;
-    xml_file_path_ptrs.push_back(
-      xml_file_path_ptr(new xml_file_path(xml_file_path::base_directory::private_xml, "private.xml")));
-    xml_file_path_ptrs.push_back(
-      xml_file_path_ptr(new xml_file_path(xml_file_path::base_directory::system_xml,  "replacementdef.xml")));
-
-    std::vector<ptree_ptr> pt_ptrs;
-    xml_compiler_.read_xmls_(pt_ptrs, xml_file_path_ptrs);
-
-    for (auto& pt_ptr : pt_ptrs) {
-      if (! pt_ptr->empty()) {
-        traverse_(*pt_ptr);
-      }
-    }
-  }
-
-  void
-  xml_compiler::replacement_loader::traverse_(const boost::property_tree::ptree& pt) const
+  xml_compiler::replacement_loader::traverse(const boost::property_tree::ptree& pt) const
   {
     for (auto& it : pt) {
       // extract include
@@ -33,7 +12,7 @@ namespace pqrs {
         xml_compiler_.extract_include_(pt_ptr, it);
         if (pt_ptr) {
           if (! pt_ptr->empty()) {
-            traverse_(*pt_ptr);
+            traverse(*pt_ptr);
           }
           continue;
         }
@@ -42,7 +21,7 @@ namespace pqrs {
       // ------------------------------------------------------------
       if (it.first != "replacementdef") {
         if (! it.second.empty()) {
-          traverse_(it.second);
+          traverse(it.second);
         }
       } else {
         boost::optional<std::string> name;

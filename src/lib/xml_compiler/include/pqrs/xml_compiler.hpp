@@ -22,6 +22,7 @@ namespace pqrs {
 #include "pqrs/xml_compiler/detail/app.hpp"
 #include "pqrs/xml_compiler/detail/device.hpp"
 #include "pqrs/xml_compiler/detail/preferences_node.hpp"
+#include "pqrs/xml_compiler/detail/config_index.hpp"
 #include "pqrs/xml_compiler/detail/filter_vector.hpp"
 #include "pqrs/xml_compiler/detail/remapclasses_initialize_vector.hpp"
 
@@ -61,10 +62,18 @@ namespace pqrs {
 
   private:
     typedef std::tr1::shared_ptr<boost::property_tree::ptree> ptree_ptr;
+
     void read_xml_(ptree_ptr& out,
                    const std::string& base_diretory,
                    const std::string& relative_file_path,
                    const pqrs::string::replacement& replacement) const;
+    void read_xml_(ptree_ptr& out,
+                   const xml_file_path& xml_file_path,
+                   const pqrs::string::replacement& replacement) const;
+    void read_xml_(ptree_ptr& out,
+                   const xml_file_path& xml_file_path) const {
+      read_xml_(out, xml_file_path, replacement_);
+    }
     void read_xmls_(std::vector<ptree_ptr>& pt_ptrs,
                     const std::vector<xml_file_path_ptr>& xml_file_path_ptrs) const;
 
