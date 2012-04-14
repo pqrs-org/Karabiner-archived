@@ -13,11 +13,37 @@ namespace pqrs {
     error_information_.clear();
 
     try {
+      // ------------------------------------------------------------
       // replacement
       {
+        replacement_.clear();
         replacement_loader loader(*this, replacement_);
-        loader.reload();
+
+        // private.xml
+        {
+          ptree_ptr ptree_ptr;
+          pqrs::string::replacement dummy; // Use dummy replacement when we read <replacementdef>.
+          read_xml_(ptree_ptr,
+                    xml_file_path(xml_file_path::base_directory::private_xml, "private.xml"),
+                    dummy);
+          if (ptree_ptr) {
+            loader.traverse(*ptree_ptr);
+          }
+        }
+        // replacementdef.xml
+        {
+          ptree_ptr ptree_ptr;
+          pqrs::string::replacement dummy; // Use dummy replacement when we read <replacementdef>.
+          read_xml_(ptree_ptr,
+                    xml_file_path(xml_file_path::base_directory::system_xml,  "replacementdef.xml"),
+                    dummy);
+          if (ptree_ptr) {
+            loader.traverse(*ptree_ptr);
+          }
+        }
       }
+
+      // ------------------------------------------------------------
       // symbol_map
       {
         symbol_map_loader loader(*this, symbol_map_);
@@ -89,6 +115,28 @@ namespace pqrs {
   }
 
   void
+  xml_compiler::read_xml_(ptree_ptr& out,
+                          const xml_file_path& xml_file_path,
+                          const pqrs::string::replacement& replacement) const
+  {
+    switch (xml_file_path.get_base_directory()) {
+      case xml_file_path::base_directory::system_xml:
+        read_xml_(out,
+                  system_xml_directory_,
+                  xml_file_path.get_relative_path(),
+                  replacement);
+        break;
+
+      case xml_file_path::base_directory::private_xml:
+        read_xml_(out,
+                  private_xml_directory_,
+                  xml_file_path.get_relative_path(),
+                  replacement);
+        break;
+    }
+  }
+
+  void
   xml_compiler::read_xmls_(std::vector<ptree_ptr>& pt_ptrs,
                            const std::vector<xml_file_path_ptr>& xml_file_path_ptrs) const
   {
@@ -96,22 +144,7 @@ namespace pqrs {
 
     for (auto& path_ptr : xml_file_path_ptrs) {
       ptree_ptr pt_ptr;
-
-      switch (path_ptr->get_base_directory()) {
-        case xml_file_path::base_directory::system_xml:
-          read_xml_(pt_ptr,
-                    system_xml_directory_,
-                    path_ptr->get_relative_path(),
-                    replacement_);
-          break;
-        case xml_file_path::base_directory::private_xml:
-          read_xml_(pt_ptr,
-                    private_xml_directory_,
-                    path_ptr->get_relative_path(),
-                    replacement_);
-          break;
-      }
-
+      read_xml_(pt_ptr, *path_ptr);
       if (pt_ptr) {
         pt_ptrs.push_back(pt_ptr);
       }
