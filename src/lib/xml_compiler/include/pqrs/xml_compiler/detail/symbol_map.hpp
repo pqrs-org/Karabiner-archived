@@ -28,11 +28,9 @@ public:
     symbol_map_(symbol_map)
   {}
 
-  void reload(void) const;
+  void traverse(const boost::property_tree::ptree& pt) const;
 
 private:
-  void traverse_(const boost::property_tree::ptree& pt) const;
-
   const xml_compiler& xml_compiler_;
   symbol_map& symbol_map_;
 };

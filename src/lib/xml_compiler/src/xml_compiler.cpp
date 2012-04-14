@@ -14,7 +14,7 @@ namespace pqrs {
 
     try {
       // ------------------------------------------------------------
-      // replacement
+      // Loading replacement
       {
         replacement_.clear();
         replacement_loader loader(*this, replacement_);
@@ -44,11 +44,30 @@ namespace pqrs {
       }
 
       // ------------------------------------------------------------
+      // Then, we read private.xml with replacement and loaders share it.
+
+      ptree_ptr private_xml_ptree_ptr;
+      read_xml_(private_xml_ptree_ptr,
+                xml_file_path(xml_file_path::base_directory::private_xml, "private.xml"));
+
       // symbol_map
       {
         symbol_map_loader loader(*this, symbol_map_);
-        loader.reload();
+        if (private_xml_ptree_ptr) {
+          loader.traverse(*private_xml_ptree_ptr);
+        }
+
+        // symbol_map.xml
+        {
+          ptree_ptr ptree_ptr;
+          read_xml_(ptree_ptr,
+                    xml_file_path(xml_file_path::base_directory::system_xml,  "symbol_map.xml"));
+          if (ptree_ptr) {
+            loader.traverse(*ptree_ptr);
+          }
+        }
       }
+
       // app
       {
         app_loader loader(*this, symbol_map_, app_vector_);
