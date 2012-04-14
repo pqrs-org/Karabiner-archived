@@ -11,12 +11,14 @@ namespace pqrs {
   xml_compiler::reload(void)
   {
     error_information_.clear();
+    replacement_.clear();
+    symbol_map_.clear();
+    app_vector_.clear();
 
     try {
       // ------------------------------------------------------------
       // Loading replacement
       {
-        replacement_.clear();
         replacement_loader loader(*this, replacement_);
 
         // private.xml
@@ -53,6 +55,7 @@ namespace pqrs {
       // symbol_map
       {
         symbol_map_loader loader(*this, symbol_map_);
+
         if (private_xml_ptree_ptr) {
           loader.traverse(*private_xml_ptree_ptr);
         }
@@ -71,7 +74,20 @@ namespace pqrs {
       // app
       {
         app_loader loader(*this, symbol_map_, app_vector_);
-        loader.reload();
+
+        if (private_xml_ptree_ptr) {
+          loader.traverse(*private_xml_ptree_ptr);
+        }
+
+        // appdef.xml
+        {
+          ptree_ptr ptree_ptr;
+          read_xml_(ptree_ptr,
+                    xml_file_path(xml_file_path::base_directory::system_xml,  "appdef.xml"));
+          if (ptree_ptr) {
+            loader.traverse(*ptree_ptr);
+          }
+        }
       }
       // device
       {
