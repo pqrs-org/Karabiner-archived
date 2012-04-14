@@ -14,6 +14,8 @@ namespace pqrs {
     replacement_.clear();
     symbol_map_.clear();
     app_vector_.clear();
+    preferences_checkbox_node_tree_.clear();
+    preferences_number_node_tree_.clear();
 
     try {
       // ------------------------------------------------------------
@@ -51,6 +53,9 @@ namespace pqrs {
       ptree_ptr private_xml_ptree_ptr;
       read_xml_(private_xml_ptree_ptr,
                 xml_file_path(xml_file_path::base_directory::private_xml, "private.xml"));
+      if (private_xml_ptree_ptr && private_xml_ptree_ptr->empty()) {
+        private_xml_ptree_ptr.reset();
+      }
 
       // symbol_map
       {
@@ -86,14 +91,40 @@ namespace pqrs {
         loader_wrapper<device_loader>::traverse_system_xml(*this, loader, "deviceproductdef.xml");
       }
 
-      reload_autogen_();
-
-      // preferences_node
+      // config_index, remapclasses_initialize_vector, preferences_node
       {
-        preferences_node_loader loader(*this,
-                                       preferences_checkbox_node_tree_,
-                                       preferences_number_node_tree_);
-        loader.reload();
+        ptree_ptr checkbox_xml_ptree_ptr;
+        read_xml_(checkbox_xml_ptree_ptr,
+                  xml_file_path(xml_file_path::base_directory::system_xml, "checkbox.xml"));
+
+        ptree_ptr number_xml_ptree_ptr;
+        read_xml_(number_xml_ptree_ptr,
+                  xml_file_path(xml_file_path::base_directory::system_xml, "number.xml"));
+
+        // config_index
+        {}
+        // remapclasses_initialize_vector
+        {
+          reload_autogen_();
+        }
+        // preferences_node
+        {
+          preferences_node_loader loader(*this,
+                                         preferences_checkbox_node_tree_,
+                                         preferences_number_node_tree_);
+
+          if (private_xml_ptree_ptr) {
+            loader.traverse_checkbox(*private_xml_ptree_ptr);
+          }
+
+          if (checkbox_xml_ptree_ptr) {
+            loader.traverse_checkbox(*checkbox_xml_ptree_ptr);
+          }
+
+          if (number_xml_ptree_ptr) {
+            loader.traverse_number(*number_xml_ptree_ptr);
+          }
+        }
       }
 
     } catch (std::exception& e) {

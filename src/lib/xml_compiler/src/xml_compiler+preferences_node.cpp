@@ -2,10 +2,6 @@
 #include "pqrs/xml_compiler.hpp"
 
 namespace pqrs {
-  xml_compiler::preferences_node::preferences_node(void) :
-    name_line_count_(1)
-  {}
-
   bool
   xml_compiler::preferences_node::handle_name_and_appendix(const boost::property_tree::ptree::value_type& it)
   {
@@ -32,13 +28,6 @@ namespace pqrs {
     return false;
   }
 
-  xml_compiler::preferences_checkbox_node::preferences_checkbox_node(void)
-  {}
-
-  xml_compiler::preferences_checkbox_node::preferences_checkbox_node(const preferences_checkbox_node& parent) :
-    name_for_filter_(parent.name_for_filter_ + " ")
-  {}
-
   void
   xml_compiler::preferences_checkbox_node::handle_item_child(const boost::property_tree::ptree::value_type& it)
   {
@@ -50,15 +39,6 @@ namespace pqrs {
       identifier_ = boost::trim_copy(it.second.data());
     }
   }
-
-  xml_compiler::preferences_number_node::preferences_number_node(void) :
-    default_value_(0),
-    step_(1)
-  {}
-
-  xml_compiler::preferences_number_node::preferences_number_node(const preferences_number_node& /*parent*/) :
-    preferences_number_node()
-  {}
 
   void
   xml_compiler::preferences_number_node::handle_item_child(const boost::property_tree::ptree::value_type& it)
@@ -97,15 +77,6 @@ namespace pqrs {
           base_unit_ = boost::trim_copy(*value);
         }
       }
-    }
-  }
-
-  template <class T>
-  void
-  xml_compiler::preferences_node_tree<T>::clear(void)
-  {
-    if (children_) {
-      children_->clear();
     }
   }
 
@@ -152,43 +123,14 @@ namespace pqrs {
   }
 
   void
-  xml_compiler::preferences_node_loader::reload(void) const
+  xml_compiler::preferences_node_loader::traverse_checkbox(const boost::property_tree::ptree& pt)
   {
-    preferences_checkbox_node_tree_.clear();
-    preferences_number_node_tree_.clear();
+    preferences_checkbox_node_tree_.traverse_item(pt, xml_compiler_);
+  }
 
-    // checkbox
-    {
-      std::vector<xml_file_path_ptr> xml_file_path_ptrs;
-      xml_file_path_ptrs.push_back(
-        xml_file_path_ptr(new xml_file_path(xml_file_path::base_directory::private_xml, "private.xml")));
-      xml_file_path_ptrs.push_back(
-        xml_file_path_ptr(new xml_file_path(xml_file_path::base_directory::system_xml,  "checkbox.xml")));
-
-      std::vector<ptree_ptr> pt_ptrs;
-      xml_compiler_.read_xmls_(pt_ptrs, xml_file_path_ptrs);
-
-      for (auto& pt_ptr : pt_ptrs) {
-        if (! pt_ptr->empty()) {
-          preferences_checkbox_node_tree_.traverse_item(*pt_ptr, xml_compiler_);
-        }
-      }
-    }
-
-    // number
-    {
-      std::vector<xml_file_path_ptr> xml_file_path_ptrs;
-      xml_file_path_ptrs.push_back(
-        xml_file_path_ptr(new xml_file_path(xml_file_path::base_directory::system_xml, "number.xml")));
-
-      std::vector<ptree_ptr> pt_ptrs;
-      xml_compiler_.read_xmls_(pt_ptrs, xml_file_path_ptrs);
-
-      for (auto& pt_ptr : pt_ptrs) {
-        if (! pt_ptr->empty()) {
-          preferences_number_node_tree_.traverse_item(*pt_ptr, xml_compiler_);
-        }
-      }
-    }
+  void
+  xml_compiler::preferences_node_loader::traverse_number(const boost::property_tree::ptree& pt)
+  {
+    preferences_checkbox_node_tree_.traverse_item(pt, xml_compiler_);
   }
 }
