@@ -22,7 +22,6 @@ namespace pqrs {
 #include "pqrs/xml_compiler/detail/app.hpp"
 #include "pqrs/xml_compiler/detail/device.hpp"
 #include "pqrs/xml_compiler/detail/preferences_node.hpp"
-#include "pqrs/xml_compiler/detail/config_index.hpp"
 #include "pqrs/xml_compiler/detail/filter_vector.hpp"
 #include "pqrs/xml_compiler/detail/remapclasses_initialize_vector.hpp"
 #include "pqrs/xml_compiler/detail/loader_wrapper.hpp"
