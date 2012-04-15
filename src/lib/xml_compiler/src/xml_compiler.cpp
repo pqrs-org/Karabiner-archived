@@ -104,8 +104,6 @@ namespace pqrs {
         read_xml_(number_xml_ptree_ptr,
                   xml_file_path(xml_file_path::base_directory::system_xml, "number.xml"));
 
-        // config_index
-        {}
         // remapclasses_initialize_vector
         {
           // ----------------------------------------
