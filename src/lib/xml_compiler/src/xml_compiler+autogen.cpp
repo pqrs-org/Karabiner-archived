@@ -8,44 +8,6 @@
 #include "pqrs/vector.hpp"
 
 namespace pqrs {
-  void
-  xml_compiler::reload_autogen_(void)
-  {
-    identifier_map_.clear();
-    remapclasses_initialize_vector_.clear();
-    simultaneous_keycode_index_ = 0;
-
-    std::vector<xml_file_path_ptr> xml_file_path_ptrs;
-    xml_file_path_ptrs.push_back(
-      xml_file_path_ptr(new xml_file_path(xml_file_path::base_directory::private_xml, "private.xml")));
-    xml_file_path_ptrs.push_back(
-      xml_file_path_ptr(new xml_file_path(xml_file_path::base_directory::system_xml,  "checkbox.xml")));
-
-    std::vector<ptree_ptr> pt_ptrs;
-    read_xmls_(pt_ptrs, xml_file_path_ptrs);
-
-    // ----------------------------------------
-    // add_config_index_and_keycode_to_symbol_map_
-    //   1st loop: <identifier>notsave.*</identifier>
-    //   2nd loop: other <identifier>
-    //
-    // We need to assign higher priority to notsave.* settings.
-    // So, adding config_index by 2steps.
-    for (auto& pt_ptr : pt_ptrs) {
-      add_config_index_and_keycode_to_symbol_map_(*pt_ptr, "", true);
-    }
-    for (auto& pt_ptr : pt_ptrs) {
-      add_config_index_and_keycode_to_symbol_map_(*pt_ptr, "", false);
-    }
-
-    // ----------------------------------------
-    for (auto& pt_ptr : pt_ptrs) {
-      traverse_identifier_(*pt_ptr, "");
-    }
-
-    remapclasses_initialize_vector_.freeze();
-  }
-
   bool
   xml_compiler::valid_identifier_(const std::string& identifier, const std::string& parent_tag_name)
   {

@@ -81,7 +81,6 @@ namespace pqrs {
     void extract_include_(ptree_ptr& out,
                           const boost::property_tree::ptree::value_type& it) const;
 
-    void reload_autogen_(void);
     bool valid_identifier_(const std::string& identifier, const std::string& parent_tag_name);
     void add_config_index_and_keycode_to_symbol_map_(const boost::property_tree::ptree& pt,
                                                      const std::string& parent_tag_name,
