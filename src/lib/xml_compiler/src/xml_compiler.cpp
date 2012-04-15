@@ -16,6 +16,9 @@ namespace pqrs {
     app_vector_.clear();
     preferences_checkbox_node_tree_.clear();
     preferences_number_node_tree_.clear();
+    identifier_map_.clear();
+    remapclasses_initialize_vector_.clear();
+    simultaneous_keycode_index_ = 0;
 
     try {
       // ------------------------------------------------------------
@@ -105,7 +108,36 @@ namespace pqrs {
         {}
         // remapclasses_initialize_vector
         {
-          reload_autogen_();
+          // ----------------------------------------
+          // add_config_index_and_keycode_to_symbol_map_
+          //   1st loop: <identifier>notsave.*</identifier>
+          //   2nd loop: other <identifier>
+          //
+          // We need to assign higher priority to notsave.* settings.
+          // So, adding config_index by 2steps.
+          if (private_xml_ptree_ptr) {
+            add_config_index_and_keycode_to_symbol_map_(*private_xml_ptree_ptr, "", true);
+          }
+          if (checkbox_xml_ptree_ptr) {
+            add_config_index_and_keycode_to_symbol_map_(*checkbox_xml_ptree_ptr, "", true);
+          }
+
+          if (private_xml_ptree_ptr) {
+            add_config_index_and_keycode_to_symbol_map_(*private_xml_ptree_ptr, "", false);
+          }
+          if (checkbox_xml_ptree_ptr) {
+            add_config_index_and_keycode_to_symbol_map_(*checkbox_xml_ptree_ptr, "", false);
+          }
+
+          // ----------------------------------------
+          if (private_xml_ptree_ptr) {
+            traverse_identifier_(*private_xml_ptree_ptr, "");
+          }
+          if (checkbox_xml_ptree_ptr) {
+            traverse_identifier_(*checkbox_xml_ptree_ptr, "");
+          }
+
+          remapclasses_initialize_vector_.freeze();
         }
         // preferences_node
         {
