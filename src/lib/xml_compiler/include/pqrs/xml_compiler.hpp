@@ -51,8 +51,6 @@ namespace pqrs {
     boost::optional<const std::string&> get_identifier(int config_index) const;
     uint32_t get_appid(const std::string& application_identifier) const;
 
-    static void normalize_identifier(std::string& identifier);
-
     const preferences_node_tree<preferences_checkbox_node>& get_preferences_checkbox_node_tree(void) const {
       return preferences_checkbox_node_tree_;
     }
@@ -74,16 +72,13 @@ namespace pqrs {
                    const xml_file_path& xml_file_path) const {
       read_xml_(out, xml_file_path, replacement_);
     }
-    void read_xmls_(std::vector<ptree_ptr>& pt_ptrs,
-                    const std::vector<xml_file_path_ptr>& xml_file_path_ptrs) const;
 
     void extract_include_(ptree_ptr& out,
                           const boost::property_tree::ptree::value_type& it) const;
 
-    bool valid_identifier_(const std::string& identifier, const std::string& parent_tag_name);
-    void add_config_index_and_keycode_to_symbol_map_(const boost::property_tree::ptree& pt,
-                                                     const std::string& parent_tag_name,
-                                                     bool handle_notsave);
+    static void normalize_identifier_(std::string& identifier);
+    bool valid_identifier_(const std::string& identifier, const std::string* parent_tag_name) const;
+
     void traverse_identifier_(const boost::property_tree::ptree& pt,
                               const std::string& parent_tag_name);
     void traverse_autogen_(const boost::property_tree::ptree& pt,

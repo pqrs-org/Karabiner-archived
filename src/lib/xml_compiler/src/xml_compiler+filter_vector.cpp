@@ -57,7 +57,7 @@ namespace pqrs {
       uint32_t filter_value = 0;
       for (auto& i : items) {
         std::string key = prefix + i;
-        normalize_identifier(key);
+        normalize_identifier_(key);
         filter_value |= symbol_map.get(key);
       }
       data_.push_back(filter_value);
