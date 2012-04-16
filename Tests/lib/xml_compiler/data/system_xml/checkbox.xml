@@ -19,5 +19,11 @@
       <identifier>remap.return2tab</identifier>
       <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::TAB</autogen>
     </item>
+
+    <item>
+      <name>notsave</name>
+      <identifier>notsave.remap_sample</identifier>
+      <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::RETURN</autogen>
+    </item>
   </list>
 </root>
