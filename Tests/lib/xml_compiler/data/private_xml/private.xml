@@ -120,4 +120,10 @@
     <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
     <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::SPACE</autogen>
   </item>
+
+  <item>
+    <name>notsave</name>
+    <identifier>notsave.private_sample</identifier>
+    <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::RETURN</autogen>
+  </item>
 </root>

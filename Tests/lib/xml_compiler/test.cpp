@@ -9,9 +9,26 @@ TEST(pqrs_xml_compiler, reload)
   pqrs::xml_compiler xml_compiler("data/system_xml", "data/private_xml");
   xml_compiler.reload();
   EXPECT_EQ(0, xml_compiler.get_error_information().get_count());
+
+  EXPECT_EQ(boost::optional<uint32_t>(0), xml_compiler.get_symbol_map_value("ConfigIndex::notsave_private_sample"));
+  EXPECT_EQ(boost::optional<uint32_t>(1), xml_compiler.get_symbol_map_value("ConfigIndex::notsave_passthrough"));
+  EXPECT_EQ(boost::optional<uint32_t>(2), xml_compiler.get_symbol_map_value("ConfigIndex::notsave_remap_sample"));
+  EXPECT_EQ(boost::optional<uint32_t>(3), xml_compiler.get_symbol_map_value("ConfigIndex::private_include_test"));
+  EXPECT_EQ(boost::optional<uint32_t>(4), xml_compiler.get_symbol_map_value("ConfigIndex::private_replacement"));
+
   EXPECT_EQ(boost::optional<uint32_t>(123), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST_123"));
   EXPECT_EQ(boost::optional<uint32_t>(456), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST_456"));
   EXPECT_EQ(boost::optional<uint32_t>(123), xml_compiler.get_symbol_map_value("KeyCode::MY_LANG_KEY"));
+
+  EXPECT_EQ(boost::optional<uint32_t>(1191),
+            xml_compiler.get_symbol_map_value("KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough"));
+  EXPECT_EQ(boost::optional<uint32_t>(1192),
+            xml_compiler.get_symbol_map_value("KeyCode::VK_CONFIG_FORCE_ON_notsave_passthrough"));
+  EXPECT_EQ(boost::optional<uint32_t>(1193),
+            xml_compiler.get_symbol_map_value("KeyCode::VK_CONFIG_FORCE_OFF_notsave_passthrough"));
+  EXPECT_EQ(boost::optional<uint32_t>(1194),
+            xml_compiler.get_symbol_map_value("KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_passthrough"));
+
   EXPECT_EQ(boost::optional<uint32_t>(2), xml_compiler.get_symbol_map_value("ConsumerKeyCode::BRIGHTNESS_UP"));
 
   EXPECT_EQ(boost::optional<uint32_t>(5), xml_compiler.get_symbol_map_value("ApplicationType::VI"));
