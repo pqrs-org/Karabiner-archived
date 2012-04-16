@@ -14,7 +14,8 @@ namespace {
   }
 
   void
-  dump_tree(const pqrs::xml_compiler::preferences_node_tree<pqrs::xml_compiler::preferences_checkbox_node>& node_tree)
+  dump_tree(const pqrs::xml_compiler::preferences_node_tree<pqrs::xml_compiler::preferences_checkbox_node>& node_tree,
+            bool dump_all)
   {
     auto children_ptr = node_tree.get_children();
     if (children_ptr) {
@@ -29,7 +30,12 @@ namespace {
         escapeHTML(name);
         std::cout << "<li>" << name << "</li>" << std::endl;
 
-        dump_tree(*it);
+        if (dump_all) {
+          std::cout << "<identifier>" << node.get_identifier() << "</identifier>" << std::endl;
+          std::cout << "<name_for_filter>" << node.get_name_for_filter() << "</name_for_filter>" << std::endl;
+        }
+
+        dump_tree(*it, dump_all);
 
         auto& identifier = node.get_identifier();
         if (! identifier.empty()) {
@@ -89,7 +95,11 @@ main(int argc, const char* argv[])
     }
 
   } else if (command == "dump_tree") {
-    dump_tree(xml_compiler.get_preferences_checkbox_node_tree());
+    dump_tree(xml_compiler.get_preferences_checkbox_node_tree(), false);
+    std::cout << "Total items: " << total_identifier_count_ << std::endl;
+
+  } else if (command == "dump_tree_all") {
+    dump_tree(xml_compiler.get_preferences_checkbox_node_tree(), true);
     std::cout << "Total items: " << total_identifier_count_ << std::endl;
 
   } else if (command == "dump_number") {
