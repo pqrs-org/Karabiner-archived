@@ -190,6 +190,7 @@ namespace pqrs {
     to_uint32_t(const char* string)
     {
       if (! string) return boost::none;
+      if (! *string) return boost::none;
 
       try {
         if (string[0] == '0') {
