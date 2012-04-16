@@ -24,6 +24,12 @@ namespace pqrs {
         }
       }
 
+      // Hack for speed improvement.
+      // We can stop traversing when we met <autogen>.
+      if (it.first == "autogen") {
+        continue;
+      }
+
       if (it.first != "identifier") {
         if (! it.second.empty()) {
           const std::string* saved_parent_tag_name = parent_tag_name_;
