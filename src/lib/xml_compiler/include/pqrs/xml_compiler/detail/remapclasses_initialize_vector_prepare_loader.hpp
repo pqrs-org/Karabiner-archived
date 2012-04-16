@@ -27,15 +27,8 @@ public:
   void traverse(const boost::property_tree::ptree& pt) {
     for (auto& it : pt) {
       // extract include
-      {
-        ptree_ptr pt_ptr;
-        xml_compiler_.extract_include_(pt_ptr, it);
-        if (pt_ptr) {
-          if (! pt_ptr->empty()) {
-            traverse(*pt_ptr);
-          }
-          continue;
-        }
+      if (loader_wrapper<remapclasses_initialize_vector_prepare_loader>::extract_include(*this, xml_compiler_, it)) {
+        continue;
       }
 
       // Hack for speed improvement.
