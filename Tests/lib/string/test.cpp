@@ -93,6 +93,10 @@ TEST(pqrs_string, to_uint32_t)
   EXPECT_TRUE(actual);
   EXPECT_EQ(static_cast<uint32_t>(123456), *actual);
 
+  actual = pqrs::string::to_uint32_t("0");
+  EXPECT_TRUE(actual);
+  EXPECT_EQ(static_cast<uint32_t>(0), *actual);
+
   // oct
   actual = pqrs::string::to_uint32_t("0100");
   EXPECT_TRUE(actual);
@@ -102,6 +106,9 @@ TEST(pqrs_string, to_uint32_t)
   actual = pqrs::string::to_uint32_t("0x123456");
   EXPECT_TRUE(actual);
   EXPECT_EQ(static_cast<uint32_t>(1193046), *actual);
+
+  actual = pqrs::string::to_uint32_t("");
+  EXPECT_FALSE(actual);
 
   actual = pqrs::string::to_uint32_t("0xG");
   EXPECT_FALSE(actual);
