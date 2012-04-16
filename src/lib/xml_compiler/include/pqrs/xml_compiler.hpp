@@ -23,6 +23,7 @@ namespace pqrs {
 #include "pqrs/xml_compiler/detail/app.hpp"
 #include "pqrs/xml_compiler/detail/device.hpp"
 #include "pqrs/xml_compiler/detail/preferences_node.hpp"
+#include "pqrs/xml_compiler/detail/essential_configuration.hpp"
 #include "pqrs/xml_compiler/detail/filter_vector.hpp"
 #include "pqrs/xml_compiler/detail/remapclasses_initialize_vector.hpp"
 #include "pqrs/xml_compiler/detail/remapclasses_initialize_vector_prepare_loader.hpp"
@@ -52,6 +53,11 @@ namespace pqrs {
 
     boost::optional<const std::string&> get_identifier(int config_index) const;
     uint32_t get_appid(const std::string& application_identifier) const;
+
+    boost::optional<const essential_configuration&> get_essential_configuration(size_t index) const {
+      if (index >= essential_configurations_.size()) return boost::none;
+      return *(essential_configurations_[index]);
+    }
 
     const preferences_node_tree<preferences_checkbox_node>& get_preferences_checkbox_node_tree(void) const {
       return preferences_checkbox_node_tree_;
@@ -105,6 +111,7 @@ namespace pqrs {
     symbol_map symbol_map_;
     std::vector<std::tr1::shared_ptr<app> > app_vector_;
     std::tr1::unordered_map<uint32_t, std::string> identifier_map_;
+    std::vector<std::tr1::shared_ptr<essential_configuration> > essential_configurations_;
     remapclasses_initialize_vector remapclasses_initialize_vector_;
     uint32_t simultaneous_keycode_index_;
 

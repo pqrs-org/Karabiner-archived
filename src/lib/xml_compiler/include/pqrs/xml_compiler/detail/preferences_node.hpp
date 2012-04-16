@@ -3,21 +3,23 @@
 class preferences_node {
 public:
   preferences_node(void) :
-    name_line_count_(1)
+    name_line_count_(1),
+    default_value_(0)
   {}
   virtual ~preferences_node(void) {}
 
   const std::string& get_name(void) const { return name_; }
   int get_name_line_count(void) const { return name_line_count_; }
   const std::string& get_identifier(void) const { return identifier_; }
+  int get_default_value(void) const { return default_value_; }
 
 protected:
   bool handle_name_and_appendix_(const boost::property_tree::ptree::value_type& it);
 
   std::string name_;
   int name_line_count_;
-
   std::string identifier_;
+  int default_value_;
 };
 
 class preferences_checkbox_node : public preferences_node {
@@ -38,7 +40,6 @@ private:
 class preferences_number_node : public preferences_node {
 public:
   preferences_number_node(void) :
-    default_value_(0),
     step_(1)
   {}
   preferences_number_node(const preferences_number_node& /*parent_node*/) :
@@ -47,12 +48,10 @@ public:
 
   void handle_item_child(const boost::property_tree::ptree::value_type& it);
 
-  int get_default_value(void) const { return default_value_; }
   int get_step(void) const { return step_; }
   const std::string& get_base_unit(void) const { return base_unit_; }
 
 private:
-  int default_value_;
   int step_;
   std::string base_unit_;
 };
