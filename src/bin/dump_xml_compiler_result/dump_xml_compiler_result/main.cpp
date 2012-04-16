@@ -112,6 +112,19 @@ main(int argc, const char* argv[])
 
       std::cout << *identifier << std::endl;
     }
+
+  } else if (command == "output_bridge_essential_config_index_hpp") {
+    for (size_t i = 0;; ++i) {
+      auto essential_configuration = xml_compiler.get_essential_configuration(i);
+      if (! essential_configuration) {
+        std::cout << "BRIDGE_ESSENTIAL_CONFIG_INDEX__END__ = " << i << std::endl;
+        break;
+      }
+
+      std::cout << "BRIDGE_ESSENTIAL_CONFIG_INDEX_" << essential_configuration->get_identifier()
+                << " = " << i << ","
+                << std::endl;
+    }
   }
 
   return 0;

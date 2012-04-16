@@ -14,11 +14,12 @@ namespace pqrs {
     replacement_.clear();
     symbol_map_.clear();
     app_vector_.clear();
-    preferences_checkbox_node_tree_.clear();
-    preferences_number_node_tree_.clear();
     identifier_map_.clear();
+    essential_configurations_.clear();
     remapclasses_initialize_vector_.clear();
     simultaneous_keycode_index_ = 0;
+    preferences_checkbox_node_tree_.clear();
+    preferences_number_node_tree_.clear();
 
     try {
       // ------------------------------------------------------------
@@ -108,7 +109,16 @@ namespace pqrs {
         {
           // prepare
           {
-            remapclasses_initialize_vector_prepare_loader<preferences_node_tree<preferences_checkbox_node> > loader(*this, symbol_map_, identifier_map_, &preferences_checkbox_node_tree_);
+            remapclasses_initialize_vector_prepare_loader<preferences_node_tree<preferences_number_node> > loader(*this, symbol_map_, identifier_map_, essential_configurations_, &preferences_number_node_tree_);
+
+            if (number_xml_ptree_ptr) {
+              loader.traverse(*number_xml_ptree_ptr);
+              loader.fixup();
+            }
+            loader.cleanup();
+          }
+          {
+            remapclasses_initialize_vector_prepare_loader<preferences_node_tree<preferences_checkbox_node> > loader(*this, symbol_map_, identifier_map_, essential_configurations_, &preferences_checkbox_node_tree_);
 
             if (private_xml_ptree_ptr) {
               loader.traverse(*private_xml_ptree_ptr);
@@ -116,15 +126,6 @@ namespace pqrs {
             }
             if (checkbox_xml_ptree_ptr) {
               loader.traverse(*checkbox_xml_ptree_ptr);
-              loader.fixup();
-            }
-            loader.cleanup();
-          }
-          {
-            remapclasses_initialize_vector_prepare_loader<preferences_node_tree<preferences_number_node> > loader(*this, symbol_map_, identifier_map_, &preferences_number_node_tree_);
-
-            if (number_xml_ptree_ptr) {
-              loader.traverse(*number_xml_ptree_ptr);
               loader.fixup();
             }
             loader.cleanup();

@@ -43,3 +43,9 @@ dump_identifier_except_essential:
 	/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app/Contents/Resources \
 	/noexistspath \
 	dump_identifier_except_essential
+
+output_bridge_essential_config_index_hpp:
+	@./build/Release/dump_xml_compiler_result \
+	/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app/Contents/Resources \
+	/noexistspath \
+	output_bridge_essential_config_index_hpp

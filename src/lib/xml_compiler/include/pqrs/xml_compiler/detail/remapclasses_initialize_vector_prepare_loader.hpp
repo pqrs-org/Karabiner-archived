@@ -8,6 +8,7 @@
 //   - ConfigIndex (for <only>,<not> filter)
 //   - identifier_map_
 //   - KeyCode::VK_CONFIG_*
+//   - essential_configurations
 //   - preferences_node_tree
 //
 template <class T_preferences_node_tree>
@@ -16,10 +17,12 @@ public:
   remapclasses_initialize_vector_prepare_loader(const xml_compiler& xml_compiler,
                                                 symbol_map& symbol_map,
                                                 std::tr1::unordered_map<uint32_t, std::string>& identifier_map,
+                                                std::vector<std::tr1::shared_ptr<essential_configuration> >& essential_configurations,
                                                 T_preferences_node_tree* preferences_node_tree) :
     xml_compiler_(xml_compiler),
     symbol_map_(symbol_map),
     identifier_map_(identifier_map),
+    essential_configurations_(essential_configurations),
     preferences_node_tree_(preferences_node_tree),
     root_preferences_node_tree_(preferences_node_tree)
   {}
@@ -54,15 +57,16 @@ public:
             ptr->handle_item_child(child);
 
             if (child.first == "identifier") {
-              auto identifier = boost::trim_copy(child.second.data());
-
-              if (xml_compiler_.valid_identifier_(identifier, it.first)) {
+              auto raw_identifier = boost::trim_copy(child.second.data());
+              if (xml_compiler_.valid_identifier_(raw_identifier, it.first)) {
+                auto identifier = raw_identifier;
                 normalize_identifier_(identifier);
 
                 // ----------------------------------------
-                // Do not treat essentials.
                 auto attr_essential = child.second.get_optional<std::string>("<xmlattr>.essential");
                 if (attr_essential) {
+                  essential_configurations_.push_back(std::tr1::shared_ptr<essential_configuration>(new essential_configuration(ptr->get_node())));
+                  // Do not treat essentials anymore.
                   continue;
                 }
 
@@ -130,6 +134,7 @@ private:
   const xml_compiler& xml_compiler_;
   symbol_map& symbol_map_;
   std::tr1::unordered_map<uint32_t, std::string>& identifier_map_;
+  std::vector<std::tr1::shared_ptr<essential_configuration> >& essential_configurations_;
   T_preferences_node_tree* preferences_node_tree_;
   T_preferences_node_tree* const root_preferences_node_tree_;
 
