@@ -88,15 +88,8 @@ namespace pqrs {
   {
     for (auto& it : pt) {
       // extract include
-      {
-        ptree_ptr pt_ptr;
-        xml_compiler_.extract_include_(pt_ptr, it);
-        if (pt_ptr) {
-          if (! pt_ptr->empty()) {
-            traverse(*pt_ptr);
-          }
-          continue;
-        }
+      if (loader_wrapper<const symbol_map_loader>::extract_include(*this, xml_compiler_, it)) {
+        continue;
       }
 
       // ------------------------------------------------------------
