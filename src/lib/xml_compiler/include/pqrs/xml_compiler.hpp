@@ -6,6 +6,7 @@
 #include <vector>
 #include <tr1/memory>
 #include <tr1/unordered_map>
+#include <boost/algorithm/string.hpp>
 #include <boost/format.hpp>
 #include <boost/optional.hpp>
 #include <boost/property_tree/ptree.hpp>
@@ -77,7 +78,7 @@ namespace pqrs {
                           const boost::property_tree::ptree::value_type& it) const;
 
     static void normalize_identifier_(std::string& identifier);
-    bool valid_identifier_(const std::string& identifier, const std::string* parent_tag_name) const;
+    bool valid_identifier_(const std::string& identifier, const std::string& parent_tag_name) const;
 
     void traverse_identifier_(const boost::property_tree::ptree& pt,
                               const std::string& parent_tag_name);

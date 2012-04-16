@@ -21,7 +21,7 @@ pqrs_xml_compiler_terminate(pqrs_xml_compiler** out)
 {
   if (out && *out) {
     delete reinterpret_cast<pqrs::xml_compiler*>(*out);
-    *out = NULL;
+    *out = nullptr;
   }
 }
 
@@ -40,7 +40,7 @@ const char*
 pqrs_xml_compiler_get_error_message(const pqrs_xml_compiler* p)
 {
   const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
-  if (! xml_compiler) return NULL;
+  if (! xml_compiler) return nullptr;
 
   return (xml_compiler->get_error_information()).get_message().c_str();
 }
@@ -71,10 +71,10 @@ const char*
 pqrs_xml_compiler_get_identifier(const pqrs_xml_compiler* p, int config_index)
 {
   const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
-  if (! xml_compiler) return NULL;
+  if (! xml_compiler) return nullptr;
 
   auto v = xml_compiler->get_identifier(config_index);
-  if (! v) return NULL;
+  if (! v) return nullptr;
 
   return v->c_str();
 }
@@ -93,7 +93,7 @@ const uint32_t*
 pqrs_xml_compiler_get_remapclasses_initialize_vector_data(const pqrs_xml_compiler* p)
 {
   const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
-  if (! xml_compiler) return NULL;
+  if (! xml_compiler) return nullptr;
 
   auto v = (xml_compiler->get_remapclasses_initialize_vector()).get();
   return &(v[0]);
@@ -123,7 +123,7 @@ const pqrs_xml_compiler_preferences_checkbox_node_tree*
 pqrs_xml_compiler_get_preferences_checkbox_node_tree_root(const pqrs_xml_compiler* p)
 {
   const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
-  if (! xml_compiler) return NULL;
+  if (! xml_compiler) return nullptr;
 
   return reinterpret_cast<const pqrs_xml_compiler_preferences_checkbox_node_tree*>(&(xml_compiler->get_preferences_checkbox_node_tree()));
 }
@@ -151,20 +151,20 @@ pqrs_xml_compiler_get_preferences_checkbox_node_tree_child(const pqrs_xml_compil
                                                            size_t index)
 {
   auto node_tree = cast_to_preferences_checkbox_node_tree(p);
-  if (! node_tree) return NULL;
+  if (! node_tree) return nullptr;
 
   auto children = node_tree->get_children();
-  if (! children) return NULL;
-  if (index >= children->size()) return NULL;
+  if (! children) return nullptr;
+  if (index >= children->size()) return nullptr;
 
-  return reinterpret_cast<pqrs_xml_compiler_preferences_checkbox_node_tree*>(((*children)[index]).get());
+  return reinterpret_cast<const pqrs_xml_compiler_preferences_checkbox_node_tree*>(((*children)[index]).get());
 }
 
 const char*
 pqrs_xml_compiler_get_preferences_checkbox_node_tree_name(const pqrs_xml_compiler_preferences_checkbox_node_tree* p)
 {
   auto node_tree = cast_to_preferences_checkbox_node_tree(p);
-  if (! node_tree) return NULL;
+  if (! node_tree) return nullptr;
 
   return (node_tree->get_node()).get_name().c_str();
 }
@@ -182,7 +182,7 @@ const char*
 pqrs_xml_compiler_get_preferences_checkbox_node_tree_name_for_filter(const pqrs_xml_compiler_preferences_checkbox_node_tree* p)
 {
   auto node_tree = cast_to_preferences_checkbox_node_tree(p);
-  if (! node_tree) return NULL;
+  if (! node_tree) return nullptr;
 
   return (node_tree->get_node()).get_name_for_filter().c_str();
 }
@@ -191,10 +191,10 @@ const char*
 pqrs_xml_compiler_get_preferences_checkbox_node_tree_identifier(const pqrs_xml_compiler_preferences_checkbox_node_tree* p)
 {
   auto node_tree = cast_to_preferences_checkbox_node_tree(p);
-  if (! node_tree) return NULL;
+  if (! node_tree) return nullptr;
 
   auto& identifier = (node_tree->get_node()).get_identifier();
-  if (identifier.empty()) return NULL;
+  if (identifier.empty()) return nullptr;
 
   return identifier.c_str();
 }
@@ -204,7 +204,7 @@ const pqrs_xml_compiler_preferences_number_node_tree*
 pqrs_xml_compiler_get_preferences_number_node_tree_root(const pqrs_xml_compiler* p)
 {
   const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
-  if (! xml_compiler) return NULL;
+  if (! xml_compiler) return nullptr;
 
   return reinterpret_cast<const pqrs_xml_compiler_preferences_number_node_tree*>(&(xml_compiler->get_preferences_number_node_tree()));
 }
@@ -232,20 +232,20 @@ pqrs_xml_compiler_get_preferences_number_node_tree_child(const pqrs_xml_compiler
                                                          size_t index)
 {
   auto node_tree = cast_to_preferences_number_node_tree(p);
-  if (! node_tree) return NULL;
+  if (! node_tree) return nullptr;
 
   auto children = node_tree->get_children();
-  if (! children) return NULL;
-  if (index >= children->size()) return NULL;
+  if (! children) return nullptr;
+  if (index >= children->size()) return nullptr;
 
-  return reinterpret_cast<pqrs_xml_compiler_preferences_number_node_tree*>(((*children)[index]).get());
+  return reinterpret_cast<const pqrs_xml_compiler_preferences_number_node_tree*>(((*children)[index]).get());
 }
 
 const char*
 pqrs_xml_compiler_get_preferences_number_node_tree_name(const pqrs_xml_compiler_preferences_number_node_tree* p)
 {
   auto node_tree = cast_to_preferences_number_node_tree(p);
-  if (! node_tree) return NULL;
+  if (! node_tree) return nullptr;
 
   return (node_tree->get_node()).get_name().c_str();
 }
@@ -263,10 +263,10 @@ const char*
 pqrs_xml_compiler_get_preferences_number_node_tree_identifier(const pqrs_xml_compiler_preferences_number_node_tree* p)
 {
   auto node_tree = cast_to_preferences_number_node_tree(p);
-  if (! node_tree) return NULL;
+  if (! node_tree) return nullptr;
 
   auto& identifier = (node_tree->get_node()).get_identifier();
-  if (identifier.empty()) return NULL;
+  if (identifier.empty()) return nullptr;
 
   return identifier.c_str();
 }
@@ -293,10 +293,10 @@ const char*
 pqrs_xml_compiler_get_preferences_number_node_tree_base_unit(const pqrs_xml_compiler_preferences_number_node_tree* p)
 {
   auto node_tree = cast_to_preferences_number_node_tree(p);
-  if (! node_tree) return NULL;
+  if (! node_tree) return nullptr;
 
   auto& base_unit = (node_tree->get_node()).get_base_unit();
-  if (base_unit.empty()) return NULL;
+  if (base_unit.empty()) return nullptr;
 
   return base_unit.c_str();
 }

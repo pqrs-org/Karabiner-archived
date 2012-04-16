@@ -9,97 +9,6 @@
 
 namespace pqrs {
   void
-  xml_compiler::remapclasses_initialize_vector_prepare_loader::traverse(const boost::property_tree::ptree& pt)
-  {
-    for (auto& it : pt) {
-      // extract include
-      {
-        ptree_ptr pt_ptr;
-        xml_compiler_.extract_include_(pt_ptr, it);
-        if (pt_ptr) {
-          if (! pt_ptr->empty()) {
-            traverse(*pt_ptr);
-          }
-          continue;
-        }
-      }
-
-      // Hack for speed improvement.
-      // We can stop traversing when we met <autogen>.
-      if (it.first == "autogen") {
-        continue;
-      }
-
-      if (it.first != "identifier") {
-        if (! it.second.empty()) {
-          const std::string* saved_parent_tag_name = parent_tag_name_;
-          parent_tag_name_ = &(it.first);
-          traverse(it.second);
-          parent_tag_name_ = saved_parent_tag_name;
-        }
-      } else {
-        auto identifier = boost::trim_copy(it.second.data());
-
-        if (! xml_compiler_.valid_identifier_(identifier, parent_tag_name_)) {
-          continue;
-        }
-        normalize_identifier_(identifier);
-
-        // ----------------------------------------
-        // Do not treat essentials.
-        auto attr_essential = it.second.get_optional<std::string>("<xmlattr>.essential");
-        if (attr_essential) {
-          continue;
-        }
-
-        // ----------------------------------------
-        auto attr_vk_config = it.second.get_optional<std::string>("<xmlattr>.vk_config");
-        if (attr_vk_config) {
-          const char* names[] = {
-            "VK_CONFIG_TOGGLE_",
-            "VK_CONFIG_FORCE_ON_",
-            "VK_CONFIG_FORCE_OFF_",
-            "VK_CONFIG_SYNC_KEYDOWNUP_",
-          };
-          for (auto& n : names) {
-            symbol_map_.add("KeyCode", std::string(n) + identifier);
-          }
-        }
-
-        // ----------------------------------------
-        if (boost::starts_with(identifier, "notsave_")) {
-          identifiers_notsave_.push_back(identifier);
-        } else {
-          identifiers_except_notsave_.push_back(identifier);
-        }
-      }
-    }
-  }
-
-  void
-  xml_compiler::remapclasses_initialize_vector_prepare_loader::fixup(void)
-  {
-    parent_tag_name_ = NULL;
-  }
-
-  void
-  xml_compiler::remapclasses_initialize_vector_prepare_loader::cleanup(void)
-  {
-    fixup();
-
-    // "notsave" has higher priority.
-    for (auto& it : identifiers_notsave_) {
-      symbol_map_.add("ConfigIndex", it);
-    }
-    identifiers_notsave_.clear();
-
-    for (auto& it : identifiers_except_notsave_) {
-      symbol_map_.add("ConfigIndex", it);
-    }
-    identifiers_except_notsave_.clear();
-  }
-
-  void
   xml_compiler::traverse_identifier_(const boost::property_tree::ptree& pt,
                                      const std::string& parent_tag_name)
   {
@@ -127,7 +36,7 @@ namespace pqrs {
 
           std::vector<uint32_t> initialize_vector;
           auto raw_identifier = boost::trim_copy(it.second.data());
-          if (! valid_identifier_(raw_identifier, &parent_tag_name)) {
+          if (! valid_identifier_(raw_identifier, parent_tag_name)) {
             continue;
           }
           auto identifier = raw_identifier;

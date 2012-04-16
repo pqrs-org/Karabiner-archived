@@ -7,13 +7,13 @@ public:
   {}
   virtual ~preferences_node(void) {}
 
-  bool handle_name_and_appendix(const boost::property_tree::ptree::value_type& it);
-
   const std::string& get_name(void) const { return name_; }
   int get_name_line_count(void) const { return name_line_count_; }
   const std::string& get_identifier(void) const { return identifier_; }
 
 protected:
+  bool handle_name_and_appendix_(const boost::property_tree::ptree::value_type& it);
+
   std::string name_;
   int name_line_count_;
 
@@ -60,7 +60,7 @@ private:
 template <class T>
 class preferences_node_tree {
 public:
-  typedef std::tr1::shared_ptr<preferences_node_tree> preferences_node_tree_ptr;
+  typedef std::tr1::shared_ptr<const preferences_node_tree> preferences_node_tree_ptr;
   typedef std::vector<preferences_node_tree_ptr> preferences_node_tree_ptrs;
   typedef std::tr1::shared_ptr<preferences_node_tree_ptrs> preferences_node_tree_ptrs_ptr;
 
@@ -72,9 +72,19 @@ public:
       children_->clear();
     }
   }
-  void traverse_item(const boost::property_tree::ptree& pt, const xml_compiler& xml_compiler);
+  void handle_item_child(const boost::property_tree::ptree::value_type& it) {
+    node_.handle_item_child(it);
+  }
+
   const T& get_node(void) const { return node_; }
   const preferences_node_tree_ptrs_ptr& get_children(void) const { return children_; }
+
+  void push_back(const preferences_node_tree_ptr& ptr) {
+    if (! children_) {
+      children_ = preferences_node_tree_ptrs_ptr(new preferences_node_tree_ptrs());
+    }
+    children_->push_back(ptr);
+  }
 
 private:
   T node_;
@@ -83,23 +93,4 @@ private:
   // * sizeof(shared_ptr) < sizeof(vector).
   // * children_ is mostly empty.
   preferences_node_tree_ptrs_ptr children_;
-};
-
-class preferences_node_loader {
-public:
-  preferences_node_loader(const xml_compiler& xml_compiler,
-                          preferences_node_tree<preferences_checkbox_node>& preferences_checkbox_node_tree,
-                          preferences_node_tree<preferences_number_node>& preferences_number_node_tree) :
-    xml_compiler_(xml_compiler),
-    preferences_checkbox_node_tree_(preferences_checkbox_node_tree),
-    preferences_number_node_tree_(preferences_number_node_tree)
-  {}
-
-  void traverse_checkbox(const boost::property_tree::ptree& pt);
-  void traverse_number(const boost::property_tree::ptree& pt);
-
-private:
-  const xml_compiler& xml_compiler_;
-  preferences_node_tree<preferences_checkbox_node>& preferences_checkbox_node_tree_;
-  preferences_node_tree<preferences_number_node>& preferences_number_node_tree_;
 };

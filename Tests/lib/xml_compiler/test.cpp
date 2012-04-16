@@ -9,6 +9,7 @@ TEST(pqrs_xml_compiler, reload)
   pqrs::xml_compiler xml_compiler("data/system_xml", "data/private_xml");
   xml_compiler.reload();
   EXPECT_EQ(0, xml_compiler.get_error_information().get_count());
+  EXPECT_EQ("", xml_compiler.get_error_information().get_message());
 
   EXPECT_EQ(boost::optional<uint32_t>(0), xml_compiler.get_symbol_map_value("ConfigIndex::notsave_private_sample"));
   EXPECT_EQ(boost::optional<uint32_t>(1), xml_compiler.get_symbol_map_value("ConfigIndex::notsave_passthrough"));
@@ -99,16 +100,16 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
                           "\n"
                           "<identifier>private.swap_space_and_tab</identifier>";
     EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(2, xml_compiler.get_error_information().get_count());
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/invalid_identifier_place2");
     xml_compiler.reload();
-    const char* message = "<identifier> must be placed under <item>:\n"
+    const char* message = "<identifier> must be placed directly under <item>:\n"
                           "\n"
                           "<identifier>private.swap_space_and_tab</identifier>";
     EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(2, xml_compiler.get_error_information().get_count());
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
 
   // ------------------------------------------------------------
