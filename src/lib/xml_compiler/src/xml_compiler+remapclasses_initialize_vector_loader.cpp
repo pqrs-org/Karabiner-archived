@@ -8,38 +8,17 @@
 #include "pqrs/vector.hpp"
 
 namespace pqrs {
-  bool
-  xml_compiler::valid_identifier_(const std::string& identifier, const std::string& parent_tag_name)
-  {
-    if (identifier.empty()) {
-      error_information_.set("Empty <identifier>.");
-      return false;
-    }
-
-    if (parent_tag_name != "item") {
-      error_information_.set(boost::format("<identifier> must be placed directly under <item>:\n"
-                                           "\n"
-                                           "<identifier>%1%</identifier>") %
-                             identifier);
-      return false;
-    }
-
-    return true;
-  }
-
   void
-  xml_compiler::add_config_index_and_keycode_to_symbol_map_(const boost::property_tree::ptree& pt,
-                                                            const std::string& parent_tag_name,
-                                                            bool handle_notsave)
+  xml_compiler::remapclasses_initialize_vector_prepare_loader::traverse(const boost::property_tree::ptree& pt)
   {
     for (auto& it : pt) {
       // extract include
       {
         ptree_ptr pt_ptr;
-        extract_include_(pt_ptr, it);
+        xml_compiler_.extract_include_(pt_ptr, it);
         if (pt_ptr) {
           if (! pt_ptr->empty()) {
-            add_config_index_and_keycode_to_symbol_map_(*pt_ptr, parent_tag_name, handle_notsave);
+            traverse(*pt_ptr);
           }
           continue;
         }
@@ -47,24 +26,23 @@ namespace pqrs {
 
       if (it.first != "identifier") {
         if (! it.second.empty()) {
-          add_config_index_and_keycode_to_symbol_map_(it.second, it.first, handle_notsave);
+          const std::string* saved_parent_tag_name = parent_tag_name_;
+          parent_tag_name_ = &(it.first);
+          traverse(it.second);
+          parent_tag_name_ = saved_parent_tag_name;
         }
       } else {
         auto identifier = boost::trim_copy(it.second.data());
-        if (! valid_identifier_(identifier, parent_tag_name)) {
+
+        if (! xml_compiler_.valid_identifier_(identifier, parent_tag_name_)) {
           continue;
         }
-        normalize_identifier(identifier);
+        normalize_identifier_(identifier);
 
         // ----------------------------------------
         // Do not treat essentials.
         auto attr_essential = it.second.get_optional<std::string>("<xmlattr>.essential");
         if (attr_essential) {
-          continue;
-        }
-
-        // ----------------------------------------
-        if (handle_notsave != boost::starts_with(identifier, "notsave_")) {
           continue;
         }
 
@@ -83,9 +61,36 @@ namespace pqrs {
         }
 
         // ----------------------------------------
-        symbol_map_.add("ConfigIndex", identifier);
+        if (boost::starts_with(identifier, "notsave_")) {
+          identifiers_notsave_.push_back(identifier);
+        } else {
+          identifiers_except_notsave_.push_back(identifier);
+        }
       }
     }
+  }
+
+  void
+  xml_compiler::remapclasses_initialize_vector_prepare_loader::fixup(void)
+  {
+    parent_tag_name_ = NULL;
+  }
+
+  void
+  xml_compiler::remapclasses_initialize_vector_prepare_loader::cleanup(void)
+  {
+    fixup();
+
+    // "notsave" has higher priority.
+    for (auto& it : identifiers_notsave_) {
+      symbol_map_.add("ConfigIndex", it);
+    }
+    identifiers_notsave_.clear();
+
+    for (auto& it : identifiers_except_notsave_) {
+      symbol_map_.add("ConfigIndex", it);
+    }
+    identifiers_except_notsave_.clear();
   }
 
   void
@@ -116,11 +121,11 @@ namespace pqrs {
 
           std::vector<uint32_t> initialize_vector;
           auto raw_identifier = boost::trim_copy(it.second.data());
-          if (! valid_identifier_(raw_identifier, parent_tag_name)) {
+          if (! valid_identifier_(raw_identifier, &parent_tag_name)) {
             continue;
           }
           auto identifier = raw_identifier;
-          normalize_identifier(identifier);
+          normalize_identifier_(identifier);
 
           auto attr_vk_config = it.second.get_optional<std::string>("<xmlattr>.vk_config");
           if (attr_vk_config) {

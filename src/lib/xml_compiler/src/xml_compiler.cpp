@@ -106,25 +106,19 @@ namespace pqrs {
 
         // remapclasses_initialize_vector
         {
-          // ----------------------------------------
-          // add_config_index_and_keycode_to_symbol_map_
-          //   1st loop: <identifier>notsave.*</identifier>
-          //   2nd loop: other <identifier>
-          //
-          // We need to assign higher priority to notsave.* settings.
-          // So, adding config_index by 2steps.
-          if (private_xml_ptree_ptr) {
-            add_config_index_and_keycode_to_symbol_map_(*private_xml_ptree_ptr, "", true);
-          }
-          if (checkbox_xml_ptree_ptr) {
-            add_config_index_and_keycode_to_symbol_map_(*checkbox_xml_ptree_ptr, "", true);
-          }
+          // prepare
+          {
+            remapclasses_initialize_vector_prepare_loader loader(*this, symbol_map_, identifier_map_);
 
-          if (private_xml_ptree_ptr) {
-            add_config_index_and_keycode_to_symbol_map_(*private_xml_ptree_ptr, "", false);
-          }
-          if (checkbox_xml_ptree_ptr) {
-            add_config_index_and_keycode_to_symbol_map_(*checkbox_xml_ptree_ptr, "", false);
+            if (private_xml_ptree_ptr) {
+              loader.traverse(*private_xml_ptree_ptr);
+              loader.fixup();
+            }
+            if (checkbox_xml_ptree_ptr) {
+              loader.traverse(*checkbox_xml_ptree_ptr);
+              loader.fixup();
+            }
+            loader.cleanup();
           }
 
           // ----------------------------------------
@@ -223,21 +217,6 @@ namespace pqrs {
     }
   }
 
-  void
-  xml_compiler::read_xmls_(std::vector<ptree_ptr>& pt_ptrs,
-                           const std::vector<xml_file_path_ptr>& xml_file_path_ptrs) const
-  {
-    pt_ptrs.clear();
-
-    for (auto& path_ptr : xml_file_path_ptrs) {
-      ptree_ptr pt_ptr;
-      read_xml_(pt_ptr, *path_ptr);
-      if (pt_ptr) {
-        pt_ptrs.push_back(pt_ptr);
-      }
-    }
-  }
-
   boost::optional<const std::string&>
   xml_compiler::get_identifier(int config_index) const
   {
@@ -271,9 +250,36 @@ namespace pqrs {
   }
 
   void
-  xml_compiler::normalize_identifier(std::string& identifier)
+  xml_compiler::normalize_identifier_(std::string& identifier)
   {
     boost::replace_all(identifier, ".", "_");
+  }
+
+  bool
+  xml_compiler::valid_identifier_(const std::string& identifier, const std::string* parent_tag_name) const
+  {
+    if (identifier.empty()) {
+      error_information_.set("Empty <identifier>.");
+      return false;
+    }
+
+    if (! parent_tag_name) {
+      error_information_.set(boost::format("<identifier> must be placed under <item>:\n"
+                                           "\n"
+                                           "<identifier>%1%</identifier>") %
+                             identifier);
+      return false;
+    }
+
+    if (*parent_tag_name != "item") {
+      error_information_.set(boost::format("<identifier> must be placed directly under <item>:\n"
+                                           "\n"
+                                           "<identifier>%1%</identifier>") %
+                             identifier);
+      return false;
+    }
+
+    return true;
   }
 
   void
