@@ -108,7 +108,7 @@ namespace pqrs {
         {
           // prepare
           {
-            remapclasses_initialize_vector_prepare_loader loader(*this, symbol_map_, identifier_map_);
+            remapclasses_initialize_vector_prepare_loader<preferences_node_tree<preferences_checkbox_node> > loader(*this, symbol_map_, identifier_map_, &preferences_checkbox_node_tree_);
 
             if (private_xml_ptree_ptr) {
               loader.traverse(*private_xml_ptree_ptr);
@@ -116,6 +116,15 @@ namespace pqrs {
             }
             if (checkbox_xml_ptree_ptr) {
               loader.traverse(*checkbox_xml_ptree_ptr);
+              loader.fixup();
+            }
+            loader.cleanup();
+          }
+          {
+            remapclasses_initialize_vector_prepare_loader<preferences_node_tree<preferences_number_node> > loader(*this, symbol_map_, identifier_map_, &preferences_number_node_tree_);
+
+            if (number_xml_ptree_ptr) {
+              loader.traverse(*number_xml_ptree_ptr);
               loader.fixup();
             }
             loader.cleanup();
@@ -130,24 +139,6 @@ namespace pqrs {
           }
 
           remapclasses_initialize_vector_.freeze();
-        }
-        // preferences_node
-        {
-          preferences_node_loader loader(*this,
-                                         preferences_checkbox_node_tree_,
-                                         preferences_number_node_tree_);
-
-          if (private_xml_ptree_ptr) {
-            loader.traverse_checkbox(*private_xml_ptree_ptr);
-          }
-
-          if (checkbox_xml_ptree_ptr) {
-            loader.traverse_checkbox(*checkbox_xml_ptree_ptr);
-          }
-
-          if (number_xml_ptree_ptr) {
-            loader.traverse_number(*number_xml_ptree_ptr);
-          }
         }
       }
 
@@ -256,22 +247,14 @@ namespace pqrs {
   }
 
   bool
-  xml_compiler::valid_identifier_(const std::string& identifier, const std::string* parent_tag_name) const
+  xml_compiler::valid_identifier_(const std::string& identifier, const std::string& parent_tag_name) const
   {
     if (identifier.empty()) {
       error_information_.set("Empty <identifier>.");
       return false;
     }
 
-    if (! parent_tag_name) {
-      error_information_.set(boost::format("<identifier> must be placed under <item>:\n"
-                                           "\n"
-                                           "<identifier>%1%</identifier>") %
-                             identifier);
-      return false;
-    }
-
-    if (*parent_tag_name != "item") {
+    if (parent_tag_name != "item") {
       error_information_.set(boost::format("<identifier> must be placed directly under <item>:\n"
                                            "\n"
                                            "<identifier>%1%</identifier>") %

@@ -27,8 +27,8 @@ namespace pqrs {
         }
       } else {
         std::string type;
-        const char* name_tag_name = NULL;
-        const char* value_tag_name = NULL;
+        const char* name_tag_name = nullptr;
+        const char* value_tag_name = nullptr;
         boost::optional<std::string> name;
         boost::optional<std::string> value;
 

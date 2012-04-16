@@ -3,7 +3,7 @@
 
 namespace pqrs {
   bool
-  xml_compiler::preferences_node::handle_name_and_appendix(const boost::property_tree::ptree::value_type& it)
+  xml_compiler::preferences_node::handle_name_and_appendix_(const boost::property_tree::ptree::value_type& it)
   {
     if (it.first == "name") {
       if (! name_.empty()) {
@@ -31,7 +31,7 @@ namespace pqrs {
   void
   xml_compiler::preferences_checkbox_node::handle_item_child(const boost::property_tree::ptree::value_type& it)
   {
-    if (preferences_node::handle_name_and_appendix(it)) {
+    if (preferences_node::handle_name_and_appendix_(it)) {
       name_for_filter_ += boost::algorithm::to_lower_copy(boost::trim_copy(it.second.data()));
       name_for_filter_ += " ";
 
@@ -43,7 +43,7 @@ namespace pqrs {
   void
   xml_compiler::preferences_number_node::handle_item_child(const boost::property_tree::ptree::value_type& it)
   {
-    if (preferences_node::handle_name_and_appendix(it)) {
+    if (preferences_node::handle_name_and_appendix_(it)) {
       return;
     }
 
@@ -78,59 +78,5 @@ namespace pqrs {
         }
       }
     }
-  }
-
-  template <class T>
-  void
-  xml_compiler::preferences_node_tree<T>::traverse_item(const boost::property_tree::ptree& pt,
-                                                        const xml_compiler& xml_compiler)
-  {
-    for (auto& it : pt) {
-      // extract include
-      {
-        ptree_ptr pt_ptr;
-        xml_compiler.extract_include_(pt_ptr, it);
-        if (pt_ptr) {
-          if (! pt_ptr->empty()) {
-            traverse_item(*pt_ptr, xml_compiler);
-          }
-          continue;
-        }
-      }
-
-      // ------------------------------------------------------------
-      if (it.first != "item") {
-        if (! it.second.empty()) {
-          traverse_item(it.second, xml_compiler);
-        }
-
-      } else {
-        preferences_node_tree_ptr ptr(new preferences_node_tree(node_));
-
-        for (auto& child : it.second) {
-          (ptr->node_).handle_item_child(child);
-        }
-        if (! it.second.empty()) {
-          ptr->traverse_item(it.second, xml_compiler);
-        }
-
-        if (! children_) {
-          children_ = preferences_node_tree_ptrs_ptr(new preferences_node_tree_ptrs());
-        }
-        children_->push_back(ptr);
-      }
-    }
-  }
-
-  void
-  xml_compiler::preferences_node_loader::traverse_checkbox(const boost::property_tree::ptree& pt)
-  {
-    preferences_checkbox_node_tree_.traverse_item(pt, xml_compiler_);
-  }
-
-  void
-  xml_compiler::preferences_node_loader::traverse_number(const boost::property_tree::ptree& pt)
-  {
-    preferences_number_node_tree_.traverse_item(pt, xml_compiler_);
   }
 }
