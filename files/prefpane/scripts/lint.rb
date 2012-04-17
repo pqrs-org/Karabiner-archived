@@ -1,7 +1,7 @@
 #!/usr/bin/ruby
 # -*- coding: utf-8 -*-
 
-file = "%s/../output/checkbox.xml" % File.dirname($0)
+file = "%s/../../../src/core/server/Resources/checkbox.xml" % File.dirname($0)
 xml = File.read(file)
 xml.scan(/<identifier(\s.*?)?>(.+?)<\/identifier>/m).each do |matches|
   identifier = matches[1].strip
