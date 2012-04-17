@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 <root>
   <appendix>appendix1</appendix>
-  <appendix>appendix2</appendix>
+  <appendix>appendix{{ MY_INCLUDE_TEST }}</appendix>
 </root>
