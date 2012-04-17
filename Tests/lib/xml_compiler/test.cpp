@@ -54,7 +54,7 @@ TEST(pqrs_xml_compiler, reload)
   auto node_tree = xml_compiler.get_preferences_checkbox_node_tree();
   EXPECT_TRUE(node_tree.get_children());
   auto node_ptr = (*(node_tree.get_children()))[0];
-  EXPECT_EQ("Swap Space and Tab\n  appendix1\n  appendix2", node_ptr->get_node().get_name());
+  EXPECT_EQ("Swap Space and Tab\n  appendix1\n  appendix123", node_ptr->get_node().get_name());
 }
 
 TEST(pqrs_xml_compiler, reload_bindings_clang)
