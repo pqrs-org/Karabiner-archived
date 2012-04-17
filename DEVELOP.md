@@ -18,7 +18,7 @@ The functions of KeyRemap4MacBook by Developer's perspective.
 
 How to build
 ------------
-See <http://pqrs.org/macosx/keyremap4macbook/source.html>
+See README.md
 
 
 Main components
@@ -30,6 +30,22 @@ Main components
 Sub components
 --------------
 * KeyRemap4MacBook.prefPane (PreferencePane)
+
+
+Source code dependencies
+------------------------
+<pre>
++- src/bridge/generator/keycode
+  +- src/bridge/include/bridge.h
+    +- src/lib/xml_compiler
+      +- src/bin/dump_xml_compiler_result
+        +- src/bridge/generator/config
+          +- src/core/kext
+          +- src/core/server
+
+("src/core/server" depends on "src/bridge/generator/config", ...)
+
+</pre>
 
 
 About event handling (kext)
