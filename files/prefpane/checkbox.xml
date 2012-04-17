@@ -12224,20 +12224,53 @@
                   <appendix>数字段のシフト面は未定義</appendix>
                   <identifier>remap.jis_asuka_roman_space_kana</identifier>
                   <inputmode_only>JAPANESE</inputmode_only>
-                  <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::SPACE|g' -e 's|RIGHT_THUMB|KeyCode::JIS_KANA|g' include/jis_asuka_roman.xml" -->
+
+                  <include system_xml_path="include/checkbox/japanese/asuka_roman.xml">
+                    <replacementdef>
+                      <replacementname>LEFT_THUMB</replacementname>
+                      <replacementvalue>KeyCode::SPACE</replacementvalue>
+                    </replacementdef>
+                    <replacementdef>
+                      <replacementname>RIGHT_THUMB</replacementname>
+                      <replacementvalue>KeyCode::JIS_KANA</replacementvalue>
+                    </replacementdef>
+                  </include>
+
                 </item>
                 <item>
                   <name>＜ローマ字モード＞ 左シフト＝英数, 右シフト＝スペース</name>
                   <appendix>数字段のシフト面は未定義</appendix>
                   <identifier>remap.jis_asuka_roman_eisuu_space</identifier>
                   <inputmode_only>JAPANESE</inputmode_only>
-                  <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::JIS_EISUU|g' -e 's|RIGHT_THUMB|KeyCode::SPACE|g' include/jis_asuka_roman.xml" -->
+
+                  <include system_xml_path="include/checkbox/japanese/asuka_roman.xml">
+                    <replacementdef>
+                      <replacementname>LEFT_THUMB</replacementname>
+                      <replacementvalue>KeyCode::JIS_EISUU</replacementvalue>
+                    </replacementdef>
+                    <replacementdef>
+                      <replacementname>RIGHT_THUMB</replacementname>
+                      <replacementvalue>KeyCode::SPACE</replacementvalue>
+                    </replacementdef>
+                  </include>
+
                 </item>
                 <item>
                   <name>＜ローマ字モード＞ 左シフト＝英数, 右シフト＝かな</name>
                   <appendix>数字段のシフト面は未定義</appendix>
                   <identifier>remap.jis_asuka_roman_eisuu_kana</identifier>
-                  <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::JIS_EISUU|g' -e 's|RIGHT_THUMB|KeyCode::JIS_KANA|g' include/jis_asuka_roman.xml" -->
+
+                  <include system_xml_path="include/checkbox/japanese/asuka_roman.xml">
+                    <replacementdef>
+                      <replacementname>LEFT_THUMB</replacementname>
+                      <replacementvalue>KeyCode::JIS_EISUU</replacementvalue>
+                    </replacementdef>
+                    <replacementdef>
+                      <replacementname>RIGHT_THUMB</replacementname>
+                      <replacementvalue>KeyCode::JIS_KANA</replacementvalue>
+                    </replacementdef>
+                  </include>
+
                 </item>
               </list>
             </item>
