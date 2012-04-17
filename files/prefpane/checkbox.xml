@@ -6639,7 +6639,7 @@
     </item>
 
     <!-- #include "include/simultaneouskeypresses_vimode.xml" -->
-    <!-- #include "include/homerow_mode.xml" -->
+    <include system_xml_path="include/checkbox/homerow_mode.xml" />
 
     <item>
       <name>Simultaneous Key Presses</name>
