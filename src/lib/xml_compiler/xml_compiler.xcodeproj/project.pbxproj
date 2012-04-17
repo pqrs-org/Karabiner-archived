@@ -193,7 +193,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					include,
-					../../core/bridge/,
+					../../bridge/include,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				RUN_CLANG_STATIC_ANALYZER = YES;
