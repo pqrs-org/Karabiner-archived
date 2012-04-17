@@ -90,7 +90,7 @@
 		348C6A2D128E4504005F516D /* StatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusBar.m; path = Classes/StatusBar.m; sourceTree = "<group>"; };
 		34A06A4A11F8792E0085749B /* icon.statusbar.0.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon.statusbar.0.tif; path = Resources/icon.statusbar.0.tif; sourceTree = "<group>"; };
 		34A06A4B11F8792E0085749B /* icon.statusbar.1.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon.statusbar.1.tif; path = Resources/icon.statusbar.1.tif; sourceTree = "<group>"; };
-		34A611921531707E0003894B /* checkbox.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = checkbox.xml; path = ../../../files/prefpane/output/checkbox.xml; sourceTree = "<group>"; };
+		34A611921531707E0003894B /* checkbox.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = checkbox.xml; path = Resources/checkbox.xml; sourceTree = "<group>"; };
 		34A83BCE144B1EAA00AE5687 /* appdef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = appdef.xml; path = Resources/appdef.xml; sourceTree = "<group>"; };
 		34B2A65A13745B6000694134 /* KeyRemap4MacBookKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookKeys.h; path = ../../share/KeyRemap4MacBookKeys.h; sourceTree = "<group>"; };
 		34B893FB128E448C00BC955A /* WorkSpaceData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkSpaceData.h; path = Classes/WorkSpaceData.h; sourceTree = "<group>"; };

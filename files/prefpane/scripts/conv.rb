@@ -37,7 +37,7 @@ open(xmlfile) do |f|
     break unless isreplaced
   end
 
-  outputdir = File.dirname($0) + '/../output'
+  outputdir = File.dirname($0) + '/../../../src/core/server/Resources/'
   if ! FileTest.exist?(outputdir) then
     Dir.mkdir(outputdir)
   end
