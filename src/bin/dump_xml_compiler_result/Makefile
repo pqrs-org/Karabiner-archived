@@ -3,7 +3,6 @@ CONFIGURATION = Release
 
 all:
 	mkdir -p build/Release
-	$(MAKE) -C ../../../pkginfo
 	$(MAKE) -C ../../lib/xml_compiler
 	xcodebuild -alltargets -configuration $(CONFIGURATION) build
 
@@ -44,8 +43,20 @@ dump_identifier_except_essential:
 	/noexistspath \
 	dump_identifier_except_essential
 
-output_bridge_essential_config_index_hpp:
+output_bridge_essential_configuration_enum_h:
 	@./build/Release/dump_xml_compiler_result \
 	/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app/Contents/Resources \
 	/noexistspath \
-	output_bridge_essential_config_index_hpp
+	output_bridge_essential_configuration_enum_h
+
+output_bridge_essential_configuration_default_values_c:
+	@./build/Release/dump_xml_compiler_result \
+	/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app/Contents/Resources \
+	/noexistspath \
+	output_bridge_essential_configuration_default_values_c
+
+output_bridge_essential_configuration_identifiers_m:
+	@./build/Release/dump_xml_compiler_result \
+	/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app/Contents/Resources \
+	/noexistspath \
+	output_bridge_essential_configuration_identifiers_m
