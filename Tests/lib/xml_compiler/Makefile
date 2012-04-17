@@ -4,7 +4,7 @@ CXXFLAGS += -I../../../src/lib/xml_compiler/include -I../../../src/bridge/includ
 
 include ../../Makefile.rules
 
-a.out:
+a.out: $(SOURCES)
 	make -C ../../../src/lib/xml_compiler
 	$(CXX) $(CXXFLAGS) -o $@ $(SOURCES) $(LDFLAGS) \
 	../../../src/lib/xml_compiler/build/Release/libxml_compiler.a

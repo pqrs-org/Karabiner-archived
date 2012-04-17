@@ -50,6 +50,11 @@ TEST(pqrs_xml_compiler, reload)
 
   EXPECT_EQ(boost::optional<uint32_t>(0x03f0), xml_compiler.get_symbol_map_value("DeviceVendor::HEWLETT_PACKARD"));
   EXPECT_EQ(boost::optional<uint32_t>(0x0224), xml_compiler.get_symbol_map_value("DeviceProduct::MY_HP_KEYBOARD"));
+
+  auto node_tree = xml_compiler.get_preferences_checkbox_node_tree();
+  EXPECT_TRUE(node_tree.get_children());
+  auto node_ptr = (*(node_tree.get_children()))[0];
+  EXPECT_EQ("Swap Space and Tab\n  appendix1\n  appendix2", node_ptr->get_node().get_name());
 }
 
 TEST(pqrs_xml_compiler, reload_bindings_clang)
@@ -414,12 +419,14 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
                   "</item>");
   std::stringstream istream(xml, std::stringstream::in);
 
+  pqrs::xml_compiler xml_compiler("data/system_xml", "data/private_xml");
+
   int flags = boost::property_tree::xml_parser::no_comments;
   boost::property_tree::ptree pt;
   boost::property_tree::read_xml(istream, pt, flags);
 
   for (auto& it : pt) {
-    pqrs::xml_compiler::filter_vector fv(s, it.second);
+    pqrs::xml_compiler::filter_vector fv(s, pqrs::xml_compiler::extracted_ptree(xml_compiler, it.second));
 
     std::vector<uint32_t> expected;
 

@@ -4,6 +4,7 @@
 
   <item>
     <name>Swap Space and Tab</name>
+    <include path="appendix.xml" />
     <identifier>private.include_test</identifier>
     <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
     <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::SPACE</autogen>
