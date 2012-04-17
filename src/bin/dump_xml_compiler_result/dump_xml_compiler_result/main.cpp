@@ -113,7 +113,9 @@ main(int argc, const char* argv[])
       std::cout << *identifier << std::endl;
     }
 
-  } else if (command == "output_bridge_essential_config_index_hpp") {
+  } else if (command == "output_bridge_essential_configuration_enum_h") {
+    std::cout << "enum {" << std::endl;
+
     for (size_t i = 0;; ++i) {
       auto essential_configuration = xml_compiler.get_essential_configuration(i);
       if (! essential_configuration) {
@@ -123,6 +125,32 @@ main(int argc, const char* argv[])
 
       std::cout << "BRIDGE_ESSENTIAL_CONFIG_INDEX_" << essential_configuration->get_identifier()
                 << " = " << i << ","
+                << std::endl;
+    }
+
+    std::cout << "};" << std::endl;
+
+  } else if (command == "output_bridge_essential_configuration_default_values_c") {
+    for (size_t i = 0;; ++i) {
+      auto essential_configuration = xml_compiler.get_essential_configuration(i);
+      if (! essential_configuration) {
+        break;
+      }
+      std::cout << essential_configuration->get_default_value()
+                << ","
+                << std::endl;
+    }
+
+  } else if (command == "output_bridge_essential_configuration_identifiers_m") {
+    for (size_t i = 0;; ++i) {
+      auto essential_configuration = xml_compiler.get_essential_configuration(i);
+      if (! essential_configuration) {
+        std::cout << "nil," << std::endl;
+        break;
+      }
+
+      std::cout << "@\"" << essential_configuration->get_raw_identifier() << "\""
+                << ","
                 << std::endl;
     }
   }
