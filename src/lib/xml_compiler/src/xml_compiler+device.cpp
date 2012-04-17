@@ -4,15 +4,9 @@
 
 namespace pqrs {
   void
-  xml_compiler::device_loader::traverse(const boost::property_tree::ptree& pt) const
+  xml_compiler::device_loader::traverse(const extracted_ptree& pt) const
   {
     for (auto& it : pt) {
-      // extract include
-      if (loader_wrapper<const device_loader>::extract_include(*this, xml_compiler_, it)) {
-        continue;
-      }
-
-      // ------------------------------------------------------------
       if (it.first != "devicevendordef" &&
           it.first != "deviceproductdef") {
         if (! it.second.empty()) {
@@ -41,7 +35,7 @@ namespace pqrs {
         }
 
         // ----------------------------------------
-        for (auto& child : it.second) {
+        for (auto& child : extracted_ptree(xml_compiler_, it.second)) {
           if (child.first == name_tag_name) {
             name = boost::trim_copy(child.second.data());
           } else if (child.first == value_tag_name) {

@@ -39,15 +39,9 @@ namespace pqrs {
 
   // ============================================================
   void
-  xml_compiler::app_loader::traverse(const boost::property_tree::ptree& pt) const
+  xml_compiler::app_loader::traverse(const extracted_ptree& pt) const
   {
     for (auto& it : pt) {
-      // extract include
-      if (loader_wrapper<const app_loader>::extract_include(*this, xml_compiler_, it)) {
-        continue;
-      }
-
-      // ------------------------------------------------------------
       if (it.first != "appdef") {
         if (! it.second.empty()) {
           traverse(it.second);
@@ -56,7 +50,7 @@ namespace pqrs {
         std::tr1::shared_ptr<app> newapp(new app());
         if (! newapp) continue;
 
-        for (auto& child : it.second) {
+        for (auto& child : extracted_ptree(xml_compiler_, it.second)) {
           if (child.first == "appname") {
             newapp->set_name(boost::trim_copy(child.second.data()));
           } else if (child.first == "equal") {
