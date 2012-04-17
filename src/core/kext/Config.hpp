@@ -4,6 +4,7 @@
 #include <sys/types.h>
 #include <sys/sysctl.h>
 #include "bridge.h"
+#include "../../bridge/output/include.bridge_essential_configuration_enum.h"
 
 namespace org_pqrs_KeyRemap4MacBook {
   class Config {

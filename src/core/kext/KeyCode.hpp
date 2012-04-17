@@ -16,7 +16,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     bool isKeyDownOrModifierDown(KeyCode key, Flags flags) const;
 
-#include "../bridge/keycode/output/include.EventType.hpp"
+#include "../../bridge/output/include.kext.EventType.hpp"
 
   private:
     unsigned int value_;
@@ -30,7 +30,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool operator==(KeyboardType other) const { return value_ == other.get(); }
     bool operator!=(KeyboardType other) const { return ! (*this == other); }
 
-#include "../bridge/keycode/output/include.KeyboardType.hpp"
+#include "../../bridge/output/include.kext.KeyboardType.hpp"
 
   private:
     unsigned int value_;
@@ -47,7 +47,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     KeyCode getKeyCode(void) const;
 
-#include "../bridge/keycode/output/include.ModifierFlag.hpp"
+#include "../../bridge/output/include.kext.ModifierFlag.hpp"
 
   private:
     ModifierFlag(unsigned int v) : value_(v) {}
@@ -177,7 +177,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     ModifierFlag getModifierFlag(void) const;
     bool isModifier(void) const { return getModifierFlag() != ModifierFlag::NONE; }
 
-#include "../bridge/keycode/output/include.KeyCode.hpp"
+#include "../../bridge/output/include.kext.KeyCode.hpp"
 
     // When FN key and Arrow key were pushed together, another key code was sent (Home,End,PageUp,PageDown or something).
     // We need to change these Home,End,PageUp,PageDown keys to FN+Arrow key before sending key code to remapper.
@@ -260,7 +260,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     bool isRepeatable(void) const;
 
-#include "../bridge/keycode/output/include.ConsumerKeyCode.hpp"
+#include "../../bridge/output/include.kext.ConsumerKeyCode.hpp"
 
   private:
     unsigned int value_;
@@ -276,7 +276,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     unsigned int operator~(void) const { return ~value_; }
 
-#include "../bridge/keycode/output/include.PointingButton.hpp"
+#include "../../bridge/output/include.kext.PointingButton.hpp"
 
   private:
     unsigned int value_;
@@ -331,7 +331,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool operator==(ScrollWheel other) const { return value_ == other.get(); }
     bool operator!=(ScrollWheel other) const { return ! (*this == other); }
 
-#include "../bridge/keycode/output/include.ScrollWheel.hpp"
+#include "../../bridge/output/include.kext.ScrollWheel.hpp"
 
     static ScrollWheel getScrollWheelFromDelta(int fixedDelta1, int fixedDelta2) {
       // Example of delta:
@@ -379,7 +379,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool operator==(Option other) const { return value_ == other.get(); }
     bool operator!=(Option other) const { return ! (*this == other); }
 
-#include "../bridge/keycode/output/include.Option.hpp"
+#include "../../bridge/output/include.kext.Option.hpp"
 
   private:
     unsigned int value_;
@@ -393,7 +393,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool operator==(ApplicationType other) const { return value_ == other.get(); }
     bool operator!=(ApplicationType other) const { return ! (*this == other); }
 
-#include "../bridge/keycode/output/include.ApplicationType.hpp"
+#include "../../bridge/output/include.kext.ApplicationType.hpp"
 
   private:
     unsigned int value_;
@@ -407,7 +407,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool operator==(InputMode other) const { return value_ == other.get(); }
     bool operator!=(InputMode other) const { return ! (*this == other); }
 
-#include "../bridge/keycode/output/include.InputMode.hpp"
+#include "../../bridge/output/include.kext.InputMode.hpp"
 
   private:
     unsigned int value_;
@@ -421,7 +421,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool operator==(InputModeDetail other) const { return value_ == other.get(); }
     bool operator!=(InputModeDetail other) const { return ! (*this == other); }
 
-#include "../bridge/keycode/output/include.InputModeDetail.hpp"
+#include "../../bridge/output/include.kext.InputModeDetail.hpp"
 
   private:
     unsigned int value_;
@@ -435,7 +435,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool operator==(DeviceVendor other) const { return value_ == other.get(); }
     bool operator!=(DeviceVendor other) const { return ! (*this == other); }
 
-#include "../bridge/keycode/output/include.DeviceVendor.hpp"
+#include "../../bridge/output/include.kext.DeviceVendor.hpp"
 
   private:
     unsigned int value_;
@@ -449,7 +449,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool operator==(DeviceProduct other) const { return value_ == other.get(); }
     bool operator!=(DeviceProduct other) const { return ! (*this == other); }
 
-#include "../bridge/keycode/output/include.DeviceProduct.hpp"
+#include "../../bridge/output/include.kext.DeviceProduct.hpp"
 
   private:
     unsigned int value_;

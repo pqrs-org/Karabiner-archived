@@ -17,11 +17,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   int Config::essential_config_[BRIDGE_ESSENTIAL_CONFIG_INDEX__END__] = {
-#include "../bridge/config/output/include.bridge_essential_config_index.cpp"
+#include "../../bridge/output/include.bridge_essential_configuration_default_values.c"
   };
 
   const int Config::essential_config_default_[BRIDGE_ESSENTIAL_CONFIG_INDEX__END__] = {
-#include "../bridge/config/output/include.bridge_essential_config_index.cpp"
+#include "../../bridge/output/include.bridge_essential_configuration_default_values.c"
   };
 
   // ----------------------------------------------------------------------

@@ -2,7 +2,7 @@
 #include "Config.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-#include "../bridge/keycode/output/include.keycode.cpp"
+#include "../../bridge/output/include.kext.keycode.cpp"
 
   // ------------------------------------------------------------
   bool
